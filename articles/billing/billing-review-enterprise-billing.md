@@ -1,6 +1,6 @@
 ---
-title: REST API ile Azure kurumsal kayıt faturalandırma verilerini gözden geçirin | Microsoft Docs
-description: Kurumsal kayıt faturalandırma bilgilerini gözden geçirmek için Azure REST API 'Lerini nasıl kullanacağınızı öğrenin.
+title: REST API ile Azure kurumsal kayıt faturalama verilerini gözden geçirme | Microsoft Docs
+description: Kurumsal kayıt faturalama bilgilerini gözden geçirmek için Azure REST API’lerinin nasıl kullanılacağını öğrenin.
 services: billing
 documentationcenter: na
 author: lleonard-msft
@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 06/06/2018
 ms.author: banders
 ms.openlocfilehash: 25d9b48696dc2a83ea0ba77c1be2c7aad7627fff
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68443142"
 ---
-# <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API 'Lerini kullanarak kurumsal kayıt faturalandırmasını gözden geçirme
+# <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API’leri kullanarak kurumsal kayıt faturalamasını gözden geçirme
 
-Azure Raporlama API 'Leri, Azure maliyetlerinizi gözden geçirmenize ve yönetmenize yardımcı olur.
+Azure Raporlama API’leri, Azure maliyetlerinizi gözden geçirmenize ve yönetmenize yardımcı olur.
 
-Bu makalede, Azure REST API 'Lerini kullanarak faturalandırma hesapları, departmanı veya kurumsal anlaşma (EA) kayıt hesaplarıyla ilişkili faturalandırma bilgilerini almayı öğreneceksiniz. 
+Bu makalede, Azure REST API’leri kullanarak ödeme hesapları, bölüm veya kurumsal anlaşma (EA) kayıt hesaplarıyla ilişkili faturalama bilgilerini almayı öğrenirsiniz. 
 
-## <a name="individual-account-billing"></a>Bireysel hesap Faturalaması
+## <a name="individual-account-billing"></a>Bireysel hesap faturalama
 
-Bir departmandaki hesapların kullanım ayrıntılarını almak için:
+Bir bölümdeki hesapların kullanım ayrıntılarını almak için:
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -37,21 +37,21 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{billingAccountId}` Parametresi gereklidir ve hesabın kimliğini içermelidir.
+`{billingAccountId}` parametresi gereklidir ve hesabın kimliğini içermelidir.
 
 Aşağıdaki üstbilgiler gereklidir: 
 
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
-|*Content-Type:*|Gerekli. Olarak `application/json`ayarlayın.|  
-|*Authorization:*|Gerekli. Geçerli `Bearer` bir [API anahtarı](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)olarak ayarlayın. |  
+|*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|  
+|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [API anahtarına](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) ayarlayın. |  
 
-Bu örnek, geçerli faturalandırma döngüsünün ayrıntılarını döndüren zaman uyumlu bir çağrıyı gösterir. Performans nedenleriyle, zaman uyumlu çağrılar geçen aya ilişkin bilgileri döndürür.  Ayrıca, 36 ay boyunca verileri döndürmek için [API 'yi zaman uyumsuz](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) olarak çağırabilirsiniz.
+Bu örnekte, geçerli faturalama dönemine ilişkin ayrıntıları döndüren zaman uyumlu bir çağrı gösterilmektedir. Performans nedeniyle zaman uyumlu çağrılar geçen aya ilişkin bilgileri döndürür.  Ayrıca 36 aylık verileri döndürmek için de [Zaman uyumsuz API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)’yi çağırabilirsiniz.
 
 
 ## <a name="response"></a>Yanıt  
 
-Durum kodu 200 (Tamam), hesabın ayrıntılı maliyetlerinin bir listesini içeren başarılı bir yanıt için döndürülür.
+Başarılı yanıt için, hesabın ayrıntılı maliyetlerinin listesini içeren durum kodu 200 (Tamam) döndürülür.
 
 ```json
 {
@@ -78,11 +78,11 @@ Durum kodu 200 (Tamam), hesabın ayrıntılı maliyetlerinin bir listesini içer
 }
 ```  
 
-Bu örnek kısaltılmıştır; Her yanıt alanı ve hata işleme hakkında açıklayıcı bir açıklama için bkz. [bir faturalandırma hesabı için kullanım ayrıntısı alma](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist) .
+Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Ödeme hesabı için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist).
 
-## <a name="department-billing"></a>Bölüm Faturalaması 
+## <a name="department-billing"></a>Bölüm faturalaması 
 
-Bir departmandaki tüm hesaplar için toplanan kullanım ayrıntılarını alın. 
+Bir bölümdeki tüm hesaplar için toplanan kullanım ayrıntılarını alın. 
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -90,23 +90,23 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{departmentId}` Parametresi gereklidir ve kayıt hesabındaki departmanın kimliğini içermelidir.
+`{departmentId}` parametresi gereklidir ve kayıt hesabında bölümün kimliğini içermelidir.
 
 Aşağıdaki üstbilgiler gereklidir: 
 
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
-|*Content-Type:*|Gerekli. Olarak `application/json`ayarlayın.|  
-|*Authorization:*|Gerekli. Geçerli `Bearer` bir [API anahtarı](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)olarak ayarlayın. |  
+|*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|  
+|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [API anahtarına](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) ayarlayın. |  
 
-Bu örnek, geçerli faturalandırma döngüsünün ayrıntılarını döndüren zaman uyumlu bir çağrıyı gösterir. Performans nedenleriyle, zaman uyumlu çağrılar geçen aya ilişkin bilgileri döndürür.  Ayrıca, 36 ay boyunca verileri döndürmek için [API 'yi zaman uyumsuz](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) olarak çağırabilirsiniz.
+Bu örnekte, geçerli faturalama dönemine ilişkin ayrıntıları döndüren zaman uyumlu bir çağrı gösterilmektedir. Performans nedeniyle zaman uyumlu çağrılar geçen aya ilişkin bilgileri döndürür.  Ayrıca 36 aylık verileri döndürmek için de [Zaman uyumsuz API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)’yi çağırabilirsiniz.
 
 ### <a name="response"></a>Yanıt  
 
-Durum kodu 200 (Tamam), departman için belirli bir fatura dönemi ve fatura KIMLIĞI için ayrıntılı kullanım bilgilerinin ve maliyetlerinin listesini içeren başarılı bir yanıt için döndürülür.
+Başarılı bir yanıt için, ayrıntılı kullanım bilgileri listesini ve bölüm için belirtilen faturalama dönemi ve fatura kimliği maliyetlerini içeren durum kodu 200 (Tamam) döndürülür.
 
 
-Aşağıdaki örnek, bölümünün `1234`REST API çıkışını gösterir.
+Aşağıdaki örnekte `1234` bölümü için REST API çıktısı gösterilmektedir.
 
 ```json
 {
@@ -134,9 +134,9 @@ Aşağıdaki örnek, bölümünün `1234`REST API çıkışını gösterir.
 }
 ```  
 
-Bu örnek kısaltılmıştır; Her yanıt alanı ve hata işleme hakkında açıklayıcı bir açıklama için bkz. [bir departman için kullanım ayrıntısı alma](/rest/api/consumption/usagedetails/list#departmentusagedetailslist) .
+Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Bölüm için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#departmentusagedetailslist).
 
-## <a name="enrollment-account-billing"></a>Kayıt hesabı faturalandırması
+## <a name="enrollment-account-billing"></a>Kayıt hesabı faturalaması
 
 Kayıt hesabı için toplanan kullanım ayrıntılarını alın.
 
@@ -146,22 +146,22 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-`{enrollmentAccountId}` Parametresi gereklidir ve kayıt hesabının kimliğini içermelidir.
+`{enrollmentAccountId}` parametresi gereklidir ve kayıt hesabının kimliğini içermelidir.
 
 Aşağıdaki üstbilgiler gereklidir: 
 
 |İstek üst bilgisi|Açıklama|  
 |--------------------|-----------------|  
-|*Content-Type:*|Gerekli. Olarak `application/json`ayarlayın.|  
-|*Authorization:*|Gerekli. Geçerli `Bearer` bir [API anahtarı](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)olarak ayarlayın. |  
+|*Content-Type:*|Gereklidir. `application/json` olarak ayarlayın.|  
+|*Yetkilendirme:*|Gereklidir. Geçerli bir `Bearer` [API anahtarına](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) ayarlayın. |  
 
-Bu örnek, geçerli faturalandırma döngüsünün ayrıntılarını döndüren zaman uyumlu bir çağrıyı gösterir. Performans nedenleriyle, zaman uyumlu çağrılar geçen aya ilişkin bilgileri döndürür.  Ayrıca, 36 ay boyunca verileri döndürmek için [API 'yi zaman uyumsuz](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) olarak çağırabilirsiniz.
+Bu örnekte, geçerli faturalama dönemine ilişkin ayrıntıları döndüren zaman uyumlu bir çağrı gösterilmektedir. Performans nedeniyle zaman uyumlu çağrılar geçen aya ilişkin bilgileri döndürür.  Ayrıca 36 aylık verileri döndürmek için de [Zaman uyumsuz API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based)’yi çağırabilirsiniz.
 
 ### <a name="response"></a>Yanıt  
 
-Durum kodu 200 (Tamam), departman için belirli bir fatura dönemi ve fatura KIMLIĞI için ayrıntılı kullanım bilgilerinin ve maliyetlerinin listesini içeren başarılı bir yanıt için döndürülür.
+Başarılı bir yanıt için, ayrıntılı kullanım bilgileri listesini ve bölüm için belirtilen faturalama dönemi ve fatura kimliği maliyetlerini içeren durum kodu 200 (Tamam) döndürülür.
 
-Aşağıdaki örnek, kurumsal kayıt `1234`için REST API çıkışını gösterir.
+Aşağıdaki örnekte, `1234` kurumsal kaydı için REST API çıktısı gösterilmektedir.
 
 ```json
 {
@@ -187,9 +187,9 @@ Aşağıdaki örnek, kurumsal kayıt `1234`için REST API çıkışını göster
 }
 ``` 
 
-Bu örnek kısaltılmıştır; Her yanıt alanı ve hata işleme hakkında açıklayıcı bir açıklama için bkz. [bir kayıt hesabı için kullanım ayrıntısı alma](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist) .
+Bu örnek kısaltılmıştır; her bir yanıt alanının tam açıklaması ve hata işleme için bkz. [Kayıt hesabı için kullanım ayrıntısını alma](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist).
 
 ## <a name="next-steps"></a>Sonraki adımlar 
-- [Kurumsal raporlamaya genel bakış](https://docs.microsoft.com/azure/billing/billing-enterprise-api) konusunu gözden geçirme
-- [Kurumsal faturalandırma REST API](https://docs.microsoft.com/rest/api/billing/) araştırın   
-- [Azure REST API kullanmaya başlama](https://docs.microsoft.com/rest/api/azure/)   
+- [Kurumsal raporlamaya genel bakış](https://docs.microsoft.com/azure/billing/billing-enterprise-api) bölümünü gözden geçirin
+- [Kurumsal Faturalama REST API](https://docs.microsoft.com/rest/api/billing/)’yi araştırın   
+- [Azure REST API’yi kullanmaya başlayın](https://docs.microsoft.com/rest/api/azure/)   

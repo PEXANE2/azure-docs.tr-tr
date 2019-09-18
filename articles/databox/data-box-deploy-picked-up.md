@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 8/27/2019
+ms.date: 09/10/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 5b78dc8b815802502cda5baf2bf5e9646922d671
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241425"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898169"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** işl
 
 ::: zone-end
 
-## <a name="ship-in-us-canada-europe"></a>ABD, Kanada, Avrupa'da gönderme
+## <a name="in-us-canada-europetabin-us-canada-europe"></a>[ABD, Kanada, Avrupa](#tab/in-us-canada-europe)
 
 Cihazı ABD, Kanada veya Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
@@ -94,7 +94,7 @@ Cihazı ABD, Kanada veya Avrupa’da iade ediyorsanız aşağıdaki adımları u
 4. Data Box nakliyeciniz tarafından toplandıktan ve tarandıktan sonra, portaldaki sipariş durumu **Toplandı** olarak güncelleştirilir. Ayrıca bir takip numarası da görüntülenir.
 
 
-## <a name="ship-in-australia"></a>Avustralya'da gönderme
+## <a name="in-australiatabin-australia"></a>[Avustralya](#tab/in-australia)
 
 Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Gelen tüm sevkiyatların önceden bildirilmesi gerekir. Avustralya’da gönderme için aşağıdaki adımları uygulayın.
 
@@ -126,7 +126,7 @@ Telefonla siparişiniz hakkında soru sormak için:
 - Öncelikle kargo toplama için bir e-posta gönderin.
 - Telefonda siparişinizin adını verin.
 
-## <a name="ship-in-japan"></a>Japonya’da gönderme 
+## <a name="in-japantabin-japan"></a>[Japonya](#tab/in-japan) 
 
 1. İade gönderimi için cihazı gönderirken kullanılan orijinal kutuyu saklayın.
 2. Cihazı kapatın ve kabloları çıkarın.

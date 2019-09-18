@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240309"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914042"
 ---
 ::: zone target = "docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70240309"
 
 ::: zone target = "chromeless"
 
-## <a name="copy-data-to-azure-data-box-heavy"></a>Azure Data Box Heavy’ye veri kopyalama
+# <a name="copy-data-to-azure-data-box-heavy"></a>Azure Data Box Heavy’ye veri kopyalama
 
 ::: zone-end
 
@@ -333,7 +333,7 @@ Adım adım yönergeler için [Öğretici: Veri kopyalama hizmetini kullanarak A
 3. Daha sonra SMB veya NFS araçları aracılığıyla verileri kopyalayabilirsiniz.
 4. Data Box Heavy’nin ikinci düğümüne bağlanmak ve veri kopyalamak için bu adımları yineleyin.
 
-Adım adım yönergeler için [Öğretici: Azure’da yönetilen diskler olarak verileri içeri aktarmak için Data Box Heavy kullanma](data-box-heavy-deploy-copy-data-from-vhds.md) bölümüne gidin.
+Adım adım yönergeler için [Öğretici: Azure’da verileri yönetilen diskler olarak içeri aktarmak için Data Box Heavy kullanma](data-box-heavy-deploy-copy-data-from-vhds.md) bölümüne gidin.
 
 ::: zone-end
 

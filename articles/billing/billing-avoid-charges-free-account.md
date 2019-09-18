@@ -1,6 +1,6 @@
 ---
-title: Azure ücretsiz hesabınızla ücretlerden kaçınmak
-description: Ücretler Azure ücretsiz hesabınız için neden gördüğünüz anlayın. Bu ücretlerden kaçınmak için yollarını öğrenin.
+title: Ücretsiz Azure hesabınızla ücretlerden kaçının
+description: Ücretsiz Azure hesabınız için neden size ücret yansıtıldığını anlayın. Bu ücretlerden kaçınmanın yollarını öğrenin.
 author: amberbhargava
 manager: amberb
 tags: billing
@@ -12,54 +12,54 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: ac5bcf0a4dd9c7ee593c70a63509a21f28ba1456
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491471"
 ---
-# <a name="avoid-charges-with-your-azure-free-account"></a>Azure ücretsiz hesabınızla ücretlerden kaçınmak
+# <a name="avoid-charges-with-your-azure-free-account"></a>Ücretsiz Azure hesabınızla ücretlerden kaçının
 
-Ücretsiz Azure hesabı $200 değerinde Azure kredisine sahip olun, ilk 30 gün ve sınırlı bir miktar 12 ay boyunca ücretsiz hizmetler sunar. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Kredi durumu, bağlı olarak kredinizi kullanabilir veya Ücretsiz Hizmetler ve miktarların dışında kullanım için ücretlendirilirsiniz.
+Azure ücretsiz hesabı size ilk 30 gün boyunca Azure kredilerinde 200 ABD doları ve 12 ay boyunca sınırlı sayıda ücretsiz hizmet sunar. Daha fazla bilgi için bkz. [Ücretsiz Azure hesabı](https://azure.microsoft.com/free/). Kredinizin durumuna bağlı olarak, kredinizi kullanabilir veya ücretsiz hizmetlerin ve miktarların ötesinde kullanım için ücretlendirilebilirsiniz.
 
-## <a name="azure-free-account-might-use-account-credit"></a>Ücretsiz Azure hesabı hesap kredinizden kullanabilir
-Sertifikanın süresinin dolmadığından Azure kredisi hala varsa, Azure kredinizi ve ücretsiz hizmet miktarları aşan kullanımlarda ödemek için kullanır.
+## <a name="azure-free-account-might-use-account-credit"></a>Ücretsiz Azure hesabı, hesap kredisini kullanabilir
+Halen süresi dolmamış olan Azure krediniz varsa Azure, ücretsiz hizmet ve miktarların ötesindeki kullanımların ödemesi için kredinizi kullanır.
 
-## <a name="your-credit-runs-out-or-is-expired"></a>Krediniz bitmeden veya süresi doldu
-Krediniz bitmeden veya 30 gün sonunda süresi, Azure aboneliğiniz devre dışı bırakır. Azure hizmetlerini kullanmaya devam etmek için Kullandıkça Öde tarifesine göre ile tek bir abonelik için aboneliğinizi yükseltmeniz gerekir. Daha fazla bilgi için [ücretsiz deneme Azure aboneliğinizi yükselterek](billing-upgrade-azure-subscription.md). Yükseltmeden sonra aboneliğinizi, yine de ücretsiz hizmetlere 12 ay boyunca erişimine sahiptir. Yalnızca Ücretsiz Hizmetler ve miktarların dışında kullanım için ücretlendirilirsiniz.
+## <a name="your-credit-runs-out-or-is-expired"></a>Krediniz tükendi veya süresi doldu
+30 günün sonunda krediniz tükenirse veya kredinizin süresi dolarsa Azure aboneliğinizi devre dışı bırakır. Azure hizmetlerini kullanmaya devam etmek için aboneliğinizi kullandıkça öde fiyatlarına tabi bireysel aboneliğe yükseltmeniz gerekir. Daha fazla bilgi için bkz. [Ücretsiz deneme Azure aboneliğinizi yükseltme](billing-upgrade-azure-subscription.md). Yükseltme sonrasında aboneliğinizin yine 12 ay boyunca ücretsiz hizmetlere erişimi olacaktır. Yalnızca ücretsiz hizmetleri ve miktarları aşan kullanım için ücretlendirilirsiniz.
 
-Azure ücretsiz hesabınızı ödemelere maruz nedenlerden bazıları göz atalım.
+Ücretsiz Azure hesabınızda size ücret uygulanmasının birkaç nedenine göz atalım.
 
-### <a name="usage-exceeds-the-limits-of-free-services"></a>Kullanım limitlerini Ücretsiz Hizmetler
+### <a name="usage-exceeds-the-limits-of-free-services"></a>Kullanım, ücretsiz hizmet limitlerini aşıyor
 
-Her ay Ücretsiz Hizmetler sınırlı bir miktar Azure ücretsiz hesabınızı alın. Ücretsiz miktar ayın sonunda süresi dolar ve sonraki aya gece yarısında değil. Örneğin, dosya depolama için 5 GB her ay alın. Bir ayda yalnızca 2 GB kullanırsanız, sonraki aya kalan 3 GB gece yarısında değil. Ücret önlemek için kullanım sınırları içinde tutun. Ücretsiz hizmet sınırları hakkında bilgi edinmek için [Azure ücretsiz hesabı SSS](https://azure.microsoft.com/free/free-account-faq/). Ücretsiz hizmet kullanımınızı denetlemek için bkz: [Azure ücretsiz hesabına dahil edilen ücretsiz hizmetlerin kullanımını denetleme](billing-check-free-service-usage.md).
+Ücretsiz Azure hesabınızla her ay sınırlı miktarda ücretsiz hizmet alırsınız. Ücretsiz miktarın süresi ayın sonunda dolar ve bu miktar bir sonraki aya devredilmez. Örneğin, her ay 5 GB Dosya depolama alanı alırsınız. Bir ayda yalnızca 2 GB kullanırsanız, kalan 3 GB bir sonraki aya devredilmez. Ücretlendirilmemek için kullanım limitlerinizi aşmayın. Ücretsiz hizmet limitleri hakkında daha fazla bilgi için bkz. [Ücretsiz Azure hesabı ile ilgili SSS](https://azure.microsoft.com/free/free-account-faq/). Ücretsiz hizmet kullanımınızı denetlemek için bkz. [Ücretsiz Azure Hesabına dahil edilen ücretsiz hizmetlerin kullanımını denetleme](billing-check-free-service-usage.md).
 
-### <a name="some-services-are-not-free"></a>Bazı Hizmetleri ücretsiz değildir.
+### <a name="some-services-are-not-free"></a>Bazı hizmetler ücretsiz değildir
 
-Ücretsiz Azure ücretsiz hesabınızla eklenmeyen hizmetlerini kullanarak için Kullandıkça Öde fiyatları üzerinden ücretlendirilirsiniz. Bir ücretsiz hesaba dahil hizmetler hakkında bilgi edinmek için bkz. [Azure ücretsiz hesabı SSS](https://azure.microsoft.com/free/free-account-faq/). Azure portalında veya Azure kullanım dosyanızdaki hizmet kullanımınızı kontrol edebilirsiniz. Daha fazla bilgi için bkz. [düzenli olarak Maliyet dağılımı için portalı denetleyin ve yazma hızı](billing-getting-started.md#costs) ve [indirme kullanımı hesap Merkezi'nden](billing-download-azure-invoice-daily-usage-date.md).
+Ücretsiz Azure hesabınıza ücretsiz olarak dahil edilmeyen hizmetleri kullandığınızda kullandıkça öde fiyatlarıyla ücretlendirilirsiniz. Ücretsiz bir hesaba dahil edilen hizmetler hakkında bilgi edinmek için bkz. [Ücretsiz Azure hesabı ile ilgili SSS](https://azure.microsoft.com/free/free-account-faq/). Azure portalında veya Azure kullanım dosyanızda hizmet kullanımınızı denetleyebilirsiniz. Daha fazla bilgi edinmek için bkz. [Maliyet dökümü ve yazma hızı için portalı düzenli olarak denetleme](billing-getting-started.md#costs) ve [Hesap Merkezinden kullanımı indirme](billing-download-azure-invoice-daily-usage-date.md).
 
-### <a name="you-reached-the-end-of-your-free-12-months"></a>Ücretsiz, 12 ay sonuna ulaşıldı
+### <a name="you-reached-the-end-of-your-free-12-months"></a>Ücretsiz 12 aylık sürenizin sonuna ulaştınız
 
-Ücretsiz Hizmetler ve miktarlarını 12 ayın sonunda sona erer. Azure portalında, ücretsiz hizmetler sona erdiğinde bilgi edinebilirsiniz.
+Ücretsiz hizmetlerinizin ve miktarlarınızın süresi 12 ayın sonunda sona erer. Azure portalında ücretsiz hizmetlerinizin ne zaman süresinin dolduğunu öğrenebilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Sol gezinti bölmesinde seçin **tüm hizmetleri**.
+2. Sol gezinti alanında **Tüm hizmetler**’i seçin.
 
 3.  **Abonelikler**'i seçin.
 
-4.  Hesap ücretsiz RMS'ye kaydolurken oluşturduğunuz aboneliği seçin.
+4.  Ücretsiz hesaba kaydolduğunuzda oluşturduğunuz aboneliği seçin.
 
-5.  Bul Ücretsiz Hizmetler kılavuz aşağı kaydırın. Üstte bulunan araç ipucu kılavuzunun sol'a tıklayın.
+5.  Ücretsiz hizmetler kılavuzunu bulmak için sayfayı aşağı kaydırın. Kılavuzun sol üst kısmında bulunan araç ipucuna tıklayın.
 
-![Ücretsiz hesap Avantajlarınızı sona erdiğinde öğrenmek nereye gösteren ekran görüntüsü](./media/billing-avoid-charges-free-account/freeaccount-benefits-expiration-date.png)
+![Ücretsiz hesap avantajlarınızın ne zaman süresinin dolacağının öğrenileceği yeri gösteren ekran görüntüsü](./media/billing-avoid-charges-free-account/freeaccount-benefits-expiration-date.png)
 
 
-Miktarlar ve ücretsiz hizmetlerin süresi sonra kullanmakta olduğunuz tüm hizmetleri için Kullandıkça Öde tarifesine göre Azure'un ücretlendirdiği. Kullanmadığınız hizmetler için kaynakları silmek için Azure portalını kullanabilirsiniz. Herhangi bir Azure hizmeti kullanmayı düşünmüyorsanız varsa [aboneliğinizi iptal](billing-how-to-cancel-azure-subscription.md).
+Ücretsiz hizmetlerinizin ve miktarlarınızın süresi dolduktan sonra Azure, kullandığınız hizmetler için kullandıkça öde fiyatlarıyla sizi ücretlendirir. Kullanmadığınız hizmetlere ilişkin kaynakları silmek için Azure portalını kullanabilirsiniz. Herhangi bir Azure hizmetini kullanmayı planlamıyorsanız [aboneliğinizi iptal edebilirsiniz](billing-how-to-cancel-azure-subscription.md).
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
-Sorularınız varsa veya yardıma ihtiyacınız [bir destek isteği oluşturma](https://go.microsoft.com/fwlink/?linkid=2083458).
+Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Ücretsiz deneme Azure aboneliğinizi yükseltin](billing-upgrade-azure-subscription.md)
+- [Ücretsiz deneme Azure aboneliğinizi yükseltme](billing-upgrade-azure-subscription.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure ayırma otomasyonu için API 'Ler | Microsoft Docs
-description: Program aracılığıyla rezervasyon bilgilerini almak için kullanabileceğiniz Azure API 'Leri hakkında bilgi edinin.
+title: Azure rezervasyon otomasyonu API’leri | Microsoft Docs
+description: Program aracılığıyla rezervasyon bilgilerini almak için kullanabileceğiniz Azure API’leri hakkında bilgi edinin.
 author: yashesvi
 manager: yashesvi
 tags: billing
@@ -12,27 +12,27 @@ ms.workload: na
 ms.date: 08/02/2019
 ms.author: banders
 ms.openlocfilehash: 36bc403c4000e58541f22c2cb44f77a28e81cb72
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68779897"
 ---
-# <a name="apis-for-azure-reservation-automation"></a>Azure ayırma otomasyonu için API 'Ler
+# <a name="apis-for-azure-reservation-automation"></a>Azure rezervasyon otomasyonu API’leri
 
-Kuruluşunuzun Azure hizmeti veya yazılım ayırmaları hakkında daha fazla bilgi almak için Azure API 'Lerini kullanın.
+Kuruluş için Azure hizmeti veya yazılım rezervasyonları ile ilgili bilgileri program aracılığıyla almak için Azure API’lerini kullanın.
 
-## <a name="find-reservation-plans-to-buy"></a>Satın almak için rezervasyon planlarını bulun
+## <a name="find-reservation-plans-to-buy"></a>Satın alınacak rezervasyon planlarını bulun
 
-Kuruluşunuzun kullanımına göre hangi rezervasyonlar planının satın alınacağını gösteren öneriler almak için rezervasyon önerisi API 'sini kullanın. Daha fazla bilgi için bkz. [ayırma önerilerini al](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
+Kuruluşunuzun kullanımına göre hangi rezervasyon planının satın alınacağına yönelik öneriler almak için Rezervasyon önerisi API’sini kullanın. Daha fazla bilgi için bkz. [Rezervasyon önerileri alma](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 
-Ayrıca, tüketim API 'SI kullanım ayrıntısı ' nı kullanarak kaynak kullanımınızı analiz edebilirsiniz. Daha fazla bilgi için bkz. [kullanım ayrıntıları-faturalandırma hesabına göre faturalandırma dönemi listesi](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). Sürekli kullandığınız Azure kaynakları, genellikle bir ayırma için en iyi adaydır.
+Ayrıca Tüketim API Kullanım Ayrıntısını kullanarak da kaynak kullanımınızı analiz edebilirsiniz. Daha fazla bilgi için bkz [Kullanım Ayrıntıları - Ödeme Hesabına Göre Faturalama Dönemi Listesi](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). Genellikle rezervasyon için en uygun aday, sürekli olarak kullandığınız Azure kaynaklarıdır.
 
 ## <a name="buy-a-reservation"></a>Ayırma satın alma
 
-REST API 'Lerini kullanarak Azure ayırmaları ve yazılım planlarını programlama yoluyla satın alabilirsiniz. Daha fazla bilgi için bkz. [rezervasyon siparişi-satın alma API 'si](/rest/api/reserved-vm-instances/reservationorder/purchase).
+REST API’leri kullanarak program aracılığıyla Azure rezervasyonları ve yazılım planları satın alabilirsiniz. Daha fazla bilgi için bkz [Rezervasyon Siparişi - Satın Alma API’si](/rest/api/reserved-vm-instances/reservationorder/purchase).
 
-REST API kullanarak satın alma için örnek bir istek aşağıda verilmiştir:
+REST API kullanılarak satın alma isteğinde bulunma örneği aşağıda verilmiştir:
 
 ```
 PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/<GUID>?api-version=2019-04-01
@@ -61,7 +61,7 @@ PUT https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/
 }
 ```
 
-Azure portal bir rezervasyon de satın alabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Azure portalında bir rezervasyon da satın alabilirsiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 Hizmet planları:
 - [Sanal makine](../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json)
@@ -71,50 +71,50 @@ Hizmet planları:
 Yazılım planları:
 - [SUSE Linux yazılımı](../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json)
 
-## <a name="get-reservations"></a>Rezervasyonları al
+## <a name="get-reservations"></a>Rezervasyon alma
 
-Kurumsal Anlaşma (EA müşterisi) olan bir Azure müşterisiyseniz, [ayrılmış örnek işlem ücretleri API 'sini](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges)kullanarak kuruluşunuzun satın aldığı rezervasyonları alabilirsiniz. Diğer abonelikler için, satın aldığınız rezervasyonların listesini alın ve API [ayırma sırası-listesini](/rest/api/reserved-vm-instances/reservationorder/list)kullanarak görüntüleme izinlerine sahip olursunuz. Varsayılan olarak, ayırma 'yı satın alan hesap sahibi veya kişinin ayırmayı görüntüleme izni vardır.
+Kurumsal Anlaşma (EA müşterisi) olan bir Azure müşterisiyseniz, [Ayrılmış Örnek işlemi ücretlerini alma API’si](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) kullanarak kuruluşunuzun satın aldığı rezervasyonları alabilirsiniz. Diğer abonelikler için, [Rezervasyon Siparişi - Listeleme](/rest/api/reserved-vm-instances/reservationorder/list) API’sini kullanarak satın aldığınız rezervasyon listesini alın ve görüntüleme izinlerine sahip olun. Varsayılan olarak, rezervasyonu satın alan kişi veya hesap sahibi, rezervasyonu görüntüleme izinlerine sahiptir.
 
-## <a name="see-reservation-usage"></a>Ayırma kullanımını görüntüle
+## <a name="see-reservation-usage"></a>Rezervasyon kullanım bilgilerini görüntüleme
 
-Bir EA müşterisiyseniz, kuruluşunuzdaki rezervasyonların nasıl kullanıldığını programlı bir şekilde görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [Kurumsal müşteriler Için ayrılmış örnek kullanımını edinme](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage). Diğer abonelikler için, [rezervasyon siparişi ve rezervasyonuna göre API ayırmaları özetler listesini](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation)kullanın.
+Bir EA müşterisiyseniz, kuruluşunuzda rezervasyonların nasıl kullanıldığını program aracılığıyla görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [Kurumsal müşteriler için Ayrılmış Örnek kullanım bilgilerini alma](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage). Diğer abonelikler için [Rezervasyon Özetleri - Rezervasyon Siparişine ve Rezervasyona Göre Listeleme](/rest/api/consumption/reservationssummaries/listbyreservationorderandreservation) API’sini kullanın.
 
-Kuruluşunuzun ayırmalarının kullanıldığı fark ederseniz:
+Kuruluşunuzun rezervasyonlarının gerektiği şekilde kullanılmadığını belirlerseniz:
 
-- Kuruluşunuzun oluşturduğu sanal makinelerin, rezervasyondaki VM boyutuyla eşleştiğinden emin olun.
-- Örnek boyutu esnekliğin açık olduğundan emin olun. Daha fazla bilgi için bkz. [ayırmaları yönetme-ayrılmış VM örnekleri için en iyileştirme ayarını değiştir](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
-- Daha geniş bir uygulama için ayırma kapsamını paylaşılan olarak değiştirin. Daha fazla bilgi için bkz. [ayırmaları yönetme-bir ayırmanın kapsamını değiştirme](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
-- Kullanılmayan miktarı Exchange. Daha fazla bilgi için bkz. [rezervasyonları yönetme](billing-manage-reserved-vm-instance.md).
+- Kuruluşunuzun oluşturduğu sanal makinelerin, rezervasyondaki sanal makine boyutuyla aynı olduğundan emin olun.
+- Örnek boyutu esnekliğinin açık olduğundan emin olun. Daha fazla bilgi için bkz [Rezervasyonları yönetme - Ayrılmış Sanal Makine Örnekleri için iyileştirme ayarını değiştirme](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
+- Rezervasyon kapsamını, daha geniş çapta geçerli olması için paylaşılan olarak değiştirin. Daha fazla bilgi için bkz. [Rezervasyonları yönetme - Rezervasyon kapsamını değiştirme](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+- Kullanılmayan miktarı değiştirin. Daha fazla bilgi için bkz. [Rezervasyonları yönetme](billing-manage-reserved-vm-instance.md).
 
-## <a name="give-access-to-reservations"></a>Rezervasyonların erişimine izin ver
+## <a name="give-access-to-reservations"></a>Rezervasyonlara erişme izni verme
 
-[Ayırma-işlem-LISTE API](/rest/api/reserved-vm-instances/reservationorder/list)'sini kullanarak bir kullanıcının erişebileceği tüm rezervasyonların listesini alın. Programlı olarak bir ayırmaya erişim vermek için aşağıdaki makalelerden birine bakın:
+[Rezervasyon - İşlem - Listeleme API’si](/rest/api/reserved-vm-instances/reservationorder/list) kullanarak bir kullanıcının erişim yetkisine sahip olduğu tüm rezervasyonların listesini alın. Program aracılığıyla bir rezervasyona erişme izni vermek için aşağıdaki makalelerden birine bakın:
 
 - [RBAC ve REST API kullanarak erişimi yönetme](../role-based-access-control/role-assignments-rest.md)
 - [RBAC ve Azure PowerShell kullanarak erişimi yönetme](../role-based-access-control/role-assignments-powershell.md)
-- [RBAC ve Azure CLı kullanarak erişimi yönetme](../role-based-access-control/role-assignments-cli.md)
+- [RBAC ve Azure CLI’yı kullanarak erişimi yönetme](../role-based-access-control/role-assignments-cli.md)
 
-## <a name="split-or-merge-reservation"></a>Ayırmayı bölme veya birleştirme
+## <a name="split-or-merge-reservation"></a>Rezervasyonu bölme veya birleştirme
 
-Bir ayırma içinde birden fazla kaynak örneği satın aldıktan sonra, bu ayırma içindeki örnekleri farklı aboneliklere atamak isteyebilirsiniz. Rezervasyon kapsamını aynı faturalandırma bağlamı içindeki tüm abonelikler için geçerli olacak şekilde değiştirebilirsiniz. Ancak, maliyet yönetimi veya bütçeleme amaçları için, kapsamı "tek abonelik" olarak tutmak ve belirli bir aboneliğe ayırma örnekleri atamak isteyebilirsiniz.
+Bir rezervasyon içinde birden fazla kaynak örneği satın aldıktan sonra o rezervasyon içindeki örnekleri farklı aboneliklere atamak isteyebilirsiniz. Rezervasyon kapsamını, aynı faturalama bağlamındaki tüm abonelikler için geçerli olacak şekilde değiştirebilirsiniz. Ancak maliyet yönetimi veya bütçeleme amacıyla bu kapsamı “tek abonelik” olarak tutmak ve belirli bir aboneliğe rezervasyon örnekleri atamak isteyebilirsiniz.
 
-Bir ayırmayı ayırmak için API [ayırma-bölme](/rest/api/reserved-vm-instances/reservation/split)kullanın. Ayrıca, PowerShell kullanarak bir ayırmayı bölebilirsiniz. Daha fazla bilgi için bkz. [rezervasyonları ayırma-bölünmüş ayırmayı iki ayırmaya yönetme](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
+Bir rezervasyonu bölmek için [Rezervasyon - Bölme](/rest/api/reserved-vm-instances/reservation/split) API’sini kullanın. Ayrıca PowerShell kullanarak bir rezervasyonu bölebilirsiniz. Daha fazla bilgi için bkz. [Rezervasyonları yönetme - Rezervasyonu iki rezervasyona bölme](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
 
-İki ayırmayı tek bir ayırmada birleştirmek için API [ayırma-birleştirme](/rest/api/reserved-vm-instances/reservation/merge)kullanın.
+İki rezervasyonu tek bir rezervasyonda birleştirmek için [Rezervasyon - Birleştirme](/rest/api/reserved-vm-instances/reservation/merge) API’sini kullanın.
 
-## <a name="change-scope-for-a-reservation"></a>Bir ayırmanın kapsamını değiştirme
+## <a name="change-scope-for-a-reservation"></a>Rezervasyon kapsamını değiştirme
 
-Bir ayırmanın kapsamı, tek bir abonelik, tek kaynak grubu veya faturalandırma bağlamındaki tüm abonelikler olabilir. Kapsamı tek abonelik veya tek kaynak grubu olarak ayarlarsanız, ayırma seçili abonelikte kaynakları çalıştırmaya eşleştirilir. Aboneliği veya kaynak grubunu siler veya taşırsanız, rezervasyon kullanılmaz.  Kapsamı paylaşılan olarak ayarlarsanız Azure, faturalandırma bağlamı içindeki tüm aboneliklerde çalışan kaynaklarla rezervasyon ile eşleşir. Faturalandırma bağlamı, ayırmayı satın almak için kullandığınız aboneliğe bağımlıdır. Satın alma sırasında kapsamı seçebilir veya satın aldıktan sonra istediğiniz zaman değiştirebilirsiniz. Daha fazla bilgi için bkz. [ayırmaları yönetme-kapsamı değiştirme](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+Rezervasyon kapsamı, tek abonelik, tek kaynak grubu veya faturalama bağlamınızdaki tüm abonelikler olabilir. Kapsamı tek abonelik veya tek kaynak grubu olarak ayarlarsanız rezervasyon, seçilen abonelikte çalıştırılan kaynaklarla eşleştirilir. Aboneliği veya kaynak grubunu siler ya da taşırsanız rezervasyon kullanılmaz.  Kapsamı paylaşılan olarak ayarlarsanız Azure, faturalama bağlamındaki tüm aboneliklerde çalıştırılan kaynaklarla rezervasyonu eşleştirir. Faturalama bağlamı, rezervasyonu satın almak için kullandığınız aboneliğe bağlıdır. Satın alma sırasında kapsamı seçebilir veya satın aldıktan sonra istediğiniz zaman değiştirebilirsiniz. Daha fazla bilgi için bkz. [Rezervasyonları Yönetme - Kapsamı değiştirme](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
-Kapsamı program aracılığıyla değiştirmek için API [ayırmasını-Güncelleştir](/rest/api/reserved-vm-instances/reservation/update)' i kullanın.
+Kapsamı program aracılığıyla değiştirmek için [Rezervasyon - Güncelleştirme](/rest/api/reserved-vm-instances/reservation/update) API’sini kullanın.
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-- [Azure için ayırmalar nelerdir?](billing-save-compute-costs-reservations.md)
-- [VM rezervasyon iskontosunun nasıl uygulanacağını anlayın](billing-understand-vm-reservation-charges.md)
-- [SUSE Linux Enterprise yazılım planı iskontosunun nasıl uygulandığını anlayın](billing-understand-suse-reservation-charges.md)
-- [Diğer rezervasyon iskontolarının nasıl uygulanacağını anlayın](billing-understand-reservation-charges.md)
-- [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlayın](billing-understand-reserved-instance-usage.md)
-- [Kurumsal kaydınız için rezervasyon kullanımını anlayın](billing-understand-reserved-instance-usage-ea.md)
-- [Windows yazılım maliyetleri rezervasyonlar içermez](billing-reserved-instance-windows-software-costs.md)
-- [Iş Ortağı Merkezi bulut çözümü sağlayıcısı (CSP) programında Azure ayırmaları](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Azure rezervasyonları nedir?](billing-save-compute-costs-reservations.md)
+- [Sanal makine rezervasyon indiriminin nasıl uygulandığını anlama](billing-understand-vm-reservation-charges.md)
+- [SUSE Linux Enterprise yazılım planı indiriminin nasıl uygulandığını anlama](billing-understand-suse-reservation-charges.md)
+- [Diğer rezervasyon indirimlerinin nasıl uygulandığını anlama](billing-understand-reservation-charges.md)
+- [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](billing-understand-reserved-instance-usage.md)
+- [Kurumsal kaydınız için rezervasyon kullanımını anlama](billing-understand-reserved-instance-usage-ea.md)
+- [Rezervasyonlara dahil olmayan Windows yazılımı maliyetleri](billing-reserved-instance-windows-software-costs.md)
+- [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](https://docs.microsoft.com/partner-center/azure-reservations)

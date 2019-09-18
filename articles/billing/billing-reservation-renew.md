@@ -1,6 +1,6 @@
 ---
-title: Azure ayırmalarını otomatik olarak yenileme
-description: Rezervasyon indirimlerini almaya devam etmek için Azure ayırmalarını otomatik olarak nasıl yenileyebileceğinizi öğrenin.
+title: Azure rezervasyonlarını otomatik olarak yenileme
+description: Rezervasyon indirimleri almaya devam etmek için Azure rezervasyonlarını nasıl otomatik olarak yenileyebileceğinizi öğrenin.
 services: billing
 author: bandersmsft
 manager: yashar
@@ -9,87 +9,87 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: banders
 ms.openlocfilehash: c19c6af68bcde753ec9bed990e08aa81eabdd37d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68679464"
 ---
-# <a name="automatically-renew-reservations"></a>Rezervasyonları otomatik olarak Yenile
+# <a name="automatically-renew-reservations"></a>Rezervasyonları otomatik olarak yenileme
 
-Rezervasyonları, var olan bir ayırma sona erdiğinde otomatik olarak bir değiştirme satın alacak şekilde yenileyebilirsiniz. Otomatik yenileme, rezervasyon indirimlerini almaya devam etmenin kolay bir yolunu sağlar. Ayrıca, bir ayırmanın sona erme süresini yakından izlemenize gerek kalmanızı sağlar. Otomatik yenilemeyle, el ile yenilemenize gerek kalmadan tasarruf etme avantajlarının kaybolmasını önleyebilirsiniz. Yenileme ayarı varsayılan olarak kapalıdır. Yenileme ayarını, mevcut ayırmanın sonuna kadar her zaman etkinleştirin veya devre dışı bırakın.
+Mevcut bir rezervasyonun süresi dolduğunda otomatik olarak bir değiştirme satın almak için rezervasyonları yenileyebilirsiniz. Otomatik yenileme, rezervasyon indirimleri almanın kolay bir yolunu sağlar. Ayrıca bir rezervasyonun süre sonunu yakından izlemek zorunda kalmanızı da gerektirmez. Otomatik yenileme sayesinde, kendiniz yenileme yapmak zorunda kalmadan tasarruf avantajlarını kaybetmemiş olursunuz. Yenileme ayarı varsayılan olarak kapalıdır. Yenileme ayarını, mevcut rezervasyonun süre sonuna kadar istediğiniz zaman etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
-Bir ayırmayı yenilemek, mevcut ayırma sona erdiğinde yeni bir ayırma oluşturur. Mevcut ayırmanın terimini genişletmez.
+Bir rezervasyon yenilendiğinde, mevcut rezervasyonun süresi dolarsa yeni bir rezervasyon oluşturulur. Mevcut rezervasyonun süresi uzatılmaz.
 
-Dilediğiniz zaman otomatik olarak yenilemek için kabul edin. Yenileme fiyatı, mevcut ayırmanın süresi dolmadan 30 gün önce kullanılabilir. Yenileme süresi dolduktan 30 günden daha uzun bir yenileme etkinleştirdiğinizde, yenileme maliyetlerini süresi dolmadan 30 gün önce açıklayan bir e-posta gönderilir. Ayırma fiyatı, yenileme fiyatını kilitletime ve yenileme süresi arasında değişebilir. Bu durumda, yenileme maliyetiniz iki maliyetin düşüktür. Rezervasyon miktarındaki değişiklikler yapabilirsiniz. Bunu yaparsanız, yenileme, miktar değişikliği sırasında piyasa fiyatı kümesini kullanacak şekilde güncelleştirilir.
+İstediğiniz zaman otomatik yenilemeyi kabul edebilirsiniz. Yenileme fiyatı, mevcut rezervasyonun süresi dolmadan 30 gün önce kullanılabilir. Rezervasyon süre sonundan en az 30 gün önce yenilemeyi etkinleştirdiğinizde, süre sonundan 30 gün önce size yenileme maliyetlerini açıklayan bir e-posta gönderilir. Rezervasyon fiyatı, yenileme fiyatını kilitlediğiniz zaman ile yenileme zamanı arasında değişebilir. Bu durumda yenileme maliyeti, iki maliyetin en düşük olanıdır. Rezervasyon miktarı üzerinde değişiklik yapabilirsiniz. Bunu yaparsanız yenileme, miktar değişikliği sırasında belirlenen piyasa fiyatını kullanacak şekilde güncelleştirilir.
 
-Yenileme yükümlülüğü yoktur ve var olan ayırma süresi dolmadan yenileme işlemini dilediğiniz zaman devre dışı bırakabilirsiniz.
+Yenileme yükümlülüğü yoktur ve mevcut rezervasyon süresi dolmadan önce istediğiniz zaman yenilemeyi geri çevirebilirsiniz.
 
-## <a name="set-up-renewal"></a>Yenilemeyi ayarla
+## <a name="set-up-renewal"></a>Yenilemeyi ayarlama
 
-Azure portal > **ayırmaları**' ne gidin.
+Azure portalına gidip **Rezervasyonlar**’ı seçin.
 
-1. Ayırmayı seçin.
-2. **Yenileme**' ye tıklayın.
-3. **Süre dolduktan sonra otomatik olarak yeni bir ayırma satın al**seçeneğini belirleyin.  
-  ![Ayırma yenilemeyi gösteren örnek](./media/billing-reservation-renew/reservation-renewal.png)
+1. Rezervasyonu seçin.
+2. **Yenileme**’ye tıklayın.
+3. **Süre sonunda otomatik olarak yeni ayırma satın al** seçeneğini belirleyin.  
+  ![Rezervasyon yenilemeyi gösteren örnek](./media/billing-reservation-renew/reservation-renewal.png)
 
 ## <a name="if-you-dont-renew"></a>Yenilemezseniz
 
-Hizmetleriniz normal şekilde çalışmaya devam eder. Rezervasyon süresi dolduktan sonra kullanımınız için Kullandıkça Öde tarifesine göre ücretlendirilirsiniz.
+Hizmetleriniz normal şekilde çalışmaya devam eder. Rezervasyon süresi dolduktan sonra kullanımınız için kullandıkça öde fiyatlarıyla ücretlendirilirsiniz.
 
 ## <a name="required-renewal-permissions"></a>Gerekli yenileme izinleri
 
-Bir ayırmayı yenilemek için aşağıdaki koşullar gereklidir:
+Bir rezervasyonu yenilemek için aşağıdaki koşullar gereklidir:
 
-- Mevcut ayırmanın sahibi olmanız gerekir.
-- Ayırmanın tek bir abonelik veya kaynak grubu kapsamında olması halinde, aboneliğin sahibi olmanız gerekir.
+- Mevcut rezervasyonun sahibi olmanız gerekir.
+- Rezervasyon tek bir abonelik veya kaynak grubu kapsamındaysa aboneliğin sahibi olmanız gerekir.
 - Paylaşılan bir kapsamı varsa aboneliğin sahibi olmanız gerekir.
 
 ## <a name="default-renewal-settings"></a>Varsayılan yenileme ayarları
 
-Varsayılan olarak, yenileme süresi dolan rezervasyondan tüm özellikleri devralır. Bir rezervasyon yenileme satın alımı aynı SKU, bölge, kapsam, faturalandırma aboneliği, terim ve miktara sahiptir.
+Varsayılan olarak yenileme, süresi dolan rezervasyondan tüm özellikleri devralır. Rezervasyon yenileme satın alımı, aynı SKU, bölge, kapsam, faturalama aboneliği, dönem ve miktarı içerir.
 
-Ancak, tasarrufunuzu iyileştirmek için yenileme rezervasyonu satın alma miktarını güncelleştirebilirsiniz.
+Ancak tasarruflarınızı iyileştirmek için yenileme rezervasyon satın alma miktarını güncelleştirebilirsiniz.
 
 ## <a name="when-the-new-reservation-is-purchased"></a>Yeni rezervasyon satın alındığında
 
-Mevcut rezervasyon sona erdiğinde yeni bir rezervasyon satın alınır. İki ayırma arasındaki gecikmeyi engellemeye çalışırız. Sürekliliği, maliyetlerinizin tahmin edilebilir olmasını sağlar ve indirimleri almaya devam edersiniz.
+Mevcut rezervasyonun süresi dolduğunda yeni bir rezervasyon satın alınır. İki rezervasyon arasındaki gecikmeleri önlemeye çalışırız. Devamlılık sayesinde maliyetlerinizin öngörülebilir olması sağlanır ve indirim almaya devam edersiniz.
 
-## <a name="changing-parent-reservation-after-setting-renewal"></a>Yenileme ayarından sonra üst ayırmayı değiştirme
+## <a name="changing-parent-reservation-after-setting-renewal"></a>Yenilemeyi ayarladıktan sonra üst rezervasyonu değiştirme
 
-Süresi dolan rezervasyonda aşağıdaki değişikliklerden birini yaparsanız, rezervasyon yenileme iptal edilir:
+Süresi dolan rezervasyon üzerinde aşağıdaki değişikliklerden herhangi birini yaparsanız rezervasyon yenileme iptal edilir:
 
-- Böl
+- Bölme
 - Birleştir
-- Ayırma bir hesaptan diğerine aktarılıyor
-- Bir WebDirect aboneliğinden bir kurumsal anlaşma (EA) aboneliğine veya başka bir satın alma yöntemine ayırmayı aktarma
-- Kaydı yenileyin
+- Rezervasyonu bir hesaptan diğerine aktarma
+- Rezervasyonu bir WebDirect aboneliğinden bir kurumsal anlaşma (EA) aboneliğine veya başka bir satın alma yöntemine aktarma
+- Kaydı yenileme
 
-Yeni ayırma, yenileme sırasında süresi dolan rezervasyondan kapsam ve örnek boyutu esneklik ayarını devralır.
+Yeni rezervasyon, yenileme sırasında süresi dolan rezervasyondan kapsamı ve örnek boyutu esneklik ayarını devralır.
 
-## <a name="new-reservation-permissions"></a>Yeni ayırma izinleri
+## <a name="new-reservation-permissions"></a>Yeni rezervasyon izinleri
 
-Azure, izinleri süresi dolan ayırmayla yeni ayırmaya kopyalar. Ayrıca, rezervasyon satın alma aboneliğinin abonelik hesabı yöneticisinin yeni ayırmaya erişimi vardır.
+Azure, süresi dolan rezervasyondan yeni rezervasyona izinleri kopyalar. Ek olarak, rezervasyon satın alımının abonelik hesabı yöneticisinin yeni rezervasyona erişimi de vardır.
 
 ## <a name="potential-renewal-problems"></a>Olası yenileme sorunları
 
-Azure, şu durumlarda yenileme işlemini işleyemeyebilir:
+Azure aşağıdaki durumlarda yenilemeyi işleme alamaz:
 
-- Ödeme toplanamıyor
-- Yenileme sırasında bir sistem hatası oluşuyor
-- Süresi dolan SKU yenileme sırasında etkin değil
-- EA farklı bir EA 'da yenilendi
+- Ödeme tahsil edilemiyorsa
+- Yenileme sırasında bir sistem hatası oluşursa
+- Süresi dolan SKU, yenileme sırasında etkin değilse
+- Kurumsal Anlaşma farklı bir Kurumsal Anlaşma şeklinde yenilendiyse
 
-Yukarıdaki koşullardan biri gerçekleşirse ve yenileme devre dışı bırakılmışsa bir e-posta bildirimi alırsınız.
+Yukarıdaki koşullardan herhangi birinin oluşması durumunda bir e-posta bildirimi alırsınız ve yenileme devre dışı bırakılır.
 
 ## <a name="renewal-notification"></a>Yenileme bildirimi
 
-E-postalar, satın alma yönteminize bağlı olarak farklı kişilere gönderilir:
+Satın alma yönteminize bağlı olarak e-postalar farklı kişilere gönderilir:
 
-- EA müşterileri-e-postalar, EA portalında ayarlanan bildirim kişilerine gönderilir.
-- Kullandıkça Öde tarifelerine sahip bireysel abonelik müşterileri-e-postalar, hesap yöneticileri olarak ayarlanan kullanıcılara gönderilir.
-- Bulut çözümü sağlayıcısı müşterileri-e-postalar iş ortağı bildirim ekibine gönderilir.
+- Kurumsal Anlaşma müşterileri: E-postalar, Kurumsal Anlaşma portalında belirlenen bildirim kişilerine gönderilir.
+- Kullandıkça öde fiyatlarına tabi bireysel abonelik müşterileri: E-postalar, hesap yöneticisi olarak ayarlanan kullanıcılara gönderilir.
+- Bulut Çözümü Sağlayıcısı müşterileri: E-postalar, iş ortağı bildirim kişisine gönderilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Azure ayırmaları hakkında daha fazla bilgi edinmek için bkz. [Azure rezervasyonları nelerdir?](billing-save-compute-costs-reservations.md)
+- Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için bkz. [Azure Ayrılmış Sanal Makine Örnekleri nedir?](billing-save-compute-costs-reservations.md)

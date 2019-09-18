@@ -1,6 +1,6 @@
 ---
-title: Bir Azure Databricks ön satın alma indirim nasıl uygulanır
-description: Kullanım için bir Azure Databricks ön satın alma indirim uygulanması hakkında bilgi edinin.
+title: Azure Databricks önceden satın alma indiriminin uygulanması
+description: Azure Databricks önceden satın alma indiriminin kullanımınıza nasıl uygulandığı hakkında bilgi edinin.
 services: billing
 author: yashesvi
 manager: yashar
@@ -9,50 +9,50 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: banders
 ms.openlocfilehash: 7c1855b587ab1d603e9c6ac24a67b0f50065361f
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67827630"
 ---
-# <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Azure Databricks ön satın alma indirimi nasıl uygulanır
+# <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Azure Databricks önceden satın alma indiriminin uygulanması
 
-Satın alma dönem boyunca herhangi bir zamanda önceden satın alınan Azure Databricks işleme birimlerini (DBCU) kullanabilirsiniz. Tüm Azure Databricks kullanımı önceden satın alınan DBCUs otomatik olarak çıkarır.
+Satın alma dönemi boyunca istediğiniz zaman, önceden satın alınan Azure Databricks işleme birimlerini (DBCU) kullanabilirsiniz. Tüm Azure Databricks kullanımı, önceden satın alınan DBCU’lardan otomatik olarak düşülür.
 
-Vm'lerden farklı olarak, saatlik olarak önceden satın alınan birim dolmasın. Satın alma dönemi sırasında istediğiniz zaman kullanabilirsiniz. Ön satın alma indirimleri almak için dağıtmanız veya önceden satın alınan bir plan kullanım için Azure Databricks çalışma alanları atama gerekmez.
+Sanal makinelerden farklı olarak, önceden satın alınan birimlerin süresi saat bazında dolmaz. Satın alma dönemi boyunca istediğiniz zaman bunları kullanabilirsiniz. Önceden satın alma indirimleri almak için kullanıma ilişkin Azure Databricks çalışma alanlarınıza önceden satın alınan bir planı yeniden dağıtmanız veya atamanız gerekmez.
 
-Ön satın alma indirimi, yalnızca Azure Databricks birimi (DBU) kullanımı için geçerlidir. İşlem, depolama ve ağ gibi diğer ücretleri ayrı olarak ücretlendirilir.
+Önceden satın alma indirimi yalnızca Azure Databricks birimi (DBU) kullanımı için geçerlidir. İşlem, depolama ve ağ iletişimi gibi diğer ücretler ayrı olarak ücretlendirilir.
 
-## <a name="pre-purchase-discount-application"></a>Ön satın alma indirimi
+## <a name="pre-purchase-discount-application"></a>Önceden satın alma indiriminin uygulanması:
 
-Databricks ön satın alma, tüm Databricks iş yükleri ve katmanları için geçerlidir. Ön satın alma ön ödemeli Databricks işleme birimlerini oluşan bir havuz olarak düşünebilirsiniz. Kullanımı havuz, iş yükü veya katmanını bağımsız olarak çıkarılır. Kullanım, aşağıdaki oranı çıkarılır:
+Databricks önceden satın alımı, tüm Databricks iş yükleri ve katmanları için geçerlidir. Önceden satın alımı, ön ödemeli Databricks işleme birimleri havuzu gibi düşünebilirsiniz. Kullanım, iş yüküne veya katmana bakılmaksızın havuzdan düşülür. Kullanım şu oranda düşülür:
 
-| **İş yükü** | **DBU uygulama oranı — standart katman** | **DBU uygulama oranı — Premium katman** |
+| **İş yükü** | **DBU uygulama oranı - Standart katman** | **DBU uygulama oranı - Premium katman** |
 | --- | --- | --- |
-| Veri Analizi | 0.4 | 0.55 |
-| Veri Mühendisliği | 0.15 | 0.30 |
-| Veri Mühendisliği Hafif Düzey | 0,07 | 0.22 |
+| Veri Analizi | 0,4 | 0,55 |
+| Veri Mühendisliği | 0,15 | 0,30 |
+| Veri Mühendisliği Hafif | 0,07 | 0,22 |
 
-Örneğin, bir miktar Data Analytics – standart katman kullanıldığında önceden satın alınan Databricks işleme birimleri kesinti 0,4 birimlerle. Işık mühendislik veri – miktarı standart katman kullanılır, önceden satın alınan Databricks işleme birimi 0,07 birimlerle çıkarılır.
+Örneğin, bir Veri Analizi - Standart katman miktarı kullanıldığında, önceden satın alınan Databricks işleme birimleri, 0,4 birim düşülür. Bir Veri Mühendisliği Hafif - Standart katman miktarı kullanıldığında, önceden satın alınan Databricks işleme birimleri, 0,07 birim düşülür
 
-## <a name="determine-plan-use"></a>Planı kullanın
+## <a name="determine-plan-use"></a>Plan kullanımını belirleme
 
-DBCU-planı kullanımınız belirlemek için Azure portalına gidin > **ayırmaları** ve satın alınan Databricks plana tıklayın. Kalan tüm birimleri ile kullanımı başından bu yana gösterilmektedir. Rezervasyonunuz belirleme hakkında daha fazla bilgi için bkz: [bkz ayırma kullanım](billing-reservation-apis.md#see-reservation-usage) makalesi.
+Kullanılacak DBCU planınızı belirlemek için Azure portalı > **Rezervasyonlar**’a gidin ve satın alınan Databricks planına tıklayın. Kullanım bitiş tarihiniz, kalan birimlerle birlikte gösterilir. Rezervasyon kullanımınızı belirleme hakkında daha fazla bilgi için [Rezervasyon kullanımını görüntüleme](billing-reservation-apis.md#see-reservation-usage) makalesine bakın.
 
-## <a name="how-discount-application-shows-in-usage-data"></a>İndirim uygulama kullanım verileri nasıl gösterir
+## <a name="how-discount-application-shows-in-usage-data"></a>Kullanım verilerinde indirim uygulamasının gösterilmesi
 
-Ön satın alma indirim Databricks kullanımınız için geçerli olduğu durumlarda, isteğe bağlı ücretler, kullanım verilerindeki sıfır olarak görülür. Maliyet ayırma ve kullanımı hakkında daha fazla bilgi için bkz. [Kurumsal Anlaşma edinin ayırma maliyetleri ve kullanım](billing-understand-reserved-instance-usage-ea.md).
+Databricks kullanımınıza önceden satın alma indirimi uygulandığında, iste bağlı ücretler kullanım verilerinde sıfır olarak görüntülenir. Rezervasyon maliyetleri ve kullanımı hakkında daha fazla bilgi için bkz. [Kurumsal Anlaşma rezervasyon maliyetleri ve kullanım bilgilerini alma](billing-understand-reserved-instance-usage-ea.md).
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
-Sorularınız varsa veya yardıma ihtiyacınız [bir destek isteği oluşturma](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Rezervasyon yönetme konusunda bilgi almak için bkz: [Azure ayırmalarını yönetme](billing-manage-reserved-vm-instance.md).
-- Azure Databricks, paradan tasarruf etmek için önceden satın alma hakkında daha fazla bilgi için bkz. [bir ön satın alma Azure Databricks en iyi duruma getirme maliyetlerle](billing-prepay-databricks-reserved-capacity.md).
-- Azure ayırmaları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-  - [Azure ayırmaları nelerdir?](billing-save-compute-costs-reservations.md)
-  - [Azure'da ayırmalarını yönetme](billing-manage-reserved-vm-instance.md)
-  - [Kullandıkça Öde tarifesine göre olan bir abonelik için ayırma kullanımını anlama](billing-understand-reserved-instance-usage.md)
-  - [Kurumsal kayıt için ayırma kullanımını anlama](billing-understand-reserved-instance-usage-ea.md)
+- Rezervasyonu yönetme hakkında bilgi edinmek için bkz. [Azure Ayrılmış Sanal Makine Örnekleri’ni Yönetme](billing-manage-reserved-vm-instance.md).
+- Para tasarrufu sağlamak için Azure Databricks’i önceden satın alma hakkında daha fazla bilgi edinmek için bkz. [Önceden satın alma ile Azure Databricks maliyetlerini iyileştirme](billing-prepay-databricks-reserved-capacity.md).
+- Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+  - [Azure Ayrılmış Sanal Makine Örnekleri nedir?](billing-save-compute-costs-reservations.md)
+  - [Azure’da Rezervasyonları Yönetme](billing-manage-reserved-vm-instance.md)
+  - [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](billing-understand-reserved-instance-usage.md)
+  - [Kurumsal kaydınız için rezervasyon kullanımını anlama](billing-understand-reserved-instance-usage-ea.md)

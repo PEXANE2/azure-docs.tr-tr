@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/11/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b982e0bcd87a60e29b11c7123fbe5d675ab017b3
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390415"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910110"
 ---
 ::: zone target="chromeless"
 
@@ -52,12 +52,12 @@ Başlamadan önce [Öğretici: Verileri Azure Data Box Disk'e kopyalama ve doğr
 
 Sonraki adımlar cihazın iade edildiği bölgeye göre belirlenir. ABD/Kanada, Avrupa Birliği (AB), Avustralya veya Asya’daki ülkeler için farklı yönergeler uygulanır.
 
-### <a name="pick-up-in-us-canada"></a>ABD/Kanada'da teslim alma
+### <a name="in-us-or-canadatabin-us-or-canada"></a>[ABD veya Kanada](#tab/in-us-or-canada)
 
 Cihazı ABD veya Kanada’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
 1. Kutuya yapıştırılmış şeffaf plastik kılıftaki iade sevkiyat etiketini kullanın. Etiket zarar gördüyse veya kayıpsa:
-    - **Genel Bakış > Sevkiyat Etiketini İndir**’e gidip bir sevkiyat etiketi indirin.
+    - **Genel Bakış > Sevkiyat Etiketini İndir**’e gidip bir iade sevkiyat etiketi indirin.
     - Etiketi cihaza iliştirin.
 
 2. Sevkiyat kutusunu mühürleyin ve iade sevkiyat etiketinin görünür olduğundan emin olun.
@@ -68,7 +68,7 @@ Cihazı ABD veya Kanada’da iade ediyorsanız aşağıdaki adımları uygulayı
     - İzleme numarası bildirilmezse, teslim alma esnasında UPS’ye ek ücret ödemeniz gerekir.
     - Teslim alma zamanlama yerine Data Box Disk’inizi en yakın teslim etme yerine bırakabilirsiniz.
 
-### <a name="pick-up-in-europe"></a>Avrupa’da teslim alma
+### <a name="in-europetabin-europe"></a>[Avrupa](#tab/in-europe)
 
 Cihazı Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
@@ -81,7 +81,7 @@ Cihazı Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
 4. Ülkenin/bölgenin DHL Ekspres web sitesine gidin ve **Kurye Çağırma Rezervasyonu > eİade Sevkiyatı**'nı seçin.    
 3. Konşimento numarasını belirtin ve toplama ayarlaması yapmak için **Toplama Zamanlama**'ya tıklayın.
 
-### <a name="pick-up-in-australia"></a>Avustralya'da teslim alma
+### <a name="in-australiatabin-australia"></a>[Avustralya](#tab/in-australia)
 
 Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Gelen tüm sevkiyatların önceden bildirilmesi gerekir. Avustralya’da teslim alma için aşağıdaki adımları uygulayın.
 
@@ -89,9 +89,9 @@ Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Ge
 3. Etiketi kutuya iliştirin. 
 4. Şu bağlantıdan çevrimiçi olarak bir teslim alma rezervasyonu yapın: https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
 
-### <a name="pick-up-in-asia"></a>Asya’da teslim alma
+### <a name="in-japan-koreatabin-japan-korea"></a>[Japonya, Kore](#tab/in-japan-korea)
 
-Japonya, Kore ve Singapur için farklı teslim alma yönergeleri bulunur.
+Japonya ve Kore için toplama yönergeleri aşağıda verilmiştir.
 
 #### <a name="pick-up-in-japan"></a>Japonya’da teslim alma
 
@@ -134,7 +134,8 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
     3. Teslim alma için kurye gönderilmezse alternatif planlamalar için *Quantium Solutions International*’ı arayın. 
     4. İstek telefon aracılığıyla yapıldıysa sözlü teyit alırsınız.
 
-#### <a name="pick-up-in-singapore"></a>Singapur’da teslim alma
+
+### <a name="in-singaporetabin-singapore"></a>[Singapur’da](#tab/in-singapore)
 
 1. Sevk mektubunu yazdırın ve kutuya iliştirin. Etiket zarar gördüyse veya kayıpsa:
     - **Genel Bakış > Sevkiyat Etiketini İndir**’e gidip bir iade sevkiyat etiketi edinin.

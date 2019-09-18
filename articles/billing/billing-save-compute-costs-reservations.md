@@ -1,6 +1,6 @@
 ---
 title: Azure Ayırmaları nedir?
-description: Sanal makinelerinize, SQL veritabanlarına, Azure Cosmos DB ve diğer kaynak maliyetlerine kaydedilecek Azure ayırmaları ve fiyatlandırma hakkında bilgi edinin.
+description: Sanal makineleriniz, SQL veritabanlarınız, Azure Cosmos DB ve diğer kaynak maliyetlerinde tasarruf etmek için Azure Ayrılmış Sanal Makine Örnekleri ve fiyatlandırma hakkında bilgi edinin.
 author: yashesvi
 manager: yashar
 ms.service: billing
@@ -8,91 +8,91 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "70806351"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
-Azure ayırmaları bir yıllık veya üç yıllık sanal makine, SQL veritabanı işlem kapasitesi, Azure Cosmos DB üretilen iş veya diğer Azure kaynakları ile tasarruf ederek tasarruf etmenize yardımcı olur. Kaydetme, kullandığınız kaynaklara ilişkin bir indirim elde etmenizi sağlar. Ayırmalar, Kullandıkça Öde fiyatlarında% 72 ' e varan sanal makinenizi, SQL veritabanı işlem, Azure Cosmos DB veya diğer kaynak maliyetlerini önemli ölçüde azaltabilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez.
+Azure Ayrılmış Sanal Makine Örnekleri sayesinde sanal makine, SQL Veritabanı işlem kapasitesi, Azure Cosmos DB aktarım hızı ve diğer Azure kaynakları için bir yıldan üç yıla kadar taahhütte bulunarak indirimlerden faydalanabilirsiniz. Taahhütte bulunarak kullandığınız kaynakları indirimli satın alabilirsiniz. Rezervasyonlar sanal makine, SQL veritabanı işlem, Azure Cosmos DB veya diğer kaynak maliyetlerinizi kullandıkça öde fiyatlarına göre %72'ye varan oranlarda düşürebilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez.
 
-Ön veya aylık bir rezervasyon için ödeme yapabilirsiniz. En önde ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödeme yapmayı seçtiğinizde fazladan ücret ödemezsiniz. Aylık ödeme, üçüncü taraf ürünleri değil, Azure ayırmaları için kullanılabilir.
+Bir rezervasyonun ödemesini peşin veya aylık olarak yapabilirsiniz. Peşin ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödemeyi seçtiğinizde ekstra ücret ödemezsiniz. Aylık ödeme, üçüncü taraf ürünleri değil, Azure rezervasyonları için kullanılabilir.
 
-[Azure Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)bir rezervasyon satın alabilirsiniz.
+[Azure portalından](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) da rezervasyon satın alabilirsiniz.
 
-## <a name="why-buy-a-reservation"></a>Neden rezervasyon satın alınır?
+## <a name="why-buy-a-reservation"></a>Neden rezervasyon satın almalıyım?
 
-Uzun süreler boyunca çalışan sanal makinelere, Azure Cosmos DB veya SQL veritabanlarına sahipseniz, bir ayırma satın almak size en uygun maliyetli seçeneği sağlar. Örneğin, bir hizmetin dört örneğini rezervasyon olmadan sürekli olarak çalıştırdığınızda Kullandıkça Öde tarifesine göre ücretlendirilirsiniz. Bu kaynaklar için bir ayırma satın aldığınızda, rezervasyon indirimi hemen alınır. Kaynaklar artık Kullandıkça Öde tarifelerine göre ücretlendirilir.
+Uzun süreler boyunca çalışan sanal makineleriniz, Azure Cosmos DB veya SQL veritabanlarınız varsa, rezervasyon satın almak size en uygun maliyetli seçeneği sağlar. Örneğin, bir hizmetin dört örneğini rezervasyon olmadan sürekli olarak çalıştırdığınızda kullandıkça öde tarifesine göre ücretlendirilirsiniz. Bu kaynaklar için bir rezervasyon satın aldığınız anda rezervasyon indirimini elde edersiniz. Kaynaklar artık kullandıkça öde tarifelerine göre ücretlendirilmez.
 
-## <a name="charges-covered-by-reservation"></a>Rezervasyon tarafından kapsanan ücretler
+## <a name="charges-covered-by-reservation"></a>Rezervasyon kapsamındaki ücretler
 
 Hizmet planları:
 
-- **Ayrılmış sanal makine örneği** -bir ayırma yalnızca sanal makine işlem maliyetlerini içerir. Ek yazılım, ağ veya depolama ücretleri kapsamaz.
-- **Ayrılmış kapasite Azure Cosmos DB** -bir ayırma, kaynaklarınız için sağlanan aktarım hızını içerir. Depolama ve ağ ücretlerini kapsamaz.
-- **SQL veritabanı ayrılmış sanal çekirdek** -yalnızca işlem maliyetleri bir ayırmaya dahildir. Lisans ayrı olarak faturalandırılır.
-- **SQL veri ambarı** -bir ayırma cdwu kullanımını içerir. SQL veri ambarı kullanımıyla ilişkili depolama veya ağ ücretlerini kapsamaz.
-- **App Service damga ücreti** -bir ayırma damga kullanımını içerir. Bu, çalışanlara uygulanmaz, bu nedenle damgasıyla ilişkili diğer tüm kaynaklar ayrı olarak ücretlendirilir.
+- **Ayrılmış Sanal Makine Örneği** - Bir rezervasyon yalnızca sanal makine işlem maliyetlerini içerir. Ek yazılım, ağ veya depolama ücretlerini kapsamaz.
+- **Azure Cosmos DB ayrılmış kapasitesi** - Rezervasyon yalnızca kaynaklarınız için sağlanan aktarım hızını kapsar. Depolama ve ağ ücretlerini kapsamaz.
+- **SQL veritabanı ayrılmış sanal çekirdeği** - Rezervasyona yalnızca işlem maliyetleri dahildir. Lisans ayrı olarak faturalandırılır.
+- **SQL Veri Ambarı** - Rezervasyon cDWU kullanımını kapsar. SQL Veri Ambarı’nın kullanımıyla ilişkili depolama ve ağ ücretlerini kapsamaz.
+- **App Service taban fiyatı** - Rezervasyon, damga pulu kullanımını kapsar. Çalışanlara uygulanmaz, bu nedenle damga puluyla ilişkili diğer tüm kaynaklar ayrı olarak ücretlendirilir.
 
-Windows sanal makineler ve SQL veritabanı için [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)ile lisanslama maliyetlerini de kapsayacaktır.
+Windows sanal makineleri ve SQL veritabanı için [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) ile lisanslama maliyetlerini de kapsama alabilirsiniz.
 
-## <a name="whos-eligible-to-purchase-a-reservation"></a>Rezervasyon satın alma hakkına sahip misiniz?
+## <a name="whos-eligible-to-purchase-a-reservation"></a>Kimler rezervasyon satın almaya uygundur?
 
-Bir planı satın almak için, bir kuruluşta (MS-AZR-0017P veya MS-AZR-0148P) veya Kullandıkça Öde aboneliğine (MS-AZR-0003P veya MS-AZR-0023P) bir abonelik sahibi rolüne sahip olmanız gerekir. Bulut çözümü sağlayıcıları Azure Portal veya [iş ortağı merkezi](/partner-center/azure-reservations) 'ni kullanarak Azure ayırmaları satın alabilir.
+Bir plan satın almak için bir Kurumsal (MS-AZR-0017P veya MS-AZR-0148P) ya da Kullandıkça Öde aboneliğinde (MS-AZR-0003P veya MS-AZR-0023P) abonelik sahibi rolünüz olmalıdır. Bulut çözümü sağlayıcıları, Azure Ayrılmış Sanal Makine Örnekleri satın almak için Azure portalını veya  [İş Ortağı Merkezi](/partner-center/azure-reservations) ’ni kullanabilir.
 
-Kurumsal Anlaşma (EA) müşterileri, EA portalındaki **ayrılmış örnekleri Ekle** seçeneğini devre dışı BıRAKARAK satınalmaları EA yöneticilerle sınırlayabilir. EA yöneticileri, bir ayırma satın almak için en az bir EA aboneliğine sahip bir abonelik sahibi olmalıdır. Bu seçenek, merkezi bir ekibin farklı maliyet merkezleri için rezervasyonlar satın almasını isteyen kuruluşlar için yararlıdır. Satın alma işleminden sonra merkezi takımlar, rezervasyonların maliyet merkezi sahiplerini ekleyebilirler. Sahipleri daha sonra, rezervasyonlarını aboneliklerine göre kapsamlarına alabilir. Merkezi ekibin, rezervasyonun satın alındığı yerde abonelik sahibi erişimi olması gerekmez.
+Kurumsal Anlaşma (EA) müşterileri, EA Portalındaki **Ayrılmış Örnekler Ekle** seçeneğini devre dışı bırakarak satın alma işlemlerini EA yöneticileriyle sınırlayabilir. EA yöneticilerinin bir rezervasyon satın almak için en az bir EA aboneliğinin abonelik sahibi olması gerekir. Bu seçenek, merkezi bir ekibin farklı maliyet merkezleri için rezervasyonlar satın almasını isteyen kuruluşlar için yararlıdır. Satın alma işleminden sonra merkezi ekipler, rezervasyonlara maliyet merkezi sahiplerini ekleyebilirler. Bundan sonra sahipler, rezervasyonu aboneliklerinin kapsamına alabilirler. Merkezi ekibin, rezervasyonun satın alındığı yerde abonelik sahibi erişimine sahip olması gerekmez.
 
-Rezervasyon indirimi yalnızca kurumsal, bulut çözümü sağlayıcısı (CSP) ile satın alınan abonelikler ve kullandıkça öde tarifeleri ile bireysel planlar ile ilişkili kaynaklar için geçerlidir.
+Rezervasyon indirimi yalnızca Kurumsal, Bulut Çözümü Sağlayıcısı (CSP) ile satın alınan abonelikler ve kullandıkça öde tarifelerine sahip bireysel planlar ile ilişkili kaynaklar için geçerlidir.
 
-## <a name="scope-reservations"></a>Kapsam rezervasyonları
+## <a name="scope-reservations"></a>Rezervasyonları kapsama alma
 
-Bir rezervasyonu bir abonelik veya kaynak grubu için kapsamını belirleyebilirsiniz. Bir ayırma kapsamının ayarlanması, rezervasyon tasarruflarının nereye uygulanacağını seçer. Ayırmayı bir kaynak grubuna göre kapsamınızda, rezervasyon iskontoları yalnızca kaynak grubu için geçerlidir — aboneliğin tamamı değildir.
+Bir rezervasyonu bir abonelik veya kaynak gruplarının kapsamına alabilirsiniz. Bir rezervasyon kapsamının ayarlanması, ayırma tasarruflarının nereye uygulanacağını seçer. Rezervasyonu bir kaynak grubunun kapsamına aldığınızda rezervasyon indirimleri yalnızca kaynak grubu için geçerli olur — aboneliğin tamamı için değil.
 
-### <a name="reservation-scoping-options"></a>Ayırma kapsamı seçenekleri
+### <a name="reservation-scoping-options"></a>Rezervasyon kapsamı belirleme seçenekleri
 
-Kaynak grubu kapsamı ile, gereksinimlerinize bağlı olarak bir ayırmayı kapsama almak için üç seçeneğiniz vardır:
+Kaynak grubu kapsamı ile, gereksinimlerinize bağlı olarak bir rezervasyonu kapsama almak için üç seçeneğiniz vardır:
 
-- **Tek kaynak grubu kapsamı** — yalnızca seçili kaynak grubundaki eşleşen kaynaklara rezervasyon iskontosunu uygular.
-- **Tek abonelik kapsamı** — seçili abonelikteki eşleşen kaynaklara rezervasyon iskontosunu uygular.
-- **Paylaşılan kapsam** — fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. Kurumsal Anlaşma müşteriler için, faturalandırma bağlamı kayıt olur. Kullandıkça Öde tarifelerine sahip bireysel abonelikler için faturalandırma kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
+- **Tek kaynak grubu kapsamı**: Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.
+- **Tek abonelik kapsamı**: Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.
+- **Paylaşılan kapsam**: Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular. Kurumsal Anlaşma müşterileri için faturalama bağlamı kayıttır. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.
 
-Kullanım için rezervasyon indirimleri uygulanırken, Azure ayırmayı aşağıdaki sırayla işler:
+Kullanımınıza rezervasyon indirimleri uygulanırken, Azure rezervasyonu aşağıdaki sırayla işler:
 
-1. Kaynak grubu kapsamındaki ayırmalar
+1. Kaynak grubu kapsamındaki rezervasyonlar
 2. Tek kapsam rezervasyonları
-3. Paylaşılan kapsam ayırmaları
+3. Paylaşılan kapsam rezervasyonları
 
-Tek bir kaynak grubu, rezervasyonların kapsamını nasıl kapsamdığınıza bağlı olarak birden çok ayırmasından rezervasyon iskontoları alabilir.
+Tek bir kaynak grubu, rezervasyonların kapsamını nasıl belirlediğinize bağlı olarak birden çok rezervasyondan rezervasyon indirimleri alabilir.
 
-### <a name="scope-a-reservation-to-a-resource-group"></a>Bir kaynak grubuna ayırmayı kapsam
+### <a name="scope-a-reservation-to-a-resource-group"></a>Rezervasyonu bir kaynak grubunun kapsamına alma
 
-Ayırmayı satın aldığınızda ya da kapsamı satın aldıktan sonra ayarlarsanız bir kaynak grubuna ayırmayı kapsam içinde oluşturabilirsiniz. Bir kaynak grubuna ayırmayı kapsamı için bir abonelik sahibi olmanız gerekir.
+Rezervasyonu satın alırken rezervasyonu kaynak grubunun kapsamına alabilir veya kapsamı satın alma sonrasında ayarlayabilirsiniz. Rezervasyonu bir kaynak grubunun kapsamına almak için abonelik sahibi olmanız gerekir.
 
-Kapsamı ayarlamak için Azure portal [satın alma ayırma](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) sayfasına gidin. Satın almak istediğiniz rezervasyon türünü seçin. Satın almak istediğiniz **ürünü seçin** seçim formunda, kapsam değerini tek kaynak grubuyla değiştirin. Ardından, bir kaynak grubu seçin.
+Kapsamı ayarlamak için Azure portalındaki [Rezervasyon satın alın](https://ms.portal.azure.com/#blade/Microsoft\_Azure\_Reservations/CreateBlade/referrer/Browse\_AddCommand) sayfasına gidin. Satın almak istediğiniz rezervasyon türünü seçin. **Satın almak istediğiniz ürünü seçin** seçim formunda Kapsam değerini Tek kaynak grubu olarak değiştirin. Ardından bir kaynak grubu seçin.
 
-![VM ayırma satın alma seçimini gösteren örnek](./media/billing-save-compute-costs-reservations/select-product-to-purchase.png)
+![VM rezervasyon satın alma seçimini gösteren örnek](./media/billing-save-compute-costs-reservations/select-product-to-purchase.png)
 
-Sanal makine rezervasyonuna ait kaynak grubu için satın alma önerileri gösterilir. Öneriler, son 30 gün boyunca kullanımınız analiz edilirken hesaplanır. Bir satın alma önerisi, ayrılmış örneklerle çalışan kaynakların maliyeti, Kullandıkça Öde tarifesine sahip kaynakları çalıştırmanın maliyetinden daha fazla olduğunda yapılır. Rezervasyon satın alma önerileri hakkında daha fazla bilgi için bkz. [kullanım düzenine göre ayrılmış örnek satın alma önerileri alma](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations).
+Sanal makine rezervasyonundaki kaynak grubuna yönelik satın alma önerileri gösterilir. Öneriler, son 30 gün boyunca kullanımınız analiz edilerek hesaplanır. Ayrılmış örneklerle kaynakları çalıştırmanın maliyeti kullandıkça öde tarifesine sahip kaynakları çalıştırmanın maliyetinden düşükse bir satın alma önerisi oluşturulur. Rezervasyon satın alma önerileri hakkında daha fazla bilgi için bkz. [Kullanım düzenine göre Ayrılmış Örnek satın alma önerileri alın](https://azure.microsoft.com/blog/get-usage-based-reserved-instance-recommendations).
 
-Ayırmayı satın aldıktan sonra her zaman kapsamı güncelleştirebilirsiniz. Bunu yapmak için, rezervasyona gidin, **yapılandırma**' ya tıklayın ve ayırmayı yeniden sağlayın. Ayırmayı yeniden oluşturma işlemi ticari bir işlem değildir. Rezervasyon teriminizi değiştirmedi. Kapsamı güncelleştirme hakkında daha fazla bilgi için bkz. [bir ayırma satın aldıktan sonra kapsamı güncelleştirme](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
+Rezervasyon satın aldıktan sonra her zaman kapsamı güncelleştirebilirsiniz. Bunu yapmak için rezervasyona gidin, **Yapılandırma**'ya tıklayın ve rezervasyon kapsamını yeniden belirleyin. Rezervasyon kapsamını yeniden belirlemek ticari bir işlem değildir. Rezervasyon süreniz değişmez. Kapsamı güncelleştirme hakkında daha fazla bilgi için bkz. [Rezervasyon satın aldıktan sonra kapsamı güncelleştirme](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
-![Bir ayırma kapsamı değişikliğini gösteren örnek](./media/billing-save-compute-costs-reservations/rescope-reservation-resource-group.png)
+![Bir rezervasyon kapsamı değişikliğini gösteren örnek](./media/billing-save-compute-costs-reservations/rescope-reservation-resource-group.png)
 
-### <a name="monitor-and-optimize-reservation-usage"></a>Ayırma kullanımını izleme ve iyileştirme
+### <a name="monitor-and-optimize-reservation-usage"></a>Rezervasyon kullanımını izleme ve iyileştirme
 
-Rezervasyon kullanımınızı Azure portal, API 'Ler aracılığıyla veya kullanım verileri aracılığıyla birden çok şekilde izleyebilirsiniz. Erişiminiz olan tüm rezervasyonları görmek için Azure portal **ayırmalar** ' a gidin. Rezervasyonlar Kılavuzu, ayırma için en son kaydedilen kullanım yüzdesini gösterir. Rezervasyonun uzun süreli kullanımını görmek için ayırmaya tıklayın.
+Rezervasyon kullanımınızı Azure portalı, API'ler veya kullanım verileri aracılığıyla birden çok şekilde izleyebilirsiniz. Erişiminiz olan tüm rezervasyonları görmek için Azure portalında **Rezervasyonlar**'a gidin. Rezervasyonlar kılavuzunda rezervasyon için en son kaydedilen kullanım yüzdesi gösterilir. Rezervasyonun uzun süreli kullanımını görmek için rezervasyona tıklayın.
 
-Ayrıca, bir kurumsal anlaşma müşterisiyseniz [API 'leri](billing-reservation-apis.md#see-reservation-usage) ve [kullanım verilerinizi](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) kullanarak rezervasyon kullanımı da alabilirsiniz.
+Ayrıca, bir kurumsal anlaşma müşterisiyseniz [API’leri](billing-reservation-apis.md#see-reservation-usage) kullanarak veya [kullanım verilerinizden](billing-understand-reserved-instance-usage-ea.md#common-cost-and-usage-tasks) rezervasyon alabilirsiniz.
 
-Kaynak grubu kapsamlı rezervasyonunuzun kullanımının düşük olduğunu fark ederseniz, ayırma kapsamını tek bir aboneliğe güncelleştirebilir veya faturalandırma bağlamı genelinde paylaşabilirsiniz. Ayrıca ayırmayı bölebilir ve elde edilen rezervasyonları farklı kaynak gruplarına uygulayabilirsiniz.
+Kaynak grubu kapsamına aldığınız rezervasyonun kullanımın düşük olduğunu fark ederseniz, rezervasyon kapsamını tek bir aboneliğe güncelleştirebilir veya faturalandırma bağlamı genelinde paylaşabilirsiniz. Ayrıca rezervasyonu bölebilir ve elde edilen rezervasyonları farklı kaynak gruplarına uygulayabilirsiniz.
 
-### <a name="other-considerations"></a>Dikkat edilecek diğer noktalar
+### <a name="other-considerations"></a>Diğer konular
 
-Kaynak grubunda eşleşen kaynaklarınız yoksa, ayırma az kullanılır. Ayırma, düşük kullanımın kullanıldığı farklı bir kaynak grubuna veya aboneliğe otomatik olarak uygulanmaz.
+Kaynak grubunda eşleşen kaynaklarınız yoksa, rezervasyon az kullanılır. Rezervasyon, kullanımın düşük olduğu farklı bir kaynak grubuna veya aboneliğe otomatik olarak uygulanmaz.
 
-Kaynak grubunu bir abonelikten diğerine taşırsanız bir ayırma kapsamı otomatik olarak güncelleştirmez. Kaynak grubunu silerseniz kapsam günceldeğildir. [Ayırmayı](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)yeniden oluşturmanız gerekecektir. Aksi takdirde, ayırma az kullanılır.
+Kaynak grubunu bir abonelikten diğerine taşırsanız rezervasyon kapsamı otomatik olarak güncelleştirilmez. Kaynak grubunu silerseniz kapsam güncelleştirilmez. [Rezervasyon kapsamını yeniden belirlemeniz](billing-manage-reserved-vm-instance.md#change-the-reservation-scope) gerekecektir. Aksi takdirde, rezervasyon az kullanılır.
 
 ## <a name="discounted-subscription-and-offer-types"></a>İndirimli abonelik ve teklif türleri
 
@@ -106,74 +106,74 @@ Başka teklif türlerinin kullanıldığı bir abonelikte çalıştırılan kayn
 
 ## <a name="how-is-a-reservation-billed"></a>Rezervasyon nasıl faturalandırılır?
 
-Rezervasyon, aboneliğe bağlı ödeme yöntemine göre ücretlendirilir. Kurumsal aboneliğiniz varsa, rezervasyon maliyeti parasal taahhüt bakiyesinden düşülür. Parasal taahhüt bakiyeniz rezervasyon maliyetini kapsamadığı zaman fazla kullanım üzerinden faturalandırılırsınız. Kullandıkça Öde tarifesine sahip tek bir plandan aboneliğiniz varsa, hesabınızda bulunan kredi kartı, ön satın alma işlemleri için hemen faturalandırılır. Aylık ödemeler faturanızda görünür ve kredi kartınız aylık olarak ücretlendirilir. Fatura ile faturalandırdığınızda, ücretleri bir sonraki faturanızda görürsünüz.
+Rezervasyon ücreti, aboneliğe bağlı ödeme yöntemiyle tahsil edilir. Kurumsal aboneliğiniz varsa, rezervasyon maliyeti parasal taahhüt bakiyenizden düşülür. Parasal taahhüt bakiyeniz rezervasyon maliyetini kapsamadığında fazla kullanım üzerinden faturalandırılırsınız. Kullandıkça öde tarifesine sahip tek bir plandan aboneliğiniz varsa, hesabınızda bulunan kredi kartından peşin alma işlemleri için hemen ücret alınır. Aylık ödemeler faturanızda görünür ve kredi kartınızdan aylık olarak ücret alınır. Fatura ile ücret aldığınızda ücretleri bir sonraki faturanızda görürsünüz.
 
-## <a name="how-reservation-discount-is-applied"></a>Rezervasyon iskontosunun uygulanma şekli
+## <a name="how-reservation-discount-is-applied"></a>Rezervasyon indiriminin uygulanması
 
-Rezervasyon indirimi, ayırmayı satın alırken seçtiğiniz özniteliklerle eşleşen kaynak kullanımı için geçerlidir. Öznitelikler, eşleşen VM 'Lerin, SQL veritabanlarının, Azure Cosmos DB veya diğer kaynakların çalıştırıldığı kapsamı içerir. Örneğin, Batı ABD bölgesinde dört standart D2 sanal makinesi için bir rezervasyon indirimi istiyorsanız, VM 'Lerin çalıştığı aboneliği seçin.
+Rezervasyon indirimi, rezervasyonu satın alırken seçtiğiniz özniteliklerle eşleşen kaynak kullanımına uygulanır. Öznitelikler, eşleşen VM'lerin, SQL veritabanlarının, Azure Cosmos DB veya diğer kaynakların çalıştırıldığı kapsamı içerir. Örneğin, Batı ABD bölgesinde dört Standart D2 sanal makinesi için bir rezervasyon indirimi istiyorsanız, VM'lerin çalıştığı aboneliği seçin.
 
-Bir rezervasyon indirimi "*kullanım-BT-veya-kaybetme*" dır. Herhangi bir saat için eşleşen kaynaklarınız yoksa, bu saat için bir rezervasyon miktarı kaybedersiniz. Kullanılmayan ayrılmış saatlerin ileri alınamaz.
+Rezervasyon indirimi “*kullanılmadığı takdirde hakkı kaybedilen*” bir özelliktir. Herhangi bir saat için eşleşen kaynaklarınız yoksa, o saate ait rezervasyon miktarını kaybedersiniz. Kullanılmayan ayrılmış saatleri devredemezsiniz.
 
-Bir kaynağı kapattığınızda, rezervasyon iskontosu otomatik olarak belirtilen kapsamdaki başka bir eşleşen kaynak için geçerli olur. Belirtilen kapsamda eşleşen kaynak bulunamazsa, ayrılan saatler *kaybedilir*.
+Bir kaynağı kapattığınızda rezervasyon indirimi, belirtilen kapsamdaki başka bir eşleşen kaynağa otomatik olarak uygulanır. Belirtilen kapsamda eşleşen kaynak bulunamazsa, ayrılan saatler *kaybedilir*.
 
-Örneğin, daha sonra bir kaynak oluşturabilir ve daha az kullanılan eşleşen bir rezervasyon olabilir. Rezervasyon iskontosu, yeni eşleşen kaynağa otomatik olarak uygulanır.
+Örneğin, daha sonra bir kaynak oluşturabilirsiniz ve az kullanılan bir eşleşen rezervasyonunuz olabilir. Rezervasyon indirimi yeni eşleşen kaynağa otomatik olarak uygulanır.
 
-Sanal makineler, kaydınız/hesabınız içindeki farklı aboneliklerde çalışıyorsa, kapsamı paylaşılan olarak seçin. Paylaşılan kapsam, rezervasyon indirimlerinin abonelikler arasında uygulanmasını sağlar. Bir ayırmayı satın aldıktan sonra kapsamı değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmalarını yönetme](billing-manage-reserved-vm-instance.md).
+Sanal makineler, kaydınız/hesabınız içinde farklı aboneliklerde çalışıyorsa, kapsamı paylaşılan olarak seçin. Paylaşılan kapsam, rezervasyon indiriminin abonelikler arasında uygulanmasını sağlar. Bir rezervasyonu satın aldıktan sonra kapsamı değiştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örneklerini yönetme](billing-manage-reserved-vm-instance.md).
 
-Rezervasyon indirimi yalnızca, Kullandıkça Öde tarifesine sahip kurumsal, CSP veya aboneliklerle ilişkili kaynaklar için geçerlidir. Başka teklif türlerinin kullanıldığı bir abonelikte çalıştırılan kaynaklar rezervasyon indirimi almaz.
+Rezervasyon indirimi yalnızca, Kurumsal, CSP veya kullandıkça öde tarifesine sahip aboneliklerle ilişkili kaynaklar için geçerlidir. Başka teklif türlerinin kullanıldığı bir abonelikte çalıştırılan kaynaklar rezervasyon indirimi almaz.
 
 ## <a name="when-the-reservation-term-expires"></a>Rezervasyon dönemi sona erdiğinde
 
-Rezervasyon döneminin sonunda, fatura iskontosunun süresi dolar. Sanal makine, SQL veritabanı, Azure Cosmos DB veya başka bir kaynak Kullandıkça Öde fiyatı üzerinden faturalandırılır. Azure ayırmaları otomatik olarak yenilemez. Fatura iskontosunu almaya devam etmek için uygun hizmetler ve yazılımlar için yeni bir ayırma satın almanız gerekir.
+Rezervasyon döneminin sonunda fatura indiriminin süresi dolar. Sanal makine, SQL veritabanı, Azure Cosmos DB veya başka bir kaynak, kullandıkça öde fiyatı üzerinden faturalandırılır. Azure Ayrılmış Sanal Makine Örnekleri otomatik olarak yenilenmez. Fatura indirimini almaya devam etmek için uygun hizmetler ve yazılımlar için yeni bir rezervasyon satın almanız gerekir.
 
-## <a name="discount-applies-to-different-sizes"></a>İndirim farklı boyutlarda geçerlidir
+## <a name="discount-applies-to-different-sizes"></a>Farklı boyutlar için indirim uygulanır
 
-Bir ayırma satın aldığınızda, indirim aynı boyut grubundaki özniteliklere sahip diğer örneklere uygulanabilir. Bu özellik örnek boyutu esnekliği olarak bilinir. İndirim kapsamının esnekliği, rezervasyon türüne ve ayırmayı satın alırken seçtiğiniz özniteliklere göre değişir.
+Bir rezervasyon satın aldığınızda, indirim aynı boyut grubundaki özniteliklere sahip diğer örneklere uygulanabilir. Bu özellik örnek boyutu esnekliği olarak bilinir. İndirim kapsamının esnekliği, rezervasyon türüne ve rezervasyonu satın alırken seçtiğiniz özniteliklere göre değişir.
 
 Hizmet planları:
 
-- Ayrılmış VM örnekleri: Ayırmayı satın alıp **örnek boyutu esnekliği Için En Iyi duruma getirilmiş**seçeneğini belirlediğinizde, indirimli kapsam seçtiğiniz VM boyutuna bağlıdır. Ayırma, aynı boyut serisi grubundaki sanal makineler (VM) boyutlarına uygulanabilir. Daha fazla bilgi için bkz. [ayrılmış VM örnekleri Ile sanal makine boyutu esnekliği](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- SQL veritabanı ayrılmış kapasitesi: İndirim kapsamı, seçtiğiniz performans katmanına bağlıdır. Daha fazla bilgi için bkz. [Azure rezervasyon iskontosunun nasıl uygulandığını anlama](billing-understand-reservation-charges.md).
-- Ayrılmış kapasite Azure Cosmos DB: İndirim kapsamı, sağlanan işleme göre değişir. Daha fazla bilgi için bkz. [Azure Cosmos DB rezervasyon iskontosunun nasıl uygulandığını anlama](billing-understand-cosmosdb-reservation-charges.md).
+- Ayrılmış VM Örnekleri: Rezervasyonu satın alırken **Örnek boyutu esnekliği için iyileştirilmiş**'i seçerseniz, indirim kapsamı seçtiğiniz VM boyutuna bağlı olur. Rezervasyon aynı boyut serisi grubundaki sanal makine (VM) boyutlarına uygulanır. Daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- SQL Veritabanı ayrılmış kapasitesi: İndirim kapsamı, seçtiğiniz performans katmanına bağlıdır. Daha fazla bilgi için bkz. [Azure rezervasyonu indiriminin nasıl uygulandığını anlama](billing-understand-reservation-charges.md).
+- Azure Cosmos DB ayrılmış kapasitesi: İndirim kapsamı, sağlanan aktarım hızına göre değişir. Daha fazla bilgi için bkz. [Azure Cosmos DB rezervasyon indiriminin nasıl uygulandığını anlama](billing-understand-cosmosdb-reservation-charges.md).
 
 ## <a name="reservation-notifications"></a>Rezervasyon bildirimleri
 
-Azure aboneliğiniz için nasıl ödeme yaptığınıza bağlı olarak, kuruluşunuzdaki aşağıdaki kullanıcılara rezervasyon bildirimleri e-posta ile göndereceğiz. Bildirimleri aşağıdakiler dahil çeşitli olaylar için gönderilir:
+Azure aboneliğiniz için nasıl ödeme yaptığınıza bağlı olarak, kuruluşunuzdaki aşağıdaki kullanıcılara rezervasyon bildirimlerini e-posta ile göndeririz. Bildirimleri aşağıdakiler dahil çeşitli olaylar için gönderilir:
 
-- Satın Alın
+- Satın Al
 - Yaklaşan rezervasyon süre sonu
-- Expiry
-- Yenilemesini
-- Kin
+- Süre sonu
+- Yenileme
+- İptal
 - Kapsam değişikliği
 
 EA abonelikleri olan müşteriler için:
-- Satın alma bildirimi, Satınalmacı ve EA Notification kişilerine gönderilir.
-- Diğer rezervasyon yaşam döngüsü bildirimleri yalnızca EA Notification kişilerine gönderilir.
-- RBAC (ıAM) izni kullanılarak bir ayırmaya eklenen kullanıcılar herhangi bir e-posta bildirimi almaz.
+- Satın alma bildirimi, satın alan kişiye ve EA bildirimi kişilerine gönderilir.
+- Diğer rezervasyon yaşam döngüsü bildirimleri yalnızca EA bildirim kişilerine gönderilir.
+- RBAC (IAM) izni kullanılarak rezervasyona eklenen kullanıcılar herhangi bir e-posta bildirimi almaz.
 
 Bireysel abonelikleri olan müşteriler için:
-- Satınalmacı bir satın alma bildirimi alır.
-- Satın alma sırasında, abonelik faturalandırma hesabı sahibi bir satın alma bildirimi alır.
+- Satın alan kişi bir satın alma bildirimi alır.
+- Satın alma sırasında, abonelik faturalama hesabı sahibi bir satın alma bildirimi alır.
 - Hesap sahibi diğer tüm bildirimleri alır.
 
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bizimle iletişim kurun.
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
-Sorularınız varsa veya yardıma ihtiyacınız varsa, [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
+Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Aşağıdaki makalelerle Azure ayırmaları hakkında daha fazla bilgi edinin:
+- Aşağıdaki makalelerle Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinin:
     - [Azure Ayırmalarını yönetme](billing-manage-reserved-vm-instance.md)
-    - [Kullandıkça Öde tarifesine sahip aboneliğiniz için rezervasyon kullanımını anlayın](billing-understand-reserved-instance-usage.md)
+    - [Kullandıkça öde fiyatlarına tabi aboneliğiniz için rezervasyon kullanımını anlama](billing-understand-reserved-instance-usage.md)
     - [Kurumsal kaydınız için rezervasyon kullanımını anlama](billing-understand-reserved-instance-usage-ea.md)
-    - [Windows yazılım maliyetleri rezervasyonlar içermez](billing-reserved-instance-windows-software-costs.md)
-    - [Iş Ortağı Merkezi bulut çözümü sağlayıcısı (CSP) programında Azure ayırmaları](/partner-center/azure-reservations)
+    - [Rezervasyonlara dahil olmayan Windows yazılımı maliyetleri](billing-reserved-instance-windows-software-costs.md)
+    - [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](/partner-center/azure-reservations)
 
 - Hizmet planları için rezervasyonlar hakkında daha fazla bilgi edinin:
-    - [Azure ayrılmış VM örneklerine sahip sanal makineler](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-    - [Azure Cosmos DB ayrılmış kapasiteye sahip kaynakları Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
-    - [Azure SQL veritabanı ayrılmış kapasitesi Ile SQL veritabanı işlem kaynakları](../sql-database/sql-database-reserved-capacity.md) Yazılım planları için ayırmalar hakkında daha fazla bilgi edinin:
-    - [Azure ayırmalarının Red Hat yazılım planları](../virtual-machines/linux/prepay-rhel-software-charges.md)
-    - [Azure ayırmalarının sunduğu SUSE yazılım planları](../virtual-machines/linux/prepay-suse-software-charges.md)
+    - [Azure Ayrılmış VM Örnekleri ile Sanal Makineler](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Azure Cosmos DB ayrılmış kapasitesine sahip Azure Cosmos DB kaynakları](../cosmos-db/cosmos-db-reserved-capacity.md)
+    - [Azure SQL Veritabanı ayrılmış kapasitesine sahip SQL Veritabanı işlem kaynakları](../sql-database/sql-database-reserved-capacity.md) Yazılım planlarına yönelik rezervasyonlar hakkında daha fazla bilgi edinin:
+    - [Azure Ayrılmış Sanal Makine Örneklerinden Red Hat yazılım planları](../virtual-machines/linux/prepay-rhel-software-charges.md)
+    - [Azure Ayrılmış Sanal Makine Örneklerinden SESU yazılım planları](../virtual-machines/linux/prepay-suse-software-charges.md)

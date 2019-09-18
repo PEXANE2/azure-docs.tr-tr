@@ -1,6 +1,6 @@
 ---
-title: Microsoft Müşteri sözleşmenizi Azure için vergi belgeleri görüntüleme
-description: Görüntüleme ve vergi giriş müşteri anlaşma fatura profiliniz için karşıdan yükleme hakkında bilgi edinin.
+title: Azure’da Microsoft Müşteri Sözleşmeniz için vergi belgelerini görüntüleme
+description: Microsoft Müşteri Sözleşmesi faturalama profiliniz için vergi makbuzlarının nasıl görüntüleneceğini ve indirileceğini öğrenin.
 author: bandersmsft
 manager: jureid
 tags: billing
@@ -13,34 +13,34 @@ ms.date: 07/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 0c7e9c57b360ad1a3cd864634a690e22e42c6410
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490732"
 ---
-# <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>Microsoft Müşteri sözleşmenizi vergi belgeleri görüntüleyin
+# <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmeniz için vergi belgelerini görüntüleme
 
-Bu makale, bir faturalama hesabı için bir Microsoft Müşteri sözleşmesi için geçerlidir. [Microsoft Müşteri sözleşmesi erişimi olup olmadığını denetlemek](#check-access-to-a-microsoft-customer-agreement).
+Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminiz olup olmadığını denetleyin](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="view-and-download-tax-documents"></a>Görüntüleyin ve vergi belgelerini indirin
+## <a name="view-and-download-tax-documents"></a>Vergi belgelerini görüntüleme ve indirme
 
-Sahibi, katkıda bulunan, okuyucu veya fatura Yöneticisi faturalandırma profilinin görüntülemek ve vergi belgelerini indirmek için olmalıdır. Microsoft Müşteri sözleşmesi için fatura rolleri hakkında daha fazla bilgi edinmek için bkz. [faturalama profili rolleri ve görevleri](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Vergi belgelerini görüntülemek ve indirmek için faturalama profilinin Sahibi, Katkıda Bulunanı, Okuyucusu veya Fatura Yöneticisi olmanız gerekir. Microsoft Müşteri Sözleşmelerine ilişkin faturalama rolleri hakkında daha fazla bilgi edinmek için bkz. [Faturalama profili rolleri ve görevleri](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 
-1. Oturum açma için [Azure portalında](https://portal.azure.com).
-1. Arama *maliyet Yönetimi + faturalandırma*.
-1. Faturalandırma profili seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. *Maliyet Yönetimi + Faturalama* araması yapın.
+1. Bir faturalama profili seçin.
 1. **Faturalar**'ı seçin.
-1. Fatura kılavuzunda fatura indirmek istediğiniz vergi belgeye karşılık gelen satırı bulur.
-1. Üç nokta simgesine tıklayın (`...`) satırın sonunda.
-7. Seçin **vergi belge**. Ülke/bölge bağlı olarak profilinizin faturalama, fatura başına birden fazla vergi belge görebilirsiniz.
+1. Fatura kılavuzunda, indirmek istediğiniz vergi belgesine karşılık gelen fatura satırını bulun.
+1. Satırın sonundaki üç noktaya (`...`) tıklayın.
+7. **Vergi belgesi**’ni seçin. Faturalama profilinizin ülke/bölgesine bağlı olarak, fatura başına birden çok vergi belgesi görebilirsiniz.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri sözleşmesi için erişim denetimi
+## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi’ne erişimi denetleme
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Görüntüleyin ve Microsoft Azure faturanızı indirin](billing-download-azure-invoice.md)
-- [Microsoft Azure kullanım ve Ücret görüntülemenize ve indirmenize](billing-download-azure-daily-usage.md)
-- [Faturadaki fatura profil ücretlerini anlama](billing-mca-understand-your-bill.md).
+- [Microsoft Azure faturanızı görüntüleme ve indirme](billing-download-azure-invoice.md)
+- [Microsoft Azure kullanımınızı ve ücretlerinizi görüntüleme ve indirme](billing-download-azure-daily-usage.md)
+- [Faturalama profilinizin faturasındaki ücretleri anlama](billing-mca-understand-your-bill.md).

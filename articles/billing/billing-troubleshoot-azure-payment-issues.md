@@ -1,6 +1,6 @@
 ---
 title: Azure ödeme sorunlarını giderme
-description: Microsoft Azure portal veya hesap merkezindeki ödeme bilgileri hesabını güncelleştirirken bir sorun giderme.
+description: Microsoft Azure portalında veya hesap merkezinde ödeme bilgileri hesabını güncelleştirirken oluşan bir sorunu çözümleme.
 author: v-miegge
 manager: na
 editor: v-jesits
@@ -13,93 +13,93 @@ ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
 ms.openlocfilehash: 45f6f181ddbf7e76662f76c433d8ff68c18f0de1
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "69657092"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Azure ödeme sorunlarını giderme
 
-Microsoft Azure portal veya Azure Hesap Merkezi ' nde ödeme bilgileri hesabını güncelleştirmeye çalıştığınızda bir sorunla karşılaşabilirsiniz. Sorunu gidermek için aşağıdaki yönergeleri göz önünde bulundurun:
+Microsoft Azure portalında veya Azure hesap merkezinde ödeme bilgileri hesabını güncelleştirmeye çalıştığınızda bir sorunla karşılaşabilirsiniz. Sorunu gidermeye çalışmadan önce aşağıdaki yönergeleri dikkate alın:
 
-- Azure Hesap profiliniz (iletişim e-posta adresi, sokak adresi ve telefon numarası dahil) için belirttiğiniz bilgilerin doğru olduğundan emin olun.
+- Azure hesabınız için sağladığınız bilgilerin (iletişim e-posta adresi, açık adres ve telefon numarası dahil) doğru olduğundan emin olun.
 - Kredi kartı bilgilerinin doğru olduğundan emin olun.
 - Aynı bilgilerle oluşturulmuş başka bir Microsoft hesabınızın olmadığından emin olun.
 
 ## <a name="issues"></a>Sorunlar
 
-Hataları gidermek için, Azure 'a kaydolmaya çalıştığınızda karşılaştığınız sorunu seçin.
+Hataları çözmek için, Azure’a kaydolmaya çalışırken karşılaştığınız sorunu seçin.
 
-### <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Kaydedilmiş faturalandırma ödeme yönteminden bir kredi kartı kaldırılamıyor
+### <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Kredi kartı, kaydedilen faturalama ödeme yönteminden kaldırılamıyor
 
-Tasarıma göre, etkin abonelikten bir kredi kartı kaldıramazsınız.
+Tasarım gereği bir kredi kartını Etkin abonelikten kaldıramazsınız.
 
-Mevcut bir kartın silinmesi gerekiyorsa, eski ödeme aracının başarıyla silinebilmesi için aboneliğe yeni bir kart eklenmelidir ya da aboneliği iptal etmeniz gerekir. Bu, aboneliği kalıcı olarak siler ve kartı kaldırır.
+Mevcut bir kartın silinmesi gerekiyorsa, eski ödeme aracının başarıyla silinebilmesi için aboneliğe yeni bir kart eklenmelidir; aksi takdirde aboneliği iptal etmeniz gerekir. Bu işlem sonucunda abonelik kalıcı olarak silinir ve kart kaldırılır.
 
-### <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Yeni ödeme yöntemi eklendikten sonra eski ödeme yöntemi silinemiyor
+### <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Yeni bir ödeme yöntemi eklendikten sonra eski ödeme yöntemi silinemiyor
 
-Yeni ödeme aracı abonelikle ilişkili olmayabilir. Ödeme gerecini abonelikle ilişkilendirmenize yardımcı olmak için bkz. [Azure için kredi veya banka kartı ekleme, güncelleştirme veya kaldırma](billing-how-to-change-credit-card.md).
+Yeni ödeme aracı abonelikle ilişkili olmayabilir. Ödeme aracının abonelikle ilişkilendirilmesine yardımcı olmak için bkz. [Azure için kredi kartı veya ATM kartı ekleme, güncelleştirme ya da kaldırma](billing-how-to-change-credit-card.md).
 
-Reddedilen kartla ilgili sorunları gidermek için bkz. [Azure kaydı 'nda reddedilen bir kartın sorunlarını giderme](billing-troubleshoot-declined-card.md).
+Reddedilen kartla ilgili sorunları gidermek için bkz [Azure’a kaydolurken reddedilen kart ile ilgili sorunları giderme](billing-troubleshoot-declined-card.md).
 
-### <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>Ödeme *yöntemi silinemiyor* hatası nedeniyle bir ödeme yöntemi silinemiyor
+### <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>*Ödeme yöntemi silinemiyor* hatası nedeniyle ödeme yöntemi silinemiyor
 
-Bu, bekleyen bir denge nedeniyle oluşur. Ödeme yöntemini silmeden önce bekleyen bakiyelerin işaretini kaldırın.
+Bu, kalan bakiyeden kaynaklanır. Ödeme yöntemini silmeden önce kalan tüm bakiyeyi ödeyin.
 
-### <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ödeme yöntemini güncelleştirmek için Hesabım altında abonelikler denetlenemiyor
+### <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ödeme yöntemini güncelleştirmek için hesabım altında abonelikler görüntülenemiyor
 
-Abonelikler için kullanılan olandan farklı bir e-posta KIMLIĞI kullanıyor olabilirsiniz.
+Abonelikler için kullanılandan farklı bir e-posta kimliği kullanıyor olabilirsiniz.
 
-Bu sorunu gidermek için bkz. [Azure Portal veya Azure Hesap Merkezi için abonelik bulunamadı oturum açma hatası](billing-no-subscriptions-found.md).
+Bu sorunu gidermek için bkz. [Azure portalı veya Azure hesap merkezi için Abonelik bulunamadı oturum açma hatası](billing-no-subscriptions-found.md).
 
 ### <a name="unable-to-make-payment-for-a-subscription"></a>Abonelik için ödeme yapılamıyor
 
-Hata iletisini alırsanız: *Ödemenin süresi geçti. Ödeme yönteminiz* ile ilgili bir sorun var veya *Üzgünüz, bilgiler kaydedilemedi. Tarayıcıyı kapatın ve yeniden deneyin.* , kartın finans kurumunuz tarafından reddedildiği için kartın bekleyen bir ödemesi vardır.
+Hata iletisini alırsanız: *Ödemenin süresi geçti. Ödeme yönteminiz ile ilgili bir sorun var* veya *Ne yazık ki bilgiler kaydedilemiyor. Tarayıcıyı kapatıp yeniden deneyin.* Bu durumda kart ilgili finans kurumu tarafından reddedildiğinden kartta bekleyen bir ödeme vardır.
 
-Kredi kartının ödeme yapmak için yeterli bakiyesi olduğunu doğrulayın. Değilse, ödeme yapmak için başka bir kart kullanın veya sorunu çözmek için finans kurumunuz ile iletişime geçin.
+Kredi kartının ödeme yapmak için yeterli bakiyesi olduğunu doğrulayın. Yoksa ödeme yapmak için başka bir kart kullanın veya sorunu çözmek için finans kurumunuza ulaşın.
 
 Lütfen aşağıdaki sorunlar için bankanızla görüşün:
 
 - Uluslararası işlemler etkin değil.
-- Kartın kredi limiti vardır ve Bakiyenin kapatılması gerekir.
-- Kartın üzerinde bir yinelenen ödeme etkinleştirilmiştir.
+- Kartın kredi limiti var ve bakiyenin kapatılması gerekiyor.
+- Kartta yinelenen ödeme etkin.
 
-### <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>Tarayıcı sorunları nedeniyle ödeme yöntemi değiştirilemiyor (tarayıcı yanıt vermiyor, yüklenmiyor, yüklenmedi vb.)
+### <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>Tarayıcı sorunları nedeniyle ödeme yöntemi değiştirilemiyor (tarayıcı yanıt vermiyor, yüklenmiyor vb.)
 
-Tüm etkin Azure oturumlarının oturumunu kapatın ve Microsoft Edge veya Internet Explorer 'da bir InPrivate oturumu başlatmak için [Microsoft Edge 'de InPrivate bakış makalesindeki](https://support.microsoft.com/help/4026200/microsoft-edge-browse-inprivate) adımları izleyin.
+Tüm etkin Azure oturumlarını kapatın ve sonra Microsoft Edge veya Internet Explorer’da InPrivate oturumu başlatmak için [Microsoft Edge’de InPrivate gözatma makalesindeki](https://support.microsoft.com/help/4026200/microsoft-edge-browse-inprivate) adımları izleyin.
 
-Özel oturumda, kredi kartı bilgilerini güncelleştirmek veya değiştirmek için [kredi kartının nasıl değiştirileceği hakkında](billing-how-to-change-credit-card.md) adımları izleyin.
+Özel oturumda, kredi kartı bilgilerini güncelleştirmek veya değiştirmek için [Kredi kartını değiştirme](billing-how-to-change-credit-card.md) bölümündeki adımları izleyin.
 
-Şunları yapmayı da deneyebilirsiniz:
+Aşağıdakileri de yapmayı deneyebilirsiniz:
 
 - Tarayıcınızı yenileyin
-- Başka bir tarayıcı kullan
-- Önbelleğe alınmış tanımlama bilgilerini sil
+- Başka bir tarayıcı kullanın
+- Önbelleğe alınmış tanımlama bilgilerini silin
 
-### <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>Ödeme yöntemi güncelleştirildikten sonra aboneliğim hala devre dışı bırakıldı.
+### <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>Ödeme yöntemini güncelleştirdikten sonra aboneliğim devre dışı kalmaya devam ediyor.
 
-Bu sorun, bekleyen bir denge nedeniyle oluşur. Ödeme yöntemini silmeden önce bekleyen bakiyelerin işaretini kaldırın.
+Bu sorun, kalan bakiyeden kaynaklanır. Ödeme yöntemini silmeden önce kalan tüm bakiyeyi ödeyin.
 
-### <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>Bir XML hatası yanıt sayfası nedeniyle ödeme yöntemi değiştirilemiyor
+### <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>XML hata yanıt sayfası nedeniyle ödeme yöntemi değiştirilemiyor
 
-Yeni bir kredi kartı eklemek için [Azure Portal](https://portal.azure.com/) kullanıyorsanız bu iletiyi alırsınız.
+Yeni bir kredi kartı eklemek için [Azure portalını](https://portal.azure.com/) kullanıyorsanız bu iletiyi alırsınız.
 
-Kart ayrıntıları eklemek için hesap yöneticisinin e-posta adresini kullanarak Azure hesap portalında oturum açın.
+Kart ayrıntılarını eklemek için hesap yöneticisinin e-posta adresini kullanarak Azure Hesap portalında oturum açın.
 
-## <a name="additional-help-resources"></a>Ek Yardım kaynakları
+## <a name="additional-help-resources"></a>Ek yardım kaynakları
 
-Azure Faturalandırma ve abonelikleriyle ilgili diğer sorun giderme makaleleri
+Azure Faturalama ve Abonelikler için diğer sorun giderme makaleleri
 
 - [Reddedilen kart](billing-troubleshoot-declined-card.md)
 - [Abonelik oturum açma sorunları](billing-troubleshoot-sign-in-issue.md)
 - [Abonelik bulunamadı](billing-no-subscriptions-found.md)
 - [Kurumsal maliyet görünümü devre dışı](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
-## <a name="contact-us-for-help"></a>Yardım için bizimle iletişime geçin
+## <a name="contact-us-for-help"></a>Yardım için bizimle iletişim kurun
 
-Sorularınız varsa veya yardıma ihtiyacınız [bir destek isteği oluşturma](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure faturalama belgeleri](index.md)
+- [Azure Faturalama belgeleri](index.md)

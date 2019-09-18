@@ -1,6 +1,6 @@
 ---
-title: Bir Microsoft Müşteri sözleşmesi - Azure faturalandırma hesabınızı ayarlama
-description: Fatura hesabınızı bir Microsoft Müşteri sözleşmesi ayarlama konusunda bilgi edinin.
+title: Microsoft Müşteri Sözleşmesi için ödeme hesabınızı ayarlama - Azure
+description: Microsoft Müşteri Sözleşmesi için ödeme hesabınızı ayarlama hakkında bilgi edinin.
 author: amberbhargava
 manager: amberb
 editor: banders
@@ -13,268 +13,268 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 947bfe85d94a5d11eeb54bd6b24c4c515af024d4
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
-ms.translationtype: MT
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490687"
 ---
-# <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri sözleşmesi için fatura hesabınızı ayarlama
+# <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için ödeme hesabınızı ayarlama
 
-Kurumsal Anlaşma kaydınıza süresi doldu veya süresi için kayıt yenilemek için bir Microsoft Müşteri sözleşmesi oturum olur. Bu makale, mevcut fatura Kurulumdan sonra yapılan değişiklikleri açıklar ve yeni fatura hesabınıza ayarlama işleminde size yol gösterir. Yenileme, aşağıdaki adımları içerir:
+Kurumsal Anlaşma kaydınızın süresi dolduysa veya dolmak üzereyse, kaydınız yenilemek için bir Microsoft Müşteri Sözleşmesi imzalayabilirsiniz. Bu makalede, ayarlama sonrasında mevcut faturanızda yapılan değişiklikler açıklanır ve yeni ödeme hesabınızın ayarlanması boyunca size kılavuzluk eder. Yenileme işlemi aşağıdaki adımlardan oluşur:
 
-1. Yeni Microsoft Müşteri Sözleşmesi'ni kabul edin. Microsoft alan temsilcinizle ayrıntılarını anlamak ve yeni sözleşme kabul edecek şekilde çalışır.
-2. Yeni Microsoft Müşteri sözleşmesi için oluşturulan yeni Faturalama hesabı ayarlayın.
+1. Yeni Microsoft Müşteri Sözleşmesi’ni kabul edin. Ayrıntıları anlamak ve yeni sözleşmeyi kabul etmek için Microsoft alan temsilcinizle birlikte çalışın.
+2. Yeni Microsoft Müşteri Sözleşmesi için oluşturulan yeni ödeme hesabını ayarlayın.
 
-Fatura hesabı ayarlamak için Azure aboneliğinin faturalandırma yeni hesaba Kurumsal Anlaşma kaydınıza geçiş gerekir. Kurulum, aboneliklerinizdeki çalışan Azure Hizmetleri etkisi yoktur. Bununla birlikte, faturalandırma için aboneliklerinizi yöneteceksiniz şeklini değiştirir.
+Ödeme hesabını ayarlamak için Azure aboneliklerinin faturalama sürecini Kurumsal Anlaşma kaydınızdan yeni hesabınıza geçirmeniz gerekir. Ayarlama, aboneliklerinizde çalışan Azure hizmetlerini etkilemez. Ancak, abonelikleriniz için faturalandırmayı yönetme şeklinizi değiştirir.
 
-- Yerine [EA portal](https://ea.azure.com), Azure hizmetlerinizi ve faturalandırma, içinde yöneteceksiniz [Azure portalında](https://portal.azure.com).
-- Ücretleriniz için aylık, dijital bir fatura alırsınız. Görüntüleyebilir ve Azure maliyet Yönetimi + faturalandırma sayfasını faturaya analiz edin.
-- Departmanlar ve Kurumsal Anlaşma kaydınıza hesabında yerine, yönetmek ve fatura düzenlemek için fatura yapısı ve yeni hesabı kapsamlardan kullanacaksınız.
+- Azure hizmetleri ile faturalarını [EA portalı](https://ea.azure.com) yerine [Azure portalından](https://portal.azure.com) yönetirsiniz.
+- Ücretlerinizin aylık, dijital bir faturasını alırsınız. Faturayı Azure Maliyet Yönetimi + Faturalama sayfasında görüntüleyip analiz edebilirsiniz.
+- Kurumsal Anlaşma kaydınızdan departmanlar ve hesap yerine, faturalamanızı yönetmek ve düzenlemek için yeni hesaptaki faturalandırma yapısını ve kapsamları kullanacaksınız.
 
-Kuruluma başlamadan önce şunları öneririz:
+Ayarlamaya başlamadan önce aşağıdakileri yapmanızı öneririz:
 
-- **Yeni Fatura hesabınıza anlama**
-  - Yeni hesabınıza kuruluşunuz için faturalandırma basitleştirir. [Yeni Fatura hesabınıza hızlı bir genel bakış](billing-mca-overview.md)
-- **Kurulumu tamamlamak için erişiminizi doğrulayın**
-  - Yalnızca belirli yönetim izinlerine sahip kullanıcılar, Kurulum tamamlayabilirsiniz. Olup olmadığını denetlemek [Kurulumu tamamlamak için gerekli erişimle](#access-required-to-complete-the-setup).
-- **Değişiklikler fatura hiyerarşinize anlama**
-  - Yeni hesabı faturalama, Kurumsal Anlaşma kaydınıza farklı şekilde düzenlenmiştir. [Fatura hiyerarşinize yeni hesabı değişiklikleri anlamak](#understand-changes-to-your-billing-hierarchy).
-- **Değişiklikler, faturalama yöneticileri erişimi anlama**
-  - Kurumsal Anlaşma kaydınıza yöneticilerini yeni hesabın fatura kapsamlarda erişim elde edin. [Anlamak erişimleri değişiklikleri](#changes-to-billing-administrator-access).
-- **Yeni hesap tarafından değiştirilir görünümü Kurumsal Anlaşma özellikleri**
-  - Yeni hesap özellikleri yerine Kurumsal Anlaşma kaydınıza özelliklerini görüntüleyin.
-- **En sık sorulan soruların yanıtlarını görüntüle**
-  - Görünüm [ek bilgi](#additional-information) kurulumu hakkında daha fazla bilgi için.
+- **Yeni ödeme hesabınızı anlayın**
+  - Yeni hesabınız, kuruluşunuz için faturalandırmayı basitleştirir. [Yeni ödeme hesabınızın hızlı bir genel bakışını görün](billing-mca-overview.md)
+- **Ayarlamayı tamamlamaya yönelik erişiminizi doğrulayın**
+  - Yalnızca belirli yönetici izinlerine sahip kullanıcılar ayarlamayı tamamlayabilir. [Ayarlamayı tamamlamak için gereken erişime](#access-required-to-complete-the-setup) sahip olup olmadığınızı denetleyin.
+- **Faturalandırma hiyerarşinizdeki değişiklikleri anlayın**
+  - Yeni ödeme hesabınız, Kurumsal Anlaşma kaydınızdan farklı şekilde düzenlenir. [Yeni hesabınızın faturalandırma hiyerarşisindeki değişiklikleri anlayın](#understand-changes-to-your-billing-hierarchy).
+- **Faturalandırma yöneticilerinizin erişim izinlerindeki değişikliklerini anlayın**
+  - Kurumsal Anlaşma kaydınızdaki Yöneticiler, yeni hesaptaki faturalama kapsamlarına erişim elde ederler. [Erişim izinlerindeki değişiklikleri anlayın](#changes-to-billing-administrator-access).
+- **Yeni hesapla değiştirilen Kurumsal Anlaşma özelliklerini görüntüleyin**
+  - Yeni hesaptaki özelliklerle değiştirilmiş Kurumsal Anlaşma kaydının özelliklerini görüntüleyin.
+- **En yaygın soruların yanıtlarını görüntüleyin**
+  - Ayarlama hakkında daha fazla bilgi almak için [ek bilgileri](#additional-information) görüntüleyin.
 
-## <a name="access-required-to-complete-the-setup"></a>Kurulumu tamamlamak için gereken erişim
+## <a name="access-required-to-complete-the-setup"></a>Ayarlamayı tamamlamak için gereken erişim
 
-Kurulumu tamamlamak için aşağıdaki erişim gerekir:
+Ayarlamayı tamamlamak için aşağıdaki erişim izinleri gerekir:
 
-- Microsoft Müşteri sözleşmesi imzalandığında oluşturduğunuz fatura profilinin sahibi. Fatura profilleri hakkında daha fazla bilgi için bkz: [fatura profillerini anlayabilir](billing-mca-overview.md#billing-profiles).
+- Microsoft Müşteri Sözleşmesi imzalandığında oluşturulan faturalama profilinin sahibi. Faturalama profilleri hakkında daha fazla bilgi edinmek için bkz. [Faturalama profillerini anlama](billing-mca-overview.md#billing-profiles).
 
-- Kuruluş Yöneticisi otomatik olarak yenilenir kayıt.
+- Yenilenen kayıt üzerindeki kuruluş yöneticisi.
 
-### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>Kayıt bir kuruluş yöneticisi değilseniz
+### <a name="if-youre-not-an-enterprise-administrator-on-the-enrollment"></a>Kayıt üzerinde kuruluş yöneticisi değilseniz
 
-Fatura hesabınızın kurulumunu tamamlamak için kayıt Kurumsal yöneticileri isteyebilir.
+Kaydın kuruluş yöneticilerinden ödeme hesabınızın ayarlanmasını tamamlamalarını isteyebilirsiniz.
 
-1. Microsoft Müşteri sözleşmesi imzalandığında size gönderilen e-posta bağlantıyı kullanarak Azure portalında oturum açın.
+1. Microsoft Müşteri Sözleşmesi’ni imzaladığınızda size gönderilen e-postadaki bağlantıyı kullanarak Azure portalında oturum açın.
 
-2. Kuruluşunuzda başkasının sözleşmesi imzalı veya e-posta yoksa, aşağıdaki bağlantıyı kullanarak oturum açın. Değiştirin **enrollmentNumber** kayıt sayısıyla Kurumsal anlaşmanızı yenilendi.
+2. Kuruluşunuzdaki başka bir kullanıcı sözleşmeyi imzaladıysa veya e-postaya sahip değilseniz aşağıdaki bağlantıyı kullanarak oturum açın. **enrollmentNumber** değerini, yenilenen kurumsal anlaşmanızın kuruluş numarasıyla değiştirin.
 
    `https://portal.azure.com/#blade/Microsoft_Azure_Billing/EATransitionToMCA/enrollmentId/enrollmentNumber`
 
-3. İstek göndermek istediğiniz kuruluş yöneticileri'ni seçin.
+3. İsteği göndermek istediğiniz kuruluş yöneticilerini seçin.
 
-   ![Kuruluş yöneticilerinin davet gösteren ekran görüntüsü](./media/billing-mca-setup-account/ea-mca-invite-admins.png)
+   ![Kuruluş yöneticilerini davet etmeyi gösteren ekran görüntüsü](./media/billing-mca-setup-account/ea-mca-invite-admins.png)
 
-4. Seçin **gönderme isteği**.
+4. **İstek gönder**’i seçin.
 
-   Yöneticiler Kurulumu tamamlamak için yönergeleri içeren bir e-posta alırsınız.
+   Yöneticiler, ayarlamayı tamamlamaya yönelik yönergeler içeren bir e-posta alır.
 
-### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>Faturalandırma profili sahibi değilseniz
+### <a name="if-youre-not-an-owner-of-the-billing-profile"></a>Faturalama profilinin sahibi değilseniz
 
-Kuruluşunuzdaki kullanıcı fatura profilindeki sahibi olarak kim Microsoft Müşteri sözleşmesi imzalı eklenir. Böylece Kurulumu tamamlamak bir sahip olarak eklemek için Kullanıcı isteği.  <!-- Todo Are there any next steps -->
+Kuruluşunuzda Microsoft Müşteri Sözleşmesini imzalayan kullanıcı, faturalama profilinin sahibi olarak eklenir. Ayarlamayı tamamlayabilmeniz için kullanıcıdan sizi sahip olarak eklemesini isteyin.  <!-- Todo Are there any next steps -->
 
-## <a name="understand-changes-to-your-billing-hierarchy"></a>Değişiklikler fatura hiyerarşinize anlama
+## <a name="understand-changes-to-your-billing-hierarchy"></a>Faturalandırma hiyerarşinizdeki değişiklikleri anlayın
 
-Yeni faturalandırma hesabınız faturalandırma için Gelişmiş faturalandırma ve maliyet yönetimi özellikleri sağlayarak kuruluşunuzun basitleştirir. Aşağıdaki diyagramda, faturalama yeni faturalandırma hesabında nasıl düzenlendiği açıklanmaktadır.
+Yeni faturalandırma hesabınız, gelişmiş faturalandırma ve maliyet yönetimi olanakları sağlarken kuruluşunuz için faturalandırmayı basitleştirir. Aşağıdaki diyagramda yeni ödeme hesabında faturalamanın nasıl düzenlendiği açıklanır.
 
-![Ea-mca-post-geçiş-hiyerarşi görüntüsü](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
+![ea-mca-post-transition-hierarchy resmi](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
 
-1. Faturalama hesabı, Microsoft Müşteri sözleşmenizi için faturalandırmayı yönetmek için kullanın. Fatura hesabı hakkında daha fazla bilgi edinmek için [Faturalama hesabı anlamak](billing-mca-overview.md#your-billing-account).
-2. Kuruluşunuzda, Kurumsal Anlaşma kaydınıza benzer faturalandırmayı yönetmek için faturalandırma profili kullanın. Kurumsal Yöneticiler fatura profilinin sahipleri haline gelir. Fatura profilleri hakkında daha fazla bilgi için bkz: [fatura profillerini anlayabilir](billing-mca-overview.md#billing-profiles).
-3. Kurumsal Anlaşma kaydınıza departmanlara benzeyen, gereksinimlerinize göre maliyetlerinizi düzenlemek için bir fatura bölümü kullanın. Fatura bölümler bölüm haline gelir ve departman yöneticilerinin sahipleri ilgili fatura bölümlerin olur. Fatura bölümleri hakkında daha fazla bilgi için bkz: [fatura bölümleri anlamak](billing-mca-overview.md#invoice-sections).
-4. Kurumsal anlaşmanızı oluşturulan hesapları yeni faturalandırma hesabında desteklenmiyor. Hesap aboneliklerini departmanı için ilgili fatura bölümüne ait. Hesap sahipleri oluşturabilir ve fatura bölümlerinin aboneliklerini yönetin.
+1. Microsoft müşteri sözleşmeniz için faturalandırmayı yönetmek için ödeme hesabını kullanırsınız. Ödeme hesabı hakkında daha fazla bilgi edinmek için bkz. [Ödeme hesabını anlama](billing-mca-overview.md#your-billing-account).
+2. Kuruluşunuzda faturalamayı yönetmek için Kurumsal Anlaşma kaydınıza benzer şekilde faturalama profilini kullanırsınız. Kuruluş yöneticileri faturalama profilinin sahibi olur. Faturalama profilleri hakkında daha fazla bilgi edinmek için bkz. [Faturalama profillerini anlama](billing-mca-overview.md#billing-profiles).
+3. Gereksinimlerinize göre maliyetlerinizi düzenlemek için Kurumsal Anlaşma kaydınızdaki departmanlara benzer şekilde bir fatura bölümü oluşturun. Bölümler fatura bölümlerine ve bölüm yöneticileri de ilgili fatura bölümlerinin sahiplerine dönüşür. Fatura bölümleri hakkında daha fazla bilgi edinmek için [fatura bölümlerini anlama](billing-mca-overview.md#invoice-sections) konusuna bakın.
+4. Kurumsal Anlaşmanızda oluşturulan hesaplar yeni ödeme hesabında desteklenmez. Hesabın abonelikleri, kendi bölümleri için ilgili fatura bölümüne aittir. Hesap sahipleri kendi fatura bölümleri için abonelikleri oluşturabilir ve yönetebilir.
 
-## <a name="changes-to-billing-administrator-access"></a>Yönetici erişimi faturalandırma değişiklikleri
+## <a name="changes-to-billing-administrator-access"></a>Faturalandırma yöneticisi erişimindeki değişiklikler
 
-Erişimleri bağlı olarak, Kurumsal Anlaşma kaydınıza üzerinde faturalama yöneticileri fatura kapsamlar yeni hesap erişim elde edin. Aşağıdaki tabloda Kurulum sırasında değişiklik erişim açıklanmaktadır:
+Erişim izinlerine bağlı olarak, Kurumsal Anlaşma kaydınızdaki faturalandırma yöneticileri, yeni hesaptaki faturalama kapsamlarına erişim elde ederler. Aşağıdaki tabloda, ayarlama sırasında gerçekleşen erişim değişikliği açıklanmaktadır:
 
-| Mevcut bir rolü | POST geçiş rolü |
+| Mevcut rol | Geçiş sonrası rol |
 | --- | --- |
-| **Kuruluş Yöneticisi (okuma yalnızca = Hayır)** | **-Fatura Profil sahibi** </br> Fatura profilinde her şeyi yönetme </br> - **Fatura bölümüne sahip tüm fatura bölümleri** </br> Fatura bölümlerde her şeyi yönetme |
-| **Kuruluş Yöneticisi (okuma Evet yalnızca =)** | **-Fatura profil okuyucusu** </br> Fatura hesabı üzerinde salt okunur görünümü her şeyin</br>**-Tüm Fatura bölümüne fatura bölüm okuyucusu**</br> Fatura bölümündeki her şeyin salt okunur görünümü|
-| **Departman Yöneticisi (okuma yalnızca = Hayır)** |**-İlgili departmanı için oluşturulan fatura bölümünde fatura bölüm sahibi** </br>Fatura bölümündeki her şeyi yönetme|
-| **Departman Yöneticisi (okuma Evet yalnızca =)**|**-İlgili departmanı için oluşturulan fatura bölümünde fatura bölüm okuyucusu**</br> Fatura bölümündeki her şeyin salt okunur görünümü|
-| **Hesap sahibi** | **-İlgili departmanı için oluşturulan fatura bölümünde azure aboneliği Oluşturucusu** </br>  Azure abonelikleri için fatura bölümü oluşturma|
+| **Kuruluş yöneticisi (Salt okuma = Hayır)** | **- Faturalama profili sahibi** </br> Faturalama profili üzerindeki her şeyi yönetme </br> - **Tüm fatura bölümlerindeki fatura bölümü sahibi** </br> Fatura bölümlerindeki her şeyi yönetme |
+| **Kuruluş yöneticisi (Salt okuma = Evet)** | **- Faturalama profili okuyucusu** </br> - Ödeme hesabındaki her şeyin salt okunur görünümü</br>**- Tüm fatura bölümlerindeki fatura bölümü okuyucusu**</br> - Fatura bölümündeki her şeyin salt okunur görünümü|
+| **Departman yöneticisi (Salt okuma = Hayır)** |**- İlgili departman için oluşturulan fatura bölümündeki fatura bölümü sahibi** </br>Fatura bölümündeki her şeyi yönetme|
+| **Departman yöneticisi (Salt okuma = Evet)**|**- İlgili departman için oluşturulan fatura bölümündeki fatura bölümü okuyucusu**</br> Fatura bölümündeki her şeyin salt okunur görünümü|
+| **Hesap sahibi** | **- İlgili departman için oluşturulan fatura bölümündeki Azure aboneliği oluşturucusu** </br>  Kendi fatura bölümü için Azure abonelikleri oluşturma|
 
-Azure Active Directory kiracısı, Microsoft Müşteri sözleşmesi imzalanırken yeni fatura hesap için seçilir. Kuruluşunuz için bir kiracı yoksa, yeni bir kiracı oluşturulur. Kiracı, kuruluşunuzun Azure Active Directory içinde temsil eder. Kuruluşunuzdaki genel Kiracı yöneticileri Kiracı uygulama ve kuruluşunuzda veri erişimi yönetmek için kullanın.
+Microsoft Müşteri Sözleşmesi imzalanırken yeni ödeme hesabı için bir Azure Active Directory kiracısı seçilir. Kuruluşunuz için bir kiracı yoksa, yeni bir kiracı oluşturulur. Kiracı, Azure Active Directory içinde kuruluşunuzu temsil eder. Kuruluşunuzdaki genel kiracı yöneticileri, kuruluşunuzdaki uygulamalara ve verilere erişimi yönetmek için kiracıyı kullanır.
 
-Yeni hesabınıza yalnızca Microsoft Müşteri sözleşmesi imzalanırken seçilen Kiracı kullanıcıları destekler. Kurumsal sözleşmeniz üzerinde yönetici iznine sahip kullanıcılar Kiracı parçası ise bunlar Kurulum sırasında yeni faturalandırma hesaba erişim kazanırsınız. Kiracı parçası değillerse, davet sürece yeni bir fatura hesabınıza erişmek mümkün olmayacaktır.
+Yeni hesabınız yalnızca Microsoft Müşteri Sözleşmesi imzalanırken seçilen kiracıdan gelen kullanıcıları destekler. Kurumsal Anlaşma üzerinde yönetici iznine sahip kullanıcılar kiracının parçasıysa, ayarlama sırasında yeni ödeme hesabına erişim elde ederler. Kiracının parçası olmadıkları takdirde, davet etmediğiniz sürece yeni ödeme hesabına erişemezler.
 
-Kullanıcıları davet ederken, kiracınıza Konuk kullanıcı olarak eklenir ve fatura hesap erişin. Kullanıcıları davet etmek için Konuk erişimi Kiracı için açık olması gerekir. Daha fazla bilgi için [Konuk erişimi Azure Active Directory'de](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Konuk erişimine kapatılırsa, açmak kiracınızın genel yönetici ile iletişime geçin. <!-- Todo - How can they find their global administrator -->
+Kullanıcıları davet ettiğinizde konuk kullanıcı olarak kiracıya eklenirler ve ödeme hesabına erişime elde ederler. Kullanıcıları davet etmek için, kiracı için konuk erişimin açık olması gerekir. Daha fazla bilgi için bkz. [Azure Active Directory’de konuk erişimini denetleme](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Konuk erişimi kapalıysa, açmak için kiracınızın genel yöneticilerine başvurun. <!-- Todo - How can they find their global administrator -->
 
-## <a name="view-replaced-features"></a>Değiştirilen özelliklerini görüntüleyin
+## <a name="view-replaced-features"></a>Değiştirilmiş özellikleri görüntüleme
 
-Aşağıdaki Kurumsal anlaşmanın özellikleri varsayılan olarak, bir Microsoft Müşteri sözleşmesi fatura hesabındaki yeni özellikler ile değiştirilir.
+Aşağıdaki Kurumsal Anlaşma özellikleri, Microsoft Müşteri Sözleşmesi için ödeme hesabındaki yeni özelliklerle değiştirilir.
 
 ### <a name="enterprise-agreement-accounts"></a>Kurumsal Anlaşma hesapları
 
-Kurumsal Anlaşma kaydınıza oluşturulan hesapları yeni faturalandırma hesabında desteklenmiyor. İlgili departmanı için oluşturulan fatura bölümüne hesabın aboneliklerini ait. Hesap sahipleri Azure aboneliği creators haline gelir ve oluşturabilir ve fatura bölümlerinin aboneliklerini yönetin.
+Kurumsal Anlaşma kaydınızda oluşturulan hesaplar yeni ödeme hesabında desteklenmez. Hesabın abonelikleri, kendi departmanları için oluşturulan fatura bölümüne aittir. Hesap sahipleri Azure abonelik oluşturucusu olabilir ve kendi fatura bölümleri için abonelikleri oluşturabilir ve yönetebilir.
 
-### <a name="notification-contacts"></a>Bildirim ilgili kişileri
+### <a name="notification-contacts"></a>Bildirim kişileri
 
-Bildirim ilgili kişileri Azure Kurumsal anlaşmasına hakkında iletişim e-posta gönderilir. Yeni faturalandırma hesabında desteklenmez. Azure KREDİLERİ ve faturalar hakkında e-posta, fatura hesabınıza erişim fatura profillerine sahip kullanıcılara gönderilir.
+Bildirim ilgili kişilerine Azure Kurumsal Anlaşma ile ilgili e-posta iletişimleri gönderilir. Bunlar yeni ödeme hesabında desteklenmez. Azure kredileri ve faturalarıyla ilgili e-postalar, ödeme hesabınızdaki faturalama profillerine erişebilen kullanıcılara gönderilir.
 
-### <a name="spending-quotas"></a>Harcama kotası
+### <a name="spending-quotas"></a>Harcama kotaları
 
-Kurumsal Anlaşma kaydınıza departmanları için ayarladığınız harcama kotalarını yeni fatura hesabındaki bütçe ile değiştirilir. Bütçe her harcama kotası kaydınız departmanlara ayarlamak için oluşturulur. Bütçe hakkında daha fazla bilgi için bkz. [oluşturup Azure bütçelerini yönetmek](../cost-management/manage-budgets.md).
+Kurumsal Anlaşma kaydınızdaki departmanlar için ayarlanan harcama kotaları, yeni ödeme hesabındaki bütçelerle değiştirilir. Kaydınızda ayarlanmış her harcama kotası kümesi için bir bütçe oluşturulur. Bütçeler hakkında daha fazla bilgi için bkz. [Azure bütçeleri oluşturma ve yönetme](../cost-management/manage-budgets.md).
 
-### <a name="cost-centers"></a>Maliyet merkezi
+### <a name="cost-centers"></a>Maliyet merkezleri
 
-Kurumsal Anlaşma kaydınıza Azure abonelikleri üzerinde ayarlanan maliyet merkezi bir denetim yapılmaz yeni fatura hesap. Bununla birlikte, maliyet merkezlerinin Departmanlar ve Kurumsal Anlaşma hesapları için desteklenmez.
+Kurumsal Anlaşma kaydınızdaki Azure abonelikleri üzerinde ayarlanmış maliyet merkezi, yeni ödeme hesabına taşınır. Ancak, departmanlar ve Kurumsal Anlaşma hesaplarına ait maliyet merkezleri desteklenmez.
 
 ## <a name="additional-information"></a>Ek bilgiler
 
-Aşağıdaki bölümlerde, fatura hesabınızı ayarlama hakkında ek bilgi sağlar.
+Aşağıdaki bölümlerde ödeme hesabınızı ayarlama hakkında ek bilgiler sağlanmaktadır.
 
-### <a name="no-service-downtime"></a>Hizmet kapalı kalma süresi olmadan
+### <a name="no-service-downtime"></a>Hizmet kapalı kalma süresi yoktur
 
 Aboneliğinizdeki Azure hizmetleri kesintisiz olarak çalışmaya devam eder. Yalnızca Azure aboneliklerinizin faturalama ilişkisini geçiririz. Mevcut kaynaklar, kaynak grupları veya yönetim grupları üzerinde herhangi bir etki söz konusu olmayacaktır.
 
-### <a name="user-access-to-azure-resources"></a>Azure kaynaklarına kullanıcının erişimi
+### <a name="user-access-to-azure-resources"></a>Azure kaynaklarına kullanıcı erişimi
 
-Azure RBAC (rol tabanlı erişim denetimi) ile ayarlanmış olan Azure kaynaklarına erişimi, geçiş sırasında etkilenmez.
+Azure RBAC (rol tabanlı erişim denetimi) kullanılarak ayarlanan Azure kaynaklarına erişim geçiş sırasında etkilenmez.
 
-### <a name="azure-reservations"></a>Azure ayırmalar
+### <a name="azure-reservations"></a>Azure Rezervasyonlar
 
-Kurumsal Anlaşma kaydınıza içinde Azure rezervasyon yeni fatura hesabınıza taşınır. Geçiş sırasında, aboneliklerinizde uygulanan rezervasyon indirimlerinde herhangi bir değişiklik olmaz.
+Kurumsal Anlaşma kaydınızdaki tüm Azure Rezervasyonları da yeni faturalama hesabınıza taşınır. Geçiş sırasında, aboneliklerinizde uygulanan rezervasyon indirimlerinde herhangi bir değişiklik olmaz.
 
 ### <a name="azure-marketplace-products"></a>Azure Market ürünleri
 
-Azure Marketi ürünlerden Kurumsal Anlaşma kaydınıza abonelikleri birlikte taşınır. Geçiş sırasında Market ürünlerin hizmet erişimi herhangi bir değişiklik olmayacak.
+Kurumsal Anlaşma kaydınıza ait tüm Azure Market ürünleri, aboneliklerle birlikte taşınır. Geçiş sırasında Market ürünlerinin hizmet erişiminde herhangi bir değişiklik olmayacaktır.
 
 ### <a name="support-plan"></a>Destek planı
 
-Destek avantajları, geçişin bir parçası olarak aktarılmıyor. İçin yeni faturalandırma hesabınızdaki Azure abonelik avantajlarından yararlanabilmek için yeni bir destek planı satın alın.
+Destek avantajları geçişin bir parçası olarak aktarılmaz. Yeni ödeme hesabınızda Azure aboneliklerine yönelik avantajlardan yararlanmak için yeni bir destek planı satın alın.
 
-### <a name="past-charges-and-balance"></a>Geçmiş ücretleri ve Dengeleme
+### <a name="past-charges-and-balance"></a>Geçmiş ücretler ve bakiye
 
-Geçiş öncesinde ücretleri ve kredi bakiyesi Kurumsal Anlaşma kaydınıza Azure portalı üzerinden görüntülenebilir. <!--Todo - Add a link for this-->
+Geçiş işleminden önce ücretler ve kredi bakiyesi, Azure portalı üzerinden Kurumsal Anlaşma kaydınızda görüntülenebilir. <!--Todo - Add a link for this-->
 
-### <a name="when-should-the-setup-be-completed"></a>Kurulumun tamamlanması gereken ne zaman?
+### <a name="when-should-the-setup-be-completed"></a>Ayarlamanın ne zaman tamamlanması gerekir?
 
-Kurumsal Anlaşma kaydınıza süresi dolmadan önce fatura hesabınıza Kurulumu tamamlayın. Kaydınıza süresi dolarsa Azure aboneliklerinizi Hizmetleri'nde hala açık kesintisiz çalışmaya devam eder. Ancak, perakende oranlarına Hizmetleri için ücretlendirilirsiniz.
+Kurumsal Anlaşma kaydınız sona ermeden önce ödeme hesabınızın ayarlanmasını tamamlayın. Kaydınızın süresi dolarsa, Azure aboneliklerinizdeki hizmetler kesintiye uğramadan çalışmaya devam edecektir. Bununla birlikte, hizmetler için perakende fiyatları üzerinden ücretlendirilirsiniz.
 
-### <a name="changes-to-the-enterprise-agreement-enrollment-after-the-setup"></a>Kurumsal Anlaşma kaydınıza Kurulumdan sonra değişiklikler
+### <a name="changes-to-the-enterprise-agreement-enrollment-after-the-setup"></a>Ayarlama sonrasında Kurumsal Anlaşma kaydında yapılan değişiklikler
 
-Azure geçişi el ile yeni faturalandırma hesaba taşınıp sonra Kurumsal Anlaşma kaydı için oluşturulan abonelikler. Daha fazla bilgi için [Azure abonelikleri diğer kullanıcılardan sahipliğini fatura](billing-mca-request-billing-ownership.md). Geçişten sonra satın alınan Azure ayırmaları taşımak [Azure desteğine başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Ayrıca, Faturalama hesabı için erişim geçişten sonra kullanıcılar sağlayabilir. Daha fazla bilgi için [Azure portalındaki faturalandırma rollerini yönetme](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
+Geçişten sonra Kurumsal Anlaşma kaydı için oluşturulan Azure abonelikleri, yeni ödeme hesabına elle taşınabilir. Daha fazla bilgi için bkz. [Diğer kullanıcılardan Azure aboneliklerinin fatura sahipliğini alma](billing-mca-request-billing-ownership.md). Geçişten sonra satın alınan Azure Rezervasyonlarını taşımak için [Azure Desteği'ne başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Geçişten sonra ödeme hesabına kullanıcı erişimi de sağlayabilirsiniz. Daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
-### <a name="revert-the-transition"></a>Geçişi geri döndür
+### <a name="revert-the-transition"></a>Geçişi geri döndürme
 
-Geçiş geri alınamaz. Azure aboneliklerinizin faturalandırma yeni fatura hesabınıza geçirilir sonra Kurumsal Anlaşma kaydınıza geri dönemezsiniz.
+Geçiş geri döndürülemez. Azure aboneliklerinizin faturalama süreci yeni faturalama hesabınıza geçirildikten sonra bunu Kurumsal Anlaşma kaydınıza geri döndüremezsiniz.
 
-### <a name="closing-your-browser-during-setup"></a>Kurulum sırasında tarayıcının kapanması
+### <a name="closing-your-browser-during-setup"></a>Ayarlama sırasında tarayıcınızı kapatma
 
-Tıklayarak önce **başlangıç geçiş**, tarayıcıyı kapatabilirsiniz. Kullanarak e-postada aldığınız bağlantının kurulumu için geri dönün ve geçişi başlatın. Geçiş başladıktan sonra Tarayıcıyı kapatın, geçişinizi üzerinde çalışmaya devam eder. Geçişinizi en son durumunu izlemek için geçiş durumu sayfasına geri dönün. Geçiş tamamlandığında bir e-posta alırsınız.
+**Geçişi başlat**’a tıklamadan önce tarayıcıyı kapatabilirsiniz. E-postada aldığınız bağlantıyı kullanarak ayarlama işlemine geri dönebilir ve geçişi başlatabilirsiniz. Geçişi başlattıktan sonra tarayıcıyı kapatırsanız geçişiniz çalışmaya devam edecektir. Geçişinizin en son durumunu izlemek için geçiş durumu sayfasına geri dönün. Geçiş tamamlandığında bir e-posta alırsınız.
 
-## <a name="complete-the-setup-in-the-azure-portal"></a>Azure portalında kurulumunu tamamlayın
+## <a name="complete-the-setup-in-the-azure-portal"></a>Azure portalında ayarlamayı tamamlama
 
-Kurulumu tamamlamak için yeni bir faturalama hesabı ve Kurumsal Anlaşma kaydınıza erişmeniz gerekir. Daha fazla bilgi için [kümesi fatura hesabınıza tamamlamak için gerekli erişimle](#access-required-to-complete-the-setup).
+Ayarlamayı tamamlamak için hem yeni faturalama hesabına hem de Kurumsal Anlaşma kaydına erişiminizin olması gerekir. Daha fazla bilgi için bkz. [Ödeme hesabınızın ayarlanmasını tamamlamak için gereken erişim](#access-required-to-complete-the-setup).
 
-1. Microsoft Müşteri sözleşmesi imzalandığında size gönderilen e-posta bağlantıyı kullanarak Azure portalında oturum açın.
+1. Microsoft Müşteri Sözleşmesi’ni imzaladığınızda size gönderilen e-postadaki bağlantıyı kullanarak Azure portalında oturum açın.
 
-2. Kuruluşunuzda başkasının sözleşmesi imzalı veya e-posta yoksa, aşağıdaki bağlantıyı kullanarak oturum açın. Değiştirin **enrollmentNumber** kayıt sayısıyla Kurumsal anlaşmanızı yenilendi.
+2. Kuruluşunuzdaki başka bir kullanıcı sözleşmeyi imzaladıysa veya e-postaya sahip değilseniz aşağıdaki bağlantıyı kullanarak oturum açın. **enrollmentNumber** değerini, yenilenen Kurumsal Anlaşmanızın kuruluş numarasıyla değiştirin.
 
    `https://portal.azure.com/#blade/Microsoft_Azure_Billing/EATransitionToMCA/enrollmentId/enrollmentNumber`
 
-3. Seçin **başlangıç geçiş** Kurulum ve son adımda. Başlangıç geçiş seçtikten sonra:
+3. Ayarlamanın son adımında **Geçişi Başlat**’ı seçin. Geçişi başlat'ı seçtikten sonra:
 
-    ![Kurulum Sihirbazı'nı gösteren ekran görüntüsü](./media/billing-mca-setup-account/ea-mca-set-up-wizard.png)
+    ![Ayarlama sihirbazını gösteren ekran görüntüsü](./media/billing-mca-setup-account/ea-mca-set-up-wizard.png)
 
-    - Kurumsal Anlaşma hiyerarşinize karşılık gelen faturalandırma bir hiyerarşiye yeni fatura hesap oluşturulur. Daha fazla bilgi için [değişiklikler fatura hiyerarşinize anlamak](#understand-changes-to-your-billing-hierarchy).
-    - Kuruluşunuz için faturalandırmayı yönetmek devam eder, Kurumsal Anlaşma kaydınıza yöneticilerini yeni fatura hesabınıza erişim verilir.
-    - Azure aboneliklerinizin faturalandırma yeni hesaba geçirilir. **Azure hizmetlerinizi bu geçiş sırasında hiçbir etkisi olmayacak. Bunlar herhangi bir kesinti çalışmaya devam**.
-    - Azure ayırmaları varsa, yeni fatura hesabınıza aynı indirim ve terimi taşınır. Ayırma indirimi, geçiş sırasında uygulanacak devam eder.
+    - Yeni ödeme hesabında, Kurumsal Anlaşma hiyerarşinize karşılık gelen bir faturalandırma hiyerarşisi oluşturulur. Daha fazla bilgi için bkz. [Faturalandırma hiyerarşinizdeki değişiklikleri anlayın](#understand-changes-to-your-billing-hierarchy).
+    - Kurumsal Anlaşma kaydınızdaki yöneticilere, kuruluşunuzun faturalandırmasını yönetmeye devam edebilmeleri için yeni ödeme hesabına erişim izni verilir.
+    - Azure aboneliklerinizin faturaları yeni hesaba geçirilir. **Bu geçiş sırasında Azure hizmetleriniz etkilenmez. Herhangi bir kesinti olmadan çalışmaya devam ederler.**
+    - Azure Rezervasyonlarınız varsa aynı indirim ve koşullarla yeni ödeme hesabınıza taşınır. Rezervasyon indiriminiz geçiş sırasında uygulanmaya devam edecektir.
 
-4. Geçiş durumunu izleyebilirsiniz **geçiş durumu** sayfası.
+4. Geçişinizin durumunu **Geçiş durumu** sayfasından izleyebilirsiniz.
 
-   ![Geçiş durumu gösteren ekran görüntüsü](./media/billing-mca-setup-account/ea-mca-set-up-status.png)
+   ![Geçiş durumunu gösteren ekran görüntüsü](./media/billing-mca-setup-account/ea-mca-set-up-status.png)
 
-## <a name="validate-billing-account-set-up"></a>Fatura hesabı ayarlama doğrula
+## <a name="validate-billing-account-set-up"></a>Ödeme hesabı ayarlarını doğrulama
 
- Yeni Fatura hesabınıza düzgün ayarlandığından emin olmak için aşağıdakileri doğrulayın:
+ Yeni ödeme hesabınızın düzgün ayarlandığından emin olmak için aşağıdakileri doğrulayın:
 
 ### <a name="azure-subscriptions"></a>Azure abonelikleri
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Arama **maliyet Yönetimi + faturalandırma**.
+2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
-   ![Azure portalı arama gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
+   ![Azure portalı aramasını gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Faturalandırma profili seçin. Erişiminize bağlı olarak, bir faturalama hesabı seçmeniz gerekebilir. Fatura hesap sayfasında **profilleri faturalama** ve ardından faturalandırma profili.
+3. Faturalama profilini seçin. Erişiminize bağlı olarak, bir faturalama hesabı seçmeniz gerekebilir. Ödeme hesabında **Faturalama profilleri**'ni ve ardından faturalama profilini seçin.
 
-4. Seçin **Azure abonelikleri** solundan.
+4. Sol taraftan **Azure abonelikleri**'ni seçin.
 
-   ![Aboneliklerin listesini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-subscriptions-post-transition.png)
+   ![Abonelik listesini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-subscriptions-post-transition.png)
 
-Kurumsal Anlaşma kaydınıza yeni fatura hesabınıza geçişi yapılır azure abonelikleri Azure abonelikler sayfasında görüntülenir. Herhangi bir abonelik eksik olduğunu düşünüyorsanız, Azure portalında el ile aboneliğin faturalama geçiş. Daha fazla bilgi için [faturalandırma sahipliğini diğer kullanıcıların Azure aboneliği edinin](billing-mca-request-billing-ownership.md)
+Kurumsal Anlaşma kaydınızdan yeni ödeme hesabına geçirilen Azure abonelikleri, Azure abonelikleri sayfasında gösterilir. Herhangi bir aboneliğin eksik olduğunu düşünüyorsanız, aboneliğin faturasını Azure portalında elle geçirin. Daha fazla bilgi için bkz. [Diğer kullanıcılardan Azure aboneliklerinin fatura sahipliğini alma](billing-mca-request-billing-ownership.md)
 
-### <a name="azure-reservations"></a>Azure ayırmalar
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-
-2. Arama **maliyet Yönetimi + faturalandırma**.
-
-   ![Azure portalı arama gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
-
-3. Fatura bölümü seçin. Erişiminize bağlı olarak, bir faturalama hesabı veya faturalama profili seçmeniz gerekebilir.  Fatura hesabı ya da fatura profili seçin **fatura bölümleri** ve ardından bir fatura bölümü.
-
-    ![Fatura bölüm post geçiş listesini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
-
-4. Seçin **tüm ürünleri** solundan.
-
-5. Arama **ayrılmış**.
-
-    ![Abonelikleri post geçiş listesini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-azure-reservations-post-transition.png)
-
-Kurumsal Anlaşma kaydınıza yeni fatura hesabınıza taşınır azure ayırmaları tüm ürünler sayfasında görüntülenir. Tüm Azure ayırmaları Kurumsal Anlaşma kaydınıza taşınır doğrulamak tüm fatura bölümleri için adımları yineleyin. Tüm Azure ayırma eksik olduğunu düşünüyorsanız [Azure desteğine başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ayırma yeni faturalandırma hesabına taşınamıyor.
-
-### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>Kurumsal Yöneticiler fatura profilindeki erişim
+### <a name="azure-reservations"></a>Azure Rezervasyonlar
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Arama **maliyet Yönetimi + faturalandırma**.
+2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
-   ![Azure portalı arama gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
+   ![Azure portalı aramasını gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Kaydınız için oluşturulan faturalandırma profili seçin. Erişiminize bağlı olarak, bir faturalama hesabı seçmeniz gerekebilir.  Fatura hesap sayfasında **profilleri faturalama** ve ardından faturalandırma profili.
+3. Bir fatura bölümü seçin. Erişiminize bağlı olarak, bir faturalama hesabı veya faturalama profili seçmeniz gerekebilir.  Ödeme hesabından veya faturalama profilinden **Fatura bölümleri**’ni ve sonra bir fatura bölümünü seçin.
 
-4. Seçin **erişim denetimi (IAM)** solundan.
+    ![Geçiş sonrasındaki fatura bölümü listesini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
 
-   ![Kurumsal Yöneticiler post geçişin erişim gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-ea-admins-access-post-transition.png)
+4. Sol taraftan **Tüm ürünler**’i seçin.
 
-Kurumsal Yöneticiler, profil okuyucular Fatura olarak profili sahipleri salt okuma izinlerine sahip Yöneticiler listelenir Kurumsal çalışırken Fatura olarak listelenir. Herhangi bir kurumsal yönetici erişimini eksik olduğunu düşünüyorsanız, bunları Azure portalında erişim verebilirsiniz. Daha fazla bilgi için [Azure portalındaki faturalandırma rolleri yönetme](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+5. **Rezerve** araması yapın.
 
-### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>Kuruluş Yöneticileri, departman yöneticilerinin ve fatura bölümlerde hesap sahipleri erişim
+    ![Geçiş sonrasındaki abonelik listesini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-azure-reservations-post-transition.png)
+
+Kurumsal Anlaşma kaydınızdan yeni ödeme hesabına geçirilen Azure Rezervasyonları, Tüm ürünler sayfasında gösterilir. Tüm Azure Rezervasyonlarının Kurumsal Anlaşma kaydınızdan taşındığını doğrulamak için tüm fatura bölümlerinin adımlarını yineleyin. Herhangi bir Azure Rezervasyonunun eksik olduğunu düşünüyorsanız, Rezervasyonu yeni ödeme hesabına taşımak için [Azure desteğine başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>Kuruluş yöneticilerinin faturalama profiline erişimi
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Arama **maliyet Yönetimi + faturalandırma**.
+2. **Maliyet Yönetimi + Faturalama** araması yapın.
 
-   ![Azure portalı arama gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-search-cost-management-billing.png).
+   ![Azure portalı aramasını gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. Fatura bölümü seçin. Fatura bölümler Kurumsal Anlaşma kayıtları kendi ilgili bölümlerin aynı ada sahip. Erişiminizi bağlı olarak, bir faturalandırma profili ya da bir faturalama hesabı seçmeniz gerekebilir. Faturalandırma profili veya faturalama hesabı, seçmek **fatura bölümleri** ve ardından bir fatura bölümü seçin.
+3. Kaydınız için faturalama profilini seçin. Erişiminize bağlı olarak, bir faturalama hesabı seçmeniz gerekebilir.  Ödeme hesabında **Faturalama profilleri**'ni ve ardından faturalama profilini seçin.
 
-   ![Fatura bölüm post geçiş listesini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
+4. Sol taraftan **Erişim denetimi (IAM)** öğesini seçin.
 
-4. Seçin **erişim denetimi (IAM)** solundan.
+   ![Geçiş sonrasında kuruluş yöneticilerinin erişimini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-ea-admins-access-post-transition.png)
 
-    ![Bölüm ve sonrası geçiş yöneticileri erişimi hesap erişim gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-department-account-admins-access-post-transition.png)
+Kuruluş yöneticileri faturalama profili sahipleri olarak listelenirken, salt okuma izinlerine sahip kuruluş yöneticileri faturalama profili okuyucuları olarak listelenir. Herhangi bir kuruluş yöneticisi erişiminin eksik olduğunu düşünüyorsanız, Azure portalından erişim izni verebilirsiniz. Daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
-Departmanındaki hesap sahipleri Azure aboneliği creators listelenmekle birlikte kurumsal yöneticiler ve departman fatura bölüm sahipleri ya da fatura bölüm okuyucu listelenir. Kurumsal Anlaşma kaydınıza içindeki tüm bölümler için erişim denetimi tüm fatura bölümleri için yineleyin. Tüm departmanı bir parçası olmayan bir hesap sahipleri adlı bir fatura bölümüne izin alacak **varsayılan fatura bölümü**. Herhangi bir yönetici erişimini eksik olduğunu düşünüyorsanız, bunları Azure portalında erişim verebilirsiniz. Daha fazla bilgi için [Azure portalındaki faturalandırma rolleri yönetme](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>Fatura bölümlerindeki kuruluş yöneticileri, departman yöneticileri ve hesap sahipleri erişimi
 
-## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-Yardıma ihtiyacınız varsa [desteğe](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) sorununuzun hızlıca çözülebilmesi için.
+2. **Maliyet Yönetimi + Faturalama** araması yapın.
+
+   ![Azure portalı aramasını gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)arasında yetersiz alanla karşılaştı.
+
+3. Bir fatura bölümü seçin. Fatura bölümleri, Kurumsal Anlaşma kayıtlarındaki ilgili departmanlarla aynı ada sahiptir. Erişiminize bağlı olarak, bir faturalama profili veya ödeme hesabı seçmeniz gerekebilir. Faturalama profilinden veya ödeme hesabından **Fatura bölümleri**’ni ve sonra bir fatura bölümünü seçin.
+
+   ![Geçiş sonrasındaki fatura bölümü listesini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
+
+4. Sol taraftan **Erişim denetimi (IAM)** öğesini seçin.
+
+    ![Geçiş sonrasında departman ve hesap yöneticilerinin erişimini gösteren ekran görüntüsü](./media/billing-mca-setup-account/billing-mca-department-account-admins-access-post-transition.png)
+
+Kuruluş yöneticileri ve departman yöneticileri fatura bölümü sahibi veya fatura bölümü okuyucusu olarak listelenirken, departmandaki hesap sahipleri Azure abonelik oluşturucusu olarak listelenir. Kurumsal Anlaşma kaydınızdaki tüm departmanlara ait erişim izinlerini denetlemek üzere tüm fatura bölümleri için bu adımı tekrarlayın. Herhangi bir departmana bağlı olmayan hesap sahipleri, **Varsayılan fatura bölümü** adlı bir fatura bölümünde izin elde eder. Herhangi bir yönetici erişiminin eksik olduğunu düşünüyorsanız, Azure portalından erişim izni verebilirsiniz. Daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+
+## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
+
+Yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yeni faturalandırma hesabınız ile çalışmaya başlama](billing-mca-overview.md)
+- [Yeni ödeme hesabınızla çalışmaya başlama](billing-mca-overview.md)
 
-- [Microsoft Müşteri sözleşmesi için fatura hesabınıza Kurumsal Anlaşma görevleri gerçekleştirin](billing-mca-enterprise-operations.md)
+- [Microsoft Müşteri Sözleşmesi için ödeme hesabınızda Kurumsal Anlaşma görevlerini tamamlama](billing-mca-enterprise-operations.md)
 
-- [Fatura hesabınıza erişimi yönetme](billing-understand-mca-roles.md)
+- [Ödeme hesabınıza erişimi yönetme](billing-understand-mca-roles.md)
