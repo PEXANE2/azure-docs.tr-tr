@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860290"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075492"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -403,6 +403,8 @@ Uygulamanın modern kimlik doğrulamasını destekleyip desteklemediğini fark e
 >**Multi-Factor Authentication anımsa** özelliği, kullanıcılar Azure Multi-Factor Authentication sunucusu veya üçüncü taraf Multi-Factor ile AD FS için iki aşamalı doğrulama gerçekleştirirken, AD FS Oturumumu **açık tut** özelliği ile uyumlu değildir kimlik doğrulama çözümü.
 >
 >Kullanıcılarınız Oturumumu AD FS açık **tut** ' u seçer ve ayrıca cihazlarını Multi-Factor Authentication için güvenilir olarak işaretledikten sonra, **Multi-Factor Authentication** gün sayısı ' nın süresinin dolmasını doğruladıktan sonra Kullanıcı otomatik olarak doğrulanmaz. Azure AD, iki adımlı bir doğrulama ister, ancak AD FS iki adımlı doğrulamayı yeniden gerçekleştirmek yerine özgün Multi-Factor Authentication talep ve Tarih ile bir belirteç döndürür. **Bu yeniden eylem, Azure AD ile AD FS arasındaki bir doğrulama döngüsünü belirler.**
+>
+>**Multi-Factor Authentication anımsa** özelliği B2B kullanıcılarıyla uyumlu değildir ve davet edilen kiracılarda oturum açarken B2B kullanıcıları için görünür olmayacaktır.
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Enable Multi-Factor Authentication anımsa

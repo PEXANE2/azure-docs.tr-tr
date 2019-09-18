@@ -1,6 +1,6 @@
 ---
-title: Azure uygulama yapılandırması dinamik yapılandırma kullanarak bir .NET Core uygulaması için öğretici | Microsoft Docs
-description: Bu öğreticide, .NET Core uygulamaları için yapılandırma verilerini dinamik olarak güncelleştirileceğini öğrenin
+title: .NET Core uygulamasında Azure Uygulama yapılandırması dinamik yapılandırmasını kullanma öğreticisi | Microsoft Docs
+description: Bu öğreticide, .NET Core uygulamaları için yapılandırma verilerini dinamik olarak güncelleştirme hakkında bilgi edineceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
 author: abarora
@@ -13,40 +13,45 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: 1649fefda5073761d616fc48c602cab84d293ed0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 3eee34f594cb23a8b64f6fd10837c9a641eda62d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799976"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075963"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Öğretici: Bir .NET Core uygulamasında dinamik yapılandırması kullan
+# <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Öğretici: .NET Core uygulamasında dinamik yapılandırma kullanma
 
-Uygulama yapılandırma .NET Core istemci kitaplığı, yeniden başlatmak bir uygulama neden olmadan isteğe bağlı yapılandırma ayarları kümesini güncelleştirilmesini destekler. Bu örneği alarak uygulanabilir `IConfigurationRefresher` yapılandırma sağlayıcısı ve ardından arama seçeneklerden `Refresh` örneğine kodunuzdaki herhangi bir yerde.
+Uygulama yapılandırması .NET Core istemci kitaplığı, bir uygulamanın yeniden başlatılmasına yol açmadan bir yapılandırma ayarları kümesinin güncelleştirilmesini destekler. Bu, öncelikle yapılandırma sağlayıcısına ait seçeneklerden bir örneği `IConfigurationRefresher` alarak ve sonra bu örneğe kodunuzda herhangi bir yere çağrı `Refresh` yaparak uygulanabilir.
 
-Güncelleştirilmiş ayarları tutun ve yapılandırma deposu için çok fazla sayıda çağrı önlemek için her ayar için bir önbelleği kullanılır. Önbelleğe alınan bir ayarın değerini sona erinceye kadar bile yapılandırma deposunda değeri değiştiğinde yenileme işlemi değeri güncelleştirmez. Her istek için varsayılan süre 30 saniyedir ancak gerekirse kılınabilir.
+Ayarları güncel tutmak ve yapılandırma deposuna çok fazla çağrı önlemek için, her bir ayar için bir önbellek kullanılır. Bir ayarın önbelleğe alınmış değeri sona erene kadar, yenileme işlemi değeri, değer yapılandırma deposunda değiştiği zaman bile güncelleştirmez. Her istek için varsayılan kullanım süresi 30 saniyedir, ancak gerekirse geçersiz kılınabilir.
 
-Bu öğretici, kodunuzda dinamik yapılandırma güncelleştirmeleri nasıl uygulayacağınıza dair gösterir. Bu hızlı başlangıçlar, tanıtılan uygulama üzerine inşa edilmiştir. Devam etmeden önce [uygulama yapılandırması ile .NET Core uygulaması oluşturmak](./quickstart-dotnet-core-app.md) ilk.
+Bu öğreticide, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl uygulayabileceğinizi gösterir. Hızlı başlangıçlarda tanıtılan uygulamada oluşturulur. Devam etmeden önce, önce [uygulama yapılandırması ile bir .NET Core uygulaması oluşturun](./quickstart-dotnet-core-app.md) .
 
-Bu öğreticideki adımları uygulamak için herhangi bir kod Düzenleyicisi'ni kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) Windows, macOS ve Linux platformlarını kullanılabilir mükemmel bir seçenektir.
+Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * İsteğe bağlı bir uygulama yapılandırma deposuyla yapılandırmasını güncelleştirmek için uygulamanızı ayarlayın.
-> * Uygulamanızın denetleyicileri en son yapılandırmayı yerleştirir.
+> * Uygulamanızı isteğe bağlı olarak bir uygulama yapılandırma deposu ile güncelleştirmek için uygulamanızı ayarlayın.
+> * En son yapılandırmayı uygulamanızın denetleyicilerine ekleme.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiyi uygulamak için yükleme [.NET Core SDK'sı](https://dotnet.microsoft.com/download).
+Bu öğreticiyi yapmak için [.NET Core SDK](https://dotnet.microsoft.com/download)' yi yüklemelisiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırma verileri yeniden yükleyin
+## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 
-Açık *Program.cs* dosyasını yenileme Yapılandırması'nda belirtin ve güncelleştirmeye `AddAzureAppConfiguration` yöntemi ve tetikleyici el ile yenileme kullanarak `Refresh` yöntemi.
+*Program.cs* ' i açın ve `System.Threading.Tasks` ad alanına bir başvuru eklemek, `AddAzureAppConfiguration` yöntemde yenileme yapılandırmasını belirtmek `Refresh` ve yöntemi kullanarak el ile yenilemeyi tetiklemek için dosyayı güncelleştirin.
 
 ```csharp
+using System;
+using System.Threading.Tasks;
+
+namespace TestConsole
+{
 class Program
 {
     private static IConfiguration _configuration = null;
@@ -84,51 +89,52 @@ class Program
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
+}
 ```
 
-`ConfigureRefresh` Yöntemi, bir yenileme işlemi tetiklendiğinde, uygulama yapılandırma deposu ile yapılandırma verileri güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. Örneği `IConfigurationRefresher` çağrılarak alınabilir `GetRefresher` yöntemi için sağlanan seçenekleri `AddAzureAppConfiguration` yöntemi ve `Refresh` Bu örneği üzerinde yöntemi, kodunuzu herhangi bir yerindeki bir yenileme işlemi tetiklemek için kullanılabilir.
+`ConfigureRefresh` Yöntemi, bir yenileme işlemi tetiklendiğinde, yapılandırma verilerini uygulama yapılandırma deposu ile güncelleştirmek için kullanılan ayarları belirtmek için kullanılır. Bir örneği `IConfigurationRefresher` yönteminesunulan`AddAzureAppConfiguration` seçeneklere çağrı `GetRefresher` yöntemiyle alınabilir ve `Refresh` bu örnekteki yöntem kodunuzda herhangi bir yerde yenileme işlemini tetiklemek için kullanılabilir.
     
 > [!NOTE]
-> Bir yapılandırma ayarı için varsayılan önbellek sona erme süresini 30 saniye, ancak çağırarak geçersiz kılınabilir `SetCacheExpiration` seçenekleri Başlatıcı yöntemine geçirilen bağımsız değişken olarak `ConfigureRefresh` yöntemi.
+> Yapılandırma ayarı için varsayılan önbellek süre sonu zamanı 30 saniyedir, ancak yöntem `SetCacheExpiration` `ConfigureRefresh` için bağımsız değişken olarak geçirilen seçenek başlatıcısında yöntemi çağırarak geçersiz kılınabilir.
 
-## <a name="build-and-run-the-app-locally"></a>Derleme ve uygulamayı yerel olarak çalıştırma
+## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
-1. Adlı bir ortam değişkenini ayarlamak **ConnectionString**ve uygulama yapılandırma deponuz için erişim anahtarı ayarlayın. Windows Komut İstemi'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için izin vermek için komut istemine yeniden başlatın:
+1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Windows PowerShell kullanıyorsanız, aşağıdaki komutu çalıştırın:
+    Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    MacOS veya Linux kullanıyorsanız, aşağıdaki komutu çalıştırın:
+    MacOS veya Linux kullanıyorsanız şu komutu çalıştırın:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-1. Konsol uygulaması oluşturmak için aşağıdaki komutu çalıştırın:
+1. Konsol uygulamasını derlemek için aşağıdaki komutu çalıştırın:
 
         dotnet build
 
-1. Yapılandırma başarıyla tamamlandıktan sonra uygulamayı yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
+1. Oluşturma başarıyla tamamlandıktan sonra, uygulamayı yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
 
         dotnet run
 
-    ![Yerel hızlı uygulama başlatma](./media/quickstarts/dotnet-core-app-run.png)
+    ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/dotnet-core-app-run.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Seçin **tüm kaynakları**, hızlı başlangıç bölümünde oluşturduğunuz uygulama yapılandırma deposu örneği seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
-1. Seçin **yapılandırması Gezgini**ve aşağıdaki anahtarlarını güncelleştirin:
+1. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
 
-    | Anahtar | Değer |
+    | Anahtar | Value |
     |---|---|
-    | TestApp:Settings:Message | Azure uygulama yapılandırması - güncelleştirilmiş verileri |
+    | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından alınan veriler-güncelleştirildi |
 
-1. Komut istemi veya PowerShell penceresinde güncelleştirilmiş değeri yazdırma ve yenileme tetiklemek için Enter tuşuna basın.
+1. Yenileme tetiklemek ve komut Istemi veya PowerShell penceresinde güncelleştirilmiş değeri yazdırmak için ENTER tuşuna basın.
 
-    ![Hızlı Başlangıç uygulaması yenileme yerel](./media/quickstarts/dotnet-core-app-run-refresh.png)
+    ![Hızlı başlangıç uygulaması yerel yenileme](./media/quickstarts/dotnet-core-app-run-refresh.png)
     
     > [!NOTE]
-    > Önbellek sona erme zamanı kullanarak 10 saniyeye ayarlama `SetCacheExpiration` yenileme işlemi, yapılandırma ayarı için değer yapılandırmasını belirtirken yöntemi, yalnızca en az 10 saniye sonra son yenileme geçtiyse güncelleştirilir Bu ayar için.
+    > Önbellek sona erme zamanı, yenileme işlemi için yapılandırmayı belirtirken `SetCacheExpiration` yöntemi kullanılarak 10 saniye olarak ayarlandığından, yapılandırma ayarı değeri yalnızca son yenilemeden bu yana en az 10 saniye geçtiğinde güncelleştirilir. Bu ayar için.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -136,7 +142,7 @@ class Program
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, eklediğiniz Azure yönetilen hizmet kimliği erişim uygulama yapılandırmasını kolaylaştırmaya ve uygulamanız için kimlik bilgileri yönetimi iyileştirmek için. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi için Azure CLI örnekleri için devam edin.
+Bu öğreticide, uygulama yapılandırmasına erişimi kolaylaştırmak ve uygulamanız için kimlik bilgisi yönetimini geliştirmek üzere bir Azure yönetilen hizmet kimliği eklediniz. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi için Azure CLı örneklerine devam edin.
 
 > [!div class="nextstepaction"]
 > [CLI örnekleri](./cli-samples.md)
