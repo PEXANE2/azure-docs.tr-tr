@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7f82ad65ecc805d5a45c78e8b190dd0eee4c340c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5784fb4f4ab0f46d2db7e5e8cfe9deeafabb4e90
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882361"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066951"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight C# 'Ta Apache Hadoop MapReduce streaming ile kullanma
 
@@ -162,7 +162,7 @@ Uygulamayı oluşturduktan sonra, `/bin/Debug/reducer.exe` dosyayı proje dizini
 
    * Bir __Azure depolama hesabı__kullanıyorsanız karşıya yükle simgesine tıklayın ve ardından **Eşleyici** projesi için **bin\Debug** klasörüne gidin. Son olarak, **Mapper. exe** dosyasını seçin ve **Tamam**' a tıklayın.
 
-        ![karşıya yükle simgesi](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
+        ![Eşleyici için HDInsight karşıya yükleme simgesi](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
     
    * __Azure Data Lake Storage__kullanıyorsanız, dosya listesinde boş bir alana sağ tıklayın ve ardından __karşıya yükle__' yi seçin. Son olarak, **Mapper. exe** dosyasını seçin ve **Aç**' a tıklayın.
 

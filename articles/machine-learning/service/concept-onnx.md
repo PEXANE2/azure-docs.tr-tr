@@ -1,6 +1,6 @@
 ---
 title: ONNX ile yüksek performans, platformlar arası çıkarım
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Hızlandırma modelleri için ONNX ve ONNX çalışma zamanı hakkında bilgi edinin
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1d97e2d2698c482b75f037dbd8cde1027c472125
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 4f6e9e6b44e4a8fcc52f6d8ae19af60d64972b3a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534890"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035398"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX ve Azure Machine Learning: ML modellerini oluşturma ve hızlandırma
 
@@ -28,14 +28,14 @@ Microsoft ve makine öğrenimi modellerini temsil etmek için açık bir standar
 
 [Onnx çalışma zamanı](https://github.com/Microsoft/onnxruntime) , üretim için onnx modellerini dağıtmaya yönelik yüksek performanslı bir çıkarım altyapısıdır. Bulut ve kenar için en iyi duruma getirilmiştir ve Linux, Windows ve Mac üzerinde çalışmaktadır. İçinde C++yazılmış, C, Python ve C# API 'leri de vardır. ONNX çalışma zamanı tüm ONNX-ML belirtiminin desteğini sağlar ve ayrıca NVIDIA GPU 'Larda TensorRT gibi farklı donanımlarda Hızlandırıcılar ile tümleşir.
 
-ONNX çalışma zamanı, Bing, Office ve bilişsel hizmetler gibi yüksek ölçekli Microsoft hizmetlerinde kullanılır. Performans kazançları bir dizi etkene bağlıdır, ancak bu Microsoft Hizmetleri __CPU üzerinde ortalama bir 2x performans kazancı__gördük. ONNX çalışma zamanı, yüzlerce milyonlarca cihazda Windows ML 'nin bir parçası olarak da kullanılır. Çalışma zamanını Azure Machine Learning hizmetleriyle birlikte kullanabilirsiniz. ONNX çalışma zamanını kullanarak, kapsamlı üretim sınıfı iyileştirmeleri, test ve devam eden geliştirmelerden yararlanabilirsiniz.
+ONNX çalışma zamanı, Bing, Office ve bilişsel hizmetler gibi yüksek ölçekli Microsoft hizmetlerinde kullanılır. Performans kazançları bir dizi etkene bağlıdır, ancak bu Microsoft Hizmetleri __CPU üzerinde ortalama bir 2x performans kazancı__gördük. ONNX çalışma zamanı, yüzlerce milyonlarca cihazda Windows ML 'nin bir parçası olarak da kullanılır. Çalışma zamanını Azure Machine Learning ile kullanabilirsiniz. ONNX çalışma zamanını kullanarak, kapsamlı üretim sınıfı iyileştirmeleri, test ve devam eden geliştirmelerden yararlanabilirsiniz.
 
 [![Eğitim, dönüştürücüler ve dağıtımı gösteren ONNX akış diyagramı](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>ONNX modelleri Al
 
 Çeşitli şekillerde ONNX modelleri elde edebilirsiniz:
-+ Azure Machine Learning hizmetinde yeni bir ONNX modeli eğitme (Bu makalenin altındaki örneklere bakın)
++ Azure Machine Learning yeni bir ONNX modeli eğitme (Bu makalenin altındaki örneklere bakın)
 + Varolan modeli başka bir biçimden ONNX 'e Dönüştür ( [öğreticilere](https://github.com/onnx/tutorials)bakın) 
 + [Onnx model Zoo](https://github.com/onnx/models) (Bu makalenin altındaki örneklere bakın) için önceden eğitilen BIR onnx modeli alın
 + Özelleştirilmiş ONNX modelden üreten [Azure özel görüntü işleme hizmeti](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
@@ -44,7 +44,7 @@ Görüntü sınıflandırması, nesne algılama ve metin işleme gibi birçok mo
 
 ## <a name="deploy-onnx-models-in-azure"></a>Azure'da ONNX modelleri dağıtma
 
-Azure Machine Learning hizmeti ile dağıtma, yönetme ve ONNX modellerinizle izleyin. Standart [dağıtımı iş akışı](concept-model-management-and-deployment.md) ve ONNX çalışma zamanı, bulutta barındırılan bir REST uç noktası oluşturabilirsiniz. Kendiniz denemek için bu makalenin sonundaki örnek jupi not defterlerine bakın. 
+Azure Machine Learning ile ONNX modellerinizi dağıtabilir, yönetebilir ve izleyebilirsiniz. Standart [dağıtımı iş akışı](concept-model-management-and-deployment.md) ve ONNX çalışma zamanı, bulutta barındırılan bir REST uç noktası oluşturabilirsiniz. Kendiniz denemek için bu makalenin sonundaki örnek jupi not defterlerine bakın. 
 
 ### <a name="install-and-use-onnx-runtime-with-python"></a>Python ile ONNX çalışma zamanını yükleyip kullanma
 

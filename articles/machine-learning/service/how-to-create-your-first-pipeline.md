@@ -1,6 +1,6 @@
 ---
 title: ML işlem hatlarını oluşturun, çalıştırın, & izleyin
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Oluşturun ve Python için Azure Machine Learning SDK'sı ile işlem hattı öğrenme bir makine çalıştırın. Machine Learning (ML) aşamalarını birlikte barındıran iş akışlarını oluşturmak ve yönetmek için ML işlem hatlarını kullanın. Bu aşamalar veri hazırlama, model eğitimi, model dağıtımı ve çıkarım/Puanlama içerir.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12ba2991f22576dc62559d5c62dc4a0e769d2681
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f1a0db395b86f473d2372a5ca779020e54186e45
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858780"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034853"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 
@@ -26,11 +26,11 @@ ML görevlerinin CI/CD otomasyonu için [Azure](https://docs.microsoft.com/azure
 
 Veri hazırlama ve model eğitimi gibi bir ML işlem hattının her aşaması bir veya daha fazla adım içerebilir.
 
-Oluşturduğunuz ML ardışık düzenleri Azure Machine Learning hizmeti [çalışma alanınızın](how-to-manage-workspace.md)üyeleri tarafından görülebilir. 
+Oluşturduğunuz ML ardışık düzenleri Azure Machine Learning [çalışma](how-to-manage-workspace.md)alanınızın üyeleri tarafından görülebilir. 
 
 ML ardışık düzenleri, hesaplama için uzak işlem hedeflerini ve bu işlem hattı ile ilişkili ara ve nihai verilerin depolanmasını kullanır. Desteklenen [Azure depolama](https://docs.microsoft.com/azure/storage/) konumlarına ve bunlara veri okuyup yazabilir.
 
-Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning hizmetinin ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
+Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -283,7 +283,7 @@ Gereksiz yeniden çalışma olanağı sunan`allow_reuse`çevikliği ortadan kald
 Adımlarınızı tanımladıktan sonra, bu adımların bazılarını veya tümünü kullanarak işlem hattını oluşturursunuz.
 
 > [!NOTE]
-> Adımları tanımlarken veya işlem hattını oluştururken Azure Machine Learning hizmetine dosya veya veri yüklenmedi.
+> Adımları tanımlarken veya işlem hattını oluştururken Azure Machine Learning hiçbir dosya veya veri yüklenmedi.
 
 ```python
 # list of steps to run
@@ -322,7 +322,7 @@ Daha fazla bilgi için bkz. [Azure-işlem hattı-adımlar paketi](https://docs.m
 
 ## <a name="submit-the-pipeline"></a>İşlem hattı gönderin
 
-İşlem hattını gönderdiğinizde, Azure Machine Learning hizmeti her adımın bağımlılıklarını denetler ve belirttiğiniz kaynak dizinin bir anlık görüntüsünü yükler. Kaynak dizin belirtilirse, geçerli yerel dizine yüklenir. Anlık görüntü Ayrıca çalışma alanınızdaki denemenin bir parçası olarak depolanır.
+İşlem hattını gönderdiğinizde, Azure Machine Learning her adımın bağımlılıklarını denetler ve belirttiğiniz kaynak dizinin bir anlık görüntüsünü yükler. Kaynak dizin belirtilirse, geçerli yerel dizine yüklenir. Anlık görüntü Ayrıca çalışma alanınızdaki denemenin bir parçası olarak depolanır.
 
 > [!IMPORTANT]
 > Dosyaların anlık görüntüye eklenmesini engellemek için, dizinde bir [. gitignore](https://git-scm.com/docs/gitignore) veya `.amlignore` dosya oluşturun ve dosyaları bu dosyaya ekleyin. Dosya,. gitignore dosyası ile aynı söz dizimini ve desenleri kullanır. [](https://git-scm.com/docs/gitignore) `.amlignore` Her iki dosya de varsa, `.amlignore` dosya önceliklidir.

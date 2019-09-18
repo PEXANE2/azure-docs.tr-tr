@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 679de2d3a5519e57978239ddd75a4b9fa2ffef3c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f90b69cde4a961457c987f004e2605e6884bf323
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998767"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063338"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde teknik profiller hakkında
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Teknik bir profil, Azure Active Directory (Azure AD) B2C 'de özel bir ilke kullanarak farklı türde taraflara iletişim kurmak için yerleşik mekanizmaya sahip bir çerçeve sağlar. Teknik profiller, Azure AD B2C kiracınızla iletişim kurmak, Kullanıcı oluşturmak veya bir kullanıcı profilini okumak için kullanılır. Kullanıcı etkileşimi sağlamak için teknik bir profil kendi kendine eklenebilir. Örneğin, oturum açmak için kullanıcının kimlik bilgisini toplayın ve ardından kaydolma sayfasını veya parola sıfırlama sayfasını yazın.
+Teknik bir profil, Azure Active Directory B2C (Azure AD B2C) içinde özel bir ilke kullanarak farklı türde taraflar ile iletişim kurmak için yerleşik mekanizmaya sahip bir çerçeve sağlar. Teknik profiller, Azure AD B2C kiracınızla iletişim kurmak, Kullanıcı oluşturmak veya bir kullanıcı profilini okumak için kullanılır. Kullanıcı etkileşimi sağlamak için teknik bir profil kendi kendine eklenebilir. Örneğin, oturum açmak için kullanıcının kimlik bilgisini toplayın ve ardından kaydolma sayfasını veya parola sıfırlama sayfasını yazın.
 
 ## <a name="type-of-technical-profiles"></a>Teknik profillerin türü
 

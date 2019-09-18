@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da7ec020b6f3f4a3b1890695a78fb6bdb363d233
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 69279da93197bcaaf1bf600bc9406287253d74bb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849372"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063271"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C Kullanıcı deneyimlerinin arabirimini özelleştirme
 
-Kaydolma, oturum açma ve profil düzenlemesi gibi daha yaygın kullanıcı deneyimleri için, Azure Active Directory (Azure AD) B2C 'de [Kullanıcı akışlarını](active-directory-b2c-reference-policies.md) kullanabilirsiniz. Bu öğreticideki bilgiler, kendi HTML ve CSS dosyalarınızı kullanarak bu deneyimlerin [Kullanıcı arabirimini (UI)](customize-ui-overview.md) nasıl özelleştireceğinizi öğrenmenize yardımcı olur.
+Kaydolma, oturum açma ve profil düzenlemesi gibi daha yaygın kullanıcı deneyimleri için [Kullanıcı akışlarını](active-directory-b2c-reference-policies.md) Azure Active Directory B2C (Azure AD B2C) kullanabilirsiniz. Bu öğreticideki bilgiler, kendi HTML ve CSS dosyalarınızı kullanarak bu deneyimlerin [Kullanıcı arabirimini (UI)](customize-ui-overview.md) nasıl özelleştireceğinizi öğrenmenize yardımcı olur.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -43,7 +43,7 @@ Bir Azure depolama hesabı ve kapsayıcısı oluşturup, temel HTML ve CSS dosya
 Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bunları [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md)alanında depoaktarabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Üst menüden **Dizin ve abonelik filtresi** ' ni seçin ve aboneliğinizi içeren dizini seçin. Bu dizin, Azure B2C kiracınızı içeren olandan farklı.
+2. Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve aboneliğinizi içeren dizini seçin. Bu dizin, Azure B2C kiracınızı içeren olandan farklı.
 3. Azure portal sol üst köşesindeki tüm hizmetler ' i seçin, **depolama hesapları**' nı arayıp seçin.
 4. **Add (Ekle)** seçeneğini belirleyin.
 5. **Kaynak grubu**altında **Yeni oluştur**' u seçin, yeni kaynak grubu için bir ad girin ve ardından **Tamam**' a tıklayın.
@@ -54,7 +54,7 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
 
 ### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-1. Depolama hesabının genel bakış sayfasında, Bloblar ' ı seçin.
+1. Depolama hesabının genel bakış sayfasında, Bloblar ' ıseçin.
 2. **Kapsayıcı**' yı seçin, kapsayıcı için bir ad girin, blob ' u seçin **(yalnızca blob 'lar için anonim okuma erişimi)** ve ardından **Tamam**' a tıklayın.
 
 ### <a name="enable-cors"></a>CORS'yi etkinleştirme
@@ -62,7 +62,7 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
  Bir tarayıcıda Azure AD B2C kod, Kullanıcı akışında belirttiğiniz bir URL 'den özel içerik yüklemek için modern ve standart bir yaklaşım kullanır. Çıkış noktaları arası kaynak paylaşımı (CORS), bir Web sayfasındaki kısıtlanmış kaynakların diğer etki alanlarından istenmesinin yapılmasına izin verir.
 
 1. Menüsünde **CORS**' yi seçin.
-2. **Izin verilen çıkış noktaları**için `https://your-tenant-name.b2clogin.com`girin. Değiştirin `your-tenant-name` Azure AD B2C kiracınızın adı. Örneğin, `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+2. **Izin verilen çıkış noktaları**için `https://your-tenant-name.b2clogin.com`girin. Değiştirin `your-tenant-name` Azure AD B2C kiracınızın adı. Örneğin: `https://fabrikam.b2clogin.com`. Kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
 3. **İzin verilen Yöntemler**için hem hem `GET` de `OPTIONS`öğesini seçin.
 4. **Izin verilen üst bilgiler**için bir yıldız işareti (*) girin.
 5. **Gösterilen üstbilgiler**için bir yıldız işareti (*) girin.
@@ -74,9 +74,9 @@ Dosyalarınızı birçok şekilde depolayabilmenize karşın, bu öğreticide bu
 
 ### <a name="create-the-customization-files"></a>Özelleştirme dosyalarını oluşturma
 
-Kaydolma deneyiminin Kullanıcı arabirimini özelleştirmek için, basit bir HTML ve CSS dosyası oluşturarak başlayın. HTML 'nizi istediğiniz şekilde yapılandırabilirsiniz, ancak tanımlayıcı `api`içeren bir **div** öğesi olmalıdır. Örneğin, `<div id="api"></div>`. Sayfa görüntülenirken öğeleri `api` kapsayıcıya Azure AD B2C çıkartır.
+Kaydolma deneyiminin Kullanıcı arabirimini özelleştirmek için, basit bir HTML ve CSS dosyası oluşturarak başlayın. HTML 'nizi istediğiniz şekilde yapılandırabilirsiniz, ancak tanımlayıcı `api`içeren bir **div** öğesi olmalıdır. Örneğin: `<div id="api"></div>`. Sayfa görüntülenirken öğeleri `api` kapsayıcıya Azure AD B2C çıkartır.
 
-1. Yerel bir klasörde aşağıdaki dosyayı oluşturun ve depolama hesabının adına ve `your-storage-account` `your-container` oluşturduğunuz kapsayıcının adına değişiklik yaptığınızdan emin olun. Örneğin, `https://store1.blob.core.windows.net/b2c/style.css`.
+1. Yerel bir klasörde aşağıdaki dosyayı oluşturun ve depolama hesabının adına ve `your-storage-account` `your-container` oluşturduğunuz kapsayıcının adına değişiklik yaptığınızdan emin olun. Örneğin: `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>
@@ -127,7 +127,7 @@ Kaydolma deneyiminin Kullanıcı arabirimini özelleştirmek için, basit bir HT
 Bu öğreticide, Azure AD B2C, depolama hesabında oluşturduğunuz dosyaları depoladığınızda, bu sayede bunlara erişebilir.
 
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin, **depolama hesapları**' nı arayıp seçin.
-2. Oluşturduğunuz depolama hesabını seçin, Bloblar ' ı seçin ve ardından oluşturduğunuz kapsayıcıyı seçin.
+2. Oluşturduğunuz depolama hesabını seçin, Bloblar 'ı seçin ve ardından oluşturduğunuz kapsayıcıyı seçin.
 3. **Karşıya yükle**' yi seçin, *Custom-ui. html* dosyasını seçin ve ardından **karşıya yükle**' ye tıklayın.
 
     ![Karşıya yükleme düğmesi ve vurgulanan dosyalar için portalda blob sayfasını karşıya yükle](./media/tutorial-customize-ui/upload-blob.png)

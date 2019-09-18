@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e18157c95dac0de90c50b4b7e8591e32c5b76aaf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227243"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066180"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights kullanarak Azure Active Directory B2C Kullanıcı davranışını izleme
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Application Insights ile birlikte Azure Active Directory (Azure AD) B2C kullandığınızda, Kullanıcı yolculukları için ayrıntılı ve özelleştirilmiş olay günlükleri alabilirsiniz. Bu makalede şunları öğreneceksiniz:
+Azure Application Insights ile birlikte Azure Active Directory B2C (Azure AD B2C) kullandığınızda, Kullanıcı yolculuğa yönelik ayrıntılı ve özelleştirilmiş olay günlükleri alabilirsiniz. Bu makalede şunları öğreneceksiniz:
 
 * Kullanıcı davranışında Öngörüler elde edin.
 * Geliştirme veya üretimde kendi ilkelerinizin sorunlarını giderin.
@@ -45,13 +45,13 @@ Application Insights, bir Kullanıcı oturumu kaydetmek için bir bağıntı KIM
 Azure AD B2C Application Insights kullanırken, tek yapmanız gereken bir kaynak oluşturur ve izleme anahtarını alır.
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Üst menüdeki **Dizin ve abonelik filtresi** ' ne tıklayarak ve aboneliğinizi içeren dizini seçerek Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Bu kiracı Azure AD B2C kiracınız değil.
+2. Üst menüdeki **Dizin + abonelik** filtresini seçip aboneliğinizi içeren dizini seçerek Azure aboneliğinizi içeren dizini kullandığınızdan emin olun. Bu kiracı Azure AD B2C kiracınız değil.
 3. Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin ve **Application Insights**arayıp seçin.
-4. **Oluştur**’a tıklayın.
+4. **Oluştur**'a tıklayın.
 5. Kaynak için bir **ad** girin.
 6. **Uygulama türü**için **ASP.NET Web uygulaması**' nı seçin.
 7. **Kaynak grubu**için mevcut bir grubu seçin veya yeni bir grup için bir ad girin.
-8. **Oluştur**’a tıklayın.
+8. **Oluştur**'a tıklayın.
 4. Application Insights kaynağını oluşturduktan sonra açın, **temel**bileşenler ' i genişletin ve izleme anahtarını kopyalayın.
 
 ![Application Insights genel bakış ve Izleme anahtarı](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)
@@ -111,10 +111,10 @@ Teknik profiller, Azure AD B2C kimlik deneyimi çerçevesinde işlevler olarak k
 
 | Teknik profil | Görev |
 | ----------------- | -----|
-| AzureInsights-Common | Tüm AzureInsights teknik profillerine dahil edilecek ortak bir parametre kümesi oluşturur. | 
-| AzureInsights-SignInRequest | Bir oturum açma isteği alındığında bir talep kümesiyle birlikte oturum açma olayı oluşturur. | 
-| AzureInsights-UserSignup | Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma seçeneğini tetiklediğinde bir UserSignup olayı oluşturur. | 
-| AzureInsights-Signcomplete | Bağlı olan taraf uygulamasına bir belirteç gönderildiğinde bir kimlik doğrulamanın başarıyla tamamlandığını kaydeder. | 
+| AzureInsights-Common | Tüm AzureInsights teknik profillerine dahil edilecek ortak bir parametre kümesi oluşturur. |
+| AzureInsights-SignInRequest | Bir oturum açma isteği alındığında bir talep kümesiyle birlikte oturum açma olayı oluşturur. |
+| AzureInsights-UserSignup | Kullanıcı kaydolma/oturum açma yolculuğunda oturum açma seçeneğini tetiklediğinde bir UserSignup olayı oluşturur. |
+| AzureInsights-Signcomplete | Bağlı olan taraf uygulamasına bir belirteç gönderildiğinde bir kimlik doğrulamanın başarıyla tamamlandığını kaydeder. |
 
 Profilleri, başlatıcı paketinden *TrustFrameworkExtensions. xml* dosyasına ekleyin. Bu öğeleri **Claimsproviders** öğesine ekleyin:
 
@@ -230,11 +230,11 @@ Bir `Azure-Insights-SignInRequest` oturum açma/kaydolma isteğinin alındığı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Gereksinimlerinize uyacak şekilde Kullanıcı yolculuğuna talep türleri ve olaylar ekleyin. [Talep çözümleyicilerine](claim-resolver-overview.md) veya herhangi bir dize talep türüne, Application Insights olayına bir **giriş talep** öğesi ekleyerek veya AzureInsights-Common Technical profile ' i kullanarak talep ekleyebilirsiniz. 
+Gereksinimlerinize uyacak şekilde Kullanıcı yolculuğuna talep türleri ve olaylar ekleyin. [Talep çözümleyicilerine](claim-resolver-overview.md) veya herhangi bir dize talep türüne, Application Insights olayına bir **giriş talep** öğesi ekleyerek veya AzureInsights-Common Technical profile ' i kullanarak talep ekleyebilirsiniz.
 
 - **ClaimTypeReferenceId** , bir talep türüne başvurudur.
-- **Partnerclaimtype** , Azure Insights 'ta görünen özelliğin adıdır. Öğesinin sözdizimini kullanın; `{property:NAME}`burada `NAME` , olaya bir özellik eklenir. 
-- **DefaultValue** herhangi bir dize değeri veya talep çözümleyici kullanır. 
+- **Partnerclaimtype** , Azure Insights 'ta görünen özelliğin adıdır. Öğesinin sözdizimini kullanın; `{property:NAME}`burada `NAME` , olaya bir özellik eklenir.
+- **DefaultValue** herhangi bir dize değeri veya talep çözümleyici kullanır.
 
 ```XML
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />

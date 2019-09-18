@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: ed41ccea0754f3eeffdd0248bac567859db1492c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 21f80a2be09302e47817ccfd4223207bdcdd0413
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001521"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066803"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -26,6 +26,7 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 
 | Özellik | Ayrıntılar |
 | ---| --- |
+| [Azure özel bağlantısı](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Özel bağlantı, ağ mimarisini basitleştirir ve Azure 'daki uç noktalar arasındaki bağlantının güvenliğini sağlarken, bu sayede Internet 'te pozlamayı ortadan kaldırır. Özel bağlantı Ayrıca, Azure 'da kendi hizmetlerinizi oluşturmanıza ve oluşturmanıza de olanak sağlar. |
 | Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](sql-database-accelerated-database-recovery.md).|
 |Yaklaşık sayı farklı|Daha fazla bilgi için bkz. [yaklaşık Count DISTINCT](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
 |Rowstore 'da Batch modu (uyumluluk düzeyi 150 altında)|Bilgi için bkz. [rowstore 'Da Batch modu](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
@@ -55,6 +56,24 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 | &nbsp; |
 
 ---
+
+## <a name="new-features"></a>Yeni Özellikler
+
+### <a name="managed-instance-h2-2019-updates"></a>Yönetilen örnek H2 2019 güncelleştirmeleri
+
+- Yönetilen örnek davranışınızı [Genel izleme bayraklarıyla](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)yapılandırın.
+
+### <a name="managed-instance-h1-2019-updates"></a>Yönetilen örnek H1 2019 güncelleştirmeleri
+
+Aşağıdaki özellikler, H1 2019 ' de yönetilen örnek dağıtım modelinde etkinleştirilmiştir:
+  - <a href="https://aka.ms/sql-mi-visual-studio-subscribers">Visual Studio aboneleri için aylık Azure kredisi</a> ve artan [bölge sınırları](sql-database-managed-instance-resource-limits.md#regional-resource-limitations)ile abonelikler için destek.
+  - <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 ve SharePoint 2019 </a> ile <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> için destek
+  - <a href="https://aka.ms/managed-instance-collation">Sunucu düzeyi harmanlama</a> ve tercih ettiğiniz <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">zaman dilimini</a> içeren örnekler oluşturun.
+  - Yönetilen örnekler artık <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">yerleşik güvenlik duvarıyla</a>korunuyor.
+  - Örnekleri, [genel uç noktaları](sql-database-managed-instance-public-endpoint-configure.md)kullanacak şekilde yapılandırın, <a href="https://aka.ms/four-cores-sql-mi-update">5. nesil donanım oluşturma konusunda</a> daha iyi ağ performansı elde etmek için [proxy geçersiz kılma](/sql-database-connectivity-architecture.md#connection-policy) bağlantısı yapın veya en son nokta geri yükleme için <a href="https://aka.ms/managed-instance-configurable-backup-retention">35 güne kadar yedekleme tutma işlemini yapılandırın</a> . Uzun süreli yedek saklama (10 yıla kadar) hala etkin değildir, bu nedenle <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">yalnızca kopya yedeklemeleri</a> alternatif olarak kullanabilirsiniz.
+  - Yeni işlevler, <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell kullanarak veritabanınızı başka bir veri merkezine coğrafi olarak geri yükleme</a>, [veritabanını yeniden adlandırma](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [sanal kümeyi silme](sql-database-managed-instance-delete-virtual-cluster.md)olanağı sağlar.
+  - Yeni yerleşik [örnek katılımcısı rolü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) , güvenlik ilkelerine ve kurumsal standartlarla uyumluluğa sahip vergi (SOD) uyumluluğuna izin verebilir.
+  - Yönetilen örnek, aşağıdaki Azure Kamu bölgelerinde (US Gov Teksas, US Gov Arizona) ve Çin Kuzey 2 ve Çin Doğu 2 ' de kullanılabilir. Ayrıca, aşağıdaki genel bölgelerde de kullanılabilir: Avustralya Orta, Avustralya Orta 2, Brezilya Güney, Fransa Güney, BAE Orta, BAE Kuzey, Güney Afrika Kuzey, Güney Afrika Batı.
 
 ## <a name="fixed-known-issues"></a>Bilinen sorunlar düzeltildi
 

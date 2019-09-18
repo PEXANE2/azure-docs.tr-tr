@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3ca9c12caa7fa9b54cd63c2655166d95477dffa2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5b97e577216f5e34cd0a5bdd66eea2cf2efa0fee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885288"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035828"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme
 
@@ -47,7 +47,7 @@ Ambarı Web Kullanıcı arabirimine bağlanırken, sayfada kimlik doğrulaması 
 
 Sayfa açıldığında, üstteki çubuğun üzerine göz önünde yer. Bu çubuk aşağıdaki bilgileri ve denetimleri içerir:
 
-![ambarı-gezinti](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
+![ambarı-gezinti](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
 |Öğe |Açıklama |
 |---|---|
@@ -80,7 +80,7 @@ Uyarılar, **Uyarılar** sayfasından görüntülenebilen çeşitli varsayılan 
 
 Grupları **Eylemler** menüsünü kullanarak yönetebilir ve **Uyarı gruplarını yönet**' i seçebilirsiniz.
 
-![Uyarı gruplarını Yönet iletişim kutusu](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
+![Uyarı gruplarını Yönet iletişim kutusu](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
 Ayrıca, uyarı yöntemlerini yönetebilir ve __Uyarı bildirimlerini yönet__' i seçerek **Eylemler** menüsünde uyarı bildirimleri oluşturabilirsiniz. Geçerli tüm bildirimler görüntülenir. Ayrıca, buradan bildirim oluşturabilirsiniz. Bildirimler, belirli bir uyarı/önem derecesi oluştuğunda **e-posta** veya **SNMP** aracılığıyla gönderilebilir. Örneğin, **Yarn varsayılan** grubundaki uyarılardan herhangi biri **kritik**olarak ayarlandığında bir e-posta iletisi gönderebilirsiniz.
 
@@ -100,20 +100,20 @@ Panonun **ölçümler** sekmesi, kümenizin durumunu bir bakışta izlemeyi kola
 
 Küme içindeki düğümler hakkında daha fazla bilgi için **konaklar**' ı seçin. Ardından ilgilendiğiniz belirli bir düğümü seçin.
 
-![Ana bilgisayar ayrıntıları](./media/hdinsight-hadoop-manage-ambari/host-details.png)
+![Ana bilgisayar ayrıntıları](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
 ### <a name="services"></a>Hizmetler
 
 Panodaki **Hizmetler** kenar çubuğu, kümede çalışan hizmetlerin durumuyla ilgili hızlı öngörüler sağlar. Yapılması gereken durum veya eylemleri göstermek için çeşitli simgeler kullanılır. Örneğin, bir hizmetin geri dönüştürülmesi gerekiyorsa sarı bir geri dönüşüm simgesi görüntülenir.
 
-![Hizmetler yan çubuğu](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
+![Hizmetler yan çubuğu](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
 > Görünen hizmetler, HDInsight küme türleri ve sürümleri arasında farklılık gösterir. Burada görüntülenecek hizmetler kümeniz için görüntülenecek hizmetlerden farklı olabilir.
 
 Bir hizmetin seçilmesi, hizmet hakkında daha ayrıntılı bilgiler görüntüler.
 
-![hizmet özeti bilgileri](./media/hdinsight-hadoop-manage-ambari/service-details.png)
+![hizmet özeti bilgileri](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
 #### <a name="quick-links"></a>Hızlı bağlantılar
 
@@ -168,7 +168,7 @@ Bu bağlantılardan herhangi birini seçmek, tarayıcınızda seçili sayfayı g
 
 **Pano** veya **Hizmetler** sayfasında, tüm hizmetleri durdurmak ve başlatmak Için hizmetler listesinin altındaki **Eylemler** düğmesini kullanın.
 
-![hizmet eylemleri](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
+![hizmet eylemleri](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
 > **Hizmet ekleme hizmeti** bu menüde listelenirken, HDInsight kümesine hizmet eklemek için kullanılmamalıdır. Küme sağlama sırasında bir betik eylemi kullanılarak yeni hizmetler eklenmelidir. Betik eylemlerini kullanma hakkında daha fazla bilgi için bkz. [betik eylemlerini kullanarak HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md).
@@ -195,7 +195,7 @@ Bir hizmeti yapılandırmak için aşağıdaki adımları kullanın:
 
 2. Seçin **yapılandırmaları** sekmesi. Geçerli yapılandırma görüntülenir. Önceki yapılandırmaların bir listesi de görüntülenir.
 
-    ![konfigürasyonları](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![konfigürasyonları](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. Yapılandırmayı değiştirmek için görüntülenecek alanları kullanın ve ardından **Kaydet**' i seçin. Veya önceki ayarlara geri dönmek için önceki bir yapılandırma seçin ve ardından **geçerli yap** ' ı seçin.
 

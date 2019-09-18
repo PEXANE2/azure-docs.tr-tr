@@ -1,6 +1,6 @@
 ---
-title: Arka plan programı uygulama çağıran web API'leri (çağıran web API'leri) - Microsoft kimlik platformu
-description: Daemon uygulamasının nasıl oluşturulacağını öğrenin çağrıları veritabanını web API'leri (çağıran web API'leri)
+title: Web API 'Lerini çağıran Daemon uygulaması (Web API 'Lerini çağırma)-Microsoft Identity platform
+description: Web API 'Lerini çağıran bir Daemon uygulaması derlemeyi öğrenin (Web API 'Lerini çağırma)
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,34 +12,65 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff375f996126d9e8b64361fc0e5673c25d30c19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9eacb574f20abeb63a9d0ab8caf534eb7abb9784
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65076278"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056358"
 ---
-# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Arka plan programı uygulama çağrıları API'ler - web uygulamasından web API'si çağırın
+# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Web API 'Lerini çağıran Daemon uygulaması-uygulamadan bir Web API 'SI çağırma
 
-Bir arka plan programı uygulaması, bir .NET arka plan programı uygulamasından web API'si çağırma ya da birkaç önceden onaylanmış web API'lerini çağırma.
+Bir Daemon uygulaması, .NET Daemon uygulamasından bir Web API 'si çağırabilir veya önceden onaylanmış birkaç Web API 'si çağırabilir.
 
-## <a name="calling-a-web-api-from-a-net-daemon-application"></a>Bir .NET arka plan programı uygulamasından web API'si çağırma
+## <a name="calling-a-web-api-from-a-net-daemon-application"></a>.NET Daemon uygulamasından bir Web API 'SI çağırma
+
+Bir API 'yi çağırmak için belirteci kullanma
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-<!--
-More includes will come later for Python and Java
--->
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-## <a name="calling-several-apis"></a>Çeşitli API'leri çağırma
+```Python
+endpoint = "url to the API" 
+http_headers = {'Authorization': 'Bearer ' + result['access_token'],
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'}
+data = requests.get(endpoint, headers=http_headers, stream=False).json()
+```
 
-Arka plan programı uygulamaları için web API'leri çağırmanız önceden onaylanması gerekir. Herhangi bir artımlı izin (hiçbir kullanıcı etkileşimi yoktur) arka plan programları ile olmayacak. Kiracı Yöneticisi uygulama ve tüm API izinleri öncesi onayı gerekiyor. Çeşitli API'leri çağırmak istiyorsanız, her bir kaynak için bir belirteç almak ihtiyacınız her zaman arama `AcquireTokenForClient`. MSAL, gereksiz hizmet çağrıları önlemek için uygulama belirteç önbelleği kullanır.
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+```Java
+HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+// Set the appropriate header fields in the request header.
+conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+conn.setRequestProperty("Accept", "application/json");
+
+String response = HttpClientHelper.getResponseStringFromConn(conn);
+
+int responseCode = conn.getResponseCode();
+if(responseCode != HttpURLConnection.HTTP_OK) {
+    throw new IOException(response);
+}
+
+JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
+```
+
+---
+
+## <a name="calling-several-apis"></a>Çeşitli API 'Ler çağırma
+
+Daemon uygulamaları için, çağırdığınız Web API 'Lerinin önceden onaylanmış olması gerekir. Daemon uygulamalarında artımlı izin yoktur (Kullanıcı etkileşimi yoktur). Kiracı yöneticisinin uygulamayı ve tüm API izinlerini önceden onaylaması gerekir. Çeşitli API 'Ler çağırmak isterseniz her bir kaynak için her seferinde `AcquireTokenForClient`bir belirteç edinmeniz gerekir. MSAL, gereksiz hizmet çağrılarını önlemek için uygulama belirteci önbelleğini kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Arka plan programı app - üretim Git](./scenario-daemon-production.md)
+> [Daemon uygulaması-üretime taşı](./scenario-daemon-production.md)

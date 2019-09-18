@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b86841cc6889eb8e716df3f6d1ac9bc7b158992
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: ae0912203f2427694d2a9b8611966a55e1e6889e
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852718"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056392"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Senaryo: Web API 'Lerini çağıran Daemon uygulaması
 
@@ -60,7 +60,7 @@ Kendi kimlikleri için belirteç elde eden uygulamalar:
 Geliştiriciler için, bu senaryoya yönelik uçtan uca deneyim aşağıdaki yönlere sahiptir:
 
 - Daemon uygulamaları yalnızca Azure AD kiracılarında çalışabilir. Microsoft kişisel hesaplarını işlemeyi deneyen bir Daemon uygulaması oluşturmak mantıklı değildir. İş kolu (LOB) uygulaması geliştiricisiyseniz, kiracınızda Daemon uygulamanızı oluşturacaksınız. Bir ISV iseniz, çok kiracılı bir Daemon uygulaması oluşturmak isteyebilirsiniz. Her kiracı yöneticisi tarafından incelenmesi gerekir.
-- [Uygulama kaydı](./scenario-daemon-app-registration.md)sırasında, **Yanıt URI 'si** gerekli değildir. Gizli dizileri veya sertifikaları Azure AD ile paylaşmanız gerekir ve uygulama izinleri istemek ve bu uygulama izinlerini kullanmak için yönetici onayı vermeniz gerekir.
+- [Uygulama kaydı](./scenario-daemon-app-registration.md)sırasında, **Yanıt URI 'si** gerekli değildir. Parolaların veya sertifikaların veya imzalı onayların Azure AD ile paylaşılması gerekir ve bu uygulama izinlerini kullanmak için uygulama izinleri istemeniz ve yönetici onayı vermeniz gerekir.
 - Uygulama [yapılandırmasının](./scenario-daemon-app-configuration.md) , uygulama kaydı SıRASıNDA Azure AD ile paylaşılan olarak istemci kimlik bilgilerini sağlaması gerekir.
 - İstemci kimlik bilgileri akışı ile belirteç almak için kullanılan [kapsamın](scenario-daemon-acquire-token.md#scopes-to-request) bir statik kapsam olması gerekir.
 

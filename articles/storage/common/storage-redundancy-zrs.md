@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016423"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036263"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturmak için bölge yedekli depolama (ZRS)
 
@@ -22,11 +22,11 @@ ms.locfileid: "69016423"
 
 ## <a name="support-coverage-and-regional-availability"></a>Destek kapsamı ve bölgesel kullanılabilirlik
 
-ZRS Şu anda standart genel amaçlı v2 hesap türlerini desteklemektedir. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
+ZRS Şu anda standart genel amaçlı v2 ve FileStorage depolama hesabı türlerini desteklemektedir. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
 
 ZRS, blok Blobları, disk olmayan sayfa Blobları, dosyalar, tablolar ve kuyruklar için kullanılabilir.
 
-ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
+Genel amaçlı v2 hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
 
 - Güneydoğu Asya
 - Batı Avrupa
@@ -38,6 +38,10 @@ ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
 - ABD Doğu
 - ABD Doğu 2
 - ABD Batı 2
+
+FileStorage hesaplarında, ZRS aşağıdaki bölgelerde genel kullanıma sunulmuştur:
+
+- Batı Avrupa
 
 Microsoft, ek Azure bölgelerinde ZRS 'yi etkinleştirmeye devam etmektedir. Yeni bölgeler hakkında bilgi için [Azure hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/) sayfasını düzenli olarak denetleyin.
 
@@ -64,6 +68,9 @@ ZRS 'ye geçiş için iki birincil seçenek vardır:
 
 - Mevcut bir hesaptan verileri el ile yeni bir ZRS hesabına kopyalayın veya taşıyın.
 - Dinamik geçiş isteyin.
+
+> [!IMPORTANT]
+> Dinamik geçiş, Premium dosya paylaşımları için şu anda desteklenmiyor. Şu anda yalnızca el ile kopyalama veya taşıma işlemi destekleniyor.
 
 Geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş ile zamanlama denetimi olursunuz.
 
@@ -94,7 +101,7 @@ Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulunduru
 4. **Sorun** bölümünün aşağıdaki değerlerini belirtin: 
     - **Önem derecesi**: Varsayılan değeri olduğu gibi bırakın.
     - **Sorun türü**: **Veri geçişini**seçin.
-    - **Kategori**: **Bir bölge içinde ZRS 'ye geçir**' i seçin.
+    - **Kategori**: **ZRS 'ye geçir**' i seçin.
     - **Başlık**: Açıklayıcı bir başlık yazın, örneğin, **ZRS hesabı geçişi**.
     - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, \_ \_ bölgedeki [LRS, GRS] öğesinden ZRS 'ye geçiş yapmak istiyorum. 
 5. **İleri**’yi seçin.

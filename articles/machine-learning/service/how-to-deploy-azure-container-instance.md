@@ -1,7 +1,7 @@
 ---
 title: Azure Container Instances modelleri dağıtma
-titleSuffix: Azure Machine Learning service
-description: Azure Container Instances kullanarak Azure Machine Learning hizmet modellerinizi Web hizmeti olarak dağıtmayı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Azure Container Instances kullanarak Azure Machine Learning modellerinizi Web hizmeti olarak dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: cb80cb92ef93132aae3c57e74c108293da3a7834
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 27988edaf9d6fe70288352b0ba45945e32976d4d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279135"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034643"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances model dağıtma
 
-Azure Container Instances (ACI) üzerinde bir modeli Web hizmeti olarak dağıtmak için Azure Machine Learning hizmetini nasıl kullanacağınızı öğrenin. Aşağıdaki koşullardan biri doğru ise Azure Container Instances kullanın:
+Azure Container Instances (ACI) üzerinde bir modeli Web hizmeti olarak dağıtmak için Azure Machine Learning nasıl kullanacağınızı öğrenin. Aşağıdaki koşullardan biri doğru ise Azure Container Instances kullanın:
 
 - Hızlı bir şekilde dağıtın ve modelinizi doğrulama gerekir. Zaman içinde acı kapsayıcıları oluşturmanız gerekmez. Dağıtım sürecinin bir parçası olarak oluşturulur.
 - Geliştirilmekte olan bir modeli test edersiniz. 
@@ -28,7 +28,7 @@ ACI 'nin kota ve bölge kullanılabilirliği hakkında daha fazla bilgi için bk
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure Machine Learning hizmeti çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md).
+- Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
 - Bir Machine Learning modeli, çalışma alanınıza kaydedildi. Kayıtlı bir modeliniz yoksa, bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
@@ -78,7 +78,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 Daha fazla bilgi için, [az ml model dağıtım](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın. 
 
-## <a name="using-vs-code"></a>VS Code kullanma
+## <a name="using-vs-code"></a>VS Code'u kullanma
 
 Bkz. [vs Code modellerinizi dağıtma](how-to-vscode-tools.md#deploy-and-manage-models).
 

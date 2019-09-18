@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 71f2357ba2c2d3e978e4f967ad09fee763586a7c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231988"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058304"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Web uygulaması güvenlik duvarı v2 özel kurallarını oluşturma ve kullanma
 
@@ -27,7 +27,7 @@ Bu makalede, v2 WAF 'niz ile oluşturabileceğiniz ve kullanabileceğiniz bazı 
 
 ## <a name="example-1"></a>Örnek 1
 
-Web sitenizde gezinmeyi engellemek istediğiniz *evilbot* adlı bir bot olduğunu bilirsiniz. Bu durumda, istek üst bilgilerinde Kullanıcı Aracısı evbotu 'yı engellemelisiniz.
+Web sitenizde gezinmeyi engellemek istediğiniz *evilbot* adlı bir bot olduğunu bilirsiniz. Bu durumda, istek üst bilgilerinde Kullanıcı Aracısı *evbotu* 'yı engellemelisiniz.
 
 Logic: p
 
@@ -179,7 +179,7 @@ Karşılık gelen yukarı ve kuralları:`SecRule REMOTE_ADDR "@ipMatch 192.168.5
 
 ## <a name="example-3"></a>Örnek 3
 
-Bu örnek için, Kullanıcı Aracısı *evbotbot*'ı ve 192.168.5.0/24 aralığındaki trafiği engellemek istiyorsunuz. Bunu gerçekleştirmek için iki ayrı eşleştirme koşulu oluşturabilir ve bunları aynı kurala yerleştirebilirsiniz. Bu, hem Kullanıcı Aracısı üstbilgisinde hem de 192.168.5.0/24 aralığından IP adreslerinde bulunan *evilbot* 'ın engellenmesini sağlar.
+Bu örnek için, Kullanıcı Aracısı *evbotbot*'ı ve 192.168.5.0/24 aralığındaki trafiği engellemek istiyorsunuz. Bunu gerçekleştirmek için iki ayrı eşleştirme koşulu oluşturabilir ve bunları aynı kurala yerleştirebilirsiniz. Bu, 192.168.5.0/24 aralığındaki Kullanıcı Aracısı üst bilgisinde **ve** IP adreslerinde bulunan her iki taraf da *eşleştiriliyorsa* , isteğin engellenmesini sağlar.
 
 Logic: p **ve** q
 

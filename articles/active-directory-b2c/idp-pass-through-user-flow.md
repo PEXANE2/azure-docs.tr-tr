@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 66b3dc4aba5d1b29cc0c6190877fbd6b26a11f0c
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: a1a9ad0c615e50db746548a1ed5b557fe6fdea5a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510094"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064292"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C uygulamasında uygulamanıza bir Kullanıcı akışı aracılığıyla erişim belirteci geçirin
 
@@ -31,7 +31,7 @@ Azure AD B2C Şu anda yalnızca [Facebook](active-directory-b2c-setup-fb-app.md)
 ## <a name="enable-the-claim"></a>Talebi etkinleştir
 
 1. [Azure portalda](https://portal.azure.com/) Azure AD B2C kiracınızın genel yöneticisi olarak oturum açın.
-2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüden **Dizin ve abonelik filtresi** ' ni seçin ve kiracınızı içeren dizini seçin.
+2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portalın sol üst köşesinde **Tüm hizmetler**’i seçin ve **Azure AD B2C**’yi arayıp seçin.
 4. **Kullanıcı akışları ' nı (ilkeler)** seçin ve ardından Kullanıcı akışınızı seçin. Örneğin, **B2C_1_signupsignin1**.
 5. **Uygulama talepleri**’ni seçin.

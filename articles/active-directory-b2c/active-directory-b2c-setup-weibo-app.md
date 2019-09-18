@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 428149fbc015037fa8c92bad6fe72cbd97aad5d7
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 4a019c3f197f123486dd28dc2bdb46e34f6cabc4
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622251"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064912"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
 
@@ -23,7 +23,7 @@ ms.locfileid: "69622251"
 
 ## <a name="create-a-weibo-application"></a>Weibo uygulaması oluşturma
 
-Azure Active Directory (Azure AD) B2C 'de bir Weibo hesabını bir kimlik sağlayıcısı olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa kaydolabilirsiniz [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
+Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak bir Weibo hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa kaydolabilirsiniz [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us).
 
 1. [Weibo Geliştirici Portalında](https://open.weibo.com/) Weibo hesabı kimlik bilgilerinizle oturum açın.
 1. Oturum açtıktan sonra sağ üst köşedeki görünen adınızı seçin.

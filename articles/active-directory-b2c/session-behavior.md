@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b18a7d98654422951773c0a5497f69db93782f51
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c75eae72b94c807897d74e365ec9f4ef74c83dd9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849444"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063663"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de oturum davranışını yapılandırma
 
@@ -49,7 +49,7 @@ Aşağıdaki kullanım örnekleri şu özellikler kullanılarak etkinleştirilir
 ## <a name="configure-the-properties"></a>Özellikleri yapılandırma
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Üst menüdeki **Dizin ve abonelik filtresini** tıklatıp Azure AD B2C kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+2. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
 5. Daha önce oluşturduğunuz kullanıcı akışını açın.

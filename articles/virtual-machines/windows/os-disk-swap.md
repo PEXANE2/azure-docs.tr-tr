@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: b213db38dade06e5015227494fa77b2f465ba1d9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 28aad5c3ff80042d1b9de5a8a92137e19c8871fd
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089054"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058524"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>PowerShell kullanarak bir Azure VM tarafından kullanılan işletim sistemi diskini değiştirme
 
@@ -29,7 +29,7 @@ Var olan bir VM varsa, ancak diski bir yedekleme diski veya başka bir işletim 
 
 VM 'nin stopped\serbest bırakılmış olması gerekir, ardından yönetilen diskin kaynak KIMLIĞI, farklı bir yönetilen diskin kaynak KIMLIĞI ile değiştirilebilir.
 
-VM boyutunun ve depolama türünün iliştirmek istediğiniz diskle uyumlu olduğundan emin olun. Örneğin, kullanmak istediğiniz disk Premium depolamada ise, VM 'nin Premium depolama alanı (DS serisi boyutu gibi) olması gerekir. 
+VM boyutunun ve depolama türünün iliştirmek istediğiniz diskle uyumlu olduğundan emin olun. Örneğin, kullanmak istediğiniz disk Premium depolamada ise, VM 'nin Premium depolama alanı (DS serisi boyutu gibi) olması gerekir. Her iki diskin de aynı boyutta olması gerekir.
 
 [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) kullanarak bir kaynak grubundaki disklerin listesini alın
 

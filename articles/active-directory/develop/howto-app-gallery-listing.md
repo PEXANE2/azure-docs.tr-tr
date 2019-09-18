@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2019
+ms.date: 09/16/2019
 ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cf3eead3a56297efa3bea90ef48eb464ad63da0
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898512"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033745"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Nasıl yapılır: Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -48,12 +48,7 @@ Bu makalede, Azure AD uygulama galerisinde bir uygulamayı listeleme, çoklu otu
 
 - Parola SSO 'SU için, lütfen uygulamanızın form kimlik doğrulamasını desteklediğinden emin olun, böylelikle çoklu oturum açma işinin beklendiği gibi çalışmasını sağlayabilirsiniz.
 
-- Otomatik Kullanıcı sağlama istekleri için, uygulamanın SAML 2.0/WS-beslenir kullanılarak etkinleştirilmiş çoklu oturum açma özelliği ile galeride listelenmesi gerekir. Zaten listede yoksa, portalda SSO ve Kullanıcı hazırlama işlemlerini bir araya getirebilirsiniz.
-
 - En az 2 Kullanıcı kayıtlı olan sınama için kalıcı bir hesap gerekir.
-
-> [!NOTE]
-> Çok sayıda SCıM bağlayıcı isteği ile çalışıyoruz, bu nedenle portalda yeni istekleri almayı durdurduk. Lütfen daha fazla bildirimde bulununcaya kadar isteklerinizi tutun. Bu gecikme ve bunun neden olduğu rahatsızlıktan dolayı özür dileriz.
 
 ## <a name="submit-the-request-in-the-portal"></a>İsteği portalda gönder
 

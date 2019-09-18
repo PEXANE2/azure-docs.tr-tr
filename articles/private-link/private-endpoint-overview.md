@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 031055dce66361cc128ed42a4d0c942ccb5a3b82
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: c2f26c1f672644edd4993010c64062ee4108ca40
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017977"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057814"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -55,8 +55,8 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
 |**Özel bağlantı hizmeti** (Kendi hizmetiniz)   |  Microsoft. Network/privateLinkServices       | boş |
 |**Azure SQL Veritabanı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
 |**Azure SQL Veri Ambarı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
-|**Azure Depolama**  | (Microsoft. Storage/storageAccounts)    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (Queue, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
-|**Azure Data Lake Storage 2.**  | (Microsoft. Storage/storageAccounts)    |  Blob (blob, blob_secondary)       |
+|**Azure Depolama**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (Queue, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
+|**Azure Data Lake Storage 2.**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
  
  
 ## <a name="network-security-of-private-endpoints"></a>Özel uç noktaların ağ güvenliği 

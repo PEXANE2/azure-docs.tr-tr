@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ada570196c916a8101e8e968d284a3b280199cf3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142812"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057669"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Hızlı Başlangıç: .NET için form tanıyıcı istemci kitaplığı
 
@@ -22,9 +22,11 @@ ms.locfileid: "70142812"
 
 .NET için form tanıyıcı istemci kitaplığı 'nı kullanarak şunları yapın:
 
-* Özel form tanıyıcı modeli eğitme
-* Formları özel bir model ile analiz etme
-* Özel modellerin bir listesini alın
+* [Özel form tanıyıcı modeli eğitme](#train-a-custom-model)
+* [Ayıklanan anahtarların bir listesini alın](#get-a-list-of-extracted-keys)
+* [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
+* [Özel modellerin bir listesini alın](#get-a-list-of-custom-models)
+* [Özel bir modeli silme](#delete-a-custom-model)
 
 [Başvuru belge](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
@@ -68,14 +70,7 @@ Build succeeded.
 
 Proje dizininden, _program.cs_ dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdaki `using` deyimlerini ekleyin:
 
-```csharp
-using Microsoft.Azure.CognitiveServices.FormRecognizer;
-using Microsoft.Azure.CognitiveServices.FormRecognizer.Models;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_using)]
 
 Sonra uygulamanın **Main** yöntemine aşağıdaki kodu ekleyin. Bu zaman uyumsuz görevi üzerinde daha sonra tanımlayacaksınız.
 
@@ -115,10 +110,12 @@ Bu kod parçacıkları, .NET için form tanıyıcı istemci kitaplığı ile aş
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Özel form tanıyıcı modeli eğitme](#train-a-custom-model)
+* [Ayıklanan anahtarların bir listesini alın](#get-a-list-of-extracted-keys)
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerin bir listesini alın](#get-a-list-of-custom-models)
+* [Özel bir modeli silme](#delete-a-custom-model)
 
-### <a name="define-variables"></a>Değişkenleri tanımlama
+## <a name="define-variables"></a>Değişkenleri tanımlama
 
 Herhangi bir yöntemi tanımladıktan önce, aşağıdaki değişken tanımlarını **Program** sınıfınızın en üstüne ekleyin. Değişkenlerin bazılarını kendiniz doldurmanız gerekir. 
 
@@ -127,13 +124,13 @@ Herhangi bir yöntemi tanımladıktan önce, aşağıdaki değişken tanımları
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
-### <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 Yönteminin altında, ' de `Main`başvurulan görevi tanımlayın. `Main` Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak istemci nesnesinin kimliğini doğrulacaksınız. Daha sonra diğer yöntemleri tanımlayacaksınız.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
-### <a name="train-a-custom-model"></a>Özel bir modeli eğitme
+## <a name="train-a-custom-model"></a>Özel bir modeli eğitme
 
 Aşağıdaki yöntem, Azure Blob kapsayıcısında depolanan belgelerde yeni bir tanıma modeli eğitebilmeniz için form tanıyıcı istemci nesnesini kullanır. Yeni eğitilen model hakkındaki bilgileri (bir [Modelresult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) nesnesi tarafından temsil edilir) göstermek için bir yardımcı yöntem kullanır ve model kimliğini döndürür.
 
@@ -143,9 +140,18 @@ Aşağıdaki yardımcı yöntemi bir form tanıyıcı modeliyle ilgili bilgileri
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displaymodel)]
 
-### <a name="analyze-forms-with-a-custom-model"></a>Formları özel bir model ile analiz etme
+## <a name="get-a-list-of-extracted-keys"></a>Ayıklanan anahtarların bir listesini alın
+
+Eğitim tamamlandığında, özel model eğitim belgelerinden ayıkladığı anahtarların bir listesini tutar. Gelecekteki form belgelerinin bu anahtarları içermesini bekler ve analiz işleminde karşılık gelen değerleri ayıklar. Ayıklanan anahtarların listesini almak ve konsola yazdırmak için aşağıdaki yöntemi kullanın. Bu, eğitim sürecinin etkili olduğunu doğrulamak için iyi bir yoldur.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getkeys)]
+
+## <a name="analyze-forms-with-a-custom-model"></a>Formları özel bir model ile analiz etme
 
 Bu yöntem, bir PDF form belgesini analiz etmek ve anahtar/değer verilerini ayıklamak için form tanıyıcı istemcisini ve model KIMLIĞINI kullanır. Sonuçları göstermek için bir yardımcı yöntemi kullanır (bir [analiz Zeresult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview) nesnesi tarafından gösterilir).
+
+> [!NOTE]
+> Aşağıdaki yöntem bir PDF formunu analiz eder. JPEG ve PNG formlarını çözümleyen benzer yöntemler için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer)'daki tam örnek koda bakın.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_analyzepdf)]
 
@@ -153,11 +159,17 @@ Aşağıdaki yardımcı yöntemi bir çözümleme işlemi hakkındaki bilgileri 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displayanalyze)]
 
-### <a name="get-a-list-of-custom-models"></a>Özel modellerin bir listesini alın
+## <a name="get-a-list-of-custom-models"></a>Özel modellerin bir listesini alın
 
 Hesabınıza ait olan eğitilen modellerin bir listesini döndürebilir ve oluşturulma tarihi hakkında bilgi alabilirsiniz. Modellerin listesi bir [Modelsresult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) nesnesiyle temsil edilir.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getmodellist)]
+
+## <a name="delete-a-custom-model"></a>Özel bir modeli silme
+
+Özel modeli hesabınızdan silmek istiyorsanız aşağıdaki yöntemi kullanın:
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -174,9 +186,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Ayrıca, hesabınızdan silmek istediğiniz özel bir model eğitilen aşağıdaki yöntemi kullanın:
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
+Ayrıca, hesabınızdan silmek istediğiniz özel bir model varsa, [özel bir modeli silme](#delete-a-custom-model)bölümünde yöntemi çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

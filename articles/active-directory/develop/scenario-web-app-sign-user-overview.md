@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95aeeacfd85dd79453bff4e365e5b050039f77b9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 7b898a93b87811fa5139e148a3273d7051af851b
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852459"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056285"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: Kullanıcıların oturum açtığı web uygulaması
 
@@ -55,7 +55,7 @@ Web uygulamanıza kimlik doğrulaması ekleyerek kullanıcıların oturum açmas
 
 ## <a name="specifics"></a>Özelliklerini
 
-- Uygulama kaydı sırasında, bir veya birkaç tane (uygulamanızı birkaç konuma dağıtırsanız) yanıt URI 'Lerini sağlamanız gerekir. Bazı durumlarda (ASP.NET/ASP.NET Core) ıdtoken 'ı etkinleştirmeniz gerekir. Son olarak, uygulamanızın kullanıcı oturumu açmasını yeniden yapabilmesi için bir oturum açma URI 'SI ayarlamak isteyeceksiniz.
+- Uygulama kaydı sırasında, bir veya birkaç tane (uygulamanızı birkaç konuma dağıtırsanız) yanıt URI 'Lerini sağlamanız gerekir. Bazı durumlarda (ASP.NET/ASP.NET Core), KIMLIK belirtecini etkinleştirmeniz gerekir. Son olarak, uygulamanızın kullanıcı oturumu açmasını yeniden yapabilmesi için bir oturum açma URI 'SI ayarlamak isteyeceksiniz.
 - Uygulamanızın kodunda, Web uygulamasının temsilci olarak oturum açma yetkisini sağlamanız gerekir. Belirteç doğrulamasını özelleştirmek isteyebilirsiniz (özellikle ISV senaryolarında).
 - Web uygulamaları tüm hesap türlerini destekler. Daha fazla bilgi için bkz. [Desteklenen hesap türleri](v2-supported-account-types.md).
 

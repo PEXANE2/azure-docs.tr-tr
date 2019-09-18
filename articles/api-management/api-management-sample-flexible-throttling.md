@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: f0f89275006498c0ff4883f259d7e76f723b922b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851332"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066762"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management Gelişmiş istek azaltma
 Gelen istekleri kısıtlayamaz, Azure API Management 'nin önemli bir rolü bulunur. İsteklerin oranını veya aktarılan toplam istek/veri sayısını denetleyerek API Management, API sağlayıcılarının API 'Lerini uygunsuz bir şekilde korumasına ve farklı API ürün katmanları için değer oluşturmasına izin verir.
@@ -29,7 +29,8 @@ Tarih olarak, hız azaltma özellikleri Azure portal tanımlı belirli bir ürü
 
 ## <a name="custom-key-based-throttling"></a>Özel anahtar tabanlı azaltma
 
-> NOT: `rate-limit-by-key` Ve`quota-by-key` ilkeleri, Azure API Management tüketim katmanında kullanılabilir değildir. 
+> [!NOTE]
+> `rate-limit-by-key` Ve`quota-by-key` ilkeleri, Azure API Management tüketim katmanında kullanılabilir değildir. 
 
 Yeni [hız-limit](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) ve [Kota-anahtar](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) ilkeleri, trafik denetimine daha esnek bir çözüm sağlar. Bu yeni ilkeler, trafik kullanımını izlemek için kullanılan anahtarları belirlemek için ifadeler tanımlamanızı sağlar. Bu yöntem, bir örnek ile en kolay şekilde gösterilmiştir. 
 
@@ -78,5 +79,5 @@ Bu, geliştiricinin istemci uygulamasının hız sınırlaması anahtarını nas
 Azure API Management hem koruma hem de API hizmetinize değer ekleme için fiyat ve teklif azaltma sağlar. Özel kapsam kuralları olan yeni kısıtlama ilkeleri, müşterilerinizin daha iyi uygulamalar oluşturmasını sağlamak için bu ilkeler üzerinde daha ayrıntılı denetim imkanı sağlar. Bu makaledeki örneklerde, istemci IP adresleri, Kullanıcı kimliği ve istemci tarafından oluşturulan değerler ile anahtarları sınırlandırma ile ayırarak bu yeni ilkelerin kullanımı gösterilmektedir. Ancak, iletinin Kullanıcı Aracısı, URL yol parçaları, ileti boyutu gibi kullanılabilecek birçok farklı bölümü vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Lütfen bu konunun Disqus iş parçacığında bize geri bildirimde bulunun. Senaryolarınızda mantıklı bir seçenek olan diğer olası anahtar değerlerini öğrenmek harika olacaktır.
+Lütfen bu konuda bir GitHub sorunu olarak bize geri bildirimde bulunun. Senaryolarınızda mantıklı bir seçenek olan diğer olası anahtar değerlerini öğrenmek harika olacaktır.
 

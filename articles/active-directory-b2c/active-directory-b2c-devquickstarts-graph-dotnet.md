@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11a9fc521a7b17ae0ff2f579f173f4d43383bdd5
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c7fcbbbfcc2192160ca852538c015a365518e448
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880097"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065952"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API’sini kullanma
 
 >[!NOTE]
 > Bir Azure AD B2C dizinindeki kullanıcıları yönetmek için [Azure AD Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) kullanmanız gerekir. Bu, Microsoft Graph API 'sinden farklıdır. [Burada](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/) daha fazla bilgi edinin.
 
-Azure Active Directory (Azure AD) B2C kiracılarının çok büyük olması eğilimi gösterir. Bu, birçok ortak Kiracı Yönetimi görevinin programlama yoluyla gerçekleştirilmesi gerektiği anlamına gelir. Birincil örnek, Kullanıcı yönetimi olur. Mevcut bir Kullanıcı deposunu B2C kiracısına geçirmeniz gerekebilir. Kullanıcı kaydını kendi sayfanızda barındırmak ve arka planda Azure AD B2C dizininizde Kullanıcı hesapları oluşturmak isteyebilirsiniz. Bu tür görevler, Kullanıcı hesapları oluşturma, okuma, güncelleştirme ve silme yeteneği gerektirir. Azure AD Graph API kullanarak bu görevleri gerçekleştirebilirsiniz.
+Azure Active Directory B2C (Azure AD B2C) kiracılar çok büyük olmaya eğilimlidir. Bu, birçok ortak Kiracı Yönetimi görevinin programlama yoluyla gerçekleştirilmesi gerektiği anlamına gelir. Birincil örnek, Kullanıcı yönetimi olur. Mevcut bir Kullanıcı deposunu B2C kiracısına geçirmeniz gerekebilir. Kullanıcı kaydını kendi sayfanızda barındırmak ve arka planda Azure AD B2C dizininizde Kullanıcı hesapları oluşturmak isteyebilirsiniz. Bu tür görevler, Kullanıcı hesapları oluşturma, okuma, güncelleştirme ve silme yeteneği gerektirir. Azure AD Graph API kullanarak bu görevleri gerçekleştirebilirsiniz.
 
 B2C kiracılarında, Graph API ile iletişim kuran iki birincil mod vardır.
 
@@ -43,10 +43,10 @@ B2C kiracınız olduktan sonra, [Azure Portal](https://portal.azure.com)kullanar
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Sayfanın sağ üst köşesindeki hesabınızı seçerek Azure AD B2C kiracınızı seçin.
 3. Sol taraftaki Gezinti bölmesinde **tüm hizmetler**' i seçin, **uygulama kayıtları**' nı ve ardından **Yeni kayıt**' ı tıklatın.
-4. Komut istemlerini izleyin ve yeni bir uygulama oluşturun. 
+4. Komut istemlerini izleyin ve yeni bir uygulama oluşturun.
     1. Uygun bir ad ekleyin
     2. **Yalnızca bu kuruluş dizinindeki hesapları** Seç
-    3. Uygulama türü olarak **Web** ' i seçin ve bu örneğe uygun olmadığından **herhangi bir oturum açma URL 'si** (ör. `https://B2CGraphAPI`) sağlayın.  
+    3. Uygulama türü olarak **Web** ' i seçin ve bu örneğe uygun olmadığından **herhangi bir oturum açma URL 'si** (ör. `https://B2CGraphAPI`) sağlayın.
     4. Kaydol ' a tıklayın.
 5. Uygulama artık uygulama listesinde görünür, **uygulama kimliğini** (istemci kimliği olarak da bilinir) almak için üzerine tıklayın. Daha sonraki bir bölümde ihtiyacınız olacak şekilde kopyalayın.
 6. Ayarlar menüsünde **sertifikalar & parolaları**' na tıklayın.
@@ -65,8 +65,8 @@ Artık B2C kiracınızdan Kullanıcı oluşturma, okuma ve güncelleştirme izni
 
 > [!NOTE]
 > İzinlerin verilmesi, tam olarak işlenmesi birkaç dakika sürebilir.
-> 
-> 
+>
+>
 
 ## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>Uygulamanız için silme veya parola güncelleştirme izinlerini yapılandırma
 Şu anda, *Dizin verilerini okuma ve yazma* izni, kullanıcıları silme veya Kullanıcı parolalarını güncelleştirme **özelliğini içermez.** Uygulamanıza Kullanıcı silme veya parolaları güncelleştirme yeteneği vermek istiyorsanız, PowerShell içeren bu ek adımları yapmanız gerekir, aksi takdirde sonraki bölüme atlayabilirsiniz.
@@ -132,8 +132,8 @@ Graph API herhangi bir istek, kimlik doğrulaması için bir erişim belirteci g
 
 > [!NOTE]
 > Bu kod örneği, Graph API ile iletişim kurmak için ADAL v2 kullanır.  Azure AD Graph API ile kullanılabilecek erişim belirteçleri almak için ADAL v2 veya v3 kullanmanız gerekir.
-> 
-> 
+>
+>
 
 Çalıştırıldığında, `B2CGraphClient` sınıfının bir örneğini oluşturur. `B2CGraphClient` Bu sınıfın Oluşturucusu bir ADAL kimlik doğrulaması yapı iskelesi ayarlıyor:
 
@@ -260,8 +260,8 @@ POST isteğinin nasıl oluşturulduğunu `B2CGraphClient.SendGraphPostRequest(..
 
 > [!NOTE]
 > Var olan bir kullanıcı deposundan geçiş yapmak istediğiniz hesaplar, [Azure AD B2C tarafından zorlanan güçlü parola kuvvetinden](/previous-versions/azure/jj943764(v=azure.100))daha düşük bir parola gücüne sahipse, ' deki `DisableStrongPassword` değeri kullanarak güçlü parola gereksinimini devre dışı bırakabilirsiniz. `passwordPolicies`özelliği. Örneğin, yukarıda belirtilen kullanıcı oluştur isteğini aşağıdaki şekilde değiştirebilirsiniz: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
-> 
-> 
+>
+>
 
 ### <a name="update-consumer-user-accounts"></a>Tüketici Kullanıcı hesaplarını güncelleştirme
 Kullanıcı nesnelerini güncelleştirdiğinizde, işlem Kullanıcı nesneleri oluşturmak için kullandığınız bir şekilde benzerdir. Ancak bu işlem http `PATCH` yöntemini kullanır:

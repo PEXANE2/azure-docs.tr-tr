@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/17/2019
 ms.author: mlearned
-ms.openlocfilehash: df8aa51558bc3aa456758510792c198a8bd9cf78
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 3c9e5185bfcaf99765ec29874cea407fe55bfb17
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061851"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058320"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de Pod güvenlik ilkelerini kullanarak kümenizin güvenliğini sağlama
 
@@ -67,7 +67,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="overview-of-pod-security-policies"></a>Pod güvenlik ilkelerine genel bakış
 
-Bir Kubernetes kümesinde, bir kaynak oluşturulduğunda API sunucusuna yapılan istekleri ele almak için bir giriş denetleyicisi kullanılır. Giriş denetleyicisi daha sonra kaynak isteğini bir dizi kurala karşı *doğrulayabilir* veya kaynağı dağıtım parametrelerini değiştirecek şekilde alabilir.
+Bir Kubernetes kümesinde, bir kaynak oluşturulduğunda API sunucusuna yapılan istekleri ele almak için bir giriş denetleyicisi kullanılır. Giriş denetleyicisi daha sonra kaynak isteğini bir dizi kurala karşı *doğrulayabilir* *veya kaynağı* dağıtım parametrelerini değiştirecek şekilde alabilir.
 
 *Pod SecurityPolicy* , Pod belirtiminin tanımlı gereksinimlerinizi karşıladığından emin olan bir giriş denetleyicisidir. Bu gereksinimler, ayrıcalıklı kapsayıcıların kullanımını, belirli depolama türlerine erişimi veya kapsayıcının çalışacağı kullanıcı veya grubu sınırlandırabilir. Pod belirtimlerinin Pod güvenlik ilkesinde özetlenen gereksinimleri karşılamadığında bir kaynak dağıtmaya çalıştığınızda, istek reddedilir. AKS kümesinde hangi yığınların zamanlanabileceği, bazı olası güvenlik açıklarını veya ayrıcalık yürüyen şeyleri engeller.
 
@@ -95,22 +95,21 @@ az aks update \
 
 ## <a name="default-aks-policies"></a>Varsayılan AKS ilkeleri
 
-Pod güvenlik ilkesini etkinleştirdiğinizde AKS, *ayrıcalıklı* ve *Kısıtlanmış*olarak adlandırılan iki varsayılan ilke oluşturur. Bu varsayılan ilkeleri düzenlemeyin veya kaldırmayın. Bunun yerine, denetlemek istediğiniz ayarları tanımlayan kendi ilkelerinizi oluşturun. İlk olarak, bu varsayılan ilkelerin Pod dağıtımlarını nasıl etkileyeceğini göz atalım.
+Pod güvenlik ilkesini etkinleştirdiğinizde AKS, *ayrıcalıklı*adlı bir varsayılan ilke oluşturur. Varsayılan ilkeyi düzenleme veya kaldırma. Bunun yerine, denetlemek istediğiniz ayarları tanımlayan kendi ilkelerinizi oluşturun. İlk olarak, bu varsayılan ilkelerin Pod dağıtımlarını nasıl etkileyeceğini göz atalım.
 
-Kullanılabilir ilkeleri görüntülemek için, aşağıdaki örnekte gösterildiği gibi [kubectl Get PSP][kubectl-get] komutunu kullanın. Varsayılan *kısıtlı* ilkenin bir parçası olarak, kullanıcının ayrıcalıklı Pod yükseltme Için *PRIV* kullanımı reddedilir ve Kullanıcı *MustRunAsNonRoot*.
+Kullanılabilir ilkeleri görüntülemek için, aşağıdaki örnekte gösterildiği gibi [kubectl Get PSP][kubectl-get] komutunu kullanın
 
 ```console
 $ kubectl get psp
 
 NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
-privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-restricted   false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-*Kısıtlanmış* Pod güvenlik ilkesi, aks kümesindeki kimliği doğrulanmış tüm kullanıcılara uygulanır. Bu atama ClusterRoles ve ClusterRoleBindings tarafından denetlenir. [Kubectl Get clusterrolebindings][kubectl-get] komutunu kullanın ve *Varsayılan: kısıtlamalı:* bağlama:
+*Ayrıcalıklı* Pod güvenlik ilkesi, aks kümesindeki tüm kimliği doğrulanmış kullanıcılara uygulanır. Bu atama ClusterRoles ve ClusterRoleBindings tarafından denetlenir. [Kubectl Get clusterrolebindings][kubectl-get] komutunu kullanın ve *Varsayılan: priviledşlı:* bağlama:
 
 ```console
-kubectl get clusterrolebindings default:restricted -o yaml
+kubectl get clusterrolebindings default:priviledged -o yaml
 ```
 
 Aşağıdaki sıkıştırılmış Çıktıda gösterildiği gibi, *PSP: kısıtlanmış* kümerolü herhangi bir *Sistem: kimliği doğrulanmış* kullanıcılara atanır. Bu özellik, kendi ilkelerinizin tanımlanmamaları gerekmeden temel bir kısıtlama düzeyi sağlar.
@@ -120,12 +119,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   [...]
-  name: default:restricted
+  name: default:priviledged
   [...]
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: psp:restricted
+  name: psp:priviledged
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
@@ -387,8 +386,7 @@ $ kubectl get psp
 
 NAME                  PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 privileged            true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-restricted            false          RunAsAny   MustRunAsNonRoot   MustRunAs   MustRunAs   false            configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Kullanıcı hesabının özel Pod güvenlik ilkesini kullanmasına izin ver

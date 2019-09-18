@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885164"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037262"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache HBase ilkelerini yapılandırma
 
@@ -88,7 +88,8 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
     ```hbaseshell
     scan 'Contacts'
     ```
-    ![HDInsight Hadoop HBase kabuğu](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![HDInsight Hadoop HBase kabuğu çıkışı](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Ranger ilkelerini oluşturma
 
@@ -96,7 +97,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 1. **Ranger Yönetici Arabirimini** açın. **HBase**altında  **\<clustername > _hbase** öğesine tıklayın.
 
-   ![Apache Ranger Yönetici Arabirimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger yönetici kullanıcı arabirimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. **Ilke listesi** ekranı, bu küme için oluşturulan tüm Ranger ilkelerini görüntüler. Bir önceden yapılandırılmış ilke listelenebilir. **Yeni Ilke Ekle**' ye tıklayın.
 
@@ -202,14 +203,14 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
    kinit marketing_user1
    ```
 
-2. HBase kabuğunu açın ve tabloyu `Customers`tarayın:
+1. HBase kabuğunu açın ve tabloyu `Customers`tarayın:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. Pazarlama kullanıcısının yalnızca `Contact` sütun ailesinin beş sütununu görüntüleyebildiğine dikkat edin.
+1. Pazarlama kullanıcısının yalnızca `Contact` sütun ailesinin beş sütununu görüntüleyebildiğine dikkat edin.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,9 +227,9 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
     2 row(s) in 0.0730 seconds
     ```
 
-9. Ranger kullanıcı arabiriminden denetim erişimi olaylarını görüntüleyin.
+1. Ranger kullanıcı arabiriminden denetim erişimi olaylarını görüntüleyin.
 
-   ![Ranger Kullanıcı Arabirimi Denetim İlkesi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![HDInsight Ranger Kullanıcı arabirimi Ilke denetimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

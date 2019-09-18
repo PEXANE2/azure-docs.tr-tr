@@ -1,7 +1,7 @@
 ---
 title: SSL kullanarak Web hizmetlerini güvenli hale getirme
-titleSuffix: Azure Machine Learning service
-description: HTTPS 'yi etkinleştirerek Azure Machine Learning hizmeti aracılığıyla dağıtılan bir Web hizmetini güvenli hale getirme hakkında bilgi edinin. HTTPS, güvenli yuva katmanları (SSL) için bir değiştirme olan Aktarım Katmanı Güvenliği (TLS) kullanarak istemcilerden gelen verilerin güvenliğini sağlar. İstemciler Web hizmetinin kimliğini doğrulamak için de HTTPS kullanır.
+titleSuffix: Azure Machine Learning
+description: HTTPS 'yi etkinleştirerek Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetini güvenli hale getirme hakkında bilgi edinin. HTTPS, güvenli yuva katmanları (SSL) için bir değiştirme olan Aktarım Katmanı Güvenliği (TLS) kullanarak istemcilerden gelen verilerin güvenliğini sağlar. İstemciler Web hizmetinin kimliğini doğrulamak için de HTTPS kullanır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8805e065c92b42013c1e56f20b4a032d280cb8ac
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ce60806c26359ae682f5ab468e4f4265d3572c87
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772517"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034369"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetini güvenli hale getirmek için SSL kullanma
 
-Bu makalede, Azure Machine Learning hizmeti aracılığıyla dağıtılan bir Web hizmetinin güvenliğini sağlama gösterilmektedir.
+Bu makalede, Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin güvenliğini sağlama gösterilmektedir.
 
 Web hizmetlerine erişimi kısıtlamak ve istemcilerin gönderebileceği verileri güvenli hale getirmek için [https](https://en.wikipedia.org/wiki/HTTPS) 'yi kullanırsınız. HTTPS, iki arasındaki iletişimleri şifreleyerek bir istemci ve Web hizmeti arasındaki iletişimin güvenliğini sağlamaya yardımcı olur. Şifreleme, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)kullanır. TLS, bazen TLS 'nin öncülü olan *Güvenli Yuva Katmanı* (SSL) olarak adlandırılır.
 
@@ -151,7 +151,7 @@ Ardından, DNS sunucunuzun web hizmetine işaret edecek şekilde güncelleştirm
 
   Sol bölmedeki **Ayarlar** ' ın altındaki **yapılandırma** sekmesinde aks KÜMESININ genel IP adresinin DNS 'sini güncelleştirin. (Aşağıdaki resme bakın.) Genel IP adresi, AKS aracı düğümlerini ve diğer ağ kaynaklarını içeren kaynak grubu altında oluşturulan bir kaynak türüdür.
 
-  [![Azure Machine Learning hizmeti: SSL ile Web hizmetlerinin güvenliğini sağlama](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: SSL ile Web hizmetlerinin güvenliğini sağlama](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>SSL sertifikasını güncelleştirme
 

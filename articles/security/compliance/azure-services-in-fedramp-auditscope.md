@@ -1,24 +1,24 @@
 ---
 title: Fedrampa ve DoD SRG denetim kapsamındaki Azure hizmetleri
 description: Bu makale, Azure genel ve Azure Kamu 'nun, ne kadar Fedrampa (orta ve High) ve DoD SRG (etki düzeyi 2, 4 veya 5) denetim kapsamı verilen bir hizmetin sınırına ulaşıldı.
-author: davib
-ms.author: davib
+author: Jain-Garima
+ms.author: gjain
 ms.date: 5/17/2019
 ms.topic: article
 ms.service: security
 ms.reviewer: rochiou
-ms.openlocfilehash: bdf63601e8456a2b99cee655872138ad97afe47f
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 1a0bfa4b5bfba1bae6d8bc3267aa4ceb376c79af
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375326"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076613"
 ---
 # <a name="azure-services-by-fedramp-and-dod-cc-srg-audit-scope"></a>Fedrampa ve DoD CC SRG denetim kapsamına göre Azure hizmetleri
 
 Microsoft 'un kamu bulut Hizmetleri, ABD Federal risk & yetkilendirme yönetimi programı 'nın (Fedrampa) ve ABD Savunma Bakanlığı 'nın, bilgi etkisi düzeyinden 2 ila 5 ' ten fazla gereksinimlerini karşılar. Azure Kamu, Office 365 ABD dahil korumalı hizmetler dağıtarak Kamu ve Dynamics 365 Kamu, federal ve savunma kurumları, zengin bir uyumlu hizmetler dizisinden yararlanabilir.
 
-Bu makalede, Fedrampa ve DoD CC SRG uyumluluk teklifleri için Azure ve Azure Kamu 'da kapsam içi bulut hizmetlerinin ayrıntılı bir listesi sunulmaktadır.
+Bu makalede, Fedrampa ve DoD CC SRG uyumluluk teklifleri için Azure Kamu ve Azure Kamu genelinde kapsam içi bulut hizmetlerinin ayrıntılı bir listesi sunulmaktadır.
 
 #### <a name="terminologysymbols-used"></a>Kullanılan terminoloji/semboller
 
@@ -29,7 +29,7 @@ Bu makalede, Fedrampa ve DoD CC SRG uyumluluk teklifleri için Azure ve Azure Ka
 * Planlanmış 2019 = hizmet incelemesinin devam ettiğini ve 2019 ' de CERT elde olacağını gösterir.
 
 ## <a name="azure-public-services-by-audit-scope"></a>Denetim kapsamına göre Azure genel hizmetleri
-| _Son güncelleme tarihi: Ağustos 2019_ |
+| _Son güncelleme tarihi: Eylül 2019_ |
 
 | Azure Hizmeti| DoD CC SRG IL 2 | FedRAMP Orta | FedRAMP Yüksek | Planlı 2019 |
 | ------------ |:---------------:|:----------------:|:------------:|:------------:|
@@ -39,14 +39,15 @@ Bu makalede, Fedrampa ve DoD CC SRG uyumluluk teklifleri için Azure ve Azure Ka
 | [Otomasyon](https://azure.microsoft.com/services/automation/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Active Directory (ücretsiz ve temel)](https://azure.microsoft.com/services/active-directory/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Active Directory (Premium P1 + P2)](https://azure.microsoft.com/services/active-directory/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) |  |  |  | :heavy_check_mark: |
-| [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) | |  |  | :heavy_check_mark: |
+| [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Azure Active Directory sağlama hizmeti](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/user-provisioning)| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Gelişmiş tehdit koruması](https://azure.microsoft.com/features/azure-advanced-threat-protection/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Advisor](https://azure.microsoft.com/services/advisor/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [FHıR için Azure API](https://azure.microsoft.com/services/azure-api-for-fhir/) |  |  |  | :heavy_check_mark: |
 | [Azure Bot Hizmeti](https://docs.microsoft.com/azure/bot-service/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Azure Arşiv Depolama](https://azure.microsoft.com/services/storage/archive/) |  |  |  | :heavy_check_mark: |
+| [Azure Arşiv Depolama](https://azure.microsoft.com/services/storage/archive/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Container Service](https://docs.microsoft.com/azure/container-service/) |  |  |  | :heavy_check_mark: |
 | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Maliyet Yönetimi](https://azure.microsoft.com/services/cost-management/) | |  |  | :heavy_check_mark: |
@@ -55,12 +56,12 @@ Bu makalede, Fedrampa ve DoD CC SRG uyumluluk teklifleri için Azure ve Azure Ka
 | [Azure Data Lake Storage Gen1](https://azure.microsoft.com/services/storage/data-lake-storage/) |  |  |  | :heavy_check_mark: |
 | [MySQL için Azure Veritabanı](https://azure.microsoft.com/services/mysql/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [PostgreSQL için Azure Veritabanı](https://azure.microsoft.com/services/postgresql/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [MariaDB için Azure Veritabanı](https://azure.microsoft.com/services/mariadb/) |  |  |  | :heavy_check_mark: |
+| [MariaDB için Azure Veritabanı](https://azure.microsoft.com/services/mariadb/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure veritabanı geçiş hizmeti](https://azure.microsoft.com/services/database-migration/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure Databricks](https://azure.microsoft.com/services/databricks/) |  |  |  |  |
 | [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) |  |  |  | :heavy_check_mark: |
 | [Azure DDoS Koruması](https://azure.microsoft.com/services/ddos-protection/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Azure ayrılmış HSM](https://azure.microsoft.com/services/azure-dedicated-hsm/) |  |  |  | :heavy_check_mark: |
+| [Azure ayrılmış HSM](https://azure.microsoft.com/services/azure-dedicated-hsm/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Azure DevOps (eski adıyla VSTS)](https://azure.microsoft.com/services/devops/) | |  |  | |
 | [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/) |  |  |  | :heavy_check_mark: |
 | [Azure DNS](https://azure.microsoft.com/services/dns/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
@@ -98,13 +99,14 @@ Bu makalede, Fedrampa ve DoD CC SRG uyumluluk teklifleri için Azure ve Azure Ka
 | [Container Registry](https://azure.microsoft.com/services/container-registry/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Content Delivery Network](https://azure.microsoft.com/services/cdn/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Veri Kataloğu](https://azure.microsoft.com/services/data-catalog/) |  |  |  | :heavy_check_mark: |
-| [Data Factory](https://azure.microsoft.com/services/data-factory/) |  |  |  | :heavy_check_mark: |
+| [Data Factory](https://azure.microsoft.com/services/data-factory/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Finans ve Işlemler için Dynamics 365](https://dynamics.microsoft.com/en-us/finance-and-operations/overview/) |  |  |  | :heavy_check_mark: |
 | [Event Grid](https://azure.microsoft.com/services/event-grid/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [Defender Gelişmiş tehdit koruması](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Microsoft Defender Gelişmiş tehdit koruması](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Event Hubs](https://azure.microsoft.com/services/event-hubs/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [ExpressRoute](https://azure.microsoft.com/services/expressroute/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Akış](https://docs.microsoft.com/flow/getting-started) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
-| [İşlevler](https://azure.microsoft.com/services/functions/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| [İşlevler](https://azure.microsoft.com/services/functions/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [İçeri/dışarı aktarma](https://azure.microsoft.com/services/storage/import-export/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [IoT Central](https://azure.microsoft.com/services/iot-central/) |  |  |  | :heavy_check_mark: |
@@ -151,7 +153,7 @@ Bu makalede, Fedrampa ve DoD CC SRG uyumluluk teklifleri için Azure ve Azure Ka
 
 
 ## <a name="azure-government-services-by-audit-scope"></a>Denetim kapsamına göre Azure Kamu Hizmetleri
-| _Son güncelleme tarihi: Ağustos 2019_ |
+| _Son güncelleme tarihi: Eylül 2019_ |
 
 | Azure Hizmeti | DoD CC SRG IL 2 | DoD CC SRG Il 4 | DoD CC SRG Il 5 | FedRAMP Yüksek | Planlı 2019
 | ------------- |:---------------:|:---------------:|:---------------:|:------------:|:------------:
@@ -164,19 +166,19 @@ Bu makalede, Fedrampa ve DoD CC SRG uyumluluk teklifleri için Azure ve Azure Ka
 | [Azure Gelişmiş tehdit koruması](https://azure.microsoft.com/features/azure-advanced-threat-protection/)  |  |  |  |  | :heavy_check_mark:
 | [Azure Advisor](https://azure.microsoft.com/services/advisor/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Blueprints](https://azure.microsoft.com/services/blueprints/)  |  |  |  |  | :heavy_check_mark:
-| [Azure Bot Hizmeti](https://docs.microsoft.com/azure/bot-service/) |  |  |  |  | :heavy_check_mark:
-| [Azure Arşiv Depolama](https://azure.microsoft.com/services/storage/archive/) |  |  |  |  | :heavy_check_mark:
+| [Azure Blueprints](https://azure.microsoft.com/services/blueprints/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
+| [Azure Bot Hizmeti](https://docs.microsoft.com/azure/bot-service/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
+| [Azure Arşiv Depolama](https://azure.microsoft.com/services/storage/archive/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
 | [Container Registry](https://azure.microsoft.com/services/container-registry/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Maliyet Yönetimi](https://azure.microsoft.com/services/cost-management/)  |  |  |  |  | :heavy_check_mark:
-| [Azure Data Box Edge](https://azure.microsoft.com/services/databox/edge/) |  |  |  |  | :heavy_check_mark:
+| [Azure Data Box Edge](https://azure.microsoft.com/services/databox/edge/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [MySQL için Azure DB](https://azure.microsoft.com/services/mysql/)| :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [PostgreSQL için Azure DB](https://azure.microsoft.com/services/postgresql/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [MariaDB için Azure DB](https://azure.microsoft.com/services/mariadb/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure DDoS Koruması](https://azure.microsoft.com/services/ddos-protection/) |  |  |  |  | :heavy_check_mark:
-| [Azure ayrılmış HSM](https://azure.microsoft.com/services/azure-dedicated-hsm/) |  |  |  |  | :heavy_check_mark:
+| [Azure ayrılmış HSM](https://azure.microsoft.com/services/azure-dedicated-hsm/) | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: |
 | [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:
 | [Azure DNS](https://azure.microsoft.com/services/dns/) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | [Azure Event Grid](https://azure.microsoft.com/services/event-grid/)  | :heavy_check_mark: | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark:

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 896e1fb3e93fc0a542f0dca75cc1d87b3a2c237c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306202"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057903"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway için arka uç sistem durumu ve tanılama günlükleri
 
@@ -163,14 +163,14 @@ Erişim günlüğü, yalnızca, önceki adımlarda açıklandığı şekilde, he
 |ClientIP     | İstek için kaynak IP 'si.        |
 |Istemci bağlantı noktası     | İstek için kaynak bağlantı noktası.       |
 |httpMethod     | İstek tarafından kullanılan HTTP yöntemi.       |
-|requestUri     | Alınan isteğin URI 'SI.        |
+|RequestUri     | Alınan isteğin URI 'SI.        |
 |RequestQuery     | **Sunucu-yönlendirildi**: İsteği gönderen arka uç havuzu örneği.</br>**X-AzureApplicationGateway-log kimliği**: İstek için kullanılan bağıntı KIMLIĞI. Arka uç sunucularındaki trafik sorunlarını gidermek için kullanılabilir. </br>**SUNUCU-DURUM**: Arka uçtan alınan Application Gateway HTTP yanıt kodu.       |
 |Kullanıcı     | HTTP istek üst bilgisinden Kullanıcı Aracısı.        |
 |Http durumu     | Application Gateway istemcisinden istemciye döndürülen HTTP durum kodu.       |
 |httpVersion     | İsteğin HTTP sürümü.        |
 |Alınma baytları     | Bayt cinsinden alınan paket boyutu.        |
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
-|timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
+|TimeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
 |sslEnabled| Arka uç havuzlarıyla iletişimin SSL kullanıp kullanmadığını belirtir. Geçerli değerler açık ve kapalı.|
 |host| İsteğin arka uç sunucusuna gönderildiği ana bilgisayar adı. Arka uç ana bilgisayar adı geçersiz kılınırsa, bu ad bu adı yansıtır.|
 |originalHost| İstemciden Application Gateway tarafından isteğin alındığı ana bilgisayar adı.|
@@ -207,13 +207,13 @@ Application Gateway ve WAF v2 için Günlükler biraz daha fazla bilgi gösterir
 |ClientIP     | İstek için kaynak IP 'si.        |
 |Istemci bağlantı noktası     | İstek için kaynak bağlantı noktası.       |
 |httpMethod     | İstek tarafından kullanılan HTTP yöntemi.       |
-|requestUri     | Alınan isteğin URI 'SI.        |
+|RequestUri     | Alınan isteğin URI 'SI.        |
 |Kullanıcı     | HTTP istek üst bilgisinden Kullanıcı Aracısı.        |
 |Http durumu     | Application Gateway istemcisinden istemciye döndürülen HTTP durum kodu.       |
 |httpVersion     | İsteğin HTTP sürümü.        |
 |Alınma baytları     | Bayt cinsinden alınan paket boyutu.        |
 |sentBytes| Bayt cinsinden gönderilen paket boyutu.|
-|timeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
+|TimeTaken| Bir isteğin işlenmesi için gereken süre (milisaniye cinsinden) ve yanıtının gönderilmesi için gereken süre (milisaniye cinsinden). Bu, yanıt gönderme işleminin bittiği zaman Application Gateway bir HTTP isteğinin ilk baytını aldığında zaman aralığı olarak hesaplanır. Zaman alan alanın genellikle istek ve Yanıt paketlerinin ağ üzerinden seyahat süresini içerdiğine dikkat edin. |
 |sslEnabled| Arka uç havuzlarıyla iletişimin SSL kullanıp kullanmadığını belirtir. Geçerli değerler açık ve kapalı.|
 |sslCipher| SSL iletişimi için kullanılan şifre paketi (SSL etkinse).|
 |sslProtocol| Kullanılmakta olan SSL protokolü (SSL etkinse).|
@@ -297,7 +297,7 @@ Güvenlik duvarı günlüğü, önceki adımlarda açıklandığı şekilde, yal
 |instanceId     | Güvenlik Duvarı verilerinin oluşturulduğu örnek Application Gateway. Birden çok örnekli bir uygulama ağ geçidi için örnek başına bir satır vardır.         |
 |ClientIP     |   İstek için kaynak IP 'si.      |
 |Istemci bağlantı noktası     |  İstek için kaynak bağlantı noktası.       |
-|requestUri     | Alınan isteğin URL 'SI.       |
+|RequestUri     | Alınan isteğin URL 'SI.       |
 |ruleSetType     | Kural kümesi türü. Kullanılabilir değer OWASP ' dir.        |
 |ruleSetVersion     | Kural kümesi sürümü kullanıldı. Kullanılabilir değerler 2.2.9 ve 3,0 ' dir.     |
 |RuleId     | Tetikleme olayının kural KIMLIĞI.        |
@@ -309,6 +309,8 @@ Güvenlik duvarı günlüğü, önceki adımlarda açıklandığı şekilde, yal
 |details. Data     | Kuralla eşleşen istekte belirli veriler bulundu.         |
 |Ayrıntılar. dosya     | Kuralın bulunduğu yapılandırma dosyası.        |
 |details. Line     | Olayı tetikleyen yapılandırma dosyasındaki satır numarası.       |
+|konak adı   | Application Gateway ana bilgisayar adı veya IP adresi.    |
+|transactionId  | Aynı istek içinde oluşan birden çok kural ihlallerinin gruplandırbir şekilde yapılmasına yardımcı olan belirli bir işlemin benzersiz KIMLIĞI.   |
 
 ```json
 {
@@ -333,6 +335,8 @@ Güvenlik duvarı günlüğü, önceki adımlarda açıklandığı şekilde, yal
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
+    "hostname": "40.90.218.100", 
+    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
 } 
 

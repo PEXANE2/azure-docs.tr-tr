@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 5ecd5ee4a053d3ebb550b6f2387a0e915b3c2c23
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5366fb1d32020bfbcfaba36c60c0eb5441e92070
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569399"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055190"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure SQL Veritabanı için Azure CLI örnekleri
 
@@ -28,7 +28,7 @@ Azure SQL veritabanı, <a href="/cli/azure">Azure CLI</a>kullanılarak yapıland
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu, Azure CLI 2.0 veya sonraki bir sürümünü kullanmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="single-database--elastic-pools"></a>Tek veritabanı & elastik havuzlar
+## <a name="single-database--elastic-poolstabsingle-database"></a>[Tek veritabanı & elastik havuzlar](#tab/single-database)
 
 Aşağıdaki tablo, Azure SQL Veritabanı için Azure CLI betik örneklerinin bağlantılarını içerir.
 
@@ -46,7 +46,7 @@ Aşağıdaki tablo, Azure SQL Veritabanı için Azure CLI betik örneklerinin ba
 
 [Azure CLı apı tek veritabanı](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)hakkında daha fazla bilgi edinin.
 
-## <a name="managed-instance"></a>Yönetilen Örnek
+## <a name="managed-instancetabmanaged-instance"></a>[Yönetilen örnek](#tab/managed-instance)
 
 Aşağıdaki tabloda Azure SQL veritabanı yönetilen örneği için Azure CLı betik örnekleri bağlantıları yer almaktadır.
 
@@ -58,3 +58,5 @@ Aşağıdaki tabloda Azure SQL veritabanı yönetilen örneği için Azure CLı 
 |||
 
 [Yönetilen örnek Azure CLı API 'si](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) hakkında daha fazla bilgi edinin ve [burada ek örnekler](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)bulabilirsiniz.
+
+---

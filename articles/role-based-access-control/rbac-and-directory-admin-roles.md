@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: be37768a5cef38ae0dc49e12f1d83ba8005ab961
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: e9ce71f12d50aa414579e5fc7c2961156965a337
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194181"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037520"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Klasik abonelik yönetici rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri
 
@@ -112,7 +112,7 @@ Genel anlamda Azure RBAC rolleri, Azure kaynaklarını yönetme izinlerini yöne
 | Azure RBAC rolleri | Azure AD yönetici rolleri |
 | --- | --- |
 | Azure kaynaklarına erişimi yönetme | Azure Active Directory kaynaklarına erişimi yönetme |
-| Özel rolleri destekler | Kendi rollerinizi oluşturamazsınız |
+| Özel rolleri destekler | Özel rolleri destekler |
 | Birden fazla düzeyde (yönetim grubu, abonelik, kaynak grubu, kaynak) kapsam belirtilebilir | Kapsam kiracı düzeyindedir |
 | Rol bilgilerine Azure portal, Azure CLI, Azure PowerShell, Azure Resource Manager şablonları, REST API'si aracılığıyla erişilebilir | Rol bilgilerine Azure yönetim portalı, Microsoft 365 Yönetim Merkezi, Microsoft Graph, AzureAD PowerShell ile erişilebilir |
 

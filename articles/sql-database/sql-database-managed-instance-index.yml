@@ -62,26 +62,6 @@ sections:
           - title: Gelişmiş güvenlik
             href: /azure/sql-database/sql-database-security-index
             html: <p>Yerleşik Azure SQL veritabanı güvenlik özellikleriyle örneğinizin ve veritabanlarınızın güvenliğini sağlayın.<p>
-  - title: Yeni ve önizleme özellikleri
-    items:
-      - type: paragraph
-        text: 'Yönetilen örneği yeni özelliklerle sürekli olarak geliştiriyoruz:'
-      - type: list
-        style: unordered
-        items:
-          - html: (Önizleme) <a href="/azure/sql-database/sql-database-instance-pools"> Örnek havuzları</a> - Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol sağlar.
-          - html: '<a href="https://aka.ms/four-cores-sql-mi-update"> 5. Nesil donanım üzerinde 4 sanal çekirdek</a>'
-          - html: 'Visual Studio aboneleri için <a href="https://aka.ms/sql-mi-visual-studio-subscribers" > aylık Azure kredisine sahip abonelikler için destek </a>'
-          - html: '<a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 ve SharePoint 2019 </a> ile <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> için destek'
-          - html: 'Örnek oluşturma sırasında <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-timezone">saat dilimini yapılandırın</a>.'
-          - html: '<a href="https://aka.ms/managed-instance-collation">Tercih ettiğiniz sunucu düzeyi harmanlamayla</a> örnekler oluşturun.'
-          - html: 'Coğrafi geri yükleme işlevselliği, <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell kullanarak veritabanınızı başka bir veri merkezine geri yüklemenize olanak sağlar</a>.'
-          - html: '(Önizleme) <a href="https://medium.com/@jocapc/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266">Bırakılan veritabanlarını PowerShell kullanarak yeniden oluşturma</a>'
-          - html: Yönetilen örnekler <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">yerleşik güvenlik duvarı</a> ile korunur.
-          - html: '(Önizleme) Zaten Saydam Veri Şifrelemesi (TDE) etkinleştirilmiş olan şirket içi veritabanlarını geçirirken <a href="https://aka.ms/managed-instance-tde-byok">kendi şifreleme anahtarlarınızı getirin</a>.'
-          - html: '(Önizleme) Örneğin bir kopyasını başka bir bölgede tutmak ve verilerinizin bölgesel olağanüstü durum senaryosunda bile kullanılabilir olmasını sağlamak için <a href="https://aka.ms/managed-instance-failover-groups">Coğrafi olarak dağıtılmış yük devretme gruplarını</a> kullanın.'
-          - html: 'Belirli bir noktaya geri yükleme için <a href="https://aka.ms/managed-instance-configurable-backup-retention">yedekleme bekletme süresini 35 güne kadar</a> yapılandırın. Uzun süreli yedek saklama (10 yıla kadar) hala etkin olmadığından, <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">Yalnızca kopya yedeklemeleri</a> alternatif olarak kullanabilirsiniz.'
-          - html: '(Önizleme) <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">DIŞ SAĞLAYICIDAN OTURUM AÇMA OLUŞTURMA</a> kullanarak <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyi Azure AD sunucu sorumluları (oturumlar)</a> oluşturun.'
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:
       - type: paragraph

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882438"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059209"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hadoop günlüklerini analiz etme
 
@@ -110,7 +110,7 @@ Uygulama günlükleri hakkında daha fazla bilgi için bkz. [Apache Hadoop YARN 
 ### <a name="access-the-ambari-ui"></a>Ambarı Kullanıcı arabirimine erişin
 Azure portal, küme bölmesini açmak için bir HDInsight küme adına tıklayın. Küme bölmesinden **Pano**' ya tıklayın.
 
-![Küme panosunu Başlat](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![HDInsight başlatma kümesi panosu](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>Yarn Kullanıcı arabirimine erişin
@@ -120,7 +120,7 @@ YARN Kullanıcı arabirimini kullanarak şunları yapabilirsiniz:
 
 * **Küme durumunu Al**. Sol bölmeden **küme**' ı genişletin ve **hakkında**' yı tıklatın. Bu durum, ayrılan toplam bellek, kullanılan çekirdekler, küme kaynak yöneticisi, küme sürümü vb. gibi küme durumu ayrıntılarını sunar.
   
-    ![Küme panosunu Başlat Yarn](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "Küme panosunu Başlat Yarn")
+    ![HDInsight başlatma kümesi Pano Yarn](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "HDInsight başlatma kümesi Pano Yarn")
 * **Düğüm durumunu Al**. Sol bölmeden **küme**' ı genişletin ve **düğümler**' e tıklayın. Bu, kümedeki tüm düğümleri, her düğümün HTTP adresini, her bir düğüme ayrılan kaynakları vb. listeler.
 * **İş durumunu izleme**. Sol bölmeden **küme**' ı genişletin ve ardından kümedeki tüm işleri listelemek için **uygulamalar** ' a tıklayın. İşlerin belirli bir durumda (örneğin, yeni, gönderilen, çalışan, vb.) görünmesini istiyorsanız, **uygulamalar**altında uygun bağlantıya tıklayın. İşle ilgili daha fazla bilgi edinmek için iş adına tıklayabilirsiniz. Örneğin, çıkış, Günlükler vb. dahil olmak üzere iş hakkında daha fazla bilgi edinebilirsiniz.
 

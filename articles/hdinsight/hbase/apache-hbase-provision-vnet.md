@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: c8fc7c931f31e1ff58f41faa9a29f7e77e9655fd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 60a7afb6e610294ccaa535eaa7371ff8d5015db3
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917297"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077198"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure sanal ağı 'nda HDInsight 'ta Apache HBase kümeleri oluşturma
 Azure [sanal ağında][1]Azure HDInsight Apache HBase kümeleri oluşturmayı öğrenin.
@@ -47,10 +47,10 @@ Bu bölümde, bir Azure sanal ağında [Azure Resource Manager şablonu](../../a
 >
 > &lt;> Küme adı, şablonu kullanırken sağladığınız küme adı ile değiştirilmiştir.
 
-
 1. Azure Portal'da bir şablonu açmak için aşağıdaki görüntüye tıklayın. Şablon, [Azure hızlı başlangıç şablonlarında](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)bulunur.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux-vnet%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-provision-vnet/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+
 2. **Özel dağıtım** dikey penceresinde aşağıdaki özellikleri girin:
 
    * **Abonelik**: HDInsight kümesi, bağımlı depolama hesabı ve Azure sanal ağı oluşturmak için kullanılan bir Azure aboneliğini seçin.

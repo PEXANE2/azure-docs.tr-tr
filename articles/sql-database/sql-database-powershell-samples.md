@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: c32803fec6107e39a0b8329adaee072e3e291575
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 998497d3e790ba501ac5cdeb4974bf7ee9ea6a54
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567066"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059269"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure SQL Veritabanı için Azure PowerShell örnekleri
 
@@ -27,7 +27,7 @@ Azure SQL veritabanı, Azure PowerShell kullanarak veritabanlarınızı, örnekl
 
 PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
-## <a name="single-database-and-elastic-pools"></a>Tek Veritabanı ve elastik havuzlar
+## <a name="single-database-and-elastic-poolstabsingle-database"></a>[Tek Veritabanı ve elastik havuzlar](#tab/single-database)
 
 Aşağıdaki tablo, Azure SQL Veritabanı’na yönelik örnek Azure PowerShell betiklerinin bağlantılarını içerir.
 
@@ -58,7 +58,7 @@ Aşağıdaki tablo, Azure SQL Veritabanı’na yönelik örnek Azure PowerShell 
 
 [Tek Veritabanı Azure PowerShell API 'si](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases)hakkında daha fazla bilgi edinin.
 
-## <a name="managed-instance"></a>Yönetilen Örnek
+## <a name="managed-instancetabmanaged-instance"></a>[Yönetilen örnek](#tab/managed-instance)
 
 Aşağıdaki tabloda, Azure SQL veritabanı yönetilen örneği için örnek Azure PowerShell betiklerin bağlantıları yer almaktadır.
 
@@ -73,6 +73,8 @@ Aşağıdaki tabloda, Azure SQL veritabanı yönetilen örneği için örnek Azu
 |||
 
 [Yönetilen örnek Azure PowerShell API 'si](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances)hakkında daha fazla bilgi edinin.
+
+---
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

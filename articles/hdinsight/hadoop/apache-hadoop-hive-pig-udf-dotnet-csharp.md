@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4e6825b40700fe3bd24631094a2a6060d94524cc
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: fa40f206447f631c78052bda085b26a56e481194
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882289"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066912"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight C# 'ta Apache Hadoop üzerinde Apache Hive ve Apache Pig ile Kullanıcı tanımlı işlevler kullanma
 
@@ -171,7 +171,7 @@ Hem Hive hem de Pig, işlenmek üzere dış uygulamalara veri geçirebilir. Bu i
 
    * Bir __Azure depolama hesabı__kullanıyorsanız karşıya yükle simgesine tıklayın ve ardından **hivecsharp** proje için **bin\Debug** klasörüne gidin. Son olarak, **Hivecsharp. exe** dosyasını seçip **Tamam**' a tıklayın.
 
-       ![karşıya yükle simgesi](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
+       ![Yeni proje için HDInsight karşıya yükleme simgesi](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
     
    * __Azure Data Lake Storage__kullanıyorsanız, dosya listesinde boş bir alana sağ tıklayın ve ardından __karşıya yükle__' yi seçin. Son olarak, **Hivecsharp. exe** dosyasını seçin ve **Aç**' a tıklayın.
 

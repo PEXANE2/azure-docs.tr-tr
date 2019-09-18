@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bdb1e26d9f10ae9b9549421e72a99f2c4e5341c2
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035137"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056076"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil uzaktan erişimi etkinleştirme
 
@@ -138,7 +138,7 @@ Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>5\. Adım: Yönetilen cihazlar için Intune ilkesini yapılandırma (isteğe bağlı)
 
 > [!NOTE]
-> Bu işlev, 7/31/19 tarihine kadar kullanılamayacak.
+> Bu işlevsellik şu anda yalnızca iOS 'ta kullanılabilir.
 
 Şirketinizin iş gücünün kullandığı istemci uygulamalarını yönetmek için Microsoft Intune kullanabilirsiniz. Intune, veri şifreleme ve ek erişim gereksinimleri gibi özellikleri kullanmanıza olanak sağlar. Intune ile uygulama yönetimi hakkında daha fazla bilgi edinmek için bkz. Intune uygulama yönetimi. Power BI mobil uygulamanın Intune ilkesiyle çalışmasını sağlamak için aşağıdaki adımları kullanın.
 

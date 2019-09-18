@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/01/2019
 ms.author: pafarley
-ms.openlocfilehash: e3c5583f38f7a7f5a3654bfdd27620593175cf58
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 44121b959d13a92ca1f4cca0e5a0c00341d1ac18
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562668"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073741"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Hızlı Başlangıç: Python ile REST API form tanıyıcı kullanarak alındı verilerini ayıklama
 
@@ -36,7 +36,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Bir alındısı analizine başlamak için aşağıdaki Python betiğini kullanarak **Çözümleme alındı** API 'sini çağırabilirsiniz. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
+1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
 1. Bir `<your receipt URL>` makbuz resminin URL adresiyle değiştirin.
 1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 

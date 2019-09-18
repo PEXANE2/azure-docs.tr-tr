@@ -1,6 +1,6 @@
 ---
 title: Dağıtılan Web hizmetini tüketmek için istemci oluşturma
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bir model Azure Machine Learning modeliyle dağıtıldığında oluşturulan bir Web hizmetini nasıl kullanacağınızı öğrenin. Web hizmeti bir REST API gösterir. Tercih ettiğiniz programlama dilini kullanarak bu API için istemcileri oluşturun.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f57be9a1fc5d260ce580b969c8f92c87aea17a8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e005cf0860faeaad7010ea4da3ca1c5227ade14b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279122"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034787"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Bir web hizmeti olarak bir Azure Machine Learning modeli kullanma
 
@@ -43,7 +43,7 @@ Machine Learning Web hizmeti kullanan bir istemci oluşturmak için genel iş ak
 * `auth_enabled`-Anahtar kimlik doğrulaması etkinse `True`; Aksi takdirde,. `False`
 * `token_auth_enabled`-Belirteç kimlik doğrulaması etkinse `True`; Aksi takdirde,. `False`
 * `scoring_uri` -REST API adresi.
-* `swagger_uri`-Openapı belirtiminin adresi. Otomatik şema oluşturmayı etkinleştirdiyseniz, bu URI kullanılabilir. Daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md#schema).
+* `swagger_uri`-Openapı belirtiminin adresi. Otomatik şema oluşturmayı etkinleştirdiyseniz, bu URI kullanılabilir. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md#schema).
 
 Dağıtılan web hizmetleri için bu bilgileri almak için üç yol vardır:
 

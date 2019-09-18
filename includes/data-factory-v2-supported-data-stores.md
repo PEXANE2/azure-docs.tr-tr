@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/30/2019
+ms.date: 09/16/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 143da0374dbd38f96dd0d44e3e1d1bbe3339b58f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: aa8d91b5b400525dfd0f0a2db32c3c66daa0b06f
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174670"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71032755"
 ---
 | Kategori | Veri deposu | Kaynak olarak desteklenen | Havuz olarak desteklenen | [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) tarafından desteklenen | Şirket içinde [BARıNDıRıLAN IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) tarafından desteklenir |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -25,7 +25,7 @@ ms.locfileid: "70174670"
 | &nbsp; |[Azure Data Lake Storage 2.](../articles/data-factory/connector-azure-data-lake-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[MariaDB için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mariadb.md) |✓ | |✓ |✓  |
 | &nbsp; |[MySQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mysql.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[PostgreSQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ | |✓ |✓  |
+| &nbsp; |[PostgreSQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-postgresql.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Dosya Depolama](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL Veritabanı](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL veritabanı yönetilen örneği](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |✓ |✓ |✓ |✓  |

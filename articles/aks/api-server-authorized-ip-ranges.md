@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276494"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058336"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de yetkili IP adresi aralıklarını kullanarak API sunucusuna önizleme-güvenli erişim
 
@@ -28,7 +28,7 @@ Bu makalede, API sunucusu tarafından yetkilendirilmiş IP adresi aralıkların�
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makale, [kubenet] [kubenet] kullanan kümelerle çalışıyorassumess.  [Azure Container Networking Interface (CNı)] [CNI-Networking] tabanlı kümeler ile, erişimi güvenli hale getirmek için gerekli yol tablosuna sahip değilsiniz.  Yol tablosunu el ile oluşturmanız gerekir.  Daha fazla bilgi için bkz. [Rota tablolarını yönetme](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
+Bu makale, [Kubernetes kullanan][kubenet]kullanan kümelerle çalışıyorassumess.  [Azure Container Networking Interface (CNı)][cni-networking] tabanlı kümeler sayesinde, erişimi güvenli hale getirmek için gerekli yol tablosuna sahip değilsiniz.  Yol tablosunu el ile oluşturmanız gerekir.  Daha fazla bilgi için bkz. [Rota tablolarını yönetme](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
 
 API sunucusu yetkilendirilmiş IP aralıkları yalnızca sizin oluşturduğunuz yeni AKS kümelerinde çalışır. Bu makalede, Azure CLı kullanarak bir AKS kümesinin nasıl oluşturulacağı gösterilmektedir.
 
@@ -256,6 +256,8 @@ Daha fazla bilgi için bkz. [aks 'teki uygulamalar ve kümeler Için güvenlik k
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
+[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
+[cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

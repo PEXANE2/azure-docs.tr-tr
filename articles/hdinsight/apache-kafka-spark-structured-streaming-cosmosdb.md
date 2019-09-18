@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1e4f79a1978b77c2b744d523c8f42f1497d63007
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 0d8c6929705ab29ced25a847bf7c5a72d57aa49b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918384"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037284"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka ve Azure Cosmos DB ile yapılandırılmış Apache Spark akışı kullanın
 
@@ -42,7 +42,7 @@ HDInsight üzerinde Apache Kafka, genel internet üzerinden Kafka aracılarına 
 Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gibi, Azure Resource Manager şablonu kullanmak daha kolay olur. Azure aboneliğinize Azure sanal ağını, Kafka ve Spark kümelerini dağıtmak için aşağıdaki adımları kullanın.
 
 1. Aşağıdaki düğmeyi kullanarak Azure'da oturum açın ve şablonu Azure portalında açın.
-    
+
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-spark-scala-kafka-cosmosdb%2Fmaster%2Fazuredeploy.json" target="_blank">
     <img src="./media/apache-kafka-spark-structured-streaming-cosmosdb/resource-manager-deploy.png" alt="Deploy to Azure"/>
     </a>
@@ -66,11 +66,11 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
      > Bu örnekte kullanılan yapılandırılmış akış not defteri, HDInsight 3.6 üzerinde Spark gerektirir. HDInsight üzerinde Spark’ın daha önceki bir sürümünü kullanıyorsanız, not defterini kullanırken hatalarla karşılaşırsınız.
 
 2. **Özel dağıtım** bölümündeki girişleri doldurmak için aşağıdaki bilgileri kullanın:
-   
-    ![HDInsight özel dağıtımı](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
+
+    ![HDInsight özel dağıtım değerleri](./media/apache-kafka-spark-structured-streaming-cosmosdb/hdi-custom-parameters.png)
 
     * **Abonelik**: Azure aboneliğinizi seçin.
-   
+
     * **Kaynak grubu**: Bir grup oluşturun veya var olan bir grubu seçin. Bu grup HDInsight kümesini içerir.
 
     * **Konum**: Coğrafi olarak size yakın bir konum seçin.

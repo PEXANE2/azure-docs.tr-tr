@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 800454c3a8037d4562ae80d1093519733472c89c
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9a4d4f84626eafdfbc5cc21eef1968a9ed64fcad
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68824637"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "71055623"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Öğretici: Azure App Service ASP.NET Core ve SQL veritabanı uygulaması oluşturma
 
@@ -177,7 +177,7 @@ Bu adımda, SQL Veritabanı’na bağlı .NET Core uygulamanızı App Service’
 Azure uygulamanıza yönelik bağlantı dizeleri ayarlamak için, Cloud Shell’de [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) komutunu kullanın. Aşağıdaki komutta, *\<app name>* ve *\<connection_string>* parametrelerini, önceden oluşturduğunuz bağlantı dizesiyle değiştirin.
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
+az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection="<connection_string>" --connection-string-type SQLServer
 ```
 
 ASP.NET Core, bu adlandırılmış bağlantı dizesini (`MyDbConnection`), *appSettings. JSON*içinde belirtilen herhangi bir bağlantı dizesi gibi standart kalıbı kullanarak kullanabilirsiniz. Bu durumda, `MyDbConnection` *appSettings. JSON*' da de tanımlanmıştır. App Service çalışırken, App Service tanımlanan bağlantı dizesi *appSettings. JSON*' da tanımlanan bağlantı dizesi üzerinden önceliklidir. Kod, yerel geliştirme sırasında *appSettings. JSON* değerini kullanır ve aynı kod dağıtıldığında App Service değeri kullanır.

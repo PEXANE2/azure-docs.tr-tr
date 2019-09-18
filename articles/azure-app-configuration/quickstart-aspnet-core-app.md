@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 600c808c0bda991bb7203bbf60c098918e274da6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b4642ecfad17bf3e926e9efdec034bbe4aa6c20e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326638"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076321"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı Başlangıç: Azure Uygulama yapılandırması ile ASP.NET Core uygulaması oluşturma
 
@@ -57,9 +57,9 @@ Yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.NET Core k
 
 ## <a name="add-secret-manager"></a>Gizli dizi Yöneticisi ekleme
 
-Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/security/app-secrets) projenize ekleyin. Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje ağacınızın dışında depolar. Bu yaklaşım, uygulama gizli dizilerini kaynak kodunun içinde yanlışlıkla paylaşmayı önlemeye yardımcı olur.
+Gizli dizi Yöneticisi 'ni kullanmak için `UserSecretsId` *. csproj* dosyanıza bir öğesi ekleyin.
 
-- *. Csproj* dosyasını açın. Burada gösterildiği `UserSecretsId` gibi bir öğe ekleyin ve değerini, genellikle GUID olan kendi değeri ile değiştirin. Dosyayı kaydedin.
+- *. Csproj* dosyasını açın. Burada gösterildiği `UserSecretsId` gibi bir öğe ekleyin. Aynı GUID 'i kullanabilir veya bu değeri kendi kendinizinkini kullanarak değiştirebilirsiniz. Dosyayı kaydedin.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -77,11 +77,13 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     </Project>
     ```
 
+Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje ağacınızın dışında depolar. Bu yaklaşım, uygulama gizli dizilerini kaynak kodunun içinde yanlışlıkla paylaşmayı önlemeye yardımcı olur. Gizli yönetici hakkında daha fazla bilgi için lütfen bkz. [ASP.NET Core geliştirme sırasında uygulama gizli dizileri Için güvenli depolama](https://docs.microsoft.com/aspnet/core/security/app-secrets)
+
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
 1. Aşağıdaki komutu çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet paketine bir başvuru ekleyin:
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
 
 2. Projenizin paketlerini geri yüklemek için aşağıdaki komutu çalıştırın:
 
@@ -94,6 +96,9 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     Bu komut, *.csproj* dosyası ile aynı dizinde yürütülmelidir.
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+
+    > [!IMPORTANT]
+    > Bazı kabuklar, tırnak içine alınmadığı takdirde bağlantı dizesini keser. `dotnet user-secrets` Komutun çıktısının tüm bağlantı dizesini belirttiğinden emin olun. Aksi takdirde, bağlantı dizesini tırnak içine alarak komutu yeniden çalıştırın.
 
     Gizli dizi Yöneticisi yalnızca Web uygulamasını yerel olarak test etmek için kullanılır. Uygulama [Azure App Service](https://azure.microsoft.com/services/app-service/web)dağıtıldığında, örneğin, bağlantı dizesini depolamak Için gizli yönetici yerine App Service bir uygulama ayarı **bağlantı** dizesi kullanırsınız.
 
@@ -182,7 +187,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu [uygulama yapılandırma sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir ASP.NET Core Web uygulamasıyla kullandınız. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi edinmek için, kimlik doğrulamasını gösteren bir sonraki öğreticiye geçin.
+Bu hızlı başlangıçta, yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu [uygulama yapılandırma sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir ASP.NET Core Web uygulamasıyla kullandınız. Uygulama yapılandırmasını kullanma hakkında daha fazla bilgi edinmek için, Web uygulamanızı yapılandırma ayarlarını dinamik olarak yenilemek üzere nasıl yapılandıracağınızı gösteren bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Yönetilen kimlik tümleştirmesi](./howto-integrate-azure-managed-service-identity.md)
+> [ASP.NET Core uygulamasında dinamik yapılandırma kullanma](./enable-dynamic-configuration-aspnet-core.md)

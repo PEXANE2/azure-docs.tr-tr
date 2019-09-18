@@ -1,20 +1,20 @@
 ---
-title: Azure portal kullanarak bir Azure özel uç noktası oluşturma | Microsoft Docs
-description: Azure özel uç noktası hakkında bilgi edinin
+title: Azure özel uç noktası kullanarak bir depolama hesabına özel olarak bağlanma
+description: Özel bir uç nokta kullanarak Azure 'daki bir depolama hesabına özel olarak nasıl bağlanacağınızı öğrenin.
 services: virtual-network
 author: KumudD
 ms.service: virtual-network
-ms.topic: quickstart
+ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 8a569f91a27884c320f4af5b1282bfe4dd9a5a99
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
-ms.translationtype: MT
+ms.openlocfilehash: 93ca3c8c4b7a4da0387d1302b301cf677b689281
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018940"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074965"
 ---
-# <a name="create-a-private-endpoint-using-the-azure-portal"></a>Azure portal kullanarak özel uç nokta oluşturma
+# <a name="connect-privately-to-a-storage-account-using-an-azure-private-endpoint"></a>Azure özel uç noktası kullanarak bir depolama hesabına özel olarak bağlanma
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar.
 
 Bu hızlı başlangıçta, bir Azure sanal ağında, Azure portal kullanarak özel uç nokta olan bir depolama hesabı olan bir VM oluşturmayı öğreneceksiniz. Daha sonra, depolama hesabına VM 'den güvenli bir şekilde erişebilirsiniz.

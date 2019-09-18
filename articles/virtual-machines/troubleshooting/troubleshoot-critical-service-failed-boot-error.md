@@ -4,7 +4,7 @@ description: "' İ önyüklerken oluşan \"0x0000005A-KRITIK HIZMET başarısız
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 2a6e8985a2cb13da0f2e34f4e9961f84aacdd974
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f038e56fe4b1e6ad2737217674706eef77a39fd6
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103501"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058049"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken mavi ekranda "KRITIK HIZMET başarısız oldu" olarak gösterilir
 Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyüklediğinizde karşılaşabileceğiniz "KRITIK HIZMET başarısız oldu" hatası açıklanır. Sorunları gidermeye yardımcı olmak için sorun giderme adımları sağlar. 
@@ -27,7 +27,7 @@ Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyükledi�
 
 ## <a name="symptom"></a>Belirti 
 
-Bir Windows VM 'si başlamıyor. Önyükleme tanılamalarında önyükleme ekran görüntülerini [](./boot-diagnostics.md)denetlediğinizde, mavi ekranda aşağıdaki hata iletilerinden birini görürsünüz:
+Bir Windows VM 'si başlamıyor. Önyükleme [tanılamalarında](./boot-diagnostics.md)önyükleme ekran görüntülerini denetlediğinizde, mavi ekranda aşağıdaki hata iletilerinden birini görürsünüz:
 
 - "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yeniden başlatabilirsiniz. Bu sorun ve olası düzeltmeler hakkında daha fazla bilgi için, https://windows.com/stopcode adresini ziyaret edin. Bir destek kişisi çağırırsanız, bu bilgileri verin: Kodu durdur: KRITIK HIZMET BAŞARISIZ OLDU " 
 - "Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor. Yalnızca bazı hata bilgilerini topluyoruz ve sonra yeniden başlatacağız. Daha fazla bilgi edinmek istiyorsanız, daha sonra bu hata için çevrimiçi arama yapabilirsiniz: CRITICAL_SERVICE_FAILED"

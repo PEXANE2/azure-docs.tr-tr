@@ -4,14 +4,14 @@ description: Azure HPC önbelleğini kullanma önkoşulları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7bd1268784df50168e03673ac809b3a5854e2be7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 50c60e38b58815be04cfb892c3622b9579529e67
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775344"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036864"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC önbelleği önkoşulları
 
@@ -22,7 +22,7 @@ Yeni bir Azure HPC önbelleği oluşturmak için Azure portal kullanmadan önce 
 Ücretli bir abonelik önerilir.
 
 > [!NOTE]
-> Genel önizleme sürümü sırasında, Azure HPC önbellek ekibinin, bir önbellek örneği oluşturmak için kullanılmadan önce aboneliğinizi erişim listesine eklemesi gerekir. Bu yordam, her müşterinin test Önbelleklerinden yüksek kaliteli yanıt hızını aldığından emin olmanıza yardımcı olur. Erişim istemek için [Bu formu](https://aka.ms/onboard-hpc-cache) doldurun.
+> Önizleme sürümü sırasında, Azure HPC önbellek ekibinin, bir önbellek örneği oluşturmak için kullanılmadan önce aboneliğinizi erişim listesine eklemesi gerekir. Bu yordam, her müşterinin test Önbelleklerinden yüksek kaliteli yanıt hızını aldığından emin olmanıza yardımcı olur. Erişim istemek için [Bu formu](https://aka.ms/onboard-hpc-cache) doldurun.
 
 ## <a name="network-infrastructure"></a>Ağ altyapısı
 

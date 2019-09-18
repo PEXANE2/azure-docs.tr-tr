@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: a0ca483005cf1f5aaadcd7a6107b092d581d6773
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375308"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067762"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware değerlendirmesi ve geçiş için destek matrisi
 
@@ -43,10 +43,13 @@ Tablo, VMware VM 'Leri için desteklenen senaryoları özetler.
 Azure Kamu | ABD Devleti Virginia
 Asya Pasifik | Doğu Asya veya Güneydoğu Asya
 Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
+Brezilya | Güney Brezilya
 Kanada | Kanada Orta veya Kanada Doğu
 Avrupa | Kuzey Avrupa veya Batı Avrupa
+Fransa | Fransa Orta
 Hindistan | Orta Hindistan veya Güney Hindistan
 Japonya |  Japonya Doğu veya Japonya Batı
+Güney Kore | Kore Orta veya Kore Güney
 Birleşik Krallık | UK Güney veya UK Batı
 Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
 
@@ -73,11 +76,11 @@ Azure geçişi, VMware VM 'lerini bulmaya ve Azure geçişi 'ne VM meta verileri
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Gereç dağıtımı** | Gereci bir VMware VM 'si olarak dağıtırsınız. VCenter Server, 32 GB RAM, 8 vCPU ile, 80 GB disk depolama ve dış sanal anahtar ile bir VM ayırmak için yeterli sayıda kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/> Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır. 
+**Gereç dağıtımı** | Gereci bir VMware VM 'si olarak dağıtırsınız. VCenter Server, 32 GB RAM, 8 vCPU ile, 80 GB disk depolama ve dış sanal anahtar ile bir VM ayırmak için yeterli sayıda kaynağa ihtiyacınız vardır.<br/><br/> Gereç doğrudan veya bir ara sunucu üzerinden internet erişimi gerektirir.<br/> Gereç VM 'si, 5,5 veya sonraki bir sürümü çalıştıran bir ESXi konağına dağıtılmalıdır.
 **Azure geçişi projesi** | Bir gereç, tek bir projeyle ilişkilendirilebilir. <br/> Herhangi bir sayıda gereç, tek bir projeyle ilişkilendirilebilir.<br/> Bir projede en fazla 35.000 sanal makineyi değerlendirebilirsiniz.
 **Keşfini** | Bir gereç, vCenter Server en fazla 10.000 VMware VM 'yi bulabilir.<br/> Bir gereç, tek bir vCenter Server bağlanabilir.
 **Değerlendirme grubu** | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.
-**Değerlendirmesini** | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
+**Değerlendirme** | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 
 ## <a name="assessment-url-access-requirements"></a>Değerlendirme-URL erişim gereksinimleri

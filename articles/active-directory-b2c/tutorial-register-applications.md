@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/23/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 651c15c8206f7956bb35520f9c5837cb0c9308f9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 06b2c273f41bfa74ee968b6fd6676e83767ce8b2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980700"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063263"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C bir uygulamayı kaydetme
 
-[Uygulamalarınızın](active-directory-b2c-apps.md) Azure Active Directory (Azure AD) B2C ile etkileşime geçmesini sağlamak için, yönettiğiniz bir kiracıda kayıtlı olmaları gerekir. Bu öğreticide, Azure portal kullanarak bir Web uygulamasının nasıl kaydedileceği gösterilmektedir.
+[Uygulamalarınızın](active-directory-b2c-apps.md) Azure Active Directory B2C (Azure AD B2C) ile etkileşime girebilmesi için, yönettiğiniz bir kiracıda kayıtlı olmaları gerekir. Bu öğreticide, Azure portal kullanarak bir Web uygulamasının nasıl kaydedileceği gösterilmektedir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -35,7 +35,7 @@ Kendi [Azure AD B2C kiracınızı](tutorial-create-tenant.md)önceden oluşturma
 
 ## <a name="register-a-web-application"></a>Web uygulaması kaydetme
 
-1. Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve kiracınız içeren dizine seçme.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 1. Uygulama için bir ad girin. Örneğin, *WebApp1*.

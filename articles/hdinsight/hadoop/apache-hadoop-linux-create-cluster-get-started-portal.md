@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: be7ff67f07ed8eaeb3f04a15c6185191bf107cf2
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 33f70ba33168190577baf1757e9be0ece5d315ba
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918475"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066902"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Hadoop kümesi oluşturma
 
@@ -34,7 +34,7 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
 
 1. Azure Portal, **kaynak** > **Analizi** > **HDInsight**oluşturma bölümüne gidin.
 
-    ![Azure portalında Databricks](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "Databricks on Azure portal")
+    ![Kaynak HDInsight kümesi oluşturma](./media/apache-hadoop-linux-create-cluster-get-started-portal/create-hdinsight-cluster.png "Kaynak HDInsight kümesi oluşturma")
 
 1. **HDInsight** > **hızlı**oluşturmatemelleri > altında, aşağıdaki değerleri girin veya seçin:
 
@@ -101,7 +101,7 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
 
 3. Aşağıdaki ekran görüntüsünde gösterildiği gibi **Hive Görünümü**’nü açın:
 
-    ![Ambari görünümlerini seçme](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive Viewer menüsü")
+    ![Ambarı 'Ndan Hive görünümü seçme](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-select-hive-view.png "HDInsight Hive Görüntüleyicisi menüsü")
 
 4. Sayfadaki **SORGU** sekmesinde, aşağıdaki HiveQL ifadelerini çalışma sayfasına yapıştırın:
 
@@ -109,13 +109,13 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
     SHOW TABLES;
     ```
 
-    ![HDInsight Hive görünümleri](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "HDInsight Hive Görünümü Sorgu Düzenleyicisi")
+    ![HDInsight Hive görünümü sorgu Düzenleyicisi](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdi-apache-hive-view1.png "HDInsight Hive görünümü sorgu Düzenleyicisi")
 
 5. **Yürüt**’ü seçin. **SORGU** sekmesinin altında bir **SONUÇLAR** sekmesi görünür. Bu sekmede işle ilgili bilgiler görüntülenir. 
 
     Sorgu tamamlandıktan sonra **sorgu** sekmesi işlemin sonuçlarını görüntüler. **hivesampletable** adlı bir tablo görürsünüz. Bu örnek Hive tablosu tüm HDInsight kümeleri ile birlikte gelir.
 
-    ![HDInsight Hive Görünüm sonuçları](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "HDInsight Hive Görünüm sonuçları")
+    ![Hdınsight Apache Hive sonuçları görüntüle](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-hive-views.png "Hdınsight Apache Hive sonuçları görüntüle")
 
 6. Aşağıdaki sorguyu çalıştırmak için 4. ve 5. adımı yineleyin:
 
@@ -125,7 +125,7 @@ Bu bölümde, Azure portalını kullanarak HDInsight’ta Hadoop kümesi oluştu
 
 7. Ayrıca sorgunun sonuçlarını da kaydedebilirsiniz. Sağdaki menü düğmesini seçtikten sonra, sonuçları CSV dosyası olarak indirme veya kümeyle ilişkili depolama hesabında depolama seçeneklerinden birini belirleyin.
 
-    ![Hive sorgusunun sonucunu kaydetme](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Hive sorgusunun sonucunu kaydetme")
+    ![Apache Hive sorgusunun sonucunu kaydet](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-hive-view-save-results.png "Apache Hive sorgusunun sonucunu kaydet")
 
 Hive işini tamamladıktan sonra, [sonuçları Azure SQL Veritabanı’na veya SQL Server veritabanına aktarabilirsiniz](apache-hadoop-use-sqoop-mac-linux.md), ayrıca [Excel kullanarak sonuçları görselleştirebilirsiniz](apache-hadoop-connect-excel-power-query.md). HDInsight 'ta Hive kullanma hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop ile Apache Hive ve HiveQL kullanarak örnek Apache Log4J dosyası çözümleme](hdinsight-use-hive.md).
 
@@ -140,7 +140,7 @@ Hızlı başlangıcı tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDIn
 
 1. Azure portalın bulunduğu tarayıcı sekmesine dönün. Kümeye genel bakış sayfasında olmalısınız. Yalnızca kümeyi silmek, ancak varsayılan depolama hesabını korumak istiyorsanız **Sil**’i seçin.
 
-    ![HDInsight küme silme](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "HDInsight kümesini silme")
+    ![Azure HDInsight küme silme](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-delete-cluster.png "Azure HDInsight kümesini silme")
 
 2. Kümeyi ve varsayılan depolama hesabını silmek istiyorsanız, kaynak grubu sayfasını açmak için kaynak grubu adını (önceki ekran görüntüsünde vurgulanan) seçin.
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812841"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033640"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlayın
 
@@ -64,7 +64,7 @@ Azure AD Uygulama Ara Sunucusu yapılandırmak ve uygulamak için aşağıdaki t
 
 *  **Azure ekleme**: Uygulama proxy 'si dağıtılmadan önce, kullanıcı kimliklerinin şirket içi bir dizinden eşitlenmesi veya doğrudan Azure AD kiracılarınız içinden oluşturulması gerekir. Kimlik eşitlemesi, Azure AD 'nin uygulama proxy 'Si yayımlanmış uygulamalarına erişim vermeden önce kullanıcıların kimliğini doğrulamasına ve çoklu oturum açma (SSO) gerçekleştirmesi için gerekli Kullanıcı tanımlayıcı bilgilerine sahip olmasına olanak sağlar.
 
-* **Koşullu erişim gereksinimleri**: Bu, kullanıcıları etkileyecek gecikme süresi eklediğinden intranet erişimi için uygulama proxy 'Sinin kullanılmasını önermiyoruz. İnternet 'ten uzaktan erişim için ön kimlik doğrulama ve koşullu erişim ilkeleriyle uygulama proxy 'Si kullanmanızı öneririz.  İntranet kullanımı için koşullu erişim sağlamaya yönelik bir yaklaşım, modernleştirin uygulamaları AAD ile kimlik doğrulaması yapabilmeleri için diretly. Daha fazla bilgi için, [UYGULAMALARı AAD 'ye geçirmeye yönelik kaynaklara](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) bakın. 
+* **Koşullu erişim gereksinimleri**: Bu, kullanıcıları etkileyecek gecikme süresi eklediğinden intranet erişimi için uygulama proxy 'Sinin kullanılmasını önermiyoruz. İnternet 'ten uzaktan erişim için ön kimlik doğrulama ve koşullu erişim ilkeleriyle uygulama proxy 'Si kullanmanızı öneririz.  İntranet kullanımı için koşullu erişim sağlamaya yönelik bir yaklaşım, modernleştirin uygulamalar ile doğrudan AAD ile kimlik doğrulaması yapabilmeleri için uygulamalara yöneliktir. Daha fazla bilgi için, [UYGULAMALARı AAD 'ye geçirmeye yönelik kaynaklara](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) bakın. 
 
 * **Hizmet sınırları**: Tek tek kiracılar tarafından kaynakların aşırı tüketimine karşı koruma sağlamak için uygulama ve kiracı başına azaltma sınırları vardır. Bu sınırları görmek için [Azure AD hizmet limitleri ve kısıtlamalarına](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions)bakın. Bu azaltma sınırları, tipik kullanım hacmi üzerinde en yukarıdaki bir karşılaştırmaya dayanır ve çoğu dağıtımda çok fazla arabellek sağlar.
 
@@ -239,7 +239,7 @@ Uygulamanızın dış URL aracılığıyla ona erişen uygulama proxy 'Si aracı
 
 3. **Ön kimlik doğrulama** alanında **Azure Active Directory**' yi seçmek için açılan listeyi kullanın ve **Kaydet**' i seçin.
 
-Ön kimlik doğrulama özelliği etkinken, Azure AD kimlik doğrulaması için kullanıcıları daha sonra yeniden dener ve çoklu oturum açma özelliği doğrulanacaktır, sonra da uygulama erişimi verilmeden önce, arka uç uygulaması kullanıcıyı doğrular. Ön kimlik doğrulama modunun geçiş 'den Azure AD 'ye değiştirilmesi, dış URL 'yi HTTPS ile de yapılandırır, bu nedenle başlangıçta HTTP için yapılandırılmış tüm uygulamaların artık HTTPS ile güvenliği sağlanır.
+Ön kimlik doğrulaması etkinken, Azure AD, kullanıcıları kimlik doğrulaması için önce ve çoklu oturum açma yapılandırıldıktan sonra da uygulamanın erişim izni verilmeden önce kullanıcının kimliğini doğrulayacaktır. Ön kimlik doğrulama modunun geçiş 'den Azure AD 'ye değiştirilmesi, dış URL 'yi HTTPS ile de yapılandırır, bu nedenle başlangıçta HTTP için yapılandırılmış tüm uygulamaların artık HTTPS ile güvenliği sağlanır.
 
 ### <a name="enable-single-sign-on"></a>Çoklu oturum açmayı etkinleştir
 
@@ -292,11 +292,11 @@ Ancak, kullanıcıların günlük ayrıcalıklı işlemleri gerçekleştirmesi g
 
 ### <a name="reporting-and-monitoring"></a>Raporlama ve izleme
 
-Azure AD, kuruluşunuzun uygulama kullanımı ve [Denetim günlükleri ve raporları](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs)aracılığıyla işletimsel sistem durumu hakkında ek öngörüler sağlar. Ayrıca, uygulama proxy 'Si Azure AD portalı ve Windows olay günlüklerinden bağlayıcıları izlemeyi çok kolay hale getirir.
+Azure AD, kuruluşunuzun uygulama kullanımı ve [Denetim günlükleri ve raporları](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)aracılığıyla işletimsel sistem durumu hakkında ek öngörüler sağlar. Ayrıca, uygulama proxy 'Si Azure AD portalı ve Windows olay günlüklerinden bağlayıcıları izlemeyi çok kolay hale getirir.
 
 #### <a name="application-audit-logs"></a>Uygulama denetim günlükleri
 
-Bu Günlükler, uygulama proxy 'Si ve cihazla ve uygulamaya erişen kullanıcı ile yapılandırılan uygulamalara yönelik oturumlar hakkında ayrıntılı bilgi sağlar. [Denetim günlükleri](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs) , Azure Portal ve dışarı aktarma IÇIN [Denetim API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) 'sinde bulunur. Ayrıca, [kullanım ve öngörü raporları](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report) uygulamanız için de kullanılabilir.
+Bu Günlükler, uygulama proxy 'Si ve cihazla ve uygulamaya erişen kullanıcı ile yapılandırılan uygulamalara yönelik oturumlar hakkında ayrıntılı bilgi sağlar. [Denetim günlükleri](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) , Azure Portal ve dışarı aktarma IÇIN [Denetim API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) 'sinde bulunur. Ayrıca, [kullanım ve öngörü raporları](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context) uygulamanız için de kullanılabilir.
 
 #### <a name="application-proxy-connector-monitoring"></a>Uygulama proxy Bağlayıcısı izleme
 

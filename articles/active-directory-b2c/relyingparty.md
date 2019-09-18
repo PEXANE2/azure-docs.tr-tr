@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf8d4889c277d59d0c42894281a89345fbf90a84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b1bfa945843d185a46f1f1d79fd4dab0e991c769
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716685"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063803"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**RelyingParty** öğesi Azure Active Directory (Azure AD) B2C için geçerli istek için zorlamak üzere Kullanıcı yolculuğunu belirtir. Ayrıca, bağlı olan taraf (RP) uygulamasının verilen belirtecin bir parçası olarak ihtiyacı olan taleplerin listesini de belirtir. Web, mobil veya masaüstü uygulaması gibi bir RP uygulaması, RP ilke dosyasını çağırır. RP ilke dosyası, oturum açma, parola sıfırlama veya bir profili düzenlemeyle ilgili belirli bir görevi yürütür. Birden çok uygulama aynı RP ilkesini kullanabilir ve tek bir uygulama birden çok ilke kullanabilir. Tüm RP uygulamaları taleplerle aynı belirteci alır ve Kullanıcı aynı kullanıcı yolculuğuna gider.
+**RelyingParty** öğesi Azure Active Directory B2C (Azure AD B2C) için geçerli istek için zorlamak üzere Kullanıcı yolculuğunu belirtir. Ayrıca, bağlı olan taraf (RP) uygulamasının verilen belirtecin bir parçası olarak ihtiyacı olan taleplerin listesini de belirtir. Web, mobil veya masaüstü uygulaması gibi bir RP uygulaması, RP ilke dosyasını çağırır. RP ilke dosyası, oturum açma, parola sıfırlama veya bir profili düzenlemeyle ilgili belirli bir görevi yürütür. Birden çok uygulama aynı RP ilkesini kullanabilir ve tek bir uygulama birden çok ilke kullanabilir. Tüm RP uygulamaları taleplerle aynı belirteci alır ve Kullanıcı aynı kullanıcı yolculuğuna gider.
 
 Aşağıdaki örnek *B2C_1A_signup_signin* ilke dosyasında bir **RelyingParty** öğesi gösterir:
 
@@ -195,7 +195,7 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 
 | Öğe | Oluşumlar | Açıklama |
 | ------- | ----------- | ----------- |
-| OutputClaim | 0: n | Bağlı olan tarafın abone olduğu ilke için desteklenen listedeki beklenen talep türünün adı. Bu talep teknik profil için bir çıktı görevi görür. |
+| outputClaim | 0: n | Bağlı olan tarafın abone olduğu ilke için desteklenen listedeki beklenen talep türünün adı. Bu talep teknik profil için bir çıktı görevi görür. |
 
 **Outputclaim** öğesi aşağıdaki öznitelikleri içerir:
 

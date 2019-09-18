@@ -1,7 +1,7 @@
 ---
 title: FPGA nedir? nasıl dağıtılır?
-titleSuffix: Azure Machine Learning service
-description: Bir FPGA üzerinde çalışan bir modelle bir Web hizmetini, ultra düşük gecikme çıkarımı için Azure Machine Learning hizmetiyle dağıtmayı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Bir FPGA üzerinde çalışan bir modelle bir Web hizmetini, son derece düşük gecikme çıkarımı için Azure Machine Learning ile dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 929ca8e16db73be5cfa226b5d55a30dbb7b2bc99
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860472"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034459"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Alan-programlanabilir kapı dizileri (FPGA) ve dağıtma
 
-Bu makale, alan-programlanabilir kapı dizileri (FPGA) ile bir giriş sağlar ve Azure Machine Learning hizmetini kullanarak modellerinizi Azure FPGA 'ye nasıl dağıtacağınızı gösterir. 
+Bu makale, alan-programlanabilir kapı dizileri (FPGA) ile bir giriş sağlar ve Azure FPGA 'ye Azure Machine Learning kullanarak modellerinizi nasıl dağıtacağınızı gösterir. 
 
 FPGAs, programlanabilir mantık blokları dizisi ve yeniden yapılandırılabilir birbirine bağlı bir hiyerarşi içerir. Birbirine bağlı, bu blokların üretim sonrasında çeşitli şekillerde yapılandırılmasına izin verir. Diğer yongalarla karşılaştırıldığında, FPGAs, bir programlama programlamasına ve performansına ilişkin bir bileşim sunar.
 
@@ -28,7 +28,7 @@ FPGAs, programlanabilir mantık blokları dizisi ve yeniden yapılandırılabili
 
 Aşağıdaki diyagramda ve tabloda Fpg'in diğer işlemcilerle nasıl Karşılaştırıldığı gösterilmektedir.
 
-![Azure Machine Learning hizmeti FPGA karşılaştırması diyagramı](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Azure Machine Learning FPGA karşılaştırması diyagramı](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |İşlemci||Açıklama|
 |---|:-------:|------|
@@ -89,7 +89,7 @@ Azure Machine Learning Hızlandırılmış Donanım Modelleri ile FPGAs üzerind
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliği.  Bir tane yoksa, başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+- Azure aboneliği.  Bir tane yoksa, başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 - FPGA kotası. Kotayı içerip içermediğini denetlemek için Azure CLı 'yı kullanın:
 
@@ -112,7 +112,7 @@ Azure Machine Learning Hızlandırılmış Donanım Modelleri ile FPGAs üzerind
 
     Kotayı yoksa ' de [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI)bir istek gönderebilirsiniz.
 
-- Bir Azure Machine Learning hizmeti çalışma alanında ve yüklü Python için Azure Machine Learning SDK'sı. Daha fazla bilgi için bkz. [çalışma alanı oluşturma](how-to-manage-workspace.md).
+- Python için bir Azure Machine Learning çalışma alanı ve Azure Machine Learning SDK 'Sı yüklendi. Daha fazla bilgi için bkz. [çalışma alanı oluşturma](how-to-manage-workspace.md).
  
 - Donanım hızlandırmalı modeller için Python SDK:
 

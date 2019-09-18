@@ -1,5 +1,5 @@
 ---
-title: Yerel istemci uygulaması - Azure Active Directory B2C ekleme | Microsoft Docs
+title: Yerel istemci uygulaması ekleme-Azure Active Directory B2C | Microsoft Docs
 description: Active Directory B2C kiracınıza yerel istemci uygulaması eklemeyi öğrenin.
 services: active-directory-b2c
 author: mmacy
@@ -10,28 +10,28 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4e9b95cb226aeec686816d0ed7160062e110c62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fc953d5c6109fbc6eacbd946ecd112db4639fa5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511833"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064586"
 ---
-# <a name="add-a-native-client-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C kiracınıza yerel istemci uygulaması Ekle
+# <a name="add-a-native-client-application-to-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C kiracınıza yerel istemci uygulaması ekleme
 
-Yerel istemci kaynakların uygulamanızı Azure Active Directory B2C ile iletişim kurabilmesi için kiracınızda kayıtlı olması gerekir.
+Uygulamanızın Azure Active Directory B2C ile iletişim kurabilmesi için önce yerel istemci kaynaklarının kiracınızda kayıtlı olması gerekir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve kiracınız içeren dizine seçme.
-3. Seçin **tüm hizmetleri** Azure portalı ve ardından arayın ve seçin, sol üst köşedeki **Azure AD B2C**.
-1. Seçin **uygulamaları**ve ardından **Ekle**.
+2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+1. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 2. Uygulama için bir ad girin. Örneğin, *nativeapp1*.
-3. İçin **içeren web uygulaması / web API'sini**seçin **Hayır**.
-4. İçin **yerel istemciyi dahil et**seçin **Evet**.
-5. İçin **yeniden yönlendirme URI'si**, özel bir düzen ile geçerli bir yeniden yönlendirme URI'si girin. Yeniden yönlendirme URI'si seçerken iki önemli noktalar vardır:
+3. **İçerme Web uygulaması/Web API 'si**için **Hayır**' ı seçin.
+4. **Yerel Istemciyi Ekle**için **Evet**' i seçin.
+5. **Yeniden yönlendirme URI 'si**için, özel bir şemaya sahip geçerli bir yeniden yönlendirme URI 'si girin. Yeniden yönlendirme URI 'SI seçerken dikkat etmeniz gereken iki önemli nokta vardır:
 
-    - **Benzersiz** -yeniden yönlendirme URI'si şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contoso.appname://redirect/path`, `com.onmicrosoft.contoso.appname` düzenidir. Bu düzen gelmelidir. İki uygulama aynı şemayı paylaşıyorsa, kullanıcı bir uygulama seçmek için bir seçenek verilir. Kullanıcı yanlış seçim yaparsa, oturum açma başarısız olur.
-    - **Tam** -yeniden yönlendirme URI'SİNİN bir şeması ve yolu olmalıdır. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, `//contoso/` çalışır ve `//contoso` başarısız olur. Yeniden yönlendirme URI'si, alt çizgi gibi özel karakterleri içermeyen emin olun.
+    - **Unique** -YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contoso.appname://redirect/path` ,`com.onmicrosoft.contoso.appname` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış bir seçim yapıyorsa, oturum açma işlemi başarısız olur.
+    - **Tam** -yeniden yönlendirme URI 'si bir şemaya ve bir yola sahip olmalıdır. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, `//contoso/` `//contoso` çalışıp başarısız olur. Yeniden yönlendirme URI 'sinin alt çizgi gibi özel karakterler içermediğinden emin olun.
 
-6. **Oluştur**’a tıklayın.
-7. Özellikler sayfasında, yerel istemci uygulamanızı yapılandırırken kullanacağınız uygulama Kimliğini kaydedin.
+6. **Oluştur**'a tıklayın.
+7. Özellikler sayfasında, yerel istemci uygulamanızı yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.

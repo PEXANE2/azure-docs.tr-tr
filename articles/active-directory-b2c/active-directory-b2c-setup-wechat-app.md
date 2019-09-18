@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 377fd5c2be9e49e077303aac2a48fa2a0b8288ef
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: ad5e5b766c38b2ce3c48c22e62dd1fd2b9a79853
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622130"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064957"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir WeChat hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -23,7 +23,7 @@ ms.locfileid: "69622130"
 
 ## <a name="create-a-wechat-application"></a>WeChat uygulaması oluşturma
 
-Azure Active Directory (Azure AD) B2C 'de bir kimlik sağlayıcısı olarak WeChat hesabını kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir WeChat hesabınız yoksa bilgi [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html)edinebilirsiniz.
+Azure Active Directory B2C (Azure AD B2C) içinde bir kimlik sağlayıcısı olarak WeChat hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir WeChat hesabınız yoksa bilgi [https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html)edinebilirsiniz.
 
 ### <a name="register-a-wechat-application"></a>WeChat uygulamasını kaydetme
 

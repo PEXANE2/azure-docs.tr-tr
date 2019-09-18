@@ -4,7 +4,7 @@ description: Açıklar Azure ağ geçidi RADIUS kimlik doğrulaması için çok 
 services: vpn-gateway
 documentationcenter: na
 author: ahmadnyasin
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2018
+ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: 8e10151cd117a3400893f94559b2c9892de9f3c7
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ab152cca1d809d92803a3e50ea83da1cbcd8243c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666209"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058892"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN ağ geçidi RADIUS kimlik doğrulaması için çok faktörlü kimlik doğrulamasını NPS sunucusu ile tümleştirme 
 
@@ -40,10 +40,10 @@ Mfa'yı etkinleştirmek için kullanıcıların Azure Active ya da şirket için
     ![Ağ geçidi alt ağı ekleme hakkında görüntü](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
 3. Aşağıdaki ayarlar belirterek bir sanal ağ geçidi oluşturun:
 
-    - **Ağ geçidi türü**: Seçin **VPN**.
-    - **VPN türü**: Seçin **rota tabanlı**.
+    - **Ağ geçidi türü**: **VPN**' yi seçin.
+    - **VPN türü**: **Rota tabanlı**' ı seçin.
     - **SKU**: Gereksinimlerinize göre bir SKU türü seçin.
-    - **Sanal ağ**: Ağ geçidi alt ağı oluşturduğunuz sanal ağı seçin.
+    - **Sanal ağ**: Ağ geçidi alt ağını oluşturduğunuz sanal ağı seçin.
 
         ![Sanal ağ geçidi ayarlarını hakkında görüntü](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
 
@@ -52,18 +52,18 @@ Mfa'yı etkinleştirmek için kullanıcıların Azure Active ya da şirket için
 ### <a name="step-2-configure-the-nps-for-azure-mfa"></a>2\. adım, Azure MFA için NPS yapılandırma
 
 1. NPS sunucu üzerinde [Azure MFA için NPS uzantısını yükleme](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
-2. NPS konsolunu açın, sağ **RADIUS istemcileri**ve ardından **yeni**. RADIUS istemcisi, aşağıdaki ayarları belirterek oluşturun:
+2. NPS konsolunu açın, **RADIUS istemcileri**' ne sağ tıklayın ve ardından **Yeni**' yi seçin. Aşağıdaki ayarları belirterek RADIUS istemcisini oluşturun:
 
     - **Kolay ad**: Herhangi bir ad yazın.
-    - **Adres (IP veya DNS)** : Adım 1'de oluşturduğunuz ağ geçidi alt ağı girin.
+    - **Adres (IP veya DNS)** : Adım 1 ' de oluşturduğunuz ağ geçidi alt ağını yazın.
     - **Paylaşılan gizli diziyi**: herhangi bir gizli anahtar yazın ve daha sonra kullanmak üzere unutmayın.
 
-      ![RADIUS istemci ayarları hakkında görüntü](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
+      ![RADIUS istemci ayarları hakkında resim](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
 
  
 3.  Üzerinde **Gelişmiş** sekmesinde, satıcı adı kümesine **RADIUS standart** emin olun **ek seçenekler** onay kutusu seçilmez.
 
-    ![RADIUS istemci Gelişmiş ayarları hakkında görüntü](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
+    ![RADIUS istemcisi Gelişmiş ayarları hakkında resim](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client2.png)
 
 4. Git **ilkeleri** > **ağ ilkeleri**, çift **Microsoft Routing ve Uzaktan erişim sunucusuna bağlantılarda** ilkesi seçin  **Erişim ver**ve ardından **Tamam**.
 
@@ -73,8 +73,8 @@ Mfa'yı etkinleştirmek için kullanıcıların Azure Active ya da şirket için
 2. Oluşturduğunuz sanal ağ geçidi'ni açın. Ağ geçidi türü ayarlandığından emin olun **VPN** ve VPN türünde **rota tabanlı**.
 3. Tıklayın **noktası site yapılandırmasını** > **Şimdi Yapılandır**ve ardından aşağıdaki ayarları belirtin:
 
-    - **Adres havuzu**: 1 adımda oluşturduğunuz ağ geçidi alt ağı girin.
-    - **Kimlik doğrulama türü**: Seçin **RADIUS kimlik doğrulaması**.
+    - **Adres havuzu**: Adım 1 ' de oluşturduğunuz ağ geçidi alt ağını yazın.
+    - **Kimlik doğrulama türü**: **RADIUS kimlik doğrulamasını**seçin.
     - **Sunucu IP adresi**: NPS sunucusunun IP adresini yazın.
 
       ![Site ayarları noktasına hakkında görüntü](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)

@@ -4,14 +4,14 @@ description: Azure geçişi hizmetindeki bilinen sorunlara genel bir bakış ve 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 16e0fe51137ce7e96cf98c0a8acf7c490e9087b3
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232413"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067820"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Geçişi sorunlarını giderme
 
@@ -78,7 +78,7 @@ Geçerli Azure geçişi sürümündeki bir projeyi silmek için:
 2. Kaynak grubu sayfasında **gizli türleri göster**' i seçin.
 3. Silmek istediğiniz geçişi projeyi seçin. Kaynak türü Microsoft. Migrate/migrateprojects olur ve onu siler.
 
-Azure geçişi 'nin eski sürümündeki bir projeyi silmek için: 
+Azure geçişi 'nin eski sürümündeki bir projeyi silmek için:
 
 1. Projenin oluşturulduğu Azure kaynak grubunu açın.
 2. Silmek istediğiniz geçişi projeyi seçin. Kaynak türü geçiş projem olur ve onu siler.
@@ -90,7 +90,7 @@ Projeye bağlı Log Analytics çalışma alanına gidin.
 * Azure geçişi projesini sildiyseniz, **Essentials** > **Sunucu değerlendirmesi**' nde çalışma alanının bağlantısını bulabilirsiniz.
        ![LA çalışma alanı](./media/troubleshooting-general/loganalytics-workspace.png)
 
-     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it. 
+     * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
 
 ## <a name="error-requests-must-contain-user-identity-headers"></a>Hata "Isteklerin Kullanıcı kimliği üst bilgilerini içermesi gerekir"
@@ -111,7 +111,7 @@ Proje oluştururken bu hata, kuruluşun Azure Active Directory (Azure AD) kirac�
 2. Dağıtım hala başarısız olursa ve OVF dosyasını dağıtmak için VMware vSphere istemcisini kullanıyorsanız, vSphere Web istemcisi aracılığıyla dağıtmayı deneyin. Dağıtım hala başarısız olursa, farklı bir Web tarayıcısı kullanmayı deneyin.
 3. VSphere Web istemcisini kullanıyorsanız ve vCenter Server 6,5 veya 6,7 ' de dağıtmaya çalışıyorsanız, OVA 'yı doğrudan ESXi konağına dağıtmayı deneyin:
    - Web istemcisi (https://<*ana BILGISAYAR IP adresi*>/UI) Ile ESXi konağına doğrudan (vCenter Server yerine) bağlanın.
-   -  >  **Ev** > **envanterinde**,**ovf şablonu**' nu Dağıt ' ı seçin. OVA 'ya gidin ve dağıtımı doldurun.
+   -  > Ev > **envanterinde**,**ovf şablonu**' nu Dağıt ' **ı seçin.** OVA 'ya gidin ve dağıtımı doldurun.
 4. Dağıtım hala başarısız olursa Azure geçiş desteği 'ne başvurun.
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>Gereç internet 'e bağlanamıyor
@@ -153,7 +153,7 @@ Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğes
 
 ## <a name="error-appliance-might-not-be-registered"></a>Hata: Gereç kaydettirilmemiş olabilir
 
-- Hata 60052, "gereci kaydetmek için kullanılan Azure hesabının izinleri yetersizse," gereç Azure geçişi projesine başarıyla kaydedilmemiş olabilir "hatası oluşur. 
+- Hata 60052, "gereci kaydetmek için kullanılan Azure hesabının izinleri yetersizse," gereç Azure geçişi projesine başarıyla kaydedilmemiş olabilir "hatası oluşur.
     - Gereci kaydetmek için kullanılan Azure Kullanıcı hesabının abonelikte en az katkıda bulunan izinleri olduğundan emin olun.
     - Gerekli Azure rolleri ve izinleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) .
 - Hata 60039, "gereç, kayıt başarısız olursa, kayıt başarısız olursa, Gereç kayıt işlemi için kullanılan Azure geçişi projesi bulunamadığı için," gereç Azure geçiş projesi 'ne başarıyla kaydettirilmemiş "olabilir
@@ -162,7 +162,7 @@ Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğes
 
 ## <a name="error-key-vault-management-operation-failed"></a>Hata: Key Vault Yönetimi işlemi başarısız oldu
 
-60030 veya 60031 hatası alırsanız, "bir Azure Key Vault yönetim işlemi başarısız oldu", şunları yapın: 
+60030 veya 60031 hatası alırsanız, "bir Azure Key Vault yönetim işlemi başarısız oldu", şunları yapın:
 - Gereci kaydetmek için kullanılan Azure Kullanıcı hesabının abonelikte en az katkıda bulunan izinleri olduğundan emin olun.
 - Hesabın hata iletisinde belirtilen anahtar kasasına erişimi olduğundan emin olun ve işlemi yeniden deneyin.
 - Sorun devam ederse, Microsoft desteği 'ne başvurun.
@@ -187,7 +187,7 @@ Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturul
 
 ## <a name="discovered-vms-not-in-portal"></a>Bulunan VM 'Ler portalda yok
 
-**Sunucu değerlendirmesi** ve **sunucu geçişinin** **bulma işlemini devam ettiğinden**, ancak henüz portalda VM 'leri görmemesi için bulmayı başlatırsanız, aşağıdakilere göz atın: 
+**Sunucu değerlendirmesi** ve **sunucu geçişinin** **bulma işlemini devam ettiğinden**, ancak henüz portalda VM 'leri görmemesi için bulmayı başlatırsanız, aşağıdakilere göz atın:
 
 - Gereci bulmayı başlattıktan sonra, VMware VM keşfi 15 dakika boyunca ve Hyper-V VM keşfi için eklenen her konak için iki dakika sürer.
 - Bu bekleme sürelerinden sonra bile **bulma devam ediyor** ' i görmeye devam ederseniz, **sunucular** sekmesinde **Yenile** ' yi seçin. Bu, **Sunucu değerlendirmesi** ve **sunucu geçişi**içindeki keşfedilen sunucuların sayısını göstermelidir.
@@ -202,7 +202,7 @@ Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturul
 
     1. **Sunucular** > **Azure geçişi sunucu değerlendirmesi**' nde, **genel bakış**' ı seçin.
     2. **Yönet**' in altında **Aracı durumu** ' yi seçin.
-    3. **Aracıyı Yenile**' yi seçin. 
+    3. **Aracıyı Yenile**' yi seçin.
     1. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
 
 ## <a name="vm-information-isnt-in-the-portal"></a>VM bilgileri portalda yok
@@ -212,7 +212,7 @@ Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturul
 
     1. **Sunucular** > **Azure geçişi sunucu değerlendirmesi**' nde, **genel bakış**' ı seçin.
     2. **Yönet**' in altında **Aracı durumu** ' yi seçin.
-    3. **Aracıyı Yenile**' yi seçin. 
+    3. **Aracıyı Yenile**' yi seçin.
     1. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
 
 
@@ -259,10 +259,6 @@ Bir iç hata nedeniyle VM uygunluğu belirlenemedi | Grup için yeni bir değerl
 Bir iç hata nedeniyle bir veya daha fazla disk için uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
 Bir iç hata nedeniyle bir veya daha fazla ağ bağdaştırıcısı için uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
 
-## <a name="cant-add-enterprise-agreement-ea-in-an-assessment"></a>Değerlendirmede Kurumsal Anlaşma (EA) eklenemiyor
-
-Azure geçişi sunucu değerlendirmesi Şu anda Kurumsal Anlaşma (EA) fiyatlandırmasını desteklememektedir. Bu kısıtlamayı geçici olarak çözmek için Azure teklifi olarak **Kullandıkça Öde** 'yi kullanın ve aldığınız özel bir iskontoyu belirtmek için **indirim** özelliğini kullanın. Bir değerlendirmeyi özelleştirmeyi [öğrenin](https://aka.ms/migrate/selfhelp/eapricing) .
-
 ## <a name="linux-vms-are-conditionally-ready"></a>Linux VM 'Leri "koşullu olarak hazırlanıyor"
 
 Sunucu değerlendirmesi, sunucu değerlendirmesinde bilinen bir boşluk nedeniyle Linux sanal makinelerini "koşullu olarak hazırlanıyor" olarak işaretler.
@@ -279,7 +275,7 @@ Azure geçişi sunucu değerlendirmesi, Azure VM SKU 'Larını, değerlendirme t
 
 
 - VM SKU 'SU önerisi, değerlendirme özelliklerine bağlıdır.
-- Bu, sunucu değerlendirmesi sırasında gerçekleştirdiğiniz değerlendirme türünden etkilenir: *Performans tabanlı*veya *Şirket içi olarak*. 
+- Bu, sunucu değerlendirmesi sırasında gerçekleştirdiğiniz değerlendirme türünden etkilenir: *Performans tabanlı*veya *Şirket içi olarak*.
 - Performans tabanlı değerlendirmelere yönelik sunucu değerlendirmesi, şirket içi sanal makinelerinize yönelik doğru hedef VM SKU 'sunu belirlemede şirket içi VM 'lerin (CPU, bellek, disk ve ağ kullanımı) kullanım verilerini dikkate alır. Ayrıca, etkin kullanımı belirlerken bir rahatlık faktörü ekler.
 - Şirket içi boyutlandırma için performans verileri göz önünde bulundurulmaz ve hedef SKU, şirket içi ayırmaya göre önerilir.
 
@@ -288,14 +284,14 @@ Bunun önerileri nasıl etkileyebileceğini göstermek için bir örnek alalım:
 Dört çekirdekli ve sekiz GB bellek içeren,% 50 CPU kullanımı ve% 50 bellek kullanımı ve belirli bir rahatlık 1,3 faktörü içeren bir şirket içi VM sunuyoruz.
 
 -  Değerlendirme **Şirket içinde**ise, 4 çekirdek ve 8 GB bellek Içeren BIR Azure VM SKU 'su önerilir.
-- Değerlendirme performansı temel alıyorsa, etkin CPU ve bellek kullanımına 50 (4 çekirdek * 1,3 = 2,6 çekirdekler 50 ve 8 GB bellek * 1,3 = 5,3-GB bellek) göre, dört çekirdekli sanal makine SKU 'SU (en yakın desteklenen çekirdek sayısı) ve sekiz GB bellek (en yakın) bellek boyutu) önerilir. 
+- Değerlendirme performansı temel alıyorsa, etkin CPU ve bellek kullanımına 50 (4 çekirdek * 1,3 = 2,6 çekirdekler 50 ve 8 GB bellek * 1,3 = 5,3-GB bellek) göre, dört çekirdekli sanal makine SKU 'SU (en yakın desteklenen çekirdek sayısı) ve sekiz GB bellek (en yakın) bellek boyutu) önerilir.
 - Değerlendirme boyutlandırma hakkında [daha fazla bilgi edinin](concepts-assessment-calculation.md#sizing) .
 
 ## <a name="azure-disk-skus-bigger-than-on-premises"></a>Azure disk SKU 'Ları Şirket içinden daha büyük
 
 Azure geçişi sunucu değerlendirmesi, değerlendirme türüne göre daha büyük bir disk önerebilir.
 - Sunucu değerlendirmesinde disk boyutlandırma iki değerlendirme özelliklerine bağlıdır: boyutlandırma ölçütleri ve depolama türü.
-- Boyutlandırma ölçütü **performans tabanlıdır**ve depolama türü **Otomatik**olarak ayarlandıysa, diskin IOPS ve aktarım hızı değerleri, hedef disk türü (Standart HDD, standart SSD veya Premium) tanımlanırken kabul edilir. Daha sonra disk türünden bir disk SKU 'SU önerilir ve öneri, şirket içi diskin boyut gereksinimlerini dikkate alır. 
+- Boyutlandırma ölçütü **performans tabanlıdır**ve depolama türü **Otomatik**olarak ayarlandıysa, diskin IOPS ve aktarım hızı değerleri, hedef disk türü (Standart HDD, standart SSD veya Premium) tanımlanırken kabul edilir. Daha sonra disk türünden bir disk SKU 'SU önerilir ve öneri, şirket içi diskin boyut gereksinimlerini dikkate alır.
 - Boyutlandırma ölçütü **performans tabanlıdır**ve depolama türü **Premium**ise, şirket içi diskin IOPS, verimlilik ve Boyut gereksinimlerine bağlı olarak Azure 'DA BIR Premium disk SKU 'su önerilir. Aynı mantık, boyutlandırma ölçütleri **Şirket içinde** olduğunda ve depolama türü **Standart HDD**, **Standart SSD**veya **Premium**olduğunda disk boyutlandırmayı gerçekleştirmek için kullanılır.
 
 Örnek olarak, 32 GB bellek içeren bir şirket içi diskiniz varsa, ancak diskin toplanmış okuma ve yazma ıOPS değeri 800 ıOPS ise, sunucu değerlendirmesi bir Premium disk önerir (daha yüksek ıOPS gereksinimleri nedeniyle) ve ardından r 'yi destekleyebilen bir disk SKU 'SU önerir rekli ıOPS ve boyut. Bu örnekteki en yakın eşleşme P15 (256 GB, 1100 IOPS) olabilir. Şirket içi diskin gerektirdiği boyut 32 GB olsa da, şirket içi diskin yüksek ıOPS gereksinimi nedeniyle sunucu değerlendirmesi daha büyük bir disk önerir.

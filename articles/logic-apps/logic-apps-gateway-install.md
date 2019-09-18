@@ -8,24 +8,24 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/01/2019
-ms.openlocfilehash: c6994127b504cba31df051c757295f3e575bc23f
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.date: 09/01/2019
+ms.openlocfilehash: 3a197ab8d8c44229328c63330bcbc99fb2e64f01
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931216"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077261"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidini yükler
 
-[Azure Logic Apps 'den şirket içi veri kaynaklarına bağlanabilmeniz için](../logic-apps/logic-apps-gateway-connection.md), şirket içi veri ağ geçidini yerel bir bilgisayara indirip yükleyin. Ağ Geçidi, şirket içi ve mantıksal uygulamalarınızın veri kaynakları arasında hızlı veri aktarımı ve şifreleme sağlayan bir köprü olarak çalışmaktadır. Aynı ağ geçidi yüklemesini, Power BI, Microsoft Flow, PowerApps ve Azure Analysis Services gibi diğer bulut hizmetleriyle birlikte kullanabilirsiniz. Bu hizmetlerle ağ geçidini kullanma hakkında daha fazla bilgi için şu makalelere bakın:
+[Azure Logic Apps 'den şirket içi veri kaynaklarına bağlanabilmeniz için](../logic-apps/logic-apps-gateway-connection.md), Şirket [içi veri ağ geçidini](https://aka.ms/on-premises-data-gateway-installer) yerel bir bilgisayara indirip yükleyin. Ağ Geçidi, şirket içi ve mantıksal uygulamalarınızın veri kaynakları arasında hızlı veri aktarımı ve şifreleme sağlayan bir köprü olarak çalışmaktadır. Aynı ağ geçidi yüklemesini, Power BI, Microsoft Flow, PowerApps ve Azure Analysis Services gibi diğer bulut hizmetleriyle birlikte kullanabilirsiniz. Bu hizmetlerle ağ geçidini kullanma hakkında daha fazla bilgi için şu makalelere bakın:
 
 * [Microsoft Power BI şirket içi veri ağ geçidi](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 * [Şirket içi veri ağ geçidini Microsoft PowerApps](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Şirket içi veri ağ geçidini Microsoft Flow](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Şirket içi veri ağ geçidini Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
-Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işlemlerinin yanı sıra Azure Logic Apps ' dan şirket içi veri kaynaklarına erişebilirsiniz. Bu konunun ilerleyen kısımlarında [Data Gateway 'in nasıl çalıştığı](#gateway-cloud-service) hakkında daha fazla bilgi edinebilirsiniz.
+Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işlemlerinin yanı sıra Azure Logic Apps ' dan şirket içi veri kaynaklarına erişebilirsiniz. Bu konunun ilerleyen kısımlarında [Data Gateway 'in nasıl çalıştığı](#gateway-cloud-service) hakkında daha fazla bilgi edinebilirsiniz. Ağ Geçidi hakkında daha fazla bilgi için bkz. [Şirket içi ağ geçidi](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)nedir?
 
 <a name="requirements"></a>
 
@@ -264,8 +264,8 @@ Azure AD ile şirket içi Active Directory hesaplarınızı eşleşmenizin yolla
 
 Daha fazla bilgi için şu konulara bakın:
 
-* [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/service-gateway-onprem-faq)
-* [Şirket içi veri ağ geçidinde sorun giderme](https://docs.microsoft.com/data-integration/gateway-service-gateway-tshoot)
+* [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Şirket içi veri ağ geçidinde sorun giderme](https://docs.microsoft.com/data-integration/gateway/gateway-service-gateway-tshoot)
 * [Ağ Geçidi performansını izleme ve iyileştirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Sonraki adımlar

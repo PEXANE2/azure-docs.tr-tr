@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48eb36151948dc6e39edd4ae0fd863c63e83a52b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b135838558a493cff0e28a8429d31f5a03a69857
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68741359"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033463"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Kullanıcılar ve grupların Azure Active Directory'den uygulamalara otomatik olarak sağlamak için sistem etki alanları arası Kimlik Yönetimi (SCIM) kullanma
 
@@ -91,10 +91,10 @@ Bu makalede açıklanan SCIM profilini destekleyen uygulamalar, Azure Active Dir
 1. Azure AD sağlama hizmetini başlatmak için **Kaydet** ' i seçin.
 1. Yalnızca atanmış kullanıcıları ve grupları eşitlese (önerilir), **Kullanıcılar ve gruplar** sekmesini seçtiğinizden emin olun ve eşitlemek istediğiniz kullanıcıları veya grupları atayın.
 
-İlk eşitleme başladıktan sonra, uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri gösteren ilerlemeyi izlemek için sol paneldeki **Denetim günlükleri** ' ni seçebilirsiniz. Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](check-status-user-account-provisioning.md).
+Başlangıç çevrimi başladıktan sonra, uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri gösteren ilerlemeyi izlemek için sol paneldeki **Denetim günlükleri** ' ni seçebilirsiniz. Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](check-status-user-account-provisioning.md).
 
 > [!NOTE]
-> İlk eşitleme daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen daha sonraki eşitlerinden daha uzun sürer.
+> İlk döngüyü daha sonra, hizmetin çalıştığı sürece yaklaşık 40 dakikada bir gerçekleşen daha sonraki eşitliden daha uzun sürer.
 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>Azure AD SCıM uygulamasını anlama
 
@@ -693,7 +693,7 @@ Azure ad sağlama isteklerini kabul edebilen bir SCIM uç noktası uygulamak iç
 1. Azure AD sağlama hizmetini başlatmak için **Kaydet** ' i seçin.
 1. Yalnızca atanmış kullanıcıları ve grupları eşitlese (önerilir), **Kullanıcılar ve gruplar** sekmesini seçtiğinizden emin olun ve eşitlemek istediğiniz kullanıcıları veya grupları atayın.
 
-İlk eşitleme başladıktan sonra, uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri gösteren ilerlemeyi izlemek için sol paneldeki **Denetim günlükleri** ' ni seçebilirsiniz. Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](check-status-user-account-provisioning.md).
+Başlangıç çevrimi başladıktan sonra, uygulamanızdaki sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri gösteren ilerlemeyi izlemek için sol paneldeki **Denetim günlükleri** ' ni seçebilirsiniz. Azure AD günlüklerini sağlama okuma hakkında daha fazla bilgi için bkz. [hesabı otomatik kullanıcı hazırlama raporlama](check-status-user-account-provisioning.md).
 
 Örnek doğrulama son adım, Windows makinenizde \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug klasöründeki TargetFile.csv dosya açmaktır. Sağlama işlemi çalıştırıldıktan sonra bu dosya tüm ayrıntılarını atanan ve kullanıcıları ve grupları sağlanan gösterir.
 
@@ -834,7 +834,7 @@ Hizmeti Internet Information Services içinde barındırmak için bir geliştiri
 
 ### <a name="handling-endpoint-authentication"></a>İşleme uç nokta kimlik doğrulaması
 
-Azure Active Directory gelen istekleri bir OAuth 2.0 taşıyıcı belirteci içerir.   İsteği alan herhangi bir hizmet, Azure Active Directory Graph Web hizmetine erişmek için beklenen Azure Active Directory kiracının Azure Active Directory olarak kimlik doğrulaması yapması gerekir.  Belirteçte veren, "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ " gibi bir ISS talebi tarafından tanımlanır.  Bu örnekte, talep değerinin https://sts.windows.net temel adresi veren olarak Azure Active Directory tanımlar, göreli adres kesimi olan cbb1a5ac-f33b-45fa-9BF5-f37db0fed422, için Azure Active Directory kiracının benzersiz tanımlayıcısıdır. belirtecin verildiği. Belirtecin hedef kitlesi, galerideki uygulamanın uygulama şablonu kimliği olacaktır. Tüm özel uygulamalar için uygulama şablonu kimliği, 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 ' dir. Galerideki her bir uygulama için uygulama şablonu kimliği değişir. Galeri uygulaması ProvisioningFeedback@microsoft.com için uygulama şablonu kimliği hakkında sorularınız için lütfen iletişim kurun. Tek bir kiracıya kayıtlı uygulamaların her biri, SCIM istekleriyle aynı `iss` talebi alabilir.
+Azure Active Directory gelen istekleri bir OAuth 2.0 taşıyıcı belirteci içerir.   İsteği alan herhangi bir hizmet, Azure Active Directory Graph Web hizmetine erişmek için beklenen Azure Active Directory kiracının Azure Active Directory olarak kimlik doğrulaması yapması gerekir.  Belirteçte veren, "ISS": "https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ " gibi bir ISS talebi tarafından tanımlanır.  Bu örnekte, talep değerinin https://sts.windows.net temel adresi veren olarak Azure Active Directory tanımlar, göreli adres kesimi olan cbb1a5ac-f33b-45fa-9BF5-f37db0fed422, için Azure Active Directory kiracının benzersiz tanımlayıcısıdır. belirtecin verildiği. Belirtecin hedef kitlesi, galerideki uygulamanın uygulama şablonu KIMLIĞI olacaktır. Tüm özel uygulamalar için uygulama şablonu KIMLIĞI, 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 ' dir. Galerideki her bir uygulama için uygulama şablonu KIMLIĞI değişir. Galeri uygulaması ProvisioningFeedback@microsoft.com için uygulama şablonu kimliği hakkında sorularınız için lütfen iletişim kurun. Tek bir kiracıya kayıtlı uygulamaların her biri, SCIM istekleriyle aynı `iss` talebi alabilir.
 
 Bir SCıM hizmeti oluşturmak için Microsoft tarafından sunulan CLı kitaplıklarını kullanan geliştiriciler, aşağıdaki adımları izleyerek Microsoft. Owin. Security. ActiveDirectory paketini kullanarak Azure Active Directory istekleri kimlik doğrulaması yapabilir: 
 

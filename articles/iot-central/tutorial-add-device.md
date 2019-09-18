@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8731d66c9d2dca0043307ac2f6a0d1828aeaa275
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 192374971e92bae282c5092dd8c5e7261fce0c5f
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050522"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066379"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza gerçek bir cihaz ekleme
 
@@ -24,8 +24,8 @@ Bu öğretici Microsoft Azure IoT Central uygulamanıza gerçek bir cihaz ekleme
 
 Bu öğretici iki bölümden oluşur:
 
-1. İlk olarak, bir operatör olarak Azure IoT Central uygulamanıza gerçek bir cihaz eklemeyi ve yapılandırmayı öğrenirsiniz. Bu bölümün sonunda, ikinci bölümde kullanmak için bir bağlantı dizesi alırsınız.
-2. Daha sonra, cihaz geliştirici olarak, gerçek cihazınızdaki kod hakkında bilgi edinirsiniz. Örnek kodun ilk bölümünden bağlantı dizesini eklersiniz.
+* İlk olarak, bir operatör olarak Azure IoT Central uygulamanıza gerçek bir cihaz eklemeyi ve yapılandırmayı öğrenirsiniz. Bu bölümün sonunda, ikinci bölümde kullanmak için bir bağlantı dizesi alırsınız.
+* Daha sonra, cihaz geliştirici olarak, gerçek cihazınızdaki kod hakkında bilgi edinirsiniz. Örnek kodun ilk bölümünden bağlantı dizesini eklersiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -39,7 +39,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, oluşturucunun Azure IoT Central uygulamasını oluşturmak için en az ilk oluşturucu öğreticisini tamamlaması gerekir: [Yeni bir cihaz türü belirleme](tutorial-define-device-type.md) (Gerekli)
-
 
 Geliştirme makinenize [Node. js](https://nodejs.org/) sürüm 8.0.0 veya üstünü yükler. Sürümünüzü denetlemek için `node --version` komut satırında çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
 
@@ -75,10 +74,6 @@ Gerçek cihaz **Bağlı Klima** cihaz şablonundan oluşturulur. Cihazınızı y
 
 3. Gerçek cihazınız için **Ölçüler**, **Kurallar** ve **Pano** sayfalarını görüntüleyebilirsiniz.
 
-## <a name="generate-connection-string"></a>Bağlantı dizesi oluştur
-
-Bir cihaz geliştiricisinin gerçek cihazınız için *bağlantı dizesini* cihazda çalışan kodda eklemesi gerekir. Bağlantı dizesi, cihazın uygulamanıza güvenli bir şekilde bağlanmasını sağlar. Aşağıdaki adımlarda bağlantı dizesini oluşturma ve istemci Node. js kodunu hazırlama işlemleri gösterilmektedir.
-
 ## <a name="prepare-the-client-code"></a>İstemci kodu hazırlama
 
 Bu makaledeki örnek kod [Node. js](https://nodejs.org/) ' de yazılmıştır ve şunları yapmak için yeterli kodu gösterir:
@@ -101,13 +96,9 @@ Aşağıdaki adımlar [Node.js](https://nodejs.org/) örneğinin nasıl hazırla
 
    ![Bağlantı bilgilerini görüntüleme bağlantısını gösteren cihaz sayfası](media/tutorial-add-device/connectionlink.png)
 
-1. Cihaz bağlantısı sayfasında, **kapsam kimliği**, **cihaz kimliği** ve **birincil anahtar** değerlerini bir yere unutmayın. Bu değerleri bir sonraki adımda kullanacaksınız.
+1. Cihaz bağlantısı sayfasında, **kapsam kimliği**, **cihaz kimliği** ve **birincil anahtar** değerlerini bir yere unutmayın. Bu değerleri daha sonra bu öğreticide kullanacaksınız.
 
    ![Bağlantı ayrıntıları](media/tutorial-add-device/device-connect.png)
-
-### <a name="generate-the-connection-string"></a>Bağlantı dizesini oluşturma
-
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
 ### <a name="prepare-the-nodejs-project"></a>Node. js projesini hazırlama
 
@@ -124,7 +115,7 @@ Aşağıdaki adımlar [Node.js](https://nodejs.org/) örneğinin nasıl hazırla
 1. Gerekli paketleri yüklemek için, aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
 1. Bir metin düzenleyicisi kullanarak, `connectedairconditioner` klasöründe **ConnectedAirConditioner.js** adlı bir dosya oluşturun.
@@ -134,21 +125,26 @@ Aşağıdaki adımlar [Node.js](https://nodejs.org/) örneğinin nasıl hazırla
     ```javascript
     'use strict';
 
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
+    var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
-    var ConnectionString = require('azure-iot-device').ConnectionString;
+    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
+    var SymmetricKeySecurityClient = require('azure-iot-security-symmetric-key').SymmetricKeySecurityClient;
+    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
-1. Aşağıdaki değişken bildirimlerini dosyaya ekleyin:
+1. Aşağıdaki değişken bildirimlerini dosyaya ekleyin. Yer tutucuları `{your Scope ID}` `{your Device ID}`, ve`{your Primary Key}` , daha önce not ettiğiniz cihaz bağlantı bilgileriyle değiştirin:
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    var provisioningHost = 'global.azure-devices-provisioning.net';
+    var idScope = '{your Scope ID}';
+    var registrationId = '{your Device ID}';
+    var symmetricKey = '{your Primary Key};
+    var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
+    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
+    var hubClient;
     var targetTemperature = 0;
-    var client = clientFromConnectionString(connectionString);
     ```
-
-    > [!NOTE]
-    > Yer tutucu `{your device connection string}` öğesini sonraki bir adımda güncelleştirirsiniz.
 
 1. Şu ana kadar yaptığınız değişiklikleri kaydedin ancak dosyayı açık tutun.
 
@@ -165,12 +161,12 @@ Aşağıdaki adımlar [Node.js](https://nodejs.org/) örneğinin nasıl hazırla
 1. Azure IoT Central uygulamanıza sıcaklık telemetrisi göndermek için, aşağıdaki kodu **ConnectedAirConditioner.js** dosyasına ekleyin:
 
     ```javascript
-    // Send device telemetry.
+    // Send device measurements.
     function sendTelemetry() {
       var temperature = targetTemperature + (Math.random() * 15);
       var data = JSON.stringify({ temperature: temperature });
       var message = new Message(data);
-      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+      hubClient.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
         (res ? `; status: ${res.constructor.name}` : '')));
     }
@@ -187,7 +183,7 @@ Aşağıdaki adımlar [Node.js](https://nodejs.org/) örneğinin nasıl hazırla
         firmwareVersion: "9.75",
         serialNumber: "10001"
       };
-      twin.properties.reported.update(properties, (errorMessage) => 
+      twin.properties.reported.update(properties, (errorMessage) =>
       console.log(` * Sent device properties ` + (errorMessage ? `Error: ${errorMessage.toString()}` : `(success)`)));
     }
     ```
@@ -266,43 +262,53 @@ Aşağıdaki adımlar [Node.js](https://nodejs.org/) örneğinin nasıl hazırla
         console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
       } else {
         console.log('Device successfully connected to Azure IoT Central');
+
+        // Create handler for countdown command
+        hubClient.onDeviceMethod('echo', onCommandEcho);
+
         // Send telemetry measurements to Azure IoT Central every 1 second.
         setInterval(sendTelemetry, 1000);
-        // Setup device command callbacks
-        client.onDeviceMethod('echo', onCommandEcho);
+
         // Get device twin from Azure IoT Central.
-        client.getTwin((err, twin) => {
+        hubClient.getTwin((err, twin) => {
           if (err) {
             console.log(`Error getting device twin: ${err.toString()}`);
           } else {
-            // Send device properties once on device start up
+            // Send device properties once on device start up.
             sendDeviceProperties(twin);
+
             // Apply device settings and handle changes to device settings.
             handleSettings(twin);
           }
         });
       }
     };
-
-    client.open(connectCallback);
     ```
 
-1. Şu ana kadar yaptığınız değişiklikleri kaydedin ancak dosyayı açık tutun.
-
-## <a name="configure-client-code"></a>İstemci kodunu Yapılandır
-
-<!-- Add the connection string to the sample code, build, and run -->
-İstemci kodunuzu Azure IoT Central uygulamanıza bağlanmak için yapılandırmak üzere, gerçek cihazınız için bu öğreticinin başında not ettiğiniz bağlantı dizesini eklemeniz gerekir.
-
-1. **ConnectedAirConditioner.js** dosyasında, aşağıdaki kod satırını bulun:
+1. Cihazı kaydedin ve IoT Central uygulamanıza bağlayın:
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    // Start the device (connect it to Azure IoT Central).
+    provisioningClient.register((err, result) => {
+      if (err) {
+        console.log("error registering device: " + err);
+      } else {
+        console.log('registration succeeded');
+        console.log('assigned hub=' + result.assignedHub);
+        console.log('deviceId=' + result.deviceId);
+        var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+        hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
+
+        hubClient.open(connectCallback);
+      }
+    });
     ```
 
-1. `{your device connection string}` değerini gerçek cihazınızın bağlantı dizesiyle değiştirin. Önceki bir adımda oluşturduğunuz bağlantı dizesini kopyaladınız.
+1. Yaptığınız değişiklikleri kaydedin.
 
-1. Değişiklikleri **ConnectedAirConditioner.js** dosyasına kaydedin.
+## <a name="run-the-client-code"></a>İstemci kodunu çalıştırma
+
+Artık istemci kodunu çalıştırabilir ve IoT Central uygulamanızla nasıl etkileşime gireceğini görebilirsiniz:
 
 1. Örneği çalıştırmak için, komut satırı ortamınıza aşağıdaki komutu girin:
 
@@ -319,7 +325,7 @@ Aşağıdaki adımlar [Node.js](https://nodejs.org/) örneğinin nasıl hazırla
 
 1. 30 saniyeden sonra, cihaz **Ölçüm** sayfasında telemetriyi görürsünüz:
 
-   ![Gerçek ~ ~ telemetri](media/tutorial-add-device/realtelemetry.png)
+   ![Gerçek telemetri](media/tutorial-add-device/realtelemetry.png)
 
 1. **Ayarlar** sayfasında, ayarın şimdi eşitlenmiş olduğunu görebilirsiniz. Cihaz ilk bağlandığında, ayar değerini aldı ve değişikliği onayladı:
 

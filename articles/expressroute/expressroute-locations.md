@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2019
+ms.date: 09/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: ebd6e2fa38284a1bdaf6c3d28fb32568ae228d74
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 997d6b29ef41c84766348c8b0ff74c5bc5c877d0
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993083"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033936"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -92,7 +92,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Desteklenen |Desteklenen |Miami |
 | **CDC** | Desteklenen | Desteklenen | Kanberra, Kanberra2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Desteklenen |Desteklenen |Amsterdam2, Chicago, Hong Kong, Las Vegas, New York, Paris, San Antonio, Silicon Valley, Tokyo, Toron, Washington DC |
-| **Baş Telem** |Desteklenen |Desteklenen |Hong Kong, Taipei |
+| **[Baş Telem](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Desteklenen |Desteklenen |Hong Kong, Taipei |
 | **China Telecom Global** |Desteklenen |Desteklenen |Hong Kong SAR |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Desteklenen |Desteklenen |Chicago, Dallas, Montreal, Toronto, Washington DC |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Desteklenen |Desteklenen |Amsterdam, Amsterdam2, Dublin, Londra, Newport, Osaka, Paris, Singapur2, Tokyo |
@@ -159,7 +159,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Viasat](http://www.directcloud.viasatbusiness.com/)** | Desteklenen | Desteklenen | Washington DC2 |
 | **[Vocus grubu NZ](https://www.vocus.co.nz/business/cloud-data-centres)** | Desteklenen | Desteklenen | Auckland, Sidney |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Desteklenen |Desteklenen |Amsterdam2, Londra, Singapur |
-| **Vodafone Idea** | Desteklenen | Desteklenen | Mumbai, Mumbai2 |
+| **[Vodadfone fikri](https://discover.vodafone.in/business/enterprise-solutions/connectivity/vpn-extended-connect)** | Desteklenen | Desteklenen | Mumbai, Mumbai2 |
 | **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |Desteklenen |Desteklenen |Amsterdam, Chicago, Dallas, Denver, Londra, Los Angeles, Montreal, New York, Paris, Seattle, Silicon Valley, Toron, Washington DC, Washington DC2 |
 
  **+** çok yakında anlamına geliyor

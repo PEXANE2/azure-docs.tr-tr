@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 41361a3513c052d960726498d55745bf09afdfbb
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: c3d14eaefaa1f317cb061273866ffee83747f12b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775201"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036853"
 ---
 # <a name="configure-aggregated-namespace"></a>Toplanan ad alanını Yapılandır
 <!-- change link in GUI -->
@@ -37,7 +37,7 @@ Veri merkezi depolama sistemi bu dışarı aktarmaları kullanıma sunar:
     /goldline
     /goldline/templates
 
-Çözümlenecek veriler, [Clfsload yardımcı programı](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload)kullanılarak "SourceCollection" adlı bir Azure Blob depolama kapsayıcısına kopyalanmış olmalıdır.
+Çözümlenecek veriler, [Clfsload yardımcı programı](hpc-cache-ingest.md#pre-load-data-in-blob-storage-with-clfsload)kullanılarak "SourceCollection" adlı bir Azure Blob depolama kapsayıcısına kopyalanmış.
 
 Önbellek üzerinden kolay erişime izin vermek için bu sanal ad alanı yollarıyla depolama hedefleri oluşturmayı göz önünde bulundurun:
 

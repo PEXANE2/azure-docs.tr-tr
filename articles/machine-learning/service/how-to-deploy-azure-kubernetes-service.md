@@ -1,7 +1,7 @@
 ---
 title: Azure Kubernetes hizmetine modeller dağıtma
-titleSuffix: Azure Machine Learning service
-description: Azure Kubernetes hizmetini kullanarak Azure Machine Learning hizmet modellerinizi Web hizmeti olarak dağıtmayı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Azure Kubernetes hizmetini kullanarak Azure Machine Learning modellerinizi bir Web hizmeti olarak dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858737"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034622"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
-Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtmak için Azure Machine Learning hizmetini nasıl kullanacağınızı öğrenin. Azure Kubernetes hizmeti, yüksek ölçekli üretim dağıtımları için uygundur. Aşağıdaki özelliklerde bir veya daha fazlasına ihtiyacınız varsa Azure Kubernetes hizmetini kullanın:
+Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtmak için Azure Machine Learning kullanmayı öğrenin. Azure Kubernetes hizmeti, yüksek ölçekli üretim dağıtımları için uygundur. Aşağıdaki özelliklerde bir veya daha fazlasına ihtiyacınız varsa Azure Kubernetes hizmetini kullanın:
 
 - __Hızlı yanıt süresi__.
 - Dağıtılan hizmetin __Otomatik ölçeklendirilmesi__ .
@@ -30,15 +30,15 @@ Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtma
 
 Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__bir aks kümesine dağıtırsınız. Bir AKS kümesini çalışma alanınıza bağlamak için iki yol vardır:
 
-* Azure Machine Learning Service SDK, Machine Learning CLı, [Azure Portal](https://portal.azure.com) veya [çalışma alanı giriş sayfasını (Önizleme)](https://ml.azure.com)kullanarak aks kümesini oluşturun. Bu işlem, kümeyi otomatik olarak çalışma alanına bağlar.
-* Azure Machine Learning hizmeti çalışma alanınıza mevcut bir AKS kümesi iliştirin. Bir küme Azure Machine Learning Service SDK, Machine Learning CLı veya Azure portal kullanılarak eklenebilir.
+* Azure Machine Learning SDK, Machine Learning CLı, [Azure Portal](https://portal.azure.com) veya [çalışma alanı giriş sayfasını (Önizleme)](https://ml.azure.com)kullanarak aks kümesini oluşturun. Bu işlem, kümeyi otomatik olarak çalışma alanına bağlar.
+* Azure Machine Learning çalışma alanınıza mevcut bir AKS kümesi iliştirin. Bir küme Azure Machine Learning SDK, Machine Learning CLı veya Azure portal kullanılarak eklenebilir.
 
 > [!IMPORTANT]
 > Oluşturma veya ekleme işlemi bir kerelik görevdir. Bir AKS kümesi çalışma alanına bağlandıktan sonra dağıtım için kullanabilirsiniz. Artık gerekmiyorsa AKS kümesini ayırabilirsiniz veya silebilirsiniz. Detaalı veya silindikten sonra, artık kümeye dağıtım yapamayacaktır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure Machine Learning hizmeti çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md).
+- Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
 - Bir Machine Learning modeli, çalışma alanınıza kaydedildi. Kayıtlı bir modeliniz yoksa, bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
@@ -117,7 +117,7 @@ Daha fazla bilgi için bkz. [az ml computetarget Create ask](https://docs.micros
 Azure aboneliğinizde zaten AKS kümeniz varsa ve sürüm 1.12. # # ise, görüntünüzü dağıtmak için kullanabilirsiniz.
 
 > [!TIP]
-> Mevcut AKS kümesi, Azure Machine Learning hizmeti çalışma alanınızdan bir Azure bölgesinde olabilir.
+> Mevcut AKS kümesi, Azure Machine Learning çalışma alanınızdan bir Azure bölgesinde olabilir.
 >
 > Azure sanal ağını kullanarak AKS kümenizi güvenli hale getirmek istiyorsanız, önce sanal ağı oluşturmanız gerekir. Daha fazla bilgi için bkz. [Azure sanal ağ Ile güvenli deneme ve çıkarım](how-to-enable-virtual-network.md#aksvnet).
 
@@ -220,7 +220,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 Daha fazla bilgi için, [az ml model dağıtım](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın. 
 
-### <a name="using-vs-code"></a>VS Code kullanma
+### <a name="using-vs-code"></a>VS Code'u kullanma
 
 VS Code kullanımı hakkında bilgi için bkz. [vs Code uzantısı aracılığıyla AKS 'e dağıtma](how-to-vscode-tools.md#deploy-and-manage-models).
 

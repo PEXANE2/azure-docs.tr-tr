@@ -1,6 +1,6 @@
 ---
 title: Derin öğrenme ve makine öğrenimi karşılaştırması
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Derin öğrenme ve makine öğrenimi hakkında bilgi edinin ve her iki kavramın yapay zeka ile ilişkisi vardır. Derin öğrenme, sahtekarlık algılama, ses ve yüz tanıma, yaklaşım Analizi ve zaman serisi tahmin gibi senaryolarda uygulanabilir.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 3b0546c42ddd5252b35d1a77d7b152733beec233
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240950"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035515"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimi karşılaştırması
 
@@ -106,9 +106,9 @@ Evsel sinir ağları görüntü tanıma ve sınıflandırma gibi alanlarda kulla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde [Azure Machine Learning hizmetinde](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri)derin öğrenme teknolojisinin nasıl kullanılacağı gösterilmektedir:
+Aşağıdaki makalelerde [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/?WT.mc_id=docs-article-lazzeri)' de derin öğrenme teknolojisinin nasıl kullanılacağı gösterilmektedir:
 
 - [Bir TensorFlow modeli kullanarak el ile yazılmış rakamları sınıflandırın](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-tensorflow?WT.mc_id=docs-article-lazzeri)
 - [Bir TensorFlow tahmin aracı ve keras kullanarak el ile yazılmış rakamları sınıflandır](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-keras?WT.mc_id=docs-article-lazzeri)
 - [Pytorch modeli kullanarak görüntüleri sınıflandırın](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-pytorch?WT.mc_id=docs-article-lazzeri)
-- [Bir Chainer modeli kullanarak el ile yazılmış rakamları sınıflandır](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
+- [Bir Chainer modeli kullanarak el ile yazılmış rakamları sınıflandır](https://docs.microsoft.com/azure/machine-learning/service/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)

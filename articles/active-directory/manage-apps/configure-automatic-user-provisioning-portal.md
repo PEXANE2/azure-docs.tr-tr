@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6d42c961054927581e7cc43b6f467e5d3e23c4e
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 395957099a19d11d26fb5bdd2a1eecdd5590dd64
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996719"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056126"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure portal kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme
 
@@ -81,7 +81,7 @@ Desteklenen özelleştirmeler şunlardır:
 
 **Hazırlama** ekranının **Ayarlar** alanında SEÇILI uygulama için Azure AD sağlama hizmetini başlatabilir ve durdurabilirsiniz. Sağlama önbelleğini kaldırmayı ve hizmeti yeniden başlatmayı da tercih edebilirsiniz.
 
-Hazırlama işlemi bir uygulama için ilk kez etkinleştiriliyorsa, **sağlama durumunu** **Açık**olarak değiştirerek hizmeti açın. Bu değişiklik, Azure AD sağlama hizmeti 'nin bir ilk eşitleme çalıştırmasına neden olur. **Kullanıcılar ve gruplar** bölümünde atanan kullanıcıları okur, hedef uygulamayı kendileri için sorgular ve ardından Azure AD **eşlemeleri** bölümünde tanımlanan sağlama eylemlerini çalıştırır. Bu işlem sırasında, sağlama hizmeti, hangi kullanıcı hesaplarının yönettiği hakkında önbelleğe alınmış verileri depolar, bu nedenle atama için kapsamda olmayan hedef uygulamalar içinde yönetilmeyen hesaplar, sağlama işlemlerinden etkilenmez. İlk eşitlemeden sonra, sağlama hizmeti, Kullanıcı ve Grup nesnelerini on dakikalık bir aralıkta otomatik olarak eşitler.
+Hazırlama işlemi bir uygulama için ilk kez etkinleştiriliyorsa, **sağlama durumunu** **Açık**olarak değiştirerek hizmeti açın. Bu değişiklik, Azure AD sağlama hizmeti 'nin bir başlangıç döngüsünü çalıştırmasına neden olur. **Kullanıcılar ve gruplar** bölümünde atanan kullanıcıları okur, hedef uygulamayı kendileri için sorgular ve ardından Azure AD **eşlemeleri** bölümünde tanımlanan sağlama eylemlerini çalıştırır. Bu işlem sırasında, sağlama hizmeti, hangi kullanıcı hesaplarının yönettiği hakkında önbelleğe alınmış verileri depolar, bu nedenle atama için kapsamda olmayan hedef uygulamalar içinde yönetilmeyen hesaplar, sağlama işlemlerinden etkilenmez. İlk döngüden sonra, sağlama hizmeti, Kullanıcı ve Grup nesnelerini on dakikalık bir aralıkta otomatik olarak eşitler.
 
 Sağlama hizmetini duraklatmak için **sağlama durumunu** **kapalı** olarak değiştirin. Bu durumda, Azure uygulamadaki hiçbir Kullanıcı veya Grup nesnesini oluşturmaz, güncelleştirmez veya kaldırmaz. Durumu yeniden **Açık** olarak değiştirin ve hizmet kaldığınız yerden gelir.
 
@@ -89,6 +89,6 @@ Sağlama hizmetini duraklatmak için **sağlama durumunu** **kapalı** olarak de
 
 * Sağlama hizmetini durdur
 * Azure AD 'nin yönettiği hesaplara ilişkin önbelleğe alınmış verilerin dökümünü alın
-* Hizmetleri yeniden başlatın ve ilk eşitlemeyi yeniden çalıştırın
+* Hizmetleri yeniden başlatın ve ilk döngüyü yeniden çalıştırın
 
 Bu seçenek, yöneticilerin sağlama dağıtım işlemini yeniden başlatmasını sağlar.

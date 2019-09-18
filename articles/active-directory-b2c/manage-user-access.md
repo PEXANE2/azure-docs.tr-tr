@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ba36ece6b221908bfbaae58430a52b4753c2ed6
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 98d3fa50f405658b33f879ed8e7b95667cddcedf
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846769"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064122"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Kullanıcı erişimini yönetme
 
-Bu makalede, Azure Active Directory (Azure AD) B2C kullanarak uygulamalarınıza yönelik Kullanıcı erişiminin nasıl yönetileceği açıklanır. Uygulamanızdaki erişim yönetimi şunları içerir:
+Bu makalede, Azure Active Directory B2C (Azure AD B2C) kullanılarak uygulamalarınıza yönelik Kullanıcı erişiminin nasıl yönetileceği açıklanır. Uygulamanızdaki erişim yönetimi şunları içerir:
 
 - Sömürmeyi amaçlama 'i tanımlama ve uygulamanıza Kullanıcı erişimini denetleme.
 - Uygulamalarınızı kullanmak için sömürmeyi amaçlama için ana izin isteme.

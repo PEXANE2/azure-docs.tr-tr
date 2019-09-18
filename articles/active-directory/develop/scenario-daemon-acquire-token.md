@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a5f15aa5264c0abf87cb15f0468e8a3a924e0b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ef28520edd8500be0da52996e6484a0407fb03c8
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562351"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056437"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API 'Lerini çağıran Daemon uygulaması-belirteç alma
 
@@ -31,45 +31,44 @@ Gizli istemci uygulaması oluşturulduktan sonra, uygulamayı çağırarak ``Acq
 
 İstemci kimlik bilgisi akışı için istenen kapsam, kaynağın ve sonrasında gelen `/.default`addır. Bu gösterim, Azure AD 'nin uygulama kaydı sırasında statik olarak belirtilen **uygulama düzeyi izinlerini** kullanmasını söyler. Ayrıca, daha önce görüldüğü gibi, bu API izinlerinin bir kiracı yöneticisi tarafından verilmesi gerekir
 
-### <a name="net"></a>.NET
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```CSharp
 ResourceId = "someAppIDURI";
 var scopes = new [] {  ResourceId+"/.default"};
 ```
 
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 MSAL içinde. Python, yapılandırma dosyası aşağıdaki kod parçacığı gibi görünür:
 
-```Python
+```Json
 {
-    "authority": "https://login.microsoftonline.com/organizations",
-    "client_id": "your_client_id",
-    "secret": "This is a sample only. You better NOT persist your password."
-    "scope": ["https://graph.microsoft.com/.default"]
+    "scope": ["https://graph.microsoft.com/.default"],
 }
 ```
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```Java
-public final static String KEYVAULT_DEFAULT_SCOPE = "https://vault.azure.net/.default";
+final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default";
 ```
 
-### <a name="all"></a>Tümü
-
-İstemci kimlik bilgileri için kullanılan kapsamın her zaman RESOURCEID + "/.exe" olması gerekir
+---
 
 ### <a name="case-of-azure-ad-v10-resources"></a>Azure AD (v 1.0) kaynaklarının durumu
 
+İstemci kimlik bilgileri için kullanılan kapsamın her zaman RESOURCEID + "/.exe" olması gerekir
+
 > [!IMPORTANT]
-> Bir v 1.0 erişim belirtecini kabul eden bir kaynak için erişim belirteci isteyen MSAL (Microsoft Identity platform uç noktası) için, Azure AD, son eğik çizgiden önce her şeyi alarak ve bunu kaynak tanımlayıcısı olarak kullanarak istenen kapsamdaki hedef kitleyi ayrıştırır.
+> Bir v 1.0 erişim belirtecini kabul eden bir kaynak için erişim belirteci isteyen MSAL için, Azure AD, son eğik çizgiden önce her şeyi alarak ve bunu kaynak tanımlayıcısı olarak kullanarak istenen kapsamdaki hedef kitleyi ayrıştırır.
 > Bu nedenle, Azure SQL ( **https://database.windows.net** ) gibi kaynak bir hedef kitleye eğik çizgi (Azure `https://database.windows.net/` SQL için) bekliyor gibi bir kapsam `https://database.windows.net//.default` istemeniz gerekir (çift eğik çizgiyi aklınızda bulunan). Ayrıca bkz. MSAL.NET sorun [#747](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747): Kaynak URL 'sinin sondaki eğik çizgi gözardı edilir ve bu da SQL kimlik doğrulama hatasına neden olur.
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API 'SI
 
-### <a name="net"></a>.NET
+Uygulamanın bir belirtecini almak için platforma bağlı olarak `AcquireTokenForClient` veya eşdeğerini kullanacaksınız.
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ```CSharp
 using Microsoft.Identity.Client;
@@ -98,13 +97,12 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
 }
 ```
 
-#### <a name="application-token-cache"></a>Uygulama belirteci önbelleği
-
-MSAL.net ' de `AcquireTokenForClient` , **uygulama belirteci önbelleğini** kullanır (tüm diğer `AcquireTokenSilent` acquiretokenxx yöntemleri kullanıcı belirteci önbelleğini kullanır), çağrılmadan `AcquireTokenForClient` önce `AcquireTokenSilent` çağrı yapmadan **Kullanıcı** belirteci önbelleğini kullanır. `AcquireTokenForClient`**uygulama** belirteci önbelleğinin kendisini denetler ve güncelleştirir.
-
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```Python
+# The pattern to acquire a token looks like this.
+result = None
+
 # Firstly, looks up a token from cache
 # Since we are looking for token for the current app, NOT for an end user,
 # notice we give account parameter as None.
@@ -113,20 +111,42 @@ result = app.acquire_token_silent(config["scope"], account=None)
 if not result:
     logging.info("No suitable token exists in cache. Let's get a new one from AAD.")
     result = app.acquire_token_for_client(scopes=config["scope"])
+
+if "access_token" in result:
+    # Call a protected API with the access token
+    print(result["token_type"])
+    print(result["expires_in"])  # You don't normally need to care about this.
+                                 # It will be good for at least 5 minutes.
+else:
+    print(result.get("error"))
+    print(result.get("error_description"))
+    print(result.get("correlation_id"))  # You may need this when reporting a bug
 ```
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```Java
-ClientCredentialParameters parameters = ClientCredentialParameters
-        .builder(Collections.singleton(KEYVAULT_DEFAULT_SCOPE))
+ClientCredentialParameters clientCredentialParam = ClientCredentialParameters.builder(
+        Collections.singleton(GRAPH_DEFAULT_SCOPE))
         .build();
 
-CompletableFuture<AuthenticationResult> future = cca.acquireToken(parameters);
+CompletableFuture<IAuthenticationResult> future = app.acquireToken(clientCredentialParam);
 
-// You can complete the future in many different ways. Here we use .get() for simplicity
-AuthenticationResult result = future.get();
+BiConsumer<IAuthenticationResult, Throwable> processAuthResult = (res, ex) -> {
+    if (ex != null) {
+        System.out.println("Oops! We have an exception - " + ex.getMessage());
+    }
+    System.out.println("Returned ok - " + res);
+    System.out.println("ID Token - " + res.idToken());
+
+    /* call a protected API with res.accessToken() */
+};
+
+future.whenCompleteAsync(processAuthResult);
+future.join();
 ```
+
+---
 
 ### <a name="protocol"></a>Protocol
 
@@ -159,9 +179,11 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-### <a name="learn-more-about-the-protocol"></a>Protokol hakkında daha fazla bilgi edinin
-
 Daha fazla bilgi için bkz. protokol belgeleri: [Microsoft Identity platformu ve OAuth 2,0 istemci kimlik bilgileri akışı](v2-oauth2-client-creds-grant-flow.md).
+
+## <a name="application-token-cache"></a>Uygulama belirteci önbelleği
+
+MSAL.net ' de `AcquireTokenForClient` , **uygulama belirteci önbelleğini** kullanır (tüm diğer `AcquireTokenSilent` acquiretokenxx yöntemleri kullanıcı belirteci önbelleğini kullanır), çağrılmadan `AcquireTokenForClient` önce `AcquireTokenSilent` çağrı yapmadan **Kullanıcı** belirteci önbelleğini kullanır. `AcquireTokenForClient`**uygulama** belirteci önbelleğinin kendisini denetler ve güncelleştirir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

@@ -1,6 +1,6 @@
 ---
 title: Denemeleri TensorBoard ile görselleştirme
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Deneme çalıştırma geçmişlerini görselleştirmek ve hiper parametre ayarlama ve yeniden eğitimi için olası bölgeleri belirlemek üzere TensorBoard 'ı başlatın.
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: 2e4527ba167076935505b668a7879e5f1446b25e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b96b80a735c0caee8a3aabaf19b04fd0e153ba6b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856066"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034324"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard ve Azure Machine Learning deneme çalıştırmalarını ve ölçümlerini görselleştirin
 
-Bu makalede, deneme çalışmalarınızı ve ölçümlerini, ana Azure Machine Learning hizmeti SDK 'sindeki [ `tensorboard` paketi](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) kullanarak tensorboard 'da görüntülemeyi öğreneceksiniz. Deneme çalışmalarınızı inceledikten sonra Machine Learning modellerinizi daha iyi ayarlayabilir ve yeniden eğitebilirsiniz.
+Bu makalede, deneme çalışmalarınızı ve ölçümlerini, ana Azure Machine Learning SDK 'daki [ `tensorboard` paketi](https://docs.microsoft.com/python/api/azureml-tensorboard/?view=azure-ml-py) kullanarak tensorboard 'da görüntülemeyi öğreneceksiniz. Deneme çalışmalarınızı inceledikten sonra Machine Learning modellerinizi daha iyi ayarlayabilir ve yeniden eğitebilirsiniz.
 
 [Tensorboard](https://www.tensorflow.org/tensorboard/r1/overview) , deneme yapınızı ve performansınızı incelemek ve anlamak için bir Web uygulamaları paketidir.
 
@@ -43,11 +43,11 @@ Azure Machine Learning denemeleri ile TensorBoard 'ı nasıl başladığınıza,
 
     * Kendi Juptyer Not defteri sunucunuz
           * [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) `tensorboard` ek ile birlikte yükleyip
-          * [Azure Machine Learning hizmet çalışma alanı oluşturun](how-to-manage-workspace.md).  
+          * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).  
           * [Bir çalışma alanı yapılandırma dosyası oluşturun](how-to-configure-environment.md#workspace).
   
 <a name="direct"></a>
-## <a name="option-1-directly-view-run-history-in-tensorboard"></a>Seçenek 1: Çalışma geçmişini TensorBoard 'da doğrudan görüntüleme
+## <a name="option-1-directly-view-run-history-in-tensorboard"></a>1\. Seçenek: Çalışma geçmişini TensorBoard 'da doğrudan görüntüleme
 
 Bu seçenek, PyTorch, Chainer ve TensorFlow denemeleri gibi TensorBoard tarafından tüketilen günlük dosyalarını yerel olarak veren denemeleri için geçerlidir. Bu, denemenizin durumu değilse, bunun yerine [ `export_to_tensorboard()` yöntemini](#export) kullanın.
 
@@ -71,7 +71,7 @@ if not path.exists(exp_dir):
 
 ### <a name="download-tensorflow-demo-experiment-code"></a>TensorFlow demo deneme kodunu indirin
 
-TensorFlow deposunda, kapsamlı TensorBoard aletli bir yönetim tanıtımı vardır. Azure Machine Learning hizmetiyle çalışması için bu tanıtımın kodunu değiştirmediğimiz ve bu kodun hiçbirini değiştirmedik. Aşağıdaki kodda, MNIST kodunu indiriyoruz ve yeni oluşturulan deneme klasörüne kaydedebiliyoruz.
+TensorFlow deposunda, kapsamlı TensorBoard aletli bir yönetim tanıtımı vardır. Bu tanıtım kodu, Azure Machine Learning ile çalışmak üzere bu tanıtımın kodunu değiştirmez. Aşağıdaki kodda, MNIST kodunu indiriyoruz ve yeni oluşturulan deneme klasörüne kaydedebiliyoruz.
 
 ```python
 import requests
@@ -178,7 +178,7 @@ tb.stop()
 
 <a name="export"></a>
 
-## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>Seçenek 2: Geçmişi, TensorBoard 'da görüntülenecek şekilde dışarı aktar
+## <a name="option-2-export-history-as-log-to-view-in-tensorboard"></a>2\. Seçenek: Geçmişi, TensorBoard 'da görüntülenecek şekilde dışarı aktar
 
 Aşağıdaki kod örnek bir deneme oluşturur, Azure Machine Learning çalıştırma geçmişi API 'Lerini kullanarak günlüğe kaydetme işlemini başlatır ve deneme çalıştırması geçmişini görselleştirme için TensorBoard tarafından tüketilen günlüklere dışarı aktarır. 
 

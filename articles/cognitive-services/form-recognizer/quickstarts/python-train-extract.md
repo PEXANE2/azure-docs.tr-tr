@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 53409769fc85422f4c34a14d22e7c44b2d5cce35
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e7a63d09c3116c7504e9d409b32a44be140d8fe4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443841"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074135"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Hızlı Başlangıç: Python ile REST API kullanarak form tanıyıcı modelini eğitme ve form verilerini ayıklama
 
@@ -38,7 +38,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki python kodunu çalıştırarak **eğitme** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Abonelik `<Endpoint>` anahtarlarınızı aldığınız Azure bölgesindeki form tanıyıcı kaynağı için uç nokta URL 'siyle değiştirin.
+1. Form `<Endpoint>` tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
 1. Önceki `<Subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 1. Azure `<SAS URL>` BLOB depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 

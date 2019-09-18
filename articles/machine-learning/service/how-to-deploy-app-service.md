@@ -1,7 +1,7 @@
 ---
 title: Ml modellerini Azure App Service dağıtma (Önizleme)
-titleSuffix: Azure Machine Learning service
-description: Azure App Service bir modeli bir Web uygulamasına dağıtmak için Azure Machine Learning hizmetini nasıl kullanacağınızı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Azure App Service bir modeli bir Web uygulamasına dağıtmak için Azure Machine Learning nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,21 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147899"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034588"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 
-Azure Machine Learning hizmetinden bir modeli Azure App Service Web uygulaması olarak nasıl dağıtacağınızı öğrenin.
+Azure Machine Learning bir modeli Azure App Service Web uygulaması olarak nasıl dağıtacağınızı öğrenin.
 
 > [!IMPORTANT]
-> Hem Azure Machine Learning hizmeti hem de Azure App Service genel kullanıma sunulduğunda, Machine Learning hizmetinden App Service bir model dağıtma özelliği önizlemededir.
+> Hem Azure Machine Learning hem de Azure App Service genel kullanıma sunulduğunda Machine Learning hizmetinden App Service bir model dağıtabilme özelliği önizlemededir.
 
-Azure Machine Learning hizmeti ile, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Bu görüntü, veri alan bir Web hizmeti içerir, bunu modele gönderir ve ardından yanıtı döndürür. Azure App Service görüntüyü dağıtmak için kullanılabilir ve aşağıdaki özellikleri sağlar:
+Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Bu görüntü, veri alan bir Web hizmeti içerir, bunu modele gönderir ve ardından yanıtı döndürür. Azure App Service görüntüyü dağıtmak için kullanılabilir ve aşağıdaki özellikleri sağlar:
 
 * Gelişmiş güvenlik için Gelişmiş [kimlik doğrulaması](/azure/app-service/configure-authentication-provider-aad) . Kimlik doğrulama yöntemleri hem Azure Active Directory hem de Multi-Factor auth içerir.
 * Yeniden dağıtmak zorunda kalmadan [Otomatik ölçeklendirme](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) .
@@ -37,7 +37,7 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Bir Azure Machine Learning hizmeti çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
+* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Çalışma alanınıza kayıtlı eğitilen makine öğrenimi modeli. Bir modeliniz yoksa, görüntü oluşturma öğreticisini kullanın: eğitim ve kayıt yapmak için [modeli eğitme](tutorial-train-models-with-aml.md) .
 
@@ -48,7 +48,7 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
     > * `model`-Dağıtılacak kayıtlı model.
     > * `inference_config`-Modelin çıkarım yapılandırması.
     >
-    > Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md).
+    > Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Dağıtıma hazırlanma
 
@@ -66,7 +66,7 @@ Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerek
     >
     > Senaryonuza yönelik olabilecek başka bir alternatif de [toplu tahmindir](how-to-run-batch-predictions.md). Bu, Puanlama sırasında veri depolarına erişim sağlar.
 
-    Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md).
+    Giriş betikleri hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 * Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**
 
@@ -89,7 +89,7 @@ Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım ya
 
 Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
 
-Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md).
+Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > Azure App Service ' ye dağıtım yaparken, bir __dağıtım yapılandırması__oluşturmanız gerekmez.
@@ -99,7 +99,7 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 Azure App Service dağıtılan Docker görüntüsünü oluşturmak için [model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-)kullanın. Aşağıdaki kod parçacığı, modelden ve çıkarım yapılandırmasından nasıl yeni bir görüntü oluşturulacağını gösterir:
 
 > [!NOTE]
-> Kod parçacığı, kayıtlı bir `model` model içerdiğini `inference_config` ve çıkarım ortamının yapılandırmasını içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning hizmeti ile modelleri dağıtma](how-to-deploy-and-where.md).
+> Kod parçacığı, kayıtlı bir `model` model içerdiğini `inference_config` ve çıkarım ortamının yapılandırmasını içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -153,7 +153,7 @@ Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İ�
     Bu örnekte, __temel__ bir Fiyatlandırma Katmanı (`--sku B1`) kullanılır.
 
     > [!IMPORTANT]
-    > Azure Machine Learning hizmeti tarafından oluşturulan görüntüler Linux kullanır, bu nedenle `--is-linux` parametresini kullanmanız gerekir.
+    > Azure Machine Learning tarafından oluşturulan görüntüler Linux kullanır, bu nedenle `--is-linux` parametresini kullanmanız gerekir.
 
 1. Web uygulamasını oluşturmak için aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. `package.location` Ve `<acrinstance>` değerlerinidahaöncedöndürülendeğerlerledeğiştirin`<imagename>` :
 

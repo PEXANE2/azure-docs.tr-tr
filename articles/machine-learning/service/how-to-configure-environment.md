@@ -1,7 +1,7 @@
 ---
 title: Python geliştirme ortamı ayarlama
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetiyle çalışırken geliştirme ortamının nasıl yapılandırılacağını öğrenin. Bu makalede, Conda ortamlarını kullanmayı, yapılandırma dosyalarını oluşturmayı ve bulut tabanlı Not defteri sunucunuzu, Jupyter not defterlerini, Azure Databricks, IDEs, kod düzenleyicilerini ve Veri Bilimi Sanal Makinesi yapılandırmayı öğreneceksiniz.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning çalışırken geliştirme ortamının nasıl yapılandırılacağını öğrenin. Bu makalede, Conda ortamlarını kullanmayı, yapılandırma dosyalarını oluşturmayı ve bulut tabanlı Not defteri sunucunuzu, Jupyter not defterlerini, Azure Databricks, IDEs, kod düzenleyicilerini ve Veri Bilimi Sanal Makinesi yapılandırmayı öğreneceksiniz.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,16 +11,16 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 933ae5b70d8e0485360a94ede1fff99c02f75a4c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860566"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034865"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı yapılandırma
 
-Bu makalede, Azure Machine Learning hizmetiyle çalışmak için bir geliştirme ortamının nasıl yapılandırılacağını öğreneceksiniz. Azure Machine Learning hizmet platformu belirsiz. Geliştirme ortamınız için tek sabit gereksinim Python 3 ' dir. Anaconda veya virtualenv gibi yalıtılmış bir ortam de önerilir.
+Bu makalede, Azure Machine Learning ile çalışmak için bir geliştirme ortamının nasıl yapılandırılacağını öğreneceksiniz. Azure Machine Learning platform belirsiz. Geliştirme ortamınız için tek sabit gereksinim Python 3 ' dir. Anaconda veya virtualenv gibi yalıtılmış bir ortam de önerilir.
 
 Aşağıdaki tabloda, bu makalede ele alınan her geliştirme ortamı, profesyonelleri ve dezavantajlarla birlikte gösterilmektedir.
 
@@ -40,7 +40,7 @@ Bu makalede ayrıca aşağıdaki araçlar için ek kullanım ipuçları sunulmak
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir Azure Machine Learning hizmeti çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md). [Bulut tabanlı bir not defteri sunucusu](#notebookvm), [dsvm](#dsvm)veya [Azure Databricks](#aml-databricks)kullanmaya başlamak için bir çalışma alanı yeterlidir.
+Azure Machine Learning çalışma alanı. Çalışma alanını oluşturmak için, bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md). [Bulut tabanlı bir not defteri sunucusu](#notebookvm), [dsvm](#dsvm)veya [Azure Databricks](#aml-databricks)kullanmaya başlamak için bir çalışma alanı yeterlidir.
 
 [Yerel bilgisayarınız](#local)için SDK ortamını yüklemek üzere [Jupyter Notebook sunucu](#jupyter) veya [Visual Studio Code](#vscode) şunları yapmanız gerekir:
 
@@ -70,7 +70,7 @@ Not defteri VM 'si:
   + Derin öğrenme çerçevelerinin seçimi
 
 
-  Kodunuz varsa, sanal makine Azure Machine Learning hizmetini keşfetmenize ve nasıl kullanacağınızı öğrenmenize yardımcı olacak öğreticiler ve örnekler içerir. Örnek Not defterleri, çalışma alanınızın Azure Blob depolama hesabında depolanır ve bunları VM 'lerde paylaşılabilir hale getirir. Çalıştırıldığında, çalışma alanınızın veri depolarına ve işlem kaynaklarına erişimi de vardır.
+  Kodunuz varsa, sanal makine, Azure Machine Learning kullanmayı keşfetmenize ve nasıl kullanacağınızı öğrenmenize yardımcı olacak öğreticiler ve örnekler içerir. Örnek Not defterleri, çalışma alanınızın Azure Blob depolama hesabında depolanır ve bunları VM 'lerde paylaşılabilir hale getirir. Çalıştırıldığında, çalışma alanınızın veri depolarına ve işlem kaynaklarına erişimi de vardır.
 
 + **Basit kurulum**: Azure Machine Learning çalışma alanınızın içinden dilediğiniz zaman oluşturun. Yalnızca bir ad girin ve Azure VM türünü belirtin. Şimdi bu [öğreticiyi deneyin: Kurulum ortamı ve çalışma](tutorial-1st-experiment-sdk-setup.md)alanı.
 
@@ -145,7 +145,7 @@ DSVM 'yi bir geliştirme ortamı olarak kullanmak için aşağıdakileri yapın:
     print(azureml.core.VERSION)
     ```
 
-1. DSVM 'yi Azure Machine Learning hizmeti çalışma alanınızı kullanacak şekilde yapılandırmak için, [çalışma alanı yapılandırma dosyası oluşturma](#workspace) bölümüne bakın.
+1. DSVM 'yi Azure Machine Learning çalışma alanınızı kullanacak şekilde yapılandırmak için, [çalışma alanı yapılandırma dosyası oluşturma](#workspace) bölümüne bakın.
 
 Daha fazla bilgi için bkz. [veri bilimi sanal makineleri](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
@@ -255,7 +255,7 @@ Jupyter not defterleri parçası olan [Jupyter proje](https://jupyter.org/). Bun
     sys.path
     ```
     
-1. Jupyter Notebook Azure Machine Learning hizmeti çalışma alanınızı kullanacak şekilde yapılandırmak için, [çalışma alanı yapılandırma dosyası oluşturma](#workspace) bölümüne gidin.
+1. Jupyter Notebook Azure Machine Learning çalışma alanınızı kullanacak şekilde yapılandırmak için, [çalışma alanı yapılandırma dosyası oluşturma](#workspace) bölümüne gidin.
 
 
 ### <a id="vscode"></a>Visual Studio kodu
@@ -287,7 +287,7 @@ Geliştirme için Visual Studio Code kullanmak için şunları yapın:
 ## <a name="azure-databricks"></a>Azure Databricks
 Azure Databricks, Azure bulutu 'nda Apache Spark tabanlı bir ortamdır. CPU veya GPU tabanlı işlem kümesi ile birlikte çalışan bir not defteri tabanlı ortam sağlar.
 
-Azure Databricks Azure Machine Learning hizmeti ile nasıl kullanılır:
+Azure Databricks Azure Machine Learning ile nasıl kullanılır:
 + Spark MLlib kullanarak bir modeli eğitebilirsiniz ve modeli Azure Databricks içinden ACG/AKS 'e dağıtabilirsiniz.
 + Ayrıca, Azure Databricks ile özel bir Azure ML SDK 'sında [otomatik makine öğrenimi](concept-automated-ml.md) özellikleri de kullanabilirsiniz.
 + Azure Databricks, bir [Azure Machine Learning](concept-ml-pipelines.md)işlem hattından işlem hedefi olarak kullanabilirsiniz.
@@ -355,7 +355,7 @@ Deneyin:
 
 ## <a id="workspace"></a>Çalışma alanı yapılandırma dosyası oluşturma
 
-Çalışma alanı yapılandırma dosyası, SDK 'nın Azure Machine Learning hizmet çalışma alanıyla nasıl iletişim kuracağını söyleyen bir JSON dosyasıdır. Dosya *config. JSON*olarak adlandırılır ve aşağıdaki biçimdedir:
+Çalışma alanı yapılandırma dosyası, SDK 'nın Azure Machine Learning çalışma alanıyla nasıl iletişim kuracağını söyleyen bir JSON dosyasıdır. Dosya *config. JSON*olarak adlandırılır ve aşağıdaki biçimdedir:
 
 ```json
 {

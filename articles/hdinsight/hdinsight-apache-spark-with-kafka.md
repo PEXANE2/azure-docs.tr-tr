@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: b4d50c39bf670cb8c14d9dbe4feb2fc18c89bf0a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 201e86908b61efa72eed76346f70cfc55e08d03c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917215"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076807"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka Apache Spark streaming (DStream) örneği
 
@@ -40,9 +40,9 @@ HDInsight üzerinde Apache Kafka, genel internet üzerinden Kafka aracılarına 
 Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gibi, Azure Resource Manager şablonu kullanmak daha kolay olur. Azure aboneliğinize Azure sanal ağını, Kafka ve Spark kümelerini dağıtmak için aşağıdaki adımları kullanın.
 
 1. Aşağıdaki düğmeyi kullanarak Azure'da oturum açın ve şablonu Azure portalında açın.
-    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
-    
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+
     Azure Resource Manager şablonu **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** sayfasında bulunur.
 
     > [!WARNING]  
@@ -51,9 +51,9 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
     Bu şablon hem Kafka hem de Spark için bir HDInsight 3,6 kümesi oluşturur.
 
 2. **Özel dağıtım** bölümündeki girişleri doldurmak için aşağıdaki bilgileri kullanın:
-   
-    ![HDInsight özel dağıtımı](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
-   
+
+    ![HDInsight özel dağıtım parametreleri](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
+
     * **Kaynak grubu**: Bir grup oluşturun veya var olan bir grubu seçin. Bu grup HDInsight kümesini içerir.
 
     * **Konum**: Coğrafi olarak size yakın bir konum seçin.

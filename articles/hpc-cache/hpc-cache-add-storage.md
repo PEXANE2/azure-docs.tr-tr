@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 4554214b74b4d09fa40e355270208bebda4076b7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775266"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037205"
 ---
 # <a name="add-storage"></a>Depolama ekleme
 
@@ -27,13 +27,15 @@ Azure HPC önbelleğinizi oluştururken veya daha sonra depolama hedefleri ekley
 
 Önbellek örneğini oluşturduğunuz anda depolamayı tanımlamak için önbellek oluşturma Sihirbazı 'nın **depolama hedefleri** sekmesini kullanın.
 
-![depolama hedefleri sayfasının ekran görüntüsü](media/create-targets.png)
+![depolama hedefleri sayfasının ekran görüntüsü](media/hpc-cache-storage-targets-pop.png)
 
 Depolama alanı eklemek için **depolama hedefi Ekle** bağlantısına tıklayın.
 
 ## <a name="add-storage-targets-from-the-cache"></a>Önbellekten depolama hedefleri ekleyin
 
 Azure portal, önbellek örneğinizi açın ve sol kenar çubuğundaki **depolama hedefleri** ' ne tıklayın. Depolama hedefi sayfası tüm mevcut hedefleri listeler ve yeni bir bağlantı eklemek için bir bağlantı sağlar.
+
+![Kategori başlıkları ayarları ve Izleme arasındaki başlık yapılandırması altında bulunan, alt çubukta depolama hedefleri bağlantısının ekran görüntüsü](media/hpc-cache-storage-targets-sidebar.png)
 
 ## <a name="add-a-new-azure-blob-storage-target"></a>Yeni bir Azure Blob depolama hedefi ekleme
 
@@ -52,15 +54,13 @@ Bir Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 
 * **Sanal ad alanı yolu** -bu depolama hedefi için istemciye yönelik FilePath ayarlayın. Sanal ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplanan ad alanını Yapılandır](hpc-cache-namespace.md) makalesini okuyun.
 
-<!--  The namespace path value must end with a slash (``/``) and should not start with one.  -->
-
 İşiniz bittiğinde, depolama hedefini eklemek için **Tamam** ' ı tıklatın.
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>Erişim denetimi rollerini hesabınıza ekleyin
 
 Azure HPC önbelleği, önbellek uygulamasının Azure Blob depolama hedeflerine yönelik depolama hesabınıza erişmesini yetkilendirmek için [rol tabanlı erişim denetimi 'ni (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) kullanır.
 
-Depolama hesabı sahibi, "StorageCache kaynak sağlayıcısı" kullanıcısı için kayıtlı [depolama hesabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) ve [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) ' nı açıkça eklemesi gerekir.
+Depolama hesabı sahibi, "StorageCache kaynak sağlayıcısı" kullanıcısı için, rol [depolama hesabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) ve [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) ' nı açıkça eklemesi gerekir.
 
 Bunu zaman içinde yapabilir veya bir BLOB depolama hedefi eklediğiniz sayfada bir bağlantıya tıklayarak yapabilirsiniz.
 

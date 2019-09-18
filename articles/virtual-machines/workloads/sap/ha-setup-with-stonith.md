@@ -211,7 +211,7 @@ sbd  -d <SBD Device Name> message <node2> <message>
 ```
 ![SBD-List. png](media/HowToHLI/HASetupWithStonith/sbd-list.png)
 
-**ikinci** düğüm üzerinde 4,8 (Düğüm2) ileti durumunu kontrol edebilirsiniz
+4,8 **ikinci** düğüm üzerinde (Düğüm2) ileti durumunu kontrol edebilirsiniz
 ```
 sbd  -d <SBD Device Name> list
 ```

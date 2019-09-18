@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 339b118e48a01469312a40e6b0652a4ffb90291a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: ec6b667dfc554c037d9b0a56e52bc8f212812812
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347138"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064717"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir ASP.NET Web API 'sine erişim izni verme
 
-Bu öğreticide, bir ASP.NET Web uygulamasından Azure Active Directory (Azure AD) B2C 'de korumalı bir Web API kaynağını çağırma gösterilmektedir.
+Bu öğreticide, bir ASP.NET Web uygulamasından Azure Active Directory B2C (Azure AD B2C) ' de korumalı bir Web API kaynağını çağırma gösterilmektedir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -40,14 +40,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Web API kaynakları, erişim belirteci sunan istemci uygulamalarına göre korunan kaynak isteklerini kabul etmeden ve bunlara yanıt verebilmeleri için kiracınızda kayıtlı olmalıdır.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve kiracınız içeren dizine seçme.
+2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 5. Uygulama için bir ad girin. Örneğin, *webapi1*.
 6. **Web uygulaması/Web API 'Si Ekle** ve **örtük akışa Izin ver**için **Evet**' i seçin.
 7. **Yanıt URL 'si**için Azure AD B2C uygulamanızın isteklerinizin belirteçleri döndürmesi gereken bir uç nokta girin. Bu öğreticide, örnek yerel olarak çalışır ve tarihinde `https://localhost:44332`dinler.
 8. **Uygulama kimliği URI 'si**için, Web API 'niz için kullanılan tanımlayıcıyı girin. Tam etki alanı ile birlikte URI tanımlayıcısı sizin için oluşturulur. Örneğin: `https://contosotenant.onmicrosoft.com/api`.
-9.           **Oluştur**'a tıklayın.
+9. **Oluştur**'a tıklayın.
 10. Özellikler sayfasında, Web uygulamasını yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.
 
 ## <a name="configure-scopes"></a>Kapsamları yapılandırma
@@ -89,7 +89,7 @@ Aşağıdaki iki proje örnek çözümde bulunur:
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
 2. **TaskWebApp** projesinde **Web.config**’i açın.
-3. API’yi yerel olarak çalıştırmak üzere, **api:TaskServiceUrl** için localhost ayarını kullanın. Web.config’i aşağıdaki gibi değiştirin: 
+3. API’yi yerel olarak çalıştırmak üzere, **api:TaskServiceUrl** için localhost ayarını kullanın. Web.config’i aşağıdaki gibi değiştirin:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
@@ -133,16 +133,16 @@ Aşağıdaki iki proje örnek çözümde bulunur:
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
-**TaskWebApp** ve **TaskService** projelerinin ikisini birden çalıştırmanız gerekir. 
+**TaskWebApp** ve **TaskService** projelerinin ikisini birden çalıştırmanız gerekir.
 
-1. Çözüm Gezgini’nde, çözüme sağ tıklayıp **Başlangıç Projelerini Ayarla...** seçeneğini belirleyin. 
+1. Çözüm Gezgini’nde, çözüme sağ tıklayıp **Başlangıç Projelerini Ayarla...** seçeneğini belirleyin.
 2. **Birden çok başlangıç projesi**seçin.
 3. İki proje için de **Eylem**’i **Başlat** olarak değiştirin.
 4. Yapılandırmayı kaydetmek için **Tamam** ' ı tıklatın.
 5. İki uygulamayı da çalıştırmak için **F5**'e basın. Her uygulama kendi tarayıcı sekmesinde açılır. `https://localhost:44316/` Web uygulamasıdır.
     `https://localhost:44332/` web API’sidir.
 
-6. Web uygulamasında, Web uygulamasında oturum açmak için **kaydolma/oturum açma ' ya** tıklayın. Daha önce oluşturduğunuz hesabı kullanın. 
+6. Web uygulamasında, Web uygulamasında oturum açmak için **kaydolma/oturum açma ' ya** tıklayın. Daha önce oluşturduğunuz hesabı kullanın.
 7. Oturum açtıktan sonra, yapılacaklar **listesi ' ne** tıklayın ve yapılacaklar listesi öğesi oluşturun.
 
 Bir yapılacaklar listesi öğesi oluşturduğunuzda, Web uygulaması, yapılacaklar listesi öğesini oluşturmak için Web API 'sine bir istek yapar. Korumalı Web uygulamanız, Azure AD B2C kiracınızda korunan Web API 'sini çağırıyor.

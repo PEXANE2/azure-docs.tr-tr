@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: a08fc7d7822b4aeddafb588fdb73e86559ce2b12
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849162"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033374"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -87,57 +87,39 @@ Azure Izleyici 'de, değişiklik Analizi Şu anda self servis **Tanılama ve ç�
 
 ### <a name="enable-change-analysis-at-scale"></a>Ölçek üzerinde değişiklik analizini etkinleştir
 
-Aboneliğiniz çok sayıda Web uygulaması içeriyorsa, hizmeti Web uygulaması düzeyinde etkinleştirmek verimsiz olur. Bu durumda, bu alternatif yönergeleri izleyin.
+Aboneliğiniz çok sayıda Web uygulaması içeriyorsa, hizmeti Web uygulaması düzeyinde etkinleştirmek verimsiz olur. Aboneliğinizdeki tüm Web uygulamalarını etkinleştirmek için aşağıdaki betiği çalıştırın.
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>Aboneliğiniz için değişiklik Analizi kaynak sağlayıcısını kaydedin
+Önkoşulların önkoşulları:
+* PowerShell az Module. [Azure PowerShell modülünü yüklerken](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0) yönergeleri izleyin
 
-1. Değişiklik Analizi Özellik bayrağını (Önizleme) kaydedin. Özellik bayrağı önizlemede olduğundan, aboneliğiniz için görünür olması için kaydetmeniz gerekir:
+Şu betiği çalıştırın:
 
-   1. [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/)'i açın.
+```PowerShell
+# Log in to your Azure subscription
+Connect-AzAccount
 
-      ![Değişiklik Cloud Shell ekran görüntüsü](./media/change-analysis/cloud-shell.png)
+# Get subscription Id
+$SubscriptionId = Read-Host -Prompt 'Input your subscription Id'
 
-   1. Kabuk türünü **PowerShell**olarak değiştirin.
+# Make Feature Flag visible to the subscription
+Set-AzContext -SubscriptionId $SubscriptionId
 
-      ![Değişiklik Cloud Shell ekran görüntüsü](./media/change-analysis/choose-powershell.png)
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
 
-   1. Aşağıdaki PowerShell komutunu çalıştırın:
 
-        ``` PowerShell
-        Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to enable
-        Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
-        Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
-        ```
+# Enable each web app
+$webapp_list = Get-AzWebApp | Where-Object {$_.kind -eq 'app'}
+foreach ($webapp in $webapp_list)
+{
+    $tags = $webapp.Tags
+    $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
+    Set-AzResource -ResourceId $webapp.Id -Tag $tags -Force
+}
 
-1. Abonelik için değişiklik Analizi kaynak sağlayıcısını kaydedin.
+```
 
-   - **Abonelikler**' e gidin ve değişiklik hizmetinde etkinleştirmek istediğiniz aboneliği seçin. Sonra kaynak sağlayıcıları ' nı seçin:
 
-        ![Değişiklik Analizi kaynak sağlayıcısının nasıl kaydedileceği gösteren ekran görüntüsü](./media/change-analysis/register-rp.png)
-
-       - **Microsoft. ChangeAnalysis**öğesini seçin. Ardından sayfanın en üstünde **Kaydet**' i seçin.
-
-       - Kaynak sağlayıcı etkinleştirildikten sonra, dağıtım düzeyindeki değişiklikleri algılamak için Web uygulamasında gizli bir etiket ayarlayabilirsiniz. Gizli bir etiket ayarlamak için, **değişiklik Analizi bilgilerini getirmek için**aşağıdaki yönergeleri izleyin.
-
-   - Alternatif olarak, kaynak sağlayıcısını kaydetmek için bir PowerShell betiği de kullanabilirsiniz:
-
-        ```PowerShell
-        Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
-        ```
-
-        Bir Web uygulamasında gizli bir etiket ayarlamak üzere PowerShell 'i kullanmak için şu komutu çalıştırın:
-
-        ```powershell
-        $webapp=Get-AzWebApp -Name <name_of_your_webapp>
-        $tags = $webapp.Tags
-        $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
-        Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
-        ```
-
-     > [!NOTE]
-     > Gizli etiketi ekledikten sonra, değişiklikleri görmeye başlamadan önce 4 saate kadar beklemeniz gerekebilir. Değişiklik Analizi Web uygulamanızı yalnızca 4 saatte bir taradığından sonuçlar gecikiyor. 4 saatlik zamanlama, taramanın performans etkisini sınırlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

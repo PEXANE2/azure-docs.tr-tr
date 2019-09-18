@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 4bec14cd3aa88d885f83142143c7a901ca82057b
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918246"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066992"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Derin ve gelişmiş analiz
 
@@ -23,17 +23,17 @@ HDInsight, büyük miktarlarda yapılandırılmış, yapılandırılmamış ve h
 
 ## <a name="advanced-analytics-process"></a>Gelişmiş analiz işlemi
 
-![İşlem](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
+![Gelişmiş analiz işlem akışı](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
-İş sorununu tanımladıktan ve verilerinizi toplamayı ve işlemeyi başlattıktan sonra, tahmin etmek istediğiniz soruyu temsil eden bir model oluşturmanız gerekir. Modelinizde, iş gereksinimlerinize en uygun tahmin türünü sağlamak için bir veya daha fazla makine öğrenimi algoritması kullanılır.  Verilerinizin büyük bölümü modelinize eğmekte veya bunu test etmek ya da değerlendirmek için kullanılır. 
+İş sorununu tanımladıktan ve verilerinizi toplamayı ve işlemeyi başlattıktan sonra, tahmin etmek istediğiniz soruyu temsil eden bir model oluşturmanız gerekir. Modelinizde, iş gereksinimlerinize en uygun tahmin türünü sağlamak için bir veya daha fazla makine öğrenimi algoritması kullanılır.  Verilerinizin büyük bölümü modelinize eğmekte veya bunu test etmek ya da değerlendirmek için kullanılır.
 
-Modelinizi oluşturduktan, yükledikten, test ettikten ve değerlendirdikten sonra, bir sonraki adım modelinize yanıt sağlamaya başlayacak şekilde modelinizi dağıtmaktır. Son adım, modelinizin performansını izlemek ve gerektiği şekilde ayarlayabilmelidir. 
+Modelinizi oluşturduktan, yükledikten, test ettikten ve değerlendirdikten sonra, bir sonraki adım modelinize yanıt sağlamaya başlayacak şekilde modelinizi dağıtmaktır. Son adım, modelinizin performansını izlemek ve gerektiği şekilde ayarlayabilmelidir.
 
 ## <a name="common-types-of-algorithms"></a>Ortak algoritma türleri
 
 Gelişmiş analiz çözümleri, makine öğrenimi algoritmaları kümesi sağlar. Algoritma kategorilerinin ve ilişkili ortak iş kullanım durumlarının özeti aşağıda verilmiştir.
 
-![Machine Learning kullanım örnekleri](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
+![Machine Learning kategori özetleri](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 En iyi sığdırma algoritmasını seçerken birlikte, eğitim için veri sağlamanız gerekip gerekmediğini göz önünde bulundurmanız gerekir. Makine öğrenimi algoritmaları aşağıdaki şekilde kategorize edilir:
 
@@ -98,7 +98,7 @@ Bu gelişmiş analiz senaryosunda üç temel görev vardır:
 
 Bu örnek, Alex Kronizhevsky, Vinod nair ve Geoffey Hinton tarafından derlenen ve dağıtılan CIFAR-10 görüntü kümesini kullanır. CIFAR-10 veri kümesi, birbirini dışlayan 10 sınıfa ait 60.000 32 × 32 renk görüntüsünü içerir:
 
-![Görüntüler](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
+![Örnek görüntüleri Machine Learning](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 Veri kümesi hakkında daha fazla bilgi için, bkz. Alex Kronizhevsky 'ın [çok sayıda özellik katmanını küçük resimlerden öğreniyor](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
@@ -111,7 +111,7 @@ Veri kümesi, 50.000 görüntü eğitimi kümesine ve bir 10.000 görüntü test
 
 10.000 görüntünün tüm ön işleme/Puanlama, 4 çalışan düğümü olan bir kümede bir dakikadan kısa sürer. Model ~ 9.100 etiketlerini doğru bir şekilde tahmin eder (% 91) yansımasını. Bir karışıklık matrisi en yaygın sınıflandırma hatalarını gösterir. Örneğin, matris yanlış etiketleme ve diğer etiket çiftlerine göre çok daha sık gerçekleşmektedir.
 
-![Sonuçlar](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
+![Machine Learning sonuçları grafiği](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>Deneyin!
 

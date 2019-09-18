@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: 31cffc71937f7be158da8cbbd1d8abe6e3fe8372
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: cf84d685bf20f1117aa2378cf2e2696cb78a46a5
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916643"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076162"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
 
@@ -74,7 +74,7 @@ Bu bölümde, var olan bir HDInsight kümesine Edge düğümü eklemek için bir
 
 1. Aşağıdaki resme tıklayarak Azure 'da oturum açın ve Azure portal Azure Resource Manager şablonu açın. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 3. Aşağıdaki özellikleri yapılandırın:
    
    * **Abonelik**: Kümeyi oluşturmak için kullanılan bir Azure aboneliği seçin.
@@ -97,7 +97,7 @@ Bu bölümde, bir Edge düğümü ile HDInsight kümesi oluşturmak için bir Ka
 1. Henüz yoksa bir HDInsight kümesi oluşturun.  Bkz. [HDInsight 'Ta Hadoop kullanmaya başlama](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 2. Aşağıdaki resme tıklayarak Azure 'da oturum açın ve Azure portal Azure Resource Manager şablonu açın. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 3. Aşağıdaki özellikleri yapılandırın:
    
    * **Abonelik**: Kümeyi oluşturmak için kullanılan bir Azure aboneliği seçin.

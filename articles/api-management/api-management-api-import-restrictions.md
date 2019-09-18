@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 1a1196da62b9d28280150dd1ddf1582db64a93d4
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d1c80e2ab9ae6a893b1adea6bd68e9b585288d8b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073789"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074955"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API içeri aktarma kısıtlamaları ve bilinen sorunlar
 
@@ -49,9 +49,6 @@ Openapı belgenizi içeri aktarırken hata alıyorsanız, önceden doğruladığ
 -   Çok sayıda **sunucu** belirtilmişse, API Management ilk https URL 'sini seçmeyi deneyecek. Herhangi bir HTTPs URL 'si yoksa, ilk HTTP URL 'si. HTTP URL 'Leri yoksa, sunucu URL 'SI boş olur.
 -   **Örnekler** desteklenmez, ancak **örnek** .
 -   **Multipart/form verileri** desteklenmez.
-
-> [!IMPORTANT]
-> OpenAPI içeri aktarma ile ilgili önemli bilgiler ve ipuçları için bu [belgeye](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/) bakın.
 
 ## <a name="wsdl"> </a>WSDL
 

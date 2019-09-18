@@ -4,14 +4,14 @@ description: İstemcileri Azure HPC önbellek hizmetine bağlama
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0ccd256ed399fff7c364883ada45d2d15c75a120
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775357"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036940"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC önbelleğini bağlama
 
@@ -19,13 +19,13 @@ ms.locfileid: "70775357"
 
 Önbelleğe Genel Bakış sayfasında listelenen Mount adreslerini ve depolama hedefini oluştururken ayarladığınız sanal ad alanı yolunu kullanın. 
 
-![Azure HPC önbellek örneğinin genel bakış sayfasının ekran görüntüsü, sağ alt taraftaki bağlama adresleri listesi etrafında bir vurgulama kutusuyla](media/mount-addresses.png)
+![Azure HPC önbellek örneğinin genel bakış sayfasının ekran görüntüsü, sağ alt taraftaki bağlama adresleri listesi etrafında bir vurgulama kutusuyla](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
 > Önbellek bağlama adresleri, önbelleğin alt ağının içindeki ağ arabirimlerine karşılık gelir. Bu NIC 'ler kaynak grubunda bitiş `-cluster-nic-` adlarıyla ve bir sayıyla görüntülenir. Bu arabirimleri değiştirmeyin veya silmeyin, aksi durumda önbellek kullanılamaz hale gelir.
 
-Sanal ad alanı yolları, **depolama hedefleri** sayfasında gösterilir. 
-![tablonun yol sütunundaki bir girdinin etrafında vurgulama kutusuyla, önbelleğin depolama hedefi panelinin ekran görüntüsü](media/storage-target-path.png)
+Sanal ad alanı yolları, **depolama hedefleri** sayfasında gösterilir. İle ilişkili toplanmış ad alanı yolu (veya yolları) dahil olmak üzere, ayrıntıları görmek için hedef adına tıklayın. 
+![tablonun yol sütunundaki bir girdinin etrafında vurgulama kutusuyla, önbelleğin depolama hedefi panelinin ekran görüntüsü](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="mount-command-syntax"></a>Bağlama komutu sözdizimi
 

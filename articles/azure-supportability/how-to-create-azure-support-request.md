@@ -1,6 +1,6 @@
 ---
 title: Azure destek isteği oluşturma | Microsoft Docs
-description: Azure destek isteği oluşturma
+description: Azure destek isteği oluşturma.
 services: Azure Supportability
 documentationcenter: ''
 author: ganganarayanan
@@ -14,121 +14,121 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 462a14d7845c6723a3482e50b01c50e3d913beee
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129068"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71072077"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure destek isteği oluşturma
 ## <a name="summary"></a>Özet
-Azure müşterileri oluşturabilir ve Azure portalında, destek isteklerini yönetin [ https://portal.azure.com ](https://portal.azure.com).
+Azure müşterileri Azure portal, [https://portal.azure.com](https://portal.azure.com)destek istekleri oluşturabilir ve yönetebilir.
 
 > [!NOTE]
-> Almanya için Azure portalı [https://portal.microsoftazure.de](https://portal.microsoftazure.de)   
-> Amerika Birleşik Devletleri kamu için Azure portalı [ https://portal.azure.us ](https://portal.azure.us).
+> Ticari kullanım [https://portal.azure.com](https://portal.azure.com) için Azure Portal Almanya için Azure Portal[https://portal.microsoftazure.de](https://portal.microsoftazure.de)   
+> Birleşik Devletler kamu Azure portal[https://portal.azure.us](https://portal.azure.us)
 
 
-Müşteri geri bildirimi doğrultusunda, destek isteği deneyimine odaklanan üç ana hedef için güncelleştirdik:
+Müşteri geri bildirimlerine göre, destek isteği deneyimini üç ana hedefle odaklanmak üzere güncelleştirdik:
 
-* **Kolaylaştırılmış**: Tıklama ve bir destek talebi göndererek işlemini kolaylaştırmak için dikey pencereleri azaltın.
-* **Tümleşik**: Bir Azure kaynağı ile ilgili bir sorun gidermeye çalışıyorsanız, geçiş bağlamı olmadan bu kaynak için bir destek isteği açmak kolay olmalıdır.
-* **Verimli**: Destek mühendisinize verimli bir şekilde sorununuzu çözmek için gereken anahtar bilgilerini toplayın.
+* **Kolaylaştırılmış**: Bir destek isteğini basit bir şekilde gönderme işlemini yapmak için tıklama ve kanat işlemlerini azaltın.
+* **Tümleşik**: Azure kaynağıyla ilgili bir sorunu giderirken, bağlamı değiştirmeden bu kaynak için bir destek isteği açmak kolay olmalıdır.
+* **Verimli**: Sorununuzu verimli bir şekilde çözmek için destek mühendislerinizin ihtiyaç duyacağı önemli bilgileri toplayın.
 
 ## <a name="getting-started"></a>Başlarken
-Üst gezinti menüsünde veya doğrudan kaynak dikey penceresinde, bir destek isteği oluşturabilirsiniz.
+En üst gezinti menüsünden veya doğrudan bir kaynak dikey penceresinden bir destek isteği oluşturabilirsiniz.
 
 **Üst gezinti çubuğundan**
 
 ![Yardım ve Destek](./media/how-to-create-azure-support-request/HelpandSupport.png)
 
-Yardım ve Destek sayfasında "Yeni destek isteği" seçin
+Yardım ve destek sayfasında "yeni destek isteği" ni seçin.
 
 ![Yeni Destek İsteği](./media/how-to-create-azure-support-request/NewSupportRequest.png)
 
-**Kaynak dikey penceresinden**
+**Bir kaynak dikey penceresinden**
 
-![Bağlam içinde](./media/how-to-create-azure-support-request/Incontext.png)
+![Bağlamda](./media/how-to-create-azure-support-request/Incontext.png)
 
-## <a name="basics"></a>Temel Bilgiler
-Destek isteği sürecinin ilk adımı, sorununuzu ve Destek planınız hakkındaki temel bilgileri toplar.
+## <a name="basics"></a>Temel
+Destek isteği işleminin ilk adımı, sorununuz ve Destek planınız hakkında temel bilgileri toplar.
 
-Bir örneği ele alalım: Teknik sorunlar yaşıyoruz sanal makinenizle karşılıklı ve şüpheli bir ağ bağlantısı sorunu.
-Sihirbazın ilk adımda hizmeti ("sanal Windows çalıştıran makine") ve kaynak (sanal makinenizin adı) seçerek bu sorun için Yardım alma işlemini başlatır.
+Bir örnek alalım: Sanal makineniz ile ilgili teknik zorluklar yaşıyor ve bir ağ bağlantısı sorunuyla karşılaşıyoruz.
+Sihirbazın ilk adımında hizmetin ("Windows çalıştıran sanal makine") ve kaynağın (sanal makinenizin adı) seçilmesi, bu sorun için yardım alma işlemini başlatır.
 
 ![Temel Bilgiler dikey penceresi](./media/how-to-create-azure-support-request/Basics.png)
 
 > [!NOTE]
-> Azure abonelik yönetimi (faturalandırma, kota ayarları ve hesap aktarımı gibi şeyleri) sınırsız destek sağlar. Teknik destek için bir destek planı gerekir. [Destek planları hakkında daha fazla bilgi](https://azure.microsoft.com/support/plans).
+> Azure, abonelik yönetimi için sınırsız destek sağlar (Faturalandırma, kota ayarlamaları ve hesap aktarımları gibi şeyler). Teknik destek için bir destek planına ihtiyacınız vardır. [Destek planları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/support/plans).
 >
 >
 
 ## <a name="problem"></a>Sorun
-Sihirbazın ikinci adım, sorun hakkında ek ayrıntılar toplar. Bu adımda doğru ayrıntıları sağlayan durumunuz sorun için en iyi destek mühendisine yönlendirmek için ve mümkün olan en kısa sürede sorunu tanılamaya başlamak için sağlıyor.
+Sihirbazın ikinci adımı sorunla ilgili ek ayrıntıları toplar. Bu adımda doğru ayrıntıları sağlamak, büyük/küçük harf durumunu sorun için en iyi destek mühendisine yönlendirmemizi ve sorunu mümkün olan en kısa sürede tanılamaya başlamanızı sağlar.
 
 ![Sorun dikey penceresi](./media/how-to-create-azure-support-request/Problem01.png)
 
-Sanal makine bağlantısı örnek üstten devam, bir ağ bağlantısı sorunu belirtmek için bu formu doldurmanız ve sorunun ne zaman karşılaştığınız gereken yaklaşık süreyi de dahil olmak üzere bu sorunla ilgili daha ayrıntılı bilgi sağlar.
+Yukarıdaki sanal makine bağlantısı örneğine devam etmek için bu formu, bir ağ bağlantısı sorunu olduğunu gösterecek şekilde doldurabilir ve sorun hakkında daha fazla ayrıntıyı, sorunla karşılaştığındaki yaklaşık zaman da dahil olmak üzere daha fazla ayrıntılı olarak sağlarsınız.
 
-![Sorun dikey 2](./media/how-to-create-azure-support-request/Problem02.png)
+![Sorun dikey penceresi 2](./media/how-to-create-azure-support-request/Problem02.png)
 
-## <a name="related-help"></a>İlgili Yardım
-Sorun türü ve seçtiğiniz kategoriye bağlı olarak, sorunu çözmek için bir çözüm sunuyoruz.
+## <a name="related-help"></a>İlgili yardım
+Sorun türüne ve seçtiğiniz kategoriye göre, sorununuzu çözmeye yardımcı olabilecek bir çözüm sağlıyoruz.
 
-![İlgili Yardım](./media/how-to-create-azure-support-request/RelatedHelp.png)
+![İlgili yardım](./media/how-to-create-azure-support-request/RelatedHelp.png)
 
-Metinsel sorununuzun açıklamasını temel alarak bağlamsal kendi kendine yardım çözümleri de sunuyoruz.
+Ayrıca, sorununuzun metinsel açıklamasına göre bağlamsal kendi kendine yardım çözümleri sunuyoruz.
 
-![İlgili Yardım 2](./media/how-to-create-azure-support-request/RelatedHelp02.png)
+![İlgili yardım 2](./media/how-to-create-azure-support-request/RelatedHelp02.png)
 
-Önerilen çözümler yardımcı, bir destek isteği oluşturma işlemini devam edebilirsiniz.
+Önerilen çözümler yardımcı değilse, bir destek isteği oluşturmak için işleme devam edebilirsiniz.
 
-![Sorun dikey penceresini 3](./media/how-to-create-azure-support-request/Problem03.png)
+![Sorun dikey penceresi 3](./media/how-to-create-azure-support-request/Problem03.png)
 
-## <a name="contact-information"></a>İletişim Bilgileri
-Size nasıl ulaşabileceğimizi nasıl biliyoruz. Bu nedenle sihirbazın son iletişim seçenekleri ve kişi bilgilerini onaylar.
+## <a name="contact-information"></a>Kişi Bilgileri
+Sihirbazın son adımı, iletişim seçeneklerinizi ve iletişim bilgilerini onaylar, böylece size nasıl ulaşabileceğinizi biliyoruz.
 
-![İletişim Bilgileri](./media/how-to-create-azure-support-request/ContactInformation.png)
+![Kişi Bilgileri](./media/how-to-create-azure-support-request/ContactInformation.png)
 
-Sorununuzu önem derecesine bağlı olarak, iş saatleri veya herhangi bir zamanda sizinle iletişim kurabiliriz anlamına gelir 24 x 7 yanıt tercih ediyorsanız, sırasında iletişim kurmamızı isterseniz belirtmek için istenebilir.
+Sorununuzun önem derecesine bağlı olarak, iş saatleri boyunca sizinle iletişim kurmamızı veya 7/24 bir yanıt tercih etmek isteyip istemediğinizi belirtmeniz istenebilir. Bu, istediğiniz zaman sizinle iletişim kurabildiğimiz anlamına gelebilir.
 
-![İletişim bilgileri 24 x 7](./media/how-to-create-azure-support-request/ContactInformation-2.png)
+![İletişim bilgileri 7/24](./media/how-to-create-azure-support-request/ContactInformation-2.png)
 
 ## <a name="all-support-requests"></a>Tüm destek istekleri
-Destek isteğini oluşturduktan sonra ayrıntılarını görüntüleyebilirsiniz **tüm destek istekleri** sayfası.
+Destek isteği oluşturduktan sonra **tüm destek istekleri** sayfasından ayrıntıları görüntüleyebilirsiniz.
 
 **Üst gezinti çubuğundan**
 
 ![Yardım ve Destek](./media/how-to-create-azure-support-request/HelpandSupport.png)
 
-Yardım ve Destek sayfasında "Tüm istekleri sol menüden destekler" seçin.
+Yardım ve destek sayfasında, sol taraftaki menüden "tüm destek istekleri" ni seçin.
 
-![Tüm destek isteme bağlantısı](./media/how-to-create-azure-support-request/AllSupportRequest-link.png)
+![Tüm destek Isteği bağlantıları](./media/how-to-create-azure-support-request/AllSupportRequest-link.png)
 
-Üzerinde **tüm destek istekleri** sayfasında, tüm destek isteklerini ve bunların durumunu görüntüleyebilirsiniz.
+**Tüm destek** istekleri sayfasında, tüm destek isteklerini ve bunların durumunu görüntüleyebilirsiniz.
 
-![Tüm destek isteği](./media/how-to-create-azure-support-request/AllSupportRequest.png)
+![Tüm destek Istekleri](./media/how-to-create-azure-support-request/AllSupportRequest.png)
 
-Destek istekleri sayfasına, müşterilerine çalışmaları abonelik tarafından filtre tarihi (UTC) ve durum oluşturulur.
-Ayrıca, sıralamak ve aramak için bu sayfadaki destek istekleri.
+Destek istekleri sayfası, müşterilerin servis taleplerini aboneliğe, oluşturulma tarihine (UTC) ve duruma göre filtrelemesine olanak sağlar.
+Ayrıca, bu sayfadaki destek isteklerini sıralayabilir ve arayabilirsiniz.
 
-Destek isteğinin önem derecesi ve yanıt vermesi için bir destek mühendisi sürer beklenen süre de dahil olmak üzere ayrıntılarını görüntülemek için seçin.
+Ayrıntıları görüntülemek için destek isteğini seçin (önem derecesi dahil olmak üzere, destek mühendisinin yanıt vermesi için gereken süre).
 ![VID](./media/how-to-create-azure-support-request/VID.png)
 
-İsteğin önem derecesini değiştirmek istiyorsanız, tıklayın **iş etkisi** Döşe. Önceki örnekte, istek şu anda önem derecesi C'yi ayarlandı
+İsteğin önem derecesini değiştirmek istiyorsanız, **iş etkisi** kutucuğuna tıklayın. Önceki örnekte, istek şu anda önem derecesi C olarak ayarlanmıştır.
 
-Kutucuğa tıklandığında bir açık bir destek isteği atayabilirsiniz önem dereceleri listesini gösterir.
+Kutucuğa tıkladığınızda, açık bir destek isteğine atayabileceğiniz önem derecelerine ait bir liste gösterilir.
 
 > [!NOTE]
-> En yüksek önem derecesi düzeyi destek planınız bağlıdır. [Destek planları hakkında daha fazla bilgi](https://azure.microsoft.com/support/plans).
+> En yüksek önem düzeyi, destek planınıza bağlıdır. [Destek planları hakkında daha fazla bilgi edinin](https://azure.microsoft.com/support/plans).
 >
 >
 
 ![VID-2](./media/how-to-create-azure-support-request/VID-2.png)
 
 ## <a name="feedback"></a>Geri Bildirim
-Her zaman geri bildirim ve öneriler için açık duyuyoruz! Lütfen bize gönderin, [önerileri](https://feedback.azure.com/forums/266794-support-feedback). Ayrıca, üzerinden bize ile görüşebilirsiniz [Twitter](https://twitter.com/azuresupport) veya [MSDN Forumları](https://social.msdn.microsoft.com/Forums/azure).
+Geri bildirim ve önerilere her zaman açıktır! Lütfen [önerilerinizi](https://feedback.azure.com/forums/266794-support-feedback)bize gönderin. Ayrıca, [Twitter](https://twitter.com/azuresupport) veya [MSDN forumları](https://social.msdn.microsoft.com/Forums/azure)aracılığıyla bizimle iletişim sağlayabilirsiniz.
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 [Azure desteği SSS](https://azure.microsoft.com/support/faq)

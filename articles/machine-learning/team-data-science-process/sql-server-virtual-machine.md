@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6adc5dfa740d440e78bf2f276447c4585503d7c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e407b26091ad559ab458f76d94e2460660ecd14f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606476"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036606"
 ---
 # <a name="heading"></a>Azure'da SQL Server sanal makinesi verilerini işleme
 Bu belge verileri araştırmak ve bir SQL Server VM'si, azure'da depolanan verilerin özelliklerini oluşturma konusunu kapsar. Bu SQL kullanarak veri denetimi veya Python gibi bir programlama dili kullanılarak yapılabilir.
@@ -87,7 +87,7 @@ Enlem/boylam konumu veri kısa öncü İşte (stackoverflow kaynak var [enlem ve
 * Oturum bize biz Kuzey olup veya Güney, Doğu veya Batı dünyayı gösterir.
 * Sıfır olmayan bir yüz basamağın yuvarlanacağını belirtir bize boylam, enlem değil kullandığımız!
 * Onlarca basamaklı bir konuma yaklaşık 1.000 kilometre sağlar. Bize ne Kıta veya üzerinde duyuyoruz Okyanusu hakkında yararlı bilgiler sağlıyor.
-* Birimleri basamak (bir ondalık derece) 111 kilometre (60 Deniz mili, yaklaşık 69 mil) bir konum sağlar. Bunu bize kabaca hangi büyük eyalet veya ülke/bölge duyuyoruz söyleyebilirsiniz.
+* Birimleri basamak (bir ondalık derece) 111 kilometre (60 Deniz mili, yaklaşık 69 mil) bir konum sağlar. Bu, size kabaca hangi eyalet, ülke veya bölge hakkında bilgi verebilir.
 * En fazla 11.1 km ilk ondalık yerdir: komşu büyük Şehir'dan büyük bir şehir konumunu ayırt edebilir.
 * En fazla 1.1 km ikinci ondalık yerdir: sonraki bir village ayırabilirsiniz.
 * Üçüncü ondalık en fazla 110 m: büyük Tarım alan veya Kurumsal kampüs tanımlayabilirsiniz yerdir.
@@ -116,7 +116,7 @@ Bu konum tabanlı özellikleri, daha fazla ek sayısı özellikleri daha önce a
 > 
 
 ### <a name="sql-aml"></a>Azure Machine Learning ile bağlanma
-Yeni oluşturulan özellik bir sütun olarak var olan bir tabloya eklenebilir veya yeni bir tablo içinde saklanan ve machine learning için özgün tablo ile birleştirilmiş. Özellikleri oluşturulan ya da zaten oluşturduysanız, kullanılarak erişilen [verileri içeri aktarma] [ import-data] aşağıda gösterildiği gibi Azure Machine Learning modülünde:
+Yeni oluşturulan özellik bir sütun olarak var olan bir tabloya eklenebilir veya yeni bir tablo içinde saklanan ve machine learning için özgün tablo ile birleştirilmiş. Aşağıda gösterildiği gibi, Azure Machine Learning [veri Içeri aktarma][import-data] modülü kullanılarak önceden oluşturulmuş veya erişilebilir olan özellikler kullanılabilir:
 
 ![azureml okuyucular][1] 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3ff9a694dca0d2a205c27569a7c744f482b662ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100649"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036394"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server yük devretme kümesi örneğini yapılandırma
 
@@ -267,11 +267,22 @@ Yük devretme kümesini oluşturmak için şunlar gerekir:
 - Yük devretme kümesi için bir ad
 - Yük devretme kümesi için bir IP adresi. Küme düğümleri ile aynı Azure sanal ağı ve alt ağı üzerinde kullanılmayan bir IP adresi kullanabilirsiniz.
 
-Aşağıdaki PowerShell bir yük devretme kümesi oluşturur. Betiği, düğümlerin adlarıyla (sanal makine adları) ve kullanılabilir bir IP adresini Azure VNET 'ten güncelleştirin:
+#### <a name="windows-server-2008-2016"></a>Windows Server 2008-2016
+
+Aşağıdaki PowerShell, **Windows Server 2008-2016**için bir yük devretme kümesi oluşturur. Betiği, düğümlerin adlarıyla (sanal makine adları) ve kullanılabilir bir IP adresini Azure VNET 'ten güncelleştirin:
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
+
+#### <a name="windows-server-2019"></a>Windows Server 2019
+
+Aşağıdaki PowerShell, Windows Server 2019 için bir yük devretme kümesi oluşturur.  Daha fazla bilgi için blog [yük devretme kümesini gözden geçirin: Küme ağ nesnesi](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).  Betiği, düğümlerin adlarıyla (sanal makine adları) ve kullanılabilir bir IP adresini Azure VNET 'ten güncelleştirin:
+
+```powershell
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
+```
+
 
 ### <a name="create-a-cloud-witness"></a>Bulut tanığı oluşturma
 

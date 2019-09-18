@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3ad2372f9a9f90e4502b304a08477771fd6ef385
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880390"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037419"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Şirket içi VMware iş yükleri için bir olağanüstü durum kurtarma sitesi olarak CloudSimple özel bulutu ayarlama
 
 CloudSimple özel bulutunuz, bir olağanüstü durum durumunda iş sürekliliği sağlamak üzere şirket içi uygulamalar için bir kurtarma sitesi olarak ayarlanabilir. Kurtarma çözümü, çoğaltma ve düzenleme platformu olarak sanal çoğaltmayı temel alır. Kritik altyapı ve uygulama sanal makineleri, şirket içi vCenter 'ınızdan özel buluta sürekli olarak çoğaltılabilir. Yük devretme testi için özel bulutunuzu kullanabilir ve bir olağanüstü durum sırasında uygulamanızın kullanılabilirliğini sağlayabilirsiniz. Benzer bir yaklaşım, bir kurtarma sitesi tarafından farklı bir konumda korunan bir birincil site olarak özel bulutu ayarlamak için de izlenebilir.
 
 > [!NOTE]
-> Olağanüstü durum kurtarma ortamınızı boyutlandırmayla ilgili yönergeler için, [sanal çoğaltmaya yönelik boyutlandırma konularını](http://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) belgelemek için Zerto bölümüne bakın.
+> Olağanüstü durum kurtarma ortamınızı boyutlandırmayla ilgili yönergeler için, [sanal çoğaltmaya yönelik boyutlandırma konularını](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) belgelemek için Zerto bölümüne bakın.
 
 CloudSimple çözümü:
 

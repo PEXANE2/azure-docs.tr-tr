@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/10/2019
+ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 17d1bd95067c15bd67f80f3713f0e497bff8a68d
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516115"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074347"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -28,16 +28,16 @@ Azure depolama, Döngüsel artıklık denetimleri (CRCs) kullanılarak depolanan
 
 Bir depolama hesabı oluşturduğunuzda, aşağıdaki artıklık seçeneklerinden birini belirleyebilirsiniz:
 
-* [Yerel olarak yedekli depolama (LRS)](storage-redundancy-lrs.md)
-* [Alanlar arası yedekli depolama (ZRS)](storage-redundancy-zrs.md)
-* [Coğrafi olarak yedekli depolama (GRS)](storage-redundancy-grs.md)
-* [Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-* [Coğrafi bölge yedekli depolama (GZRS)](storage-redundancy-gzrs.md)
-* [Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)](storage-redundancy-gzrs.md)
+- [Yerel olarak yedekli depolama (LRS)](storage-redundancy-lrs.md)
+- [Alanlar arası yedekli depolama (ZRS)](storage-redundancy-zrs.md)
+- [Coğrafi olarak yedekli depolama (GRS)](storage-redundancy-grs.md)
+- [Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [Coğrafi bölge yedekli depolama (GZRS)](storage-redundancy-gzrs.md)
+- [Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)](storage-redundancy-gzrs.md)
 
 Aşağıdaki tabloda, her bir çoğaltma stratejisinin belirli bir olay türü (veya benzer etkinin olayı) için size sağladığı dayanıklılık ve kullanılabilirlik kapsamına hızlı bir genel bakış sunulmaktadır.
 
-| Senaryo                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                               |
+| Senaryo                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (Önizleme)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Bir veri merkezi içinde düğüm kullanılamaz                                                                 | Evet                             | Evet                              | Evet                                  | Evet                                  |
 | Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Evet                              | Evet                                  | Evet                                  |
@@ -45,7 +45,7 @@ Aşağıdaki tabloda, her bir çoğaltma stratejisinin belirli bir olay türü (
 | Bölge genelinde kullanım dışı kalması durumunda verilerinize (uzak, coğrafi olarak çoğaltılan bir bölgede) okuma erişimi | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
 | Belirli bir yıl \_ boyunca nesnelerin dayanıklılığını sağlamak \_ için tasarlandı                                          | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
 | Desteklenen depolama hesabı türleri                                                                   | GPv2, GPv1, blob                | GPv2                             | GPv2, GPv1, blob                     | GPv2                     |
-| Okuma istekleri için kullanılabilirlik SLA 'Sı | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
+| Okuma istekleri için kullanılabilirlik SLA 'Sı | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için% 99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için% 99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
 | Yazma istekleri için kullanılabilirlik SLA 'Sı | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) | En az% 99,9 (Seyrek Erişimli Katman için% 99) |
 
 Depolama hesabınızdaki tüm veriler, blok Blobları ve ekleme Blobları, sayfa Blobları, kuyruklar, tablolar ve dosyalar dahil olmak üzere çoğaltılır. Tüm depolama hesabı türleri çoğaltılır, ancak ZRS genel amaçlı v2 depolama hesabı gerektirir.
@@ -61,9 +61,9 @@ Dayanıklılık ve kullanılabilirlik için Azure depolama garantisi hakkında d
 
 Depolama hesabınızın çoğaltma stratejinizi [Azure Portal](https://portal.azure.com/), [Azure POWERSHELL](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)veya [Azure Storage istemci kitaplıklarından](https://docs.microsoft.com/azure/index#pivot=sdkstools)birini kullanarak değiştirebilirsiniz. Depolama hesabınızın çoğaltma türünü değiştirmek, zaman kaybına neden olmaz.
 
-   > [!NOTE]
-   > Şu anda, hesabınızı ZRS, GZRS veya RA-GZRS ' e dönüştürmek için Azure portal veya Azure Storage istemci kitaplıklarını kullanamazsınız. Hesabınızı ZRS 'ye geçirmek için bkz. Ayrıntılar için [yüksek düzeyde kullanılabilir Azure depolama uygulamaları oluşturmak için bölgesel olarak yedekli depolama (ZRS)](storage-redundancy-zrs.md) . GZRS veya RA-GZRS geçirmek için, Ayrıntılar için [yüksek kullanılabilirlik ve en yüksek dayanıklılık (Önizleme) Için coğrafi bölge yedekli depolama](storage-redundancy-zrs.md) bölümüne bakın.
-    
+> [!NOTE]
+> Şu anda, hesabınızı ZRS, GZRS veya RA-GZRS ' e dönüştürmek için Azure portal veya Azure Storage istemci kitaplıklarını kullanamazsınız. Hesabınızı ZRS 'ye geçirmek için bkz. Ayrıntılar için [yüksek düzeyde kullanılabilir Azure depolama uygulamaları oluşturmak için bölgesel olarak yedekli depolama (ZRS)](storage-redundancy-zrs.md) . GZRS veya RA-GZRS geçirmek için, Ayrıntılar için [yüksek kullanılabilirlik ve en yüksek dayanıklılık (Önizleme) Için coğrafi bölge yedekli depolama](storage-redundancy-zrs.md) bölümüne bakın.
+
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Hesabımın çoğaltma stratejisini değiştirmek için herhangi bir maliyet var mı?
 
 Dönüştürme yolunuza bağlıdır. En az pahalı, Azure Storage artıklık teklifleri LRS, ZRS, GRS, RA-GRS, GZRS ve RA-GZRS arasında sıralama. Örneğin, LRS *'den* başka bir çoğaltma türüne geçmek, daha ayrıntılı bir artıklık düzeyine taşıdığınız için ek ücretler doğurur. GRS veya RA-GRS ' *e* geçiş, verileriniz (birincil bölgenizde) uzak ikincil bölgenize çoğaltıldığı için çıkış bant genişliği ücretine neden olur. Bu ücret, ilk kurulumda tek seferlik bir maliyettir. Veriler kopyalandıktan sonra başka geçiş ücretleri yoktur. Yalnızca var olan verilere yönelik yeni veya güncelleştirmelerin çoğaltılması için ücretlendirilirsiniz. Bant genişliği ücretleri hakkında daha fazla bilgi için bkz. [Azure Depolama fiyatlandırması sayfası](https://azure.microsoft.com/pricing/details/storage/blobs/).

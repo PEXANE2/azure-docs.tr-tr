@@ -10,16 +10,16 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 06ac81105ad8871c934715c18cd5f78fc3ea05f5
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 06bb71b27edf97f9b7e3333aef93af7bd0e0529e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858523"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064792"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
 
-Bu öğreticide, tek sayfalı bir uygulamada (SPA) oturum açmak ve kullanıcıları kaydolmak için Azure Active Directory (Azure AD) B2C 'nin nasıl kullanılacağı gösterilmektedir. Azure AD B2C, uygulamalarınızın, açık standart protokoller kullanarak sosyal hesaplar, kurumsal hesaplar ve Azure Active Directory hesaplar için kimlik doğrulaması yapmasına olanak sağlar.
+Bu öğreticide, tek sayfalı bir uygulamada (SPA) oturum açmak ve kullanıcıları kaydolmak için Azure Active Directory B2C (Azure AD B2C) nasıl kullanılacağı gösterilmektedir. Azure AD B2C, uygulamalarınızın, açık standart protokoller kullanarak sosyal hesaplar, kurumsal hesaplar ve Azure Active Directory hesaplar için kimlik doğrulaması yapmasına olanak sağlar.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -49,7 +49,7 @@ Ayrıca, yerel geliştirme ortamınızda aşağıdakiler gereklidir:
 Önkoşulların bir parçası olarak tamamladığınız ikinci öğreticide, Azure AD B2C bir Web uygulaması kaydettiniz. Öğreticideki örnekle iletişimi etkinleştirmek için, Azure AD B2C içinde uygulamaya bir yeniden yönlendirme URI 'SI eklemeniz gerekir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Üst menüdeki **Dizin ve abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
 1. **Yanıt URL 'si**altında, `http://localhost:6420`ekleyin.

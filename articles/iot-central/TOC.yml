@@ -35,8 +35,6 @@
   items:
     - name: Cihazları bağlama
       items:
-        - name: Cihaz bağlantı dizesi oluşturma
-          href: howto-generate-connection-string.md
         - name: Node.js (genel) uygulamasını hazırlama ve bağlama
           href: howto-connect-nodejs.md
         - name: MXChip IoT DevKit’i hazırlama ve bağlama

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c8efc4b7bbee6b3209160b570e3e70bfccfc72e
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 527c7120ad2d890c8abf32d29827ed7454b0ebfd
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70964501"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065296"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak Azure Active Directory hesabı ile oturum açmayı ayarlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory (Azure AD) B2C 'de [özel ilkeler](active-directory-b2c-overview-custom.md) kullanarak bir Azure Active Directory (Azure AD) kuruluştan kullanıcıların oturum açma özelliğini etkinleştirme konusu gösterilmektedir.
+Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](active-directory-b2c-overview-custom.md) kullanarak bir Azure Active Directory (Azure AD) kuruluştan kullanıcıların oturum açma özelliğini nasıl etkinleştireceğinizi gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

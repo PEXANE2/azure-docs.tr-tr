@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: bc7828b7926ea6e7f2d6bc3891ee231972ae3208
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622782"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063245"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ' deki uygulamalarınıza kimlik sağlayıcıları ekleyin
 
-Uygulamalarınızda, kullanıcıların farklı kimlik sağlayıcılarıyla oturum açmasını sağlamak isteyebilirsiniz. Kimlik *sağlayıcısı* , uygulamalara kimlik doğrulama hizmetleri sağlarken kimlik bilgilerini oluşturur, korur ve yönetir. Azure portal kullanarak [Kullanıcı akışlarınıza](active-directory-b2c-reference-policies.md) Azure Active Directory (Azure AD) B2C tarafından desteklenen kimlik sağlayıcıları ekleyebilirsiniz.
+Uygulamalarınızda, kullanıcıların farklı kimlik sağlayıcılarıyla oturum açmasını sağlamak isteyebilirsiniz. Kimlik *sağlayıcısı* , uygulamalara kimlik doğrulama hizmetleri sağlarken kimlik bilgilerini oluşturur, korur ve yönetir. Azure portal kullanarak [Kullanıcı akışlarınıza](active-directory-b2c-reference-policies.md) Azure Active Directory B2C (Azure AD B2C) tarafından desteklenen kimlik sağlayıcıları ekleyebilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -45,7 +45,7 @@ Kimlik sağlayıcısı uygulamaları, Azure AD B2C kiracınızla iletişimi etki
 Azure AD 'den kullanıcıların oturum açma özelliğini etkinleştirmek için Azure AD kiracısı içinde bir uygulamayı kaydetmeniz gerekir. Azure AD kiracısı Azure AD B2C kiracınızla aynı değildir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Üst menüdeki **Dizin ve abonelik filtresi** ' ne TıKLAYıP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
 1. **Yeni kayıt**seçeneğini belirleyin.
 1. Uygulamanız için bir ad girin. Örneğin: `Azure AD B2C App`.
@@ -71,7 +71,7 @@ Azure AD 'den kullanıcıların oturum açma özelliğini etkinleştirmek için 
 Bir Facebook hesabını Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için Facebook 'ta bir uygulama oluşturmanız gerekir. Henüz bir Facebook hesabınız yoksa, bu [https://www.facebook.com/](https://www.facebook.com/)hesabı edinebilirsiniz.
 
 1. Facebook hesabı kimlik bilgilerinizle [geliştiriciler Için Facebook](https://developers.facebook.com/) 'ta oturum açın.
-1. Daha önce yapmadıysanız, Facebook geliştiricisi olarak kaydolmanız gerekir. Bunu yapmak için sayfanın sağ üst köşesinden başlayın ' ı seçin, Facebook ilkelerini kabul edin ve kayıt adımlarını uygulayın.
+1. Daha önce yapmadıysanız, Facebook geliştiricisi olarak kaydolmanız gerekir. Bunu yapmak için sayfanın sağ üst **köşesinden başlayın ' ı seçin,** Facebook ilkelerini kabul edin ve kayıt adımlarını uygulayın.
 1. **Uygulamalarım** ' ı ve ardından **uygulama oluştur**' u seçin.
 1. Bir **görünen ad** ve geçerli bir **Iletişim e-postası**girin.
 1. **Uygulama kimliği oluştur**' a tıklayın. Bu, Facebook platformu ilkelerini kabul etmenizi ve çevrimiçi bir güvenlik denetimi tamamlamanızı gerektirebilir.
@@ -86,7 +86,7 @@ Bir Facebook hesabını Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak
 1. **Ürünlerin**yanındaki artı işaretini ve ardından **Facebook oturumu**' nın altında **Ayarla**' yı seçin.
 1. Sol taraftaki menüde **Facebook oturumu** ' nın altında **Ayarlar**' ı seçin.
 1. **Geçerli OAuth yeniden yönlendirme URI 'lerinde**, `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`girin. Kiracınızın adıyla değiştirin `your-tenant-name` . Sayfanın alt kısmındaki **Değişiklikleri Kaydet** ' i seçin.
-1. Facebook uygulamanızı Azure AD B2C için kullanılabilir hale getirmek için sayfanın sağ üst kısmındaki **durum** seçicisine tıklayın ve uygulamayı ortak hale getirmek için açın ve ardından **Onayla**' ya tıklayın. Bu noktada durum, **geliştirme aşamasında** **canlı**olarak değiştirilmelidir.
+1. Facebook uygulamanızı Azure AD B2C için kullanılabilir hale **getirmek için sayfanın** sağ üst kısmındaki **durum** seçicisine tıklayın ve uygulamayı ortak hale getirmek Için açın ve ardından **Onayla**' ya tıklayın. Bu noktada durum, **geliştirme aşamasında** **canlı**olarak değiştirilmelidir.
 
 ## <a name="add-the-identity-providers"></a>Kimlik sağlayıcılarını ekleme
 

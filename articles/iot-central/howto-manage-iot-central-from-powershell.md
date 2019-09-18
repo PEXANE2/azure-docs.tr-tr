@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 85afb69a7656e96e2f7163ded5cb23ac1b2560ea
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: e91d2d487a8b3409c53a0a0731700c39cf56dd63
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70380964"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066349"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell’den IoT Central’ı yönetme
 
@@ -66,7 +66,7 @@ Betik ilk olarak uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluşturur.
 |Parametre         |Açıklama |
 |------------------|------------|
 |ResourceGroupName |Uygulamayı içeren kaynak grubu. Bu kaynak grubu aboneliğinizde zaten var olmalıdır. |
-|Location |Varsayılan olarak, bu cmdlet kaynak grubundaki konumu kullanır. Şu anda **Doğu ABD**, **Batı ABD**, **Kuzey Avrupa**veya **Batı Avrupa** bölgelerinde IoT Central bir uygulama oluşturabilirsiniz. |
+|Location |Varsayılan olarak, bu cmdlet kaynak grubundaki konumu kullanır. Şu anda **Doğu ABD**, **Batı ABD**, **Kuzey Avrupa**veya **Batı Avrupa** bölgelerde ya da **Avustralya** Coğrafya IoT Central bir uygulama oluşturabilirsiniz. |
 |Name              |Azure portal uygulamanın adı. |
 |Al etki alanı         |Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com. |
 |Sku               |Şu anda tek değer **S1** 'dir (Standart katman). Bkz. [Azure IoT Central fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-central/). |

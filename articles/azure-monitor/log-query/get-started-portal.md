@@ -8,16 +8,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: 18e6e162764ce190a1953a4126e4f9ef2eb717f5
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 950768326228960192f48d99e5c5fa849b2c2bda
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899524"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076817"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics kullanmaya başlama
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+> [!NOTE]
+> En az bir sanal makineden veri topluyorsanız, kendi ortamınızda bu alıştırma aracılığıyla çalışabilirsiniz. Daha sonra, çok sayıda örnek veri içeren [tanıtım ortamımuzu](https://portal.loganalytics.io/demo)kullanın.
 
 Bu öğreticide, Azure Izleyici günlük sorgularını yazmak için Azure portal Log Analytics nasıl kullanacağınızı öğreneceksiniz. Şu şekilde nasıl yapılacağını öğretir:
 

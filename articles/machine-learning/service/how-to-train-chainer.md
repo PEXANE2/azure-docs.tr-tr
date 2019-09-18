@@ -1,7 +1,7 @@
 ---
 title: Chainer ile derin öğrenme sinir ağını eğitme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Chainer tahmin aracı sınıfını kullanarak pytorch eğitim betiklerinizi kurumsal ölçekte çalıştırmayı öğrenin.  Örnek komut dosyası, büyük/büyük/büyük/veya büyük/veya büyük/veya büyük/büyük bir öğrenme sinir ağı oluşturmak için classifis
+description: Azure Machine Learning Chainer tahmin aracı sınıfını kullanarak pytorch eğitim betiklerinizi kurumsal ölçekte çalıştırmayı öğrenin.  Örnek betik, el yazısı y 'nin üstünde çalışan Chainer Python kitaplığını kullanarak derin bir öğrenme sinir ağı oluşturmak için el ile yazılmış rakam görüntülerini sınıflandırır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: 91e638793d77a6d38f9813345829720d98545293
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002727"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076415"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile Chainer modellerini eğitme ve kaydetme
 
@@ -84,7 +84,7 @@ Bu öğreticide, **chainer_mnist. Kopyala** eğitim betiği sizin için zaten sa
 
 Azure ML 'nin izleme ve ölçüm yeteneklerini kullanmak için eğitim betiğinizin içine küçük miktarda Azure ML kodu ekleyin.  Eğitim betiği **chainer_mnist. Kopyala** , bazı ölçümlerin Azure ML çalıştırmak için betik içindeki `Run` nesnesini kullanarak nasıl günlüğe alınacağını gösterir.
 
-Belirtilen eğitim betiği, Chainer `datasets.mnist.get_mnist` işlevinden örnek verileri kullanır.  Kendi verileriniz için verileri eğitim sırasında kullanılabilir hale getirmek üzere veri [kümesini ve betikleri karşıya yükleme](how-to-train-keras.md#upload-dataset-and-scripts) gibi adımları kullanmanız gerekebilir.
+Belirtilen eğitim betiği, Chainer `datasets.mnist.get_mnist` işlevinden örnek verileri kullanır.  Kendi verileriniz için verileri eğitim sırasında kullanılabilir hale getirmek üzere veri [kümesini ve betikleri karşıya yükleme](how-to-train-keras.md) gibi adımları kullanmanız gerekebilir.
 
 Eğitim betiği **chainer_mnist.** Kopyala ' yı proje dizininize kopyalayın.
 

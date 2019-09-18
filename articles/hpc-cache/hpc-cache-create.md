@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: 479adf9419cdd6b04e50fa479d47b56762b2bdc6
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70774689"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037035"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC önbelleği oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "70774689"
 
 ## <a name="define-basic-details"></a>Temel ayrıntıları tanımla
 
-![Azure portal içindeki proje ayrıntıları sayfasının ekran görüntüsü](media/create-1.png)
+![Azure portal içindeki proje ayrıntıları sayfasının ekran görüntüsü](media/hpc-cache-create-basics.png)
 
 **Proje ayrıntıları**' nda Azure HPC önbelleğini barındıracak aboneliği ve kaynak grubunu seçin. Aboneliğin [Önizleme erişim](hpc-cache-prereqs.md#azure-subscription) listesinde olduğundan emin olun.
 
@@ -47,7 +47,7 @@ Gerçek veri aktarımı hızının iş yüküne, ağ hızına ve depolama hedefl
 
 Önbellek depolama için Azure HPC Cache, önbellek isabet oranlarını en üst düzeye çıkarmak için hangi dosyaların önbelleğe alınacağını ve ön sürümlerini yönetir. Önbellek içeriği sürekli değerlendirilir ve dosyalar daha az sıklıkla erişildiği zaman uzun süreli depolamaya taşınır. Etkin çalışma dosyaları kümesini, meta veriler ve diğer ek yük için ek alanla rahatça tutabilecek bir önbellek depolama boyutu seçin.
 
-![önbellek boyutlandırma sayfasının ekran görüntüsü](media/create-cache-iops.png)
+![önbellek boyutlandırma sayfasının ekran görüntüsü](media/hpc-cache-create-iops.png)
 
 ## <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -55,19 +55,21 @@ Depolama hedefleri, önbelleğinizin içeriği için arka uç, uzun süreli depo
 
 Önbellek oluştururken depolama hedeflerini tanımlayabilirsiniz, ancak bunları daha sonra portalda önbelleğiniz sayfasının **Yapılandır** bölümünde bulunan bağlantıyla birlikte ekleyebilirsiniz.
 
-![depolama hedefleri sayfasının ekran görüntüsü](media/create-targets.png)
+![depolama hedefleri sayfasının ekran görüntüsü](media/hpc-cache-storage-targets-pop.png)
 
 Arka uç depolama sistemlerinizi tanımlamak için **depolama hedefi Ekle bağlantısına** tıklayın. Depolama alanı, Azure Blob kapsayıcıları veya şirket içi NFS sistemleri olabilir.
 
 En fazla on farklı depolama hedefi tanımlayabilirsiniz.
 
-Depolama hedefi ekleme hakkında adım adım yönergeler için, [depolama ekleme](hpc-cache-add-storage.md)' yi okuyun. Yordam, BLOB depolama veya NFS dışarı aktarmaları için farklıdır.
+Depolama hedefi eklemek için adım adım yönergeler [depolama Ekle](hpc-cache-add-storage.md)' ye dahildir. Yordam, BLOB depolama veya NFS dışarı aktarmaları için farklıdır.
 
-Her iki depolama türü için, arka uç depolama sisteminin (bir NFS adresi veya bir blob kapsayıcı adı) ve istemciye yönelik ad alanı yolunun nasıl bulunacağını belirtmeniz gerekir.
+İşte bazı ipuçları: 
 
-BLOB depolama hedefi oluştururken, [erişim denetimi rollerini ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)bölümünde açıklandığı gibi, önbelleğin depolama hesabına erişim izinlerine sahip olduğundan emin olun. Rol yapılandırmasının başarılı olduğundan emin değilseniz, önce önbelleği oluşturun ve ardından BLOB depolama alanını daha sonra ekleyin.
+* Her iki depolama türü için, arka uç depolama sisteminin (bir NFS adresi veya bir blob kapsayıcı adı) ve istemciye yönelik ad alanı yolunun nasıl bulunacağını belirtmeniz gerekir.
 
-NFS depolama hedefi oluştururken bir [kullanım modeli](hpc-cache-add-storage.md#choose-a-usage-model)belirtin. Kullanım modeli ayarı önbelleğin iş akışınızı iyileştirmenize yardımcı olur.
+* BLOB depolama hedefi oluştururken, [erişim denetimi rollerini ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)bölümünde açıklandığı gibi, önbelleğin depolama hesabına erişim izinlerine sahip olduğundan emin olun. Rol yapılandırmasının başarılı olduğundan emin değilseniz, önce önbelleği oluşturun ve ardından BLOB depolama alanını daha sonra ekleyin.
+
+* NFS depolama hedefi oluştururken bir [kullanım modeli](hpc-cache-add-storage.md#choose-a-usage-model)belirtin. Kullanım modeli ayarı önbelleğin iş akışınızı iyileştirmenize yardımcı olur.
 
 ## <a name="add-resource-tags-optional"></a>Kaynak etiketleri ekleme (isteğe bağlı)
 
@@ -77,11 +79,13 @@ NFS depolama hedefi oluştururken bir [kullanım modeli](hpc-cache-add-storage.m
 
 Yeni önbelleği yapılandırdıktan sonra, **gözden geçir + oluştur** sekmesine tıklayın. Portal seçimlerinizi doğrular ve seçimlerinizi incelemenizi sağlar. Her şey doğruysa, **Oluştur**' a tıklayın. 
 
-Önbellek oluşturma yaklaşık 10 dakika sürer. İlerlemeyi Azure portal Bildirimler panelinde izleyebilirsiniz. Tamamlandığında, yeni Azure HPC önbellek örneğinin bağlantısını içeren bir bildirim görüntülenir. 
+Önbellek oluşturma yaklaşık 10 dakika sürer. İlerlemeyi Azure portal Bildirimler panelinde izleyebilirsiniz. 
 
-Önbellek Ayrıca aboneliğinizin **kaynaklar** listesinde görünür. 
+!["dağıtım çalışma" ve "Bildirimler" sayfalarındaki önbellek oluşturma ekranının ekran görüntüsü](media/hpc-cache-deploy-status.png)
 
-![Azure portal 'de Azure HPC önbellek örneğinin ekran görüntüsü](media/finished-hpc-cache.png)
+Oluşturma tamamlandığında, yeni Azure HPC önbellek örneğinin bağlantısını içeren bir bildirim görünür ve önbellek, aboneliğinizin **kaynaklar** listesinde görünür. 
+
+![Azure portal 'de Azure HPC önbellek örneğinin ekran görüntüsü](media/hpc-cache-new-overview.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

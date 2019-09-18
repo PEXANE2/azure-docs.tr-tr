@@ -4,7 +4,7 @@ description: Azure Konuk Aracısı yüklü olmadığında veya bir VM 'de çalı
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 ms.assetid: cf353dd3-89c9-47f6-a449-f874f0957013
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 75d6c10ded4038297689835d5ff012f344540e6f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6faab5bffaddbbd5d8deb9c3834bf3d8fe3e3445
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638846"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058658"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure VM için yerel Windows parolasını çevrimdışına sıfırlama
 Azure 'da bir sanal makinenin yerel Windows parolasını [Azure Portal veya](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Azure Konuk aracısının yüklü olduğu Azure PowerShell ' i kullanarak sıfırlayabilirsiniz. Bu yöntem, bir Azure VM için parola sıfırlamanın birincil yoludur. Azure Konuk Aracısı yanıt vermeyen veya özel bir görüntü yükledikten sonra yüklenemediğinden sorunlarla karşılaşırsanız, bir Windows parolasını el ile sıfırlayabilirsiniz. Bu makalede, kaynak işletim sistemi sanal diskini başka bir sanal makineye ekleyerek yerel hesap parolasının nasıl sıfırlanacağı açıklanır. Bu makalede açıklanan adımlar Windows etki alanı denetleyicileri için geçerlidir. 
@@ -212,9 +212,9 @@ Aşağıdaki adımları denemeden önce [Azure Portal veya Azure PowerShell](htt
 2. Uzak oturumınızdan yeni VM 'ye kadar, ortamı temizlemek için aşağıdaki dosyaları kaldırın:
     
     * Kaynak`%windir%\System32`
-      * temizlenmesine`FixAzureVM.cmd`
+      * Temizlenmesine`FixAzureVM.cmd`
     * Kaynak`%windir%\System32\GroupPolicy\Machine\Scripts`
-      * temizlenmesine`scripts.ini`
+      * Temizlenmesine`scripts.ini`
     * Kaynak`%windir%\System32\GroupPolicy`
       * kaldırın `gpt.ini` (daha `gpt.ini` önce varsa `gpt.ini.bak`ve yeniden adlandırdıysanız, `.bak` dosyayı `gpt.ini`olarak yeniden adlandırın)
 

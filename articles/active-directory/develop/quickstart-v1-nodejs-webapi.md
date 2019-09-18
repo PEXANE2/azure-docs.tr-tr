@@ -1,5 +1,5 @@
 ---
-title: Azure AD ile Web API'sinin güvenliğini sağlama | Microsoft Docs
+title: "Hızlı Başlangıç: Bir Web API 'sini Azure Active Directory ile güvenli hale getirme"
 description: Kimlik doğrulama için Azure AD ile tümleştirilen bir Node.js REST web API'si oluşturmayı öğrenin.
 services: active-directory
 documentationcenter: nodejs
@@ -14,16 +14,16 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: seo-javascript-september2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dcbe10c08d581e2ec01e1616da49b7a1b31018d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7307afb2ce9e10326c42f96733d3f80979c4a4b3
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545983"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056547"
 ---
-# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Hızlı Başlangıç: Web API'si Azure Active Directory ile güvenli hale getirme
+# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Hızlı Başlangıç: Bir Web API 'sini Azure Active Directory ile güvenli hale getirme
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
@@ -82,7 +82,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 Azure Active Directory'ye bağlanabilmeniz için önce şu bilgilere ihtiyacınız vardır:
 
-| Ad  | Açıklama | Yapılandırma Dosyasında Değişken Adı |
+| Name  | Açıklama | Yapılandırma Dosyasında Değişken Adı |
 | ------------- | ------------- | ------------- |
 | Kiracı Adı  | Kimlik doğrulaması için kullanmak istediğiniz [kiracı adı](quickstart-create-new-tenant.md) | `tenantName`  |
 | İstemci Kimliği  | İstemci kimliği, AAD _Uygulama Kimliği_ için kullanılan OAuth terimidir. |  `clientID`  |
@@ -106,9 +106,9 @@ Tek tek yapılandırma ayarlarıyla ilgili daha fazla bilgi için, [passport-azu
 
 ### <a name="implement-the-server"></a>Sunucuyu uygulama
 
-[Passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) modül iki kimlik doğrulama stratejileri özellikleri: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) ve [taşıyıcı](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratejiler. Bu makalede uygulanan sunucu, API uç noktasının güvenliğini sağlamak için Taşıyıcı stratejisini kullanır.
+[Passport-Azure-AD](https://github.com/AzureAD/passport-azure-ad#5-usage) modülü iki kimlik doğrulama stratejisi sunar: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) ve [taşıyıcı](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) stratejileri. Bu makalede uygulanan sunucu, API uç noktasının güvenliğini sağlamak için Taşıyıcı stratejisini kullanır.
 
-### <a name="step-1-import-dependencies"></a>1\. Adım: İçeri aktarma bağımlılıkları
+### <a name="step-1-import-dependencies"></a>1\. adım: Bağımlılıkları içeri aktar
 
 `app.js` adlı yeni bir dosya oluşturun ve aşağıdaki metni yapıştırın:
 
@@ -126,13 +126,13 @@ const
 
 Kodun bu bölümünde:
 
-- `restify` Ve eklentileri modülleri bir Restify sunucusu kurmak için başvuru.
+- `restify` Ve eklentileri modüllerine bir retify sunucusu kurmak için başvurulur.
 - Azure AD ile iletişim kurmak `passport` ve `passport-azure-ad` modüllerinin sorumluluğundadır.
 - `config` değişkeni, önceki adımda oluşturulan `config.js` dosyasından alınan değerlerle başlatılır.
 - Kullanıcı belirteçleri güvenli uç noktalara geçirilirken bu belirteçleri depolamak üzere `authenticatedUserTokens` için bir dizi oluşturulur.
 - `serverPort`, işlem ortamının bağlantı noktasından veya yapılandırma dosyasından tanımlanır.
 
-### <a name="step-2-instantiate-an-authentication-strategy"></a>2\. Adım: Kimlik doğrulama stratejisi örneği
+### <a name="step-2-instantiate-an-authentication-strategy"></a>2\. adım: Kimlik doğrulama stratejisi örneği oluşturma
 
 Uç noktayı güvenlik altına alırken, geçerli isteklerin kimliği doğrulanmış bir kullanıcıdan kaynaklanıp kaynaklanmadığını saptamaktan sorumlu olacak bir strateji sağlamalısınız. Burada, `authenticatonStrategy` değişkeni `passport-azure-ad` `BearerStrategy` sınıfının bir örneğidir. `require` deyiminin arkasında aşağıdaki kodu ekleyin.
 
@@ -173,7 +173,7 @@ server.use(passport.session());
 ```
 Bu sunucu, kimlik doğrulama üst bilgilerini ayrıştırmak ve ardından Passport kullanılacak şekilde ayarlamak için başlatılır ve yapılandırılır.
 
-### <a name="step-4-define-routes"></a>4\. Adım: Yolları tanımlayın
+### <a name="step-4-define-routes"></a>4\. Adım: Rotaları tanımlama
 
 Şimdi yolları tanımlayabilir ve Azure AD ile hangisinin güvenlik altına alınacağına karar verebilirsiniz. Bu projede iki yol vardır; kök düzeyi açıktır ve `/api` yolu kimlik doğrulaması gerektirecek şekilde ayarlanmıştır.
 

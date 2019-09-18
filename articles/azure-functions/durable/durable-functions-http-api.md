@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: c81eccaa2b3a4335f034b9667f6e7be317635f43
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933397"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033960"
 ---
 # <a name="http-api-reference"></a>HTTP API başvurusu
 
@@ -28,7 +28,7 @@ Uzantı tarafından uygulanan tüm HTTP API 'Leri aşağıdaki parametreleri ger
 | **`connection`** | Sorgu dizesi    | Depolama hesabı için bağlantı dizesinin **adı** . Belirtilmemişse, işlev uygulaması için varsayılan bağlantı dizesi varsayılır. |
 | **`systemKey`**  | Sorgu dizesi    | API 'YI çağırmak için gereken yetkilendirme anahtarı. |
 
-`systemKey`, Azure Işlevleri ana bilgisayarı tarafından oluşturulan bir yetkilendirme anahtarıdır. Bu, özellikle dayanıklı görev uzantısı API 'Lerine erişim verir ve [diğer yetkilendirme anahtarlarıyla](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)aynı şekilde yönetilebilir. `systemKey` Değeri keşfetmenin en kolay yolu, daha önce bahsedilen `CreateCheckStatusResponse` API 'yi kullanmaktır.
+`systemKey`, Azure Işlevleri ana bilgisayarı tarafından oluşturulan bir yetkilendirme anahtarıdır. Bu, özellikle dayanıklı görev uzantısı API 'Lerine erişim verir ve [diğer yetkilendirme anahtarlarıyla](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)aynı şekilde yönetilebilir. `taskHub`.Net `CreateCheckStatusResponse` `connection` 'tekive`CreateHttpManagementPayload` API 'leri gibi [Orchestration istemci bağlama](durable-functions-bindings.md#orchestration-client) API 'lerini `systemKey` kullanarak doğru, ve sorgu dizesi değerlerini içeren URL 'ler oluşturabilirsiniz. `createCheckStatusResponse` `createHttpManagementPayload` JavaScript içindeki API 'ler.
 
 Sonraki birkaç bölümde uzantı tarafından desteklenen belirli HTTP API 'Leri ele alınmaktadır ve bunların nasıl kullanılacağına ilişkin örnekler sağlanmaktadır.
 

@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227162"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065703"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C nedir?
 
-Azure Active Directory (Azure AD) B2C, işletmeden müşteriye kimlik yönetimi hizmetidir. Bu hizmet, kullanıcıların Web, Masaüstü, mobil veya tek sayfalı uygulamalarla nasıl güvenli bir şekilde etkileşim kuracağını özelleştirmenize ve denetlemenize olanak sağlar. Azure AD B2C kullanarak, kullanıcılar kaydolabilir, oturum açabilir, parolaları sıfırlayabilir ve profilleri düzenleyebilir. Azure AD B2C, OpenID Connect ve OAuth 2,0 protokollerinin bir formunu uygular. Bu protokollerin uygulanmasında önemli anahtar, kaynaklara güvenli erişim sağlamanıza olanak tanıyan güvenlik belirteçleridir ve talepleridir.
+Azure Active Directory B2C (Azure AD B2C), işletmeden müşteriye kimlik yönetimi hizmetidir. Bu hizmet, kullanıcıların Web, Masaüstü, mobil veya tek sayfalı uygulamalarla nasıl güvenli bir şekilde etkileşim kuracağını özelleştirmenize ve denetlemenize olanak sağlar. Azure AD B2C kullanarak, kullanıcılar kaydolabilir, oturum açabilir, parolaları sıfırlayabilir ve profilleri düzenleyebilir. Azure AD B2C, OpenID Connect ve OAuth 2,0 protokollerinin bir formunu uygular. Bu protokollerin uygulanmasında önemli anahtar, kaynaklara güvenli erişim sağlamanıza olanak tanıyan güvenlik belirteçleridir ve talepleridir.
 
 *Kullanıcı yolculuğu* , Kullanıcı ve uygulamanızın Azure AD B2C ile nasıl etkileşime gireceğini denetleyen bir ilkeyi belirten bir istedir. Azure AD B2C Kullanıcı yolculukları tanımlamak için kullanabileceğiniz iki yol vardır.
 

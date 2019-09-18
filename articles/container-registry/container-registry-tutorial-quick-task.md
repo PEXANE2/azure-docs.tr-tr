@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a9e84210427612143bffe33efe4a5da5364b7a22
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 091c1a4c9e6adae69ec1c8b3e507624b9f5e6a96
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68310454"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057490"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Öğretici: Azure Container Registry görevlerle bulutta kapsayıcı görüntüleri oluşturun ve dağıtın
 
@@ -75,7 +75,7 @@ Bu öğretici serisindeki komutlar Bash kabuğu için biçimlendirilmiştir. Pow
 
 Kaynak kodunu makinenize çektikten sonra aşağıdaki adımları izleyerek bir kapsayıcı kayıt defteri oluşturun ve ACR Görevleri ile kapsayıcı görüntüsünü derleyin.
 
-Örnek komutları yürütmeyi kolaylaştırmak için, bu serideki öğreticilerde kabuk ortam değişkenleri kullanılmıştır. `ACR_NAME` değişkenini ayarlamak için aşağıdaki komutu yürütün. **\<registry-name\>** değerini yeni kapsayıcı kayıt defterinizin benzersiz adıyla değiştirin. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. Bu öğreticide oluşturduğunuz diğer kaynaklar bu adı temel alır; bu nedenle yalnızca bu ilk değişkeni değiştirmeniz gerekir.
+Örnek komutları yürütmeyi kolaylaştırmak için, bu serideki öğreticilerde kabuk ortam değişkenleri kullanılmıştır. `ACR_NAME` değişkenini ayarlamak için aşağıdaki komutu yürütün. **\<registry-name\>** değerini yeni kapsayıcı kayıt defterinizin benzersiz adıyla değiştirin. Kayıt defteri adı Azure içinde benzersiz olmalı, yalnızca küçük harf ve 5-50 alfasayısal karakter içermelidir. Bu öğreticide oluşturduğunuz diğer kaynaklar bu adı temel alır; bu nedenle yalnızca bu ilk değişkeni değiştirmeniz gerekir.
 
 ```azurecli-interactive
 ACR_NAME=<registry-name>

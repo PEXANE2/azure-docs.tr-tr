@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 26f05e60761af0b8f0db9508488f28613b82293f
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 81e386be98f9c5684402c376372f43e90fefcb42
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880247"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066740"
 ---
 # <a name="device-connectivity-in-azure-iot-central-preview-features"></a>Azure IoT Central cihaz bağlantısı (Önizleme özellikleri)
 
@@ -34,15 +34,18 @@ DPS kullanılması şunları sunar:
 
 Bu makalede aşağıdaki kullanım durumları açıklanmaktadır:
 
-1. [SAS kullanarak tek bir cihazı hızlı bir şekilde bağlama](#connect-a-single-device)
-1. [SAS kullanarak cihazları ölçeklendirmeye bağlama](#connect-devices-at-scale-using-sas)
-1. [X. 509.440 sertifikalarını kullanarak cihazları ölçeklendirmeye bağlayın](#connect-devices-using-x509-certificates) bu, üretim ortamları için önerilen yaklaşımdır.
-1. [Önce cihazları kaydetmeden Bağlan](#connect-without-registering-devices)
-1. [IoT Tak ve Kullan özelliklerini kullanarak cihazları bağlama](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+- [SAS kullanarak tek bir cihazı hızlı bir şekilde bağlama](#connect-a-single-device)
+- [SAS kullanarak cihazları ölçeklendirmeye bağlama](#connect-devices-at-scale-using-sas)
+- [X. 509.440 sertifikalarını kullanarak cihazları ölçeklendirmeye bağlayın](#connect-devices-using-x509-certificates) bu, üretim ortamları için önerilen yaklaşımdır.
+- [Önce cihazları kaydetmeden Bağlan](#connect-without-registering-devices)
+- [IoT Tak ve Kullan özelliklerini kullanarak cihazları bağlama](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
 
 ## <a name="connect-a-single-device"></a>Tek bir cihazı bağlama
 
-Bu yaklaşım, IoT Central veya test cihazlarıyla denemeler yaparken faydalıdır. Bir cihaz için bağlantı dizesi oluşturmak üzere IoT Central uygulamanızdaki cihaz bağlantı bilgilerini kullanabilirsiniz. Ayrıntılı adımlar için bkz. [Azure IoT Central uygulamasına bağlanmak için cihaz bağlantı dizesi oluşturma](howto-generate-connection-string.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
+Bu yaklaşım, IoT Central veya test cihazlarıyla denemeler yaparken faydalıdır. Cihaz sağlama hizmeti 'ni (DPS) kullanarak bir cihazı IoT Central uygulamanıza bağlamak için IoT Central uygulamanızdaki cihaz bağlantı bilgilerini kullanabilirsiniz. Aşağıdaki diller için örnek DPS cihaz istemci kodunu bulabilirsiniz:
+
+- [C\#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)
+- [Node.js](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/provisioning/Samples/device)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>SAS kullanarak cihazları ölçeklendirmeye bağlama
 
@@ -168,17 +171,17 @@ Gerçek bir cihaz IoT Central uygulamasına bağlanırsa, cihaz durumu aşağıd
 
 1. Cihaz durumu ilk olarak **kaydedilir**. Bu durum, cihazın IoT Central oluşturulduğu ve bir cihaz KIMLIĞINE sahip olduğu anlamına gelir. Bir cihaz şu durumlarda kaydedilir:
     - **Cihazlar** sayfasına yeni bir gerçek cihaz eklenir.
-    - Cihazlar sayfasında **Içeri aktar** kullanılarak bir cihaz kümesi eklenir.
+    - **Cihazlar sayfasında** **içeri aktar** kullanılarak bir cihaz kümesi eklenir.
 
 1. Geçerli kimlik bilgileriyle IoT Central uygulamanıza bağlı olan cihaz sağlama adımını tamamladığında cihaz durumu **sağlandı** olarak değişir. Bu adımda, cihaz IoT Hub bir bağlantı dizesi alır. Cihaz artık IoT Hub bağlanabilir ve veri göndermeye başlayabilir.
 
-1. Bir işleç, bir cihazı engelleyebilir. Bir cihaz engellendiğinde, IoT Central uygulamanıza veri gönderemeyecektir. Engellenen cihazların durumu **engellendi**. Bir operatör, verileri göndermeye başlamadan önce cihazı sıfırlamalıdır. Bir operatör bir cihazı engellerse, durum önceki değerine döner, **kaydedilir** veya sağlanır.
+1. Bir işleç, bir cihazı engelleyebilir. Bir cihaz engellendiğinde, IoT Central uygulamanıza veri gönderemeyecektir. Engellenen cihazların durumu **engellendi**. Bir operatör, verileri göndermeye başlamadan önce cihazı sıfırlamalıdır. Bir operatör bir cihazı engellerse, durum önceki değerine döner, **kaydedilir** **veya sağlanır**.
 
-1. Cihaz durumu **onay bekliyor** , bu da **otomatik onaylama** seçeneğinin devre dışı bırakıldığı ve IoT Central bağlanan tüm cihazların bir operatör tarafından açıkça onaylanabileceği anlamına gelir. Cihazlar sayfasında el ile kayıtlı değil , ancak geçerli kimlik bilgileriyle bağlantılı olarak cihaz durumu **onay bekliyor**olacaktır. İşleçler, **Onayla** düğmesini kullanarak bu cihazları **aygıtlar** sayfasından onaylayabilir.
+1. Cihaz durumu **onay bekliyor** , bu da **otomatik onaylama** seçeneğinin devre dışı bırakıldığı ve IoT Central bağlanan tüm cihazların bir operatör tarafından açıkça onaylanabileceği anlamına gelir. **Cihazlar sayfasında el** ile kayıtlı değil, ancak geçerli kimlik bilgileriyle bağlantılı olarak cihaz durumu **onay bekliyor**olacaktır. İşleçler, **Onayla** düğmesini kullanarak bu cihazları **aygıtlar** sayfasından onaylayabilir.
 
 1. Cihaz durumu **ilişkilendirilmemiş** olduğundan, IoT Central bağlanan cihazların kendileriyle Ilişkili bir cihaz şablonu olmadığı anlamına gelir. Bu genellikle aşağıdaki senaryolarda olur:
     - Cihaz şablonunu belirtmeden **cihazlar** sayfasında **içeri aktarma** kullanılarak bir cihaz kümesi ekleniyor
-    - Cihazlar sayfasında, geçerli kimlik bilgileriyle bağlantılı ancak kayıt SıRASıNDA şablon kimliğini belirtmeden cihazlar sayfasında el ile kayıtlı değil.  
+    - Cihazlar sayfasında, geçerli kimlik bilgileriyle bağlantılı ancak kayıt sırasında şablon KIMLIĞINI **belirtmeden cihazlar sayfasında** el ile kayıtlı değil.  
 Işleci, **geçirme** düğmesini kullanarak bir cihazı **cihazlar** sayfasından bir şablonla ilişkilendirebilir.
 
 ## <a name="sdk-support"></a>SDK desteği
@@ -190,8 +193,6 @@ Azure cihaz SDK 'Ları, cihaz kodunuzu uygulamanız için en kolay yolu sunar. A
 - [Node. js için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-node)
 - [Java için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-java)
 - [.NET için Azure IoT SDK](https://github.com/azure/azure-iot-sdk-csharp)
-
-Her cihaz, cihazı tanımlayan benzersiz bir bağlantı dizesi kullanarak bağlanır. Bir cihaz yalnızca kayıtlı olan IoT Hub 'ına bağlanabilir. Azure IoT Central uygulamanızda gerçek bir cihaz oluşturduğunuzda, uygulama kullanarak `dps-keygen`bağlantı dizesi oluşturmak için gereken bilgileri oluşturur.
 
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK özellikleri ve IoT Hub bağlantısı
 

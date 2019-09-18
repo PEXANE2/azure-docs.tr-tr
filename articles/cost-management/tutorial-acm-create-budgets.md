@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 59ae3b587751bd4af2c9e5ab0abefb8a5c3bf8e6
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0cae5166fbbba650b270829b9c8e3711b12a574e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843928"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073945"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçelerini oluşturma ve yönetme
 
 Maliyet Yönetimi hizmetindeki bütçe işlevi, kuruluşunuzda sorumluluk kültürünü planlamanıza ve güçlendirmenize yardımcı olur. Bütçeleri kullanarak belirli bir dönem içinde kullandığınız veya abone olduğunuz Azure hizmetlerini takip edebilirsiniz. Diğerleri kendi proaktif olarak maliyetleri yönetmek ve harcama zaman içinde nasıl ilerledikçe izlemek için harcama hakkında bildirmenize yardımcı olurlar. Oluşturduğunuz bütçe eşikleri aşıldığında yalnızca bildirimleri tetiklenir. Kaynaklarınızı hiçbiri etkilenir ve tüketiminiz durduruldu değil. Bütçe karşılaştırın ve maliyetleri analiz ederken harcama izlemek için kullanabilirsiniz.
 
-Aylık bütçeler her dört saatte bir harcama için değerlendirilir. Ancak tüketilen kaynakların verileri sekiz saat içinde kullanılabilir. Bir bütçe eşiği karşılandığında, e-posta bildirimleri normalde 12 saatten az bir sürede alınır. 
+Maliyet ve kullanım verileri genellikle 8-12 saat içinde kullanılabilir ve bütçeler her dört saatte bir bu maliyetlere göre değerlendirilir. E-posta bildirimleri normalde 12-16 saat içinde alınır.
 
 Bütçe gelecekte bir sona erme tarihi seçtiğinizde aynı bütçe tutarını (aylık, üç aylık veya yıllık) bir süre sonunda otomatik olarak sıfırlama. Bütçelenen zaman ayrı bütçelerini oluşturmanıza gerek bunlar ile aynı bütçe miktarını sıfırlamak için para birimi tutarlar gelecek dönemlere ait farklı.
 

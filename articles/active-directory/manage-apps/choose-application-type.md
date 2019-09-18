@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 09/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: fb2c49d6436a14e9b6cbb0a92eb0dfba077c8e4d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: d5bd2397c345a4f670bde343f751cd69f825ecb9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424255"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056073"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Azure Active Directory bir uygulama eklerken uygulama türünü seçme
 
@@ -45,7 +45,7 @@ Aşağıdaki özellikler, Azure AD 'de önceki dört uygulama türünden herhang
 
 - **Hızlı başlangıç** – [Basit Dağıtım adımlarını](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started) izleyerek bir uygulamayla hızla çalışmaya başlayın
 
-- **Genel Özellikler yönetimi** – bir uygulamaya [doğrudan ayrıntılı bağlantı](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) alın, bir uygulamanın [markasını özelleştirin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) veya tüm kullanıcılar için [uygulamayı devre dışı bırakın](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) .
+- **Genel Özellikler yönetimi** – bir uygulamaya [doğrudan derin bir bağlantı](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) alın, bir uygulamanın [markasını özelleştirin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) veya tüm kullanıcılar için [uygulamayı devre dışı bırakın](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal) .
 
 - **Kullanıcı ve Grup Yönetimi** – bir uygulamaya kullanıcılar ve gruplar [atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) veya [kaldırma](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) , isteğe bağlı olarak bu kullanıcılar ve grupların erişimi olan belirli uygulama rollerini atama
 
@@ -63,7 +63,7 @@ Aşağıdaki özellikler, Azure AD 'de önceki dört uygulama türünden herhang
 
 Aşağıdaki tabloda, bir önceki uygulama türlerinin her biri tarafından desteklenen farklı çoklu oturum açma ve sağlama modları açıklanmaktadır. Bu tabloyu, belirli bir hedefi desteklemek için hangi uygulamayı eklemeniz gerektiğini anlamanıza yardımcı olması için kullanabilirsiniz.
 
-  ![Tablo: Her uygulama türü tarafından desteklenen farklı SSO ve sağlama modları](./media/choose-application-type/table1.png)
+  ![Tablosundan Her uygulama türü tarafından desteklenen farklı SSO ve sağlama modları](./media/choose-application-type/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Çoklu oturum açma modunu seçme
 
@@ -71,7 +71,7 @@ Azure AD uygulamaları için desteklenen **Çoklu oturum açma** modları aşağ
 
 - **Azure AD çoklu oturum açma devre dışı** – bu uygulamayı Azure AD ile çoklu oturum açma ile tümleştirmeye hazır değilseniz veya yalnızca test etmeyi bilmiyorsanız, Azure AD çoklu oturum açma devre dışı **Çoklu oturum açma modunu** seçin.
 
-- **Bağlantılı oturum açma** – mevcut bir çoklu oturum açma çözümüyle zaten bağlı olan bir uygulamanız varsa veya kullanıcılarınız [](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)  [için yalnızca basit bir bağlantı yayımlamak istiyorsanız, bağlantılı oturum açma çoklu oturum açma modunu seçin. Uygulama erişim paneli](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) veya [Office 365 uygulama başlatıcısı](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
+- **Bağlantılı oturum açma** – mevcut bir çoklu oturum açma çözümüyle zaten bağlı olan bir uygulamanız varsa veya kullanıcılarınız [](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) [için yalnızca basit bir bağlantı yayımlamak istiyorsanız, bağlantılı oturum açma çoklu oturum açma modunu seçin. Uygulama erişim paneli](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) veya [Office 365 uygulama başlatıcısı](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
 - **Parola tabanlı oturum açma** – UYGULAMANıZ bir HTML Kullanıcı adı ve parola alanı işliyorsa ve bu kullanıcı adını ve parolayı, daha sonra yeniden çalınabilecek şekilde depolamak Istiyorsanız, [parola tabanlı oturum](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) açmayı **Çoklu oturum açma modunu** seçin. uygulama daha sonra
 
@@ -124,9 +124,6 @@ Bir uygulamanın çoklu oturum açma modunu ayarlamak için aşağıdaki yönerg
 - **El Ile sağlama** – mevcut hesaplarınız varsa [el ile](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#provisioning-modes) sağlama modunu seçin ya da bu uygulama için Azure AD dışında hesapları yönetmek isteyebilirsiniz.
 
 - **Otomatik sağlama** – Kullanıcı HESAPLARıNıN otomatik API tabanlı sağlamasını ve/veya bu uygulamaya serbest sağlamasını etkinleştirmek istiyorsanız [Otomatik](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) **sağlama modunu** seçin 
-
-  >[!NOTE]
-  >Bu seçenek yalnızca [Azure AD uygulama galerisinin](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal) **öne çıkan** kategorisi içindeki uygulamalar için kullanılabilir.
 
 - **SCIM tabanlı otomatik sağlama** – uygulamanız, kullanıcılar ve gruplar üzerinde yapılan değişiklikleri algılamak için SCIM protokolünü destekliyorsa, bu otomatik [sağlamayı](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) kullanın. Azure AD ile 
 

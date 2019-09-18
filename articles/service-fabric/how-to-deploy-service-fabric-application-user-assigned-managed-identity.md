@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624909"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037497"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Kullanıcı tarafından atanan yönetilen kimlikle Service Fabric uygulaması dağıtma (Önizleme)
 
@@ -27,7 +27,7 @@ Yönetilen kimliğe sahip bir Service Fabric uygulamasını dağıtmak için, uy
 
 ## <a name="user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik
 
-Uygulamayı kullanıcı tarafından atanan kimlikle etkinleştirmek için önce **Identity** özelliğini **userassigned** türü ve başvurulan kullanıcı tarafından atanan kimliklerle birlikte uygulama kaynağına ekleyin. Ardından, Kullanıcı tarafından atanan kimliklerin her biri için bir kolay ad ile PrincipalId eşleme bir listesini içeren **uygulama** kaynağı için **Özellikler** bölümünün Içine bir **managedıdentities** bölümü ekleyin.
+Uygulamayı kullanıcı tarafından atanan kimlikle etkinleştirmek için önce **Identity** özelliğini **userassigned** türü ve başvurulan kullanıcı tarafından atanan kimliklerle birlikte uygulama kaynağına ekleyin. Ardından, Kullanıcı tarafından atanan kimliklerin her biri için bir kolay ad ile PrincipalId eşleme bir listesini içeren **uygulama** kaynağı için **Özellikler** bölümünün Içine bir **managedıdentities** bölümü ekleyin. Kullanıcı tarafından atanan kimlikler hakkında daha fazla bilgi için bkz. [Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell).
 
 ### <a name="application-template"></a>Uygulama şablonu
 

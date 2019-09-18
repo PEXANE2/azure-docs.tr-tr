@@ -1,6 +1,6 @@
 ---
 title: "& Dağıtım modellerini eğitmek için Azure 'un otomatikleştirilmiş ML arabirimini kullanın"
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning çalışma alanı giriş sayfasında (Önizleme) otomatik makine öğrenimi denemeleri oluşturun, yönetin ve dağıtın.
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3ee15b5485f4fc0f81788107ce2378c65085e000
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910430"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034825"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Azure Machine Learning çalışma alanı giriş sayfası (Önizleme) ile otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
 
@@ -26,9 +26,9 @@ ms.locfileid: "70910430"
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* Bir Azure Machine Learning hizmeti çalışma alanı. Bkz. [Azure Machine Learning hizmet çalışma alanı oluşturma](how-to-manage-workspace.md).
+* Azure Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
 ## <a name="get-started"></a>başlarken
 
@@ -185,9 +185,9 @@ Otomatikleştirilmiş ML, kodu yazmadan modeli dağıtmanıza yardımcı olur:
 
 1. Dağıtım için birkaç seçeneğiniz vardır. 
 
-    + Seçenek 1: En iyi modeli dağıtmak için (tanımladığınız ölçüm ölçütlerine göre), ayrıntıları Çalıştır sayfasından En Iyi modeli Dağıt ' ı seçin.
+    + 1\. Seçenek: En iyi modeli dağıtmak için (tanımladığınız ölçüm ölçütlerine göre), ayrıntıları Çalıştır sayfasından En Iyi modeli Dağıt ' ı seçin.
 
-    + Seçenek 2: Bu deneyime ait belirli bir model yinelemesini dağıtmak için, modelin detayına gidin ve çalışma ayrıntısı sayfasını açın ve modeli Dağıt ' ı seçin.
+    + 2\. Seçenek: Bu deneyime ait belirli bir model yinelemesini dağıtmak için, modelin detayına gidin ve çalışma ayrıntısı sayfasını açın ve modeli Dağıt ' ı seçin.
 
 1. **Modeli dağıt** bölmesini doldurun.
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9eccb4ca505dac312dd22123a3585863c67f3ad7
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 235b55bcd727e3e3ea947ce086209e0a94f70752
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359860"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076379"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında dinamik yapılandırma kullanma
 
@@ -63,9 +63,9 @@ Bu öğreticiyi yapmak için [.NET Core SDK](https://dotnet.microsoft.com/downlo
                            {
                                refresh.Register("TestApp:Settings:BackgroundColor")
                                       .Register("TestApp:Settings:FontColor")
-                                      .Register("TestApp:Settings:Message")
+                                      .Register("TestApp:Settings:Message");
                            });
-                }
+                });
             })
             .UseStartup<Startup>();
     ```

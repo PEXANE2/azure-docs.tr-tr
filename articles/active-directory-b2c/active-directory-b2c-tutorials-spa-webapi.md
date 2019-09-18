@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b53ce30f4c49580bcd8ad3e259adf0300d8bd4a6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369306"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064684"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak tek sayfalı bir uygulamadan ASP.NET Core Web API 'sine erişim izni verme
 
-Bu öğreticide, tek sayfalı bir uygulamadan Azure Active Directory (Azure AD) B2C korumalı ASP.NET Core Web API kaynağını çağırma gösterilmektedir.
+Bu öğreticide, tek sayfalı bir uygulamadan Azure Active Directory B2C (Azure AD B2C) korumalı ASP.NET Core Web API kaynağını çağırma gösterilmektedir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -41,7 +41,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Web API kaynakları, erişim belirteci sunan istemci uygulamalarına göre korunan kaynak isteklerini kabul etmeden ve bunlara yanıt verebilmeleri için kiracınızda kayıtlı olmalıdır.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve kiracınız içeren dizine seçme.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 1. Uygulama için bir ad girin. Örneğin, *webapi1*.

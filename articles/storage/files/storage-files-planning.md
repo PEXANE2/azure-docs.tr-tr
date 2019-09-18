@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4c13c0b7601257c120c46ec341156a8e8bba332f
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967782"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036343"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -95,7 +95,7 @@ Premium dosya paylaşımının nasıl oluşturulduğunu öğrenmek isterseniz, k
 Şu anda standart bir dosya paylaşımından ve Premium dosya paylaşımında doğrudan dönüştüremezsiniz. Her iki katmana geçmek istiyorsanız, o katmanda yeni bir dosya paylaşma oluşturmanız ve verileri özgün paylaşımınızdan oluşturduğunuz yeni paylaşıma el ile kopyalamanız gerekir. Bunu, Robocopy veya AzCopy gibi Azure dosyaları tarafından desteklenen kopyalama araçlarından herhangi birini kullanarak yapabilirsiniz.
 
 > [!IMPORTANT]
-> Premium dosya paylaşımları yalnızca LRS ile kullanılabilir ve depolama hesapları sunan çoğu bölgede kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası.
+> Premium dosya paylaşımları, depolama hesapları sunan ve bölgelerin daha küçük bir alt kümesindeki ZRS ile birlikte LRS ile kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası. ZRS 'nin desteklediği bölgeleri öğrenmek için bkz. [Destek kapsamı ve bölgesel kullanılabilirlik](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
 
 #### <a name="provisioned-shares"></a>Sağlanan paylaşımlar
 
@@ -157,7 +157,7 @@ Yeni dosya paylaşımları, veri bloğu demetini içinde tam kredi sayısı ile 
 
 Azure dosyaları standart paylaşımları dört veri artıklığı seçeneğini destekler: yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS) ve coğrafi bölge yedekli depolama (GZRS) (Önizleme).
 
-Azure dosyaları Premium paylaşımları yalnızca yerel olarak yedekli depolamayı (LRS) destekler.
+Azure Files Premium paylaşımları hem LRS hem de ZRS 'yi destekler, ZRS Şu anda bölgelerin daha küçük bir alt kümesinde mevcuttur.
 
 Aşağıdaki bölümlerde, farklı artıklık seçenekleri arasındaki farklar açıklanır:
 

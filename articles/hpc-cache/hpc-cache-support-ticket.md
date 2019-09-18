@@ -4,42 +4,27 @@ description: Azure HPC önbelleği için yardım isteği açma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: a252243ae84516fe06a89ef1119c4b4ce58dbeef
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d845195940fdba81562acf4c0cfe9069245bd34c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775630"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036910"
 ---
 # <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Azure HPC önbelleği için bir destek bileti açın
 
 Bir destek bileti açmak için Azure portal kullanın. Önbellek örneğinize gidin ve kenar çubuğunun altında görüntülenen **Yeni destek isteği** bağlantısına tıklayın.
 
-> [!NOTE]
-> Önizleme dönemi boyunca [Bu bağlantıyı](<https://support.microsoft.com/supportforbusiness/productselection?sapId=6b415938-2927-0d9d-6c3c-fbacea64e42d>) Ayrıca, ürün Azure HPC Cache (Önizleme) için bir destek talebi açmak üzere de kullanabilirsiniz.
+Etkin bir önbelleğiniz olmadığında bir bileti açmak için Azure portal ana **Yardım + Destek** sayfasını kullanın. **Yeni destek isteği ' ni** seçin ve Azure HPC önbelleğine özgü yardım için **Teknik** ' i seçin.
 
-<!-- add screenshot of form with thing to select product etc. -->
+Listeden aboneliğinizi seçin.
 
-<!-- 
-[ xxx update procedure - this is copied from Azure FXT Edge Filer but Azure HPC Cache has context, you don't need to fill in everything xxx ]
+Azure HPC önbellek önizleme hizmetini bulmak için, **tüm hizmetler** düğmesine tıklayın ve HPC için arama yapın.
 
-1. Open the [Azure portal](https://portal.azure.com/) and sign in.
-1. In the left panel, scroll to the bottom and click **Help + support**.
-1. Click **New support request**. 
+![Destek isteği temelleri sekmesinin ekran görüntüsü, kısmen belirtildiği şekilde doldurulmuştur](media/hpc-cache-support-request.png)
 
-   ![Screenshot of blank support request form](media/fxt-support-blank.png)
+Bilgi ve tercihlerinizle alanları geri kalanı doldurun ve hazır olduğunuzda bileti iletin.
 
-1. Fill out the request form.  
-    1. In the **Basics** tab, choose the **Issue type** ``Technical``. 
-    1. Select your subscription. 
-    1. Under **Service**, select **Azure FXT Edge Filer**. You might need to click the **All services** filter control to find it. 
-    1. Enter a **Summary** and choose the **Problem type**. 
-    ![Screenshot of blank support request form](media/fxt-support-populated.png) 
-    1. Click **Next** to continue. 
-1. In the **Details** tab, add more information about the problem and how to contact you. You can upload a file related to the problem. 
-1. In **Review + create**, check the information and click the **Create** button to submit your request.
-
-After you submit the request, you will receive a confirmation email with a ticket number. A support staff member will contact you about the request.
--->
+İsteği gönderdikten sonra, Bilet numarası içeren bir onay e-postası alacaksınız. Destek ekibi üyesi, istek hakkında sizinle iletişim kuracaktır.

@@ -285,7 +285,7 @@ Bir kullanıcı diğer kullanıcının adını, ilk 3 harf ve kullanıcının so
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (Bu): \
+* **Giriş** (Bu): "John"
 * **Giriş** (Soyadı): In
 * **ÇIKIŞ**:  "Cantikan"
 
@@ -356,7 +356,7 @@ Aşağıdaki örnekte, UPN değeri PreferredFirstName ve PreferredLastName kayna
 
 **Örnek giriş/çıkış:**
 
-* **Giriş** (PreferredFirstName): \
+* **Giriş** (PreferredFirstName): "John"
 * **Giriş** (PreferredLastName): Uludağ
 * **ÇIKIŞ**: "john.smith@contoso.com"
 
@@ -373,7 +373,7 @@ Bağlı kullanıcının ilk adını, ikinci adı ve Soyadı, UPN özniteliği i�
 
 **Örnek giriş/çıkış:**
 
-* **Giriş** (PreferredFirstName): \
+* **Giriş** (PreferredFirstName): "John"
 * **Giriş** (PreferredLastName): Uludağ
 * **Çıkış**: "John.Smith@contoso.com" değilse UPN değerini John.Smith@contoso.com dizininde zaten mevcut değil
 * **Çıkış**: "J.Smith@contoso.com" değilse UPN değerini John.Smith@contoso.com dizinde zaten var.

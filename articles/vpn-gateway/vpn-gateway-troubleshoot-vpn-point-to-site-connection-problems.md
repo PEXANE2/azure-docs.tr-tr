@@ -1,10 +1,10 @@
 ---
-title: Azure noktadan siteye bağlantı sorunlarını giderme | Microsoft Docs
-description: Noktadan siteye bağlantı sorunları gidermeyi öğrenin.
+title: Azure Noktadan siteye bağlantı sorunlarını giderme | Microsoft Docs
+description: Noktadan siteye bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: cab40284f36f21f9de72ee4dc1faf78153621d26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37c2cf5ffb5e6eaf8b8da6e7bc9259cfa101c796
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66475963"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058816"
 ---
-# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Sorun giderme: Azure noktadan siteye bağlantı sorunları
+# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Sorunu Azure Noktadan siteye bağlantı sorunları
 
-Bu makalede, karşılaşabileceğiniz genel noktadan siteye bağlantı sorunları listeler. Ayrıca bu sorunlar için olası nedenler ve çözümler açıklanmaktadır.
+Bu makalede karşılaşabileceğiniz ortak Noktadan siteye bağlantı sorunları listelenmektedir. Ayrıca, bu sorunlara yönelik olası nedenler ve çözümler açıklanmaktadır.
 
-## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN istemci hatası: Bir sertifika bulunamadı
+## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN istemci hatası: Sertifika bulunamadı
 
 ### <a name="symptom"></a>Belirti
 
-VPN istemcisini kullanarak bir Azure sanal ağına bağlanmaya çalıştığınızda, aşağıdaki hata iletisini alıyorsunuz:
+VPN istemcisini kullanarak bir Azure sanal ağına bağlanmaya çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-**Bu Genişletilebilir kimlik doğrulama protokolü ile kullanılabilen bir sertifika bulunamadı. (Hata 798)**
+**Bu Genişletilebilir kimlik doğrulama protokolüyle kullanılabilecek bir sertifika bulunamadı. (Hata 798)**
 
 ### <a name="cause"></a>Nedeni
 
-İstemci sertifikası eksik olması durumunda bu sorun oluşur **Sertifikalar - Geçerli kullanıcı\kişisel\sertifikalar**.
+Bu sorun, istemci sertifikası sertifikalarda yoksa oluşur **-geçerli User\personal \ Certificates**.
 
 ### <a name="solution"></a>Çözüm
 
-Bu sorunu çözmek için aşağıdaki adımları izleyin:
+Bu sorunu çözmek için şu adımları izleyin:
 
-1. Sertifika Yöneticisi'ni açın: Tıklayın **Başlat**, türü **bilgisayar sertifikalarını yönetme**ve ardından **bilgisayar sertifikalarını yönetme** arama sonucunda.
+1. Sertifika Yöneticisi 'Ni açın: **Başlat**' a tıklayın, **bilgisayar sertifikalarını Yönet**yazın ve ardından arama sonucunda **bilgisayar sertifikalarını Yönet** ' e tıklayın.
 
-2. Aşağıdaki sertifikalar doğru konumda olduğundan emin olun:
+2. Aşağıdaki sertifikaların doğru konumda olduğundan emin olun:
 
     | Sertifika | Location |
     | ------------- | ------------- |
-    | AzureClient.pfx  | Geçerli kullanıcı\kişisel\sertifikalar |
-    | Azuregateway -*GUID*. cloudapp.net  | Geçerli User\Trusted kök sertifika yetkilileri|
-    | AzureGateway -*GUID*. cloudapp.net, AzureRoot.cer    | Yerel bilgisayar/güvenilen kök sertifika yetkilileri|
+    | AzureClient.pfx  | Geçerli Kullanıcı \ kişisel \ sertifikalar |
+    | Azuregateway-*GUID*. cloudapp.net  | Geçerli Kullanıcı \ güvenilen kök sertifika yetkilileri|
+    | AzureGateway-*GUID*. cloudapp.net, AzureRoot. cer    | Yerel bilgisayar \ güvenilen kök sertifika yetkilileri|
 
-3. C:\Users Git\<kullanıcıadı > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, el ile sertifika (*.cer dosyası) kullanıcı ve bilgisayar deposuna yükleyin.
+3. C:\Users\<Kullanıcı adı > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID > adresine gidin ve sertifikayı (*. cer dosyası) Kullanıcı ve bilgisayar deposuna el ile yükleyebilirsiniz.
 
-İstemci sertifikasını yükleme hakkında daha fazla bilgi için bkz. [noktadan siteye bağlantılar için sertifikaları oluşturma ve dışarı aktarma](vpn-gateway-certificates-point-to-site.md).
+İstemci sertifikasını nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. [Noktadan siteye bağlantılar için sertifikaları oluşturma ve dışarı aktarma](vpn-gateway-certificates-point-to-site.md).
 
 > [!NOTE]
-> İstemci sertifikasını içeri aktardığınızda seçmeyin **güçlü özel anahtar korumasını etkinleştir** seçeneği.
+> İstemci sertifikasını içeri aktardığınızda, **güçlü özel anahtar korumasını etkinleştir** seçeneğini seçmeyin.
 
-## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>Uzak sunucu yanıt vermediği için bilgisayarınızı VPN sunucusu arasında ağ bağlantısı kurulamadı
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>Uzak sunucu yanıt vermediği için bilgisayarınızla VPN sunucusu arasındaki ağ bağlantısı kurulamadı
 
 ### <a name="symptom"></a>Belirti
 
-Deneyin ve Windows üzerinde IKEv2'yi kullanarak bir Azure sanal ağ geçidine bağlanmak, şu hata iletisiyle karşılaşırsınız:
+Windows üzerinde Ikev2 kullanarak bir Azure sanal ağ geçidine çalıştığınızda ve bu ağ geçidine bağlandığınızda aşağıdaki hata iletisini alırsınız:
 
-**Uzak sunucu yanıt vermediği için bilgisayarınızı VPN sunucusu arasında ağ bağlantısı kurulamadı**
+**Uzak sunucu yanıt vermediği için bilgisayarınızla VPN sunucusu arasındaki ağ bağlantısı kurulamadı**
 
 ### <a name="cause"></a>Nedeni
  
- IKE parçalanma için destek Windows sürümüne sahip değilse sorun ortaya çıkar.
+ Bu sorun, Windows sürümünün ıKE parçalanması desteği yoksa oluşur
  
 ### <a name="solution"></a>Çözüm
 
@@ -78,122 +78,122 @@ IKEv2 için Windows 10 ve Server 2016’yı hazırlamak için:
 
 1. Güncelleştirmeyi yükleyin.
 
-   | İşletim sistemi sürümü | Tarih | Sayı/Bağlantı |
+   | İşletim sistemi sürümü | Date | Sayı/Bağlantı |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10 Sürüm 1607 | 17 Ocak 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 Sürüm 1703 | 17 Ocak 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
    | Windows 10 sürüm 1709 | 22 Mart 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. Kayıt defteri anahtar değerini ayarlayın. Kayıt defterinde “HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload” REG_DWORD anahtarını oluşturun veya 1 olarak ayarlayın.
+2. Kayıt defteri anahtar değerini ayarlayın. Kayıt defterinde REG_DWORD `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` anahtarını 1 olarak oluşturun veya ayarlayın.
 
-## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN istemci hatası: Beklenmeyen veya kötü biçimlendirilmiş bir ileti alındı.
+## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN istemci hatası: Alınan ileti beklenmeyen veya hatalı biçimlendirildi
 
 ### <a name="symptom"></a>Belirti
 
-VPN istemcisini kullanarak bir Azure sanal ağına bağlanmaya çalıştığınızda, aşağıdaki hata iletisini alıyorsunuz:
+VPN istemcisini kullanarak bir Azure sanal ağına bağlanmaya çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-**Beklenmeyen veya kötü biçimlendirilmiş bir ileti alındı. (Hata 0x80090326)**
+**Alınan ileti beklenmeyen veya hatalı biçimlendirildi. (Hata 0x80090326)**
 
 ### <a name="cause"></a>Nedeni
 
-Aşağıdaki koşullardan biri doğru olması durumunda bu sorun oluşur:
+Aşağıdaki koşullardan biri doğru ise bu sorun oluşur:
 
-- Hatalı kullanım kullanıcı tanımlı yollar (UDR) ağ geçidi alt ağı üzerinde varsayılan yol ile ayarlanır.
-- Azure VPN ağ geçidine kök sertifikanın ortak anahtarı karşıya yüklenmemiş. 
-- Anahtarı bozuk veya süresi doldu.
+- Ağ geçidi alt ağında Kullanıcı tanımlı yollar (UDR) Kullan varsayılan yolu yanlış ayarlanır.
+- Kök sertifika ortak anahtarı Azure VPN ağ geçidine yüklenmedi. 
+- Anahtar bozuk veya zaman aşımına uğradı.
 
 ### <a name="solution"></a>Çözüm
 
-Bu sorunu çözmek için aşağıdaki adımları izleyin:
+Bu sorunu çözmek için şu adımları izleyin:
 
-1. Ağ geçidi alt ağı üzerinde UDR kaldırın. UDR tüm trafiğin düzgün bir şekilde iletir emin olun.
-2. Kök sertifika iptal edildi olup olmadığını görmek için Azure portalında durumunu denetleyin. İptal değil, kök sertifika ve reupload silmeyi deneyin. Daha fazla bilgi için [sertifikaları oluşturma](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
+1. Ağ geçidi alt ağında UDR 'yi kaldırın. UDR 'nin tüm trafiği doğru bir şekilde iletdiğinizden emin olun.
+2. İptal edilip edilmediğini görmek için Azure portal kök sertifikanın durumunu denetleyin. İptal edilmediği takdirde, kök sertifikayı silip yeniden karşıya yüklemeyi deneyin. Daha fazla bilgi için bkz. [sertifika oluşturma](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts).
 
-## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN istemci hatası: Bir sertifika zinciri işlenen ancak sonlandırıldı 
+## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN istemci hatası: Bir sertifika zinciri işlendi ancak sonlandırıldı 
 
 ### <a name="symptom"></a>Belirti 
 
-VPN istemcisini kullanarak bir Azure sanal ağına bağlanmaya çalıştığınızda, aşağıdaki hata iletisini alıyorsunuz:
+VPN istemcisini kullanarak bir Azure sanal ağına bağlanmaya çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-**Bir sertifika zinciri işlenen ancak güven sağlayıcısı tarafından güvenilmeyen bir kök sertifika sona erdi.**
+**Bir sertifika zinciri işlense de, güven sağlayıcısı tarafından güvenilmeyen bir kök sertifikada sonlandırıldı.**
 
 ### <a name="solution"></a>Çözüm
 
-1. Aşağıdaki sertifikalar doğru konumda olduğundan emin olun:
+1. Aşağıdaki sertifikaların doğru konumda olduğundan emin olun:
 
     | Sertifika | Location |
     | ------------- | ------------- |
-    | AzureClient.pfx  | Geçerli kullanıcı\kişisel\sertifikalar |
-    | Azuregateway -*GUID*. cloudapp.net  | Geçerli User\Trusted kök sertifika yetkilileri|
-    | AzureGateway -*GUID*. cloudapp.net, AzureRoot.cer    | Yerel bilgisayar/güvenilen kök sertifika yetkilileri|
+    | AzureClient.pfx  | Geçerli Kullanıcı \ kişisel \ sertifikalar |
+    | Azuregateway-*GUID*. cloudapp.net  | Geçerli Kullanıcı \ güvenilen kök sertifika yetkilileri|
+    | AzureGateway-*GUID*. cloudapp.net, AzureRoot. cer    | Yerel bilgisayar \ güvenilen kök sertifika yetkilileri|
 
-2. Sertifikaların konumda zaten olması durumunda, sertifikalar silin ve yeniden deneyin. **Azuregateway -*GUID*. cloudapp.net** Azure portalından indirdiğiniz VPN istemcisi yapılandırma paketini sertifika konusu. Dosya archivers paketinden dosyaları ayıklayın için kullanabilirsiniz.
+2. Sertifikalar zaten konumda varsa, sertifikaları silip yeniden yüklemeyi deneyin. **Azuregateway-*GUID*. cloudapp.net** SERTIFIKASı, Azure Portal indirdiğiniz VPN istemcisi yapılandırma paketidir. Dosyaları paketten ayıklamak için, Archivers dosyasını kullanabilirsiniz.
 
 ## <a name="file-download-error-target-uri-is-not-specified"></a>Dosya indirme hatası: Hedef URI belirtilmedi
 
 ### <a name="symptom"></a>Belirti
 
-Aşağıdaki hata iletisini alıyorsunuz:
+Aşağıdaki hata iletisini alırsınız:
 
 **Dosya indirme hatası. Hedef URI belirtilmedi.**
 
 ### <a name="cause"></a>Nedeni 
 
-Bu sorun, bir hatalı ağ geçidi türü nedeniyle oluşur. 
+Bu sorun, yanlış bir ağ geçidi türü nedeniyle oluşur. 
 
 ### <a name="solution"></a>Çözüm
 
-VPN ağ geçidi türü olmalıdır **VPN**, ve VPN türünde olmalıdır **RouteBased**.
+VPN ağ geçidi türü **VPN**OLMALıDıR ve VPN türü **routebased**olmalıdır.
 
 ## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN istemci hatası: Azure VPN özel betiği başarısız oldu 
 
 ### <a name="symptom"></a>Belirti
 
-VPN istemcisini kullanarak bir Azure sanal ağına bağlanmaya çalıştığınızda, aşağıdaki hata iletisini alıyorsunuz:
+VPN istemcisini kullanarak bir Azure sanal ağına bağlanmaya çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-**Özel betik (sizin bir yönlendirme tablosu güncelleştirmek için) başarısız oldu. (Hata 8007026f)**
+**Özel betik (yönlendirme tablonuzu güncelleştirmek için) başarısız oldu. (Hata 8007026f)**
 
 ### <a name="cause"></a>Nedeni
 
-Kısayol kullanarak site noktası VPN bağlantısı açar çalışıyorsanız bu sorun oluşabilir.
+Bu sorun, bir kısayolu kullanarak siteden noktaya VPN bağlantısını açmaya çalıştığınızda meydana gelebilir.
 
 ### <a name="solution"></a>Çözüm 
 
-Kısayoldan açmak yerine doğrudan VPN paketini açın.
+Doğrudan VPN paketini kısayol 'tan açmak yerine açın.
 
-## <a name="cannot-install-the-vpn-client"></a>VPN istemci yüklenemiyor
+## <a name="cannot-install-the-vpn-client"></a>VPN istemcisi yüklenemiyor
 
 ### <a name="cause"></a>Nedeni 
 
-Ek bir sertifika, sanal ağınızın VPN ağ geçidi güvenmesi için gereklidir. Sertifika, Azure portalından oluşturulan VPN istemcisi yapılandırma paketini bulunmaktadır.
+Sanal ağınız için VPN ağ geçidine güvenmek üzere ek bir sertifika gerekir. Sertifika, Azure portal oluşturulan VPN istemcisi yapılandırma paketine dahildir.
 
 ### <a name="solution"></a>Çözüm
 
-VPN istemcisi yapılandırma paketini ayıklayın ve .cer dosyasını bulun. Sertifikayı yüklemek için aşağıdaki adımları izleyin:
+VPN istemcisi yapılandırma paketini ayıklayın ve. cer dosyasını bulun. Sertifikayı yüklemek için şu adımları izleyin:
 
-1. MMC.exe açın.
-2. Ekleme **sertifikaları** ek.
-3. Seçin **bilgisayar** yerel bilgisayar hesabı.
-4. Sağ **güvenilen kök sertifika yetkilileri** düğümü. Tıklayın **tüm görev** > **alma**, VPN istemcisi yapılandırma paketini ayıkladığınız .cer dosyasına göz atın.
+1. MMC. exe ' yi açın.
+2. **Sertifikalar** ek bileşenini ekleyin.
+3. Yerel bilgisayar için **bilgisayar** hesabını seçin.
+4. **Güvenilen kök sertifika yetkilileri** düğümüne sağ tıklayın. **Tümü-görev** > **içeri aktar**' a tıklayın ve VPN istemcisi yapılandırma paketinden ayıkladığınız. cer dosyasına gidin.
 5. Bilgisayarı yeniden başlatın. 
-6. VPN istemcisi yüklemeyi deneyin.
+6. VPN istemcisini yüklemeyi deneyin.
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure portal hata: VPN ağ geçidi kaydedilemedi ve verileri geçersiz
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure portal hatası: VPN ağ geçidi kaydedilemedi ve veriler geçersiz
 
 ### <a name="symptom"></a>Belirti
 
-Azure portalında VPN ağ geçidi değişiklikleri kaydetmeyi denediğinizde, şu hata iletisini alıyorsunuz:
+VPN ağ geçidi değişikliklerini Azure portal kaydetmeye çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-**Sanal ağ geçidi kaydedilemedi &lt; *ağ geçidi adı*&gt;. Sertifika verileri &lt; *kimliği sertifika* &gt; geçersiz.**
+**Sanal ağ geçidi &lt; *ağ geçidi adı*&gt;kaydedilemedi. Sertifika &lt; *sertifikası* kimliği&gt; için veriler geçersiz.**
 
 ### <a name="cause"></a>Nedeni 
 
-Karşıya yüklediğiniz kök sertifikanın ortak anahtarı bir alanı gibi geçersiz bir karakter içeriyorsa, bu sorun oluşabilir.
+Karşıya yüklediğiniz kök sertifika ortak anahtarı, boşluk gibi geçersiz bir karakter içeriyorsa bu sorun oluşabilir.
 
 ### <a name="solution"></a>Çözüm
 
-Sertifikadaki verilerin satır sonları (Satır başları) gibi geçersiz karakterler içermediğinden emin olun. Tüm değer bir uzun satır olması gerekir. Sertifikanın bir örneği aşağıda gösterilmiştir:
+Sertifikadaki verilerin satır sonu (satır başı) gibi geçersiz karakterler içermediğinden emin olun. Değerin tamamı bir uzun çizgi olmalıdır. Aşağıdaki metin, sertifikanın bir örneğidir:
 
     -----BEGIN CERTIFICATE-----
     MIIC5zCCAc+gAwIBAgIQFSwsLuUrCIdHwI3hzJbdBjANBgkqhkiG9w0BAQsFADAW
@@ -214,71 +214,71 @@ Sertifikadaki verilerin satır sonları (Satır başları) gibi geçersiz karakt
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure portal hata: VPN ağ geçidini kaydetme başarısız oldu ve kaynak adı geçersiz
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure portal hatası: VPN ağ geçidi kaydedilemedi ve kaynak adı geçersiz
 
 ### <a name="symptom"></a>Belirti
 
-Azure portalında VPN ağ geçidi değişiklikleri kaydetmeyi denediğinizde, şu hata iletisini alıyorsunuz: 
+VPN ağ geçidi değişikliklerini Azure portal kaydetmeye çalıştığınızda aşağıdaki hata iletisini alırsınız: 
 
-**Sanal ağ geçidi kaydedilemedi &lt; *ağ geçidi adı*&gt;. Kaynak adı &lt; *deneyin karşıya yüklemek için sertifika adı* &gt; geçersiz**.
+**Sanal ağ geçidi &lt; *ağ geçidi adı*&gt;kaydedilemedi. Karşıya &lt;** *yüklemeye çalıştığınız kaynak adı sertifikası adı* geçersiz.&gt;
 
 ### <a name="cause"></a>Nedeni
 
-Sertifika adı boşluk gibi bir geçersiz karakter içerdiğinden bu sorun oluşur. 
+Bu sorun, sertifikanın adı boşluk gibi geçersiz bir karakter içerdiği için oluşur. 
 
-## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Azure portal hata: VPN paketi dosya indirme hatası 503
+## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Azure portal hatası: VPN paketi dosyası indirme hatası 503
 
 ### <a name="symptom"></a>Belirti
 
-VPN istemcisi yapılandırma paketini yüklemeye çalışırken şu hata iletisini alıyorsunuz:
+VPN istemcisi yapılandırma paketini indirmeye çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-**Dosya indirilemedi. Hata ayrıntıları: 503 hatası. Sunucu meşgul.**
+**Dosya indirilemedi. Hata ayrıntıları: hata 503. Sunucu meşgul.**
  
 ### <a name="solution"></a>Çözüm
 
-Bu hata geçici bir ağ sorunu neden olabilir. VPN paketini indir birkaç dakika sonra tekrar deneyin.
+Bu hataya geçici bir ağ sorunu neden olabilir. Birkaç dakika sonra VPN paketini yeniden indirmeyi deneyin.
 
-## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN ağ geçidi yükseltme: Tüm noktadan siteye istemcileri bağlanamıyor.
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway yükseltmesi: Site istemcilerine yönelik tüm noktaları bağlayamadı
 
 ### <a name="cause"></a>Nedeni
 
-Sertifika yüzde 50'den fazla ise, yaşam sertifika alındı.
+Sertifika, ömrü boyunca yüzde 50 ' den fazla ise, sertifika alınır.
 
 ### <a name="solution"></a>Çözüm
 
-Bu sorunu gidermek için yeniden indirin ve tüm istemcilerde Site paket noktasına yeniden dağıtın.
+Bu sorunu çözmek için, tüm istemcilerde Noktadan siteye paketi yeniden indirip yeniden dağıtın.
 
-## <a name="too-many-vpn-clients-connected-at-once"></a>Çok fazla VPN istemcileri tek seferde bağlı
+## <a name="too-many-vpn-clients-connected-at-once"></a>Aynı anda çok fazla VPN istemcisi bağlı
 
-İzin verilen bağlantı sayısı üst sınırına. Azure portalında bağlanan istemcilerin toplam sayısı görebilirsiniz.
+İzin verilen en fazla bağlantı sayısına ulaşıldı. Azure portal bağlı istemcilerin toplam sayısını görebilirsiniz.
 
-## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>Noktadan siteye VPN 10.0.0.0/8 için bir rota için rota tablosu yanlış ekler.
+## <a name="point-to-site-vpn-incorrectly-adds-a-route-for-100008-to-the-route-table"></a>Noktadan siteye VPN, yol tablosuna 10.0.0.0/8 için bir yol yanlış ekler
 
 ### <a name="symptom"></a>Belirti
 
-VPN istemcisi, noktadan siteye istemci VPN bağlantısıyla çevirdiğinizde, Azure sanal ağı doğru bir yol eklemeniz gerekir. IP yardımcı hizmeti, VPN istemcilerinin bir alt ağ için bir rota eklemeniz gerekir. 
+Noktadan siteye istemcisinde VPN bağlantısını çevirdiğinizde, VPN istemcisinin Azure sanal ağına doğru bir rota eklemesi gerekir. IP Yardımcısı hizmeti, VPN istemcilerinin alt ağı için bir yol eklemeli. 
 
-10\.0.0.0/8, 10.0.12.0/24 gibi daha küçük bir alt ağı için VPN istemci aralığı aittir. 10\.0.12.0/24 için bir yol yerine, daha yüksek önceliğe sahip 10.0.0.0/8 için bir yol eklenir. 
+VPN istemci aralığı, 10.0.12.0/24 gibi 10.0.0.0/8 ' in daha küçük bir alt ağına aittir. 10.0.12.0/24 için bir yol yerine, daha yüksek önceliğe sahip olan 10.0.0.0/8 için bir yol eklenir. 
 
-Bu yanlış bir yol tanımlanan belirli bir yol olmayan 10.0.0.0/8 aralıkta 10.50.0.0/24 gibi başka bir alt ağa ait olabilir diğer şirket içi ağlar ile bağlantısını keser. 
+Bu yanlış yol, 10.0.0.0/8 aralığı içindeki başka bir alt ağa ait olabilecek, belirli bir yolu tanımlanmış olmayan diğer şirket içi ağlarla bağlantıyı keser (10.50.0.0/24 gibi). 
 
 ### <a name="cause"></a>Nedeni
 
-Bu davranış, Windows istemcileri için tasarım gereğidir. İstemci PPP IPCP protokol kullandığında, sunucudan (Bu örnekte VPN gateway) tüneli arabiriminin IP adresini alır. Ancak, protokolü bir sınırlama nedeniyle, alt ağ maskesi istemci yok. Almak için diğer bir yolu yoktur çünkü istemci tüneli arabiriminin IP adresinin sınıfına göre alt ağ maskesi tahmin etmeye çalışır. 
+Bu davranış, Windows istemcileri için tasarımdır. İstemci PPP ıPCP protokolünü kullandığında, tünel arabiriminin IP adresini sunucudan (Bu durumda VPN Gateway) alır. Ancak, protokoldeki bir sınırlama nedeniyle, istemcinin alt ağ maskesi yoktur. Bunu almanın başka bir yolu olmadığından, istemci, tünel arabirimi IP adresinin sınıfına göre alt ağ maskesini tahmin etmeye çalışır. 
 
-Bu nedenle, bir yol bağlı olarak aşağıdaki statik eşleme eklenir: 
+Bu nedenle, aşağıdaki statik eşlemeye göre bir yol eklenir: 
 
-Adresin bir sınıfa ait /8--> uygulayın
+Adres A sınıfına aitse--> Uygula/8
 
-Adres B--> sınıfa ait /16 uygulayın
+Adres B sınıfına aitse--> Uygula/16
 
-Adres C--> sınıfa ait /24 uygulayın
+Adres C sınıfına aitse--> Uygula/24
 
 ### <a name="solution"></a>Çözüm
 
-Diğer ağlar için yönlendirme tablosunda en uzun ön ek eşleştirmesi veya noktadan siteye daha düşük ölçüye (Bu nedenle daha yüksek öncelikli) eklenerek yollar vardır. 
+Diğer ağlara yönelik yolların, en uzun ön ek eşleşmesi veya daha düşük ölçüm (Bu nedenle daha yüksek öncelikli), siteye noktadan eklenmesi gerekir. 
 
-## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN istemcisi ağ dosya paylaşımlarına erişemez.
+## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN istemcisi ağ dosya paylaşımlarına erişemiyor
 
 ### <a name="symptom"></a>Belirti
 
@@ -286,114 +286,114 @@ VPN istemcisi, Azure sanal ağına bağlandı. Ancak, istemci ağ paylaşımlar�
 
 ### <a name="cause"></a>Nedeni
 
-SMB protokolü, dosya paylaşımı erişimi için kullanılır. Bağlantısı başlatıldığında, VPN istemcisi oturum bilgilerini ekler ve hata oluşur. Bağlantı kurulduktan sonra istemci kimlik bilgilerini önbelleğe Kerberos kimlik doğrulaması için kullanılacak zorlanır. Bu işlem, merkezi bir belirteç almak için anahtar dağıtım (bir etki alanı denetleyicisi) sorguları başlatır. İstemci Internet'ten bağlandığından, etki alanı denetleyicisine mümkün olmayabilir. Bu nedenle, istemci üzerinde Kerberos'tan NTLM olarak çalışamaz. 
+SMB protokolü, dosya paylaşma erişimi için kullanılır. Bağlantı başlatıldığında, VPN istemcisi oturum kimlik bilgilerini ekler ve hata oluşur. Bağlantı kurulduktan sonra, istemci Kerberos kimlik doğrulaması için önbellek kimlik bilgilerini kullanmaya zorlanır. Bu işlem, belirteci almak için Anahtar Dağıtım Merkezi sorguları (bir etki alanı denetleyicisi) başlatır. İstemci Internet 'ten bağlandığından, etki alanı denetleyicisine ulaşamayacak olabilir. Bu nedenle, istemci Kerberos 'tan NTLM 'ye yük devredemeyebilir. 
 
-Olduğunda bir kimlik bilgisi için istemci istenir yalnızca bir kez geçerli bir sertifikası olan (SAN ile UPN =) katılan etki alanı tarafından verilmiş. İstemci ayrıca etki alanı ağına fiziksel olarak bağlanmalıdır. Bu durumda, istemci sertifikasını kullanmayı dener ve etki alanı denetleyicisine ulaşır. Daha sonra anahtar dağıtım merkezi bir "KDC_ERR_C_PRINCIPAL_UNKNOWN" hatası döndürür. İstemci, NTLM olarak yük devretmek için zorlanır. 
+İstemcinin bir kimlik bilgisi için istendiği tek zaman, katıldığı etki alanı tarafından verilen geçerli bir sertifikaya (SAN = UPN ile) sahip olur. İstemci Ayrıca etki alanı ağına fiziksel olarak bağlı olmalıdır. Bu durumda, istemci sertifikayı kullanmaya ve etki alanı denetleyicisine ulaşmaya çalışır. Sonra Anahtar Dağıtım Merkezi bir "KDC_ERR_C_PRINCIPAL_UNKNOWN" hatası döndürür. İstemci, NTLM 'ye yük devredezorlanıyor. 
 
 ### <a name="solution"></a>Çözüm
 
-Sorunu çözmek için aşağıdaki kayıt defteri alt etki alanı kimlik bilgilerini önbelleğe alma devre dışı bırakın: 
+Sorunu geçici olarak çözmek için, aşağıdaki kayıt defteri alt anahtarından etki alanı kimlik bilgilerinin önbelleğe alınmasını devre dışı bırakın: 
 
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\DisableDomainCreds - Set the value to 1 
 
 
-## <a name="cannot-find-the-point-to-site-vpn-connection-in-windows-after-reinstalling-the-vpn-client"></a>Noktadan siteye VPN bağlantısı Windows VPN istemcisini yeniden yükledikten sonra bulunamıyor
+## <a name="cannot-find-the-point-to-site-vpn-connection-in-windows-after-reinstalling-the-vpn-client"></a>VPN istemcisini yeniden yükledikten sonra Windows 'da Noktadan siteye VPN bağlantısı bulunamıyor
 
 ### <a name="symptom"></a>Belirti
 
-Noktadan siteye VPN bağlantısı kaldırıp sonra da VPN istemcisini yeniden yükleyin. Bu durumda, VPN bağlantısı başarıyla yapılandırılmadı. VPN bağlantısı görmüyorsanız **ağ bağlantıları** Windows ayarları.
+Noktadan siteye VPN bağlantısını kaldırır ve ardından VPN istemcisini yeniden yüklersiniz. Bu durumda, VPN bağlantısı başarılı bir şekilde yapılandırılmamış. VPN bağlantısını Windows 'daki **ağ bağlantıları** ayarları 'nda görmezsiniz.
 
 ### <a name="solution"></a>Çözüm
 
-Bu sorunu gidermek için eski VPN istemcisi yapılandırma dosyalarını silin. **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<sanal ağ kimliği >** , ve ardından VPN istemci yükleyiciyi yeniden çalıştırın .
+Sorunu çözmek için, eski VPN istemci yapılandırma dosyalarını **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<virtualnetworkıd >** öğesinden silin ve ardından VPN istemci yükleyicisini yeniden çalıştırın.
 
-## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Noktadan siteye VPN istemcisi yerel etki alanındaki kaynaklara FQDN'si çözümlenemiyor
+## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Noktadan siteye VPN istemcisi, yerel etki alanındaki kaynakların FQDN 'sini çözümleyemiyor
 
 ### <a name="symptom"></a>Belirti
 
-İstemci, noktadan siteye VPN bağlantısı kullanarak Azure'a bağlandığında, bu, yerel etki alanındaki kaynaklara FQDN'si çözümlenemiyor.
+İstemci, Noktadan siteye VPN bağlantısı kullanarak Azure 'a bağlandığında, yerel etki alanındaki kaynakların FQDN 'sini çözemez.
 
 ### <a name="cause"></a>Nedeni
 
-Noktadan siteye VPN istemcisi, Azure sanal ağında yapılandırılmış olan Azure DNS sunucularını kullanır. Azure DNS sunucularını tüm DNS sorgularını Azure DNS sunucularına gönderilir, istemcide yapılandırılan yerel DNS sunucularını daha önceliklidir. Azure DNS sunucularını yerel kaynakları için kayıtları yoksa, sorgu başarısız olur.
+Noktadan siteye VPN istemcisi, Azure sanal ağında yapılandırılmış Azure DNS sunucuları kullanır. Azure DNS sunucular, istemcide yapılandırılan yerel DNS sunucularından önceliklidir, bu nedenle tüm DNS sorguları Azure DNS sunucularına gönderilir. Azure DNS sunucularında yerel kaynaklar için kayıtlar yoksa sorgu başarısız olur.
 
 ### <a name="solution"></a>Çözüm
 
-Azure DNS sunucuları, Azure sanal ağda kullanılan emin olun sorunu çözmek için yerel kaynakları için DNS kayıtlarını çözebilirsiniz. Bunu yapmak için DNS ileticileri veya koşullu ileticileri kullanabilirsiniz. Daha fazla bilgi için [kendi DNS sunucunuzu kullanarak ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+Sorunu çözmek için, Azure sanal ağında kullanılan Azure DNS sunucularının, yerel kaynaklar için DNS kayıtlarını çözümleyebilecek olduğundan emin olun. Bunu yapmak için DNS Ileticileri veya koşullu ileticiler kullanabilirsiniz. Daha fazla bilgi için, bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
 
-## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>Noktadan siteye VPN bağlantısı kuruldu, ancak yine de Azure kaynakları için bağlantı kurulamıyor 
+## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>Noktadan siteye VPN bağlantısı oluşturulur, ancak yine de Azure kaynaklarına bağlanamazsınız 
 
 ### <a name="cause"></a>Nedeni
 
-VPN istemcisi Azure VPN ağ geçidinden yolları almazsa, bu sorun oluşabilir.
+VPN istemcisi Azure VPN Gateway 'ten yolları alamazsanız bu sorun oluşabilir.
 
 ### <a name="solution"></a>Çözüm
 
-Bu sorunu çözmek için [Azure VPN Gateway'i sıfırlama](vpn-gateway-resetgw-classic.md). Sanal Ağ eşlemesi başarıyla yapılandırıldıktan sonra yeni yollar kullanılan emin olmak için noktadan siteye VPN istemcileri yeniden yüklenmesi gerekir.
+Bu sorunu çözmek için [Azure VPN Gateway 'i sıfırlayın](vpn-gateway-resetgw-classic.md). Yeni yolların kullanıldığından emin olmak için, sanal ağ eşlemesi başarıyla yapılandırıldıktan sonra Noktadan siteye VPN istemcileri yeniden indirilmelidir.
 
-## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hata: "İptal işlevi iptal iptal etme sunucusu çevrimdışı olduğundan denetlenemiyor. (Hata 0x80092013)"
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hata: "İptal sunucusu çevrimdışı olduğu için iptal işlevi iptali denetedemedi. (Hata 0x80092013) "
 
 ### <a name="causes"></a>Nedenler
-İstemci erişemiyorsanız bu hata iletisi görüntüleniyor http://crl3.digicert.com/ssca-sha2-g1.crl ve http://crl4.digicert.com/ssca-sha2-g1.crl.  İptal denetimini, bu iki site erişim gerektirir.  Bu sorun genellikle yapılandırılan proxy sunucusu olan istemcide gerçekleşir. Bazı ortamlarda, isteklerin bir proxy sunucu üzerinden etmeyecekseniz, kenar güvenlik duvarında reddedilir.
+İstemci ve http://crl3.digicert.com/ssca-sha2-g1.crl http://crl4.digicert.com/ssca-sha2-g1.crl erişemediğinde bu hata iletisi oluşur.  İptal denetiminin bu iki siteye erişimi olması gerekir.  Bu sorun genellikle ara sunucu yapılandırılmış istemcide gerçekleşir. Bazı ortamlarda, istekler proxy sunucusundan geçmezse, sınır güvenlik duvarında reddedilir.
 
 ### <a name="solution"></a>Çözüm
 
-Ara sunucu ayarlarını denetleyin, istemci erişebildiğinden emin olun http://crl3.digicert.com/ssca-sha2-g1.crl ve http://crl4.digicert.com/ssca-sha2-g1.crl.
+Proxy sunucusu ayarlarını denetleyin, istemcisinin ve http://crl3.digicert.com/ssca-sha2-g1.crl http://crl4.digicert.com/ssca-sha2-g1.crl erişiminin olduğundan emin olun.
 
-## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN istemci hatası: Bağlantı RAS/VPN sunucunuzda yapılandırılan ilke nedeniyle engellendi. (Hata 812)
+## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN Istemci hatası: RAS/VPN sunucunuzda yapılandırılan bir ilke nedeniyle bağlantı engellendi. (Hata 812)
 
 ### <a name="cause"></a>Nedeni
 
-Azure ağ geçidine RADIUS sunucusuna erişilemiyor veya VPN istemci kimlik doğrulaması için kullanılan bir RADIUS sunucusu ayarları yanlış varsa bu hata oluşur.
+Bu hata, VPN istemcisinde kimlik doğrulaması için kullandığınız RADIUS sunucusunda yanlış ayarlar varsa veya Azure Gateway, RADIUS sunucusuna ulaşamamışsa oluşur.
 
 ### <a name="solution"></a>Çözüm
 
-RADIUS sunucusu doğru şekilde yapılandırıldığından emin olun. Daha fazla bilgi için [tümleştirme RADIUS kimlik doğrulaması ile Azure multi-Factor Authentication sunucusu](../active-directory/authentication/howto-mfaserver-dir-radius.md).
+RADIUS sunucusunun doğru yapılandırıldığından emin olun. Daha fazla bilgi için bkz. [RADIUS kimlik doğrulamasını Azure Multi-Factor Authentication sunucusu Ile tümleştirme](../active-directory/authentication/howto-mfaserver-dir-radius.md).
 
-## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>"Error 405" ne zaman indirdiğiniz sertifika VPN ağ geçidinden
-
-### <a name="cause"></a>Nedeni
-
-Kök sertifika yüklenmemiş. İstemcinin kök sertifika yüklü **güvenilen Sertifikalar** depolayın.
-
-## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN istemci hatası: VPN tünellerinin girişimi başarısız olduğundan uzak bağlantı yapılmadı. (Hata 800) 
+## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>VPN Gateway 'ten kök sertifika yüklerken "hata 405"
 
 ### <a name="cause"></a>Nedeni
 
-NIC sürücüsünün güncel değil.
+Kök sertifika yüklenmedi. Kök sertifika, istemcinin **Güvenilen Sertifikalar** deposuna yüklenir.
+
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN Istemci hatası: Uzak bağlantı, denenen VPN tünelleri başarısız olduğu için yapılamadı. (Hata 800) 
+
+### <a name="cause"></a>Nedeni
+
+NIC sürücüsü güncel değil.
 
 ### <a name="solution"></a>Çözüm
 
-NIC sürücüyü güncelleştirin:
+NIC sürücüsünü güncelleştirin:
 
-1. Tıklayın **Başlat**, türü **cihaz Yöneticisi**ve sonuçlar listesinden seçin. Bir yönetici parolası veya onay istenirse parolayı yazın ya da onay sağlayın.
-2. İçinde **ağ bağdaştırıcıları** kategoriler, güncelleştirmek istediğiniz NIC bulun.  
-3. Cihaz adına çift tıklayın, seçin **güncelleştirme sürücü**seçin **otomatik olarak güncelleştirilen sürücü yazılım Ara**.
-4. Yeni bir sürücü Windows bulamazsa, bir üreticinin Web sitesini bakmayın deneyin ve bunların yönergeleri izleyin.
+1. **Başlat**' a tıklayın, **Aygıt Yöneticisi**yazın ve sonuç listesinden seçin. Yönetici parolası veya onay istenirse parolayı yazın ya da onay sağlayın.
+2. **Ağ bağdaştırıcıları** kategorilerinde, GÜNCELLEŞTIRMEK istediğiniz NIC 'i bulun.  
+3. Cihaz adına çift tıklayın, **Sürücüyü Güncelleştir**' i seçin, **güncelleştirilmiş sürücü yazılımı Için otomatik olarak ara**' yı seçin.
+4. Windows yeni bir sürücü bulamazsa cihaz üreticisinin Web sitesinde arama yapmayı deneyebilir ve talimatlarını takip edebilirsiniz.
 5. Bilgisayarı yeniden başlatın ve bağlantıyı yeniden deneyin.
 
-## <a name="error-file-download-error-target-uri-is-not-specified"></a>Hata: 'Dosya indirme hatası hedef URI belirtilmedi'
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Hata: ' Dosya indirme hatası hedef URI 'SI belirtilmedi '
 
 ### <a name="cause"></a>Nedeni
 
-Bunun nedeni hatalı bir ağ geçidi tarafından yapılandırılır.
+Bunun nedeni yanlış bir ağ geçidi türü yapılandırılmıştır.
 
 ### <a name="solution"></a>Çözüm
 
-Azure VPN ağ geçidi türü VPN olmalıdır ve VPN türünde olmalıdır **RouteBased**.
+Azure VPN ağ geçidi türü VPN olmalıdır ve VPN türü **Routebased**olmalıdır.
 
-## <a name="vpn-package-installer-doesnt-complete"></a>VPN paketi yükleyicisini tamamlanmıyor
+## <a name="vpn-package-installer-doesnt-complete"></a>VPN paketi yükleyicisi tamamlanmamış
 
 ### <a name="cause"></a>Nedeni
 
-Önceki VPN istemci yüklemeleri tarafından bu soruna neden olabilir. 
+Bu sorun, önceki VPN istemci yüklemelerinden kaynaklanabilir. 
 
 ### <a name="solution"></a>Çözüm
 
-Eski VPN istemcisi yapılandırma dosyalarını Sil **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<sanal ağ kimliği >** ve VPN istemci yükleyiciyi yeniden çalıştırın. 
+**C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<virtualnetworkıd >** 'den eski VPN istemci yapılandırma dosyalarını silip VPN istemci yükleyicisini yeniden çalıştırın. 
 
-## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN istemcisi, hazırda bekleme veya bir süre sonra uyku
+## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN istemcisi, bir süre sonra hazırda bekleme veya uyku moduna geçme
 
 ### <a name="solution"></a>Çözüm
 
-Uyku denetleyin ve ayarları VPN istemcisini çalıştıran bilgisayarda hazırda bekleme.
+VPN istemcisinin üzerinde çalıştığı bilgisayardaki uyku ve hazırda bekleme ayarlarını kontrol edin.

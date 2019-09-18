@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 0d0329be0b7f864edbfc3c2aabc08f1742359670
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376090"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066774"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V değerlendirmesi ve geçiş için destek matrisi
 
@@ -27,9 +27,9 @@ Tablo, Hyper-V VM 'Leri için desteklenen senaryoları özetler.
 **Dağıtım** | **Bilgileri***
 --- | ---
 **Şirket içi Hyper-V VM 'lerini değerlendirme** | İlk değerlendirmenizi [ayarlayın](tutorial-prepare-hyper-v.md) .<br/><br/> Büyük ölçekli bir değerlendirme [çalıştırın](scale-hyper-v-assessment.md) .
-**Hyper-V VM’lerini Azure’a geçirme** | Azure 'a geçiş [yapmayı deneyin](tutorial-migrate-hyper-v.md) . 
+**Hyper-V VM’lerini Azure’a geçirme** | Azure 'a geçiş [yapmayı deneyin](tutorial-migrate-hyper-v.md) .
 
-System Center Virtual Machine Manager (VMM) ile yönetilen Hyper-V sunucularının geçirilmesi, Azure geçişi sunucu geçişi tarafından desteklenmez. 
+System Center Virtual Machine Manager (VMM) ile yönetilen Hyper-V sunucularının geçirilmesi, Azure geçişi sunucu geçişi tarafından desteklenmez.
 
 ## <a name="azure-migrate-projects"></a>Azure geçişi projeleri
 
@@ -44,10 +44,13 @@ Coğrafya | Azure geçişi projelerini çeşitli coğrafi bölgelerde oluşturab
   Azure Kamu | ABD Devleti Virginia
   Asya Pasifik | Doğu Asya veya Güneydoğu Asya
   Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
+  Brezilya | Güney Brezilya
   Kanada | Kanada Orta veya Kanada Doğu
   Avrupa | Kuzey Avrupa veya Batı Avrupa
+  Fransa | Fransa Orta
   Hindistan | Orta Hindistan veya Güney Hindistan
   Japonya |  Japonya Doğu veya Japonya Batı
+  Güney Kore | Kore Orta veya Kore Güney
   Birleşik Krallık | UK Güney veya UK Batı
   Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
 
@@ -87,7 +90,7 @@ Değerlendirme için Azure geçişi, Hyper-V VM 'lerini bulmaya ve VM meta veril
 | **Hyper-V konakları**          | Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
 | **Keşfini**              | Tek bir gereç, en fazla 5000 VM bulabilir.
 | **Değerlendirme grubu**       | Tek bir gruba en fazla 35.000 makine ekleyebilirsiniz.
-| **Değerlendirmesini**             | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
+| **Değerlendirme**             | Tek bir değerlendirmede 35.000 adede kadar VM 'yi değerlendirebilirsiniz.
 
 
 

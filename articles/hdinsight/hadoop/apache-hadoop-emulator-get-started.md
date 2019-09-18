@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: a1d31eb3fa6e37302e1afa5ebd36d04f75830dea
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918167"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066687"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Sanal makinede öykünücü olan Apache Hadoop korumalı alan ile çalışmaya başlama
 
@@ -42,7 +42,7 @@ Eski bir HDP sürüm korumalı alanını indirmek için **eski sürümlerin**alt
 1. **Dosya** menüsünde gereci **içeri aktar**' a tıklayın ve ardından Hortonçalışmalar korumalı alanı görüntüsünü belirtin.
 1. Hortonçalışmalar korumalı alanını seçin, **Başlat**' a ve ardından **normal Başlat**' a tıklayın. Sanal makine önyükleme işlemini tamamladıktan sonra oturum açma yönergelerini görüntüler.
 
-    ![Normal başlangıç](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    ![VirtualBox Manager normal başlangıç](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
 1. Bir Web tarayıcısı açın ve görüntülenecek URL 'ye gidin (genellikle `http://127.0.0.1:8888`).
 

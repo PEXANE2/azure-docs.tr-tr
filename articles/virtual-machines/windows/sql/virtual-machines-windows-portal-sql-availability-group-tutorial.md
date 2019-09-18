@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7683812c5ee98d21d5aa8191a88926669b2ed120
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102358"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036522"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Öğretici: Azure VM 'de Always on kullanılabilirlik grubunu el ile yapılandırma
 
@@ -77,10 +77,13 @@ Aşağıdaki tabloda, Bu öğreticiye başlamadan önce gerçekleştirmeniz gere
    | Başlamadan önce |Varsayılanları kullan |
    | Sunucuları seçin |**Sunucu adını girin** alanına ilk SQL Server adını yazın ve **Ekle**' ye tıklayın. |
    | Doğrulama uyarısı |Hayır **'ı seçin. bu küme için Microsoft desteği gerekmiyor ve bu nedenle doğrulama testlerini çalıştırmak istemiyor. Ileri 'yi tıkladığımda kümeyi**oluşturmaya devam edin. |
-   | Kümeyi yönetmek için erişim noktası |Küme adı alanına bir küme adı yazın, örneğin **SQLAGCluster1** .|
+   | Kümeyi yönetmek için erişim noktası |**Küme adı alanına bir**küme adı yazın, örneğin **SQLAGCluster1** .|
    | Onay |Depolama alanları kullanmadığınız takdirde Varsayılanları kullanın. Bu tablodan sonraki nota bakın. |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Windows Server yük devretme kümesi IP adresini ayarlama
+
+  > [!NOTE]
+  > Windows Server 2019 ' de küme, **küme ağ adı**yerine bir **dağıtılmış sunucu adı** oluşturur. Windows Server 2019 kullanıyorsanız, bu öğreticide küme çekirdeği adına başvuran adımları atlayın. [PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019)kullanarak bir küme ağ adı oluşturabilirsiniz. Blog [yük devretme kümesini gözden geçirin: Daha fazla bilgi](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97) için küme ağ nesnesi. 
 
 1. **Yük devretme kümesi Yöneticisi**' de, **küme çekirdeği kaynakları** ' na kaydırın ve küme ayrıntılarını genişletin. **Başarısız** durumunda hem **adı** hem de **IP adresi** kaynaklarını görmeniz gerekir. Küme, makinenin kendisi ile aynı IP adresine atandığından ve bu nedenle yinelenen bir adres olduğundan, IP adresi kaynağı çevrimiçi duruma getirilemiyor.
 

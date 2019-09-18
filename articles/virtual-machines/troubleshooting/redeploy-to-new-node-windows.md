@@ -4,7 +4,7 @@ description: Azure 'da Windows sanal makinelerini, RDP bağlantısı sorunların
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 tags: azure-resource-manager,top-support-issue
 ms.assetid: 0ee456ee-4595-4a14-8916-72c9110fc8bd
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 12488033448c7798690b3d6d68782baf2f76adf9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090289"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058635"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Windows sanal makinesini yeni Azure düğümüne yeniden dağıtın
 Windows tabanlı Azure sanal makinesine (VM) yönelik uzak masaüstü (RDP) bağlantısı veya uygulama erişimi sorunlarını gidermeye yönelik zorluklarla karşılaşıyorsanız, VM 'nin yeniden dağıtılması yardımcı olabilir. Bir VM 'yi yeniden dağıttığınızda Azure, VM 'yi kapatır, VM 'yi Azure altyapısı içindeki yeni bir düğüme taşır ve ardından yeniden, tüm yapılandırma seçeneklerinizi ve ilişkili kaynaklarınızı korur. Bu makalede, Azure PowerShell veya Azure portal kullanarak bir VM 'yi yeniden dağıtma gösterilmektedir.

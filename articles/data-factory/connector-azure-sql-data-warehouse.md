@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 29f5b9b704bcf4648e9c24516d8eff5429a0ce1d
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 78b74c1db5f331e7b74a730148d52b1ff7694ec0
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009950"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058992"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak veya Azure SQL veri ambarı veri kopyalayın 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
@@ -444,6 +444,9 @@ Gereksinimleri karşılanmadığı takdirde, Azure Data Factory ayarları denetl
    7. `compression` olabilir **sıkıştırma**, **GZip**, veya **Deflate**.
 
 3. Kaynağınız bir klasörse, `recursive` Copy etkinliğinin true olarak ayarlanması gerekir.
+
+>[!NOTE]
+>Kaynağınız bir klasörssa, PolyBase dosyaları klasörden ve tüm alt klasörlerinden alır ve dosya adının bir alt çizgiyle (_) veya nokta (.) ile başladığı dosyalardan veri almaz ( [burada, konum bağımsız değişkeni](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest#arguments-2)olarak belgelenmiştir).
 
 ```json
 "activities":[

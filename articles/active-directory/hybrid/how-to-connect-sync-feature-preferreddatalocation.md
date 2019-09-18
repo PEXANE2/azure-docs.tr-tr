@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 50cb5a76c6b19668fc23147244d65a0d996ebf90
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073868"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033730"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect eşitleme: Office 365 kaynakları için tercih edilen veri konumunu yapılandırın
 Bu konunun amacı, Azure Active Directory (Azure AD) Connect Sync içinde tercih edilen veri konumu için özniteliği yapılandırma konusunda size yol gösterir. Birisi Office 365 ' de çok coğrafi bölge özellikleri kullandığında, bu özniteliği kullanıcının Office 365 verilerinin coğrafi konumunu belirlemek için kullanırsınız. (Hüküm *bölgesi* ve *coğrafi* , birbirlerinin yerine kullanılır.)
@@ -172,7 +172,7 @@ Giden eşitleme kuralı, öznitelik değerinin meta veri deposundaki Azure AD 'd
     | sourceObjectType | SIFIRA | Kullanıcı |
     | Cloudana kopyalı | NOT QUAL | Doğru |
 
-    Kapsam filtresi, bu giden eşitleme kuralının hangi Azure AD nesnelerini uygulanacağını belirler. Bu örnekte, "diğer AD – Kullanıcı kimliği" OOB (kullanıma hazır) eşitleme kuralında aynı kapsam filtresini kullanırız. Eşitleme kuralının şirket içi Active Directory eşitlenmemiş **Kullanıcı** nesnelerine uygulanmasını önler. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
+    Kapsam filtresi, bu giden eşitleme kuralının hangi Azure AD nesnelerini uygulanacağını belirler. Bu örnekte, "Azure AD – Kullanıcı kimliği" OOB (kullanıma hazır) eşitleme kuralında aynı kapsam filtresini kullanırız. Eşitleme kuralının şirket içi Active Directory eşitlenmemiş **Kullanıcı** nesnelerine uygulanmasını önler. Azure AD Connect dağıtımınıza göre kapsam filtresini ince ayar gerekebilir.
 
 6. **Dönüştürme** sekmesine gidin ve aşağıdaki dönüştürme kuralını uygulayın:
 

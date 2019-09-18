@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning çalışma alanındaki rolleri yönetme
-titleSuffix: Azure Machine Learning service
-description: Rol tabanlı erişim denetimi (RBAC) kullanarak Azure Machine Learning hizmet çalışma alanına erişmeyi öğrenin.
+titleSuffix: Azure Machine Learning
+description: Rol tabanlı erişim denetimi (RBAC) kullanarak bir Azure Machine Learning çalışma alanına erişmeyi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f28397717d5c89e5a5bcd5e7bdc17b4feb49577
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467970"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067716"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
@@ -107,11 +107,13 @@ Dağıtımdan sonra, bu rol belirtilen çalışma alanında kullanılabilir hale
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
+Özel roller hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](/azure/role-based-access-control/custom-roles).
 
-Daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](/azure/role-based-access-control/custom-roles).
+Özel rollerle kullanılabilen işlemler (Eylemler) hakkında daha fazla bilgi için bkz. [kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kurumsal güvenliğe genel bakış](concept-enterprise-security.md)
 - [Bir sanal ağ içinde denemeleri ve çıkarımı/puanı güvenli bir şekilde çalıştırın](how-to-enable-virtual-network.md)
 - [Öğretici: Modelleri eğitme](tutorial-train-models-with-aml.md)
+- [Kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

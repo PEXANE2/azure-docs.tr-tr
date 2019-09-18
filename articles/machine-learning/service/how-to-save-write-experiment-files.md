@@ -1,6 +1,6 @@
 ---
 title: '& Yazma deneme dosyalarının kaydedileceği yer'
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Deneme girdi dosyalarınızın nereye kaydedileceğini ve depolama sınırlaması hatalarını ve deneme gecikmesini engellemek için çıkış dosyalarının nereye yazılacağını öğrenin.
 services: machine-learning
 author: rastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 77f816400709262fab8cb9bd351bdcde73377e09
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114506"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034284"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
 
@@ -33,7 +33,7 @@ Azure Machine Learning, tüm betik klasörünü hedef işlem bağlamına kopyala
 
 Bu nedenle şunları öneririz:
 
-* **Dosyalarınızı Azure Machine Learning [veri deposunda](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)depolama.** Bu, deneme süresi sorunlarını önler ve uzaktan bir işlem hedefinden verilere erişmenin avantajlarından yararlanır; bu da kimlik doğrulama ve bağlama Azure Machine Learning hizmeti tarafından yönetilir. Kaynak dizininiz olarak bir veri deposu belirtme ve [verileri veri depoları makalesindeki erişim verilerine](how-to-access-data.md) yükleme hakkında daha fazla bilgi edinin.
+* **Dosyalarınızı Azure Machine Learning [veri deposunda](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)depolama.** Bu, deneme süresi sorunlarını önler ve uzaktan bir işlem hedefinden verilere erişmenin avantajlarından yararlanır, bu da kimlik doğrulama ve bağlama Azure Machine Learning tarafından yönetilir. Kaynak dizininiz olarak bir veri deposu belirtme ve [verileri veri depoları makalesindeki erişim verilerine](how-to-access-data.md) yükleme hakkında daha fazla bilgi edinin.
 
 * **Yalnızca birkaç veri dosyası ve bağımlılık betiklerine Ihtiyacınız varsa ve bir veri deposu kullanamaz,** dosyaları eğitim betiğinizle aynı klasör dizinine yerleştirin. Bu klasörü `source_directory` doğrudan eğitim betiğinizdeki veya eğitim betiğinizi çağıran kodda belirtin.
 

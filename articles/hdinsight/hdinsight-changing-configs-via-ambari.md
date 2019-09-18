@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: d34cb7b8bfae14c25950cc4d77c6625c675e813b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 7261aad8f42168449f2c892fe8aaaa6667964654
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934520"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076954"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>HDInsight küme yapılandırmasını iyileştirmek için Apache ambarı 'nı kullanma
 
@@ -23,7 +23,7 @@ Ambarı Web Kullanıcı arabirimini kullanmaya giriş için bkz [. Apache ambar�
 
 Küme kimlik bilgilerinizle `https://CLUSTERNAME.azurehdidnsight.net` , ambarı ' nda oturum açın. İlk ekranda Genel Bakış Panosu görüntülenir.
 
-![Ambarı panosu](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
+![Apache ambarı Kullanıcı panosu görüntülendi](./media/hdinsight-changing-configs-via-ambari/apache-ambari-dashboard.png)
 
 Ambarı Web Kullanıcı arabirimi, Konakları, Hizmetleri, uyarıları, konfigürasyonları ve görünümleri yönetmek için kullanılabilir. Ambarı, HDInsight kümesi oluşturmak, Hizmetleri yükseltmek, yığınları ve sürümleri yönetmek, Konakları kullanımdan kaldırmak veya yeniden komisyon sağlamak ya da kümeye hizmet eklemek için kullanılamaz.
 
@@ -31,25 +31,25 @@ Ambarı Web Kullanıcı arabirimi, Konakları, Hizmetleri, uyarıları, konfigü
 
 Yapılandırma ayarları belirli bir hizmeti ayarlamanıza yardımcı olur. Bir hizmetin yapılandırma ayarlarını değiştirmek için **Hizmetler** kenar çubuğundan (solda) hizmeti seçin ve ardından hizmet ayrıntısı sayfasındaki **yapılandırmalar** sekmesine gidin.
 
-![Hizmetler kenar çubuğu](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
+![Apache ambarı Hizmetleri kenar çubuğu](./media/hdinsight-changing-configs-via-ambari/ambari-services-sidebar.png)
 
 ### <a name="modify-namenode-java-heap-size"></a>Süs Code Java yığın boyutunu değiştir
 
-Süs Code Java yığın boyutu, küme üzerinde yükleme, dosya sayıları ve blok sayısı gibi birçok etkene bağlıdır. 1 GB varsayılan boyutu çoğu küme ile iyi çalışmaktadır, ancak bazı iş yükleri daha fazla veya daha az bellek gerektirebilir. 
+Süs Code Java yığın boyutu, küme üzerinde yükleme, dosya sayıları ve blok sayısı gibi birçok etkene bağlıdır. 1 GB varsayılan boyutu çoğu küme ile iyi çalışmaktadır, ancak bazı iş yükleri daha fazla veya daha az bellek gerektirebilir.
 
 Süs Yot Java yığın boyutunu değiştirmek için:
 
 1. Hizmetler **kenar çubuğundan bir i seçin ve** **configs** sekmesine gidin.
 
-    ![Bir yapılandırma](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
+    ![Apache ambarı, yapılandırma](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
 1. **Süs Code Java yığın boyutu**ayarını bulun. Belirli bir ayarı yazmak ve bulmak için **filtre** metin kutusunu da kullanabilirsiniz. Ayar adının yanındaki **kalem** simgesini seçin.
 
-    ![Süs Code Java yığın boyutu](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
+    ![Apache ambarı süs Code Java yığın boyutu](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 
 1. Metin kutusuna yeni değeri yazın ve ardından değişikliği kaydetmek için **ENTER** tuşuna basın.
 
-    ![Süs Code Java yığın size1 Düzenle](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
+    ![Ambarı düzenleme süs Code Java yığın size1](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit1.png)
 
 1. Süs Code Java yığın boyutu 2 GB 'tan 1 GB olarak değişir.
 
@@ -57,7 +57,7 @@ Süs Yot Java yığın boyutunu değiştirmek için:
 
 1. Yapılandırma ekranının üstündeki yeşil **Kaydet** düğmesine tıklayarak yaptığınız değişiklikleri kaydedin.
 
-    ![Değişiklikleri kaydet](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
+    ![Ambarı ambarı kayıt yapılandırması](./media/hdinsight-changing-configs-via-ambari/ambari-save-changes1.png)
 
 ## <a name="apache-hive-optimization"></a>Apache Hive iyileştirmesi
 
@@ -72,11 +72,11 @@ Hive iki yürütme altyapısı sağlar: [MapReduce](https://hadoop.apache.org/do
 
 1. Hive **yapılandırması** sekmesinde, filtre kutusuna **yürütme altyapısı** yazın.
 
-    ![Arama yürütme altyapısı](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
+    ![Apache ambarı arama yürütme altyapısı](./media/hdinsight-changing-configs-via-ambari/ambari-search-execution.png)
 
 1. **Optimizasyon** özelliğinin varsayılan değeri **tez**' dir.
 
-    ![İyileştirme-tez](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
+    ![İyileştirme-Apache Tez altyapısı](./media/hdinsight-changing-configs-via-ambari/optimization-apache-tez.png)
 
 ### <a name="tune-mappers"></a>Mapto ayarla
 
@@ -93,8 +93,8 @@ Thumb 'in performans kuralı olarak, gecikme süresini artırmak için bu parame
 
 1. Her iki parametreyi de **33.554.432** bayta ayarlayın (32 MB).
 
-    ![Tez gruplandırma boyutları](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
- 
+    ![Apache ambarı tez gruplama boyutları](./media/hdinsight-changing-configs-via-ambari/apache-tez-grouping-size.png)
+
 Bu değişiklikler sunucu genelindeki tüm tez işlerini etkiler. En iyi sonucu almak için uygun parametre değerlerini seçin.
 
 ### <a name="tune-reducers"></a>Azaltıcının ayarla
@@ -109,11 +109,11 @@ Varsayılan ayarlarla Bu örnek 4 azaltıcının ' dir.
 
 1. Parametreyi değiştirmek için Hive **yapılandırması** ' na gidin ve Ayarlar sayfasında **Reducer başına veri** parametresini bulun.
 
-    ![Reducer başına veri](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
- 
+    ![Reducer başına Apache ambarı verileri](./media/hdinsight-changing-configs-via-ambari/ambari-data-per-reducer.png)
+
 1. Değeri 128 MB (134.217.728 bayt) olarak değiştirmek için **Düzenle** ' yi seçin ve sonra kaydetmek için **ENTER** tuşuna basın.
 
-    ![Reducer başına veri-düzenlendi](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
+    ![Reducer başına veri ambarı verileri düzenlendi](./media/hdinsight-changing-configs-via-ambari/data-per-reducer-edited.png)
   
     Reducer başına 128 MB veri ile 1.024 MB 'lık bir giriş boyutu verildiğinde, 8 azaltıcının (1024/128) vardır.
 
@@ -123,22 +123,21 @@ Varsayılan ayarlarla Bu örnek 4 azaltıcının ' dir.
 
 Hive sorgusu bir veya daha fazla aşamada yürütülür. Bağımsız aşamalar paralel olarak çalıştırılabilirler, bu, sorgu performansını arttırır.
 
-1.  Paralel sorgu yürütmeyi etkinleştirmek için Hive **yapılandırma** sekmesine gidin ve `hive.exec.parallel` özelliğini arayın. Varsayılan değer false'tur. Değeri true olarak değiştirin ve ardından değeri kaydetmek için **ENTER** tuşuna basın.
- 
-1.  Paralel olarak çalışacak işlerin sayısını sınırlandırmak için `hive.exec.parallel.thread.number` özelliği değiştirin. Varsayılan değer 8 ' dir.
+1. Paralel sorgu yürütmeyi etkinleştirmek için Hive **yapılandırma** sekmesine gidin ve `hive.exec.parallel` özelliğini arayın. Varsayılan değer false'tur. Değeri true olarak değiştirin ve ardından değeri kaydetmek için **ENTER** tuşuna basın.
 
-    ![Hive exec paralel](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
+1. Paralel olarak çalışacak işlerin sayısını sınırlandırmak için `hive.exec.parallel.thread.number` özelliği değiştirin. Varsayılan değer 8 ' dir.
 
+    ![Apache Hive exec paralel ekran](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
 ### <a name="enable-vectorization"></a>Vektörleştirmeyi etkinleştir
 
 Hive, veri satırını satıra göre işler. Vektörleştirme, Hive 'yi aynı anda bir satır yerine 1.024 satırlık bloklar halinde işlemek üzere yönlendirir. Vektörleştirme yalnızca ORC dosya biçimi için geçerlidir.
 
 1. Vektörleştirilmiş bir sorgu yürütmesini etkinleştirmek için Hive **yapılandırması** ' na gidin ve `hive.vectorized.execution.enabled` parametreyi arayın. Hive 0.13.0 veya üzeri için varsayılan değer true 'dur.
- 
+
 1. Sorgunun azaltılması için vektörleştirilmiş yürütmeyi etkinleştirmek üzere `hive.vectorized.execution.reduce.enabled` parametresini true olarak ayarlayın. Varsayılan değer false'tur.
 
-    ![Hive vektörleştirilmemiş yürütme](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
+    ![Apache Hive vektörleştirilmiş yürütme](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
 ### <a name="enable-cost-based-optimization-cbo"></a>Maliyet tabanlı iyileştirmeyi (CBO) etkinleştir
 
@@ -146,7 +145,7 @@ Varsayılan olarak, Hive en iyi bir sorgu yürütme planını bulmak için bir k
 
 CBO 'i etkinleştirmek için Hive **yapılandırması** sekmesine gidin ve arama `parameter hive.cbo.enable`yapın ve geçiş düğmesini **Açık**olarak değiştirin.
 
-![CBO yapılandırması](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
+![HDInsight maliyet tabanlı iyileştirici](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
 Aşağıdaki ek yapılandırma parametreleri, CBO etkin olduğunda Hive sorgu performansını artırır:
 
@@ -154,13 +153,13 @@ Aşağıdaki ek yapılandırma parametreleri, CBO etkin olduğunda Hive sorgu pe
 
     True olarak ayarlandığında Hive, gibi `count(*)`basit sorguları yanıtlamak için meta veri deposu içinde depolanan istatistikleri kullanır.
 
-    ![CBO istatistikleri](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
+    ![İstatistikleri kullanarak işlem sorgusunu Apache Hive](./media/hdinsight-changing-configs-via-ambari/hive-compute-query-using-stats.png)
 
 * `hive.stats.fetch.column.stats`
 
     CBO etkinken sütun istatistikleri oluşturulur. Hive sorguları iyileştirmek için, meta veri deposu içinde depolanan sütun istatistiklerini kullanır. Sütun sayısı yüksek olduğunda her sütun için sütun istatistiklerinin getirilmesi daha uzun sürer. False olarak ayarlandığında, bu ayar sütun istatistiklerini meta veri deposu 'ndan getirmeyi devre dışı bırakır.
 
-    ![Hive istatistikleri sütun istatistiklerini ayarlama](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
+    ![Apache Hive stats sütun istatistiklerini ayarla](./media/hdinsight-changing-configs-via-ambari/hive-stats-fetch-column-stats.png)
 
 * `hive.stats.fetch.partition.stats`
 
@@ -206,7 +205,7 @@ Genel bir kural olarak, sıkıştırma yöntemi bölünmüş tablo önemli oldu�
 
     e. **Ekle**'yi tıklatın.
 
-    ![Hive özel özelliği](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
+    ![Özel özellik ekleme Apache Hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
     Bu, Snappy sıkıştırması kullanılarak ara dosyayı sıkıştırır. Özellik eklendikten sonra, özel Hive sitesi bölmesinde görünür.
 
@@ -221,7 +220,7 @@ Son Hive çıktısı da sıkıştırılabilir.
 
 1. Çıkış sıkıştırma codec bileşenini seçmek için, önceki bölümün `mapred.output.compression.codec` adım 3 ' te açıklandığı gibi özel Hive-site bölmesine özel özelliği ekleyin.
 
-    ![Hive özel özelliği](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
+    ![Özel özellik Add2 Apache Hive](./media/hdinsight-changing-configs-via-ambari/hive-custom-property2.png)
 
 ### <a name="enable-speculative-execution"></a>Kurgusal yürütmeyi etkinleştir
 
@@ -240,9 +239,9 @@ Hive, bir tabloya kayıt eklerken, her bölümün ve her bölümün önceden tan
 1. Hive 'nin dinamik bölümleri `hive.exec.dynamic.partition` yapması için parametre değeri true (varsayılan) olmalıdır.
 
 1. Dinamik bölüm modunu *katı*olarak değiştirin. Katı modda, en az bir bölümün statik olması gerekir. Bu, WHERE yan tümcesinde bölüm filtresi olmadan sorguları önler, diğer bir deyişle, *katı* tüm bölümleri tarayan sorguları önler. Hive **configs** sekmesine gidin ve `hive.exec.dynamic.partition.mode` **katı**olarak ayarlayın. Varsayılan değer **katı olmayan**bir değerdir.
- 
+
 1. Oluşturulacak dinamik bölüm sayısını sınırlandırmak için `hive.exec.max.dynamic.partitions` parametreyi değiştirin. Varsayılan değer 5000 ' dir.
- 
+
 1. Düğüm başına toplam dinamik bölüm sayısını sınırlamak için değiştirin `hive.exec.max.dynamic.partitions.pernode`. Varsayılan değer 2000 ' dir.
 
 ### <a name="enable-local-mode"></a>Yerel modu etkinleştir
@@ -251,7 +250,7 @@ Yerel mod, Hive 'ın tek bir makinedeki veya bazen tek bir işlemde bir işin t�
 
 Yerel modu etkinleştirmek için, `hive.exec.mode.local.auto` [Ara sıkıştırmayı etkinleştir](#enable-intermediate-compression) bölümünün 3. adımında açıklandığı gibi parametreyi özel Hive-site paneline ekleyin.
 
-![Hive exec modu yerel otomatik](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
+![Apache Hive exec modu yerel otomatik](./media/hdinsight-changing-configs-via-ambari/hive-exec-mode-local-auto.png)
 
 ### <a name="set-single-mapreduce-multigroup-by"></a>Tek MapReduce çok grubunu ayarla
 
@@ -269,7 +268,7 @@ Aşağıdaki bölümlerde, ayarlayabileceğiniz, Hive ile ilgili ek iyileştirme
 
 Hive içindeki varsayılan JOIN türü bir *karışık birleşimdir*. Hive 'de özel mapvın girişi okur ve bir ara dosyaya bir JOIN anahtar/değer çifti yayar. Hadoop, bu çiftleri bir karışık aşamada sıralar ve birleştirir. Bu karışık aşama pahalıdır. Verilerinize göre doğru katılmayı seçmek performansı önemli ölçüde iyileştirebilir.
 
-| Katılım Türü | Zaman | Oluşturulacağı | Hive ayarları | Açıklamalar |
+| Katılım Türü | Oluşturulurken | Oluşturulacağı | Hive ayarları | Açıklamalar |
 | -- | -- | -- | -- | -- |
 | Karışık ekleme | <ul><li>Varsayılan seçenek</li><li>Her zaman çalışma</li></ul> | <ul><li>Tablolardan birinin bir bölümünden okur</li><li>Demetler ve JOIN anahtarına göre sıralar</li><li>Her küçültme için bir demet gönderir</li><li>Düşürme, azaltma tarafında yapılır</li></ul> | Önemli Hive ayarı gerekmiyor | Her seferinde çalışma |
 | Eşleme birleşimi | <ul><li>Bir tablo, belleğe sığmayacak</li></ul> | <ul><li>Küçük tabloyu bellek karması tablosuna okur</li><li>Büyük dosyanın bir parçası aracılığıyla akışlar</li><li>Karma tablodaki her kaydı birleştirir</li><li>Birleşimler eşleştiriciyle tek başına</li></ul> | `hive.auto.confvert.join=true` | Çok hızlı, ancak sınırlı |
@@ -297,8 +296,8 @@ Hive yürütme altyapısını iyileştirmeye yönelik ek öneriler:
 
 1. Yeni değeri kaydetmek için pencerenin sağ üst tarafındaki **Kaydet** ' i seçin. Bazı özellikler, bir hizmetin yeniden başlatılmasını gerektirebilir.
 
-    ![Gelişmiş Pig-Özellikler](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
- 
+    ![Gelişmiş Apache Pig özellikleri](./media/hdinsight-changing-configs-via-ambari/advanced-pig-properties.png)
+
 > [!NOTE]  
 > Herhangi bir oturum düzeyi ayarı, `pig.properties` dosyadaki özellik değerlerini geçersiz kılar.
 
@@ -310,7 +309,6 @@ Pig betiklerini yürütmek için iki yürütme altyapısı mevcuttur: MapReduce 
 
 1. Varsayılan değer **MapReduce**' dir. **Tez**olarak değiştirin.
 
-
 ### <a name="enable-local-mode"></a>Yerel modu etkinleştir
 
 Hive ile benzer şekilde, yerel mod, işleri görece daha az miktarda veri ile hızlandırmak için kullanılır.
@@ -318,7 +316,6 @@ Hive ile benzer şekilde, yerel mod, işleri görece daha az miktarda veri ile h
 1. Yerel modu etkinleştirmek için **true**olarak ayarlayın `pig.auto.local.enabled` . Varsayılan değer false'tur.
 
 1. Giriş veri boyutu `pig.auto.local.input.maxbytes` özellik değerinden küçük olan işlerin küçük işler olduğu kabul edilir. Varsayılan değer 1 GB 'tır.
-
 
 ### <a name="copy-user-jar-cache"></a>Kullanıcı jar önbelleğini Kopyala
 
@@ -328,7 +325,6 @@ Pig, UDF 'ler için gereken JAR dosyalarını görev düğümleri için kullanı
 
 1. Önbelleğe alınan jars 'ın temel yolunu ayarlamak için taban yoluna ayarlayın `pig.user.cache.location` . Varsayılan, `/tmp` değeridir.
 
-
 ### <a name="optimize-performance-with-memory-settings"></a>Bellek ayarlarıyla performansı iyileştirin
 
 Aşağıdaki bellek ayarları Pig betiği performansını iyileştirmenize yardımcı olabilir.
@@ -336,7 +332,6 @@ Aşağıdaki bellek ayarları Pig betiği performansını iyileştirmenize yard�
 * `pig.cachedbag.memusage`: Bir paket için ayrılan bellek miktarı. Bir paket, tanımlama grupları koleksiyonudur. Kayıt düzeni sıralı bir alan kümesidir ve bir alan veri parçasıdır. Bir torba ait veriler, ayrılan belleğin ötesinde ise diske taşılır. Varsayılan değer, kullanılabilir belleğin yüzde 20 ' sini temsil eden 0,2 ' dir. Bu bellek, bir uygulamadaki tüm baorda paylaşılır.
 
 * `pig.spill.size.threshold`: Bu taşma boyutu eşiğinden (bayt olarak) daha büyük olan paketler diske taşılır. Varsayılan değer 5 MB 'tır.
-
 
 ### <a name="compress-temporary-files"></a>Geçici dosyaları sıkıştır
 
@@ -350,16 +345,13 @@ Pig, iş yürütülürken geçici dosyalar oluşturur. Dosyaları okurken veya d
 
 Etkinleştirildiğinde, küçük dosyalar daha az eşleme görevi için birleştirilir. Bu, birçok küçük dosya içeren işlerin verimliliğini artırır. Özelliğini etkinleştirmek için true `pig.noSplitCombination` olarak ayarlayın. Varsayılan değer false'tur.
 
-
 ### <a name="tune-mappers"></a>Mapto ayarla
 
 Eşleme sayısı, özelliği `pig.maxCombinedSplitSize`değiştirilerek denetlenir. Bu, tek bir eşleme göreviyle işlenecek verilerin boyutunu belirtir. Varsayılan değer FileSystem 'ın varsayılan blok boyutudur. Bu değerin artırılması, Eşleyici görevlerinin sayısının azalmasına neden olur.
 
-
 ### <a name="tune-reducers"></a>Azaltıcının ayarla
 
 Azaltıcının sayısı, parametresine `pig.exec.reducers.bytes.per.reducer`göre hesaplanır. Parametresi, varsayılan 1 GB olarak Reducer başına işlenen bayt sayısını belirtir. En fazla azaltıcının sayısını sınırlandırmak için, `pig.exec.reducers.max` özelliği varsayılan 999 olarak ayarlayın.
-
 
 ## <a name="apache-hbase-optimization-with-the-ambari-web-ui"></a>Ambarı Web Kullanıcı arabirimi ile Apache HBase iyileştirmesi
 
@@ -373,8 +365,7 @@ HBase yığın boyutu, *bölgeye* ve *ana* sunuculara göre megabayt cinsinden k
 
 1. Varsayılan değeri 5.000 MB olarak değiştirin.
 
-    ![HBASE_HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
-
+    ![Apache ambarı HBase belleği HEAPSIZE](./media/hdinsight-changing-configs-via-ambari/ambari-hbase-heapsize.png)
 
 ### <a name="optimize-read-heavy-workloads"></a>Okuma ağır iş yüklerini iyileştirme
 
@@ -386,10 +377,9 @@ Blok önbelleği, okuma önbelleğidir. Boyutu `hfile.block.cache.size` parametr
 
 1. Bu parametreyi değiştirmek için, HBase **configs** sekmesindeki **Ayarlar** sekmesine gidin ve ardından **okuma arabelleklerine ayrılan regionserver 'ın%** ' i bulun.
 
-    ![HBase blok önbelleği boyutu](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
- 
-1. Değeri değiştirmek için **Düzenle** simgesini seçin.
+    ![Apache HBase bellek bloğu önbellek boyutu](./media/hdinsight-changing-configs-via-ambari/hbase-block-cache-size.png)
 
+1. Değeri değiştirmek için **Düzenle** simgesini seçin.
 
 #### <a name="memstore-size"></a>Memstore boyutu
 
@@ -401,30 +391,26 @@ Tüm düzenlemeler, bellek arabelleğinde saklanır, bu, *Memstore*olarak adland
 
 Rastgele okumaları iyileştirmek için, Memstore üst ve alt sınırlarını azaltabilirsiniz.
 
-
 #### <a name="number-of-rows-fetched-when-scanning-from-disk"></a>Diskten tarama sırasında getirilen satır sayısı
 
 Bu ayar, `next` Yöntem bir tarayıcıda çağrıldığında diskten okunan satır sayısını tanımlar. `hbase.client.scanner.caching`  Varsayılan değer 100’dür. Sayı arttıkça, istemciden bölge sunucusuna yapılan uzak çağrılar daha az tarama elde edilir. Bununla birlikte, bu, istemcideki bellek basıncını de artırır.
 
-![Alınan satır sayısı HBase](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
+![Getirilen Apache HBase satır sayısı](./media/hdinsight-changing-configs-via-ambari/hbase-num-rows-fetched.png)
 
 > [!IMPORTANT]  
 > Bir tarayıcıdaki sonraki yöntemin çağrılması ile ilgili saatin tarayıcı zaman aşımından daha büyük olması için değeri ayarlamayın. Tarayıcı zaman aşımı süresi, `hbase.regionserver.lease.period` özelliği tarafından tanımlanır.
-
 
 ### <a name="optimize-write-heavy-workloads"></a>Yazma ağır iş yüklerini iyileştirme
 
 Aşağıdaki konfigürasyonlar, yazma ağır iş yüklerinin performansını artırmak için önemlidir.
 
-
 #### <a name="maximum-region-file-size"></a>En büyük bölge dosyası boyutu
 
 HBase verileri *hfile*adlı dahili bir dosya biçiminde depolar. Özelliği `hbase.hregion.max.filesize` , bir bölge için tek bir hfile boyutunu tanımlar.  Bir bölgedeki tüm HFiles değerlerinin bu ayardan büyük olması halinde bölge iki bölgeye ayrılır.
- 
-![HBase HRegion maksimum dosya boyutu](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
+
+![Apache HBase HRegion maksimum dosya boyutu](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-max-filesize.png)
 
 Bölge dosya boyutu ne kadar büyükse, bölme sayısı küçülür. En fazla yazma performansına neden olan bir değeri öğrenmek için dosya boyutunu artırabilirsiniz.
-
 
 #### <a name="avoid-update-blocking"></a>Güncelleştirme engellemeyi önleyin
 
@@ -436,20 +422,17 @@ Bölge dosya boyutu ne kadar büyükse, bölme sayısı küçülür. En fazla ya
 
     Varsayılan Temizleme boyutu ve blok çarpanı değerleri ile, Memstore boyutu 128 * 4 = 512 MB olduğunda güncelleştirmeler engellenir. Güncelleştirme engelleme sayısını azaltmak için değerini `hbase.hregion.memstore.block.multiplier`artırın.
 
-![HBase bölgesi blok çarpanı](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
-
+![Apache HBase bölgesi blok çarpanı](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
 
 ### <a name="define-memstore-size"></a>Memstore boyutunu tanımla
 
 Memstore boyutu `hbase.regionserver.global.memstore.UpperLimit` ve `hbase.regionserver.global.memstore.LowerLimit` parametreleri tarafından tanımlanır. Bu değerlerin birbirlerine eşit ayarlanması yazma sırasında duraklar azaltır (Ayrıca daha sık temizlemeye devam ediyor) ve daha fazla yazma performansı elde edin.
 
-
 ### <a name="set-memstore-local-allocation-buffer"></a>Memstore yerel ayırma arabelleğini ayarla
 
 Memstore yerel ayırma arabelleği kullanımı, özelliği `hbase.hregion.memstore.mslab.enabled`tarafından belirlenir. Etkinleştirildiğinde (true), bu, ağır yazma işlemi sırasında yığın parçalanmasını önler. Varsayılan değer true olur.
- 
-![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
+![hbase.hregion.memstore.mslab.enabled](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-mslab-enabled.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

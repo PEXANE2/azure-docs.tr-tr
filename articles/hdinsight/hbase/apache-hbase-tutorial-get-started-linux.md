@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: hrasheed
-ms.openlocfilehash: df216c4d634ac20365cc5a1cc6e26fbd78be7ab9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e43d2d64535085a9b22d2febc761fc7026498ba8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917403"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077148"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Öğretici: Azure HDInsight’ta Apache HBase kullanma
 
@@ -41,7 +41,7 @@ Aşağıdaki yordam bir HBase kümesi ve bağımlı varsayılan Azure depolama h
 
 1. Azure portal şablonu açmak için aşağıdaki görüntüyü seçin. Şablon, [Azure hızlı başlangıç şablonlarında](https://azure.microsoft.com/resources/templates/)bulunur.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. **Özel dağıtım** dikey penceresine şu değerleri girin:
 
@@ -68,11 +68,11 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 Çoğu kişi için veriler tablo biçiminde görünür:
 
-![HDInsight HBase tablo verileri](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
+![HDInsight Apache HBase tablo verileri](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-tabular.png)
 
 HBase 'de ( [Cloud BigTable](https://cloud.google.com/bigtable/)'ın bir uygulamasında), aynı veriler şöyle görünür:
 
-![HDInsight HBase BigTable verileri](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
+![HDInsight Apache HBase BigTable verileri](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-contacts-bigtable.png)
 
 **HBase kabuğunu kullanmak için**
 
@@ -115,7 +115,7 @@ HBase 'de ( [Cloud BigTable](https://cloud.google.com/bigtable/)'ın bir uygulam
     scan 'Contacts'
     ```
 
-    ![HDInsight Hadoop HBase kabuğu](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
+    ![HDInsight Apache Hadoop HBase kabuğu](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-shell.png)
 
 1. Bir `get` satırın içeriğini getirmek için komutunu kullanın. Aşağıdaki komutu girin:
 
@@ -284,7 +284,7 @@ HDInsight içinde HBase, kümelerin izlenmesi için bir Web Kullanıcı Arabirim
 
 1. Sayfanın üst kısmındaki **hızlı bağlantılar** ' ı seçin, etkin Zookeeper düğümü bağlantısına gelin ve **HBase Master Kullanıcı arabirimi**' ni seçin.  Kullanıcı arabirimi başka bir tarayıcı sekmesinde açılır:
 
-   ![HDInsight HBase HMaster Kullanıcı Arabirimi](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
+   ![HDInsight Apache HBase HMaster Kullanıcı arabirimi](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
    HBase Master Kullanıcı Arabirimi aşağıdaki bölümleri içerir:
 

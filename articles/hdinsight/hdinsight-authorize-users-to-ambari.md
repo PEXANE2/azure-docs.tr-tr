@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: bcc29902628f4e7051d6a838d2e9ac145df9e45e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 533bd750056f2e961ca9239e995fbfc62b2381d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916822"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076693"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Kullanıcıları Apache Ambari Görünümleri için yetkilendirme
 
@@ -30,7 +30,7 @@ Daha önce yapmadıysanız, yeni bir ESP kümesi sağlamak için [Bu yönergeler
 
 [Apache ambarı Web Kullanıcı arabirimindeki](hdinsight-hadoop-manage-ambari.md) **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** **ambarı yönetim sayfasına** ulaşmak için, sayfasına gidin. Kümeyi oluştururken tanımladığınız küme yönetici kullanıcı adını ve parolasını girin. Ardından, ambarı panosundan **Yönetim** menüsünün altındaki **ambarı Yönet** ' i seçin:
 
-![Ambarı yönetme](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
+![Apache ambarı Pano Yönetimi](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
 ## <a name="grant-permissions-to-apache-hive-views"></a>Apache Hive görünümlerine izin verme
 
@@ -38,11 +38,11 @@ Ambarı, diğerleri arasında [Apache Hive](https://hive.apache.org/) ve [Apache
 
 1. Yönetim sayfasından, sol taraftaki **Görünümler** menü başlığı altında bulunan **Görünümler** bağlantısını seçin.
 
-    ![Görünümler bağlantısı](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
+    ![Apache ambarı görünümleri görünüm bağlantıları](./media/hdinsight-authorize-users-to-ambari/apache-ambari-views-link.png)
 
 2. Görünümler sayfasında **HIVE** satırını genişletin. Hive hizmeti kümeye eklendiğinde oluşturulan bir varsayılan Hive görünümü vardır. Ayrıca, gerektiğinde daha fazla Hive görünüm örneği de oluşturabilirsiniz. Hive görünümü seçin:
 
-    ![Görünümler-Hive görünümü](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
+    ![HDInsight görünümleri-Apache Hive görünümü](./media/hdinsight-authorize-users-to-ambari/views-apache-hive-view.png)
 
 3. Görünüm sayfasının alt kısmına doğru ilerleyin. *İzinler* bölümünde, etki alanı kullanıcılarının görünüme izinleri vermek için iki seçeneğiniz vardır:
 
@@ -54,20 +54,20 @@ Ambarı, diğerleri arasında [Apache Hive](https://hive.apache.org/) ve [Apache
 
    * Kullanıcı adını yazmaya başlayın ve önceden tanımlanmış adların açılan listesini görürsünüz.
 
-     ![Kullanıcı oto tamamlandığında](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
+     ![Apache ambarı Kullanıcı otomatik tamamlanır](./media/hdinsight-authorize-users-to-ambari/ambari-user-autocomplete.png)
 
    * Kullanıcı adını seçin veya yazın. Bu Kullanıcı adını yeni bir kullanıcı olarak eklemek için **Yeni** düğmesini seçin.
 
    * Değişikliklerinizi kaydetmek için **mavi onay kutusunu**seçin.
 
-     ![Kullanıcı girdi](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
+     ![Apache ambarı Kullanıcı izinleri verme](./media/hdinsight-authorize-users-to-ambari/user-entered-permissions.png)
 
 1. Bir grup eklemek için **Grup Ekle** düğmesini seçin.
 
    * Grup adını yazmaya başlayın. Var olan bir grup adını seçme veya yeni bir grup ekleme işlemi, Kullanıcı ekleme ile aynıdır.
    * Değişikliklerinizi kaydetmek için **mavi onay kutusunu**seçin.
 
-     ![Girilen Grup](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
+     ![Apache ambarı izin verme izinleri](./media/hdinsight-authorize-users-to-ambari/ambari-group-entered.png)
 
 Kullanıcıları doğrudan bir görünüme eklemek, bu görünümü kullanmak için bir kullanıcıya izin atamak istediğinizde, ancak ek izinlere sahip bir grubun üyesi olmasını istemediğiniz durumlarda faydalıdır. Yönetim yükü miktarını azaltmak için gruplara izin atama daha kolay olabilir.
 
@@ -77,7 +77,7 @@ Kullanıcıları doğrudan bir görünüme eklemek, bu görünümü kullanmak i�
 
 Bir tez görünümü örneğine kullanıcılar ve gruplar atamak için, görünümler sayfasındaki **tez** satırını daha önce açıklandığı gibi genişletin.
 
-![Görünümler-tez görünümü](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
+![HDInsight görünümleri-Apache Tez görünümü](./media/hdinsight-authorize-users-to-ambari/views-apache-tez-view.png)
 
 Kullanıcı veya grup eklemek için önceki bölümde 3-5 arasındaki adımları yineleyin.
 
@@ -93,11 +93,11 @@ Kullanıcılar ve gruplar için, erişim izinleri azaltma sırasıyla listelenen
 
 Rolleri yönetmek için, **ambarı yönetimi sayfasına**gidin, ardından sol taraftaki *kümeler* menü grubunda bulunan **Roller** bağlantısını seçin.
 
-![Roller menü bağlantısı](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
+![Apache ambarı roller menü bağlantıları](./media/hdinsight-authorize-users-to-ambari/cluster-roles-menu-link.png)
 
 Her role verilen izinlerin listesini görmek için Roller sayfasındaki **Roller** tablosu üst bilgisinin yanındaki mavi soru işaretine tıklayın.
 
-![Roller menü bağlantısı izinleri](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Roller menü bağlantısı izinleri")
+![Apache ambarı roller menü bağlantısı izinleri](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Apache ambarı roller menü bağlantısı izinleri")
 
 Bu sayfada, Kullanıcı ve grupların rollerini yönetmek için kullanabileceğiniz iki farklı görünüm vardır: Engelle ve listele.
 
@@ -105,7 +105,7 @@ Bu sayfada, Kullanıcı ve grupların rollerini yönetmek için kullanabileceği
 
 Blok görünümü her bir rolü kendi satırında görüntüler ve daha önce açıklandığı gibi bu **kullanıcılara roller ata** ve **Bu gruplara roller ata** seçeneklerini sunar.
 
-![Rol blok görünümü](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
+![Apache ambarı rolleri blok görünümü](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
 ### <a name="list-view"></a>Liste görünümü
 
@@ -113,11 +113,11 @@ Liste görünümü iki kategoride Hızlı Düzenle özellikleri sağlar: Kullan�
 
 * Liste görünümünün kullanıcılar kategorisi, tüm kullanıcıların bir listesini görüntüleyerek, açılan listeden her bir kullanıcı için bir rol seçmenize olanak sağlar.
 
-    ![Rol listesi görünümü-kullanıcılar](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
+    ![Apache ambarı rol listesi görünümü-kullanıcılar](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
 *  Liste görünümünün gruplar kategorisi, tüm grupları ve her gruba atanan rolü görüntüler. Örneğimizde, grupların listesi, kümenin etki alanı ayarlarının **Erişim Kullanıcı grubu** özelliğinde BELIRTILEN Azure AD gruplarından eşitlenir. Bkz. [ESP özellikli HDInsight kümesi oluşturma](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
 
-    ![Rol listesi görünümü-gruplar](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
+    ![Apache ambarı rol listesi görünümü-gruplar](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
     Yukarıdaki görüntüde, "hiveusers" grubuna *küme Kullanıcı* rolü atanır. Bu, bu grubun kullanıcılarının hizmet yapılandırmasını ve küme ölçümlerini görüntülemesine izin veren, ancak değiştirmediğinden yalnızca bir salt okuma rolüdür.
 
@@ -125,13 +125,13 @@ Liste görünümü iki kategoride Hızlı Düzenle özellikleri sağlar: Kullan�
 
 "Hiveuser1 kullanıcısının" Azure AD etki alanı kullanıcımızı Hive ve tez görünümlerine atamamız gerekir. Ambarı Web Kullanıcı arabirimini başlatırken ve bu kullanıcının etki alanı kimlik bilgilerini (e-posta biçiminde ve parola olarak Azure AD Kullanıcı adı) girerken, Kullanıcı, ambarı görünümleri sayfasına yönlendirilir. Kullanıcı, buradan erişilebilir bir görünüm seçebilir. Kullanıcı Pano, hizmetler, konaklar, uyarılar veya yönetici sayfaları dahil olmak üzere sitenin başka bir bölümünü ziyaret edemez.
 
-![Yalnızca görünümlere sahip Kullanıcı](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
+![Yalnızca görünümleri olan Apache ambarı kullanıcısı](./media/hdinsight-authorize-users-to-ambari/ambari-user-views-only.png)
 
 ## <a name="log-in-to-ambari-as-a-cluster-user"></a>Bir küme kullanıcısı olarak ambarı 'nda oturum açın
 
 "Hiveuser2" Azure AD etki alanı kullanıcımızı *küme Kullanıcı* rolüne atadık. Bu rol panoya ve tüm menü öğelerine erişebiliyor. Bir küme kullanıcısı bir yöneticiden daha az izin verilen seçeneklere sahiptir. Örneğin, hiveuser2 her bir hizmetin yapılandırmasını görüntüleyebilir, ancak düzenleyemezsiniz.
 
-![Küme kullanıcı rolüne sahip Kullanıcı](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
+![Apache ambarı Pano görüntüsü](./media/hdinsight-authorize-users-to-ambari/user-cluster-user-role.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

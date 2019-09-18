@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 14aff313ece93feabc39194ba6859e3bca6be3bc
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 134ca92671a41eb53201101a3622215466a60c09
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622393"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065105"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Microsoft hesabı Azure Active Directory B2C kullanarak kaydolma ve oturum açma ayarlama
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft hesabı uygulaması oluşturma
 
-Bir Microsoft hesabı Azure Active Directory (Azure AD) B2C 'de [kimlik sağlayıcısı](active-directory-b2c-reference-oidc.md) olarak kullanmak IÇIN Azure AD kiracısında bir uygulama oluşturmanız gerekir. Azure AD kiracısı Azure AD B2C kiracınızla aynı değildir. Zaten bir Microsoft hesabı yoksa bir tane [https://www.live.com/](https://www.live.com/)edinebilirsiniz.
+Bir Microsoft hesabı Azure Active Directory B2C (Azure AD B2C) ' de bir [kimlik sağlayıcısı](active-directory-b2c-reference-oidc.md) olarak kullanmak IÇIN Azure AD kiracısında bir uygulama oluşturmanız gerekir. Azure AD kiracısı Azure AD B2C kiracınızla aynı değildir. Zaten bir Microsoft hesabı yoksa bir tane [https://www.live.com/](https://www.live.com/)edinebilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.

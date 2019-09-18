@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 042c4fa18ce583f714bbe71f522b1f8f1af3dfdb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874086"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066119"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C erişim belirteci isteme
 
-*Erişim belirteci* , API 'lerinize verilen izinleri tanımlamak için Azure Active Directory (Azure AD) B2C 'de kullanabileceğiniz talepler içerir. Bir kaynak sunucusu çağrılırken, HTTP isteğinde bir erişim belirtecinin bulunması gerekir. Erişim belirteci, Azure AD B2C yanıtlarındaki **access_token** olarak gösterilir.
+*Erişim belirteci* , API 'lerinize verilen izinleri tanımlamak için Azure Active Directory B2C (Azure AD B2C) içinde kullanabileceğiniz talepler içerir. Bir kaynak sunucusu çağrılırken, HTTP isteğinde bir erişim belirtecinin bulunması gerekir. Erişim belirteci, Azure AD B2C yanıtlarındaki **access_token** olarak gösterilir.
 
 Bu makalede bir Web uygulaması ve Web API 'SI için erişim belirteci isteme yöntemi gösterilmektedir. Azure AD B2C belirteçleri hakkında daha fazla bilgi için [Azure Active Directory B2C belirteçlerine genel bakış](active-directory-b2c-reference-tokens.md)bölümüne bakın.
 

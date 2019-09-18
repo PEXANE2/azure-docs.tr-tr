@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7fca5709a1c7c3ecae11a5fc7de2109f1b20645e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e2bfc65ad8fafa07de6e3727d651fccabaddc90e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839585"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077248"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları C# için IoT Edge modülü geliştirme
 
@@ -36,7 +36,7 @@ Bu öğreticide oluşturacağınız IoT Edge modülü, cihazınız tarafından o
 
 Bu öğreticide, **C#** **Visual Studio Code**kullanarak bir modülün nasıl geliştirileceği ve bir **Linux cihazına**nasıl dağıtılacağı gösterilmektedir. Windows cihazları için modüller geliştirirseniz bunun yerine [Windows cihazları için C# IoT Edge modülü geliştirme](tutorial-csharp-module-windows.md) bölümüne gidin.
 
-Linux 'ta C modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi anlamak için aşağıdaki tabloyu kullanın: 
+Linux 'ta modül geliştirme ve dağıtmaya C# yönelik seçeneklerinizi anlamak için aşağıdaki tabloyu kullanın: 
 
 | C# | Visual Studio Code | Visual Studio | 
 | -- | ------------------ | ------------- |

@@ -3,17 +3,17 @@ title: Genel bir Node. js istemci uygulamasını Azure IoT Central bağlama | Mi
 description: Bir cihaz geliştiricisi olarak, genel bir Node. js cihazını Azure IoT Central uygulamanıza bağlama.
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/14/2019
+ms.date: 09/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3b73344a233182fe8366795cfa111b706c6d06ac
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 75b900ecb37ae8d092d4e37129b7f39f801c470d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876252"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066432"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Genel bir istemci uygulamasını Azure IoT Central uygulamanıza bağlama (node. js)
 
@@ -25,8 +25,8 @@ Bu makalede, bir cihaz geliştiricisi olarak, Microsoft Azure IoT Central uygula
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
-1. Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
-1. [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için `node --version` komut satırında çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
+- Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
+- [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için `node --version` komut satırında çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
 
 ## <a name="create-a-device-template"></a>Cihaz şablonu oluşturma
 
@@ -125,11 +125,13 @@ Yalnızca tablolarda gösterildiği gibi, alan adlarını cihaz şablonuna girin
 
 Azure IoT Central uygulamanızda, önceki bölümde oluşturduğunuz cihaz şablonuna gerçek bir cihaz ekleyin.
 
-Ardından "cihaz ekleme" öğreticisindeki yönergeleri izleyerek [gerçek cihaza yönelik bir bağlantı dizesi oluşturun](tutorial-add-device.md#generate-connection-string). Bu bağlantı dizesini aşağıdaki bölümde kullanacaksınız:
+**Cihaz bağlantısı** sayfasında cihaz bağlantı bilgilerini bir yere göz önünde oluşturun: **Kapsam kimliği**, **cihaz kimliği**ve **birincil anahtar**. Bu değerleri daha sonra bu nasıl yapılır kılavuzunda, cihaz kodunuza eklersiniz:
+
+![Cihaz bağlantı bilgileri](./media/howto-connect-nodejs/device-connection.png)
 
 ### <a name="create-a-nodejs-application"></a>Node.js uygulaması oluşturma
 
-Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir istemci uygulamasının nasıl oluşturulacağı gösterilmektedir. Burada Node. js uygulaması gerçek cihazı temsil eder. 
+Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir istemci uygulamasının nasıl oluşturulacağı gösterilmektedir. Burada Node. js uygulaması gerçek cihazı temsil eder.
 
 1. Makinenizde `connected-air-conditioner-adv` adlı bir klasör oluşturun. Komut satırı ortamınızda bu klasöre gidin.
 
@@ -137,7 +139,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
 
     ```cmd/sh
     npm init
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
 1. `connected-air-conditioner-adv` Klasöründe **connectedAirConditionerAdv. js** adlı bir dosya oluşturun.
@@ -148,22 +150,31 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
     "use strict";
 
     // Use the Azure IoT device SDK for devices that connect to Azure IoT Central.
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
+    var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
-    var ConnectionString = require('azure-iot-device').ConnectionString;
+    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
+    var SymmetricKeySecurityClient = require('azure-iot-security-symmetric-key').SymmetricKeySecurityClient;
+    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
 1. Aşağıdaki değişken bildirimlerini dosyaya ekleyin:
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    var provisioningHost = 'global.azure-devices-provisioning.net';
+    var idScope = '{your Scope ID}';
+    var registrationId = '{your Device ID}';
+    var symmetricKey = '{your Primary Key};
+    var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
+    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
+    var hubClient;
+
     var targetTemperature = 0;
     var locLong = -122.1215;
     var locLat = 47.6740;
-    var client = clientFromConnectionString(connectionString);
     ```
 
-    Yer tutucusunu `{your device connection string}` [Cihaz bağlantı dizesiyle](tutorial-add-device.md#generate-connection-string)güncelleştirin. Bu örnekte, sıfırdan başlatın `targetTemperature` , cihazdaki geçerli okumayı veya cihazdan ikizi bir değeri kullanabilirsiniz.
+    Yer tutucuları, `{your Scope ID}`, `{your Device ID}`ve `{your Primary Key}` daha önce bir notcuı yaptığınız değerlerle güncelleştirin. Bu örnekte, sıfırdan başlatın `targetTemperature` , cihazdaki geçerli okumayı veya cihazdan ikizi bir değeri kullanabilirsiniz.
 
 1. Azure IoT Central uygulamanıza telemetri, durum, olay ve konum ölçümleri göndermek için aşağıdaki işlevi dosyasına ekleyin:
 
@@ -187,7 +198,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
             lat: locationLat }
         });
       var message = new Message(data);
-      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+      hubClient.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
         (res ? `; status: ${res.constructor.name}` : '')));
     }
@@ -262,14 +273,14 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
     // Handle countdown command
     function onCountdown(request, response) {
       console.log('Received call to countdown');
-
+    
       var countFrom = (typeof(request.payload.countFrom) === 'number' && request.payload.countFrom < 100) ? request.payload.countFrom : 10;
-
+    
       response.send(200, (err) => {
         if (err) {
           console.error('Unable to send method response: ' + err.toString());
         } else {
-          client.getTwin((err, twin) => {
+          hubClient.getTwin((err, twin) => {
             function doCountdown(){
               if ( countFrom >= 0 ) {
                 var patch = {
@@ -282,7 +293,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
                 setTimeout(doCountdown, 2000 );
               }
             }
-
+    
             doCountdown();
           });
         }
@@ -301,13 +312,13 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
         console.log('Device successfully connected to Azure IoT Central');
 
         // Create handler for countdown command
-        client.onDeviceMethod('countdown', onCountdown);
+        hubClient.onDeviceMethod('countdown', onCountdown);
 
         // Send telemetry measurements to Azure IoT Central every 1 second.
         setInterval(sendTelemetry, 1000);
 
         // Get device twin from Azure IoT Central.
-        client.getTwin((err, twin) => {
+        hubClient.getTwin((err, twin) => {
           if (err) {
             console.log(`Error getting device twin: ${err.toString()}`);
           } else {
@@ -325,8 +336,20 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
       }
     };
 
-    // Start the device (connect it to Azure IoT Central).
-    client.open(connectCallback);
+    // Start the device (register and connect to Azure IoT Central).
+    provisioningClient.register((err, result) => {
+      if (err) {
+        console.log('Error registering device: ' + err);
+      } else {
+        console.log('Registration succeeded');
+        console.log('Assigned hub=' + result.assignedHub);
+        console.log('DeviceId=' + result.deviceId);
+        var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+        hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
+
+        hubClient.open(connectCallback);
+      }
+    });
     ```
 
 ## <a name="run-your-nodejs-application"></a>Node. js uygulamanızı çalıştırma

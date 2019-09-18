@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 07b82f475074f5b55a2a5a93f7a59008476233c8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 153c28dc8a06968dc9dd3cfda021496672a094d5
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934404"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076543"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Ambarı ve Azure Izleyici günlükleri ile küme kullanılabilirliğini izleme
 
@@ -34,23 +34,23 @@ Ardından, bir küme oturum açma Kullanıcı adı ve parolası istenir. Kümeyi
 
 Daha sonra, HDInsight kümenizin sistem durumuna hızlı bir genel bakış sağlayan bir dizi ölçümü gösteren pencere öğeleri içeren bir işlem tablosu ' na yönlendirilirsiniz. Bu pencere öğeleri, Spark ve Hadoop kümeleri için YARN ResourceManager çalışma süresi gibi belirli küme türlerine özgü ölçümler ve canlı düğüm sayısı (çalışan düğümleri) ve JournalNodes (Zookeeper node), Üçlü iş çalışma süresi (örneğin, çok sayıda) gibi ölçümleri gösterir.
 
-![Ambarı panosu](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
+![Apache ambarı kullanım panosu görüntüleme](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
 
 ### <a name="hosts--view-individual-node-status"></a>Konaklar – tek tek düğüm durumunu görüntüle
 
 Tek tek düğümlerin durum bilgilerini de görüntüleyebilirsiniz. Kümenizdeki tüm düğümlerin listesini görüntülemek için **konaklar** sekmesine tıklayın ve her düğüm hakkında temel bilgileri görüntüleyin. Her düğüm adının solunda yeşil onay işareti, tüm bileşenlerin düğüm üzerinde olduğunu gösterir. Bir bileşen düğüm üzerinde kapalıysa yeşil onay yerine kırmızı bir uyarı üçgeni görürsünüz.
 
-![Ambarı Konakları görünümü](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
+![HDInsight Apache ambarı Konakları görünümü](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
 
 Daha sonra, söz konusu düğümün daha ayrıntılı konak ölçümlerini görüntülemek için bir düğümün **adına** tıklayabilirsiniz. Bu görünüm her bir bileşenin durumunu/kullanılabilirliğini gösterir.
 
-![Ambarı tek düğümlü görünüm barındırır](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
+![Apache ambarı tek düğümlü görünüm barındırır](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
 
 ### <a name="ambari-alerts"></a>Ambarı uyarıları
 
 Ayrıca, belirli olaylara yönelik bildirim sağlayabilen birkaç yapılandırılabilir uyarı da sunar. Uyarılar tetiklendiğinde, bu uyarılar, bu uyarı sayısını içeren kırmızı bir rozet içinde, ambarı 'nın sol üst köşesinde gösterilir. Bu rozet öğesine tıkladığınızda geçerli uyarıların bir listesi gösterilir.
 
-![Ambarı uyarı sayısı](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
+![Apache ambarı geçerli uyarı sayısı](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
 
 Uyarı tanımlarının ve durumlarının listesini görüntülemek için, aşağıda gösterildiği gibi **Uyarılar** sekmesine tıklayın.
 
@@ -69,7 +69,7 @@ Bir kümenin kullanılabilirliğini izlemeye yardımcı olan bir dizi uyarı lis
 
 Bir uyarının veya değişiklik ölçütlerinin ayrıntılarını görüntülemek için uyarının **adına** tıklayın. Örnek olarak, **Davode sistem durumu özetini** alın. Bir ' uyarı ' veya ' kritik ' uyarı ve kriterlerin denetim aralığı tetiklenecek belirli ölçütlere ek olarak uyarının açıklamasını görebilirsiniz. Yapılandırmayı düzenlemek için yapılandırma kutusunun sağ üst köşesindeki **Düzenle** düğmesine tıklayın.
 
-![Ambarı uyarı yapılandırması](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
+![Apache ambarı uyarı yapılandırması](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
 
 Burada, açıklamayı ve uyarı ya da kritik uyarılar için denetim aralığını ve eşikleri düzenleyebilirsiniz.
 
@@ -131,7 +131,7 @@ Ayrıca, bir ölçüm değeri veya bir sorgu sonuçlarının belirli koşullara 
 
 **Günlükler** dikey penceresinde, aşağıda gösterildiği gibi, bu sorguda **Çalıştır** ' a tıklayarak **kullanılamayan bilgisayarlar** örnek sorgusunu çalıştırın.
 
-![Log Analytics çalışma alanı günlükleri dikey penceresi ' kullanılamayan bilgisayarlar ' örnek sorgu](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
+![Log Analytics çalışma alanı günlükleri dikey penceresi ' kullanılamayan bilgisayarlar ' örneği](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
 
 Tüm düğümler varsa, bu sorgu şimdilik 0 sonuç döndürmelidir. Bu sorgu için uyarınızı yapılandırmaya başlamak üzere **Yeni uyarı kuralı** ' na tıklayın.
 
@@ -141,7 +141,7 @@ Bir uyarının üç bileşeni vardır: kuralın oluşturulacağı *kaynak* (bu d
 
 Sinyal mantığını yapılandırmayı tamamlaması için aşağıda gösterildiği gibi **koşul başlığına**tıklayın.
 
-![Uyarı kuralı koşulu](media/hdinsight-cluster-availability/portal-condition-title.png)
+![Portal uyarısı kural oluşturma koşulu](media/hdinsight-cluster-availability/portal-condition-title.png)
 
 Bu işlem, **sinyal mantığını Yapılandır** dikey penceresini açar.
 
@@ -161,7 +161,7 @@ Sinyal mantığını yapılandırmayı tamamladığınızda **bitti** ' ye tıkl
 
 Zaten mevcut bir eylem grubunuz yoksa, **eylem grupları** bölümünde **Yeni oluştur** ' a tıklayın.
 
-![Uyarı kuralı yeni eylem grubu](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
+![Uyarı kuralı yeni eylem grubu oluştur](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
 
 Bu işlem, **eylem grubu Ekle** dikey penceresini açar. Bir **eylem grubu adı**, **kısa ad**, **abonelik**ve **kaynak grubu seçin.** **Eylemler** bölümünde, **eylem adı** ' nı seçin ve **eylem türü** olarak **e-posta/SMS/Push/ses'** i seçin.
 
@@ -170,19 +170,19 @@ Bu işlem, **eylem grubu Ekle** dikey penceresini açar. Bir **eylem grubu adı*
 
 Bu, **e-posta/SMS/Push/Voice** dikey penceresini açar. Alıcı için bir **ad** seçin, **e-posta** kutusunu **işaretleyin** ve uyarının gönderilmesini istediğiniz e-posta adresini yazın. **E-posta/SMS/Push/Voice** dikey penceresinde **Tamam** ' a tıklayın, sonra eylem grubunuzu yapılandırmayı sona erdirmeniz için **eylem grubu Ekle** dikey penceresinde.
 
-![Uyarı kuralı eylem grubu Ekle](media/hdinsight-cluster-availability/portal-add-action-group.png)
+![Uyarı kuralı ekleme eylem grubu oluştur](media/hdinsight-cluster-availability/portal-add-action-group.png)
 
 Bu dikey pencereler kapatıldıktan sonra eylem **grupları** bölümünün altında listelenmiş eylem grubunuzu görmeniz gerekir. Son olarak, uyarı **ayrıntıları** bölümünü bir **Uyarı kuralı adı** ve **açıklaması** yazıp bir **önem derecesi**seçerek doldurun.
 Bitiş için **Uyarı kuralı oluştur** ' a tıklayın.
 
-![Uyarı kuralı oluşturma bitiş](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
+![Portal Uyarı kuralı oluşturma bitiş](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
 
 > [!TIP]
 > **Önem derecesi** belirtme özelliği, birden çok uyarı oluştururken kullanılabilecek güçlü bir araçtır. Örneğin, tek bir baş düğüm aşağı gittiğinde bir uyarı oluşturmak için bir uyarı (sev 1) ve her iki baş düğümün da önemli olmayan olayda kritik (sev 0) oluşturan başka bir uyarı oluşturabilirsiniz.
 
 Bu uyarının koşulu karşılandığında, uyarı harekete geçmeyecektir ve uyarı ayrıntılarına şu şekilde bir e-posta alırsınız:
 
-![Azure Izleyici uyarı e-postası](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
+![Azure Izleyici uyarı e-postası örneği](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
 
 Ayrıca, **Log Analytics çalışma alanınızdaki** **Uyarılar** dikey penceresine giderek,, önem derecesine göre gruplandırılan tüm uyarıları da görüntüleyebilirsiniz.
 

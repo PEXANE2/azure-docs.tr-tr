@@ -1,7 +1,7 @@
 ---
 title: AKS dağıtımlarında veri kayması 'nı (Önizleme) Algıla
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetinde Azure Kubernetes hizmeti tarafından dağıtılan modellerdeki verileri algılayın.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning 'de Azure Kubernetes hizmeti tarafından dağıtılan modellerdeki verileri algılayın.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 80c5ad26150547263469c9f59366e270bf660335
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993211"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034351"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 
-Bu makalede, dağıtılan bir modelin eğitim veri kümesi ve çıkarım verileri arasında veri kayması izlemeyi öğreneceksiniz. Makine öğrenimi bağlamında eğitilen makine öğrenimi modelleri, Drın nedeniyle düşürülmüş tahmin performansına neden olabilir. Azure Machine Learning hizmeti sayesinde, veri drınızı izleyebilir ve hizmet, Drın algılandığında size bir e-posta uyarısı gönderebilir.
+Bu makalede, dağıtılan bir modelin eğitim veri kümesi ve çıkarım verileri arasında veri kayması izlemeyi öğreneceksiniz. Makine öğrenimi bağlamında eğitilen makine öğrenimi modelleri, Drın nedeniyle düşürülmüş tahmin performansına neden olabilir. Azure Machine Learning, veri drınızı izleyebilir ve hizmet, Drın algılandığında size bir e-posta uyarısı gönderebilir.
 
 ## <a name="what-is-data-drift"></a>Veri kayması nedir?
 
@@ -27,7 +27,7 @@ Bu makalede, dağıtılan bir modelin eğitim veri kümesi ve çıkarım veriler
 
 ## <a name="what-can-i-monitor"></a>Neleri izleyebilirim?
 
-Azure Machine Learning hizmeti sayesinde, AKS üzerinde dağıtılan bir modele ait girişleri izleyebilir ve bu verileri modelin eğitim veri kümesiyle karşılaştırabilirsiniz. Düzenli aralıklarla, çıkarım verileri [anlık görüntü ve profillendirilir ve](how-to-explore-prepare-data.md)ardından temel veri kümesine göre hesaplanır. 
+Azure Machine Learning, AKS üzerinde dağıtılan bir modelin girişlerini izleyebilir ve bu verileri modelin eğitim veri kümesiyle karşılaştırabilirsiniz. Düzenli aralıklarla, çıkarım verileri [anlık görüntü ve profillendirilir ve](how-to-explore-prepare-data.md)ardından temel veri kümesine göre hesaplanır. 
 
 + , DRFT katsayısı olarak adlandırılan veri kayması miktarını ölçer.
 + Veri DRIP katkısını özelliklerine göre ölçer ve hangi özelliklerin veri üzerinde olduğunu bilgilendirin.
@@ -38,20 +38,20 @@ Azure Machine Learning hizmeti sayesinde, AKS üzerinde dağıtılan bir modele 
 > [!Note]
 > Bu hizmet (Önizleme) ve yapılandırma seçeneklerinde sınırlıdır. Ayrıntılar ve güncelleştirmeler için lütfen [API belgelerimize](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) ve [Sürüm notlarımıza](azure-machine-learning-release-notes.md) bakın. 
 
-### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde veri kayması nasıl izlenir
+### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Azure Machine Learning ' de verileri Drın nasıl izlenir
 
-Azure Machine Learning hizmetini kullanarak veri kümeleri, veri kümeleri veya dağıtımlar aracılığıyla izlenir. Bir taban çizgisi veri kümesi (genellikle bir model için eğitim veri kümesi) için veri kayması izlemek üzere belirtilir. İkinci bir veri kümesi-genellikle bir dağıtımdan toplanan model giriş verileri, taban çizgisi veri kümesine göre test edilir. Her iki veri kümesi de veri Drın izleme hizmetine profil oluşturulur ve giriş yapılır. Bir makine öğrenimi modeli, iki veri kümesi arasındaki farkları tespit etmek için eğitilir. Modelin performansı, iki veri kümesi arasındaki drifit 'in boyutunu ölçen DRFT katna dönüştürülür. [Model yorumlenebilirliğini](machine-learning-interpretability-explainability.md)kullanarak, değişikliklerini katlarına katkıda bulunan özellikler hesaplanır. Veri kümesi profilinden her bir özellik hakkındaki istatistiksel bilgiler izlenir. 
+Azure Machine Learning kullanarak, veri kümeleri veri kümeleri veya dağıtımlar aracılığıyla izlenir. Bir taban çizgisi veri kümesi (genellikle bir model için eğitim veri kümesi) için veri kayması izlemek üzere belirtilir. İkinci bir veri kümesi-genellikle bir dağıtımdan toplanan model giriş verileri, taban çizgisi veri kümesine göre test edilir. Her iki veri kümesi de veri Drın izleme hizmetine profil oluşturulur ve giriş yapılır. Bir makine öğrenimi modeli, iki veri kümesi arasındaki farkları tespit etmek için eğitilir. Modelin performansı, iki veri kümesi arasındaki drifit 'in boyutunu ölçen DRFT katna dönüştürülür. [Model yorumlenebilirliğini](machine-learning-interpretability-explainability.md)kullanarak, değişikliklerini katlarına katkıda bulunan özellikler hesaplanır. Veri kümesi profilinden her bir özellik hakkındaki istatistiksel bilgiler izlenir. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliği. Bir tane yoksa, başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning Service 'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+- Azure aboneliği. Bir tane yoksa, başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 - Python için Azure Machine Learning SDK 'Sı yüklendi. Şunları yapmak için [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 'daki yönergeleri kullanın:
 
     - Miniconda ortamı oluşturma
     - Python için Azure Machine Learning SDK 'sını yükler
 
-- Bir [Azure Machine Learning hizmet çalışma alanı](how-to-manage-workspace.md).
+- [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md).
 
 - Bir çalışma alanı [yapılandırma dosyası](how-to-configure-environment.md#workspace).
 
@@ -173,7 +173,7 @@ Veri kayması algılayıcısı yapılandırması, [çalışma alanı giriş sayf
 
 Değişikliklerini katsayısını uyarma eşiğini ayarlayıp bir e-posta adresi sağladıktan sonra, DRX katsayısı eşiğin üstünde olduğunda bir [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview) e-posta uyarısı otomatik olarak gönderilir. 
 
-Özel uyarıları ve eylemleri ayarlamanıza olanak sağlamak için tüm veri DRIP ölçümleri, Azure Machine Learning hizmeti çalışma alanıyla birlikte oluşturulan [Application Insights](how-to-enable-app-insights.md) kaynağında depolanır. E-posta uyarısında Application Insights sorgusuna bağlantıyı izleyebilirsiniz.
+Özel uyarıları ve eylemleri ayarlamanıza olanak sağlamak için tüm veri DRIP ölçümleri, Azure Machine Learning çalışma alanıyla birlikte oluşturulan [Application Insights](how-to-enable-app-insights.md) kaynağında depolanır. E-posta uyarısında Application Insights sorgusuna bağlantıyı izleyebilirsiniz.
 
 ![Veri Dre-posta uyarısı](media/how-to-monitor-data-drift/drift_email.png)
 

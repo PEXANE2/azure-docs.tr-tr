@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 689926d0dbaebaaf56c8238e8fed7a691e8cacf4
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cd8a6c7e7f5ddf781fcd63f3969eedd8f45424bc
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882544"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058609"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 'ta JDBC sürücüsü aracılığıyla Apache Hive sorgulama
 
@@ -67,7 +67,7 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
 4. **Sürücüler** iletişim kutusunun üst kısmındaki simgelerden bir sürücü oluşturmak için **+** simgeyi seçin.
 
-    ![Sürücü simgeleri](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
+    ![SQUIRREL SQL uygulama sürücüleri simgesi](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-driversicons.png)
 
 5. Sürücü Ekle iletişim kutusunda aşağıdaki bilgileri ekleyin:
 
@@ -76,13 +76,13 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
     * **Ek sınıf yolu**: Daha önce indirilen tüm jar dosyalarını eklemek için **Ekle** düğmesini kullanın
     * **Sınıf adı**: org. Apache. Hive. JDBC. HiveDriver
 
-   ![Sürücü Ekle iletişim kutusu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
+   ![parametrelerle sürücü iletişim kutusu Ekle](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
    Bu ayarları kaydetmek için **Tamam ' ı** seçin.
 
 6. SQuirreL SQL penceresinin sol tarafında **diğer adlar**' ı seçin. Ardından bir bağlantı **+** diğer adı oluşturmak için simgeyi seçin.
 
-    ![Yeni diğer ad Ekle](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
+    ![SQUIRREL SQL yeni diğer ad Ekle iletişim kutusu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
 7. **Diğer ad Ekle** iletişim kutusu için aşağıdaki değerleri kullanın.
 
@@ -98,16 +98,16 @@ SQUIRREL SQL, HDInsight kümeniz ile Hive sorgularını uzaktan çalıştırmak 
 
     * **Parola**: Küme oturum açma hesabının parolası.
 
-   ![diğer ad Ekle iletişim kutusu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+   ![parametrelerle diğer ad iletişim kutusu Ekle](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
-    > [!IMPORTANT] 
+    > [!IMPORTANT]
     > Bağlantının çalıştığını doğrulamak için **Test** düğmesini kullanın. **Bağlanırken: HDInsight** 'ta Hive iletişim kutusu görüntülenirse, testi gerçekleştirmek için **Bağlan** ' ı seçin. Sınama başarılı olursa **başarılı bir bağlantı** iletişim kutusu görürsünüz. Bir hata oluşursa bkz. [sorun giderme](#troubleshooting).
 
     Bağlantı diğer adını kaydetmek için **diğer ad Ekle** iletişim kutusunun altındaki **Tamam** düğmesini kullanın.
 
 8. SQuirreL SQL 'in en üstündeki açılan menüde bulunan **bağlantı** noktasından, **HDInsight 'ta Hive**' yi seçin. Sorulduğunda, **Connect**.
 
-    ![bağlantı iletişim kutusu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
+    ![parametrelerle bağlantı iletişim kutusu iletişim kutusu](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
 9. Bağlandıktan sonra, SQL sorgu iletişim kutusuna aşağıdaki sorguyu girin ve sonra **Çalıştır** simgesini (çalışan bir kişi) seçin. Sonuçlar alanında sorgunun sonuçları gösterilmelidir.
 

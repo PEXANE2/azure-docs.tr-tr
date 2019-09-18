@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566887"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037447"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL veritabanı için Azure Resource Manager şablonları
 
 Azure Resource Manager şablonlar altyapınızı kod olarak tanımlamanızı ve çözümlerinizi Azure bulutuna dağıtmanızı sağlar.
 
-## <a name="single-database--elastic-pool"></a>Tek veritabanı & elastik havuz
+## <a name="single-database--elastic-pooltabsingle-database"></a>[Tek veritabanı & elastik havuz](#tab/single-database)
 
 Aşağıdaki tabloda, Azure SQL veritabanı için Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
 
@@ -41,7 +41,7 @@ Aşağıdaki tabloda, Azure SQL veritabanı için Azure Resource Manager şablon
 | [SQL veritabanı içeren HDInsight kümesi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | Bu şablon, bir HDInsight kümesi, bir SQL veritabanı sunucusu, bir SQL veritabanı ve iki tablo oluşturmanıza olanak sağlar. Bu şablon, [HDInsight 'Ta Hadoop Ile Sqoop kullanma makalesinde](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop) kullanılır |
 | [Bir SQL saklı yordamını zamanlamaya göre çalıştıran Azure Logic App](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | Bu şablon, zamanlamaya göre bir SQL saklı yordamı çalıştıracak bir mantıksal uygulama oluşturmanıza olanak tanır. Yordamın tüm bağımsız değişkenleri, şablonun gövde bölümüne yerleştirilebilir.|
 
-## <a name="managed-instance"></a>Yönetilen Örnek
+## <a name="managed-instancetabmanaged-instance"></a>[Yönetilen örnek](#tab/managed-instance)
 
 Aşağıdaki tabloda, Azure SQL veritabanı yönetilen örneği için Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
 
@@ -51,3 +51,5 @@ Aşağıdaki tabloda, Azure SQL veritabanı yönetilen örneği için Azure Reso
 | [Yönetilen örnek için ağ ortamı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Bu dağıtım, yönetilen örneklerinize ayrılan iki alt ağa sahip yapılandırılmış bir Azure sanal ağı ve diğer kaynakları (örneğin, VM 'Ler, App Service ortamları, vb.) yerleştirebileceğiniz başka bir sanal ağ oluşturur. Bu şablon, yönetilen örnekleri dağıtabileceğiniz, düzgün şekilde yapılandırılmış bir ağ ortamı oluşturacak. |
 | [P2S bağlantısıyla yönetilen örnek](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Bu dağıtım, iki alt ağ `ManagedInstance` ve `GatewaySubnet`ile bir Azure sanal ağı oluşturacak. Yönetilen örnek, ManagedInstance alt ağında dağıtılacak. Sanal ağ geçidi, `GatewaySubnet` alt ağda oluşturulur ve Noktadan siteye VPN bağlantısı için yapılandırılır. |
 | [Sanal makine ile yönetilen örnek](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Bu dağıtım, iki alt ağ `ManagedInstance` ve `Management`ile bir Azure sanal ağı oluşturacak. Yönetilen örnek, `ManagedInstance` alt ağda dağıtılacak. En son SQL Server Management Studio (SSMS) sürümüne sahip sanal makine, `Management` alt ağda dağıtılır. |
+
+---

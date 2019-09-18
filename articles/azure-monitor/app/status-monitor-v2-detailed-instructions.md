@@ -3,7 +3,7 @@ title: Azure Durum İzleyicisi v2 ayrıntılı yönergeleri | Microsoft Docs
 description: Durum İzleyicisi v2 ile çalışmaya başlama hakkında ayrıntılı yönergeler. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 02f4fa45cbfa619825478520961b6411459973e4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 791db3de897231667d184f08ee152705c59a1e35
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326270"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057843"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Durum İzleyicisi v2: Ayrıntılı yönergeler
 
@@ -161,11 +161,11 @@ PowerShell modülüne bağlanamazsınız herhangi bir nedenden dolayı, az. Appl
 
 ### <a name="manually-download-the-latest-nupkg-file"></a>En son nupkg dosyasını el ile indirin
 
-1. [https://aka.ms/MFASetup](https://www.powershellgallery.com/packages/Az.ApplicationMonitor ) kısmına gidin.
+1. https://www.powershellgallery.com/packages/Az.ApplicationMonitor kısmına gidin.
 2. **Sürüm geçmişi** tablosunda dosyanın en son sürümünü seçin.
 3. **Yükleme seçenekleri**altında **el ile indir**' i seçin.
 
-### <a name="option-1-install-into-a-powershell-modules-directory"></a>Seçenek 1: PowerShell modülleri dizinine yüklensin
+### <a name="option-1-install-into-a-powershell-modules-directory"></a>1\. Seçenek: PowerShell modülleri dizinine yüklensin
 PowerShell oturumları tarafından keşfedilecek şekilde, el ile indirilen PowerShell modülünü bir PowerShell dizinine yükleyebilirsiniz.
 Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
@@ -196,7 +196,7 @@ Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](https://docs.micro
     Expand-Archive -LiteralPath $pathToNupkg -DestinationPath $pathInstalledModule
     ```
 
-### <a name="option-2-unzip-and-import-nupkg-manually"></a>Seçenek 2: Nupkg 'yi el ile ayıklayın ve içeri aktarın
+### <a name="option-2-unzip-and-import-nupkg-manually"></a>2\. Seçenek: Nupkg 'yi el ile ayıklayın ve içeri aktarın
 PowerShell oturumları tarafından keşfedilecek şekilde, el ile indirilen PowerShell modülünü bir PowerShell dizinine yükleyebilirsiniz.
 Daha fazla bilgi için bkz. [PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module).
 
@@ -222,7 +222,7 @@ Yükleme betiklerinizi yazarken yukarıdaki yönergeleri gözden geçirin.
 Application Insights SDK 'sının uygulamanızın telemetrisini Microsoft 'a gönderebilmesi gerekir. Web. config dosyanızda uygulamanız için proxy ayarlarını yapılandırmanızı öneririz. Daha fazla bilgi için bkz [. Application Insights SSS: Proxy geçişi](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
 
 
-## <a name="enable-monitoring"></a>İzlemeyi etkinleştirme
+## <a name="enable-monitoring"></a>İzlemeyi etkinleştir
 
 İzlemeyi etkinleştirmek için komutunu kullanın. `Enable-ApplicationInsightsMonitoring`
 

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 557d25c4921c9906be75bce03c326903e63432de
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: bfe8b1297b155ecd947140149c13da6c3a08c3c8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464804"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065974"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak Twitter hesabı ile oturum açmayı ayarlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory (Azure AD) B2C 'de [özel ilkeler](active-directory-b2c-overview-custom.md) kullanarak Twitter hesabı kullanıcıları için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir.
+Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](active-directory-b2c-overview-custom.md) kullanarak Twitter hesabı kullanıcıları için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -46,7 +46,7 @@ Twitter 'ı Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için, bir 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz gizli anahtarı depolamanız gerekir.
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüden **Dizin ve abonelik filtresi** ' ni seçin ve kiracınızı içeren dizini seçin.
+2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
 5. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
@@ -54,7 +54,7 @@ Daha önce Azure AD B2C kiracınızda kaydettiğiniz gizli anahtarı depolamanı
 7. İlke anahtarı için bir **ad** girin. Örneğin: `TwitterSecret`. Ön ek `B2C_1A_` , anahtarınızın adına otomatik olarak eklenir.
 8. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
 9. **Anahtar kullanımı**için öğesini seçin `Encryption`.
-10.           **Oluştur**'a tıklayın.
+10. **Oluştur**'a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -157,12 +157,12 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
 Azure AD B2C ile iletişim, kiracınızda oluşturduğunuz bir uygulama aracılığıyla oluşur. Bu bölümde, daha önce yapmadıysanız bir test uygulaması oluşturmak için tamamlayabildiğiniz isteğe bağlı adımlar listelenmektedir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüden **Dizin ve abonelik filtresi** ' ni seçin ve kiracınızı içeren dizini seçin.
+2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 5. Uygulama için bir ad girin, örneğin *testapp1*.
 6. **Web uygulaması/Web API 'si**için, `Yes`öğesini seçin ve ardından `https://jwt.ms` **yanıt URL 'si**için yazın.
-7.           **Oluştur**'a tıklayın.
+7. **Oluştur**'a tıklayın.
 
 ## <a name="update-and-test-the-relying-party-file"></a>Bağlı olan taraf dosyasını güncelleştirme ve test etme
 

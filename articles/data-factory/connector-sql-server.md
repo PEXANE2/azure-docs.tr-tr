@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 4b6e5d90d72e84f3a8a54ea0aadcad687b598b2d
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 7b266a21aabf37765de4f4f94cd3939cec697585
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010341"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058509"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak SQL Server veri kopyalama
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Data Factory sürümünü seçin:"]
@@ -158,7 +158,9 @@ Ve SQL Server veritabanından veri kopyalamak için aşağıdaki özellikler des
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | type | Veri kümesinin Type özelliği **Sqlservertable**olarak ayarlanmalıdır. | Evet |
-| tableName |Bu özellik, bağlı hizmetin başvurduğu SQL Server veritabanı örneğindeki tablonun veya görünümün adıdır. | Kaynak, havuz için Evet Hayır |
+| schema | Şemanın adı. |Kaynak, havuz için Evet Hayır  |
+| table | Tablo/görünüm adı. |Kaynak, havuz için Evet Hayır  |
+| tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için ve `schema` `table`kullanın. | Kaynak, havuz için Evet Hayır |
 
 **Örnek**
 
@@ -174,7 +176,8 @@ Ve SQL Server veritabanından veri kopyalamak için aşağıdaki özellikler des
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }

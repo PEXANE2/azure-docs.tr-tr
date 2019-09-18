@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 699dd41024bd60b2016771d728253d938fc9ab23
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 9a3c11c7303d467a1a993c49d983131639683239
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347155"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064869"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak yerel istemci uygulamasında kimlik doğrulamasını etkinleştirme
 
-Bu öğreticide, bir Windows Presentation Foundation (WPF) masaüstü uygulamasında kullanıcının oturumunu açmak ve kullanıcıyı kaydetmek için Azure Active Directory (Azure AD) B2C’nin nasıl kullanılacağı gösterilir. Azure AD B2C, uygulamalarınızın, açık standart protokoller kullanarak sosyal hesaplar, kurumsal hesaplar ve Azure Active Directory hesaplar için kimlik doğrulaması yapmasına olanak sağlar.
+Bu öğreticide, bir Windows Presentation Foundation (WPF) masaüstü uygulamasında Kullanıcı oturumu açmak ve kullanıcılara kaydolmak için Azure Active Directory B2C (Azure AD B2C) nasıl kullanılacağı gösterilmektedir. Azure AD B2C, uygulamalarınızın, açık standart protokoller kullanarak sosyal hesaplar, kurumsal hesaplar ve Azure Active Directory hesaplar için kimlik doğrulaması yapmasına olanak sağlar.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -38,7 +38,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ## <a name="add-the-native-client-application"></a>Yerel istemci uygulamasını ekleme
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Azure AD B2C kiracınızı tıklayarak içeren dizine kullandığınızdan emin olun **dizin ve abonelik filtresi** üst menü ve kiracınız içeren dizine seçme.
+2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 5. Uygulama için bir ad girin. Örneğin, *nativeapp1*.
@@ -49,7 +49,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     - **Unique** -YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contoso.appname://redirect/path` ,`com.onmicrosoft.contoso.appname` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış bir seçim yapıyorsa, oturum açma işlemi başarısız olur.
     - **Tam** -yeniden yönlendirme URI 'si bir şemaya ve bir yola sahip olmalıdır. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, `//contoso/` `//contoso` çalışıp başarısız olur. Yeniden yönlendirme URI 'sinin alt çizgi gibi özel karakterler içermediğinden emin olun.
 
-9.           **Oluştur**'a tıklayın.
+9. **Oluştur**'a tıklayın.
 10. Özellikler sayfasında, örneği yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.
 
 ## <a name="configure-the-sample"></a>Örneği yapılandırma

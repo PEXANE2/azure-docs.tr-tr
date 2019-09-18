@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 08/30/2019
 ms.author: jingwang
-ms.openlocfilehash: fbf6ddc2db0312b2dfd34e79aa04c246ce2ac8d6
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: e7952192a0c3150e6c323370653544ea9ad97b62
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174669"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71032756"
 ---
 | Category              | Veri deposu                                                   | [Kopyalama etkinliği](../articles/data-factory/copy-activity-overview.md)  (kaynak/havuz) | [Veri akışını eşleme](../articles/data-factory/concepts-data-flow-overview.md) | [Arama Etkinliği](../articles/data-factory/control-flow-lookup-activity.md) | [Meta Veri Alma Etkinliği](../articles/data-factory/control-flow-get-metadata-activity.md) | [Etkinliği sil](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -21,7 +21,7 @@ ms.locfileid: "70174669"
 | &nbsp;                | [Azure Data Lake Storage 2.](../articles/data-factory/connector-azure-data-lake-storage.md) | ✓/✓                                                          | ✓ <br> <small>Desteklenen biçimler: Sınırlandırılmış metin, Parquet</small>                  | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [MariaDB için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mariadb.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [MySQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-mysql.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
-| &nbsp;                | [PostgreSQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-postgresql.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
+| &nbsp;                | [PostgreSQL için Azure Veritabanı](../articles/data-factory/connector-azure-database-for-postgresql.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [Azure Dosya Depolama](../articles/data-factory/connector-azure-file-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [Azure SQL Veritabanı](../articles/data-factory/connector-azure-sql-database.md) | ✓/✓                                                           | ✓                                                            | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure SQL veritabanı yönetilen örneği](../articles/data-factory/connector-azure-sql-database-managed-instance.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            |                                                              |

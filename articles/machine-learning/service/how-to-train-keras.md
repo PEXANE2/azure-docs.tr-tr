@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: efa9b8f4f5cba36bfb2557b7be33ec9519b1d804
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 9015fa445c64bffa74509e84d90eb77508da6d9e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999365"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076441"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning ile keras sınıflandırma modelini eğitme ve kaydetme
 
@@ -55,13 +55,9 @@ Bu bölüm, gerekli Python paketlerini yükleyerek, bir çalışma alanı başla
 
 ```Python
 import os
-import urllib
-import shutil
 import azureml
-
 from azureml.core import Experiment
 from azureml.core import Workspace, Run
-
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 ```
@@ -78,43 +74,36 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>Deneme oluşturma
 
-Eğitim betiklerinizi tutmak için bir deneme ve bir klasör oluşturun. Bu örnekte, "keras-mnist" adlı bir deneme oluşturun.
+Çalışma alanınızda "keras-mnist" adlı bir deneme oluşturun.
 
 ```Python
-script_folder = './keras-mnist'
-os.makedirs(script_folder, exist_ok=True)
-
 exp = Experiment(workspace=ws, name='keras-mnist')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>Veri kümesini ve betikleri karşıya yükle
+### <a name="create-a-file-dataset"></a>Dosya veri kümesi oluşturma
 
-Veri [deposu](how-to-access-data.md) , verileri bir işlem hedefine bağlayarak veya kopyalayarak verilerin saklanabileceği ve erişebileceği bir yerdir. Her çalışma alanı varsayılan bir veri deposu sağlar. Eğitim sırasında kolayca erişilebilmesi için veri ve eğitim betikleri veri deposuna yükleyin.
+`FileDataset` Nesne, çalışma alanı veri deposundaki veya genel URL 'lerdeki bir veya birden çok dosyaya başvurur. Dosyalar herhangi bir biçimde olabilir ve sınıfı, size dosyaları indirme veya işleme özelliğini sağlar. Bir `FileDataset`oluşturarak, veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine herhangi bir dönüştürme uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir. Daha fazla bilgi için bkz. `Dataset` paketteki [nasıl yapılır](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets) Kılavuzu.
 
-1. MNIST veri kümesini yerel olarak indirin.
+```python
+from azureml.core.dataset import Dataset
 
-    ```Python
-    os.makedirs('./data/mnist', exist_ok=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
 
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename = './data/mnist/train-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename = './data/mnist/train-labels.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename = './data/mnist/test-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename = './data/mnist/test-labels.gz')
-    ```
+Veri kümesini çalışma alanınıza kaydetmek için yönteminikullanın,böylecediğerdenemeleriarasındayenidenkullanılabilirveeğitimbetiğinizdekiadagöreadlandırılır.`register()`
 
-1. MNIST veri kümesini varsayılan veri deposuna yükleyin.
-
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/mnist', target_path='mnist', overwrite=True, show_progress=True)
-    ```
-
-1. Keras eğitim betiği `keras_mnist.py`, ve yardımcı `utils.py`dosyasını yükleyin.
-
-    ```Python
-    shutil.copy('./keras_mnist.py', script_folder)
-    shutil.copy('./utils.py', script_folder)
-    ```
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
+```
 
 ## <a name="create-a-compute-target"></a>İşlem hedefi oluşturmak
 
@@ -142,11 +131,22 @@ except ComputeTargetException:
 
 [TensorFlow tahmin aracı](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py) , işlem hedefinde TensorFlow eğitim işlerinin başlatılması için basit bir yol sağlar. Keras, TensorFlow üzerinde çalıştığından, TensorFlow tahmin Aracı ' ı kullanabilir ve `pip_packages` bağımsız değişkenini kullanarak keras kitaplığını içeri aktarabilirsiniz.
 
+İlk olarak, `Dataset` sınıfını kullanarak çalışma alanı veri deposundan verileri alın.
+
+```python
+dataset = Dataset.get_by_name(ws, 'mnist dataset')
+
+# list the files referenced by mnist dataset
+dataset.to_path()
+```
+
 TensorFlow tahmin aracı, herhangi bir çerçeveyi desteklemek için [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) kullanılabilen genel sınıf aracılığıyla uygulanır. Ek olarak, DNN `script_params` hyperparameter ayarlarını içeren bir sözlük oluşturun. Genel tahmin aracı kullanan eğitim modelleri hakkında daha fazla bilgi için bkz. [tahmin aracı kullanarak Azure Machine Learning modelleri eğitme](how-to-train-ml-models.md)
 
-```Python
+```python
+from azureml.train.dnn import TensorFlow
+
 script_params = {
-    '--data-folder': ds.path('mnist').as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--batch-size': 50,
     '--first-layer-neurons': 300,
     '--second-layer-neurons': 100,

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 09cdc2fb5dba152e467164fd757225c7a9183264
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369407"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066160"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C kullanılabilecek uygulama türleri
 
-Azure Active Directory (Azure AD) B2C, çeşitli modern uygulama mimarilerinde kimlik doğrulamasını destekler. Bunların tümü [OAuth 2.0](active-directory-b2c-reference-protocols.md) veya [OpenID Connect](active-directory-b2c-reference-protocols.md) endüstri standardı protokollerine dayalıdır. Bu makalede, tercih ettiğiniz dil veya platformdan bağımsız olarak oluşturabileceğiniz uygulama türleri açıklanmaktadır. Ayrıca, uygulama oluşturmaya başlamadan önce üst düzey senaryoları anlamanıza yardımcı olur.
+Azure Active Directory B2C (Azure AD B2C), çeşitli modern uygulama mimarilerinin kimlik doğrulamasını destekler. Bunların tümü [OAuth 2.0](active-directory-b2c-reference-protocols.md) veya [OpenID Connect](active-directory-b2c-reference-protocols.md) endüstri standardı protokollerine dayalıdır. Bu makalede, tercih ettiğiniz dil veya platformdan bağımsız olarak oluşturabileceğiniz uygulama türleri açıklanmaktadır. Ayrıca, uygulama oluşturmaya başlamadan önce üst düzey senaryoları anlamanıza yardımcı olur.
 
 Azure AD B2C kullanan her uygulamanın [Azure Portal](https://portal.azure.com/)kullanılarak [Azure AD B2C kiracınızda](active-directory-b2c-get-started.md) kayıtlı olması gerekir. Uygulama kayıt işlemi, değerleri toplar ve atar, örneğin:
 
@@ -70,7 +70,7 @@ Bir Web uygulamasında, bir [ilkenin](active-directory-b2c-reference-policies.md
 
 Azure AD'den alınan bir ortak imzalama anahtarı kullanarak `id_token` doğrulaması yapma, kullanıcının kimliğini doğrulamak için yeterlidir. Bu işlem, sonraki sayfa isteklerinde kullanıcıyı tanımlamak için kullanılabilecek bir oturum tanımlama bilgisi de ayarlar.
 
-Bu senaryoyu eylemde görmek için [Başlarken](active-directory-b2c-overview.md)bölümümüzde Web uygulaması oturum açma kodu örneklerinden birini deneyin.
+Bu senaryoyu eylemde görmek için [Başlarken bölümümüzde](active-directory-b2c-overview.md)Web uygulaması oturum açma kodu örneklerinden birini deneyin.
 
 Basit oturum açmayı kolaylaştırmanın yanı sıra, bir Web sunucusu uygulamasının bir arka uç Web hizmetine erişmesi de gerekebilir. Bu durumda, Web uygulaması biraz farklı bir [OpenID Connect akışı](active-directory-b2c-reference-oidc.md) gerçekleştirebilir ve yetkilendirme kodları ve yenileme belirteçleri kullanarak belirteçleri alabilir. Bu senaryo, aşağıdaki [Web API'leri bölümünde](#web-apis) belirtilmiştir.
 
@@ -132,12 +132,12 @@ Bu zincirli web API'si senaryosu, temsili akış olarak da bilinen OAuth 2.0 JWT
 
 Azure AD B2C uygulamalarını şu yollarla düzenlemeyin:
 
--  [Uygulama kayıt portalı](https://apps.dev.microsoft.com/)gibi diğer uygulama yönetim portallarında.
+-  [Uygulama kayıt portalı](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)gibi diğer uygulama yönetim portallarında.
 - Graph API veya PowerShell kullanma.
 
 Azure AD B2C uygulamayı Azure portal dışında düzenlerseniz, bu, hatalı bir uygulama haline gelir ve Azure AD B2C artık kullanılamaz. Uygulamayı silin ve yeniden oluşturun.
 
-Uygulamayı silmek için [uygulama kayıt portalı](https://apps.dev.microsoft.com/) ' na gidin ve uygulamayı orada silin. Uygulamanın görünür olması için uygulamanın sahibi olmanız (ve yalnızca kiracının yöneticisi olmamanız) gerekir.
+Uygulamayı silmek için [uygulama kayıt portalı](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) ' na gidin ve uygulamayı orada silin. Uygulamanın görünür olması için uygulamanın sahibi olmanız (ve yalnızca kiracının yöneticisi olmamanız) gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

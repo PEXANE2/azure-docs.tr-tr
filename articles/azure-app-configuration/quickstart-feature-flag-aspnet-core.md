@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 41947de18ae27b41d046fd4358f0039a1b56374d
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347916"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076335"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı Başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -36,9 +36,9 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki özellik bayraklarını eklemek için **Özellik Yöneticisi** >  **+ Oluştur** ' u seçin:
+6. Aşağıdaki özellik bayraklarını eklemek için **Özellik Yöneticisi** >  **+ Ekle** ' yi seçin:
 
-    | Anahtar | Durum |
+    | Anahtar | State |
     |---|---|
     | Beta | Kapalı |
 
@@ -81,10 +81,11 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
-1. Aşağıdaki komutu çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet paketine başvuru ekleyin:
+1. Aşağıdaki komutları çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` `Microsoft.FeatureManagement.AspNetCore` ve NuGet paketlerine başvuru ekleyin:
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
     ```
 
 1. Projenizin paketlerini geri yüklemek için aşağıdaki komutu çalıştırın:
@@ -199,7 +200,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. *Görünümler* `<body>`  `<nav>`  >  `<header>`  paylaşılandizininde_Layout.cshtmldosyasınıaçınvealtındakibarkoduaşağıdakikodladeğiştirin:\\
+1. *Görünümler* `<body>` `<nav>`  >  `<header>` paylaşılandizininde_Layout.cshtmldosyasınıaçınvealtındakibarkoduaşağıdakikodladeğiştirin:\\
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -262,9 +263,11 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
 
 1. **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
 
-    | Anahtar | Durum |
+    | Anahtar | State |
     |---|---|
     | Beta | Açık |
+
+1. Komut istemine geri dönüp çalışan `Ctrl-C` `dotnet` işlemi iptal etmek için tuşuna basarak ve sonra yeniden çalıştırarak `dotnet run`uygulamanızı yeniden başlatın.
 
 1. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin.
 
@@ -281,3 +284,4 @@ Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz 
 - [Özellik yönetimi](./concept-feature-management.md)hakkında daha fazla bilgi edinin.
 - [Özellik bayraklarını yönetin](./manage-feature-flags.md).
 - [ASP.NET Core uygulamasında Özellik bayraklarını kullanın](./use-feature-flags-dotnet-core.md).
+- [ASP.NET Core uygulamasında dinamik yapılandırma kullanma](./enable-dynamic-configuration-aspnet-core.md)

@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a4bb82665ecd9d04c097a127f46814bb7198f393
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: f7f2217677b81c6f3e87eaa2612880adf3b499c2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227185"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064933"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Dosya destek Istekleri
-Aşağıdaki adımları kullanarak Azure portal Azure Active Directory (Azure AD) B2C için destek isteklerini dosya olarak kullanabilirsiniz:
+Aşağıdaki adımları kullanarak Azure portal Azure Active Directory B2C (Azure AD B2C) için destek isteklerini dosya olarak kullanabilirsiniz:
 
 1. B2C kiracınızdan ilişkili bir Azure aboneliğine sahip başka bir kiracıya geçiş yapın. Genellikle, son olarak çalışan kiracınız veya bir Azure aboneliğine kaydolduğunuzda sizin için oluşturulan varsayılan kiracı olur. Daha fazla bilgi edinmek için bkz. [Azure aboneliğinin Azure AD ile ilişkisi](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
@@ -52,7 +52,7 @@ Aşağıdaki adımları kullanarak Azure portal Azure Active Directory (Azure AD
 
      ![Azure portal sonraki Düğme vurgulanmış sorun sayfası](./media/active-directory-b2c-support/support-problem.png)
 
-1. **İletişim bilgileri** dikey penceresinde, iletişim bilgilerinizi ekleyin.           **Oluştur**'a tıklayın.
+1. **İletişim bilgileri** dikey penceresinde, iletişim bilgilerinizi ekleyin. **Oluştur**'a tıklayın.
 
     ![Portalda oluştur düğmesi vurgulanmış iletişim bilgileri sayfası](./media/active-directory-b2c-support/support-contact.png)
 

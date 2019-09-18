@@ -3,16 +3,17 @@ title: Azure HDInsight yönetim IP adresleri
 description: Azure HDInsight ile sanal ağ için ağ güvenlik gruplarını ve Kullanıcı tanımlı yolları doğru bir şekilde yapılandırmak amacıyla gelen trafiğe izin vermeniz gereken IP adreslerini öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 0a41d1d57257db8f88481766e65eb8ee7569da87
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479197"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076641"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight yönetim IP adresleri
 
@@ -28,7 +29,7 @@ Azure tarafından belirtilen DNS hizmetini kullanıyorsanız, 53 numaralı bağl
 
 Azure HDInsight sistem durumu ve Yönetim Hizmetleri için şu IP adreslerinden gelen trafiğe tüm Azure bölgelerine uygulanan trafik sağlar:
 
-| Kaynak IP adresi | Hedef  | Direction |
+| Kaynak IP adresi | Destination  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*: 443 | Gelen |
 | 23.99.5.239 | \*: 443 | Gelen |

@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 6857697423e494c515bd052cb42af3ad1d9fe188
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207143"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057788"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde görevleri temsilci seçme (Önizleme)
 
@@ -42,7 +42,7 @@ Kuruluşunuzun aşağıdaki beş Kullanıcı olduğunu varsayalım:
 
 | Kullanıcı | Bölüm | Notlar |
 | --- | --- | --- |
-| Alice | IT | Genel yönetici |
+| Alice | BT | Genel yönetici |
 | Bob | Araştırma | Bob Ayrıca bir araştırma grubunun sahibidir |
 | Carole | Araştırma |  |
 | Dave | Pazarlama |  |
@@ -69,7 +69,7 @@ Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki roller
 
 | Role | Açıklama |
 | --- | --- |
-| Katalog Oluşturucu | Kataloglar oluşturun ve yönetin. Genellikle genel yönetici olmayan bir BT Yöneticisi veya bir kaynak koleksiyonu için kaynak sahibi. Katalog oluşturan kişi otomatik olarak kataloğun ilk katalog sahibi olur ve ek Katalog sahipleri ekleyebilir. |
+| Katalog Oluşturucu | Kataloglar oluşturun ve yönetin. Genellikle genel yönetici olmayan bir BT Yöneticisi veya bir kaynak koleksiyonu için kaynak sahibi. Katalog oluşturan kişi otomatik olarak kataloğun ilk katalog sahibi olur ve ek Katalog sahipleri ekleyebilir. Bir katalog Oluşturucu yönetmez veya sahip olmadıkları katalogları göremez ve bir kataloğa ait olmadıkları kaynakları ekleyemez. Katalog oluşturucunun başka bir kataloğu yönetmesi veya sahip olmadıkları kaynakları eklemesi gerekiyorsa, o kataloğun veya kaynağın ortak sahibi olmasını isteyebilir. |
 | Katalog sahibi | Mevcut katalogları düzenleyin ve yönetin. Genellikle bir BT Yöneticisi veya kaynak sahipleri veya kataloğun sahibi tarafından atanan bir kullanıcı. |
 | Paket Yöneticisi 'ne erişim | Bir kataloğun içindeki tüm mevcut erişim paketlerini düzenleyin ve yönetin. |
 
@@ -139,7 +139,15 @@ Katalog oluşturma 'yı atamak istiyorsanız, kullanıcıları Katalog Oluşturu
 
 ## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>Katalog sahibi veya erişim paketi Yöneticisi ekleme
 
-Katalogdaki bir kataloğun veya paketlerin yönetimine temsilci atamak istiyorsanız, kullanıcıları Katalog sahibine ekler veya paket yöneticisi rollerine erişin. Herhangi bir katalog oluşturduğunda ilk katalog sahibi olur. Bir kullanıcıyı Katalog sahibine atamak veya paket yöneticisi rolüne erişmek için bu adımları izleyin.
+Bir kataloğun veya katalogdaki paketlerin yönetimine temsilci atamak için, Katalog sahibine Kullanıcı ekler veya paket yöneticisi rollerine erişin. Herhangi bir katalog oluşturduğunda ilk katalog sahibi olur. 
+
+Atanan Katalog sahibi veya erişim paketi Yöneticisi, projeyi tanımanız gerekir. Katalog Oluşturucu, projenin gün-gün işlemlerine dahil edilmişse erişim paketini oluşturmalı ve aşağıdaki bilgileri bilmez:
+- gerekli kaynaklar
+- erişime ihtiyacı olacak
+- erişimi onaylaması gereken
+- projenin en son ne kadar süre
+
+Katalog Oluşturucu, projenin günlük işlemlerinde ilgili değilse, erişim paketini oluşturup yöneteceği proje lideri olan görevi temsil etmelidir. Bir kullanıcıyı Katalog sahibine atamak veya paket yöneticisi rolüne erişmek için şu adımları izleyin:
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
