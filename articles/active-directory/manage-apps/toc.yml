@@ -22,6 +22,7 @@
     - name: Uygulama Ara Sunucusu üzerinden şirket içi uygulama ekleme
       href: application-proxy-add-on-premises-application.md
 - name: Kavramlar
+  expanded: true
   items:
     - name: Bulut uygulamaları ve çoklu oturum açma
       items:
@@ -240,6 +241,8 @@
           items:
             - name: Kullanıcı hazırlama sorunlarını giderme
               href: application-provisioning-config-problem.md
+            - name: Sağlama günlükleri
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: Eşleme için özniteliği eşitleme - galeri uygulaması
               href: user-provisioning-sync-attributes-for-mapping.md
             - name: Saatler sürüyor - galeri uygulaması
