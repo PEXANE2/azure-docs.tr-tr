@@ -75,13 +75,13 @@ Aşağıdaki veri türleri, **serileştirici** kitaplığı ile oluşturulan mod
 | int32\_t |32 bit tamsayı |
 | int64\_t |64 bit tamsayı |
 | bool |boolean |
-| ASCII\_char\_PTR |ASCII dizesi |
+| ascii\_char\_ptr |ASCII dizesi |
 | EDM\_DATE\_TIME\_OFFSET |Tarih saat boşluğu |
 | EDM\_GUID |GUID |
-| EDM\_İKİLİ |binary |
+| EDM\_BINARY |binary |
 | DECLARE\_STRUCT |karmaşık veri türü |
 
-Son veri türüyle başlayalım. **Declare\_yapısı** , diğer temel türlerin gruplandırmaları olan karmaşık veri türleri tanımlamanızı sağlar. Bu gruplandırmalar şuna benzer bir model tanımlamamızı sağlar:
+Son veri türüyle başlayalım. **DECLARE\_STRUCT** , diğer temel türlerin gruplandırmaları olan karmaşık veri türleri tanımlamanızı sağlar. Bu gruplandırmalar şuna benzer bir model tanımlamamızı sağlar:
 
 ```C
 DECLARE_STRUCT(TestType,
