@@ -1,20 +1,20 @@
 ---
 title: Hadoop için yüksek kullanılabilirlik-Azure HDInsight
 description: HDInsight kümelerinin ek bir baş düğüm kullanarak güvenilirliği ve kullanılabilirliği nasıl artıracağınızı öğrenin. Bunun, her bir baş düğüme tek tek nasıl bağlanacağınızı, örneğin, hem ambarı hem de Hive gibi Hadoop hizmetlerini nasıl etkilediği hakkında bilgi edinin.
-ms.reviewer: jasonh
 author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1bfc17d343f6e788d22cd158fcb849c5895b019f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 615b1e4c5684084b6c5f88d26293b993c1efbf1f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879711"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104418"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight 'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği
 
@@ -106,7 +106,7 @@ Ambarı Web Kullanıcı arabirimi, ' de `https://CLUSTERNAME.azurehdinsight.net`
 
 Ambarı sayfasına geldiğinizde, yüklü hizmetler sayfanın solunda listelenir.
 
-![Yüklü hizmetler](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
+![Apache ambarı yüklü hizmetler](./media/hdinsight-high-availability-linux/hdinsight-installed-services.png)
 
 Durumu göstermek için bir hizmetin yanında görünebilen bir dizi simge vardır. Bir hizmetle ilgili tüm uyarılar, sayfanın üst kısmındaki **Uyarılar** bağlantısı kullanılarak görüntülenebilir.  Ambarı önceden tanımlanmış birkaç uyarı sunar.
 
@@ -155,11 +155,11 @@ Hakkında daha fazla bilgi görüntülemek için her bir hizmeti seçebilirsiniz
 
 Hizmet sayfası her bir hizmetin durumu ve yapılandırması hakkında bilgi sağladığından, hizmetin üzerinde çalıştığı baş düğüm hakkında bilgi sağlamaz. Bu bilgileri görüntülemek için sayfanın üst kısmındaki **konaklar** bağlantısını kullanın. Bu sayfa, baş düğümler de dahil olmak üzere küme içindeki Konakları görüntüler.
 
-![ana bilgisayarlar listesi](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
+![Apache ambarı baş düğümüne ana bilgisayar listesi](./media/hdinsight-high-availability-linux/hdinsight-hosts-list.png)
 
 Baş düğümlerden birine yönelik bağlantıyı seçmek o düğümde çalışan hizmetleri ve bileşenleri görüntüler.
 
-![Bileşen durumu](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
+![Apache ambarı bileşen durumu](./media/hdinsight-high-availability-linux/hdinsight-node-services.png)
 
 Ambarı kullanma hakkında daha fazla bilgi için bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight 'ı izleme ve yönetme](hdinsight-hadoop-manage-ambari.md).
 

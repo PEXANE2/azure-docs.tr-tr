@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: a2f743b2b7e63df8b81a1024b20e3e27a3f247a9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4a961080bc124e53a8c5fe4dcc5f3cd6f21e9e5c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932988"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102565"
 ---
-# <a name="configure-anomaly-detector-containers"></a>Anomali algılayıcı kapsayıcılarını yapılandırma
+# <a name="configure-anomaly-detector-containers"></a>Anomali Algılayıcısı kapsayıcılarını yapılandırma
 
 **Anomali algılayıcı** kapsayıcı çalışma zamanı ortamı, `docker run` komut bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç [örnekler](#example-docker-run-commands) komutu kullanılabilir. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır. 
 
@@ -88,7 +88,7 @@ Anomali algılayıcı kapsayıcıları, eğitim veya hizmet verilerini depolamak
 
 Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayrıca, Docker hizmeti hesabı ve konak bağlama konumu izinleri tarafından kullanılan izinler arasındaki bir çakışma nedeniyle [ana bilgisayarın](anomaly-detector-container-howto.md#the-host-computer)bağlama konumu erişilebilir olmayabilir. 
 
-|İsteğe Bağlı| Ad | Veri türü | Açıklama |
+|İsteğe Bağlı| Name | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
 |İzin verilmedi| `Input` | Dize | Anomali algılayıcı kapsayıcıları bunu kullanmaz.|
 |İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -104,8 +104,10 @@ Parantez `{}`içindeki değeri, kendi değerlerinizle değiştirin:
 
 | Yer tutucu | Değer | Biçim veya örnek |
 |-------------|-------|---|
-|{API_KEY} | Anomali algılayıcısı kaynağının bitiş noktası anahtarı. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | Bölge dahil faturalandırma bitiş noktası değeri.|`https://westus2.api.cognitive.microsoft.com`|
+| **{API_KEY}** | `Anomaly Detector` Azure`Anomaly Detector` anahtarları sayfasında kaynağın uç nokta anahtarı. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Faturalandırma uç noktası değeri, Azure `Anomaly Detector` Genel Bakış sayfasında bulunur.| Açık örnekler için [gerekli parametreleri toplama](anomaly-detector-container-howto.md#gathering-required-parameters) konusuna bakın. |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](anomaly-detector-container-howto.md#billing).

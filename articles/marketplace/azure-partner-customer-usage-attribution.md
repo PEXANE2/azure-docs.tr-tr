@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: pabutler
-ms.openlocfilehash: 40170540458b7bc7ddb30f88117d472858937e8c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 0bbe0e9718a25fdff76e591bf388bf829518502e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962945"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105626"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure iş ortağı müşteri kullanımı ilişkilendirmesi
 
@@ -166,43 +166,28 @@ Ayrıca, SKU 'ların bir teklifin varyantları olduğu SKU gibi daha ayrıntıl�
 
 GUID 'lerin müşteri kullanımı atısyonu sağlamak için kayıtlı olması gerekir.
 
-Şablon GUID 'Leri için tüm kayıtlar Azure Marketi Bulut İş Ortağı Portalı (CPP) aracılığıyla yapılır.
+Tüm şablon GUID kayıtları Iş Ortağı Merkezi 'nde yapılır.
 
-GUID 'yi şablonunuza veya kullanıcı aracısına ekledikten sonra, GUID 'yi CPP olarak kaydettikten sonra tüm dağıtımlar izlenir.
+GUID 'yi şablonunuza veya kullanıcı aracısına ekledikten ve GUID 'yi Iş Ortağı Merkezi 'ne kaydettikten sonra tüm dağıtımlar izlenir.
 
-1. [Azure Market](https://aka.ms/listonazuremarketplace) 'e UYGULAYıN ve cpp erişimi alın.
+1. [Ticari Market yayımcısı](https://aka.ms/JoinMarketplace)olarak kaydolun.
 
-   * İş ortaklarının, [cpp 'de bir profile sahip olması](https://docs.microsoft.com/azure/marketplace/become-publisher)gerekir. Teklifi Azure Market veya AppSource 'ta listeliyoruz.
+   * İş ortaklarının [Iş Ortağı Merkezi 'nde bir profili olması](https://docs.microsoft.com/azure/marketplace/become-publisher)gerekir. Teklifi Azure Market veya AppSource 'ta listeliyoruz.
    * İş ortakları birden çok GUID kaydedebilir.
    * İş ortakları, Market olmayan çözüm şablonları ve teklifleri için bir GUID kaydedebilir.
 
-1. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)' nde oturum açın.
 
-1. Sağ üst köşede hesap simgenizi seçin ve ardından **Yayımcı profili**' ni seçin.
+1. Sağ üst köşede, ayarlar dişli simgesini seçin ve ardından **Geliştirici ayarları**' nı seçin.
 
-   ![Yayımcı profilini seçin](media/marketplace-publishers-guide/guid-image-for-lu.png)
+1. **Hesap ayarları sayfasında**, **Izleme GUID 'si Ekle** ' yi seçin.
 
-1. **Profil sayfasında**, **Izleme GUID 'si Ekle** ' yi seçin.
-
-   ![Izleme GUID Ekle öğesini seçin](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
-
-1. **İzleme GUID 'si** kutusuna izleme GUID 'nizi girin. **PID** ön eki olmadan yalnızca GUID girin. **Özel açıklama** kutusuna teklif adınızı veya açıklamasını girin.
-
-   ![Profil sayfası](media/marketplace-publishers-guide/guid-dev-center-login.png)
-
-   ![GUID ve teklif açıklamasını girin](media/marketplace-publishers-guide/guid-dev-center-example.png)
+1. **GUID** kutusuna izleme GUID 'nizi girin. **PID** ön eki olmadan yalnızca GUID girin. **Açıklama** kutusuna teklif adınızı veya açıklamasını girin.
 
 1. Birden fazla GUID kaydetmek için, **izleme GUID 'i yeniden Ekle** ' yi seçin. Sayfada ek kutular görüntülenir.
 
-   ![Izleme GUID 'i yeniden Ekle 'yi seçin](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
-
-   ![Başka bir GUID ve teklif açıklaması girin](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
-
 1. **Kaydet**’i seçin.
 
-   ![Kaydet 'i seçin](media/marketplace-publishers-guide/guid-dev-center-save.png)
-
-GUID 'yi şablonunuza veya kullanıcı aracısına ekledikten sonra, GUID 'yi CPP olarak kaydettikten sonra tüm dağıtımlar izlenir.
 
 ## <a name="verify-the-guid-deployment"></a>GUID dağıtımını doğrulama
 

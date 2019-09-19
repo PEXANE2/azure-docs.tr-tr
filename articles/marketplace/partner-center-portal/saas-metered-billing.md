@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141769"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105506"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Market ölçüm hizmeti kullanılarak ölçülen faturalandırma
 
@@ -55,7 +55,7 @@ Contoso, contoso Bildirim Hizmetleri (CNS) adlı SaaS hizmetine sahip bir yayım
     * 50000 e-postaların ötesinde, her 100 e-postası için $0,5 olarak
     * 10000 metinlerin ötesinde, her metin için $0,01 ödeyin
 
-CNS Service 'e abone olan bir Azure müşterisi, seçilen plana bağlı olarak aylık metin ve e-posta miktarının dahil edilmesini gönderebilecektir.  Müşteriler dahil edilen miktardan daha fazla tüketiklerinde, planları değiştirmek veya farklı bir şey yapmak zorunda değildir.  Contoso, dahil edilen miktarın ötesinde fazla yaşı ölçecek ve [Market ölçüm HIZMETI API](./marketplace-metering-service-apis.md)'sini kullanarak ek kullanım için kullanım olaylarını Microsoft 'a yaybaşlatacak.  Microsoft 'un sırasıyla, yayımcı tarafından belirtilen ek kullanım için müşteriyi ücretlendirir.
+CNS Service 'e abone olan bir Azure müşterisi, seçilen plana bağlı olarak aylık metin ve e-posta miktarının dahil edilmesini gönderebilecektir.  Contoso, kullanımı Microsoft 'a herhangi bir kullanım olayı göndermeden dahil edilen miktara göre ölçer.  Müşteriler dahil edilen miktardan daha fazla tüketiklerinde, planları değiştirmek veya farklı bir şey yapmak zorunda değildir.  Contoso, dahil edilen miktarın ötesinde fazla yaşı ölçecek ve [Market ölçüm HIZMETI API](./marketplace-metering-service-apis.md)'sini kullanarak ek kullanım için kullanım olaylarını Microsoft 'a yaybaşlatacak.  Microsoft 'un sırasıyla, yayımcı tarafından belirtilen ek kullanım için müşteriyi ücretlendirir.
 
 ## <a name="billing-dimensions"></a>Fatura boyutları
 

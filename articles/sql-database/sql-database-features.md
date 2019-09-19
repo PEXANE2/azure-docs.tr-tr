@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 3cad1a73dd98928ed12748e2acffaea158dc5924
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010294"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103164"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL veritabanı özellikleri
 
@@ -114,8 +114,8 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 
 | **Platform özelliği** | **Tek veritabanları ve elastik havuzlar** | **Yönetilen örnekler ve örnek havuzları** |
 | --- | --- | --- |
-| [Etkin coğrafi çoğaltma](sql-database-active-geo-replication.md) | Evet-hiperscale dışında tüm hizmet katmanları | Hayır, bkz. [otomatik yük devretme grupları (Önizleme)](sql-database-auto-failover-group.md) alternatif olarak |
-| [Otomatik yük devretme grupları](sql-database-auto-failover-group.md) | Evet-hiperscale dışında tüm hizmet katmanları | Evet, [genel önizlemede](sql-database-auto-failover-group.md)|
+| [Etkin coğrafi çoğaltma](sql-database-active-geo-replication.md) | Evet-hiperscale dışında tüm hizmet katmanları | Hayır, bkz. [otomatik yük devretme grupları](sql-database-auto-failover-group.md) alternatif olarak |
+| [Otomatik yük devretme grupları](sql-database-auto-failover-group.md) | Evet-hiperscale dışında tüm hizmet katmanları | Evet, bkz. [otomatik yük devretme grupları](sql-database-auto-failover-group.md)|
 | Otomatik Ölçeklendirme | Evet, ancak yalnızca [sunucusuz modelde](sql-database-serverless.md). Sunucusuz olmayan modelde, hizmet katmanı (sanal çekirdek, depolama veya DTU değişikliği) değişikliği hızlı ve çevrimiçi olur. Hizmet katmanı değişikliği için en az veya kapalı kalma süresi gerekir. | Hayır, ayrılmış işlem ve depolama seçeneğini belirlemeniz gerekir. Hizmet katmanını değiştirme (sanal çekirdek veya en fazla depolama) çevrimiçi ve en az bir kesinti süresi gerektirir. |
 | [Otomatik yedeklemeler](sql-database-automated-backups.md) | Evet. Tam yedeklemeler 7 günde bir, fark 12 saat ve günlük yedeklemesi her 5-10 dakikada bir alınır. | Evet. Tam yedeklemeler 7 günde bir, fark 12 saat ve günlük yedeklemesi her 5-10 dakikada bir alınır. |
 | [Otomatik ayarlama (dizinler)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Evet](sql-database-automatic-tuning.md)| Hayır |
@@ -169,9 +169,9 @@ Verilerinizi SQL Server, Tek Veritabanı ve yönetilen örnek veritabanları ara
 
 | **Kaynak** | **Tek veritabanı ve elastik havuz** | **Yönetilen örnek ve örnek havuzları** |
 | --- | --- | --- |
-| SQL Server (Şirket içi, AzureVM, Amazon RDS) | **Çevrimiç** [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Çevrimiç** [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** Yerel yedekleme/geri yükleme, [bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) |
+| SQL Server (Şirket içi, AzureVM, Amazon RDS) | **Çevrimiçi:** [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Çevrimiçi:** [Veri geçiş hizmeti (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [İşlemsel çoğaltma](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** Yerel yedekleme/geri yükleme, [bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) |
 | Tek veritabanı | **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp |
-| Yönetilen Örnek | **Çevrimiç** [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) | **Çevrimiç** [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** Çoklu örnek zaman çizelgesi geri yüklemesi ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) veya [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [yerel yedekleme/geri yükleme](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [bacpac dosyası (Içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) |
+| Yönetilen Örnek | **Çevrimiçi:** [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** [Bacpac dosyası (içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) | **Çevrimiçi:** [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) <br/> **Çevrimdışı** Çoklu örnek zaman çizelgesi geri yüklemesi ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) veya [Azure CLI](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [yerel yedekleme/geri yükleme](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [bacpac dosyası (Içeri aktarma)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), BCP, [anlık görüntü çoğaltma](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

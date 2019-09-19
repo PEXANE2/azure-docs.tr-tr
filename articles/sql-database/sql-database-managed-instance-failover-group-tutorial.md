@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 04802b8b25ca21cc0099874e5a9ea69748868f6e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103065"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103206"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Öğretici: Yük devretme grubuna SQL veritabanı yönetilen örneği ekleme
 
@@ -31,7 +31,7 @@ Bir yük devretme grubuna SQL veritabanı yönetilen örneği ekleyin. Bu makale
   > [!NOTE]
   > - Bu öğreticide, kaynakları [yönetilen örnek için yük devretme grupları ayarlamaya yönelik önkoşullara](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)sahip olduğunuzdan emin olun. 
   > - Yönetilen bir örnek oluşturmak, önemli miktarda zaman alabilir. Sonuç olarak, Bu öğreticinin tamamlanması birkaç saat sürebilir. Sağlama süreleri hakkında daha fazla bilgi için bkz. [yönetilen örnek yönetimi işlemleri](sql-database-managed-instance.md#managed-instance-management-operations). 
-  > - Yönetilen örneklerle yük devretme gruplarının kullanılması şu anda önizlemededir. 
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -250,7 +250,7 @@ Bu adımda, yük devretme grubunuzu ikincil sunucuya devreder ve sonra Azure por
 1. Yönetilen örneği seçin ve **Sil**' i seçin. Kaynağı `yes` silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. Bu işlemin tamamlanması biraz zaman alabilir ve tamamlanana kadar *sanal kümeyi* ya da başka herhangi bir bağımlı kaynağı silemeyeceksiniz. Yönetilen örneğinizin silindiğini onaylamak için etkinlik sekmesindeki silmeyi izleyin. 
 1. Yönetilen örnek silindikten sonra, *sanal kümeyi* kaynak grubunuzda seçip **Sil**' i seçerek silin. Kaynağı `yes` silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. 
 1. Kalan kaynakları silin. Kaynağı `yes` silmek istediğinizi onaylamak için metin kutusunu yazın ve ardından **Sil**' i seçin. 
-1. Kaynak grubunu Sil ' i seçerekkaynak grubunu Sil ' i seçin, kaynak grubunun `myResourceGroup`adını yazın ve **Sil**' i seçin. 
+1. Kaynak grubunu Sil ' i seçerek kaynak **grubunu Sil ' i seçin,** kaynak grubunun `myResourceGroup`adını yazın ve **Sil**' i seçin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

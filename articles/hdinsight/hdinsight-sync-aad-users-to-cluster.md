@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9a7008ca7967135209b8fc2c341998570a2679be
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 9767bccc754d5ccf8c0e7cbb66c8e9c3d5eaf7d0
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960820"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105357"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory kullanıcılarını HDInsight kümesine eşitleme
 
@@ -31,11 +31,11 @@ Konaklarınızı görüntülemek için, ambarı Web Kullanıcı arabirimini aç�
 
 2. Sol taraftaki menüden **tüm kullanıcılar** ' ı seçin ve ardından **Yeni Kullanıcı**' yı seçin.
 
-    ![Tüm kullanıcılar bölmesi](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
+    ![Azure portal kullanıcılar ve gruplar](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. Yeni Kullanıcı formunu doldurun. Küme tabanlı izinleri atamak için oluşturduğunuz grupları seçin. Bu örnekte, Yeni Kullanıcı atayabilmeniz için "HiveUsers" adlı bir grup oluşturun. Bir ESP kümesi oluşturmak için [örnek yönergeler](hdinsight-domain-joined-configure.md) , ve `HiveUsers` `AAD DC Administrators`olmak üzere iki grup ekleme içerir.
 
-    ![Yeni Kullanıcı bölmesi](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
+    ![Azure portal Kullanıcı bölmesi grupları seçin](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. **Oluştur**’u seçin.
 
@@ -47,7 +47,7 @@ Aşağıdaki yöntem REST API ambarı ile GÖNDERI kullanır. Daha fazla bilgi i
 
 1. [SSH ile kümenize bağlanın](hdinsight-hadoop-linux-use-ssh-unix.md). Azure portal kümenizin genel bakış bölmesinden **Secure Shell (SSH)** düğmesini seçin.
 
-    ![Secure Shell (SSH)](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
+    ![HDInsight Secure Shell (SSH) simgesi](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
 
 2. Görüntülenmiş `ssh` komutu kopyalayın ve SSH istemcisine yapıştırın. İstendiğinde SSH kullanıcı parolasını girin.
 
@@ -131,15 +131,15 @@ Yeni Azure AD kullanıcısının eklendiğini doğrulamak için [Apache ambarı 
 
 1. Ambarı panosundan **yönetici** menüsünde **ambarı Yönet** ' i seçin.
 
-    ![Ambarı yönetme](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
+    ![Apache ambarı panosu ambarı yönetme](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. Sayfanın sol tarafındaki **Kullanıcı + Grup Yönetimi** menü grubu altında **Kullanıcılar** ' ı seçin.
 
-    ![Kullanıcılar menü öğesi](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
+    ![HDInsight kullanıcıları ve grupları menüsü](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. Yeni kullanıcının kullanıcı tablosu içinde listelenmesi gerekir. Türü yerine olarak `LDAP` `Local`ayarlanır.
 
-    ![Kullanıcılar sayfası](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
+    ![HDInsight AAD kullanıcıları sayfasına genel bakış](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Yeni Kullanıcı olarak ambarı 'nda oturum açın
 

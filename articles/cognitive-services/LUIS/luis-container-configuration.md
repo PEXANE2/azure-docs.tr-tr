@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: e6a13688bba1c3a0e62e427e078e78c8f8dd4e70
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9760475886ecb0f20d9f0f3981eab8246643da21
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560623"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101992"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker kapsayıcılarını yapılandırma 
 
@@ -57,7 +57,7 @@ Başlangıç veya geliştirme tuşuna kullanmayın.
 
 ## <a name="billing-setting"></a>Faturalandırma ayarı
 
-Ayar, Azure üzerinde bulunan bilişsel hizmetler kaynağının, kapsayıcının fatura bilgilerini ölçmek için kullanılan uç nokta URI 'sini belirtir.  `Billing` Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'daki bilişsel _Hizmetler_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
+Ayar, Azure üzerinde bulunan bilişsel hizmetler kaynağının, kapsayıcının fatura bilgilerini ölçmek için kullanılan uç nokta URI 'sini belirtir. `Billing` Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve Azure 'daki bilişsel _Hizmetler_ kaynağı için değer geçerli bir uç nokta URI 'si olmalıdır. Kapsayıcı her 10 ila 15 dakikada bir kullanım raporu sağlar.
 
 Bu ayar aşağıdaki konumlarda bulunabilir:
 
@@ -106,7 +106,7 @@ Aşağıdaki tabloda, desteklenen ayarları açıklanmaktadır.
 
 Aşağıdaki örnekler, yazma ve kullanma göstermek için yapılandırma ayarlarını kullanır. `docker run` komutları.  Kapsayıcıyı çalıştıran sonra dek çalıştırmaya devam [Durdur](luis-container-howto.md#stop-the-container) bu.
 
-* Bu örnekler, Windows 'ta herhangi bir `c:` izin çakışmasını önlemek için dizini sürücüden kullanır. Giriş dizini belirli bir dizini kullanmak istiyorsanız, docker vermeniz gerekebilir hizmet izni. 
+* Bu örnekler, Windows 'ta herhangi bir `C:` izin çakışmasını önlemek için dizini sürücüden kullanır. Giriş dizini belirli bir dizini kullanmak istiyorsanız, docker vermeniz gerekebilir hizmet izni. 
 * Docker kapsayıcıları ile çok iyi bilmiyorsanız, bağımsız değişkenlerin sırası değiştirmeyin.
 * Farklı bir işletim sistemi kullanıyorsanız, sistem için doğru konsol/Terminal, bağlama için klasör söz dizimi ve satır devamlılık karakteri kullanın. Bu örneklerde bir Windows konsolunun satır devamlılık karakteriyle `^`birlikte varsayılmaktadır. Kapsayıcı bir Linux işletim sistemi olduğundan, hedef bağlama bir Linux stili klasör söz dizimini kullanır.
 
@@ -116,12 +116,14 @@ Yerine {_argument_name_} kendi değerlerinizle:
 
 | Yer tutucu | Değer | Biçim veya örnek |
 |-------------|-------|---|
-|{API_KEY} | Eğitilen LUIS uygulama uç noktası anahtarı. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URL} | Faturalandırma uç noktası değeri, Azure `Cognitive Services` Genel Bakış sayfasında bulunur. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
+| **{API_KEY}** | `LUIS` Azure`LUIS` anahtarları sayfasında kaynağın uç nokta anahtarı. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | Faturalandırma uç noktası değeri, Azure `LUIS` Genel Bakış sayfasında bulunur.| Açık örnekler için [gerekli parametreleri toplama](luis-container-howto.md#gathering-required-parameters) konusuna bakın. |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](luis-container-howto.md#billing).
-> Apikey değeri, Lua  portalındaki anahtarlar ve uç noktalar sayfasından ve Azure `Cognitive Services` kaynak anahtarları sayfasında da kullanılabilir. 
+> `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor. Daha fazla bilgi için [faturalama](luis-container-howto.md#billing).
+> Apikey değeri, Lua portalındaki anahtarlar ve uç noktalar sayfasından ve Azure `Cognitive Services` kaynak anahtarları sayfasında da kullanılabilir. 
 
 ### <a name="basic-example"></a>Temel örnek
 

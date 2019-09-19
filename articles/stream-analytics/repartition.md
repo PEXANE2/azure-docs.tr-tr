@@ -4,15 +4,15 @@ description: Bu makalede, paralelleştirilmedi Azure Stream Analytics işleri iy
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 07/26/2019
+ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9c802e6d23daf502da351549c66a7dae1247c068
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517442"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101505"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Azure Stream Analytics ile işlemeyi iyileştirmek için yeniden bölümleme kullanın
 
@@ -54,7 +54,17 @@ SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY D
 
 ## <a name="repartitions-for-sql-output"></a>SQL çıkışı için yeniden bölümler
 
-İşiniz çıktı için SQL veritabanı kullandığında, üretilen iş miktarını en üst düzeye çıkarmak için en iyi bölüm sayısını eşleştirmek üzere açık yeniden bölümleme kullanın. SQL sekiz yazıcı ile en iyi şekilde çalıştığından, temizlemeye başlamadan önce akışı sekiz olarak yeniden bölümlendirip veya daha fazla yukarı akış, iş performansına yarar sağlayabilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktısı](stream-analytics-sql-output-perf.md).
+İşiniz çıktı için SQL veritabanı kullandığında, üretilen iş miktarını en üst düzeye çıkarmak için en iyi bölüm sayısını eşleştirmek üzere açık yeniden bölümleme kullanın. SQL sekiz yazıcı ile en iyi şekilde çalıştığından, temizlemeye başlamadan önce akışı sekiz olarak yeniden bölümlendirip veya daha fazla yukarı akış, iş performansına yarar sağlayabilir. 
+
+8 ' den fazla giriş bölümü olduğunda, giriş bölümleme düzenini devralma uygun bir seçenek olmayabilir. Çıktı yazıcılarının sayısını açıkça belirtmek için [sorgunuzda ' i kullanmayı göz](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) önünde bulundurun. 
+
+Aşağıdaki örnek, doğal olarak bölümlenmeden bağımsız olarak girdiden ve veri kümesini DeviceID boyutuna göre yeniden bölümleyip akışa alarak çıktıyı temizler. 
+
+```sql
+SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
+```
+
+Daha fazla bilgi için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktısı](stream-analytics-sql-output-perf.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

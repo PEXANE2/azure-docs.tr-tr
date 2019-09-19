@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 123e63fb79ba966e4e17b0c55440049a79add905
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d8925f1c31b7a0c8f45e65e783077e8f5e2b0add
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931181"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103235"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric 'de DNS hizmeti
 DNS hizmeti, kümenizde etkinleştirebileceğiniz ve DNS protokolünü kullanarak diğer hizmetleri keşfedebilmeniz için kullanabileceğiniz isteğe bağlı bir sistem hizmetidir. 
@@ -73,16 +73,16 @@ Kümenizi oluşturmak için portalını kullanmıyorsanız veya var olan bir kü
 
    - DNS hizmetini varsayılan ayarlarla etkinleştirmek için, aşağıdaki örnekte gösterildiği gibi `addonFeatures` `properties` bölümün içindeki bölümüne ekleyin:
 
-       ```json
-           "properties": {
-              ...
-
-              "addonFeatures": [
-                "DnsService"
+        ```json
+          "properties": {
+            ...
+            "addonFeatures": [
+              "DnsService"
               ],
-              ...
-           }
-       ```
+            ...
+          }
+        ```
+
    - Hizmeti varsayılan ayarlarla etkinleştirmek için `DnsService` `properties` bölümün içindeki `fabricSettings` bölümüne bir bölüm ekleyin. Bu durumda, ' ye `addonFeatures`DNSservice eklemeniz gerekmez. DNS hizmeti için ayarlanacak özellikler hakkında daha fazla bilgi edinmek için bkz. [DNS hizmeti ayarları](./service-fabric-cluster-fabric-settings.md#dnsservice).
 
        ```json
@@ -111,7 +111,10 @@ Kümenizi oluşturmak için portalını kullanmıyorsanız veya var olan bir kü
               ]
             }
        ```
-1. Küme şablonunu yaptığınız değişikliklerle güncelleştirdikten sonra, bunları uygulayın ve yükseltmenin tamamlanmasını sağlayın. Yükseltme tamamlandığında, DNS sistem hizmeti kümenizde çalışmaya başlar. Hizmet adı `fabric:/System/DnsService`, ve Service Fabric Explorer 'ın **sistem** hizmeti bölümünde bulunabilir. 
+3. Küme şablonunu yaptığınız değişikliklerle güncelleştirdikten sonra, bunları uygulayın ve yükseltmenin tamamlanmasını sağlayın. Yükseltme tamamlandığında, DNS sistem hizmeti kümenizde çalışmaya başlar. Hizmet adı `fabric:/System/DnsService`, ve Service Fabric Explorer 'ın **sistem** hizmeti bölümünde bulunabilir. 
+
+> [!NOTE]
+> DNS devre dışı iken etkin olarak yükseltilirken Service Fabric Explorer yeni durumu yansıtmayabilir. Çözümlemek için Azure Resource Manager şablonunuzda UpgradePolicy öğesini değiştirerek düğümleri yeniden başlatın. Daha fazla bilgi için [Service Fabric şablonu başvurusuna](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) bakın.
 
 
 ## <a name="setting-the-dns-name-for-your-service"></a>Hizmetiniz için DNS adını ayarlama

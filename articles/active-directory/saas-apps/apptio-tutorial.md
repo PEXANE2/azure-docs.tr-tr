@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07a978004ee8d2e25772f0d393529cbb509380a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d0ac86dcdb698c554c40325d6a20d6d27de908f8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967220"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104379"
 ---
 # <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>Öğretici: Uygulamatio Azure Active Directory tümleştirme
 
@@ -85,7 +85,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Tanımlayıcı** metin kutusuna değeri yazın:`urn:federation:apptio`
 
-5. Apptio uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+5. Apptio uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 6. Uygulamaya ek olarak, Apptio uygulaması SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Kullanıcı öznitelikleri iletişim kutusundaki Kullanıcı talepleri bölümünde aşağıdaki tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin: 
 
-    | Ad |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | -------------- | -------------------- |
     | FullName       | user.displayname |
     | posta           | Kullanıcı. Mail |
@@ -156,7 +156,7 @@ Bu bölümde, Apptio 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
 ### <a name="create-apptio-test-user"></a>Apptio test kullanıcısı oluşturma
 
-Bu bölümde, Apptio 'de B. Simon adlı bir Kullanıcı oluşturacaksınız. Apptio platformunda kullanıcıları eklemek için [Apptio destek ekibi](https://www.apptio.com/about/contact) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, Apptio 'de B. Simon adlı bir Kullanıcı oluşturacaksınız. Apptio platformunda kullanıcıları eklemek için [Apptio destek ekibi](https://www.apptio.com/about/contact) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

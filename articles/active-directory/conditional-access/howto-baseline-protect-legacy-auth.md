@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 413df402d5acc878130a47821efd5fa3a512257d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9b74491c76747bd635547f6f22964fe792dbf01a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931946"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104077"
 ---
 # <a name="baseline-policy-block-legacy-authentication-preview"></a>Temel ilke: Eski kimlik doğrulamasını engelle (Önizleme)
 
@@ -106,11 +106,11 @@ Modern kimlik doğrulamasını etkinleştirme adımları aşağıdaki makalelerd
 
 Bu ilkeyi etkinleştirmek ve kuruluşunuzu korumak için:
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. İlke listesinde temel ilke ' yi seçin **: Eski kimlik doğrulamasını engelleyin (Önizleme**).
-1. İlkeyi **ilkeyi hemen kullanacak**şekilde ayarlayın.
-1.  **Kaydet**' e tıklayın.
+1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
+1. **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

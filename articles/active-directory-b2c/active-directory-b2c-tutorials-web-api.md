@@ -1,21 +1,21 @@
 ---
-title: Öğretici-bir ASP.NET Web API 'sine erişim Izni verme-Azure Active Directory B2C | Microsoft Docs
+title: Öğretici-Azure Active Directory B2C bir ASP.NET Web API 'sine erişim Izni verme
 description: Bir ASP.NET Web API 'sini korumak ve bir ASP.NET Web uygulamasından çağırmak için Active Directory B2C kullanma öğreticisi.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 02/04/2019
+ms.date: 09/19/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ec6b667dfc554c037d9b0a56e52bc8f212812812
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 87d46fad1c0a5494910a8218c4e40994fc140386
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064717"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103391"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir ASP.NET Web API 'sine erişim izni verme
 
@@ -82,20 +82,20 @@ Web API 'SI kayıtlı olduğuna ve kapsamlarınızın tanımlandığından, Web 
 
 Aşağıdaki iki proje örnek çözümde bulunur:
 
-- **Taskwebapp** -bir görev listesi oluşturun ve düzenleyin. Örnek, kullanıcıların kaydolması veya oturum açması için kaydolma **veya oturum açma** Kullanıcı akışını kullanır.
-- **Taskservice** -oluşturma, okuma, güncelleştirme ve silme görev listesi işlevlerini destekler. API Azure AD B2C tarafından korunur ve TaskWebApp tarafından çağırılır.
+* **Taskwebapp** -bir görev listesi oluşturun ve düzenleyin. Örnek, kullanıcıların kaydolması veya oturum açması için kaydolma **veya oturum açma** Kullanıcı akışını kullanır.
+* **Taskservice** -oluşturma, okuma, güncelleştirme ve silme görev listesi işlevlerini destekler. API Azure AD B2C tarafından korunur ve TaskWebApp tarafından çağırılır.
 
 ### <a name="configure-the-web-application"></a>Web uygulamasını yapılandırma
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
-2. **TaskWebApp** projesinde **Web.config**’i açın.
-3. API’yi yerel olarak çalıştırmak üzere, **api:TaskServiceUrl** için localhost ayarını kullanın. Web.config’i aşağıdaki gibi değiştirin:
+1. **Taskwebapp** projesinde **Web. config**dosyasını açın.
+1. API’yi yerel olarak çalıştırmak üzere, **api:TaskServiceUrl** için localhost ayarını kullanın. Web.config’i aşağıdaki gibi değiştirin:
 
     ```csharp
     <add key="api:TaskServiceUrl" value="https://localhost:44332/"/>
     ```
 
-3. API’nin URI’sini yapılandırın. Bu, Web uygulamasının API isteğini yapmak için kullandığı URI 'dir. Ayrıca istenen izinleri yapılandırın.
+1. API’nin URI’sini yapılandırın. Bu, Web uygulamasının API isteğini yapmak için kullandığı URI 'dir. Ayrıca istenen izinleri yapılandırın.
 
     ```csharp
     <add key="api:ApiIdentifier" value="https://<Your tenant name>.onmicrosoft.com/api/" />
@@ -105,26 +105,27 @@ Aşağıdaki iki proje örnek çözümde bulunur:
 
 ### <a name="configure-the-web-api"></a>Web API’sini yapılandırma
 
-1. **TaskService** projesinde **Web.config**’i açın.
-2. API’yi kiracınızı kullanmak için yapılandırın.
+1. **Taskservice** projesinde **Web. config**dosyasını açın.
+1. API’yi kiracınızı kullanmak için yapılandırın.
 
     ```csharp
+    <add key="ida:AadInstance" value="https://<Your tenant name>.b2clogin.com/{0}/{1}/v2.0/.well-known/openid-configuration" />
     <add key="ida:Tenant" value="<Your tenant name>.onmicrosoft.com" />
     ```
 
-3. İstemci kimliğini API’niz için kayıtlı Uygulama Kimliğine ayarlayın.
+1. İstemci KIMLIĞINI kayıtlı Web API uygulamanızın uygulama KIMLIĞI olan *webapi1*olarak ayarlayın.
 
     ```csharp
     <add key="ida:ClientId" value="<application-ID>"/>
     ```
 
-4. Kullanıcı akışı ayarını, kaydolma ve oturum açma Kullanıcı akışının adı ile güncelleştirin.
+1. Kullanıcı akışı ayarını, kaydolma ve oturum açma Kullanıcı akışlarınızın adıyla güncelleştirin, *B2C_1_signupsignin1*.
 
     ```csharp
-    <add key="ida:SignUpSignInUserFlowId" value="B2C_1_signupsignin1" />
+    <add key="ida:SignUpSignInPolicyId" value="B2C_1_signupsignin1" />
     ```
 
-5. Kapsamlar ayarını portalda oluşturduğunuz değerle eşleşecek şekilde yapılandırın.
+1. Kapsamlar ayarını portalda oluşturduğunuz olanlarla eşleşecek şekilde yapılandırın.
 
     ```csharp
     <add key="api:ReadScope" value="Hello.Read" />
@@ -136,16 +137,17 @@ Aşağıdaki iki proje örnek çözümde bulunur:
 **TaskWebApp** ve **TaskService** projelerinin ikisini birden çalıştırmanız gerekir.
 
 1. Çözüm Gezgini’nde, çözüme sağ tıklayıp **Başlangıç Projelerini Ayarla...** seçeneğini belirleyin.
-2. **Birden çok başlangıç projesi**seçin.
-3. İki proje için de **Eylem**’i **Başlat** olarak değiştirin.
-4. Yapılandırmayı kaydetmek için **Tamam** ' ı tıklatın.
-5. İki uygulamayı da çalıştırmak için **F5**'e basın. Her uygulama kendi tarayıcı sekmesinde açılır. `https://localhost:44316/` Web uygulamasıdır.
-    `https://localhost:44332/` web API’sidir.
+1. **Birden çok başlangıç projesi**seçin.
+1. İki proje için de **Eylem**’i **Başlat** olarak değiştirin.
+1. Yapılandırmayı kaydetmek için **Tamam** ' ı tıklatın.
+1. İki uygulamayı da çalıştırmak için **F5**'e basın. Her uygulama kendi tarayıcı penceresinde açılır.
+    * `https://localhost:44316/`Web uygulamasıdır.
+    * `https://localhost:44332/` web API’sidir.
 
-6. Web uygulamasında, Web uygulamasında oturum açmak için **kaydolma/oturum açma ' ya** tıklayın. Daha önce oluşturduğunuz hesabı kullanın.
-7. Oturum açtıktan sonra, yapılacaklar **listesi ' ne** tıklayın ve yapılacaklar listesi öğesi oluşturun.
+1. Web uygulamasında, Web uygulamasında oturum açmak için **kaydolma/oturum aç** ' ı seçin. Daha önce oluşturduğunuz hesabı kullanın.
+1. Oturum açtıktan sonra, yapılacaklar **listesi** ' ni seçin ve yapılacaklar listesi öğesi oluşturun.
 
-Bir yapılacaklar listesi öğesi oluşturduğunuzda, Web uygulaması, yapılacaklar listesi öğesini oluşturmak için Web API 'sine bir istek yapar. Korumalı Web uygulamanız, Azure AD B2C kiracınızda korunan Web API 'sini çağırıyor.
+Bir yapılacaklar listesi öğesi oluşturduğunuzda, Web uygulaması, yapılacaklar listesi öğesini oluşturmak için Web API 'sine bir istek yapar. Korumalı Web uygulamanız Azure AD B2C tarafından korunan Web API 'sini çağırıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

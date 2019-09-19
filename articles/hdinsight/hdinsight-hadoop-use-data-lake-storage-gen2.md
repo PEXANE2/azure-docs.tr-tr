@@ -2,18 +2,18 @@
 title: Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma
 description: Azure Data Lake Storage 2. Azure HDInsight kümeleri ile nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: bd459998568287db767e98a2094d6f80a126ccde
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f6bee53268ea99e99d79e218eaf7a5ae9fcb1d05
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077105"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104474"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma
 
@@ -90,9 +90,9 @@ Yönetilen kimliği depolama hesabındaki **Depolama Blobu veri sahibi** rolüne
         ![Azure HDInsight ile Data Lake Storage 2. kullanmaya yönelik depolama ayarları](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
     
     * **Kimlik**altında, doğru aboneliği ve yeni oluşturulan kullanıcı tarafından atanan yönetilen kimliği seçin.
-        
-        ![Azure HDInsight ile Data Lake Storage 2. kullanmaya yönelik kimlik ayarları](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
-        
+
+        ![HDInsight ile Data Lake Storage 2. kullanmaya yönelik kimlik ayarları](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
+
 > [!Note]
 > Depolama hesabı düzeyinde bir ikincil Data Lake Storage 2. hesabı eklemek için, daha önce oluşturulan yönetilen kimliği, eklemek istediğiniz yeni Data Lake Storage 2. depolama hesabına atamanız yeterlidir. HDInsight üzerinde "ek depolama hesapları" dikey penceresi aracılığıyla bir ikincil Data Lake Storage 2. hesabı eklemenin desteklenmesinin tavsiye edilir. 
 

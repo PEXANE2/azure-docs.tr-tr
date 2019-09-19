@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: af30719ead8464d0420734818203b8070eb5d145
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348700"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105116"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form tanıyıcı kapsayıcılarını yapılandırma
 
@@ -74,7 +74,7 @@ Form tanıyıcı kapsayıcısı, bir giriş bağlama ve çıkış bağlama gerek
 
 Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayrıca, Docker hizmet hesabı izinleri ile konak bağlama konumu izinleri arasındaki bir çakışma nedeniyle [ana bilgisayarın](form-recognizer-container-howto.md#the-host-computer) bağlama konumuna erişilemiyor olabilir.
 
-|İsteğe Bağlı| Ad | Veri türü | Açıklama |
+|İsteğe Bağlı| Name | Veri türü | Açıklama |
 |-------|------|-----------|-------------|
 |Gerekli| `Input` | Dize | Giriş bağlama hedefi. Varsayılan değer `/input` şeklindedir.    <br><br>Örnek:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Gerekli| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir.  <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -90,16 +90,17 @@ Aşağıdaki tablodaki {_argument_name_} değerlerini kendi değerlerinizle değ
 
 | Yer tutucu | Value |
 |-------------|-------|
-|{FORM_RECOGNIZER_API_KEY} | Kapsayıcıyı başlatmak için kullanılan anahtar. Azure portal form tanıyıcı anahtarları sayfasında kullanılabilir.  |
-|{FORM_RECOGNIZER_ENDPOINT_URI} | Faturalandırma uç noktası URI değeri Azure portal form tanıyıcıya Genel Bakış sayfasında bulunur.|
-|{COMPUTER_VISION_API_KEY}| Anahtar, Azure portal Görüntü İşleme API'si anahtarlar sayfasında kullanılabilir.|
-|{COMPUTER_VISION_ENDPOINT_URI}|Faturalama uç noktası. Bulut tabanlı bir Görüntü İşleme kaynağı kullanıyorsanız URI değeri, Azure portal Görüntü İşleme API'si Genel Bakış sayfasında kullanılabilir. Bilişsel Hizmetler- *tanı-metin* kapsayıcısı kullanıyorsanız, `docker run` komutta kapsayıcıya geçirilen faturalandırma uç nokta URL 'sini kullanın.|
+| **{FORM_RECOGNIZER_API_KEY}** | Kapsayıcıyı başlatmak için kullanılan anahtar. Azure portal form tanıyıcı anahtarları sayfasında kullanılabilir. |
+| **{FORM_RECOGNIZER_ENDPOINT_URI}** | Faturalandırma uç noktası URI değeri Azure portal form tanıyıcıya Genel Bakış sayfasında bulunur.|
+| **{COMPUTER_VISION_API_KEY}** | Anahtar, Azure portal Görüntü İşleme API'si anahtarlar sayfasında kullanılabilir.|
+| **{COMPUTER_VISION_ENDPOINT_URI}** | Faturalama uç noktası. Bulut tabanlı bir Görüntü İşleme kaynağı kullanıyorsanız URI değeri, Azure portal Görüntü İşleme API'si Genel Bakış sayfasında kullanılabilir. Bilişsel Hizmetler- *tanı-metin* kapsayıcısı kullanıyorsanız, `docker run` komutta kapsayıcıya geçirilen faturalandırma uç nokta URL 'sini kullanın. |
+
+Bu değerleri alma hakkında ayrıntılar için bkz. [gerekli parametreleri toplama](form-recognizer-container-howto.md#gathering-required-parameters) .
+
+[!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > Kapsayıcıyı çalıştırmak için,, ve `Eula` `ApiKey` seçeneklerini belirtin `Billing`; Aksi takdirde kapsayıcı başlatılmaz. Daha fazla bilgi için [faturalama](#billing-configuration-setting).
-
-> [!NOTE] 
-> ApiKey değeri, Azure form tanıyıcı kaynak anahtarları sayfasından alınan **anahtardır** .
 
 ## <a name="form-recognizer-container-docker-examples"></a>Form tanıyıcı kapsayıcısı Docker örnekleri
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fbfc3f48bed5a4772573dcf2ab168cd3498a4cac
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114859"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101999"
 ---
 # <a name="install-and-run-face-containers"></a>Yüz kapsayıcıları yükleyip çalıştırma
 
@@ -33,6 +33,8 @@ Yüz Tanıma API'si kapsayıcılarını kullanmadan önce aşağıdaki önkoşul
 |Docker altyapısı| Docker altyapısının bir [ana bilgisayara](#the-host-computer)yüklenmesi gerekir. Docker, [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms)'ta Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temelleri hakkında bilgi için bkz: [Docker'a genel bakış](https://docs.docker.com/engine/docker-overview/).<br><br> Docker, kapsayıcılar ile bağlanma ve faturalama verileri Azure'a göndermek izin verecek şekilde yapılandırılmalıdır. <br><br> Windows 'da Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
 |Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının temel olarak anlaşılmasına ihtiyacınız vardır. Ayrıca temel `docker` komutlar hakkında bilgi sahibi olmanız gerekir.| 
 |Yüz kaynağı |Kapsayıcıyı kullanmak için şunları yapmanız gerekir:<br><br>Bir Azure **yüz** kaynağı ve ilgili API anahtarı ve uç nokta URI 'si. Her iki değer de kaynak için **genel bakış** ve **anahtarlar** sayfalarında kullanılabilir. Kapsayıcının başlatılması gerekir.<br><br>**{API_KEY}** : **Anahtarlar** sayfasındaki kullanılabilir iki kaynak anahtardan biri<br><br>**{ENDPOINT_URI}** : **Genel bakış** sayfasında belirtilen bitiş noktası
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-private-container-registry"></a>Özel kapsayıcı kayıt defterine erişim isteği
 
@@ -80,16 +82,9 @@ Kapsayıcı [ana bilgisayar](#the-host-computer)üzerinde olduktan sonra, kapsay
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı Docker Run ile çalıştırma
 
-Üç kapsayıcının herhangi birini çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. Komut aşağıdaki parametreleri kullanır.
+Kapsayıcıyı çalıştırmak için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanın. `{ENDPOINT_URI}` [](#gathering-required-parameters) Ve`{API_KEY}` değerlerini alma hakkında ayrıntılar için gerekli parametreleri toplama bölümüne bakın.
 
-| Yer tutucu | Value |
-|-------------|-------|
-|{API_KEY} | Bu anahtar, kapsayıcıyı başlatmak için kullanılır ve Azure `Cognitive Services` **anahtarları** sayfasında kullanılabilir. |
-|{ENDPOINT_URI} | Faturalandırma uç noktası URI değeri, Azure `Cognitive Services` **genel bakış** sayfasında bulunur. `https://westus.api.cognitive.microsoft.com/face/v1.0` bunun bir örneğidir.|
-
-Önceki ENDPOINT_URI örneğinde gösterildiği gibi, yönlendirmeyiuçnoktaURI'sineekleyin.`face/v1.0` 
-
-Bu parametreleri aşağıdaki `docker run` komut örneğinde kendi değerlerinizle değiştirin:
+Komut örnekleri mevcuttur. [](face-resource-container-config.md#example-docker-run-commands) `docker run`
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \

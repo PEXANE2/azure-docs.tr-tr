@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdb1e26d9f10ae9b9549421e72a99f2c4e5341c2
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: b3d758b63b56bb84b1cb4e5793731da5eb4f5209
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056076"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103870"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil uzaktan erişimi etkinleştirme
 
@@ -29,7 +29,7 @@ Bu makalede, Power BI mobil uygulamanın Power BI Rapor Sunucusu (PBIRS) ve SQL 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede, zaten rapor Hizmetleri dağıttığınız ve [uygulama ara sunucusu 'nu etkinleştirmiş](application-proxy-add-on-premises-application.md)olduğunuz varsayılmaktadır.
+Bu makalede, zaten rapor Hizmetleri dağıttığınız ve [uygulama ara sunucusu 'nu etkinleştirmiş](application-proxy-add-on-premises-application.md)olduğunuz varsayılmaktadır.
 
 - Uygulama proxy 'Sini etkinleştirmek için bir Windows Server 'a bağlayıcı yüklenmesi ve bağlayıcının Azure AD hizmetleriyle iletişim kurabilmesi için [önkoşulları](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) tamamlaması gerekir.  
 - Power BI yayımlarken, aynı iç ve dış etki alanlarını kullanmanızı öneririz. Özel etki alanları hakkında daha fazla bilgi edinmek için bkz. [uygulama proxy 'sinde özel etki alanları Ile çalışma](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain).
@@ -37,7 +37,7 @@ Bu makalede, zaten rapor Hizmetleri dağıttığınız ve [uygulama ara sunucu
 
 ## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>1\. adım: Kerberos kısıtlanmış temsilciyi yapılandırma (KCD)
 
-Windows kimlik doğrulaması kullanan şirket içi uygulamalar için çoklu oturum açma (SSO) ile Kerberos kimlik doğrulama protokolünü ve Kerberos Kısıtlı temsilci (KCD) adlı bir özellik elde edebilirsiniz. Yapılandırıldığında, KCD, Kullanıcı Windows 'da doğrudan oturum açmamış olsa bile, uygulama proxy bağlayıcısının Kullanıcı için bir Windows belirteci almasına izin verir. KCD hakkında daha fazla bilgi edinmek için bkz. [Kerberos kısıtlanmış temsilciye genel bakış](https://technet.microsoft.com/library/jj553400.aspx) ve [uygulama proxy 'si ile uygulamalarınıza çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
+Windows kimlik doğrulaması kullanan şirket içi uygulamalar için çoklu oturum açma (SSO) ile Kerberos kimlik doğrulama protokolünü ve Kerberos Kısıtlı temsilci (KCD) adlı bir özellik elde edebilirsiniz. Yapılandırıldığında, KCD, Kullanıcı Windows 'da doğrudan oturum açmamış olsa bile, uygulama proxy bağlayıcısının Kullanıcı için bir Windows belirteci almasına izin verir. KCD hakkında daha fazla bilgi edinmek için bkz. [Kerberos kısıtlanmış temsilciye genel bakış](https://technet.microsoft.com/library/jj553400.aspx) ve [uygulama proxy 'si ile uygulamalarınıza çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
 
 Reporting Services tarafında yapılandırılması çok fazla olmaz. Doğru Kerberos kimlik doğrulamasının gerçekleşmesini sağlamak için geçerli bir hizmet asıl adına (SPN) sahip olduğunuzdan emin olun. Ayrıca Raporlama Hizmetleri sunucusunun, anlaşma kimlik doğrulaması için etkinleştirildiğinden emin olun.
 
@@ -45,8 +45,8 @@ Reporting Services için KCD 'yi ayarlamak için aşağıdaki adımlarla devam e
 
 ### <a name="configure-the-service-principal-name-spn"></a>Hizmet asıl adını (SPN) yapılandırma
 
-SPN, Kerberos kimlik doğrulaması kullanan bir hizmetin benzersiz tanımlayıcısıdır. Rapor sunucunuz için uygun bir HTTP SPN 'si olduğundan emin olmanız gerekir. Rapor sunucunuz için uygun hizmet asıl adı 'nı (SPN) yapılandırma hakkında bilgi için bkz. [bir rapor sunucusu Için hizmet asıl adını (SPN) kaydetme](https://msdn.microsoft.com/library/cc281382.aspx).
-Setspn komutunu-L seçeneğiyle çalıştırarak SPN 'nin eklendiğini doğrulayabilirsiniz. Bu komut hakkında daha fazla bilgi edinmek için bkz. [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
+SPN, Kerberos kimlik doğrulaması kullanan bir hizmetin benzersiz tanımlayıcısıdır. Rapor sunucunuz için uygun bir HTTP SPN 'si olduğundan emin olmanız gerekir. Rapor sunucunuz için uygun hizmet asıl adı 'nı (SPN) yapılandırma hakkında bilgi için bkz. [bir rapor sunucusu Için hizmet asıl adını (SPN) kaydetme](https://msdn.microsoft.com/library/cc281382.aspx).
+Setspn komutunu-L seçeneğiyle çalıştırarak SPN 'nin eklendiğini doğrulayabilirsiniz. Bu komut hakkında daha fazla bilgi için bkz. [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
 
 ### <a name="enable-negotiate-authentication"></a>Negotiate kimlik doğrulamasını etkinleştir
 
@@ -60,20 +60,20 @@ Bir rapor sunucusunun Kerberos kimlik doğrulamasını kullanmasını sağlamak 
 </AuthenticationTypes>
 ```
 
-Daha fazla bilgi için bkz. [bir Reporting Services yapılandırma dosyasını](https://msdn.microsoft.com/library/bb630448.aspx) değiştirme ve [bir rapor sunucusunda Windows kimlik doğrulamasını yapılandırma](https://msdn.microsoft.com/library/cc281253.aspx).
+Daha fazla bilgi için bkz. [bir Reporting Services yapılandırma dosyasını değiştirme](https://msdn.microsoft.com/library/bb630448.aspx) ve [bir rapor sunucusunda Windows kimlik doğrulamasını yapılandırma](https://msdn.microsoft.com/library/cc281253.aspx).
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Bağlayıcının, Reporting Services uygulama havuzu hesabına eklenen SPN 'ye devredilmek için güvenilir olduğundan emin olun
 KCD 'YI, Azure AD Uygulama Ara Sunucusu hizmetinin Raporlama Hizmetleri uygulama havuzu hesabına Kullanıcı kimlikleri atayabilmesi için yapılandırın. KCD, kullanıcılarınız Azure AD'de kimlik doğrulaması için Kerberos anahtarlarını almak uygulama Proxy Bağlayıcısı'nı etkinleştirerek yapılandırın. Bu durumda, bu sunucu bağlamı hedef uygulamaya veya Reporting Services 'e geçirir.
 
 KCD 'yi yapılandırmak için, her bağlayıcı makinesi için aşağıdaki adımları yineleyin:
 
-1. Etki alanı denetleyicisinde etki alanı yöneticisi olarak oturum açın ve ardından **Active Directory Kullanıcıları ve bilgisayarları**' nı açın.
+1. Etki alanı denetleyicisinde etki alanı yöneticisi olarak oturum açın ve ardından **Active Directory Kullanıcıları ve bilgisayarları**' nı açın.
 2. Bağlayıcıyı çalıştıran bilgisayarı bulmak.  
-3. Bilgisayara çift tıklayın ve ardından **temsili** sekmesini seçin.
-4.  **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından **herhangi bir kimlik doğrulama protokolünü kullan**' ı seçin.
+3. Bilgisayara çift tıklayın ve ardından **temsili** sekmesini seçin.
+4. **Bu bilgisayara yalnızca belirtilen hizmetlere atamak üzere güvenmek**için, yetkilendirme ayarlarını belirleyin. Ardından, **herhangi bir kimlik doğrulama protokolünü kullan**.
 5. **Ekle**' yi ve ardından **Kullanıcılar veya bilgisayarlar**' ı seçin.
 6. Raporlama Hizmetleri için kullandığınız hizmet hesabını girin. Bu, SPN 'yi Raporlama Hizmetleri Yapılandırması içinde eklediğiniz hesaptır.
-7.  **Tamam**' a tıklayın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
+7. **Tamam**'ı tıklatın. Değişiklikleri kaydetmek için yeniden **Tamam** ' a tıklayın.
 
 Daha fazla bilgi için bkz. [uygulama proxy 'si ile uygulamalarınızda çoklu oturum açma Için Kerberos kısıtlanmış temsili](application-proxy-configure-single-sign-on-with-kcd.md).
 
@@ -81,7 +81,7 @@ Daha fazla bilgi için bkz. [uygulama proxy 'si ile uygulamalarınızda çoklu o
 
 Artık Azure AD Uygulama Ara Sunucusu 'yi yapılandırmaya hazırsınız.
 
-1. Aşağıdaki ayarlarla rapor hizmetlerini uygulama proxy 'Si aracılığıyla yayımlayın. Uygulama proxy 'Si aracılığıyla bir uygulamayı yayımlama hakkında adım adım yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
+1. Aşağıdaki ayarlarla rapor hizmetlerini uygulama proxy 'Si aracılığıyla yayımlayın. Uygulama proxy 'Si aracılığıyla bir uygulamayı yayımlama hakkında adım adım yönergeler için bkz. [Azure AD uygulama ara sunucusu kullanarak uygulama yayımlama](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
    - **Iç URL**: Bağlayıcının kurumsal ağda ulaşabileceği rapor sunucusunun URL 'sini girin. Bu URL 'ye bağlayıcının yüklendiği sunucudan erişilebildiğinden emin olun. En iyi yöntem, uygulama proxy 'si aracılığıyla yayımlanmayan alt yollar `https://servername/` (örneğin, `https://servername/reports/` ve `https://servername/reportserver/`) ile ilgili sorunlardan kaçınmak için gibi en üst düzey etki alanı kullanmaktır.
      > [!NOTE]
      > Rapor sunucusuna güvenli bir HTTPS bağlantısı kullanmanızı öneririz. Hakkında bilgi için bkz. [yerel mod rapor sunucusunda SSL bağlantılarını yapılandırma](https://docs.microsoft.com/sql/reporting-services/security/configure-ssl-connections-on-a-native-mode-report-server?view=sql-server-2017) .
@@ -91,17 +91,17 @@ Artık Azure AD Uygulama Ara Sunucusu 'yi yapılandırmaya hazırsınız.
 
 2. Uygulamanızı yayımladıktan sonra aşağıdaki adımlarla çoklu oturum açma ayarları yapılandırın:
 
-   a. Portaldaki uygulama sayfasında, **Çoklu oturum açma**' yı seçin.
+   a. Uygulama sayfasında portalında seçin **çoklu oturum açma**.
 
-   b. **Çoklu oturum açma modu**Için **Tümleşik Windows kimlik doğrulaması**' nı seçin.
+   b. **Çoklu oturum açma modu**Için **Tümleşik Windows kimlik doğrulaması**' nı seçin.
 
    c. **Iç uygulama SPN 'sini** daha önce ayarladığınız değere ayarlayın.  
 
-   d. Bağlayıcının Kullanıcı adına kullanması için **yetkilendirilmiş oturum açma kimliğini** seçin. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
+   d. Seçin **temsilci oturum açma kimliği** Bağlayıcısı kullanıcılarınız adına kullanın. Daha fazla bilgi için bkz. [farklı şirket içi ve bulut kimlikleriyle çalışma](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
    e. Tıklayın **Kaydet** yaptığınız değişiklikleri kaydedin.
 
-Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişmek için kullanıcıları atayın.
+Uygulamanızı ayarlamayı bitirmeden, **Kullanıcılar ve gruplar** bölümüne gidin ve bu uygulamaya erişmek için kullanıcıları atayın.
 
 ## <a name="step-3-modify-the-reply-uris-for-the-application"></a>3\. adım: Uygulamanın yanıt URI 'sini değiştirme
 
@@ -127,13 +127,13 @@ Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi 
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>4\. Adım: Power BI Mobil uygulamasından bağlanma
 
-1. Power BI mobil uygulamada, Reporting Services örneğinizi bağlayın. Bunu yapmak için, uygulama proxy 'si aracılığıyla yayımladığınız uygulamanın **dış URL 'sini** girin.
+1. Power BI mobil uygulamada, Reporting Services örneğinizi bağlayın. Bunu yapmak için, uygulama proxy 'Si aracılığıyla yayımladığınız uygulamanın **dış URL 'sini** girin.
 
    ![Dış URL ile mobil uygulama Power BI](media/application-proxy-integrate-with-power-bi/app-proxy-power-bi-mobile-app.png)
 
 2. **Bağlan**’ı seçin. Azure Active Directory oturum açma sayfasına yönlendirilirsiniz.
 
-3. Kullanıcılarınız için geçerli kimlik bilgilerini girin ve **oturum aç '** ı seçin. Reporting Services sunucunuzdaki öğeleri görürsünüz.
+3. Kullanıcılarınız için geçerli kimlik bilgilerini girin ve **oturum aç '** ı seçin. Reporting Services sunucunuzdaki öğeleri görürsünüz.
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>5\. Adım: Yönetilen cihazlar için Intune ilkesini yapılandırma (isteğe bağlı)
 
@@ -142,7 +142,7 @@ Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi 
 
 Şirketinizin iş gücünün kullandığı istemci uygulamalarını yönetmek için Microsoft Intune kullanabilirsiniz. Intune, veri şifreleme ve ek erişim gereksinimleri gibi özellikleri kullanmanıza olanak sağlar. Intune ile uygulama yönetimi hakkında daha fazla bilgi edinmek için bkz. Intune uygulama yönetimi. Power BI mobil uygulamanın Intune ilkesiyle çalışmasını sağlamak için aşağıdaki adımları kullanın.
 
-1. AzureActiveDirectory ve ardından **uygulama kayıtları**' na gidin.
+1. **Azure Active Directory** ve ardından **uygulama kayıtları**' na gidin.
 2. Yerel istemci Uygulamanızı kaydederken adım 3 ' te yapılandırılan uygulamayı seçin.
 3. Uygulamanın sayfasında, **API izinleri**' ni seçin.
 4. **Izin Ekle**' ye tıklayın. 

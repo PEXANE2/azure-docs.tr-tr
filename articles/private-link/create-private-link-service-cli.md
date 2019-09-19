@@ -1,18 +1,18 @@
 ---
 title: Azure CLı kullanarak Azure özel bağlantı hizmeti oluşturma
 description: Azure CLı kullanarak Azure özel bağlantı hizmeti oluşturmayı öğrenin
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 6955e1147bbe7b3e777ce4f06ac64901b0392f42
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 87d0f08d67dbbe6a0fa1725aba850c8d9b6c5619
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018081"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104700"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLı kullanarak özel bağlantı hizmeti oluşturma
 Bu makalede Azure CLı kullanarak Azure 'da özel bir bağlantı hizmeti oluşturma gösterilmektedir.
@@ -20,7 +20,7 @@ Bu makalede Azure CLı kullanarak Azure 'da özel bir bağlantı hizmeti oluştu
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Bunun yerine Azure CLı 'yı yüklemeye ve kullanmaya karar verirseniz, bu hızlı başlangıç, en son Azure CLı sürümünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için öğesini çalıştırın `az --version`. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
-## <a name="create-a-private-link-service"></a>Özel bağlantı hizmeti oluşturma
+## <a name="create-a-private-link-service"></a>Özel Bağlantı hizmeti oluşturma
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Bir sanal ağ oluşturabilmeniz için önce sanal ağı barındırmak üzere bir kaynak grubu oluşturmanız gerekir. [az group create](/cli/azure/group) ile bir kaynak grubu oluşturun. Bu örnek *westcentralus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
@@ -88,7 +88,7 @@ Bu örnekte, sanal makine oluşturmayı kapsamıyoruz. Yük Dengeleyici için ar
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
 ```
  
-## <a name="create-a-private-link-service"></a>Özel bağlantı hizmeti oluşturma  
+## <a name="create-a-private-link-service"></a>Özel Bağlantı hizmeti oluşturma  
  
 [Az Network Private-link-Service Create](/cli/azure/network/az-network-private-link-service-create)komutuyla standart Load Balancer ön uç IP yapılandırması kullanarak bir özel bağlantı hizmeti oluşturun. Bu örnek, *Myresourcegroup*adlı kaynak grubunda *myloadbalancer* adlı standart Load Balancer kullanarak *Mypls* adlı bir özel bağlantı hizmeti oluşturur. 
  

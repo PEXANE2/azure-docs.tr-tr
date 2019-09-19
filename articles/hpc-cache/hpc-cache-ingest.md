@@ -4,14 +4,14 @@ description: Azure Blob depolamayı Azure HPC Cache ile kullanım için doldurma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/18/2019
 ms.author: v-erkell
-ms.openlocfilehash: 07a97b1afa8049ace97f1589393cd76c24f21368
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 0a71efdc0479a69aed8fecc22a6c89c506279d57
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775656"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105306"
 ---
 # <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Azure HPC önbelleği için verileri Azure Blob depolamaya taşıma
 
@@ -31,15 +31,17 @@ Yükleme yardımcı programını kullanmak istemiyorsanız veya var olan bir dep
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>CLFSLoad ile blob depolamada verileri önceden yükleme
 
-Bir depolama hedefi olarak eklemeden önce, verileri yeni bir BLOB depolama kapsayıcısına kopyalamak için [avere CLFSLoad](https://aka.ms/avere-clfsload) yardımcı programını kullanabilirsiniz. Bu yardımcı program bir Linux sanal makinesi üzerinde çalışır ve verileri Azure HPC önbelleği için gereken özel biçimde yazar. Bu, önbellek ile kullanmak üzere bir BLOB depolama kapsayıcısını doldurmanın en etkili yoludur.
+Şunu kullanabilirsiniz <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> Verileri bir depolama hedefi olarak eklemeden önce yeni bir BLOB depolama kapsayıcısına kopyalamak için avere CLFSLoad yardımcı programı. Bu yardımcı program tek bir Linux sisteminde çalışır ve verileri Azure HPC önbelleği için gereken özel biçimde yazar. CLFSLoad, bir BLOB depolama kapsayıcısını önbellek ile kullanmak üzere doldurmanın en etkili yoludur.
+
+Avere CLFSLoad yardımcı programı, Azure HPC önbellek takımınızdan gelen istek ile kullanılabilir. Ekip iletişime geçin veya yardım istemek için bir destek bileti açın.
 
 Bu seçenek yalnızca yeni ve boş kapsayıcılar ile kullanılabilir. Avere CLFSLoad kullanmadan önce kapsayıcıyı oluşturun.
 
-Ayrıntılı bilgiler [avere CLFSLoad Benioku dosyasına](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md)dahildir. <!-- caution literal link -->
+Ayrıntılı bilgiler, Azure HPC Cache ekibinin isteğiyle sunulan avere CLFSLoad dağıtımına dahildir. <!-- [Avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). --><!-- caution literal link -->
 
 İşleme genel bir bakış:
 
-1. Python sürüm 3,6 veya sonraki bir Linux sistemi (fiziksel veya VM) hazırlayın. (Python 3,7 daha iyi performans için önerilir.)
+1. Python sürüm 3,6 veya sonraki bir Linux sistemini (VM veya fiziksel) hazırlayın. (Python 3,7 daha iyi performans için önerilir.)
 1. Linux sistemine avere-CLFSLoad yazılımını yükleyin.
 1. Linux komut satırından aktarımı yürütün.
 
@@ -50,7 +52,7 @@ Avere CLFSLoad yardımcı programı aşağıdaki bilgileri gerektirir:
 * Yardımcı programın kapsayıcıya yazmasını sağlayan bir paylaşılan erişim imzası (SAS) belirteci
 * Veri kaynağına yönelik yerel bir yol-kopyalanacak verileri içeren yerel bir dizin ya da verilerle bağlı bir uzak sisteme yerel bir yol.
 
-Gereksinimler, [avere CLFSLoad Benioku](https://aka.ms/avere-clfsload)dosyasında ayrıntılı olarak açıklanmıştır.
+<!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 
 ## <a name="copy-data-through-the-azure-hpc-cache"></a>Azure HPC Cache aracılığıyla veri kopyalama
 

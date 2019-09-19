@@ -1,18 +1,18 @@
 ---
 title: Azure CLı kullanarak Azure özel uç noktası oluşturma | Microsoft Docs
 description: Azure özel uç noktası hakkında bilgi edinin
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7d27cb58bfbe0669bf1e6d0e0f0d696e3e85d38a
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 33383f42c3731d8a5aefdcde5008d706d5a9eed8
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017964"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104790"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Azure CLı kullanarak özel uç nokta oluşturma
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, Azure CLı kullanarak özel bir uç noktaya sahip bir SQL veritabanı sunucusu olan bir sanal ağ üzerinde bir VM oluşturmayı öğreneceksiniz. Ardından, VM 'ye erişebilir ve özel bağlantı kaynağına (Bu örnekteki özel bir Azure SQL veritabanı sunucusu) güvenli bir şekilde erişebilirsiniz. 

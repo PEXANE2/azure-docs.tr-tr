@@ -5,17 +5,17 @@ services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.author: marsma
-ms.date: 09/12/2019
+ms.date: 09/19/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: f6fa48ea1d98c8bc6e6a6bcdea7c0f1083952e49
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: b42634aa86f210382adb1ae224c847a92d89109b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064703"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103318"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak bir Web uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -40,13 +40,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 Önkoşulların bir parçası olarak tamamladığınız öğreticide, Azure AD B2C bir Web uygulaması eklediniz. Bu öğreticideki örnekle iletişimi etkinleştirmek için, Azure AD B2C ' de uygulamaya bir yeniden yönlendirme URI 'SI eklemeniz gerekir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-4. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
-5. **Yanıt URL 'si**altında, `https://localhost:44316`ekleyin.
-6. **Kaydet**’i seçin.
-7. Özellikler sayfasında, Web uygulamasını yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.
-8. **Anahtarlar**' ı seçin, **anahtar oluştur**' u ve **Kaydet**' i seçin. Web uygulamasını yapılandırırken kullanacağınız anahtarı kaydedin.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
+1. **Uygulamalar**' ı seçin ve ardından *WebApp1* uygulamasını seçin.
+1. **Yanıt URL 'si**altında, `https://localhost:44316`ekleyin.
+1. **Kaydet**’i seçin.
+1. Özellikler sayfasında, Web uygulamasını yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.
+1. **Anahtarlar**' ı seçin, **anahtar oluştur**' u ve **Kaydet**' i seçin. Web uygulamasını yapılandırırken kullanacağınız anahtarı kaydedin.
 
 ## <a name="configure-the-sample"></a>Örneği yapılandırma
 
@@ -58,8 +58,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 Aşağıdaki iki proje örnek çözümde bulunur:
 
-- **Taskwebapp** -bir görev listesi oluşturun ve düzenleyin. Örnek, kullanıcıların kaydolması ve oturum açması için kaydolma **veya oturum açma** Kullanıcı akışını kullanır.
-- **Taskservice** -oluşturma, okuma, güncelleştirme ve silme görev listesi işlevlerini destekler. API Azure AD B2C tarafından korunur ve TaskWebApp tarafından çağırılır.
+* **Taskwebapp** -bir görev listesi oluşturun ve düzenleyin. Örnek, kullanıcıların kaydolması ve oturum açması için kaydolma **veya oturum açma** Kullanıcı akışını kullanır.
+* **Taskservice** -oluşturma, okuma, güncelleştirme ve silme görev listesi işlevlerini destekler. API Azure AD B2C tarafından korunur ve TaskWebApp tarafından çağırılır.
 
 Örnek, kiracınızda kayıtlı olan uygulamayı kullanacak şekilde, uygulama KIMLIĞI ve daha önce kaydettiğiniz anahtar dahil olmak üzere değiştirirsiniz. Ayrıca, oluşturduğunuz Kullanıcı akışlarını da yapılandırırsınız. Örnek, yapılandırma değerlerini *Web. config* dosyasında ayarlar olarak tanımlar.
 
@@ -67,7 +67,7 @@ Web. config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak ş
 
 1. **B2C-WebAPI-DotNet** çözümünü Visual Studio’da açın.
 1. **Taskwebapp** projesinde **Web. config** dosyasını açın.
-    1. `ida:Tenant` Ve`ida:AadInstance` değerini, oluşturduğunuz kiracının adıyla değiştirin.
+    1. `ida:Tenant` Ve`ida:AadInstance` değerlerini, oluşturduğunuz Azure AD B2C kiracının adıyla güncelleştirin. Örneğin, ile `contoso`değiştirin `fabrikamb2c` .
     1. Değerini `ida:ClientId` , kaydettiğiniz uygulama kimliğiyle değiştirin.
     1. `ida:ClientSecret` değerini kaydettiğiniz anahtarla değiştirin. Web. config dosyasına eklemeden önce, istemci gizliliğini XML olarak kodlamanız gerekir.
     1. Değerini `ida:SignUpSignInPolicyId` ile`b2c_1_signupsignin1`değiştirin.
@@ -77,19 +77,21 @@ Web. config dosyasındaki ayarları Kullanıcı akışınız ile çalışacak ş
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
 1. Çözüm Gezgini, **Taskwebapp** projesine sağ tıklayın ve ardından **Başlangıç projesi olarak ayarla**' ya tıklayın.
-2. **F5**tuşuna basın. Varsayılan tarayıcı, `https://localhost:44316/` olan yerel web sitesi adresini açar.
+1. **F5**tuşuna basın. Varsayılan tarayıcı, `https://localhost:44316/` olan yerel web sitesi adresini açar.
 
 ### <a name="sign-up-using-an-email-address"></a>E-posta adresi kullanarak kaydolma
 
-1. Uygulamanın kullanıcısı olarak kaydolmak için **kaydolun/oturum aç** ' a tıklayın. **B2c_1_signupsignin1** Kullanıcı akışı kullanılır.
-2. Azure AD B2C, kayıt bağlantısı içeren bir oturum açma sayfası sunar. Henüz bir hesabınız olmadığından **Şimdi kaydolun**' ı seçin. Kaydolma iş akışında, kullanıcı kimliğini bir e-posta adresi kullanarak toplamak ve doğrulamak için bir sayfa sunar. Kaydolma iş akışı, kullanıcının parolasını ve Kullanıcı akışında tanımlanan istenen öznitelikleri de toplar.
-3. Geçerli bir e-posta adresi kullanın ve doğrulama kodunu kullanarak doğrulamayı gerçekleştirin. Parola ayarlayın. İstenen öznitelikler için değerleri girin.
+1. Uygulamanın bir kullanıcısı olarak kaydolmak için **kaydolun/oturum aç '** ı seçin. **B2c_1_signupsignin1** Kullanıcı akışı kullanılır.
+1. Azure AD B2C, kayıt bağlantısı içeren bir oturum açma sayfası sunar. Henüz bir hesabınız olmadığından **Şimdi kaydolun**' ı seçin. Kaydolma iş akışında, kullanıcı kimliğini bir e-posta adresi kullanarak toplamak ve doğrulamak için bir sayfa sunar. Kaydolma iş akışı, kullanıcının parolasını ve Kullanıcı akışında tanımlanan istenen öznitelikleri de toplar.
+1. Geçerli bir e-posta adresi kullanın ve doğrulama kodunu kullanarak doğrulamayı gerçekleştirin. Parola ayarlayın. İstenen öznitelikler için değerleri girin.
 
     ![Oturum açma/kaydolma iş akışının bir parçası olarak gösterilen kaydolma sayfası](media/active-directory-b2c-tutorials-web-app/sign-up-workflow.PNG)
 
-4. Azure AD B2C kiracısında yerel bir hesap oluşturmak için **Oluştur**’a tıklayın.
+1. Azure AD B2C kiracısında yerel hesap oluşturmak için **Oluştur** ' u seçin.
 
-Artık Kullanıcı, oturum açmak ve Web uygulamasını kullanmak için e-posta adresini kullanabilir.
+Uygulama kullanıcısı artık kendi e-posta adreslerini kullanarak oturum açabilir ve Web uygulamasını kullanabilir.
+
+Ancak, bu yapılacaklar **listesi** özelliği, serideki bir sonraki öğreticiyi tamamlayana kadar çalışmaz, [öğretici: Bir ASP.NET Web API 'sini](active-directory-b2c-tutorials-web-api.md)korumak için Azure AD B2C kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -100,5 +102,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Uygulamayı kullanmak için örneği yapılandırma
 > * Kullanıcı akışını kullanarak kaydolma
 
+Şimdi, Web uygulamasının Yapılacaklar **listesi** özelliğini etkinleştirmek için sonraki öğreticiye geçin. Bu durumda, bir Web API uygulamasını kendi Azure AD B2C kiracınıza kaydeder ve sonra API kimlik doğrulaması için kiracınızı kullanacak şekilde kod örneğini değiştirirsiniz.
+
 > [!div class="nextstepaction"]
-> [Öğretici: Bir ASP.NET Web API 'sini korumak için Azure Active Directory B2C kullanma](active-directory-b2c-tutorials-web-api.md)
+> [Öğretici: Bir ASP.NET Web API 'sini korumak için Azure Active Directory B2C kullanın >](active-directory-b2c-tutorials-web-api.md)

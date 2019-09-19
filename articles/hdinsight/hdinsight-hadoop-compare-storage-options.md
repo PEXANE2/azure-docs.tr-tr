@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 5cb3b5c2d36707875c87bd589e3d96c0a2f4f939
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885199"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104529"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Depolama seçeneklerini Azure HDInsight kümeleriyle kullanım için karşılaştırın
 
@@ -34,7 +34,7 @@ Aşağıdaki tabloda farklı HDInsight sürümleriyle desteklenen Azure depolama
 |Azure Storage| BLOB depolama * * | Object | Blok Blobu | Standart | Sık erişimli, seyrek erişimli Arşiv | Tümü | Tümü |
 |Azure Data Lake Storage 1. Nesil| Yok | Hiyerarşik (dosya sistemi) | Yok | Yok | Yok | yalnızca 3,6 | HBase dışında tümü |
 
-\* * HDInsight kümeleri için yalnızca ikincil depolama hesapları BlobStorage türünde olabilir.
+\* * HDInsight kümeleri için yalnızca ikincil depolama hesapları BlobStorage türünde olabilir ve Sayfa Blobu desteklenen bir depolama seçeneği değildir.
 
 Azure depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../storage/common/storage-account-overview.md)
 
@@ -129,7 +129,7 @@ Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal a�
 
 Aşağıdaki diyagramda Azure Storage 'ın HDInsight mimarisinin soyut bir görünümü sunulmaktadır:
 
-![Hadoop kümelerinin, blob depolamada yapılandırılmış ve yapılandırılmamış verilere erişmek ve bu verileri depolamak için, bu API 'yi nasıl kullandığını gösteren diyagram](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight depolama mimarisi")
+![HDInsight depolama mimarisi](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight depolama mimarisi")
 
 HDInsight, işlem düğümlerine yerel olarak bağlı olan dağıtılmış dosya sistemine erişim imkanı sağlar. Bu dosya sistemine tam uygun URI kullanılarak erişilebilir, örneğin:
 

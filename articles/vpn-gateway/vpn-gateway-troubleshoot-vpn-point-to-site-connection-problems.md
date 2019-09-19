@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: 37c2cf5ffb5e6eaf8b8da6e7bc9259cfa101c796
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058816"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104812"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Sorunu Azure Noktadan siteye bağlantı sorunları
 
@@ -48,8 +48,7 @@ Bu sorunu çözmek için şu adımları izleyin:
     | Sertifika | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | Geçerli Kullanıcı \ kişisel \ sertifikalar |
-    | Azuregateway-*GUID*. cloudapp.net  | Geçerli Kullanıcı \ güvenilen kök sertifika yetkilileri|
-    | AzureGateway-*GUID*. cloudapp.net, AzureRoot. cer    | Yerel bilgisayar \ güvenilen kök sertifika yetkilileri|
+    | AzureRoot. cer    | Yerel bilgisayar \ güvenilen kök sertifika yetkilileri|
 
 3. C:\Users\<Kullanıcı adı > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID > adresine gidin ve sertifikayı (*. cer dosyası) Kullanıcı ve bilgisayar deposuna el ile yükleyebilirsiniz.
 

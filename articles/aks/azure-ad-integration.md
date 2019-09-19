@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542898"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103782"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory Azure Kubernetes hizmeti ile tümleştirme
 
@@ -86,7 +86,7 @@ Bir AKS kümesi için Azure AD kimlik doğrulaması sağlamak üzere iki Azure A
 
     e. Güncelleştirmeleri kaydetmek için **Izinleri Ekle** ' yi seçin.
 
-    f. **Izin ver**' in altında, **yönetici izni ver**' i seçin. Geçerli hesap kiracı yöneticisi değilse bu düğme kullanılamaz.
+    f. **Izin ver**' in altında, **yönetici izni ver**' i seçin. Bu düğme kullanılamayacak geçerli hesap, kiracı yöneticisi olarak listelenmez.
 
     İzinler başarıyla verildiğinde, portalda aşağıdaki bildirim görüntülenir:
 

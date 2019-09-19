@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 9aa9ea1fc8632671ac9ed2c045230b92edaf879d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 9922d347fae154a3a9b1c37e813014225c28442d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066975"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103172"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL veritabanı 'nda otomatik ayarlama
 
@@ -75,7 +75,7 @@ Otomatik ayarlama, veritabanı performanslarını iyileştirebilen ve bunları [
 
 Portalı kullanarak ayarlama önerilerini el ile uygulayabilir ya da otomatik ayarlama olarak çalışabilen ' nin ayarlama önerilerini sizin yerinize gerçekleştirmesini sağlayabilirsiniz. System olarak çalışabilen 'ın ayarlama önerilerini uygulamasına izin vermenin avantajları, iş yükü performansına yönelik olumlu bir kazanç olduğunu otomatik olarak doğruladığından, önemli bir performans geliştirmesi algılanmadığında, bu işlem ayarlama önerisini otomatik olarak döndürür. Bu, sık yürütülemeyen bir ayar önerisi tarafından etkilenen sorgular söz konusu olduğunda, doğrulama aşamasının tasarım ile 72 saat arasında sürebileceğini unutmayın.
 
-T-SQL aracılığıyla ayarlama önerilerini el ile uyguluyorsanız, otomatik performans doğrulaması ve ters çevirme mekanizmaları kullanılamaz. Ayrıca, el ile uygulanan öneriler etkin kalır ve 24-48 saat önerisi listesinde gösterilir. sistemi otomatik olarak çizmadan önce. Bir öneriyi daha erken kaldırmak isterseniz, el ile atabilirsiniz.
+T-SQL aracılığıyla ayarlama önerileri uyguluyorsanız, otomatik performans doğrulaması ve ters çevirme mekanizmaları kullanılamaz. Bu şekilde uygulanan öneriler etkin kalır ve 24-48 saat için ayarlama önerileri listesinde gösterilir. sistemi otomatik olarak çizmadan önce. Bu listedeki bir öneriyi daha erken kaldırmak istiyorsanız, Azure portal ' den atabilirsiniz.
 
 Otomatik ayarlama seçenekleri veritabanı başına bağımsız olarak etkinleştirilebilir veya devre dışı bırakılabilir ya da SQL veritabanı sunucularında yapılandırılabilirler ve ayarları sunucudan devralan her veritabanına uygulanabilir. SQL veritabanı sunucuları, otomatik ayarlama ayarları için Azure varsayılanlarını devralınabilir. Azure Varsayılanları Şu anda FORCE_LAST_GOOD_PLAN olarak ayarlanır, CREATE_INDEX etkindir ve DROP_INDEX devre dışıdır.
 

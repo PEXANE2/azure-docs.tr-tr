@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 5d287165e77597943d298178689c216497361570
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: e9ecc34566e6e534b7489c934c0d5fa3b34e219b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879647"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104489"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri ile Azure Depolama'yı kullanma
 
@@ -45,7 +45,7 @@ Depolama hesabınızı **Seçili ağlardaki** **güvenlik duvarları ve sanal a�
 ## <a name="hdinsight-storage-architecture"></a>HDInsight depolama mimarisi
 Aşağıdaki diyagram, Azure Depolama ile kullanılan HDInsight depolama mimarisine ilişkin bir özet görünüm sağlar:
 
-![Hadoop kümeleri, Blob Depolamada yapılandırılmış ve yapılandırılmamış verilere erişmek ve depolamak için HDFS API’sini kullanır.](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight Depolama Mimarisi")
+![Hadoop kümeleri, blob depolamaya erişmek ve veri depolamak için, bu API kullanır](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight depolama mimarisi")
 
 HDInsight, işlem düğümlerine yerel olarak bağlı olan dağıtılmış dosya sistemine erişim imkanı sağlar. Bu dosya sistemine tam uygun URI kullanılarak erişilebilir, örneğin:
 
@@ -73,6 +73,7 @@ Apache Hive, MapReduce, Apache Hadoop streaming ve Apache Pig dahil olmak üzere
 Bloblar yapılandırılmış ve yapılandırılmamış veriler için kullanılabilir. Blob kapsayıcıları, verileri anahtar/değer çiftleri olarak depolar ve dizin hiyerarşisi bulunmaz. Ancak, bir dosyayı dizin yapısında depolanmış gibi göstermek için anahtar adında eğik çizgi karakteri (/) kullanılabilir. Örneğin, bir blob'un anahtarı *input/log1.txt* şeklinde olabilir. Gerçek *giriş* dizini yoktur, ancak anahtar adında eğik çizgi karakteri bulunması nedeniyle, bir dosya yolu görünümüne sahiptir.
 
 ## <a id="benefits"></a>Azure Depolamanın yararları
+
 İşlem kümelerinin ve depolama kaynaklarının birlikte bulunmamasının zımni performans maliyeti, işlem kümelerinin Azure bölgesindeki depolama hesabı kaynaklarına yakın şekilde oluşturulduğu şekilde, yüksek hızlı ağın ise Azure Storage içindeki verilere erişmek için işlem düğümleri.
 
 Verileri HDFS yerine Azure Depolama’da depolamanın çeşitli avantajları vardır:
@@ -93,6 +94,7 @@ Bazı MapReduce işleri ve paketleri gerçekte Azure depolamada depolamak isteme
 > En fazla bir komut (örneğin, `ls`, `copyFromLocal` ve `mkdir`) hala beklendiği gibi çalışır. Yalnızca yerel bir IBU uygulamaya özgü komutlar (DFS olarak adlandırılır), `fschk` ve `dfsadmin`gibi Azure depolama 'da farklı davranışlar gösterir.
 
 ## <a name="address-files-in-azure-storage"></a>Azure depolamada dosyaları adresleme
+
 HDInsight’ta Azure depolamadaki dosyalara erişmek için URI şeması aşağıdaki gibidir:
 
 ```config
@@ -125,6 +127,7 @@ example/jars/hadoop-mapreduce-examples.jar
 > HDInsight dışındaki blob'larla çalışırken, yardımcı programların çoğu WASB biçimini tanımaz ve bunun yerine, `example/jars/hadoop-mapreduce-examples.jar` gibi temel yol biçimi gibi bekler.
 
 ##  <a name="blob-containers"></a>Blob kapsayıcıları
+
 Blob 'ları kullanmak için önce bir [Azure depolama hesabı](../storage/common/storage-create-storage-account.md)oluşturursunuz. Bunun bir parçası olarak depolama hesabının oluşturulduğu Azure bölgesini belirtirsiniz. Küme ve depolama hesabının aynı bölgede barındırılması gerekir. Hive meta veri deposu SQL Server veritabanı ve Apache Oozie metaser SQL Server veritabanı aynı bölgede de bulunmalıdır.
 
 Nerede olursa olsun, oluşturduğunuz her blob Azure Storage hesabınızdaki bir kapsayıcıya aittir. Bu kapsayıcı HDInsight dışında oluşturulmuş bir blob veya bir HDInsight kümesi için oluşturulan bir kapsayıcı olabilir.

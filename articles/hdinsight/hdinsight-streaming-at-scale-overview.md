@@ -8,22 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: e18203162229e6c3db24a5f76b65de61d572f96a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: HT
+ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076784"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105329"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight’ta ölçeğe göre akış
 
 Gerçek zamanlı büyük veri çözümleri, hareket halindeki veriler üzerinde çalışır. Genellikle, bu veriler en fazla varış zamanında değerlidir. Gelen veri akışı bu anda işlenebileceğinden daha büyük olursa, kaynakları daraltmanız gerekebilir. Alternatif olarak, bir HDInsight kümesi, isteğe bağlı düğümler ekleyerek akış çözümünüzü karşılayacak şekilde ölçeklenebilir.
 
-
 Bir akış uygulamasında, bir veya daha fazla veri kaynağı, yararlı bilgileri bırakmadan hızlı bir şekilde atılması gereken olayları (bazen milyonlarca saniyede milyonlarca) oluşturuyor. Gelen olaylar, [Apache Kafka](kafka/apache-kafka-introduction.md) veya [Event Hubs](https://azure.microsoft.com/services/event-hubs/)gibi bir hizmet tarafından *olay Kuyruklama*olarak da adlandırılan *akış ara belleği*ile işlenir. Olayları topladıktan sonra, [Apache Storm](storm/apache-storm-overview.md) veya [Apache Spark akışı](spark/apache-spark-streaming-overview.md)gibi *akış işleme* katmanında gerçek zamanlı bir analiz sistemi kullanarak verileri çözümleyebilirsiniz. İşlenen veriler, [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)gibi uzun süreli depolama sistemlerinde depolanabilir ve [Power BI](https://powerbi.microsoft.com), Tableau veya özel bir Web sayfası gibi bir iş zekası panosunda gerçek zamanlı olarak görüntülenebilir.
 
-
-![HDInsight akış desenleri](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+![Azure HDInsight akış desenleri](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
 ## <a name="apache-kafka"></a>Apache Kafka
 

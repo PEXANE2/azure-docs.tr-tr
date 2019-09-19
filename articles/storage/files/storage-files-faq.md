@@ -7,12 +7,12 @@ ms.date: 07/30/2019
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 0fe893ae95b31b1b676a982a60166041a0ad964d
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: cc827f52d227ee36620bd215dfcba96b433804d3
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015899"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103048"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure dosyaları hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -100,7 +100,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
    
     \<FileNameWithoutExtension\>MachineName-.\>\<\[-#\]\< leri\>  
 
-    Örneğin, CompanyReport-CentralServer. docx ' in ilk çakışması, merkezileştirme sunucusu daha eski yazmanın gerçekleştiği yerdir. İkinci çakışma CompanyReport-CentralServer-1. docx olarak adlandırılır.
+    Örneğin, CompanyReport-CentralServer. docx ' in ilk çakışması, merkezileştirme sunucusu daha eski yazmanın gerçekleştiği yerdir. İkinci çakışma CompanyReport-CentralServer-1. docx olarak adlandırılır. Azure Dosya Eşitleme dosya başına 100 çakışma dosyasını destekler. Çakışma dosyası sayısı üst sınırına ulaşıldığında, çakışma dosyası sayısı 100 ' den az olana kadar dosya eşitleme başarısız olur.
 
 * <a id="afs-storage-redundancy"></a>
   **Azure Dosya Eşitleme için coğrafi olarak yedekli depolama destekleniyor mu?**  
@@ -245,7 +245,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 * <a id="expressroute-not-required"></a>
 **Azure dosyaları 'na bağlanmak veya şirket içi Azure Dosya Eşitleme kullanmak için Azure ExpressRoute 'u kullanmak zorunda mıyım?**  
 
-    Hayır. ExpressRoute 'un bir Azure dosya paylaşımının erişimine yönelik olması gerekmez. Doğrudan şirket içi bir Azure dosya paylaşımından bağlantı oluşturuyorsanız, tüm bu gerekli olan bağlantı noktası 445 (TCP Giden) internet erişimi için açık olmalıdır (Bu, SMB 'nin iletişim kurmak için kullandığı bağlantı noktasıdır). Azure Dosya Eşitleme kullanıyorsanız, tüm gerekli olan HTTPS erişimi için bağlantı noktası 443 (TCP Giden) ' dir (SMB gerekmez). Ancak, ExpressRoute 'u bu erişim seçeneklerinden biriyle kullanabilirsiniz.
+    Hayır. ExpressRoute 'un bir Azure dosya paylaşımının erişimine yönelik olması gerekmez. Doğrudan şirket içi bir Azure dosya paylaşımından bağlantı oluşturuyorsanız, tüm bu gerekli olan bağlantı noktası 445 (TCP Giden) internet erişimi için açık olmalıdır (Bu, SMB 'nin iletişim kurmak için kullandığı bağlantı noktasıdır). Azure Dosya Eşitleme kullanıyorsanız, tüm gerekli olan HTTPS erişimi için bağlantı noktası 443 (TCP Giden) ' dir (SMB gerekmez). Ancak, ExpressRoute 'u bu erişim seçeneklerinden *biriyle kullanabilirsiniz.*
 
 * <a id="mount-locally"></a>
 **Yerel makinemdeki bir Azure dosya paylaşımından nasıl bağlayabilirim?**  

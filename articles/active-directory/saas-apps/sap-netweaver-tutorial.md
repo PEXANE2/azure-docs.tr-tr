@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b002a9d5385d6cee3f22da7a1ddcf1f0864311ec
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d79c953f22bfe587f740bc29050796834309186a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989033"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>Öğretici: SAP NetWeaver ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -163,7 +163,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > ``` 
     > ServicePrincipal nesne KIMLIĞI ilk olarak sizin tarafınızdan ayarlanacak ya da bunu da buraya geçirebilmeniz gerekir.
 
-1. SAP NetWeaver uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. SAP NetWeaver uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
@@ -199,7 +199,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
     1. **Ad** alanına `B.Simon` girin.  
     1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
     1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-    1.           **Oluştur**'a tıklayın.
+    1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -259,7 +259,7 @@ Bu bölümde, SAP NetWeaver 'e erişim vererek Azure çoklu oturum açma özelli
 
     ![Çoklu oturum açmayı yapılandırın](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_authentication.png)
 
-11. Sekmeye **Güvenilen sağlayıcı** > **kimliği Federasyonu** ' ne gidin (ekranın altından).           **Düzenle**‘ye tıklayın.
+11. Sekmeye **Güvenilen sağlayıcı** > **kimliği Federasyonu** ' ne gidin (ekranın altından). **Düzenle**‘ye tıklayın.
 
     ![Çoklu oturum açmayı yapılandırın](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_trustedprovider.png)
 

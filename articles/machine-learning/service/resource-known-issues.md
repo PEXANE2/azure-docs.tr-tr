@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffbc919333c43c04f461498a513d098ce8fe628f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 81eabadba70a2d5334fab43157f17d24c41d97ec
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996586"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103407"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -174,3 +174,43 @@ Uzak bir işten bir işlem hedefinde yönetim işlemi gerçekleştirirseniz, aş
 Bir hata `Unable to upload project files to working directory in AzureFile because the storage is overloaded`alırsanız, aşağıdaki geçici çözümleri uygulayın.
 
 Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyorsanız, dosya paylaşımının çalıştırmaları için kullanılabilmesi için blob 'ları kullanmak, bu nedenle söz konusu çalışma. İş yükünü iki farklı çalışma alanı arasında da bölebilirsiniz.
+
+## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes hizmeti hatalarında WebServices 
+
+Azure Kubernetes hizmetindeki birçok Web hizmeti hatası, kullanılarak `kubectl`kümeye bağlanarak hata ayıklanabilir. Bir Azure Kubernetes hizmet kümesi `kubeconfig.json` için şunu çalıştırarak edinebilirsiniz
+
+```bash
+az aks get-credentials -g <rg> -n <aks cluster name>
+```
+
+## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>AKS kümesindeki Azure Machine Learning bileşenleri güncelleştiriliyor
+
+Azure Kubernetes hizmet kümesinde yüklü Azure Machine Learning bileşenlere yapılan güncelleştirmeler el ile uygulanmalıdır. Kümeyi Azure Machine Learning çalışma alanından ayırarak ve sonra kümeyi çalışma alanına yeniden iliştirerek bu kümeleri uygulayabilirsiniz. Kümede SSL etkinse, kümeyi yeniden iliştirirken SSL sertifikasını ve özel anahtarı sağlamanız gerekir. 
+
+```python
+compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
+compute_target.detach()
+compute_target.wait_for_completion(show_output=True)
+
+attach_config = AksCompute.attach_configuration(resource_group=resourceGroup, cluster_name=kubernetesClusterName)
+
+## If SSL is enabled.
+attach_config.enable_ssl(
+    ssl_cert_pem_file="cert.pem",
+    ssl_key_pem_file="key.pem",
+    ssl_cname=sslCname)
+
+attach_config.validate_configuration()
+
+compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceName, attach_configuration=attach_config)
+compute_target.wait_for_completion(show_output=True)
+```
+
+Artık SSL sertifikasına ve özel anahtara sahip değilseniz veya Azure Machine Learning tarafından oluşturulan bir sertifika kullanıyorsanız, kümeye bağlanıp gizli `kubectl` anahtarıalarakkümeyibağlamadanöncedosyalarıalabilirsiniz`azuremlfessl`.
+
+```bash
+kubectl get secret/azuremlfessl -o yaml
+```
+
+>[!Note]
+>Kubernetes gizli dizileri temel-64 kodlu biçimde depolar. Ana 64 'nin `cert.pem` ve `key.pem` içindeki parolaların bileşenlerinin kodunu vermeden `attach_config.enable_ssl`önce kodu çözmelisiniz. 

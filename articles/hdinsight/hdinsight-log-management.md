@@ -2,18 +2,18 @@
 title: HDInsight kümesi için günlükleri yönetme-Azure HDInsight
 description: HDInsight etkinlik günlüğü dosyaları için türleri, boyutları ve bekletme ilkelerini belirleme.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4e9a6a9ca435971d64ec8f59203a518287e6db4e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: c069b620e129177be5d374f5b23b5e54befd8ca2
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961024"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105438"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight kümesi için günlükleri yönetme
 
@@ -79,11 +79,11 @@ Apache ambarı, bir Web Kullanıcı arabirimi ve REST API sağlayarak bir HDInsi
 
 Hizmet görünümlerinin listesini açmak için HDInsight için Azure portal sayfasındaki **ambarı görünümleri** bölmesini seçin.  Bu liste, yüklediğiniz kitaplıklara bağlı olarak farklılık gösterir.  Örneğin, YARN kuyruğu Yöneticisi, Hive görünümü ve tez görünümü ' ne bakabilirsiniz.  Yapılandırma ve hizmet bilgilerini görmek için herhangi bir hizmet bağlantısı seçin.  Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfasında, küme hizmetleri yapılandırma ve hizmet sürümü geçmişi hakkında bilgi sağlanır. Ambarı Kullanıcı arabiriminin bu bölümüne gitmek için **yönetici** menüsünü ve ardından **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için **sürümler** sekmesini seçin.
 
-![Yığın ve sürümler](./media/hdinsight-log-management/ambari-stack-versions.png)
+![Apache ambarı yönetici yığını ve sürümleri](./media/hdinsight-log-management/ambari-stack-versions.png)
 
 Ambarı Kullanıcı arabirimini kullanarak, kümedeki belirli bir konakta (veya düğümünde) çalışan tüm (veya tüm) hizmetlerin yapılandırmasını indirebilirsiniz.  **Konaklar** menüsünü ve ardından ilgilendiğiniz konağın bağlantısını seçin. Bu konağın sayfasında, **konak eylemleri** düğmesini seçin ve ardından **istemci yapılandırması**' nı indirin.
 
-![Konak istemci yapılandırması](./media/hdinsight-log-management/download-client-configs.png)
+![Apache ambarı indirme konak istemci yapılandırması](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>Betik eylemi günlüklerini görüntüleme
 
@@ -93,7 +93,7 @@ HDInsight [betik eylemleri](hdinsight-hadoop-customize-cluster-linux.md) , el il
 
 Sonraki adım çeşitli hizmetlere yönelik iş yürütme günlüğü dosyalarını gözden geçiriyorsunuz.  Hizmetler Apache HBase, Apache Spark ve diğer birçok tane içerebilir. Bir Hadoop kümesi çok sayıda ayrıntılı günlük oluşturur, bu nedenle hangi günlüklerin yararlı (ve olmayan) zaman alabilir olduğunu belirler.  Günlük sistemini anlamak, günlük dosyalarının hedeflenen yönetimi için önemlidir.  Aşağıda örnek bir günlük dosyası verilmiştir.
 
-![HDInsight günlük dosyası örneği](./media/hdinsight-log-management/hdi-log-file-example.png)
+![HDInsight örnek günlük dosyası örnek çıktısı](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop günlük dosyalarına erişin
 
@@ -146,9 +146,9 @@ Artık anahtar günlükleri için bir günlük yönetimi stratejisi oluşturmak 
 
 Hangi günlük dosyalarının silineceğini belirledikten sonra, belirli bir süre geçtikten sonra günlük dosyalarını otomatik olarak silmek için birçok Hadoop hizmetine ait günlüğe kaydetme parametreleri ayarlayabilirsiniz.
 
-Belirli günlük dosyaları için, düşük fiyatlı günlük dosyası arşivleme yaklaşımını kullanabilirsiniz. Azure Resource Manager etkinlik günlükleri için, Azure portal kullanarak bu yaklaşımı inceleyebilirsiniz.  HDInsight örneğiniz için Azure portal **etkinlik günlüğü**' bağlantısını seçerek ARM günlüklerinin arşivlenmesini ayarlayın.  Etkinlik günlüğü arama sayfasının üst kısmında **dışarı** aktar menü öğesini seçerek **etkinlik günlüğünü dışarı aktar** bölmesini açın.  Abonelik, bölge, bir depolama hesabına verip vermeyeceğinizi ve günlüklerin saklanacağı gün sayısını girin. Aynı bölmede, bir olay hub 'ına dışa aktarıp vermeyeceğinizi de belirtebilirsiniz. 
+Belirli günlük dosyaları için, düşük fiyatlı günlük dosyası arşivleme yaklaşımını kullanabilirsiniz. Azure Resource Manager etkinlik günlükleri için, Azure portal kullanarak bu yaklaşımı inceleyebilirsiniz.  HDInsight örneğiniz için Azure portal **etkinlik günlüğü**' bağlantısını seçerek ARM günlüklerinin arşivlenmesini ayarlayın.  Etkinlik günlüğü arama sayfasının üst kısmında **dışarı** aktar menü öğesini seçerek **etkinlik günlüğünü dışarı aktar** bölmesini açın.  Abonelik, bölge, bir depolama hesabına verip vermeyeceğinizi ve günlüklerin saklanacağı gün sayısını girin. Aynı bölmede, bir olay hub 'ına dışa aktarıp vermeyeceğinizi de belirtebilirsiniz.
 
-![Günlük dosyalarını dışarı aktar](./media/hdinsight-log-management/hdi-export-log-files.png)
+![Azure portal dışarı aktarma etkinlik günlüğü önizlemesi](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 Alternatif olarak, PowerShell ile günlük arşivleme komut dosyası oluşturabilirsiniz.  Örnek bir PowerShell betiği için bkz. Azure [Otomasyonu günlüklerini Azure Blob depolamaya arşivleme](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8).
 

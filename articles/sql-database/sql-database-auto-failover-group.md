@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6f5d865b5a12ce8989631deee7ebda49dbe1ab12
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806601"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103191"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 
@@ -173,9 +173,6 @@ Otomatik yük devretme grubu, birincil SQL veritabanı sunucusunda yapılandır�
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Yönetilen örneklerle yük devretme grupları kullanmanın en iyi yöntemleri
 
-> [!IMPORTANT]
-> Yönetilen örnek için otomatik yük devretme grupları genel önizlemede.
-
 Otomatik yük devretme grubu birincil örnekte yapılandırılmalı ve bunu farklı bir Azure bölgesindeki ikincil örneğe bağlayacaktır.  Örnekteki tüm veritabanları ikincil örneğe çoğaltılır. 
 
 Aşağıdaki diyagramda, yönetilen örnek ve otomatik yük devretme grubu kullanılarak coğrafi olarak yedekli bir bulut uygulamasının tipik bir yapılandırması gösterilmektedir.
@@ -224,7 +221,7 @@ Uygulamanız veri katmanı olarak yönetilen örnek kullanıyorsa, iş süreklil
   Verilerin belirli bir şekilde kullanılması için dayanıklı bir mantıksal olarak yalıtılmış salt okunurdur, uygulamadaki ikincil veritabanını kullanabilirsiniz. Coğrafi olarak çoğaltılan ikinciye doğrudan bağlanmak için sunucu URL 'si `server.secondary.zone_id.database.windows.net` olarak kullanın ve bağlantı doğrudan coğrafi çoğaltılan ikincil öğesine yapılır.
 
   > [!NOTE]
-  > Belirli hizmet katmanlarında Azure SQL veritabanı, [salt okunurdur ve](sql-database-read-scale-out.md) salt okuma sorgusu iş yüklerini yalnızca bir salt okunurdur ve `ApplicationIntent=ReadOnly` bağlantı dizesindeki parametresini kullanarak yük dengelemesi için destekler. Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.
+  > Belirli hizmet katmanlarında Azure SQL veritabanı, salt okunurdur ve salt okuma sorgusu iş yüklerini yalnızca bir salt okunurdur ve `ApplicationIntent=ReadOnly` bağlantı dizesindeki parametresini kullanarak yük dengelemesi için destekler. [](sql-database-read-scale-out.md) Coğrafi olarak çoğaltılan bir ikincil yapılandırdığınız zaman, birincil konumdaki veya coğrafi olarak çoğaltılan konumdaki salt okunurdur bir kopyaya bağlanmak için bu özelliği kullanabilirsiniz.
   > - Birincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.zone_id.database.windows.net`.
   > - İkincil konumdaki bir salt okuma çoğaltmasına bağlanmak için kullanın `<fog-name>.secondary.zone_id.database.windows.net`.
 
@@ -365,7 +362,7 @@ Daha önce anlatıldığı gibi otomatik yük devretme grupları ve etkin coğra
 | [Yük devretme grubunu Güncelleştir](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Bir yük devretme grubunu güncelleştirir. |
 |  | |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances-preview"></a>REST API: Yönetilen örneklerle yük devretme gruplarını yönetme (Önizleme)
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: Yönetilen örneklerle yük devretme gruplarını yönetme
 
 | API | Açıklama |
 | --- | --- |

@@ -1,18 +1,18 @@
 ---
 title: Azure PowerShell kullanarak bir Azure özel bağlantı hizmeti oluşturun | Microsoft Docs
 description: Azure PowerShell kullanarak bir Azure özel bağlantı hizmeti oluşturmayı öğrenin
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 496f3d177446e6c3a4a086f89f15bf5cd66fefed
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 09158a935aac023382049d3aa9ce23a711972023
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018950"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104754"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma
 Bu makalede, Azure 'da Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma gösterilmektedir.
@@ -113,7 +113,7 @@ Bu aşamada, özel bağlantı hizmetiniz başarıyla oluşturulur ve trafik alma
 
 Ardından, PowerShell kullanarak bu hizmeti farklı VNet 'teki özel bir uç noktaya nasıl eşleneceğini göstereceğiz. Bu örnek, Özel uç nokta oluşturma ve yukarıda oluşturulan özel bağlantı hizmetine bağlanma ile sınırlıdır. Senaryonuzu oluşturmak için özel uç noktaya trafik göndermek/almak için sanal ağda sanal makineler oluşturabilirsiniz. 
 
-## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
+## <a name="create-a-private-endpoint"></a>Özel Uç Nokta oluşturma
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel uç noktanız için bir sanal ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubunda *vnetpe* adlı bir sanal ağ oluşturur:
  

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: caea0b7e64c7079156480aef0f65279989285ff3
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5334c17b4f918e128ac69569e8ab6deeebac2182
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834971"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103936"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET içinde belirteç önbelleği serileştirme
 [Belirteç](msal-acquire-cache-tokens.md)alındıktan sonra, Microsoft kimlik doğrulama KITAPLıĞı (msal) tarafından önbelleğe alınır.  Uygulama kodu, başka bir yöntem tarafından belirteç almadan önce önbellekten bir belirteç almayı denemelidir.  Bu makalede, MSAL.NET içinde belirteç önbelleğinin varsayılan ve özel serileştirmesi açıklanmaktadır.
@@ -275,7 +275,7 @@ namespace CommonCacheMsalV3
 
 Web Apps veya Web API 'Lerinde, önbellek oturum, Redsıs önbelleği veya bir veritabanı aracılığıyla faydalanabilir.
 
-Anımsanması gereken önemli bir şey, Web uygulamaları ve Web API 'Leri için Kullanıcı başına (hesap başına) bir belirteç önbelleği olması gerektiğini unutmayın. Her hesap için belirteç önbelleğini seri hale getirmeniz gerekir.
+Web Apps veya Web API 'Lerinde, hesap başına tek bir belirteç önbelleği tutun.  Web Apps için, belirteç önbelleğinin hesap KIMLIĞI tarafından anahtarlanır olması gerekir.  Web API 'Leri için, bu hesabın API 'yi çağırmak için kullanılan belirtecin karması ile anahtarlanır olması gerekir. MSAL.NET, .NET Framework ve .NET Core alt platformlarında özel belirteç önbelleği serileştirmesini sağlar. Olaylar, önbelleğe erişildiğinde harekete geçirilir, uygulamalar önbelleğin serileştirip serileştirmeyeceğini veya seri durumdan çıkaramayacağını seçebilir. Kullanıcıları işleyen gizli istemci uygulamalarında (kullanıcıların oturum açması ve Web API 'Lerini çağıran Web uygulamaları ve aşağı akış Web API 'lerini çağıran Web API 'Leri), birçok kullanıcı olabilir ve kullanıcılar paralel olarak işlenir. Güvenlik ve performans nedenleriyle, önerimiz Kullanıcı başına bir önbellek serileştirilmemiz olur. Serileştirme olayları, işlenen kullanıcının kimliğine göre bir önbellek anahtarını hesaplar ve bu kullanıcı için bir belirteç önbelleğini seri hale getirme/kaldırma.
 
 Web uygulamaları ve Web API 'Leri için belirteç önbelleklerinin nasıl kullanılacağına ilişkin örnekler, aşama [2-2 belirteç önbelleğindeki](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) [ASP.NET Core Web uygulaması öğreticisinde](https://ms-identity-aspnetcore-webapp-tutorial) bulunabilir. Uygulamalar için, [Microsoft-Authentication-Extensions-for-DotNet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) kitaplığındaki ( [Microsoft. Identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) klasöründe) [tokencacheproviders](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web/TokenCacheProviders) ' a aşağıdaki klasöre göz atalım. 
 

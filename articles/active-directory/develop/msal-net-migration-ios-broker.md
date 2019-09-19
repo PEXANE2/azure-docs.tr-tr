@@ -1,6 +1,6 @@
 ---
-title: ADAL.NET 'den MSAL.NET 'e Microsoft Authenticator kullanarak Xamarin iOS uygulamalarını geçirme | Mavisi
-description: .NET için Azure AD kimlik doğrulama kitaplığı (ADAL.NET) aracılığıyla Microsoft Authenticator kullanarak Xamarin iOS uygulamalarını .NET için Microsoft kimlik doğrulama kitaplığı 'na geçirmeyi öğrenin (MSAL.NET)
+title: ADAL.NET 'den MSAL.NET 'e Microsoft Authenticator kullanan Xamarin iOS uygulamalarını geçirin | Mavisi
+description: .NET için Azure AD kimlik doğrulama kitaplığı 'ndan Microsoft Authenticator kullanan Xamarin iOS uygulamalarını .NET için Microsoft kimlik doğrulama kitaplığı 'na (MSAL.NET) geçirmeyi öğrenin.
 documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
@@ -16,33 +16,33 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 609aeeada78985466cb7c254cab32864e5d84b0e
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 4426c070d2fd2e26e0d4368a94996bc32e95129d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70875659"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103952"
 ---
-# <a name="migrating-ios-applications-using-microsoft-authenticator-from-adalnet-to-msalnet"></a>ADAL.NET 'den MSAL.NET 'e Microsoft Authenticator kullanarak iOS uygulamalarını geçirme
+# <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>ADAL.NET 'den MSAL.NET 'ye Microsoft Authenticator kullanan iOS uygulamalarını geçirme
 
-ADAL.NET ve iOS Broker 'ı kullanıyorsunuz ve MSAL.NET [Microsoft kimlik doğrulama kitaplığı](msal-overview.md)'na geçiş zamanı, bu, sürüm 4,3 ' den iOS üzerinde aracı destekler. 
+.NET (ADAL.NET) ve iOS Aracısı için Azure Active Directory kimlik doğrulama kitaplığını kullanıyorsunuz. Şimdi .NET için [Microsoft kimlik doğrulama kitaplığı](msal-overview.md) 'na (msal.net) geçiş yapma zamanı, bu sürüm 4,3 ' den iOS üzerindeki aracıyı destekler. 
 
-Nereden başlamalı? Bu makale, Xamarin iOS uygulamanızı ADAL 'ten MSAL 'e geçirmenize yardımcı olur.
+Nereden başlamanız gerekir? Bu makale, Xamarin iOS uygulamanızı ADAL 'dan MSAL 'e geçirmenize yardımcı olur.
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bu belge, iOS broker ile tümleştirilmiş bir Xamarin iOS uygulamasına zaten sahip olduğunuzu varsayar. Bunu yapmazsanız, doğrudan MSAL.NET 'e geçmek ve aracı uygulamasını burada başlatmak en iyi seçenektir. MSAL.NET içinde iOS Broker 'ı yeni bir uygulamayla çağırma hakkındaki ayrıntılar için [Bu belgelere](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications) bakın.
+Bu makalede, iOS broker ile tümleştirilmiş bir Xamarin iOS uygulamasına zaten sahip olduğunuz varsayılır. Bunu yapmazsanız, doğrudan MSAL.NET 'e taşıyın ve aracı uygulamasını orada başlatın. MSAL.NET içinde iOS Broker 'ı yeni bir uygulamayla çağırma hakkında daha fazla bilgi için [Bu belgelere](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)bakın.
 
 ## <a name="background"></a>Arka Plan
 
 ### <a name="what-are-brokers"></a>Aracılar nelerdir?
 
-Aracılar, Android ve iOS 'ta (iOS ve Android 'de[Microsoft Authenticator](https://www.microsoft.com/account/authenticator) , android 'de Intune şirket portalı) Microsoft tarafından sunulan uygulamalardır. 
+Aracılar, Android ve iOS 'ta Microsoft tarafından sunulan uygulamalardır. (İOS ve Android 'de [Microsoft Authenticator](https://www.microsoft.com/account/authenticator) uygulamasına ve android üzerinde Intune Şirket Portalı uygulamasına bakın.) 
 
 Bunlar şunları etkinleştirir:
 
-- Çoklu oturum açma,
-- Bazı [koşullu erişim ilkeleri](../conditional-access/overview.md) için gereken cihaz kimliği (bkz. [cihaz yönetimi](../conditional-access/conditions.md#device-platforms))
-- Uygulama tanımlama doğrulaması, bazı kurumsal senaryolarda de gereklidir (bkz. [Intune mobil uygulama yönetimi veya mam](https://docs.microsoft.com/intune/mam-faq)için bkz.)
+- Çoklu oturum açma.
+- Bazı [koşullu erişim ilkeleri](../conditional-access/overview.md)için gereken cihaz kimliği. Daha fazla bilgi için bkz. [cihaz yönetimi](../conditional-access/conditions.md#device-platforms).
+- Uygulama tanımlama doğrulaması, bazı kurumsal senaryolarda de gereklidir. Daha fazla bilgi için bkz. [Intune mobil uygulama yönetimi (MAM)](https://docs.microsoft.com/intune/mam-faq).
 
 ## <a name="migrate-from-adal-to-msal"></a>ADAL 'ten MSAL 'e geçiş
 
@@ -51,7 +51,9 @@ Bunlar şunları etkinleştirir:
 <table>
 <tr><td>Geçerli ADAL kodu:</td><td>MSAL karşılığı:</td></tr>
 <tr><td>
-ADAL.NET ' de, aracı desteği kimlik doğrulama bağlamı temelinde etkinleştirildi, varsayılan olarak devre dışıdır. Aracıyı çağırmak için `PlatformParameters` oluşturucuda true `useBroker` olarak bir bayrak ayarlamanız gerekiyordu:
+ADAL.NET ' de, bir kimlik doğrulama bağlamı temelinde Aracı desteği etkinleştirilmiştir. Varsayılan olarak devre dışıdır. Şunu ayarlamanız gerekiyordu 
+
+`useBroker`Aracıyı çağırmak için `PlatformParameters` oluşturucuda true olarak bayrak ekleyin:
 
 ```CSharp
 public PlatformParameters(
@@ -80,9 +82,9 @@ Ardından, belirteci al çağrısına parametreleri ekleyin:
 ```
 
 </td><td>
-MSAL.NET ' de, aracı desteği ortak bir Istemci uygulama temelinde etkinleştirilir. Varsayılan olarak devre dışıdır. Etkinleştirmek için şunu kullanın: 
+MSAL.NET ' de, aracı desteği PublicClientApplication temelinde etkinleştirilir. Varsayılan olarak devre dışıdır. Etkinleştirmek için şunu kullanın 
 
-`WithBroker()`Aracı çağırmak için parametresi (varsayılan olarak true olarak ayarlanır):
+`WithBroker()`Aracıyı çağırmak için parametresi (varsayılan olarak true olarak ayarlanır):
 
 ```CSharp
 var app = PublicClientApplicationBuilder
@@ -100,11 +102,13 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-2-set-a-uiviewcontroller"></a>2\. adım: UIViewController () ayarlama
-ADAL.NET ' de, Uıformparameters 'ın bir parçası olarak UIViewController 'a geçtiniz (adım 1 ' deki örneğe bakın). Ancak, MSAL.NET ' de, geliştiriciye daha fazla esneklik sağlamak için, normal iOS kullanımında bir nesne penceresi kullanılır, ancak gerekli değildir. Ancak, aracıyı kullanmak için, aracıdan yanıt göndermek ve almak üzere nesne penceresini ayarlamanız gerekir. 
+ADAL.NET ' de, bir UIViewController içine bir parçası `PlatformParameters`olarak geçtiniz. (Adım 1 ' deki örneğe bakın.) MSAL.NET ' de, geliştiricilere daha fazla esneklik sağlamak için bir nesne penceresi kullanılır, ancak normal iOS kullanımı için gerekli değildir. Aracıyı kullanmak için, aracıdan yanıt göndermek ve almak üzere nesne penceresini ayarlayın. 
 <table>
 <tr><td>Geçerli ADAL kodu:</td><td>MSAL karşılığı:</td></tr>
 <tr><td>
-UIViewController, iOS 'a özgü platformda bulunan PlatformParamters 'ya geçirilir.
+Bir UIViewController öğesine geçirildi 
+
+`PlatformParameters`iOS 'a özgü platformda.
 
 ```CSharp
 page.BrokerParameters = new PlatformParameters(
@@ -113,11 +117,10 @@ page.BrokerParameters = new PlatformParameters(
           PromptBehavior.SelectAccount);
 ```
 </td><td>
-MSAL.NET ' de, iOS için nesne penceresini ayarlamak üzere iki şey yapmanız gerekir:
+MSAL.NET ' de, iOS için nesne penceresini ayarlamak için iki şey yapmanız gerekir:
 
-1) İçinde `AppDelegate.cs`, `App.RootViewController` öğesini Yeni`UIViewController()`olarak ayarlayın. Bu atama, aracı çağrısına bir UIViewController olduğundan emin olur. Doğru ayarlanmamışsa şu hatayı alabilirsiniz:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-2) Acquiretokenınteractıve çağrısında şunu kullanın`.WithParentActivityOrWindow(App.RootViewController)`
-ve, kullanacağınız nesne penceresi başvurusunu geçirin.
+1. İçinde `AppDelegate.cs`, yeni `App.RootViewController` olarakayarlayın.`UIViewController()` Bu atama, aracı çağrısına bir UIViewController olduğundan emin olmanızı sağlar. Doğru ayarlanmamışsa şu hatayı alabilirsiniz:`"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. Acquiretokenınteractive çağrısında `.WithParentActivityOrWindow(App.RootViewController)`, kullanın ve kullanacağınız nesne penceresi başvurusunu geçirin.
 
 **Örneğin:**
 
@@ -140,9 +143,9 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>3\. adım: Geri aramayı işlemek için AppDelegate 'i Güncelleştir
-Hem adal hem de msal aracı çağırır ve Aracı, `OpenUrl` `AppDelegate` sınıf yöntemi aracılığıyla uygulamanıza geri çağrı yapılır. Daha fazla bilgiyi [burada](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS/_edit#step-two-update-appdelegate-to-handle-the-callback) bulabilirsiniz
+Hem adal hem de msal aracı çağırır ve içindeki aracı, `OpenUrl` `AppDelegate` sınıfının yöntemi aracılığıyla uygulamanıza geri çağrı çağırır. Daha fazla bilgi için [Bu belgelere](msal-net-use-brokers-with-xamarin-apps.md#step-2-update-appdelegate-to-handle-the-callback)bakın.
 
-: heavy_check_mark:**burada adal.net ve msal.net arasında bir değişiklik yok**
+Burada ADAL.NET ve MSAL.NET arasında bir değişiklik yoktur.
 
 ### <a name="step-4-register-a-url-scheme"></a>4\. Adım: URL şeması kaydetme
 ADAL.NET ve MSAL.NET, aracıyı çağırmak ve aracı yanıtını uygulamaya geri döndürmek için URL 'Leri kullanın. Aşağıdaki şekilde, URL şemasını `Info.plist` uygulamanız için dosyaya kaydedin:
@@ -179,13 +182,14 @@ Sanal Makineye (VM) bağlı bir veya birden çok işletim sistemi diski içerdi�
 ```
 
 > [!NOTE]
->  Bu URL şeması, Aracıdan yanıtı alırken uygulamayı benzersiz şekilde tanımlamak için kullanılan Redirecturı 'nin bir parçası olacak
+> Bu URL şeması, Aracıdan yanıtı aldığında uygulamayı benzersiz şekilde tanımlamak için kullanılan yeniden yönlendirme URI 'sinin bir parçası haline gelir.
 
 </table>
 
-### <a name="step-5-lsapplicationqueriesschemes"></a>5\. Adım: Lsapplicationqueriesdüzenleri
+### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>5\. Adım: Aracı tanımlayıcısını Lsapplicationqueriesdüzenlerinin bölümüne ekleyin
 
-ADAL.net ve msal.net her ikisi `-canOpenURL:` de aracının cihaza yüklenip yüklenmediğini denetlemek için kullanılır. İOS Aracısı için doğru tanımlayıcıyı Info. plist dosyasının Lsapplicationqueriesdüzenlerinin bölümüne aşağıdaki şekilde ekleyin: 
+ADAL.net ve msal.net her ikisi `-canOpenURL:` de aracının cihaza yüklenip yüklenmediğini denetlemek için kullanılır. İOS Aracısı için doğru tanımlayıcıyı Info. plist dosyasının Lsapplicationqueriesdüzenlerinin bölümüne aşağıdaki şekilde ekleyin:
+
 <table>
 <tr><td>Geçerli ADAL kodu:</td><td>MSAL karşılığı:</td></tr>
 <tr><td>
@@ -214,25 +218,29 @@ Kullanımlar
 ```
 </table>
 
-### <a name="step-6-register-you-redirecturi-in-the-portal"></a>6\. Adım: Portala RedirectUri 'yi kaydetme
+### <a name="step-6-register-your-redirect-uri-in-the-portal"></a>6\. Adım: Yeniden yönlendirme URI 'nizi portala kaydetme
 
-ADAL.NET ve MSAL.NET her ikisi de aracı hedefleme sırasında redirectUri üzerinde ek bir gereksinim ekler. Yeniden yönlendirme URI 'sini portaldaki uygulamanıza kaydedin.
+ADAL.NET ve MSAL.NET, aracıyı hedefliyorsa yeniden yönlendirme URI 'sine ek bir gereksinim ekler. Yeniden yönlendirme URI 'sini portaldaki uygulamanıza kaydedin.
 <table>
 <tr><td>Geçerli ADAL kodu:</td><td>MSAL karşılığı:</td></tr>
 <tr><td>
 
-`"<app-scheme>://<your.bundle.id>"`örneğinde`mytestiosapp://com.mycompany.myapp`
+`"<app-scheme>://<your.bundle.id>"`
+
+Örnek: 
+
+`mytestiosapp://com.mycompany.myapp`
 </td><td>
 
 `$"msauth.{BundleId}://auth"`
 
-örnek:
+Örnek:
 
 `public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; `
 
 </table>
 
-Portala redirectUri kaydetme hakkında daha fazla bilgi için bkz. daha fazla ayrıntı için [Xamarin. iOS uygulamalarında aracıdan](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app) yararlanma.
+Yeniden yönlendirme URI 'sini portalda kaydetme hakkında daha fazla bilgi için bkz. [Xamarin. iOS uygulamalarında aracıdan yararlanma](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

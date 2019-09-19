@@ -2,18 +2,18 @@
 title: Machine Learning genel bakış-Azure HDInsight
 description: Azure HDInsight 'ta kümeler için büyük veri makine öğrenimi seçeneklerine genel bakış.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: hrasheed
-ms.openlocfilehash: 0fecb41c3417d5b43e0638815d6a7d274ba461b0
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961947"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105409"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 'ta makine öğrenimi
 
@@ -39,7 +39,7 @@ Spark ile HDInsight 'ta ML Hizmetleri ile Spark işlem bağlamı kullanarak bir 
 
 Azure Machine Learning, tahmine dayalı analiz modellerini modelleyen araçlar sağlar ve tahmine dayalı modellerinizi kullanıma hazırlama Web Hizmetleri olarak dağıtmak için kullanabileceğiniz tam olarak yönetilen bir hizmettir. Azure Machine Learning, bulutta, tahmine dayalı modeller oluşturmak, test etmek, işlemleri gerçekleştirmek ve yönetmek için kullanabileceğiniz, tahmine dayalı bir analiz çözümüdür. Büyük bir algoritma kitaplığından seçim yapın, model oluşturmak için Web tabanlı bir Studio kullanın ve modelinizi bir Web hizmeti olarak kolayca dağıtın.
 
-![Microsoft Azure Machine Learning ile Hadoop tarafından erişilebilir gelişmiş çözümlemeler yapma](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
+![Microsoft Azure Machine Learning 'e genel bakış](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
 [Hive sorguları](../machine-learning/team-data-science-process/create-features-hive.md)kullanarak bir HDInsight Hadoop kümesindeki veriler için özellikler oluşturun. *Özellik Mühendisliği* , öğrenme sürecini kolaylaştıran ham verilerden Özellikler oluşturarak öğrenme algoritmalarının tahmine dayalı gücünü artırmaya çalışır. Azure Machine Learning Studio 'dan HiveQL sorgularını çalıştırabilir ve [veri Içeri aktarma modülünü](../machine-learning/studio/import-data.md)kullanarak Hive 'de işlenen ve BLOB depolama alanında depolanan verilere erişim sağlayabilirsiniz.
 

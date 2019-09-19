@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fa47e029434b70166403b8603c820d611690f2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c88457653d73931600c37f5e332cc4327dc7957a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975978"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102894"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile okulların Shmoop 'ı tümleştirin
 
@@ -91,16 +91,16 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [okullar Için Shmoop istemci destek ekibine](mailto:support@shmoop.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. Okullar Için shmoop uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.  **Kullanıcı öznitelikleri** iletişim kutusunu açmak için **Düzenle**simgesine tıklayın.
+5. Okullar Için shmoop uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. **Kullanıcı öznitelikleri** iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
     > Okul için shmoop, kullanıcılar için iki rolü destekler: **Öğretmen** ve **öğrenci**. Kullanıcılara uygun roller atanabilmeleri için Azure AD 'de bu rolleri ayarlayın. Azure AD 'de rolleri nasıl yapılandıracağınızı anlamak için [buraya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)bakın.
 
-6. Yukarıdakilerin yanı sıra, okullar Için Shmoop, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler.   **Kullanıcı öznitelikleri** **** iletişimkutusundakiKullanıcıtalepleribölümündeaşağıdakitablodagösterildiğigibiSAMLbelirteciözniteliğieklemekiçinaşağıdakiadımları gerçekleştirin: 
+6. Yukarıdakilerin yanı sıra, okullar Için Shmoop, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde AŞAĞıDAKI tabloda gösterildiği gibi SAML belirteci özniteliği eklemek için aşağıdaki adımları gerçekleştirin: 
 
-    | Ad |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | --------- | --------------- |
     | role      | Kullanıcı. atandroles |
 

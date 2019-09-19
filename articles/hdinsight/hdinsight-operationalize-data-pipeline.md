@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: dec3cdd63f3e3ff303bfd60ca1ae77a4c4641190
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 122840614aede3ee112f8fd68cf6dabfa91fa225
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961287"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105522"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Veri analizi işlem hattını kullanıma hazır hale getirme
 
@@ -23,7 +23,7 @@ Bu makalede, HDInsight Hadoop kümelerinde çalışan Oozie kullanılarak yinele
 
 Aşağıdaki senaryoda, giriş verileri bir ay için bir dizi uçuş verisi içeren düz bir dosyadır. Bu uçuş verileri, kaynak ve hedef Havaalanı, mil flown, ayrılma ve varış süresi gibi bilgileri içerir. Bu işlem hattına sahip amaç, her bir hava yolu 'ın dakikada ortalama ayrılma ve gelme gecikmeleri ve bu güne ait toplam mil flown ile her gün bir satıra sahip olduğu günlük hava yolu performansını özetler.
 
-| YIL | AY | DAY_OF_MONTH | TAŞIY |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
+| YEAR | AY | DAY_OF_MONTH | TAŞIY |AVG_DEP_DELAY | AVG_ARR_DELAY |TOTAL_DISTANCE |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2017 | 1\. | 3 | AA | 10,142229 | 7,862926 | 2644539 |
 | 2017 | 1\. | 3 | AS | 9,435449 | 5,482143 | 572289 |
@@ -33,7 +33,7 @@ Aşağıdaki senaryoda, giriş verileri bir ay için bir dizi uçuş verisi içe
 
 Aşağıdaki diyagramda örnek işlem hattı gösterilmektedir.
 
-![Uçuş verileri işlem hattı](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
+![HDI uçuş örneği veri ardışık düzenine genel bakış](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie çözümüne genel bakış
 
@@ -43,7 +43,7 @@ Oozie, *işlem hatlarını işlemler*, *iş akışları*ve *Koordinatörler*aç�
 
 Aşağıdaki diyagramda Bu örnek Oozie işlem hattının üst düzey tasarımı gösterilmektedir.
 
-![Oozie uçuş verileri işlem hattı](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Oozie uçuş örneği veri işlem hattı](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
 ### <a name="provision-azure-resources"></a>Azure kaynaklarını sağlama
 
@@ -55,23 +55,23 @@ Bu işlem hattı aynı konumda bir Azure SQL veritabanı ve bir HDInsight Hadoop
 2. `oozie` Kaynak grubu içinde bir Azure SQL Server ve veritabanı sağlayın. S1 standart fiyatlandırma katmanından daha büyük bir veritabanı gerekmez.
 3. Azure portal kullanarak, yeni dağıtılan SQL veritabanınızın bölmesine gidin ve **Araçlar**' ı seçin.
 
-    ![Araçlar düğmesi](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
+    ![HDInsight SQL DB araçları düğme simgesi](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
 
 4. **Sorgu Düzenleyicisi**' ni seçin.
 
-    ![Sorgu Düzenleyicisi düğmesi](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
+    ![Araçlar SQL DB sorgu Düzenleyicisi önizlemesi](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
 
 5. **Sorgu Düzenleyicisi** bölmesinde, **oturum aç**' ı seçin.
 
-    ![Oturum aç düğmesi](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
+    ![Sorgu Düzenleyicisi SQL DB oturum açma penceresi](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
 
 6. SQL veritabanı kimlik bilgilerinizi girip **Tamam**' ı seçin.
 
-   ![Oturum açma formu](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
+   ![Sorgu Düzenleyicisi SQL DB oturum açma parametreleri](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
 
 7. Sorgu Düzenleyicisi metin alanına, işlem hattının her çalıştırmasıyla özetlenen verileri depolayacak `dailyflights` tabloyu oluşturmak için aşağıdaki SQL deyimlerini girin.
 
-    ```
+    ```sql
     CREATE TABLE dailyflights
     (
         YEAR INT,
@@ -90,7 +90,7 @@ Bu işlem hattı aynı konumda bir Azure SQL veritabanı ve bir HDInsight Hadoop
 
 8. SQL deyimlerini yürütmek için **Çalıştır** ' ı seçin.
 
-    ![Çalıştır düğmesi](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
+    ![HDInsight SQL DB yürütme düğmesi](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
 
 Azure SQL veritabanınız artık hazır.
 
@@ -104,12 +104,12 @@ Azure SQL veritabanınız artık hazır.
 
 4. **Küme türü** bölmesinde, **Hadoop** kümesi türünü, **Linux** işletim sistemini ve HDInsight kümesinin en son sürümünü seçin. **Küme katmanını** **Standart**olarak bırakın.
 
-    ![HDInsight küme türü](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
+    ![Azure portal kümesi yapılandırma türü](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
 
 5. Küme türü Seçiminizi uygulamak için **Seç ' i** seçin.
 6. Bir oturum açma parolası sağlayıp listeden `oozie` kaynak grubunuzu seçip **İleri**' yi seçerek **temel bilgiler** bölmesini doldurun.
 
-    ![HDInsight temel kavramları bölmesi](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
+    ![Azure portal küme temelleri bölmesi oluştur](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
 
 7. **Depolama** bölmesinde, birincil depolama türünü **Azure Storage**olarak ayarlayın, **Yeni oluştur**' u seçin ve yeni hesap için bir ad sağlayın.
 
@@ -123,13 +123,13 @@ Azure SQL veritabanınız artık hazır.
 
     ![HDInsight Hive meta kimlik doğrulama](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. SQL veritabanınızın Kullanıcı adı ve parolanızı girip **Seç**' i seçin. 
+10. SQL veritabanınızın Kullanıcı adı ve parolanızı girip **Seç**' i seçin.
 
        ![HDInsight Hive meta kimlik doğrulama oturum açma](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. Meta veri deposu **ayarları** bölmesine dönün, Oozie meta veri deposu için veritabanınızı seçin ve daha önce yaptığınız gibi kimlik doğrulaması yapın. 
+11. Meta veri deposu **ayarları** bölmesine dönün, Oozie meta veri deposu için veritabanınızı seçin ve daha önce yaptığınız gibi kimlik doğrulaması yapın.
 
-       ![HDInsight meta veri deposu ayarları](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
+       ![Azure portal meta veri deposu ayarları](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
 12. **İleri**’yi seçin.
 13. Kümenizi dağıtmak için **Özet** bölmesinde **Oluştur** ' u seçin.
@@ -176,17 +176,18 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 Örnek veriler artık kullanılabilir. Ancak, işlem hattı, bir diğeri (`rawFlights`) ve özetlenen veriler (`flights`) için olmak üzere iki Hive tablosu gerektirir. Bu tabloları aşağıdaki şekilde ambarı 'nda oluşturun.
 
 1. Http:\//headnodehost: 8080 adresine giderek, ambarı 'nda oturum açın.
+
 2. Hizmetler listesinden **Hive**öğesini seçin.
 
-    ![Ambarı 'nda Hive seçme](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![Apache ambarı hizmetleri listesi Hive seçme](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
 3. Hive görünümü 2,0 etiketinin yanındaki **görünümü görüntülemek Için git** ' i seçin.
 
-    ![Ambarı 'nda Hive görünümü seçme](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    ![Ambarı Apache Apache Hive özet listesi](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. Sorgu metin alanında, `rawFlights` tabloyu oluşturmak için aşağıdaki deyimleri yapıştırın. Tablo, Azure depolama 'daki `/example/data/flights` klasörü içinde CSV dosyaları için bir şema okuması sağlar. `rawFlights` 
+4. Sorgu metin alanında, `rawFlights` tabloyu oluşturmak için aşağıdaki deyimleri yapıştırın. Tablo, Azure depolama 'daki `/example/data/flights` klasörü içinde CSV dosyaları için bir şema okuması sağlar. `rawFlights`
 
-    ```
+    ```sql
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
         YEAR INT,
         MONTH INT,
@@ -211,7 +212,7 @@ Koordinatör ve iş akışı örneklerinizin durumunu görüntülemek için Oozi
 
 5. Tabloyu oluşturmak için **Yürüt** ' ü seçin.
 
-    ![Ambarı 'nda Hive sorgusu](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![HDI ambarı Hizmetleri Hive sorgusu](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
 6. `flights` Tabloyu oluşturmak için, sorgu metin alanındaki metni aşağıdaki deyimlerle değiştirin. `flights` Tablo, verileri yıla, aya ve aya göre yüklenen verileri bölümleyerek Hive tarafından yönetilen bir tablodur. Bu tablo, uçuşa göre bir satırın kaynak verilerinde en düşük ayrıntı düzeyi olan tüm geçmiş uçuş verilerini içerir.
 
@@ -463,7 +464,7 @@ Oozie`workflow.xml`iş akışınızı (), Hive sorgularını (`hive-load-flights
 
 7. Oozie web konsolunu kullanarak durumu gözlemleyin. Ambarı içinden **Oozie**, **hızlı bağlantılar**ve sonra **Oozie Web Konsolu**' nu seçin. **Iş akışı işleri** sekmesinde **tüm işler**' i seçin.
 
-    ![Oozie Web Konsolu Iş akışları](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![HDI Oozie Web konsolu iş akışları](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
 8. Durum başarılı olduğunda, ekli satırları görüntülemek için SQL veritabanı tablosunu sorgulayın. Azure portal kullanarak, SQL veritabanınızın bölmesine gidin, **Araçlar**' ı seçin ve **sorgu düzenleyicisini**açın.
 
@@ -475,7 +476,7 @@ Oozie`workflow.xml`iş akışınızı (), Hive sorgularını (`hive-load-flights
 
 Bu iş akışını günlük olarak (veya bir tarih aralığındaki tüm günler) çalışacak şekilde zamanlamak için bir düzenleyici kullanabilirsiniz. Bir düzenleyici bir XML dosyası tarafından tanımlanır, örneğin `coordinator.xml`:
 
-```
+```xml
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
     <datasets>
         <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -554,7 +555,7 @@ Gördüğünüz gibi, düzenleyicinin çoğunluğu yalnızca yapılandırma bilg
 
 * 2\. nokta: İş akışının tarih aralığı içinde, `dataset` öğesi belirli bir tarih aralığı için verilerin ne şekilde görüneceğini belirtir ve Oozie 'nin verilerin henüz işlenmek üzere kullanılabilir olup olmadığını nasıl belirlediğini yapılandırır.
 
-    ```
+    ```xml
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
         <uri-template>${sourceDataFolder}${YEAR}-${MONTH}-FlightData.csv</uri-template>
         <done-flag></done-flag>
@@ -567,7 +568,7 @@ Gördüğünüz gibi, düzenleyicinin çoğunluğu yalnızca yapılandırma bilg
 
 * Nokta 3: Öğesi, ilişkili veri kümesi için içindeki `uri-template` değerleri değiştirirken nominal zaman olarak kullanılacak belirli bir zaman damgasını belirtir. `data-in`
 
-    ```
+    ```xml
     <data-in name="event_input1" dataset="ds_input1">
         <instance>${coord:current(0)}</instance>
     </data-in>

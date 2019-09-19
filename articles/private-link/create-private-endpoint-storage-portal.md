@@ -1,18 +1,18 @@
 ---
 title: Azure özel uç noktasını kullanarak bir depolama hesabına özel olarak bağlanma
 description: Özel bir uç nokta kullanarak Azure 'daki bir depolama hesabına özel olarak nasıl bağlanacağınızı öğrenin.
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: d11e035be2e343128caaadcb0b1b2c4a24165330
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
-ms.translationtype: HT
+ms.openlocfilehash: bb0c6e9d20c12df3532a52df1fe4d9574344d4b3
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091084"
+ms.locfileid: "71104730"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure özel uç noktasını kullanarak bir depolama hesabına özel olarak bağlanma
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar.

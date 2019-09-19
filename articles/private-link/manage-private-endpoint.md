@@ -1,18 +1,18 @@
 ---
 title: Azure 'da özel bir uç nokta bağlantısını yönetme
 description: Azure 'da özel uç nokta bağlantılarını yönetmeyi öğrenin
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 16654662665607f86aa08d1f9c5638daf2cbc251
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 012b236e997ef9144eaab43862f5f4dd2b324fff
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018908"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104645"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını yönetme
 Azure özel bağlantısı, özel bağlantı hizmeti tüketicisinin hizmeti tüketmesi için hizmet sağlayıcısına bir bağlantı isteyebildiğini bir onay çağrı akışı modelinde çalışmaktadır. Hizmet sağlayıcı, tüketicinin bağlanmasına izin verip vermeyeceğine karar verebilir. Azure özel bağlantısı, hizmet sağlayıcılarının kaynakları üzerinde özel uç nokta bağlantısını yönetmesine olanak sağlar. Bu makale, Özel uç nokta bağlantılarının nasıl yönetileceği hakkında yönergeler sağlar.

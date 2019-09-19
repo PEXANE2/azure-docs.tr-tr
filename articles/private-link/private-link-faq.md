@@ -1,18 +1,18 @@
 ---
 title: Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 description: Azure özel bağlantısı hakkında bilgi edinin.
-services: virtual-network
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 7e08c91636089abf25e46e1303097fc27b2d75b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 32e570e098c9a3f95dfc5393348cccb1ebe1fb60
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037502"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104580"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure özel bağlantı hakkında sık sorulan sorular (SSS)
 
@@ -23,7 +23,7 @@ ms.locfileid: "71037502"
 - **[Azure özel uç noktası](private-endpoint-overview.md)** : Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç noktaları, özel bağlantıyı destekleyen bir Azure PaaS hizmetine veya kendi özel bağlantı hizmetinize bağlanmak için kullanabilirsiniz.
 - **[Azure özel bağlantı hizmeti](private-link-service-overview.md)** : Azure özel bağlantı hizmeti, bir hizmet sağlayıcısı tarafından oluşturulan bir hizmettir. Şu anda bir özel bağlantı hizmeti bir Standart Load Balancer ön uç IP yapılandırmasına bağlanabilir. 
 
-### <a name="how-is-traffic-being-send-when-using-private-link"></a>Özel bağlantı kullanılırken trafik nasıl gönderilir?
+### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Özel bağlantı kullanılırken trafik nasıl gönderiliyor?
 Trafik, Microsoft omurgası kullanılarak özel olarak gönderilir. İnternet 'te geçiş yapmaz.  
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Hizmet uç noktaları ve özel uç noktalar arasındaki fark nedir?

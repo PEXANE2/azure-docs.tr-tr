@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 21f80a2be09302e47817ccfd4223207bdcdd0413
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 232f8b13174aed19477ee0b139c83fba439049ac
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066803"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101542"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -48,7 +48,6 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Örnek havuzları</a> | Daha küçük SQL örneklerini buluta geçirmek için kullanışlı ve uygun maliyetli bir yol. |
 | <a href="https://aka.ms/managed-instance-tde-byok">Kendi Anahtarını Getir (BYOK) ile saydam veri şifrelemesi (TDE)</a> |Bilgi için, bkz [. Azure SQL saydam veri şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarlar: Kendi Anahtarını Getir desteği](transparent-data-encryption-byok-azure-sql.md).|
-| <a href="https://aka.ms/managed-instance-failover-groups">Coğrafi olarak dağıtılmış yük devretme grupları</a> | Örneğin bir kopyasını başka bir bölgede tutun ve bölgesel olağanüstü durum senaryosunda bile verilerinizin kullanılabilir olmasını sağlayın. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyi Azure AD sunucu sorumluları (oturum açmalar)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Dış SAĞLAYıCıDAN oturum oluştur</a> ekstresini kullanarak sunucu düzeyinde oturumlar oluşturun. |
 | [İşlem Çoğaltması](sql-database-managed-instance-transactional-replication.md) | Tablolardaki değişiklikleri yönetilen örneklere, tek veritabanlarına veya SQL Server örneklerine yerleştirilmiş diğer veritabanlarına çoğaltın veya diğer yönetilen örneklerde veya SQL Server örneğinde bazı satırlar değiştirildiğinde tablolarınızı güncelleştirin. Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma](replication-with-sql-database-managed-instance.md). |
 | Tehdit algılama |Daha fazla bilgi için bkz. [Azure SQL veritabanı yönetilen örneği 'nde tehdit algılamayı yapılandırma](sql-database-managed-instance-threat-detection.md).|
