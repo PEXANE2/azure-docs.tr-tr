@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 7281ad87acf7ab7cb828bcbdb80977614aed1bd8
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f23a8784044ddb362f5872ee19e9ca723b0cd456
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009200"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092072"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>Greenplum Azure Data Factory kullanarak verileri kopyalama
 
@@ -27,7 +27,7 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de Greenplum verileri kopya
 
 Bu doğa Bağlayıcısı, aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 Tüm desteklenen havuz veri deposuna Greenplum veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.

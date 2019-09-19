@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1ac91853c78a33645c0ccb234437e3cabc188f88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: eee33a2e1f5d081c1394368152d0d9afb7091e34
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076892"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098817"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: Sıkça Sorulan Sorular
 
@@ -89,7 +89,25 @@ A.  Data Box Disk siparişinin durumunu Azure portaldan takip edebilirsiniz. Sip
 ### <a name="q-how-do-i-return-the-disks"></a>S. Diskleri nasıl iade edebilirim? 
 A.  Microsoft tarafından gönderilen Data Box Diski paketinde iade için kullanabileceğiniz bir sevkiyat etiketi bulunur. Etiketi kutunun üzerine yapıştırın ve kapattığınız paketi sevkiyat şirketine teslim edin. Etiketin hasar görmesi veya kaybolması durumunda **Genel bakış > Sevkiyat etiketini indir** sayfasına gidin ve yeni bir sevkiyat etiketi indirin.
 
-## <a name="migrate-data"></a>Geçiş verileri
+### <a name="can-i-pick-up-my-data-box-disk-order-myself-can-i-return-the-disks-via-a-carrier-that-i-choose"></a>Data Box Disk sıraımı kendi kendinize alabilir miyim? Diskleri seçdiğim bir taşıyıcı aracılığıyla döndürebilir miyim?
+A. Evet. Microsoft ayrıca yalnızca US Gov bölgede otomatik olarak yönetilen kargo da sunar. Data Box Disk sırayı yerleştirirken, kendi kendine yönetilen teslim seçeneğini belirleyebilirsiniz. Data Box Disk siparişinizi almak için aşağıdaki adımları uygulayın:
+    
+1. Siparişi yerleştirdikten sonra, sipariş işlenir ve diskler hazırlanır. Siparişinizin çekme için hazırlandığı bir e-posta ile bildirim alırsınız. 
+2. Sipariş toplama için hazırsa, Azure portal sırasıyla sıraya gidin ve **genel bakış** dikey penceresine gidin. 
+3. Azure portal kod içeren bir bildirim göreceksiniz. [Azure Data Box işlemler ekibine](mailto:adbops@microsoft.com) e-posta gönderin ve kodu sağlayın. Takım, konumu sağlayacak ve bir toplama tarihi ve saati zamanlamanıza izin verir. E-posta bildirimini aldıktan sonra ekibi 5 iş günü içinde çağırmanız gerekir.
+
+Veri kopyalama ve doğrulama işlemi tamamlandıktan sonra, diskinizi döndürmek için aşağıdaki adımları uygulayın:
+
+1. Veri doğrulama tamamlandıktan sonra diskleri çıkarın. Bağlantı kablolarını çıkarın.
+2. Tüm diskleri ve bağlantı kablolarını kabarcıklı naylona sarın ve bunları sevkiyat kutusuna yerleştirin. Aksesuarlar eksikse ücret uygulanabilir.
+
+    - Ürün size ilk ulaştığında gönderilen paketi kullanın. Disklerinizi, hava kabarcıklı ambalaj malzemesiyle sıkıca sararak paketlemenizi öneririz.
+    - Diskin kutunun içinde hareket etmesini engellemek için kutuda boşluk kalmadığından emin olun.
+3. Azure portal siparişiniz için **genel bakış dikey penceresine** gidin. Kod içeren bir bildirim görmeniz gerekir.
+4. Bu kodu kullanın ve [Azure Data Box işlemler ekibine](mailto:adbops@microsoft.com) e-posta gönderin ve kodu sağlayın. Bunlar, disklerin nerede ve ne zaman kapatılabileceği hakkında bilgi verir.
+
+
+## <a name="migrate-data"></a>Verileri geçirin
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box-disks"></a>S. Data Box Diskleri ile kullanılabilecek maksimum veri boyutu nedir?  
 A.  Data Box Diskleri çözümünde toplam 35 GB kapasiteye sahip en fazla 5 disk kullanılabilir. Her bir disk 8 TB (7 TB kullanılabilir) boyutundadır.
@@ -109,7 +127,7 @@ A.  Robocopy, Diskboss veya Windows Dosya Gezgini gibi bir SMB kopyalama aracı 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>S. Veri kopyalama işlemini hızlandırmaya yönelik ipuçları var mı?
 A.  Kopyalama işlemini hızlandırmak için:
 
-- Birden fazla veri kopyalama akışı kullanın. Örneğin Robocopy'de çok iş parçacıklı seçeneği kullanın. Kullanılan tam komut hakkında daha fazla bilgi için [Öğreticiye gidin: Azure Data Box Disk verileri kopyalayın ve doğrulayın](data-box-disk-deploy-copy-data.md#copy-data-to-disks).
+- Birden fazla veri kopyalama akışı kullanın. Örneğin Robocopy'de çok iş parçacıklı seçeneği kullanın. Kullanılan tam komut hakkında daha fazla bilgi için [Öğreticiye gidin: Verileri Azure Data Box Disk'e kopyalama ve doğrulama](data-box-disk-deploy-copy-data.md#copy-data-to-disks) kaynağını tamamladığınızdan emin olun.
 - Birden fazla oturum kullanın.
 - Ağ paylaşımı üzerinden kopyalama yapmak yerine (ağ hızları kısıtlayıcı olabilir) verilerin, disklerin bağlı olduğu bilgisayarın yerel depolama alanında bulunduğundan emin olun.
 - Kopyalama işlemi boyunca USB 3.0 veya üzeri bağlantı kullandığınızdan emin olun. Bilgisayara bağlı USB denetleyicilerini ve USB cihazlarını tanımlamak için [USBView aracını](https://docs.microsoft.com/windows-hardware/drivers/debugger/usbview) indirin ve kullanın.

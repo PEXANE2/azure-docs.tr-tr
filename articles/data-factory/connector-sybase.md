@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 26eb3852106fdacd30425abd14aa2c594aed978c
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f6fcdddb2da005d563ee0a10381e7aa4f26487d0
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71007794"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089248"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory kullanarak Sybase 'ten veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -30,7 +30,7 @@ Bu makalede, bir Sybase veritabanından veri kopyalamak için Azure Data Factory
 
 Bu Sybase Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 Verileri Sybase veritabanından desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.

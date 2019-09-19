@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 2d61963f85bc5d2ec6398c8b7439689e7125f9c6
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f3afccd2414ae4acbd31452d989e9540d36d512d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010658"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090007"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory kullanarak OData kaynağından veri kopyalama
 
@@ -31,7 +31,7 @@ Bu makalede, bir OData kaynağından veri kopyalamak için Azure Data Factory ko
 
 Bu OData Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 OData kaynağından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği kaynak ve havuz olarak desteklediğini veri listesini depolar için bkz: [desteklenen veri depoları ve biçimler](copy-activity-overview.md#supported-data-stores-and-formats).

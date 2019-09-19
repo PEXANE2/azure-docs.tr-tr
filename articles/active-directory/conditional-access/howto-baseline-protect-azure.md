@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8095b4fa6e52b7c34cedaea35b129ab68dddc65
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 06b3a3f12b2955ae97c43b0caf6a4ac13c9b770a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532945"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086743"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>Temel ilke: Hizmet yönetimi için MFA gerektir (Önizleme)
 
@@ -50,7 +50,7 @@ CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum a�
 
 ## <a name="deployment-considerations"></a>Dağıtma konuları
 
-**Hizmet yönetimi IÇIN MFA gerektir** ilkesi tüm Azure Resource Manager kullanıcılara uygulandığından, sorunsuz bir dağıtım sağlamak için çeşitli hususlar yapılmalıdır. Bu noktalara, Azure AD 'deki kullanıcıları ve hizmet ilkelerini, MFA 'yı gerektirmeyen veya bu uygulamaların yanı sıra, kuruluşunuz tarafından modern kimlik doğrulamayı desteklemeyen uygulamalar ve istemciler için tanımlama sayılabilir.
+**Hizmet yönetimi IÇIN MFA gerektir** ilkesi tüm Azure Resource Manager kullanıcılara uygulanır.
 
 ## <a name="enable-the-baseline-policy"></a>Temel ilkeyi etkinleştirme
 
@@ -61,7 +61,7 @@ Bu ilkeyi etkinleştirmek ve yöneticilerinizi korumak için:
 1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. İlke listesinde temel ilke ' yi seçin **: Hizmet yönetimi için MFA gerektir (Önizleme)** .
-1. İlkeyi **ilkeyi hemen kullanacak**şekilde ayarlayın.
+1. İlkeyi **ilkeyi hemen kullanacak** **şekilde ayarlayın** .
 1. **Kaydet**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

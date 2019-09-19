@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 2b2b1933c19b3f488ba0c1e2b18052be16c8d101
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 89c497286b8fcb7650bac2ed9c4eff6a2a500c1d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010670"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092147"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Concur Azure Data Factory (Önizleme) kullanarak verileri kopyalama
 
@@ -30,7 +30,7 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de Concur verileri kopyalam
 
 Bu Concur Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 Concur tüm desteklenen havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 09/16/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e87ea28f2454ec3c969574b21ef383e81b3148c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d9b9476d8cc62585be7e7003d837607b502c8566
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098759"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067855"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineleri planlama ve uygulama
 
@@ -343,7 +343,8 @@ Belge boyunca aşağıdaki terimleri kullanırız:
 * SAP Ortamı: geliştirme, QAS, eğitim, DR veya üretim gibi bir iş işlevi gerçekleştirmek üzere mantıksal olarak gruplandırılan bir veya daha fazla SAP bileşeni.
 * SAP yatay: Bu terim, bir müşterinin BT yatay içindeki tüm SAP varlıklarını ifade eder. SAP yatay, tüm üretim ve üretim dışı ortamları içerir.
 * SAP sistemi: Örneğin, bir SAP ERP geliştirme sistemi, SAP BW test sistemi, SAP CRM üretim sistemi vb. için DBMS katmanının ve uygulama katmanının birleşimi. Azure dağıtımlarında, bu iki katmanın şirket içi ve Azure arasında bölmek desteklenmez. SAP sisteminin şirket içinde dağıtıldığı ya da Azure 'da dağıtıldığı anlamına gelir. Ancak, SAP 'nin farklı sistemlerini Azure 'da veya şirket içinde dağıtabilirsiniz. Örneğin, Azure 'da SAP CRM geliştirme ve test sistemlerini, şirket içi SAP CRM üretim sistemine dağıtabilirsiniz.
-* Şirketler arası veya karma: VM 'Lerin şirket içi veri merkezleri ve Azure arasında siteden siteye, çok siteli veya ExpressRoute bağlantısına sahip bir Azure aboneliğine dağıtıldığı bir senaryoyu açıklar. Yaygın Azure belgelerinde, bu tür dağıtımlar şirket içi veya hibrit senaryolar olarak da açıklanmaktadır. Bağlantının nedeni şirket içi etki alanlarını, şirket içi Active Directory/OpenLDAP ve şirket içi DNS 'yi Azure 'a genişletmenin nedenidir. Şirket içi yatay, aboneliğin Azure varlıklarına genişletilir. Bu uzantıya sahip olan VM 'Ler, şirket içi etki alanının bir parçası olabilir. Şirket içi etki alanının etki alanı kullanıcıları sunuculara erişebilir ve bu VM 'lerde (DBMS hizmetleri gibi) Hizmetleri çalıştırabilir. Şirket içinde dağıtılan ve Azure tarafından dağıtılan VM 'Ler arasındaki iletişim ve ad çözümlemesi mümkündür. Bu, SAP varlıklarını Azure 'a dağıtmanın en yaygın ve neredeyse dışlamalı durumdur. Daha fazla bilgi için bu [][vpn-gateway-cross-premises-options] makaleye ve [Bu][vpn-gateway-site-to-site-create]makaleye bakın.
+* Şirketler arası veya karma: VM 'Lerin şirket içi veri merkezleri ve Azure arasında siteden siteye, çok siteli veya ExpressRoute bağlantısına sahip bir Azure aboneliğine dağıtıldığı bir senaryoyu açıklar. Yaygın Azure belgelerinde, bu tür dağıtımlar şirket içi veya hibrit senaryolar olarak da açıklanmaktadır. Bağlantının nedeni şirket içi etki alanlarını, şirket içi Active Directory/OpenLDAP ve şirket içi DNS 'yi Azure 'a genişletmenin nedenidir. Şirket içi yatay, aboneliğin Azure varlıklarına genişletilir. Bu uzantıya sahip olan VM 'Ler, şirket içi etki alanının bir parçası olabilir. Şirket içi etki alanının etki alanı kullanıcıları sunuculara erişebilir ve bu VM 'lerde (DBMS hizmetleri gibi) Hizmetleri çalıştırabilir. Şirket içinde dağıtılan ve Azure tarafından dağıtılan VM 'Ler arasındaki iletişim ve ad çözümlemesi mümkündür. Bu, SAP varlıklarını Azure 'a dağıtmanın en yaygın ve neredeyse dışlamalı durumdur. Daha fazla bilgi için bu [makaleye ve][vpn-gateway-cross-premises-options] [Bu][vpn-gateway-site-to-site-create]makaleye bakın.
+* SAP için Azure Izleme uzantısı, gelişmiş Izleme ve Azure uzantısı: Bir ve aynı öğeyi açıkla. SAP konak aracısına Azure altyapısı hakkında bazı temel veriler sağlamak için, sizin tarafınızdan dağıtılması gereken bir VM uzantısını açıklar. SAP 'de SAP notları, Izleme uzantısı veya Gelişmiş izleme olarak bu şekilde ifade edebilir. Azure 'da **SAP Için Azure uzantısı**olarak buna başvuruyoruz.
 
 > [!NOTE]
 > SAP sistemleri çalıştıran Azure sanal makinelerinin, şirket içi bir etki alanının üyesi olduğu SAP sistemlerinin şirket içi veya karma dağıtımları, üretim SAP sistemlerinde desteklenir. Şirket içi veya karma Yapılandırma parçaları dağıtmak veya Azure 'a tam SAP landscapes desteği için desteklenir. Azure 'da tam SAP 'nin tamamen çalıştırılması, bu VM 'Lerin şirket içi etki alanı ve ADS/OpenLDAP kapsamında olmasını gerektirir. 
@@ -799,7 +800,7 @@ Azure PowerShell cmdlet 'lerinin nasıl yükleneceği, güncelleştirilmesi ve y
 Bkz. örnek:<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
-SAP için Azure Izleme uzantısının dağıtımı (Bu belgede [SAP Için Azure Izleme çözümü][planning-guide-9.1] bölümüne bakın) yalnızca POWERSHELL veya CLI aracılığıyla yapılabilir. Bu nedenle, Azure 'da SAP NetWeaver sistemi dağıtma veya yönetme sırasında PowerShell veya CLı 'yi ayarlamak ve yapılandırmak zorunludur.  
+SAP için Azure uzantısı 'nın dağıtımı (Bu belgedeki [SAP Için Azure uzantısı][planning-guide-9.1] bölümüne bakın) yalnızca POWERSHELL veya CLI aracılığıyla yapılabilir. Bu nedenle, Azure 'da SAP NetWeaver sistemi dağıtma veya yönetme sırasında PowerShell veya CLı 'yi ayarlamak ve yapılandırmak zorunludur.  
 
 Azure daha fazla işlevsellik sağladığından cmdlet 'lerin güncelleştirilmesini gerektiren yeni PS cmdlet 'leri eklenecektir. Bu nedenle, cmdlet 'lerin yeni bir sürümü için ayda <https://azure.microsoft.com/downloads/> en az bir kez Azure indirme sitesini denetlemek mantıklı olur. Yeni sürüm eski sürümün üzerine yüklenir.
 
@@ -816,7 +817,7 @@ Yükleme, yapılandırma ve Azure görevlerini gerçekleştirmek için CLı komu
 * [Dağıtmak ve Azure Resource Manager şablonları ve Azure CLI kullanarak sanal makineleri yönetme] [../../linux/create-ssh-secured-vm-from-template.md]
 * [Azure Resource Manager ile Mac, Linux ve Windows için klasik Azure CLı 'yi kullanma][xplat-cli-azure-resource-manager]
 
-Ayrıca, Azure CLı 'yı kullanarak SAP için Azure Izleme uzantısını dağıtmak için [dağıtım kılavuzundaki][planning-guide] [Linux VM 'LERI için Azure CLI][deployment-guide-4.5.2] bölümünü okuyun.
+Ayrıca, Azure CLı 'yı kullanarak SAP için Azure uzantısı 'nı dağıtmak üzere [dağıtım kılavuzundaki][planning-guide] [Linux VM 'LERI için Azure CLI][deployment-guide-4.5.2] bölümünü okuyun.
 
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Azure 'da SAP için VM 'Leri dağıtmanın farklı yolları
 
@@ -918,7 +919,7 @@ VM 'nin genel olması yeterince hazırlanmışsa ve son olarak, hedeflenen Azure
 > ![Windows][Logo_Windows] Windows
 >
 > Son adım, bir yönetici hesabıyla bir VM 'de oturum açmak için kullanılır. *Yönetici*olarak bir Windows komut penceresi açın. %Windir%\Windows\System32\Sysprep adresine gidin ve Sysprep. exe ' yi yürütün.
-> Küçük bir pencere görünür. Genelleştir seçeneğini denetlemek önemlidir ( varsayılan olarak işaretli değildir) ve varsayılan ' reboot ' olan ' reboot ' olan kapalı seçeneğini ' kapalı ' olarak değiştirir. Bu yordam, Sysprep işleminin bir VM 'nin Konuk işletim sisteminde şirket içinde yürütüldüğünü varsayar.
+> Küçük bir pencere görünür. **Genelleştir** seçeneğini denetlemek önemlidir (varsayılan olarak işaretli değildir) ve varsayılan ' reboot ' olan ' reboot ' olan kapalı seçeneğini ' kapalı ' olarak değiştirir. Bu yordam, Sysprep işleminin bir VM 'nin Konuk işletim sisteminde şirket içinde yürütüldüğünü varsayar.
 > Yordamı Azure 'da zaten çalışan bir VM ile gerçekleştirmek istiyorsanız, [Bu makalede](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)açıklanan adımları izleyin.
 >
 > ![Linux][Logo_Linux] Linux
@@ -1252,7 +1253,7 @@ Yeni bir sanal makinenin dağıtımı sırasında, yönetilen diskleri kullanmak
 
 Ardından, yeni ve boş bir disk oluşturmak isteyip istemediğinizi ya da daha önce karşıya yüklenen mevcut bir diski seçip sanal makineye şimdi bağlı olup olmayacağını belirlemeniz gerekir.
 
-**ÖNEMLİ**: Azure standart depolama Ile konak önbelleği kullanmak istemezsiniz. Ana bilgisayar önbelleği tercihini varsayılan değer olan NONE olarak bırakmanız gerekir. Azure Premium Depolama ile, g/ç özelliği genellikle veritabanı veri dosyalarında tipik g/ç trafiği gibi okunmısam, okuma önbelleğini etkinleştirmeniz gerekir. Veritabanı işlem günlük dosyası olması durumunda, önbelleğe alma önerilmez.
+**ÖNEMLİ**: Azure Standart depolama ile konak önbelleği **kullanmak istemezsiniz.** Ana bilgisayar önbelleği tercihini varsayılan değer olan NONE olarak bırakmanız gerekir. Azure Premium Depolama ile, g/ç özelliği genellikle veritabanı veri dosyalarında tipik g/ç trafiği gibi okunmısam, okuma önbelleğini etkinleştirmeniz gerekir. Veritabanı işlem günlük dosyası olması durumunda, önbelleğe alma önerilmez.
 
 ---
 > ![Windows][Logo_Windows] Windows
@@ -1302,7 +1303,7 @@ Azure coğrafi çoğaltma, bir VM 'deki her VHD üzerinde yerel olarak çalışa
 ---
 ### <a name="final-deployment"></a>Son dağıtım
 
-Son dağıtım ve özellikle SAP Genişletilmiş Izleme dağıtımına ilişkin tam adımlar için [dağıtım kılavuzuna][deployment-guide]bakın.
+Son dağıtım ve özellikle SAP için Azure uzantısının dağıtımına ilişkin tam adımlar için [dağıtım kılavuzuna][deployment-guide]bakın.
 
 ## <a name="accessing-sap-systems-running-within-azure-vms"></a>Azure VM 'Leri içinde çalışan SAP sistemlerine erişme
 
@@ -1775,29 +1776,29 @@ Azure 'da bulunan SAP örneklerinin, şirket içi Şirket içindeki dosya payla�
 
 ## <a name="supportability"></a>Desteklenebilirlik
 
-### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>SAP için Azure Izleme çözümü
+### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>SAP için Azure uzantısı
 
-Azure 'da görev açısından kritik SAP sistemlerinin izlenmesini etkinleştirmek için SAP izleme araçları SAPOSCOL veya SAP konak Aracısı, SAP için bir Azure Izleme uzantısı aracılığıyla Azure sanal makine hizmet ana bilgisayarı 'ndan veri alır. SAP 'nin talepleri SAP uygulamalarına özel olduğundan, Microsoft gerekli işlevselliği Azure 'a genel olarak uygulamamaya karar vermemeye karar verdi, ancak müşterilerin gerekli izleme bileşenlerini ve yapılandırmasını sanal kullanıcılara dağıtmaları için bırakın. Azure 'da çalışan makineler. Bununla birlikte, izleme bileşenlerinin dağıtım ve yaşam döngüsü yönetimi çoğunlukla Azure tarafından otomatikleştirilir.
+Görev açısından kritik SAP sistemlerinin bazı parçalarını, VM 'lerde yüklü olan SAP konak Aracısı örneklerine akışa almak için, SAP için bir Azure (VM) uzantısının dağıtılan VM 'Ler için yüklenmesi gerekir. SAP 'nin talepleri SAP uygulamalarına özel olduğundan, Microsoft gerekli işlevselliği Azure 'a genel olarak uygulamamaya karar vermemeye karar verdi, ancak müşterilerin gerekli VM uzantısını ve yapılandırmasını çalıştıran sanal makinelere dağıtması için bırakın Azure 'da. Bununla birlikte, SAP için Azure VM uzantısının dağıtım ve yaşam döngüsü yönetimi, Azure tarafından çoğunlukla otomatikleştirilir.
 
 #### <a name="solution-design"></a>Çözüm tasarımı
 
-SAP Izlemeyi etkinleştirmek için geliştirilen çözüm, Azure VM aracısının ve uzantı çerçevesinin mimarisine dayanır. Azure VM Aracısı ve uzantı çerçevesinin fikri, bir VM içindeki Azure VM Uzantısı galerisinde bulunan yazılım uygulamalarının yüklenmesine izin vermenizde yarar vardır. Bu kavramın arkasındaki prenfikir, (SAP için Azure Izleme uzantısı gibi), özel işlevlerin bir VM 'ye dağıtılması ve dağıtım zamanında bu yazılımın yapılandırılması için izin verdir.
+SAP konak Aracısı 'nı etkinleştirmek için geliştirilen çözüm, Azure VM Aracısı ve uzantı çerçevesinin mimarisine dayanır. Azure VM Aracısı ve uzantı çerçevesinin fikri, bir VM içindeki Azure VM Uzantısı galerisinde bulunan yazılım uygulamalarının yüklenmesine izin vermenizde yarar vardır. Bu kavramın arkasındaki prensibi, özel işlevlerin bir VM 'ye dağıtılması ve dağıtım zamanında bu yazılımın yapılandırılması için (SAP için Azure uzantısı gibi durumlarda) izin vermenizde yarar vardır.
 
 VM 'de belirli Azure VM uzantılarının işlenmesine izin veren ' Azure VM Aracısı ', Azure portal VM oluşturma sırasında varsayılan olarak Windows VM 'lerine eklenir. SUSE, Red hat veya Oracle Linux söz konusu olduğunda, VM Aracısı zaten Azure Marketi görüntüsünün bir parçasıdır. Bir tek durumda, bir Linux sanal makinesini Şirket içinden Azure 'a karşıya yükleyebilir ve VM aracısının el ile yüklenmesi gerekir.
 
-SAP için Azure 'da Izleme çözümünün temel yapı taşları şöyle görünür:
+Azure 'da SAP konak aracısına Azure altyapı bilgilerini sağlamak için çözümün temel yapı taşları şöyle görünür:
 
 ![Microsoft Azure uzantısı bileşenleri][planning-guide-figure-2400]
 
-Yukarıdaki blok diyagramında gösterildiği gibi, SAP için izleme çözümünün bir parçası Azure VM görüntüsünde ve Azure uzantısı galerisinde barındırılır ve bu da Azure Işlemleri tarafından yönetilen küresel olarak çoğaltılan bir depodur. SAP için Azure Izleme uzantısının yeni sürümlerini yayınlamak üzere SAP 'nin Azure uygulamasında çalışan, Birleşik SAP/MS ekibinin sorumluluğundadır.
+Yukarıdaki blok diyagramında gösterildiği gibi, çözümün bir parçası Azure VM görüntüsünde ve Azure uzantı galerisinde barındırılır ve bu da Azure Işlemleri tarafından yönetilen küresel olarak çoğaltılan bir depodur. SAP için Azure 'un yeni sürümlerini yayımlamak üzere SAP 'nin Azure uygulamasında çalışan SAP/MS ekibinin sorumluluğundadır.
 
-Yeni bir Windows VM dağıtırken, Azure VM Aracısı sanal makineye otomatik olarak eklenir. Bu aracının işlevi, SAP NetWeaver sistemlerinin izlenmesi için Azure uzantılarının yükleme ve yapılandırmasını koordine etmek içindir. Linux VM 'Leri için Azure VM Aracısı zaten Azure Marketi işletim sistemi görüntüsünün bir parçasıdır.
+Yeni bir Windows VM dağıtırken, Azure VM Aracısı sanal makineye otomatik olarak eklenir. Bu aracının işlevi, VM 'lerin Azure uzantılarının yükleme ve yapılandırmasını koordine etmek için kullanılır. Linux VM 'Leri için Azure VM Aracısı zaten Azure Marketi işletim sistemi görüntüsünün bir parçasıdır.
 
 Ancak, hala müşteri tarafından yürütülmesi gereken bir adım vardır. Bu, performans koleksiyonunun etkinleştirilmesi ve yapılandırması. Yapılandırma ile ilgili işlem, bir PowerShell betiği veya CLı komutu tarafından otomatikleştirilir. PowerShell betiği, [dağıtım kılavuzunda][deployment-guide]açıklandığı gibi Microsoft Azure betik merkezi 'ne indirilebilir.
 
-SAP için Azure izleme çözümünün genel mimarisi şöyle görünür:
+SAP için Azure uzantısının genel mimarisi şöyle görünür:
 
-![SAP NetWeaver için Azure izleme çözümü][planning-guide-figure-2500]
+![SAP için Azure uzantısı ][planning-guide-figure-2500]
 
 **Dağıtım sırasında bu PowerShell cmdlet 'lerini veya CLı komutunu kullanmanın ayrıntılı adımları için nasıl yapılır ve ayrıntılı adımlar için [dağıtım kılavuzunda][deployment-guide]verilen yönergeleri izleyin.**
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b898a93b87811fa5139e148a3273d7051af851b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: 1f9b6d4ce4048b31f17b50184f90aed4d2a8ba81
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056285"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086565"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>Senaryo: Kullanıcıların oturum açtığı web uygulaması
 
@@ -32,15 +32,35 @@ Kullanıcıları Microsoft Identity platformu ile oturum açan bir Web uygulamas
 
 ## <a name="getting-started"></a>Başlarken
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 Kullanıcıların oturum açmasını sağlayan ilk taşınabilir (ASP.NET Core) Web uygulamalarınızı oluşturmak istiyorsanız bu hızlı başlangıcı izleyin:
 
 > [!div class="nextstepaction"]
 > [Hızlı Başlangıç: Kullanıcıları oturum açan ASP.NET Core Web uygulaması](quickstart-v2-aspnet-core-webapp.md)
 
-ASP.NET ile kalmak isterseniz, aşağıdaki öğreticiyi deneyin:
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+f eski bir ASP.NET Web uygulamasına nasıl oturum ekleneceğini anlamak için aşağıdaki öğreticiyi deneyin:
 
 > [!div class="nextstepaction"]
 > [Hızlı Başlangıç: Kullanıcıları oturum açan ASP.NET Web uygulaması](quickstart-v2-aspnet-webapp.md)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Java geliştiricisiyseniz aşağıdaki hızlı başlangıcı deneyin:
+
+> [!div class="nextstepaction"]
+> [Hızlı Başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme](quickstart-v2-java-webapp.md)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python ile geliştirirseniz, deneyin:
+
+> [!div class="nextstepaction"]
+> [Hızlı Başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme](quickstart-v2-python-webapp.md)
+
+---
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -51,7 +71,7 @@ Web uygulamanıza kimlik doğrulaması ekleyerek kullanıcıların oturum açmas
 İkinci bir aşamada, uygulamanızı oturum açmış kullanıcı adına Web API 'Leri çağırmak için de etkinleştirebilirsiniz. Bu sonraki aşama, Web [uygulaması çağrılarında Web API 'lerinde](scenario-web-app-call-api-overview.md) bulacağınız farklı bir senaryodur.
 
 > [!NOTE]
-> Web uygulamasına oturum açma ekleme, Web uygulamasını koruma ve **Ara yazılım** kitaplıklarının yaptığı bir kullanıcı belirtecini doğrulama ile ilgilidir. Bu senaryo, korumalı API 'Leri çağırmak için bir belirteç almak üzere, henüz Microsoft kimlik doğrulama kitaplıklarını (MSAL) gerektirmez. Kimlik doğrulama kitaplıkları yalnızca Web uygulamasının Web API 'Lerini çağırması gerektiğinde izleme senaryosunda tanıtılacaktır.
+> Web uygulamasına oturum açma ekleme, Web uygulamasını koruma ve **Ara yazılım** kitaplıklarının yaptığı bir kullanıcı belirtecini doğrulama ile ilgilidir. .NET durumunda bu senaryo, korumalı API 'Leri çağırmak için bir belirteç almak üzere, henüz Microsoft kimlik doğrulama kitaplıklarını (MSAL) gerektirmez. Kimlik doğrulama kitaplıkları yalnızca Web uygulamasının Web API 'Lerini çağırması gerektiğinde izleme senaryosunda tanıtılacaktır.
 
 ## <a name="specifics"></a>Özelliklerini
 

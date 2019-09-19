@@ -14,11 +14,11 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e0648ff9aab12ad6a579fc7f6e45b98a9d6d03
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c2eff9c0edf6797c08d0ef9732c903a81a6c764a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "70861165"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
@@ -78,12 +78,6 @@ Kimlik doğrulama Yöneticisi rolü şu anda genel önizlemededir. Önizleme sü
 * Güvenlik grubu ve Office 365 Grup sahipleri, Grup üyeliğini yönetebilir. Bu gruplar, Azure AD 'de ve başka bir yerde hassas veya özel bilgilere veya kritik yapılandırmaya erişim verebilir.
 * Exchange Online, Office Security ve Uyumluluk Merkezi ve insan kaynakları sistemleri gibi Azure AD dışında diğer hizmetlerde bulunan yöneticiler.
 * Gizli veya özel bilgilere erişebilen Yöneticiler, yasal Counsel ve insan kaynakları çalışanları gibi yönetici olmayanlar.
-
-### <a name="azure-devops-administratorazure-devops-administrator-permissions"></a>[Azure DevOps Yöneticisi](#azure-devops-administrator-permissions)
-
-Bu role sahip kullanıcılar, yeni Azure DevOps kuruluş oluşturmayı yapılandırılabilir kullanıcılar/AAD grupları kümesiyle kısıtlamak için Azure DevOps ilkesini yönetebilir. Bu roldeki kullanıcılar, bu ilkeyi şirketin Azure AD 'yi destekleyen herhangi bir Azure DevOps kuruluştan yönetebilir.
-
-Gelecekte, tüm kurumsal Azure DevOps ilkeleri bu roldeki kullanıcılar tarafından yönetilecek.
 
 ### <a name="azure-information-protection-administratorazure-information-protection-administrator-permissions"></a>[Azure Information Protection Yöneticisi](#azure-information-protection-administrator-permissions)
 
@@ -497,19 +491,6 @@ Yönetici olmayan kullanıcılar için kimlik doğrulama yöntemi bilgilerini g�
 | Microsoft. office365. serviceHealth/allEntities/allTasks | Office 365 hizmet durumunu okuyun ve yapılandırın. |
 | Microsoft. office365. Supportbilet/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 | Microsoft. Directory/Users/Password/Update | Office 365 kuruluşundaki tüm kullanıcılar için parolaları güncelleştirin. Daha ayrıntılı bilgi için çevrimiçi belgelere bakın. |
-
-### <a name="azure-devops-administrator-permissions"></a>Azure DevOps yönetici izinleri
-
-, Azure DevOps kuruluş ilkesini ve ayarlarını yönetebilir.
-
-> [!NOTE]
-> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki [rol açıklaması](#azure-devops-administrator) konusuna bakın.
->
->
-
-| **Eylemler** | **Açıklama** |
-| --- | --- |
-| Microsoft. Azure. devOps/allEntities/allTasks | Azure DevOps 'u okuyun ve yapılandırın. |
 
 ### <a name="azure-information-protection-administrator-permissions"></a>Yönetici izinlerini Azure Information Protection
 
@@ -1515,7 +1496,6 @@ Grafik displayName | Görünen ad Azure portal | Directoryroletemplateıd
 Uygulama Yöneticisi | Uygulama yöneticisi | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Uygulama Geliştiricisi | Uygulama geliştiricisi | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Kimlik Doğrulaması Yöneticisi | Kimlik doğrulaması yöneticisi | c4e39bd9-1100-46d3-8c65-fb160da0071f
-Azure DevOps Yöneticisi | Azure DevOps Yöneticisi | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection Yöneticisi | Azure Information Protection Yöneticisi | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C Kullanıcı akış Yöneticisi | B2C Kullanıcı akış Yöneticisi | 6e591065-9bad-43ed-90f3-e9424366d2f0
 B2C Kullanıcı Akışı Öznitelik Yöneticisi | B2C Kullanıcı Akışı Öznitelik Yöneticisi | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

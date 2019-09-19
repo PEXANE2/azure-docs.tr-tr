@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a96c7bd3c461c70f3bdf5e3e12181dbc37008512
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092333"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036370"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
 Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -224,7 +224,7 @@ Bu örnekte, önceki adımlarda oluşturulan */dev/sdc1* cihazının UUID değer
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
-
+İşiniz bittiğinde, */etc/fstab* dosyasını kaydedin ve sistemi yeniden başlatın.
 > [!NOTE]
 > Daha sonra fstab düzenlemeden bir veri diskinin kaldırılması, sanal makinenin önyüklenememesine neden olabilir. Çoğu dağıtım, *nofail* ve/veya *nobootwaıt* fstab seçeneklerini sağlar. Bu seçenekler, disk önyükleme zamanında takılamazsa bile sistemin önyüklenmesine izin verir. Bu parametrelerle ilgili daha fazla bilgi için, dağıtım belgelerine bakın.
 > 

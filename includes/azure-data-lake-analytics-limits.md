@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
 ms.openlocfilehash: 7f89dc33c105a82646c8f12422f88a06efdca18b
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67188763"
 ---
 Azure Data Lake Analytics dağıtılmış altyapıyı ve karmaşık kodu yönetme karmaşık görevini kolaylaştırır. Kaynakları dinamik olarak sağlar ve eksabaytlarca veri üzerinde analiz yapmak için kullanabilirsiniz. İş tamamlandığında, kaynakları otomatik olarak kapatır. Yalnızca kullanılan işlem gücü için ödeme yaparsınız. Depolanan verilerin veya kullanılan hesaplamanın boyutunu artırdıkça veya azalttıkça kodu yeniden yazmanız gerekmez. Aboneliğiniz için varsayılan sınırları yükseltmek üzere desteğe başvurun.

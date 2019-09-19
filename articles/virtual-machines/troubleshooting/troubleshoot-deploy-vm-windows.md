@@ -4,7 +4,7 @@ description: Azure Resource Manager dağıtım modelinde Windows sanal makine so
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 4e383427-4aff-4bf3-a0f4-dbff5c6f0c81
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: d963556a657f4367acca14d5d8340f384ef555a9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080213"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058045"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure 'da Windows sanal makine sorunlarını dağıtma sorunlarını giderme
 
@@ -34,7 +34,7 @@ Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [
 \<Properties Supporttopicıds = "123456789" resourceTags = "Windows" Productpesıd = "1234, 5678"/>
 - Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
 - İstenen VM 'nin boyutu değiştirilenemez:
-    - Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun. Kaynak **grupları** > kaynak grubu ' na tıklayın > kaynak grubunuz > sanal **makineleriniz > sanal makineler** > **Durdur**>
+    - Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun. Kaynak **grupları** > kaynak grubu ' na tıklayın **> kaynak** grubunuz > sanal **makineleriniz > sanal makineler** > **Durdur**>
     - Tüm VM 'Ler durduktan sonra, istenen boyutta VM 'yi oluşturun.
     - Önce yeni VM 'yi başlatın ve sonra durdurulan sanal makinelerin her birini seçip Başlat ' a tıklayın.
 

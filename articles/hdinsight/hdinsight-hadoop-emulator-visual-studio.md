@@ -2,18 +2,18 @@
 title: Hortonçalışmalar korumalı alanı ile Visual Studio için Data Lake araçları-Azure HDInsight
 description: Yerel bir VM 'de çalışan Hortonrunning korumalı alanı ile Visual Studio için Azure Data Lake araçları 'nı nasıl kullanacağınızı öğrenin. Bu araçlarla, Hive ve Pig işlerini sanal alanda oluşturup çalıştırabilir ve iş çıktısını ve geçmişini görüntüleyebilirsiniz.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: hrasheed
-ms.openlocfilehash: a80cc44dbc4be0728ad632eefd8b9ed62f7f86b1
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 1edab776ec93f057ebf7e37ac887747f86a27db9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962188"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098767"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonçalışmalar korumalı alanı ile Visual Studio için Azure Data Lake araçları 'nı kullanma
 
@@ -41,7 +41,7 @@ Hortonçalışmalar korumalı alanının çalıştığından emin olun. Ardında
 
 2. **Sunucu Gezgini**, **HDInsight** girdisini sağ tıklatın ve ardından **HDInsight Emulator 'a Bağlan**' ı seçin.
 
-    ![HDInsight Emulator 'a bağlanma ile Sunucu Gezgini ekran görüntüsü vurgulanmış](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
+    ![Sunucu Gezgini, HDInsight Emulator 'a bağlanma vurgulandı](./media/hdinsight-hadoop-emulator-visual-studio/connect-hdinsight-emulator.png)
 
 3. **HDInsight öykünücüsüne Bağlan** iletişim kutusuna, ambarı için yapılandırdığınız parolayı girin.
 
@@ -112,7 +112,7 @@ Hive yapılandırılmış verilerle çalışmak için SQL benzeri bir sorgu dili
     > [!NOTE]  
     > Bilgi, iş bittikten sonra **Iş günlüğü** bağlantısından kullanılabilir.
 
-    ![Çıkış günlüğünün ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
+    ![HiveServer2 çıktısının ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/hiveserver2-output-box.png)
 
 ## <a name="create-a-hive-project"></a>Hive projesi oluşturma
 
@@ -122,7 +122,7 @@ Ayrıca, birden çok Hive komut dosyası içeren bir proje da oluşturabilirsini
 
 2. Projeler listesinden **Şablonlar**' ı genişletin, **Azure Data Lake**' ı genişletin ve **HIVE (HDInsight)** öğesini seçin. Şablon listesinden **Hive örneği**' ni seçin. Bir ad ve konum girip **Tamam**' ı seçin.
 
-    ![Azure Data Lake, HIVE, Hive örneği ve Tamam vurgulanmış şekilde yeni proje penceresinin ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
+    ![Azure Data Lake, Hive örneği ve Tamam ile yeni proje penceresi](./media/hdinsight-hadoop-emulator-visual-studio/new-apache-hive-project.png)
 
 **Hive örnek** projesi iki komut dosyası Içerir, **webloganalysis. HQL** ve **sensordataanalysis. HQL**. Pencerenin üst kısmındaki **Gönder** düğmesini kullanarak bu betikleri gönderebilirsiniz.
 
@@ -179,7 +179,7 @@ Data Lake araçları ayrıca Hadoop 'ta çalıştırılan işlerle ilgili bilgil
 
 2. Bir tablonun genişletilmesi, bu tablo için sütunları görüntüler. Verileri hızlı bir şekilde görüntülemek için bir tabloya sağ tıklayın ve **ilk 100 satırı görüntüle**' yi seçin.
 
-    ![Tablo genişletilmiş ve görüntüleme üst 100 satırları seçiliyken Sunucu Gezgini ekran görüntüsü](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
+    ![Sunucu Gezgini, tablo genişletilmiş ve en üstteki 100 satırları görüntüleme seçili](./media/hdinsight-hadoop-emulator-visual-studio/hdi-view-top-100-rows.png)
 
 ### <a name="database-and-table-properties"></a>Veritabanı ve tablo özellikleri
 

@@ -9,12 +9,12 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a3f9768043c9acef9640b8e286611de94e44a7ff
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910483"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036398"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>İş açısından kritik verileri Azure Blob depolama alanında depolayın
 
@@ -55,7 +55,7 @@ Sabit bir ilke tarafından korunan blob 'lar varsa kapsayıcı ve hesap silmeye 
 > [!IMPORTANT]
 > Bir zaman tabanlı bekletme ilkesi, blob 'un SEC 17A-4 (f) ve diğer yasal *uyumluluk için uyumlu* bir sabit (yazma ve silme korumalı) durumunda olması gerekir. İlkeyi, genellikle 24 saatten daha az sürede kilitlemenizi öneririz. Uygulanan bir zaman tabanlı bekletme ilkesinin ilk durumu, kilidi kapatmadan önce özelliği test etmeniz ve ilkede değişiklikler *yapmanız sağlanır.* *Kilidi açık* duruma karşı koruma sağlarken, kısa vadeli Özellik denemeleri dışında herhangi bir amaçla *kilitsiz* durum kullanılması önerilmez. 
 
-Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi uygulandığında, kapsayıcıdaki tüm Bloblar, *etkin* saklama dönemi süresince sabit durumda kalır. Mevcut blob 'lar için geçerli saklama süresi, blob değiştirme zamanı ve Kullanıcı tarafından belirtilen bekletme aralığı arasındaki farka eşittir.
+Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi uygulandığında, kapsayıcıdaki tüm Bloblar, *etkin* saklama dönemi süresince sabit durumda kalır. Mevcut bloblar için geçerli olan saklama süresi, blob oluşturma zamanı ile kullanıcı tarafından belirtilen saklama aralığı arasındaki farka eşittir.
 
 Yeni bloblar için geçerli olan saklama süresi, kullanıcı tarafından belirtilen saklama aralığına eşittir. Kullanıcılar bekletme aralığını genişletebildiğinden, sabit depolama, etkin saklama süresini hesaplamak için Kullanıcı tarafından belirtilen bekletme aralığının en son değerini kullanır.
 

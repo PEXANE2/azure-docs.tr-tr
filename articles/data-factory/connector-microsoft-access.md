@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: 9b7f63606733c8be1a6f9593db0862d39e432d68
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: f01607e6b7dbe5f126d240a51219a6829ff5aaf6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010051"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090065"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Azure Data Factory kullanarak ve Microsoft Access veri depolarından veri kopyalama
 
@@ -27,7 +27,7 @@ Bu makalede, Microsoft Access veri deposundan veri kopyalamak için Azure Data F
 
 Bu Microsoft Access Connector, aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 Microsoft Access kaynağından, desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.

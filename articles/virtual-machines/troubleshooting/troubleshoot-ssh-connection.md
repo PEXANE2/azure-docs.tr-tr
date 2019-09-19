@@ -5,7 +5,7 @@ keywords: SSH bağlantısı reddedildi, SSH hatası, Azure SSH, SSH bağlantıs�
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: dcb82e19-29b2-47bb-99f2-900d4cfb5bbb
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: fd3c40d56e0ba9cdb50847832051606f81d0e952
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 006dbbe1b7472982a894691d019eb88ef2041dac
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677684"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088257"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Başarısız olan, hatalı veya reddedilen bir Azure Linux VM 'sine yönelik SSH bağlantıları sorunlarını giderme
 Bu makale, bir Linux sanal makinesine (VM) bağlanmaya çalıştığınızda Secure Shell (SSH) hatalarından, SSH bağlantı hatalarından veya SSH 'nin reddetmesi nedeniyle oluşan sorunları bulmanıza ve düzeltmenize yardımcı olur. Bağlantı sorunlarını gidermek ve çözmek için Linux için Azure portal, Azure CLı veya VM erişim uzantısı 'nı kullanabilirsiniz.
@@ -49,7 +49,7 @@ Daha ayrıntılı sorun giderme adımları ve açıklamaları için okumaya deva
 Aşağıdaki yöntemlerden birini kullanarak kimlik bilgilerini veya SSH yapılandırmasını sıfırlayabilirsiniz:
 
 * [Azure Portal](#use-the-azure-portal) -SSH YAPıLANDıRMASıNı veya SSH anahtarını hızlıca sıfırlamanız gerekiyorsa ve Azure Araçları yüklü değilse harika.
-* [Azure VM seri konsolu](https://aka.ms/serialconsolelinux) -VM seri konsolu, SSH yapılandırmasına bakılmaksızın çalışır ve sanal makinenize etkileşimli bir konsol sağlar. Aslında, "SSH olamaz" durumları özellikle, seri konsolunun çözmeye yardımcı olmak üzere tasarlanma biçiminde değildir. Daha fazla ayrıntı aşağıda verilmiştir.
+* [Azure VM seri konsolu](https://aka.ms/serialconsolelinux) -VM seri konsolu, SSH yapılandırmasına bakılmaksızın çalışır ve sanal makinenize etkileşimli bir konsol sağlar. Aslında, "SSH olamaz" durumları özellikle, seri konsolunun çözmeye yardımcı olmak üzere tasarlanma biçiminde değildir. Daha fazla ayrıntı için aşağıya bakın.
 * [Azure CLI](#use-the-azure-cli) -zaten komut SATıRLARALıYORSA, SSH yapılandırmasını veya kimlik bilgilerini hızlıca sıfırlayın. Klasik bir VM ile çalışıyorsanız, [Klasik Azure CLI](#use-the-azure-classic-cli)'yi kullanabilirsiniz.
 * [Azure VMAccessForLinux uzantısı](#use-the-vmaccess-extension) -SSH yapılandırmasını veya Kullanıcı kimlik bilgilerini sıfırlamak için JSON tanım dosyalarını oluşturun ve yeniden kullanın.
 

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 71ca7bec7f69007fd0290211fac308eb5f3983a7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 6a7e1b36e01094ea8ce65a785de0aad9494f4dbb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139063"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088869"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Python kullanarak Azure Data Lake Storage 1. ile son kullanıcı kimlik doğrulaması
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Bu seçeneklerin her ikisi de bu makalede ele alınmıştır. Python kullanarak 
 Python kullanarak Data Lake Storage 1. çalışmak için üç modül yüklemeniz gerekir.
 
 * `azure-mgmt-resource` modülü, Active Directory gibi şeyler için Azure modüllerini içerir.
-* Azure Data Lake Storage 1. hesap yönetimi işlemlerini içeren modül.`azure-mgmt-datalake-store` Bu modülle ilgili daha fazla bilgi için bkz. [Azure Data Lake Storage 1. Management Module Reference](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* Azure Data Lake Storage 1. hesap yönetimi işlemlerini içeren modül.`azure-mgmt-datalake-store` Bu modülle ilgili daha fazla bilgi için bkz. [Azure Data Lake Storage 1. Management Module Reference](/python/api/azure-mgmt-datalake-store/).
 * Azure Data Lake Storage 1. dosya sistemi işlemlerini içeren modül.`azure-datalake-store` Bu modülle ilgili daha fazla bilgi için bkz. [Azure-datalake-Store FileSystem Module Reference](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Modülleri yüklemek için aşağıdaki komutları kullanın.

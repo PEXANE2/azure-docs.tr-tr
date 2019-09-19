@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: jingwang
-ms.openlocfilehash: d6b860f43abae2283b4889bff0913bac25c821f5
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 4cb6f420b6d084539dc98a09632d0760a1344012
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017774"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092184"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL için Azure veritabanı 'na veri kopyalama
 
@@ -29,7 +29,7 @@ Bu bağlayıcı [PostgreSQL Için Azure veritabanı hizmetine](../postgresql/ove
 
 PostgreSQL için Azure Veritabanı Bağlayıcısı, aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 Tüm desteklenen havuz veri deposuna PostgreSQL için Azure veritabanı'ndan veri kopyalayabilirsiniz. Ya da desteklenen herhangi bir kaynak veri deposundan verileri PostgreSQL için Azure veritabanı 'na kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.

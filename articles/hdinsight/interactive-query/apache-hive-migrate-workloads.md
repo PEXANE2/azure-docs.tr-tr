@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: eb6b42a88e47e3fcb35700ec542c8ca642e17a6a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0363f2d8da1ca1371fd55107c6487c3d96f6d00e
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815813"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091464"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3,6 Hive iş yüklerini HDInsight 'a geçirme 4,0
 
@@ -71,7 +71,7 @@ Tablo özelliklerinizi doğru şekilde ayarladıktan sonra, SSH kabuğu 'nu kull
 1. Kabuktan aşağıdaki komutu yürütün. Önceki `${{STACK_VERSION}}` adımdaki sürüm dizesiyle değiştirin:
 
 ```bash
-/usr/hdp/${{STACK_VERSION}}/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true  -m automatic  automatic  --modifyManagedTables --oldWarehouseRoot /apps/hive/warehouse
+/usr/hdp/${{STACK_VERSION}}/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
 ```
 
 Geçiş aracı tamamlandıktan sonra, Hive ambarınız HDInsight 4,0 ' de hazırlanacaktır. 

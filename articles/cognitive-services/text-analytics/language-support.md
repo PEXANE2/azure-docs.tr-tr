@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: aahi
-ms.openlocfilehash: e14cb56db6e45fe86ecd5e73766c47d29dd23fa1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: efac8755be8435ae7929fdcb2ecedb4959c363b9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984238"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097133"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Metin Analizi API'si için dil ve bölge desteği
 
@@ -48,16 +48,17 @@ Dil desteği başlangıçta, genel kullanıma açık (GA) duruma, her biri birbi
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | Arapça      | `ar`          |           |             | ✔\*                     | |
 | Çekçe       | `cs`          |           |             | ✔\*                     | |
-| Çince-Basitleştirilmiş | `zh-CN`| ✔\***     |             | ✔         |    |
+| Çince-Basitleştirilmiş | `zh-hans`| ✔\***     |             | ✔         |    |
+| Çince-Geleneksel | `zh-hant`| ✔\***     |             | ✔         |    |
 | Danca      | `da`          | ✔\*     | ✔           | ✔\*            |     |
 | Felemenkçe       | `nl`          | ✔\*     | ✔          |  ✔\*           |     |
-| Türkçe     | `en`          | ✔        | ✔           |  ✔\*\*     |      |
+| Türkçe     | `en`          | ✔\***       | ✔           |  ✔\*\*     |      |
 | Fince     | `fi`          | ✔\*     | ✔           |  ✔\*           |     |
-| Fransızca      | `fr`          | ✔        | ✔           |  ✔            |     |
+| Fransızca      | `fr`          | ✔\***       | ✔           |  ✔            |     |
 | Almanca      | `de`          | ✔\*     | ✔           |  ✔           |     |
 | Yunanca       | `el`          | ✔\*     |             |            |     |
 | Macarca   | `hu`          |           |             |  ✔\*          |     | 
-| İtalyanca     | `it`          | ✔\*     | ✔           |  ✔\*           |     |
+| İtalyanca     | `it`          | ✔\***     | ✔           |  ✔\*           |     |
 | Japonca    | `ja`          | ✔\***         | ✔           |  ✔\*          |     |
 | Korece      | `ko`          |          | ✔           |  ✔\*          |     |
 | Norveççe (Bokmål) | `no`  | ✔\*     |  ✔          | ✔\*            |     |

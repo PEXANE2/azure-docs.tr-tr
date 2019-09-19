@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: 3a197ab8d8c44229328c63330bcbc99fb2e64f01
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
-ms.translationtype: HT
+ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077261"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087722"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidini yükler
 
@@ -264,9 +264,9 @@ Azure AD ile şirket içi Active Directory hesaplarınızı eşleşmenizin yolla
 
 Daha fazla bilgi için şu konulara bakın:
 
-* [Şirket içi veri ağ geçidi hakkında SSS](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Şirket içi veri ağ geçidinde sorun giderme](https://docs.microsoft.com/data-integration/gateway/gateway-service-gateway-tshoot)
-* [Ağ Geçidi performansını izleme ve iyileştirme](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Şirket içi veri ağ geçidi hakkında SSS](/data-integration/gateway/service-gateway-onprem-faq)
+* [Şirket içi veri ağ geçidinde sorun giderme](/data-integration/gateway/service-gateway-tshoot)
+* [Ağ Geçidi performansını izleme ve iyileştirme](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

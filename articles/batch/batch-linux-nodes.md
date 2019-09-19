@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af67fb2d35344ec6134a107a553fa48661dc0770
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc1e80433a09d8a56f2900ab6b24dd3804db56ac
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095085"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086767"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch havuzlarında Linux işlem düğümleri sağlama
 
@@ -125,7 +125,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-Daha önce belirtildiği gibi, şu anda desteklenen düğüm Aracısı/ [][py_imagereference] Market görüntü kombinasyonlarından dinamik olarak seçim yapmak için [list_node_agent_skus][py_list_skus] yöntemini kullanmanız önerilir. Aşağıdaki Python kod parçacığı, bu yöntemin nasıl kullanılacağını göstermektedir.
+Daha önce belirtildiği gibi, şu anda desteklenen düğüm Aracısı/Market görüntü kombinasyonlarından [dinamik olarak seçim][py_imagereference] yapmak için [list_node_agent_skus][py_list_skus] yöntemini kullanmanız önerilir. Aşağıdaki Python kod parçacığı, bu yöntemin nasıl kullanılacağını göstermektedir.
 
 ```python
 # Get the list of node agents from the Batch service
@@ -196,7 +196,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-Önceki kod parçacığı [Pooloperations][net_pool_ops]'ı kullanıyor olsa da. [Listnodeagentsku 'lar][net_list_skus] Yöntemi desteklenen görüntü ve düğüm Aracısı SKU kombinasyonlarını (önerilir) dinamik olarak listelemek ve seçmek için [][net_imagereference]
+Önceki kod parçacığı [Pooloperations][net_pool_ops]'ı kullanıyor olsa da. [Listnodeagentsku 'lar][net_list_skus] Yöntemi desteklenen görüntü ve düğüm Aracısı SKU kombinasyonlarını (önerilir) [dinamik olarak listelemek][net_imagereference] ve seçmek için
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -337,19 +337,19 @@ GitHub 'daki [Azure-Batch-Samples][github_samples] deposundaki [Python kodu örn
 [github_samples_pyclient]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/article_samples/python_tutorial_client.py
 [portal]: https://portal.azure.com
 [net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
-[net_computenodeuser]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenodeuser.aspx
+[net_computenodeuser]: /dotnet/api/microsoft.azure.batch.computenodeuser?view=azure-dotnet
 [net_imagereference]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.imagereference.aspx
 [net_list_skus]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listnodeagentskus.aspx
 [net_pool_ops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.aspx
-[net_ssh_key]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenodeuser.sshpublickey.aspx
+[net_ssh_key]: /dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey?view=azure-dotnet#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey
 [nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [py_account_ops]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations
 [py_azure_sdk]: https://pypi.python.org/pypi/azure
 [py_batch_docs]: https://azure-sdk-for-python.readthedocs.io/batch.html
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
-[py_computenodeuser]: https://docs.microsoft.com/python/api/azure.batch.models.computenodeuser
-[py_imagereference]: https://docs.microsoft.com/python/api/azure.mgmt.batch.models.imagereference
+[py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
+[py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference
 [py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

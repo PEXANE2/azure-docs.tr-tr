@@ -1,7 +1,7 @@
 ---
 title: Azure Storage hizmetlerindeki verilere erişme
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetiyle eğitim sırasında Azure depolama hizmetlerine erişmek için veri depolarını nasıl kullanacağınızı öğrenin
+titleSuffix: Azure Machine Learning
+description: Veri depolarını kullanarak eğitim sırasında Azure depolama hizmetlerine erişme hakkında bilgi edinin Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b800a7ef38624dbe89a61dd04e2bd97b02066bb
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191920"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035307"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure Storage hizmetlerindeki verilere erişme
 
@@ -173,7 +173,7 @@ datastore.path('./bar').as_download()
 
 Aşağıdaki kod örnekleri, eğitim sırasında verilere erişim [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) sınıfına özgüdür. 
 
-`script_params`, entry_script için parametreler içeren bir sözlüktür. Bunu kullanarak bir veri deposunu geçirebilir ve verilerin işlem hedefinde nasıl kullanılabilir hale getirilmeli olduğunu tanımlayabilirsiniz. Uçtan uca öğreticimizden daha fazla bilgi edinin. [](tutorial-train-models-with-aml.md)
+`script_params`, entry_script için parametreler içeren bir sözlüktür. Bunu kullanarak bir veri deposunu geçirebilir ve verilerin işlem hedefinde nasıl kullanılabilir hale getirilmeli olduğunu tanımlayabilirsiniz. Uçtan uca [öğreticimizden](tutorial-train-models-with-aml.md)daha fazla bilgi edinin.
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -232,7 +232,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="access-data-during-scoring"></a>Puanlama sırasında verilere erişin
 
-Azure Machine Learning hizmeti, Puanlama için modellerinizi kullanmanın birkaç yolunu sağlar. Bu yöntemlerin bazıları veri depolarına erişim sağlamaz. Puanlama sırasında veri depolarına erişmenize izin veren yöntemleri anlamak için aşağıdaki tabloyu kullanın:
+Azure Machine Learning, modellerinizi Puanlama için kullanmanın birkaç yolunu sağlar. Bu yöntemlerin bazıları veri depolarına erişim sağlamaz. Puanlama sırasında veri depolarına erişmenize izin veren yöntemleri anlamak için aşağıdaki tabloyu kullanın:
 
 | Yöntem | Veri deposu erişimi | Açıklama |
 | ----- | :-----: | ----- |

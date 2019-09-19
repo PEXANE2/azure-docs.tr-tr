@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 91467f99e7932ce7ffcd5b3300f8544fb848ccfa
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: d966ff3bc00d5190ebc163d4f4bfa35ba73d21ab
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71019070"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087671"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>.NET SDK Application Insights özel işlemleri izleme
 
@@ -354,7 +354,7 @@ Benzer şekilde, diğer kuyruk işlemleri de görüntülenebilir. Bir göz atma 
 
 ### <a name="dependency-types"></a>Bağımlılık türleri
 
-Application Insights UI deneyimlerini eklemek için bağımlılık türünü kullanır. Kuyruklar için, `DependencyTelemetry` [işlem tanılama deneyimini](/azure-monitor/app/transaction-diagnostics)geliştiren aşağıdaki türleri tanır:
+Application Insights UI deneyimlerini eklemek için bağımlılık türünü kullanır. Kuyruklar için, `DependencyTelemetry` [işlem tanılama deneyimini](/azure/azure-monitor/app/transaction-diagnostics)geliştiren aşağıdaki türleri tanır:
 - `Azure queue`Azure depolama kuyrukları için
 - `Azure Event Hubs`Azure Event Hubs için
 - `Azure Service Bus`Azure Service Bus için

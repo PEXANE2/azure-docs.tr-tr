@@ -16,12 +16,12 @@ ms.date: 05/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e491815f25f3744d839efc09ce34793d80d9943a
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983545"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097606"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Sürüm yayınlama geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -44,6 +44,9 @@ Bu işlemden sonra, yayının sürüm numarası, "1.3. X. 0" içinde olduğu gib
 Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir hale getirilmeyecektir. Sürüm durumu, bir yayının otomatik yükseltme veya yalnızca indirme için kullanılabilir duruma getirilmeyeceğini gösterir. Azure AD Connect sunucunuzda otomatik yükseltme etkinleştirildiyse, bu sunucu otomatik olarak yükseltme için yayınlanan en son Azure AD Connect sürümüne yükseltilir. Azure AD Connect yapılandırmalarının tümünün otomatik yükseltme için uygun olmadığına unutmayın. [Otomatik yükseltme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) hakkında daha fazla bilgi için lütfen bu bağlantıyı izleyin
 
 ## <a name="14x0"></a>1.4. X. 0
+
+>[!IMPORTANT]
+>Daha önce, şirket içi AD 'ye katılmış Windows alt düzey bilgisayarları, bazı koşullarda buluta başarıyla eşitlendi. Örnek olarak, AD 'deki Windows alt düzey cihazlar için userCertificate öznitelik değeri doldurulur. Ancak bu işletim sistemi sürümleri AAD Eşitleme aracılığıyla Azure AD 'ye kaydedilecek şekilde tasarlanmadığından, Azure AD 'deki bu tür cihazlar "beklemede" durumunda her zaman görünür. Bu Azure AD Connect sürümünde, AAD Eşitleme Windows alt düzey bilgisayarları Azure AD 'ye eşitlemeyi durdurur ve ayrıca önceden yanlış eşitlenmiş Windows alt düzey cihazlarını Azure AD 'den kaldırır. Bu değişikliğin, MSI paketini kullanarak Azure AD 'ye doğru şekilde kayıtlı olan Windows alt düzey cihazlarını sildiğine lütfen unutmayın. Cihaz tabanlı koşullu erişim amacıyla bu cihazlar beklendiği gibi çalışmaya devam edecektir. Bazı müşteriler Windows alt düzey cihazlarından bazılarını veya tümünü görebilir ve Azure AD 'den kaybolur. Bu cihaz kimlikleri, koşullu erişim yetkilendirmesi sırasında Azure AD tarafından hiçbir şekilde kullanılmadığından, bu sorun için bir neden değildir. Bu tür müşterilerin, cihaz tabanlı https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan koşullu erişim 'e tam olarak katılabilmeleri için, Windows alt düzey cihazlarını yeniden ziyaret etmeniz ve bu cihazların doğru şekilde kaydedilmesi gerekebilir. Azure AD 'de, dışarı aktarma silme eşiğini aşan alt düzey bilgisayar/cihaz nesnelerinin silinmesini görürseniz, müşterinin bu Silinmelerde bu silmeleri yapmasına izin verilmesi önerilir.
 
 ### <a name="release-status"></a>Yayın durumu
 9/10/2019: Yalnızca otomatik yükseltme için yayınlandı
@@ -792,7 +795,7 @@ CBool(
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Seçim|
     |CertKeyAlgorithmParams|CertHashString|Konum|
-    |||Şununla birlikte:|
+    |||Avantaj ile|
 
 * Müşterilerin, Grup nesneleri için sAMAccountName, Domainnetbıos ve domainFQDN 'leri ve Kullanıcı nesneleri için distinguishedName 'dir akışını sağlamak üzere özel eşitleme kuralları oluşturmalarına olanak tanımak için aşağıdaki şema değişiklikleri sunulmuştur:
 

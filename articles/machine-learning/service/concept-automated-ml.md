@@ -1,7 +1,7 @@
 ---
 title: Otomatikleştirilen ML/otomatik ml nedir?
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning hizmetinin sizin için otomatik olarak bir algoritma seçmesini ve sizin modelinize yönelik en iyi algoritmayı seçmek için sağladığınız parametreleri ve kriterleri kullanarak size zaman kazandırmak için bir model oluşturma hakkında bilgi edinin.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning, sizin için otomatik olarak bir algoritma seçebilir ve sizin modelinize yönelik en iyi algoritmayı seçmek için sağladığınız parametreleri ve ölçütleri kullanarak size zaman kazandırmak için bir model oluşturabilirsiniz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7347be086cd9e85dda7b8271548ccb44e8114ff
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882023"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035715"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
@@ -39,7 +39,7 @@ Sektörler genelinde veri bilimcileri, analistleri ve geliştiriciler otomatik M
 
 ## <a name="how-automated-ml-works"></a>Otomatikleştirilmiş ML nasıl çalışacaktır?
 
-**Azure Machine Learning hizmetini**kullanarak otomatikleştirilmiş ml eğitim denemeleri şu adımlarla tasarlayabilir ve çalıştırabilirsiniz:
+**Azure Machine Learning**kullanarak otomatikleştirilmiş ml eğitim denemeleri şu adımlarla tasarlayabilir ve çalıştırabilirsiniz:
 
 1. Çözülebilmek için **ml sorununu tanımla** : sınıflandırma, tahmin veya gerileme
 
@@ -53,7 +53,7 @@ Sektörler genelinde veri bilimcileri, analistleri ve geliştiriciler otomatik M
 
   ![Otomatik makine öğrenimi](./media/how-to-automated-ml/automl-concept-diagram2.png)
 
-Eğitim sırasında Azure Machine Learning hizmeti, farklı algoritmalar ve parametreler deneyen bir dizi paralel işlem hattı oluşturur. Deneme içinde tanımlanan çıkış ölçütlerine ulaştıktan sonra durur.
+Eğitim sırasında Azure Machine Learning, farklı algoritmalar ve parametreler deneyen paralel işlem hatları için bir sayı oluşturur. Deneme içinde tanımlanan çıkış ölçütlerine ulaştıktan sonra durur.
 
 Ayrıca, çalıştırma sırasında toplanan [ölçümleri içeren](how-to-understand-automated-ml.md) günlüğe kaydedilen çalıştırma bilgilerini inceleyebilirsiniz. Eğitim çalışması, modeli ve veri ön işleme içeren`.pkl` bir Python seri hale getirilmiş nesne (dosya) oluşturur.
 

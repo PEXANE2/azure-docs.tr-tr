@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 025052a5005702232eb9eaf255e6aac2c58fec98
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735581"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098394"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
@@ -166,6 +166,6 @@ Bir sanal makinenin yedekleme verilerini silmenin iki yolu vardır:
   > Yedekleme verilerini sildiğinizde, ilişkili tüm kurtarma noktalarını silersiniz. Silmek için belirli kurtarma noktaları seçemezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Azure VM 'lerini [VM ayarlarından](backup-azure-vms-first-look-arm.md)nasıl yedekleyeceğinizi öğrenin.
+- Azure VM 'lerini [VM ayarlarından nasıl yedekleyeceğinizi](backup-azure-vms-first-look-arm.md)öğrenin.
 - [VM 'leri geri yüklemeyi](backup-azure-arm-restore-vms.md)öğrenin.
 - [Azure VM yedeklemelerini izlemeyi](backup-azure-monitor-vms.md)öğrenin.

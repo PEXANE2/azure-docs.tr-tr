@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: d98a5f04f60cb7d933ea91e0657f6067fb1c59a8
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962810"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087473"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı hesaplarını yönetmek için Önkoşullar 
 
@@ -21,7 +21,7 @@ Hesapları yönetme dahil olmak üzere herhangi bir işlev için [bulut iş orta
 
 ## <a name="account-terms-and-guidelines"></a>Hesap koşulları ve yönergeleri
 
-Hesap oluşturmadan önce [Microsoft hizmet sözleşmesi](https://www.microsoft.com/servicesagreement) ve [Microsoft kullanım koşulları](https://www.microsoft.com/us-en/legal/intellectualproperty/copyright/default.aspx) altında haklarınızı ve sorumluluklarınızı dikkatle gözden geçirin.  
+Hesap oluşturmadan önce [Microsoft hizmet sözleşmesi](https://www.microsoft.com/servicesagreement) ve [Microsoft kullanım koşulları](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright) altında haklarınızı ve sorumluluklarınızı dikkatle gözden geçirin.  
 
 Hesap adınızı dikkatle seçin.  Kuruluşunuzu temsil ettiğinden, telif haklı veya en fazla sözcük içermemelidir.  Örneğin, Microsoft yasaklıyor, hesap adlarında "Azure" ve "Microsoft" gibi, telif haklı koşullarını kullanır.  Daha fazla bilgi için bkz. [Azure Marketi Için yönergeler](https://docs.microsoft.com/azure/marketplace/guidelines)
 

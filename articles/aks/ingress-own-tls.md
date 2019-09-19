@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fc7f2180e4166070fe44863aed2b12135b0db8ee
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "67615433"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097854"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde bir HTTPS giriş denetleyicisi oluşturun ve kendi TLS sertifikalarınızı kullanın
 
@@ -133,7 +133,7 @@ Her iki uygulama da artık Kubernetes kümenizde çalışıyor, ancak bunlar tü
 Aşağıdaki örnekte, adrese `https://demo.azure.com/` olan trafik adlı `aks-helloworld`hizmete yönlendirilir. Adrese `https://demo.azure.com/hello-world-two` giden trafik `ingress-demo` hizmete yönlendirilir. Bu makalede, bu demo ana bilgisayar adlarını değiştirmeniz gerekmez. Üretim kullanımı için, sertifika isteği ve oluşturma sürecinin bir parçası olarak belirtilen adları sağlayın.
 
 > [!TIP]
-> Sertifika isteği işlemi sırasında belirtilen ana bilgisayar adı, CN adı, giriş rotasında tanımlanan konakla eşleşmezse, denetleyici bir *Kubernetes ınress denetleyicisi sahte sertifikası*görüntüler. Sertifikanızın ve giriş yolu ana bilgisayar adlarının eşleştiğinden emin olun.
+> Sertifika isteği işlemi sırasında belirtilen ana bilgisayar adı, CN adı, giriş rotasında tanımlanan konakla eşleşmiyorsa, denetleyici bir *Kubernetes ınress denetleyicisi sahte sertifika* uyarısı görüntüler. Sertifikanızın ve giriş yolu ana bilgisayar adlarının eşleştiğinden emin olun.
 
 *TLS* bölümü, giriş yoluna, ana bilgisayar *demo.Azure.com*için *aks-giriş-TLS* adlı gizli dizi kullanımını söyler. Daha sonra, üretim kullanımı için kendi ana bilgisayar adresinizi belirtin.
 

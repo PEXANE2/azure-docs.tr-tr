@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 8b35d2441db654278f9d66f3cbb4e7a79d70e835
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 77ccfc1a67fabca7fde47edac9094c6a68191f0f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128042"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090759"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Hızlı Başlangıç: Python API 'SI ile ilk Batch işinizi çalıştırma
 
@@ -116,7 +116,7 @@ Ayrıntılar için `python_quickstart_client.py` dosyasına ve aşağıdaki böl
 
 ### <a name="preliminaries"></a>Başlangıç bilgileri
 
-Bir depolama hesabıyla etkileşimde bulunmak için uygulama, [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) paketini kullanarak bir [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice) nesnesi oluşturur.
+Bir depolama hesabıyla etkileşimde bulunmak için uygulama, [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) paketini kullanarak bir [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice) nesnesi oluşturur.
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -124,7 +124,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=config._STORAGE_ACCOUNT_KEY)
 ```
 
-Uygulama, depolama hesabında bir kapsayıcı oluşturmak ve kapsayıcıya veri dosyaları yüklemek için `blob_client` başvurusunu kullanır. Depolama alanındaki dosyalar, Batch hizmetinin daha sonra işlem düğümlerine indirebileceği Batch [ResourceFile](/python/api/azure.batch.models.resourcefile) nesneleri olarak tanımlanır.
+Uygulama, depolama hesabında bir kapsayıcı oluşturmak ve kapsayıcıya veri dosyaları yüklemek için `blob_client` başvurusunu kullanır. Depolama alanındaki dosyalar, Batch hizmetinin daha sonra işlem düğümlerine indirebileceği Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) nesneleri olarak tanımlanır.
 
 ```python
 input_file_paths = [os.path.join(sys.path[0], 'taskdata0.txt'),
@@ -149,11 +149,11 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>İşlem düğümleri havuzu oluşturma
 
-Uygulama, Batch havuzu oluşturmak için düğüm sayısını, VM boyutunu ve havuz yapılandırmasını ayarlamak üzere Batch [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) sınıfını kullanır. Burada [Virtualmachineconfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) nesnesi, Azure Marketi 'Nde yayınlanan Ubuntu Server 18,04 LTS görüntüsüne bir [ImageReference](/python/api/azure.batch.models.imagereference) belirtir. Batch, Azure Market’te çok çeşitli Linux ve Windows Server görüntülerinin yanı sıra özel VM görüntülerini destekler.
+Uygulama, Batch havuzu oluşturmak için düğüm sayısını, VM boyutunu ve havuz yapılandırmasını ayarlamak üzere Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) sınıfını kullanır. Burada [Virtualmachineconfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) nesnesi, Azure Marketi 'Nde yayınlanan Ubuntu Server 18,04 LTS görüntüsüne bir [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) belirtir. Batch, Azure Market’te çok çeşitli Linux ve Windows Server görüntülerinin yanı sıra özel VM görüntülerini destekler.
 
 Düğüm sayısı (`_POOL_NODE_COUNT`) ve VM boyutu (`_POOL_VM_SIZE`), tanımlı sabitlerdir. Varsayılan olarak, örnek 2 boyutunda *Standard_A1_v2* düğümleri havuzu oluşturur. Önerilen boyut, bu hızlı örnek için performans ile maliyetin iyi bir dengesini sunar.
 
-[Pool.add](/python/api/azure.batch.operations.pooloperations) yöntemi, havuzu Batch hizmetine gönderir.
+[Pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) yöntemi, havuzu Batch hizmetine gönderir.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -174,7 +174,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Batch işi oluşturma
 
-Batch işi bir veya daha fazla görevin mantıksal gruplandırmasıdır. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. Uygulama, havuzunuzda bir iş oluşturmak üzere [JobAddParameter](/python/api/azure.batch.models.jobaddparameter) sınıfını kullanır. [İş. Add](/python/api/azure.batch.operations.joboperations) yöntemi, belirtilen Batch hesabına bir iş ekler. Başlangıçta iş hiçbir görev içermez.
+Batch işi bir veya daha fazla görevin mantıksal gruplandırmasıdır. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. Uygulama, havuzunuzda bir iş oluşturmak üzere [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) sınıfını kullanır. [İş. Add](/python/api/azure-batch/azure.batch.operations.joboperations) yöntemi, belirtilen Batch hesabına bir iş ekler. Başlangıçta iş hiçbir görev içermez.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -185,9 +185,9 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Görev oluşturma
 
-Uygulama, [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter) sınıfını kullanarak görev nesnelerinin bir listesini oluşturur. Her görev, `command_line` parametresini kullanarak girdi `resource_files` nesnesini işler. Örnekte, komut satırı metin dosyasını göstermek üzere Bash kabuk `cat` komutunu çalıştırır. Bu komut, tanıtım amaçlı basit bir örnektir. Batch kullandığınızda komut satırı, uygulamanızı veya betiğinizi belirttiğiniz yerdir. Batch, işlem düğümlerine uygulama ve betik dağıtmanın birkaç yolunu sağlar.
+Uygulama, [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) sınıfını kullanarak görev nesnelerinin bir listesini oluşturur. Her görev, `command_line` parametresini kullanarak girdi `resource_files` nesnesini işler. Örnekte, komut satırı metin dosyasını göstermek üzere Bash kabuk `cat` komutunu çalıştırır. Bu komut, tanıtım amaçlı basit bir örnektir. Batch kullandığınızda komut satırı, uygulamanızı veya betiğinizi belirttiğiniz yerdir. Batch, işlem düğümlerine uygulama ve betik dağıtmanın birkaç yolunu sağlar.
 
-Sonra uygulama, [task.add_collection](/python/api/azure.batch.operations.taskoperations) yöntemi ile görevleri işe ekler ve işlem düğümleri üzerinde çalışmak üzere kuyruğa alır. 
+Sonra uygulama, [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) yöntemi ile görevleri işe ekler ve işlem düğümleri üzerinde çalışmak üzere kuyruğa alır. 
 
 ```python
 tasks = list()

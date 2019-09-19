@@ -1,69 +1,70 @@
 ---
-title: İşletim sistemi düzeltme eki uygulama zamanlamasını Linux tabanlı HDInsight kümeleri - Azure için yapılandırma
-description: İşletim sistemi düzeltme eki uygulama zamanlamasını Linux tabanlı HDInsight kümeleri için yapılandırmayı öğrenin.
+title: Linux tabanlı HDInsight kümeleri için işletim sistemi düzeltme eki uygulama zamanlamasını Yapılandırma-Azure
+description: Linux tabanlı HDInsight kümeleri için işletim sistemi düzeltme eki uygulama zamanlamasını yapılandırmayı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: efe74618b269000749f7ba6c24d35903e540dcfb
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 06111ec35a127cf17fdcc77ff717de7a4bc7299f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657047"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076852"
 ---
-# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>İşletim sistemi düzeltme eki uygulama zamanlamasını Linux tabanlı HDInsight kümeleri için yapılandırma 
+# <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Linux tabanlı HDInsight kümeleri için işletim sistemi düzeltme eki uygulama zamanlamasını yapılandırma 
 
 > [!IMPORTANT]
-> Ubuntu görüntülerinde yayımlanmasını, üç ay içinde yeni bir Azure HDInsight küme oluşturma için kullanılabilir hale gelir. Ocak 2019'den itibaren otomatik düzeltme eki çalıştıran kümeleri değildir. Müşteriler, çalışan bir küme düzeltme eki için betik eylemleri veya başka mekanizmalar kullanmalısınız. Yeni oluşturulan küme, her zaman en son güvenlik düzeltme ekleri dahil olmak üzere en son güncelleştirmeleri, sahip olur.
+> Ubuntu görüntüleri, yayımlanmakta olan üç ay içinde yeni Azure HDInsight kümesi oluşturma için kullanılabilir hale gelir. 2019 Ocak itibariyle çalıştırılan kümeler otomatik düzeltme eki olmaz. Müşterilerin çalışan bir kümeyi yaması için betik eylemleri veya diğer mekanizmaları kullanması gerekir. Yeni oluşturulan kümeler en son güvenlik düzeltme ekleri dahil olmak üzere her zaman en son kullanılabilir güncelleştirmelere sahip olur.
 
-Bazen, önemli güvenlik düzeltmelerini yüklemek için bir HDInsight kümesinde sanal makineler (VM) yeniden başlatmalısınız.
+Bazen önemli güvenlik düzeltme eklerini yüklemek için bir HDInsight kümesinde sanal makineleri (VM) yeniden başlatmanız gerekir.
 
-Bu makalede açıklanan betik eylemlerini kullanarak işletim sistemi gibi düzeltme eki uygulama zamanlamasını değiştirebilirsiniz:
+Bu makalede açıklanan betik eylemlerini kullanarak, işletim sistemi düzeltme eki uygulama zamanlamasını aşağıdaki şekilde değiştirebilirsiniz:
 
-1. Tüm güncelleştirmeleri yükleyin ya da yalnızca çekirdek + güvenlik güncelleştirmeleri veya çekirdek güncelleştirmeleri yükleyin.
-2. Hemen bir yeniden başlatma yapmanız veya VM üzerinde bir yeniden zamanlayın.
+1. Tüm güncelleştirmeleri yükler veya yalnızca çekirdek + güvenlik güncelleştirmelerini veya çekirdek güncelleştirmelerini yükler.
+2. Anında yeniden başlatma yapın veya VM 'de yeniden başlatma zamanlayın.
 
 > [!NOTE]  
-> Bu makalede açıklanan betik eylemleri, 1 Ağustos 2016'dan sonra oluşturulan Linux tabanlı HDInsight kümeleri ile çalışır. Düzeltme ekleri, yalnızca sanal makineleri yeniden başlatıldıktan sonra etkili olur.
-> Betik eylemleri, tüm gelecek güncelleştirmelerden döngüleri güncelleştirmeleri otomatik olarak uygulanmaz. Yeni güncelleştirmeler güncelleştirmeleri yüklemek ve VM'yi yeniden uygulanması gereken her zaman komut dosyasını çalıştırın.
+> Bu makalede açıklanan betik eylemleri yalnızca 1 Ağustos 2016 ' den sonra oluşturulan Linux tabanlı HDInsight kümeleriyle çalışır. Düzeltme ekleri yalnızca VM 'Ler yeniden başlatıldıktan sonra geçerlidir.
+> Betik eylemleri, gelecekteki tüm güncelleştirme döngüleri için güncelleştirmeleri otomatik olarak uygulamaz. Güncelleştirmeleri yüklemek için yeni güncelleştirmelerin uygulanması gereken her seferinde komut dosyalarını çalıştırın ve ardından sanal makineyi yeniden başlatın.
 
-## <a name="add-information-to-the-script"></a>Komut dosyası bilgilerini ekleyin
+## <a name="add-information-to-the-script"></a>Betiğe bilgi ekleme
 
-Betik kullanarak, aşağıdaki bilgileri gerektirir:
+Komut dosyası kullanmak aşağıdaki bilgileri gerektirir:
 
-- Yükleme-güncelleştirme-zamanlama-yeniden başlatma komut dosyası konumu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh.
+- Install-Updates-Schedule-yeniden başlatmalar betik konumu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/install-updates-schedule-reboots.sh.
     
-   HDInsight, bu URI'yi bulmak ve kümedeki tüm sanal makineler komut dosyasını çalıştırmak için kullanır. Bu betik VM'yi yeniden başlatın ve güncelleştirmeleri yüklemek için seçenekler sağlar.
+   HDInsight bu URI 'yi kümedeki tüm VM 'lerde betiği bulmak ve çalıştırmak için kullanır. Bu betik, güncelleştirmeleri yüklemek ve VM 'yi yeniden başlatmak için seçenekler sağlar.
   
-- Zamanlama-yeniden başlatma komut dosyası konumu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh.
+- Zamanlama-yeniden başlatmalar betiği konumu: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/schedule-reboots.sh.
     
-   HDInsight, bu URI'yi bulmak ve kümedeki tüm sanal makineler komut dosyasını çalıştırmak için kullanır. Bu betik, VM'yi yeniden başlatır.
+   HDInsight bu URI 'yi kümedeki tüm VM 'lerde betiği bulmak ve çalıştırmak için kullanır. Bu betik VM 'yi yeniden başlatır.
   
-- Betik uygulanan küme düğümü baş düğüm, workernode ve zookeeper türleridir. Betik kümedeki tüm düğüm türleri için geçerlidir. Betik, bir düğüm türü için uygulanmaz, bu düğüm türü için Vm'leri güncelleştirildi veya yeniden olmaz.
+- Betiğin uygulandığı küme düğümü türleri; headnode, workernode ve Zookeeper. Betiği kümedeki tüm düğüm türlerine uygulayın. Betik bir düğüm türüne uygulanmadıysa, bu düğüm türü için VM 'Ler güncellenmez veya yeniden başlatılmaz.
 
-- Güncelleştirmeleri zamanlama yeniden yükleme betiği, iki sayısal parametre kabul eder:
+- Install-Updates-Schedule-yeniden başlatmalar betiği iki sayısal parametreyi kabul eder:
 
     | Parametre | Tanım |
     | --- | --- |
-    | Yalnızca çekirdek güncelleştirmeleri yükleme / yükleme tüm güncelleştirmeleri/yükleme çekirdek + security yalnızca güncelleştirir|0, 1 veya 2. 0 değeri, yalnızca çekirdek güncelleştirmeleri yükler. 1 değeri, tüm güncelleştirmeleri ve yalnızca çekirdek 2 yükler ve güvenlik güncelleştirmeleri yükler. Hiçbir parametre sağlanmazsa, varsayılan değer 0'dır. |
-    | Yeniden başlatma/etkinleştirme zamanlaması yeniden başlatma/etkinleştirme hemen yeniden başlatma |0, 1 veya 2. 0 değeri yeniden devre dışı bırakır. 1 değeri, zamanlamayı yeniden etkinleştirir ve hemen yeniden 2 sağlar. Hiçbir parametre sağlanmazsa, varsayılan değer 0'dır. Kullanıcı giriş parametresi 1 girdi parametresi 2 değiştirmeniz gerekir. |
+    | Yalnızca çekirdek güncelleştirmelerini yükler/tüm güncelleştirmeleri yükler/yalnızca çekirdek + güvenlik güncelleştirmelerini yükler|0, 1 veya 2. 0 değeri yalnızca çekirdek güncelleştirmelerini yüklüyor. 1 değeri tüm güncelleştirmeleri yüklüyor ve 2 yalnızca çekirdek + güvenlik güncelleştirmelerini yüklüyor. Hiçbir parametre sağlanmazsa varsayılan değer 0 ' dır. |
+    | Yeniden başlatma/etkinleştirme zamanlamasını başlatma/hemen yeniden başlatmaya Izin verme |0, 1 veya 2. 0 değeri yeniden başlatmayı devre dışı bırakır. 1 değeri, zamanlamayı yeniden başlatmaya izin verebilir ve 2 hemen yeniden başlatmaya izin vermez. Hiçbir parametre sağlanmazsa varsayılan değer 0 ' dır. Kullanıcı giriş parametresi 1 ' i giriş parametresi 2 ' ye değiştirmesi gerekir. |
    
- - Zamanlama-yeniden başlatma betiği bir sayısal parametre kabul eder:
+ - Zamanlama-yeniden başlatmalar betiği bir sayısal parametreyi kabul eder:
 
     | Parametre | Tanım |
     | --- | --- |
-    | Zamanlamayı yeniden başlatma/etkinleştirme hemen yeniden etkinleştirme |1 veya 2. 1 değeri, zamanlamayı yeniden başlatma (12-24 saat içindeki zamanlanmış) sağlar. Değeri 2'dir (5 dakika cinsinden) hemen yeniden etkinleştirir. Parametre belirtilmezse, varsayılan değer 1'dir. |  
+    | Yeniden başlatma zamanlamasını etkinleştir/hemen yeniden başlatmayı etkinleştir |1 veya 2. 1 değeri, zamanlamayı yeniden başlatmayı (12-24 saat içinde zamanlanmış) mümkün. 2 değeri hemen yeniden başlatmaya (5 dakika içinde) izin vermez. Hiçbir parametre verilmezse varsayılan değer 1 ' dir. |  
 
 > [!NOTE]
-> Bir komut dosyası, mevcut bir kümeye uyguladıktan sonra kalıcı olarak işaretlemeniz gerekir. Aksi takdirde, ölçeklendirme işlemleri aracılığıyla oluşturulan tüm yeni düğümler, düzeltme eki uygulama zamanlamasını varsayılan kullanır. Küme oluşturma işlemi kapsamında betiği uygularsanız, otomatik olarak kaydetti.
+> Mevcut bir kümeye uyguladıktan sonra bir betiği kalıcı olarak işaretlemeniz gerekir. Aksi takdirde, ölçeklendirme işlemleri aracılığıyla oluşturulan tüm yeni düğümler varsayılan düzeltme eki uygulama zamanlamasını kullanır. Betiği küme oluşturma işleminin parçası olarak uygularsanız, otomatik olarak kalıcı hale getirilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Betik eylemlerini kullanarak belirli adımları görmek için aşağıdaki bölümlerdeki [özelleştirme Linux tabanlı HDInsight kümelerini betik eylemi kullanarak](hdinsight-hadoop-customize-cluster-linux.md):
+Betik eylemlerini kullanmayla ilgili belirli adımlar için, [betik eylemi kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md)bölümünde yer alan aşağıdaki bölümlere bakın:
 
-* [Küme oluşturma sırasında bir betik eylemi kullanın](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Betik eylemi çalıştıran bir kümeye uygulama](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+* [Küme oluşturma sırasında betik eylemi kullanma](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+* [Çalışan bir kümeye betik eylemi uygulama](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

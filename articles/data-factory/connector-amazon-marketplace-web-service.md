@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 72cddc56a0b36a1c12b1783fa540f426318df30d
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 6396aa727abcb253f3fd728e924a066f1c22f16f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008507"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092154"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Azure Data Factory (Önizleme) kullanarak Amazon Market Web hizmetinden veri kopyalama
 
@@ -30,7 +30,7 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de Amazon Market Web hizmet
 
 Bu Amazon Market Web hizmeti Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 Tüm desteklenen havuz veri deposuna Amazon Market Web hizmetinden veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.

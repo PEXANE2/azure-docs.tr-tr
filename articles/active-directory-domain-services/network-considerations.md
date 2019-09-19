@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617319"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086578"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -36,7 +36,7 @@ Azure AD DS sanal ağını tasarlarken aşağıdaki noktalar geçerlidir:
     * Gecikme süresini en aza indirmek için, çekirdek uygulamalarınızı Azure AD DS yönetilen etki alanınız için sanal ağ alt ağı ile aynı bölgede veya ' a yakın tutun. Azure sanal ağları arasında sanal ağ eşlemesi veya sanal özel ağ (VPN) bağlantıları kullanabilirsiniz.
 * Sanal ağ, Azure AD DS tarafından sağlananlardan farklı DNS hizmetlerinden yararlanmaz.
     * Azure AD DS kendi DNS hizmetini sağlar. Sanal ağın bu DNS hizmeti adreslerini kullanacak şekilde yapılandırılması gerekir. Ek ad alanları için ad çözümlemesi, koşullu ileticiler kullanılarak gerçekleştirilebilir.
-    * VM 'Ler dahil diğer DNS sunucularının sorgularını yönlendirmek için özel DNS sunucusu ayarlarını kullanamazsınız. Sanal ağdaki kaynakların Azure AD DS tarafından sunulan DNS hizmetini kullanması gerekir.
+    * Diğer DNS sunucularından gelen sorguları VM 'Ler dahil olmak üzere yönlendirmek için özel DNS sunucusu ayarlarını kullanamazsınız. Sanal ağdaki kaynakların Azure AD DS tarafından sunulan DNS hizmetini kullanması gerekir.
 
 > [!IMPORTANT]
 > Hizmeti etkinleştirdikten sonra Azure AD DS farklı bir sanal ağa taşıyamazsınız.
@@ -105,7 +105,7 @@ Bir [ağ güvenlik grubu (NSG)](https://docs.microsoft.com/azure/virtual-network
 
 Azure AD DS kimlik doğrulaması ve yönetim hizmetleri sağlamak için aşağıdaki ağ güvenlik grubu kuralları gereklidir. Azure AD DS yönetilen etki alanının dağıtıldığı sanal ağ alt ağı için bu ağ güvenlik grubu kurallarını düzenlemeyin veya silmeyin.
 
-| Bağlantı noktası numarası | Protocol | Kaynak                             | Hedef | Action | Gerekli | Amaç |
+| Bağlantı noktası numarası | Protocol | Kaynak                             | Destination | Action | Gerekli | Amaç |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | Evet      | Azure AD kiracınızla eşitleme. |
 | 3389        | TCP      | Corpnetgördünüz                         | Any         | Allow  | Evet      | Etki alanınızı yönetme. |

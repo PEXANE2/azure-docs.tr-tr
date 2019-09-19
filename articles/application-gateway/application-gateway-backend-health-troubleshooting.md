@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: ce1d0542530c4f190ace52d45e2369d6ecc18772
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1fd4e9156e29133b1db4fe9ab9a0825eb1aa3b55
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70384092"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097588"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway arka uç sistem durumu sorunlarını giderme
 ==================================================
@@ -81,10 +81,10 @@ Arka uç sunucu durumunu bir arka uç havuzundaki tüm sunucular için sağlıks
 Arka uç sistem durumu sekmesinin Ayrıntılar sütununda görünen ileti, sorun hakkında daha ayrıntılı öngörüler sağlar ve bunlar temelinde sorun gidermeye başlayabiliriz.
 
 > [!NOTE]
-> Varsayılan araştırma isteği <protocol>://127.0.0.1 biçiminde gönderilir:<port>Örneğin, <http://127.0.0.1/> bağlantı noktası 80 ' deki bir http araştırması için ve yalnızca bir sağlıklı yanıt olarak 200-399 http durum kodlarının yanıtını kabul eder. Protokol ve hedef bağlantı noktası HTTP ayarlarından devralınır. Farklı bir protokol, ana bilgisayar adı veya yol üzerinde araştırmasını Application Gateway ve sağlıklı olarak farklı bir durum kodu kabul etmek istiyorsanız, özel bir araştırma yapılandırın ve bunu HTTP ayarları ile ilişkilendirin.
+> Varsayılan araştırma isteği, bağlantı noktası 80 ' de http \<araştırması\> <http://127.0.0.1/> için://127.0.0.1\<:\>bağlantı noktası/biçiminde gönderilir ve yalnızca şu şekilde 200-399 http durum kodlarının yanıtını kabul eder sağlıklı yanıt. Protokol ve hedef bağlantı noktası HTTP ayarlarından devralınır. Farklı bir protokol, ana bilgisayar adı veya yol üzerinde araştırmasını Application Gateway ve sağlıklı olarak farklı bir durum kodu kabul etmek istiyorsanız, özel bir araştırma yapılandırın ve bunu HTTP ayarları ile ilişkilendirin.
 
-### <a name="error-messages"></a>Hata İletileri
-
+<a name="error-messages"></a>Hata İletileri
+------------------------
 #### <a name="backend-server-timeout"></a>Arka uç sunucu zaman aşımı
 
 **İleti:** Uygulama ağ geçidi\'s sistem durumu araştırmasına yanıt vermek için arka uçta geçen süre, araştırma ayarında zaman aşımı eşiğinden daha fazla.

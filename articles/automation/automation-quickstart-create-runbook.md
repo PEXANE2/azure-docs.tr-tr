@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 3dece2d2bffc7bd2b9e0a3c2931b2038ebc3c77e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2cbb37b4e93468a42335f40a19baf4c742cb6dbb
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850640"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098617"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Otomasyonu runbook'u oluşturma
 
@@ -34,9 +34,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https:
 
 1. **SÜREÇ OTOMASYONU**'nın altındaki **Runbook'lar** öğesine tıklayın. Runbook'ların listesi görüntülenir.
 
-1. Listenin en üstünde yer alan **Runbook ekle** düğmesine tıklayın. **Runbook ekle** sayfasında **Hızlı Oluştur**'u seçin.
+1. Listenin en üstünde bulunan **runbook oluştur** düğmesine tıklayın
 
-1. Runbook **Ad** değeri için "Hello-World" girip **Runbook türü** olarak **PowerShell**'i seçin.           **Oluştur**'a tıklayın.
+1. Runbook **Ad** değeri için "Hello-World" girip **Runbook türü** olarak **PowerShell**'i seçin. **Oluştur**'a tıklayın.
 
    ![Otomasyon runbook'unuz hakkındaki bilgileri sayfaya girin](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 

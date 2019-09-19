@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2ed1426bea920d1ef30fb28ff4a975d1268c12ff
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 83f8051fa31b6431d4a8515e2c0912cc1872a402
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846923"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064384"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C belirteçleri yapılandırma
 
-Bu makalede, Azure Active Directory (Azure AD) B2C 'de [bir belirtecin yaşam süresini ve uyumluluğunu](active-directory-b2c-reference-tokens.md) yapılandırmayı öğreneceksiniz.
+Bu makalede, Azure Active Directory B2C (Azure AD B2C) ' de [bir belirtecin yaşam süresini ve uyumluluğunu](active-directory-b2c-reference-tokens.md) yapılandırmayı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -30,7 +30,7 @@ Kullanıcıların uygulamanızda kaydolup oturum açmasını sağlamak için [bi
 Belirteç ömrünü herhangi bir Kullanıcı akışında yapılandırabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüden **Dizin ve abonelik filtresi** ' ni seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
+2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
 5. Daha önce oluşturduğunuz kullanıcı akışını açın.
