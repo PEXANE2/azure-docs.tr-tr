@@ -666,6 +666,8 @@
           href: how-to-configure-change-feed-start-time.md
         - name: Değişiklik akışı tahmin aracını kullanma
           href: how-to-use-change-feed-estimator.md
+        - name: Değişiklik akışı işlemci kitaplığından geçiş
+          href: how-to-migrate-from-change-feed-library.md
     - name: Apache Spark ile yerleşik analiz
       items:
         - name: Azure Databricks Spark bağlayıcısı

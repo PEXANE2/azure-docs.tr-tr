@@ -19,10 +19,10 @@
 - name: Kavramlar
   expanded: false
   items:
-    - name: Koşullu Erişimi Benimseme
-      href: howto-conditional-access-adoption-kit.md
     - name: Sık kullanılan Koşullu Erişim İlkeleri
       href: concept-conditional-access-policy-common.md
+    - name: Koşullu Erişim ilkesi bileşenleri
+      href: concept-conditional-access-policies.md
     - name: Koşullar
       href: conditions.md
     - name: Konum koşulları

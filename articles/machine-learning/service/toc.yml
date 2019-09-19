@@ -152,6 +152,9 @@
         - name: Veri kümelerini ekleme ve kaydetme
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
+        - name: Veri kümeleriyle eğitme
+          displayName: 'data, dataset'
+          href: how-to-train-with-datasets.md
     - name: Modelleri eğitme
       items:
         - name: Eğitim ortamlarını ayarlama

@@ -7,11 +7,11 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Çok hizmetli bir uygulama oluşturma
-      href: terrafom-quickstart.md
     - name: Terraform’u yükleme ve yapılandırma
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
+    - name: Çok hizmetli bir uygulama oluşturma
+      href: terrafom-quickstart.md
     - name: Linux VM oluşturma
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
@@ -67,10 +67,6 @@
   items:
     - name: Yapılandırma şablonları
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: Kavramlar
-  items:
-    - name: Azure Cloud Shell tümleştirmesi
-      href: terraform-cloud-shell.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure Depolama’da depolama durumu
@@ -79,7 +75,7 @@
   items:
     - name: Azure modülü kayıt defteri
       href: 'https://registry.terraform.io/modules/Azure'
-    - name: Terraform başvurusu
+    - name: Terraform Azure Sağlayıcısı
       href: 'https://aka.ms/terraform'
 - name: Kaynaklar
   items:

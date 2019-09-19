@@ -10,13 +10,13 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 09/12/2019
-  ms.openlocfilehash: 2bb26de076096ff47d38ddb12b1bc17f4aeafb34
-  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+  ms.date: 09/16/2019
+  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/13/2019
-  ms.locfileid: "70965453"
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71087545"
 highlightedContent:
   items:
   - title: Bilişsel Hizmetler nedir?
@@ -53,7 +53,7 @@ conceptualContent:
       text: Yüz
     - url: ./form-recognizer/index.yml
       itemType: overview
-      text: Konuşma Tanıma (Önizleme)
+      text: Form Tanıma (Önizleme)
     - url: ./ink-recognizer/index.yml
       itemType: overview
       text: Mürekkep Tanıma (Önizleme)
@@ -93,7 +93,7 @@ conceptualContent:
     - url: ./translator-speech/overview.md
       itemType: overview
       text: Translator Konuşma Çevirisi (Kullanımdan Kaldırılıyor)
-  - title: Karar Alma Hizmetleri
+  - title: Karar
     summary: Bilgiye dayalı ve verimli kararlar almak için öneriler sunan uygulamalar derleyin.
     links:
     - url: ./anomaly-detector/index.yml
@@ -138,12 +138,12 @@ conceptualContent:
     - url: ./bing-web-search/index.yml
       itemType: overview
       text: Web Araması
-  - title: Kapsayıcılar
+  - title: Bilişsel Hizmet Kapsayıcıları
     summary: Azure Bilişsel Hizmetler'de kapsayıcı desteği geliştiricilerin Azure'da kullanılabilen zengin API'lerin aynılarını kullanmalarına olanak tanır ve Docker kapsayıcılarıyla gelen hizmetlerin nerede dağıtılacağı ve barındırılacağı konusunda esneklik sağlar.
     links:
     - url: ./cognitive-services-container-support.md
       itemType: overview
-      text: Bilişsel Hizmetler için Kapsayıcılar
+      text: Bilişsel Hizmet Kapsayıcıları
     - url: ./containers/container-reuse-recipe.md
       itemType: overview
       text: Yeniden kullanım için kapsayıcı oluşturma

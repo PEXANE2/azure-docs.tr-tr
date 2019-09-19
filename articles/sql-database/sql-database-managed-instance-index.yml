@@ -44,6 +44,9 @@ sections:
           - title: Sanal Ağ Tümleştirmesi
             href: /azure/sql-database/sql-database-managed-instance-connectivity-architecture
             html: <p>Özel IP adresleriyle özel Azure sanal ağınıza yerleştirilmiş güvenli hizmet.</p>
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: <p>Kaynakları paylaşan birden çok yönetilen örneği dağıtmak için uygun maliyetli bir çözüm.</p>
+            title: Örnek havuzları
           - title: Kolay Geçiş
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
             html: <p>Yerel geri yükleme özelliğini kullanarak şirket içi veritabanlarınızı kolayca Azure bulutuna geçirin.</p>
@@ -59,9 +62,6 @@ sections:
           - title: Hizmet katmanları
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
             html: <p>İş gereksinimlerinize göre Genel Amaçlı ve İş Açısından Kritik hizmet katmanlarından birini seçin.</p>
-          - title: Gelişmiş güvenlik
-            href: /azure/sql-database/sql-database-security-index
-            html: <p>Yerleşik Azure SQL veritabanı güvenlik özellikleriyle örneğinizin ve veritabanlarınızın güvenliğini sağlayın.<p>
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:
       - type: paragraph
@@ -93,6 +93,12 @@ sections:
               - href: null
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: '/powershell/module/az.sql/set-azsqlinstance#examples'
+              - href: null
+          - title: Yeni örnek havuzu oluşturma
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
               - href: null
           - title: Azure ağ ortamını yapılandırma
             values:
