@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c8fc8e7d5888f9a0b080c0ca1d24e53068b543be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095184"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090747"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch kapsayıcı uygulamaları çalıştırma
 
@@ -89,7 +89,7 @@ Batch ile uyumlu bir Linux dağıtımlarından birinde Docker çalıştıran VM 
 
 ## <a name="container-configuration-for-batch-pool"></a>Batch havuzu için kapsayıcı yapılandırması
 
-Bir Batch havuzunu kapsayıcı iş yüklerini çalıştıracak şekilde etkinleştirmek için, havuzun [Virtualmachineconfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) nesnesinde [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) ayarlarını belirtmeniz gerekir. (Bu makale Batch .NET API başvurusu için bağlantılar sağlar. Karşılık gelen ayarlar [Batch Python](/python/api/azure.batch) API 'sidir.)
+Bir Batch havuzunu kapsayıcı iş yüklerini çalıştıracak şekilde etkinleştirmek için, havuzun [Virtualmachineconfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) nesnesinde [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) ayarlarını belirtmeniz gerekir. (Bu makale Batch .NET API başvurusu için bağlantılar sağlar. Karşılık gelen ayarlar [Batch Python](/python/api/overview/azure/batch) API 'sidir.)
 
 Aşağıdaki örneklerde gösterildiği gibi, önceden getirilen kapsayıcı görüntüleriyle veya olmadan kapsayıcı özellikli bir havuz oluşturabilirsiniz. Çekme (veya önceden getirme) işlemi, Internet 'teki Docker Hub 'ından veya başka bir kapsayıcı kayıt defterinden kapsayıcı görüntülerini önceden yüklemenize olanak sağlar. En iyi performansı elde etmek için, Batch hesabıyla aynı bölgedeki bir [Azure Container kayıt defteri](../container-registry/container-registry-intro.md) kullanın.
 

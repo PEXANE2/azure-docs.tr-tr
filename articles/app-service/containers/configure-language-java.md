@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8e47365f74668ba2b93bad2b65a9dc9e83080832
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034897"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098133"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için bir Linux Java uygulaması yapılandırma
 
@@ -49,11 +49,11 @@ Performans raporları, trafik görselleştirmeleri ve sistem durumu sağlaması,
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-Daha fazla bilgi için bkz. [Azure CLI Ile akış günlükleri](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli).
+Daha fazla bilgi için bkz. [Cloud Shell akış günlükleri](../troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
 ### <a name="app-logging"></a>Uygulama günlüğü
 
-Uygulamanızın standart konsol çıkışını ve standart konsol hatası akışlarını yerel dosya sistemine veya Azure Blob depolama alanına yazmak üzere App Service yapılandırmak için Azure portal veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) aracılığıyla [Uygulama günlüğünü](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) etkinleştirin. Yerel App Service dosya sistemi örneğine günlük kaydı, yapılandırıldıktan sonra 12 saat devre dışı bırakılır. Daha uzun süre bekletmeye ihtiyacınız varsa, uygulamayı bir BLOB depolama kapsayıcısına çıktı yazacak şekilde yapılandırın. Java ve Tomcat uygulama günlüklerinizi */Home/LogFiles/Application/* dizininde bulabilirsiniz.
+Uygulamanızın standart konsol çıkışını ve standart konsol hatası akışlarını yerel dosya sistemine veya Azure Blob depolama alanına yazmak üzere App Service yapılandırmak için Azure portal veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) aracılığıyla [Uygulama günlüğünü](../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) etkinleştirin. Yerel App Service dosya sistemi örneğine günlük kaydı, yapılandırıldıktan sonra 12 saat devre dışı bırakılır. Daha uzun süre bekletmeye ihtiyacınız varsa, uygulamayı bir BLOB depolama kapsayıcısına çıktı yazacak şekilde yapılandırın. Java ve Tomcat uygulama günlüklerinizi */Home/LogFiles/Application/* dizininde bulabilirsiniz.
 
 Uygulamanız izleme için [Logback](https://logback.qos.ch/) veya [Log4J](https://logging.apache.org/log4j) kullanıyorsa, bu izlemeleri gözden geçirme için, [Java izleme günlüklerini keşfet ' de günlüğe kaydetme çerçevesi yapılandırma yönergelerini kullanarak Azure Application Insights 'e iletebilirsiniz Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 
@@ -423,9 +423,9 @@ Bu konuyla ilgili daha fazla bilgi için lütfen veri erişimi ve [externalized 
 ## <a name="configure-java-ee-wildfly"></a>Java EE 'ı yapılandırma (Yavaya)
 
 > [!NOTE]
-> App Service Linux 'ta Java Enterprise Edition Şu anda önizleme aşamasındadır. Bu yığın üretime yönelik iş için önerilmez.
+> App Service Linux 'ta Java Enterprise Edition Şu anda önizleme aşamasındadır. Bu yığın üretime yönelik iş **için önerilmez.**
 
-Linux üzerinde Azure App Service, Java geliştiricilerinin tam olarak yönetilen bir Linux tabanlı hizmette Java Enterprise (Java EE) uygulamalarını oluşturmalarına, dağıtmasına ve ölçeklendirmesine olanak tanır.  Temel Java kurumsal çalışma zamanı ortamı, açık kaynaklı bir uygulama [](https://wildfly.org/) sunucusudur.
+Linux üzerinde Azure App Service, Java geliştiricilerinin tam olarak yönetilen bir Linux tabanlı hizmette Java Enterprise (Java EE) uygulamalarını oluşturmalarına, dağıtmasına ve ölçeklendirmesine olanak tanır.  Temel Java kurumsal çalışma zamanı ortamı, [Açık kaynaklı bir](https://wildfly.org/) uygulama sunucusudur.
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
@@ -479,7 +479,7 @@ Jpatron CLı aracılığıyla modülleri ve bunların bağımlılıklarını ve 
 
 Modülünüzün dosyalarını ve içeriğini aldıktan sonra, modülü, Yavaya uygulama sunucusuna eklemek için aşağıdaki adımları izleyin.
 
-1. Dosyalarınızı, */Home/site/Deployments/Tools*gibi bir App Service örneğindeki BIR konuma yüklemek için FTP 'yi kullanın. Daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](../deploy-ftp.md).
+1. Dosyalarınızı, */Home/site/Deployments/Tools*gibi bir App Service örneğindeki bir konuma yüklemek için FTP 'yi kullanın. Daha fazla bilgi için bkz. [FTP/S kullanarak Azure App Service uygulamanızı dağıtma](../deploy-ftp.md).
 2. Azure Portal **yapılandırma** > **genel ayarları** sayfasında, **Başlangıç betiği** alanını başlangıç kabuğu betiğinizin konumuna ayarlayın, örneğin */Home/site/Deployments/Tools/Startup.exe*.
 3. Portalın **genel bakış** bölümündeki veya Azure CLI kullanarak **yeniden başlat** düğmesine basarak App Service örneğinizi yeniden başlatın.
 
@@ -633,7 +633,7 @@ Daha sonra, uygulamanızın Yavaya yapılandırmasını güncelleştirmeniz ve y
     mvn package -DskipTests azure-webapp:deploy
     ```
 
-3. Azure portal **genel bakış** bölümündeki veya Azure clı kullanarak App Service örneğinizi yeniden başlatın.
+3. Azure portal **genel bakış** bölümündeki veya Azure clı kullanarak App Service örneğinizi **yeniden başlatın.**
 
 App Service örneğiniz artık veritabanınıza erişecek şekilde yapılandırılmıştır.
 

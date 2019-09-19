@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d1c69cd1cf9990fc77a24e18d87690210453cf75
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899962"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091963"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Azure Active Directory ile parolalar olmadan bir dünya
 
@@ -107,7 +107,7 @@ Iş için Windows Hello 'Yu içeren diğer senaryolarda kimlik doğrulama işlem
 
 #### <a name="user-manages-their-windows-hello-for-business-credentials"></a>Kullanıcı Iş için Windows Hello kimlik bilgilerini yönetir
 
-[MICROSOFT PIN sıfırlama Hizmetleri](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-features#pin-reset) , Azure AD 'de kullanıcıların PIN kodlarını sıfırlamalarını sağlayan bir özelliktir. Yönetici, Grup ilkesi, Microsoft Intune veya uyumlu bir MDM 'yi kullanarak Windows 10 cihazlarını, kullanıcıların bu ayarları aracılığıyla veya kilit ekranı üzerinde istemeden PIN 'ı sıfırlamasına olanak sağlayan Microsoft PIN sıfırlama hizmetini güvenli bir şekilde kullanmasını sağlar. yeniden kayıt.
+[MICROSOFT PIN sıfırlama Hizmetleri](/windows/security/identity-protection/hello-for-business/hello-feature-pin-reset) , Azure AD 'de kullanıcıların PIN kodlarını sıfırlamalarını sağlayan bir özelliktir. Yönetici, Grup ilkesi, Microsoft Intune veya uyumlu bir MDM 'yi kullanarak Windows 10 cihazlarını, kullanıcıların bu ayarları aracılığıyla veya kilit ekranı üzerinde istemeden PIN 'ı sıfırlamasına olanak sağlayan Microsoft PIN sıfırlama hizmetini güvenli bir şekilde kullanmasını sağlar. yeniden kayıt.
 
 Bazen kullanıcıların parolaları kullanmaya geri dönmesi gerekir. [Self servis parola sıfırlama](../../active-directory/authentication/howto-sspr-deployment.md) (SSPR), kullanıcıların BT personeli ile iletişim kurmaya gerek kalmadan parolalarını sıfırlamalarını sağlayan başka bir Azure AD özelliğidir. Kullanıcılar, hizmet kullanılmadan önce self servis parola sıfırlama için kaydolmalıdır veya kaydolmalıdır. Kayıt sırasında Kullanıcı, kuruluşu tarafından etkinleştirilen bir veya daha fazla kimlik doğrulama yöntemi seçer. SSPR kullanıcıların engellerini hızlı bir şekilde kaldırmasını ve nerede olduğu veya günün saati olmadan çalışmaya devam etmesine olanak sağlar. Kuruluşunuz, kullanıcıların kendi kendilerine engellemeyi kaldırmaya izin vererek, en yaygın parolayla ilgili sorunlara yönelik üretken olmayan süreyi ve yüksek destek maliyetlerini azaltabilir.
 
@@ -123,7 +123,7 @@ Microsoft Authenticator uygulaması, kullanıcıların kimliklerini doğrulamala
 
 Azure AD 'de passwordless oturum açmak için Microsoft Authenticator uygulamasını kullanmaya yönelik önkoşullar şunlardır:
 
-* Son kullanıcılar Azure Multi-Factor Authentication etkinleştirildi
+* Son kullanıcılar Azure Multi-Factor Authentication için etkinleştirildi
 
 * Uygulamanın dağıtımını kolaylaştırmak için Microsoft Intune veya bir üçüncü taraf mobil cihaz yönetimi (MDM) çözümünü kullanarak cihazlarını kaydetmeleri önerilir.
 
@@ -131,7 +131,7 @@ Bu gereksinimlerin karşılandığı varsayıldığında Yöneticiler, [Windows 
 
 Parolasız oturum açma 'nın yönetici tarafından etkinleştirildiği varsayıldığında, son kullanıcıların aşağıdaki gereksinimleri karşılaması gerekir:
 
-* Azure Multi-Factor Authentication kayıtlı
+* Azure Multi-Factor Authentication 'a kaydolmuş
 
 * İOS 8,0 veya üzerini çalıştıran cihazlarda yüklü Microsoft Authenticator en son sürümü veya Android 6,0 veya üzeri
 
@@ -184,7 +184,7 @@ Microsoft Authenticator kullanan passwordless kimlik doğrulaması, Iş için Wi
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>Kullanıcı, Microsoft Authenticator kimlik bilgileriyle parolasız oturum açmayı yönetir
 
-[Birleşik kayıt](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)ile, kullanıcılar hem Azure Multi-Factor Authentication hem de Self servis parola sıfırlamasının avantajlarını kaydedebilir ve bunların avantajlarını alabilir. Kullanıcılar bu ayarları, [Profilim sayfamda](https://aka.ms/mysecurityinfo)gezinerek kaydeder ve yönetir. SSPR 'yi etkinleştirmenin yanı sıra, Birleşik kayıt birden çok kimlik doğrulama yöntemini ve eylemini destekler.
+[Birleşik kayıt](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)Ile kullanıcılar Azure Multi-Factor Authentication ve self servis parola sıfırlamanın avantajlarından yararlanabilir ve bu avantajları alabilir. Kullanıcılar bu ayarları, [Profilim sayfamda](https://aka.ms/mysecurityinfo)gezinerek kaydeder ve yönetir. SSPR 'yi etkinleştirmenin yanı sıra, Birleşik kayıt birden çok kimlik doğrulama yöntemini ve eylemini destekler.
 
 ## <a name="fido2-security-keys"></a>FIDO2 güvenlik anahtarları
 

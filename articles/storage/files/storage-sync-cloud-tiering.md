@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 078582b98bca2137a7d25fa3a0833a4707565170
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 36b09ce8ece010ff24345ddb96654f75542cc9a5
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699368"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098956"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (Storagessync. sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği, üçüncü taraf uygulamaların katmanlı dosyaları güvenli bir şekilde tanımlayabilmesi için NTFS 'de ayarlanır.
@@ -74,8 +74,8 @@ Bir dosyanın Azure dosya paylaşımınıza katmanlı olup olmadığını denetl
         |:----------------:|-----------|------------|
         | A | Arşiv | Dosyanın yedekleme yazılımı tarafından yedeklenmesi gerektiğini gösterir. Bu öznitelik, dosyanın katmanlı veya tam disk üzerinde depolanmadığına bakılmaksızın her zaman ayarlanır. |
         | P | Seyrek dosya | Dosyanın seyrek bir dosya olduğunu gösterir. Seyrek dosya, NTFS 'nin disk akışındaki dosya genellikle boş olduğunda verimli kullanım için sunduğu özelleşmiş bir dosya türüdür. Azure Dosya Eşitleme, bir dosya tamamen katmanlı veya kısmen geri çekilmiş olduğundan seyrek dosyalar kullanır. Tam katmanlı bir dosyada, dosya akışı bulutta depolanır. Kısmen geri çekilmiş bir dosyada, dosyanın o bölümü zaten disk üzerinde. Bir dosya diske tamamen geri çekilir Azure Dosya Eşitleme, dosyayı seyrek bir dosyadan normal bir dosyaya dönüştürür. |
-        | L | Yeniden ayrıştırma noktası | Dosyanın bir yeniden ayrıştırma noktası olduğunu gösterir. Yeniden ayrıştırma noktası, bir dosya sistemi filtresi tarafından kullanılmak üzere özel bir işaretçisidir. Azure Dosya Eşitleme, dosyanın depolandığı bulut konumunu Azure Dosya Eşitleme dosya sistemi filtresine (Storagessync. sys) tanımlamak için yeniden ayrıştırma noktaları kullanır. Bu, sorunsuz erişimi destekler. Kullanıcıların Azure Dosya Eşitleme kullanıldığını veya Azure dosya paylaşımınızda dosyaya nasıl erişim alınacağını bilmeleri gerekmez. Bir dosya tamamen geri çekilir Azure Dosya Eşitleme, yeniden ayrıştırma noktasını dosyadan kaldırır. |
-        | O | Çevrimdışı | Dosyanın içeriğinin bir kısmının veya tümünün diskte depolanmadığını belirtir. Bir dosya tamamen geri çekilir Azure Dosya Eşitleme, bu özniteliği kaldırır. |
+        | Ç | Yeniden ayrıştırma noktası | Dosyanın bir yeniden ayrıştırma noktası olduğunu gösterir. Yeniden ayrıştırma noktası, bir dosya sistemi filtresi tarafından kullanılmak üzere özel bir işaretçisidir. Azure Dosya Eşitleme, dosyanın depolandığı bulut konumunu Azure Dosya Eşitleme dosya sistemi filtresine (Storagessync. sys) tanımlamak için yeniden ayrıştırma noktaları kullanır. Bu, sorunsuz erişimi destekler. Kullanıcıların Azure Dosya Eşitleme kullanıldığını veya Azure dosya paylaşımınızda dosyaya nasıl erişim alınacağını bilmeleri gerekmez. Bir dosya tamamen geri çekilir Azure Dosya Eşitleme, yeniden ayrıştırma noktasını dosyadan kaldırır. |
+        | O | Offline | Dosyanın içeriğinin bir kısmının veya tümünün diskte depolanmadığını belirtir. Bir dosya tamamen geri çekilir Azure Dosya Eşitleme, bu özniteliği kaldırır. |
 
         ![Ayrıntılar sekmesi seçiliyken bir dosyanın özellikler iletişim kutusu](media/storage-files-faq/azure-file-sync-file-attributes.png)
         
@@ -100,10 +100,10 @@ Dosyayı diske geri çekmenin en kolay yolu dosyayı açmak. Azure Dosya Eşitle
 
 Ayrıca, bir dosyanın geri çağrılamasını zorlamak için PowerShell kullanabilirsiniz. Bu seçenek, bir klasördeki tüm dosyalar gibi birden çok dosyayı aynı anda geri çağırmak istiyorsanız yararlı olabilir. Azure Dosya Eşitleme yüklendiği sunucu düğümünde bir PowerShell oturumu açın ve ardından aşağıdaki PowerShell komutlarını çalıştırın:
     
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
+```
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Azure Dosya Eşitleme, bir dosyanın *disk özelliği üzerindeki boyutu* neden bir dosya için *Boyut* özelliği ile eşleşmiyor? 
@@ -113,10 +113,10 @@ Windows Dosya Gezgini, bir dosyanın boyutunu temsil etmek için iki özellik su
 ### <a name="how-do-i-force-a-file-or-directory-to-be-tiered"></a>Nasıl yaparım? bir dosyanın veya dizinin katmanlanmasını zorlıyor musunuz?
 Bulut katmanlama özelliği etkinleştirildiğinde, bulut katmanlaması, dosyaları son erişime göre otomatik olarak katmanlarını ve bulut uç noktasında belirtilen birim boş alan yüzdesine ulaşmak için zaman sayısını değiştirir. Bazen bir dosyayı katmana el ile zorlamak isteyebilirsiniz. Bu, uzun bir süre için yeniden kullanmayı düşünmediğiniz büyük bir dosyayı kaydedip daha sonra biriminizdeki boş alanın diğer dosya ve klasörler için kullanmasını istediğiniz durumlarda yararlı olabilir. Aşağıdaki PowerShell komutlarını kullanarak, katmanlamayı zorlayabilirsiniz:
 
-    ```powershell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
+```
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 * [Azure Dosya Eşitleme dağıtımı için planlama yapma](storage-sync-files-planning.md)

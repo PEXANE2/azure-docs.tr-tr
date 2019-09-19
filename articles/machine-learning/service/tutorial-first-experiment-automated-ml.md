@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: f8b9876680899a5d8e87f8a49a0b4ed6c113fb45
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001860"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092000"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
@@ -67,7 +67,7 @@ Otomatik Machine Learning ilk denemeniz bu olduğundan **Başlarken** ekranını
 
 1. Deneme adı olarak **My-1-oto ml-deney** i girin.
 
-1. **Yeni Işlem oluştur**' u seçin. 
+1. **Yeni Işlem oluştur**' u seçin. İşlem, eğitim betiğinizi çalıştırmak veya hizmet dağıtımınızı barındırmak için kullanılan yerel veya bulut tabanlı bir kaynak ortamıdır. Bu deneme için bulut tabanlı bir işlem kullanıyoruz. 
 
     1. Bu deneme için işlem bağlamını yapılandırın.
         
@@ -147,9 +147,9 @@ Deneme ilerledikçe ekran, **yineleme grafiği** ve **yineleme listesini** çal�
 
 ## <a name="deploy-the-model"></a>Modeli dağıtma
 
-Çalışma alanı giriş sayfasında otomatik makine öğrenimini kullanarak, yeni verileri tahmin etmek ve potansiyel fırsat alanlarını tanımlamak için en iyi modeli bir Web hizmeti olarak dağıtabilirsiniz. Bu deneme için, dağıtım, mali kurumun potansiyel olarak sabit vadeli depozito müşterilerini tanımlamaya yönelik yinelemeli ve ölçeklenebilir bir çözüme sahip olduğu anlamına gelir.
+Çalışma alanı giriş sayfasında otomatik makine öğrenimini kullanarak, birkaç adımda Web hizmeti olarak en iyi modeli dağıtabilirsiniz. Dağıtım, yeni verileri tahmin etmek ve potansiyel fırsat bölgelerini belirlemek için modelin Tümleştirmesidir. Bu deneme için, bir Web hizmetine dağıtım, artık, potansiyel sabit depozito müşterilerinin tanımlanmasından sonra, mali kurumda yinelenen ve ölçeklenebilir bir Web çözümüne sahip olduğu anlamına gelir. 
 
-Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en iyi model olarak kabul edilir.  Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yaklaşık 20 dakika sürer.
+Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en iyi model olarak kabul edilir.  Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yaklaşık 20 dakika sürer. Dağıtım işlemi, modeli kaydetme, kaynakları oluşturma ve bunları Web hizmeti için yapılandırma dahil olmak üzere birkaç adım gerektirir.
 
 1. **Ayrıntıları Çalıştır** sayfasında sağ üst köşedeki **en iyi modeli dağıt** düğmesini seçin.
 
@@ -162,7 +162,7 @@ Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en
     Puanlama betiği| Otomatik olarak açıklamalı
     Ortam betiği| Otomatik olarak açıklamalı
     
-1. **Dağıt**'ı seçin.
+1. **Dağıt**'ı seçin.  
 
     Dağıtım başarıyla tamamlandığında dağıtım tamamlandı iletisi görüntülenir.
     

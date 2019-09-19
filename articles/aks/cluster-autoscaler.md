@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: 877d0a17b9ff06e9b9ac2c843c1847c9cb9726e4
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: e96d501196a629c7e37de7e5ad66b68863bf556f
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018707"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097908"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak üzere bir kümeyi otomatik olarak ölçeklendirme
 
@@ -52,12 +52,12 @@ Küme otomatik Scaler 'ı kullanan AKS kümelerini oluşturup yönetirken aşağ
 
 Workday ve akşam ya da bir hafta sonu arasındaki uygulama taleplerini değiştirmek üzere ayarlamak için kümeler genellikle otomatik olarak ölçeklendirilmesi için bir yönteme ihtiyaç duyar. AKS kümeleri, iki şekilde ölçeklendirebilir:
 
-* **Küme otomatik yüklemesi** , kaynak kısıtlamaları nedeniyle düğümlerde zamanlanabilecek düğüm sayısını izler. Küme otomatik olarak düğüm sayısını artırır.
-* **Yatay Pod otomatik Scaler** , Kubernetes kümesinde ölçüm sunucusunu kullanarak pods 'nin kaynak talebini izler. Bir hizmette daha fazla kaynak gerekiyorsa, bu sayı, talebi karşılamak için otomatik olarak artar.
+* **Küme otomatik yüklemesi** , kaynak kısıtlamaları nedeniyle düğümlerde zamanlanabilecek düğüm sayısını izler. Küme daha sonra düğümlerin sayısını otomatik olarak arttırır.
+* **Yatay Pod otomatik Scaler** , Kubernetes kümesinde ölçüm sunucusunu kullanarak pods 'nin kaynak talebini izler. Bir uygulamanın daha fazla kaynağa ihtiyacı varsa, yığınların sayısı talebi karşılamak üzere otomatik olarak artar.
 
 ![Küme otomatik olarak ve yatay Pod otomatik Scaler, gerekli uygulama taleplerini desteklemek için genellikle birlikte çalışır](media/autoscaler/cluster-autoscaler.png)
 
-Hem yatay Pod otomatik Scaler hem de Cluster otomatik Scaler, Ayrıca, gereken sayıda düğüm ve düğüm sayısını azaltabilir. Küme otomatik yüklemesi, bir süre için kullanılmayan kapasiteden fazla düğüm sayısını düşürür. Küme otomatik olarak kaldırılacak bir düğümdeki düğüm, kümede başka bir yerde güvenle zamanlanır. Küme otomatik olarak, aşağıdaki durumlarda olduğu gibi, Pod taşınmadığı takdirde ölçeği ölçeklendiremeyebilir:
+Hem yatay Pod otomatik Scaler hem de Cluster otomatik Scaler, gereken düğüm sayısını ve düğümleri de azaltabilir. Küme otomatik yüklemesi, bir süre için kullanılmayan kapasiteden fazla düğüm sayısını düşürür. Küme otomatik olarak kaldırılacak bir düğümdeki düğüm, kümede başka bir yerde güvenle zamanlanır. Küme otomatik olarak, aşağıdaki durumlarda olduğu gibi, Pod taşınmadığı takdirde ölçeği ölçeklendiremeyebilir:
 
 * Doğrudan oluşturulup oluşturulan bir pod, bir dağıtım veya çoğaltma kümesi gibi bir denetleyici nesnesi tarafından yedeklenmez.
 * Pod kesinti bütçesi (pdb) çok kısıtlayıcıdır ve pod sayısının belirli bir eşiğin altına düşmeye izin vermez.
@@ -67,7 +67,7 @@ Küme otomatik olarak ölçeklendirilmesine nasıl ölçeklenebileceğinize ili�
 
 Küme otomatik yüklemesi, ölçek olayları ve kaynak eşikleri arasındaki zaman aralıkları gibi şeyler için başlangıç parametrelerini kullanır. Bu parametreler Azure platformu tarafından tanımlanır ve şu anda ayarlamanız için sunulmamaktadır. Kümenin otomatik olarak kullandığı parametreler hakkında daha fazla bilgi için bkz. [küme otomatik Scaler parametreleri nedir?][autoscaler-parameters].
 
-Küme ve yatay Pod otomatik scalers birlikte çalışabilir ve genellikle bir kümede birlikte dağıtılır. Birleştirildiğinde, yatay Pod otomatik Scaler, uygulama talebini karşılamak için gereken sayıda Pod çalıştırmaya odaklanılmıştır. Küme otomatik yüklemesi, zamanlanmış pods 'yi desteklemek için gereken düğüm sayısını çalıştırmaya odaklanır.
+Küme ve yatay Pod otomatik scalers birlikte çalışabilir ve genellikle bir kümede dağıtılır. Birleştirildiğinde, yatay Pod otomatik Scaler, uygulama talebini karşılamak için gereken sayıda Pod çalıştırmaya odaklanılmıştır. Küme otomatik yüklemesi, zamanlanmış pods 'yi desteklemek için gereken düğüm sayısını çalıştırmaya odaklanır.
 
 > [!NOTE]
 > Küme otomatik ölçeklendirme kullandığınızda el ile ölçekleme devre dışıdır. Küme otomatik olarak gerekli düğüm sayısını belirlemesine izin verin. Kümenizi el ile ölçeklendirmek isterseniz, [küme otomatik Scaler ' ı devre dışı bırakın](#disable-the-cluster-autoscaler).

@@ -3,16 +3,17 @@ title: Azure HDInsight 'ta ölçekte akış
 description: Azure HDInsight 'ta ölçeklenebilir Apache kümeleriyle veri akışını kullanma.
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 18f1c15f12295228dab971f2abfa612d2061ab5d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
-ms.translationtype: MT
+ms.openlocfilehash: e18203162229e6c3db24a5f76b65de61d572f96a
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811919"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076784"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight’ta ölçeğe göre akış
 

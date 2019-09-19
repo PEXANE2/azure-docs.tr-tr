@@ -6,43 +6,28 @@ author: mlearned
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ab744efd205d826cb7ae2c3eda7bba28f4a9bee0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305158"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097797"
 ---
-# <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Önizleme-Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulaması yapma
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulama
 
 Azure Kubernetes Service (AKS) ile Azure Container Registry (ACR) kullanırken, bir kimlik doğrulama mekanizmasının kurulması gerekir. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulaması için önerilen yapılandırmaların ayrıntıları yer aldığı açıklanır.
 
 Azure CLı ile birkaç basit komutlarda ACR tümleştirmesi için AKS tümleştirmesini ayarlayabilirsiniz.
-
-> [!IMPORTANT]
-> AKS Önizleme özellikleri self servis kabul etme sürecindedir. Önizlemeler, "olduğu gibi" ve "kullanılabilir olarak" verilmiştir ve hizmet düzeyi sözleşmelerinden ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin en iyi çaba temelinde kısmen ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
->
-> * [AKS destek Ilkeleri](support-policies.md)
-> * [Azure desteği SSS](faq.md)
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Aşağıdakilere sahip olmanız gerekir:
 
 * **Azure aboneliğinde** **sahip** veya **Azure Hesap Yöneticisi** rolü
-* Ayrıca Azure CLı sürüm 2.0.70 veya üzeri ve aks-Preview 0.4.8 uzantısı gerekir
+* Ayrıca Azure CLı sürüm 2.0.73 veya üzeri bir sürüme de ihtiyacınız vardır
 * İstemcinizdeki [Docker yüklü](https://docs.docker.com/install/) olmalıdır ve [Docker Hub](https://hub.docker.com/) 'a erişmeniz gerekir
-
-## <a name="install-latest-aks-cli-preview-extension"></a>En son AKS CLı önizleme uzantısını yükler
-
-**Aks-Preview 0.4.13** uzantısına veya daha yenisine ihtiyacınız vardır.
-
-```azurecli
-az extension remove --name aks-preview 
-az extension add -y --name aks-preview
-```
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>ACR tümleştirmesi ile yeni bir AKS kümesi oluşturma
 
@@ -52,7 +37,7 @@ az login
 az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
 az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
-\* * Bir ACR kaynak kimliği aşağıdaki biçimdedir: 
+**ACR kaynak KIMLIĞI aşağıdaki biçimdedir:** 
 
 /Subscriptions/< abonelik-d >/resourceGroups/< Kaynak-Grup-adı >/providers/Microsoft.ContainerRegistry/registries/{name} 
   

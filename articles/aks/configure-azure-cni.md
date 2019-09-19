@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 1cc2849ffe55fff737993140a1d0f18182820eff
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3683c9fa7810083d26527275a1235df5336d1c65
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68498579"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097815"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Azure CNı ağını yapılandırma
 
@@ -81,7 +81,7 @@ Düğüm başına en fazla düğüm sayısını *yalnızca küme dağıtım saat
 
 * **Azure CLI**: [Az aks Create][az-aks-create] komutuyla bir küme dağıtırken bağımsızdeğişkenibelirtin.`--max-pods` En büyük değer 250 ' dir.
 * **Kaynak Yöneticisi şablonu**: Bir kümeyi Kaynak Yöneticisi şablonuyla dağıtırken [managedclusteragentpoolprofile] nesnesinde özelliğinibelirtin.`maxPods` En büyük değer 250 ' dir.
-* **Azure Portal**: Azure portal bir küme dağıtırken düğüm başına en fazla düğüm sayısını değiştiremezsiniz. Azure CNI ağ kümeleri, Azure Portal kullanarak dağıtırken düğüm başına 30 Pod ile sınırlıdır.
+* **Azure portalı**: Azure portal bir küme dağıtırken düğüm başına en fazla düğüm sayısını değiştiremezsiniz. Azure CNI ağ kümeleri, Azure Portal kullanarak dağıtırken düğüm başına 30 Pod ile sınırlıdır.
 
 ### <a name="configure-maximum---existing-clusters"></a>En fazla mevcut kümeleri yapılandırma
 
@@ -118,7 +118,7 @@ Azure CLı ile bir AKS kümesi oluşturduğunuzda, Azure CNı ağını de yapıl
 $ az network vnet subnet list \
     --resource-group myVnet \
     --vnet-name myVnet \
-    --query [].id --output tsv
+    --query "[0].id" --output tsv
 
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```

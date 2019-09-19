@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82fe917f911be45d7f68662e956fe3bd14f92267
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959874"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097563"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Şirket içi Azure AD parola koruması-sık sorulan sorular
 
@@ -136,6 +136,10 @@ Hayır.
 **S: İlkeyi denetim modunda olacak şekilde yapılandırdığım halde Azure AD neden hala zayıf parolaları reddediyor?**
 
 Denetim modu yalnızca şirket içi Active Directory ortamında desteklenir. Azure AD, parolaları değerlendirdiğinde örtülü olarak her zaman "zorla" modunda yapılır.
+
+**S: Kullanıcılar, Azure AD parola koruması tarafından bir parola reddedildiğinde geleneksel Windows hata iletisini görür. Bu hata iletisini, kullanıcıların gerçekten ne olduğunu bilmesi için özelleştirmek mümkün mü?**
+
+Hayır. Bir etki alanı denetleyicisi tarafından bir parola reddedildiğinde, kullanıcılar tarafından görülen hata iletisi, etki alanı denetleyicisi tarafından değil, istemci makine tarafından denetlenir. Bu davranış, bir parolanın varsayılan Active Directory parola ilkeleri tarafından veya Azure AD parola koruması gibi parola filtresi tabanlı bir çözüm tarafından reddedilip reddedilmediğini ortaya çıkar.
 
 ## <a name="additional-content"></a>Ek içerik
 

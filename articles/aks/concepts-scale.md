@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4fc34ed5cdd53977aa20bef84200ba2bf5386979
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d2d7508b4f0a2789a0eae5d6c6205475b5795e36
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899482"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097836"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ölçeklendirme seçenekleri
 
@@ -27,7 +27,7 @@ Bu makalede, AKS 'teki uygulamaları ölçeklendirmenize yardımcı olan temel k
 
 ## <a name="manually-scale-pods-or-nodes"></a>Pod veya düğümleri el ile ölçeklendirme
 
-Uygulamanızın kullanılabilir kaynaklardaki ve durumdaki bir değişikliğe nasıl yanıt vereceğini test etmek için çoğaltmaları (pods) ve düğümleri el ile ölçekleyebilirsiniz. Kaynakları el ile ölçeklendirirken, düğüm sayısı gibi sabit bir maliyeti korumak için kullanılacak bir miktar kaynak kümesi tanımlamanızı da sağlar. El ile ölçeklendirmek için, çoğaltma veya düğüm sayısını ve Kubernetes API zamanlamalarını ek düğüm oluşturma veya boşaltma düğümleri tanımlar.
+Uygulamanızın kullanılabilir kaynaklardaki ve durumdaki bir değişikliğe nasıl yanıt vereceğini test etmek için çoğaltmaları (pods) ve düğümleri el ile ölçekleyebilirsiniz. Kaynakları el ile ölçeklendirirken, düğüm sayısı gibi sabit bir maliyeti korumak için kullanılacak bir miktar kaynak kümesi tanımlamanızı da sağlar. El ile ölçeklendirmek için çoğaltma veya düğüm sayısını tanımlarsınız. Kubernetes API 'SI daha sonra bu çoğaltma veya düğüm sayısına bağlı olarak ek düğüm veya boşaltma düğümleri oluşturmayı zamanlar.
 
 Pod 'leri ve düğümleri el ile ölçeklendirmeye başlamak için bkz. [aks 'teki Uygulamaları ölçeklendirme][aks-scale].
 
@@ -43,11 +43,11 @@ Aks 'deki yatay Pod otomatik Scaler 'ı kullanmaya başlamak için bkz. [aks 'de
 
 ### <a name="cooldown-of-scaling-events"></a>Ölçeklendirme olaylarının cooli
 
-Yatay Pod otomatik Scaler, ölçüm API 'sini her 30 saniyede bir denetlediğinde, önceki ölçek olayları, başka bir denetim yapılmadan önce başarıyla tamamlanmamış olabilir. Bu davranış, önceki ölçeklendirme olayı uygulama iş yükünü ve uygun şekilde ayarlanacak kaynak taleplerini elde etmeden önce, yatay Pod otomatik Scaler 'ın yineleme sayısını değiştirmesine neden olabilir.
+Yatay Pod otomatik Scaler, ölçüm API 'sini her 30 saniyede bir denetlediğinde, önceki ölçek olayları, başka bir denetim yapılmadan önce başarıyla tamamlanmamış olabilir. Bu davranış, önceki ölçeklendirme olayı uygulama iş yükünü ve uygun şekilde ayarlanacak kaynak taleplerini almadan önce, yatay Pod otomatik Scaler 'ın yineleme sayısını değiştirmesine neden olabilir.
 
-Bu yarış olaylarını en aza indirmek için, coolaşağı veya Delay değerleri ayarlanır. Bu değerler, başka bir ölçek olayının tetiklenmesi için bir ölçek olayından sonra yatay Pod otomatik Scaler 'ın ne kadar süre beklemesi gerektiğini tanımlar. Bu davranış, yeni çoğaltma sayısının etkili olmasına ve ölçüm API 'sinin dağıtılmış iş yükünü yansıtmasını sağlar. Varsayılan olarak, ölçek artırma olayları gecikmesi 3 dakikadır ve ölçek azaltma olaylardaki gecikme 5 dakikadır
+Bu yarış olaylarını en aza indirmek için, coolaşağı veya Delay değerleri ayarlanır. Bu değerler, başka bir ölçek olayının tetiklenmesi için bir ölçek olayından sonra yatay Pod otomatik Scaler 'ın ne kadar süre beklemesi gerektiğini tanımlar. Bu davranış, yeni çoğaltma sayısının, dağıtılmış iş yükünü yansıtması için etkili ve ölçüm API 'sine izin verir. Varsayılan olarak, ölçek artırma olayları gecikmesi 3 dakikadır ve ölçek azaltma olaylardaki gecikme 5 dakikadır
 
-Şu anda, bu coolvalues değerlerini varsayılan değerden ayarlayamamaktadır.
+Şu anda bu coolvalues değerlerini varsayılan değerden ayarlayamıyoruz.
 
 ## <a name="cluster-autoscaler"></a>Küme otomatik Scaler
 
@@ -63,9 +63,9 @@ AKS 'deki küme otomatik Scaler 'ı kullanmaya başlamak için bkz. [aks üzerin
 
 ### <a name="scale-up-events"></a>Olayları ölçeklendirme
 
-Bir düğümde istenen Pod çalıştırmak için yeterli işlem kaynağı yoksa, Pod, zamanlama sürecinde ilerlemez. Düğüm havuzu içinde ek bilgi işlem kaynakları kullanılabilir değilse Pod başlayamaz.
+Bir düğümde istenen Pod çalıştırmak için yeterli işlem kaynağı yoksa, Pod, zamanlama sürecinde ilerleyemiyorum. Düğüm havuzu içinde ek bilgi işlem kaynakları kullanılabilir değilse Pod başlayamaz.
 
-Küme otomatik yüklemesi, düğüm havuzu kaynak kısıtlamaları nedeniyle zamanlanabilecek düğüm sayısını fark ediyorsa, düğüm havuzu içindeki düğümlerin sayısı ek işlem kaynakları sağlamak için artar. Bu ek düğümler başarıyla dağıtıldığında ve düğüm havuzunda kullanıma hazır olduğunda, daha sonra bunlar üzerinde çalışacak şekilde zamanlanır.
+Küme otomatik yüklemesi, düğüm havuzu kaynak kısıtlamaları nedeniyle zamanlanabilecek Pod 'yi fark ediyorsa, düğüm havuzu içindeki düğümlerin sayısı ek işlem kaynakları sağlamak için artmıştır. Bu ek düğümler başarıyla dağıtıldığında ve düğüm havuzunda kullanıma hazır olduğunda, daha sonra bunlar üzerinde çalışacak şekilde zamanlanır.
 
 Uygulamanızın hızla ölçeklendirilmesi gerekiyorsa, küme otomatik Scaler tarafından dağıtılan ek düğümler zamanlanan Pod 'yi kabul edebilene kadar bazı KADS zamanlanmayı bekleyen bir durumda kalabilir. Yüksek veri bloğu taleplerine sahip uygulamalarda, sanal düğümlerle ve Azure Container Instances ölçeklendirebilirsiniz.
 

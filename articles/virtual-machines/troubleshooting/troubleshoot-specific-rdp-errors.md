@@ -5,7 +5,7 @@ keywords: Uzak Masaüstü hatası, Uzak Masaüstü bağlantı hatası, VM 'ye ba
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: 5feb1d64-ee6f-4907-949a-a7cffcbc6153
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: eb9929c66275959ed64ab66517f8b38190f1bdbd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 851c5eb4ebfee4e4a4836a07b51578dd2b0c68cd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089657"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088181"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure 'da Windows VM 'ye belirli RDP hata iletileri sorunlarını giderme
 Azure 'da bir Windows sanal makinesine (VM) Uzak Masaüstü bağlantısı kullanırken, belirli bir hata iletisi alabilirsiniz. Bu makalede, karşılaşılan daha yaygın hata iletilerinin bazıları ve bunları çözmek için sorun giderme adımlarıyla birlikte ayrıntılar verilmektedir. VM 'nize RDP kullanarak bağlanma sorunları yaşıyorsanız ancak belirli bir hata iletisiyle karşılaşmayın, [Uzak Masaüstü için sorun giderme kılavuzuna](troubleshoot-rdp-connection.md)bakın.

@@ -9,10 +9,10 @@ ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: c92bb8b2adb3e91e691e9fd1c17a7ee43e84fd11
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "68362651"
 ---
 Azure Data Factory, müşteri aboneliklerinin diğer iş yüklerinden korunduğundan emin olmak için aşağıdaki varsayılan sınırlara sahip çok kiracılı bir hizmettir. Sınırlandırmaları aboneliğinizin en büyük sınırına yükseltmek için desteğe başvurun.

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 45aa1354f6009d5eccd48f85f993bae8949139e3
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
-ms.translationtype: HT
+ms.openlocfilehash: ed466b072a771c3aa288a96fa4a0037c31b875f9
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058965"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091986"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
 
@@ -282,17 +282,109 @@ Aşağıdaki tablo U-SQL için geçerlidir.
 
 - **Neden**: Azure işlevi etkinlik tanımı tamamlanmadı.
 
-- **Öneri**: Lütfen Input AzureFunction Activity JSON tanımının ' Method ' adlı özelliği olduğunu denetleyin.
+- **Öneri**: Input AzureFunction Activity JSON tanımının ' Method ' adlı özelliğe sahip olup olmadığını denetleyin.
 
 
 ### <a name="error-code--3612"></a>Hata kodu:  3612
 
 - **İleti**:`Azure function activity missing LinkedService definition in JSON.`
 
-- **Neden**: Azure işlevi etkinlik tanımı tamamlanmadı.
+- **Neden**: Azure işlevi etkinlik tanımı tamamlanmamış olabilir.
 
 - **Öneri**: Lütfen Input AzureFunction Activity JSON tanımının bağlı hizmet ayrıntılarına sahip olduğunu denetleyin.
 
+
+## <a name="azure-machine-learning"></a>Azure Machine Learning
+
+
+### <a name="error-code--4101"></a>Hata kodu:  4101
+
+- **İleti**:`AzureMLExecutePipeline activity '%activityName;' has invalid value for property '%propertyName;'.`
+
+- **Neden**: Özellik için hatalı biçim veya eksik tanım.
+
+- **Öneri**:  Etkinliğin doğru verilerle tanımlanıp tanımlanmadığında emin olun.
+
+
+### <a name="error-code--4110"></a>Hata kodu:  4110
+
+- **İleti**: AzureMLExecutePipeline etkinliğinde JSON içinde LinkedService tanımı eksik.
+
+- **Neden**: AzureMLExecutePipeline etkinlik tanımı tamamlanmadı.
+
+- **Öneri**:  Lütfen Input AzureMLExecutePipeline Activity JSON tanımının bağlı hizmet ayrıntılarına sahip olup olmadığını denetleyin.
+
+
+### <a name="error-code--4111"></a>Hata kodu:  4111
+
+- **İleti**:`AzureMLExecutePipeline activity has wrong LinkedService type in JSON. Expected LinkedService type: '%expectedLinkedServiceType;', current LinkedService type: Expected LinkedService type: '%currentLinkedServiceType;'.`
+
+- **Neden**: Etkinlik tanımı yanlış.
+
+- **Öneri**:  Lütfen Input AzureMLExecutePipeline Activity JSON tanımının bağlı hizmet ayrıntılarının doğru olup olmadığını denetleyin.
+
+
+### <a name="error-code--4112"></a>Hata kodu:  4112
+
+- **İleti**:`AzureMLService linked service has invalid value for property '%propertyName;'.`
+
+- **Neden**: Özellik için hatalı biçim veya eksik tanım.
+
+- **Öneri**:  Lütfen bağlı hizmet tanımının doğru verilere sahip olup olmadığını denetleyin.
+
+
+### <a name="error-code--4121"></a>Hata kodu:  4121
+
+- **İleti**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Neden**: Azure ML hizmetine erişmek için kullanılan kimlik bilgilerinin süresi doldu.
+
+- **Öneri**:  Lütfen kimlik bilgisinin geçerli olduğunu doğrulayın ve yeniden deneyin
+
+
+### <a name="error-code--4122"></a>Hata kodu:  4122
+
+- **İleti**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Neden**: AzureML hizmeti bağlantılı hizmette belirtilen kimlik bilgileri geçersiz veya işlem için izne sahip değil.
+
+- **Öneri**:  Lütfen bağlı hizmette kimlik bilgisinin geçerli olduğunu ve AzureML hizmeti 'ne erişim izni olduğunu doğrulayın.
+
+
+### <a name="error-code--4123"></a>Hata kodu:  4123
+
+- **İleti**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Neden**:`Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+
+- **Öneri**:  Lütfen bağlı hizmette belirtilen yayımlanan Azure ML işlem hattının beklenen yükünü eşleştirmek için etkinlik özelliklerinin değerini denetleyin.
+
+
+### <a name="error-code--4124"></a>Hata kodu:  4124
+
+- **İleti**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Neden**: Yayınlanan Azure ML ardışık düzen uç noktası yok.
+
+- **Öneri**:  Lütfen Azure ML hizmeti 'nde bağlantılı hizmette belirtilen yayımlanan Azure ML ardışık düzen uç noktasının mevcut olduğunu doğrulayın.
+
+
+### <a name="error-code--4125"></a>Hata kodu:  4125
+
+- **İleti**:`Request sent to AzureML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from AzureML Service: '%externalMessage;'.`
+
+- **Neden**: Azure ML hizmetinde sunucu hatası.
+
+- **Öneri**:  Lütfen daha sonra yeniden deneyin. Sorun devam ettiğinden yardım için Azure ML hizmeti ekibine başvurun.
+
+
+### <a name="error-code--4126"></a>Hata kodu:  4126
+
+- **İleti**:`AzureML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in AzureMLService for more error loggings.`
+
+- **Neden**: AzureML işlem hattı çalıştırması başarısız oldu.
+
+- **Öneri**:  Daha fazla hata günlüğü için AzureMLService girin ve ML işlem hattını onarın
 
 
 ## <a name="custom"></a>Özel
@@ -316,6 +408,15 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 - **Neden**: Hatalı toplu erişim anahtarı veya havuz adı.
 
 - **Öneri**: Bağlı hizmette havuz adını ve Batch erişim anahtarını doğrulayın.
+
+
+### <a name="error-code--2502"></a>Hata kodu:  2502
+
+- **İleti**:`Cannot access user storage account; please check storage account settings.`
+
+- **Neden**: Hatalı depolama hesabı adı veya erişim anahtarı.
+
+- **Öneri**: Bağlı hizmette depolama hesabı adını ve erişim anahtarını doğrulayın.
 
 
 ### <a name="error-code--2504"></a>Hata kodu:  2504
@@ -472,7 +573,7 @@ Aşağıdaki tablo Spark, Hive, MapReduce, Pig ve Hadoop akışı için geçerli
 
 ## <a name="web-activity"></a>Web Etkinliği
 
-### <a name="error-code--2310"></a>Hata kodu:  2310
+### <a name="error-code--2108"></a>Hata kodu:  2108
 
 - **İleti**:`Invalid HttpMethod: '...'.`
 
@@ -559,6 +660,25 @@ Aşağıdaki tablo Spark, Hive, MapReduce, Pig ve Hadoop akışı için geçerli
 - **Neden**: Web etkinliği gövdesi yanlış.
 
 - **Öneri**:  Uç noktayı denetlemek için Fiddler veya Postman kullanın.
+
+
+### <a name="error-code--2208"></a>Hata kodu:  2208
+
+- **İleti**:`Invoking Web Activity failed with HttpStatusCode - {0}.`
+
+- **Neden**: Hedef hizmet hata durumunu döndürdü.
+
+- **Öneri**:  İsteği doğrulamak için Fiddler/Postman kullanın.
+
+
+### <a name="error-code--2308"></a>Hata kodu:  2308
+
+- **İleti**:`No response from the endpoint. Possible causes: network connectivity, DNS failure, server certificate validation or timeout.`
+
+- **Neden**: Ağ bağlantısı, DNS hatası, sunucu sertifikası doğrulama veya zaman aşımı gibi bu hatanın birden çok nedeni olabilir.
+
+- **Öneri**:  İsteği doğrulamak için Fiddler/Postman kullanın.
+
 
 Fiddler 'i kullanarak izlenen Web uygulamasının HTTP oturumunu oluşturma:
 

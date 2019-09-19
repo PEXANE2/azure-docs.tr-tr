@@ -7,14 +7,14 @@ manager: carmonm
 keywords: yedeği geri yükle; geri yükleme; kurtarma noktası;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3d7497b7afd44a05f3691d3e3094e84c3dd73747
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: c479249a3a09b625e37fb80e7b73dcc8a1268622
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983913"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098357"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -188,7 +188,27 @@ Bir VM 'yi geri yükledikten sonra dikkat etmeniz gereken birkaç nokta vardır:
 - Yedeklenen VM 'nin statik bir IP adresi varsa, geri yüklenen VM 'nin çakışmayı önlemek için dinamik bir IP adresi olur. [Geri yüklenen VM 'ye statik BIR IP adresi ekleyebilirsiniz](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 - Geri yüklenen bir VM 'nin kullanılabilirlik kümesi yok. Diski geri yükle seçeneğini kullanırsanız, belirtilen şablonu veya PowerShell 'i kullanarak diskten bir VM oluşturduğunuzda [bir kullanılabilirlik kümesi belirtebilirsiniz](../virtual-machines/windows/tutorial-availability-sets.md) .
 - Ubuntu gibi Cloud-init tabanlı bir Linux dağıtımı kullanırsanız, güvenlik nedenleriyle geri yüklemeden sonra parolanın engellenmesi engellenir. [Parolayı sıfırlamak](../virtual-machines/linux/reset-password.md)için GERI yüklenen VM 'de VMAccess uzantısını kullanın. Bu dağıtımlardaki SSH anahtarlarının kullanılması önerilir, bu nedenle geri yüklemeden sonra parolayı sıfırlamanız gerekmez.
+- VM 'nin etki alanı denetleyicisiyle bağlantısı kopmuş olması nedeniyle geri yüklendikten sonra VM 'ye erişemiyorsanız, VM 'yi getirmek için aşağıdaki adımları izleyin:
+    - İşletim sistemi diskini kurtarılan bir VM 'ye veri diski olarak ekleyin.
+    - Bu [bağlantıyı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline)Izleyerek Azure aracısının yanıt VERMEMESI durumunda VM aracısını el ile yükleyebilirsiniz.
+    - VM 'ye komut satırı erişimine izin vermek için sanal makinede seri konsol erişimini etkinleştirin
+    
+  ```
+    bcdedit /store <drive letter>:\boot\bcd /enum
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} bootems yes
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<<BOOT LOADER IDENTIFIER>>} ON
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+    - VM yeniden oluşturulduğunda, yerel yönetici hesabını ve parolasını sıfırlamak için Azure portal kullanın
+    - Etki alanından VM 'yi birleştirmek için Seri konsol Access ve CMD kullanın
 
+    ```
+    cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force" 
+    ```
+
+- VM 'ye bir kez ve yeniden başlatıldıktan sonra, yerel yönetici kimlik bilgileri ile VM 'ye başarıyla RDP ve etki alanına başarıyla geri dönüş sağlayacaksınız.
 
 ## <a name="backing-up-restored-vms"></a>Geri yüklenen VM 'Leri yedekleme
 

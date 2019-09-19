@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 67f3fd8f3166abac987e8fefbbf4a020f165c8bf
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951881"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091821"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>İleti oturumları: ilk gelen, ilk çıkar (FıFO) 
 
@@ -40,6 +40,9 @@ Service Bus oturum özelliği, C# ve Java API 'Lerinde [messagesession](/dotnet/
 Portalda bayrağı aşağıdaki onay kutusuyla ayarlayın:
 
 ![][2]
+
+> [!NOTE]
+> Bir kuyrukta veya abonelikte Oturumlar etkinleştirildiğinde, istemci uygulamalar ***artık*** normal iletileri gönderemez/alamaz. Tüm iletilerin bir oturumun parçası olarak gönderilmesi (oturum kimliği ayarlanarak) ve oturum alarak alınmalıdır.
 
 Kuyruk ve abonelik istemcilerinde oturum için API 'Ler mevcuttur. Oturum ve mesajların ne zaman alındığını denetleyen bir zorunlu model ve alma döngüsünü yönetmenin karmaşıklığını gizleyen bir işleyici tabanlı model de *OnMessage*ile benzerdir.
 

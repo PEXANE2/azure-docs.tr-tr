@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9908ecdab389b429667b5e3da1abac5d2ca422ed
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d1b9a2a151ee73a060e65dc7df631d3e4955504d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009848"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090433"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Couchbase, Azure Data Factory (Önizleme) kullanarak verileri kopyalama
 
@@ -30,7 +30,7 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de Couchbase verileri kopya
 
 Bu Couşbase Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 Couchbase tüm desteklenen havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.

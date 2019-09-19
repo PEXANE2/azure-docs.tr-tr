@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: 75a8207cd214a63258ddb167b887fe83b7aa032a
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 784bf15a58e25ba4cba18494adc295343d0c175a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008838"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098884"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -132,7 +132,7 @@ Blok blobları | Hayır | Hayır
 Bekleyen şifreleme (SSE)| Evet | Evet
 Premium depolama | Evet | Evet
 İçeri/dışarı aktarma hizmeti | Hayır | Hayır
-Güvenlik Duvarı etkin Azure depolama hesapları | Hayır  | Evet. Hedef depolama ve önbellek için.
+Güvenlik Duvarı etkin Azure depolama hesapları | Evet. Hedef depolama ve önbellek için. | Evet. Hedef depolama ve önbellek için.
 Depolama hesabını değiştir | Hayır. Hedef Azure depolama hesabı, çoğaltma etkinleştirildikten sonra değiştirilemez. Değişiklik yapmak için, olağanüstü durum kurtarmayı devre dışı bırakıp yeniden etkinleştirin. | Hayır
 
 

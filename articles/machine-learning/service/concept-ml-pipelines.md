@@ -1,6 +1,6 @@
 ---
 title: ML işlem hatları nelerdir
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Bu makalede, makine öğrenimi işlem hatları için Python ve işlem hatlarını kullanmanın avantajları Azure Machine Learning SDK ile birlikte derleme hakkında bilgi edinin. Machine learning (ML) işlem hatları oluşturmak, en iyi duruma getirmek ve makine öğrenimi iş akışları yönetmek için veri uzmanları tarafından kullanılır.
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2547ca3af3039af53cb5fd5b244669b9152c21b3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 07efde7c3664ba1866e59f23c31b9c385ed9c366
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993296"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035498"
 ---
-# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Azure Machine Learning hizmetinde ML işlem hatları nelerdir?
+# <a name="what-are-ml-pipelines-in-azure-machine-learning"></a>Azure Machine Learning ML işlem hatları nelerdir?
 
-Azure Machine Learning hizmeti ile oluşturabileceğiniz ve yönetebileceğiniz makine öğrenimi ardışık düzenleri hakkında bilgi edinin. 
+Azure Machine Learning ile oluşturabileceğiniz ve yönetebileceğiniz makine öğrenimi ardışık düzenleri hakkında bilgi edinin. 
 
 Machine learning (ML) işlem hatları, veri bilimcileri, veri mühendisleri ve BT uzmanları kullanarak içinde yer alan adımların üzerinde işbirliği yapabilirsiniz:
 + Normalizations ve dönüştürmeler gibi veri hazırlama
@@ -30,7 +30,7 @@ Machine learning (ML) işlem hatları, veri bilimcileri, veri mühendisleri ve B
 
 Bilgi edinmek için nasıl [ilk işlem hattınızı oluşturma](how-to-create-your-first-pipeline.md).
 
-![Azure Machine Learning hizmetinde makine öğrenimi ardışık düzenleri](./media/concept-ml-pipelines/pipeline-flow.png)
+![Azure Machine Learning 'de makine öğrenimi ardışık düzenleri](./media/concept-ml-pipelines/pipeline-flow.png)
 
 <a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>Hangi Azure ardışık düzen teknolojisini kullanmalıyım?

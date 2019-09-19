@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: f9afd3ae1d1d5d6235cf8bd0a6350a782ea6afbe
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8dbdbe39f613bb8895be6ae21d8aa29b766781cd
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142939"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098815"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Sıkça Sorulan Sorular
 
@@ -156,7 +156,7 @@ Daha fazla bilgi için [Öğreticiye gidin: Azure Data Box](data-box-deploy-copy
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>S. Veri kopyalama işlemini hızlandırmaya yönelik ipuçları var mı?
 A.  Kopyalama işlemini hızlandırmak için:
 
-- Birden fazla veri kopyalama akışı kullanın. Örneğin Robocopy'de çok iş parçacıklı seçeneği kullanın. Kullanılan tam komut hakkında daha fazla bilgi için [Öğreticiye gidin: Azure Data Box verileri kopyalayın ve doğrulayın](data-box-deploy-copy-data.md).
+- Birden fazla veri kopyalama akışı kullanın. Örneğin Robocopy'de çok iş parçacıklı seçeneği kullanın. Kullanılan tam komut hakkında daha fazla bilgi için [Öğreticiye gidin: Verileri Azure Data Box'a kopyalama ve doğrulama](data-box-deploy-copy-data.md) bölümünü tamamladınız.
 - Birden fazla oturum kullanın.
 - Ağ paylaşımı üzerinden kopyalama yapmak yerine (ağ hızları kısıtlayıcı olabilir) verilerin, Data Box'ın bağlı olduğu bilgisayarın yerel depolama alanında bulunduğundan emin olun.
 - Veri kopyalamak için kullanılan bilgisayarın performansını karşılaştırın. Sunucu donanımının performansını karşılaştırmak için [Bluestop FIO aracını](https://ci.appveyor.com/project/axboe/fio) indirin ve kullanın. En son x86 veya x64 yapısını seçin, **yapılar** sekmesini SEÇIN ve MSI 'yi indirin.
@@ -180,8 +180,19 @@ A.  Evet. Data Box ile genel amaçlı, klasik veya blob depolama olmak üzere en
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>S. Cihazım teslim edildi ancak hasarlı görünüyor. Ne yapmalıyım?
 A. Hasarlı bir şekilde ulaşan veya bariz kurcalama izleri bulunan cihazları kullanmayın. [Microsoft Desteğine başvurun](data-box-disk-contact-microsoft-support.md) ve cihazı mümkün olan en kısa sürede geri gönderin. Yenisinin gönderilmesi için yeni bir Data Box siparişi de oluşturabilirsiniz. Bu durumda yeni cihaz için ayrıca ücret alınmaz.
 
-### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>S. Data Box'ı göndermek için kendi gönderim şirketimi kullanabilir miyim?
-A. Data Box hizmetinde cihazların Azure veri merkezine geliş gidişi Microsoft tarafından koordine edilir. Kendi gönderim şirketinizi kullanmak istiyorsanız Azure İçeri/Dışarı Aktarma hizmetini kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure İçeri/Dışarı Aktarma hizmeti nedir?](../storage/common/storage-import-export-service.md)
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>S. Data Box sıraımı kendi kendinize alabilir miyim? Seçdiğim bir taşıyıcı aracılığıyla Data Box döndürebilir miyim?
+A. Evet. Microsoft ayrıca yalnızca US Gov bölgede otomatik olarak yönetilen kargo da sunar. Data Box sırayı yerleştirirken, kendi kendine yönetilen teslim seçeneğini belirleyebilirsiniz. Data Box cihazınızı seçmek için aşağıdaki adımları uygulayın:
+    
+1. Siparişi yerleştirdikten sonra, sipariş işlenir ve Data Box hazırlanır. Siparişinizin çekme için hazırlandığı bir e-posta ile bildirim alırsınız. 
+2. Sipariş toplama için hazırsa, Azure portal sırasıyla sıraya gidin ve **genel bakış** dikey penceresine gidin. 
+3. Azure portal kod içeren bir bildirim göreceksiniz. [Azure Data Box işlemler ekibine](mailto:adbops@microsoft.com) e-posta gönderin ve kodu sağlayın. Takım, konumu sağlayacak ve bir toplama tarihi ve saati zamanlamanıza izin verir. E-posta bildirimini aldıktan sonra ekibi 5 iş günü içinde çağırmanız gerekir.
+
+Veri kopyalama işlemi tamamlandıktan sonra, cihazınızı döndürmek için aşağıdaki adımları uygulayın:
+
+1. Veri kopyalama işlemi hatasız tamamlandıktan sonra **göndermeye hazırlama**çalıştırın. Hazırlama işlemi tamamlandıktan sonra, cihazın yerel Web Kullanıcı arabiriminde bir kod alacaksınız. Kodu kopyalayın ve kaydedin.
+2. Cihazı kapatın ve bağlantı kablolarını kaldırın.
+3. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
+4. [Azure Data Box işlemler ekibine](mailto:adbops@microsoft.com) e-posta gönderin ve daha önce kaydettiğiniz kodu sağlayın. Cihazın nereden ve ne zaman kapatılabileceği hakkında bilgi verir.
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>S. Data Box Cihazlarım, Sevkiyat sırasında ülke kenarlıkları arasında çapraz mi olacak?
 A. Tüm Data Box cihazları hedefle aynı ülke içinden gönderilir ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB), cihazların herhangi bir AB ülkesine ve bu ülkeye nereden gönderdiklerinden oluşan siparişler içindir. Bu hem Data Box hem de Data Box Heavy cihazları için geçerlidir.

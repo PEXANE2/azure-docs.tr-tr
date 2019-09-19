@@ -14,12 +14,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0538b3ea4ac3a7999a3028cfd8b2cfafbbf7856c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 91f0c059d22fb921aeb0c65f7d4eba95debd530d
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967268"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097729"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service için bir Windows Java uygulaması yapılandırma
 
@@ -49,11 +49,11 @@ Performans raporları, trafik görselleştirmeleri ve sistem durumu sağlaması,
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-Daha fazla bilgi için bkz. [Azure CLI Ile akış günlükleri](troubleshoot-diagnostic-logs.md#streaming-with-azure-cli).
+Daha fazla bilgi için bkz. [Cloud Shell akış günlükleri](troubleshoot-diagnostic-logs.md#in-cloud-shell).
 
 ### <a name="app-logging"></a>Uygulama günlüğü
 
-Uygulamanızın standart konsol çıkışını ve standart konsol hatası akışlarını yerel dosya sistemine veya Azure Blob depolama alanına yazmak üzere App Service yapılandırmak için Azure portal veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) aracılığıyla [Uygulama günlüğünü](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enablediag) etkinleştirin. Yerel App Service dosya sistemi örneğine günlük kaydı, yapılandırıldıktan sonra 12 saat devre dışı bırakılır. Daha uzun süre bekletmeye ihtiyacınız varsa, uygulamayı bir BLOB depolama kapsayıcısına çıktı yazacak şekilde yapılandırın. Java ve Tomcat uygulama günlüklerinizi */LogFiles/Application/* dizininde bulabilirsiniz.
+Uygulamanızın standart konsol çıkışını ve standart konsol hatası akışlarını yerel dosya sistemine veya Azure Blob depolama alanına yazmak üzere App Service yapılandırmak için Azure portal veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) aracılığıyla [Uygulama günlüğünü](troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#enable-application-logging-windows) etkinleştirin. Yerel App Service dosya sistemi örneğine günlük kaydı, yapılandırıldıktan sonra 12 saat devre dışı bırakılır. Daha uzun süre bekletmeye ihtiyacınız varsa, uygulamayı bir BLOB depolama kapsayıcısına çıktı yazacak şekilde yapılandırın. Java ve Tomcat uygulama günlüklerinizi */LogFiles/Application/* dizininde bulabilirsiniz.
 
 Uygulamanız izleme için [Logback](https://logback.qos.ch/) veya [Log4J](https://logging.apache.org/log4j) kullanıyorsa, bu izlemeleri gözden geçirme için, [Java izleme günlüklerini keşfet ' de günlüğe kaydetme çerçevesi yapılandırma yönergelerini kullanarak Azure Application Insights 'e iletebilirsiniz Application Insights ](/azure/application-insights/app-insights-java-trace-logs).
 

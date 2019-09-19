@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: e444d6254b575ead4b5d436a4b92f960c61b1d1c
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 171a1141670e55814474390c59ae8d514491edbd
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802881"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088103"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırma
 
@@ -36,7 +36,7 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Pdee '
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * Azure AD kiracısı.
-* [Bir Pdee kiracısı](https://Foodee.com/pricing/)
+* [Bir Pdee kiracısı](https://www.food.ee/about/)
 * Yönetici izinlerine sahip bir kullanıcı hesabı.
 
 ## <a name="assigning-users-to-foodee"></a>Kullanıcıları Kandee atama 

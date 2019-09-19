@@ -2,17 +2,17 @@
 title: "Öğretici: Azure HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri-Data Factory"
 description: Öğretici-Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturmayı öğrenin.
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0b3062e14873ec971163c125fccd6852d8662663
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736174"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098715"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Apache Hadoop kümeleri oluşturma
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -203,7 +203,7 @@ Bu makalede, Hive etkinliğini isteğe bağlı bir HDInsight Hadoop kümesi olu�
 
 6. Azure Data Factory yazma ve izleme portalını başlatmak için **yazar & İzleyicisi** ' ni seçin.
 
-    ![Azure Data Factory genel bakış](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory genel bakış")
+    ![Azure Data Factory portalına genel bakış](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory genel bakış")
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
@@ -352,7 +352,7 @@ Alternatif olarak, bu öğretici için oluşturduğunuz kaynak grubunun tamamın
 1. Kaynak grubunu diğer projelerle paylaşmadığınız takdirde, **kaynaklar** kutucuğunda, varsayılan depolama hesabı ve veri fabrikasının listelenmesi gerekir.
 1. **Kaynak grubunu sil**'i seçin. Bunu yaptığınızda depolama hesabı ve depolama hesabında depolanan veriler silinir.
 
-    ![Kaynak grubunu sil](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Kaynak grubunu sil")
+    ![Azure Portal kaynak grubunu sil](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "Kaynak grubunu sil")
 
 1. Silmeyi onaylamak için kaynak grubunun adını girin ve **Sil**' i seçin.
 

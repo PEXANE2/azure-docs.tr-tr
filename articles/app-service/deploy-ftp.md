@@ -11,16 +11,16 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/30/2018
+ms.date: 09/18/2019
 ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: f239fb4464d2e7f67b91a2d18c21b089ffd52b27
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070495"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098040"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Uygulamanızı FTP/S kullanarak Azure App Service dağıtma
 
@@ -72,9 +72,9 @@ Uygulama **kimlik bilgilerini** , her bir uygulama için benzersiz olduğundan u
 
 Gelişmiş güvenlik için yalnızca SSL üzerinden FTP 'ye izin vermeniz gerekir. FTP dağıtımını kullanmıyorsanız hem FTP hem de FTPS 'yi devre dışı bırakabilirsiniz.
 
-Uygulamanızın kaynak sayfasında, [Azure Portal](https://portal.azure.com), sol gezinti bölmesinde **uygulama ayarları** ' nı seçin.
+Uygulamanızın kaynak sayfasında, [Azure Portal](https://portal.azure.com)' de, sol gezinmede **yapılandırma** > **genel ayarları** ' nı seçin.
 
-Şifrelenmemiş FTP 'yi devre dışı bırakmak için **yalnızca FTPS**' yi seçin. Hem FTP hem de FTPS 'yi tamamen devre dışı bırakmak için **devre dışı**seçeneğini belirleyin İşlemi tamamladıktan sonra **Kaydet**’e tıklayın. **Yalnızca FTPS** kullanıyorsanız, Web uygulamanızın **SSL ayarları** dikey penceresine giderek TLS 1,2 veya üstünü uygulamanız gerekir. TLS 1,0 ve 1,1 **yalnızca FTPS**ile desteklenmez.
+Şifrelenmemiş FTP 'yi devre dışı bırakmak için, **FTPS** ' yi yalnızca **FTP durumunda**seçin. Hem FTP hem de FTPS 'yi tamamen devre dışı bırakmak için **devre dışı**seçeneğini belirleyin İşlemi tamamladıktan sonra **Kaydet**’e tıklayın. **Yalnızca FTPS**kullanıyorsanız, Web uygulamanızın **TLS/SSL ayarları** dikey penceresine giderek TLS 1,2 veya üstünü zorlayabilmeniz gerekir. TLS 1,0 ve 1,1 **yalnızca FTPS**ile desteklenmez.
 
 ![FTP/S 'yi devre dışı bırak](./media/app-service-deploy-ftp/disable-ftp.png)
 

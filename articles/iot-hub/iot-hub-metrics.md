@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 948cdb2ab1af3fe93566497186c025f7f8f39b2e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f0bcf12a43a4732b371dd2d64c0b174a0087bea9
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877086"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098949"
 ---
 # <a name="understand-iot-hub-metrics"></a>IoT Hub ölçümlerini anlayın
 
@@ -25,7 +25,7 @@ IoT Hub ölçümler, Azure aboneliğinizdeki Azure IoT kaynaklarının durumu ha
 
 ## <a name="how-to-view-iot-hub-metrics"></a>IoT Hub ölçümlerini görüntüleme
 
-1. IoT Hub 'ı oluşturun. Bir cihazdan Telemetriyi nasıl oluşturacağınız hakkında yönergeler [için bir cihazdan IoT Hub](quickstart-send-telemetry-dotnet.md) Kılavuzu ' na bakın.
+1. IoT Hub 'ı oluşturun. [Bir cihazdan Telemetriyi nasıl oluşturacağınız hakkında yönergeler için bir cihazdan IoT Hub](quickstart-send-telemetry-dotnet.md) Kılavuzu ' na bakın.
 
 2. IoT Hub 'ınızın dikey penceresini açın. Buradan **ölçümler**' e tıklayın.
    
@@ -81,7 +81,7 @@ IoT Hub, hub 'ınızın sistem durumuna ve bağlı cihazların toplam sayısına
 |C2D<br>. Yöntemler<br>. hata|Başarısız doğrudan yöntem etkinleştirmeleri|Count|Toplam|Tüm başarısız doğrudan yöntem çağrılarının sayısı.|Boyut yok|
 |C2D<br>. Yöntemler<br>. requestSize|Doğrudan yöntem etkinleştirmeleri istek boyutu|Bayt|Average|Tüm başarılı doğrudan yöntem isteklerinin ortalama, en düşük ve en yüksek değeri.|Boyut yok|
 |C2D<br>. Yöntemler<br>. responseSize|Doğrudan yöntem etkinleştirmeleri yanıt boyutu|Bayt|Average|Tüm başarılı doğrudan yöntem yanıtlarının ortalama, en düşük ve en yüksek değeri.|Boyut yok|
-|C2D<br>. ikizi<br>. okuma<br>. başarılı|Arka uçtan başarılı ikizi okumaları|Count|Toplam|Tüm başarılı arka uç tarafından başlatılan ikizi okumaların sayısı.|Boyut yok|
+|C2D<br>. ikizi<br>. okuma<br>. başarılı|Arka uçtan başarılı ikizi okumaları|Count|Toplam|Tüm başarılı arka uç tarafından başlatılan ikizi okumaların sayısı. Bu sayı, ikizi sorgularından başlatılan ikizi okumaları içermez.|Boyut yok|
 |C2D<br>. ikizi<br>. okuma<br>. hata|Arka uçtan başarısız ikizi okumaları|Count|Toplam|Tüm başarısız arka uç tarafından başlatılan ikizi okumaların sayısı.|Boyut yok|
 |C2D<br>. ikizi<br>. okuma<br>. size|Arka uçtan gelen ikizi okumaların yanıt boyutu|Bayt|Average|Tüm başarılı arka uç başlatılan ikizi okumalarının ortalama, en düşük ve en yüksek değeri.|Boyut yok|
 |C2D<br>. ikizi<br>. güncelleştirme<br>. başarılı|Arka uçtan başarılı ikizi güncelleştirmeleri|Count|Toplam|Tüm başarılı arka uç ile başlatılan ikizi güncelleştirmelerinin sayısı.|Boyut yok|
@@ -106,7 +106,7 @@ IoT Hub, hub 'ınızın sistem durumuna ve bağlı cihazların toplam sayısına
 |Günlükiletisi<br>Kullanılan Quota|Kullanılan toplam ileti sayısı|Count|Average|Bugün kullanılan toplam ileti sayısı. Bu, her gün 00:00 UTC tarihinde sıfıra sıfırlanan toplu bir değerdir.|Boyut yok|
 |deviceDataUsage|Toplam cihaz verisi kullanımı|Bayt|Toplam|Iothub 'e bağlı tüm cihazlardan ve bunlardan aktarılan baytlar|Boyut yok|
 |totalDeviceCount|Toplam cihaz (Önizleme)|Count|Average|IoT Hub 'ınıza kayıtlı cihazların sayısı|Boyut yok|
-|yapıldı<br>DeviceCount|Bağlı cihazlar (Önizleme)|Count|Average|IoT Hub 'ınıza bağlı cihazların sayısı|Boyut yok|
+|Yapıldı<br>DeviceCount|Bağlı cihazlar (Önizleme)|Count|Average|IoT Hub 'ınıza bağlı cihazların sayısı|Boyut yok|
 |konfigürasyonları|Yapılandırma ölçümleri|Count|Toplam|Yapılandırma Işlemleri için ölçümler|Boyut yok|
 
 ## <a name="next-steps"></a>Sonraki adımlar

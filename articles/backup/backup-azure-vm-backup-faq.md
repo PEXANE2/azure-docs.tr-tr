@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e1cfb9bf0e8b17df67b2f7060f665d169a71c8d6
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909791"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098376"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -126,6 +126,10 @@ Yönetilen disk Azure VM için, kullanılabilirlik kümelerine geri yükleme, y�
 Şifrelenmiş VM için Anahtar Kasası ayarlarını değiştirdikten sonra yedeklemeler yeni ayrıntılarla birlikte çalışmaya devam eder, ancak değişiklikten önceki bir kurtarma noktasından geri yükleme yapıldıktan sonra, VM 'yi oluşturmadan önce bir anahtar kasasındaki gizli dizileri geri yüklemeniz gerekir.  içerdiği. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret) bakın
 
 Gizli/anahtar alma işlemleri gibi işlemler bu adımı gerektirmez ve geri yüklemeden sonra aynı Keykasası kullanılabilir.
+
+### <a name="can-i-access-the-vm-once-restored-due-to-an-vm-having-broken-relationship-with-domain-controller"></a>VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle, geri yüklendikten sonra sanal makineye erişebilir miyim?
+
+Evet, bir VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle VM 'ye bir kez erişirsiniz. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps) bakın
 
 ## <a name="manage-vm-backups"></a>VM yedeklemelerini yönetme
 

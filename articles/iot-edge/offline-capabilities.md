@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5d618f12b2a83b0aee145470aff900e26241b705
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 80a38767121f5c54afe51a7d4d788716fe9547e2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147277"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091356"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge cihazları, modülleri ve alt cihazları için genişletilmiş çevrimdışı özellikleri anlayın
 
@@ -62,14 +62,14 @@ Alt cihazlar, aynı IoT Hub kayıtlı IoT Edge olmayan herhangi bir cihaz olabil
 
 Aşağıdaki bölümlerde, var olan IoT cihazları için IoT Hub ' de üst/alt ilişkiyi nasıl bildirebileceği hakkında örnekler sağlanmaktadır. Alt cihazlarınız için yeni cihaz kimlikleri oluşturuyorsanız, daha fazla bilgi için bkz. [Azure 'da bir aşağı akış cihazının kimliğini doğrulama IoT Hub](how-to-authenticate-downstream-device.md) .
 
-#### <a name="option-1-iot-hub-portal"></a>Seçenek 1: IoT Hub portalı
+#### <a name="option-1-iot-hub-portal"></a>1\. Seçenek: IoT Hub portalı
 
 Yeni bir cihaz oluştururken üst-alt ilişkisi bildirebilirsiniz. Ya da var olan cihazlar için, üst IoT Edge cihazının veya alt IoT cihazının cihaz ayrıntıları sayfasından ilişkiyi bildirebilirsiniz. 
 
    ![IOT Edge cihaz ayrıntıları sayfasından alt cihazları yönetme](./media/offline-capabilities/manage-child-devices.png)
 
 
-#### <a name="option-2-use-the-az-command-line-tool"></a>Seçenek 2: `az` Komut satırı aracını kullanma
+#### <a name="option-2-use-the-az-command-line-tool"></a>2\. Seçenek: `az` Komut satırı aracını kullanma
 
 [Azure komut satırı arabirimini](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) [IoT uzantısı](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 veya üzeri) ile birlikte kullanarak, üst alt ilişkilerini [cihaz kimliği](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) alt komutları ile yönetebilirsiniz. Aşağıdaki örnekte, hub 'daki tüm IoT Edge olmayan cihazları bir IoT Edge cihazının alt cihazları olacak şekilde atamak için bir sorgu kullanılır. 
 
@@ -110,7 +110,7 @@ Bu güven ilişkisini oluşturmanın bir yolu, aşağıdaki makalelerde ayrınt�
 
 ## <a name="specify-dns-servers"></a>DNS sunucularını belirtme 
 
-Sağlamlığını artırmak için ortamınızda kullanılan DNS sunucusu adreslerini belirtmeniz önemle tavsiye edilir. [Sorun giderme MAKALESINDEKI DNS sunucusunu ayarlamak](troubleshoot.md#resolution-7)için iki seçeneğe bakın.
+Sağlamlığını artırmak için ortamınızda kullanılan DNS sunucusu adreslerini belirtmeniz önemle tavsiye edilir. DNS sunucunuzu IoT Edge için ayarlamak için, bkz. [Edge Aracısı modülü için çözüm ' boş yapılandırma dosyası ' ' nı sürekli raporlar ve sorun giderme makalesinde cihazda hiç modül başlamıyor](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) .
 
 ## <a name="optional-offline-settings"></a>İsteğe bağlı bir çevrimdışı ayarları
 
@@ -207,5 +207,5 @@ sudo chmod 700 <HostStoragePath>
 Üst/alt cihaz bağlantılarınız için saydam bir ağ geçidi ayarlama hakkında daha fazla bilgi edinin: 
 
 * [Saydam bir ağ geçidi olarak görev yapacak bir IOT Edge cihazı yapılandırma](how-to-create-transparent-gateway.md)
-* [Azure IoT Hub bir aşağı akış cihazının kimliğini doğrulama](how-to-authenticate-downstream-device.md)
-* [Bir aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlama](how-to-connect-downstream-device.md)
+* [Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama](how-to-authenticate-downstream-device.md)
+* [Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama](how-to-connect-downstream-device.md)

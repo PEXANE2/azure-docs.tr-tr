@@ -2,18 +2,18 @@
 title: HDInsight kümesini silme-Azure
 description: Azure HDInsight kümesini silebilmeniz için çeşitli yollarla ilgili bilgiler
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/17/2019
-ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 08bfdcab0b7fbb8e533cb8d2d6a74d315ad4074c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a28d59cb35004fac6b069f2aa41042b4d46e443f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885241"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091532"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Tarayıcınızı, PowerShell 'i veya Azure CLı 'yı kullanarak bir HDInsight kümesini silme
 
@@ -29,8 +29,8 @@ HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme s
 2. Sol menüden **Tüm Service** > **Analytics** > **HDInsight kümelerine** gidin ve kümenizi seçin.
 
 3. Varsayılan görünümden **Sil** simgesini seçin. Kümenizi silmek için istemi izleyin.
-   
-    ![simgeyi Sil](./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png)
+
+    ![HDInsight küme silme düğmesi](./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png)
 
 ## <a name="azure-powershell-az-module"></a>Azure PowerShell az Module
 

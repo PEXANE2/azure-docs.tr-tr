@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 22f1394bb23568ac563af54f1df0b295f33f30d8
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 57b3918aba6ec43561e891e39bc1d767be57046d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010389"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089343"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Azure Data Factory (Önizleme) kullanarak Shopify verileri kopyalama
 
@@ -30,7 +30,7 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de Shopify verileri kopyala
 
 Bu Shopify Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 Tüm desteklenen havuz veri deposuna Shopify veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.

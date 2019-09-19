@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: cbb748e9856b6de9004d57e4393e205ddfcfffb4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998843"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033823"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
 
@@ -92,12 +92,13 @@ Azure AD Raporlama API 'sine betik veya uygulama tabanlı erişime izin vermek i
 * Microsoft Graph
   * Uygulama: Tüm denetim günlüğü verilerini okuyun
 
-Bu izinleri B2C kiracınızda var olan bir uygulama kaydında etkinleştirebilir veya bir özel olarak denetim günlüğü otomasyonu ile kullanmak için yeni bir tane oluşturabilirsiniz.
+Bu izinleri B2C kiracınızda mevcut bir Azure Active Directory Uygulama kaydında etkinleştirebilir veya özel olarak denetim günlüğü otomasyonu ile kullanmak için yeni bir tane oluşturabilirsiniz.
 
 Yeni bir uygulama oluşturmak, gerekli API izinlerini atamak ve bir istemci parolası oluşturmak için aşağıdaki adımları gerçekleştirin:
 
-1. Uygulamayı kaydet
-    1. [Azure Portal](https://portal.azure.com)oturum açın, Azure AD B2C kiracınızı içeren dizine geçin ve **Azure AD B2C**gidin.
+1. Uygulamayı Azure Active Directory Kaydet
+    1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure AD B2C kiracınızı içeren dizine geçin.
+    1. Sol menüden **Azure Active Directory** (Azure AD B2C*değil* ) seçeneğini belirleyin. Ya da **tüm hizmetler**' i seçip **Azure Active Directory**arayıp seçin.
     1. Sol menüdeki **Yönet** ' in altında **uygulama kayıtları (eski)** seçeneğini belirleyin.
     1. **Yeni uygulama kaydı** seçin
     1. Uygulama için bir ad girin. Örneğin, *Denetim günlüğü uygulaması*.

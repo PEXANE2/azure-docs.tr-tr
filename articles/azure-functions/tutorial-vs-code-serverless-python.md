@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 590757f78086be894cdc2384bb4a4df380e91c27
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233113"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098595"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Visual Studio Code ile Azure Işlevlerine Python dağıtma
 
@@ -45,7 +45,7 @@ Azure aboneliğiniz yoksa, herhangi bir hizmet birleşimini denemek için Azure 
 
 Aşağıdaki yazılımı yükler:
 
-- Azure Işlevleri için gereken Python 3.6. x. [Python 3.6.8](https://www.python.org/downloads/release/python-368/) , en son 3.6. x sürümüdür.
+- Azure Işlevleri için gereken Python 3.6. x. [Python 3.6.9](https://www.python.org/downloads/release/python-369/) , en son 3.6. x sürümüdür.
 - [Visual Studio Code](https://code.visualstudio.com/).
 - [Visual Studio Code Python öğreticisi-Önkoşullar](https://code.visualstudio.com/docs/python/python-tutorial)bölümünde açıklandığı şekilde [Python uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-python.python) .
 - [Azure işlevleri uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). Genel bilgiler için [vscode-azurefunctions GitHub deposunu](https://github.com/Microsoft/vscode-azurefunctions)ziyaret edin.
@@ -242,7 +242,7 @@ Kodun önemli bölümleri aşağıdaki gibidir:
 
 1. İşlevde hata ayıklamak için, URL 'ye bir istek okuyan `name = req.params.get('name')` ve bir istekte bulunan bir kesme noktası ayarlayın. Visual Studio Code hata ayıklayıcı bu satırda durarak değişkenleri incelemenizi ve kodda adım adım ilerlemenize olanak tanır. (Temel hata ayıklama hakkında kısa bir anlatım için bkz. [Visual Studio Code öğreticisi-hata ayıklayıcıyı yapılandırma ve çalıştırma](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger).)
 
-1. İşlevi yerel olarak test ettiğiniz için, hata > ayıklayıcıyı (hata**ayıklamayı Durdur** menü komutuyla veya hata ayıklama araç çubuğundaki **bağlantıyı kes** komutuyla) durdurun.
+1. İşlevi yerel olarak test ettiğiniz için, hata ayıklayıcıyı **(**  > hata**ayıklamayı Durdur** menü komutuyla veya hata ayıklama araç çubuğundaki **bağlantıyı kes** komutuyla) durdurun.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=04-test-debug)
@@ -393,7 +393,7 @@ Portalda yaptığınız herhangi bir değişikliği veya **Azure Gezgini** 'ni *
     }
     ```
 
-1. **F5** ' i seçerek veya hata**ayıklamayı Başlat** menü > komutunu seçerek hata ayıklayıcıyı başlatın. **Çıkış** penceresinde artık her iki uç nokta de projenizde gösterilmektedir:
+1. **F5** ' i seçerek **veya hata** > **ayıklamayı Başlat** menü komutunu seçerek hata ayıklayıcıyı başlatın. **Çıkış** penceresinde artık her iki uç nokta de projenizde gösterilmektedir:
 
     ```output
     Http Functions:
@@ -446,6 +446,18 @@ Bu bölümde, bu öğreticide daha önce oluşturulan HttpExample işlevine bir 
         }
     ```
 
+1. *Host. JSON* içeriğini, [uzantı demeti başvurusunu](functions-bindings-register.md#extension-bundles)ekleyerek aşağıdaki ile değiştirin.
+
+    ```json
+    {
+        "version": "2.0",
+        "extensionBundle": {
+            "id": "Microsoft.Azure.Functions.ExtensionBundle",
+            "version": "[1.*, 2.0.0)"
+        }
+    }
+    ```
+
 1. Bağlamayı yapılandırdığınıza göre, bunu işlev kodunuzda kullanabilirsiniz. Daha sonra, yeni tanımlanan `main` bağlama kodunuzda  *\_init \_\_.\_Kopyala*içindeki işleve bağımsız değişken olarak görünür. Örneğin ,`msg`  *\_\_httpexample\_içindeki init. Kopyala dosyasını, bir zaman damgamış bir ileti yazmak için bağımsız değişkenini kullanarak aşağıdaki \_* isteyen. Yorumlar, belirli değişiklikleri açıklar:
 
     ```python
@@ -479,7 +491,7 @@ Bu bölümde, bu öğreticide daha önce oluşturulan HttpExample işlevine bir 
             )
     ```
 
-1. Bu değişiklikleri yerel olarak test etmek için **F5** ' i seçerek veya hata**ayıklamayı Başlat** menü komutunu seçerek > Visual Studio Code hata ayıklayıcıyı yeniden başlatın. **Çıkış** penceresinde olduğu gibi, projenizdeki uç noktaları göstermemelidir.
+1. Bu değişiklikleri yerel olarak test etmek için **F5** ' i seçerek **veya hata** > **ayıklamayı Başlat** menü komutunu seçerek Visual Studio Code hata ayıklayıcıyı yeniden başlatın. **Çıkış** penceresinde olduğu gibi, projenizdeki uç noktaları göstermemelidir.
 
 1. Bir tarayıcıda, httpexample uç noktasına `http://localhost:7071/api/HttpExample?name=VS%20Code` bir istek oluşturmak için URL 'yi ziyaret ederek sıraya bir ileti de yazmanız gerekir.
 

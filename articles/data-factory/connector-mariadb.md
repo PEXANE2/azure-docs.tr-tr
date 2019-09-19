@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: a77b19add540fd8bd760d3a8e4d10ff30152f458
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: b58617281094973e2705c34fdd4e4f6ccb2e8d8c
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71007867"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090129"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>MariaDB Azure Data Factory kullanarak verileri kopyalama
 
@@ -27,7 +27,7 @@ Bu makalede, kopyalama etkinliği Azure Data Factory'de MariaDB verileri kopyala
 
 Bu MariaDB Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 MariaDB tüm desteklenen havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
