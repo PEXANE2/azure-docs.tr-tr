@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 7e0b5137355c9fd89600fa48c075c81cfb1190e3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c50615b9cbe5c3ca926d893858bb39eeb5720067
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085445"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129585"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Işlevlerini yerel olarak kod ve test etme
 
@@ -33,7 +33,7 @@ Yerel bilgisayarınızda işlevleri geliştirme yönteminiz, [dilinize](supporte
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
-Bu yerel geliştirme ortamlarının her biri, işlev uygulaması projeleri oluşturmanıza ve yeni işlevler oluşturmak için önceden tanımlanmış Işlevler şablonlarını kullanmanıza imkan sağlar. , İşlevlerinizi diğer uygulamalarda olduğu gibi kendi makinenizde gerçek Işlevler çalışma zamanına karşı sınayabilmeniz ve hatalarını ayıklayabilmeniz için temel araçları kullanır. Ayrıca, bu ortamların herhangi birinden bir işlev uygulama projesini Azure 'a yayımlayabilirsiniz.  
+Bu yerel geliştirme ortamlarının her biri, işlev uygulaması projeleri oluşturmanıza ve yeni işlevler oluşturmak için önceden tanımlanmış Işlevler şablonlarını kullanmanıza imkan sağlar. , İşlevlerinizi diğer uygulamalarda olduğu gibi kendi makinenizde gerçek Işlevler çalışma zamanına karşı sınayabilmeniz ve hatalarını ayıklayabilmeniz için temel araçları kullanır. Ayrıca, bu ortamların herhangi birinden işlev uygulama projenizi Azure 'a yayımlayabilirsiniz.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

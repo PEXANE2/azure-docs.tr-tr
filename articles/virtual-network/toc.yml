@@ -260,9 +260,9 @@
         - name: Ağ güvenlik grupları - PowerShell
           href: move-across-regions-nsg-powershell.md
         - name: Sanal ağlar - Portal
-          href: virtual-network-azure-to-azure-migrate-vnet-portal.md
+          href: move-across-regions-vnet-portal.md
         - name: Sanal ağlar - PowerShell
-          href: virtual-network-azure-to-azure-migrate-vnet-powershell.md
+          href: move-across-regions-vnet-powershell.md
         - name: Genel IP'ler - Portal
           href: move-across-regions-publicip-portal.md
         - name: Genel IP'ler - PowerShell

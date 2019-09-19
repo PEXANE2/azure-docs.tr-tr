@@ -15,13 +15,13 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 615a4c055980381771d3b63eba878846fd583cc9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 3251637d5a5bd0593a9eaf559963921a68a6ccdc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883620"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102745"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Hızlı Başlangıç: Windows üzerinde Azure App Service bir Java uygulaması oluşturma
 
@@ -34,7 +34,7 @@ ms.locfileid: "70883620"
 > [!NOTE]
 > Aynı şey, IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
 >
-![Azure'da çalışan örnek uygulama](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
+![Azure App Service 'de çalışan örnek uygulama](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -119,7 +119,7 @@ mvn package azure-webapp:deploy
 
 Dağıtım tamamlandıktan sonra, web tarayıcınızda aşağıdaki URL’yi kullanarak dağıtılan uygulamanın konumuna gidin; örneğin `http://<webapp>.azurewebsites.net/`.
 
-![Azure'da çalışan örnek uygulama](./media/app-service-web-get-started-java/java-hello-world-in-browser.png)
+![Azure App Service 'de çalışan örnek uygulama](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 **Tebrikler!** Windows üzerinde App Service için ilk Java uygulamanızı dağıttınız.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 65daf1468d27825d9904a14e42e43796d3985321
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996518"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128817"
 ---
 # <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Azure Machine Learning için görsel arabirim nedir? 
 
@@ -95,8 +95,8 @@ Modelinizi dağıtmayı öğrenmek için bkz [. Öğretici: Visual Interface](ui
 
 * Tahmine dayalı analiz ve makine öğrenimi [hakkında öğreticiyi öğrenin: Görsel arabirim ile otomobil fiyatını tahmin edin](ui-tutorial-automobile-price-train-score.md)
 * Örneklerden birini kullanın ve gereksinimlerinize göre değiştirin:
-    * [Örnek 1-gerileme: Tahmin fiyatı](ui-sample-regression-predict-automobile-price-basic.md)
-    * [Örnek 2-gerileme: Fiyat ve karşılaştırma algoritmalarını tahmin etme](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [Örnek 3-sınıflandırma: Kredi riskini tahmin etme](ui-sample-classification-predict-credit-risk-basic.md)
-    * [Örnek 4-sınıflandırma: Kredi riskini tahmin etme (maliyet duyarlı)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [Örnek 5-sınıflandırma: Dalgalanma, uygulama ve BT satışı tahmin etme](ui-sample-classification-predict-churn.md)
+    * [Örnek 1-gerileme: Tahmin fiyatı](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [Örnek 2-gerileme: Fiyat ve karşılaştırma algoritmalarını tahmin etme](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [Örnek 3-sınıflandırma: Kredi riskini tahmin etme](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [Örnek 4-sınıflandırma: Kredi riskini tahmin etme (maliyet duyarlı)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [Örnek 5-sınıflandırma: Dalgalanma, uygulama ve BT satışı tahmin etme](how-to-ui-sample-classification-predict-churn.md)

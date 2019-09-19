@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d3d09d466e05c97de215542c66987aa6b723afce
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9b78c18547ef61b388a56a1272b5621cada43806
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827995"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120482"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -30,6 +30,7 @@ Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritab
 | En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |
 | Kapsayıcı başına en fazla depolama alanı | Sınırsız |
 | Veritabanı başına en fazla depolama alanı | Sınırsız |
+| Hesap başına en fazla ek boyutu (ek özelliği amorti edilir) | 2 GB | 
 
 > [!NOTE]
 > Depolama veya işleme için daha yüksek sınırlara ihtiyaç duyulan bölüm anahtarlarına sahip iş yüklerini yönetmek için en iyi uygulamalar için bkz. [sık erişimli bölüm anahtarları Için tasarlama](synthetic-partition-keys.md)
@@ -168,7 +169,7 @@ Aşağıdaki tabloda, [Try Azure Cosmos DB ücretsiz deneme için](https://azure
 | Resource | Varsayılan limit |
 | --- | --- |
 | Deneme süresi | 30 gün (herhangi bir sayıda yenilenebilir) |
-| Abonelik başına en fazla kapsayıcı (SQL, Gremlin, Tablo API'si) | 1 |
+| Abonelik başına en fazla kapsayıcı (SQL, Gremlin, Tablo API'si) | 1\. |
 | Abonelik başına en fazla kapsayıcı (MongoDB API) | 3 |
 | Kapsayıcı başına en fazla aktarım hızı | 5000 |
 | Paylaşılan işleme veritabanı başına en fazla aktarım hızı | 20000 |

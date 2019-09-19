@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: allensu
-ms.openlocfilehash: fb7c0c31ad91bfdb6ea360c1909a216f0779ebde
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 349d8afd46a06455edcd25e2a7ea48f407d285ef
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274609"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130424"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -171,6 +171,7 @@ Standart Load Balancer SLA koşulları hakkında bilgi edinmek için [Load Balan
 
 - Load Balancer, TCP veya UDP IP protokolleri için yük dengeleme ve bağlantı noktası iletme özellikleri sunan bir üründür.  Yük dengeleme kuralları ve gelen NAT kuralları, TCP ve UDP için desteklenir ancak ICMP dahil olmak üzere diğer IP protokolleri için desteklenmez. Load Balancer, UDP veya TCP akışlarının yüklerini sonlandırmaz, yanıtlamaz veya başka bir şekilde etkileşim kurmaz. Bir ara sunucu değildir. Bir ön uç bağlantısının başarıyla doğrulanması için yük dengeleme veya gelen NAT kuralı için kullanılan aynı protokolde (TCP veya UDP) gerçekleşmesi _ve_ sanal makinelerinizden en az birinin istemci için ön uçtan bir yanıt olarak görülecek bir yanıt oluşturması gerekir.  Load Balancer ön ucundan aynı bantta yanıt alınmaması, sanal makinelerin hiçbirinin yanıt veremediğini gösterir.  Bir sanal makine yanıt vermediği sürece Load Balancer ile etkileşim kurulması mümkün değildir.  Bu durum [port masquerade SNAT](load-balancer-outbound-connections.md#snat) öğesinin yalnızca TCP ve UDP için desteklendiği giden bağlantılar için de geçerlidir. ICMP de dahil olmak üzere diğer bağlantılar başarısız olacaktır.  Azaltmak için bir örnek düzeyinde Genel IP adresi atayın.
 - Sanal ağ içindeki özel IP adreslerden genel IP adreslerine geçiş yapan [giden bağlantılar](load-balancer-outbound-connections.md) sunan genel Load Balancer örneklerinden farklı olarak iç Load Balancer örnekleri ikisi de özel IP adres alanında bulunduğundan giden bağlantıları iç Load Balancer örneğinin ön ucuna çevirmez.  Bu durum çevirinin gerekli olmadığı durumlarda iç IP adres alanı içindeki SNAT bağlantı noktası tükenme potansiyelini ortadan kaldırır.  Bunun yan etkisi, arka uç havuzundaki bir VM'den giden akışın havuzun bulunduğu iç Load Balancer örneğinin ön ucuna doğru bir akış başlatma girişiminde bulunması _ve_ kendine eşlenmesi durumunda akışın iki ayağının eşleşmemesine ve akışın başarısız olmasına neden olmasıdır.  Akışın ön uç akışını oluşturan arka uçtaki aynı VM ile eşleşmemesi durumunda akış başarılı olacaktır.   Akış kendine eşlendiğinde giden akış VM'den ön uca doğru, ilgili gelen akış da VM'den kendine doğru görünür. Konuk işletim sisteminin açısından bakıldığında aynı akışın gelen ve giden bölümleri sanal makine ile eşleşmez. Kaynak ve hedef eşleşmediğinden TCP yığını aynı akışın iki yarısını aynı akışa ait gibi görmez.  Akış, arka uç havuzundaki başka bir VM ile eşleştiğinde akışın iki yarısı eşleşir ve VM akışa başarıyla yanıt verebilir.  Bu senaryonun belirtileri akışın, akışı başlatan aynı arka uca döndüğünde aralıklı olarak bağlantı zaman aşımına uğramasıdır. Bu senaryoyu (arka uç havuzundan başlatılan akışları ilgili Load Balancer ön ucuna göre arka uç havuzlarına iletme) elde etmek için kullanılabilecek birçok yayın geçici çözüm vardır ve bunlar iç Load Balancer arkasına ara sunucu katmanı eklemeyi veya [DSR stil kurallarını kullanmayı](load-balancer-multivip-overview.md) içerir.  Müşteriler iç Load Balancer örneklerini 3. taraf ara sunucularla birlikte kullanabilir veya HTTP/HTTPS ile sınırlı ara sunucu senaryoları için iç [Application Gateway](../application-gateway/application-gateway-introduction.md) çözümünden faydalanabilir. Karmaşıklığı azaltmak için genel Load Balancer kullanabilirsiniz ancak elde edeceğiniz senaryo [SNAT tükenmesi](load-balancer-outbound-connections.md#snat) olasılığına sahip olur ve dikkatli bir şekilde yönetilmediği sürece kaçınılmalıdır.
+- Genel olarak, IP parçalarını iletme veya UDP ve TCP paketlerinin IP parçalanmasını gerçekleştirme, Yük Dengeleme kurallarında desteklenmez.  [Ha bağlantı noktaları Yük Dengeleme kuralları](load-balancer-ha-ports-overview.md) , bu genel bildirimin bir istisnası olur ve var olan IP parçalarını iletmek için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

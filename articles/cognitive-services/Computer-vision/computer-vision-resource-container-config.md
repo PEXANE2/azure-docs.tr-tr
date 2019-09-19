@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 186f2f60aad15b336265114d7c85c757e0dd333f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: aba846ade9e2b5e19304df87ea3e29713aacf4ba
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102299"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129957"
 ---
-# <a name="configure-recognize-text-docker-containers"></a>Metin Tanıma Docker kapsayıcılarını yapılandırma
+# <a name="configure-computer-vision-docker-containers"></a>Görüntü İşleme Docker kapsayıcılarını yapılandırma
 
-**Metin tanıma** kapsayıcı çalışma zamanı ortamı, `docker run` komut bağımsız değişkenleri kullanılarak yapılandırılır. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç [örnekler](#example-docker-run-commands) komutu kullanılabilir. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır. 
+`docker run` Komut bağımsız değişkenlerini kullanarak görüntü işleme kapsayıcısının çalışma zamanı ortamını yapılandırırsınız. Bu kapsayıcıda bazı gerekli ayarlar ve bazı isteğe bağlı ayarlar vardır. Birkaç [örnekler](#example-docker-run-commands) komutu kullanılabilir. Kapsayıcıya özgü ayarlar faturalandırma ayarlardır. 
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 
@@ -63,9 +63,9 @@ Aşağıdaki tabloda gösterildiği gibi `vision/v1.0` , yönlendirmeyi, uç nok
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
 
-## <a name="http-proxy-credentials-settings"></a>Http proxy kimlik bilgileri ayarları
+## <a name="http-proxy-credentials-settings"></a>HTTP proxy kimlik bilgileri ayarları
 
-[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
+[!INCLUDE [Container shared configuration HTTP proxy settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Günlük ayarları
  
@@ -84,14 +84,12 @@ Konak bağlama konumu söz dizimi konak işletim sistemine göre değişir. Ayr�
 |İzin verilmedi| `Input` | Dize | Görüntü İşleme kapsayıcılar bunu kullanmaz.|
 |İsteğe Bağlı| `Output` | Dize | Çıkış bağlama hedefi. Varsayılan değer `/output` şeklindedir. Bu günlükler konumdur. Bu, kapsayıcı günlüklerini içerir. <br><br>Örnek:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="example-docker-run-commands"></a>Örnek docker komutlarını çalıştırın 
+## <a name="example-docker-run-commands"></a>Örnek docker komutlarını çalıştırın
 
 Aşağıdaki örnekler, yazma ve kullanma göstermek için yapılandırma ayarlarını kullanır. `docker run` komutları.  Kapsayıcıyı çalıştıran sonra dek çalıştırmaya devam [Durdur](computer-vision-how-to-install-containers.md#stop-the-container) bu.
 
 * **Satır devamlılık karakteri**: Aşağıdaki bölümlerdeki Docker komutları, satır devamlılık karakteri olarak ters eğik `\`çizgi kullanır. Bu konak işletim sisteminin gereksinimlerine göre kaldırın veya değiştirin. 
 * **Bağımsız değişken sırası**: Docker Kapsayıcıları hakkında bilginiz yoksa bağımsız değişkenlerin sırasını değiştirmeyin.
-
-Aşağıdaki tabloda gösterildiği gibi `vision/v1.0` , yönlendirmeyi, uç nokta URI 'sine eklemeyi unutmayın. 
 
 Yerine {_argument_name_} kendi değerlerinizle:
 
@@ -104,17 +102,19 @@ Yerine {_argument_name_} kendi değerlerinizle:
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, Ve `ApiKey` kapsayıcıyı çalıştırmak için seçenekler belirtilmelidir; Aksi takdirde, kapsayıcı başlatılamıyor.  Daha fazla bilgi için [faturalama](computer-vision-how-to-install-containers.md#billing).
-> Apikey değeri, Azure `Cognitive Services` kaynak anahtarları sayfasından alınan **anahtardır** . 
+> Apikey değeri, Azure `Cognitive Services` kaynak anahtarları sayfasından alınan **anahtardır** .
 
-## <a name="recognize-text-container-docker-examples"></a>Metin kapsayıcısı Docker örneklerini tanıma
+## <a name="container-docker-examples"></a>Kapsayıcı Docker örnekleri
 
-Aşağıdaki Docker örnekleri, Recognize metin kapsayıcısına yöneliktir. 
+#### <a name="readtabread"></a>[Okuma](#tab/read)
 
-### <a name="basic-example"></a>Temel örnek 
+Aşağıdaki Docker örnekleri okuma kapsayıcısı içindir.
+
+### <a name="basic-example"></a>Temel örnek
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -123,7 +123,32 @@ Aşağıdaki Docker örnekleri, Recognize metin kapsayıcısına yöneliktir.
 ### <a name="logging-example"></a>Günlüğe kaydetme örneği 
 
   ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-read \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} \
+  Logging:Console:LogLevel:Default=Information
+  ```
+
+#### <a name="recognize-texttabrecognize-text"></a>[Metin tanıma](#tab/recognize-text)
+
+Aşağıdaki Docker örnekleri Metin Tanıma kapsayıcısı içindir.
+
+### <a name="basic-example"></a>Temel örnek
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
+  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
+  Eula=accept \
+  Billing={ENDPOINT_URI} \
+  ApiKey={API_KEY} 
+  ```
+
+### <a name="logging-example"></a>Günlüğe kaydetme örneği
+
+  ```
+  docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
   Eula=accept \
   Billing={ENDPOINT_URI} \
@@ -131,6 +156,8 @@ Aşağıdaki Docker örnekleri, Recognize metin kapsayıcısına yöneliktir.
   Logging:Console:LogLevel:Default=Information
   ```
 
+***
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Gözden geçirme [yükleme ve kapsayıcıları çalıştırın](computer-vision-how-to-install-containers.md)
+* [Kapsayıcıları yüklemeyi ve çalıştırmayı](computer-vision-how-to-install-containers.md)gözden geçirin.

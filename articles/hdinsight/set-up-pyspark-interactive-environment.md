@@ -2,18 +2,18 @@
 title: Azure HDInsight araçları-Visual Studio Code için PySpark etkileşimli ortamı
 description: Sorgular ve betikler oluşturmak ve göndermek için Visual Studio Code için Azure HDInsight araçlarını kullanmayı öğrenin.
 keywords: VScode, Azure HDInsight araçları, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, etkileşimli sorgu
-ms.service: hdinsight
 author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: d220d81b8dc57541113f7ef1e477bb77d394e206
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f62f7994818e487202e35e4931472355fb6ac3d2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879298"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130184"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code için PySpark etkileşimli ortamını ayarlama
 
@@ -22,19 +22,18 @@ Aşağıdaki adımlarda VS Code 'da PySpark etkileşimli ortamının nasıl ayar
 Ana yolunuzda sanal ortam oluşturmak için **Python/PIP** komutunu kullanıyoruz. Başka bir sürüm kullanmak istiyorsanız, **Python/PIP** komutunun varsayılan sürümünü el ile değiştirmeniz gerekir. Daha fazla ayrıntı için bkz. [Update-alternatifler](https://linux.die.net/man/8/update-alternatives).
 
 1. [Python](https://www.python.org/downloads/) ve [PIP](https://pip.pypa.io/en/stable/installing/)'yi yükler.
-   
+
    + Python uygulamasını şuradan [https://www.python.org/downloads/](https://www.python.org/downloads/)
    + PIP 'yi [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) yükleme (Python yüklemesinden yüklenmemişse).
    + Aşağıdaki komutları kullanarak Python ve PIP 'nin başarıyla yüklendiğini doğrulayın. Seçim
- 
-        ![Python PIP sürümü](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+
+        ![Python pversıon sürümü komutunu denetle](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
      > MacOS varsayılan sürümünü kullanmak yerine Python 'un el ile yüklenmesi önerilir.
 
-
 2. Aşağıdaki komutu çalıştırarak **virtualenv** 'yi çalıştırın.
-   
+
    ```
    pip install virtualenv
    ```
@@ -43,7 +42,7 @@ Ana yolunuzda sanal ortam oluşturmak için **Python/PIP** komutunu kullanıyoru
 
 Bir hata iletisiyle karşılaşırsanız, aşağıdaki komutları çalıştırarak gerekli paketleri yükleyebilirsiniz:
 
-   ![libkrb5 paketi](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+   ![Python için libkrb5 paketini yükler](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
 ```
 sudo apt-get install libkrb5-dev

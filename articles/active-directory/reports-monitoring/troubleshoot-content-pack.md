@@ -17,12 +17,12 @@ ms.date: 06/07/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a0a5b5306414eb50a1928ec8a1854f56055681
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9e50f2b92318ada729ad8e3405af8403f31d7b6e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987894"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129279"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Etkinlik günlüğü içerik paketi hatalarını giderme Azure Active Directory 
 
@@ -47,7 +47,7 @@ Bu makalede, olası nedenler ve bu hataların nasıl düzeltileceğini gösteren
 | Nedeni | Nasıl düzeltileceğini |
 | ---   | ---        |
 | İçerik paketine bağlanan kullanıcıların kimlik bilgileri sıfırlanırsa ancak içerik paketinin bağlantı ayarlarında güncellenmediğinde, yenileme hatası hataları hatalara neden olabilir. | Power BI, Azure AD etkinlik günlükleri panosuna (**Azure Active Directory etkinlik günlükleri**) karşılık gelen veri kümesini bulun, yenilemeyi zamanla ' yı seçin ve ardından Azure AD kimlik bilgilerinizi girin. |
-| Büyük veri kümeleri nedeniyle yenileme başarısız olabilir. | Şu anda, Power BI hizmetinde zaman aşımları içindeki bazı sınırlamalar nedeniyle Power BI olan Azure AD Içerik paketi yalnızca küçük veri kümelerini destekleyebilir (500, 00 satırdan az). Azaltma hatalarıyla karşılaşırsanız veya yenileme zaman aşımı sorunları nedeniyle başarısız olursa, büyük bir veri kümesini getirmeye çalışırken bu durum oluşabilir. Sorgudaki zaman dilimini azaltın ve yeniden deneyin.|
+| Büyük veri kümeleri nedeniyle yenileme başarısız olabilir. | Şu anda, Power BI hizmetinde zaman aşımları içindeki bazı sınırlamalar nedeniyle Power BI olan Azure AD Içerik paketi yalnızca küçük veri kümelerini destekleyebilir (500.000 satırdan az). Azaltma hatalarıyla karşılaşırsanız veya yenileme zaman aşımı sorunları nedeniyle başarısız olursa, büyük bir veri kümesini getirmeye çalışırken bu durum oluşabilir. Sorgudaki zaman dilimini azaltın ve yeniden deneyin.|
  
  
 ## <a name="failed-to-update-data-source-credentials"></a>Veri kaynağı kimlik bilgileri güncelleştirilemedi 

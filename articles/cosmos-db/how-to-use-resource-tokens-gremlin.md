@@ -1,37 +1,39 @@
 ---
-title: Gremlin ile kaynak belirteçleri Azure Cosmos DB
-description: Kaynak belirteçleri oluşturmayı ve Graf veritabanına erişmek için bunları kullanmayı öğrenin
+title: Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
+description: Kaynak belirteçleri oluşturmayı ve grafik veritabanına erişmek için bunları kullanmayı öğrenin.
 author: olignat
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/06/2019
 ms.author: olignat
-ms.openlocfilehash: fcb18fb14cf787713735da07ca2048d0853fa46c
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6364bd0f762647b5fe9567ed40042a5ad81f97c1
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806914"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105030"
 ---
-# <a name="azure-cosmos-db-resource-tokens-with-gremlin"></a>Gremlin ile kaynak belirteçleri Azure Cosmos DB
-Bu makalede, Gremlin SDK aracılığıyla Graph veritabanına erişmek için [Cosmos DB kaynak belirteçlerinin](secure-access-to-data.md) nasıl kullanılacağı açıklanmaktadır.
+# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK ile Azure Cosmos DB kaynak belirteçleri kullanma
+
+Bu makalede, Gremlin SDK aracılığıyla grafik veritabanına erişmek için [Azure Cosmos DB kaynak belirteçlerinin](secure-access-to-data.md) nasıl kullanılacağı açıklanmaktadır.
 
 ## <a name="create-a-resource-token"></a>Kaynak belirteci oluşturma
 
-Inkerpop Gremlin SDK 'sının kaynak belirteçleri oluşturmak için bir API 'si yok. Kaynak belirteci bir Cosmos DB kavramıdır. Kaynak belirteçleri oluşturmak için [Azure Cosmos DB SDK 'sını](sql-api-sdk-dotnet.md)indirin. Uygulamanızın, grafik veritabanına erişmek için kaynak belirteçleri oluşturması ve bunları kullanması gerekiyorsa 2 ayrı SDK 'lar gerekir.
+Apache TinkerPop Gremlin SDK 'sı, kaynak belirteçleri oluşturmak için kullanılacak bir API 'ye sahip değil. *Kaynak belirteci* terimi bir Azure Cosmos DB kavramıdır. Kaynak belirteçleri oluşturmak için [Azure Cosmos DB SDK 'sını](sql-api-sdk-dotnet.md)indirin. Uygulamanızın, grafik veritabanına erişmek için kaynak belirteçleri oluşturması ve bunları kullanması gerekiyorsa, iki ayrı SDK gerektirir.
 
-Kaynak belirteçlerinin üzerindeki nesne modeli hiyerarşisi:
-- **Cosmos DB hesap** -kendısıyle ilişkilendirilmiş DNS olan üst düzey varlık (örneğin,`contoso.gremlin.cosmos.azure.com`
-  - **Cosmos DB veritabanı**
+Kaynak belirteçlerinin üzerindeki nesne modeli hiyerarşisi aşağıdaki ana hatlarıyla gösterilmiştir:
+
+- **Azure Cosmos DB hesabı** -kendisiyle ILIŞKILI bir DNS içeren en üst düzey varlık (örneğin, `contoso.gremlin.cosmos.azure.com`).
+  - **Azure Cosmos DB veritabanı**
     - **Kullanıcısını**
       - **Yetkisi**
-        - *Token* - **izin nesnesinin hangi eylemlere izin verileceğini** veya reddedildiğini belirten bir özelliği.
+        - **Belirteç** -izin verilen veya reddedilen eylemleri belirten bir izin nesnesi özelliği.
 
-Kaynak belirtecinin biçimi `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`vardır. Bu dize, istemciler için opaktır ve değişiklik veya yorum olmadan olduğu gibi kullanılmalıdır.
+Kaynak belirteci şu biçimi kullanır: `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"`. Bu dize, istemciler için opaktır ve değişiklik veya yorum olmadan olduğu gibi kullanılmalıdır.
 
 ```csharp
-// Notice that document client is created against .NET SDK end-point rather than Gremlin.
+// Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
 DocumentClient client = new DocumentClient(
   new Uri("https://contoso.documents.azure.com:443/"), 
   "<master key>", 
@@ -42,10 +44,10 @@ DocumentClient client = new DocumentClient(
   });
 
   // Read specific permission to obtain a token.
-  // Token will not be returned during ReadPermissionReedAsync() call.
-  // This call will succeed only if database id, user id and permission id already exist. 
-  // Note that <database id> is not a database name, it is a base64 string that represents database identifier, for example "KalVAA==".
-  // Similar comment applies to <user id> and <permission id>
+  // The token isn't returned during the ReadPermissionReedAsync() call.
+  // The call succeeds only if database id, user id, and permission id already exist. 
+  // Note that <database id> is not a database name. It is a base64 string that represents the database identifier, for example "KalVAA==".
+  // Similar comment applies to <user id> and <permission id>.
   Permission permission = await client.ReadPermissionAsync(UriFactory.CreatePermissionUri("<database id>", "<user id>", "<permission id>"));
 
   Console.WriteLine("Obtained token {0}", permission.Token);
@@ -53,21 +55,21 @@ DocumentClient client = new DocumentClient(
 ```
 
 ## <a name="use-a-resource-token"></a>Kaynak belirteci kullanma
-Kaynak belirteçleri, sınıf oluşturulurken `GremlinServer` doğrudan "Password" özelliği olarak kullanılabilir.
+GremlinServer sınıfını oluştururken kaynak belirteçlerini doğrudan bir "parola" özelliği olarak kullanabilirsiniz.
 
 ```csharp
-// Gremlin application needs to be given a resource token. It can't discover the token on its own.
-// Token can be obtained for a given permission using Cosmos DB SDK or passed into the application as command line argument or configuration value.
+// The Gremlin application needs to be given a resource token. It can't discover the token on its own.
+// You can obtain the token for a given permission by using the Azure Cosmos DB SDK, or you can pass it into the application as a command line argument or configuration value.
 string resourceToken = GetResourceToken();
 
-// Configure gremlin servier to use resource token rather than master key
+// Configure the Gremlin server to use a resource token rather than a master key.
 GremlinServer server = new GremlinServer(
   "contoso.gremlin.cosmosdb.azure.com",
   port: 443,
   enableSsl: true,
   username: "/dbs/<database name>/colls/<collection name>",
 
-  // Format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;"
+  // The format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;".
   password: resourceToken);
 
   using (GremlinClient gremlinClient = new GremlinClient(server, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType))
@@ -85,7 +87,7 @@ AuthProperties authenticationProperties = new AuthProperties();
 authenticationProperties.with(AuthProperties.Property.USERNAME,
     String.format("/dbs/%s/colls/%s", "<database name>", "<collection name>"));
 
-// Format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;"
+// The format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;".
 authenticationProperties.with(AuthProperties.Property.PASSWORD, resourceToken);
 
 builder.authProperties(authenticationProperties);
@@ -93,11 +95,11 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>Sınır
 
-Tek bir Gremlin hesabı sınırsız sayıda belirteç verebilir, ancak en fazla **100** belirteç, **1 saat**içinde aynı anda kullanılabilir. Uygulama, saat başına belirteç sınırını aşarsa, kimlik doğrulama isteği hata iletisiyle `"Exceeded allowed resource token limit of 100 that can be used concurrently"`reddedilir. Yeni belirteçler için yuvaları serbest bırakmak üzere belirli belirteçlerle etkin bağlantıları kapatmak, hiçbir şekilde kullanılamaz. Cosmos DB Gremlin veritabanı altyapısı, kimlik doğrulama isteğinden önce geçen saatteki farklı belirteçleri izler.
+Tek bir Gremlin hesabıyla sınırsız sayıda belirteç verebilirsiniz. Ancak, 1 saat içinde aynı anda en fazla 100 belirteç kullanabilirsiniz. Bir uygulama saat başına belirteç sınırını aşarsa, bir kimlik doğrulama isteği reddedilir ve aşağıdaki hata iletisini alırsınız: "Eşzamanlı olarak kullanılabilecek 100 için izin verilen kaynak belirteci limiti aşıldı." Yeni belirteçler için yuvaları serbest bırakmak üzere belirli belirteçleri kullanan etkin bağlantıları kapatmak için çalışmaz. Azure Cosmos DB Gremlin veritabanı altyapısı, kimlik doğrulama isteğinden hemen önce, saat boyunca benzersiz belirteçleri izler.
 
 ## <a name="permission"></a>İzin
 
-Ortak hata uygulamaları, `"Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header."`kaynak belirteçleri kullanılırken ile birlikte gelir. Bu hata, Gremlin geçişi bir kenar veya köşe yazmaya çalıştığında, ancak kaynak belirteci yalnızca izin verdiğinde `Read` döndürülür. Aşağıdaki adımlardan herhangi birini içerip içermediğini denetleyin `.addV()`:, `.addE()`, `.drop()`veya `.property()`.
+Uygulamaların kaynak belirteçlerini kullanırken karşılaştığı yaygın bir hata, "karşılık gelen istek için yetkilendirme üstbilgisinde izin verilmedi. Lütfen başka bir yetkilendirme üstbilgisiyle yeniden deneyin. " Bu hata, Gremlin geçişi bir kenar veya köşe yazmaya çalıştığında, ancak kaynak belirteci yalnızca *okuma* izinleri verdiğinde döndürülür. Şu adımlardan herhangi birini içerip içermediğini görmek için çapraz geçiş bilgilerinizi inceleyin: *. addv ()* , *. Adde ()* , *. Drop ()* veya *. Property ()* .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Cosmos DB [rol tabanlı erişim denetimi](role-based-access-control.md)

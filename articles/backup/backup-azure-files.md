@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d5702576b3353bbc779601c7a5fe91417d73c7a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624347"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129558"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Azure dosya paylaşımlarını yedekleme ve geri yükleme
 Bu makalede, Azure portalını kullanarak [Azure dosya paylaşımlarını](../storage/files/storage-files-introduction.md) yedekleme ve geri yükleme işlemlerinin nasıl yapılacağı açıklanmaktadır.
@@ -86,13 +86,15 @@ Bazen yedekleme ilkesinde planlanan zamanların dışında bir yedekleme anlık 
 
    ![Azure dosya paylaşımını kasayla ilişkilendirmek için Yedekle'ye tıklayın](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
-3. Azure dosya paylaşımları listesinden istediğiniz dosya paylaşımını seçin. Seçili dosya paylaşımının Yedekleme Öğesi menüsü açılır.
+3. Azure dosya paylaşımları listesinden istediğiniz dosya paylaşımını seçin. **Yedekleme öğesi** ayrıntıları görüntülenir. **Yedekleme öğesi** menüsünde **Şimdi Yedekle**' ye tıklayın. Bu isteğe bağlı bir yedekleme işi olduğundan, kurtarma noktasıyla ilişkilendirilmiş bir bekletme ilkesi yoktur.
 
    ![Azure dosya paylaşımını kasayla ilişkilendirmek için Yedekle'ye tıklayın](./media/backup-file-shares/backup-item-menu.png)
 
-4. Yedekleme Öğesi menüsünde **Şimdi Yedekle**'ye tıklayın. Bu isteğe bağlı bir yedekleme işi olduğundan, kurtarma noktasıyla ilişkilendirilmiş bir bekletme ilkesi yoktur. **Şimdi Yedekle** iletişim kutusu açılır. Kurtarma noktasını bekletmek istediğiniz son günü belirtin.
+4. **Şimdi Yedekle** iletişim kutusu açılır. Kurtarma noktasını bekletmek istediğiniz son günü belirtin.
 
    ![Azure dosya paylaşımını kasayla ilişkilendirmek için Yedekle'ye tıklayın](./media/backup-file-shares/backup-now-menu.png)
+
+5. İsteğe bağlı yedekleme işini onaylamak için **Tamam** ' ı tıklatın.
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Azure dosya paylaşımını yedekten geri yükleme
 Dosya paylaşımının tamamını ya da tek tek dosya veya klasörleri bir Geri Yükleme Noktasından geri yüklemeniz gerekiyorsa, önceki bölümde ayrıntılarıyla açıklandığı gibi Yedekleme Öğesi'ne gidin. İstenen Belirli bir noktadan dosya paylaşımının tamamını geri yüklemek için **Paylaşımı Geri Yükle**'yi seçin. Görüntülenen Geri Yükleme Noktaları listesinden birini seçerek Geçerli dosya paylaşımınızın üzerine yazın veya Bunu aynı bölgede başka bir dosya paylaşımına geri yükleyin.

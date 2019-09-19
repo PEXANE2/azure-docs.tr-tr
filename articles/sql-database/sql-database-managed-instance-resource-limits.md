@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 09/16/2019
-ms.openlocfilehash: 7f7faf11ed18fa2a85587c193376a3e4ce905fd2
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: d0356ff61ec8073e7fe69c3b09cbbdd8845fb787
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010198"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128905"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -52,18 +52,18 @@ Yönetilen örnek iki hizmet katmanına sahiptir: [Genel amaçlı](sql-database-
 | **Özelliği** | **Genel Amaçlı** | **İş Açısından Kritik** |
 | --- | --- | --- |
 | Sanal çekirdek sayısı\* | 4\. nesil 8, 16, 24<br/>5\. nesil 4, 8, 16, 24, 32, 40, 64, 80 | 4\. nesil 8, 16, 24 <br/> 5\. nesil 4, 8, 16, 24, 32, 40, 64, 80 |
-| Maksimum bellek | 4\. nesil 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil 40,8 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4\. nesil 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil 40,8 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
-| En büyük örnek ayrılmış depolama boyutu | 4 sanal çekirdek için-2 TB (yalnızca 5. nesil)<br/>-8 TB diğer boyutlar için | 4\. nesil 1 TB <br/> 5\. nesil <br/>-1 TB, 4, 8, 16 sanal çekirdek<br/>-2 TB, 24 sanal çekirdek için<br/>-4 TB 32, 40, 64, 80 sanal çekirdekler |
-| Maks. veritabanı boyutu | 8 TB | 4 TB |
-| Örnek başına en fazla veritabanı sayısı | 100 | 100 |
-| Örnek başına en fazla veritabanı dosyası sayısı | 280 kadar | veritabanı başına 32.767 dosya |
-| En büyük dosya boyutu | 8 TB | 4 TB |
-| Günlük dosyası boyutu üst sınırı | 2 TB | 2 TB |
+| Maksimum bellek | 4\. nesil 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4\. nesil 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
+| En büyük örnek depolama boyutu (ayrılmış) | 4 sanal çekirdek için-2 TB (yalnızca 5. nesil)<br/>-8 TB diğer boyutlar için | 4\. nesil 1 TB <br/> 5\. nesil <br/>-1 TB, 4, 8, 16 sanal çekirdek<br/>-2 TB, 24 sanal çekirdek için<br/>-4 TB 32, 40, 64, 80 sanal çekirdekler |
+| Maks. veritabanı boyutu | Şu anda kullanılabilir örnek boyutu (sanal çekirdek sayısına bağlı olarak en fazla 2 TB-8 TB). | Şu anda kullanılabilir örnek boyutu (sanal çekirdek sayısına bağlı olarak en fazla 1 TB-4 TB). |
+| En fazla tempDB boyutu | 24 GB/vCore (96-1.920 GB) ile sınırlıdır ve şu anda kullanılabilir örnek boyutu.<br/>Daha fazla TempDB alanı almak için daha fazla sanal çekirdek ekleyin. | Şu anda kullanılabilir örnek boyutu. TempDB günlük dosyası boyutu şu anda 24 GB/sanal çekirdek ile sınırlıdır. |
+| Örnek başına en fazla veritabanı sayısı | 100, örnek depolama boyutu sınırına ulaşılmadığı müddetçe. | 100, örnek depolama boyutu sınırına ulaşılmadığı müddetçe. |
+| Örnek başına en fazla veritabanı dosyası sayısı | Örnek depolama boyutu veya [Azure Premium disk depolama ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) sınırına ulaşılmadığı takdirde 280 'e kadar. | örnek depolama boyutu sınırına ulaşılmadığı takdirde veritabanı başına 32.767 dosya. |
+| En büyük dosya boyutu | 8 TB ile sınırlıdır, şu anda kullanılabilir örnek boyutu (maksimum 2 TB-8 TB) ve [Azure Premium disk depolama ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | 4 TB ile sınırlıdır ve şu anda kullanılabilir örnek boyutu (1 TB-4 TB 'a kadar). |
+| Günlük dosyası boyutu üst sınırı | 2 TB, şu anda kullanılabilir örnek boyutu ve [Azure Premium disk depolama ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)ile sınırlıdır. | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek boyutu. |
 | Veri/günlük ıOPS (yaklaşık) | dosya başına 500-7.500<br/>\*[Daha fazla ıOPS almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/vCore)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
-| Günlük yazma verimlilik sınırı | Sanal çekirdek başına 3 MB/s<br/>Örnek başına en fazla 22 MB/sn | vCore başına 4 MB/s<br/>Örnek başına en fazla 48 MB/sn|
-| Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Yok |
+| Günlük yazma verimlilik sınırı (örnek başına) | Sanal çekirdek başına 3 MB/s<br/>En fazla 22 MB/sn | vCore başına 4 MB/s<br/>En fazla 48 MB/sn |
+| Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Sınırlı değildir. |
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |
-| En fazla tempDB boyutu | 192-1.920 GB (vCore başına 24 GB)<br/>Daha fazla TempDB alanı almak için daha fazla sanal çekirdek ekleyin. | En büyük örnek depolama boyutuyla sınırlıdır. TempDB günlük dosyası boyutu şu anda 24 GB/sanal çekirdek ile sınırlıdır. |
 | Bellek içi OLTP | Desteklenmiyor | Kullanılabilir |
 | En fazla oturum sayısı | 30000 | 30000 |
 | [Salt okuma çoğaltmaları](sql-database-read-scale-out.md) | 0 | 1 (fiyata dahildir) |
@@ -80,7 +80,7 @@ Yönetilen örnek iki hizmet katmanına sahiptir: [Genel amaçlı](sql-database-
 
 Yönetilen örnekler yalnızca [desteklenen bölgelerde](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)oluşturulabilir. Şu anda desteklenmeyen bir bölgede yönetilen bir örnek oluşturmak için, [Azure Portal aracılığıyla bir destek isteği gönderebilirsiniz](#obtaining-a-larger-quota-for-sql-managed-instance).
 
-## <a name="supported-subscription-types"></a>Desteklenen Abonelik türleri
+## <a name="supported-subscription-types"></a>Desteklenen abonelik türleri
 
 Yönetilen örnek şu anda yalnızca aşağıdaki abonelik türlerinde dağıtımı desteklemektedir:
 
@@ -93,10 +93,10 @@ Yönetilen örnek şu anda yalnızca aşağıdaki abonelik türlerinde dağıtı
 
 ## <a name="regional-resource-limitations"></a>Bölgesel kaynak sınırlamaları
 
-Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. Yönetilen örnek, bir tür abonelik türüne bağlı olarak Azure bölgesi başına iki varsayılan sınıra sahiptir:
+Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. Yönetilen örnek, Azure bölgesi başına iki varsayılan sınıra sahiptir (Bu, Azure portal) bir abonelik türü türüne bağlı olarak bir özel [destek isteği](#obtaining-a-larger-quota-for-sql-managed-instance)oluşturarak isteğe bağlı olarak artırılabilir:
 
 - **Alt ağ sınırı**: Yönetilen örneklerin tek bir bölgede dağıtıldığı en fazla alt ağ sayısı.
-- **sanal çekirdek sınırı**: Tek bir bölgedeki tüm örneklerde dağıtılabilecek maksimum sanal çekirdek sayısı. Toplam örnek sayısı, vCore sınırının içinde olduğu sürece sınırlı değildir.
+- **sanal çekirdek birim sınırı**: Tek bir bölgedeki tüm örneklerde dağıtılabilecek en fazla vCore birimi sayısı. Bir GP sanal çekirdeği bir vCore birimi kullanır ve bir BC sanal çekirdek 4 sanal çekirdek birimi alır. Toplam örnek sayısı, sanal çekirdek birim sınırının içinde olduğu sürece sınırlı değildir.
 
 > [!Note]
 > Bu sınırlar varsayılan ayarlar değildir ve teknik sınırlamalardır. Geçerli bölgede daha fazla yönetilen örneğe ihtiyacınız varsa Azure portal özel bir [destek isteği](#obtaining-a-larger-quota-for-sql-managed-instance) oluşturularak sınırlar artırılabilir. Alternatif olarak, destek istekleri göndermeden başka bir Azure bölgesinde yeni yönetilen örnekler oluşturabilirsiniz.
@@ -133,7 +133,7 @@ Daha büyük bir kota elde etme işlemini başlatmak için:
 
      ![Sorun türü kotası](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
-3. **İleri**'ye tıklayın.
+3. **İleri**’ye tıklayın.
 4. Yeni destek isteği için **sorun sekmesinde** :
    - **Önem derecesi**için sorunun önem derecesini seçin.
    - **Ayrıntılar**için, sorununuz hakkında hata iletileri de dahil olmak üzere ek bilgiler sağlayın.
@@ -147,9 +147,9 @@ Daha büyük bir kota elde etme işlemini başlatmak için:
      > - Kota artırdıktan sonra mevcut alt ağlardaki hizmet katmanı başına gereken sanal çekirdek sayısı (mevcut alt ağlardan herhangi birinin genişletilmesi gerekiyorsa).
      > - Yeni alt ağlar içinde gerekli yeni alt ağ sayısı ve hizmet katmanı başına toplam Vcore sayısı (yeni alt ağlarda yönetilen örnekler dağıtmanız gerekiyorsa).
 
-5. **İleri**'ye tıklayın.
+5. **İleri**’ye tıklayın.
 6. Yeni destek isteği için kişi bilgileri sekmesinde, tercih edilen iletişim yöntemini (e-posta veya telefon) ve iletişim ayrıntılarını girin.
-7. **Oluştur**'a tıklayın.
+7. **Oluştur**’a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c7396baa745196e054c6cb49d349bf7684cd899
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8f3277d76709fe14a5eaa28cc0f562d95c1e4004
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001675"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128941"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Öğretici: Veri ve scikit ile görüntü sınıflandırma modellerini eğitme-Azure Machine Learning kullanmayı öğrenin
 
@@ -143,11 +143,11 @@ Artık bulutta bir modeli eğitmek için gerekli paketleriniz ve işlem kaynakla
 
 ## <a name="explore-data"></a>Verileri inceleme
 
-Bir modeli eğitmadan önce, bunu eğitebilmek için kullandığınız verileri anlamanız gerekir. Ayrıca verileri buluta kopyalamanız gerekir. Ardından, bulut eğitim ortamınız tarafından erişilebilir. Bu bölümde, aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğreneceksiniz:
+Bir modeli eğitmadan önce, bunu eğitebilmek için kullandığınız verileri anlamanız gerekir. Bulut eğitim ortamınız tarafından erişilebilmesi için verileri kullanarak buluta de yüklemeniz gerekir. Bu bölümde, aşağıdaki eylemleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
 * MNIST veri kümesini indirin.
 * Örnek görüntüleri görüntüleyin.
-* Verileri buluta yükleyin.
+* Bulutta çalışma alanınıza veri yükleyin.
 
 ### <a name="download-the-mnist-dataset"></a>MNIST veri kümesini indirme
 
@@ -209,18 +209,29 @@ Rastgele görüntü örnekleri gösterilir:
 
 Artık bu görüntülerin nasıl göründüğü ve beklenen tahmin sonucu hakkında bir fikriniz oldu.
 
-### <a name="upload-data-to-the-cloud"></a>Verileri buluta yükleme
+### <a name="create-a-filedataset"></a>Dosya veri kümesi oluşturma
 
-Eğitim verilerini not defterinizin üzerinde çalıştığı bilgisayarda indirdiniz ve kullandınız.  Sonraki bölümde, uzak Azure Machine Learning Işlem sırasında bir modeli eğitecaksınız.  Ayrıca, uzaktan işlem kaynağının verilerinize erişmesi gerekir. Erişim sağlamak için verilerinizi çalışma alanım ile ilişkili Merkezi bir veri deposuna yükleyin. Bu veri deposu, Azure veri merkezi 'nde olduğu gibi bulutta uzak işlem hedefleri kullanılırken hızlı erişim sağlar.
-
-Mnist dosyalarını veri deposunun kökünde adlı `mnist` bir dizine yükleyin. Daha fazla bilgi için bkz. [veri mağazalarınızın verilerine erişme](how-to-access-data.md) .
+`FileDataset` Nesne, çalışma alanı veri deposundaki veya genel URL 'lerdeki bir veya birden çok dosyaya başvurur. Dosyalar herhangi bir biçimde olabilir ve sınıfı, size dosyaları indirme veya işleme özelliğini sağlar. Bir `FileDataset`oluşturarak, veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine herhangi bir dönüştürme uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir. Daha fazla bilgi için bkz. `Dataset` paketteki [nasıl yapılır](https://docs.microsoft.com/en-us/azure/machine-learning/service/how-to-create-register-datasets) Kılavuzu.
 
 ```python
-ds = ws.get_default_datastore()
-print(ds.datastore_type, ds.account_name, ds.container_name)
+from azureml.core.dataset import Dataset
 
-ds.upload(src_dir=data_folder, target_path='mnist',
-          overwrite=True, show_progress=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
+
+Veri kümesini çalışma alanınıza kaydetmek için yönteminikullanın,böylecediğerdenemeleriarasındayenidenkullanılabilirveeğitimbetiğinizdekiadagöreadlandırılır.`register()`
+
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
 ```
 
 Artık modeli eğitmeye başlamak için gereken her şeye sahipsiniz.
@@ -253,6 +264,7 @@ os.makedirs(script_folder, exist_ok=True)
 import argparse
 import os
 import numpy as np
+import glob
 
 from sklearn.linear_model import LogisticRegression
 from sklearn.externals import joblib
@@ -260,7 +272,7 @@ from sklearn.externals import joblib
 from azureml.core import Run
 from utils import load_data
 
-# let user feed in 2 parameters, the location of the data files (from datastore), and the regularization rate of the logistic regression model
+# let user feed in 2 parameters, the dataset to mount or download, and the regularization rate of the logistic regression model
 parser = argparse.ArgumentParser()
 parser.add_argument('--data-folder', type=str, dest='data_folder', help='data folder mounting point')
 parser.add_argument('--regularization', type=float, dest='reg', default=0.01, help='regularization rate')
@@ -271,10 +283,10 @@ print('Data folder:', data_folder)
 
 # load train and test set into numpy arrays
 # note we scale the pixel intensity values to 0-1 (by dividing it with 255.0) so the model can converge faster.
-X_train = load_data(os.path.join(data_folder, 'train-images.gz'), False) / 255.0
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_train = load_data(os.path.join(data_folder, 'train-labels.gz'), True).reshape(-1)
-y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
+X_train = load_data(glob.glob(os.path.join(data_folder, '**/train-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+X_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0], False) / 255.0
+y_train = load_data(glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
+y_test = load_data(glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0], True).reshape(-1)
 print(X_train.shape, y_train.shape, X_test.shape, y_test.shape, sep = '\n')
 
 # get hold of the current run
@@ -322,19 +334,31 @@ Bir [sköğrenme tahmin aracı](https://docs.microsoft.com/python/api/azureml-tr
 * Eğitim betiği adı, **train.py**.
 * Eğitim betiğiyle gerekli parametreler.
 
-Bu öğreticide, bu AmlCompute hedefidir. Betik klasöründeki tüm dosyalar, çalışma için küme düğümlerine yüklenir. **Data_folder** , veri deposunu `ds.path('mnist').as_mount()`kullanacak şekilde ayarlanır:
+Bu öğreticide, bu AmlCompute hedefidir. Betik klasöründeki tüm dosyalar, çalışma için küme düğümlerine yüklenir. **Data_folder** , veri kümesini kullanacak şekilde ayarlanır. İlk olarak, eğitim için gereken bağımlılıkları belirten bir ortam nesnesi oluşturun. 
+
+```python
+from azureml.core.environment import Environment
+from azureml.core.conda_dependencies import CondaDependencies
+
+env = Environment('my_env')
+cd = CondaDependencies.create(pip_packages=['azureml-sdk','scikit-learn','azureml-dataprep[pandas,fuse]>=1.1.14'])
+env.python.conda_dependencies = cd
+```
+
+Ardından aşağıdaki kodla tahmin aracı oluşturun.
 
 ```python
 from azureml.train.sklearn import SKLearn
 
 script_params = {
-    '--data-folder': ds.path('mnist').as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--regularization': 0.5
 }
 
 est = SKLearn(source_directory=script_folder,
               script_params=script_params,
               compute_target=compute_target,
+              environment_definition=env, 
               entry_script='train.py')
 ```
 

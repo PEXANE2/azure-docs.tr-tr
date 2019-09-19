@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: cacd67e26b13df8ef456ac8f1391e4396f5bdd96
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0344fc834cb1ef29c91bc52239d1df2706d1ca81
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873886"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101684"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Hızlı Başlangıç: Azure SQL veritabanı yönetilen örneği oluşturma
 
@@ -60,7 +60,7 @@ Aşağıdaki adımlarda, yönetilen bir örnek oluşturma adımları gösterilme
 
    ![Yönetilen örnek formu](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
-5. Yönetilen örneği bir örnek yük devretme grubu olarak kullanmak için, kullanıma almayı seçin ve DnsAzurePartner yönetilen örneğini belirtin. Bu özellik önizleme aşamasındadır ve aşağıdaki ekran görüntüsünde gösterilmez.
+5. Yönetilen örneği bir örnek yük devretme grubu olarak kullanmak için, kullanıma almayı seçin ve DnsAzurePartner yönetilen örneğini belirtin. 
 6. İşlem ve depolama kaynaklarının boyutunu belirlemek ve fiyatlandırma katmanı seçeneklerini gözden geçirmek için **fiyatlandırma katmanını** seçin. 32 GB bellek ve 16 sanal çekirdekli Genel Amaçlı fiyatlandırma katmanı varsayılan değerdir.
 7. Depolama miktarını ve sanal çekirdek sayısını belirtmek için kaydırıcıları veya metin çubuklarını kullanın.
 8. İşiniz bittiğinde seçiminizi kaydetmek için **Uygula** ' yı seçin. 

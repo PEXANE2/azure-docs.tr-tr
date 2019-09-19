@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 9e7d6a027a60590396446479aecf1644ef753ecf
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098394"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130165"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup hizmeti ile Azure VM yedeklemelerini yönetme
 
@@ -164,6 +164,13 @@ Bir sanal makinenin yedekleme verilerini silmenin iki yolu vardır:
 
   > [!NOTE]
   > Yedekleme verilerini sildiğinizde, ilişkili tüm kurtarma noktalarını silersiniz. Silmek için belirli kurtarma noktaları seçemezsiniz.
+
+### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>Birincil veri kaynağı artık mevcut olmayan yedekleme öğesi
+
+- Azure Backup için yapılandırılmış Azure VM 'Ler korumayı durdurmadan silinir veya taşınırsa, hem zamanlanmış yedekleme işleri hem de isteğe bağlı (geçici) yedekleme işleri UserErrorVmNotFoundV2 hatasıyla başarısız olur. Yedekleme ön denetimi yalnızca başarısız olan geçici yedekleme işleri için kritik olarak görünür (başarısız zamanlanan işler gösterilmez). 
+- Bu yedekleme öğeleri, Kullanıcı tarafından ayarlanan yedekleme ve bekletme ilkesine bağlı olarak, sistemde etkin kalır. Bu Azure VM 'lerinin yedeklenen verileri, bekletme ilkesine göre tutulacaktır. Süresi biten kurtarma noktaları (son kurtarma noktası dışında), yedekleme ilkesinde ayarlanan bekletme aralığına göre temizlenir.
+- Son kurtarma noktası sürekli olarak korunurken ve Kullanıcı olarak ücretlendirildiği için, kullanıcıların birincil veri kaynağı artık mevcut olmayan yedekleme öğelerini silmesi önerilir. daha fazla maliyet olmaması için, silme kaynakları için yedekleme öğesi/verileri artık gerekmiyorsa kullanılabilir yedekleme fiyatlandırmasına göre.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure VM 'lerini [VM ayarlarından nasıl yedekleyeceğinizi](backup-azure-vms-first-look-arm.md)öğrenin.

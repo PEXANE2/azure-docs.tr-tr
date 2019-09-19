@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4e24246ec4ed30ec93bf8e113d659bc5e3600913
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615975"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130112"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>Veri kaynakları için soru-cevap Oluşturucu içeriği
 
@@ -28,7 +28,7 @@ Aşağıdaki tabloda, soru-cevap Oluşturucu tarafından desteklenen içeriği v
 |Kaynak Türü|İçerik Türü| Örnekler|
 |--|--|--|
 |URL|SSS<br> (Düz, bölümler ile veya konu başlığı ile)<br>Destek sayfaları <br> (Tek sayfalı nasıl yapılır makaleleri, sorun giderme makaleleri vb.)|[Düz SSS](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), <br>[Bağlantılarla Ilgili SSS](https://www.microsoft.com/software-download/faq),<br> [Konularda SSS giriş sayfası](https://www.microsoft.com/Licensing/servicecenter/Help/Faq.aspx)<br>[Destek makalesi](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/best-practices)|
-|PDF / DOC|Sık<br> Ürün el kitabı,<br> Broşürler<br> T<br> El ilanı Ilkesi,<br> Destek Kılavuzu,<br> Yapılandırılmış QnA,<br> benzerlerini.|[Yapılandırılmış QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Örnek ürün el ile. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Örnek semi-structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Örnek Teknik İnceleme. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
+|PDF / DOC|Sık<br> Ürün el kitabı,<br> Broşürler<br> T<br> El ilanı Ilkesi,<br> Destek Kılavuzu,<br> Yapılandırılmış QnA,<br> Benzerlerini.|[Yapılandırılmış QnA. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Örnek ürün el ile. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf),<br> [Örnek semi-structured. doc](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/semi-structured.docx),<br> [Örnek Teknik İnceleme. PDF](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/white-paper.pdf)|
 |Excel|Yapılandırılmış soru-cevap dosyası<br> (RTF, HTML desteği dahil)|[Soru-cevap FAQ.xls örneği](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/QnA%20Maker%20Sample%20FAQ.xlsx)|
 |TXT/TSV|Yapılandırılmış soru-cevap dosyası|[Örnek chit-chat.tsv](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Scenario_Responses_Friendly.tsv)|
 
@@ -198,10 +198,19 @@ Aşağıda Soru-Cevap Oluşturma kullanabileceğiniz markın biçimlerinin liste
 |Bağlantı için italik URL|`[*text*](https://www.my.com)`|`How do I create a bot with [*QnA Maker*](https://www.qnamaker.ai)?`|![italik URL için biçim](../media/qnamaker-concepts-datasources/format-url-italics.png)|
 |Kaçış markın sembolleri|`\*text\*`|`How do I create a bot with \*QnA Maker\*?`|![italik URL için biçim](../media/qnamaker-concepts-datasources/format-escape-markdown-symbols.png)|
 |Sıralı liste|`\n 1. item1 \n 1. item2`|`This is an ordered list: \n 1. List item 1 \n 1. List item 2`<br>Yukarıdaki örnek, markaşağı içinde yerleşik olarak bulunan otomatik numaralandırmayı kullanır.<br>`This is an ordered list: \n 1. List item 1 \n 2. List item 2`<br>Yukarıdaki örnek, açık numaralandırma kullanır.|![sıralı liste için biçim](../media/qnamaker-concepts-datasources/format-ordered-list.png)|
-|Sırasız liste|`\n * item1 \n * item2`<br>veya<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![Sırasız liste için biçim](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
+|Sırasız liste|`\n * item1 \n * item2`<br>or<br>`\n - item1 \n - item2`|`This is an ordered list: \n * List item 1 \n * List item 2`|![Sırasız liste için biçim](../media/qnamaker-concepts-datasources/format-unordered-list.png)|
 |İç içe listeler|`\n * Parent1 \n\t * Child1 \n\t * Child2 \n * Parent2`<br><br>`\n * Parent1 \n\t 1. Child1 \n\t * Child2 \n 1. Parent2`<br><br>Sıralı ve sıralanmamış listeleri birlikte iç içe yerleştirebilirsiniz. Sekmesi `\t`, alt öğesinin girintileme düzeyini gösterir.|`This is an unordered list: \n * List item 1 \n\t * Child1 \n\t * Child2 \n * List item 2`<br><br>`This is an ordered nested list: \n 1. Parent1 \n\t 1. Child1 \n\t 1. Child2 \n 1. Parent2`|![iç içe sıralanmamış liste için biçim](../media/qnamaker-concepts-datasources/format-nested-unordered-list.png)<br>![iç içe geçmiş liste için biçim](../media/qnamaker-concepts-datasources/format-nested-ordered-list.png)|
 
 \* Soru-Cevap Oluşturma görüntüyü hiçbir şekilde işlemez. Bu, görüntüyü işlemek için istemci uygulamanın rolüdür. 
+
+Güncelleştirme/değiştirme Bilgi Bankası API 'Lerini kullanarak içerik eklemek istiyorsanız ve içerik/dosya HTML etiketleri içeriyorsa, etiketlerin açılış ve kapanışının kodlanmış biçimde dönüştürülmesini sağlamak için dosyanızdaki HTML 'yi koruyabilirsiniz.
+
+| HTML 'yi koru  | API isteğindeki temsili  | KB cinsinden temsil |
+|-----------|---------|-------------------------|
+| Evet | \&lt; br\&gt; | &lt;br&gt; |
+| Evet | \&lt; H3\&gt; başlık\&lt;/H3\&gt; | &lt;H3&gt;üstbilgisi&lt;/H3&gt; |
+
+Ayrıca, CR LF (\r\n), BB 'ye dönüştürülür. LF (\n) olduğu gibi tutulur. Bir kaçış sırasını \t veya \n gibi atlamak istiyorsanız ters eğik çizgi kullanabilirsiniz, örneğin\\: '\\\\\\r n ' ve '\\\\t '
 
 ## <a name="editing-your-knowledge-base-locally"></a>Bilgi bankaınızı yerel olarak Düzenle
 

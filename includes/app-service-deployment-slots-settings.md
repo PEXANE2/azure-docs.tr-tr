@@ -2,14 +2,14 @@
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 06/18/2019
+ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 0691b1a531ffebbb2c368bdb37dd4d8025fb4a4e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e00db06346b19ef85eb77626eb2ed169d2224b6c
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623696"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129685"
 ---
 Yapılandırmayı başka bir dağıtım yuvasından kopyaladığınızda, kopyalanmış yapılandırma düzenlenebilir olur. Bazı yapılandırma öğeleri bir takas (yuvaya özgü değil) içindeki içeriği izler, ancak diğer yapılandırma öğeleri bir değiştirme sonrasında aynı yuvada kalır (yuvaya özgü). Aşağıdaki listeler, yuvaları takas yaparken değişen ayarları gösterir.
 
@@ -19,7 +19,6 @@ Yapılandırmayı başka bir dağıtım yuvasından kopyaladığınızda, kopyal
 * Uygulama ayarları (bir yuvayı kontrol etmek için yapılandırılabilir)
 * Bağlantı dizeleri (bir yuvayı kontrol etmek için yapılandırılabilir)
 * İşleyici eşlemeleri
-* İzleme ve Tanılama ayarları
 * Ortak sertifikalar
 * WebJobs içeriği
 * Karma bağlantılar *
@@ -27,19 +26,20 @@ Yapılandırmayı başka bir dağıtım yuvasından kopyaladığınızda, kopyal
 * Hizmet uç noktaları *
 * Azure Content Delivery Network *
 
-Bir yıldız işareti (*) ile işaretlenen özellikler, yuvaya yapışkan olarak yapılacak şekilde planlanmaktadır. 
+Yıldız işareti (*) ile işaretlenen özellikler, takas edilmemiş olarak planlanmaktadır. 
 
 **Takas olmayan ayarlar**:
 
 * Yayımlama uç noktaları
 * Özel etki alanı adları
-* Özel sertifikalar ve SSL bağlamaları
+* Genel olmayan sertifikalar ve TLS/SSL ayarları
 * Ölçek ayarları
 * WebJobs zamanlayıcılar
 * IP kısıtlamaları
 * Daima Açık
-* Protokol ayarları (HTTPS, TLS sürümü, istemci sertifikaları)
 * Tanılama günlüğü ayarları
 * Çıkış noktaları arası kaynak paylaşımı (CORS)
 
-<!-- VNET and hybrid connections not yet sticky to slot -->
+> [!NOTE]
+> Takas edilmemiş ayarlara uygulanan bazı uygulama ayarları da takas edilmez. Örneğin, tanılama günlüğü ayarları değiştirilmediğinden, `WEBSITE_HTTPLOGGING_RETENTION_DAYS` ve `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` gibi ilgili uygulama ayarları, yuva ayarı olarak gösterilmese bile de değiştirilmiyor.
+>

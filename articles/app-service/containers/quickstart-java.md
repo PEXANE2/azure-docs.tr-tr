@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0c1599e61bbc92f6f81cfb17e35ffd0bf04721f9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 2d486a5e181e9131ef7a1e91f52018fb2be82dc1
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883516"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105231"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Hızlı Başlangıç: Linux üzerinde Azure App Service Java uygulaması oluşturma
 
@@ -31,7 +31,7 @@ ms.locfileid: "70883516"
 >
 > Aynı şey, IntelliJ ve tutulma gibi popüler Ides 'ler kullanılarak da yapılabilir. [Azure Toolkit for IntelliJ hızlı](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) başlangıç veya [Azure Toolkit for Eclipse hızlı başlangıç](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)aşamasında benzer belgelerimize göz atın.
 >
-![Azure'da çalışan örnek uygulama](media/quickstart-java/java-hello-world-in-browser.png)
+![Azure App Service 'de çalışan örnek uygulama](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -137,7 +137,7 @@ mvn package azure-webapp:deploy
 
 Dağıtım tamamlandıktan sonra, web tarayıcınızda aşağıdaki URL’yi kullanarak dağıtılan uygulamanın konumuna gidin; örneğin `http://<webapp>.azurewebsites.net`. 
 
-![Azure'da çalışan örnek uygulama](media/quickstart-java/java-hello-world-in-browser.png)
+![Azure App Service 'de çalışan örnek uygulama](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
 **Tebrikler!** Linux üzerinde App Service’e ilk Java uygulamanızı dağıttınız.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 909b32890ea7ff33d6b5b5db3bb55f36f7007c6b
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b4c771b406d635410c22db5c1c4687a34a2e6eb0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018655"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130011"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes hizmeti ile CoreDNS 'i özelleştirme
 
@@ -20,7 +20,7 @@ Azure Kubernetes hizmeti (AKS), küme DNS yönetimi için [coredns][coredns] pro
 
 AKS yönetilen bir hizmet olduğundan, CoreDNS (bir *Corefile*) ana yapılandırmasını değiştiremezsiniz. Bunun yerine, varsayılan ayarları geçersiz kılmak için bir Kubernetes *Configmap* kullanın. Varsayılan aks coredns configmaps öğesini görmek için `kubectl get configmaps --namespace=kube-system coredns -o yaml` komutunu kullanın.
 
-Bu makalede, AKS 'de CoreDNS 'in temel özelleştirme seçenekleri için ConfigMaps 'ın nasıl kullanılacağı gösterilir.
+Bu makalede, AKS 'de CoreDNS 'in temel özelleştirme seçenekleri için ConfigMaps 'ın nasıl kullanılacağı gösterilir. Bu yaklaşım, CoreFile 'ı kullanarak diğer bağlamlarda CoreDNS 'in yapılandırılmasını farklılık gösterir. Yapılandırma değerleri sürümler arasında değişolabileceğinden, çalıştırdığınız CoreDNS sürümünü doğrulayın.
 
 > [!NOTE]
 > `kube-dns`bir Kubernetes yapılandırma eşlemesi aracılığıyla farklı [özelleştirme seçenekleri][kubednsblog] sunuluyor. CoreDNS, KUIN-DNS ile geriye dönük olarak uyumlu **değildir** . Daha önce kullandığınız tüm özelleştirmeler CoreDNS ile kullanım için güncelleştirilmeleri gerekir.
@@ -31,7 +31,7 @@ Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ih
 
 ## <a name="what-is-supportedunsupported"></a>Desteklenir/desteklenmez
 
-Tüm yerleşik CoreDNS eklentileri desteklenir. Eklenti/üçüncü taraf eklentileri desteklenmez. 
+Tüm yerleşik CoreDNS eklentileri desteklenir. Eklenti/üçüncü taraf eklentileri desteklenmez.
 
 ## <a name="rewrite-dns"></a>DNS 'i yeniden yaz
 

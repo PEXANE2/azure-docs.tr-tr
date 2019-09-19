@@ -93,7 +93,7 @@ sections:
           - href: /azure/sql-database/sql-database-instance-pools
             html: <p>Kaynakları paylaşan ve hızla ölçeklendirilen birden çok yönetilen örneği dağıtmak için basit ve uygun maliyetli bir çözüm olarak yönetilen örnek havuzlarını kullanın.</p>
             image:
-              src: media/index/i_instancepool.png
+              src: media/index/i-instancepools.svg
             title: Örnek havuzu
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:

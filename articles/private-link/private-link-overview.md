@@ -1,21 +1,21 @@
 ---
-title: Azure özel bağlantısı nedir?
-description: Azure özel bağlantısı hakkında bilgi edinin.
-services: virtual-network
+title: Azure Özel Bağlantı nedir?
+description: Azure özel bağlantı kullanarak Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişin.
+services: private-link
 author: KumudD
-ms.service: virtual-network
+ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 9b7dea0507d4434274d78546b98961b008ea8cd8
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: fc3ae87ce5c4547526ae50f371684ac14dfcf266
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71017895"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104649"
 ---
-# <a name="what-is-azure-private-link-preview"></a>Azure özel bağlantısı nedir? (Önizleme)
-Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel Internet 'ten etkilenme olasılığını ortadan kaldırır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
+# <a name="what-is-azure-private-link-preview"></a>Azure Özel Bağlantı nedir? (Önizleme)
+Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
 
 > [!IMPORTANT]
 > Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Bilinen sınırlamalar için bkz. [Özel uç nokta](private-endpoint-overview.md#limitations) ve [özel bağlantı hizmeti](private-link-service-overview.md#limitations).

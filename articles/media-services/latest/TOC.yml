@@ -35,6 +35,7 @@
 - name: Örnekler
   items:
     - name: Media Services örnekleri
+      displayName: '.NET, Java'
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-media-services'
 - name: Kavramlar
   items:

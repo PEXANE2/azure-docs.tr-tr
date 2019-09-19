@@ -4,15 +4,15 @@ description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri eklene
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: dabee74dc757a8ccdc4384662f5c9bc09a1e5fbe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 402f82059f939de204e489bb36c2c2b82f816a19
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165037"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105283"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -20,7 +20,7 @@ Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure tarafından a
 
 Birden çok müşteri için kaynakları yönetiyorsanız, bu işlemi yineleyebilirsiniz. Daha sonra, yetkili bir Kullanıcı kiracınızda oturum açtığında, bu kullanıcı, her müşteri kiracısında oturum açmaya gerek kalmadan yönetim işlemlerini gerçekleştirmek üzere müşteri kiracı kapsamları genelinde yetkilendiribiliyor olabilir.
 
-Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizle ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Bu ilişkilendirmeyi, kaynakları yönettiğiniz her müşteri kiracısı için ayrı olarak gerçekleştirmeniz gerekeceğini unutmayın. 
+Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizle ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Bu ilişkilendirmeyi hizmet sağlayıcı kiracınızda gerçekleştirmeniz gerektiğini unutmayın.
 
 > [!NOTE]
 > Müşteriler, Azure Marketi 'Nde yayımladığınız bir yönetilen hizmet teklifi (genel veya özel) satın alındığında otomatik olarak eklendi. Daha fazla bilgi için bkz. [yönetilen hizmet tekliflerini Azure Marketi 'Nde yayımlama](publish-managed-services-offers.md). Burada açıklanan ekleme işlemini Azure Marketi 'Nde yayınlanan bir teklifle birlikte kullanabilirsiniz.
@@ -120,9 +120,9 @@ Müşteriyi eklemek için aşağıdakileri içeren bir [Azure Resource Manager](
 |**mspName**     |Hizmet sağlayıcı adı         |
 |**mspOfferDescription**     |Teklifinizin kısa bir açıklaması (örneğin, "contoso VM yönetimi teklifi")      |
 |**Managedbytenantıd**     |Kiracı KIMLIĞINIZ         |
-|**yetkilendirmeleri**     |Kiracınızdaki kullanıcılar/gruplar/SPN 'Ler için **PrincipalId** değerleri, müşterinizin yetkilendirmesinin amacını anlamasına ve bir yerleşik **roledefinitionıd** değeriyle eşleştirilmesine yardımcı olacak şekilde erişim düzeyi         |
+|**yetkilendirmeleri**     |Kiracınızdaki kullanıcılar/gruplar/SPN 'Ler için **PrincipalId** değerleri, müşterinizin yetkilendirmesinin amacını anlamasına **ve bir yerleşik** **roledefinitionıd** değeriyle eşleştirilmesine yardımcı olacak şekilde erişim düzeyi         |
 
-Bir müşterinin aboneliğini eklemek için, örneklerimizde sağladığımız uygun Azure Resource Manager şablonunu, yapılandırmanızla eşleşecek [](https://github.com/Azure/Azure-Lighthouse-samples/)şekilde değiştirdiğiniz karşılık gelen bir parametre dosyası ile birlikte kullanın ve yetkilendirmeleri tanımlayın. Ayrı şablonlar, abonelik içindeki bir aboneliğin, bir kaynak grubunun veya birden çok kaynak grubunun tamamını ekleme yönteminize bağlı olarak sağlanır. Ayrıca, aboneliklerini bu şekilde eklemek isterseniz, Azure Marketi 'Nde yayımladığınız yönetilen hizmet teklifini satın alan müşteriler için kullanılabilecek bir şablon sunuyoruz.
+Bir müşterinin aboneliğini eklemek için, [örneklerimizde](https://github.com/Azure/Azure-Lighthouse-samples/)sağladığımız uygun Azure Resource Manager şablonunu, yapılandırmanızla eşleşecek şekilde değiştirdiğiniz karşılık gelen bir parametre dosyası ile birlikte kullanın ve yetkilendirmeleri tanımlayın. Ayrı şablonlar, abonelik içindeki bir aboneliğin, bir kaynak grubunun veya birden çok kaynak grubunun tamamını ekleme yönteminize bağlı olarak sağlanır. Ayrıca, aboneliklerini bu şekilde eklemek isterseniz, Azure Marketi 'Nde yayımladığınız yönetilen hizmet teklifini satın alan müşteriler için kullanılabilecek bir şablon sunuyoruz.
 
 |**Bunu eklemek için**  |**Bu Azure Resource Manager şablonunu kullan**  |**Ve bu parametre dosyasını Değiştir** |
 |---------|---------|---------|

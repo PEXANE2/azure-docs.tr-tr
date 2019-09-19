@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 20d8106f06b708527fc60e025a19c6b07656acb3
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f4816ea2dc67df717e46df61c955d6d156b14d7e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102641"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129677"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -83,7 +83,7 @@ Aşağıdaki tabloda desteklenen işletim sistemlerinin bir listesi gösterilmek
 
 > [!NOTE]
 > Azure sanal makine ölçek kümeleri, Güncelleştirme Yönetimi ile yönetilebilir. Güncelleştirme Yönetimi, temel görüntü değil örneklerin kendileri üzerinde işe yarar. Tüm sanal makine örneklerini tek seferde güncelleştirmeme gibi, güncelleştirmeleri artımlı bir şekilde zamanlamanız gerekir.
-> [Azure olmayan bir makine Için Onbazı](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)altındaki adımları izleyerek VMSS düğümleri eklenebilir.
+> VMSS düğümleri, [Azure olmayan bir makine ekleme](automation-tutorial-installed-software.md#onboard-a-non-azure-machine)altındaki adımları izleyerek eklenebilir.
 
 ### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
 

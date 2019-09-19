@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: dekapur
-ms.openlocfilehash: 78db25fed7c284b31491bdc9e5498493da4c7479
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: dad37af030c456f9ba2cd814fa92a7811dce6aa1
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618856"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130322"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Plan ve hazırlık, Service Fabric tek başına Küme dağıtımı
 
@@ -65,10 +65,11 @@ Kümeye eklemek istediğiniz her makine için önerilen bazı özellikleri şunl
 * 40 GB kullanılabilir disk alanı en az
 * Bir 4 çekirdekli veya daha fazla CPU
 * Güvenli bir ağ veya tüm makineler için ağ bağlantısı
-* Windows Server işletim sistemi yüklü (geçerli sürümler: 2012 R2, 2016, 1709, 1803 veya 2019)
+* Windows Server işletim sistemi yüklü (geçerli sürümler: 2012 R2, 2016, 1709 veya 1803). Service Fabric Version 6.4.654.9590 ve üzeri, Server 2019 ve 1809 sürümlerini de destekler.
 * [.NET framework 4.5.1 veya üzeri](https://www.microsoft.com/download/details.aspx?id=40773), tam yükleme
 * [Windows PowerShell 3.0](https://msdn.microsoft.com/powershell/scripting/setup/installing-windows-powershell)
 * [RemoteRegistry hizmeti](https://technet.microsoft.com/library/cc754820) tüm makinelerde çalıştırılması
+* Service Fabric yükleme sürücüsü NTFS dosya sistemi olmalıdır
 
 Dağıtma ve yapılandırma kümenin Küme Yöneticisi olmalıdır [yönetici ayrıcalıkları](https://social.technet.microsoft.com/wiki/contents/articles/13436.windows-server-2012-how-to-add-an-account-to-a-local-administrator-group.aspx) her makine. Service Fabric’i bir etki alanı denetleyicisine yükleyemezsiniz.
 

@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d5ce4c094da3a411168c7fe4c282b15ceac7bb86
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: b51d984726cfd178189e7fe1a994c35c7efaed36
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70036797"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71124108"
 ---
 Aşağıdaki tabloda, Azure genel amaçlı v1, v2 ve BLOB depolama hesapları için varsayılan sınırlar açıklanmaktadır. Giriş *sınırı,* bir depolama hesabına gönderilen isteklerin tüm verilerini ifade eder. *Çıkış* sınırı, bir depolama hesabından alınan yanıtların tüm verilerine başvurur.
 
 | Resource | Varsayılan limit |
 | --- | --- |
 | Her iki standart ve Premium hesabı da dahil olmak üzere her abonelik için bölge başına depolama hesabı sayısı | 250 |
-| Maksimum depolama hesabı kapasitesi | ABD ve Avrupa için 2 PB ve diğer tüm bölgeler için 500 TB (UK dahil)<sup>1</sup>|
+| Maksimum depolama hesabı kapasitesi | ABD ve Avrupa için 2 PiB ve diğer tüm bölgeler için 500 TiB (UK dahil)<sup>1</sup>|
 | Depolama hesabı başına en fazla BLOB kapsayıcısı, blob, dosya paylaşımı, tablo, kuyruk, varlık veya ileti sayısı | Sınır yok |
 | Depolama hesabı başına en fazla istek oranı<sup>1</sup> | saniye başına 20.000 istek |
 | Depolama hesabı başına en fazla giriş<sup>1</sup> (ABD, Avrupa Bölgesi) | 25 Gbps |
@@ -31,12 +31,7 @@ Aşağıdaki tabloda, Azure genel amaçlı v1, v2 ve BLOB depolama hesapları i�
 
 <sup>1</sup> Azure Standart depolama hesapları, isteğe göre giriş için daha yüksek kapasite sınırlarını ve daha yüksek limitleri destekler. Giriş için hesap sınırlarında artış istemek için [Azure desteğine](https://azure.microsoft.com/support/faq/)başvurun. Daha fazla bilgi için bkz. daha [büyük, daha yüksek ölçekli depolama hesapları duyurusu](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
 
-<sup>2</sup> [Azure depolama çoğaltma](https://docs.microsoft.com/azure/storage/common/storage-redundancy) seçenekleri şunlardır:
-
-- **RA-GRS**: Okuma Erişimli Coğrafi olarak yedekli depolama. RA-GRS etkinse, ikincil konum için çıkış hedefleri, birincil konum için olanlarla aynıdır.
-- **GRS**: Coğrafi olarak yedekli depolama.
-- **ZRS**: Bölgesel olarak yedekli depolama.
-- **LRS**: Yerel olarak yedekli depolama.
+<sup>2</sup> okuma erişimi ETKINSE (RA-GRS/ra-GZRS), ikincil konum için çıkış hedefleri birincil konumlarından benzerdir. [Azure depolama çoğaltma](https://docs.microsoft.com/azure/storage/common/storage-redundancy) seçenekleri şunlardır:[!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
 
 > [!NOTE]
 > Çoğu senaryo için genel amaçlı v2 depolama hesabı kullanmanızı öneririz. Genel amaçlı v1 veya bir Azure Blob Depolama hesabını, kapalı kalma süresi olmadan ve verileri kopyalamaya gerek kalmadan, genel amaçlı bir v2 hesabına kolayca yükseltebilirsiniz.

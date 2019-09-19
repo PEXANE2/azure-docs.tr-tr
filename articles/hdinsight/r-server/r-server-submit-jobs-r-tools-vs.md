@@ -1,19 +1,19 @@
 ---
 title: Visual Studio için R Araçları Azure HDInsight 'tan iş gönderme
 description: R işlerini yerel Visual Studio makinenizden bir HDInsight kümesine gönderme.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1323e46d734d047f68652d0b21902e03182e6b62
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967929"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130248"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Visual Studio için R Araçları’ndan iş gönderme
 
@@ -41,7 +41,7 @@ RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/inte
 
    2. **R araçları** menü öğesine gidin ve **veri bilimi ayarları..** . seçeneğini belirleyin.
 
-       ![Veri Bilimi Ayarları...](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Visual Studio Veri Bilimi Ayarları](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
       > 1\. adımdaki yaklaşımı kullanarak, **veri bilimi ayarları** komutunu tekrarlamak yerine kişiselleştirilmiş veri bilimcu düzeninizi de kaydedebilir ve geri yükleyebilirsiniz.
@@ -56,11 +56,11 @@ RTVS, [R etkileşim penceresi](https://docs.microsoft.com/visualstudio/rtvs/inte
 6. Dosyanın en üstünden başlayarak, her satırı bir kez R Etkileşim penceresine göndermek için CTRL + ENTER tuşlarına basın. Bazı satırlar paketleri yükledikleri sürece biraz zaman alabilir.
     * Alternatif olarak, R dosyasındaki (CTRL + A) tüm satırları seçebilir, sonra tümünü yürütebilir (CTRL + ENTER) veya araç çubuğunda etkileşimli Yürüt simgesini seçebilirsiniz.
 
-        ![Etkileşimli Yürüt](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Visual Studio yürütme etkileşimli](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. Betikteki tüm satırları çalıştırdıktan sonra şuna benzer bir çıktı görmeniz gerekir:
 
-    ![Çalışma alanı](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Visual Studio çalışma alanı R araçları](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Bir HDInsight ML Hizmetleri kümesine iş gönderme
 
@@ -96,7 +96,7 @@ Putty ile donatılmış bir Windows bilgisayarından Microsoft ml Server/Microso
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![Spark bağlamını ayarlama](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![Apache Spark, bağlamı ayarlama](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. R Etkileşim penceresinde aşağıdaki komutları yürütün:
 
@@ -113,17 +113,17 @@ Putty ile donatılmış bir Windows bilgisayarından Microsoft ml Server/Microso
 
     1. Azure 'daki HDInsight ML Hizmetleri kümeniz bölmesinden, sol taraftaki menüden **depolama hesapları** ' nı seçin.
 
-        ![Depolama hesapları](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Azure HDInsight depolama hesapları](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. Kümenizin varsayılan depolama hesabını seçin ve kapsayıcı/dizin adı ' nı aklınızda yapın.
 
     3. Depolama hesabı bölmesinizdeki sol taraftaki menüden **kapsayıcılar** ' ı seçin.
 
-        ![Kapsayıcılar](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Azure HDInsight depolama kapsayıcıları](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. Kümenizin kapsayıcı adını seçin, **Kullanıcı** klasörüne gidin (listenin en altında bulunan *daha fazla yükle* ' ye tıklamanız gerekebilir), ardından, *iptal edilebilir*' i ve ardından **Newuser**' ı seçin. `people.json` Dosya `newUser` klasöründe görüntülenmelidir.
 
-        ![Dosya kopyalanmış](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        ![HDInsight dosya klasörü konumunu kopyaladı](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. Geçerli Apache Spark bağlamını kullanmayı bitirdikten sonra, onu durdurmanız gerekir. Aynı anda birden çok bağlam çalıştıramazsınız.
 
@@ -135,4 +135,3 @@ Putty ile donatılmış bir Windows bilgisayarından Microsoft ml Server/Microso
 
 * [HDInsight üzerinde ML Hizmetleri için işlem bağlamı seçenekleri](r-server-compute-contexts.md)
 * [Scaler ve parlak r birleştirmek](../hdinsight-hadoop-r-scaler-sparkr.md) hava yolu Uçuş gecikmesi tahminlerinin bir örneğini sağlar.
-

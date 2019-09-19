@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 22d5c41e8b815fd99450962cb63d11e9560c787f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997021"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128977"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>Öğretici: Visual Interface ile makine öğrenimi modeli dağıtma
 
@@ -130,4 +130,4 @@ Ayrıca, bu modelleri ve dağıtımları [çalışma alanı giriş sayfanızın 
 Bu öğreticide, Visual arabiriminde makine öğrenimi modeli oluşturma, dağıtma ve kullanma konusunda temel adımları öğrendiniz. Diğer sorun türlerini çözümlemek için görsel arabirimi nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için bkz. diğer örnek denemeleri.
 
 > [!div class="nextstepaction"]
-> [Kredi riski sınıflandırma örneği](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+> [Kredi riski sınıflandırma örneği](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

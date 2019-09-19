@@ -4,15 +4,15 @@ description: Onpanolar müşterilerinin Azure tarafından yetkilendirilen kaynak
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 08/29/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: c0c2ccf03292434b3f23b26857ec0d2b3fc3ceed
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165259"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105257"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -60,7 +60,7 @@ Sonra **plan ayrıntıları** bölümünde aşağıdaki bölümleri doldurun:
 |**Özet**     | Başlık altında görüntülenecek planın kısa açıklaması. En fazla 100 karakter uzunluğunda.        |
 |**Açıklama**     | Planın daha ayrıntılı bir açıklamasını sağlayan açıklama metni.         |
 |**Faturalandırma modeli**     | Burada gösterilen 2 faturalandırma modeli vardır, ancak yönetilen hizmet teklifleri için **kendi lisansınızı getir** ' i seçmeniz gerekir. Bu, müşterilerinize bu teklifle ilgili maliyetleri doğrudan faturalayeceğiniz ve Microsoft 'un size herhangi bir ücret ödemeyeceği anlamına gelir.   |
-|**Bu özel bir plan mi?**     | SKU 'nun özel mi yoksa genel mi olduğunu gösterir. Varsayılan değer ( genel) değildir. Bu seçimi bırakırsanız, planınız belirli müşteriler (veya belirli bir sayıda müşteri) ile sınırlandırılır; ortak bir plan yayımladıktan sonra, daha sonra özel olarak değiştiremezsiniz. Bu planı yalnızca belirli müşteriler için kullanılabilir hale getirmek için **Evet**' i seçin. Bunu yaptığınızda, abonelik kimliklerini sağlayarak müşterileri belirlemeniz gerekir. Bunlar tek bir (10 abonelik için) veya bir. csv dosyası (20.000 ' e kadar abonelik için) karşıya yüklenebilir. Teklifi sınayabilmeniz ve doğrulayabilmeniz için kendi aboneliklerinizi buraya eklediğinizden emin olun. Daha fazla bilgi için bkz. [özel SKU 'lar ve planlar](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
+|**Bu özel bir plan mi?**     | SKU 'nun özel mi yoksa genel mi olduğunu gösterir. Varsayılan **değer (genel** ) değildir. Bu seçimi bırakırsanız, planınız belirli müşteriler (veya belirli bir sayıda müşteri) ile sınırlandırılır; ortak bir plan yayımladıktan sonra, daha sonra özel olarak değiştiremezsiniz. Bu planı yalnızca belirli müşteriler için kullanılabilir hale getirmek için **Evet**' i seçin. Bunu yaptığınızda, abonelik kimliklerini sağlayarak müşterileri belirlemeniz gerekir. Bunlar tek bir (10 abonelik için) veya bir. csv dosyası (20.000 ' e kadar abonelik için) karşıya yüklenebilir. Teklifi sınayabilmeniz ve doğrulayabilmeniz için kendi aboneliklerinizi buraya eklediğinizden emin olun. Daha fazla bilgi için bkz. [özel SKU 'lar ve planlar](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
 
 Son olarak, **bildirim ayrıntıları** bölümünü doldurun. Bu, müşteri kaynaklarını yönetmeye yönelik yetkilendirme bilgilerini içeren bir bildirim oluşturur. Burada sağladığınız bilgiler, Azure 'un Temsilcili kaynak yönetimine yönelik olarak müşterilerinizi eklemek için gereklidir. Yukarıda belirtildiği gibi, bu izinler planı satın alan her müşteri için de geçerlidir. bu nedenle, erişimi belirli bir müşteriyle sınırlamak istiyorsanız, özel kullanım için özel bir plan yayımlamanız gerekir.
 
@@ -71,7 +71,7 @@ Son olarak, **bildirim ayrıntıları** bölümünü doldurun. Bu, müşteri kay
   - **Azure AD nesne kimliği**: Bir kullanıcının, Kullanıcı grubunun veya uygulamanın Azure AD tanımlayıcısı (rol tanımında açıklandığı gibi) müşterilerinizin kaynaklarına verilecektir.
   - **Azure AD nesne görünen adı**: Müşterinin bu yetkilendirmenin amacını anlamasına yardımcı olmak için kolay bir ad. Müşteri, kaynakları yetkilendirirken bu adı görür.
   - **Rol tanımı**: Listeden mevcut Azure AD yerleşik rollerinden birini seçin. Bu rol, **Azure AD nesne kimliği** alanındaki kullanıcının kaynaklarınızın kaynaklarına sahip olacağı izinleri tespit eder. Bu roller hakkında bilgi için bkz. [yerleşik roller](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
-  - **Atanabilir roller**: Bu yetkilendirme için **rol tanımında** Kullanıcı erişimi Yöneticisi ' ni seçtiyseniz, buraya bir veya daha fazla atanabilir rol ekleyebilirsiniz. **Azure AD nesne kimliği** alanındaki Kullanıcı, bu **atanabilir rolleri** [yönetilen kimliklere](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity)atayabilecek. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın. (Bu kullanıcının rol tanımı için Kullanıcı erişimi Yöneticisi ' ni seçmediyseniz, bu alanın bir etkisi yoktur.)
+  - **Atanabilir roller**: Bu, yalnızca bu yetkilendirme için **rol tanımında** Kullanıcı erişimi Yöneticisi ' ni seçtiyseniz gereklidir. Bu durumda, buraya bir veya daha fazla atanabilir rol eklemeniz gerekir. **Azure AD nesne kimliği** alanındaki Kullanıcı, bu **atanabilir rolleri** [yönetilen kimliklere](https://docs.microsoft.com/azure/managed-applications/publish-managed-identity)atayabilecek. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın. Burada bir veya daha fazla rol seçmezseniz gönderiminiz sertifikayı geçirmez. (Bu kullanıcının rol tanımı için Kullanıcı erişimi Yöneticisi ' ni seçmediyseniz, bu alanın bir etkisi yoktur.)
 
 > [!TIP]
 > Çoğu durumda, tek bir kullanıcı hesabı serisi yerine bir Azure AD kullanıcı grubuna veya hizmet sorumlusuna izin atamak isteyeceksiniz. Bu, erişim gereksinimleriniz değiştiğinde planı güncelleştirmek ve yeniden yayınlamak zorunda kalmadan bireysel kullanıcılar için erişim eklemenize veya kaldırmanıza olanak sağlar.

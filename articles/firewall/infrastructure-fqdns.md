@@ -1,34 +1,33 @@
 ---
-title: Azure Güvenlik Duvarı için FQDN altyapı
-description: Azure Güvenlik Duvarı'nda FQDN'leri altyapısı hakkında bilgi edinin
+title: Azure Güvenlik Duvarı için altyapı FQDN 'SI
+description: Azure Güvenlik duvarında altyapı FQDN 'leri hakkında bilgi edinin
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/24/2018
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 34201a0eb4139de64261f77f285096a2aa2dd3aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5b134058e1924bae030338411226a9a6aff46557
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61066337"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130195"
 ---
 # <a name="infrastructure-fqdns"></a>Altyapı FQDN'leri
 
 Azure Güvenlik Duvarı'nda varsayılan olarak izin verilen altyapı FQDN'leri için yerleşik bir kural koleksiyonu bulunur. Bu FQDN'ler platforma özgüdür ve başka amaçlarla kullanılamaz. 
 
-Aşağıdaki hizmetler yerleşik kural koleksiyonu içinde dahil edilmiştir:
+Aşağıdaki hizmetler yerleşik kural koleksiyonuna dahildir:
 
-- Platform görüntü deposuna (PIR) depolama alanına erişimi işlem
-- Yönetilen diskler durumu depolama erişim
-- Azure tanılama ve günlüğe kaydetme (MDS)
-- Azure Active Directory
+- Depolama platformu görüntü deposuna (PIR) erişim işlem
+- Yönetilen diskler durum depolama erişimi
+- Azure Tanılama ve günlüğe kaydetme (MDS)
 
-## <a name="overriding"></a>Geçersiz kılma 
+## <a name="overriding"></a>Si 
 
-Son işlenen tüm uygulama kuralı koleksiyonu reddetme oluşturarak bu yerleşik altyapı kural koleksiyonu geçersiz kılabilirsiniz. Bu kural her zaman altyapı kuralı koleksiyonundan önce işlenir. Altyapı kuralı koleksiyonunda bulunmayan öğeler varsayılan olarak reddedilir.
+Bu yerleşik altyapı kuralı koleksiyonunu, son işlenen bir reddetme tüm uygulama kuralı koleksiyonu oluşturarak geçersiz kılabilirsiniz. Bu kural her zaman altyapı kuralı koleksiyonundan önce işlenir. Altyapı kuralı koleksiyonunda bulunmayan öğeler varsayılan olarak reddedilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bilgi edinmek için nasıl [dağıtma ve bir Azure güvenlik duvarı yapılandırma](tutorial-firewall-deploy-portal.md).
+- [Azure Güvenlik duvarını dağıtmayı ve yapılandırmayı](tutorial-firewall-deploy-portal.md)öğrenin.

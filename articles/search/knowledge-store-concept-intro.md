@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: f4308cf0309725fc0ba3b5feb047d04af2ebbe66
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 6177f5821efe74fdf3a6aba7fe52f41e9db22728
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638193"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123112"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Azure Search bilgi deposu nedir?
 
@@ -49,7 +49,7 @@ Numaralandırılmış, bilgi deposunun avantajları şunları içerir:
 + Verileri yeni formlara şekillendirin. Yeniden şekillendirme becerileri içinde ortaklaşa bulunur, ancak nokta bir beceri artık bu özelliği sağlayabiliriz. Azure Search içindeki [yetenek başına mil](cognitive-search-skill-shaper.md) bu görevi kapsayacak şekilde genişletildi. Yeniden şekillendirme, ilişkileri korurken verilerin amaçlanan kullanımı ile hizalanan bir projeksiyon tanımlamanızı sağlar.
 
 > [!Note]
-> Bilişsel hizmetler kullanılarak AI tabanlı dizin oluşturma hakkında bilgi sahibi değil misiniz? Azure Search, görüntü dosyaları üzerinden optik karakter tanıma (OCR), metin dosyalarından varlık tanıma ve anahtar tümceciği ayıklama ve daha fazlasını kullanarak kaynak verileri ayıklamak ve zenginleştirmede bilişsel hizmetler düzenleme ve dil özellikleriyle tümleşir. Daha fazla bilgi için bkz. bilişsel [arama nedir?](cognitive-search-concept-intro.md).
+> Bilişsel hizmetler kullanılarak AI tabanlı dizin oluşturma hakkında bilgi sahibi değil misiniz? Azure Search, görüntü dosyaları üzerinden optik karakter tanıma (OCR), metin dosyalarından varlık tanıma ve anahtar tümceciği ayıklama ve daha fazlasını kullanarak kaynak verileri ayıklamak ve zenginleştirmede bilişsel hizmetler düzenleme ve dil özellikleriyle tümleşir. Daha fazla bilgi için bkz. [bilişsel arama nedir?](cognitive-search-concept-intro.md).
 
 ## <a name="create-a-knowledge-store"></a>Bilgi deposu oluşturma
 
@@ -132,7 +132,7 @@ Zenginleştirmesini istediğiniz veriler veya belgeler Azure Search Dizin oluşt
 
 * [Azure Blob Depolama](search-howto-indexing-azure-blob-storage.md)
 
-[Azure Tablo Depolaması](search-howto-indexing-azure-tables.md) bir bilgi deposundaki giden veriler için kullanılabilir, ancak bir AI tabanlı dizin oluşturma işlem hattına gelen veriler için kaynak olarak kullanılamaz.
+* [Azure Tablo Depolama](search-howto-indexing-azure-tables.md)
 
 ### <a name="2---azure-search-service"></a>2-Azure Search hizmeti
 
@@ -237,7 +237,7 @@ Birden çok hizmet kullanırken, en iyi performans için tüm hizmetlerinizi ayn
 
 **2. Adım: [Azure depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)** 
 
-**Adım 3: [Bilişsel hizmetler kaynağı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)** 
+**3. Adım: [Bilişsel hizmetler kaynağı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)** 
 
 **4. Adım: [Portalı](cognitive-search-quickstart-blob.md) kullanmaya başlayın-veya [rest ve Postman kullanarak örnek verilerle çalışmaya](knowledge-store-howto.md) başlayın** 
 

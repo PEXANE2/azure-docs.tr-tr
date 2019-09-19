@@ -11,22 +11,22 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
+ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 89deedd3ef99ba76d0bb133bac37c0acee0a9f73
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 350c6ae2e62a88477ce67132b56d9253166d13ec
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275031"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130439"
 ---
 # <a name="high-availability-ports-overview"></a>Yüksek kullanılabilirlik bağlantı noktaları genel bakış
 
 İç yük dengeleyici kullanıldığında azure standart Load Balancer, tüm bağlantı noktalarındaki Yük Dengeleme TCP ve UDP akışlar aynı anda yardımcı olur. 
 
-Yüksek kullanılabilirlik (HA) bağlantı noktaları Yük Dengeleme kuralı, bir iç Standart Load Balancer yapılandırılan bir yük dengeleme kuralı çeşidine sahiptir. Tek bir kural yük dengelemek için bir iç standart Load Balancer'ın tüm bağlantı noktalarında gelen tüm TCP ve UDP akışlar sağlayarak bir yük dengeleyicinin kullanılmasını kolaylaştırabilirsiniz. Yük Dengeleme karar akış yapılır. Bu eylem, şu beş demet bağlantısına dayanır: kaynak IP adresi, kaynak bağlantı noktası, hedef IP adresi, hedef bağlantı noktası ve protokol
+Yüksek kullanılabilirlik (HA) bağlantı noktaları Yük Dengeleme kuralı, iç Standart Load Balancer yapılandırılan bir yük dengeleme kuralının bir varyantıdır. Tek bir kural yük dengelemek için bir iç standart Load Balancer'ın tüm bağlantı noktalarında gelen tüm TCP ve UDP akışlar sağlayarak bir yük dengeleyicinin kullanılmasını kolaylaştırabilirsiniz. Yük Dengeleme karar akış yapılır. Bu eylem, şu beş demet bağlantısına dayanır: kaynak IP adresi, kaynak bağlantı noktası, hedef IP adresi, hedef bağlantı noktası ve protokol
 
-HA bağlantı noktaları Yük Dengeleme kuralları, sanal ağların içindeki ağ sanal gereçler (NVA 'lar) için yüksek kullanılabilirlik ve ölçek gibi kritik senaryolarda size yardımcı olur. Özellik bağlantı noktaları, çok sayıda yük dengeli olması gerektiğinde de yardımcı olabilir. 
+HA bağlantı noktaları Yük Dengeleme kuralları, sanal ağların içindeki ağ sanal gereçleri (NVA 'lar) için yüksek kullanılabilirlik ve ölçek gibi kritik senaryolarda size yardımcı olur. Özellik bağlantı noktaları, çok sayıda yük dengeli olması gerektiğinde de yardımcı olabilir. 
 
 HA bağlantı noktaları Yük Dengeleme kuralları, ön uç ve arka uç bağlantı noktalarını **0** ' a ve Protokolü **tümüne**ayarladığınızda yapılandırılır. İç yük dengeleyici kaynağı, bağlantı noktası numarasından bağımsız olarak tüm TCP ve UDP akışlarını dengeler
 
@@ -94,13 +94,11 @@ Yapılandırabileceğiniz *bir* tek iç standart yük dengeleyici HA bağlantı 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- HA bağlantı noktaları yapılandırma yalnızca dahili yük Dengeleyiciler için kullanılabilir. Genel load balancer'ları için kullanılamıyor.
-
+- HA bağlantı noktaları Yük Dengeleme kuralları yalnızca iç Standart Load Balancer için kullanılabilir.
 - Birleştirme, bir HA bağlantı noktaları Yük Dengeleme kuralı ve bir HA olmayan bağlantı noktaları Yük Dengeleme kuralı desteklenmiyor.
-
-- HA bağlantı noktaları özelliği IPv6 için kullanılamıyor.
-
-- Flow simetri (birincil olarak NVA senaryoları için), yalnızca Yukarıdaki diyagramda gösterildiği gibi kullanıldığında ve HA bağlantı noktaları Yük Dengeleme kuralları kullanıldığında, arka uç örneği ve tek bir NIC (ve tek IP yapılandırması) ile desteklenir. Başka hiçbir senaryoda sağlanmaz. Bu, iki veya daha fazla Load Balancer kaynağı ve ilgili kuralları bağımsız kararlar verirken ve hiçbir şekilde koordine etmediği anlamına gelir. Açıklamasına bakın ve için diyagram [ağ sanal Gereçleri](#nva). Birden çok NIC kullandığınızda veya bir ortak ve dahili Load Balancer arasında NVA 'yı bir sandwıle kullanıyorsanız, Flow simetri kullanılamaz.  Yanıtların aynı NVA 'ya ulaşmasına izin vermek için, giriş akışını gereç IP 'si ile çözmek için kaynak tarafından geçici bir çözüm bulabilirsiniz.  Ancak, tek bir NIC kullanmanız ve Yukarıdaki diyagramda gösterilen başvuru mimarisini kullanmanız önemle önerilir.
+- Mevcut IP parçaları, ilk paket ile aynı hedefe HA bağlantı noktaları Yük Dengeleme kuralları tarafından iletilir.  IP fragmenting bir UDP veya TCP paketi desteklenmez.
+- HA bağlantı noktaları Yük Dengeleme kuralları IPv6 için kullanılamaz.
+- Akış simetrileri (öncelikli olarak NVA senaryolarında), yalnızca Yukarıdaki diyagramda gösterildiği gibi kullanıldığında ve HA bağlantı noktaları Yük Dengeleme kuralları kullanıldığında, arka uç örneği ve tek bir NIC (ve tek IP yapılandırması) ile desteklenir. Başka hiçbir senaryoda sağlanmaz. Bu, iki veya daha fazla Load Balancer kaynağı ve ilgili kuralları bağımsız kararlar verirken ve hiçbir şekilde koordine etmediği anlamına gelir. Açıklamasına bakın ve için diyagram [ağ sanal Gereçleri](#nva). Birden çok NIC kullandığınızda veya bir ortak ve dahili Load Balancer arasında NVA 'yı kullanarak, Flow simetri kullanılamıyor.  Yanıtların aynı NVA 'ya ulaşmasına izin vermek için, giriş akışını gereç IP 'si ile çözmek için kaynak tarafından geçici bir çözüm bulabilirsiniz.  Ancak, tek bir NIC kullanmanız ve Yukarıdaki diyagramda gösterilen başvuru mimarisini kullanmanız önemle önerilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

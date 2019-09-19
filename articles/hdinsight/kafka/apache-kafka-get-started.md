@@ -1,19 +1,19 @@
 ---
 title: Azure portal kullanarak HDInsight 'ta Apache Kafka ayarlama-hızlı başlangıç
 description: Bu hızlı başlangıçta, Azure portalını kullanarak Azure HDInsight’ta bir Apache Kafka kümesi oluşturmayı öğrenirsiniz. Kafka konuları, aboneleri ve tüketicileri hakkında da bilgi edinirsiniz.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b66306de6b2afa1e39a91ba3b3981aec4b440e1a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960308"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123578"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
 
@@ -38,8 +38,8 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. Sol taraftaki menüden **+ Resource** > **Analytics** > **HDInsight**oluştur ' a gidin.
-   
-    ![HDInsight kümesi oluşturma](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
+
+    ![Azure portal kaynak HDInsight oluşturma](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. **Temel Bilgiler** bölümünde aşağıdaki bilgileri girin veya seçin:
 
@@ -47,9 +47,9 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
     | --- | --- |
     | Küme Adı | HDInsight kümesine ait benzersiz bir ad. |
     | Subscription | Aboneliğinizi seçin. |
-    
+
    **Küme yapılandırması**’nı görüntülemek için __Küme Türü__’nü seçin.
-   
+
    ![HDInsight üzerinde Apache Kafka kümesi temel yapılandırma](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. __Küme yapılandırmasından__aşağıdaki değerleri seçin:
@@ -61,7 +61,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
     Küme türü ayarlarını kaydetmek ve __temel bilgilere__dönmek için **Seç** ' i seçin.
 
-    ![Küme türü seçin](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
+    ![HDInsight Apache Kafka küme türü](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. __Temel Bilgiler__ bölümünde aşağıdaki bilgileri girin veya seçin:
 
@@ -77,7 +77,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
     Verilerin yüksek kullanılabilirliği için, __üç hata etki alanı__ içeren bir bölge (konum) seçin. Bir bölgedeki hata etki alanlarının sayısı hakkında bilgi almak için [Linux sanal makinelerinin kullanılabilirliği](../../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) belgesine bakın.
 
-   ![Abonelik seçme](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
+   ![Azure portal küme temelleri oluşturma](./media/apache-kafka-get-started/hdinsight-basic-configuration-2.png)
 
     Temel yapılandırmayı son vermek için __İleri ' yi__ seçin.
 
@@ -105,7 +105,7 @@ HDInsight kümesinde Apache Kafka oluşturmak için aşağıdaki adımları kull
 
 11. **Özet**’ten kümenin yapılandırmasını gözden geçirin. Yanlış olan ayarları değiştirmek için __Düzenle__ bağlantılarını kullanın. Son olarak, kümeyi oluşturmak için **Oluştur** ' u seçin.
 
-    ![Küme yapılandırma özeti](./media/apache-kafka-get-started/kafka-configuration-summary.png)
+    ![Kafka kümesi yapılandırma özeti](./media/apache-kafka-get-started/kafka-configuration-summary.png)
 
     Kümenin oluşturulması 20 dakika sürebilir.
 

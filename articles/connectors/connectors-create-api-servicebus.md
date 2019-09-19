@@ -1,63 +1,63 @@
 ---
-title: Azure Service Bus Azure Logic Apps ile ileti gönderme ve alma | Microsoft Docs
-description: Azure Logic Apps Azure Service Bus ile Kurumsal bulut mesajlaşma ayarlama
+title: Azure Service Bus Azure Logic Apps ile ileti gönderme ve alma
+description: Azure Service Bus ve Azure Logic Apps kullanarak kurumsal bulut mesajlaşma ayarlama
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 09/19/2019
 ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
-ms.topic: article
 tags: connectors
-ms.date: 08/25/2018
-ms.openlocfilehash: 944bac44c1fc6504dfe1a93df5760ccf4ee46fa0
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: f2034686e4a8de5e1ccc246f49337a6600bf441f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982204"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121050"
 ---
-# <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Azure Service Bus ve Azure Logic Apps ile bulutta ileti alışverişi yapın
+# <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-with-azure-service-bus"></a>Azure Service Bus ile Azure Logic Apps kullanarak bulutta ileti alışverişi yapın
 
-Azure Logic Apps ve Azure Service Bus bağlayıcısı sayesinde, kuruluşunuz için uygulamalar arasında satış ve satın alma siparişleri, günlükler ve stok hareketleri gibi verileri aktaran otomatik görevler ve iş akışları oluşturabilirsiniz. Bağlayıcı yalnızca iletileri izleyip yönetmez, gönderir ve yönetir, ancak aynı zamanda kuyruklar, oturumlar, konular, abonelikler vb. ile eylemler gerçekleştirir, örneğin:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) Bağlayıcısı sayesinde, kuruluşunuz için uygulamalar arasında satış ve satın alma siparişleri, Günlükler ve stok hareketleri gibi verileri aktarmak üzere otomatik görevler ve iş akışları oluşturabilirsiniz. Bağlayıcı yalnızca iletileri izleyip yönetmez, gönderir ve yönetir, ancak aynı zamanda kuyruklar, oturumlar, konular, abonelikler vb. ile eylemler gerçekleştirir, örneğin:
 
-* Kuyruklar, konular ve konu aboneliklerinde iletiler ne zaman ulaştığında (otomatik olarak tamamlanır) veya alındığında (Peek kilidi). 
+* Kuyruklar, konular ve konu aboneliklerinde iletiler ne zaman ulaştığında (otomatik olarak tamamlanır) veya alındığında (Peek kilidi).
 * İleti gönderin.
 * Konu abonelikleri oluşturun ve silin.
 * Kuyruklar ve konu aboneliklerinde iletileri yönetme (örneğin, Get, Gecikmeli, tam, erteleme, bırakma ve atılacak harf).
 * Kuyruklar ve konu aboneliklerindeki ileti ve oturumlardaki kilitleri yenileyin.
 * Kuyruklar ve konular 'daki oturumları kapatın.
 
-Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal uygulamalarınızda diğer eylemler için kullanılabilir hale getirebilirsiniz. Ayrıca, Service Bus eylemlerdeki çıktıyı kullanan başka eylemlere de sahip olabilirsiniz. Service Bus ve Logic Apps yeni başladıysanız [Azure Service Bus ne olduğunu](../service-bus-messaging/service-bus-messaging-overview.md) gözden geçirin. [ne Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal uygulamalarınızda diğer eylemler için kullanılabilir hale getirebilirsiniz. Ayrıca, Service Bus eylemlerdeki çıktıyı kullanan başka eylemlere de sahip olabilirsiniz. Service Bus ve Logic Apps yeni başladıysanız [ne Azure Service Bus? ne](../service-bus-messaging/service-bus-messaging-overview.md) olduğunu ve [Azure Logic Apps ne](../logic-apps/logic-apps-overview.md)olduğunu gözden geçirin.
+
+[!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
+* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Kuyruk gibi bir Service Bus ad alanı ve mesajlaşma varlığı. Bu öğeleriniz yoksa, [Service Bus ad alanınızı ve bir kuyruğu oluşturmayı](../service-bus-messaging/service-bus-create-namespace-portal.md)öğrenin. 
-
-  Bu öğeler, bu öğeleri kullanan mantıksal uygulamalarınızla aynı Azure aboneliğinde bulunmalıdır.
+* Kuyruk gibi bir Service Bus ad alanı ve mesajlaşma varlığı. Bu öğelerin ve mantıksal uygulamanızın aynı Azure aboneliğini kullanması gerekir. Bu öğeleriniz yoksa, [Service Bus ad alanınızı ve bir kuyruğu oluşturmayı](../service-bus-messaging/service-bus-create-namespace-portal.md)öğrenin.
 
 * [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
 
-* Service Bus kullanmak istediğiniz mantıksal uygulama. Mantıksal uygulamanız, Service Bus ile aynı Azure aboneliğinde bulunmalıdır. Service Bus tetikleyicisinden başlamak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). Service Bus eylemi kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
+* Service Bus ad alanını ve mesajlaşma varlığını kullandığınız mantıksal uygulama. Mantıksal uygulamanız ve Service Bus 'ın aynı Azure aboneliğini kullanması gerekir. Service Bus tetikleyicisiyle iş akışınızı başlatmak için [boş bir mantıksal uygulama oluşturun](../logic-apps/quickstart-create-first-logic-app-workflow.md). İş akışınızda bir Service Bus eylemi kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin [yineleme tetikleyicisi](../connectors/connectors-native-recurrence.md).
 
 <a name="permissions-connection-string"></a>
 
 ## <a name="check-permissions"></a>İzinleri denetle
 
-Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu doğrulayın. 
+Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu doğrulayın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Service Bus *ad alanına*gidin. Ad alanı sayfasında, **Ayarlar**' ın altında, **paylaşılan erişim ilkeleri**' ni seçin. **Talepler**' in altında, bu ad alanı Için izinleri **Yönet** ' in olup olmadığını denetleyin
+1. Service Bus *ad alanına*gidin. Ad alanı sayfasında, **Ayarlar**' ın altında, **paylaşılan erişim ilkeleri**' ni seçin. **Talepler**altında, bu ad alanı Için izinleri **yönetme** izinlerine sahip olup olmadığınızı kontrol edin.
 
-   ![Service Bus ad alanınız için izinleri yönetme](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
+   ![Service Bus ad alanı için izinleri yönetme](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
-3. Service Bus ad alanınız için bağlantı dizesini alın. Mantıksal uygulamanıza bağlantı bilgilerinizi girerken bu dizeye ihtiyacınız vardır.
+1. Service Bus ad alanınız için bağlantı dizesini alın. Mantıksal uygulamanızda bağlantı bilgilerini sağladığınızda Bu dizeye ihtiyacınız vardır.
 
-   1. Seçin **RootManageSharedAccessKey**. 
+   1. **Paylaşılan erişim ilkeleri** bölmesinde **RootManageSharedAccessKey**' yi seçin.
    
    1. Birincil bağlantı dizeniz yanındaki Kopyala düğmesini seçin. Bağlantı dizesini daha sonra kullanmak üzere kaydedin.
 
@@ -66,72 +66,95 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
    > [!TIP]
    > Bağlantı dizeniz Service Bus ad alanınız veya bir kuyruk gibi bir mesajlaşma varlığı ile ilişkili olup olmadığını doğrulamak için, `EntityPath`  parametre için bağlantı dizesini arayın. Bu parametreyi bulursanız, bağlantı dizesi belirli bir varlık içindir ve mantıksal uygulamanızla birlikte kullanılacak doğru dize değildir.
 
-## <a name="add-trigger-or-action"></a>Tetikleyici veya eylem ekleme
+## <a name="add-service-bus-trigger"></a>Service Bus tetikleyicisi Ekle
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve mantıksal uygulama tasarımcısında boş mantıksal uygulamanızı açın.
 
-1. Boş bir mantıksal uygulamaya *tetikleyici* eklemek için, arama kutusuna filtreniz olarak "Azure Service Bus" yazın. Tetikleyiciler listesinde istediğiniz tetikleyiciyi seçin. 
+1. Arama kutusuna filtreniz olarak "Azure Service Bus" yazın. Tetikleyiciler listesinden istediğiniz tetikleyiciyi seçin.
 
-   Örneğin, mantıksal uygulamanızı yeni bir öğe Service Bus kuyruğuna gönderildiğinde tetiklemeniz için, bu tetikleyiciyi seçin: **Kuyrukta bir ileti alındığında (otomatik olarak tamamlanır)**
+   Örneğin, mantıksal uygulamanızı yeni bir öğe Service Bus kuyruğuna gönderildiğinde tetiklemeniz için **bir kuyrukta (otomatik olarak tamamlanır) bir ileti alındığında** ' ı seçin.
 
    ![Service Bus tetikleyicisi seçin](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
-   > [!NOTE]
-   > Bazı Tetikleyiciler, bir veya **daha fazla ileti bir sıraya ulaştığında (otomatik tamamlanır) bir veya daha fazla**ileti döndürebilir. Bu Tetikleyiciler tetiklendiğinde, tetikleyicinin **en yüksek ileti sayısı** özelliği tarafından belirtilen ileti sayısı arasında bir değer döndürür.
+   Tüm Service Bus Tetikleyicileri *uzun yoklama* tetikleyicilerinde bulunur. Bu açıklama, tetikleyicinin tetiklendiği anlamına gelir, tetikleyici tüm iletileri işler ve sonra sıra veya konu aboneliğinde daha fazla ileti görünmesi için 30 saniye bekler. 30 saniye içinde herhangi bir ileti görünmezse, tetikleyici çalıştırması atlanır. Aksi takdirde tetikleyici, kuyruk veya konu aboneliği boş olana kadar iletileri okumaya devam eder. Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirtilen yinelenme aralığına göre belirlenir.
 
-   *Tüm Service Bus Tetikleyicileri uzun yoklama tetiklerdir*, bu da tetikleyici tetiklendiğinde tetikleyici tüm iletileri işler ve sonra sıra veya konu aboneliğinde daha fazla ileti görünmesi için 30 saniye bekler. 
-   30 saniye içinde herhangi bir ileti görünmezse, tetikleyici çalıştırması atlanır. 
-   Aksi takdirde tetikleyici, kuyruk veya konu aboneliği boş olana kadar iletileri okumaya devam eder. Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirtilen yinelenme aralığına göre belirlenir.
+   Bir **veya daha fazla ileti bir sıraya ulaştığında (otomatik tamamlamayı)** tetikleyicisi gibi bazı Tetikleyiciler, bir veya ileti döndürebilir. Bu Tetikleyiciler tetiklendiğinde, tetikleyicisinin **en yüksek ileti sayısı** özelliği tarafından belirtilen ileti sayısı arasında bir değer döndürür.
 
-1. Mevcut bir mantıksal uygulamaya *eylem* eklemek için aşağıdaki adımları izleyin: 
-
-   1. Eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. 
-
-      Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. 
-      Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
-
-   1. Arama kutusuna filtreniz olarak "Azure Service Bus" yazın. 
-   Eylemler listesi altında istediğiniz eylemi seçin. 
- 
-      Örneğin, şu eylemi seçin: **İleti gönder**
-
-      ![Service Bus eylemi seçin](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
-
-1. Mantıksal uygulamanızı ilk kez Service Bus ad alanına bağlıyorsanız, Logic App Designer artık sizden bağlantı bilgilerinizi ister. 
+1. Tetikleyiciniz ilk kez Service Bus ad alanına bağlanıyorsa, mantıksal uygulama Tasarımcısı sizden bağlantı bilgilerini isterse, bu adımları izleyin.
 
    1. Bağlantınız için bir ad girin ve Service Bus ad alanınızı seçin.
 
-      ![Service Bus bağlantı oluştur, Bölüm 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+      ![Service Bus bağlantı oluştur, Bölüm 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
-      Bunun yerine bağlantı dizesini el ile girmek için **bağlantı bilgilerini el ile girin**' i seçin. 
-      Bağlantı dizeniz yoksa, [Bağlantı dizenizi bulmayı](#permissions-connection-string)öğrenin.
+      Bunun yerine bağlantı dizesini el ile girmek için **bağlantı bilgilerini el ile girin**' i seçin. Bağlantı dizeniz yoksa, [Bağlantı dizenizi bulmayı](#permissions-connection-string)öğrenin.
 
-   1. Şimdi Service Bus ilkenizi seçin ve ardından **Oluştur**' u seçin.
+   1. Service Bus ilkenizi seçin ve **Oluştur**' u seçin.
 
-      ![Service Bus bağlantı oluştur, Bölüm 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-2.png)
+      ![Service Bus bağlantı oluştur, Bölüm 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
-1. Bu örnekte, bir kuyruk veya konu gibi istediğiniz mesajlaşma varlığını seçin. Bu örnekte Service Bus kuyruğunuzu seçin. 
+   1. Kuyruk veya konu gibi istediğiniz mesajlaşma varlığını seçin. Bu örnek için Service Bus kuyruğunuzu seçin.
    
-   ![Service Bus kuyruğu seçin](./media/connectors-create-api-azure-service-bus/service-bus-select-queue.png)
+      ![Service Bus kuyruğu seçin](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
-1. Tetikleyiciniz veya eyleminiz için gerekli ayrıntıları sağlayın. Bu örnekte, Tetikleyiciniz veya eyleminiz için ilgili adımları izleyin: 
+1. Seçtiğiniz Tetikleyiciniz için gerekli bilgileri sağlayın. Eyleme diğer kullanılabilir özellikleri eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz özellikleri seçin.
 
-   * **Örnek tetikleyici için**: Kuyruğu denetlemek için yoklama aralığını ve sıklığını ayarlayın.
+   Bu örneğin tetikleyicisi için, kuyruğu denetleme sıklığını ve yoklama aralığını seçin.
 
-     ![Yoklama aralığını ayarla](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![Yoklama aralığını ayarla](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
-     İşiniz bittiğinde, istediğiniz eylemleri ekleyerek mantıksal uygulamanızın iş akışını oluşturmaya devam edin. Örneğin, yeni bir ileti geldiğinde e-posta gönderen bir eylem ekleyebilirsiniz.
-     Tetikleyiciniz kuyruğunuzu denetlediğinde ve yeni bir ileti bulduğunda, mantıksal uygulamanız bulunan ileti için seçtiğiniz eylemleri çalıştırır.
+   Kullanılabilir Tetikleyiciler ve özellikler hakkında daha fazla bilgi için bağlayıcının [başvuru sayfasına](/connectors/servicebus/)bakın.
 
-   * **Örnek eylem için**: İleti içeriğini ve diğer ayrıntıları girin. 
+1. İstediğiniz eylemleri ekleyerek mantıksal uygulamanızı oluşturmaya devam edin.
 
-     ![İleti içeriğini ve ayrıntılarını sağlayın](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   Örneğin, yeni bir ileti geldiğinde e-posta gönderen bir eylem ekleyebilirsiniz. Tetikleyiciniz kuyruğunuzu denetlediğinde ve yeni bir ileti bulduğunda, mantıksal uygulamanız bulunan ileti için seçtiğiniz eylemleri çalıştırır.
 
-     İşiniz bittiğinde, istediğiniz diğer eylemleri ekleyerek mantıksal uygulamanızın iş akışını oluşturmaya devam edin. Örneğin, iletinizin gönderildiğini onaylayan e-posta gönderen bir eylem ekleyebilirsiniz.
+## <a name="add-service-bus-action"></a>Service Bus eylem Ekle
 
-1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**'i seçin.
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. [Azure Portal](https://portal.azure.com)oturum açın ve mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın.
+
+1. Eylem eklemek istediğiniz adım altında **yeni adım**' ı seçin.
+
+   Ya da adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle**' yi seçin.
+
+1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "Azure Service Bus" yazın. Eylemler listesinden istediğiniz eylemi seçin. 
+
+   Bu örnek için **Ileti gönder** eylemini seçin.
+
+   ![Service Bus eylemi seçin](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+
+1. Eyleminiz Service Bus ad alanına ilk kez bağlanıyorsa, Logic App Designer sizden bağlantı bilgilerini isterse, bu adımları izleyin.
+
+   1. Bağlantınız için bir ad girin ve Service Bus ad alanınızı seçin.
+
+      ![Service Bus bağlantı oluştur, Bölüm 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+
+      Bunun yerine bağlantı dizesini el ile girmek için **bağlantı bilgilerini el ile girin**' i seçin. Bağlantı dizeniz yoksa, [Bağlantı dizenizi bulmayı](#permissions-connection-string)öğrenin.
+
+   1. Service Bus ilkenizi seçin ve **Oluştur**' u seçin.
+
+      ![Service Bus bağlantı oluştur, Bölüm 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+
+   1. Kuyruk veya konu gibi istediğiniz mesajlaşma varlığını seçin. Bu örnek için Service Bus kuyruğunuzu seçin.
+
+      ![Service Bus kuyruğu seçin](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+
+1. Seçtiğiniz eyleminiz için gerekli ayrıntıları sağlayın. Eyleme diğer kullanılabilir özellikleri eklemek için **yeni parametre Ekle** listesini açın ve istediğiniz özellikleri seçin.
+
+   Örneğin, eyleme eklemek için **içerik** ve **içerik türü** özelliklerini seçin. Ardından, göndermek istediğiniz iletinin içeriğini belirtin.
+
+   ![İleti içeriğini ve ayrıntılarını sağlayın](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+
+   Kullanılabilir eylemler ve özellikleri hakkında daha fazla bilgi için bağlayıcının [başvuru sayfasına](/connectors/servicebus/)bakın.
+
+1. İstediğiniz diğer eylemleri ekleyerek mantıksal uygulamanızı oluşturmaya devam edin.
+
+   Örneğin, iletinizin gönderildiğini onaylamak için e-posta gönderen bir eylem ekleyebilirsiniz.
+
+1. Mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 

@@ -16,12 +16,14 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: Python’u kullanma
           href: quickstarts/detect-data-anomalies-python.md
-    - name: İstemci
+    - name: İstemci kitaplığı
       items:
         - name: 'C# kullanma'
           href: quickstarts/detect-data-anomalies-csharp-sdk.md
         - name: Python’u kullanma
           href: quickstarts/detect-data-anomalies-python-sdk.md
+        - name: Node.js'yi kullanma
+          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
 - name: Öğreticiler
   items:
     - name: Power BI kullanarak anomalileri toplu olarak görselleştirme

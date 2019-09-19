@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5339d963b84c5922138d53e44abe9340d55b4dde
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035056"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130241"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
@@ -95,10 +95,10 @@ Tahmin görevleri için otomatik makine öğrenimi, zaman serisi verilerine özg
 |`time_column_name`|Zaman serisini oluşturmak ve sıklığını göstermek için kullanılan giriş verilerinde tarih saat sütununu belirtmek için kullanılır.|✓|
 |`grain_column_names`|Giriş verilerinde ayrı seri gruplarını tanımlayan ad (ler). Gren tanımlanmazsa, veri kümesinin bir adet zaman serisi olduğu varsayılır.||
 |`max_horizon`|Süre serisi sıklığında, istenen maksimum tahmin ufuk kapsamını tanımlar. Birimler, eğitim verilerinizin zaman aralığına göre hesaplanır. Örneğin, aylık, haftalık, öngörülebilir bir şekilde tahmin etmelidir.|✓|
-|`target_lags`|Model eğitiminden önce hedef değerleri iletmek için *n* nokta.||
+|`target_lags`|Hedef değerleri, verilerin sıklığından sonra gecikme olacak satır sayısı. Bu bir liste veya tek tamsayı olarak temsil edilir.||
 |`target_rolling_window_size`|tahmin edilen değerler oluşturmak için *kullanılacak geçmiş dönem* < = eğitim kümesi boyutu. Atlanırsa, *n* tam eğitim kümesi boyutudur.||
 
-Zaman serisi ayarlarını sözlük nesnesi olarak oluşturun. Öğesini veri kümesindeki alana ayarlayın. `day_datetime` `time_column_name` Veriler için **iki ayrı zaman serisi grubunun** oluşturulduğundan emin olmak için `max_horizon` parametresinitanımlayın;birdiğerimağazaAveB.sonolarak,tümtestkümesinintahminedilmesiiçinbunu50olarakayarlayın.`grain_column_names` Bir tahmin penceresini ile `target_rolling_window_size`10 dönem olarak ayarlayın ve hedef değerleri 2 periyotları `target_lags` parametresiyle geciktir.
+Zaman serisi ayarlarını sözlük nesnesi olarak oluşturun. Öğesini veri kümesindeki alana ayarlayın. `day_datetime` `time_column_name` Veriler için **iki ayrı zaman serisi grubunun** oluşturulduğundan emin olmak için `max_horizon` parametresinitanımlayın;birdiğerimağazaAveB.sonolarak,tümtestkümesinintahminedilmesiiçinbunu50olarakayarlayın.`grain_column_names` Bir tahmin penceresini ile `target_rolling_window_size`10 döneme ayarlayın ve `target_lags` parametresi ile birlikte 2 dönemdeki hedef değerlerde tek bir gecikme süresi belirtin.
 
 ```python
 time_series_settings = {
@@ -111,8 +111,14 @@ time_series_settings = {
 }
 ```
 
+
+
 > [!NOTE]
 > Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
+
+Yukarıdaki kod parçacığında `grain_column_names` öğesini tanımlayarak, oto ml birden çok zaman serisi olarak da bilinen iki ayrı zaman serisi grubu oluşturur. Gren tanımlanmazsa, oto veri kümesinin tek bir zaman serisi olduğunu varsayacaktır. Tek seferlik seriler hakkında daha fazla bilgi edinmek için bkz. [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).
+
+
 
 Şimdi, `forecasting` görev türünü `AutoMLConfig` belirterek standart bir nesne oluşturun ve denemeyi iletin. Model bittikten sonra en iyi çalıştırma yinelemesini alın.
 

@@ -12,14 +12,14 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: b86f08fbcb661ae4266658016de7aa92da785bf9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 35618b80dc4731f4d679bab9f035987af50730e8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070594"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129706"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service 'de hazırlama ortamlarını ayarlama
 <a name="Overview"></a>
@@ -220,6 +220,9 @@ Ayrıca, aşağıdaki [uygulama ayarlarından](configure-common.md)biri veya her
 - `WEBSITE_SWAP_WARMUP_PING_PATH`: Sitenizi ısınma için ping yapılacak yol. Değer olarak eğik çizgiyle başlayan özel bir yol belirterek bu uygulama ayarını ekleyin. `/statuscheck` bunun bir örneğidir. Varsayılan değer `/` şeklindedir. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Isınma işlemi için geçerli HTTP yanıt kodları. Bu uygulama ayarını, virgülle ayrılmış bir HTTP kodları listesi ile ekleyin. Örnek olarak `200,202` bir örnektir. Döndürülen durum kodu listede yoksa, ısınma ve takas işlemleri durdurulur. Varsayılan olarak, tüm yanıt kodları geçerlidir.
 
+> [!NOTE]
+> `<applicationInitialization>`, bu iki uygulama ayarlarının yalnızca yuva takas için uygulandığı, her uygulamanın başlangıç zamanı.
+
 Herhangi bir sorununuz varsa bkz. değişiklikleri [giderme](#troubleshoot-swaps).
 
 ## <a name="monitor-a-swap"></a>Değiştirme izleme
@@ -368,6 +371,8 @@ Bazı yaygın değiştirme hataları aşağıda verilmiştir:
     </conditions>
     ```
 - Bazı [IP kısıtlama kuralları](app-service-ip-restrictions.md) değiştirme IŞLEMININ uygulamanıza http istekleri göndermesini engelleyebilir. İle `10.` başlayan ve `100.` dağıtımınıza iç olan IPv4 adresi aralıkları. Uygulamanıza bağlanmasına izin vermeniz gerekir.
+
+- Yuva değiştirildikten sonra, uygulama beklenmeyen yeniden başlatmalar ile karşılaşabilir. Bunun nedeni, bir değiştirme işleminden sonra, ana bilgisayar adı bağlama yapılandırması eşitlemeden sonra yeniden başlatmalara neden olmaz. Ancak, bazı temel depolama olayları (örneğin, depolama birimi yük devretme işlemleri), bu tutarsızlıkları algılayabilir ve tüm çalışan süreçlerini yeniden başlamaya zorlayabilir. Bu tür yeniden başlatma türlerini en aza indirmek için *Tüm yuvalarda* [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` uygulama ayarını](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) ayarlayın. Ancak, bu uygulama ayarı Windows Communication Foundation (WCF) *uygulamalarıyla çalışmaz.*
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Üretim dışı yuvalara erişimi engelleyin](app-service-ip-restrictions.md)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 951d5bb10fbeeac090a1edb510b7214855477eac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515358"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128701"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL hiper ölçek veritabanları hakkında SSS
 
@@ -54,7 +54,7 @@ Sanal çekirdek tabanlı hizmet katmanları, birincil olarak kullanılabilirlik,
 | | Yönetilen örnek  | 32 GB – 8 TB | Yok | 32 GB – 4 TB |
 | **GÇ işleme** | Tek veritabanı * * | maksimum 7000 ıOPS ile vCore başına 500 ıOPS | Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin IOPS iş yüküne bağlı olacaktır. | 5000 ıOPS, en fazla 200.000 ıOPS|
 | | Yönetilen örnek | Dosyanın boyutuna bağlıdır | Yok | Yönetilen örnek: Dosyanın boyutuna bağlıdır|
-|**Kullanılabilirlik**|Tümü|1 çoğaltma, okuma ölçeği yok, yerel önbellek yok | Birden çok çoğaltma, en fazla 15 okuma ölçeği, kısmi yerel önbellek | 3 çoğaltma, 1 okuma ölçeği, bölge yedekli HA, tam yerel önbellek |
+|**Kullanılabilirlik**|Tümü|1 çoğaltma, okuma ölçeği yok, yerel önbellek yok | Birden çok çoğaltma, 4 okuma ölçeğinde, kısmi yerel önbellek | 3 çoğaltma, 1 okuma ölçeği, bölge yedekli HA, tam yerel önbellek |
 |**Lerine**|Tümü|RA-GRS, 7-35 gün (varsayılan olarak 7 gün)| RA-GRS, 7 gün, sabit zaman zaman aşımı kurtarma (sür) | RA-GRS, 7-35 gün (varsayılan olarak 7 gün) |
 
 \*Esnek havuzlar hiper ölçek hizmeti katmanında desteklenmiyor

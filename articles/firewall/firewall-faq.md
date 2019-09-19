@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 4b258df1711aa51ed4edee6ecd209fa39c7fde27
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: cb5b8bbb322dc401c7a8b057418d392120ef68e3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018843"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130217"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -163,3 +163,7 @@ Azure Güvenlik duvarının ölçeklendirilen daha fazla sanal makine örneği s
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>Hizmet ölçeklendirilirken güvenlik duvarı alt ağı boyutunun değiştirilmesi gerekiyor mu?
 
 Hayır. Azure Güvenlik Duvarı/26 ' dan büyük bir alt ağa gerek yoktur.
+
+## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Güvenlik Duvarı varsayılan olarak Active Directory erişimine izin veriyor mu?
+
+Hayır. Azure Güvenlik Duvarı varsayılan olarak Active Directory erişimi engeller. Erişime izin vermek için AzureActiveDirectory Service etiketini yapılandırın. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı hizmeti etiketleri](service-tags.md).

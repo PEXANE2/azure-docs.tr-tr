@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 4fb88cbed4e73a7cea2b0ccf01b1429a3ff321f3
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018193"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129328"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup kullanan bulut iş yüklerini korumanıza yardımcı olacak güvenlik özellikleri
 
@@ -122,9 +122,9 @@ Geri alma işleminden sonra devam ederseniz kaynak yeniden korunur. Özgeçmişi
 
 Kasadaki geçici olarak silinen durumda yedekleme öğeleri varsa kurtarma hizmetleri Kasası silinemez. Geçici olarak silinen öğeler, silme işleminin 14 gün sonra kalıcı olarak silinir. Kasayı yalnızca tüm geçici silinen öğeler temizlenmeden sonra silebilirsiniz.  
 
-#### <a name="how-can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Silindikten sonra 14 gün geçici silme süresinden önceki verileri nasıl silebilirim?
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Silme işleminden sonra 14 gün geçici silme süresinden önceki verileri silebilir miyim?
 
-Silinmeden sonraki 14 gün önce verileri temizetmenin bir yolu yoktur. Bir engelleyici veya bir uyumluluk sorunuyla karşılaşırsanız, lütfen Microsoft desteği 'ne başvurun.
+Hayır. Geçici olarak silinen öğeleri silmeye zorlenemez, bunlar 14 gün sonra otomatik olarak silinir. Bu güvenlik özelliği, yedeklenen verilerin yanlışlıkla veya kötü amaçlı silmelerden korunmasını sağlamak için etkinleştirilir.  VM üzerinde başka bir işlem gerçekleştirmeden önce 14 gün beklemeniz gerekir.  Geçici olarak silinen öğeler ücretlendirilmeyecektir.  14 gün içinde geçici silme için işaretlenen VM 'Leri yeni bir kasaya yeniden korumaya ihtiyacınız varsa, Microsoft destek 'e başvurun.
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>PowerShell veya CLı 'de geçici silme işlemleri yapılabilir mi?
 
