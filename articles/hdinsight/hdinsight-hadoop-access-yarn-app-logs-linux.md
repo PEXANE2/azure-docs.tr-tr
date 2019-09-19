@@ -2,18 +2,18 @@
 title: Linux tabanlı HDInsight 'ta YARN uygulama günlüklerine erişim Apache Hadoop-Azure
 description: Hem komut satırı hem de bir Web tarayıcısı kullanarak Linux tabanlı HDInsight (Apache Hadoop) kümesinde YARN uygulama günlüklerine erişmeyi öğrenin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2b230f91b9d6b169b89b125bdd0394c2c7ecd96f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6eb24e85d1d7ffa4f3377d4c2fe8b168303c15f0
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879880"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091515"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta YARN uygulama günlüklerine erişim Apache Hadoop
 
@@ -62,11 +62,11 @@ YARN ResourceManager Kullanıcı arabirimi küme headnode üzerinde çalışır.
 1. Web tarayıcınızda öğesine https://CLUSTERNAME.azurehdinsight.net gidin. CLUSTERNAME değerini HDInsight kümenizin adıyla değiştirin.
 2. Soldaki hizmetler listesinden **Yarn**' yi seçin.
 
-    ![Yarn hizmeti seçildi](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
+    ![Apache ambarı Yarn hizmeti seçildi](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 
 3. **Hızlı bağlantılar** açılan listesinden küme baş düğümlerinden birini seçip **ResourceManager günlüğü**' nü seçin.
 
-    ![Yarn hızlı bağlantılar](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
+    ![Apache ambarı Yarn hızlı bağlantıları](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
     YARN günlüklerine bağlantıların bir listesi sunulur.
 

@@ -9,15 +9,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
+manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 06/14/2019
-ms.openlocfilehash: da2107a0573fafd10394931be21fb446f83fd5f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eb34395e0a9ec881c2f5e303383555fa6544369d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569074"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090895"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL veritabanı bağlantı sorunlarıyla ve geçici hatalarla çalışma
 
@@ -169,7 +170,7 @@ SQL veritabanına bağlanmak için gerekli olan bağlantı dizesi, SQL Server ba
 
 <a id="b-connection-ip-address" name="b-connection-ip-address"></a>
 
-### <a name="connection-ip-address"></a>Bağlantı: IP Adresi
+### <a name="connection-ip-address"></a>Bağlantı: IP adresi
 
 SQL veritabanı sunucusunu, istemci programınızı barındıran bilgisayarın IP adresinden gelen iletişimi kabul edecek şekilde yapılandırmanız gerekir. Bu yapılandırmayı ayarlamak için [Azure Portal](https://portal.azure.com/)aracılığıyla güvenlik duvarı ayarlarını düzenleyin.
 
@@ -310,7 +311,7 @@ ORDER BY
 ;
 ```
 
-#### <a name="a-few-returned-rows-from-sysfnxetelemetryblobtargetreadfile"></a>Sys. fn_xe_telemetry_blob_target_read_file ' den döndürülen birkaç satır
+#### <a name="a-few-returned-rows-from-sysfn_xe_telemetry_blob_target_read_file"></a>Sys. fn_xe_telemetry_blob_target_read_file ' den döndürülen birkaç satır
 
 Aşağıdaki örnekte, döndürülen bir satırın nasıl görünebileceğini gösterilmektedir. Gösterilen null değerler genellikle diğer satırlarda null değildir.
 
@@ -354,7 +355,7 @@ Aşağıdaki EntLib60 sınıfları, yeniden deneme mantığı için özellikle k
 EntLib60 hakkındaki bilgilerin bazı bağlantıları aşağıda verilmiştir:
 
 - Ücretsiz kitap indirme: [Geliştirici Kılavuzu Microsoft Kurumsal kitaplığı, 2. sürüm](https://www.microsoft.com/download/details.aspx?id=41145).
-- En iyi uygulamalar: [Yeniden deneme genel Kılavuzu](../best-practices-retry-general.md) , yeniden deneme mantığı hakkında mükemmel bir ayrıntılı tartışmadır.
+- En iyi yöntemler: [Yeniden deneme genel Kılavuzu](../best-practices-retry-general.md) , yeniden deneme mantığı hakkında mükemmel bir ayrıntılı tartışmadır.
 - NuGet indirme: [Kurumsal kitaplık-geçici hata Işleme uygulama bloğu 6,0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>

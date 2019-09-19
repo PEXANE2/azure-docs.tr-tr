@@ -4,7 +4,7 @@ description: Azure CLı kullanarak işletim sistemi diskini bir kurtarma VM 'sin
 services: virtual-machines-linux
 documentationCenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: b1aca591437738b29786f50c2a5291ab456f3416
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: faa15e9cf6288bcd4014cbc03dcf9d82a2047bde
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876686"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088368"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Azure CLı ile işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux sanal makinesi sorunlarını giderme
 Linux sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, sanal sabit diskin kendisi üzerinde sorun giderme adımları gerçekleştirmeniz gerekebilir. Ortak bir örnek, VM 'nin başarıyla önyükleme yapabilmesini engelleyen ' de `/etc/fstab` geçersiz bir giriş olabilir. Bu makalede, herhangi bir hatayı onarmak üzere sanal sabit diskinizi başka bir Linux VM 'sine bağlamak için Azure CLı 'nın nasıl kullanılacağı açıklanır ve ardından özgün VM 'nizi yeniden oluşturabilirsiniz. 

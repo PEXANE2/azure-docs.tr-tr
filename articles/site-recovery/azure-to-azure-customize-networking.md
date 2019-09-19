@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rajanaki
-ms.openlocfilehash: 907a698a675a039dfdc852210adecb94c7bfab25
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1905d6afb023b1bed15f1359fed8477d815acb45
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886903"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087699"
 ---
-# <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Hedef Azure VM 'nin ağ yapılandırmasını özelleştirme
+# <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Hedef Azure VM’nin ağ yapılandırmalarını özelleştirme
 
 Bu makalede, Azure sanal makinelerini bir bölgeden diğerine çoğaltırken ve kurtarırken, [Azure Site Recovery](site-recovery-overview.md)kullanarak hedef Azure VM 'de ağ yapılandırmalarının özelleştirilmesi hakkında rehberlik sağlanır.
 
@@ -23,13 +23,16 @@ Bu makalede, Azure sanal makinelerini bir bölgeden diğerine çoğaltırken ve 
 
 Site Recovery [Bu senaryo](azure-to-azure-architecture.md)için olağanüstü durum kurtarma nasıl sağladığını öğrenin.
 
-## <a name="support-networking-resources"></a>Destek ağı kaynakları
+## <a name="supported-networking-resources"></a>Desteklenen ağ kaynakları
 
 Azure VM 'Leri çoğaltılırken yük devretme VM 'si için aşağıdaki temel kaynak konfigürasyonları belirtilebilir.
 
 - [İç yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
 - [Genel IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - Hem alt ağ hem de NIC için [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
+
+ > [!IMPORTANT]
+  > Bu ayarlar, yük devretme testi için değil, yalnızca şu anda yük devretme işleminde desteklenir.
 
 ## <a name="pre-requisites"></a>Ön koşullar
 

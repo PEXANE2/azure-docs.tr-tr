@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 68be0d7d13785c9631044766a290eec93637ea64
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5df6ab47c45a64077a39974a30c65fe13f3c851d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880006"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091491"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme
 
@@ -94,11 +94,11 @@ Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları ku
 
 3. **Filter...** girişini kullanarak **OptIn**'yi girin. Yalnızca bu metni içeren öğeler görüntülenir.
 
-    ![Filtrelenmiş liste](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
+    ![Apache ambarı yapılandırması filtrelenmiş listesi](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
 4. Yığın dökümlerini etkinleştirmek istediğiniz hizmet için  **optsgirişinibulunveetkinleştirmekistediğinizseçenekleriekleyin.\_ \*** Aşağıdaki görüntüde, `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP\_süs Yot\_opts** girdisine ekledik:
 
-    ![HADOOP_NAMENODE_OPTS with-XX: + HeapDumpOnOutOfMemoryError-XX: HeapDumpPath =/tmp/](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
+    ![Apache ambarı Hadoop-süs Yot-opts](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
    > [!NOTE]  
    > Eşleme için yığın dökümlerini etkinleştirirken veya alt işlemi azalttığında **MapReduce. admin. Map. child. Java. opts** ve **MapReduce. admin. küçültme. child. Java. opts**adlı alanları arayın.
@@ -111,11 +111,11 @@ Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları ku
 
 6. Yeniden başlatma gerektiren her hizmeti seçin ve **bakım modunu açmak**Için **hizmet eylemleri** düğmesini kullanın. Bakım modu, yeniden başlattığınızda uyarıların hizmetten oluşturulmasını engeller.
 
-    ![Bakım Modu menüsünü aç](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
+    ![HDI bakım modu menüsünü aç](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
 
 7. Bakım modunu etkinleştirdikten sonra, hizmetin **tüm efektleri yeniden başlatması** Için **yeniden başlatma** düğmesini kullanın
 
-    ![Etkilenen tüm girişi yeniden Başlat](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
+    ![Apache ambarı etkilenen tüm girişleri yeniden Başlat](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-restart-all-button.png)
 
    > [!NOTE]  
    > **Yeniden başlatma** düğmesi girişleri, diğer hizmetler için farklı olabilir.

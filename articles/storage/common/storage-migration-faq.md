@@ -3,17 +3,18 @@ title: Azure depolama geçişi hakkında SSS | Microsoft Docs
 description: Azure Storage 'ı geçirme hakkında sık sorulan soruların yanıtları
 services: storage
 author: genlin
+manager: dcscontentpm
 ms.service: storage
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 2ba09496ed8c110e3bf0e431da20f09c82d5ea0b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985582"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090811"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure depolama geçişi hakkında sık sorulan sorular
 
@@ -213,7 +214,7 @@ Yedekli depolamaya erişmek için Okuma Erişimli Coğrafi olarak yedekli depola
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
         /SourceKey:key1 /DestKey:key2 /S 
 
-    Yalnızca bir diski kopyalamak için, şu düzende diskin adını belirtin:
+    Yalnızca bir diski kopyalamak için, **Şu düzende diskin adını belirtin:**
 
         AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
@@ -295,8 +296,8 @@ Yalnızca Depolama Gezgini veya benzer bir uygulama kullanmak zorunda kalmadan v
 
 **Blob 'Ları bir depolama hesabından diğerine geçirmek Nasıl yaparım? istiyor musunuz?**
 
- Bunu, [BLOB geçiş](../scripts/storage-common-transfer-between-storage-accounts.md)betiğimizi kullanarak yapabilirsiniz.
+ Bunu, [BLOB geçiş betiğimizi](../scripts/storage-common-transfer-between-storage-accounts.md)kullanarak yapabilirsiniz.
 
 ## <a name="need-help-contact-support"></a>Yardım mı gerekiyor? Desteğe başvurun.
 
-Hala yardıma ihtiyacınız varsa, sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
+Yine de yardıma ihtiyacınız varsa sorununuzun hızla çözülmesini sağlamak için [desteğe başvurun](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

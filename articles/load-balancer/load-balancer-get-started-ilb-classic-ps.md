@@ -5,6 +5,7 @@ description: Klasik dağıtım modelinde PowerShell kullanarak iç yük dengeley
 services: load-balancer
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: ef6aac0d97c38798f826304475779ea8059875c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b864a4bf352c547779bb368650971fa8b805fca7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848556"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090976"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>PowerShell kullanarak iç yük dengeleyici (klasik) oluşturmaya başlama
 
@@ -30,7 +31,7 @@ ms.locfileid: "60848556"
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure'da oluşturmaya ve kaynaklarla çalışmaya yönelik iki farklı dağıtım modeli vardır:  [Resource Manager ve klasik](../azure-resource-manager/resource-manager-deployment-model.md).  Bu makale klasik dağıtım modelini incelemektedir. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Bu adımları Resource Manager modeli kullanarak gerçekleştirmeyi](load-balancer-get-started-ilb-arm-ps.md) öğrenin.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır:  [Kaynak Yöneticisi ve klasik](../azure-resource-manager/resource-manager-deployment-model.md).  Bu makale klasik dağıtım modelini incelemektedir. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Bu adımları Resource Manager modeli kullanarak gerçekleştirmeyi](load-balancer-get-started-ilb-arm-ps.md) öğrenin.
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -44,7 +45,7 @@ ms.locfileid: "60848556"
 2. Gelen trafiği alacak sanal makinelere karşılık gelen uç noktalar ekleyin.
 3. Yük dengelemesi yapılacak trafiği gönderecek sunucuları trafiklerini İç Yük Dengeleme örneğinin sanal IP (VIP) adresine gönderecek şekilde yapılandırın.
 
-### <a name="step-1-create-an-internal-load-balancing-instance"></a>1\. adım: İç Yük Dengeleme örneği oluşturun
+### <a name="step-1-create-an-internal-load-balancing-instance"></a>1\. adım: Iç Yük Dengeleme örneği oluşturma
 
 Mevcut bir bulut hizmeti veya bölgesel sanal ağ üzerine dağıtılmış bulut hizmeti için aşağıdaki Windows PowerShell komutlarını kullanarak İç Yük Dengeleme örneğin oluşturabilirsiniz:
 
@@ -59,7 +60,7 @@ Add-AzureInternalLoadBalancer -ServiceName $svc -InternalLoadBalancerName $ilb �
 
 Bu [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx) Windows PowerShell cmdlet örneğinde DefaultProbe parametre kümesi kullanıldığına dikkat edin. Ek parametre kümeleri hakkında daha fazla bilgi için bkz. [Add-AzureEndpoint](https://msdn.microsoft.com/library/dn495300.aspx).
 
-### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>2\. adım: İç Yük Dengeleme örneğine uç noktaları ekleyin
+### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>2\. adım: Iç Yük Dengeleme örneğine uç noktalar ekleme
 
 Örnek aşağıda verilmiştir:
 
@@ -75,7 +76,7 @@ $ilb="ilbset"
 Get-AzureVM –ServiceName $svc –Name $vmname | Add-AzureEndpoint -Name $epname -Lbset $lbsetname -Protocol $prot -LocalPort $locport -PublicPort $pubport –DefaultProbe -InternalLoadBalancerName $ilb | Update-AzureVM
 ```
 
-### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>3\. adım: Sunucularınızı trafiklerini yeni iç Yük Dengeleme uç noktasına gönderecek şekilde yapılandırın
+### <a name="step-3-configure-your-servers-to-send-their-traffic-to-the-new-internal-load-balancing-endpoint"></a>3\. adım: Sunucularınızı trafiği yeni Iç Yük Dengeleme uç noktasına gönderecek şekilde yapılandırın
 
 Yük dengelemesi uygulanacak trafiğe sahip sunucuları İç Yük Dengeleme örneğinin yeni IP adresini (VIP) kullanacak şekilde yapılandırmanız gerekir. Bu, İç Yük Dengeleme örneğinin dinlediği adrestir. Çoğu durumda tek yapmanız gereken İç Yük Dengeleme örneği VIP’sinin DNS kaydını yapmak veya değiştirmektir.
 

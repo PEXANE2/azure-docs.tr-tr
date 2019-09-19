@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: fc01a20a077a1c624ed490600db919fe3197556c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 68d4f55d4a382f59386e72779a5f60cfc2a65338
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901769"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091113"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Sanal ağ eşleme sorunlarını giderme
 
@@ -58,7 +58,7 @@ Daha fazla bilgi için bkz. genel eşleme [gereksinimleri ve kısıtlamaları](h
 Farklı aboneliklerdeki veya Active Directory kiracılardaki sanal ağların sanal ağ eşlemesini yapılandırmak için [Azure CLI için farklı aboneliklerde eşleme oluşturma](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)' daki adımları izleyin.
 
 > [!Note]
-> Ağ eşlemesini yapılandırmak için her iki abonelik için de **ağ katılımcısı** izinlerinizin olması gerekir. Daha fazla bilgi için bkz. [eşleme izinleri](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering%23permissions).
+> Ağ eşlemesini yapılandırmak için her iki abonelik için de **ağ katılımcısı** izinlerinizin olması gerekir. Daha fazla bilgi için bkz. [eşleme izinleri](virtual-network-manage-peering.md#permissions).
 
 ## <a name="scenario-2-configure-virtual-network-peering-with-hub-spoke-topology-that-uses-on-premises-resources"></a>Senaryo 2: Şirket içi kaynakları kullanan hub-ışınsal topolojisi ile sanal ağ eşlemesini yapılandırma
 
@@ -104,7 +104,7 @@ Genel eşleme gereksinimleri ve depoları hakkında daha fazla bilgi edinmek iç
 
 ## <a name="scenario-4-i-have-a-connectivity-issue-between-two-peered-virtual-networks"></a>Senaryo 4: Eşlenen iki sanal ağ arasında bağlantı sorunu yaşıyorum
 
-[Azure Portal](https://portal.azure.com/) , gerekli [Roller ve izinlere](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#roles-permissions)sahip bir hesapla oturum açın. Sanal ağı seçin, **eşleme**' yi seçin ve ardından **durum** alanını denetleyin. Durum nedir?
+[Azure Portal](https://portal.azure.com/) , gerekli [Roller ve izinlere](virtual-network-manage-peering.md#permissions)sahip bir hesapla oturum açın. Sanal ağı seçin, **eşleme**' yi seçin ve ardından **durum** alanını denetleyin. Durum nedir?
 
 ### <a name="connection-type-1-the-peering-status-shows-connected"></a>Bağlantı türü 1: Eşleme durumu ' Connected ' gösteriyor
 

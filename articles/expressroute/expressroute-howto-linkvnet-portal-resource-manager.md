@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 1545e2e7eba23b0bedbfe297c292fc94e1659ae3
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775274"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088910"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Portalı kullanarak bir ExpressRoute bağlantı hattına bir sanal ağı bağlama
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Bu makale, Azure portalını kullanarak bir Azure ExpressRoute bağlantı hattı
 
 * Etkin bir ExpressRoute bağlantı hattınızın olması gerekir.
   * Yönergelerini izleyin [ExpressRoute devresi oluşturma](expressroute-howto-circuit-portal-resource-manager.md) ve bağlantı hattı, bağlantı sağlayıcı tarafından etkin.
-  * Bağlantı hattınız için yapılandırılmış Azure özel eşleme olduğundan emin olun. Bkz: [yönlendirmeyi yapılandırma](expressroute-howto-routing-portal-resource-manager.md) makale için yönlendirme yönergeleri.
+  * Bağlantı hattınız için yapılandırılmış Azure özel eşleme olduğundan emin olun. Eşleme ve yönlendirme yönergeleri için [bir ExpressRoute bağlantı hattı oluşturma ve değiştirme](expressroute-howto-routing-portal-resource-manager.md) makalesine bakın.
   * Azure özel eşdüzey hizmet sağlama yapılandırılır ve uçtan uca bağlantıyı etkinleştirmek üzere ağınız ile Microsoft arasında BGP eşliği ayarlama olduğundan emin olun.
   * Bir sanal ağ ve oluşturulan ve tam olarak sağlanan sanal ağ geçidi olduğundan emin olun. Yönergelerini izleyin [ExpressRoute için sanal ağ geçidi oluşturma](expressroute-howto-add-gateway-resource-manager.md). ExpressRoute için sanal ağ geçidi, GatewayType 'ExpressRoute' VPN'değil kullanır.
 
@@ -52,15 +52,16 @@ Bu makale, Azure portalını kullanarak bir Azure ExpressRoute bağlantı hattı
 
 ### <a name="to-create-a-connection"></a>Bir bağlantı oluşturmak için
 
-1. ExpressRoute bağlantı hattı ve Azure özel eşdüzey hizmet sağlama başarılı bir şekilde yapılandırıldığından emin olun. Bölümündeki yönergeleri [ExpressRoute devresi oluşturma](expressroute-howto-circuit-arm.md) ve [yönlendirmeyi yapılandırma](expressroute-howto-routing-arm.md). ExpressRoute devreniz şu resimdeki gibi görünmelidir:
+1. ExpressRoute bağlantı hattı ve Azure özel eşdüzey hizmet sağlama başarılı bir şekilde yapılandırıldığından emin olun. ExpressRoute bağlantı hattı [oluşturma](expressroute-howto-circuit-arm.md) ve [bir ExpressRoute bağlantı hattı için eşleme oluşturma ve değiştirme](expressroute-howto-routing-arm.md)bölümündeki yönergeleri izleyin. ExpressRoute devreniz şu resimdeki gibi görünmelidir:
 
-   ![ExpressRoute bağlantı hattı ekran görüntüsü](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   [![ExpressRoute devresi ekran görüntüsü](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Devreyi görüntüle")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
 2. ExpressRoute bağlantı hattı için sanal ağ geçidinizin bağlantı için bağlantı sağlama şimdi başlayabilirsiniz. Tıklayın **bağlantı** > **Ekle** açmak için **Bağlantı Ekle** sayfasında ve değerlerini yapılandırın.
 
-   ![Bağlantı ekran görüntüsü Ekle](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+   [![Bağlantı ekran görüntüsü ekleme](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Bağlantı ekran görüntüsü ekleme")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Bağlantınızın başarılı bir şekilde yapılandırıldıktan sonra bağlantı nesnesi bağlantı bilgilerini gösterir.
 
    ![Bağlantı nesnesi ekran görüntüsü](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>Devreye - farklı bir aboneliğe bir VNet bağlama
 
@@ -121,7 +122,7 @@ Bağlantı hattı kullanıcısı, kaynak Kimliğini ve bağlantı hattı sahibin
 
    ![Temel bilgileri sayfası](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. İçinde **ayarları** seçin sayfasında **sanal ağ geçidi** ve **yetkilendirmeyi kullanma** onay kutusu.
-6. Girin **yetkilendirme anahtarını** ve **eş devre URI'si** ve bağlantı bir ad verin.           **Tamam**'ı tıklatın. **Eş devre URI 'si** , ExpressRoute bağlantı HATTıNıN kaynak kimliğidir (ExpressRoute devresinin Özellikler ayar bölmesinde bulabilirsiniz).
+6. Girin **yetkilendirme anahtarını** ve **eş devre URI'si** ve bağlantı bir ad verin. **Tamam**'ı tıklatın. **Eş devre URI 'si** , ExpressRoute bağlantı HATTıNıN kaynak kimliğidir (ExpressRoute devresinin Özellikler ayar bölmesinde bulabilirsiniz).
 
    ![Ayarlar sayfası](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Bilgileri gözden **özeti** sayfasında ve tıklayın **Tamam**.

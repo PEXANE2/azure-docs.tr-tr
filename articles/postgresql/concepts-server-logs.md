@@ -1,64 +1,76 @@
 ---
-title: -Tek bir sunucu PostgreSQL için Azure veritabanı'nda sunucu günlüklerini
-description: Bu makalede PostgreSQL için Azure veritabanı - sorgu ve Hata günlüklerini ve günlük tutma nasıl yapılandırıldığını tek bir sunucu oluşturur.
+title: PostgreSQL için Azure veritabanı 'nda sunucu günlükleri-tek sunucu
+description: Bu makalede, PostgreSQL için Azure veritabanı 'nın, tek bir sunucunun sorgu ve hata günlükleri oluşturma ve günlük saklama işlemlerinin nasıl yapılandırıldığı açıklanır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 4d1cf2c59e324cedd9b747b1ac65d6edcb9deb45
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/18/2019
+ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067402"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091127"
 ---
-# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>-Tek bir sunucu PostgreSQL için Azure veritabanı'nda sunucu günlüklerini
-PostgreSQL için Azure veritabanı oluşturur, sorgu ve hata günlükleri. Sorgu ve Hata günlüklerini belirlemek, sorun giderme ve yapılandırma hatalarını ve performansın onarmak için kullanılabilir. (İşlem günlükleri için erişim dahil değildir). 
+# <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda sunucu günlükleri-tek sunucu
+PostgreSQL için Azure Veritabanı sorgu ve hata günlükleri oluşturur. Sorgu ve hata günlükleri yapılandırma hatalarını belirlemek, sorunlarını gidermek ve onarmak ve performansı düzeltmek için kullanılabilir. (İşlem günlüklerine erişim dahil değildir). 
 
-## <a name="configure-logging"></a>Günlük tutmayı yapılandırma 
-Günlüğe kaydetme sunucu parametreleri kullanarak sunucunuza günlüğü yapılandırabilirsiniz. Her yeni sunucuda **log_checkpoints** ve **log_connections** varsayılan olarak etkindir. Günlük kaydını ihtiyaçlarınıza uyacak şekilde ayarlayabileceğiniz ek parametreler şunlardır: 
+## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma 
+Günlüğe kaydetme sunucusu parametrelerini kullanarak sunucunuzda günlüğe kaydetmeyi yapılandırabilirsiniz. Her yeni sunucu için **log_checkpoints** ve **log_connections** varsayılan olarak açık. Günlük gereksinimlerinize uyacak şekilde ayarlayabileceğiniz ek parametreler vardır: 
 
-![PostgreSQL - günlük parametreleri için Azure veritabanı](./media/concepts-server-logs/log-parameters.png)
+![PostgreSQL için Azure veritabanı-günlük parametreleri](./media/concepts-server-logs/log-parameters.png)
 
-Bu parametreler hakkında daha fazla bilgi için bkz: PostgreSQL'ın [hata bildirimi ve günlüğe kaydetme](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) belgeleri. PostgreSQL parametreleri için Azure veritabanı yapılandırma konusunda bilgi için bkz: [portal belgeleri](howto-configure-server-parameters-using-portal.md) veya [CLI belgeleri](howto-configure-server-parameters-using-cli.md).
+Bu parametreler hakkında daha fazla bilgi için bkz. PostgreSQL 'in [hata raporlama ve günlüğe kaydetme](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) belgeleri. PostgreSQL için Azure veritabanı parametrelerini yapılandırma hakkında bilgi edinmek için bkz. [Portal belgeleri](howto-configure-server-parameters-using-portal.md) veya [CLI belgeleri](howto-configure-server-parameters-using-cli.md).
 
-## <a name="access-server-logs-through-portal-or-cli"></a>Portal veya CLI aracılığıyla sunucu günlüklerine erişme
-Günlükleri etkinleştirdiyseniz, bunları günlük depolama kullanılarak PostgreSQL için Azure veritabanı'ndan erişebilirsiniz [Azure portalında](howto-configure-server-logs-in-portal.md), [Azure CLI](howto-configure-server-logs-using-cli.md)ve Azure REST API'leri. Her 1 saat ya da 100 MB boyutunda günlük dosyalarını döndürmek, hangisinin önce geldiğine. Bu günlük depolama kullanmak için saklama süresini ayarlayabilirsiniz **günlük\_bekletme\_süresi** sunucunuzla ilişkili parametre. Varsayılan değer 3 gündür; en yüksek değer 7 gündür. Sunucunuz, yeterli olmalıdır depolama günlük dosyalarını tutmak için ayrılmış. (Bu bekletme parametre Azure tanılama günlükleri yönetmez.)
+## <a name="access-server-logs-through-portal-or-cli"></a>Portal veya CLı aracılığıyla sunucu günlüklerine erişin
+Günlükleri etkinleştirdiyseniz, [Azure Portal](howto-configure-server-logs-in-portal.md), [Azure CLı](howto-configure-server-logs-using-cli.md)ve Azure REST API 'Lerini kullanarak PostgreSQL için Azure veritabanı günlük depolama alanından erişebilirsiniz. Günlük dosyaları saatte bir veya 100 MB boyuta ulaşıldığında (hangisi önce gerçekleşirse) döndürülür. Bu günlük depolama alanı için, sunucunuza ilişkin **\_günlük tutma\_süresi** parametresini kullanarak saklama süresini ayarlayabilirsiniz. Varsayılan değer 3 gündür; en büyük değer 7 gündür. Sunucunuzun günlük dosyalarını tutmak için yeterli ayrılmış depolama alanı olmalıdır. (Bu bekletme parametresi Azure tanılama günlüklerini yönetmez.)
 
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
-PostgreSQL için Azure veritabanı Azure İzleyici tanılama günlükleri ile tümleştirilir. PostgreSQL sunucunuzda günlükleri etkinleştirdikten sonra bunları için yayılan sahip olmayı seçebilirsiniz [Azure İzleyici günlükleri](../azure-monitor/log-query/log-query-overview.md), Event Hubs veya Azure depolama. Tanılama günlüklerini etkinleştirme hakkında daha fazla bilgi için nasıl yapılır bölümüne bakın [tanılama günlükleri belgeleri](../azure-monitor/platform/diagnostic-logs-overview.md). 
+PostgreSQL için Azure veritabanı, Azure Izleyici tanılama günlükleriyle tümleşiktir. PostgreSQL sunucunuzda günlükleri etkinleştirdikten sonra [Azure izleyici günlüklerine](../azure-monitor/log-query/log-query-overview.md), Event Hubs veya Azure depolama 'ya yayılmasını seçebilirsiniz. 
 
 > [!IMPORTANT]
-> Sunucu günlükleri için tanılama bu özellik yalnızca genel amaçlı ve bellek için iyileştirilmiş kullanılabilir [fiyatlandırma katmanları](concepts-pricing-tiers.md).
+> Sunucu günlükleri için bu tanılama özelliği yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş [fiyatlandırma katmanlarında](concepts-pricing-tiers.md)kullanılabilir.
 
-Aşağıdaki tabloda, her oturum açma yenilikler açıklanır. Seçtiğiniz çıkış uç noktası, yer alan alanlar ve değişebilir göründükleri sırayla bağlı olarak. 
+Tanılama günlüklerini Azure portal kullanarak etkinleştirmek için:
+
+   1. Portalda, Postgres sunucunuzun gezinti menüsünde *Tanılama ayarları* ' na gidin.
+   2. *Tanılama ayarı Ekle*' yi seçin.
+   3. Bu ayarı adlandırın. 
+   4. Tercih edilen aşağı akış konumunuzu (depolama hesabı, Olay Hub 'ı, Log Analytics) seçin. 
+   5. İstediğiniz veri türlerini seçin.
+   6. Ayarınızı kaydedin.
+
+Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Seçtiğiniz çıkış uç noktasına bağlı olarak, dahil edilen alanlar ve göründükleri sıralama farklılık gösterebilir. 
 
 |**Alan** | **Açıklama** |
 |---|---|
-| TenantId | Kiracı Kimliğiniz |
+| TenantId | Kiracı KIMLIĞINIZ |
 | SourceSystem | `Azure` |
-| TimeGenerated [UTC] | Günlük UTC olarak kaydedildiği zaman damgası |
-| Tür | Günlük türü. Her zaman `AzureDiagnostics` |
-| SubscriptionId | Sunucunun ait olduğu aboneliğin GUID |
-| ResourceGroup | Sunucunun ait olduğu kaynak grubu adı |
-| ResourceProvider | Kaynak sağlayıcı adı. Her zaman `MICROSOFT.DBFORPOSTGRESQL` |
-| ResourceType | `Servers` |
-| ResourceId | Kaynak URI'si |
-| Resource | Sunucusunun adı |
-| Kategori | `PostgreSQLLogs` |
+| TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
+| Type | Günlüğün türü. Her zaman `AzureDiagnostics` |
+| SubscriptionId | Sunucunun ait olduğu abonelik için GUID |
+| ResourceGroup | Sunucunun ait olduğu kaynak grubunun adı |
+| ResourceProvider | Kaynak sağlayıcının adı. Her zaman `MICROSOFT.DBFORPOSTGRESQL` |
+| KaynakTürü | `Servers` |
+| ResourceId | Kaynak URI 'SI |
+| Resource | Sunucunun adı |
+| Category | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | Günlüğe kaydetme düzeyi, örneğin: GÜNLÜK, HATA BİLDİRİMİ |
+| Düzeyi | Günlüğe kaydetme düzeyi, örnek: GÜNLÜK, HATA, BILDIRIM |
 | `Message` | Birincil günlük iletisi | 
-| Etki Alanı | Sunucu sürümü, örnek: postgres 10 |
+| Etki Alanı | Sunucu sürümü, örnek: Postgres-10 |
 | Ayrıntı | İkincil günlük iletisi (varsa) |
-| ColumnName | (Eğer varsa) sütunun adı |
-| SchemaName | (Eğer varsa) şema adı |
-| DatatypeName | (Eğer varsa) veri türü adı |
-| LogicalServerName | Sunucusunun adı | 
-| _ResourceId | Kaynak URI'si |
+| ColumnName | Sütunun adı (varsa) |
+| SchemaName | Şemanın adı (varsa) |
+| DatatypeName | Veri türünün adı (varsa) |
+| LogicalServerName | Sunucunun adı | 
+| _Resourceıd | Kaynak URI 'SI |
+| Önek | Günlük satırının öneki |
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Günlüklerinden erişme hakkında daha fazla bilgi [Azure portalında](howto-configure-server-logs-in-portal.md) veya [Azure CLI](howto-configure-server-logs-using-cli.md).
-- Daha fazla bilgi edinin [Azure İzleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/).
+- [Azure Portal](howto-configure-server-logs-in-portal.md) veya [Azure CLI](howto-configure-server-logs-using-cli.md)'dan günlüklere erişme hakkında daha fazla bilgi edinin.
+- [Azure izleyici fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/)hakkında daha fazla bilgi edinin.

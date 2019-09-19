@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 4f9a828e5233c88db2106bc648c07578927e0d29
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c2b409f0eefe5efa389432cbb007cc08e0c6ae1e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68514879"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71078288"
 ---
 Azure, Azure AD ve OAuth kullanarak blob ve kuyruk verilerine erişim yetkisi vermek için aşağıdaki yerleşik RBAC rollerini sağlar:
 
@@ -26,4 +26,6 @@ Azure, Azure AD ve OAuth kullanarak blob ve kuyruk verilerine erişim yetkisi ve
 - [Depolama kuyruğu veri Iletisi gönderici](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): Azure depolama sıralarındaki iletilere izin ekleme izni vermek için kullanın.
 
 > [!NOTE]
-> RBAC rol atamalarının yaymanın beş dakika sürebileceğini aklınızda bulundurun.
+> RBAC rol atamalarının yayılması beş dakikaya kadar sürebilir.
+>
+> Yalnızca veri erişimi için açıkça tanımlanmış roller, bir güvenlik sorumlusunun blob veya kuyruk verilerine erişmesine izin verir. **Sahip**, **katkıda bulunan**ve **depolama hesabı katılımcısı** gibi roller, bir güvenlik sorumlusuna bir depolama hesabını yönetmesine izin verir, ancak bu hesapta blob veya kuyruk verilerine erişim sağlamaz.
