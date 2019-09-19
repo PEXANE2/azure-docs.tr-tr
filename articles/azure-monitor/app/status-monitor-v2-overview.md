@@ -3,21 +3,21 @@ title: Azure Durum İzleyicisi v2 'ye Genel Bakış | Microsoft Docs
 description: Durum İzleyicisi v2 'ye genel bakış. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333692"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057827"
 ---
 # <a name="status-monitor-v2"></a>Durum İzleyicisi v2
 
@@ -59,7 +59,15 @@ Durum İzleyicisi v2 şurada bulunur: https://www.powershellgallery.com/packages
   *Evet*. Durum İzleyicisi v2 'yi indirmek için birden çok yol vardır. Bilgisayarınızda internet erişimi varsa, parametreleri kullanarak `-Proxy` PowerShell Galerisi ekleyebilirsiniz.
 Ayrıca, modülü el ile indirebilir ve bilgisayarınıza yükleyebilir ya da doğrudan kullanabilirsiniz.
 Bu seçeneklerin her biri [ayrıntılı yönergeler](status-monitor-v2-detailed-instructions.md)bölümünde açıklanmıştır.
+
+- Durum İzleyicisi v2 ASP.NET Core uygulamaları destekliyor mu?
+
+  *Hayır*. ASP.NET Core uygulamalarının izlenmesini etkinleştirme yönergeleri için, bkz. [ASP.NET Core uygulamalar için Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). ASP.NET Core bir uygulama için StatusMonitor yüklemeniz gerekmez. Bu, ASP.NET Core uygulama IIS 'de barındırıldığında bile geçerlidir.
   
+Durum İzleyicisi v2 ASP.NET Core uygulamaları destekliyor mu? 
+
+  *Hayır*. ASP.NET Core uygulamalar için izlemeyi etkinleştirmek üzere lütfen [Bu](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) yönergeleri izleyin. ASP.NET Core bir uygulama için StatusMonitor yüklenmeye gerek yoktur. Bu, ASP.NET Core uygulama IIS 'de barındırıldığında bile geçerlidir.
+
 - Nasıl yaparım?, etkinleştirme başarılı oldu mu?
 
   - [Get-Applicationınsisofsmonitoringstatus](status-monitor-v2-api-get-status.md) cmdlet 'i, etkinleştirme başarılı olduğunu doğrulamak için kullanılabilir.

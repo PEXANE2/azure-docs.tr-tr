@@ -8,20 +8,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: e4168b2aec73efcaa282398cbe145df49a117da0
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810769"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066933"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Ölçeklendirerek ayıklama, dönüştürme ve yükleme (ETL)
 
-Ayıklama, dönüştürme ve yükleme (ETL), verilerin çeşitli kaynaklardan alınma, standart bir konumda toplanan, temizlenen ve işlendiği ve sonunda sorgulanabilecek bir veri deposuna yüklendiği işlemdir. Eski ETL, verileri içeri aktarın, yerinde temizler ve sonra ilişkisel bir veri altyapısında depolar. HDInsight ile, çok çeşitli Apache Hadoop ekosistem bileşenleri ETL 'yi ölçekte gerçekleştirmeyi destekler. 
+Ayıklama, dönüştürme ve yükleme (ETL), verilerin çeşitli kaynaklardan alınma, standart bir konumda toplanan, temizlenen ve işlendiği ve sonunda sorgulanabilecek bir veri deposuna yüklendiği işlemdir. Eski ETL, verileri içeri aktarın, yerinde temizler ve sonra ilişkisel bir veri altyapısında depolar. HDInsight ile, çok çeşitli Apache Hadoop ekosistem bileşenleri ETL 'yi ölçekte gerçekleştirmeyi destekler.
 
 ETL işleminde HDInsight 'ın kullanılması bu işlem hattı tarafından özetlenebilir:
 
-![HDInsight ETL genel bakış](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![HDInsight ETL ölçeğe genel bakış](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
 Aşağıdaki bölümler ETL aşamalarını ve bunlarla ilişkili bileşenleri keşfedebilir.
 
@@ -35,11 +35,11 @@ Uygun zamanda ilgili işi çalıştırmak için düzenleme gereklidir.
 
 Apache Oozie, Hadoop işlerini yöneten bir iş akışı koordinasyon sistemidir. Oozie bir HDInsight kümesi içinde çalışır ve Hadoop yığınına tümleştirilir. Oozie, Apache Hadoop MapReduce, Apache Pig, Apache Hive ve Apache Sqoop için Hadoop işlerini destekler. Oozie, Java programları veya kabuk betikleri gibi bir sisteme özgü işleri zamanlamak için de kullanılabilir.
 
-Daha fazla bilgi için bkz. [HDInsight 'ta bir iş akışını tanımlamak ve çalıştırmak için Apache Hadoop Ile Apache Oozie 'Yi kullanarak bir](../hdinsight-use-oozie-linux-mac.md) uçtan uca işlem hattını nasıl kullanacağınızı gösteren bir ayrıntılı bilgi edinmek için bkz. [veri](../hdinsight-operationalize-data-pipeline.md)işlem hattını işleme. 
+Daha fazla bilgi için bkz. [HDInsight 'ta bir iş akışını tanımlamak ve çalıştırmak için Apache Hadoop Ile Apache Oozie 'Yi kullanarak bir](../hdinsight-use-oozie-linux-mac.md) uçtan uca işlem hattını nasıl kullanacağınızı gösteren bir ayrıntılı bilgi edinmek için bkz. [veri](../hdinsight-operationalize-data-pipeline.md)işlem hattını işleme.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory, bir hizmet olarak platform biçiminde düzenleme özellikleri sağlar. Veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için bulutta veri odaklı iş akışları oluşturmanıza olanak tanıyan, bulut tabanlı bir veri tümleştirme hizmetidir. 
+Azure Data Factory, bir hizmet olarak platform biçiminde düzenleme özellikleri sağlar. Veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için bulutta veri odaklı iş akışları oluşturmanıza olanak tanıyan, bulut tabanlı bir veri tümleştirme hizmetidir.
 
 Azure Data Factory kullanarak şunları yapabilirsiniz:
 

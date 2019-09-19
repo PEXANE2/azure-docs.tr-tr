@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843866"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090623"
 ---
 # <a name="streaming-ingestion-preview"></a>Akış alma (Önizleme)
 
@@ -41,8 +41,9 @@ Veri miktarı her tablo için saniyede 1 MB 'tan fazla büyüdüğünde akış a
  
 1. [Web Kullanıcı arabiriminde](https://dataexplorer.azure.com/), veri akışı verileri alacak tablo (ler) veya veritabanları üzerinde [akış alma ilkesi](/azure/kusto/concepts/streamingingestionpolicy) tanımlayın. 
 
-    > [!TIP]
-    > İlke veritabanı düzeyinde tanımlanmışsa, veritabanındaki tüm tablolar akış alımı için etkinleştirilir.
+    > [!NOTE]
+    > * İlke veritabanı düzeyinde tanımlanmışsa, veritabanındaki tüm tablolar akış alımı için etkinleştirilir.
+    > * Uygulanan ilke, veritabanındaki diğer tablolara değil, yalnızca yeni alınan verilere başvurabilir.
 
 ## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>Verileri kümenize almak için akış alımı kullanın
 

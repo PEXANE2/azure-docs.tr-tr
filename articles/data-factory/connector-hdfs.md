@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d8773b330349356410589cf66e8f50636d92b601
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 4bc6e5570870941f050bc289dddfd85d64843df2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71009182"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092086"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Data Factory kullanarak, verileri bir sunucudan kopyalayın
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -30,7 +30,7 @@ Bu makalede, verileri, bir sunucu sunucusu ' ndan nasıl kopyalanacağı özetle
 
 Bu bağlantı, aşağıdaki etkinlikler için desteklenir:
 
-- [Etkinliği](copy-activity-overview.md) [Desteklenen kaynak matrisi](copy-activity-overview.md) ile Kopyala
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
 Özellikle, bu, bu bağlantı, şunları destekler:
@@ -343,8 +343,8 @@ Bkz. TCP ile ilgili yapılandırma ve örneklere [kaynak](#hdfs-as-source) böl�
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>Bağlantı kimliği için Kerberos kimlik doğrulaması kullan
 
 Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büyük/küçük harf durumuna göre daha iyi bir seçim yapabilirsiniz.
-* Seçenek 1: [Kendi kendine barındırılan Integration Runtime makinesini Kerberos bölgesi 'nde birleştirin](#kerberos-join-realm)
-* Seçenek 2: [Windows etki alanı ve Kerberos bölgesi arasında karşılıklı güveni etkinleştir](#kerberos-mutual-trust)
+* 1\. Seçenek: [Kendi kendine barındırılan Integration Runtime makinesini Kerberos bölgesi 'nde birleştirin](#kerberos-join-realm)
+* 2\. Seçenek: [Windows etki alanı ve Kerberos bölgesi arasında karşılıklı güveni etkinleştir](#kerberos-mutual-trust)
 
 ### <a name="kerberos-join-realm"></a>Seçenek 1: Kendi kendine barındırılan Integration Runtime makinesini Kerberos bölgesi 'nde birleştirin
 

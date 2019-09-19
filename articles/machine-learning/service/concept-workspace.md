@@ -1,7 +1,7 @@
 ---
 title: Çalışma alanı nedir?
-titleSuffix: Azure Machine Learning service
-description: Çalışma alanı Azure Machine Learning hizmeti için en üst düzey kaynaktır. Günlükler, ölçümler, çıktılar ve betiklerinizin bir anlık görüntüsü dahil olmak üzere tüm eğitim çalıştırmaları geçmişini tutar. Hangi eğitim çalışmasının en iyi modeli ürettiğini öğrenmek için bu bilgileri kullanırsınız
+titleSuffix: Azure Machine Learning
+description: Çalışma alanı Azure Machine Learning için en üst düzey kaynaktır. Günlükler, ölçümler, çıktılar ve betiklerinizin bir anlık görüntüsü dahil olmak üzere tüm eğitim çalıştırmaları geçmişini tutar. Hangi eğitim çalışmasının en iyi modeli ürettiğini öğrenmek için bu bilgileri kullanırsınız
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 84aad0f1a797bb7eccf1872bd291e72ecefa7eee
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860507"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035318"
 ---
-# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning hizmet çalışma alanı nedir?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
-Çalışma alanı, Azure Machine Learning hizmeti için en üst düzey kaynaktır ve Azure Machine Learning hizmeti kullandığınızda oluşturduğunuz tüm yapıtlarla birlikte çalışmak üzere merkezi bir yer sağlar.  Çalışma alanı; Günlükler, ölçümler, çıktılar ve betiklerinizin bir anlık görüntüsü dahil olmak üzere tüm eğitim çalıştırmaları geçmişini tutar. Hangi eğitim çalıştırmasının en iyi modeli ürettiğini öğrenmek için bu bilgileri kullanın.  
+Çalışma alanı, Azure Machine Learning için en üst düzey kaynaktır ve Azure Machine Learning kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak üzere merkezi bir yer sağlar.  Çalışma alanı; Günlükler, ölçümler, çıktılar ve betiklerinizin bir anlık görüntüsü dahil olmak üzere tüm eğitim çalıştırmaları geçmişini tutar. Hangi eğitim çalıştırmasının en iyi modeli ürettiğini öğrenmek için bu bilgileri kullanın.  
 
 İstediğiniz bir modele sahip olduktan sonra, çalışma alanına kayıt yaptırmış olursunuz. Daha sonra Azure Container Instances, Azure Kubernetes hizmetine dağıtmak için kayıtlı model ve Puanlama betiklerini ve REST tabanlı HTTP uç noktası olarak bir alan ile programlanabilir kapı dizisine (FPGA) dağıtım yapmak için kullanılır. Modeli bir Azure IoT Edge cihazına modül olarak da dağıtabilirsiniz.
 
@@ -103,9 +103,9 @@ Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı tarafından kul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning hizmetine başlamak için bkz.:
+Azure Machine Learning kullanmaya başlamak için bkz.:
 
-+ [Azure Machine Learning hizmete genel bakış](overview-what-is-azure-ml.md)
++ [Azure Machine Learning genel bakış](overview-what-is-azure-ml.md)
 + [Çalışma Alanı oluşturma](how-to-manage-workspace.md)
 + [Çalışma Alanını Yönetme](how-to-manage-workspace.md)
 + [Öğretici: Model eğitme](tutorial-train-models-with-aml.md)

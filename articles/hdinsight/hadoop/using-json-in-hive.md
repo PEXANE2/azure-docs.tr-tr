@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: dd1c9f5b10583e886c0357ce64bdf9d8bdc6c4c8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 629a7c98a7b46b470470445cc56a6f53d9e4f4b4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883362"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077210"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Hive kullanarak JSON belgelerini işleme ve çözümleme
 
@@ -91,7 +91,7 @@ Ham JSON dosyası konumunda `wasb://processjson@hditutorialdata.blob.core.window
 
 **Select** ifadesinin çıktısı aşağıda verilmiştir:
 
-![JSON belgesini düzleştirme](./media/using-json-in-hive/hdinsight-flatten-json.png)
+![HDInsight JSON belgesini düzleştirme](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
 ## <a name="analyze-json-documents-in-hive"></a>Hive 'de JSON belgelerini çözümleme
 Hive, JSON belgelerindeki sorguları çalıştırmak için üç farklı mekanizma sağlar veya kendi kendinize yazabilirsiniz:
@@ -115,7 +115,7 @@ FROM StudentsOneLine;
 
 Bu sorguyu konsol penceresinde çalıştırdığınızda çıkış şu şekildedir:
 
-![get_json_object UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![JSON nesnesi UDF Apache Hive al](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 Get_json_object UDF 'nin sınırlamaları vardır:
 
@@ -136,7 +136,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Hive konsolundaki bu betiğin çıkışı:
 
-![json_tuple UDF](./media/using-json-in-hive/hdinsight-json-tuple.png)
+![Apache Hive JSON sorgu sonuçları](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
 Json_tuple UDF, Hive içindeki [yan yana görünüm](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) sözdizimini kullanır. Bu, JSON\_kayıt düzeninin, özgün tablodaki her satıra udt işlevini uygulayarak bir sanal tablo oluşturmasına olanak sağlar. Karmaşık jler, **yan yana görünümün**yinelenen kullanımı nedeniyle çok zor hale gelir. Ayrıca, **JSON_TUPLE** iç Içe geçmiş jdönemleri işleyemez.
 

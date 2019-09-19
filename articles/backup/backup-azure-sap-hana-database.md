@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060714"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067096"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA veritabanını Azure 'a yedekleme
 
@@ -26,8 +26,8 @@ ms.locfileid: "70060714"
 **Destek** | **Ayrıntılar**
 --- | ---
 **Desteklenen coğrafyalar** | Avustralya Güney Doğu, Doğu Avustralya <br> Güney Brezilya <br> Kanada Orta, Kanada Doğu <br> Güney Doğu Asya, Doğu Asya <br> Doğu ABD, Doğu ABD 2, Orta Batı ABD, Batı ABD, Batı ABD 2, Orta Kuzey ABD, Orta ABD, Orta Güney ABD<br> Hindistan Orta, Hindistan Güney <br> Doğu Japonya, Batı Japonya<br> Kore Orta, Kore Güney <br> Kuzey Avrupa, Batı Avrupa <br> UK Güney, UK Batı
-**Desteklenen VM işletim sistemleri** | SP2 veya SP3 ile SLES 12.
-**Desteklenen HANA sürümleri** | Hana 1. x üzerinde SDC, HANA 2. x < = SPS03
+**Desteklenen VM işletim sistemleri** | SLES 12 SP2, SP3 veya SP4.
+**Desteklenen HANA sürümleri** | Hana 1. x üzerinde SDC, HANA 2. x < = SPS04 Rev 42
 
 ### <a name="current-limitations"></a>Geçerli sınırlamalar
 
@@ -168,7 +168,7 @@ Azure Backup ile yedeklenen bir veritabanının yerel yedeklemesini (HANA Studio
 1. Veritabanının tamamlaması için herhangi bir tam veya günlük yedeklemesi bekleyin. SAP HANA Studio 'daki durumu denetleyin.
 2. Günlük yedeklemelerini devre dışı bırakın ve ilgili veritabanı için yedekleme kataloğunu dosya sistemine ayarlayın.
 3. Bunu yapmak için **SystemDB** > **yapılandırması** > **veritabanı** > **filtresi Seç (günlük)** öğesine çift tıklayın.
-4. **Enable_auto_log_backup** olarak ayarlayın.
+4. **Enable_auto_log_backup** **olarak ayarlayın**.
 5. **Log_backup_using_backint** **değerini false**olarak ayarlayın.
 6. Veritabanının geçici bir tam yedeklemesini alın.
 7. Tam yedekleme ve Katalog yedeklemesinin bitmesini bekleyin.

@@ -1,7 +1,7 @@
 ---
 title: İşlem hatları ile büyük veriler üzerinde toplu tahmine dayalı çalıştırma
-titleSuffix: Azure Machine Learning service
-description: Batch zaman uyumsuz olarak büyük miktarlarda verileri Azure Machine Learning hizmetini kullanarak tahminlerde bulunmayı öğrenin.
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning kullanarak büyük miktarlarda veriler üzerinde zaman uyumsuz olarak toplu tahmine dayalı hale getirme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: b0d8eef025efb6398f1d7c734ca558540b157fef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128265"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034306"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları ile büyük veri kümelerinde toplu tahminleri çalıştırma
 
-Bu makalede, Azure Machine Learning hizmetiyle ML işlem hatlarını kullanarak büyük miktarlarda verileri zaman uyumsuz olarak tahmin etme hakkında bilgi edineceksiniz.
+Bu makalede, Azure Machine Learning ile ML işlem hatlarını kullanarak büyük miktarlarda verileri zaman uyumsuz olarak tahmin etme hakkında bilgi edineceksiniz.
 
 Toplu işlem Tahmini (veya toplu Puanlama), zaman uyumsuz uygulamalar için paralellik verimlilik ile uygun maliyetli çıkarım sağlar. Toplu tahmin işlem hatlarını çıkarımı terabaytlarca üretim veri gerçekleştirmek için ölçeklendirilebilir. Toplu tahmin, büyük bir veri koleksiyonu için yüksek aktarım hızı, yangın ve unutma tahminleri için iyileştirilmiştir.
 
@@ -30,7 +30,7 @@ Aşağıdaki adımlarda, önceden eğitilen bir bilgisayar Vision modelini ([Inc
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning hizmetinin ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
+- Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
 - Azure Machine Learning SDK'sını yüklemek için geliştirme ortamınızı yapılandırın. Daha fazla bilgi için [bir geliştirme ortamı yapılandırmak için Azure Machine Learning](how-to-configure-environment.md).
 
