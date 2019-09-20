@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 388e676fbabf427801688cbfb47a1455444fd02e
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: dc01f8556fb1c88899cae1a8767cb23d6b6041eb
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018986"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128880"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -543,6 +543,14 @@ Genel amaçlı katmanındaki en büyük dosya `tempdb` boyutu, çekirdek başın
 Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ## <a name="Issues"></a>Bilinen sorunlar
+
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongioing-database-restore"></a>Hizmet katmanını değiştirme ve örnek oluşturma işlemleri, ongiining veritabanı geri yüklemesi tarafından engelleniyor
+
+**Güncel** Eyl 2019
+
+Devam `RESTORE` eden bildirim, veri geçiş hizmeti geçiş işlemi ve yerleşik nokta geri yükleme, hizmet katmanını güncelleştirmeyi veya mevcut örneği yeniden boyutlandırmayı engeller ve geri yükleme işlemi bitene kadar yeni örnekler oluşturur. Geri yükleme işlemi, geri yükleme işleminin çalıştırıldığı aynı alt ağdaki yönetilen örneklerde ve örnek havuzlardaki bu işlemleri engeller. Örnek havuzlardaki örnekler etkilenmez. Hizmet katmanı işlemleri oluşturma veya değiştirme başarısız olmayacak veya zaman aşımı-geri yükleme işlemi tamamlandıktan veya iptal edildikten sonra devam eder.
+
+**Geçici çözüm**: Geri yükleme işlemi tamamlanana kadar bekleyin veya hizmet katmanı oluşturma veya güncelleştirme işlemi daha yüksek önceliğe sahipse geri yükleme işlemini iptal edin.
 
 ### <a name="missing-validations-in-restore-process"></a>Restore işleminde eksik doğrulamalar
 

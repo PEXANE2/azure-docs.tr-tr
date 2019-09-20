@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 8/21/2019
 ms.author: dapine
-ms.openlocfilehash: ae4b4b13e81bc000bc0675c80c09101cc4369bc1
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
-ms.translationtype: HT
+ms.openlocfilehash: eac9264a98c6224af56618e439a1cd3f00f7157c
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130135"
+ms.locfileid: "71146811"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Bilişsel hizmetler kapsayıcı desteği
 
@@ -49,7 +49,7 @@ Azure Bilişsel hizmetler kapsayıcılar, Docker kapsayıcıları, aşağıdaki 
 | Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Açıklama |
 |---------|----------|----------|-------------|
 |[Anomali algılayıcısı][ad-containers] |F0, S0|**Anomali-algılayıcı** |Anomali algılayıcı API 'SI, makine öğrenimi ile zaman serisi verilerinizde bulunan normalleştirikleri izlemenize ve algılamanıza olanak sağlar.<br>[Erişim isteği](https://aka.ms/adcontainer)|
-|[Görüntü İşleme][cv-containers] |F0, S1|**Okuma** |Farklı yüzey ve arka planlar, giriş ve posterler kartvizitler gibi çeşitli nesne görüntülerdeki yazdırılan metin ayıklar. Okuma kapsayıcısı resimlerde *el yazısı metinleri* de ALGıLAR ve PDF/TIFF/çok sayfalı destek sağlar.<br/><br/>**Önemli:** Metni Tanı kapsayıcı şu anda yalnızca İngilizce ile çalışır.<br>[Erişim isteği](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[Görüntü İşleme][cv-containers] |F0, S1|**Okuma** |Farklı yüzey ve arka planlar, giriş ve posterler kartvizitler gibi çeşitli nesne görüntülerdeki yazdırılan metin ayıklar. Okuma kapsayıcısı resimlerde *el yazısı metinleri* de ALGıLAR ve PDF/TIFF/çok sayfalı destek sağlar.<br/><br/>**Önemli:** Okuma kapsayıcısı Şu anda yalnızca Ingilizce ile çalışmaktadır.<br>[Erişim isteği](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Görüntü İşleme][cv-containers] |F0, S1|**Metin tanıma** |Farklı yüzey ve arka planlar, giriş ve posterler kartvizitler gibi çeşitli nesne görüntülerdeki yazdırılan metin ayıklar.<br/><br/>**Önemli:** Metni Tanı kapsayıcı şu anda yalnızca İngilizce ile çalışır.<br>[Erişim isteği](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[Yüz tanıma][fa-containers] |F0, S0|**Yüz tanıma** |Görüntülerdeki İnsan yüzlerini algılar ve yüz yer işareti (örneğin, noses ve gözler), cinsiyet, geçerlilik süresi ve diğer makine tahmin yüz özellikleri dahil olmak üzere, öznitelikleri tanımlar. Yüz algılama ek olarak, iki yüzün aynı görüntü ya da farklı görüntüleri bir güven puanı kullanarak aynı olduğundan veya bir benzeyen olmadığını görmek için bir veritabanında yüzleri karşılaştırın veya aynı yüz zaten kontrol edebilirsiniz. Bu gibi durumlarda, benzer yüzlerden de paylaşılan visual nitelikler kullanarak gruplar halinde düzenleyebilirsiniz.<br>[Erişim isteği](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Form tanıyıcı][fr-containers] |F0, S0|**Form tanıyıcı** |Form, formlardan anahtar-değer çiftlerini ve tabloları tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular.<br>[Erişim isteği](https://aka.ms/FormRecognizerContainerRequestAccess)|
