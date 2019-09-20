@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: cff31916f837141ae54f3c14dd125be6a92a5008
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 791566dc65b41bf3124e84544390d7d843e51273
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035515"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123134"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimi karşılaştırması
 
@@ -37,7 +37,7 @@ Derin öğrenme ve makine öğrenimi hakkında bilgi edinmek için aşağıdaki 
 
 - **Yapay zeka (AI)** , bilgisayarların insan zekası taklit etmesini sağlayan bir tekniktir. Machine Learning 'i de içerir. 
  
-AI, Machine Learning ve derin öğrenme arasındaki ilişkiyi anlamak önemlidir. Machine Learning, yapay zeka elde etmenin bir yoludur. Makine öğrenimi ve derin öğrenme tekniklerini kullanarak, genellikle insan zekası ile ilişkili görevleri gerçekleştiren bilgisayar sistemleri ve uygulamalar oluşturabilirsiniz. Bu görevler görsel algılama, konuşma tanıma, karar verme ve dil çevirisini içerir.
+AI, Machine Learning ve derin öğrenme arasındaki ilişkiyi anlamak önemlidir. Machine Learning, yapay zeka elde etmenin bir yoludur. Makine öğrenimi ve derin öğrenme tekniklerini kullanarak, genellikle insan zekası ile ilişkili görevleri gerçekleştiren bilgisayar sistemleri ve uygulamalar oluşturabilirsiniz. Bu görevler görüntü tanıma, konuşma tanıma ve dil çevirisini içerir.
 
 ## <a name="techniques-of-deep-learning-vs-machine-learning"></a>Derin öğrenme ve makine öğrenimi teknikleri 
 
@@ -47,12 +47,12 @@ Aşağıdaki tabloda, daha ayrıntılı olarak iki teknik karşılaştırılmakt
 
 | |Tüm makine öğrenimi |Yalnızca derin öğrenme|
 |---|---|---|
-|  **Veri noktası sayısı** | , Kullanıcılar tarafından sunulan küçük veri miktarlarını kullanabilir. | Kısa ekibinizle yapmak için büyük miktarda eğitim verisi gerektirir. |
+|  **Veri noktası sayısı** | , Tahminlerde küçük miktarlarda veri kullanabilir. | Tahmine dayalı hale getirmek için büyük miktarlarda eğitim verisi kullanması gerekir. |
 |  **Donanım bağımlılıkları** | , Düşük kaliteli makinelerde çalışabilir. Büyük miktarda hesaplama gücüne gerek yoktur. | , Yüksek kaliteli makinelere bağlıdır. Bu, doğal olarak çok sayıda matris çarpma işlemi yapar. GPU, bu işlemleri verimli bir şekilde iyileştirebilir. |
 |  **Korturlama işlemi** | Özelliklerin kullanıcılar tarafından doğru şekilde tanımlanması ve oluşturulması gerekir. | Verilerden yüksek düzey özellikleri öğrenir ve kendi kendine yeni özellikler oluşturuyor. |
-|  **Öğrenme yaklaşımı** | Görevleri küçük parçalara böler ve ardından alınan sonuçları tek bir sonuç olarak birleştirir. | Sorunu bir uçtan uca temelinde çözer. |
-|  **Yürütme süresi** | Birkaç saniye ile birkaç saat arasında uyum sağlamak için karşılaştırmayı daha az zaman alır. | Derin bir öğrenme algoritması birçok parametre içerdiğinden, eğitmek için alışılmadık uzun zaman alır. |
-|  **Çıktı** | Çıktı genellikle bir puan veya sınıflandırma gibi sayısal bir değerdir. | Çıktı metin, puan, öğe veya ses olabilir. |
+|  **Öğrenme yaklaşımı** | Öğrenme işlemini daha küçük adımlara böler. Ardından, her adımın sonuçlarını tek bir çıktıda birleştirir. | Sorunu, bir uçtan uca temelinde çözerek öğrenme süreci boyunca ilerleyerek. |
+|  **Yürütme süresi** | Birkaç saniye ile birkaç saat arasında uyum sağlamak için karşılaştırmayı daha az zaman alır. | Derin bir öğrenme algoritması birçok katman içerdiğinden, genellikle eğitmek uzun sürer. |
+|  **Çıktı** | Çıktı genellikle bir puan veya sınıflandırma gibi sayısal bir değerdir. | Çıktıda metin, puan veya ses gibi birden çok biçim olabilir. |
 
 ## <a name="deep-learning-use-cases"></a>Derin öğrenme kullanım örnekleri
 
@@ -62,7 +62,7 @@ Derin öğrenme için en yaygın uygulamalardan bazıları aşağıdaki paragraf
 
 ### <a name="named-entity-recognition"></a>Adlandırılmış varlık tanıma
 
-Ayrıntılı öğrenme ağlarının bir kullanımı, yapılandırılmamış ve etiketsiz verilerden belirli bilgi türlerini ayıklamaya yönelik bir yol olan varlık tanıma olarak adlandırılır. Bu bilgiler kişi, yer, şirket veya şeyler olabilir. Daha sonra bilgiler bir kimlik listesi oluşturmak için yapılandırılmış bir şemada depolanabilir veya bir kimlik doğrulama altyapısı için kıyaslama işlevi görebilir.
+Adlandırılmış varlık tanıma, bir metin parçasını giriş olarak alan ve önceden belirtilen bir sınıfa dönüştüren derin bir öğrenme yöntemidir. Bu yeni bilgiler bir posta kodu, tarih ve ürün KIMLIĞI olabilir. Daha sonra bilgiler bir kimlik listesi oluşturmak için yapılandırılmış bir şemada depolanabilir veya bir kimlik doğrulama altyapısı için kıyaslama işlevi görebilir.
 
 ### <a name="object-detection"></a>Nesne algılama
 
@@ -72,17 +72,21 @@ Nesne algılama, oyun, perakende, tourma ve kendi kendine çalışan otomobiller
 
 ### <a name="image-caption-generation"></a>Resim yazısı oluşturma
 
-Görüntü tanıma gibi, resim yazısı içinde, belirli bir görüntü için sistem, görüntünün içeriğini açıklayan bir resim yazısı oluşturması gerekir. Fotoğraflarındaki nesneleri tespit edebilir ve etiketleyebilir, bir sonraki adım bu etiketlerin açıklayıcı, tutarlı cümleler içine dönüştürülmesi olur. Genellikle, görüntü resim yazısı sistemleri fotoğraflarda nesneleri algılamak için çok büyük evsel sinir ağları kullanır ve ardından etiketleri tutarlı cümlelere dönüştürmek için yinelenen bir sinir ağı (RNN) kullanır.
+Görüntü tanıma gibi, resim yazısı içinde, belirli bir görüntü için sistem, görüntünün içeriğini açıklayan bir resim yazısı oluşturması gerekir. Fotoğraflarındaki nesneleri tespit edebilir ve etiketleyebilir, sonraki adım bu etiketleri açıklayıcı cümlelere dönüştürmek olur. 
+
+Genellikle, görüntü resim yazısı uygulamaları, bir görüntüdeki nesneleri tanımlamak için sinir ağlarını kullanır ve ardından etiketleri tutarlı cümlelere dönüştürmek için yinelenen bir sinir ağı kullanır.
 
 ### <a name="machine-translation"></a>Makine çevirisi
 
-Makine çevirisi, bir dilden sözcükler, ifadeler veya cümleler alır ve bunları otomatik olarak başka bir dile çevirir. Otomatik makine çevirisi uzun bir süre içinde, ancak derin öğrenme iki belirli alana etkileyici sonuçlar elde eder: otomatik metin çevirisi (ve konuşmayı metne çevirme) ve görüntülerin otomatik çevirisi. 
+Makine çevirisi, bir dilden sözcükler veya cümleler alır ve bunları otomatik olarak başka bir dile çevirir. Makine çevirisi uzun bir süredir, ancak derin öğrenme iki belirli alana etkileyici sonuçlar elde eder: otomatik metin çevirisi (ve konuşmayı metne çevirme) ve görüntülerin otomatik çevirisi.
 
-Uygun veri dönüşümünde, derin bir ağ metin, ses ve görsel sinyalleri anlayabilirler. Makine çevirisi, daha büyük ses dosyalarındaki ses kod parçacıklarını tanımlamak ve söylenen sözcük veya görüntüyü metin olarak eklemek için kullanılabilir.
+Uygun veri dönüşümünde, bir sinir ağı metin, ses ve görsel sinyalleri anlayabilirler. Makine çevirisi, daha büyük ses dosyalarındaki ses kod parçacıklarını tanımlamak ve söylenen sözcük veya görüntüyü metin olarak eklemek için kullanılabilir.
 
 ### <a name="text-analytics"></a>Metin analizi
 
-Derin öğrenmesinin önemli bir görevi e-bulma ' dır. Şirketler, Insider ticareti ve kamu yönetmelikleriyle uyumluluğu tespit etmek için derin öğrenmeyi temel alan metin analizi kullanır. Hedge fon, gelecek yatırım performansı ve Pazar yaklaşımı hakkında öngörüler elde etmek için büyük belge depolarında detaya gitmek üzere metin analizi kullanır. Derin öğrenime dayalı metin analizi için kullanım örneği, büyük miktarlarda metin verilerini ayrıştırmaya ve analiz ya da yield toplamaları gerçekleştirmesine olanak sağlar.
+Derin öğrenme yöntemlerine dayalı metin analizi, büyük miktarlarda metin verisini (örneğin, tıbbi belgeler veya gider alındıları) analiz etmeyi, desenleri tanımayı ve daha sonra düzenlenmiş ve kısa bilgiler oluşturmayı içerir.
+
+Şirketler, kamu yönetmelikleriyle Insider ticareti ve uyumluluğu algılamak üzere metin analizi gerçekleştirmek için derin öğrenme kullanır. Daha yaygın bir örnek sigorta dolandırıcılığı örneğidir: metin analizi, genellikle bir sigorta talebinin sahtekarlık olasılığını tanımak üzere büyük miktarda belgeyi çözümlemek için kullanılır. 
 
 ## <a name="artificial-neural-networks"></a>Yapay sinir ağları
 
@@ -92,17 +96,17 @@ Aşağıdaki bölümlerde en popüler yapay sinir Network typologies vardır.
 
 ### <a name="feedforward-neural-network"></a>Feedforward sinir ağı
 
-Feedforward sinir Network, yapay sinir Network 'ün en temel türüdür. Bir feedforward ağında, bilgiler giriş katmanından çıkış katmanına yalnızca bir yönde hareket eder. Feedforward sinir Networks bir girişi bir dizi gizli katmana yerleştirerek bir girişi dönüştürür. Her katman bir dizi değilden oluşur ve her katman, daha önce katmandaki tüm neks 'e tam olarak bağlanır. Son tam bağlı katman (çıkış katmanı) oluşturulan tahminleri temsil eder.
+Feedforward sinir Network, yapay sinir Network 'ün en temel türüdür. Bir feedforward ağında, bilgiler giriş katmanından çıkış katmanına yalnızca bir yönde gider. Feedforward sinir Networks bir girişi bir dizi gizli katmana yerleştirerek bir girişi dönüştürür. Her katman bir dizi değilden oluşur ve her katman, daha önce katmandaki tüm neks 'e tam olarak bağlanır. Son tam bağlı katman (çıkış katmanı) oluşturulan tahminleri temsil eder.
 
 ### <a name="recurrent-neural-network"></a>Yinelenen sinir ağı
 
-Yinelenen sinir Networks, yaygın olarak kullanılan yapay bir sinir ağı. Bu ağlar bir katmanın çıkışını kaydeder ve katmanın sonucunun tahmin edilmesine yardımcı olması için giriş katmanına geri akışı sağlar. Yinelenen sinir ağlarında harika öğrenme becerileri vardır. Bunlar, el yazısı öğrenme ve dili tanıma gibi karmaşık görevler için yaygın olarak kullanılır.
+Yinelenen sinir Networks, yaygın olarak kullanılan yapay bir sinir ağı. Bu ağlar bir katmanın çıkışını kaydeder ve katmanın sonucunun tahmin edilmesine yardımcı olması için giriş katmanına geri akışı sağlar. Yinelenen sinir ağlarında harika öğrenme becerileri vardır. Zaman serisi tahmini, el yazısı öğrenme ve dili tanıma gibi karmaşık görevler için yaygın olarak kullanılır.
 
 ### <a name="convolutional-neural-networks"></a>Evsel sinir ağları
 
 Bir evsel sinir ağı, özellikle etkili bir yapay sinir ağı ve benzersiz bir mimari sunar. Katmanlar üç boyutta düzenlenmiştir: genişlik, yükseklik ve derinlik. Bir katmandaki katlara, bir sonraki katmandaki tüm neks 'ler bağlanır, ancak yalnızca katmanın nekatlarındaki küçük bir bölgedir. Son çıktı, derinlik boyutunun tek bir vektörüne indirgenecek ve derinlik boyutu üzerinde düzenlenmiştir. 
 
-Evsel sinir ağları görüntü tanıma ve sınıflandırma gibi alanlarda kullanılmıştır.
+Video tanıma, görüntü tanıma ve öneren sistemleri gibi alanlarda, evsel sinir ağları kullanılmıştır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

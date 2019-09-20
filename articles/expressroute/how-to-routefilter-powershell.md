@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft eşlemesi için-rota filtreleri yapılandırma ExpressRoute: PowerShell: Azure | Microsoft Docs'
+title: 'Microsoft eşlemesi için rota filtrelerini yapılandırma-ExpressRoute: PowerShell: Azure | Microsoft Docs'
 description: Bu makalede PowerShell kullanarak Microsoft Peering için rota filtreleri yapılandırma
 services: expressroute
 author: ganesr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: e5d94fad5ddcfd0b34e36cb96727cff48b62ea0b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5a5ca4949ca223e9123d59c9578a2628dacd351
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730222"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123414"
 ---
-# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft eşlemesi için rota filtreleri yapılandırma: PowerShell
+# <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft eşlemesi için rota filtrelerini yapılandırın: PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](how-to-routefilter-portal.md)
 > * [Azure PowerShell](how-to-routefilter-powershell.md)
@@ -24,7 +24,7 @@ ms.locfileid: "66730222"
 
 Rota filtreleri, desteklenen servislerin bir alt kümesini Microsoft eşlemesi aracılığıyla kullanmanın bir yoludur. Bu makaledeki adımları yapılandırmak ve ExpressRoute devreleri için rota filtreleri yönetmenize yardımcı olur.
 
-Dynamics 365 Hizmetleri ve iş ve depolama ve SQL DB gibi Azure kamu hizmetleri için Exchange Online, SharePoint Online ve Skype gibi Office 365 hizmetlerine Microsoft eşlemesi üzerinden erişilebilir. Azure genel Hizmetleri tek başına bölge temelinde seçilebilir ve kamu hizmeti tanımlanamaz.
+Exchange Online, SharePoint Online ve Skype Kurumsal gibi Office 365 hizmetleri ve depolama ve SQL DB gibi Azure genel hizmetlerine Microsoft eşlemesi aracılığıyla erişilebilir. Azure genel Hizmetleri tek başına bölge temelinde seçilebilir ve kamu hizmeti tanımlanamaz.
 
 Microsoft eşlemesi bir ExpressRoute bağlantı hattı üzerinde yapılandırılmış ve bir rota filtresinde bağlı olduğunda, bu hizmetler için seçilen tüm ön eklerin oluşturulmuş BGP oturumları bildirilir. Ön ek aracılığıyla sunulan hizmeti tanımlamak için her ön eke BGP topluluk değeri eklenir. BGP topluluk değerlerini ve eşlemek için Hizmetler listesi için bkz: [BGP toplulukları](expressroute-routing.md#bgp).
 
@@ -40,7 +40,7 @@ Microsoft eşlemesi ExpressRoute devreniz yapılandırıldığında, Microsoft u
 
 Rota filtresi, ExpressRoute bağlantı hattınızın Microsoft eşlemesi üzerinden kullanmak istediğiniz hizmetleri tanımlamanızı sağlar. Bu genelde tüm BGP topluluk değerlerinden oluşan bir izin verilenler listesidir. Rota filtresi kaynağı tanımlandıktan ve bir ExpressRoute bağlantı hattına eklendikten sonra BGP topluluk değerleriyle eşleşen tüm ön ekler ağınızda tanıtılır.
 
-Rota filtreleri bunlar üzerinde Office 365 Hizmetleri ile iliştirme mümkün olması için ExpressRoute aracılığıyla Office 365 hizmetlerini kullanma yetkisi olmalıdır. ExpressRoute aracılığıyla Office 365 hizmetlerini kullanma yetkisi olmayan rota filtreleri ekleme işlemi başarısız olur. Yetkilendirme işlemi hakkında daha fazla bilgi için bkz: [Office 365 için Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd). Dynamics 365 hizmetlerine, önceki tüm yetkilendirme gerektirmez.
+Rota filtreleri bunlar üzerinde Office 365 Hizmetleri ile iliştirme mümkün olması için ExpressRoute aracılığıyla Office 365 hizmetlerini kullanma yetkisi olmalıdır. ExpressRoute aracılığıyla Office 365 hizmetlerini kullanma yetkisi olmayan rota filtreleri ekleme işlemi başarısız olur. Yetkilendirme işlemi hakkında daha fazla bilgi için bkz: [Office 365 için Azure ExpressRoute](https://support.office.com/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd).
 
 > [!IMPORTANT]
 > 1 Ağustos 2017'den önce yapılandırılmış olan ExpressRoute devrelerinin Microsoft eşdüzey hizmet sağlama, tüm hizmet ön eklerin rota filtreleri tanımlanmamış olsa bile, Microsoft eşlemesi tanıtılan sahip olur. 1 Ağustos 2017 veya sonrasında yapılandırılmış ExpressRoute devrelerinin Microsoft eşlemesi tüm ön ekleri olmaz bağlantı hattına bir rota filtresinde bağlanana kadar tanıtılan.
@@ -101,7 +101,7 @@ Kullanmak istediğiniz aboneliği belirtin.
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>1. adım: Bir ön ek listesini ve BGP topluluk değerlerini alma
+## <a name="prefixes"></a>1. Adım: Ön eklerin ve BGP topluluk değerlerinin bir listesini alın
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. BGP topluluk değerlerini bir listesini alın
 
@@ -112,15 +112,15 @@ Get-AzBgpServiceCommunity
 ```
 ### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. Kullanmak istediğiniz değerleri listesi olun
 
-Bir rota filtresinde kullanmak istediğiniz BGP topluluk değerlerini listesini hazırlayın. Örneğin, Dynamics 365 Hizmetleri için BGP topluluk değeri 12076:5040 ' dir.
+Bir rota filtresinde kullanmak istediğiniz BGP topluluk değerlerini listesini hazırlayın.
 
-## <a name="filter"></a>2. adım: Rota filtresi ve filtre kuralı oluşturma
+## <a name="filter"></a>2. Adım: Yol filtresi ve filtre kuralı oluşturma
 
 Bir rota filtresinde yalnızca bir kuralınız olabilir ve kural 'İzin ver' türünde olmalıdır. Bu kural, kendisiyle ilişkili BGP topluluk değerlerini listesi olabilir.
 
 ### <a name="1-create-a-route-filter"></a>1. Rota filtresi oluşturma
 
-İlk olarak rota filtresini oluşturun. Komut 'New-AzRouteFilter' yalnızca bir yol filtresi kaynağı oluşturur. Kaynak oluşturduktan sonra ardından bir kural oluşturmak ve rota filtresi nesnesine ekleme gerekir. Rota filtresi kaynak oluşturmak için aşağıdaki komutu çalıştırın:
+İlk olarak rota filtresini oluşturun. ' New-AzRouteFilter ' komutu yalnızca bir yol filtre kaynağı oluşturuyor. Kaynak oluşturduktan sonra ardından bir kural oluşturmak ve rota filtresi nesnesine ekleme gerekir. Rota filtresi kaynak oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```azurepowershell-interactive
 New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Location "West US"
@@ -144,7 +144,7 @@ $routefilter.Rules.Add($rule)
 Set-AzRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>3. adım: Bir ExpressRoute bağlantı hattı için rota filtresi ekleme
+## <a name="attach"></a>Adım 3: Yol filtresini bir ExpressRoute devresine iliştirme
 
 Rota filtresi, yalnızca Microsoft eşlemesi olduğunu varsayarsak ExpressRoute devresine eklemek için aşağıdaki komutu çalıştırın:
 

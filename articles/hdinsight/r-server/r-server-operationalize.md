@@ -1,19 +1,19 @@
 ---
 title: HDInsight 'ta ML hizmetlerini çalıştırma-Azure
 description: Azure HDInsight 'ta ML Hizmetleri ile tahmine dayalı hale getirmek için veri modelinizi nasıl gerçekleştireceğinizi öğrenin.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967654"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123559"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta ML hizmetleri kümesini operationleştir
 
@@ -50,31 +50,31 @@ HDInsight 'ta ML hizmetleri kümesini kullandıktan sonra veri modelinizi tamaml
 
 1. Seçim yapabileceğiniz seçeneklerle karşılaşırsınız. **Operationalization için ml Server yapılandırmak**üzere aşağıdaki ekran görüntüsünde gösterildiği gibi ilk seçeneği belirleyin.
 
-    ![tek Box OP1](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![R Server yönetim yardımcı programı seçme](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. Artık ML Server nasıl kullanıma sunmayı istediğinizi belirleme seçeneği sunulur. Görüntülenen seçeneklerden ilk birini girerek **seçin.**
 
-    ![tek Box OP2](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![R Server yönetim yardımcı programı operationınitialize](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. İstendiğinde, bir yerel yönetici kullanıcısının parolasını girin ve yeniden girin.
 
 1. İşlemin başarılı olduğunu öneren çıktılar görmeniz gerekir. Ayrıca, menüden başka bir seçenek de seçmeniz istenir. Ana menüye dönmek için E ' yi seçin.
 
-    ![tek Box OP3](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![R Server yönetim yardımcı programı başarılı](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. İsteğe bağlı olarak, aşağıdaki gibi bir tanılama testi çalıştırarak tanılama denetimleri gerçekleştirebilirsiniz:
 
     a. Tanılama testlerini çalıştırmak için ana menüden **6** ' yı seçin.
 
-    ![diagnostic1](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    ![R Server yönetim yardımcı programı tanılaması](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. Tanılama Testleri menüsünden **bir**seçin. İstendiğinde, yerel yönetici kullanıcısı için verdiğiniz parolayı girin.
 
-    ![diagnostic2](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    ![R Server yönetim yardımcı programı sınaması](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. Çıktıda genel sistem durumunun bir pass olduğunu gösterdiğini doğrulayın.
 
-    ![diagnostic3](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    ![R Server yönetim yardımcı programı başarılı](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. Gösterilen menü seçeneklerinde, ana menüye dönmek için **E** yazın ve ardından Yönetici yardımcı programından çıkmak için **8** yazın.
 
@@ -148,7 +148,7 @@ ML Hizmetleri kümesi [Apache Hadoop YARN](https://hadoop.apache.org/docs/curren
 
 1. **Eylemler**seçiliKonaklar > Konaklarbakımmodunuaç > ' a tıklayın. >  Örneğin, aşağıdaki görüntüde yetkisini almak üzere wn3 ve wn4 seçilmiştir.  
 
-   ![çalışan düğümlerinin yetkisini alma](./media/r-server-operationalize/get-started-operationalization.png)  
+   ![Apache ambarı bakım modunu aç](./media/r-server-operationalize/get-started-operationalization.png)  
 
 * **Seçili** > Eylemler ' i seçin ve sonra da yük al ' a tıklayın > > 
 * Seçili **Eylemler** > seçin**NodeManager** **Konakları** > > **Al**' a tıklayın.

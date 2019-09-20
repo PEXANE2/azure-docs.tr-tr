@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928007"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123069"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure genel bulutunda yalıtım
 ##  <a name="introduction"></a>Giriş
@@ -105,7 +105,7 @@ Azure Active Directory için bazı diğer yetenekler şunlardır:
 
 - Azure AD, şirket içi dizinlerle [Active Directory Federasyon Hizmetleri (AD FS)](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md), eşitleme ve çoğaltma kullanarak Federasyon aracılığıyla bir hizmet olarak kimlik sağlar.
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) , kullanıcıların oturum açma işlemlerini bir mobil uygulama, telefon araması veya kısa mesaj kullanarak doğrulamasını gerektiren Multi-Factor Authentication hizmetidir. Azure Multi-Factor Authentication sunucusu ile şirket içi kaynakları güvenli hale getirmek ve ayrıca SDK 'Yı kullanan özel uygulamalar ve dizinler ile Azure AD ile birlikte kullanılabilir.
+- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) , kullanıcıların oturum açma işlemlerini bir mobil uygulama, telefon araması veya kısa mesaj kullanarak doğrulamasını gerektiren Multi-Factor Authentication hizmetidir. Azure Multi-Factor Authentication sunucusu ile şirket içi kaynakların güvenliğini sağlamaya ve ayrıca SDK kullanan özel uygulamalarla ve dizinlerden yardım almak için Azure AD ile birlikte kullanılabilir.
 
 - [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) , Azure sanal makinelerini etki alanı denetleyicilerini dağıtmaya gerek kalmadan bir Active Directory etki alanına aktarmanıza olanak tanır. Şirket Active Directory kimlik bilgilerinizle bu sanal makinelerde oturum açabilir ve tüm Azure sanal makinelerinizde güvenlik temellerini zorlamak için grup ilkesi kullanarak etki alanına katılmış sanal makineleri yönetebilirsiniz.
 
@@ -128,19 +128,8 @@ Depolama için kullanılan bir disk sürücüsü bir donanım arızası içeriyo
 Microsoft Azure, uygulamanızın veya kuruluşunuzun ihtiyaçlarını karşılayacak şekilde otomatik olarak ölçeklenebilen ve en düşük düzeyde işlem örnekleri & hizmetleri içeren çeşitli bulut tabanlı bilgi işlem hizmetleri sağlar. Bu işlem örneği ve hizmeti, verilerin güvenliğini sağlamak için birden çok düzeyde yalıtım sunarak, müşterilerin talep ettiği yapılandırmadaki esnekliğe karşı daha fazla esneklik sunar.
 
 ### <a name="isolated-virtual-machine-sizes"></a>Yalıtılmış sanal makine boyutları
-Azure Compute, belirli bir donanım türüyle sınırlanmış ve tek bir müşteriye ayrılmış olan sanal makine boyutları sunar.  Bu sanal makine boyutları, uyumluluk ve düzenleme gereksinimleri gibi öğeler içeren iş yükleri nedeniyle diğer müşterilerden yüksek ölçüde yalıtıma ihtiyaç duyan iş yükleri için idealdir.  Müşteriler Ayrıca, [iç içe geçmiş sanal makineler Için Azure desteği](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)'ni kullanarak bu yalıtılmış sanal makinelerin kaynaklarını daha fazla alt bölümlere ayırmak da tercih edebilir.
 
-Yalıtılmış bir boyut kullanılması, sanal makinenizin o belirli sunucu örneğinde çalışan tek bir tane olmasını garanti eder.  Geçerli yalıtılmış sanal makine teklifleri şunları içerir:
-* Standard_E64is_v3
-* Standard_E64i_v3
-* Standard_M128ms
-* Standard_GS5
-* Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
-* Standard_F72s_v2
-
-[Burada](../../virtual-machines/windows/sizes-memory.md)kullanılabilen her bir yalıtılmış boyut hakkında daha fazla bilgi edinebilirsiniz.
+[!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & kök VM & Konuk VM 'Ler arasında kök işletim sistemi yalıtımı
 Azure 'un işlem platformu, makine sanallaştırmaya dayalıdır; yani tüm müşteri kodu bir Hyper-V sanal makinesinde yürütülür. Her bir Azure düğümünde (veya ağ uç noktası), doğrudan donanım üzerinde çalışan ve bir düğümü değişken sayıda konuk sanal makineye (VM) ayıran bir hiper yönetici vardır.
@@ -352,7 +341,7 @@ Azure dağıtımında birden çok ağ yalıtımı katmanı vardır. Aşağıdaki
 
 - [Windows Azure sanal ağlarında makineler için ağ yalıtımı seçenekleri](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 
-Bu, belirli bir arka uç ağı veya alt ağı içindeki makinelerin yalnızca belirli bir uç noktaya IP adresleri listesine bağlı olarak belirli bir uç noktaya bağlanmasına izin veren klasik ön uç ve arka uç senaryosunu içerir.
+Bu, belirli bir arka uç ağı veya alt ağı içindeki makinelerin yalnızca belirli bir uç noktaya izin verilen IP adresleri listesine bağlı olarak belirli bir uç noktaya bağlanmasına izin veren klasik ön uç ve arka uç senaryosunu içerir.
 
 - [İşlem yalıtımı](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 

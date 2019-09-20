@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960229"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123235"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>HDInsight üzerinde Kafka ile Apache Kafka konuları çoğaltmak için MirrorMaker kullanın
 
@@ -84,7 +84,7 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
     1. **Ekle**'yi tıklatın.
     1. **Eşleme Ekle** ekranında, aşağıdaki ekran görüntüsünde gösterildiği gibi ayrıntıları girin.
 
-        ![VNET eşlemesi Ekle](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        ![HDInsight Kafka VNET eşlemesi Ekle](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. IP tanıtımı yapılandırın:
     1. Birincil kümenin ambarı panosuna gidin: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
@@ -104,7 +104,7 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
     1. **Yapılandırma değişikliklerini kaydet**sayfasında **Tamam** ' a tıklayın.
     1. Yeniden başlatma gerekli bildiriminde**etkilenen tüm** **Yeniden Başlat ' a**tıklayın.  >  **Tümünü yeniden başlatmayı Onayla**' ya tıklayın.
 
-        ![Kafka düğümlerini yeniden Başlat](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![Apache ambarı yeniden başlatma etkilendi](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. Tüm ağ arabirimlerini dinlemek için Kafka yapılandırın.
     1. **Hizmetler** Kafka'ninaltındakiconfigs > sekmesinde kalın. **Kafka Broker** bölümünde **Listeners** özelliğini olarak `PLAINTEXT://0.0.0.0:9092`ayarlayın.
@@ -115,7 +115,7 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
     1. Ambarı panosundaki **konaklar** ' a tıklayın.
     1. Aracılar ve zookeepers için IP adreslerini bir yere göz önünde yapın. Aracı düğümlerinin, ana bilgisayar adının ilk iki harfi ve Zookeeper düğümleri ana bilgisayar adının ilk iki harfi olarak **ZK** **'a sahiptir.**
 
-        ![IP adreslerini görüntüle](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![Apache ambarı görünümü düğüm IP adresleri](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. İkinci küme için önceki üç adımı tekrarlayın **Kafka-ikincil-küme**: IP reklacılarını yapılandırın, dinleyicileri ayarlayın ve Broker ve Zookeeper IP adreslerini bir yere göz önünde yapın.
 
@@ -251,7 +251,7 @@ Bu mimari, farklı kaynak gruplarındaki ve sanal ağlardaki iki kümeyi sunar: 
         6. Değerini `auto.create.topics.enable` true olarak değiştirin ve ardından __Kaydet__' i seçin. Bir Note ekleyin ve sonra yeniden __Kaydet__ ' i seçin.
         7. __Kafka__ hizmetini seçin, __Yeniden Başlat__' ı seçin ve ardından __etkilenen tümünü yeniden Başlat__' ı seçin. İstendiğinde, __Tümünü Yeniden Başlat__' ı seçin.
 
-        ![Konu otomatik oluşturmayı yapılandırma](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![Kafka otomatik oluşturma konularını etkinleştir](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
 ## <a name="start-mirrormaker"></a>MirrorMaker 'ı Başlat
 

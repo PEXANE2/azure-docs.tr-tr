@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 2b7ad95dc652f2099af75308f05ddd0684e088aa
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
-ms.translationtype: HT
+ms.openlocfilehash: 15b4d3208be693a5b8d858d30b663347515f5a68
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104742"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130282"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta oluşturma
 
@@ -199,6 +199,7 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>SQL veritabanı sunucusuna VM 'den özel olarak erişme
 
 1.  *Myvm*uzak masaüstünde PowerShell ' i açın.
+
 2. Girin `nslookup myserver.database.windows.net`. 
 
     Şuna benzer bir ileti alacaksınız:

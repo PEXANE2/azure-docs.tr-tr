@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: 8158611678acc23d89bab377c170759c6bf9677f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ac31a2945e59df3b57000a0ffdcbca8344e44c18
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962628"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122308"
 ---
 # <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (Önizleme)
 
@@ -91,7 +91,11 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
     1. Yeni adı yazdıktan sonra, yeni adın yanındaki onay simgesine tıklayın. Bu, yeni adı modelde Video Indexer kaydeder.
     1. İstediğiniz tüm adları düzenledikten sonra modeli eğmeniz gerekir.
 
-        Özelleştirme sayfasını açın ve **animasyonlu karakterler** sekmesine tıklayın. İlgili model için **özel görüntü işleme düzenleme** bağlantısı ' na tıklayın. Daha sonra Özel Görüntü İşleme modelin sayfasına iletilecektir. Modelinizi eğitebilmeniz için **eğitme** düğmesine tıklayın. 
+        Özelleştirme sayfasını açın ve **animasyonlu karakterler** sekmesine tıklayın. Ücretli bir hesabınız varsa, **Müşteri vizyonlarındaki modelleri Yönet** bağlantısını (aşağıda gösterildiği gibi) tıklayabilirsiniz. Daha sonra Özel Görüntü İşleme modelin sayfasına iletilecektir. Modelinizi eğitebilmeniz için **eğitme** düğmesine tıklayın. 
+        
+        ![İçerik modeli özelleştirme](./media/animated-characters-recognition/content-model-customization-tab.png)
+
+        Deneme hesabınız varsa, **Müşteri vizyondaki modelleri Yönet** bağlantısı mevcut olmayacaktır. Bu durumda, **içerik modeli özelleştirme** sayfasında **eğitme** ' ye basabilirsiniz.
     1. Eğitim olduktan sonra, bu modelle Dizinlenecek veya yeniden Dizinlenecek tüm videolar eğitilen karakterleri tanır. 
     Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir. [Özel görüntü işleme sınıflandırıcınızı iyileştirme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)hakkında daha fazla bilgi edinin.
 

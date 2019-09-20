@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirin
 description: Bu makalede, Azure HDInsight üzerinde Apache Kafka depolanan verileri şifrelemek için Azure Key Vault ' den kendi anahtarınızın nasıl kullanılacağı açıklanır.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000109"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122674"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Kafka için kendi anahtarınızı getirin
 
@@ -22,7 +22,7 @@ HDInsight 'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE
 
 BYOK şifrelemesi, küme oluşturma sırasında ek bir maliyet olmadan işlenen tek adımlı bir işlemdir. Yapmanız gereken tek şey, HDInsight 'ı Azure Key Vault ile yönetilen kimlik olarak kaydeder ve kümenizi oluştururken şifreleme anahtarını eklemektir.
 
-Kafka kümesine (Kafka tarafından tutulan çoğaltmalar dahil) yönelik tüm iletiler bir simetrik veri şifreleme anahtarı (DEK) ile şifrelenir. DEK, anahtar kasaınızdan anahtar şifreleme anahtarı (KEK) kullanılarak korunmaktadır. Şifreleme ve şifre çözme işlemleri tamamen Azure HDInsight tarafından işlenir. 
+Kafka kümesine (Kafka tarafından tutulan çoğaltmalar dahil) yönelik tüm iletiler bir simetrik veri şifreleme anahtarı (DEK) ile şifrelenir. DEK, anahtar kasaınızdan anahtar şifreleme anahtarı (KEK) kullanılarak korunmaktadır. Şifreleme ve şifre çözme işlemleri tamamen Azure HDInsight tarafından işlenir.
 
 Anahtar kasasındaki anahtarları güvenle döndürmek için Azure portal veya Azure CLı kullanabilirsiniz. Bir anahtar döndürülerek HDInsight Kafka kümesi yeni anahtarı dakikalar içinde kullanmaya başlar. Fidye yazılımı senaryolarına ve yanlışlıkla silinmeye karşı korunmak için "geçici silme" anahtar koruma özelliklerini etkinleştirin. Bu koruma özelliği olmadan anahtar kasaları desteklenmez.
 
@@ -46,6 +46,7 @@ BYOK etkin bir Kafka kümesi oluşturmak için aşağıdaki adımları takip ede
    1. Yeni bir Anahtar Kasası oluşturmak için [Azure Key Vault](../../key-vault/key-vault-overview.md) hızlı başlangıcı ' nı izleyin. Mevcut anahtarları içeri aktarma hakkında daha fazla bilgi için [anahtarlar, gizli diziler ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md)bölümünü ziyaret edin.
 
    2. [Az keykasa Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI komutunu kullanarak anahtar kasasında "geçici silme" özelliğini etkinleştirin.
+
         ```Azure CLI
         az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
@@ -58,16 +59,16 @@ BYOK etkin bir Kafka kümesi oluşturmak için aşağıdaki adımları takip ede
 
         b. Oluşturma **seçeneklerini** belirleyin ve anahtara bir ad verin.
 
-        ![Anahtar adı oluştur](./media/apache-kafka-byok/apache-kafka-create-key.png "Anahtar adı oluştur")
+        ![Apache Kafka anahtar adı oluştur](./media/apache-kafka-byok/apache-kafka-create-key.png "Anahtar adı oluştur")
 
         c. Anahtar listesinden oluşturduğunuz anahtarı seçin.
 
-        ![Azure Key Vault anahtar listesi](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Apache Kafka Anahtar Kasası anahtar listesi](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
         d. Kafka küme şifrelemesi için kendi anahtarınızı kullandığınızda, anahtar URI 'sini sağlamanız gerekir. **Anahtar tanımlayıcısını** kopyalayın ve kümenizi oluşturmaya hazır olana kadar bir yere kaydedin.
 
-        ![Anahtar tanımlayıcısını Kopyala](./media/apache-kafka-byok/kafka-get-key-identifier.png)
-   
+        ![Apache Kafka get anahtar tanımlayıcısı](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+
     4. Yönetilen kimliği Anahtar Kasası erişim ilkesine ekleyin.
 
         a. Yeni bir Azure Key Vault erişim ilkesi oluşturun.
@@ -96,9 +97,10 @@ BYOK etkin bir Kafka kümesi oluşturmak için aşağıdaki adımları takip ede
 
    ![Azure portal Kafka disk şifrelemesi](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
 
-   Küme oluşturma sırasında, anahtar sürümü de dahil olmak üzere tam anahtar URL 'sini sağlayın. Örneğin: `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Ayrıca, yönetilen kimliği kümeye atamanız ve anahtar URI 'sini sağlamanız gerekir.
+   Küme oluşturma sırasında, anahtar sürümü de dahil olmak üzere tam anahtar URL 'sini sağlayın. Örneğin, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Ayrıca, yönetilen kimliği kümeye atamanız ve anahtar URI 'sini sağlamanız gerekir.
 
 ## <a name="rotating-the-encryption-key"></a>Şifreleme anahtarını döndürme
+
    Oluşturulduktan sonra Kafka kümesi tarafından kullanılan şifreleme anahtarlarını değiştirmek isteyebileceğiniz senaryolar olabilir. Bu, Portal aracılığıyla kolayca olabilir. Bu işlem için, kümenin hem geçerli anahtara hem de hedeflenen yeni anahtara erişimi olması gerekir, aksi takdirde anahtar döndürme işlemi başarısız olur.
 
    Anahtarı döndürmek için, yeni anahtarın tam URL 'sine sahip olmanız gerekir (bkz. [Key Vault ve anahtarlarını kurulumun](#setup-the-key-vault-and-keys)3. adımında). Bunu yaptıktan sonra, portalda Kafka küme özellikleri bölümüne gidin ve **disk şifreleme anahtarı URL 'si**altında **anahtarı Değiştir** ' e tıklayın. Yeni anahtar URL 'sini girin ve anahtarı döndürmek için Gönder ' i yazın.
@@ -122,7 +124,7 @@ BYOK etkin bir Kafka kümesi oluşturmak için aşağıdaki adımları takip ede
 **Küme, anahtar kasasına veya anahtara erişimi kaybederse ne olur?**
 Küme anahtara erişimi kaybederse, uyarılar Apache ambarı portalında gösterilir. Bu durumda, **anahtar değiştirme** işlemi başarısız olur. Anahtar erişimi geri yüklendikten sonra, ambarı uyarıları kaldırılır ve anahtar döndürme işlemi başarılı bir şekilde gerçekleştirilebilir.
 
-   ![Kafka Key Access ambarı uyarısı](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Apache Kafka anahtar erişim ambarı uyarısı](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **Anahtarlar siliniyorsa kümeyi nasıl kurtarabilirim?**
 

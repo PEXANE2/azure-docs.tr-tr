@@ -4,7 +4,7 @@ description: Azure 'a bir bulut hizmeti dağıttığınızda karşılaşabilece�
 services: cloud-services
 documentationcenter: ''
 author: simonxjx
-manager: felixwu
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: e8ed7066025dd60f0c157a4ce4caec925fe08792
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ccb08f853ae0f941dd5f9c0eca8c77f0f650905a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945383"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122742"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Cloud Service dağıtım sorunlarını giderme
 Azure 'a bir bulut hizmeti uygulama paketi dağıttığınızda, Azure portal **Özellikler** bölmesinden dağıtım hakkında bilgi alabilirsiniz. Bu bölmedeki ayrıntıları, bulut hizmetindeki sorunları gidermenize yardımcı olması için kullanabilir ve yeni bir destek isteği açarken bu bilgileri Azure desteği 'ne verebilirsiniz.
@@ -60,7 +60,7 @@ Devam eden bir dağıtım güncelleştirmesi varsa bir VIP Swap öğesine izin v
 Bir otomatik güncelleştirmenin bir VIP takası yapmanızı engelleyip engellemediğini öğrenmek için:
 
 1. Azure portal bulut hizmetinizin dağıtımına tıklayın.
-2. Azure portal **Özellikler** bölmesinde **durum**değerine bakın. Bu durumda,en **son işlemi** , VIP takasını engelleyebilecek bir en son gerçekleşip öngörmeyebilirsiniz.
+2. Azure portal **Özellikler** bölmesinde **durum**değerine bakın. Bu **durumda, en** **son işlemi** , VIP takasını engelleyebilecek bir en son gerçekleşip öngörmeyebilirsiniz.
 3. Üretim dağıtımı için 1 ve 2. adımları tekrarlayın.
 4. Bir otomatik güncelleştirme sürecde ise, VIP takas işlemini gerçekleştirmeye çalışmadan önce işlemin bitmesini bekleyin.
 

@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 872c6f0af9695628f2821c8859d0b582534efd45
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c03b0dcf6a99611a0261fad7c4ba673c3a8932c9
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840081"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122844"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Öğretici: SQL Server veritabanları ile verileri kenarda depolayın
 
@@ -147,15 +147,17 @@ Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu
                    if (messageBody != null && messageBody.machine.temperature > temperatureThreshold)
                    {
                        // Send the message to the output as the temperature value is greater than the threashold.
-                       var filteredMessage = new Message(messageBytes);
-                       // Copy the properties of the original message into the new Message object.
-                       foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
-                       {filteredMessage.Properties.Add(prop.Key, prop.Value);}
-                       // Add a new property to the message to indicate it is an alert.
-                       filteredMessage.Properties.Add("MessageType", "Alert");
-                       // Send the message.       
-                       await output.AddAsync(filteredMessage);
-                       logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
+                       using (var filteredMessage = new Message(messageBytes))
+                       {
+                            // Copy the properties of the original message into the new Message object.
+                            foreach (KeyValuePair<string, string> prop in messageReceived.Properties)
+                            {filteredMessage.Properties.Add(prop.Key, prop.Value);}
+                            // Add a new property to the message to indicate it is an alert.
+                            filteredMessage.Properties.Add("MessageType", "Alert");
+                            // Send the message.       
+                            await output.AddAsync(filteredMessage);
+                            logger.LogInformation("Info: Received and transferred a message with temperature above the threshold");
+                       }
                    }
                }
            }
@@ -202,7 +204,7 @@ Ortam dosyası, kapsayıcı kayıt defterinizin kimlik bilgilerini depolar ve bu
 
 [Dağıtım bildirimi](module-composition.md), IoT Edge çalışma zamanının hangi modüllerinin IoT Edge cihazınıza yükleneceğini bildirir. Önceki bölümde özelleştirilmiş bir Işlev modülü oluşturmak için kodu sağladınız, ancak SQL Server modülü zaten Azure Marketi 'nde oluşturulmuş ve kullanılabilir. Tek yapmanız gereken IoT Edge çalışma zamanına bunu dahil etmek ve cihazınızda yapılandırmaktır. 
 
-1. Visual Studio Code ' de, komut paletini **görüntüle** > ' yi seçerek komut paleti ' ni açın.
+1. Visual Studio Code ' de, komut paletini **görüntüle** > ' yi seçerek komut paleti ' ni**açın.**
 
 2. Komut paletinde komutunu **yazın ve Azure IoT Edge çalıştırın: IoT Edge modülünü**ekleyin. Komut paletinde, yeni bir modül eklemek için aşağıdaki bilgileri sağlayın: 
 
@@ -330,4 +332,4 @@ Bu öğreticide, IoT Edge cihazınız tarafından oluşturulan ham verileri filt
 Kenarda başka bir depolama yöntemi denemek istiyorsanız, IoT Edge Azure Blob Storage kullanma hakkında bilgi edinin. 
 
 > [!div class="nextstepaction"]
-> [IoT Edge Azure Blob Storage ile verileri kenarda depolayın](how-to-store-data-blob.md)
+> [IoT Edge'de Azure Blob Depolama ile verileri kenarda depolama](how-to-store-data-blob.md)

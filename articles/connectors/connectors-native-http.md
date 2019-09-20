@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps 'ten HTTP veya HTTPS uç noktalarına bağlanma
-description: Azure Logic Apps kullanarak otomatik görevler, süreçler ve iş akışlarında HTTP veya HTTPS uç noktalarını izleyin
+title: HTTP ve HTTPS uç noktalarını çağırma-Azure Logic Apps
+description: Azure Logic Apps kullanarak giden istekleri HTTP ve HTTPS uç noktalarına gönderin
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,18 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 04d9beaef29e76d40c0bb3f9dcf0bb6f4fe3152d
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234357"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122691"
 ---
-# <a name="call-http-or-https-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak HTTP veya HTTPS uç noktalarını çağırma
+# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak HTTP veya HTTPS uç noktalarına giden çağrıları gönderin
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik http Bağlayıcısı sayesinde mantıksal uygulamalar oluşturarak HERHANGI bir http veya HTTPS uç noktasını düzenli olarak çağıran iş akışlarını otomatikleştirebilirsiniz. Örneğin, belirli bir zamanlamaya göre bu uç noktayı denetleyerek Web siteniz için hizmet uç noktasını izleyebilirsiniz. Bu uç noktada ilgili Web siteniz gibi belirli bir olay gerçekleştiğinde, olay mantıksal uygulamanızın iş akışını tetikler ve belirtilen eylemleri çalıştırır.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve yerleşik http tetikleyicisi veya eylemiyle, istekleri HERHANGI bir http veya HTTPS uç noktasına düzenli olarak gönderen otomatikleştirilmiş görevler ve iş akışları oluşturabilirsiniz. Bunun yerine gelen HTTP veya HTTPS çağrılarını almak ve yanıtlamak için yerleşik [istek tetikleyicisi veya Yanıt eylemini](../connectors/connectors-native-reqres.md)kullanın.
+
+Örneğin, belirli bir zamanlamaya göre bu uç noktayı denetleyerek Web siteniz için hizmet uç noktasını izleyebilirsiniz. Bu uç noktada ilgili Web siteniz gibi belirli bir olay gerçekleştiğinde, olay mantıksal uygulamanızın iş akışını tetikler ve belirtilen eylemleri çalıştırır.
 
 Bir uç noktayı düzenli bir zamanlamaya göre denetlemek veya *yoklamak* IÇIN, http tetikleyicisini iş akışınızın ilk adımı olarak kullanabilirsiniz. Her denetim için tetikleyici, uç noktaya bir çağrı veya *istek* gönderir. Uç noktanın yanıtı, mantıksal uygulamanızın iş akışının çalışıp çalışmadığını belirler. Tetikleyici, mantıksal uygulamanızdaki eylemlere karşılık gelen tüm içerik üzerinde geçiş yapar.
 
@@ -149,14 +151,14 @@ Bu bilgileri döndüren bir HTTP tetikleyicisinden veya eylemden çıktılar hak
 | Özellik adı | Type | Açıklama |
 |---------------|------|-------------|
 | Bilgisinde | object | İstekten gelen üstbilgiler |
-| bölümü | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
+| body | object | JSON nesnesi | İstekten gelen gövde içeriğine sahip nesne |
 | Durum kodu | int | İstekteki durum kodu |
 |||
 
 | Durum kodu | Açıklama |
 |-------------|-------------|
 | 200 | Tamam |
-| 202 | Eden |
+| 202 | Kabul Edildi |
 | 400 | Hatalı istek |
 | 401 | Yetkilendirilmemiş |
 | 403 | Yasak |

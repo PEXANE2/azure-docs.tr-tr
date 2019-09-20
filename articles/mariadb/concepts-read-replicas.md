@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 8faa6338179eb1540eb4f9a375bf3bc696c745f3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5018cab1213fb99f4c3b07944d0cb3172d1cd2c7
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995384"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123220"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda çoğaltmaları okuma
 
@@ -34,6 +34,9 @@ Okuma çoğaltması özelliği zaman uyumsuz çoğaltma kullanır. Özelliği, z
 
 ## <a name="cross-region-replication"></a>Çapraz bölge çoğaltma
 Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsiniz. Çapraz bölge çoğaltma, olağanüstü durum kurtarma planlaması veya kullanıcılarınıza daha yakın veri getirme gibi senaryolar için yararlı olabilir.
+
+> [!NOTE]
+> Çapraz bölge çoğaltma önizlemededir.
 
 [MariaDB Için Azure veritabanı bölgesine](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)bir ana sunucu ekleyebilirsiniz.  Ana sunucu, eşleştirilmiş bölge veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir. Aşağıdaki resimde, ana bölgenize göre hangi çoğaltma bölgelerinin kullanılabildiği gösterilmektedir.
 

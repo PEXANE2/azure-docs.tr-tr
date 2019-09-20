@@ -1,30 +1,31 @@
 ---
 title: HDInsight kümesini daha yeni bir sürüme yükseltme-Azure
 description: Azure HDInsight kümenizi daha yeni bir sürüme yükseltmeye yönelik yönergeleri öğrenin.
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 808e592a01bca2066b7d3d37a5fdfa697d739d4b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960690"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122445"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight kümesini daha yeni bir sürüme yükseltme
+
 En son HDInsight özelliklerinden yararlanmak için HDInsight kümelerinin en son sürüme yükseltilmesi önerilir. HDInsight küme sürümlerinizi yükseltmek için aşağıdaki yönergeleri izleyin.
 
 > [!NOTE]  
 > HDInsight 'ın desteklenen sürümleri hakkında bilgi için bkz. [HDInsight bileşen sürümleri](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
 ## <a name="upgrade-tasks"></a>Yükseltme görevleri
-HDInsight kümesini yükseltmek için iş akışı aşağıdaki gibidir.
 
-![Yükseltme iş akışı diyagramı](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+HDInsight kümesini yükseltmek için iş akışı aşağıdaki gibidir.
+![HDInsight yükseltme iş akışı diyagramı](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. HDInsight kümenizi yükseltirken gerekebilecek değişiklikleri anlamak için bu belgenin her bölümünü okuyun.
 2. Test/kalite güvencesi ortamı olarak bir küme oluşturun. Küme oluşturma hakkında daha fazla bilgi için bkz. [Linux tabanlı HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md) hakkında bilgi edinin
@@ -40,7 +41,7 @@ Her şeyin beklendiği gibi çalıştığından emin olduktan sonra geçiş içi
 5.  Yeni kümeyi kullanarak işleri başlatın/işleme devam edin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
+
 * [Linux tabanlı HDInsight kümeleri oluşturmayı öğrenin](hdinsight-hadoop-provision-linux-clusters.md)
 * [SSH kullanarak HDInsight’a bağlanma](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Apache ambarı 'nı kullanarak Linux tabanlı bir kümeyi yönetme](hdinsight-hadoop-manage-ambari.md)
-

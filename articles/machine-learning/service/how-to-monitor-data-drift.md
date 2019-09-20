@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 09/13/2019
-ms.openlocfilehash: 59cce0b56a4e54208a454c9f71d9a4c8576b0a8b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034351"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123277"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' e dağıtılan modellerdeki veri kayması 'nı (Önizleme) Algıla
 
@@ -23,7 +23,7 @@ Bu makalede, dağıtılan bir modelin eğitim veri kümesi ve çıkarım veriler
 
 ## <a name="what-is-data-drift"></a>Veri kayması nedir?
 
-Üretimde bir modele sunulan veriler, modeli eğitmek için kullanılan verilerden farklı olduğunda veri kayması oluşur. Model doğruluğunun zamana göre düşürmesinin en önemli nedenlerinden biridir, böylece izleme verileri, model performans sorunlarını algılamaya yardımcı olur. 
+Machine Learning bağlamında, veri dolu modeli, performans düşüşünü modellemeyi sağlayan model girişi verilerinde değişiklik gösterir. Model doğruluğunun zamana göre düşürmesinin en önemli nedenlerinden biridir, böylece izleme verileri, model performans sorunlarını algılamaya yardımcı olur. 
 
 ## <a name="what-can-i-monitor"></a>Neleri izleyebilirim?
 

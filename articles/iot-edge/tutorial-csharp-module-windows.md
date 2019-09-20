@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: eb2a6933b711804f957056353d7d609dbdbbe5d5
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c872b10d7819fb95d614664ed32831f410349760
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036452"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122900"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows cihazları C# için IoT Edge modülü geliştirme
 
@@ -66,7 +66,7 @@ Azure IoT Edge araçları, Visual Studio 'da desteklenen tüm IoT Edge modül di
 
 1. Visual Studio 2019 ' u başlatın ve **Yeni proje oluştur**' u seçin.
 
-2. Yeni proje penceresinde **IoT Edge** proje arayın ve **Azure IoT Edge (Windows amd64)** projesi seçin. **İleri**'ye tıklayın. 
+2. Yeni proje penceresinde **IoT Edge** proje arayın ve **Azure IoT Edge (Windows amd64)** projesi seçin. **İleri**’ye tıklayın. 
 
    ![Yeni bir Azure IoT Edge projesi oluştur](./media/tutorial-csharp-module-windows/new-project.png)
 
@@ -231,14 +231,16 @@ Varsayılan modül kodu bir giriş sırasındaki iletileri alır ve bunları bir
             {
                 Console.WriteLine($"Machine temperature {messageBody.machine.temperature} " +
                     $"exceeds threshold {temperatureThreshold}");
-                var filteredMessage = new Message(messageBytes);
-                foreach (KeyValuePair<string, string> prop in message.Properties)
+                using(var filteredMessage = new Message(messageBytes))
                 {
-                    filteredMessage.Properties.Add(prop.Key, prop.Value);
-                }
+                    foreach (KeyValuePair<string, string> prop in message.Properties)
+                    {
+                        filteredMessage.Properties.Add(prop.Key, prop.Value);
+                    }
 
-                filteredMessage.Properties.Add("MessageType", "Alert");
-                await moduleClient.SendEventAsync("output1", filteredMessage);
+                    filteredMessage.Properties.Add("MessageType", "Alert");
+                    await moduleClient.SendEventAsync("output1", filteredMessage);
+                }
             }
 
             // Indicate that the message treatment is completed.

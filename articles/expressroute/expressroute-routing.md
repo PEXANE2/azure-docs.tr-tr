@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308329"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123252"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute yönlendirme gereksinimleri
 Microsoft bulut hizmetlerine ExpressRoute kullanarak bağlanmak için yönlendirmeyi ayarlamanız ve yönetmeniz gerekir. Bazı bağlantı sağlayıcıları yönlendirme ayarlama ve yönetimini yönetilen bir hizmet olarak sunar. Bu hizmetin sunulup sunulmadığını öğrenmek için bağlantı sağlayıcınıza başvurun. Bu hizmet sağlanmıyorsa aşağıdaki gereksinimlere uymalısınız:
@@ -84,7 +84,7 @@ BGP oturumlarını ayarlamak için sahip olduğunuz ortak IP adreslerini kullanm
 Özel eşleme için genel veya özel IPv4 adresleri kullanmayı tercih edebilirsiniz. Özel eşleme sırasında adreslerin diğer müşterilerle çakışmasını önlemek için trafiğinizin uçtan uca yalıtılmasını sağlarız. Bu adresler İnternet’e tanıtılmaz. 
 
 ### <a name="microsoft-peering"></a>Microsoft eşlemesi
-Microsoft eşleme yolu, Microsoft bulut hizmetlerine bağlanmanızı sağlar. Hizmet listesi, Exchange Online, SharePoint Online, Skype Kurumsal, Microsoft ekipleri ve Dynamics 365 gibi Office 365 hizmetlerini içerir. Microsoft, Microsoft eşlemesi üzerinde çift yönlü bağlantıyı destekler. Microsoft bulut hizmetlerini hedefleyen trafik, Microsoft ağına girmeden önce geçerli genel IPv4 adresleri kullanmalıdır.
+Microsoft eşleme yolu, Microsoft bulut hizmetlerine bağlanmanızı sağlar. Hizmet listesi, Exchange Online, SharePoint Online, Skype Kurumsal ve Microsoft ekipleri gibi Office 365 hizmetlerini içerir. Microsoft, Microsoft eşlemesi üzerinde çift yönlü bağlantıyı destekler. Microsoft bulut hizmetlerini hedefleyen trafik, Microsoft ağına girmeden önce geçerli genel IPv4 adresleri kullanmalıdır.
 
 IP adresi ve AS numarasının aşağıdaki kayıt defterlerinden birinde size kayıtlı olduğundan emin olun:
 
@@ -218,7 +218,6 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | Exchange Online | 12076:5010 |
 | SharePoint Online | 12076:5020 |
 | Skype Kurumsal Çevrimiçi Sürüm | 12076:5030 |
-| Dynamics 365 | 12076:5040 |
 | Azure genel Hizmetleri * | 12076:5050 |
 | Diğer Office 365 Çevrimiçi hizmetleri | 12076:5100 |
 
@@ -249,7 +248,6 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Skype Kurumsal Çevrimiçi Sürüm |12076:5130 |
-| Dynamics 365 |12076:5140 |
 | Diğer Office 365 Çevrimiçi hizmetleri |12076:5200 |
 
 ## <a name="next-steps"></a>Sonraki adımlar

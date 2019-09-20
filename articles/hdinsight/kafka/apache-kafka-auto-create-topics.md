@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960647"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122661"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>HDInsight üzerinde Apache Kafka otomatik olarak konu başlıkları oluşturacak şekilde yapılandırma
 
@@ -25,7 +25,7 @@ Ambarı Web Kullanıcı arabirimi aracılığıyla mevcut bir kümede otomatik k
 
 1. [Azure Portal](https://portal.azure.com), Kafka kümesini seçin.
 
-2. __Kümeye Genel Bakış__' da __küme panosu__' nu seçin. 
+2. __Kümeye Genel Bakış__' da __küme panosu__' nu seçin.
 
     ![Küme panosu seçiliyken portalın görüntüsü](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
@@ -35,15 +35,15 @@ Ambarı Web Kullanıcı arabirimi aracılığıyla mevcut bir kümede otomatik k
 
 3. Sayfanın solundaki listeden Kafka hizmetini seçin.
 
-    ![Hizmet listesi](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    ![Apache ambarı hizmet listesi sekmesi](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. Sayfanın ortasında configs ' ı seçin.
 
-    ![Hizmet yapılandırma sekmesi](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    ![Apache ambarı hizmet yapılandırması yapılandırma](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. Filtre alanına bir değeri `auto.create`girin. 
+5. Filtre alanına bir değeri `auto.create`girin.
 
-    ![Filtre alanının görüntüsü](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    ![Apache ambarı arama filtresi alanı](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     Bu, Özellik listesini filtreler ve `auto.create.topics.enable` ayarı görüntüler.
 
@@ -53,7 +53,7 @@ Ambarı Web Kullanıcı arabirimi aracılığıyla mevcut bir kümede otomatik k
 
 7. Kafka hizmetini seçin, __Yeniden Başlat__' ı seçin ve ardından __etkilenen tümünü yeniden Başlat__' ı seçin. İstendiğinde, __Tümünü Yeniden Başlat__' ı seçin.
 
-    ![Yeniden başlatma seçiminin görüntüsü](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Apache ambarı yeniden başlatma etkilendi](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
 > Ayrıca, ambarı değerlerini ambarı REST API aracılığıyla da ayarlayabilirsiniz. Bu, geçerli yapılandırmayı almak için birden çok REST çağrısı yapmak, değiştirmek, vb. için genellikle daha zordur. Daha fazla bilgi için [Apache ambarı REST API belgelerini kullanarak HDInsight kümelerini yönetme](../hdinsight-hadoop-manage-ambari-rest-api.md) bölümüne bakın.

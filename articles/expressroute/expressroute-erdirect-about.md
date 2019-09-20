@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: a294c444f10719f69716b25b97cd137874a3e0be
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 916175401cd993392094b2bb16f8fc8746a4d2a8
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954146"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123393"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct hakkında
 
@@ -45,7 +45,7 @@ ExpressRoute Direct kullanmadan önce aboneliğinizi kaydetmeniz gerekir. Kaydet
 
 ## <a name="expressroute-direct-circuits"></a>Doğrudan ExpressRoute bağlantı hatları
 
-Microsoft Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute'u kullanarak Microsoft Azure, Office 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.  
+Microsoft Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Microsoft Azure ve Office 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz.
 
 Her eşleme konumunda, Microsoft'un genel ağ erişimi olan ve varsayılan olarak herhangi bir bölgede coğrafi bölge erişebilir ve tüm küresel bölgeye sahip premium devresi erişebilir.  
 

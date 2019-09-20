@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3640d2d88fc679b78395472c667fcde39979728a
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 6a598ad3f68c613a745fd56f3b368e309afeb8b6
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074347"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122972"
 ---
 # <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
 
@@ -28,12 +28,7 @@ Azure depolama, Döngüsel artıklık denetimleri (CRCs) kullanılarak depolanan
 
 Bir depolama hesabı oluşturduğunuzda, aşağıdaki artıklık seçeneklerinden birini belirleyebilirsiniz:
 
-- [Yerel olarak yedekli depolama (LRS)](storage-redundancy-lrs.md)
-- [Alanlar arası yedekli depolama (ZRS)](storage-redundancy-zrs.md)
-- [Coğrafi olarak yedekli depolama (GRS)](storage-redundancy-grs.md)
-- [Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage)
-- [Coğrafi bölge yedekli depolama (GZRS)](storage-redundancy-gzrs.md)
-- [Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)](storage-redundancy-gzrs.md)
+[!INCLUDE [azure-storage-redundancy](../../../includes/azure-storage-redundancy.md)]
 
 Aşağıdaki tabloda, her bir çoğaltma stratejisinin belirli bir olay türü (veya benzer etkinin olayı) için size sağladığı dayanıklılık ve kullanılabilirlik kapsamına hızlı bir genel bakış sunulmaktadır.
 
@@ -55,7 +50,7 @@ Her artıklık seçeneği için fiyatlandırma bilgileri için bkz. [Azure Stora
 Dayanıklılık ve kullanılabilirlik için Azure depolama garantisi hakkında daha fazla bilgi için bkz. [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Azure Premium Depolama, yalnızca yerel olarak yedekli depolamayı (LRS) destekler.
+> Azure Premium Depolama şu anda yalnızca yerel olarak yedekli depolamayı (LRS) desteklemektedir.
 
 ## <a name="changing-replication-strategy"></a>Çoğaltma stratejisini değiştirme
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 939097ccca844e505819f5aad405d6322941b526
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: cceb1814089436efe4d4f9352f40f24d6eae790d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309173"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123606"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -47,7 +47,7 @@ Aşağıdaki adımlar kullanılarak, bir okuma çoğaltması sunucusu oluşturul
     ![MariaDB için Azure veritabanı-çoğaltma konumu](./media/howto-read-replica-portal/replica-location.png)
 
    > [!NOTE]
-   > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
+   > Çapraz bölge çoğaltma önizlemededir. İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
 
 7. Çoğaltmanın oluşturulmasını onaylamak için **Tamam ' ı** seçin.
 

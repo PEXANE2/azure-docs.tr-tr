@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6e3045ba8363965fcfc198356ed68447a187308d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592064"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123424"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -55,11 +55,23 @@ Bilgi için [ExpressRoute SLA'sı](https://azure.microsoft.com/support/legal/sla
 
 ## <a name="supported-services"></a>Desteklenen hizmetler
 
-ExpressRoute destekler [üç yönlendirme etki alanı](expressroute-circuit-peerings.md) çeşitli hizmetler için.
+ExpressRoute çeşitli türlerde hizmetler için [üç yönlendirme etki alanını](expressroute-circuit-peerings.md) destekler: özel eşleme, Microsoft eşlemesi ve genel eşleme.
 
 ### <a name="private-peering"></a>Özel eşleme
 
 * Tüm sanal makineler ve bulut hizmetleri de dahil olmak üzere, sanal ağlar
+
+### <a name="microsoft-peering"></a>Microsoft eşlemesi
+
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
+* Power BI-Azure bölgesel bir topluluk aracılığıyla kullanılabilir Power BI kiracınızın bölgesini bulma hakkında bilgi için [buraya](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) bakın.
+* Azure Active Directory
+* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure küresel hizmetler community)
+* Azure hizmetlerinin çoğu desteklenir. Lütfen doğrudan destek doğrulamak için kullanmak istediğiniz hizmeti ile denetleyin.<br><br>**Aşağıdaki hizmetler desteklenmez**:
+    * CDN
+    * Azure Front Door
+    * Multi-factor Authentication
+    * Traffic Manager
 
 ### <a name="public-peering"></a>Ortak eşleme
 
@@ -68,26 +80,17 @@ ExpressRoute destekler [üç yönlendirme etki alanı](expressroute-circuit-peer
 >
 
 * Power BI
-* Dynamics 365 Finans ve operasyon (eski adıyla Dynamics AX Online bilinir) için
 * Azure hizmetlerinin çoğu desteklenir. Lütfen doğrudan destek doğrulamak için kullanmak istediğiniz hizmeti ile denetleyin.<br><br>
   **Aşağıdaki hizmetler desteklenmez**:
     * CDN
-    * Azure ön kapısı
+    * Azure Front Door
     * Multi-factor Authentication
     * Traffic Manager
 
-### <a name="microsoft-peering"></a>Microsoft eşlemesi
+### <a name="is-dynamics-365-supported-on-expressroute"></a>Dynamics 365 ExpressRoute 'da destekleniyor mu?
 
-* [Office 365](https://aka.ms/ExpressRouteOffice365)
-* Dynamics 365 
-* Power BI-Azure bölgesel bir topluluk aracılığıyla kullanılabilir Power BI kiracınızın bölgesini bulma hakkında bilgi için [buraya](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) bakın. 
-* Azure Active Directory
-* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure küresel hizmetler community)
-* Azure hizmetlerinin çoğu desteklenir. Lütfen doğrudan destek doğrulamak için kullanmak istediğiniz hizmeti ile denetleyin.<br><br>**Aşağıdaki hizmetler desteklenmez**:
-    * CDN
-    * Azure ön kapısı
-    * Multi-factor Authentication
-    * Traffic Manager
+Dynamics 365 ve Common Data Service (CD) ortamları Azure üzerinde barındırılır ve bu nedenle müşteriler Azure kaynakları için temeldeki ExpressRoute desteğinden faydalanır. Yönlendirici filtreniz, Dynamics 365/CD ortamlarınızın barındırıldığı Azure bölgelerini içeriyorsa, hizmet uç noktalarına bağlanabilirsiniz.
+
 
 ## <a name="data-and-connections"></a>Veri ve bağlantıları
 
@@ -262,7 +265,7 @@ ExpressRoute premium, aşağıdaki özellikler koleksiyonudur:
 
 * Yönlendirme tablosu sınırından 4000 yolların özel eşdüzey hizmet sağlama için 10.000 yollar artırdık.
 * Artırılmış ExpressRoute bağlantı hattı üzerinde etkin sanal ağlar ve ExpressRoute Global erişim bağlantı sayısı (varsayılan: 10). Daha fazla bilgi için [ExpressRoute sınırları](#limits) tablo.
-* Office 365 ve Dynamics 365 bağlantısı.
+* Office 365 bağlantısı
 * Microsoft Çekirdek ağı üzerinden genel bağlantı. Artık jeopolitik bir bölgedeki bir sanal ağ ile ExpressRoute bağlantı hattına başka bir bölgede de bağlayabilirsiniz.<br>
     **Örnekler:**
 
@@ -332,7 +335,7 @@ ExpressRoute yerel, bir veya iki Azure bölgesinin kapalı olduğu eşleme konum
 > 
 > 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>Uygulamam var olan ExpressRoute bağlantı hatları, Office 365 Hizmetleri ve Dynamics 365 bağlantısı destekleyebilir mi?
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>Mevcut ExpressRoute bağlantı hattı Office 365 hizmetlerine yönelik bağlantıyı destekliyor mu?
 
 Evet. Office 365 hizmetlerine bağlantıyı desteklemek için mevcut bir ExpressRoute bağlantı hattınızı yapılandırılabilir. Premium eklenti etkin ve Office 365 hizmetlerine bağlanmak için yeterli kapasiteleri olduğundan emin olun. [Ağ planlama ve Office 365 için performans ayarlama](https://aka.ms/tune/) bağlantınızı planladığınız yardımcı gerekir. Ayrıca bkz [oluşturun ve bir ExpressRoute bağlantı hattını değiştirme](expressroute-howto-circuit-classic.md).
 
@@ -369,13 +372,9 @@ Tüm rotalar görmezsiniz. Devreniz önek tanıtımları başlatmak için bir ro
 
 Rota filtrelerini kullanırken, tüm müşteriler, Microsoft eşlemesi üzerinde etkinleştirebilirsiniz. Ancak, Office 365 hizmetlerini kullanma için Office 365 tarafından yetkili yine.
 
-### <a name="do-i-need-to-get-authorization-for-turning-on-dynamics-365-over-microsoft-peering"></a>Alma üzerinde Dynamics 365, Microsoft eşlemesi üzerinden açma için yetkilendirme gerekiyor mu?
-
-Hayır, yetkilendirme için Dynamics 365 gerekmez. Bir kural oluşturmak ve Dynamics 365 topluluğu yetkilendirme olmadan seçin.
-
 ### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Ben Microsoft nasıl rota filtreleri,'ndan yararlanabilir miyim 1 Ağustos 2017'den önce eşleme etkin mi?
 
-Mevcut bağlantı hattınız için Office 365 ve Dynamics 365 öneklerinin reklam devam eder. Aynı Microsoft eşlemesi üzerinden Azure genel öneklerinin reklam eklemek istiyorsanız, bir rota filtresinde oluşturabilir, (ihtiyacınız Office 365 Hizmetleri ve Dynamics 365 gibi) tanıtılan gereksinim duyduğunuz hizmetleri seçin ve Microsoft filtre ekleme eşleme. Yönergeler için [Microsoft eşlemesi için rota filtreleri yapılandırma](how-to-routefilter-powershell.md).
+Mevcut bağlantı hattı, Office 365 ön eklerini duyurarak devam edecektir. Aynı Microsoft eşlemesi üzerinden Azure genel ön ek bildirimleri eklemek istiyorsanız, bir rota filtresi oluşturabilir, tanıtılmak istediğiniz hizmetleri (ihtiyacınız olan Office 365 hizmetleri dahil) seçebilir ve filtreyi Microsoft eşlemenize ekleyebilirsiniz. Yönergeler için [Microsoft eşlemesi için rota filtreleri yapılandırma](how-to-routefilter-powershell.md).
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>Microsoft eşlemesi bir konumda sahibim, artık başka bir konumda etkinleştirmek getirmeye çalışıyorum ve tüm ön ekleri görüyorum değil.
 

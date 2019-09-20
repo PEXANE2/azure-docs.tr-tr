@@ -1,19 +1,19 @@
 ---
 title: Azure Izleme günlükleri Apache Kafka-Azure HDInsight
 description: Azure Izleyici günlüklerini kullanarak Azure HDInsight 'ta Apache Kafka kümeden günlükleri analiz etme hakkında bilgi edinin.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 44eea1bc6390e743aff104550e5b6d7e97c45929
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960131"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122591"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka için günlükleri analiz etme
 
@@ -43,7 +43,7 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
 * Disk kullanımı:
 
     ```kusto
-    Perf 
+    Perf
     | where ObjectName == "Logical Disk" and CounterName == "Free Megabytes" and InstanceName == "_Total" and ((Computer startswith_cs "hn" and Computer contains_cs "-") or (Computer startswith_cs "wn" and Computer contains_cs "-")) 
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
@@ -82,17 +82,17 @@ HDInsight için Azure Izleyici günlüklerini etkinleştirme adımları tüm HDI
 
     > [!IMPORTANT]  
     > Sorgu değerlerini kümenize özgü bilgileriniz ile değiştirin. Örneğin, `ClusterName_s` kümenizin adına ayarlanmalıdır. `HostName_s`kümedeki bir çalışan düğümünün etki alanı adına ayarlanmalıdır.
-    
+
     Günlüğe kaydedilen tüm türleri `*` aramak için de girebilirsiniz. Şu anda sorgularda aşağıdaki Günlükler mevcuttur:
-    
+
     | Günlük türü | Açıklama |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka Broker Server. log |
     | log\_kafkacontroller\_CL | Kafka Broker Controller. log |
     | ölçümler\_Kafka\_CL | Kafka JMX ölçümleri |
-    
-    ![CPU kullanımı aramasının görüntüsü](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
- 
+
+    ![Apache Kafka Log Analytics CPU kullanımı](./media/apache-kafka-log-analytics-operations-management/apache-kafka-cpu-usage.png)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Izleyici hakkında daha fazla bilgi için bkz. [Azure izleyici 'ye genel bakış](../../log-analytics/log-analytics-get-started.md)ve [HDInsight kümelerini Izlemek için Azure izleyici günlüklerini sorgulama](../hdinsight-hadoop-oms-log-analytics-use-queries.md).

@@ -1,19 +1,19 @@
 ---
 title: Sanal ağları kullanarak Kafka 'e bağlanma-Azure HDInsight
 description: Azure sanal ağı aracılığıyla HDInsight 'ta Kafka 'e doğrudan bağlanmayı öğrenin. VPN Gateway kullanarak veya VPN Gateway cihazı kullanarak şirket içi ağınızdaki istemcilerden Kafka 'a nasıl bağlanacağınızı öğrenin.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960426"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122618"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure sanal ağı aracılığıyla HDInsight 'ta Apache Kafka bağlanma
 
@@ -252,7 +252,7 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
 
 3. Kafka yapılandırmasını görüntülemek için üst ortadaki __config__ 'ler ' i seçin.
 
-    ![Kafka için configs bağlantıları](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Apache ambarı Hizmetleri Yapılandırması](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. __Kafka-env__ yapılandırmasını bulmak için sağ üst köşedeki `kafka-env` __filtre__ alanına girin.
 
@@ -274,7 +274,7 @@ Varsayılan olarak, Apache Zookeeper, istemcilere Kafka aracıların etki alanı
 
 8. Yapılandırma değişikliklerini kaydetmek için __Kaydet__ düğmesini kullanın. Değişiklikleri açıklayan bir kısa mesaj girin. Değişiklikler kaydedildikten sonra __Tamam ' ı__ seçin.
 
-    ![Yapılandırma Kaydet düğmesi](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    ![Apache ambarı kaydetme yapılandırması](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Kafka yeniden başlatırken hata oluşmasını engellemek için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu aç__' ı seçin. Bu işlemi gerçekleştirmek için Tamam ' ı seçin.
 

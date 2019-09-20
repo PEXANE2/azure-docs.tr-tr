@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight, YARN sorunlarını giderme
 description: Azure HDInsight ve Apache Hadoop YARN ile çalışma hakkında sık sorulan soruların yanıtlarını alın.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 107230a4d8c2e0427c2fcf2a8862559c707831a1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a0eb0d15d931cf1b2f71740c7a9359cf16205481
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076562"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122523"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Hadoop YARN sorunlarını giderme
 
@@ -34,24 +34,24 @@ Bu örnekte, iki mevcut kuyrukları (**varsayılan** ve **thriftsvr**) hem de % 
 
 1. Seçin **Ambari görünümleri** simgesi ve Kılavuz düzeni seçin. Ardından, **YARN Kuyruk yöneticisi**.
 
-    ![Ambari görünümlerini simgesini seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    ![Apache ambarı panosu YARN Kuyruk Yöneticisi](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Seçin **varsayılan** kuyruk.
 
-    ![Varsayılan kuyruk seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    ![Apache ambarı YARN varsayılan kuyruğu seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. İçin **varsayılan** kuyruk, değiştirme **kapasite** 50 %'için % 25. İçin **thriftsvr** kuyruk, değiştirme **kapasite** % 25.
 
     ![Varsayılan ve thriftsvr kuyruklar için % 25'ine kapasitesini değiştirme](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Yeni bir kuyruk oluşturmak için Seç **kuyruk Ekle**.
 
-    ![Kuyruk Ekle'yi seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    ![Apache ambarı YARN Pano ekleme kuyruğu](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. Yeni kuyruk adı.
 
-    ![Spark kuyruk adı](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![Apache ambarı YARN Pano adı kuyruğu](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. Bırakın **kapasite** % 50 tıklayın ve ardından değerlerinde **eylemleri** düğmesi.
 
-    ![Eylemler düğmeyi seçin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    ![Apache ambarı YARN seçim eylemi](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Seçin **kaydedin ve yenileyin kuyrukları**.
 
     ![Kaydet'i seçin ve kuyruklarını Yenile](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
@@ -64,7 +64,7 @@ Bu değişiklikler hemen YARN Zamanlayıcı UI görülebilir.
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>Bir kümeden YARN günlüklerini nasıl indiririm?
 
-### <a name="resolution-steps"></a>Çözüm adımları 
+### <a name="resolution-steps"></a>Çözüm adımları
 
 1. Güvenli Kabuk (SSH) istemcisi kullanarak HDInsight kümesine bağlanın. Daha fazla bilgi için [ek okuma](#additional-reading-2).
 

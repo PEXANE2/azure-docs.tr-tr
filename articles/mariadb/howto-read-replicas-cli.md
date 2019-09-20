@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 2f5029ccbf80551721ecc363aa4c3930961d9154
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 8b3572182832dc7692f6475be44281f56cf58571
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993070"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122768"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Azure CLı ve REST API kullanarak MariaDB için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -44,7 +44,12 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 | ad | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
 | source-server | mydemoserver | Adı veya çoğaltma kaynağı için mevcut ana sunucu kimliği. |
 
-Bir çapraz bölge okuma çoğaltması oluşturmak için `--location` parametresini kullanın. Aşağıdaki CLı örneği Batı ABD içinde çoğaltmayı oluşturur.
+Bir çapraz bölge okuma çoğaltması oluşturmak için `--location` parametresini kullanın. 
+
+> [!NOTE]
+> Çapraz bölge çoğaltma önizlemededir.
+
+Aşağıdaki CLı örneği Batı ABD içinde çoğaltmayı oluşturur.
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus

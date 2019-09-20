@@ -1,19 +1,19 @@
 ---
 title: HDInsight üzerinde Kafka ile Azure Kubernetes hizmetini kullanma
 description: Azure Kubernetes Service 'te (AKS) barındırılan kapsayıcı görüntülerinden HDInsight üzerinde Kafka kullanmayı öğrenin.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: e87ac268ab5448f38470f46bd6b0c7f2cdd204ce
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 31eefbad8e8d7cb626d87d53690388d09b85257e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960557"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122653"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka Azure Kubernetes hizmetini kullanma
 
@@ -43,10 +43,9 @@ Bu belge Ayrıca, [Azure Kubernetes hizmet öğreticisi](../../aks/tutorial-kube
 
 Hem HDInsight hem de AKS, işlem kaynakları için kapsayıcı olarak bir Azure sanal ağı kullanır. HDInsight ve AKS arasında iletişimi etkinleştirmek için ağları arasında iletişimi etkinleştirmeniz gerekir. Bu belgedeki adımlar, ağlarla sanal ağ eşlemesi kullanır. VPN gibi diğer bağlantıların de çalışması gerekir. Eşleme hakkında daha fazla bilgi için bkz. [sanal ağ eşleme](../../virtual-network/virtual-network-peering-overview.md) belgesi.
 
-
 Aşağıdaki diyagramda bu belgede kullanılan ağ topolojisi gösterilmektedir:
 
-![Tek bir sanal ağda HDInsight, başka bir şekilde AKS ve eşleme kullanılarak bağlanan ağlar](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+![Tek bir sanal ağda HDInsight, diğer bir deyişle, eşleme kullanarak](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
 > [!IMPORTANT]  
 > Ad çözümlemesi, eşlenen ağlar arasında etkin değildir, bu nedenle IP adresleme kullanılır. Varsayılan olarak, HDInsight üzerinde Kafka, istemciler bağlandığında IP adresleri yerine ana bilgisayar adlarını döndürecek şekilde yapılandırılmıştır. Bu belgedeki adımlar, Kafka yerine IP tanıtımı kullanacak şekilde değiştirilir.
@@ -113,7 +112,7 @@ Kafka 'yi etki alanı adları yerine IP adreslerini tanıtmak üzere yapılandı
 
 3. Kafka yapılandırmasını görüntülemek için üst ortadaki __config__ 'ler ' i seçin.
 
-    ![Kafka için configs bağlantıları](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    ![Apache ambarı Hizmetleri Yapılandırması](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
 4. __Kafka-env__ yapılandırmasını bulmak için sağ üst köşedeki `kafka-env` __filtre__ alanına girin.
 
@@ -135,7 +134,7 @@ Kafka 'yi etki alanı adları yerine IP adreslerini tanıtmak üzere yapılandı
 
 8. Yapılandırma değişikliklerini kaydetmek için __Kaydet__ düğmesini kullanın. Değişiklikleri açıklayan bir kısa mesaj girin. Değişiklikler kaydedildikten sonra __Tamam ' ı__ seçin.
 
-    ![Yapılandırma Kaydet düğmesi](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    ![Apache ambarı kaydetme yapılandırması](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
 9. Kafka yeniden başlatırken hata oluşmasını engellemek için, __hizmet eylemleri__ düğmesini kullanın ve __bakım modunu aç__' ı seçin. Bu işlemi gerçekleştirmek için Tamam ' ı seçin.
 
@@ -192,6 +191,7 @@ Bu noktada, Kafka ve Azure Kubernetes hizmeti, eşlenmiş sanal ağlarla iletiş
     ```bash
     docker push <acrLoginServer>/kafka-aks-test:v1
     ```
+
     Bu işlemin tamamlanabilmesi birkaç dakika sürer.
 
 8. Kubernetes bildirim dosyasını (`kafka-aks-test.yaml`) düzenleyin ve 4. adımda alınan ACR loginserver adıyla değiştirin. `microsoft`
@@ -212,7 +212,7 @@ Bu noktada, Kafka ve Azure Kubernetes hizmeti, eşlenmiş sanal ağlarla iletiş
 
 11. Bir Web tarayıcısı açın ve hizmetin dış IP adresini girin. Aşağıdaki görüntüye benzer bir sayfaya ulaşmanız gerekir:
 
-    ![Web sayfasının görüntüsü](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    ![Web sayfası görüntüsünü Apache Kafka test etme](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
 
 12. Alana metin girin ve ardından __Gönder__ düğmesini seçin. Veriler Kafka adresine gönderilir. Sonra uygulamadaki Kafka tüketicisi iletiyi okur ve __Kafka bölümündeki iletilere__ ekler.
 

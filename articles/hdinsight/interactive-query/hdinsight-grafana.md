@@ -1,21 +1,20 @@
 ---
 title: Azure HDInsight üzerinde Grafana kullanma
 description: Azure HDInsight 'ta Apache Hadoop kümeleriyle Grafana panosuna erişmeyi öğrenin
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: a61188ce5a0c3ba5e4170e15ed81d599af205205
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: cea0e9709afb65caa23d28be093c28498f2b82d0
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961556"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122990"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight 'ta erişim Grafana
-
 
 [Grafana](https://grafana.com/) , popüler, açık kaynaklı bir grafik ve Pano Oluşturucu. Grafana özelliği zengin; yalnızca kullanıcıların özelleştirilebilir ve paylaşılabilir panolar oluşturmasına izin vermez, ayrıca şablonlu/komut dosyalı panolar, LDAP tümleştirmesi, birden çok veri kaynağı ve daha fazlasını sunar.
 
@@ -27,9 +26,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Bu bölümde, HDInsight 'ta Azure Resource Manager şablonu kullanarak etkileşimli bir sorgu kümesi oluşturacaksınız. Bu makaleyi izlemek için Kaynak Yöneticisi şablonuyla deneyim sahibi olmak gerekli değildir. 
 
-1. Aşağıdaki **Azure’da dağıt** düğmesine tıklayarak Azure’da oturum açın ve Azure portalında Kaynak Yöneticisi şablonunu açın. 
+1. Aşağıdaki **Azure’da dağıt** düğmesine tıklayarak Azure’da oturum açın ve Azure portalında Kaynak Yöneticisi şablonunu açın.
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-grafana/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-interactive-hive%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-grafana/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. Aşağıdaki ekran görüntüsünde önerilen değerleri girin veya seçin:
 
@@ -51,17 +50,17 @@ Bu bölümde, HDInsight 'ta Azure Resource Manager şablonu kullanarak etkileşi
     |**Küme Adı**     | Apache Hadoop kümesi için bir ad girin. HDInsight’taki tüm kümeler aynı DNS ad alanını paylaştığından, bu adın benzersiz olması gerekir. Ad, harf, rakam ve kısa çizgilerin dahil olduğu en fazla 59 karakterden oluşabilir. Adın ilk ve son karakterleri, kısa çizgi olamaz. |
     |**Küme oturum açma adı ve parolası**     | Varsayılan oturum açma adı **admin**’dir. Parola en az 10 karakter uzunluğunda olmalıdır ve en az bir rakam, bir büyük harf, bir küçük harf, bir alfasayısal olmayan karakter (' " ` karakterleri hariç\) içermelidir. "Pass@word1" gibi genel parolalar **sağlamadığınızdan** emin olun.|
     |**SSH kullanıcı adı ve parolası**     | Varsayılan kullanıcı adı **sshuser** şeklindedir.  SSH kullanıcı adını yeniden adlandırabilirsiniz.  SSH kullanıcı parolasının gereksinimleri, küme oturum açma parolasıyla aynıdır.|
-       
+
     Şablondaki bazı özellikler sabit kodlanmış olabilir.  Bu değerleri şablondan yapılandırabilirsiniz. Bu özellikler hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-provision-linux-clusters.md).
 
 3. **Yukarıdaki hüküm ve koşulları kabul ediyorum**’u ve **Panoya sabitle**’yi seçip **Satın al**’a tıklayın. Portal panosunda **Dağıtım gönderiliyor** başlıklı yeni bir kutucuk görürsünüz. Bir küme oluşturmak yaklaşık 20 dakika sürer.
 
-    ![Şablon dağıtımı ilerlemesi](./media/hdinsight-grafana/deployment-progress-tile.png "Azure Şablonu dağıtımı ilerlemesi")
+    ![Azure şablon dağıtımı ilerleme durumu](./media/hdinsight-grafana/deployment-progress-tile.png "Azure şablon dağıtımı ilerleme durumu")
 
-4. Küme oluşturulduktan sonra, kutucuğun açıklamalı alt yazısı belirttiğiniz kaynak grubu adıyla değişir. Kutucukta, kaynak grubu içinde oluşturulan HDInsight kümesi de listelenir. 
-   
+4. Küme oluşturulduktan sonra, kutucuğun açıklamalı alt yazısı belirttiğiniz kaynak grubu adıyla değişir. Kutucukta, kaynak grubu içinde oluşturulan HDInsight kümesi de listelenir.
+
     ![HDInsight Linux yeni başlayanlara yönelik kaynak grubu](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight küme kaynağı grubu")
-    
+
 5. Kutucukta, kümeyle ilişkili varsayılan depolama da listelenir. Her kümenin bir [Azure Depolama hesabı](../hdinsight-hadoop-use-blob-storage.md) veya [Azure Data Lake hesabı](../hdinsight-hadoop-use-data-lake-store.md) bağımlılığı vardır. Bu genellikle varsayılan depolama hesabı olarak ifade edilir. HDInsight kümesi ve varsayılan depolama hesabı aynı Azure bölgesinde birlikte bulunmalıdır. Kümeleri silmek depolama hesabını silmez.
     
 
@@ -78,15 +77,13 @@ Bu bölümde, HDInsight 'ta Azure Resource Manager şablonu kullanarak etkileşi
 
     ![HDInsight kümesi Pano portalı](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "Portalda HDInsight kümesi panosu")
 
-4. Panodan **Grafana** kutucuğuna tıklayın. Alternatif olarak, küme URL `/grafana/` 'nizin yolunu da inceleyin. Örneğin: `https://<clustername>.azurehdinsight.net/grafana/`.
+4. Panodan **Grafana** kutucuğuna tıklayın. Alternatif olarak, küme URL `/grafana/` 'nizin yolunu da inceleyin. Örneğin, `https://<clustername>.azurehdinsight.net/grafana/`.
 
 5. Hadoop kümesi Kullanıcı kimlik bilgilerini girin.
 
 6. Grafana panosu görüntülenir ve şu örneğe benzer şekilde görünür:
 
-    ![HDInsight Grafana panosu](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana panosu")
-
-   
+    ![HDInsight Grafana Web panosu](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana panosu")
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Makaleyi tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile, verileriniz Azure Storage’da depolanır, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz. Ayrıca, kullanılmıyorken dahi HDInsight kümesi için sizden ücret kesilir. Küme ücretleri depolama ücretlerinin birkaç katı olduğundan, kullanılmadığında kümelerin silinmesi mantıklı olandır. 
@@ -98,7 +95,7 @@ Makaleyi tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile, ve
 
 1. Azure portalın bulunduğu tarayıcı sekmesine dönün. Kümeye genel bakış sayfasında olmalısınız. Yalnızca kümeyi silmek, ancak varsayılan depolama hesabını korumak istiyorsanız **Sil**’i seçin.
 
-    ![HDInsight küme silme](./media/hdinsight-grafana/hdinsight-delete-cluster.png "HDInsight kümesini silme")
+    ![Azure Portal küme simgesini Sil](./media/hdinsight-grafana/hdinsight-delete-cluster.png "HDInsight kümesini Sil")
 
 2. Kümeyi ve varsayılan depolama hesabını silmek istiyorsanız, kaynak grubu sayfasını açmak için kaynak grubu adını (önceki ekran görüntüsünde vurgulanan) seçin.
 

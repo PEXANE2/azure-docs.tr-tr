@@ -1,6 +1,6 @@
 ---
-title: Şirket içi Netezza Server 'dan Azure 'a veri geçirmek için Azure Data Factory kullanın | Microsoft Docs
-description: Şirket içi Netezza Server 'dan Azure 'a veri geçirmek için Azure Data Factory kullanın.
+title: Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanma | Microsoft Docs
+description: Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanın.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,16 +12,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: 4690fd81247035267861b06c204c6db7a052eba5
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 9ea8326b10536cb91b9dc67f637664f0fc055e74
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259567"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122842"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-on-premises-netezza-server-to-azure"></a>Şirket içi Netezza Server 'dan Azure 'a veri geçirmek için Azure Data Factory kullanma 
+# <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Şirket içi Netezza sunucusundan Azure 'a veri geçirmek için Azure Data Factory kullanma 
 
-Azure Data Factory, verileri şirket içi Netezza sunucusundan Azure depolama veya Azure SQL veri ambarı 'na geçirmeye yönelik bir performans, sağlam ve ekonomik bir mekanizma sağlar. Bu makalede veri mühendisleri ve geliştiriciler için aşağıdaki bilgiler sağlanmaktadır:
+Azure Data Factory, verileri şirket içi Netezza sunucusundan Azure depolama hesabınıza veya Azure SQL veri ambarı veritabanına geçirmek için performanslı, sağlam ve ekonomik bir mekanizma sağlar. 
+
+Bu makalede veri mühendisleri ve geliştiriciler için aşağıdaki bilgiler sağlanmaktadır:
 
 > [!div class="checklist"]
 > * Performans 
@@ -32,127 +34,170 @@ Azure Data Factory, verileri şirket içi Netezza sunucusundan Azure depolama ve
 
 ## <a name="performance"></a>Performans
 
-Azure Data Factory, farklı düzeylerde paralellik sağlayan sunucusuz bir mimari sunar ve bu sayede, veri taşıma aktarım hızını en üst düzeye çıkarmak için geliştiricilerin, ağ bant genişliğinden ve veritabanı bant genişliğinden tamamen yararlanmak üzere işlem hatları oluşturmalarına olanak tanır. ortamınızın.
+Azure Data Factory, çeşitli düzeylerde paralellik sağlayan sunucusuz bir mimari sağlar. Geliştirici iseniz bu, ortamınız için veri taşıma aktarım hızını en üst düzeye çıkarmak üzere hem ağ hem de veritabanı bant genişliğini tam olarak kullanmak için işlem hatları oluşturabileceğiniz anlamına gelir.
 
-![performans](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
+![Performans diyagramı](media/data-migration-guidance-netezza-azure-sqldw/performance.png)
 
-- Tek bir kopyalama etkinliği ölçeklenebilir işlem kaynaklarından yararlanabilir: Azure Integration Runtime kullanırken, her bir kopyalama etkinliği için sunucusuz bir şekilde [en fazla 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) belirtebilirsiniz; Şirket içinde barındırılan Integration Runtime kullanılırken, makineyi el ile ölçeklendirebilir veya birden fazla makineye ([4 düğüme kadar](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) ölçeklendirebilirsiniz ve tek bir kopyalama etkinliği bölümünü tüm düğümlerde dağıtır. 
+Yukarıdaki diyagram aşağıdaki gibi yorumlanabilir:
+
+- Tek bir kopyalama etkinliği, ölçeklenebilir işlem kaynaklarından yararlanabilir. Azure Integration Runtime kullandığınızda, her kopyalama etkinliği için sunucusuz bir şekilde [en fazla 256 DIUs](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) belirtebilirsiniz. Şirket içinde barındırılan bir tümleştirme çalışma zamanı (Şirket içinde barındırılan IR) sayesinde, makineyi el ile ölçeklendirebilir veya birden fazla makineye ([en fazla dört düğüme](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) ölçeklendirebilirsiniz ve tek bir kopyalama etkinliği bölümünü tüm düğümlerde dağıtır. 
+
 - Tek bir kopyalama etkinliği, birden çok iş parçacığı kullanarak veri deposundan okur ve yazar. 
-- Azure Data Factory denetim akışı, örneğin [her döngü için](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)kullanarak birden çok kopyalama etkinliğini paralel olarak başlatabilir. 
 
-[Kopyalama etkinliği performans kılavuzlarından](https://docs.microsoft.com/azure/data-factory/copy-activity-performance) daha fazla ayrıntı edinebilirsiniz
+- Azure Data Factory denetim akışı, paralel olarak birden çok kopyalama etkinliği başlatabilir. Örneğin, [her döngü için](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)bir kullanarak bunları başlatabilir. 
+
+Daha fazla bilgi için bkz. [kopyalama etkinliği performans ve ölçeklenebilirlik Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
 
 ## <a name="resilience"></a>Dayanıklılık
 
-Tek bir kopyalama etkinliği çalıştırmasında Azure Data Factory, yerleşik yeniden deneme mekanizmasına sahiptir, bu nedenle veri depolarında veya temel ağdaki belirli bir geçici başarısızlık düzeyini işleyebilir.
+Tek bir kopyalama etkinliği çalıştırmasında Azure Data Factory, bir yerleşik yeniden deneme mekanizmasına sahiptir ve bu da veri depolarında veya temel ağdaki belirli bir geçici başarısızlık düzeyini işlemesini sağlar.
 
-Azure Data Factory kopyalama etkinliği, verileri kaynak ve havuz veri depoları arasında kopyalarken uyumsuz satırları işlemenin iki yolunu da sunar. Uyumsuz verilerle karşılaşıldığında kopyalama etkinliğini durdurabilir ve devreder veya uyumsuz veri satırlarını atlayarak Rest verilerini kopyalamaya devam edebilirsiniz. Ayrıca, hatanın nedenini öğrenmek, veri kaynağındaki verileri onarmak ve kopyalama etkinliğini yeniden denemek için Azure Blob depolamada veya Azure Data Lake Store uyumsuz satırları günlüğe kaydedebilirsiniz.
+Azure Data Factory kopyalama etkinliği ile kaynak ve havuz veri depoları arasında veri kopyaladığınızda, uyumsuz satırları işlemek için iki yol vardır. Kopyalama etkinliğini durdurabilir ve devreder veya uyumsuz veri satırlarını atlayarak verilerin geri kalanını kopyalamaya devam edebilirsiniz. Ayrıca, hatanın nedenini öğrenmek için Azure Blob depolamada uyumsuz satırları günlüğe kaydedebilir veya Azure Data Lake Store, veri kaynağındaki verileri giderebilir ve kopyalama etkinliğini yeniden deneyebilirsiniz.
 
 ## <a name="network-security"></a>Ağ güvenliği 
 
-Azure Data Factory, varsayılan olarak, HTTPS protokolü üzerinden şifrelenmiş bağlantı kullanarak şirket içi Netezza sunucusundan Azure depolama veya Azure SQL veri ambarı 'na veri aktarır. Aktarım sırasında veri şifrelemesi sağlar ve gizlice dinleme ve ortadaki adam saldırıları önler.
+Azure Data Factory, varsayılan olarak, şirket içi Netezza sunucusundan verileri bir Azure depolama hesabına veya Azure SQL veri ambarı veritabanına aktarır. Köprü Metni Aktarım Protokolü güvenli (HTTPS) üzerinden şifreli bir bağlantı kullanarak. HTTPS, aktarım sırasında veri şifrelemesi sağlar ve gizlice dinleme ve ortadaki adam saldırıları önler.
 
-Alternatif olarak, verilerin genel Internet üzerinden aktarılmasını istemiyorsanız, verileri Azure Express Route aracılığıyla özel bir eşleme bağlantısı üzerinden aktararak daha yüksek bir güvenlik elde edebilirsiniz. Bu şekilde nasıl ulaşılabilecek aşağıda çözüm mimarisine bakın.
+Alternatif olarak, verilerin genel İnternet üzerinden aktarılmasını istemiyorsanız, verileri Azure Express Route aracılığıyla özel bir eşleme bağlantısı üzerinden aktararak daha yüksek güvenlik elde etmenize yardımcı olabilirsiniz. 
+
+Sonraki bölümde daha yüksek güvenlik elde etme anlatılmaktadır.
 
 ## <a name="solution-architecture"></a>Çözüm mimarisi
 
-Verileri genel Internet üzerinden geçirme:
+Bu bölüm, verilerinizi geçirmenin iki yolunu açıklamaktadır.
 
-![çözüm-mimari-genel-ağ](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
+### <a name="migrate-data-over-the-public-internet"></a>Verileri genel İnternet üzerinden geçirme
 
-- Bu mimaride, veriler genel Internet üzerinden HTTPS kullanılarak güvenli bir şekilde aktarılır.
-- Bu mimariye ulaşmak için kurumsal güvenlik duvarının arkasındaki bir Windows makinesinde şirket içinde barındırılan tümleştirme çalışma zamanı Azure Data Factory yüklemeniz gerekir. Windows makinesindeki Azure Data Factory şirket içinde barındırılan tümleştirme çalışma zamanının Netezza sunucunuza doğrudan erişmesini sağlayın. Ağınızı tamamen kullanabilmeniz için makinenizi el ile ölçeklendirebilir veya birden çok makineye ölçeklendirebilirsiniz, verileri kopyalamak için veri bant genişliği depolanır.
-- Bu mimari kullanılarak hem ilk anlık görüntü veri geçişi hem de Delta verileri geçişi elde edilebilir.
+![Verileri genel İnternet üzerinden geçirme](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-public-network.png)
 
-Verileri özel bağlantı üzerinden geçir: 
+Yukarıdaki diyagram aşağıdaki gibi yorumlanabilir:
 
-![çözüm-mimari-özel-ağ](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
+- Bu mimaride, genel İnternet üzerinden HTTPS kullanarak verileri güvenli bir şekilde aktarırsınız.
 
-- Bu mimaride veri geçişi, Azure Express Route aracılığıyla özel bir eşleme bağlantısı üzerinden yapılır, böylece veriler hiçbir şekilde herkese açık Internet üzerinden geçmez. 
-- Bu mimariye ulaşmak için Azure sanal ağınızdaki bir Windows VM 'sine şirket içinde barındırılan tümleştirme çalışma zamanı Azure Data Factory yüklemeniz gerekir. Ağınızı tamamen kullanabilmeniz için sanal makinelerinizi el ile ölçeklendirebilir veya birden çok VM 'ye ölçeklendirebilirsiniz, verileri kopyalamak için veri bant genişliği depolanır.
-- Bu mimari kullanılarak hem ilk anlık görüntü veri geçişi hem de Delta verileri geçişi elde edilebilir.
+- Bu mimariye ulaşmak için, kurumsal güvenlik duvarının arkasındaki bir Windows makinesine Azure Data Factory tümleştirme çalışma zamanı (kendiliğinden konak) yüklemeniz gerekir. Bu tümleştirme çalışma zamanının Netezza sunucusuna doğrudan erişmesini sağlayın. Ağınızı tam olarak kullanabilmek ve veri kopyalamak için bant genişliğini kullanmak için, makinenizi el ile ölçeklendirebilir veya birden çok makineye dönüştürebilirsiniz.
 
-## <a name="implementation-best-practices"></a>En iyi uygulama uygulamaları 
+- Bu mimariyi kullanarak hem ilk anlık görüntü verilerini hem de Delta verilerini geçirebilirsiniz.
 
-### <a name="authentication-and-credential-management"></a>Kimlik doğrulama ve kimlik bilgisi yönetimi 
+### <a name="migrate-data-over-a-private-network"></a>Özel ağ üzerinden veri geçirme 
+
+![Özel ağ üzerinden veri geçirme](media/data-migration-guidance-netezza-azure-sqldw/solution-architecture-private-network.png)
+
+Yukarıdaki diyagram aşağıdaki gibi yorumlanabilir:
+
+- Bu mimaride, Azure Express Route aracılığıyla özel bir eşleme bağlantısı üzerinden veri geçirmenize ve veriler hiçbir şekilde genel İnternet üzerinden geçirilmez. 
+
+- Bu mimariye ulaşmak için, Azure sanal ağınız içindeki bir Windows sanal makinesine (VM) Azure Data Factory tümleştirme çalışma zamanı (kendiliğinden konak) yüklemeniz gerekir. Ağınızı tamamen kullanmak ve veri kopyalamak için bant genişliği depolamayı sağlamak üzere, sanal makinelerinizi el ile ölçeklendirebilir veya birden çok VM 'ye ayırabilirsiniz.
+
+- Bu mimariyi kullanarak hem ilk anlık görüntü verilerini hem de Delta verilerini geçirebilirsiniz.
+
+## <a name="implement-best-practices"></a>En iyi uygulamaları uygulama 
+
+### <a name="manage-authentication-and-credentials"></a>Kimlik doğrulama ve kimlik bilgilerini yönetme 
 
 - Netezza kimlik doğrulaması yapmak için [bağlantı dizesi aracılığıyla ODBC kimlik doğrulamasını](https://docs.microsoft.com/azure/data-factory/connector-netezza#linked-service-properties)kullanabilirsiniz. 
-- Azure Blob depolamaya bağlanmak için birden çok kimlik doğrulama türü desteklenir.  [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) kullanımı kesinlikle önerilir: Azure AD 'de otomatik olarak yönetilen Azure Data Factory tanımlamak Için, bağlantılı hizmet tanımında kimlik bilgileri sağlamadan işlem hatlarını yapılandırmanıza olanak tanır.  Alternatif olarak, [hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [paylaşılan erişim imzası](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)veya [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)kullanarak Azure Blob depolama alanında kimlik doğrulaması yapabilirsiniz. 
-- Azure Data Lake Storage 2. bağlanmak için birden çok kimlik doğrulama türü de desteklenir.  [Hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) veya [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) da kullanılabilir olsa da, [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) kullanılması önemle önerilir. 
-- Azure SQL veri ambarı 'na bağlanmak için birden çok kimlik doğrulama türü de desteklenir. [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity) kullanılması, [hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) veya [SQL kimlik doğrulamasının](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication) de kullanılabilmesine rağmen, son derece önerilir.
-- Azure kaynakları için Yönetilen kimlikler kullanmıyorsanız, [Azure Key Vault kimlik bilgilerinin depolanması](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) , Azure Data Factory bağlı hizmetleri değiştirmeden anahtarları merkezi olarak yönetmeyi ve döndürmeyi kolaylaştırmak için kesinlikle önerilir.  Bu Ayrıca, [CI/CD için en iyi uygulamalardan](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)biridir. 
 
-### <a name="initial-snapshot-data-migration"></a>İlk anlık görüntü verilerini geçirme 
+- Azure Blob depolamada kimlik doğrulaması yapmak için: 
 
-Küçük tablolar için, birim boyutu 100 GB 'tan küçük olduğunda veya 2 saat içinde Azure 'a geçirilebiliyorsa, her bir kopyalama işi tablo başına veri yükleme yapabilirsiniz. Daha iyi aktarım hızı için farklı tabloları eşzamanlı olarak yüklemek üzere birden çok Azure Data Factory kopyalama işi çalıştırabilirsiniz. 
+   - [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)kullanılması önemle önerilir. Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen Azure Data Factory kimliğin üzerine inşa, Yönetilen kimlikler, bağlantılı hizmet tanımında kimlik bilgilerini sağlamak zorunda kalmadan işlem hatlarını yapılandırmanıza olanak tanır.  
 
-Her kopyalama işi içinde, paralel sorgular çalıştırmak ve verileri bölümlere göre kopyalamak için veri bölümü ile [Parallelcopy ayarını](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) kullanarak da bazı paralellik düzeyine ulaşabilirsiniz. Aşağıdaki ayrıntılarla seçilecek iki veri bölümü seçeneği vardır.
-- Daha verimli olduğundan veri diliminizden başlamanız önerilir.  Parallelkopyalar ayarında paralellik sayısının, Netezza sunucusundaki tablonuzdaki toplam veri dilimi bölümlerinin altında olduğundan emin olun.  
-- Her bir veri dilimi bölümünün birim boyutu hala büyükse (örneğin, 10 GB 'den büyük), Dinamik Aralık bölümüne geçmeniz önerilir, burada bölüm sayısını ve her bölüm için birimin boyutunu tanımlamanız için daha fazla esneklik elde edersiniz. Bölüm sütununa göre, üst sınır ve alt sınır.
+   - Alternatif olarak, [hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [paylaşılan erişim imzası](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)veya [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)kullanarak Azure Blob depolama alanında kimlik doğrulaması yapabilirsiniz. 
 
-Büyük tablolar için, birim boyutu 100 GB 'den büyük olduğunda veya 2 saat içinde Azure 'a geçirilemeyen bir durumda, verileri özel sorgu ile bölümleyip her bir kopya işinin aynı anda bir bölüm kopyalaması önerilir. Daha iyi üretilen iş için birden çok Azure Data Factory kopyalama işini eşzamanlı olarak çalıştırabilirsiniz. Her bir kopyalama işi hedefinin özel sorgu tarafından bir bölümü yüklemesi için, aktarım hızını artırmak için veri dilimi veya Dinamik Aralık aracılığıyla paralellik özelliğini etkinleştirmeyi unutmayın. 
+- Azure Data Lake Storage 2. doğrulamak için: 
 
-Ağ veya veri deposu geçici sorunu nedeniyle kopyalama işlerinin herhangi biri başarısız olursa, ilgili bölümü tablodan yeniden yüklemek için başarısız kopyalama işini yeniden çalıştırabilirsiniz. Diğer bölümleri yükleyen diğer tüm kopyalama işleri etkilenmeyecektir.
+   - [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)kullanılması önemle önerilir.
+   
+   - [Hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) veya bir [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)da kullanabilirsiniz. 
 
-Azure SQL veri ambarı 'na veri yüklerken, PolyBase 'in hazırlama sırasında Azure Blob depolama ile kopyalama işi içinde etkinleştirilmesi önerilir.
+- Azure SQL veri ambarı 'nda kimlik doğrulaması yapmak için:
 
-### <a name="delta-data-migration"></a>Delta verileri geçişi 
+   - [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#managed-identity)kullanılması önemle önerilir.
+   
+   - [Hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#service-principal-authentication) veya [SQL kimlik doğrulaması](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse#sql-authentication)da kullanabilirsiniz.
 
-Tabloınızdan yeni veya güncelleştirilmiş satırları belirlemenin yolu, bir zaman damgası sütunu veya şema içindeki bir anahtarı artırılarak, son değeri, bir sonraki veri yüklemesi için Delta verileri filtrelemek üzere kullanılabilecek bir dış tabloda üst eşik olarak depolar. 
+- Azure kaynakları için Yönetilen kimlikler kullanmadığınız durumlarda, Azure Data Factory bağlı hizmetleri değiştirmeye gerek kalmadan anahtarları merkezi olarak yönetmeyi ve döndürmeyi kolaylaştırmak için [Azure Key Vault kimlik bilgilerini depolamayı](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) kesinlikle öneririz. Bu Ayrıca, [CI/CD için en iyi uygulamalardan](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)biridir. 
 
-Farklı tablolar, yeni veya güncelleştirilmiş satırları tanımlamak için farklı bir filigran sütunu kullanabilir. Her bir satırın, belirli bir filigran sütun adı ve yüksek eşik değeri ile Netezza sunucusundaki bir tabloyu temsil ettiğini belirten bir dış denetim tablosu oluşturmanız önerilir. 
+### <a name="migrate-initial-snapshot-data"></a>İlk anlık görüntü verilerini geçirme 
 
-### <a name="self-hosted-integration-runtime-configuration-on-azure-vm-or-machine"></a>Azure VM veya makinesinde şirket içinde barındırılan tümleştirme çalışma zamanı yapılandırması
+Küçük tablolar (yani, 100 GB 'tan daha az bir birimi olan veya iki saat içinde Azure 'a geçirilebilecek tablolar) için her bir kopyalama işi tablo başına veri yükleme yapabilirsiniz. Daha fazla verimlilik için, aynı anda ayrı tabloları yüklemek üzere birden çok Azure Data Factory kopyalama işi çalıştırabilirsiniz. 
 
-Netezza Server 'dan Azure 'a veri geçirdiğinizden bağımsız olarak, Netezza Server, şirket güvenlik duvarınız veya VNET ortamında herhangi bir taahhüdde yer alan hiçbir şekilde, Windows makinesinde veya VM 'de, taşınacak motor olan şirket içinde barındırılan tümleştirme çalışma zamanı yüklemeniz gerekir verileri.
+Her kopyalama işinde, paralel sorgular çalıştırmak ve verileri bölümlere göre kopyalamak için aşağıdaki veri bölümü seçeneklerinden biriyle [ `parallelCopies` özellik ayarını](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#parallel-copy) kullanarak, bazı paralellik düzeyine erişebilirsiniz:
 
-- Her makine veya VM için ile başlamak için önerilen yapılandırma, 32 vCPU ve 128 GB bellektir. Veri geçişi sırasında IR makinesinin izleme CPU ve bellek kullanımını, daha iyi performans için makineye daha fazla ölçeklendirme yapmanız gerektiğini ve maliyeti kazanmak için makinenin ölçeğini ölçeklendirmeniz gerektiğini görmek üzere tutabilirsiniz.
-- Ayrıca, tek bir kendinden konak IR ile 4 ' e kadar düğüm ilişkilendirerek da ölçeği genişletebilirsiniz. Şirket içinde barındırılan bir IR 'ye karşı çalışan tek bir kopyalama işi, verileri paralel olarak kopyalamak için tüm VM düğümlerinden otomatik olarak yararlanır. Yüksek kullanılabilirlik için, veri geçişi sırasında tek hata noktasını önlemek üzere 2 VM düğümü ile başlamanız önerilir.
+- Daha fazla verimlilik elde etmek için bir veri diliminden başlamanız önerilir.  `parallelCopies` Ayardaki değerin, Netezza sunucusundaki tablonuzdaki veri dilimi bölümlerinin toplam sayısından küçük olduğundan emin olun.  
 
-### <a name="rate-limiting"></a>Hız sınırlandırma
+- Her bir veri dilimi bölümünün hacmi hala büyükse (örneğin, 10 GB veya üzeri), dinamik bir Aralık bölümüne geçiş yapmanız önerilir. Bu seçenek, bölüm sütunu, üst sınır ve alt sınır ile her bölümün birim sayısını ve bölüm sayısını tanımlamaya yönelik daha fazla esneklik sağlar.
 
-En iyi uygulama olarak, her kopyalama etkinliği için uygun bir bölüm boyutunu belirleyebilmeniz için, temsili örnek veri kümesiyle bir performans POC 'si gerçekleştirin. Her bölümün Azure 'a 2 saat içinde yüklenmesini öneririz.  
+Daha büyük tablolar (yani, 100 GB veya daha büyük bir birimi olan veya iki saat içinde Azure 'a *geçirilemeyen tablolar* ) için, verileri özel sorgu ile bölümleyip her bir kopya işi tek seferde bir bölüm kopyalaması yapmanızı öneririz. Daha iyi işleme için birden çok Azure Data Factory kopyalama işini eşzamanlı olarak çalıştırabilirsiniz. Özel sorgu tarafından bir bölüm yüklemenin her bir kopyalama işi hedefi için, veri dilimi veya Dinamik Aralık aracılığıyla paralellik sağlayarak aktarım hızını artırabilirsiniz. 
 
-Bir tabloyu kopyalamak için tek bir şirket içinde barındırılan IR makinesiyle tek bir kopyalama etkinliği ile başlayın. Tablonuzdaki veri dilimi bölümlerinin sayısına bağlı olarak Parallelcopy ayarını kademeli olarak artırın ve kopyalama işinden gördüğünüz aktarım hızına göre tüm tablonun 2 saat içinde Azure 'a yüklenip yüklenememesine bakın. 
+Bir ağ veya veri deposu geçici sorunu nedeniyle herhangi bir kopyalama işi başarısız olursa, tablodaki belirli bir bölümü yeniden yüklemek için başarısız kopyalama işini yeniden çalıştırabilirsiniz. Diğer bölümleri yükleyen diğer kopyalama işleri etkilenmez.
 
-Sağlanamadıysanız ve aynı zamanda şirket içinde barındırılan IR düğümünün ve veri deposunun kapasitesi tam olarak kullanılmadığından, ağınızın sınırlarına veya veri depolarının bant genişliği sınırına ulaşana kadar eşzamanlı kopyalama etkinliği sayısını kademeli olarak artırın. 
+Verileri bir Azure SQL veri ambarı veritabanına yüklediğinizde, hazırlama sırasında Azure Blob depolama ile bağlantılı iş içinde PolyBase 'i etkinleştirmenizi öneririz.
 
-Şirket içinde barındırılan IR makinesinde CPU/bellek kullanımının izlenmesini ve CPU/belleğin tam olarak kullanıldığını gördüğünüzde makinenin ölçeğini ölçeklendirmeye veya birden çok makineye ölçeğe hazır olmaya devam edin. 
+### <a name="migrate-delta-data"></a>Delta verilerini geçirme 
 
-Azure Data Factory kopyalama etkinliği tarafından bildirilen azaltma hatalarıyla karşılaştığınızda, Azure Data Factory eşzamanlılık veya Parallelcopy ayarını azaltın ya da ağ ve veri depolarının bant genişliği/ıOPS sınırlarını artırmayı düşünün. 
+Tabloınızdan yeni veya güncelleştirilmiş satırları belirlemek için, şema içindeki bir zaman damgası sütunu veya bir artırma anahtarı kullanın. Ardından, en son değeri bir dış tabloda yüksek bir eşik olarak saklayabilir ve sonra verileri bir dahaki sefer yüklediğinizde Delta verilerini filtrelemek için kullanabilirsiniz. 
+
+Her tablo, yeni veya güncelleştirilmiş satırlarını tanımlamak için farklı bir filigran sütunu kullanabilir. Bir dış denetim tablosu oluşturmanızı öneririz. Tabloda, her satır Netezza sunucusundaki belirli bir filigran sütun adı ve yüksek eşik değeri ile bir tabloyu temsil eder. 
+
+### <a name="configure-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı yapılandırma
+
+Netezza sunucusundan Azure 'a veri geçiriyorsanız, sunucunun şirket güvenlik duvarınızın arkasında veya bir sanal ağ ortamında şirket içinde olup olmadığı, bir Windows makinesine veya VM 'ye şirket içinde barındırılan bir IR yüklemeniz gerekir, bu altyapı verileri taşıyın. Şirket içinde barındırılan IR 'yi yüklerken aşağıdaki yaklaşımı öneririz:
+
+- Her bir Windows makinesi veya VM için, 32 vCPU ve 128 GB bellek yapılandırması ile başlayın. Veri geçişi sırasında IR makinesinin CPU ve bellek kullanımının izlenmesini, daha iyi performans için makineye daha fazla ölçeklendirme yapılıp yapılmayacağını veya maliyeti kazanmak için makinenin ölçeğini ölçeklendirmeniz gerekip gerekmediğini görmek için izleyebilirsiniz.
+
+- Ayrıca, tek bir şirket içinde barındırılan bir IR ile en fazla dört düğüm ilişkilendirerek ölçeği genişletebilirsiniz. Şirket içinde barındırılan bir IR 'ye karşı çalışan tek bir kopyalama işi, verileri paralel olarak kopyalamak için otomatik olarak tüm VM düğümlerini uygular. Yüksek kullanılabilirlik için, veri geçişi sırasında tek bir hata noktası oluşmasını önlemek için dört VM düğümü ile başlayın.
+
+### <a name="limit-your-partitions"></a>Bölümlerinizi sınırlayın
+
+En iyi uygulama olarak, temsili bir örnek veri kümesiyle bir kavram kanıtı (POC), her kopyalama etkinliği için uygun bölüm boyutunu belirleyebilmeniz için Her bir bölümü Azure 'a iki saat içinde yüklemeniz önerilir.  
+
+Bir tabloyu kopyalamak için tek ve şirket içinde barındırılan bir IR makinesiyle tek bir kopyalama etkinliği ile başlayın. Tablodaki veri dilimi `parallelCopies` bölümlerinin sayısına göre ayarı kademeli olarak artırın. Tüm tablonun, kopyalama işinden kaynaklanan aktarım hızına bağlı olarak iki saat içinde Azure 'a yüklenip yüklenemeyeceğini öğrenin. 
+
+Bu, iki saat içinde Azure 'a yüklenemediğinde ve şirket içinde barındırılan IR düğümünün ve veri deposunun kapasitesi tam olarak kullanılmazsa, ağınızın sınırına veya veri deposunun bant genişliği sınırına ulaşana kadar eşzamanlı kopyalama etkinliklerinin sayısını kademeli olarak artırın olmalıdır 
+
+Şirket içinde barındırılan IR makinesinde CPU ve bellek kullanımını izlemeye devam edin ve CPU ve belleğin tam olarak kullanıldığını gördüğünüzde makinenin ölçeğini ölçeklendirmeye veya birden çok makineye ölçeğe hazır olun. 
+
+Azure Data Factory kopyalama etkinliği tarafından bildirilen azaltma hatalarıyla karşılaştığınızda, Azure Data Factory eşzamanlılık veya `parallelCopies` ayarı azaltın ya da ağın bant genişliği veya g/ç işlem/sn (IOPS) sınırlarını artırmayı düşünün ve veri depoları. 
 
 
-### <a name="estimating-price"></a>Fiyat tahmini 
+### <a name="estimate-your-pricing"></a>Fiyatlandırmanızı tahmin etme 
 
-Şirket içi Netezza sunucusundan Azure SQL veri ambarı 'na veri geçirmek için oluşturulan aşağıdaki işlem hattını göz önünde bulundurun:
+Şirket içi Netezza sunucusundan bir Azure SQL veri ambarı veritabanına veri geçirmek için oluşturulan aşağıdaki işlem hattını göz önünde bulundurun:
 
-![fiyatlandırma-işlem hattı](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
+![Fiyatlandırma işlem hattı](media/data-migration-guidance-netezza-azure-sqldw/pricing-pipeline.png)
 
-Şunları kabul edelim: 
+Aşağıdaki deyimlerin doğru olduğunu varsayalım: 
 
-- Toplam veri hacmi 50 TB 'tır. 
-- İlk çözüm mimarisini kullanarak verileri geçirme (Netezza Server, güvenlik duvarının arkasındaki şirket içi)
-- 50 TB, 500 bölüme bölünmüştür ve her kopyalama etkinliği bir bölüm taşıyor.
-- Her kopyalama etkinliği, 4 makineye karşı şirket içinde barındırılan bir IR ile yapılandırılır ve 20 MBps aktarım hızına erişir. (Kopyalama etkinliği içinde Parallelcopy 'lar 4 olarak ayarlanır ve tablodaki verileri yüklemeye yönelik her iş parçacığı 5 MB/sn 'Lik aktarım hızına erişir)
+- Toplam veri hacmi 50 terabayta (TB) sahiptir. 
+
+- İlk çözüm mimarisini kullanarak verileri geçiriyoruz (Netezza sunucusu şirket içi ve güvenlik duvarının arkasında).
+
+- 50-TB birimi 500 bölüme bölünmüştür ve her kopyalama etkinliği bir bölüm taşıdır.
+
+- Her kopyalama etkinliği, dört makineye karşı şirket içinde barındırılan bir IR ile yapılandırılır ve saniyede 20 megabayta (MB/sn) bir işleme ulaşır. (Kopyalama etkinliği içinde, `parallelCopies` 4 olarak ayarlanır ve tablodaki verileri yüklemeye yönelik her iş parçacığı 5 MB/sn 'lik bir işleme erişir.)
+
 - ForEach eşzamanlılık 3 olarak ayarlanır ve toplam verimlilik 60 MB/sn 'dir.
+
 - Toplamda, geçişin tamamlandığı 243 saat sürer.
 
-Yukarıdaki varsayımlar temelinde tahmini fiyat aşağıda verilmiştir: 
+Önceki varsayımlar temelinde, tahmini fiyat aşağıda verilmiştir: 
 
-![fiyatlandırma-tablo](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
+![Fiyatlandırma tablosu](media/data-migration-guidance-netezza-azure-sqldw/pricing-table.png)
 
 > [!NOTE]
-> Bu bir kuramsal fiyatlandırma örneğidir. Gerçek fiyatlandırağınız, ortamınızdaki gerçek işleme göre değişir. Windows makinenin fiyatı (Şirket içinde barındırılan tümleştirme çalışma zamanı yüklü) dahil değildir. 
+> Yukarıdaki tabloda gösterilen fiyatlandırma kuramsal olarak belirlenir. Gerçek fiyatlandırağınız, ortamınızdaki gerçek işleme göre değişir. Windows makinenin fiyatı (Şirket içinde barındırılan IR yüklü) dahil değildir. 
 
-### <a name="additional-references"></a>Ek başvurular 
-- [Azure Data Factory kullanarak şirket içi ilişkisel veri ambarından Azure 'a veri taşıma](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+### <a name="additional-references"></a>Ek başvurular
+
+Daha fazla bilgi için aşağıdaki makalelere ve kılavuzlara bakın:
+
+- [Azure Data Factory kullanarak şirket içi ilişkisel veri ambarı veritabanından Azure 'a veri geçirme](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
 - [Netezza Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [ODBC Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-odbc)
-- [Azure Blob Depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+- [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage 2. Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Azure SQL veri ambarı Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-data-warehouse)
 - [Kopyalama etkinliği performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Şirket içinde barındırılan Integration Runtime oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
+- [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
 - [Şirket içinde barındırılan tümleştirme çalışma zamanı HA ve ölçeklenebilirliği](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [Veri taşıma güvenlik konuları](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 - [Azure Key Vault kimlik bilgilerini depolama](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
@@ -162,4 +207,4 @@ Yukarıdaki varsayımlar temelinde tahmini fiyat aşağıda verilmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Data Factory ile birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md)
+- [Azure Data Factory kullanarak birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md)

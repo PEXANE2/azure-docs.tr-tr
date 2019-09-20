@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993461"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123096"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL veritabanı sunucusuz (Önizleme)
 
@@ -160,6 +160,12 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
    |GP_S_Gen5_1|Genel Amaçlı|Gen5|1\.|
    |GP_S_Gen5_2|Genel Amaçlı|Gen5|2|
    |GP_S_Gen5_4|Genel Amaçlı|Gen5|4|
+   |GP_S_Gen5_6|Genel Amaçlı|Gen5|6|
+   |GP_S_Gen5_8|Genel Amaçlı|Gen5|8|
+   |GP_S_Gen5_10|Genel Amaçlı|Gen5|10|
+   |GP_S_Gen5_12|Genel Amaçlı|Gen5|12|
+   |GP_S_Gen5_14|Genel Amaçlı|Gen5|14|
+   |GP_S_Gen5_16|Genel Amaçlı|Gen5|16|
 
 2. İsteğe bağlı olarak, varsayılan değerlerini değiştirmek için en düşük sanal çekirdekleri ve oto duraklatma gecikmesini belirtin. Aşağıdaki tabloda bu parametreler için kullanılabilir değerler gösterilmektedir.
 
