@@ -187,3 +187,9 @@
   href: understand-vm-reboot.md
 - name: Uzaktan sorun giderme araçları
   href: remote-tools-troubleshoot-azure-vm-issues.md
+- name: Sanal Makine Onarımı
+  items:
+    - name: Azure Sanal Makine onarım komutlarını kullanarak Windows VM'sini onarma
+      href: repair-windows-vm-using-azure-virtual-machine-repair-commands.md
+    - name: Azure Sanal Makine onarım komutlarını kullanarak Linux VM'sini onarma
+      href: repair-linux-vm-using-azure-virtual-machine-repair-commands.md

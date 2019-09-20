@@ -195,7 +195,7 @@
           href: howto-data-in-replication.md
         - name: Azure portalda okuma amaçlı çoğaltma oluşturma
           href: howto-read-replicas-portal.md
-        - name: Azure CLI'de okuma amaçlı çoğaltma oluşturma
+        - name: 'Azure CLI, REST API okuma amaçlı çoğaltma oluşturma'
           href: howto-read-replicas-cli.md
     - name: Sorun giderme
       items:

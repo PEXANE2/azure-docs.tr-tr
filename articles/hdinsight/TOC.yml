@@ -271,6 +271,14 @@
           href: ./spark/apache-spark-ipython-notebook-machine-learning.md
         - name: IntelliJ’de Apache Spark uygulaması oluşturma
           href: ./spark/apache-spark-create-standalone-application.md
+    - name: Kavramlar
+      items:
+        - name: HDInsight üzerinde Spark en iyi yöntemleri
+          href: ./spark/spark-best-practices.md
+        - name: Apache Spark ayarlarını yapılandırma
+          href: ./spark/apache-spark-settings.md
+        - name: Apache Spark işlerini iyileştirme
+          href: ./spark/apache-spark-perf.md
     - name: Nasıl yapılır
       items:
         - name: Araçları kullanma
@@ -323,10 +331,6 @@
               href: ./spark/apache-spark-resource-manager.md
             - name: Genişletilmiş Geçmiş Sunucusu kullanarak Apache Spark uygulamalarını yönetme
               href: ./spark/apache-azure-spark-history-server.md
-            - name: Apache Spark ayarlarını yapılandırma
-              href: ./spark/apache-spark-settings.md
-            - name: Apache Spark işlerini iyileştirme
-              href: ./spark/apache-spark-perf.md
             - name: GÇ Önbellek ile önbelleğe almayı etkinleştirme
               href: ./spark/apache-spark-improve-performance-iocache.md
             - name: Not defterlerini Apache Spark ile kullanma

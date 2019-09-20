@@ -232,7 +232,7 @@
       items:
         - name: Azure portalda okuma amaçlı çoğaltmaları yönetme
           href: howto-read-replicas-portal.md
-        - name: Azure CLI'da okuma amaçlı çoğaltmaları yönetme
+        - name: 'Azure CLI, REST API okuma amaçlı çoğaltmayı yönetme'
           href: howto-read-replicas-cli.md
 - name: Başvuru
   items:

@@ -128,12 +128,18 @@
           href: dealing-with-duplicates.md
     - name: İzleme
       items:
+        - name: Veri alımını izlemek için tanılama günlüklerini kullanma
+          href: using-diagnostic-logs.md
         - name: Kümelerin sistem durumunu izlemek için ölçümleri kullanma
           href: using-metrics.md
     - name: Diğer araçlarla tümleştirme
       items:
-        - name: Azure Data Factory kullanarak toplu veri kopyalama
-          href: data-factory-template.md
+        - name: Azure Data Factory
+          items:
+            - name: Azure Data Factory kullanarak toplu veri kopyalama
+              href: data-factory-template.md
+            - name: Azure Data Factory kullanarak denetim komutlarını çalıştırma
+              href: data-factory-command-activity.md
         - name: Apache Spark Bağlayıcısı
           href: spark-connector.md
         - name: Python kullanarak Databricks'ten bağlanma

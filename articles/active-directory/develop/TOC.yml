@@ -89,6 +89,8 @@
           href: authentication-scenarios.md
         - name: Kimlik doğrulama akışları ve uygulama senaryoları
           href: authentication-flows-app-scenarios.md
+        - name: Kimlik platformu en iyi yöntemleri
+          href: identity-platform-integration-checklist.md
         - name: Uygulama senaryoları
           items:
             - name: Hedef kitlenin oturumunu açma
@@ -217,8 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: Üretime taşıma
                   href: scenario-mobile-production.md
-            - name: Tümleştirme denetim listesi
-              href: identity-platform-integration-checklist.md
         - name: Microsoft Authentication Library (MSAL)
           items:
             - name: Genel Bakış

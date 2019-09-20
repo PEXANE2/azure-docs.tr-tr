@@ -5,6 +5,8 @@
     - name: Azure AD B2C hakkında
       expanded: true
       href: active-directory-b2c-overview.md
+    - name: Tekniğe ve özelliklere genel bakış
+      href: technical-overview.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

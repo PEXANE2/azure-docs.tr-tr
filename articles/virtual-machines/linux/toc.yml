@@ -103,6 +103,8 @@
           href: sizes-hpc.md
         - name: Önceki nesiller
           href: sizes-previous-gen.md
+        - name: Yalıtılmış boyutlar
+          href: isolation.md
         - name: Azure işlem birimleri (ACU)
           href: acu.md
         - name: vCPU kotaları

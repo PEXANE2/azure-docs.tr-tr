@@ -102,6 +102,8 @@
         - name: Önceki nesiller
           href: sizes-previous-gen.md
           displayName: D-series Ds-series A-series Basic
+        - name: Yalıtılmış boyutlar
+          href: isolation.md
         - name: Azure işlem birimleri (ACU)
           href: acu.md
         - name: Kıyaslama puanları

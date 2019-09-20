@@ -239,17 +239,17 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: Belge bağlantıları
           href: cognitive-search-resources-documentation.md
-    - name: Bilgi deposu (önizleme)
-      items:
-        - name: Azure portalında bilgi deposu oluşturma
-          href: knowledge-store-create-portal.md
-        - name: REST ve Postman kullanarak oluşturma
-          href: knowledge-store-howto.md
-        - name: Depolama Gezgini ile görüntüleme
-          href: knowledge-store-view-storage-explorer.md
-        - name: Power BI ile bağlanma
-          href: knowledge-store-connect-power-bi.md
-    - name: Verileri sorgulama
+        - name: Bilgi deposu (önizleme)
+          items:
+            - name: Azure portalında bilgi deposu oluşturma
+              href: knowledge-store-create-portal.md
+            - name: REST ve Postman kullanarak oluşturma
+              href: knowledge-store-howto.md
+            - name: Depolama Gezgini ile görüntüleme
+              href: knowledge-store-view-storage-explorer.md
+            - name: Power BI ile bağlanma
+              href: knowledge-store-connect-power-bi.md
+    - name: Belgeleri sorgulama
       items:
         - name: Temel bir sorgu oluşturma
           href: search-query-overview.md
@@ -265,7 +265,7 @@
           href: search-query-lucene-examples.md
         - name: moreLikeThis (önizleme)
           href: search-more-like-this.md
-    - name: Filtreleri kullanma
+    - name: Filtreleri uygulama
       items:
         - name: Filtrelere genel bakış
           href: search-filters.md
@@ -283,18 +283,14 @@
       items:
         - name: Sayfayla ilgili özellikler
           href: search-pagination-page-layout.md
-    - name: İlgi düzeyini ayarlama
-      items:
-        - name: Puanlama profili ekleme
+        - name: İlgi düzeyini ayarlama (puanlama profilleri)
           href: index-add-scoring-profiles.md
-    - name: Yönetim
+    - name: Yönetme ve izleme
       items:
         - name: Portal yönetimi
           href: search-manage.md
         - name: PowerShell yönetimi
           href: search-manage-powershell.md
-    - name: İzleme
-      items:
         - name: Etkinliği izleme ve günlüğe kaydetme
           href: search-monitor-usage.md
         - name: Arama trafiği analizi
