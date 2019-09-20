@@ -31,6 +31,8 @@
               href: sdk-csharp-quick-start.md
             - name: Python’u kullanma
               href: sdk-python-quickstart.md
+            - name: Java'yı kullanma
+              href: sdk-java-quickstart.md
 - name: Öğreticiler
   items:
     - name: Özel Arama web sayfası derleme
