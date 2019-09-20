@@ -348,7 +348,7 @@ Yardımcı olması için İzleyici başarı, hataları ve işletmeler arası (B2
 | respondingfunctionalGroupControlNumber | String | Özgün işlevsel Grup denetim numarası. (İsteğe bağlı) |
 | respondingFunctionalGroupId | String | AK101 eşlenir bildirim işlevsel grubun kimliği. (İsteğe bağlı) |
 | isMessageFailed | Boolean | Olmadığını X12 ileti başarısız oldu. (Zorunlu) |
-| statusCode | Enum | Onay durum kodunu. İzin verilen değerler **kabul edilen**, **reddedildi**, ve **AcceptedWithErrors**. (Zorunlu) |
+| statusCode | Enum | Onay durum kodunu. İzin verilen değerler **Accepted**, **Rejected**, ve **AcceptedWithErrors**. (Zorunlu) |
 | processingStatus | Enum | İşlem durumu alındı. İzin verilen değerler **alınan**, **oluşturulan**, ve **gönderilen**. (Zorunlu) |
 | ak903 | String | Alınan işlem kümesi sayısı. (İsteğe bağlı) |
 | ak904 | String | İşlem kümesi sayısı içinde tanımlanan işlevsel Grup kabul edildi. (İsteğe bağlı) |
