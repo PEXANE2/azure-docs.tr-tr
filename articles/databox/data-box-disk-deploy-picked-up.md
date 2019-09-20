@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910110"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128696"
 ---
 ::: zone target="chromeless"
 
@@ -89,11 +89,7 @@ Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Ge
 3. Etiketi kutuya iliştirin. 
 4. Şu bağlantıdan çevrimiçi olarak bir teslim alma rezervasyonu yapın: https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference. 
 
-### <a name="in-japan-koreatabin-japan-korea"></a>[Japonya, Kore](#tab/in-japan-korea)
-
-Japonya ve Kore için toplama yönergeleri aşağıda verilmiştir.
-
-#### <a name="pick-up-in-japan"></a>Japonya’da teslim alma
+### <a name="in-japantabin-japan"></a>[Japonya](#tab/in-japan)
 
 1. Sevk mektubuna, gönderici bilgisi olarak şirket adınızı ve adres bilgilerinizi yazın.
 2. Aşağıdaki e-posta şablonunu kullanarak Quantium Solutions’a e-posta gönderin.
@@ -120,7 +116,7 @@ Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile il
 - E-posta: Customerservice.JP@quantiumsolutions.com 
 - Telefon：03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>Kore’de teslim alma
+### <a name="in-koreatabin-korea"></a>[Güney Kore](#tab/in-korea)
 
 1. İade sevk mektubunu eklediğinizden emin olun.
 2. Sevk mektubunuz mevcutken iade istemek için:
