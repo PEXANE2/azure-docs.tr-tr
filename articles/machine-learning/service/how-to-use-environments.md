@@ -1,5 +1,5 @@
 ---
-title: Model eğitimi ve dağıtımı için ortamları oluşturma, kullanma ve yönetme
+title: Yeniden kullanılabilir ML ortamları oluşturma
 titleSuffix: Azure Machine Learning
 description: Model eğitimi ve dağıtımı için ortamları oluşturun ve yönetin. Bu ortam için Python paketlerini ve diğer ayarları yönetin.
 services: machine-learning
@@ -9,16 +9,15 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/16/2019
-ms.custom: seodec18
-ms.openlocfilehash: 242f3cec0ac766e537bd0483725ba51685bb7ced
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 09/16/2019
+ms.openlocfilehash: b46ca59bc93477c338001009ff7eeeddc7248684
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996631"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147323"
 ---
-# <a name="create-and-manage-environments-for-training-and-deployment"></a>Eğitim ve dağıtım için ortamları oluşturma ve yönetme
+# <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Azure Machine Learning ile eğitim ve dağıtım için yeniden kullanılabilir ortamlar oluşturun ve yönetin.
 
 Bu makalede, Azure Machine Learning [ortamları](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) oluşturma ve yönetme hakkında bilgi edinmek için projenizin yazılım bağımlılıklarını geliştikçe izleyip yeniden oluşturabilirsiniz.
 

@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell Betiği - Azure Cosmos firma güncelleştirme
-description: Azure PowerShell betik örneği - eklenen bölge ile bir Azure Cosmos hesabı güncelleştirme
+title: Azure PowerShell betiği-Azure Cosmos hesabını güncelleştirme
+description: Azure PowerShell betik örneği-Azure Cosmos hesabını güncelleştirme veya bölgeleri değiştirme
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8fad9b47b4f451f4b77f32038b26d6dc43809a60
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7d57264daf4036d1823d3da27c248bdca1d7466d
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603946"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154734"
 ---
-# <a name="update-an-azure-cosmos-account-and-add-a-region-using-powershell"></a>Bir Azure Cosmos hesabınızı güncelleştirme ve PowerShell kullanarak bir bölge Ekle
+# <a name="update-an-azure-cosmos-account-or-add-modify-regions-using-powershell"></a>PowerShell kullanarak bir Azure Cosmos hesabını güncelleştirme veya değiştirme bölgesi ekleme
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "67603946"
 
 ## <a name="sample-script"></a>Örnek betik
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-update.ps1 "Update and add regions to an Azure Cosmos account")]
+> [!NOTE]
+> Aynı işlemdeki bölgeleri değiştiremez ve diğer Cosmos hesabı özelliklerini değiştiremezsiniz. Bunların iki ayrı işlem olarak yapılması gerekir.
+> [!NOTE]
+> Bu örnekte bir SQL (Core) API hesabı kullanılması gösterilmektedir. Bu örneği diğer API 'Ler için kullanmak üzere ilgili özellikleri kopyalayın ve API 'ye özel betiğe uygulayın.
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Add a region to an Azure Cosmos account")]
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 
@@ -38,9 +43,9 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure kaynakları**| |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Bir kaynak alır. |
-| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Bir kaynağı güncelleştirir. |
-|**Azure kaynak grupları**| |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturun. |
+| [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | Bir kaynağı güncelleştirin. |
+|**Azure Kaynak grupları**| |
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||

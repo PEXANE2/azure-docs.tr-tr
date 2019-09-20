@@ -1,18 +1,18 @@
 ---
 title: Efektlerin nasıl çalıştığını anlama
-description: Azure İlkesi tanım uyumluluk nasıl yönetildiği ve bildirilen belirleyen çeşitli etkileri vardır.
+description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a5ffbef2b841acc7ea7ecc82d05dfccbc0cab1
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231533"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147011"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure İlkesi etkilerini anlama
 
@@ -27,13 +27,14 @@ Bu efektler Şu anda bir ilke tanımında destekleniyor:
 - [DeployIfNotExists](#deployifnotexists)
 - [Devre dışı](#disabled)
 - [Enforceregopolicy](#enforceregopolicy) Önizle
+- [Değiştirebilirler](#modify)
 
 ## <a name="order-of-evaluation"></a>Değerlendirme sırası
 
 Azure Resource Manager aracılığıyla kaynak oluşturma veya güncelleştirme istekleri, önce Azure Ilkesi tarafından değerlendirilir. Azure Ilkesi, kaynak için uygulanan tüm atamaların bir listesini oluşturur ve ardından kaynağı her bir tanıma karşı değerlendirir. Azure Ilkesi, isteği uygun kaynak sağlayıcısına teslim etmeden önce çeşitli etkileri işler. Bunun yapılması, bir kaynak Azure Ilkesinin tasarlanan idare denetimlerini karşılamıyorsa kaynak sağlayıcısı tarafından gereksiz işlemeyi önler.
 
 - **Devre dışı bırakılmış** önce ilke kuralı değerlendirileceğini belirlemek için denetlenir.
-- **Append** ardından değerlendirilir. Beri ekleme isteği değiştirecek, göre ekleme yapılan bir değişikliği denetim engellemek veya tetikleme gelen etkisi reddet.
+- **Ekleme** ve **değiştirme** daha sonra değerlendirilir. Bu, isteği değiştiremediği için bir değişiklik, bir denetim veya reddetme efektinin tetiklemesini engelleyebilir.
 - **Reddetme** ardından değerlendirilir. Değerlendirerek reddetme denetim önce istenmeyen bir kaynağın çift günlük kaydı engellenir.
 - **Denetim** giden kaynak sağlayıcıya isteği önce değerlendirilir.
 
@@ -47,7 +48,10 @@ Bu etkiyi durumlarda test etmek veya ne zaman ilke tanımı etkisi parametreli i
 
 ## <a name="append"></a>Ekle
 
-Append oluşturma veya güncelleştirme sırasında istenen kaynak için ek alanlar eklemek için kullanılır. Yaygın olarak karşılaşılan örneklerden costCenter gibi kaynaklarda etiket eklemek veya belirtme IP'ler için bir depolama kaynağına izin verilmiyor.
+Append oluşturma veya güncelleştirme sırasında istenen kaynak için ek alanlar eklemek için kullanılır. Ortak bir örnek, bir depolama kaynağı için izin verilen IP 'Leri belirtmektir.
+
+> [!IMPORTANT]
+> Append etiketi olmayan özelliklerle kullanılmak üzere tasarlanmıştır. Append, oluşturma veya güncelleştirme isteği sırasında bir kaynağa etiket ekleyese de, bunun yerine Etiketler için [değiştirme](#modify) efektini kullanmanız önerilir.
 
 ### <a name="append-evaluation"></a>Değerlendirme Ekle
 
@@ -61,36 +65,7 @@ Bir ekleme yalnızca etkisi bir **ayrıntıları** gerekli olan bir dizi. Olarak
 
 ### <a name="append-examples"></a>Append örnekleri
 
-Örnek 1: Bir etiketi eklemek için tek **alan/değer** çifti.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-        "field": "tags.myTag",
-        "value": "myTagValue"
-    }]
-}
-```
-
-Örnek 2: Bir etiket kümesini eklemek için iki **alan/değer** çifti.
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-            "field": "tags.myTag",
-            "value": "myTagValue"
-        },
-        {
-            "field": "tags.myOtherTag",
-            "value": "myOtherTagValue"
-        }
-    ]
-}
-```
-
-Örnek 3: Bir depolama hesabında IP kuralları ayarlamak için dizi **değeri** ile **[\*]** olmayan bir [diğer ad](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[\*]** Olmayan diğer ad bir dizi ise, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
+Örnek 1: Bir depolama hesabında IP kuralları ayarlamak için dizi **değeri** ile **[\*]** olmayan bir [diğer ad](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[\*]** Olmayan diğer ad bir dizi ise, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
 
 ```json
 "then": {
@@ -105,7 +80,7 @@ Bir ekleme yalnızca etkisi bir **ayrıntıları** gerekli olan bir dizi. Olarak
 }
 ```
 
-Örnek 4: Bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** ile bir **[\*]** [diğer adı](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[\*]** Diğer adını kullanarak, efekt **değeri** önceden var olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
+Örnek 2: Bir depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** ile bir **[\*]** [diğer adı](definition-structure.md#aliases) kullanan tek **alan/değer** çifti. **[\*]** Diğer adını kullanarak, efekt **değeri** önceden var olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
 
 ```json
 "then": {
@@ -117,6 +92,122 @@ Bir ekleme yalnızca etkisi bir **ayrıntıları** gerekli olan bir dizi. Olarak
             "action": "Allow"
         }
     }]
+}
+```
+
+## <a name="modify"></a>Değiştir
+
+Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa etiket eklemek, güncelleştirmek veya kaldırmak için kullanılır. Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. Bir değiştirme ilkesi her zaman `mode` _dizinli_olarak ayarlanmalıdır. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir.
+Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
+
+> [!IMPORTANT]
+> Şu anda yalnızca etiketleriyle kullanım için değiştirin. Etiketleri yönetiyorsanız, Değiştir yerine Değiştir kullanılması önerilir, ek işlem türleri ve mevcut kaynakları düzeltme yeteneği sağlar. Bununla birlikte, yönetilen bir kimlik oluşturabilebilmeniz durumunda ekleme önerilir.
+
+### <a name="modify-evaluation"></a>Değerlendirmeyi Değiştir
+
+Değişiklik, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında istek bir kaynak sağlayıcısı tarafından işlenmeden önce değerlendirilir. İlke kuralının **IF** koşulu karşılandığında, bir kaynaktaki ekleme veya güncelleştirme etiketlerini değiştirme.
+
+Değişiklik efektini kullanan bir ilke tanımı, değerlendirme döngüsünün bir parçası olarak çalıştırıldığında, zaten mevcut olan kaynaklarda değişiklik yapmaz. Bunun yerine, bunu karşılayan herhangi bir kaynağa işaretler **varsa** uyumsuz olarak koşul.
+
+### <a name="modify-properties"></a>Özellikleri Değiştir
+
+Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izinleri ve etiket değerlerini eklemek, güncelleştirmek veya kaldırmak için kullanılan **işlemleri** tanımlayan tüm alt özellikleri içerir.
+
+- **roleDefinitionIds** [gerekli]
+  - Bu özellik, rol tabanlı erişim denetimine rol kimliği erişilebilir tarafından eşleşen bir dize dizisi içermesi gerekir. Daha fazla bilgi için [düzeltme - ilke tanımı yapılandırma](../how-to/remediate-resources.md#configure-policy-definition).
+  - Tanımlanan rol, [katkıda bulunan](../../../role-based-access-control/built-in-roles.md#contributor) rolüne verilen tüm işlemleri içermelidir.
+- **işlemler** istenir
+  - Eşleşen kaynaklarda tamamlanacak tüm etiket işlemlerinin dizisi.
+  - Özelliklerinin
+    - **işlem** istenir
+      - Eşleşen bir kaynakta hangi eylemin yapılacağını tanımlar. Seçenekler şunlardır: _Addorreplace_, _Add_, _Remove_. _Ekleme_ [efektine](#append) benzer şekilde davranır.
+    - **alan** istenir
+      - Eklenecek, değiştirilecek veya kaldırılacak etiket. Etiket adları diğer [alanlar](./definition-structure.md#fields)için aynı adlandırma kuralına uymalıdır.
+    - **değer** seçim
+      - Etiketi ayarlanacak değer.
+      - **Işlem** _addorreplace_ veya _Add_ise bu özellik gereklidir.
+
+### <a name="modify-operations"></a>İşlemleri değiştirme
+
+**Operations** özelliği dizisi, birkaç etiketi tek bir ilke tanımından farklı şekillerde değiştirmeyi mümkün kılar. Her işlem, **işlem**, **alan**ve **değer** özelliklerinden oluşur. İşlem düzeltme görevinin etiketlere ne yaptığını belirler, alan hangi etiketin değiştirilmekte olduğunu belirler ve değer bu etiketin yeni ayarını tanımlar. Aşağıdaki örnekte aşağıdaki etiket değişiklikleri yapılır:
+
+- `environment` Etiketi, farklı bir değerle zaten mevcut olsa bile "test" olarak ayarlar.
+- Etiketi `TempResource`kaldırır.
+- Etiketi, ilke atamasında yapılandırılan deptname ilke parametresi olarak ayarlar. `Dept`
+
+```json
+"details": {
+    ...
+    "operations": [
+        {
+            "operation": "addOrReplace",
+            "field": "tags['environment']",
+            "value": "Test"
+        },
+        {
+            "operation": "Remove",
+            "field": "tags['TempResource']",
+        },
+        {
+            "operation": "addOrReplace",
+            "field": "tags['Dept']",
+            "field": "[parameters('DeptName')]"
+        }
+    ]
+}
+```
+
+**Operation** özelliği aşağıdaki seçeneklere sahiptir:
+
+|İşlem |Açıklama |
+|-|-|
+|addOrReplace |Etiket, farklı bir değerle zaten mevcut olsa bile, kaynağa tanımlı etiketi ve değeri ekler. |
+|Ekle |Kaynağa tanımlı etiketi ve değeri ekler. |
+|Kaldır |Tanımlanan etiketi kaynaktan kaldırır. |
+
+### <a name="modify-examples"></a>Örnekleri Değiştir
+
+Örnek 1: Etiketi ekleyin ve var olan `environment` etiketleri "test" ile değiştirin: `environment`
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "Test"
+            }
+        ]
+    }
+}
+```
+
+Örnek 2: Etiketi kaldırın ve `environment` etiketi ekleyin ya da varolan `environment` etiketleri parametreli bir değerle değiştirin: `env`
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "Remove",
+                "field": "tags['env']"
+            },
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
 }
 ```
 
@@ -234,7 +325,7 @@ Bir kaynak sağlayıcısı oluşturma veya güncelleştirme kaynak isteğiyle i�
 
 ## <a name="deployifnotexists"></a>Deployıfnotexists
 
-Koşul karşılandığında AuditIfNotExists benzeyen bir şablon dağıtımı Deployıfnotexists yürütür.
+Bir DeployIfNotExists öğesine benzer şekilde, bir DeployIfNotExists ilke tanımı, koşul karşılandığında bir şablon dağıtımı yürütür.
 
 > [!NOTE]
 > [İç içe şablonlar](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template) ile desteklenen **Deployıfnotexists**, ancak [bağlı şablonları](../../../azure-resource-manager/resource-group-linked-templates.md) şu anda desteklenmiyor.
@@ -247,7 +338,7 @@ Bir değerlendirme döngüsü sırasında kaynaklarla eşleşen ilke tanımları
 
 ### <a name="deployifnotexists-properties"></a>Deployıfnotexists özellikleri
 
-**Ayrıntıları** eşleştirme için ilgili kaynakları tanımlayan tüm alt ve yürütmek için şablon dağıtımını Deployıfnotexists etkileri özelliğine sahiptir.
+DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kaynakları ve yürütülecek şablon dağıtımını tanımlayan tüm alt özellikleri içerir.
 
 - **Tür** [gerekli]
   - Eşleştirmek için ilgili kaynak türünü belirtir.
@@ -348,7 +439,7 @@ Bu efekt, ilke tanımı *moduyla* `Microsoft.ContainerService.Data`birlikte kull
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy değerlendirmesi
 
-Açık Ilke Aracısı giriş denetleyicisi, kümedeki tüm yeni istekleri gerçek zamanlı olarak değerlendirir.
+Açık Ilke Aracısı giriş denetleyicisi, kümede bulunan yeni istekleri gerçek zamanlı olarak değerlendirir.
 Her 5 dakikada bir küme için tam tarama tamamlanır ve sonuçlar Azure Ilkesine bildirilir.
 
 ### <a name="enforceregopolicy-properties"></a>EnforceRegoPolicy özellikleri

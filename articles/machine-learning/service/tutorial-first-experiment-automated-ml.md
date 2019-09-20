@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 2422a4525c94f3997dd0a9a0859135e9acf59ffa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 8d91768d46d3e4a793982418da91f2d1877c5a79
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092000"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162537"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
@@ -65,93 +65,93 @@ Otomatik Machine Learning ilk denemeniz bu olduğundan **Başlarken** ekranını
 
 1. **Deneme oluştur**' u seçin. 
 
-1. Deneme adı olarak **My-1-oto ml-deney** i girin.
+1. Bu deneme adını girin:`my-1st-automl-experiment`
 
-1. **Yeni Işlem oluştur**' u seçin. İşlem, eğitim betiğinizi çalıştırmak veya hizmet dağıtımınızı barındırmak için kullanılan yerel veya bulut tabanlı bir kaynak ortamıdır. Bu deneme için bulut tabanlı bir işlem kullanıyoruz. 
+1. **Yeni Işlem oluştur** ' u seçin ve işlem hedefini yapılandırın. İşlem hedefi, eğitim betiğinizi çalıştırmak veya hizmet dağıtımınızı barındırmak için kullanılan yerel veya bulut tabanlı bir kaynak ortamıdır. Bu deneme için bulut tabanlı bir işlem kullanıyoruz. 
 
-    1. Bu deneme için işlem bağlamını yapılandırın.
-        
-        Alan | Value
-        ----|---
-        İşlem adı |  İşlem bağlamını tanımlayan benzersiz bir ad girin. Bu örnek için, **oto ml-COMPUTE**kullanın.
-        Sanal makine boyutu| İşlem için sanal makine boyutunu seçin. Varsayılan, **Standard_DS12_V2**kullanın.
-        Ek ayarlar| *En az düğüm*: 1. Veri profilini oluşturmayı etkinleştirmek için bir veya daha fazla düğüme sahip olmanız gerekir. <br> *En fazla düğüm*: 6.
- 
-    1. Yeni işlem oluşturmak için **Oluştur**' u seçin. Bu, tamamlanacak birkaç dakika sürer. 
+   Alan | Açıklama | Öğretici için değer
+   ----|---|---
+   İşlem adı |İşlem bağlamını tanımlayan benzersiz bir ad.|Oto ml-işlem
+   Sanal&nbsp;makine&nbsp;boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
+   En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|Minimum düğümler: 1.<br>En fazla düğüm: 6
 
-    1. Oluşturma işlemi tamamlandığında, açılan listeden yeni işlem ' ı seçin ve ardından **İleri**' yi seçin.
+   >[!NOTE]
+   >Bu öğretici için, varsayılan depolama hesabını ve yeni hesaplamanıza göre oluşturulan kapsayıcıyı kullanacaksınız. Otomatik olarak formda doldurulur.
+    
+1. İşlem hedefini almak için **Oluştur** ' u seçin. 
+   **Bu, tamamlanacak birkaç dakika sürer.** 
 
-    >[!NOTE]
-    >Bu öğretici için, varsayılan depolama hesabını ve yeni hesaplamanıza göre oluşturulan kapsayıcıyı kullanacaksınız. Otomatik olarak formda doldurulur.
+1. Oluşturulduktan sonra, açılan listeden yeni işlem hedefini seçin ve **İleri ' yi**seçin.
 
-1. **Yerel dosyadan karşıya yükle**' yi seçin. Buradan, bu öğreticide daha önce indirdiğiniz **bankmarketing_train. csv** dosyasını içeren yeni bir veri kümesi oluşturursunuz. 
+1. Yeni bir veri kümesi oluşturmaya başlamak için **yerel dosyadan karşıya yükle** ' yi seçin. 
 
-    1. **Araştır** ' ı seçin ve ardından yerel bilgisayarınızdaki **bankmarketing_train. csv** dosyasını seçin. 
+    1. **Gözat**’ı seçin.
+    
+    1. Yerel bilgisayarınızda **bankmarketing_train. csv** dosyasını seçin. Bu, bir [Önkoşul](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)olarak indirdiğiniz dosyadır.
 
     1. Veri kümenize benzersiz bir ad verin ve isteğe bağlı bir açıklama sağlayın. 
 
-    1. Çalışma alanı oluşturma sırasında otomatik olarak ayarlanan varsayılan kapsayıcıya yüklemek için **İleri ' yi** seçin. Genel Önizleme yalnızca yerel dosya yüklemelerini destekler. 
+    1. Çalışma alanı oluşturma sırasında otomatik olarak ayarlanan varsayılan kapsayıcıya yüklemek için sol alt kısımdaki **İleri** ' yi seçin. Genel Önizleme yalnızca yerel dosya yüklemelerini destekler. 
 
     1. Karşıya yükleme tamamlandığında, **Ayarlar ve önizleme** formu dosya türüne göre akıllıca doldurulur. Formun aşağıdaki gibi doldurulduğundan emin olun.
         
         Alan|Value
         ---|---
-        Dosya biçimi| Ted
+        Dosya biçimi| Sınırlandırılmış
         Sınırlayıcı| Virgül
         Encoding| UTF-8
-        Sütun üstbilgileri| Tüm dosyaların aynı üst bilgileri var
+        Sütun üstbilgileri| Tüm dosyaların üst bilgileri aynı
         Satırları atla | Yok.
-
-        >[!NOTE]
-        > Bu formdaki ayarlardan herhangi biri güncelleniyorsa önizleme, buna uygun olarak güncelleştirilir.
 
         **İleri**’yi seçin.
     
-
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için, **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. Deneme için veri kümesinin karşıya yüklenmesini ve oluşturulmasını tamamladıktan sonra **bitti**' yi seçin.
 
         ![Önizleme sekmesi yapılandırması](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
-        
 1. Tahmin görevi olarak **Sınıflandırmayı** seçin.
 
 1. Hedef sütun olarak **y** ' yi, ne tahmin etmek istediğinizi seçin. Bu sütun, istemcinin yatırma bir terime abone olup olmadığını gösterir.
 
 1. **Gelişmiş ayarlar** ' ı genişletin ve alanları aşağıdaki gibi doldurun.
 
-    Gelişmiş ayarlar|Value
-    ------|------
-    Birincil ölçüm| AUC_weighted 
-    Çıkış kriterleri| Bu ölçütlerden herhangi biri karşılandığında, eğitim işi tam tamamlamayı bitmeden önce sonlanır: <br> *Eğitim iş süresi (dakika)* : 5  <br> *En fazla yineleme sayısı*: 10 
-    Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.
-    Doğrulama| Çapraz doğrulama sayısı için K-katlama çapraz doğrulamayı ve **2** ' yi seçin. 
-    Eş Zamanlılık| Maksimum eşzamanlı yineleme sayısı için **5** ' i seçin.
-
    >[!NOTE]
-   > Bu deneme için, yineleme eşiğine göre ölçüm veya en fazla çekirdek ayarlayamazsınız. Ayrıca algoritmaların test edilmeye engel kalmazsınız.
+   > Bu deneme için, yineleme eşiğine göre ölçüm puanı veya en fazla çekirdek ayarlayamazsınız. Ayrıca algoritmaların test edilmeye engel kalmazsınız.
+   
+    Gelişmiş&nbsp;ayarlar|Açıklama|Öğretici&nbsp;için&nbsp;değer
+    ------|---------|---
+    Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|**AUC_weighted** 
+    Çıkış kriterleri| Bu ölçütlerden herhangi biri karşılandığında, eğitim işi tam olarak tamamlanmamış olsa bile sona erer. |Eğitim&nbsp;iş&nbsp;süresi&nbsp;(dakika): **e**  <br> <br> &nbsp;&#58;Yinelemelerin en fazla# 10&nbsp;&nbsp; 
+    Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
+    Doğrulama| Doğrulama türü ve testlerin sayısı. | Çapraz doğrulamayı yana **kesme**<br><br>  çapraz doğrulamalar: **2** 
+    Eş Zamanlılık| Maksimum eşzamanlı yineleme sayısı.|**5**
 
-1. Denemeyi çalıştırmak için **Başlat** ' ı seçin.
+1. Denemeyi çalıştırmak için **Başlat** ' ı seçin. Deneme hazırlığı başladığında bir durum iletisi içeren bir ekran görüntülenir.
 
-   Deneme başladığında, en üstte bir durum iletisi içeren boş bir ekran görürsünüz.
+>[!IMPORTANT]
+> Hazırlık, deneme çalıştırmasının hazırlanmasına **10-15 dakika** sürer. Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha**sürer.  
+>
+> Üretimde, büyük olasılıkla biraz daha fazla yol göstereceğiz. Ancak bu öğreticide, diğer kullanıcılar hala çalışırken yineleme sonuçlarını keşfetmeye başlayacağız. 
 
-Deneme hazırlama işlemi birkaç dakika sürer. Bu işlem tamamlandığında, durum iletisi **çalışmaya çalışıyor**olarak değişir.
+##  <a name="explore-iteration-results"></a>Yineleme sonuçlarını keşfet
 
-##  <a name="view-experiment-details"></a>Deneme ayrıntılarını görüntüle
+Deneme ilerledikçe ekran, **yineleme grafiği** ve **yineleme listesini** , tamamlandıkları şekilde oluşturulan farklı yinelemeler (modeller) ile güncelleştirir ve bunları ölçüm puanına göre sıralar. Varsayılan olarak, seçilen **AUC_weighted** ölçüsüne göre en yüksek düzeyde puan veren model listenin en üstünde yer alır.
 
-Deneme ilerledikçe ekran, **yineleme grafiği** ve **yineleme listesini** çalıştırılan farklı yinelemeler (modeller) ile güncelleştirir. Yineleme listesi, ölçüm puanına göre sıraya göre yapılır. Varsayılan olarak, **AUC_weighted** ölçemize göre en yüksek düzeyde puan veren model listenin en üstünde yer alır.
+Deneme tekrarlarının tümünün bitmesini beklerken, performans ayrıntılarını araştırmak için tamamlanmış bir yinelemenin **adını** seçin. 
+   
+Aşağıda, bir duyarlık geri çağırma eğrisi, karışıklık matrisi, ağırlıklı doğruluk puanları vb. gibi her bir yineleme için oluşturulan grafikler ve çalıştırma ölçümleri gösterilmektedir. 
 
->[!WARNING]
-> Eğitim işleri her bir işlem hattının çalışmayı tamamlaması için birkaç dakika sürer.
-
-[![Çalışma ayrıntıları panosu](media/tutorial-1st-experiment-automated-ml/run-details.png)](media/tutorial-1st-experiment-automated-ml/run-details-expanded.png#lightbox)
+![Yineleme ayrıntısı Çalıştır](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
 
 ## <a name="deploy-the-model"></a>Modeli dağıtma
 
-Çalışma alanı giriş sayfasında otomatik makine öğrenimini kullanarak, birkaç adımda Web hizmeti olarak en iyi modeli dağıtabilirsiniz. Dağıtım, yeni verileri tahmin etmek ve potansiyel fırsat bölgelerini belirlemek için modelin Tümleştirmesidir. Bu deneme için, bir Web hizmetine dağıtım, artık, potansiyel sabit depozito müşterilerinin tanımlanmasından sonra, mali kurumda yinelenen ve ölçeklenebilir bir Web çözümüne sahip olduğu anlamına gelir. 
+Çalışma alanı giriş sayfasında otomatik makine öğrenimi, birkaç adımda Web hizmeti olarak en iyi modeli dağıtmanıza olanak tanır. Dağıtım, yeni verileri tahmin etmek ve potansiyel fırsat bölgelerini belirlemek için modelin Tümleştirmesidir. Bu deneme için, bir Web hizmetine dağıtım, artık, potansiyel sabit depozito müşterilerinin tanımlanmasından sonra, mali kurumda yinelenen ve ölçeklenebilir bir Web çözümüne sahip olduğu anlamına gelir. 
+
+Çalıştırma tamamlandıktan sonra, **yineleme grafiği** ve **yinelemeler listesi** ayrıntı sayfasına geri gidin. 
 
 Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en iyi model olarak kabul edilir.  Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yaklaşık 20 dakika sürer. Dağıtım işlemi, modeli kaydetme, kaynakları oluşturma ve bunları Web hizmeti için yapılandırma dahil olmak üzere birkaç adım gerektirir.
 
-1. **Ayrıntıları Çalıştır** sayfasında sağ üst köşedeki **en iyi modeli dağıt** düğmesini seçin.
+1. Sağ üst köşedeki **En Iyi modeli dağıt** düğmesini seçin.
 
 1. **Dağıtım En Iyi modeli** bölmesini aşağıdaki gibi doldurun:
 

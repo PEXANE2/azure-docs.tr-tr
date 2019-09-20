@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d8f16baccd3a4980ee9dbe410cb2a95878b346d4
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f3006dd3f474dea1add1621f35f902422e244ce1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390017"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161557"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services paylaşılan görüntü galerisini bağlama veya ayırma
 Öğretmenler/Laboratuvar Yöneticisi, bir şablon VM görüntüsünü başkalarının tarafından yeniden kullanılabilmesi için Azure [paylaşılan görüntü galerisine](../../virtual-machines/windows/shared-image-galleries.md) kaydedebilir. İlk adım olarak, Laboratuvar Yöneticisi laboratuvar hesabına var olan bir paylaşılan görüntü Galerisi ekler. Paylaşılan görüntü Galerisi eklendikten sonra, laboratuvar hesabında oluşturulan laboratuvarlar paylaşılan görüntü galerisine görüntü kaydedebilir. Diğer öğretmenler bu görüntüyü, sınıfları için bir şablon oluşturmak üzere paylaşılan görüntü galerisinden seçebilir. 
@@ -26,7 +26,8 @@ ms.locfileid: "70390017"
 Bu makalede, paylaşılan bir görüntü galerisinin bir laboratuvar hesabına nasıl ekleneceği veya ayrılabilmesi gösterilmektedir. 
 
 > [!NOTE]
-> Paylaşılan görüntü Galerisi hizmeti ile ilişkili maliyetler hakkında bilgi edinmek için bkz. [paylaşılan görüntü Galerisi Için faturalama](../../virtual-machines/windows/shared-image-galleries.md#billing).
+> Bir görüntü paylaşılan bir görüntü galerisine kaydedildiğinde, Azure Lab Services kaydedilen görüntüyü aynı [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/)'da bulunan diğer bölgelere çoğaltır. Görüntünün aynı coğrafya içindeki diğer bölgelerde oluşturulan laboratuvarlarda kullanılabilir olmasını sağlar. Resimleri paylaşılan bir görüntü galerisine kaydetmek, çoğaltılan tüm görüntülerin maliyetini içeren ek bir maliyet doğurur. Bu maliyet Azure Lab Services kullanım maliyetinden ayrıdır. Paylaşılan görüntü Galerisi fiyatlandırması hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi – faturalandırma]( https://docs.microsoft.com/en-us/azure/virtual-machines/windows/shared-image-galleries#billing).
+
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Laboratuvar hesabı oluşturma sırasında yapılandırma
 Laboratuvar hesabı oluştururken, laboratuvar hesabına paylaşılan bir görüntü Galerisi ekleyebilirsiniz. Açılan listeden var olan bir paylaşılan görüntü Galerisi seçebilir veya yeni bir tane oluşturabilirsiniz. Laboratuvar hesabına paylaşılan bir görüntü galerisi oluşturup eklemek için **Yeni oluştur**' u seçin, Galeri için bir ad girin ve **Tamam**' ı girin. 

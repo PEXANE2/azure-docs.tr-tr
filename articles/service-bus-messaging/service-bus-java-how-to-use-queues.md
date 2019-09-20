@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: b85099605d7f660b792186f7e17b0ed4ea43ef04
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967847"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155487"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>İleti göndermek ve almak için Java ile Azure Service Bus kuyruklarını kullanma
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -42,7 +42,7 @@ Bu öğreticide, Azure Service Bus kuyruğuna ileti göndermek ve ileti almak i�
 ## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
 Bu örneği oluşturmadan önce [Java Için Azure SDK 'sını][Azure SDK for Java] yüklediğinizden emin olun. Çakışan Küreler kullanıyorsanız, Java için Azure SDK 'sını içeren [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] yükleyebilirsiniz. Ardından projenize **Java için Microsoft Azure kitaplıklarını** ekleyebilirsiniz:
 
-![Kitaplıklar ekleyebileceğiniz kitaplıklar sekmesinin ekran görüntüsü](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![Çakışan Küreler projenize Java için Microsoft Azure kitaplıkları ekleyin](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 Aşağıdaki `import` deyimlerini Java dosyasının en üstüne ekleyin:
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5a3ffcc75ac37dac1284d0ffb5af234fd2f376cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310455"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146916"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Öğretici: Coğrafi olarak çoğaltılan bir Azure Container Registry 'den Web uygulaması dağıtma
 
@@ -55,7 +55,11 @@ Bu adımda, *Batı ABD* bölgesinde bir Kapsayıcılar için Web App örneği ol
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-westus` biçimini kullanıyoruz. |
 | **Kaynak Grubu** | **Var olanı kullan** > `myResourceGroup` |
 | **Uygulama hizmeti planı/Konumu** | **Batı ABD** bölgesinde `plan-westus` adlı yeni bir plan oluşturun. |
-| **Görüntü** | `acr-helloworld:v1`
+| **Görüntü** | `acr-helloworld:v1` |
+| **İşletim sistemi** | Linux |
+
+> [!NOTE]
+> Kapsayıcılı uygulamanızı dağıtmak için yeni bir App Service planı oluşturduğunuzda, uygulamanızı barındırmak için varsayılan bir plan otomatik olarak seçilir. Varsayılan plan, işletim sistemi ayarına bağlıdır.
 
 **Oluştur**’u seçerek, web uygulamasını *Batı ABD* bölgesine sağlayın.
 
@@ -84,7 +88,8 @@ Coğrafi olarak çoğaltılmış kapsayıcı kayıt defterinizden Docker görün
 | **Site Adı** | Web uygulaması için genel benzersiz bir ad. Bu örnekte, web uygulamasının içinden dağıtıldığı bölgeyi ve kayıt defterini kolayca belirlemek için `<acrName>-eastus` biçimini kullanıyoruz. |
 | **Kaynak Grubu** | **Var olanı kullan** > `myResourceGroup` |
 | **Uygulama hizmeti planı/Konumu** | **Doğu ABD** bölgesinde `plan-eastus` adlı yeni bir plan oluşturun. |
-| **Görüntü** | `acr-helloworld:v1`
+| **Görüntü** | `acr-helloworld:v1` |
+| **İşletim sistemi** | Linux |
 
 **Oluştur**’u seçerek, web uygulamasını *Doğu ABD* bölgesine sağlayın.
 

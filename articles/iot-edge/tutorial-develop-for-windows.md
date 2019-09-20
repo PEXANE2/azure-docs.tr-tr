@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 03b279e6193c55141b80a5fadc9d39c7c1681006
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: f62698cc736bb7df51d013199d3054b25598240e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915145"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147392"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Öğretici: Windows cihazları için IoT Edge modülleri geliştirme
 
@@ -119,7 +119,7 @@ Azure IoT Edge araçları uzantısı, Visual Studio 'da desteklenen tüm IoT Edg
 
 1. **Dosya** > yeniProje >  **...** öğesini seçin
 
-2. Yeni proje penceresinde, **IoT Edge** arayın ve **Azure IoT Edge (Windows amd64)** projesi seçin. **İleri**'ye tıklayın. 
+2. Yeni proje penceresinde, **IoT Edge** arayın ve **Azure IoT Edge (Windows amd64)** projesi seçin. **İleri**’ye tıklayın. 
 
    ![Yeni bir Azure IoT Edge projesi oluştur](./media/tutorial-develop-for-windows/new-project.png)
 
@@ -133,7 +133,7 @@ Azure IoT Edge araçları uzantısı, Visual Studio 'da desteklenen tüm IoT Edg
    | ----- | ----- |
    | Visual Studio şablonu | **C# Modül**seçin. | 
    | Modül Adı | Varsayılan **IotEdgeModule1**kabul edin. | 
-   | Depo URL'si | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz modül proje adı değerinden önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu, kayıt defteri \<adı\>. azurecr.io/iotedgemodule1 gibi görünür. |
+   | Depo URL 'Si | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz modül proje adı değerinden önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br> Son görüntü deposu, kayıt defteri \<adı\>. azurecr.io/iotedgemodule1 gibi görünür. |
 
       ![Projenizi hedef cihaz, modül türü ve kapsayıcı kayıt defteri için yapılandırma](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -299,7 +299,7 @@ IotEdgeModule1 kodu iletileri giriş kuyruğu aracılığıyla alır ve bunları
 
 3. IoT Hub 'ınıza ulaşan iletileri görmek için Visual Studio 'daki **Çıkış** bölümünü izleyin. 
 
-   Her iki modülün de başlaması birkaç dakika sürebilir. IoT Edge çalışma zamanının yeni dağıtım bildirimini alması, kapsayıcı çalışma zamanından modül görüntülerini çekmek ve sonra her yeni modülü başlatması gerekir. İstiyorsanız 
+   Her iki modülün de başlaması birkaç dakika sürebilir. IoT Edge çalışma zamanının yeni dağıtım bildirimini alması, kapsayıcı çalışma zamanından modül görüntülerini çekmek ve sonra her yeni modülü başlatması gerekir. 
 
    ![Gelen cihazı bulut iletilerine görüntüleme](./media/tutorial-develop-for-windows/view-d2c-messages.png)
 

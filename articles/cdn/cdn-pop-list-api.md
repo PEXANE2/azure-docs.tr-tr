@@ -15,20 +15,22 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: bc8e8219c8f8de75b01c584a2a5ce13cc1429fec
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: f677d6b8edfe60646c6368acce9d47b23a35237d
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991769"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146885"
 ---
-# <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli Verizon POP IP listesini al
+# <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli POP IP listesini al
+
+## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli Verizon POP IP listesini al
 
 Verizon 'in varlık noktası (POP) sunucuları için IP kümesini almak üzere REST API kullanabilirsiniz. Bu POP sunucuları, bir Verizon profilindeki Azure Content Delivery Network (CDN) uç noktaları ile ilişkili ( **Verizon 'Den**Verizon veya Azure CDN Premium**Azure CDN Standart** ) istekleri kaynak olarak sağlar. Bu IP kümesinin, bir istemcinin pop 'Lara istek yaparken göreceği IP 'lerden farklı olduğunu unutmayın. 
 
 POP listesini almak için REST API işleminin sözdizimi için bkz. [Edge Nodes-List](https://docs.microsoft.com/rest/api/cdn/edgenodes/list).
 
-# <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli Microsoft POP IP listesini al
+## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli Microsoft POP IP listesini al
 
 Uygulamanızı yalnızca Microsoft 'un Azure CDN trafiği kabul edecek şekilde kilitlemek için, arka ucunuz için IP ACL 'Lerini ayarlamanız gerekir. Ayrıca, Microsoft 'tan Azure CDN tarafından gönderilen ' X-Iletilen-Host ' üst bilgisi için kabul edilebilir değerler kümesini kısıtlayabilirsiniz. Bu adımlar aşağıdaki şekilde ayrıntılı olarak verilmiştir:
 

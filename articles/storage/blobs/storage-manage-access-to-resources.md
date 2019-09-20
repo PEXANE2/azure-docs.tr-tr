@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 09/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 6293fc84969c4e246c05da4482f76142263db230
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e3d6312be0936f14ece5d30a2bbf3e4235031c0e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985553"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154063"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Kapsayıcılara ve blob’lara anonim okuma erişimini yönetme
 
@@ -27,23 +27,16 @@ Varsayılan olarak, bir kapsayıcıya ve içindeki bloblara yalnızca uygun izin
 
 Aşağıdaki izinlerle bir kapsayıcı yapılandırabilirsiniz:
 
-* **Genel okuma erişimi yok:** Kapsayıcıya ve bloblarına yalnızca depolama hesabı sahibi tarafından erişilebilir. Bu, tüm yeni kapsayıcılar için varsayılandır.
-* **Yalnızca Bloblar için genel okuma erişimi:** Kapsayıcı içindeki Bloblar anonim istek tarafından okunabilir, ancak kapsayıcı verileri kullanılamıyor. Anonim istemciler kapsayıcı içindeki Blobları numaralandıramaz.
-* **Kapsayıcı ve Blobları için genel okuma erişimi:** Tüm kapsayıcı ve blob verileri, anonim istek tarafından okunabilir. İstemciler kapsayıcı içindeki Blobları anonim istek ile numaralandırabilirler, ancak depolama hesabındaki kapsayıcıları numaralandıramaz.
-
-Kapsayıcı izinlerini ayarlamak için aşağıdakileri kullanabilirsiniz:
-
-* [Azure portal](https://portal.azure.com)
-* [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure CLI](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
-* Program aracılığıyla, depolama istemci kitaplıklarından birini veya REST API kullanarak
+- **Genel okuma erişimi yok:** Kapsayıcıya ve bloblarına yalnızca depolama hesabı sahibi tarafından erişilebilir. Bu, tüm yeni kapsayıcılar için varsayılandır.
+- **Yalnızca Bloblar için genel okuma erişimi:** Kapsayıcı içindeki Bloblar anonim istek tarafından okunabilir, ancak kapsayıcı verileri kullanılamıyor. Anonim istemciler kapsayıcı içindeki Blobları numaralandıramaz.
+- **Kapsayıcı ve Blobları için genel okuma erişimi:** Tüm kapsayıcı ve blob verileri, anonim istek tarafından okunabilir. İstemciler kapsayıcı içindeki Blobları anonim istek ile numaralandırabilirler, ancak depolama hesabındaki kapsayıcıları numaralandıramaz.
 
 ### <a name="set-container-public-access-level-in-the-azure-portal"></a>Azure portal kapsayıcı genel erişim düzeyini ayarlama
 
 [Azure Portal](https://portal.azure.com), bir veya daha fazla kapsayıcı için genel erişim düzeyini güncelleştirebilirsiniz:
 
-1. Azure portalda depolama hesabınıza gidin.
-1. Menü dikey penceresinde **BLOB hizmeti** altında Bloblar 'ı seçin.
+1. Azure portal depolama hesabınıza genel bakış bölümüne gidin.
+1. Menü dikey penceresinde **BLOB hizmeti** altında **Bloblar**' ı seçin.
 1. Ortak erişim düzeyini ayarlamak istediğiniz kapsayıcıları seçin.
 1. Genel erişim ayarlarını göstermek için **erişim düzeyini Değiştir** düğmesini kullanın.
 1. **Genel erişim düzeyi** açılan menüsünde istenen genel erişim düzeyini seçin ve değişikliği seçili kapsayıcılara uygulamak için Tamam düğmesine tıklayın.
@@ -57,16 +50,28 @@ Aşağıdaki ekran görüntüsünde, seçili kapsayıcılar için genel erişim 
 
 ### <a name="set-container-public-access-level-with-net"></a>.NET ile kapsayıcı genel erişim düzeyini ayarlama
 
-.NET için depolama Istemci kitaplığı C# ile bir kapsayıcı için izinleri ayarlamak için, önce **GetPermissions** metodunu çağırarak kapsayıcının mevcut izinlerini alın. Ardından, **GetPermissions** yöntemi tarafından döndürülen **blobcontainerpermissions** nesnesi için **publicAccess** özelliğini ayarlayın. Son olarak, güncelleştirilmiş izinlerle **SetPermissions** yöntemini çağırın.
+.NET için Azure Storage istemci kitaplığı 'nı kullanarak bir kapsayıcının izinlerini ayarlamak için, önce aşağıdaki yöntemlerden birini çağırarak kapsayıcının mevcut izinlerini alın:
+
+- [GetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissions)
+- [GetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getpermissionsasync)
+
+Ardından, **GetPermissions** yöntemi tarafından döndürülen [blobcontainerpermissions](/dotnet/api/microsoft.azure.storage.blob.blobcontainerpermissions) nesnesinde **publicAccess** özelliğini ayarlayın.
+
+Son olarak, kapsayıcının izinlerini güncelleştirmek için aşağıdaki yöntemlerden birini çağırın:
+
+- [SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
 Aşağıdaki örnek, kapsayıcının izinlerini tam genel okuma erişimi olarak ayarlar. Yalnızca Bloblar için genel okuma erişimi izinleri ayarlamak için, **publicAccess** özelliğini **Blobcontainerpublicaccesstype. blob**olarak ayarlayın. Anonim kullanıcılar için tüm izinleri kaldırmak için, özelliği **Blobcontainerpublicaccesstype. off**olarak ayarlayın.
 
 ```csharp
-public static void SetPublicContainerPermissions(CloudBlobContainer container)
+private static async Task SetPublicContainerPermissions(CloudBlobContainer container)
 {
-    BlobContainerPermissions permissions = container.GetPermissions();
+    BlobContainerPermissions permissions = await container.GetPermissionsAsync();
     permissions.PublicAccess = BlobContainerPublicAccessType.Container;
-    container.SetPermissions(permissions);
+    await container.SetPermissionsAsync(permissions);
+
+    Console.WriteLine("Container {0} - permissions set to {1}", container.Name, permissions.PublicAccess);
 }
 ```
 
@@ -81,13 +86,15 @@ Hesap için BLOB depolama uç noktası sağlayarak anonim erişim için yeni bir
 ```csharp
 public static void CreateAnonymousBlobClient()
 {
-    // Create the client object using the Blob storage endpoint.
-    CloudBlobClient blobClient = new CloudBlobClient(new Uri(@"https://storagesample.blob.core.windows.net"));
+    // Create the client object using the Blob storage endpoint for your account.
+    CloudBlobClient blobClient = new CloudBlobClient(
+        new Uri(@"https://storagesamples.blob.core.windows.net"));
 
     // Get a reference to a container that's available for anonymous access.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
 
-    // Read the container's properties. Note this is only possible when the container supports full public read access.
+    // Read the container's properties. 
+    // Note this is only possible when the container supports full public read access.
     container.FetchAttributes();
     Console.WriteLine(container.Properties.LastModified);
     Console.WriteLine(container.Properties.ETag);
@@ -102,9 +109,11 @@ Anonim olarak kullanılabilen bir kapsayıcının URL 'SI varsa, kapsayıcıyı 
 public static void ListBlobsAnonymously()
 {
     // Get a reference to a container that's available for anonymous access.
-    CloudBlobContainer container = new CloudBlobContainer(new Uri(@"https://storagesample.blob.core.windows.net/sample-container"));
+    CloudBlobContainer container = new CloudBlobContainer(
+        new Uri(@"https://storagesamples.blob.core.windows.net/sample-container"));
 
     // List blobs in the container.
+    // Note this is only possible when the container supports full public read access.
     foreach (IListBlobItem blobItem in container.ListBlobs())
     {
         Console.WriteLine(blobItem.Uri);
@@ -119,45 +128,14 @@ Anonim erişim için kullanılabilen bir Blobun URL 'SI varsa, bu URL 'YI kullan
 ```csharp
 public static void DownloadBlobAnonymously()
 {
-    CloudBlockBlob blob = new CloudBlockBlob(new Uri(@"https://storagesample.blob.core.windows.net/sample-container/logfile.txt"));
-    blob.DownloadToFile(@"C:\Temp\logfile.txt", System.IO.FileMode.Create);
+    CloudBlockBlob blob = new CloudBlockBlob(
+        new Uri(@"https://storagesamples.blob.core.windows.net/sample-container/logfile.txt"));
+    blob.DownloadToFile(@"C:\Temp\logfile.txt", FileMode.Create);
 }
 ```
 
-## <a name="features-available-to-anonymous-users"></a>Anonim kullanıcıların kullanabildiği Özellikler
-
-Aşağıdaki tabloda, bir kapsayıcı genel erişim için yapılandırıldığında hangi işlemlerin adsız olarak çağrılabilecek gösterilmektedir.
-
-| REST Işlemi | Kapsayıcıya genel okuma erişimi | Yalnızca bloblara genel okuma erişimi |
-| --- | --- | --- |
-| Kapsayıcıları Listele | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Kapsayıcı oluşturma | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Kapsayıcı özelliklerini al | İzin verilen anonim istekler | Yalnızca yetkili istekler |
-| Kapsayıcı meta verilerini al | İzin verilen anonim istekler | Yalnızca yetkili istekler |
-| Kapsayıcı meta verilerini ayarla | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Kapsayıcı ACL 'sini al | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Kapsayıcı ACL 'sini ayarla | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Kapsayıcıyı Sil | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Blobları Listele | İzin verilen anonim istekler | Yalnızca yetkili istekler |
-| Blobu koy | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Blob al | İzin verilen anonim istekler | İzin verilen anonim istekler |
-| Blob özelliklerini al | İzin verilen anonim istekler | İzin verilen anonim istekler |
-| Blob özelliklerini ayarla | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Blob Meta Verilerini al | İzin verilen anonim istekler | İzin verilen anonim istekler |
-| Blob meta verilerini ayarla | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Yerleştirme bloğu | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Engelleme listesini al (yalnızca taahhüt blokları) | İzin verilen anonim istekler | İzin verilen anonim istekler |
-| Engelleme listesini al (yalnızca kaydedilmemiş bloklar veya tüm bloklar) | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Öbek listesini yerleştirme | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| BLOB silme | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Kopya blob'u | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Anlık görüntü blobu | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Kira blobu | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Yerleştirme sayfası | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-| Sayfa aralıklarını al | İzin verilen anonim istekler | İzin verilen anonim istekler |
-| Ekleme Blobu | Yalnızca yetkili istekler | Yalnızca yetkili istekler |
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure depolama hizmetleri için yetkilendirme](https://docs.microsoft.com/rest/api/storageservices/authorization-for-the-azure-storage-services)
-* [Paylaşılan erişim imzaları (SAS) kullanma](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Azure depolama 'ya erişimi yetkilendirme](../common/storage-auth.md)
+- [Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../common/storage-sas-overview.md)
+- [Blob hizmeti REST API](/rest/api/storageservices/blob-service-rest-api)

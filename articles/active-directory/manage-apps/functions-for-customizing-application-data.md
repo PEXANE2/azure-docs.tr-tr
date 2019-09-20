@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec23d3f08fb22f73618c27443bcd8b72c43a9862
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: cd7abdeef7c13c272a0e4bbf2075c6eda8f73a07
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113555"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162389"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory'de öznitelik eşlemeleri için ifadeler yazma
 Bir SaaS uygulaması için sağlama yapılandırdığınızda, belirtebilmeniz için öznitelik eşlemelerini türdeki bir ifade eşleme biridir. Bu, kullanıcılarınızın verileri fazla SaaS uygulaması için kabul edilebilir biçimlere dönüştürme olanak tanıyan bir betik gibi ifade yazmanız gerekir.
@@ -38,7 +38,7 @@ Bir SaaS uygulaması için sağlama yapılandırdığınızda, belirtebilmeniz i
 * Dize sabitleri için bir ters eğik çizgi (\) veya tırnak işareti (") dizedeki gerekiyorsa, eğik çizgi (\) simgesiyle kaçınılmalıdır. Örneğin: "Şirket adı: \\"Contoso\\" "
 
 ## <a name="list-of-functions"></a>İşlevlerin listesi
-[Sona Ekle](#append) &nbsp; [FormatDateTime](#formatdatetime) [](#join) birleşimi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#mid) &nbsp; &nbsp; [](#not) [Mnormalizediactik](#normalizediacritics) dili &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Selectuniquevalue değerini](#selectuniquevalue) [değiştirme](#replace) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ Singleapprotaatama](#singleapproleassignment) &nbsp; &nbsp; &nbsp; [](#stripspaces) [](#split)bölünmüş StripSpaces&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Aşağıgeç&nbsp; [](#switch) &nbsp; &nbsp; &nbsp; [](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
+[Sona Ekle](#append) &nbsp; [FormatDateTime](#formatdatetime) [](#join) birleşimi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#not) [](#mid) &nbsp; Mnormalizediactik [](#normalizediacritics) dili &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Selectuniquevalue değerini](#selectuniquevalue) [değiştirme](#replace) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ Singleapprotaatama](#singleapproleassignment) &nbsp; &nbsp; &nbsp; [](#stripspaces) [](#split)bölünmüş StripSpaces&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; Aşağıgeç&nbsp; [](#switch) &nbsp; &nbsp; &nbsp; [](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
 ---
 ### <a name="append"></a>Ekle
@@ -139,7 +139,7 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 * Zaman **regexPattern**, **regexGroupName**, **replacementValue** sağlanır:
   
   * İşlev, **kaynak** dizeye **regexmodel** uygular ve **regexgroupname** Ile eşleşen tüm değerleri **replacementvalue** ile değiştirir
-* Regexgroupname, **replacementAttributeName** sağlandığında:
+* **Regexgroupname**, **replacementAttributeName** sağlandığında:
   
   * Varsa **kaynak** değeri **kaynak** döndürülür
   * **Kaynakta** bir değer varsa, Işlev **regexmodel** öğesini **kaynak** dizeye uygular ve **Regexgroupname** ile eşleşen tüm değerleri **replacementAttributeName** ile ilişkili değerle değiştirir
@@ -163,9 +163,10 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 **Açıklama:**<br> En az benzersiz değer oluşturma kuralları ifadeleri kullanılarak tanımlanmış olan iki bağımsız değişken gerektirir. İşlev, her kural değerlendirir ve ardından hedef uygulama/dizinindeki benzersizlik için oluşturulan değeri denetler. Bir döndürülen ilk benzersiz değeri bulundu. Tüm değerleri hedefte zaten varsa, giriş kalacakları ve nedeni denetim günlüklerinde günlüğe. Sağlanan bağımsız değişken sayısı için üst sınır yoktur.
 
 > [!NOTE]
->1. Bu üst düzey bir işlev, iç içe olamaz.
->2. Bu işlev, eşleşen önceliği olan özniteliklere uygulanamaz.  
->3. Bu işlev yalnızca girişi oluşturma için kullanılmak üzere tasarlanmıştır. Bir öznitelik ile kullanırken, ayarlayın **uygulamak eşleme** özelliğini **yalnızca nesne oluşturma sırasında**.
+> - Bu üst düzey bir işlev, iç içe olamaz.
+> - Bu işlev, eşleşen önceliği olan özniteliklere uygulanamaz.  
+> - Bu işlev yalnızca girişi oluşturma için kullanılmak üzere tasarlanmıştır. Bir öznitelik ile kullanırken, ayarlayın **uygulamak eşleme** özelliğini **yalnızca nesne oluşturma sırasında**.
+> - Bu işlev şu anda yalnızca "Workday for User sağlamasını Active Directory" için desteklenir. Diğer sağlama uygulamalarıyla birlikte kullanılamaz. 
 
 
 **Parametreler:**<br> 
@@ -191,7 +192,7 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 ### <a name="split"></a>Böl
 **İşlev:**<br> Böl (kaynak, sınırlayıcı)
 
-**Açıklama:**<br> Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi, katı değerli bir diziye böler.
+**Açıklama:**<br> Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.
 
 **Parametreler:**<br> 
 
@@ -228,7 +229,7 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 | **value** |Gerekli |Dize |İçin değiştirme değeri **kaynak** anahtarıyla eşleşen. |
 
 ---
-### <a name="tolower"></a>ToLower
+### <a name="tolower"></a>toLower
 **İşlev:**<br> ToLower (kaynak, kültür)
 
 **Açıklama:**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.
@@ -241,7 +242,7 @@ Bir dize içindeki değerleri değiştirir. Sağlanan parametreler bağlı olara
 | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
 
 ---
-### <a name="toupper"></a>ToUpper
+### <a name="toupper"></a>toUpper
 **İşlev:**<br> ToUpper (kaynak, kültür)
 
 **Açıklama:**<br> Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür. Belirtilen bir *kültür* bilgisi yoksa, sabit kültür kullanacaktır.

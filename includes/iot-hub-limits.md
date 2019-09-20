@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67188766"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71148511"
 ---
 Aşağıdaki tabloda, S1, S2, S3 ve F1 farklı hizmet katmanları ile ilişkili sınırlar listelenmektedir. Her katmandaki her bir *birimin* maliyeti hakkında daha fazla bilgi için bkz. [Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -38,6 +38,7 @@ Aşağıdaki tabloda IoT Hub kaynakları için uygulanan sınırlar listelenmekt
 | Buluttan cihaza iletinin en büyük boyutu |64 KB |
 | Buluttan cihaza iletiler için en büyük TTL |2 gün |
 | Buluttan cihaza iletiler için en fazla teslim <br/> sayısı |100 |
+| Cihaz başına en fazla buluttan cihaza sıra derinliği |50 |
 | Geri bildirim iletileri için en fazla teslim sayısı <br/> (buluttan cihaza iletiye yanıt olarak) |100 |
 | Buluttan cihaza iletiye yanıt olarak <br/> geri bildirim iletileri için en fazla TTL |2 gün |
 | [Maksimum cihaz ikizi boyutu](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (etiketler, rapor edilen özellikler ve istenen özellikler) | 8 KB |

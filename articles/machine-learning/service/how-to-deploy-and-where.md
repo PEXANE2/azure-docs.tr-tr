@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: f70975749be52e8498488d7019bf5cb8d858df54
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 30164824cab19aae9cc9665304eb66f595e082da
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034696"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162557"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning modelleri dağıtma
 
@@ -65,7 +65,7 @@ Aşağıdaki kod, yerel geliştirme ortamında önbelleğe alınan bilgileri kul
 Kayıtlı bir model, modelinizi oluşturan bir veya daha fazla dosya için mantıksal bir kapsayıcıdır. Örneğin, birden çok dosyada depolanan bir modeliniz varsa, bunları çalışma alanına tek bir model olarak kaydedebilirsiniz. Dosyaları kaydettikten sonra, kayıtlı modeli indirebilir veya dağıtabilir ve kaydettiğiniz tüm dosyaları alabilirsiniz.
 
 > [!TIP]
-> Bir modeli kaydettiğinizde, bir bulut konumunun (bir eğitim çalıştırmasında) ya da yerel bir dizinin yolunu sağlarsınız. Bu yol, kayıt işleminin bir parçası olarak karşıya yüklenecek dosyaları bulmak için yeterlidir. Giriş betiğinde kullanılan yol ile eşleşmesi gerekmez. Daha fazla bilgi için bkz. [get_model_path nedir?](#what-is-get_model_path).
+> Bir modeli kaydettiğinizde, bir bulut konumunun (bir eğitim çalıştırmasında) ya da yerel bir dizinin yolunu sağlarsınız. Bu yol, kayıt işleminin bir parçası olarak karşıya yüklenecek dosyaları bulmak için yeterlidir. Giriş betiğinde kullanılan yol ile eşleşmesi gerekmez. Daha fazla bilgi için bkz. [giriş betiğinizdeki model dosyalarını bulma](#locate-model-files-in-your-entry-script).
 
 Machine Learning modelleri Azure Machine Learning çalışma alanınıza kaydedilir. Model Azure Machine Learning veya herhangi bir yerden gelebilir. Aşağıdaki örneklerde bir modelin nasıl kaydedileceği gösterilmektedir.
 
@@ -195,7 +195,37 @@ Betik, modeli yükleyen ve çalıştıran iki işlev içerir:
 
 * `run(input_data)`: Bu işlev, giriş verilerine göre bir değeri tahmin etmek için modeli kullanır. Çalıştırmanın giriş ve çıkışları genellikle serileştirme ve seri durumundan çıkarma için JSON kullanır. Ham ikili verilerle de çalışabilirsiniz. Verileri modele göndermeden önce veya istemciye döndürmeden önce dönüştürebilirsiniz.
 
-#### <a name="what-is-get_model_path"></a>Get_model_path nedir?
+#### <a name="locate-model-files-in-your-entry-script"></a>Giriş betiğinizdeki model dosyalarını bulun
+
+Giriş betiğinizdeki modelleri bulmanın iki yolu vardır:
+* `AZUREML_MODEL_DIR`: Model konumunun yolunu içeren bir ortam değişkeni.
+* `Model.get_model_path`: Kayıtlı model adı kullanılarak model dosyasının yolunu döndüren bir API.
+
+##### <a name="azureml_model_dir"></a>AZUREML_MODEL_DIR
+
+AZUREML_MODEL_DIR, hizmet dağıtımı sırasında oluşturulan bir ortam değişkenidir. Dağıtılan model konumunu bulmak için bu ortam değişkenini kullanabilirsiniz.
+
+Aşağıdaki tabloda, dağıtılan modellerin sayısına bağlı olarak AZUREML_MODEL_DIR değeri açıklanmaktadır:
+
+| Dağıtım | Ortam değişkeni değeri |
+| ----- | ----- |
+| Tek model | Modeli içeren klasörün yolu. |
+| Birden çok model | Tüm modelleri içeren klasörün yolu. Modeller bu klasörde ad ve sürüm tarafından bulunur (`$MODEL_NAME/$VERSION`) |
+
+Bir modeldeki bir dosyanın yolunu almak için, ortam değişkenini aradığınız dosya adıyla birleştirin.
+Model dosyalarının dosya adları kayıt ve dağıtım sırasında korunur. 
+
+**Tek model örneği**
+```python
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_regression_model.pkl')
+```
+
+**Birden çok model örneği**
+```python
+model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklearn_regression_model.pkl')
+```
+
+##### <a name="get_model_path"></a>get_model_path
 
 Bir modeli kaydettiğinizde, kayıt defterinde modeli yönetmek için kullanılan bir model adı sağlarsınız. Bu adı model dosyasının veya yerel dosya sistemindeki dosyaların yolunu almak için [model. Get _model_path ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#get-model-path-model-name--version-none---workspace-none-) yöntemiyle birlikte kullanırsınız. Bir klasörü veya dosya koleksiyonunu kaydettiğinizde, bu API bu dosyaları içeren dizinin yolunu döndürür.
 
@@ -251,9 +281,9 @@ Aşağıdaki örnek, JSON verilerinin nasıl kabul edileceği ve geri dönebilec
 #Example: scikit-learn and Swagger
 import json
 import numpy as np
+import os
 from sklearn.externals import joblib
 from sklearn.linear_model import Ridge
-from azureml.core.model import Model
 
 from inference_schema.schema_decorators import input_schema, output_schema
 from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
@@ -261,10 +291,12 @@ from inference_schema.parameter_types.numpy_parameter_type import NumpyParameter
 
 def init():
     global model
-    # Note that here "sklearn_regression_model.pkl" is the name of the model registered under.
-    # This is a different behavior than before when the code is run locally, even though the code is the same.
-    model_path = Model.get_model_path('sklearn_regression_model.pkl')
-    # Deserialize the model file back into a sklearn model.
+    # AZUREML_MODEL_DIR is an environment variable created during deployment. Join this path with the filename of the model file.
+    # It holds the path to the directory that contains the deployed model (./azureml-models/$MODEL_NAME/$VERSION).
+    # If there are multiple models, this value is the path to the directory containing all deployed models (./azureml-models).
+    # Alternatively: model_path = Model.get_model_path('sklearn_mnist')
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
+    # Deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
 
@@ -302,8 +334,8 @@ from inference_schema.parameter_types.pandas_parameter_type import PandasParamet
 
 def init():
     global model
-    # Replace model_name with your actual model name, if necessary.
-    model_path = Model.get_model_path('model_name')
+    # Replace filename if needed.
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'model_file.pkl')
     # Deserialize the model file back into a sklearn model.
     model = joblib.load(model_path)
 

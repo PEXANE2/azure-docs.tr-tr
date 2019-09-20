@@ -4,7 +4,7 @@ description: Bu makalede Microsoft Azure Cloud Services için bağlantı ve ağ 
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: eef99c7d7a108618b570988dd5d7ec9c2fdb8db4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941743"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154869"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services için bağlantı ve ağ sorunları: Sık sorulan sorular (SSS)
 
@@ -28,7 +28,7 @@ Bu makalede, [Azure Cloud Services](https://azure.microsoft.com/services/cloud-s
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>Bir IP 'yi çoklu VIP bulut hizmetinde ayıramıyorum.
-İlk olarak, için IP 'yi ayırmak istediğiniz sanal makine örneğinin açık olduğundan emin olun. İkinci olarak, hem hazırlama hem de üretim dağıtımları için ayrılmış IP 'Leri kullandığınızdan emin olun. Dağıtım yükseltilirken ayarları değiştirmeyin.
+İlk olarak, için IP 'yi ayırmak istediğiniz sanal makine örneğinin açık olduğundan emin olun. İkinci olarak, hem hazırlama hem de üretim dağıtımları için ayrılmış IP 'Leri kullandığınızdan emin olun. Dağıtım yükseltilirken *ayarları değiştirmeyin.*
 
 ## <a name="how-do-i-use-remote-desktop-when-i-have-an-nsg"></a>NSG 'ye sahip olduğumu Uzak Masaüstü Nasıl yaparım? mi kullanıyorsunuz?
 NSG 'ye, **3389** ve **20000**bağlantı noktalarında trafiğe izin veren kurallar ekleyin. Uzak Masaüstü **3389**numaralı bağlantı noktasını kullanır. Bulut hizmeti örnekleri yük dengedir, bu nedenle hangi örneğin bağlanılacağını doğrudan kontrol edebilirsiniz. *Remoteforwarder* ve *RemoteAccess* ARACıLARı, Uzak Masaüstü Protokolü (RDP) trafiğini YÖNETIR ve istemcinin bir RDP tanımlama bilgisi göndermesini ve bağlanılacak tek bir örnek belirtmesini sağlar. *Remoteforwarder* ve *RemoteAccess* aracılarının bağlantı noktası **20000** ' ün açık olması gerekir. Bu, bir NSG varsa engellenebilir.
@@ -53,7 +53,7 @@ RDP ayarlarınızda yapılandırılan sona erme tarihini atladığınızda "Bu K
 
 2. **Üretim** veya **hazırlama** dağıtım yuvasını seçin.
 
-3. Tarihi bitiş tarihini değiştirin ve ardından yapılandırmayı kaydedin.
+3. **Tarihi bitiş tarihini değiştirin** ve ardından yapılandırmayı kaydedin.
 
 Artık makinenize RDP ile kullanabileceksiniz.
 
@@ -103,7 +103,7 @@ Bulut hizmetinizin genel kullanıma açık IP adresinin (VIP olarak da bilinir) 
 - [Mevcut bir bulut hizmetinin IP adresini ayır](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
 - [Hizmet yapılandırma dosyası kullanarak ayrılmış IP 'yi bulut hizmetiyle ilişkilendirme](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-Rolleriniz için birden fazla örneğiniz varsa, RIP 'yi bulut hizmetinize ilişkilendirerek kapalı kalma süresi olmaz. Alternatif olarak, Azure veri merkezinizin IP aralığını beyaz listeye ekleyebilirsiniz. Tüm Azure IP aralıklarını [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=41653)' nde bulabilirsiniz.
+Rolleriniz için birden fazla örneğiniz varsa, RIP 'yi bulut hizmetinize ilişkilendirerek kapalı kalma süresi olmaz. Alternatif olarak, Azure veri merkezinizin IP aralığını izin verilenler listesine ekleyebilirsiniz. Tüm Azure IP aralıklarını [Microsoft Indirme merkezi](https://www.microsoft.com/en-us/download/details.aspx?id=41653)' nde bulabilirsiniz.
 
 Bu dosya, Azure veri merkezlerinde kullanılan IP adresi aralıklarını (işlem, SQL ve depolama aralıkları dahil) içerir. Güncelleştirilmiş bir dosya, şu anda dağıtılmış aralıkları ve IP aralıklarında yapılan tüm değişiklikleri yansıtan haftalık olarak gönderilir. Dosyada görüntülenen yeni aralıklar, en az bir hafta için veri merkezlerinde kullanılmıyor. Yeni. xml dosyasını her hafta indirin ve Azure 'da çalışan hizmetleri doğru şekilde tanımlamak için sitenizde gerekli değişiklikleri gerçekleştirin. Azure ExpressRoute kullanıcıları bu dosyanın, her ayın ilk haftasında Azure alanının BGP tanıtımını güncelleştirmek için kullanıldığını unutmayın.
 

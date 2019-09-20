@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4a0f00c8bcf511f220d3e0df81adac1e9ff0d4
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 49658e3e57748ffb7542508530940aa5331f5db1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995138"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162400"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Karma Azure Active Directory katılmış cihazlarda sorun giderme 
 
@@ -110,7 +110,7 @@ Daha fazla sorun giderme için sonraki adımlara geçin.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 ve üzeri
 
-JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' önceki kayıt ' alt bölümüne bakın.
+JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' önceki kayıt ' alt bölümüne bakın. Bu bölüm yalnızca cihaz etki alanına katılmış ise ve Azure AD JOIN 'i karma olarak alıyorsa görüntülenir.
 ' Hata aşaması ' alanı, ' Istemci ErrorCode ', JOIN işleminin hata kodunu işaret ederken, JOIN hatasının aşamasını gösterir.
 
 ```
@@ -181,7 +181,7 @@ Bulma hata kodu için alt hata kodunu bulmak için aşağıdaki yöntemlerden bi
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 ve üzeri
 
-JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' DRS bulma testi ' ' ni arayın.
+JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' DRS bulma testi ' ' ni arayın. Bu bölüm yalnızca cihaz etki alanına katılmış ise ve Azure AD JOIN 'i karma olarak alıyorsa görüntülenir.
 
 ```
 +----------------------------------------------------------------------+
@@ -305,7 +305,7 @@ Kayıt türünü bulun ve aşağıdaki listeden hata kodunu arayın.
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 ve üzeri
 
-JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' önceki kayıt ' alt bölümüne bakın.
+JOIN durum çıktısının ' Tanılama verileri ' bölümünde ' önceki kayıt ' alt bölümüne bakın. Bu bölüm yalnızca cihaz etki alanına katılmış ise ve Azure AD JOIN 'i karma olarak alıyorsa görüntülenir.
 ' Kayıt türü ' alanı, gerçekleştirilen birleştirmenin türünü gösterir.
 
 ```

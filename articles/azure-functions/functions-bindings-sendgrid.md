@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: dc113417be3df97b9ab9509c30a1f23e1eeaf35b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a0d12639ce074c3ed105513a3d90e323e30d1087
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086276"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155084"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Işlevleri SendGrid bağlamaları
 
@@ -31,6 +31,9 @@ SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https:/
 ## <a name="packages---functions-2x"></a>Paketler - 2.x işlevleri
 
 SendGrid bağlamaları [Microsoft. Azure. WebJobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet paketi, sürüm 3. x içinde verilmiştir. Paketin kaynak kodu, [Azure-WebJobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub deposunda bulunur.
+
+> [!NOTE]
+> Sürüm 2. x, `ServiceBusTrigger` örnekte yapılandırılan konuyu veya aboneliği oluşturmaz. Sürüm 2. x, [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) tabanlıdır ve sıra yönetimini işlemez.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 

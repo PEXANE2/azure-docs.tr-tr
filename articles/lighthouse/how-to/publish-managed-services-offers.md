@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 4a1adf1be8798f4bb21b89ff0654287a2958146e
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4781126bc4fcfb6391db42a75553a13e0e4cc4f9
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105257"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155142"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -24,6 +24,8 @@ Bu makalede, Azure Market 'e kaynak eklemek için teklifi satın alan bir müşt
 > Bir teklifi Azure Marketi 'ne yayımlamak istemiyorsanız, Azure Resource Manager şablonları kullanarak müşterileri el ile ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure tarafından atanan kaynak yönetimine müşteri ekleme](onboard-customer.md).
 
 Yönetilen bir hizmet teklifini yayımlamak, Azure Marketi 'ne başka bir teklif türü yayımlamaya benzer. Bu işlem hakkında bilgi edinmek için bkz. [Azure Marketi ve Appsource Yayımlama Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) ve [Azure ve appsource Market tekliflerini yönetme](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). Ayrıca, özellikle [yönetilen hizmetler](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) bölümünü [ticari Market sertifika ilkelerini](https://docs.microsoft.com/legal/marketplace/certification-policies)gözden geçirmeniz gerekir.
+
+Müşteri teklifinizi eklediğinde bir veya daha fazla belirli abonelik veya kaynak grubu temsilciliğini alacak ve daha sonra [Azure tarafından yetkilendirilen kaynak yönetimi için eklendi](#the-customer-onboarding-process)olacaktır. Aboneliğin (veya abonelik içindeki kaynak gruplarının) eklendi olabileceğini, **Microsoft. ManagedServices** kaynak sağlayıcısı 'nı el ile kaydederek aboneliğin ekleme için yetkilendirilmiş olması gerektiğini unutmayın.
 
 > [!IMPORTANT]
 > Yönetilen bir hizmet teklifinin her bir planı, kiracınızdaki Azure Active Directory (Azure AD) varlıklarını tanımladığınız bir **bildirim ayrıntıları** bölümü içerir. bu noktada, kiralarınızda atanan kaynak gruplarına ve/veya aboneliklerine erişen müşteriler için Bu planı satın alın. Buraya eklediğiniz herhangi bir grup (veya Kullanıcı veya hizmet sorumlusu), planı satın alan her müşteri için aynı izinlere sahip olacağını unutmamak önemlidir. Her müşteriyle çalışacak farklı gruplar atamak için, her müşteri için özel olarak özel bir plan yayımlamanız gerekir.

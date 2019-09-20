@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 09/16/2019
-ms.openlocfilehash: d0356ff61ec8073e7fe69c3b09cbbdd8845fb787
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
-ms.translationtype: HT
+ms.openlocfilehash: 85ab8a61e0aebadf212217bc88e07e0066eca02b
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128905"
+ms.locfileid: "71146798"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -55,11 +55,11 @@ Yönetilen örnek iki hizmet katmanına sahiptir: [Genel amaçlı](sql-database-
 | Maksimum bellek | 4\. nesil 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4\. nesil 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
 | En büyük örnek depolama boyutu (ayrılmış) | 4 sanal çekirdek için-2 TB (yalnızca 5. nesil)<br/>-8 TB diğer boyutlar için | 4\. nesil 1 TB <br/> 5\. nesil <br/>-1 TB, 4, 8, 16 sanal çekirdek<br/>-2 TB, 24 sanal çekirdek için<br/>-4 TB 32, 40, 64, 80 sanal çekirdekler |
 | Maks. veritabanı boyutu | Şu anda kullanılabilir örnek boyutu (sanal çekirdek sayısına bağlı olarak en fazla 2 TB-8 TB). | Şu anda kullanılabilir örnek boyutu (sanal çekirdek sayısına bağlı olarak en fazla 1 TB-4 TB). |
-| En fazla tempDB boyutu | 24 GB/vCore (96-1.920 GB) ile sınırlıdır ve şu anda kullanılabilir örnek boyutu.<br/>Daha fazla TempDB alanı almak için daha fazla sanal çekirdek ekleyin. | Şu anda kullanılabilir örnek boyutu. TempDB günlük dosyası boyutu şu anda 24 GB/sanal çekirdek ile sınırlıdır. |
+| En fazla tempDB boyutu | 24 GB/sanal çekirdek (96-1.920 GB) ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu.<br/>Daha fazla TempDB alanı almak için daha fazla sanal çekirdek ekleyin. | Şu anda kullanılabilir örnek depolama boyutuna kadar. TempDB günlük dosyası boyutu şu anda 24 GB/sanal çekirdek ile sınırlıdır. |
 | Örnek başına en fazla veritabanı sayısı | 100, örnek depolama boyutu sınırına ulaşılmadığı müddetçe. | 100, örnek depolama boyutu sınırına ulaşılmadığı müddetçe. |
 | Örnek başına en fazla veritabanı dosyası sayısı | Örnek depolama boyutu veya [Azure Premium disk depolama ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) sınırına ulaşılmadığı takdirde 280 'e kadar. | örnek depolama boyutu sınırına ulaşılmadığı takdirde veritabanı başına 32.767 dosya. |
-| En büyük dosya boyutu | 8 TB ile sınırlıdır, şu anda kullanılabilir örnek boyutu (maksimum 2 TB-8 TB) ve [Azure Premium disk depolama ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | 4 TB ile sınırlıdır ve şu anda kullanılabilir örnek boyutu (1 TB-4 TB 'a kadar). |
-| Günlük dosyası boyutu üst sınırı | 2 TB, şu anda kullanılabilir örnek boyutu ve [Azure Premium disk depolama ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)ile sınırlıdır. | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek boyutu. |
+| En büyük veri dosyası boyutu | Şu anda kullanılabilir örnek depolama boyutu (en fazla 2 TB-8 TB) ve [Azure Premium disk depolama alanı ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)ile sınırlıdır. | Şu anda kullanılabilir örnek depolama boyutuyla sınırlıdır (en fazla 1 TB-4 TB). |
+| Günlük dosyası boyutu üst sınırı | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu. | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu. |
 | Veri/günlük ıOPS (yaklaşık) | dosya başına 500-7.500<br/>\*[Daha fazla ıOPS almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/vCore)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
 | Günlük yazma verimlilik sınırı (örnek başına) | Sanal çekirdek başına 3 MB/s<br/>En fazla 22 MB/sn | vCore başına 4 MB/s<br/>En fazla 48 MB/sn |
 | Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Sınırlı değildir. |
@@ -69,6 +69,7 @@ Yönetilen örnek iki hizmet katmanına sahiptir: [Genel amaçlı](sql-database-
 | [Salt okuma çoğaltmaları](sql-database-read-scale-out.md) | 0 | 1 (fiyata dahildir) |
 
 > [!NOTE]
+> - **Şu anda kullanılabilir örnek depolama boyutu** , ayrılmış örnek boyutu ve kullanılan depolama alanı arasındaki farktır.
 > - Kullanıcı ve sistem veritabanlarındaki veri ve günlük dosyası boyutu, en büyük depolama boyutu sınırı ile karşılaştırılan örnek depolama boyutuna dahildir. Veritabanlarına göre kullanılan toplam alanı öğrenmek için <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> sistem görünümünü kullanın. Hata günlükleri kalıcı değil ve boyutuna dahil edilmez. Yedeklemeler depolama boyutuna dahil değildir.
 > - Aktarım hızı ve ıOPS ayrıca yönetilen örnekle açıkça sınırlı olmayan sayfa boyutuna bağlıdır.
 > Farklı Azure bölgesinde, otomatik yük devretme grupları kullanarak başka bir okunabilir çoğaltma oluşturabilirsiniz.

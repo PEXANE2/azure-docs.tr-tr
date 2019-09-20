@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 402f82059f939de204e489bb36c2c2b82f816a19
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: a199dde6b9e36683b817f908e385aabcc431ce16
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105283"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155120"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -23,7 +23,7 @@ Birden çok müşteri için kaynakları yönetiyorsanız, bu işlemi yineleyebil
 Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizle ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [Azure hesaplarınıza bir iş ortağı kimliği bağlama](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Bu ilişkilendirmeyi hizmet sağlayıcı kiracınızda gerçekleştirmeniz gerektiğini unutmayın.
 
 > [!NOTE]
-> Müşteriler, Azure Marketi 'Nde yayımladığınız bir yönetilen hizmet teklifi (genel veya özel) satın alındığında otomatik olarak eklendi. Daha fazla bilgi için bkz. [yönetilen hizmet tekliflerini Azure Marketi 'Nde yayımlama](publish-managed-services-offers.md). Burada açıklanan ekleme işlemini Azure Marketi 'Nde yayınlanan bir teklifle birlikte kullanabilirsiniz.
+> Müşteriler, Azure Marketi 'Nde yayımladığınız yönetilen bir hizmet teklifi (genel veya özel) satın alındığında da eklendi. Daha fazla bilgi için bkz. [yönetilen hizmet tekliflerini Azure Marketi 'Nde yayımlama](publish-managed-services-offers.md). Burada açıklanan ekleme işlemini Azure Marketi 'Nde yayınlanan bir teklifle birlikte kullanabilirsiniz.
 
 Ekleme işlemi, eylemlerin hem hizmet sağlayıcının kiracısından hem de müşterinin kiracısından alınması gerekir. Bu adımların tümü bu makalede açıklanmıştır.
 

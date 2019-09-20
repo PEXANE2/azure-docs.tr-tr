@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 246e76a0ab94624945723b500ef136e038ab40ec
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999641"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155224"
 ---
 # <a name="where-can-you-use-personalizer"></a>Kişiselleştirme’yi nerelerde kullanabilirsiniz?
 
@@ -33,7 +33,7 @@ Kişiselleştirici, kullanıcıyı hangi eylemin gösterebileceği belirlemek i�
 * En iyi seçenek, toplu Kullanıcı davranışından ve toplam ödül puanından öğrenilmesi gerekir.
 * Kişiselleştirme için makine öğrenmesinin kullanımı, sizin belirlediğiniz [kullanım kılavuzları](ethics-responsible-use.md) ve seçimlerdir.
 * Bağlamsal karar, sınırlı bir seçenek kümesinden en iyi seçenek (eylem) sıralaması olarak ifade edilebilir.
-* Uygulamanız için ne kadar uygun olan dereceli seçim, Kullanıcı davranışının bazı yönlerinin ölçüleceği ve bir _ödül puanında_ifade edilebilir. Bu,-1 ile 1 arasında bir sayıdır.
+* Uygulamanız için ne kadar uygun olan dereceli seçim, Kullanıcı davranışının bazı yönlerinin ölçüleceği ve bir _[ödül puanında](concept-rewards.md)_ ifade edilebilir.
 * Ödül puanı, çok fazla sayıda bağlama veya dış etken getirmez. Deneme süresi, hala uygun olduğu sürece, yeniden elde edilen puanınızın hesaplanabileceği kadar düşüktür.
 * En az 5 [özelliğin](concepts-features.md) bağlamını, doğru seçim yapmaya yardımcı olacağını düşündüğünüz ve kişisel olarak tanımlanabilen bilgileri içermeyen bir liste olarak ifade edebilirsiniz. (PII).
 * Her içerik seçimi, eylem ve, kişiselleştirmenin doğru seçimi yapmasını sağlayacak en az 5 [özellik](concepts-features.md) listesi olarak, _eylem_hakkında bilgi sahibi olursunuz.

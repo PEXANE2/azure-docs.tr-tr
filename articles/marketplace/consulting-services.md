@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 4986f888abca94549e921bfe5400d68f6d28c01f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: bc2be73f85ebec7785b9aa06d6152447eee7e33e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876686"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147301"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Market ve AppSource için danışmanlık hizmetleri
 Azure Market ve AppSource 'ta Danışmanlık Hizmetleri, Microsoft iş ortakları 'na, Azure ve iş hedefleri kullanımını desteklemek ve bunları genişletmek üzere Hizmetleri ile bağlama amacını sağlar. 
@@ -24,15 +24,17 @@ Bu danışmanlık hizmeti teklifleri müşteriye özgü görevlendirmelerdir. Ya
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure Marketi 'nde danışmanlık hizmetleri vs AppSource storefront
 Market storetları, müşterilerin ihtiyaç duydukları şeyleri bulmasına yardımcı olmak için izleyiciler ve Microsoft bulut ürünleriyle hizalanır. Her storefront, yayımlama yatırımınızın en üst düzeye çıkmasına yardımcı olacak özel yayımlama seçenekleri sunar. Aşağıdaki tabloda bu seçenekler özetlenmektedir:
 
-|         |Azure Market  |AppSource |
+|         |Azure Market  |Microsoft AppSource |
 |---------|---------|---------|
 |**Grubu**   |**BT uzmanları ve bulut geliştiricileri**|**İş kullanıcıları/iş kolu karar mekanizmaları**|
 |Çözüm Ilgisi     |Azure 'da oluşturulan veya oluşturulan teknik uygulamalar|D365, Power BI, O365, Azure 'dan yararlanan/genişleten iş uygulamaları. (Eklenti veya eklenti tamamlanmış uygulamalar)|
-|Yayımlama seçenekleri     |Benimle, deneme, Transact veya danışmanlık hizmetleri ile iletişim kurun|Benimle, deneme veya danışmanlık hizmetleriyle iletişim kurun|
+|Yayımlama seçenekleri     |Azure için benimle, deneme, Transact veya hizmetlerle iletişim kurun|Dynamics 365 ve Power BI için benimle, denemeye veya hizmetlere başvurun|
 |Ürün deneyiminde      |Azure Yönetim Portalı|Dynamics 365, Office 365, Office Istemci uygulamaları| 
-|Diğer      |Azure Stack aracılığıyla şirket Içi yayımlama|Dynamics ve Power BI için danışmanlık hizmetleri|
+|Diğer      |Azure Stack aracılığıyla şirket Içi yayımlama, Azure için danışmanlık hizmetleri, Azure için yönetilen hizmetler|Dynamics ve Power BI için danışmanlık hizmetleri|
 
-Microsoft Dynamics 365, Office 365 ve Power BI temel alan hizmet teklifleri AppSource 'ta listelenmeye uygundur. Daha fazla bilgi için bkz. [danışmanlık hizmetleri listeleme yönergeleri Microsoft AppSource](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+Microsoft Dynamics 365 ' i temel alan danışmanlık hizmetleri teklifleri ve Power BI Microsoft AppSource listelenmeye uygundur. Daha fazla bilgi için bkz. [danışmanlık hizmetleri listeleme yönergeleri Microsoft AppSource](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
+
+Microsoft Azure temel alan danışmanlık hizmetleri ve yönetilen hizmetler, Azure Marketi 'nde listelenmeye uygundur. Daha fazla bilgi için bkz. [Azure danışmanlık hizmeti yayımlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) ve [Azure Market 'te yönetilen hizmet teklifi yayımlama](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)makaleleri.
 
 > [!Note]
 > Azure Marketi 'ndeki Danışmanlık Hizmetleri, *Azure teknik çözümleri ve Hizmetleri* ile ilgili olarak sunulan bir * * teknik kitleye yönelik tekliflerinden faydalanır. \* * AppSource 'ta Danışmanlık Hizmetleri, Dynamics 365, Power BI veya PowerApps için kalite çözümleri sunma konusunda uzmanlığa yönelik tekliflerinden yararlanarak uygulama danışmanlık hizmetleri tekliflerini AppSource 'ta listeleyebilir
@@ -100,7 +102,7 @@ Kayıt işleminden önce, listelemesine yardımcı olacak içeriği toplamaya ve
 |Yeni teklifler için ayarlama  |
 |---------|
 |Teklif adı (200 karakter) ve açıklama (2000 karakter)    |
-|Uzmanlıklar     |
+|Yetkinlikler     |
 |Ülke/bölge kullanılabilirliği     |
 |Katılım süresi     |
 |İlgili sektörler, Kategoriler ve arama anahtar sözcükleri     |
@@ -151,7 +153,7 @@ Teklif açıklamalarını ve teklif özetlerini gözden geçirirken, takım aşa
 
 |Teklif Türü  |Gerekli |Önerilen  |
 |---------|---------|---------|
-|**Değerlendirmesini**    |   Multi-Day veya Multi-Week değerlendirmeleri için ayrıntılı bir gündem ekleyin ve müşterinin beklediği teslim edilebilirini ifade edin      |    En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin     |
+|**Değerlendirme**    |   Multi-Day veya Multi-Week değerlendirmeleri için ayrıntılı bir gündem ekleyin ve müşterinin beklediği teslim edilebilirini ifade edin      |    En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin     |
 |**Bilgilendirme istemek**    |   Müşterinin beklediği teslim edilebilirini ifade edebilir. Kişi içinde Brit 'in sunulması gerektiğini unutmayın. Bir sanal hizmet sağlıyorsanız, lütfen farklı bir teklif türü seçin    |  En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin       |
 |**Paylaşır**    |  Çok günlü veya çok haftaya yönelik uygulamalar için ayrıntılı bir gündem ekleyin ve müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları ifade edin       |    En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin     |
 |**Kavram kanıtı**    |    Müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları ifade edebilir     | En üst arama motoru Iyileştirme anahtar sözcüklerinizle teklif özetinizi iyileştirin        |

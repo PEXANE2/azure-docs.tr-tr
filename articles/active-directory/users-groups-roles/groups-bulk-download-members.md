@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120b5606dd6b6f4451b563843f112bd614341eac
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 94c2ac1d662851b5a0b44ec475becb5f5e0403c4
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914785"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146389"
 ---
 # <a name="bulk-download-members-of-a-group-preview-in-azure-active-directory"></a>Azure Active Directory bir grubun (Önizleme) üyelerini toplu indirin
 
@@ -26,10 +26,6 @@ Azure Active Directory (Azure AD) portalını kullanarak, kuruluşunuzdaki bir g
 
 > [!NOTE]
 > Azure AD toplu işlemleri, Azure AD 'nin genel önizleme özelliğidir ve ücretli Azure AD lisans planıyla birlikte kullanılabilir. Önizleme kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="bulk-download-service-limits"></a>Hizmet sınırlarını toplu indirme
-
-Grup üyelerinin bir listesini indirmek için her toplu etkinlik, bir saate kadar çalıştırılabilir. Bu, en az 500.000 üyenin bir listesini indirmenizi sağlar.
 
 ## <a name="to-bulk-download-group-membership"></a>Grup üyeliğini toplu olarak indirmek için
 
@@ -45,6 +41,10 @@ Grup üyelerinin bir listesini indirmek için her toplu etkinlik, bir saate kada
 Tüm bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları (Önizleme)** sayfasında görebilirsiniz.
 
    ![Toplu işlem sonuçları sayfasında, toplu istek durumu gösterilir](./media/groups-bulk-download-members/bulk-center.png)
+
+## <a name="bulk-download-service-limits"></a>Hizmet sınırlarını toplu indirme
+
+Grup üyelerinin bir listesini indirmek için her toplu etkinlik, bir saate kadar çalıştırılabilir. Bu, en az 500.000 üyenin bir listesini indirmenizi sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

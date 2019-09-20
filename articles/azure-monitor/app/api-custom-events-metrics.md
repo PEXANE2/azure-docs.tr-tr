@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: cdc16c2ea01d14edc236d0d6a0897e0dd9578924
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 776f20d04bb79fa42c78dba8482e8ba866c93b31
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909807"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162506"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API 'SI
 
@@ -342,7 +342,7 @@ Varsayılan olarak, **sayfa görünümü yükleme süresi** olarak bildirilen s�
 
 Bunun yerine şunlardan birini yapabilirsiniz:
 
-* [TrackPageview](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) çağrısında açık bir süre ayarlayın: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
+* [TrackPageview](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) çağrısında açık bir süre ayarlayın: `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`.
 * Sayfa görüntüleme zamanlaması çağrılarını `startTrackPage` ve `stopTrackPage`öğesini kullanın.
 
 *JavaScript*
@@ -1184,21 +1184,20 @@ Verilerin ne kadar süreyle tutulacağını öğrenmek için bkz. [veri saklama 
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [ASP.NET başvurusu](https://msdn.microsoft.com/library/dn817570.aspx)
-* [Java başvurusu](http://dl.windowsazure.com/applicationinsights/javadoc/)
+* [ASP.NET başvurusu](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [Java başvurusu](https://docs.microsoft.com/en-us/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript başvurusu](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
-* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
+
 
 ## <a name="sdk-code"></a>SDK kodu
 
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Windows Server paketleri](https://github.com/Microsoft/applicationInsights-dotnet-server)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK’sı](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK'sı](https://github.com/Microsoft/ApplicationInsights-JS)
-* [Tüm platformlar](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
+
 
 ## <a name="questions"></a>Sorular
 

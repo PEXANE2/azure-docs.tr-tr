@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e3f073c1d22ef09784f699dc2decb0492d9edf
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b610a62e9ca9b964482638c2c0302461996c0bf2
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162305"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145682"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Birleşik güvenlik bilgileri kaydını etkinleştir (Önizleme)
 
@@ -30,7 +30,7 @@ Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkile
 |     |
 
 > [!NOTE]
-> Güvenlik bilgilerini kaydetmek ve yönetmek için önceki önizlemeyi etkinleştiren kuruluşların, gelişmiş önizleme deneyimini etkinleştirmek için aşağıdaki adımları tamamlaması gerekir. 25 Eylül 2019 ' de, anahtarı kullanmayan kuruluşlarda, Microsoft, güvenlik bilgilerini gelişmiş deneyimle kaydetmek ve yönetmek için önceki önizlemenin kullanıcılarına geçiş yapar. 
+> Güvenlik bilgilerini kaydetmek ve yönetmek için önceki önizlemeyi etkinleştiren kuruluşların, gelişmiş önizleme deneyimini etkinleştirmek için aşağıdaki adımları tamamlaması gerekir. 8 Ekim 2019 ' de, Microsoft, anahtarı kullanmayan kuruluşlar için güvenlik bilgilerini gelişmiş deneyimle kaydetmek ve yönetmek üzere önceki önizlemenin kullanıcılarına geçiş yapar. 
 > 
 > Önizlemenin herhangi bir sürümünü etkinleştirmediyseniz kuruluşunuzun etkilenmemesi gerekir.
 

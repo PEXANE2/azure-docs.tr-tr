@@ -13,23 +13,26 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c2204c572ca1f74f8060d0b6176df69359fe69a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: eb01b46d61b6ba99c3ec9c537dccc350074f5e05
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901717"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146419"
 ---
 # <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Azure Active Directory 'da kullanıcıları toplu silme (Önizleme)
 
-Azure Active Directory (Azure AD) toplu Kullanıcı oluşturma ve silme işlemlerini, konuklara toplu davet etmeyi ve kullanıcıların, grupların ve grup üyelerinin listesini indirmeyi destekler.
+Azure Active Directory (Azure AD) portalını kullanarak, kullanıcıları toplu olarak silmek için bir virgülle ayrılmış değerler (CSV) dosyası kullanarak çok sayıda üyeyi bir gruba kaldırabilirsiniz.
 
 ## <a name="to-bulk-delete-users"></a>Kullanıcıları toplu olarak silmek için
 
 1. Kuruluşunuzda Kullanıcı Yöneticisi olan bir hesapla Azure AD kuruluşunuzda oturum açın.
 1. Azure AD 'de **Kullanıcılar** > **toplu silme**' yi seçin.
 1. **Toplu Kullanıcı silme** sayfasında, kullanıcı özelliklerinin GEÇERLI bir CSV dosyasını almak için **İndir** ' i seçin ve ardından silmek istediğiniz kullanıcıları ekleyin.
-1. CSV dosyasını düzenlemesini bitirdiğinizde veya kendi karşıya yüklemeye hazırsanız, **CSV dosyanızı karşıya** yükleme ' nin altındaki dosyayı seçin.
+
+   ![CSV dosyası, silinecek kullanıcıların adlarını ve kimliklerini içerir](./media/users-bulk-delete/delete-csv-file.png)
+
+1. CSV dosyasını düzenlemesini bitirdiğinizde, doğrulanacak **CSV dosyanızı karşıya yükleyin** altında dosyayı seçin.
 
    ![Silmek istediğiniz kullanıcıları listeettiğiniz yerel bir CSV dosyası seçin](./media/users-bulk-delete/bulk-delete.png)
 

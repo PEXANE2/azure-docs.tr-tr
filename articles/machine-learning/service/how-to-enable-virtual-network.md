@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 08/05/2019
-ms.openlocfilehash: f12c77a25bad9781d5f23b9563f6684997a2a6c4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 9299959eef24f6890218dc2d2aa733cc227e1a32
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002785"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162575"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure sanal ağı içindeki Azure ML deneme ve çıkarım işlerinin güvenliğini sağlama
 
@@ -345,6 +345,22 @@ aks_target = ComputeTarget.create(workspace=ws,
 ```
 
 Oluşturma işlemi tamamlandığında, bir sanal ağın arkasındaki AKS kümesinde çıkarım veya model Puanlama çalıştırabilirsiniz. Daha fazla bilgi için bkz. [AKS 'e dağıtma](how-to-deploy-to-aks.md).
+
+## <a name="use-azure-firewall"></a>Azure Güvenlik duvarını kullanma
+
+Azure Güvenlik Duvarı 'nı kullanırken aşağıdaki adreslere gelen ve giden trafiğe izin vermek için bir ağ kuralı yapılandırmanız gerekir:
+
+- `*.batchai.core.windows.net`
+- `ml.azure.com`
+- `*.azureml.ms`
+- `*.experiments.azureml.net`
+- `*.modelmanagement.azureml.net`
+- `mlworkspace.azure.ai`
+- `*.aether.ms`
+
+Kural eklenirken, __Protokolü__ herhangi bir ve bağlantı noktası `*`olarak ayarlayın.
+
+Ağ kuralını yapılandırma hakkında daha fazla bilgi için bkz. [Azure Güvenlik duvarını dağıtma ve yapılandırma](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

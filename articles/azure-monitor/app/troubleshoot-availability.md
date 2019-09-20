@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067067"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146590"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
@@ -46,10 +46,9 @@ Bu makale, kullanılabilirlik izlemeyi kullanırken oluşabilecek yaygın sorunl
 
 ## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Protokol ihlali hatası ile aralıklı test başarısızlığı
 
-|Belirti/hata iletisi| Olası nedenler|
-|----|---------|
-protokol ihlali CR 'nin arkasından LF gelmelidir | Bu durum, hatalı biçimlendirilmiş üstbilgiler algılandığında oluşur. Özellikle, bazı üst bilgiler satır sonunu belirtmek için CRLF kullanmıyor olabilir, bu da HTTP belirtimini ihlal eder ve bu nedenle .NET WebRequest düzeyinde doğrulama başarısız olur.
- || Buna yük dengeleyiciler veya CDNs de neden olabilir.
+|Belirti/hata iletisi| Olası nedenler| Olası çözümler |
+|----|---------|-----|
+|Sunucu bir protokol ihlali taahhütlü. Section = ResponseHeader ayrıntısı = CR 'nin arkasından LF gelmelidir | Bu durum, hatalı biçimlendirilmiş üstbilgiler algılandığında oluşur. Özellikle, bazı üst bilgiler satır sonunu belirtmek için CRLF kullanmıyor olabilir, bu da HTTP belirtimini ihlal ediyor. Application Insights, bu HTTP belirtimini zorluyor ve hatalı biçimlendirilmiş üst bilgilerle yanıt verir.| a. Hatalı sunucuları onarmak için Web sitesi konak sağlayıcısı/CDN sağlayıcısına başvurun. <br> b. Başarısız isteklerin kaynak olması durumunda (örn. stil dosyaları, görüntüler, betikler), bağımlı isteklerin ayrıştırılmasını devre dışı bırakmayı düşünebilirsiniz. Bunu yaparsanız, bu dosyaların kullanılabilirliğini izleme özelliğini kaybedeceğinizi aklınızda bulundurun).
 
 > [!NOTE]
 > URL, HTTP üstbilgileri gevşek olarak doğrulanmış tarayıcılarda başarısız olmayabilir. Bu sorunun ayrıntılı bir açıklaması için bu blog gönderisine bakın: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  

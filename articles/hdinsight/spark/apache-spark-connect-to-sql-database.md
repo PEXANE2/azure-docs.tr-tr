@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: c262d3841acd3497667c00a9deee04b304ddae76
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 74bff4059442c85cfcde589c5a6cc7ab36472881
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984797"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147034"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Azure SQL veritabanı 'na veri okumak ve yazmak için HDInsight Spark kümesi kullanma
 
@@ -38,7 +38,7 @@ Spark kümesiyle ilişkili bir [Jupyter Notebook](https://jupyter.org/) oluştur
 1. [Azure Portal](https://portal.azure.com/), kümenizi açın.
 1. Sağ taraftaki **küme panoları** altında **Jupyter Not defteri** ' ni seçin.  **Küme panoları**görmüyorsanız, sol menüden **genel bakış** ' ı seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
-    ![Spark üzerinde Jupyter Not defteri](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark üzerinde Jupyter Not defteri")
+    ![Apache Spark Jupyter Not defteri](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark üzerinde Jupyter Not defteri")
    
    > [!NOTE]  
    > Ayrıca, tarayıcınızda aşağıdaki URL 'YI açarak Spark kümesinde Jupyter not defterine erişebilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
@@ -182,7 +182,7 @@ Bu bölümde, önceki bölümde yer alan Azure SQL veritabanı 'nda zaten oluşt
 
 1. Çıkış **HVAC. csv**şemasını gösterir. **Hboş tablosu** aynı şemaya de sahiptir. Çıktı, tablodaki sütunları listeler.
 
-    ![Tablo şeması](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tablo şeması")
+    ![hdınsight Apache Spark şema tablosu](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tablo şeması")
 
 1. Son olarak, HVAC. csv dosyasından verileri okumak ve Azure SQL veritabanı 'nda **hboş tablo** olarak akışa almak için aşağıdaki kod parçacığını kullanın. Parçacığı bir kod hücresine yapıştırın, yer tutucu değerlerini Azure SQL veritabanınızın değerleriyle değiştirin ve ardından çalıştırmak için **SHIFT + enter** tuşlarına basın.
 

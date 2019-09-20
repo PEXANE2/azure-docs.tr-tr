@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: 3f64bce34a1bdb11bdbebb99fe28cdf3ff16dfb8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 8c35877c7de2fa89a8fe7a94c11787814183df9e
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128701"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162250"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL hiper ölçek veritabanları hakkında SSS
 
@@ -361,6 +361,11 @@ Varsayılan olarak hiper ölçekli veritabanları için 2 çoğaltma oluşturaca
 ### <a name="how-do-i-connect-to-these-secondary-compute-nodes"></a>Nasıl yaparım? bu ikincil işlem düğümlerine bağlanın
 
 Bağlantı dizinizdeki `ApplicationIntent` bağımsız değişkeni olarak `readonly`ayarlayarak, bu ek salt okuma işlem düğümlerine bağlanabilirsiniz. İle `readonly` işaretlenen tüm bağlantılar otomatik olarak ek salt okuma işlem düğümlerinden birine yönlendirilir.  
+
+### <a name="how-do-i-validate-if-i-have-successfully-connected-to-secondary-compute-node-using-ssms--other-client-tools"></a>SSMS/diğer istemci araçlarını kullanarak ikincil işlem düğümüne başarılı bir şekilde bağlanıp bağlanmadığı Nasıl yaparım? doğrulayın.
+
+SSMS/diğer istemci araçlarını kullanarak aşağıdaki T-SQL sorgusunu çalıştırabilirsiniz: `SELECT DATABASEPROPERTYEX ( '<database_name>' , 'updateability' )`.
+Bunun sonucu `READ_ONLY` , bağlantınızın salt okunurdur ikincil düğümü işaret ediyor ya da `READ_WRITE` bağlantınız birincil düğümü işaret ediyor.
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-the-read-scale-replica"></a>Okuma ölçeği çoğaltması için adanmış bir uç nokta oluşturabilir miyim
 

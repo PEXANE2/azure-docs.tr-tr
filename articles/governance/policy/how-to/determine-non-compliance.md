@@ -7,12 +7,12 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 2b36e7c333521e9438e76bfbe53a26dce23c2e8a
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194681"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161991"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Uyumsuzluk nedenlerini belirleme
 
@@ -20,7 +20,7 @@ Bir Azure kaynağının bir ilke kuralıyla uyumlu olmadığı belirlendiğinde,
 
 > [!div class="checklist"]
 > - [Uyumluluk ayrıntıları](#compliance-details)
-> - [Değişiklik geçmişi (Önizleme)](#change-history-preview)
+> - [Değişiklik geçmişi (Önizleme)](#change-history)
 
 ## <a name="compliance-details"></a>Uyumluluk ayrıntıları
 
@@ -79,7 +79,7 @@ Uyumluluk ayrıntılarını görüntülemek için aşağıdaki adımları izleyi
 > [!NOTE]
 > Verileri korumak için, bir özellik değeri _gizli_ olduğunda, geçerli değer yıldız işaretlerini görüntüler.
 
-Bu ayrıntılar, bir kaynağın Şu anda uyumsuz olduğunu, ancak kaynağın uyumsuz olmasına neden olan değişikliğin ne zaman yapıldığını göstermez. Bu bilgiler için aşağıdaki [değişiklik geçmişi (Önizleme)](#change-history-preview) bölümüne bakın.
+Bu ayrıntılar, bir kaynağın Şu anda uyumsuz olduğunu, ancak kaynağın uyumsuz olmasına neden olan değişikliğin ne zaman yapıldığını göstermez. Bu bilgiler için aşağıdaki [değişiklik geçmişi (Önizleme)](#change-history) bölümüne bakın.
 
 ### <a name="compliance-reasons"></a>Uyumluluk nedenleri
 
@@ -89,23 +89,23 @@ Aşağıdaki matris, her olası _nedeni_ ilke tanımındaki sorumlu [koşula](..
 |-|-|
 |Geçerli değer, anahtar olarak hedef değeri içermelidir. |containsKey veya notcontainskey **değil** |
 |Geçerli değer hedef değer içermelidir. |notcontains içerir veya **içermez** |
-|Geçerli değer, hedef değere eşit olmalıdır. |eşittir veya Not al |
+|Geçerli değer, hedef değere eşit olmalıdır. |eşittir veya **Not** al |
 |Geçerli değer, hedef değerden küçük olmalıdır. |greaterOrEquals daha az veya **Not** |
 |Geçerli değer, hedef değere eşit veya ondan büyük olmalıdır. |greaterOrEquals veya daha az **değil** |
-|Geçerli değer, hedef değerden büyük olmalıdır. |daha büyük veya azalmayan öğeler |
+|Geçerli değer, hedef değerden büyük olmalıdır. |daha büyük veya **azalmayan** öğeler |
 |Geçerli değer, hedef değere eşit veya ondan küçük olmalıdır. |Azallar veya daha büyük **değil** |
-|Geçerli değer mevcut olmalıdır. |bulunur |
+|Geçerli değer mevcut olmalıdır. |Bulunur |
 |Geçerli değer, hedef değerde olmalıdır. |notın içinde veya **değil** |
 |Geçerli değer hedef değer gibi olmalıdır. |Beğen gibi |
 |Geçerli değer, büyük/küçük harfe duyarlı olmalıdır ve hedef değerle eşleşmelidir. |Match veya notmatch **değil** |
 |Geçerli değer büyük/küçük harfe duyarsız olmalıdır ve hedef değerle eşleşmelidir. |matchInsensitively veya **Not** notMatchInsensitively |
 |Geçerli değer, anahtar olarak hedef değeri içermemelidir. |notContainsKey veya bir ContainsKey **değil**|
-|Geçerli değer, hedef değeri içermemelidir. |notContains veya içermez |
+|Geçerli değer, hedef değeri içermemelidir. |notContains veya **içermez** |
 |Geçerli değer hedef değere eşit olmamalı. |Not harfler veya eşit **değildir** |
 |Geçerli değer mevcut olmamalıdır. |**yok**  |
 |Geçerli değerin hedef değerde olmaması gerekir. |Notın veya **Not** |
 |Geçerli değer hedef değer gibi olmamalıdır. |notLike veya **Not** beğen |
-|Geçerli değer, büyük/küçük harfe duyarlı olmalıdır ve hedef değerle eşleşmelidir. |notMatch veya Match |
+|Geçerli değer, büyük/küçük harfe duyarlı olmalıdır ve hedef değerle eşleşmelidir. |notMatch veya **Match** |
 |Geçerli değer büyük/küçük harfe duyarsız olmalıdır ve hedef değerle eşleşmez. |notMatchInsensitively veya **Not** matchInsensitively |
 |İlke tanımındaki efekt ayrıntılarıyla eşleşen ilgili kaynak yok. |**Daha sonra. details. Type** içinde tanımlanan ve ilke kuralının **IF** bölümünde tanımlanan kaynakla ilişkili bir kaynak türü yok. |
 

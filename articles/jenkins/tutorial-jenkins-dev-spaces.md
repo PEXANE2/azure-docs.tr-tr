@@ -7,12 +7,12 @@ ms.service: jenkins
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/31/2019
-ms.openlocfilehash: 10ff8f4645ee1e7023c96174236243a3b85de938
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 3d5e8ba8a29481a6f37ffd10f577d354fc5fbf0a
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679118"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161488"
 ---
 <!-- GMinchAQ, 06/18/19 -->
 
@@ -53,7 +53,7 @@ Bu öğreticide, temel Azure Hizmetleri, AKS, ACR, Azure Dev Spaces, Jenkins iş
 
 Bu bölümde Azure kaynakları oluşturursunuz:
 
-* Bu öğreticide tüm Auzre kaynaklarını içeren bir kaynak grubu.
+* Bu öğretici için tüm Azure kaynaklarını içeren bir kaynak grubu.
 * Bir [Azure Kubernetes hizmeti](https://docs.microsoft.com/azure/aks/) (aks) kümesi.
 * Derlenecek (ACR görevlerini kullanarak) ve Docker görüntülerini depolayabilen bir [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) (ACR).
 
@@ -122,7 +122,7 @@ Azure Dev Spaces ile Azure Dev Spaces ve çoklu hizmet geliştirmeyi kullanma ha
     }
     ```
 
-4. VS Code ' de tümleşik terminali **açmak Için** **görüntüle** ' ye tıklayın.
+4. VS Code ' de tümleşik terminali açmak için **görüntüle** **' ye tıklayın** .
 
 5. Uygulamanızı bir geliştirme alanında çalışacak şekilde hazırlamak için komutunuçalıştırın.`azds prep` Uygulamanızı doğru şekilde hazırlamak için bu `dev-spaces/samples/java/getting-started/webfrontend` komutun öğesinden çalıştırılması gerekir:
 
@@ -173,7 +173,7 @@ Bu bölümde, Jenkins sunucusunu örnek CI işlem hattını çalıştıracak şe
 
 * Eklentileri yükler
 * Helk ve Kubernetes CLı 'yı yükler
-* Kimlik bilgileri ekle
+* Kimlik bilgilerini ekleyin
 
 ### <a name="install-plug-ins"></a>Eklentileri yükler
 

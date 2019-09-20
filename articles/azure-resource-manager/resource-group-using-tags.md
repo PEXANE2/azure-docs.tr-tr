@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: e18fc040249954ce7ea6a8a686e121a4b56fb54a
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9bcbfe1bdb501cac6ff31156db5382d1174eb8ad
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312129"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146831"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure kaynaklarınızı düzenlemek için etiketleri kullanma
 
@@ -23,7 +23,7 @@ Etiketleri kaynaklara uygulamak için, kullanıcının bu kaynak türüne yazma 
 
 ## <a name="policies"></a>İlkeler
 
-Etiketleme kuralları ve kurallarını zorlamak için [Azure ilkesi](../governance/policy/overview.md) ' ni kullanabilirsiniz. Bir ilke oluşturarak, kuruluşunuz için beklenen etiketlerle uyumlu olmayan, aboneliğinize dağıtılan kaynakların senaryosundan kaçının. Etiketlerin el ile uygulanması veya uyumlu olmayan kaynakları aramak yerine, dağıtım sırasında gerekli etiketleri otomatik olarak uygulayan bir ilke oluşturabilirsiniz. Aşağıdaki bölümde, Etiketler için örnek ilkeler gösterilmektedir.
+Etiketleme kuralları ve kurallarını zorlamak için [Azure ilkesi](../governance/policy/overview.md) ' ni kullanabilirsiniz. Bir ilke oluşturarak, kuruluşunuz için beklenen etiketlerle uyumlu olmayan, aboneliğinize dağıtılan kaynakların senaryosundan kaçının. Etiketlerin el ile uygulanması veya uyumlu olmayan kaynakları aramak yerine, dağıtım sırasında gerekli etiketleri otomatik olarak uygulayan bir ilke oluşturabilirsiniz. Etiketler artık yeni [değişiklik](../governance/policy/concepts/effects.md#modify) efekti ve bir [Düzeltme göreviyle](../governance/policy/how-to/remediate-resources.md)mevcut kaynaklara da uygulanabilir. Aşağıdaki bölümde, Etiketler için örnek ilkeler gösterilmektedir.
 
 [!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32fafaeb6332ca0e76dbc8d72f11872a82ca1cbe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779145"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146641"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tek başına Azure Otomasyonu hesabı oluşturma
 
@@ -28,7 +28,6 @@ Azure portal bir Otomasyon hesabı oluşturduğunuzda, bu hesaplar otomatik olar
   * Azure Active Directory (Azure AD) içinde bir hizmet sorumlusu oluşturur.
   * Bir sertifika oluşturur.
   * Runbook 'ları kullanarak Azure Resource Manager kaynaklarını yöneten, katkıda bulunan rol tabanlı Access Control (RBAC) atar.
-* **Klasik farklı çalıştır hesabı**. Bu hesap bir yönetim sertifikasını karşıya yükler. Sertifika, klasik kaynakları runbook 'ları kullanarak yönetir.
 
 Sizin için oluşturulan bu hesaplarla, Otomasyon gereksinimlerinizi desteklemek için Runbook 'ları oluşturmaya ve dağıtmaya hızlı bir başlangıç yapabilirsiniz.
 
@@ -76,7 +75,7 @@ Azure portal bir Azure Otomasyonu hesabı oluşturmak için aşağıdaki adımla
 1. **Azure farklı çalıştır hesabı oluştur** seçeneği için **Evet** ' in seçili olduğundan emin olun ve ardından **Oluştur**' u seçin.
 
    > [!NOTE]
-   > **Azure farklı çalıştır hesabı oluştur**' u seçerek farklı çalıştır hesabı oluşturmayı seçerseniz, **Otomasyon hesabı ekle** bölmesinde bir ileti görüntülenir. Hesap Azure portal oluşturulsa da hesabın klasik dağıtım modeli aboneliğinizde veya Azure Resource Manager abonelik dizin hizmetinde ilgili bir kimlik doğrulama kimliği yoktur. Bu nedenle, Otomasyon hesabının aboneliğinizdeki kaynaklara erişimi yoktur. Bu, bu hesaba başvuran runbook 'ların bu dağıtım modellerindeki kaynaklara göre kimlik doğrulaması yapmasını ve görevler gerçekleştirmesini engeller.
+   > **Azure farklı çalıştır hesabı oluştur**' **u seçerek farklı** Çalıştır hesabı oluşturmayı seçerseniz, **Otomasyon hesabı ekle** bölmesinde bir ileti görüntülenir. Hesap Azure portal oluşturulsa da hesabın klasik dağıtım modeli aboneliğinizde veya Azure Resource Manager abonelik dizin hizmetinde ilgili bir kimlik doğrulama kimliği yoktur. Bu nedenle, Otomasyon hesabının aboneliğinizdeki kaynaklara erişimi yoktur. Bu, bu hesaba başvuran runbook 'ların bu dağıtım modellerindeki kaynaklara göre kimlik doğrulaması yapmasını ve görevler gerçekleştirmesini engeller.
    >
    > ![Otomasyon hesabı ekleme uyarısı](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
@@ -97,14 +96,13 @@ Otomasyon hesabı başarıyla oluşturulduğunda bazı kaynaklar sizin için oto
 | AzureRunAsCertificate |Otomasyon hesabı oluşturulduğunda veya var olan bir hesap için bir PowerShell betiği kullanılarak otomatik olarak oluşturulan bir sertifika varlığı. Sertifika, runbook 'lardan Azure Resource Manager kaynaklarını yönetebilmeniz için Azure ile kimlik doğrulaması yapar. Bu sertifikanın bir yıllık kullanım ömrü vardır. |
 | AzureRunAsConnection |Otomasyon hesabı oluşturulduğunda veya var olan bir hesap için bir PowerShell betiği kullanılarak otomatik olarak oluşturulan bağlantı varlığı. |
 
-Aşağıdaki tabloda Klasik Farklı Çalıştır hesabının kaynakları özetlenmektedir.
+## <a name="classic-run-as-accounts"></a>Klasik farklı çalıştır hesapları
 
-| Resource | Açıklama |
-| --- | --- |
-| AzureClassicAutomationTutorial Runbook |Örnek bir grafik runbook 'u. Runbook, klasik farklı çalıştır hesabını (sertifika) kullanarak bir abonelikteki tüm klasik VM 'Leri alır. Ardından, VM adlarını ve durumunu görüntüler. |
-| AzureClassicAutomationTutorial Script Runbook |Örnek bir PowerShell runbook 'u. Runbook, klasik farklı çalıştır hesabını (sertifika) kullanarak bir abonelikteki tüm klasik VM 'Leri alır. Ardından, VM adlarını ve durumunu görüntüler. |
-| AzureClassicRunAsCertificate |Otomatik olarak oluşturulan bir sertifika varlığı. Azure klasik kaynaklarını runbook 'lardan yönetebilmeniz için sertifika Azure ile kimlik doğrulaması yapar. Bu sertifikanın bir yıllık kullanım ömrü vardır. |
-| AzureClassicRunAsConnection |Otomatik olarak oluşturulan bağlantı varlığı. Azure klasik kaynaklarını runbook 'lardan yönetebilmeniz için varlık Azure ile kimlik doğrulaması yapar. |
+Klasik farklı çalıştır hesapları, varsayılan olarak, bir Azure Otomasyonu hesabı oluşturduğunuzda artık oluşturulmaz. Hala klasik bir Farklı Çalıştır hesabına ihtiyacınız varsa lütfen aşağıdaki adımları gerçekleştirin.
+
+1. **Otomasyon hesabı** sayfasından **Hesap ayarları**altında **Farklı Çalıştır hesapları** ' nı seçin.
+2. **Azure klasik farklı çalıştır hesabı**' nı seçin.
+3. Klasik farklı çalıştır hesabı oluşturma işlemine devam etmek için **Oluştur** ' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

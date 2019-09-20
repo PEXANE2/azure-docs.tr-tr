@@ -6,19 +6,20 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 8b4cbe309e310ef1fc384224c952a6f04385b1dd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 198ab5f567652a76d209168041f305b9da4d0b43
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092267"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147180"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda denetim günlüğü-tek sunucu
 
 PostgreSQL için Azure veritabanı 'nda veritabanı etkinliklerini denetleme-tek sunucu, PostgreSQL Denetim Uzantısı aracılığıyla kullanılabilir: [pgaudit](https://www.pgaudit.org/). pgAudit ayrıntılı oturum ve/veya nesne denetim günlüğü sağlar.
 
 > [!NOTE]
-> pgAudit, yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucularda etkinleştirilebilir.
+> pgAudit, PostgreSQL için Azure veritabanı 'nda önizlemededir.
+> Uzantı yalnızca Genel Amaçlı ve bellek için Iyileştirilmiş sunucularda etkinleştirilebilir.
 
 ## <a name="usage-considerations"></a>Kullanım konuları
 Varsayılan olarak, pgAudit günlük deyimleri, Postgres 'nin standart günlüğe kaydetme tesis kullanılarak normal günlük deyimleriyle birlikte yayınlanır. PostgreSQL için Azure veritabanı 'nda, bu. log dosyaları Azure portal veya CLı aracılığıyla indirilebilir. Dosya koleksiyonu için maksimum depolama alanı 1 GB ve her dosya en fazla yedi gün için kullanılabilir (varsayılan değer üç gündür). Bu hizmet, kısa süreli bir depolama seçeneğidir.

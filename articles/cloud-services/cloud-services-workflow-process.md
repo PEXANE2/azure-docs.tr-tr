@@ -4,7 +4,7 @@ description: Bu makalede bir hizmeti dağıtırken iş akışı işlemlerine gen
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: Willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 383f4d26d44871936ccc910f15575db5aec3ec8c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945336"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162159"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Klasik Microsoft Azure VM mimarisi iş akışı 
 Bu makalede, bir sanal makine gibi bir Azure kaynağını dağıtırken veya güncelleştirdiğinizde oluşan iş akışı işlemlerine genel bakış sunulmaktadır. 
@@ -37,15 +37,16 @@ Aşağıdaki diyagramda Azure kaynakları mimarisi sunulmaktadır.
 
 **B**. Yapı denetleyicisi, veri merkezindeki tüm kaynakların korunmasından ve izlenmesinden sorumludur. Bu BT, Konuk işletim sistemi sürümü, hizmet paketi, hizmet yapılandırması ve hizmet durumu gibi bilgileri gönderen yapı işletim sistemi üzerinde Fabric Host aracılarıyla iletişim kurar.
 
-**C**. Konak Aracısı konak OSsystem üzerinde çalışır ve hedeflenen bir hedef durumuna doğru rolü güncelleştirmek ve konuk aracısında sinyal denetimleri yapmak için konuk işletim sistemini ayarlamaktan ve konuk aracısıyla iletişim kurmaya sorumludur (WindowsAzureGuestAgent). Konak Aracısı 10 dakika boyunca sinyal yanıtı almazsa, konak Aracısı Konuk işletim sistemini yeniden başlatır.
+**C**. Konak Aracısı konak işletim sistemi üzerinde çalışır ve hedeflenen bir hedef durumuna doğru rolü güncelleştirmek ve konuk aracısında sinyal denetimleri yapmak için konuk işletim sistemini ayarlamaktan ve konuk aracısıyla iletişim kurmaktan sorumludur (WindowsAzureGuestAgent). Konak Aracısı 10 dakika boyunca sinyal yanıtı almazsa, konak Aracısı Konuk işletim sistemini yeniden başlatır.
 
 **C2**. WaAppAgent, WindowsAzureGuestAgent. exe ' yi yüklemeden, yapılandırmadan ve güncelleştirmekten sorumludur.
 
 **D**.  WindowsAzureGuestAgent, aşağıdakilerden sorumludur:
 
-1. Konuk işletim sistemini, güvenlik duvarı, ACL 'Ler, LocalStorage kaynakları, hizmet paketi ve yapılandırma ve Sertifikalar dahil olmak üzere yapılandırma. Rolün altında çalışacağı kullanıcı hesabı için SID ayarlanıyor.
-2. Rol durumu dokuya bağlanıyor.
-3. WaHostBootstrapper başlatılıyor ve rolü hedef durumunda olduğundan emin olmak için izleme.
+1. Konuk işletim sistemini, güvenlik duvarı, ACL 'Ler, LocalStorage kaynakları, hizmet paketi ve yapılandırma ve Sertifikalar dahil olmak üzere yapılandırma.
+2. Rolün altında çalışacağı kullanıcı hesabı için SID ayarlanıyor.
+3. Rol durumu dokuya bağlanıyor.
+4. WaHostBootstrapper başlatılıyor ve rolü hedef durumunda olduğundan emin olmak için izleme.
 
 **E**. WaHostBootstrapper şu şekilde sorumludur:
 
@@ -76,7 +77,7 @@ Aşağıdaki diyagramda Azure kaynakları mimarisi sunulmaktadır.
 
 ## <a name="workflow-processes"></a>İş akışı işlemi
 
-1. Bir Kullanıcı,. cspkg ve. cscfg dosyalarını karşıya yüklemek, bir kaynağa bir yapılandırma değişikliğini durdurmak veya bir yapılandırma değişikliği yapmak gibi bir istek yapar. Bu işlem, Visual Studio Publish özelliği gibi Hizmet Yönetim API'si kullanan Azure portal veya bir araç aracılığıyla yapılabilir. Bu istek, abonelikle ilgili tüm işleri yapmak için RDFE 'ye gider ve sonra isteği FFE ile iletişim kurar. Bu iş akışı adımlarının geri kalanı yeni bir paket dağıtmaktır ve başlatılır.
+1. Bir Kullanıcı, ". cspkg" ve ". cscfg" dosyalarını karşıya yüklemek, bir kaynağa bir yapılandırma değişikliğini durdurmasına veya bir yapılandırma değişikliği yapmasına, vb. gibi bir istek yapar. Bu işlem, Visual Studio Publish özelliği gibi Hizmet Yönetim API'si kullanan Azure portal veya bir araç aracılığıyla yapılabilir. Bu istek, abonelikle ilgili tüm işleri yapmak için RDFE 'ye gider ve sonra isteği FFE ile iletişim kurar. Bu iş akışı adımlarının geri kalanı yeni bir paket dağıtmaktır ve başlatılır.
 2. FFE, doğru makine havuzunu bulur (benzeşim grubu veya coğrafi konum, dokudan makine kullanılabilirliği gibi) ve bu makine havuzundaki ana doku denetleyicisiyle iletişim kurar.
 3. Yapı denetleyicisi, kullanılabilir CPU çekirdekleri olan bir konak bulur (veya yeni bir konak çalıştırır). Hizmet paketi ve yapılandırma konağa kopyalanır ve yapı denetleyicisi, paketi dağıtmak için ana bilgisayar IŞLETIM sistemindeki ana bilgisayar aracısıyla iletişim kurar (DIP 'Ler, bağlantı noktaları, Konuk işletim sistemi vb.).
 4. Konak Aracısı Konuk işletim sistemini başlatır ve konuk aracısıyla iletişim kurar (WindowsAzureGuestAgent). Konak, rolün hedef durumuna doğru çalıştığından emin olmak için konuğa sinyal gönderir.

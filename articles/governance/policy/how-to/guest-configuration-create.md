@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0c1c3470ae18b2a600af0d5e930b6fc114123728
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194614"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161924"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
@@ -54,9 +54,47 @@ Konuk yapılandırması, DSC yapılandırmaları oluşturmak ve bunları Azure I
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration"></a>Özel Konuk yapılandırma yapılandırması oluştur
+## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Özel Konuk yapılandırma yapılandırması ve kaynakları oluşturma
 
 Konuk yapılandırması için özel bir ilke oluşturmanın ilk adımı DSC yapılandırmasını oluşturmaktır. DSC kavramlarına ve terimlere genel bakış için bkz. [POWERSHELL DSC 'ye genel bakış](/powershell/dsc/overview/overview).
+
+Yapılandırmanızda yalnızca Konuk yapılandırma Aracısı yüklemesine sahip olan kaynaklar gerekiyorsa, yalnızca bir yapılandırma MOF dosyası yazmanız gerekir. Ek betik çalıştırmanız gerekiyorsa, özel bir kaynak modülü yazmanız gerekir.
+
+### <a name="requirements-for-guest-configuration-custom-resources"></a>Konuk yapılandırması özel kaynakları için gereksinimler
+
+Konuk yapılandırması bir makineyi denetleyemiyorsa, ilk olarak doğru `Test-TargetResource` durumda olup olmadığını tespit etmek üzere çalışır.  İşlevin döndürdüğü Boole değeri, Konuk atamasının Azure Resource Manager durumunun uyumlu olup olmadığını belirler.  Boolean, yapılandırmadaki herhangi `$false` bir kaynak için ise, sağlayıcı çalışacaktır. `Get-TargetResource`
+`$true` Daha sonra`Get-TargetResource` Boolean çağrılırsa.
+
+İşlevi `Get-TargetResource` , Windows istenen durum yapılandırması için gerekli olmayan konuk yapılandırması için özel gereksinimlere sahiptir.
+
+- Döndürülen Hashtable, **nedenler**adlı bir özellik içermelidir.
+- Nedenler özelliği bir dizi olmalıdır.
+- Dizideki her öğe, **kod** ve **tümcecik**adlı anahtarlar içeren bir Hashtable olmalıdır.
+
+Nedenler özelliği, bir makine uyumsuz olduğunda bilgilerin nasıl sunulduğunu standartlaştırmak üzere hizmet tarafından kullanılır.
+Kaynağın uyumlu olmadığı bir "Neden" gibi nedenlerle her bir öğeyi düşünebilirsiniz. Bir kaynak bir nedenle uyumsuz olabileceğinden, bu özellik bir dizidir.
+
+Hizmet tarafından Özellikler **kodu** ve **tümceciği** bekleniyor. Özel bir kaynak yazarken, **ifadenin**değeri olarak kaynağın uyumlu olmaması halinde göstermek istediğiniz metni (genellikle stdout) ayarlayın.  **Kodun** belirli biçimlendirme gereksinimleri vardır, böylece raporlama, denetimi gerçekleştirmek için kullanılan kaynakla ilgili bilgileri açıkça görüntüleyebilir. Bu çözüm, Konuk yapılandırmasını Genişletilebilir hale getirir. Çıkış yakalanıp **tümcecik** özelliği için bir dize değeri olarak döndürülemedikçe, bir makineyi denetlemek için herhangi bir komut çalıştırılabilir.
+
+- **Kod** (dize): Kaynağın adı, yinelenir ve sonra neden için bir tanımlayıcı olarak boşluk olmayan kısa bir ad.  Bu üç değer, boşluk olmadan iki nokta ile sınırlandırılmalıdır.
+    - Bir örnek ' Registry: Registry: keynotsun ' olmalıdır.
+- **Tümcecik** (dize): Ayarın neden uyumlu olmadığı açıklanmak için insan tarafından okunabilen metin.
+    - Örnek olarak ' kayıt defteri anahtarı $key makinede yok. '
+
+```powershell
+$reasons = @()
+$reasons += @{
+  Code = 'Name:Name:ReasonIdentifer'
+  Phrase = 'Explain why the setting is not compliant'
+}
+return @{
+    reasons = $reasons
+}
+```
+
+#### <a name="scaffolding-a-guest-configuration-project"></a>Konuk yapılandırma projesi yapı iskelesi
+
+Örnek koddan çalışmaya başlama ve çalışma sürecini hızlandırmak isteyen geliştiriciler için, **Konuk yapılandırma projesi** adlı bir topluluk projesi [plaster](https://github.com/powershell/plaster) PowerShell modülü için şablon olarak mevcuttur.  Bu araç, çalışan bir yapılandırma ve örnek kaynak dahil olmak üzere bir projeyi ve projeyi doğrulamak için bir dizi [pester](https://github.com/pester/pester) testini de kapsayan bir projeyi dolandırarak kullanılabilir.  Şablon, Konuk yapılandırma paketini oluşturma ve doğrulamaya otomatik hale getirmek için Visual Studio Code görev çalıştıranlar de içerir. Daha fazla bilgi için bkz. GitHub proje [Konuk yapılandırma projesi](https://github.com/microsoft/guestconfigurationproject).
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux üzerinde özel konuk yapılandırma yapılandırması
 
@@ -141,10 +179,10 @@ Azure Ilke Konuk yapılandırması ' nda, çalışma zamanında kullanılan gizl
 
 İlk olarak, Azure 'da Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun. Kimlik, Key Vault ' de depolanan gizli dizileri erişmek için makineler tarafından kullanılır. Ayrıntılı adımlar için, bkz. [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-Ardından Key Vault bir örnek oluşturun. Ayrıntılı adımlar için bkz. [gizli anahtar PowerShell 'ı ayarlama ve alma](../../../key-vault/quick-create-powershell.md).
+Key Vault bir örnek oluşturun. Ayrıntılı adımlar için bkz. [gizli anahtar PowerShell 'ı ayarlama ve alma](../../../key-vault/quick-create-powershell.md).
 Kullanıcı tarafından atanan kimlik erişimine Key Vault ' de depolanan gizli dizileri sağlamak için örneğe izinler atayın. Ayrıntılı adımlar için bkz. [gizli dizi ayarlama ve alma](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-Ardından, Kullanıcı tarafından atanan kimliği makinenize atayın. Ayrıntılı adımlar için bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+Kullanıcı tarafından atanan kimliği makinenize atayın. Ayrıntılı adımlar için bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 Ölçek ' te, Azure Ilkesi aracılığıyla Azure Resource Manager kullanarak bu kimliği atayın. Ayrıntılı adımlar için bkz. [bir şablon kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
 Son olarak, özel kaynağınız içinde, makinede bulunan belirteci kullanarak Key Vault erişmek için yukarıda oluşturulan istemci KIMLIĞINI kullanın. Key Vault örneğinin ve URL 'si kaynağa özellikler olarak geçirilebilir, böylece kaynağın birden çok ortamda güncellenmesi gerekmez veya değerler değiştirilmeleri gerekir. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
@@ -334,7 +372,7 @@ Aracı kullanma hakkında ayrıntılı bilgi için hızlı başlangıç makalesi
 
 ## <a name="optional-signing-guest-configuration-packages"></a>SEÇIM Konuk yapılandırma paketleri imzalanıyor
 
-Konuk yapılandırması özel ilkeleri varsayılan olarak, ilke paketinin denetlenmekte olan sunucu tarafından okunana yayımlandığında ' de değiştirilmediğini doğrulamak için SHA256 karmasını kullanır.
+Konuk yapılandırması özel ilkeleri varsayılan olarak SHA256 karmasını kullanarak ilke paketinin, denetlenen sunucu tarafından okunarak ' de yayınlanma sırasında değiştirildiğini doğrular.
 İsteğe bağlı olarak, müşteriler paketleri imzalamak ve konuk yapılandırma uzantısını yalnızca imzalı içeriğe izin verecek şekilde zorlamak için bir sertifika da kullanabilir.
 
 Bu senaryoyu etkinleştirmek için, gerçekleştirmeniz gereken iki adım vardır. İçerik paketini imzalamak için cmdlet 'ini çalıştırın ve kodun imzalanmasını gerektirecek makinelere bir etiket ekleyin.

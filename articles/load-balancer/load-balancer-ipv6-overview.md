@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b276766d69c187e2268f5896f23e3bd435ed63c3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274813"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147337"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer için IPv6 'ya genel bakış
 
@@ -27,7 +27,7 @@ ms.locfileid: "68274813"
 >[!NOTE] 
 >Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Temel Yük Dengeleyici anlatılmaktadır. Standart Load Balancer hakkında daha fazla bilgi için bkz. [Standart Load Balancer genel bakış](load-balancer-standard-overview.md).
 
-Internet 'e yönelik yük dengeleyiciler bir IPv6 adresi ile dağıtılabilir. IPv4 bağlantısına ek olarak, bu özellik aşağıdaki özellikleri sağlar:
+Temel SKU Internet 'e yönelik yük dengeleyiciler bir IPv6 adresi ile dağıtılabilir. IPv4 bağlantısına ek olarak, bu özellik aşağıdaki özellikleri sağlar:
 
 * Yük dengeleyici aracılığıyla genel Internet istemcileri ve Azure sanal makineleri (VM 'Ler) arasındaki yerel uçtan uca IPv6 bağlantısı.
 * VM 'Ler ve genel Internet IPv6 özellikli istemciler arasındaki yerel uçtan uca IPv6 giden bağlantısı.
@@ -79,6 +79,7 @@ Sınırlamalar
 * IPv6 için loadDistributionMethod parametresini değiştirme **Şu anda desteklenmiyor**.
 * Ayrılmış IPv6 IP 'Leri (ıpallocationmethod = static) **Şu anda desteklenmiyor**.
 * NAT64 (IPv6 ile IPv4 çevirisi) desteklenmez.
+* Standart SKU yük dengeleyiciler Şu anda IPv6 adreslerini desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

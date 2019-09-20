@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 39c40f29f4548f2e7379472427a2c97f1a0b762c
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 47e300bf242f02d458363b7d2ab7af8a4399b399
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932965"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155051"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow, Logic Apps, Işlevler ve Web Işleri nelerdir?
 
@@ -81,14 +81,14 @@ WebJobs ve WebJobs SDK birlikte en iyi şekilde çalışır; ancak WebJobs’ı 
 
 Azure İşlevleri, WebJobs SDK’da derlendiğinden diğer Azure hizmetlerine yönelik aynı bağlantıların ve olay tetikleyicilerinin birçoğunu paylaşır. Web Işleri SDK 'Sı ile Azure Işlevleri ve Web Işleri arasında seçim yaparken göz önünde bulundurmanız gereken bazı etmenler aşağıda verilmiştir:
 
-|  | İşlevler | WebJobs SDK ile WebJobs |
+|  | Functions | WebJobs SDK ile WebJobs |
 | --- | --- | --- |
 |[Otomatik ölçeklendirme](functions-scale.md#how-the-consumption-and-premium-plans-work) ile [sunucusuz uygulama modeli](https://azure.microsoft.com/solutions/serverless/)|✔||
 |[Tarayıcıda geliştirme ve test etme](functions-create-first-azure-function.md) |✔||
 |[Kullanım başına ödeme fiyatlandırması](functions-scale.md#consumption-plan)|✔||
 |[Logic Apps ile tümleştirme](functions-twitter-email.md)|✔||
 | Tetikleyici olayları |[Timer](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Depolama kuyrukları ve blobları](functions-bindings-storage-blob.md)<br>[Azure Service Bus kuyrukları ve konuları](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dosya sistemi](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Desteklenen diller  |C#<br>F#<br>JavaScript<br>Java<br>Python (Önizleme) |C#<sup>1</sup>|
+| Desteklenen diller  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
 |Paket yöneticileri|NPM ve NuGet|NuGet<sup>2</sup>|
 
 <sup>1</sup> WebJobs (WEBJOBS SDK olmadan), Java C#, JavaScript, Bash,. cmd,. bat, PowerShell, php, TypeScript, Python ve daha fazlasını destekler. Bu kapsamlı bir liste değildir. WebJob, App Service korumalı alanında çalıştırılabilen herhangi bir programı veya betiği çalıştırabilir.

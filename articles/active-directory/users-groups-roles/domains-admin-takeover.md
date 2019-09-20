@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c05e1dc720f49eb190ccdbe1826a1a347fba7fa1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914768"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146454"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory yönetilmeyen bir dizinden yönetici olarak yararlanın
 
@@ -88,14 +88,11 @@ Etki alanı adının sahipliğini doğruladıktan sonra, Azure AD etki alanı ad
 ### <a name="support-for-external-admin-takeover"></a>Dış yönetici için destek
 Dış yönetici yönetim aşağıdaki çevrimiçi hizmetler tarafından desteklenir:
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 Desteklenen hizmet planları şunları içerir:
 
-- Power BI ücretsiz
-- Power BI Pro
 - Ücretsiz PowerApps
 - PowerFlow ücretsiz
 - Bireyler için RMS
@@ -113,10 +110,6 @@ Dış yönetici, SharePoint, OneDrive veya Skype Kurumsal içeren hizmet planlar
 Yönetilmeyen kiracı farklı bir bölgedeyse, anahtar ve şablonlar üzerinden taşınmaz. Örneğin, yönetilmeyen kiracı Avrupa 'daysa ve sahip olduğunuz kuruluş Kuzey Amerika.
 
 Bireyler için RMS, korunan içeriği açmak üzere Azure AD kimlik doğrulamasını destekleyecek şekilde tasarlansa da, kullanıcıların da içeriği korumasını engellemez. Kullanıcılar, kişiler için RMS aboneliği ile içerik koruduktan sonra anahtar ve şablonlar üzerine taşınmadığından, bu içeriğe etki alanı devralındıktan sonra erişilemez.
-
-#### <a name="more-information-about-power-bi"></a>Power BI hakkında daha fazla bilgi
-
-Dışarıdan bir devralırken, yük önüne alınmadan önce oluşturulan Power BI içeriği [arşivlenmiş bir Power BI çalışma alanına](/power-bi/service-admin-power-bi-archived-workspace)yerleştirilir. Yeni kiracıda kullanmak istediğiniz tüm içeriği el ile geçirmeniz gerekir.
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>ForceTakeover seçeneği için Azure AD PowerShell cmdlet 'leri
 [PowerShell örneğinde](#powershell-example)kullanılan bu cmdlet 'leri görebilirsiniz.

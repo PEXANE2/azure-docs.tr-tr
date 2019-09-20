@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a30fa858ea7befa2363e0ac2742e16d46037d0e0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: HT
+ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123493"
+ms.locfileid: "71146483"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer nedir?
 
@@ -54,10 +54,13 @@ Video ve ses modellerini Video Indexer kullanarak videolarınızdan alabileceği
 * **Siyah çerçeve algılama**: Videoda sunulan siyah kareleri tanımlar.
 * **Ana kare ayıklama**: Videodaki kararlı ana kareleri algılar.
 * **Jenerik**KREDISI: TV programları ve filminin sonunda, hareketli kredilerin başlangıcını ve bitişini belirler.
+* **Animasyonlu karakter algılama** (Önizleme): bilişsel [Hizmetler özel vizyonu](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)ile tümleştirme aracılığıyla animasyonlu içerikte karakterlerin algılanması, gruplandırılması ve tanınması. Daha fazla bilgi için bkz. [animasyonlu karakter algılama](animated-characters-recognition.md).
+* **Düzenleme görüntüsü türü algılama**: görüntülerini türlerine göre etiketleme (geniş görüntü, orta görüntü, yakın, büyük bir kapanış, iki görüntü, birden fazla kişi, dış mekve inkapıda vb.). Daha fazla bilgi için bkz. [düzenleme görüntüsü türü algılama](scenes-shots-keyframes.md#editorial-shot-type-detection).
 
 ### <a name="audio-insights"></a>Audio Insights
 
 * **Otomatik dil algılama**: , Baskın konuşulan dili otomatik olarak tanımlar. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Brezilya Portekizcesi. Dil güvenle tanımlanamıyorsa, Video Indexer konuşulan dilin Ingilizce olduğunu varsayar. Daha fazla bilgi için bkz. [dil tanımlama modeli](language-identification-model.md).
+* **Çok dilli konuşma tanımlama ve dökümü** (Önizleme): , Bir araya getirilebilmesi için medya dosyasının her bir kesimini göndererek ve geri dönerek tek bir Birleşik döküm ile birleştirmek için, sesli olarak konuşulan dili farklı kesimlerde otomatik olarak tanımlar. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
 * **Ses dökümü**: Konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunur.
 * **Kapalı açıklamalı altyazı**: Kapalı açıklamalı alt yazıları üç biçimde oluşturur: VTT, TTML, SRT.
 * **İki kanal işleme**: Otomatik olarak algılar, dökümü ve birleştirmeleri tek bir zaman çizelgesine ayırır.
@@ -75,6 +78,7 @@ Video ve ses modellerini Video Indexer kullanarak videolarınızdan alabileceği
 Bu modeller için bir kanal kısmi sonucu tarafından dizin oluşturma kullanılabilir olacaktır
 
 * **Anahtar sözcük ayıklama**: Konuşma ve görsel metinden anahtar sözcükleri ayıklar.
+* **Adlandırılmış varlıkların ayıklanması**: Marka, konum ve kişileri, doğal dil işleme (NLP) aracılığıyla konuşma ve görsel metinden ayıklar.
 * **Markalar ayıklama**: Konuşma ve görsel metinden markalar ayıklar.
 * **Konu çıkarımı**: Döküm dosyalarından Ana konuların çıkarımını oluşturur. 1\. düzey ıPTC taksonomi dahil edilir.
 * **Yapıtlar**: Modellerin her biri için zengin "sonraki ayrıntı düzeyi" yapıtları kümesini ayıklar.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 09/03/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883670"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155248"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -39,7 +39,7 @@ Kişiselleştirici, bir bağlamda en yüksek düzeyde sıralama eylemini saptama
 1. Azure portal kişiselleştirme hizmeti örneğini oluşturun ve yapılandırın. Her örnek bir kişiselleştirici döngüdür.
 1. Kullanıcılarınız hakkında bilgiler (_Özellikler_) ve içerik (_Eylemler_) ile KIŞISELLEŞTIRICI çağırmak için SDK 'yı kullanın. Kişiselleştirici kullanılmadan önce temiz, etiketli veriler sağlamanız gerekmez. 
 1. İstemci uygulamasında, kullanıcıya kişiselleştirici tarafından seçilen eylemi gösterin.
-1. Kullanıcının kişiselleştirici eylemi seçtiği belirlenen Kişiselleştiriciye geri bildirim sağlamak için SDK 'Yı kullanın. Bu, genellikle-1 ile 1 arasında bir _ödül puandır_.
+1. Kullanıcının, kişiselleştirici eyleminin seçili olup olmadığını gösteren Kişiselleştiriciye geri bildirim sağlamak için SDK 'Yı kullanın. Bu bir _[ödül puanı](concept-rewards.md)_ .
 1. Sistemin nasıl çalıştığını ve verilerinizin kişiselleştirmeye nasıl yardımcı olduğunu değerlendirmek için Azure portal analizlerini görüntüleyin.
 
 ## <a name="where-can-i-use-personalizer"></a>Kişiselleştiriciye nereden kullanabilirim?
@@ -60,7 +60,7 @@ Kişiselleştirici Kullanıcı profili bilgilerini kalıcı hale getirmek ve yö
 Kişiselleştirici hizmeti iki API 'ye sahiptir:
 
 * Kullanıcılarınız ve kişiselleştirilmesi için içerik (_Eylemler_) hakkındaki bilgileri (_özellikleri_) gönderin. Kişiselleştirici, en üstteki eylemle yanıt verir.
-* Sıralamanın genellikle 0 ile 1 arasında bir sayı olarak ne kadar iyi çalıştığı hakkında kişiselleştirmeden geri bildirim gönderin (önceki bölüm, 1 ve 1 ' i ifade etti). 
+* Derecelendirmenin bir [geri alma puanı](concept-rewards.md)olarak ne kadar iyi çalıştığı hakkında kişiselleştiriciye geri bildirim gönderin. 
 
 ![Kişiselleştirmeye yönelik temel olay sırası](media/what-is-personalizer/personalization-intro.png)
 

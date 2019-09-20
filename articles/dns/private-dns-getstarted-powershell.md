@@ -1,20 +1,20 @@
 ---
-title: Azure PowerShell kullanarak Azure DNS özel bölge oluşturma
+title: Hızlı başlangıç-Azure PowerShell kullanarak bir Azure özel DNS bölgesi oluşturma
 description: Bu makalede, Azure DNS özel bir DNS bölgesi ve kaydı oluşturup test edersiniz. Bu kılavuzda, Azure PowerShell kullanarak ilk özel DNS bölgenizi ve kaydınızı oluşturup yönetmeniz için adım adım talimatlar sunulmaktadır.
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: article
-ms.date: 06/14/2019
+ms.topic: quickstart
+ms.date: 09/20/2019
 ms.author: victorh
-ms.openlocfilehash: 6603929fa7b4c597a846fc299577a9682d8f54e0
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
-ms.translationtype: MT
+ms.openlocfilehash: b98b4a9c98f7b9477fa97f18702315b0431e4ac8
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854129"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154822"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-powershell"></a>Azure PowerShell kullanarak Azure DNS özel bölge oluşturma
+# <a name="create-an-azure-private-dns-zone-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure özel DNS bölgesi oluşturma
 
 [!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
@@ -27,7 +27,7 @@ DNS bölgesi belirli bir etki alanıyla ilgili DNS kayıtlarını barındırmak 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * DNS özel bölgesi oluşturma
+> * Özel bir DNS bölgesi oluşturma
 > * Test amaçlı sanal makineleri oluşturma
 > * Ek bir DNS kaydı oluşturma
 > * Özel bölgeyi test etme
@@ -36,7 +36,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Tercih ederseniz, [Azure CLI](private-dns-getstarted-cli.md)kullanarak bu yordamı tamamlayabilirsiniz.
+Tercih ederseniz, [Azure CLI](private-dns-getstarted-cli.md)kullanarak bu hızlı başlangıcı tamamlayabilirsiniz.
 
 ## <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
 
@@ -46,7 +46,7 @@ Tercih ederseniz, [Azure CLI](private-dns-getstarted-cli.md)kullanarak bu yordam
 New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
-## <a name="create-a-dns-private-zone"></a>DNS özel bölgesi oluşturma
+## <a name="create-a-private-dns-zone"></a>Özel bir DNS bölgesi oluşturma
 
 DNS bölgesi, `New-AzPrivateDnsZone` cmdlet’i kullanılarak oluşturulur.
 
@@ -209,7 +209,5 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, özel bir DNS bölgesi dağıtmış, bir DNS kaydı oluşturmuş ve bölgeyi test edersiniz.
-Artık özel DNS bölgeleri hakkında daha fazla bilgi edinebilirsiniz.
-
-* [Azure DNS'yi özel etki alanları için kullanma](private-dns-overview.md)
+> [!div class="nextstepaction"]
+> [Azure DNS Özel Bölgeleri senaryolar](private-dns-scenarios.md)

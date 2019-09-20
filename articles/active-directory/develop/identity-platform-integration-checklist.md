@@ -16,12 +16,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4e7b89fbb4b6343db62cf3476f3c35220b12649b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1f4afe1c31ae964aab82664de12144185069af5a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104037"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145668"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform en iyi uygulamaları ve önerileri
 
@@ -78,6 +78,7 @@ Uygulamanızın [Microsoft Identity platformu](https://docs.microsoft.com/azure/
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) |  Mobil uygulamalar için, her platformu uygulama kayıt deneyimini kullanarak yapılandırın. Uygulamanızın çoklu oturum açma için Microsoft Authenticator veya Microsoft Şirket Portalı avantajlarından yararlanması için, uygulamanızın yapılandırılmış bir "aracı yeniden yönlendirme URI 'SI" olması gerekir. Bu sayede, kimlik doğrulamasından sonra Microsoft 'un uygulamanıza denetim döndürmesini sağlar. Her platformu yapılandırırken, uygulama kayıt deneyimi süreç boyunca size yol gösterir. Çalışan bir örnek indirmek için hızlı başlangıcı kullanın. İOS 'ta, mümkün olduğunda aracılar ve sistem Web Görünümü ' ni kullanın.|
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) |  Web Apps veya Web API 'Lerinde, hesap başına tek bir belirteç önbelleği tutun.  Web Apps için, belirteç önbelleğinin hesap KIMLIĞI tarafından anahtarlanır olması gerekir.  Web API 'Leri için, bu hesabın API 'yi çağırmak için kullanılan belirtecin karması ile anahtarlanır olması gerekir. MSAL.NET, .NET Framework ve .NET Core alt platformlarında özel belirteç önbelleği serileştirmesini sağlar. Güvenlik ve performans nedenleriyle, önerimiz Kullanıcı başına bir önbellek serileştirilmemiz olur. Daha fazla bilgi için [belirteç önbelleği serileştirme](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)hakkında makalesini okuyun.|
 | ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) | Uygulamanızın gerektirdiği veriler [Microsoft Graph](https://developer.microsoft.com/graph)aracılığıyla kullanılabiliyorsa, bireysel apı yerine Microsoft Graph uç noktasını kullanarak bu veriler için izinleri isteyin. |
+| ![kutusunun](./media/active-directory-integration-checklist/checkbox-two.svg) |Erişim belirteci değerine bakmayın veya bir istemci olarak ayrıştırmaya çalışın.  Bunlar, hiçbir uyarı olmadan değerleri, biçimleri değiştirebilir veya hatta şifreli hale gelebilir-istemci hakkında bir şey öğrenmek veya Microsoft Graph çağırmak gerekiyorsa, her zaman id_token kullanın.  Yalnızca Web API 'Leri, erişim belirteçlerini ayrıştırmalıdır (Bu, biçimi ve şifreleme anahtarlarını ayarlamaklardır). |
 
 ## <a name="end-user-experience"></a>Son kullanıcı deneyimi
 

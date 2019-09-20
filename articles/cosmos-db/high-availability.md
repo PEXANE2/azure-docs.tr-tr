@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4b039e777748499e1b9a2a120e9498d94066b735
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ab6544e4535f2d2c2e88284f61251f177d457a84
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688276"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146656"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
@@ -70,9 +70,9 @@ Azure Cosmos DB, bölgesel kesintiler sırasında yüksek kullanılabilirlik ve 
 
 Kullanılabilirlik alanı desteğiyle Azure Cosmos DB, çoğaltmaların belirli bir bölgedeki birden çok bölgeye yerleştirildiğinden emin olur ve bu da, en fazla başarısızlık sırasında yüksek kullanılabilirlik ve esneklik sağlar. Bu yapılandırmadaki gecikme ve diğer SLA 'Lara yönelik bir değişiklik yoktur. Tek bir bölge hatası durumunda, bölge artıklığı RPO = 0 ve RTO = 0 ile kullanılabilirlik için tam veri dayanıklılığı sağlar. 
 
-Bölge artıklığı, [çok yöneticili çoğaltma](how-to-multi-master.md) özelliği için *ek bir özelliktir* . Bölgesel dayanıklılık elde etmek için tek başına bölge artıklığı güvenlenemez. Örneğin, bölgeler genelinde bölgesel kesintiler veya düşük gecikme erişimi durumunda, bölge yedekliliğe ek olarak birden fazla yazma bölgesi olması önerilir. 
+Bölge artıklığı, [çok yöneticili çoğaltma](how-to-multi-master.md) özelliği için *ek bir özelliktir* . Bölgesel dayanıklılık sağlamak için alan yedekliliği tek başına yeterli değildir. Örneğin, bölgeler genelinde bölgesel kesintiler veya düşük gecikme erişimi durumunda, bölge yedekliliğe ek olarak birden fazla yazma bölgesi olması önerilir. 
 
-Azure Cosmos hesabınız için çok bölgeli yazma yapılandırırken, ek ücret ödemeden bölge yedekliliği seçebilirsiniz. Aksi takdirde, lütfen bölge artıklığı desteğinin fiyatlandırmasıyla ilgili olarak aşağıdaki nota bakın. Bölgeyi kaldırarak ve bölge yedekliği etkinken yeniden ekleyerek, Azure Cosmos hesabınızın mevcut bir bölgesinde bölge yedekliliği etkinleştirebilirsiniz.
+Azure Cosmos hesabınız için çok bölgeli yazma yapılandırırken, ek ücret ödemeden bölge yedekliliği seçebilirsiniz. Aksi takdirde, lütfen bölge artıklığı desteğinin fiyatlandırmasıyla ilgili olarak aşağıdaki nota bakın. Azure Cosmos hesabınızın mevcut bir bölgesini kaldırarak ve alan yedekliliği etkin durumdayken tekrar ekleyerek bu bölgede alan yedekliliğini etkinleştirebilirsiniz.
 
 Bu özellik aşağıdaki Azure bölgelerinde kullanılabilir:
 
@@ -106,13 +106,26 @@ Aşağıdaki tabloda çeşitli hesap yapılandırmalarının yüksek kullanılab
 > Çok bölgeli bir Azure Cosmos hesabı için kullanılabilirlik alanı desteğini etkinleştirmek üzere, hesabın çoklu yöneticili yazmaları etkinleştirilmiş olması gerekir.
 
 
-Yeni veya mevcut Azure Cosmos hesaplarına bölge eklerken bölge yedekliliği etkinleştirebilirsiniz. Şu anda yalnızca Azure portal, PowerShell ve Azure Resource Manager şablonlarını kullanarak bölge yedekliliği etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge yedekliliği etkinleştirmek için `isZoneRedundant` `true` bayrağını belirli bir konum için ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki PowerShell kod parçacığı "Güneydoğu Asya" bölgesi için bölge yedekliliği sunar:
+Yeni veya mevcut Azure Cosmos hesaplarına bölge eklerken bölge yedekliliği etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge yedekliliği etkinleştirmek için `isZoneRedundant` `true` bayrağını belirli bir konum için ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki PowerShell kod parçacığı "Güneydoğu Asya" bölgesi için bölge yedekliliği sunar:
 
 ```powershell
 $locations = @( 
     @{ "locationName"="Southeast Asia"; "failoverPriority"=0; "isZoneRedundant"= "true" }, 
     @{ "locationName"="East US"; "failoverPriority"=1 } 
 ) 
+```
+
+Aşağıdaki komut, "EastUS" ve "WestUS2" bölgeleri için bölge artıklığını nasıl etkinleştireceğinizi göstermektedir:
+
+```azurecli-interactive
+az cosmosdb create \
+  --name mycosmosdbaccount \
+  --resource-group myResourceGroup \
+  --kind GlobalDocumentDB \
+  --default-consistency-level Session \
+  --locations regionName=EastUS failoverPriority=0 isZoneRedundant=True \
+  --locations regionName=WestUS2 failoverPriority=1 isZoneRedundant=True \
+  --enable-multiple-write-locations
 ```
 
 Azure Cosmos hesabı oluştururken Azure portal kullanarak Kullanılabilirlik Alanları etkinleştirebilirsiniz. Bir hesap oluşturduğunuzda, **coğrafi yedeklilik**, **çok bölgeli yazmaları**etkinleştirdiğinizden emin olun ve kullanılabilirlik alanları desteklendiği bir bölge seçin: 

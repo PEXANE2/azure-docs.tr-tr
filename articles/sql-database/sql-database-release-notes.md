@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: sstein
-ms.openlocfilehash: 232f8b13174aed19477ee0b139c83fba439049ac
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 90482fc859c4dcdd04a70e91da2fd6adb079a795
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101542"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162264"
 ---
 # <a name="sql-database-release-notes"></a>SQL veritabanı sürüm notları
 
@@ -26,12 +26,12 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 
 | Özellik | Ayrıntılar |
 | ---| --- |
-| [Azure özel bağlantısı](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Özel bağlantı, ağ mimarisini basitleştirir ve Azure 'daki uç noktalar arasındaki bağlantının güvenliğini sağlarken, bu sayede Internet 'te pozlamayı ortadan kaldırır. Özel bağlantı Ayrıca, Azure 'da kendi hizmetlerinizi oluşturmanıza ve oluşturmanıza de olanak sağlar. |
+| [Azure özel bağlantısı](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Özel Bağlantı, ağ mimarisini yalınlaştırır ve verileri Azure ağında tutarak internete maruz kalma riskini ortadan kaldırıp Azure uç noktaları arasındaki bağlantıyı güvenli bir hale getirir. Ayrıca Özel Bağlantı sayesinde Azure’da kendi hizmetlerinizi oluşturabilirsiniz. |
 | Tek veritabanları ve elastik havuzlarla hızlandırılmış veritabanı kurtarma | Bilgi için bkz. [hızlandırılmış veritabanı kurtarma](sql-database-accelerated-database-recovery.md).|
 |Yaklaşık sayı farklı|Daha fazla bilgi için bkz. [yaklaşık Count DISTINCT](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
 |Rowstore 'da Batch modu (uyumluluk düzeyi 150 altında)|Bilgi için bkz. [rowstore 'Da Batch modu](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
 | Veri bulma ve sınıflandırma  |Bilgi için bkz. [Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması](sql-database-data-discovery-and-classification.md).|
-| Elastik veritabanı işleri | Bilgi için bkz. [elastik Işler oluşturma, yapılandırma ve yönetme](elastic-jobs-overview.md). |
+| Esnek veritabanı işleri | Bilgi için bkz. [elastik Işler oluşturma, yapılandırma ve yönetme](elastic-jobs-overview.md). |
 | Esnek sorgular | Daha fazla bilgi için bkz. [elastik sorguya genel bakış](sql-database-elastic-query-overview.md). |
 | Elastik işlemler | [Bulut veritabanları arasında dağıtılmış işlemler](sql-database-elastic-transactions-overview.md). |
 |Bellek Izni geri bildirimi (satır modu) (uyumluluk düzeyi 150 altında)|Bilgi için bkz. [bellek verme geri bildirimi (satır modu)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
@@ -60,6 +60,7 @@ Bu makalede, şu anda genel önizleme aşamasında olan SQL veritabanı özellik
 
 ### <a name="managed-instance-h2-2019-updates"></a>Yönetilen örnek H2 2019 güncelleştirmeleri
 
+- [Otomatik yük devretme grupları](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/) , birincil örnekten diğer bir bölgedeki ikincil örneğe tüm veritabanlarını çoğaltmanıza olanak sağlar.
 - Yönetilen örnek davranışınızı [Genel izleme bayraklarıyla](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)yapılandırın.
 
 ### <a name="managed-instance-h1-2019-updates"></a>Yönetilen örnek H1 2019 güncelleştirmeleri

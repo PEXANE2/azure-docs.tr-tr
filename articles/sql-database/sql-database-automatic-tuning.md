@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: d782c2d9dff45dc152cab2246c95dda063bfd900
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b6c2885f0919752f7ede7f5a15121be2f8a953ca
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130382"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162328"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL veritabanı 'nda otomatik ayarlama
 
@@ -68,7 +68,7 @@ Azure SQL veritabanında bulunan otomatik ayarlama seçenekleri şunlardır:
 | Otomatik ayarlama seçeneği | Tek veritabanı ve havuza alınmış veritabanı desteği | Örnek veritabanı desteği |
 | :----------------------------- | ----- | ----- |
 | **Dizin oluşturma** -iş yükünüzün performansını iyileştirebilecek dizinleri tanımlar, dizinler oluşturur ve sorguların performansının iyileştirildiğini otomatik olarak doğrular. | Evet | Hayır | 
-| **Drop Index** -benzersiz dizinler ve uzun süredir kullanılmayan dizinler dışında, yedekli ve yinelenen dizinleri her gün tanımlar (> 90 gün). Bu seçenekte, seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. | Evet | Hayır |
+| **Drop Index** -benzersiz dizinler ve uzun süredir kullanılmayan dizinler dışında, yedekli ve yinelenen dizinleri her gün tanımlar (> 90 gün). Bu seçeneğin bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına lütfen unutmayın. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez. | Evet | Hayır |
 | **son ıyı planı zorla** (otomatik plan düzeltmesi)-önceki iyi plandan daha yavaş bir yürütme planı kullanarak SQL sorgularını tanımlar ve gerileme planı yerine bilinen son iyi planı kullanarak sorgular. | Evet | Evet |
 
 Otomatik ayarlama, veritabanı performanslarını iyileştirebilen ve bunları [Azure Portal](sql-database-advisor-portal.md)gösteren ve [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) [Ile ortaya çıkaran son iyi plan önerilerini tanımlar, Drop Index ve zorlar. REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). EN son ıyı hale zorlama planı ve T-SQL aracılığıyla otomatik ayarlama seçeneklerini yapılandırma hakkında daha fazla bilgi edinmek için bkz. otomatik [ayarlama otomatik plan düzeltmesini tanıtır](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).

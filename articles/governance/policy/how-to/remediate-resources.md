@@ -1,22 +1,22 @@
 ---
 title: Uyumlu olmayan kaynakları düzeltme
-description: Bu yöntem Azure İlkesi'nde ilkelerine uyumlu olmayan kaynakları düzeltme size kılavuzluk eder.
+description: Bu kılavuzda, Azure Ilkesindeki ilkelerle uyumlu olmayan kaynakların düzeltilme adımları gösterilmektedir.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 40658412f19c444cfa06f5663f567a78453c7e9a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d6ca7827200815cf9b9b1c7ac697d06f9c6b306d
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241149"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147056"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure İlkesi ile uyumlu olmayan kaynakları Düzelt
 
-İçin uyumlu olmayan kaynakları bir **Deployıfnotexists** İlkesi koyabilir ile uyumlu bir duruma **düzeltme**. Düzeltme, Azure Ilkesini, var olan kaynaklarınızın atanmış ilkesinin **Deployifnotexists** efektini çalıştıracak şekilde karşılaştırarak gerçekleştirilir. Bu makalede, Azure Ilkesini anlamak ve düzeltmeyi gerçekleştirmek için gereken adımlar gösterilir.
+Bir **Deployifnotexists** veya **MODIFY** Policy ile uyumlu olmayan kaynaklar, **Düzeltme**aracılığıyla uyumlu bir duruma yerleştirilebilir. Düzeltme, Azure Ilkesini, mevcut kaynaklarınız üzerinde atanan ilkenin **Deployifnotexists** efektini veya etiket **işlemlerini** çalıştırmak üzere karşılaştırarak gerçekleştirilir. Bu makalede, Azure Ilkesini anlamak ve düzeltmeyi gerçekleştirmek için gereken adımlar gösterilir.
 
 ## <a name="how-remediation-security-works"></a>Düzeltme güvenliği nasıl çalışır
 
@@ -26,11 +26,11 @@ Azure Ilkesi, her atama için yönetilen bir kimlik oluşturur, ancak yönetilen
 ![Yönetilen kimlik - eksik rol](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Bir kaynak tarafından değiştirilirse **Deployıfnotexists** ilke ataması veya şablon kapsamı dışında ilke ataması kapsamı dışında kaynaklara erişir özellikleri, atamanın yönetilen kimlik olmalıdır[el ile erişim izni](#manually-configure-the-managed-identity) veya düzeltme dağıtımı başarısız olur.
+> **Deployifnotexists** veya **MODIFY** tarafından değiştirilen bir kaynak ilke atamasının kapsamı dışındaysa veya şablon, ilke atamasının kapsamı dışında kaynaklardaki özelliklere erişirse, atamanın yönetilen kimliği olmalıdır [ el ile erişim izni verilmesi](#manually-configure-the-managed-identity) veya düzeltme dağıtımı başarısız olur.
 
 ## <a name="configure-policy-definition"></a>İlke tanımı'nı yapılandırma
 
-Rol tanımlamak için ilk adımıdır, **Deployıfnotexists** , dahil şablon içeriği başarıyla dağıtmak için ilke tanımında gerekir. Altında **ayrıntıları** özelliği eklemek bir **roleDefinitionIds** özelliği. Bu özellik, ortamınızdaki eşleşen dizeler dizisidir. Tam bir örnek için bkz: [Deployıfnotexists örnek](../concepts/effects.md#deployifnotexists-example).
+İlk adım, dahil edilen şablonunuzun içeriğini başarılı bir şekilde dağıtmak için, **dağıtım** ve ilke tanımında **yapılan ihtiyaçları karşılayan** rolleri tanımlamaktır. Altında **ayrıntıları** özelliği eklemek bir **roleDefinitionIds** özelliği. Bu özellik, ortamınızdaki eşleşen dizeler dizisidir. Tam bir örnek için, [Deployifnotexists örneğine](../concepts/effects.md#deployifnotexists-example) veya [değiştirme örneklerine](../concepts/effects.md#modify-examples)bakın.
 
 ```json
 "details": {
@@ -42,7 +42,7 @@ Rol tanımlamak için ilk adımıdır, **Deployıfnotexists** , dahil şablon i�
 }
 ```
 
-**roleDefinitionIds** tam kaynak kimliğini kullanır ve kısa verdiği hızlı tepkilerden faydalanamamış **roleName** rolü. Ortamınızı 'Katkıda bulunan' rolü için kimliği almak için aşağıdaki kodu kullanın:
+**Roledefinitionıds** özelliği, tam kaynak tanımlayıcıyı kullanır ve rolün kısa **roleName** özelliğini almaz. Ortamınızı 'Katkıda bulunan' rolü için kimliği almak için aşağıdaki kodu kullanın:
 
 ```azurecli-interactive
 az role definition list --name 'Contributor'
@@ -126,7 +126,7 @@ Rol atama için yönetilen kimlik eklemek için aşağıdaki adımları izleyin:
 
 ### <a name="create-a-remediation-task-through-portal"></a>Portal aracılığıyla düzeltme görevi oluşturma
 
-Değerlendirme, ilke atamasıyla sırasında **Deployıfnotexists** etkisi, uyumlu olmayan kaynakları olup olmadığını belirler. Uyumlu olmayan kaynakları bulunduğunda ayrıntıları sağlanır **düzeltme** sayfası. Uyumlu olmayan kaynakları olan ilkeleri listesinde birlikte tetiklemeye yönelik seçeneği olan bir **düzeltme görev**. Bir dağıtımın ne oluşturur, bu seçenek, **Deployıfnotexists** şablonu.
+Değerlendirme sırasında, **Deployifnotexists** veya **değişiklik** efektlerine sahip ilke ataması uyumlu olmayan kaynaklar olup olmadığını belirler. Uyumlu olmayan kaynakları bulunduğunda ayrıntıları sağlanır **düzeltme** sayfası. Uyumlu olmayan kaynakları olan ilkeleri listesinde birlikte tetiklemeye yönelik seçeneği olan bir **düzeltme görev**. Bu seçenek, **Deployifnotexists** şablonundan veya **değiştirme** işlemlerinden bir dağıtım oluşturur.
 
 Oluşturmak için bir **düzeltme görev**, şu adımları izleyin:
 
@@ -138,7 +138,7 @@ Oluşturmak için bir **düzeltme görev**, şu adımları izleyin:
 
    ![Ilke sayfasında düzeltme ' yi seçin](../media/remediate-resources/select-remediation.png)
 
-1. Tüm **Deployıfnotexists** uyumlu olmayan kaynakları olan ilke atamaları eklenir **düzeltmeye yönelik ilkeler** sekmesi ve veri tablosu. Bir ilkeyle uyumlu olmayan kaynakları tıklayın. **Yeni bir düzeltme görev** sayfası açılır.
+1. Tüm **Deployifnotexists** ve uyumlu olmayan kaynaklarla ilke atamalarını **değiştirme** , sekme ve veri tablosunu düzeltme **ilkelerine** dahildir. Bir ilkeyle uyumlu olmayan kaynakları tıklayın. **Yeni bir düzeltme görev** sayfası açılır.
 
    > [!NOTE]
    > Açmak için alternatif bir yolu **düzeltme görev** sayfasıdır bulup ilkeden tıklayarak **Uyumluluk** sayfasında'a tıklayın **düzeltme Görevi Oluştur** düğmesi.
@@ -161,7 +161,7 @@ Dağıtılan kaynakları aracılığıyla bir **düzeltme görev** eklenir **da�
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Azure CLı aracılığıyla bir düzeltme görevi oluşturma
 
-Azure CLI ile bir **Düzeltme görevi** oluşturmak için `az policy remediation` komutlarını kullanın. Abonelik `{subscriptionId}` kimliğinizle ve `{myAssignmentId}` **deployifnotexists** ilke atama Kimliğinizle değiştirin.
+Azure CLI ile bir **Düzeltme görevi** oluşturmak için `az policy remediation` komutlarını kullanın. Abonelik `{subscriptionId}` kimliğinizle ve `{myAssignmentId}` **deployıfnotexists** ile değiştirin ya da ilke atama kimliğini **değiştirin** .
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -174,7 +174,7 @@ Diğer düzeltme komutları ve örnekleri için, [az Policy düzeltme](/cli/azur
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Azure PowerShell aracılığıyla düzeltme görevi oluşturma
 
-Azure PowerShell bir **Düzeltme görevi** oluşturmak için `Start-AzPolicyRemediation` komutları kullanın. Abonelik `{subscriptionId}` kimliğinizle ve `{myAssignmentId}` **deployifnotexists** ilke atama Kimliğinizle değiştirin.
+Azure PowerShell bir **Düzeltme görevi** oluşturmak için `Start-AzPolicyRemediation` komutları kullanın. Abonelik `{subscriptionId}` kimliğinizle ve `{myAssignmentId}` **deployıfnotexists** ile değiştirin ya da ilke atama kimliğini **değiştirin** .
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

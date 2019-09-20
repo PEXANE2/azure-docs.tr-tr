@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 846239c0122f3f2cadc40e7965ae690d4ba3e538
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 737b049aa94ede2ffb0c1035b4cadfbed32d7dc4
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899841"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145587"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight üzerinde Apache Spark Application Insights telemetri günlüklerini çözümleme
 
@@ -39,7 +39,7 @@ Bu belgeyi geliştirmek ve test etmek için aşağıdaki kaynaklar kullanılmı�
 
 Aşağıdaki diyagramda bu örneğin hizmet mimarisi gösterilmektedir:
 
-![Application Insights BLOB depolama alanına akan veri akışını gösteren diyagram, sonra HDInsight 'ta Spark tarafından işlendi](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
+![Application Insights blob depolamaya ve Spark 'a kadar veri akışı](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -72,7 +72,7 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
 1. [Azure Portal](https://portal.azure.com)HDInsight kümesinde Spark ' ı seçin. **Hızlı bağlantılar** bölümünde **küme panoları**' nı seçin ve ardından Cluster Dashboard__ bölümünden **Jupyter Notebook** ' ı seçin.
 
-    ![Küme panoları](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+    ![Azure portal kümesi panosu pyspark](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 
 2. Jupi sayfasının sağ üst köşesinde, **Yeni**ve ardından **pyspark**' ı seçin. Python tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi açılır.
 
@@ -215,7 +215,8 @@ Azure Depolama hesabını mevcut bir kümeye eklemek için, [ek depolama hesapla
 
 1. [Azure Portal](https://portal.azure.com)HDInsight kümesinde Spark ' ı seçin. **Hızlı bağlantılar** bölümünde **küme panoları**' nı seçin ve ardından Cluster Dashboard__ bölümünden **Jupyter Notebook** ' ı seçin.
 
-    ![Küme panoları](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+    ![Azure portal küme panosu Scala](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
+
 2. Jupi sayfasının sağ üst köşesinde, **Yeni**' yi ve ardından **Scala**' yı seçin. Scala tabanlı Jupyter Notebook içeren yeni bir tarayıcı sekmesi görüntülenir.
 3. Sayfada ilk alanda ( **hücre**olarak adlandırılır) aşağıdaki metni girin:
 

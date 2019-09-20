@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877180"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147354"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
 
@@ -25,13 +25,17 @@ ms.locfileid: "69877180"
 
 * Zengin sorgular uygulayarak **verileri çeşitli uç noktalara yönlendirmeden önce verileri filtreleme** . İleti yönlendirme, ileti özellikleri ve ileti gövdesinde, Device ikizi etiketleri ve Device ikizi özellikleri ile sorgulama yapmanıza olanak sağlar. [İleti yönlendirmesinde sorguları](iot-hub-devguide-routing-query-syntax.md)kullanma hakkında daha fazla bilgi edinin.
 
-IoT Hub, ileti yönlendirmenin çalışması için bu hizmet uç noktalarına yazma erişimi gerektirir. Uç noktalarınızı Azure portal aracılığıyla yapılandırırsanız, sizin için gerekli izinler eklenir. Hizmetlerinizi beklenen aktarım hızını destekleyecek şekilde yapılandırmadığınızdan emin olun. IoT çözümünüzü ilk kez yapılandırdığınızda, ek uç noktalarınızı izlemeniz ve gerçek yük için gereken ayarlamaları yapmanız gerekebilir.
+IoT Hub, ileti yönlendirmenin çalışması için bu hizmet uç noktalarına yazma erişimi gerektirir. Uç noktalarınızı Azure portal aracılığıyla yapılandırırsanız, sizin için gerekli izinler eklenir. Hizmetlerinizi beklenen aktarım hızını destekleyecek şekilde yapılandırmadığınızdan emin olun. Örneğin, özel bir uç nokta olarak Event Hubs kullanıyorsanız, bu olay hub 'ının **üretilen iş birimlerini** , IoT Hub ileti yönlendirme aracılığıyla gönderilmesini planladığınız olayların giriş işlemesini işleyebilecek şekilde yapılandırmanız gerekir. Benzer şekilde, bir Service Bus kuyruğu bitiş noktası olarak kullanıldığında, bir sıranın, tüketicileri görünene kadar tüm verileri tutabileceği şekilde **maksimum boyutu** yapılandırmanız gerekir. IoT çözümünüzü ilk kez yapılandırdığınızda, ek uç noktalarınızı izlemeniz ve gerçek yük için gereken ayarlamaları yapmanız gerekebilir.
 
 IoT Hub, protokollerde birlikte çalışabilirlik için tüm cihazdan buluta mesajlaşma için [ortak bir biçim](iot-hub-devguide-messages-construct.md) tanımlar. Bir ileti aynı uç noktayı işaret eden birden çok yol ile eşleşiyorsa, IoT Hub ileti yalnızca bir kez bu uç noktaya teslim edilir. Bu nedenle, Service Bus kuyruğunuza veya konusunda Yinelenenleri kaldırmayı yapılandırmanız gerekmez. Bölümlenmiş sıralarda, Bölüm benzeşimi ileti sıralamasını garanti eder. [İleti yönlendirmeyi nasıl yapılandıracağınızı](tutorial-routing.md)öğrenmek için bu öğreticiyi kullanın.
 
 ## <a name="routing-endpoints"></a>Yönlendirme uç noktaları
 
-IoT Hub 'ı, Event Hubs ile uyumlu bir varsayılan yerleşik uç noktaya (**iletiler/olaylar**) sahiptir. Aboneliğinizdeki diğer hizmetleri IoT Hub bağlayarak, iletileri yönlendirmek için [Özel uç noktalar](iot-hub-devguide-endpoints.md#custom-endpoints) oluşturabilirsiniz. IoT Hub Şu anda özel uç noktalar olarak aşağıdaki hizmetleri desteklemektedir:
+IoT Hub 'ı, Event Hubs ile uyumlu bir varsayılan yerleşik uç noktaya (**iletiler/olaylar**) sahiptir. Aboneliğinizdeki diğer hizmetleri IoT Hub bağlayarak, iletileri yönlendirmek için [Özel uç noktalar](iot-hub-devguide-endpoints.md#custom-endpoints) oluşturabilirsiniz. 
+
+Her ileti, yönlendirme sorguları eşleşen tüm uç noktalara yönlendirilir. Diğer bir deyişle, bir ileti birden çok uç noktaya yönlendirilebilir.
+
+IoT Hub Şu anda özel uç noktalar olarak aşağıdaki hizmetleri desteklemektedir:
 
 ### <a name="built-in-endpoint"></a>Yerleşik uç nokta
 
@@ -43,9 +47,9 @@ IoT Hub, [Apache avro](https://avro.apache.org/) BIÇIMINDEKI ve JSON biçiminde
 
 ![BLOB depolama uç noktası kodlama](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub Ayrıca, blob Storage üzerinde oluşturulmuş [hiyerarşik ad alanı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)etkinleştirilmiş depolama hesapları olan ADLS 2. hesaplara yönlendirme iletilerini destekler. Bu özellik genel önizlemede ve Batı ABD 2 ve Orta Batı ABD yeni ADLS 2. hesapları için kullanılabilir. Bu özelliği, yakında tüm bulut bölgelerinde kullanıma sunacağız.
+IoT Hub Ayrıca, blob Storage üzerinde oluşturulmuş [hiyerarşik ad alanı](../storage/blobs/data-lake-storage-namespace.md)etkinleştirilmiş depolama hesapları olan [Azure Data Lake Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) (ADLS) Gen2 hesaplarına yönlendirme iletilerini destekler. Bu özellik genel önizlemede ve Batı ABD 2 ve Orta Batı ABD yeni ADLS 2. hesapları için kullanılabilir. Lütfen önizlemek için [kaydolun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u) . Bu özelliği, yakında tüm bulut bölgelerinde kullanıma sunacağız. 
 
-Toplu iş iletileri IoT Hub ve yığın belirli bir boyuta ulaştığında veya belirli bir süre geçtiğinde bir blob 'a veri yazar. IoT Hub varsayılan olarak aşağıdaki dosya adlandırma kuralına sahiptir:
+Toplu iş iletileri IoT Hub ve yığın belirli bir boyuta ulaştığında veya belirli bir süre geçtiğinde bir blob 'a veri yazar. IoT Hub varsayılan olarak aşağıdaki dosya adlandırma kuralına sahiptir: 
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}

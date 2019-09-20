@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: d13ee8c46df9433530df1d26a86978daab709a52
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 27b554159fca2043fbd0c853e260a66294c10387
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883061"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162304"
 ---
 # <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak tek ve havuza alınmış veritabanları için sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
@@ -54,7 +54,7 @@ SQL veritabanı hizmeti, tek ve havuza alınmış veritabanları için veritaban
 4. Geçerli IP adresinizi yeni bir sunucu düzeyi IP güvenlik duvarı kuralına eklemek için araç çubuğunda **istemci IP 'Si Ekle** ' yi seçin. Sunucu düzeyinde bir IP güvenlik duvarı kuralı, tek bir IP adresi veya IP adresi aralığı için 1433 bağlantı noktasını açabilir.
 
    > [!IMPORTANT]
-   > Varsayılan olarak, SQL Veritabanı güvenlik duvarı üzerinden erişim tüm Azure hizmetleri için etkindir. Tüm Azure hizmetleri için devre dışı bırakmak üzere bu sayfada **kapalı** ' yı seçin.
+   > Varsayılan olarak, SQL veritabanı güvenlik duvarı üzerinden erişim tüm Azure hizmetleri için devre dışıdır. Tüm Azure hizmetleri için erişimi etkinleştirmek istiyorsanız bu sayfada **Açık '** ı seçin.
    >
 
 5. **Kaydet**’i seçin. SQL veritabanı sunucusunda 1433 numaralı bağlantı noktasını açan geçerli IP adresiniz için sunucu düzeyinde bir IP güvenlik duvarı kuralı oluşturulur.

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 7cd7bcd4bd10152ecd2fa60e4e8418f17db16b61
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: affd62bd7cae0103b7d2510022fc12a66d26c865
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967843"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155605"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Java ile Service Bus konuları ve abonelikleri kullanma
 
@@ -41,7 +41,7 @@ Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti göndermek ve ard�
 ## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı kullanmak için yapılandırma Service Bus
 Bu örneği oluşturmadan önce [Java Için Azure SDK 'sını][Azure SDK for Java] yüklediğinizden emin olun. Çakışan Küreler kullanıyorsanız, Java için Azure SDK 'sını içeren [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] yükleyebilirsiniz. Ardından projenize **Java için Microsoft Azure kitaplıklarını** ekleyebilirsiniz:
 
-![Tutulma derleme yolundaki kitaplıklar](media/service-bus-java-how-to-use-topics-subscriptions/eclipselibs.png)
+![Çakışan Küreler projenize Java için Microsoft Azure kitaplıkları ekleyin](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
 
 Ayrıca, aşağıdaki JARs öğesini Java derleme yoluna eklemeniz gerekir:
 

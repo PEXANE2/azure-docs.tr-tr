@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 5f7fd47a096ddd57150a466f85fabcfc2f7045d9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564877"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146615"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway nedir?
 
@@ -35,7 +35,7 @@ Application Gateway, ağ geçidinde SSL/TLS sonlandırmasını destekler ve bu s
 
 ## <a name="autoscaling"></a>Otomatik ölçeklendirme
 
-Standard_v2 veya WAF_v2 SKU altında bulunan Application Gateway veya WAF dağıtımları otomatik ölçeklendirmeyi destekler ve değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Application Gateway standard_v2 ve WAF_v2 özellikleri hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md).
+Standard_v2 veya WAF_v2 SKU altında bulunan Application Gateway veya WAF dağıtımları otomatik ölçeklendirmeyi destekler ve değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Application Gateway Standard_v2 ve WAF_v2 özellikleri hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="zone-redundancy"></a>Bölge artıklığı
 
@@ -47,11 +47,11 @@ Standard_v2 veya WAF_v2 SKU 'SU üzerinde Application Gateway VIP yalnızca stat
 
 ## <a name="web-application-firewall"></a>Web uygulaması güvenlik duvarı
 
-Web uygulaması güvenlik duvarı (WAF), web uygulamalarınızda açıklardan yararlanmaya ve güvenlik açıklarına karşı merkezi koruma sağlayan bir Application Gateway özelliğidir. WAF bu işlemi [OWASP (Açık Web Uygulaması Güvenlik Projesi) çekirdek kural kümeleri](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 veya 2.2.9’daki kurallara göre yapar. 
+Web uygulaması güvenlik duvarı (WAF), web uygulamalarınızda açıklardan yararlanmaya ve güvenlik açıklarına karşı merkezi koruma sağlayan bir Application Gateway özelliğidir. WAF, [OWASP (açık Web uygulaması güvenlik projesi) çekirdek kural kümeleri](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (yalnızca WAF_v2), 3,0 ve 2.2.9 içindeki kurallara dayalıdır. 
 
 Web uygulamaları, bilinen yaygın güvenlik açıklarından yararlanan kötü amaçlı saldırıların giderek daha fazla hedefi olmaktadır. Bu açıklardan yararlanma örnekleri arasında SQL ekleme saldırıları, siteler arası komut dosyası saldırıları yaygındır. Uygulama kodunda bu tür saldırıların önlenmesi zor olabilir ve uygulama topolojisinin birçok katmanında ayrıntılı bakım, düzeltme eki uygulama ve izleme işlemleri gerektirebilir. Merkezi bir web uygulaması güvenlik duvarı, güvenlik yönetimini çok daha kolay hale getirir ve yetkisiz erişim ya da izinsiz giriş tehditlerine karşı uygulama yöneticilerine daha iyi güvence verir. Bir WAF çözümü, bilinen bir güvenlik açığına merkezi bir konumda düzeltme eki uygulayarak güvenlik tehdidine karşı, web uygulamalarının her birinin güvenliğini sağlamaya göre daha hızlı tepki verebilir. Var olan uygulama ağ geçitleri, web uygulaması güvenlik duvarı bulunan bir uygulama ağ geçidine kolaylıkla dönüştürülebilir.
 
-Daha fazla bilgi için [Application Gateway) Web uygulaması güvenlik duvarı (WAF)](https://docs.microsoft.com/azure/application-gateway/waf-overview)bölümüne bakın.
+Daha fazla bilgi için, bkz. [Application Gateway Web uygulaması güvenlik duvarı (WAF)](https://docs.microsoft.com/azure/application-gateway/waf-overview).
 
 ## <a name="url-based-routing"></a>URL tabanlı yönlendirme
 
@@ -63,7 +63,7 @@ Daha fazla bilgi için bkz. [Application Gateway Ile URL tabanlı yönlendirme](
 
 ## <a name="multiple-site-hosting"></a>Birden çok site barındırma
 
-Birden çok site barındırma, aynı uygulama ağ geçidi örneğinde birden fazla web sitesi yapılandırmanızı sağlar. Bu özellik, bir uygulama ağ geçidine 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi kendi havuzuna yönlendirilebilir. Örneğin, uygulama ağ geçidi ContosoServerPool ve FabrikamServerPool adlı iki sunucu havuzundan `contoso.com` ve `fabrikam.com` için trafik sunabilir.
+Birden çok site barındırma, aynı uygulama ağ geçidi örneğinde birden fazla web sitesi yapılandırmanızı sağlar. Bu özellik, bir Application Gateway veya WAF için 40 (en iyi performans için) 100 web sitesi ekleyerek dağıtımlarınız için daha verimli bir topoloji yapılandırmanıza olanak tanır. Her web sitesi kendi havuzuna yönlendirilebilir. Örneğin, uygulama ağ geçidi ContosoServerPool ve FabrikamServerPool adlı iki sunucu havuzundan `contoso.com` ve `fabrikam.com` için trafik sunabilir.
 
 `http://contoso.com` için istekler ContosoServerPool’a ve `http://fabrikam.com` için istekler FabrikamServerPool’a yönlendirilir.
 
@@ -107,6 +107,8 @@ Daha fazla bilgi için bkz. [Azure Application Gateway Giriş Denetleyicisi](htt
 
 Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuzu üyelerinin normal bir şekilde kapatılmasına yardımcı olur. Bu ayar bir arka uç http ayarıyla etkinleştirilir ve kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulanabilir. Etkinleştirildikten sonra Application Gateway, bir arka uç havuzunun tüm kayıt kaldırma örneklerinin yeni bir istek almamasını sağlarken, mevcut isteklerin yapılandırılmış bir süre sınırı içinde tamamlanmasını sağlar. Bu, arka uç havuzundan bir API çağrısıyla açıkça kaldırılan arka uç örnekleri için ve sistem durumu araştırmaları tarafından belirlendiği şekilde sağlıksız olarak bildirilen arka uç örnekleri için geçerlidir.
 
+Daha fazla bilgi için [Application Gateway yapılandırmasına genel bakış](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining)' ın bağlantı boşaltma bölümüne bakın.
+
 ## <a name="custom-error-pages"></a>Özel hata sayfaları
 
 Application Gateway, varsayılan hata sayfalarını göstermek yerine özel hata sayfaları oluşturmanızı sağlar. Özel hata sayfası sayesinde kendi logonuzu ve sayfa düzeninizi kullanabilirsiniz.
@@ -127,13 +129,13 @@ Daha fazla bilgi için bkz. [HTTP üstbilgilerini yeniden yazma](rewrite-http-he
 
 ## <a name="sizing"></a>Boyutlandırma
 
-Application Gateway Standard_v2 ve WAF_v2 SKU, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. Bu SKU 'Lar farklı örnek boyutları sunmaz.
+Application Gateway Standard_v2 ve WAF_v2 SKU, otomatik ölçeklendirme veya sabit boyutlu dağıtımlar için yapılandırılabilir. Bu SKU 'Lar farklı örnek boyutları sunmaz. V2 performansı ve fiyatlandırması hakkında daha fazla bilgi için bkz. [Otomatik ölçeklendirme v2 SKU 'su](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing).
 
 Application Gateway Standard ve WAF SKU Şu anda üç boyutta sunulmaktadır: **Küçük**, **Orta**ve **büyük**. Küçük örnek boyutları, geliştirme ve test senaryolarına yöneliktir.
 
 Application Gateway limitlerinin tam listesi için bkz. [Application Gateway hizmet limitleri](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
-Aşağıdaki tabloda, SSL boşaltmasının etkin olduğu her bir Application Gateway örneği için ortalama performans aktarım hızı gösterilmiştir:
+Aşağıdaki tabloda SSL boşaltması etkin olan her bir Application Gateway v1 örneği için ortalama performans performansı gösterilmektedir:
 
 | Ortalama arka uç sayfa yanıt boyutu | Küçük | Orta | Büyük |
 | --- | --- | --- | --- |

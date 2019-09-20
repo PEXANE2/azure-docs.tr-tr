@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 457ee34daf368150a8703ea32a39b2350d654523
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 67a05d065cba8286c837487e21fc2f5be54e2c0b
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569430"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162340"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için otomatik ayarlamayı etkinleştirin
 
@@ -41,7 +41,7 @@ Azure SQL veritabanı mantıksal **sunucusunda**otomatik ayarlamayı etkinleşti
 ![Sunucusu](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Lütfen bu **DROP_INDEX** seçeneğinin, bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına ve bu durumlarda etkinleştirilmemelidir.
+> Lütfen bu **DROP_INDEX** seçeneğinin, bölüm değiştirme ve Dizin ipuçlarını kullanan uygulamalarla uyumlu olmadığına ve bu durumlarda etkinleştirilmemelidir. Kullanılmayan dizinleri bırakma, Premium ve İş Açısından Kritik hizmet katmanlarında desteklenmez.
 >
 
 Etkinleştirmek istediğiniz otomatik ayarlama seçeneklerini belirleyin ve **Uygula**' yı seçin.

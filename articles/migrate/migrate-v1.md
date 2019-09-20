@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142076"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162467"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -78,7 +78,7 @@ Değerlendirmedeki Azure için hazır olma görünümü, her bir sanal makinenin
 
 **Hazırlığı** | **State** | **Ayrıntılar**
 --- | --- | ---
-Azure için hazır | Uyumluluk sorunu yok. Makine Azure 'a olduğu gibi geçirilebilir ve Azure 'da önyükleme, tam Azure desteği sağlar. | Azure Geçişi, hazır olan VM’ler için Azure’da bir VM boyutu önerir.
+Azure için hazır | Uyumluluk sorunu yok. Makine Azure 'a olduğu gibi geçirilebilir ve Azure 'da tam Azure desteğiyle önyüklenir. | Azure Geçişi, hazır olan VM’ler için Azure’da bir VM boyutu önerir.
 Azure için koşullu olarak hazır | Makine Azure 'da önbaşlatılabilir, ancak tam Azure desteği olmayabilir. Örneğin, Windows Server 'ın Azure 'da desteklenmeyen eski bir sürümü olan bir makine. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
 Azure için hazır değil |  VM, Azure 'da önyüklenmez. Örneğin, bir VM 'nin 4 TB 'den fazla diski varsa, Azure üzerinde barındırılamaz. | Azure geçişi hazırlık sorunlarını açıklar ve düzeltme adımları sağlar.
 Hazırlık bilinmiyor | Azure geçişi, genellikle veri kullanılamadığından Azure hazırlığını tanımlayamıyor.
@@ -91,7 +91,7 @@ Hazır olma durumu, VM 'nin Azure 'da çalıştırılıp çalıştırılamayaca�
 **Özellik** | **Ayrıntılar** | **Hazırlığı**
 --- | --- | ---
 **Önyükleme türü** | BIOS desteklenir. UEFı desteklenmiyor. | Önyükleme türü UEFı ise koşullu olarak hazırlanın.
-**Sayısı** | Makine çekirdeği < = bir Azure VM için desteklenen en fazla çekirdek sayısı (128).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan çekirdekleri dikkate alır.<br/>Bir <br/>değerlendirme ayarlarında rahatlık faktörü belirtilir, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi,, rahatlık faktörünü uygulamadan ayrılmış çekirdekleri kullanır. | Sınırlara eşit veya daha küçükse hazırlanın.
+**Sayısı** | Makine çekirdeği < = bir Azure VM için desteklenen en fazla çekirdek sayısı (128).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan çekirdekleri dikkate alır.<br/>Değerlendirme ayarlarında bir rahatlık faktörü belirtilmişse, kullanılan çekirdek sayısı, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir performans geçmişi yoksa, Azure geçişi,, rahatlık faktörünü uygulamadan ayrılmış çekirdekleri kullanır. | Sınırlara eşit veya daha küçükse hazırlanın.
 **Bellek** | Makine bellek boyutu < = bir Azure VM 'si için maksimum bellek (Azure 8 serisi Standard_M128m&nbsp;<sup>2</sup>üzerinde 3892 GB). [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Performans geçmişi varsa Azure geçişi, kullanılan belleği dikkate alır.<br/><br/>Bir rakip faktörü belirtilmişse, kullanılan bellek, rahatlık faktörüyle çarpılarak çarpılır.<br/><br/> Hiçbir geçmiş yoksa, rahatlık faktörünü uygulamadan ayrılan bellek kullanılır.<br/><br/> | Sınırlar içindeyse hazırlanın.
 **Depolama diski** | Bir diskin ayrılan boyutu 4 TB (4096 GB) veya daha az olmalıdır.<br/><br/> Makineye bağlı disk sayısı, işletim sistemi diski dahil 65 veya daha az olmalıdır. | Sınırlar içindeyse hazırlanın.
 **Ağ** | Bir makinenin kendisine bağlı 32 veya daha az NIC 'e sahip olması gerekir. | Sınırlar içindeyse hazırlanın.
@@ -142,7 +142,7 @@ Maliyet tahminleri, Azure 'da VM 'Leri çalıştırmanın toplam işlem ve depol
 
 Her performans tabanlı değerlendirme, güvenirlik derecelendirmesi ile ilişkilendirilir.
 
-- Güvenirlik derecelendirmesi bir yıldızdan beş yıldız arasında değişir (en düşük ve en yüksek bir başlangıç).
+- Güvenirlik derecelendirmesi bir yıldızdan beş yıldız arasında değişir (en düşük ve beş yıldızlı en yüksek olan bir yıldız).
 - Güvenilirlik derecelendirmesi, değerlendirmeyi hesaplamak için gereken veri noktalarının kullanılabilirliğine bağlı olarak bir değerlendirmeye atanır.
 - Bir değerlendirmenin güvenilirlik derecesi, Azure Geçişi tarafından sağlanan boyut önerilerinin güvenilirliğini tahmin etmenize yardımcı olur.
 - Güvenilirlik derecelendirmesi, "olduğu gibi" Şirket içi değerlendirmelere uygun değildir.
@@ -216,7 +216,7 @@ Bir çalışma alanını yapılandırdıktan sonra, değerlendirmek istediğiniz
 4. Çalışma alanı kimliğini ve anahtarını kopyalayın. Bu, şirket içi makineye MMA 'yı yüklerken gereklidir.
 
 > [!NOTE]
-> Aracıların yüklenmesini otomatikleştirmek için, Azure geçişi için bir aracı dağıtım çözümünü destekleyen, System Center Configuration Manager veya bir iş ortağı aracı gibi bir [](https://www.intigua.com/getting-started-intigua-for-azure-migration)dağıtım aracı kullanabilirsiniz.
+> Aracıların yüklenmesini otomatikleştirmek için, Azure geçişi için bir aracı dağıtım çözümü sağlayan, System Center Configuration Manager gibi bir dağıtım aracını veya bir [ıntigua](https://www.intigua.com/getting-started-intigua-for-azure-migration)gibi bir iş ortağı aracı kullanabilirsiniz.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>MMA aracısını bir Windows makinesine yükler
@@ -227,7 +227,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 2. **Hoş Geldiniz** sayfasında **İleri**'ye tıklayın. **Lisans Koşulları** sayfasında **Kabul Ediyorum**’a tıklayarak lisansı kabul edin.
 3. **Hedef klasörde**, **sonraki**> varsayılan yükleme klasörünü tutun veya değiştirin.
 4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics** > **İleri**' yi seçin.
-5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**'ye tıklayın.
+5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
 Aracıyı komut satırından veya System Center Configuration Manager gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz. MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) .
 

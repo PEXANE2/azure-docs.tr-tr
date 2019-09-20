@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e29c32c27e7f6c62eb2c6a9cbe2e4d3f1294f038
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66110295"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155159"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure Tanılama uzantısıyla performans izleme
 
@@ -191,9 +191,6 @@ WAD aracılığıyla performans sayaçlarını toplamak için, kümenizin Kaynak
       },
 ....
 ```
-
- >[!NOTE]
- >Benzer şekilde adlandırılan performans `*` sayacı gruplarını belirtmek için kullanabilirsiniz; ancak, bir havuz (Application Insights için) aracılığıyla herhangi bir sayacı göndermek, bunların ayrı olarak bildirilmesini gerektirir. 
 
 1. Toplanması gereken uygun performans sayaçlarını ekledikten sonra, bu değişikliklerin çalışan kümenize yansıtılması için küme kaynağınızı yükseltmeniz gerekir. Değiştirdiğiniz `template.json` ve açık PowerShell 'i kaydedin. Kullanarak `New-AzResourceGroupDeployment`kümenizi yükseltebilirsiniz. Çağrı, kaynak grubunun adı, güncelleştirilmiş şablon dosyası ve parametreler dosyası gerektirir ve güncelleştirdiğiniz kaynaklarda uygun değişiklikler yapmak için Kaynak Yöneticisi sorar. Hesabınızda oturum açtıktan ve doğru abonelikte yer aldıktan sonra, yükseltmeyi çalıştırmak için aşağıdaki komutu kullanın:
 

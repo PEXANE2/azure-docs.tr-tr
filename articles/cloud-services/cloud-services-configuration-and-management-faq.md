@@ -4,7 +4,7 @@ description: Bu makalede Microsoft Azure Cloud Services yapılandırma ve yönet
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 480ca33f02242499bdf9fff3fa35695e7d4841a0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0c694ffe6ccd23803fbe16001f54b7c1611635cd
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945462"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154713"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services yapılandırma ve yönetim sorunları: Sık sorulan sorular (SSS)
 
@@ -207,7 +207,7 @@ Bu adımlar bir başlangıç göreviyle otomatikleştirilebilir, böylece her ye
 Bu işlem yapıldıktan sonra, aşağıdaki yöntemlerden birini kullanarak HTTP/2 ' nin etkinleştirilip etkinleştirilmeyeceğini doğrulayabilirsiniz:
 
 - IIS günlüklerinde protokol sürümünü etkinleştirin ve IIS günlüklerine bakın. Günlüklerde HTTP/2 gösterilecektir. 
-- Internet Explorer/Microsoft Edge 'de F12 geliştirici aracını etkinleştirin ve Protokolü doğrulamak için Ağ sekmesine geçin. 
+- Internet Explorer veya Microsoft Edge 'de F12 geliştirici aracını etkinleştirin ve Protokolü doğrulamak için Ağ sekmesine geçin. 
 
 Daha fazla bilgi için bkz. [IIS 'de http/2](https://blogs.iis.net/davidso/http2).
 

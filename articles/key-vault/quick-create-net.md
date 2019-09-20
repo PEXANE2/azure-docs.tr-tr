@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4f039fde275e5dca49b3c78550722d827bead062
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996636"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155108"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Hızlı Başlangıç: .NET için Azure Key Vault istemci kitaplığı
 
@@ -83,7 +83,7 @@ dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
 Bu hızlı başlangıçta önceden oluşturulmuş bir Azure Anahtar Kasası kullanılmaktadır. [Azure CLI hızlı başlangıç](quick-create-cli.md), [Azure PowerShell hızlı](quick-create-powershell.md)başlangıç veya [Azure Portal Hızlı Başlangıç](quick-create-portal.md)adımlarını izleyerek bir Anahtar Kasası oluşturabilirsiniz. Alternatif olarak, yalnızca aşağıdaki Azure CLı komutlarını çalıştırabilirsiniz.
 
 > [!Important]
-> Her Key Vault benzersiz bir adı olmalıdır. Aşağıdaki örnek *Mykv*adlı bir Key Vault oluşturur, ancak bu adı, bu hızlı başlangıç boyunca farklı bir şekilde adlandırmalısınız ve bu adı kullanmanız gerekir.
+> Her Anahtar Kasası benzersiz bir ada sahip olmalıdır. -Unique-keykasa-adı > < Aşağıdaki örneklerde anahtar kasanızın adıyla değiştirin.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"

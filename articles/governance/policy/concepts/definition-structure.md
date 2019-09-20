@@ -3,16 +3,16 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kaynak ilke tanımı hangi etkili olması için zaman ilkelerin hiçbiri uygulanmaz ve açıklayarak, kuruluşunuzdaki kaynaklar için kuralları oluşturmak için Azure İlkesi tarafından nasıl kullanıldığını açıklar.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d7e264bda62753693cdd2333625313cf213f142a
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239177"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145579"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -398,6 +398,7 @@ Azure Ilkesi aşağıdaki efekt türlerini destekler:
 - **Deployıfnotexists**: zaten mevcut değilse bir kaynak dağıtır.
 - **Devre dışı bırakılmış**: uyumluluk İlkesi kuralı için kaynakları değerlendirmez
 - **Enforceregopolicy**: Azure Kubernetes hizmetinde açık ilke aracısı sayede denetleyicisini yapılandırır (Önizleme)
+- **Değiştir**: bir kaynaktaki tanımlı etiketleri ekler, güncelleştirir veya kaldırır
 
 İçin **ekleme**, aşağıdaki ayrıntıları sağlamanız gerekir:
 
@@ -424,6 +425,8 @@ Değer bir dize veya bir JSON biçimi nesnesi olabilir.
     ]
 }
 ```
+
+Benzer şekilde, [Düzeltme görevi](../how-to/remediate-resources.md)için ilke kuralının **Ayrıntılar** bölümünde, **Değiştir** **roledefinitionıd** özelliğini gerektirir. **Değiştirme** Ayrıca, kaynaklar etiketlerinde gerçekleştirilecek eylemleri tanımlamak için bir **işlem** dizisi gerektirir.
 
 Her etkileriyle ilgili tüm ayrıntılar, değerlendirme, özellik ve örnek sıralaması için bkz. [Azure Ilke efektlerini anlama](effects.md).
 
@@ -622,5 +625,5 @@ Aşağıdaki örnek iki etiketi işlemeye yönelik bir girişim oluşturma işle
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
+- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteceğinizi öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

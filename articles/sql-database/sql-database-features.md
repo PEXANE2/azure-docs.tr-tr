@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 594edab4e6a69edb49c8a1ce407c9fd943d11f2b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 36bcb8f7a3ee75794741b44f91956950179e5544
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103164"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162296"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL veritabanı özellikleri
 
@@ -129,7 +129,7 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 | [Uzun vadeli yedekleme bekletme-LTR](sql-database-long-term-retention.md) | Evet, otomatik olarak 10 yıla kadar yedekleme gerçekleştirin. | Henüz değil. Geçici `COPY_ONLY` geçici çözüm olarak [el ile yedeklemeleri](sql-database-managed-instance-transact-sql-information.md#backup) kullanın. |
 | Duraklat/devam | Evet, [sunucusuz modelde](sql-database-serverless.md) | Hayır | 
 | [İlke tabanlı yönetim](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Hayır | Hayır |
-| Genel IP adresi | Evet. Erişim, güvenlik duvarı veya hizmet uç noktaları kullanılarak kısıtlanabilir.  | Evet. Açıkça etkinleştirilmesi gerekir ve NSG kurallarında 3342 numaralı bağlantı noktası etkinleştirilmelidir. Gerekirse genel IP devre dışı bırakılabilir. Daha fazla ayrıntı için bkz. [genel uç nokta](sql-database-managed-instance-public-endpoint-securely.md) . | 
+| Ortak IP adresi | Evet. Erişim, güvenlik duvarı veya hizmet uç noktaları kullanılarak kısıtlanabilir.  | Evet. Açıkça etkinleştirilmesi gerekir ve NSG kurallarında 3342 numaralı bağlantı noktası etkinleştirilmelidir. Gerekirse genel IP devre dışı bırakılabilir. Daha fazla ayrıntı için bkz. [genel uç nokta](sql-database-managed-instance-public-endpoint-securely.md) . | 
 | [Zaman noktası veritabanı geri yükleme](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | Evet-hiper ölçek dışında tüm hizmet katmanları-bkz. [SQL veritabanı kurtarma](sql-database-recovery-using-backups.md#point-in-time-restore) | Evet-bkz. [SQL veritabanı kurtarma](sql-database-recovery-using-backups.md#point-in-time-restore) |
 | Kaynak havuzları | Evet, [elastik havuzlar](sql-database-elastic-pool.md) olarak | Evet. Tek bir yönetilen örnek, aynı kaynak havuzunu paylaşan birden çok veritabanına sahip olabilir. Ayrıca, kaynakları paylaşabilen [örnek havuzlarda (Önizleme)](sql-database-instance-pools.md) birden çok yönetilen örnek dağıtabilirsiniz. |
 | Ölçeği artırma veya azaltma (çevrimiçi) | Evet, DTU veya ayrılmış sanal çekirdekleri ya da en fazla depolama alanını en az kapalı kalma süresiyle değiştirebilirsiniz. | Evet, ayrılmış sanal çekirdekleri veya en fazla depolama alanını en az kapalı kalma süresiyle değiştirebilirsiniz. |
@@ -161,7 +161,7 @@ Azure SQL veritabanı, verilerinizi yönetmenize yardımcı olabilecek çeşitli
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Evet | Evet [sürüm 18,0 ve üzeri](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Evet | Evet |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Hayır- [genişletilmiş olaylara](sql-database-xevent-db-diff-from-svr.md) bakın | Evet |
-| [System Center Operations Manager-SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Evet](https://www.microsoft.com/download/details.aspx?id=38829) | Hayır |
+| [System Center Operations Manager-SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Evet](https://www.microsoft.com/download/details.aspx?id=38829) | Evet, [önizlemede](https://www.microsoft.com/download/details.aspx?id=100306) |
 
 ## <a name="migration-methods"></a>Geçiş yöntemleri
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 72c425a1ec9fb83cc2e9dd1bae2c4f521109f162
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663384"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154674"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>Reward puanları, kişiselleştirmenin başarısını gösterir
 
@@ -25,7 +25,7 @@ Kişiselleştirici, remarları değerlendirerek makine öğrenimi modellerini is
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Kişiselleştiriciye yeniden Puanlama göndermek için ödül API kullanma
 
-Reward, [Reward API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)tarafından kişiselleştiriciye gönderilir. Bir ödül,-1 ile 1 arasında bir sayıdır. Kişiselleştirici, zaman içinde mümkün olan en yüksek miktarda yeniden elde etmek için modeli gözleyin.
+Reward, [Reward API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward)tarafından kişiselleştiriciye gönderilir. Genellikle, bir ödül 0 ve 1 ' den bir sayıdır. -1 değeri ile negatif bir ödül, bazı senaryolarda mümkündür ve yalnızca pekiştirmeye dayalı Learning (RL) ile karşılaşırsanız kullanılmalıdır. Kişiselleştirici, zaman içinde mümkün olan en yüksek miktarda yeniden elde etmek için modeli gözleyin.
 
 Yeniden ödüller, Kullanıcı davranışı gerçekleştirildikten sonra gönderilir ve bu gün daha sonra günler olabilir. Kişiselleştirilmez bir olay, bir olayın yeniden ele alınmayacak şekilde değerlendirilene veya Azure portal bir varsayılan yeniden [beklenene](#reward-wait-time) kadar bekleneceği maksimum zaman.
 
@@ -56,7 +56,7 @@ Daha fazla [bekleme süresi](#reward-wait-time)içinde bir yeniden alma işlemi 
 
 ## <a name="building-up-rewards-with-multiple-factors"></a>Birden çok faktörle yeniden ödüller oluşturma  
 
-Etkili kişiselleştirme için, daha fazla etkene göre (-1 ve 1 ' den herhangi bir sayı) bir ödül puanı oluşturabilirsiniz. 
+Etkili kişiselleştirme için, daha fazla etkene göre ödül puanı oluşturabilirsiniz. 
 
 Örneğin, video içeriğinin bir listesini kişiselleştirmek için bu kuralları uygulayabilirsiniz:
 
@@ -80,7 +80,7 @@ Toplama ayarları:
 
 **Yeniden bekleme zamanından**sonra alınan bir olayın tüm depoları atılır ve modellerin eğitimini etkilemez.
 
-Toplama skorları ekleyerek, son ödül 'niz 1 ' den büyük veya 1 ' den düşük olabilir. Bu, hizmetin başarısız olmasına neden olmaz.
+Toplama skorları ekleyerek, son ödül tahmini beklenen puan aralığının dışında olabilir. Bu, hizmetin başarısız olmasına neden olmaz.
 
 <!--
 @edjez - is the number ignored if it is outside the acceptable range?
@@ -88,7 +88,7 @@ Toplama skorları ekleyerek, son ödül 'niz 1 ' den büyük veya 1 ' den düş�
 
 ## <a name="best-practices-for-calculating-reward-score"></a>Ödül Puanını hesaplamak için en iyi uygulamalar
 
-* **Başarılı kişiselleştirmenin doğru göstergelerini göz önünde bulundurun**: Tıklama açısından kolayca düşünmek kolaydır, ancak kullanıcılarınızın ne kadar hızlı bir şekilde ulaşmasını istediğinizi göz önünde *bulundurun.*  Örneğin, tıklatmalar üzerinde yeniden çarpıtma, clickbait lekeli içeriğin seçilmesine neden olabilir.
+* **Başarılı kişiselleştirmenin doğru göstergelerini göz önünde bulundurun**: Tıklama açısından kolayca düşünmek kolaydır, ancak kullanıcılarınızın *ne kadar hızlı* *bir şekilde ulaşmasını* istediğinizi göz önünde bulundurun.  Örneğin, tıklatmalar üzerinde yeniden çarpıtma, clickbait lekeli içeriğin seçilmesine neden olabilir.
 
 * **Kişiselleştirmenin ne kadar iyi çalıştığı konusunda bir ödül puanı kullanın**: Bir film önerisini kişiselleştirmek, kullanıcının filmi izlemeye ve yüksek bir derecelendirme uygulamasına neden olur. Film derecelendirmesi büyük olasılıkla çok sayıda işleme bağlı olduğundan (hareket kalitesi, kullanıcının ruh derecesi), *kişiselleştirmenin* ne kadar iyi çalıştığı konusunda iyi bir sinyal değildir. Ancak filmin ilk birkaç dakikasını izleyen Kullanıcı, kişiselleştirme verimliliğinden daha iyi bir sinyal alabilir ve 5 dakika sonra 1 ' in bir kez daha iyi bir sinyal olarak gönderilmesini sağlayabilir.
 
@@ -100,7 +100,7 @@ Toplama skorları ekleyerek, son ödül 'niz 1 ' den büyük veya 1 ' den düş�
     * Bir film listesi gösteriyorsa, Kullanıcı daha fazla bilgi görüntülemek için ilk bir kez üzerine gelirse, bazı kullanıcı katılımı olduğunu belirleyebilirsiniz. Davranış, 0,1 için bir ödül puanı ile sayabilir. 
     * Kullanıcı sayfayı açtı ve sonra çıkmadıysa, ödül puanı 0,2 olabilir. 
 
-## <a name="reward-wait-time"></a>Bekleme süresi
+## <a name="reward-wait-time"></a>Ödül bekleme süresi
 
 Kişiselleştirici, modeli eğitme çağrılarında, bir derece çağrısının bilgilerini, yeniden aramalarla gönderilen ödüller ile ilişkilendirilecektir. Bunlar, farklı zamanlarda gelebilir. Kişiselleştirici, derece çağrısının ne zaman meydana geldiği, sıralama çağrısının etkin olmayan bir olay olarak yapılmış ve daha sonra etkinleştirilse bile, sınırlı bir süre bekler.
 

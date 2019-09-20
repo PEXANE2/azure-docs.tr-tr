@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: atsenthi
-ms.openlocfilehash: 3810afa7ad00aa731751aa1f0bfe38d503de5850
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0bec430cbb98452f8c852c96053f3f699ce5098e
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953213"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71153581"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Uygulamaları ve Hizmetleri Azure Resource Manager kaynak olarak yönetme
 
@@ -67,7 +67,7 @@ Aşağıdaki kod parçacığında, bir şablon aracılığıyla yönetilebilen f
 1. Kümenizin Kaynak Yöneticisi şablonunu dağıtım için hazırlayın. Hakkında daha fazla bilgi için bkz. [Azure Resource Manager kullanarak Service Fabric kümesi oluşturma](service-fabric-cluster-creation-via-arm.md) .
 2. Kümede dağıtımı planladığınız bazı uygulamaları düşünün. Diğer uygulamaların bağımlılığı olabilecek her zaman çalışacak mı? Tüm küme idare veya kurulum uygulamalarını dağıtmaya mi planlıyorsunuz? Bu tür uygulamalar yukarıda anlatıldığı gibi Kaynak Yöneticisi şablonu aracılığıyla en iyi şekilde yönetilir. 
 3. Bu şekilde hangi uygulamaları dağıtacağınızı iletişime, uygulamaların paketlenmesi, sıkıştırılması ve bir dosya paylaşımında bulunması gerekir. Dağıtım sırasında kullanmak üzere Azure Resource Manager için bir REST uç noktası aracılığıyla paylaşıma erişilebilir olması gerekir.
-4. Kaynak Yöneticisi şablonunuzda, küme bildirimenizle, her uygulamanın özelliklerini betimleyen. Bu özellikler, çoğaltma veya örnek sayısını ve kaynaklar (diğer uygulamalar veya hizmetler) arasında herhangi bir bağımlılık zincirlerini içerir. Kapsamlı özelliklerin listesi için bkz. [Swagger Spec REST API](https://aka.ms/sfrpswaggerspec). Bunun uygulama veya hizmet bildirimlerinin yerini almaz, ancak bunun yerine, kümenin Kaynak Yöneticisi şablonunun bir parçası olarak bunların bazı özellikleri açıklanmıştır. Aşağıda, Service1 bir parçası olarak durum bilgisi olmayan bir Service ve durum bilgisi olan bir Service *Service2* dağıtmanınbir örnek şablonu verilmiştir:
+4. Kaynak Yöneticisi şablonunuzda, küme bildirimenizle, her uygulamanın özelliklerini betimleyen. Bu özellikler, çoğaltma veya örnek sayısını ve kaynaklar (diğer uygulamalar veya hizmetler) arasında herhangi bir bağımlılık zincirlerini içerir. Kapsamlı özelliklerin listesi için bkz. [Swagger Spec REST API](https://aka.ms/sfrpswaggerspec). Bunun uygulama veya hizmet bildirimlerinin yerini almaz, ancak bunun yerine, kümenin Kaynak Yöneticisi şablonunun bir parçası olarak bunların bazı özellikleri açıklanmıştır. Aşağıda, Service1 bir parçası olarak durum bilgisi olmayan bir Service ve durum bilgisi olan bir Service *Service2* dağıtmanın bir örnek şablonu *verilmiştir:*
 
    ```json
    {
@@ -272,7 +272,7 @@ ARM şablonunuzun Microsoft. ServiceFabric/kümeleri/uygulamasını kaldırmak, 
 
 ## <a name="manage-an-existing-application-via-resource-manager"></a>Mevcut bir uygulamayı Kaynak Yöneticisi aracılığıyla yönetme
 
-Kümeniz zaten çalışır durumda ve Kaynak Yöneticisi Kaynakları olarak yönetmek istediğiniz bazı uygulamalar üzerinde zaten dağıtıldıysa, uygulamaları kaldırmak ve yeniden dağıtmak yerine, uygulamaların alması için aynı API 'Leri kullanarak bir PUT çağrısı kullanabilirsiniz Kaynak Yöneticisi kaynaklar olarak kabul edildi. 
+Kümeniz zaten çalışır durumda ve Kaynak Yöneticisi Kaynakları olarak yönetmek istediğiniz bazı uygulamalar üzerinde zaten dağıtıldıysa, uygulamaları kaldırmak ve yeniden dağıtmak yerine, uygulamaların alması için aynı API 'Leri kullanarak bir PUT çağrısı kullanabilirsiniz Kaynak Yöneticisi kaynaklar olarak kabul edildi. Daha fazla bilgi için [Service Fabric uygulama kaynak modeli nedir?](https://docs.microsoft.com/azure/service-fabric/service-fabric-concept-resource-model) bölümüne bakın.
 
 > [!NOTE]
 > Bir küme yükseltmesinin sağlıksız uygulamaları yoksaymasına izin vermek için, müşteri "Maxyüztunhealthyapplications" belirtebilir: 100 "," upgradeDescription/healthPolicy "bölümünde; tüm ayarların ayrıntılı açıklamaları, [Service yapılar REST API küme yükseltme ilkesi belgelerinde](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)bulunur.
