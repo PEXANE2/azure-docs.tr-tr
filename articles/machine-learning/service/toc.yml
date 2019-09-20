@@ -31,7 +31,7 @@
             - name: ML modelini otomatik olarak eğitme
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
-        - name: İşlem hatları ile toplu puanlama (gelişmiş)
+        - name: Makine Öğrenmesi işlem hatları (gelişmiş)
           items:
             - name: Sınıflandırma modelini toplu puanlama
               displayName: pipelines
