@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 386dc737bb45eec031aaa1a0c55f4478b8302c54
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984871"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173589"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışları anlama
 
@@ -210,6 +210,7 @@ Aşağıdaki tabloda, bir kuyruk çıkışı oluşturmaya yönelik özellik adla
 | Sınırlayıcı |Yalnızca CSV serileştirme için geçerlidir. Akış Analizi, CSV biçiminde verilerin serileştirilmesi için yaygın olarak kullanılan bazı sınırlayıcıları destekler. Desteklenen değerler şunlardır: virgülle, noktalı virgül, boşluk, sekme ve dikey çubuk. |
 | Biçimi |Yalnızca JSON türü için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir. |
 | Özellik sütunları | İsteğe bağlı. Yük yerine giden iletinin Kullanıcı özellikleri olarak eklenmesi gereken virgülle ayrılmış sütunlar. Bu özellik hakkında daha fazla bilgi, [Çıkış Için özel meta veri özellikleri](#custom-metadata-properties-for-output)bölümünde bulunur. |
+| Sistem Özelliği sütunları | İsteğe bağlı. Sistem özelliklerinin anahtar değer çiftleri ve yük yerine giden iletiye eklenmesi gereken karşılık gelen sütun adları. Bu özellik hakkında daha fazla bilgi, [Service Bus kuyruğu ve konu çıkışları Için sistem özellikleri](#system-properties-for-service-bus-queue-and-topic-outputs) bölümünde yer almaktadır  |
 
 Bölüm sayısı [Service Bus SKU ve boyutuna bağlı olarak](../service-bus-messaging/service-bus-partitioning.md). Bölüm anahtarı, her bölüm için benzersiz bir tamsayı değerdir.
 
@@ -229,6 +230,7 @@ Aşağıdaki tabloda, Service Bus konu çıkışı oluşturmaya yönelik özelli
 | Encoding |CSV veya JSON biçimi kullanıyorsanız, bir kodlama belirtilmesi gerekir. Şu anda desteklenen tek kodlama biçimi UTF-8'dir. |
 | Sınırlayıcı |Yalnızca CSV serileştirme için geçerlidir. Akış Analizi, CSV biçiminde verilerin serileştirilmesi için yaygın olarak kullanılan bazı sınırlayıcıları destekler. Desteklenen değerler şunlardır: virgülle, noktalı virgül, boşluk, sekme ve dikey çubuk. |
 | Özellik sütunları | İsteğe bağlı. Yük yerine giden iletinin Kullanıcı özellikleri olarak eklenmesi gereken virgülle ayrılmış sütunlar. Bu özellik hakkında daha fazla bilgi, [Çıkış Için özel meta veri özellikleri](#custom-metadata-properties-for-output)bölümünde bulunur. |
+| Sistem Özelliği sütunları | İsteğe bağlı. Sistem özelliklerinin anahtar değer çiftleri ve yük yerine giden iletiye eklenmesi gereken karşılık gelen sütun adları. Bu özellik hakkında daha fazla bilgi, [Service Bus kuyruğu ve konu çıkışları Için sistem özellikleri](#system-properties-for-service-bus-queue-and-topic-outputs) bölümünde yer almaktadır |
 
 Bölüm sayısı [Service Bus SKU ve boyutuna bağlı olarak](../service-bus-messaging/service-bus-partitioning.md). Bölüm anahtarı, her bölüm için benzersiz bir tamsayı değeridir.
 
@@ -294,6 +296,25 @@ Aşağıdaki örnekte, iki alanı `DeviceId` ve `DeviceStatus` meta verileri ekl
 Aşağıdaki ekran görüntüsünde, [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)aracılığıyla EventHub ' de incelenen çıkış iletisi özellikleri gösterilmektedir.
 
 ![Olay özel özellikleri](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
+## <a name="system-properties-for-service-bus-queue-and-topic-outputs"></a>Service Bus kuyruğu ve konu çıkışları için sistem özellikleri 
+Sorgu sütunlarını, giden hizmet veri yolu kuyruğunuza veya konu iletilerinize [Sistem Özellikleri](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) olarak iliştirebilirsiniz. Bu sütunlar, karşılık gelen BrokeredMessage [sistem özelliği](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet#properties) sorgu sütunu değerleriyle doldurulduğundan yük içine gitmez.
+Bu sistem özellikleri desteklenir- `MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`.
+Bu sütunların dize değerleri karşılık gelen sistem özelliği değer türü olarak ayrıştırılır ve Ayrıştırma hataları veri hatası olarak değerlendirilir.
+Bu alan JSON nesne biçimi olarak sağlanır. Bu biçimle ilgili ayrıntılar aşağıdaki gibidir.
+* Küme ayraçları {}ile çevrelenmiş.
+* Anahtar/değer çiftlerinde yazılmıştır.
+* Anahtarlar ve değerler dize olmalıdır.
+* Anahtar, sistem özelliği adıdır ve değer sorgu sütunu adıdır.
+* Anahtarlar ve değerler iki nokta üst üste ile ayrılır.
+* Her anahtar/değer çifti virgülle ayrılır.
+
+Bu özelliğin nasıl kullanılacağını gösterir –
+
+* Sorgulayamadı`select *, column1, column2 INTO queueOutput FROM iotHubInput`
+* Sistem özelliği sütunları:`{ "MessageId": "column1", "PartitionKey": "column2"}`
+
+Bu, `MessageId` Service Bus kuyruğu `column1`iletilerinin değerlerini ve `column2`partitionkey değerini ile ayarlanmış olarak ayarlar.
 
 ## <a name="partitioning"></a>Bölümleme
 

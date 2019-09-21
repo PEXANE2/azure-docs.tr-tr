@@ -3,7 +3,7 @@ title: Azure sanal makine aracısına genel bakış | Microsoft Docs
 description: Azure sanal makine aracısına genel bakış
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
-ms.author: roiyz
-ms.openlocfilehash: 6a845cad298e2aedbe68a11cd170120d1d229043
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.author: akjosh
+ms.openlocfilehash: 7c163dd48e53a3116d58cb94988f2822ddede5e5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382834"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169132"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure sanal makine aracısına genel bakış
 Microsoft Azure sanal makine Aracısı (VM Aracısı), Azure yapı denetleyicisi ile sanal makine (VM) etkileşimini yöneten güvenli ve hafif bir işlemdir. VM aracısının Azure sanal makine uzantıları 'nı etkinleştirmek ve yürütmek için birincil bir rolü vardır. VM uzantıları, yazılım yükleme ve yapılandırma gibi VM 'nin dağıtım sonrası yapılandırmasını etkinleştirir. VM uzantıları, bir VM 'nin yönetici parolasını sıfırlama gibi kurtarma özelliklerini de etkinleştirir. Azure VM Aracısı olmadan VM uzantıları çalıştırılamaz.

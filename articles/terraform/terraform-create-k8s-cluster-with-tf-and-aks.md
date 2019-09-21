@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.openlocfilehash: 257a2d78a54e292faecda836811f0a58fabd584d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 09/20/2019
+ms.openlocfilehash: d7e6b5c5b9b36e093986aa96a6ad9b401175deb2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854513"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173506"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service ve Terraform ile bir Kubernetes kümesi oluşturma
 [Azure Kubernetes Service (AKS)](/azure/aks/), barındırılan Kubernetes ortamınızı yöneterek kapsayıcılı uygulamaları, kapsayıcı yönetimi uzmanlığı gerekmeden hızla ve kolayca dağıtma olanağı sunar. Ayrıca, kaynakları isteğe bağlı olarak sağlama, yükseltme ve ölçeklendirme işlemlerini uygulamalarınızı çevrimdışı duruma geçirmeden yaparak sürekliliği olan işlemlerin ve bakımların yükünü ortadan kaldırır.
@@ -74,7 +74,7 @@ Azure sağlayıcısını tanımlayan Terraform yapılandırma dosyasını yapıl
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     provider "azurerm" {
         version = "~>1.5"
     }
@@ -105,7 +105,7 @@ Kubernetes kümesinin kaynaklarını tanımlayan Terraform yapılandırma dosyas
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     resource "azurerm_resource_group" "k8s" {
         name     = "${var.resource_group_name}"
         location = "${var.location}"
@@ -202,7 +202,7 @@ Kubernetes kümesinin kaynaklarını tanımlayan Terraform yapılandırma dosyas
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     variable "client_id" {}
     variable "client_secret" {}
 
@@ -266,7 +266,7 @@ Kubernetes kümesinin kaynaklarını tanımlayan Terraform yapılandırma dosyas
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     output "client_key" {
         value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
     }
@@ -323,7 +323,7 @@ Terraform, durumu `terraform.tfstate` dosyasıyla yerel olarak izler. Bu model t
 
 1. Cloud Shell'de Azure depolama hesabınızda bir kapsayıcı oluşturun (&lt;YourAzureStorageAccountName> ve &lt;YourAzureStorageAccountAccessKey> yer tutucularının yerine Azure depolama hesabınıza ait değerleri girin).
 
-    ```bash
+    ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 92accf4317ef8d0e3837ce3789615b5aaf6f6919
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 7a58e8559587ddcb307c338f5ce87cd6b8e52021
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996891"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171513"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -79,6 +79,7 @@ Birden çok düğüm havuzunu destekleyen AKS kümelerini oluşturup yönetirken
 * Varsayılan (ilk) düğüm havuzunu silemezsiniz.
 * HTTP uygulama yönlendirme eklentisi kullanılamıyor.
 * Birçok işlem ile olduğu gibi mevcut bir Kaynak Yöneticisi şablonu kullanarak düğüm havuzları ekleyemez veya silemezsiniz. Bunun yerine, bir AKS kümesindeki düğüm havuzlarında değişiklik yapmak için [ayrı bir kaynak yöneticisi şablonu kullanın](#manage-node-pools-using-a-resource-manager-template) .
+* Düğüm havuzunun adı küçük harfle başlamalı ve yalnızca alfasayısal karakterler içerebilir. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
 
 Bu özellik önizlemedeyken aşağıdaki ek sınırlamalar geçerlidir:
 
@@ -130,6 +131,9 @@ az aks nodepool add \
     --node-count 3 \
     --kubernetes-version 1.12.7
 ```
+
+> [!NOTE]
+> Düğüm havuzunun adı küçük harfle başlamalı ve yalnızca alfasayısal karakterler içerebilir. Linux düğüm havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
 
 Düğüm havuzlarınızın durumunu görmek için [az aks node Pool List][az-aks-nodepool-list] komutunu kullanın ve kaynak grubunuzu ve küme adınızı belirtin:
 
@@ -580,8 +584,8 @@ Kaynak Yöneticisi şablonunuzda tanımladığınız düğüm havuzu ayarlarına
 
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Düğüm havuzunda düğüm başına genel IP atama
 
-> [!NOTE]
-> Düğüm başına genel IP atama önizlemesi sırasında, sanal makine sağlama ile çakışan olası yük dengeleyici kuralları nedeniyle *AKS 'de standart Load Balancer SKU 'su* ile kullanılamaz. Önizlemede, düğüm başına genel IP atamanız gerekiyorsa *temel Load Balancer SKU 'su* kullanın.
+> [!WARNING]
+> Düğüm başına genel IP atama önizlemesi sırasında, sanal makine sağlama ile çakışan olası yük dengeleyici kuralları nedeniyle *AKS 'de standart Load Balancer SKU 'su* ile kullanılamaz. Önizleme aşamasında, düğüm başına genel IP atamanız gerekiyorsa *temel Load Balancer SKU* 'sunu kullanmanız gerekir.
 
 AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak bazı senaryolar, düğüm havuzundaki düğümlerin kendi genel IP adreslerine sahip olmasını gerektirebilir. Örneğin, bir konsolun, atlamaları en aza indirmek için bir bulut sanal makinesine doğrudan bağlantı kurmak için gereken oyun. Bu, ayrı bir önizleme özelliği olan düğüm genel IP (Önizleme) için kaydolarak elde edilebilir.
 

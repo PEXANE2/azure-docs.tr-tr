@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/28/2019
-ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/20/2019
+ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138336"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173487"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Terraform kullanarak özel bir Packer görüntüsünden Azure sanal makine ölçek kümesi oluşturma
 
@@ -42,9 +42,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Boş bir dizinde aşağıdaki adları kullanarak üç yeni dosya oluşturun:
 
-- ```variables.tf``` Bu dosya, şablonda kullanılan değişkenlerin değerini içerir.
-- ```output.tf``` Bu dosya, dağıtım sonrasında görüntülenen ayarı tanımlar.
-- ```vmss.tf```Bu dosya, dağıtmakta olduğunuz altyapının kodunu içerir.
+- `variables.tf` : Bu dosya şablonda kullanılan değişkenlerin değerlerini içerir.
+- `output.tf` : Bu dosya, dağıtımdan sonra görüntülenecek ayarları açıklar.
+- `vmss.tf` : Bu dosya, dağıtmakta olduğunuz altyapının kodunu içerir.
 
 ##  <a name="create-the-variables"></a>Değişkenleri oluşturma 
 
@@ -52,7 +52,7 @@ Bu adımda Terraform tarafından oluşturulan kaynakları özelleştiren değiş
 
 `variables.tf` dosyasını düzenleyin, aşağıdaki kodu kopyalayın ve değişiklikleri kaydedin.
 
-```tf 
+```hcl
 variable "location" {
   description = "The location where resources are created"
   default     = "East US"
@@ -70,7 +70,7 @@ variable "resource_group_name" {
 
 Dosyayı kaydedin.
 
-Terraform şablonunu dağıttığınızda uygulamaya erişmek için kullanılan tam etki alanı adını almanız gerekir. Terraform'un ```output``` kaynak türünü kullanın ve kaynağın ```fqdn``` özelliğini alın. 
+Terraform şablonunu dağıttığınızda uygulamaya erişmek için kullanılan tam etki alanı adını almanız gerekir. Terraform'un `output` kaynak türünü kullanın ve kaynağın `fqdn` özelliğini alın. 
 
 `output.tf` dosyasını düzenleyin ve aşağıdaki kodu kopyalayarak tam etki alanı adını sanal makinelerin kullanımına açın. 
 
@@ -89,9 +89,9 @@ Bu adımda yeni bir Azure kaynak grubunda aşağıdaki ağ altyapısını oluşt
 
 Ayrıca tüm kaynakların oluşturulacağı bir kaynak grubu da oluşturmanız gerekir. 
 
-```vmss.tf``` dosyasını düzenleyip aşağıdaki kodu kopyalayın: 
+`vmss.tf` dosyasını düzenleyip aşağıdaki kodu kopyalayın: 
 
-```tf 
+```hcl
 
 resource "azurerm_resource_group" "vmss" {
   name     = "${var.resource_group_name}"
@@ -145,7 +145,7 @@ resource "azurerm_public_ip" "vmss" {
 terraform init 
 ```
  
-Sağlayıcı eklentileri Terraform kayıt defterinden komutu çalıştırdığınız dizindeki ```.terraform``` klasörüne indirilir.
+Sağlayıcı eklentileri Terraform kayıt defterinden komutu çalıştırdığınız dizindeki `.terraform` klasörüne indirilir.
 
 Altyapıyı Azure'a dağıtmak için aşağıdaki komutu çalıştırın.
 
@@ -185,8 +185,7 @@ Bu adımda önceden dağıttığınız ağ üzerinde aşağıdaki kaynakları ol
 
 `vmss.tf` dosyasının sonuna aşağıdaki kodu ekleyin.
 
-```tf
-
+```hcl
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
@@ -303,7 +302,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 Dağıtımı özelleştirmek için `variables.tf` dosyasına aşağıdaki kodu ekleyin:
 
-```tf 
+```hcl
 variable "application_port" {
     description = "The port that you want to expose to the external load balancer"
     default     = 80

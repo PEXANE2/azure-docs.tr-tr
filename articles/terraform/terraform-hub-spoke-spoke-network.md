@@ -1,42 +1,42 @@
 ---
-title: Azure'da Terraform ile bağlı bileşen ağ oluşturma
-description: Sanal ağlar bir merkez-uç topolojisi bir hub'ına bağlı iki uç uygulamayı öğrenin
+title: Azure 'da Terrayform ile bir bağlı ağ oluşturma
+description: Hub-kol topolojisinde hub 'a bağlı iki bağlı bileşen sanal ağı uygulamayı öğrenin
 services: terraform
 ms.service: azure
-keywords: terraform, hub ve bağlı bileşen, ağlar, hibrit ağlar, devops, sanal makine, azure, sanal ağ eşlemesi, bileşen, merkez-uç
+keywords: terrayform, hub ve bağlı bileşen, ağlar, karma ağlar, DevOps, sanal makine, Azure, VNet eşlemesi, bağlı bileşen, hub-ışınsal
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 9cce809401a26eb2b45b11303afcd4818a1f950b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 9437f43a12204c9a08e1c0da11fc737e8c026c80
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884545"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173403"
 ---
-# <a name="tutorial-create-a-spoke-virtual-network-with-terraform-in-azure"></a>Öğretici: Azure'da Terraform ile uç sanal ağ oluşturma
+# <a name="tutorial-create-a-spoke-virtual-network-with-terraform-in-azure"></a>Öğretici: Azure 'da Terrayform ile bir bağlı bileşen sanal ağı oluşturma
 
-Bu öğreticide, iş yükü ayrımı göstermek için iki ayrı bileşen ağlarını uygulayın. Ağlarda hub sanal ağ'ı kullanarak ortak kaynakları paylaşır. Uçlar, iş yüklerini diğer uçlardan ayrı olarak yönetilen kendi sanal ağlarında yalıtmak için kullanılabilir. Her iş yükü birden fazla katman içerebilir. Birden fazla alt ağ, Azure yük dengeleyicileri aracılığıyla birbirine bağlanır.
+Bu öğreticide, iş yüklerinin ayrılmasını göstermek için iki ayrı bağlı ağa sahip olursunuz. Ağlar, hub sanal ağını kullanarak ortak kaynakları paylaşır. Uçlar, iş yüklerini diğer uçlardan ayrı olarak yönetilen kendi sanal ağlarında yalıtmak için kullanılabilir. Her iş yükü birden fazla katman içerebilir. Birden fazla alt ağ, Azure yük dengeleyicileri aracılığıyla birbirine bağlanır.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> * Merkez-uç topolojisinde uç Vnet'ler uygulamak için HCL (HashiCorp dili) kullanın
-> * Uç ağları sanal makineler oluşturmak için Terraform'u kullanın
-> * Hub ağları ile sanal ağ eşlemesi oluşturmak için Terraform'u kullanın
+> * Hub-ışınsal-uç topolojisinde bağlı olan sanal ağları uygulamak için HCL (HashiCorp Language) kullanın
+> * Bağlı ağlardaki sanal makineler oluşturmak için Terrayform kullanma
+> * Sanal ağ eşayarlarını hub ağlarla oluşturmak için Terrayform kullanın
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. [Bir hub'ı oluşturup azure'da Terraform ile karma ağ topolojisi](./terraform-hub-spoke-introduction.md).
-1. [Azure'da Terraform ile şirket içi sanal ağ oluşturma](./terraform-hub-spoke-on-prem.md).
-1. [Azure'da Terraform ile merkez sanal ağ oluşturma](./terraform-hub-spoke-hub-network.md).
-1. [Azure'da Terraform ile merkez sanal ağ Gereci oluşturma](./terraform-hub-spoke-hub-nva.md).
+1. [Azure 'Da Terrayform ile bir hub ve bağlı bileşen karma ağ topolojisi oluşturun](./terraform-hub-spoke-introduction.md).
+1. [Azure 'Da Terrayform ile şirket içi sanal ağ oluşturun](./terraform-hub-spoke-on-prem.md).
+1. [Azure 'Da Terrayform ile bir hub sanal ağı oluşturun](./terraform-hub-spoke-hub-network.md).
+1. [Azure 'Da Terrayform ile bir hub sanal ağ gereci oluşturun](./terraform-hub-spoke-hub-nva.md).
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 
-Bu bölümde iki uç komut dosyası oluşturulur. Her komut dosyası, bir uç sanal ağ ve sanal makine iş yükü için tanımlar. Eşlenmiş sanal ağa hub'ından uç sonra oluşturulur.
+Bu bölümde iki bağlı bileşen komut dosyası oluşturulur. Her betik, bir bağlı ağ sanal ağını ve iş yükü için bir sanal makineyi tanımlar. Hub 'dan bağlı ağa eşlenen bir sanal ağ daha sonra oluşturulur.
 
 1. [Azure portala](https://portal.azure.com) gidin.
 
@@ -56,9 +56,9 @@ Bu bölümde iki uç komut dosyası oluşturulur. Her komut dosyası, bir uç sa
     cd hub-spoke
     ```
 
-## <a name="declare-the-two-spoke-networks"></a>İki bileşen ağlarını bildirme
+## <a name="declare-the-two-spoke-networks"></a>İki bağlı ağ ağını bildirme
 
-1. Cloud Shell'de adlı yeni bir dosya açın `spoke1.tf`.
+1. Cloud Shell ' de adlı `spoke1.tf`yeni bir dosya açın.
 
     ```bash
     code spoke1.tf
@@ -66,7 +66,7 @@ Bu bölümde iki uç komut dosyası oluşturulur. Her komut dosyası, bir uç sa
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     locals {
       spoke1-location       = "CentralUS"
       spoke1-resource-group = "spoke1-vnet-rg"
@@ -188,7 +188,7 @@ Bu bölümde iki uç komut dosyası oluşturulur. Her komut dosyası, bir uç sa
     
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
     
-    ```JSON
+    ```hcl
     locals {
       spoke2-location       = "CentralUS"
       spoke2-resource-group = "spoke2-vnet-rg"
@@ -309,4 +309,4 @@ Bu bölümde iki uç komut dosyası oluşturulur. Her komut dosyası, bir uç sa
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure'da Terraform ile merkez ve uç ağ doğrula](./terraform-hub-spoke-validation.md)
+> [Azure 'da Terrayform ile bir hub ve bağlı bileşen ağı doğrulama](./terraform-hub-spoke-validation.md)

@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 85ca03bee728ec075383566be14d2484dd7431af
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035588"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170441"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl kullanılır: Mimari ve kavramlar
 
@@ -63,10 +63,10 @@ Bu araçları Azure Machine Learning için kullanın:
 + <a href="#compute-targets">İşlem hedefleri</a>
 + <a href="#training-scripts">Eğitim betiği</a>
 + <a href="#runs">Çalıştırma</a>
++ <a href="#environments">Lý</a>
 + <a href="#github-tracking-and-integration">Git izleme</a>
 + <a href="#snapshots">Görüntüye</a>
 + <a href="#activities">Etkinlik</a>
-+ <a href="#images">Görüntü</a>
 + <a href="#deployment">Dağıtım</a>
 + <a href="#web-service-deployments">Web Hizmetleri</a>
 + <a href="#iot-module-deployments">IoT modülleri</a>
@@ -180,28 +180,15 @@ Bir etkinlik, uzun süre çalışan bir işlemi temsil eder. Aşağıdaki işlem
 
 Etkinlikler, bu işlemlerin ilerlemesini kolayca izleyebilmeniz için SDK veya Web Kullanıcı arabirimi aracılığıyla bildirim sağlayabilir.
 
-### <a name="images"></a>Görüntüler
+### <a name="environments"></a>Ortamlar
 
-Görüntüler, modeli kullanmanız gereken tüm bileşenlerle birlikte, bir modeli güvenilir bir şekilde dağıtmak için bir yol sağlar. Görüntü, aşağıdaki öğeleri içerir:
+Azure ML ortamları, veri hazırlama, model eğitimi ve modeli sunan bir yeniden oluşturulabilir ortam oluşturmak için kullanılan yapılandırmayı (Docker/Python/Spark/vb.) belirtmek için kullanılır. Bunlar, farklı işlem hedefleri genelinde tekrarlanabilir, denetlenebilir ve taşınabilir makine öğrenimi iş akışlarını etkinleştiren Azure Machine Learning çalışma alanınızda yönetilen ve sürümlü varlıklardır.
 
-* Bir model.
-* Bir Puanlama komut dosyası veya uygulama. Komut dosyasını modele iletmek ve modelin çıkışını döndürmek için kullanabilirsiniz.
-* Model veya Puanlama betiği veya uygulaması için gereken bağımlılıklar. Örneğin, Python Paket bağımlılıklarını listeleyen bir Conda ortam dosyası içerebilir.
+Eğitim betiğinizi geliştirmek için yerel işlem ortamınızda bir ortam nesnesi kullanabilir, aynı ortamı ölçeklendirerek model eğitimi için Azure Machine Learning Işlem sırasında yeniden kullanabilir ve hatta modelinizi aynı ortamla dağıtabilirsiniz. 
 
-Azure Machine Learning, iki tür görüntü oluşturabilir:
+Eğitim ve çıkarım için yeniden [KULLANILABILIR ml ortamı oluşturmayı ve yönetmeyi](how-to-use-environments.md) öğrenin.
 
-* **FPGA görüntüsü**: Azure 'da alan programlanabilir bir kapı dizisine dağıtırken kullanılır.
-* **Docker görüntüsü**: FPGA dışında işlem hedeflerine dağıtırken kullanılır. Örnekler Azure Container Instances ve Azure Kubernetes hizmetidir.
 
-Azure Machine Learning, varsayılan olarak kullanılan bir temel görüntü sağlar. Kendi özel görüntülerinizi de sağlayabilirsiniz.
-
-### <a name="image-registry"></a>Görüntü kayıt defteri
-
-Resimler, çalışma alanınızdaki **görüntü kayıt defterinde** kataloglandı. Görüntüyü oluştururken ek meta veri etiketleri sağlayabilirsiniz, böylece daha sonra görüntünüzü bulmak için bunları sorgulayabilirsiniz.
-
-Görüntü oluşturma örneği için, bkz. [Azure Container Instances bir görüntü sınıflandırma modeli dağıtma](tutorial-deploy-models-with-aml.md).
-
-Özel bir görüntü kullanarak model dağıtmaya ilişkin bir örnek için bkz. [özel bir Docker görüntüsü kullanarak model](how-to-deploy-custom-docker-image.md)dağıtma.
 
 ### <a name="deployment"></a>Dağıtım
 

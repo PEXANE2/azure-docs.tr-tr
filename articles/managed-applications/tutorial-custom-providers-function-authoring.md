@@ -1,58 +1,55 @@
 ---
-title: Bir RESTful uç noktası için özel sağlayıcılar yazma
-description: Bu öğreticide, bir RESTful uç noktası için özel sağlayıcılar yazmak nasıl üzerinden geçer. Bu istekleri ve yanıtları için desteklenen bir RESTful HTTP yöntemleri işlemek nasıl ayrıntıya gider.
+title: Özel sağlayıcılar için yeniden bir uç nokta yazar
+description: Bu öğreticide, özel sağlayıcılar için bir yeniden deneme uç noktasının nasıl yazılacağı gösterilmektedir. Desteklenen yeniden deneme HTTP yöntemlerine yönelik isteklerin ve yanıtların nasıl işleneceğini ayrıntılarıyla açıklamaktadır.
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 176e3b02cbda7577e306d86363cfe5b41335fb6e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: ae821f07034b038f49a400de8c00e4ace6787192
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67800039"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172889"
 ---
-# <a name="authoring-a-restful-endpoint-for-custom-providers"></a>Bir RESTful uç noktası için özel sağlayıcılar yazma
+# <a name="author-a-restful-endpoint-for-custom-providers"></a>Özel sağlayıcılar için yeniden bir uç nokta yazar
 
-Özel sağlayıcılar azure'da iş akışlarını özelleştirmenizi sağlar. Özel bir sağlayıcı Azure arasında bir sözleşmedir ve `endpoint`. Bu öğreticide, özel bir sağlayıcı RESTful geliştirme sürecinde geçer `endpoint`. Azure özel sağlayıcıları ile alışkın değilseniz bkz [genel bakış'ta özel kaynak sağlayıcıları](./custom-providers-overview.md).
-
-Bu öğreticide aşağıdaki adımlar ayrılır:
-
-- Özel Eylemler ve özel kaynaklar ile çalışma
-- Nasıl ayıracağınız depolamadaki özel kaynaklar
-- Özel sağlayıcı RESTful yöntemleri destekler
-- RESTful operations tümleştirin
-
-Bu öğreticide, aşağıdaki öğreticiler oluşturacaksınız:
-
-- [Azure işlevleri için Azure özel sağlayıcılar Kurulumu](./tutorial-custom-providers-function-setup.md)
+Özel sağlayıcı, Azure ile uç nokta arasında bir sözleşmedir. Özel sağlayıcılar sayesinde, Azure 'da iş akışlarını özelleştirebilirsiniz. Bu öğreticide, özel bir sağlayıcının nasıl tekrar uç noktası yazılacağı gösterilmektedir. Azure özel sağlayıcıları hakkında bilginiz varsa bkz. [özel kaynak sağlayıcılarına genel bakış](./custom-providers-overview.md).
 
 > [!NOTE]
-> Bu öğreticide, önceki öğreticide oluşturur. Bu öğreticideki adımlardan bazıları, yalnızca bir Azure işlevi özel sağlayıcıları ile çalışmak için Kurulum olmaması durumunda çalışır.
+> Bu öğretici, [Azure özel sağlayıcıları Için Azure Işlevleri ayarlama](./tutorial-custom-providers-function-setup.md)öğreticisinde oluşturulur. Bu öğreticideki bazı adımlar, yalnızca bir Azure işlev uygulaması özel sağlayıcılarla çalışmak üzere ayarlandıysa çalışır.
 
-## <a name="working-with-custom-actions-and-custom-resources"></a>Özel Eylemler ve özel kaynaklar ile çalışma
+## <a name="work-with-custom-actions-and-custom-resources"></a>Özel eylemlerle ve özel kaynaklarla çalışma
 
-Bu öğreticide, bizim Özel sağlayıcı için bir RESTful uç noktası olarak çalışmak için işlev güncelleştireceğiz. Azure'da temel bir RESTful belirtimi sonra kaynaklara ve işlemlere modellenir: PUT - yeni bir kaynak oluşturan GET - alır, mevcut bir kaynağı silme - (örnek), mevcut bir kaynağı kaldırır, POST - tetikleyici eylem ve GET (koleksiyon) - var olan tüm kaynakları listeler. Bu öğretici için biz Azure tablo depolama kullanacak ancak herhangi bir veritabanı veya depolama hizmeti çalışabilir.
+Bu öğreticide, işlev uygulamasını özel sağlayıcınız için bir yeniden deneme uç noktası olarak çalışacak şekilde güncelleşolursunuz. Azure 'daki kaynaklar ve eylemler aşağıdaki temel yeniden oluşturma belirtiminden sonra modellenmiştir:
 
-## <a name="how-to-partition-custom-resources-in-storage"></a>Nasıl ayıracağınız depolamadaki özel kaynaklar
+- **YERLEŞTİR**: Yeni kaynak oluştur
+- **Get (örnek)** : Var olan bir kaynağı alma
+- **SİL**: Var olan bir kaynağı kaldır
+- **GÖNDERİ**: Bir eylem tetikleyin
+- **Get (koleksiyon)** : Tüm mevcut kaynakları Listele
 
-Bir RESTful hizmeti oluşturuyoruz depolamada oluşturulan kaynakları depolamak gerekir. Azure tablo depolaması için verilerimizi bölüm ve satır anahtarlarını oluşturmak ihtiyacımız var. Özel sağlayıcılar için sağlayıcıya özel veri bölümlendirilmelidir. Özel sağlayıcı için gelen bir istek gönderildiğinde, özel sağlayıcı ekler `x-ms-customproviders-requestpath` giden istek üst bilgisine `endpoint`.
+ Bu öğretici için Azure Tablo Depolamayı kullanırsınız. Ancak, herhangi bir veritabanı veya depolama hizmeti çalışabilir.
 
-örnek `x-ms-customproviders-requestpath` özel bir kaynak için üst bilgi:
+## <a name="partition-custom-resources-in-storage"></a>Depolamadaki özel kaynakları bölümle
+
+Yeniden oluşturulmuş bir hizmet oluştururken oluşturulan kaynakları depolamanız gerekir. Azure Tablo depolaması için verileriniz için bölüm ve satır anahtarları oluşturmanız gerekir. Özel sağlayıcılar için, verilerin özel sağlayıcıya bölümlenmesi gerekir. Özel sağlayıcıya gelen bir istek gönderildiğinde, özel sağlayıcı `x-ms-customproviders-requestpath` üst bilgiyi giden istekleri uç noktaya ekler.
+
+Aşağıdaki örnek, özel bir `x-ms-customproviders-requestpath` kaynak için bir üst bilgi gösterir:
 
 ```
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{myResourceType}/{myResourceName}
 ```
 
-Yukarıdaki örneği temel alarak `x-ms-customproviders-requestpath` üst bilgi, biz oluşturabilirsiniz partitionKey ve rowKey aşağıdaki gibi depolama için:
+Örneğin `x-ms-customproviders-requestpath` başlığına bağlı olarak, aşağıdaki tabloda gösterildiği gibi, depolama için *partitionkey* ve *rowkey* parametrelerini oluşturabilirsiniz:
 
 Parametre | Şablon | Açıklama
----|---
-partitionKey | '{subscriptionId}:{resourceGroupName}:{resourceProviderName}' | PartitionKey, verilerin nasıl bölümlendiğini ' dir. Çoğu durumda, özel sağlayıcı örneği tarafından verilerin bölümlere ayrılması gerekir.
-RowKey | ' {myResourceType}: {myResourceName}' | RowKey verileri tek tek tanımlayıcısıdır. Çoğu zaman bu kaynak adıdır.
+---|---|---
+*partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | *Partitionkey* parametresi, verilerin nasıl bölümlenmiş olduğunu belirtir. Genellikle veriler özel sağlayıcı örneği tarafından bölümlenir.
+*rowKey* | `{myResourceType}:{myResourceName}` | *Rowkey* parametresi, veriler için bireysel tanımlayıcıyı belirtir. Genellikle tanımlayıcı, kaynağın adıdır.
 
-Ayrıca, biz de müşterilerimizin özel kaynak modellemek için yeni bir sınıf oluşturmanız gerekir. Bu öğreticide, ekleyeceğiz `CustomResource` tüm girilen verileri kabul eden bir genel sınıftır bizim işlev sınıfı:
+Özel kaynağınızı modellemek için de yeni bir sınıf oluşturmanız gerekir. Bu öğreticide, aşağıdaki **Customresource** sınıfını işlev uygulamanıza eklersiniz:
 
 ```csharp
 // Custom Resource Table Entity
@@ -61,26 +58,27 @@ public class CustomResource : TableEntity
     public string Data { get; set; }
 }
 ```
+**Customresource** , herhangi bir giriş verisini kabul eden basit, genel bir sınıftır. Veri depolamak için kullanılan **Tableentity**tabanlıdır. **Customresource** sınıfı **tableentity**: **partitionkey** ve **rowkey**öğesinden iki özelliği devralır.
 
-Bu temel bir temel sınıf oluşturur `TableEntity`, verileri depolamak için kullanılır. `CustomResource` Sınıfından devralan iki özelliklerinden `TableEntity`: partitionKey ve rowKey.
-
-## <a name="support-custom-provider-restful-methods"></a>Özel sağlayıcı RESTful yöntemleri destekler
+## <a name="support-custom-provider-restful-methods"></a>Özel sağlayıcı yeniden deneme yöntemlerini destekleme
 
 > [!NOTE]
-> Kodu doğrudan öğreticinin Kopyalamakta olduğunuz değil, yanıt içeriği geçerli JSON olmalıdır ve ayarlar `Content-Type` başlık olarak `application/json`.
+> Kodu doğrudan bu öğreticiden kopyalamadıysanız, yanıt içeriği `Content-Type` `application/json`üstbilgiyi ayarlayan geçerli bir JSON olmalıdır.
 
-Veri bölümlendirme sahibiz, özel kaynaklar ve özel eylemler için temel CRUD ve tetikleyici yöntemleri çıkış şimdi iskelesini. Özel sağlayıcılar bir proxy olarak davranmasına olduğundan, istek ve yanıt modellenir ve gereken RESTful tarafından işlenen `endpoint`. İzleyin temel RESTful işlemleri işlemek için kod parçacıklarını aşağıda:
+Veri bölümlemesini ayarladığınıza göre, özel kaynaklar ve özel eylemler için temel CRUD ve tetikleme yöntemlerini oluşturun. Özel sağlayıcılar proxy olarak davrandığı için, Restize uç noktasının istek ve yanıtı modellemek ve işlemesi gerekir. Aşağıdaki kod parçacıkları, temel yeniden gerçekleştirilen işlemlerin nasıl işleneceğini gösterir.
 
-### <a name="trigger-custom-action"></a>Özel eylemi tetikleme
+### <a name="trigger-a-custom-action"></a>Özel bir eylem tetikleyin
 
-Özel sağlayıcılar için özel bir eylem ile tetiklenen `POST` istekleri. Özel bir eylem, isteğe bağlı olarak bir dizi bir giriş parametrelerini içeren bir istek gövdesini kabul edebilir. Eylem, geri dönüş sonra bir yanıt signally eylem sonucu olarak başarılı veya başarısız olmadığını gerekir. Bu öğreticide, yöntemin ekleyeceğiz `TriggerCustomAction` bizim işlevi için:
+Özel sağlayıcılar için, POST istekleri aracılığıyla özel bir eylem tetiklenir. Özel bir eylem, isteğe bağlı olarak bir giriş parametreleri kümesi içeren bir istek gövdesini kabul edebilir. Eylem daha sonra eylemin sonucunu ve başarılı veya başarısız olup olmadığını belirten bir yanıt döndürür.
+
+Aşağıdaki **Triggercustomaction** yöntemini işlev uygulamanıza ekleyin:
 
 ```csharp
 /// <summary>
-/// Triggers a custom action with some side effect.
+/// Triggers a custom action with some side effects.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <returns>The http response result of the custom action.</returns>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <returns>The HTTP response result of the custom action.</returns>
 public static async Task<HttpResponseMessage> TriggerCustomAction(HttpRequestMessage requestMessage)
 {
     var myCustomActionRequest = await requestMessage.Content.ReadAsStringAsync();
@@ -93,22 +91,24 @@ public static async Task<HttpResponseMessage> TriggerCustomAction(HttpRequestMes
 }
 ```
 
-`TriggerCustomAction` Yöntemi, bir gelen isteği kabul eder ve yalnızca konsola yansıtır geri bir başarı durum kodu ile yanıt. 
+**Triggercustomaction** yöntemi gelen bir isteği kabul eder ve yanıtı bir durum kodu ile geri doğru yankılar.
 
-### <a name="create-custom-resource"></a>Özel kaynak oluşturma
+### <a name="create-a-custom-resource"></a>Özel bir kaynak oluşturun
 
-Özel sağlayıcılar için özel bir kaynak aracılığıyla oluşturulan `PUT` istekleri. Özel bir sağlayıcı özel kaynak için özellikler kümesi içeren bir JSON istek gövdesini kabul eder. Azure'da bir RESTful modeli kaynakları izleyin. Bir kaynak oluşturmak için kullanılan aynı istek URL'si almak ve kaynağı silme olmalıdır. Bu öğreticide, yöntemin ekleyeceğiz `CreateCustomResource` yeni kaynaklar oluşturmak için:
+Özel sağlayıcılar için, PUT istekleri aracılığıyla özel bir kaynak oluşturulur. Özel sağlayıcı, özel kaynak için bir özellikler kümesi içeren bir JSON istek gövdesini kabul eder. Azure 'daki kaynaklar, bir yeniden modellidir. Kaynak oluşturmak, almak veya silmek için aynı istek URL 'sini kullanabilirsiniz.
+
+Yeni kaynaklar oluşturmak için aşağıdaki **Createcustomresource** metodunu ekleyin:
 
 ```csharp
 /// <summary>
 /// Creates a custom resource and saves it to table storage.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="azureResourceId">The parsed Azure resource Id.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="azureResourceId">The parsed Azure resource ID.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
-/// <returns>The http response containing the created custom resource.</returns>
+/// <returns>The HTTP response containing the created custom resource.</returns>
 public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, ResourceId azureResourceId, string partitionKey, string rowKey)
 {
     // Adds the Azure top-level properties.
@@ -133,29 +133,31 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-`CreateCustomResource` Yöntemi güncelleştirmeleri Azure belirli alanları içerecek biçimde gelen istek: `id`, `name`, ve `type`. Bunlar arasında Azure Hizmetleri tarafından kullanılan en üst düzey özellikleridir. Bunlar, Azure İlkesi, Azure Resource Manager şablonları ve Azure etkinlik günlükleri gibi başka hizmetler ile tümleştirmek özel sağlayıcı olanak sağlar.
+**Createcustomresource** yöntemi, gelen isteği Azure 'a özgü alanların **kimliğini**, **adını**ve **türünü**içerecek şekilde güncelleştirir. Bu alanlar, Azure genelinde Hizmetler tarafından kullanılan en üst düzey özelliklerdir. Özel sağlayıcının Azure Ilkesi, Azure Resource Manager şablonları ve Azure etkinlik günlüğü gibi diğer hizmetlerle birlikte kullanmasına izin verir.
 
 Özellik | Örnek | Açıklama
 ---|---|---
-name | '{myCustomResourceName}' | Özel kaynak adı.
-türü | }' | Kaynak türü ad alanı.
-id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName} / {myCustomResourceName}' | Kaynak kimliği.
+**name** | {myCustomResourceName} | Özel kaynağın adı
+**type** | Microsoft. CustomProviders/resourceProviders/{resourceTypeName} | Kaynak türü ad alanı
+**id** | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/<br>sağlayıcılar/Microsoft. CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | Kaynak KIMLIĞI
 
-Özellikleri eklemenin yanı sıra, biz de belgeyi Azure tablo depolama alanına kaydedin. 
+Özellikleri eklemenin yanı sıra, JSON belgesini Azure Tablo depolama alanına da kaydettiniz.
 
-### <a name="retrieve-custom-resource"></a>Özel kaynak alma
+### <a name="retrieve-a-custom-resource"></a>Özel bir kaynak alma
 
-Özel sağlayıcılar için özel bir kaynak üzerinden alınan `GET` istekleri. Özel sağlayıcı olacak *değil* JSON istek gövdesini kabul edin. Durumunda, `GET` istekleri **uç nokta** kullanması gereken `x-ms-customproviders-requestpath` zaten oluşturulan kaynak dönmek için üst bilgi. Bu öğreticide, yöntemin ekleyeceğiz `RetrieveCustomResource` mevcut kaynakları almak için:
+Özel sağlayıcılar için, GET istekleri aracılığıyla özel bir kaynak alınır. Özel sağlayıcı bir JSON istek gövdesini kabul *etmez* . GET istekleri için uç nokta, önceden oluşturulmuş `x-ms-customproviders-requestpath` kaynağı döndürmek için üst bilgisini kullanır.
+
+Mevcut kaynakları almak için aşağıdaki **RetrieveCustomResource** yöntemini ekleyin:
 
 ```csharp
 /// <summary>
 /// Retrieves a custom resource.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
-/// <returns>The http response containing the existing custom resource.</returns>
+/// <returns>The HTTP response containing the existing custom resource.</returns>
 public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string rowKey)
 {
     // Attempt to retrieve the Existing Stored Value
@@ -172,21 +174,23 @@ public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequest
 }
 ```
 
-Azure'da kaynakları bir RESTful modeli izlemelidir. Değilse kaynak oluşturulmuş istek URL'si de kaynak döndürmelidir bir `GET` istek gerçekleştirilir.
+Azure 'da kaynaklar, yeniden bir model izler. Kaynak oluşturan istek URL 'SI, bir GET isteği gerçekleştirilirse kaynağı da döndürür.
 
-### <a name="remove-custom-resource"></a>Özel kaynak Kaldır
+### <a name="remove-a-custom-resource"></a>Özel bir kaynağı kaldırma
 
-Özel sağlayıcılar için özel bir kaynak aracılığıyla kaldırılır `DELETE` istekleri. Özel sağlayıcı olacak *değil* JSON istek gövdesini kabul edin. Durumunda, `DELETE` istekleri **uç nokta** kullanması gereken `x-ms-customproviders-requestpath` zaten oluşturulan kaynak silmek için üst bilgi. Bu öğreticide, yöntemin ekleyeceğiz `RemoveCustomResource` mevcut kaynakları kaldırmak için:
+Özel sağlayıcılar için, SILME istekleri aracılığıyla özel bir kaynak kaldırılır. Özel sağlayıcı bir JSON istek gövdesini kabul *etmez* . Bir silme isteği için uç nokta, zaten oluşturulan `x-ms-customproviders-requestpath` kaynağı silmek için üst bilgisini kullanır.
+
+Mevcut kaynakları kaldırmak için aşağıdaki **Removeccustomresource** metodunu ekleyin:
 
 ```csharp
 /// <summary>
 /// Removes an existing custom resource.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure storage account table.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
-/// <returns>The http response containing the result of the delete.</returns>
+/// <returns>The HTTP response containing the result of the deletion.</returns>
 public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string rowKey)
 {
     // Attempt to retrieve the Existing Stored Value
@@ -203,21 +207,23 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 }
 ```
 
-Azure'da kaynakları bir RESTful modeli izlemelidir. Varsa kaynak oluşturulmuş istek URL'si de kaynak silmelisiniz bir `DELETE` istek gerçekleştirilir.
+Azure 'da kaynaklar, yeniden bir model izler. Bir kaynak oluşturan istek URL 'SI, SILME isteği gerçekleştirilirse kaynağı da siler.
 
-### <a name="list-all-custom-resources"></a>Tüm özel kaynaklar listesi
+### <a name="list-all-custom-resources"></a>Tüm özel kaynakları Listele
 
-Özel sağlayıcılar için koleksiyonda mevcut özel kaynakların listesini numaralandırılabilir `GET` istekleri. Özel sağlayıcı olacak *değil* JSON istek gövdesini kabul edin. Koleksiyon söz konusu olduğunda `GET` istekleri `endpoint` kullanması gereken `x-ms-customproviders-requestpath` zaten oluşturulmuş olan kaynaklar numaralandırmak için üst bilgi. Bu öğreticide, yöntemin ekleyeceğiz `EnumerateAllCustomResources` mevcut kaynakları numaralandırılamadı.
+Özel sağlayıcılar için, koleksiyon GET isteklerini kullanarak var olan özel kaynakların bir listesini sıralayabilirsiniz. Özel sağlayıcı bir JSON istek gövdesini kabul *etmez* . Bir get istekleri koleksiyonu için, uç nokta, önceden oluşturulmuş `x-ms-customproviders-requestpath` kaynakları numaralandırmak üzere üst bilgisini kullanır.
+
+Mevcut kaynakları numaralandırmak için aşağıdaki **Enumerateallcustomresources** metodunu ekleyin:
 
 ```csharp
 /// <summary>
 /// Enumerates all the stored custom resources for a given type.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="resourceType">The resource type of the enumeration.</param>
-/// <returns>The http response containing a list of resources stored under 'value'.</returns>
+/// <returns>The HTTP response containing a list of resources stored under 'value'.</returns>
 public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string resourceType)
 {
     // Generate upper bound of the query.
@@ -244,22 +250,22 @@ public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRe
 ```
 
 > [!NOTE]
-> Satır anahtarı "startswith" sorgu dizeleri için gerçekleştirmek için Azure tablo sözdizimi değerinden büyüktür ve küçüktür. 
+> RowKey Querykarşılaştırmaları. GreaterThan ve Querykarşılaştırmaları. LessThan dizeler için bir "StartsWith" sorgusu gerçekleştirmeye yönelik Azure Tablo depolama söz dizeleridir.
 
-Var olan tüm kaynakları listelemek için şu kaynakları bizim Özel sağlayıcı bölümü altında mevcut olmasını sağlar bir Azure Tablo sorgusu oluştur. Sorgu sonra satır anahtarı ile aynı başlatan denetimleri `{myResourceType}`.
+Tüm mevcut kaynakları listelemek için, özel sağlayıcı bölümünüzün altında kaynakların mevcut olmasını sağlayan bir Azure Tablo depolama sorgusu oluşturun. Sorgu daha sonra satır anahtarının aynı `{myResourceType}` değerle başlayacağını denetler.
 
-## <a name="integrate-restful-operations"></a>RESTful operations tümleştirin
+## <a name="integrate-restful-operations"></a>Yeniden takip eden işlemleri tümleştirin
 
-RESTful tüm yöntemleri için işlev eklendikten sonra ana güncelleştirmek için `Run` farklı gerisini işlevleri çağırmak için yöntem ister:
+İşlev uygulamasına tüm yeniden yapılan Yöntemler eklendikten sonra, farklı REST isteklerini işlemek için işlevleri çağıran ana **çalıştırma** yöntemini güncelleştirin:
 
 ```csharp
 /// <summary>
-/// Entry point for the Azure Function webhook and acts as the service behind a custom provider.
+/// Entry point for the Azure function app webhook that acts as the service behind a custom provider.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
 /// <param name="log">The logger.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <returns>The http response for the custom Azure API.</returns>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <returns>The HTTP response for the custom Azure API.</returns>
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log, CloudTable tableStorage)
 {
     // Get the unique Azure request path from request headers.
@@ -288,7 +294,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 
     switch (req.Method)
     {
-        // Action request for an custom action.
+        // Action request for a custom action.
         case HttpMethod m when m == HttpMethod.Post && !isResourceRequest:
             return await TriggerCustomAction(
                 requestMessage: req);
@@ -331,11 +337,13 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
             return req.CreateResponse(HttpStatusCode.BadRequest);
     }
 }
-``` 
+```
 
-Güncelleştirilmiş `Run` yöntemi artık içerecektir `tableStorage` Azure tablo depolama için eklenen bağlama giriş. Yöntemin ilk kısmı artık okuyacaksa `x-ms-customproviders-requestpath` üstbilgi ve kullanım `Microsoft.Azure.Management.ResourceManager.Fluent` kitaplığı değeri olarak bir kaynak kimliği ayrıştırılamıyor `x-ms-customproviders-requestpath` Üstbilgi özel sağlayıcı tarafından gönderilen ve gelen istek yolunu belirtir. Ayrıştırılmış kaynak Kimliğini kullanarak, biz şimdi partitionKey ve rowKey özel kaynakları depolamak veya arama verileri için oluşturabilirsiniz.
+Güncelleştirilmiş **Run** yöntemi artık Azure Tablo Depolaması Için eklediğiniz *TableStorage* giriş bağlamasını içerir. Yöntemin ilk bölümü `x-ms-customproviders-requestpath` üstbilgiyi okur ve bir kaynak kimliği olarak değeri ayrıştırmak `Microsoft.Azure.Management.ResourceManager.Fluent` için kitaplığı kullanır. `x-ms-customproviders-requestpath` Üst bilgi özel sağlayıcı tarafından gönderilir ve gelen isteğin yolunu belirtir.
 
-Sınıflar ve yöntemler eklemenin yanı sıra kullanarak güncelleştirmek ihtiyacımız işlevi için yöntem. Dosyanın üst kısmına aşağıdakileri ekleyin:
+Ayrıştırılmış kaynak KIMLIĞI ' ni kullanarak, özel kaynakları aramak veya depolamak üzere veri için **partitionkey** ve **rowkey** değerlerini oluşturabilirsiniz.
+
+Yöntemleri ve sınıfları ekledikten sonra, işlev uygulaması için **using** yöntemlerini güncelleştirmeniz gerekir. Aşağıdaki kodu C# dosyanın en üstüne ekleyin:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -359,10 +367,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-Bu öğreticinin herhangi bir noktasında kayıp geldiyseniz, tamamlanan kodu örneği bulabilirsiniz [özel sağlayıcı C# RESTful uç nokta başvurusu](./reference-custom-providers-csharp-endpoint.md). Sonraki öğreticilerde kullanılacağından işlev tetiklemek için kullanılan işlev URL'sini işlevi tamamlandıktan sonra kaydedin.
+Bu öğreticinin herhangi bir noktasında kayıp alırsanız, tam kod örneğini [özel sağlayıcı C# yeniden deneme uç noktası başvurusunda](./reference-custom-providers-csharp-endpoint.md)bulabilirsiniz. İşlev uygulamasını tamamladıktan sonra, işlev uygulaması URL 'sini kaydedin. Daha sonraki öğreticilerde işlev uygulamasını tetiklemek için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Biz bu makalede, Azure özel sağlayıcı ile çalışmak için bir RESTful uç noktası yazılan `endpoint`. Özel bir sağlayıcı oluşturma hakkında bilgi edinmek için sonraki makaleye gidin.
-
-- [Öğretici: Özel bir sağlayıcı oluşturma](./tutorial-custom-providers-create.md)
+Bu makalede, bir Azure özel sağlayıcı uç noktasıyla çalışmak için bir yeniden deneme uç noktası yazıldı. Özel bir sağlayıcı oluşturmayı öğrenmek için, makale [öğreticisine gidin: Özel bir sağlayıcı](./tutorial-custom-providers-create.md)oluşturma.

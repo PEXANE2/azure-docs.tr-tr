@@ -2,29 +2,29 @@
 title: include dosyası
 description: include dosyası
 services: virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 12/21/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: bca78e2963f19b60071b1b27c8dc65c76818e10e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3f9b86dd3716a25ab95265cf46b616144f57163b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188381"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168657"
 ---
-## <a name="overview-of-ssh-and-keys"></a>SSH ve anahtarları'na genel bakış
+## <a name="overview-of-ssh-and-keys"></a>SSH ve anahtarlara genel bakış
 
-[SSH](https://www.ssh.com/ssh/) güvenli bağlantılar üzerinden güvenli oturum açma işlemleri izin veren bir şifreli bağlantı protokolüdür. SSH Azure'da barındırılan Linux VM'ler için varsayılan bağlantı protokolüdür. SSH kendisini şifreli bir bağlantı sağlar, ancak SSH bağlantıları ile Parolaları kullanarak hala VM yanılma saldırıları veya parolalar tahmin için savunmasız bırakır. Genel-özel anahtar çifti olarak da bilinen kullanarak SSH kullanarak VM'ye bağlanma daha güvenli ve tercih edilen bir yöntem olan *SSH anahtarları*. 
+[SSH](https://www.ssh.com/ssh/) , güvenli olmayan bağlantılarda güvenli oturum açma işlemlerinin yapılmasına izin veren şifreli bir bağlantı protokolüdür. SSH, Azure 'da barındırılan Linux VM 'Leri için varsayılan bağlantı protokolüdür. SSH 'in kendisi şifreli bir bağlantı sağlamasına karşın, SSH bağlantılarıyla parolaların kullanılması, VM 'nin deneme yanılma saldırılarına veya parolaların tahmin edilmeye karşı savunmasız kalmasına neden olabilir. SSH kullanarak bir VM 'ye bağlanmak için daha güvenli ve tercih edilen bir yöntem, *SSH anahtarları*olarak da bilinen bir ortak özel anahtar çifti kullanmaktır. 
 
-* *Ortak anahtar* Linux VM'nize veya ortak anahtar şifrelemesi ile kullanmak istediğiniz herhangi bir hizmeti yerleştirilir.
+* *Ortak anahtar* , Linux sanal makinenize veya ortak anahtar şifrelemesi ile kullanmak istediğiniz başka bir hizmete yerleştirilir.
 
-* *Özel anahtarı* yerel sisteminizde kalır. Bu özel anahtarı koruyun. Özel anahtarı paylaşmayın.
+* *Özel anahtar* yerel sisteminizde kalır. Bu özel anahtarı koruyun. Özel anahtarı paylaşmayın.
 
-Linux (ortak anahtarı olan) VM'nize, uzak VM bağlanmak için bir SSH istemcisi kullandığınızda, istemci özel anahtara sahip olduğundan emin olmak için test eder. İstemci, özel anahtarı varsa, verilen sanal makine erişimine izin. 
+Linux VM 'nize bağlanmak için bir SSH istemcisi kullandığınızda (ortak anahtara sahiptir), uzak VM, özel anahtara sahip olduğundan emin olmak için istemciyi sınar. İstemci özel anahtara sahipse, VM 'ye erişim izni verilir. 
 
-Kuruluşunuzun güvenlik ilkelerine bağlı olarak, birden çok Azure Vm'lerini ve hizmetlerini erişmek için tek genel-özel anahtar çifti yeniden kullanabilirsiniz. Her VM'ye veya hizmete erişmek istediğiniz için ayrı bir çift anahtar gerekmez. 
+Kuruluşunuzun güvenlik ilkelerine bağlı olarak, birden fazla Azure VM ve hizmetine erişmek için tek bir genel özel anahtar çiftini yeniden kullanabilirsiniz. Erişmek istediğiniz her VM veya hizmet için ayrı bir anahtar çiftine gerek yoktur. 
 
-Ortak anahtarınız herkesle paylaşılabilir, ancak özel anahtarınız, yalnızca sizin (veya yerel güvenlik altyapınız) sahip olmanız gerekir.
+Ortak anahtarınız herkese paylaşılabilir, ancak yalnızca sizin (veya yerel güvenlik altyapınız) özel anahtarınıza sahip olmalıdır.

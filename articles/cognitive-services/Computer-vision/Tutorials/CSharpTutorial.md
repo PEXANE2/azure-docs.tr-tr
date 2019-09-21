@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3da22d11dce1e535763476d906ac45f3da22bc8d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141279"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170040"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Örnek: İle bir görüntü işleme uygulamasını keşfetC#
 
@@ -79,8 +79,8 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
 1. Örnek uygulama görüntülenirken, abonelik anahtar yönetimi sayfasını göstermek için gezinti bölmesinden **abonelik anahtar yönetimi** ' ni seçin.
    ![Abonelik anahtarı yönetim sayfası](../Images/Vision_UI_Subscription.PNG)  
 1. Abonelik anahtarınızı **abonelik anahtarı**' na girin.
-1. Uç noktada Endpoint URL 'sinigirin.  
-   Örneğin, Görüntü İşleme ücretsiz deneme sürümünden abonelik anahtarını kullanıyorsanız, aşağıdaki uç nokta URL 'sini girin:`https://westcentralus.api.cognitive.microsoft.com`
+1. Uç noktada Endpoint URL 'sini **girin.**  
+   Örneğin, Görüntü İşleme ücretsiz deneme sürümünden abonelik anahtarını kullanıyorsanız, aşağıdaki uç nokta URL 'sini girin:`https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Örnek uygulamayı bir sonraki çalıştırışınızda abonelik anahtarınızı ve uç nokta URL 'sini girmek istemiyorsanız, abonelik anahtarını ve uç nokta URL 'sini bilgisayarınıza kaydetmek için **ayarı kaydet** ' i seçin. Önceden kaydedilmiş abonelik anahtarınızı ve uç nokta URL 'sini silmek istiyorsanız, **ayarı Sil**' i seçin.
 

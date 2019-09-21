@@ -3,7 +3,7 @@ title: Linux için Azure Izleyici sanal makine uzantısı | Microsoft Docs
 description: Log Analytics aracısını sanal makine uzantısını kullanarak Linux sanal makinesine dağıtın.
 services: virtual-machines-linux
 documentationcenter: ''
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
-ms.author: roiyz
-ms.openlocfilehash: 8ce10deaf49b6d7796a6b932beb15a1527322f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: akjosh
+ms.openlocfilehash: 95b630342ac2b4bc9cf51f3aa3d8563c4962ce11
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084397"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168943"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Linux için Azure Izleyici sanal makine uzantısı
 

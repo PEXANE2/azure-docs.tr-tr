@@ -1,21 +1,18 @@
 ---
-title: 'Hızlı Başlangıç: Coğrafi yapay zeka ayarlama'
-titleSuffix: Azure Data Science Virtual Machine
-description: Coğrafi AI veri bilimi sanal makinesi yapılandırma ve oluşturma hakkında bilgi edinin. Coğrafi AI veri bilimi sanal makinesi, coğrafi veri kullanarak yapay ZEKA ve ML çözümler oluşturmak için araçlar sağlar.
-keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz
-services: machine-learning
+title: 'Hızlı Başlangıç: Coğrafi AI DSVM’si oluşturma'
+description: Jeo-uzamsal analiz ve makine öğrenimi için Azure 'da coğrafi bir AI Veri Bilimi Sanal Makinesi oluşturun ve oluşturun.
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: quickstart
-ms.date: 03/05/2018
-ms.openlocfilehash: 7afeec3f71cd1af30093801fedabf3f0357ae3d0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/13/2019
+ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208065"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170733"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Hızlı Başlangıç: Azure 'da coğrafi yapay zeka sanal makinesi ayarlama 
 
@@ -82,7 +79,7 @@ Aksi takdirde, yeni bir ArcGIS hesabı ve lisansına kaydolabilir veya [ücretsi
 
 ![Arcgıs ücretsiz deneme](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Standart bir ArcGIS hesabına veya ücretsiz bir denemeye kaydolduktan sonra, argıs [Pro 'yu kullanmaya](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)başlama yönergelerini izleyerek hesabınız için argıs Pro 'yu yetkilendirebilirsiniz.
+Standart bir ArcGIS hesabına veya ücretsiz bir denemeye kaydolduktan sonra, [argıs Pro 'yu kullanmaya](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)başlama yönergelerini izleyerek hesabınız için argıs Pro 'yu yetkilendirebilirsiniz.
 
 Argıs hesabınız aracılığıyla argıs Pro Desktop 'ta oturum açtıktan sonra, Jeo-uzamsal analizlerinizin ve makine öğrenimi projelerinizin VM 'de yüklü ve yapılandırılmış olan veri bilimi araçlarını kullanmaya başlamaya hazırsınız demektir.
 

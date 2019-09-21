@@ -7,13 +7,13 @@ keywords: terraform, devops, sanal makine, Azure, ölçek kümesi, ağ, depolama
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2018
-ms.openlocfilehash: 21fea65ed7056afa57d9acbacb2457bb4d09cff5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: a6bc0879d07cadc6c5b0b1a21b11b3075ec69719
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885158"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169867"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform kullanarak bir Azure sanal makine ölçek kümesi oluşturma
 
@@ -29,15 +29,15 @@ Bu öğreticide, [Azure Cloud Shell](/azure/cloud-shell/overview)'i kullanarak a
 > * VM'lere SSH aracılığıyla bağlanmak için bir sıçrama kutusu oluşturma ve dağıtma
 
 > [!NOTE]
-> Bu makalede kullanılan yapılandırma dosyalar, Terraform en son sürümünü [GitHub deposunu harika Terraform](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
+> Bu makalede kullanılan Terrayform yapılandırma dosyalarının en son sürümü [GitHub 'Daki başar terrat deposundadır](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **Terraform'u yükleme**: Makaledeki yönergeleri izleyerek [Terraform ve Azure erişimi yapılandırma](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terrayform 'U yükler**: Bu makaledeki yönergeleri izleyin, [Terrayform ve Azure erişimini yapılandırma](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **SSH anahtar çifti oluşturma**: Bir SSH anahtar çifti, makaledeki yönergeleri yoksa [oluşturmak ve azure'da Linux VM'ler için SSH ortak ve özel anahtar çifti kullanmak nasıl](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **SSH anahtar çifti oluşturun**: Zaten bir SSH anahtar çiftiniz yoksa, [Azure 'Da Linux VM 'ler IÇIN SSH ortak ve özel anahtar çifti oluşturma ve kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)makalesindeki yönergeleri izleyin.
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 
@@ -80,7 +80,7 @@ Azure Cloud Shell'de aşağıdaki adımları gerçekleştirin:
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-   ```JSON
+   ```hcl
    variable "location" {
     description = "The location where resources will be created"
    }
@@ -124,7 +124,7 @@ Azure Cloud Shell'de aşağıdaki adımları gerçekleştirin:
 1. Aşağıdaki kodu düzenleyiciye yapıştırarak tam etki alanı adını (FQDN) sanal makinelerin kullanımına açın.
    :
 
-   ```JSON
+   ```hcl
     output "vmss_public_ip" {
         value = "${azurerm_public_ip.vmss.fqdn}"
     }
@@ -157,7 +157,7 @@ Azure Cloud Shell'de aşağıdaki adımları gerçekleştirin:
 
 1. Aşağıdaki kodu dosyanın sonuna yapıştırarak tam etki alanı adını (FQDN) sanal makinelerin kullanımına açın.
 
-   ```JSON
+   ```hcl
    resource "azurerm_resource_group" "vmss" {
     name     = "${var.resource_group_name}"
     location = "${var.location}"
@@ -252,7 +252,7 @@ Cloud Shell'de aşağıdaki adımları gerçekleştirin:
 
 1. Dosyanın sonuna aşağıdaki kodu yapıştırın:
 
-   ```JSON
+   ```hcl
    resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
     location            = "${var.location}"
@@ -369,7 +369,7 @@ Cloud Shell'de aşağıdaki adımları gerçekleştirin:
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-   ```JSON
+   ```hcl
    #cloud-config
    packages:
     - nginx
@@ -393,7 +393,7 @@ Cloud Shell'de aşağıdaki adımları gerçekleştirin:
 
 1. Dağıtımı özelleştirmek için dosyanın sonuna aşağıdaki kodu yapıştırın:
 
-    ```JSON
+    ```hcl
     variable "application_port" {
        description = "The port that you want to expose to the external load balancer"
        default     = 80
@@ -458,7 +458,7 @@ SSH *sıçrama kutusu*, ağdaki diğer sunuculara erişmek için üzerine "sıç
 
 1. Dosyanın sonuna aşağıdaki kodu yapıştırın:
 
-   ```JSON
+   ```hcl
    resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
     location                     = "${var.location}"
@@ -528,7 +528,7 @@ SSH *sıçrama kutusu*, ağdaki diğer sunuculara erişmek için üzerine "sıç
 
 1. Dağıtım tamamlandığında sıçrama kutusunun ana bilgisayar adının gösterilmesi için aşağıdaki kodu dosyanın sonuna yapıştırın:
 
-   ```
+   ```hcl
    output "jumpbox_public_ip" {
       value = "${azurerm_public_ip.jumpbox.fqdn}"
    }
@@ -568,7 +568,7 @@ Yok etme işleminin tamamlanması birkaç dakika sürebilir.
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide Terraform kullanarak Azure sanal makine ölçek kümesi oluşturmayı öğrendiniz. Aşağıdaki kaynaklardan Azure'da Terraform kullanımı hakkında daha fazla bilgi edinebilirsiniz:
 
-[Microsoft.com Terraform Hub](https://docs.microsoft.com/azure/terraform/)
-[Terraform'u Azure sağlayıcısı belgelerine](https://aka.ms/terraform)
-[Terraform'u Azure sağlayıcısı kaynak](https://aka.ms/tfgit) 
- [Terraform Azure modülleri](https://aka.ms/tfmodules)
+[Microsoft.com](https://docs.microsoft.com/azure/terraform/)
+
+[](https://aka.ms/tfmodules) [](https://aka.ms/tfgit)[](https://aka.ms/terraform)terkıform Azure sağlayıcı belgeleri terlarform Azure sağlayıcı kaynak terlarform Azure modülleri 'nde terrayform hub 'ı
+

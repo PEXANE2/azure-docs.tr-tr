@@ -1,40 +1,40 @@
 ---
-title: Azure'da Terraform ile şirket içi sanal ağ oluşturma
-description: Bir şirket içi sanal ağ yerel kaynakları barındıran Azure'da uygulama nasıl bulunacağını gösteren öğretici.
+title: Azure 'da Terrayform ile şirket içi sanal ağ oluşturma
+description: Yerel kaynakların barındırıldığı Azure 'da şirket içi VNet 'in nasıl uygulanacağını gösteren öğretici
 services: terraform
 ms.service: azure
-keywords: terraform, hub ve bağlı bileşen, ağlar, hibrit ağlar, devops, sanal makine, azure, sanal ağ eşleme, şirket içi
+keywords: terrayform, hub ve bağlı bileşen, ağlar, karma ağlar, DevOps, sanal makine, Azure, VNet eşlemesi, şirket içi
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 435ee13de28fb1591a5579761ecc7ad5bf9f9d76
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 98c7c2450b4aa828f544ecab4c1e320eb74bab45
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60888695"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169793"
 ---
-# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Öğretici: Azure'da Terraform ile şirket içi sanal ağ oluşturma
+# <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Öğretici: Azure 'da Terrayform ile şirket içi sanal ağ oluşturma
 
-Bu öğreticide, bir Azure sanal ağı (VNet) kullanarak bir şirket içi ağına uygulayın. Bir Azure sanal ağı, kendi özel sanal ağ tarafından değiştirilebilir. Bunu yapmak için uygun alt ağ IP adresleri eşleyin.
+Bu öğreticide, bir Azure sanal ağı (VNet) kullanarak bir şirket içi ağı uygulayacağınızı görürsünüz. Azure VNet, kendi özel sanal ağınızla değiştirilebilir. Bunu yapmak için, alt ağlardaki uygun IP adreslerini eşleyin.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
-> * Merkez-uç topolojisinde bir şirket içi sanal ağdan uygulamak için HCL (HashiCorp dili) kullanın
-> * Hub'ı ağ Gereci kaynakları oluşturmak için Terraform'u kullanın
-> * Şirket içi sanal makine oluşturmak için Terraform'u kullanın
-> * Şirket içi sanal özel ağ geçidi oluşturmak için Terraform'u kullanın
+> * Hub-ışınsal-uç topolojisinde şirket içi VNet uygulamak için HCL (HashiCorp Language) kullanın
+> * Terrayform kullanarak Merkez ağı gereç kaynakları oluşturma
+> * Şirket içi sanal makine oluşturmak için Terrayform kullanma
+> * Şirket içi sanal özel ağ geçidi oluşturmak için Terrayform kullanma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. [Bir hub'ı oluşturup azure'da Terraform ile karma ağ topolojisi](./terraform-hub-spoke-introduction.md).
+1. [Azure 'Da Terrayform ile bir hub ve bağlı bileşen karma ağ topolojisi oluşturun](./terraform-hub-spoke-introduction.md).
 
 ## <a name="create-the-directory-structure"></a>Dizin yapısını oluşturma
 
-Bir şirket içi ağı benzetmek için bir Azure sanal ağı oluşturun. VNet tanıtım gerçek özel şirket içi ağ yerini alır. Mevcut şirket içi ağınız ile aynı yapmak için uygun alt ağ IP adresleri eşleyin.
+Şirket içi bir ağın benzetimini yapmak için bir Azure sanal ağı oluşturun. Tanıtım sanal ağı, gerçek bir özel şirket içi ağın yerini alır. Mevcut şirket içi ağlarınız ile aynı yapmak için, alt ağlardaki uygun IP adreslerini eşleyin.
 
 1. [Azure portala](https://portal.azure.com) gidin.
 
@@ -54,11 +54,11 @@ Bir şirket içi ağı benzetmek için bir Azure sanal ağı oluşturun. VNet ta
     cd hub-spoke
     ```
 
-## <a name="declare-the-on-premises-vnet"></a>Şirket içi sanal ağdan bildirme
+## <a name="declare-the-on-premises-vnet"></a>Şirket içi VNet 'i bildirme
 
-Bir şirket içi sanal ağdan bildirir Terraform yapılandırma dosyası oluşturun.
+Şirket içi VNet bildiren Terrayform yapılandırma dosyasını oluşturun.
 
-1. Cloud Shell'de adlı yeni bir dosya açın `on-prem.tf`.
+1. Cloud Shell ' de adlı `on-prem.tf`yeni bir dosya açın.
 
     ```bash
     code on-prem.tf
@@ -66,7 +66,7 @@ Bir şirket içi sanal ağdan bildirir Terraform yapılandırma dosyası oluştu
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     locals {
       onprem-location       = "SouthCentralUS"
       onprem-resource-group = "onprem-vnet-rg"
@@ -228,4 +228,4 @@ Bir şirket içi sanal ağdan bildirir Terraform yapılandırma dosyası oluştu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure'da Terraform ile merkez sanal ağ oluşturma](./terraform-hub-spoke-hub-network.md)
+> [Azure 'da Terrayform ile bir hub sanal ağı oluşturma](./terraform-hub-spoke-hub-network.md)

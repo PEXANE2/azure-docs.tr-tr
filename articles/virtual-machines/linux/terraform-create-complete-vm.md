@@ -3,7 +3,7 @@ title: Terrayform kullanarak Azure 'da tamamen bir Linux VM oluşturun | Microso
 description: Azure 'da tüm Linux sanal makine ortamı oluşturmak ve yönetmek için Terrayform kullanmayı öğrenin
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: echuvyrov
+author: tomarchermsft
 manager: gwallace
 editor: na
 tags: azure-resource-manager
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/14/2017
-ms.author: gwallace
-ms.openlocfilehash: 83fba1ae29c2912e440f8983ded844414443a1a7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/20/2019
+ms.author: tarcher
+ms.openlocfilehash: b9e379907f28c0d8698eb11aacb88970cf8d6dc4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100793"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173856"
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terraform ile Azure'da eksiksiz bir Linux sanal makine altyapısı oluşturma
 
@@ -35,7 +35,7 @@ Bu `provider` bölüm, teraform 'un bir Azure sağlayıcısı kullanmasını sö
 > [!TIP]
 > Değerler için ortam değişkenleri oluşturursanız veya [Azure Cloud Shell Bash deneyimini](/azure/cloud-shell/overview) kullanıyorsanız, bu bölüme değişken bildirimleri eklemeniz gerekmez.
 
-```tf
+```hcl
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     client_id       = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -46,7 +46,7 @@ provider "azurerm" {
 
 Aşağıdaki bölümde, `myResourceGroup` `eastus` konumunda adlı bir kaynak grubu oluşturulur:
 
-```tf
+```hcl
 resource "azurerm_resource_group" "myterraformgroup" {
     name     = "myResourceGroup"
     location = "eastus"
@@ -62,7 +62,7 @@ Ek bölümlerde, kaynak grubuna *$ {azurerm_resource_group. mytersformgroup. Nam
 ## <a name="create-virtual-network"></a>Sanal ağ oluşturma
 Aşağıdaki bölüm, *10.0.0.0/16* adres alanında *myvnet* adlı bir sanal ağ oluşturur:
 
-```tf
+```hcl
 resource "azurerm_virtual_network" "myterraformnetwork" {
     name                = "myVnet"
     address_space       = ["10.0.0.0/16"]
@@ -77,7 +77,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 
 Aşağıdaki bölüm, *Myvnet* sanal ağında *mysubnet* adlı bir alt ağ oluşturur:
 
-```tf
+```hcl
 resource "azurerm_subnet" "myterraformsubnet" {
     name                 = "mySubnet"
     resource_group_name  = "${azurerm_resource_group.myterraformgroup.name}"
@@ -90,7 +90,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 ## <a name="create-public-ip-address"></a>Ortak IP adresi oluştur
 Internet üzerindeki kaynaklara erişmek için, VM 'nize bir genel IP adresi oluşturun ve atayın. Aşağıdaki bölüm *Mypublicıp*adlı BIR genel IP adresi oluşturur:
 
-```tf
+```hcl
 resource "azurerm_public_ip" "myterraformpublicip" {
     name                         = "myPublicIP"
     location                     = "eastus"
@@ -107,7 +107,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 ## <a name="create-network-security-group"></a>Ağ güvenlik grubu oluştur
 Ağ güvenlik grupları, sanal makinenizin içindeki ve dışı ağ trafiği akışını denetler. Aşağıdaki bölümde, *Mynetworksecuritygroup* adlı bir ağ güvenlik grubu oluşturulur ve TCP bağlantı noktası 22 ' de SSH trafiğine izin veren bir kural tanımlanmaktadır:
 
-```tf
+```hcl
 resource "azurerm_network_security_group" "myterraformnsg" {
     name                = "myNetworkSecurityGroup"
     location            = "eastus"
@@ -135,7 +135,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 ## <a name="create-virtual-network-interface-card"></a>Sanal ağ arabirim kartı oluştur
 Sanal ağ arabirim kartı (NIC), VM 'nizi belirli bir sanal ağ, genel IP adresi ve ağ güvenlik grubuna bağlar. Bir Terrayform şablonunda bulunan aşağıdaki bölüm, oluşturduğunuz sanal ağ kaynaklarına bağlı *MYNIC* adlı BIR sanal NIC oluşturur:
 
-```tf
+```hcl
 resource "azurerm_network_interface" "myterraformnic" {
     name                = "myNIC"
     location            = "eastus"
@@ -159,7 +159,7 @@ resource "azurerm_network_interface" "myterraformnic" {
 ## <a name="create-storage-account-for-diagnostics"></a>Tanılama için depolama hesabı oluşturma
 Bir VM için önyükleme tanılamayı depolamak üzere bir depolama hesabı gerekir. Bu önyükleme Tanılaması, sorunları gidermenize ve sanal makinenizin durumunu izlemenize yardımcı olabilir. Oluşturduğunuz depolama hesabı yalnızca önyükleme tanılama verilerini depolamak içindir. Her depolama hesabının benzersiz bir adı olması gerektiği için aşağıdaki bölümde bazı rastgele metinler oluşturulur:
 
-```tf
+```hcl
 resource "random_id" "randomId" {
     keepers = {
         # Generate a new ID only when a new resource group is defined
@@ -172,7 +172,7 @@ resource "random_id" "randomId" {
 
 Artık bir depolama hesabı oluşturabilirsiniz. Aşağıdaki bölümde, önceki adımda oluşturulan rastgele metne göre ada sahip bir depolama hesabı oluşturulur:
 
-```tf
+```hcl
 resource "azurerm_storage_account" "mystorageaccount" {
     name                = "diag${random_id.randomId.hex}"
     resource_group_name = "${azurerm_resource_group.myterraformgroup.name}"
@@ -193,7 +193,7 @@ Son adım, bir sanal makine oluşturmak ve oluşturulan tüm kaynakları kullanm
 
  SSH anahtar verileri *ssh_keys* bölümünde verilmiştir. *Key_data* alanında geçerli BIR genel SSH anahtarı sağlayın.
 
-```tf
+```hcl
 resource "azurerm_virtual_machine" "myterraformvm" {
     name                  = "myVM"
     location              = "eastus"
@@ -243,7 +243,7 @@ resource "azurerm_virtual_machine" "myterraformvm" {
 
 Bu bölümlerin tümünü bir araya getirmek ve Terrampaform 'da görmek için *terraform_azure. tf* adlı bir dosya oluşturun ve aşağıdaki içeriği yapıştırın:
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
     subscription_id = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -413,7 +413,7 @@ Terrayform şablonunuz oluşturulduktan sonra, birinci adım Terrayform 'u başl
 terraform init
 ```
 
-Bir sonraki adım, Terrayform 'nun şablonu incelemesinin ve doğrulayacaktır. Bu adım, istenen kaynakları Terrayform tarafından kaydedilen durum bilgileriyle karşılaştırır ve ardından planlı yürütmeyi çıkartır. Kaynaklar Azure 'da oluşturulmaz.
+Bir sonraki adım, Terrayform 'nun şablonu incelemesinin ve doğrulayacaktır. Bu adım, istenen kaynakları Terrayform tarafından kaydedilen durum bilgileriyle karşılaştırır ve ardından planlı yürütmeyi çıkartır. Kaynaklar Azure *'da oluşturulmaz.*
 
 ```bash
 terraform plan
@@ -421,7 +421,7 @@ terraform plan
 
 Önceki komutu yürütmeden sonra, aşağıdaki ekrana benzer bir şey görmeniz gerekir:
 
-```bash
+```console
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
@@ -456,7 +456,7 @@ terraform apply
 
 Terrampaform tamamlandığında, VM altyapınız hazırlayın. [Az VM Show](/cli/azure/vm)ile sanal MAKINENIZIN genel IP adresini edinin:
 
-```azurecli
+```azurecli-interactive
 az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
 ```
 

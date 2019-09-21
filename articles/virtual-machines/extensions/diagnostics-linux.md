@@ -3,18 +3,18 @@ title: Azure Işlem-Linux Tanılama uzantısı | Microsoft Docs
 description: Azure 'da çalışan Linux sanal makinelerinden ölçümleri ve günlük olaylarını toplamak için Azure Linux Tanılama uzantısı 'nı (LAD) yapılandırma.
 services: virtual-machines-linux
 author: abhijeetgaiha
-manager: sankalpsoni
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: c4028ff4fef5472ba2a964f70db6d4fe11eeaba6
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 1da5d8aba92ac5cca5f7cdc281e169ce284b202d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918808"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169182"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 'nı kullanın
 
@@ -408,7 +408,7 @@ Günlük dosyalarının yakalanmasını denetler. LAD, dosyaya yazıldığı ve 
 
 Öğe | Value
 ------- | -----
-dosyası | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
+file | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
 table | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
 yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virgülle ayrılmış bir listesi.
 

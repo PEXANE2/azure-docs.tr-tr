@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: a48c2fdcce5126747f00cd3b901839864d438346
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9e14a9f3f2f27112a591f14e9a93580f66aadef7
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058270"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169556"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -29,14 +29,14 @@ Burada kullanacağınız örnek, ' i hedefleyen `netcoreapp2.2`bir [MVC uygulama
 
 [ASP.NET Core için APPLICATION INSIGHTS SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) , uygulamalarınızı nerede veya nasıl çalıştırdıklarından bağımsız olarak izleyebilir. Uygulamanız çalışıyorsa ve Azure ile ağ bağlantısı varsa telemetri toplanabilir. Application Insights izleme .NET Core 'un desteklendiği her yerde desteklenir. Destek şunları içerir:
 * **İşletim sistemi**: Windows, Linux veya Mac.
-* **Barındırma yöntemi**: İşlem veya işlem dışı. 
+* **Barındırma yöntemi**: İşlem veya işlem dışı.
 * **Dağıtım yöntemi**: Çerçeveye bağımlı veya kendine dahil.
-* **Web sunucusu**: IIS (Internet Information Server) veya Kestrel. 
+* **Web sunucusu**: IIS (Internet Information Server) veya Kestrel.
 * **Barındırma platformu**: Azure App Service, Azure VM, Docker, Azure Kubernetes hizmeti (AKS) ve benzeri Web Apps özelliği.
 * **IDE**: Visual Studio, VS Code veya komut satırı.
 
 > [!NOTE]
-> Application Insights ile birlikte ASP.NET Core 3,0-Preview kullanıyorsanız, lütfen [2.8.0-Beta2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta2) sürümünü veya üstünü kullanın. Bu, ASP.NET Core 3,0 ile iyi çalışmak için bilinen tek sürümdür. Ayrıca, Visual Studio tabanlı ekleme ASP.NET Core 3,0 uygulamaları için henüz desteklenmiyor.
+> Application Insights ile birlikte ASP.NET Core 3,0-Preview kullanıyorsanız, lütfen [2.8.0-Beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta3) sürümünü veya üstünü kullanın. Bu, ASP.NET Core 3,0 ile iyi çalışmak için bilinen tek sürümdür. Ayrıca, Visual Studio tabanlı ekleme ASP.NET Core 3,0 uygulamaları için henüz desteklenmiyor.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -241,7 +241,7 @@ Aşağıdaki örnekte olduğu gibi `ApplicationInsightsServiceOptions` `AddAppli
 |Addadutocollectedmetricextractor | Örnekleme gerçekleşmeden önce Istekler/bağımlılıklar hakkında önceden toplanmış ölçümler gönderen bir TelemetryProcessor olan otomatik Collectedölçümler ayıklayıcısı 'nı etkinleştirin/devre dışı bırakın. | true
 |RequestCollectionOptions. TrackExceptions | Istek koleksiyonu modülü tarafından işlenmeyen özel durum izlemenin raporlamasını etkinleştirin/devre dışı bırakın. | NETSTANDARD 2.0'da false (özel durumlar Applicationınsightsloggerprovider ile izleniyor), aksi takdirde true.
 
-En güncel listesi için [içindeki `ApplicationInsightsServiceOptions` yapılandırılabilir ayarlar '](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs) a bakın.
+En güncel listesi için [içindeki `ApplicationInsightsServiceOptions` yapılandırılabilir ayarlar '](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) a bakın.
 
 ### <a name="sampling"></a>Örnekleme
 

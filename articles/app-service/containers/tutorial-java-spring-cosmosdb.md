@@ -8,19 +8,19 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 27b30bae80e2959698d71279efbfa2531498d8de
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 582ed374e7895d0b99f25ac033d0d4b1ec99104c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171198"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171483"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Öğretici: Linux ve Azure Cosmos DB üzerinde Azure App Service bir Java Spring Boot Web uygulaması oluşturun
 
 Bu öğretici, Azure 'da Java Web uygulamaları oluşturma, yapılandırma, dağıtma ve ölçeklendirme sürecinde size yol gösterir. İşiniz bittiğinde, verileri [Linux üzerinde Azure App Service](/azure/app-service/containers)çalıştıran [Azure Cosmos DB](/azure/cosmos-db) bir [Spring Boot](https://projects.spring.io/spring-boot/) uygulamasına sahip olursunuz.
 
-![Azure uygulama hizmetinde çalıştırılan Java uygulaması](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![Yay önyükleme uygulaması Azure Cosmos DB verileri depolama](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -169,7 +169,7 @@ bash-3.2$ mvn package spring-boot:run
 
 Uygulama başlatıldıktan sonra Spring TODO uygulamasına bu bağlantıyı kullanarak yerel olarak erişebilirsiniz: [http://localhost:8080/](http://localhost:8080/).
 
- ![Azure uygulama hizmetinde çalıştırılan Java uygulaması](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![Spring TODO uygulamasına yerel olarak erişin](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 "Started TodoApplication" iletisi yerine özel durumlar görürseniz, önceki adımda bulunan `bash` betiğin ortam değişkenlerini doğru bir şekilde ve oluşturduğunuz Azure Cosmos DB veritabanı için doğru olduğundan emin olun.
 
@@ -263,7 +263,7 @@ open https://spring-todo-app.azurewebsites.net
 
 Adres çubuğunda uzak URL ile çalışan uygulamayı görmeniz gerekir:
 
- ![Azure uygulama hizmetinde çalıştırılan Java uygulaması](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![Uzak URL ile çalıştırılan Spring Boot uygulaması](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>Tanılama günlüklerini akışla aktarma
 

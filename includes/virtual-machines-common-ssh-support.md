@@ -2,19 +2,19 @@
 title: include dosyası
 description: include dosyası
 services: virtual-machines-linux
-author: dlepow
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 04/17/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: bed3f15d5a27e482041d4f45ef45b8d927a91d70
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2ea82f80396c5254ac4ad47bd2395413682a96bc
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188380"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71168641"
 ---
-## <a name="supported-ssh-key-formats"></a>SSH anahtar biçimleri desteklenir
+## <a name="supported-ssh-key-formats"></a>Desteklenen SSH anahtar biçimleri
 
-Azure şu anda desteklediği SSH en az 2048 bit uzunluğu 2 (2 SSH) RSA ortak-özel anahtar çiftleri protokolü. Anahtar diğer biçimlere ED25519 ve ECDSA gibi desteklenmez. 
+Azure Şu anda en az 2048 bit uzunluğunda SSH Protokolü 2 (SSH-2) RSA genel-özel anahtar çiftlerini desteklemektedir. ED25519 ve ECDSA gibi diğer anahtar biçimleri desteklenmez. 

@@ -8,19 +8,19 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 06f1c0123d6bdf56b5182605016d2feb80adf18b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172978"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172817"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Öğretici: Jenkins sürekli tümleştirme ve dağıtım ile Azure App Service GitHub 'dan dağıtma
 
 Bu öğretici, Jenkins 'te sürekli tümleştirme (CI) ve sürekli dağıtım (CD) ayarlayarak GitHub 'dan [Linux 'a Azure App Service](/azure/app-service/containers/app-service-linux-intro) için örnek bir Java Web uygulaması dağıtır. Yürütmeleri GitHub 'a ileterek uygulamayı güncelleştirdiğinizde Jenkins Azure App Service için uygulamanızı otomatik olarak oluşturur ve yeniden oluşturur. Bu öğreticideki örnek uygulama [Spring Boot](https://projects.spring.io/spring-boot/) Framework kullanılarak geliştirilmiştir. 
 
-![Genel Bakış](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![Dağıtıma Azure App Service için GitHub 'a genel bakış](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 Bu öğreticide, şu görevleri tamamlayacaksınız:
 
@@ -97,19 +97,19 @@ Jenkins 'in GitHub çatalınızda Web uygulamanıza yeni işlemeler itilmesi dur
 
 1. **Jenkins 'ı Yönet** sayfasında, **sistemi Yapılandır**' ı seçin. 
 
-   ![Sistemi yapılandırma](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![Jenkins 'te sistem yapılandırma](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. **GitHub** bölümünde GitHub sunucunuzun ayrıntılarını sağlayın. **GitHub sunucusu Ekle** listesinden **GitHub sunucusu**' nu seçin. 
 
-   ![GitHub sunucusu Ekle](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![Jenkins 'te GitHub sunucusu ekleme](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
 1. **Kancaları Yönet** özelliği seçili değilse, bu özelliği seçin. Diğer ayarları belirtmek için **Gelişmiş** ' i seçin. 
 
-   ![Daha fazla ayar için "Gelişmiş" i seçin](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![GitHub sunucusu için gelişmiş Jenkins ayarlarını belirtin](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. **Ek GitHub eylemlerini yönet** listesinden **oturum açma ve parolayı belirtece Dönüştür**' ü seçin.
 
-   !["Ek GitHub eylemlerini yönet" i seçin](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![GitHub için oturum açma ve parolayı belirtece Dönüştür](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
 1. GitHub Kullanıcı adınızı ve parolanızı girebilmeniz için **oturum açma ve parola '** yı seçin. İşiniz bittiğinde, [GitHub kişisel erişim belirteci (Pat)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)oluşturan **belirteç kimlik bilgileri oluştur**' u seçin.   
 
@@ -181,11 +181,11 @@ Jenkins 'de, uygulamanızı oluşturmak ve dağıtmak için işlem hattı işi o
 
 1. Jenkins giriş sayfanıza dönün ve **Yeni öğe**' yi seçin. 
 
-   !["Yeni öğe" seçin](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
+   ![Jenkins işlem hattı oluşturma](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
 1. İşlem hattı işiniz için bir ad sağlayın (örneğin, "My-Java-Web-App") ve işlem **hattı**' nı seçin. En altta **Tamam**' ı seçin.  
 
-   !["İşlem hattı" seçin](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![Jenkins ardışık düzen işini adlandırın](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. Jenkins 'in kendi kimlik bilgilerinizi kullanmadan Azure 'a dağıtabilmesi için, hizmet sorumlusu ile Jenkins 'i ayarlayın.
 
@@ -199,7 +199,7 @@ Jenkins 'de, uygulamanızı oluşturmak ve dağıtmak için işlem hattı işi o
       WEB_APP=yourWebAppName
       ```
 
-      !["Çalıştırma için bir ortam hazırlayın" seçeneğini belirleyin ve ortam değişkenlerini ayarlayın](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
+      ![Çalıştırma için bir ortam hazırlayın ve ortam değişkenlerini ayarlayın](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
 1. İşiniz bittiğinde **Kaydet**'i seçin.
 
@@ -254,7 +254,7 @@ Artık Jenkins 'in uygulamanızı oluşturmak ve dağıtmak için kullandığı 
 
 1. Jenkins 'de, daha önce oluşturduğunuz işlem hattı işini seçin. 
 
-   ![Web uygulamanız için işlem hattı işi seçme](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![Web uygulamanız için Jenkins ardışık düzen işini seçin](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. Sol taraftaki menüden **Yapılandır**' ı seçin.
 
@@ -272,7 +272,7 @@ Artık Jenkins 'in uygulamanızı oluşturmak ve dağıtmak için kullandığı 
 
    İşiniz bittiğinde, işlem hattı tanımınız Şu örneğe benzer şekilde görünür: 
 
-   ![Betikteki nokta işlem hattı](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![Jenkins işlem hattınızı betiğe işaret edin](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
 1. İşiniz bittiğinde **Kaydet**'i seçin.
 

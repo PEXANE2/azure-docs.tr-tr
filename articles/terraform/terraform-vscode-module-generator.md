@@ -1,6 +1,6 @@
 ---
-title: Yeoman kullanarak Azure'da Terraform temel şablon oluşturma
-description: Yeoman kullanarak Azure'da Terraform temel şablon oluşturmayı öğrenin.
+title: Azure 'da Yeumman kullanarak bir Terrayform temel şablonu oluşturma
+description: Azure 'da Yeumman kullanarak bir Terrayform temel şablonu oluşturmayı öğrenin.
 services: terraform
 ms.service: azure
 keywords: terraform, devops, sanal makine, azure, yeoman
@@ -8,34 +8,34 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/08/2018
-ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.date: 09/20/2019
+ms.openlocfilehash: 7a628eb02170346a826cab19498d6fdf40cebddd
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62128191"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173143"
 ---
-# <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Yeoman kullanarak Azure'da Terraform temel şablon oluşturma
+# <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Azure 'da Yeumman kullanarak bir Terrayform temel şablonu oluşturma
 
 [Terraform](https://docs.microsoft.com/azure/terraform/
 ), Azure'da kolayca altyapı oluşturmanın yolunu sağlar. [Yeoman](https://yeoman.io/), modül geliştiricisinin Terraform modülleri oluşturma işini büyük ölçüde kolaylaştırırken mükemmel bir *en iyi deneyim* çerçevesi sağlar.
 
-Bu makalede, Yeoman modül oluşturucusunu kullanarak temel Terraform şablonu oluşturma hakkında bilgi edineceksiniz. Ardından, iki farklı yöntemle, yeni Terraform şablonunuzu test etme öğreneceksiniz:
+Bu makalede, Yeoman modül oluşturucusunu kullanarak temel Terraform şablonu oluşturma hakkında bilgi edineceksiniz. Daha sonra, yeni Teraform şablonunuzu iki farklı yöntem kullanarak test etme hakkında bilgi edineceksiniz:
 
-- Bu makalede oluşturduğunuz bir Docker dosyası kullanarak, Terraform modülü çalıştırın.
-- Terraform modülünüzde Azure Cloud Shell'de yerel olarak çalıştırın.
+- Bu makalede oluşturduğunuz bir Docker dosyasını kullanarak Terrayform modülünüzü çalıştırın.
+- Azure Cloud Shell ' de Teraform modülünüzü yerel olarak çalıştırın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-- **Visual Studio Code'u**: Biz kullanarak [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) Oluşturucu Yeoman tarafından oluşturulan dosyaları incelemek için. Ancak, tercih ettiğiniz herhangi bir kod düzenleyiciyi kullanabilirsiniz.
-- **Terraform**: Yüklemesi gerekir [Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) Yeoman tarafından oluşturulan modülü çalıştırılacak.
-- **Docker**: Biz kullanarak [Docker](https://www.docker.com/get-started) modülü çalıştırmak için Yeoman tarafından Oluşturucu oluşturulur. (Tercih ederseniz örnek modülü çalıştırmak için Docker yerine Ruby kullanabilirsiniz.)
-- **Go programlama dili**: Yüklemesi gerekir [Git](https://golang.org/) Yeoman tarafından oluşturulan test çalışmalarını bir seferde yazıldığından.
+- **Visual Studio Code**: Yeumman Oluşturucu tarafından oluşturulan dosyaları incelemek için [Visual Studio Code](https://www.bing.com/search?q=visual+studio+code+download&form=EDGSPH&mkt=en-us&httpsmsn=1&refig=dffc817cbc4f4cb4b132a8e702cc19a3&sp=3&ghc=1&qs=LS&pq=visual+studio+code&sk=LS1&sc=8-18&cvid=dffc817cbc4f4cb4b132a8e702cc19a3&cc=US&setlang=en-US) kullanacağız. Ancak, tercih ettiğiniz herhangi bir kod düzenleyiciyi kullanabilirsiniz.
+- **Terrayform**: Yeumman tarafından oluşturulan modülü çalıştırmak için [Terrayform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure ) yüklemesi gerekir.
+- **Docker**: Yeumman Oluşturucu tarafından oluşturulan modülü çalıştırmak için [Docker](https://www.docker.com/get-started) 'ı kullanacağız. (Tercih ederseniz örnek modülü çalıştırmak için Docker yerine Ruby kullanabilirsiniz.)
+- **Go programlama dili**: Yeumman tarafından üretilen test çalışmaları go 'da yazıldığı için bir [Go](https://golang.org/) yüklemesi gerekir.
 
 >[!NOTE]
->Bu öğreticideki yordamların birçoğu, komut satırı girişleri içerir. Burada açıklanan adımlar tüm işletim sistemleri ve komut satırı araçları için geçerlidir. Bu örneklerde, PowerShell cloud shell ortamı için yerel ortam ve Git Bash için kullanmak üzere seçtik.
+>Bu öğreticideki yordamların birçoğu, komut satırı girişleri içerir. Burada açıklanan adımlar tüm işletim sistemleri ve komut satırı araçları için geçerlidir. Örneklerimizde, PowerShell 'i yerel ortam için ve Cloud Shell ortamı için git Bash 'i kullanmayı seçtik.
 
 ## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
 
@@ -74,7 +74,7 @@ Bir komut isteminden:
 1. `mkdir <new-directory-name>` yazın.
 
     > [!NOTE]
-    > Değiştirin `<new-directory-name>` yeni dizin adı. Biz bu örnekte, yeni dizini `GeneratorDocSample` olarak adlandırdık.
+    > Yeni `<new-directory-name>` dizininizin adıyla değiştirin. Biz bu örnekte, yeni dizini `GeneratorDocSample` olarak adlandırdık.
 
     ![mkdir](media/terraform-vscode-module-generator/ymg-mkdir-GeneratorDocSample.png)
 
@@ -105,7 +105,7 @@ Bir komut isteminden:
         ![Docker görüntü dosyası eklensin mi?](media/terraform-vscode-module-generator/ymg-include-docker-image-file.png) 
 
         >[!NOTE]
-        >`y` yazın. Seçerseniz **n**, oluşturulan modülü kod yalnızca yerel modda çalışan destekleyecektir.
+        >`y` yazın. **N**seçeneğini belirlerseniz, oluşturulan modül kodu yalnızca yerel modda çalışmayı destekleyecektir.
 
 3. Oluşturulan dosyaları görüntülemek için `ls` girin.
 
@@ -140,18 +140,18 @@ Modülün çıktısını tanımlar. Burada, yerleşik bir Terraform modülü ola
 
 Derleme adımlarını tanımlar. Bu adımlar şunlardır:
 
-- **Derleme**: Main.tf dosyanın biçimlendirmesini doğrular.
-- **Birim**: Oluşturulan modülü çatıyı birim testi için kod içermez. Bir birim testi senaryosu belirtmek isterseniz, o kodu burada eklersiniz.
-- **e2e**: Modülün bir uçtan uca testi çalıştırır.
+- **oluşturma**: Main.tf dosyasının biçimlendirmesini doğrular.
+- **birim**: Oluşturulan modül iskelet 'i bir birim testi için kod içermez. Bir birim testi senaryosu belirtmek isterseniz, o kodu burada eklersiniz.
+- **e2e**: Modülün uçtan uca testini çalıştırır.
 
 ### <a name="test"></a>test
 
 - Test çalışmaları Go dilinde yazılır.
 - Testteki tüm kodlar uçtan uca testlerdir.
 - Uçtan uca testler **fixture** altında tanımlanan tüm öğeleri sağlamak üzere Terraform kullanır ve sonra **template_output.go** kodundaki çıktıyı önceden tanımlı beklenen değerler ile karşılaştırır.
-- **Gopkg.LOCK** ve **Gopkg.toml**: Bağımlılıklarınızı tanımlayın. 
+- **Gopkg. Lock** ve **Gopkg. TOML**: Bağımlılıklarınızı tanımlayın. 
 
-## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Bir Docker dosyası kullanarak yeni Terraform modülünüzde test
+## <a name="test-your-new-terraform-module-using-a-docker-file"></a>Yeni Teraform modülünüzü bir Docker dosyası kullanarak test etme
 
 >[!NOTE]
 >Örneğimizde, modülü yerel bir modül olarak çalıştırıyoruz ve Azure’a gerçek anlamda temas etmiyoruz.
@@ -193,7 +193,7 @@ Docker’ın gerçekten çalışır durumda olduğunu onaylamak için `docker in
 
     ![Docker dosyasını listeleme](media/terraform-vscode-module-generator/ymg-list-docker-file.png)
 
-### <a name="build-the-module"></a>Modül oluşturma
+### <a name="build-the-module"></a>Modülü oluşturma
 
 1. `bundle install` yazın.
 
@@ -203,7 +203,7 @@ Docker’ın gerçekten çalışır durumda olduğunu onaylamak için `docker in
 
     ![Rake derlemesi](media/terraform-vscode-module-generator/ymg-rake-build.png)
 
-### <a name="run-the-end-to-end-test"></a>Uçtan uca testi çalıştırın
+### <a name="run-the-end-to-end-test"></a>Uçtan uca testi çalıştırma
 
 1. `rake e2e` yazın.
 
@@ -211,25 +211,25 @@ Docker’ın gerçekten çalışır durumda olduğunu onaylamak için `docker in
 
     ![BAŞARILI](media/terraform-vscode-module-generator/ymg-pass.png)
 
-1. Girin `exit` baştan sona test tamamlamak ve Docker ortamını çıkın.
+1. Uçtan `exit` uca testi tamamlamak ve Docker ortamından çıkmak için girin.
 
-## <a name="use-yeoman-generator-to-create-and-test-a-module-in-cloud-shell"></a>Oluşturma ve bir modül, Cloud Shell'de test etmek için kullanım Yeoman Oluşturucusu
+## <a name="use-yeoman-generator-to-create-and-test-a-module-in-cloud-shell"></a>Cloud Shell bir modül oluşturmak ve test etmek için Yeumman oluşturucuyu kullanın
 
-Önceki bölümde, bir Docker dosyası kullanarak bir Terraform modülü test öğrendiniz. Bu bölümde, Yeoman kullanacağınız oluşturmak ve Cloud Shell'de bir modül sınamak için oluşturucu.
+Önceki bölümde, bir Docker dosyası kullanarak bir Teraform modülünü test etme hakkında daha fazla öğrendiniz. Bu bölümde, Cloud Shell bir modül oluşturmak ve test etmek için Yeumman oluşturucuyu kullanacaksınız.
 
-Bir Docker dosyası büyük ölçüde kullanmak yerine cloud Shell kullanarak bu süreci kolaylaştırır. Cloud Shell'i kullanarak:
+Docker dosyası kullanmak yerine Cloud Shell kullanmak işlemi büyük ölçüde basitleştirir. Cloud Shell kullanma:
 
-- Node.js'yi yüklemek gerekmez
-- Yeoman yükleme gerekmez
-- Terraform'u yükleme gerekmez
+- Node. js yüklemeniz gerekmez
+- Yeumman yüklemeniz gerekmez
+- Terrayform yüklemeniz gerekmez
 
-Cloud Shell'de önceden yüklenmiş olan tüm bu öğeler.
+Bu öğelerin tümü Cloud Shell önceden yüklenir.
 
-### <a name="start-a-cloud-shell-session"></a>Cloud Shell oturumu başlatın
+### <a name="start-a-cloud-shell-session"></a>Cloud Shell oturumu başlatma
 
-1. Aracılığıyla ya da bir Azure Cloud Shell oturumu başlatın [Azure portalında](https://portal.azure.com/), [shell.azure.com](https://shell.azure.com), veya [Azure mobil uygulaması](https://azure.microsoft.com/features/azure-portal/mobile-app/).
+1. [Azure Portal](https://portal.azure.com/), [Shell.Azure.com](https://shell.azure.com)veya [Azure mobil uygulaması](https://azure.microsoft.com/features/azure-portal/mobile-app/)aracılığıyla Azure Cloud Shell bir oturum başlatın.
 
-1. **Hoş Geldiniz Azure Cloud Shell** sayfası açılır. Seçin **(Linux) Bash**. (Power Shell desteklenmiyor.)
+1. **Azure Cloud Shell hoş geldiniz** sayfası açılır. **Bash (Linux)** seçeneğini belirleyin. (Power Shell desteklenmez.)
 
     ![Azure Cloud Shell'e hoş geldiniz](media/terraform-vscode-module-generator/ymg-welcome-to-azure-cloud-shell.png)
 
@@ -244,37 +244,37 @@ Cloud Shell'de önceden yüklenmiş olan tüm bu öğeler.
 
     ![Bulut sürücünüz oluşturuldu](media/terraform-vscode-module-generator/ymg-your-cloud-drive-has-been-created-in.png)
 
-### <a name="prepare-a-folder-to-hold-your-terraform-module"></a>Terraform modülünüzde tutmak için bir klasör hazırlama
+### <a name="prepare-a-folder-to-hold-your-terraform-module"></a>Bir klasörü Tertuform modülünüzü tutacak şekilde hazırlama
 
-1. Bu noktada, Cloud Shell'i zaten GOPATH ortam değişkenlerinizdeki sizin için yapılandırmış olmanız. Yolun görmek için girin `go env`.
+1. Bu noktada, Cloud Shell sizin için ortam değişkeninizdeki GOPATH 'i zaten yapılandırmış olacak. Yolu görmek için girin `go env`.
 
-1. Henüz mevcut değilse $GOPATH klasörü oluşturun: `mkdir ~/go` yazın.
+1. Zaten yoksa $GOPATH klasörünü oluşturun: `mkdir ~/go` yazın.
 
-1. $GOPATH klasörde bir klasör oluşturun: `mkdir ~/go/src` yazın. Bu klasör tutun ve farklı proje klasörleri oluşturma, gibi düzenlemek için kullanılan `<your-module-name>` klasör biz sonraki adımda oluşturacaktır.
+1. $GOPATH klasörü içinde bir klasör oluşturun: `mkdir ~/go/src` yazın. Bu klasör, bir sonraki adımda oluşturacağınız `<your-module-name>` klasör gibi, oluşturabileceğiniz farklı proje klasörlerini tutmak ve düzenlemek için kullanılacaktır.
 
-1. Terraform modülünüzde tutmak için bir klasör oluşturun: `mkdir ~/go/src/<your-module-name>` yazın.
-
-    >[!NOTE]
-    >Bu örnekte, seçtik `my-module-name` klasör adı.
-
-1. Modül klasörünüze gidin: Girin `cd ~/go/src/<your-module-name>`
-
-### <a name="create-and-test-your-terraform-module"></a>Oluşturma ve test etme, Terraform Modülü
-
-1. Girin `yo az-terra-module` ve sihirbazdaki yönergeleri izleyin.
+1. Teraform modülünüzü tutacak bir klasör oluşturun: `mkdir ~/go/src/<your-module-name>` yazın.
 
     >[!NOTE]
-    >Docker dosyaları oluşturmak istiyorsanız, girmeniz istendiğinde `N`.
+    >Bu örnekte, klasör adı için `my-module-name` seçtik.
 
-1. Girin `bundle install` bağımlılıklarını yükleyin.
+1. Modül klasörünüze gidin: Girmesini`cd ~/go/src/<your-module-name>`
+
+### <a name="create-and-test-your-terraform-module"></a>Terrayform modülünüzü oluşturun ve test edin
+
+1. Sihirbazdaki `yo az-terra-module` yönergeleri girin ve izleyin.
+
+    >[!NOTE]
+    >Docker dosyalarını oluşturmak isteyip istemediğiniz sorulduğunda, girmeniz `N`gerekebilir.
+
+1. Bağımlılıkları `bundle install` yüklemek için girin.
 
     **Paket tamamlandı** iletisini bekleyin, ardından sonraki adıma geçin.
 
-1. Girin `rake build` modülünüzde oluşturulacak.
+1. Modülünüzü derlemek için yazın `rake build` .
 
     ![Rake derlemesi](media/terraform-vscode-module-generator/ymg-rake-build.png)
 
-1. Girin `rake e2e` uçtan uca testi çalıştırmak için.
+1. Uçtan `rake e2e` uca testi çalıştırmak için girin.
 
 1. Birkaç dakika sonra **BAŞARILI** iletisi görünür.
 
@@ -283,4 +283,4 @@ Cloud Shell'de önceden yüklenmiş olan tüm bu öğeler.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Yükleme ve Azure Terraform Visual Studio Code uzantısı kullanma.](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)
+> [Azure Terrayform Visual Studio Code uzantısını yükleyip kullanın.](https://docs.microsoft.com/azure/terraform/terraform-vscode-extension)

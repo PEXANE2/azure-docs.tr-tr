@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 85c2607ae163ab2d29a53440cd65672bdbe0fddf
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985356"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172777"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümlerle performans ayarı 
 Azure SQL veri ambarı 'ndaki gerçekleştirilmiş görünümler, bir sorgu değişikliği yapmadan hızlı performans sağlamak üzere karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede gerçekleştirilmiş görünümleri kullanma hakkında genel yönergeler ele alınmaktadır.
@@ -34,7 +34,7 @@ Standart görünümde gereksinimlerin çoğu, gerçekleştirilmiş bir görünü
 
 | Karşılaştırma                     | Görünüm                                         | Gerçekleştirilmiş Görünüm             
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------| 
-|Tanımı görüntüle                 | Azure veri ambarı 'nda depolanır.              | Azure veri ambarı 'nda depolanır.    
+|Tanımı görüntüleme                 | Azure veri ambarı 'nda depolanır.              | Azure veri ambarı 'nda depolanır.    
 |İçeriği görüntüle                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında Azure veri ambarı 'nda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.                                             
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor                          
 |Karmaşık sorgulardan Görünüm verilerini alma hızı     | dığını                                         | Hızlı  
@@ -84,19 +84,21 @@ Sorgu performansını artırmak için gerçekleştirilmiş görünümleri kullan
 
 **İş yükünüz için tasarım**
 
-- Gerçekleştirilmiş görünümler oluşturmaya başlamadan önce, iş yükünüzü sorgu desenleri, önem derecesi, sıklık ve elde edilen verilerin boyutu açısından derinlemesine bir şekilde anlamak önemlidir.  
+Gerçekleştirilmiş görünümler oluşturmaya başlamadan önce, iş yükünüzü sorgu desenleri, önem derecesi, sıklık ve elde edilen verilerin boyutu açısından derinlemesine bir şekilde anlamak önemlidir.  
 
-- Kullanıcılar, sorgu iyileştiricisi tarafından önerilen gerçekleştirilmiş görünümler için AÇıKLA WITH_RECOMMENDATIONS < SQL_statement > çalıştırabilir.  Bu öneriler sorguya özgü olduğundan, tek bir sorgunun avantajlarından faydalanmış olan gerçekleştirilmiş bir görünüm aynı iş yükünde diğer sorgular için en iyi durumda olmayabilir.  İş yükünüz gereksinimlerinize göre bu önerileri değerlendirin.  İdeal gerçekleştirilmiş görünümler iş yükünün performansına faydalanabilir.  
+Kullanıcılar, sorgu iyileştiricisi tarafından önerilen gerçekleştirilmiş görünümler için AÇıKLA WITH_RECOMMENDATIONS < SQL_statement > çalıştırabilir.  Bu öneriler sorguya özgü olduğundan, tek bir sorgunun avantajlarından faydalanmış olan gerçekleştirilmiş bir görünüm aynı iş yükünde diğer sorgular için en iyi durumda olmayabilir.  İş yükünüz gereksinimlerinize göre bu önerileri değerlendirin.  İdeal gerçekleştirilmiş görünümler iş yükünün performansına faydalanabilir.  
 
 **Daha hızlı sorgular ve maliyet arasındaki zorunluluğunu getirir farkında olun** 
 
-- Gerçekleştirilmiş her bir görünüm için, demet taşıyıcısı tarafından bakım bakımı için bir depolama maliyeti ve maliyeti vardır. Azure SQL veri ambarı sunucu örneği başına tek bir tanımlama grubu taşıyıcısı vardır.  Çok sayıda gerçekleştirilmiş görünüm olduğunda, demet taşıyıcısı iş yükü artar ve somut görünümlerden yararlanan sorguların performansı, kayıt taşıyıcısı verileri dizin kesimlerine yeterince hızlı taşıyamıyorsa azalabilir.  Kullanıcılar, gerçekleştirilmiş tüm görünümlerden tahakkuk eden maliyetin sorgu performans kazancı tarafından kaydırılarak yer olup olmadığını denetlemelidir.  Veritabanında gerçekleştirilmiş görünüm listesi için bu sorguyu çalıştırın: 
+Gerçekleştirilmiş her bir görünüm için bir veri depolama maliyeti ve görünümün sürdürülmesi için bir maliyet vardır.  Temel tablolarda veri değişiklikleri yapıldığında, gerçekleştirilmiş görünümün boyutu artar ve fiziksel yapısı da değişir.  Sorgu performansı düşüşünü önlemek için, gerçekleştirilmiş her bir görünüm veri ambarı altyapısı tarafından ayrı tutulur; bu da satırları Delta deposundan columnstore dizin kesimlerine taşıma ve veri değişikliklerini birleştirme dahil olmak üzere.  Gerçekleştirilmiş görünümler ve temel tablo değişikliklerinin sayısı arttıkça bakım iş yükü artar.   Kullanıcılar, gerçekleştirilmiş tüm görünümlerden tahakkuk eden maliyetin sorgu performans kazancı tarafından kaydırılarak yer olup olmadığını denetlemelidir.  
+
+Veritabanında gerçekleştirilmiş görünüm listesi için bu sorguyu çalıştırabilirsiniz: 
 
 ```sql
 SELECT V.name as materialized_view, V.object_id 
 FROM sys.views V 
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
-```
+``` 
 
 Gerçekleştirilmiş görünümlerin sayısını azaltma seçenekleri: 
 

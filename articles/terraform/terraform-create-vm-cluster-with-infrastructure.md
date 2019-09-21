@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/13/2017
-ms.openlocfilehash: 284dcd99dc77d7ec0fb5cb214d49b6fcf93a6aef
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 09/20/2019
+ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854494"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173472"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Terraform ve HCL ile VM kümesi oluşturma
 
@@ -46,7 +46,7 @@ Bu bölümde bir Azure hizmet sorumlusu ve hizmet sorumlusu kimlik bilgilerini i
 
 5. Aşağıdaki kodu değişken bildirim dosyanıza kopyalayın:
 
-   ```tf
+   ```hcl
    variable subscription_id {}
    variable tenant_id {}
    variable client_id {}
@@ -64,7 +64,7 @@ Bu bölümde bir Azure hizmet sorumlusu ve hizmet sorumlusu kimlik bilgilerini i
 
 7. Aşağıdaki kodu değişken dosyanıza kopyalayın. Yer tutucuları aşağıdaki gibi değiştirdiğinizden emin olun: İçin `subscription_id`, çalıştırırken `az account set`belirttiğiniz Azure abonelik kimliğini kullanın. `tenant_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `tenant` değerini kullanın. `client_id` için `az ad sp create-for-rbac` komutunun döndürdüğü `appId` değerini kullanın. `client_secret` için `az ad sp create-for-rbac` komutunun döndürdüğü `password` değerini kullanın.
 
-   ```tf
+   ```hcl
    subscription_id = "<azure-subscription-id>"
    tenant_id = "<tenant-returned-from-creating-a-service-principal>"
    client_id = "<appId-returned-from-creating-a-service-principal>"
@@ -79,7 +79,7 @@ Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluştura
 
 2. Aşağıdaki örnek kaynak tanımlarını yeni oluşturduğunuz `main.tf` dosyasına kopyalayın: 
 
-   ```tf
+   ```hcl
    resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
@@ -227,7 +227,7 @@ Bu bölümde altyapınız için kaynak tanımlarını içeren dosyayı oluştura
 
 Terraform'u başlatmak için şu komutu çalıştırın:
 
-  ```cmd
+  ```bash
   terraform init
   ```
 
@@ -245,13 +245,13 @@ Terraform, `terraform plan` komutunu işlerken yenileme gerçekleştirir ve yap�
 
 Yürütme planınızı kaydetmenize gerek yoksa şu komutu çalıştırın:
 
-  ```cmd
+  ```bash
   terraform plan
   ```
 
 Yürütme planınızı kaydetmeniz gerekiyorsa şu komutu çalıştırın (&lt;path> yer tutucusunun yerine istediğiniz çıkış yolunu yazın):
 
-  ```cmd
+  ```bash
   terraform plan -out=<path>
   ```
 
@@ -263,13 +263,13 @@ Bu öğreticinin son adımı [terraform apply komutunu](https://www.terraform.io
 
 En güncel yürütme planını uygulamak istiyorsanız şu komutu çalıştırın:
 
-  ```cmd
+  ```bash
   terraform apply
   ```
 
 Önceden kaydedilen bir yürütme planını uygulamak istiyorsanız şu komutu çalıştırın (&lt;path> yer tutucusunun yerine kaydedilen yürütme planınızın bulunduğu yolu yazın):
 
-  ```cmd
+  ```bash
   terraform apply <path>
   ```
 

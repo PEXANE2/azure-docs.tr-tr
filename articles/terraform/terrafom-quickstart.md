@@ -5,16 +5,16 @@ services: terraform
 author: neilpeterson
 ms.service: azure
 ms.topic: quickstart
-ms.date: 02/04/2019
+ms.date: 09/20/2019
 ms.author: nepeters
-ms.openlocfilehash: 57ab3fbc584932cb7d08bda76530bbe95ce61a6f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c53f3a31b46f00d3207cd8f47dcfbfa131c03666
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699078"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173509"
 ---
-# <a name="create-a-terraform-configuration-for-azure"></a>Azure için Teraform yapılandırması oluşturma
+# <a name="create-a-terraform-configuration-for-azure"></a>Azure için Terraform yapılandırması oluşturma
 
 Bu örnekte, bir Teraform yapılandırması oluşturma ve bu yapılandırmayı Azure 'a dağıtma konusunda deneyim elde edersiniz. Tamamlandığında, bir Azure Cosmos DB örneği, bir Azure Container Instance ve bu iki kaynak arasında çalışacak bir uygulama dağıtmış olursunuz. Bu belge, önkoşul olarak önceden yüklenmiş olan Azure Cloud Shell tüm çalışmanın tamamlandığını varsayar. Kendi sisteminizdeki örnek aracılığıyla çalışmak isterseniz, [burada](../virtual-machines/linux/terraform-install-configure.md)bulunan yönergeleri kullanarak Terırform yükleyebilirsiniz.
 
@@ -24,7 +24,7 @@ Bu bölümde, bir Azure Cosmos DB örneği için yapılandırma oluşturacaksın
 
 Azure Cloud Shell 'i açmak için **Şimdi deneyin** ' i seçin. Açıldığında, Cloud Shell kod `code .` düzenleyicisini açmak için yazın.
 
-```azurecli-interactive
+```bash
 code .
 ```
 
@@ -34,7 +34,7 @@ Bu yapılandırma, bir Azure kaynak grubunu, rastgele bir tamsayıyı ve bir Azu
 
 Dosyayı `main.tf` tamamlandığında kaydedin. Bu işlem, kod düzenleyicisinin sağ üst kısmındaki üç nokta kullanılarak yapılabilir.
 
-```azurecli-interactive
+```hcl
 resource "azurerm_resource_group" "vote-resource-group" {
   name     = "vote-resource-group"
   location = "westus"
@@ -67,7 +67,7 @@ resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
 
 [Terrayform init](https://www.terraform.io/docs/commands/init.html) komutu çalışma dizinini başlatır. Yeni `terraform init` yapılandırmanın dağıtımına hazırlanmak için Cloud Shell terminalinde çalıştırın.
 
-```azurecli-interactive
+```bash
 terraform init
 ```
 
@@ -75,13 +75,13 @@ terraform init
 
 Yeni `terraform plan` teraform yapılandırmasını test etmek için ' i çalıştırın.
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 [Terrayform uygulamasını](https://www.terraform.io/docs/commands/apply.html) kullanarak yapılandırmayı uygulayın ve plan dosyasının adını belirtin. Bu komut, Azure aboneliğinizdeki kaynakları dağıtır.
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -98,7 +98,7 @@ Aşağıdaki yapılandırmayı `main.tf` dosyanın en altına kopyalayın. Bitin
 
 Yapılandırma ayrıca kapsayıcı örneğinin tam etki alanı adını (FQDN) döndüren bir çıkış bloğu da içerir.
 
-```azurecli-interactive
+```hcl
 resource "azurerm_container_group" "vote-aci" {
   name                = "vote-aci"
   location            = "${azurerm_resource_group.vote-resource-group.location}"
@@ -134,13 +134,13 @@ output "dns" {
 
 Güncelleştirilmiş `terraform plan` planı oluşturmak ve yapılacak değişiklikleri görselleştirmek için ' i çalıştırın. Yapılandırmaya bir Azure Container Instance kaynağının eklendiğini görmeniz gerekir.
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 Son olarak, `terraform apply` yapılandırmayı uygulamak için ' i çalıştırın.
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -156,7 +156,7 @@ Kapsayıcı örneğinin FQDN 'sine gidin. Her şey doğru şekilde yapılandır�
 
 İşiniz bittiğinde, Azure kaynakları ve kaynak grubu [terkform Destroy](https://www.terraform.io/docs/commands/destroy.html) komutu kullanılarak kaldırılabilir.
 
-```azurecli-interactive
+```bash
 terraform destroy -auto-approve
 ```
 

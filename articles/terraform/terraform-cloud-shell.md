@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2017
-ms.openlocfilehash: 19a828abfee780dd757d0575f94a0358c12088cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/20/2019
+ms.openlocfilehash: e0a59697a3e4da97cf082c4c771fe93ad33b6035
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087744"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173546"
 ---
 # <a name="terraform-cloud-shell-development"></a>Terraform Cloud Shell geliştirme 
 
@@ -33,7 +33,7 @@ Terraform, Cloud Shell'de yüklüdür ve kullanıma hazırdır. Terraform betikl
 
 Azure Terraform modüllerinin Azure aboneliğinizdeki kaynaklara erişmesi ve değişiklik yapması için kimlik bilgilerinin kullanılması gerekir. Cloud Shell'de çalışırken Azure Terraform modüllerini Cloud Shell ile kullanmak için betiklerinize aşağıdaki kodu ekleyin:
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
 }

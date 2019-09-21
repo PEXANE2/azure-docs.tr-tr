@@ -3,16 +3,16 @@ title: Makinenin içeriğini nasıl denetleyeceğinizi anlayın
 description: Azure Ilkesi 'nin bir Azure makinesi içindeki ayarları denetlemek için konuk yapılandırmasını nasıl kullandığını öğrenin.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/04/2019
+ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bfa7f7486a9fa5ef62e8bf9e01dbe39d675d8d27
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 733b7fd8ef5b302df754fc7299b420739baff153
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308565"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172469"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk yapılandırma anlama
 
@@ -130,7 +130,7 @@ Konuk yapılandırma ilkeleri Şu anda yalnızca makine başına aynı Konuk ata
 
 ## <a name="built-in-resource-modules"></a>Yerleşik kaynak modülleri
 
-Konuk yapılandırma uzantısı yüklenirken, ' GuestConfiguration ' PowerShell modülü DSC kaynak modüllerinin en son sürümüne dahildir. Bu modül, [Guestconfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/)modül sayfasından ' el ile indirme ' bağlantısı kullanılarak PowerShell Galerisi indirilebilir.
+Konuk yapılandırma uzantısı yüklenirken, ' GuestConfiguration ' PowerShell modülü DSC kaynak modüllerinin en son sürümüne dahildir. Modül sayfası [Guestconfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/)' dan ' el ile indirme ' bağlantısı kullanılarak bu modül PowerShell Galerisi indirilebilir.
 '. Nupkg ' dosya biçimi, sıkıştırmayı açmak ve gözden geçirmek için '. zip ' olarak yeniden adlandırılabilir.
 
 ## <a name="client-log-files"></a>İstemci günlük dosyaları
@@ -175,7 +175,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılabilir:
 
 - [Örnek dizini-Konuk yapılandırması](../samples/index.md#guest-configuration)
-- [Azure ilke örnekleri GitHub deposu](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration).
+- [Azure Ilke örnekleri GitHub deposu](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -184,5 +184,5 @@ Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılab
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
+- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteceğinizi öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/index.md)ile yönetim grubunun ne olduğunu inceleyin.

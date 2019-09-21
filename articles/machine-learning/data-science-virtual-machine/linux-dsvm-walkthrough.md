@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 759c804fd4128d7b28cbba078cab5e9d7e6453f6
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208304"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170691"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 'da Linux Veri Bilimi Sanal Makinesi veri bilimi
 
@@ -30,7 +30,7 @@ Bir Linux DSVM kullanabilmeniz için aşağıdaki önkoşullara sahip olmanız g
 
 * **Azure aboneliği**. Azure aboneliği almak için, bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/free/).
 * [**Linux veri bilimi sanal makinesi**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Sanal makineyi sağlama hakkında daha fazla bilgi için bkz. [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
-* [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
+* [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](linux-dsvm-intro.md#x2go).
 * Daha yumuşak bir kaydırma deneyimi için dsvm 'nin Firefox Web tarayıcısında `gfx.xrender.enabled` `about:config`bayrağını değiştirin. [Daha fazla bilgi edinin](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). ' İ de `mousewheel.enable_pixel_scrolling` olarak `False`ayarlamayı düşünün. [Daha fazla bilgi edinin](https://support.mozilla.org/questions/981140).
 * **Azure Machine Learning hesabı**. Henüz bir hesabınız yoksa, [Azure Machine Learning giriş sayfasında](https://studio.azureml.net/)yeni bir hesap için kaydolun. Kullanmaya başlamanıza yardımcı olmak için ücretsiz olarak deneyebilirsiniz.
 
@@ -58,7 +58,7 @@ Sonra iki dosyayı birlikte birleştirin:
 
 Veri kümesinde her e-posta için çeşitli istatistik türleri vardır:
 
-* **Sözcük\_FREQ\_* Word*** gibi sütunlar, e-postadaki kelimeyle eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **sözcük\_FREQ\_** **1**ise, e-postadaki tüm sözcüklerin% 1 ' i *haline*getirin.
+* **Sözcük\_FREQ\_* Word*** gibi sütunlar, e- *postadaki kelimeyle*eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **sözcük\_FREQ\_** **1**ise, e-postadaki tüm sözcüklerin% 1 ' i *haline*getirin.
 * **Char\_değeri*char*gibisütunlar,e-postadakichar'dakitümkarakterlerinyüzdesinigösterir.\_**
 * **büyük\_çalıştırma\_uzunluğu\_uzun** büyük harf dizisini uzun uzunluğu.
 * **büyük\_çalıştırma\_uzunluğu\_ortalama** büyük harf tüm dizileri ortalama uzunluğu.
@@ -382,7 +382,7 @@ Ayrıca, öngörülü çizimler oluşturmak için **keşfet** sekmesini de kulla
 
 1. Seçin **dağıtımları**.
 1. **Word_freq_remove** ve **word_freq_you**için **histogram**' ı seçin.
-1. **Yürüt**’ü seçin. Tek bir grafik penceresinde her iki yoğunluk işaretini de görmeniz gerekir. burada, e-postalardan _Kaldır_' a kadar çok daha sık gördüğünüz sözcük burada görünür.
+1. **Yürüt**’ü seçin. Tek bir grafik penceresinde her iki yoğunluk işaretini de görmeniz gerekir. burada, e-postalardan _Kaldır_' a kadar çok daha sık _gördüğünüz sözcük burada_ görünür.
 
 **Bağıntı** çizimleri de ilginç. Bir çizim oluşturmak için:
 
@@ -392,7 +392,7 @@ Ayrıca, öngörülü çizimler oluşturmak için **keşfet** sekmesini de kulla
 
 Daha fazla ilgi çekici bağıntılı ilişkiler vardır: _teknoloji_ , örneğin, _HP_ ve _Labs_'e özellikle yöneliktir. Ayrıca, veri kümesinin alan kodu 650 olduğundan, _650_ ile de kesinlikle bağıntılı olur.
 
-Sözcükler arasındaki eş ilişkilerin sayısal değerleri, **keşfet** penceresinde kullanılabilir. Örneğin, bu _teknolojinin_ ve _paradan_olumsuz şekilde bağıntılı olduğunu unutmayın.
+Sözcükler arasındaki eş ilişkilerin sayısal değerleri, **keşfet** penceresinde kullanılabilir. Örneğin, bu _teknolojinin_ ve _paradan_ _olumsuz şekilde bağıntılı_ olduğunu unutmayın.
 
 Bazı yaygın sorunlar işlemek için veri kümesi Çıngırağı dönüştürebilirsiniz. Örneğin, özellikleri yeniden düzenleyebilir, ımpute değerlerini eksik, aykırı değerleri işleyebilir ve eksik verileri olan değişkenleri veya gözlemleri kaldırabilir. Rattle, gözlemler ve değişkenler arasındaki ilişki kurallarını da tanımlayabilir. Bu sekmeler, bu giriş anlatımında ele alınmazlar.
 
@@ -447,7 +447,7 @@ Alt yapılandırma dosyası izin verilen bağlantı ayrıntılarını birden faz
     # IPv6 local connections:
     host    all             all             ::1/128                 ident
 
-Bir Kullanıcı adı ve parola kullanarak oturum açabilmemiz için **IPv4 yerel bağlantıları** satırını, yerine **MD5** kullanacak şekilde değiştirin:
+Bir Kullanıcı adı ve parola kullanarak oturum açabilmemiz için **IPv4 yerel bağlantıları** **satırını, yerine** **MD5** kullanacak şekilde değiştirin:
 
     # IPv4 local connections:
     host    all             all             127.0.0.1/32            md5

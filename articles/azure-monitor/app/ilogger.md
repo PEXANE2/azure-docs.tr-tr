@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: 925264bb69093ab70465665e1d2da615a7a3e53d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: acc7a218d40ec7b752d9495bd48e5f37436d736d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261766"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169467"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ıllogger günlükleri için Applicationınsightsloggerprovider
 
@@ -221,6 +221,10 @@ Eski sağlayıcıyı kullanmaya devam edebilirsiniz. (Yalnızca ana sürüm 3 ' 
 
 ## <a name="console-application"></a>Konsol uygulaması
 
+> [!NOTE]
+> Herhangi bir konsol uygulaması için Application Insights (ILogger ve diğer Application Insights telemetri) etkinleştirmek üzere kullanılan [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yeni bir beta Application Insights SDK 'sı vardır. Bu paketin ve ilgili yönergelerin [burada](../../azure-monitor/app/worker-service.md)kullanılması önerilir.
+Bu yeni paketin kararlı sürümü yayımlandıktan sonra aşağıdaki örnek kullanım dışı olacaktır.
+
 Aşağıdaki kod, Application Insights için ILogger izlemeleri gönderecek şekilde yapılandırılmış örnek bir konsol uygulamasını gösterir.
 
 Yüklenen paketler:
@@ -363,7 +367,7 @@ Aşağıdaki kod parçacığı, *Uyarı* ve yukarıdaki kayıtları tüm kategor
 
 ### <a name="what-are-the-old-and-new-versions-of-applicationinsightsloggerprovider"></a>Applicationınsightsloggerprovider 'ın eski ve yeni sürümleri nelerdir?
 
-[Microsoft. ApplicationInsights. Aspnet SDK 'sı](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) , ıloggerfactory aracılığıyla etkinleştirilen yerleşik bir Applicationınsightsloggerprovider (Microsoft. ApplicationInsights. aspnetcore. Logging. Applicationınsightsloggerprovider) içeriyordu uzantı yöntemleri. Bu sağlayıcı, 2.7.0-Beta2 sürümünden kullanılmıyor olarak işaretlendi. Bu, bir sonraki ana sürüm değişikliğine tamamen kaldırılacak. [Microsoft. ApplicationInsights. AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) paketinin kendisi artık kullanılmıyor. İsteklerin, bağımlılıkların ve benzeri izlemenin etkinleştirilmesi gerekir.
+[Microsoft. ApplicationInsights. Aspnet SDK 'sı](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) , ıloggerfactory aracılığıyla etkinleştirilen yerleşik bir Applicationınsightsloggerprovider (Microsoft. ApplicationInsights. aspnetcore. Logging. Applicationınsightsloggerprovider) içeriyorduuzantı yöntemleri. Bu sağlayıcı, 2.7.0-Beta2 sürümünden kullanılmıyor olarak işaretlendi. Bu, bir sonraki ana sürüm değişikliğine tamamen kaldırılacak. [Microsoft. ApplicationInsights. AspNetCore 2.6.1](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) paketinin kendisi artık kullanılmıyor. İsteklerin, bağımlılıkların ve benzeri izlemenin etkinleştirilmesi gerekir.
 
 Önerilen alternatif, gelişmiş bir Applicationınsightsloggerprovider içeren yeni tek başına [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights)paketidir ( ' İ etkinleştirmek için ıloggerbuilder üzerinde Microsoft. Extensions. Logging. ApplicationInsights. Applicationınsightsloggerprovider) ve genişletme yöntemleri.
 

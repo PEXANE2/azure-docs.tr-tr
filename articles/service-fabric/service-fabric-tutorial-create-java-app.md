@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 57c9bd8caf6e8762ed07ac5e6f4ff16171569723
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b3210b97fe6fb0cd16499d5c33538c8e2babe612
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900682"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173684"
 ---
 # <a name="tutorial-create-an-application-with-a-java-api-front-end-service-and-a-stateful-back-end-service-on-azure-service-fabric"></a>Öğretici: Azure 'da bir Java API ön uç hizmeti ve durum bilgisi olan bir arka uç hizmetiyle uygulama oluşturma Service Fabric
 
 Bu öğretici, bir dizinin birinci bölümüdür. İşiniz bittiğinde, bir Java Web ön ucuna sahip bir oylama uygulamanız olur ve bu, oylama sonuçlarını Azure Service Fabric 'te durum bilgisi olan bir arka uç hizmetine kaydeder. Bu öğretici serisi, çalışır durumda bir Mac OSX veya Linux geliştirici makineniz olmasını gerektirir. Oylama uygulamasını el ile oluşturmak istemiyorsanız, [tamamlanmış uygulamanın kaynak kodunu indirebilir](https://github.com/Azure-Samples/service-fabric-java-quickstart) ve [Oylama örnek uygulamasında izlenecek yol](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application) bölümüne atlayabilirsiniz. Ayrıca, [Java güvenilir Hizmetleri Için hızlı](service-fabric-quickstart-java-reliable-services.md)başlangıcı takip etmeyi de göz önünde bulundurun.
 
-![Yerel Oylama Uygulaması](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
+![Service Fabric Voting örneği](./media/service-fabric-tutorial-create-java-app/service-fabric-java-voting-app-sample.png)
 
 Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
@@ -60,15 +60,15 @@ Bu öğreticiye başlamadan önce:
 
 2. **Dosya** > **Yeni** > **Diğer** > **Service Fabric** > **Service Fabric Projesi** seçeneğini kullanarak bir proje oluşturun.
 
-    ![Eclipse’te Yeni proje iletişim kutusu](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
+    ![Çakışan Küreler yeni Service Fabric projesi](./media/service-fabric-tutorial-create-java-app/service-fabric-project-wizard.png)
 
 3. **Servicefabric proje Sihirbazı** iletişim kutusunda, projeyi **Oylama** olarak adlandırın ve **İleri**' yi seçin.
 
-    ![Yeni hizmet iletişim kutusunda durum bilgisi olmayan Java hizmetini seçme](./media/service-fabric-tutorial-create-java-app/name-sf-proj-wizard.png) 
+    ![Yeni hizmet iletişim kutusunda durum bilgisi olmayan Java hizmetini seçme](./media/service-fabric-tutorial-create-java-app/name-service-fabric-project-wizard.png) 
 
 4. **Hizmet Ekle** sayfasında, **durum bilgisi olmayan hizmet**' i seçin ve hizmetinizi **votingweb**olarak adlandırın. Projeyi oluşturmak için **son** ' u seçin.
 
-    ![Durum bilgisi olmayan hizmet oluşturma]( ./media/service-fabric-tutorial-create-java-app/createvotingweb.png)
+    ![Service Fabric projeniz için durum bilgisi olmayan bir hizmet oluşturma]( ./media/service-fabric-tutorial-create-java-app/add-service-fabric-votingweb-service.png)
 
     Eclipse bir uygulama ve bir hizmet projesi oluşturup bunları Paket Gezgini'nde görüntüler.
 
@@ -416,7 +416,7 @@ Service Fabric, güvenilir koleksiyonlar kullanarak verileri doğrudan hizmetini
 
 3. Eclipse bir hizmet projesi oluşturup bunları Paket Gezgini'nde görüntüler.
 
-    ![Çözüm Gezgini](./media/service-fabric-tutorial-create-java-app/packageexplorercompletejava.png)
+    ![Çakışan Küreler Proje Gezgini](./media/service-fabric-tutorial-create-java-app/service-fabric-package-explorer-java.png)
 
 ### <a name="add-the-votingdataservicejava-file"></a>VotingDataService.java dosyası ekleme
 
@@ -557,7 +557,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 1. Paket Gezgini 'nde **Oylama** projesine sağ tıklayın ve **Yeni** > **klasör**' ü seçin. Klasöre **VotingRPC/src/rpcmethods** adını verin.
 
-    ![VotingRPC Paketi oluşturma](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
+    ![Çakışan Küreler Paket Gezgini 'nde VotingRPC paketi oluşturma](./media/service-fabric-tutorial-create-java-app/create-voting-rpc-package-java.png)
 
 3. *Voting/VotingRPC/src/rpcmethods* bölümünde *VotingRPC.java* adlı bir dosya oluşturun ve **VotingRPC.java** dosyasının içine aşağıdakileri yapıştırın. 
 
@@ -720,7 +720,7 @@ Oylama uygulaması iki hizmetten oluşur:
 - Web ön uç hizmeti (VotingWeb) - Web sayfasına hizmet veren ve arka uç hizmetiyle iletişim kurmak için API'leri kullanıma sunan bir Java web ön uç hizmetidir.
 - Arka uç hizmeti (VotingDataService) - Oyları kalıcı hale getirmek için Uzak Yordam Çağrıları (RPC) üzerinden çağrılan yöntemleri tanımlayan bir Java web hizmeti.
 
-![Uygulama Diyagramı](./media/service-fabric-tutorial-create-java-app/walkthroughjavavoting.png)
+![Oylama örnek diyagramı](./media/service-fabric-tutorial-create-java-app/walkthrough-java-voting.png)
 
 Uygulamada bir işlem gerçekleştirdiğinizde (öğe ekleme, oy verme, öğe kaldırma) aşağıdaki olaylar gerçekleşir:
 1. JavaScript, web ön uç hizmetindeki web API’sine uygun isteği HTTP isteği olarak gönderir.

@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 4/05/2018
-ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60889347"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169815"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Azure dağıtım yuvalarıyla altyapı sağlamak için Terraform'u kullanma
 
@@ -26,7 +26,7 @@ Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım a
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **GitHub hesabı**: Gereksinim duyduğunuz bir [GitHub](https://www.github.com) hesabı çatalını oluşturmanız ve GitHub deposunu testi kullanın.
+- **GitHub hesabı**: Test GitHub deposunun çatalını yapmak ve bunları kullanmak için bir [GitHub](https://www.github.com) hesabı gerekir.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Terraform planını oluşturma ve uygulama
 
@@ -74,7 +74,7 @@ Bu makalede iki uygulamanın GitHub ve Azure ile gerçekleştirilen dağıtım a
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 
@@ -209,7 +209,7 @@ Test projesi deposundan çatal oluşturduktan sonra aşağıdaki adımları izle
 
 Bu işlemlerle üretim yuvasını dağıtmış oldunuz. Hazırlama yuvasını dağıtmak için bu bölümdeki tüm adımları gerçekleştirin ancak aşağıdaki değişiklikleri yapın:
 
-- 3. adımda **slotAppServiceSlotOne** kaynağını seçin.
+- 3\. adımda **slotAppServiceSlotOne** kaynağını seçin.
 
 - 13. adımda master dalı yerine working dalını seçin.
 
@@ -219,7 +219,7 @@ Bu işlemlerle üretim yuvasını dağıtmış oldunuz. Hazırlama yuvasını da
 
 Önceki bölümlerde GitHub'daki farklı dallardan dağıtım yapmak için **slotAppService** ve **slotAppServiceSlotOne** olmak üzere iki yuva ayarladınız. Şimdi web uygulamalarının önizlemesini yaparak başarıyla dağıtıldıklarını doğrulayalım.
 
-Aşağıdaki adımları 2 kez gerçekleştirin. 3. adımda önce **slotAppService** öğesini ve ardından **slotAppServiceSlotOne** öğesini seçin.
+Aşağıdaki adımları 2 kez gerçekleştirin. 3\. adımda önce **slotAppService** öğesini ve ardından **slotAppServiceSlotOne** öğesini seçin.
 
 1. Azure portalın ana menüsünde **Kaynak grupları**’nı seçin.
 
@@ -266,7 +266,7 @@ Aşağıdaki adımları 2 kez gerçekleştirin. 3. adımda önce **slotAppServic
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 

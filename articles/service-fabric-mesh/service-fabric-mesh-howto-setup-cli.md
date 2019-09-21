@@ -9,60 +9,60 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: c716ae0a2bb30e7e8eb249a1d230097efc0d3795
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46b2a9a0c4d8a1d9e0fa069d512670dffb94fc28
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62097802"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173772"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI’yi ayarlama
-Service Fabric Mesh komut satırı arabirimi (CLI) dağıtmak ve yerel olarak ve Azure Service Fabric Mesh kaynakları yönetmek için gereklidir. 
+Service Fabric ağ komut satırı arabirimi (CLı), kaynakları yerel olarak ve Azure Service Fabric ağı 'nda dağıtmak ve yönetmek için gereklidir. 
 
-Kullanılabilir CLI üç tür vardır ve bunlar aşağıdaki tabloda özetlenmiştir. 
+Kullanılabilecek üç tür CLı bulunur ve bunlar aşağıdaki tabloda özetlenmiştir. 
 
-| CLI Modülü | Hedef ortam |  Açıklama | 
+| CLı modülü | Hedef ortam |  Açıklama | 
 |---|---|---|
-| az mesh | Azure Service Fabric Mesh | Uygulamalarınızı dağıtma ve Azure Service Fabric Mesh ortama yönelik kaynakları yönetmenize olanak tanıyan birincil CLI. 
-| sfctl | Yerel küme | Dağıtım ve Service Fabric yerel küme kaynaklarında test sağlayan Service Fabric CLI.  
-| Maven CLI | Yerel kümeler ve Azure Service Fabric Mesh | Çevresinde bir sarmalayıcı `az mesh` ve `sfctl` Java geliştiriciler yerel hem de Azure geliştirme deneyimi için bilindik komut satırı deneyimi sağlar.  
+| az ağ | Azure Service Fabric ağı | Azure Service Fabric kafes ortamında uygulamalarınızı dağıtmanıza ve kaynakları yönetmenize olanak tanıyan birincil CLı. 
+| sfctl | Yerel kümeler | Yerel kümelerdeki Service Fabric kaynaklarının dağıtımına ve test edilmesine izin veren Service Fabric CLı.  
+| Maven CLı | Azure Service Fabric ağ & yerel kümeler | Ve çevresindeki `az mesh` bir sarmalayıcı `sfctl` , Java geliştiricilerinin yerel ve Azure geliştirme deneyimi için tanıdık bir komut satırı deneyimi kullanmasına olanak sağlar.  
 
 Önizleme için, Azure Fabric Mesh CLI Azure CLI’nin uzantısı olarak yazılır. Azure Cloud Shell’de veya Azure CLI’nin yerel kurulumunda bunu yükleyebilirsiniz. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-## <a name="install-the-azure-service-fabric-mesh-cli"></a>Azure Service Fabric kafes CLI yükleme
-1. Azure CLI Sürüm 2.0.43 yüklemeniz gerekir ya da daha sonra. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’nin en son sürümünü yüklemek veya en son sürümüne yükseltmek için bkz. [Azure CLI yükleme][azure-cli-install].
+## <a name="install-the-azure-service-fabric-mesh-cli"></a>Azure Service Fabric Kafesclı 'yi yükler
+1. Azure CLı sürüm 2.0.67 veya üstünü yüklemelisiniz. Sürümü bulmak için `az --version` komutunu çalıştırın. CLı 'nın en son sürümünü yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek][azure-cli-install].
 
-2. Aşağıdaki komutu kullanarak Azure Service Fabric CLI'sını Mesh uzantısı modülünü yükleyin. 
+2. Aşağıdaki komutu kullanarak Azure Service Fabric kafes CLı uzantısı modülünü yükler. 
 
     ```azurecli-interactive
     az extension add --name mesh
     ```
 
-3. Aşağıdaki komutu kullanarak mevcut bir Azure Service Fabric CLI'sını Mesh modülü güncelleştirin.
+3. Aşağıdaki komutu kullanarak mevcut bir Azure Service Fabric kafesi CLı modülünü güncelleştirin.
 
     ```azurecli-interactive
     az extension update --name mesh
     ```
 
-## <a name="install-the-service-fabric-cli-sfctl"></a>Service Fabric CLI (sfctl) yükleme 
+## <a name="install-the-service-fabric-cli-sfctl"></a>Service Fabric CLı 'yi (sfctl) yükler 
 
-Yönergeleri takip edin [Service Fabric CLI'yı ayarlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli). **Sfctl** modülü, Service Fabric kümeleri yerel makinenizde karşı kaynak modeline bağlı uygulamaları dağıtımını için kullanılabilir. 
+[SERVICE fabrıc CLI 'Yi ayarlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)yönergelerini izleyin. **Sfctl** modülü, kaynak modeline bağlı olarak, yerel makinenizde Service Fabric kümelerine göre uygulama dağıtımı için kullanılabilir. 
 
-## <a name="install-the-maven-cli"></a>CLI Maven'i yükleyin 
+## <a name="install-the-maven-cli"></a>Maven CLı 'yı yükler 
 
-Maven CLI makinenizde yüklü olması için aşağıdaki gereksinimleri kullanmak için: 
+Maven CLı 'yı kullanabilmeniz için, makinenizde aşağıdakiler yüklü olmalıdır: 
 
 * [Java](https://www.azul.com/downloads/zulu/)
 * [Maven](https://maven.apache.org/download.cgi)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* Azure ağ CLI (az kafes) - Azure Service Fabric Mesh hedefine 
-* Yerel küme hedeflemek için SFCTL (sfctl)- 
+* Azure ağ CLı (az ağ)-Azure Service Fabric ağı hedeflemek Için 
+* SFCTL (sfctl)-yerel kümeleri hedeflemek Için 
 
-Service Fabric için Maven CLI hala Önizleme aşamasındadır. 
+Service Fabric için Maven CLı hala önizlemededir. 
 
-Maven plugin Maven Java uygulamanızı kullanmak için aşağıdaki kod parçacığı pom.xml dosyanıza ekleyin:
+Maven Java uygulamanızda Maven eklentisini kullanmak için, potm. xml dosyanıza aşağıdaki kod parçacığını ekleyin:
 
 ```XML
 <project>
@@ -84,7 +84,7 @@ Maven plugin Maven Java uygulamanızı kullanmak için aşağıdaki kod parçac�
 </project>
 ```
 
-Okuma [Maven CLI başvurusu](service-fabric-mesh-reference-maven.md) bölümü ayrıntılı kullanımı hakkında bilgi edinin.
+Ayrıntılı kullanım hakkında bilgi edinmek için [Maven CLI başvurusu](service-fabric-mesh-reference-maven.md) bölümünü okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

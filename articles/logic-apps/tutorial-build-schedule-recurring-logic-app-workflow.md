@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 9392cfc9c789a757c3ad533a3dbd4719f5292be5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 809d76791522fa135932baaf6e237570ab0af35a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931571"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172170"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Öğretici: Azure Logic Apps kullanarak otomatik, zamanlamaya dayalı ve yinelenen iş akışları oluşturun
 
@@ -235,7 +235,7 @@ Ardından, geçerli seyahat süresinin belirli bir sınırdan büyük olup olmad
 
 1. Önceki eylem altında **yeni adım**' ı seçin.
 
-1. **Eylem seçin**altında, **yerleşik**' i seçin ve "koşul" araması yapın ve **koşul** eylemini seçin.
+1. **Eylem seçin**altında, **yerleşik**' i seçin. Arama kutusuna filtreniz olarak "koşul" yazın. Eylemler listesinden **koşul** eylemini seçin.
 
    !["Koşul" eylemini seçin](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -243,19 +243,19 @@ Ardından, geçerli seyahat süresinin belirli bir sınırdan büyük olup olmad
 
 1. Burada açıklandığı gibi, **Seyahatsaati** Özellik değerinin belirtilen limiti aşıp aşmayacağını denetleyen bir koşul oluşturun:
 
-   1. Koşulun içinde, koşulun sol tarafında **bir değer seçin** kutusunun içine tıklayın.
+   1. Koşulda, koşulun sol tarafındaki **bir değer seçin** kutusunun içine tıklayın.
 
-   1. Dinamik içerik listesi göründüğünde, **değişkenler**altında, **seyahattime** özelliğini seçin.
+   1. Görüntülenen dinamik içerik listesinden, **değişkenler**altında, **seyahattime** özelliğini seçin.
 
       ![Derleme koşulu sol tarafı](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. Karşılaştırma kutusunda şu işleci seçin: **büyüktür**
+   1. Orta karşılaştırma kutusunda, işleç ' **den büyüktür** ' i seçin.
 
    1. Koşulun sağ tarafındaki **bir değer seçin** kutusunda şu sınırı girin:`15`
 
       İşiniz bittiğinde, koşul şu örneğe benzer şekilde görünür:
 
-      ![Koşul derleme](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
+      ![Tamamlandı koşulu](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
 1. Mantıksal uygulamanızı kaydedin.
 
@@ -310,7 +310,7 @@ Sonra, seyahat süresi sınırınızı aştığında çalıştırılacak eylemi 
 
       ![Ek seyahat süresi dakikasını hesaplamak için ifade girin](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-2.png)
 
-   1. İmlecinizi, sol parantez ( **(** ) ile virgül ( **,** ) arasındaki ifadeye getirin. **Dinamik içerik**' i seçin.
+   1. İmlecinizi, sol parantez ( **(** ) ile virgül ( **,** ) arasındaki ifadeye getirin. **dinamik içerik**' i seçin.
 
       ![Ek seyahat süresi dakikasını hesaplamak için ifade oluşturmaya devam edin](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-3.png)
 

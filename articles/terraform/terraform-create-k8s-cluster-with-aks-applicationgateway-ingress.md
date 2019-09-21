@@ -1,31 +1,31 @@
 ---
-title: Azure Kubernetes Service (AKS) giriş denetleyicisine olarak Application Gateway ile bir Kubernetes kümesi oluşturma
-description: Giriş denetleyicisine olarak uygulama ağ geçidi ile Azure Kubernetes hizmeti ile bir Kubernetes kümesi oluşturmak nasıl bulunacağını gösteren öğretici.
+title: Azure Kubernetes hizmeti (AKS) ile giriş denetleyicisi olarak Application Gateway bir Kubernetes kümesi oluşturma
+description: Azure Kubernetes hizmeti ile bir Kubernetes kümesinin giriş denetleyicisi olarak Application Gateway ile nasıl oluşturulacağını gösteren öğretici
 services: terraform
 ms.service: azure
-keywords: terraform, devops, sanal makine, azure, kubernetes, giriş, uygulama ağ geçidi
+keywords: terkform, DevOps, sanal makine, Azure, Kubernetes, giriş, uygulama ağ geçidi
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 1/10/2019
-ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: 0373b254a900fd34232bb6863c93802fa7b51aab
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60885508"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169958"
 ---
-# <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes hizmeti ve Terraform kullanan uygulama ağ geçidi giriş denetleyicisine ile bir Kubernetes kümesi oluşturma
-[Azure Kubernetes Service (AKS)](/azure/aks/) , barındırılan Kubernetes ortamınızı yönetir. AKS hızlı ve kolay kapsayıcı düzenleme uzmanlığı gerektirmeden kapsayıcıya alınmış uygulamaları dağıtmayı ve yönetmeyi kolaylaştırır. Ayrıca, kaynakları isteğe bağlı olarak sağlama, yükseltme ve ölçeklendirme işlemlerini uygulamalarınızı çevrimdışı duruma geçirmeden yaparak sürekliliği olan işlemlerin ve bakımların yükünü ortadan kaldırır.
+# <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes hizmeti ve Terkform kullanarak Application Gateway giriş denetleyicisi ile bir Kubernetes kümesi oluşturma
+[Azure Kubernetes hizmeti (AKS)](/azure/aks/) , barındırılan Kubernetes ortamınızı yönetir. AKS, kapsayıcı düzenleme uzmanlığı olmadan Kapsayıcılı uygulamaları dağıtmayı ve yönetmeyi hızlı ve kolay hale getirir. Ayrıca, kaynakları isteğe bağlı olarak sağlama, yükseltme ve ölçeklendirme işlemlerini uygulamalarınızı çevrimdışı duruma geçirmeden yaparak sürekliliği olan işlemlerin ve bakımların yükünü ortadan kaldırır.
 
-Giriş denetleyicisine ters proxy, yapılandırılabilir bir trafik yönlendirme ve TLS sonlandırma Kubernetes hizmetleri sağlayan bir yazılım parçasıdır. Kubernetes giriş kaynakları, giriş kuralları ve rotaları için her bir Kubernetes hizmeti yapılandırmak için kullanılır. Giriş denetleyicisine ve giriş kuralları kullanarak, tek bir IP adresi için bir Kubernetes kümesinde birden çok hizmet trafiği yönlendirmek için kullanılabilir. Yukarıdaki tüm işlevlerini Azure tarafından sağlanan [Application Gateway](/azure/Application-Gateway/), getiren bu ideal bir giriş denetleyicisine azure'da Kubernetes için. 
+Giriş denetleyicisi, Kubernetes Hizmetleri için ters proxy, yapılandırılabilir trafik yönlendirme ve TLS sonlandırma sağlayan bir yazılım parçasıdır. Kubernetes giriş kaynakları, bağımsız bir Kubernetes hizmeti için giriş kurallarını ve rotaları yapılandırmak üzere kullanılır. Bir giriş denetleyicisi ve giriş kuralları kullanarak, bir Kubernetes kümesinde trafiği birden çok hizmete yönlendirmek için tek bir IP adresi kullanılabilir. Yukarıdaki tüm işlevler Azure [Application Gateway](/azure/Application-Gateway/)tarafından sağlanır ve bu, Azure 'Da Kubernetes için Ideal bir giriş denetleyicisi oluşturur. 
 
-Bu öğreticide, şunların oluştururken aşağıdaki görevleri gerçekleştirmek nasıl bir [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) AKS ile uygulama ağ geçidi giriş denetleyicisine kullanarak küme:
+Bu öğreticide, bir [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) kümesi oluşturma konusunda, giriş denetleyicisi olarak Application Gateway ile aks kullanarak aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
 > [!div class="checklist"]
 > * HCL (HashiCorp Language) ile Kubernetes kümesi tanımlama
-> * Uygulama ağ geçidi kaynağı oluşturmak için Terraform'u kullanın
+> * Application Gateway kaynak oluşturmak için Terrayform kullanma
 > * Terraform ve AKS ile Kubernetes kümesi oluşturma
 > * kubectl aracıyla bir Kubernetes kümesinin kullanılabilirlik durumunu test etme
 
@@ -33,12 +33,12 @@ Bu öğreticide, şunların oluştururken aşağıdaki görevleri gerçekleştir
 
 - **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-- **Terraform'u yapılandırın**: Makaledeki yönergeleri izleyerek [Terraform ve Azure erişimi yapılandırma](/azure/virtual-machines/linux/terraform-install-configure)
+- **Teroyform 'U Yapılandır**: Bu makaledeki yönergeleri izleyin, [Terrayform ve Azure erişimini yapılandırma](/azure/virtual-machines/linux/terraform-install-configure)
 
-- **Azure hizmet sorumlusu**: Bölümündeki yönergeleri izleyerek **hizmet sorumlusu oluşturma** makale bölümünde [Azure, Azure CLI ile hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Uygulama kimliği, displayName ve parola değerlerini not alın.
-  - Aşağıdaki komutu çalıştırarak, hizmet sorumlusu nesne kimliği unutmayın.
+- **Azure hizmet sorumlusu**: [Azure CLI ile bir Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)konusunun **hizmet sorumlusu oluşturma** bölümündeki yönergeleri izleyin. AppID, displayName ve Password değerlerini göz önünde atın.
+  - Aşağıdaki komutu çalıştırarak hizmet sorumlusunun nesne KIMLIĞINI aklınızda yapın
 
-    ```bash
+    ```azurecli
     az ad sp list --display-name <displayName>
     ```
 
@@ -82,7 +82,7 @@ Azure sağlayıcısını tanımlayan Terraform yapılandırma dosyasını yapıl
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     provider "azurerm" {
         version = "~>1.18"
     }
@@ -99,17 +99,21 @@ Azure sağlayıcısını tanımlayan Terraform yapılandırma dosyasını yapıl
     ```bash
     :wq
     ```
-   ## <a name="define-input-variables"></a>Girdi değişkenleri tanımlayın
-   Bu dağıtım için gerekli tüm değişkenleri listeler Terraform yapılandırma dosyası oluşturma
-1. Cloud Shell'de adlı bir dosya oluşturun. `variables.tf`
+
+## <a name="define-input-variables"></a>Giriş değişkenlerini tanımlama
+Bu dağıtım için gerekli tüm değişkenleri listeleyen Terrayform yapılandırma dosyasını oluşturun.
+
+1. Cloud Shell'de `variables.tf` adlı bir dosya oluşturun.
+
     ```bash
     vi variables.tf
     ```
+
 1. I tuşunu seçerek ekleme moduna geçin.
 
-2. Aşağıdaki kodu düzenleyiciye yapıştırın:
+1. Aşağıdaki kodu düzenleyiciye yapıştırın:
     
-    ```JSON
+    ```hcl
     variable "resource_group_name" {
       description = "Name of the resource group already created."
     }
@@ -242,7 +246,7 @@ Azure sağlayıcısını tanımlayan Terraform yapılandırma dosyasını yapıl
     ```
 
 ## <a name="define-the-resources"></a>Kaynakları tanımlama 
-Tüm kaynakları oluşturur Terraform yapılandırma dosyası oluşturun. 
+Tüm kaynakları oluşturan Terrayform yapılandırma dosyası oluşturun. 
 
 1. Cloud Shell'de `resources.tf` adlı bir dosya oluşturun.
 
@@ -252,11 +256,11 @@ Tüm kaynakları oluşturur Terraform yapılandırma dosyası oluşturun.
 
 1. I tuşunu seçerek ekleme moduna geçin.
 
-1. Aşağıdaki kod blokları düzenleyiciye yapıştırın:
+1. Aşağıdaki kod bloklarını düzenleyiciye yapıştırın:
 
-    a. Yerel öğeler blok yeniden hesaplanan değişkenleri oluşturma
+    a. Hesaplanan değişkenler için yeniden kullanmak üzere bir Yereller bloğu oluşturun.
 
-    ```JSON
+    ```hcl
     # # Locals block for hardcoded names. 
     locals {
         backend_address_pool_name      = "${azurerm_virtual_network.test.name}-beap"
@@ -268,8 +272,10 @@ Tüm kaynakları oluşturur Terraform yapılandırma dosyası oluşturun.
         app_gateway_subnet_name = "appgwsubnet"
     }
     ```
-    b. Kaynak grubu, yeni kullanıcı kimliği için bir veri kaynağı oluşturun
-    ```JSON
+
+    b. Yeni Kullanıcı kimliği kaynak grubu için bir veri kaynağı oluşturun.
+
+    ```hcl
     data "azurerm_resource_group" "rg" {
       name = "${var.resource_group_name}"
     }
@@ -284,8 +290,10 @@ Tüm kaynakları oluşturur Terraform yapılandırma dosyası oluşturun.
       tags = "${var.tags}"
     }
     ```
-    c. Temel ağ kaynakları oluşturma
-   ```JSON
+
+    c. Temel ağ kaynakları oluşturun.
+
+    ```hcl
     resource "azurerm_virtual_network" "test" {
       name                = "${var.virtual_network_name}"
       location            = "${data.azurerm_resource_group.rg.location}"
@@ -328,8 +336,10 @@ Tüm kaynakları oluşturur Terraform yapılandırma dosyası oluşturun.
       tags = "${var.tags}"
     }
     ```
-    d. Uygulama ağ geçidi kaynağı oluşturma
-    ```JSON
+
+    d. Application Gateway kaynağı oluşturun.
+
+    ```hcl
     resource "azurerm_application_gateway" "network" {
       name                = "${var.app_gateway_name}"
       resource_group_name = "${data.azurerm_resource_group.rg.name}"
@@ -393,8 +403,10 @@ Tüm kaynakları oluşturur Terraform yapılandırma dosyası oluşturun.
       depends_on = ["azurerm_virtual_network.test", "azurerm_public_ip.test"]
     }
     ```
-    e. Rol ataması oluştur
-    ```JSON
+
+    e. Rol atamaları oluşturun.
+
+    ```hcl
     resource "azurerm_role_assignment" "ra1" {
       scope                = "${data.azurerm_subnet.kubesubnet.id}"
       role_definition_name = "Network Contributor"
@@ -424,8 +436,10 @@ Tüm kaynakları oluşturur Terraform yapılandırma dosyası oluşturun.
       depends_on           = ["azurerm_user_assigned_identity.testIdentity", "azurerm_application_gateway.network"]
     }
     ```
-    f. Kubernetes kümesi oluşturma
-    ```JSON
+
+    f. Kubernetes kümesi oluşturun.
+
+    ```hcl
     resource "azurerm_kubernetes_cluster" "k8s" {
       name       = "${var.aks_name}"
       location   = "${data.azurerm_resource_group.rg.location}"
@@ -502,7 +516,7 @@ Tüm kaynakları oluşturur Terraform yapılandırma dosyası oluşturun.
 
 1. Aşağıdaki kodu düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
     output "client_key" {
         value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
     }
@@ -541,13 +555,13 @@ Tüm kaynakları oluşturur Terraform yapılandırma dosyası oluşturun.
     ```
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Terraform durumunu depolamak için Azure depolama alanı ayarlama
-Terraform, durumu `terraform.tfstate` dosyasıyla yerel olarak izler. Bu model tek kişilik bir ortamda iyi çalışır. Ancak, daha çok kişi ortamında kullanılarak sunucuda durumunu izlemek ihtiyacınız [Azure depolama](/azure/storage/). Bu bölümde gerekli depolama hesabı bilgilerini (hesap adı ve hesap anahtarı) alacak ve Terraform durum bilgilerinin depolanacağı bir depolama kapsayıcısı oluşturacaksınız.
+Terraform, durumu `terraform.tfstate` dosyasıyla yerel olarak izler. Bu model tek kişilik bir ortamda iyi çalışır. Ancak, daha pratik bir çoklu kişi ortamında, [Azure depolama](/azure/storage/)'yı kullanarak sunucuda durumu izlemeniz gerekir. Bu bölümde gerekli depolama hesabı bilgilerini (hesap adı ve hesap anahtarı) alacak ve Terraform durum bilgilerinin depolanacağı bir depolama kapsayıcısı oluşturacaksınız.
 
 1. Azure portalda sol taraftaki menüden **Tüm hizmetler**'i seçin.
 
 1. **Depolama hesapları**’nı seçin.
 
-1. **Depolama hesapları** sekmesinde Terraform durum bilgilerinin depolanacağı depolama hesabının adını seçin. Örneğin Cloud Shell'i ilk açtığınızda oluşturulmuş olan depolama hesabını kullanabilirsiniz.  Cloud Shell tarafından oluşturulan depolama hesabı genellikle `cs` ile başlar ve sonrasında rastgele sayı ve harf dizesi bulunur. **Seçtiğiniz depolama hesabı adını ihtiyacımız gibi daha sonra unutmayın.**
+1. **Depolama hesapları** sekmesinde Terraform durum bilgilerinin depolanacağı depolama hesabının adını seçin. Örneğin Cloud Shell'i ilk açtığınızda oluşturulmuş olan depolama hesabını kullanabilirsiniz.  Cloud Shell tarafından oluşturulan depolama hesabı genellikle `cs` ile başlar ve sonrasında rastgele sayı ve harf dizesi bulunur. **Daha sonra ihtiyaç duyduğumuz için, seçtiğiniz depolama hesabının adını göz önüne alın.**
 
 1. Depolama hesabı sekmesinde **Erişim anahtarları**'nı seçin.
 
@@ -559,7 +573,7 @@ Terraform, durumu `terraform.tfstate` dosyasıyla yerel olarak izler. Bu model t
 
 1. Cloud Shell'de Azure depolama hesabınızda bir kapsayıcı oluşturun (&lt;YourAzureStorageAccountName> ve &lt;YourAzureStorageAccountAccessKey> yer tutucularının yerine Azure depolama hesabınıza ait değerleri girin).
 
-    ```bash
+    ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
@@ -576,7 +590,7 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
 
     !["terraform init" komutunun sonuçları](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
-1. Cloud Shell içinde giriş değerleri sağlamasına, adlı bir dosya oluşturmak için bir değişkenleri dosyası oluşturun `main.tf`.
+1. Cloud Shell giriş değerleri sağlamak için bir değişkenler dosyası oluşturun, adlı `main.tf`bir dosya oluşturun.
 
     ```bash
     vi terraform.tfvars
@@ -584,9 +598,9 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
 
 1. I tuşunu seçerek ekleme moduna geçin.
 
-1. Düzenleyiciye daha önce oluşturduğunuz aşağıdaki değişkenleri yapıştırın:
+1. Daha önce oluşturulan aşağıdaki değişkenleri düzenleyiciye yapıştırın:
 
-    ```JSON
+    ```hcl
       resource_group_name = <Name of the Resource Group already created>
 
       location = <Location of the Resource Group>
@@ -617,7 +631,7 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
 
     !["terraform plan" komutunun sonuçları](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
-1. Kubernetes kümesini oluşturma planını uygulamak için `terraform apply` komutunu çalıştırın. Kubernetes kümesi oluşturma işlemi birkaç dakika sürebilir ve bu durum Cloud Shell oturumunun zaman aşımına uğramasına neden olabilir. Cloud Shell oturum zaman aşımına uğrarsa, öğreticiyi tamamlamak etkinleştirmek için "Cloud Shell zaman aşımı bozulmayı" bölümündeki adımları izleyin.
+1. Kubernetes kümesini oluşturma planını uygulamak için `terraform apply` komutunu çalıştırın. Kubernetes kümesi oluşturma işlemi birkaç dakika sürebilir ve bu durum Cloud Shell oturumunun zaman aşımına uğramasına neden olabilir. Cloud Shell oturum zaman aşımına uğrarsa öğreticiyi tamamlamanızı sağlamak için "Cloud Shell zaman aşımından kurtarma" bölümündeki adımları izleyebilirsiniz.
 
     ```bash
     terraform apply out.plan
@@ -627,12 +641,12 @@ Bu bölümde `terraform init` komutunu kullanarak önceki bölümlerde oluşturd
 
     !["terraform apply" komutunun sonuçları](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-apply-complete.png)
 
-1. Azure portalında **kaynak grupları** yeni, Kubernetes kümeniz seçilen kaynak grubunda oluşturulan kaynakları görmek için soldaki menüde.
+1. Azure portal, seçili kaynak grubundaki yeni Kubernetes kümeniz için oluşturulan kaynakları görmek için sol menüdeki **kaynak grupları** ' nı seçin.
 
     ![Cloud Shell istemi](./media/terraform-k8s-cluster-appgw-with-tf-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Zaman aşımına uğrayan Cloud Shell oturumunu kurtarma
-Cloud Shell oturum zaman aşımına uğrarsa kurtarmak için aşağıdaki adımları kullanabilirsiniz:
+Cloud Shell oturumu zaman aşımına uğrarsa, kurtarmak için aşağıdaki adımları kullanabilirsiniz:
 
 1. Cloud Shell oturumu başlatın.
 
@@ -675,7 +689,7 @@ Yeni oluşturulan kümeyi doğrulamak için Kubernetes araçlarını kullanabili
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede Terraform ve AKS ile Kubernetes kümesi oluşturmayı öğrendiniz. Azure üzerinde Terraform hakkında daha fazla bilgi edinmenize yardımcı olacak bazı ek kaynaklar aşağıda verilmiştir.
+Bu makalede Terraform ve AKS ile Kubernetes kümesi oluşturmayı öğrendiniz. Azure 'da Terrampaform hakkında daha fazla bilgi edinmenize yardımcı olacak bazı ek kaynaklar aşağıda verilmiştir.
  
  > [!div class="nextstepaction"] 
  > [Microsoft.com Terraform Hub'ı](https://docs.microsoft.com/azure/terraform/)

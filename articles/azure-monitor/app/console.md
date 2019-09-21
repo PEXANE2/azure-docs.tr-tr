@@ -1,6 +1,6 @@
 ---
 title: Konsol uygulamaları için Azure Application Insights | Microsoft Docs
-description: Web uygulamalarının kullanılabilirliğini, performansını ve kullanımını izleyin.
+description: Kullanılabilirlik, performans ve kullanım için Web uygulamalarını izleyin.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,24 +13,29 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 0c2a28462633d47ad1d3f247793e3fcf6f4d40c0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: b6ecf1e9cece51635afc0bf0f8025b6e117438ee
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795459"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169444"
 ---
-# <a name="application-insights-for-net-console-applications"></a>.NET için Application Insights konsol uygulamaları
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) web uygulamanızın kullanılabilirliğini, performansını ve kullanımını izlemenize olanak tanır.
+# <a name="application-insights-for-net-console-applications"></a>.NET konsol uygulamaları için Application Insights
 
-Bir aboneliğe ihtiyacınız [Microsoft Azure](https://azure.com). Windows, Xbox Live veya diğer Microsoft bulut Hizmetleri için olabilir bir Microsoft hesabıyla oturum açın. Takımınızın kurumsal bir Azure aboneliğine sahip olabilir: sahibinden Microsoft hesabınızı kullanarak eklemeli isteyin.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) , Web uygulamanızı kullanılabilirlik, performans ve kullanım açısından izlemenize olanak sağlar.
+
+[Microsoft Azure](https://azure.com)bir aboneliğiniz olması gerekir. Windows, Xbox Live veya diğer Microsoft bulut hizmetleri için sahip olabileceğiniz bir Microsoft hesabı oturum açın. Takımınız Azure 'a yönelik bir kurumsal aboneliğe sahip olabilir: sahibinden Microsoft hesabı kullanarak sizi eklemesini isteyin.
+
+> [!NOTE]
+> Herhangi bir konsol uygulaması için Application Insights etkinleştirmek üzere kullanılabilecek [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yeni bir beta Application Insights SDK 'sı vardır. Bu paketin ve ilgili yönergelerin [burada](../../azure-monitor/app/worker-service.md)kullanılması önerilir. Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard), .NET Core 2,0 veya üzeri sürümlerde ve .NET Framework 4.7.2 veya üzeri sürümlerde kullanılabilir.
+Bu yeni paketin kararlı bir sürümü kullanıma sunulduktan sonra bu belge kullanımdan kalkacaktır.
 
 ## <a name="getting-started"></a>Başlarken
 
-* [Azure portalında](https://portal.azure.com) [bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md). Uygulama türü olarak seçin **genel**.
-* İzleme Anahtarının bir kopyasını oluşturun. Anahtarı bulma **Essentials** oluşturduğunuz yeni kaynağın açılır. 
-* Son yükleme [Microsoft.applicationınsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) paket.
-* Hiç telemetri izlemeden önce izleme anahtarını kodunuzda ayarlayın (veya set appınsıghts_ınstrumentatıonkey ortam değişkeni). Bundan sonra el ile telemetri izlemek ve Azure portalında görme olanağına olmalıdır
+* [Azure portalında](https://portal.azure.com) [bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md). Uygulama türü için **genel**' i seçin.
+* İzleme Anahtarının bir kopyasını oluşturun. Oluşturduğunuz yeni kaynağın **temel** bileşenler açılan penceresinde anahtarı bulun. 
+* En son [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) paketini yükler.
+* Herhangi bir Telemetriyi izlemeden önce kodunuzda izleme anahtarını ayarlayın (veya APPINSIGHTS_INSTRUMENTATIONKEY ortam değişkeni ayarlayın). Bundan sonra Telemetriyi el ile izleyebilmeniz ve Azure portal üzerinde görebilmelisiniz
 
 ```csharp
 // you may use different options to create configuration as shown later in this article
@@ -40,15 +45,15 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
-* En son sürümünü yükleyin [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) package - HTTP, SQL veya başka bir dış bağımlılık çağrıları otomatik olarak izler.
+* [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) paketinin en son sürümünü yükler-http, SQL veya diğer dış bağımlılık çağrılarını otomatik olarak izler.
 
-Başlat ve koddan konfigurovat Application Insights veya bu adı kullanıyor `ApplicationInsights.config` dosya. Mümkün olduğunca erken başlatma gerçekleşir emin olun. 
+Koddan veya dosya kullanarak `ApplicationInsights.config` Application Insights başlatabilir ve yapılandırabilirsiniz. Başlatmanın olabildiğince erken göründüğünden emin olun. 
 
 > [!NOTE]
-> Başvuru yönergeleri **Applicationınsights.config** .NET Framework hedefleme ve .NET Core uygulamaları için geçerli değildir uygulamalar yalnızca geçerlidir.
+> **ApplicationInsights. config** dosyasına başvuran yönergeler yalnızca .NET Framework hedefleyen ve .NET Core uygulamaları için geçerli olmayan uygulamalar için geçerlidir.
 
 ### <a name="using-config-file"></a>Yapılandırma dosyası kullanma
-Varsayılan olarak, Application Insights SDK'sı arar `ApplicationInsights.config` çalışma dizininde dosya olduğunda `TelemetryConfiguration` oluşturuluyor
+Varsayılan olarak, Application Insights SDK oluşturulduğunda `ApplicationInsights.config` dosyayı çalışma `TelemetryConfiguration` dizininde arar
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
@@ -62,9 +67,9 @@ TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfigur
 var telemetryClient = new TelemetryClient(configuration);
 ```
 
-Daha fazla bilgi için [yapılandırma dosyası başvurusu](configuration-with-applicationinsights-config.md).
+Daha fazla bilgi için bkz. [yapılandırma dosyası başvurusu](configuration-with-applicationinsights-config.md).
 
-En son sürümünü yükleyerek, yapılandırma dosyasının tam bir örnek alabilirsiniz [Microsoft.applicationınsights.windowsserver](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) paket. İşte **minimal** yapılandırması için örnek kod eşdeğerdir bağımlılık toplama.
+[Microsoft. ApplicationInsights. WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) paketinin en son sürümünü yükleyerek yapılandırma dosyasına tam bir örnek alabilirsiniz. Aşağıda, kod örneğine denk gelen bağımlılık koleksiyonu için **En düşük** yapılandırma bulunur.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -96,9 +101,9 @@ En son sürümünü yükleyerek, yapılandırma dosyasının tam bir örnek alab
 
 ### <a name="configuring-telemetry-collection-from-code"></a>Koddan telemetri toplamayı yapılandırma
 > [!NOTE]
-> Okuma yapılandırma dosyası, .NET Core üzerinde desteklenmiyor. Kullanma fikrini değerlendirebilirsiniz [ASP.NET Core için Application Insights SDK'sı](../../azure-monitor/app/asp-net-core.md)
+> Yapılandırma dosyası okuma, .NET Core 'da desteklenmez. [ASP.NET Core için APPLICATION INSIGHTS SDK](../../azure-monitor/app/asp-net-core.md) kullanmayı düşünebilirsiniz
 
-* Uygulama başlatma sırasında oluşturma ve yapılandırma `DependencyTrackingTelemetryModule` örneği - tekil olmalıdır ve uygulama ömrü boyunca korunmalıdır.
+* Uygulama başlatma sırasında örnek oluşturma ve yapılandırma `DependencyTrackingTelemetryModule` -bu tek bir olmalıdır ve uygulama ömrü için korunması gerekir.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -118,20 +123,20 @@ module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
 module.Initialize(configuration);
 ```
 
-* Sık kullanılan telemetri başlatıcılar Ekle
+* Ortak telemetri başlatıcıları ekleme
 
 ```csharp
 // ensures proper DependencyTelemetry.Type is set for Azure RESTful API calls
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-Yapılandırma ile düz oluşturduysanız `TelemetryConfiguration()` oluşturucusu, ayrıca bağıntı desteğini etkinleştirmek için ihtiyacınız. **Gerekli olmadığı** yapılandırma dosyasından okuma, kullanılan `TelemetryConfiguration.CreateDefault()` veya `TelemetryConfiguration.Active`.
+Yapılandırmayı düz `TelemetryConfiguration()` Oluşturucu ile oluşturduysanız, ayrıca bağıntı desteğini etkinleştirmeniz gerekir. Dosyadan yapılandırmayı okuduğunuzda, veya `TelemetryConfiguration.Active`kullandıysanız `TelemetryConfiguration.CreateDefault()` **Bu gerekli değildir** .
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* Yükleme ve performans sayacı Toplayıcı modülü açıklandığı başlatmak isteyebilirsiniz [burada](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
+* [Burada](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/) açıklandığı gibi performans sayacı toplayıcı modülünü de yüklemek ve başlatmak isteyebilirsiniz
 
 
 #### <a name="full-example"></a>Tam örnek
@@ -206,5 +211,5 @@ namespace ConsoleApp
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [İzleme bağımlılıkları](../../azure-monitor/app/asp-net-dependencies.md) REST, SQL ve diğer dış kaynaklara, yavaşlatmadan olmadığını görmek için.
-* [API'yi kullanmak](../../azure-monitor/app/api-custom-events-metrics.md) kendi olayları ve ölçümleri daha ayrıntılı bir görünüm, uygulamanızın performans ve kullanım için gönderilecek.
+* REST, SQL veya diğer dış kaynakların sizi yavaşlattığını görmek için [bağımlılıkları izleyin](../../azure-monitor/app/asp-net-dependencies.md) .
+* Uygulamanızın performansını ve kullanımını daha ayrıntılı bir görünüm için kendi olaylarınızı ve ölçümlerini göndermek üzere [API 'Yi kullanın](../../azure-monitor/app/api-custom-events-metrics.md) .

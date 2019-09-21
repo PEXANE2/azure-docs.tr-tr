@@ -10,17 +10,56 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/4/2019
+ms.date: 9/20/2019
 ms.author: raiye
-ms.openlocfilehash: 71febe6544a4f53215ec4dbee2bcef86bda23386
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 6168e877022eccd9cbe818c20e81266cc3ea1f69
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275501"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169355"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
+
+## <a name="september-2019-guest-os"></a>Eylül 2019 Konuk işletim sistemi
+
+>[!NOTE]
+>Eylül Konuk işletim sistemi, şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine alındı. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri Eylül Konuk işletim sisteminde bulunur. Bu liste değişikliğe tabidir.
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 19-09   |  [4516046]  |  Internet Explorer   |  2,90, 3,77, 4,70  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4516115]  |  Flash   |  2,90, 3,77, 4,70, 5,35, 6,11  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4512578]  |  En son birikimli güncelleştirme   |  6,11  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 ve 4.7.2   |  6,11  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4516044]  |  En son birikimli güncelleştirme   |  5,35  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4516064]  |  Windows güvenliği   |  4.7  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4514350]  |  .NET Framework 3.5   |  4.7  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4514341]  |  .NET Framework 4.5.2   |  4.7  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4516062]  |  Windows güvenliği   |  3,77  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4514349]  |  .NET Framework 3.5   |  3,77  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4514342]  |  .NET Framework 4.5.2   |  3,77  |  10 Eylül 2019  |
+|  Rel 19-09   |  [4516033]  |  Windows güvenliği   |  2.9  |  12 Eylül 2019  |
+|  Rel 19-09   |  [4512488]  |  Güvenlik dışı   |  4.7  |  13 Ağu, 2019  |
+|  Rel 19-09   |  [4512518]  |  Güvenlik dışı   |  3,77  |  13 Ağu, 2019  |
+|  Rel 19-09   |  [4512506]  |  Güvenlik dışı   |  2.9  |  13 Ağu, 2019  |
+
+[4516046]: https://support.microsoft.com/kb/4516046
+[4516115]: https://support.microsoft.com/kb/4516115
+[4512578]: https://support.microsoft.com/kb/4512578
+[4514366]: https://support.microsoft.com/kb/4514366
+[4516044]: https://support.microsoft.com/kb/4516044
+[4516064]: https://support.microsoft.com/kb/4516064
+[4514350]: https://support.microsoft.com/kb/4514350
+[4514341]: https://support.microsoft.com/kb/4514341
+[4516062]: https://support.microsoft.com/kb/4516062
+[4514349]: https://support.microsoft.com/kb/4514349
+[4514342]: https://support.microsoft.com/kb/4514342
+[4516033]: https://support.microsoft.com/kb/4516033
+[4512488]: https://support.microsoft.com/kb/4512488
+[4512518]: https://support.microsoft.com/kb/4512518
+[4512506]: https://support.microsoft.com/kb/4512506
 
 
 ## <a name="august-2019-guest-os"></a>Ağustos 2019 Konuk işletim sistemi
@@ -951,7 +990,7 @@ Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güv
 | Bülten No | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
 | MS16-035 |[3141780] |.NET Framework güvenlik özelliği atlaması için güvenlik güncelleştirmesi |4.33, 3.40, 2.52 |14 Haziran 2016 |
-| Danışma |[3155527] |Yanlışdan başlamak için şifre paketlerine Güncelleştir |4.33, 3.40 |14 Haziran 2016 |
+| Öneri |[3155527] |Yanlışdan başlamak için şifre paketlerine Güncelleştir |4.33, 3.40 |14 Haziran 2016 |
 | MS16-063 |[3163649] |Internet Explorer için toplu güvenlik güncelleştirmesi |4.33, 3.40, 2.52 |14 Haziran 2016 |
 | MS16-069 |[3163640] |JScript ve VBScript için toplu güvenlik güncelleştirmesi |2.52 |14 Haziran 2016 |
 | MS16-071 |[3164065] |Microsoft Windows DNS Server için güvenlik güncelleştirmesi |4.33, 3.40 |14 Haziran 2016 |

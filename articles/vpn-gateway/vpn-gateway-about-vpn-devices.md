@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 09/20/2019
 ms.author: yushwang
-ms.openlocfilehash: c7d7fcc16fe10c1d4cd4b0dfb6d60575b98212b1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 1d80c30e3573d76aabcf854b2d97ea849197577c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105595"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173042"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Siteden Siteye VPN Gateway bağlantıları için VPN cihazları ve IPsec/IKE parametreleri hakkında
 
@@ -39,14 +39,14 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | ---                | ---                  | ---                   | ---            | ---           |
 | A10 Networks, Inc. |Thunder CFW           |ACOS 4.1.1             |Uyumlu değil  |[Yapılandırma kılavuzu](https://www.a10networks.com/wp-content/uploads/A10-DG-16161-EN.pdf)|
 | Allied Telesis     |AR Serisi VPN Yönlendiricileri |AR Serisi 5.4.7 +               | [Yapılandırma kılavuzu](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router) |[Yapılandırma kılavuzu](https://www.alliedtelesis.com/documents/how-to/configure/site-to-site-vpn-between-azure-and-ar-series-router)|
-| Barracuda Networks, Inc. |Barracuda NextGen Firewall F-serisi |PolicyBased 5.4.3<br>RouteBased 6.2.0 |[Yapılandırma kılavuzu](https://techlib.barracuda.com/NGF/AzurePolicyBasedVPNGW) |[Yapılandırma kılavuzu](https://techlib.barracuda.com/NGF/AzureRouteBasedVPNGW) |
-| Barracuda Networks, Inc. |Barracuda NextGen Firewall X-serisi |Barracuda Güvenlik Duvarı 6.5 |[Yapılandırma kılavuzu](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Uyumlu değil |
-| Denetim Noktası |Güvenlik Ağ Geçidi |R 80.10 |[Yapılandırma kılavuzu](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Yapılandırma kılavuzu](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
+| Barracuda Networks, Inc. |Barbcuda CloudGen güvenlik duvarı |PolicyBased 5.4.3<br>RouteBased 6.2.0 |[Yapılandırma kılavuzu](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462887/how-to-configure-an-ikev1-ipsec-site-to-site-vpn-to-the-static-microsoft-azure-vpn-gateway/) |[Yapılandırma kılavuzu](https://campus.barracuda.com/product/cloudgenfirewall/doc/79462889/how-to-configure-bgp-over-ikev2-ipsec-site-to-site-vpn-to-an-azure-vpn-gateway/) |
+| Check Point |Güvenlik Ağ Geçidi |R 80.10 |[Yapılandırma kılavuzu](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Yapılandırma kılavuzu](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |Desteklenen |[Yapılandırma kılavuzu*](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |PolicyBased IOS 15,1<br>RouteBased IOS 15,2 |Desteklenen |Desteklenen |
 | Cisco | 'NIN | RouteBased IOS-XE 16,10 | (sınanmamıştır) | [Yapılandırma betiği](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased IOS 15,0<br>RouteBased *: IOS 15,1 |Desteklenen |Desteklenen |
 | Cisco |Meraki |Yok |Uyumlu değil |Uyumlu değil |
+| Cisco | vEdge (Viptela OS) | 18.4.0 (etkin/Pasif mod)<br><br>19,2 (etkin/etkin mod) | Uyumlu değil |  [El ile yapılandırma (etkin/Pasif)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Cloud Onrampa yapılandırması (etkin/etkin)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 ve sonraki sürümleri |[Yapılandırma kılavuzu](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Uyumlu değil |
 | F5 |BIG-IP serisi |12.0 |[Yapılandırma kılavuzu](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Yapılandırma kılavuzu](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 | (sınanmamıştır) |[Yapılandırma kılavuzu](https://docs.fortinet.com/document/fortigate/5.6.0/cookbook/255100/ipsec-vpn-to-azure) |
@@ -67,7 +67,7 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | Synoloji | MR2200ac <br>RT2600ac <br>RT1900ac | SRM 1.1.5/VpnPlusServer-1.2.0 | (sınanmamıştır) | [Yapılandırma kılavuzu](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
 | Ubiquiti | EdgeRouter | EdgeOS v 1,10 | (sınanmamıştır) | [Ikev2/IPSec üzerinden BGP](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[Ikev2/IPSec üzerinden VTı](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |Tümü |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Yapılandırma kılavuzu](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Yapılandırma kılavuzu](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
-| ZyXEL |Zyduvar USG serisi<br>Zyduvaratp serisi<br>Zyduvarvpn serisi | ZLD v 4.32 + | (sınanmamıştır) | [Ikev2/IPSec üzerinden VTı](https://businessforum.zyxel.com/discussion/2648/)<br>[Ikev2/IPSec üzerinden BGP](https://businessforum.zyxel.com/discussion/2650/)|
+| ZyXEL |Zyduvar USG serisi<br>Zyduvaratp serisi<br>Zyduvarvpn serisi | ZLD v 4.32 + | (sınanmamıştır) | [Ikev2/IPSec üzerinden VTı](https://businessforum.zyxel.com/discussion/2648/)<br><br>[Ikev2/IPSec üzerinden BGP](https://businessforum.zyxel.com/discussion/2650/)|
 
 > [!NOTE]
 >

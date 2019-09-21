@@ -1,5 +1,5 @@
 ---
-title: 'Özellik karma: Modül başvurusu'
+title: Özellik karma modülü başvurusu
 titleSuffix: Azure Machine Learning service
 description: Metin verilerini kullanmak için Azure Machine Learning hizmetinde Özellik karma modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
@@ -9,53 +9,53 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 78d01cf071faed312773ebf12c75e7e6e5596e71
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: bbcab6e94783583c7e13ae482d68fd013ba4c91d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210851"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170882"
 ---
-# <a name="feature-hashing"></a>Özellik karma
+# <a name="feature-hashing-module-reference"></a>Özellik karma modülü başvurusu
 
 Bu makalede Azure Machine Learning hizmeti için görsel arabirim (Önizleme) modülü açıklanır.
 
-Ingilizce metin akışını bir tamsayı özellikleri kümesine dönüştürmek için **özellik karma** modülünü kullanın. Daha sonra bu karma özellik kümesini bir makine öğrenimi algoritmasına geçirebilirsiniz ve bir metin analizi modelini eğitebilirsiniz.
+Ingilizce metin akışını bir tamsayı özellikleri kümesine dönüştürmek için özellik karma modülünü kullanın. Daha sonra bu karma özellik kümesini bir makine öğrenimi algoritmasına geçirebilirsiniz ve bir metin analizi modelini eğitebilirsiniz.
 
 Bu modülde sunulan özellik karma işlevselliği nimbusml çerçevesini temel alır. Daha fazla bilgi için bkz. [Ngramhash sınıfı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
 
-## <a name="what-is-feature-hashing"></a>Özellik karma nedir
+## <a name="what-is-feature-hashing"></a>Özellik karma nedir?
 
 Özellik karması, benzersiz belirteçleri tamsayılara dönüştürerek işe yarar. Giriş olarak sağladığınız tam dizeler üzerinde çalışır ve herhangi bir dil analizi veya ön işleme gerçekleştirmez. 
 
 Örneğin, bunlar gibi bir basit tümceler ve ardından bir yaklaşım puanı alın. Bir model oluşturmak için bu metni kullanmak istediğinizi varsayın.
 
-|KULLANICI METNI|YAKLAŞIM|
+|Kullanıcı metni|Yaklaşım|
 |--------------|---------------|
 |Bu kitabı sevdim|3|
 |Bu kitabı aldım|1\.|
 |Bu kitap harika|3|
 |Sevdiğim kitaplar|2|
 
-Dahili olarak, **özellik karma** modülü n-gram sözlüğü oluşturur. Örneğin, bu veri kümesi için bigram listesi şuna benzer olacaktır:
+Dahili olarak, özellik karma modülü n-gram sözlüğü oluşturur. Örneğin, bu veri kümesi için bigram listesi şuna benzer olacaktır:
 
-|TERIM (bigram)|LEMIYOR|
+|Terim (bigram)|Sıklık|
 |------------|---------------|
 |Bu kitap|3|
 |Sevdim|1\.|
 |Ben|1\.|
 |Sevdiğim|1\.|
 
-N-gram özelliğini kullanarak n-gram boyutunu kontrol edebilirsiniz. Bigram seçerseniz, tek tek gram da hesaplanır. Sözlük aşağıdaki gibi tek terimleri de içerir:
+N **-gram özelliğini kullanarak** n-gram boyutunu kontrol edebilirsiniz. Bigram seçerseniz, tek tek gram da hesaplanır. Sözlük aşağıdaki gibi tek terimleri de içerir:
 
-|Terim (tek gram)|LEMIYOR|
+|Terim (tek gram)|Sıklık|
 |------------|---------------|
 |Kitabın|3|
 |I|3|
-|kitap|1\.|
+|Kitap|1\.|
 |sayfası|1\.|
 
-Sözlük derlendikten sonra, **özellik karma** modülü sözlük koşullarını karma değerlerine dönüştürür. Daha sonra her durumda bir özelliğin kullanılıp kullanılmadığını hesaplar. Her metin verisi satırı için, modül bir sütun kümesi, her karma özellik için bir sütun verir.
+Sözlük derlendikten sonra, özellik karma modülü sözlük koşullarını karma değerlerine dönüştürür. Daha sonra her durumda bir özelliğin kullanılıp kullanılmadığını hesaplar. Her metin verisi satırı için, modül bir sütun kümesi, her karma özellik için bir sütun verir.
 
 Örneğin, karma olduktan sonra Özellik sütunları şuna benzeyebilir:
 
@@ -67,30 +67,30 @@ Sözlük derlendikten sonra, **özellik karma** modülü sözlük koşullarını
 * Sütundaki değer 0 ise, satır karma özelliği içermiyordu.
 * Değer 1 ise, satır özelliği içerir.
 
-Özellik karması, değişken uzunluklu metin belgelerini, eşit uzunlukta bir boyut azaltma elde etmek için eşit uzunlukta bir sayısal Özellik vektörü olarak temsil etmenizi sağlar. Eğitim için metin sütununu olduğu gibi kullanmaya çalıştıysanız, çok sayıda farklı değer içeren kategorik özellik sütunu olarak kabul edilir.
+Özellik karması, boyut boyutunu azaltmak için değişken uzunluktaki metin belgelerinin eşit uzunlukta sayısal Özellik vektörleri olarak temsil etmenize olanak tanır. Eğitim için metin sütununu olduğu gibi kullanmaya çalıştıysanız, çok sayıda farklı değer içeren kategorik özellik sütunu olarak kabul edilir.
 
-Sayısal çıktılar Ayrıca sınıflandırma, kümeleme ve bilgi alma gibi yaygın makine öğrenimi yöntemlerini kullanmayı mümkün kılar. Arama işlemleri dize karşılaştırmaları yerine tamsayı karmaları kullanabileceğinden, özellik ağırlıklarını elde etmek de çok daha hızlıdır.
+Sayısal çıktılar Ayrıca sınıflandırma, kümeleme ve bilgi alma dahil olmak üzere ortak makine öğrenimi yöntemlerini kullanmayı mümkün kılar. Arama işlemleri dize karşılaştırmaları yerine tamsayı karmaları kullanabileceğinden, özellik ağırlıklarını elde etmek de çok daha hızlıdır.
 
-## <a name="configure-feature-hashing"></a>Özellik karma Yapılandırma
+## <a name="configure-the-feature-hashing-module"></a>Özellik karma modülünü yapılandırma
 
-1.  Visual Interface 'deki denemenize **özellik karma** modülünü ekleyin.
+1.  Bir görsel arabirimde Özellik karma modülünü denemenize ekleyin.
 
 1. Çözümlemek istediğiniz metni içeren veri kümesini bağlayın.
 
     > [!TIP]
-    > Özelliği karma hale getirmek veya kesilme gibi sözcük temelli işlemler gerçekleştirmediğinden, özellik karmacının uygulamadan önce metin ön işlemesi yaparak bazen daha iyi sonuçlar elde edebilirsiniz. 
+    > Özelliği karma hale getirmek veya kesilme gibi sözcük temelli işlemler gerçekleştirmediğinden, özellik karmakarmasını uygulamadan önce metin ön işlemden yararlanarak bazen daha iyi sonuçlar elde edebilirsiniz. 
 
-1. **Hedef sütunları** karma özelliklerine dönüştürmek istediğiniz metin sütunlarına ayarlayın. 
+1. **Hedef sütunları** karma özelliklerine dönüştürmek istediğiniz metin sütunlarına ayarlayın. Şunları göz önünde bulundurun:
 
     * Sütunlar dize veri türü olmalıdır.
     
-    * Birden çok metin sütununun seçilmesi Özellik boyutalliği üzerinde önemli bir etkiye sahip olabilir. Örneğin, 10 bitlik bir karma için sütun sayısı, iki sütun için tek bir sütun 1024 ' den 2048 ' e gider.
+    * Birden çok metin sütununun seçilmesi Özellik boyutalliği üzerinde önemli bir etkiye sahip olabilir. Örneğin, 10 bitlik bir karma için sütun sayısı, iki sütun için tek bir sütun 1.024 ' den 2.048 ' e gider.
 
 1. Karma tablo oluştururken kullanılacak bit sayısını belirtmek için **karma bit boyutunu** kullanın.
     
-    Varsayılan bit boyutu 10 ' dur. Birçok sorun için bu değer yeterlidir. Eğitim metni n-gram sözlüğü boyutuna bağlı olarak çarpışmalardan kaçınmak için daha fazla alana ihtiyacınız olabilir.
+    Varsayılan bit boyutu 10 ' dur. Birçok sorun için bu değer yeterlidir. Eğitim metnindeki n gram sözlüğü boyutuna bağlı olarak çarpışmalardan kaçınmak için daha fazla alana ihtiyacınız bulunabilir.
     
-1. **N-gram**için, eğitim sözlüğüne eklemek üzere en fazla n gram uzunluğunu tanımlayan bir sayı yazın. N-gram, benzersiz birim olarak kabul edilen *n* sözcükten oluşan bir dizidir.
+1. **N-gram**için, eğitim sözlüğüne eklemek üzere en fazla n gram uzunluğunu tanımlayan bir sayı girin. N-gram, benzersiz birim olarak kabul edilen *n* sözcükten oluşan bir dizidir.
 
     Örneğin, 3, unigram, bigram ve trigram girerseniz.
 
@@ -98,7 +98,7 @@ Sayısal çıktılar Ayrıca sınıflandırma, kümeleme ve bilgi alma gibi yayg
 
 ## <a name="results"></a>Sonuçlar
 
-İşlem tamamlandıktan sonra modül, özgün metin sütununun, her biri metindeki bir özelliği temsil eden birden çok sütuna dönüştürüldüğü dönüştürülmüş bir veri kümesi verir. Sözlüğün ne kadar önemli olduğuna bağlı olarak, elde edilen veri kümesi büyük olabilir:
+İşlem tamamlandıktan sonra modül, özgün metin sütununun birden çok sütuna dönüştürüldüğü dönüştürülmüş bir veri kümesini çıktı. Her sütun metindeki bir özelliği temsil eder. Sözlüğün ne kadar önemli olduğuna bağlı olarak, elde edilen veri kümesi büyük olabilir:
 
 |Sütun adı 1|Sütun türü 2|
 |-------------------|-------------------|
@@ -113,21 +113,21 @@ Dönüştürülmüş veri kümesini oluşturduktan sonra, bunu eğitme modeli mo
  
 ### <a name="best-practices"></a>En iyi uygulamalar
 
-Aşağıdaki en iyi yöntemler, **özellik karma** modülünden en iyi şekilde yararlanmanıza yardımcı olabilir:
+Aşağıdaki en iyi yöntemler, özellik karma modülünden en iyi şekilde yararlanmanıza yardımcı olabilir:
 
-* Giriş metnini önceden işlemek için **özellik karma özelliğini** kullanmadan önce bir **ön işlem metin** modülü ekleyin. 
+* Giriş metnini önceden işlemek için özellik karma özelliğini kullanmadan önce bir ön Işlem metin modülü ekleyin. 
 
-* Metin sütunlarını çıkış veri kümesinden kaldırmak için **özellik karma** modülünden sonra **sütun seçme** modülü ekleyin. Karma Özellikler oluşturulduktan sonra metin sütunlarına gerek yoktur.
+* Metin sütunlarını çıkış veri kümesinden kaldırmak için özellik karma modülünden sonra bir sütun seçme modülü ekleyin. Karma Özellikler oluşturulduktan sonra metin sütunlarına gerek yoktur.
     
 * Sonuçları basitleştirmek ve doğruluğu artırmak için bu metin ön işleme seçeneklerini kullanmayı göz önünde bulundurun:
 
     * Sözcük bölme
-    * Word kaldırmayı durdur
+    * Word kaldırma durduruluyor
     * Örnek olay normalleştirme
     * Noktalama işaretleri ve özel karakterlerin kaldırılması
     * Kesintilerinden kaynaklanan  
 
-Herhangi bir çözümde uygulanacak en uygun ön işleme yöntemleri, etki alanı, sözlük ve iş gereksinimlerinize bağlıdır. Hangi metin işleme yöntemlerinin en etkili olduğunu görmek için verilerinize denemeler yapın.
+Herhangi bir çözümde uygulanacak en uygun ön işleme yöntemi kümesi, etki alanı, sözlük ve iş gereksinimlerinize bağlıdır. Hangi metin işleme yöntemlerinin en etkili olduğunu görmek için verilerinize denemeler yapın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
             

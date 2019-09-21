@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086254"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171190"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama bağlamaları
 
@@ -529,7 +529,7 @@ Tablo depolama girişi bağlama, aşağıdaki senaryoları destekler:
 
 * **JavaScript 'te bir veya daha fazla satırı okuma**
 
-  `filter` Ve`take` özelliklerini ayarlayın. `partitionKey` Veya`rowKey`ayarlama. Kullanarak `context.bindings.<name>`giriş tablosu varlığına (veya varlıklara) erişin. Seri durumdan çıkarılan nesneler `RowKey` ve `PartitionKey` özellikleri.
+  `filter` Ve`take` özelliklerini ayarlayın. `partitionKey` Veya`rowKey`ayarlama. Kullanarak `context.bindings.<BINDING_NAME>`giriş tablosu varlığına (veya varlıklara) erişin. Seri durumdan çıkarılan nesneler `RowKey` ve `PartitionKey` özellikleri.
 
 ## <a name="output"></a>Output
 
@@ -786,7 +786,7 @@ Tablo depolama çıkış bağlaması aşağıdaki senaryoları destekler:
 
 * **JavaScript 'te bir veya daha fazla satır yazma**
 
-  JavaScript işlevleri ' nde, kullanarak `context.bindings.<name>`tablo çıktısına erişin.
+  JavaScript işlevleri ' nde, kullanarak `context.bindings.<BINDING_NAME>`tablo çıktısına erişin.
 
 ## <a name="exceptions-and-return-codes"></a>Özel durumlar ve dönüş kodları
 

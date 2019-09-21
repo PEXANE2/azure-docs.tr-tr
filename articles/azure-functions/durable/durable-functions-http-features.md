@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b909918ff4f9abc1dd64d4c7e5ccb35954b233f7
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 5a9143643b1a1cabb32903933dbd68d665d0424f
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935800"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171133"
 ---
 # <a name="http-features"></a>HTTP özellikleri
 
@@ -205,7 +205,7 @@ HTTP API 'Lerini çağırmaya yönelik yerleşik destek, kullanışlı bir özel
 Bu sınırlamaların herhangi biri kullanım durumunu etkileyebileceğinden, giden HTTP çağrıları yapmak için etkinlik işlevlerini ve dile özgü HTTP istemci kitaplıklarını kullanmayı göz önünde bulundurun.
 
 > [!NOTE]
-> .Net geliştiricisiyseniz, bu özelliğin `DurableHttpRequest` neden yerleşik .net `HttpRequestMessage` ve `DurableHttpResponse` `HttpResponseMessage`türlerini kullandığını merak ediyor olabilirsiniz. Bu tasarım seçeneği bilerek yapıldı. Birincil neden, özel bir türlerin, kullanıcıların iç HTTP istemcisinin desteklenen davranışları hakkında yanlış varsayımlar yapmasının sağlanmasına yardımcı olur. Dayanıklı özel türler Ayrıca API tasarımını basitleştirecek ve [yönetilen kimlik tümleştirmesi](#managed-identities) ve [yoklama tüketicisi](#http-202-handling)gibi özel özellikleri daha kolay bir şekilde kolaylaştırabilmesini sağlar.
+> .Net geliştiricisiyseniz, bu özelliğin `DurableHttpRequest` neden yerleşik .net `HttpRequestMessage` ve `DurableHttpResponse` `HttpResponseMessage`türlerini kullandığını merak ediyor olabilirsiniz. Bu tasarım seçeneği bilerek yapıldı. Birincil neden, özel türlerin, kullanıcıların iç HTTP istemcisinin desteklenen davranışları hakkında yanlış varsayımlar olmamasını sağlamaya yardımcı olur. Dayanıklı özel türler Ayrıca API tasarımını basitleştirecek ve [yönetilen kimlik tümleştirmesi](#managed-identities) ve [yoklama tüketicisi](#http-202-handling)gibi özel özellikleri daha kolay bir şekilde kolaylaştırabilmesini sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

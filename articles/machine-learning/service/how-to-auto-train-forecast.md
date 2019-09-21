@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 5339d963b84c5922138d53e44abe9340d55b4dde
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 03c5d46221dc385a390e840381270c01c40bdc6d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130241"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170396"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
@@ -95,8 +95,10 @@ Tahmin görevleri için otomatik makine öğrenimi, zaman serisi verilerine özg
 |`time_column_name`|Zaman serisini oluşturmak ve sıklığını göstermek için kullanılan giriş verilerinde tarih saat sütununu belirtmek için kullanılır.|✓|
 |`grain_column_names`|Giriş verilerinde ayrı seri gruplarını tanımlayan ad (ler). Gren tanımlanmazsa, veri kümesinin bir adet zaman serisi olduğu varsayılır.||
 |`max_horizon`|Süre serisi sıklığında, istenen maksimum tahmin ufuk kapsamını tanımlar. Birimler, eğitim verilerinizin zaman aralığına göre hesaplanır. Örneğin, aylık, haftalık, öngörülebilir bir şekilde tahmin etmelidir.|✓|
-|`target_lags`|Hedef değerleri, verilerin sıklığından sonra gecikme olacak satır sayısı. Bu bir liste veya tek tamsayı olarak temsil edilir.||
-|`target_rolling_window_size`|tahmin edilen değerler oluşturmak için *kullanılacak geçmiş dönem* < = eğitim kümesi boyutu. Atlanırsa, *n* tam eğitim kümesi boyutudur.||
+|`target_lags`|Hedef değerleri, verilerin sıklığından sonra gecikme olacak satır sayısı. Bu bir liste veya tek tamsayı olarak temsil edilir. Bağımsız değişkenler ve bağımlı değişken arasındaki ilişki, varsayılan olarak eşleşmediğinden veya ilişkilendiribir şekilde eşleşmediği zaman, gecikme kullanılmalıdır. Örneğin, bir ürün için talebi tahmin edilmeye çalışırken, herhangi bir ay içindeki talep, önceki Commodities 3 ayın fiyatına göre değişebilir. Bu örnekte, modelin doğru ilişki üzerinde eğitim olması için hedefi (istek), 3 aya kadar bir süre sonra gecikme yapmak isteyebilirsiniz.||
+|`target_rolling_window_size`|tahmin edilen değerler oluşturmak için *kullanılacak geçmiş dönem* < = eğitim kümesi boyutu. Atlanırsa, *n* tam eğitim kümesi boyutudur. Modele eğitim yaparken yalnızca belirli bir geçmişi düşünmek istediğinizde bu parametreyi belirtin.||
+
+Daha fazla bilgi için [başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) bakın.
 
 Zaman serisi ayarlarını sözlük nesnesi olarak oluşturun. Öğesini veri kümesindeki alana ayarlayın. `day_datetime` `time_column_name` Veriler için **iki ayrı zaman serisi grubunun** oluşturulduğundan emin olmak için `max_horizon` parametresinitanımlayın;birdiğerimağazaAveB.sonolarak,tümtestkümesinintahminedilmesiiçinbunu50olarakayarlayın.`grain_column_names` Bir tahmin penceresini ile `target_rolling_window_size`10 döneme ayarlayın ve `target_lags` parametresi ile birlikte 2 dönemdeki hedef değerlerde tek bir gecikme süresi belirtin.
 

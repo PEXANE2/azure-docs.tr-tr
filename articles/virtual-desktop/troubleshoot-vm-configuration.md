@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 08/29/2019
+ms.date: 09/20/2019
 ms.author: helohr
-ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f919ff1efcb094dec4c810f51a1810f2383ea09d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163309"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71174094"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
 
@@ -296,17 +296,76 @@ Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki 
 
 16. Cmdlet 'ler çalışmayı tamamladıktan sonra, arızalı yan yana yığın ile sanal makineyi yeniden başlatın.
 
-## <a name="remote-licensing-model-is-not-configured"></a>Uzaktan lisanslama modeli yapılandırılmadı
+## <a name="remote-licensing-model-isnt-configured"></a>Uzaktan lisanslama modeli yapılandırılmadı
 
-Bir yönetici hesabı kullanarak Windows 10 Enterprise çoklu oturumunda oturum açarsanız, "Uzak Masaüstü lisans modu yapılandırılmadı, Uzak Masaüstü Hizmetleri X gün içinde çalışmayı durduracaktır. Bağlantı Aracısı sunucusunda, Uzak Masaüstü lisans modunu belirtmek için Sunucu Yöneticisi kullanın. " Bu iletiyi görürseniz, bu, lisans modunu **Kullanıcı başına**el ile yapılandırmanız gerektiği anlamına gelir.
+Bir yönetici hesabı kullanarak Windows 10 Enterprise çoklu oturumunda oturum açarsanız, "Uzak Masaüstü lisans modu yapılandırılmadı, Uzak Masaüstü Hizmetleri X gün içinde çalışmayı durduracaktır. Bağlantı Aracısı sunucusunda, Uzak Masaüstü lisans modunu belirtmek için Sunucu Yöneticisi kullanın. "
 
-Lisanslama modunu el ile yapılandırmak için:  
+Zaman sınırının süresi dolarsa, "Bu bilgisayar için kullanılabilir uzak masaüstü istemci erişim lisansı olmadığından uzak oturumun bağlantısı kesildi." ifadesini içeren bir hata iletisi görüntülenir.
 
-1. **Başlangıç menüsü** arama kutusuna gidip yerel Grup İlkesi düzenleyicisine erişmek için **gpedit. msc** dosyasını bulup açın. 
-2.  > **Windows bileşenleri** ****  > Uzak Masaüstü Hizmetleri Yönetim ŞablonlarıBilgisayarYapılandırması'nagidinUzakMasaüstüoturumuanabilgisayarı >  >  >  **Lisanslama**. 
-3. **Uzak Masaüstü lisans modunu ayarla** ' yı seçin ve **Kullanıcı başına**olarak değiştirin.
+Bu iletilerden birini görürseniz, bu, grup ilkesi düzenleyiciyi açmanız ve lisanslama modunu **Kullanıcı başına**el ile yapılandırmanız gerektiği anlamına gelir. El ile yapılandırma işlemi, kullanmakta olduğunuz Windows 10 Enterprise çoklu oturumunun sürümüne bağlı olarak farklılık gösteren bir işlemdir. Aşağıdaki bölümlerde sürüm numaranızı nasıl denetleyen ve her biri için ne yapabileceğiniz açıklanmaktadır.
 
-Şu anda bildirim ve yetkisiz kullanım süresi zaman aşımı sorunlarını bakıyoruz ve gelecekteki bir güncelleştirmede ele almak için plan yapıyoruz. 
+>[!NOTE]
+>Windows sanal masaüstü, ana bilgisayar havuzunuz Windows Server oturum Konakları içerdiğinde yalnızca bir RDS istemci erişim lisansı (CAL) gerektirir. Bir RDS CAL yapılandırma hakkında bilgi edinmek için bkz. [istemci erişim lisanslarıyla RDS dağıtımınıza lisans](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+
+### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Hangi Windows 10 Kurumsal Çoklu oturum sürümünü kullandığınızı tanımla
+
+Hangi Windows 10 Kurumsal Çoklu oturum sürümünü olduğunu denetlemek için:
+
+1. Yönetici hesabınızla oturum açın.
+2. Başlangıç menüsünün yanındaki arama çubuğuna "About" yazın.
+3. **PC 'Niz hakkında**' yı seçin.
+4. "Sürüm" nın yanındaki numarayı denetleyin. Aşağıdaki görüntüde gösterildiği gibi, sayı "1809" ya da "1903" olmalıdır.
+   
+    ![Windows belirtimleri penceresinin ekran görüntüsü. Sürüm numarası mavi renkle vurgulanır.](media/windows-specifications.png)
+
+Artık sürüm numaranızı bildiğinize göre ilgili bölüme atlayın.
+
+### <a name="version-1809"></a>Sürüm 1809
+
+Sürüm numaranız "1809" diyor ise, Windows 10 Enterprise multi-session, sürüm 1903 ' ye yükseltebilirsiniz veya konak havuzunu en son görüntüyle yeniden dağıtabilirsiniz.
+
+Windows 10, sürüm 1903 ' e yükseltmek için:
+
+1. Henüz yapmadıysanız, [Windows 10 mayıs 2019 güncelleştirme](https://support.microsoft.com/help/4028685/windows-10-get-the-update)'yi indirip yükleyin.
+2. Yönetici hesabınızla bilgisayarınızda oturum açın.
+3. Grup ilkesi düzenleyicisini açmak için **gpedit. msc** dosyasını çalıştırın.
+4. Bilgisayar Yapılandırması altında **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** > Uzak Masaüstü oturumu ana bilgisayarılisanslama > ' e gidin.
+5. **Uzak Masaüstü lisans modunu ayarla**' yı seçin.
+6. Açılan pencerede, önce **etkin**' i seçin, ardından Seçenekler altında, aşağıdaki görüntüde gösterildiği gibi, **Kullanıcı başına**RD Oturumu Ana Bilgisayarı sunucusu için lisans modunu belirtin.
+    
+    ![Adım 6 ' daki yönergelere göre yapılandırılan "Uzak Masaüstü lisans modunu ayarla" penceresinin ekran görüntüsü.](media/group-policy-editor-per-user.png)
+
+7. **Uygula**’yı seçin.
+8. **Tamam**’ı seçin.
+9.  Bilgisayarınızı yeniden başlatın.
+
+Konak havuzunu en son görüntüyle yeniden dağıtmak için:
+
+1. Bir görüntü işletim sistemi sürümü seçmeniz istenene kadar [Azure Marketi 'ni kullanarak bir konak havuzu oluşturma](create-host-pools-azure-marketplace.md) bölümündeki yönergeleri izleyin. Office365 ProPlus ile veya olmayan Windows 10 Enterprise çoklu oturum seçebilirsiniz.
+2. Yönetici hesabınızla bilgisayarınızda oturum açın.
+3. Grup ilkesi düzenleyicisini açmak için **gpedit. msc** dosyasını çalıştırın.
+4. Bilgisayar Yapılandırması altında **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** > Uzak Masaüstü oturumu ana bilgisayarılisanslama > ' e gidin.
+5. **Uzak Masaüstü lisans modunu ayarla**' yı seçin.
+6. Açılan pencerede, önce **etkin**' i seçin, ardından Seçenekler altında **Kullanıcı başına**RD Oturumu Ana Bilgisayarı sunucusu için lisans modunu belirtin.
+7. **Uygula**’yı seçin.
+8. **Tamam**’ı seçin.
+9.  Bilgisayarınızı yeniden başlatın.
+
+### <a name="version-1903"></a>Sürüm 1903
+
+Sürüm numaranız "1903" diyor ise şu yönergeleri izleyin:
+
+1. Yönetici hesabınızla bilgisayarınızda oturum açın.
+2. Grup ilkesi düzenleyicisini açmak için **gpedit. msc** dosyasını çalıştırın.
+3. Bilgisayar Yapılandırması altında **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** > Uzak Masaüstü oturumu ana bilgisayarılisanslama > ' e gidin.
+4. **Uzak Masaüstü lisans modunu ayarla**' yı seçin.
+6. Açılan pencerede, önce **etkin**' i seçin, ardından Seçenekler altında, aşağıdaki görüntüde gösterildiği gibi, **Kullanıcı başına**RD Oturumu Ana Bilgisayarı sunucusu için lisans modunu belirtin.
+    
+    ![Adım 6 ' daki yönergelere göre yapılandırılan "Uzak Masaüstü lisans modunu ayarla" penceresinin ekran görüntüsü.](media/group-policy-editor-per-user.png)
+
+7. **Uygula**’yı seçin.
+8. **Tamam**’ı seçin.
+9.  Bilgisayarınızı yeniden başlatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
