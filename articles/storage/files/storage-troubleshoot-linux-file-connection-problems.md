@@ -269,7 +269,7 @@ Linux istemcisi uzun süre boşta kaldığında istemcide "112" bağlama hatası
 
 Bağlantı aşağıdaki nedenlerle boşta kalabilir:
 
--   Varsayılan "yazılım yoluyla" bağlama seçeneği kullanıldığında sunucuyla yeniden TCP bağlantısı kurulmasını engelleyen ağ iletişim hataları
+-   Varsayılan "geçici" bağlama seçeneği kullanıldığında sunucuyla yeniden TCP bağlantısı kurulmasını engelleyen ağ iletişim hataları
 -   Eski çekirdeklerde bulunmayan son yeniden bağlantı düzeltmeleri
 
 ### <a name="solution"></a>Çözüm
@@ -281,7 +281,7 @@ Linux çekirdeğindeki bu yeniden bağlantı sorunu artık aşağıdaki değişi
 - [CIFS: Yeniden bağlantı sırasındaki olası bellek bozulması düzeltildi](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: Yeniden bağlantı sırasında karşılıklı dışlamanın olası çift kilitlenmesi düzeltildi (çekirdek v4.9 ve üzerinde)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Öte yandan bu değişiklikler henüz tüm Linux dağıtımlarına taşınmamış olabilir. Bu düzeltme ve diğer yeniden bağlantı düzeltmeleri [Azure Dosyalar'ı Linux ile kullanma](storage-how-to-use-files-linux.md) makalesinin [Önerilen en düşük sürümler ve bunlara karşılık gelen bağlama özellikleri (SMB sürüm 2.1 - SMB sürüm 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) bölümünde bulabilirsiniz. Önerilen çekirdek sürümlerinden birine yükselterek bu düzeltmeyi alabilirsiniz.
+Öte yandan bu değişiklikler henüz tüm Linux dağıtımlarına taşınmamış olabilir. Bu düzeltme ve diğer yeniden bağlantı düzeltmelerini [Azure Dosyalar'ı Linux ile kullanma](storage-how-to-use-files-linux.md) makalesinin [Önerilen en düşük sürümler ve bunlara karşılık gelen bağlama özellikleri (SMB sürüm 2.1 - SMB sürüm 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) bölümünde bulabilirsiniz. Önerilen çekirdek sürümlerinden birine yükselterek bu düzeltmeyi alabilirsiniz.
 
 ### <a name="workaround"></a>Geçici Çözüm
 
