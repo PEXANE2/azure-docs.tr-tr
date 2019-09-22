@@ -47,6 +47,7 @@
     - name: SSIS paketlerini Azure SQL Veritabanı yönetilen örneğine geçirme
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Kaynaklar
+  expanded: true
   items:
     - name: Veritabanı geçiş senaryosunun durumu
       href: resource-scenario-status.md
