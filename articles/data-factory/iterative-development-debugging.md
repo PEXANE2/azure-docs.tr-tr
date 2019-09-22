@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: afc51735fcbd8f4131b2a4066a0fc4adbb8f1a41
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142343"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178635"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory ile yinelemeli geliştirme ve hata ayıklama
 
@@ -52,9 +52,13 @@ Veri fabrikanızın sürmekte olan tüm hata ayıklama çalıştırmalarını te
 
 ![Etkin hata ayıklama çalıştırmalarının örnek listesi](media/iterative-development-debugging/view-debug-runs-image2.png)
 
+Etkin veri akışı hata ayıklama oturumlarınız varsa, Bu oturumlar etkin hata ayıklama penceresinin alt kısmında görünür. Etkin bir veri akışı oturumu seçebilir ve ilgili kümeyi durdurabilirsiniz.
+
+![Etkin veri akışı hata ayıklama çalıştırmalarının örnek listesi](media/data-flow/dfsessions.png)
+
 ## <a name="monitoring-debug-runs"></a>Hata ayıklama çalıştırmalarını izleme
 
-**Hata ayıklama** özelliğiyle başlatılan test çalıştırmaları, **izleyici** sekmesindeki listede kullanılamaz. Yalnızca **tetikleyici sekmesinde Tetikle**, **zamanlamaya**veya atlayan **pencere** tetikleyicilerle tetiklenen çalıştırmaları görebilirsiniz. İşlem hattı tuvalinin **Çıkış** penceresinde **hata ayıklama** özelliğiyle başlatılan son test çalıştırmasını görebilirsiniz.
+**Hata ayıklama** özelliğiyle başlatılan test çalıştırmaları, **izleyici** sekmesindeki listede kullanılamaz. Yalnızca **tetikleyici sekmesinde Tetikle** **,** **zamanlamaya**veya atlayan **pencere** tetikleyicilerle tetiklenen çalıştırmaları görebilirsiniz. İşlem hattı tuvalinin **Çıkış** penceresinde **hata ayıklama** özelliğiyle başlatılan son test çalıştırmasını görebilirsiniz.
 
 ## <a name="setting-breakpoints-for-debugging"></a>Hata ayıklama için kesme noktaları ayarlanıyor
 

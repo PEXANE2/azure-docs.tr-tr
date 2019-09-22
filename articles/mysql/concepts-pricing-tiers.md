@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 83581b22389efe5c9c19689e3116b39ea049ccdc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 087a88322175b1908ab591a5b9afb5ae45227bb1
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694195"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177966"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>MySQL için Azure veritabanı fiyatlandırma katmanları
 
@@ -19,7 +19,7 @@ MySQL için Azure veritabanı sunucusu oluşturmak için üç farklı fiyatland�
 
 |    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:---|:----------|:--------------------|:---------------------|
-| İşlem oluşturma | Gen 4, Gen 5 | Gen 4, Gen 5 | 5\. Nesil |
+| İşlem nesli | Gen 4, Gen 5 | Gen 4, Gen 5 | 5\. Nesil |
 | Sanal çekirdekler | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Sanal çekirdek başına bellek | 2 GB | 5 GB | 10 GB |
 | Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 4 TB | 5 GB ila 4 TB |
@@ -83,7 +83,7 @@ Genel Amaçlı ve bellek için Iyileştirilmiş katmanlarımızda depolama sın�
 
 100 GB 'den az kullanılabilir depolama alanı olan sunucular, boş depolama alanı 512 MB 'tan veya sağlanan depolama boyutunun% 5 ' inden küçükse salt okunurdur. 100 GB 'den fazla sağlanmış depolama alanı olan sunucular salt okunurdur ve boş depolama alanı 5 GB 'tan az olduğunda okunabilir olarak işaretlenir.
 
-Örneğin, 110 GB depolama alanı sağladıysanız ve gerçek kullanım 105 GB 'den fazla olursa sunucu salt okunurdur olarak işaretlenir. Alternatif olarak, 5 GB depolama alanı sağladıysanız, ücretsiz depolama 512 MB 'tan az kaldığında sunucu salt okunurdur olarak işaretlenir.
+Örneğin, 110 GB depolama alanı sağladıysanız ve gerçek kullanım 105 GB 'den fazla olursa sunucu salt okunurdur olarak işaretlenir. Alternatif olarak, 5 GB depolama alanı sağladıysanız, ücretsiz depolama 256 MB 'tan az kaldığında sunucu salt okunurdur olarak işaretlenir.
 
 Hizmet sunucuyu salt okunur duruma getirdiğinde tüm yeni yazma işlemi istekleri engellenir ve var olan etkin işlemler yürütülmeye devam eder. Sunucu salt okunur olarak ayarlandığında sonraki tüm yazma girişimleri ve işlemler başarısız olur. Okuma sorguları kesintisiz olarak çalışmaya devam eder. Sağlanan depolama alanını artırdıktan sonra sunucu yazma işlemlerini kabul etmeye hazır hale gelir.
 
@@ -91,13 +91,13 @@ Depolama otomatik büyümesini etkinleştirmenizi veya sunucu depoağınızın e
 
 ### <a name="storage-auto-grow"></a>Depolama otomatik büyüme
 
-Depolama otomatik büyüme, sunucunuzun depolama dışı ve Salt okunabilir hale gelmesine engel olur. Depolama otomatik büyüme etkinleştirilirse, depolama alanı, iş yükünü etkilemeden otomatik olarak büyür. 100 GB 'den az kullanılabilir depolama alanı olan sunucularda, ücretsiz depolama alanı sağlanan depolamanın en fazla 1 GB veya% 10 ' u altına düşdükten sonra sağlanan depolama boyutu 5 GB ile artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun% 5 ' inden az olduğunda sağlanan depolama boyutu% 5 oranında artar. Yukarıda belirtilen en fazla depolama sınırı geçerlidir.
+Depolama otomatik büyüme, sunucunuzun depolama dışı ve Salt okunabilir hale gelmesine engel olur. Depolama otomatik büyüme etkinleştirilirse, depolama alanı, iş yükünü etkilemeden otomatik olarak büyür. 100 GB 'den az kullanılabilir depolama alanı olan sunucularda, boş depolama sağlanan depolamanın% 10 ' u altındaysa, sağlanan depolama boyutu 5 GB ile artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun% 10 ' u altındaysa, sağlanan depolama boyutu% 5 oranında artar. Yukarıda belirtilen en fazla depolama sınırı geçerlidir.
 
-Örneğin, 1000 GB depolama alanı sağladıysanız ve gerçek kullanım 950 GB 'den fazla olursa, sunucu depolama boyutu 1050 GB 'a yükseltilir. Alternatif olarak, 10 GB depolama alanı sağladıysanız, 1 GB 'tan az depolama alanı boş olduğunda depolama boyutu 15 GB 'a artar.
+Örneğin, 1000 GB depolama alanı sağladıysanız ve gerçek kullanım 900 GB 'den fazla olursa, sunucu depolama boyutu 1050 GB 'a yükseltilir. Alternatif olarak, 10 GB depolama alanı sağladıysanız, 1 GB 'tan az depolama alanı boş olduğunda depolama boyutu 15 GB 'a artar.
 
 Depolamanın yalnızca yukarı ölçeklenebileceğinden, aşağı doğru ölçeklenemediğini unutmayın.
 
-## <a name="backup"></a>Yedekle
+## <a name="backup"></a>Yedekleme
 
 Hizmet, sunucunuzun yedeklerini otomatik olarak alır. Yedeklemeler için en düşük saklama süresi yedi gündür. 35 güne kadar bir bekletme dönemi belirleyebilirsiniz. Bekletme, sunucunun kullanım ömrü boyunca herhangi bir noktada ayarlanabilir. Yerel olarak yedekli ve coğrafi olarak yedekli yedeklemeler arasından seçim yapabilirsiniz. Coğrafi olarak yedekli yedeklemeler, sunucunuzun oluşturulduğu bölgenin [coğrafi eşlenmiş bölgesinde](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) da depolanır. Bu artıklık, bir olağanüstü durum durumunda bir koruma düzeyi sağlar. Ayrıca, aynı zamanda sunucunuzu, coğrafi olarak yedekli yedeklemelerle kullanılabilir olan diğer Azure bölgelerine geri yükleme imkanına sahip olursunuz. Sunucu oluşturulduktan sonra iki yedekleme depolama seçeneği arasında değişiklik yapmak mümkün değildir.
 
@@ -117,4 +117,4 @@ En güncel fiyatlandırma bilgileri için bkz. hizmet [fiyatlandırma sayfası](
 
 - [Portalda MySQL sunucusu oluşturmayı](howto-create-manage-server-portal.md)öğrenin.
 - [Hizmet limitleri](concepts-limits.md)hakkında bilgi edinin.
-- [Okuma çoğaltmalarıyla](howto-read-replicas-portal.md)nasıl ölçeklenebileceğinizi öğrenin.
+- [Okuma çoğaltmalarıyla nasıl ölçeklenebileceğinizi](howto-read-replicas-portal.md)öğrenin.

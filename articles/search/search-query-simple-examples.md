@@ -1,33 +1,35 @@
 ---
-title: "\"Basit\" arama sözdizimini kullanarak örnekleri sorgulama-Azure Search"
-description: Tam metin arama, filtre arama, coğrafi arama, çok yönlü arama ve bir Azure Search dizinini sorgulamak için kullanılan diğer sorgu dizeleri için basit sorgu örnekleri.
+title: Basit sorgu oluşturma-Azure Search
+description: Tam metin araması, filtre arama, coğrafi arama ve çok yönlü arama için Azure Search bir dizinde basit söz dizimi temelinde sorgu çalıştırarak örnek olarak bilgi edinin.
 author: HeidiSteen
 manager: nitinme
 tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: df84686e512db90351d5a9815706890bce49848b
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 7c4aeef07d34159e01f188effae77926895e2857
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647629"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179200"
 ---
-# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Azure Search içinde "basit" arama sözdizimini kullanarak örnekleri sorgulama
+# <a name="create-a-simple-query-in-azure-search"></a>Azure Search basit sorgu oluşturma
 
-[Basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) , bir Azure Search dizinine karşı tam metin arama sorguları yürütmek için varsayılan sorgu ayrıştırıcısını çağırır. Basit Sorgu Çözümleyicisi hızlıdır ve tam metin araması, filtrelenmiş ve çok yönlü arama ve coğrafi arama dahil olmak üzere Azure Search genel senaryoları işler. Bu makalede, basit sözdizimi kullanılırken kullanılabilir sorgu işlemlerini gösteren örneklerde gezinin.
+Azure Search, [basit sorgu söz dizimi](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) bir dizine karşı tam metin arama sorguları yürütmek için varsayılan sorgu ayrıştırıcısını çağırır. Bu ayrıştırıcı hızlıdır ve tam metin araması, filtrelenmiş ve çok yönlü arama ve coğrafi arama gibi yaygın senaryoları işler. 
 
-Alternatif sorgu söz dizimi, [](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)belirsiz ve joker karakter arama gibi daha karmaşık sorgu yapılarını destekleyerek, daha fazla işlem yapmak için daha fazla zaman alabilir. Tam sözdizimini gösteren daha fazla bilgi ve örnekler için bkz. [Lucene sözdizimi sorgu örnekleri](search-query-lucene-examples.md).
+Bu makalede, basit sözdizimini göstermek için örnekleri kullanırız.
+
+Alternatif sorgu söz dizimi, belirsiz ve joker karakter araması gibi daha karmaşık sorgu yapılarını destekleyerek, işlemek için ek süre sürebilen [tam Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)' dir. Tam sözdizimini gösteren daha fazla bilgi ve örnekler için bkz. [tam Lucene sözdizimini kullanma](search-query-lucene-examples.md).
 
 ## <a name="formulate-requests-in-postman"></a>İstekleri Postman 'da formülleştirmek
 
 Aşağıdaki örnekler, [New York OpenData girişiminin City](https://nycopendata.socrata.com/) tarafından sağlanan bir veri kümesine dayalı olarak bulunan işleri içeren bir NYC işleri arama dizininden yararlanır. Bu verilerin geçerli veya tamamlanmış olarak kabul edilmemelidir. Dizin, Microsoft tarafından sağlanmış bir korumalı alan hizmetidir ve bu sorguları denemek için bir Azure aboneliğine gerek duymayın veya Azure Search.
 
-Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bir araçtır. Daha fazla bilgi için bkz. [rest Istemcilerinde araştırma](search-get-started-postman.md).
+Ne yapmanız gerekir Postman veya GET 'te HTTP isteği vermek için eşdeğer bir araçtır. Daha fazla bilgi için bkz [. hızlı başlangıç: Postman](search-get-started-postman.md)kullanarak Azure Search REST API araştırın.
 
 ### <a name="set-the-request-header"></a>İstek üst bilgisini ayarlama
 

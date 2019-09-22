@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: da9ab6eef98a602635e5e92dca3bd5628846ce62
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3140aff93c9afcf9a911fe1f381859ff93efef14
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036343"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178362"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -215,6 +215,7 @@ Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir
 |East US        |LRS     |Hayır    |Henüz değil|
 |Fransa Orta |LRS, ZRS|Hayır    |LRS-Evet, ZRS-henüz değil|
 |Fransa Güney   |LRS     |Hayır    |Evet|
+|Kuzey Avrupa   |LRS     |Hayır    |Evet|
 |Güney Hindistan    |LRS     |Hayır    |Henüz değil|
 |Güneydoğu Asya |LRS, ZRS|Hayır    |Evet|
 |Batı Orta ABD|LRS     |Hayır    |Henüz değil|

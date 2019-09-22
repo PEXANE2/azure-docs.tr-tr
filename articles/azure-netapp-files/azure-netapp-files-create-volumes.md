@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 7/9/2019
 ms.author: b-juche
-ms.openlocfilehash: 06733103980086fad0975514ae3489c3652e428a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 45164acd89fc9634d6929bafb35e64a5dc9f2b86
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846735"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178228"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
 
@@ -44,7 +44,9 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     * **Birim adı**      
         Oluşturmakta olduğunuz birim için ad belirtin.   
 
-        Birim adı her bir kapasite havuzu içinde benzersiz olmalıdır. En az üç karakter uzunluğunda olmalıdır. Herhangi bir alfasayısal karakter kullanabilirsiniz.
+        Birim adı her bir kapasite havuzu içinde benzersiz olmalıdır. En az üç karakter uzunluğunda olmalıdır. Herhangi bir alfasayısal karakter kullanabilirsiniz.   
+
+        Birim adı olarak `default` kullanamazsınız.
 
     * **Kapasite havuzu**  
         Birimin oluşturulmasını istediğiniz kapasite havuzunu belirtin.
@@ -65,7 +67,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
         
         Bir alt ağ temsilcisi yoksa, birim oluştur sayfasında **Yeni oluştur** ' a tıklayabilirsiniz. Sonra alt ağ oluştur sayfasında alt ağ bilgilerini belirtin ve alt ağın Azure NetApp Files için temsilci olarak **Microsoft. NetApp/birimler** ' i seçin. Her VNET 'te Azure NetApp Files için yalnızca bir alt ağ atanabilir.   
  
-        ![Birim oluşturun](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Birim oluştur](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Alt ağ oluşturma](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 

@@ -1,33 +1,30 @@
 ---
-title: Azure portal Azure Search verileri sorgulamak için arama Gezgini aracı
-description: Azure Search dizinleri sorgulamak için arama Gezgini gibi Azure portal araçları kullanın. Gelişmiş sözdizimi ile arama terimleri veya tam nitelikli arama dizeleri girin.
+title: Azure portal Azure Search verileri sorgulamak için arama Gezgini aracını kullanma
+description: Arama Gezgini Azure portal yerleşik olarak bulunur, içeriği keşfetmek ve Azure Search sorguları doğrulamak için kullanışlıdır. Terim veya tümcecik araması için dizeler veya gelişmiş sözdizimi ile tam nitelikli arama ifadeleri girin.
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649961"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178144"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Azure Search verileri sorgulamak için arama Gezgini 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>Azure Search belge sorgulamak için Azure portal arama Gezgini 'ni kullanın 
 
-Bu makalede, Azure portal **Arama Gezgini** 'ni kullanarak mevcut bir Azure Search dizininin nasıl sorgulanyapılacağı gösterilir. Hizmetinizdeki mevcut herhangi bir dizine basit veya tam Lucene Sorgu dizelerini göndermek için arama Gezgini ' ni kullanabilirsiniz. 
+Bu makalede, Azure portal **Arama Gezgini** 'ni kullanarak mevcut bir Azure Search dizininin nasıl sorgulanyapılacağı gösterilir. Hizmetinizdeki mevcut herhangi bir dizine basit veya tam Lucene sorgu ifadeleri göndermek için komut çubuğundan arama Gezgini 'ni başlatabilirsiniz. 
 
    ![Portalda gezgin komutu ara](./media/search-explorer/search-explorer-cmd2.png "Portalda gezgin komutu ara")
 
-
-Başlarken yardım için bkz. [arama Gezginini başlatma](#start-search-explorer).
-
 ## <a name="basic-search-strings"></a>Temel arama dizeleri
 
-Aşağıdaki örneklerde yerleşik reatastate örnek dizini varsayılır. Bu dizini oluşturma konusunda yardım için bkz [. hızlı başlangıç: Azure portal](search-get-started-portal.md)içeri aktarın, dizine alın ve sorgulayın.
+Aşağıdaki örneklerde, yerleşik gerçek emlak örnek dizini varsayılır. Bu dizini portalda verileri Içeri aktar sihirbazını kullanarak, veri kaynağı olarak **örnekler** ' i seçerek oluşturabilirsiniz.
 
 ### <a name="example-1---empty-search"></a>Örnek 1-boş arama
 

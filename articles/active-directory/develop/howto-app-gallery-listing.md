@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba4beeff5484f774e801842f06d694af456c4e96
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 88d74fe794f4de95b7ba8b0dd5575ca56d2016e5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033745"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176884"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Nasıl yapılır: Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -80,7 +80,7 @@ Azure AD uygulama galerisinde bir uygulamayı listelemek için, önce Azure AD t
     ![OpenID uygulamasının galeriye bir şekilde bağlanmasını listeleme zaman çizelgesi](./media/howto-app-gallery-listing/openid.png)
 
     * Uygulamanızı OpenID Connect kullanarak galerinin listesine eklemek isterseniz, **OpenID connect & OAuth 2,0** ' ı yukarıdaki gibi seçin.
-    * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun. 
+    * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
 - **SAML 2,0** veya **WS-beslenir**: Uygulamanız SAML 2,0 ' yi destekliyorsa, [özel bir uygulama eklemek için yönergeleri](../active-directory-saas-custom-apps.md)kullanarak doğrudan BIR Azure AD kiracısı ile tümleştirebilirsiniz.
 
@@ -98,6 +98,12 @@ Azure AD uygulama galerisinde bir uygulamayı listelemek için, önce Azure AD t
 * Uygulamanızı parola SSO 'SU kullanarak galerideki listeye eklemek istiyorsanız, yukarıdaki gibi **parola SSO** 'yu seçin.
 * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
+## <a name="requesting-for-user-provisioning"></a>Kullanıcı hazırlama isteği
+
+Kullanıcı sağlamayı istemek için aşağıdaki işlemi izleyin-
+
+   ![SAML uygulamasının galeriye listelenmesi için zaman çizelgesi](./media/howto-app-gallery-listing/user-provisioning.png)
+
 ## <a name="updateremove-existing-listing"></a>Mevcut listeyi Güncelleştir/Kaldır
 
 Azure AD uygulama galerisinde mevcut bir uygulamayı güncelleştirmek veya kaldırmak için, önce isteği [uygulama ağ portalında](https://microsoft.sharepoint.com/teams/apponboarding/Apps)göndermeniz gerekir. Office 365 hesabınız varsa, Bu portalda oturum açmak için bu hesabı kullanın. Aksi takdirde, oturum açmak için Microsoft hesabı (Outlook veya Hotmail gibi) kullanın.
@@ -106,9 +112,9 @@ Azure AD uygulama galerisinde mevcut bir uygulamayı güncelleştirmek veya kald
 
     ![SAML uygulamasının galeriye listelenmesi için zaman çizelgesi](./media/howto-app-gallery-listing/updateorremove.png)
 
-    * Mevcut bir uygulamayı güncelleştirmek istiyorsanız, **var olan uygulama listesini güncelleştir**' i seçin.
-    * Mevcut bir uygulamayı Azure AD Galerisi 'nden kaldırmak istiyorsanız, **var olan uygulama listesini kaldır**' ı seçin.
-    * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun. 
+    * Mevcut bir uygulamayı güncelleştirmek istiyorsanız, gereksiniminize göre uygun seçeneği belirleyin.
+    * Mevcut bir uygulamayı Azure AD Galerisi 'nden kaldırmak istiyorsanız, **Galeriden uygulama listemi kaldır**' ı seçin.
+    * Erişim ile ilgili herhangi bir sorununuz varsa [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun.
 
 ## <a name="listing-requests-by-customers"></a>İstekleri müşterilere göre listeleme
 
@@ -120,15 +126,15 @@ Aşağıda, müşteri tarafından istenen uygulamaların akışı verilmiştir.
 
 ![Müşteri tarafından istenen uygulamalar akışını gösterir](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Zaman çizelgeleri
+## <a name="timelines"></a>Animasyon
 
 Galerideki bir SAML 2,0 veya WS-Besme uygulamasını listeleme işleminin zaman çizelgesi, 7-10 iş gündür.
 
-   ![SAML uygulamasının galeriye listelenmesi için zaman çizelgesi](./media/howto-app-gallery-listing/timeline.png)
+  ![SAML uygulamasının galeriye listelenmesi için zaman çizelgesi](./media/howto-app-gallery-listing/timeline.png)
 
 Galerideki bir OpenID Connect uygulamasını listeleme işleminin zaman çizelgesi 2-5 iş gündür.
 
-   ![SAML uygulamasının galeriye listelenmesi için zaman çizelgesi](./media/howto-app-gallery-listing/timeline2.png)
+  ![SAML uygulamasının galeriye listelenmesi için zaman çizelgesi](./media/howto-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>Yükseltmeleri
 

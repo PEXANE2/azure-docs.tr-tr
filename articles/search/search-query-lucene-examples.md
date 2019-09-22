@@ -1,5 +1,5 @@
 ---
-title: Lucene sorgu örnekleri-Azure Search
+title: Tam Lucene sorgu söz dizimini kullanın-Azure Search
 description: Bir Azure Search hizmetinde, belirsiz arama, yakınlık araması, terim artırma, normal ifade arama ve joker karakter aramaları için Lucene sorgu söz dizimi.
 author: HeidiSteen
 manager: nitinme
@@ -7,17 +7,17 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f6a39129db9e8c43a5e2de68d919ba1037c3f5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648230"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178160"
 ---
-# <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>"Full" Lucene arama söz dizimini (Azure Search gelişmiş sorgular) kullanarak sorgu örnekleri
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>"Full" Lucene arama sözdizimini kullanın (Azure Search gelişmiş sorgular)
 
 Azure Search için sorgular oluştururken, varsayılan [basit sorgu ayrıştırıcısının](query-simple-syntax.md) yanı sıra özelleştirilmiş ve Gelişmiş sorgu tanımlarını formülleştirmek için [Azure Search daha Expante Lucene sorgu ayrıştırıcısıyla](query-lucene-syntax.md) değiştirebilirsiniz. 
 
@@ -85,7 +85,7 @@ Bu makaledeki örneklerin hepsi, tam sözdiziminin Lucene sorgu ayrıştırıcı
 
 Bu ilk örnek, Lucene 'e özgü değildir, ancak ilk temel sorgu kavramını tanıtmaya neden olur: alan kapsamı. Bu örnek, tüm sorguyu ve yanıtı yalnızca birkaç belirli alana kapsamlar. Araç Postman veya arama Gezgini olduğunda okunabilir bir JSON yanıtının nasıl ayarlanacağını bilmek önemlidir. 
 
-Breçekimi için sorgu yalnızca *business_title* alanını hedefler ve yalnızca iş başlıklarının döndürüldüğünü belirtir. **Searchfields** parametresi sorgu yürütmeyi yalnızca business_title alanıyla kısıtlar ve yanıta hangi alanların ekleneceğini belirtir.
+Breçekimi için sorgu yalnızca *business_title* alanını hedefler ve yalnızca iş başlıklarının döndürüldüğünü belirtir. **Searchfields** parametresi sorgu yürütmeyi yalnızca business_title alanıyla **kısıtlar ve yanıta** hangi alanların ekleneceğini belirtir.
 
 ### <a name="partial-query-string"></a>Kısmi sorgu dizesi
 
@@ -181,7 +181,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 
 
 > [!Note]
-> Benzer sorgular çözümlenmez [](search-lucene-query-architecture.md#stage-2-lexical-analysis). Eksik koşullara sahip sorgu türleri (ön ek sorgusu, joker karakter sorgusu, Regex sorgusu, benzer sorgu) doğrudan sorgu ağacına eklenir, analiz aşaması atlanıyor. Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
+> Benzer sorgular [çözümlenmez](search-lucene-query-architecture.md#stage-2-lexical-analysis). Eksik koşullara sahip sorgu türleri (ön ek sorgusu, joker karakter sorgusu, Regex sorgusu, benzer sorgu) doğrudan sorgu ağacına eklenir, analiz aşaması atlanıyor. Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
 >
 
 ## <a name="example-4-proximity-search"></a>Örnek 4: Yakınlık araması
@@ -213,7 +213,7 @@ Terim artırma, bir belgeyi, süresi içermeyen belgelere göre, daha yüksek bi
 
 ### <a name="full-urls"></a>Tam URL 'Ler
 
-Bu "önce" sorgusunda, *bilgisayar* analistine sahip işleri arayın ve hem *bilgisayar* hem de *analist*ile bir sonuç olmadığını, ancak *bilgisayar* işlerinin sonuçların en üstünde olduğunu unutmayın.
+Bu "önce" sorgusunda, *bilgisayar analistine* sahip işleri arayın ve hem *bilgisayar* hem de *analist*ile bir sonuç olmadığını, ancak *bilgisayar* işlerinin sonuçların en üstünde olduğunu unutmayın.
 
 ```GET
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&queryType=full&$count=true&searchFields=business_title&$select=business_title&search=business_title:computer%20analyst
@@ -231,7 +231,7 @@ Yukarıdaki sorgunun `search=business_title:computer analyst^2`daha okunabilir b
 
 Kullanım süresi, Puanlama profillerindeki Puanlama profillerinden farklıdır ve belirli koşullar yerine belirli alanları artırır. Aşağıdaki örnek, farkları göstermeye yardımcı olur.
 
-Musicstoreındex örneğinde **tarz** gibi belirli bir alanda eşleşen bir Puanlama profili düşünün. Belirli arama terimlerini diğerlerinden daha fazla artırmak için kullanım süresi kullanılabilir. Örneğin, "Rock ^ 2 elektronik", tarzdaki arama terimlerini, dizinde bulunan diğer aranabilir alanlardan daha yüksek olan belgeyi artırır. Ayrıca, "Rock" arama terimini içeren belgeler, yükseltme değeri (2) sonucunda "elektronik" diğer arama teriminden daha yüksek olarak derecelendirilir.
+Musicstoreındex örneğinde **tarz** gibi belirli bir alanda eşleşen bir Puanlama profili düşünün. Belirli arama terimlerini diğerlerinden daha fazla artırmak için kullanım süresi kullanılabilir. Örneğin, "Rock ^ 2 elektronik", **tarzdaki** arama terimlerini, dizinde bulunan diğer aranabilir alanlardan daha yüksek olan belgeyi artırır. Ayrıca, "Rock" arama terimini içeren belgeler, yükseltme değeri (2) sonucunda "elektronik" diğer arama teriminden daha yüksek olarak derecelendirilir.
 
 Faktör düzeyi ayarlanırken, yükseltme faktörü arttıkça, bu terim diğer arama koşullarına göre daha uygun olacaktır. Varsayılan olarak, Boost faktörü 1 ' dir. Boost faktörü pozitif olmalıdır, ancak 1 ' den az olabilir (örneğin, 0,2).
 
@@ -257,7 +257,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
   ![Regex sorgusu](media/search-query-lucene-examples/regex.png)
 
 > [!Note]
-> Regex sorguları çözümlenmez [](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
+> Regex sorguları [çözümlenmez](https://docs.microsoft.com/azure/search/search-lucene-query-architecture#stage-2-lexical-analysis). Tamamlanmamış sorgu koşullarında gerçekleştirilen tek dönüşüm küçük harfe göre yapılır.
 >
 
 ## <a name="example-7-wildcard-search"></a>Örnek 7: Joker karakter arama

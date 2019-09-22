@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a3a5555bf163aedd9b41a9c9aa363a883deb4cb8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 22ae7aeeff4542bee764e131f58eb115026a4fb3
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638512"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177113"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Cihaz bağlantısı ve telemetri sorunları
 
@@ -67,12 +67,12 @@ Cihazınızın ileti biçimi ve yükünü, çözümünüzün ihtiyaçlarına uya
 
  Bir **iletinin** yük içeriği, 256 KB 'a kadar olan rastgele veri olabilir. [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) Türün özellikleri için beklenen birkaç gereksinim vardır. Tablo, sistem tarafından desteklenen gerekli ve isteğe bağlı özellikleri gösterir.
 
-| Özellik adı | Değer | Gerekli | Açıklama |
+| Özellik adı | Value | Gerekli | Açıklama |
 |---|---|---|---|
 | **DigitalTwins-telemetri** | 1.0 | Evet | Sisteme bir ileti tanımlayan sabit bir değer. |
-| **DigitalTwins-Sensorhardwareıd** | `string(72)` | Evet | **İletiyi**gönderen sensör için benzersiz bir tanımlayıcı. Bu değer, sistemin işlemesi için bir nesnenin **HardwareID** özelliği ile aynı olmalıdır. Örneğin: `00FF0643BE88-CO2`. |
-| **CreationTimeUtc** | `string` | Hayır | Yükün örnekleme süresini tanımlayan [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) biçimli bir tarih dizesi. Örneğin: `2018-09-20T07:35:00.8587882-07:00`. |
-| **ID** | `string` | Hayır | Sistem genelinde olayları izlemek için kullanılan bir UUID. Örneğin: `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **DigitalTwins-Sensorhardwareıd** | `string(72)` | Evet | **İletiyi**gönderen sensör için benzersiz bir tanımlayıcı. Bu değer, sistemin işlemesi için bir nesnenin **HardwareID** özelliği ile aynı olmalıdır. Örneğin, `00FF0643BE88-CO2`. |
+| **CreationTimeUtc** | `string` | Hayır | Yükün örnekleme süresini tanımlayan [ıso 8601](https://en.wikipedia.org/wiki/ISO_8601) biçimli bir tarih dizesi. Örneğin, `2018-09-20T07:35:00.8587882-07:00`. |
+| **ID** | `string` | Hayır | Sistem genelinde olayları izlemek için kullanılan bir UUID. Örneğin, `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>İletinizi dijital TWINS 'e gönderin
 

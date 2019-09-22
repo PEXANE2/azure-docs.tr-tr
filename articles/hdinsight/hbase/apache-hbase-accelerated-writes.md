@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c24ed7efe9e046a36a05ec5924cbd61d218b1b01
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091741"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179096"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Apache HBase için Azure HDInsight hızlandırılmış yazma Işlemleri
 
@@ -54,6 +54,12 @@ flush 'mytable'
 ```
 disable 'mytable'
 ```
+
+Kümenizin ölçeğini ölçeklendirirken benzer adımları izleyin: tabloları temizleyin ve gelen verileri durdurmak için tablolarınızı devre dışı bırakın. Kümenizin ölçeğini üçten az düğüm olacak şekilde ölçeklendirebilirsiniz.
+
+Bu adımları takip etmek, başarılı bir ölçeklendirme işlemi sağlar ve bir süs Yot 'ın, alt veya geçici dosyalar nedeniyle güvenli mod olma olasılığını ortadan önler.
+
+Süs Yot ölçeği bir ölçeklendirdikten sonra safemode ' e gidilırsa, doğru çoğaltılan blokları yeniden çoğaltmak ve güvenli moddan yararlanmak için, bu komutu kullanın. Bu yeniden çoğaltma, HBase 'i başarıyla yeniden başlatmanıza olanak tanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

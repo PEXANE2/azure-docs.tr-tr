@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell Betiği - Azure Cosmos DB listelemek ve MongoDB API'si için işlemleri Al
-description: Azure PowerShell Betiği - Azure Cosmos DB listelemek ve MongoDB API'si için işlemleri Al
+title: MongoDB API 'SI için Azure PowerShell betiği Azure Cosmos DB listesi ve Get işlemleri
+description: MongoDB API 'SI için Azure PowerShell betiği Azure Cosmos DB listesi ve Get işlemleri
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: cd00166e93477dc229a25cc7a183febe4034d7bb
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 47d2f6a14fadfa75e5db28eb44b7ca3410e6503c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603894"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178890"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Liste ve Azure Cosmos DB - MongoDB API'si için veritabanları ve grafikler
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB-MongoDB API 'SI için veritabanları ve grafikler listeleme ve edinme
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +39,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure kaynakları**| |
-| [Yeni AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
-|**Azure kaynak grupları**| |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

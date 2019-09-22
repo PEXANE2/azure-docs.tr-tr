@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 599339b0591245462dcc0840400ad5241cd5922c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325821"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178558"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Öğretici: YAML dosyası kullanarak çok kapsayıcılı bir grup dağıtma
 
@@ -24,7 +24,7 @@ ms.locfileid: "68325821"
 
 Azure Container Instances, [kapsayıcı grubu](container-instances-container-groups.md)kullanılarak tek bir konakta birden fazla kapsayıcının dağıtımını destekler. Bir kapsayıcı grubu, günlüğe kaydetme, izleme veya bir hizmetin ikinci bağlı bir işleme ihtiyacı olan başka herhangi bir yapılandırma için bir uygulama arabası oluşturulması durumunda faydalıdır.
 
-Bu öğreticide, Azure CLı kullanarak bir YAML dosyası dağıtarak basit bir iki Kapsayıcılı sepet yapılandırması çalıştırmanın adımlarını takip edersiniz. YAML dosyası, örnek ayarlarını belirtmek için kısa bir biçim sağlar. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu öğreticide, Azure CLı kullanarak bir [YAML dosyası](container-instances-reference-yaml.md) dağıtarak basit bir iki Kapsayıcılı sepet yapılandırması çalıştırmanın adımlarını takip edersiniz. YAML dosyası, örnek ayarlarını belirtmek için kısa bir biçim sağlar. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
 > * YAML dosyası yapılandırma
@@ -126,7 +126,7 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-container-logs"></a>Kapsayıcı günlüklerini görüntüleme
+## <a name="view-container-logs"></a>Kapsayıcı günlüklerini görüntüle
 
 [Az Container logs][az-container-logs] komutunu kullanarak bir kapsayıcının günlük çıktısını görüntüleyin. `--container-name` Bağımsız değişkeni, günlüklerin alınacağı kapsayıcıyı belirtir. Bu örnekte, `aci-tutorial-app` kapsayıcı belirtilir.
 

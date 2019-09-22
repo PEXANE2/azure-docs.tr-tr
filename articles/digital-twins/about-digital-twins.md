@@ -3,18 +3,18 @@ title: Azure Digital Twins'e genel bakış | Microsoft Docs
 description: Uzamsal zekaya yönelik bir Azuer IoT çözümü olan Azure Digital Twins hakkında daha fazla bilgi edinin.
 author: julieseto
 ms.author: jseto
-ms.date: 08/01/2019
+ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 6bd4e3bb688e92d30a21c39599e2e5bdb7b17dba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2b80d0b364330a0effa7b89c620bd935157de290
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736976"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178284"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Azure Digital Twins'e genel bakış
 
@@ -33,7 +33,7 @@ Azure dijital TWINS, ambarlar, ofisler, okullar, hastaneler ve bankalar gibi tü
 - Bir bina için doluluk düzeylerini analiz edin.
 - Deponuzdaki en zorlu nakit kaydını bulun.
 
-Gerçek dünyada iş senaryonuz ne olursa olsun, buna karşılık gelen dijital bir örnek Azure dijital TWINS aracılığıyla sağlanabilir.
+Gerçek dünyada iş senaryolarınız ne olursa olsun, buna karşılık gelen dijital bir örnek Azure dijital TWINS aracılığıyla sağlanabilir.
 
 Aşağıdaki videoda Azure dijital TWINS 'e daha yakından göz atalım.
 
@@ -45,13 +45,13 @@ Azure dijital TWINS 'in aşağıdaki önemli özellikleri vardır.
 
 ### <a name="spatial-intelligence-graph"></a>Uzamsal zeka grafı
 
-[*Uzamsal zeka grafiği*](./concepts-objectmodel-spatialgraph.md#graph)veya *uzamsal grafik*, fiziksel ortamın sanal bir gösterimidir. Kişiler, Yerlerim ve cihazlar arasındaki ilişkileri modellemek için kullanabilirsiniz.
+[*Uzamsal zeka grafiği*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)veya *uzamsal grafik*, fiziksel ortamın sanal bir gösterimidir. Kişiler, Yerlerim ve cihazlar arasındaki ilişkileri modellemek için kullanabilirsiniz.
 
 Bir komşuları genelinde bağlanmış birkaç elektrik kullanımı ölçümünü içeren bir akıllı yardımcı program uygulaması düşünün. Akıllı yardımcı program şirketi, elektrik kullanımını ve faturalandırmayı doğru şekilde izleyip tahmin etmelidir. Her bir cihaz ve algılayıcı, Faturalanacak konum ve müşteri hakkındaki bağlamla modellenmelidir. Bu karmaşık ilişki türlerini modellemek için uzamsal zeka grafiğini kullanabilirsiniz.
 
 ### <a name="digital-twin-object-models"></a>Dijital ikiz nesne modelleri
 
-[Dijital ikizi nesne modelleri](./concepts-objectmodel-spatialgraph.md#model) önceden tanımlanmış cihaz protokolleri ve veri şemadır. Bu kişiler, uygulamanızın etki alanına özgü ihtiyaçlarını geliştirmeyi hızlandırmaya ve basitleştirmeye yönelik olarak hizalar.
+[Dijital ikizi nesne modelleri](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models) önceden tanımlanmış cihaz protokolleri ve veri şemadır. Bu kişiler, uygulamanızın etki alanına özgü ihtiyaçlarını geliştirmeyi hızlandırmaya ve basitleştirmeye yönelik olarak hizalar.
 
 Örneğin, bir oda doluluk uygulaması kampüs, bina, kat ve oda gibi önceden tanımlanmış alan türlerini kullanabilir.
 
@@ -93,9 +93,9 @@ Azure dijital TWINS, fiziksel dünyanın ve çok sayıda ilişkilerinin temsil e
 
 Azure Digital Twins, verileri fiziksel dünyayla eşitlemek için Azure IoT Hub'ı kullanarak IoT cihazlarına ve sensörlerine bağlanır. Aşağıdaki diyagramda Azure Digital TWINS 'in diğer Azure IoT hizmetleriyle nasıl ilişkili olduğu gösterilmektedir.
 
-![Azure Digital Twins, Azure IoT Hub üzerinde geliştirilmiş olan bir hizmettir][1]
+[![Azure dijital TWINS, Azure IoT Hub üzerinde oluşturulmuş bir hizmettir](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-IoT hakkında daha fazla bilgi için bkz. [Azure IoT teknolojileri ve çözümleri](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies).
+IoT hakkında daha fazla bilgi için bkz. [Azure IoT teknolojileri ve çözümleri](../iot-fundamentals/iot-services-and-technologies.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -113,6 +113,3 @@ Temel Azure Digital Twins kavramları hakkında bilgi edinin:
 
 >[!div class="nextstepaction"]
 >[Dijital TWINS nesne modelini ve uzamsal zeka grafiğini anlayın](./concepts-objectmodel-spatialgraph.md)
-
-<!-- Images -->
-[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

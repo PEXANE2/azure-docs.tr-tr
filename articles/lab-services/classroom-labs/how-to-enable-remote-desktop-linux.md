@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 3d08105e78274300eb7ee0a8c0ad146a737d0ffa
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 562ad0e5e6088c2fbadc853779b7533c5398e079
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644947"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176634"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Azure Lab Services bir laboratuvardaki Linux sanal makineleri için Uzak Masaüstü 'nü etkinleştirme
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
@@ -36,7 +36,8 @@ Laboratuvar oluşturma sırasında, öğretmenler **Linux** görüntüleri için
 ![Linux görüntüsü için Uzak Masaüstü bağlantısını etkinleştirme](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
-> **Uzak Masaüstü bağlantısını** etkinleştirmek yalnızca Linux makinelerde **RDP** bağlantı noktasını açar. Bir öğretmen olarak, Linux makinesine ilk kez SSH kullanarak bağlanın ve RDP ve GUI paketlerini yükledikten sonra RDP kullanarak Linux makinesine bağlanabilirsiniz. Daha sonra, öğrencilerin öğrenci Linux VM 'lerinde RDP kullanabilmesi için görüntüyü **yayımlayın** . 
+> **Uzak Masaüstü bağlantısını** etkinleştirmek yalnızca Linux makinelerde **RDP** bağlantı noktasını açar. Zaten RDP, sanal makine görüntüsüne yüklenip yapılandırılmışsa (örneğin: Ubuntu Veri Bilimi Sanal Makinesi Image), siz/öğrenciler ek adımları izleyerek RDP aracılığıyla VM 'lere bağlanabilir.
+> VM görüntüsünün RDP yüklemesi ve yapılandırması yoksa, Linux makinesine ilk kez SSH kullanarak bağlanmanız ve RDP ve GUI paketlerini yüklemeniz gerekir, böylelikle/öğrenciler daha sonra RDP kullanarak Linux makinesine bağlanabilir. Daha sonra, öğrencilerin öğrenci Linux VM 'lerinde RDP kullanabilmesi için görüntüyü yayımlayın.
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 Şu anda, Uzak Masaüstü bağlantısı aşağıdaki işletim sistemleri için desteklenir:

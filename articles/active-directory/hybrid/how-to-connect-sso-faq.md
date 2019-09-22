@@ -16,30 +16,30 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709fb3be37850be37d6378652921ce26f4ff15fe
-ms.sourcegitcommit: dcea3c1ab715a79ebecd913885fbf9bbee61606a
+ms.openlocfilehash: 96d0253e1e656f4bdb5180af0d57824aceb4f0dd
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "60242223"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176653"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Kesintisiz çoklu oturum açma Azure Active Directory: Sık sorulan sorular
 
 Bu makalede, sorunsuz çoklu oturum açma Azure Active Directory (sorunsuz SSO) hakkında sık sorulan soruları ele aldık. Yeni içerik için yeniden kullanıma devam edin.
 
-## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>Sorunsuz SSO hangi oturum açma yöntemlerine göre çalışır?
+**S: Her oturum açma yöntemi, sorunsuz SSO üzerinde çalışır**
 
 Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synchronization.md) veya [geçişli kimlik doğrulaması](how-to-connect-pta.md) oturum açma yöntemleriyle birleştirilebilir. Ancak bu özellik Active Directory Federasyon Hizmetleri (AD FS) (ADFS) ile kullanılamaz.
 
-## <a name="is-seamless-sso-a-free-feature"></a>Sorunsuz SSO ücretsiz bir özelliktir mi?
+**S: Sorunsuz SSO ücretsiz bir özelliktir mi?**
 
 Sorunsuz SSO ücretsiz bir özelliktir ve Azure AD 'nin bu sürümü kullanabilmesi için ücretli bir sürümü gerekmez.
 
-## <a name="is-seamless-sso-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>[Microsoft Azure Almanya bulutta](https://www.microsoft.de/cloud-deutschland) ve [MICROSOFT Azure Kamu bulutta](https://azure.microsoft.com/features/gov/)sorunsuz SSO kullanılabilir mi?
+**S: [Microsoft Azure Almanya bulutta](https://www.microsoft.de/cloud-deutschland) ve [MICROSOFT Azure Kamu bulutta](https://azure.microsoft.com/features/gov/)sorunsuz SSO kullanılabilir mi?**
 
 Hayır. Sorunsuz SSO yalnızca dünya çapındaki Azure AD örneğinde bulunabilir.
 
-## <a name="what-applications-take-advantage-of-domain_hint-or-login_hint-parameter-capability-of-seamless-sso"></a>Sorunsuz SSO 'nun `domain_hint` veya `login_hint` parametre özelliğinden faydalanan uygulamalar nelerdir?
+**S: Sorunsuz SSO 'nun `domain_hint` veya `login_hint` parametre özelliğinden faydalanan uygulamalar nelerdir?**
 
 Aşağıda, bu parametreleri Azure AD 'ye gönderebilen kapsamlı bir uygulama listesi verilmiştir ve bu nedenle kullanıcılara sorunsuz SSO (yani, kullanıcılarınızın Kullanıcı adlarını veya parolalarını girmesi gerekmez) kullanarak sessiz bir oturum açma deneyimi sağlar:
 
@@ -60,21 +60,21 @@ Yukarıdaki tablolarda, kiracınızın doğru uygulama URL 'Lerine ulaşmak içi
 
 Diğer uygulamaların sessiz oturum açma deneyimimizi kullanmasını istiyorsanız geri bildirim bölümünde bize bilgi verin.
 
-## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Kullanıcı adı `Alternate ID` `userPrincipalName`yerine sorunsuz SSO Desteği ister misiniz?
+**S: Kullanıcı adı `Alternate ID` `userPrincipalName`yerine sorunsuz SSO Desteği ister misiniz?**
 
 Evet. Sorunsuz SSO, `Alternate ID` [burada](how-to-connect-install-custom.md)gösterildiği gibi Azure AD Connect ' de yapılandırıldığında Kullanıcı adı olarak destekler. Office 365 uygulamalarının `Alternate ID`hepsi desteklenmez. Destek bildirimiyle ilgili uygulamanın belgelerine bakın.
 
-## <a name="what-is-the-difference-between-the-single-sign-on-experience-provided-by-azure-ad-joinactive-directory-azureadjoin-overviewmd-and-seamless-sso"></a>[Azure AD JOIN](../active-directory-azureadjoin-overview.md) ve sorunsuz SSO tarafından sunulan çoklu oturum açma deneyimi arasındaki fark nedir?
+**S: [Azure AD JOIN](../active-directory-azureadjoin-overview.md) ve sorunsuz SSO tarafından sunulan çoklu oturum açma deneyimi arasındaki fark nedir?**
 
 [Azure AD JOIN](../active-directory-azureadjoin-overview.md) , CIHAZLARı Azure AD 'ye KAYıTLıYSA kullanıcılara SSO sağlar. Bu cihazların etki alanına katılmış olması gerekmez. SSO, *birincil yenileme belirteçleri* veya *prts*'Ler kullanılarak sağlanır ve Kerberos değildir. Kullanıcı deneyimi Windows 10 cihazlarında en iyi şekilde kullanılır. SSO, Microsoft Edge tarayıcısında otomatik olarak gerçekleşir. Ayrıca, tarayıcı uzantısı kullanılarak Chrome üzerinde de kullanılabilir.
 
 Kiracınızda Azure AD JOIN ve sorunsuz SSO kullanabilirsiniz. Bu iki özellik tamamlayıcı bir özelliklerdir. Her iki özellik de açıksa, Azure AD birleştirmelerinin SSO 'SU sorunsuz SSO 'dan önceliklidir.
 
-## <a name="i-want-to-register-non-windows-10-devices-with-azure-ad-without-using-ad-fs-can-i-use-seamless-sso-instead"></a>Windows 10 olmayan cihazları Azure AD 'ye AD FS kullanmadan kaydetmek istiyorum. Bunun yerine sorunsuz SSO kullanabilir miyim?
+**S: Windows 10 olmayan cihazları Azure AD 'ye AD FS kullanmadan kaydetmek istiyorum. Bunun yerine sorunsuz SSO kullanabilir miyim?**
 
 Evet, bu senaryo, [çalışma alanına katılma istemcisinin](https://www.microsoft.com/download/details.aspx?id=53554)2,1 veya sonraki bir sürümünü gerektirir.
 
-## <a name="how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account"></a>`AZUREADSSOACC` Bilgisayar hesabının Kerberos şifre çözme anahtarını nasıl alabilirim?
+**S: `AZUREADSSOACC` Bilgisayar hesabının Kerberos şifre çözme anahtarını nasıl alabilirim?**
 
 Şirket içi ad ormanınızda oluşturulan `AZUREADSSOACC` bilgisayar hesabının (Azure AD 'yi temsil eden) Kerberos şifre çözme anahtarını çok sık almak önemlidir.
 
@@ -83,66 +83,66 @@ Evet, bu senaryo, [çalışma alanına katılma istemcisinin](https://www.micros
 
 Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izleyin:
 
-### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>1\.Adım Sorunsuz SSO 'nun etkinleştirildiği AD ormanları listesini alın
+    **Step 1. Get list of AD forests where Seamless SSO has been enabled**
 
-1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
-2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
-3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
-4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
-5. Çağrısı `Get-AzureADSSOStatus | ConvertFrom-Json`yapın. Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini ("etki alanları" listesine bakın) sağlar.
+    1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
+    2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
+    3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
+    4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
+    5. Çağrısı `Get-AzureADSSOStatus | ConvertFrom-Json`yapın. Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini ("etki alanları" listesine bakın) sağlar.
 
-### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>2\.Adım Üzerinde ayarlandığı her bir AD ormanında Kerberos şifre çözme anahtarını güncelleştirme
+    **2. adım. Üzerinde ayarlandığı her bir AD ormanında Kerberos şifre çözme anahtarını güncelleştirme**
 
-1. Çağrısı `$creds = Get-Credential`yapın. İstendiğinde, hedeflenen AD ormanının etki alanı yönetici kimlik bilgilerini girin.
+    1. Çağrısı `$creds = Get-Credential`yapın. İstendiğinde, hedeflenen AD ormanının etki alanı yönetici kimlik bilgilerini girin.
 
-   > [!NOTE]
-   > Hedeflenen ad ormanını bulmak için Kullanıcı asıl adı (UPN) (johndoe@contoso.com) biçiminde veya etki alanı uygun Sam hesabı adı (contoso\johntikan veya contoso. com\johntikan) biçiminde belirtilen etki alanı yöneticisinin Kullanıcı adını kullanırız. Etki alanı nitelikli Sam hesabı adı kullanırsanız, [DNS kullanarak etki alanı yöneticisinin etki alanı denetleyicisini bulmak](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)için Kullanıcı adının etki alanı bölümünü kullanırız. Bunun yerine UPN kullanırsanız, uygun etki alanı denetleyicisini bulmadan önce [etki alanı tam bir SAM hesap adına çeviririz](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) .
+    > [!NOTE]
+    > Hedeflenen ad ormanını bulmak için Kullanıcı asıl adı (UPN) (johndoe@contoso.com) biçiminde veya etki alanı uygun Sam hesabı adı (contoso\johntikan veya contoso. com\johntikan) biçiminde belirtilen etki alanı yöneticisinin Kullanıcı adını kullanırız. Etki alanı nitelikli Sam hesabı adı kullanırsanız, [DNS kullanarak etki alanı yöneticisinin etki alanı denetleyicisini bulmak](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)için Kullanıcı adının etki alanı bölümünü kullanırız. Bunun yerine UPN kullanırsanız, uygun etki alanı denetleyicisini [bulmadan önce etki alanı tam bir SAM hesap adına çeviririz](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) .
 
-2. Çağrısı `Update-AzureADSSOForest -OnPremCredentials $creds`yapın. Bu komut, bu belirli ad ormanındaki `AZUREADSSOACC` bilgisayar hesabının Kerberos şifre çözme anahtarını güncelleştirir ve Azure AD 'de güncelleştirir.
-3. Özelliği ayarladığınız her AD Ormanı için önceki adımları tekrarlayın.
+    2. Çağrısı `Update-AzureADSSOForest -OnPremCredentials $creds`yapın. Bu komut, bu belirli ad ormanındaki `AZUREADSSOACC` bilgisayar hesabının Kerberos şifre çözme anahtarını güncelleştirir ve Azure AD 'de güncelleştirir.
+    3. Özelliği ayarladığınız her AD Ormanı için önceki adımları tekrarlayın.
 
->[!IMPORTANT]
->`Update-AzureADSSOForest` Komutu birden çok kez _çalıştırmayın_ emin olun. Aksi takdirde, kullanıcılarınızın Kerberos biletlerinin süresi dolana ve şirket içi Active Directory tarafından yeniden yayımlanıncaya kadar özellik çalışmayı sonlandırır.
+    >[!IMPORTANT]
+    >`Update-AzureADSSOForest` Komutu birden çok kez _çalıştırmayın_ emin olun. Aksi takdirde, kullanıcılarınızın Kerberos biletlerinin süresi dolana ve şirket içi Active Directory tarafından yeniden yayımlanıncaya kadar özellik çalışmayı sonlandırır.
 
-## <a name="how-can-i-disable-seamless-sso"></a>Sorunsuz SSO 'yu nasıl devre dışı bırakabilirim?
+**S: Sorunsuz SSO 'yu nasıl devre dışı bırakabilirim?**
 
-### <a name="step-1-disable-the-feature-on-your-tenant"></a>1\.Adım Kiracınızda özelliği devre dışı bırakın
+    **Step 1. Disable the feature on your tenant**
 
-#### <a name="option-a-disable-using-azure-ad-connect"></a>Seçenek A: Azure AD Connect kullanarak devre dışı bırak
+        **Option A: Disable using Azure AD Connect**
 
-1. Azure AD Connect çalıştırın, **Kullanıcı oturum açma sayfasını Değiştir** ' i seçin ve **İleri**' ye tıklayın.
-2. **Çoklu oturum açmayı etkinleştir** seçeneğinin işaretini kaldırın. Sihirbaza devam edin.
+        1. Run Azure AD Connect, choose **Change user sign-in page** and click **Next**.
+        2. Uncheck the **Enable single sign on** option. Continue through the wizard.
 
-Sihirbazı tamamladıktan sonra, kiracınızda sorunsuz SSO devre dışı bırakılacaktır. Bununla birlikte, ekranda şu şekilde okuyan bir ileti görürsünüz:
+        After completing the wizard, Seamless SSO will be disabled on your tenant. However, you will see a message on screen that reads as follows:
 
-"Çoklu oturum açma artık devre dışı bırakıldı, ancak temizleme işlemini tamamlamak için el ile gerçekleştirilecek ek adımlar var. Daha fazla bilgi "
+        "Single sign-on is now disabled, but there are additional manual steps to perform in order to complete clean-up. Learn more"
 
-Temizleme işlemini gerçekleştirmek için Azure AD Connect çalıştırdığınız şirket içi sunucuda adım 2 ve 3 ' ü izleyin.
+        To complete the clean-up process, follow steps 2 and 3 on the on-premises server where you are running Azure AD Connect.
 
-#### <a name="option-b-disable-using-powershell"></a>Seçenek B: PowerShell 'i kullanarak devre dışı bırak
+        **Option B: Disable using PowerShell**
 
-Azure AD Connect çalıştırdığınız şirket içi sunucuda aşağıdaki adımları çalıştırın:
+        Run the following steps on the on-premises server where you are running Azure AD Connect:
 
-1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
-2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
-3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
-4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
-5. Çağrısı `Enable-AzureADSSO -Enable $false`yapın.
+        1. First, download, and install [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+        2. Navigate to the `%programfiles%\Microsoft Azure Active Directory Connect` folder.
+        3. Import the Seamless SSO PowerShell module using this command: `Import-Module .\AzureADSSO.psd1`.
+        4. Run PowerShell as an Administrator. In PowerShell, call `New-AzureADSSOAuthenticationContext`. This command should give you a popup to enter your tenant's Global Administrator credentials.
+        5. Call `Enable-AzureADSSO -Enable $false`.
 
->[!IMPORTANT]
->PowerShell kullanarak sorunsuz SSO devre dışı bırakmak, Azure AD Connect durumunu değiştirmez. Sorunsuz SSO, **Kullanıcı oturum açma** sayfasında etkin olarak görünür.
+        >[!IMPORTANT]
+        >Disabling Seamless SSO using PowerShell will not change the state in Azure AD Connect. Seamless SSO will show as enabled in the **Change user sign-in** page.
 
-### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>2\.Adım Sorunsuz SSO 'nun etkinleştirildiği AD ormanları listesini alın
+    **Step 2. Get list of AD forests where Seamless SSO has been enabled**
 
-Azure AD Connect kullanarak sorunsuz SSO 'yu devre dışı bıraktığınız takdirde, aşağıdaki görevleri 1 ' den izleyin. Bunun yerine PowerShell kullanarak sorunsuz SSO 'yu devre dışı bırakırsanız, aşağıdaki görev 5 ' e atlayın.
+    Follow tasks 1 through 4 below if you have disabled Seamless SSO using Azure AD Connect. If you have disabled Seamless SSO using PowerShell instead, jump ahead to task 5 below.
 
-1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
-2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
-3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
-4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
-5. Çağrısı `Get-AzureADSSOStatus | ConvertFrom-Json`yapın. Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini ("etki alanları" listesine bakın) sağlar.
+    1. İlk olarak, [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview)'i indirin ve yükleyin.
+    2. `%programfiles%\Microsoft Azure Active Directory Connect` klasörüne gidin.
+    3. Bu komutu kullanarak sorunsuz SSO PowerShell modülünü içeri aktarın: `Import-Module .\AzureADSSO.psd1`.
+    4. PowerShell 'i yönetici olarak çalıştırın. PowerShell 'de, çağırın `New-AzureADSSOAuthenticationContext`. Bu komut, kiracınızın genel yönetici kimlik bilgilerini girebileceğiniz bir açılan menü vermelidir.
+    5. Çağrısı `Get-AzureADSSOStatus | ConvertFrom-Json`yapın. Bu komut, bu özelliğin etkinleştirildiği AD ormanları listesini ("etki alanları" listesine bakın) sağlar.
 
-### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>Adım 3. Listede gördüğünüz her `AZUREADSSOACCT` ad ormanındaki bilgisayar hesabını el ile silin.
+    **3. adım. Listede gördüğünüz her `AZUREADSSOACCT` ad ormanındaki bilgisayar hesabını el ile silin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

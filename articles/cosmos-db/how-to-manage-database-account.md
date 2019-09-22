@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: db7746bc91935c0385e97d494a45d34819665ced
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 95e3ee31ea6a700253e372d183944c17c85e327c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093395"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178330"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
 
 Bu makalede, Azure Cosmos hesabında Azure portal, Azure PowerShell, Azure CLı ve Azure Resource Manager şablonları kullanılarak çeşitli görevlerin nasıl yönetileceği açıklanır.
 
-## <a name="create-an-account"></a>Hesap oluşturma
+## <a name="create-an-account"></a>Hesap oluşturun
 
 ### <a id="create-database-account-via-portal"></a>Azure portal
 
@@ -166,10 +166,7 @@ Set-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 
 ### <a id="configure-multiple-write-regions-portal"></a>Azure portal
 
-**Verileri genel olarak Çoğalt** sekmesini açın ve çok bölgeli yazmaları etkinleştirmek için **Etkinleştir** ' i seçin. Çok bölgeli yazmaları etkinleştirdikten sonra, şu anda hesapta yer alan tüm okuma bölgeleri okuma ve yazma bölgeleri olur. 
-
-> [!NOTE]
-> Çok bölgeli yazmaları etkinleştirdikten sonra devre dışı bırakılamaz. 
+**Verileri genel olarak Çoğalt** sekmesini açın ve çok bölgeli yazmaları etkinleştirmek için **Etkinleştir** ' i seçin. Çok bölgeli yazmaları etkinleştirdikten sonra, şu anda hesapta yer alan tüm okuma bölgeleri okuma ve yazma bölgeleri olur. Ayrıca, gerektiğinde çok bölgeli yazmaları devre dışı bırakabilirsiniz.
 
 ![Azure Cosmos hesabı, çok yöneticili ekran görüntüsünü yapılandırır](./media/how-to-manage-database-account/single-to-multi-master.png)
 
@@ -182,6 +179,8 @@ $resourceGroupName = 'myResourceGroup'
 $accountName = 'myaccountname'
 az cosmosdb update --name $accountName --resource-group $resourceGroupName --enable-multiple-write-locations true
 ```
+
+Çok bölgeli yazma işlemleri olmadan bir Azure Cosmos hesabı oluşturmak için `--enable-multiple-write-locations` parametresini false olarak ayarlayabilirsiniz.
 
 ### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 

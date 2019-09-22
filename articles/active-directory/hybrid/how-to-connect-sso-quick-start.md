@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87764ed30182dc548fc3a260582174f121e27e24
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29f94d6ff8045b7cae64957eeae00d2460ca3e37
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965224"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71176826"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Kesintisiz çoklu oturum açma Azure Active Directory: Hızlı başlangıç
 
@@ -40,7 +40,7 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun:
    - Güvenlik duvarınız veya proxy DNS beyaz listeye izin veriyorsa, bağlantı noktası 443 üzerinden  **\*. msappproxy.net** URL 'lerine yönelik bağlantıları beyaz listeye ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Bu, gerçek Kullanıcı oturum açma işlemleri için gerekli değildir.
 
     >[!NOTE]
-    >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte kullanmayı düşünmüyorsanız, daha fazla bilgi edinmek için [Azure AD Connect sürüm notlarını](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) okuyun.
+    >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız,_ daha fazla bilgi edinmek için [Azure AD Connect sürüm notlarını](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) okuyun.
 
 * **Desteklenen bir Azure AD Connect topolojisi kullanın**: [Burada](plan-connect-topologies.md)açıklanan Azure AD Connect desteklenen topolojilerden birini kullandığınızdan emin olun.
 
@@ -203,7 +203,7 @@ Sorunsuz SSO, Firefox ve Microsoft Edge tarayıcılarında özel göz atma modun
 
 Belirli bir kullanıcı için özelliği test etmek için aşağıdaki koşulların tümünün yerinde olduğundan emin olun:
   - Kullanıcı bir kurumsal cihazda oturum açar.
-  - Cihaz Active Directory etki alanına katıldı. Cihazın [Azure AD 'ye katılmış](../active-directory-azureadjoin-overview.md)olması gerekmez.
+  - Cihaz Active Directory etki alanına katıldı. Cihazın [Azure AD 'ye katılmış](../active-directory-azureadjoin-overview.md) _olması gerekmez_ .
   - Cihazın, şirket kablolu veya kablosuz ağ ya da VPN bağlantısı gibi bir uzaktan erişim bağlantısı aracılığıyla etki alanı denetleyicinize (DC) doğrudan bağlantısı vardır.
   - Bu kullanıcıya grup ilkesi aracılığıyla [özelliği kullanıma](##step-3-roll-out-the-feature) sunulaştınız.
 
@@ -221,7 +221,7 @@ Kullanıcının Kullanıcı adı veya parola girmesi gereken senaryoyu test etme
 >[!IMPORTANT]
 >Bir bilgisayar hesabındaki Kerberos şifre çözme anahtarı, sızmış ise, AD ormanındaki herhangi bir kullanıcı için Kerberos biletleri oluşturmak üzere kullanılabilir. Kötü amaçlı aktörler daha sonra güvenliği aşılmış kullanıcılar için Azure AD oturum açma işlemlerini taklit edebilir. Bu Kerberos şifre çözme anahtarlarını her 30 günde bir en az bir kez düzenli olarak almanızı önemle tavsiye ederiz.
 
-Anahtarların nasıl alınacağı hakkında yönergeler için bkz [. Azure Active Directory kesintisiz çoklu oturum açma: Sık sorulan sorular](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account). Anahtarları otomatik olarak almak için bir özellik üzerinde çalışıyoruz.
+Anahtarların nasıl alınacağı hakkında yönergeler için bkz [. Azure Active Directory kesintisiz çoklu oturum açma: Sık sorulan sorular](how-to-connect-sso-faq.md). Anahtarları otomatik olarak almak için bir özellik üzerinde çalışıyoruz.
 
 >[!IMPORTANT]
 >Özelliği etkinleştirdikten _hemen_ sonra bu adımı uygulamanız gerekmez. Kerberos şifre çözme anahtarlarını en az 30 günde bir alın.

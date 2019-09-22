@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: 0bb7309ae452b2885be279d1ab38b8467397f2f8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638503"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177059"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Dijital TWINS nesne modellerini ve uzamsal zeka grafiğini anlama
 
@@ -23,9 +23,7 @@ Dijital TWINS nesne modelleri, etki alanına özgü kavramları, kategorileri ve
 
 Dijital TWINS nesne modelleriyle ve bir ontology yerinde, _uzamsal bir grafiği_doldurabilirsiniz. Uzamsal grafikler, bir IoT çözümüyle ilgili olan boşluklar, cihazlar ve kişiler arasındaki birçok ilişkinin sanal temsilleridir. Bu diyagramda, akıllı bina ontology kullanan bir uzamsal grafiğe örnek gösterilmektedir.
 
-![Dijital TWINS uzamsal grafik oluşturma][1]
-
-<a id="model"></a>
+[![Dijital TWINS uzamsal grafik oluşturma](media/concepts/digital-twins-spatial-graph-building.png)](media/concepts/digital-twins-spatial-graph-building.png#lightbox)
 
 Uzamsal grafik, boşluk, cihaz, algılayıcı ve Kullanıcı gibi bir araya getirir. Her biri gerçek dünyayı modelleyen bir şekilde birbirine bağlanır. Bu örnekte, mekan 43, her biri birçok farklı alana sahip dört katça sahiptir. Kullanıcılar iş istasyonlarıyla ilişkilendirilir ve grafiğin bölümlerine erişim sağlar. Bir yöneticinin uzamsal grafiğinde değişiklik yapma hakkı vardır. Bu, bir ziyaretçi yalnızca belirli bina verilerini görüntüleme haklarına sahiptir.
 
@@ -56,8 +54,6 @@ Diğer nesne kategorileri şunlardır:
 - **Eşleştiriciler** , belirli bir telemetri iletisi Için hangi UDF 'leri çalıştırılacağını belirleyen nesnelerdir.
 - **Uç noktalar** telemetri iletilerinin ve dijital TWINS olaylarının yönlendirilebileceği konumlardır, örneğin `Event Hub` `Service Bus`, ve `Event Grid`.
 
-<a id="graph"></a>
-
 ## <a name="spatial-intelligence-graph"></a>Uzamsal zeka grafı
 
 Uzamsal grafik, dijital TWINS nesne modelinde tanımlanan boşlukların, cihazların ve kişilerin hiyerarşik grafiktir. Uzamsal grafik devralma, filtreleme, geçiş, ölçeklenebilirlik ve genişletilebilirliği destekler. Bir REST API koleksiyonu ile uzamsal grafınızı yönetebilir ve bunlarla etkileşim kurabilirsiniz.
@@ -82,14 +78,14 @@ Aboneliğinizde bir dijital TWINS hizmeti dağıtırsanız, kök düğümün gen
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Ad | Şununla değiştir |
+| Name | Şununla değiştir |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Dijital İkizlerini örneğinizin adı |
 | YOUR_LOCATION | Örneğiniz üzerinde barındırılıyorsa hangi sunucu bölge |
 
  Tam URL biçimi bu görüntüde görünür.
 
-![Dijital TWINS Portal Yönetim API 'SI][2]
+(![Dijital TWINS Portal Yönetim API 'SI](media/concepts/digital-twins-spatial-graph-management-api-url.png)] (Media/Concepts/Digital-Twins-Spatial-Graph-Management-api-URL. png # lightbox)
 
 Uzamsal zeka grafiklerini kullanma hakkında daha fazla bilgi için Azure Digital TWINS yönetim API 'Leri gizli Önizleme sayfasını ziyaret edin.
 
@@ -106,7 +102,3 @@ Tüm API çağrılarının kimliği, [OAuth](https://docs.microsoft.com/azure/ac
 - Cihaz bağlantısı ve dijital TWINS 'e telemetri iletileri gönderme hakkında bilgi edinmek için [Azure dijital TWINS cihaz bağlantısı ve telemetri](concepts-device-ingress.md)girişi makalesini okuyun.
 
 - Yönetim API 'SI sınırlamaları ve kısıtları hakkında bilgi edinmek için [Azure Digital TWINS API Yönetimi ve sınırlamaları](concepts-service-limits.md)makalesini okuyun.
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-spatial-graph-building.png
-[2]: media/concepts/digital-twins-spatial-graph-management-api-url.png

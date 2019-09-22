@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell Betiği - Azure Cosmos DB listelemek ve Gremlin API işlemleri Al
-description: Azure PowerShell Betiği - Azure Cosmos DB listelemek ve Gremlin API işlemleri Al
+title: Gremlin API için betik Azure Cosmos DB listesi ve Get işlemleri Azure PowerShell
+description: Gremlin API için betik Azure Cosmos DB listesi ve Get işlemleri Azure PowerShell
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: ab13b867efc073b8dffc7d9eb33ce4596bdf4099
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 532d28e5d10177e25ff700e35c9c2387690d4609
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603935"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178962"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Liste ve Azure Cosmos DB - Gremlin API veritabanları ve grafikler
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Azure Cosmos DB-Gremlin API 'SI için veritabanları ve grafikler listeleme ve edinme
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +39,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure kaynakları**| |
-| [Yeni AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
-|**Azure kaynak grupları**| |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

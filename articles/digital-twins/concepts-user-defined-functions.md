@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638465"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178257"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Veri işleme ve kullanıcı tanımlı işlevleri
 
@@ -23,7 +23,7 @@ Azure dijital TWINS, gelişmiş işlem özellikleri sunar. Geliştiriciler, önc
 
 Cihazların Azure dijital TWINS 'e telemetri verileri gönderdikten sonra, geliştiriciler verileri dört aşamada işleyebilir: *doğrulama*, *eşleşme*, *işlem*ve *dağıtım*.
 
-![Azure dijital TWINS veri işleme akışı][1]
+[![Azure dijital TWINS veri işleme akışı](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. Doğrulama aşaması, gelen telemetri iletisini, yaygın olarak anlaşılan bir [veri aktarımı nesne](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5) biçimine dönüştürür. Bu aşama Ayrıca cihaz ve algılayıcı doğrulamasını yürütür.
 1. Eşleştirme aşaması, çalıştırılacak uygun Kullanıcı tanımlı işlevleri bulur. Önceden tanımlı eşleştiriciler, gelen telemetri iletisinden cihaz, algılayıcı ve alan bilgilerine göre Kullanıcı tanımlı işlevleri bulur.
@@ -34,15 +34,13 @@ Cihazların Azure dijital TWINS 'e telemetri verileri gönderdikten sonra, geli�
 
 Azure dijital TWINS 'de veri işleme üç nesne tanımlamayı içerir: *eşleştiriciler*, *Kullanıcı tanımlı işlevler*ve *rol atamaları*.
 
-![Azure dijital TWINS veri işleme nesneleri][2]
-
-<div id="matcher"></div>
+[![Azure dijital TWINS veri işleme nesneleri](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>Eşleştiriciler
 
 Eşleştiriciler, gelen algılayıcı telemetrisine göre hangi eylemlerin gerçekleşmekte olduğunu değerlendiren bir koşul kümesi tanımlar. Eşleşmeyi belirleme koşulları, sensörden, sensörün üst cihazından ve sensörün üst alanıyla eşleşen özellikler içerebilir. Koşullar, bu örnekte özetlenen bir [JSON yoluna](https://jsonpath.com/) yönelik karşılaştırmalar olarak ifade edilir:
 
-- Kaçan dize değeriyle temsil edilen veri türü sıcaklığının tüm sensörlerinden`\"Temperature\"`
+- Kaçan dize değeriyle temsil edilen veri türü **sıcaklığının** tüm sensörlerinden`\"Temperature\"`
 - Bağlantı `01` noktasında olma
 - Genişletilmiş özellik anahtarı **üreticisine** sahip cihazlara, kaçan dize değeri olarak ayarlanmış olan cihazlar`\"GoodCorp\"`
 - Kaçan dize tarafından belirtilen türdeki boşluklara ait olan`\"Venue\"`
@@ -92,7 +90,7 @@ Eşleştiriciler, gelen algılayıcı telemetrisine göre hangi eylemlerin gerç
 
 ### <a name="user-defined-functions"></a>Kullanıcı tanımlı işlevler
 
-Kullanıcı tanımlı bir işlev, yalıtılmış bir Azure dijital TWINS ortamı içinde yürütülen özel bir işlevdir. Kullanıcı tanımlı işlevlerin, alındığı için ham algılayıcı telemetri iletisine erişimi vardır. Kullanıcı tanımlı işlevlerin de uzamsal grafik ve dağıtıcı hizmetine erişimi vardır. Kullanıcı tanımlı işlev bir grafik içinde kaydedildikten sonra, işlevin ne zaman yürütüleceğini belirtmek için bir eşleştirici ( [yukarıya](#matcher)ayrıntılı) oluşturulmalıdır. Örneğin, Azure dijital TWINS, belirli bir sensörden yeni telemetri aldığında, eşleşen kullanıcı tanımlı işlev, son birkaç algılayıcı okumasının hareketli ortalamasını hesaplayabilir.
+Kullanıcı tanımlı bir işlev, yalıtılmış bir Azure dijital TWINS ortamı içinde yürütülen özel bir işlevdir. Kullanıcı tanımlı işlevlerin, alındığı için ham algılayıcı telemetri iletisine erişimi vardır. Kullanıcı tanımlı işlevlerin de uzamsal grafik ve dağıtıcı hizmetine erişimi vardır. Kullanıcı tanımlı işlev bir grafik içinde kaydedildikten sonra, işlevin ne zaman yürütüleceğini belirtmek için bir eşleştirici ( [yukarıya](#matchers)ayrıntılı) oluşturulmalıdır. Örneğin, Azure dijital TWINS, belirli bir sensörden yeni telemetri aldığında, eşleşen kullanıcı tanımlı işlev, son birkaç algılayıcı okumasının hareketli ortalamasını hesaplayabilir.
 
 Kullanıcı tanımlı işlevler JavaScript 'te yazılabilir. Yardımcı yöntemler Kullanıcı tanımlı yürütme ortamında grafikle etkileşime geçin. Geliştiriciler, algılayıcı telemetri iletilerine karşı özel kod parçacıkları yürütebilir. Örneklere şunlar dahildir:
 
@@ -103,14 +101,11 @@ Kullanıcı tanımlı işlevler JavaScript 'te yazılabilir. Yardımcı yönteml
 
 Daha fazla bilgi için bkz. [Kullanıcı tanımlı işlevleri kullanma](./how-to-user-defined-functions.md).
 
-
 #### <a name="examples"></a>Örnekler
 
 [Dijital TWINS C# örneği için GitHub deposu](https://github.com/Azure-Samples/digital-twins-samples-csharp/) , Kullanıcı tanımlı işlevlere birkaç örnek içerir:
 - [Bu işlev](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) , Aralık içinde bu değerlerle kullanılabilir bir oda olup olmadığını belirlemede karbon dioksit, hareket ve sıcaklık değerlerini arar. [Dijital TWINS öğreticileri](tutorial-facilities-udf.md) , daha ayrıntılı bilgi için bu işlevi keşfedebilir. 
-- [Bu işlev](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) , birden çok hareket sensörlerinden verileri arar ve hiçbir türlü hareketi algılamazsa alanın kullanılabilir olduğunu belirler. Dosyanın açıklamalar bölümünde bahsedilen değişiklikleri yaparak [hızlı](quickstart-view-occupancy-dotnet.md)başlangıçta veya öğreticilerde kullanılan Kullanıcı tanımlı işlevi kolayca değiştirebilirsiniz [](tutorial-facilities-setup.md). 
-
-
+- [Bu işlev](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js) , birden çok hareket sensörlerinden verileri arar ve hiçbir türlü hareketi algılamazsa alanın kullanılabilir olduğunu belirler. Dosyanın açıklamalar bölümünde bahsedilen değişiklikleri yaparak [hızlı](quickstart-view-occupancy-dotnet.md)başlangıçta veya [öğreticilerde](tutorial-facilities-setup.md)kullanılan Kullanıcı tanımlı işlevi kolayca değiştirebilirsiniz. 
 
 ### <a name="role-assignment"></a>Rol ataması
 
@@ -125,7 +120,3 @@ Bir Eşleştirici, rol ataması olmayan kullanıcı tanımlı bir işlevin tetik
 - Eşleştiriciler, Kullanıcı tanımlı işlevler ve rol atamaları oluşturma hakkında daha fazla bilgi edinmek için [Kullanıcı tanımlı işlevleri kullanma kılavuzu](./how-to-user-defined-functions.md)' nu okuyun.
 
 - [Kullanıcı tanımlı işlev istemci kitaplığı başvuru belgelerini](./reference-user-defined-functions-client-library.md)gözden geçirin.
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-data-processing-flow.png
-[2]: media/concepts/digital-twins-user-defined-functions.png

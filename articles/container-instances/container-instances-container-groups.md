@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b17004e7821bcac61ca98afdbeaf87644da2a441
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68326048"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178584"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances kapsayıcı grupları
 
@@ -41,9 +41,11 @@ Bu örnek kapsayıcı grubu:
 
 ## <a name="deployment"></a>Dağıtım
 
-Çok kapsayıcılı bir grubu dağıtmanın iki yaygın yolu aşağıda verilmiştir: bir [Kaynak Yöneticisi şablonu][resource-manager template] veya [YAML dosyası][yaml-file]kullanın. Kapsayıcı örneklerini dağıtırken ek Azure hizmet kaynakları (örneğin, bir [Azure dosyaları paylaşma][azure-files]) dağıtmanız gerektiğinde, bir kaynak yöneticisi şablonu önerilir. YAML biçiminin daha kısa olmasından dolayı, dağıtımınız yalnızca kapsayıcı örnekleri içerdiğinde YAML dosyası önerilir.
+Çok kapsayıcılı bir grubu dağıtmanın iki yaygın yolu aşağıda verilmiştir: bir [Kaynak Yöneticisi şablonu][resource-manager template] veya [YAML dosyası][yaml-file]kullanın. Kapsayıcı örneklerini dağıtırken ek Azure hizmet kaynakları (örneğin, bir [Azure dosyaları paylaşma][azure-files]) dağıtmanız gerektiğinde, bir kaynak yöneticisi şablonu önerilir. YAML biçiminin daha kısa olmasından dolayı, dağıtımınız yalnızca kapsayıcı örnekleri içerdiğinde YAML dosyası önerilir. Ayarlayabileceğiniz özelliklerle ilgili ayrıntılar için [Kaynak Yöneticisi Şablon başvurusu](/azure/templates/microsoft.containerinstance/containergroups) veya [YAML başvuru](container-instances-reference-yaml.md) belgelerine bakın.
 
 Bir kapsayıcı grubunun yapılandırmasını korumak için, [az kapsayıcı dışarı aktarma][az-container-export]Azure CLI komutunu kullanarak bir YAML dosyasına yapılandırmayı dışarı aktarabilirsiniz. Dışarı aktarma, kapsayıcı grubu yapılandırmalarını "kod olarak yapılandırma" için sürüm denetiminde depolamanıza olanak tanır. Ya da, YAML 'de yeni bir yapılandırma geliştirirken, bir başlangıç noktası olarak, dışarıya aktarılmış dosyayı kullanın.
+
+
 
 ## <a name="resource-allocation"></a>Kaynak ayırma
 

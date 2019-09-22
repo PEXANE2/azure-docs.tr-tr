@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861259"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178198"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API Management IP adresleri
 
@@ -61,7 +61,7 @@ Genel IP adresleri yanıtın bir parçası olacaktır:
 
 API Management hizmetiniz bir sanal ağın içindeyse, iki tür IP adresine sahip olur-genel ve özel.
 
-Genel IP adresleri, bağlantı noktası `3443` üzerinde dahili iletişim için kullanılır (örneğin, Azure Resource Manager aracılığıyla). Ayrıca, API Management bir istek, herkese açık (Internet 'e yönelik) arka uca gönderildiğinde, bir genel IP adresi isteğin kaynağı olarak görünür olur.
+Genel IP adresleri, bağlantı noktası `3443` üzerinde dahili iletişim için kullanılır (örneğin, Azure Resource Manager aracılığıyla). Dış VNET yapılandırmasında, çalışma zamanı API trafiği için de kullanılır. API Management bir istek, herkese açık (Internet 'e yönelik) arka uca gönderildiğinde, bir genel IP adresi isteğin kaynağı olarak görünür olur.
 
 Özel sanal IP (VIP) adresleri, ağ içinden API Management uç noktalarına, geliştirici portalına ve doğrudan API erişimi için yönetim düzlemini bağlamak için kullanılır. Ağ içinde DNS kayıtlarını ayarlamak için bunları kullanabilirsiniz.
 

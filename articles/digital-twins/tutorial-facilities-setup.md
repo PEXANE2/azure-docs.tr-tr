@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622940"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177194"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Öğretici: Azure dijital TWINS önizlemesi dağıtma ve uzamsal bir grafik yapılandırma
 
@@ -43,15 +43,11 @@ Bu öğreticilerde [uygun odaları bulma hızlı başlangıcındaki](quickstart-
 
 - Örnek kodu incelemek için [Visual Studio Code](https://code.visualstudio.com/). 
 
-<a id="deploy"></a>
-
 ## <a name="deploy-digital-twins"></a>Digital Twins'i dağıtma
 
 Azure dijital İkizlerini hizmetinin yeni bir örneğini oluşturmak için bu bölümdeki adımları kullanın. Abonelik başına yalnızca bir örneği oluşturulabilir. Bir çalıştırma zaten varsa, sonraki bölüme atlayın. 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
-
-<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>Uygulamanıza izin verme
 
@@ -76,7 +72,7 @@ Bu bölümde, iletişim kuran Azure dijital İkizlerini uygulamanın size [dijit
 
 Ayıklanan örnek klasöründe dosyasını açın **digital-twins-samples-csharp\digital-twins-samples.code-workspace** Visual Studio code'da. Bu dosyada iki proje bulunur:
 
-* Sağlama örneği kullanabilirsiniz **doluluk-quickstart** yapılandırmak ve sağlamak için bir [uzamsal zeka graf](concepts-objectmodel-spatialgraph.md#graph). Bu grafik, fiziksel alanları ve bunları kaynakları sayısal görüntüsüdür. Bunu kullanan bir [nesne modeli](concepts-objectmodel-spatialgraph.md#model), nesneler için akıllı bir yapı tanımlar. Dijital İkizlerini nesneleri ve REST API'lerinin tam listesi için ziyaret [bu REST API belgelerini](https://docs.westcentralus.azuresmartspaces.net/management/swagger) veya yönetim API'si URL'si için oluşturulan [örneğinizin](#deploy).
+* Sağlama örneği kullanabilirsiniz **doluluk-quickstart** yapılandırmak ve sağlamak için bir [uzamsal zeka graf](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). Bu grafik, fiziksel alanları ve bunları kaynakları sayısal görüntüsüdür. Bunu kullanan bir [nesne modeli](concepts-objectmodel-spatialgraph.md#digital-twins-object-models), nesneler için akıllı bir yapı tanımlar. Dijital İkizlerini nesneleri ve REST API'lerinin tam listesi için ziyaret [bu REST API belgelerini](https://docs.westcentralus.azuresmartspaces.net/management/swagger) veya yönetim API'si URL'si için oluşturulan [örneğinizin](#deploy-digital-twins).
 
    Örnek dijital İkizlerini örneğiniz ile nasıl iletişim kurduğu görmek için keşfetmek için ile başlayabilirsiniz **src\actions** klasör. Bu klasördeki dosyalar bu öğreticilerde kullanacağınız komutları uygulayın:
     - **ProvisionSample.cs** dosya uzamsal grafınızı sağlamak nasıl gösterir.
@@ -101,17 +97,15 @@ Ayıklanan örnek klasöründe dosyasını açın **digital-twins-samples-csharp
     ```
 
 1. Visual Studio Code'da açmak [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) dosyası **doluluk-quickstart** proje. Aşağıdaki değerleri güncelleştirin:
-   * **ClientID**: Azure AD uygulama kaydlarınızın uygulama KIMLIĞINI girin. Bölümünde bu kimliği not ettiğiniz Burada, [uygulama izinleri ayarla](#permissions).
-   * **Kiracı**: [Azure AD kiracınızın](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)dizin kimliğini girin. Ayrıca bu kimliği bölümünde belirtildiği Burada, [uygulama izinleri ayarla](#permissions).
-   * **BaseUrl**: Dijital TWINS örneğinizin URL 'sini girin. Bu URL 'YI almak için, bu URL 'deki yer tutucuları örneğinizin değerleriyle değiştirin: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Yönetim API'si URL'den değiştirerek bu URL'yi alabilirsiniz [dağıtım bölümü](#deploy). Değiştirin **swagger /** ile **api/v1.0/** .
+   * **ClientID**: Azure AD uygulama kaydlarınızın uygulama KIMLIĞINI girin. Bölümünde bu kimliği not ettiğiniz Burada, [uygulama izinleri ayarla](#grant-permissions-to-your-app).
+   * **Kiracı**: [Azure AD kiracınızın](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)dizin kimliğini girin. Ayrıca bu kimliği bölümünde belirtildiği Burada, [uygulama izinleri ayarla](#grant-permissions-to-your-app).
+   * **BaseUrl**: Dijital TWINS örneğinizin URL 'sini girin. Bu URL 'YI almak için, bu URL 'deki yer tutucuları örneğinizin değerleriyle değiştirin: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. Yönetim API'si URL'den değiştirerek bu URL'yi alabilirsiniz [dağıtım bölümü](#deploy-digital-twins). Değiştirin **swagger /** ile **api/v1.0/** .
 
 1. Örnek kullanarak keşfedebilirsiniz dijital İkizlerini özelliklerin bir listesi bakın. Şu komutu çalıştırın:
 
     ```cmd/sh
     dotnet run
     ```
-
-<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>Sağlama işlemini anlama
 

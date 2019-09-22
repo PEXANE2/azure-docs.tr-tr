@@ -1,19 +1,20 @@
 ---
-title: Azure PowerShell Betiği - Azure Cosmos DB aktarım hızı alma (RU/sn) MongoDB API'si için
-description: Azure PowerShell Betiği - Azure Cosmos DB aktarım hızı alma (RU/sn) MongoDB API'si için
+title: MongoDB API 'SI için Azure PowerShell betiği Azure Cosmos DB Get üretilen Iş (RU/s)
+description: MongoDB API 'SI için Azure PowerShell betiği Azure Cosmos DB Get üretilen Iş (RU/s)
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 07/03/2019
 ms.author: mjbrown
-ms.openlocfilehash: 91e3d8f1240e2eebb3e1d30ee18b16299f442106
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 0df75831bb54ebb9f648a8ca9207c2572fd4d2e9
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602282"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178874"
 ---
-# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Bir veritabanı veya koleksiyon için Azure Cosmos DB - MongoDB API'si için işleme (RU/s) alma
+# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB-MongoDB API 'SI için bir veritabanı veya koleksiyon için üretilen Iş (RU/sn) alın
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +39,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure kaynakları**| |
-| [Yeni AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
-|**Azure kaynak grupları**| |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

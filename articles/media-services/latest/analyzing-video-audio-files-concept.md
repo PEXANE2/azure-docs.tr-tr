@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 09/21/2019
 ms.author: juliako
-ms.openlocfilehash: 477733dcb76647b2c03f79dea4f55c3102d262b8
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bc4be8eaafe805e5d9a985b005efe80bc4af1d21
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376196"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177986"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Video ve ses dosyalarını çözümleme
 
-Azure Media Services v3, AMS v3 çözümleyici önayarları aracılığıyla (Bu makalede açıklanmıştır), video ve ses dosyalarından Video Indexer içeren öngörüleri ayıklamanızı sağlar. Daha ayrıntılı içgörüler istiyorsanız doğrudan Video Indexer’ı kullanın. Video Indexer’ı ve Media Services çözümleyicisinin önceden belirlenmiş ayarlarını hangi durumlarda kullanacağınızı anlamak için [karşılaştırma belgesine](../video-indexer/compare-video-indexer-with-media-services-presets.md) bakın.
+Azure Media Services v3, Media Services v3 çözümleyici önayarları aracılığıyla (Bu makalede açıklanmıştır), video ve ses dosyalarından Video Indexer içeren öngörüleri ayıklamanızı sağlar. Daha ayrıntılı içgörüler istiyorsanız doğrudan Video Indexer’ı kullanın. Video Indexer’ı ve Media Services çözümleyicisinin önceden belirlenmiş ayarlarını hangi durumlarda kullanacağınızı anlamak için [karşılaştırma belgesine](../video-indexer/compare-video-indexer-with-media-services-presets.md) bakın.
 
 Media Services v3 ön ayarlarını kullanarak içeriğinizi analiz etmek için bir **dönüşüm** oluşturur ve bu önayarlardan birini kullanan bir **iş** gönderebilirsiniz: [Videoanaliz zerönayar](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) veya **audioanaldaha önayarı**. Aşağıdaki makalede, **Videoanaliz Zerönayar**nasıl kullanılır: [Öğreticide Videoları Azure Media Services](analyze-videos-tutorial-with-api.md)analiz edin.
 
@@ -67,7 +67,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 |id|Satır KIMLIĞI.|
 |text|Dökümü.|
 |dil|Döküm dili. Her satırın farklı bir dile sahip olduğu yazılı betiği desteklemeye yöneliktir.|
-|Örnekler|Bu satırın göründüğü zaman aralıklarının listesi. Örnek TRANSCRIPT ise, yalnızca 1 örneğe sahip olur.|
+|örnekler|Bu satırın göründüğü zaman aralıklarının listesi. Örnek TRANSCRIPT ise, yalnızca 1 örneğe sahip olur.|
 
 Örnek:
 
@@ -106,7 +106,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 |text|OCR metni.|
 |likli|Tanıma güvenilirliği.|
 |dil|OCR dili.|
-|Örnekler|Bu OCR 'nin göründüğü zaman aralıklarının listesi (aynı OCR birden çok kez görünebilir).|
+|örnekler|Bu OCR 'nin göründüğü zaman aralıklarının listesi (aynı OCR birden çok kez görünebilir).|
 
 ```json
 "ocr": [
@@ -155,7 +155,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 |referenceType|Şu anda yalnızca Bing.|
 |title|Bu bir ünlüğlik ise, başlığı (örneğin, "Microsoft 'un CEO").|
 |ImageUrl|Bu bir ünlüsün ise, görüntü URL 'si.|
-|Örnekler|Bunlar, yüzün verilen zaman aralığında göründüğü örneklerdir. Her örneğin bir thumbnailsId de vardır. |
+|örnekler|Bunlar, yüzün verilen zaman aralığında göründüğü örneklerdir. Her örneğin bir thumbnailsId de vardır. |
 
 ```json
 "faces": [{
@@ -192,7 +192,7 @@ Media Services Şu anda aşağıdaki yerleşik çözümleyici önayarlarını de
 |---|---|
 |id|Görüntü KIMLIĞI.|
 |Gezen|Görüntü içindeki anahtar çerçevelerinin listesi (her birinin bir KIMLIĞI ve bir örnek zaman aralığı listesi vardır). Anahtar çerçeve örneklerinin, ana karenin küçük resim KIMLIĞI olan bir thumbnailId alanı vardır.|
-|Örnekler|Bu görüntüsündeki zaman aralıklarının bir listesi (görüntüleri yalnızca 1 örneğe sahiptir).|
+|örnekler|Bu görüntüsündeki zaman aralıklarının bir listesi (görüntüleri yalnızca 1 örneğe sahiptir).|
 
 ```json
 "Shots": [
@@ -262,7 +262,7 @@ Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). 
 |---|---|
 |id|Yaklaşım KIMLIĞI.|
 |averageScore |Bu yaklaşım türünün tüm örneklerinin ortalaması-pozitif/nötr/negatif|
-|Örnekler|Bu yaklaşım görüntülenen zaman aralıklarının bir listesi.|
+|örnekler|Bu yaklaşım görüntülenen zaman aralıklarının bir listesi.|
 |sentimentType |Tür ' pozitif ', ' Nötr ' veya ' negative ' olabilir.|
 
 ```json
@@ -298,7 +298,7 @@ Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). 
 |id|Etiket KIMLIĞI.|
 |name|Etiket adı (örneğin, ' bilgisayar ', ' TV ').|
 |dil|Etiket adı dili (çevrildiğinde). BCP-47|
-|Örnekler|Bu etiketin göründüğü zaman aralıklarının listesi (bir etiket birden çok kez görünebilir). Her örneğin bir güvenirlik alanı vardır. |
+|örnekler|Bu etiketin göründüğü zaman aralıklarının listesi (bir etiket birden çok kez görünebilir). Her örneğin bir güvenirlik alanı vardır. |
 
 
 ```json
@@ -358,7 +358,7 @@ Sentiments, sentimentType alanı tarafından toplanır (pozitif/nötr/negatif). 
 |text|Anahtar sözcük metni.|
 |likli|Anahtar sözcüğünün tanıma güvenilirliği.|
 |dil|Anahtar sözcük dili (çevrildiğinde).|
-|Örnekler|Bu anahtar sözcüğünün göründüğü zaman aralıklarının listesi (bir anahtar sözcük birden çok kez görünebilir).|
+|örnekler|Bu anahtar sözcüğünün göründüğü zaman aralıklarının listesi (bir anahtar sözcük birden çok kez görünebilir).|
 
 ```json
 "keywords": [
@@ -408,7 +408,7 @@ Yetişkin veya kcy içeriği içeren videolar yalnızca özel görünüm için k
 |id|Görsel içerik denetleme KIMLIĞI.|
 |adultScore|Yetişkin puanı (İçerik Yöneticisi 'nden).|
 |Oycyscore|Yağanın puanı (içerik denetleme).|
-|Örnekler|Bu görsel içerik denetimi 'nin göründüğü zaman aralıklarının listesi.|
+|örnekler|Bu görsel içerik denetimi 'nin göründüğü zaman aralıklarının listesi.|
 
 ```json
 "VisualContentModeration": [

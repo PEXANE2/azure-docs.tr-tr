@@ -6,14 +6,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a013525109fe85ad70e5aaa5895da20f5abc3237
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638524"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71177091"
 ---
 # <a name="routing-events-and-messages"></a>Yönlendirme olayları ve iletileri
 
@@ -29,7 +29,7 @@ Azure dijital TWINS, IoT olaylarını diğer Azure hizmetleriyle veya iş uygula
 
 Kullanıcılar, olayları göndermek veya iletileri iletmek için bir veya daha fazla çıkış uç noktası belirtebilir. Olaylar ve iletiler, bu önceden tanımlanmış yönlendirme tercihlerine göre uç noktalara gönderilir. Diğer bir deyişle, kullanıcılar, Graph işlem olaylarını almak için başka bir uç nokta belirtebilir, diğer bir deyişle cihaz telemetri olaylarını alabilir ve bu şekilde devam edebilir.
 
-![Azure dijital TWINS olayları yönlendirme][1]
+[![Azure dijital TWINS olayları yönlendirme](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 Event Hubs yönlendirme, telemetri iletilerinin gönderilme sırasını korur. Bu nedenle, son olarak alındıkları sırada uç noktaya ulaşır. Event Grid ve Service Bus uç noktaların olayları gerçekleşdikleri sırada almasını garanti etmez. Ancak olay şeması, olaylar uç noktaya ulaştığında sırayı belirlemek için kullanılabilecek bir zaman damgası içerir.
 
@@ -67,6 +67,3 @@ Azure dijital TWINS Şu anda seçili uç noktaya gönderilecek olan aşağıdaki
 - Azure dijital TWINS önizleme sınırları hakkında bilgi edinmek için bkz. [Genel Önizleme hizmeti sınırları](concepts-service-limits.md).
 
 - Bir Azure dijital TWINS örneği denemek için, [kullanılabilir odaları bulmak için hızlı](quickstart-view-occupancy-dotnet.md)başlangıca bakın.
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-events-routing.png
