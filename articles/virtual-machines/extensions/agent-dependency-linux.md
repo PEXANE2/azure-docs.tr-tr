@@ -76,9 +76,9 @@ Aşağıdaki JSON, Azure Linux VM 'de Azure VM bağımlılık Aracısı uzantıs
 | Name | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| publisher | Microsoft. Azure. Monitoring. DependencyAgent |
+| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
 | type | DependencyAgentLinux |
-| typeHandlerVersion | 9,5 |
+| typeHandlerVersion | 9.5 |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
