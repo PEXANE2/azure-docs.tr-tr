@@ -92,16 +92,16 @@ Aşağıdaki örnekte, dış dizinin ortak boyut değerlerinin paylaşılan bir 
 
    | deviceId | Ileti | deviceLocation |
    | --- | --- | --- |
-   | FXXX | SATIR\_VERİLERİ | AB |
-   | FYYY | SATIR\_VERİLERİ | ABD |
+   | FXXX | LINE\_DATA | EU |
+   | FYYY | LINE\_DATA | US |
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
    | deviceId | Ileti | deviceLocation | timestamp | dizi. Akış hızı ft3/sn | dizi. Petrol baskısı PSI altyapısı |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | SATIR\_VERİLERİ | AB | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
-   | FXXX | SATIR\_VERİLERİ | AB | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
-   | FYYY | SATIR\_VERİLERİ | ABD | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34.7 |
+   | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49.2 |
+   | FYYY | LINE\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 Bu iki tabloya Not:
 
