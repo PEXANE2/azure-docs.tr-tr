@@ -66,17 +66,17 @@ Aşağıdaki JSON, uygulama sistem durumu uzantısının şemasını gösterir. 
 | Ad | Değer / örnek | Veri Türü
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | dize |
-| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | dize |
+| publisher | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Ayarlar
 
 | Name | Değer / örnek | Veri Türü
 | ---- | ---- | ----
-| protocol | `http` veya `tcp` | dize |
+| protocol | `http` veya `tcp` | string |
 | port | Protokol olduğunda isteğe bağlı `http`, protokol olduğunda zorunludur`tcp` | int |
-| Istek yolu | Protokol olduğunda zorunlu, protokol ise izin verilmez `http``tcp` | dize |
+| requestPath | Protokol olduğunda zorunlu, protokol ise izin verilmez `http``tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Uygulama durumu uzantısını dağıtma
 Aşağıdaki örneklerde açıklandığı şekilde, uygulama durumu uzantısını ölçek kümelerinizi dağıtmanın birden çok yolu vardır.
