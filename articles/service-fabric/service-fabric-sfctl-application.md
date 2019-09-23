@@ -28,7 +28,7 @@ Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin.
 |Komut|Açıklama|
 | --- | --- |
 | create | Belirtilen açıklamayı kullanarak bir Service Fabric uygulaması oluşturur. |
-| sil | Mevcut bir Service Fabric uygulamasını siler. |
+| delete | Mevcut bir Service Fabric uygulamasını siler. |
 | deployed | Service Fabric düğümünde dağıtılan bir uygulamayla ilgili bilgileri alır. |
 | deployed-health | Service Fabric düğümünde dağıtılan bir uygulamanın sistem durumu hakkındaki bilgileri alır. |
 | deployed-list | Bir Service Fabric düğümünde dağıtılan uygulamaların listesini alır. |
