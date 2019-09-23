@@ -53,7 +53,7 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Seçtiğin
 | SubscriptionId | Sunucunun ait olduğu abonelik için GUID |
 | ResourceGroup | Sunucunun ait olduğu kaynak grubunun adı |
 | ResourceProvider | Kaynak sağlayıcının adı. Her zaman `MICROSOFT.DBFORPOSTGRESQL` |
-| KaynakTürü | `Servers` |
+| ResourceType | `Servers` |
 | ResourceId | Kaynak URI 'SI |
 | Resource | Sunucunun adı |
 | Category | `PostgreSQLLogs` |
@@ -67,7 +67,7 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Seçtiğin
 | DatatypeName | Veri türünün adı (varsa) |
 | LogicalServerName | Sunucunun adı | 
 | _Resourceıd | Kaynak URI 'SI |
-| Önek | Günlük satırının öneki |
+| Prefix | Günlük satırının öneki |
 
 
 
