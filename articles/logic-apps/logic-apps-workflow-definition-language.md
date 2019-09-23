@@ -79,11 +79,11 @@ Bir parametre tanımının genel yapısı aşağıda verilmiştir:
 
 | Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*parametre-adı*> | Evet | Dize | Tanımlamak istediğiniz parametrenin adı |
+| <*parametre-name*> | Evet | String | Tanımlamak istediğiniz parametrenin adı |
 | <*parameter-type*> | Evet | int, float, String, bool, Array, Object, SecureString, secureobject <p><p>**Not**: Tüm parolalar, anahtarlar ve gizlilikler için, `securestring` veya `secureobject` türlerini kullanın çünkü `GET` işlem bu türleri döndürmez. Parametrelerin güvenliğini sağlama hakkında daha fazla bilgi için bkz. [eylem ve giriş parametreleri Için güvenlik önerileri](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Parametrenin türü |
-| <*Varsayılan parametre değeri*> | Evet | Aynı`type` | İş akışı örnekedildiğinde hiçbir değer belirtilmemişse kullanılacak varsayılan parametre değeri. Mantıksal uygulama Tasarımcısı 'nın parametreyi doğru bir şekilde gösterebilmesi için özniteliğigereklidir,ancakboşbirdeğerbelirtebilirsiniz.`defaultValue` |
+| <*default-parameter-value*> | Evet | Aynı`type` | İş akışı örnekedildiğinde hiçbir değer belirtilmemişse kullanılacak varsayılan parametre değeri. Mantıksal uygulama Tasarımcısı 'nın parametreyi doğru bir şekilde gösterebilmesi için özniteliğigereklidir,ancakboşbirdeğerbelirtebilirsiniz.`defaultValue` |
 | <*array-with-permitted-parameter-values*> | Hayır | Array | Parametrenin kabul edebileceği değerleri içeren bir dizi |
-| <*parametre-açıklama*> | Hayır | JSON nesnesi | Parametresi için açıklama gibi diğer parametre ayrıntıları |
+| <*parameter-description*> | Hayır | JSON nesnesi | Parametresi için açıklama gibi diğer parametre ayrıntıları |
 ||||
 
 Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md) oluşturun, dağıtımda istediğiniz değerleri kabul eden şablon parametrelerini tanımlayın, sabit kodlanmış değerleri şablon veya iş akışı Tanım parametrelerine göre değiştirin uygun ve dağıtımda kullanılacak değerleri ayrı bir [parametre dosyasında](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)depolayın. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan parametre dosyası aracılığıyla bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Gizli olan veya güvenli hale getirilmesi gereken (örneğin, Kullanıcı adları, parolalar ve gizli bilgiler), bu değerleri Azure Key Vault saklayabilir ve parametre dosyanızın anahtar kasasından bu değerleri almasına sahip olursunuz. Şablon ve iş akışı Tanım düzeylerinde parametreleri tanımlama hakkında daha fazla bilgi ve örnek için bkz [. genel bakış: Azure Resource Manager şablonlarıyla](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)Logic Apps için dağıtımı otomatikleştirin.
