@@ -183,8 +183,8 @@
       href: /rest/api/mariadb
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: Veri içi çoğaltma saklı yordamları
-      href: reference-data-in-stored-procedures.md
+    - name: Azure saklı yordamları
+      href: reference-stored-procedures.md
 - name: Kaynaklar
   items:
     - name: Dağıtım şablonları

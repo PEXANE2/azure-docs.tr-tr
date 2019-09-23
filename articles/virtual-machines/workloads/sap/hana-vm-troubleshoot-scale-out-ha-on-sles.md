@@ -434,7 +434,7 @@ SBD_WATCHDOG=yes
 </code></pre>
 
 
-/Etc/IBU **/SCC \** ' daki başlangıç ayarını kontrol edin. Gerekli ayar, belgelerde açıklanan aşağıdaki IBir ı Farklı olursa, **VI** ile el ile doğrulayın ve bu öğeyi el ile uyarlayabilirsiniz.
+/Etc/IBU **/SCC** daki başlangıç ayarını kontrol edin. Gerekli ayar, belgelerde açıklanan aşağıdaki IBir ı Farklı olursa, **VI** ile el ile doğrulayın ve bu öğeyi el ile uyarlayabilirsiniz.
 
 Bu komut başlangıç davranışını ayarlar:
 
@@ -442,7 +442,7 @@ Bu komut başlangıç davranışını ayarlar:
 iscsiadm -m node --op=update --name=node.startup --value=automatic
 </code></pre>
 
-Bu girdiyi **/etc/ITS/SCC \** ' da yap:
+Bu girdiyi **/etc/ITS/SCC** da yap:
 
 <pre><code>
 node.startup = automatic

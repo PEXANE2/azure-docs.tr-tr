@@ -9,12 +9,22 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Ad çözümlemesi - portal
-      href: dns-getstarted-portal.md
-    - name: Ad çözümlemesi - Powershell
-      href: dns-getstarted-powershell.md
-    - name: Ad çözümlemesi - CLI
-      href: dns-getstarted-cli.md
+    - name: Genel DNS
+      items:
+        - name: Genel bölge oluşturma - portal
+          href: dns-getstarted-portal.md
+        - name: Genel bölge oluşturma - PowerShell
+          href: dns-getstarted-powershell.md
+        - name: Genel bölge oluşturma - CLI
+          href: dns-getstarted-cli.md
+    - name: Özel DNS
+      items:
+        - name: Özel bölge oluşturma - portal
+          href: private-dns-getstarted-portal.md
+        - name: Özel bölge oluşturma - CLI
+          href: private-dns-getstarted-cli.md
+        - name: Özel bölge oluşturma - PowerShell
+          href: private-dns-getstarted-powershell.md
 - name: Öğreticiler
   items:
     - name: Genel DNS
@@ -29,10 +39,6 @@
           href: tutorial-alias-pip.md
         - name: Bölge kayıtları için diğer ad kayıtları
           href: tutorial-alias-rr.md
-    - name: Özel DNS
-      items:
-        - name: Özel bir DNS bölgesi ve kaydı oluşturma
-          href: private-dns-portal.md
 - name: Örnekler
   items:
     - name: Azure CLI
@@ -63,12 +69,6 @@
           href: private-dns-scenarios.md
 - name: Nasıl yapılır
   items:
-    - name: Özel DNS
-      items:
-        - name: Özel bölge oluşturma - CLI
-          href: private-dns-getstarted-cli.md
-        - name: Özel bölge oluşturma - PowerShell
-          href: private-dns-getstarted-powershell.md
     - name: Genel DNS
       items:
         - name: Yük dengeli web uygulamaları için diğer ad kayıtları

@@ -229,8 +229,8 @@
       href: /rest/api/mysql
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.dbformysql/allversions
-    - name: Veri içi çoğaltma saklı yordamları
-      href: reference-data-in-stored-procedures.md
+    - name: Azure saklı yordamları
+      href: reference-stored-procedures.md
 - name: Kaynaklar
   items:
     - name: Dağıtım şablonları

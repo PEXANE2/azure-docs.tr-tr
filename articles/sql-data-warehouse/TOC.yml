@@ -140,7 +140,11 @@
             - name: Performans ayarlama kılavuzu
               href: performance-tuning-ordered-CCI.md
         - name: Sonuç kümesini önbelleğe alma
-          href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+          items:
+            - name: Veritabanı için ayarlama
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
+            - name: Oturum için ayarlama
+              href: /sql/t-sql/statements/set-result-set-caching-transact-sql
         - name: Tablolar
           items:
             - name: Genel Bakış

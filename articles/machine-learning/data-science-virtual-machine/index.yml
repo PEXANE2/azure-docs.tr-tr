@@ -1,29 +1,28 @@
 ### YamlMime:Landing
 title: Azure Veri Bilimi Sanal Makinesi belgeleri
-summary: Azure Veri Bilimi Sanal Makinesi (DSVM) veri bilimi ve Machine Learning araçları içeren özel bir VM görüntüsüdür. Gelişmiş analiz için akıllı uygulamalar oluşturmak amacıyla bu VM’yi kullanın.
+summary: Azure Veri Bilimi Sanal Makinesi (DSVM) veri bilimi ve makine öğrenmesi araçları içeren ve önceden yüklenen bir sanal makine görüntüsüdür. Gelişmiş analiz için akıllı uygulamalar oluşturmak amacıyla bu VM’yi kullanın.
 metadata:
   title: Veri Bilimi Sanal Makinesi belgeleri - Azure
-  description: Veri Bilimi Sanal Makinesi, Azure bulutunda veri bilimi için oluşturulmuş deneysel bir ortamdır. Popüler veri bilimi ve Machine Learning araçları önceden yüklenmiştir.
-  services: machine-learning
+  description: Azure Veri Bilimi Sanal Makinesi (DSVM) veri bilimi ve makine öğrenmesi araçları içeren ve önceden yüklenen bir sanal makine görüntüsüdür.
   ms.service: machine-learning
   ms.subservice: data-science-vm
   ms.topic: landing-page
   ms.collection: collection
-  author: j-martens
-  ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: c33504124bdef2edf44842581143a8468cbb1e20
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  author: gvashishtha
+  ms.author: gopalv
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 3fdd30274796072fcca6a5cfe41651334cf62aee
+  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70308804"
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71170716"
 landingContent:
 - title: DSVM’nizi kullanmaya başlayın
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure DSVM’si nedir?
+    - text: DSVM nedir?
       url: overview.md
     - text: Coğrafi Yapay Zeka DSVM’si nedir?
       url: geo-ai-dsvm-overview.md
@@ -39,6 +38,10 @@ landingContent:
       url: provision-geo-ai-dsvm.md
 - title: DSVM’nizi yönetme
   linkLists:
+  - linkListType: architecture
+    links:
+    - text: Kurumsal güvenlik ve rehberlik
+      url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
     - text: Otomatik ölçeklendirilmiş DSVM havuzları oluşturma
@@ -49,7 +52,7 @@ landingContent:
       url: dsvm-secure-access-keys.md
 - title: Diğer Azure Machine Learning teknolojileri
   linkLists:
-  - linkListType: reference
+  - linkListType: learn
     links:
     - text: Azure Machine Learning hizmeti
       url: /azure/machine-learning/

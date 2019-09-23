@@ -27,7 +27,7 @@
           href: tutorial-create-populate-tsi-environment.md
     - name: Azure Time Series Insights Önizleme
       items:
-        - name: Azure Time Series Insights Önizleme öğreticisi
+        - name: Önizleme ortamını ayarlama
           href: time-series-insights-update-create-environment.md
 - name: Kavramlar
   items:

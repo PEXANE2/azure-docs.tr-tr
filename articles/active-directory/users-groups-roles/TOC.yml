@@ -36,27 +36,25 @@
   items:
     - name: Kullanıcıları yönetme
       items:
-        - name: Azure AD’ye yeni kullanıcı ekleme
+        - name: Kullanıcı oluşturma
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Kullanıcıları toplu oluşturma (önizleme)
+          href: users-bulk-add.md
         - name: Kullanıcı profillerini yönetme
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Toplu işlemler (önizleme)
-          items:
-            - name: Kullanıcıları indirme (önizleme)
-              href: users-bulk-download.md
-            - name: Kullanıcıları toplu içeri aktarma (önizleme)
-              href: users-bulk-add.md
-            - name: Kullanıcıları toplu silme (önizleme)
-              href: users-bulk-delete.md
-            - name: Kullanıcıları toplu geri yükleme (önizleme)
-              href: users-bulk-restore.md
+        - name: Kullanıcı bilgilerini indirme (önizleme)
+          href: users-bulk-download.md
         - name: Kullanıcı hesaplarını paylaşma
           href: users-sharing-accounts.md
         - name: Kullanıcıları yönetici rollerine atama
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Kullanıcıları toplu silme (önizleme)
+          href: users-bulk-delete.md
         - name: Silinen bir kullanıcıyı geri yükleme
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Yönetilmeyen dizinde hesabınızı kapatma
+        - name: Kullanıcıları toplu geri yükleme (önizleme)
+          href: users-bulk-restore.md
+        - name: Yönetilmeyen dizinde hesap oluşturma
           href: users-close-account.md
         - name: B2B kullanıcısı ekleme
           href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -86,28 +84,26 @@
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Grup ve üye listelerinde arama yapma (önizleme)
           href: groups-members-owners-search.md
+        - name: Grup oluşturma (Azure portalı)
+          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Grupları Graph için Azure AD PowerShell (v2) ile yönetme
           href: groups-settings-v2-cmdlets.md
         - name: Grupları PowerShell MSOnline ile yönetme
           href: groups-settings-cmdlets.md
-        - name: Grup üyelerini yönetme
+        - name: Grup üyesi ekleme veya kaldırma
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Üyeleri toplu ekleme (önizleme)
+          href: groups-bulk-import-members.md
+        - name: Üyeleri toplu kaldırma (önizleme)
+          href: groups-bulk-remove-members.md
+        - name: Üye listesini toplu indirme (önizleme)
+          href: groups-bulk-download-members.md
         - name: Grup sahiplerini yönetme
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Toplu işlemler (önizleme)
-          items:
-            - name: Üyeleri toplu içeri aktarma (önizleme)
-              href: groups-bulk-import-members.md
-            - name: Üyeleri toplu indirme (önizleme)
-              href: groups-bulk-download-members.md
-            - name: Üyeleri toplu kaldırma (önizleme)
-              href: groups-bulk-remove-members.md
-            - name: Grup listesini toplu indirme (önizleme)
-              href: groups-bulk-download.md
+        - name: Grup listesini toplu indirme (önizleme)
+          href: groups-bulk-download.md
         - name: Grupları gruplar ile yönetme
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Grup oluşturma (Azure portalı)
-          href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: SaaS uygulamalarına grup erişimi ekleme
           href: groups-saasapps.md
         - name: Grup adlandırma başvurusu

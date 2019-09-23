@@ -192,6 +192,8 @@
           href: functions-deployment-slots.md
         - name: Azure Pipelines kullanarak derleme ve dağıtma
           href: functions-how-to-azure-devops.md
+        - name: GitHub Eylemleri'ni kullanarak oluşturma ve dağıtma
+          href: functions-how-to-github-actions.md
         - name: Zip dağıtma
           href: deployment-zip-push.md
         - name: Paketten çalıştırma

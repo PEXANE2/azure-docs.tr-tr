@@ -92,7 +92,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>Web API’sini yapılandırma
 
-1. Visual Studio 'da *B2C-WebApi/* * appSettings. JSON** * dosyasını açın veya Visual Studio Code.
+1. Visual Studio 'da *B2C-WebApi/**appSettings. JSON*** dosyasını açın veya Visual Studio Code.
 1. `AzureAdB2C` Bloğu, kiracı adınızı, Web API 'si uygulamasının uygulama kimliğini, kaydolma/oturum açma ilkenizin adını ve daha önce tanımladığınız kapsamları yansıtacak şekilde değiştirin. Blok aşağıdaki örneğe benzer olmalıdır (uygun `Tenant` ve `ClientId` değerleri ile):
 
     ```json

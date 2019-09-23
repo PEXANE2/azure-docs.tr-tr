@@ -1,67 +1,131 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Search Belgeleri
+### YamlMime:Landing
+title: Azure Search belgeleri
+summary: İçeriğiniz yapılandırılmamışsa ve ham biçimiyle aranabilir değilse AI zenginleştirme seçenekleriyle özel heterojen içerik üzerinde bulut araması yapın.
 metadata:
-  document_id: null
-  title: 'Azure Search Belgeleri - Öğreticiler, hızlı başlangıçlar, API başvuruları'
-  description: 'Azure Search kullanarak özel ve heterojen içerikler üzerinde kurumsal arama çözümü oluşturmayı öğrenin. Öğreticiler, API başvuruları ve diğer belgeler; aratılabilir içeriği, çeşitli senaryolarda basitten gelişmişe söz dizimleri kullanılarak sorgulanabilen tek bir hızlı dizinde toplamayı gösterir.'
+  title: Azure Search belgeleri
+  description: İçeriğiniz yapılandırılmamışsa ve ham biçimiyle aranabilir değilse AI zenginleştirme seçenekleriyle özel heterojen içerik üzerinde bulut araması yapın.
   services: search
-  author: HeidiSteen
-  manager: nitinme
-  ms.service: search
+  ms.service: service
+  ms.subservice: cognitive-search
   ms.topic: landing-page
-  ms.date: 08/12/2019
+  ms.collection: collection
+  author: HeidiSteen
   ms.author: heidist
-abstract:
-  description: 'Azure Search kullanarak özel ve heterojen içerikler üzerinde kurumsal arama çözümü oluşturmayı öğrenin. Öğreticiler, API başvuruları ve diğer belgeler; aratılabilir içeriği, çeşitli senaryolarda basitten gelişmişe söz dizimleri kullanılarak sorgulanabilen tek bir hızlı dizinde toplamayı gösterir. <p/>Azure Search özelliklerinden biri olan <a href="/azure/search/cognitive-search-concept-intro"><b>bilişsel arama</b></a> dizin oluşturma, görüntü dosyalarındaki metinleri ve karakteristik özellikleri algılama ve yapılandırılmamış metinlerden oluşan büyük parçalardaki desenleri bulma süreçlerine yapay zeka işlemleri ekler. Yapay zeka süreçleri Bilişsel Hizmetler tarafından desteklenir.<p/><a href="/azure/search/knowledge-store-concept-intro"><b>Bilgi deposu (Önizleme)</b></a> Yapay zeka zenginleştirmelerini istemci uygulamalarında veya aşağı akış işlemlerinde görüntüleyebileceğiniz, yeniden şekillendirebileceğiniz ve kullanabileceğiniz depolama alanına kaydederek bilişsel arama olanaklarını genişletir.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png'
-      width: 250
-    title: 'Azure Search nedir? (1:27)'
-    href: 'https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player'
-    width: 250
-sections:
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: paragraph
-        text: 'Portalda bir Arama hizmetiyle başlayın, ardından C# veya REST’te sorgu dizinlerini tanımlayıp yükleyin.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/search/media/index/portal.svg
-            text: Azure portal
-            href: 'https://docs.microsoft.com/azure/search/search-create-service-portal'
-          - image:
-              src: /azure/search/media/index/logo_Csharp.svg
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/search/search-create-index-dotnet'
-          - image:
-              src: /azure/search/media/index/rest.svg
-            text: REST
-            href: 'https://docs.microsoft.com/azure/search/search-get-started-postman'
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: paragraph
-        text: .NET veya REST’te kod yazın veya hızlı kavram testi için portalı deneyin.
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/search/search-get-started-portal">Dizinleme ve sorgu testi için portalı kullanma</a>
-          - html: <a href="/azure/search/search-howto-dotnet-sdk">İlk arama çözümünüzü yazmak için .NET’i kullanma</a>
-          - html: <a href="/azure/search/cognitive-search-tutorial-blob">AI (Bilişsel Hizmetler) ile zenginleştirme</a>
-          - html: <a href="/azure/search/search-indexer-tutorial">.NET ile Azure SQL Veritabanı içeriğini dizinleme</a>
-          - html: <a href="/azure/search/search-semi-structured-data">REST ile Azure Blob depolama alanında yarı yapılandırılmış verileri dizinleme</a>
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Diller
-            html: '<p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET (Yönetim)</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python (Yönetim)</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/searchservice">Hizmet API Başvurusu</a></p><p><a href="/rest/api/searchmanagement">API Başvurusunu Yönetme</a></p>
+  ms.date: 09/20/2019
+  ms.openlocfilehash: 113ee13c1667e00f1052c88c9b29b881f312b00c
+  ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71147268"
+landingContent:
+- title: Azure Search Hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Search nedir?
+      url: search-what-is-azure-search.md
+  - linkListType: architecture
+    links:
+    - text: Azure Search'te tam metin araması nasıl çalışır?
+      url: search-lucene-query-architecture.md
+  - linkListType: video
+    links:
+    - text: Azure Search nedir? (1 dk 27 sn)
+      url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
+- title: Başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Hizmet oluşturma
+      url: search-create-service-portal.md
+    - text: Dizin oluşturma
+      url: search-get-started-portal.md
+    - text: Zenginleştirme işlem hattı oluşturma
+      url: cognitive-search-quickstart-blob.md
+  - linkListType: learn
+    links:
+    - text: Azure Search'e giriş
+      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
+- title: Verilerinizin dizinini oluşturma
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Dizin tanımlama
+      url: search-what-is-an-index.md
+    - text: Verileri içeri aktarma
+      url: search-what-is-data-import.md
+    - text: Dizin oluşturucu kullanma
+      url: search-indexer-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Blob depolamadan dizin oluşturma
+      url: search-howto-indexing-azure-blob-storage.md
+    - text: JSON bloblarını dizine ekleme
+      url: search-howto-index-json-blobs.md
+    - text: Azure SQL Veritabanı'ndan dizin oluşturma
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Cosmos DB verilerinden dizin oluşturma
+      url: search-howto-index-cosmosdb.md
+  - linkListType: reference
+    links:
+    - text: Dizin Oluşturma (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-index
+    - text: Dizin Oluşturucu Oluşturma (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
+- title: Verilerinizi zenginleştirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Bilişsel arama nedir?
+      url: cognitive-search-concept-intro.md
+    - text: Beceri kümeleri
+      url: cognitive-search-defining-skillset.md
+    - text: Bilgi depoları
+      url: knowledge-store-concept-intro.md
+    - text: Yansıtmalar
+      url: knowledge-store-projection-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bilişsel Hizmetleri Ekleme
+      url: cognitive-search-attach-cognitive-services.md
+    - text: Bir beceri kümesi tanımlama
+      url: cognitive-search-defining-skillset.md
+    - text: Bilgi deposu oluşturma
+      url: knowledge-store-create-portal.md
+  - linkListType: reference
+    links:
+    - text: Önceden tanımlanmış beceriler
+      url: cognitive-search-predefined-skills.md
+- title: Verilerinizi sorgulayın
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Genel Bakış
+      url: search-query-overview.md
+    - text: Basit söz dizimi (varsayılan)
+      url: query-simple-syntax.md
+    - text: Tam Lucene söz dizimi
+      url: query-lucene-syntax.md
+  - linkListType: how-to-guide
+    links:
+    - text: Basit bir sorgu oluşturma
+      url: search-query-simple-examples.md
+    - text: Tam söz dizimini kullanma
+      url: search-query-lucene-examples.md
+  - linkListType: reference
+    links:
+    - text: OData dil başvurusu
+      url: query-odata-filter-orderby-syntax.md
+    - text: Belgelerde Arama (REST)
+      url: https://docs.microsoft.com/rest/api/searchservice/search-documents
+- title: Yardım ve geri bildirim
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: SSS
+      url: search-faq-frequently-asked-questions.md
+    - text: Stack Overflow ile ilgili soru sorun
+      url: https://stackoverflow.com/questions/tagged/azure-search
+    - text: Özellik isteme
+      url: https://feedback.azure.com/forums/263029-azure-search

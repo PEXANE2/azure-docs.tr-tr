@@ -176,7 +176,7 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. Gereç için yü
 
 ### <a name="download-the-replication-appliance-installer"></a>Çoğaltma gereç yükleyicisini indirin
 
-1. Azure geçişi Proje > **sunucularında**, ***Azure geçişi: Sunucu geçişi**için **bul**' a tıklayın.
+1. Azure geçişi Proje > **sunucularında**, \***Azure geçişi: Sunucu geçişi**için **bul**' a tıklayın.
 
     ![VM'leri bulma](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 

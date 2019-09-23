@@ -85,7 +85,7 @@ Azure Multi-Factor Authentication 'nin yapılandırılabilir özelliklerinden bi
 
 Kullanıcılar, düzenli cihazlarda yapılandırılabilir gün sayısı için iki aşamalı doğrulamayı geri alabilir. Bir hesabın güvenliği tehlikeye girerse veya güvenilir bir cihaz kaybolursa, güvenilen durumu kaldırabilmeniz ve iki aşamalı doğrulamayı yeniden gerektirmiş olmanız gerekir.
 
-İşaretlendiğinde, **Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ı geri yükle** kullanıcıları, cihazlarını güvenilir olarak işaretlemiş olsalar bile, bir sonraki oturum açtıklarında iki adımlı doğrulama gerçekleştirmek için gereklidir.
+İşaretlendiğinde, **Tüm hatırlanan cihazlarda Multi-Factor Authentication ı geri yükle** kullanıcıları, cihazlarını güvenilir olarak işaretlemiş olsalar bile, bir sonraki oturum açtıklarında iki adımlı doğrulama gerçekleştirmek için gereklidir.
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Bir kullanıcı için tüm askıya alınmış cihazlarda MFA 'yı geri yükleme
 

@@ -1,4 +1,4 @@
-- name: Azure Logic Apps Belgeleri
+- name: Azure Logic Apps belgeleri
   href: index.yml
 - name: Genel Bakış
   items:
@@ -17,9 +17,9 @@
   items:
     - name: Zamanlamaya dayalı iş akışları oluşturma
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
-    - name: Posta listesi isteklerini yönetme
+    - name: Onaya dayalı iş akışları oluşturma
       href: tutorial-process-mailing-list-subscriptions-workflow.md
-    - name: E-posta eklerini işleme
+    - name: Azure Depolama ve Azure İşlevleri iş akışı oluşturma
       href: tutorial-process-email-attachments-workflow.md
 - name: Örnekler
   items:
@@ -31,7 +31,7 @@
   items:
     - name: Logic Apps için bağlayıcılar
       href: ../connectors/apis-list.md
-    - name: Yinelenen otomatik iş akışlarını zamanlama
+    - name: Yinelenen iş akışlarını zamanlama
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Azure ile sunucusuz mimari
       href: logic-apps-serverless-overview.md
@@ -111,6 +111,12 @@
           href: logic-apps-enterprise-integration-partners.md
         - name: Sözleşmeler
           href: logic-apps-enterprise-integration-agreements.md
+        - name: XML doğrulaması için şemalar
+          href: logic-apps-enterprise-integration-schemas.md
+        - name: XML dönüştürme için eşlemeler
+          href: logic-apps-enterprise-integration-maps.md
+        - name: Sertifikalar
+          href: logic-apps-enterprise-integration-certificates.md
         - name: Yapıt meta verileri
           href: logic-apps-enterprise-integration-metadata.md
         - name: B2B iletilerini alma
@@ -141,20 +147,14 @@
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: Düz dosyaları işleme
           href: logic-apps-enterprise-integration-flatfile.md
+        - name: XML’i dönüştürme
+          href: logic-apps-enterprise-integration-transform.md
         - name: XML’i işleme
           href: logic-apps-enterprise-integration-xml.md
         - name: XML’i doğrulama
           href: logic-apps-enterprise-integration-xml-validation.md
-        - name: XML doğrulaması için şemalar ekleme
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: XML’i dönüştürme
-          href: logic-apps-enterprise-integration-transform.md
-        - name: XML dönüştürme için eşlemeler ekleme
-          href: logic-apps-enterprise-integration-maps.md
         - name: JSON’u dönüştürme
           href: logic-apps-enterprise-integration-liquid-transform.md
-        - name: Güvenlik sertifikaları ekleme
-          href: logic-apps-enterprise-integration-certificates.md
         - name: B2B hatalarında sorun giderme
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: Olağanüstü durum kurtarma planı oluşturma

@@ -90,7 +90,7 @@ Unity 'nin dışarı aktarmaya çalıştığınız uygulamanın 2B görünümü 
 Artık **Proje** bölmesinizdeki bir Sphere prefab sahibi olmanız gerekir.
 
 ## <a name="trying-it-out"></a>Deneniyor
-Her şeyin çalıştığını test etmek için, uygulamanızı **Unity** 'de derleyin ve **Visual Studio**'dan dağıtın. **Mr temel 100 bölümünde bulunan [Bölüm 6 ' yı izleyin: Unity** kursu](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) ile çalışmaya başlama. Unity başlangıç ekranı ' nı ve ardından temiz bir ekran görmeniz gerekir.
+Her şeyin çalıştığını test etmek için, uygulamanızı **Unity** 'de derleyin ve **Visual Studio**'dan dağıtın. Mr temel 100 bölümünde bulunan [**Bölüm 6 ' yı izleyin: Unity** kursu](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) ile çalışmaya başlama. Unity başlangıç ekranı ' nı ve ardından temiz bir ekran görmeniz gerekir.
 
 ## <a name="place-an-object-in-the-real-world"></a>Gerçek dünyaya bir nesne yerleştirme
 Uygulamanızı kullanarak bir nesne oluşturalım &. [Uygulamamızı](#trying-it-out)dağıttığımızda oluşturduğumuz Visual Studio çözümünü açın. 

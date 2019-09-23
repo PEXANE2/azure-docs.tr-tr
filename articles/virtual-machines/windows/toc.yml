@@ -134,8 +134,10 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Altyapı otomasyonu
       href: infrastructure-automation.md
-    - name: Güvenlik ve ilke
-      href: security-policy.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik ve ilke
+          href: security-policy.md
     - name: Durumlar ve yaşam döngüsü
       href: states-lifecycle.md
     - name: İzleme
@@ -183,6 +185,8 @@
           href: windows-desktop-multitenant-hosting-deployment.md
     - name: VM’leri koruma
       items:
+        - name: Öneriler
+          href: security-recommendations.md
         - name: Tam zamanında erişim
           href: ../../security-center/security-center-just-in-time.md
         - name: Şifreleme
@@ -259,6 +263,14 @@
           href: instance-metadata-service.md
         - name: İç içe yerleştirilmiş sanallaştırmayı etkinleştirme
           href: nested-virtualization.md
+    - name: VM’leri izleme
+      items:
+        - name: VM'ler için Azure İzleyici
+          href: ../../azure-monitor/insights/vminsights-overview.md
+        - name: Ölçüm uyarıları oluşturma
+          href: ../../azure-monitor/platform/alerts-metric.md
+        - name: Günlük uyarıları oluşturma
+          href: ../../azure-monitor/platform/alerts-log.md
     - name: Maliyetleri yönetme
       items:
         - name: VM'ler için ön ödeme yapma - Azure ayırmaları

@@ -251,18 +251,18 @@
               href: knowledge-store-connect-power-bi.md
     - name: Belgeleri sorgulama
       items:
-        - name: Temel bir sorgu oluşturma
+        - name: Sorgu türleri ve oluşturma
           href: search-query-overview.md
-        - name: Arama Gezgini (portal)
+        - name: Basit bir sorgu oluşturma
+          href: search-query-simple-examples.md
+        - name: Tam Lucene söz dizimini kullanma
+          href: search-query-lucene-examples.md
+        - name: Arama Gezgini'ni kullanma (portal)
           href: search-explorer.md
         - name: Basit sorgu söz dizimi
           href: query-simple-syntax.md
         - name: Tam Lucene sorgu söz dizimi
           href: query-lucene-syntax.md
-        - name: Örnekler (basit söz dizimi)
-          href: search-query-simple-examples.md
-        - name: Örnekler (tam Lucene)
-          href: search-query-lucene-examples.md
         - name: moreLikeThis (önizleme)
           href: search-more-like-this.md
     - name: Filtreleri uygulama
