@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441984"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181115"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
@@ -103,7 +103,7 @@ HDInsight kullanılırken, veri dosyaları Azure Blob depolama alanı kullanıla
 * Web siteleri, dosya yükleme/indirme yardımcı programları, çeşitli dil SDK 'Ları ve Web tarayıcıları gibi dış hizmetlerden erişilebilirlik.
 * Büyük dosya kapasitesi ve büyük ölçeklenebilir depolama.
 
-Daha fazla bilgi için bkz. Blobları ve [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) [anlama](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) .
+Daha fazla bilgi için bkz. [Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) ve [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)anlama.
 
 Azure Storage veya Data Lake Storage kullanılırken, HDInsight 'tan verilere erişmek için özel bir şey yapmanız gerekmez. Örneğin, aşağıdaki komut, Azure Storage 'da mi yoksa `/example/data` Data Lake Storage ' de depolanmış olduklarına bakılmaksızın klasördeki dosyaları listeler:
 
@@ -124,11 +124,9 @@ __Azure depolama__'yı KULLANıRKEN aşağıdaki URI düzenlerinden birini kulla
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Varsayılan olmayan bir depolama hesabıyla iletişim kurulurken kullanılır. Örneğin, ek bir depolama hesabınız olduğunda veya genel olarak erişilebilen bir depolama hesabında depolanan verilere erişirken.
 
-__Azure Data Lake Storage 2.__ kullanırken, aşağıdaki URI düzenlerinden birini kullanın:
+__Azure Data Lake Storage 2.__ KULLANıRKEN aşağıdaki URI şemasını kullanın:
 
-* `abfs:///`: Şifrelenmemiş iletişim kullanarak varsayılan depolamaya erişin.
-
-* `abfss:///`: Şifrelenmiş iletişim kullanarak varsayılan depolamaya erişin.  Abfss şeması yalnızca HDInsight sürüm 3,6 ve sonraki sürümlerde desteklenir.
+* `abfs://`: Şifrelenmiş iletişim kullanarak varsayılan depolamaya erişin.
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Varsayılan olmayan bir depolama hesabıyla iletişim kurulurken kullanılır. Örneğin, ek bir depolama hesabınız olduğunda veya genel olarak erişilebilen bir depolama hesabında depolanan verilere erişirken.
 

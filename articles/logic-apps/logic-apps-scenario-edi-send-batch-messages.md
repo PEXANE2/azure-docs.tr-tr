@@ -168,7 +168,7 @@ Batch alıcılarınızın beklendiği gibi çalıştığından emin olmak için,
 
       !["Batch alıcısı" mantıksal uygulamasını seçin](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-receiver.png)
 
-   4. Şu eylemi seçin: **Batch_messages-*Batch alıcılarınızı* <>**
+   4. Şu eylemi seçin: **Batch_messages-<*Batch alıcılarınızı*>**
 
       !["Batch_messages" eylemini seçin](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-select-batch-messages-action.png)
 

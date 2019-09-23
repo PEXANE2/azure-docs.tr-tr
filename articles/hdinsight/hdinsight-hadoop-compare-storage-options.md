@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: b73810b37020bf01c1088f194bd426e93fd95d2c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104529"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180777"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Depolama seçeneklerini Azure HDInsight kümeleriyle kullanım için karşılaştırın
 
@@ -42,17 +42,17 @@ Azure depolama erişim katmanları hakkında daha fazla bilgi için bkz [. Azure
 
 Birincil ve isteğe bağlı ikincil depolama için farklı hizmet birleşimleri kullanarak bir küme oluşturabilirsiniz. Aşağıdaki tabloda, HDInsight 'ta Şu anda desteklenen küme depolama yapılandırmalarının özeti verilmiştir:
 
-| HDInsight Sürümü | Birincil Depolama | İkincil depolama | Desteklenen |
+| HDInsight Sürümü | Birincil depolama alanı | İkincil depolama | Desteklenen |
 |---|---|---|---|
 | 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Evet |
-| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen2 | Hayır |
+| 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage 2. Nesil | Hayır |
 | 3,6 & 4,0 | Genel Amaçlı v1, Genel Amaçlı v2 | Data Lake Storage Gen1 | Evet |
-| 3,6 & 4,0 | Data Lake Storage 2. * | Data Lake Storage Gen2 | Evet |
+| 3,6 & 4,0 | Data Lake Storage 2. * | Data Lake Storage 2. Nesil | Evet |
 | 3,6 & 4,0 | Data Lake Storage 2. * | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Evet |
-| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Hayır |
+| 3,6 & 4,0 | Data Lake Storage 2. Nesil | Data Lake Storage Gen1 | Hayır |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Evet |
 | 3.6 | Data Lake Storage Gen1 | Genel Amaçlı v1, Genel Amaçlı v2, BlobStorage (blok Blobları) | Evet |
-| 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Hayır |
+| 3.6 | Data Lake Storage Gen1 | Data Lake Storage 2. Nesil | Hayır |
 | 4.0 | Data Lake Storage Gen1 | Any | Hayır |
 
 \* = Bu, bir veya birden çok Data Lake Storage 2. hesabı olabilir, çünkü tüm kurulum, küme erişimi için aynı yönetilen kimliği kullanır.
@@ -95,9 +95,9 @@ Daha fazla bilgi için bkz [. Azure blob dosya sistemi sürücüsü (ABFS): Hado
 
 Azure Data Lake Storage 2., HDInsight 'tan Azure Storage 'daki dosyalara erişmek için yeni bir URI şeması kullanır:
 
-`abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-URI şeması SSL şifreli erişim (`abfss://` ön ek) ve şifrelenmemiş erişim (`abfs://` ön ek) sağlar. Azure `abfss` 'da aynı bölge içinde bulunan verilere erişirken bile mümkün olan yerlerde kullanın.
+URI şeması, SSL şifreli erişim sağlar.
 
 `<FILE_SYSTEM_NAME>`Data Lake Storage 2. dosya sisteminin yolunu tanımlar.
 
@@ -108,8 +108,8 @@ URI şeması SSL şifreli erişim (`abfss://` ön ek) ve şifrelenmemiş erişim
 `<FILE_SYSTEM_NAME>` Ve`<ACCOUNT_NAME>` değerleri belirtilmemişse, varsayılan dosya sistemi kullanılır. Varsayılan dosya sistemindeki dosyalar için göreli bir yol veya mutlak bir yol kullanın. Örneğin, `hadoop-mapreduce-examples.jar` HDInsight kümeleriyle birlikte gelen dosyaya aşağıdaki yollardan biri kullanılarak başvurulabilir:
 
 ```
-abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
+abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
 > [!Note]

@@ -78,7 +78,7 @@ Aşağıda Service Fabric sanal makine uzantısının bir parçacığı verilmi�
 | **Name** | **İzin verilen değerler** | ** --- ** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
 | name | dize | --- | uzantı için benzersiz ad |
-| type | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode | --- | Önyükleme Service Fabric işletim sistemini tanımlar |
+| türü | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode | --- | Önyükleme Service Fabric işletim sistemini tanımlar |
 | autoUpgradeMinorVersion | true veya false | --- | SF çalışma zamanı alt sürümlerinin otomatik yükseltmesini etkinleştir |
 | publisher | Microsoft. Azure. ServiceFabric | --- | Service Fabric uzantısı yayımcısının adı |
 | clusterEndpont | dize | --- | URI: yönetim uç noktası bağlantı noktası |
@@ -89,7 +89,7 @@ Aşağıda Service Fabric sanal makine uzantısının bir parçacığı verilmi�
 | commonNames | String [] | --- | Yüklü küme sertifikalarının ortak adları |
 | x509StoreName | dize | --- | Yüklü küme sertifikasının bulunduğu deponun adı |
 | typeHandlerVersion | 1.1 | --- | Uzantının sürümü. 1,0 için klasik uzantı sürümünün 1,1 sürümüne yükseltilmesi önerilir |
-| dataPath | dize | --- | Service Fabric sistem hizmetleri ve uygulama verileri için durumu kaydetmek için kullanılan sürücünün yolu. 
+| Veri yolu | dize | --- | Service Fabric sistem hizmetleri ve uygulama verileri için durumu kaydetmek için kullanılan sürücünün yolu. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * ["Her yerde dağıtma" özelliğine genel bakış ve Azure tarafından yönetilen kümelerle karşılaştırma](service-fabric-deploy-anywhere.md)konusuna bakın.

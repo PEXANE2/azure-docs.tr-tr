@@ -117,11 +117,11 @@ Ardından, iş akışı tanımınız için bir [Azure Resource Manager şablonu]
 
 | Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*static-result-definition-name*> | Evet | Dize | Bir eylem tanımının bir `runtimeConfiguration.staticResult` nesne aracılığıyla başvurabileceğinden, statik sonuç tanımının adı. Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>İstediğiniz herhangi bir benzersiz adı kullanabilirsiniz. Varsayılan olarak, bu benzersiz ad, gerektiği şekilde artan bir sayıyla eklenir. |
+| <*static-result-definition-name*> | Evet | String | Bir eylem tanımının bir `runtimeConfiguration.staticResult` nesne aracılığıyla başvurabileceğinden, statik sonuç tanımının adı. Daha fazla bilgi için bkz. [çalışma zamanı yapılandırma ayarları](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>İstediğiniz herhangi bir benzersiz adı kullanabilirsiniz. Varsayılan olarak, bu benzersiz ad, gerektiği şekilde artan bir sayıyla eklenir. |
 | <*output-attributes-and-values-returned*> | Evet | Varies | Bu özniteliklerin gereksinimleri farklı koşullara göre farklılık gösterir. Örneğin `status` `Succeeded` ,olduğunda,öznitelik,eylemtarafındansahteçıktılarolarakdöndürülenöznitelikleri`outputs` ve değerleri içerir. `errors` `message` İse `status` `Failed`öznitelik, hata bilgilerine sahip bir veya daha fazla hata nesnesi olan bir dizi olan özniteliği içerir. `outputs` |
 | <*header-values*> | Hayır | JSON | Eylem tarafından döndürülen üst bilgi değerleri |
-| <*status-code-returned*> | Evet | Dize | Eylem tarafından döndürülen durum kodu |
-| <*action-status*> | Evet | Dize | Eylemin durumu, örneğin `Succeeded` veya`Failed` |
+| <*status-code-returned*> | Evet | String | Eylem tarafından döndürülen durum kodu |
+| <*action-status*> | Evet | String | Eylemin durumu, örneğin `Succeeded` veya`Failed` |
 |||||
 
 Örneğin, bu http eylem tanımında `runtimeConfiguration.staticResult.name` öznitelik, eylem için olan model çıkışları tanımlı `staticResults` özniteliğin içinde başvuru yapıyor. `HTTP0` Özniteliği statik sonuç `Enabled` ayarının http eyleminde olduğunu belirtir. `runtimeConfiguration.staticResult.staticResultOptions`
@@ -280,7 +280,7 @@ Bir çıkış tanımının genel yapısı aşağıda verilmiştir:
 
 | Öznitelik | Gerekli | Tür | Açıklama |
 |-----------|----------|------|-------------|
-| <*key-name*> | Evet | Dize | Çıkış dönüş değeri için anahtar adı |
+| <*key-name*> | Evet | String | Çıkış dönüş değeri için anahtar adı |
 | <*key-type*> | Evet | int, float, string, securestring, bool, array, JSON nesnesi | Çıkış dönüş değeri için tür |
 | <*anahtar-değer*> | Evet | <*Anahtar türüyle* aynı> | Çıkış dönüş değeri |
 |||||

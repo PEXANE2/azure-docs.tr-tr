@@ -118,7 +118,7 @@ code .
 ![Web uygulamasına dağıtma](./media/quickstart-nodejs/deploy.png)
 
 > [!TIP]
-> Ayrıca,  ****komut paletinden** (CTRL + SHIFT + P) ' Web uygulamasına Dağıt ' yazarak ve Azure App Service çalıştırarak dağıtım yapabilirsiniz: Web App** 'e dağıtın komutu.
+> Ayrıca,**komut paletinden** (CTRL + SHIFT + P) ' Web uygulamasına Dağıt ' yazarak ve **Azure App Service çalıştırarak dağıtım yapabilirsiniz: Web App** 'e dağıtın komutu.
 
 1. Şu anda açık `myExpressApp`olan dizini seçin.
 

@@ -1,22 +1,21 @@
 ---
-title: Azure HPC önbelleği oluşturma
+title: Azure HPC önbelleği oluşturma (Önizleme)
 description: Azure HPC önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: c3d14eaefaa1f317cb061273866ffee83747f12b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 677d42dfa1c468417f18ba4222cb0d5fd3ebb189
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036853"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180980"
 ---
-# <a name="configure-aggregated-namespace"></a>Toplanan ad alanını Yapılandır
-<!-- change link in GUI -->
+# <a name="plan-the-aggregated-namespace"></a>Toplanan ad alanını planlayın
 
-Azure HPC önbelleği, istemcilerin, arka uç depolama sisteminin ayrıntılarını gizleyen bir sanal ad alanı aracılığıyla çeşitli depolama sistemlerine erişmesini sağlar.
+Azure HPC Cache (Önizleme), istemcilerin, arka uç depolama sisteminin ayrıntılarını gizleyen bir sanal ad alanı aracılığıyla çeşitli depolama sistemlerine erişmesini sağlar.
 
 Bir depolama hedefi eklediğinizde, istemciye yönelik FilePath 'i ayarlarsınız. İstemci makineler bu FilePath 'i bağlayabilir. Bu yol ile ilişkili depolama hedefini değiştirebilirsiniz. Örneğin, bir donanım depolama sistemini, istemciye yönelik yordamları yeniden yazmaya gerek kalmadan bulut depolama ile değiştirebilirsiniz.
 
@@ -31,7 +30,7 @@ Bir depolama hedefi eklediğinizde, istemciye yönelik FilePath 'i ayarlarsını
     /goldline/templates/acme2017/sku798
     /goldline/templates/acme2017/sku980 
 
-Veri merkezi depolama sistemi bu dışarı aktarmaları kullanıma sunar: 
+Veri merkezi depolama sistemi bu dışarı aktarmaları kullanıma sunar:
 
     /
     /goldline

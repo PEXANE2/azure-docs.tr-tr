@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 49fd69c124ff9053f3934aefd349e039b437df0d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: de738461776be7bdfd1abc45dde24dc1202d3a3c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354962"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180759"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 'ta Apache Hive ve Apache Pig ile Python Kullanıcı tanımlı Işlevleri (UDF) kullanma
 
@@ -29,14 +29,14 @@ HDInsight Ayrıca, Java 'da yazılmış bir Python uygulama olan Jyıthon ' u de
 
 * **HDInsight üzerinde bir Hadoop kümesi**. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
 * **Bir SSH istemcisi**. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, Azure Storage için wasb://, Azure Data Lake Storage 2. için abfs://veya adl://için Azure Data Lake Storage 1. olacaktır. Azure depolama veya Data Lake Storage 2. için güvenli aktarım etkinse, URI wasbs://veya abfss://olur, sırasıyla Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
+* Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu, Azure Data Lake Storage 1. için Azure Data Lake Storage 2. veya adl:// `abfs://` için Azure Storage 'a yöneliktir.`wasb://` Azure depolama için güvenli aktarım etkinleştirilirse, URI wasbs://olur.  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 * **Depolama yapılandırmasında olası değişiklik.**  Depolama hesabı türü `BlobStorage`kullanılıyorsa [depolama yapılandırması](#storage-configuration) bölümüne bakın.
 * İsteğe bağlı.  PowerShell 'i kullanmayı planlıyorsanız, [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) yüklü olmalıdır.
 
 > [!NOTE]  
 > Bu makalede kullanılan depolama hesabı, [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md) özellikli Azure depolama idi ve bu nedenle `wasbs` makale genelinde kullanılır.
 
-## <a name="storage-configuration"></a>Depolama yapılandırması
+## <a name="storage-configuration"></a>Depolama alanı yapılandırması
 Kullanılan depolama hesabı tür `Storage (general purpose v1)` veya `StorageV2 (general purpose v2)`ise herhangi bir eylem gerekmez.  Bu makaledeki işlem en az `/tezstaging`çıkış oluşturacak.  Varsayılan `/tezstaging` bir Hadoop yapılandırması, `fs.azure.page.blob.dir` hizmet `HDFS`için içindeki `core-site.xml` yapılandırma değişkeninde bulunur.  Bu yapılandırma, Dizin çıkışının, depolama hesabı türü `BlobStorage`için desteklenmeyen sayfa Blobları olmasına neden olur.  Bu makalede `BlobStorage` kullanmak için `fs.azure.page.blob.dir` yapılandırma değişkeninden kaldırın `/tezstaging` .  Bu yapılandırmaya, [ambarı kullanıcı arabiriminden](../hdinsight-hadoop-manage-ambari.md)erişilebilir.  Aksi takdirde, şu hata iletisini alırsınız:`Page blob is not supported for this account type.`
 
 > [!WARNING]  
@@ -99,7 +99,7 @@ Bu betik aşağıdaki eylemleri gerçekleştirir:
 1. STDIN 'den bir veri satırı okur.
 2. Son yeni satır karakteri kullanılarak `string.strip(line, "\n ")`kaldırılır.
 3. Akış işleme yaparken, tek bir satır her bir değer arasında sekme karakteri olan tüm değerleri içerir. Bu `string.split(line, "\t")` nedenle, her sekmedeki girişi ayırmak için yalnızca alanları döndürerek kullanılabilir.
-4. İşlem tamamlandığında, her bir alan arasında sekme ile, çıktının STDOUT 'a tek bir çizgi olarak yazılması gerekir. Örneğin: `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
+4. İşlem tamamlandığında, her bir alan arasında sekme ile, çıktının STDOUT 'a tek bir çizgi olarak yazılması gerekir. Örneğin, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
 5. Döngü `while` , hiç `line` okununcaya kadar yinelenir.
 
 Komut dosyası çıkışı, ve `devicemake` `devicemodel`için giriş değerlerinin ve birleştirilmiş değerin bir karmasından oluşan bir bitiştirilir.
@@ -575,7 +575,7 @@ Hata bilgileri (STDERR) ve işin sonucu (STDOUT) HDInsight depolama alanına da 
 
 | Bu iş için... | Blob kapsayıcısında bu dosyalara bakın |
 | --- | --- |
-| Kovan |/HivePython/stderr<p>/HivePython/stdout |
+| Hive |/HivePython/stderr<p>/HivePython/stdout |
 | Pig |/PigPython/stderr<p>/PigPython/stdout |
 
 ## <a name="next"></a>Sonraki adımlar

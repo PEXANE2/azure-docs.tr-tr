@@ -75,7 +75,7 @@ Visual Studio kullanarak kimlik doğrulaması yapmak için:
 
 Belirteç sağlayıcı dosyasını içeren hatalar gibi Visual Studio 'Yu kullanarak sorunlarla karşılaşırsanız, önceki adımları dikkatle gözden geçirin.
 
-Geliştirici belirtecinizi yeniden kimlik doğrulaması yapmanız gerekebilir. Bunu yapmak için **Araçlar**&nbsp;> **&nbsp;&nbsp;Seçenekler'i seçin ve ardından Azure hizmeti kimlik doğrulaması**' nı seçin.&nbsp; Seçili hesap altında bir **yeniden kimlik doğrulaması** bağlantısı arayın. Kimlik doğrulamak için seçin.
+Geliştirici belirtecinizi yeniden kimlik doğrulaması yapmanız gerekebilir. Bunu yapmak için **Araçlar**&nbsp;>&nbsp;**Seçenekler'i** seçin ve ardından **Azure&nbsp;hizmeti&nbsp;kimlik doğrulaması' nı seçin.** Seçili hesap altında bir **yeniden kimlik doğrulaması** bağlantısı arayın. Kimlik doğrulamak için seçin.
 
 #### <a name="authenticating-with-azure-cli"></a>Azure CLı ile kimlik doğrulama
 

@@ -1,19 +1,19 @@
 ---
-title: Azure HPC önbelleği bağlama
+title: Azure HPC önbelleği bağlama (Önizleme)
 description: İstemcileri Azure HPC önbellek hizmetine bağlama
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: v-erkell
-ms.openlocfilehash: 46f221fd7c340b7f321d317f0e7493448d83177c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 3b7a59afa0dea300e200b953d045d38218e99b22
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036940"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180915"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>Azure HPC önbelleğini bağlama
+# <a name="mount-the-azure-hpc-cache-preview"></a>Azure HPC önbelleğini bağlama (Önizleme)
 
 Önbellek oluşturulduktan sonra, NFS istemcileri basit bir Mount komutuyla erişebilir.
 
@@ -54,7 +54,7 @@ Sağlam bir istemci bağlama için, bu ayarları ve bağımsız değişkenleri b
 
 | Önerilen bağlama komutu ayarları | |
 --- | --- 
-``hard`` | VFXT kümesine yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir. 
+``hard`` | Azure HPC Cache 'e yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir. 
 ``proto=netid`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.
 ``mountproto=netid`` | Bu seçenek, bağlama işlemleri için ağ hatalarının uygun işlenmesini destekler.
 ``retry=n`` | Geçici ``retry=30`` bağlama hatalarından kaçınmak için ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)

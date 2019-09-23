@@ -83,7 +83,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının uyg
 
 1.  Olay ad alanı bölmesinde **Event Hubs** ' a ve ardından yeni Olay Hub 'ınızın adına tıklayın.
 
-2.  Olay Hub 'ı bölmesinde, **paylaşılan erişim ilkeleri** ' ne ve ardından  **+Ekle &nbsp;** ' ye tıklayın.
+2.  Olay Hub 'ı bölmesinde, **paylaşılan erişim ilkeleri** ' ne ve ardından **+&nbsp;Ekle**' ye tıklayın.
 
     >[!NOTE]
     >Olay Hub 'ı ad alanı değil, Olay Hub 'ı ile çalıştığınızdan emin olun.

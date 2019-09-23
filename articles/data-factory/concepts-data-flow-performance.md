@@ -5,13 +5,13 @@ author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
-ms.date: 05/16/2019
-ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/22/2019
+ms.openlocfilehash: e4b3e08c0cc7fc1ead2aed551c228c6a1165c3b6
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992338"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180850"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -90,6 +90,13 @@ Bu simgeye tıkladığınızda, veri akışınız için yürütme planı ve sonr
 * Veri akışı Tasarımcısı ' nın içinde, dönüştürme mantığınızın sonuçlarını görüntülemek için dönüşümlerdeki veri önizleme sekmesini kullanın.
 * İşlem hattı tasarım tuvaline bir veri akışı etkinliği yerleştirerek ve test etmek için "hata ayıkla" düğmesini kullanarak, veri hattı tasarımcısından alınan birim testi.
 * Hata ayıklama modunda test etmek, tam zamanında küme dönmesi beklenmeden gerçek zamanlı bir küme ortamına karşı çalışır.
+* Veri akışı Tasarımcısı deneyiminin içinde veri önizleme hata ayıklaması sırasında, veri akışı Tasarımcısı Kullanıcı arabirimindeki hata ayıklama ayarları bağlantısından satır sınırını ayarlayarak her bir kaynak için test ettiğiniz veri miktarını sınırlayabilirsiniz. Lütfen önce hata ayıklama modunu açmanız gerektiğini unutmayın.
+
+![Hata ayıklama ayarları](media/data-flow/debug-settings.png "Hata ayıklama ayarları")
+
+* Veri akışlarınızı işlem hattı hata ayıklama yürütmeden sınarken, kaynaklarınızın her birinde örnekleme boyutunu ayarlayarak test için kullanılan satır sayısını sınırlayabilirsiniz. İşlem hatlarınızı düzenli bir işlem zamanlamaya göre zamanlarken örnekleme 'yi devre dışı bıraktığınızdan emin olun.
+
+![Satır örnekleme](media/data-flow/source1.png "Satır örnekleme")
 
 ### <a name="disable-indexes-on-write"></a>Yazma sırasında dizinleri devre dışı bırak
 * Veri akışı etkinlikinizden önce, Havuzınızdan üzerine yazılmakta olan hedef tablolarınızdaki dizinleri devre dışı bırakan bir ADF işlem hattı saklı yordam etkinliğini kullanın.
@@ -140,6 +147,10 @@ Bu simgeye tıkladığınızda, veri akışınız için yürütme planı ve sonr
 ```DateFiles/*_201907*.txt```
 
 Bu, içinde bir veri akışı yürütme etkinliği ile bir ForEach kullanarak tüm eşleşen dosyalarda yinelenen bir işlem hattındaki Blob deposunda bir aramanın daha iyi gerçekleştirilir.
+
+### <a name="increase-the-size-of-your-debug-cluster"></a>Hata ayıklama kümenizin boyutunu artırın
+
+Varsayılan olarak, hata ayıklamayı açmak her bir veri fabrikası için otomatik olarak oluşturulan varsayılan Azure tümleştirme çalışma zamanını kullanır. Bu varsayılan Azure IR, genel Işlem özellikleri kullanılarak 8 çekirdek, bir sürücü düğümü için 4 ve bir çalışan düğümü için 4 olarak ayarlanır. Daha büyük verilerle test ettiğinizde, daha büyük yapılandırmalara sahip yeni bir Azure IR oluşturarak hata ayıklama kümenizin boyutunu artırabilir ve hata ayıklama üzerinde geçiş yaparken bu yeni Azure IR seçebilirsiniz. Bu, ADF 'yi veri önizleme ve veri akışları ile ardışık düzen hata ayıklaması için bu Azure IR kullanmasını ister.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

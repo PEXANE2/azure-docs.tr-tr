@@ -1,21 +1,21 @@
 ---
-title: Azure HPC önbelleği oluşturma
+title: Azure HPC önbelleği oluşturma (Önizleme)
 description: Azure HPC önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: e1b69f17d964647944f23f4d16a0a1a5f112b60d
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1cc77b24c96514f40c86115f7d611076facd406b
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037035"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181046"
 ---
-# <a name="create-an-azure-hpc-cache"></a>Azure HPC önbelleği oluşturma
+# <a name="create-an-azure-hpc-cache-preview"></a>Azure HPC önbelleği oluşturma (Önizleme)
 
-Önbelleğinizi oluşturmak için Azure portal kullanın.
+Önbelleğinizi oluşturmak için Azure portal kullanın. 
 
 ![En altta oluştur düğmesi ile Azure portal önbellekte genel bakış ekran görüntüsü](media/hpc-cache-home-page.png)
 
@@ -32,7 +32,7 @@ ms.locfileid: "71037035"
 * Alt ağ-yalnızca Azure HPC önbelleği için kullanılacak en az 64 IP adresi (/24) olan bir alt ağ seçin veya oluşturun.
 
 ## <a name="set-cache-capacity"></a>Önbellek kapasitesini ayarla
-<!-- change link in GUI -->
+<!-- referenced from GUI - update aka.ms link if you change this header text -->
 
 **Önbellek** sayfasında, Azure HPC önbelleğinizin kapasitesini ayarlamanız gerekir. Bu değer, önbelleğinizin ne kadar veri tutabildiğini ve istemci isteklerine ne kadar hızlı bir şekilde hizmet sunamayacağını belirler. Genel Önizleme süresinden sonra kapasite, önbelleğin maliyetini de etkiler.
 
@@ -61,7 +61,7 @@ Arka uç depolama sistemlerinizi tanımlamak için **depolama hedefi Ekle bağla
 
 En fazla on farklı depolama hedefi tanımlayabilirsiniz.
 
-Depolama hedefi eklemek için adım adım yönergeler [depolama Ekle](hpc-cache-add-storage.md)' ye dahildir. Yordam, BLOB depolama veya NFS dışarı aktarmaları için farklıdır.
+Depolama hedefi eklemek için adım adım yönergeler, [depolama hedefleri ekleme](hpc-cache-add-storage.md)' ye dahildir. Yordam, BLOB depolama veya NFS dışarı aktarmaları için farklıdır.
 
 İşte bazı ipuçları: 
 

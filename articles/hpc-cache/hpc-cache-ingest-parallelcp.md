@@ -1,19 +1,19 @@
 ---
-title: Azure HPC önbelleği veri alma-paralel kopya betiği
+title: Azure HPC önbellek Önizleme verileri alma-paralel kopya betiği
 description: Azure HPC önbelleğinde bir BLOB depolama hedefine veri taşımak için paralel kopyalama betiği kullanma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7414d830f5a2e6fc12066b2f408da041838283db
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775370"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180960"
 ---
-# <a name="azure-hpc-cache-data-ingest---parallel-copy-script-method"></a>Azure HPC önbellek verileri alma-paralel kopyalama betiği yöntemi
+# <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC Cache (Önizleme) veri alma-paralel kopyalama betiği yöntemi
 
 Bu makalede, ``parallelcp`` betiği oluşturma ve Azure HPC önbelleğiyle kullanılmak üzere verileri bir BLOB depolama kapsayıcısına taşımak için kullanılan yönergeler sunulmaktadır.
 

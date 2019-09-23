@@ -1,19 +1,19 @@
 ---
-title: Azure HPC önbellek verileri alma-msrsync
+title: Azure HPC önbellek Önizleme verileri alma-msrsync
 description: Azure HPC önbelleğinde bir BLOB depolama hedefine veri taşımak için msrsync kullanma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: d49c2ba45b125f8e42ea5d10dcf3dcd68558a52c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 265ec55a6e013a37cf963b6256e900c070311f72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775643"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180939"
 ---
-# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache Data ınest-msrsync yöntemi
+# <a name="azure-hpc-cache-preview-data-ingest---msrsync-method"></a>Azure HPC Cache (Önizleme) Data ınest-msrsync yöntemi
 
 Bu makalede, ``msrsync`` Azure HPC Cache ile kullanmak üzere verileri bir Azure Blob depolama kapsayıcısına kopyalamak için yardımcı programı kullanma hakkında ayrıntılı yönergeler sunulmaktadır.
 

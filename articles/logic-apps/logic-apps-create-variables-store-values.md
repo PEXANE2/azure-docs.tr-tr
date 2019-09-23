@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 016ab15b2ca4b2e6278752b166c746f6f5aef72d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171335"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180794"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Azure Logic Apps değişkenleri kullanarak değerleri depolayın ve yönetin
 
@@ -99,6 +99,9 @@ Tasarımcıdan kod görünümü düzenleyicisine geçiş yaparsanız, **değişk
    }
 },
 ```
+
+> [!NOTE]
+> **Değişken Başlat** eyleminin bir dizi olarak yapılandırılmış `variables` bir bölümü olsa da, eylem tek seferde yalnızca bir değişken oluşturabilir. Her yeni değişken, tek bir **değişken başlatma** eylemi gerektirir.
 
 Diğer bazı değişken türleri için örnekler aşağıda verilmiştir:
 
@@ -200,7 +203,7 @@ Bir değişkeni sabit *bir değere göre artırmak veya arttırmak* için, mant�
 
    Varolan adımlar arasında bir eylem eklemek için, artı işareti (+) görünecek şekilde farenizi bağlama okuna taşıyın. Artı işaretini seçin ve ardından **Eylem Ekle**' yi seçin.
 
-1. Arama kutusuna filtreniz olarak "artış değişkeni" yazın. Eylemler listesinde, **değişkenler-artış değişkeni**' ni seçin.
+1. Arama kutusuna filtreniz olarak "artış değişkeni" yazın. Eylemler listesinde **artırma değişkeni**' ni seçin.
 
    !["Değişken artırma" eylemini seçin](./media/logic-apps-create-variables-store-values/select-increment-variable-action.png)
 

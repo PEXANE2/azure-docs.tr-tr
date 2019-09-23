@@ -76,7 +76,7 @@ Aşağıdaki JSON, uygulama sistem durumu uzantısının şemasını gösterir. 
 | ---- | ---- | ----
 | protocol | `http` veya `tcp` | string |
 | port | Protokol olduğunda isteğe bağlı `http`, protokol olduğunda zorunludur`tcp` | int |
-| requestPath | Protokol olduğunda zorunlu, protokol ise izin verilmez `http``tcp` | string |
+| Istek yolu | Protokol olduğunda zorunlu, protokol ise izin verilmez `http``tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>Uygulama durumu uzantısını dağıtma
 Aşağıdaki örneklerde açıklandığı şekilde, uygulama durumu uzantısını ölçek kümelerinizi dağıtmanın birden çok yolu vardır.

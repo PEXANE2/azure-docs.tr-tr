@@ -1,19 +1,19 @@
 ---
-title: Azure HPC önbellek verileri alma-el ile kopyalama
+title: Azure HPC önbellek Önizleme verileri alma-el ile kopyalama
 description: Azure HPC önbelleğinde bir BLOB depolama hedefine veri taşımak için CP komutlarını kullanma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 2d89a74d4b79e74c2bc6667a5f76c2348ca3c274
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775240"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180997"
 ---
-# <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Azure HPC önbelleği veri alma-el ile kopyalama yöntemi
+# <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC Cache (Önizleme) veri alma-el ile kopyalama yöntemi
 
 Bu makalede, Azure HPC Cache ile kullanmak üzere verileri bir BLOB depolama kapsayıcısına el ile kopyalamak için ayrıntılı yönergeler sunulmaktadır. Kopyalama hızını iyileştirmek için çok iş parçacıklı paralel işlemler kullanır.
 

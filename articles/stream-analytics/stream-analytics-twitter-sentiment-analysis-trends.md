@@ -53,7 +53,7 @@ Bir olay hub 'ı ad alanı oluşturun ve ardından bu ad alanına bir olay hub '
  
 4. Ad alanı dağıtımı bitirdiğinde, Azure kaynakları listenizde Olay Hub 'ı ad alanını bulun. 
 
-5. Yeni ad alanına tıklayın ve ad alanı Dikey penceresinde  **+Olay Hub &nbsp;** ' ı tıklatın. 
+5. Yeni ad alanına tıklayın ve ad alanı Dikey penceresinde **+&nbsp;Olay Hub**' ı tıklatın. 
 
     ![Yeni bir olay hub 'ı oluşturmak için Olay Hub 'ı Ekle düğmesi](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
@@ -70,7 +70,7 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının uyg
 
 1.  Olay ad alanı Dikey penceresinde, **Event Hubs** ' a ve ardından yeni Olay Hub 'ınızın adına tıklayın.
 
-2.  Olay Hub 'ı dikey penceresinde, **paylaşılan erişim ilkeleri** ' ne ve ardından  **+Ekle &nbsp;** ' ye tıklayın.
+2.  Olay Hub 'ı dikey penceresinde, **paylaşılan erişim ilkeleri** ' ne ve ardından **+&nbsp;Ekle**' ye tıklayın.
 
     >[!NOTE]
     >Olay Hub 'ı ad alanı değil, Olay Hub 'ı ile çalıştığınızdan emin olun.
@@ -208,7 +208,7 @@ Artık Tweet olayları Twitter 'dan gerçek zamanlı olarak akışa alındığı
 
 1. Stream Analytics işte iş **topolojisi** altında iş dikey penceresinin altında **girişler**' e tıklayın. 
 
-2. **Girişler** dikey penceresinde  **+Ekle &nbsp;** ' ye tıklayın ve ardından dikey pencereyi şu değerlerle doldurun:
+2. **Girişler** dikey penceresinde **+&nbsp;Ekle** ' ye tıklayın ve ardından dikey pencereyi şu değerlerle doldurun:
 
    * **Giriş diğer adı**: Adı `TwitterStream`kullanın. Farklı bir ad kullanırsanız, daha sonra ihtiyacınız olduğu için bunu bir yere unutmayın.
    * **Kaynak türü**: **Veri akışını**seçin.
@@ -291,7 +291,7 @@ Bu nasıl yapılır kılavuzunda, toplanan Tweet olaylarını iş sorgusundan Az
 
 1. **Iş topolojisi** bölümünde **Çıkış** kutusuna tıklayın. 
 
-2. **Çıktılar** dikey penceresinde  **+Ekle &nbsp;** ' ye tıklayın ve ardından dikey pencereyi şu değerlerle doldurun:
+2. **Çıktılar** dikey penceresinde **+&nbsp;Ekle** ' ye tıklayın ve ardından dikey pencereyi şu değerlerle doldurun:
 
    * **Çıkış diğer adı**: Adı `TwitterStream-Output`kullanın. 
    * **Havuz**: **Blob depolama**'yı seçin.

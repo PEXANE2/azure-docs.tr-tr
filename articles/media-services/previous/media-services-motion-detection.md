@@ -44,7 +44,7 @@ Aşağıdaki parametreleri kullanabilirsiniz:
 | --- | --- | --- | --- |
 | sensitivityLevel |String: 'low', 'medium', 'high' |Hareketlerin 'in bildirildiği duyarlılık düzeyini ayarlar. Hatalı pozitif sonuç sayısını ayarlamak için bunu ayarlayın. |'medium' |
 | frameSamplingValue |Pozitif tamsayı |Algoritmanın çalışacağı sıklığı ayarlar. 1 her çerçeveye eşittir, 2 her ikinci kare de vb. anlamına gelir. |1\. |
-| detectLightChange |Boolean: 'true', 'false' |Sonuçlarda açık değişikliklerin raporlanıp raporlanmadığını ayarlar | 'False' |
+| detectLightChange |Boolean: 'true', 'false' |Sonuçlarda açık değişikliklerin raporlanıp raporlanmadığını ayarlar |'False' |
 | mergeTimeThreshold |XS-Time: Ss: DD: ss<br/>Örnek: 00:00:03 |2 olayın birleştirileceği ve 1 olarak bildirildiği hareket olayları arasındaki zaman penceresini belirtir. |00:00:00 |
 | detectionZones |Bir algılama bölgesi dizisi:<br/>-Algılama bölgesi 3 veya daha fazla noktadan oluşan bir dizidir<br/>-Point, 0 ile 1 arasında bir x ve y koordinatı. |Kullanılacak Çokgen algılama bölgelerinin listesini açıklar.<br/>Sonuçlar bir KIMLIK olarak, ilki ' id ' olan bölge ile bildirilir: 0 |Tüm çerçeveyi kapsayan tek bölge. |
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 31882b878f76060bdbf70a308673fc80d60c8440
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0eaa3428234db8a7045728404bcfac5cc732dd9d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075879"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181167"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Öğretici: HDInsight üzerinde Apache Kafka ile Apache Storm kullanma
 
@@ -372,7 +372,7 @@ Proje, topolojilerin kullandığı parametreleri geçirmek için kullanılan `de
 | `kafka.broker.hosts` | Kafka aracısı konakları (çalışan düğümleri). |
 | `kafka.topic` | Topolojileri kullanan Kafka konusu. |
 | `hdfs.write.dir` | Kafka-okuyucu topolojisinin yazdığı dizin. |
-| `hdfs.url` | Storm kümesi tarafından kullanılan dosya sistemi. Azure Depolama hesapları için `wasb:///` değerini kullanın. Azure Data Lake Storage 2. için değerini `abfs:///`kullanın. Azure Data Lake Storage 1. için değerini `adl:///`kullanın. |
+| `hdfs.url` | Storm kümesi tarafından kullanılan dosya sistemi. Azure Depolama hesapları için `wasb://` değerini kullanın. Azure Data Lake Storage 2. için değerini `abfs://`kullanın. Azure Data Lake Storage 1. için değerini `adl://`kullanın. |
 
 ## <a name="create-the-clusters"></a>Kümeleri oluşturma
 

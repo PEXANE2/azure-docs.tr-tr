@@ -116,8 +116,8 @@ Visual Studio Code verdiğiniz bilgileri alır, bir IoT Edge çözümü oluştur
 
 Çözümle birlikte gelen varsayılan modül kodu şu konumda bulunur:
 
-- Azure işlevi (C#): **modülünüzün adını > *&lt;Modüladı&gt;* . > CS olarak  *&lt;adlandırın&gt;*
-- C#: **modüller > *&lt;modül adınızı&gt;* > program.cs
+- Azure işlevi (C#): **modülünüzün adını > *&lt;Modüladı&gt;* . > CS olarak  *&lt;adlandırın&gt;***
+- C#: **modüller > *&lt;modül adınızı&gt;* > program.cs**
 - Python: **modüller > *&lt;modülünüzün adını&gt;* > Main.py**
 - Node. js:  ***&lt;modül adınızı&gt;* > App. js > Modüller**
 - Java:  ***&lt;modüladınızı&gt;* > src > Ana > Java > com > edgemodulemodules > App. Java ' > Modüller**

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995553"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181071"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight 'ta Apache Spark işlerini iyileştirme
 
@@ -60,7 +60,7 @@ Yeni bir Spark kümesi oluşturduğunuzda, kümenizin varsayılan depolama alan�
 | Mağaza türü | Dosya sistemi | Hız | Geçici | Kullanım örnekleri |
 | --- | --- | --- | --- | --- |
 | Azure Blob Depolama | fazla **b:** // | **Standart** | Evet | Geçici küme |
-| Azure Data Lake Storage Gen 2| **ABFS [s]:** // | **Lýdýr** | Evet | Geçici küme |
+| Azure Data Lake Storage Gen 2| **ABFS:** // | **Lýdýr** | Evet | Geçici küme |
 | Azure Data Lake Storage Gen 1| **adl:** // | **Lýdýr** | Evet | Geçici küme |
 | Yerel olarak | Bu **:** // | **En hızlı** | Hayır | Etkileşimli 24/7 kümesi |
 

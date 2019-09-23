@@ -1,19 +1,19 @@
 ---
-title: Azure HPC önbelleğine depolama ekleme
+title: Azure HPC önbelleğine depolama ekleme (Önizleme)
 description: Azure HPC önbelleğinizin, uzun süreli dosya depolaması için şirket içi NFS sisteminizi veya Azure Blob kapsayıcılarını kullanabilmesi için depolama hedeflerini tanımlama
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: v-erkell
-ms.openlocfilehash: ca8e13e322c3e192b697248f1252b65f6cbeda7f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a17952e193f3e03becaab044f55637372bac7b0d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037205"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181014"
 ---
-# <a name="add-storage"></a>Depolama ekleme
+# <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
 *Depolama hedefleri* , BIR Azure HPC Cache örneğinden erişilen dosyalar için arka uç depolardır. Şirket içi donanım sistemi gibi NFS depolama alanı ekleyebilir veya verileri Azure Blob 'a kaydedebilirsiniz.
 
@@ -112,8 +112,8 @@ Her dışarı aktarma için şu değerleri girin:
 
 İşiniz bittiğinde, depolama hedefini eklemek için **Tamam** ' ı tıklatın.
 
-### <a name="choose-a-usage-model"></a>Kullanım modeli seçin 
-<!-- link in GUI to this heading -->
+### <a name="choose-a-usage-model"></a>Kullanım modeli seçin
+<!-- referenced from GUI - update aka.ms link if you change this heading -->
 
 Bir NFS depolama sistemine işaret eden bir depolama hedefi oluşturduğunuzda, bu hedefin *kullanım modelini* seçmeniz gerekir. Bu model, verilerinizin nasıl önbelleğe alınacağını belirler.
 

@@ -1,19 +1,19 @@
 ---
-title: Azure HPC önbelleğine genel bakış
+title: Azure HPC önbellek önizlemesine genel bakış
 description: Yüksek performanslı bilgi işlem için bir dosya erişim Hızlandırıcısı çözümü olan Azure HPC Cache 'i açıklar
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/06/2019
+ms.date: 09/19/2019
 ms.author: v-erkell
-ms.openlocfilehash: 77eca3ef58733a616705fdaac1d2880b5a990e8a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f4c858d7a71cf02b4a8fe181deecbf3a1b652885
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036875"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180690"
 ---
-# <a name="what-is-azure-hpc-cache"></a>Azure HPC Önbelleği nedir?
+# <a name="what-is-azure-hpc-cache-preview"></a>Azure HPC Önbelleği nedir? (Önizleme)
 
 Azure HPC Cache, yüksek performanslı bilgi işlem (HPC) görevleri için verilerinize erişimi hızlandırır. Azure 'daki dosyaları önbelleğe alarak, verilerinizin WAN bağlantılarında depolandığı iş akışları için (örneğin, yerel veri merkezi ağa bağlı depolama (NAS) ortamınızda) bulut bilgi işlemin ölçeklenebilirliğini de kullanılabilir hale getirir.
 
@@ -57,6 +57,10 @@ Azure HPC önbelleği şu Azure bölgelerinde kullanılabilir:
 * Batı ABD 2
 
 En son kullanılabilirlik bilgileri için [Azure HPC önbellek ürün sayfasını](https://azure.microsoft.com/services/hpc-cache) kontrol edin.
+
+## <a name="preview-availability"></a>Önizleme kullanılabilirliği
+
+Azure HPC önbelleği genel önizlemesi, hizmet kalitesi sağlamak için kısıtlıdır. [Bu formu](https://aka.ms/onboard-hpc-cache)doldurarak erişim isteyin. Aboneliğiniz erişim listesine eklendikten sonra, test önbellekleri oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
