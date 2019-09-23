@@ -2239,7 +2239,7 @@ if(equals(1, 1), 'yes', 'no')
 
 <a name="indexof"></a>
 
-### <a name="indexof"></a>IndexOf
+### <a name="indexof"></a>indexOf
 
 Bir alt dize için başlangıç konumu veya dizin değeri döndürün.
 Bu işlev, büyük/küçük harfe duyarlı değildir ve dizinler 0 sayısıyla başlar.
@@ -2612,7 +2612,7 @@ Ve şu sonuçları döndürür:
 
 <a name="lastindexof"></a>
 
-### <a name="lastindexof"></a>LastIndexOf
+### <a name="lastindexof"></a>lastIndexOf
 
 Bir alt dizenin son oluşumu için başlangıç konumunu veya dizin değerini döndürür.
 Bu işlev, büyük/küçük harfe duyarlı değildir ve dizinler 0 sayısıyla başlar.
