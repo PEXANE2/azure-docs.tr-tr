@@ -4,16 +4,16 @@ description: Bu makalede Azure kurumsal kaydınızla kullanılabilecek REST API'
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 4b56ef09525473920c5f5925485aae9c793ecc04
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900871"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105451"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Kurumsal REST API'leri
 
@@ -31,7 +31,7 @@ Microsoft Kurumsal Azure müşterileri REST API'ler aracılığıyla kullanım v
 
 **Market Mağaza Ücreti -** [Market Mağaza Ücreti API'si](billing-enterprise-api-marketplace-storecharge.md) kullanıma bağlı market ücretlerinin belirtilen faturalama dönemi veya başlangıç ve bitiş tarihleri için günlük dökümünü döndürür. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Market Mağaza Ücreti](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge).
 
-**Fiyat Listesi -** The [Fiyat Listesi API'si](/billing-enterprise-api-pricesheet.md) kayıt ve faturalama dönemi için her ölçümün geçerli fiyatını sağlar. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Fiyat Listesi](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
+**Fiyat Listesi -** The [Fiyat Listesi API'si](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) kayıt ve faturalama dönemi için her ölçümün geçerli fiyatını sağlar. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Fiyat Listesi](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet).
 
 **Faturalama Dönemleri -** [Faturalama Dönemleri API'si](billing-enterprise-api-billing-periods.md) bir kayıt için ters kronolojik sırada tüketim bilgilerini içeren bir faturalama dönemleri listesi döndürür. Her dönemin dört veri kümesi (BalanceSummary, UsageDetails, MarketplaceCharges ve PriceSheet) için API yoluna işaret eden bir özelliği vardır. Daha fazla bilgi için bkz. [Enterprise müşterileri için Raporlama API'leri - Faturalama Dönemleri](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods).
 
@@ -68,7 +68,7 @@ Kaydınızda kuruluş yöneticisi olmayan kişilere API erişim anahtarlarını 
 
 Kimlik doğrulaması ve yetkilendirme için her çağrıda API anahtarını geçirin. Aşağıdaki özelliği HTTP üst bilgilerine geçirin:
 
-| İstek Üst Bilgisi Anahtarı | Değer |
+| İstek üst bilgisi anahtarı | Değer |
 | --- | --- |
 | Yetkilendirme | Değeri şu biçimde belirtin: **bearer {API\_KEY}**
 Örnek: bearer \&lt;APIKey\&gt; |
@@ -81,7 +81,7 @@ Aşağıdaki API'ler için [Enterprise Reporting v3 API'lerinde](https://consump
 
 Bir API kullanırken yanıt durum kodları gösterilir. Aşağıdaki tabloda bunlar açıklanır.
 
-| Yanıt Durum Kodu | İleti | Açıklama |
+| Yanıt durum kodu | İleti | Açıklama |
 | --- | --- | --- |
 | 200 | Tamam | Hata yok |
 | 401 | Yetkisiz | API Anahtarı bulunamadı, Geçersiz, Süresi Doldu vb. |
@@ -105,11 +105,11 @@ Tüm Azure hizmetleri bir Azure depolama blogunda CSV biçimindeki bir kataloğa
 
 Aşağıdaki bilgilerde API raporlarının özellikleri açıklanır.
 
-#### <a name="usage-summary"></a>Kullanım Özeti
+#### <a name="usage-summary"></a>Kullanım özeti
 
 CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biçimiyle aynıdır. Sütun adı korunur, dolayısıyla JSON özet verilerini kullanırken bir veri tablosunda seri durumdan çıkarmanız gerekir.
 
-| CSV Sütun Adı | Json Sütun Adı | Json yeni Sütunu | Açıklama |
+| CSV sütun adı | JSON sütun adı | JSON yeni sütunu | Açıklama |
 | --- | --- | --- | --- |
 | AccountOwnerId | AccountOwnerLiveId | AccountOwnerLiveId |   |
 | Hesap Adı | AccountName | AccountName |   |
@@ -145,7 +145,7 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 
 #### <a name="azure-marketplace-report"></a>Azure Market raporu
 
-| CSV Sütun Adı | Json Sütun Adı | Json yeni Sütunu |
+| CSV sütun adı | JSON sütun adı | JSON yeni sütunu |
 | --- | --- | --- |
 | AccountOwnerId | AccountOwnerId | AccountOwnerId |
 | Hesap Adı | AccountName | AccountName |
@@ -172,9 +172,9 @@ CSV raporundan JSON biçimi oluşturulur. Sonuç olarak bu biçim özet CSV biç
 | Maliyet Merkezi | CostCenters |  CostCenter |
 | Kaynak Grubu | adlı yönetilen örnek, |  adlı yönetilen örnek, |
 
-#### <a name="price-sheet"></a>Fiyat Listesi
+#### <a name="price-sheet"></a>Fiyat listesi
 
-| CSV Sütun Adı | Json Sütun Adı | Açıklama |
+| CSV sütun adı | JSON sütun adı | Açıklama |
 | --- | --- | --- |
 | Hizmet | Hizmet |  Fiyatta değişiklik yok |
 | Ölçü Birimi | UnitOfMeasure |   |

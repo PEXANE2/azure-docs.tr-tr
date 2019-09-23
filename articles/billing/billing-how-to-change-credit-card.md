@@ -11,14 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: 7719ae83525883a6d3f014dbb99877b7319f2ccd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 05b1fe3d061e735322e6eb6c65e60f63d8adb4d6
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68383671"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933859"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure için kredi kartı ekleme, güncelleştirme veya kaldırma
+
+Bu belge Azure için çevrimiçi ortamda kredi kartıyla kaydolan müşterilere yöneliktir.
 
 Azure portalında yeni kredi kartı ekleme, var olan kredi kartını güncelleştirme veya kullanılmayan kredi kartlarını silme işlemlerini gerçekleştirebilirsiniz. Bu değişiklikleri yapmak için [Hesap Yöneticisi](billing-subscription-transfer.md#whoisaa) olmanız gerekir.
 
