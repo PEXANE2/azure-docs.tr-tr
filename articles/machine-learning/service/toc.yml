@@ -54,26 +54,6 @@
     - name: Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: Görsel arabirim denemeleri
-      items:
-        - name: Fiyat tahmini
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-basic.md
-        - name: Fiyat tahmini (gelişmiş)
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
-        - name: Kredi riski tahmini
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-basic.md
-        - name: Kredi riski tahmini (gelişmiş)
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
-        - name: Değişim sıklığı tahmini
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-churn.md
-        - name: Uçuş rötarları tahmini
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-flight-delay.md
     - name: Azure Açık Veri Kümeleri
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Kavramlar
@@ -174,6 +154,27 @@
               href: how-to-train-pytorch.md
             - name: Chainer kullanma
               href: how-to-train-chainer.md
+        - name: Görsel arabirim kullanma
+          displayName: sample visual interface experiments
+          items:
+            - name: Fiyat tahmini
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+            - name: Fiyat tahmini (gelişmiş)
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
+            - name: Kredi riski tahmini
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+            - name: Kredi riski tahmini (gelişmiş)
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+            - name: Değişim sıklığı tahmini
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-churn.md
+            - name: Uçuş rötarları tahmini
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-flight-delay.md
         - name: Hiperparametreleri ayarlama
           displayName: parameter
           href: how-to-tune-hyperparameters.md
