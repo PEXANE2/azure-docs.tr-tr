@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: 64bf8f5c8de5f56ee1140e91d0472a33b35570cf
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878791"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147150"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid olaylarını işleme
 
@@ -38,6 +38,9 @@ Media Services olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı 
 * Benzer şekilde, eventType için hazırlanmakta olan bir olay olduğunu ve aldığınız tüm olayların istediğiniz tür olacağını kabul edin.
 * Anladığınızı alanları yoksayın.  Bu uygulama, gelecekte eklenebilecek yeni özelliklere dayanıklı tutmaya yardımcı olur.
 * Olayları belirli bir olayla sınırlamak için "konu" önekini ve sonek eşleşmelerini kullanın.
+
+> [!NOTE]
+> Olaylar Event Grid [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)konusuna tabidir. API 'Leri kullanarak olay bildirimleri almak istiyorsanız, [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey) veya [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey)ile olayları kullanma örneklerine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
