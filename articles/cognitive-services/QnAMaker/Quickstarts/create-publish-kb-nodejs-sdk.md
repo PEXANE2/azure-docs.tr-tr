@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/07/2019
+ms.date: 09/21/2019
 ms.author: diberry
-ms.openlocfilehash: dcbbaa2f4c6ebe709c879909f873b212f238ff2a
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 6759b8fdf6e68d4f0030fc4eda5eee5d1ce608b1
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375849"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203211"
 ---
 # <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Hızlı Başlangıç: Node. js için Soru-Cevap Oluşturma istemci kitaplığı
 
@@ -122,12 +122,15 @@ Bilgi Bankası, üç kaynaktan alınan [Createkbdto](https://docs.microsoft.com/
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
+Bir bilgi bankasını başarıyla [`wait_for_operation`](#get-status-of-an-operation) oluşturmak için yukarıdaki koda başvuruda bulunulan işlevin dahil olduğundan emin olun. 
 
 ## <a name="update-a-knowledge-base"></a>Bilgi bankası güncelleştirme
 
 Bilgi Bankası KIMLIĞI ve [güncelleştirme](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/knowledgebase?view=azure-node-latest#update-string--updatekboperationdto--msrest-requestoptionsbase-) yöntemi için [Add](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#add), [Update](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#update)ve [Delete](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest#deleteproperty) DTO nesnelerini içeren bir [updatekboperationdto](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/updatekboperationdto?view=azure-node-latest) ile bir Bilgi Bankası güncelleştirebilirsiniz. Güncelleştirme başarılı olup olmadığını öğrenmek için [Operation. getDetail](#get-status-of-an-operation) metodunu kullanın.
 
 [!code-javascript[Update a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=updatekb&highlight=19)]
+
+Bilgi bankasını başarıyla güncelleştirmek [`wait_for_operation`](#get-status-of-an-operation) için yukarıdaki koda başvuruda bulunulan işlevi dahil edin. 
 
 ## <a name="publish-a-knowledge-base"></a>Bilgi bankası yayımlama
 
@@ -153,6 +156,9 @@ Aşağıdaki kod bloğundaki _setTimeout_ çağrısı, zaman uyumsuz kodun benze
 
 Uygulamayı uygulama dizininizdeki komutla çalıştırın. `node index.js`
 
+
+Bu makaledeki tüm kod parçacıkları [kullanılabilir](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) ve tek bir dosya olarak çalıştırılabilir.
+
 ```console
 node index.js
 ```
@@ -172,4 +178,3 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Soru-Cevap Oluşturma API'si nedir?](../Overview/overview.md)
 * [Bilgi Bankası Düzenle](../how-to/edit-knowledge-base.md)
 * [Kullanım analizlerini al](../how-to/get-analytics-knowledge-base.md)
-* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)' da bulunabilir.
