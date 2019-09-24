@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: d395855de6bb16841d54821c87a6af6d5d62c11c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898063"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203750"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>Hızlı Başlangıç: Azure DevOps Projeleri bir Java uygulaması için CI/CD işlem hattı ayarlama
 
@@ -39,7 +39,7 @@ Bir Azure aboneliğiniz yoksa, [Visual Studio Dev Essentials](https://visualstud
 
 2. **Oluştur**’u seçin.
 
-    ![Sürekli Teslim yapılandırmasını başlatma](_img/azure-devops-project-java/fullbrowser.png)
+    ![DevOps Projeleri Azure kaynağı oluşturma](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Örnek uygulama ve Azure hizmeti seçme
 
@@ -62,7 +62,7 @@ Java örnekleri birkaç uygulama çerçevesi seçeneği içerir.
 
 2. Çalışan uygulamanızı görüntülemek için **Araştır** ' ı seçin.
 
-    ![Pano görünümü](_img/azure-devops-project-java/dashboardnopreview.png) 
+    ![Uygulama panosunu Azure portal görüntüle](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
     
    DevOps Projeleri bir CI derleme ve yayın tetikleyicisi otomatik olarak yapılandırıldı.  Artık en son çalışmanızı otomatik olarak web sitenize dağıtan bir CI/CD işlemiyle Java uygulaması üzerinde bir ekiple birlikte çalışmaya hazırsınız.
 

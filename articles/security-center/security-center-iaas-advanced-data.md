@@ -3,9 +3,8 @@ title: Azure Güvenlik Merkezi 'nde IaaS için gelişmiş veri güvenliği | Mic
 description: " Azure Güvenlik Merkezi 'nde IaaS için gelişmiş veri güvenliğini nasıl etkinleştirebileceğinizi öğrenin. "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: ba46c460-6ba7-48b2-a6a7-ec802dd4eec2
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/29/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 0b83575baa2221f0b502abbf919654492c7ab6cf
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 287da68617a9527bc398df577cf8d10773fa8557
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295750"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202180"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-public-preview"></a>Azure sanal makineler 'de SQL sunucuları için gelişmiş veri güvenliği (Genel Önizleme)
 Azure sanal makineler 'deki SQL sunucuları için gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Birleşik bir pakettir. Şu anda (genel önizlemede), ortaya çıkabilecek ve olası veritabanı güvenlik açıklarını azaltmaya ve veritabanınıza yönelik bir tehdit oluşturabilecek anormal etkinlikleri algılamakla ilgili işlevsellik içerir. 
@@ -49,7 +48,7 @@ Aşağıdaki adımlar, Azure VM 'Leri genel önizleme üzerinde SQL için geliş
 
     ![IaaS için gelişmiş veri güvenliği](./media/security-center-advanced-iaas-data/sql-advanced-data-security.png)
 
-1.           **Oluştur**'a tıklayın. Çalışma yerleri görüntülenir.
+1. **Oluştur**’a tıklayın. Çalışma yerleri görüntülenir.
 
     ![Gelişmiş veri güvenliği oluşturma](./media/security-center-advanced-iaas-data/sql-advanced-data-create.png)
 
@@ -72,7 +71,7 @@ Geçerli güvenlik uyarılarınızı görüntüleyebilir ve yönetebilirsiniz.
 
 1. Geçerli tehdidi araştırmaya ve gelecekteki tehditleri gidermeye yönelik uyarı ayrıntılarını ve eylemlerini görüntülemek için, **genel bilgiler** sayfasını kaydırın ve **Düzeltme ADıMLARı** bölümünde **araştırma adımları** bağlantısına tıklayın.
 
-    ![Düzeltme adımları](./media/security-center-advanced-iaas-data/remediation-steps.png)
+    ![Düzeltme Adımları](./media/security-center-advanced-iaas-data/remediation-steps.png)
 
 1. Uyarının tetiklenmesi ile ilişkili günlükleri görüntülemek için **Log Analytics çalışma alanları** ' na gidin ve aşağıdaki adımları uygulayın:
 
@@ -89,7 +88,7 @@ Geçerli güvenlik uyarılarınızı görüntüleyebilir ve yönetebilirsiniz.
 
     1. **SQLAdvancedThreatProtection** tablosunun yanındaki göz düğmesine tıklayın. Günlükler listelenir.
 
-     ![Günlükleri görüntüle](./media/security-center-advanced-iaas-data/view-logs.png)
+     ![Günlükleri Görüntüle](./media/security-center-advanced-iaas-data/view-logs.png)
 
 ## <a name="set-up-email-notification-for-atp-alerts"></a>ATP uyarıları için e-posta bildirimi ayarlama 
 

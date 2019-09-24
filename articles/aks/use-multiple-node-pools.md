@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 7a58e8559587ddcb307c338f5ce87cd6b8e52021
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171513"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202954"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -35,7 +35,7 @@ Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 ### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
 
-Birden çok düğüm havuzu kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.12 veya daha yüksek olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin::
+Birden çok düğüm havuzu kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.16 veya daha yüksek olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -178,7 +178,9 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 > [!NOTE]
 > Bir hata denendiğinde, bir küme veya düğüm havuzundaki yükseltme ve ölçeklendirme işlemleri aynı anda gerçekleşemez. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. [Sorun giderme kılavuzumuzdan](https://aka.ms/aks-pending-upgrade)bu konuda daha fazla bilgi edinin.
 
-Aks kümeniz ilk adımda ilk kez oluşturulduğunda, bir `--kubernetes-version` *1.13.10* belirtildiğinde. Bu, Kubernetes sürümünü hem denetim düzlemi hem de varsayılan düğüm havuzu için ayarlar. Bu bölümdeki komutlar, tek bir belirli düğüm havuzunun nasıl yükseltileceğini açıklamaktadır. Denetim düzlemi ve düğüm havuzunun Kubernetes sürümünü yükseltme arasındaki ilişki [aşağıdaki bölümde](#upgrade-a-cluster-control-plane-with-multiple-node-pools)açıklanmıştır.
+Aks kümeniz ilk adımda ilk kez oluşturulduğunda, bir `--kubernetes-version` *1.13.10* belirtildiğinde. Bu, Kubernetes sürümünü hem denetim düzlemi hem de varsayılan düğüm havuzu için ayarlar. Bu bölümdeki komutlar, tek bir belirli düğüm havuzunun nasıl yükseltileceğini açıklamaktadır.
+
+Denetim düzlemi ve düğüm havuzunun Kubernetes sürümünü yükseltme arasındaki ilişki [aşağıdaki bölümde](#upgrade-a-cluster-control-plane-with-multiple-node-pools)açıklanmıştır.
 
 > [!NOTE]
 > Düğüm havuzu işletim sistemi görüntüsü sürümü, kümenin Kubernetes sürümüne bağlıdır. Yalnızca bir küme yükseltmesini izleyerek işletim sistemi görüntüsü yükseltmelerini alacaksınız.
@@ -193,9 +195,6 @@ az aks nodepool upgrade \
     --kubernetes-version 1.13.10 \
     --no-wait
 ```
-
-> [!Tip]
-> Denetim düzlemi 'ni *1.14.6*' e yükseltmek için öğesini `az aks upgrade -k 1.14.6`çalıştırın. [Birden çok düğümlü havuzlarla denetim düzlemi yükseltmeleri](#upgrade-a-cluster-control-plane-with-multiple-node-pools)hakkında daha fazla bilgi edinin.
 
 [Az aks düğüm havuzu listesi][az-aks-nodepool-list] komutunu kullanarak düğüm havuzlarınızın durumunu yeniden listeleyin. Aşağıdaki örnek, *mynodepool* 'in *yükseltme* durumunda olduğunu *gösterir:*
 
@@ -232,7 +231,7 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 Düğümlerin belirtilen sürüme yükseltilmesi birkaç dakika sürer.
 
-En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı Kubernetes sürümüne yükseltmeniz gerekir. Tek tek düğüm havuzlarını yükseltebilme özelliği, yukarıdaki kısıtlamalar dahilinde uygulama çalışma süresini korumak için sıralı yükseltme gerçekleştirmenize ve düğüm havuzları arasında dizin zamanlamauygulamanıza olanak tanır.
+En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı Kubernetes sürümüne yükseltmeniz gerekir. Varsayılan davranışı `az aks upgrade` , bu hizalamayı başarmak için tüm düğüm havuzlarını denetim düzlemesiyle birlikte yükseltmekte. Tek tek düğüm havuzlarını yükseltebilme özelliği, yukarıdaki kısıtlamalar dahilinde uygulama çalışma süresini korumak için sıralı yükseltme gerçekleştirmenize ve düğüm havuzları arasında dizin zamanlamauygulamanıza olanak tanır.
 
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Birden çok düğümlü havuzlarla küme denetim düzlemi 'ni yükseltme
 
@@ -243,11 +242,12 @@ En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı K
 > * Düğüm havuzu sürümü, denetim düzlemi sürümünden düşük bir alt sürüm olabilir.
 > * Düğüm havuzu sürümü, diğer iki kısıtlama izlendiği sürece herhangi bir yama sürümü olabilir.
 
-AKS kümesi iki küme kaynak nesnesine sahiptir. Birincisi, bir denetim düzlemi Kubernetes sürümüdür. İkincisi, Kubernetes sürümü olan bir aracı havuzudur. Bir denetim düzlemi bir veya daha fazla düğüm havuzlarıyla eşlenir ve her birinin kendi Kubernetes sürümü vardır. Bir yükseltme işleminin davranışı hangi kaynağın hedeflendiğinden ve temel alınan API 'nin hangi sürümünün çağrıldığı üzerinde farklılık gösterir.
+AKS kümesi, Kubernetes sürümleriyle ilişkili iki küme kaynak nesnesine sahiptir. Birincisi, bir denetim düzlemi Kubernetes sürümüdür. İkincisi, Kubernetes sürümü olan bir aracı havuzudur. Denetim düzlemi bir veya daha fazla düğüm havuzlarıyla eşlenir. Bir yükseltme işleminin davranışı, hangi Azure CLı komutunun kullanıldığına bağlıdır.
 
 1. Denetim düzlemi 'nin yükseltilmesi için kullanılması gerekir`az aks upgrade`
-   * Bu, kümedeki tüm düğüm havuzlarını de yükseltir
-1. İle yükseltme`az aks nodepool upgrade`
+   * Bu işlem denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir
+   * Bayrağa `az aks upgrade` `--control-plane-only` geçerek yalnızca küme denetim düzlemi 'ni yükseltilecektir ve ilişkili düğüm havuzlarının hiçbirini kullanamazsınız * bayrak, aks-Preview uzantısı v 0.4.16 veya üzeri sürümlerde kullanılabilir `--control-plane-only`
+1. Tek tek düğüm havuzlarının yükseltilmesi için kullanılması gerekir`az aks nodepool upgrade`
    * Bu, yalnızca hedef düğüm havuzunu belirtilen Kubernetes sürümüyle yükseltecek
 
 Düğüm havuzlarının tuttuğu Kubernetes sürümleri arasındaki ilişki Ayrıca bir kural kümesine uymalıdır.

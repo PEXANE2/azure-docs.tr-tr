@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e7b69e57d4e01c292a2c6d032ba995d1936b88dc
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142898"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202903"
 ---
 # <a name="dependency-visualization"></a>Bağımlılık görselleştirmesi
 
@@ -44,11 +44,14 @@ Azure geçişi, bağımlılık görselleştirmesi için [Azure izleyici günlük
     ![Çalışma alanı ekle](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - Bir çalışma alanı ilişkilendirirken, yeni bir çalışma alanı oluşturma veya var olanı iliştirme seçeneğini alacaksınız:
-  - Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı için bir ad belirtmeniz gerekir. Çalışma alanı daha sonra geçiş projesiyle aynı [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) içindeki bir bölgede oluşturulur.
+  - Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı için bir ad belirtmeniz gerekir. Çalışma alanının oluşturulacağı [bölgeyi](https://azure.microsoft.com/global-infrastructure/regions/) seçebilirsiniz.
   - Mevcut bir çalışma alanını eklediğinizde, geçiş projesiyle aynı abonelikte bulunan tüm kullanılabilir çalışma alanlarını seçebilirsiniz. Yalnızca [hizmet eşlemesi desteklendiği](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)bir bölgede oluşturulan çalışma alanlarının listelendiğini unutmayın. Bir çalışma alanı iliştirebilmek için, çalışma alanına ' okuyucu ' erişiminizin olduğundan emin olun.
 
   > [!NOTE]
   > Bir projeye çalışma alanı iliştirdikten sonra, daha sonra değiştiremezsiniz.
+
+  > [!NOTE]
+  > Azure geçişi Şu anda Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde OMS çalışma alanı oluşturulmasını desteklemektedir. Çalışma alanı başka bir bölgede Azure geçişi dışında oluşturulduysa, şu anda bir Azure geçiş projesiyle ilişkilendirilemez. 
 
 - İlişkili çalışma alanı, anahtar **geçiş projesiyle**etiketlenebilir ve Azure Portal arama yapmak için kullanabileceğiniz değer **proje adıdır**.
 - Projeyle ilişkili çalışma alanına gitmek için projeye **genel bakış** sayfasının **Essentials** bölümüne gidebilir ve çalışma alanına erişebilirsiniz

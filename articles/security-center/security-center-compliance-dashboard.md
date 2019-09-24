@@ -1,11 +1,10 @@
 ---
-title: Azure Güvenlik Merkezi'ni kullanarak, Mevzuat uyumluluğu geliştirin | Microsoft Docs
-description: "Öğretici: Azure Güvenlik Merkezi'ni kullanarak, Mevzuat uyumluluğu geliştirin öğrenin."
+title: Azure Güvenlik Merkezi 'ni kullanarak mevzuata uyumluluğunuzu geliştirme | Microsoft Docs
+description: "Öğretici: Azure Güvenlik Merkezi 'ni kullanarak mevzuata uyumluluğunuzu geliştirmeyi öğrenin."
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
 ms.devlang: na
@@ -13,95 +12,95 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2019
-ms.author: v-mohabe
-ms.openlocfilehash: e1544b0c9bf280c8d097d2fa25f7fc652450b87e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.author: memildin
+ms.openlocfilehash: 20842997c5df81835024a6f458cd863b4e4d78b0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968565"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202435"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Öğretici: Mevzuat uyumluluğunuzu artırma
 ---
 
-Azure Güvenlik Merkezi yasal uyumluluk gereksinimlerini işlemi kolaylaştırmaya yasal uyumluluk Panoyu kullanarak yardımcı olur. Panoda, Güvenlik Merkezi, uyumluluk duruşunuzu Azure ortamınızın devamlı değerlendirmelerle hakkında Öngörüler sağlar. Güvenlik Merkezi tarafından gerçekleştirilen değerlendirmeleri risk faktörleri karma bulut ortamınızda en iyi güvenlik uygulamaları uygun olarak analiz edin. Bu değerlendirmeler uyumluluk denetimleri için desteklenen standartları kümesinden eşlenir. Yasal uyumluluk panosunda, ortamınızda belirli bir standart veya düzenleme bağlamı tüm değerlendirmeler durumunu açık bir görünümünü sahip. Öneriler hareket ve ortamınızda risk faktörleri azaltmak gibi geliştirmek, uyumluluk duruşunu görebilirsiniz.
+Azure Güvenlik Merkezi, mevzuat uyumluluk panosunu kullanarak, mevzuat uyumluluk gereksinimlerini karşılamaya yönelik işlemin kolaylaştırılmasına yardımcı olur. Panoda, Güvenlik Merkezi, Azure ortamınızın sürekli değerlendirmelerine bağlı olarak uyumluluk gönderinize yönelik öngörüler sağlar. Güvenlik Merkezi tarafından gerçekleştirilen değerlendirmeler, karma bulut ortamınızdaki risk etkenlerini, en iyi güvenlik uygulamalarına uygun olarak analiz eder. Bu değerlendirmeler, desteklenen bir standartlar kümesinden uyumluluk denetimleriyle eşlenir. Yasal uyumluluk panosunda, ortamınızdaki tüm bu değerlendirmelerin durumunun belirli bir standart veya yönetmeliği bağlamında açık bir şekilde görünümüne sahip olursunuz. Önerilerinizi ve ortamınızdaki risk etmenlerini azaltmanızı sağlayacak şekilde uyumluluğun iyileştirilmesine bakabilirsiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
--   Yasal uyumluluk Panoyu kullanarak, yönetmeliklere uygunluk değerlendirme
+-   Mevzuat uyumluluk panosunu kullanarak mevzuata uyumluluğunuzu değerlendirin
 
--   Öneriler eylemi gerçekleştirerek, uyumluluk duruşunu
+-   Önerilerle ilgili eylem gerçekleştirerek uyumluluk durunuzu geliştirme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide ele alınan özelliklerin üzerinden adımlamak için Güvenlik Merkezi'nin standart fiyatlandırma katmanında olmalıdır. Ücretsiz olarak Güvenlik Merkezi standart deneyebilirsiniz.
+Bu öğreticide ele alınan özellikler arasında ilerlemek için Güvenlik Merkezi 'nin standart fiyatlandırma katmanına sahip olmanız gerekir. Güvenlik Merkezi Standart 'ı ücretsiz olarak deneyebilirsiniz.
 Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](https://docs.microsoft.com/azure/security-center/security-center-get-started) başlıklı hızlı başlangıçta Standart katmanına nasıl yükseltebileceğiniz adım adım açıklanmıştır.
 
-##  <a name="assess-your-regulatory-compliance"></a>Yasal, uyumluluk değerlendirme
+##  <a name="assess-your-regulatory-compliance"></a>Mevzuata uyumluluğunuzu değerlendirin
 
-Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını tanımlamak amacıyla kaynaklarınızın yapılandırmasını sürekli olarak değerlendirir. Bu değerlendirme, güvenlik sağlığı geliştirmeye odaklanma konusunda öneriler olarak gösterilir. Yasal uyumluluk Panoda desteklenen gereksinimleri için geçerli güvenlik değerlendirmeleri burada eşlenir kendi gereksinimler ile uyumluluk standartlarını kümesini görüntüleyebilirsiniz. Bu sayede, uyumluluk duruşunu standart göre görüntülemek Bu değerlendirme durumu temelinde.
+Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını belirlemek üzere kaynaklarınızın yapılandırmasını sürekli olarak değerlendirir. Bu değerlendirmeler, güvenlik Hygiene 'yı geliştirmeye odaklanarak öneriler olarak sunulur. Mevzuat uyumluluk panosunda, desteklenen gereksinimlerin ilgili güvenlik değerlendirmelerine eşlendiği tüm gereksinimleriyle birlikte bir uyumluluk standartları kümesini görüntüleyebilirsiniz. Bu, bu değerlendirmelerin durumuna bağlı olarak, uyumluluğa göre uyumluluk durunuzu görüntülemenize olanak sağlar.
 
-Yasal uyumluluk Pano görünümü, dikkatinizi standart veya sizin için önemli olan düzenleme uyduğunuzu boşlukları üzerinde odaklanmanıza yardımcı olabilir. Bu odaklanmış bir görünümünü sürekli olarak zaman içinde dinamik Bulut ve karma ortamlar içinde uyumluluk puanınız izlemenizi sağlar.
+Mevzuat uyumluluk panosu görünümü, sizin için önemli bir standart veya yönetmele uyumlu olan boşlukların dikkatini çekmenize yardımcı olabilir. Bu odaklanmış görünüm, dinamik bulut ve karma ortamlarda zaman içinde uyumluluk puanınızı sürekli olarak izlemenize de olanak sağlar.
 
 >[!NOTE]
-> Şu anda desteklenen Mevzuat standartlarına şunlardır: Azure CIS, PCI DSS 3.2, ISO 27001 ve SOC TSP. Onu geliştiren gibi ek standartları Panoda yansıtılır.
-1.  Ana menü, Güvenlik Merkezi **İLKE ve Uyumluluk** seçin **yasal Uyumluluk**. <br>
-Ekranın üst kısmında, uyumluluk durumunuzu genel bir bakış ile desteklenen uyumluluk düzenlemelerini kümesini içeren bir Pano görürsünüz. Genel uyumluluk puanınız ve her bir standart ile ilişkili konularla ilgili değerlendirmelerini başarısız karşılaştırması geçirme sayısını görebilirsiniz.
+> Şu anda desteklenen mevzuata standartları şunlardır: Azure CIS, PCI DSS 3,2, ISO 27001 ve SOC TSP. Ek standartlar geliştikçe panoya yansıtılacaktır.
+1.  Güvenlik Merkezi ana menüsünde **ilke &AMP; uyumluluk** altında, **mevzuat uyumluluğu**' nu seçin. <br>
+Ekranın üst kısmında, desteklenen uyumluluk düzenlemeleri kümesiyle uyumluluk durumunuz hakkında genel bakış içeren bir pano görürsünüz. Genel uyumluluk puanınızı ve her bir standart ile ilişkili geçiş ve başarısız değerlendirmelerin sayısını görebilirsiniz.
 
-    ![bilgisayar açıklama yüksek güvenilirlik](./media/security-center-compliance-dashboard/compliance-dashboard.png)
+    ![bilgisayar açıklaması yüksek güvenirlik](./media/security-center-compliance-dashboard/compliance-dashboard.png)
 
 
-2.  Size uygun bir uyumluluk standardını bir sekmesini seçin. Bu standart için tüm denetim listesini görürsünüz. Uygun denetimler için geçirme ve değerlendirmeler, denetimle ilişkili başarısız ayrıntılarını görüntüleyebilirsiniz. Bazı denetimler gri görünür. Bu denetimler ilişkili herhangi bir Güvenlik Merkezi değerlendirme yok. Bunlar gereksinimlerini çözümlemek ve bunları kendi ortamınızdaki değerlendirmek gerekir. Bunlardan bazıları teknik değil ve işlem ile ilgili olabilir.
+2.  Size uygun uyumluluk standardı için bir sekme seçin. Söz konusu standartla ilgili tüm denetimleri göreceksiniz. İlgili denetimler için, söz konusu denetimle ilişkilendirilmiş başarılı ve başarısız değerlendirmelerin ayrıntılarını görüntüleyebilirsiniz. Bazı denetimler gri görüntülenir. Bu denetimlerle ilişkilendirilmiş hiçbir Güvenlik Merkezi değerlendirmesi yoktur. Bunlarla ilgili gereksinimleri çözümlemeniz ve bunları kendi ortamınızda değerlendirmenize gerek vardır. Bunlardan bazıları teknik değil işlem ile ilgili olabilir.
 
     ![Uyumluluk sekmesi](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-3. Seçin **tüm** ilgili tüm Güvenlik Merkezi önerilerini ve bunların ilişkili standartlarını görmek için sekmesinde. Bu görünümde, belirli bir öneriden etkilenen farklı standartları tanımlamak için yararlı olabilir. <br> Bu görünüm olabilecek öneriler çözmeniz gereken önceliğini belirlemek için de kullanabilirsiniz. Örneğin gördüğünüz, öneri **, aboneliğinizin sahibine izinleri olan hesaplar için MFA etkinleştirin** birden çok kaynak üzerinde başarısız oluyor ve ardından bu öneriyi çözümlemek birden çok standartları ile ilişkili Genel uyumluluk puanınız yüksek etkili olacaktır.
+3. Tüm ilgili güvenlik merkezi önerilerinin ve bunlarla ilişkili standartların görünümünü görmek için **Tümü** sekmesini seçin. Bu görünüm belirli bir öneriden etkilenen tüm farklı standartları belirlemek için yararlı olabilir. <br> Bu görünümü, çözmeniz gereken önerilerin önceliklerini belirlemek için kullanabilirsiniz. Örneğin, **aboneliğinizde sahip izinleri olan hesaplar IÇIN MFA 'Yı etkinleştirme** önerisinin birden fazla kaynak üzerinde başarısız olduğunu ve birden çok standartlarla ilişkilendirildiğini görürseniz, bu öneriyi çözmek üzerinde yüksek bir etkisi olur genel uyumluluk puanınız.
 
     ![Uyumluluk puanı etkisi](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
-1. Oluşturmak ve belirli bir standart için geçerli uyumluluk durumunu özetleyen bir PDF raporu indirmek için tıklayın **raporu indir**.
+1. Belirli bir standart için geçerli uyumluluk durumunuzu özetleyen bir PDF raporu oluşturup indirmek için **raporu indir**' e tıklayın.
 
-    Rapor, Güvenlik Merkezi Değerlendirme verileri temel alan seçili standardı için üst düzey, Uyumluluk durumunun özetini sağlar ve bu belirli standart denetimler göre düzenlenir. Rapor ilgili hissedarlarla paylaşılabilir ve iç ve dış denetçiler için kanıt sağlamak için hizmet verebilir.
+    Rapor, güvenlik merkezi değerlendirme verilerine dayanarak seçili standart için uyumluluk durumunuzu üst düzey bir Özet sağlar ve söz konusu standart denetimlere göre düzenlenmiştir. Rapor ilgili hissedarlarla paylaşılabilir ve iç ve dış denetçiler için kanıt sağlamaya yönelik olabilir.
 
-    ![indir](./media/security-center-compliance-dashboard/download-report.png)
+    ![İndirme](./media/security-center-compliance-dashboard/download-report.png)
 
-## <a name="improve-your-compliance-posture"></a>Uyumluluk duruşunu
+## <a name="improve-your-compliance-posture"></a>Uyumluluk durunuzu geliştirme
 
-Verilen bilgilerle Mevzuat uyumluluğu panosunda, doğrudan panonun içinden önerileri çözerek, uyumluluk duruşunu artırabilir.
+Yasal uyumluluk panosundaki bilgiler verildiğinde, önerileri doğrudan pano içinde çözerek uyumluluk durunuzu geliştirebilirsiniz.
 
-1.  Bu öneri ayrıntılarını görüntülemek için Panoda görünen başarısız değerlendirmeleri birini tıklayın. Her bir öneri kümesi bu sorunu gidermek için izlenmesi gereken düzeltme adımlarını içerir.
+1.  Söz konusu öneriye ilişkin ayrıntıları görüntülemek için Panoda görünen başarısız değerlendirmelerin herhangi birine tıklayın. Her öneri, sorunu çözmek için izlenmesi gereken bir düzeltme adımları kümesi içerir.
 
-2.  Daha fazla ayrıntı görüntülemek ve bu kaynak için öneriyi çözümlemek için belirli bir kaynak seçebilirsiniz. <br>Örneğin, **Azure CIS standart** sekmesinde öneriye tıklayabilirsiniz **depolama hesabına güvenli aktarım gerektir**.
+2.  Daha fazla ayrıntı görüntülemek ve söz konusu kaynak için öneriyi çözümlemek üzere belirli bir kaynağı seçebilirsiniz. <br>Örneğin, **Azure CIS standart** sekmesinde, **depolama hesabına güvenli aktarım gerektir**önerisi ' ne tıklayabilirsiniz.
 
     ![Uyumluluk önerisi](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 
-3. Öneri bilgilerin tıklama yoluyla ve iyi durumda olmayan bir kaynak seçin, etkinleştirme doğrudan deneyimi sunduğuna **güvenli aktarım depolama** Azure portalındaki.<br>Önerileri uygulama hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi'nde güvenlik önerilerini uygulama](security-center-recommendations.md).
+3. Öneri bilgilerine tıklayıp sağlıksız bir kaynağı seçtiğinizde, Azure portal içinde **güvenli depolama aktarımını** etkinleştirme deneyimine doğrudan yol açar.<br>Önerileri uygulama hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi'nde güvenlik önerilerini uygulama](security-center-recommendations.md).
 
     ![Uyumluluk önerisi](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
-4.  Önerileri çözümleme için eyleme geçtikten sonra uyumluluk puanı artırdığı uyumluluk Panosu rapor etkileri görürsünüz.
+4.  Önerileri çözümlemek için eylem gerçekleştirdikten sonra uyumluluk puanınız artdığından uyumluluk panosu raporundaki etkiyi görürsünüz.
 
     > [!NOTE]
-    > Yalnızca değerlendirme çalıştırdıktan sonra uyumluluk verileriniz üzerinde etkisi görürsünüz. Bu nedenle değerlendirmeleri yaklaşık olarak her 12 saatte çalıştırılır.
+    > Değerlendirmeler yaklaşık olarak 12 saatte bir çalıştırılır, dolayısıyla uyumluluk verileriniz üzerindeki etkisini ancak değerlendirmeler çalıştırıldıktan sonra görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Güvenlik Merkezi'nin yasal uyumluluk panoya kullanma hakkında bilgi edindiniz:
+Bu öğreticide, güvenlik merkezi 'nin mevzuat uyumluluk panosunu şu şekilde kullanma hakkında bilgi edindiniz:
 
--   Görüntüleyebilir ve sizin için önemli olan düzenlemeleri ve standartları göre uyumluluk duruşunu izleyin.
+-   Sizin için önemli olan standartlara ve düzenlemelere göre uyumluluk gönderinizi görüntüleyin ve izleyin.
 
--   Uyumluluk durumunuzu ilgili önerileri çözümleme ve puan geliştirmek uyumluluğunu izlemeye geliştirin.
+-   İlgili önerileri çözümleyerek ve Uyumluluk puanı iyileştirerek uyumluluğu izleyerek uyumluluk durumunuzu geliştirebilirsiniz.
 
-Yasal uyumluluk Panosu, önemli ölçüde ve uyumluluk sürecini basitleştirmek ve Azure ve karma ortamınızın uyumluluk kanıtı toplamak için gereken zamanı önemli ölçüde Kes.
+Mevzuat uyumluluk panosu uyumluluk sürecini önemli ölçüde basitleştirebilir ve Azure ve hibrit ortamınız için uyumluluk kanıtlarını toplamak için gereken süreyi önemli ölçüde kesebilir.
 
-Güvenlik Merkezi hakkında daha fazla bilgi için bkz:
+Güvenlik Merkezi hakkında daha fazla bilgi için bkz.
 
 -   [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md) - Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
 
--   [Azure Güvenlik Merkezi'nde güvenlik önerilerini yönetme](security-center-recommendations.md)--Azure kaynaklarınızı korumaya yardımcı olmak için Azure Güvenlik Merkezi'nde öneriler kullanmayı öğrenin.
+-   [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md)-Azure kaynaklarınızın korunmasına yardımcı olmak Için Azure Güvenlik Merkezi 'nde önerilerin nasıl kullanılacağını öğrenin.
 
--   [Azure Güvenlik Merkezi'nde güvenli puanınız geliştirmek](security-center-secure-score.md)--güvenlik açıklarını ve en güvenliğinizi artırmak için güvenlik önerilerini öncelik öğrenin.
+-   [Azure Güvenlik Merkezi 'nde güvenli puanınızı iyileştirme](security-center-secure-score.md)-güvenlik açıklarını en iyi şekilde geliştirmek için güvenlik açıklarına ve güvenlik önerilerini önceliklendirmenin nasıl yapılacağını öğrenin.
 
 -   [Azure Güvenlik Merkezi ile ilgili SSS](security-center-faq.md) - Hizmeti kullanımı ile ilgili sık sorulan soruları bulabilirsiniz.

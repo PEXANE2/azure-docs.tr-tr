@@ -7,12 +7,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: f543db0240d59cf99f3bd793e059b7985f1ffe22
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: e08287fec79ec634d6e2353328854e19565533ca
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170615"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204047"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Hızlı Başlangıç: Windows için Veri Bilimi Sanal Makinesi ayarlama
 
@@ -28,10 +28,12 @@ DSVM örneği oluşturmak için:
 
 1. Daha önce oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir [Azure Portal](https://portal.azure.com) gidin.
 1. "Veri bilimi sanal makinesi" ni yazarak ve "Veri Bilimi Sanal Makinesi-Windows 2016" öğesini seçerek sanal makine listesini bulun.
+
     ![Windows VM listesi](./media/provision-vm/search-windows.png)
+
 1. Alt kısımdaki **Oluştur** düğmesini seçin.
 
-   ![Azure portal, Oluştur düğmesi ile, sanal makine listesi](./media/provision-vm/create-windows.png)
+    [![](media/provision-vm/create-windows.png "Windows makinesi oluşturmak için düğme")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. "Sanal makine oluşturma" dikey penceresine yönlendirilmelisiniz.
    ![Windows sanal makinesine karşılık gelen temel bilgiler sekmesi](./media/provision-vm/review-create-windows.png)

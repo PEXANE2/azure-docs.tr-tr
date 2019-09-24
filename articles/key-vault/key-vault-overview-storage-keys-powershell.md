@@ -1,52 +1,68 @@
 ---
 title: Azure Key Vault yönetilen depolama hesabı-PowerShell sürümü
-description: Yönetilen depolama hesabı özelliği, Azure Key Vault ile Azure depolama hesabı arasında çok daha az bir tümleştirme sağlar.
+description: Yönetilen depolama hesabı özelliği, Azure Key Vault ile Azure depolama hesabı arasında sorunsuz bir tümleştirme sağlar.
 ms.topic: conceptual
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
-ms.date: 03/01/2019
-ms.openlocfilehash: 7968c045a59e86ecb89c0cc797936210b9cfb07d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/10/2019
+ms.openlocfilehash: 225d9b715c56e4813a8e26d881c876e7bd498155
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883294"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204220"
 ---
-# <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault yönetilen depolama hesabı-PowerShell
+# <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Depolama hesabı anahtarlarını Key Vault ve Azure PowerShell yönetme
 
-> [!NOTE]
-> [Azure Active Directory (Azure AD) Ile Azure depolama tümleştirmesi şimdi önizlemededir](../storage/common/storage-auth-aad.md). Azure Key Vault gibi Azure depolama 'ya OAuth2 belirteç tabanlı erişim sağlayan kimlik doğrulama ve yetkilendirme için Azure AD kullanmanızı öneririz. Bu sayede şunları yapabilirsiniz:
-> - Depolama hesabı kimlik bilgileri yerine bir uygulama veya Kullanıcı kimliği kullanarak istemci uygulamanızın kimliğini doğrulayın. 
-> - Azure 'da çalışırken bir [Azure ad yönetilen kimliği](/azure/active-directory/managed-identities-azure-resources/) kullanın. Yönetilen kimlikler, istemci kimlik doğrulaması gereksinimini tamamen kaldırır ve uygulamanızda veya uygulamanızdaki kimlik bilgilerini depolar.
-> - Key Vault tarafından da desteklenen yetkilendirmeyi yönetmek için rol tabanlı Access Control (RBAC) kullanın.
-> - Depolama hesabına AAD erişimi, henüz olduğu gibi tablolara erişmek için çalışmaz.
+Bir Azure depolama hesabı, hesap adı ve anahtarı kapsayan kimlik bilgilerini kullanır. Anahtar otomatik olarak oluşturulur ve şifreleme anahtarı olarak değil, parola görevi görür. Key Vault, depolama hesabı anahtarlarını [Key Vault gizli](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)dizileri olarak depolayarak yönetir. 
+
+Anahtarları bir Azure depolama hesabıyla listelemek (eşitlemek) ve anahtarları düzenli olarak yeniden oluşturmak (döndürmek) için Key Vault yönetilen depolama hesabı anahtarı özelliğini kullanabilirsiniz. Hem depolama hesapları hem de klasik depolama hesapları için anahtarları yönetebilirsiniz.
+
+Yönetilen depolama hesabı anahtar özelliğini kullandığınızda, aşağıdaki noktaları göz önünde bulundurun:
+
+- Anahtar değerleri, bir çağırana yanıt olarak hiçbir şekilde döndürülmez.
+- Depolama hesabı anahtarlarınızı yalnızca Key Vault yönetmelidir. Anahtarları kendiniz yönetmeyin ve Key Vault süreçleriyle kesintiye uğramayın.
+- Depolama hesabı anahtarlarını yalnızca tek bir Key Vault nesnesi yönetmelidir. Birden çok nesneden anahtar yönetimine izin verme.
+- Depolama hesabınızı bir Kullanıcı sorumlusu ile yönetmek için Key Vault isteyebilirsiniz, ancak hizmet sorumlusu ile kullanamazsınız.
+- Anahtarları yalnızca Key Vault kullanarak yeniden oluşturun. Depolama hesabı anahtarlarınızı el ile yeniden üretme.
+
+Microsoft 'un bulut tabanlı kimlik ve erişim yönetimi hizmeti olan Azure Active Directory (Azure AD) ile Azure depolama tümleştirmesi kullanmanızı öneririz. Azure AD tümleştirmesi, Azure [Blobları ve kuyrukları](../storage/common/storage-auth-aad.md)için kullanılabilir ve Azure depolama 'ya OAuth2 belirteç tabanlı erişim sağlar (tıpkı Azure Key Vault gibi).
+
+Azure AD, depolama hesabı kimlik bilgileri yerine bir uygulama veya Kullanıcı kimliği kullanarak istemci uygulamanızın kimliğini doğrulayabilmeniz için izin verir. Azure 'da çalıştırdığınızda [Azure ad yönetilen kimliğini](/azure/active-directory/managed-identities-azure-resources/) kullanabilirsiniz. Yönetilen kimlikler, istemci kimlik doğrulaması gereksinimini ortadan kaldırır ve uygulamanızda veya uygulamanızdaki kimlik bilgilerini depolar.
+
+Azure AD, Key Vault tarafından da desteklenen yetkilendirmeyi yönetmek için rol tabanlı erişim denetimi 'ni (RBAC) kullanır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure depolama hesabı](/azure/storage/storage-create-storage-account) , hesap adı ve anahtar içeren bir kimlik bilgisi kullanır. Anahtar otomatik olarak oluşturulur ve şifreleme anahtarının aksine "parola" olarak daha fazla hizmet verir. Key Vault, bu depolama hesabı anahtarlarını [Key Vault gizli](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)dizileri olarak depolayarak yönetebilir. 
+## <a name="service-principal-application-id"></a>Hizmet sorumlusu uygulama KIMLIĞI
 
-## <a name="overview"></a>Genel Bakış
+Bir Azure AD kiracısı, kayıtlı her uygulamayı bir [hizmet sorumlusu](/azure/active-directory/develop/developer-glossary#service-principal-object)ile sağlar. Hizmet sorumlusu, RBAC aracılığıyla diğer Azure kaynaklarına erişim için yetkilendirme kurulumu sırasında kullanılan uygulama KIMLIĞI olarak görev yapar.
 
-Key Vault yönetilen depolama hesabı özelliği sizin adınıza çeşitli yönetim işlevleri gerçekleştirir:
+Key Vault, tüm Azure AD kiracılarında önceden kaydedilmiş bir Microsoft uygulamasıdır. Key Vault, her bir Azure bulutu 'nda aynı uygulama KIMLIĞI altına kaydedilir.
 
-- Bir Azure depolama hesabı ile anahtarları (eşitlemeler) listeler.
-- Anahtarları düzenli olarak yeniden oluşturur (döndürür).
-- Hem depolama hesapları hem de klasik depolama hesapları için anahtarları yönetir.
-- Anahtar değerleri, çağırana yanıt olarak hiçbir şekilde döndürülmez.
+| Kira | Bulut | Uygulama Kimliği |
+| --- | --- | --- |
+| Azure AD | Azure Kamu | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure genel | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Diğer  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-Yönetilen depolama hesabı anahtar özelliğini kullandığınızda:
+## <a name="prerequisites"></a>Önkoşullar
 
-- **Depolama hesabı anahtarlarınızı yalnızca Key Vault yönetmesine izin verin.** Key Vault süreçleriyle karışabileceksiniz, bunları kendiniz yönetmeye çalışmayın.
-- **Depolama hesabı anahtarlarının birden fazla Key Vault nesnesi tarafından yönetilmesine izin verme**.
-- **Depolama hesabı anahtarlarınızı el ile yeniden üretme**. Key Vault aracılığıyla yeniden oluşturmanız önerilir.
+Bu kılavuzu gerçekleştirmek için, önce aşağıdakileri yapmanız gerekir:
 
-Aşağıdaki örnek, depolama hesabı anahtarlarınızı Key Vault nasıl yönetebileceğinizi gösterir.
+- [Azure PowerShell modülünü yükler](/powershell/azure/install-az-ps?view=azps-2.6.0).
+- [Anahtar Kasası oluşturma](quick-create-powershell.md)
+- [Bir Azure depolama hesabı oluşturun](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell). Depolama hesabı adı yalnızca küçük harfler ve rakamlar kullanmalıdır. Adın uzunluğu 3 ile 24 karakter arasında olmalıdır.
+      
 
-## <a name="connect-to-your-azure-account"></a>Azure hesabınıza bağlanma
+## <a name="manage-storage-account-keys"></a>Depolama hesabı anahtarlarını yönetme
+
+### <a name="connect-to-your-azure-account"></a>Azure hesabınıza bağlanma
 
 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) cmdlet 'Ini kullanarak PowerShell oturumunuzun kimliğini doğrulayın. 
+
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
@@ -56,31 +72,33 @@ Birden çok Azure aboneliğiniz varsa [Get-AzSubscription](/powershell/module/az
 Set-AzContext -SubscriptionId <subscriptionId>
 ```
 
-## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Depolama hesabınıza erişmek için Key Vault yetkilendirme
+### <a name="set-variables"></a>Değişkenleri ayarla
 
-> [!IMPORTANT]
-> Bir Azure AD kiracısı, kayıtlı her uygulamayı bir **[hizmet sorumlusu](/azure/active-directory/develop/developer-glossary#service-principal-object)** sağlar ve bu da uygulamanın kimliği olarak işlev görür. Hizmet sorumlusunun uygulama KIMLIĞI, rol tabanlı erişim denetimi (RBAC) aracılığıyla diğer Azure kaynaklarına erişim yetkisi verirken kullanılır. Key Vault bir Microsoft uygulaması olduğundan, her bir Azure bulutu dahilinde aynı uygulama KIMLIĞI altındaki tüm Azure AD kiracılarına önceden kaydedilir:
-> - Azure Kamu bulutundaki Azure AD kiracılar uygulama KIMLIĞINI `7e7c393b-45d0-48b1-a35e-2905ddf8183c`kullanır.
-> - Azure genel bulutundaki Azure AD kiracılar ve tüm diğerleri uygulama KIMLIĞINI `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`kullanır.
+İlk olarak, aşağıdaki adımlarda PowerShell cmdlet 'leri tarafından kullanılacak değişkenleri ayarlayın. <YourResourceGroupName> `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` , ,<YourStorageAccountName> Ve<YourKeyVaultName> yer tutucuları güncelleştirdiğinizden emin olun ve $keyVaultSpAppId (Yukarıdaki [hizmet sorumlusu uygulama kimliği](#service-principal-application-id)'nde belirtildiği gibi) olarak ayarlayın.
 
-Key Vault depolama hesabı Anahtarlarınıza erişip yönetebilmeniz için depolama hesabınıza erişim yetkisi vermelisiniz. Key Vault uygulama, depolama hesabınıza yönelik anahtarları *listelemek* ve yeniden *oluşturmak* için izinler gerektirir. Bu izinler, yerleşik RBAC rol [depolama hesabı anahtar operatörü hizmeti rolü](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)aracılığıyla etkinleştirilir. 
-
-Aşağıdaki adımları kullanarak bu rolü, kapsamı depolama hesabınızla sınırlayan Key Vault hizmet sorumlusuna atayın. Betiği çalıştırmadan önce,, `$resourceGroupName`ve `$storageAccountName` `$keyVaultName` değişkenlerini `$storageAccountKey`güncelleştirdiğinizden emin olun:
+Ayrıca Azure PowerShell, Kullanıcı KIMLIĞINIZI ve Azure depolama hesabınızın bağlamını almak için [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) ve [Get-azstorageaccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) cmdlet 'lerini de kullanacağız.
 
 ```azurepowershell-interactive
-# TODO: Update with the resource group where your storage account resides, your storage account name, the name of your active storage account key, and your Key Vault instance name
-$resourceGroupName = "rgContoso"
-$storageAccountName = "sacontoso"
+$resourceGroupName = <YourResourceGroupName>
+$storageAccountName = <YourStorageAccountName>
+$keyVaultName = <YourKeyVaultName>
+$keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
 $storageAccountKey = "key1"
-$keyVaultName = "kvContoso"
-$keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093" # See "IMPORTANT" block above for information on Key Vault Application IDs
 
-# Get your User Id for later commands
+# Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+```
 
+### <a name="give-key-vault-access-to-your-storage-account"></a>Depolama hesabınıza Key Vault erişim izni verin
+
+Key Vault depolama hesabı Anahtarlarınıza erişip yönetebilmeniz için depolama hesabınıza erişim yetkisi vermelisiniz. Key Vault uygulama, depolama hesabınıza yönelik anahtarları *listelemek* ve yeniden *oluşturmak* için izinler gerektirir. Bu izinler, yerleşik RBAC rol [depolama hesabı anahtar operatörü hizmeti rolü](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)aracılığıyla etkinleştirilir. 
+
+Bu rolü, Azure PowerShell [New-Azroleatama](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) cmdlet 'ini kullanarak, kapsamı depolama hesabınızla sınırlayan Key Vault hizmet sorumlusuna atayın.
+
+```azurepowershell-interactive
 # Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
 New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
@@ -101,12 +119,9 @@ CanDelegate        : False
 
 Depolama hesabınızdaki role Key Vault zaten eklendiyse *"rol ataması zaten var."* hatayla. Rol atamasını, Azure portal depolama hesabı "erişim denetimi (ıAM)" sayfasını kullanarak da doğrulayabilirsiniz.  
 
-## <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Yönetilen depolama hesaplarına kullanıcı hesabınıza izin verin
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Yönetilen depolama hesaplarına kullanıcı hesabınıza izin verin
 
->[!TIP] 
-> Azure AD, uygulamanın kimliği için bir **hizmet sorumlusu** sağladığından, kullanıcının kimliği için bir **Kullanıcı sorumlusu** sağlanır. Daha sonra Kullanıcı sorumlusuna, Key Vault erişim ilkesi izinleri aracılığıyla Key Vault erişim yetkisi verilebilir.
-
-Aynı PowerShell oturumunu kullanarak, yönetilen depolama hesapları için Key Vault erişim ilkesini güncelleştirin. Bu adım, Kullanıcı hesabınıza, yönetilen depolama hesabı özelliklerine erişebildiğinizden emin olmak için depolama hesabı izinlerini uygular: 
+Key Vault erişim ilkesini güncelleştirmek ve Kullanıcı hesabınıza depolama hesabı izinleri vermek için Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.6.0) cmdlet 'ini kullanın.
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -116,12 +131,13 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -
 
 Depolama hesapları için izinler, Azure portal depolama hesabı "erişim ilkeleri" sayfasında kullanılamaz.
 
-## <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Key Vault örneğinize yönetilen bir depolama hesabı ekleyin
+### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Key Vault örneğinize yönetilen bir depolama hesabı ekleyin
 
-Aynı PowerShell oturumunu kullanarak, Key Vault Örneğinizde yönetilen bir depolama hesabı oluşturun. `-DisableAutoRegenerateKey` Anahtar, depolama hesabı anahtarlarını yeniden üretmemelidir.
+Key Vault örneğiniz içinde yönetilen bir depolama hesabı oluşturmak için Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 'ini kullanın. `-DisableAutoRegenerateKey` Anahtar, depolama hesabı anahtarlarını yeniden üretmemelidir.
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
+
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
 ```
 
@@ -143,10 +159,11 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Anahtar yeniden oluşturmayı etkinleştir
 
-Depolama hesabı anahtarlarınızı düzenli aralıklarla yeniden oluşturmak Key Vault isterseniz, yeniden oluşturma dönemi ayarlayabilirsiniz. Aşağıdaki örnekte, üç günün yeniden oluşturma dönemini ayarlayacağız. Üç gün sonra, Key Vault ' key2 ' öğesini yeniden oluşturacak ve etkin anahtarı ' key2 ' iken ' KEY1 ' olarak takas edecek.
+Depolama hesabı anahtarlarınızı düzenli aralıklarla yeniden oluşturmak Key Vault isterseniz, yeniden oluşturma dönemi ayarlamak için Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 'ini kullanabilirsiniz. Bu örnekte, üç günün yeniden oluşturma dönemini ayarlayacağız. Üç gün sonra, Key Vault ' key2 ' öğesini yeniden oluşturacak ve etkin anahtarı ' key2 ' iken ' KEY1 ' olarak takas edecek.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
+
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
 ```
 
@@ -165,6 +182,85 @@ Created             : 11/19/2018 11:54:47 PM
 Updated             : 11/19/2018 11:54:47 PM
 Tags                : 
 ```
+
+## <a name="shared-access-signature-tokens"></a>Paylaşılan erişim imza belirteçleri
+
+Ayrıca, Key Vault paylaşılan erişim imzası belirteçleri oluşturmasını isteyebilirsiniz. Paylaşılan erişim imzası, depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. İstemci, hesap anahtarlarınızı paylaşmadan Depolama hesabınızdaki kaynaklara erişim izni verebilirsiniz. Paylaşılan erişim imzası, hesap anahtarlarınızla ödün vermeden depolama kaynaklarınızı paylaşmak için güvenli bir yol sağlar.
+
+Bu bölümdeki komutlar aşağıdaki eylemleri tamamlar:
+
+- Hesap paylaşılan erişim imzası tanımı ayarlayın. 
+- Blob, dosya, tablo ve kuyruk Hizmetleri için bir hesap paylaşılan erişim imza belirteci oluşturun. Belirteç, kaynak türleri hizmeti, kapsayıcısı ve nesnesi için oluşturulur. Belirteç, https üzerinden ve belirtilen başlangıç ve bitiş tarihleriyle birlikte tüm izinlerle oluşturulur.
+- Kasada Key Vault yönetilen bir depolama paylaşılan erişim imzası tanımı ayarlayın. Tanım, oluşturulan paylaşılan erişim imzası belirtecinin şablon URI 'sine sahiptir. Tanım, paylaşılan erişim imzası türüne `account` sahiptir ve N gün için geçerlidir.
+- Paylaşılan erişim imzasının anahtar kasanıza gizli dizi olarak kaydedildiğini doğrulayın.
+- 
+### <a name="set-variables"></a>Değişkenleri ayarla
+
+İlk olarak, aşağıdaki adımlarda PowerShell cmdlet 'leri tarafından kullanılacak değişkenleri ayarlayın. <YourStorageAccountName> Ve<YourKeyVaultName> yer tutucuları güncelleştirdiğinizden emin olun.
+
+Ayrıca, Azure depolama hesabınızın bağlamını almak için Azure PowerShell [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) cmdlet 'lerini de kullanacağız.
+
+```azurepowershell-interactive
+$storageAccountName = <YourStorageAccountName>
+$keyVaultName = <YourKeyVaultName>
+
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+```
+
+### <a name="create-a-shared-access-signature-token"></a>Paylaşılan erişim imza belirteci oluşturma
+
+Azure PowerShell [New-AzStorageAccountSASToken](/powershell/module/az.storage/new-azstorageaccountsastoken?view=azps-2.6.0) cmdlet 'lerini kullanarak bir paylaşılan erişim imzası tanımı oluşturun.
+ 
+```azurepowershell-interactive
+$start = [System.DateTime]::Now.AddDays(-1)
+$end = [System.DateTime]::Now.AddMonths(1)
+
+$sasToken = New-AzStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $storageContext
+```
+$SasToken değeri şuna benzer olacaktır.
+
+```console
+?sv=2018-11-09&sig=5GWqHFkEOtM7W9alOgoXSCOJO%2B55qJr4J7tHQjCId9S%3D&spr=https&st=2019-09-18T18%3A25%3A00Z&se=2019-10-19T18%3A25%3A00Z&srt=sco&ss=bfqt&sp=racupwdl
+```
+
+### <a name="generate-a-shared-access-signature-definition"></a>Paylaşılan erişim imzası tanımı oluştur
+
+Paylaşılan erişim imzası tanımı oluşturmak için Azure PowerShell [set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) cmdlet 'ini kullanın.  `-Name` Parametresi için tercih ettiğiniz adı sağlayabilirsiniz.
+
+```azurepowershell-interactive
+Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
+```
+
+### <a name="verify-the-shared-access-signature-definition"></a>Paylaşılan erişim imzası tanımını doğrulama
+
+Azure PowerShell [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret?view=azps-2.6.0) cmdlet 'ini kullanarak, paylaşılan erişim imzası tanımının anahtar kasasında depolandığını doğrulayabilirsiniz.
+
+İlk olarak, Anahtar Kasanızda paylaşılan erişim imzası tanımını bulun.
+
+```azurepowershell-interactive
+Get-AzKeyVaultSecret -vault-name <YourKeyVaultName>
+```
+
+SAS tanımınıza karşılık gelen gizli dizi şu özelliklere sahip olacaktır:
+
+```console
+Vault Name   : <YourKeyVaultName>
+Name         : <SecretName>
+...
+Content Type : application/vnd.ms-sastoken-storage
+Tags         :
+```
+
+Artık bu gizli dizi içeriğini görüntülemek için [Get-azkeyvaultsecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) cmdlet 'ini `Name` ve Secret özelliğini kullanabilirsiniz.
+
+```azurepowershell-interactive
+$secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
+
+Write-Host $secret.SecretValueText
+```
+
+Bu komutun çıktısı, SAS tanım dizenizi gösterecektir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

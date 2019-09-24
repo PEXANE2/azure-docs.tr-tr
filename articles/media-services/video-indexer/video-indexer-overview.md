@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: juliako
-ms.openlocfilehash: a4b7ccf6ece8ed40d6f6c6a22410d4bbe99e590a
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: d346f68534a9fdbc286cd5521c00d81c2a5fec78
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146483"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203551"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer nedir?
 
@@ -79,7 +79,6 @@ Bu modeller için bir kanal kısmi sonucu tarafından dizin oluşturma kullanıl
 
 * **Anahtar sözcük ayıklama**: Konuşma ve görsel metinden anahtar sözcükleri ayıklar.
 * **Adlandırılmış varlıkların ayıklanması**: Marka, konum ve kişileri, doğal dil işleme (NLP) aracılığıyla konuşma ve görsel metinden ayıklar.
-* **Markalar ayıklama**: Konuşma ve görsel metinden markalar ayıklar.
 * **Konu çıkarımı**: Döküm dosyalarından Ana konuların çıkarımını oluşturur. 1\. düzey ıPTC taksonomi dahil edilir.
 * **Yapıtlar**: Modellerin her biri için zengin "sonraki ayrıntı düzeyi" yapıtları kümesini ayıklar.
 * Yaklaşım **Analizi**: Konuşma ve görsel metinden olumlu, olumsuz ve nötr düşünceleri tanımlar.

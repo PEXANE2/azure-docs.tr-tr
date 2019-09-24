@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
 ms.author: chackdan
-ms.openlocfilehash: f33b25112b5c4ee77f1f7d2a419ffb8e926a27d9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: f929ca1cd0fe6f2a94864ae3eb4df28e7b1927db
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501358"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200467"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri
 [Sanal Makine Ölçek Kümeleri](/azure/virtual-machine-scale-sets) bir Azure işlem kaynağıdır. Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Azure Service Fabric kümesinde tanımladığınız her düğüm türü ayrı bir ölçek ayarlar.  Microsoft. Azure. ServiceFabric sanal makine uzantısı tarafından belirlenen ölçek kümesindeki her bir sanal makineye yüklü Service Fabric çalışma zamanı. Her bir düğüm türünü bağımsız olarak yukarı veya aşağı ölçeklendirebilirsiniz, her küme düğümünde çalışan işletim sistemi SKU 'sunu değiştirebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri kullanabilirsiniz.
@@ -78,7 +78,7 @@ Aşağıda Service Fabric sanal makine uzantısının bir parçacığı verilmi�
 | **Name** | **İzin verilen değerler** | ** --- ** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
 | name | dize | --- | uzantı için benzersiz ad |
-| türü | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode | --- | Önyükleme Service Fabric işletim sistemini tanımlar |
+| type | "ServiceFabricLinuxNode" veya "ServiceFabricWindowsNode" | --- | Önyükleme Service Fabric işletim sistemini tanımlar |
 | autoUpgradeMinorVersion | true veya false | --- | SF çalışma zamanı alt sürümlerinin otomatik yükseltmesini etkinleştir |
 | publisher | Microsoft. Azure. ServiceFabric | --- | Service Fabric uzantısı yayımcısının adı |
 | clusterEndpont | dize | --- | URI: yönetim uç noktası bağlantı noktası |
@@ -87,7 +87,7 @@ Aşağıda Service Fabric sanal makine uzantısının bir parçacığı verilmi�
 | enableParallelJobs | true veya false | --- | Aynı ölçek kümesindeki sanal makineyi kaldır ve sanal makineyi yeniden Başlat gibi hesaplama ParallelJobs 'ı etkinleştir |
 | nicPrefixOverride | dize | --- | "10.0.0.0/24" gibi alt ağ öneki |
 | commonNames | String [] | --- | Yüklü küme sertifikalarının ortak adları |
-| x509StoreName | dize | --- | Yüklü küme sertifikasının bulunduğu deponun adı |
+| X509StoreName | dize | --- | Yüklü küme sertifikasının bulunduğu deponun adı |
 | typeHandlerVersion | 1.1 | --- | Uzantının sürümü. 1,0 için klasik uzantı sürümünün 1,1 sürümüne yükseltilmesi önerilir |
 | Veri yolu | dize | --- | Service Fabric sistem hizmetleri ve uygulama verileri için durumu kaydetmek için kullanılan sürücünün yolu. 
 

@@ -3,9 +3,8 @@ title: Makineleri ve Azure Güvenlik Merkezi'nde uygulamalarınızı koruma | Mi
 description: Bu belgede ele yardımcı olacak öneriler Güvenlik Merkezi'nde sanal makinelerinizi ve bilgisayarlar ve web uygulamaları ve App Service ortamları koruma.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: c8f381a3440d742cca880f44b73cbc22bde92ecc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.author: memildin
+ms.openlocfilehash: a3bce8d6312dd09a7f10f8d5d2eaebd4e312d95d
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910556"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200779"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Makineleri ve Azure Güvenlik Merkezi'nde uygulamalarınızı koruma
 Azure Güvenlik Merkezi, Azure kaynaklarınızın, Azure olmayan sunucularınızın ve sanal makinelerinizin güvenlik durumunu analiz eder. Güvenlik Merkezi olası güvenlik açıklarını belirlediğinde, gerekli denetimlerin yapılandırılması işlemi boyunca size rehberlik öneriler oluşturur. Öneriler, Azure kaynak türleri için geçerlidir: sanal makineleri (VM'ler) ve bilgisayarlar, uygulamalar, ağ, SQL ve kimlik ve erişim.
@@ -85,7 +84,7 @@ Her önerinin gerçekleştirebileceğiniz bir eylemler kümesi bulunur seçtikte
 
 
 > [!NOTE]
-> Buradaki güvenlik önerileri altında aynıdır **önerileri** Döşe. Bkz: [Azure Güvenlik Merkezi'nde güvenlik önerilerini uygulama](security-center-recommendations.md) önerileri çözümleme hakkında daha fazla bilgi için.
+> Buradaki güvenlik önerileri altında aynıdır **önerileri** Döşe. Önerilerin nasıl çözümleneceği hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde güvenlik önerilerini uygulama](security-center-recommendations.md).
 >
 >
 
@@ -108,6 +107,7 @@ Simgeler bu listede gösterilen dört tür vardır:
 Her önerinin altında görüntülenen simge VM ile dikkat ve önerinin türünü gerektiren bilgisayar hızlıca tanımlamanıza yardımcı olur. Ayrıca, listeyi **kaynak türüne** göre ve **önem derecesine**göre aramak için filtreleri de kullanabilirsiniz.
 
 Her VM 'nin güvenlik önerilerinin ayrıntılarına gitmek için VM 'ye tıklayın.
+Burada VM'nin veya bilgisayar için güvenlik ayrıntılarını görürsünüz. En altta, önerilen eylemi ve her bir sorunun önem derecesini görebilirsiniz.
 ![Bulut hizmetleri](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>Bulut hizmetleri

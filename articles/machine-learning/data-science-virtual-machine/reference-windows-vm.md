@@ -7,12 +7,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 8ed083ad39c3ace3a0f66a61936974b462ed418f
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: be4397de477891f2a698c9f7dcb131da79479529
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174701"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200021"
 ---
 # <a name="reference-windows-data-science-virtual-machine"></a>Referans: Windows Veri Bilimi Sanal Makinesi
 
@@ -132,4 +132,6 @@ Diğer Microsoft geliştirme araçlarını bulmak ve indirmek için [Microsoft W
 > [!NOTE]
 > DSVM ve Windows Server 2016 sürümünün Windows Server 2012 sürümünde, 2018 Mart 'tan önce, varsayılan Anaconda ortamı Python 2,7 ' dir. İkincil ortam, C:\anacondad\envs\py35yolunda bulunan Python 3,5 ' dir.
 
+## <a name="next-steps"></a>Sonraki adımlar
 
+Başka sorularınız mı var? Bir [destek bileti](https://azure.microsoft.com/support/create-ticket/)oluşturmayı düşünün.

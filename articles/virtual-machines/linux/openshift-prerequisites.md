@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2019
 ms.author: haroldw
-ms.openlocfilehash: ab8814f1620cc019a0bee872c7b8f42cbb427365
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8dae521902d0568f2d79725bad792d4df64daa1c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091732"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204014"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Azure 'da OpenShift dağıtmaya yönelik genel Önkoşullar
 
@@ -116,7 +116,7 @@ Hizmet sorumlusu oluşturma:
 scope=`az group show --name openshiftrg --query id`
 az ad sp create-for-rbac --name openshiftsp \
       --role Contributor --password {Strong Password} \
-      --scopes $scope
+      --scopes $scope \
 ```
 Windows kullanıyorsanız, $scope yerine çıktıyı yürütün ```az group show --name openshiftrg --query id``` ve kullanın.
 
@@ -147,7 +147,7 @@ Varsayılan olarak, şablon OpenShift Web Konsolu ve yönlendirme etki alanı i�
 
 Bu dosyaları Key Vault gizli dizileri içinde depolamanız gerekir.  Özel anahtar için kullanılan Key Vault aynı kullanın.  Gizli adlar için 6 ek giriş gerektirmek yerine, şablon her bir SSL sertifika dosyası için belirli gizli adları kullanmak üzere sabit olarak kodlanır.  Aşağıdaki tablodaki bilgileri kullanarak sertifika verilerini depolayın.
 
-| Gizli dizi adı      | Sertifika dosyası   |
+| Gizli Dizi Adı      | Sertifika dosyası   |
 |------------------|--------------------|
 | mastercafile     | Ana CA dosyası     |
 | mastersertifikadosyası   | Ana SERTIFIKA dosyası   |

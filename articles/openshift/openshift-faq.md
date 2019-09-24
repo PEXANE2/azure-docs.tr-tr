@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 6ba252ccf7a46e93b2057b6822f2aae298f537d1
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991638"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203527"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift SSS
 
@@ -157,10 +157,52 @@ Belirli Etiketler kullanılırken dikkatli olunmalıdır:
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Bir Aro kümesindeki maksimum sayıda Pod nedir?  ARO 'daki düğüm başına en fazla düğüm sayısı nedir?
 
-Daha fazla ayrıntı için [yukarı akış OpenShift docs](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits) bölümüne bakın. Red Hat OpenShift 3,11 ' de 250-Pod/node sınırı vardır. [](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)bu sayede, Aro kümesinde desteklenen maksimum sayıda Pod 'nin 250 * 20 = 5000 olması gerekir.
+Daha fazla ayrıntı için [yukarı akış OpenShift docs](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits) bölümüne bakın. Red Hat OpenShift 3,11 ' de 250-Pod/node sınırı vardır. bu sayede, Aro kümesinde desteklenen maksimum sayıda Pod 'nin 250 * 20 = 5000 [olması gerekir.](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Özel VNET üzerinde dağıtım için IP aralıklarını belirtebilir, eşlendikten sonra diğer kurumsal VNET 'ler ile çakışıyor önleyebilirsiniz.
 
 Azure Red Hat OpenShift, VNET eşlemesini destekler ve müşterinin, OpenShift ağının çalışacağı VNET 'e ve sanal ağa VNET sağlamasına izin verir.
 
 ARO tarafından oluşturulan VNET korunacaktır ve yapılandırma değişikliklerini kabul etmez. Eşlenen VNET müşteri tarafından denetlenir ve aboneliklerinde bulunur.
+
+## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Küme bir müşteri aboneliğinde mı var? 
+
+Azure yönetilen uygulaması, bir kilitli kaynak grubunda Müşteri aboneliğiyle birlikte bulunur. Müşteri, söz konusu RG 'de nesneleri görüntüleyebilir ancak değiştiremez.
+
+## <a name="is-the-sdn-module-configurable"></a>SDN modülü yapılandırılabilir mi?
+
+SDN, OpenShift-OVS-networkpolicy ve yapılandırılamaz.
+
+## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Ana uygulamalar/Infra/uygulama düğümleri için hangi UNIX hakları (IaaS 'de) kullanılabilir?
+
+Bu teklif için geçerli değildir. Düğüm erişimi yasak.
+
+## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Hangi OCP haklarına sahip olduğumuz? Küme Yöneticisi? Proje-yönetici?
+
+Ayrıntılar için bkz. Azure Red Hat OpenShift [küme yönetimine genel bakış](https://docs.openshift.com/aro/admin_guide/index.html).
+
+## <a name="which-kind-of-federation-with-ldap"></a>LDAP ile hangi tür Federasyon?
+
+Bu, Azure AD tümleştirmesi aracılığıyla elde edilir. 
+
+## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Diğer müşterilerle Paylaşılanlar içinde herhangi bir öğe var mı? Ya da her şey bağımsız mi?
+
+Her bir Azure Red Hat OpenShift kümesi, belirli bir müşteriye ayrılmıştır ve müşterinin aboneliği dahilinde bulunur. 
+
+## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>Kalıcı depolama çözümlerini seçebiliriz. ÇALIŞTIRMAYAN? 
+
+Seçebileceğiniz iki depolama sınıfı vardır: Azure diski ve Azure dosyası.
+
+## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Küme nasıl güncelleştirilir (güvenlik açıklarına bağlı olarak Majors ve sömürmeyi amaçlama dahil)?
+
+Bkz [. genel yükseltme işlemi nedir?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
+
+## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>ARO tarafından hangi Azure yük dengeleyici kullanılır?  BT standart veya temel midir ve yapılandırılabilir mi?
+
+ARO standart Azure Load Balancer kullanır ve yapılandırılamaz.
+
+## <a name="can-aro-use-netapp-based-storage"></a>ARO, NetApp tabanlı depolama kullanabilir mi?
+
+Şu anda yalnızca Azure disk ve Azure dosya depolama sınıfları desteklenen depolama seçenekleridir. 
+
+

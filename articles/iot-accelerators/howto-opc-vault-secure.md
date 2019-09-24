@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ae10bb3488c21b6637163e333231e95a18c652bf
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996073"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203683"
 ---
-# <a name="how-to-use-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini kullanma
+# <a name="use-the-opc-vault-certificate-management-service"></a>OPC Kasası sertifika yönetimi hizmetini kullanma
 
 Bu makalede, uygulamaların nasıl kaydedileceği ve OPC UA cihazlarınız için imzalı uygulama sertifikalarının nasıl giderileceği açıklanmaktadır.
 
@@ -23,95 +23,88 @@ Bu makalede, uygulamaların nasıl kaydedileceği ve OPC UA cihazlarınız için
 
 ### <a name="deploy-the-certificate-management-service"></a>Sertifika Yönetimi hizmetini dağıtma
 
-İlki, hizmetin Azure bulutuna dağıtılması gerekir.
-Lütfen [OPC Kasası sertifika yönetimi hizmetini dağıtmayı](howto-opc-vault-deploy.md)açıklayan bir makale bulun.
+İlk olarak, hizmeti Azure bulutuna dağıtın. Ayrıntılar için bkz. [OPC Kasası sertifika yönetimi hizmetini dağıtma](howto-opc-vault-deploy.md).
 
 ### <a name="create-the-issuer-ca-certificate"></a>Veren CA sertifikası oluşturma
 
-Henüz yapmadıysanız, veren CA sertifikası oluşturun.
-
-[OPC Kasası Için verenin sertifikasını oluşturmayı ve yönetmeyi](howto-opc-vault-manage.md)açıklayan bir makale bulun.
+Henüz yapmadıysanız, veren CA sertifikası oluşturun. Ayrıntılar için bkz. [OPC Kasası Için veren sertifikası oluşturma ve yönetme](howto-opc-vault-manage.md).
 
 ## <a name="secure-opc-ua-applications"></a>Güvenli OPC UA uygulamaları
 
 ### <a name="step-1-register-your-opc-ua-application"></a>1\. adım: OPC UA Uygulamanızı kaydetme 
 
 > [!IMPORTANT]
-> Bir uygulamayı kaydettirmek için ' yazıcı ' rolü gereklidir.
+> Bir uygulamayı kaydettirmek için yazıcı rolü gereklidir.
 
-1. Sertifika hizmetinizi `https://myResourceGroup-app.azurewebsites.net` açın ve oturum açın.
-2. `Register New` Sayfasına gidin.
-1. Bir uygulama kaydı için, bir kullanıcının en azından ' yazıcı ' rolüne sahip olması gerekir.
-2. Giriş formu, OPC UA dünyasında adlandırma kurallarını izler. Örnek olarak, OPC UA 'da [OPC UA başvuru sunucusu](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) örneğinin ayarlarının altındaki resimde. NetStandard yığını gösteriliyor:
+1. Sertifika hizmetinizi adresinde `https://myResourceGroup-app.azurewebsites.net`açın ve oturum açın.
+2. **Yeni kaydet**' e gidin. Bir uygulama kaydı için, bir kullanıcının en azından yazıcı rolü atanmış olması gerekir.
+2. Giriş formu OPC UA 'daki adlandırma kurallarına uyar. Örneğin, aşağıdaki ekran görüntüsünde OPC UA .NET Standard yığınında [OPC UA başvuru sunucusu](https://github.com/OPCFoundation/UA-.NETStandard/tree/master/SampleApplications/Workshop/Reference) örneği için ayarlar gösterilir:
 
-   ![UA başvuru sunucusu kaydı](media/howto-opc-vault-secure/reference-server-registration.png "UA başvuru sunucusu kaydı")
+   ![UA başvuru sunucusu kaydının ekran görüntüsü](media/howto-opc-vault-secure/reference-server-registration.png "UA başvuru sunucusu kaydı")
 
-5. Uygulamayı sertifika hizmeti uygulama veritabanına kaydetmek için düğmeyebasın.`Register` İş akışı, uygulamaya imzalı bir sertifika istemek için kullanıcıyı doğrudan bir sonraki adıma yönlendirir.
+5. Uygulamayı sertifika hizmeti uygulama veritabanına kaydetmek için **Kaydet** ' i seçin. İş akışı, uygulamaya imzalı bir sertifika istemek için kullanıcıyı doğrudan bir sonraki adıma yönlendirir.
 
 ### <a name="step-2-secure-your-application-with-a-ca-signed-application-certificate"></a>2\. adım: CA imzalı bir uygulama sertifikası ile uygulamanızın güvenliğini sağlama
 
-Bir OPC UA uygulaması, sertifika Imzalama Isteği (CSR) tabanlı imzalı bir sertifika vererek veya PFX veya PEM biçiminde yeni bir özel anahtar da içeren yeni bir anahtar çifti isteyerek güvenli hale getirilir. Uygulamanız için desteklenen yöntem üzerinde OPC UA cihazınızın belgelerini izleyin. Genel olarak CSR yöntemi önerilir, çünkü bir özel anahtarın bir kablo üzerinden aktarılmasını gerektirmez.
+Bir sertifika Imzalama Isteği (CSR) tabanlı imzalı bir sertifika vererek OPC UA uygulamanızın güvenliğini sağlayın. Alternatif olarak, PFX veya ped biçiminde yeni bir özel anahtar içeren yeni bir anahtar çifti de isteyebilirsiniz. Uygulamanız için hangi yöntemin desteklendiği hakkında bilgi için OPC UA cihazınızın belgelerine bakın. Genel olarak CSR yöntemi önerilir, çünkü bir özel anahtarın bir kablo üzerinden aktarılmasını gerektirmez.
 
-- Cihazınızın yeni bir anahtar çifti vermesi gerekiyorsa lütfen [Step3a](##step-3a-request-a-new-certificate-with-a-new-keypair)izleyin.
-- Cihazınız bir sertifika Imzalama Isteği (CSR) vermek için destekliyorsa, lütfen [Step3b](#step-3b-request-a-new-certificate-with-a-csr)izleyin.
+#### <a name="request-a-new-certificate-with-a-new-keypair"></a>Yeni bir anahtar çiftiyle yeni bir sertifika isteyin
 
-### <a name="step-3a-request-a-new-certificate-with-a-new-keypair"></a>Adım 3a: Yeni bir anahtar çiftiyle yeni bir sertifika isteyin
+1. **Uygulamalar**'a gidin.
+3. Listelenen bir uygulama için **yeni istek** ' ı seçin.
 
-1. `Applications` Sayfasına gidin.
-3. Listelenen bir uygulama için öğesini seçerek `New Request` sertifika isteği iş akışını başlatın.
+   ![Yeni sertifika ıste ekran görüntüsü](media/howto-opc-vault-secure/request-new-certificate.png "Yeni sertifika iste")
 
-   ![Yeni sertifika iste](media/howto-opc-vault-secure/request-new-certificate.png "Yeni sertifika iste")
+3. Özel bir anahtar ve uygulamanız için ortak anahtara sahip yeni bir imzalı sertifika istemek üzere **Yeni anahtar çifti ve sertifika iste** ' yi seçin.
 
-3. Özel bir anahtar ve uygulamanız için ortak anahtara sahip yeni imzalı bir sertifika istemek için ' yeni KeyPair ve sertifika ıste ' düğmesine basın.
+   ![Yeni bir anahtar çifti ve sertifika oluştur ekran görüntüsü](media/howto-opc-vault-secure/generate-new-key-pair.png "Yeni anahtar çifti oluştur")
 
-   ![Yeni anahtar çifti oluştur](media/howto-opc-vault-secure/generate-new-key-pair.png "Yeni anahtar çifti oluştur")
+4. Formu bir konu ve etki alanı adlarıyla girin. Özel anahtar için parola ile ped veya PFX ' i seçin. Sertifika isteği oluşturmak için **Yeni bir anahtar çifti oluştur** ' u seçin.
 
-4. Formu bir konuyla, etki alanı adlarıyla doldurup özel anahtar için parola ile Pez veya PFX ' i seçin. Sertifika isteği oluşturmak için düğmeyebasın.`Generate New Certificate`
+   ![Sertifika Isteği ayrıntılarını görüntüleme ekran görüntüsü](media/howto-opc-vault-secure/approve-reject.png "Sertifikayı onayla")
 
-   ![Sertifikayı onayla](media/howto-opc-vault-secure/approve-reject.png "Sertifikayı onayla")
+5. Onay, onaylayan rolüne sahip bir Kullanıcı ve Azure Key Vault oturum açma izinlerine sahip olmalıdır. Tipik iş akışında, onaylayan ve talep sahibi rollerin farklı kullanıcılara atanması gerekir. Anahtar çiftinin ve imzalama işleminin gerçek oluşturma işlemini başlatmak veya iptal etmek için **Onayla** veya **Reddet** ' i seçin. Yeni anahtar çifti, sertifika isteği tarafından indirilene kadar Azure Key Vault oluşturulur ve güvenli bir şekilde depolanır. Ortak anahtarla elde edilen sertifika, CA tarafından imzalanır. Bu işlemlerin tamamlanması birkaç saniye sürebilir.
 
-5. Onay adımı, ' onaylayan ' rolüne sahip ve Azure Key Vault oturum açma izinlerine sahip bir kullanıcı gerektirir. Tipik iş akışında, onaylayan ve ısteyenin rolü farklı kullanıcılara atanmalıdır.
-6. Anahtar çiftinin ve imzalama işleminin gerçek oluşturma işlemini başlatmak veya iptal etmek için sertifika isteğini onaylayın veya reddedin. Yeni anahtar çifti, sertifika isteği tarafından indirilene kadar Azure Key Vault oluşturulur ve güvenli bir şekilde depolanır. Ortak anahtarla elde edilen sertifika, CA tarafından imzalanır. Bu işlemlerin tamamlanması birkaç saniye sürebilir.
+   ![Sertifika Isteği ayrıntılarının görüntüleme ekran görüntüsü, en altta onay iletisi](media/howto-opc-vault-secure/view-key-pair.png "Anahtar çiftini görüntüle")
 
-   ![Anahtar çiftini görüntüle](media/howto-opc-vault-secure/view-key-pair.png "Anahtar çiftini görüntüle")
+7. Elde edilen özel anahtar (PFX veya ped) ve sertifika (DER), ikili dosya indirme olarak seçilen biçimde buradan indirilebilir. Base64 kodlamalı bir sürüm de kullanılabilir, örneğin, sertifikayı kopyalayıp bir komut satırına veya metin girişine yapıştırabilirsiniz. 
+8. Özel anahtar indirilip güvenli şekilde depolandıktan sonra **özel anahtarı sil**' i seçebilirsiniz. Ortak anahtara sahip sertifika ileride kullanılmak üzere kullanılabilir kalır.
+9. CA imzalı bir sertifikanın kullanılması nedeniyle, CA sertifikası ve sertifika Iptal listesi (CRL) burada da indirilmelidir.
 
-7. Elde edilen özel anahtar (PFX veya ped) ve sertifika (DER), ikili dosya indirme olarak seçilen biçimde buradan indirilebilir. Base64 ile kodlanmış bir sürüm de mevcuttur, örneğin kopyalamak için sertifikayı bir komut satırına veya metin girişine yapıştırın. 
-8. Özel anahtar indirilip güvenli şekilde depolandıktan sonra, bu `Delete Private Key` düğme ile hizmetten silinebilir. Ortak anahtara sahip sertifika ileride kullanılmak üzere kullanılabilir kalır.
-9. CA imzalı bir sertifikanın kullanılması nedeniyle, CA sertifikası ve CRL de burada indirilmelidir.
-10. Artık OPC UA cihazına, yeni anahtar çiftinin nasıl uygulanacağını bağımlıdır. Genellikle, CA sertifikası ve CRL bir `trusted` klasöre kopyalanır, ancak uygulama sertifikasının ortak ve özel anahtarı sertifika deposundaki bir `own` klasöre uygulanır. Bazı cihazlar, sertifika güncelleştirmeleri için ' sunucu gönderme ' desteğini zaten destekleyebilir. OPC UA cihazınızın belgelerine bakın.
+Artık OPC UA cihazına, yeni anahtar çiftinin nasıl uygulanacağını bağımlıdır. Genellikle, CA sertifikası ve CRL bir `trusted` klasöre kopyalanır, ancak uygulama sertifikasının ortak ve özel anahtarları sertifika deposundaki bir `own` klasöre uygulanır. Bazı cihazlarda sertifika güncelleştirmeleri için sunucu gönderimi zaten desteklenir. OPC UA cihazınızın belgelerine bakın.
 
-### <a name="step-3b-request-a-new-certificate-with-a-csr"></a>Adım 3B: CSR ile yeni bir sertifika isteme 
+#### <a name="request-a-new-certificate-with-a-csr"></a>CSR ile yeni bir sertifika isteme 
 
-1. `Applications` Sayfasına gidin.
-3. Listelenen bir uygulama için öğesini seçerek `New Request` sertifika isteği iş akışını başlatın.
+1. **Uygulamalar**'a gidin.
+3. Listelenen bir uygulama için **yeni istek** ' ı seçin.
 
-   ![Yeni sertifika iste](media/howto-opc-vault-secure/request-new-certificate.png "Yeni sertifika iste")
+   ![Yeni sertifika ıste ekran görüntüsü](media/howto-opc-vault-secure/request-new-certificate.png "Yeni sertifika iste")
 
-3. Uygulamanız için yeni imzalı bir sertifika istemek üzere ' imzalama isteği ile yeni sertifika ıste ' düğmesine basın.
+3. Uygulamanız için yeni imzalı bir sertifika istemek üzere **Imzalama isteğine sahip yeni sertifika iste** ' yi seçin.
 
-   ![Yeni sertifika oluştur](media/howto-opc-vault-secure/generate-new-certificate.png "Yeni sertifika oluştur")
+   ![Yeni sertifika oluştur ekran görüntüsü](media/howto-opc-vault-secure/generate-new-certificate.png "Yeni sertifika oluştur")
 
-4. Yerel bir dosya seçerek veya bir Base64 kodlamalı CSR 'yi forma yapıştırarak CSR 'yi karşıya yükleyin. Sertifika isteği oluşturmak için düğmeyebasın.`Generate New Certificate`
+4. Yerel bir dosya seçerek veya bir Base64 kodlamalı CSR 'yi forma yapıştırarak CSR 'yi karşıya yükleyin. **Yeni sertifika oluştur**' u seçin.
 
-   ![CSR 'Yi Onayla](media/howto-opc-vault-secure/approve-reject-csr.png "CSR 'Yi Onayla")
+   ![Sertifika Isteği ayrıntılarını görüntüleme ekran görüntüsü](media/howto-opc-vault-secure/approve-reject-csr.png "CSR 'Yi Onayla")
 
-5. Onay adımı, ' onaylayan ' rolüne sahip ve Azure Key Vault oturum açma izinlerine sahip bir kullanıcı gerektirir. Gerçek imzalama işlemini başlatmak veya iptal etmek için sertifika isteğini onaylayın veya reddedin. Ortak anahtarla elde edilen sertifika, CA tarafından imzalanır. Bu işlemin tamamlanması birkaç saniye sürebilir.
+5. Onay, onaylayan rolüne sahip bir Kullanıcı ve Azure Key Vault oturum açma izinlerine sahip olmalıdır. **Onayla** veya **Reddet** ' i seçerek gerçek imzalama işlemini başlatın veya iptal edin. Ortak anahtarla elde edilen sertifika, CA tarafından imzalanır. Bu işlemin tamamlanması birkaç saniye sürebilir.
 
-   ![Sertifikayı görüntüle](media/howto-opc-vault-secure/view-cert-csr.png "Sertifikayı görüntüle")
+   ![Sertifika Isteği ayrıntılarının görüntüleme ekran görüntüsü, en altta onay iletisi](media/howto-opc-vault-secure/view-cert-csr.png "Sertifikayı görüntüle")
 
-6. Elde edilen sertifika (DER), ikili dosya olarak buradan indirilebilir. Base64 ile kodlanmış bir sürüm de mevcuttur, örneğin kopyalamak için sertifikayı bir komut satırına veya metin girişine yapıştırın. 
-10. Sertifika indirilip güvenli bir şekilde depolandıktan sonra, bu `Delete Certificate` düğme ile hizmetten silinebilir.
+6. Elde edilen sertifika (DER), ikili dosya olarak buradan indirilebilir. Base64 kodlamalı bir sürüm de kullanılabilir, örneğin, sertifikayı kopyalayıp bir komut satırına veya metin girişine yapıştırabilirsiniz. 
+10. Sertifika indirilip güvenli bir şekilde depolandıktan sonra **sertifikayı Sil**' i seçebilirsiniz.
 11. CA imzalı bir sertifikanın kullanılması nedeniyle, CA sertifikası ve CRL de burada indirilmelidir.
-12. Artık OPC UA cihazına göre yeni sertifikayı nasıl uygulayacaksınız. Genellikle, CA sertifikası ve CRL, uygulama sertifikası sertifika deposundaki `trusted` bir `own` klasöre uygulanırken bir klasöre kopyalanır. Bazı cihazlar, sertifika güncelleştirmeleri için ' sunucu gönderme ' desteğini zaten destekleyebilir. OPC UA cihazınızın belgelerine bakın.
+
+Artık OPC UA cihazına göre yeni sertifikayı nasıl uygulayacaksınız. Genellikle, CA sertifikası ve CRL, uygulama sertifikası sertifika deposundaki `trusted` bir `own` klasöre uygulanırken bir klasöre kopyalanır. Bazı cihazlarda sertifika güncelleştirmeleri için sunucu gönderimi zaten desteklenir. OPC UA cihazınızın belgelerine bakın.
 
 ### <a name="step-4-device-secured"></a>4\. Adım: Cihaz güvenli
 
-OPC UA cihazı artık daha fazla yapılandırma olmadan CA imzalı sertifikalarla güvenliği sağlanmış diğer OPC UA cihazlarıyla iletişim kurmaya hazırdır. Keyfini çıkarın!
-
+OPC UA cihazı, daha fazla yapılandırma olmadan CA imzalı sertifikalarla güvenliği sağlanmış diğer OPC UA cihazlarıyla iletişim kurmaya hazırdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-OPC UA cihazlarını güvenli hale getirme hakkında daha fazla öğrendiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
+OPC UA cihazlarını güvenli hale getirmeye artık öğrendiğinize göre şunları yapabilirsiniz:
 
 > [!div class="nextstepaction"]
 > [Güvenli sertifika yönetimi hizmetini çalıştırma](howto-opc-vault-secure-ca.md)

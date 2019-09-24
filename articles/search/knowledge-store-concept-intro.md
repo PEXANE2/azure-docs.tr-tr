@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: 6177f5821efe74fdf3a6aba7fe52f41e9db22728
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 07a0d3ef8660d32d14b8339fb76fa296b1c9635b
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123112"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202984"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Azure Search bilgi deposu nedir?
 
@@ -26,13 +26,13 @@ Bilgi deposu, bir AI tabanlı dizin oluşturma işlem hattı (bilişsel [arama)]
 
 Daha önce bilişsel arama 'yı kullandıysanız, bir belgeyi bir veya daha çok zenginleştirme ile taşımak için becerileri kullanıldığını zaten anlarsınız. Sonuç bir bilgi deposundaki Azure Search bir dizin veya (Bu önizlemede yeni) projeksiyonu olabilir. İki çıkış, arama dizini ve bilgi deposu birbirinden fiziksel olarak birbirinden farklıdır. Aynı içeriği paylaşır, ancak çok farklı yollarla depolanır ve kullanılır.
 
-Fiziksel olarak, bir bilgi deposu, işlem hattını nasıl yapılandırdığınıza bağlı olarak Azure Tablo depolama veya blob depolama olarak Azure depolama hesabında oluşturulur. Azure depolama 'ya bağlanabilecek herhangi bir araç veya işlem bilgi deposunun içeriğini kullanabilir.
+Fiziksel olarak, bilgi deposu, işlem hattını nasıl yapılandırdığınıza bağlı olarak Azure Tablo depolama, BLOB depolama ya da her ikisi de Azure depolama hesabıdır. Azure depolama 'ya bağlanabilecek herhangi bir araç veya işlem bilgi deposunun içeriğini kullanabilir.
 
 Projeksiyonlar bir bilgi deposundaki verileri yapılandırmak için mekanizmadır. Örneğin, projeksiyonlar aracılığıyla çıktının tek bir blob olarak kaydedilip kaydedilmediğini veya ilgili tabloların bir koleksiyonunu seçebilirsiniz. Bilgi deposu içeriğini görüntülemenin kolay bir yolu, Azure depolama için yerleşik [Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) kullanmaktır.
 
 ![Ardışık düzen diyagramında bilgi deposu](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Ardışık düzen diyagramında bilgi deposu")
 
-Bilgi deposu kullanmak için, bir dizin `knowledgeStore` oluşturma işlem hattında adım adım işlemleri tanımlayan bir beceri öğesine bir öğe ekleyin. Yürütme sırasında Azure Search, Azure depolama hesabınızda bir boşluk oluşturur ve işlem hattı tarafından oluşturulan tanımlar ve içerikle doldurulur.
+Bilgi deposu kullanmak için, bir dizin `knowledgeStore` oluşturma işlem hattında adım adım işlemleri tanımlayan bir beceri öğesine bir öğe ekleyin. Yürütme sırasında Azure Search, Azure depolama hesabınızda bir boşluk oluşturur ve bu belgeleri, ardışık düzen içinde oluşturulan tanımlarla birlikte projeler halinde kaydeder.
 
 ## <a name="benefits-of-knowledge-store"></a>Bilgi deposunun avantajları
 
@@ -105,6 +105,13 @@ Zaten AI tabanlı dizin oluşturma hakkında bilginiz varsa, Beceri tanımı, he
 
             ], 
             "objects": [ 
+               
+            ]      
+        },
+        { 
+            "tables": [ 
+            ], 
+            "objects": [ 
                 { 
                 "storageContainer": "Reviews", 
                 "format": "json", 
@@ -112,7 +119,7 @@ Zaten AI tabanlı dizin oluşturma hakkında bilginiz varsa, Beceri tanımı, he
                 "key": "/document/Review/Id" 
                 } 
             ]      
-        }    
+        }        
     ]     
     } 
 }
@@ -143,17 +150,17 @@ Azure Search Dizin Oluşturucu özelliğini sağlar ve Dizin oluşturucular, tü
 | Object | REST API | Açıklama |
 |--------|----------|-------------|
 | veri kaynağı | [Veri Kaynağı Oluşturma](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Zenginleştirilmiş belgeler oluşturmak için kullanılan kaynak verileri sağlayan bir dış Azure veri kaynağını tanımlayan kaynak.  |
-| Beceri | [Beceri oluşturma (api-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Dizin oluşturma sırasında bir zenginleştirme ardışık düzeninde kullanılan [yerleşik yeteneklerin](cognitive-search-predefined-skills.md) ve özel bilişsel [yeteneklerin](cognitive-search-custom-skill-interface.md) kullanımını koordine eden bir kaynak. |
+| Beceri | [Beceri oluşturma (api-Version = 2019-05 -06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Dizin oluşturma sırasında bir zenginleştirme ardışık düzeninde kullanılan [yerleşik yeteneklerin](cognitive-search-predefined-skills.md) ve özel bilişsel [yeteneklerin](cognitive-search-custom-skill-interface.md) kullanımını koordine eden bir kaynak. |
 | index | [Dizin Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Azure Search dizinini ifade eden şema. Dizindeki alanlar, kaynak verilerdeki alanlara veya zenginleştirme aşamasında üretilen alanlara (örneğin, varlık tanıma tarafından oluşturulan kuruluş adları için bir alan) eşlenir. |
 | dizin oluşturucu | [Dizin Oluşturucu oluştur (api-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Dizin oluşturma sırasında kullanılan bileşenleri tanımlayan kaynak: veri kaynağı, Beceri, kaynak ve ara veri yapılarından hedef dizine ve dizinin kendisi de dahil olmak üzere. Dizin oluşturucuyu çalıştırmak, veri alımı ve zenginleştirme için tetikleyiciydi. Çıktı, kaynak verilerle doldurulan, becerileri aracılığıyla zenginleştirilmiş, Dizin şemasını temel alan bir arama dizinidir.  |
 
 ### <a name="3---cognitive-services"></a>3 bilişsel hizmetler
 
-Beceri içinde belirtilen zenginler bilişsel hizmetler 'deki Görüntü İşleme ve dil özelliklerine dayalıdır. Bilişsel hizmetler işlevselliği, beceri ile dizin oluşturma sırasında yararlanılabilir. Bir beceri, yeteneklerin bir bileşim ve yetenekler belirli Görüntü İşleme ve dil özelliklerine bağlanır. Bilişsel hizmetler 'i bütünleştirmek için, bir beceri için bilişsel [Hizmetler kaynağı ekleyebilirsiniz](cognitive-search-attach-cognitive-services.md) .
+Beceri içinde belirtilen zenginler, özel veya bilişsel hizmetler 'deki Görüntü İşleme ve dil özelliklerine göre belirlenir. Bilişsel hizmetler işlevselliği, beceri ile dizin oluşturma sırasında yararlanılabilir. Bir beceri, yeteneklerin bir bileşim ve yetenekler belirli Görüntü İşleme ve dil özelliklerine bağlanır. Bilişsel hizmetler 'i bütünleştirmek için, bir beceri için bilişsel [Hizmetler kaynağı ekleyebilirsiniz](cognitive-search-attach-cognitive-services.md) .
 
 ### <a name="4---storage-account"></a>4-depolama hesabı
 
-Azure depolama hesabınız kapsamında, bir beceri nasıl yapılandırdığınıza bağlı olarak bir blob kapsayıcısı veya tabloları oluşturur Azure Search. Verileriniz Azure Blob veya tablo depolama alanından kaynaklanıyorsa, zaten ayarlamış olursunuz. Aksi takdirde, bir Azure depolama hesabı oluşturmanız gerekir. Azure depolama 'daki tablolar ve nesneler, AI tabanlı dizin oluşturma işlem hattı tarafından oluşturulan zenginleştirilmiş belgeleri içerir.
+Azure depolama hesabınız kapsamında, Beceri içinde projeksiyonları nasıl yapılandırdığınıza bağlı olarak bir blob kapsayıcısı veya tabloları ya da her ikisini birden oluşturur Azure Search. Verileriniz Azure Blob veya tablo depolama alanından kaynaklanıyorsa, zaten ayarlanmış ve depolama hesabını yeniden kullanabilirsiniz. Aksi takdirde, bir Azure depolama hesabı oluşturmanız gerekir. Azure depolama 'daki tablolar ve nesneler, AI tabanlı dizin oluşturma işlem hattı tarafından oluşturulan zenginleştirilmiş belgeleri içerir.
 
 Depolama hesabı beceri içinde belirtilmiştir. ' `api-version=2019-05-06-Preview`De, bir beceri tanımı, hesap bilgilerini sağlayabilmeniz için bilgi deposu tanımı içerir.
 
@@ -179,15 +186,13 @@ Depolama hesabı içinde, enzenginler Azure Tablo depolama alanındaki tablolar 
 
 + BLOB depolama, her belgenin bir tam kapsamlı JSON temsilini oluşturur. Her iki depolama seçeneğini tek bir beceri içinde kullanarak bir dizi ifadenin tamamını alabilirsiniz.
 
-+ Azure Search dizindeki içeriğe devam ediyor. Senaryonuzla ilgili olmayan bir araç ise, örneğin Amacınız başka bir araçla analiz alıyorsa, işlem hattının oluşturduğu dizini silebilirsiniz. Ancak, içeriğinizi de koruyabilir ve içeriklerle etkileşim kurmak için [Arama Gezgini](search-explorer.md) gibi bir yerleşik aracı (Depolama Gezgini ve analiz uygulamanızın arkasında) farklı bir ortam olarak kullanabilirsiniz.
-
-Belge içeriğiyle birlikte, zenginleştirilmiş belgeler, zenginleştirmelerin üretilme beceri sürümünün meta verilerini içerir.  
++ Azure Search dizindeki içeriğe devam ediyor. Senaryonuzla ilgili olmayan bir araç ise, örneğin Amacınız başka bir araçla analiz alıyorsa, işlem hattının oluşturduğu dizini silebilirsiniz. Ancak, içeriğinizi de koruyabilir ve içeriklerle etkileşim kurmak için [Arama Gezgini](search-explorer.md) gibi bir yerleşik aracı (Depolama Gezgini ve analiz uygulamanızın arkasında) farklı bir ortam olarak kullanabilirsiniz.  
 
 ## <a name="inside-a-knowledge-store"></a>Bilgi deposu içinde
 
-Bilgi deposu bir ek açıklama önbelleği ve projeksiyoninden oluşur. *Önbellek* , hizmet tarafından, becerilerden sonuçları önbelleğe almak ve değişiklikleri izlemek için dahili olarak kullanılır. *Projeksiyon* , hedeflenen kullanım ile eşleşen enzenginler 'in şemasını ve yapısını tanımlar. Bilgi deposu başına bir önbellek vardır, ancak birden çok projeksiyonlar vardır. 
+ *Projeksiyon* , hedeflenen kullanım ile eşleşen enzenginler 'in şemasını ve yapısını tanımlar. Farklı biçimlerdeki ve şekillerdeki verileri kullanan uygulamalarınız varsa, birden çok projeksiyonu tanımlayabilirsiniz. 
 
-Önbellek her zaman bir blob kapsayıcısıdır, ancak projeksiyonlar tablo veya nesneler olarak eklenebilir:
+Projeksiyonlar nesne veya tablo olarak ifade edilebilir:
 
 + Bir nesne olarak, projeksiyon BLOB depolama alanına eşlenir; burada projeksiyon, bir veri bilimi işlem hattı gibi senaryolar için JSON 'daki nesneler veya hiyerarşik gösterimler olan bir kapsayıcıya kaydedilir.
 

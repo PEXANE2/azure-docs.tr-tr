@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 2abe917d1713bbc5f5844aced5e688baacc7d397
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910618"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202021"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Tam zamanında sanal makine erişimini yönetme
 
@@ -38,7 +38,7 @@ Bir deneme yanılma saldırısı olasılığını azaltmanın bir yolu, bir bağ
 
 Tam zamanında etkinleştirildiğinde, güvenlik merkezi bir NSG kuralı oluşturarak Azure VM 'lerinize gelen trafiği kilitler. Gelen trafiğin kilitlenebileceği sanal makine üzerindeki bağlantı noktalarını seçersiniz. Bu bağlantı noktaları, tam zamanında çözüm tarafından denetlenir.
 
-Bir Kullanıcı bir VM 'ye erişim istediğinde, güvenlik merkezi kullanıcının bir VM 'ye başarıyla erişim istemesine izin veren [rol tabanlı Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md) izinlerine sahip olduğunu denetler. İstek onaylanırsa, Güvenlik Merkezi, belirtilen süre boyunca seçilen bağlantı noktalarına ve istenen kaynak IP adreslerine veya aralıklarına gelen trafiğe izin vermek için ağ güvenlik gruplarını (NSG 'ler) ve Azure Güvenlik duvarını otomatik olarak yapılandırır. Sürenin süresi dolduktan sonra, güvenlik merkezi NSG 'leri önceki durumlarına geri yükler. Ancak önceden oluşturulan bağlantılar kesilmez.
+Bir Kullanıcı bir VM 'ye erişim istediğinde, güvenlik merkezi kullanıcının bu VM için [rol tabanlı Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md) izinlerine sahip olduğunu denetler. İstek onaylanırsa, Güvenlik Merkezi, belirtilen süre boyunca seçilen bağlantı noktalarına ve istenen kaynak IP adreslerine veya aralıklarına gelen trafiğe izin vermek için ağ güvenlik gruplarını (NSG 'ler) ve Azure Güvenlik duvarını otomatik olarak yapılandırır. Sürenin süresi dolduktan sonra, güvenlik merkezi NSG 'leri önceki durumlarına geri yükler. Ancak önceden oluşturulan bağlantılar kesilmez.
 
  > [!NOTE]
  > Azure Güvenlik duvarının arkasındaki bir sanal makine için bir JıT erişim isteği onaylanmışsa, güvenlik merkezi hem NSG hem de güvenlik duvarı ilkesi kurallarını otomatik olarak değiştirir. Belirtilen süre boyunca, kurallar seçili bağlantı noktalarına gelen trafiğe ve istenen kaynak IP adreslerine veya aralıklarına izin verir. Süre bittikten sonra, Güvenlik Merkezi güvenlik duvarı ve NSG kurallarını önceki durumlarına geri yükler.

@@ -2,18 +2,18 @@
 title: 'Azure Toolkit for Eclipse: HDInsight Spark için Scala uygulamaları oluşturma '
 description: Scala 'da yazılmış Spark uygulamaları geliştirmek ve bunları doğrudan tutulma IDE 'sinden bir HDInsight Spark kümesine göndermek için Azure Toolkit for Eclipse 'de HDInsight araçlarını kullanın.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.author: hrasheed
-ms.openlocfilehash: b027ef911b65931f7c96ad45fae66656b3586730
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ebea83d87cd169f61c91a93f092fa277f5017a7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994431"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203812"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for Eclipse kullanma
 
@@ -50,11 +50,12 @@ Kullanıcı [Azure aboneliğinde oturum](#sign-in-to-your-azure-subscription)aç
 
 1. Çakışan Küreler IDE 'yi başlatın ve Azure Explorer 'ı açın. **Pencere** menüsünde **Görünüm göster**' i seçin ve ardından **diğer**' i seçin. Açılan iletişim kutusunda **Azure**' ı genişletin, **Azure Gezgini**' ni seçin ve ardından **Tamam**' ı seçin.
 
-   ![Görünümü göster iletişim kutusu](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+   ![Apache Spark Eclispse görünümü göster](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer1.png)
+
 1. **Azure** düğümüne sağ tıklayın ve ardından **oturum aç**' ı seçin.
 1. **Azure oturum açma** iletişim kutusunda kimlik doğrulama yöntemini seçin, **oturum aç**' ı seçin ve Azure kimlik bilgilerinizi girin.
 
-   ![Azure oturum açma iletişim kutusu](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
+   ![Apache Spark Eclispse Azure Işareti](./media/apache-spark-eclipse-tool-plugin/eclipse-view-explorer2.png)
 
 1. Oturum açtıktan sonra, **abonelikler Seç** iletişim kutusunda kimlik bilgileriyle Ilişkili tüm Azure abonelikleri listelenir. İletişim kutusunu kapatmak için **Seç** ' e tıklayın.
 
@@ -183,7 +184,7 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
    * İş grafiğinde üzerine gelin. Çalışan iş hakkında temel bilgileri görüntüler. İş grafiğini seçin ve her işin ürettiği aşamaları ve bilgileri görebilirsiniz.
 
-     ![İş aşaması ayrıntıları](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
+     ![Apache Spark iş grafiği aşama bilgisi](./media/apache-spark-eclipse-tool-plugin/Job-graph-stage-info.png)
 
    * **Sürücü stderr**, **sürücü stdout**ve **Dizin bilgileri**de dahil olmak üzere sık kullanılan günlükleri görüntülemek için **günlük** sekmesini seçin.
 
@@ -213,7 +214,7 @@ Bir normal kümeyi, ambarı yönetilen Kullanıcı adı kullanarak bağlayabilir
 
 1. İstendiğinde, kümenin yönetici kimlik bilgilerini girin. Kümeyi sağlarken bunları belirtmelisiniz.
 
-### <a name="manage-azure-subscriptions"></a>Azure aboneliklerini yönetme
+### <a name="manage-azure-subscriptions"></a>Azure aboneliklerini yönetin
 
 Varsayılan olarak, Azure Toolkit for Eclipse HDInsight aracında tüm Azure aboneliklerinizden Spark kümeleri listelenir. Gerekirse, kümeye erişmek istediğiniz abonelikleri belirtebilirsiniz.
 
@@ -238,7 +239,7 @@ Bu hatayı çözmek için [yürütülebilir dosyayı](https://public-repo-1.hort
    * Sol bölmede **HDInsight**’ı seçin.
    * Sağ bölmede, **HDInsight yerel çalıştırma örneği ' nde (Scala) Spark**' ı seçin.
 
-   ![Yeni Proje iletişim kutusu](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
+   ![Yeni proje sihirbaz iletişim kutusu seçme](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 
 1. Proje ayrıntılarını sağlamak için, önceki bölümde bulunan 3 ile 6 arasındaki adımları izleyerek [HDInsight Spark kümesi için bir Spark Scala projesi kurun](#set-up-a-spark-scala-project-for-an-hdinsight-spark-cluster).
 

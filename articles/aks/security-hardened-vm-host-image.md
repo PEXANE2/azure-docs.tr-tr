@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b7e079e92c2f438fa7acc87a7d7333c371fe8e54
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5c2ecd5a53bb77193469ba1135c46d9b5fa65b2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71099466"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202966"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS sanal makine konaklarında güvenlik sağlamlaştırma 
 
@@ -76,8 +76,6 @@ AKS-Engine Şu anda herhangi bir güvenlik standardını yükselmez veya buna uy
 |5.4.1.4 |Etkin olmayan parola kilidinin 30 gün veya daha az olduğundan emin olun |
 |5.4.4 |Varsayılan Kullanıcı umask 'in 027 veya daha kısıtlayıcı olduğundan emin olun |
 |5.6 |Su komutuna erişimin kısıtlanmasını sağlayın|
-
-(*) Etkin olmalıdır. Küme tanımı [belgelerine](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md)bakın.
 
 ## <a name="additional-notes"></a>Ek notlar
  

@@ -3,9 +3,8 @@ title: Azure Güvenlik Merkezi ile Endpoint Protection sorunlarını yönetme | 
 description: Azure Güvenlik Merkezi 'nde Endpoint Protection sorunlarını yönetmeyi öğrenin.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
-ms.author: rkarlin
-ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.author: memildin
+ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231307"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202077"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Endpoint Protection sorunlarını yönetme
 Azure Güvenlik Merkezi, kötü amaçlı yazılımdan koruma sorunlarını izler ve bu durumu Endpoint Protection sorunları dikey penceresinde bildirir. Güvenlik Merkezi, algılanan tehditler ve yetersiz koruma gibi sorunları vurgular ve sanal makinelerinizi (VM) ve bilgisayarlarınızı kötü amaçlı yazılımdan koruma tehditlerine karşı savunmasız hale getirebilir. **Endpoint Protection sorunları**altındaki bilgileri kullanarak, tanımlanan sorunları ele almak için bir plan tanımlayabilirsiniz.

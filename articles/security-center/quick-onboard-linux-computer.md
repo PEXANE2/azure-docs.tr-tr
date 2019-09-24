@@ -3,9 +3,8 @@ title: Azure Güvenlik Merkezi Hızlı Başlangıç - Linux bilgisayarlarınız�
 description: Bu hızlı başlangıç, Linux bilgisayarlarınızı Güvenlik Merkezi’ne nasıl ekleyebileceğinizi gösterir.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,13 +13,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: memildin
+ms.openlocfilehash: 82ce466f12acef529b5e45e5dd94c64b94be0f7e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68816130"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202893"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Hızlı Başlangıç: Linux bilgisayarlarını Azure Güvenlik Merkezi 'ne ekleme
 Azure aboneliklerinizi ekledikten sonra, Azure dışında çalışan Linux kaynakları için güvenlik merkezini, örneğin şirket içi veya diğer bulutlarda, bir aracı sağlayarak etkinleştirebilirsiniz. Aracıya Microsoft Monitoring Agent (MMA) denir, ancak OMS Aracısı olarak da bilinir.
@@ -82,7 +81,7 @@ Aracıyı kaldırmak için:
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, bir Linux bilgisayarında aracıyı sağladınız. Güvenlik Merkezi'ni kullanma hakkında daha fazla bilgi için bir güvenlik ilkesi yapılandırma ve kaynaklarınızın güvenliğini değerlendirme ile ilgili öğreticiye geçin.
+Bu hızlı başlangıçta aracıyı bir Linux bilgisayarda sağladınız. Güvenlik Merkezi'ni kullanma hakkında daha fazla bilgi için bir güvenlik ilkesi yapılandırma ve kaynaklarınızın güvenliğini değerlendirme ile ilgili öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Öğretici: Güvenlik ilkelerini tanımlama ve değerlendirme](tutorial-security-policy.md)

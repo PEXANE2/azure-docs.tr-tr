@@ -1,56 +1,55 @@
 ---
-title: Azure Güvenlik Merkezi Ayarları | Microsoft Docs
+title: Azure Güvenlik Merkezi ayarları | Microsoft Docs
 description: Azure Güvenlik Merkezi ayarlarını yapılandırın.
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: ec674641991a1b5a1e0ca92c133be235dd91dfae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 09/03/2018
+ms.author: memildin
+ms.openlocfilehash: 4a7254d4ac67ee7d1bf203baf5741638dbc8f3dd
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703532"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201618"
 ---
 # <a name="security-center-settings"></a>Güvenlik Merkezi ayarları
-Bu makalede Güvenlik Merkezi'ndeki ayarları genel bir bakış sağlar.
+Bu makalede Güvenlik Merkezi 'ndeki ayarlara bir genel bakış sunulmaktadır.
 
-Güvenlik İlkesi altında aşağıdaki ayarları ulaşılabilir:
+Aşağıdaki ayarlara Güvenlik Ilkesi altında ulaşılamıyor:
 
-- **Veri toplama**: Sağlama Aracısı belirler ve [veri toplama](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) ayarları.
-- **Güvenlik İlkesi**: Güvenlik Merkezi izleyiciler denetler ve önerir belirler. Düzenleyebileceğiniz [Güvenlik İlkesi](tutorial-security-policy.md) Güvenlik Merkezi'nde. Ayrıca [Azure İlkesi](tutorial-security-policy.md) yeni tanımları oluşturmak için ek ilkeler tanımlamak ve yönetim gruplarına ilkeler atama. 
-- **E-posta bildirimleri**: Güvenlik ilgili kişi belirler ve [e-posta bildirimi](security-center-provide-security-contact-details.md) ayarları.
-- **Fiyatlandırma katmanı**: Ücretsiz veya standart tanımlar [fiyatlandırma seçimi](security-center-pricing.md). Seçtiğiniz katman, kapsam dahilindeki kaynaklar için hangi Güvenlik Merkezi özelliklerinin kullanılabilir olduğunu belirler. Bir katman için abonelik ve çalışma alanları belirtebilirsiniz.
+- **Veri toplama**: Aracı sağlamayı ve [veri toplama](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection) ayarlarını belirler.
+- **Güvenlik ilkesi**: Güvenlik Merkezi 'nin hangi denetimlerin izlediğini ve önerdiğini belirler. Güvenlik Merkezi 'nde [güvenlik ilkesini](tutorial-security-policy.md) düzenleyebilirsiniz. [Azure ilkesini](tutorial-security-policy.md) kullanarak yeni tanımlar oluşturabilir, ek ilkeler tanımlayabilir ve yönetim grupları arasında ilkeler atayabilirsiniz. 
+- **E-posta bildirimleri**: Güvenlik kişilerini ve [e-posta bildirimi](security-center-provide-security-contact-details.md) ayarlarını belirler.
+- **Fiyatlandırma katmanı**: Ücretsiz veya standart [fiyatlandırma seçimini](security-center-pricing.md)tanımlar. Seçtiğiniz katman, kapsam dahilindeki kaynaklar için hangi Güvenlik Merkezi özelliklerinin kullanılabilir olduğunu belirler. Abonelikler ve çalışma alanları için bir katman belirtebilirsiniz.
 
 > [!NOTE]
-> Tüm bunların abonelik başına ayarlayabilirsiniz. Çalışma alanları için yalnızca veri toplama ve fiyatlandırma katmanı ayarlayabilirsiniz.
+> Her abonelik için bu kadar ayarlayabilirsiniz. Çalışma alanları için yalnızca veri toplama ve fiyatlandırma katmanı ayarlayabilirsiniz.
 >
 
 
-## <a name="who-can-edit-security-policies"></a>Güvenlik ilkeleri düzenleyebilecek kişiler
-Güvenlik Merkezi, kullanıcıları, grupları ve Azure Hizmetleri için atanan yerleşik roller sağlayan rol tabanlı erişim denetimi (RBAC) kullanır. Kullanıcı Güvenlik Merkezi'ni açtığında erişime sahip oldukları kaynakları ile ilgili bilgiler yalnızca görürler. Kullanıcı rolüne atanmasını *sahibi*, *katkıda bulunan*, veya *okuyucu* kaynağın ait olduğu aboneliğe. Bu rollere ek olarak iki özel Güvenlik Merkezi rolü vardır:
+## <a name="who-can-edit-security-policies"></a>Güvenlik ilkelerini kimler düzenleyebilir?
+Güvenlik Merkezi, Azure 'daki kullanıcılara, gruplara ve hizmetlere atanabilen yerleşik roller sağlayan rol tabanlı Access Control (RBAC) kullanır. Kullanıcılar Güvenlik Merkezi 'ni açtıklarında yalnızca erişimi olan kaynaklarla ilgili bilgileri görürler. Bu, kullanıcılara kaynağın ait olduğu aboneliğe *sahip*, *katkıda*bulunan veya *okuyucu* rolünün atandığı anlamına gelir. Bu rollere ek olarak iki özel Güvenlik Merkezi rolü vardır:
 
-- **Güvenlik okuyucusu**: Güvenlik Merkezi, öneriler, uyarılar, ilke ve sistem durumu içeren görünümü haklarına sahip ancak bunlar üzerinde değişiklik yapamaz.
-- **Güvenlik Yöneticisi**: Aynı görüntüleme haklarına sahip *güvenlik okuyucusu*, ve bunlar da güvenlik ilkesini güncelleştirebilir ve öneriler ve Uyarıları kapat.
+- **Güvenlik okuyucusu**: Güvenlik Merkezi 'Nde öneriler, uyarılar, ilke ve sistem durumunu içeren görünüm haklarına sahip olmakla kalmaz, ancak değişiklik yapamaz.
+- **Güvenlik Yöneticisi**: *Güvenlik okuyucusu*ile aynı görünüm haklarına sahip olmak ve ayrıca güvenlik ilkesini güncelleştirebilir ve öneriler ile uyarıları kapatabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Azure Güvenlik Merkezi'nde güvenlik ilkeleri hakkında bilgi edindiniz. Azure Güvenlik Merkezi hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu makalede, Azure Güvenlik Merkezi 'nde güvenlik ilkeleri hakkında bilgi edindiniz. Azure Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Azure Güvenlik Merkezi'nde güvenlik ilkelerini ayarlama](tutorial-security-policy.md): Azure Abonelikleriniz için güvenlik ilkelerinin nasıl yapılandırılacağını öğrenin.
-* [Azure Güvenlik Merkezi'nde güvenlik önerilerini yönetme](security-center-recommendations.md): Güvenlik Merkezi önerilerini Azure kaynaklarınızı korumanıza nasıl yardımcı olduğunu öğrenin.
-* [Güvenlik durumunu, Azure Güvenlik Merkezi'nde izleme](security-center-monitoring.md): Azure kaynaklarınızı durumunu izleme hakkında bilgi edinin.
-* [Yönetme ve Azure Güvenlik Merkezi'nde güvenlik uyarılarını yanıtlama](security-center-managing-and-responding-alerts.md): Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi 'nde güvenlik Ilkelerini ayarlama](tutorial-security-policy.md): Azure abonelikleriniz için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi 'nde güvenlik önerilerini yönetme](security-center-recommendations.md): Güvenlik Merkezi önerilerinin Azure kaynaklarınızı korumanıza nasıl yardımcı olduğunu öğrenin.
+* [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md): Azure kaynaklarınızı durumunu izleme hakkında bilgi edinin.
+* [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md): Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md): İş ortağı çözümlerinizin sistem durumunu izleme hakkında bilgi edinin.
-* [Azure Güvenlik Merkezi veri güvenliği](security-center-data-security.md): Güvenlik Merkezi'nin nasıl yönetir ve verileri koruyan öğrenin.
-* [Azure Güvenlik Merkezi SSS](security-center-faq.md): Hizmet kullanımı ile ilgili sık sorulan soruların yanıtlarını alın.
-* [Azure güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/): En son Azure güvenlik haberlerini ve bilgilerini alın.
+* [Azure Güvenlik Merkezi veri güvenliği](security-center-data-security.md): Güvenlik Merkezi 'nin verileri nasıl yönettiğini ve korumalarını öğrenin.
+* [Azure Güvenlik MERKEZI SSS](security-center-faq.md): Hizmet kullanımı ile ilgili sık sorulan soruların yanıtlarını alın.
+* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/): En son Azure Güvenlik haberlerini ve bilgilerini alın.

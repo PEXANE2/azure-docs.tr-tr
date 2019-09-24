@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: 16a487dc007526f685edb52726f5797303a30c11
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: d0ef228f9f019b6f975ba32cf6a579f328226ae2
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966981"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203463"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Hızlı Başlangıç: Java için Görüntü İşleme istemci kitaplığı
 
@@ -24,6 +24,7 @@ Java için Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın.
 Java için Görüntü İşleme istemci kitaplığını kullanarak şunları yapın:
 
 * Etiketler, metin açıklaması, yüzeyler, yetişkinlere yönelik içerik ve daha fazlası için bir görüntüyü çözümleyin.
+* Toplu okuma API 'SI ile yazdırılmış ve el yazısı metinleri tanıyın.
 
 [Başvuru belgesi](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [yapıtı (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -115,6 +116,7 @@ Bu kod parçacıkları, Java için Görüntü İşleme istemci kitaplığı ile 
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Resim çözümleme](#analyze-an-image)
+* [Yazdırılmış ve el yazısı metin oku](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -211,6 +213,29 @@ Aşağıdaki kod görüntüde algılanan yer işaretleriyle ilgili verileri ayr�
 Aşağıdaki kod, küçük resim veya çizgi çizme gibi görüntü&mdash;türü hakkında bilgi yazdırır.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
+## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
+
+Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir.
+
+> [!NOTE]
+> Ayrıca, URL 'sini kullanarak uzak görüntüdeki metni okuyabilirsiniz. Uzak görüntüleri kapsayan senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) 'daki örnek koda bakın.
+
+### <a name="call-the-recognize-api"></a>Tanıma API 'sini çağırma
+
+İlk olarak, verilen görüntü için **recognizePrintedTextInStream** yöntemini çağırmak üzere aşağıdaki kodu kullanın. Bu kodu projenize eklediğinizde, değerini `localTextImagePath` yerel görüntkodunuzla değiştirin. 
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_imagetype)]
+
+### <a name="print-recognize-results"></a>Sonuçları Yazdır
+
+Aşağıdaki kod bloğu döndürülen metni işler ve her satırdaki ilk sözcüğü yazdırmak üzere ayrıştırır. Bu kodu bir **Ocrresult** örneğinin yapısını hızlıca anlamak için kullanabilirsiniz.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_print)]
+
+Son olarak, try/catch bloğunu ve yöntem tanımını kapatın.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_read_catch)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8e793891ea646ae8c91077ead36be9b84c1b08c8
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906382"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200211"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Değerlendirme için bağımlılık görselleştirmesini ayarlama
 
@@ -61,7 +61,7 @@ Bağımlılık görselleştirmesini kullanmak için bir [Log Analytics çalışm
 
     ![Çalışma alanı ekle](./media/how-to-create-group-machine-dependencies/workspace.png)
 
-    - Yeni bir çalışma alanı için bir ad belirttikten sonra, bu, Azure geçişi projesiyle aynı coğrafya 'da oluşturulur.
+    - Yeni bir çalışma alanı için bir ad belirttikten sonra, çalışma alanının oluşturulacağı [bölgeyi](https://azure.microsoft.com/global-infrastructure/regions/) seçebilirsiniz.
     - Mevcut bir çalışma alanını eklediğinizde, geçiş projesiyle aynı abonelikte bulunan tüm kullanılabilir çalışma alanlarını seçebilirsiniz.
     - Eklemek için çalışma alanına okuyucu erişimine ihtiyacınız vardır.
     - Bir projeyle ilişkili çalışma alanını iliştirildikten sonra değiştiremezsiniz.
@@ -86,7 +86,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 2. **Hoş Geldiniz** sayfasında **İleri**'ye tıklayın. **Lisans Koşulları** sayfasında **Kabul Ediyorum**’a tıklayarak lisansı kabul edin.
 3. **Hedef klasörde**, **sonraki**> varsayılan yükleme klasörünü tutun veya değiştirin.
 4. **Aracı kurulum seçenekleri**' nde, **Azure Log Analytics** > **İleri**' yi seçin.
-5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**'ye tıklayın.
+5. Yeni bir Log Analytics çalışma alanı eklemek için **Ekle** ' ye tıklayın. Portaldan kopyaladığınız çalışma alanı KIMLIĞINI ve anahtarını yapıştırın. **İleri**’ye tıklayın.
 
 #### <a name="install-the-agent-on-a-linux-machine"></a>Aracıyı bir Linux makinesine yükler
 

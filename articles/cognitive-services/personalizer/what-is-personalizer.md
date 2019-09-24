@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: ee17e204082389db19e1ebe463352a40d7ecd5ae
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e2af5cb193653736a0d75b4194e09d42282d2fa6
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155248"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203792"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -53,7 +53,7 @@ Kişiselleştirici, bir bağlamda en yüksek düzeyde sıralama eylemini saptama
 * Kullanıcı amacını açıklamak veya bir eylem önermek için bir sohbet bot 'un yanıtını seçin.
 * Bir kullanıcının iş sürecinde bir sonraki adım olarak ne yapması gerektiğine ilişkin önerilere öncelik verin.
 
-Kişiselleştirici Kullanıcı profili bilgilerini kalıcı hale getirmek ve yönetmek ya da bireysel kullanıcıların tercihlerini veya geçmişini günlüğe kaydetmek için bir hizmet değildir. Kişiselleştirici, benzer özellikler gerçekleştiğinde, tek bir model bağlam içindeki her etkileşimin özelliklerinden öğrenir. 
+Kişiselleştirici Kullanıcı profili bilgilerini kalıcı hale getirmek ve yönetmek ya da bireysel kullanıcıların tercihlerini veya geçmişini günlüğe kaydetmek için bir hizmet değildir. Kişiselleştirici, benzer özellikler gerçekleştiğinde en yüksek yeniden ödüller elde eden tek bir modeldeki bir bağlam eyleminde her etkileşimin özelliklerinden öğrenir. 
 
 ## <a name="personalization-for-developers"></a>Geliştiriciler için kişiselleştirme
 

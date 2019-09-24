@@ -8,25 +8,24 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6e7263dfa0faf0bf2fd7e8b7d6e050ca6bc95e2a
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910583"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202217"
 ---
+# <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi özelliklerini kullanımdan kaldırma (2019 Temmuz)
+
 > [!NOTE]
 > Bu belgede, 31 Temmuz 2019 ' de Azure Güvenlik Merkezi 'nden kullanımdan kaldırılan özelliklerin listesi ayrıntılı olarak listelenmektedir.
 >
 >
 
-
-# <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi özelliklerini kullanımdan kaldırma (2019 Temmuz)
-
 Azure Güvenlik Merkezi 'Nde on Temmuz 2019 ' e kadar olan altı ay boyunca birkaç [geliştirme](https://azure.microsoft.com/updates/?product=security-center) yaptık.
 Bu geliştirilmiş özelliklerle, 31 Temmuz 2019 ' de Güvenlik Merkezi 'nden bazı yedekli özellikleri ve ilgili API 'Leri kaldırdık.
 
-Bu devre dışı bırakma özelliklerinin çoğu, Azure Güvenlik Merkezi 'nde veya Azure Log Analytics yeni işlevlerle değiştirilebilir. Diğer özellikler, [Azure Sentinel (Önizleme)](https://azure.microsoft.com/services/azure-sentinel/)kullanılarak uygulanabilir.
+Bu kullanımdan kaldırılan özelliklerin çoğu, Azure Güvenlik Merkezi veya Azure Log Analytics diğer işlevleriyle değiştirilebilir. Diğer özellikler, [Azure Sentinel (Önizleme)](https://azure.microsoft.com/services/azure-sentinel/)kullanılarak uygulanabilir.
 
 Kullanımdan kaldırılan güvenlik merkezi özellikleri şunları içerir:
 
@@ -104,11 +103,11 @@ Güvenlik Merkezi, güvenlik tehditlerini belirlemenize yardımcı olmak için s
 
 ![Güvenlik uyarıları Haritası-düğme][10]
 
-**Güvenlik olayları eşlemesini git** düğmesini seçtiğinizde, tehdit bilgileri panosunu açarsınız. Tehdit bilgileri panosunu devre dışı bırakıyoruz.
+**Güvenlik olayları eşlemesini git** düğmesine tıkladığınızda, (şimdi kullanımdan kaldırılan) tehdit bilgileri panosu açılır.
 
 ![Tehdit Zekası panosu][11]
 
-Tehdit bilgileri panosunu görüntülemek için bir çalışma alanı seçtiğinizde, Log Analytics 'de güvenlik uyarıları Haritası (Önizleme) ekranını açarsınız. Bu ekranı kullanımdan kaldırdı.
+Tehdit bilgileri panosunu görüntülemek için bir çalışma alanı seçtiğinizde, Log Analytics ' de (artık kullanımdan kaldırılan) güvenlik uyarıları Haritası (Önizleme) ekranını açtınız.
 
 ![Log Analytics 'de güvenlik uyarıları Haritası][12]
 

@@ -3,9 +3,8 @@ title: Azure Güvenlik Merkezi'nde kimliği ve erişimi izleme | Microsoft Docs
 description: Kullanıcılarınızın erişim etkinliğini ve kimlikle ilgili sorunları izleme amacıyla Azure Güvenlik Merkezi'ndeki tanımlama ve erişim özelliklerini nasıl kullanacağınızı öğrenin.
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.author: memildin
+ms.openlocfilehash: d035dc4e8f77bb64a9e845a9dae0668365a6aacb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905335"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202282"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme (Önizleme)
 Bu makale kullanıcılarınızın kimliğini ve erişim etkinliğini izleme amacıyla Azure Güvenlik Merkezi'ni kullanmanıza yardımcı olur.
@@ -110,10 +109,10 @@ Kullanılabilir kimlik & erişim önerilerini ve uygulamayı uyguladığınızda
 
 |Kaynak türü|Güvenlik puanı|Öneri|Açıklama|
 |----|----|----|----|
-|Subscription|50|MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir|Hesapların veya kaynakların ihlal oluşmasını engellemek için yönetici ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.|
+|Subscription|50|MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir|Hesapların veya kaynakların ihlal oluşmasını engellemek için yönetici ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication 'ı (MFA) etkinleştirin.|
 |Subscription|40|MFA, abonelik hesaplarınız üzerinde yazma izinlerine sahip olmalıdır|Hesapların veya kaynakların ihlal oluşmasını engellemek için yazma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication 'ı (MFA) etkinleştirin.|
 |Subscription|30|Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır|İzlenmeyen erişimi engellemek için aboneliğinizde sahip olan dış hesapları aboneliğinizden kaldırın.|
-|Subscription|30|MFA, okuma izinlerine sahip abonelik hesaplarınız üzerinde etkinleştirilmelidir|Hesapların veya kaynakların ihlal oluşmasını engellemek için okuma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication (MFA) özelliğini etkinleştirin.|
+|Subscription|30|MFA, okuma izinlerine sahip abonelik hesaplarınız üzerinde etkinleştirilmelidir|Hesapların veya kaynakların ihlal oluşmasını engellemek için okuma ayrıcalıklarına sahip tüm abonelik hesapları için Multi-Factor Authentication 'ı (MFA) etkinleştirin.|
 |Subscription|25|Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir|İzlenmeyen erişimi engellemek için aboneliğinizden yazma izinleri olan dış hesapları kaldırın. |
 |Subscription|20|Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır|Sahip olduğu kullanımdan kaldırılan hesapları aboneliklerinizden kaldırın.|
 |Subscription|5|Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır|Yalnızca geçerli kullanıcılara erişim sağlamak için aboneliklerinizden kullanım dışı hesapları kaldırın. |

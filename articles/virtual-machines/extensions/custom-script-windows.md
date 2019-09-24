@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 58b6531a394db8f9d29dcc0fe9b4b40d1725e70a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774577"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204193"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için özel Betik uzantısı
 
@@ -69,7 +69,7 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 {
     "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "config-app",
+    "name": "virtualMachineName/config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
@@ -101,13 +101,16 @@ Bu öğeler gizli veriler olarak değerlendirilmeli ve uzantılar korumalı ayar
 > [!NOTE]
 > Bir sanal makinede bir uzantının yalnızca bir sürümü yüklü olabilir. aynı VM için aynı Kaynak Yöneticisi şablonunda iki kez özel betik belirtilmesi başarısız olur.
 
+> [!NOTE]
+> Bu şemayı VirtualMachine kaynağı içinde ya da tek başına bir kaynak olarak kullanabiliriz. Bu uzantı ARM şablonunda tek başına bir kaynak olarak kullanılıyorsa, kaynağın adının bu biçimde "virtualMachineName/extensionName" biçiminde olması gerekir. 
+
 ### <a name="property-values"></a>Özellik değerleri
 
 | Ad | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | dize |
-| türü | CustomScriptExtension | dize |
+| type | CustomScriptExtension | dize |
 | typeHandlerVersion | 1.9 | int |
 | Dosya URI 'leri (ör.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | array |
 | timestamp (örn.) | 123456789 | 32 bit tamsayı |

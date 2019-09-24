@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: 18864a662464f77d799e54d583092a371bc2d137
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8d7bb201a9d01725f933105a4a0beb85c82ca105
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999961"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203702"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Çözümünüz için doğru IoT Hub katmanını seçin
 
@@ -47,6 +47,7 @@ Her IoT Hub için bir katmanda yalnızca bir tür [sürümü](https://azure.micr
 | [Cihaz](iot-hub-devguide-device-twins.md)ikne, [Modül TWINS](iot-hub-devguide-module-twins.md)ve [cihaz yönetimi](iot-hub-device-management-overview.md) |   | Evet |
 | [Cihaz akışları (Önizleme)](iot-hub-device-streams-overview.md) |   | Evet |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Evet |
+| [IoT Tak ve Kullan önizlemesi](../iot-pnp/overview-iot-plug-and-play.md) |   | Evet |
 
 IoT Hub Ayrıca, test ve değerlendirme için tasarlanmış bir ücretsiz katman sağlar. Standart katmanın tüm özelliklerine sahiptir, ancak sınırlı mesajlaşma kesintileri vardır. Ücretsiz katmandan temel ya da standart sürümüne yükseltemezsiniz.
 
