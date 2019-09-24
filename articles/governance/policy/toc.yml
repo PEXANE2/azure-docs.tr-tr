@@ -257,6 +257,12 @@
     - name: İlke etkilerini anlama
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Azure İlkesi atama yapısı
+      displayName: 'parameters, enforcementmode, policyDefinitionId'
+      href: ./concepts/assignment-structure.md
+    - name: Yeni ilkenin etkisini değerlendirme
+      displayName: 'audit, enforcementmode, compliance'
+      href: ./concepts/evaluate-impact.md
     - name: Kubernetes için Azure İlkesi
       displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
       href: ./concepts/rego-for-aks.md

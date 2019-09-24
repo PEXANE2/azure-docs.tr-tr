@@ -538,6 +538,8 @@
       items:
         - name: Azure’da SSIS paketlerini SSDT’ten çalıştırma
           href: how-to-invoke-ssis-package-ssdt.md
+        - name: SSIS paketlerini Azure'da etkinleştirilen dtexec ile çalıştırma
+          href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: SSIS Paketlerini Yürütme etkinliği ile SSIS paketleri çalıştırma
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Saklı Yordam etkinliği ile SSIS paketleri çalıştırma

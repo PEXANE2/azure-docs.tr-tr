@@ -42,10 +42,12 @@
               href: tutorial-python-windows-virtual-machine.md
     - name: Depolama Hesabı Anahtarları
       items:
-        - name: Azure CLI kullanarak yönetilen depolama hesabı anahtarları
+        - name: Depolama hesabı anahtarlarını Azure CLI ile yönetme
           href: key-vault-ovw-storage-keys.md
-        - name: PowerShell kullanarak yönetilen depolama hesabı anahtarları
+        - name: Depolama hesabı anahtarlarını PowerShell ile yönetme
           href: key-vault-overview-storage-keys-powershell.md
+        - name: Kodda paylaşılan erişim imza belirteçlerini getirme
+          href: storage-keys-sas-tokens-code.md
     - name: Azure Kapsayıcıları
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure Resource Manager Şablonu

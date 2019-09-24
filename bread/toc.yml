@@ -120,6 +120,9 @@
     - name: Azure Digital Twins
       tocHref: /azure/digital-twins/
       topicHref: /azure/digital-twins/
+    - name: Azure HPC Önbelleği
+      tocHref: /azure/hpc-cache/
+      topicHref: /azure/hpc-cache/
     - name: Azure Lighthouse
       tocHref: /azure/lighthouse/
       topicHref: /azure/lighthouse/
@@ -593,6 +596,9 @@
     - name: Power BI Çalışma Alanı Koleksiyonları
       tocHref: /azure/power-bi-workspace-collections/
       topicHref: /azure/power-bi-workspace-collections/
+    - name: Özel Bağlantı
+      tocHref: /azure/private-link/
+      topicHref: /azure/private-link/
     - name: Redis için Azure Önbelleği
       tocHref: /azure/azure-cache-for-redis/
       topicHref: /azure/azure-cache-for-redis/

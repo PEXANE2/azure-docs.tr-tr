@@ -138,6 +138,8 @@
           href: 'functions-reference-node.md#typescript'
     - name: Tanılama
       href: ../app-service/overview-diagnostics.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Tüketim planı maliyetleri
+      href: functions-consumption-costs.md
     - name: Performansla ilgili önemli noktalar
       href: functions-best-practices.md
     - name: İşlevler Proxy’leri
