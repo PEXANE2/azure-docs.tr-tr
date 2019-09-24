@@ -163,21 +163,21 @@ Bu iki tabloya Not:
 
    | deviceId | Series. TagId | Ileti | deviceLocation | türü | birim |
    | --- | --- | --- | --- | --- | --- |
-   | FXXX | porate oranı | SATIR\_VERİLERİ | AB | Akış hızı | ft3/s |
-   | FXXX | Oilbasınç | SATIR\_VERİLERİ | AB | Motor yağ basıncı | psi |
-   | FYYY | porate oranı | SATIR\_VERİLERİ | ABD | Akış hızı | ft3/s |
-   | FYYY | Oilbasınç | SATIR\_VERİLERİ | ABD | Motor yağ basıncı | psi |
+   | FXXX | porate oranı | LINE\_DATA | EU | Akış hızı | ft3/s |
+   | FXXX | Oilbasınç | LINE\_DATA | EU | Motor yağ basıncı | psi |
+   | FYYY | porate oranı | LINE\_DATA | US | Akış hızı | ft3/s |
+   | FYYY | Oilbasınç | LINE\_DATA | US | Motor yağ basıncı | psi |
 
 * Time Series Insights olay tablosu, düzleştirme sonrasında:
 
    | deviceId | Series. TagId | Ileti | deviceLocation | türü | birim | timestamp | Series. Value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | porate oranı | SATIR\_VERİLERİ | AB | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
-   | FXXX | Oilbasınç | SATIR\_VERİLERİ | AB | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | porate oranı | SATIR\_VERİLERİ | AB | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
-   | FXXX | Oilbasınç | SATIR\_VERİLERİ | AB | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 49.2 |
-   | FYYY | porate oranı | SATIR\_VERİLERİ | ABD | Akış hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
-   | FYYY | Oilbasınç | SATIR\_VERİLERİ | ABD | Motor yağ basıncı | psi | 2018-01-17T01:18:00Z | 22.2 |
+   | FXXX | porate oranı | LINE\_DATA | EU | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | Oilbasınç | LINE\_DATA | EU | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 34.7 |
+   | FXXX | porate oranı | LINE\_DATA | EU | Akış hızı | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | Oilbasınç | LINE\_DATA | EU | Motor yağ basıncı | psi | 2018-01-17T01:17:00Z | 49.2 |
+   | FYYY | porate oranı | LINE\_DATA | US | Akış hızı | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
+   | FYYY | Oilbasınç | LINE\_DATA | US | Motor yağ basıncı | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 Bu iki tabloya Not:
 

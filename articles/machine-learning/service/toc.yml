@@ -26,7 +26,7 @@
               href: tutorial-train-models-with-aml.md
             - name: 2. Model dağıtma
               href: tutorial-deploy-models-with-aml.md
-        - name: Regresyon (NYC Taxi verileri)
+        - name: Otomatikleştirilmiş ML ile regresyon (NYC Taxi verileri)
           items:
             - name: ML modelini otomatik olarak eğitme
               displayName: 'automl, automated, auto ml,'
@@ -44,7 +44,7 @@
         - name: 2. Regresyon modelini dağıtma
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
-    - name: Otomatik makine öğrenimi
+    - name: Otomatikleştirilmiş ML (arabirim)
       items:
         - name: Sınıflandırma (Banka verileri)
           displayName: 'automl, automated, auto ml, portal, ui'
@@ -107,13 +107,13 @@
         - name: Resource Manager şablonu kullanma
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: Geliştirme ortamı ayarlama
+    - name: Ortamınızı ayarlama
       items:
-        - name: Geliştirme ortamlarını yapılandırma
+        - name: Geliştirme ortamlarını ayarlama
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Yazılım ortamını yönetme
-          displayName: 'pip, Conda'
+        - name: Yazılım ortamlarını ayarlama
+          displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
         - name: Günlü kaydını etkinleştir
           displayName: 'troubleshoot, log, files, tracing'
