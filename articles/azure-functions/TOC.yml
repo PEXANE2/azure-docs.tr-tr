@@ -54,7 +54,7 @@
     - name: Logic Apps ile İşlevler
       href: functions-twitter-email.md
     - name: VS Code ile Python işlevleri geliştirme
-      href: tutorial-vs-code-serverless-python.md
+      href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: Sunucusuz API’ler için OpenAPI tanımı
       href: functions-openapi-definition.md
     - name: Sanal Ağa bağlanma

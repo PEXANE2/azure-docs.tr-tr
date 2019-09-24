@@ -78,7 +78,7 @@ Aşağıdaki JSON, Azure Windows VM 'de Azure VM bağımlılık Aracısı uzant�
 | Name | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
+| publisher | Microsoft. Azure. Monitoring. DependencyAgent |
 | type | DependencyAgentWindows |
 | typeHandlerVersion | 9.5 |
 

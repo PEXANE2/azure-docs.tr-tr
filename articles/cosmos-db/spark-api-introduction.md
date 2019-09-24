@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/01/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 3fd7990043543b92eb3daf8ec699ec58db3387ec
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 0f070cb9a6e300dad0ec9e0b393b09b7f22d2942
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717582"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212586"
 ---
 # <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Apache Spark ile Azure Cosmos DB yerleşik işlemsel analiz (Önizleme) 
 
@@ -136,12 +136,6 @@ Aşağıdaki görüntüde gerçek zamanlı bir araç Tanılama sistemi oluşturm
 Aşağıdaki görüntüde, oyun analizinin Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
 
 ![Oyun analizinden Azure Cosmos DB Spark desteği](./media/spark-api-introduction/gaming-analytics.png)
-
-## <a name="built-in-jupyter-notebooks-support"></a>Yerleşik jupi Not defterleri desteği
-
-Azure Cosmos DB Cassandra, MongoDB, SQL, Gremlin ve Table gibi tüm API 'Lerde yerleşik jupi not defterlerini destekler. Jupyıter Not defterleri Azure Cosmos hesaplarında çalışır ve geliştirici deneyimini geliştirir. Tüm Azure Cosmos DB API 'Leri ve veri modelleri için yerleşik Not Defteri desteği, sorguları etkileşimli olarak çalıştırmanızı sağlar. Makine öğrenimi modellerini de yürütebilir ve Azure Cosmos veritabanlarınızda depolanan verileri çözümleyebilirsiniz. Jupyter Not defteri deneyimini kullanarak, depolanan verileri çözümleyebilir, makine öğrenimi modellerini oluşturabilir ve eğitebilirsiniz ve aşağıdaki görüntüde gösterildiği gibi Azure portal verilerde iç içe bir sınırlama gerçekleştirebilirsiniz:
-
-![Azure Cosmos DB 'de jupi Not Defteri desteği](./media/spark-api-introduction/jupyter-notebooks-portal.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

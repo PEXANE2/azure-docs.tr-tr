@@ -4,12 +4,13 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 03/23/2019
 ms.author: sngun
-ms.openlocfilehash: 008177e28e99d09f384899141038c13a0e625519
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: seo-java-september2019
+ms.openlocfilehash: d5a0e8412b928aea83670ad9f7c99a892a058c70
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541560"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210362"
 ---
 Web uygulamanız ve Azure Cosmos DB hesabınızla işiniz bittiğinde, daha fazla ücret ödemeniz için oluşturduğunuz Azure kaynaklarını silebilirsiniz. Kaynakları silmek için:
 
@@ -17,11 +18,11 @@ Web uygulamanız ve Azure Cosmos DB hesabınızla işiniz bittiğinde, daha fazl
 
 2. Bu hızlı başlangıç için oluşturduğunuz kaynak grubunu seçin.  
 
-   ![Azure portalında ölçümler](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
+   ![Silinecek kaynak grubunu seçin](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
 2. Yeni pencerede, **kaynak grubunu sil**' i seçin.
 
-   ![Azure portalında ölçümler](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+   ![Kaynak grubunu silme](./media/cosmos-db-delete-resource-group/delete-resources.png)   
 
 3. Sonraki pencerede, silinecek kaynak grubunun adını girin ve **Sil**' i seçin.
 

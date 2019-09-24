@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 8689cb74e35d5b87c300f5fce239993691652ee2
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 1b37475cfa8df38a00ea6017d47e90677ed457d2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172523"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212632"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-table-api"></a>Hızlı Başlangıç: Java SDK ve Azure Cosmos DB bir grafik veritabanı oluşturun Tablo API'si
 
@@ -110,7 +110,7 @@ Aşağıdaki kod parçacıklarının tümü C:\git-samples\azure-cosmos-db-graph
 
     URI değerinin ilk parçasını kopyalayın.
 
-    ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası](./media/create-graph-java/keys.png)
+    ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası](./media/create-graph-java/copy-access-key-azure-portal.png)
 2. src/remote.yaml dosyasını açın ve benzersiz kimlik değerini `hosts: [$name$.graphs.azure.com]` içindeki `$name$` öğesine yapıştırın.
 
     remote.yaml dosyasının 1. satırı şuna benzer şekilde görünmelidir: 
@@ -219,15 +219,15 @@ Aşağıdaki kod parçacıklarının tümü C:\git-samples\azure-cosmos-db-graph
 
 12. Artık rakesh ve ashley arasında bağlantı kurabilirsiniz. **Sonuçlar** listesinde **Ashley** ' in seçili olduğundan emin olun, sonra ![sağ alt köşedeki **hedefler** ' in yanında bulunan bir](./media/create-graph-java/edit-pencil-button.png) grafikteki bir köşenin hedefini Değiştir ' i seçin. Düğmeyi görmek için pencerenizi genişletmeniz gerekebilir.
 
-    ![Hedef grafikteki bir köşeyi değiştirme](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
+    ![Grafikteki bir köşenin hedefini değiştirme-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. **Hedef** kutusunda *Rakesh*girin ve **kenar etiketi** kutusuna *bilir*yazın ve onay kutusunu seçin.
 
-    ![Veri Gezgininde ashley ve rakesh arasında bir bağlantı ekleyin](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
+    ![Veri Gezgini bağlantı ekleme-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
 14. Sonuç listesinden **rakesh**’i seçin, ashley ve rakesh’in bağlantılı olduğunu görürsünüz. 
 
-    ![Veri Gezgini'nde bağlı iki köşe](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
+    ![Veri Gezgini bağlı iki köşe-Azure CosmosDB](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
     Bu işlemle birlikte, bu öğreticideki kaynak oluşturma bölümünü tamamladınız. Grafiğinize köşe eklemeye, var olan köşeleri veya sorguları değiştirmeye devam edebilirsiniz. Şimdi, Azure Cosmos DB’nin sağladığı ölçümleri gözden geçirip kaynakları temizleyelim. 
 
