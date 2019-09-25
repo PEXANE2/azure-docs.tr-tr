@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fe4a47161e86614807e69b613b49e8808a35e041
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077240"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266067"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure sanal makineleri için yüksek kullanılabilirlik SAP HANA
 
@@ -60,7 +60,7 @@ Azure, ağ, depolama ve sanal makineler gibi farklı bileşenler için farklı k
 
 [Sanal makineler Için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) üç farklı SLA tanımlar, üç farklı yapılandırma için:
 
-- İşletim sistemi diski ve tüm veri diskleri için [Azure Premium SSD 'ler](../../wi https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/ows/disks-types.md) kullanan tek bir VM. Bu seçenek yüzde 99,9 ' lik bir aylık çalışma süresi sağlar.
+- İşletim sistemi diski ve tüm veri diskleri için [Azure Premium SSD 'ler](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) kullanan tek bir VM. Bu seçenek yüzde 99,9 ' lik bir aylık çalışma süresi sağlar.
 - Bir [Azure kullanılabilirlik kümesinde](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)düzenlenmiş birden çok (en az Iki) VM. Bu seçenek yüzde 99,95 ' lik bir aylık çalışma süresi sağlar.
 - Bir [kullanılabilirlik bölgesinde](https://docs.microsoft.com/azure/availability-zones/az-overview)düzenlenmiş birden çok (en az Iki) VM. Bu seçenek yüzde 99,99 ' lik bir aylık çalışma süresi sağladı.
 

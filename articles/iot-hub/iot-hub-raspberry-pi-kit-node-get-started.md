@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: e7346fa0f9cc977755c441077a50707dd207019f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638297"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266145"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry PI 'yi Azure IoT Hub 'ye bağlama (node. js)
 
@@ -135,7 +135,7 @@ Bir LED ve BME280 ile Pi arasında bağlantı kurmak için aşağıdaki gibi bir
 
 ![Raspberry PI ve algılayıcı bağlantısı](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
-BME280 algılayıcısı, sıcaklık ve nem verileri toplayabilir. Cihaz buluta bir ileti gönderdiğinde bu, yanıp sönüyor. 
+BME280 algılayıcısı, sıcaklık ve nem verileri toplayabilir. Cihaz buluta bir ileti gönderdiğinde bu, yanıp sönüyor.
 
 Algılayıcı PIN 'leri için aşağıdaki kabloyı kullanın:
 
@@ -170,8 +170,8 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
 1. Ana bilgisayarınızdan aşağıdaki SSH istemcilerinden biriyle Raspberry Pi 'nize bağlanın:
 
    **Windows kullanıcıları**
-  
-   a. Windows için [Putty](https://www.putty.org/) indirin ve yükleyin. 
+
+   a. Windows için [Putty](https://www.putty.org/) indirin ve yükleyin.
 
    b. PI 'nizin IP adresini ana bilgisayar adı (veya IP adresi) bölümüne kopyalayın ve bağlantı türü olarak SSH ' yi seçin.
 
@@ -192,10 +192,10 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
    node -v
    ```
 
-   Sürüm 11. x 'den düşükse veya PI 'ağınızda Node. js yoksa, en son sürümü yükler.
+   Sürüm 10. x 'den düşükse veya PI 'ağınızda Node. js yoksa, en son sürümü yükler.
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -209,7 +209,7 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
-   sudo npm install
+   npm install
    ```
 
    > [!NOTE]
@@ -228,6 +228,8 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
    Bu dosyada yapılandırabileceğiniz iki öğe vardır. Birincisi, buluta gönderilen `interval`iletiler arasındaki zaman aralığını (milisaniye olarak) tanımlayan bir değer. İkinci bir `simulatedData`değer, sanal algılayıcı verilerinin kullanılıp kullanılmayacağını belirten bir Boole değeridir.
 
    **Sensöre sahip**değilseniz, örnek uygulamanın benzetimli `simulatedData` algılayıcı verileri `true` oluşturması ve kullanması için değerini olarak ayarlayın.
+
+   *Not: Bu öğreticide kullanılan I2C adresi varsayılan olarak 0x77 ' dir. Yapılandırmanıza bağlı olarak, 0x76 de olabilir: bir I2C hatasıyla karşılaşırsanız, değeri 118 olarak değiştirmeyi deneyin ve bunun daha iyi çalışıp çalışmadığını görüntüleyin. Sensörizin tarafından kullanılan adresi görmek için Raspberry Pi üzerinde `sudo i2cdetect -y 1` bir kabukta çalıştırın*
 
 2. Control-O > yazarak kaydedip çıkış yapın ve > Control-X yazın.
 

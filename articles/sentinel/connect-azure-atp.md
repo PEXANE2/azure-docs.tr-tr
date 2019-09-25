@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: ebb727055296ba7886a9307ada113ab5a6e0c9e0
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 764fb4c22bcce5fc5b045e68dc512243e783020e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240181"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261836"
 ---
-# <a name="connect-data-from-azure-advanced-threat-protection-atp---preview"></a>Azure Gelişmiş tehdit koruması (ATP) ile verileri bağlama-Önizleme
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Verileri Azure Gelişmiş tehdit koruması (ATP) ile bağlama
 
-
-
+> [!IMPORTANT]
+> Azure Sentinel 'de Azure Gelişmiş tehdit koruması verileri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Azure Gelişmiş tehdit koruması](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) 'ndan günlükleri tek bir tıklama Ile Azure Sentinel 'e aktarabilirsiniz.
 
@@ -41,7 +42,7 @@ Azure ATP dağıtılırsa ve verilerinizi geri alıyorsa şüpheli uyarılar Azu
 
 1. Azure ATP 'yi Azure Sentinel 'e bağlamak için öncelikle Azure ATP ve Microsoft Cloud App Security arasındaki tümleştirmeyi etkinleştirmeniz gerekir. Bunun nasıl yapılacağı hakkında bilgi için bkz. [Azure Gelişmiş tehdit koruması tümleştirmesi](https://docs.microsoft.com/cloud-app-security/aatp-integration).
 
-1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve ardından **Azure ATP** kutucuğuna tıklayın.
+1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve ardından **Azure Gelişmiş tehdit koruması (Önizleme)** kutucuğuna tıklayın.
 
 1. Azure ATP 'deki uyarıların otomatik olarak Azure Sentinel 'de olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralı etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
 

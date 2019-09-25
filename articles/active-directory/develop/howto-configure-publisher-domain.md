@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291de1fa9bbb43ff9393a3163d1cd21dd7cd1b01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835146"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257927"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Nasıl yapılır: Uygulamanın yayımcı etki alanını yapılandırma (Önizleme)
 
@@ -96,6 +96,12 @@ Uygulamanız bir kiracıda kayıtlı değilse, yalnızca uygulamanız için yeni
 ### <a name="to-select-a-verified-domain"></a>Doğrulanmış bir etki alanı seçmek için
 
 - Kiracınızda etki alanları doğrulandıysa, **doğrulanmış etki alanı seç** açılır listesinden etki alanlarından birini seçin.
+
+>[!Note]
+> Döndürülmesi gereken ' Content-Type ' üst bilgisi bekleniyordu `application/json`. Beğendiği gibi başka bir şey kullanıyorsanız, aşağıda belirtildiği gibi bir hata alabilirsiniz`application/json; charset=utf-8` 
+> 
+>``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+>
 
 ## <a name="implications-on-the-app-consent-prompt"></a>Uygulama onay isteminde oluşan etkiler
 

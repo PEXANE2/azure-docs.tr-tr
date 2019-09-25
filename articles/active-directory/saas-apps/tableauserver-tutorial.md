@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e95143da96ce9891c3820479e536e9ea6a18617
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b07c6d6317d8ca284008d271f507b965414bfbc1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861349"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257510"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Öğretici: Tableau Server ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -107,9 +107,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -158,7 +158,7 @@ Bu bölümde, Tableau sunucusuna erişim vererek Azure çoklu oturum açma özel
     h. **Kaydet**'e tıklayın.
 
     > [!NOTE]
-    > Müşterinin, Tableau Server SAML SSO yapılandırmasındaki herhangi bir sertifikayı karşıya yüklemesi gerekir ve bu, SSO akışında yok sayılır. Tableau sunucusunda SAML yapılandırması için yardıma ihtiyacınız varsa lütfen [SAML 'Yi yapılandırma](https://help.tableau.com/current/server/en-gb/saml_config_steps_tsm_ui.htm)makalesine başvurun.
+    > Müşterinin, Tableau Server SAML SSO yapılandırmasındaki herhangi bir sertifikayı karşıya yüklemesi gerekir ve bu, SSO akışında yok sayılır. Tableau sunucusunda SAML yapılandırması için yardıma ihtiyacınız varsa lütfen [SAML 'Yi yapılandırma](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm)makalesine başvurun.
 
 ### <a name="create-tableau-server-test-user"></a>Tableau Server test kullanıcısı oluştur
 

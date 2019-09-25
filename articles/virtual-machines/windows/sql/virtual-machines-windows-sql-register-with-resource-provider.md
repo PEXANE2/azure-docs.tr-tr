@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 2bf7118d1f4be065969312d1fb9b0cf77e820d48
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743925"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262874"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 'da SQL Server sanal makinesini SQL VM kaynak sağlayıcısıyla kaydetme
 
@@ -27,11 +27,21 @@ Bu makalede, SQL VM kaynak sağlayıcısı ile Azure 'da SQL Server sanal makine
 
 Azure portal üzerinden SQL Server VM Azure Marketi görüntüsünün dağıtımı, SQL Server VM kaynak sağlayıcısıyla otomatik olarak kaydeder. Azure Market ' ten bir görüntü seçmek yerine bir Azure sanal makinesine SQL Server kendi kendine yüklemeyi tercih ediyorsanız veya SQL Server olan özel bir VHD 'den bir Azure VM sağladıysanız, SQL Server VM için kaynak sağlayıcısına kaydolmanız gerekir :
 
-- **Uyumluluk**: Microsoft Ürün koşullarına göre, müşteriler [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullandıklarında Microsoft 'a başvurmalıdır. Bunu yapmak için, SQL VM kaynak sağlayıcısına kaydolmaları gerekir. 
+- **Lisans yönetimini basitleştirme**: Microsoft Ürün koşullarına göre, müşteriler [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullandıklarında Microsoft 'a başvurmalıdır. SQL VM kaynak sağlayıcısı 'na kaydolmak, lisans yönetimini SQL Server basitleştirir ve [portalda](virtual-machines-windows-sql-manage-portal.md) Azure Hibrit Avantajı kullanarak SQL Server VM 'leri hızlı bir şekilde tanımlamanızı sağlar veya az CLI: 
+
+   ```azurecli-interactive
+   $vms = az sql vm list | ConvertFrom-Json
+   $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
+   ```
 
 - **Özellik avantajları**: SQL Server VM kaynak sağlayıcısına kaydetmek [otomatik düzeltme eki uygulama](virtual-machines-windows-sql-automated-patching.md), [otomatik yedekleme](virtual-machines-windows-sql-automated-backup-v2.md)ve izleme ve yönetilebilirlik yeteneklerini kaldırır. Ayrıca [lisanslama](virtual-machines-windows-sql-ahb.md) ve [Sürüm](virtual-machines-windows-sql-change-edition.md) esnekliğini de kaldırır. Daha önce, bu özellikler yalnızca Azure Marketi 'ndeki SQL Server VM görüntülerle sunulmaktadır.
 
+- **Ücretsiz yönetim**:  SQL VM kaynak sağlayıcısı ve tüm yönetilebilirlik modlarını kaydetme tamamen ücretsizdir. Kaynak sağlayıcısıyla veya değişen yönetim modlarıyla ilişkili ek bir maliyet yoktur. 
+
 SQL VM kaynak sağlayıcısını kullanmak için, aboneliğiniz ile SQL VM kaynak sağlayıcısını da kaydetmeniz gerekir. Azure portal, Azure CLı veya PowerShell kullanarak bunu yapabilirsiniz. 
+
+  > [!NOTE]
+  > Kaynak sağlayıcısıyla kayıt ile ilişkili ek lisanslama gereksinimi yoktur. SQL VM kaynak sağlayıcısına kaydolmak, Microsoft 'un her kaynak için lisanslama kayıt formlarını yönetme yerinde Azure Hibrit Avantajı etkinleştirilmiş olduğunu bildirmek için basitleştirilmiş bir yöntem sunar. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -172,13 +182,13 @@ Bir hata, SQL Server VM kaynak sağlayıcıya kaydedilmemiş olduğunu gösterir
 
 ## <a name="change-management-modes"></a>Değişiklik yönetimi modları
 
-SQL Server IaaS uzantısı için üç yönetilebilirlik modu vardır: 
+SQL Server IaaS uzantısı için üç ücretsiz yönetilebilirlik modu vardır: 
 
-- **Tam** mod tüm işlevleri sunar, ancak SQL Server ve Sistem Yöneticisi izinlerinin yeniden başlatılmasını gerektirir. Bu, varsayılan olarak yüklenen seçenektir. Tek bir örnekle SQL Server VM yönetmek için kullanın. 
+- **Tam** mod tüm işlevleri sunar, ancak SQL Server ve Sistem Yöneticisi izinlerinin yeniden başlatılmasını gerektirir. Bu, varsayılan olarak yüklenen seçenektir. Tek bir örnekle SQL Server VM yönetmek için kullanın. Tam mod belleği ve CPU üzerinde en az etkisi olan iki Windows hizmeti yüklüyor. Bunlar, Görev Yöneticisi aracılığıyla izlenebilir. Tüm yönetilebilirlik modunu kullanmayla ilişkili bir maliyet yoktur. 
 
-- **Hafif** SQL Server yeniden başlatılmasını gerektirmez, ancak yalnızca SQL Server lisans türünü ve sürümünü değiştirmeyi destekler. Birden çok örneğe sahip SQL Server VM 'Ler veya bir yük devretme kümesi örneğine (FCı) katılmak için bu seçeneği kullanın. 
+- **Hafif** SQL Server yeniden başlatılmasını gerektirmez, ancak yalnızca SQL Server lisans türünü ve sürümünü değiştirmeyi destekler. Birden çok örneğe sahip SQL Server VM 'Ler veya bir yük devretme kümesi örneğine (FCı) katılmak için bu seçeneği kullanın. Hafif mod kullanılırken bellek veya CPU üzerinde bir etkisi yoktur. Hafif yönetilebilirlik modunun kullanılmasıyla ilişkili bir maliyet yoktur. 
 
-- **Noagent** , Windows Server 2008 ' de yüklü SQL Server 2008 ve SQL Server 2008 R2 için ayrılmıştır. 
+- **Noagent** , Windows Server 2008 ' de yüklü SQL Server 2008 ve SQL Server 2008 R2 için ayrılmıştır. NoAgent modu kullanılırken bellek veya CPU üzerinde bir etkisi yoktur. NoAgent yönetilebilirlik modunu kullanmayla ilişkili bir maliyet yoktur. 
 
 PowerShell kullanarak SQL Server IaaS aracınızın geçerli modunu görüntüleyebilirsiniz: 
 
@@ -359,6 +369,12 @@ Evet. Azure VM 'de yük devretme kümesi örnekleri SQL Server, SQL VM kaynak sa
 **Her zaman açık kullanılabilirlik grubu yapılandırılmışsa VM 'imi SQL VM kaynak sağlayıcısı ile kaydedebilir miyim?**
 
 Evet. Her zaman açık kullanılabilirlik grubu yapılandırmasına katılıyorsanız, SQL VM kaynak sağlayıcısı ile bir Azure VM 'de SQL Server örneğini kaydetme kısıtlaması yoktur.
+
+**SQL VM kaynak sağlayıcısına kaydolma veya tam yönetilebilirlik moduna yükseltme maliyeti nedir?**
+Yok. SQL VM kaynak sağlayıcısı ile veya üç yönetilebilirlik modundan birini kullanarak kayıt ile ilişkili bir ücret alınmaz. SQL Server VM kaynak sağlayıcıyla yönetme tamamen ücretsizdir. 
+
+**Farklı yönetilebilirlik modlarını kullanmanın performans etkisi nedir?**
+*Noagent* ve *hafif* yönetilebilirlik modları kullanılırken hiçbir etkisi yoktur. İşletim sistemine yüklenen iki hizmetten *tam* yönetilebilirlik modunu kullanırken en az etkisi vardır. Bunlar, Görev Yöneticisi ile izlenebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

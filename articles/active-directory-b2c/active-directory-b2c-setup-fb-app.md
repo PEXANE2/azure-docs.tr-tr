@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c13f3166c50d9afc03125d66155ce654c84e5e0a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 77b2fccaeba3cd1d164a3ce428c04083fd69fb5a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065229"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264213"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak kayıt ve Facebook hesabı ile oturum açma ayarlama
 
@@ -25,20 +25,20 @@ Azure Active Directory B2C (Azure AD B2C) ' de bir Facebook hesabını [kimlik s
 
 1. Facebook hesabı kimlik bilgilerinizle [geliştiriciler Için Facebook](https://developers.facebook.com/) 'ta oturum açın.
 1. Daha önce yapmadıysanız, Facebook geliştiricisi olarak kaydolmanız gerekir. Bunu yapmak için sayfanın sağ üst **köşesinden başlayın ' ı seçin,** Facebook ilkelerini kabul edin ve kayıt adımlarını uygulayın.
-1. **Uygulamalarım** ' ı ve sonra **Yeni uygulama ekle**' yi seçin.
+1. **Uygulamalarım** ' ı ve ardından **uygulama oluştur**' u seçin.
 1. Bir **görünen ad** ve geçerli bir **Iletişim e-postası**girin.
-1. **Uygulama kimliği oluştur**' a tıklayın. Bu, Facebook platformu ilkelerini kabul etmenizi ve çevrimiçi bir güvenlik denetimi tamamlamanızı gerektirebilir.
+1. **Uygulama kimliği oluştur**' u seçin. Bu, Facebook platformu ilkelerini kabul etmenizi ve çevrimiçi bir güvenlik denetimi tamamlamanızı gerektirebilir.
 1. **Ayarlar** > **temel**öğesini seçin.
 1. Örneğin`Business and Pages`, bir **Kategori**seçin. Bu değer Facebook için gereklidir, ancak Azure AD B2C için kullanılmaz.
 1. Sayfanın alt kısmındaki **Platform Ekle**' yi ve ardından **Web sitesi**' ni seçin.
 1. **Site URL 'si**' nde `https://your-tenant-name.b2clogin.com/` , `your-tenant-name` kiracınızın adıyla değiştirin yazın. **Gizlilik ILKESI URL**'si IÇIN bir URL girin, örneğin `http://www.contoso.com`. İlke URL 'SI, uygulamanız için gizlilik bilgilerini sağlamak üzere tuttuğunuz bir sayfasıdır.
 1. **Değişiklikleri Kaydet**' i seçin.
 1. Sayfanın üst kısmında, **uygulama kimliği**değerini kopyalayın.
-1. **Göster** ' e tıklayın ve **uygulama gizli anahtarı**değerini kopyalayın. Facebook 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisini de kullanabilirsiniz. **Uygulama gizli anahtarı** önemli bir güvenlik kimlik bilgileridir.
+1. **Göster** ' i seçin ve **uygulama gizli anahtarı**değerini kopyalayın. Facebook 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisini de kullanabilirsiniz. **Uygulama gizli anahtarı** önemli bir güvenlik kimlik bilgileridir.
 1. **Ürünlerin**yanındaki artı işaretini ve ardından **Facebook oturumu**altında **Ayarla** ' yı seçin.
 1. **Facebook oturum açma**bölümünde **Ayarlar**' ı seçin.
-1. **Geçerli OAuth yeniden yönlendirme URI 'lerinde**, `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`girin. Kiracınızın adıyla değiştirin `your-tenant-name` . Sayfanın altındaki **Değişiklikleri Kaydet** ' e tıklayın.
-1. Facebook uygulamanızı Azure AD B2C için kullanılabilir hale getirmek için sayfanın sağ üst kısmındaki durum seçicisine tıklayın ve uygulamayı ortak hale **getirmek için açın** ve ardından **Onayla**' ya tıklayın.  Bu noktada, durumun **geliştirme aşamasında** **canlı**olarak değiştirilmesi gerekir.
+1. **Geçerli OAuth yeniden yönlendirme URI 'lerinde**, `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`girin. Kiracınızın adıyla değiştirin `your-tenant-name` . Sayfanın alt kısmındaki **Değişiklikleri Kaydet** ' i seçin.
+1. Facebook uygulamanızı Azure AD B2C için kullanılabilir hale getirmek için sayfanın sağ üst kısmındaki durum seçiciyi seçin ve uygulamayı ortak hale **getirmek için açın** , sonra **Mod Değiştir**' i seçin.  Bu noktada, durumun **geliştirme aşamasında** **canlı**olarak değiştirilmesi gerekir.
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Bir Facebook hesabını kimlik sağlayıcısı olarak yapılandırma
 

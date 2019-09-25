@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a25c5fed4fd88866f46a9ca254213cae5db893a4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: cd4839e2c8ad6605a29f3c8b824375185384f78c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063577"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258156"
 ---
 # <a name="social-accounts-claims-transformations"></a>Sosyal hesap talep dönüştürmeleri
 
@@ -43,7 +43,7 @@ Azure Active Directory çağrılarında kullanılabilecek kullanıcının Altern
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | key | dize | Sosyal kimlik sağlayıcısı tarafından kullanılan benzersiz kullanıcı tanımlayıcısını belirten ClaimType. |
-| Inputclaim | identityProvider | dize | Facebook.com gibi sosyal hesap kimlik sağlayıcısı adını belirten ClaimType. |
+| Inputclaim | IdentityProvider | dize | Facebook.com gibi sosyal hesap kimlik sağlayıcısı adını belirten ClaimType. |
 | outputClaim | Alternativesecurityıd | dize | Claimstrans, tarafından üretilen ClaimType çağrılır. Sosyal hesap kullanıcısının kimliği hakkındaki bilgileri içerir. **Veren** , `identityProvider` talebin değeridir. **Issueruserıd** , `key` talebin Base64 biçimindeki değeridir. |
 
 Bir `alternativeSecurityId` ClaimType oluşturmak için bu talep dönüşümünü kullanın. Bu, `Facebook-OAUTH`gibi tüm sosyal kimlik sağlayıcısı teknik profilleri tarafından kullanılır. Aşağıdaki talep dönüştürmesi, Kullanıcı sosyal hesap KIMLIĞINI ve kimlik sağlayıcısı adını alır. Bu teknik profilin çıktısı, Azure AD dizin hizmetlerinde kullanılabilen bir JSON dize biçimidir.
@@ -51,7 +51,7 @@ Bir `alternativeSecurityId` ClaimType oluşturmak için bu talep dönüşümün�
 ```XML
 <ClaimsTransformation Id="CreateAlternativeSecurityId" TransformationMethod="CreateAlternativeSecurityId">
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="socialIdpUserId" TransformationClaimType="key" />
+    <InputClaim ClaimTypeReferenceId="issuerUserId" TransformationClaimType="key" />
     <InputClaim ClaimTypeReferenceId="identityProvider" TransformationClaimType="identityProvider" />
   </InputClaims>
   <OutputClaims>
@@ -74,7 +74,7 @@ Bir `alternativeSecurityIdCollection` talebe `AlternativeSecurityId` bir ekler.
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | maddesinin | dize | Çıkış talebine eklenecek ClaimType. |
+| Inputclaim | öğe | dize | Çıkış talebine eklenecek ClaimType. |
 | Inputclaim | koleksiyon | Alternativesecurityıdcollection | İlkede varsa talep dönüştürmesi tarafından kullanılan ClaimTypes. Sağlanmışsa, talep dönüştürmesi koleksiyonun sonuna ekler `item` . |
 | outputClaim | koleksiyon | Alternativesecurityıdcollection | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. Hem girişten `collection` `item`hem de öğeleri içeren yeni koleksiyon. |
 
@@ -138,7 +138,7 @@ Bir **Alternativesecurityıd** değerini bir **Alternativesecurityıdcollection*
 
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
-| Inputclaim | identityProvider | dize | Koleksiyondan kaldırılacak kimlik sağlayıcısı adını içeren ClaimType. |
+| Inputclaim | IdentityProvider | dize | Koleksiyondan kaldırılacak kimlik sağlayıcısı adını içeren ClaimType. |
 | Inputclaim | koleksiyon | Alternativesecurityıdcollection | Talep dönüştürmesi tarafından kullanılan ClaimTypes. Talep dönüştürmesi, IdentityProvider 'ı koleksiyondan kaldırır. |
 | outputClaim | koleksiyon | Alternativesecurityıdcollection | Bu Claimstranssetting sonrasında üretilen ClaimTypes çağrılır. Yeni koleksiyon, IdentityProvider koleksiyondan kaldırıldıktan sonra. |
 

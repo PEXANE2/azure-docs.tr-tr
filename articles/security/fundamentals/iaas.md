@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: barclayn
-ms.openlocfilehash: 1f662c34f557d382b3d6181bac18a6402b233412
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: fc1657be4dbff1acee186e3a85d9d1e772055f73
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061920"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262751"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
 Bu makalede, VM 'Ler ve işletim sistemleri için en iyi güvenlik uygulamaları açıklanmaktadır.
@@ -146,7 +146,7 @@ Kaynak kötüye kullanımı, VM işlemlerinde gerekenden daha fazla kaynak tüke
 
 Kaynağınızın sistem durumu hakkında görünürlük elde etmek için [Azure izleyicisini](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) kullanmanızı öneririz. Azure Izleyici özellikleri:
 
-- [Kaynak tanılama günlük dosyaları](../../azure-monitor/platform/diagnostic-logs-overview.md): VM kaynaklarınızı izler ve performansı ve kullanılabilirliği tehlikeye atabilecek olası sorunları tanımlar.
+- [Kaynak tanılama günlük dosyaları](../../azure-monitor/platform/resource-logs-overview.md): VM kaynaklarınızı izler ve performansı ve kullanılabilirliği tehlikeye atabilecek olası sorunları tanımlar.
 - [Azure tanılama uzantısı](/azure/azure-monitor/platform/diagnostics-extension-overview): Windows VM 'lerinde izleme ve tanılama özellikleri sağlar. Uzantıyı [Azure Resource Manager şablonun](/azure/virtual-machines/windows/extensions-diagnostics-template)bir parçası olarak ekleyerek bu özellikleri etkinleştirebilirsiniz.
 
 VM performansını izleyen kuruluşlar, performans desenlerindeki belirli değişikliklerin normal veya olağan dışı olup olmadığını belirleyemez. Normalden daha fazla kaynak kullanan bir VM, bir dış kaynaktan veya VM 'de çalışan güvenliği aşılmış bir işlemden saldırı anlamına gelebilir.

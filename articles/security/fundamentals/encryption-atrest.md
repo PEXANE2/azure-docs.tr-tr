@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/10/2019
+ms.date: 09/24/2019
 ms.author: barclayn
-ms.openlocfilehash: 3e745d5f38d5623aab17ef7a3e3fbfa2c616e6d4
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984845"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262815"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -262,7 +262,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Hizmet tarafından yönetilen anahtar kullanılarak sunucu tarafı**     | **Müşteri tarafından yönetilen anahtarı kullanarak sunucu tarafı**             | **İstemci-yönetilen kullanarak istemci tarafı**      |
 | **AI ve Machine Learning**      |                    |                    |                    |
-| Azure Search                     | Evet                | -                  | -                  |
+| Azure Search                     | Evet                | Önizleme            | -                  |
 | Azure Machine Learning Hizmeti   | Evet                | -                  | -                  |
 | Azure Machine Learning Studio    | Evet                | Önizleme, RSA 2048 bit | -               |
 | Power BI                         | Evet                | Önizleme, RSA 2048 bit | -                  |

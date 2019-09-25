@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics Linux Aracısı sorunlarını giderme | Microsoft Docs
-description: Azure İzleyici'de Linux için Log Analytics Aracısı belirtileri, nedenleri ve en sık karşılaşılan sorunlara yönelik çözümler açıklanmaktadır.
+description: Azure Izleyici 'de Linux için Log Analytics aracısında, en sık karşılaşılan sorunların belirtilerini, nedenlerini ve çözümlemesini tanıtın.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 83f9cc050694344cdc5f4f5a2070bc875fcba3d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2922bbd2e85a671cd17b6042c0b544d3936de884
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071669"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262118"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics Aracısı ile ilgili sorunları giderme 
 
-Bu makalede, Azure İzleyici'de Linux için Log Analytics aracısını ile karşılaşabilirsiniz ve bunların çözülmesine yönelik olası çözümler önerir hatalarını giderme hakkında Yardım sağlar.
+Bu makalede, Azure Izleyici 'de Linux için Log Analytics aracısında karşılaşabileceğiniz sorunları gidermeye yönelik yardım ve bunları çözmek için olası çözümler sunulmaktadır.
 
 Bu adımların hiçbiri işinize yaramazsa aşağıdaki Destek kanallarını da kullanılabilir:
 
@@ -60,7 +60,7 @@ Bu adımların hiçbiri işinize yaramazsa aşağıdaki Destek kanallarını da 
 | NOT_DEFINED | Gerekli bağımlılıkları yüklü olmadığından auoms auditd eklentisi yüklü değil | Paket auditd auoms başarısız oldu, yüklemeyi. |
 | 2 | Kabuk pakete sağlanan seçeneği geçersiz. Çalıştırma `sudo sh ./omsagent-*.universal*.sh --help` kullanım için |
 | 3 | Kabuk pakete sağlanan seçeneği yoktur. Çalıştırma `sudo sh ./omsagent-*.universal*.sh --help` kullanım için. |
-| 4 | Geçersiz paket veya geçersiz proxy ayarları yazın. omsagent -*rpm*.sh paketler, yalnızca RPM tabanlı sistemler ve omsagent - yüklenebilir*deb*.sh paketleri Debian tabanlı sistemlerde yalnızca yüklenebilir. Bu Evrensel Yükleyicisi'nden kullanmanız önerilir [en son sürüm](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Ayrıca proxy ayarlarınızı doğrulamak için gözden geçirin. |
+| 4 | Geçersiz paket veya geçersiz proxy ayarları yazın. omsagent -*rpm*.sh paketler, yalnızca RPM tabanlı sistemler ve omsagent - yüklenebilir*deb*.sh paketleri Debian tabanlı sistemlerde yalnızca yüklenebilir. Bu Evrensel Yükleyicisi'nden kullanmanız önerilir [en son sürüm](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux). Ayrıca, proxy ayarlarınızı doğrulamak için gözden geçirin. |
 | 5 | Kabuk paket kök olarak yürütülmelidir veya ekleme sırasında döndürülen 403 hatası oluştu. Komutunu kullanarak çalıştırmak `sudo`. |
 | 6 | Geçersiz paket mimari veya ekleme sırasında; döndürülen hata 200 hata oluştu omsagent -*x64.sh paketler, yalnızca 64-bit sistemler ve omsagent - yüklenebilir*x86.sh paketleri 32-bit sistemlerde yalnızca yüklenebilir. İndirme, mimariden için doğru paketi [en son sürüm](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest). |
 | 17 | OMS paketi yüklemesi başarısız oldu. Komut çıktısı kök hatasına bakın. |
@@ -70,7 +70,7 @@ Bu adımların hiçbiri işinize yaramazsa aşağıdaki Destek kanallarını da 
 | 22 | İle birlikte gelen paket yüklemesi başarısız oldu. Komut çıktısı kök hatasına bakın |
 | 23 | SCX veya OMI paket zaten yüklü. Kullanım `--upgrade` yerine `--install` Kabuk paket yüklemek için. |
 | 30 | Paket iç hata oluştu. Dosya bir [GitHub sorunu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) çıktısından ayrıntılarla. |
-| 55 | Kilitli veya eksik curl desteklenmeyen bir openssl sürümü veya olamaz bağlanmak için Azure İzleyici ya da dpkg program. |
+| 55 | Desteklenmeyen OpenSSL sürümü veya Azure Izleyici 'ye bağlanılamıyor ya da dpkg, kilitli veya eksik bir kıvrımlı programdır. |
 | 61 | Python ctypes kitaplığı eksik. Python ctypes kitaplığı veya paket (python ctypes) yükleyin. |
 | 62 | Eksik tar programı, yükleme hedefi. |
 | 63 | Yükleme sed. eksik sed programı |
@@ -84,9 +84,9 @@ Bu adımların hiçbiri işinize yaramazsa aşağıdaki Destek kanallarını da 
 | 2 | Geçersiz seçenek omsadmin betiğe sağlanan. Çalıştırma `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` kullanım için. |
 | 3 | Omsadmin betiği için sağlanan geçersiz yapılandırma. Çalıştırma `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` kullanım için. |
 | 4 | Geçersiz proxy omsadmin betiğe sağlanan. Proxy doğrulayın ve bkz bizim [bir HTTP proxy'sinin kullanmaya yönelik belgeler](log-analytics-agent.md#network-firewall-requirements). |
-| 5 | Azure İzleyici'den alınan 403 HTTP hata. Ayrıntılar için omsadmin betik tam çıktıyı görmek. |
-| 6 | Azure İzleyici'den alınan olmayan 200 HTTP hata. Ayrıntılar için omsadmin betik tam çıktıyı görmek. |
-| 7 | Azure İzleyicisi'ne bağlanılamıyor. Ayrıntılar için omsadmin betik tam çıktıyı görmek. |
+| 5 | Azure Izleyici 'den 403 HTTP hatası alındı. Ayrıntılar için omsadmin betik tam çıktıyı görmek. |
+| 6 | Azure Izleyici 'den 200 olmayan HTTP hatası alındı. Ayrıntılar için omsadmin betik tam çıktıyı görmek. |
+| 7 | Azure Izleyici ile bağlantı kurulamıyor. Ayrıntılar için omsadmin betik tam çıktıyı görmek. |
 | 8 | Log Analytics çalışma alanına ekleme hatası. Ayrıntılar için omsadmin betik tam çıktıyı görmek. |
 | 30 | İç komut dosyası hata. Dosya bir [GitHub sorunu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) çıktısından ayrıntılarla. |
 | 31 | Hata oluşturma Aracısı kimliği Dosya bir [GitHub sorunu](https://github.com/Microsoft/OMS-Agent-for-Linux/issues) çıktısından ayrıntılarla. |
@@ -115,7 +115,7 @@ Bu adımların hiçbiri işinize yaramazsa aşağıdaki Destek kanallarını da 
 </match>
  ```
 
-Hata ayıklama günlüğü toplu karşıya yükleme için Azure izleyici türü, veri öğeleri ve göndermek için harcanan süre ayrılmış görmenizi sağlar:
+Hata ayıklama günlüğü, Azure Izleyici 'ye türe, veri öğelerinin sayısına ve gönderilmek üzere harcanan zamana göre ayrılmış toplu karşıya yüklemeleri görmenizi sağlar:
 
 *Örnek etkin hata ayıklama günlüğü:*
 
@@ -153,18 +153,18 @@ Log Analytics genel aracı yapılandırma dosyasında yer alan `/etc/opt/microso
 </match>
 ```
 
-## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>Sorun:  Azure İzleyici için Ara sunucu aracılığıyla bağlanılamadı
+## <a name="issue--unable-to-connect-through-proxy-to-azure-monitor"></a>Sorun:  Proxy ile Azure Izleyici arasında bağlantı kurulamıyor
 
 ### <a name="probable-causes"></a>Olası nedenleri
 * Ekleme sırasında belirtilen proxy yanlış
-* Azure Otomasyonu hizmet uç noktaları ve Azure İzleyici, veri merkezinizdeki listede değilsiniz 
+* Azure Izleyici ve Azure Otomasyonu hizmet uç noktaları, veri merkezinizde beyaz listede değil 
 
 ### <a name="resolution"></a>Çözüm
-1. Azure İzleyici'seçeneği ile aşağıdaki komutu kullanarak Linux için Log Analytics aracısı için Reonboard `-v` etkin. Proxy sunucusuna Azure İzleyici aracılığıyla bağlanan aracısının ayrıntılı çıkış sağlar. 
+1. Seçeneği `-v` etkinken aşağıdaki komutu kullanarak, Linux için Log Analytics aracısıyla Azure izleyici 'ye yeniden giriş yapın. Proxy aracılığıyla Azure Izleyici 'ye bağlanan aracının ayrıntılı çıkışının yapılmasına izin verir. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. Bölümü gözden geçirin [proxy ayarlarını güncelleştirme](agent-manage.md#update-proxy-settings) aracının bir proxy sunucu üzerinden iletişim kurmak için düzgün şekilde yapılandırdığınızdan doğrulayın.    
-* Çift aşağıdaki Azure İzleyici uç noktaların izin verilenler listesinde olup olmadığını denetleyin:
+* Aşağıdaki Azure Izleyici uç noktalarının beyaz listelenmiş olduğunu iki kez denetleyin:
 
     |Aracı Kaynağı| Bağlantı Noktaları | Yön |
     |------|---------|----------|  
@@ -173,7 +173,7 @@ Log Analytics genel aracı yapılandırma dosyasında yer alan `/etc/opt/microso
     |*.blob.core.windows.net | Bağlantı noktası 443| Gelen ve giden |  
     |*.azure-automation.net | Bağlantı noktası 443| Gelen ve giden | 
 
-## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Sorun: Ekleme çalışırken bir 403 hatası alıyorsunuz
+## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Sorun: Ekleme girişimi sırasında 403 hatası alıyorsunuz
 
 ### <a name="probable-causes"></a>Olası nedenleri
 * Tarih ve saat Linux sunucusu üzerinde yanlış 
@@ -185,46 +185,46 @@ Log Analytics genel aracı yapılandırma dosyasında yer alan `/etc/opt/microso
 2. Linux için Log Analytics aracısını en son sürümünü yüklediğinizi doğrulayın.  En yeni sürümü artık zaman farkı, onboarding hataya neden olduğunu bildirir.
 3. Doğru çalışma alanı Kimliğiniz ve çalışma alanı anahtarı bu makalenin önceki kısımlarında yükleme yönergelerini kullanarak Reonboard.
 
-## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Sorun: Sağa ekledikten sonra bir 500 ve 404 hatası günlük dosyasına bakın
+## <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Sorun: Kayıt sonrasında günlük dosyasında bir 500 ve 404 hatası görürsünüz
 Log Analytics çalışma alanına ilk Linux veri yükleme oluşma zamanı bilinen bir sorundur. Bu, gönderilen veya hizmet deneyimi olan verileri etkilemez.
 
 
-## <a name="issue-you-see-omiagent-using-100-cpu"></a>Sorun: % 100 CPU kullanarak omiagent bakın
+## <a name="issue-you-see-omiagent-using-100-cpu"></a>Sorun: Omıagent 'ı% 100 CPU 'SU ile görüyorsunuz
 
 ### <a name="probable-causes"></a>Olası nedenleri
-Nss pem paket'teki bir gerileme [v1.0.3 5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-5.el7.x86_64.rpm.html) biz diyorsunuz ciddi performans sorunu, neden Redhat/Centos 7.x dağıtımlar çok gündeme. Bu sorun hakkında daha fazla bilgi edinmek için aşağıdaki belgeleri kontrol edin: Hata [libcurl 1667121 performans gerileme](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
+NSS-pek paketi [v 1.0.3 -5. EL7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) ' de bir gerileme, önemli bir performans sorununa neden oldu. Bu, Redhat/CentOS 7. x dağıtımları içinde çok fazla şey görüyor. Bu sorun hakkında daha fazla bilgi edinmek için aşağıdaki belgelere bakın: Hata [1667121 performans gerileme, Libya](https://bugzilla.redhat.com/show_bug.cgi?id=1667121).
 
-Performans ilgili hatalar her zaman meydana yok ve yeniden çok zordur. Böyle omiagent sorun yaşarsanız, belirli bir eşiği aşıldığında omiagent yığın izlemesini toplar betik omiHighCPUDiagnostics.sh kullanmanız gerekir.
+Performansla ilgili hatalar her zaman gerçekleşmez ve yeniden oluşturulması çok zordur. Omıagent ile ilgili bir sorunla karşılaşırsanız, belirli bir eşiği aşdığınızda omıagent yığın izlemesini toplayacak olan betik omiHighCPUDiagnostics.sh kullanmanız gerekir.
 
-1. Betiği indirin <br/>
+1. Betiği indir <br/>
 `wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/LogCollector/source/omiHighCPUDiagnostics.sh`
 
-2. CPU eşiği % 30 ile 24 saat boyunca tanılama Çalıştır <br/>
+2. Tanılamayı% 30 saat sonra% 30 CPU eşiğine göre Çalıştır <br/>
 `bash omiHighCPUDiagnostics.sh --runtime-in-min 1440 --cpu-threshold 30`
 
-3. Birçok Curl ve NSS işlev çağrıları, çözüm adımları izleyerek fark ederseniz, çağrı yığını omiagent_trace dosyasında yazılan.
+3. Omiagent_trace dosyasında Callstack dökülecektir, çok sayıda kıvrımlı ve NSS işlev çağrısı fark ederseniz aşağıdaki çözüm adımlarını izleyin.
 
-### <a name="resolution-step-by-step"></a>Çözümleme (adım adım)
+### <a name="resolution-step-by-step"></a>Çözüm (adım adım)
 
-1. Nss pem paketi yükseltme [v1.0.3 5.el7_6.1](https://centos.pkgs.org/7/centos-updates-x86_64/nss-pem-1.0.3-5.el7_6.1.x86_64.rpm.html). <br/>
+1. NSS-pek paketini [v 1.0.3 -5. EL7 _ 6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html)sürümüne yükseltin. <br/>
 `sudo yum upgrade nss-pem`
 
-2. Nss pem yükseltme için kullanılabilir değilse (çoğunlukla Centos üzerinde gerçekleşir), ardından 7.29.0-46 için curl düşürme. Durumunda, yanlışlıkla "yum güncelleştirme" çalıştırın, ardından curl 7.29.0-51 için yükseltilir ve sorunu yeniden ortaya. <br/>
+2. NSS-PEI yükseltme için uygun değilse (genellikle CentOS üzerinde gerçekleşir), daha sonra 7.29.0-46 olarak kıvma düşürme olur. "Yıum Güncelleştir" i çalıştırırsanız, 7.29.0-51 ' e yükseltilecektir ve sorun yeniden gerçekleşir. <br/>
 `sudo yum downgrade curl libcurl`
 
-3. OMI yeniden başlatın: <br/>
+3. OMı 'yi yeniden Başlat: <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Sorun: Azure portalında herhangi bir veri görmediğinizden
+## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Sorun: Azure portal herhangi bir veri görmüyorsunuz
 
 ### <a name="probable-causes"></a>Olası nedenleri
 
-- Azure İzleyici ekleme başarısız oldu
-- Azure İzleyici bağlantı engellenir
+- Azure Izleyici 'ye ekleme başarısız oldu
+- Azure Izleyici bağlantısı engellendi
 - Linux veri için log Analytics aracısını yedeklenir
 
 ### <a name="resolution"></a>Çözüm
-1. Aşağıdaki dosya varsa kontrol ederek Azure İzleyici ekleme başarılı olup olmadığını kontrol edin: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Aşağıdaki dosyanın mevcut olup olmadığını denetleyerek, ekleme Azure Izleyici 'nin başarılı olup olmadığını denetleyin:`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Reonboard kullanarak `omsadmin.sh` komut satırı yönergeleri
 3. Bir ara sunucu kullanıyorsanız, daha önce sağlanan proxy çözümleme adımlarına bakın.
 4. Linux için Log Analytics aracısını hizmetiyle iletişim kuramadığında bazı durumlarda, aracı üzerinde veri 50 MB'tır tam arabellek boyutu için sıraya alınır. Aşağıdaki komutu çalıştırarak aracıyı yeniden başlatılması gerekiyor: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
@@ -233,7 +233,7 @@ Performans ilgili hatalar her zaman meydana yok ve yeniden çok zordur. Böyle o
     >Aracı sürümü 1.1.0-28 ve daha sonra bu sorun düzeltilmiştir.
 
 
-## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Sorun: İletilen Syslog iletilerini görmediğinizden 
+## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Sorun: İletilen syslog iletilerini görmüyorsunuz 
 
 ### <a name="probable-causes"></a>Olası nedenleri
 * Linux sunucusuna uygulanan yapılandırma gönderilen özellikleri ve/veya günlük düzeyleri koleksiyonunu izin vermiyor
@@ -247,7 +247,7 @@ Performans ilgili hatalar her zaman meydana yok ve yeniden çok zordur. Böyle o
 * Log Analytics kullanarak bir Syslog ileti benzetimini `logger` komutu
   * `logger -p local0.err "This is my test message"`
 
-## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>Sorun: Errno adresi zaten kullanımda omsagent günlük dosyası görüntüleniyor
+## <a name="issue-you-are-receiving-errno-address-already-in-use-in-omsagent-log-file"></a>Sorun: Omsagent günlük dosyasında zaten kullanımda olan bir adres alıyorsunuz
 Görürseniz `[error]: unexpected error error_class=Errno::EADDRINUSE error=#<Errno::EADDRINUSE: Address already in use - bind(2) for "127.0.0.1" port 25224>` omsagent.log içinde.
 
 ### <a name="probable-causes"></a>Olası nedenleri
@@ -268,7 +268,7 @@ Linux tanılama uzantısı (LAD) Log Analytics Linux VM uzantısı ile yan yana 
 3. Omsagent yeniden `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 4. Syslog hizmeti yeniden başlatın.
 
-## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Sorun: Temizleme seçeneğini kullanarak omsagent kaldırma belirleyemiyoruz
+## <a name="issue-you-are-unable-to-uninstall-omsagent-using-purge-option"></a>Sorun: Temizleme seçeneğini kullanarak omsagent 'ı kaldıramıyorsunuz
 
 ### <a name="probable-causes"></a>Olası nedenleri
 
@@ -279,7 +279,7 @@ Linux tanılama uzantısı (LAD) Log Analytics Linux VM uzantısı ile yan yana 
 1. Linux tanılama uzantısı (LAD) kaldırın.
 2. Şu konumda mevcut değilse makineden Linux tanılama uzantısı dosyalarını kaldırın: `/var/lib/waagent/Microsoft.Azure.Diagnostics.LinuxDiagnostic-<version>/` ve `/var/opt/microsoft/omsagent/LAD/`.
 
-## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Sorun: Nagios veriler veri göremez 
+## <a name="issue-you-cannot-see-data-any-nagios-data"></a>Sorun: Nagios verilerine sahip olmayan verileri göremezsiniz 
 
 ### <a name="probable-causes"></a>Olası nedenleri
 * Omsagent kullanıcı Nagios günlük dosyasından okumak için gerekli izinlere sahip değil
@@ -302,11 +302,11 @@ Linux tanılama uzantısı (LAD) Log Analytics Linux VM uzantısı ile yan yana 
     </filter>
     ```
 
-## <a name="issue-you-are-not-seeing-any-linux-data"></a>Sorun: Tüm Linux verileri görme hakkındaki değil 
+## <a name="issue-you-are-not-seeing-any-linux-data"></a>Sorun: Herhangi bir Linux verisi görmüyorsunuz 
 
 ### <a name="probable-causes"></a>Olası nedenleri
-* Azure İzleyici ekleme başarısız oldu
-* Azure İzleyici bağlantı engellenir
+* Azure Izleyici 'ye ekleme başarısız oldu
+* Azure Izleyici bağlantısı engellendi
 * Sanal makine yeniden başlatıldı
 * OMI paket el ile karşılaştırıldığında ne Linux paket için Log Analytics aracısını tarafından yüklü olduğu için daha yeni bir sürüme yükseltildi
 * DSC kaynak günlükleri *sınıfı bulunamadı* hata `omsconfig.log` günlük dosyası
@@ -315,12 +315,12 @@ Linux tanılama uzantısı (LAD) Log Analytics Linux VM uzantısı ile yan yana 
 
 ### <a name="resolution"></a>Çözüm
 1. Auditd paket gibi tüm bağımlılıkları yükleyin.
-2. Aşağıdaki dosya varsa kontrol ederek Azure İzleyici ekleme başarılı olup olmadığını denetleyin: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`.  Bunu reonboard omsadmin.sh komut satırını kullanarak, yoksa [yönergeleri](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line).
+2. Aşağıdaki dosyanın mevcut olup olmadığını denetleyerek Azure Izleyici 'ye ekleme işleminin başarılı olup olmadığını denetleyin: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`.  Bunu reonboard omsadmin.sh komut satırını kullanarak, yoksa [yönergeleri](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line).
 4. Bir ara sunucu kullanıyorsanız, proxy sorun giderme adımları yukarıdaki denetleyin.
 5. Sanal makine yeniden başlatıldıktan sonra bazı Azure dağıtım sistemlerinde OMID OMI sunucusu arka plan programı başlamıyor. Bu denetim, değişiklik izleme veya UpdateManagement çözümü ile ilgili verileri görmüyor içinde neden olur. Çalıştırarak OMI sunucusuna el ile başlatmak için geçici çözüm olan `sudo /opt/omi/bin/service_control restart`.
 6. OMI paket el ile yeni bir sürüme yükselttikten sonra çalışmaya devam etmesi için Log Analytics aracısını el ile başlatılması gerekir. Bu adım yükseltildikten sonra nerede OMI sunucusuna otomatik olarak başlamaz bazı işlemleri için gereklidir. Çalıştırma `sudo /opt/omi/bin/service_control restart` OMI yeniden başlatmak için.
 7. DSC kaynak görürseniz *sınıfı bulunamadı* omsconfig.log çalıştırma, hata `sudo /opt/omi/bin/service_control restart`.
-8. Linux için Log Analytics aracısını için Azure İzleyici, konuşurken bazı durumlarda, aracı üzerinde veri tam arabellek boyutu için yedeklenir: 50 MB. Aşağıdaki komutu çalıştırarak aracıyı yeniden başlatılması gerekiyor `/opt/microsoft/omsagent/bin/service_control restart`.
+8. Bazı durumlarda, Linux için Log Analytics Aracısı Azure Izleyici ile iletişim kuramadığı zaman aracıdaki veriler tam arabellek boyutuna yedeklenir: 50 MB. Aşağıdaki komutu çalıştırarak aracıyı yeniden başlatılması gerekiyor `/opt/microsoft/omsagent/bin/service_control restart`.
 
     >[!NOTE]
     >Aracı sürümü 1.1.0-28 veya daha sonra bu sorun düzeltilene
@@ -372,7 +372,7 @@ Linux tanılama uzantısı (LAD) Log Analytics Linux VM uzantısı ile yan yana 
     sudo service crond start
     ```
 
-## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Sorun: Syslog ya da Linux performans sayaçları için portal koleksiyonundan yapılandırırken ayarları uygulanmaz
+## <a name="issue-when-configuring-collection-from-the-portal-for-syslog-or-linux-performance-counters-the-settings-are-not-applied"></a>Sorun: Syslog veya Linux performans sayaçları için portaldan koleksiyon yapılandırılırken ayarlar uygulanmaz
 
 ### <a name="probable-causes"></a>Olası nedenleri
 * Linux için Log Analytics aracısını en son yapılandırmayı çekilen değil
@@ -384,12 +384,12 @@ Linux tanılama uzantısı (LAD) Log Analytics Linux VM uzantısı ile yan yana 
 * Bazı durumlarda, Linux yapılandırma aracı için Log Analytics aracısını en son yapılandırma uygulanmıyor portal yapılandırması hizmet ile iletişim kurmak mümkün olmayabilir.
   1. Bu maddeyi `omsconfig` aracısının yüklü çalıştırarak `dpkg --list omsconfig` veya `rpm -qi omsconfig`.  Yüklenmezse, Linux için Log Analytics aracısını en son sürümünü yeniden yükleyin.
 
-  2. Bu maddeyi `omsconfig` aracı, aşağıdaki komutu çalıştırarak Azure İzleyici ile kurabilir `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`. Bu komut, bu aracı yapılandırmasını döndürür Syslog ayarları, Linux performans sayaçları ve özel günlükler de dahil olmak üzere hizmetinden alır. Bu komut başarısız olursa, aşağıdaki komutu çalıştırarak `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. Bu komut, Azure İzleyici konuşmak ve son yapılandırmayı almak için omsconfig aracı zorlar.
+  2. Aşağıdaki komutu`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`çalıştırarak aracının Azure izleyici ile iletişim kurup kuramayacağını denetleyin. `omsconfig` Bu komut, bu aracı yapılandırmasını döndürür Syslog ayarları, Linux performans sayaçları ve özel günlükler de dahil olmak üzere hizmetinden alır. Bu komut başarısız olursa, aşağıdaki komutu çalıştırarak `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. Bu komut omsmsconfig aracısının Azure Izleyici ile konuştuğunu ve en son yapılandırmayı almasına zorlar.
 
-## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Sorun: Herhangi bir özel günlük veri görmediğinizden 
+## <a name="issue-you-are-not-seeing-any-custom-log-data"></a>Sorun: Herhangi bir özel günlük verisi görmüyorsunuz 
 
 ### <a name="probable-causes"></a>Olası nedenleri
-* Azure İzleyici ekleme başarısız oldu.
+* Azure Izleyici 'ye ekleme başarısız oldu.
 * Ayar **aşağıdaki yapılandırmayı Linux Sunucularıma uygulamak** seçilmemiş.
 * omsconfig en son özel günlük yapılandırması hizmetinden çekilen değil.
 * Linux kullanıcı için log Analytics aracısını `omsagent` izinleri veya bulunamamasından dolayı özel günlük erişemiyor.  Aşağıdaki iletileri görebilirsiniz:
@@ -398,21 +398,21 @@ Linux tanılama uzantısı (LAD) Log Analytics Linux VM uzantısı ile yan yana 
 * Bilinen sorun ile Linux sürümü 1.1.0-217 için Log Analytics aracısını düzeltilen yarış durumu
 
 ### <a name="resolution"></a>Çözüm
-1. Azure İzleyici ekleme başarılı oldu aşağıdaki dosya varsa denetleyerek doğrulayın: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`. Değilse, ya da varsa:  
+1. Aşağıdaki dosyanın mevcut olup olmadığını kontrol ederek Azure Izleyici 'ye ekleme işleminin başarılı olduğunu doğrulayın `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`:. Değilse, ya da varsa:  
 
   1. Omsadmin.sh komut satırını kullanarak Reonboard [yönergeleri](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line).
   2. Altında **Gelişmiş ayarlar** ayar Azure portalında emin **aşağıdaki yapılandırmayı Linux Sunucularıma uygulamak** etkinleştirilir.  
 
-2. Bu maddeyi `omsconfig` aracı, aşağıdaki komutu çalıştırarak Azure İzleyici ile kurabilir `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`.  Bu komut, bu aracı yapılandırmasını döndürür Syslog ayarları, Linux performans sayaçları ve özel günlükler de dahil olmak üzere hizmetinden alır. Bu komut başarısız olursa, aşağıdaki komutu çalıştırarak `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`. Bu komut, Azure İzleyici konuşmak ve son yapılandırmayı almak için omsconfig aracı zorlar.
+2. Aşağıdaki komutu`sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'`çalıştırarak aracının Azure izleyici ile iletişim kurup kuramayacağını denetleyin. `omsconfig`  Bu komut, bu aracı yapılandırmasını döndürür Syslog ayarları, Linux performans sayaçları ve özel günlükler de dahil olmak üzere hizmetinden alır. Bu komut başarısız olursa, aşağıdaki komutu çalıştırarak `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`. Bu komut omsmsconfig aracısının Azure Izleyici ile konuştuğunu ve en son yapılandırmayı almasına zorlar.
 
-**Arka planı:** -Ayrıcalıklı bir kullanıcısı olarak çalışan Linux için Log Analytics aracısını yerine `root`, olarak aracıyı çalıştıran `omsagent` kullanıcı. Çoğu durumda, okumak için bu kullanıcı için belirli dosyaları için sırayla yönelik açık izinlerinin verilmesi gerekir. İzni vermek için `omsagent` kullanıcı, aşağıdaki komutları çalıştırın:
+**Arka plan** Ayrıcalıklı kullanıcı `root`olarak çalışan Linux için Log Analytics Aracısı yerine, aracı `omsagent` Kullanıcı olarak çalışır. Çoğu durumda, okumak için bu kullanıcı için belirli dosyaları için sırayla yönelik açık izinlerinin verilmesi gerekir. İzni vermek için `omsagent` kullanıcı, aşağıdaki komutları çalıştırın:
 
 1. Ekleme `omsagent` belirli bir grup kullanıcıya `sudo usermod -a -G <GROUPNAME> <USERNAME>`
 2. Gerekli dosya Evrensel okuma erişimi verin `sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
 Bir yarış durumu ile Log Analytics aracısını 1.1.0-217'den önceki Linux sürümü için bilinen bir sorun yoktur. En son aracıya güncelleştirdikten sonra çıkış eklentisi en son sürümünü almak için aşağıdaki komutu çalıştırın `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`.
 
-## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Sorun: Yeni bir çalışma alanına reonboard çalıştığınız
+## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Sorun: Yeni bir çalışma alanına yeniden ekleme yapmaya çalışıyorsunuz
 Yeni bir çalışma alanı için bir aracı için reonboard çalıştığınızda, Log Analytics Aracısı yapılandırması önce reonboarding temizlenmesi gerekir. Eski yapılandırmada aracısından temizlemek için kabuk Paketle çalıştırın. `--purge`
 
 ```
@@ -426,7 +426,7 @@ sudo sh ./onboard_agent.sh --purge
 
 Reonboard sonra kullanmaya devam edebilirsiniz `--purge` seçeneği
 
-## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Azure portalında log Analytics Aracısı uzantısı durumu ile başarısız olarak işaretlenir: Sağlama başarısız oldu
+## <a name="log-analytics-agent-extension-in-the-azure-portal-is-marked-with-a-failed-state-provisioning-failed"></a>Azure portal Log Analytics Aracısı uzantısı hatalı bir durumla işaretlendi: Hazırlama başarısız oldu
 
 ### <a name="probable-causes"></a>Olası nedenleri
 * Log Analytics aracısını işletim sisteminden kaldırıldı
@@ -440,7 +440,7 @@ Bu sorunu çözmek için aşağıdaki adımları gerçekleştirin.
 * Birkaç dakika bekleyin ve sağlama durumu değişikliklerini **sağlama başarılı**.
 
 
-## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Sorun: Log Analytics aracısını yükseltme isteğe bağlı
+## <a name="issue-the-log-analytics-agent-upgrade-on-demand"></a>Sorun: İsteğe bağlı Log Analytics Aracısı yükseltme
 
 ### <a name="probable-causes"></a>Olası nedenleri
 
