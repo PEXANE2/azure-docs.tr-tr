@@ -476,6 +476,8 @@
           href: expand-disks.md
         - name: Bir diskin anlık görüntüsünü alma
           href: snapshot-copy-managed-disk.md
+        - name: Artımlı anlık görüntü oluşturma
+          href: disks-incremental-snapshots.md
         - name: Yönetilmeyen diskleri yedekleme
           href: incremental-snapshots.md
         - name: Geçiş ve dönüştürme

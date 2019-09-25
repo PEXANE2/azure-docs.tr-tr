@@ -46,10 +46,96 @@
       href: tutorial-secure-web-server.md
 - name: Örnekler
   items:
-    - name: PowerShell
+    - name: PowerShell dizini
       href: powershell-samples.md
-    - name: Azure CLI
+    - name: PowerShell
+      items:
+        - name: Oluştur
+          items:
+            - name: Hızlı
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md
+            - name: Tam olarak yapılandırılmış VM
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm.md
+            - name: Yüksek oranda kullanılabilir VM
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md
+            - name: Özel betik örneği
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md
+            - name: DSC kullanma
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md
+            - name: VHD karşıya yüklemesinden VM
+              href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
+            - name: Bir işletim sistemi diski iliştirme
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md
+            - name: Anlık görüntüden VM
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
+        - name: Depolamayı yönetme
+          items:
+            - name: VHD'den yönetilen disk oluşturma
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md
+            - name: Anlık görüntüden yönetilen disk oluşturma
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md
+            - name: Yönetilen diski çoğaltma
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
+            - name: Anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md
+            - name: Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
+            - name: VHD’den anlık görüntü oluşturma
+              href: ../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md
+            - name: Anlık görüntü kopyalama
+              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
+        - name: Güvenlik
+          items:
+            - name: VM’yi ve veri disklerini şifreleme
+              href: ./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?
+        - name: İzleme
+          items:
+            - name: Azure İzleyici
+              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md
+            - name: Bir abonelikteki tüm VM’lerle ilgili ayrıntıları toplama
+              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md
+    - name: Azure CLI dizini
       href: cli-samples.md
+    - name: CLI
+      items:
+        - name: Oluştur
+          items:
+            - name: Hızlı
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md
+            - name: Tam olarak yapılandırılmış VM
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm.md
+            - name: Yüksek oranda kullanılabilir VM
+              href: ./../scripts/virtual-machines-windows-cli-sample-nlb.md
+            - name: Özel betik örneği
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md
+            - name: DSC yapılandırması kullanma
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md
+        - name: Depolamayı yönetme
+          items:
+            - name: VHD'den yönetilen disk oluşturma
+              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-vhd.md
+            - name: Anlık görüntüden yönetilen disk oluşturma
+              href: ../scripts/virtual-machines-windows-cli-sample-create-managed-disk-from-snapshot.md
+            - name: Yönetilen diski kopyalama
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
+            - name: Anlık görüntüyü depolama hesabına VHD olarak dışarı aktarma
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md
+            - name: Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
+            - name: Anlık görüntüyü kopyalama
+              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-same-or-different-subscription.md
+        - name: Ağ
+          items:
+            - name: VM’ler arasındaki ağ trafiğinin güvenliğini sağlama
+              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
+        - name: Güvenlik
+          items:
+            - name: VM’yi ve veri disklerini şifreleme
+              href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
+            - name: İzleme
+              items:
+                - name: Azure İzleyici
+                  href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Kavramlar
   items:
     - name: Azure Resource Manager
@@ -388,6 +474,8 @@
           href: expand-os-disk.md
         - name: Bir diskin anlık görüntüsünü alma
           href: snapshot-copy-managed-disk.md
+        - name: Artımlı anlık görüntü oluşturma
+          href: disks-incremental-snapshots.md
         - name: Yönetilmeyen diskleri yedekleme
           href: incremental-snapshots.md
         - name: Geçiş ve dönüştürme

@@ -1,4 +1,4 @@
-- name: Azure Sentinel Önizleme Belgeleri
+- name: Azure Sentinel Belgeleri
   href: index.yml
 - name: Genel Bakış
   href: overview.md
@@ -11,12 +11,22 @@
       href: quickstart-get-visibility.md
 - name: Öğreticiler
   items:
-    - name: Şüpheli tehditleri algılama
-      href: tutorial-detect-threats.md
+    - name: Tehditleri algılamak için yerleşik analizi kullanma
+      href: tutorial-detect-threats-built-in.md
+    - name: Tehditleri algılamak için özel kurallar oluşturma
+      href: tutorial-detect-threats-custom.md
+    - name: Verilerinizi izleme
+      href: tutorial-monitor-your-data.md
     - name: Olayları araştırma
       href: tutorial-investigate-cases.md
     - name: Tehditlere yanıt verme
       href: tutorial-respond-threats-playbook.md
+- name: Kavramlar
+  items:
+    - name: Rolleri kullanarak izin atama
+      href: roles.md
+    - name: Gelişmiş çok aşamalı saldırı algılama
+      href: fusion.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Veri kaynaklarını bağlama
@@ -74,6 +84,10 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack VM’lerini bağlama
           href: connect-azure-stack.md
+    - name: Birden çok kiracı (MSSP)
+      href: multiple-tenants-service-providers.md
+    - name: Uyarıdan olay oluşturma
+      href: create-incidents-from-alerts.md
     - name: Avlanma
       href: hunting.md
       items:
@@ -81,8 +95,8 @@
           href: notebooks.md
         - name: Avlanmak için yer işaretlerini kullanma
           href: bookmarks.md
-    - name: Fusion etkinleştirme
-      href: connect-fusion.md
+    - name: Azure Sentinel’ı kaldırma
+      href: offboard.md
 - name: Kaynaklar
   items:
     - name: Yararlı kaynaklar

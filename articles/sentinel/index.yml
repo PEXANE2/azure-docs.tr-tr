@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Sentinel Önizleme Belgeleri
+title: Azure Sentinel Belgeleri
 metadata:
-  title: 'Azure Sentinel Önizleme Belgeleri - Öğreticiler, Hızlı Başlangıçlar | Microsoft Docs'
+  title: 'Azure Sentinel Belgeleri - Öğreticiler, Hızlı Başlangıçlar | Microsoft Docs'
   meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
   services: sentinel
   author: cmcclister
@@ -15,7 +15,7 @@ metadata:
   ms.date: 02/28/19
   ms.author: cmcclister
 abstract:
-  description: 'Azure Sentinel Önizleme, tüm işletmenize bulut ölçeğinde akıllı güvenlik analizi olanakları sunan, bulutta yerel bir SIEM çözümüdür. Bulutta sınırsız hız ve ölçeklendirme olanağı elde ederek önemli işlerinize odaklanın. Buluttaki ve şirket içindeki tüm varlıklarınızdan, Office 365’ten, Azure kaynaklarından ve diğer bulutlardan kolayca veri toplayın. Microsoft’un güvenlik analizi uzmanlarının hazırladığı yerleşik makine öğrenmesi özellikleriyle tehditleri etkili bir biçimde algılayın. Yerleşik düzenleme ve otomasyon playbook’larını kullanarak tehdit yanıtlarını otomatikleştirin.'
+  description: 'Azure Sentinel, tüm işletmenize bulut ölçeğinde akıllı güvenlik analizi olanakları sunan, bulutta yerel bir SIEM çözümüdür. Bulutta sınırsız hız ve ölçeklendirme olanağı elde ederek önemli işlerinize odaklanın. Buluttaki ve şirket içindeki tüm varlıklarınızdan, Office 365’ten, Azure kaynaklarından ve diğer bulutlardan kolayca veri toplayın. Microsoft’un güvenlik analizi uzmanlarının hazırladığı yerleşik makine öğrenmesi özellikleriyle tehditleri etkili bir biçimde algılayın. Yerleşik düzenleme ve otomasyon playbook’larını kullanarak tehdit yanıtlarını otomatikleştirin.'
 sections:
   - title: 5 Dakikalık Hızlı Başlangıçlar
     items:

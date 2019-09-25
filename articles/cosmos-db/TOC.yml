@@ -227,6 +227,10 @@
           href: spark-api-introduction.md
         - name: Lambda mimarisi
           href: lambda-architecture.md
+    - name: Jupyter not defterleri ile yerleşik analiz
+      items:
+        - name: Jupyter not defterlerine genel bakış
+          href: cosmosdb-jupyter-notebooks.md
     - name: Sunucu tarafı programlama
       items:
         - name: 'Saklı yordamlar, tetikleyiciler ve UDF''ler'
@@ -675,6 +679,10 @@
         - name: Apache Kafka ve Cosmos DB ile akış
           href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
           maintainContext: true
+    - name: Yerleşik Jupyter not defterleri
+      items:
+        - name: Not defterlerini etkinleştirme
+          href: enable-notebooks.md
     - name: Sunucu tarafı programlama
       items:
         - name: 'Saklı yordamlar, tetikleyiciler ve UDF’ler yazma'
