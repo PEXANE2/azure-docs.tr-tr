@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: a35ad4f8d480b0f95f4dc782aa06734e33bc54f8
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 90fbefb46ea51ca5bb7bf05d556fe29c88543d0b
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130304"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273681"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus kaynaklara erişmek için Azure Active Directory ile yönetilen bir kimliğin kimliğini doğrulama
 [Kimlikler Azure kaynakları için yönetilen](../active-directory/managed-identities-azure-resources/overview.md) uygulama kodunuzun çalıştığı dağıtımla ilişkili güvenli bir kimlik oluşturmanızı sağlayan bir çapraz Azure özelliğidir. Ardından, uygulamanızın belirli Azure kaynaklarına erişmek için özel izinler erişim denetimi rolleri kimliğe ilişkilendirebilirsiniz.
@@ -55,7 +55,14 @@ Bir güvenlik sorumlusuna RBAC rolü atamadan önce, güvenlik sorumlusunun sahi
 
 Aşağıdaki listede, en dar kapsamdan başlayarak Service Bus kaynaklarına erişimi kapsamındaki düzeyler açıklanmaktadır:
 
-- **Kuyruk**, **Konu**veya **abonelik**: Rol ataması, belirli Service Bus varlığı için geçerlidir. Şu anda Azure portal, Kullanıcı/Grup/yönetilen kimliklerin abonelik düzeyindeki RBAC rollerinin Service Bus atanmasını desteklemez. 
+- **Kuyruk**, **Konu**veya **abonelik**: Rol ataması, belirli Service Bus varlığı için geçerlidir. Şu anda Azure portal, Kullanıcı/Grup/yönetilen kimliklerin abonelik düzeyindeki RBAC rollerinin Service Bus atanmasını desteklemez. İşte bir Service Bus RBAC rolüne kimlik atamak için, [az-role-atama-Create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) komutunu kullanın: 
+
+    ```powershell
+    az role assignment create \
+        --role $service_bus_role \
+        --assignee $assignee_id \
+        --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
+    ```
 - **Service Bus ad alanı**: Rol ataması, ad alanı altındaki tüm Service Bus topolojisine ve onunla ilişkili tüketici grubuna yayılır.
 - **Kaynak grubu**: Rol ataması, kaynak grubu altındaki tüm Service Bus kaynaklarına uygulanır.
 - **Abonelik**: Rol ataması, abonelikteki tüm kaynak gruplarındaki tüm Service Bus kaynaklara uygulanır.

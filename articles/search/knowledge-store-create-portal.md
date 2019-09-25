@@ -4,16 +4,15 @@ description: Bilişsel arama işlem hattından, Azure portal verileri Içeri akt
 author: lisaleib
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: v-lilei
-ms.openlocfilehash: 14996d0ac9ee4e086a5dccd9275ef694adca06ca
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: fb979a7ff4144694aecad0985c5bce9be2de05bd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963025"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265206"
 ---
 # <a name="create-an-azure-search-knowledge-store-in-the-azure-portal"></a>Azure portal Azure Search bilgi deposu oluşturun
 
@@ -78,7 +77,7 @@ Bu sihirbaz adımında, Azure Blobundan otel verilerinize sahip bir veri kaynağ
 1. **Ayrıştırma modu**Için, **sınırlandırılmış metin**' i seçin ve ardından **üstbilgi içerir** onay kutusunu seçin. **Sınırlayıcı karakterin** virgül (,) olduğundan emin olun.
 1. Önceki bir adımda kaydettiğiniz depolama hizmeti **Bağlantı dizenizi** girin.
 1. **Kapsayıcı adı**için girin `hotel-reviews`.
-1. İleri **' ye tıklayın: Bilişsel arama ekleyin (Isteğe**bağlı).
+1. **İleri: Bilişsel arama ekleyin (Isteğe**bağlı).
 
       ![Veri kaynağı nesnesi oluşturma](media/knowledge-store-create-portal/hotel-reviews-ds.png "Veri kaynağı nesnesi oluşturma")
 
@@ -107,7 +106,7 @@ Bu sihirbaz adımında Bilişsel Beceri bilişsel becerileri ile bir beceri olu�
 
     ![Bilgi deposunu yapılandırma](media/knowledge-store-create-portal/hotel-reviews-ks.png "Bilgi deposunu yapılandırma")
 
-1. İleri **' ye tıklayın: Hedef dizini**özelleştirin.
+1. **İleri: Hedef dizini**özelleştirin.
 
 ### <a name="import-data-import-data-wizard"></a>Veri alma (veri alma Sihirbazı)
 
@@ -123,7 +122,7 @@ Bu sihirbaz adımında isteğe bağlı tam metin arama sorguları için bir dizi
 
     ![Dizin yapılandırma](media/knowledge-store-create-portal/hotel-reviews-idx.png "Dizin yapılandırma")
 
-1. İleri **' ye tıklayın: Dizin Oluşturucu**oluşturun.
+1. **İleri: Dizin Oluşturucu**oluşturun.
 
 ### <a name="create-an-indexer"></a>Dizin oluşturucu oluşturun
 

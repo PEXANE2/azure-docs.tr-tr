@@ -4,17 +4,17 @@ description: IoT Hub için aşağı akış cihazlarının veya yaprak cihazları
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 09/23/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7a032056a684107de3dd00fe4861f34c013a80db
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: d73c0f4dbfcc2c67a222f91693ebe8ed9ea83d98
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003630"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266136"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -32,7 +32,7 @@ Bu makaledeki adımlarda, Azure IoT Hub cihaz sağlama hizmeti ile otomatik sağ
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[Bir IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)adımlarını uygulayın.
+[Bir IoT Edge cihazını, saydam bir ağ geçidi olarak davranacak şekilde yapılandırma](how-to-create-transparent-gateway.md)adımlarını uygulayın. Aşağı akış cihazınız için X. 509.440 kimlik doğrulaması kullanıyorsanız, saydam ağ geçidi makalesinde ayarladığınız betiği üreten sertifikayı kullanmanız gerekir. 
 
 Bu makale, *ağ geçidi ana bilgisayar adına* birkaç noktada başvurur. Ağ geçidi ana bilgisayar adı, IoT Edge ağ geçidi cihazında config. YAML dosyasının **hostname** parametresinde bildirilmiştir. Bu makaledeki sertifikaları oluşturmak için kullanılır ve aşağı akış cihazlarının bağlantı dizesinde öğesine başvurulur. Ağ geçidi ana bilgisayar adının DNS veya ana bilgisayar dosya girişi kullanılarak bir IP adresi ile çözümlenebilmelidir.
 

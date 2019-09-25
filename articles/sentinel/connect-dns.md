@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: dd5442ff8c8d296dfa221a9ea7ed8d5833fd89c1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240721"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262724"
 ---
-# <a name="connect-your-domain-name-server---preview"></a>Etki alanı adı sunucunuzu bağlama-Önizleme
+# <a name="connect-your-domain-name-server"></a>Etki alanı ad sunucunuzu bağlama
 
-
+> [!IMPORTANT]
+> Azure Sentinel 'deki DNS veri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Windows üzerinde çalışan herhangi bir etki alanı ad sunucusunu (DNS) Azure Sentinel 'e bağlayabilirsiniz. Bu işlem, DNS makinesine bir aracı yüklenerek yapılır. DNS günlüklerini kullanarak, analitik ve denetim günlüklerini ve DNS sunucularından diğer ilgili verileri toplayarak, çözümleyerek ve birbirleriyle ilişkilendirerek, kuruluşunuzun DNS altyapısına güvenlik, performans ve işlemlerle ilgili Öngörüler elde edebilirsiniz.
 
@@ -53,7 +55,7 @@ Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açı
 
 ## <a name="connect-your-dns-appliance"></a>DNS gerecinizi bağlama
 
-1. Azure Sentinel portalında, **veri bağlayıcıları** ' nı seçin ve **DNS** kutucuğunu seçin.
+1. Azure Sentinel portalında **veri bağlayıcıları** ' nı seçin ve **DNS (Önizleme)** kutucuğunu seçin.
 1. DNS makineleriniz Azure 'da ise:
     1. **Azure Windows sanal makinesinde aracıyı yükler**' e tıklayın.
     1. **Sanal makineler** listesinde, Azure Sentinel 'de akışı yapmak istediğiniz DNS makinesini seçin. Bunun bir Windows sanal makine olduğundan emin olun.

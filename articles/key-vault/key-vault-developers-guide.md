@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a2749ca35e6137d42a09b79da9315c8f7b242c31
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000807"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268843"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Geliştirici Kılavuzu Azure Key Vault
 
@@ -29,26 +29,6 @@ Azure Key Vault hakkında daha fazla genel bilgi için bkz. [Key Vault nedir](ke
 ## <a name="public-previews"></a>Genel önizlemeler
 
 Düzenli olarak, yeni bir Key Vault özelliğinin genel önizlemesini yayınlarız. Bunları deneyin ve geri bildirim e-posta adresi ile azurekeyvault@microsoft.comdüşüncelerinizi öğrenmemizi sağlayın.
-
-### <a name="storage-account-keys---july-10-2017"></a>Depolama hesabı anahtarları-10 Temmuz 2017
-
->[!NOTE]
->Bu Azure Key Vault güncelleştirmesi için yalnızca **depolama hesabı anahtarları** özelliği önizlemededir.
-
-Bu önizleme, bu arabirimlerde kullanılabilen yeni depolama hesabı anahtarları özelliğimizi içerir; [.Net/C#](/dotnet/api/microsoft.azure.keyvault/), [rest](/rest/api/keyvault/) ve [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault). 
-
-Yeni depolama hesabı anahtarları özelliği hakkında daha fazla bilgi için bkz. [Azure Key Vault Storage hesabı anahtarlarına genel bakış](key-vault-ovw-storage-keys.md).
-
-## <a name="videos"></a>Videolar
-
-Bu videoda kendi anahtar kasanızın nasıl oluşturulduğu ve ' Hello Key Vault ' örnek uygulamasından nasıl kullanılacağı gösterilmektedir.
-
-- [Key Vault geliştirici-hızlı başlangıç kılavuzu](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
-
-Yukarıdaki videoda bahsedilen kaynaklar:
-
-- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Örnek kod Azure Key Vault](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Anahtar kasaları oluşturma ve yönetme
 

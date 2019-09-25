@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895d44ea7ab6bfebee44014ad4e96016a555c08e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 5ad8f24c9d23e9412a4f6e4e5f97692bba2c0c39
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70959931"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268680"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD parola korumasını dağıtma
 
@@ -43,23 +43,24 @@ Daha güçlü parola doğrulamanın mevcut Active Directory etki alanı denetley
 ## <a name="deployment-requirements"></a>Dağıtım gereksinimleri
 
 * Azure AD parola koruması için lisans gereksinimleri, [kuruluşunuzdaki hatalı parolaları kaldırma](concept-password-ban-bad.md#license-requirements)makalesinde bulunabilir.
-* Azure AD parola koruması için DC Aracısı hizmeti 'nin yüklü olduğu tüm etki alanı denetleyicilerinin Windows Server 2012 veya üstünü çalıştırması gerekir. Bu gereksinim, Active Directory etki alanı veya ormanın Windows Server 2012 etki alanı veya orman işlev düzeyinde de olması gerektiğini göstermez. [Tasarım ilkeleri](concept-password-ban-bad-on-premises.md#design-principles)bölümünde belirtildiği gıbı, DC Aracısı veya proxy yazılımının çalışması için gereken en az DFL veya FFL yoktur.
+* Azure AD parola koruması DC Aracısı yazılımının yükleneceği tüm makineler Windows Server 2012 veya sonraki bir sürümünü çalıştırmalıdır. Bu gereksinim, Active Directory etki alanı veya ormanın Windows Server 2012 etki alanı veya orman işlev düzeyinde de olması gerektiğini göstermez. [Tasarım ilkeleri](concept-password-ban-bad-on-premises.md#design-principles)bölümünde belirtildiği gıbı, DC Aracısı veya proxy yazılımının çalışması için gereken en az DFL veya FFL yoktur.
 * DC Aracısı hizmetini yükleyen tüm makinelerin .NET 4,5 yüklü olması gerekir.
-* Azure AD parola koruması için proxy hizmeti 'nin yüklü olduğu tüm makinelerin Windows Server 2012 R2 veya üstünü çalıştırması gerekir.
+* Azure AD parola koruma proxy hizmeti 'nin yükleneceği tüm makineler Windows Server 2012 R2 veya sonraki bir sürümünü çalıştırmalıdır.
    > [!NOTE]
    > Proxy hizmeti dağıtımı, etki alanı denetleyicisinin giden doğrudan internet bağlantısına sahip olmasına rağmen Azure AD parola koruması 'nı dağıtmaya yönelik zorunlu bir gereksinimdir. 
    >
 * Azure AD parola koruma proxy hizmeti 'nin yükleneceği tüm makinelerin .NET 4,7 yüklü olması gerekir.
   .NET 4,7, tam olarak güncelleştirilmiş bir Windows Server 'a zaten yüklenmiş olmalıdır. Böyle bir durum söz konusu değilse, [Windows için .NET Framework 4,7 çevrimdışı yükleyicisinde](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)bulunan yükleyiciyi indirip çalıştırın.
-* Etki alanı denetleyicileri de dahil olmak üzere, Azure AD parola koruma bileşenlerinin yüklü olduğu tüm makinelerin Universal C çalışma zamanının yüklü olması gerekir. Windows Update tüm güncelleştirmelere sahip olduğunuzdan emin olarak çalışma zamanını alabilirsiniz. Alternatif olarak, bir işletim sistemine özgü güncelleştirme paketi de edinebilirsiniz. Daha fazla bilgi için bkz. [Windows 'Da evrensel C çalışma zamanı güncelleştirmesi](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
+* Azure AD parola koruma bileşenlerine sahip etki alanı denetleyicileri dahil tüm makinelerde evrensel C çalışma zamanı yüklü olmalıdır. Windows Update tüm güncelleştirmelere sahip olduğunuzdan emin olarak çalışma zamanını alabilirsiniz. Alternatif olarak, bir işletim sistemine özgü güncelleştirme paketi de edinebilirsiniz. Daha fazla bilgi için bkz. [Windows 'Da evrensel C çalışma zamanı güncelleştirmesi](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows).
 * Ağ bağlantısı, her etki alanındaki en az bir etki alanı denetleyicisi ve parola koruması için proxy hizmetini barındıran en az bir sunucu arasında bulunmalıdır. Bu bağlantı, etki alanı denetleyicisinin RPC uç nokta Eşleyici bağlantı noktası 135 ve proxy hizmetindeki RPC sunucusu bağlantı noktasına erişmesine izin vermelidir. Varsayılan olarak, RPC sunucu bağlantı noktası dinamik bir RPC bağlantı noktasıdır, ancak [statik bir bağlantı noktası kullanacak](#static)şekilde yapılandırılabilir.
-* Proxy hizmetini barındıran tüm makinelerin aşağıdaki uç noktalara ağ erişimi olmalıdır:
+* Azure AD parola koruma Proxy hizmetinin yükleneceği tüm makinelerin aşağıdaki uç noktalara ağ erişimi olması gerekir:
 
     |**Uç noktası**|**Amacı**|
     | --- | --- |
     |`https://login.microsoftonline.com`|Kimlik doğrulama istekleri|
     |`https://enterpriseregistration.windows.net`|Azure AD parola koruma işlevi|
 
+  Ayrıca, [uygulama proxy ortamı kurulum yordamları](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)'nda belirtilen bağlantı noktaları ve URL 'ler kümesi için ağ erişimini etkinleştirmeniz gerekir. Bu yapılandırma adımları, Microsoft Azure AD Connect Agent Güncelleştirici hizmeti 'nin işlevini yapabilmesi için gereklidir (Bu hizmet, proxy hizmeti ile yan yana yüklenir). Microsoft Azure AD Connect Agent Güncelleştirici yazılımının sürümleri arasındaki uyumsuzluklar nedeniyle Azure AD parola koruma proxy 'Si ve uygulama proxy 'Sinin aynı makinede yan yana yüklenmesi önerilmez.
 * Parola koruması için proxy hizmetini barındıran tüm makineler, etki alanı denetleyicilerinin proxy hizmetinde oturum açabilme izni verecek şekilde yapılandırılmalıdır. Bu, "Bu bilgisayara ağ üzerinden eriş" ayrıcalık ataması aracılığıyla denetlenir.
 * Parola koruması için proxy hizmetini barındıran tüm makinelerin giden TLS 1,2 HTTP trafiğine izin verecek şekilde yapılandırılması gerekir.
 * Azure AD ile parola koruması ve ormana yönelik ara sunucu hizmetini kaydetmek için bir genel yönetici hesabı.

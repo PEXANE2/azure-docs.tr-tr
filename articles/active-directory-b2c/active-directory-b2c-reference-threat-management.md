@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 281bd73671352e1e525e11a7bfde1882d3ef8864
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065413"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256899"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C kaynakları ve verileri tehditlere karşı yönetme
 
@@ -37,10 +37,10 @@ Azure AD B2C, hesapları kilitlemek için gelişmiş bir strateji kullanır. Hes
 
 Kilitleme eşiği dahil parola koruma ayarlarını yönetmek için:
 
-1. [Azure portalına](https://portal.azure.com) gidin.
-1. Portalın sağ üst menüsünde **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı seçin.
-1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin (veya portalın sol üst kısmındaki **tüm hizmetler** ' i seçin ve *Azure Active Directory*' yı arayıp seçin.
-1. **Güvenlik**altında **kimlik doğrulama yöntemleri**' ni seçin ve **parola koruması**' nı seçin.
+1. [Azure portalda](https://portal.azure.com) oturum açma
+1. Azure AD B2C kiracınızı içeren dizini seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. **Güvenlik**altında **kimlik doğrulama yöntemleri (Önizleme)** öğesini seçin ve **parola koruması**' nı seçin.
 1. İstediğiniz parola koruma ayarlarınızı girip **Kaydet**' i seçin.
 
     ![Azure AD ayarlarındaki Azure portal parola koruma sayfası](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 71b7e4bd9406e7fb300ebccd86908820b7628c29
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 4ebb31a839a645bcb1312405ee0222f39dbbcd1e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71000774"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261278"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Azure Key Vault için HSM korumalı anahtarlar oluşturma ve aktarma
 
@@ -41,7 +41,7 @@ HSM korumalı bir anahtarı oluşturma ve Internet üzerinden aktarma hakkında 
 
 ## <a name="more-information-about-ncipher-hsms-and-microsoft-services"></a>NCipher HSMs ve Microsoft hizmetleri hakkında daha fazla bilgi
 
-nCipher Security, finansal hizmetler, yüksek teknoloji, üretim, kamu ve teknoloji sektörlerine yönelik önde gelen bir veri şifreleme sağlayıcıdır ve siber güvenlik çözümleri sağlar. Kurumsal ve kamu bilgilerini korumanın 40 yıllık bir kaydı ile nCipher güvenlik şifreleme çözümleri, beş en büyük enerji ve Aerospace şirketinin dört bir tarafında kullanılır. Bu çözümler 22 NATO ülkelerine/bölgelerine göre de kullanılır ve dünya çapındaki ödeme işlemlerinin 80 ' inden daha fazla güvenlik altına alınır.
+Entrust Datacard bir şirket olan nCipher güvenliği, iş açısından kritik bilgi ve uygulamalarına güven, bütünlük ve denetim sunarak dünya lideri kuruluşların güçlendirin. nCipher 'in şifreleme çözümleri, bulut, IoT, blok zinciri, Dijital Ödemeler ile güvenli bir şekilde gelişen teknolojiden yararlanarak, küresel kuruluşların kendi hassas veriler, ağ iletişimleri ve kurumsal altyapı. nCipher, iş açısından kritik uygulamalar için güven sunar, verilerin bütünlüğünü sağlar ve müşterileri tamamen tüm denetim altına (bugün, yarın, her zaman) yerleştirirler.
 
 Microsoft, HSM 'lerin durumunu iyileştirmek için nCipher güvenliği ile işbirliği içeriyor. Bu geliştirmeler, anahtarlarınızla ilgili bir denetim elde etmek zorunda kalmadan barındırılan hizmetlerin genel avantajlarından yararlanmanızı sağlar. Özellikle, bu geliştirmeler Microsoft 'un HSMs 'yi yönetmesine olanak tanır. Bulut hizmeti olarak Azure Key Vault, kuruluşunuzun kullanım artışlarını karşılamak için kısa bildirimde ölçeği artırır. Aynı zamanda, anahtarınız Microsoft 'un HSMs içinde korunur: Anahtarı oluşturup Microsoft 'un HSMs 'ye aktaracağından, anahtar yaşam döngüsü üzerinde denetimi koruyabilirsiniz.
 
@@ -287,6 +287,10 @@ Bu program,%NFAST_KMDATA%\local\world adresinde C:\ProgramData\nCipher\Key Manag
 
 > [!NOTE]
 > HSM 'niz daha yeni şifresi üzerinde anlaşılamadı Suite DLf3072s256mRijndael 'yi desteklemiyorsa,--cipher-Suite = DLf3072s256mRijndael ile--Cipher-Suite = DLf1024s160mRijndael ile değiştirebilirsiniz
+> 
+> NCipher yazılım sürümü 12,50 ile birlikte gelen New-World. exe ile oluşturulan güvenlik dünyası, bu BYOK yordamıyla uyumlu değildir. Kullanılabilecek iki seçenek vardır:
+> 1) Yeni bir güvenlik dünyası oluşturmak için nCipher yazılım sürümünün 12.40.2 'e indirgenmesini sağlar.
+> 2) NCipher desteği ile iletişim kurun ve bu BYOK yordamıyla uyumlu New-World. exe ' nin 12.40.2 sürümünü kullanmanıza olanak sağlayan 12,50 yazılım sürümü için bir düzeltme sağlamak üzere bunları isteyin.
 
 Ardından şunları yapın:
 

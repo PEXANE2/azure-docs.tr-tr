@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 726fc2d2f53e904fdf7f50be5aef7b274dcc51ac
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736149"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264524"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights Önizleme kullanım örnekleri
 
@@ -40,11 +40,15 @@ Verilerinizdeki anomalileri bulmak ve gizli eğilimleri keşfetmek için milyarl
 
 [![Veri Gezgini](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
 
-Çoğu müşteri, en güçlü Time Series Insights Varlıkları arasında anlayış süresini kabul etmiş olur. Time Series Insights ön veri hazırlığı gerektirmez. Sizi Azure IoT Hub veya Azure Event Hubs birkaç dakika içinde milyarlarca olaya bağlamak hızlı bir şekilde çalışmaktadır. Bağlandıktan sonra, milyarlarca olayı görselleştirme ve analiz edebilir ve verilerinizdeki gizli eğilimleri keşfedebilirsiniz.
+Çoğu müşteri, öngörü kazanmak için gereken en kısa süreyi, Time Series Insights ' ın en az bir özellik olduğunu kabul etmiş olursunuz:
 
-Time Series Insights sezgisel ve kullanımı basittir. Tek bir kod satırı yazmadan verilerinizle etkileşim kurabilirsiniz. Öğreneceğinizi de yeni bir dil yok. Time Series Insights, SQL 'e tanıdık olan gelişmiş kullanıcılar için ayrıntılı metin tabanlı sorgulama sağlar. Ayrıca, novıces için seçme ve tıklama araştırması sağlar.
+* Time Series Insights ön veri hazırlığı gerektirmez. 
+* Sizi Azure IoT Hub veya Azure Event Hubs birkaç dakika içinde milyarlarca olaya bağlamak hızlı bir şekilde çalışmaktadır. 
+* Bağlandıktan sonra, milyarlarca olayı görselleştirme ve analiz edebilir ve verilerinizdeki gizli eğilimleri keşfedebilirsiniz.
 
-Müşteriler, varlık ile ilgili sorunları hızlı bir şekilde tanılamaya yönelik hızdan yararlanır. Bir IoT çözümünde hatanın kök nedenine ulaşmak için DevOps gerçekleştirebilir. Bunlar ayrıca, veri bilimi girişimlerini araştırmak için alan tanımlayabilir.  
+Time Series Insights sezgisel ve kullanımı basittir. Tek bir kod satırı yazmadan verilerinizle etkileşim kurabilirsiniz. Ayrıca, Time Series Insights öğrenmeniz gereken yeni bir dil yoktur, ancak SQL 'e tanıdık olan gelişmiş kullanıcılar için ayrıntılı metin tabanlı bir sorgulama dili sağlar. Ayrıca, novıces için seçme ve tıklama araştırması sağlar.
+
+Müşteriler, varlık ile ilgili sorunları hızlı bir şekilde tanılamaya yönelik hızdan yararlanabilir. Bir IoT çözümünde hatanın kök nedenine ulaşmak için DevOps analizini gerçekleştirebilir. Bunlar ayrıca, veri bilimi girişimlerinin bir parçası olarak daha fazla araştırma için bayrak eklenecek alanlara da tanımlayabilir.  
 
 Time Series Insights depolanan verilerle etkileşimde bulunmak için üç temel yol vardır:
 

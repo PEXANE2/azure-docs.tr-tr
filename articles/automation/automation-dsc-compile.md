@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d72b474e5f5e62ded6423fcc756e1cd51b905f4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850657"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265138"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasında DSC yapılandırmalarını derleme
 
@@ -39,7 +39,7 @@ Istenen durum yapılandırması (DSC) yapılandırmalarını Azure Otomasyonu du
 1. **Yapılandırmalar** sekmesine tıklayın ve ardından derlemek için yapılandırma adına tıklayın.
 1. **Derle**' ye tıklayın.
 1. Yapılandırmada parametre yoksa, derlemek isteyip istemediğinizi onaylamanız istenir. Yapılandırmanın parametreleri varsa, parametre değerlerini sağlayabilmeniz için **derleme yapılandırma** dikey penceresi açılır. Parametrelerle ilgili daha fazla ayrıntı için aşağıdaki [**temel parametreler**](#basic-parameters) bölümüne bakın.
-1. Derleme işi sayfası, derleme işinin durumunu ve Azure Otomasyonu durum yapılandırması çekme sunucusuna yerleştirilmesine neden olan düğüm YAPıLANDıRMALARıNı (MOF yapılandırma belgeleri) izleyebilmeniz için açılır.
+1. Derleme **işi sayfası,** derleme işinin durumunu ve Azure Otomasyonu durum yapılandırması çekme sunucusuna yerleştirilmesine neden olan düğüm YAPıLANDıRMALARıNı (MOF yapılandırma belgeleri) izleyebilmeniz için açılır.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -259,7 +259,7 @@ Windows PowerShell 'de derlemek, yapılandırma içeriğini imzalama seçeneğin
 > [!NOTE]
 > Düğüm yapılandırma dosyası, Azure Otomasyonu 'na aktarılmaya izin vermek için 1 MB 'den büyük olmamalıdır.
 
-Düğüm yapılandırmalarını imzalama hakkında daha fazla bilgi için bkz. [WMF 5,1 'de geliştirmeler-yapılandırma ve modülün nasıl imzalanıp](/powershell/wmf/5.1/dsc-improvements#dsc-module-and-configuration-signing-validations).
+Düğüm yapılandırmalarını imzalama hakkında daha fazla bilgi için bkz. [WMF 5,1 'de geliştirmeler-yapılandırma ve modülün nasıl imzalanıp](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations).
 
 ### <a name="compiling-a-configuration-in-windows-powershell"></a>Windows PowerShell 'de yapılandırma derleme
 
@@ -277,7 +277,7 @@ Yapılandırma derlenerek oluşturulan MOF dosyası veya dosyalar daha sonra do�
    ![Yerel dosya için araştır](./media/automation-dsc-compile/import-browse.png)
 
 1. **Yapılandırma adı** metin kutusuna bir ad girin. Bu ad, düğüm yapılandırmasının derlendiği yapılandırmanın adıyla aynı olmalıdır.
-1.           **Tamam**'ı tıklatın.
+1. **Tamam**'ı tıklatın.
 
 ### <a name="importing-a-node-configuration-with-azure-powershell"></a>Azure PowerShell ile düğüm yapılandırmasını içeri aktarma
 

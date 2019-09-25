@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 49fa2cd53ebefa811673ea25a1851081f8cfa415
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958948"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265972"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Hızlı Başlangıç: Node. js için istemci kitaplığını Kişiselleştir
 
@@ -143,6 +143,11 @@ Aşağıdaki döngü kodu, kullanıcıdan komut satırında tercihlerini sorma, 
 [!code-javascript[Create the learning loop](~/samples-personalizer/quickstarts/node/sample.js?name=mainLoop)]
 
 Aşağıdaki bölümlerde bulunan derece ve ödül çağrılarına daha yakından göz atın.
+
+Kod dosyasını çalıştırmadan önce [içerik seçimlerini almak](#get-content-choices-represented-as-actions)için aşağıdaki yöntemleri ekleyin:
+
+* getActionsList
+* getContextFeaturesList
 
 ## <a name="request-a-rank"></a>Bir derece iste
 

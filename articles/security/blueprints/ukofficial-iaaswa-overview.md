@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4a30e496c96fcc90417e58b0f921717985b89693
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899936"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262791"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>UK RESMI için Azure Güvenlik ve Uyumluluk Şeması-üç katmanlı IaaS Web uygulaması
 
@@ -172,7 +172,7 @@ Bu sanal ağlar ayrı kaynaklar olarak yönetilmeye devam eder, ancak bu sanal m
 
 **Etkinlik günlükleri**: Aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin Öngörüler sağlamak için [Azure etkinlik günlüklerini](../../azure-monitor/platform/activity-logs-overview.md) yapılandırın.
 
-**Tanılama günlükleri**: [Tanılama günlükleri](../../azure-monitor/platform/diagnostic-logs-overview.md) , bir kaynak tarafından oluşturulan tüm günlüklerdir. Bu Günlükler Windows olay sistemi günlükleri, blob, tablo ve kuyruk günlüklerini içerebilir.
+**Tanılama günlükleri**: [Tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md) , bir kaynak tarafından oluşturulan tüm günlüklerdir. Bu Günlükler Windows olay sistemi günlükleri, blob, tablo ve kuyruk günlüklerini içerebilir.
 
 **Güvenlik duvarı günlükleri**: Application Gateway, tam tanılama ve erişim günlükleri sağlar. Güvenlik duvarı günlükleri, WAF’nin etkin olduğu application gateway kaynakları için kullanılabilir.
 

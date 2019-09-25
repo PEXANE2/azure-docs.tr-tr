@@ -17,25 +17,33 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4de1fa903120fa6adc50d34428d8c3e2a28cf23
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9a132834952d2654f400217bd6eed1a3745efbf9
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835010"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264264"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET 'a geçirme
 
-Hem .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) hem de .NET için Azure AD kimlik doğrulama kitaplığı (ADAL.NET), Azure AD varlıklarının kimliğini doğrulamak ve Azure AD 'nin belirteçleri istemek için kullanılır. Bu aşamada, çoğu geliştirici Azure AD kimlik doğrulama kitaplığı (ADAL) kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak için Azure AD 'de geliştiriciler platformu (v 1.0) ile çalıştık. Artık MSAL.NET kullanarak Microsoft Identity platform uç noktası aracılığıyla daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz. 
+Hem .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) hem de .NET için Azure AD kimlik doğrulama kitaplığı (ADAL.NET), Azure AD varlıklarının kimliğini doğrulamak ve Azure AD 'nin belirteçleri istemek için kullanılır. Bu aşamada, çoğu geliştirici Azure AD kimlik doğrulama kitaplığı (ADAL) kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak için Azure AD 'de geliştiriciler platformu (v 1.0) ile çalıştık. MSAL kullanma:
 
-Bu makalede .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ve .NET için Azure AD kimlik doğrulama kitaplığı (ADAL.NET) arasında nasıl seçim yapılacağı ve iki kitaplığı karşılaştıran açıklanır.  
+- Microsoft Identity platform uç noktasını kullandığından, daha geniş bir Microsoft kimliği kümesinin (Azure AD kimlikleri ve Microsoft hesapları ve sosyal ve yerel hesaplar Azure AD B2C aracılığıyla) kimlik doğrulaması yapabilirsiniz.
+- Kullanıcılarınız en iyi çoklu oturum açma deneyimini alacak.
+- Uygulamanız artımlı onayı etkinleştirebilir ve Koşullu erişimin desteklenmesi daha kolay olabilir
+- yeniliğin avantajlarından yararlanabilirsiniz.
+
+**Msal.net artık Microsoft Identity platformu ile kullanmak için önerilen kimlik doğrulama kitaplığıdır**. ADAL.NET üzerinde yeni özellik uygulanmayacak. Çabalar MSAL geliştirmeye odaklanılmıştır.
+
+Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ve .NET için Azure AD kimlik doğrulama kitaplığı (ADAL.NET) arasındaki farklar açıklanmakta ve MSAL 'e geçiş yapmanıza yardımcı olur.  
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL ve MSAL uygulamaları arasındaki farklılıklar
+
 Çoğu durumda, Microsoft kimlik doğrulama kitaplıklarının en son nesli olan MSAL.NET ve Microsoft Identity platform uç noktasını kullanmak istersiniz. MSAL.NET kullanarak, Azure AD (iş ve okul hesapları), Microsoft (kişisel) hesapları (MSA) veya Azure AD B2C ile uygulamanıza oturum açan kullanıcılar için belirteçler elde edersiniz. 
 
 Geliştiriciler için Azure AD (v 1.0) uç noktası (ve ADAL.NET) hakkında zaten bilgi sahibiyseniz, [Microsoft Identity platform (v 2.0) uç noktası hakkında ne kadar farklı olduğunu](active-directory-v2-compare.md)okumak isteyebilirsiniz.
 
-Ancak, uygulamanızın daha önceki [Active Directory Federasyon Hizmetleri (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)sürümleriyle oturum açması gerekiyorsa adal.NET kullanmanız gerekir. Daha ayrıntılı bilgi için bkz. [ADFS desteği](https://aka.ms/msal-net-adfs-support).
+Ancak, uygulamanızın daha önceki [Active Directory Federasyon Hizmetleri (AD FS) (ADFS)](/windows-server/identity/active-directory-federation-services)sürümleriyle oturum açması gerekiyorsa adal.NET kullanmanız gerekir. Daha fazla bilgi için bkz. [ADFS desteği](https://aka.ms/msal-net-adfs-support).
 
 Aşağıdaki resimde, adal.net ve msal.net ![yan yana kodu arasındaki farklılıklar özetlenmektedir](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
 
@@ -206,7 +214,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>İstemci kimlik bilgisi akışı/Daemon uygulaması durumunda istek yapılacak kapsamlar
 
-İstemci kimlik bilgileri akışı durumunda geçirilecek kapsam de olur `/.default`. Bu, Azure AD 'ye ("yöneticinin uygulamanın kaydında sahip olduğu tüm uygulama düzeyindeki izinleri) söyler.
+İstemci kimlik bilgileri akışı durumunda geçirilecek kapsam de olur `/.default`. Bu kapsam, Azure AD 'ye bildirir: "yöneticinin uygulama kaydında sahip olduğu tüm uygulama düzeyi izinleri.
 
 ## <a name="adal-to-msal-migration"></a>ADAL to MSAL geçişi
 
@@ -214,9 +222,9 @@ ADAL.NET v2. X, yenileme belirteçleri kullanıma sunulmuştur ve adal 2. x tara
 * Kullanıcıların adına panoları yenileme dahil olmak üzere, uzun süre çalışan hizmetler, kullanıcılar artık bağlı değildir. 
 * İstemcinin Web hizmetine RT 'yi (önbelleğe alma işlemi tamamlandı istemci tarafı, şifreli tanımlama bilgisi ve sunucu tarafı değil) almasını sağlayan WebFarm senaryoları
 
-Bu durum MSAL.NET ile değildir, ancak artık güvenlik nedenleriyle yenileme belirteçlerinin kullanılmasını önermiyoruz. Bu, API, daha önce edinilen yenileme belirteçlerini geçirmek için bir yol sunmadığından, MSAL 3. x ' e geçiş yapmayı zorlaştırır. 
+MSAL.NET, güvenlik nedenleriyle yenileme belirteçleri sunmaz: MSAL, belirteçleri sizin için yenilemeyi yönetir. 
 
-Neyse ki, MSAL.NET artık önceki yenileme belirteçlerinizi öğesine geçirmenize izin veren bir API 'ye sahip`IConfidentialClientApplication` 
+Neyse ki, MSAL.NET artık önceki yenileme belirteçlerinizi (ADAL ile elde edilen) içine `IConfidentialClientApplication`geçirmenize ızın veren bir API 'ye sahiptir:
 
 ```CSharp
 /// <summary>

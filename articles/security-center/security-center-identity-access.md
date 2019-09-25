@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: memildin
-ms.openlocfilehash: d035dc4e8f77bb64a9e845a9dae0668365a6aacb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202282"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268853"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme (Önizleme)
 Bu makale kullanıcılarınızın kimliğini ve erişim etkinliğini izleme amacıyla Azure Güvenlik Merkezi'ni kullanmanıza yardımcı olur.
-
-> [!NOTE]
-> " *Klasik* kimlik & erişimini görüntüle" bağlantısı 31 Temmuz 2019 tarihinde kullanımdan kaldırılacaktır. Alternatif hizmetler hakkında bilgi edinmek için [buraya](security-center-features-retirement-july2019.md#menu_classicidentity) tıklayın.
 
 > [!NOTE]
 > İzleme kimliği ve erişimi önizleme aşamasındadır ve yalnızca güvenlik merkezi 'nin standart katmanında kullanılabilir. Güvenlik Merkezi’nin fiyatlandırma katmanları hakkında daha fazla bilgi almak için bkz. [Fiyatlandırma](security-center-pricing.md).
@@ -67,7 +64,7 @@ Devam etmek için, **kaynaklar** veya güvenlik merkezi ana menüsü altında **
 ### <a name="overview-section"></a>Genel bakış bölümü
 **Genel bakış**' ın altında, önerilerin bir listesi bulunur. İlk sütunda öneriler listelenmiştir. İkinci sütunda, bu öneriden etkilenen toplam abonelik sayısı gösterilmektedir. Üçüncü sütun, sorunun önem derecesini gösterir.
 
-1. Bir öneri seçin. Önerinin penceresi açılır ve şunları görüntüler:
+1. Bir öneri seçin. Öneriler penceresi açılır ve şunları görüntüler:
 
    - Önerinin açıklaması
    - Sağlıksız ve sağlıklı aboneliklerin listesi
@@ -80,7 +77,7 @@ Devam etmek için, **kaynaklar** veya güvenlik merkezi ana menüsü altında **
 ### <a name="subscriptions-section"></a>Abonelikler bölümü
 **Abonelikler**' in altında, aboneliklerin listesi bulunur. İlk sütunda abonelikler listelenir. İkinci sütun, her abonelik için toplam öneri sayısını gösterir. Üçüncü sütun sorunların önem derecelerine gösterir.
 
-![Aboneliğin sekmesi][4]
+![Abonelikler sekmesi][4]
 
 1. Bir abonelik seçin. Özet görünümü ile üç sekme açar:
 
@@ -125,13 +122,13 @@ Kullanılabilir kimlik & erişim önerilerini ve uygulamayı uyguladığınızda
 > MFA 'yı gerektiren ancak dışlamaları olan bir koşullu erişim ilkesi oluşturduysanız, bazı kullanıcıların MFA olmadan Azure 'da oturum açmasını sağladığından Güvenlik Merkezi MFA önerisi değerlendirmesi ilkeyi uyumlu değil olarak değerlendirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Diğer Azure kaynak türü için geçerli öneriler hakkında daha fazla bilgi için aşağıdakilere bakın:
+Diğer Azure kaynak türlerine uygulanan öneriler hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Azure Güvenlik Merkezi'nde makinelerinizi ve uygulamalarınızı koruma](security-center-virtual-machine-protection.md)
 - [Azure Güvenlik Merkezi'nde ağınızı koruma](security-center-network-recommendations.md)
 - [Azure Güvenlik Merkezi 'nde Azure SQL hizmetinizi ve verilerinizi koruma](security-center-sql-service-recommendations.md)
 
-Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
+Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Güvenlik Merkezi'nde uyarıları yönetme ve güvenlik olaylarına yanıt vermeyi öğrenin.
 * [Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını anlama](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Farklı güvenlik uyarısı türleri hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi SSS](security-center-faq.md). Güvenlik Merkezi kullanımı ile ilgili sık sorulan soruların yanıtlarını bulun.

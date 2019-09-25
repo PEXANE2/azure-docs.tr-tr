@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002411"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265975"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory 'de sürekli tümleştirme ve teslim (CI/CD)
 
@@ -412,7 +412,7 @@ Aşağıda, bir Parametreleştirme şablonunun nasıl görünebileceklerini bir 
 ```
 Aşağıda, yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre bölündüğü hakkında bir açıklama verilmiştir.
 
-#### <a name="pipelines"></a>Ardışık düzenler
+#### <a name="pipelines"></a>İşlem Hatları
     
 * Activities/typeProperties/Waittimeınseconds yolundaki herhangi bir özellik parametreleştiriledir. Bir işlem hattındaki (örneğin `waitTimeInSeconds` `Wait` , etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
 * Benzer şekilde, adlı `headers` bir Özellik (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikası ile aynı değer olan varsayılan bir değere sahiptir.
@@ -424,7 +424,7 @@ Aşağıda, yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne gör
 #### <a name="triggers"></a>Tetikleyiciler
 
 * Altında `typeProperties`iki özellik parametrelenir. Birincisi `maxConcurrency`, varsayılan bir değere sahip ve türünde`string`olan bir ' dır. Varsayılan parametre adına `<entityName>_properties_typeProperties_maxConcurrency`sahiptir.
-* `recurrence` Özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum `interval` , sayı türü olarak parametreleştirilen ve parametre adı sonekli `<entityName>_properties_typeProperties_recurrence_triggerSuffix`olan özelliktir. Benzer şekilde, `freq` özelliği bir dizedir ve dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin: `<entityName>_freq`.
+* `recurrence` Özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum `interval` , sayı türü olarak parametreleştirilen ve parametre adı sonekli `<entityName>_properties_typeProperties_recurrence_triggerSuffix`olan özelliktir. Benzer şekilde, `freq` özelliği bir dizedir ve dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>linkedServices
 
@@ -669,7 +669,7 @@ Git yapılandırılmamışsa, bağlantılı şablonlara **ARM şablonu dışarı
 
 ## <a name="hot-fix-production-branch"></a>Etkin düzeltme üretim Dalı
 
-Bir üretime fabrika dağıtımı yaptıysanız ve hemen düzeltilmesi gereken bir hata olduğunu fark ederseniz, ancak geçerli işbirliği dalını dağıtamazsınız, bir sık düzeltme dağıtmanız gerekebilir.
+Bir üretime fabrika dağıtımı yaptıysanız ve hemen düzeltilmesi gereken bir hata olduğunu fark ederseniz, ancak geçerli işbirliği dalını dağıtamazsınız, bir sık düzeltme dağıtmanız gerekebilir. Bu yaklaşım, hızlı çözüm Mühendisliği veya QFE olarak bilinir. 
 
 1.  Azure DevOps 'da üretime dağıtılan sürüme gidin ve dağıtılan son yürütmeyi bulun.
 
@@ -705,8 +705,11 @@ Data Factory 'niz ile git tümleştirmesi kullanıyorsanız ve değişikliklerin
 
 ## <a name="unsupported-features"></a>Desteklenmeyen özellikler
 
--   Ayrı kaynakları yayımlayamazsınız. Data Factory varlıkları birbirlerine bağlıdır ve değişen bağımlılıkların izlenmesi zor olabilir ve beklenmeyen davranışlara neden olabilir. Örneğin, tetikler, işlem hatlarına bağlıdır, işlem hatları veri kümelerine ve diğer işlem hattına göre değişir. Değişiklik kümesinin tamamının yalnızca bir alt kümesini yayınlamak mümkünse, beklenmeyen bir şekilde görülmeyen bazı hatalar oluşabilir.
+- ADF, tasarıma göre tek tek seçme yürütmelerine veya kaynakların seçmeli yayımlamasına _izin vermez_ . Yayımlar, veri fabrikasında yapılan **Tüm** değişiklikleri içerir
 
--   Özel dallardan yayımlayamazsınız.
+    - Data Factory varlıkları birbirlerine bağlıdır, örneğin, Tetikleyiciler, işlem hatları, işlem hatları, veri kümelerine ve diğer işlem hatlarına bağlıdır, vb. Bir kaynak alt kümesinin seçmeli olarak yayımlanması beklenmeyen davranışlara ve hatalara neden _olabilir_
+    - Seçmeli yayımlamanın gerekli olduğu nadir durumlarda, bir sık düzeltme düşünebilirsiniz. Daha fazla bilgi için bkz. [Hot-düzeltme üretim Dalı](#hot-fix-production-branch)
 
--   Bitbucket üzerinde projeler barındıramıyorum.
+-   Özel dallardan yayımlayamazsınız
+
+-   Şu andan itibaren, Bitbucket üzerinde projeler barındırılamıyor

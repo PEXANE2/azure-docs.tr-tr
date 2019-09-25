@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 85c0cbc1e516730018f80e1978ba565e311117fe
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018166"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268772"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Sorun giderme Azure Backup hatası: Aracı veya uzantıyla ilgili sorunlar
 
@@ -110,7 +110,7 @@ Azure Backup hizmeti için bir VM 'yi kaydettikten ve zamanladıktan sonra, yede
 **Hata kodu**: UserErrorUnsupportedDiskSize <br>
 **Hata iletisi**: Yapılandırılan disk boyutu (ler) Şu anda Azure Backup tarafından desteklenmiyor. <br>
 
-Disk boyutu 30 TB 'tan büyük olan bir VM yedeklenirken yedekleme işlemi başarısız olabilir. Ayrıca, boyutu 4TB 'den büyük olan şifrelenmiş disklerin yedeklenmesi bugün desteklenmez. Diskleri bölerek disk boyutlarının desteklenen sınıra eşit veya ondan daha az olduğundan emin olun.
+Disk boyutu 30 TB 'tan büyük olan bir VM yedeklenirken yedekleme işlemi başarısız olabilir. Ayrıca, boyutu 4 TB 'tan büyük şifrelenmiş disklerin yedeklenmesi bugün desteklenmez. Diskleri bölerek disk boyutlarının desteklenen sınıra eşit veya ondan daha az olduğundan emin olun.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>Usererrorbackupoperationınprogress-Şu anda başka bir yedekleme işlemi sürdüğünden yedekleme başlatılamıyor
 
@@ -233,7 +233,11 @@ Bu adımların tamamlanması, uzantının bir sonraki yedekleme sırasında yeni
 
 ### <a name="clean_up_restore_point_collection"></a>Geri yükleme noktası koleksiyonunu temizle
 
-Kilidi kaldırdıktan sonra geri yükleme noktalarının temizlenmesi gerekir. Geri yükleme noktalarını temizlemek için yöntemlerden birini izleyin:<br>
+Kilidi kaldırdıktan sonra geri yükleme noktalarının temizlenmesi gerekir.
+
+VM 'nin veya VM 'nin kaynak grubunu silerseniz, yönetilen disklerin anlık geri yükleme anlık görüntüleri etkin kalır ve bekletme kümesine göre sona erer. Geri yükleme noktası koleksiyonunda depolanan anlık geri yükleme anlık görüntülerini (artık ihtiyacınız yoksa) silmek için geri yükleme noktası koleksiyonunu aşağıda verilen adımlara göre temizleyin.
+
+Geri yükleme noktalarını temizlemek için yöntemlerden birini izleyin:<br>
 
 - [Geçici yedekleme çalıştırarak geri yükleme noktası koleksiyonunu temizle](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 - [Geri yükleme noktası koleksiyonunu Azure portal temizle](#clean-up-restore-point-collection-from-azure-portal)<br>

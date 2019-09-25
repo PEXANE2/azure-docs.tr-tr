@@ -1,38 +1,40 @@
 ---
-title: Azure Active Directory B2C | tüketici kaydı sırasında e-posta doğrulamayı devre dışı bırakma Microsoft Docs
-description: Azure Active Directory B2C ' de tüketici kaydı sırasında e-posta doğrulamanın nasıl devre dışı bırakılacağını gösteren bir konu.
+title: Azure Active Directory B2C Müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakma
+description: Azure Active Directory B2C ' de müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakmayı öğrenin.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 09/25/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d827843bdbaff1ad95dce3318f39867abe8b2d0f
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 9a7adc04991dd4a472bdaf1aa47aacaf6cdeb190
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065630"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256924"
 ---
-# <a name="disable-email-verification-during-consumer-sign-up-in-azure-active-directory-b2c"></a>Tüketici kaydı sırasında e-posta doğrulamayı devre dışı bırakma Azure Active Directory B2C
-Etkinleştirildiğinde, Azure Active Directory B2C (Azure AD B2C) bir tüketiciye bir e-posta adresi girerek ve yerel hesap oluşturarak uygulamalara kaydolma olanağı sağlar. Azure AD B2C, tüketicilerin kaydolma işlemi sırasında doğrulamasını zorunlu kılarak geçerli e-posta adreslerini sağlar. Ayrıca kötü amaçlı otomatikleştirilmiş bir işlemin uygulamalar için sahte hesaplar oluşturmasını engeller.
+# <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Müşteri kaydı sırasında e-posta doğrulamayı devre dışı bırakma
 
-Bazı uygulama geliştiricileri, kaydolma işlemi sırasında e-posta doğrulamasını atlamayı tercih eder ve bunun yerine tüketicilere daha sonra e-posta adresini doğrular. Bunu desteklemek için Azure AD B2C, e-posta doğrulamasını devre dışı bırakacak şekilde yapılandırılabilir. Bunun yapılması daha sorunsuz bir kaydolma işlemi oluşturur ve geliştiricilere, e-posta adreslerini doğrulayan tüketicileri ayırt etme esnekliği sunar.
+Varsayılan olarak, Azure Active Directory B2C (Azure AD B2C), müşterinin e-posta adresini yerel hesaplar için doğrular (e-posta adresi veya Kullanıcı adı ile kaydolan kullanıcılar için hesaplar). Azure AD B2C, müşterilerin kaydolma işlemi sırasında bunları doğrulamasını zorunlu kılarak geçerli e-posta adreslerini sağlar. Ayrıca, kötü amaçlı aktörlerin uygulamalarınızda sahte hesaplar oluşturmak için otomatik süreçler kullanmasını önler.
 
-Varsayılan olarak, kaydolma Kullanıcı akışlara e-posta doğrulaması açıktır. Devre dışı bırakmak için aşağıdaki adımları kullanın:
+Bazı uygulama geliştiricileri, kaydolma işlemi sırasında e-posta doğrulamasını atlamayı tercih eder ve bunun yerine müşterilerin e-posta adreslerini daha sonra doğrular. Bunu desteklemek için Azure AD B2C, e-posta doğrulamasını devre dışı bırakacak şekilde yapılandırılabilir. Bunun yapılması daha sorunsuz bir kaydolma işlemi oluşturur ve geliştiricilere, e-posta adreslerini doğrulayan müşterileri, kendilerine ait olmayan müşterilerin ayırt edilmesine yönelik esneklik sağlar.
 
-1. **Kullanıcı akışları**' na tıklayın.
-2. Açmak için Kullanıcı akışınıza (örneğin, "B2C_1_SiUp") tıklayın.
-3. **Sayfa düzenleri**' ne tıklayın.
-4. **Yerel hesap kaydolma sayfası**' na tıklayın.
-5. **Kullanıcı öznitelikleri** bölümünün altındaki **ad** sütununda **e-posta adresi** ' ne tıklayın.
-6. **Doğrulama gerektiriyor**altında **Hayır**' ı seçin.
-7. Dikey pencerenin en üstündeki **Kaydet**'e tıklayın. İşiniz bitti!
+E-posta doğrulamayı devre dışı bırakmak için şu adımları izleyin:
 
-> [!NOTE]
-> Kaydolma işleminde e-posta doğrulamasını devre dışı bırakmak istenmeyen postalara neden olabilir. Varsayılan olanı devre dışı bırakırsanız, kendi doğrulama sisteminizi eklemeniz önerilir.
->
->
+1. [Azure portalda](https://portal.azure.com) oturum açma
+1. Azure AD B2C kiracınızı içeren dizini seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. **Kullanıcı akışları ' nı**seçin.
+1. E-posta doğrulamasını devre dışı bırakmak istediğiniz kullanıcı akışını seçin. Örneğin, *B2C_1_signinsignup*.
+1. **Sayfa düzenlerini**seçin.
+1. **Yerel hesap kaydolma sayfası**' nı seçin.
+1. **Kullanıcı öznitelikleri**altında **e-posta adresi**' ni seçin.
+1. DOĞRULAMASı için **doğrulama** açılır penceresinde **Hayır**' ı seçin.
+1. **Kaydet**’i seçin. E-posta doğrulaması artık bu kullanıcı akışı için devre dışı bırakıldı.
+
+> [!WARNING]
+> Kaydolma işleminde e-posta doğrulamasını devre dışı bırakmak istenmeyen postalara neden olabilir. Varsayılan Azure AD B2C tarafından belirtilen e-posta doğrulamasını devre dışı bırakırsanız, bir değiştirme doğrulama sistemi uygulamanızı öneririz.

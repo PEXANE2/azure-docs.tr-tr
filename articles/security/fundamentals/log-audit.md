@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 80f90f1788e798261f77bb7a4147763e7ca6cec0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d64cdce34127b066aedc8a5fcd6ec3a891b38c5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946499"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262845"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure günlük kaydı ve denetim
 
@@ -36,7 +36,7 @@ Bulut uygulamaları çok sayıda hareketli parça ile karmaşıktır. Günlükle
 Azure günlükleri aşağıdaki türlerde kategorilere ayrılır:
 * **Denetim/Yönetim günlükleri** Azure Resource Manager oluşturma, GÜNCELLEŞTIRME ve silme işlemleri hakkında bilgi sağlar. Daha fazla bilgi için bkz. [Azure etkinlik günlükleri](../../azure-monitor/platform/activity-logs-overview.md).
 
-* **Veri düzlemi günlükleri** , Bölüm Azure Kaynak kullanımı olarak oluşturulan olaylar hakkında bilgi sağlar. Bu tür bir günlüğe örnek olarak, bir sanal makinede (VM) Windows olay sistemi, güvenlik ve uygulama günlükleri ve Azure Izleyici aracılığıyla yapılandırılan [tanılama günlükleri](../../azure-monitor/platform/diagnostic-logs-overview.md) verilebilir.
+* **Veri düzlemi günlükleri** , Bölüm Azure Kaynak kullanımı olarak oluşturulan olaylar hakkında bilgi sağlar. Bu tür bir günlüğe örnek olarak, bir sanal makinede (VM) Windows olay sistemi, güvenlik ve uygulama günlükleri ve Azure Izleyici aracılığıyla yapılandırılan [tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md) verilebilir.
 
 * **İşlenen olaylar** , sizin adınıza işlenmiş olan çözümlenen olaylar/uyarılar hakkında bilgi sağlar. Bu tür örnekler, Azure [Güvenlik Merkezi](../../security-center/security-center-intro.md) 'nin aboneliğinizi işlediği ve çözümleymekte olduğu ve kısa güvenlik uyarıları sağladığı [Azure Güvenlik Merkezi uyarılarından](../../security-center/security-center-managing-and-responding-alerts.md) oluşur.
 
@@ -45,11 +45,11 @@ Aşağıdaki tabloda, Azure 'da kullanılabilen en önemli günlük türleri lis
 | Günlük kategorisi | Günlük türü | Kullanım | Tümleştirme |
 | ------------ | -------- | ------ | ----------- |
 |[Etkinlik günlükleri](../../azure-monitor/platform/activity-logs-overview.md)|Azure Resource Manager kaynaklardaki denetim düzlemi olayları|  Aboneliğinizdeki kaynaklarda gerçekleştirilen işlemlere ilişkin öngörüler sağlar.|    REST API, [Azure izleyici](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Azure tanılama günlükleri](../../azure-monitor/platform/diagnostic-logs-overview.md)|Abonelikte Azure Resource Manager kaynakların çalışması hakkında sık kullanılan veriler|  Kaynağınızın kendisi tarafından gerçekleştirilen işlemlere ilişkin öngörüler sağlar.| Azure Izleyici, [akış](../../azure-monitor/platform/diagnostic-logs-overview.md)|
+|[Azure tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md)|Abonelikte Azure Resource Manager kaynakların çalışması hakkında sık kullanılan veriler|    Kaynağınızın kendisi tarafından gerçekleştirilen işlemlere ilişkin öngörüler sağlar.| Azure Izleyici, [akış](../../azure-monitor/platform/resource-logs-overview.md)|
 |[Azure AD raporlama](../../active-directory/reports-monitoring/overview-reports.md)|Günlükler ve raporlar | Kullanıcılar ve grup yönetimiyle ilgili Kullanıcı oturum açma etkinliklerini ve sistem etkinliği bilgilerini raporlar.|[Graph API'si](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[Sanal makineler ve bulut Hizmetleri](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows olay günlüğü hizmeti ve Linux Syslog|  , Sanal makinelerde sistem verilerini yakalar ve verileri günlüğe kaydeder ve bu verileri seçtiğiniz bir depolama hesabına aktarır.|   Azure Izleyici 'de Windows (Windows Azure Tanılama [[wad](../../monitoring-and-diagnostics/azure-diagnostics.md)] depolama) ve Linux 'u kullanma|
 |[Azure Depolama Analizi](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Depolama alanı günlüğü, bir depolama hesabı için ölçüm verileri sağlar|İzleme istekleri hakkında öngörüler sağlar, kullanım eğilimlerini analiz eder ve depolama hesabınızla ilgili sorunları tanılar.|   REST API veya [istemci kitaplığı](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
-|[Ağ güvenlik grubu (NSG) akış günlükleri](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|JSON biçimi, giden ve gelen akışları kural başına temelinde gösterir|Bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntüler.|[Azure ağ Izleyicisi](../../network-watcher/network-watcher-monitoring-overview.md)|
+|[Ağ güvenlik grubu (NSG) akış günlükleri](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)|JSON biçimi, giden ve gelen akışları kural başına temelinde gösterir|Bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntüler.|[Azure Ağ İzleyicisi](../../network-watcher/network-watcher-monitoring-overview.md)|
 |[Uygulama öngörüleri](../../azure-monitor/app/app-insights-overview.md)|Günlükler, özel durumlar ve özel Tanılamalar|  Birden çok platformda Web geliştiricileri için bir uygulama performansı izleme (APM) hizmeti sağlar.| REST API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
 |İşlem verileri/güvenlik uyarıları|    Azure Güvenlik Merkezi uyarıları, Azure Izleyici günlükleri uyarıları|    Güvenlik bilgileri ve uyarılar sağlar.|  REST API 'Leri, JSON|
 
@@ -95,7 +95,7 @@ Azure tanılama günlükleri Azure portal, PowerShell, Azure CLı ve REST API gi
 
 * Denetim veya el ile inceleme için bunları bir [depolama hesabına](../../azure-monitor/platform/archive-diagnostic-logs.md) kaydedin. Tanılama ayarlarını kullanarak saklama süresini (gün olarak) belirtebilirsiniz.
 
-* Bunları bir üçüncü taraf hizmeti veya [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)gibi özel bir analiz çözümü tarafından içeri [aktarmak için Olay Hub 'larına akıtır](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) .
+* Bunları bir üçüncü taraf hizmeti veya [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)gibi özel bir analiz çözümü tarafından içeri [aktarmak için Olay Hub 'larına akıtır](../../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
 
 * Bunları [Azure izleyici günlükleri](../../log-analytics/log-analytics-queries.md)ile çözümleyin.
 
@@ -131,7 +131,7 @@ Dahil edilen raporlar aşağıdaki tabloda listelenmiştir:
 |Bilinmeyen kaynaklardan gerçekleştirilen oturum açma işlemleri| Uygulama kullanımı: özet| Dizin denetimi raporu|
 |Birden çok hatadan sonra gerçekleştirilen oturum açma işlemleri|  Uygulama kullanımı: ayrıntılı||
 |Birden çok coğrafyadan gerçekleştirilen oturum açma işlemleri|    Uygulama panosu||
-|Şüpheli etkinliğin olduğu IP adreslerinden oturum açma işlemleri|   Hesap hazırlama hataları||
+|Şüpheli etkinlik gösteren IP adreslerinden gerçekleştirilen oturum açma işlemleri|   Hesap hazırlama hataları||
 |Düzensiz oturum açma etkinliği|    Bireysel kullanıcı cihazları||
 |Muhtemelen virüs bulaşmış cihazlardan gerçekleştirilen oturum açma işlemleri|   Bireysel kullanıcı etkinliği||
 |Anormal oturum açma etkinliği gösteren kullanıcılar| Grup etkinlik raporu||
@@ -315,11 +315,11 @@ Azure Izleyici günlüklerinin merkezinde Azure 'da barındırılan Log Analytic
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Bağlı kaynaklar, Azure Izleyici günlükleri tarafından toplanan verileri oluşturan bilgisayarlar ve diğer kaynaklardır. Kaynaklar, doğrudan bağlanan [Windows](../../log-analytics/log-analytics-agent-windows.md) ve [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) bilgisayarlarına yüklenen aracıları veya [bağlı bir System Center Operations Manager yönetim grubundaki](../../azure-monitor/platform/om-agents.md)aracıları içerebilir. Azure Izleyici günlükleri, [Azure depolama hesabından](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md)de veri toplayabilir.
+Bağlı kaynaklar, Azure Izleyici günlükleri tarafından toplanan verileri oluşturan bilgisayarlar ve diğer kaynaklardır. Kaynaklar, doğrudan bağlanan [Windows](../../log-analytics/log-analytics-agent-windows.md) ve [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) bilgisayarlarına yüklenen aracıları veya [bağlı bir System Center Operations Manager yönetim grubundaki](../../azure-monitor/platform/om-agents.md)aracıları içerebilir. Azure Izleyici günlükleri, [Azure depolama hesabından](../../azure-monitor/platform/resource-logs-collect-storage.md)de veri toplayabilir.
 
 [Veri kaynakları](../../azure-monitor/platform/agent-data-sources.md) , her bağlı kaynaktan toplanan çeşitli veri türleridir. Kaynaklar, [IIS günlükleri](../../azure-monitor/platform/data-sources-iis-logs.md) ve [özel metin günlükleri](../../azure-monitor/platform/data-sources-custom-logs.md)gibi kaynaklara ek olarak [Windows](../../azure-monitor/platform/data-sources-windows-events.md) ve Linux aracılarından gelen olayları ve [performans verilerini](../../azure-monitor/platform/data-sources-performance-counters.md) içerir. Toplamak istediğiniz her veri kaynağını yapılandırabilirsiniz. Yapılandırma, otomatik olarak bağlı her kaynağa dağıtılır.
 
-[Azure hizmetleri için günlükleri ve ölçümleri toplamanın](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md)dört yolu vardır:
+[Azure hizmetleri için günlükleri ve ölçümleri toplamanın](../../azure-monitor/platform/resource-logs-collect-storage.md)dört yolu vardır:
 
 * Azure Izleyici günlüklerine doğrudan Azure Tanılama (aşağıdaki tabloda**Tanılama** )
 
@@ -333,7 +333,7 @@ Bağlı kaynaklar, Azure Izleyici günlükleri tarafından toplanan verileri olu
 | :------ | :------------ | :--- | :------ | :------- |
 |Azure Application Gateway| Microsoft. Network/<br>Applicationgateway 'ler|  Tanılama|Tanılama|    [Azure uygulaması](../../azure-monitor/insights/azure-networking-analytics.md) [Ağ geçidi Analizi](../../azure-monitor/insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor)|
 |Application Insights||     Bağlayıcı|  Bağlayıcı|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) [Bağlayıcı (Önizleme)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
-|Azure Otomasyonu hesapları| Microsoft. Automation/<br>AutomationAccounts|    Tanılama||       [Daha fazla bilgi](../../automation/automation-manage-send-joblogs-log-analytics.md)|
+|Azure Otomasyonu hesapları| Microsoft. Automation/<br>automationAccounts|    Tanılama||       [Daha fazla bilgi](../../automation/automation-manage-send-joblogs-log-analytics.md)|
 |Azure Batch hesapları|  Microsoft. Batch/<br>batchAccounts|  Tanılama|    Tanılama||
 |Klasik bulut Hizmetleri||       Depolama||       [Daha fazla bilgi](../../azure-monitor/platform/azure-storage-iis-table.md)|
 |Bilişsel Hizmetler|    Microsoft. Biliveservices/<br>hesaplar|       Tanılama|||
@@ -353,10 +353,10 @@ Bağlı kaynaklar, Azure Izleyici günlükleri tarafından toplanan verileri olu
 |SQL (v12)| Microsoft.Sql/<br>larý<br>databases||       Tanılama||
 ||Microsoft.Sql/<br>larý<br>Elaun havuzları||||
 |Depolama|||         Betik| [Azure depolama analizi (Önizleme)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|Azure sanal makineleri|    Microsoft. COMPUTE/<br>virtualMachines|  Dahili numara|  Dahili numara||
+|Azure sanal makineleri|    Microsoft. COMPUTE/<br>VirtualMachines|  Dahili numara|  Dahili numara||
 ||||Tanılama||
-|Sanal makine ölçek kümeleri|    Microsoft. COMPUTE/<br>virtualMachines    ||Tanılama||
-||Microsoft. COMPUTE/<br>virtualMachineScaleSets<br>virtualMachines||||
+|Sanal makine ölçek kümeleri|    Microsoft. COMPUTE/<br>VirtualMachines    ||Tanılama||
+||Microsoft. COMPUTE/<br>virtualMachineScaleSets<br>VirtualMachines||||
 |Web sunucusu grupları|Microsoft.Web/<br>serverfarms||   Tanılama
 |Web siteleri|  Microsoft.Web/<br>siteler ||      Tanılama|    [Daha fazla bilgi](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
 ||Microsoft.Web/<br>barındıra<br>Lara||||

@@ -1,6 +1,6 @@
 ---
-title: Masaüstü uygulaması çağrıları API'leri (kod yapılandırması) - web Microsoft kimlik platformu
-description: Bir masaüstü uygulaması oluşturmayı öğrenin çağrıları veritabanını web API'leri (uygulama kodu yapılandırma)
+title: Web API 'Lerini çağıran masaüstü uygulaması (kod yapılandırması)-Microsoft Identity platform
+description: Web API 'Lerini (uygulamanın kod yapılandırması) çağıran bir masaüstü uygulaması oluşturmayı öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,37 +15,39 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 600b6db1eb3d3b422d62e49c5bc816a1a56370f9
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 0926e6800dbcd81d2e542e27afe3afb1240cff22
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798519"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268395"
 ---
-# <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API'leri - kod yapılandırma çağrıları masaüstü uygulaması
+# <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API 'Leri çağıran masaüstü uygulaması-kod yapılandırması
 
-Uygulama oluşturduğunuza göre kodu uygulamanın koordinatlarıyla yapılandırma öğreneceksiniz.
+Uygulamanızı oluşturduğunuza göre, kodun uygulamanın koordinatlarıyla nasıl yapılandırılacağını öğreneceksiniz.
 
 ## <a name="msal-libraries"></a>MSAL kitaplıkları
 
-Masaüstü uygulamalarını bugün destekleyen tek MSAL MSAL.NET kitaplıktır
+Şu anda birden çok platformda masaüstü uygulamalarını destekleyen tek MSAL kitaplığı MSAL.NET.
 
-## <a name="public-client-application"></a>Genel istemci uygulaması
+İOS ve macOS için MSAL, yalnızca macOS 'ta çalışan masaüstü uygulamalarını destekler. 
 
-Bir kod açısından bakıldığında, Masaüstü uygulamaları genel istemci uygulamalardır ve neden ve yapı MSAL.NET işlemek `IPublicClientApplication`. Yeniden şeyler veya etkileşimli kimlik doğrulaması kullanıp biraz farklı olacaktır.
+## <a name="public-client-application-with-msalnet"></a>MSAL.NET ile ortak istemci uygulaması
+
+Bir görünüm noktasından, masaüstü uygulamaları ortak istemci uygulamalardır ve bu nedenle MSAL.NET `IPublicClientApplication`derlemenize ve işleyebileceksiniz. Etkileşimli kimlik doğrulaması kullanmanıza bakılmaksızın bir adım daha farklı olacaktır.
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
-### <a name="exclusively-by-code"></a>Özel kod tarafından
+### <a name="exclusively-by-code"></a>Yalnızca kodla
 
-Aşağıdaki kod, bir ortak istemci uygulaması, oturum açmak, kullanıcıların bir iş ve Okul hesabı veya kişisel Microsoft hesabı ile Microsoft Azure genel bulutunda başlatır.
+Aşağıdaki kod, bir iş ve okul hesabı ya da kişisel Microsoft hesabı Microsoft Azure genel bulutta oturum açan kullanıcıları ortak bir istemci uygulaması için başlatır.
 
 ```CSharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Yukarıda görüldüğü gibi etkileşimli kimlik doğrulaması veya cihaz kod akışı, kullanmayı düşünüyorsanız, kullanmak istediğiniz `.WithRedirectUri` değiştiricisi:
+Yukarıda görüldüğü gibi etkileşimli kimlik doğrulama veya cihaz kod akışı kullanmayı düşünüyorsanız, `.WithRedirectUri` değiştiriciyi kullanmak istersiniz:
 
 ```CSharp
 IPublicClientApplication app;
@@ -56,7 +58,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="using-configuration-files"></a>Yapılandırma dosyalarını kullanma
 
-Aşağıdaki kod bir ortak istemci uygulamasından doldurulmuş program aracılığıyla açma veya bir yapılandırma dosyasından okuma bir yapılandırma nesnesi oluşturur
+Aşağıdaki kod, program aracılığıyla veya bir yapılandırma dosyasından okunan bir yapılandırma nesnesinden ortak bir istemci uygulaması başlatır
 
 ```CSharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -65,9 +67,9 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
         .Build();
 ```
 
-### <a name="more-elaborated-configuration"></a>Daha ayrıntılı yapılandırma
+### <a name="more-elaborated-configuration"></a>Daha fazla ayrıntılı yapılandırma
 
-Değiştiriciler sayısını ekleyerek oluşturmakta uygulama özenli. Örneğin, uygulamanızın (burada ABD kamu) Ulusal bulut çok kiracılı bir uygulamada olmasını istiyorsanız, şunu yazabilirsiniz:
+Birçok değiştirici ekleyerek uygulama oluşturmayı ayrıntılı hale getirebilirsiniz. Örneğin, uygulamanızın ulusal bir bulutta (burada ABD devlet) çok kiracılı bir uygulama olmasını istiyorsanız şunu yazabilirsiniz:
 
 ```CSharp
 IPublicClientApplication app;
@@ -78,7 +80,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-MSAL.NET de ADFS 2019 için'bir değiştirici içerir:
+MSAL.NET, ADFS 2019 için bir değiştirici de içerir:
 
 ```CSharp
 IPublicClientApplication app;
@@ -87,7 +89,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Son olarak, bir Azure AD B2C kiracısı için belirteçlerini almak istiyorsanız, aşağıdaki kod parçacığında gösterildiği gibi Kiracı belirtebilirsiniz:
+Son olarak, bir Azure AD B2C kiracının belirteçlerini almak istiyorsanız, aşağıdaki kod parçacığında gösterildiği gibi kiracınızı belirtebilir:
 
 ```CSharp
 IPublicClientApplication app;
@@ -98,14 +100,14 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="learn-more"></a>Daha fazla bilgi edinin
 
-MSAL.NET Masaüstü uygulamasını yapılandırma hakkında daha fazla bilgi için:
+MSAL.NET masaüstü uygulamasını yapılandırma hakkında daha fazla bilgi edinmek için:
 
-- Kullanılabilir tüm değiştiricilere listesinde `PublicClientApplicationBuilder`, başvuru belgelerine bakın [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
-- İçinde kullanıma sunulan tüm seçeneklerinin açıklaması için `PublicClientApplicationOptions` bkz [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions), başvuru belgelerinde
+- Üzerinde `PublicClientApplicationBuilder`kullanılabilen tüm değiştiricilerin listesi için bkz. Reference documentation [publicclientapplicationbuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
+- Bkz. `PublicClientApplicationOptions` [publicclientapplicationoptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)içinde gösterilen tüm seçeneklerin açıklaması için başvuru belgeleri
 
-## <a name="complete-example-with-configuration-options"></a>Yapılandırma seçenekleri ile birlikte tam bir örnek
+## <a name="complete-example-with-configuration-options"></a>Yapılandırma seçenekleriyle birlikte tüm örnek
 
-Aşağıdakilerin bir .NET Core konsol uygulaması Imagine `appsettings.json` yapılandırma dosyası:
+Aşağıdaki `appsettings.json` yapılandırma dosyasına sahip bir .NET Core konsol uygulaması düşünün:
 
 ```JSon
 {
@@ -121,7 +123,7 @@ Aşağıdakilerin bir .NET Core konsol uygulaması Imagine `appsettings.json` ya
 }
 ```
 
-.NET framework yapılandırma sağlanan kullanarak bu dosyayı okumak için çok az kod gerekir;
+.NET tarafından sunulan yapılandırma çerçevesini kullanarak bu dosyayı okumak için çok az kodunuz var;
 
 ```CSharp
 public class SampleConfiguration
@@ -164,7 +166,7 @@ public class SampleConfiguration
 }
 ```
 
-Artık, uygulamanızı oluşturmak için yalnızca aşağıdaki kod yazma gerekir:
+Şimdi, uygulamanızı oluşturmak için yalnızca aşağıdaki kodu yazmanız gerekir:
 
 ```CSharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
@@ -173,9 +175,62 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-ve çağırmadan önce `.Build()` yöntemi çağrılarıyla yapılandırmanızı kılabilir `.WithXXX` önceden görüldüğü gibi yöntemleri.
+ve `.Build()` yöntemine çağrıdan önce, daha önce görüldüğü gibi `.WithXXX` yöntemlere çağrılar ile yapılandırmanızı geçersiz kılabilirsiniz.
+
+## <a name="public-client-application-with-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL ile ortak istemci uygulaması
+
+Aşağıdaki kod, bir iş ve okul hesabı ya da kişisel Microsoft hesabı Microsoft Azure genel bulutta oturum açan kullanıcıları ortak bir istemci uygulaması için başlatır.
+
+### <a name="quick-configuration"></a>Hızlı yapılandırma
+
+Amaç-C:
+
+```objc
+NSError *msalError = nil;
+    
+MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
+MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
+```
+
+SWIFT
+```swift
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
+if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
+```
+
+### <a name="more-elaborated-configuration"></a>Daha fazla ayrıntılı yapılandırma
+
+Birçok değiştirici ekleyerek uygulama oluşturmayı ayrıntılı hale getirebilirsiniz. Örneğin, uygulamanızın ulusal bir bulutta (burada ABD devlet) çok kiracılı bir uygulama olmasını istiyorsanız şunu yazabilirsiniz:
+
+Amaç-C:
+
+```objc
+MSALAADAuthority *aadAuthority =
+                [[MSALAADAuthority alloc] initWithCloudInstance:MSALAzureUsGovernmentCloudInstance
+                                                   audienceType:MSALAzureADMultipleOrgsAudience
+                                                      rawTenant:nil
+                                                          error:nil];
+                                                          
+MSALPublicClientApplicationConfig *config =
+                [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
+                                                                redirectUri:@"<your-redirect-uri-here>"
+                                                                  authority:aadAuthority];
+                                                                  
+NSError *applicationError = nil;
+MSALPublicClientApplication *application =
+                [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
+```
+
+SWIFT
+
+```swift
+let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
+        
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
+if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bir masaüstü uygulaması için bir belirteç alınırken](scenario-desktop-acquire-token.md)
+> [Masaüstü uygulaması için belirteç alma](scenario-desktop-acquire-token.md)

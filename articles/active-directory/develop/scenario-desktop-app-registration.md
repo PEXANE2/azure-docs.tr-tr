@@ -17,12 +17,12 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b996b2387e324c7e318536c2a13bdc9de39a7a5e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 648652ed32a5dea30de665b7fa49190171a7f10a
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860888"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268400"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması-uygulama kaydı
 
@@ -51,6 +51,7 @@ Masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kullanma
   > [!IMPORTANT]
   > Bugün MSAL.NET, Windows (`urn:ietf:wg:oauth:2.0:oob`) üzerinde çalışan masaüstü uygulamalarında varsayılan olarak başka bir yeniden yönlendirme URI 'si kullanır. Gelecekte bu Varsayılanı değiştirmek istiyoruz ve bu nedenle şunu kullanmanızı öneririz`https://login.microsoftonline.com/common/oauth2/nativeclient`
 
+- MacOS için yerel bir amaç-C veya Swift uygulaması oluşturuyorsanız, redirectUri 'yi uygulamanızın paket tanımlayıcısına göre aşağıdaki biçimde kaydetmek isteyeceksiniz: **msauth <. app. demeti. ıd >:/auth** (replace < Uygulamanızın paket tanımlayıcısına sahip. app. demeti. ID >
 - Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı/parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır ve uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
 - Cihaz kod akışını, tümleşik Windows kimlik doğrulamasını ve Kullanıcı adını/parolayı yeniden yönlendirme URI 'Leri olmayan bir gizli istemci uygulama akışından ayırt etmek için (daemon uygulamalarında kullanılan istemci kimlik bilgisi akışı), uygulama, ortak bir istemci uygulamasıdır. Bu yapılandırmayı başarmak için uygulamanızın **kimlik doğrulama** bölümüne gidin. Ardından, **Gelişmiş ayarlar** alt bölümünde, **varsayılan istemci türü** paragrafında, **uygulamayı ortak istemci olarak işle**sorusuna **Evet** ' i seçin.
 

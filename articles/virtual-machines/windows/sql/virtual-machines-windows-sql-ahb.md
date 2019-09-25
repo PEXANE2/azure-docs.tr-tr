@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5d740224adb15dc2d772689d77ab1c510532c901
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 05cd68c7be005a5b148b7d3e691c46a0d067b0c0
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203990"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262865"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure 'da SQL Server bir sanal makine için lisans modelini değiştirme
 Bu makalede, Azure 'daki bir SQL Server sanal makinesi (VM) için lisans modelinin, **Microsoft. SqlVirtualMachine**ADLı yenı SQL VM kaynak sağlayıcısı kullanılarak nasıl değiştirileceği açıklanır.
@@ -125,7 +125,7 @@ Kullandıkça Öde Azure Marketi görüntülerinden bir SQL Server VM sağladıy
 
 Azure VM üzerinde SQL Server Azure Hibrit Avantajı aracılığıyla yalnızca kendi kendine yüklemeye uygunsunuz. Bu VM 'Leri, Microsoft Ürün koşullarına göre Azure Hibrit Avantajı kullanımını göstermek için SQL Server lisansını Azure Hibrit Avantajı olarak ayarlayarak [SQL VM kaynak sağlayıcısı ile kaydetmeniz](virtual-machines-windows-sql-register-with-resource-provider.md) gerekir.
 
-SQL Server VM lisans türünü, yalnızca SQL Server VM SQL VM kaynak sağlayıcısı 'na kayıtlıysa, Kullandıkça Öde veya Azure Hibrit Avantajı olarak değiştirebilirsiniz. Tüm SQL Server VM 'lerinin lisans uyumluluğu için kaynak sağlayıcısına kayıtlı olması gerekir.
+SQL Server VM lisans türünü, yalnızca SQL Server VM SQL VM kaynak sağlayıcısı 'na kayıtlıysa, Kullandıkça Öde veya Azure Hibrit Avantajı olarak değiştirebilirsiniz.
 
 ## <a name="remarks"></a>Açıklamalar
 

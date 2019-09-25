@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b0a5b110951d7b13110fab935d5ca1333f7f8c1e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564215"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261983"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: Kamera resimlerde Azure hizmet logolarını tanıma
 
@@ -57,7 +57,7 @@ Eğitim görüntülerini karşıya yükledikten sonra, görüntüde ilk olanı s
 
 Uygulama, belirli etiket dizeleriyle çalışacak şekilde yapılandırıldı. Tanımları *Source\visualprovision\services\recognıtion\recognıtionservice.cs* dosyasında bulacaksınız:
 
-[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?range=18-33)]
+[!code-csharp[Tag definitions](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/RecognitionService.cs?name=snippet_constants)]
 
 Bir görüntüyü etiketledikten sonra, bir sonraki etiketi etiketlemek için sağa gidin. Bitirdiğinizde etiketleme penceresini kapatın.
 
@@ -73,19 +73,19 @@ Modelinize eğitim verdikten sonra, bu uygulamayı uygulamanızla tümleştirmey
 
 ![URL adresini ve API anahtarını görüntüleyen bir tahmin API penceresini gösteren Özel Görüntü İşleme Web sitesi](media/azure-logo-tutorial/cusvis-endpoint.png)
 
-Görüntü dosyası URL 'sini ve **tahmin-anahtar** değerini *Source\visualprovision\appsettings.cs* dosyasındaki uygun alanlara kopyalayın:
+Endpoint URL 'sini ve **tahmin-anahtar** değerini *Source\visualprovision\appsettings.cs* dosyasındaki uygun alanlara kopyalayın:
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=22-26)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_cusvis_keys)]
 
 ## <a name="examine-custom-vision-usage"></a>Özel Görüntü İşleme kullanımı inceleyin
 
 Uygulamanın Özel Görüntü İşleme anahtarınızı ve uç nokta URL 'sini nasıl kullandığını görmek için *kaynak/VisualProvision/Services/tanıması/CustomVisionService. cs* dosyasını açın. **Predictımagecontentsasync** yöntemi bir görüntü dosyasının bayt akışını (zaman uyumsuz görev yönetimi için), özel görüntü işleme tahmin API 'sini çağırır ve tahmin sonucunu döndürür. 
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?range=12-28)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/CustomVisionService.cs?name=snippet_prediction)]
 
 Bu sonuç, kendisi bir **tahmin** örnekleri listesi Içeren bir **PredictionResult** örneği biçimini alır. **Tahmin** , görüntüde algılanan bir etiketi ve bunun sınırlama kutusu konumunu içerir.
 
-[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?range=3-12)]
+[!code-csharp[Custom Vision fields](~/AIVisualProvision/Source/VisualProvision/Services/Recognition/Prediction.cs?name=snippet_prediction_class)]
 
 Uygulamanın bu verileri nasıl işleyeceği hakkında daha fazla bilgi edinmek için **Getresourcesasync** yöntemiyle başlayın. Bu yöntem, *kaynak/VisualProvision/Services/tanıması/Recognıtionservice. cs* dosyasında tanımlanmıştır.  
 
@@ -99,7 +99,7 @@ Anahtar ve uç nokta URL 'SI almak için Görüntü İşleme hizmetine abone olu
 
 Sonra *source\visualprovision\appsettings.cs* dosyasını açın ve `ComputerVisionEndpoint` ve `ComputerVisionKey` değişkenlerini doğru değerlerle doldurun.
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
@@ -133,7 +133,7 @@ Başarıyla tamamlandıktan sonra, gerekli kimlik bilgileri de dahil olmak üzer
 
 `clientId` Ve`tenantId` değerlerini bir yere göz atın. Bunları *Source\visualprovision\appsettings.cs* dosyasındaki uygun alanlara ekleyin.
 
-[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
+[!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 

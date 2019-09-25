@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850248"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259171"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Istenen durum yapılandırması (DSC) sorunlarını giderme
 
@@ -149,7 +149,7 @@ WMF sürümünüzü yükselttiniz ve WMI 'yi bozmuş olursunuz.
 
 #### <a name="resolution"></a>Çözüm
 
-Sorunu gidermek için, [DSC bilinen sorunlar ve sınırlamalar](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc) makalesindeki yönergeleri izleyin.
+Sorunu gidermek için, [DSC bilinen sorunlar ve sınırlamalar](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) makalesindeki yönergeleri izleyin.
 
 ### <a name="issue-using-credential"></a>Senaryon DSC yapılandırmasında kimlik bilgileri kullanılamıyor
 

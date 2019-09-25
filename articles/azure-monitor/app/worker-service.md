@@ -12,21 +12,18 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.author: cithomas
-ms.openlocfilehash: 8cd76a67715898972aac8fc24707085883da8618
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 653710d2f57385fa6d608a501f72b0dde2f3bb46
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174675"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258484"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Çalışan hizmeti uygulamaları için Application Insights (HTTP olmayan uygulamalar)
 
 Application Insights, mesajlaşma, arka plan görevleri, `Microsoft.ApplicationInsights.WorkerService`konsol uygulamaları vb. gibi http olmayan iş yükleri için en uygun olan adlı yeni bir SDK 'yı serbest bırakmaktadır. Bu tür uygulamalar, bir geleneksel ASP.NET/ASP.NET Core Web uygulaması gibi gelen HTTP isteği kavramı içermez ve bu nedenle [ASP.net](asp-net.md) veya [ASP.NET Core](asp-net-core.md) uygulamaları için Application Insights paketleri kullanılması desteklenmez.
 
 Yeni SDK hiçbir telemetri koleksiyonunu kendisi yapmaz. Bunun yerine, [Dependencycollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), [perfcountercollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), [applicationınsightsloggingprovider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) vb. gibi diğer iyi bilinen Application Insights otomatik toplayıcılarda yer alır. Bu SDK, telemetri toplamayı etkinleştirmek `IServiceCollection` ve yapılandırmak için üzerinde uzantı yöntemleri sunar.
-
-> [!NOTE]
-> Bu makale, çalışan hizmetleri için Application Insights SDK 'dan yeni bir paket ile ilgilidir. Bu paket bugün bir beta paketi olarak kullanılabilir. Bu belge, kararlı bir paket kullanılabilir olduğunda güncelleştirilecektir.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
@@ -43,7 +40,7 @@ Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insi
 
 ```xml
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.0-beta3" />
+        <PackageReference Include="Microsoft.ApplicationInsights.WorkerService" Version="2.8.0" />
     </ItemGroup>
 ```
 
@@ -299,7 +296,7 @@ Aşağıda, Application Insights tarafından otomatik olarak toplanan tüm telem
 
 ### <a name="live-metrics"></a>Canlı Ölçümler
 
-[Canlı ölçümler](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) , Application Insights düzgün şekilde ayarlanmadığını hızlı bir şekilde doğrulamak için kullanılabilir. Telemetri portalda ve analizler üzerinde görünmesinin birkaç dakika sürebilirken, canlı ölçümler çalışan işlemin neredeyse gerçek zamanlı olarak CPU kullanımını gösterir. Ayrıca Istekler, bağımlılıklar, Izlemeler vb. gibi diğer telemetrileri de gösterebilir.
+[Canlı ölçümler](https://docs.microsoft.com/azure/application-insights/app-insights-live-stream) , Application Insights izlemenin doğru yapılandırılıp yapılandırılmadığını hızlı bir şekilde doğrulamak için kullanılabilir. Telemetri portalda ve analizler üzerinde görünmesinin birkaç dakika sürebilirken, canlı ölçümler çalışan işlemin neredeyse gerçek zamanlı olarak CPU kullanımını gösterir. Ayrıca Istekler, bağımlılıklar, Izlemeler vb. gibi diğer telemetrileri de gösterebilir.
 
 ### <a name="ilogger-logs"></a>ILogger günlükleri
 
@@ -311,31 +308,7 @@ Bağımlılık koleksiyonu varsayılan olarak etkindir. [Bu](asp-net-dependencie
 
 ### <a name="eventcounter"></a>EventCounter
 
-[EventCounter](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md), .NET/.NET Core 'da sayaçları yayımlamak ve kullanmak için platformlar arası bir yöntemdir. Bu özellik daha önce var olsa da, bu sayaçları yayımlayan yerleşik sağlayıcı yoktu. .NET Core 3,0 ile başlayarak, birkaç sayaç CLR sayaçları, CPU vb. gibi kutudan dışarı yayımlanır.
-
-Varsayılan olarak SDK aşağıdaki sayaçları toplar (yalnızca .NET Core 3,0 veya üzeri sürümlerde bulunur) ve bu sayaçlar Ölçüm Gezgini veya PerformanceCounter tablosunu hedefleyen bir analiz sorgusu kullanılarak sorgulanabilir. Sayaçların adı "Kategori | biçiminde olacaktır. Counter ".
-
-|Category | Sayaç|
-|---------------|-------|
-|`System.Runtime` | `cpu-usage` |
-|`System.Runtime` | `working-set` |
-|`System.Runtime` | `gc-heap-size` |
-|`System.Runtime` | `gen-0-gc-count` |
-|`System.Runtime` | `gen-1-gc-count` |
-|`System.Runtime` | `gen-2-gc-count` |
-|`System.Runtime` | `time-in-gc` |
-|`System.Runtime` | `gen-0-size` |
-|`System.Runtime` | `gen-1-size` |
-|`System.Runtime` | `gen-2-size` |
-|`System.Runtime` | `loh-size` |
-|`System.Runtime` | `alloc-rate` |
-|`System.Runtime` | `assembly-count` |
-|`System.Runtime` | `exception-count` |
-|`System.Runtime` | `threadpool-thread-count` |
-|`System.Runtime` | `monitor-lock-contention-count` |
-|`System.Runtime` | `threadpool-queue-length` |
-|`System.Runtime` | `threadpool-completed-items-count` |
-|`System.Runtime` | `active-timer-count` |
+`EventCounterCollectionModule`Varsayılan olarak etkindir ve .NET Core 3,0 uygulamalarından varsayılan sayaç kümesini toplar. [EventCounter](eventcounters.md) öğreticisi, toplanan varsayılan sayaç kümesini listeler. Ayrıca, listeyi özelleştirmeye yönelik yönergeler de vardır.
 
 ### <a name="manually-tracking-additional-telemetry"></a>Ek Telemetriyi el ile izleme
 

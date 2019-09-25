@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 602623d48457498963cb5928081d24c1d1132ad4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 88734b0ee05f5193da89f33e1639e4e7a187f225
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935234"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264655"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 'SI için kimlik doğrulaması ve yetkilendirme
 
@@ -65,7 +65,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
    [![Kullanıcı Seç iletişim kutusunda bir uygulama bulma](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. Rolü seçin. Verileri sorgulamak ve başvuru verilerini değiştirmek için **okuyucu** ' yı seçin. **Tamam**’ı seçin.
+1. Rolü seçin. Verileri sorgulamak ve başvuru verilerini değiştirmek **Için** **okuyucu** ' yı seçin. **Tamam**’ı seçin.
 
    [![Kullanıcı rolü Seç iletişim kutusunda okuyucu veya katkıda bulunan seçin](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
@@ -100,6 +100,50 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
     ```
 
 1. Belirteç daha sonra uygulama Time Series Insights API 'sini çağırdığında `Authorization` üstbilgiye geçirilebilir.
+
+## <a name="common-headers-and-parameters"></a>Ortak üstbilgiler ve parametreler
+
+Bu bölümde, Time Series Insights GA ve Preview API 'Lerinde sorgu yapmak için kullanılan genel HTTP istek üstbilgileri ve parametreleri açıklanmaktadır. API 'ye özgü gereksinimler [Time Series Insights REST API başvuru belgelerinde](https://docs.microsoft.com/rest/api/time-series-insights/)daha ayrıntılı bir şekilde ele alınmıştır.
+
+### <a name="authentication"></a>Authentication
+
+[TIME SERIES INSIGHTS REST API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/)kimliği doğrulanmış sorgular gerçekleştirmek için, seçtiğiniz Rest Istemcisi (Postman, JavaScript, C#) kullanılarak [Yetkilendirme üst bilgisinde](/rest/api/apimanagement/authorizationserver/createorupdate) geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. 
+
+> [!IMPORTANT]
+> Belirtecin tam `https://api.timeseries.azure.com/` olarak kaynağa verilmesi gerekir (belirtecin "hedef kitle" olarak da bilinir).
+> * Bu nedenle [Postman](https://www.getpostman.com/) **AuthUrl** 'niz şu şekilde uyumlu:`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+
+> [!TIP]
+> [JavaScript istemci SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)kullanarak Time Series Insights API 'lerinde program aracılığıyla nasıl kimlik doğrulaması yapılacağını öğrenmek Için [Azure Time Series Insights JavaScript Istemci kitaplığı 'nı inceleyin](tutorial-explore-js-client-lib.md#authentication) .
+
+### <a name="http-headers"></a>HTTP üstbilgileri
+
+Gerekli istek üstbilgileri:
+
+- `Authorization`kimlik doğrulama ve yetkilendirme için, yetkilendirme üst bilgisinde geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. Belirtecin tam `https://api.timeseries.azure.com/` olarak kaynağa verilmesi gerekir (belirtecin "hedef kitle" olarak da bilinir).
+
+İsteğe bağlı istek üstbilgileri:
+
+- `Content-type`-yalnızca `application/json` desteklenir.
+- `x-ms-client-request-id`-bir istemci istek KIMLIĞI. Hizmet bu değeri kaydeder. Hizmetin işlemleri hizmetler arasında izlemesini sağlar.
+- `x-ms-client-session-id`-bir istemci oturum KIMLIĞI. Hizmet bu değeri kaydeder. Hizmetin, hizmetler arasında bir grup işlem izlemesini sağlar.
+- `x-ms-client-application-name`-Bu isteği oluşturan uygulamanın adı. Hizmet bu değeri kaydeder.
+
+Yanıt üst bilgileri:
+
+- `Content-type`-yalnızca `application/json` desteklenir.
+- `x-ms-request-id`-sunucu tarafından oluşturulan istek KIMLIĞI. , Bir isteği araştırmak üzere Microsoft 'a başvurmak için kullanılabilir.
+
+### <a name="http-parameters"></a>HTTP parametreleri
+
+Gerekli URL sorgu dizesi parametreleri:
+
+- `api-version=2016-12-12`
+- `api-version=2018-11-01-preview`
+
+İsteğe bağlı URL sorgu dizesi parametreleri:
+
+- `timeout=<timeout>`– istek yürütmesi için sunucu tarafı zaman aşımı. Yalnızca [ortam olaylarını al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) ve [ortam toplamlarını al](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API 'leri için geçerlidir. Zaman aşımı değeri ISO 8601 Duration biçiminde olmalıdır, örneğin `"PT20S"` , aralığında `1-30 s`olmalıdır. Varsayılan değer `30 s`.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

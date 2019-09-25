@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 4cabf2e7a1f0f1ff058f900ed823cc4df0ce80a6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c01931268642aebbf87c54080c292b105af15665
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999199"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262770"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğine giriş
 ## <a name="overview"></a>Genel Bakış
@@ -93,7 +93,7 @@ Application Insights, size en fazla Kullanıcı alacağınız, uygulamanın ne k
 Kilitlenmeler, sorunlar veya performans sorunları varsa, nedeni tanılamak için telemetri verilerinde ayrıntılı arama yapabilirsiniz. Ve uygulamanızın kullanılabilirliği ve performansı üzerinde herhangi bir değişiklik olursa hizmet size e-posta gönderir. Bu nedenle, gizlilik, bütünlük ve kullanılabilirlik güvenliği Triad 'de kullanılabilirliğine yardımcı olduğundan, uygulama öngörüleri değerli bir güvenlik aracı haline gelir.
 
 ### <a name="azure-monitor"></a>Azure İzleyici
-[Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) , Azure altyapısından ([etkinlik günlüğünden](../../azure-monitor/platform/activity-logs-overview.md)) ve her bir Azure kaynağından ([tanılama günlükleri](../../azure-monitor/platform/diagnostic-logs-overview.md)) her ikisi de görselleştirme, sorgu, yönlendirme, uyarı, otomatik ölçeklendirme ve verileri otomatikleştirme olanağı sunar. Azure Izleyici 'yi kullanarak Azure günlükleri 'nde oluşturulan güvenlikle ilgili olaylar hakkında sizi uyarabilir.
+[Azure izleyici](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) , Azure altyapısından ([etkinlik günlüğünden](../../azure-monitor/platform/activity-logs-overview.md)) ve her bir Azure kaynağından ([tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md)) her ikisi de görselleştirme, sorgu, yönlendirme, uyarı, otomatik ölçeklendirme ve verileri otomatikleştirme olanağı sunar. Azure Izleyici 'yi kullanarak Azure günlükleri 'nde oluşturulan güvenlikle ilgili olaylar hakkında sizi uyarabilir.
 
 ### <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 [Azure izleyici günlükleri](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure kaynaklarına ek olarak hem şirket içi hem de üçüncü taraf bulut tabanlı altyapı (AWS gibi) IÇIN bir BT yönetimi çözümü sağlar. Azure Izleyici 'deki veriler doğrudan Azure Izleyici günlüklerine yönlendirilebilir, böylece tüm ortamınız için ölçümleri ve günlükleri tek bir yerde görebilirsiniz.
@@ -141,7 +141,7 @@ Aşağıdaki türlerde günlükleri etkinleştirebilir veya devre dışı bırak
 
 -   Web sunucusu günlüğü-W3C Genişletilmiş günlük dosyası biçimini kullanarak HTTP işlemleri hakkında bilgiler. Bu, işlenen istek sayısı veya belirli bir IP adresinden kaç istek olduğu gibi genel site ölçümlerinin saptanmasında yararlıdır.
 
-#### <a name="application-diagnostics"></a>Uygulama tanılamaları
+#### <a name="application-diagnostics"></a>Uygulama Tanılama
 [Uygulama Tanılama](../../app-service/troubleshoot-diagnostic-logs.md) , bir Web uygulaması tarafından üretilen bilgileri yakalamanızı sağlar. ASP.NET uygulamaları, uygulama tanılama günlüğüne bilgileri günlüğe kaydetmek için [System. Diagnostics. Trace](https://msdn.microsoft.com/library/system.diagnostics.trace) sınıfını kullanabilir. Uygulama Tanılama, uygulama performansıyla ilgili olanlar ve uygulama hataları ve hatalarıyla ilgili olan iki önemli tür olay vardır. Hatalar ve hatalar, bağlantı, güvenlik ve başarısızlık sorunlarına göre daha da ayrılabilir. Hata sorunları genellikle uygulama kodundaki bir sorunla ilgilidir.
 
 Uygulama Tanılama, aşağıdaki yollarla gruplanmış olayları görüntüleyebilirsiniz:

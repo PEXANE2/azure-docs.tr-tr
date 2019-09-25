@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 175ea1c0c25a0c6dd41c68ea0a340cc1b18cc8b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d0bdfbbad7e811ac8f1eeffb1991cc5430483a6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100597"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262900"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure Sanal Makineler’de SQL Server için yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
@@ -78,7 +78,11 @@ Kullanılabilirlik grupları, veritabanı yansıtma, günlük aktarma ve Azure b
 Azure VM 'Leri, depolama ve ağ, şirket içi, sanallaştırılmamış BT altyapısından farklı işlemsel özelliklere sahiptir. Azure 'da bir HADR SQL Server çözümünün başarılı bir şekilde uygulanması, bu farklılıkları anladığınızı ve bunları kapsayacak şekilde tasarlamanızı gerektirir.
 
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Bir kullanılabilirlik kümesindeki yüksek kullanılabilirlik düğümleri
-Azure 'daki kullanılabilirlik kümeleri, yüksek kullanılabilirlik düğümlerini ayrı hata etki alanlarına (FDs) ve güncelleştirme etki alanlarına (UDs) yerleştirmenizi sağlar. Azure VM 'lerinin aynı Kullanılabilirlik kümesine yerleştirilmesi için, bunları aynı bulut hizmetine dağıtmanız gerekir. Aynı Kullanılabilirlik kümesine yalnızca aynı bulut hizmetindeki düğümler katılabilir. Daha fazla bilgi için bkz. [Sanal Makinelerin Kullanılabilirliğini Yönetme](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Azure 'daki kullanılabilirlik kümeleri, yüksek kullanılabilirlik düğümlerini ayrı hata etki alanlarına (FDs) ve güncelleştirme etki alanlarına (UDs) yerleştirmenizi sağlar. Kullanılabilirlik kümesindeki her bir sanal makineye, temel alınan Azure platformu tarafından bir güncelleştirme etki alanı ve bir hata etki alanı atanır. Bir veri merkezi içindeki bu yapılandırma, planlı veya plansız bir bakım olayı sırasında en az bir sanal makinenin kullanılabilir olmasını ve% 99,95 Azure SLA 'sını karşılamasını sağlar. Yüksek kullanılabilirlik kurulumunu yapılandırmak için, bir bakım olayı sırasında uygulama veya veri kaybını önlemek için tüm katılan SQL sanal makinelerini aynı Kullanılabilirlik kümesine yerleştirin. Aynı Kullanılabilirlik kümesine yalnızca aynı bulut hizmetindeki düğümler katılabilir. Daha fazla bilgi için bkz. [Sanal Makinelerin Kullanılabilirliğini Yönetme](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+
+### <a name="high-availability-nodes-in-an-availability-zone"></a>Kullanılabilirlik bölgesindeki yüksek kullanılabilirlik düğümleri
+Kullanılabilirlik, bir Azure bölgesi içinde benzersiz fiziksel konumlara bölgeleridir. Her bölge, soğutma ve ağ bağımsız güç ile donatılmış bir veya daha fazla veri merkezlerinden oluşur. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, en az bir sanal makinenin kullanılabilir olduğundan ve% 99,99 Azure SLA ile buluşmasını sağlayarak, veri merkezi hatalarından uygulama ve verileri korur. Yüksek kullanılabilirliği yapılandırmak için, katılan SQL sanal makinelerini bölgede kullanılabilir Kullanılabilirlik Alanları yayılmış yere yerleştirin. Ek kullanılabilirlik alanı VM 'leri-VM veri aktarımı ücretleri olacaktır. Daha fazla bilgi için bkz. [kullanılabilirlik alanları](/azure/availability-zones/az-overview). 
+
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Azure ağlarında yük devretme kümesi davranışı
 Azure 'daki RFC uyumlu olmayan DHCP hizmeti belirli yük devretme kümesi yapılandırmalarının oluşturulmasına neden olabilir. bu nedenle, küme ağ adı küme düğümlerinden biriyle aynı IP adresi gibi yinelenen bir IP adresine atanmaktadır. Bu, Windows Yük devretme kümesi özelliğine bağlı olan kullanılabilirlik gruplarını uyguladığınızda bir sorundur.

@@ -1,111 +1,201 @@
 ---
 title: Machine Learning için Visual Studio Code kullanma
 titleSuffix: Azure Machine Learning
-description: Visual Studio Code için Azure Machine Learning yüklemeyi ve Azure Machine Learning basit bir deneme oluşturmayı öğrenin.
+description: Visual Studio Code için Azure Machine Learning yüklemeyi ve Azure Machine Learning bir deneme oluşturma hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: ronglu
-author: ronglums
-ms.date: 7/12/2019
+ms.author: jimgries
+author: greazer
+ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0507080a390a4bb9f981b0d911961337e9b2c62a
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: a93c71a97cdb1f6296919a248cf7ef545f7b307f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997188"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269249"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Visual Studio Code için Azure Machine Learning kullanmaya başlama
 
-Bu makalede, makine öğrenimi ve derin öğrenme modellerini eğitmek ve dağıtmak üzere Visual Studio Code için Azure Machine Learning uzantısını nasıl kullanacağınızı öğreneceksiniz.
+Bu makalede, makine öğrenimi modellerini eğitmek ve dağıtmak için **Visual Studio Code uzantısının Azure Machine Learning** nasıl kullanacağınızı öğreneceksiniz.
 
-[Azure Machine Learning](overview-what-is-azure-ml.md) , yerel olarak ve Uzaktan işlem hedeflerinde çalıştırdığınız denemeleri için destek sağlar. Her bir deneme için birden çok çalıştırma çalıştırmalarınızı farklı teknikleri, hiperparametreleri ve daha fazlasını deneyin genellikle gerektiği şekilde takip edebilirsiniz. Azure Machine Learning, özel ölçümler izlemek ve çalıştırma, veri bilimi yeniden üretilebilirliğini ve denetlenebilirlik etkinleştirme denemek için kullanabilirsiniz.
-
-Bu modelleri, test ve üretim gereksinimleriniz için de dağıtabilirsiniz.
+[Azure Machine Learning hizmeti](overview-what-is-azure-ml.md) , makine öğrenimi modellerinin oluşturulmasını, eğitimini ve dağıtımını kolaylaştırır.
++ Eğitim için, denemeleri yerel olarak veya uzaktan çalıştırılmasına yönelik destek sağlar. Her deneme için, hiper parametrelere ince ayar yapmak üzere birden çok çalıştırmanın özel ölçümlerini günlüğe kaydedebilirsiniz
++ Test ve üretim gereksinimleriniz için makine öğrenimi modellerini kolayca dağıtmak üzere Azure Machine Learning hizmetini de kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 + Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-+ Visual Studio Code yüklü olmalıdır. Visual Studio Code, masaüstünüzde çalışan basit ancak güçlü bir kaynak kod düzenleyicidir. Python ve diğer programlama dilleri için yerleşik destek sunar. Visual Studio Code henüz yüklemediyseniz, [hakkında bilgi](https://code.visualstudio.com/docs/setup/setup-overview)edinin.
++ Windows, Mac ve Linux 'ta çalışan hafif bir kod Düzenleyicisi [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview)yükler.
 
 + [Python 3,5 veya üstünü yükler](https://www.anaconda.com/download/).
 
 
-## <a name="install-the-extension-for-azure-machine-learning-for-visual-studio-code"></a>Visual Studio Code için Azure Machine Learning uzantısını yükler
+## <a name="install-the-extension"></a>Uzantıyı yükleme
 
-Azure Machine Learning uzantısını yüklediğinizde, iki uzantı otomatik olarak yüklenir (Internet erişiminiz varsa). Bunlar [Azure Hesap uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) ve [Microsoft Python uzantısıdır](https://marketplace.visualstudio.com/items?itemName=ms-python.python).
-
-Azure Machine Learning çalışmak için, Visual Studio Code bir Python tümleşik geliştirme ortamına (IDE) açmanız gerekir. [Visual Studio Code ' de Python](https://code.visualstudio.com/docs/languages/python)kullanabilmeniz Için Microsoft Python uzantısının olması gerekir. Bu uzantı Azure Machine Learning uzantısıyla otomatik olarak yüklenir. Uzantı harika bir IDE Visual Studio Code ve çeşitli Python yorumlayıcıları olan herhangi bir işletim sisteminde kullanılabilir. Microsoft Python uzantısı, otomatik tamamlama, IntelliSense, bağlanma, hata ayıklama ve birim testi sağlamak için tüm Visual Studio Code gücünden yararlanır. Uzantı Ayrıca sanal ve Conda ortamları dahil olmak üzere Python ortamları arasında kolayca geçiş yapmanıza olanak sağlar. Python kodunu düzenlemeyle, çalıştırmaya ve hata ayıklamayla ilgili daha fazla bilgi için bkz. [Python Hello-World öğreticisi](https://code.visualstudio.com/docs/python/python-tutorial).
+Azure Machine Learning uzantısını yüklediğinizde, iki uzantı otomatik olarak yüklenir. Bunlar [Azure Hesap uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) ve [Microsoft Python uzantısıdır](https://marketplace.visualstudio.com/items?itemName=ms-Python.Python). Python kodunu düzenlemede, çalıştırmaya ve hata ayıklamaya yönelik Python uzantısını kullanma hakkında daha fazla bilgi için bkz. [Python Hello-World öğreticisi](https://code.visualstudio.com/docs/Python/Python-tutorial).
 
 Azure Machine Learning uzantısını yüklemek için:
 
 1. Visual Studio Code'u açın.
 
-1. Bir Web tarayıcısında, [Visual Studio Code uzantısı için Azure Machine Learning gidin (Önizleme)](https://aka.ms/vscodetoolsforai).
-
-1. Bu Web sayfasında, **yüklensin**' i seçin. 
+1. Uzantılar sekmesine geçin ve "Azure Machine Learning" araması yapın.
 
 1. Uzantı sekmesinde, **yükler**' i seçin.
 
-1. Uzantı için bir hoş geldiniz sekmesi Visual Studio Code açılır ve etkinlik çubuğuna Azure symbol (aşağıdaki ekran görüntüsünde kırmızı renkle özetlenmiştir) eklenir.
+1. Uzantı için bir hoş geldiniz sekmesi Visual Studio Code açılır ve Azure sembolü (aşağıdaki ekran görüntüsünde kırmızı renkle vurgulanır) etkinlik çubuğuna eklenir.
 
    ![Visual Studio Code etkinlik çubuğundaki Azure simgesi](./media/vscode-tools-for-ai/azure-activity-bar.png)
 
-1. İletişim kutusunda **oturum aç** ' ı seçin ve Azure ile kimlik doğrulaması yapmak için istemleri izleyin. 
-   
+1. İletişim kutusunda **oturum aç** ' ı seçin ve Azure ile kimlik doğrulaması yapmak için istemleri izleyin.
+
    Visual Studio Code uzantısı için Azure Machine Learning birlikte yüklenen Azure Hesap uzantısı, Azure hesabınızda kimlik doğrulaması yapmanıza yardımcı olur. Komutların listesi için bkz. [Azure hesap uzantısının](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)sayfası.
 
-> [!Tip] 
-> [Visual Studio Code (Önizleme) Için ıntellicode uzantısına](https://go.microsoft.com/fwlink/?linkid=2006060)göz atın. Intellicode, Python 'da IntelliSense için, geçerli kod bağlamına göre en ilgili diğer işlemleri göstermek gibi bir AI yardımlı özellik kümesi sağlar.
+> [!TIP]
+> Uzantı yükleyicisini doğrudan [Azure Machine Learning Visual Studio Code uzantısı (Önizleme) için](https://aka.ms/vscodetoolsforai)de indirebilirsiniz.
 
-## <a name="install-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK 'sını yükler
+## <a name="quickstart-with-azure-machine-learning"></a>Azure Machine Learning ile hızlı başlangıç
+Azure Machine Learning hizmetini kullanarak eğitim betikleri çalıştırmanın birden çok yolu vardır. Yeni başladıysanız, ilk olarak Azure 'da çalıştırmak üzere bir eğitim betiğini hızlı bir şekilde nasıl gönderebileceğinizi inceleyelim.
 
-1. Python 3,5 veya sonraki bir sürümünün yüklü olduğundan ve Visual Studio Code tarafından tanındığından emin olun. Şimdi yüklerseniz Visual Studio Code yeniden başlatın ve [bir Python yorumlayıcı seçin](https://code.visualstudio.com/docs/python/python-tutorial).
+Azure Machine Learning kavramlarıyla ilgili zaten bilgi sahibiyseniz ve bu uzantıları yönetme ve kullanma konusunda daha fazla ayrıntı istiyorsanız, aşağıda [VS Code Azure Machine Learning derinlemesine](./how-to-vscode-tools.md#azure-machine-learning-in-depth-with-vs-code) bakın.
 
-1. Tümleşik Terminal penceresinde, kullanılacak Python yorumlayıcı 'yı belirtin. Ya da varsayılan Python yorumlayıcısını kullanmak için ENTER ' u seçin.
+## <a name="run-an-existing-python-training-script-in-azure"></a>Azure 'da mevcut bir Python eğitim betiği çalıştırın
+Mevcut bir eğitim betiğinize sahipseniz, VS Code için Azure Machine Learning uzantısı yalnızca mükemmel bir düzen, hata ayıklama ve kaynak yönetim deneyimi sağlar, ancak Azure 'da betiğiniz için ölçümleri çalıştırmayı ve depolamayı da kolaylaştırır.
 
-   ![Yorumlayıcı seçin](./media/vscode-tools-for-ai/python.png)
+Başlayalım. Zaten varsa kendi eğitim betiğinizi kullanabilir veya örnek [vscode-Tools-for-AI deposunun](https://github.com/microsoft/vscode-tools-for-ai)kopyasını oluşturabilirsiniz. Bu uzantıyla ilgili sorunları çözmek için genel depodır. Ayrıca, bu örnek için kullanacağımız küçük bir **mnıst veritabanını kullanacaksınız** örnek klasörü içerir.
 
-1. Pencerenin sağ alt köşesinde, [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 'nın otomatik olarak yüklendiğini belirten bir bildirim görüntülenir. Yeni oluşturulan Python ortamı yerel ve özeldir ve Azure Machine Learning çalışılmasına yönelik Visual Studio Code önkoşulları vardır.
+1. VS Code içindeki **mnıst veritabanını kullanacaksınız** klasörünü açın.
 
-   ![Python için Azure Machine Learning SDK 'sını yükler](./media/vscode-tools-for-ai/runtimedependencies.png)
+1. En sevdiğiniz sanal ortam paketinizi veya Anaconda kullanarak yeni bir Python ortamı oluşturun ve TensorFlow ve sayısal tuş takımı paketlerini kurun.
 
-## <a name="get-started-with-azure-machine-learning"></a>Azure Machine Learning kullanmaya başlayın
+1. VS Code durum çubuğunun sol alt köşesinde, Python yorumlayıcı olarak oluşturduğunuz yeni ortamı seçin.
 
-Visual Studio Code ' de eğitim ve makine öğrenimi modellerini dağıtmaya başlamadan önce, bulutta bir [Azure Machine Learning çalışma alanı](concept-workspace.md) oluşturmanız gerekir. Bu çalışma alanı, modellerinizi ve kaynaklarınızı içerecektir. 
+1. **Train.py** açın ve hata ayıklayıcıyı açıp Çalıştır düğmesine basarak çalıştırın (veya yalnızca F5 tuşuna basın).
 
-Bir çalışma alanı oluşturmak ve ilk denemenizi eklemek için:
+   [![MNIST eğitimi çalıştırma](./media/vscode-tools-for-ai/run-mnist.gif)](./media/vscode-tools-for-ai/run-mnist.gif#lightbox)
+
+Her şey doğru şekilde yüklenirse, betik çalışır ve çıktılar klasöründe bir TensorFlow modeli oluşturur.
+
+[![TensorFlow modelini göster](./media/vscode-tools-for-ai/show-tensorflow-model.gif)](./media/vscode-tools-for-ai/show-tensorflow-model.gif#lightbox)
+
+Betiğinizin doğru çalıştığını bildiğinize göre şimdi Azure 'da çalıştıralim!
+
+Bu, ek bir **train.py**değişikliği olmadan kolayca yapılabilir. Ancak, yalnızca birkaç basit değişiklikle, her eğitim çalışması hakkında tercih ettiğiniz önemli ölçümleri otomatik olarak izlemek için Azure Machine Learning kullanabilirsiniz.
+
+### <a name="make-azure-aware-of-your-run-metrics"></a>Çalıştırma ölçümlerinizi Azure 'a duyarlı hale getirme
+Azure 'un çalışmalarınızın önemli bilgilerden haberdar olması için projenizi değiştirmek üzere:
+
+1. **Train.py** ile aynı klasörde **amlrun.py** adlı bir dosya oluşturun
+
+    ```Python
+    import azureml
+    from azureml.core import Run
+
+    # access the Azure ML run
+    # init run param to check if running within AML
+    def get_AMLRun():
+        try:
+            run = Run.get_submitted_run()
+            return run
+        except Exception as e:
+            print("Caught = {}".format(e.message))
+            return None
+    ```
+
+2. Amlrun dosyasını **train.py** içinde içeri aktarma
+
+    ```Python
+    ...
+    from utils import prepare_data
+    from amlrun import get_AMLRun
+    ...
+    ```
+3. **Train.py** 'de Run nesnesini başlatma
+
+    ```Python
+    ...
+    init = tf.global_variables_initializer()
+    saver = tf.train.Saver()
+    run = get_AMLRun()
+    ...
+    ```
+4. Run. log () işleviyle ölçümleri Azure 'da günlüğe kaydedin:
+
+    ```Python
+    ...
+            acc_val = acc_op.eval(feed_dict = {X: X_test, y: y_test})
+
+            # log accuracies to AML logger if using AML
+            if run != None:
+                run.log('Validation Accuracy', np.float(acc_val))
+                run.log('Training Accuracy', np.float(acc_train))
+
+            print(epoch, '-- Training accuracy:', acc_train, '\b Validation
+    ...
+    ```
+### <a name="run-the-script-in-azure"></a>Betiği Azure 'da çalıştırma
+İşte bu kadar! Şimdi, kodunuzu bulutta çalıştırmak için yalnızca uzantıyı kullanın! Aşağıdaki izlenecek yol videosunun, yeni bir Azure ML çalışma alanı ve işlem oluşturmak için gereken süre miktarını ve eğitim betiğini çalıştırmak için gereken süreyi sıkıştırıp aldığını unutmayın.
+
+   [![Azure ML denemesi başlatma](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
+
+Deneme Çalıştır düğmesine tıkladıktan sonra, istemleri aşağıdaki gibi yanıtlayın:
+
+1. Azure aboneliğinizi seçme
+1. *Yeni* BIR Azure ML çalışma alanı oluşturmayı seçin
+1. Çalışma için Python ortamını başlatmak üzere önceden yapılandırılmış bir şablon kümesinden seçim yapın. Şablonlar, şunlar için bir başlangıç noktası ve ekleme ayarları sağlar:
+    1. **Pytorch**, **TensorFlow**veya **scikit-öğrenme**
+    1. **Tek** veya **Dağıtılmış** işlem eğitimi
+    1. Özel ortamlar için **genel**
+1. Şablona dahil olmayan herhangi bir paket ekleyerek betiğe yönelik PIP ve Conda paketlerinin listesinin tamamlandığından emin olun.
+1. Deneme çalıştırmasının varsayılan adlarını ve özelliklerini gözden geçirin ve JSON dosyasındaki deneme deneyimini **Gönder** bağlantısına tıklayın. JSON dosyası, göndermeden önce deneme ayarlarını gözden geçirmeniz veya değiştirmeniz için yeterli olmadığı için kaydedilmez.
+1. Uzantı, sizin için her şeyi ayarlarken ve komut dosyanızı yürüttüğünde, arka ve rahat oturdum!
+
+    [![Bulutta eğitme](./media/vscode-tools-for-ai/run-golden-path.gif)](./media/vscode-tools-for-ai/run-golden-path.gif#lightbox)
+
+Birkaç saniye içinde, denemenin Azure 'a gönderildiği, VS Code bildiriminde **deneme çalıştırmasını görüntüle** bağlantısına tıklayarak ya da yenilemeye vurarak vs Code içinden bu Azure Portal işlemi görüntüleyebileceğiniz bildirilir. düğmesine basın.
+
+Şu anda, çalışma ölçümlerini görüntüleme yalnızca Azure portal desteklenir. Yukarıda bahsedilen **Görünüm deneme çalıştırması** bağlantısı sizi, günlüğe kaydettiğiniz ölçümleri görebileceğiniz çalıştırmaya götürür.
+[![Portalda çalıştırmayı deneyin](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG)](./media/vscode-tools-for-ai/experiment-run-on-portal.PNG#lightbox)
+
+## <a name="azure-machine-learning-in-depth-with-vs-code"></a>VS Code ayrıntılı Azure Machine Learning
+
+Yukarıdaki izlenecek yolda, en kolay yolu izleyerek bir deneme yaptık. Uzantının, bir deneme çalıştırmak için yönetmeniz gereken adımları en aza indirecek gibi. Bu bölümde, en fazla denetim sağlayarak tüm Azure Machine Learning kavramlarını tek tek nasıl yönetebileceğinizi ele alacağız.
+
+Visual Studio Code ' de eğitim ve makine öğrenimi modellerini dağıtmaya başlamadan önce, bulutta bir [Azure Machine Learning çalışma alanı](concept-workspace.md) oluşturmanız gerekir. Bu çalışma alanı, modellerinizi ve kaynaklarınızı içerecektir.
+
+### <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
 1. Visual Studio Code etkinlik çubuğunda Azure simgesini seçin. Azure Machine Learning kenar çubuğu görüntülenir.
 
-   [![Çalışma alanı oluşturma](./media/vscode-tools-for-ai/CreateaWorkspace.gif)](./media/vscode-tools-for-ai/CreateaWorkspace.gif#lightbox)
+    [![Çalışma alanı oluşturma](./media/vscode-tools-for-ai/create-workspace.gif)](./media/vscode-tools-for-ai/create-workspace.gif#lightbox)
 
 
-1. Azure aboneliğinize sağ tıklayın ve **çalışma alanı oluştur**' u seçin. Bir liste görüntülenir. Örnek animasyonlu görüntüde, abonelik adı **ücretsiz denemenize**ve çalışma alanı **teamworkspace**' dür. 
+1. Azure aboneliğinize sağ tıklayın ve **çalışma alanı oluştur**' u seçin. Varsayılan olarak, oluşturma tarihi ve saati içeren bir ad oluşturulur. Adı **Teamworkspace** olarak değiştirin ve ENTER 'a basın.
 
-1. Listeden bir kaynak grubu seçin veya komut paletindeki Sihirbazı kullanarak yeni bir tane oluşturun.
+1. Ne seçeceğiniz veya yeni bir tane oluşturacağınız hakkında bilgi edinmek istiyorsanız listeden bir kaynak grubu seçin. Yeni bir tane oluşturuyorsanız, modelinizi dağıtmayı planladığınız konuma en yakın konumu seçin. Bu durumda **Batı ABD 2**seçtik.
 
-1. Alanına yeni çalışma alanınız için benzersiz ve açık bir ad yazın. Örnek görüntüde, çalışma alanı **Teamworkspace**olarak adlandırılır.
+1. ENTER tuşuna bastıktan sonra, Azure Machine Learning çalışma alanınızı oluşturma isteği alınır. Visual Studio Code bildirim alanındaki işlem hakkında bildirim alırsınız.
 
-1. Yeni çalışma alanını oluşturmak için ENTER ' u seçin. Ağaçta, abonelik adının altında görünür.
+1. Yeni oluşturduğunuz çalışma alanınızı bulmak için abonelik düğümünü genişletin.
 
-1. **Deneme** düğümüne sağ tıklayın ve bağlam menüsünden **deneme oluştur** ' u seçin.  Denemeleri Azure Machine Learning kullanarak çalışmalarınızın izini devam edin.
+### <a name="create-an-experiment"></a>Deneme oluşturma
+Tek tek model eğitimi çalıştırmalarını izlemek ve analiz etmek için, çalışma alanınızda bir veya daha fazla denemeleri oluşturulabilir. Çalıştırmalar, Azure bulutu 'nda veya yerel makinenizde yapılabilir.
 
-1. Alanına, denemeniz için bir ad girin. Örnek ekran görüntülerinde, **deneme adı adlandırılmış**olur.
- 
-1. Yeni deneme oluşturmak için ENTER ' u seçin. Deneme, çalışma alanı adının altındaki ağaçta görünür.
+1. **Teamworkspace** çalışma alanını genişletin. **Denemeleri** düğümüne sağ tıklayın ve bağlam menüsünden **deneme oluştur** ' u seçin.
 
-1. Bir çalışma alanında, **etkin** deneme olarak ayarlamak için bir denemeye sağ tıklayabilirsiniz. **Etkin** deneme, geçerli denemenize ait. Visual Studio Code 'daki açık klasörünüz, bulutta bu deneye bağlanacak. Bu klasör yerel Python betiklerinizi içermelidir.
+1. Sorulduğunda, denemeniz için bir ad girin. Örnek ekran görüntülerinde, **deneme adı adlandırılmış**olur.
 
-Artık önemli ölçümleriniz deneme geçmişi içinde depolanacak. Benzer şekilde, eğitediğiniz modeller Azure Machine Learning 'ye otomatik olarak yüklenir ve deneme ölçümleriniz ve günlüklerinizle birlikte depolanır. 
+1. Yeni deneme oluşturmak için ENTER ' u seçin. Yeni deneme ağaçta **denemeleri** düğümünün bir alt öğesi olarak görünür.
 
-[![Visual Studio Code bir klasör iliştirme](./media/vscode-tools-for-ai/CreateAnExperiment.gif)](./media/vscode-tools-for-ai/CreateAnExperiment.gif#lightbox)
+1. Bir çalışma alanında, **etkin** deneme olarak ayarlamak için bir denemeye sağ tıklayabilirsiniz. **Etkin** deneme, bulutta o anda açık olan ve Visual Studio Code açık olan klasöre bağlantı sağlar. Bu klasör yerel Python betiklerinizi içermelidir. Etkin bir deneme ayarlayarak, tüm eğitim çalıştırmaları için anahtar ölçümler, nerede çalıştırıldıklarından bağımsız olarak deneme içinde depolanır.
+
+    [![Deneme oluşturma](./media/vscode-tools-for-ai/create-experiment.gif)](./media/vscode-tools-for-ai/create-experiment.gif#lightbox)
 
 
-## <a name="create-and-manage-compute-targets"></a>Oluşturma ve yönetme işlem hedefleri
+### <a name="create-and-manage-compute-targets"></a>Oluşturma ve yönetme işlem hedefleri
 
 Visual Studio Code için Azure Machine Learning sayesinde verilerinizi hazırlayabilir, modellerle eğitebilir ve bunları yerel olarak ve Uzaktan işlem hedeflerine dağıtabilirsiniz.
 
@@ -117,106 +207,65 @@ Uzantı Azure Machine Learning için çeşitli uzak işlem hedeflerini destekler
 
 1. Visual Studio Code etkinlik çubuğunda Azure simgesini seçin. Azure Machine Learning kenar çubuğu görüntülenir.
 
-2. Ağaç görünümünde, Azure aboneliğinizi ve Azure Machine Learning çalışma alanını genişletin. Aşağıdaki örnek görüntüde, abonelik adı **ücretsiz denemenize**ve çalışma alanı **teamworkspace**' dür. 
+1. Ağaç görünümünde, Azure aboneliğinizi ve Azure Machine Learning çalışma alanını genişletin.
 
-3. Çalışma alanı düğümünde sağ **işlem** düğüm ve **oluşturma işlem**.
+1. Çalışma alanı düğümünde sağ **işlem** düğüm ve **oluşturma işlem**.
 
-4. İşlem hedef listeden seçin. 
+1. İşlem hedef listeden seçin.
 
-5. Komut paletinde bir sanal makine boyutu seçin.
+1. Komut paleti isteminde bir sanal makine boyutu seçin. "GPU" gibi metin ile hesaplamayı filtreleyebilirsiniz.
 
-6. Komut paletinde, alanına, işlem hedefi için bir ad girin. 
+1. Komut paleti isteminde, işlem hedefi için bir ad girin.
 
-7. Yeni bir sekmede açılan JSON yapılandırma dosyasında, gelişmiş özellikleri belirtin. Maksimum düğüm sayısı gibi özellikleri belirtebilirsiniz.
+1. Adı girdikten sonra, işlem varsayılan parametreler kullanılarak oluşturulur. Parametreleri değiştirmek için, yeni işlem ' a sağ tıklayın ve **Işlem Düzenle**' yi seçin.
 
-8. İşlem hedefini yapılandırmayı bitirdiğinizde pencerenin sağ alt köşesinde **Gönder**' i seçin.
+1. Görüntülenen JSON 'da, istediğiniz değişiklikleri yapın ve ardından "Kaydet ve devam et" CodeLens ' e tıklayın (klavyeyi kullanarak, komut paletini çağırmak ve **Azure ML 'yi çalıştırmak için **Ctrl-Shift-p** tuşlarına basabilirsiniz: Kaydet ve devam** et komutu)
 
-İşte Azure Machine Learning işlem oluşturma (AMLCompute) örneği:
+İşte Azure Machine Learning işlem oluşturma ve düzenleme örneği (AMLCompute):
 
-[![Visual Studio Code AML işlem oluşturma](./media/vscode-tools-for-ai/CreateARemoteCompute.gif)](./media/vscode-tools-for-ai/CreateARemoteCompute.gif#lightbox)
+[![Visual Studio Code AML işlem oluşturma](./media/vscode-tools-for-ai/create-remote-compute.gif)](./media/vscode-tools-for-ai/create-remote-compute.gif#lightbox)
 
 #### <a name="the-run-configuration-file"></a>Çalışma yapılandırma dosyası
 
-Visual Studio Code uzantısı otomatik olarak yerel bir işlem hedefi oluşturur ve yerel bilgisayarınızdaki yerel ve Docker ortamlarınız için yapılandırma çalıştırır. Çalışma yapılandırma dosyalarını ilişkili işlem hedefi düğümü altında bulabilirsiniz. 
+Bir işlem üzerinde Azure Machine Learning bir deneme çalıştırmak için, bu işlem için uygun şekilde yapılandırılması gerekir. Çalışma yapılandırma dosyası, bu ortamın belirtildiği mekanizmadır.
 
-## <a name="train-and-tune-models"></a>Modelleri eğitme ve ayarlama
+Yukarıda oluşturulan AmlCompute için bir çalıştırma yapılandırması oluşturma örneği aşağıda verilmiştir.
 
-Kodunuzda hızlıca yinelemek, adım adım ve hata ayıklaması yapmak ve kaynak kodu denetimi için çözümünüzü kullanmak üzere Visual Studio Code (Önizleme) için Azure Machine Learning kullanın. 
+[![İşlem için çalıştırma yapılandırması oluşturma](./media/vscode-tools-for-ai/create-runconfig.gif)](./media/vscode-tools-for-ai/create-runconfig.gif#lightbox)
 
-Azure Machine Learning kullanarak denemenizi yerel olarak çalıştırmak için:
+Azure ML denemeleri 'yi yerel makinenizde çalıştırmak için bir çalıştırma yapılandırma dosyası hala gereklidir. Yerel çalışma yapılandırması oluştururken, kullanılan Python ortamı varsayılan olarak VS Code içinde ayarladığınız yorumlayıcı yoludur.
 
-1. Visual Studio Code etkinlik çubuğunda Azure simgesini seçin. Azure Machine Learning kenar çubuğu görüntülenir.
+### <a name="train-and-tune-models"></a>Modelleri eğitme ve ayarlama
 
-1. Ağaç görünümünde, Azure aboneliğinizi ve Azure Machine Learning çalışma alanını genişletin. 
+VS Code için Azure ML uzantısını kullanarak bir deneme sürümünde eğitim betiği çalıştırmanın birden çok yolu vardır.
 
-1. Çalışma alanı düğümü altında, **işlem** düğümünü genişletin ve kullanmak Istediğiniz işlem **yapılandırmasını** sağ tıklatın. 
+1. Eğitim betiğine sağ tıklayın ve Azure ML **' yi seçin: Azure 'da farklı çalıştır denemesi**
+1. Denemeler Çalıştır araç çubuğu simgesine tıklayın.
+1. Bir çalıştırma yapılandırması düğümüne sağ tıklayın.
+1. Azure ML 'yi yürütmek **için vs Code komut paletini kullanın: Deneme Çalıştır**
+
+Azure Machine Learning deneme çalıştırmak için:
+
+1. Visual Studio Code etkinlik çubuğunda Azure simgesini seçin.
+
+1. Ağaç görünümünde, Azure aboneliğinizi ve Azure Machine Learning çalışma alanını genişletin.
+
+1. Çalışma alanı düğümü altında, **denemeleri** düğümünü genişletin ve çalıştırmak istediğiniz denemeyi sağ tıklatın.
 
 1. Seçin **denemeyi çalıştırma**.
 
-1. Dosya Gezgini 'nde, çalıştırmak istediğiniz betiği seçin. 
+1. Modelinize eğitebilmeniz için çalıştırmak istediğiniz Python dosyasının adını seçin ve çalıştırmayı göndermek için ENTER tuşuna basın. Not: Seçilen dosya, şu anda VS Code açık olan klasörde bulunmalıdır.
 
-1. Çalışmanızı izlemek ve eğitilen modellerinizi görmek için tümleşik Azure Machine Learning portalını görmek üzere **deneme çalıştırmasını görüntüle** ' yi seçin.
+1. Çalıştırma gönderildikten sonra, seçtiğiniz deneyin altında bir **çalıştırma düğümü** görüntülenir. Çalıştırmaların durumunu izlemek için bu düğümü kullanın. Not: En son durumu görmek için pencereyi düzenli olarak yenilemeniz gerekebilir.
 
-Bir denemesinin yerel olarak nasıl çalıştırılacağını gösteren bir örnek aşağıda verilmiştir:
+İşte daha önce oluşturulan işlem üzerinde bir deneme çalıştırmaya ilişkin bir örnek:
 
-[![Bir denemeyi yerel olarak çalıştırma](./media/vscode-tools-for-ai/RunExperimentLocally.gif)](./media/vscode-tools-for-ai/RunExperimentLocally.gif#lightbox)
+[![Bir denemeyi yerel olarak çalıştırma](./media/vscode-tools-for-ai/run-experiment.gif)](./media/vscode-tools-for-ai/run-experiment.gif#lightbox)
 
-### <a name="use-remote-computes-for-experiments-in-visual-studio-code"></a>Visual Studio Code 'de denemeleri için uzak hesaplar kullanın
+### <a name="deploy-and-manage-models"></a>Model dağıtıp yönetmek
+Azure Machine Learning, makine öğrenimi modellerinizi bulutta ve kenarda dağıtabilir ve yönetebilirsiniz.
 
-Eğitim için bir uzaktan işlem hedefi kullanmak üzere bir çalıştırma yapılandırma dosyası oluşturmanız gerekir. Azure Machine Learning denemenizi çalıştırmak nerede değil yalnızca bu dosya bildirir ancak ortamı hazırlama nasıl de.
-
-#### <a name="the-conda-dependencies-file"></a>Conda bağımlılıkları dosyasının
-
-Varsayılan olarak, sizin için yeni bir Conda ortamı oluşturulur ve yükleme bağımlılıklarınız yönetilir. Ancak, *aml_config/conda_dependencies. yıml* dosyasında bağımlılıklarınızı ve bunların sürümlerini belirtmeniz gerekir. 
-
-Varsayılan *aml_config/conda_dependencies. yıml* tarafından belirtilen kod parçacığı şunları belirtir `tensorflow=1.12.0`. Bağımlılığın sürümünü belirtmezseniz, en son sürüm kullanılacaktır. Yapılandırma dosyasında ek bağımlılıklar ekleyebilirsiniz.
-
-```yaml
-# The dependencies defined in this file will be automatically provisioned for runs with userManagedDependencies=False.
-
-name: project_environment
-dependencies:
-  # The python interpreter version.
-
-  # Currently Azure ML only supports 3.5.2 and later.
-
-- python=3.6.2
-- tensorflow=1.12.0
-
-- pip:
-    # Required packages for AzureML execution, history, and data preparation.
-
-  - --index-url https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
-  - --extra-index-url https://pypi.python.org/simple
-  - azureml-defaults
-
-```
-
-Deneme hesabınızı uzak bir işlem hedefinde Azure Machine Learning çalıştırmak için:
-
-1. Visual Studio Code etkinlik çubuğunda Azure simgesini seçin. Azure Machine Learning kenar çubuğu görüntülenir.
-
-1. Ağaç görünümünde, Azure aboneliğinizi ve Azure Machine Learning çalışma alanını genişletin. 
-
-1. Düzenleyici penceresinde, Python betiğe sağ tıklayın ve AML ' yi seçin **: Azure**'da farklı çalıştır denemesi. 
-
-1. Komut paletinde, işlem hedefini seçin. 
-
-1. Komut paletinde, alanına, çalışma yapılandırması adını girin. 
-
-1. Deneme çalışma zamanı bağımlılıklarını belirtmek için *conda_dependencies. yıml* dosyasını düzenleyin. Ardından pencerenin sağ alt köşesinde **Gönder**' i seçin. 
-
-1. Çalışmanızı izlemek ve eğitilen modellerinizi görmek için tümleşik Azure Machine Learning portalını görmek üzere **deneme çalıştırmasını görüntüle** ' yi seçin.
-
-Bir denemeyi uzaktan işlem hedefinde çalıştırmaya ilişkin bir örnek aşağıda verilmiştir:
-
-[![Uzak hedefte bir deneme çalıştırın](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif)](./media/vscode-tools-for-ai/runningOnARemoteTarget.gif#lightbox)
-
-
-## <a name="deploy-and-manage-models"></a>Model dağıtıp yönetmek
-Azure Machine Learning, makine öğrenimi modellerinizi bulutta ve kenarda dağıtabilir ve yönetebilirsiniz. 
-
-### <a name="register-your-model-to-azure-machine-learning-from-visual-studio-code"></a>Modelinizi Visual Studio Code Azure Machine Learning için kaydedin
+#### <a name="register-your-model-to-azure-machine-learning-from-visual-studio-code"></a>Modelinizi Visual Studio Code Azure Machine Learning için kaydedin
 
 Modelinize eğitim edindiniz. bu aşamada, çalışma alanınıza kaydedebilirsiniz. Kayıtlı modelleri izleyebilir ve dağıtabilirsiniz.
 
@@ -228,26 +277,26 @@ Modelinizi kaydetmek için:
 
 1. Çalışma alanı düğümü altında sağ **modelleri** ve **modelini kaydettirmek**.
 
-1. Komut paletinde, alanına bir model adı girin. 
+1. Komut paletinde, alanına bir model adı girin.
 
-1. Listeden bir **model dosyası** (tek modeller için) veya **model klasörünü** (örneğin, TensorFlow gibi birden çok dosya içeren modeller için) karşıya yüklemeyi seçin. 
+1. Listeden bir **model dosyası** (tek modeller için) veya **model klasörünü** (örneğin, TensorFlow gibi birden çok dosya içeren modeller için) karşıya yüklemeyi seçin.
 
 1. Klasör veya dosyayı seçin.
 
-1. Model özelliklerinizi yapılandırmayı bitirdiğinizde pencerenin sağ alt köşesinde **Gönder**' i seçin. 
+1. Model özelliklerinizi yapılandırmayı bitirdiğinizde pencerenin sağ alt köşesinde **Gönder**' i seçin.
 
 Modelinizi Azure Machine Learning için nasıl kaydedeceğinizi gösteren bir örnek aşağıda verilmiştir:
 
-[![Bir modeli AML 'ye kaydetme](./media/vscode-tools-for-ai/RegisteringAModel.gif)](./media/vscode-tools-for-ai/RegisteringAModel.gif#lightbox)
+[![Bir modeli AML 'ye kaydetme](./media/vscode-tools-for-ai/register-model.gif)](./media/vscode-tools-for-ai/register-model.gif#lightbox)
 
 
-### <a name="deploy-your-service-from-visual-studio-code"></a>Hizmetinizi Visual Studio Code dağıtma
+#### <a name="deploy-your-service-from-visual-studio-code"></a>Hizmetinizi Visual Studio Code dağıtma
 
 Visual Studio Code, Web hizmetinizi şu şekilde dağıtabilirsiniz:
 + Test için Azure Container Instances (acı).
 + Üretim için Azure Kubernetes hizmeti (AKS).
 
-Hızlı bir şekilde test etmek için bir ACI kapsayıcısı oluşturmanız gerekmez, çünkü hızlı bir şekilde anında çalışma kapsayıcıları oluşturulur. Ancak, AKS kümelerini önceden yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
+ACI kapsayıcıları gerektiği şekilde oluşturulduğundan, önceden test etmek için bir ACI kapsayıcısı oluşturmanız gerekmez. Ancak, AKS kümelerini önceden yapılandırmanız gerekir. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 Bir Web hizmeti dağıtmak için:
 
@@ -259,9 +308,9 @@ Bir Web hizmeti dağıtmak için:
 
 1. Dağıtmak istediğiniz modele sağ tıklayın ve bağlam menüsünden **hizmeti kayıtlı modelden dağıt** ' ı seçin.
 
-1. Komut paletinde, dağıtmak istediğiniz işlem hedefini seçin. 
+1. Komut paletinde, dağıtmak istediğiniz işlem hedefini seçin.
 
-1. Komut paletinde, alanına bu hizmet için bir ad girin.  
+1. Komut paletinde, alanına bu hizmet için bir ad girin.
 
 1. Komut paletinde, komut dosyasını bulmak ve seçmek için klavyenizde Enter tuşunu seçin.
 
@@ -273,15 +322,15 @@ Web hizmeti artık dağıtılır.
 
 Bir Web hizmetini dağıtmaya ilişkin bir örnek aşağıda verilmiştir:
 
-[![Web hizmeti dağıtma](./media/vscode-tools-for-ai/CreatingAnImage.gif)](./media/vscode-tools-for-ai/CreatingAnImage.gif#lightbox)
+[![Web hizmeti dağıtma](./media/vscode-tools-for-ai/create-image.gif)](./media/vscode-tools-for-ai/create-image.gif#lightbox)
 
-### <a name="use-keyboard-shortcuts"></a>Klavye kısayollarını kullanma
+### <a name="experiment-with-additional-features"></a>Ek özelliklerle deneyin
 
-Visual Studio Code Azure Machine Learning özelliklere erişmek için klavyeyi kullanabilirsiniz. Bildiğiniz en önemli klavye kısayolu, komut paletini görüntüleyen CTRL + SHIFT + P ' dir. Komut paletinden, en yaygın işlemlere yönelik klavye kısayolları da dahil olmak üzere tüm Visual Studio Code işlevlerine erişebilirsiniz.
+Visual Studio Code pek çok Azure Machine Learning özelliğine erişmek için komut paleti kullanabilirsiniz. CTRL + SHIFT + P komut paleti türünü çağırmak için. Buradan, uzantının ek Azure ML özelliklerini arayabilirsiniz.
 
 [![Visual Studio Code için Azure Machine Learning klavye kısayolları](./media/vscode-tools-for-ai/commands.gif)](./media/vscode-tools-for-ai/commands.gif#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Visual Studio Code dışında Azure Machine Learning eğitme hakkında bir anlatım için bkz [. Öğretici: Modelleri Azure Machine Learning](tutorial-train-models-with-aml.md)ile eğitme.
-* Kodu yerel olarak düzenleme, çalıştırma ve hata ayıklama hakkında yönergeler için bkz. [Python Hello-World öğreticisi](https://code.visualstudio.com/docs/python/python-tutorial).
+* Kodu yerel olarak düzenleme, çalıştırma ve hata ayıklama hakkında yönergeler için bkz. [Python Hello-World öğreticisi](https://code.visualstudio.com/docs/Python/Python-tutorial).

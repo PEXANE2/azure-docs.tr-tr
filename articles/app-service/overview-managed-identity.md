@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098483"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260153"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -307,9 +307,12 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 > |Parametre adı|İçinde|Açıklama|
 > |-----|-----|-----|
 > |resource|Sorgu|Belirtecin alınması gereken kaynağın AAD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.|
-> |API sürümü|Sorgu|Kullanılacak belirteç API 'sinin sürümü. "2017-09-01" Şu anda desteklenen tek sürümdür.|
+> |api-version|Sorgu|Kullanılacak belirteç API 'sinin sürümü. "2017-09-01" Şu anda desteklenen tek sürümdür.|
 > |secret|Üstbilgi|MSI_SECRET ortam değişkeninin değeri. Bu üst bilgi, sunucu tarafı istek sahteciliğini önleme (ssrf) saldırılarını azaltmaya yardımcı olmak için kullanılır.|
-> |ClientID|Sorgu|Seçim Kullanılacak kullanıcı tarafından atanan kimliğin KIMLIĞI. Atlanırsa, sistem tarafından atanan kimlik kullanılır.|
+> |ClientID|Sorgu|(Kullanıcı atanmadığı için isteğe bağlı) Kullanılacak kullanıcı tarafından atanan kimliğin KIMLIĞI. Atlanırsa, sistem tarafından atanan kimlik kullanılır.|
+
+> [!IMPORTANT]
+> Kullanıcı tarafından atanan kimlikler için belirteçleri almaya çalışıyorsanız, `clientid` özelliği dahil etmeniz gerekir. Aksi takdirde, belirteç hizmeti sistem tarafından atanan bir kimlik için belirteç edinmeye çalışır, bu da mevcut olabilir.
 
 Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gövdesi içerir:
 

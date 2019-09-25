@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 9/24/2019
 ms.author: ellacroi
-ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309016"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259953"
 ---
 # <a name="marketplace-faqs"></a>Market hakkında SSS
 
@@ -64,7 +64,7 @@ Azure Market teklifleri şu şekilde satın alınabilir:
 * [Azure komut satırı arabirimi (CLı)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
->Ön ödemeli krediler ve diğer parasal taahhüt formları, yazılım lisansı ücretleri için ödeme yapmak üzere kullanılamaz, ancak ilişkili Azure kullanım ücretlerini ödemek için kullanılabilir. Özel durumlar [Azure parasal taahhüdünde](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)listelenmiştir.
+>Ön ödemeli krediler ve diğer parasal taahhüt formları, yazılım lisansı ücretleri için ödeme yapmak üzere kullanılamaz, ancak ilişkili Azure kullanım ücretlerini ödemek için kullanılabilir. Özel durumlar [Azure parasal](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)taahhüdünde listelenmiştir.
 
 **Azure Marketi satın alımımın dağıtılacağı Azure bölgelerini seçebilir miyim?**
 
@@ -244,6 +244,14 @@ Tüm teknik ürün desteği için yayımcı sağlayıcısına başvurun. Yayımc
 [Azure Marketi](https://azuremarketplace.microsoft.com/) 'nden gerçekleştirilen satın alımlar döndürülemiyor, ancak iptal edilebilir/silinebilir. Tüketim tabanlı teklifler kullanıma göre faturalandırılır, bu nedenle durdurulduğunda da ücret durdurulur. Abonelikler iptal edilir ve geçerli fatura döneminin ötesinde faturalandırılmaz. Bir abonelik satın alma sonrasında (aylık 24 saat ve yıllık için 14 gün) iptal edilirse, tam para iadesi sağlanır.
 
 Müşterilerin Market hizmeti veya satın alma ile ilgili teknik sorunlar için doğrudan yayımcıya başvurması gerekir. Yayımcı iletişim bilgileri ve/veya destek web sitesinin bir bağlantısı Azure Marketi 'ndeki çözüm ayrıntıları sayfasında bulunabilir.
+
+**Orta dönem arttırılarak lisans eklemeleri nasıl işlenir?**
+
+Mevcut bir aboneliğe eklenen lisanslar, abonelik süresinin kalanı için Pro derecelendirilir.
+
+**Lisans kaldırma işlemleri orta dönem sırasında nasıl işlenir?**
+
+İptal edilen lisanslar, bu SSS 'de bulunan para iadesi ilkesine tabi olacaktır.  İptal edilen tüm lisanslar hesabınızdan hemen kaldırılır ve artık kullanılabilir olmaz.
 
 ## <a name="faq-for-publishers"></a>Yayımcılar hakkında SSS
 

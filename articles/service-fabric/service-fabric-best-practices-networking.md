@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: d221b828624e649a0d04a89c4394fe5a7fa857dd
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 317977af9d41163013545a6e5f60bee887da596c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "66237315"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262240"
 ---
 # <a name="networking"></a>Ağ
 
@@ -70,7 +70,7 @@ Bir kullanılabilirlik kümesindeki tüm sanal makinelerin [durdurulması ve ön
 
 * Windows kapsayıcı iş yüklerini çalıştırmak için, hizmetten hizmete iletişim kurmak üzere [açık ağ modu](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) ' nu kullanın.
 
-* 80 veya 443 gibi yaygın uygulama bağlantı noktalarını kullanıma sunmak için [Traefik](https://docs.traefik.io/configuration/backends/servicefabric/) gibi bir ters proxy veya [Service Fabric ters proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) kullanın.
+* 80 veya 443 gibi yaygın uygulama bağlantı noktalarını kullanıma sunmak için [Traefik](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/) gibi bir ters proxy veya [Service Fabric ters proxy](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) kullanın.
 
 * Azure bulut depolama alanından temel katmanları çekmeden, AIR özellikli makinelerde barındırılan Windows kapsayıcıları için, Docker Daemon 'daki [--Allow-nondağıtılabilir-yapay](https://docs.microsoft.com/virtualization/windowscontainers/about/faq#how-do-i-make-my-container-images-available-on-air-gapped-machines) bayrağını kullanarak yabancı katman davranışını geçersiz kılın.
 

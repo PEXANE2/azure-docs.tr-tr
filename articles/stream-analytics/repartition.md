@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 82e4a225d26bac04ed4754169cc4a79e0a8f9b32
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fcbef434d3b88c20cdaaeab92a973e5fbe41680d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71101505"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266436"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Azure Stream Analytics ile işlemeyi iyileştirmek için yeniden bölümleme kullanın
 
@@ -56,7 +56,7 @@ SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY D
 
 İşiniz çıktı için SQL veritabanı kullandığında, üretilen iş miktarını en üst düzeye çıkarmak için en iyi bölüm sayısını eşleştirmek üzere açık yeniden bölümleme kullanın. SQL sekiz yazıcı ile en iyi şekilde çalıştığından, temizlemeye başlamadan önce akışı sekiz olarak yeniden bölümlendirip veya daha fazla yukarı akış, iş performansına yarar sağlayabilir. 
 
-8 ' den fazla giriş bölümü olduğunda, giriş bölümleme düzenini devralma uygun bir seçenek olmayabilir. Çıktı yazıcılarının sayısını açıkça belirtmek için [sorgunuzda ' i kullanmayı göz](/stream-analytics-query/into-azure-stream-analytics.md#into-shard-count) önünde bulundurun. 
+8 ' den fazla giriş bölümü olduğunda, giriş bölümleme düzenini devralma uygun bir seçenek olmayabilir. Çıktı yazıcılarının sayısını açıkça belirtmek için [sorgunuzda ' i kullanmayı göz](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) önünde bulundurun. 
 
 Aşağıdaki örnek, doğal olarak bölümlenmeden bağımsız olarak girdiden ve veri kümesini DeviceID boyutuna göre yeniden bölümleyip akışa alarak çıktıyı temizler. 
 

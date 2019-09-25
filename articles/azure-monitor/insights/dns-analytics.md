@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982582"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265159"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS analizi Önizleme çözümü, DNS altyapısıyla ilgili Öngörüler toplayın
 
@@ -179,6 +179,12 @@ Günlük araması sayfasında, bir sorgu oluşturabilirsiniz. Model denetimlerin
 1. İçinde **arama sorgu kutusu**, türü `DnsInventory` tüm DNS envanterle ilişkili veri çözümü tarafından yönetilen DNS sunucuları görüntülemek için. Sonuçlar, DNS sunucuları, DNS bölgeleri ve kaynak kayıtları için günlük verileri listeler.
 
     ![DnsInventory günlük araması](./media/dns-analytics/log-search-dnsinventory.png)
+    
+### <a name="troubleshooting"></a>Sorun giderme
+
+Commopn sorun giderme adımları:
+
+1. Eksik DNS arama verileri-bu sorunu gidermek Için yapılandırmayı sıfırlamayı veya portalda yalnızca yapılandırma sayfasını yüklemeyi deneyin. Sıfırlamak için, bir ayarı başka bir değerle değiştirmeniz, sonra yeniden özgün değere değiştirmeniz ve yapılandırmayı kaydetmeniz yeterlidir.
 
 ## <a name="feedback"></a>Geri Bildirim
 

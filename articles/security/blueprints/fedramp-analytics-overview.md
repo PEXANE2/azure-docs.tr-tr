@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7b07fee46bce4c7b80346eb0b4c0fccd5245d87f
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 9850c5f064815315db6f85a931e7e175d605dcc1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946882"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257584"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure Güvenliği ve Uyumluluğu Şeması: Fedrampa Analizi
 
@@ -111,7 +111,7 @@ Mimari, verileri şifreleme, veritabanı denetimi ve diğer ölçülerle korur.
 [Azure izleyici](../../azure-monitor/overview.md) , etkinlik günlükleri, ölçümler ve Tanılama verileri dahil olmak üzere izleme verilerinin tamamı görüntüsünü oluşturur ve müşterilerin sistem durumunun tam bir resmini oluşturmasını sağlar.  
 [Azure izleyici günlükleri](../azure-security-disk-encryption-overview.md) sistem durumu ve sistem durumunun kapsamlı bir şekilde kaydedilmesini sağlar. Azure ve şirket içi ortamlarınızdaki kaynaklar tarafından oluşturulan verileri toplayıp analiz eder.
 - **Etkinlik günlükleri**: [Etkinlik günlükleri](../../azure-monitor/platform/activity-logs-overview.md) , bir abonelikteki kaynaklarda gerçekleştirilen işlemlerle ilgili öngörüler sağlar.
-- **Tanılama günlükleri**: [Tanılama günlükleri](../../azure-monitor/platform/diagnostic-logs-overview.md) her kaynak tarafından yayılan tüm günlükleri içerir. Bu günlüklerde Windows olay sistemi günlükleri ve Azure Blob depolama, tablolar ve kuyruk günlükleri bulunur.
+- **Tanılama günlükleri**: [Tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md) her kaynak tarafından yayılan tüm günlükleri içerir. Bu günlüklerde Windows olay sistemi günlükleri ve Azure Blob depolama, tablolar ve kuyruk günlükleri bulunur.
 - **Güvenlik duvarı günlükleri**: Application Gateway, tam tanılama ve erişim günlükleri sağlar. WAF özellikli Application Gateway kaynakları için güvenlik duvarı günlükleri kullanılabilir.
 - **Günlük arşivleme**: Tüm tanılama günlükleri, tanımlanan bir saklama süresi olan 2 günlük Arşiv için merkezi ve şifrelenmiş bir Azure depolama hesabına yazar. Bu Günlükler, işleme, depolama ve Pano raporlama için Azure Izleyici günlüklerine bağlanır.
 

@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e31ad78e24f329eb46cd85ba4a5962442a216779
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844835"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257096"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure İzleyici’de Azure Depolama ölçümleri
 
@@ -25,7 +25,7 @@ Azure Izleyici, farklı Azure hizmetleri genelinde izleme için birleştirilmiş
 
 Azure İzleyici ölçümlerine erişim birden çok yol sağlar. Bunlara [Azure Portal](https://portal.azure.com), Azure Izleyici API 'LERI (REST ve .net) ve Event Hubs gibi çözümleme çözümlerini de erişebilirsiniz. Daha fazla bilgi için bkz. [Azure Izleyici ölçümleri](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Ölçümler varsayılan olarak etkindir ve son 93 güne kadar veri erişimi sağlayabilirsiniz. Uzun bir süre saklamak istiyorsanız ölçüm verileri bir Azure depolama hesabına arşivleyebilir. Bu yapılandırılan [tanılama ayarları](../../azure-monitor/platform/diagnostic-logs-overview.md) Azure İzleyici'de.
+Ölçümler varsayılan olarak etkindir ve son 93 güne kadar veri erişimi sağlayabilirsiniz. Uzun bir süre saklamak istiyorsanız ölçüm verileri bir Azure depolama hesabına arşivleyebilir. Bu yapılandırılan [tanılama ayarları](../../azure-monitor/platform/resource-logs-overview.md) Azure İzleyici'de.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Azure portal ölçümler 'e erişin
 
@@ -302,19 +302,19 @@ Aşağıda, bir depolama hesabı için kaynak KIMLIĞINI belirtme biçimi göste
 
 Aşağıda, depolama hizmetlerinin her biri için kaynak KIMLIĞINI belirtme biçimi gösterilmektedir.
 
-* Blob hizmeti kaynak KIMLIĞI
+* Blob hizmeti kaynak kimliği
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 ```
-* Tablo hizmeti kaynak KIMLIĞI
+* Tablo hizmeti kaynak kimliği
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 ```
-* Kuyruk hizmeti kaynak KIMLIĞI
+* Kuyruk hizmeti kaynak kimliği
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 ```
-* Dosya hizmeti kaynak KIMLIĞI
+* Dosya hizmeti kaynak kimliği
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 ```
@@ -393,7 +393,7 @@ Azure depolama, Azure Izleyici 'de ölçümler için aşağıdaki boyutları des
 | Boyut Adı | Açıklama |
 | ------------------- | ----------------- |
 | **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob**, **pageblob**ve **Azure Data Lake Storage**. Append blobu BlockBlob 'a dahildir. |
-| **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık**erişimli: Etkin katman</li> <li>Seyrek erişimli: Cool katmanı</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: Standart Sayfa Blobu için katman türü</li> <li>**Katmanlı olmayan**: Genel amaçlı v1 depolama hesabı için katman türü</li> |
+| **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık**erişimli: Etkin katman</li> <li>Seyrek **erişimli:** Cool katmanı</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: Standart Sayfa Blobu için katman türü</li> <li>**Katmanlı olmayan**: Genel amaçlı v1 depolama hesabı için katman türü</li> |
 | **GeoType** | Birincil veya Ikincil kümeden işlem. Kullanılabilir değerler **PRIMARY** ve **Secondary**' i içerir. İkincil kiracının nesnelerini okurken Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) için geçerlidir. |
 | **ResponseType** | İşlem yanıt türü. Kullanılabilir değerler şunlardır: <br/><br/> <li>**ServerOtherError**: Açıklananlar hariç diğer tüm sunucu tarafı hatalar </li> <li>**ServerBusyError**: HTTP 503 durum kodu döndüren, kimliği doğrulanmış istek. </li> <li>**ServerTimeoutError**: HTTP 500 durum kodu döndüren, zaman aşımına uğramış ve kimliği doğrulanmış istek. Zaman aşımı bir sunucu hatası nedeniyle gerçekleşti. </li> <li>**AuthorizationError**: Yetkisiz veri erişimi veya yetkilendirme hatası nedeniyle başarısız olmuş bir kimliği doğrulanmış istek. </li> <li>**NetworkError**: Ağ hataları nedeniyle başarısız olmuş bir kimliği doğrulanmış istek. Çoğunlukla bir istemci, zaman aşımı süre sonundan önce bağlantıyı erkenden kapattığında gerçekleşir. </li> <li>**ClientThrottlingError**: İstemci tarafı azaltma hatası. </li> <li>**ClientTimeoutError**: HTTP 500 durum kodu döndüren, zaman aşımına uğramış ve kimliği doğrulanmış istek. İstemcinin ağ zaman aşımı veya istek zaman aşımı depolama hizmetinin beklediğinden düşük bir değere ayarlanmışsa beklenen bir zaman aşımıdır. Aksi takdirde, bir ServerTimeoutError olarak bildirilir. </li> <li>**ClientOtherError**: Açıklananlar hariç diğer tüm istemci tarafı hatalar. </li> <li>**Success**: Başarılı istek</li> <li> **Başarılı bir kısıtlama**: Bir SMB istemcisi ilk denemede kısıtlandığında, ancak yeniden denemeler yapıldıktan sonra başarılı olan istek başarılı oldu.</li> |
 | **ApiName** | İşlemin adı. Örneğin: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Tüm işlem adları için bkz. [belge](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |

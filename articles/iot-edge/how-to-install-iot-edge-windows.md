@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: e5b99bba3c3b21ea9662845928c523c329695bf8
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6118c4ddf1386ff4cc816148938e1f5ddeaecc9e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877231"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266090"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Azure IoT Edge çalışma zamanını Windows 'a yükler
 
@@ -42,6 +42,14 @@ Windows cihazınızın IoT Edge destekleyip desteklemediğini gözden geçirmek 
 
 Geliştirme ve test senaryoları için Windows kapsayıcılarına sahip Azure IoT Edge, Windows 10 ' un veya Windows Server 2019 (derleme 17763) ' nin kapsayıcılar özelliğini destekleyen herhangi bir sürümüne yüklenebilir. Şu anda üretim senaryolarında hangi işletim sistemlerinin desteklendiği hakkında bilgi için bkz. [Azure IoT Edge desteklenen sistemler](support.md#operating-systems). 
 
+IoT çekirdek cihazları, IoT Edge çalışma zamanını desteklemek için IoT Core-Windows kapsayıcıları isteğe bağlı özelliğini içermelidir. Windows kapsayıcıları 'nın cihazınızda desteklenip desteklenmediğini denetlemek için [uzak bir PowerShell oturumunda](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) aşağıdaki komutu kullanın: 
+
+```powershell
+Get-Service vmcompute
+```
+
+Hizmet mevcutsa, **çalışıyor**olarak listelenen hizmet durumu ile başarılı bir yanıt almanız gerekir. Vmcompute hizmeti bulunamazsa, cihazınız IoT Edge gereksinimlerini karşılamaz. Bu özellik için destek almak üzere donanım sağlayıcınızla iletişim kurun. 
+
 ### <a name="prepare-for-a-container-engine"></a>Kapsayıcı altyapısı için hazırlanma 
 
 Azure IoT Edge, [OCI uyumlu](https://www.opencontainers.org/) bir kapsayıcı altyapısına bağlıdır. Üretim senaryoları için, Windows cihazınızda Windows kapsayıcıları çalıştırmak üzere yükleme betiğine eklenen Moby altyapısını kullanın. 
@@ -60,7 +68,7 @@ IoT Edge çalışma zamanını bir cihaza ilk kez yüklediğinizde, cihazı IoT 
 
 Aşağıdaki bölümlerde, yeni bir cihazdaki IoT Edge yükleme betiği için ortak kullanım durumları ve parametreleri açıklanır. 
 
-### <a name="option-1-install-and-manually-provision"></a>Seçenek 1: Yükleme ve el ile sağlama
+### <a name="option-1-install-and-manually-provision"></a>1\. Seçenek: Yükleme ve el ile sağlama
 
 Bu ilk seçenekte, cihazı sağlamak için IoT Hub tarafından oluşturulan bir **Cihaz bağlantı dizesi** sağlarsınız. 
 
@@ -111,7 +119,7 @@ Bir cihazı el ile yüklerken ve sağladığınızda yüklemeyi değiştirmek i�
 
 Bu yükleme seçenekleri hakkında daha fazla bilgi için, [tüm yükleme parametreleri](#all-installation-parameters)hakkında bilgi edinmek üzere ileri atlayın.
 
-### <a name="option-2-install-and-automatically-provision"></a>Seçenek 2: Yükleme ve otomatik olarak sağlama
+### <a name="option-2-install-and-automatically-provision"></a>2\. Seçenek: Yükleme ve otomatik olarak sağlama
 
 Bu ikinci seçenekte, cihazı IoT Hub cihaz sağlama hizmetini kullanarak sağlayacaksınız. Bir cihaz sağlama hizmeti örneğinden **kapsam kimliği** ve CIHAZıNıZDAN **kayıt kimliği** sağlayın. [Simetrik anahtarlar](how-to-auto-provision-symmetric-keys.md)kullanırken olduğu gıbı, DPS ile sağlama sırasında kanıtlama mekanizmanıza bağlı olarak ek değerler de gerekebilir.
 
@@ -279,7 +287,7 @@ Deploy-ıotedge komutu, IoT Edge güvenlik cini ve bağımlılıklarını indiri
 | Parametre | Kabul edilen değerler | Açıklamalar |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** veya **Linux** | Bir kapsayıcı işletim sistemi belirtilmemişse, Windows varsayılan değerdir.<br><br>Windows kapsayıcıları için IoT Edge, yüklemeye dahil edilen Moby kapsayıcı altyapısını kullanır. Linux kapsayıcıları için yüklemeyi başlatmadan önce bir kapsayıcı altyapısı yüklemeniz gerekir. |
-| **Proxy** | Proxy URL'si | Cihazınızın internet 'e erişmek için bir proxy sunucusu üzerinden gitmesi gerekiyorsa bu parametreyi ekleyin. Daha fazla bilgi için [bir proxy sunucu üzerinden iletişim kurmak için IOT Edge cihazı yapılandırma](how-to-configure-proxy-support.md). |
+| **Proxy** | Proxy URL 'SI | Cihazınızın internet 'e erişmek için bir proxy sunucusu üzerinden gitmesi gerekiyorsa bu parametreyi ekleyin. Daha fazla bilgi için [bir proxy sunucu üzerinden iletişim kurmak için IOT Edge cihazı yapılandırma](how-to-configure-proxy-support.md). |
 | **Offlineınstallationpath** | Dizin yolu | Bu parametre dahil ise, yükleyici, yükleme için gereken IoT Edge cab ve VC çalışma zamanı MSI dosyaları için listelenen dizini kontrol eder. Dizinde bulunmayan tüm dosyalar indirilir. Her iki dosya da dizinde ise, internet bağlantısı olmadan IoT Edge yükleyebilirsiniz. Belirli bir sürümü kullanmak için bu parametreyi de kullanabilirsiniz. |
 | **Invokewebrequestparameters** | Parametrelerin ve değerlerin Hashtable 'ı | Yükleme sırasında bazı Web istekleri yapılır. Bu Web isteklerinin parametrelerini ayarlamak için bu alanı kullanın. Bu parametre, proxy sunucuları için kimlik bilgilerini yapılandırmak için yararlıdır. Daha fazla bilgi için [bir proxy sunucu üzerinden iletişim kurmak için IOT Edge cihazı yapılandırma](how-to-configure-proxy-support.md). |
 | **Restartifgerekliyse** | yok | Bu bayrak dağıtım betiğinin, gerekirse, makineyi sormadan yeniden başlatmasını sağlar. |
@@ -307,7 +315,7 @@ Initialize-ıotedge komutu, IoT Edge cihaz bağlantı dizeniz ve işletimsel ayr
 | Parametre | Kabul edilen değerler | Açıklamalar |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows** veya **Linux** | Bir kapsayıcı işletim sistemi belirtilmemişse, Windows varsayılan değerdir. Windows kapsayıcıları için, yüklemeye bir kapsayıcı altyapısı dahil edilir. Linux kapsayıcıları için yüklemeyi başlatmadan önce bir kapsayıcı altyapısı yüklemeniz gerekir. |
-| **Proxy** | Proxy URL'si | Cihazınızın internet 'e erişmek için bir proxy sunucusu üzerinden gitmesi gerekiyorsa bu parametreyi ekleyin. Daha fazla bilgi için [bir proxy sunucu üzerinden iletişim kurmak için IOT Edge cihazı yapılandırma](how-to-configure-proxy-support.md). |
+| **Proxy** | Proxy URL 'SI | Cihazınızın internet 'e erişmek için bir proxy sunucusu üzerinden gitmesi gerekiyorsa bu parametreyi ekleyin. Daha fazla bilgi için [bir proxy sunucu üzerinden iletişim kurmak için IOT Edge cihazı yapılandırma](how-to-configure-proxy-support.md). |
 | **Invokewebrequestparameters** | Parametrelerin ve değerlerin Hashtable 'ı | Yükleme sırasında bazı Web istekleri yapılır. Bu Web isteklerinin parametrelerini ayarlamak için bu alanı kullanın. Bu parametre, proxy sunucuları için kimlik bilgilerini yapılandırmak için yararlıdır. Daha fazla bilgi için [bir proxy sunucu üzerinden iletişim kurmak için IOT Edge cihazı yapılandırma](how-to-configure-proxy-support.md). |
 | **Offlineınstallationpath** | Dizin yolu | Bu parametre dahil ise, yükleyici, yükleme için gereken IoT Edge cab ve VC çalışma zamanı MSI dosyaları için listelenen dizini kontrol eder. Dizinde bulunmayan tüm dosyalar indirilir. Her iki dosya da dizinde ise, internet bağlantısı olmadan IoT Edge yükleyebilirsiniz. Belirli bir sürümü kullanmak için bu parametreyi de kullanabilirsiniz. |
 | **Restartifgerekliyse** | yok | Bu bayrak dağıtım betiğinin, gerekirse, makineyi sormadan yeniden başlatmasını sağlar. |

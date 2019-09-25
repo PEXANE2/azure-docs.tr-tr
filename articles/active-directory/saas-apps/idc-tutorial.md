@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642eb15c62c895e85add55b725318b150b51658e
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: df8dfc72dea9289fc13d648b05b59f6d1bd9b3e0
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179970"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273586"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>Öğretici: IDC ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -90,7 +90,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımları gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://cas.idc.com/saml-welcome/AzureAppDirectory`
+    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://www.idc.com/saml-welcome/<SamlWelcomeCode>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [IDC istemci destek ekibine](mailto:webchanneldev@idc.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -139,7 +139,7 @@ Bu bölümde, IDC 'e erişim vererek Azure çoklu oturum açma özelliğini kull
 
 ### <a name="create-idc-test-user"></a>IDC test kullanıcısı oluşturma
 
-Bu bölümde, IDC 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. IDC platformunda kullanıcıları eklemek için [IDC destek ekibi](mailto:webchanneldev@idc.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Kullanıcının IDC 'de önceden oluşturulması gerekmez. Kullanıcı ilk kez çoklu oturum açmayı kullandığında otomatik olarak oluşturulur.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 

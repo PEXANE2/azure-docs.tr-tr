@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: d77557f6d5d6a7bb741b9ff6caa4ea8f76db19c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 70498c5f4c824681ee59b7232e9409235d7f6a93
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567884"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262170"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Veritabanı performansını izlemek ve sorunlarını gidermek için AI kullanarak Akıllı İçgörüler
 
@@ -50,7 +50,7 @@ Tanımlı SQL veritabanı performansı azaltılmaları, tanılama günlüğüne 
 
 | Özellik             | Ayrıntılar              |
 | :------------------- | ------------------- |
-| Veritabanı bilgileri | Bir öngörü algılanan ve kaynak URI gibi bir veritabanıyla ilgili meta veriler. |
+| veritabanı bilgileri | Bir öngörü algılanan ve kaynak URI gibi bir veritabanıyla ilgili meta veriler. |
 | Gözlenen zaman aralığı | Algılanan öngörü dönemi için başlangıç ve bitiş zamanı. |
 | Etkilenen ölçümler | Öngörü oluşturulmasına neden olan ölçümler: <ul><li>Sorgu süresi [saniye] değerini artırır.</li><li>Aşırı bekleyen [saniye].</li><li>Zaman aşımı istekleri [yüzde].</li><li>Hatalı istekler [Percentage].</li></ul>|
 | Etki değeri | Ölçülen ölçüm değeri. |
@@ -96,7 +96,7 @@ Aşağıdaki örnek, Azure SQL Analytics ile görüntülenen bir Akıllı İçg�
 
 ### <a name="set-up-with-event-hubs"></a>Event Hubs ayarla
 
-Event Hubs Akıllı İçgörüler kullanmak için Akıllı İçgörüler günlük verilerini Event Hubs akışa almak üzere yapılandırın, bkz. [Event Hubs Için Azure tanılama günlüklerini akış](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md).
+Event Hubs Akıllı İçgörüler kullanmak için Akıllı İçgörüler günlük verilerini Event Hubs akışa almak üzere yapılandırın, bkz. [Event Hubs Için Azure tanılama günlüklerini akış](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
 Özel izleme ve uyarı ayarlamak için Event Hubs kullanmak için, bkz. [Event Hubs ' de ölçümler ve tanılama günlükleri Ile neler yapılır](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs).
 
@@ -179,4 +179,4 @@ Akıllı İçgörüler günlüğü hatalı isteklerin sayısını verir. Perform
 - [Akıllı içgörüler Ile SQL veritabanı performans sorunlarını giderme](sql-database-intelligent-insights-troubleshoot-performance.md)hakkında bilgi edinin.
 - [SQL veritabanı performans tanılama günlüğünü akıllı içgörüler](sql-database-intelligent-insights-use-diagnostics-log.md)kullanın.
 - SQL Analytics 'i [kullanarak SQL veritabanı izleme](../azure-monitor/insights/azure-sql.md)hakkında bilgi edinin.
-- [Azure kaynaklarınızdan günlük verilerini nasıl toplayacağınızı ve](../azure-monitor/platform/diagnostic-logs-overview.md)kullanacağınızı öğrenin.
+- [Azure kaynaklarınızdan günlük verilerini nasıl toplayacağınızı ve](../azure-monitor/platform/resource-logs-overview.md)kullanacağınızı öğrenin.

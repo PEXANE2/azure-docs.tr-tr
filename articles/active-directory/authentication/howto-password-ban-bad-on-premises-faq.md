@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097563"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268634"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Şirket içi Azure AD parola koruması-sık sorulan sorular
 
@@ -100,6 +100,8 @@ Hayır. Proxy sunucusu durum bilgisiz olduğundan, belirli bir proxy sunucusunun
 **S: Azure AD parola koruma proxy hizmetini Azure AD Connect gibi diğer hizmetlerle yan yana dağıtmayı sorunsuz mı?**
 
 Evet. Azure AD parola koruma proxy hizmeti ve Azure AD Connect hiçbir şekilde doğrudan çakışmalıdır.
+
+Ne yazık ki Azure AD parola koruma proxy 'Si yazılımı tarafından yüklenen Microsoft Azure AD Connect Agent Güncelleştirici hizmeti sürümü ile Azure etkin tarafından yüklenen hizmetin sürümü arasında bir uyumsuzluk bulundu [ Dizin uygulama proxy 'Si](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) yazılımı. Bu uyumsuzluk, aracı güncelleştiricisi hizmetinin yazılım güncelleştirmeleri için Azure ile bağlantı kurabileceğinden kaynaklanabilir. Aynı makinede Azure AD parola koruma proxy ve Azure Active Directory Uygulama Ara Sunucusu yüklenmesi önerilmez.
 
 **S: DC aracıları ve proxy 'ler hangi sırada yüklenir ve kaydedilir?**
 

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c5a08677759f0ed1a39f5507d936c777516b237
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7d3346c873f88654f75628863a01fda76449ce2d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608106"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259400"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama
 
@@ -139,7 +139,7 @@ Kendi cihazını getir (KCG) ve ev-giriş ilkelerindeki ve işletmelerde kablosu
 
 * Yönetici rollerine sahip kullanıcıları ve yönetebilecekleri Hizmetleri belirler.
 * Kuruluşunuzdaki hangi kullanıcıların Azure AD 'ye yönetim erişimi olduğunu öğrenmek için, 1. Aşama ' de listelenenlerin ötesinde ek roller de dahil olmak üzere Azure AD PıM 'yi kullanın.
-* Office 365, Azure AD 'de tanımlanan rollerin ötesinde, kuruluşunuzdaki kullanıcılara atayabileceğiniz bir yönetici rolleri kümesiyle birlikte gelir. Her yönetici rolü ortak iş işlevlerine eşlenir ve kuruluşunuzdaki kişilere [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com)belirli görevleri yapmak için izinler verir. Kuruluşunuzdaki kullanıcıların, Azure AD 'de yönetilmeyen roller aracılığıyla da dahil olmak üzere Office 365 ' e yönetici erişimi olduğunu öğrenmek için Microsoft 365 Yönetim merkezini kullanın. Daha fazla bilgi için bkz. Office [365 Yönetici rolleri](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) ve [En Iyi güvenlik uygulamaları hakkında Office 365](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3).
+* Office 365, Azure AD 'de tanımlanan rollerin ötesinde, kuruluşunuzdaki kullanıcılara atayabileceğiniz bir yönetici rolleri kümesiyle birlikte gelir. Her yönetici rolü ortak iş işlevlerine eşlenir ve kuruluşunuzdaki kişilere [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com)belirli görevleri yapmak için izinler verir. Kuruluşunuzdaki kullanıcıların, Azure AD 'de yönetilmeyen roller aracılığıyla da dahil olmak üzere Office 365 ' e yönetici erişimi olduğunu öğrenmek için Microsoft 365 Yönetim merkezini kullanın. Daha fazla bilgi için bkz. Office [365 Yönetici rolleri](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) ve [En Iyi güvenlik uygulamaları hakkında Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
 * Kuruluşunuzun Azure, Intune veya Dynamics 365 gibi bağlı olduğu diğer hizmetlerde envanterini yapın.
 * Yönetici hesaplarınızın (yalnızca kullanıcılara ait gündelik hesapları değil, yönetim amacıyla kullanılan hesaplara), bunlara iliştirilmiş ve Azure MFA için kayıtlı ve şirket içi MFA kullanan bir çalışan e-posta adresi olduğundan emin olun.
 * Kullanıcılara yönetim erişimi için iş gerekçesini sorun.
@@ -173,7 +173,7 @@ Aç:
 
 Iş için Windows Hello kullanıyorsanız, MFA gereksinimi Windows Hello oturum açma deneyimi kullanılarak karşılanır. Daha fazla bilgi için bkz. [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
-#### <a name="configure-identity-protection"></a>Kimlik Koruması'nı yapılandır 
+#### <a name="configure-identity-protection"></a>Kimlik korumasını yapılandırma 
 
 Azure AD Kimlik Koruması, kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarını algılamak için kullanabileceğiniz, algoritma tabanlı bir izleme ve raporlama aracıdır. Algılanan şüpheli etkinliklere yönelik otomatikleştirilmiş yanıtları yapılandırabilir ve bunları çözmek için uygun işlemleri gerçekleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory kimlik koruması](../active-directory-identityprotection.md).
 

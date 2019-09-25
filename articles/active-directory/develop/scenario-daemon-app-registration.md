@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f590010a655fb01529a4a59b5540cc03068f2b8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: fddd95564e3683aaee067f0442573c41e93376dd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056466"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264386"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API 'Lerini çağıran Daemon uygulaması-uygulama kaydı
 
@@ -29,7 +29,7 @@ Bir Daemon uygulaması için, uygulamayı kaydederken bilmeniz gerekenler aşağ
 
 ## <a name="supported-account-types"></a>Desteklenen hesap türleri
 
-Bu arka plan programı uygulamalarının yalnızca Azure AD kiracısında anlam verdiği için, uygulamayı oluştururken şunları seçmeniz gerekir:
+Bu arka plan programı uygulamalarının yalnızca Azure AD kiracılarında anlam verdiği için, uygulamayı oluştururken şunları seçmeniz gerekir:
 
 - **yalnızca bu kuruluş dizinindeki hesaplar**. Daemon uygulamalarının genellikle iş kolu (LOB) geliştiricileri tarafından yazıldığı, bu seçim en yaygın durumdur.
 - ya da **herhangi bir kuruluş dizinindeki hesaplar**. Müşterileriniz için bir yardımcı program aracı sağlayan bir ISV 'niz varsa, bu seçimi yaparsınız. Müşterinin kiracılar yöneticilerinin onaylaması gerekir.
@@ -43,6 +43,9 @@ Gizli istemci uygulamanızın **yalnızca** istemci kimlik bilgileri akışını
 Daemon uygulaması, API 'lere yalnızca uygulama izinleri isteyebilir (temsilci izinleri yoktur). Uygulama kaydı için **API izin** sayfasında, **izin Ekle** ' yi seçtikten sonra API ailesini seçtikten sonra **Uygulama izinleri**' ni seçin ve ardından izinlerinizi seçin
 
 ![Uygulama izinleri ve yönetici onayı](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
+
+> [!NOTE]
+> Çağırmak istediğiniz Web API 'sinin, temsilci izinleri değil **Uygulama izinleri (uygulama rolleri)** tanımlamasına ihtiyacı vardır. Böyle bir API 'yi kullanıma sunma hakkında daha fazla bilgi için [bkz. korumalı Web API 'si: Uygulama kaydı-Web API 'niz bir Daemon uygulaması tarafından çağrıldığında](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)
 
 Daemon uygulamalarının, Web API 'sini çağıran uygulama için bir kiracı yöneticisi ön onayını olması gerekir. Bu izin, kiracı yöneticisinin  ***kuruluşa* yönetici izni ver** ' i seçen aynı **API izin** sayfasında sağlanır
 

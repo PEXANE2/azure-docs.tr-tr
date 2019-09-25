@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 69c63d4eb2e0bfd04bb232cb0cf39965a5b77193
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: be82ab1597021d7198d7936ecd24e4bec64fdf25
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70104305"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266917"
 ---
 ## <a name="benefits-of-managed-disks"></a>Yönetilen disklerin avantajları
 
@@ -43,15 +43,21 @@ Bölgesel felate karşı korumak için [Azure Backup](../articles/backup/backup-
 
 [Azure rol tabanlı erişim denetimi 'ni (RBAC)](../articles/role-based-access-control/overview.md) , yönetilen bir disk için bir veya daha fazla kullanıcıya belirli izinler atamak üzere kullanabilirsiniz. Yönetilen diskler, okuma, yazma (oluşturma/güncelleştirme), silme ve disk için [paylaşılan erişim imzası (SAS) URI 'sini](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) alma gibi çeşitli işlemler sunar. Yalnızca bir kişinin işini gerçekleştirmesi için ihtiyaç duyacağı işlemlere erişim izni verebilirsiniz. Örneğin, bir kişinin yönetilen bir diski bir depolama hesabına kopyalamasını istemiyorsanız, bu yönetilen disk için dışarı aktarma eylemine erişim izni vermemeye izin vermeyi tercih edebilirsiniz. Benzer şekilde, bir kişinin yönetilen bir diski kopyalamak için SAS URI 'sini kullanmasını istemiyorsanız, bu izni yönetilen diske vermemenizi tercih edebilirsiniz.
 
+### <a name="upload-your-vhd"></a>VHD 'nizi karşıya yükleyin
+
+ Doğrudan karşıya yükleme, VHD 'nizi Azure yönetilen diskine aktarmayı kolaylaştırır. Daha önce, verilerinizi bir depolama hesabına hazırlama dahil daha fazla ilgili bir işlemi izlemeniz gerekiyordu. Şimdi, daha az adım vardır. Şirket içi VM 'Lere Azure 'a yükleme, büyük yönetilen disklere yükleme, yedekleme ve geri yükleme işlemi basitleştirilmiştir. Ayrıca, yönetilen disklere doğrudan VM 'lere iliştirmeden veri yükleme olanağı vererek maliyeti azaltır. VHD 'leri boyut olarak 32 TiB 'ye kadar yüklemek için doğrudan karşıya yükleme kullanabilirsiniz.
+
+ VHD 'nizi Azure 'a aktarmayı öğrenmek için bkz. [CLI](../articles/virtual-machines/linux/disks-upload-vhd-to-managed-disk-cli.md) veya [PowerShell](../articles/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) makaleleri.
+
 ## <a name="encryption"></a>Şifreleme
 
-Yönetilen diskler iki farklı şifreleme türü sunar. Birincisi, depolama hizmeti tarafından gerçekleştirilen Depolama Hizmeti Şifrelemesi (SSE). İkincisi, sanal makinelerinize yönelik işletim sistemi ve veri diskleri üzerinde etkinleştirebileceğiniz Azure disk şifrelemesi ' dir.
+Yönetilen diskler iki farklı şifreleme türü sunar. Birincisi, depolama hizmeti tarafından gerçekleştirilen Depolama Hizmeti Şifrelemesi (SSE). İkincisi, sanal makinelerinize yönelik işletim sistemi ve veri diskleri üzerinde etkinleştirebileceğiniz Azure disk şifrelemesi (ADE) ' dir.
 
 ### <a name="storage-service-encryption-sse"></a>Depolama Hizmeti Şifrelemesi (SSE)
 
 [Azure depolama hizmeti şifrelemesi](../articles/storage/common/storage-service-encryption.md) , Rest 'ten şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılayacak şekilde verilerinizi korur. SSE, yönetilen disklerin kullanılabildiği tüm bölgelerde tüm yönetilen diskler, anlık görüntüler ve görüntüler için varsayılan olarak etkindir. Daha fazla ayrıntı için [yönetilen DISKLER SSS sayfasını](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) ziyaret edin.
 
-### <a name="azure-disk-encryption-ade"></a>Azure disk şifrelemesi (ADE)
+### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 
 Azure disk şifrelemesi, bir IaaS sanal makinesi tarafından kullanılan işletim sistemini ve veri disklerini şifrelemenizi sağlar. Bu şifreleme yönetilen diskler içerir. Windows için Sürücüler, sektör standardı BitLocker şifreleme teknolojisi kullanılarak şifrelenir. Linux için diskler DM-Crypt teknolojisi kullanılarak şifrelenir. Şifreleme işlemi, disk şifreleme anahtarlarını denetlemenize ve yönetmenize olanak tanımak için Azure Key Vault ile tümleşiktir. Daha fazla bilgi için bkz. [IaaS VM 'leri Için Azure disk şifrelemesi](../articles/security/azure-security-disk-encryption-overview.md).
 

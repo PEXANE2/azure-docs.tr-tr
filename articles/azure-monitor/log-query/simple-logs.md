@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: bwren
-ms.openlocfilehash: bff80b7083f2fb2e35af7db652849d527a5b8ba4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 323267dd47735ca54b84e47e6a55d1f2d14a0b06
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963453"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262181"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Azure Izleyici 'de basit Günlükler deneyimi (Önizleme)
 Azure Izleyici, KQL dilini kullanarak [günlük sorguları](log-query-overview.md) oluşturmaya yönelik [zengin bir deneyim](get-started-portal.md) sağlar. KQL 'nin tam gücünden birini zorunlu kılabilir ve temel sorgu gereksinimleri için basitleştirilmiş bir deneyim tercih edebilirsiniz. Basit Günlükler deneyimi, doğrudan KQL ile etkileşimde bulunmadan temel sorgular oluşturmanızı sağlar. Daha karmaşık sorgular gerektirdiğinde, KQL için bir öğrenme aracı olarak basit Günlükler de kullanabilirsiniz.
@@ -31,7 +31,7 @@ Azure Izleyici, KQL dilini kullanarak [günlük sorguları](log-query-overview.m
 Basit Günlükler deneyimi, seçili kaynak için *AzureDiagnostics*, *AzureMetrics*ve *AzureActivity* tablosundan verileri alır. 
 
 ## <a name="using-simple-logs"></a>Basit günlükleri kullanma
-[Log Analytics çalışma alanında günlükleri toplamak için yapılandırılmış tanılama ayarlarıyla](../platform/diagnostic-logs-stream-log-store.md)Azure aboneliğinizdeki herhangi bir Cosmos DB veya Key Vault gidin. **İzleme** menüsünde **Günlükler** ' e tıklayarak basit Günlükler deneyimini açın.
+[Log Analytics çalışma alanında günlükleri toplamak için yapılandırılmış tanılama ayarlarıyla](../platform/resource-logs-collect-storage.md)Azure aboneliğinizdeki herhangi bir Cosmos DB veya Key Vault gidin. **İzleme** menüsünde **Günlükler** ' e tıklayarak basit Günlükler deneyimini açın.
 
 ![Menü](media/simple-logs/menu.png)
 
@@ -44,11 +44,11 @@ Sorgu sonuçlarını görüntülemek için **Çalıştır** ' a tıklayın.
 ## <a name="view-and-edit-kql"></a>KQL 'i görüntüleme ve düzenleme
 Tam Log Analytics deneyiminde basit Günlükler sorgusu tarafından oluşturulan KQL 'yi açmak için **sorgu Düzenleyicisi** ' ni seçin. 
 
-![Sorgu Düzenleyicisi](media/simple-logs/query-editor.png)
+![Sorgu düzenleyicisi](media/simple-logs/query-editor.png)
 
 KQL 'i doğrudan düzenleyebilir ve sonuçlarınızı daha da belirginleştirmek için filtreler gibi Log Analytics diğer özellikleri kullanabilirsiniz.
 
-![KQL 'yi Düzenle](media/simple-logs/edit-kql.png)
+![KQL'i Düzenle](media/simple-logs/edit-kql.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

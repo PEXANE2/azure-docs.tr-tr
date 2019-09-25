@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 4b627b13fb79cd5105a95d9161d9239f28f2e062
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567495"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273549"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneği için VNet alt ağ boyutunu belirleme
 
@@ -29,7 +29,7 @@ Yönetilen bir örnek oluşturduğunuzda Azure, sağlama sırasında seçtiğini
 Tasarıma göre, yönetilen bir örnek bir alt ağda en az 16 IP adresine ihtiyaç duyuyor ve en fazla 256 IP adresi kullanıyor olabilir. Sonuç olarak, alt ağ IP aralıklarını tanımlarken/28 ile/24 arasında bir alt ağ maskesi kullanabilirsiniz. Ağ maskesi biti/28 (ağ başına 14 ana bilgisayar), tek bir genel amaç veya iş açısından kritik dağıtım için iyi bir boyutdir. Bir maske bit/27 (ağ başına 30 ana bilgisayar), aynı VNet içindeki birden çok yönetilen örnek dağıtımı için idealdir. Maske bit ayarları/26 (62 ana bilgisayar) ve/24 (254 ana bilgisayar), ek yönetilen örnekleri desteklemek için VNet 'ten daha fazla ölçeklendirme yapılmasına izin verir.
 
 > [!IMPORTANT]
-> 16 IP adresi olan bir alt ağ boyutu, daha fazla yönetilen örnek ölçeği için sınırlı olabilecek en düşük gereksinimdir. Önek/27 veya aşağıda olan alt ağ seçilmesi kesinlikle önerilir.
+> 16 IP adresi olan bir alt ağ boyutu, sanal çekirdek boyutu değişikliği gibi bir ölçeklendirme işleminin desteklenmediği sınırlı potansiyel olan en düşük gereksinimdir. Önek/27 veya en uzun ön ek olan alt ağ seçilmesi kesinlikle önerilir.
 
 ## <a name="determine-subnet-size"></a>Alt ağ boyutunu belirle
 

@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5288fe57b2f83522b140f65fa62e08f9c63a7af5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852680"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268343"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>Senaryo: Web API'lerini çağıran masaüstü uygulaması
 
@@ -32,7 +32,7 @@ Web API 'Lerini çağıran bir masaüstü uygulaması oluşturmak için ihtiyac�
 
 ## <a name="getting-started"></a>Başlarken
 
-Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıç veya UWP hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturun:
+Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıcı, UWP hızlı başlangıcı veya macOS yerel uygulaması hızlı başlangıcı ' nı izleyerek ilk uygulamanızı oluşturun:
 
 > [!div class="nextstepaction"]
 > [Hızlı Başlangıç: Bir Windows masaüstü uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-windows-desktop.md)
@@ -41,13 +41,16 @@ Henüz yapmadıysanız, .NET Masaüstü hızlı başlangıç veya UWP hızlı ba
 > [!div class="nextstepaction"]
 > [Hızlı Başlangıç: UWP uygulamasından bir belirteç edinin ve Microsoft Graph API çağrısı yapın](./quickstart-v2-uwp.md)
 
+> [!div class="nextstepaction"]
+> [Hızlı Başlangıç: MacOS yerel uygulamasından belirteç alma ve Microsoft Graph API çağrısı](./quickstart-v2-ios.md)
+
 ## <a name="overview"></a>Genel Bakış
 
 Bir masaüstü uygulaması yazar ve kullanıcılara oturum açmak ve Microsoft Graph, diğer Microsoft API 'Leri ya da kendi Web API 'niz gibi Web API 'Lerini çağırmak istiyorsunuz. Çeşitli olanaklar vardır:
 
 - Etkileşimli belirteç alımı kullanabilirsiniz:
 
-  - Masaüstü uygulamanız grafik denetimlerini destekliyorsa (örneğin, bir Windows. form uygulaması veya bir WPF uygulaması).
+  - Masaüstü uygulamanız grafik denetimlerini destekliyorsa (örneğin, bir Windows. form uygulaması, bir WPF uygulaması veya macOS yerel uygulaması).
   - Bu bir .NET Core uygulamasıdır ve Azure AD ile kimlik doğrulama etkileşiminin sistem tarayıcısında gerçekleşme durumunu kabul etmiş olursunuz.
 
 - Windows barındırılan uygulamalar için, Windows etki alanına katılmış bilgisayarlarda çalışan uygulamaların veya AAD 'nin tümleşik Windows kimlik doğrulaması kullanarak sessizce bir belirteç almasına katılmış olması de mümkündür.

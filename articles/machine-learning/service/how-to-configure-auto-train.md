@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213513"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259986"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 
@@ -69,8 +69,10 @@ automl_config = AutoMLConfig(task="classification")
 ```
 
 ## <a name="data-source-and-format"></a>Veri kaynağı ve biçimi
+
 Otomatik machine learning, yerel masaüstüne veya Azure Blob Depolama gibi bulutta bulunan verileri destekler. Verilerin scikit okunacağı-desteklenen veri biçimlerinden öğrenin. Verileri okuyabilirsiniz:
-* Numpy diziler X (özellikleri) ve y (hedef değişkeni veya olarak da bilinen etiket)
+
+* X (Özellikler) ve y dizileri (hedef değişkeni, etiket olarak da bilinir)
 * Pandas dataframe
 
 >[!Important]
@@ -93,55 +95,25 @@ Otomatik machine learning, yerel masaüstüne veya Azure Blob Depolama gibi bulu
     ```python
     import pandas as pd
     from sklearn.model_selection import train_test_split
+
     df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
-    # get integer labels
-    y = df["Label"]
-    df = df.drop(["Label"], axis=1)
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
+    y_df = df["Label"]
+    x_df = df.drop(["Label"], axis=1)
+    x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.1, random_state=42)
     ```
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Uzak işlem üzerinde denemeyi çalıştırmak için veri alma
 
-Uzaktan yürütmeler için, verileri uzak işlem üzerinden erişilebilir hale getirmeniz gerekir. Bu, verileri veri deposuna yükleyerek yapılabilir.
+Uzaktan yürütmeler için eğitim verilerine uzaktan işlem üzerinden erişilebilir olması gerekir. SDK 'daki [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) sınıf şu işlevleri sunar:
 
-İşte şu şekilde bir örnek `datastore`:
+* statik dosyalardan veya URL kaynaklarından verileri çalışma alanınıza kolayca aktarın
+* bulut bilgi işlem kaynaklarında çalışırken verilerinizi eğitim betiklerine kullanılabilir hale getirme
 
-```python
-    import pandas as pd
-    from sklearn import datasets
-
-    data_train = datasets.load_digits()
-
-    pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
-    pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
-
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
-```
-
-### <a name="define-dprep-references"></a>Dprep başvurularını tanımlayın
-
-Aşağıdaki gibi otomatik makine öğrenimi `AutoMLConfig` nesnesine geçirilecek dprep başvurusu olarak X ve y tanımlayın:
-
-```python
-
-    X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
-    y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
-
-
-    automl_config = AutoMLConfig(task = 'classification',
-                                 debug_log = 'automl_errors.log',
-                                 path = project_folder,
-                                 run_configuration=conda_run_config,
-                                 X = X,
-                                 y = y,
-                                 **automl_settings
-                                )
-```
+İşlem Hedefinizdeki verileri bağlamak için `Dataset` sınıfını kullanma örneği için bkz. [nasıl yapılır](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) .
 
 ## <a name="train-and-validation-data"></a>Veri eğitme ve doğrulama
 
-Doğrudan `AutoMLConfig` yöntemde ayrı tren ve doğrulama kümesi belirtebilirsiniz.
+Doğrudan `AutoMLConfig` oluşturucuda ayrı tren ve doğrulama kümeleri belirtebilirsiniz.
 
 ### <a name="k-folds-cross-validation"></a>K hatları çapraz doğrulama
 
@@ -175,7 +147,7 @@ Otomatik makine öğrenimi deneme yapılandırmak için kullanabileceğiniz birk
 
 Bazı örnekler:
 
-1.  Birincil Metrik yinelemeyle 50 yinelemeler ve 2 çapraz doğrulama hatları sonra sona erdirmek için denemeyi 12.000 saniyede en fazla süresine sahip olarak ağırlıklı AUC kullanarak sınıflandırma deneme.
+1.  7 yinelemeden ve 2 çapraz doğrulama katlarının 50 ardından sona erdirmek için, yineleme başına en fazla 12.000 saniye süresi ile AUC ağırlıklı, birincil ölçüm olarak, deneyin.
 
     ```python
     automl_classifier = AutoMLConfig(
@@ -202,12 +174,10 @@ Bazı örnekler:
         n_cross_validations=5)
     ```
 
-Üç farklı `task` parametre değeri uygulanacak modellerin listesini belirlenir.  Dahil etmek veya `blacklist` hariç tutmak için kullanılabilir modellerle Yinelemeleri değiştirmek için veyaparametrelerinikullanın.`whitelist` Desteklenen modellerin listesi [Supportedmodeller sınıfında](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)bulunabilir.
+Üç farklı `task` parametre değeri (üçüncü görev türü olur `forecasting`ve görev olarak `regression` aynı algoritma havuzunu kullanır) uygulanacak modellerin listesini belirleme. Dahil etmek veya `blacklist` hariç tutmak için kullanılabilir modellerle Yinelemeleri değiştirmek için veyaparametrelerinikullanın.`whitelist` Desteklenen modellerin listesi [Supportedmodeller sınıfında](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)bulunabilir.
 
 ### <a name="primary-metric"></a>Birincil Metrik
-Birincil ölçüm; Yukarıdaki örneklerde gösterildiği gibi, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz birincil ölçüm seçtiğiniz görev türüne göre belirlenir. Kullanılabilir ölçümlerin listesi aşağıda verilmiştir.
-
-[Otomatik makine öğrenimi sonuçlarını anlamak](how-to-understand-automated-ml.md)için bunların belirli tanımları hakkında bilgi edinin.
+Birincil ölçüm, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz kullanılabilir ölçümler, seçtiğiniz görev türüne göre belirlenir ve aşağıdaki tabloda her bir görev türü için geçerli birincil ölçümler gösterilmektedir.
 
 |Sınıflandırma | Regresyon | Zaman serisi tahmin
 |-- |-- |--
@@ -217,9 +187,11 @@ Birincil ölçüm; Yukarıdaki örneklerde gösterildiği gibi, iyileştirme iç
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
+[Otomatik makine öğrenimi sonuçlarını anlamak](how-to-understand-automated-ml.md)için bunların belirli tanımları hakkında bilgi edinin.
+
 ### <a name="data-preprocessing--featurization"></a>Veri ön işlemesi &
 
-Her otomatik makine öğrenimi denemesinde, verileriniz [otomatik olarak ölçeklendirilir ve](concept-automated-ml.md#preprocess) algoritmaların iyi hale getirebileceği şekilde normalleştirilir.  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek ön işleme/korleştirme de etkinleştirebilirsiniz. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess).
+Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bulunan özelliklerle hassas olan *belirli* algoritmalara yardımcı olacak şekilde [otomatik olarak ölçeklendirilir ve normalleştirilir](concept-automated-ml.md#preprocess) .  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek ön işleme/korleştirme de etkinleştirebilirsiniz. [Nelerin dahil olduğu hakkında daha fazla bilgi edinin](how-to-create-portal-experiments.md#preprocess).
 
 Bu özelliği etkinleştirmek için `"preprocess": True` [ `AutoMLConfig` sınıfı](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)için belirtin.
 
@@ -227,12 +199,13 @@ Bu özelliği etkinleştirmek için `"preprocess": True` [ `AutoMLConfig` sını
 > Otomatik makine öğrenimi ön işleme adımları (özellik normalleştirme, eksik verileri işleme, metni sayısal olarak dönüştürme, vb.) temel modelin bir parçası haline gelir. Tahmin için model kullanılırken, eğitim sırasında uygulanan aynı ön işleme adımları, giriş verilerinize otomatik olarak uygulanır.
 
 ### <a name="time-series-forecasting"></a>Zaman serisi tahmin
-Zaman serisi tahmin görev türü için, tanımlamanız gereken ek parametreleriniz vardır.
-1. time_column_name-bu, bir tarih/saat serisi içeren eğitim verilerinizde sütunun adını tanımlayan gerekli bir parametredir.
-1. max_horizon-bu, eğitim verilerinin dönemlik temelinde tahmin etmek istediğiniz süreyi tanımlar. Örneğin, günlük saat grasınlar ile eğitim verileriniz varsa, modelin ne kadar süreyle eğmesini istediğinizi tanımlarsınız.
-1. grain_column_names-bu, eğitim verilerinizde bireysel zaman serisi verileri içeren sütunların adını tanımlar. Örneğin, belirli bir markaların mağazasının satışlarını tahmin ediyorsanız, bir mağaza ve marka sütunları gren sütunları olarak tanımlarsınız.
+Zaman serisi `forecasting` görevinin yapılandırma nesnesinde ek parametreler olması gerekir:
 
-Aşağıda kullanılan bu ayarların örneğine bakın; Not defteri örneği [burada](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)bulunabilir.
+1. `time_column_name`: Eğitim verilerinizde geçerli bir zaman serisi içeren sütunun adını tanımlayan gerekli parametre.
+1. `max_horizon`: Eğitim verilerinin dönemselliği temelinde tahmin etmek istediğiniz sürenin uzunluğunu tanımlar. Örneğin, günlük saat grasınlar ile eğitim verileriniz varsa, modelin ne kadar süreyle eğmesini istediğinizi tanımlarsınız.
+1. `grain_column_names`: Eğitim verilerinizde bireysel zaman serisi verileri içeren sütunların adını tanımlar. Örneğin, belirli bir markaların mağazasının satışlarını tahmin ediyorsanız, bir mağaza ve marka sütunları gren sütunları olarak tanımlarsınız. Her bir Gren/gruplama için ayrı zaman serisi ve tahminler oluşturulacaktır. 
+
+Aşağıda kullanılan ayarların örnekleri için bkz. [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
 ```python
 # Setting Store and Brand as grains for training.
@@ -341,11 +314,11 @@ run = experiment.submit(automl_config, show_output=True)
 >Ayarı `show_output` için `True` konsolunda gösterilen çıkış sonuçlanıyor.
 
 ### <a name="exit-criteria"></a>Çıkış kriterleri
-Denemenizi tamamlamaya yönelik olarak tanımlayabileceğiniz birkaç seçenek vardır.
-1. Ölçüt yok-herhangi bir çıkış parametresi tanımlamadıysanız, birincil ölçümünde başka bir ilerleme yapılıncaya kadar deneme devam edecektir.
-1. Yineleme sayısı-çalıştırılacak denemenin yineleme sayısını tanımlarsınız. Her yinelemede dakika cinsinden bir zaman sınırı tanımlamak için isteğe bağlı iteration_timeout_minutes ekleyebilirsiniz.
-1. Süre dolduktan sonra çık-ayarlarınızda experiment_timeout_minutes kullanarak, denemede ne kadar süreyle denenmeye devam etmesi gerektiğini tanımlayabilirsiniz.
-1. Bir puana ulaşıldıktan sonra çık-experiment_exit_score kullanarak, birincil ölçmenize dayalı bir puana ulaşıldıktan sonra denemeyi tamamlamayı tercih edebilirsiniz.
+Denemenizin sona erdirmek için tanımlayabileceğiniz birkaç seçenek vardır.
+1. Ölçüt yok: Herhangi bir çıkış parametresi tanımlamadıysanız, birincil ölçümünde başka bir ilerleme yapılıncaya kadar deneme devam edecektir.
+1. Yineleme sayısı: Çalıştırmayı denemek için yineleme sayısını tanımlarsınız. İsteğe bağlı olarak `iteration_timeout_minutes` , her yineleme başına dakika cinsinden bir zaman sınırı tanımlayabilirsiniz.
+1. Sürenin sonunda çık: Ayarlarınızda `experiment_timeout_minutes` kullanmak, bir deneyin çalıştırmada ne kadar süreyle devam etmesi gerektiğini tanımlamanızı sağlar.
+1. Bir puana ulaşıldıktan sonra çık: Kullanmak `experiment_exit_score` , birincil ölçüm puanına ulaşıldıktan sonra denemeyi tamamlar.
 
 ### <a name="explore-model-metrics"></a>Model ölçümleri keşfedin
 

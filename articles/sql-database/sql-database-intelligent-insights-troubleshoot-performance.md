@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 9f6b20806f75cc28b5f4f740ffb67faae491ae84
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f884b39db92f44f7cff938e0ac4b9c2e22dc36cb
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567906"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262204"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Akıllı İçgörüler Azure SQL veritabanı performans sorunlarını giderme
 
-Bu sayfada Azure SQL veritabanı hakkında bilgi ve [akıllı içgörüler](sql-database-intelligent-insights.md) veritabanı performansı tanılama günlüğü aracılığıyla algılanan yönetilen örnek performans sorunları sağlanmaktadır. Tanılama günlüğü telemetrisi, [Azure izleyici günlüklerine](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure depolama](sql-database-metrics-diag-logging.md#stream-into-storage)'ya veya özel DevOps uyarısı ve raporlama özelliklerine yönelik bir üçüncü taraf çözümüne akışı yapılabilir.
+Bu sayfada Azure SQL veritabanı hakkında bilgi ve [akıllı içgörüler](sql-database-intelligent-insights.md) veritabanı performansı tanılama günlüğü aracılığıyla algılanan yönetilen örnek performans sorunları sağlanmaktadır. Tanılama günlüğü telemetrisi, [Azure izleyici günlüklerine](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure depolama](sql-database-metrics-diag-logging.md#stream-into-storage)'ya veya özel DevOps uyarısı ve raporlama özelliklerine yönelik bir üçüncü taraf çözümüne akışı yapılabilir.
 
 > [!NOTE]
 > Akıllı İçgörüler kullanan hızlı bir SQL veritabanı performans sorunlarını giderme kılavuzu için, bu belgede [Önerilen sorun giderme akışı](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) Akış Çizelgesine bakın.
@@ -331,4 +331,4 @@ Akıllı İçgörüler, genellikle performans sorununun kök neden analizini ger
 - [Akıllı içgörüler](sql-database-intelligent-insights.md) kavramları öğrenin.
 - [Azure SQL veritabanı performans tanılama günlüğünü akıllı içgörüler](sql-database-intelligent-insights-use-diagnostics-log.md)kullanın.
 - [Azure SQL Analytics kullanarak Azure SQL veritabanını](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)izleyin.
-- [Azure kaynaklarınızdan günlük verilerini toplamayı ve](../azure-monitor/platform/diagnostic-logs-overview.md)kullanmayı öğrenin.
+- [Azure kaynaklarınızdan günlük verilerini toplamayı ve](../azure-monitor/platform/resource-logs-overview.md)kullanmayı öğrenin.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: e61ddd6cb51795fad564b6246fb24ea4ce48f028
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 467ec25bb9e41180da36f118094324e4fea48cf8
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982949"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266093"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Saydam bir ağ geçidi olarak görev yapacak bir IOT Edge cihazı yapılandırma
 
@@ -34,7 +34,7 @@ Başarılı bir saydam ağ geçidi bağlantısı kurmak için üç genel adım v
 
 Bir cihazın ağ geçidi olarak çalışması için, onun aşağı akış cihazlarına güvenli bir şekilde bağlanabilmesi gerekir. Azure IOT Edge cihazları arasında güvenli bağlantılar kurmak için bir ortak anahtar altyapısı (PKI) kullanmanıza olanak tanır. Bu durumda, biz saydam bir ağ geçidi olarak görev yapan bir IOT Edge cihazına bağlamak için bir aşağı akış cihazı vermiş olursunuz. Makul güvenliği korumak için, aşağı akış cihazının ağ geçidi cihazının kimliğini onaylamasını gerekir. Bu kimlik denetimi, cihazlarınızın potansiyel olarak kötü amaçlı ağ geçitlerine bağlanmasını engeller.
 
-Bir aşağı akış cihaz herhangi bir uygulama veya ile oluşturulan bir kimliğe sahiptir platform olabilir [Azure IOT hub'ı](https://docs.microsoft.com/azure/iot-hub) bulut hizmeti. Çoğu durumda, bu uygulamaları kullanma [Azure IOT cihaz SDK'sını](../iot-hub/iot-hub-devguide-sdks.md). Tüm pratik amacıyla bir aşağı akış cihazın IOT Edge ağ geçidi cihazın kendisinde çalışan bir uygulama bile olabilir. 
+Saydam bir ağ geçidi senaryosunda bir aşağı akış cihazı, [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub) bulut hizmeti ile oluşturulmuş bir kimliği olan herhangi bir uygulama veya platform olabilir. Çoğu durumda, bu uygulamaları kullanma [Azure IOT cihaz SDK'sını](../iot-hub/iot-hub-devguide-sdks.md). Tüm pratik amacıyla bir aşağı akış cihazın IOT Edge ağ geçidi cihazın kendisinde çalışan bir uygulama bile olabilir. Ancak, bir IoT Edge cihaz IoT Edge bir ağ geçidinin bir aşağı akış olamaz. 
 
 Ağ geçidi cihazı topolojiniz için gerekli güven sağlayan herhangi bir sertifika altyapısı oluşturabilirsiniz. Bu makalede, belirli bir IoT Hub (IoT Hub 'ı kök CA) ile ilişkili bir X. 509.952 CA sertifikası içeren ve bu CA ile imzalanan bir dizi sertifika olan IoT Hub [x. 509.952 CA güvenliğini](../iot-hub/iot-hub-x509ca-overview.md) etkinleştirmek için kullandığınız sertifika kurulumunu kabul ediyoruz. ve IoT Edge cihaz için bir CA.
 
@@ -49,7 +49,8 @@ Aşağıdaki adımlar, sertifikaları oluşturma ve bunları ağ geçidine doğr
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bir ağ geçidi olarak yapılandırmak için Azure IOT Edge cihazı. Aşağıdaki işletim sistemlerinden biri için IoT Edge yükleme adımlarını kullanın:
+* Sertifika oluşturmak için bir geliştirme makinesi. 
+* Bir ağ geçidi olarak yapılandırmak için Azure IOT Edge cihazı. Aşağıdaki işletim sistemlerinden biri için IoT Edge yükleme adımlarını kullanın:
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
 
@@ -63,7 +64,7 @@ Bu bölümde oluşturulan sertifikaları yalnızca test amaçlarına yöneliktir
 
 OpenSSL için Windows sertifikalarını oluşturmak için kullanmakta olduğunuz makineye yükleyin. Windows cihazınızda OpenSSL zaten yüklüyse, bu adımı atlayabilirsiniz, ancak PATH ortam değişkeninizdeki OpenSSL. exe ' nin kullanılabilir olduğundan emin olabilirsiniz. 
 
-OpenSSL yükleyebileceğiniz birkaç yolu vardır:
+OpenSSL 'yi yüklemenin çeşitli yolları vardır; örneğin:
 
 * **Kolay** [Üçüncü taraf OpenSSL ikililerini](https://wiki.openssl.org/index.php/Binaries)indirin ve yükleyin, örneğin, [SourceForge üzerinde OpenSSL](https://sourceforge.net/projects/openssl/). Tam yolunu openssl.exe, PATH ortam değişkenine ekleyin. 
    
@@ -321,4 +322,4 @@ Genişletilmiş çevrimdışı özellikleri etkinleştirmek için, bir IoT Edge 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Saydam bir ağ geçidi olarak çalışan bir IOT Edge cihazına sahip olduğunuza göre ağ geçidi güven ve iletileri göndermek için aşağı akış cihazlarınızı yapılandırmak gerekir. Daha fazla bilgi için bkz. bir [aşağı akış cihazını Azure IoT Edge bir ağ geçidine bağlama](how-to-connect-downstream-device.md) ve [Azure IoT Hub bir aşağı akış cihazının kimliğini doğrulama](how-to-authenticate-downstream-device.md).
+Saydam bir ağ geçidi olarak çalışan bir IOT Edge cihazına sahip olduğunuza göre ağ geçidi güven ve iletileri göndermek için aşağı akış cihazlarınızı yapılandırmak gerekir. Saydam ağ geçidi senaryonuzu ayarlamanın sonraki adımları için [bir aşağı akış cihazının kimliğini Azure IoT Hub doğrulamak](how-to-authenticate-downstream-device.md) için devam edin. 

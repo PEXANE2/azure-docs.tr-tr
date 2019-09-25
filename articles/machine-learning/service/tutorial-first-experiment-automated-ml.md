@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 09/09/2019
-ms.openlocfilehash: 8d91768d46d3e4a793982418da91f2d1877c5a79
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 09/26/2019
+ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162537"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259322"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
@@ -58,10 +58,11 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
 
 1. **Kullanmaya**başlayın ' ı seçin.
 
-1.  Sol taraftaki bölmedeki **yazma** bölümünün altında **Otomatik ml** ' yi seçin.
-Otomatik Machine Learning ilk denemeniz bu olduğundan **Başlarken** ekranını görürsünüz.
+1. Sol bölmede, **yazma** bölümü altında **Otomatik ml** ' yi seçin.
 
-    ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
+   Bu ilk otomatik ML denemenize ait olduğundan Başlarken ekranını görürsünüz.
+
+   ![Azure Machine Learning Studio](media/tutorial-1st-experiment-automated-ml/get-started.png)
 
 1. **Deneme oluştur**' u seçin. 
 
@@ -79,6 +80,7 @@ Otomatik Machine Learning ilk denemeniz bu olduğundan **Başlarken** ekranını
    >Bu öğretici için, varsayılan depolama hesabını ve yeni hesaplamanıza göre oluşturulan kapsayıcıyı kullanacaksınız. Otomatik olarak formda doldurulur.
     
 1. İşlem hedefini almak için **Oluştur** ' u seçin. 
+
    **Bu, tamamlanacak birkaç dakika sürer.** 
 
 1. Oluşturulduktan sonra, açılan listeden yeni işlem hedefini seçin ve **İleri ' yi**seçin.
@@ -92,18 +94,18 @@ Otomatik Machine Learning ilk denemeniz bu olduğundan **Başlarken** ekranını
     1. Veri kümenize benzersiz bir ad verin ve isteğe bağlı bir açıklama sağlayın. 
 
     1. Çalışma alanı oluşturma sırasında otomatik olarak ayarlanan varsayılan kapsayıcıya yüklemek için sol alt kısımdaki **İleri** ' yi seçin. Genel Önizleme yalnızca yerel dosya yüklemelerini destekler. 
-
-    1. Karşıya yükleme tamamlandığında, **Ayarlar ve önizleme** formu dosya türüne göre akıllıca doldurulur. Formun aşağıdaki gibi doldurulduğundan emin olun.
+    
+       Karşıya yükleme tamamlandığında, ayarlar ve önizleme formu dosya türüne göre önceden doldurulur. 
+       
+    1. **Ayarlar ve önizleme** formunun aşağıdaki gibi doldurulduğunu doğrulayın ve **İleri ' yi**seçin.
         
-        Alan|Value
+        Alan|Öğretici için değer
         ---|---
         Dosya biçimi| Sınırlandırılmış
         Sınırlayıcı| Virgül
         Encoding| UTF-8
         Sütun üstbilgileri| Tüm dosyaların üst bilgileri aynı
         Satırları atla | Yok.
-
-        **İleri**’yi seçin.
     
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için, **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. Deneme için veri kümesinin karşıya yüklenmesini ve oluşturulmasını tamamladıktan sonra **bitti**' yi seçin.
 
@@ -116,16 +118,17 @@ Otomatik Machine Learning ilk denemeniz bu olduğundan **Başlarken** ekranını
 1. **Gelişmiş ayarlar** ' ı genişletin ve alanları aşağıdaki gibi doldurun.
 
    >[!NOTE]
-   > Bu deneme için, yineleme eşiğine göre ölçüm puanı veya en fazla çekirdek ayarlayamazsınız. Ayrıca algoritmaların test edilmeye engel kalmazsınız.
+   > Bu öğreticide, yineleme eşiğine göre ölçüm puanı veya en fazla çekirdek ayarlayamayacağız. Ya da algoritmaların test edilmeye engel olursunuz.
    
-    Gelişmiş&nbsp;ayarlar|Açıklama|Öğretici&nbsp;için&nbsp;değer
-    ------|---------|---
-    Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|**AUC_weighted** 
-    Çıkış kriterleri| Bu ölçütlerden herhangi biri karşılandığında, eğitim işi tam olarak tamamlanmamış olsa bile sona erer. |Eğitim&nbsp;iş&nbsp;süresi&nbsp;(dakika): **e**  <br> <br> &nbsp;&#58;Yinelemelerin en fazla# 10&nbsp;&nbsp; 
-    Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
-    Doğrulama| Doğrulama türü ve testlerin sayısı. | Çapraz doğrulamayı yana **kesme**<br><br>  çapraz doğrulamalar: **2** 
-    Eş Zamanlılık| Maksimum eşzamanlı yineleme sayısı.|**5**
-
+   Gelişmiş&nbsp;ayarlar|Açıklama|Öğretici&nbsp;için&nbsp;değer
+   ------|---------|---
+   Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
+   Çıkış kriterleri| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim&nbsp;işi&nbsp;saati: 5 <br> <br> &#58;Yinelemelerin en fazla&nbsp;#10&nbsp;&nbsp;
+   Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
+   Doğrulama türü | Bir çapraz doğrulama türü seçin.|Çapraz doğrulamayı yana kesme
+   Doğrulama sayısı | Test sayısı. | 2 çapraz doğrulama 
+   Eş Zamanlılık| Maksimum eşzamanlı yineleme sayısı.|5
+   
 1. Denemeyi çalıştırmak için **Başlat** ' ı seçin. Deneme hazırlığı başladığında bir durum iletisi içeren bir ekran görüntülenir.
 
 >[!IMPORTANT]

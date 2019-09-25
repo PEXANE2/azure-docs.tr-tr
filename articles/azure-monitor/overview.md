@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: a80f99bc37d3a92a794a78f1f47ce32fbaae75a3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989180"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262220"
 ---
 # <a name="azure-monitor-overview"></a>Azure İzleyiciye Genel Bakış
 
-Azure Izleyici, bulut ve şirket içi ortamlarınızdaki telemetri toplama, çözümleme ve üzerinde işlem yapmaya yönelik kapsamlı bir çözüm sunarak uygulamalarınızın kullanılabilirliğini ve performansını en üst düzeye çıkarır. Uygulamalarınızın performansını anlamanıza ve uygulamalarla bağlı oldukları kaynakları etkileyen sorunları önceden tespit etmenize yardımcı olur.
+Azure İzleyici, bulut ve şirket içi ortamlardaki telemetriyi toplamak, analiz etmek ve bunlarda eylem gerçekleştirmek için kapsamlı bir çözüm sunarak uygulamalarınızın kullanılabilirliğini ve performansını en üst düzeye çıkarır. Uygulamalarınızın performansını anlamanıza ve uygulamalarla bağlı oldukları kaynakları etkileyen sorunları önceden tespit etmenize yardımcı olur.
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
@@ -57,7 +57,7 @@ Azure Izleyici, çeşitli kaynaklardan veri toplayabilir. Uygulamalarınızın v
 
 Bir Azure aboneliği oluşturur ve sanal makineler ve Web uygulamaları gibi kaynakları eklemeye başladığınızda Azure Izleyici veri toplamaya başlar.  Kaynaklar oluşturulduğunda veya değiştirildiğinde [etkinlik günlükleri](platform/activity-logs-overview.md) kaydı. [Ölçümler](platform/data-platform.md) , kaynağın nasıl çalıştığını ve tükettiği kaynakları bildirir. 
 
-[Tanılama 'yı etkinleştirip](platform/diagnostic-logs-overview.md) işlem kaynaklarına [bir aracı ekleyerek](platform/agent-windows.md) , topladığınız verileri kaynakların gerçek işlemine genişletin. Bu, kaynağın iç işlemi için telemetri toplar ve Windows ve Linux konuk işletim sisteminden günlükleri ve ölçümleri toplamak üzere farklı [veri kaynakları](platform/agent-data-sources.md) yapılandırmanıza olanak tanır. 
+[Tanılama 'yı etkinleştirip](platform/resource-logs-overview.md) işlem kaynaklarına [bir aracı ekleyerek](platform/agent-windows.md) , topladığınız verileri kaynakların gerçek işlemine genişletin. Bu, kaynağın iç işlemi için telemetri toplar ve Windows ve Linux konuk işletim sisteminden günlükleri ve ölçümleri toplamak üzere farklı [veri kaynakları](platform/agent-data-sources.md) yapılandırmanıza olanak tanır. 
 
 Uygulama [Hizmetleri uygulamanız](app/azure-web-apps.md) veya [VM ve sanal makine ölçek kümesi uygulamanız](app/azure-vm-vmss-apps.md)için izlemeyi etkinleştirerek, Application Insights sayfa görünümleri, uygulama istekleri ve dahil olmak üzere uygulamanız hakkında ayrıntılı bilgiler toplamasını etkinleştirin. larý. Kullanıcı trafiğinin benzetimini yapmak için bir [Kullanılabilirlik testi](app/monitor-web-app-availability.md) yapılandırarak uygulamanızın kullanılabilirliğini daha da doğrulayın.
 

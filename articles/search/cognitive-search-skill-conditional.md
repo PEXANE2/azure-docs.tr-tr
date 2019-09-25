@@ -5,17 +5,16 @@ services: search
 manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: 29e50a3d978338eaa46566574e6a20685a14bda4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186383"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265808"
 ---
 #   <a name="conditional-skill"></a>Koşullu yetenek
 
@@ -154,7 +153,7 @@ Bu örnekte, bazı Tümcelerin *Frenchsentiment* özelliği vardır. *Frenchsent
 ## <a name="transformation-example"></a>Dönüştürme örneği
 ### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>Örnek beceri tanımı 4: Tek bir alanda veri dönüştürme
 
-Bu örnekte, 0 ile 1 arasında bir yaklaşım alırız. Bunu-1 ile 1 arasında olacak şekilde dönüştürmek istiyoruz. Bu küçük dönüşümü yapmak için koşullu yetenek kullanabiliriz.
+Bu örnekte, 0 ile 1 arasında *bir yaklaşım* alırız. Bunu-1 ile 1 arasında olacak şekilde dönüştürmek istiyoruz. Bu küçük dönüşümü yapmak için koşullu yetenek kullanabiliriz.
 
 Bu örnekte, koşulun her zaman *doğru*olduğu için yeteneğin koşullu yönünü kullanmıyoruz.
 

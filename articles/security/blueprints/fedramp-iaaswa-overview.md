@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: e1d481c6019feebf3d62f0e23480f5572363869c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: bcce4dcac35b783efefe81abc2090506502e9931
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946836"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257291"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure Güvenliği ve Uyumluluğu Şeması: Fedrampa için IaaS Web uygulaması
 
@@ -62,8 +62,8 @@ Bu çözüm aşağıdaki Azure hizmetlerini kullanır. Dağıtım mimarisinin ay
 - Azure Load Balancer
 - Azure Application Gateway
     - (1) WAF Application Gateway etkin
-        - güvenlik duvarı modu: önleme
-        - kural kümesi: OWASP 3,0
+        - Güvenlik duvarı modu: önleme
+        - Kural kümesi: OWASP 3,0
         - dinleyici: bağlantı noktası 443
 - Azure Storage
     - (7) coğrafi olarak yedekli depolama hesapları
@@ -145,12 +145,12 @@ Aşağıdaki teknolojiler Azure ortamında kimlik yönetimi özellikleri sağlar
 
 **Bulut tanığı**: [Bulut tanığı](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) , Windows Server 2016 ' de yönetim noktası olarak Azure 'dan yararlanan bir yük devretme kümesi çekirdek tanığı türüdür. Diğer çekirdek tanığı gibi bulut tanığı bir oy alır ve çekirdek hesaplamalarına katılabilir, ancak standart genel kullanıma açık Azure Blob depolamayı kullanır. Bu, genel bulutta barındırılan VM 'lerin ek bakım yükünü ortadan kaldırır.
 
-### <a name="logging-and-auditing"></a>Günlüğe kaydetme ve denetleme
+### <a name="logging-and-auditing"></a>Günlük kaydı ve denetim
 
 Azure Izleyici günlükleri sistem durumu ve sistem durumunun kapsamlı bir şekilde kaydedilmesini sağlar. [Azure izleyici günlükleri](../azure-security-disk-encryption-overview.md) çözümü, Azure ve şirket içi ortamlarda kaynaklar tarafından oluşturulan verileri toplar ve analiz eder.
 
 - **Etkinlik günlükleri:**  [Etkinlik günlükleri](../../azure-monitor/platform/activity-logs-overview.md) , bir abonelikteki kaynaklarda gerçekleştirilen işlemlerle ilgili öngörüler sağlar. Etkinlik günlükleri, bir işlemin başlatıcısının, oluşma süresinin ve durumunun belirlenmesine yardımcı olabilir.
-- **Tanılama günlükleri:**  [Tanılama günlükleri](../../azure-monitor/platform/diagnostic-logs-overview.md) her kaynak tarafından yayılan tüm günlüklerdir. Bu Günlükler Windows olay sistemi günlükleri, Azure depolama günlükleri, Key Vault denetim günlükleri ve Application Gateway erişim ve güvenlik duvarı günlükleri içerir.
+- **Tanılama günlükleri:**  [Tanılama günlükleri](../../azure-monitor/platform/resource-logs-overview.md) her kaynak tarafından yayılan tüm günlüklerdir. Bu Günlükler Windows olay sistemi günlükleri, Azure depolama günlükleri, Key Vault denetim günlükleri ve Application Gateway erişim ve güvenlik duvarı günlükleri içerir.
 - **Günlük arşivleme:**  Tüm tanılama günlükleri, arşivleme için merkezi ve şifrelenmiş bir Azure depolama hesabına yazar. Bekletme, kuruluşa özgü saklama gereksinimlerini karşılamak için Kullanıcı tarafından yapılandırılabilir ve 730 güne kadar. Bu Günlükler, işleme, depolama ve Pano raporlama için Azure Izleyici günlüklerine bağlanır.
 
 Ayrıca, aşağıdaki izleme çözümleri bu mimarinin bir parçası olarak yüklenir. Bu çözümlerin Fedrampa güvenlik denetimleriyle uyum sağlamak için müşterinin sorumluluğunda olduğunu unutmayın:

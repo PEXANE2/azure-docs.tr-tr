@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 2482fb4ab74a3c1e032a32890c3dc2c3920b5e6b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725617"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261704"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Önizleme: Azure PowerShell kullanarak VM 'Leri adanmış konaklara dağıtma
 
@@ -26,7 +26,7 @@ Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış
 Azure PowerShell sürüm 2.4.2 sections veya üstünü yüklediğinizden ve ' de `Connect-AzAccount`bir Azure hesabında oturum açtığınızdan emin olun. Sürüm 2.4.2 sections yüklemek için bir PowerShell komut istemi açın ve şunu yazın:
 
 ```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrelease
+Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
 ```
 
 PowerShell 'de önizleme modülü işlevselliğini etkinleştirmek için PowerShellGet modülünün en az sürüm 1.6.0 gerekir. PowerShell Core 'un en son sürümleri bu otomatik olarak yerleşiktir, ancak PowerShell 'in eski sürümleri için, en son sürüme güncelleştirmek üzere aşağıdaki komutu çalıştırabilirsiniz:

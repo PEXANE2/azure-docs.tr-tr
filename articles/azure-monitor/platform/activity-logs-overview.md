@@ -5,28 +5,28 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fa1737a8627fe9561a2a84e7f0ef69aefb6deb14
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ee3a1fef379e2950172dddc389b30e0a363127ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170630"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262121"
 ---
 # <a name="overview-of-azure-activity-log"></a>Azure etkinlik günlüğü 'ne genel bakış
 
 **Azure etkinlik günlüğü** , Azure 'da oluşan abonelik düzeyi olaylar hakkında öngörüler sağlar. Bu, Azure Resource Manager işlemsel verilerden hizmet durumu olaylarında güncelleştirmelere kadar olan bir veri aralığı içerir. Yönetim kategorisi abonelikleriniz için denetim düzlemi olaylarını raporladığında, etkinlik günlüğü daha önce _Denetim günlükleri_ veya _işletimsel Günlükler_olarak bilinirdi. 
 
-Aboneliğinizdeki kaynaklarda _hangi_yazma IŞLEMLERININ (put, Post, silme) alındığını belirlemek için etkinlik günlüğünü kullanın. Ayrıca, işlemi ve ilgili diğer özellikleri durumunu anlayabilirsiniz. 
+Aboneliğinizdeki kaynaklarda _hangi_yazma IŞLEMLERININ (put, Post _, silme_) alındığını _belirlemek için etkinlik_ günlüğünü kullanın. Ayrıca, işlemi ve ilgili diğer özellikleri durumunu anlayabilirsiniz. 
 
 Etkinlik günlüğü, klasik/RDFE modelini kullanan kaynaklara yönelik okuma (GET) işlemlerini veya işlemlerini içermez.
 
-## <a name="comparison-to-diagnostic-logs"></a>Tanılama günlüklerine karşılaştırma
-Her bir Azure aboneliği için tek bir etkinlik günlüğü vardır. Dışarıdaki ("Denetim düzlemi") bir kaynaktaki işlemler hakkında veri sağlar. [Tanılama günlükleri](diagnostic-logs-overview.md) bir kaynak tarafından dağıtılır ve bu kaynağın ("veri düzlemi") işlemi hakkında bilgiler sağlar. Her kaynak için tanılama ayarlarını etkinleştirmeniz gerekir.
+## <a name="comparison-to-resource-logs"></a>Kaynak Günlükleriyle karşılaştırma
+Her bir Azure aboneliği için tek bir etkinlik günlüğü vardır. Dışarıdaki ("Denetim düzlemi") bir kaynaktaki işlemler hakkında veri sağlar. [Kaynak günlükleri](resource-logs-overview.md) bir kaynak tarafından dağıtılır ve bu kaynağın ("veri düzlemi") işlemi hakkında bilgiler sağlar. Kaynak günlüklerini toplamak için her kaynak için bir tanılama ayarı oluşturmanız gerekir.
 
-![Tanılama günlükleriyle karşılaştırılan etkinlik günlükleri](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![Kaynak Günlükleriyle karşılaştırılan etkinlik günlükleri](media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 
 > [!NOTE]

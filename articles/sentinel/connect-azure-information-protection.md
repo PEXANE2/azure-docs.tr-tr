@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: 7584a884d41451c5a248b84a40eb45815bfb6bdf
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240738"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261829"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection verileri bağlama
+
+> [!IMPORTANT]
+> Azure Sentinel 'deki Azure Information Protection veri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Information Protection veri bağlayıcısını yapılandırarak [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) günlük bilgilerini Azure Sentinel 'e akışla aktarabilirsiniz. Azure Information Protection, önemli verilerinizi bulutta veya şirket içinde depolanmış olsun denetlemenize ve güvenli hale getirmeye yardımcı olur.
 
@@ -54,10 +58,6 @@ Ancak, Azure Information Protection günlük bilgileri Azure Sentinel için seç
 - Azure Information Protection Azure portal eklendi. Bu adımla ilgili yardıma ihtiyacınız varsa, [Azure portal Azure Information Protection ekleme](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal)bölümüne bakın.
 
 ## <a name="connect-to-azure-information-protection"></a>Azure Information Protection Bağlan
-
-> [!IMPORTANT]
-> Azure Sentinel 'deki Azure Information Protection veri Bağlayıcısı Şu anda genel önizlemededir.
-> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Information Protection için bir Log Analytics çalışma alanı yapılandırmadıysanız veya Azure Information Protection günlüğe kaydetme bilgilerini depolayan çalışma alanını değiştirmeniz gerekiyorsa aşağıdaki yönergeleri kullanın.
 

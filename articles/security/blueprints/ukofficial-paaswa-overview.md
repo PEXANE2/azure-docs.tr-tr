@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946514"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262779"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure Güvenliği ve Uyumluluğu Şeması: Birleşik Krallık RESMI Iş yükleri için PaaS Web uygulaması barındırma
 
@@ -105,7 +105,7 @@ Azure App Service, Java, PHP, Node. js Python, HTML ve C# altyapıyı yönetmek 
 
 App Service [ISO, SOC ve PCI uyumludur](https://www.microsoft.com/TrustCenter/) ve [Azure Active Directory](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) veya sosyal oturum açma ([Google](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-google), [Facebook](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-facebook), [Twitter](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-twitter)ve [Microsoft kimlik doğrulaması](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-microsoft)) ile kullanıcıların kimliğini doğrulayabilir.
 
-Temel, standart ve Premium planlar, üretim iş yüklerine yöneliktir ve adanmış sanal makine örneklerinde çalıştırılır. Her örnek, birden çok uygulamayı ve etki alanını destekleyebilir. Uygulama Hizmetleri ayrıca, [Key Vault](https://azure.microsoft.com/services/key-vault/) ve Azure SQL gibi diğer PaaS hizmetlerine güvenli bağlantı sağlamak üzere [Azure kaynakları](https://docs.microsoft.com/azure/app-service/overview-managed-identity) için gerektiğinde ve ayrıca yönetilen kimliklerden gelen trafiğin güvenliğini sağlamak için [IP adresi kısıtlamalarını](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) destekler [ Veritabanı](https://azure.microsoft.com/services/sql-database/). Yalıtılmış planımız için ek güvenlik gerektiğinde uygulamalarınızın özel ve adanmış bir Azure ortamında barındırdığı ve şirket içi ağınızla güvenli bağlantılar gerektiren uygulamalar için ideal olması veya ek performans ve ölçek olması gerekir.
+Temel, standart ve Premium planlar, üretim iş yüklerine yöneliktir ve adanmış sanal makine örneklerinde çalıştırılır. Her örnek, birden çok uygulamayı ve etki alanını destekleyebilir. Uygulama Hizmetleri ayrıca, [Key Vault](https://azure.microsoft.com/services/key-vault/) ve Azure SQL gibi diğer PaaS hizmetlerine güvenli bağlantı sağlamak üzere Azure kaynakları için gerektiğinde ve ayrıca [yönetilen kimliklerden](https://docs.microsoft.com/azure/app-service/overview-managed-identity) gelen trafiğin güvenliğini sağlamak için [IP adresi kısıtlamalarını](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions) destekler [ Veritabanı](https://azure.microsoft.com/services/sql-database/). Yalıtılmış planımız için ek güvenlik gerektiğinde uygulamalarınızın özel ve adanmış bir Azure ortamında barındırdığı ve şirket içi ağınızla güvenli bağlantılar gerektiren uygulamalar için ideal olması veya ek performans ve ölçek olması gerekir.
 
 Bu şablon aşağıdaki App Service özelliklerini dağıtır:
 
@@ -113,7 +113,7 @@ Bu şablon aşağıdaki App Service özelliklerini dağıtır:
 - Birden çok App Service [dağıtım yuvası](https://docs.microsoft.com/azure/app-service/deploy-staging-slots): Geliştirme, önizleme, QA, UAT ve kurs üretimi (varsayılan yuva).
 - [Azure kaynakları Için Yönetilen kimlikler](https://docs.microsoft.com/azure/app-service/overview-managed-identity) [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) bağlanır (Bu ayrıca [Azure SQL veritabanı](https://azure.microsoft.com/services/sql-database/) 'na erişim sağlamak için de kullanılabilir) 
 - Performansı izlemek için [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) tümleştirme
-- [Tanılama Günlükleri](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- [Tanılama Günlükleri](../../azure-monitor/platform/resource-logs-overview.md) 
 - Ölçüm [uyarıları](../../azure-monitor/app/alerts.md) 
 - [Azure API Apps](https://azure.microsoft.com/services/app-service/api/) 
 

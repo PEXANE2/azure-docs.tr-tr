@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 24dc01d47bece4191d1b142a58c4ad7b6d9fb6cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876577"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260850"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevlerde hata ayıklama
 
@@ -35,7 +35,7 @@ Azure dijital TWINS, sağlam günlük kaydı, izleme ve analiz desteği. Çözü
 
 * Azure dijital TWINS 'e özgü günlüğe kaydetme yapılandırması için, [izleme ve günlüğe kaydetmeyi yapılandırma](./how-to-configure-monitoring.md)makalesini okuyun.
 * Azure Izleyici ile etkin olan güçlü günlük ayarları hakkında bilgi edinmek için [Azure izleyicisine](../azure-monitor/overview.md) genel bakış bölümüne başvurun.
-* Azure Portal, Azure CLı veya PowerShell aracılığıyla Azure dijital TWINS 'te tanılama günlüğü ayarlarını yapılandırmak için [Azure kaynaklarınızdaki günlük verilerini toplama ve](../azure-monitor/platform/diagnostic-logs-overview.md) kullanma makalesini inceleyin.
+* Azure Portal, Azure CLı veya PowerShell aracılığıyla Azure dijital TWINS 'te tanılama günlüğü ayarlarını yapılandırmak için [Azure kaynaklarınızdaki günlük verilerini toplama ve](../azure-monitor/platform/resource-logs-overview.md) kullanma makalesini inceleyin.
 
 Yapılandırıldıktan sonra tüm günlük kategorilerini, ölçümleri seçebilir ve güçlü Azure Izleyici Log Analytics çalışma alanlarını kullanarak hata ayıklama çabalarınızı destekleyebilirsiniz.
 

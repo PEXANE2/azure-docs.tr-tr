@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 87d0f08d67dbbe6a0fa1725aba850c8d9b6c5619
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c67d2cd4e90b2fa61a4d95e89a68c888a6e1fe3f
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104700"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273645"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLı kullanarak özel bağlantı hizmeti oluşturma
 Bu makalede Azure CLı kullanarak Azure 'da özel bir bağlantı hizmeti oluşturma gösterilmektedir.
@@ -29,13 +29,13 @@ Bir sanal ağ oluşturabilmeniz için önce sanal ağı barındırmak üzere bir
 az group create --name myResourceGroup --location westcentralus
 ```
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
-[az network vnet create](/cli/azure/network/az-network-vnet-create) komutu ile bir sanal ağ oluşturun. Bu örnek, *Mysubnet*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
+[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) komutu ile bir sanal ağ oluşturun. Bu örnek, *Mysubnet*adlı bir alt ağ ile *myVirtualNetwork* adlı varsayılan bir sanal ağ oluşturur:
 
 ```azurecli-interactive
 az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-a-subnet"></a>Alt ağ oluşturma
-[Az Network VNET subnet Create](/cli/azure/network/az-network-vnet-subnet-create)komutuyla sanal ağ için bir alt ağ oluşturun. Bu örnek, *myVirtualNetwork* sanal ağında *mysubnet* adlı bir alt ağ oluşturur:
+[Az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)komutuyla sanal ağ için bir alt ağ oluşturun. Bu örnek, *myVirtualNetwork* sanal ağında *mysubnet* adlı bir alt ağ oluşturur:
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
@@ -82,7 +82,7 @@ Bu örnekte, sanal makine oluşturmayı kapsamıyoruz. Yük Dengeleyici için ar
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>Alt ağda özel bağlantı hizmeti ağ ilkelerini devre dışı bırak 
-Özel bağlantı hizmeti, sanal ağ içinde tercih ettiğiniz herhangi bir alt ağdan bir IP gerektirir. Şu anda bu IP 'lerde ağ Ilkelerini desteklemiyoruz.  Bu nedenle, alt ağdaki ağ ilkelerini devre dışı bıraktık. [Az Network VNET subnet Update](/cli/azure/network/az-network-vnet-subnet-update)Ile özel bağlantı hizmeti ağ ilkelerini devre dışı bırakmak için alt ağı güncelleştirin.
+Özel bağlantı hizmeti, sanal ağ içinde tercih ettiğiniz herhangi bir alt ağdan bir IP gerektirir. Şu anda bu IP 'lerde ağ Ilkelerini desteklemiyoruz.  Bu nedenle, alt ağdaki ağ ilkelerini devre dışı bıraktık. [Az Network VNET subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)Ile özel bağlantı hizmeti ağ ilkelerini devre dışı bırakmak için alt ağı güncelleştirin.
 
 ```azurecli-interactive
 az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
@@ -90,7 +90,7 @@ az network vnet subnet update --resource-group myResourceGroup --vnet-name myVir
  
 ## <a name="create-a-private-link-service"></a>Özel Bağlantı hizmeti oluşturma  
  
-[Az Network Private-link-Service Create](/cli/azure/network/az-network-private-link-service-create)komutuyla standart Load Balancer ön uç IP yapılandırması kullanarak bir özel bağlantı hizmeti oluşturun. Bu örnek, *Myresourcegroup*adlı kaynak grubunda *myloadbalancer* adlı standart Load Balancer kullanarak *Mypls* adlı bir özel bağlantı hizmeti oluşturur. 
+[Az Network Private-link-Service Create](/cli/azure/network/private-link-service#az-network-private-link-service-create)komutuyla standart Load Balancer ön uç IP yapılandırması kullanarak bir özel bağlantı hizmeti oluşturun. Bu örnek, *Myresourcegroup*adlı kaynak grubunda *myloadbalancer* adlı standart Load Balancer kullanarak *Mypls* adlı bir özel bağlantı hizmeti oluşturur. 
  
 ```azurecli-interactive
 az network private-link-service create \
@@ -111,7 +111,7 @@ Daha sonra, Azure CLı kullanarak bu hizmetin farklı bir sanal ağda özel bir 
 ## <a name="private-endpoints"></a>Özel uç noktalar
 
 ### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma 
- [Az Network VNET Create](/cli/azure/network/az-network-vnet-create)komutuyla bir sanal ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubu adlı *mypevnet* adlı bir sanal ağ oluşturur: 
+ [Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create)komutuyla bir sanal ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubu adlı *mypevnet* adlı bir sanal ağ oluşturur: 
 ```azurecli-interactive
 az network vnet create \
 --resource-group myResourceGroup \
@@ -119,7 +119,7 @@ az network vnet create \
 --address-prefix 10.0.0.0/16  
 ```
 ### <a name="create-the-subnet"></a>Alt ağ oluşturma 
- [Az Network VNET subnet Create](/cli/azure/network/az-network-vnet-subnet-create)komutuyla sanal ağ üzerinde bir alt ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubunda *mypevnet* adlı sanal ağda *mysubnet* adlı bir alt ağ oluşturur: 
+ [Az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create)komutuyla sanal ağ üzerinde bir alt ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubunda *mypevnet* adlı sanal ağda *mysubnet* adlı bir alt ağ oluşturur: 
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -129,7 +129,7 @@ az network vnet subnet create \
 --address-prefixes 10.0.0.0/24 
 ```   
 ## <a name="disable-private-endpoint-network-policies-on-subnet"></a>Alt ağda özel uç nokta ağ ilkelerini devre dışı bırak 
-Özel uç nokta, bir sanal ağ içindeki tercih ettiğiniz herhangi bir alt ağda oluşturulabilir. Şu anda özel uç noktalarda ağ ilkelerini desteklemiyoruz.  Bu nedenle, alt ağdaki ağ ilkelerini devre dışı bıraktık. [Az Network VNET subnet Update](/cli/azure/network/az-network-vnet-subnet-update)ile özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağı güncelleştirin. 
+Özel uç nokta, bir sanal ağ içindeki tercih ettiğiniz herhangi bir alt ağda oluşturulabilir. Şu anda özel uç noktalarda ağ ilkelerini desteklemiyoruz.  Bu nedenle, alt ağdaki ağ ilkelerini devre dışı bıraktık. [Az Network VNET subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)ile özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağı güncelleştirin. 
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -156,7 +156,7 @@ az network private-endpoint create \
  
 ## <a name="show-private-link-service-connections"></a>Özel bağlantı hizmeti bağlantılarını göster 
  
-[Az Network Private-link-Service Show](/cli/azure/network/az-network-private-link-service-show)kullanarak özel bağlantı hizmetinizde bağlantı isteklerine bakın.    
+[Az Network Private-link-Service Show](/cli/azure/network/private-link-service#az-network-private-link-service-show)kullanarak özel bağlantı hizmetinizde bağlantı isteklerine bakın.    
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```

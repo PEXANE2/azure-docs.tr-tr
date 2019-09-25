@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: e7b731c9936ab85b19428687330044a46c563c49
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061410"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268362"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Web API 'Lerini çağıran mobil uygulama-kod yapılandırması
 
@@ -33,14 +33,14 @@ Mobil uygulamaları destekleyen Microsoft kitaplıkları şunlardır:
   MSAL kitaplığı | Açıklama
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Taşınabilir uygulamalar geliştirmek için. Mobil uygulama derlemek için MSAL.NET desteklenen platformlar UWP, Xamarin. iOS ve Xamarin. Android ' dir.
-  ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Hedef C veya Swift ile Yerel iOS uygulamaları geliştirmek için
+  ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Amaç-C veya Swift ile Yerel iOS uygulamaları geliştirmek için
   ![MSAL. Android](media/sample-v2-code/logo_android.png) <br/> MSAL. Android | Android için Java 'da yerel Android uygulamaları geliştirmek için
 
-## <a name="configuring-the-application"></a>Uygulamayı yapılandırma
-
-Mobil uygulamalar `PublicClientApplication` sınıfını kullanır. Bunun örneği şöyledir:
+## <a name="instantiating-the-application"></a>Uygulamanın örneğini oluşturma
 
 ### <a name="android"></a>Android
+
+Mobil uygulamalar `PublicClientApplication` sınıfını kullanır. Bunun örneği şöyledir:
 
 ```Java
 PublicClientApplication sampleApp = new PublicClientApplication(
@@ -50,21 +50,28 @@ PublicClientApplication sampleApp = new PublicClientApplication(
 
 ### <a name="ios"></a>iOS
 
-```swift
-// Initialize the app.
-guard let authorityURL = URL(string: kAuthority) else {
-    self.loggingText.text = "Unable to create authority URL"
-    return
-}
-let authority = try MSALAADAuthority(url: authorityURL)
-let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
-self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
-}
+İOS üzerinde mobil uygulamaların `MSALPublicClientApplication` sınıfının örneğini oluşturması gerekir.
+
+Amaç-C:
+
+```objc
+NSError *msalError = nil;
+     
+MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
+MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
+
+SWIFT
+```swift
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
+if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
+```
+
+Varsayılan yetkiyi geçersiz kılabilen [ek MSALPublicClientApplicationConfig özellikleri](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options) vardır, yeniden yönlendirme URI 'si BELIRTEBILIR veya msal Token Caching davranışını değiştirebilirsiniz. 
 
 ### <a name="xamarin-or-uwp"></a>Xamarin veya UWP
 
-Aşağıdaki paragrafta, Xamarin. iOS, Xamarin. Android ve UWP uygulamaları için uygulama kodunun nasıl yapılandırılacağı açıklanmaktadır. İlk adım, uygulamayı örnekleyemedi. Aracıyı yapılandırmak, isteğe bağlı bir adımdır.
+Aşağıdaki paragraf, Xamarin. iOS, Xamarin. Android ve UWP uygulamaları için uygulamanın örneğini oluşturmayı açıklamaktadır.
 
 #### <a name="instantiating-the-application"></a>Uygulamanın örneğini oluşturma
 
@@ -102,7 +109,7 @@ var pca = PublicClientApplicationBuilder
 - Üzerinde `PublicClientApplicationBuilder`kullanılabilen tüm değiştiricilerin listesi için bkz. Reference documentation [publicclientapplicationbuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)
 - Bkz. `PublicClientApplicationOptions` [publicclientapplicationoptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)içinde gösterilen tüm seçeneklerin açıklaması için başvuru belgeleri
 
-#### <a name="xamarin-ios-specific-considerations"></a>Xamarin iOS 'e özgü konular
+## <a name="xamarin-ios-specific-considerations"></a>Xamarin iOS 'e özgü konular
 
 Xamarin iOS üzerinde MSAL.NET kullanırken dikkate almanız gereken birkaç önemli noktalar vardır:
 
@@ -113,7 +120,15 @@ Xamarin iOS üzerinde MSAL.NET kullanırken dikkate almanız gereken birkaç ön
 
 Ayrıntılar [Xamarin iOS konuları](msal-net-xamarin-ios-considerations.md) 'nda verilmiştir
 
-#### <a name="other-xamarin-android-specific-considerations"></a>Diğer Xamarin Android 'e özgü konular
+## <a name="msal-for-ios-and-macos-specific-considerations"></a>İOS için MSAL ve macOS 'a özgü konular
+
+İOS ve macOS için MSAL kullanılırken de benzer hususlar geçerlidir:
+
+1. [`openURL` Geri aramayı Uygula](#brokered-authentication-for-msal-for-ios-and-macos)
+2. [Anahtarlık erişim gruplarını etkinleştir](howto-v2-keychain-objc.md)
+3. [Tarayıcıları ve Web görünümlerini özelleştirme](customize-webviews.md)
+
+## <a name="xamarin-android-specific-considerations"></a>Xamarin Android 'e özgü konular
 
 Xamarin Android özellikleri şunlardır:
 
@@ -132,17 +147,21 @@ UWP 'de kurumsal ağları kullanabilirsiniz. UWP ile MSAL kitaplığını kullan
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>Aracıyı kullanmak için uygulamayı yapılandırma
 
-### <a name="why-use-brokers-on-xamarinios-and-xamarinandroid-applications"></a>Xamarin. iOS ve Xamarin. Android uygulamalarında neden aracılar kullanılmalıdır?
+### <a name="why-use-brokers-in-ios-and-android-applications"></a>İOS ve Android uygulamalarında neden aracılar kullanılmalıdır?
 
 Android ve iOS 'ta aracılar şunları etkinleştirir:
 
-- Çoklu oturum açma (SSO). Kullanıcılarınızın her uygulamada oturum açması gerekmez.
+- Cihaz AAD 'ye kaydedildiğinde çoklu oturum açma (SSO). Kullanıcılarınızın her uygulamada oturum açması gerekmez.
 - Cihaz kimliği. , Çalışma alanına katılmış olduğunda cihazda oluşturulan cihaz sertifikasına erişerek Azure AD cihazla ilgili koşullu erişim ilkelerini etkinleştirilir.
 - Uygulama tanımlama doğrulaması. Bir uygulama aracıyı çağırdığında, yeniden yönlendirme URL 'sini geçirir ve aracı tarafından doğrulanır.
 
 ### <a name="enable-the-brokers-on-xamarin"></a>Xamarin 'teki aracıları etkinleştirme
 
-Bu özelliklerden birini etkinleştirmek için, `WithBroker()` `PublicClientApplicationBuilder.CreateApplication` yöntemini çağırırken parametresini kullanın. `.WithBroker()`Varsayılan olarak true olarak ayarlanır. [İOS](#brokered-authentication-for-xamarinios)için aşağıdaki adımları izleyin.
+Bu özelliklerden birini etkinleştirmek için, `WithBroker()` `PublicClientApplicationBuilder.CreateApplication` yöntemini çağırırken parametresini kullanın. `.WithBroker()`Varsayılan olarak true olarak ayarlanır. [Xamarin. iOS](#brokered-authentication-for-xamarinios)için aşağıdaki adımları izleyin.
+
+### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL aracısını etkinleştirme
+
+Aracılı kimlik doğrulaması, iOS ve macOS için MSAL içindeki AAD senaryolarında varsayılan olarak etkindir. Uygulamanızı [iOS ve macOS Için msal](#brokered-authentication-for-msal-for-ios-and-macos)için aracılı kimlik doğrulama desteği için yapılandırmak üzere aşağıdaki adımları izleyin. [İOS ve macOS Için](#brokered-authentication-for-msal-for-ios-and-macos) [msal Için Xamarin. iOS](#brokered-authentication-for-xamarinios) ve msal arasında bazı adımların farklı olduğunu unutmayın.
 
 ### <a name="brokered-authentication-for-xamarinios"></a>Xamarin. iOS için aracılı kimlik doğrulaması
 
@@ -252,6 +271,80 @@ MSAL, `–canOpenURL:` aracının cihaza yüklenip yüklenmediğini denetlemek i
     <array>
       <string>msauthv2</string>
     </array>
+```
+
+### <a name="brokered-authentication-for-msal-for-ios-and-macos"></a>İOS ve macOS için MSAL için aracılı kimlik doğrulaması
+
+Aracılı kimlik doğrulaması AAD senaryolarında varsayılan olarak etkindir.
+
+#### <a name="step-1-update-appdelegate-to-handle-the-callback"></a>1\. adım: Geri aramayı işlemek için AppDelegate 'i Güncelleştir
+
+İOS ve MacOS için msal, aracıyı çağırdığında, aracı `openURL` yöntemi aracılığıyla uygulamanıza geri çağrı yapılır. MSAL, aracıdan gelen yanıtı bekleyecek için, uygulamanızın MSAL geri çağırmak için birlikte çalışması gerekir. Bunu, `AppDelegate.m` aşağıdaki yöntemi geçersiz kılmak için dosyasını güncelleştirerek yapabilirsiniz.
+
+Amaç-C:
+
+```objc
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    return [MSALPublicClientApplication handleMSALResponse:url 
+                                         sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
+}
+```
+
+SWIFT
+
+```swift
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        guard let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String else {
+            return false
+        }
+        
+        return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApplication)
+    }
+```
+
+İOS 13 + üzerinde UISceneDelegate benimsediyseniz msal geri çağrısının bunun yerine UISceneDelegate içine `scene:openURLContexts:` yerleştirilmesi gerektiğini unutmayın (bkz. [Apple belgeleri](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)). MSAL `handleMSALResponse:sourceApplication:` her URL için yalnızca bir kez çağrılmalıdır.
+
+#### <a name="step-2-register-a-url-scheme"></a>2\. adım: URL şeması kaydetme
+
+İOS ve macOS için MSAL, aracıyı çağırmak için URL 'Ler kullanır ve ardından aracı yanıtını uygulamanıza geri döndürür. Gidiş dönüş işleminin tamamlanabilmesi için, `Info.plist` dosyaya uygulamanız için bir URL şeması kaydetmeniz gerekir.
+
+Özel URL düzeninizi ile `msauth`önek yapın. Ardından **paket tanımlarınızı** sonuna ekleyin.
+
+`msauth.(BundleId)`
+
+**Örneğin:** 
+`msauth.com.yourcompany.xforms`
+
+> [!NOTE]
+> Bu URL şeması, Aracıdan yanıtı alırken uygulamanızı benzersiz bir şekilde tanımlamak için kullanılan Redirecturı 'nin bir parçası olacak. Biçimindeki redirecturı 'nin `msauth.(BundleId)://auth` , [Azure portalında](https://portal.azure.com)uygulamanız için kayıtlı olduğundan emin olun.
+
+```XML
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+            <string>msauth.[BUNDLE_ID]</string>
+        </array>
+    </dict>
+</array>
+```
+
+#### <a name="step-3-lsapplicationqueriesschemes"></a>3\. adım: Lsapplicationqueriesdüzenleri
+
+Yüklenmişse Microsoft Authenticator çağrısı yapılmasına izin vermek için **ekleyin `LSApplicationQueriesSchemes`**  .
+Uygulamanızı Xcode 11 ve üzeri ile derlerken "msauthv3" şemasının gerekli olduğunu unutmayın. 
+
+```XML 
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>msauthv2</string>
+  <string>msauthv3</string>
+</array>
 ```
 
 ### <a name="brokered-authentication-for-xamarinandroid"></a>Xamarin. Android için aracılı kimlik doğrulaması

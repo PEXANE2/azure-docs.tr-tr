@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 33f3b03ba76a0c3fd33e057d0f15b2ab7a0f44e4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c133431bb2b84525a8ea875dea94cec8595733bb
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089494"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273876"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure 'da genelleştirilmiş bir VM 'nin yönetilen bir görüntüsünü oluşturma
 
@@ -205,9 +205,9 @@ Aşağıdaki adımları izleyerek genelleştirilmiş bir VM 'nin anlık görünt
     ``` 
 
 
-## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>Depolama hesabındaki bir VHD 'den görüntü oluşturma
+## <a name="create-an-image-from-a-vm-that-uses-a-storage-account"></a>Depolama hesabı kullanan bir VM 'den görüntü oluşturma
 
-Bir depolama hesabındaki genelleştirilmiş bir işletim sistemi VHD 'sinden yönetilen bir görüntü oluşturun. Depolama hesabında VHD URI 'sinin şu biçimde olması gerekir: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer*/*vhdfilename. vhd*. Bu örnekte, VHD, *vhdcontainer*adlı bir kapsayıcıda *mystorageaccount*içinde ve VHD dosya adı, *vhdfilename. vhd*' dir.
+Yönetilen diskler kullanmayan bir VM 'den yönetilen bir görüntü oluşturmak için, depolama hesabındaki işletim sistemi VHD 'sinin URI 'sine şu biçimde ihtiyacınız vardır: https://*mystorageaccount*. blob.Core.Windows.net/*vhdcontainer* /  *vhdfilename. vhd*. Bu örnekte, VHD, *vhdcontainer*adlı bir kapsayıcıda *mystorageaccount*içinde ve VHD dosya adı, *vhdfilename. vhd*' dir.
 
 
 1.  Bazı değişkenler oluşturun.

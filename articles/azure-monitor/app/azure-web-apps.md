@@ -9,21 +9,21 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4f296aae6c147b0d5209276dbd008a1207837cfd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f45762d5b37a006ede9aeff76e3d756c8144f5ba
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875211"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258582"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
-[Azure Uygulama Hizmetleri](https://docs.microsoft.com/azure/app-service/) 'nde çalışan .NET ve .NET Core tabanlı Web uygulamalarınız üzerinde izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Daha önce bir site uzantısını el ile yüklemek için, en son uzantı/aracı artık varsayılan olarak App Service görüntüsüne yerleşik olarak bulunur. Bu makale, Application Insights izlemenin nasıl etkinleştirilebileceğine ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlamanıza yol gösterecektir.
+[Azure Uygulama hizmetlerinde](https://docs.microsoft.com/azure/app-service/) çalışan ASP.NET ve ASP.NET Core tabanlı Web uygulamalarında izlemenin etkinleştirilmesi artık hiç olmadığı kadar kolay. Daha önce bir site uzantısını el ile yüklemek için, en son uzantı/aracı artık varsayılan olarak App Service görüntüsüne yerleşik olarak bulunur. Bu makale, Application Insights izlemenin nasıl etkinleştirilebileceğine ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlamanıza yol gösterecektir.
 
 > [!NOTE]
 > **Geliştirme araçları** > **uzantıları** aracılığıyla Application Insights bir site uzantısının el ile eklenmesi kullanım dışıdır. Bu uzantı yükleme yöntemi, her yeni sürüm için el ile güncelleştirmelere bağımlıdır. Uzantının en son kararlı sürümü artık App Service görüntüsünün bir parçası olarak [önceden yüklenmiştir](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions) . Dosyalar içinde `d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent` bulunur ve her kararlı sürümle otomatik olarak güncelleştirilir. Aşağıda izlemeyi etkinleştirmek için aracı tabanlı yönergeleri izlerseniz, devre dışı bırakılmış uzantıyı sizin için otomatik olarak kaldırır.
 
-## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
+## <a name="enable-application-insights"></a>Application Insights'ı Etkinleştir
 
 Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkinleştirmenin iki yolu vardır:
 
@@ -325,6 +325,9 @@ Azure Uygulama Hizmetleri 'nde çalışan .NET ve .NET Core tabanlı uygulamalar
 
 > [!NOTE]
 > Java ve Node. js uygulamaları yalnızca el ile SDK tabanlı araçlar aracılığıyla Azure Uygulama hizmetlerinde desteklenir ve bu nedenle aşağıdaki adımlar bu senaryolara uygulanmaz.
+
+> [!NOTE]
+> ASP.NET Core 3,0 uygulamaları desteklenmez. Lütfen ASP.NET Core 3,0 uygulamaları için kod aracılığıyla [el ile](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) izleme uygulayın.
 
 1. Uygulamasının aracılığıyla `ApplicationInsightsAgent`izlendiğinden emin olun.
     * Uygulama ayarının `ApplicationInsightsAgent_EXTENSION_VERSION` "~ 2" değerine ayarlanmış olduğunu denetleyin.
