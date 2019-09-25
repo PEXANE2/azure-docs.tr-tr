@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: caaf708b3efd8ffbe059f8ad249b7945d31fd7cc
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: fb306ec3f8abe2eedb97f83d01836745779db914
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68601170"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240767"
 ---
 # <a name="connect-azure-stack-virtual-machines-to-azure-sentinel"></a>Azure Stack sanal makinelerini Azure Sentinel 'e bağlama
 
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 
 Azure Sentinel ile Azure 'da çalışan ve tek bir yerde Azure Stack sanal makinelerinizi izleyebilirsiniz. Azure Stack makinelerinizi Azure Sentinel 'e bağlamak için, önce sanal makine uzantısını mevcut Azure Stack sanal makinelerinize eklemeniz gerekir. 
@@ -71,5 +69,5 @@ Uzantıyı kaldırmak için:
 
 Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
-- [Yaygın hata biçimi](connect-common-event-format.md) gereçlerden Azure Sentinel 'e veri akışı.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- [Yaygın hata biçimi gereçlerden](connect-common-event-format.md) Azure Sentinel 'e veri akışı.

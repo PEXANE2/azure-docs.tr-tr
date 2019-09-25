@@ -1,34 +1,31 @@
 ---
-title: Denetim noktası verilerini Azure Sentinel önizlemesine bağlama | Microsoft Docs
+title: Denetim noktası verilerini Azure Sentinel 'e bağlama | Microsoft Docs
 description: Denetim noktası verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 3229233d-400d-4971-8d76-eaa0d6591d75
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: ea9cb7997f86c10bb09c01dfc345aaeeef46708a
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 1bfa59e92ce2cde45b448174260396f4e93a6282
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679346"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240130"
 ---
 # <a name="connect-your-check-point-appliance"></a>Denetim noktası gerecinizi bağlama
 
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Günlük dosyalarını Syslog CEF olarak kaydederek, Azure Sentinel 'i herhangi bir denetim noktası gerecine bağlayabilirsiniz. Azure Sentinel ile tümleştirme, denetim noktasındaki günlük dosyası verilerinde analiz ve sorguları kolayca çalıştırmanıza olanak sağlar. Azure 'u Sentinel CEF verilerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Connect CEF](connect-common-event-format.md)gereçileri.
+
+Günlük dosyalarını Syslog CEF olarak kaydederek, Azure Sentinel 'i herhangi bir denetim noktası gerecine bağlayabilirsiniz. Azure Sentinel ile tümleştirme, denetim noktasındaki günlük dosyası verilerinde analiz ve sorguları kolayca çalıştırmanıza olanak sağlar. Azure 'u Sentinel CEF verilerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Connect CEF gereçileri](connect-common-event-format.md).
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
@@ -143,5 +140,5 @@ Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Check Point gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 

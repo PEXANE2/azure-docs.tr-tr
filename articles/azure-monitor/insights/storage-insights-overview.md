@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 17135f896140a843dd95c8d9624e9faf1d7194c3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996256"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212770"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Depolama hizmetinizi depolama için Azure Izleyici ile izleme (Önizleme)
 
-Depolama için Azure Izleyici (Önizleme), Azure depolama hizmetleri Performanslarınızın, kapasitesinin ve kullanılabilirliğinden oluşan Birleşik bir görünüm sunarak Azure Storage hesaplarınız için kapsamlı bir izleme sağlar. Depolama kapasitesini ve performansı iki şekilde gözlemleyebilirsiniz, depolama hesabı gruplarına bakmak için doğrudan Azure Izleyici 'den bir depolama hesabından veya görünümünden görüntüleyebilirsiniz. 
+Depolama için Azure Izleyici (Önizleme), Azure depolama hizmetleri Performanslarınızın, kapasitesinin ve kullanılabilirliğinden oluşan Birleşik bir görünüm sunarak Azure depolama hesaplarınızın kapsamlı bir şekilde izlenmesini sağlar. Depolama kapasitesini ve performansı iki şekilde gözlemleyebilirsiniz, depolama hesabı gruplarına bakmak için doğrudan Azure Izleyici 'den bir depolama hesabından veya görünümünden görüntüleyebilirsiniz. 
 
 Bu makale, depolama hesapları için Azure Izleyici 'nin (Önizleme), etkin noktalara odaklanıp gecikme süresini ve gecikme süresini tanılamanıza ve gecikme, azaltma, ve kullanılabilirlik sorunları.
 

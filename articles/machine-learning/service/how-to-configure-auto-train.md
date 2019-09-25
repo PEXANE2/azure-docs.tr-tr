@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ef501af63628b47bc52d416930c90057569b5de
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 4d4a3eae9ea3931ceb720785bbf458f54689be6e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035023"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213513"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 
@@ -202,7 +202,7 @@ Bazı örnekler:
         n_cross_validations=5)
     ```
 
-Üç farklı `task` parametre değeri, uygulanacak algoritmaların listesini belirlenir.  Dahil etmek veya `blacklist` hariç tutmak için mevcut algoritmalarla Yinelemeleri değiştirmek için veyaparametrelerinikullanın.`whitelist` Desteklenen modellerin listesi [Supportedalgoritma sınıfında](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)bulunabilir.
+Üç farklı `task` parametre değeri uygulanacak modellerin listesini belirlenir.  Dahil etmek veya `blacklist` hariç tutmak için kullanılabilir modellerle Yinelemeleri değiştirmek için veyaparametrelerinikullanın.`whitelist` Desteklenen modellerin listesi [Supportedmodeller sınıfında](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)bulunabilir.
 
 ### <a name="primary-metric"></a>Birincil Metrik
 Birincil ölçüm; Yukarıdaki örneklerde gösterildiği gibi, iyileştirme için model eğitimi sırasında kullanılacak ölçümü belirler. Seçebileceğiniz birincil ölçüm seçtiğiniz görev türüne göre belirlenir. Kullanılabilir ölçümlerin listesi aşağıda verilmiştir.

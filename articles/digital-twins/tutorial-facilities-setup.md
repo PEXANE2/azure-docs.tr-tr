@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: eebf6f58000178f2aa8021fbd435aa863fb70e49
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 1ab3f30f035f8099ab50f827e559e56b31d7f1f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177194"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219747"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Öğretici: Azure dijital TWINS önizlemesi dağıtma ve uzamsal bir grafik yapılandırma
 
@@ -80,7 +80,7 @@ Ayıklanan örnek klasöründe dosyasını açın **digital-twins-samples-csharp
     - **GetAvailableAndFreshSpaces.cs** dosya bir kullanıcı tanımlı işlev olarak adlandırılan özel bir işlev sonucunu alır.
     - **CreateEndpoints.cs** diğer hizmetlerle etkileşim için uç dosyası oluşturur.
 
-* Benzetim örneği **cihaz bağlantısı** sensör verilerini benzetimini yapar ve dijital İkizlerini Örneğiniz için sağlanan IOT hub'ına gönderir. Bu örnekte kullanacağınız [uzamsal grafınızı sağladıktan sonra sonraki öğreticiye](tutorial-facilities-udf.md#simulate). Bu örneği yapılandırmak için kullandığınız sensör ve cihaz tanımlayıcıları grafınızı sağlamak için kullanacaksınız ile aynı olması gerekir.
+* Benzetim örneği **cihaz bağlantısı** sensör verilerini benzetimini yapar ve dijital İkizlerini Örneğiniz için sağlanan IOT hub'ına gönderir. Bu örnekte kullanacağınız [uzamsal grafınızı sağladıktan sonra sonraki öğreticiye](tutorial-facilities-udf.md#simulate-sensor-data). Bu örneği yapılandırmak için kullandığınız sensör ve cihaz tanımlayıcıları grafınızı sağlamak için kullanacaksınız ile aynı olması gerekir.
 
 ### <a name="configure-the-provisioning-sample"></a>Sağlama örneğini yapılandırma
 

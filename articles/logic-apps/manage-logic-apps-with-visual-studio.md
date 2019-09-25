@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: dd6cd16302c69266a954816868c04c8507762717
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: db4143b3bf75d1745245d5baae267a55ce71e95f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801215"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212604"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio ile mantıksal uygulamaları yönetme
 
@@ -30,19 +30,17 @@ ms.locfileid: "70801215"
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Henüz yoksa şu araçları indirip yükleyin: 
+* Henüz yoksa şu araçları indirip yükleyin:
 
-  * [Visual Studio 2019, 2017 veya 2015-Community sürümü veya üzeri](https://aka.ms/download-visual-studio). 
-  Bu hızlı başlangıçta ücretsiz olan Visual Studio Community 2017 kullanılmaktadır.
+  * [Visual Studio 2019, 2017 veya 2015-Community sürümü veya üzeri](https://aka.ms/download-visual-studio). Bu hızlı başlangıçta ücretsiz olan Visual Studio Community 2017 kullanılmaktadır.
 
     > [!IMPORTANT]
     > Visual Studio 2019 veya 2017 yüklediğinizde, **Azure geliştirme** iş yükünü seçtiğinizden emin olun.
     > Daha fazla bilgi için bkz. [Visual Studio Cloud Explorer 'Da Azure hesaplarınızla ilişkili kaynakları yönetme](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
 
-    Visual Studio 2015 için Cloud Explorer 'ı yüklemek için [Visual Studio Market bulut Gezgini](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)' ni indirin. 
-    Daha fazla bilgi için bkz. [Visual Studio Cloud Explorer 'Da Azure hesaplarınızla ilişkili kaynakları yönetme (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+    Visual Studio 2015 için Cloud Explorer 'ı yüklemek için [Visual Studio Market bulut Gezgini](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)' ni indirin. Daha fazla bilgi için bkz. [Visual Studio Cloud Explorer 'Da Azure hesaplarınızla ilişkili kaynakları yönetme (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
-  * [Azure SDK (2.9.1 veya üzeri)](https://azure.microsoft.com/downloads/) 
+  * [Azure SDK (2.9.1 veya üzeri)](https://azure.microsoft.com/downloads/)
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -54,13 +52,11 @@ ms.locfileid: "70801215"
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
 
-    Azure Logic Apps Araçlarını doğrudan Visual Studio Market’ten indirip yükleyebilir veya [bu uzantıyı Visual Studio’nun içinden yükleme](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) hakkında bilgi edinebilirsiniz. 
-    Yükleme işlemini tamamladıktan sonra Visual Studio’yu yeniden başlattığınızdan emin olun.
+    Azure Logic Apps Araçlarını doğrudan Visual Studio Market’ten indirip yükleyebilir veya [bu uzantıyı Visual Studio’nun içinden yükleme](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) hakkında bilgi edinebilirsiniz. Yükleme işlemini tamamladıktan sonra Visual Studio’yu yeniden başlattığınızdan emin olun.
 
 * Katıştırılmış Logic Apps tasarımcısını kullanırken Web 'e erişim
 
-  Tasarımcının Azure'da kaynak oluşturması ve mantıksal uygulamanızdaki bağlayıcılardan özellik ve verileri okuması için İnternet bağlantısı gerekir. 
-  Örneğin, Dynamics CRM Online bağlayıcısını kullanıyorsanız, tasarımcı CRM örneğinizdeki varsayılan ve özel kullanılabilir özellikleri denetler.
+  Tasarımcının Azure'da kaynak oluşturması ve mantıksal uygulamanızdaki bağlayıcılardan özellik ve verileri okuması için İnternet bağlantısı gerekir. Örneğin, Dynamics CRM Online bağlayıcısını kullanıyorsanız, tasarımcı CRM örneğinizdeki varsayılan ve özel kullanılabilir özellikleri denetler.
 
 <a name="find-logic-apps-vs"></a>
 
@@ -76,8 +72,7 @@ Visual Studio 'da, Azure aboneliğinizle ilişkili olan ve bulut Gezgini kullan�
 
 1. **Kaynak grupları** veya **kaynak türlerine**göre arama yapıp etmeksizin, şu adımları izleyin:
 
-   * **Kaynak grupları**: Azure aboneliğiniz kapsamında, Cloud Explorer bu abonelikle ilişkili tüm kaynak gruplarını gösterir. 
-   Mantıksal uygulamanızı içeren kaynak grubunu genişletin ve mantıksal uygulamanızı seçin.
+   * **Kaynak grupları**: Azure aboneliğiniz kapsamında, Cloud Explorer bu abonelikle ilişkili tüm kaynak gruplarını gösterir. Mantıksal uygulamanızı içeren kaynak grubunu genişletin ve ardından mantıksal uygulamanızı seçin.
 
    * **Kaynak türleri**: Azure aboneliğiniz altında **Logic Apps**' ı genişletin. Cloud Explorer, aboneliğinizle ilişkili tüm dağıtılan mantıksal uygulamaları doldurduktan sonra mantıksal uygulamanızı seçin.
 
@@ -87,7 +82,7 @@ Visual Studio 'da, Azure aboneliğinizle ilişkili olan ve bulut Gezgini kullan�
 
 Visual Studio 'da, doğrudan Azure portal ya da Visual Studio ile Azure Kaynak grubu projeleri olarak oluşturulan ve dağıtılan Logic Apps 'i açabilirsiniz.
 
-1. Cloud Explorer 'ı açın ve mantıksal uygulamanızı bulun. 
+1. Cloud Explorer 'ı açın ve mantıksal uygulamanızı bulun.
 
 1. Mantıksal uygulamanın kısayol menüsünde, **mantıksal uygulama Düzenleyicisi Ile aç**' ı seçin.
 
@@ -98,32 +93,30 @@ Visual Studio 'da, doğrudan Azure portal ya da Visual Studio ile Azure Kaynak g
 
    ![Dağıtılan mantıksal uygulamayı Azure portal açın](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Mantıksal uygulama Logic Apps tasarımcısında açıldıktan sonra, tasarımcı 'nın en altında, temel alınan mantıksal uygulama tanımı yapısını gözden geçirebilmeniz için **kod görünümü** ' ni seçebilirsiniz. 
-   Mantıksal uygulama için bir dağıtım şablonu oluşturmak istiyorsanız, bu mantıksal uygulama için [bir Azure Resource Manager şablonu indirmeyi](#download-logic-app) öğrenin. [Kaynak Yöneticisi şablonları](../azure-resource-manager/template-deployment-overview.md)hakkında daha fazla bilgi edinin.
+   Mantıksal uygulama Logic Apps tasarımcısında açıldıktan sonra, tasarımcı 'nın en altında, temel alınan mantıksal uygulama tanımı yapısını gözden geçirebilmeniz için **kod görünümü** ' nü seçebilirsiniz. Mantıksal uygulama için bir dağıtım şablonu oluşturmak istiyorsanız, bu mantıksal uygulama için [bir Azure Resource Manager şablonu indirmeyi](#download-logic-app) öğrenin. [Kaynak Yöneticisi şablonları](../azure-resource-manager/template-deployment-overview.md)hakkında daha fazla bilgi edinin.
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Azure 'dan indir
 
-[Azure Portal](https://portal.azure.com) Logic Apps 'i indirebilir ve [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) şablon olarak kaydedebilirsiniz. Daha sonra şablonları Visual Studio ile yerel olarak düzenleyebilir ve farklı dağıtım ortamları için mantıksal uygulamaları özelleştirebilirsiniz. Logic Apps 'in indirilmesi, JavaScript Nesne Gösterimi (JSON) de kullanan [Kaynak Yöneticisi şablonlarının](../azure-resource-manager/template-deployment-overview.md)tanımlarını otomatik olarak *parametreleştirir* .
+[Azure Portal](https://portal.azure.com) Logic Apps 'i indirebilir ve [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) şablon olarak kaydedebilirsiniz. Daha sonra şablonları Visual Studio ile yerel olarak düzenleyebilir ve farklı dağıtım ortamları için mantıksal uygulamaları özelleştirebilirsiniz.  Logic Apps 'in indirilmesi, JavaScript Nesne Gösterimi (JSON) de kullanan [Kaynak Yöneticisi şablonlarının](../azure-resource-manager/template-deployment-overview.md)tanımlarını otomatik olarak *parametreleştirir* .
 
-1. Visual Studio 'da Cloud Explorer ' ı açın ve Azure 'dan indirmek istediğiniz mantıksal uygulamayı bulun ve seçin.
+1. Visual Studio 'da Cloud Explorer ' ı açın. Azure 'dan indirmek istediğiniz mantıksal uygulamayı bulun ve seçin.
 
-2. Bu uygulamanın kısayol menüsünde, **mantıksal uygulama Düzenleyicisi Ile aç**' ı seçin.
+1. Bu uygulamanın kısayol menüsünde, **mantıksal uygulama Düzenleyicisi Ile aç**' ı seçin.
 
    > [!TIP]
    > Visual Studio 2019 ' de bu komuta sahip değilseniz, Visual Studio için en son güncelleştirmelere sahip olup olmadığınızı kontrol edin.
 
-   Mantıksal uygulama Tasarımcısı açılır ve mantıksal uygulamayı gösterir. 
-   Mantıksal uygulamanın temel tanım ve yapısını gözden geçirmek için, tasarımcının alt kısmındaki **kod görünümü**' ne tıklayın. 
+   Mantıksal uygulama Tasarımcısı açılır ve mantıksal uygulamayı gösterir. Mantıksal uygulamanın temel tanım ve yapısını gözden geçirmek için, tasarımcının alt kısmındaki **kod görünümü**' nü seçin.
 
-3. Tasarımcı araç çubuğunda **İndir**' i seçin.
+1. Tasarımcı araç çubuğunda **İndir**' i seçin.
 
    !["Indir" i seçin](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
 
-4. Bir konum istendiğinde, bu konuma gidin ve mantıksal uygulama tanımının Kaynak Yöneticisi şablonunu JSON (. JSON) dosya biçiminde kaydedin. 
+1. Bir konum istendiğinde, bu konuma gidin ve mantıksal uygulama tanımının Kaynak Yöneticisi şablonunu JSON (. JSON) dosya biçiminde kaydedin.
 
-Mantıksal uygulama tanımınız Kaynak Yöneticisi şablonunun içindeki `resources` alt bölümde görüntülenir. Artık mantıksal uygulama tanımını ve Kaynak Yöneticisi şablonu Visual Studio ile düzenleyebilirsiniz. Ayrıca, şablonu bir [Azure Kaynak grubu projesi](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) olarak bir Visual Studio çözümüne ekleyebilirsiniz. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)hakkında bilgi edinin. 
+   Mantıksal uygulama tanımınız Kaynak Yöneticisi şablonunun içindeki `resources` alt bölümde görüntülenir. Artık mantıksal uygulama tanımını ve Kaynak Yöneticisi şablonu Visual Studio ile düzenleyebilirsiniz. Ayrıca, şablonu bir [Azure Kaynak grubu projesi](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) olarak bir Visual Studio çözümüne ekleyebilirsiniz. [Visual Studio 'da mantıksal uygulamalar Için Azure Kaynak grubu projeleri](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)hakkında bilgi edinin.
 
 <a name="link-integration-account"></a>
 
@@ -156,11 +149,11 @@ Visual Studio 'da **Integration Account** özelliğini ayarlayıp mantıksal uyg
 
 ## <a name="refresh-from-azure"></a>Azure 'dan Yenile
 
-Azure portal mantıksal uygulamanızı düzenler ve bu değişiklikleri tutmak istiyorsanız, Visual Studio 'da bu değişikliklerle bu uygulamanın sürümünü yenilediğinizden emin olun. 
+Azure portal mantıksal uygulamanızı düzenler ve bu değişiklikleri tutmak istiyorsanız, Visual Studio 'da bu değişikliklerle bu uygulamanın sürümünü yenilediğinizden emin olun.
 
 * Visual Studio 'da mantıksal uygulama Tasarımcısı araç çubuğunda **Yenile**' yi seçin.
 
-  -veya-
+  veya
 
 * Visual Studio Cloud Explorer 'da mantıksal uygulamanızın kısayol menüsünü açın ve **Yenile**' yi seçin.
 
@@ -191,23 +184,22 @@ Mantıksal uygulama çalıştırmaları ile ilgili durumu denetlemek ve sorunlar
    ![Ayrıntılı çalıştırma geçmişi](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
    > [!TIP]
-   > Tabloyu özelliğe göre sıralamak için bu özelliğin sütun başlığını seçin. 
+   > Tabloyu özelliğe göre sıralamak için bu özelliğin sütun başlığını seçin.
 
-1. Giriş ve çıkışları gözden geçirmek istediğiniz adımları genişletin. Örneğin:
+1. Giriş ve çıkışları gözden geçirmek istediğiniz adımları genişletin, örneğin:
 
    ![Her adımın giriş ve çıkışlarını görüntüleme](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
 
 ## <a name="disable-or-enable-logic-app"></a>Mantıksal uygulamayı devre dışı bırakma veya etkinleştirme
 
-Mantıksal uygulamanızı silmeden tetikleyiciyi, Tetikleme koşulu karşılandığında bir sonraki sefer tetiklemeden durdurabilirsiniz. Mantıksal uygulamanızı devre dışı bırakmak, Logic Apps altyapısının mantıksal uygulamanız için gelecekteki iş akışı örnekleri oluşturmasını ve çalıştırmasını engeller.
-Cloud Explorer 'da mantıksal uygulamanızın kısayol menüsünü açın ve **devre dışı bırak**' ı seçin.
+Mantıksal uygulamanızı silmeden tetikleyiciyi, Tetikleme koşulu karşılandığında bir sonraki sefer tetiklemeden durdurabilirsiniz. Mantıksal uygulamanızı devre dışı bırakmak, Logic Apps altyapısının mantıksal uygulamanız için gelecekteki iş akışı örnekleri oluşturmasını ve çalıştırmasını engeller. Cloud Explorer 'da mantıksal uygulamanızın kısayol menüsünü açın ve **devre dışı bırak**' ı seçin.
 
 ![Mantıksal uygulamanızı devre dışı bırakma](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
 
 > [!NOTE]
-> Bir mantıksal uygulamayı devre dışı bıraktığınızda, yeni çalıştırmalar örneği oluşturulur. Tüm devam eden ve bekleyen çalıştırmalar tamamlanana kadar devam eder, bu da tamamlanması zaman alabilir. 
+> Bir mantıksal uygulamayı devre dışı bıraktığınızda, yeni çalıştırmalar örneği oluşturulur. Tüm devam eden ve bekleyen çalıştırmalar tamamlanana kadar devam eder, bu da tamamlanması zaman alabilir.
 
-Mantıksal uygulamanızın işlemi sürdürmesini sağlamak için hazırsanız, mantıksal uygulamanızı yeniden etkinleştirebilirsiniz. Cloud Explorer 'da mantıksal uygulamanızın kısayol menüsünü açın ve **Etkinleştir**' i seçin.
+Mantıksal uygulamanızı yeniden etkinleştirmek için, Cloud Explorer 'da mantıksal uygulamanızın kısayol menüsünü açın ve **Etkinleştir**' i seçin.
 
 ![Mantıksal uygulamanızı etkinleştirme](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
 

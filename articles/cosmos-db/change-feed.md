@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: f50f1b3e2ee7f98d14d29f1e2205a97d76eaacc8
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615680"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219896"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB akışı değiştirme-genel bakış
 
@@ -42,7 +42,7 @@ Bu özellik şu anda aşağıdaki Azure Cosmos DB API'ları ve istemci SDK'ları
 
 ## <a name="change-feed-and-different-operations"></a>Değişiklik akışı ve farklı işlemler
 
-Bugün, değişiklik akışı tüm işlemlerde bakın. Burada denetleyebilirsiniz işlevi yalnızca güncelleştirmeler ve değil ekler gibi henüz kullanılabilir akış, belirli işlemler için değiştirin. "Yumuşak işaret" öğesi güncelleştirmeleri ve üzerinde değişiklik akışı öğeleri işlerken göre filtre ekleyebilirsiniz. Değişiklik akışı siler oturum şu anda değil. Önceki örneğe benzer, yumuşak bir işaretçi, silinen öğeleri ekleyebilirsiniz, örneğin, böylece otomatik olarak silinebilir "silindi" adlı "true" olarak ayarlayın ve öğe üzerinde bir TTL ayarlamak öğesindeki bir öznitelik ekleyebilirsiniz. Değişiklik geçmiş öğeleri için örneğin, beş yıl önce eklenen öğeleri akışı okuyabilirsiniz. Öğe silinmedi, değişiklik okuyabilirsiniz kapsayıcınızı kaynağı sunulan ürünün kendinde akış.
+Bugün, değişiklik akışı tüm işlemlerde bakın. Burada denetleyebilirsiniz işlevi yalnızca güncelleştirmeler ve değil ekler gibi henüz kullanılabilir akış, belirli işlemler için değiştirin. "Yumuşak işaret" öğesi güncelleştirmeleri ve üzerinde değişiklik akışı öğeleri işlerken göre filtre ekleyebilirsiniz. Değişiklik akışı siler oturum şu anda değil. Önceki örneğe benzer, yumuşak bir işaretçi, silinen öğeleri ekleyebilirsiniz, örneğin, böylece otomatik olarak silinebilir "silindi" adlı "true" olarak ayarlayın ve öğe üzerinde bir TTL ayarlamak öğesindeki bir öznitelik ekleyebilirsiniz. Geçmiş öğeler için değişiklik akışını okuyabilir (öğeye karşılık gelen en son değişiklik, ara değişiklikleri içermez), örneğin, beş yıl önce eklenmiş olan öğeler. Öğe silinmedi, değişiklik okuyabilirsiniz kapsayıcınızı kaynağı sunulan ürünün kendinde akış.
 
 ### <a name="sort-order-of-items-in-change-feed"></a>Değişiklik akışı öğelerinin sıralama
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186760"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240316"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Karma Runbook Worker üzerinde runbook çalıştırma
 
@@ -41,8 +41,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Runbook izinleri
 
-Karma Runbook Worker üzerinde çalışan runbook 'lar, Azure 'da olmayan kaynaklara eriştiği için genellikle Azure kaynaklarında kimlik doğrulaması yapan runbook 'lar için kullanılan yöntemi kullanamaz. Runbook yerel kaynaklara kendi kimlik doğrulamasını sağlayabilir ya da Azure kaynakları [](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
-)için yönetilen kimlikleri kullanarak kimlik doğrulamasını yapılandırabilir. Ayrıca, tüm runbook 'lar için bir kullanıcı bağlamı sağlamak üzere bir RunAs hesabı da belirtebilirsiniz.
+Karma Runbook Worker üzerinde çalışan runbook 'lar, Azure 'da olmayan kaynaklara eriştiği için genellikle Azure kaynaklarında kimlik doğrulaması yapan runbook 'lar için kullanılan yöntemi kullanamaz. Runbook yerel kaynaklara kendi kimlik doğrulamasını sağlayabilir ya da [Azure kaynakları için yönetilen kimlikleri](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)kullanarak kimlik doğrulamasını yapılandırabilir. Ayrıca, tüm runbook 'lar için bir kullanıcı bağlamı sağlamak üzere bir RunAs hesabı da belirtebilirsiniz.
 
 ### <a name="runbook-authentication"></a>Runbook kimlik doğrulaması
 
@@ -194,7 +193,7 @@ Get-AzureRmAutomationAccount | Select-Object AutomationAccountName
 Karma runbook çalışanları, bazı yapılandırmalarla yalnızca imzalı runbook 'ları çalıştıracak şekilde yapılandırılabilir. Aşağıdaki bölümde, karma runbook çalışanlarınızın imzalı [Windows karma Runbook Worker](#windows-hybrid-runbook-worker) ve [Linux karma Runbook Worker](#linux-hybrid-runbook-worker) çalıştıracak şekilde nasıl ayarlanacağı açıklanır
 
 > [!NOTE]
-> Karma Runbook Worker 'ı yalnızca imzalı runbook 'ları çalıştıracak şekilde yapılandırdıktan sonra, imzalanmamış runbook 'lar çalışan üzerinde yürütülemeyebilir.
+> Karma Runbook Worker 'ı yalnızca imzalı runbook 'ları çalıştıracak şekilde yapılandırdıktan sonra, imzalanmamış runbook 'lar çalışan üzerinde **yürütülemeyebilir.**
 
 ### <a name="windows-hybrid-runbook-worker"></a>Windows karma Runbook Worker
 

@@ -10,12 +10,12 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a681daa60503ff08320b25155e201ca0e7a4a001
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952988"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240269"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Değişiklik İzleme çözümü ile ortamınızdaki değişiklikleri izleyin
 
@@ -75,7 +75,7 @@ Azure Güvenlik Merkezi, Azure Değişiklik İzleme üzerinde oluşturulmuş dos
 
 - Yazılım değişiklikleri
 - Windows Hizmetleri
-- Linux Daemons
+- Linux Daemon 'ları
 
 FIM 'yi zaten etkinleştirdiyseniz ve tam Değişiklik İzleme çözümünü denemek istiyorsanız, aşağıdaki adımları gerçekleştirmeniz gerekir. Bu işlem, ayarlarınız kaldırılmaz.
 
@@ -100,7 +100,7 @@ Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımlar
 |Enabled     | Ayarın uygulandığını belirler.        |
 |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu Girin     | Dosyanın denetlenecek yol. Örneğin: "/etc/*. conf"       |
+|Yolu Gir     | Dosyanın denetlenecek yol. Örneğin: "/etc/*. conf"       |
 |Yol Türü     | İzlenecek öğenin türü, olası değerler dosya ve dizindir.        |
 |Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
 |Sudo Kullan     | Bu ayar, öğe denetlenirken sudonun kullanılıp kullanılmadığını belirler.         |
@@ -123,7 +123,7 @@ Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adıml
 |Enabled     | Ayarın uygulandığını belirler.        |
 |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu Girin     | Dosyayı denetlemek için kullanılacak yol (örneğin, "c:\temp\\\*.txt")<br>"%winDir%\System32\\\*.*" gibi ortam değişkenleri de kullanabilirsiniz       |
+|Yolu Gir     | Dosyayı denetlemek için kullanılacak yol (örneğin, "c:\temp\\\*.txt")<br>"%winDir%\System32\\\*.*" gibi ortam değişkenleri de kullanabilirsiniz       |
 |Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
 |Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: **True** veya **false**.|
 
@@ -187,7 +187,7 @@ Aşağıdaki tabloda değişiklik türleri için veri toplama sıklığı göste
 | Windows kayıt defteri | 50 dakika |
 | Windows dosyası | 30 dakika |
 | Linux dosyası | 15 dakika |
-| Windows hizmetleri | 10 saniye ila 30 dakika</br> Varsayılan: 30 dakika |
+| Windows hizmetleri | 10 saniye ila 30 dakika</br> Varsayılanını 30 dakika |
 | Linux Daemon 'ları | 5 dakika |
 | Windows yazılımı | 30 dakika |
 | Linux yazılımı | 5 dakika |
@@ -198,7 +198,7 @@ Aşağıdaki tabloda, Değişiklik İzleme makine başına izlenen öğe sınır
 |---|---|---|
 |Dosya|500||
 |Kayıt defteri|250||
-|Windows yazılımı|250|Yazılım güncelleştirmelerini içermez|
+|Windows yazılımı|250|Yazılım düzeltmelerini içermez|
 |Linux paketleri|1250||
 |Hizmetler|250||
 |Program|250||

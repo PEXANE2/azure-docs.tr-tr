@@ -11,20 +11,20 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: d2b9e53fc6c58f0477e252c751e25a99bdbfba42
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7a6a2c35360f59c8c2e3d0a75e646ae76c0c9de2
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200093"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218291"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleri (Önizleme) oluşturma ve erişme
 
 Bu makalede, Azure Machine Learning veri kümeleri (Önizleme) oluşturma ve yerel veya uzak denemeleri verilere erişme hakkında bilgi edineceksiniz.
 
-Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz: 
+Azure Machine Learning veri kümeleri ile şunları yapabilirsiniz:
 
-* Veri kümeleri tarafından başvurulan **depolama alanındaki verilerin tek bir kopyasını saklayın** . 
+* Veri kümeleri tarafından başvurulan **depolama alanındaki verilerin tek bir kopyasını saklayın** .
 
 * Bağlantı dizeleri veya veri yolları hakkında endişelenmeden **model eğitimi sırasında verilere kolayca erişin** .
 
@@ -45,7 +45,7 @@ Veri kümeleri oluşturmak ve bunlarla çalışmak için şunlar gerekir:
 
 ## <a name="dataset-types"></a>Veri kümesi türleri
 
-Veri kümeleri, kullanıcıların eğitim aşamasında nasıl tükettiği üzerine iki tür olarak kategorize edilir. 
+Veri kümeleri, kullanıcıların eğitim aşamasında nasıl tükettiği üzerine iki tür olarak kategorize edilir.
 
 * [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Bu, verileri bir Pandas veya Spark DataFrame 'e nasıl bir şekilde sunmanızı sağlar. CSV `TabularDataset` , TSV, Parquet dosyalarından bir nesne oluşturulabilir, SQL sorgu sonuçları vb. olabilir. Listenin tamamı için lütfen [belgelerimizi](https://aka.ms/tabulardataset-api-reference)ziyaret edin.
 
@@ -53,7 +53,7 @@ Veri kümeleri, kullanıcıların eğitim aşamasında nasıl tükettiği üzeri
 
 Yaklaşan API değişiklikleri hakkında daha fazla bilgi edinmek için [buraya](https://aka.ms/tabular-dataset)bakın.
 
-## <a name="create-datasets"></a>Veri kümeleri oluşturma 
+## <a name="create-datasets"></a>Veri kümeleri oluşturma
 
 Bir veri kümesi oluşturarak, veri kaynağı konumuna, meta verilerinin bir kopyasıyla birlikte bir başvuru oluşturursunuz. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir.
 
@@ -81,9 +81,9 @@ datastore = Datastore.get(workspace, datastore_name)
 
 ### <a name="create-tabulardatasets"></a>Tabulardataset oluşturma
 
-Tabulardataset 'ler SDK aracılığıyla veya çalışma alanı giriş sayfası (Önizleme) kullanılarak oluşturulabilir. Verilerdeki bir sütundan bir zaman damgası belirtilebilir veya yol deseninin verileri, zamana göre kolay ve etkili filtreleme sağlayan bir zaman serisi nitelik etkinleştirmek için içinde depolanır. 
+Tabulardataset 'ler SDK aracılığıyla veya çalışma alanı giriş sayfası (Önizleme) kullanılarak oluşturulabilir. Verilerdeki bir sütundan bir zaman damgası belirtilebilir veya yol deseninin verileri, zamana göre kolay ve etkili filtreleme sağlayan bir zaman serisi nitelik etkinleştirmek için içinde depolanır.
 
-#### <a name="using-the-sdk"></a>SDK’yı kullanarak 
+#### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
 CSV veya TSV biçimindeki `TabularDatasetFactory` dosyaları okumak için sınıfındaki [yönteminikullanınvekayıtlıolmayanbirtabulardatasetoluşturun.`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header--promoteheadersbehavior-all-files-have-same-headers--3---partition-format-none-) Birden çok dosyadan okuyorsanız, sonuçlar tek tablolu bir gösterimde toplanacaktır.
 
@@ -120,7 +120,7 @@ from azureml.core import Dataset, Datastore
 sql_datastore = Datastore.get(workspace, 'mssql')
 sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'))
 ```
-Zamana göre kolay ve `TabularDataset` etkili filtreleme özelliğini etkinleştirmek için sınıfındaki [metodunukullanın.`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) [Burada](http://aka.ms/azureml-tsd-notebook)daha fazla örnek ve ayrıntı bulabilirsiniz. 
+Zamana göre kolay ve `TabularDataset` etkili filtreleme özelliğini etkinleştirmek için sınıfındaki [metodunukullanın.`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) [Burada](https://aka.ms/azureml-tsd-notebook)daha fazla örnek ve ayrıntı bulabilirsiniz.
 
 ```Python
 # create a TabularDataset with timeseries trait
@@ -132,20 +132,20 @@ dataset = Dataset.Tabular.from_parquet_files(path=datastore_path, partition_form
 # set coarse timestamp to the virtual column created, and fine grain timestamp from a column in the data
 dataset = dataset.with_timestamp_columns(fine_grain_timestamp='datetime', coarse_grain_timestamp='coarse_time')
 
-# filter with timeseries trait specific methods 
+# filter with timeseries trait specific methods
 data_slice = dataset.time_before(datetime(2019, 1, 1))
 data_slice = dataset.time_after(datetime(2019, 1, 1))
-data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1)) 
-data_slice = dataset.time_recent(timedelta(weeks=1, days=1))                  
+data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
+data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
 
-#### <a name="using-the-workspace-landing-page"></a>Çalışma alanı giriş sayfasını kullanma 
+#### <a name="using-the-workspace-landing-page"></a>Çalışma alanı giriş sayfasını kullanma
 
 Web deneyimi aracılığıyla bir veri kümesi oluşturmak için [çalışma alanı giriş sayfasında](https://ml.azure.com) oturum açın. Şu anda, çalışma alanı giriş sayfası yalnızca Tabulardataset 'leri oluşturmayı destekler.
 
-Aşağıdaki animasyon çalışma alanı giriş sayfasında bir veri kümesi oluşturmayı gösterir. 
+Aşağıdaki animasyon çalışma alanı giriş sayfasında bir veri kümesi oluşturmayı gösterir.
 
-İlk olarak, sol bölmedeki **varlıklar** bölümünde **veri kümeleri** ' ni seçin. Ardından, veri kümenizin kaynağını seçmek için **+ veri kümesi oluştur** ' u seçin. Bu, yerel dosyalardan, veri deposundan veya genel Web URL 'lerinden olabilir. **Ayarlar ve önizleme** ve **şema** formları dosya türüne göre akıllıca doldurulur. Bunları gözden geçirmek veya oluşturmadan önce veri kümenizi daha fazla yapılandırmak için **İleri ' yi** seçin. Veri kümesi oluşturma **işlemi tamamlandığında bitti** ' yi seçin. 
+İlk olarak, sol bölmedeki **varlıklar** bölümünde **veri kümeleri** ' ni seçin. Ardından, veri kümenizin kaynağını seçmek için **+ veri kümesi oluştur** ' u seçin. Bu, yerel dosyalardan, veri deposundan veya genel Web URL 'lerinden olabilir. **Ayarlar ve önizleme** ve **şema** formları dosya türüne göre akıllıca doldurulur. Bunları gözden geçirmek veya oluşturmadan önce veri kümenizi daha fazla yapılandırmak için **İleri ' yi** seçin. Veri kümesi oluşturma **işlemi tamamlandığında bitti** ' yi seçin.
 
 ![UI ile veri kümesi oluşturma](media/how-to-create-register-datasets/create-dataset-ui.gif)
 
@@ -166,7 +166,7 @@ animal_ds = Dataset.File.from_files(path=datastore_paths)
 web_paths = [
             'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
-           ]          
+           ]
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
@@ -183,11 +183,11 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 ```
 
 >[!Note]
-> Çalışma alanı giriş sayfası aracılığıyla oluşturulan veri kümeleri otomatik olarak çalışma alanına kaydedilir. 
+> Çalışma alanı giriş sayfası aracılığıyla oluşturulan veri kümeleri otomatik olarak çalışma alanına kaydedilir.
 
 ## <a name="version-datasets"></a>Sürüm veri kümeleri
 
-Yeni bir sürüm oluşturarak aynı ada sahip yeni bir veri kümesini kaydedebilirsiniz. Veri kümesi sürümü verilerinizin durumuna yer işaretinin bir yoludur. bu sayede, deneme veya gelecekteki bir çoğaltma için veri kümesinin belirli bir sürümünü uygulayabilirsiniz. Sürüm oluşturmayı düşünmek için tipik senaryolar: 
+Yeni bir sürüm oluşturarak aynı ada sahip yeni bir veri kümesini kaydedebilirsiniz. Veri kümesi sürümü verilerinizin durumuna yer işaretinin bir yoludur. bu sayede, deneme veya gelecekteki bir çoğaltma için veri kümesinin belirli bir sürümünü uygulayabilirsiniz. Sürüm oluşturmayı düşünmek için tipik senaryolar:
 * Yeni veriler yeniden eğitimine uygun olduğunda.
 * Farklı veri hazırlama veya özellik Mühendisliği yaklaşımları uyguladığınızda.
 
@@ -196,7 +196,7 @@ Yeni bir sürüm oluşturarak aynı ada sahip yeni bir veri kümesini kaydedebil
 web_paths = [
             'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
-           ]          
+           ]
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
 
 # create a new version of titanic_ds

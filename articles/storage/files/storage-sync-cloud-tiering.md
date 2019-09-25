@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 36b09ce8ece010ff24345ddb96654f75542cc9a5
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: efaa1ef4c5b82da9b905f75483daf9eb3536b15a
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098956"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219337"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut katmanlaması genel bakış
 Bulut katmanlaması, sık erişilen dosyaların sunucu üzerinde yerel olarak önbelleğe alındığı, diğer tüm dosyaların ilke ayarlarına bağlı olarak Azure dosyaları ile katmanlandıkları Azure Dosya Eşitleme isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (Storagessync. sys) dosyayı bir işaretçi veya yeniden ayrıştırma noktasıyla yerel olarak değiştirir. Yeniden ayrıştırma noktası, Azure dosyalarındaki dosyanın bir URL 'sini temsil eder. Katmanlı bir dosyanın hem "çevrimdışı" özniteliği hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliği, üçüncü taraf uygulamaların katmanlı dosyaları güvenli bir şekilde tanımlayabilmesi için NTFS 'de ayarlanır.
@@ -102,8 +102,17 @@ Ayrıca, bir dosyanın geri çağrılamasını zorlamak için PowerShell kullana
     
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
+
+Belirtildiğinde `-Order CloudTieringPolicy` , en son değiştirilen dosyalar önce geri alınacaktır.
+Diğer isteğe bağlı parametreler:
+* `-ThreadCount`paralel olarak kaç dosya geri çağrılabileceğini belirler.
+* `-PerFileRetryCount`Şu anda engellenen bir dosya için bir geri çekmenin ne sıklıkta denenmeyeceğini belirler.
+* `-PerFileRetryDelaySeconds`yeniden çağırma denemeleri arasındaki saniye cinsinden süreyi belirler ve bir önceki parametreyle birlikte her zaman kullanılmalıdır.
+
+> [!Note]  
+> Sunucuyu barındıran yerel birimde, tüm katmanlı verileri yeniden çağırmak için yeterli boş alan yoksa, `Invoke-StorageSyncFileRecall` cmdlet başarısız olur.  
 
 <a id="sizeondisk-versus-size"></a>
 ### <a name="why-doesnt-the-size-on-disk-property-for-a-file-match-the-size-property-after-using-azure-file-sync"></a>Azure Dosya Eşitleme, bir dosyanın *disk özelliği üzerindeki boyutu* neden bir dosya için *Boyut* özelliği ile eşleşmiyor? 

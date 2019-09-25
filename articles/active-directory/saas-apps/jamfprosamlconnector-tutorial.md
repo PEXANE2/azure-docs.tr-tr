@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91c8a2fb278515306848f46206db67b7f37ea2ac
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: bfe426a6b3d087683e615d3212e0693b185c40f0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034252"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212387"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Öğretici: JAMF Pro ile SSO tümleştirmesi Azure Active Directory
 
@@ -87,7 +87,7 @@ Bu bölümde, Azure portal Azure AD SSO 'yu etkinleştirirsiniz.
 1. **Ek URL 'Ler ayarla**' yı seçin. Uygulamayı **SP tarafından başlatılan** modda yapılandırmak Istiyorsanız, **oturum açma URL 'si** metin kutusuna AŞAĞıDAKI formülü kullanan bir URL girin:`https://<subdomain>.jamfcloud.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Şu anda Öğreticinin ilerleyen kısımlarında açıklanan, JAMF Pro portalındaki * **Çoklu oturum açma** bölümünden gerçek tanımlayıcı değeri alacaksınız. Tanımlayıcı değerden gerçek alt etki alanı değerini ayıklayabilir ve bu alt etki alanı bilgilerini oturum açma URL 'SI ve yanıt URL 'SI olarak kullanabilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen formüllere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. JAMF Pro portalındaki **Çoklu oturum açma** bölümünden gerçek tanımlayıcı değerini alacaksınız, bu da Öğreticinin ilerleyen kısımlarında açıklanmıştır. Tanımlayıcı değerden gerçek alt etki alanı değerini ayıklayabilir ve bu alt etki alanı bilgilerini oturum açma URL 'SI ve yanıt URL 'SI olarak kullanabilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen formüllere de başvurabilirsiniz.
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümüne gidin, **Kopyala** düğmesini seçerek **App Federasyon meta veri URL 'sini**kopyalayın ve ardından bilgisayarınıza kaydedin.
 
@@ -101,7 +101,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına [ad] @ [companydomain] yazın. [uzantı]. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına [ad] @ [companydomain] yazın. [uzantı]. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’u seçin.
 

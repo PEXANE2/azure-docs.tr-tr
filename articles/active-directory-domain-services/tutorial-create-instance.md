@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172045"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229536"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -64,6 +64,15 @@ Azure AD DS örneği oluşturduğunuzda bir DNS adı belirlersiniz. Bu DNS adın
 * **Yerleşik etki alanı adı:** Varsayılan olarak, dizinin yerleşik etki alanı adı kullanılır (bir *. onmicrosoft.com* soneki). Yönetilen etki alanına internet üzerinden güvenli LDAP erişimini etkinleştirmek istiyorsanız, bu varsayılan etki alanı ile bağlantıyı güvenli hale getirmek için dijital bir sertifika oluşturamazsınız. Microsoft *. onmicrosoft.com* etki alanına sahip olduğundan, bir sertifika YETKILISI (CA) bir sertifika vermez.
 * **Özel etki alanı adları:** En yaygın yaklaşım, genellikle zaten sahip olduğunuz ve yönlendirilebilir olan özel bir etki alanı adı belirtmektir. Yönlendirilebilir, özel bir etki alanı kullandığınızda, uygulamalarınızı desteklemek için gereken şekilde trafik doğru şekilde akabilir.
 * **Yönlendirilemeyen etki alanı sonekleri:** Genellikle, *contoso. Local*gibi yönlendirilebilir olmayan bir etki alanı adı sonekini önlemenize tavsiye ederiz. *. Local* son eki yönlendirilebilir DEĞILDIR ve DNS çözümlenme sorunlarına neden olabilir.
+
+> [!TIP]
+> Özel bir etki alanı adı oluşturursanız, mevcut DNS ad alanları ile ilgilenin. Etki alanı adı için benzersiz bir ön ek eklemeniz önerilir. Örneğin, DNS kök adınız *contoso.com*ise, *corp.contoso.com* veya *DS.contoso.com*özel etki alanı adına sahip bir Azure AD DS yönetilen etki alanı oluşturun. Şirket içi AD DS ortamı olan bir karma ortamda, bu ön ekler zaten kullanımda olabilir. Azure AD DS için benzersiz bir ön ek kullanın.
+>
+> Azure AD DS yönetilen etki alanınız için kök DNS adını kullanabilirsiniz, ancak ortamınızdaki diğer hizmetler için bazı ek DNS kayıtları oluşturmanız gerekebilir. Örneğin, kök DNS adını kullanarak bir siteyi barındıran bir Web sunucusu çalıştırırsanız, ek DNS girişleri gerektiren adlandırma çakışmaları olabilir.
+>
+> Bu öğreticiler ve nasıl yapılır makalelerinde, *contoso.com* özel etki alanı kısa bir örnek olarak kullanılır. Tüm komutlarda, benzersiz bir ön ek içerebilen kendi etki alanı adınızı belirtin.
+>
+> Daha fazla bilgi için bkz. [etki alanı için bir adlandırma ön eki seçme][naming-prefix].
 
 Aşağıdaki DNS adı kısıtlamaları da geçerlidir:
 
@@ -228,3 +237,6 @@ Bu yönetilen etki alanını işlem içinde görmek için bir sanal makineyi olu
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+
+<!-- EXTERNAL LINKS -->
+[naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

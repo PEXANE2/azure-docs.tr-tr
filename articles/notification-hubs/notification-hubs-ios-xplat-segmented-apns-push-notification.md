@@ -3,9 +3,9 @@ title: Azure Notification Hubs kullanarak belirli iOS cihazlarına anında iletm
 description: Bu öğreticide, belirli iOS cihazlarına anında iletme bildirimleri göndermek için Azure Notification Hubs kullanmayı öğreneceksiniz.
 services: notification-hubs
 documentationcenter: ios
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 6ead4169-deff-4947-858c-8c6cf03cc3b2
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 07/28/2019
-ms.author: jowargo
-ms.openlocfilehash: f83afa62859dee5963749daf2555af08cf6a0e0b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 07/28/2019
+ms.openlocfilehash: 8299725cf6977ca309d57b40f4792ff9b074a8cb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663833"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213220"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli iOS cihazlarına anında iletme bildirimleri gönderin
 
@@ -47,7 +49,7 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
 
 İlk adım, kullanıcı ARABIRIMI öğelerini, kullanıcının kaydedileceği kategorileri seçmesini sağlayan mevcut görsel taslağınızı eklemektir. Bir kullanıcı tarafından seçilen kategoriler cihazda depolanır. Uygulama başlatıldığında, etiketler olarak seçilen kategorilerle bildirim hub’ınızda bir cihaz kaydı oluşturulur.
 
-1. **MainStoryboard_iPhone. görsel** taslağınızdan, nesne kitaplığından aşağıdaki bileşenleri ekleyin:
+1. **MainStoryboard_iPhone. görsel taslağınızdan** , nesne kitaplığından aşağıdaki bileşenleri ekleyin:
 
    * "Son haberler" metni olan bir etiket,
    * Kategori metinleri "Dünya", "siyatik", "Iş", "teknoloji", "bilim", "spor", "spor" içeren Etiketler
@@ -174,7 +176,7 @@ Bu konu, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notificati
 
     Bu noktada, `didRegisterForRemoteNotificationsWithDeviceToken` yönteminde başka kod olmaması gerekir.
 
-10. Aşağıdaki yöntemlerin ' de `AppDelegate.m` zaten mevcut olması gerekir Notification Hubs öğreticisiyle [çalışmaya başlama][get-started] . Aksi takdirde, bunları ekleyin.
+10. Aşağıdaki yöntemlerin ' de `AppDelegate.m` zaten mevcut olması gerekir [Notification Hubs öğreticisiyle çalışmaya başlama][get-started] . Aksi takdirde, bunları ekleyin.
 
     ```objc
     - (void)MessageBox:(NSString *)title message:(NSString *)messageText

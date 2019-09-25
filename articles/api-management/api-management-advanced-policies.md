@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: efc439d56ee864d940942369b3d226ed2a94a383
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 166ff5f8866fca955cbe99c5896eb509f52261f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072628"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219557"
 ---
 # <a name="api-management-advanced-policies"></a>Gelişmiş ilkeleri API Management
 
@@ -38,7 +38,7 @@ Bu konu, aşağıdaki API Management ilkelerine yönelik bir başvuru sağlar. �
 -   [Set Request Yöntemi](#SetRequestMethod) -bir Istek için http yöntemini değiştirmenize izin verir.
 -   [Durum kodu ayarla](#SetStatus) -http durum kodunu belirtilen değere dönüştürür.
 -   [Değişken ayarla](api-management-advanced-policies.md#set-variable) -daha sonra erişim için adlandırılmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkeninde bir değeri devam ettirir.
--   [Trace](#Trace) - [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına bir dize ekler.
+-   [Trace](#Trace) - [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına, Application Insights Telemetriler ve tanılama günlüklerine özel izlemeler ekler.
 -   [Bekleme](#Wait) -devam etmeden önce, kapalı [gönderme isteği](api-management-advanced-policies.md#SendRequest), [önbellekten değer alma](api-management-caching-policies.md#GetFromCacheByKey)veya [Denetim akışı](api-management-advanced-policies.md#choose) ilkelerinin tamamlanmasını bekler.
 
 ## <a name="choose"></a>Denetim akışı
@@ -129,7 +129,7 @@ Bu örnek, `Starter` ürünü kullanırken arka uç hizmetinden alınan yanıtta
 | Öğe   | Açıklama                                                                                                                                                                                                                                                               | Gerekli |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | 'yu    | Kök öğe.                                                                                                                                                                                                                                                             | Evet      |
-| zaman      | `if` İlkenin veya`ifelse` bölümlerinin için kullanılacakkoşul`choose` . İlkede birden çok `when` bölüm varsa, bunlar sırayla değerlendirilir. `choose` Bir zaman öğesi olarak `true`değerlendirildikten sonra, başka `when` hiçbir koşul değerlendirilmez. `condition` | Evet      |
+| Oluşturulurken      | `if` İlkenin veya`ifelse` bölümlerinin için kullanılacakkoşul`choose` . İlkede birden çok `when` bölüm varsa, bunlar sırayla değerlendirilir. `choose` Bir zaman öğesi olarak `true`değerlendirildikten sonra, başka `when` hiçbir koşul değerlendirilmez. `condition` | Evet      |
 | güvenmiyorsanız | `when` Koşulların hiçbiri olarak `true`değerlendiriliyorsa kullanılacak ilke kod parçacığını içerir.                                                                                                                                                                               | Hayır       |
 
 ### <a name="attributes"></a>Öznitelikler
@@ -140,7 +140,7 @@ Bu örnek, `Starter` ürünü kullanırken arka uç hizmetinden alınan yanıtta
 
 ### <a name="ChooseUsage"></a>Kullanımıyla
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -258,7 +258,7 @@ Bu işlem düzeyi ilke, istekleri arka uç hizmetine iletmiyor.
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** arka uç
 -   **İlke kapsamları:** tüm kapsamlar
@@ -308,7 +308,7 @@ Aşağıdaki örnek, bir arka uca iletilen isteklerin sayısının bir bağlam d
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -362,7 +362,7 @@ Herhangi bir dize Event Hubs oturum açma değeri olarak kullanılabilir. Bu ör
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -402,11 +402,11 @@ status code and media type. If no example or schema found, the content is empty.
 | Öznitelik    | Açıklama                                                                                           | Gerekli | Varsayılan |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | durum kodu  | Yanıt durum kodunu belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır.                 | Hayır       | 200     |
-| içerik türü | Yanıt `Content-Type` üst bilgisi değerini belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır. | Hayır       | Yok.    |
+| İçerik türü | Yanıt `Content-Type` üst bilgisi değerini belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır. | Hayır       | Yok.    |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, hata üzerine
 
@@ -462,7 +462,7 @@ Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kull
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | condition        | Yeniden denemelerin durdurulup durdurulmadığını`false`belirten bir Boole sabit değeri veya [ifadesi](api-management-policy-expressions.md) (`true`).      | Evet      | Yok     |
 | count            | Denemek için en fazla yeniden deneme sayısını belirten pozitif bir sayı.                                                                                | Evet      | Yok     |
-| aralığı         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Evet      | Yok     |
+| interval         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Evet      | Yok     |
 | Maksimum Aralık     | Yeniden deneme girişimleri arasındaki en fazla bekleme aralığını belirten saniye cinsinden pozitif bir sayı. Üstel yeniden deneme algoritması uygulamak için kullanılır. | Hayır       | Yok     |
 | tamamlanması            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | Hayır       | Yok     |
 | ilk hızlı yeniden deneme | Olarak `true` ayarlanırsa, ilk yeniden deneme denemesi hemen gerçekleştirilir.                                                                                  | Hayır       | `false` |
@@ -474,7 +474,7 @@ Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kull
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) Alt ilke kullanım kısıtlamalarının Bu ilke tarafından devralındığını unutmayın.
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) kullanılabilir. Alt ilke kullanım kısıtlamalarının Bu ilke tarafından devralındığını unutmayın.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -524,7 +524,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -584,7 +584,7 @@ Bu örnek ilke, http yanıt kodu 500 değerinden `send-one-way-request` büyük 
 | tek yönlü istek gönder       | Kök öğe.                                                                                               | Evet                             |
 | url                        | İsteğin URL'si.                                                                                     | If modu = Copy; Aksi halde evet. |
 | yöntemi                     | İstek için HTTP yöntemi.                                                                            | If modu = Copy; Aksi halde evet. |
-| üst bilgi                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
+| header                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
 | body                       | İstek gövdesi.                                                                                           | Hayır                              |
 | kimlik doğrulama-sertifika | [İstemci kimlik doğrulaması için kullanılacak sertifika](api-management-authentication-policies.md#ClientCertificate) | Hayır                              |
 
@@ -598,7 +598,7 @@ Bu örnek ilke, http yanıt kodu 500 değerinden `send-one-way-request` büyük 
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -668,7 +668,7 @@ Bu örnekte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak 
 | gönderme isteği               | Kök öğe.                                                                                               | Evet                             |
 | url                        | İsteğin URL'si.                                                                                     | If modu = Copy; Aksi halde evet. |
 | yöntemi                     | İstek için HTTP yöntemi.                                                                            | If modu = Copy; Aksi halde evet. |
-| üst bilgi                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
+| header                     | İstek üst bilgisi. Birden çok istek üst bilgisi için birden çok üstbilgi öğesi kullanın.                                  | Hayır                              |
 | body                       | İstek gövdesi.                                                                                           | Hayır                              |
 | kimlik doğrulama-sertifika | [İstemci kimlik doğrulaması için kullanılacak sertifika](api-management-authentication-policies.md#ClientCertificate) | Hayır                              |
 
@@ -685,7 +685,7 @@ Bu örnekte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak 
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -727,7 +727,7 @@ Gizli bilgilerin ilke belgesinde depolanmasını önlemek için, [özelliklerin]
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen
 
@@ -782,7 +782,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, hata durumunda
 
@@ -832,7 +832,7 @@ Bu örnekte, yetkilendirme belirtecinin geçersiz olması durumunda 401 yanıtı
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** giden, arka uç, hata durumunda
 -   **İlke kapsamları:** tüm kapsamlar
@@ -870,7 +870,7 @@ Aşağıdaki örnek, gelen bölümündeki bir değişken kümesi ilkesini göste
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 -   **İlke kapsamları:** tüm kapsamlar
@@ -913,33 +913,53 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/document
 
 ## <a name="Trace"></a>İzlemesinin
 
-İlke, API denetçisi çıktısına bir dize ekler. [](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) `trace` İlke yalnızca izleme tetiklendiğinde yürütülür, yani `Ocp-Apim-Trace` istek üst bilgisi var ve `Ocp-Apim-Subscription-Key` olarak `true` ayarlanır ve istek üst bilgisi vardır ve yönetici hesabıyla ilişkili geçerli bir anahtarı barındırır.
+`trace` İlke, API denetçisi çıktısına, Application Insights Telemetriler ve/veya tanılama günlüklerine özel bir izleme ekler. 
+
+* İlke, izleme tetiklendiğinde [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına özel bir izleme ekler, yani `Ocp-Apim-Trace` istek üst bilgisi var ve doğru olarak `Ocp-Apim-Subscription-Key` ayarlanır ve istek üst bilgisi bulunur ve izlemeye izin veren geçerli bir anahtar barındırır. 
+* İlke, [Application Insights tümleştirme](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights) `severity` etkin olduğunda ve ilkede belirtilen düzeyin tanılamasında belirtilen `verbosity` düzeyden daha yüksek olduğu durumlarda Application Insights ' de bir [izleme](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) telemetrisi oluşturur ayarlanmasını. 
+* İlke, [tanılama günlükleri](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) etkinken ve ilkede belirtilen önem düzeyi tanılama ayarında belirtilen ayrıntı düzeyinden daha yüksek olduğunda günlük girişine bir özellik ekler.  
+
 
 ### <a name="policy-statement"></a>İlke ekstresi
 
 ```xml
 
-<trace source="arbitrary string literal">
-    <!-- string expression or literal -->
+<trace source="arbitrary string literal" severity="verbose|information|error">
+    <message>String literal or expressions</message>
+    <metadata name="string literal or expressions" value="string literal or expressions"/>
 </trace>
 
+```
+
+### <a name="traceExample"></a>Örneğinde
+
+```xml
+<trace source="PetStore API" severity="verbose">
+    <message>@((string)context.Variables["clientConnectionID"])</message>
+    <metadata name="Operation Name" value="New-Order"/>
+</trace>
 ```
 
 ### <a name="elements"></a>Öğeler
 
 | Öğe | Açıklama   | Gerekli |
 | ------- | ------------- | -------- |
-| izlemesinin   | Kök öğe. | Evet      |
+| İzlemesinin   | Kök öğe. | Evet      |
+| message | Günlüğe kaydedilecek bir dize veya ifade. | Evet |
+| meta veriler | Application Insights [izleme](https://docs.microsoft.com/en-us/azure/azure-monitor/app/data-model-trace-telemetry) telemetrisine özel bir özellik ekler. | Hayır |
 
 ### <a name="attributes"></a>Öznitelikler
 
 | Öznitelik | Açıklama                                                                             | Gerekli | Varsayılan |
 | --------- | --------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | Dize sabit değeri, izleme görüntüleyicisine anlamlı ve iletinin kaynağını belirtmektir. | Evet      | Yok     |
+| önem derecesi    | İzlemenin önem derecesini belirtir. İzin verilen değerler `verbose` `information`,,(enküçükten en büyüğe). `error` | Hayır      | Ayrıntılı     |
+| name    | Özelliğin adı. | Evet      | Yok     |
+| value    | Özelliğin değeri. | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç, hata durumunda
 
@@ -1009,7 +1029,7 @@ Aşağıdaki örnekte, `wait` ilkenin en hızlı alt `choose` ilkelerine sahip i
 
 ### <a name="usage"></a>Kullanım
 
-Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve kapsamlarda kullanılabilir. [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)
+Bu ilke, aşağıdaki ilke [bölümlerinde](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) ve [kapsamlarda](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)kullanılabilir.
 
 -   **İlke bölümleri:** gelen, giden, arka uç
 -   **İlke kapsamları:** tüm kapsamlar

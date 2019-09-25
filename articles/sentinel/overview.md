@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel önizlemesi nedir? | Microsoft Docs
+title: Azure Sentinel nedir? | Microsoft Docs
 description: Azure Sentinel, temel özellikleri ve nasıl çalıştığı hakkında bilgi edinin.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15cf770a372c9a1386dd0293abeac01fd3cacf63
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 19291e233e4086815488973629167cc7d7dc9f4a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779738"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240577"
 ---
-# <a name="what-is-azure-sentinel-preview"></a>Azure Sentinel önizlemesi nedir?
+# <a name="what-is-azure-sentinel"></a>Azure Sentinel nedir?
 
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Microsoft Azure Sentinel, ölçeklenebilir, bulutta yerel, **güvenlik bilgileri olay yönetimi (SıEM)** ve **güvenlik Orchestration otomatik yanıtı (Soar)** çözümüdür. Azure Sentinel, bir uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı için tek bir çözüm sunarak kuruluş genelinde akıllı güvenlik Analizi ve tehdit bilgileri sunar. 
 
@@ -53,30 +51,22 @@ Azure Sentinel 'de, ilk olarak [güvenlik kaynaklarınıza bağlanmanız](connec
 
 ![Veri toplayıcılar](./media/collect-data/collect-data-page.png)
 
-## <a name="dashboards"></a>Panolar
+## <a name="workbooks"></a>Çalışma Kitapları
 
-Veri kaynaklarını bağladıktan sonra, veri kaynaklarınızdaki öngörüleri sunan [expertly oluşturulan panolar](quickstart-get-visibility.md#dashboards) galerisinden seçim yapabilirsiniz. Her Pano tamamen özelleştirilebilir-kendi mantığınızı ekleyebilir veya sorguları değiştirebilir veya sıfırdan Pano oluşturabilirsiniz.
+ [Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, özel çalışma kitapları oluşturma konusunda çok yönlülük sağlayan Azure izleyici çalışma kitapları ile Azure Sentinel tümleştirmesini kullanarak verileri izleyebilirsiniz. Çalışma kitapları Azure Sentinel 'de farklı şekilde görüntülenirken, [Azure Izleyici çalışma kitapları ile etkileşimli raporlar oluşturmayı](../azure-monitor/app/usage-workbooks.md)görmeniz yararlı olabilir. Azure Sentinel, verileriniz genelinde özel çalışma kitapları oluşturmanızı sağlar ve ayrıca, bir veri kaynağını bağladığınızda verilerinize hızlı bir şekilde Öngörüler elde etmenizi sağlayan yerleşik çalışma kitabı şablonlarıyla birlikte gelir.
 
-Panolar, güvenlik analistlerinizin saldırı sırasında neler olduğunu daha iyi anlamak için gelişmiş analiz kullanarak etkileşimli görselleştirme sağlar. Araştırma araçları, herhangi bir alandan, tehdit bağlamını hızlı bir şekilde geliştirmeye kadar her türlü alanı derinlemesine incelemenize olanak sağlar. 
-
-![Panolar](./media/overview/dashboards.png)
+![Panolar](./media/tutorial-monitor-data/access-workbooks.png)
 
 ## <a name="analytics"></a>Analiz
 
-Azure Sentinel, paraziti azaltmanıza ve inceleyecek ve araştırmanız gereken uyarı sayısını en aza indirmenize yardımcı olmak için, [uyarıları olaylar ile ilişkilendirmek için analiz](tutorial-detect-threats.md)kullanır. **Olaylar** , araştırıp çözebileceğiniz, uygulanabilir olabilecek bir tehdit oluşturan ilgili uyarı gruplarıdır. Yerleşik bağıntı kurallarını olduğu gibi kullanın veya kendi kendinize oluşturmak için bir başlangıç noktası olarak kullanın. Azure Sentinel Ayrıca, ağ davranışınızı eşlemek için makine öğrenimi kuralları sağlar ve kaynaklarınızın tamamında bozukluklar olup olmadığına bakar. Bu analizler, farklı varlıklar hakkında düşük doğruluk uyarılarını potansiyel yüksek kaliteli güvenlik olaylarına birleştirerek noktaları birbirine bağlanır.
+Azure Sentinel, paraziti azaltmanıza ve inceleyecek ve araştırmanız gereken uyarı sayısını en aza indirmenize yardımcı olmak için, [uyarıları olaylar ile ilişkilendirmek için analiz](tutorial-detect-threats-built-in.md)kullanır. **Olaylar** , araştırıp çözebileceğiniz, uygulanabilir olabilecek bir tehdit oluşturan ilgili uyarı gruplarıdır. Yerleşik bağıntı kurallarını olduğu gibi kullanın veya kendi kendinize oluşturmak için bir başlangıç noktası olarak kullanın. Azure Sentinel Ayrıca, ağ davranışınızı eşlemek için makine öğrenimi kuralları sağlar ve kaynaklarınızın tamamında bozukluklar olup olmadığına bakar. Bu analizler, farklı varlıklar hakkında düşük doğruluk uyarılarını potansiyel yüksek kaliteli güvenlik olaylarına birleştirerek noktaları birbirine bağlanır.
 
-![Çalışmaların](./media/overview/cases.png)
-
-## <a name="user-analytics"></a>Kullanıcı analizi
-
-Machine Learning (ML) ve [Kullanıcı analizinin](user-analytics.md)yerel tümleştirmesiyle, Azure Sentinel tehditleri hızlı bir şekilde algılamaya yardımcı olabilir. Azure Sentinel, Kullanıcı davranışını analiz etmek ve ilk olarak araştırmanız gereken kullanıcılara, uyarıları ve Azure Sentinel ve Microsoft 365 karşı şüpheli etkinlik düzenlerini belirlemek için Azure Gelişmiş tehdit koruması ile sorunsuz bir şekilde tümleşir.
-
-![Kullanıcı analizi](./media/overview/user-analytics.png)
+![Olaylar](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>Güvenlik Otomasyonu & düzenleme
 
-Ortak görevlerinizi otomatikleştirin ve Azure hizmetleriyle ve mevcut araçlarınızla tümleştirilen PlayBook 'lar [ile güvenlik düzenlemesini kolaylaştırın](tutorial-respond-threats-playbook.md) . Azure Logic Apps temel alınarak geliştirilen Azure Sentinel otomasyonu ve düzenleme çözümü, yeni teknolojiler ve tehditler ortaya çıktı olarak ölçeklenebilir Otomasyonu sağlayan yüksek düzeyde genişletilebilir bir mimari sağlar. Azure Logic Apps ile PlayBook 'lar oluşturmak için, büyüyen bir yerleşik PlayBook Galerisi arasından seçim yapabilirsiniz. Bunlar Azure işlevleri gibi hizmetler için [200 + bağlayıcı](https://docs.microsoft.com/azure/connectors/apis-list) içerir. Bağlayıcılar kodda, ServiceNow, Jira, Zendesk, HTTP istekleri, Microsoft ekipleri, bolluk, Windows Defender ATP ve Cloud App Security özel mantık uygulamanıza olanak tanır.
+Ortak görevlerinizi otomatikleştirin ve Azure hizmetleriyle ve mevcut araçlarınızla tümleştirilen [PlayBook 'lar ile güvenlik düzenlemesini kolaylaştırın](tutorial-respond-threats-playbook.md) . Azure Logic Apps temel alınarak geliştirilen Azure Sentinel otomasyonu ve düzenleme çözümü, yeni teknolojiler ve tehditler ortaya çıktı olarak ölçeklenebilir Otomasyonu sağlayan yüksek düzeyde genişletilebilir bir mimari sağlar. Azure Logic Apps ile PlayBook 'lar oluşturmak için, büyüyen bir yerleşik PlayBook Galerisi arasından seçim yapabilirsiniz. Bunlar Azure işlevleri gibi hizmetler için [200 + bağlayıcı](https://docs.microsoft.com/azure/connectors/apis-list) içerir. Bağlayıcılar kodda, ServiceNow, Jira, Zendesk, HTTP istekleri, Microsoft ekipleri, bolluk, Windows Defender ATP ve Cloud App Security özel mantık uygulamanıza olanak tanır.
 
 Örneğin, ServiceNow bilet sistemi kullanıyorsanız, iş akışlarınızı otomatikleştirmek için Azure Logic Apps kullanmak için sunulan araçları kullanabilir ve belirli bir olay algılandığında ServiceNow içinde bir bilet açabilirsiniz.
 
@@ -84,22 +74,22 @@ Ortak görevlerinizi otomatikleştirin ve Azure hizmetleriyle ve mevcut araçlar
 
 
 
-## <a name="investigation"></a>Araştırma
+## <a name="investigation-preview"></a>Araştırma (Önizleme)
 
 Azure Sentinel [derin araştırma](tutorial-investigate-cases.md) araçları, olası bir güvenlik tehdidi kapsamında kapsamı anlamanıza ve kök nedenini bulmanıza yardımcı olur. Belirli bir varlık için ilginç sorular sormak üzere etkileşimli grafikte bir varlık seçebilir ve bu varlığa ve bu varlığın bağlantı ayrıntılarına gidebilir ve bu da tehdidin temel nedenine ulaşın. 
 
-![Araştırma](./media/overview/investigation.png)
+![Araştırma](./media/tutorial-investigate-cases/map-timeline.png)
 
 
-## <a name="hunting"></a>Avlanma
+## <a name="hunting"></a>Tehdit avcılığı
 
-Azure Sentinel 'in, bir uyarı tetiklenene kadar, kuruluşunuzun veri kaynakları genelinde güvenlik tehditleri için güvenli bir şekilde araştırma yapma imkanı sunan, MITRE çerçevesini temel alan, [arama ve sorgu araçlarını](hunting.md)kullanın. Hangi Arayıcı sorgusunun olası saldırılara yönelik yüksek değerli Öngörüler sağladığını bulduktan sonra, sorgunuza göre özel algılama kuralları oluşturabilir ve bu öngörüleri güvenlik olay yanıtlamalarınıza uyarı olarak bırakabilirsiniz. Arama yaparken, ilginç olaylar için yer işaretleri oluşturabilir, daha sonra bunları daha sonra geri dönüp başkalarıyla paylaşabilir ve araştırmaya yönelik ilgi çekici bir durum oluşturmak için bunları başka bir ilişkili olayla gruplayabilirsiniz.
+Azure Sentinel 'in, bir uyarı tetiklenene kadar, kuruluşunuzun veri kaynakları genelinde güvenlik tehditleri için güvenli bir şekilde araştırma yapma imkanı sunan, MITRE çerçevesini temel alan, [arama ve sorgu araçlarını](hunting.md)kullanın. Hangi Arayıcı sorgusunun olası saldırılara yönelik yüksek değerli Öngörüler sağladığını bulduktan sonra, sorgunuza göre özel algılama kuralları oluşturabilir ve bu öngörüleri güvenlik olay yanıtlamalarınıza uyarı olarak bırakabilirsiniz. Arama yaparken, ilginç olaylar için yer işaretleri oluşturabilir, daha sonra bu kullanıcılara geri dönebilmeniz, başkalarıyla paylaşmanız ve daha sonra incelemek üzere etkileyici bir olay oluşturmak için bunları diğer ilişkili olaylarla gruplandırmanıza olanak tanır.
 
-![Avlanma](./media/overview/hunting.png)
+![Tehdit avcılığı](./media/overview/hunting.png)
 
 ## <a name="community"></a>Topluluk
 
-Azure Sentinel topluluğu, tehdit algılama ve otomasyonu için güçlü bir kaynaktır. Microsoft Güvenlik analistlerimiz sürekli olarak yeni panolar, PlayBook 'lar oluşturma ve ekleme sorguları ve daha fazlası oluşturup, ortamınızda kullanabilmeniz için bunları topluluğa aktarıyoruz. Özel panolar oluşturmak için özel topluluk GitHub [deposundan](https://aka.ms/asicommunity) örnek içeriği Indirebilir, Azure Sentinel için sorgular, Not defterleri ve PlayBook 'lar oluşturabilirsiniz. 
+Azure Sentinel topluluğu, tehdit algılama ve otomasyonu için güçlü bir kaynaktır. Microsoft Güvenlik analistlerimiz sürekli olarak yeni çalışma kitapları, PlayBook 'lar oluşturma ve ekleme, sorguları yönetme ve daha fazlası oluşturup, ortamınızda kullanabilmeniz için bunları topluluğa aktarıyoruz. Özel çalışma kitapları oluşturmak, Azure Sentinel için sorguları, not defterlerini ve PlayBook 'ları yakalamak üzere özel topluluk GitHub [deposundan](https://aka.ms/asicommunity) örnek içerik indirebilirsiniz. 
 
 ![Topluluk](./media/overview/community.png)
 

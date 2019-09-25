@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 4628955998ab8b289a429cdfb85e23f7f97b0b40
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101425"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240995"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Microsoft Azure ve Oracle bulut altyapısını tümleştirerek Oracle uygulama çözümleri (Önizleme)
 
@@ -50,7 +50,7 @@ Aşağıdaki diyagramda bağlı çözüme üst düzey bir genel bakış sunulmak
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-* Önizlemede çapraz bulut bağlantısı, Azure Doğu ABD (eastus) bölgesi ve OCı Ashyakma (US-Ashburn-1) bölgesiyle sınırlandırılmıştır.
+* Önizlemede çapraz bulut bağlantısı, Azure Doğu ABD (eastus) & UK Güney (UKGüney) bölgeleriyle ve OCı Ashyakma (ABD Doğu) & Londra (UK Güney) bölgeleriyle sınırlıdır. UK Güney için, daha düşük gecikme süreleriyle bağlantı dağıtmak için lütfen OCı 'da kullanılabilirlik etki alanı 1 (AD 1) kullanın.
 
 ## <a name="networking"></a>Ağ
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845349"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211778"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Örnek: Metin Analizi ile yaklaşımı Algıla
 
@@ -80,7 +80,7 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
 
 + POST isteği oluşturun. Bu isteğin API belgelerini gözden geçirmek için [YAKLAŞıM ANALIZI API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)'sine bakın.
 
-+ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTP uç noktasını ayarlayın. URL 'ye dahil `/text/analytics/v2.1/sentiment` etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTP uç noktasını ayarlayın. URL 'ye dahil `/text/analytics/v2.1/sentiment` etmeniz gerekir. Örneğin: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 
@@ -139,7 +139,7 @@ Aşağıdaki örnekte, bu makaledeki belge koleksiyonu yanıtı gösterilmektedi
 > [!NOTE]
 > * Yaklaşım Analizi v3 istek biçimi ve [veri sınırları](../overview.md#data-limits) , önceki sürümle aynıdır.
 > * Şu anda v3 Yaklaşım Analizi:
->    * Şu anda Ingilizce, Basitleştirilmiş Çince ve Japonca dilleri desteklemektedir.
+>    * Şu anda Ingilizce, Fransızca, Italyanca, Japonca, Basitleştirilmiş Çince ve geleneksel-Çince dillerini desteklemektedir.
 >    * Şu `Australia East`bölgelerde kullanılabilir:, `East US 2` ,`UK South`,, ,`East US`, ,,`Southeast Asia`, ,`West Europe`ve `North Europe` `East Asia` `Central US` `Central Canada` `South Central US` `West US 2` .
 
 |Özellik |Açıklama  |

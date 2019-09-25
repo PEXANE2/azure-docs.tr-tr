@@ -1,32 +1,29 @@
 ---
-title: Office 365 verilerini Azure Sentinel önizlemesine bağlama | Microsoft Docs
+title: Office 365 verilerini Azure Sentinel 'e bağlama | Microsoft Docs
 description: Office 365 verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: ff7c862e-2e23-4a28-bd18-f2924a30899d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 39245cb43dacfeec2b647936d5e5790d4a185467
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019007"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240656"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Office 365 günlüklerinden veri bağlama
 
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Denetim günlüklerini [Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) ' den Azure Sentinel 'e tek bir tıklama ile akışla aktarabilirsiniz. Azure Sentinel 'de, birden çok kiracıdan gelen denetim günlüklerini tek bir çalışma alanına akışla aktarabilirsiniz. Office 365 etkinlik günlüğü Bağlayıcısı, devam eden kullanıcı etkinlikleri hakkında öngörüler sağlar. Office 365 ' den çeşitli Kullanıcı, yönetici, sistem ve ilke eylemleri ve olayları hakkında bilgi alacaksınız. Office 365 günlüklerini Azure Sentinel 'e bağlayarak panoları görüntülemek, özel uyarılar oluşturmak ve araştırma işleminizi geliştirmek için bu verileri kullanabilirsiniz.
 
@@ -36,8 +33,8 @@ Denetim günlüklerini [Office 365](https://docs.microsoft.com/office365/admin/a
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Kiracınızda genel yönetici veya güvenlik yöneticisi olmanız gerekir
-- Bağlantı oluşturmak için Azure Sentinel 'de oturum açtığınız bilgisayarınızda, bağlantı noktası 4433 ' nin Web trafiğine açık olduğundan emin olun.
-- Kiracınızda Office 365 E3 veya Office 365 E5 lisansı yoksa, aşağıdaki işlemlerden birini kullanarak, sizin için Birleşik denetim 'i etkinleştirmeniz gerekir:
+- Bağlantı oluşturmak için Azure Sentinel 'de oturum açtığınız bilgisayarınızda, bağlantı noktası 4433 ' nin Web trafiğine açık olduğundan emin olun. Bağlantı başarıyla yapıldıktan sonra bu bağlantı noktası yeniden kapatılabilir.
+- Kiracınızda Office 365 E3 veya Office 365 E5 lisansı yoksa, bu işlemlerden birini kullanarak kiracınızda Birleşik denetimi etkinleştirmeniz gerekir:
     - [Set-AdminAuditLogConfig cmdlet 'Ini kullanarak](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) "UnifiedAuditLogIngestionEnabled" parametresini etkinleştirin.
     - [Veya güvenlik ve Uyumluluk Merkezi Kullanıcı arabirimini kullanma](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
@@ -58,5 +55,5 @@ Denetim günlüklerini [Office 365](https://docs.microsoft.com/office365/admin/a
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede Office 365 ' i Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 

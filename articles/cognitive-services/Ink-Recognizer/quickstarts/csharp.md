@@ -1,52 +1,52 @@
 ---
-title: "Hızlı Başlangıç: Dijital Mürekkep mürekkep tanıyıcı REST API'si ile tanıması veC#"
+title: 'Hızlı Başlangıç: Mürekkep tanıyıcı REST API ile dijital mürekkebi tanıma veC#'
 titleSuffix: Azure Cognitive Services
-description: Dijital mürekkep vuruşlarını algılamayı başlatmak için mürekkep tanıyıcı API'sini kullanın.
+description: Dijital mürekkep vuruşlarını tanımayı başlatmak için mürekkep tanıyıcı API 'sini kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 6a1b4ab43a7d87ac1162a7f0a3556d6bc3bfbfab
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 86e69d75c067159a4daa637984a392a393dc46fa
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721251"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211792"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Hızlı Başlangıç: Dijital Mürekkep mürekkep tanıyıcı REST API'si ile tanıması veC#
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Hızlı Başlangıç: Mürekkep tanıyıcı REST API ile dijital mürekkebi tanıma veC#
 
-Dijital mürekkep vuruşlarını mürekkep tanıyıcı API'sine göndermeye başlamak için bu Hızlı Başlangıç'ı kullanın. Bu C# uygulama JSON biçimli bir mürekkep vuruşu verilerini içeren bir API isteği gönderir ve yanıtı alır.
+Mürekkep tanıyıcı API 'sine dijital mürekkep vuruşları göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu C# uygulama JSON biçimli mürekkep konturu verilerini IÇEREN bir API isteği gönderir ve yanıtı alır.
 
-Bu uygulamanın yazıldığı sırada C#, çoğu programlama dilleri ile uyumlu bir RESTful web hizmeti API'dir.
+Bu uygulama içine C#YAZıLıRKEN, API çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
-Genellikle bir dijital mürekkep uygulamasından API çağrısıyla sonlandırmalısınız. Bu hızlı başlangıçta, bir JSON dosyasından el yazısı aşağıdaki örnek mürekkep vuruşu verileri gönderir.
+Genellikle, API 'YI bir dijital mürekkep uygulamasının içinden çağıracağınızdan. Bu hızlı başlangıç, bir JSON dosyasından aşağıdaki el yazısı örneği için mürekkep konturu verileri gönderir.
 
-![Resimlerdeki el yazısı görüntüsü](../media/handwriting-sample.jpg)
+![El yazısı metin görüntüsü](../media/handwriting-sample.jpg)
 
-Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
+Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502)' da bulabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)’nin herhangi bir sürümü.
 - [Newtonsoft.Json](https://www.newtonsoft.com/json)
-    - Visual Studio'da bir NuGet paketi olarak Newtonsoft.Json yüklemek için:
-        1. Sağ tıklayın **çözüm Yöneticisi**
-        2. Tıklayın **NuGet paketlerini Yönet...**
-        3. Arama `Newtonsoft.Json` paketini ve yükleme
-- Linux/MacOS kullanıyorsanız, bu uygulama olması çalıştırırsa kullanarak [Mono](https://www.mono-project.com/).
+    - Newtonsoft. json ' i Visual Studio 'da bir NuGet paketi olarak yüklemek için:
+        1. **Çözüm Yöneticisi** 'ne sağ tıklayın
+        2. **NuGet Paketlerini Yönet...** öğesine tıklayın.
+        3. Paketi arayın `Newtonsoft.Json` ve yükledikten sonra
+- Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
 
-- Bu hızlı başlangıç örnek mürekkep vuruşu verilerini bulunabilir [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json).
+- Bu hızlı başlangıç için örnek mürekkep konturu verileri [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-ink-strokes.json)'da bulunabilir.
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
 
 ## <a name="create-a-new-application"></a>Yeni uygulama oluşturma
 
-1. Visual Studio'da yeni bir konsol çözümü oluşturun ve aşağıdaki paketleri ekleyin. 
+1. Visual Studio 'da yeni bir konsol çözümü oluşturun ve aşağıdaki paketleri ekleyin. 
 
     ```csharp
     using System;
@@ -60,7 +60,7 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
     using Newtonsoft.Json.Linq;
     ```
 
-2. Abonelik anahtarınız ve uç noktanız için değişkenler oluşturun. Mürekkep tanıma için kullanabileceğiniz URI aşağıdadır. Daha sonra API oluşturmak için hizmet uç noktanıza eklenir istek URL'si.
+2. Abonelik anahtarınız ve uç noktanız için değişkenler oluşturun. Aşağıdaki uç noktayı mürekkep tanıyıcı kaynağınız için oluşturulan bir ile değiştirin. API 'ye bağlanmak için mürekkebi bir tanıyıcı URI 'sine ekleyin.
 
     ```csharp
     // Replace the subscriptionKey string with your valid subscription key.
@@ -70,17 +70,17 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
     const string dataPath = @"PATH-TO-INK-STROKE-DATA"; 
 
     // URI information for ink recognition:
-    const string endpoint = "https://api.cognitive.microsoft.com";
+    const string endpoint = "https://<your-custom-subdomain>.cognitiveservices.azure.com";
     const string inkRecognitionUrl = "/inkrecognizer/v1.0-preview/recognize";
     ```
 
-## <a name="create-a-function-to-send-requests"></a>İstekleri göndermek için bir işlev oluşturma
+## <a name="create-a-function-to-send-requests"></a>İstek göndermek için bir işlev oluşturma
 
-1. Adlı yeni bir zaman uyumsuz işlev oluşturma `Request` yukarıda oluşturulan değişkenleri alır.
+1. Yukarıda oluşturulan değişkenleri alan adlı `Request` yeni bir zaman uyumsuz işlev oluşturun.
 
-2. İstemcinin güvenlik protokolü ve üst bilgi bilgileri kullanarak bir `HttpClient` nesne. Abonelik anahtarınızı eklediğinizden emin olun `Ocp-Apim-Subscription-Key` başlığı. Oluşturup bir `StringContent` istek nesnesi.
+2. İstemcinin güvenlik protokolünü ve üst bilgi bilgilerini bir `HttpClient` nesne kullanarak ayarlayın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye eklediğinizden emin olun. Ardından istek için `StringContent` bir nesne oluşturun.
  
-3. İsteği Gönder `PutAsync()`. İstek başarılı olursa, yanıtı döndürür.  
+3. İsteği ile `PutAsync()`gönderin. İstek başarılı olursa yanıtı döndürün.  
     
     ```csharp
     static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
@@ -102,11 +102,11 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
     }
     ```
 
-## <a name="send-an-ink-recognition-request"></a>Bir mürekkep tanıma İsteği Gönder
+## <a name="send-an-ink-recognition-request"></a>Mürekkep tanıma isteği gönder
 
-1. Adlı yeni bir işlev oluşturma `recognizeInk()`. Bir isteği oluşturmak ve çağırarak göndermek `Request()` işlevi, uç nokta, abonelik anahtarı, API ve dijital mürekkep vuruşu verileri için URL.
+1. Adlı `recognizeInk()`yeni bir işlev oluşturun. İsteği oluşturun ve uç nokta, abonelik anahtarınız, `Request()` API URL 'si ve dijital mürekkep konturu verileri ile işlevi çağırarak gönderin.
 
-2. JSON nesnesi seri durumdan ve konsola yazar. 
+2. JSON nesnesinin serisini kaldırma ve konsola yazma. 
     
     ```csharp
     static void recognizeInk(string requestData){
@@ -123,9 +123,9 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
     }
     ```
 
-## <a name="load-your-digital-ink-data"></a>Dijital Mürekkep verilerinizi yüklemek
+## <a name="load-your-digital-ink-data"></a>Dijital mürekkep verilerinizi yükleme
 
-Çağrılan bir işlev oluşturma `LoadJson()` mürekkep verileri JSON dosyası yüklenemedi. Kullanım bir `StreamReader` ve `JsonTextReader` oluşturmak için bir `JObject` ve döndürün.
+Mürekkep verileri JSON dosyasını `LoadJson()` yüklemek için adlı bir işlev oluşturun. Oluşturma `JsonTextReader` `StreamReader` ve`JObject` döndürme için bir ve kullanın.
     
 ```csharp
 public static JObject LoadJson(string fileLocation){
@@ -140,11 +140,11 @@ public static JObject LoadJson(string fileLocation){
 }
 ```
 
-## <a name="send-the-api-request"></a>API isteği gönder
+## <a name="send-the-api-request"></a>API isteğini gönder
 
-1. Uygulamanızın ana yöntemde işlevini kullanarak yukarıda oluşturulan JSON verilerinizi yükleyin. 
+1. Uygulamanızın ana yönteminde, JSON verilerinizi yukarıda oluşturulan işlevle yükleyin. 
 
-2. Çağrı `recognizeInk()` yukarıda oluşturduğunuz işlev. Kullanım `System.Console.ReadKey()` için uygulamayı çalıştırdıktan sonra konsol penceresini açık tutun.
+2. Yukarıda oluşturulan `recognizeInk()` işlevi çağırın. Uygulamayı `System.Console.ReadKey()` çalıştırdıktan sonra konsol penceresini açık tutmak için kullanın.
     
     ```csharp
     static void Main(string[] args){
@@ -157,9 +157,9 @@ public static JObject LoadJson(string fileLocation){
         }
     ```
 
-## <a name="run-the-application-and-view-the-response"></a>Uygulamayı çalıştırmak ve yanıtı görüntüleyin
+## <a name="run-the-application-and-view-the-response"></a>Uygulamayı çalıştırma ve yanıtı görüntüleme
 
-Uygulamayı çalıştırın. Başarılı bir yanıt JSON biçiminde döndürülür. Üzerinde JSON yanıt bulabilirsiniz [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json).
+Uygulamayı çalıştırın. JSON biçiminde başarılı bir yanıt döndürülür. Ayrıca, [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/InkRecognition/quickstart/example-response.json)'da JSON yanıtını bulabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -168,7 +168,7 @@ Uygulamayı çalıştırın. Başarılı bir yanıt JSON biçiminde döndürül�
 > [REST API başvurusu](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
-Mürekkep tanıma API'si dijital mürekkep bir uygulamada nasıl çalıştığını görmek için Github'da aşağıdaki örnek uygulamaları göz atın:
+Mürekkep tanıma API 'sinin dijital bir mürekkep uygulamasında nasıl çalıştığını görmek için GitHub 'da aşağıdaki örnek uygulamalara göz atın:
 * [C# Evrensel Windows Platformu (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [JavaScript web tarayıcı uygulaması](https://go.microsoft.com/fwlink/?linkid=2089908)       

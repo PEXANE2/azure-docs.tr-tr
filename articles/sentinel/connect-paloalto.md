@@ -1,5 +1,5 @@
 ---
-title: Palo Alto Networks verilerini Azure Sentinel Preview 'a bağlama | Microsoft Docs
+title: Palo Alto Networks verilerini Azure Sentinel 'e bağlama | Microsoft Docs
 description: Palo Alto Networks verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5860e1b1b817985aafd95f6f63d39553489482b9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 659f36a036d8a165b0c2b28830ae2312adb56c56
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679225"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240231"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Palo Alto Networks gerecinizi bağlama
 
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Günlük dosyalarını Syslog ortak hata biçimi (CEF) olarak kaydederek, Azure Sentinel 'e herhangi bir Palo Alto Networks gerecine bağlanabilirsiniz. Azure Sentinel ile tümleştirme, Palo Alto ağlarındaki günlük dosyası verilerinde analiz ve sorguları kolayca çalıştırmanıza olanak sağlar. Azure 'u Sentinel CEF verilerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Connect CEF](connect-common-event-format.md)gereçileri.
+
+Günlük dosyalarını Syslog ortak hata biçimi (CEF) olarak kaydederek, Azure Sentinel 'e herhangi bir Palo Alto Networks gerecine bağlanabilirsiniz. Azure Sentinel ile tümleştirme, Palo Alto ağlarındaki günlük dosyası verilerinde analiz ve sorguları kolayca çalıştırmanıza olanak sağlar. Azure 'u Sentinel CEF verilerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Connect CEF gereçileri](connect-common-event-format.md).
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
@@ -141,5 +139,5 @@ Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, Palo Alto Networks gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 

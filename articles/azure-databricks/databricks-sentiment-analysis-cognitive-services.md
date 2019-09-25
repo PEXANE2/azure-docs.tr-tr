@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.openlocfilehash: 9718a6e394c7628cdf7bb62b2dafea2f3d59a3ca
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/24/2019
 ms.locfileid: "68619508"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Öğretici: Azure Databricks kullanarak akış verileri üzerinde yaklaşım analizi
@@ -139,7 +139,7 @@ Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerin
 
    ![Kitaplık Ekle iletişim kutusu](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-install-new.png "Kitaplık ekleme yeni yüklemesi")
 
-2. Yeni Kitaplık sayfasında, **kaynak** **Seç '** i seçin. **Koordinat**için, eklemek istediğiniz paket Için **arama paketleri** ' ne tıklayın. Bu öğreticide kullanılan kitaplıklar için Maven koordinatları aşağıdaki gibidir:
+2. Yeni Kitaplık sayfasında, **kaynak** **Seç ' i seçin**. **Koordinat**için, eklemek istediğiniz paket Için **arama paketleri** ' ne tıklayın. Bu öğreticide kullanılan kitaplıklar için Maven koordinatları aşağıdaki gibidir:
 
    * Spark Event Hubs bağlayıcısı - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API’si - `org.twitter4j:twitter4j-core:4.0.7`

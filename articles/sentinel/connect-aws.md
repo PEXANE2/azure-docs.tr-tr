@@ -1,5 +1,5 @@
 ---
-title: Symantec AWS verilerini Azure Sentinel önizlemesine bağlama | Microsoft Docs
+title: Symantec AWS verilerini Azure Sentinel 'e bağlama | Microsoft Docs
 description: Symantec AWS verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 246d4cd7d64554ae575767cdba2e26066ad1720d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 46ad8f6478e632cd57c009700de182993ce01be1
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295615"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240874"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel 'i AWS Cloudtrato 'a bağlama
 
@@ -82,5 +82,5 @@ Azure Sentinel çalışma alanında yazma izninizin olması gerekir.
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede AWS Cloudtraizini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 

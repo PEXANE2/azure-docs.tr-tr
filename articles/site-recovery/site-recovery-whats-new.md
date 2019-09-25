@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/18/2019
 ms.author: raynew
-ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: c54273e0ca8c88a6fe47d5611950acd38f50b4c0
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71010237"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212806"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery'deki yenilikler
 
@@ -111,7 +111,7 @@ Azure VM olağanüstü durum kurtarma için yeni özellikler tabloda özetlenmi�
 
 ### <a name="general"></a>Genel
 
-Site Recovery artık önbellek depolama veya hedef depolama için genel amaçlı v2 depolama hesaplarının kullanılmasını desteklemektedir. Daha önce yalnızca v1 destekleniyor.
+Site Recovery artık önbellek depolama veya hedef depolama için genel amaçlı v2 depolama hesaplarının kullanımını desteklemektedir. Daha önce yalnızca v1 destekleniyor.
 
 ### <a name="vmware-to-azure-disaster-recovery"></a>VMware'den Azure'a olağanüstü durum kurtarma
 

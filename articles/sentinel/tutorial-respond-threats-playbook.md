@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel önizlemesinde bir PlayBook çalıştırın | Microsoft Docs
+title: Azure Sentinel 'de PlayBook 'u çalıştırma | Microsoft Docs
 description: Bu makalede, Azure Sentinel 'de bir PlayBook 'un nasıl çalıştırılacağı açıklanır.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/21/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08c88df2f8ccc69f213687209d1d003f3bb1c7b8
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7ab4c4ba4553e7e5f15e563c67c845758a53766f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018796"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229509"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Öğretici: Azure Sentinel önizlemesinde otomatik tehdit yanıtlarını ayarlama
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Öğretici: Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama
 
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Bu öğretici, Azure Sentinel tarafından algılanan güvenlikle ilgili sorunlara otomatik tehdit yanıtları ayarlamak için Azure Sentinel 'de güvenlik PlayBook 'ları kullanmanıza yardımcı olur.
 
@@ -78,7 +76,9 @@ Azure Sentinel 'de yeni bir güvenlik PlayBook oluşturmak için aşağıdaki ad
 
 6. Yeni oluşturabileceğiniz veya şablonu düzenleyebileceğiniz Logic App Designer 'a yönlendirilirsiniz. [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md)ile bir PlayBook oluşturma hakkında daha fazla bilgi için.
 
-7. Boş bir PlayBook oluşturuyorsanız, **tüm bağlayıcılar ve Tetikleyiciler ara** alanında *Azure Sentinel*' i yazın ve bir **Azure Sentinel uyarısı yanıtı tetiklendiğinde**öğesini seçin. <br>Oluşturulduktan sonra, **playbooks** listesinde yeni PlayBook görüntülenir. Görünmüyorsa **Yenile**' ye tıklayın. 
+7. Boş bir PlayBook oluşturuyorsanız, **tüm bağlayıcılar ve Tetikleyiciler ara** alanında *Azure Sentinel*' i yazın ve bir **Azure Sentinel uyarısı yanıtı tetiklendiğinde**öğesini seçin. <br>Oluşturulduktan sonra, **playbooks** listesinde yeni PlayBook görüntülenir. Görünmüyorsa **Yenile**' ye tıklayın.
+
+1. Hesaplar, IP adresleri ve konaklar gibi **varlıklar** listesinin içinden ilgili varlıkları almanızı sağlayan **varlıkları al** işlevlerini kullanın. Bu, belirli varlıklarda eylemleri çalıştırmanızı sağlar.
 
 7. Şimdi playbook'unuz tetiklendiğinde gerçekleştirilecek işlemleri tanımlayabilirsiniz. Bir eylem, mantıksal koşul, anahtar durum koşulları veya döngüler ekleyebilirsiniz.
 
@@ -92,7 +92,7 @@ Bir PlayBook 'u isteğe bağlı olarak çalıştırmak için:
 
 1. **Olaylar** sayfasında bir olay seçin ve **tüm ayrıntıları görüntüle**' ye tıklayın.
 
-2. **Uyarılar** sekmesinde, PlayBook 'u çalıştırmak istediğiniz uyarıya tıklayın ve sağa doğru bir şekilde ilerleyin ve PlayBook 'ları **görüntüle** ' ye tıklayın ve abonelik üzerindeki kullanılabilir PlayBook 'ları listesinden **çalıştırmak** için bir PlayBook seçin. 
+2. **Uyarılar** sekmesinde, PlayBook 'u çalıştırmak istediğiniz uyarıya tıklayın ve sağa doğru bir şekilde ilerleyin ve **PlayBook 'ları görüntüle** ' ye tıklayın ve abonelik üzerindeki kullanılabilir PlayBook 'ları listesinden **çalıştırmak** için bir PlayBook seçin. 
 
 
 

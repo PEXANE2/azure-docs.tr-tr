@@ -1,5 +1,5 @@
 ---
-title: Fortinet verilerini Azure Sentinel önizlemesine bağlama | Microsoft Docs
+title: Fortinet verilerini Azure Sentinel 'e bağlama | Microsoft Docs
 description: Fortinet verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 339b8c1b59720989016f68fdb94fae30c26b42f0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 20079fd0c95da3e3aec9518f194ea39561a5e662
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679274"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240691"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Fortinet gerecinizi bağlama
 
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sunulmaktadır. Bunu üretim iş yükleri için önermiyoruz. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Günlük dosyalarını Syslog ortak olay biçimi (CEF) olarak kaydederek, Azure Sentinel 'i herhangi bir Fortinet gerecine bağlayabilirsiniz. Azure Sentinel ile tümleştirmeyle, Fortinet 'teki günlük dosyası verileri genelinde analiz ve sorguları kolayca çalıştırabilirsiniz. Azure 'u Sentinel CEF verilerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Connect CEF](connect-common-event-format.md)gereçileri.
+
+Günlük dosyalarını Syslog ortak olay biçimi (CEF) olarak kaydederek, Azure Sentinel 'i herhangi bir Fortinet gerecine bağlayabilirsiniz. Azure Sentinel ile tümleştirmeyle, Fortinet 'teki günlük dosyası verileri genelinde analiz ve sorguları kolayca çalıştırabilirsiniz. Azure 'u Sentinel CEF verilerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Connect CEF gereçileri](connect-common-event-format.md).
 
 > [!NOTE]
 > Veriler, Azure Sentinel 'i çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
@@ -147,5 +145,5 @@ Günlüklerinizin Log Analytics görünmeye başlaması 20 dakikaya kadar süreb
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, Fortinet gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 

@@ -9,14 +9,14 @@ ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 6278b16221072b9b5bca371007296806454ba197
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036398"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212435"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage"></a>İş açısından kritik verileri Azure Blob depolama alanında depolayın
+# <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>İş açısından kritik verileri Azure Blob depolama 'da daha duyarlı olarak depolayın 
 
 Azure Blob depolama için sabit depolama, kullanıcıların iş açısından kritik veri nesnelerini bir solucan içinde depolamasına olanak sağlar (bir kez yaz, çok oku) durumu. Bu durum, verileri silinebilir olmayan ve Kullanıcı tarafından belirtilen bir Aralık için değiştirilemez hale getirir. Blob nesneleri, bekletme aralığı süresince oluşturulabilir ve okunabilir, ancak değiştirilemez veya silinemez. Genel Amaçlı v2 ve tüm Azure bölgelerinde BLOB depolama hesapları için sabit depolama etkindir.
 

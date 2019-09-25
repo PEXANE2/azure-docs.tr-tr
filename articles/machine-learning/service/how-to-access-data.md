@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: ecd1212385473e33d05f38f67db5708bff060daa
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035307"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218247"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure Storage hizmetlerindeki verilere erişme
 
@@ -147,7 +147,8 @@ datastore.download(target_path='your target path',
 <a name="train"></a>
 ## <a name="access-your-data-during-training"></a>Eğitim sırasında verilerinize erişin
 
-Eğitim sırasında verilere erişmek için verileri Azure depolama hizmetinizden veri depoları aracılığıyla işlem hedefine indirebilir veya bağlayabilirsiniz.
+> [!IMPORTANT]
+> [Azure Machine Learning veri kümeleri (Önizleme)](how-to-create-register-datasets.md) kullanmak, eğitiminde verilerinize erişmenin yeni bir yoludur. Veri kümeleri, Pandas veya Spark DataFrame 'e tablo verileri yükleyen ve Azure blob, Azure dosyası, Azure Data Lake Gen 1, Azure Data Lake Gen 2, Azure SQL, Azure PostgreSQL ' den herhangi bir biçimde dosya indirme veya bağlama olanağı sunan işlevler sağlar. [Veri kümeleriyle eğitme](how-to-train-with-datasets.md)hakkında daha fazla bilgi edinin.
 
 Aşağıdaki tabloda, işlem hedefine çalışma sırasında veri depolarını nasıl kullanacağınızı söyleyen Yöntemler listelenmiştir. 
 

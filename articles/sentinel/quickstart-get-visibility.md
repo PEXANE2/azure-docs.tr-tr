@@ -1,12 +1,11 @@
 ---
-title: Azure Sentinel hızlı başlangıç-Azure Sentinel önizlemesi ile çalışmaya başlama | Microsoft Docs
+title: Azure Sentinel hızlı başlangıç-Azure Sentinel ile çalışmaya başlama | Microsoft Docs
 description: Azure Sentinel hızlı başlangıç-Azure Sentinel ile çalışmaya başlama
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 5a4ae93c-d648-41fb-8fb8-96a025d2f73e
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -14,23 +13,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c6434b4f5808c349d5e0ab04dafc5233f6ec63ac
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780479"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240081"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>Hızlı Başlangıç: Azure Sentinel önizleme ile çalışmaya başlama
-
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel’ı kullanmaya başlama
 
 
-Bu hızlı başlangıçta, Azure Sentinel kullanarak ortamınızda neler olduğunu hızla nasıl görüntüleyebileceğinizi ve izleyebileceğinizi öğreneceksiniz. Veri kaynaklarınızı Azure Sentinel 'e bağladıktan sonra, tüm bağlı veri kaynaklarınızda neler olduğunu bilmeniz için verilerin anında görselleştirilmesini ve analizini edinirsiniz. Azure Sentinel size, Azure 'da zaten sunulan araçların tam gücünden ve günlüklerinizi ve sorgularınıza yönelik analiz sağlamak üzere yerleşik olarak bulunan tabloları ve grafikleri sunan panolar sağlar. Yerleşik panoları kullanabilir ya da yeni bir panoyu sıfırdan kolayca veya var olan bir panoya göre kolayca oluşturabilirsiniz. 
+
+
+Bu hızlı başlangıçta, Azure Sentinel kullanarak ortamınızda neler olduğunu nasıl görüntüleyebileceğinizi ve izleyebileceğinizi öğreneceksiniz. Veri kaynaklarınızı Azure Sentinel 'e bağladıktan sonra, tüm bağlı veri kaynaklarınızda neler olduğunu bilmeniz için verilerin anında görselleştirilmesini ve analizini edinirsiniz. Azure Sentinel size, Azure 'da zaten sunulan araçların tam gücünden ve günlüklerinizi ve sorgulara yönelik analiz sağlamak üzere yerleşik olarak bulunan tabloları ve grafikleri sağlayan çalışma kitapları sağlar. Yerleşik çalışma kitaplarını kullanabilir veya yeni bir çalışma kitabını, sıfırdan veya var olan bir çalışma kitabına göre kolayca oluşturabilirsiniz. 
 
 ## <a name="get-visualization"></a>Görselleştirmeyi al
 
@@ -59,43 +56,43 @@ Genel Bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik duru
 
    ![Azure Sentinel eşlemesi](./media/qs-get-visibility/anomolies.png)
 
-## Yerleşik panoları kullanma<a name="dashboards"></a>
+## Yerleşik çalışma kitaplarını kullanma<a name="dashboards"></a>
 
-Yerleşik panolar, bu hizmetlerde oluşturulan olaylara derinlemesine bakış sağlamak için bağlı veri kaynaklarınızdan tümleşik veriler sağlar. Yerleşik panolar, Azure KIMLIĞI, Azure etkinlik olayları ve şirket içi Windows olaylarından, ilk taraf uyarılardan, Windows 'a dayalı güvenlik duvarı trafik günlükleri, Office 365 ve güvenli olmayan protokoller dahil olmak üzere herhangi bir üçüncü tarafın verileri olabilir. olayları.
+Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemesine bir bakış sağlamak için bağlı veri kaynaklarınızdan tümleşik veriler sağlar. Yerleşik çalışma kitapları arasında Azure KIMLIĞI, Azure etkinlik olayları ve şirket içi Windows olaylarından, ilk taraf uyarılardan, Windows 'a dayalı güvenlik duvarı trafik günlükleri, Office 365 ve güvenli olmayan protokoller dahil olmak üzere herhangi bir üçüncü tarafın verileri bulunabilir. olayları. Çalışma kitapları, kendi çalışma kitabınızı tasarlarken gelişmiş özelleştirme ve esneklik sağlamak için Azure Izleyici çalışma kitaplarını temel alır. Daha fazla bilgi için bkz. [çalışma kitapları](../azure-monitor/app/usage-workbooks.md).
 
-1. **Ayarlar**altında **panolar**' ı seçin. **Yüklü**altında, yüklü Panolarınızın tümünü görebilirsiniz. **Tüm** ' ın altında, yükleme için kullanılabilen yerleşik panoların tamamını görebilirsiniz. 
-2. Tüm liste ve her bir tekliflerin açıklaması hakkında bilgi almak için belirli bir panoyu arayın. 
-3. Azure AD 'yi kullandığınız varsayılarak, Azure Sentinel ile çalışmaya başlayın ve en azından aşağıdaki panoları yüklemenizi öneririz:
+1. **Ayarlar**altında **çalışma kitapları**' nı seçin. **Yüklü**' ın altında, tüm yüklü çalışma kitabınızı görebilirsiniz. **Tümü**altında, yükleme için kullanılabilen yerleşik çalışma kitaplarının tamamını görebilirsiniz. 
+2. Tüm liste ve her bir tekliflerinin açıklamasını görmek için belirli bir çalışma kitabı arayın. 
+3. Azure AD 'yi kullandığınız varsayılarak, Azure Sentinel ile çalışmaya başlayın ve en azından aşağıdaki çalışma kitaplarını yüklemenizi öneririz:
    - **Azure AD**: Aşağıdakilerden birini veya her ikisini birden kullanın:
-       - **Azure AD oturum** açma işlemleri zaman içinde oturum açma işlemlerini çözümleyerek, bozukluklar olup olmadığını görebilir. Bu Pano, uygulamalar, cihazlar ve konumlar tarafından başarısız oturum açma işlemleri sunarak, olağan dışı bir durum oluşursa bir bakışta bildirimde bulunabilmeniz için. Birden çok başarısız oturum açma ile ilgilenmeyi ödeyin. 
+       - **Azure AD oturum** açma işlemleri zaman içinde oturum açma işlemlerini çözümleyerek, bozukluklar olup olmadığını görebilir. Bu çalışma kitapları uygulamalar, cihazlar ve konumlar tarafından başarısız oturum açma işlemleri sunarak, olağan dışı bir durum meydana olursa bir bakışta fark edebilirsiniz. Birden çok başarısız oturum açma ile ilgilenmeyi ödeyin. 
        - **Azure AD denetim günlükleri** , kullanıcılar üzerindeki değişiklikler (ekleme, kaldırma, vs.), Grup oluşturma ve değişiklikler gibi yönetici etkinliklerini analiz eder.  
 
-   - Güvenlik duvarınız için bir Pano ekleyin. Örneğin, Palo Alto panosunu ekleyin. Pano güvenlik duvarı trafiğinizi çözümleyerek güvenlik duvarınızın verileri ile tehdit olayları arasında bağıntılar sağlar ve varlıklar arasında şüpheli olayları vurgular. Panolar, trafiğinizin eğilimleri hakkında bilgi sağlar ve sonuçların ayrıntılarına inmenizi ve sonuçları filtrelemenizi sağlar. 
+   - Güvenlik duvarınız için bir çalışma kitabı ekleyin. Örneğin, Palo Alto Alto çalışma kitabını ekleyin. Çalışma kitabı, güvenlik duvarı verileriniz ile tehdit olayları arasında bağıntılar sunarak ve varlıklar genelinde şüpheli olayları vurgulamaktadır. Çalışma kitapları, trafikte eğilimleri hakkında bilgi sağlar ve sonuçların ayrıntılarına inmenize ve sonuçları filtrelemenize imkan sağlar. 
 
       ![PAL Alto panosu](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Ana sorgu ![düğmesini](./media/qs-get-visibility/edit-query-button.png)düzenleyerek panoları özelleştirebilirsiniz. [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek ![üzere](./media/qs-get-visibility/go-to-la-button.png) düğme düğmesine tıklayabilir ve üç nokta (...) simgesini seçip, ana saat filtresini düzenlemenizi sağlayan **kutucuk verilerini Özelleştir**' i seçebilirsiniz. Panodan belirli kutucuklar.
+Ana sorgu ![düğmesini](./media/qs-get-visibility/edit-query-button.png)düzenleyerek çalışma kitaplarını özelleştirebilirsiniz. [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek ![üzere](./media/qs-get-visibility/go-to-la-button.png) düğme düğmesine tıklayabilir ve üç nokta (...) simgesini seçip, ana saat filtresini düzenlemenizi sağlayan **kutucuk verilerini Özelleştir**' i seçebilirsiniz. çalışma kitabından belirli kutucuklar.
 
 Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log Analytics 'daki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>Yeni kutucuk Ekle
 
-Yeni bir kutucuk eklemek istiyorsanız, bunu oluşturduğunuz veya Azure Sentinel yerleşik panosu olan var olan bir panoya ekleyebilirsiniz. 
+Yeni bir kutucuk eklemek istiyorsanız, onu oluşturduğunuz veya Azure Sentinel yerleşik çalışma kitabının bulunduğu mevcut bir çalışma kitabına ekleyebilirsiniz. 
 1. Log Analytics, [öğreticide bulunan yönergeleri kullanarak bir kutucuk oluşturun: Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)görsel verileri. 
-2. Kutucuk oluşturulduktan sonra, **PIN**altında kutucuğun görünmesini istediğiniz panoyu seçin.
+2. Kutucuk oluşturulduktan sonra, **PIN**altında kutucuğun görünmesini istediğiniz çalışma kitabını seçin.
 
-## <a name="create-new-dashboards"></a>Yeni panolar oluşturma
-Sıfırdan yeni bir pano oluşturabilir veya yeni panonuz için temel olarak yerleşik bir pano kullanabilirsiniz.
+## <a name="create-new-workbooks"></a>Yeni çalışma kitapları oluşturma
+Sıfırdan yeni bir çalışma kitabı oluşturabilir veya yeni çalışma kitabınız için temel olarak yerleşik çalışma kitabını kullanabilirsiniz.
 
-1. Sıfırdan yeni bir pano oluşturmak için **panolar** ' ı ve sonra **+ Yeni Pano**' yı seçin.
-2. Panonun oluşturulduğu aboneliği seçin ve açıklayıcı bir ad verin. Her Pano birbirleriyle benzer bir Azure kaynağıdır ve kimlerin erişebileceğini tanımlamak ve sınırlamak için BT rolleri (RBAC) atayabilirsiniz. 
-3. Görselleştirmeleri ' a sabitlemek üzere panolarınızda görünmesini sağlamak için bunu paylaşmanız gerekir. **Paylaşma** ' ya ve ardından **Kullanıcıları Yönet**' e tıklayın. 
+1. Sıfırdan yeni bir çalışma kitabı oluşturmak için **çalışma kitapları** ' nı ve ardından **+ Yeni çalışma kitabı**' nı seçin.
+2. Çalışma kitabının oluşturulduğu aboneliği seçin ve açıklayıcı bir ad verin. Her çalışma kitabı, birbirleriyle aynı şekilde bir Azure kaynağıdır ve kimlerin erişebileceğini tanımlamak ve sınırlamak için BT rolleri (RBAC) atayabilirsiniz. 
+3. Görselleştirmeleri ' a sabitlemek üzere çalışma kitaplarında görünmesini sağlamak için bunu paylaşmanız gerekir. **Paylaşma** ' ya ve ardından **Kullanıcıları Yönet**' e tıklayın. 
  
-1. Diğer tüm Azure kaynakları için yaptığınız gibi erişim ve **rol atamalarını** **Denetle** öğesini kullanın. Daha fazla bilgi için bkz. [RBAC kullanarak Azure panoları paylaşma](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Diğer tüm Azure kaynakları için yaptığınız gibi erişim ve **rol atamalarını** **Denetle** öğesini kullanın. Daha fazla bilgi için bkz. [RBAC kullanarak Azure çalışma kitaplarını paylaşma](../azure-portal/azure-portal-dashboard-share-access.md).
 
 
-## <a name="new-dashboard-examples"></a>Yeni Pano örnekleri
+## <a name="new-workbook-examples"></a>Yeni çalışma kitabı örnekleri
 
 Aşağıdaki örnek sorgu, trafik eğilimlerini haftalar içinde karşılaştırmanızı sağlar. Sorguyu çalıştırdığınız cihaz satıcısını ve veri kaynağını kolayca geçirebilirsiniz. Bu örnek, Windows 'da SecurityEvent kullanır, diğer tüm güvenlik duvarında AzureActivity veya CommonSecurityLog üzerinde çalışacak şekilde geçiş yapabilirsiniz.
 
@@ -117,7 +114,7 @@ Katları kaynaklardan veri içeren bir sorgu oluşturmak isteyebilirsiniz. Yeni 
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-Verilere ve ne aradıklarını arayan kişilerin rolüne göre farklı panolar oluşturabilirsiniz. Örneğin, ağ yöneticiniz için güvenlik duvarı verilerini içeren bir pano oluşturabilirsiniz. Ayrıca, günlük olarak gözden geçirmek istediğiniz bir şey olup olmadığı ve bir saatte bir kez kontrol etmek istediğiniz diğer öğelerin, örneğin Azure AD oturum açma bilgilerinizi aramak için, anomali araması yapmak istediğiniz zaman es. 
+Verilere ve ne aradıklarını arayan kişilerin rolüne göre farklı çalışma kitapları oluşturabilirsiniz. Örneğin, ağ yöneticiniz için güvenlik duvarı verilerini içeren bir çalışma kitabı oluşturabilirsiniz. Ayrıca, bunlara ne sıklıkla bakmak istediğinizi, her gün gözden geçirmek istediğiniz bir şey olup olmadığı ve saati bir kez denetlemek istediğiniz diğer öğelerin bulunduğu çalışma kitapları oluşturabilirsiniz. Örneğin, anoıe aramak için her saat Azure AD oturum açma bilgilerinizi aramak isteyebilirsiniz olmalıdır 
 
 ## <a name="create-new-detections"></a>Yeni algılamalar oluştur
 
@@ -125,18 +122,14 @@ Kuruluşunuzdaki tehditleri araştırmak için [Azure Sentinel 'e bağladığın
 
 Yeni bir algılama oluşturduğunuzda, Microsoft güvenlik araştırmacıları tarafından, bağlandığınız veri kaynaklarına uyarlanmış yerleşik algılamalardan yararlanın.
 
-1. [GitHub topluluğunda](https://github.com/Azure/Azure-Sentinel/tree/master/Detections) , **algılama** klasörüne gidin ve ilgili klasörleri seçin.
-   ![ilgili klasörler](./media/qs-get-visibility/detection-folders.png)
- 
-3.  **Analiz** sekmesine gidin ve **Ekle**' yi seçin.
-   ![Log Analytics kural oluşturma](./media/qs-get-visibility/query-params.png)
+Kullanıma hazır tüm algılamaları görüntülemek için analizler **' e ve ardından**  **kural şablonları**' na gidin. Bu sekme, tüm Azure Sentinel yerleşik kurallarını içerir.
 
-3.  Tüm parametreleri kurala kopyalayın ve **Oluştur**' a tıklayın.
-   ![Uyarı kuralı oluştur](./media/qs-get-visibility/create-alert-rule.png)
+   ![Azure Sentinel ile tehditleri bulmak için yerleşik algılamaları kullanın](media/tutorial-detect-built-in/view-oob-detections.png)
 
+Kullanıma hazır algılamaları alma hakkında daha fazla bilgi için bkz [. Öğretici: Yerleşik analiz](tutorial-detect-threats-built-in.md)edin.
  
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, Azure Sentinel 'i kullanmaya nasıl başladığınıza öğrendiniz. [Tehditleri algılayarak](tutorial-detect-threats.md)ilgili öğreticiye devam edin.
+Bu hızlı başlangıçta, Azure Sentinel 'i kullanmaya nasıl başladığınıza öğrendiniz. [Tehditleri algılayarak](tutorial-detect-threats-built-in.md)ilgili öğreticiye devam edin.
 > [!div class="nextstepaction"]
-> Tehditleri yanıtlarınızı otomatik hale getirmek için [tehditleri tespit](tutorial-detect-threats.md) edin.
+> Tehditlere yönelik yanıtlarınızı otomatik hale getirmek için [özel tehdit algılama kuralları oluşturun](tutorial-detect-threats-custom.md) .
 

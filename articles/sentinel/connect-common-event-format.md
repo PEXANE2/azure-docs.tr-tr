@@ -6,21 +6,20 @@ documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: cbf5003b-76cf-446f-adb6-6d816beca70f
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 28def73926294a025d70844e535a0856153ae30a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 25ae54ea8dd75fae74d4578b33146483ade53e4c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611939"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240740"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Ortak olay biçimini kullanarak dış çözümünüzü bağlama
 
@@ -148,5 +147,5 @@ Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 

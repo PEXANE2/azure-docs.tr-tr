@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70392902"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71210365"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -63,7 +63,20 @@ ms.locfileid: "70392902"
 | Tablodaki en fazla sütun         | 500 | |
 | Sütun adı için en fazla karakter | 500 | |
 | Kapasiteden bölgeler | Batı Orta ABD | Geçici kapasite sınırında olduğundan bu bölgede şu anda yeni bir çalışma alanı oluşturamazsınız. Bu sınır, Ekim 2019 ' ün sonuna kadar planlanmaktadır. |
-| Veri dışarı aktarma | Şu anda kullanılamıyor | Verileri toplamak ve dışarı aktarmak için Azure Işlevini veya mantıksal uygulamayı kullanın. | 
+| Verileri dışarı aktar | Şu anda kullanılamıyor | Verileri toplamak ve dışarı aktarmak için Azure Işlevini veya mantıksal uygulamayı kullanın. | 
+
+**Veri alım oranı**
+
+Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Varsayılan alma hızı eşiği, çalışma alanı başına **500 MB/dk** olarak ayarlanır. Verileri daha yüksek bir fiyata tek bir çalışma alanına gönderirseniz, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım biriminiz, hız sınırını aşmaya devam ediyorsa veya bir süre önce bu sınıra ulaşmayı bekliyorsanız, bir destek isteği açarak çalışma alanınıza bir artış isteğinde bulunabilir.
+ 
+Çalışma alanınızdaki bu tür bir olay hakkında bildirim almak için, sıfırdan farklı sonuç sayısına sahip uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](../articles/azure-monitor/platform/alerts-log.md) oluşturun.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 >[!NOTE]
 >Log Analytics kullanmaya ne kadar süre kullandığınıza bağlı olarak eski fiyatlandırma katmanlarına erişiminiz olabilir. [Eski Log Analytics fiyatlandırma katmanları](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers)hakkında daha fazla bilgi edinin. 

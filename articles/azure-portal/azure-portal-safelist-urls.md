@@ -9,12 +9,12 @@ ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 78c752423d20d183c561d5bcf0bb95246b84ab49
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 9618d99495e65231de22eb719355e2ca75a17600
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076668"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218047"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Güvenlik duvarınızdaki veya proxy sunucunuzdaki Azure portal URL 'Lerini listeleyin
 
@@ -80,8 +80,8 @@ Azure portal için güvenli listeye yönelik URL uç noktaları, kuruluşunuzun 
 IP adreslerini güvenli listeye almanız mı gerekiyor? Bulutunuz için Microsoft Azure veri merkezi IP aralıklarının listesini indirin:
 
 * [Dünya çapında](https://www.microsoft.com/download/details.aspx?id=56519)
-* [ENGELL Devlet](http://www.microsoft.com/download/details.aspx?id=57063)
-* [Almanya](http://www.microsoft.com/download/details.aspx?id=57064)
-* [Çin](http://www.microsoft.com/download/details.aspx?id=57062)
+* [ENGELL Devlet](https://www.microsoft.com/download/details.aspx?id=57063)
+* [Almanya](https://www.microsoft.com/download/details.aspx?id=57064)
+* [Çin](https://www.microsoft.com/download/details.aspx?id=57062)
 
 Diğer Microsoft Hizmetleri, bağlantı için ek URL 'Ler ve IP adresleri kullanır. Microsoft 365 hizmetleri için ağ bağlantısını iyileştirmek için bkz. [ağınızı Office 365 Için ayarlama](/office365/enterprise/set-up-network-for-office-365).

@@ -1,101 +1,103 @@
 ---
-title: Azure Notification hubs'ı, APNS için belirteç tabanlı (HTTP/2) kimlik doğrulaması | Microsoft Docs
-description: Bu konuda, yeni belirteç kimlik doğrulaması için APNS yararlanma işlemi açıklanmaktadır
+title: Azure Notification Hubs 'de APNS için belirteç tabanlı (HTTP/2) kimlik doğrulaması | Microsoft Docs
+description: Bu konuda, APNS için yeni belirteç kimlik doğrulamasının nasıl kullanılacağı açıklanmaktadır
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/13/2019
-ms.author: jowargo
-ms.openlocfilehash: 890577c013a96fc06acf3b05881649ad8202a083
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/13/2019
+ms.openlocfilehash: a7fdaae33e28bd543b44c54868324339d1269bc2
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60872416"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213128"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS için belirteç tabanlı (HTTP/2) kimlik doğrulaması
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, belirteç tabanlı kimlik doğrulaması ile yeni bir APNS HTTP/2 protokolüne kullanma işlemi açıklanmaktadır.
+Bu makalede, yeni APNS HTTP/2 protokolünü belirteç tabanlı kimlik doğrulama ile kullanma hakkında bilgi yer aldığı açıklanır.
 
-Yeni protokolünü kullanmanın başlıca yararları şunlardır:
+Yeni Protokolü kullanmanın başlıca avantajları şunlardır:
 
-* Belirteç oluşturma uğraşmanıza ücretsiz (sertifikaları karşılaştırıldığında) görece olduğu
-* Daha fazla bitiş tarih – kimlik doğrulama belirteçlerinizi ve bunların iptal denetimi sizdedir
-* Yükleri artık en fazla 4 KB olabilir
-* Eşzamanlı geri bildirim
-* Apple'nın en son protokolünü dileriz-sertifikaları kullanmaya devam kullanımdan kaldırma için işaretli ikili Protokolü
+* Belirteç oluşturma oldukça sorunsuz (sertifikalarla karşılaştırıldığında)
+* Daha fazla sona erme tarihi yok: kimlik doğrulama belirteçlerinizin ve bunların iptallerinin denetimi
+* Yük artık en fazla 4 KB olabilir
+* Zaman uyumlu geri bildirim
+* Apple 'ın en son protokolde kullanıyorsunuz: sertifikalar hala kullanımdan kaldırma için işaretlenen ikili protokolü kullanır
 
-Bu yeni mekanizma kullanarak iki adımda birkaç dakika içinde yapılabilir:
+Bu yeni mekanizmanın kullanılması, birkaç dakika içinde iki adımda yapılabilir:
 
-1. Apple Geliştirici hesabı Portalı'ndan gerekli bilgileri edinin
-2. Yeni bilgilerle bildirim hub'ınızı yapılandırma
+1. Apple Geliştirici Hesap portalından gerekli bilgileri edinin
+2. Bildirim Hub 'ınızı yeni bilgilerle yapılandırın
 
-Bildirim hub'ları, artık yeni kimlik doğrulama sistemi APNS ile birlikte kullanmak için tüm kümesi.
+Notification Hubs artık, APNS ile yeni kimlik doğrulama sistemini kullanmak üzere ayarlanmıştır.
 
-İçin APNS sertifikası kimlik bilgilerini kullanarak geçirdiyseniz dikkat edin:
+APNS için sertifika kimlik bilgilerini kullanarak geçiş yaptıysanız:
 
-* belirteç özelliklerini sertifikanızı sistemimizde üzerine yazma
-* Ancak, uygulamanız bildirimlerin sorunsuz bir şekilde devam eder.
+* belirteç özellikleri, bizim sistemimizde sertifikanızın üzerine yazılır,
+* ancak uygulamanız bildirimleri sorunsuz bir şekilde almaya devam eder.
 
-## <a name="obtaining-authentication-information-from-apple"></a>Apple'dan kimlik doğrulama bilgilerini alma
+## <a name="obtaining-authentication-information-from-apple"></a>Apple 'dan kimlik doğrulama bilgileri alma
 
-Belirteç tabanlı kimlik doğrulamasını etkinleştirmek için aşağıdaki özellikleri Apple Geliştirici hesabınızı gerekir:
+Belirteç tabanlı kimlik doğrulamasını etkinleştirmek için Apple geliştirici hesabınızdan aşağıdaki özellikler gereklidir:
 
-### <a name="key-identifier"></a>Anahtar tanımlayıcısı
+### <a name="key-identifier"></a>Anahtar Tanımlayıcısı
 
-Anahtar tanımlayıcısı Apple Geliştirici hesabınızın "Anahtarlar" sayfasından edinilebilir.
+Anahtar tanımlayıcısı, Apple geliştirici hesabınızdaki "anahtarlar" sayfasından elde edilebilir
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
-### <a name="application-identifier--application-name"></a>Uygulama tanımlayıcısı & Uygulama adı
+### <a name="application-identifier--application-name"></a>Uygulama tanımlayıcısı & uygulama adı
 
-Uygulama adı uygulama kimlikleri sayfasında Geliştirici hesabı aracılığıyla kullanılabilir.
+Uygulama adı, geliştirici hesabındaki uygulama kimlikleri sayfası aracılığıyla kullanılabilir.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
-Uygulama tanımlayıcısı üyelik Ayrıntılar sayfası Geliştirici hesabına aracılığıyla kullanılabilir.
+Uygulama tanımlayıcısı, geliştirici hesabındaki üyelik ayrıntıları sayfası aracılığıyla kullanılabilir.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-id.png)
 
 ### <a name="authentication-token"></a>Kimlik doğrulama belirteci
 
-Uygulamanız için bir belirteç oluşturduktan sonra kimlik doğrulama belirteci indirilebilir. Bu belirteci oluşturma hakkında daha fazla bilgi için başvurmak [Apple'nın Geliştirici belgeleri](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+Kimlik doğrulama belirteci, uygulamanız için bir belirteç oluşturduktan sonra indirilebilir. Bu belirteci oluşturma hakkında ayrıntılı bilgi için [Apple 'ın geliştirici belgelerine](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1)bakın.
 
-## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Belirteç tabanlı kimlik doğrulaması kullanmak için bildirim hub'ınızı yapılandırma
+## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Bildirim Hub 'ınızı belirteç tabanlı kimlik doğrulaması kullanacak şekilde yapılandırma
 
-### <a name="configure-via-the-azure-portal"></a>Azure portalı üzerinden yapılandırma
+### <a name="configure-via-the-azure-portal"></a>Azure portal aracılığıyla yapılandırma
 
-Portalda belirteç tabanlı kimlik doğrulamasını etkinleştirmek için Azure Portal'da oturum açın ve bildirim Hub'ınıza gidin > Bildirim Hizmetleri > APNS paneli.
+Portalda belirteç tabanlı kimlik doğrulamasını etkinleştirmek için Azure portal oturum açın ve Bildirim Hizmetleri > APNS paneline > Notification Hub 'ınıza gidin.
 
-Yeni bir özelliği – *kimlik doğrulama modu*. Belirteç seçerek, tüm ilgili belirteç özellikleri ile hub'ınıza güncelleştirmenizi sağlar.
+Yeni bir özellik – *kimlik doğrulama modu*vardır. Belirteç seçilmesi, merkezinizi ilgili tüm belirteç özellikleriyle güncelleştirmenize olanak tanır.
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
-* Apple Geliştirici hesabınızdan alınan özelliklerini girin
-* Uygulama modunu (üretim veya sanal) seçin
-* Tıklayın **Kaydet** APNS kimlik bilgilerinizi güncelleştirmek için düğme
+* Apple geliştirici hesabınızdan aldığınız özellikleri girin
+* Uygulama modlarınızı seçin (üretim veya korumalı alan)
+* APNS kimlik bilgilerinizi güncelleştirmek için **Kaydet** düğmesine tıklayın
 
-### <a name="configure-via-management-api-rest"></a>Yönetim API'si (REST) aracılığıyla yapılandırma
+### <a name="configure-via-management-api-rest"></a>Yönetim API 'SI aracılığıyla yapılandırma (REST)
 
-Kullanabileceğiniz bizim [yönetim API'leri](https://msdn.microsoft.com/library/azure/dn495827.aspx) belirteç tabanlı kimlik doğrulaması kullanmak için bildirim hub'ınızı güncelleştirilecek.
-Yapılandırmakta uygulamanın (Apple Geliştirici hesabınızda belirtilen) bir korumalı alan veya üretim uygulamasının olup bağlı olarak, karşılık gelen uç noktalar birini kullanın:
+Bildirim Hub 'ınızı belirteç tabanlı kimlik doğrulaması kullanacak şekilde güncelleştirmek için [Yönetim API](https://msdn.microsoft.com/library/azure/dn495827.aspx) 'lerimizi kullanabilirsiniz.
+Yapılandırmakta olduğunuz uygulamanın bir korumalı alan veya üretim uygulaması (Apple Developer hesabınızda belirtilen) olmasına bağlı olarak, ilgili uç noktalardan birini kullanın:
 
-* Korumalı alan uç noktası: [https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
-* Üretim uç noktası: [https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
+* Korumalı alan uç noktası:[https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
+* Üretim uç noktası:[https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
 
 > [!IMPORTANT]
-> Belirteç tabanlı kimlik doğrulaması, bir API sürümünü gerektirir: **2017-04 veya üzeri**.
+> Belirteç tabanlı kimlik doğrulaması için bir API sürümü gerekir: **2017-04 veya üzeri**.
 
-Belirteç tabanlı kimlik doğrulaması ile bir hub'ı güncelleştirmek için PUT isteğinin bir örneği aşağıda verilmiştir:
+Bir hub 'ı belirteç tabanlı kimlik doğrulama ile güncelleştirmek için bir PUT isteği örneği aşağıda verilmiştir:
 
     ```text
     PUT https://{namespace}.servicebus.windows.net/{Notification Hub}?api-version=2017-04
@@ -112,11 +114,11 @@ Belirteç tabanlı kimlik doğrulaması ile bir hub'ı güncelleştirmek için P
       }
     ```
 
-### <a name="configure-via-the-net-sdk"></a>.NET SDK'sı yapılandırma
+### <a name="configure-via-the-net-sdk"></a>.NET SDK aracılığıyla yapılandırma
 
-Belirteç tabanlı kimlik doğrulaması kullanmak için hub'ınızı yapılandırabileceğiniz bizim [en son istemci SDK'sı](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8).
+Hub 'ınızı, [en son istemci SDK 'sını](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8)kullanarak belirteç tabanlı kimlik doğrulaması kullanacak şekilde yapılandırabilirsiniz.
 
-Doğru kullanımını gösteren kod örneği aşağıdadır:
+Doğru kullanımı gösteren bir kod örneği aşağıda verilmiştir:
 
 ```csharp
 NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
@@ -130,6 +132,6 @@ desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/de
 nm.UpdateNotificationHubAsync(desc);
 ```
 
-## <a name="reverting-to-using-certificate-based-authentication"></a>Sertifika tabanlı kimlik doğrulaması kullanmaya geri alma
+## <a name="reverting-to-using-certificate-based-authentication"></a>Sertifika tabanlı kimlik doğrulaması kullanmaya geri dönme
 
-Önceki herhangi bir yöntemi kullanarak ve belirteç özelliklerini yerine sertifikayı geçirerek sertifika tabanlı kimlik doğrulaması kullanarak dilediğiniz zaman geri dönebilirsiniz. Bu eylem, daha önce depolanan kimlik bilgileri geçersiz kılar.
+Herhangi bir önceki yöntemi kullanarak ve belirteç özellikleri yerine sertifikayı geçirerek sertifika tabanlı kimlik doğrulaması kullanmak için dilediğiniz zaman döndürebilirsiniz. Bu eylem, önceden depolanmış kimlik bilgilerinin üzerine yazar.

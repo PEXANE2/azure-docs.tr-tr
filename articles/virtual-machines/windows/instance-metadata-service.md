@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0610648594d09de3f86c5d9eb2f0cae722978cca
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 658830e37a453075100cd3aaf132bb1d3aedfaea
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996397"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240384"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure örnek meta veri hizmeti
 
@@ -360,7 +360,7 @@ azEnvironment | VM 'nin çalıştığı Azure ortamı | 2018-10-01
 customData | [Özel verileri](#custom-data) gör | 2019-02-01
 location | VM 'nin çalıştığı Azure bölgesi | 2017-04-02
 name | VM adı | 2017-04-02
-sunar | VM görüntüsü için teklif bilgileri ve yalnızca Azure görüntü Galerisi 'nden dağıtılan görüntülerde bulunur | 2017-04-02
+teklif | VM görüntüsü için teklif bilgileri ve yalnızca Azure görüntü Galerisi 'nden dağıtılan görüntülerde bulunur | 2017-04-02
 osType | Linux veya Windows | 2017-04-02
 placementGroupId | Sanal makine ölçek kümesinin [yerleştirme grubu](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 plan | Bir Azure Market görüntüsü ise VM için ad, ürün ve yayımcı içeren bir [plan planlayın](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) | 2018-04-02
@@ -573,7 +573,7 @@ Department:IT;Environment:Test;Role:WebRole
 **İstek**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=text"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tagsList?api-version=2019-06-04&format=JSON"
 ```
 
 **Yanıt**
@@ -725,7 +725,7 @@ Network Destination        Netmask          Gateway       Interface  Metric
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
-### <a name="custom-data"></a>Özel Veriler
+### <a name="custom-data"></a>Özel veriler
 Instance Metadata Service, VM 'nin kendi özel verilerine erişimine sahip olmasını sağlar. İkili veriler 64 KB 'tan az olmalıdır ve Base64 kodlamalı biçimde VM 'ye sağlanmalıdır.
 
 Azure özel verileri REST API 'Ler, PowerShell cmdlet 'Leri, Azure komut satırı arabirimi (CLı) veya ARM şablonu aracılığıyla sanal makineye eklenebilir.

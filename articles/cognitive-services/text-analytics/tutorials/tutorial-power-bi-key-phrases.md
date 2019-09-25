@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: dba65e68e7c2204a4d4d7f80a603de607bba7609
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 97245a10602f763c3269218d87c6b1a5ba309817
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697338"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71241020"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Öğretici: Metin Analizi bilişsel hizmet ile Power BI tümleştirin
 
@@ -114,13 +114,14 @@ Sorgular listesinde, başlangıçta `Query1` olarak adlandırılan yeni bir sorg
 Şimdi **Ana Sayfa** şeridindeki **Sorgu** grubunda **Gelişmiş Düzenleyici**’ye tıklayarak Gelişmiş Düzenleyici penceresini açın. Pencerede bulunan kodu silin ve aşağıdaki kodu yapıştırın. 
 
 > [!NOTE]
-> Aşağıdaki örneklerde, Metin Analizi API’si uç noktasının `https://westus.api.cognitive.microsoft.com` ile başladığı varsayılır. Metin Analizi, 13 farklı bölgede abonelik oluşturmanıza olanak sağlar. Hizmete farklı bir bölgede kaydolduysanız lütfen seçtiğiniz bölgeye yönelik uç noktayı kullandığınızdan emin olun. [Azure portalda](https://azure.microsoft.com/features/azure-portal/) oturum açıp Metin Analizi aboneliğinizi ve sonra Genel Bakış sayfasını seçerek bu uç noktayı bulabilirsiniz.
+> Aşağıdaki örnek uç noktayı, metin analizi kaynağınız `<your-custom-subdomain>`için oluşturulan uç noktayla değiştirin (içeren). [Azure Portal](https://azure.microsoft.com/features/azure-portal/)oturum açıp metin analizi aboneliğinizi seçip seçerek `Quick start`bu uç noktayı bulabilirsiniz.
+
 
 ```fsharp
 // Returns key phrases from the text in a comma-separated list
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics" & "/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -164,7 +165,8 @@ Her şey hazırsa Power BI, tablodaki her bir satır için bir kez özel işlevi
 > [!NOTE]
 > Metin Analizi hizmeti, erişim anahtarınızı kullanarak kimliğinizi doğruladığından `Anonymous` seçeneğini belirlersiniz, bu nedenle Power BI’ın HTTP isteği için kimlik bilgileri sağlaması gerekmez.
 
-![[kimlik doğrulamasını anonim olarak ayarlama]](../media/tutorials/power-bi/access-web-content.png)
+> [!div class="mx-imgBorder"]
+> ![[kimlik doğrulaması anonim olarak ayarlanıyor]](../media/tutorials/power-bi/access-web-content.png)
 
 Anonim erişimi seçtiğiniz halde Kimlik Bilgilerini Düzenle bandını görüyorsanız, `KeyPhrases` [özel işlevdeki](#CreateCustomFunction) koda Metin Analizi erişim anahtarınızı yapıştırmayı unutmuş olabilirsiniz.
 
@@ -223,7 +225,7 @@ Aşağıdaki Yaklaşım Analizi işlevi, metinde ifade edilen yaklaşımın ne �
 // Returns the sentiment score of the text, from 0.0 (least favorable) to 1.0 (most favorable)
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/sentiment",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -240,7 +242,7 @@ Dil Algılama işlevine ilişkin iki sürüm aşağıda verilmiştir. İlk sür�
 // Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -254,7 +256,7 @@ in  language
 // Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/languages",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),
@@ -274,7 +276,7 @@ Son olarak, sunulmuş olan Anahtar İfade Ayıklama işlevinin, virgülle ayrıl
 // Returns key phrases from the text as a list object
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
-    endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases",
+    endpoint    = "https://<your-custom-subdomain>.cognitiveservices.azure.com" & "/text/analytics/v2.1/keyPhrases",
     jsontext    = Text.FromBinary(Json.FromValue(Text.Start(Text.Trim(text), 5000))),
     jsonbody    = "{ documents: [ { language: ""en"", id: ""0"", text: " & jsontext & " } ] }",
     bytesbody   = Text.ToBinary(jsonbody),

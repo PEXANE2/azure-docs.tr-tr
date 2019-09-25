@@ -4,9 +4,9 @@ description: Bu öğreticide, Android cihazlarına anında iletme bildirimleri g
 services: notification-hubs
 documentationcenter: android
 keywords: anında iletme bildirimleri,anında iletme bildirimi,android anında iletme bildirimi
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 8268c6ef-af63-433c-b14e-a20b04a0342a
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,20 +15,22 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 341f5a30fe03de4c69b5a7e18703931988d2d185
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 36af79b90722041ddb16bb90a73175a8635531fd
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063627"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212367"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve (kullanım dışı), Google Cloud Messaging kullanarak Android cihazlarına anında iletme bildirimleri
+# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak Android cihazlarına anında iletme bildirimleri gönderin
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 > [!WARNING]
-> 10 Nisan 2018'den itibaren Google Google Cloud Messaging (GCM) kullanım dışı. GCM sunucu ve istemci API'leri kullanım dışı bırakılmıştır ve 29 Mayıs 2019 olan en kısa sürede kaldırılacak. Daha fazla bilgi için [GCM ve FCM ile ilgili sık sorulan sorular](https://developers.google.com/cloud-messaging/faq).
+> 10 Nisan 2018 itibariyle, Google Google Cloud Messaging (GCM) kullanım dışıdır. GCM sunucusu ve istemci API 'Leri kullanım dışıdır ve 29 Mayıs 2019 ' den hemen sonra kaldırılacaktır. Daha fazla bilgi için bkz. [GCM ve FCM hakkında sık sorulan sorular](https://developers.google.com/cloud-messaging/faq).
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -36,7 +38,7 @@ Bu öğreticide, bir Android uygulamasına anında iletme bildirimleri gönderme
 Google Cloud Messaging (GCM) kullanarak anında iletme bildirimleri alan bir Android uygulaması oluşturursunuz.
 
 > [!IMPORTANT]
-> Google Cloud Messaging (GCM) kullanım dışıdır ve kaldırılacak [yakında](https://developers.google.com/cloud-messaging/faq).
+> Google Cloud Messaging (GCM) kullanım dışıdır ve [yakında](https://developers.google.com/cloud-messaging/faq)kaldırılacak.
 
 > [!IMPORTANT]
 > Bu konuda Google Cloud Messaging (GCM) ile anında iletme bildirimleri gösterilmektedir. Google Firebase Cloud Messaging (FCM) kullanıyorsanız bkz. [Azure Notification Hubs ve FCM ile Android’e anında iletme bildirimleri gönderme](notification-hubs-android-push-notification-google-fcm-get-started.md).
@@ -53,7 +55,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği**. Azure aboneliğiniz yoksa, [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) başlamadan önce.
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Android Studio](https://go.microsoft.com/fwlink/?LinkId=389797).
 
 ## <a name="creating-a-project-that-supports-google-cloud-messaging"></a>Google Cloud Messaging'i destekleyen bir proje oluşturma
@@ -66,7 +68,7 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
 ### <a name="configure-gcm-setting-for-the-notification-hub"></a>Bildirim hub’ı için GCM ayarını yapılandırma
 
-1. Seçin **Google (GCM)** içinde **bildirim ayarları**.
+1. **BILDIRIM ayarlarında** **Google (GCM)** seçeneğini belirleyin.
 2. Google Cloud Console’dan aldığınız **API Anahtarını** girin.
 3. Araç çubuğunda **Kaydet**’i seçin.
 
@@ -108,7 +110,7 @@ Bildirim hub'ınız şimdi GCM ile birlikte çalışmak üzere yapılandırıld�
     }
     ```
 
-### <a name="updating-the-projects-androidmanifestxml"></a>Projenin Androidmanifest.XML'i güncelleştirme
+### <a name="updating-the-projects-androidmanifestxml"></a>Projenin AndroidManifest. xml dosyası güncelleştiriliyor
 
 1. GCM’yi desteklemek için, kodda [Google’ın Örnek Kimliği API’sini](https://developers.google.com/instance-id/) kullanarak [kayıt belirteçleri elde etmek](https://developers.google.com/cloud-messaging/) için kullanılan bir Örnek Kimliği dinleyici hizmeti uygulayın. Bu öğreticide sınıfın adı `MyInstanceIDService` şeklindedir.
 
@@ -164,9 +166,9 @@ Bildirim hub'ınız şimdi GCM ile birlikte çalışmak üzere yapılandırıld�
 
     Aşağıdaki kodda `NotificationSettings` sınıfı için üç yer tutucuyu güncelleştirin:
 
-   * `SenderId`: Daha önce edindiğiniz proje numarası [Google Cloud Console](https://cloud.google.com/console).
-   * `HubListenConnectionString`: `DefaultListenAccessSignature` Hub'ınızın bağlantı dizesi. [Azure portal] hub’ınızın **Ayarlar** sayfasında bulunan **Erişim İlkeleri**’ne tıklayarak bağlantı dizesini kopyalayabilirsiniz.
-   * `HubName`: Hub sayfasında görünen bildirim hub'ınızın adını kullanın [Azure portal].
+   * `SenderId`: Daha önce [Google Cloud konsolunda](https://cloud.google.com/console)edindiğiniz proje numarası.
+   * `HubListenConnectionString`: Hub 'ınız için bağlantı dizesi. `DefaultListenAccessSignature` [Azure portal] hub’ınızın **Ayarlar** sayfasında bulunan **Erişim İlkeleri**’ne tıklayarak bağlantı dizesini kopyalayabilirsiniz.
+   * `HubName`: [Azure Portal]hub sayfasında görünen Bildirim Hub 'ınızın adını kullanın.
 
      `NotificationSettings` kodu:
 

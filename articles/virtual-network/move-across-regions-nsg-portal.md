@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0dd460f7ed829bf82c285b80e59778dacd882404
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059326"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219194"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Azure ağ güvenlik grubu (NSG) Azure portal kullanarak başka bir bölgeye taşıma
 
@@ -27,7 +27,7 @@ Azure Güvenlik grupları bir bölgeden diğerine taşınamaz. Bununla birlikte,
 - Azure ağ güvenlik grupları bölgeler arasında taşınamaz.  Yeni NSG 'yi hedef bölgedeki kaynaklarla ilişkilendirmeniz gerekir.
 
 - Bir NSG yapılandırmasını dışarı aktarmak ve başka bir bölgede NSG oluşturmak üzere bir şablon dağıtmak için, ağ katılımcısı rolü veya daha yüksek bir sürümü gerekir.
-   
+
 - Kaynak ağ düzeni ve şu anda kullanmakta olduğunuz tüm kaynakları belirler. Bu düzen, yük dengeleyiciler, genel IP 'Ler ve sanal ağlar dahil değildir ancak bunlarla sınırlı değildir.
 
 - Azure aboneliğinizin, kullanılan hedef bölgede NSG 'ler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
@@ -41,7 +41,7 @@ Aşağıdaki adımlar, yapılandırma ve güvenlik kuralı için ağ güvenlik g
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>Şablonu dışarı aktarma ve portaldan dağıtma
 
-1. [Azure Portal](http://portal.azure.com) > **kaynak gruplarında**oturum açın.
+1. [Azure Portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
 2. Kaynak NSG 'yi içeren kaynak grubunu bulun ve üzerine tıklayın.
 3. > **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
@@ -77,19 +77,19 @@ Aşağıdaki adımlar, yapılandırma ve güvenlik kuralı için ağ güvenlik g
             "location": "<target-region>",
             "properties": {
                 "provisioningState": "Succeeded",
-                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78", 
+                "resourceGuid": "2c846acf-58c8-416d-be97-ccd00a4ccd78",
              }
             }
            ]
 
     ```
-  
+
 11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
-    
+
 12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
     * **Güvenlik kuralları** - **Template. JSON** dosyasındaki **SecurityRules** bölümüne kural ekleyerek veya kaldırarak hedef NSG 'ye dağıtılan kuralları düzenleyebilirsiniz:
-    
+
         ```json
            "resources": [
             {
@@ -155,7 +155,7 @@ Aşağıdaki adımlar, yapılandırma ve güvenlik kuralı için ağ güvenlik g
 
 14. Hedef NSG 'nin dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği** ' ne tıklayın.
 
-15. Hedef NSG 'nin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef NSG için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut NSG kaynak kaynak grubuyla aynı olmadığından emin olun. 
+15. Hedef NSG 'nin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef NSG için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut NSG kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. **Temel bilgilerin** >  **,** NSG 'nin dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
@@ -165,7 +165,7 @@ Aşağıdaki adımlar, yapılandırma ve güvenlik kuralı için ağ güvenlik g
 
 19. Hedef ağ güvenlik grubunu dağıtmak için **satın al** düğmesine tıklayın.
 
-## <a name="discard"></a>At 
+## <a name="discard"></a>At
 
 Hedef NSG 'yi atmak istiyorsanız hedef NSG 'yi içeren kaynak grubunu silin.  Bunu yapmak için, portalda panodaki kaynak grubunu seçin ve genel bakış sayfasının en üstünde **Sil** ' i seçin.
 

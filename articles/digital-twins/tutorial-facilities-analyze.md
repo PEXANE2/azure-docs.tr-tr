@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 0244d6ac51b7cad6b74139c39914223928e2b627
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: d155d3566ef87e8a21cdc3e701892144c613f694
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827842"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219292"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Öğretici: Time Series Insights kullanarak Azure dijital TWINS boşluklarınızın olaylarını görselleştirin ve çözümleyin
 
@@ -37,6 +37,9 @@ Bu öğreticide Azure Digital Twins kurulumunu [yapılandırmış](tutorial-faci
 - Çalışan bir Digital Twins örneği.
 - Çalışma makinenize indirilmiş ve ayıklanmış [Digital Twins C# örnekleri](https://github.com/Azure-Samples/digital-twins-samples-csharp).
 - Örneği çalıştırmak için geliştirme makinenizde [sürüm 2.1.403 veya sonraki bir sürümü .NET Core SDK](https://www.microsoft.com/net/download) . Doğru `dotnet --version` sürümün yüklendiğini doğrulamak için ' i çalıştırın.
+
+> [!TIP]
+> Yeni bir örnek sağlıyorsanız benzersiz bir dijital TWINS örnek adı kullanın.
 
 ## <a name="stream-data-by-using-event-hubs"></a>Event Hubs kullanarak veri akışı
 
@@ -130,7 +133,7 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. [Azure Portal](https://portal.azure.com)sol bölmesinde **kaynak oluştur**' u seçin. 
 
-1. **Time Series Insights** araması yapın ve yeni bir kaynak oluşturun. **Oluştur**’u seçin.
+1. **Time Series Insights** genel KULLANıLABILIRLIK (GA) kaynağını arayın ve seçin. **Oluştur**’u seçin.
 
 1. Time Series Insights örneğiniz için bir **Ad** girin ve **Abonelik** girişinizi seçin. Dijital TWINS örneğiniz için kullandığınız **kaynak grubunu** ve **konumunuzu**seçin. İleri **' yi seçin: Olay kaynağı** düğmesi veya **olay kaynağı** sekmesi.
 
@@ -152,9 +155,9 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
     ![Time Series Insights Gezgini 'ndeki grafik](./media/tutorial-facilities-analyze/tsi-explorer.png)
 
-1. Time Series Insights Gezgini 'nde, odalarınızdan, sensörlerden ve diğer kaynaklardaki farklı olaylar ve veriler için grafikler ve heyomaps oluşturabilirsiniz. Sol tarafta, kendi görselleştirmelerinizi oluşturmak için **Ölçü** ve aşağı açılan kutuları kullanın. 
+1. Time Series Insights Gezgini 'nde, odalarınızdan, sensörlerden ve diğer kaynaklardaki farklı olaylar ve veriler için grafikler ve heyomaps oluşturabilirsiniz. Sol tarafta, kendi görselleştirmelerinizi oluşturmak için **Ölçü** **ve aşağı** açılan kutuları kullanın. 
 
-   Örneğin, sensörlerinizin her biri için bir ısı haritasını oluşturmak için **Ölçü** ve **digitaltwıns-sensorhardwareıd** için **olayları** seçin. Isı haritasını aşağıdaki görüntüye benzer olacaktır:
+   Örneğin, sensörlerinizin her biri için bir ısı haritasını oluşturmak için **Ölçü** ve **digitaltwıns-sensorhardwareıd** **için** **olayları** seçin. Isı haritasını aşağıdaki görüntüye benzer olacaktır:
 
    ![Time Series Insights Gezgininde heatmap](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
 

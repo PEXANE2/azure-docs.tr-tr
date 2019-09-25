@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: b-juche
-ms.openlocfilehash: a99fb3b61d8193f1671fa1d8e228439941659d57
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 09a1e48d2eb9ab9b117cb1b1161d5137607400ad
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141159"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212091"
 ---
-# <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK 'lar ve CLı araçları
+# <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDK’ları ve CLI araçları
 
 Bu makalede, Azure NetApp Files tarafından desteklenen SDK 'lar ve komut satırı (CLı) araçları listelenmektedir.
 
@@ -54,7 +54,7 @@ Aşağıdaki tabloda, başvurunuz için kod örnekleri listelenir.
 |    Dil/araç    |    Kod örnek belgeleri    |
 |------------------|--------------------------------------------|
 |    .NET   |    [İçin SDK örneğini Azure NetApp Files. NETCore](https://docs.microsoft.com/samples/azure-samples/netappfiles-dotnetcore-sdk-sample/azure-netappfiles-sdk-sample-for-netcore/)    |    
-|    Pythons    |    [Python için Azure NetApp Files SDK örneği](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
+|    Python    |    [Python için Azure NetApp Files SDK örneği](https://docs.microsoft.com/samples/azure-samples/netappfiles-python-sdk-sample/azure-netappfiles-sdk-sample-for-python/)    |
 
 ## <a name="next-steps"></a>Sonraki adımlar   
  [Azure SDK 'larını indirin](https://azure.microsoft.com/downloads/)

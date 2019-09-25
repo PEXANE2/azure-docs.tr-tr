@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1b2255b4e0f5aa34e3c7159b00156aee5224928
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c32b587464d66148957672be16493b66dc051ada
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999285"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219700"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning modellerini izleme ve model dağıtma (Önizleme)
 
@@ -146,6 +146,7 @@ Azure Machine Learning ile MLflow Izleme, Databricks 'ınızdan günlüğe kayde
 Mlflow denemeleri Azure Databricks çalıştırmak için öncelikle bir [Azure Databricks çalışma alanı ve küme](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) oluşturmanız gerekir
 
 Kümenizde, kümenizin gerekli işlevlere ve sınıflara erişebildiğinden emin olmak için, PyPI 'den *azureml-mlflow* kitaplığını yüklediğinizden emin olun.
+Buradan, deneme not defterinizi içeri aktarın, kümenizi bu kümeye ekleyin ve denemenizi çalıştırın. 
 
 ### <a name="install-libraries"></a>Kitaplıkları yükler
 
@@ -184,10 +185,17 @@ workspace_name = 'workspace_name'
 ws = Workspace.get(name=workspace_name,
                    subscription_id=subscription_id,
                    resource_group=resource_group)
-
 ```
+
+#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Azure Databricks ve Azure Machine Learning çalışma alanlarınızı bağlama
+
+[Azure Portal](https://ms.portal.azure.com), Azure Databricks (ADB) çalışma alanınızı yeni veya mevcut bir Azure Machine Learning çalışma alanına bağlayabilirsiniz. Bunu yapmak için ADB çalışma alanınıza gidin ve sağ alt köşedeki **Azure Machine Learning çalışma alanını bağla** düğmesini seçin. Çalışma alanlarınızı bağlamak, deneme verilerinizi Azure Machine Learning çalışma alanında izlemenize olanak sağlar. 
+
 ### <a name="link-mlflow-tracking-to-your-workspace"></a>MLflow izlemeyi çalışma alanınıza bağlama
+
 Çalışma alanınızı örnekledikten sonra MLflow izleme URI 'sini ayarlayın. Bunu yaparak, MLflow izlemesini Azure Machine Learning çalışma alanına bağlarsınız. Bundan sonra, tüm denemeleri yönetilen Azure Machine Learning izleme hizmetine eklenecektir.
+
+#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Not defterinizde MLflow Izlemeyi doğrudan ayarlama
 
 ```python
 uri = ws.get_mlflow_tracking_uri()
@@ -200,6 +208,12 @@ Eğitim betiğinizdeki mlflow günlüğü API 'Lerini kullanmak için mlflow 'u 
 import mlflow 
 mlflow.log_metric('epoch_loss', loss.item()) 
 ```
+
+#### <a name="automate-setting-mlflow-tracking"></a>MLflow Izleme ayarını otomatikleştirin
+
+Kümelerinizde sonraki tüm denemeler Not defteri oturumunda izleme URI 'sini el ile ayarlamak yerine bu [Azure Machine Learning Izleme kümesi Init betiğini](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md)kullanarak otomatik olarak bunu yapın.
+
+Doğru yapılandırıldığında, MLflow izleme verilerinizi Azure Machine Learning REST API ve tüm istemcilerinde ve Azure Databricks MLflow Kullanıcı arabirimi aracılığıyla ya da MLflow istemcisini kullanarak görebileceksiniz.
 
 ## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Çalışma alanınızdaki ölçümleri ve yapıtları görüntüleme
 

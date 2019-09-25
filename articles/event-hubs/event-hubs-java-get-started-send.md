@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: a24263e80f50d880be269238441545785e2f51e8
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 054289de296488036dd0855d228d272fdea18baf
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967608"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219417"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Azure Event Hubs olaylar göndermek veya Azure 'dan olayları almak için Java 'Yı kullanma
 
@@ -181,11 +181,11 @@ EventProcessorHost 'u kullanmak için [Azure Storage hesabınız] [Azure Storage
 1. [Azure Portal](https://portal.azure.com)oturum açın ve ekranın sol tarafındaki **kaynak oluştur** ' u seçin.
 2. **Depolama**' yı ve ardından **depolama hesabı**' nı seçin. İçinde **depolama hesabı oluşturma** penceresinde, depolama hesabı için bir ad yazın. Kalan alanları tamamlayın, istediğiniz bölgeyi seçin ve ardından **Oluştur**' u seçin.
    
-    ![Depolama hesabı oluştur](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Azure portal bir depolama hesabı oluşturun](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. Yeni oluşturulan depolama hesabını seçin ve **erişim anahtarları**' nı seçin:
    
-    ![Erişim anahtarı alma](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Azure portal erişim anahtarlarınızı alın](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     Key1 değeri geçici bir konuma kopyalayın. Daha sonra bu öğreticide kullanacaksınız.
 

@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: eda0d6e8fe56b985c3b29fa80cee880444d63741
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: ad7e4c5aaa20722e6158973571fb95eb8d853f4d
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105302"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219796"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-the-azure-portal"></a>Azure dış Load Balancer Azure portal kullanarak başka bir bölgeye taşıma
 
@@ -27,7 +27,7 @@ Azure dış yük dengeleyiciler bir bölgeden diğerine taşınamaz. Ancak, bir 
 - Azure dış yük dengeleyiciler bölgeler arasında taşınamaz.  Yeni Yük dengeleyiciyi hedef bölgedeki kaynaklarla ilişkilendirmeniz gerekir.
 
 - Bir dış yük dengeleyici yapılandırmasını dışarı aktarmak ve başka bir bölgede dış yük dengeleyici oluşturmak üzere bir şablon dağıtmak için, ağ katılımcısı rolü veya daha yüksek bir sürüme sahip olmanız gerekir.
-   
+
 - Kaynak ağ düzeni ve şu anda kullanmakta olduğunuz tüm kaynakları belirler. Bu düzen, yük dengeleyiciler, ağ güvenlik grupları, genel IP 'Ler ve sanal ağlar dahil değildir ancak bunlarla sınırlı değildir.
 
 - Azure aboneliğinizin, kullanılan hedef bölgede dış yük dengeleyiciler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
@@ -43,7 +43,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 ### <a name="export-the-public-ip-template-and-deploy-from-the-portal"></a>Genel IP şablonunu dışarı aktarma ve portaldan dağıtma
 
-1. [Azure Portal](http://portal.azure.com) > **kaynak gruplarında**oturum açın.
+1. [Azure Portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
 2. Kaynak ortak IP 'yi içeren kaynak grubunu bulun ve üzerine tıklayın.
 3. > **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
@@ -65,7 +65,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
     Düzenleyicide **Kaydet** ' e tıklayın.
 
-9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın. 
+9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın.
 
 10. Genel IP 'nin taşınacağı hedef bölgeyi düzenlemek için **kaynaklar**altındaki **Location** özelliğini değiştirin:
 
@@ -90,11 +90,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                 "ipTags": []
                }
                }
-             ]             
+             ]
     ```
-  
+
 11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
-    
+
 12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
     * **SKU** - **şablon. JSON** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki genel IP 'yi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
@@ -135,17 +135,17 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
                 "publicIPAllocationMethod": "Dynamic",
                 "idleTimeoutInMinutes": 4,
                 "ipTags": []
-        
+
         ```
 
         Ayırma yöntemleri ve boşta kalma zaman aşımı değerleri hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
- 
+
 13. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
 
 14. Hedef genel IP 'nin dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği** ' ne tıklayın.
 
-15. Hedef genel IP 'nin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef genel IP 'si için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut kaynak genel IP 'nin kaynak kaynak grubuyla aynı olmadığından emin olun. 
+15. Hedef genel IP 'nin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef genel IP 'si için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut kaynak genel IP 'nin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. Temel IP 'nin dağıtılmasını istediğiniz hedef konuma göre, **temel bilgilerin** > bir**konum** olarak ayarlandığını doğrulayın.
 
@@ -158,7 +158,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 ### <a name="export-the-external-load-balancer-template-and-deploy-from-the-azure-portal"></a>Dış yük dengeleyici şablonunu dışarı aktarın ve Azure portal dağıtın
 
-1. [Azure Portal](http://portal.azure.com) > **kaynak gruplarında**oturum açın.
+1. [Azure Portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
 2. Kaynak dış yük dengeleyiciyi içeren kaynak grubunu bulun ve üzerine tıklayın.
 3. > **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
@@ -180,8 +180,8 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
     ```
 
 6.  Yukarıda taşınan hedef genel IP 'nin değerini düzenlemek için, önce kaynak KIMLIĞINI edinmeniz ve sonra **Parameters. JSON** dosyasına kopyalamanız ve yapıştırmanız gerekir. KIMLIĞI almak için:
-    
-    1. Başka bir tarayıcı sekmesi veya penceresinde [Azure Portal](http://portal.azure.com) > **kaynak gruplarında** oturum açın.
+
+    1. Başka bir tarayıcı sekmesi veya penceresinde [Azure Portal](https://portal.azure.com) > **kaynak gruplarında** oturum açın.
     2. Yukarıdaki adımlardan taşınan ortak IP 'yi içeren hedef kaynak grubunu bulun ve üzerine tıklayın.
     3. > **Ayarları** > **özelliklerini**seçin.
     4. Sağ taraftaki dikey pencerede, **kaynak kimliğini** vurgulayın ve panoya kopyalayın.  Alternatif olarak, **kaynak kimliği** yolunun sağ tarafındaki **Panoya Kopyala** düğmesine tıklayabilirsiniz.
@@ -201,7 +201,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
         ```
     6. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
-   
+
 
 7.  Yük Dengeleyici için giden NAT ve giden kurallarını yapılandırdıysanız, giden genel IP 'nin dış KIMLIĞI için bu dosyada üçüncü bir giriş bulunur.  Giden genel IP 'nin KIMLIĞINI edinmek ve bu girişi **Parameters. JSON** dosyasına yapıştırmak için **hedef bölgede** yukarıdaki adımları yineleyin:
 
@@ -211,15 +211,15 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
             "parameters": {
                 "loadBalancers_myLoadbalancer_ext_name": {
                 "value": "<target-external-lb-name>",
-                
+
             },
                 "publicIPAddresses_myPubIP_in_externalid": {
                 "value": "<target-publicIP-resource-ID>",
-                
+
             },
                 "publicIPAddresses_myPubIP_out_externalid": {
                 "defaultValue": "<target-publicIP-outbound-resource-ID>",
-                
+
             }
         },
     ```
@@ -243,7 +243,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 10. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
 
 11. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
-    
+
     * **SKU** - **Template. JSON** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki dış yük dengeleyicinin SKU 'sunu standart iken temel veya temel olarak değiştirebilirsiniz:
 
         ```json
@@ -389,10 +389,10 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
          Giden kuralları hakkında daha fazla bilgi için bkz. [Load Balancer giden kuralları](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)
 
 12. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
-    
+
 13. Hedef dış yük dengeleyicinin dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği** ' ne tıklayın.
 
-15. Hedef yük dengeleyicinin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef dış yük dengeleyici için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz veya genel IP için yukarıda oluşturulan mevcut kaynak grubunu seçebilirsiniz.  Adın mevcut kaynak dış yük dengeleyicinin kaynak kaynak grubuyla aynı olmadığından emin olun. 
+15. Hedef yük dengeleyicinin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef dış yük dengeleyici için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz veya genel IP için yukarıda oluşturulan mevcut kaynak grubunu seçebilirsiniz.  Adın mevcut kaynak dış yük dengeleyicinin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. **Temel bilgilerin** >  **, dış** yük dengeleyicinin dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
@@ -402,7 +402,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak taşıma iç
 
 19. Hedef ortak IP 'yi dağıtmak için **satın al** düğmesine tıklayın.
 
-## <a name="discard"></a>At 
+## <a name="discard"></a>At
 
 Hedef genel IP ve dış yük dengeleyiciyi atmak istiyorsanız, hedef genel IP ve dış yük dengeleyiciyi içeren kaynak grubunu silin.  Bunu yapmak için, portalda panodaki kaynak grubunu seçin ve genel bakış sayfasının en üstünde **Sil** ' i seçin.
 

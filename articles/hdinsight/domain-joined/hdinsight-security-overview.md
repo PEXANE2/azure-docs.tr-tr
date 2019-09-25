@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
-ms.date: 07/22/2019
-ms.openlocfilehash: 4619545ab1fed5f55504e80eede0d1cf240eea87
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 09/23/2019
+ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488682"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240414"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 'ta Kurumsal güvenliğe genel bakış
 
@@ -52,7 +52,7 @@ Küme kaynaklarına erişimi denetleme ve veriler, kaynakların yetkisiz veya is
 
 Yönetici, HDInsight kümesi kaynaklarına ve verilerine yönelik tüm erişimi görüntüleyebilir ve rapor edebilir. Yönetici ayrıca Apache Ranger desteklenen uç noktalarında oluşturulan erişim denetim ilkelerine yapılan tüm değişiklikleri görüntüleyebilir ve rapor edebilir. 
 
-Apache Ranger ve ambarı denetim günlüklerine ve SSH erişim günlüklerine erişmek için [Azure izleyicisini etkinleştirin](../hdinsight-hadoop-oms-log-analytics-tutorial.md) ve ilgili denetim kayıtlarını görüntüleyin.
+Apache Ranger ve ambarı denetim günlüklerine ve SSH erişim günlüklerine erişmek için [Azure izleyicisini etkinleştirin](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) ve denetim kayıtları sağlayan tabloları görüntüleyin.
 
 ### <a name="encryption"></a>Şifreleme
 
@@ -73,6 +73,7 @@ Aşağıdaki tabloda her güvenlik çözümü türü için kaynakların bağlant
 | Veri erişim güvenliği | Azure Data Lake Storage 1. ve Gen2 için [erişim denetim listelerinin ACL 'lerini](../../storage/blobs/data-lake-storage-access-control.md) yapılandırma  | Müşteri |
 |  | Depolama hesaplarında ["güvenli aktarım gerekli"](../../storage/common/storage-require-secure-transfer.md) özelliğini etkinleştirin. | Müşteri |
 |  | [Azure depolama güvenlik duvarlarını](../../storage/common/storage-network-security.md) ve sanal ağları yapılandırma | Müşteri |
+|  | Cosmos DB ve [Azure SQL veritabanı](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) için [Azure sanal ağ hizmet uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) yapılandırma | Müşteri |
 |  | Yoldaki veriler için [TLS şifrelemenin](../../storage/common/storage-security-tls.md) etkinleştirildiğinden emin olun. | Müşteri |
 |  | Azure depolama şifrelemesi için [müşteri tarafından yönetilen anahtarları](../../storage/common/storage-encryption-keys-portal.md) yapılandırma | Müşteri |
 | Uygulama ve ara yazılım güvenliği | AAD-DS ile tümleştirme ve [kimlik doğrulamasını yapılandırma](apache-domain-joined-configure-using-azure-adds.md) | Müşteri |

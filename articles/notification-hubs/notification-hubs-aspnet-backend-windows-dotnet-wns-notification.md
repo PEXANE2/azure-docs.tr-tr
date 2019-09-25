@@ -2,9 +2,9 @@
 title: Azure Notification Hubs kullanarak belirli kullanıcılara bildirim gönderme | Microsoft Docs
 description: Evrensel Windows Platformu (UWP) uygulamalarını kullanarak belirli kullanıcılara bildirim göndermeyi öğrenin.
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 ms.assetid: 012529f2-fdbc-43c4-8634-2698164b5880
 ms.service: notification-hubs
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: a4949b12076ea7cdbbf882d199279410da95e005
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558655"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212066"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli kullanıcılara bildirimler gönderme
 
@@ -126,7 +128,7 @@ Bu bölümde, [öğretici için tamamladığınız projedeki kodu güncelleştir
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-10. **WindowsApp** projesi için içinde `MainPage` `MainPage.xaml.cs` aşağıdaki üyeyi sınıfına ekleyin. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin: `http://mybackend.azurewebsites.net`.
+10. **WindowsApp** projesi için içinde `MainPage` `MainPage.xaml.cs` aşağıdaki üyeyi sınıfına ekleyin. `<Enter Your Backend Endpoint>` değerini, önceden aldığınız gerçek arka ucun uç noktasıyla değiştirdiğinizden emin olun. Örneğin, `http://mybackend.azurewebsites.net`.
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";

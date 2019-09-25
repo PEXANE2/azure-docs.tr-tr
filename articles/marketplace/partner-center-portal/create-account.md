@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 09/10/2019
-ms.openlocfilehash: fd1da6a43e4c1d7d6b66d5dbacb2d7a587c2856a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9d19b31ccce8feeb2d5ce12353d9b79841b40724
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898692"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219436"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -60,7 +60,7 @@ Iş Ortağı Merkezi 'ne yeni başladıysanız ve Microsoft İş Ortağı Ağı 
 
 ### <a name="agree-to-terms-and-conditions"></a>Hüküm ve koşulları kabul etme
 
-[Microsoft Market yayımcı anlaşmasındaki](http://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları kabul etmeniz gerekir.
+[Microsoft Market yayımcı anlaşmasındaki](https://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları kabul etmeniz gerekir.
 
 ### <a name="provide-your-publisher-profile"></a>Yayımcı profilinizi sağlama
 
@@ -103,7 +103,7 @@ Oturum açtıktan sonra, hesabınızı ayarlamayı bitirdikten sonra bu bölümd
 
 1. İş Ortağı Merkezi 'nden **Ayarlar** > **iş ortağı ayarları** > **Programlar** > **Başlarken**' i seçin.
 2. Microsoft İş Ortağı Ağı aboneliğinizi algılar ve şirket adınızı ve MPN KIMLIĞINI girmeniz için yayımcı profili sayfasını görüntüler.
-3. [Microsoft Market yayımcı anlaşmasındaki](http://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları okuyun ve ardından **kabul et '** i seçin ve kayıt bilgilerinizi tamamlamaya devam edin.
+3. [Microsoft Market yayımcı anlaşmasındaki](https://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları okuyun ve ardından **kabul et '** i seçin ve kayıt bilgilerinizi tamamlamaya devam edin.
 
 Kaydolduktan sonra, ticari Market 'e genel bakış sayfasına yönlendirilirsiniz. **Ticari Market** , sol gezinti çubuğunda görüntülenir. **Ayarlar** > **iş ortağı ayarları** > **Programlar**' ı seçerseniz, ticari Market 'in kayıtlı olarak listelendiğini görürsünüz.
 

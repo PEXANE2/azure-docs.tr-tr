@@ -1,6 +1,6 @@
 ---
-title: Azure Gözcü avcılık yer işaretlerini kullanma önizlemesinde avcılık veri kaydını | Microsoft Docs
-description: Bu makalede Azure Gözcü avcılık yer işaretleri veri izlemek için nasıl kullanılacağını açıklar.
+title: Arama yer işaretlerini kullanarak Azure Sentinel 'de arama yaparken verilerin izini sürme | Microsoft Docs
+description: Bu makalede, Azure Sentinel arama yer işaretlerinin verileri izlemek için nasıl kullanılacağı açıklanır.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,90 +14,141 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: aec04c4b9fd56b79a92c2774a48fd55f2f6a9d7a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: aa414e37470cc11b7dc83e7416590aa2babf6818
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620219"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240248"
 ---
-# <a name="keep-track-of-data-during-hunting"></a>Veri aramaya sırasında izler
+# <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Azure Sentinel ile arama sırasında verilerin izini sürme
+
+Tehdit araması genellikle kötü amaçlı davranış kanıtlarını arayan günlük verilerinin dağlarını gözden geçirmeyi gerektirir. Bu işlem sırasında, araştırmacıya olası hipotezleri doğrulama işleminin bir parçası olarak anımsanması, geri yüklemek ve analiz etmek istedikleri olayları bulur ve bir güvenliğin bir bütün hikayesini anlayın.
+
+Azure Sentinel 'de yer işaretleri, Log Analytics ' de çalıştırdığınız sorguları koruyarak ve ilgili önemli sonuçlarla birlikte, bunu yapmanıza yardımcı olur. Ayrıca, bağlamsal gözlemlerinizi kaydedebilir ve notlar ve etiketler ekleyerek bulgularınızı başvurabilirsiniz. Yer işaretli veriler siz ve ekip arkadaşlarınız tarafından kolay işbirliği için görülebilir.
+
+Yer Işaretlenen verilerinizi, **arama bölmesinin** **yer işareti** sekmesinde dilediğiniz zaman yeniden ziyaret edebilirsiniz. Geçerli araştırmanıza yönelik belirli verileri hızlı bir şekilde bulmak için filtreleme ve arama seçeneklerini kullanabilirsiniz. Alternatif olarak, yer işaretli verilerinizi doğrudan Azure Izleyici 'de **Huntingbookmark** tablosunda görüntüleyebilirsiniz. Bu, yer işareti olan verileri filtrelemenizi, özetlemenizi ve diğer veri kaynaklarıyla birleştiremezsiniz. bu da, eş olmayan kanıtları aramak kolaylaşır.
+
+Şu anda önizleme aşamasında, günlüklerinizi yazarken, birkaç tıklamayla bir yer işareti oluşturabilir ve bir olaya yükseltebilir ya da yer işaretini var olan bir olaya ekleyebilirsiniz. Olaylar hakkında daha fazla bilgi için bkz [. Öğretici: Azure Sentinel](tutorial-investigate-cases.md)ile olayları araştırın. 
+
+Ayrıca Önizleme ' de yer işareti ayrıntılarından **Araştır** ' a tıklayarak, yer işaretlenen verilerinizi görselleştirebilirsiniz. Bu, etkileşimli bir varlık grafik diyagramı ve zaman çizelgesi kullanarak bulgularınızı görüntüleyebilmeniz, araştırmanız ve görsel olarak iletişim kurabileceğiniz araştırma deneyimini başlatır.
+
+## <a name="add-a-bookmark"></a>Yer işareti ekle
+
+1. Azure Portal, şüpheli ve anormal davranışlar için sorguları çalıştırmak üzere **Sentinel** > **tehdit yönetimi** > **arayışında** gezinin.
+
+2. Sorgu arama ayrıntılarından birini seçin ve sağ tarafta **sorgu ayrıntılarını Çalıştır**' ı seçin. 
+
+3. **Sorgu sonuçlarını görüntüle**' yi seçin. Örneğin:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Azure Sentinel ile sorgu sonuçlarını görüntüleme](./media/bookmarks/new-processes-observed-example.png)
+    
+    Bu eylem, sorgu sonuçlarını **Günlükler** bölmesinde açar.
+
+4. Günlük sorgusu sonuçları listesinden, ilginç bulduğunuz bilgileri içeren satırı genişletin.
+
+5. Sol taraftaki üç nokta (...) simgesini seçin ve ardından **ekleme yer Işareti Ekle**' yi seçin:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Sorguya hunme yer işareti ekle](./media/bookmarks/add-hunting-bookmark.png)
+
+6. Sağ tarafta, arama **yer Işareti Ekle** bölmesindeki isteğe bağlı olarak, yer işareti adını güncelleştirin, Etiketler ekleyin ve öğe hakkında ne ilginç olduğunu belirlemenize yardımcı olacak notlar ekleyin.
+
+7. **Sorgu bilgileri** bölümünde, **Hesap**, **konak**ve **IP adresi** varlık türleri için sorgu sonuçlarından bilgi ayıklamak üzere açılan kutuları kullanın. Bu eylem, seçili varlık türünü sorgu sonucundan belirli bir sütuna eşler. Örneğin:
+    
+    > [!div class="mx-imgBorder"]
+    > ![Yer işareti eklemek için varlık türlerini eşleyin](./media/bookmarks/map-entity-types-bookmark.png)
+    
+    Araştırma grafiğinde (Şu anda önizleme aşamasında) yer işaretini görüntülemek için, **Hesap**, **konak**veya **IP adresi**olan en az bir varlık türünü eşlemeniz gerekir. 
+
+5. Değişikliklerinizi uygulamak ve yer işaretini eklemek için **Ekle** ' ye tıklayın. Tüm yer işaretli veriler diğer araştırmacıya paylaşılır ve işbirlikçi araştırma deneyimine yönelik bir ilk adımdır.
+
+ 
+> [!NOTE]
+> Günlük sorgusu sonuçları, bu bölme Azure Sentinel 'ten her açıldığında yer işaretlerini destekler. Örneğin, gezinti çubuğundan **genel** > **Günlükler** ' i seçin, araştırmalar grafiğinde olay bağlantıları ' nı seçin veya bir olayın tüm ayrıntılarından bir uyarı kimliği (Şu anda önizleme aşamasında) seçin. **Günlükler** bölmesi, doğrudan Azure izleyici 'den farklı konumlardan açıldığında yer işaretleri oluşturamazsınız.
+
+## <a name="view-and-update-bookmarks"></a>Yer imlerini görüntüleme ve güncelleştirme 
+
+1. Azure Portal, **Sentinel** > **tehdit yönetimi** > **Arayıcı**' a gidin. 
+
+2. Yer işaretleri listesini görüntülemek için yer **işaretleri** sekmesini seçin.
+
+3. Belirli bir yer işaretini bulmanıza yardımcı olmak için arama kutusunu veya filtre seçeneklerini kullanın.
+
+4. Tek yer imlerini seçin ve sağ Ayrıntılar bölmesinde yer işareti ayrıntılarını görüntüleyin.
+
+5. Değişikliklerinizi gerektiği gibi yapın, bu da otomatik olarak kaydedilir.
+
+## <a name="exploring-bookmarks-in-the-investigation-graph"></a>Araştırma grafiğinde yer imlerini keşfetme
 
 > [!IMPORTANT]
-> Azure Sentinel şu anda genel Önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
- 
-Tehdit avcılık genellikle dağlarında yürüyüş arayan kötü amaçlı davranışları kanıtı için günlük verileri gözden geçirme gerektirir. Bu işlem sırasında araştırmacıya unutmayın, yeniden ziyaret ve hikayenin bir tehlike anlama ve olası hipotezi doğrulama kapsamında çözümlemek istediğiniz olayları bulun.
-Aramaya yer işaretleri, ilgili bulduğunuz sorgu sonuçları yanı sıra Log Analytics'te çalıştırılan sorgular koruma tarafından bunu yapmanıza yardımcı olmak. Ayrıca, bağlamsal gözlemler kaydetmek ve notları ve etiketler ekleyerek bulgularınızı başvuru. İşaretli verileri arkadaşlarınızla kolayca işbirliği için görülebilir.   
+> Araştırma grafiğinde yer işaretlerinin incelenmesi ve araştırma grafiğinin Şu anda genel önizleme aşamasındadır.
+> Bu özellikler, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-İşaretli verileriniz üzerinde herhangi bir zamanda erişebilirsiniz **yer işareti** sekmesinde **avcılık** sayfası. Filtrelemeyi kullanın ve Seçenekler belirli verileri geçerli araştırmanızı için hızlı bir şekilde bulmak için arama yapın. Alternatif olarak, doğrudan işaretli verilerinizi görüntüleyebileceğiniz **HuntingBookmark** Log analytics'te tablo. Bu, filtre, özetlemenize ve işaretli verileri diğer veri kaynaklarıyla kanıt corroborating için aranacak kolaylaştırma sağlar.
+1. Azure Portal, **Sentinel** > **tehdit yönetimi** > arama yer işaretleri sekmesine gidin ve araştırmak istediğiniz yer işaretini veya yer imlerini seçin. > 
 
-Tıklayarak işaretli verilerinizi görselleştirebilirsiniz **Araştır**. Bu araştırma deneyimi görüntülemek, araştırmak ve görsel bir etkileşimli varlık grafik Diyagram ve zaman çizelgesi kullanarak bulgularınızı iletişim başlatır.
+2. Yer işareti ayrıntılarında, en az bir varlığın eşlendiğinden emin olun. Örneğin, **varlıklar**için **IP**, **makine**veya **Hesap**girdilerini görürsünüz.
 
+3. Araştırma grafiğinde yer işaretini görüntülemek için **Araştır** ' a tıklayın.
 
-## <a name="run-a-log-analytics-query-from-azure-sentinel"></a>Azure Gözcü bir Log Analytics sorgusu çalıştırma
+Araştırma grafiğini kullanma hakkında yönergeler için bkz. [araştırma grafiğini kullanarak derinlemesine](tutorial-investigate-cases.md#use-the-investigation-graph-to-deep-dive)bakış.
 
-1. Gözcü Azure portalında **avcılık** şüpheli ve anormal davranış sorguları çalıştırmak için.
+## <a name="add-bookmarks-to-a-new-or-existing-incident"></a>Yeni veya mevcut bir olaya yer işaretleri ekleme
 
-1. Aramaya kampanya çalıştırmak için bir aramaya sorguların ve sol, inceleme üzerinde sonuçları seçin. 
+> [!IMPORTANT]
+> Yeni veya mevcut bir olaya yer işaretlerini ekleme Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-1. Tıklayın **sorgu sonuçları görüntüle** avcılık sorgusunda **ayrıntıları** Log Analytics'te sonuçlar sorguyu görüntülemek için sayfası. Özel SSH bruteforce saldırı sorgu dönüştürdüyseniz bkz örneği aşağıda verilmiştir.
-  
-   ![sonuçları göster](./media/bookmarks/ssh-bruteforce-example.png)
+1. Azure Portal, **Sentinel** > **tehdit yönetimi** > arama yer işaretleri sekmesine gidin ve bir olaya eklemek istediğiniz yer işaretlerini veya yer imlerini seçin. > 
 
-## <a name="add-a-bookmark"></a>Bir yer işareti Ekle
-
-1. Log Analytics sorgu sonuçları listesinde ilgi duyduğunuz bilgileri içeren satırını genişletin.
-
-4. Satır sonundaki üç nokta (...) seçip **avcılık yer işaretleri ekleme**.
-5. Sağ taraftaki içinde **ayrıntıları** sayfasında adını güncelleştirin ve etiketleri ve ne hakkında öğesi ilginç tanımlamanıza yardımcı olacak notlar ekleyin.
-6. Tıklayın **Kaydet** değişikliklerinizi işleyebilirsiniz. Tüm işaretli verileri diğer araştırmacıya ile paylaşılır ve işbirliğine dayalı araştırma deneyimi yönelik ilk adımdır.
-
-   ![sonuçları göster](./media/bookmarks/add-bookmark-la.png)
-
- 
-> [!NOTE]
-> Yer işaretleri, Azure Log Analytics günlükleri Gözcü sayfasından veya Log Analytics sayfasından yaklaştığında ve avcılık sayfasından açılan oluşturulan sorgular başlatılan rastgele Log Analytics sorguları ile de kullanabilirsiniz. Log Analytics'ten Azure Gözcü dışında başlatmak, bir yer işareti eklemek mümkün olmayacaktır. 
-
-## <a name="view-and-update-bookmarks"></a>Görüntüleme ve güncelleştirme yer işaretleri 
-
-1. Gözcü Azure portalında **avcılık**. 
-2. Tıklayın **yer işaretleri** yer işaretleri listesini görüntülemek için sayfanın ortasındaki sekmesi.
-3. Belirli bir yer işareti bulmak için arama kutusu veya filtre seçeneklerini kullanın.
-4. Sağ taraftaki Ayrıntılar bölmesinde yer işareti ayrıntılarını görüntülemek için kılavuzunda yer işaretlerine ayrı ayrı seçin.
-5. Etiketler ve notlar güncelleştirmek için düzenlenebilir metin kutuları ve **Kaydet** değişikliklerinizi korumak için.
-
-   ![sonuçları göster](./media/bookmarks/view-update-bookmarks.png)
-
-## <a name="view-bookmarked-data-in-log-analytics"></a>Log analytics'te veri bozulmasına görüntüle 
-
-İşaretli verilerinizi Log Analytics'te görüntülemek için birden çok seçenek vardır. 
-
-İstenen yer işaretini seçerek işaretli sorguları, sonuçları veya geçmişini görüntülemek için en kolay yolu olan **yer işaretleri** tablo ve Ayrıntılar bölmesinde sağlanan bağlantıları kullanabilirsiniz. Şu seçenekler mevcuttur: 
-- Tıklayarak **sorguyu görüntüle** Log Analytics'te kaynak sorguyu görüntülemek için.  
-- Tıklayarak **yer işareti geçmişi görüntüleyebilir** görmek için meta veriler dahil olmak üzere tüm yer işareti: güncelleştirme, güncelleştirilmiş değerleri ve güncelleştirme zamanını kimin yaptığını. 
-
-- Tıklayarak tüm yer imlerini ham yer işareti verilerini görüntüleyebilirsiniz **yer işareti günlükleri** yukarıda yer işareti kılavuz. Bu görünüm tüm işaretlerinizi avcılık yer işareti tablosunda ilişkili meta verileri gösterir. En son sürümünü aradığınız belirli yer işareti aşağı filtrelemek için KQL sorguları kullanabilirsiniz.  
-
-
-> [!NOTE]
-> Bir yer işareti oluşturulmasını ve ne zaman görüntüleneceğini arasında önemli gecikme (dakika cinsinden ölçülür) olabilir **HuntingBookmark** tablo. Yer işaretlerinizi oluşturun ve sonra veri alınan ve sonra bunları çözümlemek için önerilir. 
-
-## <a name="delete-a-bookmark"></a>Bir yer işareti Sil
-Aşağıdaki yer işareti do silmek istiyorsanız: 
-1.  Th açın **avcılık yer işareti** sekmesi. 
-2.  Hedef yer işaretini seçin.
-3.  Üç noktasını (...) seçin ve satır sonunda **silme yer işareti**.
+2. Komut çubuğundan **olay eylemlerini (Önizleme)** seçin:
     
-Yer işareti silmeden kaldırır yer işareti listeden **yer işareti** sekmesi.  Log Analytics "HuntingBookmark" Tablo önceki yer işareti girişleri devam eder, ancak en son giriş değiştirecek **SoftDelete** değeri true olarak eski yer işaretleri filtre kolaylaştırır.  Bir yer işareti silme herhangi bir varlık diğer yer işaretleri veya uyarılar ile ilişkili olan araştırma deneyiminden kaldırmaz. 
+    > [!div class="mx-imgBorder"]
+    > ![Olaya yer işaretleri ekleme](./media/bookmarks/incident-actions.png)
+
+3. Gerektiğinde **Yeni olay oluştur** veya **var olan olaya Ekle**' yi seçin. Ardından:
+    
+    - Yeni bir olay için: İsteğe bağlı olarak olay ayrıntılarını güncelleştirin ve ardından **Oluştur**' u seçin.
+    - Var olan bir olaya bir yer işareti eklemek için: Bir olay seçin ve ardından **Ekle**' yi seçin. 
+
+Olay içindeki yer işaretini görüntülemek için: **Sentinel** > **tehdit**Yönetimiolayları > ' na gidin ve yer işaretinizdeki olayı seçin. **Tüm ayrıntıları görüntüle**' yi seçin ve ardından **yer imleri** sekmesini seçin.
+
+## <a name="view-bookmarked-data-in-logs"></a>Günlüklerde yer işaretli verileri görüntüleme
+
+Yer işareti yapılan sorguları, sonuçları veya onların geçmişini görüntülemek için **, yer** > **işaretleri** sekmesinden yer işaretini seçin ve Ayrıntılar bölmesinde sunulan bağlantıları kullanın: 
+
+- Kaynak sorguyu **Günlükler** bölmesinde görüntülemek için **kaynak sorgusunu görüntüleyin** .
+
+- Güncelleştirmeyi kimin yaptığını, güncelleştirilmiş değerleri ve güncelleştirmenin gerçekleştiği saati içeren tüm yer işareti meta verilerini görmek için **yer işareti günlüklerini görüntüleyin** .
+
+Ayrıca **, yer** > **işaretleri** sekmesindeki komut çubuğundan **yer işareti günlükleri** ' ni seçerek tüm yer işaretlerine ait ham yer işareti verilerini görüntüleyebilirsiniz:
+
+> [!div class="mx-imgBorder"]
+> ![Yer işareti günlükleri](./media/bookmarks/bookmark-logs.png)
+
+Bu görünüm, ilişkili meta verilerle tüm yer işaretlerinizi gösterir. Aradığınız belirli yer işaretinin en son sürümüne filtre uygulamak için [anahtar sözcük sorgu dili](https://docs.microsoft.com/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference) (KQL) sorgularını kullanabilirsiniz.
+
+> [!NOTE]
+> Bir yer işareti oluşturduğunuz zaman ve **yer işaretleri** sekmesinde görüntülendiğinde önemli bir gecikme (dakika cinsinden ölçülür) olabilir.
+
+## <a name="delete-a-bookmark"></a>Yer işaretini silme
+ 
+1.  Azure Portal, **Sentinel** > **tehdit yönetimi** > arama yer işaretleri sekmesine gidin ve silmek istediğiniz yer işaretlerini veya yer imlerini seçin. >  
+
+2. Satırın sonundaki üç nokta (...) simgesini seçin ve **yer Işaretini Sil**' i seçin.
+    
+Yer işaretini silmek yer işaretini **yer** işareti sekmesindeki listeden kaldırır. Log Analytics **Huntingbookmark** tablosu, önceki yer işareti girdilerini içermeye devam edecektir, ancak en son giriş **softdelete** değerini doğru olarak değiştirecek ve eski yer işaretlerinin filtrelemesine olanak sağlar. Bir yer işaretinin silinmesi, diğer yer işaretleri veya uyarılarla ilişkili araştırma deneyiminden hiçbir varlığı kaldırmaz. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Gözcü içinde yer işaretlerini kullanma bir aramaya araştırma çalıştırma öğrendiniz. Azure Gözcü hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Bu makalede, Azure Sentinel 'de yer işaretleri kullanarak bir araştırma araştırması çalıştırmayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 
-- [Proaktif olarak tehditleri hunt](hunting.md)
-- [Otomatik avcılık kampanyaları için not defterlerini kullanma](notebooks.md)
+- [Tehditler için proaktif araya](hunting.md)
+- [Otomatik arama kampanyalarını çalıştırmak için not defterlerini kullanın](notebooks.md)

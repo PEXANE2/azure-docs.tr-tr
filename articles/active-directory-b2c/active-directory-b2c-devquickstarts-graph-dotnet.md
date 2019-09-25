@@ -1,141 +1,142 @@
 ---
-title: Azure Active Directory B2C içinde Graph API kullanın | Microsoft Docs
-description: İşlemi otomatikleştirmek için bir uygulama kimliği kullanarak B2C kiracısı için Graph API çağırma.
+title: Azure Active Directory B2C Graph API kullanın
+description: Azure AD Graph API çağırarak ve işlemi otomatikleştirmek için bir uygulama kimliği kullanarak Azure AD B2C kiracısındaki kullanıcıları yönetme.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/07/2017
+ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c7fcbbbfcc2192160ca852538c015a365518e448
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 903492d790cdde93dfe84763de139fe85e26b234
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065952"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218274"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API’sini kullanma
 
->[!NOTE]
-> Bir Azure AD B2C dizinindeki kullanıcıları yönetmek için [Azure AD Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) kullanmanız gerekir. Bu, Microsoft Graph API 'sinden farklıdır. [Burada](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/) daha fazla bilgi edinin.
+Azure Active Directory B2C (Azure AD B2C) kiracıların binlerce veya milyonlarca kullanıcısı olabilir. Bu, birçok ortak Kiracı Yönetimi görevinin programlama yoluyla gerçekleştirilmesi gerektiği anlamına gelir. Birincil örnek, Kullanıcı yönetimi olur.
 
-Azure Active Directory B2C (Azure AD B2C) kiracılar çok büyük olmaya eğilimlidir. Bu, birçok ortak Kiracı Yönetimi görevinin programlama yoluyla gerçekleştirilmesi gerektiği anlamına gelir. Birincil örnek, Kullanıcı yönetimi olur. Mevcut bir Kullanıcı deposunu B2C kiracısına geçirmeniz gerekebilir. Kullanıcı kaydını kendi sayfanızda barındırmak ve arka planda Azure AD B2C dizininizde Kullanıcı hesapları oluşturmak isteyebilirsiniz. Bu tür görevler, Kullanıcı hesapları oluşturma, okuma, güncelleştirme ve silme yeteneği gerektirir. Azure AD Graph API kullanarak bu görevleri gerçekleştirebilirsiniz.
+Mevcut bir Kullanıcı deposunu B2C kiracısına geçirmeniz gerekebilir. Kullanıcı kaydını kendi sayfanızda barındırmak ve arka planda Azure AD B2C dizininizde Kullanıcı hesapları oluşturmak isteyebilirsiniz. Bu tür görevler, Kullanıcı hesapları oluşturma, okuma, güncelleştirme ve silme yeteneği gerektirir. Azure AD Graph API kullanarak bu gibi görevleri gerçekleştirebilirsiniz.
 
-B2C kiracılarında, Graph API ile iletişim kuran iki birincil mod vardır.
+B2C kiracılarında, Graph API ile iletişim kuran iki birincil mod vardır:
 
-* Etkileşimli, bir kez çalıştırma görevleri için, görevleri gerçekleştirirken B2C kiracısında bir yönetici hesabı olarak görev yapmanız gerekir. Bu mod, yöneticinin Graph API hiçbir çağrı gerçekleştirebilmesi için kimlik bilgileriyle oturum açmasını gerektirir.
-* Otomatikleştirilmiş ve sürekli görevler için, yönetim görevlerini gerçekleştirmek için gerekli ayrıcalıklarla sağladığınız bir tür hizmet hesabını kullanmanız gerekir. Azure AD 'de, uygulamayı kaydederek ve Azure AD 'de kimlik doğrulaması yaparak bunu yapabilirsiniz. Bu, [OAuth 2,0 istemci kimlik bilgileri ver](../active-directory/develop/service-to-service.md)' i kullanan BIR **uygulama kimliği** kullanılarak yapılır. Bu durumda, uygulama, Graph API çağırmak için Kullanıcı olarak değil, kendisi gibi davranır.
+* **Etkileşimli**, bir kez çalıştırma görevleri için, GÖREVLERI gerçekleştirirken B2C kiracısında bir yönetici hesabı olarak görev yapmanız gerekir. Bu mod, yöneticinin Graph API hiçbir çağrı gerçekleştirebilmesi için kimlik bilgileriyle oturum açmasını gerektirir.
+* **Otomatikleştirilmiş**ve sürekli görevler için, yönetim görevlerini gerçekleştirmek için gerekli ayrıcalıklarla sağladığınız bir tür hizmet hesabını kullanmanız gerekir. Azure AD 'de, uygulamayı kaydederek ve Azure AD 'de kimlik doğrulaması yaparak bunu yapabilirsiniz. Bu, [OAuth 2,0 istemci kimlik bilgileri ver](../active-directory/develop/service-to-service.md)' i kullanan BIR *uygulama kimliği* kullanılarak yapılır. Bu durumda, uygulama, Graph API çağırmak için Kullanıcı olarak değil, kendisi gibi davranır.
 
-Bu makalede otomatik kullanım durumunu nasıl gerçekleştireceğinizi öğreneceksiniz. Kullanıcı oluşturma, okuma, güncelleştirme `B2CGraphClient` ve silme (CRUD) işlemlerini gerçekleştiren bir .NET 4,5 oluşturacaksınız. İstemcinin çeşitli yöntemleri çağırabilmeniz için bir Windows komut satırı arabirimi (CLı) olacaktır. Ancak, kod, etkileşimsiz, otomatik olarak davranacak şekilde yazılmıştır.
+Bu makalede, otomatik kullanım durumunun nasıl gerçekleştirileceğini öğreneceksiniz. Kullanıcı oluşturma, okuma, güncelleştirme `B2CGraphClient` ve silme (CRUD) işlemlerini gerçekleştiren bir .NET 4,5 oluşturacaksınız. İstemcinin çeşitli yöntemleri çağırabilmeniz için bir Windows komut satırı arabirimi (CLı) olacaktır. Ancak, kod etkileşimli olmayan, otomatik olarak davranacak şekilde yazılmıştır.
 
-## <a name="get-an-azure-ad-b2c-tenant"></a>Azure AD B2C kiracı al
-Uygulama veya Kullanıcı oluşturabilmeniz için önce bir Azure AD B2C kiracının olması gerekir. Henüz bir kiracınız yoksa [Azure AD B2C kullanmaya başlayın](active-directory-b2c-get-started.md).
+>[!IMPORTANT]
+> Bir Azure AD B2C dizinindeki kullanıcıları yönetmek için [Azure AD Graph API](../active-directory/develop/active-directory-graph-api-quickstart.md) kullanmanız **gerekir** . Azure AD Graph API Microsoft Graph API 'sinden farklıdır. Bu MSDN blog gönderisine daha fazla bilgi edinin: [Microsoft Graph veya Azure AD grafiği](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
 
-## <a name="register-your-application-in-your-tenant"></a>Uygulamanızı kiracınıza kaydedin
-B2C kiracınız olduktan sonra, [Azure Portal](https://portal.azure.com)kullanarak uygulamanızı kaydetmeniz gerekir.
+## <a name="prerequisites"></a>Önkoşullar
 
-> [!IMPORTANT]
-> B2C kiracınızla Graph API kullanmak için, Azure AD B2C's *uygulamaları* menüsünde **değil** Azure Portal uygulama *kayıtları* hizmetini kullanarak bir uygulamayı kaydetmeniz gerekir. Aşağıdaki yönergeler size uygun menüye yol açabilir. Azure AD B2C's *uygulamaları* menüsünde KAYDETTIĞINIZ mevcut B2C uygulamalarını yeniden kullanamazsınız.
+Uygulama veya Kullanıcı oluşturabilmeniz için önce bir Azure AD B2C kiracının olması gerekir. Henüz bir tane yoksa [Azure Active Directory B2C kiracı oluşturun](tutorial-create-tenant.md).
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Sayfanın sağ üst köşesindeki hesabınızı seçerek Azure AD B2C kiracınızı seçin.
-3. Sol taraftaki Gezinti bölmesinde **tüm hizmetler**' i seçin, **uygulama kayıtları**' nı ve ardından **Yeni kayıt**' ı tıklatın.
-4. Komut istemlerini izleyin ve yeni bir uygulama oluşturun.
-    1. Uygun bir ad ekleyin
-    2. **Yalnızca bu kuruluş dizinindeki hesapları** Seç
-    3. Uygulama türü olarak **Web** ' i seçin ve bu örneğe uygun olmadığından **herhangi bir oturum açma URL 'si** (ör. `https://B2CGraphAPI`) sağlayın.
-    4. Kaydol ' a tıklayın.
-5. Uygulama artık uygulama listesinde görünür, **uygulama kimliğini** (istemci kimliği olarak da bilinir) almak için üzerine tıklayın. Daha sonraki bir bölümde ihtiyacınız olacak şekilde kopyalayın.
-6. Ayarlar menüsünde **sertifikalar & parolaları**' na tıklayın.
-7. **İstemci** gizli dizileri bölümünde **yeni istemci parolası**' na tıklayın, gizli dizi için bir açıklama girin ve bir süre seçin ve ardından **Ekle**' ye tıklayın. Daha sonraki bir bölümde kullanmak üzere gizli anahtar değerini (Istemci gizli anahtarı olarak da bilinir) kopyalayın.
+## <a name="register-an-application"></a>Bir uygulamayı kaydet
 
-## <a name="configure-create-read-and-update-permissions-for-your-application"></a>Uygulamanız için oluşturma, okuma ve güncelleştirme izinlerini yapılandırma
-Şimdi, Kullanıcı oluşturma, okuma, güncelleştirme ve silme için gereken tüm izinleri almak üzere uygulamanızı yapılandırmanız gerekir.
+Azure AD B2C kiracınız olduktan sonra, [Azure Portal](https://portal.azure.com)kullanarak yönetim uygulamanızı kaydetmeniz gerekir. Ayrıca, otomatik betik veya yönetim uygulamanız adına yönetim görevlerini gerçekleştirmek için gereken izinleri vermeniz gerekir.
 
-1. Azure portal uygulama kayıtları menüsünde devam etmek için uygulamanızı seçin.
-2. Ayarlar menüsünde, **gerekli izinler**' e tıklayın.
-3. Gerekli izinler menüsünde **Windows Azure Active Directory**' ye tıklayın.
-4. Erişimi etkinleştir menüsünde, **uygulama izinlerinden** **Dizin verilerini oku ve yaz** iznini seçin ve **Kaydet**' e tıklayın.
-5. Son olarak, gerekli izinler menüsüne geri dönün, **Izin ver** düğmesine tıklayın.
+### <a name="register-application-in-azure-active-directory"></a>Uygulamayı Azure Active Directory Kaydet
 
-Artık B2C kiracınızdan Kullanıcı oluşturma, okuma ve güncelleştirme iznine sahip bir uygulamanız var.
+Azure AD Graph API, B2C kiracınızla birlikte kullanmak için, Azure Active Directory **uygulama kayıtları** iş akışını kullanarak bir uygulamayı kaydetmeniz gerekir.
 
-> [!NOTE]
-> İzinlerin verilmesi, tam olarak işlenmesi birkaç dakika sürebilir.
->
->
+1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure AD B2C kiracınızı içeren dizine geçin.
+1. Sol menüden **Azure Active Directory** (Azure AD B2C*değil* ) seçeneğini belirleyin. Ya da **tüm hizmetler** ' i seçip **Azure Active Directory**arayıp seçin.
+1. Sol menüdeki **Yönet** ' in altında **uygulama kayıtları (eski)** seçeneğini belirleyin.
+1. **Yeni uygulama kaydı** seçin
+1. Uygulama için bir ad girin. Örneğin, *yönetim uygulaması*.
+1. **Oturum açma URL**'sinde GEÇERLI bir URL girin. Örneğin, *https://localhost* . Bu uç noktanın erişilebilir olması gerekmez, ancak geçerli bir URL olması gerekir.
+1. **Oluştur**’u seçin.
+1. **Kayıtlı uygulamaya** Genel Bakış sayfasında görüntülenen **uygulama kimliğini** kaydedin. Yapılandırma için bu değeri sonraki bir adımda kullanırsınız.
 
-## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>Uygulamanız için silme veya parola güncelleştirme izinlerini yapılandırma
-Şu anda, *Dizin verilerini okuma ve yazma* izni, kullanıcıları silme veya Kullanıcı parolalarını güncelleştirme **özelliğini içermez.** Uygulamanıza Kullanıcı silme veya parolaları güncelleştirme yeteneği vermek istiyorsanız, PowerShell içeren bu ek adımları yapmanız gerekir, aksi takdirde sonraki bölüme atlayabilirsiniz.
+### <a name="assign-api-access-permissions"></a>API erişim izinleri atama
 
-İlk olarak, henüz yüklemediyseniz, [Azure AD PowerShell v1 modülünü (MSOnline)](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)yükleyebilirsiniz:
+1. **Kayıtlı uygulamaya** Genel Bakış sayfasında, **Ayarlar**' ı seçin.
+1. **API erişimi**altında **gerekli izinler**' i seçin.
+1. **Windows Azure Active Directory**seçin.
+1. **Uygulama izinleri**altında, **Dizin verilerini okuma ve yazma**' yı seçin.
+1. **Kaydet**’i seçin.
+1. Seçin **izinleri verin**ve ardından **Evet**. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
 
-```powershell
-Install-Module MSOnline
-```
+### <a name="create-client-secret"></a>İstemci parolası oluştur
 
-PowerShell modülünü yükledikten sonra Azure AD B2C kiracınıza bağlanın.
+1. **API erişimi**altında **anahtarlar**' ı seçin.
+1. **Anahtar açıklaması** kutusuna anahtar için bir açıklama girin. Örneğin, *Yönetim anahtarı*.
+1. Bir geçerlilik **süresi** seçin ve ardından **Kaydet**' i seçin.
+1. Anahtarın **değerini**kaydedin. Yapılandırma için bu değeri sonraki bir adımda kullanırsınız.
 
-> [!IMPORTANT]
-> B2C kiracısında **Yerel** olan bir B2C kiracı yönetici hesabı kullanmanız gerekir. Bu hesaplar şöyle görünür: myusername@myb2ctenant.onmicrosoft.com.
+Artık Azure AD B2C kiracınızda Kullanıcı *oluşturma*, *okuma*ve *güncelleştirme* iznine sahip bir uygulamanız var. Kullanıcı *silme* ve *parola güncelleştirme* izinleri eklemek için sonraki bölüme geçin.
 
-```powershell
-Connect-MsolService
-```
+## <a name="add-user-delete-and-password-update-permissions"></a>Kullanıcı silme ve parola güncelleştirme izinleri ekleme
 
-Şimdi, uygulamayı kullanıcı hesabı yönetici rolü atamak için aşağıdaki komut dosyasındaki **uygulama kimliğini** kullanacağız. Bu roller iyi bilinen tanımlayıcılara sahiptir, bu nedenle tüm yapmanız gereken **uygulama kimliğinizi** aşağıdaki betikte girmelidir.
+Daha önce verdiğiniz *okuma ve yazma dizini verileri* **izni, kullanıcıları** silme veya parolalarını güncelleştirme özelliğini içermez.
 
-```powershell
-$applicationId = "<YOUR_APPLICATION_ID>"
-$sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId
-Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal
-```
+Uygulamanıza kullanıcıları silme veya parolaları güncelleştirme yeteneği vermek istiyorsanız, *kullanıcıya Kullanıcı Yöneticisi* rolü vermeniz gerekir.
 
-Uygulamanız artık Kullanıcı silme veya B2C kiracınızdan parolaları güncelleştirme izinlerine de sahiptir.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure AD B2C kiracınızı içeren dizine geçin.
+1. Sol menüden **Azure AD B2C** ' yi seçin. Ya da **tüm hizmetler** ' i seçip **Azure AD B2C**arayıp seçin.
+1. **Yönet**altında **Roller ve yöneticiler**' i seçin.
+1. **Kullanıcı Yöneticisi** rolünü seçin.
+1. **Atama Ekle**' yi seçin.
+1. Metin **Seç** kutusunda, daha önce kaydettiğiniz uygulamanın adını (örneğin, *yönetim uygulaması*) girin. Arama sonuçlarında göründüğünde uygulamanızı seçin.
+1. **Add (Ekle)** seçeneğini belirleyin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
 
-## <a name="download-configure-and-build-the-sample-code"></a>Örnek kodu indirme, yapılandırma ve derleme
-İlk olarak, örnek kodu indirin ve çalışmaya başlayın. Daha sonra bu duruma daha yakından bakacağız.  [Örnek kodu bir. zip dosyası olarak indirebilirsiniz](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip). Ayrıca, bunu istediğiniz dizine kopyalayabilirsiniz:
+Azure AD B2C uygulamanız artık kullanıcıları silmek veya B2C kiracınızda parolalarını güncelleştirmek için gereken ek izinlere sahiptir.
+
+## <a name="get-the-sample-code"></a>Örnek kodunu alma
+
+Kod örneği, Azure AD Graph API etkileşimde bulunmak için [Active Directory Authentication Library (ADAL)](../active-directory/develop/active-directory-authentication-libraries.md) kullanan bir .NET konsol uygulamasıdır. Kodu, bir Azure AD B2C kiracısındaki kullanıcıları programlı bir şekilde yönetmek için API 'nin nasıl çağrılacağını gösterir.
+
+[Örnek Arşivi](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) indirebilir veya GitHub deposunu klonlayabilirsiniz:
 
 ```cmd
 git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
 ```
 
-Visual Studio 'da Visual Studio çözümünü açın. `B2CGraphClient\B2CGraphClient.sln` `B2CGraphClient` Projede dosyasını`App.config`açın. Üç uygulama ayarını kendi değerlerinizle değiştirin:
+Kod örneğini aldıktan sonra, ortamınız için yapılandırın ve ardından projeyi derleyin:
 
-```xml
-<appSettings>
-    <add key="b2c:Tenant" value="{Your Tenant Name}" />
-    <add key="b2c:ClientId" value="{The ApplicationID from above}" />
-    <add key="b2c:ClientSecret" value="{The Key from above}" />
-</appSettings>
-```
+1. `B2CGraphClient\B2CGraphClient.sln` çözümünü Visual Studio’da açın.
+1. **B2CGraphClient** projesinde *app. config* dosyasını açın.
+1. `<appSettings>` Bölümünü aşağıdaki XML ile değiştirin. Ardından, `{your-b2c-tenant}` kiracınızın adı `{Client secret}` ve `{Application ID}` daha önce kaydettiğiniz değerlerle değiştirin.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
+    ```xml
+    <appSettings>
+        <add key="b2c:Tenant" value="{your-b2c-tenant}.onmicrosoft.com" />
+        <add key="b2c:ClientId" value="{Application ID}" />
+        <add key="b2c:ClientSecret" value="{Client secret}" />
+    </appSettings>
+    ```
 
-Ardından, `B2CGraphClient` çözüme sağ tıklayın ve örneği yeniden derleyin. Başarılı olursanız, artık içinde `B2C.exe` `B2CGraphClient\bin\Debug`bulunan bir yürütülebilir dosyanız olmalıdır.
+1. Çözümü derleyin. Çözüm Gezgini **B2CGraphClient** çözümüne sağ tıklayın ve ardından **çözümü yeniden derle**' yi seçin.
 
-## <a name="build-user-crud-operations-by-using-the-graph-api"></a>Graph API kullanarak Kullanıcı CRUD işlemleri oluşturma
-B2CGraphClient kullanmak için bir `cmd` Windows komut istemi açın ve dizininizi `Debug` dizinle değiştirin. Sonra `B2C Help` komutunu çalıştırın.
+Yapı başarılı `B2C.exe` olursa konsol uygulaması içinde `B2CGraphClient\bin\Debug`bulunabilir.
+
+## <a name="review-the-sample-code"></a>Örnek kodu gözden geçirin
+
+B2CGraphClient kullanmak için bir komut istemi (`cmd.exe`) açın ve `Debug` projenin dizinine geçin. Sonra, `B2C Help` komutunu çalıştırın.
 
 ```cmd
 cd B2CGraphClient\bin\Debug
 B2C Help
 ```
 
-Bu, her komutun kısa bir açıklamasını görüntüler. Bu komutlardan `B2CGraphClient` birini her çağırdığınızda Azure AD Graph API bir istek yapar.
+Komut `B2C Help` , kullanılabilir alt komutların kısa bir açıklamasını görüntüler. Alt komutlarının `B2CGraphClient` birini her çağırdığınızda Azure AD Graph API bir istek gönderir.
+
+Aşağıdaki bölümlerde, uygulama kodunun Azure AD Graph API çağrıları nasıl yaptığı ele alınmaktadır.
 
 ### <a name="get-an-access-token"></a>Bir erişim belirteci alma
-Graph API herhangi bir istek, kimlik doğrulaması için bir erişim belirteci gerektirir. `B2CGraphClient`, erişim belirteçleri edinmeye yardımcı olması için açık kaynaklı Active Directory Authentication Library (ADAL) kullanır. ADAL, basit bir API sağlayarak ve erişim belirteçlerini önbelleğe alma gibi bazı önemli ayrıntılarla ilgilenerek belirteç alma işlemini kolaylaştırır. Ancak belirteçleri almak için ADAL kullanmanız gerekmez. Ayrıca, HTTP isteklerini yenerek belirteç alabilirsiniz.
+
+Azure AD Graph API yapılan herhangi bir istek, kimlik doğrulaması için bir erişim belirteci gerektirir. `B2CGraphClient`, erişim belirteçleri edinmenize yardımcı olması için açık kaynaklı Active Directory Authentication Library (ADAL) kullanır. ADAL, bir yardımcı API sağlayarak ve erişim belirteçleri önbelleğe alma gibi birkaç önemli ayrıntıyı gerçekleştirerek belirteç alma işlemini kolaylaştırır. Ancak belirteçleri almak için ADAL kullanmanız gerekmez. Bunun yerine, HTTP isteklerini el ile oluşturarak belirteçleri alabilirsiniz.
 
 > [!NOTE]
-> Bu kod örneği, Graph API ile iletişim kurmak için ADAL v2 kullanır.  Azure AD Graph API ile kullanılabilecek erişim belirteçleri almak için ADAL v2 veya v3 kullanmanız gerekir.
->
->
+> Azure AD Graph API ile kullanılabilecek erişim belirteçlerini almak için ADAL v2 veya üstünü kullanmalısınız. ADAL v1 'yi kullanamazsınız.
 
-Çalıştırıldığında, `B2CGraphClient` sınıfının bir örneğini oluşturur. `B2CGraphClient` Bu sınıfın Oluşturucusu bir ADAL kimlik doğrulaması yapı iskelesi ayarlıyor:
+Yürütüldüğünde, `B2CGraphClient` sınıfının bir örneğini oluşturur. `B2CGraphClient` Bu sınıf için Oluşturucu ADAL kimlik doğrulaması yapı iskelesi ayarlıyor:
 
 ```csharp
 public B2CGraphClient(string clientId, string clientSecret, string tenant)
@@ -154,7 +155,9 @@ public B2CGraphClient(string clientId, string clientSecret, string tenant)
 }
 ```
 
-Bir örnek olarak komutunu kullanacağız. `B2C Get-User` Ek bir giriş olmadan çağrıldığında, CLI `B2CGraphClient.GetAllUsers(...)` yöntemini çağırır. `B2C Get-User` Bu yöntem, `B2CGraphClient.SendGraphGetRequest(...)`Graph API bir http get isteği gönderen çağırır. Get `B2CGraphClient.SendGraphGetRequest(...)` isteğini göndermeden önce, önce adal kullanarak bir erişim belirteci alır:
+Bir örnek olarak `B2C Get-User` komutunu kullanalım.
+
+Ek bağımsız değişken olmadan çağrıldığında, uygulama `B2CGraphClient.GetAllUsers()` yöntemini çağırır. `B2C Get-User` `GetAllUsers()`ardından, `B2CGraphClient.SendGraphGetRequest()`Azure AD Graph API bir http get isteği gönderen çağırır. Get `B2CGraphClient.SendGraphGetRequest()` isteğini göndermeden önce, önce adal kullanarak bir erişim belirteci edinir:
 
 ```csharp
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -162,17 +165,16 @@ public async Task<string> SendGraphGetRequest(string api, string query)
     // First, use ADAL to acquire a token by using the app's identity (the credential)
     // The first parameter is the resource we want an access_token for; in this case, the Graph API.
     AuthenticationResult result = authContext.AcquireToken("https://graph.windows.net", credential);
-
     ...
-
 ```
 
-ADAL `AuthenticationContext.AcquireToken(...)` yöntemini çağırarak Graph API için bir erişim belirteci alabilirsiniz. ADAL daha sonra uygulamanın `access_token` kimliğini temsil eden bir döndürür.
+ADAL `AuthenticationContext.AcquireToken()` yöntemini çağırarak Graph API için bir erişim belirteci alabilirsiniz. ADAL daha sonra uygulamanın `access_token` kimliğini temsil eden bir döndürür.
 
 ### <a name="read-users"></a>Kullanıcıları okuyun
-Kullanıcıların listesini almak veya Graph API belirli bir kullanıcıyı almak istediğinizde, `GET` `/users` uç noktaya bir http isteği gönderebilirsiniz. Bir Kiracıdaki tüm kullanıcılar için bir istek şöyle görünür:
 
-```
+Kullanıcıların listesini almak veya Azure AD Graph API belirli bir kullanıcıyı almak istediğinizde, `GET` `/users` uç noktaya bir http isteği gönderebilirsiniz. Bir Kiracıdaki tüm kullanıcılar için bir istek şöyle görünür:
+
+```HTTP
 GET https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=1.6
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJod...
 ```
@@ -185,10 +187,10 @@ Bu isteği görmek için şunu çalıştırın:
 
 Dikkat etmeniz gereken iki önemli nokta vardır:
 
-* ADAL aracılığıyla alınan erişim belirteci, `Authorization` `Bearer` şema kullanılarak üstbilgiye eklenir.
+* ADAL kullanılarak alınan erişim belirteci, `Authorization` `Bearer` şema kullanılarak üstbilgiye eklenir.
 * B2C kiracılarında sorgu parametresini `api-version=1.6`kullanmanız gerekir.
 
-Bu ayrıntıların her ikisi de `B2CGraphClient.SendGraphGetRequest(...)` yönteminde işlenir:
+Bu ayrıntıların her ikisi de `B2CGraphClient.SendGraphGetRequest()` yönteminde işlenir:
 
 ```csharp
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -212,9 +214,12 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 ```
 
 ### <a name="create-consumer-user-accounts"></a>Tüketici Kullanıcı hesapları oluşturma
-B2C kiracınızda Kullanıcı hesapları oluşturduğunuzda, `POST` `/users` uç noktaya bir http isteği gönderebilirsiniz:
 
-```
+B2C kiracınızda Kullanıcı hesapları oluşturduğunuzda `POST` `/users` uç noktaya bir http isteği gönderebilirsiniz. Aşağıdaki http `POST` isteği, kiracıda oluşturulacak örnek bir Kullanıcı gösterir.
+
+Aşağıdaki istekteki özelliklerin çoğu tüketici kullanıcıları oluşturmak için gereklidir. Açıklamalar `//` , açıklama için eklenmiştir; bunları gerçek bir istekte eklemeyin.
+
+```HTTP
 POST https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=1.6
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJod...
 Content-Type: application/json
@@ -224,24 +229,22 @@ Content-Length: 338
     // All of these properties are required to create consumer users.
 
     "accountEnabled": true,
-    "signInNames": [                            // controls which identifier the user uses to sign in to the account
+    "signInNames": [                           // controls which identifier the user uses to sign in to the account
         {
-            "type": "emailAddress",             // can be 'emailAddress' or 'userName'
-            "value": "joeconsumer@gmail.com"
+            "type": "emailAddress",            // can be 'emailAddress' or 'userName'
+            "value": "consumer@fabrikam.com"
         }
     ],
     "creationType": "LocalAccount",            // always set to 'LocalAccount'
-    "displayName": "Joe Consumer",                // a value that can be used for displaying to the end user
-    "mailNickname": "joec",                        // an email alias for the user
+    "displayName": "Consumer User",            // a value that can be used for displaying to the end user
+    "mailNickname": "cuser",                   // an email alias for the user
     "passwordProfile": {
         "password": "P@ssword!",
-        "forceChangePasswordNextLogin": false   // always set to false
+        "forceChangePasswordNextLogin": false  // always set to false
     },
     "passwordPolicies": "DisablePasswordExpiration"
 }
 ```
-
-Bu istekteki özelliklerin çoğu tüketici kullanıcıları oluşturmak için gereklidir. Daha fazla bilgi edinmek için [buraya](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)tıklayın. `//` Açıklama için yorumların dahil edildiğini unutmayın. Bunları gerçek bir istek içine eklemeyin.
 
 İsteği görmek için aşağıdaki komutlardan birini çalıştırın:
 
@@ -250,63 +253,69 @@ B2C Create-User ..\..\..\usertemplate-email.json
 B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-`Create-User` Komut bir. json dosyasını giriş parametresi olarak alır. Bu, bir Kullanıcı nesnesinin JSON gösterimini içerir. Örnek kodda iki Sample. JSON dosyası vardır: `usertemplate-email.json` ve. `usertemplate-username.json` Bu dosyaları gereksinimlerinize uyacak şekilde değiştirebilirsiniz. Yukarıdaki gerekli alanlara ek olarak, kullanabileceğiniz bazı isteğe bağlı alanlar bu dosyalara dahil edilir. İsteğe bağlı alanlarla ilgili ayrıntılar [Azure AD Graph API varlık başvurusunda](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)bulunabilir.
+Komut `Create-User` , bir Kullanıcı nesnesinin JSON gösterimini içeren bir JSON dosyası giriş parametresi olarak alır. Kod örneğinde iki örnek JSON dosyası vardır: `usertemplate-email.json` ve. `usertemplate-username.json` Bu dosyaları gereksinimlerinize uyacak şekilde değiştirebilirsiniz. Yukarıdaki gerekli alanlara ek olarak, bazı isteğe bağlı alanlar dosyalara dahil edilir.
 
-POST isteğinin nasıl oluşturulduğunu `B2CGraphClient.SendGraphPostRequest(...)`görebilirsiniz.
+Gerekli ve isteğe bağlı alanlar hakkında daha fazla bilgi için bkz. [varlık ve karmaşık tür başvurusu | Graph API başvurusu](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference).
+
+POST isteğinin nasıl oluşturulduğunu şu şekilde `B2CGraphClient.SendGraphPostRequest()`görebilirsiniz:
 
 * İsteğin `Authorization` üstbilgisine bir erişim belirteci iliştirir.
 * Ayarlar `api-version=1.6`.
 * İstek gövdesinde JSON Kullanıcı nesnesini içerir.
 
 > [!NOTE]
-> Var olan bir kullanıcı deposundan geçiş yapmak istediğiniz hesaplar, [Azure AD B2C tarafından zorlanan güçlü parola kuvvetinden](/previous-versions/azure/jj943764(v=azure.100))daha düşük bir parola gücüne sahipse, ' deki `DisableStrongPassword` değeri kullanarak güçlü parola gereksinimini devre dışı bırakabilirsiniz. `passwordPolicies`özelliği. Örneğin, yukarıda belirtilen kullanıcı oluştur isteğini aşağıdaki şekilde değiştirebilirsiniz: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
->
->
+> Var olan bir kullanıcı deposundan geçiş yapmak istediğiniz hesapların, [Azure AD B2C tarafından zorlanan güçlü parola kuvvetinden](active-directory-b2c-reference-password-complexity.md)daha düşük bir parola gücüne sahip olması durumunda, ' deki `DisableStrongPassword` değeri kullanarak güçlü parola gereksinimini devre dışı bırakabilirsiniz. `passwordPolicies`özelliği. Örneğin, önceki Kullanıcı oluşturma isteğini şöyle değiştirebilirsiniz: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
 
 ### <a name="update-consumer-user-accounts"></a>Tüketici Kullanıcı hesaplarını güncelleştirme
-Kullanıcı nesnelerini güncelleştirdiğinizde, işlem Kullanıcı nesneleri oluşturmak için kullandığınız bir şekilde benzerdir. Ancak bu işlem http `PATCH` yöntemini kullanır:
 
-```
+Kullanıcı nesnelerini güncelleştirdiğinizde, işlem Kullanıcı nesneleri oluşturmak için kullandığınız bir yönteme benzerdir, ancak http `PATCH` yöntemini kullanır:
+
+```HTTP
 PATCH https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=1.6
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJod...
 Content-Type: application/json
 Content-Length: 37
 
 {
-    "displayName": "Joe Consumer"                // this request updates only the user's displayName
+    "displayName": "Joe Consumer"    // this request updates only the user's displayName
 }
 ```
 
-JSON dosyalarınızı yeni verilerle güncelleştirerek bir kullanıcıyı güncelleştirmeyi deneyin. Ardından, aşağıdaki komutlardan `B2CGraphClient` birini çalıştırmak için kullanabilirsiniz:
+JSON dosyalarınızda bazı değerleri değiştirerek bir kullanıcıyı güncelleştirmeyi deneyin ve ardından bu komutlardan birini çalıştırmak `B2CGraphClient` için öğesini kullanın:
 
 ```cmd
 B2C Update-User <user-object-id> ..\..\..\usertemplate-email.json
 B2C Update-User <user-object-id> ..\..\..\usertemplate-username.json
 ```
 
-Bu isteğin nasıl gönderileceği hakkındaki ayrıntılar için yönteminiinceleyin.`B2CGraphClient.SendGraphPatchRequest(...)`
+Bu isteğin nasıl gönderileceği hakkındaki ayrıntılar için yönteminiinceleyin.`B2CGraphClient.SendGraphPatchRequest()`
 
 ### <a name="search-users"></a>Kullanıcı ara
-B2C kiracınızdaki kullanıcıları birkaç yolla arayabilirsiniz. Biri, kullanıcının nesne kimliğini veya ikisini kullanarak, kullanıcının oturum açma tanımlayıcısını (yani, `signInNames` özelliği) kullanarak.
 
-Belirli bir kullanıcıyı aramak için aşağıdaki komutlardan birini çalıştırın:
+B2C kiracınızdaki kullanıcıları iki şekilde arayabilirsiniz:
+
+* Kullanıcının **nesne kimliğine**başvurun.
+* Kendi oturum açma tanımlayıcı, `signInNames` özelliği başvuru.
+
+Bir kullanıcı aramak için aşağıdaki komutlardan birini çalıştırın:
 
 ```cmd
 B2C Get-User <user-object-id>
 B2C Get-User <filter-query-expression>
 ```
 
-İşte birkaç örnek:
+Örneğin:
 
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
-B2C Get-User $filter=signInNames/any(x:x/value%20eq%20%27joeconsumer@gmail.com%27)
+B2C Get-User $filter=signInNames/any(x:x/value%20eq%20%27consumer@fabrikam.com%27)
 ```
 
 ### <a name="delete-users"></a>Kullanıcıları Sil
-Bir kullanıcıyı silme işlemi basittir. HTTP `DELETE` yöntemini kullanın ve URL 'yi doğru nesne kimliğiyle oluşturun:
 
-```
+Kullanıcıları silmek için http `DELETE` yöntemini kullanın ve kullanıcının nesne kimliğiyle birlikte URL 'yi oluşturun:
+
+```HTTP
 DELETE https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=1.6
 Authorization: Bearer eyJhbGciOiJSUzI1NiIsIng1dCI6IjdkRC1nZWNOZ1gxWmY3R0xrT3ZwT0IyZGNWQSIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJod...
 ```
@@ -317,23 +326,24 @@ Bir örnek görmek için, bu komutu girin ve konsola yazdırılmış silme iste�
 B2C Delete-User <object-id-of-user>
 ```
 
-Bu isteğin nasıl gönderileceği hakkındaki ayrıntılar için yönteminiinceleyin.`B2CGraphClient.SendGraphDeleteRequest(...)`
+Bu isteğin nasıl gönderileceği hakkındaki ayrıntılar için yönteminiinceleyin.`B2CGraphClient.SendGraphDeleteRequest()`
 
 Kullanıcı yönetimine ek olarak Azure AD Graph API diğer birçok eylemi gerçekleştirebilirsiniz. [Azure AD Graph API başvurusu](/previous-versions/azure/ad/graph/api/api-catalog) , örnek isteklerle birlikte her eyleme ilişkin ayrıntılar sağlar.
 
 ## <a name="use-custom-attributes"></a>Özel öznitelikler kullanma
-Çoğu tüketici uygulamasının bazı tür özel kullanıcı profili bilgilerini depolaması gerekir. Bunu yapmanın bir yolu, B2C kiracınızda özel bir öznitelik tanımlamaktır. Daha sonra, bu özniteliği bir kullanıcı nesnesi üzerinde diğer herhangi bir özelliği değerlendirmiş şekilde kullanabilirsiniz. Özniteliği güncelleştirebilir, özniteliğini silebilir, özniteliği ile sorgulayabilir, öznitelik, oturum açma belirteçlerinde talep olarak gönderebilir ve daha fazlasını yapabilirsiniz.
+
+Çoğu tüketici uygulamasının bazı tür özel kullanıcı profili bilgilerini depolaması gerekir. Bunu yapmanın bir yolu, B2C kiracınızda özel bir öznitelik tanımlamaktır. Daha sonra bu özniteliği bir kullanıcı nesnesi üzerinde diğer herhangi bir özelliği işlemiş olduğunuz şekilde değerlendirin. Özniteliği güncelleştirebilir, özniteliğini silebilir, özniteliği ile sorgulayabilir, öznitelik, oturum açma belirteçlerinde talep olarak gönderebilir ve daha fazlasını yapabilirsiniz.
 
 B2C kiracınızda özel bir öznitelik tanımlamak için [B2C özel öznitelik başvurusuna](active-directory-b2c-reference-custom-attr.md)bakın.
 
-Aşağıdakileri kullanarak `B2CGraphClient`B2C kiracınızda tanımlanan özel öznitelikleri görüntüleyebilirsiniz:
+Aşağıdaki `B2CGraphClient` komutları kullanarak B2C kiracınızda tanımlanan özel öznitelikleri görüntüleyebilirsiniz:
 
 ```cmd
 B2C Get-B2C-Application
 B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 ```
 
-Bu işlevlerin çıktısı, aşağıdaki gibi her bir özel özniteliğin ayrıntılarını ortaya koyar:
+Çıktı her özel özniteliğin ayrıntılarını ortaya koyar. Örneğin:
 
 ```json
 {
@@ -351,18 +361,19 @@ Bu işlevlerin çıktısı, aşağıdaki gibi her bir özel özniteliğin ayrın
 }
 ```
 
-Kullanıcı nesnelerinizin bir özelliği olarak gibi tam adı `extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_Number`kullanabilirsiniz.  . JSON Dosyanızı yeni özelliği ve özelliği için bir değer ile güncelleştirin ve ardından şunu çalıştırın:
+Kullanıcı nesnelerinizin bir özelliği olarak gibi tam adı `extension_55dc0861f9a44eb999e0a8a872204adb_Jersey_Number`kullanabilirsiniz. JSON Dosyanızı yeni özellik ve özellik için bir değer ile güncelleştirin ve ardından şunu çalıştırın:
 
 ```cmd
 B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
-Kullanarak `B2CGraphClient`, B2C kiracı kullanıcılarınızı programlama yoluyla yönetebileceğini bir hizmet uygulamanız vardır. `B2CGraphClient`, Azure AD Graph API kimlik doğrulaması yapmak için kendi uygulama kimliğini kullanır. Ayrıca, bir istemci gizli anahtarı kullanarak belirteçleri alır. Uygulamanıza bu işlevselliği eklediğinizde B2C uygulamaları için birkaç önemli noktayı unutmayın:
+## <a name="next-steps"></a>Sonraki adımlar
 
-* Uygulamaya kiracıda uygun izinleri vermeniz gerekir.
+Kullanarak `B2CGraphClient`, B2C kiracı kullanıcılarınızı programlama yoluyla yönetebileceğini bir hizmet uygulamanız vardır. `B2CGraphClient`, Azure AD Graph API kimlik doğrulaması yapmak için kendi uygulama kimliğini kullanır. Ayrıca, bir istemci gizli anahtarı kullanarak belirteçleri alır.
+
+Bu işlevselliği kendi uygulamanıza eklediğinizde B2C uygulamaları için birkaç önemli noktayı unutmayın:
+
+* Uygulamaya, kiracıya gerekli izinleri verin.
 * Şimdilik, erişim belirteçleri almak için ADAL (MSAL değil) kullanmanız gerekir. (Bir kitaplık kullanmadan doğrudan protokol iletileri de gönderebilirsiniz.)
 * Graph API çağırdığınızda kullanın `api-version=1.6`.
 * Tüketici kullanıcılarını oluştururken ve güncelleştirdiğinizde, yukarıda açıklandığı gibi birkaç özellik gereklidir.
-
-B2C kiracınızda Graph API kullanarak gerçekleştirmek istediğiniz herhangi bir sorunuz veya isteğiniz varsa, bu makaleye bir yorum bırakın veya GitHub kodu örnek deposunda bir sorun kodlayın.
-

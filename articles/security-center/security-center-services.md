@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2019
+ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 97708fa3211aa203aab56253b1c7720d04329014
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200820"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218268"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde sunulan desteklenen özellikler
 
@@ -41,7 +41,7 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 ||**Sanal Makine**|**Sanal makine ölçek kümesi**||**Sanal Makine**|**Sanal makine ölçek kümesi**|
 |VMBA tehdit algılama uyarıları|✔|✔|✔|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
 |Ağ tabanlı tehdit algılama uyarıları|✔|✔|X|✔|✔|X|Standart|
-|Windows Defender ATP tümleştirme|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|X|X|X|Standart|
+|Microsoft Defender ATP tümleştirmesi|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|X|X|X|Standart|
 |Eksik düzeltme ekleri|✔|✔|✔|✔|✔|✔|Boş|
 |Güvenlik yapılandırmaları|✔|✔|✔|✔|✔|✔|Boş|
 |Endpoint Protection değerlendirmesi|✔|✔|✔|X|X|X|Boş|

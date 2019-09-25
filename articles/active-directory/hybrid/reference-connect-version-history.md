@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2019
+ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce66c0239eee3f31695a942a586766694525fbad
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2a875e028a38c085d45d062984764cd840983fc3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097606"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212335"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Sürüm yayınlama geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -46,7 +46,13 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 ## <a name="14x0"></a>1.4. X. 0
 
 >[!IMPORTANT]
->Daha önce, şirket içi AD 'ye katılmış Windows alt düzey bilgisayarları, bazı koşullarda buluta başarıyla eşitlendi. Örnek olarak, AD 'deki Windows alt düzey cihazlar için userCertificate öznitelik değeri doldurulur. Ancak bu işletim sistemi sürümleri AAD Eşitleme aracılığıyla Azure AD 'ye kaydedilecek şekilde tasarlanmadığından, Azure AD 'deki bu tür cihazlar "beklemede" durumunda her zaman görünür. Bu Azure AD Connect sürümünde, AAD Eşitleme Windows alt düzey bilgisayarları Azure AD 'ye eşitlemeyi durdurur ve ayrıca önceden yanlış eşitlenmiş Windows alt düzey cihazlarını Azure AD 'den kaldırır. Bu değişikliğin, MSI paketini kullanarak Azure AD 'ye doğru şekilde kayıtlı olan Windows alt düzey cihazlarını sildiğine lütfen unutmayın. Cihaz tabanlı koşullu erişim amacıyla bu cihazlar beklendiği gibi çalışmaya devam edecektir. Bazı müşteriler Windows alt düzey cihazlarından bazılarını veya tümünü görebilir ve Azure AD 'den kaybolur. Bu cihaz kimlikleri, koşullu erişim yetkilendirmesi sırasında Azure AD tarafından hiçbir şekilde kullanılmadığından, bu sorun için bir neden değildir. Bu tür müşterilerin, cihaz tabanlı https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan koşullu erişim 'e tam olarak katılabilmeleri için, Windows alt düzey cihazlarını yeniden ziyaret etmeniz ve bu cihazların doğru şekilde kaydedilmesi gerekebilir. Azure AD 'de, dışarı aktarma silme eşiğini aşan alt düzey bilgisayar/cihaz nesnelerinin silinmesini görürseniz, müşterinin bu Silinmelerde bu silmeleri yapmasına izin verilmesi önerilir.
+>Karma Azure AD 'ye katılmış olarak kaydedilen Windows bilgisayarları, Azure AD 'de cihaz nesneleri olarak gösterilir. Bu cihaz nesneleri, koşullu erişim için kullanılabilir. Windows 10 bilgisayarları Azure AD Connect aracılığıyla buluta eşitlenir, alt düzey Windows bilgisayarları doğrudan AD FS veya kesintisiz çoklu oturum açma kullanılarak kaydedilir.
+>
+>Yalnızca karma Azure AD katılımı tarafından yapılandırılan belirli bir userCertificate özniteliği değerine sahip Windows 10 bilgisayarlarının Azure AD Connect tarafından buluta eşitlenmesi gerekir.  Azure AD Connect önceki sürümlerinde bu gereksinim, Azure AD 'de gereksiz cihaz nesnelerine neden olacak şekilde, daha dikkatli bir şekilde zorlanmıştı. Azure AD 'deki bu cihazlar, bu bilgisayarların Azure AD 'ye kaydolmayı amaçlandığı için her zaman "beklemede" durumunda olur.
+>
+>Azure AD Connect bu sürümü, karma Azure AD 'ye katılmış olarak doğru yapılandırılmış Windows 10 bilgisayarlarını eşitler. Azure AD Connect hiçbir şekilde [alt düzey Windows cihazlarını](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices)eşitlemiyor olmalıdır.  Azure AD 'de daha önce yanlış eşitlenmiş olan cihazlar artık Azure AD 'den silinecek.  Ancak, bu değişiklik karma Azure AD katılımı için Azure AD 'ye doğru şekilde kaydedilmiş tüm Windows cihazlarını silmez. 
+>
+>Bazı müşteriler Windows cihazlarından bazılarını veya tümünü Azure AD 'den ortadan kaldırmayabilir. Bu cihaz kimlikleri, koşullu erişim yetkilendirmesi sırasında Azure AD tarafından kullanılmadığından bu sorun için bir neden değildir. Bazı müşterilerin nasıl yapılacağını yeniden ziyaret [etmeniz gerekebilir: Windows bilgisayarlarının doğru şekilde kaydedilmesini sağlamak](../../active-directory/devices/hybrid-azuread-join-plan.md) ve bu cihazların cihaz tabanlı koşullu erişime tam olarak katılmasını sağlamak için karma Azure Active Directory katılma Uygulamanızı planlayın. Azure AD Connect [alt düzey Windows cihazlarını](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) silmeye çalışıyorsa, cihaz [Windows 10 olmayan bilgisayarlar için Microsoft WORKPLACE JOIN](https://www.microsoft.com/download/details.aspx?id=53554) tarafından oluşturulan MSI DEĞILDIR ve diğer Azure AD özellikleri tarafından tüketilemiyor.  Azure AD 'de bilgisayar/cihaz nesneleri silme Işlemini dışarı aktarma silme eşiğini aştıktan sonra müşterinin bu silmeleri yapmasına izin verilmesi önerilir.
 
 ### <a name="release-status"></a>Yayın durumu
 9/10/2019: Yalnızca otomatik yükseltme için yayınlandı
@@ -96,8 +102,8 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 > Bu sorunu gidermek için **ADSync** modülünü içeri aktarmanız ve sonra Azure AD Connect sunucusunda`Set-ADSyncDirSyncConfiguration` PowerShell cmdlet 'ini çalıştırmanız gerekir.  Aşağıdaki adımları kullanabilirsiniz:
 >
 >1. PowerShell 'i erişiminizin engellenmediğinden modunda açma
->2. `Import-Module "ADSync"`'i çalıştırın.
->3. `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""`'i çalıştırın.
+>2. `Import-Module "ADSync"` öğesini çalıştırın
+>3. `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` öğesini çalıştırın
  
 ### <a name="release-status"></a>Yayın durumu 
 
@@ -452,10 +458,10 @@ Azure AD Connect sürüm 1.1.654.0 ' e (ve sonra), Azure AD Connect AD DS oluşt
 
 Type     | Name                          | Access               | Şunun İçin Geçerli
 ---------|-------------------------------|----------------------|--------------|
-Allow    | SISTEMIN                        | Tam Denetim         | Bu nesne  |
-Allow    | Kuruluş yöneticileri             | Tam Denetim         | Bu nesne  |
-Allow    | Etki alanı yöneticileri                 | Tam Denetim         | Bu nesne  |
-Allow    | Yöneticiler                | Tam Denetim         | Bu nesne  |
+Allow    | SISTEMIN                        | Tam denetim         | Bu nesne  |
+Allow    | Kuruluş yöneticileri             | Tam denetim         | Bu nesne  |
+Allow    | Etki alanı yöneticileri                 | Tam denetim         | Bu nesne  |
+Allow    | Yöneticiler                | Tam denetim         | Bu nesne  |
 Allow    | Kurumsal etki alanı denetleyicileri | Liste Içerikleri        | Bu nesne  |
 Allow    | Kurumsal etki alanı denetleyicileri | Tüm özellikleri oku  | Bu nesne  |
 Allow    | Kurumsal etki alanı denetleyicileri | Okuma Izinleri     | Bu nesne  |
@@ -1272,7 +1278,7 @@ Yayımlanacak Aralık 2014
 **Yeni özellikler:**
 
 * Öznitelik tabanlı filtrelemeye sahip parola eşitleme artık desteklenmektedir. Daha fazla bilgi için bkz. [filtreleme Ile parola eşitleme](how-to-connect-sync-configure-filtering.md).
-* Ms-DS-Externaldirectoryobjectıd özniteliği Active Directory 'e geri yazılır. Bu özellik Office 365 uygulamaları için destek ekler. Karma bir Exchange dağıtımında çevrimiçi ve şirket Içi posta kutularına erişmek için OAuth2 kullanır.
+* Ms-DS-Externaldirectoryobjectıd özniteliği Active Directory 'e geri yazılır. Bu özellik Office 365 uygulamaları için destek ekler. Karma bir Exchange dağıtımında çevrimiçi ve şirket içi posta kutularına erişmek için OAuth2 kullanır.
 
 **Düzeltilen yükseltme sorunları:**
 

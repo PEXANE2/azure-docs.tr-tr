@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 0ee3a386c6044abe834b901ce43795df68bd37c6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2610afe9df06d28f2b75bd0023f7ec5a3fe9e56c
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059339"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219215"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Azure portal kullanarak Azure genel IP 'yi başka bir bölgeye taşıma
 
@@ -27,7 +27,7 @@ Azure genel IP 'Leri bölgeye özeldir ve bir bölgeden diğerine taşınamaz. B
 - Azure genel IP 'Leri bölgeler arasında taşınamaz.  Yeni genel IP 'yi hedef bölgedeki kaynaklarla ilişkilendirmeniz gerekir.
 
 - Genel bir IP yapılandırmasını dışarı aktarmak ve başka bir bölgede genel IP oluşturmak üzere şablon dağıtmak için, ağ katılımcısı rolü veya daha yüksek bir sürümü gerekir.
-   
+
 - Kaynak ağ düzeni ve şu anda kullanmakta olduğunuz tüm kaynakları belirler. Bu düzen, yük dengeleyiciler, ağ güvenlik grupları (NSG 'ler) ve sanal ağlar dahil değildir ancak bunlarla sınırlı değildir.
 
 - Azure aboneliğinizin, kullanılan hedef bölgede ortak IP 'Ler oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
@@ -40,13 +40,13 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>Şablonu dışarı aktarma ve bir betikten dağıtma
 
-1. [Azure Portal](http://portal.azure.com) > **kaynak gruplarında**oturum açın.
+1. [Azure Portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
 2. Kaynak ortak IP 'yi içeren kaynak grubunu bulun ve üzerine tıklayın.
 3. > **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
 5. **Şablon** > **düzenleme parametreleri** ' ne tıklayarak **Parameters. JSON** dosyasını çevrimiçi düzenleyicide açın.
 8. Genel IP adının parametresini düzenlemek için, **parametre** > **değeri** altındaki özelliği kaynak genel IP adından hedef ortak IP 'nizin adına değiştirin, adın tırnak içinde olduğundan emin olun:
-    
+
     ```json
             {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -61,7 +61,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
     ```
 8.  Düzenleyicide **Kaydet** ' e tıklayın.
 
-9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın. 
+9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın.
 
 10. Genel IP 'nin taşınacağı hedef bölgeyi düzenlemek için **kaynaklar**altındaki **Location** özelliğini değiştirin:
 
@@ -86,11 +86,11 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
                 "ipTags": []
                }
                }
-             ]             
+             ]
     ```
-  
+
 11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
-    
+
 12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
 
     * **SKU** - **şablon. JSON** dosyasındaki **SKU** > **adı** özelliğini değiştirerek, yapılandırmadaki genel IP 'yi standart iken Basic veya Basic 'e dönüştürebilirsiniz:
@@ -131,17 +131,17 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
                 "publicIPAllocationMethod": "Dynamic",
                 "idleTimeoutInMinutes": 4,
                 "ipTags": []
-        
+
         ```
 
         Ayırma yöntemleri ve boşta kalma zaman aşımı değerleri hakkında daha fazla bilgi için bkz. [genel IP adresi oluşturma, değiştirme veya silme](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
- 
+
 13. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
 
 14. Hedef genel IP 'nin dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği** ' ne tıklayın.
 
-15. Hedef genel IP 'nin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef genel IP 'si için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut kaynak genel IP 'nin kaynak kaynak grubuyla aynı olmadığından emin olun. 
+15. Hedef genel IP 'nin dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef genel IP 'si için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut kaynak genel IP 'nin kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. Temel IP 'nin dağıtılmasını istediğiniz hedef konuma göre, **temel bilgilerin** > bir**konum** olarak ayarlandığını doğrulayın.
 
@@ -151,7 +151,7 @@ Aşağıdaki adımlarda, bir Kaynak Yöneticisi şablonu kullanarak yapılandır
 
 19. Hedef ortak IP 'yi dağıtmak için **satın al** düğmesine tıklayın.
 
-## <a name="discard"></a>At 
+## <a name="discard"></a>At
 
 Hedef ortak IP 'yi atmak isterseniz, hedef ortak IP 'yi içeren kaynak grubunu silin.  Bunu yapmak için, portalda panodaki kaynak grubunu seçin ve genel bakış sayfasının en üstünde **Sil** ' i seçin.
 

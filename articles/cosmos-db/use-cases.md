@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 04c1466c47d28f638bf7461050cb06b59c7d2396
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e22b426b2172c169f9343569fffac57f370afbee
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614232"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219873"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Yaygın Azure Cosmos DB kullanım örnekleri
 Bu makalede, Azure Cosmos DB için bazı ortak kullanım durumları için genel bir bakış sağlar.  Cosmos DB ile Uygulamanızı geliştirirken bu makaledeki önerileri bir başlangıç noktası olarak hizmet eder.   
@@ -40,7 +40,7 @@ Azure Cosmos DB'nin genel kullanımına açma hedefimizde sahip yüksek performa
 Bu öznitelikler faydalı web, mobil, oyun ve IOT uygulamaları düşük yanıt süreleri gerekir ve okuma ve yazma işlemleri büyük miktarda ele almanız gerekir.
 
 ## <a name="iot-and-telematics"></a>IoT ve telematikler
-IOT kullanım örnekleri, yaygın olarak nasıl bunlar, işlem, içe alma, bazı desen ve veri depolayın.  İlk olarak, bu sistemler çeşitli gezinin cihaz sensörlerden alınan verilerin ani artışlara alabilen gerekir. Ardından, bu sistemler işleyebilir ve gerçek zamanlı Öngörüler akış verilerini analiz edin. Verileri toplu analiz için soğuk depolama için ardından arşivlenir. Microsoft Azure IOT için uygulanabilir zengin Hizmetleri Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure bildirim hub'ı, Azure Machine Learning, Azure HDInsight ve Power BI dahil olmak üzere kullanım sunar. 
+IOT kullanım örnekleri, yaygın olarak nasıl bunlar, işlem, içe alma, bazı desen ve veri depolayın.  İlk olarak, bu sistemler çeşitli gezinin cihaz sensörlerden alınan verilerin ani artışlara alabilen gerekir. Ardından, bu sistemler işleyebilir ve gerçek zamanlı Öngörüler akış verilerini analiz edin. Verileri toplu analiz için soğuk depolama için ardından arşivlenir. Microsoft Azure, Azure Cosmos DB, Azure Event Hubs, Azure Stream Analytics, Azure Notification Hub, Azure Machine Learning, Azure HDInsight ve Power BI gibi IoT kullanım durumları için uygulanabilen zengin hizmetler sunar. 
 
 ![Azure Cosmos DB IOT başvuru mimarisi](./media/use-cases/iot.png)
 
@@ -98,32 +98,7 @@ JSON, Cosmos DB tarafından desteklenen bir biçim, yalnızca basit değildir an
 ![Azure Cosmos DB web uygulaması başvuru mimarisi](./media/use-cases/personalization.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Cosmos DB'yi kullanmaya başlamak için izleyin bizim [hızlı başlangıçlar](create-sql-api-dotnet.md), bu yol, bir hesap ve Cosmos DB'yi kullanmaya başlama oluşturma işleminde. 
 
-Veya daha fazla bilgi istiyorsanız, Cosmos DB kullanan müşteriler hakkında aşağıdaki müşteri hikayeleri kullanılabilir:
+* Azure Cosmos DB'yi kullanmaya başlamak için izleyin bizim [hızlı başlangıçlar](create-sql-api-dotnet.md), bu yol, bir hesap ve Cosmos DB'yi kullanmaya başlama oluşturma işleminde.
 
-* [Jet.com](https://jet.com). E-ticaret girişimcisi, üst diken, Microsoft bulutunda çalışıyor, Cosmos DB global bir ölçekte yararlanır.
-* [Asos.com'un](https://www.asos.com/). Asos.com'un bir İngiliz çevrimiçi moda ve koyabileceğiniz deposudur. Asos, öncelikle genç yetişkinlere yönelik, üzerinde 850 markalar ve bunun yanı sıra kendi dizi giysi ve Donatılar satar.
-* [Toyota](https://www.toyota.com/). Toyota Motor Japonca bir otomotiv üreticisi bir şirkettir. Toyota, Cosmos DB küresel IOT uygulama için kullanılabilir.
-* [Citrix](https://customers.microsoft.com/story/citrix). Azure Service Fabric ve Azure Cosmos DB'yi kullanarak çoklu oturum açma çözümü Citrix geliştirir
-* [TEXA](https://customers.microsoft.com/story/texaspa) TEXA'ın Devrim niteliğindeki IOT çözüm vehicle sahipleri için saat, para, doğalgaz yardımcı olur — ve büyük olasılıkla yaşar.
-* [Domino'nın Pizza](https://www.dominos.com). Domino'nın Pizza Inc. bir Amerikan pizza Restoran zinciri olur.
-* [Johnson denetimleri](https://www.johnsoncontrols.com). Johnson denetimleri, 150 ülkede/bölgede çok çeşitli müşterilere hizmet veren küresel bir ayrılmış teknolojidir ve çok endüstriyel bir liderdir.
-* [Microsoft Windows, Evrensel Store, Azure IOT Hub, Xbox Live ve diğer Internet ölçeğindeki Hizmetler](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/). Nasıl Microsoft Azure Cosmos DB'yi kullanarak yüksek düzeyde ölçeklenebilir hizmetler oluşturur.
-* [Microsoft Data ve analiz ekibi](https://customers.microsoft.com/story/microsoftdataandanalytics). Microsoft'un veri ve analiz ekibi, Azure Cosmos DB ile dünya ölçeğinde büyük veri koleksiyonu sağlar
-* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india). Sulekha, müşteriler ve işletmeler Hindistan bağlanmak için Azure Cosmos DB kullanır.
-* [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb). Azure Cosmos DB ile uçuş NewOrbit alır.
-* [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale). Affinio, sosyal verilerden uygun ölçekte yararlanmasına için Azure Cosmos DB için AWS'den geçer.
-* [Sonraki oyunları](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/). Yürüyen yok: Azure Cosmos DB tarafından desteklenen #1 Man oyunu oyları yok.
-* [Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/). Nasıl Halo 5, Azure Cosmos DB kullanarak sosyal oyun deneyimini uygulanır.
-* [Cortana Analytics Galerisi](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/). Cortana Analytics Galerisi - Azure Cosmos DB üzerinde oluşturulmuş ölçeklenebilir topluluk sitesi.
-* [Meltem](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602). Entegratörü önde gelen esnek bulut teknolojileri birkaç dakika içinde çok uluslu firmaları genel bilgiler sağlar.
-* [Haber Cumhuriyeti](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639). Katılımcı vatandaşlar için bilgi amaçlı ile haberi zeka ekleme. 
-* [SGS International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18653). Dünya genelinde tutarlı rengini büyük markaların kartlarını SGS için etkinleştirin. Ve Azure'a SGS kapatır.
-* [Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608). Küresel lider Telenor hızına ile Bulutu kullanıyor. 
-* [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667). Deponun geleceğin hızlı arama ve kolay veri akışı üzerinde çalışır.
-* [Nucleo](https://customers.microsoft.com/story/azure-based-software-platform-breaks-down-barriers-bet). Azure tabanlı bir yazılım platformu, işletmelere ve müşteriler arasındaki engelleri ayırır
-* [Weka](https://customers.microsoft.com/story/weka-smart-fridge-improves-vaccine-management-so-more-people-can-be-protected-against-diseases). Weka akıllı Fridge daha fazla insanın hastalıklara karşı korunması için aşı yönetimini geliştirdi
-* [Turuncu Tribes](https://customers.microsoft.com/story/theres-more-to-that-food-app-than-meets-the-eye-or-the-mouth). Gıda uygulamanın göz veya konuşurken karşılayıp daha çok daha fazlası vardır.
-* [Real Madrid'in](https://customers.microsoft.com/story/real-madrid-brings-the-stadium-closer-to-450-million-f). Real Madrid stadyumu 450 milyon Microsoft Cloud ile ayağına getiriyor.
-* [Tuku](https://customers.microsoft.com/story/tuku-makes-car-buying-fun-with-help-from-azure-services). Azure hizmetlerinin yardımıyla eğlenceli satın araba TUKU yapar
+* Azure Cosmos DB kullanarak müşteriler hakkında daha fazla bilgi edinmek istiyorsanız [Müşteri örnek olay incelemeleri](https://azure.microsoft.com/en-us/case-studies/?service=cosmos-db) sayfasına bakın.

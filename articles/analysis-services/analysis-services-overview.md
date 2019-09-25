@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ebb6c05645a991d22ac30ee013e5a51007994eb6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 81cda4648b97562e0ee557af0f28515d98a734b6
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073859"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240918"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -53,7 +53,7 @@ Bu katman küçük tablolu modeller, sınırlı düzeyde kullanıcı eşzamanlı
 |Plan  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
-|B2    |    80     |    20     |
+|B2    |    80     |    16     |
 
 ### <a name="standard-tier"></a>Standart katman
 
@@ -135,7 +135,7 @@ Toplam maliyet; seçtiğiniz bölge, katman, sorgu çoğaltmaları ve duraklatma
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services’ı temel alır
 
-Azure Analysis Services, SQL Server Analysis Services Enterprise Edition’da bulunan harika özelliklerin çoğu ile uyumludur. Azure Analysis Services, 1200 veya üzeri [uyumluluk düzeylerinde](analysis-services-compat-level.md) tablolu modelleri destekler. Tablolu modeller, Tablolu Model Betik Dili (TMSL) ve Tablolu Nesne Modeli (TOM) kodundaki tablolu meta veri nesne tanımları halinde geliştirilmiş ilişkisel modelleme yapılarıdır (model, tablolar, sütunlar). Bölümler, perspektifler, satır düzeyi güvenlik, çift yönlü ilişkiler ve çeviriler desteklenir\*. Çok boyutlu modeller ve SharePoint için PowerPivot Azure Analysis Services desteklenmez.
+Azure Analysis Services, SQL Server Analysis Services Enterprise Edition’da bulunan harika özelliklerin çoğu ile uyumludur. Azure Analysis Services, 1200 veya üzeri [uyumluluk düzeylerinde](analysis-services-compat-level.md) tablolu modelleri destekler. Tablolu modeller, Tablolu Model Betik Dili (TMSL) ve Tablolu Nesne Modeli (TOM) kodundaki tablolu meta veri nesne tanımları halinde geliştirilmiş ilişkisel modelleme yapılarıdır (model, tablolar, sütunlar). Bölümler, perspektifler, satır düzeyi güvenlik, çift yönlü ilişkiler ve çeviriler desteklenir\*. Çok boyutlu modeller ve *SharePoint için PowerPivot Azure Analysis Services desteklenmez.*
 
 Hem bellek içi hem de DirectQuery modlarında tablolu modeller desteklenir. Bellek içi modda (varsayılan) tablolu modeller birden çok veri kaynağını destekler. Model verileri yüksek oranda sıkıştırılmış ve bellek içinde önbelleğe alınmış olduğundan, bu mod büyük miktarlarda veriler üzerinde en hızlı sorgu yanıtını sağlar. Ayrıca, karmaşık veri kümeleri ve sorgular için en fazla esnekliği sağlar. Bölümleme, artımlı yükleri etkinleştirir, paralelleştirmeyi artırır ve bellek tüketimini azaltır. Hesaplanmış tablolar gibi diğer gelişmiş veri modelleme özellikleri ve tüm DAX işlevleri desteklenir. Veri kaynaklarından önbelleğe alınmış verileri güncelleştirmek için bellek içi modeller yenilenmelidir (işlenmelidir). Azure hizmet sorumlusu desteği sayesinde, PowerShell, TOM, TMSL ve REST kullanan katılımsız yenileme işlemleri, model verilerinizin her zaman güncel olduğundan emin olmanızı sağlar. 
 
@@ -225,7 +225,7 @@ Power BI, Excel, Reporting Services ve üçüncü taraf araçlar gibi modern ver
 
 ## <a name="monitoring-and-diagnostics"></a>İzleme ve tanılama
 
-Azure Analysis Services, Azure ölçümleriyle tümleşiktir ve sunucularınızın performans ve durumunu izlemenize yardımcı olan çok sayıda kaynağa özgü ölçüm sağlar. Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-monitor.md). Ölçümleri [Azure kaynak tanılama günlükleri](../azure-monitor/platform/diagnostic-logs-overview.md) ile kaydedin. Azure [depolama](https://azure.microsoft.com/services/storage/)'ya günlükleri izleyip gönderin, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a aktarın ve Azure 'da bir hizmet olan Azure [izleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/)dışarı aktarın. [](https://www.microsoft.com/cloud-platform/operations-management-suite) Daha fazla bilgi için bkz. [Tanılama günlüğüne kaydetmeyi ayarlama](analysis-services-logging.md).
+Azure Analysis Services, Azure ölçümleriyle tümleşiktir ve sunucularınızın performans ve durumunu izlemenize yardımcı olan çok sayıda kaynağa özgü ölçüm sağlar. Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-monitor.md). Ölçümleri [Azure kaynak tanılama günlükleri](../azure-monitor/platform/diagnostic-logs-overview.md) ile kaydedin. Azure [depolama](https://azure.microsoft.com/services/storage/)'ya günlükleri izleyip gönderin, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a aktarın [ve Azure 'Da bir hizmet olan](https://www.microsoft.com/cloud-platform/operations-management-suite)Azure [izleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/)dışarı aktarın. Daha fazla bilgi için bkz. [Tanılama günlüğüne kaydetmeyi ayarlama](analysis-services-logging.md).
 
 Azure Analysis Services ayrıca [Dynamic Management Görünümleri (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) kullanmayı destekler. SQL söz dizimine göre DMV’ler, sunucu örneği hakkında meta veri ve izleme bilgileri döndüren şema satır kümeleri ile arabirim oluşturur.
 

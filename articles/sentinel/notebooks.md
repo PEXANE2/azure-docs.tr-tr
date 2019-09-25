@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel önizlemesinde not defterlerini kullanma özellikleri | Microsoft Docs
+title: Azure Sentinel 'de not defterlerini kullanma özellikleri | Microsoft Docs
 description: Bu makalede, Azure Sentinel arama özellikleri ile Not defterlerinin nasıl kullanılacağı açıklanır.
 services: sentinel
 documentationcenter: na
@@ -16,19 +16,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6372a7958caf108903321e5ee87ea6bf1a42271c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 5b90ecc1db686b698668b07bd839304b425445ca
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689568"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240519"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyıter not defterlerini kullanma
-
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Sentinel 'in temeli veri deposudur; yüksek performanslı sorgulamayı, dinamik şemayı birleştirir ve çok büyük veri birimlerine ölçeklendirir. Azure Sentinel portalı ve tüm Azure Sentinel araçları, bu veri deposuna erişmek için ortak bir API kullanır. Aynı API, [jupi](https://jupyter.org/) Not defterleri ve Python gibi dış araçlar için de kullanılabilir. Portalda birçok ortak görev gerçekleştirilebilirken, Jupyıter bu verilerle yapabileceklerinizi kapsamını genişletir. Makine öğrenimi, görselleştirme ve veri analizi için çok büyük bir kitaplık koleksiyonuyla tam programlama ile birleşir. Bu öznitelikler, Jupa 'nın güvenlik araştırması ve araştırma için etkileyici bir araç haline getirir.
 

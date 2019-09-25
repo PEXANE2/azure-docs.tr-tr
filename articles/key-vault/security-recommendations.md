@@ -6,19 +6,19 @@ author: barclayn
 manager: rkarlin
 ms.service: key-vault
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 09/23/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: e1c5382e1e55c5c73a5610c1c13f6bfcef65ebc1
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 90965618b1d2cb126d56453d46a5bebc85319c0f
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148282"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219634"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Key Vault için güvenlik önerileri
 
-Bu makale Azure App Service için güvenlik önerileri içerir. Bu önerilerin uygulanması, paylaşılan sorumluluk modelinizde açıklandığı şekilde güvenlik yükümlülüklerinizi karşılamanız ve Web uygulaması çözümleriniz için genel güvenliği iyileştirmenize yardımcı olacaktır. Microsoft 'un hizmet sağlayıcısı sorumluluklarını karşılama hakkında daha fazla bilgi için, [bulut bilgi işlem Için paylaşılan sorumlulukları](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)okuyun.
+Bu makale Azure Key Vault için güvenlik önerileri içerir. Bu önerilerin uygulanması, paylaşılan sorumluluk modelinizde açıklandığı gibi güvenlik yükümlülüklerinizi karşılaalmanıza yardımcı olur. Microsoft 'un hizmet sağlayıcısı sorumluluklarını karşılama hakkında daha fazla bilgi için, [bulut bilgi işlem Için paylaşılan sorumlulukları](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/153019/1/Shared%20responsibilities%20for%20cloud%20computing.pdf)okuyun.
 
 Bu makaleye eklenen önerilerden bazıları Azure Güvenlik Merkezi tarafından otomatik olarak izlenebilir. Azure Güvenlik Merkezi, Azure 'daki kaynaklarınızı korumaya yönelik ilk savunma hattınızdır. Olası güvenlik açıklarını belirlemek için Azure kaynaklarınızın güvenlik durumunu düzenli olarak analiz eder. Daha sonra bunları nasıl ele almak için öneriler sağlar.
 

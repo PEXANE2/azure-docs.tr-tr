@@ -4,9 +4,9 @@ description: Bu öğreticide, bir iOS uygulamasına anında iletme bildirimleri 
 services: notification-hubs
 documentationcenter: ios
 keywords: anında iletme bildirimi,anında iletme bildirimleri,ios anında iletme bildirimleri
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,15 +15,17 @@ ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/21/2019
-ms.author: jowargo
-ms.openlocfilehash: c5793d2388ddd7bb59d68f8f7fd7af773179ed41
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988195"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211936"
 ---
-# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification hubs'ı kullanarak iOS uygulamaları için anında iletme bildirimleri
+# <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
@@ -47,7 +49,7 @@ Bu öğreticinin tamamlanan kodu [GitHub'da](https://github.com/Azure/azure-noti
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Etkin bir Azure hesabı. Bir hesabınız yoksa, şunları yapabilirsiniz [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free) yalnızca birkaç dakika içinde.
+* Etkin bir Azure hesabı. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir Azure hesabı oluşturabilirsiniz](https://azure.microsoft.com/free) .
 * [Windows Azure Messaging Framework]
 * [Xcode]'un en son sürümü
 * iOS 10 (veya sonraki bir sürümü) uyumlu bir cihaz
@@ -80,32 +82,32 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
 
     ![Xcode - anında iletme bildirimleri][12]
 
-5. Azure Notification Hubs SDK'sı modülleri ekleyin.
+5. Azure Notification Hubs SDK modüllerini ekleyin.
 
-   Azure Notification Hubs SDK'sı kullanarak uygulamanızda tümleştirebilirsiniz [Cocoapods](https://cocoapods.org) veya ikili dosyaları projenize el ile ekleyerek.
+   [Cocoapods](https://cocoapods.org) kullanarak uygulamanızdaki Azure Notification Hubs SDK 'sını tümleştirebilir veya ikili dosyaları projenize el ile ekleyebilirsiniz.
 
-   - Cocoapods kullanarak tümleştirme
+   - Cocoapods aracılığıyla tümleştirme
 
-     Aşağıdaki bağımlılıkları ekleyin, `podfile` Azure Notification Hubs SDK'sı uygulamanıza dahil etmek için.
+     Uygulamanıza Azure Notification Hubs SDK 'sı eklemek `podfile` için aşağıdaki bağımlılıkları ekleyin.
 
      ```ruby
      pod 'AzureNotificationHubs-iOS'
      ```
 
-     Çalıştırma `pod install` yeni tanımlanan pod yüklemek ve açmak için `.xcworkspace`.
+     ' `pod install` İ çalıştırarak yeni tanımlanmış Pod 'nizi yükleyip `.xcworkspace`açın.
 
      > [!NOTE]
-     > Gibi bir hata görürseniz ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` çalışırken `pod install`, lütfen çalıştırma `pod repo update` Cocoapods depodan en son pod'ları almak ve daha sonra çalıştırmak için `pod install`.
+     > Çalıştırırken ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` `pod repo update` `pod install`olduğu gibi bir hata görürseniz, lütfen Cocoapods deposundan en son Pod 'yi almak için öğesini çalıştırın ve ardından öğesini çalıştırın. `pod install`
 
-   - Carthage aracılığıyla tümleştirmesi
+   - Carthage aracılığıyla tümleştirme
 
-     Aşağıdaki bağımlılıkları ekleyin, `Cartfile` Azure Notification Hubs SDK'sı uygulamanıza dahil etmek için.
+     Uygulamanıza Azure Notification Hubs SDK 'sı eklemek `Cartfile` için aşağıdaki bağımlılıkları ekleyin.
 
      ```ruby
      github "Azure/azure-notificationhubs-ios"
      ```
 
-     Ardından, güncelleştirme ve bağımlılıkları derleyin:
+     Sonraki, güncelleştirme ve derleme bağımlılıkları:
 
      ```shell
      $ carthage update
@@ -113,9 +115,9 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
 
      Carthage kullanma hakkında daha fazla bilgi için bkz. [Carthage GitHub deposu](https://github.com/Carthage/Carthage).
 
-   - İkili dosyaları projenize kopyalayarak tümleştirme
+   - İkilileri projenize kopyalayarak tümleştirme
 
-     1. İndirme [Azure Notification Hubs SDK'sı](https://github.com/Azure/azure-notificationhubs-ios/releases) framework zip dosyası olarak sağlanan ve sıkıştırmasını açın.
+     1. Zip dosyası olarak sunulan [Azure NOTIFICATION HUBS SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) çerçevesini indirin ve sıkıştırmayı açın.
 
      2. Xcode'da projenize sağ tıklayın ve **WindowsAzureMessaging.framework** klasörünü Xcode projenize eklemek için **Add Files to** (Dosyaları Şuraya Ekle) seçeneğine tıklayın. **Options** (Seçenekler) seçeneğine tıklayıp **Copy items if needed** (Gerekirse verileri kopyala) öğesinin seçili olduğundan emin olduktan sonra **Add** (Ekle) öğesine tıklayın.
 
@@ -140,7 +142,7 @@ Bu öğreticiyi tamamlamak iOS uygulamalarına ilişkin diğer tüm Notification
     #import <UserNotifications/UserNotifications.h>
     #import "HubInfo.h"
     ```
-8. İçinde `AppDelegate.m` dosyasında, aşağıdaki kodu ekleyin `didFinishLaunchingWithOptions` yöntemine iOS sürümünüze bağlı. Bu kod, cihaz tanıtıcınızı APNs'ye kaydeder:
+8. Dosyanızda, iOS sürümünüze bağlı olarak `didFinishLaunchingWithOptions` yöntemine aşağıdaki kodu ekleyin. `AppDelegate.m` Bu kod, cihaz tanıtıcınızı APNs'ye kaydeder:
 
     ```objc
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |

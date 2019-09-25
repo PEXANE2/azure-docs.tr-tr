@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 2a1ee358a6c97b721ec6f0da3eb70269239b0737
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a09ce7b77dfcaa51e7c82f67a5d20000f3e22b61
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077678"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219998"
 ---
 # <a name="move-azure-virtual-network-to-another-region-using-the-azure-portal"></a>Azure portal kullanarak Azure sanal ağını başka bir bölgeye taşıma
 
@@ -27,7 +27,7 @@ Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Re
 - Bir sanal ağı dışa aktarmak ve başka bir bölgede bir sanal ağ oluşturmak için şablon dağıtmak için, ağ katılımcısı rolü veya daha yüksek bir sürümü gerekir.
 
 - Sanal ağ eşlemeleri yeniden oluşturulmaz ve şablonda hala mevcutsa başarısız olur.  Şablonu dışarı aktarmadan önce sanal ağ eşlerini kaldırmalı ve ardından sanal ağ taşıdıktan sonra eşleri yeniden kurmalısınız.
-    
+
 - Kaynak ağ düzeni ve şu anda kullanmakta olduğunuz tüm kaynakları belirler. Bu düzen, yük dengeleyiciler, ağ güvenlik grupları (NSG 'Ler) ve genel IP 'Leri içerir ancak bunlarla sınırlı değildir.
 
 - Azure aboneliğinizin, kullanılan hedef bölgede sanal ağlar oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
@@ -40,13 +40,13 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
 
 ### <a name="export-the-template-and-deploy-from-the-portal"></a>Şablonu dışarı aktarma ve portaldan dağıtma
 
-1. [Azure Portal](http://portal.azure.com) > **kaynak gruplarında**oturum açın.
+1. [Azure Portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
 2. Kaynak sanal ağı içeren kaynak grubunu bulun ve üzerine tıklayın.
 3. > **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
 4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
 5. **Şablon** > **düzenleme parametreleri** ' ne tıklayarak **Parameters. JSON** dosyasını çevrimiçi düzenleyicide açın.
 6. Sanal ağ adının parametresini düzenlemek için, **Parametreler**altındaki **değer** özelliğini değiştirin:
-    
+
     ```json
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -62,7 +62,7 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
 
 8.  Düzenleyicide **Kaydet** ' e tıklayın.
 
-9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın. 
+9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın.
 
 10. VNET 'in taşınacağı hedef bölgeyi düzenlemek için, çevrimiçi düzenleyicideki **kaynaklar** altındaki **Location** özelliğini değiştirin:
 
@@ -83,11 +83,11 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
                         },
 
     ```
- 
+
 11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
- 
+
 12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
-    
+
     * **Adres alanı** -sanal ağın adres alanı, **Resources** > **AddressSpace** bölümü değiştirilerek ve **Template. JSON** dosyasındaki **addresspredüzeltmelerinin** özelliği değiştirilerek kaydedilmeden önce değiştirilebilir:
 
         ```json
@@ -179,7 +179,7 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
 
 14. Hedef VNET 'in dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği** ' ne tıklayın.
 
-15. Hedef VNET 'in dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef sanal ağ için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut VNET 'in kaynak kaynak grubuyla aynı olmadığından emin olun. 
+15. Hedef VNET 'in dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef sanal ağ için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut VNET 'in kaynak kaynak grubuyla aynı olmadığından emin olun.
 
 16. **Temel bilgilerin** >  **, sanal** ağın dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
@@ -189,7 +189,7 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
 
 19. Hedef sanal ağı dağıtmak için **satın al** düğmesine tıklayın.
 
-## <a name="discard"></a>At 
+## <a name="discard"></a>At
 
 Hedef sanal ağı atmak istiyorsanız hedef sanal ağı içeren kaynak grubunu silin.  Bunu yapmak için, portalda panodaki kaynak grubunu seçin ve genel bakış sayfasının en üstünde **Sil** ' i seçin.
 

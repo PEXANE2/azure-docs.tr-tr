@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
+ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: 30d43831b73edc52b461512faecac369f6bf00b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: f598eecca2623c888e44f6171f12681f8e9c017b
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827823"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219296"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Öğretici: Logic Apps kullanarak Azure dijital TWINS boşluklarından bildirim alın
 
@@ -38,6 +38,9 @@ Bu öğreticide Azure Digital Twins kurulumunu [yapılandırmış](tutorial-faci
 - Çalışma makinenize indirilmiş ve ayıklanmış [Digital Twins C# örnekleri](https://github.com/Azure-Samples/digital-twins-samples-csharp).
 - Örneği çalıştırmak için geliştirme makinenizde [sürüm 2.1.403 veya sonraki bir sürümü .NET Core SDK](https://www.microsoft.com/net/download) . Doğru `dotnet --version` sürümün yüklendiğini doğrulamak için ' i çalıştırın.
 - Bildirim e-postalarını göndermek için Office 365 hesabı.
+
+> [!TIP]
+> Yeni bir örnek sağlıyorsanız benzersiz bir dijital TWINS örnek adı kullanın.
 
 ## <a name="integrate-events-with-event-grid"></a>Olayları Event Grid ile tümleştirme
 

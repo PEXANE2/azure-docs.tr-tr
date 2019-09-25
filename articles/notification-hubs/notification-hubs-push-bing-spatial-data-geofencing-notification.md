@@ -4,9 +4,9 @@ description: Bu öğreticide, Azure Notification Hubs ve Bing Uzamsal Veri ile k
 services: notification-hubs
 documentationcenter: windows
 keywords: anında iletme bildirimi, anında iletme bildirimi
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: f41beea1-0d62-4418-9ffc-c9d70607a1b7
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,15 +15,17 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 9baeb1c21252f8b7f7b24debde48108532d9865c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 84e52feb6e30e0b9b693019b671906fad8c908db
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61460174"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213236"
 ---
-# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Öğretici: Azure Notification Hubs ve Bing uzamsal veri ile konum temelli bildirimler gönderme
+# <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Öğretici: Azure Notification Hubs ve Bing uzamsal veriler ile konum tabanlı bildirimler gönderme
 
 Bu öğreticide, Azure Notification Hubs ve Bing Uzamsal Veri ile konum temelli anında iletme bildirimleri göndermeyi öğreneceksiniz.
 
@@ -37,7 +39,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği**. Azure aboneliğiniz yoksa, [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) başlamadan önce.
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Visual Studio 2015 Güncelleştirme 1](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx) veya üzeri ([Community Edition](https://go.microsoft.com/fwlink/?LinkId=691978&clcid=0x409)).
 * [Azure SDK](https://azure.microsoft.com/downloads/)'nın en son sürümü.
 * [Bing Haritalar Geliştirme Merkezi hesabı](https://www.bingmapsportal.com/) (ücretsiz bir tane oluşturabilir ve Microsoft hesabınızla ilişkilendirebilirsiniz).
@@ -51,7 +53,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 3. Bir veri kaynağınız yoksa, veri kaynağı oluşturma bağlantısını görürsünüz. **Veri kaynağı olarak yükle**’yi seçin. Ayrıca **Veri kaynakları** > **Veri yükle** menüsünü kullanabilirsiniz.
 
     ![](./media/notification-hubs-geofence/bing-maps-create-data.png)
-4. Bir dosya oluşturun `NotificationHubsGeofence.pipe` aşağıdaki içeriğe sahip sabit sürücünüzde: Bu öğreticide, bir San Francisco rıhtımının alanı çerçeve bir örnek kanal tabanlı dosya kullanın:
+4. Sabit sürücünüzde aşağıdaki `NotificationHubsGeofence.pipe` içeriğe sahip bir dosya oluşturun: Bu öğreticide, San Francisco su öninin bir alanını çerçeveden örnek bir kanal tabanlı dosya kullanacaksınız:
 
     ```text
     Bing Spatial Data Services, 1.0, TestBoundaries
@@ -64,7 +66,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. **Veri kaynağını karşıya yükleyin** sayfasında aşağıdaki eylemleri yapın:
    1. **Veri biçimi** için **kanal**’ı seçin.
-   2. Göz atın ve seçim `NotificationHubGeofence.pipe` önceki adımda oluşturulan dosya.
+   2. Önceki adımda oluşturduğunuz `NotificationHubGeofence.pipe` dosyaya gözatıp seçin.
    3. **Karşıya Yükle** düğmesini seçin.
 
       > [!NOTE]
@@ -357,7 +359,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 5. Sitede, **Uygulama Anahtarı** ve **Paket SID**'sini not edin. Azure portalında her ikisine de ihtiyacınız vardır: Bildirim hub'ınızı açın, **Ayarlar** > **Bildirim Hizmetleri** > **Windows (WNS)** seçeneğini belirleyin ve gerekli alanlara bu bilgileri girin.
 
     ![](./media/notification-hubs-geofence/notification-hubs-wns.png)
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 7. **Çözüm Gezgini**'nde **Başvurular**'ı açın ve **NuGet Paketlerini Yönet**'i seçin. **Microsoft Azure Service Bus yönetilen kitaplık**'a bir başvuru ekleyin. `WindowsAzure.Messaging.Managed` için arama yapın ve projenize ekleyin.
 
     ![](./media/notification-hubs-geofence/vs-nuget.png)

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7d015f485a51ae1f929e2ecaf1a05811d21594a2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816023"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240381"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>HDInsight kümelerini izlemek için Azure Izleyici günlüklerini kullanma
 
@@ -109,6 +109,15 @@ Kümeye yeni bir küme olduğundan, herhangi bir etkinlik raporu göstermez.
 ## <a name="configuring-performance-counters"></a>Performans sayaçlarını yapılandırma
 
 Azure İzleyici ayrıca kümenizdeki düğümlerin performans ölçümlerini toplamayı ve çözümlemeyi destekler. Bu özelliği etkinleştirme ve yapılandırma hakkında daha fazla bilgi için bkz. [Azure izleyici 'de Linux performans veri kaynakları](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters).
+
+## <a name="cluster-auditing"></a>Küme denetimi
+
+HDInsight, Azure Izleyici günlükleri ile küme denetimini destekler ve aşağıdaki türlerde Günlükler içeri aktarabilirsiniz:
+
+* `log_gateway_audit_CL`-Bu tablo, başarılı ve başarısız oturum açma girişimlerini gösteren küme ağ geçidi düğümlerinden denetim günlükleri sağlar.
+* `log_auth_CL`-Bu tablo, başarılı ve başarısız oturum açma girişimleri ile SSH günlükleri sağlar.
+* `log_ambari_audit_CL`-Bu tablo, ambarı 'ndan denetim günlükleri sağlar.
+* `log_ranger_audti_CL`-Bu tablo, ESP kümelerinde Apache Ranger 'tan denetim günlükleri sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

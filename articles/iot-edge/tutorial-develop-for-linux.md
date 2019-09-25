@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 30b1af29d1a7e3a01659353b27d8c997e739e702
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a523028fb312f030bc453692daceb0f254f844b6
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030981"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240958"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Öğretici: Linux cihazları için IoT Edge modülleri geliştirme
 
@@ -63,6 +63,7 @@ Bu öğreticide Visual Studio Code için geliştirme adımları öğretilir. Vis
 Geliştirme makinesi:
 
 * Geliştirme tercihlerinize bağlı olarak kendi bilgisayarınızı veya bir sanal makineyi kullanabilirsiniz.
+  * Geliştirme makinenizin iç içe sanallaştırmayı desteklediğinden emin olun. Bu özellik, bir sonraki bölümde yüklediğiniz bir kapsayıcı altyapısını çalıştırmak için gereklidir.
 * Bir kapsayıcı altyapısını çalıştırabilme ile ilgili çoğu işletim sistemi, Linux cihazları için IoT Edge modülleri geliştirmek üzere kullanılabilir. Bu öğretici bir Windows bilgisayarı kullanır, ancak MacOS veya Linux üzerinde bilinen farklılıkları gösterir. 
 * Bu öğreticide daha sonra modül şablonu paketleri çekmek için [Git](https://git-scm.com/)'i yükler.  
 * [Visual Studio Code için C# (OmniSharp tarafından desteklenen) uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
@@ -103,7 +104,7 @@ IoT Edge modülleri geliştirmek için Visual Studio Code için IoT uzantıları
 
 4. **Yükle**’yi seçin. Dahil edilen her uzantı tek tek yüklenir. 
 
-5. Uzantılar yükleme tamamlandığında, komut paletini **görüntüle** > ' yi seçerek komut paleti ' ni açın. 
+5. Uzantılar yükleme tamamlandığında, komut paletini **görüntüle** > ' yi seçerek komut paleti ' ni**açın.** 
 
 6. Komut paletinde Azure 'u arayıp seçin **: Oturum açın**. Azure hesabınızda oturum açmak için yönergeleri izleyin. 
 

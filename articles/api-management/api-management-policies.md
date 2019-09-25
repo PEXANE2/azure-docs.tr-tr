@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: ed20ef023a884ac79150cd31f25fde86b715c752
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2b6e056fbfb134f0b1218b4281b9f971a0e24202
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073404"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219477"
 ---
 # <a name="api-management-policies"></a>API Management ilkeleri
 Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlke ekleme ve yapılandırma hakkında daha fazla bilgi için bkz. [API Management ilkeleri](api-management-howto-policies.md).  
@@ -50,7 +50,7 @@ Bu bölüm aşağıdaki API Management ilkeleri için bir başvuru sağlar. İlk
     -   [Set değişkeni](api-management-advanced-policies.md#set-variable) -daha sonra erişim için adlandırılmış bağlam değişkeninde bir değeri kalıcı hale getirin.  
     -   [Set Request Yöntemi](api-management-advanced-policies.md#SetRequestMethod) -bir Istek için http yöntemini değiştirmenize izin verir.  
     -   [Durum kodu ayarla](api-management-advanced-policies.md#SetStatus) -http durum kodunu belirtilen değere dönüştürür.  
-    -   [Trace](api-management-advanced-policies.md#Trace) - [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına bir dize ekler.  
+    -   [Trace](api-management-advanced-policies.md#Trace) - [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) çıktısına, Application Insights Telemetriler ve tanılama günlüklerine özel izlemeler ekler.  
     -   [Bekleme](api-management-advanced-policies.md#Wait) -devam etmeden önce, kapalı [gönderme isteği](api-management-advanced-policies.md#SendRequest), [önbellekten değer alma](api-management-caching-policies.md#GetFromCacheByKey)veya [Denetim akışı](api-management-advanced-policies.md#choose) ilkelerinin tamamlanmasını bekler.  
 -   [Kimlik doğrulama ilkeleri](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   Temel kimlik doğrulaması kullanarak arka uç hizmeti ile temel kimlik doğrulaması [Ile kimlik](api-management-authentication-policies.md#Basic) doğrulaması yapın.  

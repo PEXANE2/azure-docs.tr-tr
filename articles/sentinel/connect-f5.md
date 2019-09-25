@@ -1,5 +1,5 @@
 ---
-title: F5 verilerini Azure Sentinel önizlemesine bağlama | Microsoft Docs
+title: F5 verilerini Azure Sentinel 'e bağlama | Microsoft Docs
 description: F5 verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7ad95515ff58e2990102fa2b71d0ce66d4377617
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 64ea16b6e5a2821db4f053928e4b95ba80d177dd
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679291"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240004"
 ---
 # <a name="connect-your-f5-appliance"></a>F5 gerecinizi bağlama
 
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Günlük dosyalarını Syslog CEF olarak kaydederek Azure Sentinel 'e herhangi bir F5 gereci bağlayabilirsiniz. Azure Sentinel ile tümleştirme, F5 'ten günlük dosyası verilerinde analiz ve sorguları kolayca çalıştırmanıza olanak sağlar. Azure 'u Sentinel CEF verilerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Connect CEF](connect-common-event-format.md)gereçileri.
+
+Günlük dosyalarını Syslog CEF olarak kaydederek Azure Sentinel 'e herhangi bir F5 gereci bağlayabilirsiniz. Azure Sentinel ile tümleştirme, F5 'ten günlük dosyası verilerinde analiz ve sorguları kolayca çalıştırmanıza olanak sağlar. Azure 'u Sentinel CEF verilerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Connect CEF gereçileri](connect-common-event-format.md).
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
@@ -130,5 +128,5 @@ Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede, F5 gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 

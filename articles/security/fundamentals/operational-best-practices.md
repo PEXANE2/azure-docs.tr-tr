@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 69e55b17814c5b5ada0813bd0de66cc3a9a591f4
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129324"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219514"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -95,7 +95,7 @@ Güvenlik Merkezi 'nin ücretsiz katmanı, yalnızca Azure kaynaklarınız için
 
 Tüm Azure kaynaklarınızın güvenlik durumuna ilişkin merkezi bir görünüm almak için Güvenlik Merkezi 'ni kullanın. Bir bakışta, uygun güvenlik denetimlerinin yerinde olduğunu ve doğru şekilde yapılandırıldığını doğrulayın ve ilgilenilmesi gereken tüm kaynakları hızlıca doğrulayın.
 
-Güvenlik Merkezi Ayrıca kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlayan [Windows Defender Gelişmiş tehdit koruması (ATP)](../../security-center/security-center-wdatp.md)ile tümleşir. Windows Defender ATP tümleştirmesi ile, normalleştirimler oluşturabilirsiniz. Ayrıca güvenlik merkezi tarafından izlenen sunucu uç noktalarında gelişmiş saldırıları algılayabilir ve bunlara yanıt verebilirsiniz.
+Güvenlik Merkezi Ayrıca, kapsamlı uç nokta algılama ve yanıt (EDR) özellikleri sağlayan [Microsoft Defender Gelişmiş tehdit koruması (ATP)](../../security-center/security-center-wdatp.md)ile tümleşir. Microsoft Defender ATP tümleştirmesi ile, normalleştirimler oluşturabilirsiniz. Ayrıca güvenlik merkezi tarafından izlenen sunucu uç noktalarında gelişmiş saldırıları algılayabilir ve bunlara yanıt verebilirsiniz.
 
 Neredeyse tüm kurumsal kuruluşların, farklı sinyal toplama cihazlarından günlük bilgilerini birleştirerek gelişmekte olan tehditleri belirlemesine yardımcı olmak için bir güvenlik bilgileri ve olay yönetimi (SıEM) sistemi vardır. Günlükler daha sonra, tüm günlük toplama ve analiz çözümlerinde kaçınılmaz olan parazitin "ilginç" olduğunu belirlemenize yardımcı olmak için bir veri analizi sistemi tarafından çözümlenir.
 
@@ -121,7 +121,7 @@ Internet güvenliği (CIS) denetimlerinin merkezini temel alan güvenli puan, ku
 **Ayrıntı**: [Verileri toplamak ve dışarı aktarmak Için Azure izleyici 'yi](/azure/azure-monitor/overview#integrate-and-export-data)kullanın. Bu uygulama, güvenlik olay araştırmasını etkinleştirmek için önemlidir ve çevrimiçi günlük tutma sınırlı olur. Azure Sentinel kullanıyorsanız, bkz. [veri kaynaklarını bağlama](../../sentinel/connect-data-sources.md).
 
 **En iyi uygulama**: Uç nokta algılama ve yanıt (EDR) yeteneklerini saldırı araştırmanıza tümleştirerek, araştırma ve işleme işlemlerinizi hızlandırın ve hatalı pozitif sonuçları azaltabilirsiniz.   
-**Ayrıntı**: Güvenlik Merkezi güvenlik ilkeniz aracılığıyla [Windows Defender ATP tümleştirmesini etkinleştirin](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration) . Tehdit ve olay yanıtı için Azure Sentinel kullanmayı göz önünde bulundurun.
+**Ayrıntı**: Güvenlik Merkezi güvenlik ilkeniz aracılığıyla [Microsoft Defender ATP tümleştirmesini etkinleştirin](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration) . Tehdit ve olay yanıtı için Azure Sentinel kullanmayı göz önünde bulundurun.
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>Uçtan uca senaryo tabanlı ağ izlemeyi izleme
 Müşteriler, ağ kaynaklarını bir sanal ağ, ExpressRoute, Application Gateway ve yük dengeleyiciler gibi birleştirerek Azure 'da uçtan uca bir ağ oluşturur. İzleme, ağ kaynaklarının her birinde kullanılabilir.
@@ -206,8 +206,8 @@ Kuruluşunuzun yazılı ilkesini izleyip zorlamak için Azure Ilkesini etkinleş
 
 Azure Ilkesini benimsedikten sonra izlenecek en iyi güvenlik uygulamaları aşağıda verilmiştir:
 
-**En iyi uygulama**: İlke çeşitli efekt türlerini destekler. [Azure ilke tanımı yapısında](../../governance/policy/concepts/definition-structure.md#policy-rule)bunlarla ilgili bilgi edinebilirsiniz. İş işlemleri, **reddetme** etkisinden olumsuz etkilenebilir ve bu nedenle, ilkeden olumsuz etkisi riskini sınırlamak için **Denetim** efektiyle başlayın.   
-**Ayrıntı**: [İlke dağıtımlarını denetim modunda başlatın](../../governance/policy/concepts/definition-structure.md#policy-rule) ve daha sonra **reddetme** veya düzeltme için ilerlemedurumunu yapın. **Reddet** veya **Düzelt**'e geçmeden önce denetim efektinin sonuçlarını test edin ve gözden geçirin.
+**En iyi uygulama**: İlke çeşitli efekt türlerini destekler. [Azure ilke tanımı yapısında](../../governance/policy/concepts/definition-structure.md#policy-rule)bunlarla ilgili bilgi edinebilirsiniz. İş işlemleri, **reddetme** etkisinden olumsuz etkilenebilir ve bu **nedenle, ilkeden** olumsuz etkisi riskini sınırlamak için **Denetim** efektiyle başlayın.   
+**Ayrıntı**: [İlke dağıtımlarını denetim modunda başlatın](../../governance/policy/concepts/definition-structure.md#policy-rule) ve daha sonra **reddetme** **veya düzeltme**için ilerleme durumunu yapın. **Reddet** veya **Düzelt**'e geçmeden önce denetim efektinin sonuçlarını test edin ve gözden geçirin.
 
 Daha fazla bilgi için bkz. [uyumluluğu zorlamak için Ilke oluşturma ve yönetme](../../governance/policy/tutorials/create-and-manage.md).
 

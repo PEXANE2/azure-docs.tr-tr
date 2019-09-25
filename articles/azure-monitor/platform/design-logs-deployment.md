@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: magoedte
-ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: fa3c8b8cee0b8621a6a2800655f62a3d339f67c3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034733"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211991"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Izleyici günlükleri dağıtımınızı tasarlama
 
@@ -36,6 +36,8 @@ Bir Log Analytics çalışma alanı şunları sağlar:
 
 Bu makalede, tasarım ve geçiş konuları, erişim denetimine genel bakış ve BT kuruluşunuz için önerdiğimiz tasarım uygulamalarının anlaşılmasına ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
+
+
 ## <a name="important-considerations-for-an-access-control-strategy"></a>Erişim denetimi stratejisi için önemli noktalar
 
 İhtiyaç duyduğunuz çalışma alanı sayısını belirlemek aşağıdaki gereksinimlerinden biri veya daha fazlası tarafından etkilenir:
@@ -47,7 +49,7 @@ Bu makalede, tasarım ve geçiş konuları, erişim denetimine genel bakış ve 
 Günümüzde BT kurumları, merkezi bir, merkezi olarak veya her iki yapının de içinden bir arada bir karma olarak modellenmiştir. Sonuç olarak, aşağıdaki çalışma alanı dağıtım modelleri yaygın olarak bu kuruluş yapılarından birine eşlemek için kullanılır:
 
 * **Merkezi**: Tüm Günlükler merkezi bir çalışma alanında depolanır ve tek bir takım tarafından yönetilir ve Azure Izleyici, ekip başına farklılaştırılan erişim sağlar. Bu senaryoda kolayca yönetilmesi, kaynaklar arasında arama yapmak ve çapraz bağıntılı Günlükler vardır. Çalışma alanı, aboneliğinizdeki birden fazla kaynaktan toplanan veri miktarına bağlı olarak, farklı kullanıcılara erişim denetimi sağlamak için ek yönetim yüküyle önemli ölçüde büyüyebilir.
-* Merkezi olmayan: Her takımın sahip olduğu ve yönettikleri bir kaynak grubunda kendi çalışma alanı oluşturulmuş ve günlük verileri kaynak başına ayrılmış. Bu senaryoda, çalışma alanı güvenli tutulabilir ve erişim denetimi, kaynak erişimiyle tutarlıdır, ancak günlükleri çapraz bir şekilde ilişkilendirmek zor olabilir. Birçok kaynağın geniş bir görünümüne ihtiyacı olan kullanıcılar verileri anlamlı bir şekilde analiz edemez.
+* **Merkezi olmayan:** Her takımın sahip olduğu ve yönettikleri bir kaynak grubunda kendi çalışma alanı oluşturulmuş ve günlük verileri kaynak başına ayrılmış. Bu senaryoda, çalışma alanı güvenli tutulabilir ve erişim denetimi, kaynak erişimiyle tutarlıdır, ancak günlükleri çapraz bir şekilde ilişkilendirmek zor olabilir. Birçok kaynağın geniş bir görünümüne ihtiyacı olan kullanıcılar verileri anlamlı bir şekilde analiz edemez.
 * **Karma**: Birçok kuruluş her iki dağıtım modelini de paralel olarak uygulamadığından, güvenlik denetimi uyumluluk gereksinimleri bu senaryoyu daha karmaşıklaştırır. Bu, genellikle günlük kapsamındaki boşluklar ile karmaşık, pahalı ve bakım açısından zor bir yapılandırmaya neden olur.
 
 Veri toplamak için Log Analytics aracılarını kullanırken, aracı dağıtımınızı planlamak için aşağıdakileri anlamanız gerekir:
@@ -129,6 +131,19 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
     > Bir kullanıcının çalışma alanında yalnızca kaynak izinleri varsa, çalışma alanına yalnızca çalışma alanı erişim modunun **kaynak veya çalışma alanı Izinlerini kullanacak**şekilde ayarlandığını varsayarak kaynak bağlam modunu kullanarak erişebilirler.
 
 Portalda erişim denetimi modunu değiştirme hakkında bilgi edinmek için, PowerShell ile veya Kaynak Yöneticisi şablonu kullanarak bkz. [erişim denetimi modunu yapılandırma](manage-access.md#configure-access-control-mode).
+
+## <a name="ingestion-volume-rate-limit"></a>Alım birimi hız sınırı
+
+Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Varsayılan alma hızı eşiği, çalışma alanı başına **500 MB/dk** olarak ayarlanır. Verileri daha yüksek bir fiyata tek bir çalışma alanına gönderirseniz, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım biriminiz, hız sınırını aşmaya devam ediyorsa veya bir süre önce bu sınıra ulaşmayı bekliyorsanız, bir destek isteği açarak çalışma alanınıza bir artış isteğinde bulunabilir.
+ 
+Çalışma alanınızdaki bu tür bir olay hakkında bildirim almak için, sıfırdan farklı sonuç sayısına sahip uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](alerts-log.md) oluşturun.
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 ## <a name="recommendations"></a>Öneriler
 

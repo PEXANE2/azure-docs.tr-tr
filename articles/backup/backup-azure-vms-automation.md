@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 372851686b43e6d2caf4695b988789990077e8fe
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f1aa2c4b6fbe554304bfff239c6220d245fe7467
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090844"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219459"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -320,9 +320,9 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 > Az PS Version 1.6.0 onlıyanlarından biri, PowerShell kullanarak ilke içinde anlık geri yükleme anlık görüntü saklama süresini güncelleştirebilir
 
 ````powershell
-$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
 $bkpPol.SnapshotRetentionInDays=7
-Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
+Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
 Varsayılan değer 2 olacaktır, Kullanıcı değeri en az 1, en fazla 5 olacak şekilde ayarlayabilir. Haftalık yedekleme ilkeleri için, dönem 5 olarak ayarlanır ve değiştirilemez.
@@ -380,7 +380,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -Workl
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Yedekleme verilerini silme
+#### <a name="delete-backup-data"></a>Yedekleme verilerini sil
 
 Kasadaki depolanan yedekleme verilerini tamamen kaldırmak için '-RemoveRecoveryPoints ' bayrağını [' devre dışı bırak](#retain-data)' seçeneğini eklemeniz yeterlidir.
 

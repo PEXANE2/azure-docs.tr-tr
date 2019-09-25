@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: fbb87843462e7e830fc357e178b41f7262b80e70
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 572255cfcd34b97a6ba0f784f7fc7ed1c0df040a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70099579"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213258"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -33,15 +33,15 @@ ms.locfileid: "70099579"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2205917]: https://launchpad.support.sap.com/#/notes/2205917
-[1944799]: https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2205917]:https://launchpad.support.sap.com/#/notes/2205917
+[1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -65,20 +65,20 @@ Bu makalede, Azure NetApp Files ile SAP NetWeaver uygulaması için yüksek kull
 Önce aşağıdaki SAP notlarını ve kağıtları okuyun:
 
 * [Azure NetApp Files belgeleri][anf-azure-doc] 
-* SAP Note [1928533], şunları içerir:  
+* SAP Note [1928533][1928533], şunları içerir:  
   * SAP yazılımının dağıtımı için desteklenen Azure VM boyutlarının listesi
   * Azure VM boyutları için önemli kapasite bilgileri
   * Desteklenen SAP yazılımı ve işletim sistemi (OS) ve veritabanı birleşimleri
   * Microsoft Azure 'de Windows ve Linux için gereken SAP Kernel sürümü
-* SAP Note [2015553] , Azure 'da SAP tarafından desteklenen SAP yazılım dağıtımları için önkoşulları listeler.
-* SAP Note [2205917] , SAP uygulamaları için SUSE Linux Enterprise Server önerilen işletim sistemi ayarlarına sahiptir
-* SAP Note [1944799] , SUSE Linux Enterprise Server SAP uygulamaları Için SAP HANA kılavuz içerir
-* SAP Note [2178632] , Azure 'da SAP için raporlanan tüm izleme ölçümleriyle ilgili ayrıntılı bilgiler içerir.
-* SAP Note [2191498] , Azure 'da Linux IÇIN gereken SAP konak Aracısı sürümüne sahiptir.
-* SAP Note [2243692] , Azure 'da LINUX üzerinde SAP lisanslama hakkında bilgi içerir.
-* SAP Note [1984787] , SUSE Linux Enterprise Server 12 hakkında genel bilgiler içerir.
-* SAP Note [1999351] , SAP Için Azure Gelişmiş izleme uzantısı için ek sorun giderme bilgilerine sahiptir.
-* [SAP COMMUNITY WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 'nin Linux için gereklı tüm sap notları vardır.
+* SAP Note [2015553][2015553] , Azure 'da SAP tarafından desteklenen SAP yazılım dağıtımları için önkoşulları listeler.
+* SAP Note [2205917][2205917] , SAP uygulamaları için SUSE Linux Enterprise Server önerilen işletim sistemi ayarlarına sahiptir
+* SAP Note [1944799][1944799] , SUSE Linux Enterprise Server SAP uygulamaları Için SAP HANA kılavuz içerir
+* SAP Note [2178632][2178632] , Azure 'da SAP için raporlanan tüm izleme ölçümleriyle ilgili ayrıntılı bilgiler içerir.
+* SAP Note [2191498][2191498] , Azure 'da Linux IÇIN gereken SAP konak Aracısı sürümüne sahiptir.
+* SAP Note [2243692][2243692] , Azure 'da LINUX üzerinde SAP lisanslama hakkında bilgi içerir.
+* SAP Note [1984787][1984787] , SUSE Linux Enterprise Server 12 hakkında genel bilgiler içerir.
+* SAP Note [1999351][1999351] , SAP Için Azure Gelişmiş izleme uzantısı için ek sorun giderme bilgilerine sahiptir.
+* SAP Community WIKI] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) Linux için tüm gerekli SAP notları vardır.
 * [Linux 'ta SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
 * [Linux 'ta SAP için Azure sanal makineleri dağıtımı][deployment-guide]
 * [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
@@ -786,7 +786,7 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
 
 ## <a name="install-database"></a>Veritabanını yükler
 
-Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. For a list of supported databases, see [SAP Note 1928533][1928533]. [Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirliği][sap-hana-ha].
+Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirliği][sap-hana-ha]. Desteklenen veritabanlarının listesi için bkz. [SAP Note 1928533][1928533].
 
 * SAP veritabanı örnek yüklemesini çalıştırma
 

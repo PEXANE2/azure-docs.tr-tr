@@ -3,9 +3,9 @@ title: Azure Notification Hubs ve Google Cloud Messaging kullanarak belirli Andr
 description: Azure Notification Hubs ve Google Cloud Messaging kullanarak belirli Android cihazlara anında iletme bildirimleri göndermek için Notification Hubs kullanma hakkında bilgi edinin.
 services: notification-hubs
 documentationcenter: android
-author: jwargo
-manager: patniko
-editor: spelluru'
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 3c23cb80-9d35-4dde-b26d-a7bfd4cb8f81
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,18 +14,20 @@ ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: af08d3ca6eaa95663b0bb669f6dc82a13df5ab39
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 4a369b72d5c19a63c65f8d693d131b2c10ff2023
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65233100"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212812"
 ---
-# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve (kullanım dışı), Google Cloud Messaging kullanarak belirli Android cihazlarına anında iletme bildirimleri gönderme
+# <a name="tutorial-push-notifications-to-specific-android-devices-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Öğretici: Azure Notification Hubs ve Google Cloud Messaging (kullanım dışı) kullanarak belirli Android cihazlara anında iletme bildirimleri gönderin
 
 > [!WARNING]
-> 10 Nisan 2018'den itibaren Google Google Cloud Messaging (GCM) kullanım dışı. GCM sunucu ve istemci API'leri kullanım dışı bırakılmıştır ve 29 Mayıs 2019 olan en kısa sürede kaldırılacak. Daha fazla bilgi için [GCM ve FCM ile ilgili sık sorulan sorular](https://developers.google.com/cloud-messaging/faq).
+> 10 Nisan 2018 itibariyle, Google Google Cloud Messaging (GCM) kullanım dışıdır. GCM sunucusu ve istemci API 'Leri kullanım dışıdır ve 29 Mayıs 2019 ' den hemen sonra kaldırılacaktır. Daha fazla bilgi için bkz. [GCM ve FCM hakkında sık sorulan sorular](https://developers.google.com/cloud-messaging/faq).
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -39,19 +41,19 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
 > [!div class="checklist"]
 > * Mobil uygulamaya kategori seçimi ekleme.
-> * Etiketler ile bildirimleri için kayıtlı.
+> * Etiketlerle bildirimler için kaydedilir.
 > * Etiketli bildirimler gönderme.
 > * Uygulamayı test etme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide oluşturduğunuz uygulamayı geliştirir [Öğreticisi: Android cihazlar için Azure Notification Hubs ve Google Cloud Messaging kullanarak anında iletme bildirimleri][get-started]. Bu öğreticiye başlamadan önce tamamlamanız [Öğreticisi: Android cihazlar için Azure Notification Hubs ve Google Cloud Messaging kullanarak anında iletme bildirimleri][get-started].
+Bu öğretici, [öğreticide oluşturduğunuz uygulamayı oluşturur: Azure Notification Hubs ve Google Cloud Messaging][get-started]kullanarak Android cihazlarına anında iletme bildirimleri gönderin. Bu öğreticiye başlamadan önce [öğreticiyi doldurun: Azure Notification Hubs ve Google Cloud Messaging][get-started]kullanarak Android cihazlarına anında iletme bildirimleri gönderin.
 
 ## <a name="add-category-selection-to-the-app"></a>Uygulamaya kategori seçimi ekleme
 
 İlk adım, mevcut ana etkinliğinize kullanıcının kaydolunacak kategorileri seçmesini sağlayan UI öğeleri eklemektir. Bir kullanıcı tarafından seçilen kategoriler cihazda depolanır. Uygulama başlatıldığında, etiketler olarak seçilen kategorilerle bildirim hub’ınızda bir cihaz kaydı oluşturulur.
 
-1. Açık `res/layout/activity_main.xml file`ve içeriği aşağıdakiyle değiştirin:
+1. `res/layout/activity_main.xml file`Öğesini açın ve içeriği aşağıdaki ile değiştirin:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -104,7 +106,7 @@ Bu öğreticide oluşturduğunuz uygulamayı geliştirir [Öğreticisi: Android 
             />
     </LinearLayout>
     ```
-2. Açık `res/values/strings.xml` dosyasını açıp aşağıdaki satırları ekleyin:
+2. `res/values/strings.xml` Dosyasını açın ve aşağıdaki satırları ekleyin:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -116,10 +118,10 @@ Bu öğreticide oluşturduğunuz uygulamayı geliştirir [Öğreticisi: Android 
     <string name="label_sports">Sports</string>
     ```
 
-    `main_activity.xml` Grafik Düzen görünmelidir gibi aşağıdaki görüntüde:
+    `main_activity.xml` Grafik düzeniniz aşağıdaki görüntüde şöyle görünmelidir:
 
     ![][A1]
-3. Bir sınıf oluşturmanız `Notifications` aynı pakette, `MainActivity` sınıfı.
+3. Sınıfınız ile aynı `Notifications` pakette bir sınıf oluşturun. `MainActivity`
 
     ```java
     import java.util.HashSet;
@@ -194,14 +196,14 @@ Bu öğreticide oluşturduğunuz uygulamayı geliştirir [Öğreticisi: Android 
     ```
 
     Bu sınıf, bu cihazın alması gereken haber kategorilerini depolamak için yerel depolamayı kullanır. Ayrıca, bu kategoriler için kaydolma yöntemlerini içerir.
-4. İçinde `MainActivity` sınıfı kaldırmak için özel alanlarınızı `NotificationHub` ve `GoogleCloudMessaging`, ve bir alan için ekleme `Notifications`:
+4. Sınıfınıza `MainActivity` ve `NotificationHub` `Notifications`için özel alanlarınızı kaldırın ve için bir alan ekleyin: `GoogleCloudMessaging`
 
     ```java
     // private GoogleCloudMessaging gcm;
     // private NotificationHub hub;
     private Notifications notifications;
     ```
-5. Ardından `onCreate` yöntemi başlatma kaldırmak `hub` alan ve `registerWithNotificationHubs` yöntemi. Ardından bir örneği aşağıdaki satırları ekleyin `Notifications` sınıfı.
+5. Sonra yönteminde, `hub` alanı ve `registerWithNotificationHubs` yöntemini başlatmayı kaldırın. `onCreate` Ardından, `Notifications` sınıfının bir örneğini başlatmak için aşağıdaki satırları ekleyin.
 
     ```java
     protected void onCreate(Bundle savedInstanceState) {
@@ -259,7 +261,7 @@ Bu öğreticide oluşturduğunuz uygulamayı geliştirir [Öğreticisi: Android 
     }
     ```
 
-    Bu yöntem kategoriler kullanır ve bir liste oluşturur `Notifications` sınıf listesi yerel depolama alanında depolayın ve karşılık gelen kaydetmek için bildirim hub'ınızla etiketler. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
+    Bu yöntem, kategorilerin bir listesini oluşturur ve bu `Notifications` sınıfı kullanarak listeyi yerel depoda depolar ve Bildirim Hub 'ınızla ilgili etiketleri kaydeder. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
 
 Uygulamalarınız artık bir kategori kümesini cihazdaki yerel depolama alanında depolayabilir ve kullanıcının kategori seçimini her değiştirmesinde bildirim hub’ına kaydolabilir.
 
@@ -270,7 +272,7 @@ Bu adımlar, yerel depolama alanında depolanan kategorileri kullanarak başlatm
 > [!NOTE]
 > Google Cloud Messaging (GCM) tarafından atanan registrationId değeri her zaman değişebileceğinden, bildirim hatalarını önlemek için sık sık bildirimlere kaydolmanız gerekir. Bu örnek, uygulama her başlatıldığında bildirimlere kaydolur. Sık sık çalıştırılan uygulamalar için, önceki kayıttan bu yana bir günden az zaman geçtiyse bant genişliğini korumak için günde birkaç kere kaydı atlayabilirsiniz.
 
-1. Sonuna aşağıdaki kodu ekleyin `onCreate` yönteminde `MainActivity` sınıfı:
+1. `onCreate` Sınıfındaki yönteminin`MainActivity` sonuna aşağıdaki kodu ekleyin:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());

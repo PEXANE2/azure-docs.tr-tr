@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: memildin
-ms.openlocfilehash: 0070ab94196dfe752e048e97dd40a8f69cf98373
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0d6f05524be41693ba280b0f0162f65b517ec281
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202600"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219627"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde VM 'Ler ve sunucular için tehdit algılama
 
@@ -35,7 +35,7 @@ Güvenlik Merkezi, Windows Server Defender Gelişmiş tehdit koruması (ATP) ile
 > [!NOTE]
 > Windows Server Defender ATP algılayıcısı, güvenlik merkezi kullanan Windows sunucularında otomatik olarak etkinleştirilir.
 
-Windows Server Defender ATP bir tehdit algıladığında bir uyarı tetikler. Uyarı, güvenlik merkezi panosunda gösterilir. Panodan, Windows Defender ATP konsoluna Pivot verebilir ve saldırının kapsamını açığa çıkarmak için ayrıntılı bir araştırma gerçekleştirebilirsiniz. Windows Server Defender ATP hakkında daha fazla bilgi için bkz. [Windows Defender ATP hizmetine sunucu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)ekleme.
+Windows Server Defender ATP bir tehdit algıladığında bir uyarı tetikler. Uyarı, güvenlik merkezi panosunda gösterilir. Panodan, Microsoft Defender ATP konsoluna Pivot verebilir ve saldırının kapsamını açığa çıkarmak için ayrıntılı bir araştırma gerçekleştirebilirsiniz. Windows Server Defender ATP hakkında daha fazla bilgi için bkz. [Microsoft Defender ATP hizmetine sunucu](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)ekleme.
 
 ### Kilitlenme bilgi döküm Analizi<a nanme="windows-dump"></a>
 

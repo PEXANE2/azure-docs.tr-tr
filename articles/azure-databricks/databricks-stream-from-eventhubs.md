@@ -11,10 +11,10 @@ ms.workload: Active
 ms.date: 07/23/2019
 ms.author: alehall
 ms.openlocfilehash: 942553e2ececf2bdc7bb2b240d4fa6c5f338beb2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 09/24/2019
 ms.locfileid: "68976496"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Öğretici: Event Hubs kullanarak Azure Databricks’e veri akışı sağlama
@@ -141,7 +141,7 @@ Bu öğreticide, Event Hubs’a tweet’ler göndermek için Twitter API’lerin
 
    ![Kitaplık Ekle iletişim kutusu](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "Kitaplık ekleme yeni yüklemesi")
 
-2. Yeni Kitaplık sayfasında, **kaynak** Seç ' i seçin. **Koordinat**için, eklemek istediğiniz paket Için **arama paketleri** ' ne tıklayın. Bu öğreticide kullanılan kitaplıklar için Maven koordinatları aşağıdaki gibidir:
+2. Yeni Kitaplık sayfasında, **kaynak** **Seç ' i seçin**. **Koordinat**için, eklemek istediğiniz paket Için **arama paketleri** ' ne tıklayın. Bu öğreticide kullanılan kitaplıklar için Maven koordinatları aşağıdaki gibidir:
 
    * Spark Event Hubs bağlayıcısı - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
    * Twitter API’si - `org.twitter4j:twitter4j-core:4.0.7`

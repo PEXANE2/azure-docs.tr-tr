@@ -1,45 +1,45 @@
 ---
-title: 'Hızlı Başlangıç: Dijital Mürekkep mürekkep tanıyıcı REST API ve Node.js ile tanıması'
+title: 'Hızlı Başlangıç: Mürekkep tanıyıcı REST API ve Node. js ile dijital mürekkep tanıma'
 titleSuffix: Azure Cognitive Services
-description: Dijital mürekkep vuruşlarını algılamayı başlatmak için mürekkep tanıyıcı API'sini kullanın.
+description: Dijital mürekkep vuruşlarını tanımayı başlatmak için mürekkep tanıyıcı API 'sini kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 05/02/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 7e158b0ae27780eeecb1ee7948087bf59b1502e1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5e3b97faaed84f2c07ea70ddb73bd8e8c9efa71d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721258"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212651"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Hızlı Başlangıç: Dijital Mürekkep mürekkep tanıyıcı REST API ve JavaScript ile tanıması
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Hızlı Başlangıç: Mürekkep tanıyıcı REST API ve JavaScript ile dijital mürekkep tanıma
 
-Dijital mürekkep vuruşlarını üzerinde mürekkep tanıyıcı API'sini kullanmaya başlamak için bu Hızlı Başlangıç'ı kullanın. Bu JavaScript uygulama JSON biçimli bir mürekkep vuruşu verilerini içeren bir API isteği gönderir ve yanıtını görüntüler.
+Mürekkep tanıyıcı API 'sini dijital mürekkep vuruşları üzerinde kullanmaya başlamak için bu hızlı başlangıcı kullanın. Bu JavaScript uygulaması JSON biçimli mürekkep konturu verilerini içeren bir API isteği gönderir ve yanıtı görüntüler.
 
-Bu uygulama JavaScript'te yazılmış ve web tarayıcısında çalışır ancak çoğu programlama dilleri ile uyumlu bir RESTful web hizmeti API'dir.
+Bu uygulama JavaScript 'te yazıldığı ve Web tarayıcınızda çalıştırılsa da, API çoğu programlama dili ile uyumlu olan bir yenilenmiş Web hizmetidir.
 
-Genellikle bir dijital mürekkep uygulamasından API çağrısıyla sonlandırmalısınız. Bu hızlı başlangıçta, bir JSON dosyasından el yazısı aşağıdaki örnek mürekkep vuruşu verileri gönderir.
+Genellikle, API 'YI bir dijital mürekkep uygulamasının içinden çağıracağınızdan. Bu hızlı başlangıç, bir JSON dosyasından aşağıdaki el yazısı örneği için mürekkep konturu verileri gönderir.
 
-![Resimlerdeki el yazısı görüntüsü](../media/handwriting-sample.jpg)
+![El yazısı metin görüntüsü](../media/handwriting-sample.jpg)
 
-Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905).
+Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwlink/?linkid=2089905)' da bulabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir web tarayıcısı
-- Bu hızlı başlangıç örnek mürekkep vuruşu verilerini bulunabilir [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json).
+- Bir Web tarayıcısı
+- Bu hızlı başlangıç için örnek mürekkep konturu verileri [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-ink-strokes.json)'da bulunabilir.
 
 
 [!INCLUDE [cognitive-services-ink-recognizer-signup-requirements](../../../../includes/cognitive-services-ink-recognizer-signup-requirements.md)]
 
 ## <a name="create-a-new-application"></a>Yeni uygulama oluşturma
 
-1. Sık kullandığınız IDE veya Düzenleyici içinde yeni bir oluşturma `.html` dosya. Ardından temel HTML daha sonra ekleyeceğiz kodunu ekleyin.
+1. En sevdiğiniz IDE veya düzenleyicide yeni `.html` bir dosya oluşturun. Ardından daha sonra ekleyeceğiniz kod için temel HTML 'yi ekleyin.
     
     ```html
     <!DOCTYPE html>
@@ -56,9 +56,9 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
     </html>
     ```
 
-2. İçinde `<body>` etiketinde, aşağıdaki HTML'yi ekleyin:
-    1. JSON istek ve yanıt görüntülemek için iki metin alanları.
-    2. Arama düğmesi `recognizeInk()` daha sonra oluşturulacak işlevi.
+2. `<body>` Etiketi içinde, aşağıdaki HTML 'yi ekleyin:
+    1. JSON isteğini ve yanıtını görüntülemek için iki metin alanı.
+    2. Daha sonra oluşturulacak `recognizeInk()` işlevi çağırmak için bir düğme.
     
     ```HTML
     <!-- <body>-->
@@ -72,13 +72,13 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
     <!--</body>-->
     ```
 
-## <a name="load-the-example-json-data"></a>Örnek JSON veri yükleme
+## <a name="load-the-example-json-data"></a>Örnek JSON verilerini yükleme
 
-1. İçinde `<script>` etiketinde, sampleJson için bir değişken oluşturun. Adlı bir JavaScript işlevi oluşturup `openFile()` JSON dosyanızı seçebilmeniz için bir dosya Gezgini açılır. Zaman `Recognize ink` düğmesine tıklandığında, dosya okunurken başlamak ve bu işlevi çağırın.
-2. Kullanım bir `FileReader` nesnenin `onload()` dosyası zaman uyumsuz olarak işlemek için işlevi. 
-    1. Herhangi bir yerine `\n` veya `\r` karakter boş bir dize içeren dosya. 
-    2. Kullanım `JSON.parse()` için geçerli bir JSON metni dönüştürmek için
-    3. Güncelleştirme `request` metin kutusuna uygulama. Kullanım `JSON.stringify()` JSON dizesi biçimlendirmek için. 
+1. `<script>` Etiket içinde samplejson için bir değişken oluşturun. Ardından JSON dosyanızı seçebilmeniz için dosya `openFile()` Gezginini açan adlı bir JavaScript işlevi oluşturun. `Recognize ink` Düğmeye tıklandığında, bu işlevi çağırır ve dosyayı okumaya başlar.
+2. Dosyayı zaman `FileReader` uyumsuz olarak `onload()` işlemek için bir nesnenin işlevini kullanın. 
+    1. Dosyadaki herhangi `\n` veya `\r` karakteri boş bir dize ile değiştirin. 
+    2. Metni `JSON.parse()` geçerli JSON 'a dönüştürmek için kullanın
+    3. `request` Uygulamadaki metin kutusunu güncelleştirin. JSON `JSON.stringify()` dizesini biçimlendirmek için kullanın. 
     
     ```javascript
     var sampleJson = "";
@@ -95,9 +95,9 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
     };
     ```
 
-## <a name="send-a-request-to-the-ink-recognizer-api"></a>Mürekkep tanıyıcı API'sine bir istek gönderin
+## <a name="send-a-request-to-the-ink-recognizer-api"></a>Mürekkep tanıyıcı API 'sine istek gönderme
 
-1. İçinde `<script>` etiketinde, çağrılan bir işlev oluşturma `recognizeInk()`. Bu işlev, daha sonra API'ye çağrı ve sayfa yanıtı güncelleştirin. Aşağıdaki adımlarda bu işlev içindeki kodu ekleyin. 
+1. Etiketi içinde adlı `recognizeInk()`bir işlev oluşturun. `<script>` Bu işlev daha sonra API 'YI çağıracak ve sayfayı Yanıtla güncelleştirecek. Bu işlev içindeki aşağıdaki adımlardan kodu ekleyin. 
         
     ```javascript
     function recognizeInk() {
@@ -105,18 +105,18 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
     }
     ```
 
-    1. Değişkenleri, uç nokta URL'nizi, abonelik anahtarı ve JSON örneği oluşturun. Oluşturup bir `XMLHttpRequest` API isteği göndermek için nesne. 
+    1. Endpoint URL 'niz, abonelik anahtarınız ve örnek JSON için değişkenler oluşturun. Ardından API isteğini `XMLHttpRequest` göndermek için bir nesne oluşturun. 
         
         ```javascript
         // Replace the below URL with the correct one for your subscription. 
-        // Your endpoint can be found in the Azure portal. For example: https://westus2.api.cognitive.microsoft.com
+        // Your endpoint can be found in the Azure portal. For example: "https://<your-custom-subdomain>.cognitiveservices.azure.com";
         var SERVER_ADDRESS = "YOUR-SUBSCRIPTION-URL";
         var ENDPOINT_URL = SERVER_ADDRESS + "/inkrecognizer/v1.0-preview/recognize";
         // Replace the subscriptionKey string value with your valid subscription key.
         var SUBSCRIPTION_KEY = "YOUR-SUBSCRIPTION-KEY";
         var xhttp = new XMLHttpRequest();
         ```
-    2. Dönüş işlevi oluşturma `XMLHttpRequest` nesne. Bu işlev başarılı bir istek API yanıtı ayrıştırılamıyor ve uygulamada görüntüler. 
+    2. `XMLHttpRequest` Nesnesi için return işlevini oluşturun. Bu işlev başarılı bir istekten API yanıtını ayrıştırır ve uygulamayı uygulamada görüntüler. 
             
         ```javascript
         function returnFunction(xhttp) {
@@ -125,7 +125,7 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
             document.getElementById('response').innerHTML = JSON.stringify(response, null, 2);
         }
         ```
-    3. İstek nesnesi hata işlevi oluşturun. Bu işlev, konsola hatayı günlüğe kaydeder. 
+    3. İstek nesnesi için hata işlevini oluşturun. Bu işlev, hatayı konsola kaydeder. 
             
         ```javascript
         function errorFunction() {
@@ -133,7 +133,7 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
         }
         ```
 
-    4. İstek nesnenin bir işlev oluşturma `onreadystatechange` özelliği. İstek nesnenin hazır olma durumu değiştiğinde, yukarıdaki döndürür ve hata işlevleri uygulanır.
+    4. İstek nesnesinin `onreadystatechange` özelliği için bir işlev oluşturun. İstek nesnesinin hazırlık durumu değiştiğinde yukarıdaki geri dönüş ve hata işlevleri uygulanır.
             
         ```javascript
         xhttp.onreadystatechange = function () {
@@ -147,7 +147,7 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
         };
         ```
     
-    5. API isteği gönderin. Abonelik anahtarınızı ekleme `Ocp-Apim-Subscription-Key` üst bilgi ve kümesi `content-type` için `application/json`
+    5. API isteği gönderin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve öğesini `content-type` olarak ayarlayın`application/json`
     
         ```javascript
         xhttp.open("PUT", ENDPOINT_URL, true);
@@ -157,16 +157,16 @@ Bu Hızlı Başlangıç için kaynak kodu bulunabilir [GitHub](https://go.micros
         };
         ```
 
-## <a name="run-the-application-and-view-the-response"></a>Uygulamayı çalıştırmak ve yanıtı görüntüleyin
+## <a name="run-the-application-and-view-the-response"></a>Uygulamayı çalıştırma ve yanıtı görüntüleme
 
-Bu uygulama, web tarayıcınızdan çalıştırılabilir. Başarılı bir yanıt JSON biçiminde döndürülür. Üzerinde JSON yanıt bulabilirsiniz [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json):
+Bu uygulama, Web tarayıcınızda çalıştırılabilir. JSON biçiminde başarılı bir yanıt döndürülür. Ayrıca, [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/javascript/InkRecognition/quickstart/example-response.json)'da JSON yanıtını bulabilirsiniz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 > [REST API başvurusu](https://go.microsoft.com/fwlink/?linkid=2089907)
 
-Mürekkep tanıma API'si dijital mürekkep bir uygulamada nasıl çalıştığını görmek için Github'da aşağıdaki örnek uygulamaları göz atın:
+Mürekkep tanıma API 'sinin dijital bir mürekkep uygulamasında nasıl çalıştığını görmek için GitHub 'da aşağıdaki örnek uygulamalara göz atın:
 * [C# Evrensel Windows Platformu (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [JavaScript web tarayıcı uygulaması](https://go.microsoft.com/fwlink/?linkid=2089908)       

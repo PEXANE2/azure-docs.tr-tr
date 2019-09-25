@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f4816ea2dc67df717e46df61c955d6d156b14d7e
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129677"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240282"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -71,11 +71,11 @@ Birden fazla Log Analytics çalışma alanında (çoklu barındırma) Güncelle�
 
 ### <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Aşağıdaki tabloda desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
+Aşağıdaki tabloda, güncelleştirme değerlendirmeleri için desteklenen işletim sistemlerinin bir listesi gösterilmektedir. Düzeltme eki uygulama karma Runbook Worker gerektirir. Karma Runbook Worker gereksinimleri hakkında bilgi için bkz. [WINDOWS HRW](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) ve [Linux HRW](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)için Yükleme Kılavuzu.
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM ve SP1 standart)|**Güncelleştirme değerlendirmeleri**: Desteklenen<br><br>**Düzeltme eki uygulama**: Karma Runbook Worker gerektirir. [Karma Runbook Worker gereksinimlerine](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) bakın|
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM ve SP1 standart)||
 |CentOS 6 (x86/x64) ve 7 (x64)      | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır. Sınıflandırma tabanlı düzeltme eki uygulama, CentOS 'ın kutudan çıkan güvenlik verilerini döndürmesi için ' yıum ' gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux 'ta sınıflandırmaları güncelleştirme](#linux-2)          |
 |Red Hat Enterprise 6 (x86/x64) ve 7 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) ve 12 (x64)     | Linux aracılarının bir güncelleştirme havuzuna erişimi olmalıdır.        |
@@ -249,6 +249,9 @@ Yeni bir güncelleştirme dağıtımı oluşturmak için **güncelleştirme dağ
 | Yeniden başlatma denetimi| Yeniden başlatmaları nasıl ele alınacağını belirler. Kullanılabilen seçenekler:</br>Gerekirse yeniden başlat (Varsayılan)</br>Her zaman yeniden başlat</br>Hiçbir zaman yeniden başlatma</br>Yalnızca yeniden başlatma - güncelleştirmeleri yüklemez|
 
 Güncelleştirme dağıtımları da programlı bir şekilde oluşturulabilir. REST API güncelleştirme dağıtımı oluşturmayı öğrenmek için bkz. [yazılım güncelleştirme yapılandırması-oluştur](/rest/api/automation/softwareupdateconfigurations/create). Ayrıca, haftalık güncelleştirme dağıtımı oluşturmak için kullanılabilecek bir örnek runbook vardır. Bu runbook hakkında daha fazla bilgi edinmek için bkz. [bir kaynak grubundaki bir veya daha fazla VM için haftalık güncelleştirme dağıtımı oluşturma](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+
+> [!NOTE]
+> [Yeniden başlatmayı yönetmek için kullanılan kayıt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) defteri anahtarları altında listelenen kayıt defteri anahtarları, **yeniden başlatma denetimi** hiçbir şekilde **yeniden başlatma**olarak ayarlandıysa yeniden başlatma olayına neden olabilir.
 
 ### <a name="maintenance-windows"></a>Bakım pencereleri
 

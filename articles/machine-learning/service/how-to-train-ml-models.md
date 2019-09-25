@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 041f80937e3ebae15dd5bd64858ccbd8269104a0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 43597113c439f2b88bee0834dddc8cb37ec0202a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002592"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213524"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Tahmin aracı kullanarak modelleri Azure Machine Learning eğitme
 
@@ -94,13 +94,14 @@ Oluşturmuş olmanız, [hedef işlem](how-to-set-up-training-targets.md#amlcompu
 
 ```Python
 from azureml.train.estimator import Estimator
+from azureml.core.runconfig import MpiConfiguration
 
 estimator = Estimator(source_directory='./my-keras-proj',
                       compute_target=compute_target,
                       entry_script='train.py',
                       node_count=2,
                       process_count_per_node=1,
-                      distributed_backend='mpi',     
+                      distributed_training=MpiConfiguration(),        
                       conda_packages=['tensorflow', 'keras'],
                       custom_docker_image='continuumio/miniconda')
 ```
@@ -112,7 +113,8 @@ Parametre | Açıklama | Varsayılan
 `custom_docker_image`| Kullanmak istediğiniz resmin adı. Yalnızca genel docker depolardaki (Bu durum Docker hub'daki) görüntüleri sağlar. Özel bir Docker deposundan bir görüntü kullanmak için, oluşturucunun `environment_definition` parametresini kullanın. [Örneğe bakın](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb). | `None`
 `node_count`| Eğitim işine yönelik kullanmak için düğüm sayısı. | `1`
 `process_count_per_node`| Her bir düğümde çalıştırılacak işlemleri (veya "çalışanları") sayısı. Bu durumda, kullandığınız `2` GPU'ları her düğümde kullanılabilir.| `1`
-`distributed_backend`| Başlatmak için arka uç MPI Estimator sunan eğitim dağıtılmış.  Paralel veya dağıtılmış eğitimi (ör. `node_count`> 1 veya `process_count_per_node`> 1 veya her ikisi) yürütmek için, ayarlayın `distributed_backend='mpi'`. AML tarafından kullanılan MPI uygulamasıdır [açık MPI](https://www.open-mpi.org/).| `None`
+`distributed_training`| MPı arka ucunu kullanarak dağıtılmış eğitime başlatmaya yönelik [Mpiconation]('https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py') nesnesi.  | `None`
+
 
 Son olarak, eğitim işini gönder:
 ```Python

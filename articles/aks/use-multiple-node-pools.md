@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 93eddc0ff8f1a1af8b485fcdb891f72d874b5c0a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: c1b372dbeaea31e83c8ff42a84fc39d762b2ebdb
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202954"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212257"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) ' de bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -176,7 +176,7 @@ $ az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSClus
 ## <a name="upgrade-a-node-pool"></a>Düğüm havuzunu yükseltme
  
 > [!NOTE]
-> Bir hata denendiğinde, bir küme veya düğüm havuzundaki yükseltme ve ölçeklendirme işlemleri aynı anda gerçekleşemez. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. [Sorun giderme kılavuzumuzdan](https://aka.ms/aks-pending-upgrade)bu konuda daha fazla bilgi edinin.
+> Bir küme veya düğüm havuzundaki yükseltme ve ölçeklendirme işlemleri, bir hata döndürülürse, aynı anda gerçekleşemez. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. [Sorun giderme kılavuzumuzdan](https://aka.ms/aks-pending-upgrade)bu konuda daha fazla bilgi edinin.
 
 Aks kümeniz ilk adımda ilk kez oluşturulduğunda, bir `--kubernetes-version` *1.13.10* belirtildiğinde. Bu, Kubernetes sürümünü hem denetim düzlemi hem de varsayılan düğüm havuzu için ayarlar. Bu bölümdeki komutlar, tek bir belirli düğüm havuzunun nasıl yükseltileceğini açıklamaktadır.
 
@@ -245,15 +245,15 @@ En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı K
 AKS kümesi, Kubernetes sürümleriyle ilişkili iki küme kaynak nesnesine sahiptir. Birincisi, bir denetim düzlemi Kubernetes sürümüdür. İkincisi, Kubernetes sürümü olan bir aracı havuzudur. Denetim düzlemi bir veya daha fazla düğüm havuzlarıyla eşlenir. Bir yükseltme işleminin davranışı, hangi Azure CLı komutunun kullanıldığına bağlıdır.
 
 1. Denetim düzlemi 'nin yükseltilmesi için kullanılması gerekir`az aks upgrade`
-   * Bu işlem denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir
-   * Bayrağa `az aks upgrade` `--control-plane-only` geçerek yalnızca küme denetim düzlemi 'ni yükseltilecektir ve ilişkili düğüm havuzlarının hiçbirini kullanamazsınız * bayrak, aks-Preview uzantısı v 0.4.16 veya üzeri sürümlerde kullanılabilir `--control-plane-only`
+   * Bu, denetim düzlemi sürümünü ve kümedeki tüm düğüm havuzlarını yükseltir
+   * Bayrağıyla`--control-plane-only` geçerek `az aks upgrade` yalnızca küme denetim düzlemi yükseltilir ve ilişkili düğüm havuzlarının hiçbiri değiştirilmez. Bayrak `--control-plane-only` , **aks-Preview uzantısı v 0.4.16** veya üzeri sürümlerde kullanılabilir.
 1. Tek tek düğüm havuzlarının yükseltilmesi için kullanılması gerekir`az aks nodepool upgrade`
-   * Bu, yalnızca hedef düğüm havuzunu belirtilen Kubernetes sürümüyle yükseltecek
+   * Bu, yalnızca belirtilen Kubernetes sürümü ile hedef düğüm havuzunu yükseltir
 
 Düğüm havuzlarının tuttuğu Kubernetes sürümleri arasındaki ilişki Ayrıca bir kural kümesine uymalıdır.
 
 1. Denetim düzlemi veya düğüm havuzu Kubernetes sürümünü indirgeyemezsiniz.
-1. Düğüm havuzu Kubernetes sürümü belirtilmemişse, kullanılan varsayılan değer denetim düzlemi sürümüne geri dönecektir.
+1. Düğüm havuzu Kubernetes sürümü belirtilmemişse, davranış kullanılan istemciye bağlıdır. ARM şablonundaki bildirim için, düğüm havuzu için tanımlanan mevcut sürüm, hiçbir değer ayarlanmamışsa denetim düzlemi sürümü kullanılır.
 1. Belirli bir zamanda bir denetim düzlemi veya düğüm havuzu yükseltebilir ya da ölçeklendirebilirsiniz, her iki işlemi de aynı anda gönderemezsiniz.
 1. Düğüm havuzu Kubernetes sürümü, denetim düzlemi ile aynı ana sürüm olmalıdır.
 1. Düğüm havuzu Kubernetes sürümü en fazla iki (2) alt sürüm olan denetim düzleden daha düşük, hiçbir zaman daha az olabilir.
@@ -593,7 +593,7 @@ AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak b
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Kayıt başarılı olduktan sonra, [Yukarıdaki](#manage-node-pools-using-a-resource-manager-template) şekilde aynı yönergeleri izleyerek bir Azure Resource Manager şablonu dağıtın ve agentPoolProfiles üzerinde "Enablenodepublicıp" Boole değeri özelliğini ekleyin. Bunu `true` varsayılan`false` olarak olarak ayarla ayarı belirtilmezse, belirtilen şekilde ayarlanır. Bu yalnızca bir oluşturma zamanı özelliğidir ve en düşük API sürümü olan 2019-06-01 gerektirir. Bu, hem Linux hem de Windows düğüm havuzlarına uygulanabilir.
+Kayıt başarılı olduktan sonra, [Yukarıdaki](#manage-node-pools-using-a-resource-manager-template) şekilde aynı yönergeleri izleyerek bir Azure Resource Manager şablonu dağıtın ve agentPoolProfiles üzerinde "Enablenodepublicıp" Boole değeri özelliğini ekleyin. Bunu `true` varsayılan olarak olarak ayarla ayarı belirtilmemiş olarak `false` ayarlanır. Bu yalnızca bir oluşturma zamanı özelliğidir ve en düşük API sürümü olan 2019-06-01 gerektirir. Bu, hem Linux hem de Windows düğüm havuzlarına uygulanabilir.
 
 ```
 "agentPoolProfiles":[  

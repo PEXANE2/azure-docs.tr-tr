@@ -4,16 +4,16 @@ description: Azure depolama ile ilgili sorunları tanımlamak, tanılamak ve sor
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2017
+ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 08c19daa0af226834ea70db8847e1637c2373351
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 34aa4ff6c54b34acf865af0b57c3dfa7945a637c
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855363"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212842"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -102,6 +102,8 @@ Windows performans izleme hakkında bilgi sahibiyseniz, depolama ölçümlerini 
 
 [Azure Portal](https://portal.azure.com) hangi saatlik ölçümleri göstermek istediğinizi seçebilir ve saatlik bir ölçüm belirli bir eşiği aştığında yöneticilere e-posta ile bildirimde bulunan kuralları yapılandırabilirsiniz. Daha fazla bilgi için bkz. [uyarı bildirimleri alma](/azure/monitoring-and-diagnostics/monitoring-overview-alerts).
 
+[Depolama Için Azure Izleyicisi 'ni](../../azure-monitor/insights/storage-insights-overview.md) (Önizleme) incelemenizi öneririz. Azure Storage hizmetlerinizin performansı, kapasitesi ve kullanılabilirliğinden oluşan Birleşik bir görünüm sunarak Azure depolama hesaplarınızın kapsamlı bir şekilde izlenmesini sağlayan bir Azure Izleyici özelliğidir. Her şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez ve bu ölçümleri önceden tanımlı etkileşimli grafiklerden ve diğer Görselleştirmelerde hemen görüntüleyebilirsiniz.
+
 Depolama hizmeti en iyi çabayı kullanarak ölçümleri toplar, ancak her depolama işlemini kaydedemeyebilir.
 
 Azure portal, bir depolama hesabı için kullanılabilirlik, toplam istek ve ortalama gecikme sayısı gibi ölçümleri görüntüleyebilirsiniz. Bir bildirim kuralı, kullanılabilirliği belirli bir düzeyin altına düşerse, yöneticiye uyarı verecek şekilde de ayarlanır. Bu verileri görüntülerken, araştırma için olası bir alan tablo hizmeti başarı yüzdesi% 100 ' dır (daha fazla bilgi için "[Düşük PercentSuccess ölçümleri göster veya ClientOtherErrors işlem durumundaki işlemlerini analytics günlük girdilerine sahip]").
@@ -138,7 +140,7 @@ Depolama ölçümleri yalnızca blob hizmeti için kapasite ölçümlerini depol
 Blob 'lar gibi çeşitli depolama nesnelerinin boyutunu tahmin etmeye yönelik yardım için bkz. [Azure depolama faturalandırmasını anlama – bant genişliği, işlemler ve kapasite](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
 ### <a name="monitoring-availability"></a>Kullanılabilirliği izleme
-Saatlik veya dakikalık ölçüm tablolarındaki **kullanılabilirlik** sütunundaki değeri izleyerek Depolama hesabınızdaki depolama hizmetlerinin kullanılabilirliğini izlemeniz gerekir; **$MetricsHourPrimaryTransactionsBlob**, **$ MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue** , **$MetricsCapacityBlob**. **Kullanılabilirlik** sütunu, hizmetin veya satır tarafından temsıl edilen API işleminin kullanılabilirliğini gösteren bir yüzde değeri içerir (satır, satırda hizmetin bir bütün olarak veya belirli bir API işlemi için ölçümleri içerip içermediğini gösterir) .
+Saatlik veya dakikalık ölçüm tablolarındaki **kullanılabilirlik** sütunundaki değeri izleyerek Depolama hesabınızdaki depolama hizmetlerinin kullanılabilirliğini izlemeniz gerekir; **$MetricsHourPrimaryTransactionsBlob**, **$ MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue** , **$MetricsCapacityBlob**. **Kullanılabilirlik** sütunu, hizmetin veya satır tarafından temsıl edilen API işleminin kullanılabilirliğini gösteren bir yüzde değeri içerir (satır, satırda hizmetin bir bütün olarak veya belırlı bir API işlemi için ölçümleri içerip **içermediğini gösterir)** .
 
 % 100 ' den küçük bir değer, bazı depolama isteklerinin başarısız olduğunu gösterir. Ölçüm verilerinde, **Servertimeouterror**gibi farklı hata türleriyle isteklerin sayısını gösteren diğer sütunları inceleyerek neden başarısız olduğunu görebilirsiniz. Hizmetin bölümleri daha iyi yük dengeleme isteğine taşıdığı sırada geçici sunucu zaman aşımları gibi nedenlerle **kullanılabilirliği** geçici 100 olarak görmeniz beklenir; istemci uygulamanızdaki yeniden deneme mantığı, bu tür aralıklı koşulları işlemelidir. [Günlüğe kaydedilen işlemler ve durum iletileri depolama Analizi](https://msdn.microsoft.com/library/azure/hh343260.aspx) makale, depolama ölçümlerinin **kullanılabilirlik** hesaplamasına dahil edilen işlem türlerini listeler.
 
@@ -504,7 +506,7 @@ SAS belirteçleri oluşturmak için Depolama İstemcisi Kitaplığı’nı kulla
 
 Depolama Istemci kitaplığı tarafından oluşturulan aşağıdaki istemci tarafı günlüğü, istemci oluşturduğu blob için kapsayıcıyı bulamadığında sorun olduğunu gösterir. Bu günlük aşağıdaki depolama işlemlerinin ayrıntılarını içerir:
 
-| İstek Kimliği | Çalışma |
+| İstek Kimliği | İşlem |
 | --- | --- |
 | 07b26a5d-... |Blob kapsayıcısını silmek için **Deleteifexists** yöntemi. Bu işlemin kapsayıcının varlığını denetlemek için bir **Head** isteği içerdiğine unutmayın. |
 | e2d06d78... |Blob kapsayıcısını oluşturmak için **Createifnotexists** yöntemi. Bu işlemin kapsayıcının varlığını denetleyen bir **baş** isteği içerdiğine unutmayın. **Baş** bir 404 iletisi döndürür, ancak devam eder. |
@@ -560,13 +562,13 @@ Bu örnekte, günlük istemcisinin, **Uploadfromstream** yönteminden (de8b1c3c-
 
 Aşağıdaki tabloda, depolama günlüğü günlük dosyasından örnek bir sunucu tarafı günlüğü iletisi gösterilmektedir:
 
-| Ad | Value |
+| Name | Value |
 | --- | --- |
 | İstek başlangıç saati | 2014-05-30T06:17:48.4473697 Z |
 | İşlem türü     | GetBlobProperties            |
 | İstek durumu     | SASAuthorizationError        |
 | HTTP durum kodu   | 404                          |
-| Kimlik doğrulaması türü| 'Larının                          |
+| Kimlik doğrulama türü| 'Larının                          |
 | Hizmet türü       | Blob                         |
 | İstek URL'si        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
 | &nbsp;                 |   ? ZF = 2014-02-14 & SR = c & sı = mypolicy & SIG = xxxxx&;api-Version = 2014-02-14 |
@@ -625,7 +627,7 @@ Bu sorun sık sık oluşuyorsa, istemcinin tablo hizmetinden alınan bildirimler
 ### <a name="the-client-is-receiving-409-messages"></a>İstemci HTTP 409 (çakışma) iletilerini alıyor
 Aşağıdaki tabloda iki istemci işlemi için sunucu tarafı günlüğünden ayıklama işlemi gösterilmektedir: **Deleteifexists** , aynı blob kapsayıcısı adı kullanılarak **Createifnotexists** tarafından hemen izlenir. Her istemci işlemi, sunucuya iki istekle gönderilir, ilk olarak bir **Getcontainerproperties** , kapsayıcının var olup olmadığını kontrol etmek için, ardından **DeleteContainer** veya **CreateContainer** isteği ile sonuçlanır.
 
-| Timestamp | Çalışma | Sonuç | Kapsayıcı adı | İstemci istek kimliği |
+| Timestamp | İşlem | Sonuç | Kapsayıcı adı | İstemci istek kimliği |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -811,7 +813,7 @@ Ayrıca, performans ve kullanılabilirlik izlemenin bir parçası olarak Azure D
 
 Azure depolama 'da analiz hakkında daha fazla bilgi için şu kaynaklara bakın:
 
-* [Azure portal bir depolama hesabını izleme](storage-monitor-storage-account.md)
+* [Azure portalında depolama hesabını izleme](storage-monitor-storage-account.md)
 * [Depolama Analizi](storage-analytics.md)
 * [Depolama Analizi ölçümleri](storage-analytics-metrics.md)
 * [Storage Analytics ölçüm tablosu şeması](/rest/api/storageservices/storage-analytics-metrics-table-schema)

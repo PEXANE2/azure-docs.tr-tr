@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 46c08f48efc00c1e4d88ceccb680c0cfd1671b2f
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 30994133b19c4f59ae9e8be26caffe14348638f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203567"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219375"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Azure CLı kullanarak özel uç nokta oluşturma
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, Azure CLı kullanarak özel bir uç noktaya sahip bir SQL veritabanı sunucusu olan bir sanal ağ üzerinde bir VM oluşturmayı öğreneceksiniz. Ardından, VM 'ye erişebilir ve özel bağlantı kaynağına (Bu örnekteki özel bir Azure SQL veritabanı sunucusu) güvenli bir şekilde erişebilirsiniz. 
@@ -144,7 +144,7 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
 
-## <a name="access-dql-database-server-privately-from-the-vm"></a>DQL veritabanı sunucusuna VM 'den özel olarak erişin
+## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL veritabanı sunucusuna VM 'den özel olarak erişme
 
 Bu bölümde, Özel uç nokta kullanarak VM 'den SQL veritabanı sunucusuna bağlanacaksınız.
 

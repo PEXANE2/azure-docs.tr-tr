@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: fe4317c193e8aa6c6723556ef36d6111df6f51cd
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688044"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240855"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü sorunlarını giderme
 
@@ -44,6 +44,14 @@ The subscription is not registered to use namespace 'Microsoft.Insights'.
 The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
 ```
 
+```error
+A parameter cannot be found that matches parameter name 'TagName'
+```
+
+```error
+Start-AzureRmVm : Run Login-AzureRmAccount to login
+```
+
 ### <a name="cause"></a>Nedeni
 
 Dağıtımlar aşağıdaki nedenlerden biri nedeniyle başarısız olabilir:
@@ -52,6 +60,7 @@ Dağıtımlar aşağıdaki nedenlerden biri nedeniyle başarısız olabilir:
 2. VM 'Leri Başlat/Durdur çözümünün dağıtımına izin veren bir ilke yerinde.
 3. `Microsoft.OperationsManagement`, Veyakaynak`Microsoft.Automation`türlerikayıtlıdeğil. `Microsoft.Insights`
 4. Log Analytics çalışma alanınızın üzerinde bir kilidi vardır.
+5. Eski bir Azurerd modülleri sürümüne veya Başlat/Durdur çözümüne sahipsiniz.
 
 ### <a name="resolution"></a>Çözüm
 
@@ -66,6 +75,7 @@ Sorununuz için olası çözümleri veya aranacak konumları görmek için aşa�
 
    Sağlayıcıları kaydettirme sırasında hatalar hakkında daha fazla bilgi edinmek için bkz. [kaynak sağlayıcısı kaydı hatalarını giderme](../../azure-resource-manager/resource-manager-register-provider-errors.md) .
 4. Log Analytics çalışma alanınızda bir kilit varsa, Azure portal çalışma alanınıza gidin ve kaynaktaki kilitleri kaldırın.
+5. Yukarıdaki çözünürlükler sorununuzu çözmezse, Başlat/Durdur çözümünü yeniden dağıtmak için [çözümü güncelleştirme](../automation-solution-vm-management.md#update-the-solution) bölümündeki yönergeleri izleyin.
 
 ## <a name="all-vms-fail-to-startstop"></a>Senaryon Tüm VM 'Ler başlatılamadı/durdurulamıyor
 
@@ -203,14 +213,14 @@ Soruna eksik izinler neden olmuş olabilir. Bir kaynaktaki izinleri nasıl denet
 
 ### <a name="issue"></a>Sorun
 
-Bu sayfada listelenmeyen çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü kullanılırken bir sorunla veya beklenmedik bir sonuçla karşılaşırsınız.
+Bu sayfada listelenmeyen VM'leri çalışma saatleri dışında başlat/durdur çözümünü kullanırken bir sorun veya beklenmeyen bir sonuç yaşarsınız.
 
 ### <a name="cause"></a>Nedeni
 
 Birçok kez hatanın nedeni çözümün eski ve güncel olmayan bir sürümü kullanılıyor olabilir.
 
 > [!NOTE]
-> Çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü, çözümü dağıtırken Otomasyon hesabınıza içeri aktarılan Azure modülleriyle test edilmiştir. Çözüm şu anda Azure modülünün daha yeni sürümleriyle çalışmaz. Bu yalnızca, çalışma saatleri dışında VM 'Leri Başlat/Durdur çözümü çalıştırmak için kullandığınız Otomasyon hesabını etkiler. Azure [Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md) bölümünde açıklandığı gibi diğer otomasyon hesaplarınızda Azure modülünün daha yeni sürümlerini kullanmaya devam edebilirsiniz.
+> VM'leri çalışma saatleri dışında başlat/durdur çözümü, çözümü dağıtırken Otomasyon hesabınıza içeri aktarılan Azure modülleri ile test edilmiştir. Çözüm şu anda Azure modülünün daha yeni sürümleriyle çalışmaz. Bu yalnızca VM'leri çalışma saatleri dışında başlat/durdur çözümünü çalıştırmak için kullandığınız Otomasyon hesabını etkiler. Azure [Otomasyonu 'nda Azure PowerShell modüllerini güncelleştirme](../automation-update-azure-modules.md) bölümünde açıklandığı gibi diğer otomasyon hesaplarınızda Azure modülünün daha yeni sürümlerini kullanmaya devam edebilirsiniz.
 
 ### <a name="resolution"></a>Çözüm
 

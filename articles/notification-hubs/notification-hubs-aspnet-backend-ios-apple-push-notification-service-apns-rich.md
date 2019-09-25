@@ -3,9 +3,9 @@ title: Azure Notification Hubs zengin gönderim
 description: Azure 'dan bir iOS uygulamasına zengin anında iletme bildirimleri göndermeyi öğrenin. Kod örnekleri, amaç-C ve ile C#yazılmıştır.
 documentationcenter: ios
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 590304df-c0a4-46c5-8ef5-6a6486bb3340
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,13 +13,15 @@ ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 7fcb4a1db62abfc04d2b0c60488d35393d98c57e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348483"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212196"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs zengin gönderim
 
@@ -145,7 +147,7 @@ Yalnızca bir bildirimin *kimliğini* göndermek için uygulamanızın arka ucun
 2. **Yetenekler**' e tıklayın, **arka plan modlarını**açın ve **uzak bildirimler** onay kutusunu işaretleyin.
 
     ![][IOS3]
-3. ' `Main.storyboard`İ açın ve [Kullanıcı](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) öğreticisini bilgilendirdiğinizden bir görünüm denetleyicinizin (Bu öğreticide giriş görünümü denetleyicisi olarak adlandırılır) olduğundan emin olun.
+3. ' `Main.storyboard`İ açın ve Kullanıcı öğreticisini [bilgilendirdiğinizden](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) bir görünüm denetleyicinizin (Bu öğreticide giriş görünümü denetleyicisi olarak adlandırılır) olduğundan emin olun.
 4. Görsel taslağınızı bir **Gezinti denetleyicisi** ekleyin ve ana görünüm denetleyicisine sürükleyip sürükleyerek gezintinin **kök görünümünü** yapın. **Ilk görünüm denetleyicisinin** öznitelikler denetçisinde yalnızca gezinti denetleyicisi için seçildiğinden emin olun.
 5. Görsel taslağa bir **Görünüm denetleyicisi** ekleyin ve bir **görüntü görünümü**ekleyin. Bu, bildirim üzerine tıklayarak kullanıcıların daha fazla bilgi edinmeleri için göreceği sayfasıdır. Görsel taslağınızı aşağıdaki gibi görünmelidir:
 

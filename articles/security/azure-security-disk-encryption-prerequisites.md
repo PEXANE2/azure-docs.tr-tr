@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f7ad49fc56fc82955f79155838c69ff714aba2f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bd51e70122a5457c8dcf1bd8f2061fe25943e87f
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845869"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224500"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk şifrelemesi önkoşulları
 
@@ -28,7 +28,7 @@ Ele alınan desteklenen senaryolar için Azure Iaas sanal makinelerinde Azure Di
 
 ## <a name="supported-vm-sizes"></a>Desteklenen VM boyutları
 
-Azure disk şifrelemesi [, temel, A serisi VM](/pricing/details/virtual-machines/series/)'lerde kullanılamaz. Azure disk şifrelemesi, bu minimum bellek gereksinimlerini karşılayan diğer sanal makinelerde kullanılabilir:
+Azure disk şifrelemesi [, temel, A serisi VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)'lerde kullanılamaz. Azure disk şifrelemesi, bu minimum bellek gereksinimlerini karşılayan diğer sanal makinelerde kullanılabilir:
 
 | Sanal makine | Minimum bellek gereksinimi |
 |--|--|

@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel önizlemesinde arama özellikleri | Microsoft Docs
+title: Azure Sentinel 'de arama özellikleri | Microsoft Docs
 description: Bu makalede, Azure Sentinel arama yeteneklerini kullanma açıklanmaktadır.
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5e6ad3c0b415722349dc584434add1031b7c3cb1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780456"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240608"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Azure Sentinel önizlemede bulunan tehditler için Hunt
+# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Azure Sentinel 'de bulunan tehditler için Hunt
 
-> [!IMPORTANT]
-> Azure Sentinel Şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Güvenlik tehditlerini arama konusunda öngörülü bir araştırmacısı, Azure, kuruluşunuzun veri kaynakları genelinde güvenlik tehditleri aramak için arama ve sorgu araçlarını güçlü bir şekilde ele almak isteyen bir. Ancak, sistemleriniz ve güvenlik gereçleriniz, anlamlı olaylara ayrıştırma ve filtreleme zor olabilecek veri Dağları oluşturur. Güvenlik analistlerinin güvenlik uygulamalarınız tarafından algılanmayan yeni anormaller için güvenli bir şekilde görünmesine yardımcı olmak için, Azure Sentinel ' yerleşik arama sorguları, ağınızda zaten bulunan verilerde sorunları bulmak için doğru soruları sormaya kılavuzluk eder. 
 
@@ -41,8 +39,7 @@ Azure Sentinel ile aşağıdaki özelliklerden yararlanabilirsiniz:
 
 - IntelliSense ile güçlü sorgu dili: Bir sorgu dilinin üzerine kurulmuştur ve bu sayede bir sonraki düzeye getirmeniz gereken esnekliği elde edersiniz.
 
-- Kendi yer işaretlerinizi oluşturun: Ara işlem sırasında, tüm eşleşmeler, panolar veya olağandışı ya da şüpheli olabilecek etkinliklerle karşılaşabilirsiniz. Gelecekte bunlara geri dönebilmeniz için bu öğeleri işaretlemek üzere yer işareti işlevini kullanın. Yer işaretleri, araştırma için bir olay oluşturmak üzere kullanılacak öğeleri daha sonra kaydetmenizi sağlar. Yer işaretleri hakkında daha fazla bilgi için bkz. Use [yer işaretlerini hunme].
-
+- Kendi yer işaretlerinizi oluşturun: Ara işlem sırasında, tüm eşleşmeler, panolar veya olağandışı ya da şüpheli olabilecek etkinliklerle karşılaşabilirsiniz. Gelecekte bunlara geri dönebilmeniz için bu öğeleri işaretlemek üzere yer işareti işlevini kullanın. Yer işaretleri, araştırma için bir olay oluşturmak üzere kullanılacak öğeleri daha sonra kaydetmenizi sağlar. Yer işaretleri hakkında daha fazla bilgi için bkz. arama [sırasında yer Işaretlerini kullanma](hunting.md).
 - Araştırmayı otomatikleştirmek için not defterlerini kullanın: Not defterleri, araştırma ve hunın adımlarında gezinmek için oluşturabileceğiniz adım adım PlayBook 'lardır.  Not defterleri, kuruluşunuzdaki diğer kişilerle paylaşılabilen, yeniden kullanılabilir bir PlayBook 'ta bulunan tüm adımları kapsüller. 
 - Depolanan verileri sorgula: Sorgu yapmanız için tablolardaki verilere erişilebilir. Örneğin, işlem oluşturma, DNS olayları ve diğer birçok olay türünü sorgulayabilirsiniz.
 
@@ -50,10 +47,10 @@ Azure Sentinel ile aşağıdaki özelliklerden yararlanabilirsiniz:
  
 ## <a name="get-started-hunting"></a>Kullanmaya başlayın
 
-1. Azure Sentinel portalında, Hunme 'ye tıklayın.
+1. Azure Sentinel portalında, **hunme**' ye tıklayın.
   ![Azure Sentinel, aramaya başlıyor](media/tutorial-hunting/hunting-start.png)
 
-2. Hunme sayfasını açtığınızda , tüm arama sorguları tek bir tabloda görüntülenir. Tabloda Microsoft 'un Güvenlik analistlerinin ekibi tarafından yazılan tüm sorgular ve oluşturduğunuz veya değiştirdiğiniz ek sorgular listelenir. Her sorgu, ne araydıklarından ve üzerinde ne tür verilerin çalıştığı hakkında bir açıklama sağlar. Bu şablonlar çeşitli taktiklerinde gruplandırılır. sağ taraftaki simgeler, tehdit türünü kategorilere ayırarak, ilk erişim, kalıcılık ve exfiltrame gibi. Bu arama şablonlarına, alanlardan herhangi birini kullanarak filtre uygulayabilirsiniz. Sık kullanılanlarınıza herhangi bir sorgu kaydedebilirsiniz. Bir sorguyu sık kullanılanlarınıza kaydederek, arama sayfasına her erişildiğinde sorgu otomatik olarak çalışır . Kendi arama sorgunuzu oluşturabilir veya var olan bir sorgu şablonunu kopyalayabilir ve özelleştirebilirsiniz. 
+2. **Hunme** sayfasını açtığınızda, tüm arama sorguları tek bir tabloda görüntülenir. Tabloda Microsoft 'un Güvenlik analistlerinin ekibi tarafından yazılan tüm sorgular ve oluşturduğunuz veya değiştirdiğiniz ek sorgular listelenir. Her sorgu, ne araydıklarından ve üzerinde ne tür verilerin çalıştığı hakkında bir açıklama sağlar. Bu şablonlar çeşitli taktiklerinde gruplandırılır. sağ taraftaki simgeler, tehdit türünü kategorilere ayırarak, ilk erişim, kalıcılık ve exfiltrame gibi. Bu arama şablonlarına, alanlardan herhangi birini kullanarak filtre uygulayabilirsiniz. Sık kullanılanlarınıza herhangi bir sorgu kaydedebilirsiniz. Bir sorguyu sık kullanılanlarınıza **kaydederek, arama sayfasına her** erişildiğinde sorgu otomatik olarak çalışır. Kendi arama sorgunuzu oluşturabilir veya var olan bir sorgu şablonunu kopyalayabilir ve özelleştirebilirsiniz. 
  
 2. Arama sayfasını kapatmadan herhangi bir sorgu çalıştırmak için sorgu ayrıntıları sayfasında **Sorguyu Çalıştır** ' a tıklayın.  Eşleşme sayısı tablo içinde görüntülenir. Sorguların ve bunların eşleşmelerin listesini gözden geçirin. Eşleşmenin ilişkili olduğu sonlandırma zincirindeki aşamayı göz atın.
 
@@ -61,7 +58,7 @@ Azure Sentinel ile aşağıdaki özelliklerden yararlanabilirsiniz:
 
 4.  Satırı tıklatın ve Araştırılması gereken satırları eklemek için **yer Işareti Ekle** ' yi seçin. bunu, şüpheli görünen her şey için yapabilirsiniz. 
 
-5. Ardından, ana Hunme sayfasına dönün ve tüm şüpheli etkinlikleri görmek Için **yer işaretleri** sekmesine tıklayın. 
+5. Ardından, ana **hunme** sayfasına dönün ve tüm şüpheli etkinlikleri görmek Için **yer işaretleri** sekmesine tıklayın. 
 
 6. Bir yer işareti seçin ve araştırma deneyimini açmak için **Araştır** ' a tıklayın. Yer işaretlerine filtre uygulayabilirsiniz. Örneğin, bir kampanyayı araştırıyorsanız kampanya için bir etiket oluşturabilir ve sonra tüm yer imlerini kampanyaya göre filtreleyebilirsiniz.
 

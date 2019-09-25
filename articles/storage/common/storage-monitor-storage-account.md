@@ -1,5 +1,5 @@
 ---
-title: Azure Depolama hesabını izleme | Microsoft Docs
+title: Azure portal bir Azure Depolama hesabını izleme | Microsoft Docs
 description: Azure portal kullanarak Azure 'da bir depolama hesabını izlemeyi öğrenin.
 author: normesta
 ms.service: storage
@@ -8,16 +8,18 @@ ms.date: 07/31/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 912c1c3403191f40dac054f99f29ac60ba84ce8f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844923"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211862"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure portal bir depolama hesabını izleme
 
-[Azure depolama Analizi](storage-analytics.md) , tüm depolama hizmetleri için ölçümler, blob 'lar, kuyruklar ve tablolar için Günlükler sağlar. Hesabınız için hangi ölçüm ve günlüklerin kaydedileceğini yapılandırmak ve ölçüm verilerinizin görsel sunumlarını sağlayan grafikleri yapılandırmak için [Azure Portal](https://portal.azure.com) kullanabilirsiniz.
+[Azure depolama Analizi](storage-analytics.md) , tüm depolama hizmetleri için ölçümler, blob 'lar, kuyruklar ve tablolar için Günlükler sağlar. Hesabınız için hangi ölçüm ve günlüklerin kaydedileceğini yapılandırmak ve ölçüm verilerinizin görsel sunumlarını sağlayan grafikleri yapılandırmak için [Azure Portal](https://portal.azure.com) kullanabilirsiniz. 
+
+[Depolama Için Azure Izleyicisi 'ni](../../azure-monitor/insights/storage-insights-overview.md) (Önizleme) incelemenizi öneririz. Azure Storage hizmetlerinizin performansı, kapasitesi ve kullanılabilirliğinden oluşan Birleşik bir görünüm sunarak Azure depolama hesaplarınızın kapsamlı bir şekilde izlenmesini sağlayan bir Azure Izleyici özelliğidir. Her şeyi etkinleştirmenizi veya yapılandırmanızı gerektirmez ve bu ölçümleri önceden tanımlı etkileşimli grafiklerden ve diğer Görselleştirmelerde hemen görüntüleyebilirsiniz.
 
 > [!NOTE]
 > Azure portal izleme verilerini inceleme ile ilişkili maliyetler vardır. Daha fazla bilgi için bkz. [depolama Analizi](storage-analytics.md).
@@ -84,7 +86,7 @@ Kullanılabilir ölçümlerin listesi, açılan listede seçtiğiniz hizmete ve 
 
 ### <a name="metrics-resolution"></a>Ölçüm çözümlemesi
 
-Tanılamada seçtiğiniz ölçümler, hesabınız için kullanılabilir olan ölçümlerin çözümlenme durumunu belirler:
+**Tanılamada** seçtiğiniz ölçümler, hesabınız için kullanılabilir olan ölçümlerin çözümlenme durumunu belirler:
 
 * **Toplama** izlemesi, giriş/çıkış, kullanılabilirlik, gecikme süresi ve başarı yüzdeleri gibi ölçümler sağlar. Bu ölçümler blob, tablo, dosya ve kuyruk hizmetlerinden toplanır.
 * **API başına** , hizmet düzeyi toplamalarının yanı sıra ayrı depolama işlemleri için kullanılabilen ölçümler sayesinde daha fazla çözüm sağlar.
