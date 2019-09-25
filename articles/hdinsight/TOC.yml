@@ -217,6 +217,8 @@
               href: ./hdinsight-release-notes.md
             - name: HDInsight 3.6 tam sürüm notları
               href: ./hdinsight-release-notes-archive.md
+        - name: SSS
+          href: ./hdinsight-faq.md
         - name: Küme yapılandırmaları için ayrıntılı rol tabanlı erişime geçme
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md
         - name: Linux’ta HDInsight kullanma ile ilgili bilgiler
