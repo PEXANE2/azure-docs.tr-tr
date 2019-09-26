@@ -1,5 +1,5 @@
 ---
-title: IoT Edge Preview için IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni anlama | Microsoft Docs
+title: IoT Edge IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni anlama | Microsoft Docs
 description: IoT Edge için IoT güvenlik modülü için Azure Güvenlik Merkezi 'nin mimarisini ve yeteneklerini anlayın.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,18 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 6114fc768ad04ef812f6093d006ec9ad91b17af3
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596860"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315900"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge güvenlik modülü
-
-> [!IMPORTANT]
-> IoT Edge IoT hizmeti için Azure Güvenlik Merkezi şu anda genel önizlemededir.
-> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) kenarda iş akışlarını yönetmek ve gerçekleştirmek için güçlü özellikler sunar.
 IoT ortamlarında IoT Edge oynadığı anahtar bölüm, kötü amaçlı aktörler için özellikle çekici hale gelir.
@@ -67,5 +63,5 @@ IoT dağıtımı için Azure Güvenlik Merkezi 'ni kullanmaya devam etmek için 
 - [IoT Edge için güvenlik modülünü](how-to-deploy-edge.md) dağıtma
 - [Güvenlik modülünüzü yapılandırmayı](how-to-agent-configuration.md) öğrenin
 - IoT [hizmeti önkoşulları](service-prerequisites.md) Için Azure Güvenlik Merkezi 'ni gözden geçirin
-- [IoT Hub IoT hizmeti Için Azure Güvenlik Merkezi](quickstart-onboard-iot-hub.md) 'Ni nasıl etkinleştirebileceğinizi öğrenin
+- [IoT Hub IoT hizmeti Için Azure Güvenlik Merkezi 'ni nasıl etkinleştirebileceğinizi](quickstart-onboard-iot-hub.md) öğrenin
 - [IoT Için Azure Güvenlik Merkezi](resources-frequently-asked-questions.md) 'nden hizmet hakkında daha fazla bilgi edinin

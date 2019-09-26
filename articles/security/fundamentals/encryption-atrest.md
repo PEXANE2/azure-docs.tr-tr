@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 09/26/2019
 ms.author: barclayn
-ms.openlocfilehash: b506c6f6101e8c5ce71231a8178f70fa5a0914d8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3b60a6da1e7961c7709bb0b19e91dc6f15a51a1c
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262815"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316772"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure veri şifreleme-Rest
 
@@ -178,7 +178,7 @@ Bekleyen verileri şifrelemek veya şifrelerini çözmek için bir anahtar almak
 - Müşteri, anahtar yaşam döngüsü yönetimi için tam sorumluluğa sahiptir
 - Ek kurulum & yapılandırma ek yükü
 
-#### <a name="server-side-encryption-using-service-managed-keys-in-customer-controlled-hardware"></a>Müşteri denetimli donanımda hizmet tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifreleme
+#### <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Müşteri tarafından denetlenen donanımda müşteri tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme
 
 Bazı Azure Hizmetleri, ana bilgisayarı kendi anahtarınızı (HYOK) anahtar yönetim modelinize etkinleştirir. Bu yönetim modu, bekleyen verileri şifrelemek ve Microsoft 'un denetimi dışında özel bir depodaki anahtarları yönetmek için gereken senaryolarda faydalıdır. Bu modelde, hizmetin anahtarı bir dış siteden alması gerekir. Performans ve kullanılabilirlik garantisi etkilendi ve yapılandırma daha karmaşıktır. Ayrıca, şifreleme ve şifre çözme işlemleri sırasında hizmetin DEK erişimi olduğundan, bu modelin genel güvenlik garantisi, anahtarların Azure Key Vault ' de müşteri tarafından yönetilme biçimine benzer.  Sonuç olarak, belirli anahtar yönetim gereksinimlerine sahip olmadıkları sürece bu model çoğu kuruluşa uygun değildir. Bu sınırlamalar nedeniyle, çoğu Azure hizmeti, müşteri denetimli donanımda sunucu tarafından yönetilen anahtarlar kullanılarak sunucu tarafı şifrelemeyi desteklemez.
 
@@ -273,7 +273,7 @@ Azure SQL veritabanı verilerinin istemci tarafı şifrelemesi [Always Encrypted
 | Azure Veri Kataloğu               | Evet                | -                  | -                  |
 | Azure HDInsight üzerinde Apache Kafka  | Evet                | Tüm RSA uzunlukları.   | -                  |
 | Azure Veri Gezgini              | Evet                | -                  | -                  |
-| Azure Data Factory               | Evet                | -                  | -                  |
+| Azure Data Factory               | Evet                | Evet                | -                  |
 | Azure Data Lake Store            | Evet                | Evet, RSA 2048 bit  | -                  |
 | **Kapsayıcılar**                   |                    |                    |                    |
 | Azure Kubernetes Service         | Evet                | -                  | -                  |

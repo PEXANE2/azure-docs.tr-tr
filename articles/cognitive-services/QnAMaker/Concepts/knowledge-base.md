@@ -1,7 +1,7 @@
 ---
 title: Bilgi Bankası - soru-cevap Oluşturucu
 titleSuffix: Azure Cognitive Services
-description: Soru/yanıt (soru-cevap) çifti ve isteğe bağlı meta veriler her soru-cevap çifti ile ilişkili bir dizi soru-cevap Oluşturucu Bilgi Bankası oluşur.
+description: Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) çiftleri ve isteğe bağlı meta veri kümesi içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,32 +11,32 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 78b04a06b71590a79180d1ae367e7d059e1b84a3
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 78fc9fe34eb3463021dae69990fe1d30668d453f
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195230"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300502"
 ---
-# <a name="what-is-a-qna-maker-knowledge-base"></a>Temel bir soru-cevap Oluşturucu bilgi nedir?
+# <a name="what-is-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası nedir?
 
-Soru/yanıt (soru-cevap) çifti ve isteğe bağlı meta veriler her soru-cevap çifti ile ilişkili bir dizi soru-cevap Oluşturucu Bilgi Bankası oluşur.
+Soru-Cevap Oluşturma Bilgi Bankası, her QnA çiftiyle ilişkili bir soru-cevap (QnA) çiftleri ve isteğe bağlı meta veri kümesi içerir.
 
 ## <a name="key-knowledge-base-concepts"></a>Bilgi Bankası anahtar kavramlar
 
-* **Sorular** -soru kullanıcı sorgusu en iyi temsil eden metin içeriyor. 
-* **Yanıtlar** -kullanıcı sorgusu ile ilişkili soru eşleştiğinde, döndürülen yanıt cevaptır.  
-* **Meta veri** -meta verileri bir soru-cevap çifti ile ilişkili etiket ve anahtar-değer çiftleri olarak temsil edilir. Meta veri etiketleri, QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirileceği kümeyi sınırlamak için kullanılır.
+* **Sorular**: Bir soru, Kullanıcı sorgusunu en iyi şekilde temsil eden metni içerir. 
+* **Yanıtlar**: Yanıt, bir Kullanıcı sorgusu ilişkili soru ile eşleştiğinde döndürülen yanıttır.  
+* **Meta veriler**: Meta veriler bir QnA çiftiyle ilişkili olan ve anahtar-değer çiftleri olarak temsil edilen etiketlerdir. Meta veri etiketleri, QnA çiftlerini filtrelemek ve sorgu eşleştirmesinin gerçekleştirileceği kümeyi sınırlamak için kullanılır.
 
-Sayısal bir soru-cevap kimliği tarafından temsil edilen bir tek soru-cevap, soru (diğer Sorular) tümünü tek bir yanıt harita birden çok çeşitlemesi vardır. Ayrıca, her bir çiftin ilişkili birden fazla meta veri alanı olabilir: bir anahtar ve bir değer.
+Sayısal bir soru-cevap kimliği tarafından temsil edilen bir tek soru-cevap, soru (diğer Sorular) tümünü tek bir yanıt harita birden çok çeşitlemesi vardır. Buna ek olarak, her bir çiftin ilişkili birden fazla meta veri alanı olabilir: bir anahtar ve bir değer.
 
 ![Soru-cevap Oluşturucu bilgi bankalarından](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
 
 ## <a name="knowledge-base-content-format"></a>Bilgi Bankası içerik biçimi
 
-Bilgi Bankası zengin içerik içe alma, içerik markdown biçimine dönüştürmek soru-cevap Oluşturucu çalışır. Okuma [bu](https://aka.ms/qnamaker-docs-markdown-support) markdown anlamak için blog çoğu sohbet istemciler tarafından anlaşılır biçimlendirir.
+Bilgi Bankası zengin içerik içe alma, içerik markdown biçimine dönüştürmek soru-cevap Oluşturucu çalışır. Çoğu sohbet istemcisi tarafından anlaşılabilen markın biçimleri hakkında bilgi edinmek için [Bu blogu](https://aka.ms/qnamaker-docs-markdown-support) okuyun.
 
-Meta veri alanları, anahtar-değer çiftleri virgül ile ayrılmış oluşur **(ürün: öğütücü)** . Hem anahtar hem de değer salt metin olmalıdır. Meta verileri anahtar boşluk içermemelidir. Meta veriler anahtar başına yalnızca bir değeri destekler.
+Meta veri alanları, ürün: Shredder gibi iki noktayla ayrılmış anahtar-değer çiftlerinden oluşur. Hem anahtar hem de değer salt metin olmalıdır. Meta verileri anahtar boşluk içermemelidir. Meta veriler anahtar başına yalnızca bir değeri destekler.
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Soru-Cevap Oluşturma en iyi yanıtı seçmek için Kullanıcı sorgusunu nasıl işler?
 
@@ -46,27 +46,27 @@ Eğitilen ve [yayınlanan](/azure/cognitive-services/qnamaker/quickstarts/create
 
 ### <a name="ranker-process"></a>Ranker işlemi
 
-İşlem aşağıdaki tabloda açıklanmıştır:
+İşlem aşağıdaki tabloda açıklanmıştır.
 
 |Adım|Amaç|
 |--|--|
 |1\.|İstemci uygulaması, Kullanıcı sorgusunu [Generateanswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)'sine gönderir.|
-|2|QNA yapıcısı, dil algılama, yazım ve sözcük ayırıcılarını içeren Kullanıcı sorgusunu ön işleme.|
+|2|Soru-Cevap Oluşturma dil algılama, yazım ve sözcük ayırıcılarını kullanarak Kullanıcı sorgusunu önceden işler.|
 |3|Bu ön işleme, en iyi arama sonuçları için Kullanıcı sorgusunu değiştirmek üzere alınır.|
-|4|Değiştirilen sorgu Azure Search dizine gönderilir ve sonuçların `top` sayısı alınıyor. Bu sonuçlarda doğru yanıt yoksa, `top` biraz değerini artırın. Genellikle 10 `top` ' un bir değeri, sorguların% 90 ' de işe yarar.|
+|4|Değiştirilen sorgu Azure Search dizine gönderilir ve bu da sonuçların `top` sayısını alır. Bu sonuçlarda doğru yanıt yoksa, `top` biraz değerini artırın. Genellikle, için `top` 10 değeri sorguların% 90 ' de işe yarar.|
 |5|Soru-Cevap Oluşturma, Kullanıcı sorgusunun getirilen Azure Search sonuçlarının doğruluğunu belirlemede gelişmiş özellikler uygular. |
 |6|Eğitilen su modeli, Azure Search sonuçlarını derecelendirmek için 5. adımdaki Özellik Puanını kullanır.|
 |7|Yeni sonuçlar, istemci uygulamasına derecelendirilir sırada döndürülür.|
 |||
 
-Kullanılan özellikler arasında şunlar yer alır, ancak sözcük düzeyi semantikleri, bir Corpus içindeki terim düzeyi önem derecesi ve derin öğrenilen anlam modelleri, iki metin dizesi arasında benzerlik ve ilgi belirleme açısından bunlarla sınırlı değildir.
+Kullanılan özellikler arasında şunlar yer alır, ancak sözcük düzeyi semantikleri, bir Corpus içindeki terim düzeyi önem derecesi ve derin öğrenilen anlam modelleri, iki metin dizesi arasında benzerlik ve ilgi belirleme açısından sınırlı değildir.
 
 ## <a name="http-request-and-response-with-endpoint"></a>Uç nokta ile HTTP isteği ve yanıtı
-Bilgi bankanızı yayımladığınızda, hizmet, uygulama ile tümleştirilen bir sohbet bot ile tümleştirilebilen REST tabanlı bir HTTP **uç noktası** oluşturur. 
+Bilgi bankanızı yayımladığınızda, hizmet, uygulama ile tümleştirilen bir sohbet bot ile tümleştirilebilen REST tabanlı bir HTTP uç noktası oluşturur. 
 
 ### <a name="the-user-query-request-to-generate-an-answer"></a>Bir yanıt oluşturmak için Kullanıcı sorgulama isteği
 
-**Kullanıcı sorgusu** , son kullanıcının bilgi bankasından, örneğin, `How do I add a collaborator to my app?`bir sorduğu sorudır. Sorgu genellikle doğal bir dil biçiminde veya soruyu temsil eden birkaç anahtar kelimedir, örneğin, `help with collaborators`. Sorgu, istemci uygulamanızdaki bir HTTP **isteğinden** bilginiz için gönderilir.
+Kullanıcı sorgusu, son kullanıcının bilgi bankasını `How do I add a collaborator to my app?`sorduğu sorudır. Sorgu genellikle doğal dil biçiminde veya soruyu `help with collaborators`temsil eden birkaç anahtar sözcüğe (gibi) sahiptir. Sorgu, istemci uygulamanızdaki bir HTTP isteğinden bilgi tabanınızdan gönderilir.
 
 ```json
 {
@@ -87,9 +87,9 @@ Bilgi bankanızı yayımladığınızda, hizmet, uygulama ile tümleştirilen bi
 
 Doğru ve nihai yanıtı bulmak için konuşmayı, soruları ve yanıtları belirginleştirebilmek için [Çoklu açma işleviyle](../how-to/multiturn-conversation.md) birlikte [konuşma bağlamını](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) kullanın.
 
-### <a name="the-response-from-a-call-to-generate-answer"></a>Yanıt oluşturmak için bir çağrıdan yanıt
+### <a name="the-response-from-a-call-to-generate-an-answer"></a>Yanıt oluşturmak için bir çağrıdan yanıt
 
-HTTP **yanıtı** , belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilgi Bankası 'ndan alınan yanıttır. Yanıt, yanıtı ve tahmin Puanını içerir. `top` Özelliği ile birden fazla en iyi yanıt sorulursa, her biri puanı olan birden fazla en iyi yanıt alırsınız. 
+HTTP yanıtı, belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde Bilgi Bankası 'ndan alınan yanıttır. Yanıt, yanıtı ve tahmin Puanını içerir. `top` Özelliği ile birden fazla en iyi yanıt sorulursa, her biri puanı olan birden fazla top yanıtı alırsınız. 
 
 ```json
 {
@@ -118,13 +118,13 @@ HTTP **yanıtı** , belirli bir Kullanıcı sorgusuna en iyi eşleşme temelinde
 ```
 
 ### <a name="test-and-production-knowledge-base"></a>Test ve üretim Bilgi Bankası
-Bilgi Bankası, sorular deposudur ve soru-cevap Oluşturucu kullanılan oluşturulan ve tutulan yanıtlar. Her bir soru-cevap Oluşturucu katman birden çok bilgi bankaları için kullanılabilir.
+Bilgi Bankası, Soru-Cevap Oluşturma ile oluşturulan, tutulan ve kullanılan soruların ve yanıtların deposudur. Her Soru-Cevap Oluşturma katmanı, birden fazla bilgi tabanı için kullanılabilir.
 
-Bilgi Bankası iki durumlu - Test sahiptir ve yayımladınız. 
+Bilgi Bankası 'nda iki durum vardır: *Test* ve *yayımlandı*.
 
-**Test bilgi tabanı** , düzenlenen, kaydedilen ve yanıtların doğruluğu ve bütünlüğü açısından test edilmekte olan sürümdür. Test Bilgi Bankası'na yapılan değişiklikler, uygulama/sohbet Robotu son kullanıcısına etkilemez. Test bilgi tabanı, http isteğinde olarak `test` bilinir. 
+*Test bilgi tabanı* , doğruluk ve yanıtların eksiksiz olması için düzenlenen, kaydedilen ve sınanan sürümdür. Test Bilgi Bankası 'nda yapılan değişiklikler uygulamanızın son kullanıcısını veya sohbet bot 'ı etkilemez. Test bilgi tabanı, http isteğinde olarak `test` bilinir. 
 
-**Yayımlanan bilgi tabanı** , sohbet bot/uygulamanızda kullanılan sürümdür. Bilgi Bankası Yayımlama eylemi Bilgi Bankası yayımlanan sürümünü Test Bilgi Bankası içeriği yerleştirir. Yayımlanan Bilgi Bankası uç noktası aracılığıyla uygulamanın kullandığı sürüm olduğundan, içeriği doğru ve test edilmiş iyi olduğundan emin olmak için dikkatli olunması. Yayımlanan bilgi tabanı, http isteğinde olarak `prod` bilinir. 
+*Yayımlanan bilgi tabanı* , sohbet bot veya uygulamanızda kullanılan sürümdür. Bilgi Bankası yayımlama eylemi, bilgi bankasındaki yayımlanmış sürüme test bilgi tabanı içeriğini koyar. Yayımlanan bilgi tabanı uygulamanın uç nokta aracılığıyla kullandığı sürüm olduğundan, içeriğin doğru ve iyi test edildiğinden emin olun. Yayımlanan bilgi tabanı, http isteğinde olarak `prod` bilinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -135,10 +135,10 @@ Bilgi Bankası iki durumlu - Test sahiptir ve yayımladınız.
 
 [Soru-Cevap Oluşturma’ya genel bakış](../Overview/overview.md)
 
-İle bilgi tabanı oluştur ve Düzenle: 
+İle bir Bilgi Bankası oluşturun ve düzenleyin: 
 * [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
-Yanıt oluştur: 
+Şunu kullanarak bir yanıt oluşturun: 
 * [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 46045664e9ddeebc45c2dae7c1f0a9f6a0d6b004
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ad61743751ace9ca0c7eba12ffcea5f15e1157d5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265159"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316175"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS analizi Önizleme çözümü, DNS altyapısıyla ilgili Öngörüler toplayın
 
@@ -180,9 +180,9 @@ Günlük araması sayfasında, bir sorgu oluşturabilirsiniz. Model denetimlerin
 
     ![DnsInventory günlük araması](./media/dns-analytics/log-search-dnsinventory.png)
     
-### <a name="troubleshooting"></a>Sorun giderme
+## <a name="troubleshooting"></a>Sorun giderme
 
-Commopn sorun giderme adımları:
+Ortak sorun giderme adımları:
 
 1. Eksik DNS arama verileri-bu sorunu gidermek Için yapılandırmayı sıfırlamayı veya portalda yalnızca yapılandırma sayfasını yüklemeyi deneyin. Sıfırlamak için, bir ayarı başka bir değerle değiştirmeniz, sonra yeniden özgün değere değiştirmeniz ve yapılandırmayı kaydetmeniz yeterlidir.
 

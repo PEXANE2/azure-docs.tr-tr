@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 94f019205959d63a05ed3d90ede59fece3c05901
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307418"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316347"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS dil ve bölge desteği
 
@@ -34,18 +34,18 @@ LUIS, konuşma şu dillerde anlar:
 |--|--|:--:|:--:|:--:|:--:|
 | Amerikan İngilizcesi |`en-US` | ✔ | ✔  |✔|✔|
 | *[Çince](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Felemenkçe |`nl-NL` |-|  -   |-|✔|
-| Fransızca (Fransa) |`fr-FR` |-| ✔ |✔ |✔|
+| Felemenkçe |`nl-NL` |✔|  -   |-|✔|
+| Fransızca (Fransa) |`fr-FR` |✔| ✔ |✔ |✔|
 | Fransızca (Kanada) |`fr-CA` |-|   -   |-|✔|
-| Almanca |`de-DE` |-| ✔ |✔ |✔|
+| Almanca |`de-DE` |✔| ✔ |✔ |✔|
 | Hintçe | `hi-IN`|-|-|-|-|
-| İtalyanca |`it-IT` |-| ✔ |✔|✔|
-| *[Japonca](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Yalnızca anahtar ifade|
-| Korece |`ko-KR` |-|   -   |-|Yalnızca anahtar ifade|
-| Portekizce (Brezilya) |`pt-BR` |-| ✔ |✔ |tüm alt kültürler|
-| İspanyolca (İspanya) |`es-ES` |-| ✔ |✔|✔|
+| İtalyanca |`it-IT` |✔| ✔ |✔|✔|
+| *[Japonca](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Yalnızca anahtar ifade|
+| Korece |`ko-KR` |✔|   -   |-|Yalnızca anahtar ifade|
+| Portekizce (Brezilya) |`pt-BR` |✔| ✔ |✔ |tüm alt kültürler|
+| İspanyolca (İspanya) |`es-ES` |✔| ✔ |✔|✔|
 | İspanyolca (Meksika)|`es-MX` |-|  -   |✔|✔|
-| Türkçe | `tr-TR` |-|-|-|Yalnızca yaklaşım|
+| Türkçe | `tr-TR` |✔|-|-|Yalnızca yaklaşım|
 
 
 Dil desteği değişir için [önceden oluşturulmuş varlıklarla](luis-reference-prebuilt-entities.md) ve [önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md).
