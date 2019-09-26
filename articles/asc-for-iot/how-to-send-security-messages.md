@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/27/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: c780eea15b9f064d3279c75ac2f967e8b6099ecb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b291e2392f0756cb2d3ec294db37206d32216959
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596213"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315920"
 ---
 # <a name="send-security-messages-sdk"></a>Güvenlik iletileri SDK 'Sı gönder
 
@@ -28,8 +28,12 @@ Bu nasıl yapılır kılavuzunda, IoT Aracısı için Azure Güvenlik Merkezi 'n
 
 Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz: 
 > [!div class="checklist"]
-> * İçin güvenlik iletisi gönder API 'sini kullanınC#
-> * C için güvenlik iletisi gönder API 'sini kullanma
+> * Azure IoT C SDK 'sını kullanarak güvenlik iletileri gönderme
+> * Azure IoT C# SDK kullanarak güvenlik iletileri gönderme
+> * Azure IoT Python SDK 'sını kullanarak güvenlik iletileri gönderme
+> * Azure IoT Node. js SDK 'sını kullanarak güvenlik iletileri gönderme
+> * Azure IoT Java SDK 'sını kullanarak güvenlik iletileri gönderme
+
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>IoT özellikleri için Azure Güvenlik Merkezi
 
@@ -38,7 +42,7 @@ IoT için Azure Güvenlik Merkezi, gönderilen veriler [IoT şeması Için Azure
 ## <a name="security-message"></a>Güvenlik iletisi
 
 IoT için Azure Güvenlik Merkezi, aşağıdaki ölçütleri kullanarak bir güvenlik iletisi tanımlar:
-- İleti Azure IoT C/C# SDK ile gönderildiyse
+- İleti Azure IoT SDK ile gönderildiyse
 - İleti [güvenlik iletisi şemasına](https://aka.ms/iot-security-schemas) uygunsa
 - İleti gönderilmeden önce bir güvenlik iletisi olarak ayarlandıysa
 
@@ -49,7 +53,7 @@ Her güvenlik iletisi `AgentId` `AgentVersion`,göndereninmeta verilerini, vegü
 > Şemayla uyumlu olmayan gönderilen iletiler yok sayılır. Yoksayılan iletiler Şu anda depolanmadığından, verileri göndermeyi başlatmadan önce şemayı doğrulamaya dikkat edin. 
 
 >[!Note]
-> Azure IoT C/C# SDK kullanılarak gönderilen bir güvenlik iletisi olarak ayarlanmamış Iletiler, IoT işlem hattı Için Azure Güvenlik Merkezi 'ne yönlendirilmeyecektir
+> Azure IoT SDK kullanılarak bir güvenlik iletisi olarak ayarlanmamış iletiler, IoT işlem hattı için Azure Güvenlik Merkezi 'ne yönlendirilmeyecektir.
 
 ## <a name="valid-message-example"></a>Geçerli ileti örneği
 
@@ -87,28 +91,15 @@ Bir güvenlik iletisi olarak ayarladıktan ve gönderildikten sonra, bu ileti Io
 
 ## <a name="send-security-messages"></a>Güvenlik iletilerini gönder 
 
-[Azure C# IoT cihaz SDK 'Sını](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview) veya [Azure IoT C cihaz SDK 'Sını](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)kullanarak IoT Aracısı için Azure Güvenlik Merkezi 'ni kullanmadan güvenlik iletileri gönderin.
+[Azure IoT C cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview), [Azure IoT C# cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview), [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node)'Sı, [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)veya Azure IoT Java SDK 'sını kullanarak IoT Aracısı için Azure Güvenlik Merkezi *'ni kullanmadan güvenlik iletileri gönderin* [ ](https://github.com/Azure/azure-iot-sdk-java).
 
 IoT için Azure Güvenlik Merkezi 'Nde cihazlarınızdan cihaz verilerini işlenmek üzere göndermek için aşağıdaki API 'lerden birini kullanarak IoT işleme işlem hattı için Azure Güvenlik Merkezi 'ne doğru yönlendirme iletileri işaretleyin. 
 
 Doğru üst bilgiyle işaretlenmiş olsa bile gönderilen tüm veriler, [IoT ileti şeması Için Azure Güvenlik Merkezi](https://aka.ms/iot-security-schemas)ile de uyumlu olmalıdır. 
 
-### <a name="send-security-message-api"></a>Güvenlik iletisi API 'SI gönder
+### <a name="send-security-message-api"></a>Güvenlik iletisi API 'SI gönder 
 
-**Güvenlik Iletileri gönderme** API 'si Şu anda C ve C#içinde kullanılabilir.  
-
-#### <a name="c-api"></a>C# API’si
-
-```cs
-
-private static async Task SendSecurityMessageAsync(string messageContent)
-{
-    ModuleClient client = ModuleClient.CreateFromConnectionString("<connection_string>");
-    Message  securityMessage = new Message(Encoding.UTF8.GetBytes(messageContent));
-    securityMessage.SetAsSecurityMessage();
-    await client.SendEventAsync(securityMessage);
-}
-```
+**Güvenlik Iletileri gönderme** API 'si Şu anda C ve C#, Python, Node. js ve Java 'da kullanılabilir.  
 
 #### <a name="c-api"></a>C API 'SI
 
@@ -154,6 +145,65 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
     }
 }
 ```
+#### <a name="c-api"></a>C# API’si
+
+```cs
+
+private static async Task SendSecurityMessageAsync(string messageContent)
+{
+    ModuleClient client = ModuleClient.CreateFromConnectionString("<connection_string>");
+    Message  securityMessage = new Message(Encoding.UTF8.GetBytes(messageContent));
+    securityMessage.SetAsSecurityMessage();
+    await client.SendEventAsync(securityMessage);
+}
+```
+#### <a name="nodejs-api"></a>Node. js API 'SI
+
+```typescript
+var Protocol = require('azure-iot-device-mqtt').Mqtt
+
+function SendSecurityMessage(messageContent)
+{
+  var client = Client.fromConnectionString(connectionString, Protocol);
+
+  var connectCallback = function (err) {
+    if (err) {
+      console.error('Could not connect: ' + err.message);
+    } else {
+      var message = new Message(messageContent);
+      message.setAsSecurityMessage();
+      client.sendEvent(message);
+  
+      client.on('error', function (err) {
+        console.error(err.message);
+      });
+  
+      client.on('disconnect', function () {
+        clearInterval(sendInterval);
+        client.removeAllListeners();
+        client.open(connectCallback);
+      });
+    }
+  };
+
+  client.open(connectCallback);
+}
+```
+
+#### <a name="python-api"></a>Python API
+
+```python
+async def send_security_message_async(message_content):
+    conn_str = os.getenv("<connection_string>")
+    device_client = IoTHubDeviceClient.create_from_connection_string(conn_str)
+    await device_client.connect()
+    security_message = Message(message_content)
+    security_message.set_as_security_message()
+    await device_client.send_d2c_message(security_message)
+    await device_client.disconnect()
+```
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - IoT hizmetine [genel bakış](overview.md) Için Azure Güvenlik Merkezi 'ni okuyun

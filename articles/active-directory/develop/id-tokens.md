@@ -17,12 +17,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4968d1acbccca9c2c46b4bbb6f0853b82e8d7f71
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: cb279441e8ed0c0110a5b18d32609ed5b01bd7e2
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074272"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291037"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
@@ -34,7 +34,7 @@ KIMLIK belirteçleri, bir kullanıcının iddia ettikleri kim olduğunu doğrula
 
 ## <a name="claims-in-an-id_token"></a>Bir id_token içindeki talepler
 
-`id_tokens`bir Microsoft kimliği için, [](https://tools.ietf.org/html/rfc7519)bir üst bilgi, yük ve imza kısmından oluşan anlamına gelir. Belirtecin orijinalliğini doğrulamak için üst bilgi ve imzayı, yük ise istemciniz tarafından istenen kullanıcı hakkındaki bilgileri içerdiğinde de kullanabilirsiniz. Aksi belirtilmedikçe, burada listelenen tüm talepler v 1.0 ve v 2.0 belirteçlerinde görünür.
+`id_tokens`bir Microsoft kimliği [için, bir](https://tools.ietf.org/html/rfc7519)üst bilgi, yük ve imza kısmından oluşan anlamına gelir. Belirtecin orijinalliğini doğrulamak için üst bilgi ve imzayı, yük ise istemciniz tarafından istenen kullanıcı hakkındaki bilgileri içerdiğinde de kullanabilirsiniz. Aksi belirtilmedikçe, burada listelenen tüm talepler v 1.0 ve v 2.0 belirteçlerinde görünür.
 
 ### <a name="v10"></a>v1.0
 
@@ -80,7 +80,7 @@ Bu liste varsayılan olarak en id_tokens olan talepleri gösterir (belirtilen du
 |`email` | Dize | Talep `email` , bir e-posta adresine sahip konuk hesapları için varsayılan olarak mevcuttur.  Uygulamanız, `email` [isteğe bağlı talebi](active-directory-optional-claims.md)kullanarak yönetilen kullanıcılar (kaynakla aynı kiracıya ait olanlar) için e-posta talebi talep edebilir.  V 2.0 uç noktasında, uygulamanız `email` OpenID Connect kapsamını da talep edebilir. talebi almak için hem isteğe bağlı talebi hem de kapsamı istemeniz gerekmez.  E-posta talebi yalnızca kullanıcının profil bilgilerinde adreslenebilir postaları destekler. |
 |`name` | Dize | `name` Talep, belirtecin konusunu tanımlayan, insan tarafından okunabilen bir değer sağlar. Değerin benzersiz olması garanti edilmez, değişebilir ve yalnızca görüntüleme amacıyla kullanılmak üzere tasarlanmıştır. `profile` Kapsam bu talebi almak için gereklidir. |
 |`nonce`| Dize | Nonce, ıDP 'ye özgün/Yetkilendir isteğine dahil edilen parametreyle eşleşir. Eşleşmiyorsa, uygulamanız belirteci reddetmelidir. |
-|`oid` | Dize, GUID | Bu örnekte, bir kullanıcı hesabı olan Microsoft Identity sistemindeki bir nesne için sabit tanımlayıcı. Bu kimlik, kullanıcıyı uygulamalar arasında benzersiz şekilde tanımlar. aynı kullanıcı için iki farklı uygulama imzalanırken, `oid` talepteki aynı değer de alınır. Microsoft Graph, bu kimliği verilen kullanıcı hesabının `id` özelliği olarak döndürür. Birden çok uygulamanın kullanıcıları ilişkilendirme `profile` olanağısağladığından,butalebialmakiçinkapsamınolmasıgerekir.`oid` Tek bir Kullanıcı birden fazla kiracıda varsa, kullanıcının her kiracıda farklı bir nesne KIMLIĞI içerdiğini ve Kullanıcı aynı kimlik bilgilerine sahip her hesapta oturum açtığı halde farklı hesaplar olarak kabul edileceğini unutmayın. |
+|`oid` | Dize, GUID | Bu örnekte, bir kullanıcı hesabı olan Microsoft Identity sistemindeki bir nesne için sabit tanımlayıcı. Bu kimlik, kullanıcıyı uygulamalar arasında benzersiz şekilde tanımlar. aynı kullanıcı için iki farklı uygulama imzalanırken, `oid` talepteki aynı değer de alınır. Microsoft Graph, bu kimliği verilen kullanıcı hesabının `id` özelliği olarak döndürür. Birden çok uygulamanın kullanıcıları ilişkilendirme `profile` olanağısağladığından,butalebialmakiçinkapsamınolmasıgerekir.`oid` Tek bir Kullanıcı birden fazla kiracıda varsa, kullanıcının her kiracıda farklı bir nesne KIMLIĞI içerdiğini ve Kullanıcı aynı kimlik bilgilerine sahip her hesapta oturum açtığı halde farklı hesaplar olarak kabul edileceğini unutmayın. `oid` Talep bir GUID 'dir ve yeniden kullanılamaz. |
 |`roles`| dize dizisi | Oturum açan kullanıcıya atanan roller kümesi. |
 |`rh` | Donuk dize |Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Göz ardı edilmelidir. |
 |`sub` | Dize, GUID | Belirtecin, uygulamanın kullanıcısı gibi bilgilerin hangi sorumluya ait olduğunu belirten sorumlu. Bu değer sabittir ve yeniden atanamaz veya tekrar kullanılamaz. Konu, belirli bir uygulama KIMLIĞI için benzersiz bir tanımlayıcıdır. Tek bir Kullanıcı iki farklı istemci kimliği kullanarak iki farklı uygulama üzerinde oturum açarsa, bu uygulamalar konu talebi için iki farklı değer alır. Bu, mimarinize ve gizlilik gereksinimlerinize bağlı olarak istenebilir veya olmayabilir. |

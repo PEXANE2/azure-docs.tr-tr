@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: memildin
-ms.openlocfilehash: b8ca4dfe8b1bba169b1234461dc5e8855fef1d7e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bbb34a0a9d8035ce8cbfd3f3283677133370a9f2
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202292"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316734"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Güvenlik Merkezi - Sık sorulan sorular (SSS)
 Bu SSS, Azure Güvenlik Merkezi, artırılmış görünürlük ve Microsoft Azure kaynaklarınızın güvenliğini denetim ile tehditleri önleyin, algılayın ve yardımcı olan bir hizmet hakkında sorular yanıtlanmaktadır.
@@ -44,7 +44,7 @@ Güvenlik Merkezi iki katmanda sunulur:
 **Standart katman** algılama özellikleri dahil olmak üzere, tehdit zekası, davranışsal analiz, anomali algılama, güvenlik olayları ve tehdit attribution raporları Gelişmiş tehdit ekler. Standart katman ücretsiz deneme sürümü başlatabilirsiniz. Yükseltmek için seçin [fiyatlandırma katmanı](https://docs.microsoft.com/azure/security-center/security-center-pricing) güvenlik ilkesinde. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 ### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Kuruluşumun Azure Güvenlik Merkezi 'nde fiyatlandırma katmanı değişikliklerini gerçekleştirdiği kişileri nasıl izleyebilirim?
-Bir Azure aboneliğinde fiyatlandırma katmanını değiştirme izinlerine sahip birden çok yönetici olabilir, Kullanıcı fiyatlandırma katmanı değişikliğini kimin gerçekleştirdiklerini bilmesini isteyebilir. Bunu kullanmak için, bir tane Azure etkinlik günlüğü kullanabilir. Daha fazla yönergeye [buradan](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832) bakın
+Azure aboneliklerinde fiyatlandırma katmanını değiştirme izinlerine sahip birden çok yönetici olabilir. Hangi kullanıcının fiyatlandırma katmanı değişikliğini gerçekleştirmediğini öğrenmek için Azure etkinlik günlüğünü kullanın. Daha fazla bilgi için [buraya](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)bakın.
 
 ## <a name="permissions"></a>İzinler
 Azure Güvenlik Merkezi, Azure'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/built-in-roles.md) sağlayan [Rol Tabanlı Erişim Denetimi'ni (RBAC)](../role-based-access-control/role-assignments-portal.md) kullanır.
@@ -59,7 +59,7 @@ Güvenlik Merkezi, Azure sanal makinelerinizden (VM), sanal makine ölçek küme
 ### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Güvenlik Merkezi tarafından oluşturulan çalışma alanlarında Azure Izleyici günlükleri için faturalandırılırım mı?
 Hayır. Güvenlik Merkezi tarafından oluşturulan ve düğüm başına Azure Izleyici günlükleri için yapılandırılmış çalışma alanları, Azure Izleyici günlük ücretlerine tabi değildir. Güvenlik Merkezi her zaman, Güvenlik Merkezi güvenlik ilkesi ve bir çalışma alanına yüklenmiş çözümlere göre faturalandırılır:
 
-- **Ücretsiz katmanı** – Güvenlik Merkezi için varsayılan çalışma alanı 'SecurityCenterFree' çözümü sağlar. Ücretsiz katmanı için faturalandırılmaz.
+- **Ücretsiz katmanı** – Güvenlik Merkezi için varsayılan çalışma alanı 'SecurityCenterFree' çözümü sağlar. Ücretsiz katman için faturalandırılmaz.
 - **Standart katman** – Güvenlik Merkezi için varsayılan çalışma alanı 'Güvenlik' çözümü sağlar.
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi fiyatlandırma](https://azure.microsoft.com/pricing/details/security-center/).
@@ -120,7 +120,7 @@ Mevcut bir Log Analytics çalışma alanı seçmek için:
 ### Microsoft Monitoring Agent VM 'de zaten bir uzantı olarak yüklüyse ne olacak?<a name="mmaextensioninstalled"></a>
 Izleme Aracısı bir uzantı olarak yüklendiğinde, uzantı yapılandırması raporlamaya yalnızca tek bir çalışma alanına izin verir. Güvenlik Merkezi, kullanıcı çalışma alanları için varolan bağlantılar kılmaz. Güvenlik Merkezi, "güvenlik" veya "SecurityCenterFree" çözümünün yüklenmiş olması şartıyla, zaten bağlı olan bir çalışma alanındaki bir VM 'den güvenlik verilerini depolar. Güvenlik Merkezi bu işlemdeki en son sürüme uzantı sürümünü yükseltebilir.
 
-Daha fazla bilgi için bkz. [önceden var olan aracı yüklemesinin durumlarında otomatik sağlama](security-center-enable-data-collection.md#preexisting).
+Daha fazla bilgi için bkz. [önceden var olan aracı yüklemesi durumlarında otomatik sağlama](security-center-enable-data-collection.md#preexisting).
 
 
 ### Bir Microsoft Monitoring Agent, bir uzantı (doğrudan aracı) olarak değil makineye doğrudan yüklenmişse ne olur?<a name="directagentinstalled"></a>
@@ -130,7 +130,7 @@ Yapılandırılmış çalışma alanı bir kullanıcı çalışma alanım (Güve
 
 Linux makineler için, aracı çoklu barındırma henüz desteklenmiyor. bu nedenle, mevcut bir aracı yüklemesi algılanırsa, otomatik sağlama gerçekleşmez ve makinenin yapılandırması değiştirilmez.
 
-Aboneliklerdeki mevcut makineler için eklendi Güvenlik Merkezi 'ne 2019-03-17 önce, var olan bir aracı algılandığında Microsoft Monitoring Agent uzantısı yüklenmez ve makine etkilenmeyecektir. Bu makineler için, bu makinelerdeki aracı yükleme sorunlarını gidermek için "makinelerinizdeki izleme Aracısı sistem durumu sorunlarını çözme" önerisine bakın
+Aboneliklerdeki mevcut makineler için eklendi Mart 17 2019 ' den önce güvenlik merkezi 'ne, var olan bir aracı algılandığında Microsoft Monitoring Agent uzantısı yüklenmez ve makine etkilenmeyecektir. Bu makineler için, bu makinelerdeki aracı yükleme sorunlarını gidermek için "makinelerinizdeki izleme Aracısı sistem durumu sorunlarını çözme" önerisine bakın
 
  Daha fazla bilgi için, [VM 'imde System Center Operations Manager veya OMS doğrudan Aracısı zaten yüklüyse](#scomomsinstalled) , sonraki bölüme bakın.
 
@@ -147,7 +147,7 @@ Otomatik aboneliklerinizde güvenlik ilkesinde sağlamayı kapatın kapatabilirs
 
    ![Fiyatlandırma katmanı][1]
 
-2. Ardından, kapatma seçerek otomatik sağlamayı devre dışı **kapalı** üzerinde **güvenlik ilkesi – veri toplama** dikey penceresi.
+2. Sonra, **güvenlik ilkesi – veri toplama** sayfasında **kapalı** ' yı seçerek otomatik sağlamayı devre dışı bırakın.
    ![Veri toplama][2]
 
 ### <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Çalışma alanı oluşturma ve otomatik aracı yüklemesi dışında iyileştirilmiş?
@@ -161,20 +161,20 @@ Aşağıdakiler sizin için geçerliyse, otomatik sağlama dışında bırakmak 
 
 - Güvenlik Merkezi tarafından otomatik aracı yüklemesi, tüm abonelik için geçerlidir. Otomatik Yükleme VM'lerin bir alt kümesine uygulanamıyor. Microsoft İzleme Aracısı ile yüklenmiş kritik VM'lerin varsa, otomatik sağlama dışında iyileştirilmiş.
 - Microsoft Monitoring Agent (MMA) uzantısının yüklenmesi aracının sürümünü güncelleştirir. Bu, doğrudan aracı ve bir System Center Operations Manager Aracısı için geçerlidir (ikinci içinde, Operations Manager ve MMA paylaşma ortak çalışma zamanı kitaplıklarını, işlem içinde güncelleştirilecektir). Yüklü Operations Manager Aracısı sürüm 2012 ise ve yükseltildiyse, Operations Manager sunucusu da sürüm 2012 olduğunda yönetilebilirlik özellikleri kaybolabilir. Yüklü Operations Manager Aracısı sürüm 2012 ise otomatik sağlamayı tercih edin.
-- Özel çalışma alanı aboneliği (merkezi bir çalışma alanı) dış varsa dışı otomatik sağlamayı tercih. El ile Microsoft Monitoring Agent uzantısını yükleyin ve bağlantıyı geçersiz kılma olmadan Güvenlik Merkezi çalışma alanınızı bağlayın.
+- Abonelik dışında (Merkezi çalışma alanı) özel bir çalışma alanınız varsa, otomatik sağlamayı devre dışı geçirmeniz gerekir. El ile Microsoft Monitoring Agent uzantısını yükleyin ve bağlantıyı geçersiz kılma olmadan Güvenlik Merkezi çalışma alanınızı bağlayın.
 - Abonelik başına birden çok çalışma alanı oluşturulmasını önlemek istediğiniz ve kendi özel bir çalışma alanı aboneliği içinde varsa, iki seçeneğiniz vardır:
 
    1. Otomatik sağlama dışında tercih edebilirsiniz. Geçişten sonra varsayılan çalışma alanı ayarları bölümünde anlatıldığı gibi ayarlama [nasıl kullanabilir miyim mevcut Log Analytics çalışma Alanım?](#how-can-i-use-my-existing-log-analytics-workspace)
    2. Veya, geçiş, sanal makinelere yüklenecek Microsoft Monitoring Agent'ı tamamlamak izin verebilir ve Vm'leri oluşturulan çalışma alanına bağlı. Ardından, önceden yüklenmiş aracıları harcamamak için seçim ile varsayılan çalışma alanı ayarını ayarlayarak kendi özel çalışma alanı seçin. Daha fazla bilgi için [nasıl kullanabilir miyim mevcut Log Analytics çalışma Alanım?](#how-can-i-use-my-existing-log-analytics-workspace)
 
 ### <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>Otomatik sağlama dışında edilmesiyle etkileri nelerdir?
-Geçiş tamamlandıktan sonra Güvenlik Merkezi sanal makine ve bazı güvenlik önerilerini güvenlik verilerini toplamak mümkün değildir ve uyarılar kullanılamıyor. Microsoft Monitoring Agent çıkarsanız, el ile yüklemeniz gerekir. Bkz: [iletişimlerini, önerilen adımlar](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning).
+Geçiş tamamlandığında, güvenlik merkezi VM 'den güvenlik verileri toplayabilir ve bazı güvenlik önerileri ve uyarılar kullanılamaz. Devre dışı bırakırsanız Microsoft Monitoring Agent el ile yükleyebilirsiniz. Bkz: [iletişimlerini, önerilen adımlar](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning).
 
 ### <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>Otomatik sağlama dışında kabul edilirse, önerilen adımlar nelerdir?
 
-Güvenlik Merkezi, Vm'lerinizden güvenlik verilerini toplamak ve öneriler ve uyarılar sağlamak için Microsoft Monitoring Agent uzantısını el ile yüklemeniz gerekir. Bkz: [aracı yüklemesi Windows VM için](../virtual-machines/extensions/oms-windows.md) veya [Linux sanal makinesi için aracı yüklemesi](../virtual-machines/extensions/oms-linux.md) yükleme hakkında yönergeler için.
+Güvenlik Merkezi 'nin sanal makinelerinizden güvenlik verilerini toplayabilmesi ve öneriler ve uyarılar sağlaması için Microsoft Monitoring Agent uzantısını el ile yükleyebilirsiniz. Bkz: [aracı yüklemesi Windows VM için](../virtual-machines/extensions/oms-windows.md) veya [Linux sanal makinesi için aracı yüklemesi](../virtual-machines/extensions/oms-linux.md) yükleme hakkında yönergeler için.
 
-Aracı mevcut özel çalışma alanına bağlanabilir veya Güvenlik Merkezi çalışma alanı oluşturulur. Özel bir çalışma alanı etkin 'Güvenlik' veya 'SecurityCenterFree' çözümü yoksa, bir çözüm uygulamak gerekir. Uygulamak için özel çalışma alanı ya da abonelik seçin ve bir fiyatlandırma katmanı aracılığıyla uygulama **güvenlik ilkesi – fiyatlandırma katmanı** dikey penceresi.
+Aracı mevcut özel çalışma alanına bağlanabilir veya Güvenlik Merkezi çalışma alanı oluşturulur. Özel bir çalışma alanı etkin 'Güvenlik' veya 'SecurityCenterFree' çözümü yoksa, bir çözüm uygulamak gerekir. Uygulamak için, özel çalışma alanı veya aboneliği seçin ve **güvenlik ilkesi – fiyatlandırma katmanı** sayfası aracılığıyla bir fiyatlandırma katmanı uygulayın.
 
    ![Fiyatlandırma katmanı][1]
 
@@ -191,8 +191,8 @@ Microsoft Monitoring Agent el ile kaldırabilirsiniz. Güvenlik Merkezi önerile
 Aracıyı el ile kaldırmak için:
 
 1.  Portalda açın **Log Analytics**.
-2.  Log Analytics dikey penceresinde, bir çalışma alanı seçin:
-3.  İzleme ve seçmek için istemediğiniz her bir VM seçin **Bağlantıyı Kes**.
+2.  Log Analytics sayfasında bir çalışma alanı seçin:
+3.  İzlemek istemediğiniz VM 'Leri seçin ve **bağlantıyı kes**' i seçin.
 
    ![Aracıyı kaldır][3]
 
@@ -201,7 +201,7 @@ Aracıyı el ile kaldırmak için:
 >
 >
 ### <a name="how-do-i-disable-data-collection"></a>Veri toplama nasıl devre dışı bırakabilirim?
-Otomatik sağlama varsayılan olarak kapalıdır. Otomatik kaynaklardan herhangi bir zamanda bu güvenlik ilkesi ayarı devre dışı bırakarak sağlama devre dışı bırakabilirsiniz. Otomatik sağlama güvenlik uyarıları ve sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları ve uç nokta koruma hakkında öneriler almak için kesinlikle önerilir.
+Otomatik sağlama varsayılan olarak kapalıdır. Otomatik kaynaklardan herhangi bir zamanda bu güvenlik ilkesi ayarı devre dışı bırakarak sağlama devre dışı bırakabilirsiniz. Sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları ve uç nokta koruması hakkında güvenlik uyarıları ve öneriler almak için otomatik sağlama kesinlikle önerilir.
 
 Veri toplamayı devre dışı bırakmak için [Azure portalında oturum açın](https://portal.azure.com)seçin **Gözat**seçin **Güvenlik Merkezi**seçip **seçin, ilke**. Otomatik sağlamayı hangi abonelik için devre dışı bırakmak istediğinizi belirtin. Bir aboneliği seçtiğinizde **güvenlik ilkesi - veri toplama** açılır. Altında **otomatik sağlama**seçin **kapalı**.
 
@@ -209,11 +209,11 @@ Veri toplamayı devre dışı bırakmak için [Azure portalında oturum açın](
 Azure aboneliğinizi güvenlik ilkesinde veri toplamayı etkinleştirebilirsiniz. Veri toplamayı etkinleştirmek için. [Azure portalında oturum açın](https://portal.azure.com)seçin **Gözat**seçin **Güvenlik Merkezi**seçip **Güvenlik İlkesi**. Otomatik sağlamayı etkinleştirmek istediğiniz aboneliği seçin. Bir aboneliği seçtiğinizde **güvenlik ilkesi - veri toplama** açılır. Altında **otomatik sağlama**seçin **üzerinde**.
 
 ### <a name="what-happens-when-data-collection-is-enabled"></a>Veri toplama etkinleştirilirse ne olur?
-Otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi Microsoft Monitoring Agent'ı tüm Azure Vm'lere ve oluşturulan tüm yeni vm'lere desteklenen hazırlar. Otomatik sağlama önemle tavsiye edilir ancak el ile aracı yüklemelerini da kullanılabilir. [Microsoft Monitoring Agent uzantısını nasıl yükleyeceğiniz öğrenin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
+Otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi Microsoft Monitoring Agent'ı tüm Azure Vm'lere ve oluşturulan tüm yeni vm'lere desteklenen hazırlar. Otomatik sağlama önerilir, ancak el ile aracı yüklemesi de kullanılabilir. [Microsoft Monitoring Agent uzantısını nasıl yükleyeceğiniz öğrenin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
-İşlem oluşturma olayı 4688 Aracısı etkinleştirir ve *CommandLine* olay 4688 içindeki alan. VM üzerinde oluşturulan yeni süreçler olay günlüğü tarafından kaydedilir ve Güvenlik Merkezi'nin algılama hizmetleri tarafından izlenen. Her yeni bir işlem için kayıtlı ayrıntıları hakkında bilgi için bkz. [4688 açıklama alanlarına](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Aracı ayrıca VM üzerinde oluşturulan 4688 olayları toplar ve bunları Search'te depolar.
+İşlem oluşturma olayı 4688 Aracısı etkinleştirir ve *CommandLine* olay 4688 içindeki alan. VM üzerinde oluşturulan yeni süreçler olay günlüğü tarafından kaydedilir ve Güvenlik Merkezi'nin algılama hizmetleri tarafından izlenen. Her yeni işlem için kaydedilen ayrıntılar hakkında daha fazla bilgi için bkz. [4688 içindeki açıklama alanları](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Aracı ayrıca VM üzerinde oluşturulan 4688 olayları toplar ve bunları Search'te depolar.
 
-Aracı ayrıca için veri toplamayı etkinleştirir [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md), Güvenlik Merkezi, tüm uygulamalara izin vermek üzere Denetim modunda yerel bir AppLocker ilkesini yapılandırır. Bu, daha sonra toplanan ve Güvenlik Merkezi tarafından kullanılabilir olaylar oluşturmak AppLocker neden olur. Bu ilke, üzerinde zaten var. yapılandırılmış bir AppLocker İlkesi tüm makinelerde yapılandırılmaz dikkat edin önemlidir. 
+Aracı ayrıca için veri toplamayı etkinleştirir [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md), Güvenlik Merkezi, tüm uygulamalara izin vermek üzere Denetim modunda yerel bir AppLocker ilkesini yapılandırır. Bu ilke, AppLocker 'ın Güvenlik Merkezi tarafından toplanan ve yararlanılabilir olayları oluşturmasına neden olur. Bu ilke, üzerinde zaten var. yapılandırılmış bir AppLocker İlkesi tüm makinelerde yapılandırılmaz dikkat edin önemlidir. 
 
 Güvenlik Merkezi, VM'de kuşkulu bir etkinlik algıladığında, müşteri tarafından e-posta, bildirilir [güvenlik bilgilerini](security-center-provide-security-contact-details.md) sağlanmadı. Bir uyarı da Güvenlik Merkezi'nin güvenlik uyarıları panosunda görünür.
 
@@ -230,7 +230,7 @@ Bu Aracıdan toplanan veriler, aboneliğinizle ilişkili mevcut bir Log Analytic
 ## Mevcut Azure Izleyici günlükleri müşterileri<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Güvenlik Merkezi, Vm'leri ve çalışma alanları arasında herhangi bir mevcut bağlantı geçersiz kılmaz?
-Güvenlik Merkezi bir VM zaten Microsoft Monitoring Agent yüklüyse Azure uzantı olarak varsa, varolan bir çalışma alanı bağlantıyı geçersiz kılmaz. Bunun yerine, Güvenlik Merkezi, varolan bir çalışma alanını kullanır. VM, bildirdiği çalışma alanına "güvenlik" veya "SecurityCenterFree" çözümünün yüklenmiş olması için korunur. 
+Güvenlik Merkezi bir VM zaten Microsoft Monitoring Agent yüklüyse Azure uzantı olarak varsa, varolan bir çalışma alanı bağlantıyı geçersiz kılmaz. Bunun yerine, Güvenlik Merkezi, varolan bir çalışma alanını kullanır. "Güvenlik" veya "SecurityCenterFree" çözümünün, raporlama yaptığı çalışma alanına yüklenmiş olması için VM korunacaktır. 
 
 Zaten mevcut değilse, veri toplama ekranında seçilen çalışma alanına bir güvenlik merkezi çözümü yüklenir ve bu çözüm yalnızca ilgili VM 'lere uygulanır. Bir çözümü eklediğinizde, Log Analytics çalışma alanınıza bağlı tüm Windows ve Linux aracıları için varsayılan olarak otomatik olarak dağıtılır. [Çözüm hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md) çözümlerinize bir kapsam uygulamanıza imkan sağlar.
 
@@ -239,7 +239,7 @@ Microsoft Monitoring Agent (olarak değil bir Azure uzantısı) doğrudan VM'de 
 ### <a name="does-security-center-install-solutions-on-my-existing-log-analytics-workspaces-what-are-the-billing-implications"></a>Güvenlik Merkezi, my mevcut Log Analytics çalışma alanları çözümleri yüklüyor mu? Fatura etkileri nelerdir?
 Güvenlik Merkezi, Güvenlik Merkezi bir VM zaten oluşturduğunuz bir çalışma alanına bağlı belirlediğinde bu çalışma alanındaki fiyatlandırma katmanınızı göre çözümler sağlar. Çözümleri aracılığıyla yalnızca ilgili Azure Vm'lerine, uygulanan [çözüm hedefleme](../operations-management-suite/operations-management-suite-solution-targeting.md), faturalandırma aynı kalır.
 
-- **Ücretsiz katmanı** – Güvenlik Merkezi, çalışma alanı 'SecurityCenterFree' çözümü yükler. Ücretsiz katmanı için faturalandırılmaz.
+- **Ücretsiz katmanı** – Güvenlik Merkezi, çalışma alanı 'SecurityCenterFree' çözümü yükler. Ücretsiz katman için faturalandırılmaz.
 - **Standart katman** – Güvenlik Merkezi, çalışma alanı 'Güvenlik' çözümü yükler.
 
    ![Varsayılan çalışma alanı çözümleri][4]
@@ -275,7 +275,7 @@ Azure Güvenlik Merkezi, Azure kaynaklarınızın güvenlik durumunu analiz eder
 Güvenlik ilkeleri ile etkinleştirilen önerileri burada gösterilir.
 
 ### <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Azure Kaynaklarımın geçerli güvenlik durumunu nasıl görebilirim?
-**Güvenlik merkezine genel bakış** dikey penceresinde, işlem, ağ, depolama ve veri ve uygulamaları tarafından ayrılmış ortamın genel güvenlik duruşunu gösterir. Olası güvenlik açıkları tanımladıysanız her kaynak türünün bir göstergesi gösteren vardır. Her kutucuğa tıklandığında, aboneliğinizdeki kaynaklar envanterini birlikte Güvenlik Merkezi tarafından tanımlanan güvenlik sorunların bir listesini görüntüler.
+**Güvenlik Merkezi 'Ne genel bakış** sayfası, ortamınızın Işlem, ağ, depolama & verileri ve uygulamalar tarafından ayrılmış genel güvenlik duruşunu gösterir. Olası güvenlik açıkları tanımladıysanız her kaynak türünün bir göstergesi gösteren vardır. Her kutucuğa tıklandığında, aboneliğinizdeki kaynaklar envanterini birlikte Güvenlik Merkezi tarafından tanımlanan güvenlik sorunların bir listesini görüntüler.
 
 ### <a name="what-triggers-a-security-alert"></a>Hangi güvenlik uyarısı tetikler?
 Azure Güvenlik Merkezi otomatik olarak toplar, çözümler ve Azure kaynaklarınızı, ağ ve kötü amaçlı yazılımdan koruma ve güvenlik duvarları gibi iş ortağı çözümlerinden günlük verilerini birleştirir. Tehditler algılandığında bir güvenlik uyarısı oluşturulur. Örneklere şunların algılanması dahildir:
@@ -319,7 +319,7 @@ Azure Güvenlik Merkezi, Azure uzantıları yüklü kötü amaçlı yazılımdan
 Bir sanal makine için hiçbir tarama verileri olduğunda bu ileti görünür. Azure Güvenlik Merkezi'nde veri toplama etkinleştirildikten sonra doldurmak tarama verileri için bazı zaman (bir saatten az) alabilir. Tarama verileri ilk popülasyonunu sonra tarama veri yoktur hiç veya hiç son tarama verileri olduğundan, bu iletiyi alabilirsiniz. Durdurulmuş bir sanal makine için tarama doldurmayın. Tarama verileri kısa bir süre önce (uygun olarak 30 günlük varsayılan değer olan Windows aracısına yönelik, bekletme ilkesi) doldurduğu değil, bu iletiyi de görüntülenebilir.
 
 ### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Güvenlik Merkezi, işletim sistemi güvenlik açıkları, sistem güncelleştirmeleri ve endpoint protection sorunları ne sıklıkta tarama?
-Güvenlik açıklarına karşı güncelleştirmeler, Güvenlik Merkezi'nde gecikme süresi tarar ve konular:
+Güvenlik açıkları, güncelleştirmeler ve sorunlar için Güvenlik Merkezi taramalarının gecikme süreleri aşağıda verilmiştir:
 
 - İşletim sistemi güvenlik yapılandırmaları – veri 48 saat içinde güncelleştirilir
 - Sistem güncelleştirmeleri – veri 24 saat içinde güncelleştirilir

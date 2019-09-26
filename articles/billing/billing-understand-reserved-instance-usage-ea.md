@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f2f5b2ecf096d7dc8babb79a38d00158a2120688
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68598106"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218079"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Kurumsal Anlaşma rezervasyon maliyetlerini ve kullanımını alma
 
@@ -57,18 +57,20 @@ Azure kullanım verilerinde sağlanan diğer bilgiler değişmiştir:
 - Term - 12 ay veya 36 ay.
 - RINormalizationRatio - AdditionalInfo altında sağlanır. Rezervasyonun kullanım kaydına uygulanma oranıdır. Rezervasyonunuzda örnek boyutu esnekliği etkinleştirildiyse diğer boyutlara da uygulanabilir. Değer, kullanım kaydı için rezervasyonun uygulanma oranını gösterir.
 
+[Bkz. alan tanımı](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>API'yi kullanarak Azure tüketim ve rezervasyon kullanımı verilerini alma
 
 Verileri API'yi kullanarak alabilir veya Azure portalından indirebilirsiniz.
 
-Yeni verileri almak için &quot;2019-04-01-önizleme&quot; API sürümüyle [Kullanım Ayrıntıları API'sini](/rest/api/consumption/usagedetails/list) çağırırsınız. Terminolojiyle ilgili ayrıntılar için bkz. [Kullanım terimleri](billing-understand-your-usage.md). Çağrıyı yapan kurumsal anlaşmanın Kuruluş Yöneticisi olmalı ve [EA portalını](https://ea.azure.com) kullanmalıdır. Salt okuma erişimli Kuruluş Yöneticileri de verileri alabilir.
+Yeni verileri almak için [Kullanım Ayrıntıları API’sini](/rest/api/consumption/usagedetails/list) çağırırsınız. Terminolojiyle ilgili ayrıntılar için bkz. [Kullanım terimleri](billing-understand-your-usage.md). Çağrıyı yapan kurumsal anlaşmanın Kuruluş Yöneticisi olmalı ve [EA portalını](https://ea.azure.com) kullanmalıdır. Salt okuma erişimli Kuruluş Yöneticileri de verileri alabilir.
 
 Veriler, [Enterprise müşterileri için Raporlama API'leri - Kullanım Ayrıntıları](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)'nda sağlanmaz.
 
 Aşağıda örnek bir API çağrısı verilmiştir:
 
 ```
-https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
 {enrollmentId} ve {billingPeriodId} hakkında daha fazla bilgi için bkz. [Kullanım Ayrıntıları – Liste](https://docs.microsoft.com/rest/api/consumption/usagedetails/list) API makalesine bakın.

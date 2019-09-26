@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: juliako
-ms.openlocfilehash: ac31a2945e59df3b57000a0ffdcbca8344e44c18
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 584d3fa787fbd44ad47d21c51ea67f301c04436d
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122308"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300328"
 ---
 # <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (Önizleme)
 
@@ -40,7 +40,7 @@ Video Indexer hesabınızın türüne bağlı olarak, farklı özellik kümeleri
 
 ### <a name="trial-vs-paid"></a>Deneme ve ücretli
 
-|İşlevi|Deneme|Ücretli|
+|İşlevi|Deneme Sürümü|Ücretli|
 |---|---|---|
 |Özel Görüntü İşleme hesabı|Video Indexer tarafından arka planda yönetilir. |Özel Görüntü İşleme hesabınız Video Indexer bağlı.|
 |Animasyon modeli sayısı|Biriyle|Hesap başına en fazla 100 model (Özel Görüntü İşleme sınırlaması).|
@@ -91,12 +91,13 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
     1. Yeni adı yazdıktan sonra, yeni adın yanındaki onay simgesine tıklayın. Bu, yeni adı modelde Video Indexer kaydeder.
     1. İstediğiniz tüm adları düzenledikten sonra modeli eğmeniz gerekir.
 
-        Özelleştirme sayfasını açın ve **animasyonlu karakterler** sekmesine tıklayın. Ücretli bir hesabınız varsa, **Müşteri vizyonlarındaki modelleri Yönet** bağlantısını (aşağıda gösterildiği gibi) tıklayabilirsiniz. Daha sonra Özel Görüntü İşleme modelin sayfasına iletilecektir. Modelinizi eğitebilmeniz için **eğitme** düğmesine tıklayın. 
-        
+        Özelleştirme sayfasını açın ve **animasyon karakterleri** sekmesine tıklayın ve ardından modelinizi eğitebilmeniz Için **eğitme** düğmesine tıklayın.
+         
+        Ücretli bir hesabınız varsa, **Müşteri vizyonlarındaki modelleri Yönet** bağlantısını (aşağıda gösterildiği gibi) tıklayabilirsiniz. Daha sonra **özel görüntü işleme**modelin sayfasına iletilecektir.
+ 
         ![İçerik modeli özelleştirme](./media/animated-characters-recognition/content-model-customization-tab.png)
 
-        Deneme hesabınız varsa, **Müşteri vizyondaki modelleri Yönet** bağlantısı mevcut olmayacaktır. Bu durumda, **içerik modeli özelleştirme** sayfasında **eğitme** ' ye basabilirsiniz.
-    1. Eğitim olduktan sonra, bu modelle Dizinlenecek veya yeniden Dizinlenecek tüm videolar eğitilen karakterleri tanır. 
+     1. Eğitim olduktan sonra, bu modelle Dizinlenecek veya yeniden Dizinlenecek tüm videolar eğitilen karakterleri tanır. 
     Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir. [Özel görüntü işleme sınıflandırıcınızı iyileştirme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)hakkında daha fazla bilgi edinin.
 
 1. Animasyonlu bir karakteri silin.

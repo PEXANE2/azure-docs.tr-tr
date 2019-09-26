@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: f0f2d3f8d8d2298ec00532205e359ed6f8dbc87a
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882991"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315690"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
 Bu makale, grupları oluşturmak ve güncelleştirmek için Azure Active Directory (Azure AD) PowerShell cmdlet 'lerini kullanmaya yönelik yönergeler içerir. Bu içerik yalnızca Office 365 grupları için geçerlidir (bazen birleştirilmiş gruplar olarak adlandırılır). 
@@ -123,7 +123,7 @@ Burada, Group. Unified SettingsTemplate içinde tanımlanan ayarlar verilmiştir
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Şunu yazın: Boole değeri<li>Varsayılanını False | Konuk kullanıcının grupların sahibi olup olmayacağını gösteren Boolean. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Şunu yazın: Boole değeri<li>Varsayılanını Doğru | Konuk kullanıcının Office 365 grupları içeriğine erişip erişemeyeceğini gösteren Boolean.  Bu ayar Azure Active Directory Premium P1 lisansı gerektirmez.|
 |  <ul><li>Guestusagekılavuz Linesurl 'Si<li>Şunu yazın: Dize<li>Varsayılan: "" | Konuk kullanım yönergelerine bir bağlantının URL 'si. |
-|  <ul><li>AllowToAddGuests<li>Şunu yazın: Boole değeri<li>Varsayılanını Doğru | Bu dizine Konuk ekleme izni verilip verilmeyeceğini gösteren bir Boole değeri.|
+|  <ul><li>AllowAddGuests<li>Şunu yazın: Boole değeri<li>Varsayılanını Doğru | Bu dizine Konuk ekleme izni verilip verilmeyeceğini gösteren bir Boole değeri.|
 |  <ul><li>ClassificationList<li>Şunu yazın: Dize<li>Varsayılan: "" |Office 365 gruplarına uygulanabilen geçerli sınıflandırma değerlerinin virgülle ayrılmış bir listesi. |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Örnek: Dizin düzeyindeki gruplar için konuk ilkesini yapılandırma
@@ -140,9 +140,9 @@ Burada, Group. Unified SettingsTemplate içinde tanımlanan ayarlar verilmiştir
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. Ardından AllowToAddGuests ayarını güncelleştirin
+4. Ardından AllowAddGuests ayarını güncelleştirin
    ```powershell
-   $Setting["AllowToAddGuests"] = $False
+   $Setting["AllowAddGuests"] = $False
    ```  
 5. Daha sonra ayarı uygulayın:
   
@@ -196,7 +196,7 @@ Bu adımlar dizin düzeyindeki ayarları okur ve dizindeki tüm Office grupları
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowToAddGuests              True
+   AllowAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -233,7 +233,7 @@ Bu adım dizin düzeyindeki ayarları kaldırır ve dizindeki tüm Office grupla
 
 4. Ayarı gerekli değer olarak ayarlayın:
    ```powershell
-   $SettingCopy["AllowToAddGuests"]=$False
+   $SettingCopy["AllowAddGuests"]=$False
    ```
 5. Bu ayarı uygulamak istediğiniz grubun KIMLIĞINI alın:
    ```powershell
@@ -259,7 +259,7 @@ Bu adım dizin düzeyindeki ayarları kaldırır ve dizindeki tüm Office grupla
    ```
 3. Grup ayarını gereksinim duyduğunuz şekilde güncelleştirin, ör.
    ```powershell
-   $Setting["AllowToAddGuests"] = $True
+   $Setting["AllowAddGuests"] = $True
    ```
 4. Sonra bu belirli Grup için ayarın KIMLIĞINI alın:
    ```powershell

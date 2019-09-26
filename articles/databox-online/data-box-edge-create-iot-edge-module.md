@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900643"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315828"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Dosyaları Data Box Edge C# taşımak için IoT Edge modülünü geliştirme
 
@@ -63,7 +63,7 @@ Başlamadan önce aşağıdakilere sahip olduğunuzdan emin olun:
 Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görüntülerinizi depolayıp yönetebileceğiniz özel bir Docker kayıt defteridir. Bulutta bulunan iki popüler Docker kayıt defteri hizmeti Azure Container Registry ve Docker Hub 'lardır. Bu makale Container Registry kullanır.
 
 1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
-2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**'a tıklayın.
+2. **Container Registry > kaynak > kapsayıcıları oluştur**' u seçin. **Oluştur**’a tıklayın.
 3. Girmelisiniz
 
    1. Azure 'da 5 ile 50 alfasayısal karakter içeren benzersiz bir **kayıt defteri adı** .
@@ -73,7 +73,7 @@ Azure kapsayıcı kayıt defteri, Azure’da özel Docker kapsayıcısı görün
    5. **Yönetici kullanıcı** ayarını **Etkinleştir**'e getirin.
    6. SKU 'YU **temel**olarak ayarlayın.
 
-      ![Kapsayıcı kayıt defteri oluşturuluyor](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Kapsayıcı kayıt defteri oluşturma](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. **Oluştur**’u seçin.
 5. Kapsayıcı kayıt defteriniz oluşturulduktan sonra, bu kayıt defterine gidin ve **Erişim anahtarları**'nı seçin.
@@ -180,7 +180,7 @@ Kendi yazacağınız kodla özelleştirebileceğiniz bir C# çözüm şablonu ol
     }
     ```
 
-6. **Kanal iletisi yöntemi** için kodu kaldırın ve onun yerine, **FileCopy**için kodu ekleyin.
+6. **Pipemessage yöntemi** için kodu kaldırın ve onun yerine, **FileCopy**için kodu ekleyin.
 
     ```
         /// <summary>

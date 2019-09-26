@@ -17,12 +17,12 @@
           href: quickstarts/get-started-unity-android.md
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
-    - name: iOS uygulaması oluşturma
-      href: quickstarts/get-started-ios.md
-    - name: Android uygulaması oluşturma
-      href: quickstarts/get-started-android.md
     - name: HoloLens uygulaması oluşturma
       href: quickstarts/get-started-hololens.md
+    - name: Android uygulaması oluşturma
+      href: quickstarts/get-started-android.md
+    - name: iOS uygulaması oluşturma
+      href: quickstarts/get-started-ios.md
     - name: Xamarin uygulaması oluşturma
       items:
         - name: Android
@@ -84,6 +84,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: Kaynaklar
   items:
+    - name: Azure Karma Gerçeklik Kaynak Yönetimi REST API’si
+      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
     - name: SSS
       href: spatial-anchor-faq.md
     - name: Ürün Geri Bildirimi Sağlama

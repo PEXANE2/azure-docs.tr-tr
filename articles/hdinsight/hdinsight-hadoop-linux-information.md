@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 7f97348999f2cab6509afeb44bc704d5109ee0f7
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: f50702688b9a261ed98c2eb3a5892d1bdbe8d11b
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181115"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308076"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux’ta HDInsight kullanma ile ilgili bilgiler
 
@@ -88,7 +88,7 @@ Daha fazla bilgi için bkz. [HDInsight 'ta Apache Hadoop Services tarafından ku
 
 Hadoop ile ilgili dosyalar konumundaki `/usr/hdp`küme düğümlerinde bulunabilir. Bu dizin aşağıdaki alt dizinleri içerir:
 
-* **2.6.5.3006-29**: Dizin adı, HDInsight tarafından kullanılan Hortonçalışmalar veri platformunun sürümüdür. Kümenizdeki sayı burada listelenenden farklı olabilir.
+* **2.6.5.3006-29**: Dizin adı, HDInsight tarafından kullanılan Hadoop platformunun sürümüdür. Kümenizdeki sayı burada listelenenden farklı olabilir.
 * **geçerli**: Bu dizin, **2.6.5.3006-29** dizini altındaki alt dizinlere bağlantılar içerir. Bu dizin, sürüm numarasını anımsamanıza gerek kalmayacak şekilde bulunur.
 
 Örnek veri ve jar dosyaları, `/example` ve ' `/HdiSamples`de Hadoop Dağıtılmış dosya sistemi bulunabilir.

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876757"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300713"
 ---
 # <a name="remote-desktop-client-connections"></a>Uzak Masaüstü istemcisi bağlantıları
 
@@ -152,6 +152,11 @@ Bazen kullanıcılar kendi akışına ve yerel kaynaklarına erişebilir, ancak 
 **Sağlamak** Kullanıcının bağlanmaya çalışan sanal makineler, etki alanına katılmış değildir.
 
 **Onar** Bir konak havuzunun parçası olan tüm VM 'Leri etki alanı denetleyicisine ekleyin.
+
+### <a name="error-connectionfailedusersidinformationmismatch"></a>Hata: Connectionfailedusersıınformationuyuşmazlığıdır
+**Sağlamak** Kullanıcının Azure Active Directory (AD) belirtecinden SID 'SI, Kullanıcı uzaktan oturum açma için etkinleştirilmeye çalışılırken etki alanı denetleyicisi tarafından döndürülen SID ile eşleşmiyor. Bu hata genellikle bir Windows Server AD 'den bir kullanıcı tarafından kaynak olarak bir Azure Active Directory Domain Services (Azure AD DS) ortamında oturum açmaya çalışırken meydana gelir.
+
+**Onar** Bu senaryo şu anda desteklenmiyor. Yalnızca Azure Active Directory kaynaklı kullanıcılar Azure AD DS bağlı Windows sanal masaüstü VM 'lerinde oturum açabilir.
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Kullanıcı bağlanıyor, ancak hiçbir şey görüntülenmiyor (akış yok)
 

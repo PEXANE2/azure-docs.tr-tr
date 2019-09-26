@@ -1,5 +1,5 @@
 ---
-title: Sınırlar ve Yapılandırma-Azure Logic Apps | Microsoft Docs
+title: Sınırlar ve Yapılandırma-Azure Logic Apps
 description: Azure Logic Apps için hizmet limitleri ve yapılandırma değerleri
 services: logic-apps
 ms.service: logic-apps
@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 1479c6665b5d68e0fa16ece7e37f4e2a2457c69a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242360"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309785"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -119,6 +119,12 @@ Normal işlemede Bu limitlerin üzerine gitmek veya bu limitlerin üzerine gideb
 > [!NOTE]
 > Bu SKU 'nun ölçeklendirme için herhangi bir hizmet düzeyi sözleşmesi (SLA) veya özelliği olmadığı için, [Geliştirici SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) yayımlanmış sınırlara sahip değildir. Bu SKU 'YU yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi yapın.
 
+<a name="gateway-limits"></a>
+
+## <a name="gateway-limits"></a>Ağ Geçidi sınırları
+
+Azure Logic Apps, ağ geçidi aracılığıyla ekleme ve güncelleştirme dahil olmak üzere yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır.
+
 <a name="request-limits"></a>
 
 ## <a name="http-limits"></a>HTTP sınırları
@@ -203,7 +209,7 @@ Her bir tümleştirme hesabı katmanının yapıt sayısına ilişkin sınırlar
 > [!NOTE]
 > Ücretsiz katmanı yalnızca araştırmacı senaryolar için kullanın, üretim senaryolarından değil. Bu katman, aktarım hızını ve kullanımı kısıtlar ve hizmet düzeyi anlaşması (SLA) içermez.
 
-| Yapay Nesne | Boş | Temel | Standart |
+| Yapıt | Boş | Temel | Standart |
 |----------|------|-------|----------|
 | EDI ticari sözleşmeleri | 10 | 1\. | 1000 |
 | EDI ticari iş ortakları | 25 | 2 | 1000 |
@@ -211,14 +217,14 @@ Her bir tümleştirme hesabı katmanının yapıt sayısına ilişkin sınırlar
 | Şemalar | 25 | 500 | 1000 |
 | Derlemeler | 10 | 25 | 1000 |
 | Sertifikalar | 25 | 2 | 1000 |
-| Toplu iş yapılandırmaları | 5 | 1\. | 50 |
+| Batch yapılandırması | 5 | 1\. | 50 |
 ||||
 
 <a name="artifact-capacity-limits"></a>
 
 ### <a name="artifact-capacity-limits"></a>Yapıt kapasitesi sınırları
 
-| Yapay Nesne | Sınır | Notlar |
+| Yapıt | Sınır | Notlar |
 | -------- | ----- | ----- |
 | Derleme | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için bir [Azure depolama hesabı ve BLOB kapsayıcısı](../logic-apps/logic-apps-enterprise-integration-schemas.md)kullanın. |
 | Map (XSLT dosyası) | 8 MB | 2 MB 'tan büyük dosyaları karşıya yüklemek için [Azure Logic Apps REST API haritaları](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)kullanın. |

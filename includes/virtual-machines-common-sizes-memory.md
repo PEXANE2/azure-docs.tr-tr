@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 18a19f5f853206b06c617307c761a99033c9f92a
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "70174671"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266934"
 ---
 Bellek için iyileştirilmiş VM boyutları, ilişkisel veritabanı sunucuları, orta ve büyük önbellekler ve bellek içi analizler için harika olan yüksek bir bellek-CPU oranı sunar. Bu makalede, bu gruplandırmadaki her bir boyut için sanal CPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkında bilgi sağlanır.
 
 * Ev3-Series, bir hiper iş yükleri için E5-2673 v4 2,3 GHz (çok Iyi) işlemciyi, çoğu genel amaçlı iş yükleri için daha iyi bir değer teklifi sağlar ve Ev3 ' yi diğer bulutların genel amaçlı VM 'Leri ile hizalı hale getiriyor.  Bellek ve ağ sınırları, hiper iş parçacığına geçme ile hizalanmak üzere bir çekirdek temelinde ayarlandığı sürece (7 GiB/vCPU 'dan 8 GiB/vCPU 'ya kadar) bellek genişletilir.  Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
 
-* Eav3-Series ve Easv3 serisi, en fazla 256 MB boyutlu önbellek kullanan çok iş parçacıklı bir yapılandırmada AMD 'nin 2.35 GHz EPIC<sup>TM</sup> 7452v işlemcisini kullanır ve en fazla bellek için iyileştirilmiş iş yüklerini çalıştırmaya yönelik seçenekleri artırır.  Eav3-Series ve Easv3 serisi, Ev3 & Esv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+* Eav3-Series ve Easv3-Series ' in önizleme boyutları, en fazla 256 MB boyutunda L3 önbellek kullanan çok iş parçacıklı bir yapılandırmada AMD 'nin 2.35 GHz EPYıC<sup>TM</sup> 7452 işlemcisini kullanır ve en fazla bellek için iyileştirilmiş iş yüklerini çalıştırmaya yönelik seçenekleri artırır.  Eav3-Series ve Easv3 serisi, Ev3 & Esv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
 * Mv2-Series, buluttaki herhangi bir VM 'nin en yüksek vCPU sayısını (208 vCPU 'ya kadar) ve en büyük bellek miktarını (5,7 TiB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek vCPU sayısı ve büyük miktarlarda belleğin yararlı olacağı diğer uygulamalar için idealdir.
 
@@ -61,13 +61,15 @@ ESv3 serisi örnekleri, 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) işlemciyi 
 
 <sup>3</sup> örnek, tek bir müşteriye adanmış donanımlar için yalıtılmıştır.
 
-## <a name="easv3-series"></a>Easv3 serisi
+## <a name="easv3-series-preview"></a>Easv3 serisi (Önizleme)
 
 Premium Depolama: Desteklenen
 
 Premium depolama önbelleği: Desteklenen
 
-Easv3 serisi Boyutlar, 3.35 GHz 'nin artırılmış önem derecesi elde edilebilir ve Premium Depolama alanını kullanan 2.35 GHz AMD EPIC<sup>TM</sup> 7452v işlemcisini temel alır. Easv3 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir.
+Easv3 serisi Boyutlar, 3.35 GHz 'nin artırılmış Fmax düzeyini elde edebilir ve Premium Depolama alanını kullanarak 2.35 GHz AMD EPI c<sup>TM</sup> 7452 işlemcisini temel alır. Easv3 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir.
+
+[Önizlemeye kaydolmak için buraya tıklayın](http://aka.ms/azureamdpreview).
 
 | Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB |
 |---|---|---|---|
@@ -110,23 +112,25 @@ Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Prem
 
 <sup>3</sup> örnek, tek bir müşteriye adanmış donanımlar için yalıtılmıştır.
 
-## <a name="eav3-series"></a>Eav3 serisi
+## <a name="eav3-series-preview"></a>Eav3 serisi (Önizleme)
 
 Premium Depolama: Desteklenmiyor
 
 Premium depolama önbelleği: Desteklenmiyor
 
-Eav3 serisi Boyutlar, 3.35 GHz 'nin artırılmış önem derecesi elde edilebilir ve Premium Depolama alanını kullanan 2.35 GHz AMD EPIC<sup>TM</sup> 7452v işlemcisini temel alır. Eav3 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium Depolama disklerini kullanmak için Easv3-Series boyutlarını kullanın. Easv3 boyutları için fiyatlandırma ve faturalandırma ölçümleri Eav3 serisi ile aynıdır.
+Eav3 serisi Boyutlar, 3.35 GHz 'nin artırılmış Fmax düzeyini elde edebilir ve Premium Depolama alanını kullanarak 2.35 GHz AMD EPI c<sup>TM</sup> 7452 işlemcisini temel alır. Eav3 serisi Boyutlar, bellek açısından yoğun kurumsal uygulamalar için idealdir. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium Depolama disklerini kullanmak için Easv3-Series boyutlarını kullanın. Easv3 boyutları için fiyatlandırma ve faturalandırma ölçümleri Eav3 serisi ile aynıdır.
 
-| Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB |
-|---|---|---|---|---|---|
-| Standard_E2a_v3  | 2  | 16  | 50   |
-| Standard_E4a_v3  | 4  | 32  | 100  |
-| Standard_E8a_v3  | 8  | 64  | 200  |
-| Standard_E16a_v3 | 16 | 128 | 400  |
-| Standard_E32a_v3 | 32 | 256 | 800  |
-| Standard_E48a_v3 | 48 | 384 | 1200 |
-| Standard_E64a_v3 | 64 | 432 | 1600 |
+[Önizlemeye kaydolmak için buraya tıklayın](http://aka.ms/azureamdpreview).
+
+| Size             | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB |
+|------------------|------|-------------|-------------------------|
+| Standard_E2a_v3  | 2    | 16          | 50                      |
+| Standard_E4a_v3  | 4    | 32          | 100                     |
+| Standard_E8a_v3  | 8    | 64          | 200                     |
+| Standard_E16a_v3 | 16   | 128         | 400                     |
+| Standard_E32a_v3 | 32   | 256         | 800                     |
+| Standard_E48a_v3 | 48   | 384         | 1200                    |
+| Standard_E64a_v3 | 64   | 432         | 1600                    |
 
 ## <a name="mv2-series"></a>Mv2 serisi
 

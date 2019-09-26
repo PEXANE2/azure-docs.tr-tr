@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: a47589728bdbe3842790a7c13fe35d04dbbe6883
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 58db6d0a51dd07344b4fc30473a02c6df83e4d28
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881643"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310574"
 ---
 Genel amaçlı VM boyutları dengeli CPU-bellek oranını sağlar. Test ve geliştirme, küçük - orta boyutlu veritabanları, düşük - orta yoğunluklu trafiğe sahip web sunucuları için idealdir. Bu makalede, bu gruplandırmadaki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı hakkında bilgi sağlanır.
 
@@ -44,8 +44,8 @@ B serisi Burstable VM 'Ler, Web sunucuları, küçük veritabanları ve gelişti
 
 | Size             | Sanal işlemci  | Bellek: GiB | Geçici depolama (SSD) GiB | VM’nin temel CPU performansı | VM’nin en yüksek CPU performansı | Başlangıçta Sunulan Kredi | Kazanılan kredi/saat | En Fazla Kazanılan Kredi | Maksimum veri diskleri | Maksimum önbelleğe alınmış ve geçici depolama aktarım hızı: IOPS/MBps | Maksimum önbelleğe alınmamış disk aktarım hızı: IOPS/MBps | En fazla NIC |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1ls<sup>1</sup>  | 1\.           | 0,5              | 4                          | %5                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
-| Standard_B1s  | 1\.           | 1\.              | 4                          | %10                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400 / 10                                  | 320 / 10                                  | 2  |
+| Standard_B1ls<sup>1</sup>  | 1\.           | 0,5              | 1\.                          | %5                   | 100%                   | 30                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
+| Standard_B1s  | 1\.           | 1\.              | 2                          | %10                   | 100%                   | 30                   | 6                  | 144            | 2                        | 400 / 10                                  | 320 / 10                                  | 2  |
 | Standard_B1ms | 1\.           | 2              | 4                          | %20                   | 100%                   | 30                   | 12                 | 288           | 2                         | 800 / 10                                  | 640 / 10                                  | 2  |
 | Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200%                   | 60                   | 24                 | 576            | 4                                      | 1600 / 15                                 | 1280 / 15                                 | 3  |
 | Standard_B2ms | 2           | 8              | 16                         | 60%                   | 200%                   | 60                   | 36                 | 864            | 4                                      | 2400 / 22.5                               | 1920 / 22.5                               | 3  |
@@ -80,13 +80,15 @@ Dsv3 serisi Boyutlar 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) işlemciyi 2,3 ve
 
 <sup>1</sup> DSV3 serisi VM 'Nin özellik Intel® Hiper Iş parçacığı teknolojisi
 
-## <a name="dasv3-series"></a>Dasv3 serisi
+## <a name="dasv3-series-preview"></a>Dasv3 serisi (Önizleme)
 
 Premium Depolama: Desteklenen
 
 Premium depolama önbelleği: Desteklenen
 
-Dasv3 serisi Boyutlar, 3.35 GHz 'nin artırılmış önem derecesi elde edilebilir ve Premium Depolama alanını kullanan 2.35 GHz AMD EPIC<sup>TM</sup> 7452v işlemcisini temel alır. Dasv3 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve geçici depolama alanı birleşimini sunar.
+Dasv3 serisi Boyutlar, 3.35 GHz 'nin artırılmış Fmax düzeyini elde edebilir ve Premium Depolama alanını kullanarak 2.35 GHz AMD EPI c<sup>TM</sup> 7452 işlemcisini temel alır. Dasv3 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve geçici depolama alanı birleşimini sunar.
+
+[Önizlemeye kaydolmak için buraya tıklayın](http://aka.ms/azureamdpreview).
 
 | Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB |
 |---|---|---|---|
@@ -123,13 +125,15 @@ Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Prem
 
 <sup>1</sup> dv3 serisi VM 'Nin özellik Intel® Hiper Iş parçacığı teknolojisi
 
-## <a name="dav3-series"></a>Dav3 serisi
+## <a name="dav3-series-preview"></a>Dav3 serisi (Önizleme)
 
 Premium Depolama: Desteklenmiyor
 
 Premium depolama önbelleği: Desteklenmiyor
 
-Dav3 serisi Boyutlar, 3.35 GHz 'nin yüksek oranda kullanılabilir olduğunu elde eden 2.35 GHz AMD EPIC<sup>TM</sup> 7452v işlemcisini temel alır. Dav3 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve geçici depolama alanı birleşimini sunar. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium Depolama disklerini kullanmak için Dasv3 boyutlarını kullanın. Dasv3 boyutları için fiyatlandırma ve faturalandırma ölçümleri Dav3 serisi ile aynıdır.
+Dav3 serisi Boyutlar, 3.35 GHz 'nin yüksek oranda kullanılabilir olduğunu elde eden 2.35 GHz AMD EPIC<sup>TM</sup> 7452 işlemcisini temel alır. Dav3 serisi boyutları, üretim iş yüklerinin çoğu için vCPU, bellek ve geçici depolama alanı birleşimini sunar. Veri disk depolaması, sanal makinelerden ayrı olarak faturalandırılır. Premium Depolama disklerini kullanmak için Dasv3 boyutlarını kullanın. Dasv3 boyutları için fiyatlandırma ve faturalandırma ölçümleri Dav3 serisi ile aynıdır.
+
+[Önizlemeye kaydolmak için buraya tıklayın](http://aka.ms/azureamdpreview).
 
 | Size | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD): GiB |
 |---|---|---|---|
@@ -165,7 +169,7 @@ Premium Depolama:  Desteklenmiyor
 
 Premium depolama önbelleği:  Desteklenmiyor
 
-| Size           | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En yüksek geçici depolama aktarım hızı: IOPS/okuma MBps/yazma MBps | Maksimum veri diskleri | Üretilen iş: IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
+| Size           | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | En yüksek geçici depolama aktarım hızı: IOPS/okuma MBps/yazma MBps | Maksimum veri diskleri | Trafiği IOPS | En fazla NIC/beklenen ağ bant genişliği (Mbps) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3,5         | 50                     | 3000/46/23                                             | 4              | 4x500            | 2 / 750                                      |
 | Standard_D2_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 8              | 8x500            | 2 / 1500                                     |

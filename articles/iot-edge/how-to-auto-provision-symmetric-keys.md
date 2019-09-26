@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3c21c0bdce6f6a5cd3c8f634bf400600b30a8ead
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5a7e7fa011c0287d5e97ad7a8cd2e3ba77f298dd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414600"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299841"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Simetrik anahtar kanıtlama kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
@@ -100,11 +100,14 @@ DPS'de bir kayıt oluşturduğunuzda, bildirme fırsatına sahip bir **ilk cihaz
 
    1. **Kaydet**’i seçin.
 
-Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir. Cihazınızın anahtarını oluştururken kullanılacak kayıt **birincil anahtar** değerini kaydettiğinizden emin olun.
+Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir. IoT Edge çalışma zamanını yüklerken veya bir grup kaydıyla kullanmak üzere cihaz anahtarları oluşturmaya devam ediyorsanız, kaydınızın **birincil anahtar** değerini kopyalamayı unutmayın.
 
 ## <a name="derive-a-device-key"></a>Bir cihaz anahtarı türet
 
-Cihazınız, sağlama sırasında kayıt ile simetrik anahtar kanıtlama gerçekleştirmek için benzersiz kayıt KIMLIĞINIZLE türetilmiş Cihaz anahtarını kullanır. Cihaz anahtarını oluşturmak için, DPS kaydınızdan kopyaladığınız anahtarı kullanarak cihazın benzersiz kayıt KIMLIĞI için [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ' ı hesaplamanız ve sonucu base64 biçimine dönüştürmeniz gerekir.
+> [!NOTE]
+> Bu bölüm yalnızca bir grup kaydı kullanılıyorsa gereklidir.
+
+Her cihaz, sağlama sırasında kayıt ile simetrik anahtar kanıtlama gerçekleştirmek için kendi türetilmiş Cihaz anahtarını benzersiz kayıt KIMLIĞINIZLE kullanır. Cihaz anahtarını oluşturmak için, DPS kaydınızdan kopyaladığınız anahtarı kullanarak cihazın benzersiz kayıt KIMLIĞI için [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) ' ı hesaplamanız ve sonucu base64 biçimine dönüştürmeniz gerekir.
 
 Kayıt kodunuzun birincil veya ikincil anahtarını cihaz kodunuza eklemeyin.
 
@@ -159,7 +162,10 @@ Cihazınızı sağlarken aşağıdaki bilgilere sahip olmanız gerekir:
 
 * DPS **kimlik kapsamı** değeri
 * Oluşturduğunuz cihaz **kayıt kimliği**
-* Simetrik anahtar kanıtlama için cihazın türetilmiş cihaz anahtarı
+* DPS kaydından kopyaladığınız **birincil anahtar**
+
+> [!TIP]
+> Grup kayıtları için, DPS kayıt anahtarı yerine her bir cihazın [türetilmiş anahtarı](#derive-a-device-key) gerekir.
 
 ### <a name="linux-device"></a>Linux cihazı
 

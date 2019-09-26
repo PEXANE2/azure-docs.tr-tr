@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e39f294f7902eabef401d4c8145f4f19a07f267f
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: ee8a711a867f8abdc831b0d1d9d0b504b1104955
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71224582"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310119"
 ---
 # <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Yönetilen diskler için Artımlı anlık görüntü (Önizleme) oluşturma
 
@@ -23,10 +23,11 @@ Artımlı anlık görüntü ve normal anlık görüntü arasında birkaç fark v
 
 Artımlı anlık görüntüler, yönetilen diskler için benzersiz olarak kullanılabilen bir fark özelliği de sunar. Bunlar, blok düzeyine kadar, aynı yönetilen disklerin iki artımlı anlık görüntüsü arasında değişiklik almanızı sağlar. Bu özelliği, anlık görüntüleri bölgeler arasında kopyalarken veri parmak izini azaltmak için kullanabilirsiniz.
 
-Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntü kullanmaya başlamak istiyorsanız lütfen genel önizlemeye erişim sağlamak AzureDisks@microsoft.com için bize e-posta gönderin.
+Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntüleri kullanmaya başlamak istiyorsanız, genel önizlemeye erişim sağlamak AzureDisks@microsoft.com için bize e-posta gönderin.
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
+- Artımlı anlık görüntüler şu anda yalnızca Orta Batı ABD kullanılabilir.
 - Bir diskin boyutunu değiştirdikten sonra Artımlı anlık görüntüler şu anda oluşturulamaz.
 - Artımlı anlık görüntüler şu anda abonelikler arasında taşınamaz.
 - Şu anda, belirli bir anda belirli bir anlık görüntü ailesinin en fazla beş anlık görüntüsüne sahip SAS URI 'Leri oluşturabilirsiniz.
@@ -36,7 +37,7 @@ Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntü kullanmaya 
 
 ## <a name="powershell"></a>PowerShell
 
-Artımlı bir anlık görüntü oluşturmak için Azure PowerShell kullanabilirsiniz. PowerShell 'in en son sürümünü yerel olarak yükleyebilirsiniz. Azure PowerShell en son sürümü gerekir, aşağıdaki komut bunu yükleyecek veya mevcut yüklemenizi en son sürümüne güncelleştirecek:
+Artımlı bir anlık görüntü oluşturmak için Azure PowerShell kullanabilirsiniz. Azure PowerShell en son sürümü gerekir, aşağıdaki komut bunu yükleyecek veya mevcut yüklemenizi en son sürümüne güncelleştirecek:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
@@ -44,22 +45,24 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 Yüklendikten sonra PowerShell oturumunuzda ile `az login`oturum açın.
 
+Azure PowerShell ile artımlı bir anlık görüntü oluşturmak için, yapılandırmayı [New-azsnapshotconfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) `-Incremental` ile parametresiyle ayarlayın ve ardından bu `-Snapshot` parametreyi parametresi aracılığıyla [New-azsnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) öğesine bir değişken olarak geçirin.
+
 , Ve değerlerinideğerleriyle`<yourDiskNameHere>`değiştirin, ardındanartımlıbiranlıkgörüntüoluşturmakiçinaşağıdakibetiğikullanabilirsiniz:`<yourDesiredSnapShotNameHere>` `<yourResourceGroupNameHere>`
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
 $yourDisk = Get-AzDisk -DiskName <yourDiskNameHere> -ResourceGroupName <yourResourceGroupNameHere>
 
-# Create an incremental snapshot by setting:
-# 1. Incremental property
-# 2. SourceUri property with the value of the Id property of the disk
+# Create an incremental snapshot by setting the SourceUri property with the value of the Id property of the disk
 $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk.Location -CreateOption Copy -Incremental 
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
+```
 
-# You can identify incremental snapshots of the same disk by using the SourceResourceId and SourceUniqueId properties of snapshots. 
-# SourceResourceId is the Azure Resource Manager resource ID of the parent disk. 
-# SourceUniqueId is the value inherited from the UniqueId property of the disk. If you delete a disk and then create a disk with the same name, the value of the UniqueId property will change. 
-# Following script shows how to get all the incremental snapshots in a resource group of same disk
+Aynı diskten `SourceResourceId` Artımlı anlık görüntüleri `SourceUniqueId` ve anlık görüntülerin özelliklerini tanımlayabilirsiniz. `SourceResourceId`, üst diskin Azure Resource Manager kaynak KIMLIĞIDIR. `SourceUniqueId`, diskin `UniqueId` özelliğinden devralınan değerdir. Bir diski silip aynı ada sahip yeni bir disk oluşturursanız, `UniqueId` özelliğin değeri değişir.
+
+Belirli bir diskle `SourceResourceId` ilişkili `SourceUniqueId` tüm anlık görüntülerin listesini oluşturmak için ve kullanabilirsiniz. Değerini `<yourResourceGroupNameHere>` , ile değiştirin ve ardından mevcut Artımlı anlık görüntülerinizi listelemek için aşağıdaki örneği kullanabilirsiniz:
+
+```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
 
 $incrementalSnapshots = New-Object System.Collections.ArrayList
@@ -73,6 +76,46 @@ foreach ($snapshot in $snapshots)
 }
 
 $incrementalSnapshots
+```
+
+## <a name="cli"></a>CLI
+
+Azure CLı ile artımlı bir anlık görüntü oluşturabilirsiniz. Azure CLı 'nin en son sürümüne ihtiyacınız olacaktır. Aşağıdaki komut, mevcut yüklemenizi en son sürüme yükler veya güncelleştirir:
+
+```PowerShell
+Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
+```
+
+Artımlı bir anlık görüntü oluşturmak için, `--incremental` parametresiyle [az Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) kullanın.
+
+Aşağıdaki örnek, artımlı bir anlık görüntü oluşturur, `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`, ve `<exampleLocation>` değerlerini kendi değerlerinizle değiştirin, ardından örneği çalıştırın:
+
+```bash
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot create -g <yourResourceGroupNameHere> \
+-n <yourDesiredSnapShotNameHere> \
+-l <exampleLocation> \
+--source "$sourceResourceId" \
+--incremental
+```
+
+Aynı diskten `SourceResourceId` Artımlı anlık görüntüleri `SourceUniqueId` ve anlık görüntülerin özelliklerini tanımlayabilirsiniz. `SourceResourceId`, üst diskin Azure Resource Manager kaynak KIMLIĞIDIR. `SourceUniqueId`, diskin `UniqueId` özelliğinden devralınan değerdir. Bir diski silip aynı ada sahip yeni bir disk oluşturursanız, `UniqueId` özelliğin değeri değişir.
+
+Belirli bir diskle `SourceResourceId` ilişkili `SourceUniqueId` tüm anlık görüntülerin listesini oluşturmak için ve kullanabilirsiniz. Aşağıdaki örnekte belirli bir diskle ilişkili tüm artımlı anlık görüntüler listelenir, ancak bazı ayarlar gereklidir.
+
+Bu örnek, verileri sorgulamak için JQ kullanır. Örneği çalıştırmak için [JQ 'yı yüklemelisiniz](https://stedolan.github.io/jq/download/).
+
+`<yourResourceGroupNameHere>` Ve`<exampleDiskName>` değerlerinizle değiştirin, Ayrıca, JQ 'yi yüklediğiniz sürece mevcut Artımlı anlık görüntülerinizi listelemek için aşağıdaki örneği kullanabilirsiniz:
+
+```bash
+sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
+
+ 
+sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
+
+az snapshot list -g <yourResourceGroupNameHere> -o json \
+| jq -cr --arg SUID "$sourceUniqueId" --arg SRID "$sourceResourceId" '.[] | select(.incremental==true and .creationData.sourceUniqueId==$SUID and .creationData.sourceResourceId==$SRID)'
 ```
 
 ## <a name="resource-manager-template"></a>Resource Manager şablonu
@@ -111,32 +154,6 @@ Artımlı bir anlık görüntü oluşturmak için Azure Resource Manager şablon
 }
 ```
 
-## <a name="cli"></a>CLI
-
-[Az Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create)kullanarak Azure CLI ile artımlı bir anlık görüntü oluşturabilirsiniz. Örnek bir komut aşağıdaki gibi görünür:
-
-```bash
-az snapshot create -g <exampleResourceGroup> \
--n <exampleSnapshotName> \
--l <exampleLocation> \
---source <exampleVMId> \
---incremental
-```
-
-`--query` [Az Snapshot Show](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-show)üzerinde parametresini kullanarak CLI 'de Artımlı anlık görüntüler olduğunu da belirleyebilirsiniz. Bu parametreyi, anlık görüntülerin **Sourceresourceıd** ve **sourceuniqueıd** özelliklerini doğrudan sorgulamak için kullanabilirsiniz. Sourceresourceıd, üst diskin Azure Resource Manager kaynak KIMLIĞIDIR. **Sourceuniqueıd** , diskin **UniqueId** özelliğinden devralınan değerdir. Bir diski siler ve aynı ada sahip bir disk oluşturursanız, **UniqueId** özelliğinin değeri değişecektir.
-
-Sorguların örnekleri aşağıda gösterildiği gibi görünür:
-
-```bash
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceResourceId] -o tsv
-
-az snapshot show -g <exampleResourceGroup> \
--n <yourSnapShotName> \
---query [creationData.sourceUniqueId] -o tsv
-```
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntü kullanmaya başlamak istiyorsanız lütfen genel önizlemeye erişim sağlamak AzureDisks@microsoft.com için bize e-posta gönderin.
+Henüz önizlemeye kaydolmadıysanız ve artımlı anlık görüntüleri kullanmaya başlamak istiyorsanız, genel önizlemeye erişim sağlamak AzureDisks@microsoft.com için bize e-posta gönderin.

@@ -5,21 +5,21 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/16/2019
+ms.date: 09/24/2019
 ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 87599c6e0c4bd4313eac154b4d07110cbe4389a0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 5b88e3f17c1bbf60d38763f7fb349302ae4a920b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622989"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310518"
 ---
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Sol bölmeden **kaynak oluştur**' u seçin. **Dijital TWINS**araması yapın ve **dijital TWINS**' i seçin. Dağıtım işlemini başlatmak için **Oluştur** ' u seçin.
 
-   ![Yeni dijital TWINS örneği oluşturma seçimleri](./media/create-digital-twins-portal/create-digital-twins.png)
+   [![Yeni dijital TWINS örneği oluşturma seçimleri](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
 
 1. **Digital Twins** bölmesine şu bilgileri girin:
    * **Kaynak adı**: Dijital TWINS örneğiniz için benzersiz bir ad oluşturun.
@@ -27,7 +27,7 @@ ms.locfileid: "69622989"
    * **Kaynak grubu**: Dijital TWINS örneği için bir [kaynak grubu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups) seçin veya oluşturun.
    * **Konum**: Cihazlarınız için en yakın konumu seçin.
 
-     ![Girilen bilgileri içeren dijital TWINS bölmesi](./media/create-digital-twins-portal/create-digital-twins-param.png)
+     [![Girilen bilgileri içeren dijital TWINS bölmesi](./media/create-digital-twins-portal/create-digital-twins-param.png)](./media/create-digital-twins-portal/create-digital-twins-param.png#lightbox)
 
 1. Dijital TWINS bilgilerinizi gözden geçirin ve ardından **Oluştur**' u seçin. Dijital TWINS örneğinizin oluşturulması birkaç dakika sürebilir. İlerleme durumunu **Bildirimler** bölmesinden izleyebilirsiniz.
 
@@ -37,4 +37,4 @@ ms.locfileid: "69622989"
 
     **YÖNETIM API** 'sini bu biçimde `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`değiştirin. Uygulamanız, değiştirilen URL'yi örneğinize erişmek için temel URL olarak kullanır. Değiştirdiğiniz URL'yi geçici bir dosyaya kopyalayın. Bu, sonraki bölümde gerekecektir.
 
-    ![Yönetim API'si](./media/create-digital-twins-portal/digital-twins-management-api.png)
+    [![Yönetim API 'SI](./media/create-digital-twins-portal/digital-twins-management-api.png)](./media/create-digital-twins-portal/digital-twins-management-api.png#lightbox)

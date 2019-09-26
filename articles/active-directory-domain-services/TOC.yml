@@ -95,22 +95,22 @@
       items:
         - name: Sık karşılaşılan hatalar
           href: troubleshoot.md
-        - name: Sık karşılaşılan uyarılar
-          items:
-            - name: Sık karşılaşılan uyarılar
-              href: troubleshoot-alerts.md
-            - name: Bozuk bir ağ yapılandırmasını düzeltme
-              href: alert-nsg.md
-            - name: Eksik hizmet asıl adlarını geri yükleme
-              href: alert-service-principal.md
-            - name: Güvenli LDAP uyarıları
-              href: alert-ldaps.md
         - name: Eşleşmeyen kiracı hataları
           href: mismatched-tenant-error.md
         - name: Askıya alınan etki alanları
           href: suspension.md
         - name: Güvenli LDAP
           href: tshoot-ldaps.md
+        - name: Bilinen sorunlar
+          items:
+            - name: Sık karşılaşılan uyarılar
+              href: troubleshoot-alerts.md
+            - name: Ağ uyarıları
+              href: alert-nsg.md
+            - name: Hizmet sorumlusu uyarıları
+              href: alert-service-principal.md
+            - name: Güvenli LDAP uyarıları
+              href: alert-ldaps.md
 - name: Kaynaklar
   items:
     - name: SSS

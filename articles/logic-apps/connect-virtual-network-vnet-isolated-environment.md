@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d6cc87947ab861e8de4dbdf754164e195f0f458c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099464"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309313"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -44,18 +44,19 @@ Bu makalede, bu görevlerin nasıl tamamlanacağı gösterilmektedir:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md). Bir sanal ağınız yoksa, [Azure sanal ağı oluşturmayı](../virtual-network/quick-create-portal.md)öğrenin.
+* Bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md). Bir sanal ağınız yoksa, [Azure sanal ağı oluşturmayı](../virtual-network/quick-create-portal.md)öğrenin. 
 
-  * Sanal ağınızın, ıSE 'de kaynak oluşturmak ve dağıtmak için dört *boş* alt ağa sahip olması gerekir. Bu alt ağları önceden oluşturabilirsiniz veya aynı anda alt ağlar oluşturabileceğiniz için ıSE 'yi oluşturmaya kadar bekleyebilirsiniz. [Alt ağ gereksinimleri](#create-subnet)hakkında daha fazla bilgi edinin.
-  
-    > [!NOTE]
-    > Microsoft bulut hizmetlerine özel bir bağlantı sağlayan [ExpressRoute](../expressroute/expressroute-introduction.md)kullanırsanız, aşağıdaki rotayı içeren [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) ve o tabloyu Ise tarafından kullanılan her alt ağ ile bağlamanız gerekir:
-    > 
-    > **Ad**: <*yol adı*><br>
-    > **Adres ön eki**: 0.0.0.0/0<br>
-    > **Sonraki atlama**: İnternet
+  * Sanal ağınızın, ıSE 'de kaynak oluşturup dağıtmak için dört *boş* alt ağa sahip olması gerekir. Bu alt ağları önceden oluşturabilirsiniz veya aynı anda alt ağlar oluşturabileceğiniz için ıSE 'yi oluşturmaya kadar bekleyebilirsiniz. [Alt ağ gereksinimleri](#create-subnet)hakkında daha fazla bilgi edinin.
+
+  * Alt ağ adlarının alfabetik bir karakter veya alt çizgi ile başlaması gerekir ve şu `<`karakterleri kullanamaz:, `>`, `%`, `&`, `\\`, `?`, `/`. 
 
   * Sanal ağınızın [Bu bağlantı noktalarını uygun hale getiren](#ports) ve Ise 'nin düzgün bir şekilde çalıştığından emin olun.
+
+  * Microsoft bulut hizmetlerine özel bir bağlantı sağlayan [ExpressRoute](../expressroute/expressroute-introduction.md)kullanırsanız, aşağıdaki rotayı içeren [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) ve bu tabloyu Ise tarafından kullanılan her alt ağa bağlamanız gerekir:
+
+    **Ad**: <*yol adı*><br>
+    **Adres ön eki**: 0.0.0.0/0<br>
+    **Sonraki atlama**: İnternet
 
 * Azure sanal ağınız için özel DNS sunucuları kullanmak istiyorsanız, ıSE 'nizi sanal ağınıza dağıtmadan önce [Bu adımları izleyerek bu sunucuları ayarlayın](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . Aksi halde, DNS sunucunuzu her değiştirdiğinizde, Ise genel önizleme ile kullanılabilen bir özellik olan ıSE 'nizi de yeniden başlatmanız gerekir.
 
@@ -134,13 +135,17 @@ Arama kutusuna filtreniz olarak "Integration Service Environment" yazın.
 
    **Alt ağ oluştur**
 
-   Ortamınızda kaynak oluşturup dağıtmak için, ıSE 'niz, hiçbir hizmete temsilci olmayan dört *boş* alt ağa ihtiyaç duyuyor. Ortamınızı oluşturduktan sonra bu alt ağ adreslerini değiştiremezsiniz. Her alt ağ şu ölçütlere uymalıdır:
-
-   * Alfabetik bir karakter veya alt çizgi ile başlayan bir ada sahiptir ve şu karakterleri içermemelidir: `<`, `%` `&` `>`,,, `\\`, `?`,`/`
+   Ortamınızda kaynak oluşturup dağıtmak için, ıSE 'niz, hiçbir hizmete temsilci olmayan dört *boş* alt ağa ihtiyaç duyuyor. Ortamınızı oluşturduktan sonra bu alt ağ *adreslerini değiştiremezsiniz.*
+   
+   > [!IMPORTANT]
+   > 
+   > Alt ağ adları alfabetik bir karakter veya alt çizgi (sayı olmadan) ile başlamalıdır ve şu `<`karakterleri kullanmaz:, `>`, `/` `%` `&`,, `\\`, `?`,.
+   
+   Ayrıca, her bir alt ağın bu gereksinimleri karşılaması gerekir:
 
    * [Sınıfsız etki alanları arası yönlendirme (CIDR) biçimini](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) ve bir sınıf B adres alanını kullanır.
 
-   * Her alt ağın *en*az 32 adrese sahip olması gerektiğinden, adres alanında en az bir `/27` kullanır. Örneğin:
+   * Her alt ağın `/27` *en* *az 32 adrese sahip olması gerektiğinden* , adres alanında en az bir kullanır. Örneğin:
 
      * `10.0.0.0/27`2<sup>(32-27)</sup> 2<sup>5</sup> veya 32 olduğundan 32 adresi vardır.
 
@@ -150,7 +155,7 @@ Arama kutusuna filtreniz olarak "Integration Service Environment" yazın.
 
      Adresleri hesaplama hakkında daha fazla bilgi edinmek için bkz. [ıPV4 CIDR blokları](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 
-   * [ExpressRoute](../expressroute/expressroute-introduction.md)kullanıyorsanız, aşağıdaki rotayı içeren [bir yol tablosu oluşturmayı](../virtual-network/manage-route-table.md) ve o tabloyu Ise tarafından kullanılan her alt ağ ile bağlamayı unutmayın:
+   * [ExpressRoute](../expressroute/expressroute-introduction.md)kullanırsanız, aşağıdaki rotayı içeren [bir yol tablosu oluşturmanız](../virtual-network/manage-route-table.md) ve bu tabloyu, Ise tarafından kullanılan her alt ağ ile bağlamanız gerekir:
 
      **Ad**: <*yol adı*><br>
      **Adres ön eki**: 0.0.0.0/0<br>
@@ -184,7 +189,7 @@ Arama kutusuna filtreniz olarak "Integration Service Environment" yazın.
 
    ![Doğrulama başarılı olduktan sonra "Oluştur" u seçin](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
-   Azure ortamınızı dağıtmaya başlar, ancak bu işlemin tamamlanması iki saate kadar sürebilir. Dağıtım durumunu denetlemek için, Azure araç çubuğınızdan bildirimler bölmesini açan Bildirimler simgesini seçin.
+   Azure ortamınızı dağıtmaya başlar, ancak *Bu işlemin tamamlanması* iki saate kadar sürebilir. Dağıtım durumunu denetlemek için, Azure araç çubuğınızdan bildirimler bölmesini açan Bildirimler simgesini seçin.
 
    ![Dağıtım durumunu denetle](./media/connect-virtual-network-vnet-isolated-environment/environment-deployment-status.png)
 

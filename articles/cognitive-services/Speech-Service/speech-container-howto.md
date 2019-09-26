@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 4b8ea102c7acc55acec05234303ff4c215a4bc0f
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: c8efc416555996ef9a1abd79ec5aafcb65186d6f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105153"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316673"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Konuşma hizmeti kapsayıcılarını yükleyip çalıştırma
 
@@ -270,7 +270,9 @@ Kapsayıcı, [burada](https://docs.microsoft.com/azure/cognitive-services/speech
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Kapsayıcıyı çalıştırdığınızda kapsayıcı, kapsayıcıyı başlatırken veya çalıştırırken oluşan sorunları gidermeye yardımcı olan bilgileri almak için **stdout** ve **stderr** kullanır.
+Kapsayıcıyı bir çıkış [bağlaması](speech-container-configuration.md#mount-settings) ve günlüğü etkin olarak çalıştırırsanız kapsayıcı, kapsayıcıyı başlatırken veya çalıştırırken oluşan sorunları gidermek için yararlı olan günlük dosyaları oluşturur.
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>Faturalandırma
 

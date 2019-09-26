@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 15c8aabbcb19d009bb202d111dc7f80da4cebff1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597019"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299702"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Hızlı Başlangıç: IoT çözümünüzü yapılandırma
 
@@ -32,11 +32,11 @@ IoT için Azure Güvenlik Merkezi, Azure tabanlı IoT çözümleri için kapsaml
 
 IoT için Azure Güvenlik Merkezi ile, Azure 'daki tüm IoT cihazlarınızı, IoT platformlarını ve arka uç kaynaklarını tek bir panoda izleyebilirsiniz.
 
-IoT Hub etkinleştirildikten sonra IoT için Azure Güvenlik Merkezi, IoT Hub 'ınıza bağlanan ve IoT çözümünüz ile ilişkili diğer Azure hizmetlerini otomatik olarak tanımlar.
+IoT Hub etkinleştirildikten sonra IoT için Azure Güvenlik Merkezi, IoT Hub ve IoT çözümünüz ile ilişkili diğer Azure hizmetlerini otomatik olarak tanımlar.
 
-Otomatik ilişki algılamayı buna ek olarak, IoT çözümünüzün bir parçası olarak hangi diğer Azure kaynak gruplarının etiketleyebileceği de seçim yapabilirsiniz.
+Otomatik ilişki algılamayı buna ek olarak, IoT çözümünüzün bir parçası olarak hangi diğer Azure kaynak gruplarının etiketleyebileceği de seçim yapabilirsiniz. 
 
-Seçimleriniz, tüm abonelikleri, kaynak grupları veya tek kaynakları eklemenize olanak tanır.
+Seçimleriniz, tüm abonelikleri, kaynak grupları veya tek kaynakları eklemenize olanak tanır. 
 
 Tüm kaynak ilişkilerini tanımladıktan sonra IoT için Azure Güvenlik Merkezi, bu kaynaklara yönelik güvenlik önerileri ve uyarılar sağlamak için Azure Güvenlik Merkezi 'Nden yararlanır.
 
@@ -45,9 +45,9 @@ Tüm kaynak ilişkilerini tanımladıktan sonra IoT için Azure Güvenlik Merkez
 IoT çözümünüze yeni kaynak eklemek için aşağıdakileri yapın: 
 
 1. **IoT Hub** Azure Portal açın. 
-2. Sol taraftaki menüden **güvenlik** altında **kaynakları** seçin ve açın. 
-3. **Düzenle** ' yi seçin ve IoT çözümünüze ait kaynak gruplarını seçin.
-5.           **Ekle**'yi tıklatın. 
+1. Sol taraftaki menüden **güvenlik** altında **kaynakları** seçin ve açın. 
+1. **Düzenle** ' yi seçin ve IoT çözümünüze ait kaynak gruplarını seçin.
+1. **Ekle**'yi tıklatın. 
 
 Tebrikler! IoT çözümünüze yeni bir kaynak grubu eklediniz.
 

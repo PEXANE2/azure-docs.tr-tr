@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c9a156c4cc6e334e04f5a604b91b7b05d9aed390
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801380"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71289604"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure kaynakları için yerleşik roller
 
@@ -183,8 +183,8 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **Eylemler** |  |
 > | * | Tüm türlerin kaynaklarını oluşturma ve yönetme |
 > | **NotActions** |  |
-> | Microsoft. Authorization/*/Delete | Rolleri ve rol atamalarını silme |
-> | Microsoft. Authorization/*/Write | Roller ve rol atamaları oluşturma |
+> | Microsoft. Authorization/*/Delete | Rolleri, ilke atamalarını, ilke tanımlarını ve ilke kümesi tanımlarını Sil |
+> | Microsoft. Authorization/*/Write | Roller, rol atamaları, ilke atamaları, ilke tanımları ve ilke kümesi tanımları oluşturun |
 > | Microsoft.Authorization/elevateAccess/Action | Arayan kullanıcının kiracı kapsamındaki Kullanıcı erişimi yöneticisi erişimine izin verir |
 > | Microsoft. Blueprint/Blueprintasbir/Write | Herhangi bir şema yapıtı oluşturun veya güncelleştirin |
 > | Microsoft. Blueprint/Blueprintasbir/Delete | Herhangi bir şema yapıtını silin |
@@ -531,7 +531,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="avere-operator"></a>Avere Işleci
+## <a name="avere-operator"></a>Avere İşleci
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -547,7 +547,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.Network/networkSecurityGroups/join/action | Bir ağ güvenlik grubuna katılır. Alertable değil. |
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Delete | Bir kapsayıcıyı silmenin sonucunu döndürür |
-> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Kapsayıcı listesini döndürür |
+> | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/okuma | Kapsayıcıların listesini döndürür |
 > | Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Write | Put blob kapsayıcısının sonucunu döndürür |
 > | **NotActions** |  |
 > | *seçim* |  |
@@ -728,7 +728,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Kurtarma Hizmetleri kasasının yedekleme dokuları içinde yedekleme kapsayıcıları oluşturma ve yönetme |
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Yedekleme işleri oluşturma ve yönetme |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Işleri dışarı aktar |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | İşleri dışarı aktar |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | Yedekleme yönetimiyle ilgili meta verileri oluşturma ve yönetme |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Yedekleme yönetimi işlemlerinin sonuçlarını oluşturma ve yönetme |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | Yedekleme ilkeleri oluşturma ve yönetme |
@@ -749,19 +749,19 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
 > | Microsoft. RecoveryServices/Vaults/backupstorageconfig/* |  |
 > | Microsoft. RecoveryServices/Vaults/backupconfig/* |  |
-> | Microsoft. RecoveryServices/Vaults/backupValidateOperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
+> | Microsoft. RecoveryServices/Vaults/backupValidateOperation/Action | Korunan Öğe Üzerindeki İşlemi Doğrula |
 > | Microsoft.RecoveryServices/Vaults/write | Kasa Oluştur işlemi, 'vault' türünde bir Azure kaynağı oluşturur |
 > | Microsoft. RecoveryServices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
 > | Microsoft. RecoveryServices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularının listesini döndürür. |
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/Backupprotectionamaç/* |  |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/korunabilir | Tüm korunabilir kapsayıcıları al |
+> | Microsoft. RecoveryServices/Vaults/Backupdokuları/korunabilir | Korunabilir tüm kapsayıcıları alın |
 > | Microsoft. RecoveryServices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
 > | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
+> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri Doğrulama |
 > | Microsoft. RecoveryServices/Vaults/monitoringAlerts/Write | Uyarıyı çözer. |
 > | Microsoft. RecoveryServices/işlemler/okuma | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
 > | Microsoft. RecoveryServices/konumlar/operationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
-> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
+> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme Koruma Amaçlarını listele |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
 > | **NotActions** |  |
 > | *seçim* |  |
@@ -789,15 +789,15 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/okuma | Korumalı Öğeler için Kurtarma Noktalarını alın. |
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/geri yükleme/eylem | Korumalı Öğeler için Kurtarma Noktalarını geri yükleyin. |
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/revokeInstantItemRecovery/eylem | Korumalı öğe için anında öğe kurtarmayı iptal et |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme korumalı öğesi oluştur |
+> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme Korumalı Öğesi oluşturur |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Tüm kayıtlı kapsayıcıları döndürür |
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/refreshContainers/eylem | Kapsayıcı listesini yeniler |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Yedekleme işleri oluşturma ve yönetme |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Işleri dışarı aktar |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | İşleri dışarı aktar |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Yedekleme yönetimi işlemlerinin sonuçlarını oluşturma ve yönetme |
 > | Microsoft. RecoveryServices/Vaults/backupPolicies/operationResults/Read | İlke İşleminin Sonuçlarını alın. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Tüm koruma Ilkelerini döndürür |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Tüm Koruma İlkelerini döndürür |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Yedeklenebilir öğeleri oluşturma ve yönetme |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Tüm Korumalı Öğelerin listesini döndürür. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Aboneliğe ait tüm kapsayıcıları döndürür |
@@ -816,23 +816,23 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. resources/abonelikler/resourceGroups/Read | Kaynak gruplarını alır veya listeler. |
 > | Microsoft. Storage/storageAccounts/Read | Depolama hesaplarının listesini döndürür veya belirtilen depolama hesabının özelliklerini alır. |
 > | Microsoft. RecoveryServices/Vaults/backupstorageconfig/* |  |
-> | Microsoft. RecoveryServices/Vaults/backupValidateOperation/Action | Korumalı öğe üzerinde Işlemi doğrula |
+> | Microsoft. RecoveryServices/Vaults/backupValidateOperation/Action | Korunan Öğe Üzerindeki İşlemi Doğrula |
 > | Microsoft. RecoveryServices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
 > | Microsoft. RecoveryServices/Vaults/backupPolicies/işlemler/okuma | Ilke Işleminin durumunu alın. |
 > | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/Write | Kayıtlı bir kapsayıcı oluşturur |
 > | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/sorgu/eylem | Bir kapsayıcı içindeki iş yükleri için sorgulama yap |
 > | Microsoft. RecoveryServices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularının listesini döndürür. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Yedekleme koruma hedefi oluşturma |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Yedekleme koruması hedefi al |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/korunabilir | Tüm korunabilir kapsayıcıları al |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Bir yedekleme koruma hedefi oluşturma |
+> | Microsoft. RecoveryServices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Bir yedekleme Koruma Amacı Alın |
+> | Microsoft. RecoveryServices/Vaults/Backupdokuları/korunabilir | Korunabilir tüm kapsayıcıları alın |
 > | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/öğeler/okuma | Bir kapsayıcıdaki tüm öğeleri Al |
 > | Microsoft. RecoveryServices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
 > | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri doğrulama |
+> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Özellikleri Doğrulama |
 > | Microsoft. RecoveryServices/Vaults/monitoringAlerts/Write | Uyarıyı çözer. |
 > | Microsoft. RecoveryServices/işlemler/okuma | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
 > | Microsoft. RecoveryServices/konumlar/operationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
-> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
+> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme Koruma Amaçlarını listele |
 > | Microsoft. support/* | Destek biletleri oluşturma ve yönetme |
 > | **NotActions** |  |
 > | *seçim* |  |
@@ -858,12 +858,12 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/kurtarma noktaları/okuma | Korumalı Öğeler için Kurtarma Noktalarını alın. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Tüm kayıtlı kapsayıcıları döndürür |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | İş İşleminin Sonucunu döndürür. |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/read | Tüm Iş nesnelerini döndürür |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Işleri dışarı aktar |
+> | Microsoft.RecoveryServices/Vaults/backupJobs/read | Tüm İş Nesnelerini döndürür |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | İşleri dışarı aktar |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Kurtarma Hizmetleri Kasası için Yedekleme işleminin Sonucunu döndürür. |
 > | Microsoft. RecoveryServices/Vaults/backupPolicies/operationResults/Read | İlke İşleminin Sonuçlarını alın. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Tüm koruma Ilkelerini döndürür |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Tüm Koruma İlkelerini döndürür |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Tüm Korumalı Öğelerin listesini döndürür. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Aboneliğe ait tüm kapsayıcıları döndürür |
 > | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Kurtarma Hizmetleri için korumalı öğeler ve korumalı sunucular için özetler döndürür. |
@@ -877,14 +877,14 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. RecoveryServices/Vaults/backupOperations/Read | Kurtarma Hizmetleri Kasası için yedekleme Işlemi durumunu döndürür. |
 > | Microsoft. RecoveryServices/Vaults/backupPolicies/işlemler/okuma | Ilke Işleminin durumunu alın. |
 > | Microsoft. RecoveryServices/Vaults/backupEngines/Read | Kasaya kayıtlı tüm yedekleme yönetimi sunucularının listesini döndürür. |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Yedekleme koruması hedefi al |
+> | Microsoft. RecoveryServices/Vaults/Backupdokuların/Backupprotectionamacını/Read | Bir yedekleme Koruma Amacı Alın |
 > | Microsoft. RecoveryServices/Vaults/Backupyapılar/protectionContainers/öğeler/okuma | Bir kapsayıcıdaki tüm öğeleri Al |
 > | Microsoft. RecoveryServices/konumlar/backupStatus/Action | Kurtarma Hizmetleri kasaları için yedekleme durumunu denetle |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft. RecoveryServices/Vaults/monitoringAlerts/Write | Uyarıyı çözer. |
 > | Microsoft. RecoveryServices/işlemler/okuma | İşlem, bir kaynak sağlayıcısı için Işlem listesini döndürür |
 > | Microsoft. RecoveryServices/konumlar/operationStatus/Read | Belirli bir Işlem için Işlem durumunu alır |
-> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme koruma amaçlarını Listele |
+> | Microsoft. RecoveryServices/Vaults/Backupprotectionhedefleri/okuma | Tüm yedekleme Koruma Amaçlarını listele |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Bir Kurtarma Hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
 > | **NotActions** |  |
 > | *seçim* |  |
@@ -1259,7 +1259,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="cosmos-db-operator"></a>Cosmos DB Işleci
+## <a name="cosmos-db-operator"></a>Cosmos DB İşleci
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1593,7 +1593,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="hdinsight-cluster-operator"></a>HDInsight küme operatörü
+## <a name="hdinsight-cluster-operator"></a>HDInsight Küme İşleci
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2265,23 +2265,23 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.RecoveryServices/vaults/replicationEvents/read | Tüm olayları okuyun |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/checkConsistency/action | Doku Tutarlılığını Denetler |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/read | Tüm yapıları okuyun |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | Ağ geçidini yeniden ilişkilendir |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Doku için Sertifikayı Yenile |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/reassociateGateway/action | Ağ Geçidini Yeniden İlişkilendir |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/renewcertificate/action | Yapı Sertifikasını Yenile |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationNetworks/read | Tüm ağları okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationNetworks/replicationNetworkMappings/Read | Tüm ağ eşlemelerini okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Read | Tüm koruma kapsayıcılarını okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir | Korunabilir öğeleri oku |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/applyRecoveryPoint/Action | Kurtarma noktası Uygula |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/işlem | Yük devretme yürütmesi |
+> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/applyRecoveryPoint/Action | Kurtarma Noktası Uygula |
+> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/işlem | Yük Devretme İşlemesi |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Plannedyük devretme/eylem | Planlanan Yük Devretme |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Read | Tüm korumalı öğeleri okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/recoveryPoints/Read | Tüm çoğaltma kurtarma noktalarını okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/\ çoğaltma/eylem | Çoğaltmayı Onar |
-> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorudıtems/reProtect/ACTION | Korumalı öğeyi yeniden koru |
+> | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorudıtems/reProtect/ACTION | Korumalı Öğeyi Yeniden Koru |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/TEMS/testFailover/ACTION | Test Yük Devretmesi |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Yük devretme sınamasını Temizleme |
+> | Microsoft. RecoveryServices/Vaults/Replicationdokuları/replicationProtectionContainers/Replicationkorunabilir/test Failovercleanup/Action | Test Yük Devretmesini Temizleme |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/Replicationkorunabilir/unplannedFailover/ACTION | Yük devret |
-> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility hizmetini Güncelleştir |
+> | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationProtectionContainers/Replicationkorunabilir/Updatebir Dıtems/Update, Ityservice/Action | Mobility Service'i Güncelleştir |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Tüm koruma kapsayıcısı eşlemelerini okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationdokuların/replicationRecoveryServicesProviders/Read | Tüm kurtarma hizmetleri sağlayıcılarını okuyun |
 > | Microsoft. RecoveryServices/Vaults/Replicationyapılar/replicationRecoveryServicesProviders/refreshProvider/Action | Sağlayıcıyı Yenile |
@@ -2290,13 +2290,13 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Tüm sanal merkezleri okuyun |
 > | Microsoft. RecoveryServices/Vaults/replicationJobs/* | Çoğaltma işleri oluşturma ve yönetme |
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Tüm Ilkeleri okuyun |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Yük devretme yürütmesi kurtarma planı |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | Planlı Yük devretme kurtarma planı |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Yük Devretme İşlemesi Kurtarma Planı |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/plannedFailover/action | Planlı Yük Devretme Kurtarma Planı |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | Tüm kurtarma planlarını okuyun |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | Kurtarma planını yeniden koru |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | Yük devretme kurtarma planını sına |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action | Sınama yük devretmesi Temizleme kurtarma planı |
-> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action | Yük devretme kurtarma planı |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/reProtect/action | Kurtarma Planını Yeniden Koru |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action | Test Yük Devretmesi Kurtarma Planı |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action | Test Yük Devretmesi Temizleme Kurtarma Planı |
+> | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action | Yük Devretme Kurtarma Planı |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Kurtarma Hizmetleri Kasası için uyarıları okuyun |
 > | Microsoft. RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/Read |  |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
@@ -2467,7 +2467,7 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | **NotDataActions** |  |
 > | *seçim* |  |
 
-## <a name="sql-managed-instance-contributor"></a>SQL yönetilen örnek Katılımcısı
+## <a name="sql-managed-instance-contributor"></a>SQL Yönetilen Örnek Katkıda Bulunanı
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2928,12 +2928,12 @@ Aşağıdaki tabloda, yerleşik her rolün kısa bir açıklaması verilmiştir.
 > | Microsoft. Network/virtualNetworks/Read | Sanal ağ tanımını al |
 > | Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Bir sanal ağı birleştirir. Alertable değil. |
 > | Microsoft. RecoveryServices/konumlar/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Yedekleme koruma hedefi oluşturma |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Bir yedekleme koruma hedefi oluşturma |
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/*/Read |  |
 > | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/Read | Korumalı öğenin nesne ayrıntılarını döndürür |
-> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme korumalı öğesi oluştur |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Tüm koruma Ilkelerini döndürür |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Koruma Ilkesi oluşturur |
+> | Microsoft. RecoveryServices/Vaults/Backupdokuları/protectionContainers/korunabilir/yazma | Yedekleme Korumalı Öğesi oluşturur |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Tüm Koruma İlkelerini döndürür |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/write | Koruma İlkesi oluşturur |
 > | Microsoft.RecoveryServices/Vaults/read | Kasayı al işlemi, ' kasa ' türündeki Azure kaynağını temsil eden bir nesneyi alır |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Bir Kurtarma Hizmetleri Kasası için kullanım ayrıntılarını döndürür. |
 > | Microsoft.RecoveryServices/Vaults/write | Kasa Oluştur işlemi, 'vault' türünde bir Azure kaynağı oluşturur |

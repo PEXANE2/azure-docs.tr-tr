@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876771"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71301010"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Windows sanal masaüstü önizlemesi nedir? 
 
@@ -76,6 +76,8 @@ Altyapınız Windows sanal masaüstünü desteklemek için aşağıdaki şeylere
 * Bir Windows Server, Azure Active Directory eşitlenmiş Active Directory. Bu, aracılığıyla etkinleştirilebilir:
   * Azure AD Connect
   * Azure AD Domain Services
+  >[!NOTE]
+  >Windows sanal masaüstü yalnızca Azure Active Directory kaynaklı Azure AD Domain Services kullanıcıları destekler. Windows Server AD 'den kaynaklanan kullanıcılar şu anda desteklenmiyor.
 * Windows Server 'a bağlı olan veya içeren bir sanal ağ içeren bir Azure aboneliği Active Directory
   
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şekilde olmalıdır:

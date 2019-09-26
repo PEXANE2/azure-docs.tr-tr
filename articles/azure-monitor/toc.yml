@@ -180,27 +180,19 @@
                     - name: Web uygulamaları
                       displayname: java
                       href: app/java-get-started.md
-                    - name: Web uygulamaları (2.5.0-BETA)
-                      href: app/java-get-started-25-beta.md
                     - name: Docker uygulamaları
                       href: app/docker.md
                     - name: Günlük izlemeleri
                       href: app/java-trace-logs.md
-                    - name: Günlük izlemeleri (2.5.0-BETA)
-                      href: app/java-trace-logs-25-beta.md
                     - name: UNIX ölçümleri
                       href: app/java-collectd.md
                     - name: Bağımlılıklar
                       href: app/java-agent.md
-                    - name: Bağımlılıklar (2.5.0-BETA)
-                      href: app/java-agent-25-beta.md
                     - name: Telemetri filtreleme
                       href: app/java-filter-telemetry.md
                     - name: Micrometer ölçümleri
                       displayname: java
                       href: app/micrometer-java.md
-                    - name: Micrometer Ölçümleri (2.5.0-BETA)
-                      href: app/micrometer-java-25-beta.md
                     - name: Spring Boot uygulaması
                       displayname: java
                       href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
@@ -431,6 +423,8 @@
                   href: app/asp-net-trace-logs.md
                 - name: Performans sayaçları
                   href: app/performance-counters.md
+                - name: EventCounters
+                  href: app/eventcounters.md
                 - name: Bağımlılıklar
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
@@ -519,6 +513,8 @@
                   items:
                     - name: Genel Bakış
                       href: platform/diagnostics-extension-overview.md
+                    - name: Günlük toplama
+                      href: platform/azure-storage-iis-table.md
                     - name: Windows
                       items:
                         - name: Sürüm geçmişi
@@ -644,22 +640,20 @@
               href: insights/service-map.md
             - name: Bilgisayar grupları
               href: platform/computer-groups.md
-        - name: Azure kaynakları
+        - name: Azure platformu
           items:
-            - name: Tanılama günlükleri
+            - name: Platform günlüklerine genel bakış
+              href: platform/platform-logs-overview.md
+            - name: Kaynak günlükleri
               items:
                 - name: Genel Bakış
-                  href: platform/diagnostic-logs-overview.md
-                - name: Günlüklerde toplama
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Azure Depolama'dan toplama
-                  href: platform/azure-storage-iis-table.md
+                  href: platform/resource-logs-overview.md
+                - name: Azure İzleyici günlüklerinde toplama
+                  href: platform/resource-logs-collect-workspace.md
                 - name: Depolamaya arşivleme
-                  href: platform/archive-diagnostic-logs.md
-                - name: Resource Manager şablonlarıyla etkinleştirme
-                  href: platform/diagnostic-logs-stream-template.md
-        - name: Azure Aboneliği
-          items:
+                  href: platform/resource-logs-collect-storage.md
+                - name: Event Hubs’a akış sağlama
+                  href: platform/resource-logs-stream-event-hubs.md
             - name: Etkinlik günlüğü
               items:
                 - name: Genel Bakış
@@ -674,6 +668,14 @@
                   href: platform/activity-log-export.md
                 - name: Şema
                   href: platform/activity-log-schema.md
+            - name: Tanılama ayarları
+              items:
+                - name: Tanılama ayarı oluşturma
+                  href: platform/diagnostic-settings.md
+                - name: Kaynak Yöneticisi ile tanılama ayarı oluşturma
+                  href: platform/diagnostic-settings-template.md
+                - name: Blob depolama biçimiyle değiştirme
+                  href: platform/resource-logs-blob-format.md
             - name: Event Hubs’a veri akışı sağlama
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -685,6 +687,7 @@
         - name: Depolama
           items:
             - name: Depolama için Azure İzleyici
+              displayname: 'storage, monitor, insights, storage accounts, azure storage'
               href: insights/storage-insights-overview.md
         - name: Veritabanları
           items:
@@ -747,7 +750,7 @@
             - name: Configuration Manager’a bağlanma
               href: platform/collect-sccm.md
         - name: Event Hubs’a veri akışı sağlama
-          href: platform/diagnostic-logs-stream-event-hubs.md
+          href: platform/resource-logs-stream-event-hubs.md
     - name: Verileri çözümleme
       items:
         - name: Ölçümler

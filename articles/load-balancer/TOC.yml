@@ -84,7 +84,11 @@
     - name: Bir bölge içerisindeki VM’lerin yükünü dengeleme (CLI)
       href: load-balancer-standard-public-zonal-cli.md
     - name: Giden kuralları yapılandırma
-      href: configure-load-balancer-outbound-cli.md
+      items:
+        - name: Giden kurallarını yapılandırma - CLI
+          href: configure-load-balancer-outbound-cli.md
+        - name: Giden kurallarını yapılandırma - PowerShell
+          href: configure-load-balancer-outbound-powershell.md
     - name: REST API kullanarak Azure Load Balancer oluşturma
       href: create-load-balancer-rest-api.md
     - name: Basic Load Balancer oluşturma (Şablon)

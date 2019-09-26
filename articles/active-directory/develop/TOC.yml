@@ -9,7 +9,7 @@
       href: v2-overview.md
     - name: Hızlı Başlangıçlar
       items:
-        - name: Geliştirme ortamı kurma
+        - name: Kiracı ayarlama
           href: quickstart-create-new-tenant.md
         - name: Uygulama yapılandırma
           items:
@@ -49,7 +49,7 @@
           items:
             - name: Android
               href: quickstart-v2-android.md
-            - name: iOS
+            - name: iOS ve macOS
               href: quickstart-v2-ios.md
             - name: Evrensel Windows Platformu
               href: quickstart-v2-uwp.md
@@ -75,7 +75,7 @@
           items:
             - name: Android
               href: tutorial-v2-android.md
-            - name: iOS
+            - name: iOS ve macOS
               href: tutorial-v2-ios.md
             - name: Evrensel Windows Platformu
               href: tutorial-v2-windows-uwp.md
@@ -223,12 +223,14 @@
           items:
             - name: Genel Bakış
               href: msal-overview.md
-            - name: Geçiş
+            - name: ADAL’dan geçiş
               items:
                 - name: MSAL.NET'e geçirme
                   href: msal-net-migration.md
                 - name: MSAL.js'ye geçirme
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: iOS ve macOS için MSAL’a geçirme
+                  href: migrate-objc-adal-msal.md
                 - name: ADAL.NET ve MSAL.NET’ten aracıları kullanarak Xamarin uygulamalarını geçirme
                   href: msal-net-migration-ios-broker.md
             - name: Desteklenen kimlik doğrulama akışları
@@ -239,8 +241,6 @@
                   href: msal-acquire-cache-tokens.md
                 - name: v1.0 uygulamaları için kapsamlar
                   href: msal-v1-app-scopes.md
-                - name: Belirteç önbelleği serileştirme (.NET)
-                  href: msal-net-token-cache-serialization.md
             - name: İstemci uygulamaları
               items:
                 - name: İstemci uygulamaları
@@ -257,18 +257,28 @@
               href: msal-handling-exceptions.md
             - name: Günlüğe kaydetme
               href: msal-logging.md
-            - name: Çoklu oturum açma (JS)
-              href: msal-js-sso.md
-            - name: Komut istemi davranışı (JS)
-              href: msal-js-prompt-behavior.md
-            - name: ADFS desteği (.NET)
-              href: msal-net-adfs-support.md
+            - name: Çoklu oturum açma
+              items:
+                - name: MSAL.js ile çoklu oturum açma
+                  href: msal-js-sso.md
+                - name: iOS ve macOS için MSAL.js ile çoklu oturum açma
+                  items:
+                    - name: MSAL uygulamaları arasında SSO
+                      href: single-sign-on-macos-ios.md
+                    - name: ADAL ve MSAL uygulamaları arasında SSO
+                      href: sso-between-adal-msal-apps-macos-ios.md
+            - name: ADFS ile tümleştirme
+              items:
+                - name: MSAL.NET’te ADFS desteği
+                  href: msal-net-adfs-support.md
             - name: Azure AD B2C ile tümleştirme
               items:
                 - name: JavaScript
                   href: msal-b2c-overview.md
                 - name: .NET
                   href: msal-net-aad-b2c-considerations.md
+                - name: iOS ve macOS
+                  href: 'config-authority.md#b2c'
             - name: Dikkat edilmesi gerekenler ve bilinen sorunlar
               items:
                 - name: MSAL.NET
@@ -283,6 +293,10 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: Bilinen sorunlar - Safari
                       href: msal-js-known-issues-safari-browser.md
+                - name: iOS ve macOS için MSAL
+                  items:
+                    - name: SSL sorunları
+                      href: ssl-issues.md
         - name: Kimlik doğrulama protokolü
           items:
             - name: Uygulama türleri ve OAuth2.0
@@ -378,6 +392,8 @@
               items:
                 - name: Önbellekten belirteç alma
                   href: msal-net-acquire-token-silently.md
+                - name: Belirteç önbelleği serileştirme
+                  href: msal-net-token-cache-serialization.md
                 - name: Belirteç önbelleği temizleme
                   href: msal-net-clear-token-cache.md
                 - name: Seçeneklerle genel istemci örneği oluşturma
@@ -394,6 +410,20 @@
                   href: msal-js-avoid-page-reloads.md
                 - name: Kimlik doğrulaması isteklerinde özel durumu geçme
                   href: msal-js-pass-custom-state-authentication-request.md
+                - name: Komut istemi davranışı
+                  href: msal-js-prompt-behavior.md
+            - name: iOS ve macOS için MSAL
+              items:
+                - name: iOS ve macOS için Microsoft Kimlik Doğrulaması Kitaplığı farkları
+                  href: msal-differences-ios-macos.md
+                - name: Anahtarlık yapılandırma
+                  href: howto-v2-keychain-objc.md
+                - name: Tarayıcıları ve WebView’ları özelleştirme
+                  href: customize-webviews.md
+                - name: Özel talepler isteme
+                  href: request-custom-claims.md
+                - name: Yeniden yönlendirme URI’si yapılandırması
+                  href: redirect-uris-ios.md
         - name: Visual Studio ile çalışma
           items:
             - name: Active Directory bağlı hizmetini kullanma
@@ -428,7 +458,7 @@
       href: v1-overview.md
     - name: Hızlı Başlangıçlar
       items:
-        - name: Geliştirme ortamı kurma
+        - name: Kiracı ayarlama
           href: quickstart-create-new-tenant.md
         - name: Uygulama yapılandırma
           items:
@@ -468,7 +498,7 @@
           items:
             - name: Android
               href: quickstart-v1-android.md
-            - name: iOS
+            - name: iOS ve macOS
               href: quickstart-v1-ios.md
             - name: Windows Masaüstü .NET
               href: quickstart-v1-dotnet.md

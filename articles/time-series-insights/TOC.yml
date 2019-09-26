@@ -61,7 +61,7 @@
           href: time-series-insights-update-use-cases.md
         - name: Zaman Serisi Modeli
           href: time-series-insights-update-tsm.md
-        - name: Veri sorgulama
+        - name: Zaman Serisi Sorgusu
           href: time-series-insights-update-tsq.md
         - name: Gezginde verileri görselleştirme (Önizleme)
           href: time-series-insights-update-explorer.md

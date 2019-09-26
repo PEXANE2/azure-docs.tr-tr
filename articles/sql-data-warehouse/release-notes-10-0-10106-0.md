@@ -10,12 +10,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: b9058313886484e84000b2b27986280eb1ff30eb
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f4ee3f78159cb5d9b677f0d43492325754065841
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145619"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300834"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL veri ambarı sürüm notları
 
@@ -38,6 +38,7 @@ Azure SQL DW 'nize hangi yayının uygulandığını onaylamak için belirlenen 
 |**Azure özel bağlantısı (Önizleme)**|[Azure özel bağlantısı](https://azure.microsoft.com/blog/announcing-azure-private-link/)Ile sanal ağınızda (VNet) özel bir uç nokta OLUŞTURUP Azure SQL DW 'nize eşleyebilirsiniz. Bu kaynaklara daha sonra, Azure ExpressRoute özel eşlemesi ve/veya VPN Gateway aracılığıyla şirket içi bağlantıyı etkinleştirerek sanal ağınızdaki özel bir IP adresi üzerinden erişilebilir. Genel olarak, bu, ağ yapılandırmasını genel IP adreslerine kadar açmanıza gerek kalmadan basitleştirir. Bu, veri kaybı risklerine karşı koruma de sunar. Daha ayrıntılı bilgi için bkz. [genel bakış](/azure/private-link/private-link-overview) ve [SQL DW belgeleri](/azure/sql-database/sql-database-private-endpoint-overview).|
 |**Veri bulma & sınıflandırması (GA)**|[Veri bulma ve sınıflandırma](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/sql-data-warehouse/toc.json) özelliği artık genel kullanıma sunulmuştur. Bu özellik, veritabanlarınızdaki hassas verileri **korumak & bulmak, sınıflandırmak, etiketlemek** için gelişmiş özellikler sağlar.|
 |**Azure Advisor One-tıklama tümleştirmesi**|SQL veri ambarı artık tek tıklamayla deneyim sağlamaya ilişkin genel bakış dikey penceresinde Azure Advisor önerileriyle doğrudan tümleşir. Artık Azure Advisor dikey penceresine gitmek yerine genel bakış dikey penceresinde öneriler bulabilirsiniz. Öneriler hakkında daha fazla bilgiyi [burada](sql-data-warehouse-concept-recommendations.md)bulabilirsiniz.|
+|**Okuma kaydedilmiş anlık görüntü yalıtımı (Önizleme)**|Bir kullanıcı veritabanı için anlık görüntü yalıtımını etkinleştirmek veya devre dışı bırakmak üzere ALTER DATABDE kullanabilirsiniz.  Geçerli iş yükünüze yönelik etkileri önlemek için, bu seçeneği veritabanı bakım penceresi sırasında ayarlamak veya veritabanına yönelik başka bir etkin bağlantı olmaması için beklemek isteyebilirsiniz. Daha fazla bilgi için bkz. [alter database set Options](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest).|
 |**FARKLı ÇALıŞTıR (Transact-SQL)**| [Farklı Çalıştır](/sql/t-sql/statements/execute-as-transact-sql?view=azure-sqldw-latest) T-SQL desteği artık SQL veri ambarı 'nda kullanılabilir ve müşterilerin bir oturumun yürütme bağlamını belirtilen kullanıcı olarak ayarlamanıza olanak tanır.|
 |**Ek T-SQL desteği**|SQL veri ambarı için T-SQL dil yüzeyi alanı, aşağıdakiler için destek içerecek şekilde genişletilmiştir: </br> - [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE (Transact-SQL)](/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST (Transact-SQL)](/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT (Transact-SQL)](/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [sys. user_token (Transact-SQL)](/sql//relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
 

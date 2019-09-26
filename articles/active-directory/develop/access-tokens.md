@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d89d861b48b0c198b06a45613db668adcf551b39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 780ec85438990959b7b0ac686e05ad5db3f9eedf
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074320"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291076"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -34,7 +34,7 @@ Uygulamanız, istemcilerin erişim isteyebileceklerini belirten bir kaynaktır (
 Bir kaynağın bir erişim belirtecinin içindeki talepleri nasıl doğrulayacağını ve kullandığını öğrenmek için aşağıdaki bölümlere bakın.
 
 > [!IMPORTANT]
-> Erişim belirteçleri, belirtecin kitlelerine göre oluşturulur ve bu, belirteçteki kapsamların sahibi olan uygulama anlamına gelir.  Bu, `accessTokenAcceptedVersion` [uygulama bildiriminde](reference-app-manifest.md#manifest-reference) bir kaynak ayarının, v 1.0 uç noktasını çağıran bir istemcinin v 2.0 erişim belirteci almasına izinverir.`2`  Benzer şekilde, bu, istemciniz için erişim belirteci [isteğe bağlı taleplerini](active-directory-optional-claims.md) değiştirmenin neden, MS Graph kaynağına ait olan için `user.read`bir belirteç istendiğinde alınan erişim belirtecini değiştirmez.  
+> Erişim belirteçleri, belirtecin *kitlelerine* göre oluşturulur ve bu, belirteçteki kapsamların sahibi olan uygulama anlamına gelir.  Bu, `accessTokenAcceptedVersion` [uygulama bildiriminde](reference-app-manifest.md#manifest-reference) bir kaynak ayarının, v 1.0 uç noktasını çağıran bir istemcinin v 2.0 erişim belirteci almasına izinverir.`2`  Benzer şekilde, bu, istemciniz için erişim belirteci [isteğe bağlı taleplerini](active-directory-optional-claims.md) değiştirmenin neden, MS Graph kaynağına ait olan için `user.read`bir belirteç istendiğinde alınan erişim belirtecini değiştirmez.  
 > Aynı nedenden dolayı, istemci uygulamanızı bir kişisel hesapla (örneğin hotmail.com veya outlook.com) sınarken, istemciniz tarafından alınan erişim belirtecinin donuk bir dize olduğunu fark edebilirsiniz. Bunun nedeni, erişildiği kaynağın şifreli ve istemci tarafından anlaşılamadığından eski MSA (Microsoft hesabı) biletler istedi.
 
 ## <a name="sample-tokens"></a>Örnek belirteçler
@@ -61,7 +61,7 @@ Bu v 2.0 belirtecini [JWT.MS](https://jwt.ms/#access_token=eyJ0eXAiOiJKV1QiLCJhb
 
 JWTs üç parçaya ayrılır:
 
-* **Üstbilgi** -belirtecin türü ve nasıl imzalanacağı hakkında bilgi dahil olmak üzere [belirtecin](#validating-tokens) nasıl doğrulanacağı hakkında bilgi sağlar.
+* **Üstbilgi** -belirtecin türü ve nasıl imzalanacağı hakkında bilgi dahil olmak üzere [belirtecin nasıl doğrulanacağı](#validating-tokens) hakkında bilgi sağlar.
 * **Yük** -hizmetinize çağrı yapmaya çalışan Kullanıcı veya uygulamayla ilgili tüm önemli verileri içerir.
 * **İmza** -belirteci doğrulamak için kullanılan ham malzemedir.
 
@@ -115,6 +115,11 @@ Talepler yalnızca, doldurulması için bir değer varsa vardır. Bu nedenle, uy
 | `rh` | Donuk dize | Belirteçleri yeniden doğrulamak için Azure tarafından kullanılan bir iç talep. Kaynaklar bu talebi kullanmamalıdır. |
 | `ver` | Dize, ya `1.0` da`2.0` | Erişim belirtecinin sürümünü gösterir. |
 
+
+> [! Gruplar fazla kullanım talebi] belirteç boyutunun HTTP üst bilgi boyutu sınırlarını aşmadığından emin olmak Için, Azure AD, gruplar talebinde içerdiği nesne kimliklerinin sayısını sınırlar. Bir Kullanıcı fazla kullanım sınırından daha fazla grup üyesiyse (SAML belirteçleri için 150, JWT belirteçleri için 200), Azure AD, grup talebini belirteçte göstermez. Bunun yerine, belirteçte kullanıcının grup üyeliğini almak üzere Graph API sorgulamak üzere uygulamayı gösteren bir fazla kullanım talebi içerir.
+> { ... "_claim_names": {"gruplar": "src1"}, {"_claim_sources": {"src1": {"Endpoint": "[Bu kullanıcının grup üyeliğini almak için grafik URL 'Si]"}}    
+    ... } Fazla kullanım senaryolarını test `BulkCreateGroups.ps1` etmenize yardımcı olması için [uygulama oluşturma betikleri](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/) klasöründe sağlanan ' i kullanabilirsiniz.
+
 #### <a name="v10-basic-claims"></a>v 1.0 temel talepler
 
 Aşağıdaki talepler varsa v 1.0 belirteçlerine dahil edilir, ancak varsayılan olarak v 2.0 belirteçlerine dahil edilmez. V 2.0 kullanıyorsanız ve bu taleplerden birine ihtiyacınız varsa, bunları [isteğe bağlı talepler](active-directory-optional-claims.md)kullanarak isteyin.
@@ -151,7 +156,7 @@ Microsoft kimlikleri, uygulamanız için uygun olabilecek farklı yollarla kimli
 
 Bir id_token veya access_token doğrulamak için, uygulamanızın hem belirtecin imzasını hem de taleplerini doğrulaması gerekir. Erişim belirteçlerini doğrulamak için, uygulamanız sertifikayı veren, seyirci ve imzalama belirteçlerini de doğrulamalıdır. Bu, OpenID keşif belgesindeki değerlere karşı doğrulanması gerekir. Örneğin, belgenin kiracı bağımsız sürümü konumunda [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration)bulunur.
 
-Azure AD ara yazılımı, erişim belirteçlerini doğrulamaya yönelik yerleşik yeteneklere sahiptir ve seçtiğiniz dilde bir tane bulmak için örneklerimize göz atabilirsiniz. [](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) Bir JWT belirtecinin açıkça nasıl doğrulanacağı hakkında daha fazla bilgi için [El Ile JWT doğrulama örneğine](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)bakın.
+Azure AD ara yazılımı, erişim belirteçlerini doğrulamaya yönelik yerleşik yeteneklere sahiptir ve seçtiğiniz dilde bir tane bulmak için [örneklerimize](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) göz atabilirsiniz. Bir JWT belirtecinin açıkça nasıl doğrulanacağı hakkında daha fazla bilgi için [El Ile JWT doğrulama örneğine](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)bakın.
 
 Belirteç doğrulamanın nasıl kolayca işleneceğini gösteren kitaplıklar ve kod örnekleri sağlıyoruz. Aşağıdaki bilgiler, temeldeki işlemi anlamak isteyen kişiler için verilmiştir. Ayrıca, JWT doğrulaması için kullanılabilen birkaç üçüncü taraf açık kaynak kitaplığı vardır. neredeyse her platform için en az bir seçenek ve burada dil vardır. Azure AD kimlik doğrulama kitaplıkları ve kod örnekleri hakkında daha fazla bilgi için bkz. [v 1.0 kimlik doğrulama kitaplıkları](active-directory-authentication-libraries.md) ve [v 2.0 kimlik doğrulama kitaplıkları](reference-v2-libraries.md).
 

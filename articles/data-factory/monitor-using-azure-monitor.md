@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 9aa8cda7d65d97d831a218be393581d0e5bf3a4a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: c8d78473a1128dd4f96f2cfa0c14d2d3b1b2c1e9
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910179"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300555"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Azure Izleyici kullanarak veri fabrikalarını uyarma ve izleme
 
@@ -404,7 +404,7 @@ Log Analytics şemayı Izleyiciden aşağıdaki özel durumlarla devralır:
     | Azure Izleyici sütunu | Log Analytics sütunu | Type |
     | --- | --- | --- |
     | $. Properties. UserProperties | UserProperties | Dinamik |
-    | $. Properties. Açıklamaları | Açıklamaları | Dinamik |
+    | $. Properties. Açıklamaları | Ek Açıklamalar | Dinamik |
     | $. Properties. Girişinin | Girdi | Dinamik |
     | $. Properties. Çıktıların | Output | Dinamik |
     | $. Properties. Hata. errorCode | hata kodu | int |
@@ -504,8 +504,6 @@ Azure Data Factory Analytics 'in yüklenmesi, aşağıdaki ölçümlerin etkinle
 - ADF Istatistikleri-3) en fazla işlem hattı çalıştırma süresi
 
 !["Çalışma kitapları (Önizleme)" ve "AzureDataFactoryAnalytics" vurgulanmış pencere](media/data-factory-monitor-oms/monitor-oms-image6.png)
-
-![Çalıştırmalar ve hataların grafik gösterimi](media/data-factory-monitor-oms/monitor-oms-image7.png)
 
 Önceki ölçümleri görselleştirin, bu ölçümlerin arkasındaki sorgulara bakabilir, sorguları düzenleyebilir, uyarılar oluşturabilir ve başka işlemler yapabilirsiniz.
 

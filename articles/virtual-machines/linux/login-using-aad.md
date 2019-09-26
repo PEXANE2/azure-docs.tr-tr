@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: cynthn
-ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163213"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316769"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -68,7 +68,7 @@ Azure AD kimlik doğrulamasını kullanarak Azure 'da Linux VM 'lerinde oturum a
 
 CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğreticide, Azure CLı sürüm 2.0.31 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-linux-virtual-machine"></a>Linux sanal makinesi oluşturun
+## <a name="create-a-linux-virtual-machine"></a>Linux sanal makinesi oluşturma
 
 [Az Group Create](/cli/azure/group#az-group-create)ile bir kaynak grubu oluşturun ve ardından desteklenen bir ve desteklenen bir bölgede [az VM Create](/cli/azure/vm#az-vm-create) ile bir VM oluşturun. Aşağıdaki örnek, *Ubuntu 16,04 LTS* kullanan *myvm* adlı bir VM 'yi *Güneydoğu bir ABD* bölgesindeki *myresourcegroup* adlı bir kaynak grubuna dağıtır. Aşağıdaki örneklerde, gerektiğinde kendi kaynak grubunuzu ve sanal makine adlarınızı sağlayabilirsiniz.
 
@@ -87,7 +87,10 @@ VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer.
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Azure AD oturum açma VM uzantısını yükler
 
-Azure AD kimlik bilgileriyle bir Linux VM 'de oturum açmak için Azure Active Directory oturum açma VM uzantısını yükler. VM uzantıları, Azure sanal makinelerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. *Aadloginforlinux* uzantısını myresourcegroup kaynak grubundaki *MYVM* adlı VM 'ye yüklemek için [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutunu kullanın:
+> [!NOTE]
+> Bu yüklemeyi daha önce oluşturulmuş bir VM 'ye dağıtırsanız, makinenin en az 1 GB belleğe sahip olduğundan emin olun, aksi takdirde uzantının yüklemesi başarısız olur
+
+Azure AD kimlik bilgileriyle bir Linux VM 'de oturum açmak için Azure Active Directory oturum açma VM uzantısını yükler. VM uzantıları, Azure sanal makinelerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. *Aadloginforlinux* uzantısını *myresourcegroup* kaynak GRUBUNDAKI *myvm* adlı VM 'ye yüklemek için [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutunu kullanın:
 
 ```azurecli-interactive
 az vm extension set \
@@ -122,7 +125,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmiyorsa,--atane *-nesnesi-kimliği*ile Kullanıcı HESABıNıZıN nesne kimliğini belirtmeniz gerekir. Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
+> AAD etki alanı ve oturum açma Kullanıcı adı etki alanınız eşleşmiyorsa,--atane *-nesnesi-kimliği*ile Kullanıcı HESABıNıZıN nesne kimliğini belirtmeniz *gerekir.* Kullanıcı hesabınızın nesne KIMLIĞINI [az ad kullanıcı listesi](/cli/azure/ad/user#az-ad-user-list)ile elde edebilirsiniz.
 
 Azure abonelik kaynaklarınıza erişimi yönetmek için RBAC kullanma hakkında daha fazla bilgi için bkz. [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)veya [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)kullanma.
 

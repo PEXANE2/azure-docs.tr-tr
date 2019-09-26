@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476745"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310111"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda tablo tasarlama
 
@@ -68,7 +68,7 @@ Dış tablo, Azure Depolama Blobu veya Azure Data Lake Store bulunan verilere i�
 SQL veri ambarı en yaygın kullanılan veri türlerini destekler. Desteklenen veri türlerinin bir listesi için, CREATE TABLE deyimindeki [Create Table başvuru içindeki veri türleri](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes) bölümüne bakın. Veri türlerini kullanma hakkında yönergeler için bkz. [veri türleri](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Dağıtılmış tablolar
-SQL veri ambarı 'nın temel bir özelliği, dağıtımların tamamında tablo üzerinde depolama ve çalışma yöntemidir. [](massively-parallel-processing-mpp-architecture.md#distributions)  SQL veri ambarı, verileri dağıtmaya yönelik üç yöntemi destekler, hepsini bir kez deneme (varsayılan), karma ve yinelenmiş.
+SQL veri ambarı 'nın temel bir özelliği, [dağıtımların](massively-parallel-processing-mpp-architecture.md#distributions)tamamında tablo üzerinde depolama ve çalışma yöntemidir.  SQL veri ambarı, verileri dağıtmaya yönelik üç yöntemi destekler, hepsini bir kez deneme (varsayılan), karma ve yinelenmiş.
 
 ### <a name="hash-distributed-tables"></a>Karma Dağıtılmış tablolar
 Karma olarak dağıtılan bir tablo, satırları dağıtım sütunundaki değere göre dağıtır. Karma Dağıtılmış bir tablo, büyük tablolardaki sorgular için yüksek performans elde etmek üzere tasarlanmıştır. Bir dağıtım sütunu seçerken göz önünde bulundurmanız gereken birkaç etken vardır. 
@@ -109,6 +109,9 @@ Columnstore özelliklerinin bir listesi için bkz. [columnstore dizinleri yenili
 ## <a name="statistics"></a>İstatistikler
 Sorgu iyileştiricisi, bir sorgu yürütmek için plan oluşturduğunda sütun düzeyi istatistikleri kullanır. Sorgu performansını artırmak için, özel sütunlarda, özellikle de sorgu birleşimlerinde kullanılan sütunlarda istatistik olması önemlidir. [Istatistiklerin oluşturulması](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic) otomatik olarak gerçekleşir.  Ancak, istatistiklerin güncelleştirilmesi otomatik olarak gerçekleşmez. Önemli sayıda satır eklendikten veya değiştirildikten sonra istatistikleri güncelleştirin. Örneğin, bir yüklemeden sonra istatistikleri güncelleştirin. Daha fazla bilgi için bkz. [istatistik Kılavuzu](sql-data-warehouse-tables-statistics.md).
 
+## <a name="primary-key-and-unique-key"></a>Birincil anahtar ve benzersiz anahtar
+BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve zorunlu KıLıNMAYAN her ikisi de kullanıldığında desteklenir.  UNIQUE kısıtlaması yalnızca ZORLANMAMıŞ ile desteklenir.  [SQL veri ambarı tablo kısıtlamalarını](sql-data-warehouse-table-constraints.md)denetleyin.
+
 ## <a name="commands-for-creating-tables"></a>Tablo oluşturma komutları
 Yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesinin sonuçlarıyla bir tablo oluşturup doldurabilirsiniz. Aşağıda tablo oluşturmak için T-SQL komutları verilmiştir.
 
@@ -128,8 +131,7 @@ Veriler birden fazla veri deposundan geliyorsa verileri veri ambarına getirip b
 ## <a name="unsupported-table-features"></a>Desteklenmeyen tablo özellikleri
 SQL veri ambarı, diğer veritabanları tarafından sunulan tablo özelliklerinin çoğunu, ancak hepsini destekler.  Aşağıdaki listede SQL veri ambarı 'nda desteklenmeyen bazı tablo özellikleri gösterilmektedir.
 
-- Birincil anahtar, yabancı anahtarlar, benzersiz, Denetim [tablosu kısıtlamaları](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-
+- Yabancı anahtar, Denetim [tablosu kısıtlamaları](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [Hesaplanan sütunlar](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [Dizinli görünümler](/sql/relational-databases/views/create-indexed-views)
 - [Sırasına](/sql/t-sql/statements/create-sequence-transact-sql)

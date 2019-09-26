@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 43cb2f0c3ef0f845afcd309dccb35bc632ffd324
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 3bde609c83425d660c867939e034247d7e6898c5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390962"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300266"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing yazım denetimi ile doğru yanlış yazılan sözcükleri
 
@@ -89,7 +89,13 @@ Uç nokta URL'si doğru geçirilmesi gereken birkaç değer sahiptir. Bing yazı
 ```
 
 ## <a name="ignore-spelling-mistakes"></a>Yazım hatalarını yoksay
-Bing yazım denetimi API'si v7 hizmetini kullanmayı istemiyorsanız, yazım hatalarını sahip ve böylece LUIS uygun yazım ve bunun yanı sıra yazım hatası edinebilirsiniz konuşma etiketleyebilirsiniz. Bu seçenek bir yazım denetleyicisi kullanmaktan daha fazla etiketleme çaba gerektirir.
+
+Bing Yazım Denetimi API'si v7 hizmetini kullanmak istemiyorsanız, doğru ve yanlış yazım denetimi eklemeniz gerekir. 
+
+İki çözüm vardır:
+
+* Her türlü farklı yazımlar içeren, LUTO 'ın doğru yazım ve yazım hataları öğrenmeleri için etiketlenmesi gereken her türlü etiket örneği. Bu seçenek bir yazım denetleyicisi kullanmaktan daha fazla etiketleme çaba gerektirir.
+* Sözcüğün tüm çeşitlemelerine sahip bir tümcecik listesi oluşturun. Bu çözümle, örnek çeşitlerdeki sözcük çeşitlemelerini etiketlemenize gerek yoktur. 
 
 ## <a name="publishing-page"></a>Yayımlama Sayfası
 [Yayımlama](luis-how-to-publish-app.md) sayfasına sahip bir **etkinleştirme Bing yazım denetleyicisi** onay kutusu. Anahtar oluşturun ve uç nokta URL'sini nasıl değiştiğini anlamak için bir kolaylık budur. Yine de her utterance için düzeltilen yazım sahip olmak için doğru uç noktaya parametreleri kullanmak zorunda. 

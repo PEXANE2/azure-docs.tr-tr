@@ -4,7 +4,7 @@ description: Azure aboneliğinizin süresi geçmiş bakiyesi varsa nasıl ödeme
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jureid
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: f58969b167b6c0f0a66d46731ad76c1f6e9acc41
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: cd3c29c4b65f45863647599ae2447584845f27c8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491463"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300296"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Azure aboneliğiniz için süresi geçmiş bakiye sorununu çözme
+
+Bu makale, Microsoft Online Services Program hesabı olan müşteriler için geçerlidir.
 
 Ödemeniz alınmadıysa veya ödemenizi işleyemediysek bir e-posta alabilir ya da Hesap Merkezinde veya Azure portalında bir uyarı görebilirsiniz.
 [Hesap Yöneticisi](billing-subscription-transfer.md#whoisaa) iseniz, [Azure portalında](https://portal.azure.com) kalan ücretleri ödeyebilirsiniz. Fatura ödeme modundaysanız, ödemenizi faturanızın en altında bulunan konuma gönderin.
@@ -43,6 +45,13 @@ ms.locfileid: "67491463"
 1. Seçili ödeme yönteminin Microsoft hizmetleri için kalan ücretleri de varsa bu, toplam kalan bakiyeye yansıtılır. Bu kalan ücretleri de ödemeniz gerekir.
 1. **Ödeme**’ye tıklayın.
 
+## <a name="troubleshoot-declined-credit-card"></a>Reddedilen kart sorununu giderme
+
+Kredi kartı ücretiniz finans kurumunuz tarafından reddedildiyse lütfen sorunu çözmek için finans kurumunuza ulaşın. Bankanızla birlikte denetleyip şu konulardan emin olun:
+- Kartta uluslararası işlemler etkin.
+- Kart bakiyeyi dengeleyecek yeterli kredi sınırına veya mevduata sahip.
+- Kartta, yinelenen ödemeler etkin.
+
 ## <a name="not-getting-billing-email-notifications"></a>Faturalama e-posta bildirimleri almıyor musunuz?
 
 Hesap Yöneticisiyseniz [bildirimler için hangi e-posta adresinin kullanıldığını kontrol edin](billing-how-to-change-azure-account-profile.md). Düzenli olarak kontrol ettiğiniz bir e-posta adresi kullanmanızı öneririz. E-posta doğruysa, istenmeyen posta klasörünüzü kontrol edin.
@@ -52,6 +61,7 @@ Hesap Yöneticisiyseniz [bildirimler için hangi e-posta adresinin kullanıldı�
 Hizmet iptal edilir ve kaynaklarınız artık kullanılamaz. Hizmet sonlandırıldıktan 90 gün sonra Azure verileriniz silinir. Daha fazla bilgi edinmek için bkz. [Microsoft Güven Merkezi - Verilerinizi nasıl yönetiriz?](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)
 
 Ödemenizin işlendiğini bildiğiniz halde aboneliğiniz halen devre dışı bırakılmışsa [Azure Desteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)’ne başvurun.
+
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 

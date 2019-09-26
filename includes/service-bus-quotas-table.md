@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d6c5d881c5ca6eee14835ab0ec10bff2749299dc
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b0c6d80bfa7a7ae27e5dc6565b0d15b94eb7cdd3
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68502340"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310608"
 ---
 Aşağıdaki tabloda Azure Service Bus mesajlaşma 'ya özgü kota bilgileri listelenmektedir. Service Bus yönelik fiyatlandırma ve diğer kotalar hakkında daha fazla bilgi için bkz. [Service Bus fiyatlandırması](https://azure.microsoft.com/pricing/details/service-bus/).
 
 | Kota adı | `Scope` | Notlar | Value |
 | --- | --- | --- | --- |
 | Azure aboneliği başına en fazla temel veya standart ad alanı sayısı |Ad Alanı |Ek temel veya standart ad alanları için sonraki istekler Azure portal tarafından reddedilir. |100|
-| Azure aboneliği başına en fazla Premium ad alanı sayısı |Ad Alanı |Ek Premium ad alanları için sonraki istekler Portal tarafından reddedilir. |50 |
+| Azure aboneliği başına en fazla Premium ad alanı sayısı |Ad Alanı |Ek Premium ad alanları için sonraki istekler Portal tarafından reddedilir. |100 |
 | Kuyruk veya konu boyutu |Varlık |Sıra veya konu oluşturulduktan sonra tanımlanır. <br/><br/> Sonraki gelen iletiler reddedilir ve çağıran kod tarafından bir özel durum alınır. |1, 2, 3, 4 GB veya 5 GB.<br /><br />Premium SKU 'sunda ve [bölümlendirme](/azure/service-bus-messaging/service-bus-partitioning) ETKINLEŞTIRILMIŞ standart SKU 'da en büyük sıra veya konu boyutu 80 GB 'tır. |
 | Bir ad alanındaki eşzamanlı bağlantı sayısı |Ad Alanı |Daha sonraki ek bağlantı istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. REST işlemleri, eşzamanlı TCP bağlantılarına doğru sayılmaz. |NetMessaging 1.000.<br /><br />AMQP 5.000. |
 | Bir kuyruk, konu veya abonelik varlığındaki eşzamanlı alma isteği sayısı |Varlık |Sonraki alma istekleri reddedilir ve çağıran kod tarafından bir özel durum alınır. Bu kota, bir konudaki tüm abonelikler arasında eş zamanlı alma işlemlerinin Birleşik sayısı için geçerlidir. |5,000 |

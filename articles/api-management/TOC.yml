@@ -49,6 +49,10 @@
           href: api-management-howto-policies.md
         - name: İlke başvuru dizini
           href: api-management-policies.md
+    - name: Güvenlik
+      items:
+        - name: Yerleşik güvenlik denetimleri
+          href: api-management-security-controls.md
     - name: Abonelikler
       href: api-management-subscriptions.md
     - name: Otomasyonu kullanarak yönetme
@@ -57,8 +61,6 @@
       href: api-management-error-handling-policies.md
     - name: API içeri aktarma kısıtlamaları
       href: api-management-api-import-restrictions.md
-    - name: Yerleşik güvenlik denetimleri
-      href: api-management-security-controls.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: API’leri tanımlama

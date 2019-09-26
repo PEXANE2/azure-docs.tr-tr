@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: b574f7c4f30c3bce8bd7d0e234cb523c965772e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3d6b1ed2a3800058acba9fe5df2137811afed74a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727579"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300783"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Market görüntüleri için güvenlik önerileri
 
@@ -56,7 +56,7 @@ Bu öneriler Ayrıca, Azure Marketi 'nde görüntü bulunmayan kuruluşlar için
 | Güvenlik                                                         | Güvenli bir işletim sistemi temel görüntüsü kullanın. Windows Server tabanlı herhangi bir görüntünün kaynağı için kullanılan VHD, Microsoft Azure ile sunulan Windows Server işletim sistemi görüntülerinden olmalıdır. |
 | Güvenlik                                                         | Tüm en son güvenlik güncelleştirmelerini yükler.                                                                                                                                     |
 | Güvenlik                                                         | Uygulamalar, yönetici, kök ve yönetici gibi kısıtlı kullanıcı adlarına bağımlılığı içermemelidir.                                                                |
-| Güvenlik                                                         | BitLocker Sürücü Şifrelemesi işletim sistemi sabit diskinde desteklenmez. BitLocker, veri disklerinde kullanılabilir.                                                            |
+| Güvenlik                                                         | BitLocker Sürücü Şifrelemesi hem işletim sistemi sabit sürücüler hem de veri sabit sürücüleri için etkinleştirilmiştir.                                                             |
 | Güvenlik                                                         | Yalnızca gerekli Windows Server rolleri, özellikleri, hizmetleri ve ağ bağlantı noktaları etkin olan en az sayıda kaplama tutarak saldırı yüzeyini sınırlayın.                         |
 | Güvenlik                                                         | Kötü amaçlı yazılım için kaynak kodu ve ortaya çıkan VM görüntüsünü tarayın.                                                                                                                     |
 | Güvenlik                                                         | Windows Server görüntülerini güvenlik güncelleştirmesini otomatik güncelleştirme olarak ayarlayın.                                                                                                                |

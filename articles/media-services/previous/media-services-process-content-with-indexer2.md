@@ -11,35 +11,34 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: 8aa3082b15886234905edaebbbc9e1458bd7e3f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d03c3a15d9bccf93b73d36302f986dffd95c6428
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015026"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309240"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 Preview ile medya dosyalarını dizine alma
-## <a name="overview"></a>Genel Bakış
+
+> [!NOTE]
+> [Azure Media Indexer 2](media-services-process-content-with-indexer2.md) medya Işlemcisi 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
+
 **Azure Media Indexer 2 Preview** medya IŞLEMCISI (MP), medya dosyalarını ve içeriği aranabilir yapmanızı ve kapalı açıklamalı altyazı parçaları oluşturmanızı sağlar. Önceki [Azure Media Indexer](media-services-index-content.md)sürümüyle karşılaştırıldığında, **Azure Media Indexer 2 önizlemesi** daha hızlı Dizin oluşturma gerçekleştirir ve daha geniş bir dil desteği sunar. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Mandarin, Basitleştirilmiş), Portekizce, Arapça, Rusça ve Japonca bulunur.
 
 **Azure Media Indexer 2 Preview** MP, şu anda önizleme aşamasındadır.
 
 Bu makalede **Azure Media Indexer 2 Preview**ile dizin oluşturma işlerinin nasıl oluşturulacağı gösterilmektedir.
 
-> [!NOTE]
-> Aşağıdaki noktalar geçerlidir:
-> 
-> Dizin Oluşturucu 2, Azure Çin ve Azure Kamu 'da desteklenmez.
-> 
-> İçerik dizin oluştururken, çok temiz konuşmaya sahip medya dosyalarını (arka plan müziği, gürültü, efekt veya mikrofon hisleri olmadan) kullandığınızdan emin olun. Uygun içeriğe örnek olarak şunlar verilebilir: kayıtlı toplantılar, seminerler veya sunular. Şu içerikler dizin oluşturmak için uygun olmayabilir: Filmler, TV programları, karışık ses ve ses efektleriyle herhangi bir şey, arka plan gürültüsü olan kötü kaydedilmiş içerik (hisler).
-> 
-> 
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Bu makalede, **Azure Media Indexer 2 Preview** ile ilgili ayrıntılar verilmektedir ve .net IÇIN Media Services SDK ile nasıl kullanılacağı gösterilmektedir
-
+Aşağıdaki noktalar geçerlidir:
+ 
+* Dizin Oluşturucu 2, Azure Çin 21Vianet ve Azure Kamu 'da desteklenmez.
+* İçerik dizin oluştururken, çok temiz konuşmaya sahip medya dosyalarını (arka plan müziği, gürültü, efekt veya mikrofon hisleri olmadan) kullandığınızdan emin olun. Uygun içeriğe örnek olarak şunlar verilebilir: kayıtlı toplantılar, seminerler veya sunular. Şu içerikler dizin oluşturmak için uygun olmayabilir: Filmler, TV programları, karışık ses ve ses efektleriyle herhangi bir şey, arka plan gürültüsü olan kötü kaydedilmiş içerik (hisler).
+ 
 ## <a name="input-and-output-files"></a>Giriş ve çıkış dosyaları
 ### <a name="input-files"></a>Giriş dosyaları
 Ses veya video dosyaları
