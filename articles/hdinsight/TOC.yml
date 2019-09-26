@@ -19,6 +19,8 @@
           href: ./hdinsight-administer-use-powershell.md
     - name: Örnekler
       items:
+        - name: Azure CLI örnekleri
+          href: ./azure-cli-samples.md
         - name: .NET örnekleri
           href: ./hdinsight-sdk-dotnet-samples.md
         - name: Java örnekleri
@@ -613,6 +615,8 @@
               href: ./hbase/apache-hbase-provision-vnet.md
         - name: Sorun giderme
           items:
+            - name: Apache HBase performans sorunlarını giderme
+              href: ./hbase/troubleshoot-hbase-performance-issues.md
             - name: hbase hbck tutarsızlıklar döndürüyor
               href: ./hbase/hbase-troubleshoot-hbase-hbck-inconsistencies.md
             - name: Bağlantı sıfırlandıktan sonra depolama özel durumu

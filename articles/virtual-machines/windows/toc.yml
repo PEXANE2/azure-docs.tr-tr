@@ -470,6 +470,8 @@
           href: detach-disk.md
         - name: Şablon ile diskleri dağıtma
           href: using-managed-disks-template-deployments.md
+        - name: Diske VHD yükleme - PowerShell
+          href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Bir diski yeniden boyutlandırma
           href: expand-os-disk.md
         - name: Bir diskin anlık görüntüsünü alma

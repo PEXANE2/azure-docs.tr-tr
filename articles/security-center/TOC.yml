@@ -47,7 +47,7 @@
           href: security-center-incident.md
         - name: VM’ler ve sunucular için tehdit algılama
           href: security-center-alerts-iaas.md
-        - name: Bulutta yerel bilgi işlem için tehdit algılama
+        - name: Bulut uygulamaları ve kapsayıcılar için tehdit algılama
           href: security-center-alerts-compute.md
         - name: Veri hizmetleri için tehdit algılama
           href: security-center-alerts-data-services.md
@@ -71,7 +71,7 @@
       href: security-center-wdatp.md
     - name: Azure VM’lerinde SQL için gelişmiş veri güvenliği (Genel Önizleme)
       href: security-center-iaas-advanced-data.md
-    - name: App Service'i koruma
+    - name: Uygulamalarınızı korumak için App Service kullanma
       href: security-center-app-services.md
     - name: Güvenlik ilkeleriyle çalışma
       href: tutorial-security-policy.md
@@ -91,7 +91,7 @@
       href: security-center-policy-definitions.md
     - name: E-posta bildirimleri
       href: security-center-provide-security-contact-details.md
-    - name: Fiyatlandırma katmanı
+    - name: Fiyatlandırma
       href: security-center-pricing.md
     - name: Kiracı çapında görünürlük
       href: security-center-management-groups.md
@@ -147,8 +147,6 @@
   items:
     - name: REST API'leri
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
-    - name: Hizmet güncelleştirmeleri
-      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Özellik ve API’yi kullanımdan kaldırma (Temmuz 2019)
       href: security-center-features-retirement-july2019.md
     - name: Uç nokta koruma değerlendirmesi ve önerileri
@@ -159,25 +157,25 @@
       href: /learn/browse/?term=securityS
     - name: Kullanıcı verilerini yönetme
       href: security-center-privacy.md
-    - name: IoT’yi yönetme
+    - name: IoT için Azure Güvenlik Merkezi belgeleri
       href: 'https://docs.microsoft.com/en-us/azure/asc-for-iot/'
     - name: SSS
       href: security-center-faq.md
-    - name: Azure Güvenlik
+    - name: Azure güvenlik belgeleri
       href: /azure/security/
-    - name: Azure Yol Haritası
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?category=security-identity'
     - name: Hazırlık Yol Haritası
       href: security-center-readiness-roadmap.md
     - name: 'Azure Güvenlik, Gizlilik ve Uyumluluk blogu'
       href: 'https://blogs.msdn.com/b/azuresecurity/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=security-center'
+    - name: Stack Overflow üzerinde Azure Güvenlik Merkezi
+      href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: Videolar
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=security-center'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/security-center/'
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Sorun giderme
+    - name: Sorun giderme kılavuzu
       href: security-center-troubleshooting-guide.md

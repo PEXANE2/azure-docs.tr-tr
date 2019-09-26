@@ -18,7 +18,7 @@
       items:
         - name: Depolama hedefleri ekleme
           href: hpc-cache-add-storage.md
-        - name: Verileri önbellek depolamasına taşıma
+        - name: Verileri depolama hedeflerine taşıma (gerekirse)
           items:
             - name: Yeni Blob depolamayı önceden yükleme
               href: hpc-cache-ingest.md

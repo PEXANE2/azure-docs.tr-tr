@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 08/30/2019
-  ms.openlocfilehash: e4504bbfc84dbafcd1efa45c9536a63569230a8a
-  ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+  ms.openlocfilehash: 2e6a0bcc654bbf94bec5c562815aa7591cfabd60
+  ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/23/2019
-  ms.locfileid: "71204121"
+  ms.lasthandoff: 09/25/2019
+  ms.locfileid: "71272226"
 landingContent:
 - title: HDInsight hakkında
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
     links:
     - text: HDInsight bileşenleri ve sürümleri
       url: ./hdinsight-component-versioning.md
-    - text: HDInsight desteklenen düğüm yapılandırmaları
+    - text: HDInsight tarafından desteklenen VM türleri
       url: ./hdinsight-supported-node-configuration.md
     - text: Depolama seçeneklerini karşılaştırın
       url: ./hdinsight-hadoop-compare-storage-options.md
@@ -38,6 +38,14 @@ landingContent:
       url: ./hdinsight-hadoop-provision-linux-clusters.md
     - text: Data Lake Store 2. Nesil ile kümeler oluşturma
       url: ./hdinsight-hadoop-use-data-lake-storage-gen2.md
+  - linkListType: whats-new
+    links:
+    - text: 'Otomatik ölçeklendirme: Hadoop kümelerini otomatik olarak ölçeklendirme'
+      url: ./hdinsight-autoscale-clusters.md
+    - text: HDInsight ile izleme
+      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+    - text: Apache Hive tablolarını HDInsight 4.0’a geçirme
+      url: ./interactive-query/apache-hive-migrate-workloads.md
 - title: Apache Spark
   linkLists:
   - linkListType: overview

@@ -1,47 +1,52 @@
 ---
-title: Azure Aboneliği yöneticileri ekleme veya değiştirme | Microsoft Docs
+title: Azure Aboneliği yöneticileri ekleme veya değiştirme
 description: Rol tabanlı erişim denetimi (RBAC) kullanarak Azure abonelik yöneticisi ekleme veya değiştirme işlemini açıklar.
-services: ''
-documentationcenter: ''
 author: genlin
-manager: adpick
-editor: ''
+manager: dcscontentpm
 tags: billing
-ms.assetid: 13a72d76-e043-4212-bcac-a35f4a27ee26
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 09/24/2019
 ms.author: banders
-ms.openlocfilehash: 000315a2d751a05d3e401ee1bb9f593c6e321194
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2054fbb7d0a9f450ad487fc0f03d0af920c6cc4b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "64922911"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260918"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure Aboneliği yöneticileri ekleme veya değiştirme
 
-Azure kaynaklarına erişimi yönetmek için uygun yönetici rolüne sahip olmanız gerekir. Azure, aralarından seçim yapabileceğiniz çeşitli yerleşik rollerle rol tabanlı erişim denetimi (RBAC) adlı bir yetkilendirme sistemine sahiptir. Bu rolleri, yönetim grubu, abonelik veya kaynak grubu gibi farklı kapsamlara atayabilirsiniz.
 
-Microsoft, RBAC kullanarak kaynaklara erişimi yönetmenizi önerir. Ancak halen klasik dağıtım modelini kullanıyor ve [Azure Hizmet Yönetimi PowerShell Modülü](https://docs.microsoft.com/powershell/module/servicemanagement/azure)’nü kullanarak klasik kaynakları yönetiyorsanız, klasik bir yönetici kullanmanız gerekir. 
-
-> [!TIP]
-> Klasik kaynakları yönetmek için yalnızca Azure portalını kullanıyorsanız, klasik yöneticiyi kullanmanız gerekmez.
-
-Daha fazla bilgi için bkz. [Azure Resource Manager ve klasik dağıtım karşılaştırması](../azure-resource-manager/resource-manager-deployment-model.md) ve [Azure klasik abonelik yöneticileri](../role-based-access-control/classic-administrators.md).
+Azure kaynaklarına erişimi yönetmek için uygun yönetici rolüne sahip olmanız gerekir. Azure, aralarından seçim yapabileceğiniz çeşitli yerleşik rollerle [rol tabanlı erişim denetimi](../role-based-access-control/overview.md) (RBAC) adlı bir yetkilendirme sistemine sahiptir. Bu rolleri, yönetim grubu, abonelik veya kaynak grubu gibi farklı kapsamlara atayabilirsiniz. Varsayılan olarak, yeni bir Azure aboneliği oluşturan kişi, diğer kullanıcıların yönetici erişimini başka bir aboneliğe atayabilir.
 
 Bu makalede, abonelik kapsamında RBAC kullanılarak bir kullanıcı için yönetici rolünün nasıl ekleneceği veya değiştirileceği açıklanmaktadır.
 
+Microsoft, RBAC kullanarak kaynaklara erişimi yönetmenizi önerir. Ancak halen klasik dağıtım modelini kullanıyor ve [Azure Hizmet Yönetimi PowerShell Modülü](https://docs.microsoft.com/powershell/module/servicemanagement/azure)’nü kullanarak klasik kaynakları yönetiyorsanız, klasik bir yönetici kullanmanız gerekir.
+
+> [!TIP]
+> Klasik kaynakları yönetmek için yalnızca Azure portalını kullanıyorsanız klasik yöneticiyi kullanmanız gerekmez.
+
+Daha fazla bilgi için bkz. [Azure Resource Manager ve klasik dağıtım karşılaştırması](../azure-resource-manager/resource-manager-deployment-model.md) ve [Azure klasik abonelik yöneticileri](../role-based-access-control/classic-administrators.md).
+
 <a name="add-an-admin-for-a-subscription"></a>
 
-## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Bir kullanıcıyı, aboneliğin yöneticisi olarak atama
+## <a name="assign-a-subscription-administrator"></a>Abonelik yöneticisi atama
 
-Bir kullanıcıyı, Azure aboneliğinin yöneticisi yapmak için o kullanıcıya abonelik kapsamında [Sahip](../role-based-access-control/built-in-roles.md#owner) rolünü (RBAC rolü) atamanız gerekir. Sahip rolü, kullanıcıya, başkalarına erişim yetkisi devretme hakkı da dahil olmak üzere abonelikteki tüm kaynaklara tam erişim izni verir. Bu adımlar diğer rol atamasıyla aynıdır.
+Bir kullanıcıyı Azure aboneliğinin yöneticisi yapmak için, mevcut bir yöneticinin o kullanıcıya abonelik kapsamında [Sahip](../role-based-access-control/built-in-roles.md#owner) rolünü (RBAC rolü) ataması gerekir. Sahip rolü, kullanıcıya, başkalarına erişim yetkisi devretme hakkı da dahil olmak üzere abonelikteki tüm kaynaklara tam erişim izni verir. Bu adımlar diğer rol atamasıyla aynıdır.
 
-1. Azure portalında [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)’i açın.
+Bir aboneliğin hesap yöneticisinin kim olduğunu bilmiyorsanız aşağıdaki adımları izleyerek bulabilirsiniz.
+
+1. [Azure portalında Abonelikler sayfasını](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) açın.
+1. Denetlemek istediğiniz aboneliği seçin ve **Ayarlar** bölümüne bakın.
+1. **Özellikler**’i seçin. Aboneliğin hesap yöneticisi, **Hesap Yöneticisi** kutusunda görüntülenir.
+
+### <a name="to-assign-a-user-as-an-administrator"></a>Bir kullanıcıyı yönetici olarak atama
+
+1. Abonelik sahibi olan hesapla Azure portalında oturum açıp [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) sayfasını açın.
 
 1. Erişim izni vermek istediğiniz aboneliğe tıklayın.
 

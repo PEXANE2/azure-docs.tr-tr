@@ -472,6 +472,8 @@
         - name: Şablon ile diskleri dağıtma
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: Diske VHD yükleme - CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Bir diski yeniden boyutlandırma
           href: expand-disks.md
         - name: Bir diskin anlık görüntüsünü alma
