@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541556"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266883"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ve yönetilen ve yönetilmeyen Premium diskler hakkında sık sorulan sorular
 
@@ -183,8 +183,26 @@ Hayır, Azure Backup desteği henüz kullanılamıyor.
 **Kullanılabilirlik kümesinde çalışan bir VM 'ye bir ultra disk ekleyebilir miyim?**
 Hayır, bu henüz desteklenmiyor.
 
-**Ultra diskler kullanan VM 'Ler için Azure Site Recovery (ASR) etkinleştirebilir miyim?**
-Hayır, ASR henüz Ultra diskler için desteklenmiyor.
+**Ultra diskler kullanan VM 'Ler için Azure Site Recovery etkinleştirebilir miyim?**
+Hayır, Azure Site Recovery henüz Ultra diskler için desteklenmiyor.
+
+## <a name="uploading-to-a-managed-disk"></a>Yönetilen bir diske yükleme
+
+**Mevcut bir yönetilen diske veri yükleyebilir miyim?**
+
+Hayır, karşıya yükleme yalnızca **Readytoupload** durumuna sahip yeni bir boş disk oluşturulurken kullanılabilir.
+
+**Nasıl yaparım? yönetilen bir diske mı yüklenecek?**
+
+[Creationdata](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) 'ın [Createoption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) özelliği "karşıya yükle" olarak ayarlanmış bir yönetilen disk oluşturun, ardından verileri karşıya yükleyebilirsiniz.
+
+**Karşıya yükleme durumundayken bir diski bir VM 'ye ekleyebilir miyim?**
+
+Hayır.
+
+**, Bir karşıya yükleme durumundaki bir sürücü anlık görüntüsünü alabilir miyim?**
+
+Hayır.
 
 ## <a name="standard-ssd-disks"></a>Standart SSD diskler
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976657"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266866"
 ---
 ## <a name="benefits"></a>Avantajlar 
 
@@ -113,6 +113,6 @@ Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınız
 |----------|----------------|
 | Ana bilgisayar kullanılabilir     | Konağınız ile ilgili bilinen bir sorun yoktur.   |
 | Araştırma altında ana bilgisayar  | Aradığım ana bilgisayarla ilgili bazı sorunlar yaşıyoruz. Bu, Azure 'un, tanımlanan sorunun kapsamını ve kök nedenini belirlemek için gereken geçici bir durumdur. Konakta çalışan sanal makineler etkilenebilir. |
-| Konağı serbest bırakma bekleniyor   | Azure, Konağı sağlıklı bir duruma geri yükleyemiyor ve sanal makinelerinizi bu konaktan yeniden dağıtmanıza neden olacak. Etkinleştirilirse, sanal makineleriniz sağlıklı donanıma karşı hizmet olarak çalışır. `autoHealingOnFailure` Aksi halde, sanal makineniz başarısız olmak üzere bir konakta çalışıyor olabilir.|
+| Konağı serbest bırakma bekleniyor   | Azure, Konağı sağlıklı bir duruma geri yükleyemiyor ve sanal makinelerinizi bu konaktan yeniden dağıtmanıza neden olacak. Etkinleştirilirse, sanal makineleriniz sağlıklı donanıma karşı hizmet olarak çalışır. `autoReplaceOnFailure` Aksi halde, sanal makineniz başarısız olmak üzere bir konakta çalışıyor olabilir.|
 | Konak serbest bırakıldı  | Tüm sanal makineler konaktan kaldırıldı. Bu ana bilgisayar için artık bu konak için ücret alınmaz çünkü donanım, döndürme dışında bırakıldı.   |
 

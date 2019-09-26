@@ -146,6 +146,12 @@
           href: concepts-hyperscale-choose-distribution-column.md
         - name: Tablo birlikte bulundurma
           href: concepts-hyperscale-colocation.md
+        - name: Veri erişimi ve güvenlik
+          items:
+            - name: Güvenlik duvarı kuralları
+              href: concepts-hyperscale-firewall-rules.md
+            - name: SSL yapılandırma
+              href: concepts-hyperscale-ssl-connection-security.md
         - name: PostgreSQL uzantıları
           href: concepts-hyperscale-extensions.md
         - name: Kaynaklar
@@ -154,86 +160,96 @@
               href: concepts-hyperscale-configuration-options.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Kullanıcı oluşturma
-      href: howto-create-users.md
-    - name: İyileştirme
+    - name: Tek sunucu
       items:
-        - name: Toplu eklemeler
-          href: howto-optimize-bulk-inserts.md
-        - name: Otomatik vakum
-          href: howto-optimize-autovacuum.md
-        - name: Sorgu istatistikleri koleksiyonu
-          href: howto-optimize-query-stats-collection.md
-        - name: Bildirim tablosu stratejisi
-          href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-    - name: Güvenlik duvarını yönetme
+        - name: Kullanıcı oluşturma
+          href: howto-create-users.md
+        - name: İyileştirme
+          items:
+            - name: Toplu eklemeler
+              href: howto-optimize-bulk-inserts.md
+            - name: Otomatik vakum
+              href: howto-optimize-autovacuum.md
+            - name: Sorgu istatistikleri koleksiyonu
+              href: howto-optimize-query-stats-collection.md
+            - name: Bildirim tablosu stratejisi
+              href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+        - name: Güvenlik duvarını yönetme
+          items:
+            - name: Azure portal
+              href: howto-manage-firewall-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-firewall-using-cli.md
+        - name: Sunucuyu geri yükleme
+          items:
+            - name: Azure portal
+              href: howto-restore-server-portal.md
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+        - name: Veritabanını geçirme
+          items:
+            - name: Döküm ve geri yükleme
+              href: howto-migrate-using-dump-and-restore.md
+            - name: İçeri ve dışarı aktarma
+              href: howto-migrate-using-export-and-import.md
+            - name: En düşük kapalı kalma süresiyle geçiş
+              href: howto-migrate-online.md
+        - name: Sunucu parametrelerini yapılandırma
+          items:
+            - name: Azure portal
+              href: howto-configure-server-parameters-using-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+        - name: Otomatik büyüyen depolama alanı
+          items:
+            - name: Azure portal
+              href: howto-auto-grow-storage-portal.md
+            - name: Azure CLI
+              href: howto-auto-grow-storage-cli.md
+        - name: Sunucu günlüklerine erişme
+          items:
+            - name: Azure portal
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-using-cli.md
+        - name: İzleme
+          items:
+            - name: Ölçümler üzerinde uyarı oluşturma
+              href: howto-alert-on-metric.md
+        - name: Sorun giderme
+          items:
+            - name: Bağlantı hatalarını giderme
+              href: howto-troubleshoot-common-connection-issues.md
+        - name: Gelişmiş Tehdit Koruması
+          items:
+            - name: Azure portal
+              href: howto-database-threat-protection-portal.md
+        - name: Sanal Ağ
+          items:
+            - name: Azure portal
+              href: howto-manage-vnet-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-vnet-using-cli.md
+        - name: Sunucuyu yeniden başlatma
+          items:
+            - name: Azure portal
+              href: howto-restart-server-portal.md
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+        - name: Çoğaltma
+          items:
+            - name: Azure portalda okuma amaçlı çoğaltmaları yönetme
+              href: howto-read-replicas-portal.md
+            - name: 'Azure CLI, REST API okuma amaçlı çoğaltmayı yönetme'
+              href: howto-read-replicas-cli.md
+    - name: Hiper Ölçek (Citus)
       items:
-        - name: Azure portal
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: Sunucuyu geri yükleme
-      items:
-        - name: Azure portal
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-    - name: Veritabanını geçirme
-      items:
-        - name: Döküm ve geri yükleme
-          href: howto-migrate-using-dump-and-restore.md
-        - name: İçeri ve dışarı aktarma
-          href: howto-migrate-using-export-and-import.md
-        - name: En düşük kapalı kalma süresiyle geçiş
-          href: howto-migrate-online.md
-    - name: Sunucu parametrelerini yapılandırma
-      items:
-        - name: Azure portal
-          href: howto-configure-server-parameters-using-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: Otomatik büyüyen depolama alanı
-      items:
-        - name: Azure portal
-          href: howto-auto-grow-storage-portal.md
-        - name: Azure CLI
-          href: howto-auto-grow-storage-cli.md
-    - name: Sunucu günlüklerine erişme
-      items:
-        - name: Azure portal
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-using-cli.md
-    - name: İzleme
-      items:
-        - name: Ölçümler üzerinde uyarı oluşturma
-          href: howto-alert-on-metric.md
-    - name: Sorun giderme
-      items:
-        - name: Bağlantı hatalarını giderme
-          href: howto-troubleshoot-common-connection-issues.md
-    - name: Gelişmiş Tehdit Koruması
-      items:
-        - name: Azure portal
-          href: howto-database-threat-protection-portal.md
-    - name: Sanal Ağ
-      items:
-        - name: Azure portal
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: Sunucuyu yeniden başlatma
-      items:
-        - name: Azure portal
-          href: howto-restart-server-portal.md
-        - name: Azure CLI
-          href: howto-restart-server-cli.md
-    - name: Çoğaltma
-      items:
-        - name: Azure portalda okuma amaçlı çoğaltmaları yönetme
-          href: howto-read-replicas-portal.md
-        - name: 'Azure CLI, REST API okuma amaçlı çoğaltmayı yönetme'
-          href: howto-read-replicas-cli.md
+        - name: Ölçeklendirme
+          href: howto-hyperscale-scaling.md
+        - name: Güvenlik duvarını yönetme
+          items:
+            - name: Azure portal
+              href: howto-hyperscale-manage-firewall-using-portal.md
 - name: Başvuru
   items:
     - name: Azure CLI

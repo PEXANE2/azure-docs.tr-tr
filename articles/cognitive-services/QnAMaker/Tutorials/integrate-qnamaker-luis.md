@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 06/11/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1792cf2359caef3211b4ce1ac86928eeb85d682b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6605aa268a7ee7fe75254df5dbe96e9dfbc71d79
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67053169"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272427"
 ---
-# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Bilgi bankanızı dağıtmak için soru-cevap oluşturucu ve LUIS ile bot kullanın
+# <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Bilgi tabanınızı dağıtmak için Soru-Cevap Oluşturma ve LUO ile bot kullanın
 Soru-cevap Oluşturucu bankanızı büyük büyüdükçe, tek tek parça bir ayarlayın ve Bilgi Bankası daha küçük mantıksal parçalara bölmek için gerekir bakımını yapmak zor hale gelir.
 
 Soru-cevap oluşturucu içinde birden çok bilgi bankaları oluşturmak kolay olsa da, uygun Bilgi Bankası'na gelen soru yönlendirmek için mantığa ihtiyacınız olacak. LUIS kullanarak bunu yapabilirsiniz.
@@ -27,7 +27,7 @@ Bu makalede, Bot Framework v3 SDK'sını kullanır. Lütfen bu makaleye [Bot Fra
 
 ## <a name="architecture"></a>Mimari
 
-![Language Understanding mimarisi ile soru-cevap Oluşturucu](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![Language Understanding mimarisiyle Soru-Cevap Oluşturma](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
 Yukarıdaki senaryoda soru-cevap Oluşturucu önce gelen soru amacı LUIS modelden alır ve doğru soru-cevap Oluşturucu Bilgi Bankası'na yönlendirmek için bunu kullanın.
 
@@ -51,7 +51,7 @@ Yukarıdaki senaryoda soru-cevap Oluşturucu önce gelen soru amacı LUIS modeld
 
 ## <a name="web-app-bot"></a>Web app Botu
 
-1. [Bir "Temel" Web App botu oluşturun](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) LUIS uygulaması otomatik olarak içerir. ' % S ' 4.x SDK'yı seçin ve C# programlama dilidir.
+1. Bir LUO uygulamasını otomatik olarak içeren [bir "temel" Web uygulaması bot oluşturun](https://docs.microsoft.com/azure/bot-service/bot-service-quickstart?view=azure-bot-service-4.0) . Programlama C# dilini seçin.
 
 1. Web app botu oluşturulduğunda, Azure portalında web app botu seçin.
 1. Seçin **uygulama ayarları** Web app botu hizmeti Gezinti ardından aşağı kaydırarak **uygulama ayarları** kullanılabilir Ayarlar bölümünde.
