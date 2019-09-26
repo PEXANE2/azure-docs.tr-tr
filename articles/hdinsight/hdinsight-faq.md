@@ -1,19 +1,20 @@
 ---
-title: Azure HDInsight-sık sorulan sorular
-description: Azure HDInsight 'a genel bakış sağlar
+title: Azure HDInsight hakkında sık sorulan sorular
+description: HDInsight hakkında sık sorulan sorular
+keywords: sık sorulan sorular, SSS
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: v-miegge
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 4accd8c2f58dd89fb5f918ca6e58e71caeaed57f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 0a718786cc7c72ef4ee9573c3c3e40401c53a315
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212756"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308059"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
 
@@ -27,7 +28,9 @@ Kullanılabilir HDInsight kümelerinin türlerini ve sağlama yöntemlerini göz
 
 ### <a name="how-do-i-delete-an-existing-hdinsight-cluster"></a>Nasıl yaparım? mevcut bir HDInsight kümesi silinsin mi?
 
-Bir kümeyi artık kullanımda olmadığında silme hakkında daha fazla bilgi edinmek için bkz. [tarayıcınızı, PowerShell 'i veya Azure CLI 'yı kullanarak HDInsight kümesini silme](https://docs.microsoft.com/azure/hdinsight/hdinsight-delete-cluster). Tek bir kümede oluşturma ve silme işlemi arasında en az 30 ila 60 dakika olması önerilir. Aksi takdirde, işlem başarısız olabilir ve aşağıdaki hata iletisini döndürebilir:
+Bir kümeyi artık kullanımda olmadığında silme hakkında daha fazla bilgi edinmek için bkz. [HDInsight kümesini silme](hdinsight-delete-cluster.md).
+
+Oluşturma ve silme işlemleri arasında en az 30 ila 60 dakika bırakın. Aksi takdirde, işlem şu hata iletisiyle başarısız olabilir:
 
 ``Conflict (HTTP Status Code: 409) error when attempting to delete a cluster immediately after creation of a cluster. If you encounter this error, wait until the newly created cluster is in operational state before attempting to delete it.``
 
@@ -55,44 +58,49 @@ Aboneliğiniz bir bölge için çekirdek sayısını sınırlandıracak şekilde
 
 Kota artırma isteğinde bulunmak için şu adımları izleyin:
 
-1. Azure portal gidin ve yardım + destek ' i seçin.
-2. Yeni destek isteği ' ni seçin.
-3. Yeni destek isteği sayfasında, temel bilgiler sekmesinde aşağıdaki seçenekleri belirleyin:
+1. [Azure Portal](https://portal.azure.com)gidin ve **Yardım + Destek**' i seçin.
+   
+1. **Yeni destek isteği**’ni seçin.
+   
+1. **Yeni destek isteği** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
+   
+   - **Sorun türü:** **Hizmet ve abonelik sınırlarını (kotalar)** seçin.
+   - **Aboneliğiniz** Değiştirmek istediğiniz aboneliği seçin.
+   - **Kota türü:** **HDInsight**' ı seçin.
 
-   * Sorun türü: Hizmet ve abonelik limitleri (kotalar)
-   * Abonelik: Değiştirmek istediğiniz abonelik
-   * Kota türü: HDInsight
-
-Daha fazla bilgi için bkz. [çekirdekleri artırmak için destek bileti oluşturma](https://docs.microsoft.com/azure/hdinsight/hdinsight-capacity-planning#quotas).
+Daha fazla bilgi için bkz. [Çekirdeği artırmak için destek bileti oluşturma](hdinsight-capacity-planning.md#quotas).
 
 ### <a name="what-are-the-various-types-of-nodes-in-an-hdinsight-cluster"></a>HDInsight kümesinde çeşitli düğüm türleri nelerdir?
 
 Azure HDInsight kümelerinde farklı türlerde sanal makineler veya düğümler vardır. Her düğüm türü, sistem işleminde bir rol oynar.
 
-Daha fazla bilgi için bkz. [Azure HDInsight kümelerinde kaynak türleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-virtual-network-architecture#resource-types-in-azure-hdinsight-clusters).
+Daha fazla bilgi için bkz. [Azure HDInsight kümelerinde kaynak türleri](hdinsight-virtual-network-architecture.md#resource-types-in-azure-hdinsight-clusters).
 
 ## <a name="individual-components"></a>Bireysel bileşenler
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>Kümeme ek bileşenler yükleyebilir miyim?
 
-Evet, aşağıdaki yöntemlerden herhangi birini kullanarak ek bileşenler yükleyebilir veya küme yapılandırmasını özelleştirebilirsiniz:
+Evet. Ek bileşenler yüklemek veya küme yapılandırmasını özelleştirmek için şunu kullanın:
 
-* Oluşturma sırasında veya sonrasında betikleri kullanma. Bu komut dosyaları bir [betik eylemi](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)aracılığıyla çağrılır. Bu yapılandırma seçeneği Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK 'dan kullanılabilir. 
-* Küme sağlandıktan sonra sudo veya diğer yöntemleri kullanma.
-* Ekosistem uygulamalarını yüklemek için [HDInsight uygulama platformunu](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) kullanma.
+- Oluşturma sırasında veya sonrasında betikler. Betikler, Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK ' dan kullanabileceğiniz bir yapılandırma seçeneği olan [betik eylemi](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)aracılığıyla çağrılır. Bu yapılandırma seçeneği Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK 'dan kullanılabilir.
+
+- `sudo`veya kümeyi sağlamadıktan sonra diğer yöntemler.
+  
+- Ekosistem uygulamalarını yüklemek için [HDInsight uygulama platformu](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) .
 
 Ancak, Microsoft Desteği ekipler yalnızca aşağıdaki durumlar için destek sunabilir:
 
-* Betiği yüklerken oluşan sorunlar veya hatalar. Özel betiklerin yürütülmesi sırasında oluşan hatalar bir destek bileti kapsamı dışındadır. 
-* Küme oluşturma işleminin parçası olan ek uygulamalar. 
+- Betiği yüklerken oluşan sorunlar veya hatalar. Özel betiklerin yürütülmesi sırasında oluşan hatalar bir destek bileti kapsamı dışındadır.
+
+- Küme oluşturma işleminin parçası olan ek uygulamalar. 
 
 Desteklenen bileşenlerin listesi için bkz. [HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)
 
 Tek tek bileşenlere yönelik destek küme türüne göre de değişiklik gösterebilir. Örneğin, Spark bir Kafka kümesinde desteklenmez ve tam tersi de geçerlidir.
 
-Küme oluşturma işleminin dışındaki uygulamalar veya hizmetler için, destek için ilgili satıcıya veya hizmet sağlayıcısına başvurun. Bu eylemler için, topluluk sitelerini de kullanabilirsiniz. Birçok topluluk sitesi mevcuttur. HDInsight ve [Stack Overflow](https://stackoverflow.com/questions/tagged/hdinsight) [için MSDN Forumu](https://social.msdn.microsoft.com/Forums/home?forum=hdinsight) örnekleri içerir. Apache projelerinde Ayrıca, [Apache Web sitesinde](https://apache.org/)proje siteleri de vardır. [Hadoop](https://hadoop.apache.org/)bir örnektir.
+Küme oluşturma işlemi dışındaki uygulamalar ve hizmetler için, destek için satıcı veya hizmet sağlayıcısına başvurun. Birçok topluluk desteği sitesini de kullanabilirsiniz. HDInsight ve Stack Overflow [Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) örnekleri aşağıda [](https://stackoverflow.com/)verilmiştir. Apache projelerinde Ayrıca, [Apache Web sitesinde](https://apache.org/)proje siteleri de vardır. [Hadoop](https://hadoop.apache.org/)bir örnektir. 
 
- Azure desteğiyle ilgili daha fazla soru için [Azure DESTEĞI SSS](https://azure.microsoft.com/en-us/support/faq/)' yi gözden geçirin.
+Azure desteği hakkında daha fazla bilgi için bkz. [Azure desteği SSS](https://azure.microsoft.com/support/faq/).
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kümede önceden yüklenmiş olan bileşenleri yükseltebilir miyim?
 
@@ -102,7 +110,7 @@ Kümenizde önceden yüklenmiş olan yerleşik bileşenleri veya uygulamaları y
 
 ### <a name="can-spark-and-kafka-run-on-the-same-hdinsight-cluster"></a>Spark ve Kafka aynı HDInsight kümesinde çalıştırılabilir mi?
 
-Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak mümkün değildir. Kullanıcılar, kaynak çakışması sorunlarından kaçınmak için her biri için ayrı kümeler oluşturmalı.
+Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak mümkün değildir. Kaynak çakışması sorunlarından kaçınmak için Kafka ve Spark için ayrı kümeler oluşturun.
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Nasıl yaparım?, ambarı 'nda saat dilimini değiştirmek mi istiyorsunuz?
 
@@ -119,7 +127,7 @@ Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak 
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Mevcut meta veri deposunu Azure SQL Server nasıl geçirebilirim? 
 
-SQL Server 'den Azure SQL Server 'e geçiş yapmak için bkz [. Öğretici: DMS](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)kullanarak Azure SQL veritabanı 'nda bulunan tek bir veritabanına veya havuza alınmış bir veritabanına SQL Server geçirin.
+SQL Server 'den Azure SQL Server 'e geçiş yapmak için bkz [. Öğretici: DMS](../dms/tutorial-sql-server-to-azure-sql.md)kullanarak Azure SQL veritabanı 'nda bulunan tek bir veritabanına veya havuza alınmış bir veritabanına SQL Server geçirin.
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Hive meta veri deposu, küme silindiğinde silinir mi?
 
@@ -129,11 +137,11 @@ Varsayılan bir meta veri deposu için: Varsayılan meta veri deposu, küme yaş
 
 Özel bir meta veri deposu için: Meta veri deposu yaşam döngüsü bir kümenin yaşam döngüsüne bağlı değildir. Bu nedenle, meta verileri kaybetmeden kümeler oluşturabilir ve silebilirsiniz. Hive şemalarınız gibi meta veriler, HDInsight kümesini silip yeniden oluşturduktan sonra bile devam ettirir.
 
-Daha fazla bilgi için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores).
+Daha fazla bilgi için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](hdinsight-use-external-metadata-stores.md).
 
 ### <a name="does-migrating-a-hive-metastore-also-migrate-the-default-policies-of-the-ranger-database"></a>Hive meta veri deposu geçişi, Ranger veritabanının varsayılan ilkelerini de geçirsin mi?
 
-Hayır, ilke tanımı Ranger veritabanında yer alır. Bu nedenle, Ranger veritabanının geçirilmesi ilkeyi geçirmez.
+Hayır, ilke tanımı Ranger veritabanında olduğundan, Ranger veritabanının geçirilmesi ilkesini taşıyacaktır.
 
 ### <a name="can-you-migrate-a-hive-metastore-from-an-enterprise-security-package-esp-cluster-to-a-non-esp-cluster-and-vice-versa"></a>Bir Hive meta veri deposu Kurumsal Güvenlik Paketi (ESP) kümesinden ESP olmayan bir kümeye geçirebilir ve bunun tersini yapabilir miyim?
 
@@ -141,7 +149,7 @@ Evet, bir Hive meta veri deposu ESP 'den, ESP olmayan bir kümeye geçirebilirsi
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Hive meta veri deposu veritabanının boyutunu nasıl tahmin edebilirim?
 
-Hive sunucusu tarafından kullanılan veri kaynaklarının meta verilerini depolamak için bir Hive meta veri deposu kullanılır. Bu nedenle, boyut gereksinimleri Hive için kullanmanız gereken veri kaynağı sayısından ve veri kaynaklarının ne kadar karmaşık olduğunu etkiler. Bu nedenle, boyut tahmin edilemez. [Hive meta veri deposu en iyi uygulamalarında](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-external-metadata-stores#hive-metastore-best-practices)açıklandığı gibi, S2 katmanından ıtıbaren 50 DTU ve 250 GB depolama alanı sağlar. Bir performans sorunu yaşarsanız, veritabanının ölçeğini değiştirebilirsiniz.
+Hive sunucusu tarafından kullanılan veri kaynaklarının meta verilerini depolamak için bir Hive meta veri deposu kullanılır. Boyut gereksinimleri, kısmen Hive veri kaynaklarınızın sayısına ve karmaşıklığına bağlıdır ve ön tahmin edilebilir. [Hive meta veri deposu en iyi yöntemler](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices)bölümünde açıklandığı gibi, 50 DTU ve 250 GB depolama sağlayan bir S2 katmanıyla başlayabilir ve bir performans sorunu görürseniz, veritabanını ölçeklendirebilirsiniz.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Dış meta veri deposu olarak Azure SQL veritabanı dışındaki diğer veritabanlarını destekliyor musunuz?
 
@@ -159,53 +167,55 @@ Bağlantı noktalarını 22 ve bağlantı noktası 23 ' ü engellerseniz, kümey
 
 Daha fazla bilgi için aşağıdaki belgelere bakın:
 
-* [Ağ trafiğini denetleme](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
-* [Özel uç nokta ile bir sanal ağdaki HDInsight kümelerine gelen trafiği güvenli hale getirme](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
-* [HDInsight yönetim IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
+- [Ağ trafiğini denetleme](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic)
+
+- [Özel uç nokta ile bir sanal ağdaki HDInsight kümelerine gelen trafiği güvenli hale getirme](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+
+- [HDInsight yönetim IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)
 
 ### <a name="can-i-deploy-an-additional-virtual-machine-within-the-same-subnet-as-an-hdinsight-cluster"></a>Aynı alt ağ içinden bir HDInsight kümesiyle ek bir sanal makine dağıtabilir miyim?
 
 Evet, bir HDInsight kümesiyle aynı alt ağ içinde ek bir sanal makine dağıtabilirsiniz. Aşağıdaki konfigürasyonlar mümkündür:
 
-* Kenar düğümleri: [HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node)bölümünde açıklandığı gibi, kümeye başka bir kenar düğümü ekleyebilirsiniz. 
-* Tek başına düğümler:  Aynı alt ağa tek başına bir sanal makine ekleyebilir ve özel uç noktasını `https://<CLUSTERNAME>-int.azurehdinsight.net`kullanarak bu sanal makineden kümeye erişebilirsiniz. Daha fazla bilgi için bkz. [ağ trafiğini denetleme](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#networktraffic).
+- Kenar düğümleri: [HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma](hdinsight-apps-use-edge-node.md)bölümünde açıklandığı gibi, kümeye başka bir kenar düğümü ekleyebilirsiniz.
+
+- Tek başına düğümler:  Aynı alt ağa tek başına bir sanal makine ekleyebilir ve özel uç noktasını `https://<CLUSTERNAME>-int.azurehdinsight.net`kullanarak bu sanal makineden kümeye erişebilirsiniz. Daha fazla bilgi için bkz. [ağ trafiğini denetleme](hdinsight-plan-virtual-network-deployment.md#networktraffic).
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Var olan bir HDInsight kümesini başka bir sanal ağa ekleyebilir miyim?
 
-Hayır, var olan bir HDInsight kümesini başka bir sanal ağa ekleyemezsiniz. Sanal ağ, sağlama sırasında belirtilmelidir. Sağlama sırasında sanal ağ belirtilmemişse dağıtım, dışından erişilemeyen bir iç ağ oluşturur. Daha fazla bilgi için bkz. [mevcut bir sanal ağa HDInsight ekleme](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#existingvnet).
+Hayır, bunu yapamazsınız. Sanal ağ, sağlama sırasında belirtilmelidir. Sağlama sırasında sanal ağ belirtilmemişse, dağıtım, dışından erişilemeyen bir iç ağ oluşturur. Daha fazla bilgi için bkz. [mevcut bir sanal ağa HDInsight ekleme](hdinsight-plan-virtual-network-deployment.md#existingvnet).
 
 ## <a name="security-and-certificates"></a>Güvenlik ve sertifikalar
 
-Azure HD Insight kümelerinde kötü amaçlı yazılımdan koruma için Microsoft önerileri nelerdir?
+### <a name="what-are-the-recommendations-for-malware-protection-on-azure-hdinsight-clusters"></a>Azure HDInsight kümelerinde kötü amaçlı yazılımdan koruma önerileri nelerdir?
 
-Kötü amaçlı yazılımdan koruma hakkında bilgi için bkz. [Azure Cloud Services Için Microsoft kötü amaçlı yazılımdan koruma ve sanal makineler](https://docs.microsoft.com/azure/security/fundamentals/antimalware).
+Kötü amaçlı yazılımdan koruma hakkında bilgi için bkz. [Azure Cloud Services Için Microsoft kötü amaçlı yazılımdan koruma ve sanal makineler](../security/fundamentals/antimalware.md).
 
 ### <a name="how-do-i-create-a-keytab-for-an-hdinsight-esp-cluster"></a>HDInsight ESP kümesi için bir keytab oluşturmak Nasıl yaparım? misiniz?
 
-Etki alanı kullanıcı adınız için bir Kerberos keytab oluşturabilirsiniz. Daha sonra bu keytab 'ı kullanarak etki alanına katılmış kümelerin parolasını girmeden kimlik doğrulaması yapabilirsiniz. Etki alanı adında büyük harflı karakterlere dikkat edin:
+Etki alanı kullanıcı adınız için bir Kerberos keytab oluşturun. Daha sonra bu keytab 'ı kullanarak etki alanına katılmış kümelerin parolasını girmeden kimlik doğrulaması yapabilirsiniz. Etki alanı adının büyük harfli olduğunu unutmayın:
 
-```
-o ktutil 
-o ktutil: addent -password -p stXX@ DOMAIN.COM -k 1 -e RC4-HMAC 
-o Password for stXX@DOMAIN.COM: provided by lab instructors 
-o ktutil: wkt stXX.keytab 
-o ktutil: q
+```shell
+ktutil
+ktutil: addent -password -p <username>@<DOMAIN.COM> -k 1 -e RC4-HMAC
+Password for <username>@<DOMAIN.COM>: <password>
+ktutil: wkt <username>.keytab
+ktutil: q
 ```
 
 ### <a name="can-i-use-an-existing-azure-active-directory-tenant-to-create-an-hdinsight-cluster-that-has-the-esp"></a>ESP içeren bir HDInsight kümesi oluşturmak için var olan bir Azure Active Directory kiracıyı kullanabilir miyim?
 
-Azure Active Directory Domain Services (AAD-DS) etkinleştirilmesi, ESP içeren bir HDInsight kümesi oluşturabilmeniz için bir önkoşuldur. Açık kaynaklı Hadoop, kimlik doğrulaması için Kerberos kullanır (OAuth aksine).
+ESP ile bir HDInsight kümesi oluşturabilmeniz için önce Azure Active Directory Domain Services (Azure AD DS) öğesini etkinleştirmeniz gerekir. Açık kaynaklı Hadoop, kimlik doğrulaması için Kerberos kullanır (OAuth aksine).
 
-Sanal makineleri bir etki alanına katmak için bir etki alanı denetleyicisi gerekir. AAD-DS, yönetilen etki alanı denetleyicisidir. Güvenli bir Hadoop kümesini yönetilen bir şekilde oluşturmak için tüm Kerberos gereksinimlerini sağlayan bir AAD uzantısı olarak kabul edilir. Yönetilen bir hizmet olarak HDInsight, son uca güvenlik sağlamak için AAD-DS ile tümleşir.
+VM 'Leri bir etki alanına katmak için bir etki alanı denetleyiciniz olması gerekir. Azure AD DS, yönetilen etki alanı denetleyicisidir ve güvenli bir Hadoop kümesini yönetilen bir şekilde oluşturmak için tüm Kerberos gereksinimlerini sağlayan bir Azure Active Directory uzantısı olarak kabul edilir. Yönetilen bir hizmet olarak HDInsight, uçtan uca güvenlik sağlamak için Azure AD DS ile tümleşir.
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>AAD-DS Güvenli LDAP kurulumunda kendinden imzalı bir sertifika kullanabilir ve bir ESP kümesi sağlayabilir miyim?
 
-Bir sertifika yetkilisi (CA) tarafından verilen bir sertifika kullanılması önerilse de, otomatik olarak imzalanan bir sertifika kullanılması da ESP 'de desteklenir.
+Bir sertifika yetkilisi tarafından verilen bir sertifika kullanılması önerilir, ancak otomatik olarak imzalanan bir sertifika kullanılması da ESP 'de desteklenir. Daha fazla bilgi için bkz.
 
-Daha fazla bilgi için bkz.
+- [Azure Active Directory Domain Services etkinleştir](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
-* [Azure AD-DS 'yi etkinleştirme](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#enable-azure-ad-ds)
-* [Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps)
+- [Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için Güvenli LDAP yapılandırma](../active-directory-domain-services/tutorial-configure-ldaps.md)
 
 ### <a name="how-can-i-pull-login-activity-shown-in-ranger"></a>Ranger 'da gösterilen oturum açma etkinliğini nasıl çekirim?
 
@@ -220,12 +230,12 @@ Bu işlem, diğer işlemlerden uzaklaşmaz veya herhangi bir döngüden yararlan
 Zamanlamayı kontrol etmeniz gereken senaryolarda aşağıdaki adımları kullanabilirsiniz:
 
 1. Aşağıdaki komutu kullanarak otomatik yürütmeyi devre dışı bırakın:
-
-   ``/usr/local/vbin/azsecd config -s clamav -d Disabled``
-
-2. Bu komutu kök olarak çalıştıran bir cron işi oluşturun:
-
-   ``/usr/local/bin/azsecd manual -s clamav``
+   
+   `/usr/local/vbin/azsecd config -s clamav -d Disabled`
+   
+1. Kök olarak aşağıdaki komutu çalıştıran bir cron işi ekleyin:
+   
+   `/usr/local/bin/azsecd manual -s clamav`
 
 Bir cron işini ayarlama ve çalıştırma hakkında daha fazla bilgi için bkz. [nasıl yaparım? bir cron işi ayarlama](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job).
 
@@ -233,33 +243,34 @@ Bir cron işini ayarlama ve çalıştırma hakkında daha fazla bilgi için bkz.
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>Mevcut bir HDInsight kümesine ek depolama hesabı olarak Azure Data Lake Storage 2. ekleyebilir miyim?
 
-Hayır. Şu anda, birincil depolama alanı olarak blob depolamayı kullanan mevcut bir HDInsight kümesine Azure Data Lake Storage 2. ekleyemezsiniz. Daha fazla bilgi için bkz. [Azure HDInsight kümeleri ile kullanım için depolama seçeneklerini karşılaştırma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options). 
+Hayır, şu anda, birincil depolama alanı olarak BLOB depolama alanı olan bir kümeye Azure Data Lake Storage 2. depolama hesabı eklemek mümkün değildir. Daha fazla bilgi için bkz. [depolama seçeneklerini karşılaştırma](hdinsight-hadoop-compare-storage-options.md).
 
 ### <a name="how-can-i-find-the-currently-linked-service-principal-for-a-data-lake-storage-account"></a>Data Lake depolama hesabı için geçerli bağlı hizmet sorumlusunu nasıl bulabilirim?
 
-Portalda küme özelliklerinizi Data Lake Storage 1. erişimi inceleyerek bu ayarları doğrulayabilirsiniz. Daha fazla bilgi için bkz. [küme kurulumunu doğrulama](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal#verify-cluster-set-up).
+Ayarlarınızı, Azure portal küme özellikleri altında **Data Lake Storage 1. erişim** bölümünde bulabilirsiniz. Daha fazla bilgi için bkz. [küme kurulumunu doğrulama](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md#verify-cluster-set-up).
  
-HDInsight kümelerim için depolama hesaplarının ve BLOB kapsayıcılarının kullanımını nasıl hesaplayabilirim?
-Aşağıdaki yordamlardan birini kullanabilirsiniz:
+### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>HDInsight kümelerim için depolama hesaplarının ve BLOB kapsayıcılarının kullanımını nasıl hesaplayabilirim?
 
-* [PowerShell kullanma](https://docs.microsoft.com/azure/storage/scripts/storage-blobs-container-calculate-size-powershell)
-* /User/Hive/boyutunu da bulabilirsiniz. Aşağıdaki komutu kullanarak HDI kümelerinde çöp/klasör:
+Aşağıdakilerden birini yapın:
 
-   ``hdfs dfs -du -h /user/hive/.Trash/``
+- [PowerShell kullanma](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
+
+- */User/Hive/boyutunu bulur.* HDInsight kümesinde aşağıdaki komut satırını kullanarak çöp kutusu/klasör:
+  
+  `hdfs dfs -du -h /user/hive/.Trash/`
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>BLOB depolama hesabımın denetimini nasıl ayarlayabilirim?
 
-BLOB depolama hesaplarını denetlemek için, [Azure Portal bir depolama hesabını İzleme bölümünde](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)belgelenen yordamı kullanarak BLOB depolama hesabı için izlemeyi yapılandırmanız gerekir. Bir bir bir bir bir bir bir bir bir denetim günlüğü yalnızca yerel bir bu dosya sistemi için denetim bilgilerini sağlar  Uzak depolama üzerinde gerçekleştirilen işlemleri içermez.
+BLOB depolama hesaplarını denetlemek için, [Azure Portal bir depolama hesabını izleme](../storage/common/storage-monitor-storage-account.md)konumundaki yordamı kullanarak izlemeyi yapılandırın. Bir bir bir bir bir bir bir bir bir denetim günlüğü yalnızca yerel bir bu dosya sistemi için denetim bilgilerini sağlar  Uzak depolama üzerinde gerçekleştirilen işlemleri içermez.
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>Blob kapsayıcısı ve HDInsight baş düğümü arasında dosyaları nasıl aktarabilirim?
 
-Aşağıdaki örneğe benzer şekilde, baş düğümümüzde bir kabuk betiği çalıştırarak bir blob kapsayıcısı ve bir HDInsight baş düğümü arasında dosya aktarabilirsiniz:
+Baş düğümünüz aşağıdaki kabuk betiğine benzer bir komut dosyası çalıştırın:
 
-```
+```shell
 for i in cat filenames.txt
-
 do
-         hadoop fs -get $i <local destination>
+   hadoop fs -get $i <local destination>
 done
 ```
  
@@ -268,44 +279,39 @@ done
  
 ### <a name="are-there-any-ranger-plugins-for-storage"></a>Depolama için bir Ranger eklentileri var mı?
 
-Şu anda BLOB depolama, Azure Data Lake Storage (ADLS) Gen1 veya Azure Data Lake Storage 2. için bir Ranger eklentileri yok. ESP kümeleri için, ADLS 'yi en iyi uygulama olarak kullanın ve sistem düzeyinde, bir Ayrıca, ADLS kullandığınızda, ESP kümeleri küme düzeyinde AAD kullanarak bazı dosya sistemi erişim denetimini yapılır. 
+Şu anda, BLOB depolama ve Azure Data Lake Storage 1. veya Gen2 için Ranger eklentisi yok. Azure Data Lake Storage kullanmanız gerekir, çünkü en azından, dosya sistemi düzeyinde el ile, en azından Ayrıca, Azure Data Lake Storage kullanırken, ESP kümeleri, bazı dosya sistemi erişim denetimini küme düzeyinde Azure Active Directory kullanarak yapacaktır. 
 
-Aşağıdaki makalelerde belgelenen yordamları kullanarak kullanıcılarınızın bulunduğu güvenlik gruplarına veri erişim ilkeleri atamak için Azure Depolama Gezgini kullanmanız gerekir:
+Azure Depolama Gezgini kullanarak kullanıcılarınızın güvenlik gruplarına veri erişim ilkeleri atayabilirsiniz. Daha fazla bilgi için bkz.
 
-* [Nasıl yaparım?, Azure AD kullanıcılarının Hive veya diğer hizmetleri kullanarak Data Lake Storage 2. verileri sorgulaması için izinleri ayarlamak ister misiniz?](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
-* [Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+- [Nasıl yaparım?, Azure AD kullanıcılarının Hive veya diğer hizmetleri kullanarak Data Lake Storage 2. verileri sorgulaması için izinleri ayarlamak ister misiniz?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
+- [Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>Çalışan düğümlerinin disk boyutunu arttırmadan, bir kümede, bu depolama alanını artırabilir miyim?
 
-Hayır, herhangi bir çalışan düğümünün disk boyutunu artıramezsiniz. Diskin boyutunu artırmanın tek yolu kümeyi bırakıp daha büyük çalışan sanal makinelerde yeniden oluşturmaktır.
-
-Microsoft, kümeyi sildiğinizde veriler silindiğinden, HDInsight 'ta verilerinizin depolanmasını depolamak için bir Microsoft bu sürümü kullanmanızı önermez. Bunun yerine, verilerinizi Azure 'da depolamanızı öneririz. Kümenin ölçeğini ölçeklendirmek, HDInsight kümenize daha fazla kapasite de ekleyebilir.
+Hayır, herhangi bir çalışan düğümünün disk boyutunu artıramıyorum, bu nedenle disk boyutunu artırmanın tek yolu kümeyi bırakıp daha büyük çalışan VM 'lerle yeniden oluşturacak. Kümenizi silerseniz veriler silindiğinden, HDInsight verilerinizi depolamak için bir bu kullanmayın. Bunun yerine, verilerinizi Azure 'da depolayın. Kümenin ölçeğini ölçeklendirmek, HDInsight kümenize daha fazla kapasite de ekleyebilir.
 
 ## <a name="edge-nodes"></a>Uç düğümleri
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>Küme oluşturulduktan sonra bir kenar düğümü ekleyebilir miyim?
 
-Evet, var olan bir HDInsight kümesine veya kümeyi oluştururken yeni bir kümeye boş bir Edge düğümü ekleyebilirsiniz.
-
-Daha fazla bilgi için bkz. [HDInsight'taki boş kenar düğümlerini Apache Hadoop kümelerinde kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-apps-use-edge-node).
+HDInsight kümesi veya küme oluştururken yeni bir küme. Daha fazla bilgi için bkz. [HDInsight'taki boş kenar düğümlerini Apache Hadoop kümelerinde kullanma](hdinsight-apps-use-edge-node.md).
 
 ### <a name="how-can-i-connect-to-an-edge-node"></a>Kenar düğümüne nasıl bağlanabilirim?
 
-Edge düğümü oluşturduktan sonra, bağlantı noktası 22 ' de SSH 'yi kullanarak Edge düğümüne bağlanabilirsiniz. Uç düğümün adını küme portalından bulabilirsiniz (adlar genellikle "-Ed" olarak sona erdir).
+Edge düğümü oluşturduktan sonra, bağlantı noktası 22 ' de SSH kullanarak buna bağlanabilirsiniz. Uç düğümünün adını küme portalından bulabilirsiniz. Adlar *genellikle ile biter*.
 
 ### <a name="why-are-persisted-scripts-not-running-automatically-on-newly-created-edge-nodes"></a>Kalıcı betikler neden yeni oluşturulan kenar düğümlerinde otomatik olarak çalışmıyor?
 
-Kalıcı betikler, ölçeklendirme işlemleri aracılığıyla kümeye eklenen yeni çalışan düğümlerini özelleştirmek için kullanılır ve kenar düğümleri için uygulanmaz.
+Kalıcı betikleri, ölçek işlemleri aracılığıyla kümeye eklenen yeni çalışan düğümlerini özelleştirmek için kullanırsınız. Kalıcı betikler kenar düğümleri için uygulanmaz.
 
 ## <a name="rest-api"></a>REST API
 
 ### <a name="what-are-the-rest-api-calls-to-pull-a-tez-query-view-from-the-cluster"></a>Kümeden bir tez sorgu görünümü çekmek için REST API çağrısı nedir?
 
-Yanıtın JSON biçiminde olacağı gerekli bilgileri çekmek için aşağıdaki REST uç noktalarını kullanabilirsiniz. Temel kimlik doğrulama üstbilgileri, bu istekleri yapmak için kullanılabilir.
+Gerekli bilgileri JSON biçiminde çekmek için aşağıdaki REST uç noktalarını kullanabilirsiniz. İstekleri yapmak için temel kimlik doğrulama üst bilgilerini kullanın.
 
-* "Tez sorgusu" görünümü – https://`<cluster name>`. azurehdinsight.net/WS/v1/Timeline/HIVE_QUERY_ID/
-
-* "Tez dag" View- https://`<cluster name>`. azurehdinsight.net/WS/v1/Timeline/TEZ_DAG_ID/
+- Tez sorgu görünümü: *https:\//\<küme adı >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
+- Tez dag görünümü: *https:\//\<küme adı >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Nasıl yaparım? Azure Active Directory Kullanıcı kullanarak HDI kümesinden yapılandırma ayrıntılarını almak istiyor musunuz?
 
@@ -315,15 +321,28 @@ AAD kullanıcılarınız ile uygun kimlik doğrulama belirteçlerini anlaşmak i
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>YARN performansını izlemek için Nasıl yaparım? ambarı yeniden oluşturma API 'sini kullanmak mı istiyorsunuz?
 
-Aynı VNet veya eşlenmiş VNet 'te kıvrımlı komutu çağrılırsa, aşağıdaki komutu kullanın:
+Aynı sanal ağda veya eşlenmiş bir sanal ağda kıvrımlı komutunu çağırırsanız, komut şu şekilde olur:
 
-``curl -u <cluster login username> -sS -G http://headnodehost:8080/api/v1/clusters/anssenllap/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+```curl
+curl -u <cluster login username> -sS -G
+http://<headnodehost>:8080/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+```
  
-Komut VNet dışından veya eşlenmiş olmayan VNet 'ten çağrılırsa, komut biçimi şu şekilde olur:
- 
-* ESP olmayan bir küme için:``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
- 
-* Bir ESP kümesi için:``curl -u <cluster login username> -sS -G https://ClusterName.azurehdinsight.net/api/v1/clusters/ClusterName/services/YARN/components/NODEMANAGER?fields=metrics/cpu``
+Komutu sanal ağ dışından veya eşlenmiş olmayan bir sanal ağdan çağırırsanız, komut biçimi şu şekilde olur:
+
+- ESP olmayan bir küme için:
+  
+  ```curl
+  curl -u <cluster login username> -sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
+
+- Bir ESP kümesi için:
+  
+  ```curl
+  curl -u <cluster login username>-sS -G 
+  https://<ClusterName>.azurehdinsight.net/api/v1/clusters/<ClusterName>/services/YARN/components/NODEMANAGER?fields=metrics/cpu
+  ```
 
 > [!NOTE]
 > Kıvrımlı bir parola ister. Küme oturum açma Kullanıcı adı için geçerli bir parola girmeniz gerekir.
@@ -340,7 +359,7 @@ Aboneliğinizi iptal etme hakkında daha fazla bilgi için bkz. [Azure aboneliğ
 
 ### <a name="for-pay-as-you-go-subscriptions-what-happens-after-i-cancel-my-subscription"></a>Kullandıkça Öde abonelikleri için aboneliğimi iptal etmem durumunda ne olur?
 
-Aboneliğiniz iptal edildikten sonra hakkında daha fazla bilgi için bkz. [aboneliğimi iptal etdiğimde ne olur?](https://docs.microsoft.com/azure/billing/billing-how-to-cancel-azure-subscription#what-happens-after-i-cancel-my-subscription)
+Aboneliğiniz iptal edildikten sonra hakkında daha fazla bilgi için bkz. [aboneliğimi iptal etdiğimde ne olur?](/azure/billing/billing-how-to-cancel-azure-subscription)
 
 ## <a name="hive"></a>Hive
 
@@ -352,8 +371,8 @@ Yalnızca 1,2, Hive Kullanıcı arabiriminde görünse de, HDInsight 3,6 hem Hiv
 
 ### <a name="what-does-hdinsight-offer-in-terms-of-real-time-stream-processing-capabilities"></a>HDInsight, gerçek zamanlı akış işleme özellikleri açısından ne sunuyor?
 
-Azure HDInsight 'ta akış işleme tümleştirme özellikleri hakkında daha fazla bilgi için bkz. [Azure 'da akış işleme teknolojisi seçme](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/stream-processing).
+Azure HDInsight 'ta akış işleme tümleştirme özellikleri hakkında daha fazla bilgi için bkz. [Azure 'da akış işleme teknolojisi seçme](/azure/architecture/data-guide/technology-choices/stream-processing).
 
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>Küme belirli bir dönemde boşta kaldığında kümenin baş düğümünü dinamik olarak sonlandırmak için bir yol var mı?
 
-Hayır, kümenin baş düğümünü dinamik olarak sonlandıramezsiniz. Bu senaryo için Azure Data Factory kullanabilirsiniz.
+Bunu HDInsight kümeleri ile yapamazsınız. Bu senaryolar için Azure Data Factory kullanabilirsiniz.

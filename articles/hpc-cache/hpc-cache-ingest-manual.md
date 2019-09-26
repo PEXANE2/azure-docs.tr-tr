@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: v-erkell
-ms.openlocfilehash: 217f976d53a7be8931be9f8d21b000549a9ed68a
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180997"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299982"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC Cache (Önizleme) veri alma-el ile kopyalama yöntemi
 
@@ -23,7 +23,7 @@ Azure HPC önbelleğiniz için verileri blob depolamaya taşıma hakkında daha 
 
 Önceden tanımlanmış dosya veya yol kümelerine yönelik olarak, arka planda birden fazla kopyalama komutu çalıştırarak, bir istemcide çok iş parçacıklı bir kopyayı el ile oluşturabilirsiniz.
 
-Linux/UNIX ``cp`` komutu, sahiplik ve mtime meta verilerini korumak için bağımsız değişkenini ``-p`` içerir. Bu bağımsız değişkeni aşağıdaki komutlara eklemek isteğe bağlıdır. (Bağımsız değişkeni eklemek, meta veri değişikliği için istemciden hedef FileSystem 'a gönderilen dosya sistemi çağrılarının sayısını artırır.)
+Linux/UNIX ``cp`` komutu, sahiplik ve mtime meta verilerini korumak için bağımsız değişkenini ``-p`` içerir. Bu bağımsız değişkeni aşağıdaki komutlara eklemek isteğe bağlıdır. (Bağımsız değişkeni eklemek, meta veri değişikliği için istemciden hedef dosya sistemine gönderilen dosya sistemi çağrılarının sayısını artırır.)
 
 Bu basit örnek, paralel olarak iki dosya kopyalar:
 
@@ -136,7 +136,7 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Dosya bildirimleri oluşturma
 
-Yukarıdaki yaklaşımlar anlaşıldıktan sonra (hedef başına birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ erişimli kaynak dosya başına birden çok istemci) Şu öneriyi göz önünde bulundurun: Dosya bildirimleri oluşturun ve sonra birden çok istemcide kopyalama komutları ile bunları kullanın.
+Yukarıdaki yaklaşımlar anlaşıldıktan sonra (hedef başına birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ erişimli kaynak dosya sistemi başına birden çok istemci), şu öneriyi göz önünde bulundurun: Dosya bildirimleri oluşturun ve sonra birden çok istemcide kopyalama komutları ile bunları kullanın.
 
 Bu senaryo, dosya veya ``find`` dizinlerin bildirimlerini oluşturmak için UNIX komutunu kullanır:
 

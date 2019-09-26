@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: a070b224b0cb1378f0ba6729af33840715dc0a29
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7384f058c82699095e1209e677dc5c6f61b57178
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087722"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309866"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps için şirket içi veri ağ geçidini yükler
 
@@ -58,7 +58,7 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
   * Biriktirme için katı hal sürücüsü (SSD) depolaması
 
   > [!NOTE]
-  > Ağ Geçidi, Windows Server 2016 çekirdeğini desteklemez.
+  > Ağ Geçidi, Windows Server çekirdeğini desteklemez.
 
 * **İlgili konular**
 
@@ -74,6 +74,8 @@ Bu makalede şirket içi veri ağ geçidinizi indirme, yükleme ve kurma işleml
   * Ağ geçidinizin yüklemeniz için seçtiğiniz bölge, daha sonra mantıksal uygulamanız için Azure Gateway kaynağını oluştururken seçmeniz gereken konumdur. Bu bölge, varsayılan olarak Azure hesabınızı yöneten Azure AD kiracınızla aynı konumdadır. Ancak, ağ geçidi yüklemesi sırasında konumu değiştirebilirsiniz.
 
   * Ağ geçidinde iki mod vardır: yalnızca Power BI için geçerli olan standart mod ve kişisel mod. Aynı bilgisayarda aynı modda çalışan birden fazla ağ geçidi olamaz.
+
+  * Azure Logic Apps, ağ geçidi aracılığıyla ekleme ve güncelleştirme dahil olmak üzere yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır.
 
 <a name="install-gateway"></a>
 

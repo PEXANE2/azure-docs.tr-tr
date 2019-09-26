@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c85d53d05193313f9e166b88beb2a0f82eb197
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618363"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291024"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde var olan bir erişim paketini düzenleyin ve yönetin (Önizleme)
 
@@ -34,7 +34,7 @@ Erişim paketi, erişim paketinin ömrü boyunca erişimi otomatik olarak yönet
 
 Bu makalede, mevcut erişim paketlerinin nasıl düzenleneceği ve yönetileceği açıklanmaktadır.
 
-## <a name="add-resource-roles"></a>Kaynak rolleri ekleme
+## <a name="add-resource-roles"></a>Kaynak rolleri ekle
 
 Kaynak rolü, bir kaynakla ilişkili izinlerin koleksiyonudur. Kaynakları kullanıcıların istemesi için kullanılabilir hale getirmenin yolu, erişim paketinize kaynak rolleri eklemektir. Gruplar, uygulamalar ve SharePoint siteleri için kaynak rolleri ekleyebilirsiniz.
 
@@ -65,7 +65,7 @@ Herhangi bir Office 365 grubunu veya Azure AD güvenlik grubunu seçebilirsiniz.
 - Azure AD, Azure AD Connect kullanılarak Windows Server Active Directory eşitlenen veya Exchange Online 'da bir dağıtım grubu olarak oluşturulan bir grubun üyeliğini değiştiremiyor.  
 - Dinamik grupların üyeliği üye ekleyerek veya kaldırarak güncelleştirilemez, bu nedenle dinamik grup üyelikleri yetkilendirme yönetimiyle kullanım için uygun değildir.
 
-1. **Pakete erişmek için kaynak rolleri ekle** sayfasında, **Gruplar ' a** tıklayarak Grup Seç bölmesini açın.
+1. **Pakete erişmek için kaynak rolleri ekle** sayfasında, **Gruplar ' a tıklayarak Grup Seç** bölmesini açın.
 
 1. Erişim paketine eklemek istediğiniz grupları seçin.
 
@@ -79,7 +79,7 @@ Herhangi bir Office 365 grubunu veya Azure AD güvenlik grubunu seçebilirsiniz.
 
     ![Erişim paketi-bir grup için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/group-role.png)
 
-1.           **Ekle**'yi tıklatın.
+1. **Ekle**'yi tıklatın.
 
     Erişim paketine mevcut atamaları olan tüm kullanıcılar, eklendiğinde otomatik olarak bu grubun üyesi olur.
 
@@ -110,7 +110,7 @@ Bir uygulama seçerken bazı konular aşağıda verilmiştir:
 
     ![Erişim paketi-bir uygulama için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/application-role.png)
 
-1.           **Ekle**'yi tıklatın.
+1. **Ekle**'yi tıklatın.
 
     Erişim paketine mevcut atamalara sahip tüm kullanıcılara, eklendiğinde bu uygulamaya otomatik olarak erişim verilir.
 
@@ -130,7 +130,7 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
     ![Erişim paketi-SharePoint Online sitesi için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1.           **Ekle**'yi tıklatın.
+1. **Ekle**'yi tıklatın.
 
     Erişim paketine mevcut atamalara sahip olan tüm kullanıcılara, eklendiğinde bu SharePoint Online sitesine otomatik olarak erişim verilir.
 
@@ -150,7 +150,7 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
     Erişim paketine mevcut atamaları olan tüm kullanıcılar, kaldırıldığında bu kaynak rolü için otomatik olarak erişimi iptal eder.
 
-## <a name="add-a-new-policy"></a>Yeni ilke Ekle
+## <a name="add-a-new-policy"></a>Yeni ilke ekle
 
 Ne şekilde bir erişim paketi isteyebilen bir ilke oluşturmaktır. Farklı Kullanıcı kümelerine, farklı onay ve sona erme ayarlarına sahip atamalar verilmesini sağlamak istiyorsanız, tek bir erişim paketi için birden çok ilke oluşturabilirsiniz. Tek bir ilke, aynı erişim paketine iç ve dış kullanıcı atamak için kullanılamaz. Bununla birlikte, aynı erişim paketinde bir tane olmak üzere, biri iç kullanıcılar ve diğeri dış kullanıcılar için olmak üzere iki ilke oluşturabilirsiniz. Bir kullanıcı için uygulanan birden çok ilke varsa, kendilerine atanması gereken ilkeyi seçme istekleri sırasında istenir.
 
@@ -294,7 +294,15 @@ Yalnızca henüz teslim edilmemiş bekleyen bir isteği iptal edebilirsiniz.
 
 ## <a name="copy-my-access-portal-link"></a>Erişim Portalı bağlantısını Kopyala
 
-Dizininizdeki çoğu kullanıcı erişim portalı 'nda oturum açabilir ve istedikleri erişim paketleri listesini otomatik olarak görebilir. Ancak, henüz dizininizden olmayan dış iş ortağı kullanıcıları için, onlara bir erişim paketi istemek üzere kullanabilecekleri bir bağlantı göndermeniz gerekecektir. Erişim paketi dış kullanıcılar için etkinleştirildiğinden ve dış kullanıcının dizini için bir ilkeniz varsa, dış Kullanıcı erişim paketini istemek için erişim portalı bağlantısını kullanabilir.
+Dizininizdeki çoğu kullanıcı erişim portalı 'nda oturum açabilir ve istedikleri erişim paketleri listesini otomatik olarak görebilir. Ancak, henüz dizininizden olmayan dış iş ortağı kullanıcıları için, onlara bir erişim paketi istemek üzere kullanabilecekleri bir bağlantı göndermeniz gerekecektir. 
+
+Bir iç iş ortağına gönderirken erişim portalı 'nın tamamını kopyalamanız önemlidir. Bu, iş ortağının, kendi isteklerini yapmak için dizininizin portalına erişmesini sağlar. 
+
+Bağlantı, "myaccess" ile başlar, bir dizin ipucu içerir ve bir erişim paketi kimliğiyle biter. Bağlantının aşağıdakilerin tümünü içerdiğinden emin olun:
+
+ `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
+
+Erişim paketi dış kullanıcılar için etkinleştirildiğinden ve dış kullanıcının dizini için bir ilkeniz varsa, dış Kullanıcı erişim paketini istemek için erişim portalı bağlantısını kullanabilir.
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 

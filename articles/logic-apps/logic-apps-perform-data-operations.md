@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 1b0a7473f1cdfb6aa3533b261979da7c18605a16
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179368"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309385"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps veri işlemlerini gerçekleştirme
 
@@ -175,55 +175,93 @@ Kod görünümü Düzenleyicisi 'nde çalışmayı tercih ediyorsanız, örnek *
 
 ### <a name="customize-table-format"></a>Tablo biçimini Özelleştir
 
-Varsayılan olarak, **Columns** özelliği, dizi öğelerine göre tablo sütunlarını otomatik olarak oluşturmak üzere ayarlanır. 
-
-Özel üst bilgileri ve değerleri belirtmek için şu adımları izleyin:
+Varsayılan olarak, **Columns** özelliği, dizi öğelerine göre tablo sütunlarını otomatik olarak oluşturmak üzere ayarlanır. Özel üst bilgileri ve değerleri belirtmek için şu adımları izleyin:
 
 1. **Sütunlar** listesini açın ve **özel**' i seçin.
 
 1. **Üstbilgi** özelliğinde, yerine kullanılacak özel üst bilgi metnini belirtin.
 
-1. **Anahtar** özelliğinde bunun yerine kullanılacak özel değeri belirtin.
+1. **Değer** özelliğinde, bunun yerine kullanılacak özel değeri belirtin.
 
-Dizideki değerleri başvurmak ve düzenlemek için, bu `@item()` işlevi **CSV tablosu oluşturma** eyleminin JSON tanımında kullanabilirsiniz.
+Diziden değer döndürmek için, bu [ `item()` işlevi](../logic-apps/workflow-definition-language-functions-reference.md#item) **CSV tablosu oluşturma** eylemiyle birlikte kullanabilirsiniz. Bir `For_each` döngüde, [ `items()` işlevini](../logic-apps/workflow-definition-language-functions-reference.md#items)kullanabilirsiniz.
 
-1. Tasarımcı araç çubuğunda **kod görünümü**' nü seçin. 
-
-1. Kod Düzenleyicisi 'nde, tablo çıktısını istediğiniz şekilde `inputs` özelleştirmek için eylemin bölümünü düzenleyin.
-
-Bu örnek, `header` özelliği boş bir değere ayarlayıp her `value` bir özelliğin başvurusunu kaldırarak `columns` dizideki üst bilgileri değil yalnızca sütun değerlerini döndürür:
-
-```json
-"Create_CSV_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "CSV",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Bu örnekte döndürülen sonuç aşağıda verilmiştir:
+Örneğin, bir dizideki özellik adlarını değil, yalnızca özellik değerlerine sahip tablo sütunlarının istediğinizi varsayalım. Yalnızca bu değerleri döndürmek için, tasarımcı görünümünde veya kod görünümünde çalışmak üzere bu adımları izleyin. Bu örnekte döndürülen sonuç aşağıda verilmiştir:
 
 ```text
-Results from Create CSV table action:
-
 Apples,1
 Oranges,2
 ```
 
-Tasarımcıda **CSV tablosu oluşturma** eylemi şu şekilde görünür:
+#### <a name="work-in-designer-view"></a>Tasarımcı görünümünde çalışma
 
-![Sütun başlıkları olmayan "CSV tablosu oluşturma"](./media/logic-apps-perform-data-operations/create-csv-table-no-column-headers.png)
+Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda, istediğiniz her bir dizi özelliğine başvuru yapın. **Değer** altındaki her satır, belirtilen dizi özelliği için tüm değerleri döndürür ve tablonuzda bir sütun olur.
+
+1. **Değer**' in altında, istediğiniz her satırda, dinamik içerik listesinin görünmesi için düzenleme kutusunun içine tıklayın.
+
+1. Dinamik içerik listesinde **ifade**' yi seçin.
+
+1. İfade düzenleyicisinde, istediğiniz dizi özelliği değerini belirten bu ifadeyi girin ve **Tamam**' ı seçin.
+
+   `item()?['<array-property-name>']`
+
+   Örneğin:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Başvuru özelliğinin ifadesi](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+
+1. İstediğiniz her dizi özelliği için önceki adımları tekrarlayın. İşiniz bittiğinde, eyleminiz Şu örneğe benzer şekilde görünür:
+
+   ![Tamamlanmış ifadeler](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+
+1. İfadeleri daha açıklayıcı sürümlere dönüştürmek için, kod görünümüne geçin ve tasarımcı görünümüne dönün ve sonra daraltılan eylemi yeniden açın:
+
+   **CSV tablosu oluştur** eylemi şu örnekte olduğu gibi görünür:
+
+   ![Çözümlenen ifadelerle "CSV tablosu oluşturma" eylemi ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+
+#### <a name="work-in-code-view"></a>Kod görünümünde çalışma
+
+Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir dize olarak ayarlayın. Her `value` bir özellik için istediğiniz her bir dizi özelliğine başvuru yapın.
+
+1. Tasarımcı araç çubuğunda **kod görünümü**' nü seçin.
+
+1. Kod düzenleyicisinde, eylemin `columns` dizisinde, istediğiniz dizi değerlerinin her sütunu için boş `header` özelliği ve bu `value` ifadeyi ekleyin:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Örneğin:
+
+   ```json
+   "Create_CSV_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "CSV",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Tasarımcı görünümüne dönün ve daraltılmış eylemi yeniden açın.
+
+   **CSV tablosu oluştur** eylemi şimdi bu örnekte olduğu gibi görünür ve ifadeler daha açıklayıcı sürümlere çözümlenmektedir:
+
+   ![Çözümlenen ifadelerle "CSV tablosu oluşturma" eylemi ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi için, bkz. [tablo eylemi](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 
@@ -288,55 +326,93 @@ Kod görünümü düzenleyicisinde çalışmayı tercih ediyorsanız, örnek **H
 
 ### <a name="customize-table-format"></a>Tablo biçimini Özelleştir
 
-Varsayılan olarak, **Columns** özelliği, dizi öğelerine göre tablo sütunlarını otomatik olarak oluşturmak üzere ayarlanır. 
-
-Özel üst bilgileri ve değerleri belirtmek için şu adımları izleyin:
+Varsayılan olarak, **Columns** özelliği, dizi öğelerine göre tablo sütunlarını otomatik olarak oluşturmak üzere ayarlanır. Özel üst bilgileri ve değerleri belirtmek için şu adımları izleyin:
 
 1. **Sütunlar** listesini açın ve **özel**' i seçin.
 
 1. **Üstbilgi** özelliğinde, yerine kullanılacak özel üst bilgi metnini belirtin.
 
-1. **Anahtar** özelliğinde bunun yerine kullanılacak özel değeri belirtin.
+1. **Değer** özelliğinde, bunun yerine kullanılacak özel değeri belirtin.
 
-Dizideki değerleri başvurmak ve düzenlemek için, bu `@item()` işlevi **HTML tablosu oluşturma** eyleminin JSON tanımında kullanabilirsiniz.
+Diziden değer döndürmek için, [ `item()` işlevi](../logic-apps/workflow-definition-language-functions-reference.md#item) **HTML tablosu oluştur** eylemiyle birlikte kullanabilirsiniz. Bir `For_each` döngüde, [ `items()` işlevini](../logic-apps/workflow-definition-language-functions-reference.md#items)kullanabilirsiniz.
 
-1. Tasarımcı araç çubuğunda **kod görünümü**' nü seçin. 
-
-1. Kod Düzenleyicisi 'nde, tablo çıktısını istediğiniz şekilde `inputs` özelleştirmek için eylemin bölümünü düzenleyin.
-
-Bu örnek, `header` özelliği boş bir değere ayarlayıp her `value` bir özelliğin başvurusunu kaldırarak `columns` dizideki üst bilgileri değil yalnızca sütun değerlerini döndürür:
-
-```json
-"Create_HTML_table": {
-   "inputs": {
-      "columns": [
-         { 
-            "header": "",
-            "value": "@item()?['Description']"
-         },
-         { 
-            "header": "",
-            "value": "@item()?['Product_ID']"
-         }
-      ],
-      "format": "HTML",
-      "from": "@variables('myJSONArray')"
-   }
-}
-```
-
-Bu örnekte döndürülen sonuç aşağıda verilmiştir:
+Örneğin, bir dizideki özellik adlarını değil, yalnızca özellik değerlerine sahip tablo sütunlarının istediğinizi varsayalım. Yalnızca bu değerleri döndürmek için, tasarımcı görünümünde veya kod görünümünde çalışmak üzere bu adımları izleyin. Bu örnekte döndürülen sonuç aşağıda verilmiştir:
 
 ```text
-Results from Create HTML table action:
-
-Apples    1
-Oranges   2
+Apples,1
+Oranges,2
 ```
 
-Tasarımcıda **HTML tablosu oluştur** eylemi artık şu şekilde görünür:
+#### <a name="work-in-designer-view"></a>Tasarımcı görünümünde çalışma
 
-![Sütun başlıkları olmayan "HTML tablosu oluşturma"](./media/logic-apps-perform-data-operations/create-html-table-no-column-headers.png)
+Eylemde **başlık** sütununu boş tutun. **Değer** sütunundaki her satırda, istediğiniz her bir dizi özelliğine başvuru yapın. **Değer** altındaki her satır, belirtilen özelliğin tüm değerlerini döndürür ve tablonuzda bir sütun olur.
+
+1. **Değer**' in altında, istediğiniz her satırda, dinamik içerik listesinin görünmesi için düzenleme kutusunun içine tıklayın.
+
+1. Dinamik içerik listesinde **ifade**' yi seçin.
+
+1. İfade düzenleyicisinde, istediğiniz dizi özelliği değerini belirten bu ifadeyi girin ve **Tamam**' ı seçin.
+
+   `item()?['<array-property-name>']`
+
+   Örneğin:
+
+   * `item()?['Description']`
+   * `item()?['Product_ID']`
+
+   ![Başvuru özelliğinin ifadesi](./media/logic-apps-perform-data-operations/html-table-expression.png)
+
+1. İstediğiniz her dizi özelliği için önceki adımları tekrarlayın. İşiniz bittiğinde, eyleminiz Şu örneğe benzer şekilde görünür:
+
+   ![Tamamlanmış ifadeler](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+
+1. İfadeleri daha açıklayıcı sürümlere dönüştürmek için, kod görünümüne geçin ve tasarımcı görünümüne dönün ve sonra daraltılan eylemi yeniden açın:
+
+   **HTML tablosu oluştur** eylemi şu örnekte olduğu gibi görünür:
+
+   ![Çözümlenen ifadelerle "HTML tablosu oluşturma" eylemi ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+
+#### <a name="work-in-code-view"></a>Kod görünümünde çalışma
+
+Eylemin JSON tanımında, `columns` dizi içinde, `header` özelliği boş bir dize olarak ayarlayın. Her `value` bir özellik için istediğiniz her bir dizi özelliğine başvuru yapın.
+
+1. Tasarımcı araç çubuğunda **kod görünümü**' nü seçin.
+
+1. Kod düzenleyicisinde, eylemin `columns` dizisinde, istediğiniz dizi değerlerinin her sütunu için boş `header` özelliği ve bu `value` ifadeyi ekleyin:
+
+   ```json
+   {
+      "header": "",
+      "value": "@item()?['<array-property-name>']"
+   }
+   ```
+
+   Örneğin:
+
+   ```json
+   "Create_HTML_table": {
+      "inputs": {
+         "columns": [
+            { 
+               "header": "",
+               "value": "@item()?['Description']"
+            },
+            { 
+               "header": "",
+               "value": "@item()?['Product_ID']"
+            }
+         ],
+         "format": "HTML",
+         "from": "@variables('myJSONArray')"
+      }
+   }
+   ```
+
+1. Tasarımcı görünümüne dönün ve daraltılmış eylemi yeniden açın.
+
+   **HTML tablosu oluştur** eylemi artık bu örnekte olduğu gibi görünür ve ifadeler daha açıklayıcı sürümlere çözümlenmektedir:
+
+   ![Çözümlenen ifadelerle "HTML tablosu oluşturma" eylemi ve üst bilgi yok](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 Temel alınan iş akışı tanımınızda bu eylem hakkında daha fazla bilgi için, bkz. [tablo eylemi](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action).
 

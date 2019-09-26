@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alinast
-ms.openlocfilehash: e483ac8e56ce39cbb05c5d00634c6327b497bab5
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: bdf37225e815d3848a87b88737daf4b5a5d2560c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219921"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300045"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Öğretici: Azure dijital TWINS önizlemesi ile derleme ve izleme çalışma koşullarınızı sağlama
 
@@ -184,7 +184,7 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
 
 1. Komut penceresindeki çıktıdan, `ConnectionString` `Devices` bölümünün altındaki değerini panonuza kopyalayın. Sonraki bölümde cihaz bağlantısının benzetimini yapmak için bu değere ihtiyacınız olacaktır.
 
-    ![Sağlama örneği](./media/tutorial-facilities-udf/run-provision-sample.png)
+    [![Örnek sağla](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Hatanın ortasında "bir iş parçacığı çıkışı veya uygulama isteği nedeniyle g/ç işlemi iptal edildi" hatasıyla benzer bir hata iletisi alırsanız, komutu yeniden çalıştırmayı deneyin. Bu durum, HTTP istemcisinin bir ağ sorunundan zaman aşımına uğramasından kaynaklanabilir.
@@ -245,7 +245,7 @@ Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Ha
 
 Çıkış penceresi, Kullanıcı tanımlı işlevin cihaz benzetimine ait olayları nasıl yürüttüğünde gösterir. 
 
-   ![UDF için çıkış](./media/tutorial-facilities-udf/udf-running.png)
+   [![UDF için çıkış](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
 İzlenen koşul karşılanıyorsa, Kullanıcı tanımlı işlevi, [daha önce](#create-a-user-defined-function)gördüğünüz gibi ilgili iletiyle birlikte alanın değerini ayarlar. `GetAvailableAndFreshSpaces` İşlevi konsolundaki iletiyi yazdırır.
 

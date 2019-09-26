@@ -9,16 +9,18 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 09/01/2019
-ms.openlocfilehash: dcb0fe4da968408a261e387c636cc548fa757a09
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: d397adfb6ed2d3aef93bd40d14eb0ad199cdb90c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036668"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309364"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps şirket içi veri kaynaklarına bağlanma
 
-Mantıksal uygulamalarınızdan şirket içi veri kaynaklarına erişmek için Azure portal bir şirket içi veri ağ geçidi kaynağı oluşturun. Mantıksal uygulamalarınız daha sonra [Şirket içi bağlayıcıları](../connectors/apis-list.md#on-premises-connectors)kullanabilir. Bu makalede [, ağ geçidini yerel bir bilgisayara indirip yükledikten](../logic-apps/logic-apps-gateway-install.md) *sonra* Azure ağ geçidi kaynağınızın nasıl oluşturulacağı gösterilmektedir. Ağ Geçidi hakkında daha fazla bilgi için bkz. [ağ geçidinin nasıl çalıştığı](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service).
+Mantıksal uygulamalarınızdan şirket içi veri kaynaklarına erişmek için Azure portal bir şirket içi veri ağ geçidi kaynağı oluşturun. Mantıksal uygulamalarınız daha sonra [Şirket içi bağlayıcıları](../connectors/apis-list.md#on-premises-connectors)kullanabilir. Azure Logic Apps, ağ geçidi aracılığıyla ekleme ve güncelleştirme dahil olmak üzere yazma işlemlerini destekler. Ancak, bu işlemlerin [Yük boyutuyla ilgili limitleri](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)vardır.
+
+Bu makalede [, ağ geçidini yerel bir bilgisayara indirip yükledikten](../logic-apps/logic-apps-gateway-install.md) *sonra* Azure ağ geçidi kaynağınızın nasıl oluşturulacağı gösterilmektedir. Ağ Geçidi hakkında daha fazla bilgi için bkz. [ağ geçidinin nasıl çalıştığı](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service). 
 
 > [!TIP]
 > Azure sanal ağlarına bağlanmak için bunun yerine bir [*tümleştirme hizmeti ortamı*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturmayı düşünün. 
@@ -121,7 +123,7 @@ Ağ Geçidi kaynağınızı oluşturduktan ve Azure aboneliğinizi bu kaynakla i
 
 Ağ Geçidi bağlantınız artık mantıksal uygulamanızın kullanması için hazırdır.
 
-## <a name="edit-connection"></a>Bağlantıyı Düzenle
+## <a name="edit-connection"></a>Bağlantıyı düzenle
 
 Bir ağ geçidi bağlantısının ayarlarını güncelleştirmek için bağlantınızı düzenleyebilirsiniz.
 
@@ -151,7 +153,7 @@ Farklı bir ağ geçidi kaynağı oluşturmak, ağ geçidi yüklemenizi farklı 
 
    Örneğin:
 
-   ![Ağ geçidini Sil](./media/logic-apps-gateway-connection/gateway-delete.png)
+   ![Ağ geçidini sil](./media/logic-apps-gateway-connection/gateway-delete.png)
 
 <a name="faq"></a>
 

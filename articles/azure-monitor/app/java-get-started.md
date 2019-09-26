@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: lagayhar
-ms.openlocfilehash: 27610280bafa6d8e9e33f84af2d3e9f6c2c9ea5c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 351247041d4e2f857bcb38b38a490c1a160a6a70
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967826"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299586"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java web projesinde Application Insights ile başlarken
 
@@ -29,10 +29,8 @@ Application Insights; Linux, Unix veya Windows üzerinde çalışan Java uygulam
 
 Gerekenler:
 
-* JRE 1.7 veya 1.8 sürümü
+* Java 7 veya üzeri
 * Bir [Microsoft Azure](https://azure.microsoft.com/) aboneliği.
-
-Spring çerçevesini tercih ediyorsanız, [Application Insights kılavuzunu kullanmak için Spring Boot başlatıcı uygulamasını yapılandırmayı](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights) deneyin
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Application Insights izleme anahtarı edinme
 1. [Microsoft Azure portalında](https://portal.azure.com) oturum açın.
@@ -51,27 +49,16 @@ Projenizi derleme için zaten Maven kullanmak üzere ayarlanmışsa aşağıdaki
 Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yenileyin.
 
 ```XML
-
-    <repositories>
-       <repository>
-          <id>central</id>
-          <name>Central</name>
-          <url>http://repo1.maven.org/maven2</url>
-       </repository>
-    </repositories>
-
     <dependencies>
       <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>applicationinsights-web</artifactId>
+        <artifactId>applicationinsights-web-auto</artifactId>
+        <!-- or applicationinsights-web for manual web filter registration -->
         <!-- or applicationinsights-core for bare API -->
-        <version>[2.0,)</version>
+        <version>2.5.0</version>
       </dependency>
     </dependencies>
 ```
-
-* *Derleme veya sağlama toplamı doğrulama hataları mı var?* `<version>2.0.n</version>` gibi belirli bir sürümü kullanmayı deneyin. En son sürümü [SDK sürüm notlarında](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) veya [Maven yapıtları](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) sitesinde bulacaksınız.
-* *Yeni SDK’ye mi güncelleştirmeniz gerekiyor?* Proje bağımlılıklarınızı yenileyin.
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Gradle kullanıyorsanız... <a name="gradle-setup" />
 Projenizi derleme için zaten Gradle kullanmak üzere ayarlanmışsa aşağıdaki kodu build.gradle dosyanızla birleştirin.
@@ -79,34 +66,25 @@ Projenizi derleme için zaten Gradle kullanmak üzere ayarlanmışsa aşağıdak
 Daha sonra, proje bağımlılıklarını ikili dosyaları indirmek için yenileyin.
 
 ```gradle
-
-    repositories {
-      mavenCentral()
-    }
-
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '2.+'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web-auto', version: '2.5.0'
+      // or applicationinsights-web for manual web filter registration
       // or applicationinsights-core for bare API
     }
 ```
-
-#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project-"></a>Dinamik Web projesi oluşturmak için Eclipse kullanıyorsanız...
-Java eklentisi için Application Insights SDK 'yı kullanın. Not: Bu eklentiyi kullanarak Application Insights’ı daha hızlı kullanmaya başlayabilseniz de (Maven/Gradle kullanmadığınız varsayılarak), bu bir bağımlılık yönetim sistemi değildir. Bu nedenle, eklenti güncelleştirildiğinde, projenizdeki Application Insights kitaplıkları otomatik olarak güncelleştirilmez.
-
-* *Derleme veya sağlama toplamı doğrulama hataları mı var?* `version:'2.0.n'` gibi belirli bir sürümü kullanmayı deneyin. En son sürümü [SDK sürüm notlarında](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) veya [Maven yapıtları](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights) sitesinde bulacaksınız.
-* *Yeni bir SDK’ya güncelleştirmek için* Proje bağımlılıklarınızı yenileyin.
 
 #### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>Aksi takdirde, bağımlılıkları el ile yönetiyorsanız...
 [En son sürümü](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) indirin ve önceki sürümleri değiştirerek gerekli dosyaları projenize kopyalayın.
 
 ### <a name="questions"></a>Sorular...
-* *`-core` ve `-web` bileşenleri arasındaki ilişki nedir?*
-  * `applicationinsights-core` size tam API sağlar. Bu bileşen her zaman gerekecektir.
-  * `applicationinsights-web`, HTTP istek sayısını ve yanıt sürelerini izleyen ölçümleri sağlar. Bu telemetrinin otomatik olarak toplanmasını istemiyorsanız, bu bileşeni atlayabilirsiniz. Örneğin, kendiniz yazmak istiyorsanız.
+* *`-web` `-web-auto` Ve`-core` bileşenleri arasındaki ilişki nedir?*
+  * `applicationinsights-web-auto`, çalışma zamanında Application Insights servlet filtresini otomatik olarak kaydederek HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri sağlar.
+  * `applicationinsights-web`Ayrıca, HTTP servlet istek sayısını ve yanıt sürelerini izleyen ölçümleri de verir, ancak uygulamanızda Application Insights servlet filtresi 'nin el ile kaydedilmesini gerektirir.
+  * `applicationinsights-core`, uygulamanızın servlet tabanlı olmaması durumunda yalnızca tam API sağlar.
   
 * *SDK’yı en son sürüme nasıl güncelleştirmeliyim?*
   * Gradle veya Maven kullanıyorsanız...
-    * En son sürümü belirtmek için derleme dosyanızı güncelleştirin veya en son sürümü otomatik olarak dahil etmek için Gradle/Maven’in joker karakter sözdizimini kullanın. Ardından projenizin bağımlılıklarını yenileyin. Joker karakter sözdizimi, [Gradle](#gradle-setup) veya [Maven](#maven-setup) için yukarıdaki örneklerde görülebilir.
+    * En son sürümü belirtmek için derleme dosyanızı güncelleştirin.
   * Bağımlılıkları el ile yönetiyorsanız...
     * En son [Java için Application Insights SDK’si](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)’ni indirin ve eskilerle değiştirin. Değişiklikler [SDK sürüm notlarında](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) açıklanmıştır.
 
@@ -116,34 +94,30 @@ Projenizin kaynaklar klasörüne ApplicationInsights.xml dosyasını ekleyin vey
 Azure portalından aldığınız izleme anahtarını bununla değiştirin.
 
 ```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <!-- The key from the portal: -->
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
+   <!-- HTTP request component (not required for bare API) -->
+   <TelemetryModules>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
+   </TelemetryModules>
 
-      <!-- The key from the portal: -->
-      <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <!-- Events correlation (not required for bare API) -->
+   <!-- These initializers add context data to each event -->
+   <TelemetryInitializers>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
+      <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
+   </TelemetryInitializers>
 
-
-      <!-- HTTP request component (not required for bare API) -->
-      <TelemetryModules>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebUserTrackingTelemetryModule"/>
-      </TelemetryModules>
-
-      <!-- Events correlation (not required for bare API) -->
-      <!-- These initializers add context data to each event -->
-
-      <TelemetryInitializers>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationIdTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebOperationNameTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebSessionTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserTelemetryInitializer"/>
-        <Add type="com.microsoft.applicationinsights.web.extensibility.initializers.WebUserAgentTelemetryInitializer"/>
-
-      </TelemetryInitializers>
-    </ApplicationInsights>
+</ApplicationInsights>
 ```
 
 İsteğe bağlı olarak, yapılandırma dosyası, uygulamanızın erişebildiği herhangi bir konumda bulunabilir.  `-Dapplicationinsights.configurationDirectory` sistem özelliği, ApplicationInsights.xml dosyasını içeren dizini belirtir. Örneğin, `E:\myconfigs\appinsights\ApplicationInsights.xml` konumunda bulunan bir yapılandırma dosyası, `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` özelliği ile yapılandırılır.
@@ -155,8 +129,8 @@ Azure portalından aldığınız izleme anahtarını bununla değiştirin.
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>İzleme anahtarını ayarlamak için alternatif yollar
 Application Insights SDK’sı anahtarı şu sırayla arar:
 
-1. Sistem özelliği: -DAPPLICATION_INSIGHTS_IKEY=your_ikey
-2. Ortam değişkeni: APPLICATION_INSIGHTS_IKEY
+1. Sistem özelliği:-DAPPINSIGHTS_INSTRUMENTATIONKEY = your_ikey
+2. Ortam değişkeni: APPINSIGHTS_INSTRUMENTATIONKEY
 3. Yapılandırma dosyası: ApplicationInsights. xml
 
 Ayrıca [kod içinde ayarlayabilirsiniz](../../azure-monitor/app/api-custom-events-metrics.md#ikey):
@@ -170,133 +144,9 @@ Ayrıca [kod içinde ayarlayabilirsiniz](../../azure-monitor/app/api-custom-even
     }
 ```
 
-[Canlı ölçümler](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) , koddan izleme anahtarını okumayı desteklemediğine lütfen unutmayın.
+## <a name="4-add-agent"></a>4. Aracı Ekle
 
-## <a name="4-add-an-http-filter"></a>4. HTTP filtresi ekleme
-Son yapılandırma adımı HTTP isteği bileşeninin her web isteğini kaydetmesini sağlar. (Yalnızca tam API istiyorsanız gerekmez.)
-
-### <a name="spring-boot-applications"></a>Spring Boot Uygulamaları
-Yapılandırma sınıfınıza Application Insights `WebRequestTrackingFilter` filtresini kaydetme:
-
-```Java
-package <yourpackagename>.configurations;
-
-import javax.servlet.Filter;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.Ordered;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
-import com.microsoft.applicationinsights.TelemetryConfiguration;
-import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
-
-@Configuration
-public class AppInsightsConfig {
-
-    @Bean
-    public String telemetryConfig() {
-        String telemetryKey = System.getenv("<instrumentation key>");
-        if (telemetryKey != null) {
-            TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
-        }
-        return telemetryKey;
-    }
-
-    /**
-     * Programmatically registers a FilterRegistrationBean to register WebRequestTrackingFilter
-     * @param webRequestTrackingFilter
-     * @return Bean of type {@link FilterRegistrationBean}
-     */
-    @Bean
-    public FilterRegistrationBean webRequestTrackingFilterRegistrationBean(WebRequestTrackingFilter webRequestTrackingFilter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(webRequestTrackingFilter);
-        registration.addUrlPatterns("/*");
-        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
-        return registration;
-    }
-
-
-    /**
-     * Creates bean of type WebRequestTrackingFilter for request tracking
-     * @param applicationName Name of the application to bind filter to
-     * @return {@link Bean} of type {@link WebRequestTrackingFilter}
-     */
-    @Bean
-    @ConditionalOnMissingBean
-
-    public WebRequestTrackingFilter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
-        return new WebRequestTrackingFilter(applicationName);
-    }
-
-
-}
-```
-
-> [!NOTE]
-> Spring Boot 1.3.8 veya daha eski bir sürüm kullanıyorsanız, FilterRegistrationBean’i aşağıdaki satırla değiştirin
-
-```Java
-    import org.springframework.boot.context.embedded.FilterRegistrationBean;
-```
-
-Bu sınıf, `WebRequestTrackingFilter` filtresini, http filtresi zincirinde ilk filtre olacak şekilde yapılandırır. Varsa, işletim sistemi ortam değişkeninden izleme anahtarını çeker.
-
-> Bu bir Spring Boot uygulaması olduğundan ve kendi Spring MVC yapılandırmasını içerdiğinden, Spring MVC yapılandırması yerine web http filtresi yapılandırmasını kullanıyoruz. Spring MVC’ye özgü yapılandırma için aşağıdaki bölüme bakın.
-
-### <a name="applications-using-webxml"></a>Web.xml Kullanan Uygulamalar
-Projenizde web.xml dosyasını bulup açın ve uygulama filtrelerinizin yapılandırıldığı web uygulaması düğümü altında aşağıdaki kodu birleştirin.
-
-En doğru sonuçlar almak için önce filtrenin tüm diğer filtrelerle eşlenmesi gerekir.
-
-```XML
-
-    <filter>
-      <filter-name>ApplicationInsightsWebFilter</filter-name>
-      <filter-class>
-        com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter
-      </filter-class>
-    </filter>
-    <filter-mapping>
-       <filter-name>ApplicationInsightsWebFilter</filter-name>
-       <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-   <!-- This listener handles shutting down the TelemetryClient when an application/servlet is undeployed. -->
-    <listener>
-      <listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener</listener-class>
-    </listener>
-```
-
-#### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Spring Web MVC 3.1 veya sonraki sürümleri kullanıyorsanız
-Bu öğeleri *-servlet.xml içinde Application Insights paketini içerecek şekilde düzenleyin:
-
-```XML
-
-    <context:component-scan base-package=" com.springapp.mvc, com.microsoft.applicationinsights.web.spring"/>
-
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/**"/>
-            <bean class="com.microsoft.applicationinsights.web.spring.RequestNameHandlerInterceptorAdapter" />
-        </mvc:interceptor>
-    </mvc:interceptors>
-```
-
-#### <a name="if-youre-using-struts-2"></a>Struts 2 kullanıyorsanız
-Bu öğeyi Struts yapılandırma dosyasına ekleyin (genellikle struts.xml veya struts default.xml adıyla):
-
-```XML
-
-     <interceptors>
-       <interceptor name="ApplicationInsightsRequestNameInterceptor" class="com.microsoft.applicationinsights.web.struts.RequestNameInterceptor" />
-     </interceptors>
-     <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
-```
-
-Varsayılan yığında tanımlı dinleyiciler varsa, dinleyici o yığına eklenebilir.
+Giden HTTP çağrılarını, JDBC sorgularını, uygulama günlüğünü ve daha iyi işlem adlandırmayı yakalamak için [Java aracısını yükler](java-agent.md) .
 
 ## <a name="5-run-your-application"></a>5. Uygulamanızı çalıştırma
 Geliştirme makinenizde hata ayıklama modunda çalıştırın ya da sunucunuza yayımlayın.
@@ -314,9 +164,9 @@ Daha ayrıntılı derlenmiş ölçümler görmek için herhangi bir grafiğe tı
 
 ![Grafiklerle Application Insights başarısızlık bölmesi](./media/java-get-started/006-barcharts.png)
 
-> Application Insights, MVC uygulamaları için HTTP isteklerinin biçiminin şu olduğunu varsayar: `VERB controller/action`. Örneğin, `GET Home/Product/f9anuh81`, `GET Home/Product/2dffwrf5` ve `GET Home/Product/sdf96vws`; `GET Home/Product` içinde gruplandırılır. Bu gruplandırma, istek sayısı veya isteklerin yürütülme süresi gibi anlamlı istek toplamalarını etkinleştirir.
->
->
+<!--
+[TODO update image with 2.5.0 operation naming provided by agent]
+-->
 
 ### <a name="instance-data"></a>Örnek veriler
 Ayrı ayrı örnekleri görmek için belirli bir istek türüne tıklayın.
@@ -362,15 +212,14 @@ Windows üzerinde çalışan Spring Boot uygulamaları, Azure Uygulama Hizmetler
 ```
 
 ## <a name="exceptions-and-request-failures"></a>Özel durumlar ve istek hataları
-İşlenmeyen özel durumlar otomatik olarak toplanır.
+İşlenmemiş özel durumlar ve istek arızaları Application Insights Web filtresi tarafından otomatik olarak toplanır.
 
-Diğer özel durumlar hakkında veri toplamak için iki seçeneğiniz vardır:
-
-* [Kodunuzda trackException () çağrıları ekleyin][apiexceptions].
-* [Sunucunuza Java Agent yükleme](java-agent.md). İzlemek istediğiniz yöntemleri belirtin.
+Diğer özel durumlarla ilgili verileri toplamak için [kodunuzda trackException () çağrıları][apiexceptions]ekleyebilirsiniz.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Yöntem çağrılarını ve dış bağımlılıkları izleme
 Zamanlama verileriyle JDBC üzerinden yapılan belirli dahili yöntemleri ve çağrıları kaydetmek için [Java Agent yükleme](java-agent.md) işlemini gerçekleştirin.
+
+Otomatik işlem adlandırması için.
 
 ## <a name="w3c-distributed-tracing"></a>W3C dağıtılmış izleme
 
@@ -442,9 +291,6 @@ Tamam, web sunucunuzdan telemetri gönderiyorsunuz. Uygulamanızın 360 dereceli
 * Sayfa görünümlerini ve Kullanıcı ölçümlerini izlemek için [Web sayfalarınıza telemetri ekleyin][usage] .
 * Uygulamanızın canlı ve hızlı bir şekilde kaldığından emin olmak için [Web testleri ayarlayın][availability] .
 
-## <a name="capture-log-traces"></a>Günlük izlemelerini yakalama
-Log4J, Logback veya diğer günlük altyapılarına ait günlükleri ayrıntılı incelemek için Application Insights’ı kullanabilirsiniz. Günlükleri HTTP istekleri ve başka telemetriyle ilişkilendirebilirsiniz. [Nasıl olduğunu öğrenin][javalogs].
-
 ## <a name="send-your-own-telemetry"></a>Kendi telemetrinizi gönderme
 Artık SDK'yı da yüklediğinize göre, kendi telemetrinizi göndermek için API'yi kullanabilirsiniz.
 
@@ -456,7 +302,7 @@ Kullanıma hazır ve düzgün yanıt verdiğini denetlemek için Application Ins
 
 [Kullanılabilirlik Web testlerini ayarlama hakkında daha fazla bilgi edinin.][availability]
 
-## <a name="questions-problems"></a>Sorular? Sorunlarınız mı var?
+## <a name="questions-problems"></a>Sorularınız mı var? Sorunlarınız mı var?
 [Java Sorun Giderme](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: f598eecca2623c888e44f6171f12681f8e9c017b
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: fe2eb357ef89d70512e85db24d22f95cac1bd0ac
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219296"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300086"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Öğretici: Logic Apps kullanarak Azure dijital TWINS boşluklarından bildirim alın
 
@@ -58,13 +58,13 @@ Bu bölümde, Azure dijital TWINS örneğinden olayları toplamak için [Event G
 
 1. Event Grid konu başlığınız için bir **Ad** girin ve **Abonelik** seçimi yapın. Dijital TWINS örneğiniz için kullandığınız veya oluşturduğunuz **kaynak grubunu** ve **konumunu**seçin. **Oluştur**’u seçin. 
 
-    ![Olay kılavuzu oluşturma konusu](./media/tutorial-facilities-events/create-event-grid-topic.png)
+    [![Olay kılavuzu oluşturma konusu](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
 
 1. Kaynak grubunuzda olay kılavuzu konusuna göz atın, **genel bakış**' ı seçin ve **Konu uç noktasının** değerini geçici bir dosyaya kopyalayın. Sonraki bölümde bu URL 'ye ihtiyacınız olacak. 
 
 1. **Erişim anahtarları**' nı seçin ve **YOUR_KEY_1** ve **YOUR_KEY_2** dosyalarını geçici bir dosyaya kopyalayın. Sonraki bölümde uç noktayı oluşturmak için bu değerlere ihtiyacınız olacak.
 
-    ![Event Grid anahtarları](./media/tutorial-facilities-events/event-grid-keys.png)
+    [![Event Grid anahtarları](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Olay Kılavuzu konusu için bir uç nokta oluşturma
 
@@ -101,7 +101,7 @@ Bu bölümde, Azure dijital TWINS örneğinden olayları toplamak için [Event G
 
    Bu komut Event Grid için uç nokta oluşturur. 
 
-   ![Event Grid uç noktaları](./media/tutorial-facilities-events/dotnet-create-endpoints.png)
+   [![Event Grid bitiş noktaları](./media/tutorial-facilities-events/dotnet-create-endpoints.png)](./media/tutorial-facilities-events/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="notify-events-with-logic-apps"></a>Olayları Logic Apps bildirme
 
@@ -113,7 +113,7 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
 1. Mantıksal uygulama kaynağınız için bir **ad** girin ve ardından **abonelik**, **kaynak grubu**ve **konum**' u seçin. **Oluştur**’u seçin.
 
-    ![Logic Apps kaynağı oluşturma](./media/tutorial-facilities-events/create-logic-app.png)
+    [![Logic Apps kaynağı oluşturma](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
 
 1. Logic Apps kaynağınızı dağıtıldığında açın ve **mantıksal uygulama Tasarımcısı** bölmesini açın. 
 
@@ -127,7 +127,7 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
    c. **Kaynak adı**için açılan kutudan Event Grid kaynağınızı seçin.
 
-   ![Mantıksal uygulama Tasarımcısı bölmesi](./media/tutorial-facilities-events/logic-app-resource-event.png)
+   [![Mantıksal uygulama Tasarımcısı bölmesi](./media/tutorial-facilities-events/logic-app-resource-event.png)](./media/tutorial-facilities-events/logic-app-resource-event.png#lightbox)
 
 1. **Yeni adım** düğmesini seçin.
 
@@ -159,7 +159,7 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
     Bu yükte kurgusal değerler bulunur. Logic Apps bir *şema*oluşturmak için bu örnek yükü kullanır.
 
-    ![Event Grid için JSON penceresini Ayrıştır Logic Apps](./media/tutorial-facilities-events/logic-app-parse-json.png)
+    [![Event Grid için JSON penceresini Ayrıştır Logic Apps](./media/tutorial-facilities-events/logic-app-parse-json.png)](./media/tutorial-facilities-events/logic-app-parse-json.png#lightbox)
 
 1. **Yeni adım** düğmesini seçin.
 
@@ -171,7 +171,7 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
    c. İkinci **bir değer seçin** metin kutusu içinde, girin `UdfCustom`.
 
-   ![Seçili koşullar](./media/tutorial-facilities-events/logic-app-condition.png)
+   [![Seçili koşullar](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
 
 1. **Eğer true ise** penceresinde:
 
@@ -183,7 +183,7 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
    d. Aynı penceredeki **gövde** altında şuna benzer bir metin girin: **Odada kötü hava kalitesi algılandı ve sıcaklık ayarlanması gerekiyor**. **Dinamik içerik** listesinden öğeleri kullanarak ayrıntılı bir şekilde çekinmeyin.
 
-   !["E-posta gönderme" seçimleri Logic Apps](./media/tutorial-facilities-events/logic-app-send-email.png)
+   [!["E-posta gönderme" seçimleri Logic Apps](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
 
 1. **Mantıksal uygulama Tasarımcısı** bölmesinin en üstündeki **Kaydet** düğmesini seçin.
 
@@ -191,7 +191,7 @@ Diğer hizmetlerden alınan olaylara yönelik otomatik görevler oluşturmak iç
 
 Birkaç dakika içinde, bu Logic Apps kaynağından e-posta bildirimleri almaya başlamanız gerekir. 
 
-   ![E-posta bildirimi](./media/tutorial-facilities-events/logic-app-notification.png)
+   [![E-posta bildirimi](./media/tutorial-facilities-events/logic-app-notification.png)](./media/tutorial-facilities-events/logic-app-notification.png#lightbox)
 
 Bu e-postaları almayı durdurmak için portalda Logic Apps kaynağına gidin ve **genel bakış** bölmesini seçin. Seçin **devre dışı**.
 

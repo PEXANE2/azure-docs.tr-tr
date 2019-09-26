@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141145"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300670"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search hizmet limitleri
 Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınırlar, **ücretsiz**, **temel**, **Standart**veya **depolama için iyileştirilmiş** fiyatlandırma katmanlarında [Azure Search](search-create-service-portal.md) sağlayıp sağlamadığınıza bağlıdır.
@@ -62,11 +62,13 @@ Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınır
 
 ## <a name="document-limits"></a>Belge limitleri 
 
-2018 Ekim itibariyle, herhangi bir bölgede faturalandırılabilir katmanda (temel, S1, S2, S3, S3 HD) oluşturulan hiçbir yeni hizmet için artık hiçbir belge sınırı yoktur. Çoğu bölgede, Kasım/Aralık 2017 ' den beri sınırsız sayıda belge sayısı vardı, belge sınırlarını sağlamaya devam eden beş bölge vardır. Bir arama hizmeti oluşturduğunuz zaman ve yere bağlı olarak, hala belge sınırlarına tabi olan bir hizmet çalıştırıyor olabilirsiniz.
+2018 Ekim itibariyle, herhangi bir bölgede faturalandırılabilir katmanda (temel, S1, S2, S3, S3 HD) oluşturulan tüm yeni hizmetler için artık herhangi bir belge sınırı<sup>1</sup> yoktur. Çoğu bölgede, Kasım/Aralık 2017 ' den beri sınırsız sayıda belge sayısı vardı, belge sınırlarını sağlamaya devam eden beş bölge vardır. Bir arama hizmeti oluşturduğunuz zaman ve yere bağlı olarak, hala belge sınırlarına tabi olan bir hizmet çalıştırıyor olabilirsiniz.
 
 Hizmetinizin belge sınırlarına sahip olup olmadığını anlamak için hizmetinizin Genel Bakış sayfasında kullanım kutucuğunu kontrol edin. Belge sayıları sınırsız veya katmana dayalı bir sınıra tabidir.
 
   ![Kullanım kutucuğu](media/search-limits-quotas-capacity/portal-usage-tile.png)
+
+<sup>1</sup> herhangi bir SKU 'ya özgü belge sınırı olmasa bile, hizmetin kararlılığını sağlamak için her dizin hala en yüksek bir güvenli sınıra tabi olur. Bu sınır Lucene 'den gelir. Her Azure Search belge bir veya daha fazla Lucene belgesi olarak dahili olarak dizinlenir. Azure Search belgesi başına Lucene belgelerinin sayısı, karmaşık koleksiyon alanlarındaki toplam öğe sayısına bağlıdır. Her öğe ayrı bir Lucene belgesi olarak dizinlenir. Örneğin, karmaşık bir koleksiyon alanında 3 öğe içeren bir belge, belgenin kendisi için 4 Lucene belge-1 ve öğeler için 3 olarak Dizinlenecek. En fazla Lucene belge sayısı, dizin başına yaklaşık 25.000.000.000 ' dir.
 
 ### <a name="regions-previously-having-document-limits"></a>Daha önce belge sınırlarına sahip bölgeler
 
@@ -121,7 +123,7 @@ Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalı
 
 <sup>3</sup> S3 HD Services Dizin Oluşturucu desteğini içermez.
 
-<sup></sup> beceri başına en fazla 30 yetenek.
+Beceri <sup>başına en fazla</sup> 30 yetenek.
 
 <sup>5</sup> bilişsel arama iş yükleri ve Azure Blob dizinlemesi içindeki görüntü analizi, normal metin dizinlemesi dışında daha kısa çalışma zamanına sahiptir Görüntü analizi ve doğal dil işleme, yoğun şekilde yoğundur ve orantısız miktarları kullanılabilir işlem gücü kullanıyor. Kuyruktaki diğer işlere bir fırsat sağlamak için çalışma süresi düşürüldü.  
 

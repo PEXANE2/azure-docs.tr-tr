@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840114"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299858"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: Özel IoT Edge modülleri oluşturun ve dağıtın
 
@@ -27,7 +27,7 @@ IoT Edge hub, modülü modül iletişimine kolaylaştırır. IoT Edge hub 'ı bi
 IoT Edge cihazının bizimle ilgili dört şeyi yerine getirebilmemiz istiyoruz:
 
 * Yaprak cihazlardan veri alma
-* Verileri gönderen cihaz için RUL 'yi tahmin etme
+* Verileri gönderen cihaz için kalan yararlı yaşam süresini (RUL) tahmin edin
 * IoT Hub cihaz için yalnızca RUL ile bir ileti gönderin (Bu işlev yalnızca RUL 'nin bir düzey altına düşerse verileri gönderecek şekilde değiştirilebilir)
 * Yaprak cihaz verilerini IoT Edge cihazdaki yerel bir dosyaya kaydedin. Bu veri dosyası, makine öğrenimi modelinin eğitimini iyileştirmek için dosya karşıya yükleme yoluyla düzenli aralıklarla IoT Hub yüklenir. Sabit ileti akışı yerine karşıya dosya yükleme kullanmak daha uygun maliyetli bir değerdir.
 
@@ -56,7 +56,7 @@ Bu makaledeki adımlar genellikle bir bulut geliştiricisi tarafından gerçekle
 
 ## <a name="create-a-new-iot-edge-solution"></a>Yeni bir IoT Edge çözümü oluşturun
 
-İki Azure Notebooks ikincisinin yürütülmesi sırasında, RUL modelimizi içeren bir kapsayıcı görüntüsü oluşturulup yayımladık. Görüntü oluşturma sürecinin bir parçası olarak, görüntüyü bir Azure IoT Edge modülü olarak dağıtılabilir hale getirmek için parçalar halinde oluşturulan Azure Machine Learning. Bu adımda, "Azure Machine Learning" modülünü kullanarak bir Azure IoT Edge çözümü oluşturacağız ve modülün Azure Notebooks kullanarak yayımladığımız görüntüye işaret eteceğiz.
+İki Azure Notebooks ikincisinin yürütülmesi sırasında, RUL modelimizi içeren bir kapsayıcı görüntüsü oluşturulup yayımladık. Azure Machine Learning, görüntü oluşturma sürecinin bir parçası olarak, görüntünün bir Azure IoT Edge modülü olarak dağıtılabilir olması için bu modelin paketlenmesi. Bu adımda, "Azure Machine Learning" modülünü kullanarak bir Azure IoT Edge çözümü oluşturacağız ve modülün Azure Notebooks kullanarak yayımladığımız görüntüye işaret eteceğiz.
 
 1. Geliştirme makinenizde bir Uzak Masaüstü oturumu açın.
 
@@ -827,7 +827,7 @@ Bu makalede, üç modülle, sınıflandırıcı, yönlendirici ve dosya yazarı/
 
 Aşağıdaki sayfalarda daha fazla bilgi bulabilirsiniz:
 
-* [IoT Edge 'da modül dağıtmayı ve yollar oluşturmayı öğrenin](module-composition.md)
+* [IoT Edge'de modülleri dağıtmayı ve yolları oluşturmayı öğrenin](module-composition.md)
 * [IoT Hub ileti yönlendirme sorgusu sözdizimi](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [IoT Hub ileti yönlendirme: Şu anda ileti gövdesinde yönlendirme ile](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [IoT Hub ile dosyaları karşıya yükleme](../iot-hub/iot-hub-devguide-file-upload.md)

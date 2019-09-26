@@ -23,12 +23,15 @@
             - name: Yeni Blob depolamayı önceden yükleme
               href: hpc-cache-ingest.md
             - name: Alternatif veri alma yöntemleri
-            - name: Önbelleği paralel kopya ile doldurma
-              href: hpc-cache-ingest-parallelcp.md
-            - name: Önbelleği msrsync ile doldurma
-              href: hpc-cache-ingest-msrsync.md
-            - name: Önbelleği el ile dosya kopyalama ile doldurma
-              href: hpc-cache-ingest-manual.md
+              items:
+                - name: Önbelleği paralel kopya ile doldurma
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: Önbelleği msrsync ile doldurma
+                  href: hpc-cache-ingest-msrsync.md
+                - name: Önbelleği el ile dosya kopyalama ile doldurma
+                  href: hpc-cache-ingest-manual.md
+    - name: Önbelleğe bağlanma
+      href: hpc-cache-mount.md
 - name: Kaynaklar
   items:
     - name: Destek bileti açma

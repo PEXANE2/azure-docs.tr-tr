@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: d57ea1a881980203b1c8f216239b27b64f0d71cd
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 8160cd2cb77a56f3d9b13f3c43929cc4ab7565b0
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051045"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309591"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps ile Azure Blob depolamada Bloblar oluşturma ve yönetme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Blob depolama Bağlayıcısı ile bir mantık uygulamasının
 Bir Azure Web sitesinde güncelleştirilmiş bir aracınız olduğunu varsayalım. mantıksal uygulamanız için tetikleyici işlevi görür. Bu olay gerçekleştiğinde, mantıksal uygulamanızdaki bir işlem olan BLOB depolama kapsayıcısında bir dosya olan bir dosya, mantıksal uygulamanızın güncelleştirilmesini sağlayabilirsiniz.
 
 > [!NOTE]
-> Logic Apps, Azure Storage hesaplarına güvenlik duvarları aracılığıyla doğrudan bağlanmayı desteklemez. Bu depolama hesaplarına erişmek için şu seçeneklerden birini kullanın:
+> Logic Apps, [güvenlik duvarı kuralları](../storage/common/storage-network-security.md) olan ve aynı bölgede bulunan Azure depolama hesaplarına doğrudan erişemez. Ancak, bölgeler arasında iletişim kurmak için genel bir IP adresi kullanıldığından, Logic Apps, farklı bir bölgede bulunan Azure depolama hesaplarına erişebilirler. Ya da her iki seçeneği de kullanabilirsiniz:
 >
 > * Bir Azure sanal ağındaki kaynaklara bağlanabilecek bir [tümleştirme hizmeti ortamı](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturun.
 >
@@ -65,7 +65,7 @@ Bu örnek, depolama kapsayıcıınızda bir blob 'un özellikleri eklendiğinde 
 
    Bu örnek, bu tetikleyiciyi kullanır: **Blob eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)**
 
-   ![Tetikleyici seçin](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
+   ![Tetikleyiciyi seçin](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
 3. Bağlantı ayrıntıları istenirse, [BLOB depolama bağlantınızı şimdi oluşturun](#create-connection). Ya da bağlantınız zaten varsa, tetikleyici için gerekli bilgileri sağlayın.
 

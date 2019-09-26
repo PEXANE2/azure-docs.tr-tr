@@ -238,9 +238,7 @@
 - name: Başvuru Mimarisi
   items:
     - name: Genel Bakış
-      href: iot-accelerators-architecture-overview.md
-    - name: İndirme
-      href: 'https://aka.ms/iotrefarchitecture'
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
     - name: İş ortağı uygulamaları
       items:
         - name: Intel Connected Logistics Platform

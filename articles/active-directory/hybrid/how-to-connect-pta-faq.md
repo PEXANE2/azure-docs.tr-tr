@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c7199cd8e5dbde1f6ff2f5cea56a4191211c853
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779078"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290768"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory geçişli kimlik doğrulaması: Sık sorulan sorular
 
@@ -41,15 +41,14 @@ Hayır. Doğrudan kimlik doğrulaması yalnızca dünya çapındaki Azure AD ör
 
 ## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>[Koşullu erişim](../active-directory-conditional-access-azure-portal.md) doğrudan kimlik doğrulamasıyla çalışır mı?
 
-Evet. Azure Multi-Factor Authentication dahil olmak üzere tüm koşullu erişim özellikleri doğrudan kimlik doğrulamasıyla çalışır.
+Evet. Azure Multi-Factor Authentication dahil tüm koşullu erişim özellikleri doğrudan kimlik doğrulamasıyla çalışır.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>"UserPrincipalName" yerine Kullanıcı adı olarak "alternatif KIMLIK" olarak geçiş kimlik doğrulamasını destekliyor mu?
-
-Evet, geçişli kimlik doğrulaması Azure AD Connect ' `Alternate ID` de yapılandırıldığında Kullanıcı adı olarak destekler. Önkoşul olarak, Azure AD Connect şirket içi Active Directory `UserPrincipalName` özniteliğini Azure AD ile eşitlemeniz gerekir. Daha fazla bilgi için [Azure AD Connect özel yüklemesi](how-to-connect-install-custom.md). Office 365 uygulamalarının `Alternate ID`hepsi desteklenmez. Belirli uygulamanın belge desteği bildirimine bakın.
+Sınırlı bir ölçüde, geçişli kimlik doğrulaması, Azure AD Connect ' de yapılandırıldığında Kullanıcı adı olarak alternatif KIMLIĞI destekler. Önkoşul olarak, Azure AD Connect şirket içi Active Directory `UserPrincipalName` özniteliğini Azure AD ile eşitlemeniz gerekir. Bu, `UserPrincipalName` şirket içi ad ve Azure AD 'nin aynı olmasını sağlar. Şirket içi AD 'den Azure AD 'ye UPN olarak eşitlemek için başka bir öznitelik kullanmak istiyorsanız, Parola karması eşitleme veya AD FS kullanmanız gerekir. Daha fazla bilgi için [Azure AD Connect özel yüklemesi](how-to-connect-install-custom.md). Office 365 uygulamalarının `Alternate ID`hepsi desteklenmez. Belirli uygulamanın belge desteği bildirimine bakın.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Parola karması eşitlemesi doğrudan kimlik doğrulamasına geri dönüş görevi görür mi?
 
-Hayır. Geçişli kimlik doğrulaması _,_ Parola karması eşitlemesine otomatik olarak yük devretmez. Kullanıcı oturum açma hatalarından kaçınmak için, [yüksek kullanılabilirlik](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)Için geçişli kimlik doğrulaması yapılandırmanız gerekir.
+Hayır. Geçişli kimlik doğrulaması, Parola karması eşitlemesine otomatik olarak yük _devretmez_ . Kullanıcı oturum açma hatalarından kaçınmak için, [yüksek kullanılabilirlik](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)Için geçişli kimlik doğrulaması yapılandırmanız gerekir.
 
 ## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>Parola karması eşitlemeden doğrudan kimlik doğrulamaya geçiş yaparken ne olur?
 
@@ -145,7 +144,7 @@ Ağ trafiğini tahmin etmek için aşağıdaki boyutlandırma kılavuzunu kullan
 
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>İlk geçişli kimlik doğrulama aracısını Azure AD Connect çalıştıran bir sunucuya yükleyebilir miyim?
 
-Hayır, bu senaryo desteklenmiyor .
+Hayır, bu _senaryo desteklenmiyor._
 
 ## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Doğrudan kimlik doğrulamayı etkinleştirmek için neden yalnızca bulutta bir genel yönetici hesabına ihtiyacım var?
 

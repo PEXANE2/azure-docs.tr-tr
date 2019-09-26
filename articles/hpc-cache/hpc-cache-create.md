@@ -4,14 +4,14 @@ description: Azure HPC önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1cc77b24c96514f40c86115f7d611076facd406b
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: a0590c14032595bea685c69962ef27dca14d1d69
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181046"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300009"
 ---
 # <a name="create-an-azure-hpc-cache-preview"></a>Azure HPC önbelleği oluşturma (Önizleme)
 
@@ -23,18 +23,20 @@ ms.locfileid: "71181046"
 
 ![Azure portal içindeki proje ayrıntıları sayfasının ekran görüntüsü](media/hpc-cache-create-basics.png)
 
-**Proje ayrıntıları**' nda Azure HPC önbelleğini barındıracak aboneliği ve kaynak grubunu seçin. Aboneliğin [Önizleme erişim](hpc-cache-prereqs.md#azure-subscription) listesinde olduğundan emin olun.
+**Proje ayrıntıları**' nda, önbelleği barındıracak aboneliği ve kaynak grubunu seçin. Aboneliğin [Önizleme erişim](hpc-cache-prereqs.md#azure-subscription) listesinde olduğundan emin olun.
 
 **Hizmet Ayrıntıları**' nda, önbellek adını ve bu diğer öznitelikleri ayarlayın:
 
 * Konum- [desteklenen bölgelerden](hpc-cache-overview.md#region-availability)birini seçin.
 * Sanal ağ-mevcut bir tane seçebilirsiniz veya yeni bir sanal ağ oluşturabilirsiniz.
-* Alt ağ-yalnızca Azure HPC önbelleği için kullanılacak en az 64 IP adresi (/24) olan bir alt ağ seçin veya oluşturun.
+* Alt ağ-yalnızca bu Azure HPC önbellek örneği için kullanılacak en az 64 IP adresi (/24) olan bir alt ağ seçin veya oluşturun.
 
 ## <a name="set-cache-capacity"></a>Önbellek kapasitesini ayarla
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
 
-**Önbellek** sayfasında, Azure HPC önbelleğinizin kapasitesini ayarlamanız gerekir. Bu değer, önbelleğinizin ne kadar veri tutabildiğini ve istemci isteklerine ne kadar hızlı bir şekilde hizmet sunamayacağını belirler. Genel Önizleme süresinden sonra kapasite, önbelleğin maliyetini de etkiler.
+**Önbellek** sayfasında önbelleğinizin kapasitesini ayarlamanız gerekir. Bu değer, önbelleğinizin ne kadar veri tutabildiğini ve istemci isteklerine ne kadar hızlı bir şekilde hizmet sunamayacağını belirler. 
+
+Genel Önizleme süresinden sonra kapasite, önbelleğin maliyetini de etkiler.
 
 Önbellek kapasitesi, saniye başına giriş/çıkış işlemi (ıOPS) cinsinden ölçülür. Şu iki değeri belirleyerek kapasiteyi seçin:
 
@@ -43,9 +45,9 @@ ms.locfileid: "71181046"
 
 Kullanılabilir aktarım hızı değerlerinden birini ve önbellek depolama boyutunu seçin. IOPS kapasitesi hesaplanır ve değer seçicilerin altında gösterilir.
 
-Gerçek veri aktarımı hızının iş yüküne, ağ hızına ve depolama hedeflerinin türüne bağlı olduğunu unutmayın. Bir dosya önbellekte değilse veya eski olarak işaretlenmişse, hizmet, arka uç depolamadan getirmek için bazı aktarım hızını kullanır. Seçtiğiniz değer tüm önbelleğin en fazla aktarım hızını belirler ve bunların hepsi istemci istekleri için kullanılabilir değildir.
+Gerçek veri aktarımı hızının iş yüküne, ağ hızına ve depolama hedeflerinin türüne bağlı olduğunu unutmayın. Seçtiğiniz değer tüm önbelleğin en fazla aktarım hızını belirler ve bunların hepsi istemci istekleri için kullanılabilir değildir. Örneğin, bir istemci önbellekte zaten depolanmayan bir dosya isterse veya dosya eski olarak işaretlenmişse önbelleğiniz, arka uç depolamadan getirmek için aktarım hızını kullanır.
 
-Önbellek depolama için Azure HPC Cache, önbellek isabet oranlarını en üst düzeye çıkarmak için hangi dosyaların önbelleğe alınacağını ve ön sürümlerini yönetir. Önbellek içeriği sürekli değerlendirilir ve dosyalar daha az sıklıkla erişildiği zaman uzun süreli depolamaya taşınır. Etkin çalışma dosyaları kümesini, meta veriler ve diğer ek yük için ek alanla rahatça tutabilecek bir önbellek depolama boyutu seçin.
+Azure HPC Cache, önbellek isabet oranlarını en üst düzeye çıkarmak için hangi dosyaların önbelleğe alınacağını ve ön yüklenmiş olduğunu yönetir Önbellek içeriği sürekli değerlendirilir ve dosyalar daha az sıklıkla erişildiği zaman uzun süreli depolamaya taşınır. Etkin çalışma dosyaları kümesini, meta veriler ve diğer ek yük için ek alanla rahatça tutabilecek bir önbellek depolama boyutu seçin.
 
 ![önbellek boyutlandırma sayfasının ekran görüntüsü](media/hpc-cache-create-iops.png)
 
@@ -63,7 +65,7 @@ En fazla on farklı depolama hedefi tanımlayabilirsiniz.
 
 Depolama hedefi eklemek için adım adım yönergeler, [depolama hedefleri ekleme](hpc-cache-add-storage.md)' ye dahildir. Yordam, BLOB depolama veya NFS dışarı aktarmaları için farklıdır.
 
-İşte bazı ipuçları: 
+İşte bazı ipuçları:
 
 * Her iki depolama türü için, arka uç depolama sisteminin (bir NFS adresi veya bir blob kapsayıcı adı) ve istemciye yönelik ad alanı yolunun nasıl bulunacağını belirtmeniz gerekir.
 
@@ -73,7 +75,7 @@ Depolama hedefi eklemek için adım adım yönergeler, [depolama hedefleri eklem
 
 ## <a name="add-resource-tags-optional"></a>Kaynak etiketleri ekleme (isteğe bağlı)
 
-**Etiketler** sayfası, Azure HPC önbelleğinize [kaynak etiketleri](https://go.microsoft.com/fwlink/?linkid=873112) eklemenize olanak tanır. 
+**Etiketler** sayfası, Azure HPC Cache örneğinizi [kaynak etiketleri](https://go.microsoft.com/fwlink/?linkid=873112) eklemenize olanak tanır.
 
 ## <a name="finish-creating-the-cache"></a>Önbellek oluşturmayı tamamlama
 

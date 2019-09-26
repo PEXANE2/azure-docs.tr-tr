@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: e18f990885a25b7e130dfeb5a0a3425530ee11e6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086578"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315000"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -46,7 +46,7 @@ Azure AD DS yönetilen etki alanı, bir Azure sanal ağındaki bir alt ağa bağ
 * Azure AD DS kendi alt ağında dağıtılmalıdır. Mevcut bir alt ağı veya ağ geçidi alt ağını kullanmayın.
 * Azure AD DS yönetilen bir etki alanının dağıtımı sırasında bir ağ güvenlik grubu oluşturulur. Bu ağ güvenlik grubu, doğru hizmet iletişimi için gerekli kuralları içerir.
     * Kendi özel kurallarınız ile mevcut bir ağ güvenlik grubu oluşturmayın veya kullanmayın.
-* Azure AD DS, beş ve yedi IP adresi gerektirir. Alt ağ IP adresi aralığınızı bu sayıda adres sağlayasağlayadığınızdan emin olun.
+* Azure AD DS, 3-5 IP adresi gerektirir. Alt ağ IP adresi aralığınızı bu sayıda adres sağlayasağlayadığınızdan emin olun.
     * Kullanılabilir IP adreslerini kısıtlamak, Azure AD Domain Services iki etki alanı denetleyicisinin çalışmasını engelleyebilir.
 
 Aşağıdaki örnek diyagramda, Azure AD DS kendi alt ağına sahip olan geçerli bir tasarım özetlenmektedir, dış bağlantı için bir ağ geçidi alt ağı vardır ve uygulama iş yükleri sanal ağ içindeki bağlı bir alt ağda bulunur:

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 6fea7b7d3d3ef3b1a46aeeff0bab8fef2a9bf3ad
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8db677ff94b477992d06a22c367f51c0c6063d69
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860360"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309226"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -45,6 +45,14 @@ Sizi etkileyen sorunları gidermeye odaklanabilmeniz için müşterilerimizden h
 
 ## <a name="a-idrest_version_historyrest-api-version-history"></a><a id="rest_version_history"/>REST API sürümü geçmişi
 Media Services REST API sürümü geçmişi hakkında daha fazla bilgi için [Azure Media Services REST API'si Başvurusu]bakın.
+
+## <a name="september-2019"></a>Eylül 2019
+
+### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
+
+*Azure Media Indexer* ve *Azure Media Indexer 2*' nin kullanımdan kaldırılması duyuruluyoruz. [Azure Media Indexer](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Indexer 2 (Önizleme)](media-services-process-content-with-indexer2.md) medya Işlemcileri 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
+
+Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
 
 ## <a name="august-2019"></a>Ağustos 2019
 

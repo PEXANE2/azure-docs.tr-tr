@@ -4,24 +4,26 @@ description: Azure HPC önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 677d42dfa1c468417f18ba4222cb0d5fd3ebb189
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 68ae316dff1518dd8115006764c6cc3036f59e4a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180980"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299928"
 ---
-# <a name="plan-the-aggregated-namespace"></a>Toplanan ad alanını planlayın
+# <a name="plan-the-aggregated-namespace"></a>Toplanan ad alanını planlama
 
 Azure HPC Cache (Önizleme), istemcilerin, arka uç depolama sisteminin ayrıntılarını gizleyen bir sanal ad alanı aracılığıyla çeşitli depolama sistemlerine erişmesini sağlar.
 
-Bir depolama hedefi eklediğinizde, istemciye yönelik FilePath 'i ayarlarsınız. İstemci makineler bu FilePath 'i bağlayabilir. Bu yol ile ilişkili depolama hedefini değiştirebilirsiniz. Örneğin, bir donanım depolama sistemini, istemciye yönelik yordamları yeniden yazmaya gerek kalmadan bulut depolama ile değiştirebilirsiniz.
+Bir depolama hedefi eklediğinizde, istemciye yönelik dosya yolunu ayarlarsınız. İstemci makineler bu dosya yolunu bağlayabilir ve depolama sistemini doğrudan bağlamak yerine önbelleğe dosya okuma istekleri yapabilir.
+
+Azure HPC Cache bu sanal dosya sistemini yönettiği için, istemciye yönelik yolu değiştirmeden depolama hedefini değiştirebilirsiniz. Örneğin, bir donanım depolama sistemini, istemciye yönelik yordamları yeniden yazmaya gerek kalmadan bulut depolama ile değiştirebilirsiniz.
 
 ## <a name="aggregated-namespace-example"></a>Toplanmış ad alanı örneği
 
-İstemci makinelerin ihtiyaç duydukları bilgilere rahat bir şekilde ulaşabilmesi için toplanan ad alanınızı planlayın ve yöneticiler ve iş akışı mühendisleri yolları kolayca ayırt edebilir.
+İstemci makinelerin ihtiyaç duydukları bilgilere rahat bir şekilde ulaşabilmesi için toplanan ad alanınızı planlayın ve yöneticiler ile iş akışı mühendislerinin yolları kolayca ayırabilmesini sağlayın.
 
 Örneğin, Azure Blob 'da depolanan verileri işlemek için bir Azure HPC önbellek örneğinin kullanıldığı bir sistemi düşünün. Analiz, şirket içi veri merkezinde depolanan şablon dosyalarını gerektirir.
 
@@ -40,21 +42,23 @@ Veri merkezi depolama sistemi bu dışarı aktarmaları kullanıma sunar:
 
 Önbellek üzerinden kolay erişime izin vermek için bu sanal ad alanı yollarıyla depolama hedefleri oluşturmayı göz önünde bulundurun:
 
-| Arka uç NFS FilePath veya blob kapsayıcısı | Sanal ad alanı yolu |
+| Arka uç depolama sistemi <br/> (NFS dosya yolu veya blob kapsayıcısı) | Sanal ad alanı yolu |
 |-----------------------------------------|------------------------|
 | /Goldline/Templates/acme2017/sku798     | /Templates/sku798      |
 | /Goldline/Templates/acme2017/sku980     | /Templates/sku980      |
 | SourceCollection                        | /Source               |
 
-NFS kaynak yolları aynı dışarı aktarmanın alt dizinleri olduğundan, aynı depolama hedefinden birden çok ad alanı yolu tanımlamanız gerekecektir. 
+Bir NFS depolama hedefi, her biri benzersiz bir dışarı aktarma yoluna başvurduğu sürece birden fazla sanal ad alanı yoluna sahip olabilir.
+
+NFS kaynak yolları aynı dışarı aktarmanın alt dizinleri olduğundan, aynı depolama hedefinden birden çok ad alanı yolu tanımlamanız gerekir.
 
 | Depolama hedef konak adı  | NFS dışarı aktarma yolu      | Alt dizin yolu | Ad alanı yolu    |
 |--------------------------|----------------------|-------------------|-------------------|
 | *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku798   | /Templates/sku798 |
 | *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku980   | /Templates/sku980 |
 
-Bir istemci uygulaması, önbelleği bağlayabilir ve toplanan ad alanı fılepaths/kaynak,/Templates/sku798 ve/Templates/sku980dizinine kolayca erişebilir.
+Bir istemci uygulaması, önbelleği bağlayabilir ve toplanmış ad alanı dosya yollarına ``/source`` ``/templates/sku798``, ve ``/templates/sku980``' ye kolayca erişebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal FileSystem 'ı ayarlamaya karar verdikten sonra, arka uç depolama alanınızı istemciye yönelik sanal dosya yollarına eşlemek için [depolama hedefleri oluşturun](hpc-cache-add-storage.md) .
+Sanal dosya sisteminizi ayarlamaya karar verdikten sonra, arka uç depolama alanınızı istemciye yönelik sanal dosya yollarına eşlemek için [depolama hedefleri oluşturun](hpc-cache-add-storage.md) .

@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: alinast
-ms.openlocfilehash: d155d3566ef87e8a21cdc3e701892144c613f694
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: db62d2209207a807570e971ef4af5f9b10b06cb8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219292"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300076"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>Öğretici: Time Series Insights kullanarak Azure dijital TWINS boşluklarınızın olaylarını görselleştirin ve çözümleyin
 
@@ -57,10 +57,10 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. Event Hubs ad alanı dağıtımı ' nda **genel bakış** bölmesini seçin, sonra **Kaynağa Git**' i seçin.
 
-    ![Dağıtımdan sonra ad alanını Event Hubs](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
+    [![Dağıtımdan sonra ad alanını Event Hubs](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
 1. Event Hubs ad alanına **genel bakış** bölmesinde, üstteki **Olay Hub** 'ı düğmesini seçin.
-    ![Olay Hub 'ı düğmesi](./media/tutorial-facilities-analyze/create-event-hub.png)
+    [![Olay Hub 'ı düğmesi](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
 1. Olay Hub 'ınız için bir **ad** girin ve **Oluştur**' u seçin.
 
@@ -68,13 +68,13 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. Üstteki **Tüketici grubu** düğmesini seçin ve Tüketici grubu için **tsıevents** gibi bir ad girin. **Oluştur**’u seçin.
 
-    ![Olay Hub'ı tüketici grubu](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
+    [![Olay Hub 'ı Tüketici grubu](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    Tüketici grubu oluşturulduktan sonra, Olay Hub 'ının **genel bakış** bölmesinin altındaki listede görüntülenir.
 
 1. Olay Hub 'ınız için **paylaşılan erişim ilkeleri** bölmesini açın ve **Ekle** düğmesini seçin. İlke adı olarak **ManageSend** girin, tüm onay kutularının seçili olduğundan emin olun ve **Oluştur**' u seçin.
 
-    ![Olay Hub'ı bağlantı dizeleri](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
+    [![Olay Hub 'ı bağlantı dizeleri](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
 1. Oluşturduğunuz ManageSend ilkesini açın ve **bağlantı dizesi--birincil anahtar** ve **bağlantı dizesi--ikincil anahtar** değerlerini geçici bir dosyaya kopyalayın. Sonraki bölümde Olay Hub 'ı için bir uç nokta oluşturmak üzere bu değerlere ihtiyacınız olacak.
 
@@ -127,7 +127,7 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
    Olay Hub 'ınız için iki uç nokta oluşturur.
 
-   ![Event Hubs uç noktaları](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
+   [![Event Hubs bitiş noktaları](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Time Series Insights ile analiz gerçekleştirme
 
@@ -137,11 +137,11 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. Time Series Insights örneğiniz için bir **Ad** girin ve **Abonelik** girişinizi seçin. Dijital TWINS örneğiniz için kullandığınız **kaynak grubunu** ve **konumunuzu**seçin. İleri **' yi seçin: Olay kaynağı** düğmesi veya **olay kaynağı** sekmesi.
 
-    ![Time Series Insights örneği oluşturmaya yönelik seçimler](./media/tutorial-facilities-analyze/create-tsi.png)
+    [![Time Series Insights örneği oluşturmaya yönelik seçimler](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
 1. **Olay kaynağı** sekmesinde, bir **ad**girin, **kaynak türü**olarak **Olay Hub** 'ı seçin ve diğer değerlerin doğru seçildiğinden emin olun. **Olay Hub 'ı erişim ilkesi adı**için **ManageSend** ' ı seçin ve ardından **Olay Hub 'ı Tüketici grubu**için önceki bölümde oluşturduğunuz tüketici grubunu seçin. **İncele ve oluştur**’u seçin.
 
-    ![Olay kaynağı oluşturma seçimleri](./media/tutorial-facilities-analyze/tsi-event-source.png)
+    [![Olay kaynağı oluşturma seçimleri](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
 1. **Gözden geçir + oluştur** bölmesinde, girdiğiniz bilgileri gözden geçirin ve **Oluştur**' u seçin.
 
@@ -153,13 +153,13 @@ Verilerinizi akışa almak üzere bir işlem hattı oluşturmak için [Event Hub
 
 1. Birkaç benzetimli olay oluşturulduktan sonra, Time Series Insights Explorer 'a geri dönün ve üstteki Yenile düğmesini seçin. Sanal algılayıcı verileriniz için oluşturulan analitik grafikleri görmeniz gerekir. 
 
-    ![Time Series Insights Gezgini 'ndeki grafik](./media/tutorial-facilities-analyze/tsi-explorer.png)
+    [![Time Series Insights Gezgini 'ndeki grafik](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
 1. Time Series Insights Gezgini 'nde, odalarınızdan, sensörlerden ve diğer kaynaklardaki farklı olaylar ve veriler için grafikler ve heyomaps oluşturabilirsiniz. Sol tarafta, kendi görselleştirmelerinizi oluşturmak için **Ölçü** **ve aşağı** açılan kutuları kullanın. 
 
    Örneğin, sensörlerinizin her biri için bir ısı haritasını oluşturmak için **Ölçü** ve **digitaltwıns-sensorhardwareıd** **için** **olayları** seçin. Isı haritasını aşağıdaki görüntüye benzer olacaktır:
 
-   ![Time Series Insights Gezgininde heatmap](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
+   [![Time Series Insights Gezgininde heatmap](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

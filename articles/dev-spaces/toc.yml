@@ -91,3 +91,5 @@
           href: how-to/ingress-https-traefik.md
     - name: Sorun giderme
       href: troubleshooting.md
+    - name: SSS
+      href: faq.md

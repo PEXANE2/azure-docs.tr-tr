@@ -6,16 +6,18 @@ ms.topic: overview
 ms.date: 09/22/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 57df9e0bd6f359a45333fcde51c51f49321fec9e
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8389cd4d73c5c5d881dcc32c688a59b86895a3e2
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213883"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309550"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db"></a>Azure Cosmos DB 'de yerleşik jupi Not Defteri desteği
 
 Jupyter Not defteri, canlı kod, denklem, görselleştirmeler ve anlatım metni içeren belgeler oluşturmanıza ve paylaşmanıza olanak sağlayan açık kaynaklı bir Web uygulamasıdır. Azure Cosmos DB Cassandra, MongoDB, SQL, Gremlin ve Table gibi tüm API 'Lerde yerleşik jupi not defterlerini destekler. Tüm Azure Cosmos DB API 'Leri ve veri modelleri için yerleşik Not Defteri desteği, sorguları etkileşimli olarak çalıştırmanızı sağlar. Jupi Not defterleri, Azure Cosmos hesaplarında çalışır ve geliştiricilerin veri keşif, veri temizleme, veri dönüştürmeleri, sayısal benzetimler, istatistiksel modelleme, veri görselleştirme ve makine öğrenimi gerçekleştirmesini sağlar.
+
+![Azure Cosmos DB 'de jupi Not defteri görselleştirmeleri](./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png)
 
 Jupyter Not defterleri ek komutları destekleyerek çekirdeğin yeteneklerini genişleten sihirli işlevleri destekler. Cosmos Magic, Jupyter Notebook 'daki Python çekirdeğinin yeteneklerini genişleten bir komuttur. böylece, Apache Spark ek olarak Azure Cosmos SQL API sorgularını çalıştırabilirsiniz. Oluşturma komutlarıyla tümleştirilmiş zengin görselleştirme kitaplıklarını kullanarak verileri sorgulamak ve görselleştirmek için Python ve SQL API sorgularını kolayca birleştirebilirsiniz.
 Azure portal, aşağıdaki görüntüde gösterildiği gibi Jupyter Not defteri deneyimini Azure Cosmos hesaplarıyla yerel olarak tümleştirir:
@@ -56,9 +58,8 @@ Jupyter Not defterleri, her biri ayrı bloklara düzenlenmiş birkaç bileşen t
 
 Azure Cosmos DB yerleşik Jupyter not defterlerini kullanmaya başlamak için aşağıdaki makalelere bakın:
 
-* [Not defteri oluşturma]()
-* [Bir not defterine bağımlılıklar nasıl yüklenir]()
-* [Verileri çözümlemek için bir not defteri ve Cosmos Magic uzantısı kullanma]()
+* [Azure Cosmos hesabında not defterlerini etkinleştirme](enable-notebooks.md)
+* [Not defteri özelliklerini ve komutlarını kullanma](use-notebook-features-and-commands.md)
 
 
 

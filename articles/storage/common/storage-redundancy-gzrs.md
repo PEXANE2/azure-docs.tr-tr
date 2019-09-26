@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036334"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300641"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -29,7 +29,11 @@ GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. De
 
 GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 
+- Kuzey Avrupa
+- Batı Avrupa
 - ABD Doğu
+- ABD Doğu 2
+- ABD Orta
 
 Microsoft, ek Azure bölgelerinde GZRS ve RA-GZRS etkinleştirmesine devam etmektedir. Desteklenen bölgeler hakkında bilgi için [Azure hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/) sayfasını düzenli olarak denetleyin.
 
@@ -97,7 +101,7 @@ LRS, GRS veya RA-GRS hesabından GZRS veya RA-GZRS ' a geçiş yapmak için iki 
 
 #### <a name="perform-a-manual-migration"></a>El ile geçiş gerçekleştirme
 
-Geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş ile zamanlama denetimi olursunuz.
+Geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş işleminde zamanlama sizin denetiminizde olur.
 
 Mevcut bir hesaptan GZRS veya RA-GZRS hesabına el ile veri geçirebilmek için, verileri verimli bir şekilde kopyalayabileceğiniz bir araç kullanın. Bazı örnekler:
 
@@ -107,7 +111,7 @@ Mevcut bir hesaptan GZRS veya RA-GZRS hesabına el ile veri geçirebilmek için,
 
 #### <a name="perform-a-live-migration"></a>Dinamik geçiş gerçekleştirme
 
-El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft canlı bir geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçişdir.
+El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft dinamik geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçiş işlemidir.
 
 Dinamik geçiş sırasında, verileriniz kaynak ve hedef depolama hesapları arasında geçirildiğinde depolama hesabınızı kullanabilirsiniz. Dinamik geçiş işlemi sırasında hesabınız, dayanıklılık ve kullanılabilirlik için SLA 'Sı buluşmaya devam eder. Dinamik geçişin neden olduğu kesinti veya veri kaybı yoktur.
 
@@ -131,14 +135,14 @@ Dinamik geçiş istemek için [Azure Portal](https://ms.portal.azure.com/#blade
 
 1.  **Yeni destek isteği ' ni**seçin.
 2. Hesap bilgilerinizi temel alan **temel bilgileri** doldurun.   **** Hizmet bölümünde, **depolama hesabı yönetimi**' ni seçin ve geçirilecek hesabı belirtin.
-3.  **İleri ' yi**seçin.
+3.  **İleri**'yi seçin.
 4.  **** Sorun bölümünün aşağıdaki değerlerini belirtin:
     - **Önem derecesi**: Varsayılan değeri olduğu gibi bırakın.
     - **Sorun türü**:  **Veri geçişini**seçin.
     - **Kategori**:  **Bir bölge içinde (ra-) GZRS geçir**' i seçin.
     - **Başlık**: Açıklayıcı bir başlık yazın, örneğin, **(ra-) GZRS hesabı geçişi**.
     - **Ayrıntılar**: \_  **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, "bölgedeki [LRS, \_ GRS] öğesinden GZRS 'e geçiş yapmak istiyorum." ya da " \_ \_ bölgedeki [LRS, RA-GRS] konumundan ra-GZRS ' a geçiş yapmak istiyorum."
-5.  **İleri ' yi**seçin.
+5.  **İleri**'yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
 7.  **Oluştur**' u seçin.
 

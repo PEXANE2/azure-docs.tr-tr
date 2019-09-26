@@ -1,5 +1,5 @@
 ---
-title: IoT Edge modülü için Azure Güvenlik Merkezi 'Ni dağıtma (Önizleme) | Microsoft Docs
+title: IoT Edge modülü için Azure Güvenlik Merkezi 'Ni dağıtma | Microsoft Docs
 description: IoT Edge 'de IoT güvenlik Aracısı için Azure Güvenlik Merkezi 'ni dağıtma hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,18 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4e568d2322088d9f6f6b4f9ad6e4b3cd98f25a47
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: bb6a975d2a2fc2cc3e65fa8969f8b005be8b1417
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376054"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299713"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
 
-> [!IMPORTANT]
-> IoT IoT Edge cihaz desteği için Azure Güvenlik Merkezi şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 **IoT modülü Için Azure Güvenlik Merkezi** , IoT Edge cihazlarınız için kapsamlı bir güvenlik çözümü sağlar.
 Güvenlik modülü, Işletim sistemi ve kapsayıcı sisteminizdeki ham güvenlik verilerini, uygulanabilir güvenlik önerileri ve uyarılara toplar, toplar ve analiz eder.
@@ -40,19 +37,19 @@ IoT Edge için bir IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni dağ
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-- IoT Hub, cihazınızın [bir IoT Edge cihaz olarak kaydedildiğinden](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)emin olun.
+1. IoT Hub, cihazınızın [bir IoT Edge cihaz olarak kaydedildiğinden](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)emin olun.
 
-- IoT Edge modülü için Azure Güvenlik Merkezi, IoT Edge cihazında [Auditd çerçevesinin](https://linux.die.net/man/8/auditd) yüklü olmasını gerektirir.
+1. IoT Edge modülü için Azure Güvenlik Merkezi, IoT Edge cihazında [Auditd çerçevesinin](https://linux.die.net/man/8/auditd) yüklü olmasını gerektirir.
 
     - IoT Edge cihazınızda aşağıdaki komutu çalıştırarak çerçeveyi yüklemelisiniz:
    
-      `sudo apt-get install auditd audispd-plugins`
+    `sudo apt-get install auditd audispd-plugins`
+
+    - Aşağıdaki komutu çalıştırarak Sestd 'nin etkin olduğunu doğrulayın: 
    
-    - Aşağıdaki komutu çalıştırarak Sestd 'nin etkin olduğunu doğrulayın:
-   
-      `sudo systemctl status auditd`
-      
-        Beklenen yanıt `active (running)`. 
+    `sudo systemctl status auditd`<br>
+    - Beklenen yanıt:`active (running)` 
+        
 
 ### <a name="deployment-using-azure-portal"></a>Azure portal kullanarak dağıtım
 
@@ -76,7 +73,7 @@ IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın ü�
 1. **Modül Ekle** sekmesindeki **dağıtım modülleri** alanında, **AzureSecurityCenterforIoT**' a tıklayın. 
    
 1. **Adı** **azureiotsecurity**olarak değiştirin.
-1. **Görüntü URI** 'sini **MCR.Microsoft.com/ascforiot/azureiotsecurity:0.0.3**olarak değiştirin.
+1. **Görüntü URI** 'sini **MCR.Microsoft.com/ascforiot/azureiotsecurity:1.0.0**olarak değiştirin.
 1. **Kapsayıcı oluşturma seçenekleri** değerinin olarak ayarlandığını doğrulayın:      
     ``` json
     {
@@ -98,44 +95,38 @@ IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın ü�
 1. **İkizi 'ın istenen özelliklerini ayarla** öğesinin seçili olduğunu doğrulayın ve yapılandırma nesnesini şu şekilde değiştirin:
       
     ``` json
-      "properties.desired": {
-        "azureiot*com^securityAgentConfiguration^1*0*0": {
+    "desired": {
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+          } 
         }
-      }
-      ```
+    ```
 
 1. **Kaydet**’e tıklayın.
-1. Sekmenin en altına kaydırın ve **Gelişmiş kenar çalışma zamanı ayarlarını yapılandır**' ı seçin.
+1. Sekmenin en altına kaydırın ve **Gelişmiş kenar çalışma zamanı ayarlarını yapılandır**' ı seçin. 
    
-   
-1. **Edge hub 'ındaki** **görüntüyü** **MCR.Microsoft.com/ascforiot/edgehub:1.0.9-Preview**olarak değiştirin.
-
-   >[!Note]
-   > IoT modülü için Azure Güvenlik Merkezi, SDK sürüm 1,20 temel alınarak IoT Edge hub 'ın daha önce bir sürümünü gerektirir.
-   > IoT Edge hub görüntüsünü değiştirerek, IoT Edge cihazınızı, IoT Edge hizmeti tarafından bir şekilde desteklenmeyen IoT Edge hub 'ın desteklenen sürümüyle en son kararlı sürümü değiştirecek şekilde ele alırsınız.
+1. **Edge hub 'ındaki** **görüntüyü** **MCR.Microsoft.com/azureiotedge-Hub:1.0.9-RC2**olarak değiştirin.
 
 1. **Oluşturma seçeneklerini doğrulama seçeneği** şu şekilde ayarlanır: 
          
     ``` json
-    {
-      "HostConfig": {
-        "PortBindings": {
-          "8883/tcp": [{"HostPort": "8883"}],
-          "443/tcp": [{"HostPort": "443"}],
-          "5671/tcp": [{"HostPort": "5671"}]
+    { 
+    "HostConfig":{
+                    "PortBindings":{
+                    "8883/tcp": [{"HostPort": "8883"}],
+                    "443/tcp": [{"HostPort": "443"}],
+                    "5671/tcp": [{"HostPort": "5671"}]
+                    }
         }
-      }
     }
     ```
-      
 1. **Kaydet**’e tıklayın.
    
-1. **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 
-#### <a name="step-2-specify-routes"></a>2\. adım: Rota Belirtme 
+#### <a name="step-2-specify-routes"></a>2\. adım: Rota belirtme 
 
 1. **Rotaları belirtin** sekmesinde, **azureiotsecurity** modülünden **$upstream**iletileri ileten bir yolunuz (açık veya kapalı) olduğundan emin olun. 
-1. **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 
     ~~~Default implicit route
     "route": "FROM /messages/* INTO $upstream" 
@@ -145,7 +136,7 @@ IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın ü�
     "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ~~~
 
-#### <a name="step-3-review-deployment"></a>3\. adım: Dağıtımı Gözden Geçirme
+#### <a name="step-3-review-deployment"></a>3\. adım: Dağıtım gözden geçirin
 
 - Dağıtımı **gözden geçir** sekmesinde dağıtım bilgilerinizi gözden geçirin ve ardından dağıtımı tamamladıktan sonra **Gönder** ' i seçin.
 
@@ -157,14 +148,14 @@ Bir sorunla karşılaşırsanız, kapsayıcı günlükleri IoT Edge bir güvenli
 
 1. IoT Edge cihazınızda aşağıdaki komutu çalıştırın:
     
-     `sudo docker ps`
+    `sudo docker ps`
    
 1. Aşağıdaki kapsayıcıların çalıştığını doğrulayın:
    
    | Name | GÖRÜNTÜYLE |
    | --- | --- |
-   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
-   | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Gerekli en az kapsayıcı yoksa, IoT Edge dağıtım bildirimin önerilen ayarlarla hizalanıp Hizalanmadığını denetleyin. Daha fazla bilgi için bkz. [IoT Edge modülünü dağıtma](#deployment-using-azure-portal).

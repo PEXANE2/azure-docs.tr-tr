@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb4d3e35ae743dbae4c049f515d61b3042e7efe
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 690d49a94ff4f516e24494622ca378eb0794fee9
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952814"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314925"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD parola koruması sorunlarını giderme
 
@@ -42,7 +42,7 @@ Bu sorunun ana belirtisi, DC Aracısı Yönetici olay günlüğündeki 30018 ola
 
    Azure AD parola koruma proxy yükleyicisi, Azure AD parola koruma proxy hizmeti tarafından listelenen tüm gelen bağlantı noktalarına erişime izin veren bir Windows Güvenlik Duvarı gelen kuralı otomatik olarak oluşturur. Bu kural daha sonra silinirse veya devre dışıysa, DC aracıları ara sunucu hizmetiyle iletişim kuramaz. Yerleşik Windows Güvenlik Duvarı başka bir güvenlik duvarı ürününün yerine devre dışı bırakılmışsa, bu güvenlik duvarını Azure AD parola koruma proxy hizmeti tarafından listelenen tüm gelen bağlantı noktalarına erişime izin verecek şekilde yapılandırmanız gerekir. Bu yapılandırma, proxy hizmeti belirli bir statik RPC bağlantı noktasını dinlemek üzere yapılandırılmışsa ( `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet 'ini kullanarak) daha belirgin hale getirilebilir.
 
-1. Proxy konak makinesi, etki alanı denetleyicilerinin makinede oturum açmasına izin vermek üzere yapılandırılmamış. Bu davranış, "Bu bilgisayara ağ üzerinden eriş" Kullanıcı ayrıcalık ataması aracılığıyla denetlenir. Ormandaki tüm etki alanlarında bulunan tüm etki alanı denetleyicilerine bu ayrıcalık verilmelidir. Bu ayar genellikle daha büyük ağ sağlamlaştırma çabalarının bir parçası olarak sınırlandırılır.
+1. Proxy konak makinesi, etki alanı denetleyicilerinin makinede oturum açmasına izin verecek şekilde yapılandırılmamış. Bu davranış, "Bu bilgisayara ağ üzerinden eriş" Kullanıcı ayrıcalık ataması aracılığıyla denetlenir. Ormandaki tüm etki alanlarında bulunan tüm etki alanı denetleyicilerine bu ayrıcalık verilmelidir. Bu ayar genellikle daha büyük ağ sağlamlaştırma çabalarının bir parçası olarak sınırlandırılır.
 
 ## <a name="proxy-service-is-unable-to-communicate-with-azure"></a>Proxy hizmeti Azure ile iletişim kuramıyor
 
@@ -56,17 +56,23 @@ Bu sorunun ana belirtisi, DC Aracısı Yönetici olay günlüğündeki 30018 ola
 
 ## <a name="dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files"></a>DC Aracısı, parola ilkesi dosyalarını şifreleyemedi veya şifresini çözemedi
 
-Bu sorun birçok belirtiyle bildirimde bulunabilir, ancak genellikle ortak bir kök nedeni vardır.
+Azure AD parola koruması, Microsoft anahtar dağıtım hizmeti tarafından sağlanan şifreleme ve şifre çözme işlevlerine kritik bir bağımlılığa sahiptir. Şifreleme veya şifre çözme sorunları çeşitli belirtilerle bildirimde bulunabilir ve birçok olası nedeni olabilir.
 
-Azure AD parola koruması, Microsoft anahtar dağıtım hizmeti tarafından sağlanan şifreleme ve şifre çözme işlevlerine kritik bir bağımlılığa sahiptir ve bu, Windows Server 2012 ve üstünü çalıştıran etki alanı denetleyicilerinde kullanılabilir. KDS hizmeti, bir etki alanındaki tüm Windows Server 2012 ve üzeri etki alanı denetleyicilerinde etkinleştirilmelidir ve çalışır durumda olmalıdır.
+1. KDS hizmetinin, bir etki alanındaki tüm Windows Server 2012 ve üzeri etki alanı denetleyicilerinde etkin ve çalışır durumda olduğundan emin olun.
 
-Varsayılan olarak, KDS hizmetinin hizmet başlatma modu El Ile (tetikleyici başlatma) olarak yapılandırılmıştır. Bu yapılandırma, bir istemcinin hizmeti ilk kez kullanmaya çalıştığı, isteğe bağlı olarak başlatıldığı anlamına gelir. Bu varsayılan hizmet başlatma modu, Azure AD parola korumasının çalışması için kabul edilebilir.
+   Varsayılan olarak, KDS hizmetinin hizmet başlatma modu El Ile (tetikleyici başlatma) olarak yapılandırılmıştır. Bu yapılandırma, bir istemcinin hizmeti ilk kez kullanmaya çalıştığı, isteğe bağlı olarak başlatıldığı anlamına gelir. Bu varsayılan hizmet başlatma modu, Azure AD parola korumasının çalışması için kabul edilebilir.
 
-KDS hizmeti başlatma modu devre dışı olarak yapılandırıldıysa, Azure AD parola koruması düzgün çalışmadan önce bu yapılandırma düzeltilmelidir.
+   KDS hizmeti başlatma modu devre dışı olarak yapılandırıldıysa, Azure AD parola koruması düzgün çalışmadan önce bu yapılandırma düzeltilmelidir.
 
-Bu sorunun basit bir testi, hizmet yönetimi MMC konsolu aracılığıyla veya diğer yönetim araçlarını kullanarak KDS hizmetini el ile başlatmak (örneğin, bir komut istemi konsolundan "net start kdssvc" komutunu çalıştırmak). KDS hizmetinin başarıyla başlaması bekleniyordu ve çalışır durumda kalır.
+   Bu sorunun basit bir testi, hizmet yönetimi MMC konsolu aracılığıyla veya diğer yönetim araçlarını kullanarak KDS hizmetini el ile başlatmak (örneğin, bir komut istemi konsolundan "net start kdssvc" komutunu çalıştırmak). KDS hizmetinin başarıyla başlaması bekleniyordu ve çalışır durumda kalır.
 
-KDS hizmetinin başlatılamamasına neden olan en yaygın kök nedeni, Active Directory etki alanı denetleyicisi nesnesinin varsayılan etki alanı denetleyicileri OU 'su dışında konumlandırılabilileridir. Bu yapılandırma KDS hizmeti tarafından desteklenmiyor ve Azure AD parola koruması tarafından uygulanan bir kısıtlama değil. Bu koşulun düzeltilmesi, etki alanı denetleyicisi nesnesini varsayılan etki alanı denetleyicileri OU 'su altındaki bir konuma taşımadır.
+   KDS hizmetinin başlatılamamasına neden olan en yaygın kök nedeni, Active Directory etki alanı denetleyicisi nesnesinin varsayılan etki alanı denetleyicileri OU 'su dışında konumlandırılabilileridir. Bu yapılandırma KDS hizmeti tarafından desteklenmiyor ve Azure AD parola koruması tarafından uygulanan bir kısıtlama değil. Bu koşulun düzeltilmesi, etki alanı denetleyicisi nesnesini varsayılan etki alanı denetleyicileri OU 'su altındaki bir konuma taşımadır.
+
+1. Windows Server 2012 R2 'den Windows Server 2016 ' ye uyumsuz KDS şifreli arabellek biçimi değişikliği
+
+   Windows Server 2016 ' de, KDS şifreli arabelleklerin biçimini değiştiren bir KDS Güvenlik onarımı eklenmiştir; Bu arabellekler bazen Windows Server 2012 ve Windows Server 2012 R2 'de şifre çözme işlemi başarısız olur. Ters yön, Windows Server 2012 ' de KDS ile şifrelenen ve Windows Server 2012 R2 'nin her zaman Windows Server 2016 ve sonrasında şifresini başarıyla çözmesini sağlayan, sorunsuz bir yönlerdir. Active Directory etki alanlarınızda etki alanı denetleyicileri bu işletim sistemlerinin bir karışımını çalıştırıyorsa, zaman zaman Azure AD parola koruması şifre çözme hatalarının bildirilmesi gerekebilir. Bu hataların zamanlama veya belirtilerini güvenlik düzeltmesinin doğası halinde doğru bir şekilde tahmin etmek ve etki alanı denetleyicisinin belirli bir zamanda verileri hangi Azure AD parolasıyla koruma DC Aracısı tarafından şifreleneceğini belirleyici olmaması mümkün değildir.
+
+   Microsoft bu soruna yönelik bir sorunu araştırmaktadır, ancak henüz hiç ETA yok. Bu sırada, Active Directory etki alanında bu uyumsuz işletim sistemlerinin bir karışımını çalıştırmayan dışında, bu sorun için geçici çözüm yoktur. Diğer bir deyişle, yalnızca Windows Server 2012 ve Windows Server 2012 R2 etki alanı denetleyicilerini çalıştırmalısınız veya yalnızca Windows Server 2016 ve etki alanı denetleyicilerini çalıştırmalısınız.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Zayıf parolalar kabul ediliyor ancak olmamalıdır
 
@@ -183,7 +189,7 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 Azure AD parola koruma proxy yazılımı, hiçbir sürümde zaman sınırlı değildir. Microsoft, hem DC 'nin hem de ara sunucu aracılarının yayımlandıklarında en son sürümlere yükseltilmesini öneriyor. `Get-AzureADPasswordProtectionProxy` Cmdlet 'i, DC aracıları için yukarıdaki örneğe benzer şekilde yükseltmeleri gerektiren proxy aracılarını bulmak için kullanılabilir.
 
-Belirli yükseltme yordamları hakkında daha fazla bilgi için lütfen [DC aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) ve [proxy aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) bölümüne bakın.
+Belirli yükseltme yordamları hakkında daha fazla bilgi için [DC aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) ve [proxy aracısını yükseltme](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent) bölümüne bakın.
 
 ## <a name="emergency-remediation"></a>Acil durum Düzeltme
 
@@ -198,7 +204,7 @@ Azure AD parola koruma yazılımını kaldırmaya ve etki alanından ve ormandan
 > [!IMPORTANT]
 > Bu adımları sırasıyla gerçekleştirmek önemlidir. Proxy hizmeti 'nin herhangi bir örneği çalışmaya ayrıldıysa, Service ConnectionPoint nesnesini düzenli olarak yeniden oluşturur. DC Aracısı hizmeti 'nin herhangi bir örneği çalışmaya ayrıldıysa, serviceConnectionPoint nesnesini ve SYSVOL durumunu düzenli olarak yeniden oluşturur.
 
-1. Tüm makinelerden proxy yazılımını kaldırın. Bu adım için yeniden başlatma gerekmez.
+1. Tüm makinelerden proxy yazılımını kaldırın. Bu adım için yeniden **başlatma gerekmez.**
 2. DC Aracısı yazılımını tüm etki alanı denetleyicilerinden kaldırın. Bu adım **için** yeniden başlatma gerekir.
 3. Her bir etki alanı adlandırma bağlamındaki tüm proxy hizmeti bağlantı noktalarını el ile kaldırın. Bu nesnelerin konumu aşağıdaki Active Directory PowerShell komutuyla bulunabilir:
 

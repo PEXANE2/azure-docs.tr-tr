@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba51e10503a3aab7afa2e9639453448d03b91852
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170462"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315265"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure portal kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme
 
@@ -88,7 +88,6 @@ Sağlama hizmetini duraklatmak için **sağlama durumunu** **kapalı** olarak de
 **Geçerli durumu temizle ve eşitlemeyi yeniden Başlat** onay kutusunu seçin ve **Kaydet** ' i seçin:
 
 * Sağlama hizmetini durdur
-* Azure AD 'nin yönettiği hesaplara ilişkin önbelleğe alınmış verilerin dökümünü alın
 * Hizmetleri yeniden başlatın ve ilk döngüyü yeniden çalıştırın
 
 Bu seçenek, yöneticilerin sağlama dağıtım işlemini yeniden başlatmasını sağlar.

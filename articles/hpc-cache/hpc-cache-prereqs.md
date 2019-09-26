@@ -4,14 +4,14 @@ description: Azure HPC önbelleğini kullanma önkoşulları
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/24/2019
 ms.author: v-erkell
-ms.openlocfilehash: 29dc5256424ea4fe7c3a72624ce8d1b3d9e59f3c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: fab85785ea183736b4012c349af143ef3a8c784a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180903"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299907"
 ---
 # <a name="prerequisites-for-azure-hpc-cache-preview"></a>Azure HPC önbelleği önkoşulları (Önizleme)
 
@@ -26,7 +26,7 @@ Yeni bir Azure HPC önbelleği oluşturmak için Azure portal kullanmadan önce 
 
 ## <a name="network-infrastructure"></a>Ağ altyapısı
 
-Önbelleğinizi kullanabilmeniz için ağ ile ilgili iki seçenek ayarlanmalıdır:
+Önbelleğinizi kullanabilmeniz için ağ ile ilgili iki önkoşul ayarlanmalıdır:
 
 * Azure HPC önbellek örneği için ayrılmış alt ağ
 * Önbelleğin depolamaya ve diğer kaynaklara erişebilmesi için DNS desteği
@@ -37,13 +37,13 @@ Azure HPC önbelleği, bu kaliteleri olan ayrılmış bir alt ağa ihtiyaç duyu
 
 * Alt ağda en az 64 IP adresi kullanılabilir olmalıdır.
 * Alt ağ, istemci makineler gibi ilgili hizmetler için bile diğer VM 'Leri barındıramaz.
-* Birden çok önbellek örneği kullanırsanız, her birinin kendi alt ağına ihtiyacı vardır.
+* Birden çok Azure HPC önbellek örneği kullanıyorsanız, her birinin kendi alt ağına ihtiyacı vardır.
 
-En iyi uygulama, önbellek için yeni bir alt ağ oluşturmaktır. Önbellek oluşturmanın bir parçası olarak yeni bir sanal ağ ve alt ağ oluşturabilirsiniz.
+En iyi yöntem, her önbellek için yeni bir alt ağ oluşturmaktır. Önbellek oluşturmanın bir parçası olarak yeni bir sanal ağ ve alt ağ oluşturabilirsiniz.
 
 ### <a name="dns-access"></a>DNS erişimi
 
-Azure HPC önbelleğinin, sanal ağı dışındaki kaynaklara erişmesi için DNS gerekir. Kullandığınız kaynaklara bağlı olarak, özelleştirilmiş bir DNS sunucusu ayarlamanız ve bu sunucu ile Azure DNS sunucuları arasında iletmeyi yapılandırmanız gerekebilir: 
+Önbelleğin, sanal ağının dışındaki kaynaklara erişmesi için DNS ihtiyacı vardır. Kullandığınız kaynaklara bağlı olarak, özelleştirilmiş bir DNS sunucusu ayarlamanız ve bu sunucu ile Azure DNS sunucuları arasında iletmeyi yapılandırmanız gerekebilir:
 
 * Azure Blob depolama uç noktalarına ve diğer iç kaynaklara erişmek için, Azure tabanlı DNS sunucusuna ihtiyacınız vardır.
 * Şirket içi depolamaya erişmek için, depolama ana bilgisayar adlarını çözümleyebilecek özel bir DNS sunucusu yapılandırmanız gerekir.
@@ -56,14 +56,16 @@ Azure sanal ağları ve DNS sunucusu konfigürasyonları hakkında daha fazla bi
 
 Önbelleğinizi oluşturmaya başlamadan önce Bu izinle ilgili önkoşulları denetleyin.
 
-* Azure HPC önbelleğinin sanal ağ arabirimlerini (NIC 'ler) oluşturabiliyor olması gerekir. Önbelleği oluşturan kullanıcının, NIC 'ler oluşturmak için abonelikte yeterli ayrıcalıklara sahip olması gerekir.
+* Önbellek örneğinin sanal ağ arabirimlerini (NIC 'ler) oluşturabiliyor olması gerekir. Önbelleği oluşturan kullanıcının, NIC 'ler oluşturmak için abonelikte yeterli ayrıcalıklara sahip olması gerekir.
 <!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
 
-* BLOB depolama kullanılıyorsa, Azure HPC önbellek örneğinin depolama hesabınıza erişmesi için yetkilendirme gerekir. Blob depolamaya önbellek erişimi sağlamak için rol tabanlı erişim denetimi 'ni (RBAC) kullanabilirsiniz. İki rol gereklidir: Depolama hesabı katılımcısı ve Depolama Blobu veri katılımcısı. [Depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)bölümündeki yönergeleri izleyin.
+* BLOB depolama kullanılıyorsa, Azure HPC önbelleğinin depolama hesabınıza erişmesi için yetkilendirmeye ihtiyacı vardır. Blob depolamaya önbellek erişimi sağlamak için rol tabanlı erişim denetimi 'ni (RBAC) kullanabilirsiniz. İki rol gereklidir: Depolama hesabı katılımcısı ve Depolama Blobu verileri katılımcısı. Rolleri eklemek için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) bölümündeki yönergeleri izleyin.
 
 ## <a name="storage-infrastructure"></a>Depolama altyapısı
 
-Önbellek, Azure Blob kapsayıcılarını veya NFS donanım depolama dışarı aktarmaları destekler. Önbelleği oluştururken depolama hedeflerini tanımlayabilirsiniz, ancak bunları daha sonra da ekleyebilirsiniz. 
+Önbellek, Azure Blob kapsayıcılarını veya NFS donanım depolama dışarı aktarmaları destekler. Önbelleği oluştururken depolama hedeflerini tanımlayabilirsiniz, ancak daha sonra depolama alanı da ekleyebilirsiniz.
+
+Her depolama türünün belirli önkoşulları vardır. 
 
 ### <a name="nfs-storage-requirements"></a>NFS depolama gereksinimleri
 
@@ -73,7 +75,7 @@ NFS arka uç depolaması, uyumlu bir donanım/yazılım platformu olmalıdır. A
 
 ### <a name="blob-storage-requirements"></a>BLOB depolama gereksinimleri
 
-Azure bellek depolama 'yı Azure HPC önbelleğiyle birlikte kullanmak istiyorsanız, uyumlu bir depolama hesabı ve boş bir blob kapsayıcısı ya da [verileri Azure Blob depolama alanına taşıma](hpc-cache-ingest.md)bölümünde açıklandığı gıbı Azure HPC önbelleği biçimli verilerle doldurulmuş bir kapsayıcı gerekir.
+Önbelleğiniz ile Azure Blob depolama 'yı kullanmak istiyorsanız, uyumlu bir depolama hesabı ve boş bir blob kapsayıcısı ya da [verileri Azure Blob depolamaya taşıma](hpc-cache-ingest.md)bölümünde açıklandığı gıbı Azure HPC önbellek biçimli verilerle doldurulmuş bir kapsayıcı gerekir.
 
 Bir depolama hedefi olarak eklemeyi denemeden önce hesabı ve kapsayıcıyı oluşturun.
 
@@ -85,6 +87,7 @@ Uyumlu bir depolama hesabı oluşturmak için şu ayarları kullanın:
 * Erişim katmanı (varsayılan): **Sık erişimli**
 
 Önbelleğiniz ile aynı konumda bir depolama hesabı kullanmak iyi bir uygulamadır.
+<!-- need to clarify location - same region or same resource group or same virtual network? -->
 
 Ayrıca, önbellek uygulamasına Azure depolama hesabınıza erişim izni vermeniz gerekir. Önbelleğe erişim rolleri depolama hesabı katılımcısı ve Depolama Blobu verileri katkıda bulunan ' i vermek için [depolama hedefleri ekleme](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) ' deki açıklamayı izleyin. Depolama hesabı sahibi değilseniz, sahibi bu adımı izleyin.
 

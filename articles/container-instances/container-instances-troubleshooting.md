@@ -6,19 +6,21 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 4b41a3862341ef39c1288985d86d86667fbc5866
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7c4812a63137dc2efc5eab2cb3b9e136a5465e78
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325597"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300453"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances genel sorunları giderme
 
-Bu makalede, Azure Container Instances için kapsayıcıları yönetmek veya dağıtmak için sık karşılaşılan sorunların nasıl giderileceği gösterilmektedir. Ayrıca bkz. [sık sorulan sorular](container-instances-faq.md).
+Bu makalede, Azure Container Instances için kapsayıcıları yönetmek veya dağıtmak için sık karşılaşılan sorunların nasıl giderileceği gösterilmektedir. Ayrıca bkz. [sık sorulan sorular](container-instances-faq.md). 
+
+Ek desteğe ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) **Yardım + Destek** seçeneklerine bakın.
 
 ## <a name="naming-conventions"></a>Adlandırma kuralları
 
@@ -26,12 +28,12 @@ Kapsayıcı belirtimini tanımlarken, belirli parametreler adlandırma kısıtla
 
 | `Scope` | Uzunluk | Büyük/Küçük Harf Kullanımı | Geçerli karakterler | Önerilen düzen | Örnek |
 | --- | --- | --- | --- | --- | --- |
-| Kapsayıcı grubu adı | 1-64 |Büyük/Küçük harfe duyarsız |İlk veya son karakter dışında bir yerde alfasayısal ve kısa çizgi |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Kapsayıcı adı | 1-64 |Büyük/Küçük harfe duyarsız |İlk veya son karakter dışında bir yerde alfasayısal ve kısa çizgi |`<name>-<role>-CG<number>` |`web-batch-CG1` |
-| Kapsayıcı bağlantı noktaları | 1 ile 65535 arasında |Tamsayı |1 ile 65535 arasında tamsayı |`<port-number>` |`443` |
-| DNS ad etiketi | 5-63 |Büyük/Küçük harfe duyarsız |İlk veya son karakter dışında bir yerde alfasayısal ve kısa çizgi |`<name>` |`frontend-site1` |
-| Ortam değişkeni | 1-63 |Büyük/Küçük harfe duyarsız |Alfasayısal ve alt çizgi (_) ilk veya son karakter dışında bir yerde |`<name>` |`MY_VARIABLE` |
-| Birim adı | 5-63 |Büyük/Küçük harfe duyarsız |Küçük harfler ve rakamlar ve ilk veya son karakteri hariç her yerde tire. Art arda iki kısa çizgi içeremez. |`<name>` |`batch-output-volume` |
+| Kapsayıcı grubu adı | 1-64 |Büyük/küçük harfe duyarlı |İlk veya son karakter dışında bir yerde alfasayısal ve kısa çizgi |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Kapsayıcı adı | 1-64 |Büyük/küçük harfe duyarlı |İlk veya son karakter dışında bir yerde alfasayısal ve kısa çizgi |`<name>-<role>-CG<number>` |`web-batch-CG1` |
+| Kapsayıcı bağlantı noktaları | 1 ile 65535 arasında |Integer |1 ile 65535 arasında tamsayı |`<port-number>` |`443` |
+| DNS ad etiketi | 5-63 |Büyük/küçük harfe duyarlı |İlk veya son karakter dışında bir yerde alfasayısal ve kısa çizgi |`<name>` |`frontend-site1` |
+| Ortam değişkeni | 1-63 |Büyük/küçük harfe duyarlı |Alfasayısal ve alt çizgi (_) ilk veya son karakter dışında bir yerde |`<name>` |`MY_VARIABLE` |
+| Birim adı | 5-63 |Büyük/küçük harfe duyarlı |Küçük harfler ve rakamlar ve ilk veya son karakteri hariç her yerde tire. Art arda iki kısa çizgi içeremez. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>Görüntünün işletim sistemi sürümü desteklenmiyor
 
@@ -200,9 +202,28 @@ Bu hata, dağıtmayı denediğiniz bölgedeki ağır yük nedeniyle, Kapsayıcı
 
 Azure Container Instances, kapsayıcı gruplarını barındıran temeldeki altyapıya doğrudan erişim sunmaz. Bu, kapsayıcının ana bilgisayarında çalışan ve ayrıcalıklı kapsayıcıları çalıştıran Docker API 'sine erişimi içerir. Docker etkileşimine ihtiyacınız varsa, ACI API 'sinin nasıl desteklediğini görmek için [rest başvurusu belgelerine](https://aka.ms/aci/rest) bakın. Eksik bir sorun varsa, [acı geri bildirim forumlarında](https://aka.ms/aci/feedback)bir istek gönderin.
 
-## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>Eşleşmeyen bağlantı noktaları nedeniyle IP 'Lere erişilemiyor
+## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>Eşleşmeyen bağlantı noktaları nedeniyle kapsayıcı grubu IP adresi erişilebilir olmayabilir
 
-Azure Container Instances, normal Docker yapılandırmasıyla benzer bağlantı noktası eşlemelerini desteklememektedir, ancak bu çözüm yol haritasında bulunur. Ne olduğuna inandığınızda IP 'leri daha erişilebilir durumda değilse, kapsayıcı grubunuza `ports` özelliği ile birlikte kullanıma sunabileceğiniz aynı bağlantı noktalarını dinlemek için kapsayıcı görüntünüzü yapılandırdığınızdan emin olun.
+Azure Container Instances, normal Docker yapılandırmasıyla benzer bağlantı noktası eşlemeyi henüz desteklememektedir. Bir kapsayıcı grubunun IP adresini, olması gerektiğine inanıyorsanız erişilebilir değilse, kapsayıcı grubunuza `ports` özelliği ile birlikte kullanıma sunabileceğiniz aynı bağlantı noktalarını dinlemek için kapsayıcı görüntünüzü yapılandırdığınızdan emin olun.
+
+Azure Container Instances, kapsayıcı görüntnınızda yapılandırdığınız bağlantı noktasında dinleyebildiğini doğrulamak istiyorsanız, bu bağlantı noktasını kullanıma sunan `aci-helloworld` görüntünün bir dağıtımını test edin. Ayrıca, `aci-helloworld` bağlantı noktasında dinleyeceği şekilde uygulamayı çalıştırın. `aci-helloworld`, dinlediği varsayılan bağlantı noktası `PORT` 80 ' ü geçersiz kılmak için isteğe bağlı bir ortam değişkenini kabul eder. Örneğin, 9000 numaralı bağlantı noktasını sınamak için:
+
+1. 9000 numaralı bağlantı noktasını kullanıma sunmak için kapsayıcı grubunu ayarlayın ve bağlantı noktası numarasını ortam değişkeninin değeri olarak geçirin:
+    ```azurecli
+    az container create --resource-group myResourceGroup \
+    --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
+    --ip-address Public --ports 9000 \
+    --environment-variables 'PORT'='9000'
+    ```
+1. Komut çıkışında `az container create`kapsayıcı grubunun IP adresini bulun. **IP**değerini arayın. 
+1. Kapsayıcı başarıyla sağlandıktan sonra, tarayıcınızda kapsayıcı uygulamasının IP adresine ve bağlantı noktasına gidin, örneğin: `192.0.2.0:9000`. 
+
+    "Hoş geldiniz Azure Container Instances!" görmeniz gerekir Web uygulaması tarafından görünen ileti.
+1. Kapsayıcı ile işiniz bittiğinde, `az container delete` komutunu kullanarak kaldırın.
+
+    ```azurecli
+    az container delete --resource-group myResourceGroup --name mycontainer
+    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

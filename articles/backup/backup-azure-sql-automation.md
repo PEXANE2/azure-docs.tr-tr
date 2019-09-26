@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: e6a1ec1d11404e6179fda919c58f581c3524c4d4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d5f3b98048cb04eab15479c3a9f5d27f16df1f3a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650331"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309748"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme
 
@@ -46,8 +46,6 @@ Nesne hiyerarşisi aşağıdaki diyagramda özetlenir.
 Azure kitaplığı 'ndaki **az. RecoveryServices** [cmdlet başvuru](/powershell/module/az.recoveryservices) başvurusunu gözden geçirin.
 
 ### <a name="set-up-and-install"></a>Ayarlama ve kurma
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 PowerShell 'i aşağıdaki şekilde ayarlayın:
 
@@ -512,7 +510,7 @@ $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload 
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
 ````
 
-#### <a name="delete-backup-data"></a>Yedekleme verilerini silme
+#### <a name="delete-backup-data"></a>Yedekleme verilerini sil
 
 Kasadaki depolanan yedekleme verilerini tamamen kaldırmak için '-RemoveRecoveryPoints ' bayrağını [' devre dışı bırak](#retain-data)' seçeneğini eklemeniz yeterlidir.
 

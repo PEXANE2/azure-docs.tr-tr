@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/29/2019
+ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186308"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290962"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
 
@@ -48,10 +48,15 @@ Azure AD Connect çalıştırmak için kullanılan bu üç hesaba ek olarak, Azu
 
 - **SQL SA hesabı (isteğe bağlı)** : SQL Server tam sürümü kullanılırken ADSync veritabanını oluşturmak için kullanılır.  Bu SQL Server, Azure AD Connect yüklemesinde yerel veya uzak olabilir.  Bu hesap, kuruluş yöneticisiyle aynı hesap olabilir.  Veritabanının sağlanması artık SQL Yöneticisi tarafından bant dışında gerçekleştirilebilir ve ardından veritabanı sahibi haklarıyla Azure AD Connect Yöneticisi tarafından yüklenebilir.  Bu bilgi için bkz. [SQL yönetici temsilcisi izinlerini kullanarak Azure AD Connect yüklemesi](how-to-connect-install-sql-delegation.md)
 
+<<<<<<< BAŞ
+>[!IMPORTANT]
+> Yapı 1.4 itibariyle. # # #. # artık AD DS bağlayıcı hesabı olarak bir kurumsal yönetici veya etki alanı yöneticisi hesabı kullanmak için desteklenmiyor.  **Mevcut hesabı kullan**' ı belirtirken Kurumsal Yönetici veya etki alanı yöneticisi olan bir hesap girmeyi denerseniz, bir hata alırsınız.
+=======
 > [!NOTE]
 > Bir ESAE yönetim ormanına Azure AD Connect ' de kullanılan yönetim hesaplarını yönetmek için desteklenir ("kırmızı orman" olarak da bilinir).
 > Adanmış yönetim ormanları, kuruluşların yönetim hesaplarını, iş istasyonlarını ve grupları üretim ortamından daha güçlü güvenlik denetimlerine sahip bir ortamda barındırmasına olanak tanır.
 > Adanmış yönetim ormanları hakkında daha fazla bilgi edinmek için lütfen [Esae yönetim ormanı tasarım yaklaşımını](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) inceleyin
+>>>>>>> e683a61b0ed62ae739941410f658a127534e2481
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect yükleniyor
 Azure AD Connect Yükleme Sihirbazı iki farklı yol sunar:
@@ -124,7 +129,7 @@ Aşağıda, Özel Yükleme Sihirbazı sayfalarının Özeti, toplanan kimlik bil
 ### <a name="create-the-ad-ds-connector-account"></a>AD DS Bağlayıcısı hesabını oluşturma
 
 >[!IMPORTANT]
->Azure AD DS bağlayıcı hesabı için doğru Active Directory izinlerini yapılandırmanıza yardımcı olacak bir cmdlet koleksiyonu Içeren, ADSyncConfig. psm1 adlı yeni bir PowerShell modülü (Ağustos 2018 ' de yayımlanmıştır) eklenmiştir.
+>Azure AD DS bağlayıcı hesabı için doğru Active Directory izinlerini yapılandırmanıza yardımcı olacak bir cmdlet koleksiyonu içeren, ADSyncConfig. psm1 adlı yeni bir PowerShell **modülü (ağustos** 2018 ' de yayımlanmıştır) eklenmiştir.
 >
 >Daha fazla bilgi için [bkz. Azure AD Connect: AD DS Bağlayıcısı hesabı Iznini yapılandırma](how-to-connect-configure-ad-ds-connector-account.md)
 

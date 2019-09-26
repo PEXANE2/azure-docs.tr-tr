@@ -11,24 +11,52 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: e3ab825fbf5b5dba74b67eaa894a38c74ed0b62a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170557"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299388"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
 Azure Işlevleri çalışma zamanı, [Java SE 8 LTS 'yi (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)destekler. Bu kılavuzda, Java ile Azure Işlevleri yazma hakkında bilgiler yer alır.
 
-Java işlevi, ek açıklamayla `public` `@FunctionName`donatılmış bir yöntemdir. Bu yöntem, bir Java işlevinin girişini tanımlar ve belirli bir pakette benzersiz olmalıdır. 
+Diğer dillerde olduğu gibi, bir İşlev Uygulaması bir veya daha fazla işleve sahip olabilir. Java işlevi, ek açıklamayla `public` `@FunctionName`donatılmış bir yöntemdir. Bu yöntem, bir Java işlevinin girişini tanımlar ve belirli bir pakette benzersiz olmalıdır. Java 'da yazılan bir İşlev Uygulaması birden fazla ortak yöntemi `@FunctionName`olan birden çok sınıfa sahip olabilir.
 
 Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. Ayrıca, [Visual Studio Code](functions-create-first-function-vs-code.md) veya [Maven](functions-create-first-java-maven.md)kullanarak ilk Işlevinizi oluşturmak için işlevler hızlı başlangıcını de tamamlamalısınız.
 
 ## <a name="programming-model"></a>Programlama modeli 
 
 [Tetikleyiciler ve bağlamaların](functions-triggers-bindings.md) kavramları Azure işlevleri için temel bir araçlardır. Tetikleyiciler, kodunuzun yürütülmesini başlatır. Bağlamalar, özel veri erişim kodu yazmak zorunda kalmadan bir işleve veri geçirmek ve veri döndürmek için bir yol sağlar.
+
+## <a name="project-scaffolding"></a>Proje yapı Iskelesi
+
+Java tabanlı bir Azure işlev projesini dolandırmanın en kolay yolu, arşiv türleri kullanmaktır `Apache Maven` . Ayrıca, Visual Studio Code üzerinde proje oluşturma sihirbazları ve çakışan küreler ve IntelliJ için Azure araç setleri ' ni de bulabilirsiniz.
+
+Maven için şu anda iki Azure Işlevi arşiv türleri var:
+
+### <a name="java-archetype"></a>Java arşiv Etype
+
+Bu arşiv ETYPE, aşağıdaki GroupID ve ArtifactId [com. Microsoft. Azure: Azure-Functions-arşiv ETYPE](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/)altında yayımlanır.
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
+
+### <a name="kotlin-archetype-preview"></a>Kotlin arşiv ETYPE (Önizleme)
+
+Bu arşiv ETYPE, aşağıdaki GroupID ve ArtifactId [com. Microsoft. Azure: Azure-Functions-Kotlin-ızetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/)altında yayımlanır.
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Bu arşiv türleri kaynak kodu, [Azure Maven bir GitHub deposunda](https://github.com/microsoft/azure-maven-archetypes)bulunabilir.
 
 ## <a name="folder-structure"></a>Klasör yapısı
 
@@ -55,6 +83,8 @@ FunctionsProject
  | | | | - lib
  | - pom.xml
 ```
+
+_* Kotlin projesi hala Maven olduğundan çok benzer görünüyor_
 
 İşlev uygulamasını yapılandırmak için paylaşılan bir [Host. JSON](functions-host-json.md) dosyası kullanabilirsiniz. Her işlevin kendi kod dosyası (. Java) ve bağlama yapılandırma dosyası (Function. JSON) vardır.
 

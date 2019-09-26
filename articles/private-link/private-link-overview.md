@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: fc3ae87ce5c4547526ae50f371684ac14dfcf266
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 0c5541d7a80c3b6157ccadd979412163122ca8a2
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104649"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300742"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Özel Bağlantı nedir? (Önizleme)
 Azure özel bağlantısı, Azure PaaS hizmetlerine (örneğin, Azure depolama ve SQL veritabanı) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir [uç nokta](private-endpoint-overview.md) üzerinden erişmenizi sağlar. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Ayrıca, kendi [özel bağlantı hizmetinizi](private-link-service-overview.md) sanal ağınızda (VNet) oluşturabilir ve müşterilerinize özel olarak iletebilirsiniz. Azure özel bağlantısı kullanılarak kurulum ve tüketim deneyimi Azure PaaS, müşteriye ait ve paylaşılan iş ortağı hizmetleri arasında tutarlıdır.
@@ -40,11 +40,11 @@ Azure özel bağlantısı aşağıdaki avantajları sağlar:
 
 |Senaryo  |Desteklenen hizmetler   |Kullanılabilen bölgeler | Durum   |
 |---------|---------|---------|---------|
-|Müşterinin sahip olduğu hizmetler için özel bağlantı|Standart Load Balancer arkasındaki özel bağlantı Hizmetleri |Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Kuzey ABD  |  Önizleme  |
+|Müşterinin sahip olduğu hizmetler için özel bağlantı|Standart Load Balancer arkasındaki özel bağlantı Hizmetleri |Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD  |  Önizleme  |
 |Azure PaaS hizmetleri için özel bağlantı   | Azure Storage        |  Doğu ABD, Batı ABD, Orta Batı ABD       | Önizleme         |
 |  | Azure Data Lake Storage 2. Nesil        |  Doğu ABD, Batı ABD, Orta Batı ABD       | Önizleme         |
-|  |  Azure SQL Database         | Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Kuzey ABD       |   Önizleme      |
-||Azure SQL Veri Ambarı| Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Kuzey ABD |Önizleme|
+|  |  Azure SQL Database         | Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD      |   Önizleme      |
+||Azure SQL Veri Ambarı| Orta Batı ABD; WestUS Orta Güney ABD; Doğu ABD; Orta Kuzey ABD |Önizleme|
 
 En güncel bildirimler için, [Azure sanal ağ güncelleştirmeleri sayfasını](https://azure.microsoft.com/updates/?product=virtual-network)inceleyin. 
 

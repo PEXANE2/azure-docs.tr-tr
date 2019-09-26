@@ -1,18 +1,18 @@
 ---
 title: Azure Application Gateway arka uç sistem durumu sorunlarını giderme
-description: Bu makale, Azure Application Gateway arka uç sistem durumu sorunlarını giderme konusunda size rehberlik eder
+description: Azure Application Gateway için arka uç sistem durumu sorunlarını nasıl giderebileceğinizi açıklar
 services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 1fd4e9156e29133b1db4fe9ab9a0825eb1aa3b55
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 8f90cc3b41eab1847b0d4483b92a282d46af765b
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097588"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309298"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway arka uç sistem durumu sorunlarını giderme
 ==================================================
@@ -20,30 +20,30 @@ ms.locfileid: "71097588"
 <a name="overview"></a>Genel Bakış
 --------
 
-Application Gateway, varsayılan olarak arka uç sunucularını, sistem durumunu denetlemek için yoklamaları ve isteklere hazırlanmaya hazır olup olmadığını denetler. Kullanıcılar ana bilgisayar adının yanı sıra, araştırılan yol ve durum kodlarının sağlıklı olarak kabul edileceği özel yoklamalar oluşturabilir. Her iki durumda da, arka uç sunucusu başarıyla yanıt vermiyorsa, Application Gateway sunucuyu sağlıksız olarak işaretler ve isteği sunucuya iletmeyi durdurur. Sunucu başarıyla yanıt vermeye başladıktan sonra isteklere hizmet vermeye sürdürülecek.
+Varsayılan olarak Azure Application Gateway, arka uç sunucularını inceleyerek sistem durumunu denetler ve istekleri sunmaya hazır olup olmadığını kontrol eder. Kullanıcılar ayrıca ana bilgisayar adından, araştırılan yoldan ve durum kodlarından sağlıklı olarak kabul edileceği özel yoklamalar oluşturabilir. Her durumda, arka uç sunucusu başarıyla yanıt vermezse, Application Gateway sunucuyu sağlıksız olarak işaretler ve istekleri sunucuya iletmeyi sonlandırır. Sunucu başarıyla yanıt vermeye başladıktan sonra Application Gateway istekleri iletmeyi sürdürür.
 
 ### <a name="how-to-check-backend-health"></a>Arka uç durumunu denetleme
 
-Arka uç havuzunuzun durumunu denetlemek için, Azure portal "arka uç durumu" sayfasını kullanabilirsiniz. Ya da sistem durumunu almak için [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), [CLI](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)veya [REST API](https://docs.microsoft.com/rest/api/application-gateway/applicationgateways/backendhealth) kullanabilirsiniz. Daha fazla bilgi edinmek için her bir yönteme karşı bağlantılı makaleye bakın.
+Arka uç havuzunuzun durumunu denetlemek için Azure portal **arka uç sistem durumu** sayfasını kullanabilirsiniz. Ya da [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhealth?view=azps-2.6.0), [CLI](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-show-backend-health)veya [REST API](https://docs.microsoft.com/rest/api/application-gateway/applicationgateways/backendhealth)kullanabilirsiniz.
 
-Yukarıda bahsedilen herhangi bir yöntem tarafından alınan durum üç türde olabilir:
+Bu yöntemlerin herhangi biri tarafından alınan durum aşağıdakilerden biri olabilir:
 
-1.  Sorunsuz
+- Sorunsuz
 
-2.  İyi durumda değil
+- İyi durumda değil
 
-3.  Bilinmiyor
+- Bilinmiyor
 
-Bir sunucunun arka uç sistem durumu sağlıklı ise, Application Gateway istekleri bu sunucuya iletecektir. Ancak arka uç havuzundaki tüm sunucuların arka uç durumu sağlıksız veya bilinmiyor ise, uygulama erişimi sırasında bazı sorunlar ortaya çıkabilir. Bu belgede, arka uç sunucuları sağlıksız veya bilinmiyor olduğunda gösterilen hataların her birinin belirtisi, nedeni ve çözümü açıklanmaktadır.
+Bir sunucunun arka uç sistem durumu sağlıklı ise, Application Gateway istekleri bu sunucuya iletmeyeceği anlamına gelir. Ancak arka uç havuzundaki tüm sunucuların arka uç durumu sağlıksız veya bilinmiyorsa, uygulamalara erişmeye çalıştığınızda sorunlarla karşılaşabilirsiniz. Bu makalede, gösterilen hataların her biri için belirtiler, neden ve çözüm açıklanmaktadır.
 
-<a name="backend-health-status-unhealthy"></a>Arka uç sistem durumu sağlıksız
+<a name="backend-health-status-unhealthy"></a>Arka uç sistem durumu: İyi durumda değil
 -------------------------------
 
-Arka uç sistem durumu sağlıksız olarak gösteriliyorsa, portalda aşağıdaki ekran görüntüsünde olduğu gibi görüntülenir:
+Arka uç sistem durumu sağlıksız ise, Portal görünümü aşağıdaki ekran görüntüsüne benzer:
 
 ![Application Gateway arka uç durumu-sağlıksız](./media/application-gateway-backend-health-troubleshooting/appgwunhealthy.png)
 
-Ya da Azure PowerShell, CLı veya Azure REST API sorgusu kullanıyorsanız, aşağıdakine benzer bir yanıt göreceksiniz:
+Ya da bir Azure PowerShell, CLı veya Azure REST API sorgusu kullanıyorsanız, aşağıdakine benzer bir yanıt alırsınız:
 ```azurepowershell
 PS C:\Users\testuser\> Get-AzApplicationGatewayBackendHealth -Name "appgw1" -ResourceGroupName "rgOne"
 BackendAddressPools :
@@ -76,192 +76,188 @@ BackendAddressPoolsText : [
                             }
                         ]
 ```
-Arka uç sunucu durumunu bir arka uç havuzundaki tüm sunucular için sağlıksız olarak görtikten sonra, istekler bunlara iletilecektir ve Application Gateway istenen istemciye 502 hatalı ağ geçidi hatası döndürür. Sorunu gidermek için, arka uç sistem durumu sekmesinin Ayrıntılar sütununu kontrol edin.
+Bir arka uç havuzundaki tüm sunucular için sağlıklı olmayan bir arka uç sunucu durumu aldıktan sonra, istekler sunuculara iletilmez ve Application Gateway istekte bulunan istemciye bir "502 hatalı Ağ Geçidi" hatası döndürür. Bu sorunu gidermek için, **arka uç sistem durumu** sekmesindeki **Ayrıntılar** sütununu kontrol edin.
 
-Arka uç sistem durumu sekmesinin Ayrıntılar sütununda görünen ileti, sorun hakkında daha ayrıntılı öngörüler sağlar ve bunlar temelinde sorun gidermeye başlayabiliriz.
+**Ayrıntılar** sütununda görünen ileti, sorun hakkında daha ayrıntılı öngörüler sağlar ve bunlar temelinde sorun gidermeye başlayabilirsiniz.
 
 > [!NOTE]
-> Varsayılan araştırma isteği, bağlantı noktası 80 ' de http \<araştırması\> <http://127.0.0.1/> için://127.0.0.1\<:\>bağlantı noktası/biçiminde gönderilir ve yalnızca şu şekilde 200-399 http durum kodlarının yanıtını kabul eder sağlıklı yanıt. Protokol ve hedef bağlantı noktası HTTP ayarlarından devralınır. Farklı bir protokol, ana bilgisayar adı veya yol üzerinde araştırmasını Application Gateway ve sağlıklı olarak farklı bir durum kodu kabul etmek istiyorsanız, özel bir araştırma yapılandırın ve bunu HTTP ayarları ile ilişkilendirin.
+> Varsayılan araştırma isteği,:// \<127.0.0.1:\<Port\>/protokol\>biçiminde gönderilir. Örneğin, http://127.0.0.1:80 80 numaralı bağlantı noktasında http araştırması için. Yalnızca 200 ile 399 arasındaki HTTP durum kodları sağlıklı olarak değerlendirilir. Protokol ve hedef bağlantı noktası HTTP ayarlarından devralınır. Application Gateway farklı bir protokol, ana bilgisayar adı veya yol üzerinde araştırma yapmak ve farklı bir durum kodunu sağlıklı olarak tanımak istiyorsanız, özel bir araştırma yapılandırın ve bunu HTTP ayarları ile ilişkilendirin.
 
-<a name="error-messages"></a>Hata İletileri
+<a name="error-messages"></a>Hata iletileri
 ------------------------
 #### <a name="backend-server-timeout"></a>Arka uç sunucu zaman aşımı
 
-**İleti:** Uygulama ağ geçidi\'s sistem durumu araştırmasına yanıt vermek için arka uçta geçen süre, araştırma ayarında zaman aşımı eşiğinden daha fazla.
+**İleti:** Uygulama ağ geçidi\'s sistem durumu araştırmasına yanıt vermek için arka uçta geçen süre, araştırma ayarındaki zaman aşımı eşiğinden daha fazla.
 
-**Sağlamak** Application Gateway, arka uç sunucusuna HTTP (S) araştırma isteği gönderdiğinde, belirli bir süre için arka uç sunucusundan gelen yanıtı bekler. Arka uç sunucusu zaman aşımı değeri içinde yanıt vermiyorsa, zaman aşımı süresi içinde yeniden yanıt vermemeye başlanana kadar sağlıksız olarak işaretlenir.
+**Sağlamak** Application Gateway, arka uç sunucusuna bir HTTP (S) araştırma isteği gönderdikten sonra, yapılandırılan bir süre için arka uç sunucusundan bir yanıt bekler. Arka uç sunucusu yapılandırılan süre içinde yanıt vermiyorsa (zaman aşımı değeri), yapılandırılan zaman aşımı süresi içinde yeniden yanıt vermemeye başlamasına kadar sağlıksız olarak işaretlenir.
 
-**Çözüm:** Yapılandırılan zaman aşımı süresi içinde yanıt vermediği için arka uç sunucusunu veya uygulamayı denetleyin ve uygulama bağımlılıklarını da kontrol edin. Örneğin, veritabanında herhangi bir sorun varsa, yanıt verme gecikmesine neden olabilir. Uygulamanın davranışının farkındaysanız ve yalnızca zaman aşımı değerinden sonra yanıt vermesi gerekiyorsa, özel araştırma ayarlarından zaman aşımı değerini artırın.
-Zaman aşımı değerini değiştirmek için özel bir araştırmanız gerekir. Özel bir araştırmanın nasıl yapılandırılacağını öğrenmek isterseniz [Belgeler sayfasını kontrol](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal)edin.
+**Çözüm:** Arka uç sunucusunun veya uygulamanın yapılandırılan zaman aşımı süresi içinde neden yanıt vermediğini denetleyin ve ayrıca uygulama bağımlılıklarını denetleyin. Örneğin, veritabanında yanıt olarak bir gecikme tetikleyebilen herhangi bir sorun olup olmadığını denetleyin. Uygulamanın davranışının farkındaysanız ve yalnızca zaman aşımı değerinden sonra yanıt vermesi gerekiyorsa, özel araştırma ayarlarından zaman aşımı değerini artırın. Zaman aşımı değerini değiştirmek için özel bir araştırmanız olması gerekir. Özel bir araştırmanın nasıl yapılandırılacağı hakkında daha fazla bilgi için [Belgeler sayfasına bakın](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal).
 
-Zaman aşımını artırmak için aşağıdaki adımları izleyin:
+Zaman aşımı değerini artırmak için aşağıdaki adımları izleyin:
 
-1.  Arka uç sunucusuna doğrudan erişin ve sunucunun bu sayfada yanıt vermesi için geçen süreyi denetleyin. Geliştirici araçlarını kullanarak bir tarayıcı dahil olmak üzere herhangi bir aracı kullanabilirsiniz.
+1.  Arka uç sunucusuna doğrudan erişin ve sunucunun bu sayfada yanıt vermesi için geçen süreyi denetleyin. Geliştirici araçlarını kullanan bir tarayıcı da dahil olmak üzere arka uç sunucusuna erişmek için herhangi bir aracı kullanabilirsiniz.
 
-2.  Uygulamanın yanıt vermesi için geçen süreyi iletişime aldıktan sonra, sistem durumu araştırmaları sekmesine tıklayın ve HTTP ayarlarınızla ilişkili araştırmayı seçin.
+1.  Uygulamanın yanıt vermesi için geçen süreyi iletişime ettikten sonra, **sistem durumu araştırmaları** sekmesini seçin ve ardından http ayarlarınızla ilişkili araştırmayı seçin.
 
-3.  Uygulama yanıt süresinden daha yüksek bir zaman aşımı değerini saniye cinsinden girin.
+1.  Uygulama yanıt süresinden daha büyük bir zaman aşımı değerini saniye cinsinden girin.
 
-4.  Özel araştırma ayarlarını kaydedin ve şimdi sağlıklı durumu gösteriyorsa arka uç durumunu kontrol edin.
+1.  Özel araştırma ayarlarını kaydedin ve arka uç durumunun şimdi sağlıklı olarak görünüp gösterilmediğini denetleyin.
 
 #### <a name="dns-resolution-error"></a>DNS çözümleme hatası
 
 **İleti:** Application Gateway bu arka uç için bir araştırma oluşturamadı. Bu genellikle arka ucun FQDN 'SI doğru girildiyse oluşur. 
 
-**Sağlamak** Arka uç havuzu IP adresi/FQDN veya App Service türünde ise, Application Gateway DNS sunucusu (özel veya Azure varsayılan) kullanılarak girilen FQDN 'nin IP adresini çözümler ve HTTP ayarlarında belirtilen TCP bağlantı noktasındaki sunucuya bağlanmaya çalışır. Ancak bu ileti görüntüleniyorsa Application Gateway, girilen FQDN 'nin IP adresini başarıyla çözümleyemediğini önerir.
+**Sağlamak** Arka uç havuzu IP adresi/FQDN veya App Service türünde ise, Application Gateway etki alanı adı sistemi (DNS) ile girilen FQDN 'nin IP adresine (özel veya Azure varsayılan) çözülür ve HTTP ayarlarında belirtilen TCP bağlantı noktasındaki sunucuya bağlanmaya çalışır. Ancak bu ileti görüntüleniyorsa Application Gateway, girilen FQDN 'nin IP adresini başarıyla çözümleyemediğini önerir.
 
 **Çözüm:**
 
-1.  Arka uç havuzunda girilen FQDN 'nin doğru olup olmadığını ve ortak bir etki alanı olduğunu doğrulayın, yerel makinenizden çözümlemeyi deneyin.
+1.  Arka uç havuzunda girilen FQDN 'nin doğru olduğundan ve ortak bir etki alanı olduğundan emin olun ve ardından yerel makinenizden çözümlemeyi deneyin.
 
-2.  IP adresini çözümleyebiliyorsanız VNet 'teki DNS yapılandırmasında bir sorun olabilir.
+1.  IP adresini çözümleyebiliyorsanız, sanal ağda DNS yapılandırmasında bir sorun olabilir.
 
-3.  VNet 'in özel bir DNS sunucusu ile yapılandırılıp yapılandırılmadığını denetleyin. Bu durumda, DNS sunucusunu, verilen FQDN 'nin IP adresine neden çözemediğini denetleyin.
+1.  Sanal ağın özel bir DNS sunucusu ile yapılandırılıp yapılandırılmadığını denetleyin. Varsa, DNS sunucusunu, belirtilen FQDN 'nin IP adresine neden çözemediğini denetleyin.
 
-4.  Azure varsayılan DNS ise, doğru bir kayıt veya CNAME kaydı eşlemesi yapıldıysa etki alanı adı kayıt şirketinize danışın.
+1.  Azure varsayılan DNS kullanıyorsanız, uygun bir kayıt veya CNAME kaydı eşlemesinin tamamlanıp tamamlanmadığını öğrenmek için etki alanı adı kayıt şirketinize danışın.
 
-5.  Etki alanı özel/iç ise, aynı VNet 'teki bir VM 'den çözmeyi deneyin ve bu sorunu çözebiliyorsanız Application Gateway yeniden başlatın ve yeniden denetleyin. Application Gateway yeniden başlatmak için, ilgili belge bağlantılarında verilen PowerShell komutlarını kullanmaya [durdurup](https://docs.microsoft.com/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) [başlamanız](https://docs.microsoft.com/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) gerekir.
+1.  Etki alanı özel veya iç ise, aynı sanal ağ içindeki bir VM 'den çözümlemeyi deneyin. Sorunu çözebiliyorsanız Application Gateway yeniden başlatın ve yeniden denetleyin. Application Gateway yeniden başlatmak için, bu bağlı kaynaklarda açıklanan PowerShell komutlarını kullanarak [durdurmanız](https://docs.microsoft.com/powershell/module/azurerm.network/stop-azurermapplicationgateway?view=azurermps-6.13.0) ve [başlatmanız](https://docs.microsoft.com/powershell/module/azurerm.network/start-azurermapplicationgateway?view=azurermps-6.13.0) gerekir.
 
 #### <a name="tcp-connect-error"></a>TCP bağlantı hatası
 
-**İleti:** Application Gateway, arka uca bağlanamadı.
+**İleti:** Application Gateway arka uca bağlanamadı.
 Lütfen arka ucun araştırma için kullanılan bağlantı noktasında yanıt verdiğini kontrol edin.
 Ayrıca, herhangi bir NSG/UDR/güvenlik duvarının IP 'ye ve bu arka ucun bağlantı noktasına erişimi engelleyip engellemediğini denetleyin
 
-**Sağlamak** DNS çözümleme aşamasından sonra, Application Gateway HTTP ayarlarında yapılandırılan TCP bağlantı noktasındaki arka uç sunucusuna bağlanmaya çalışır. Application Gateway belirtilen bağlantı noktasında bir TCP oturumu kuramazsa, araştırma Bu iletiyle sağlıksız olarak işaretlenir.
+**Sağlamak** DNS çözümleme aşamasından sonra, Application Gateway HTTP ayarlarında yapılandırılan TCP bağlantı noktasındaki arka uç sunucusuna bağlanmaya çalışır. Application Gateway belirtilen bağlantı noktasında TCP oturumu kuramazsa, araştırma Bu iletiyle sağlıksız olarak işaretlenir.
 
-**Çözüm:** Bu hatayı görürseniz, aşağıdakileri denetleyin:
+**Çözüm:** Bu hatayı alırsanız, şu adımları izleyin:
 
-1.  Bir tarayıcı kullanarak veya PowerShell kullanarak HTTP ayarlarında belirtilen bağlantı noktasında arka uç sunucusuna bağlanıp bağlanamadıysanız emin olun; Örneğin, komutunu kullanabilirsiniz: Test-NetConnection-ComputerName www.bing.com-Port 443
+1.  Tarayıcı veya PowerShell kullanarak HTTP ayarlarında bahsedilen bağlantı noktasında arka uç sunucusuna bağlanıp bağlanamaıp bağlanamayacağını denetleyin. Örneğin, aşağıdaki komutu çalıştırın:`Test-NetConnection -ComputerName
+    www.bing.com -Port 443`
 
-2.  Belirtilen bağlantı noktası istenen bağlantı noktası değilse, arka uç sunucusuna bağlanmak için Application Gateway doğru bağlantı noktası numarasını girin
+1.  Belirtilen bağlantı noktası istenen bağlantı noktası değilse, arka uç sunucusuna bağlanmak için Application Gateway doğru bağlantı noktası numarasını girin
 
-3.  Bağlantı noktasında yerel makinenizden de bağlanamadıysanız:
+1.  Bağlantı noktasında yerel makinenizden de bağlanamadıysanız:
 
-    a.  Arka uç sunucusunun NIC ve alt ağının NSG ayarlarını denetleyin ve yapılandırılmış bağlantı noktasına gelen bağlantılara izin verilip verilmediğini denetleyin. İzin verilmiyorsa, bağlantılara izin vermek için yeni bir kural oluşturun. NSG kuralları oluşturmayı öğrenmek için [Belgeler sayfasını kontrol](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#create-security-rules)edin.
+    a.  Arka uç sunucusunun ağ bağdaştırıcısının ve alt ağının ağ güvenlik grubu (NSG) ayarlarını ve yapılandırılmış bağlantı noktasına gelen bağlantılara izin verilip verilmediğini denetleyin. Bu değillerse, bağlantılara izin vermek için yeni bir kural oluşturun. NSG kuralları oluşturmayı öğrenmek için [Belgeler sayfasına bakın](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic#create-security-rules).
 
-    b.  Giden genel ve özel trafiğe izin veriliyorsa, bağlantının yapılabilmesi için Application Gateway alt ağının NSG ayarlarını denetleyin. NSG kuralları oluşturma hakkında daha fazla bilgi edinmek için (a) ile bağlantılı belgeyi denetleyin.
+    b.  Application Gateway alt ağın NSG ayarlarının giden genel ve özel trafiğe izin verip vermediği ve bir bağlantının yapılabilmesi için denetleyin. NSG kuralları oluşturma hakkında daha fazla bilgi edinmek için, adım 3A ' da sunulan belge sayfasını kontrol edin.
     ```azurepowershell
             $vnet = Get-AzVirtualNetwork -Name "vnetName" -ResourceGroupName "rgName"
             Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
     ```
 
-    c.  Yönlendirme anormalları için Application Gateway ve arka uç sunucusu alt ağının UDR ayarlarını denetleyin. UDR 'nin trafiği arka uç alt ağından uzakta yönlendirmediğinden emin olun. Örneğin, ExpressRoute/VPN aracılığıyla Application Gateway alt ağına tanıtılan ağ sanal gereçlerine veya varsayılan yollara yönelik yolları denetleyin.
+    c.  Tüm yönlendirme bozuklukları için Application Gateway ve arka uç sunucusunun alt ağının Kullanıcı tanımlı yollar (UDR) ayarlarını kontrol edin. UDR 'nin trafiği arka uç alt ağından uzağa yönlendirmediğinden emin olun. Örneğin, Azure ExpressRoute ve/veya VPN aracılığıyla Application Gateway alt ağına tanıtılan ağ sanal gereçlerine veya varsayılan yollara yönelik yolları denetleyin.
 
-    d.  Bir NIC için geçerli yolları ve kuralları denetlemek için aşağıdaki PowerShell komutlarını kullanabilirsiniz.
+    d.  Bir ağ bağdaştırıcısının geçerli yollarını ve kurallarını denetlemek için aşağıdaki PowerShell komutlarını kullanabilirsiniz:
     ```azurepowershell
             Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName "nic1" -ResourceGroupName "testrg"
             Get-AzEffectiveRouteTable -NetworkInterfaceName "nic1" -ResourceGroupName "testrg"
     ```
-4.  NSG veya UDR ile ilgili herhangi bir sorun bulamazsanız, hangi istemcilerin yapılandırılmış bağlantı noktaları üzerinde bir TCP oturumu kuramadıkları için arka uç sunucunuza uygulamayla ilgili sorunlar olup olmadığını denetleyin. Denetlenecek birkaç şey:
+1.  NSG veya UDR ile ilgili herhangi bir sorun bulamazsanız, istemcilerin yapılandırılmış bağlantı noktalarında bir TCP oturumu kurmasını engelleyen uygulamayla ilgili sorunlar için arka uç sunucunuzu kontrol edin. Denetlenecek birkaç şey:
 
-    e.  Komut istemi 'ni (Win + R-\> cmd) açın ve netstat yazıp ENTER tuşuna basın
+    a.  Bir komut istemi açın (Win + R-\> cmd), girin `netstat`ve ENTER ' u seçin.
 
-    f.  Sunucunun yapılandırılan bağlantı noktasını dinleyip dinlemediğini denetleyin.
-        Örneğin:
+    b.  Sunucunun yapılandırılmış bağlantı noktasında dinleme yapıp yapmadığını denetleyin. Örneğin:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
     ```
-    g.  Değilse, Web sunucusu ayarlarınıza göz atın, örneğin IIS 'deki site bağlamaları, NGıNX içindeki sunucu bloğu ve Apache 'de sanal ana bilgisayar
+    c.  Yapılandırılmış bağlantı noktasında dinleme yapmadıysa, Web sunucusu ayarlarınızı kontrol edin. Örneğin: IIS 'de site bağlamaları, NGıNX içindeki sunucu bloğu ve Apache 'de sanal ana bilgisayar.
 
-    h.  Bağlantı noktasına gelen trafiğe izin verildiğinden emin olmak için işletim sistemi güvenlik duvarı ayarlarınızı denetleyin
+    d.  Bağlantı noktasına gelen trafiğe izin verildiğinden emin olmak için işletim sistemi güvenlik duvarı ayarlarınızı denetleyin.
 
 #### <a name="http-status-code-mismatch"></a>HTTP durum kodu uyumsuzluğu
 
 **İleti:** Arka uç\'s HTTP yanıtının durum kodu araştırma ayarıyla eşleşmedi. Beklenen: {HTTPStatusCode0} alındı: {HTTPStatusCode1}.
 
-**Sağlamak** TCP bağlantısı kurulduktan ve SSL el sıkışması yapıldıktan sonra (SSL etkinse), Application Gateway arka uç sunucusuna bir HTTP GET isteği olarak araştırmaya gönderilir. Yukarıda belirtildiği gibi, varsayılan \<araştırma protokol\>://127.0.0.1:\<Port\>/olur ve Rage 200-399 yanıt durum kodlarını sağlıklı olarak kabul eder. Sunucu başka bir durum kodu döndürürse, Bu iletiyle sağlıksız olarak işaretlenir.
+**Sağlamak** TCP bağlantısı kurulduktan ve bir SSL el sıkışması yapıldıktan sonra (SSL etkinse), Application Gateway arka uç sunucusuna bir HTTP GET isteği olarak araştırmaya gönderilir. Daha önce açıklandığı gibi, varsayılan \<araştırma protokol\>://127.0.0.1:\<bağlantı noktası\>/olur ve yanıt durum kodlarını, Rage 200 ile 399 arasındaki sağlıklı şekilde kabul eder. Sunucu başka bir durum kodu döndürürse, Bu iletiyle sağlıksız olarak işaretlenir.
 
 **Çözüm:** Arka uç sunucusunun yanıt koduna bağlı olarak, aşağıdaki adımları gerçekleştirebilirsiniz. Yaygın durum kodlarından bazıları aşağıda listelenmiştir:
 
 | **Hata:** | **Eylemler** |
 | --- | --- |
-| Araştırma durum kodu uyumsuzluğu: 401 alındı | Arka uç sunucusunun kimlik doğrulaması gerektirip gerektirmediğini denetleyin. Application Gateway araştırmaları kimlik bilgilerini bu noktada geçiremiyor. Araştırma durum \"kodu eşleşmesi\" veya araştırmasına yönelik http 401 ' i sunucunun kimlik doğrulaması gerektirmeyen bir yola izin verin. | |
+| Araştırma durum kodu uyumsuzluğu: 401 alındı | Arka uç sunucusunun kimlik doğrulaması gerektirip gerektirmediğini denetleyin. Application Gateway araştırmaları bu noktada kimlik doğrulaması için kimlik bilgilerini geçiremiyor. Araştırma durum \"kodu eşleşmesi\" veya araştırmasına yönelik http 401 ' i sunucunun kimlik doğrulaması gerektirmeyen bir yola izin verin. | |
 | Araştırma durum kodu uyumsuzluğu: 403 alındı | Erişim yasak. Arka uç sunucusunda yola erişime izin verilip verilmediğini denetleyin. | |
-| Araştırma durum kodu uyumsuzluğu: 404 alındı | Sayfa bulunamadı. Arka uç sunucusunda erişilebilir durumda değilse, ana bilgisayar adı yolunu denetleyin. Ana bilgisayar adı veya yol parametresini erişilebilir bir değer olarak değiştirin. | |
-| Araştırma durum kodu uyumsuzluğu: 405 alındı | Application Gateway araştırma istekleri HTTP GET yöntemini kullanır. Sunucunuzun izin verip içermediğini denetleyin. | |
-| Araştırma durum kodu uyumsuzluğu: 500 alındı | İç sunucu hatası. Arka uç sunucusunun sistem durumunu ve hizmetler çalışıp çalışmadığını denetleyin. | |
-| Araştırma durum kodu uyumsuzluğu: 503 alındı | Hizmet kullanılamıyor. Arka uç sunucusunun sistem durumunu ve hizmetler çalışıp çalışmadığını denetleyin. | |
+| Araştırma durum kodu uyumsuzluğu: 404 alındı | Sayfa bulunamadı. Ana bilgisayar adı yolunun arka uç sunucusunda erişilebilir olup olmadığını denetleyin. Ana bilgisayar adı veya yol parametresini erişilebilir bir değer olarak değiştirin. | |
+| Araştırma durum kodu uyumsuzluğu: 405 alındı | Application Gateway için araştırma istekleri HTTP GET yöntemini kullanır. Sunucunuzun bu yöntemin izin verip içermediğini denetleyin. | |
+| Araştırma durum kodu uyumsuzluğu: 500 alındı | İç sunucu hatası. Arka uç sunucusunun sistem durumunu ve hizmetlerin çalışıp çalışmadığını denetleyin. | |
+| Araştırma durum kodu uyumsuzluğu: 503 alındı | Hizmet kullanılamıyor. Arka uç sunucusunun sistem durumunu ve hizmetlerin çalışıp çalışmadığını denetleyin. | |
 
-Ya da yanıtın uygun olduğunu düşünüyorsanız ve Application Gateway diğer durum kodlarını sağlıklı olarak kabul etmek istiyorsanız, özel bir araştırma oluşturabilirsiniz. Bunun değiştirilmesi, arka uç Web sitesinin kimlik doğrulaması gereken durumlarda ve araştırma istekleri herhangi bir kullanıcı kimlik bilgisi taşımadığından yararlı olur ve arka uç sunucusu tarafından bir HTTP 401 durum kodu döndürülür.
+Ya da yanıtın meşru olduğunu düşünüyorsanız ve Application Gateway diğer durum kodlarını sağlıklı olarak kabul etmek istiyorsanız, özel bir araştırma oluşturabilirsiniz. Bu yaklaşım, arka uç Web sitesinin kimlik doğrulaması gereken durumlarda yararlıdır. Araştırma istekleri herhangi bir kullanıcı kimlik bilgisi taşımadığından, bunlar başarısız olur ve arka uç sunucusu tarafından bir HTTP 401 durum kodu döndürülür.
 
-Özel bir araştırma oluşturmak için [burada](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal)listelenen adımları izleyin.
+Özel bir araştırma oluşturmak için [aşağıdaki adımları](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal)izleyin.
 
 #### <a name="http-response-body-mismatch"></a>HTTP yanıt gövdesi uyumsuzluğu
 
 **İleti:** Arka uç\'s HTTP yanıtının gövdesi, araştırma ayarıyla eşleşmedi. Alınan yanıt gövdesi {String} içermiyor.
 
-**Sağlamak** Özel bir araştırma oluşturduğunuzda, yanıt gövdesinden bir dizeyi eşleştirerek arka uç sunucusunu sağlıklı bir şekilde işaretleme seçeneğiniz vardır. Örneğin, Application Gateway eşleşecek bir dize olarak "yetkisiz" kabul edecek şekilde yapılandırabilirsiniz. Araştırma isteği için arka uç sunucu yanıtı "yetkisiz" dizesini içeriyorsa, bu durum sağlıklı olarak işaretlenir.
-Aksi takdirde, Bu iletiyle sağlıksız olarak işaretlenir.
+**Sağlamak** Özel bir araştırma oluşturduğunuzda, yanıt gövdesinden bir dizeyi eşleştirerek arka uç sunucusunu sağlıklı olarak işaretleme seçeneğiniz vardır. Örneğin, Application Gateway eşleşecek bir dize olarak "yetkisiz" kabul edecek şekilde yapılandırabilirsiniz. Araştırma isteği için arka uç sunucu yanıtı, dizeyi **yetkisiz**Içeriyorsa, sağlıklı olarak işaretlenir. Aksi takdirde, Bu iletiyle sağlıksız olarak işaretlenir.
 
-**Çözüm:** Aşağıdaki adımları izleyerek bu sorunu çözebilirsiniz:
+**Çözüm:** Bu sorunu çözmek için şu adımları izleyin:
 
 1.  Arka uç sunucusuna veya araştırma yolundaki bir istemci makineden yerel olarak erişin ve yanıt gövdesini denetleyin.
 
-2.  Yanıt gövdesinin yapılandırılanlarla eşleşip eşleşmediğini doğrulamak için Application Gateway özel araştırma yapılandırmasını denetleyin.
+1.  Application Gateway özel araştırma yapılandırmasındaki yanıt gövdesinin yapılandırılandıklarınızı eşleştirdiğini doğrulayın.
 
-3.  Eşleşiyorlarsa, araştırma yapılandırmasını kabul edilecek doğru dize değeriyle değiştirin.
+1.  Eşleşiyorlarsa, araştırma yapılandırmasını, kabul edilecek doğru dize değerine sahip olacak şekilde değiştirin.
 
-Application Gateway araştırma eşleştirmesi hakkında daha fazla bilgiyi [burada](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)bulabilirsiniz.
+[Application Gateway araştırma eşleştirmesi](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)hakkında daha fazla bilgi edinin.
 
 #### <a name="backend-server-certificate-invalid-ca"></a>Arka uç sunucu sertifikası geçersiz CA
 
-**İleti:** Arka uç tarafından kullanılan sunucu sertifikası iyi bilinen bir sertifika yetkilisi (CA) tarafından imzalanmadı. Arka uç tarafından kullanılan sunucu sertifikasının kök sertifikasını karşıya yükleyerek uygulama ağ geçidinde arka ucunu beyaz listeye ekleyin.
+**İleti:** Arka uç tarafından kullanılan sunucu sertifikası iyi bilinen bir sertifika yetkilisi (CA) tarafından imzalanmadı. Arka uç tarafından kullanılan sunucu sertifikasının kök sertifikasını karşıya yükleyerek Application Gateway arka ucunu beyaz listeye ekleyin.
 
-**Sağlamak** Application Gateway v2 ile uçtan uca SSL, arka uç sunucusunun sertifikasının Sunucu sağlıklı olduğunu bozmayacak şekilde doğrulanmasını gerektirir.
-Bir SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu sertifikasının Application Gateway güvenilen deposunda bulunan bir CA tarafından verilmiş olması gerekir. Sertifika, güvenilir bir CA tarafından verilmamışsa (örneğin, otomatik olarak imzalanan sertifikalar), kullanıcıların sertifikayı verenin sertifikasını Application Gateway yüklemesi gerekir.
+**Sağlamak** Application Gateway v2 ile uçtan uca SSL, sunucunun sağlıklı bir şekilde çıkarılması için arka uç sunucusunun sertifikasının doğrulanmasını gerektirir.
+SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu sertifikasının Application Gateway güvenilen deposunda bulunan bir CA tarafından verilmesi gerekir. Sertifika, güvenilir bir CA tarafından verilmediyse (örneğin, otomatik olarak imzalanan bir sertifika kullanılmışsa), kullanıcıların sertifikayı verenin sertifikasını Application Gateway yüklemesi gerekir.
 
-**Çözüm:** Güvenilen kök sertifikayı dışarı aktarmak ve Application Gateway yüklemek için aşağıdaki adımları izleyin (aşağıda verilen adımlar Windows istemcileri içindir)
+**Çözüm:** Güvenilen kök sertifikayı dışarı ve Application Gateway yüklemek için aşağıdaki adımları izleyin. (Bu adımlar Windows istemcileri içindir.)
 
-1.  Uygulamanızın barındırıldığı makinede oturum açın
+1.  Uygulamanızın barındırıldığı makinede oturum açın.
 
-2.  Win + R tuşuna basarak veya Başlat düğmesine sağ tıklayıp Çalıştır ' ı seçerek çalıştırma ' yı açın.
+1.  Win + R ' yi seçin veya **Başlat** düğmesine sağ tıklayıp **Çalıştır**' ı seçin.
 
-3.  Certmgr. msc yazın ve ENTER tuşuna basın. Ayrıca, başlangıç menüsünde Sertifika Yöneticisi ' ni de arayabilirsiniz.
+1.  Girin `certmgr.msc` ve ENTER ' u seçin. Ayrıca, **Başlangıç** menüsünde Sertifika Yöneticisi 'ni de arayabilirsiniz.
 
-4.  Sertifikayı, genellikle sertifikalar-geçerli \'Kullanıcı\\kişisel\\sertifikaları\'' nda bulun ve sertifikayı açın
+1.  Sertifikayı bulun, genellikle içinde `\Certificates - Current User\\Personal\\Certificates\`açın ve açın.
 
-5.  Sertifika özelliklerinde, sertifika yolu sekmesini seçin.
+1.  Kök sertifikayı seçin ve ardından **sertifikayı görüntüle**' yi seçin.
 
-6.  Kök sertifikayı seçin ve "sertifikayı görüntüle" seçeneğini belirleyin
+1.  Sertifika Özellikleri ' nde **Ayrıntılar** sekmesini seçin.
 
-7.  Sertifika özelliklerinde, Ayrıntılar sekmesine geçin
+1.  **Ayrıntılar** sekmesinde **Dosyaya Kopyala** seçeneğini belirleyin ve dosyayı Base-64 ile kodlanmış X. 509.440 (. CER) biçiminde.
 
-8.  Ayrıntılar sekmesinde "Dosyaya Kopyala" seçeneğini belirleyin ve dosyayı Base-64 ile kodlanmış X. 509.440 (. CER) biçimi
+1.  Azure portal Application Gateway HTTP **ayarları** sayfasını açın.
 
-9.  Kaydedildikten sonra, Azure portal Application Gateway HTTP ayarları sayfasını açın
+1. HTTP ayarlarını açın, **sertifika ekle**' yi seçin ve az önce kaydettiğiniz sertifika dosyasını bulun.
 
-10. HTTP ayarlarını açın ve "sertifika ekle" ye tıklayın ve yakın zamanda kaydettiğiniz sertifika dosyasını bulun
+1. HTTP ayarlarını kaydetmek için **Kaydet** ' i seçin.
 
-11. HTTP ayarlarını kaydetmek için Kaydet ' e tıklayın
+Alternatif olarak, sunucuya doğrudan erişerek (Application Gateway atlayarak) kök sertifikayı tarayıcıdan dışarı aktarabilir ve kök sertifikayı tarayıcıdan dışarı aktarabilirsiniz.
 
-Alternatif olarak, bir tarayıcı kullanarak sunucuya doğrudan erişerek (Application Gateway atlayarak) ve kök sertifikayı tarayıcıdan dışarı aktararak bir istemci makinesinden kök sertifikayı dışarı aktarabilirsiniz.
-
-Güvenilen kök sertifikaları ayıklama ve karşıya yükleme hakkında ayrıntılı adımlar için [Application Gateway bölümüne bakın](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
+Güvenilen kök sertifikaların Application Gateway nasıl ayıklanıp yüklenemediği hakkında daha fazla bilgi için bkz. [Güvenilen kök sertifikayı dışarı aktarma (v2 SKU 'su için)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
 
 #### <a name="trusted-root-certificate-mismatch"></a>Güvenilen kök sertifika uyumsuzluğu
 
 **İleti:** Arka uç tarafından kullanılan sunucu sertifikasının kök sertifikası, uygulama ağ geçidine eklenmiş olan güvenilen kök sertifika ile eşleşmiyor. Arka ucun beyaz listeye doğru kök sertifikayı eklemediğinizden emin olun
 
-**Sağlamak** Application Gateway v2 ile uçtan uca SSL, arka uç sunucusunun sertifikasının Sunucu sağlıklı olduğunu bozmayacak şekilde doğrulanmasını gerektirir.
-Bir SSL sertifikasının güvenilir olması için, arka uç sunucusunun bu sertifikasının Application Gateway güvenilen deposunda bulunan bir CA tarafından verilmiş olması gerekir. Sertifika, güvenilir bir CA tarafından verilmamışsa (örneğin, otomatik olarak imzalanan sertifikalar), kullanıcıların sertifikayı verenin sertifikasını Application Gateway yüklemesi gerekir.
+**Sağlamak** Application Gateway v2 ile uçtan uca SSL, sunucunun sağlıklı bir şekilde çıkarılması için arka uç sunucusunun sertifikasının doğrulanmasını gerektirir.
+SSL sertifikasının güvenilir olması için, arka uç sunucu sertifikasının, Application Gateway güvenilen deposunda bulunan bir CA tarafından verilmesi gerekir. Sertifika, güvenilir bir CA (örneğin, kendinden imzalı bir sertifika kullanıldıysa) tarafından verilmediyse, kullanıcıların sertifikayı verenin sertifikasını Application Gateway yüklemesi gerekir.
 
-Application Gateway HTTP ayarlarına yüklenmiş olan sertifika, arka uç sunucu sertifikasının kök sertifikasıyla eşleşmelidir.
+HTTP ayarlarına Application Gateway yüklenen sertifika, arka uç sunucu sertifikasının kök sertifikasıyla eşleşmelidir.
 
-**Çözüm:** Yukarıda bahsedilen hata iletisini görürseniz, Application Gateway yüklenen sertifika ile arka uç sunucusuna yüklenen sertifika arasında bir uyumsuzluk olduğu anlamına gelir.
+**Çözüm:** Bu hata iletisini alırsanız, Application Gateway yüklenen sertifika ile arka uç sunucusuna yüklenmiş olan sertifika arasında bir uyumsuzluk vardır.
 
-Application Gateway doğru güvenilen kök sertifikayı karşıya yüklemek için yukarıda bahsedilen 1-11 adımlarını izleyin.
+Application Gateway, doğru güvenilen kök sertifikayı karşıya yüklemek için yukarıdaki yöntemdeki 1-11 adımlarını izleyin.
 
-Güvenilen kök sertifikaları ayıklama ve karşıya yükleme hakkında ayrıntılı adımlar için [Application Gateway bölümüne bakın](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
+Güvenilen kök sertifikaların Application Gateway nasıl ayıklanıp yüklenemediği hakkında daha fazla bilgi için bkz. [Güvenilen kök sertifikayı dışarı aktarma (v2 SKU 'su için)](https://docs.microsoft.com/azure/application-gateway/certificates-for-backend-authentication#export-trusted-root-certificate-for-v2-sku).
 > [!NOTE]
-> Ayrıca, arka uç sunucusu, TLS el sıkışması sırasında kök > ara (varsa)-> yaprak dahil olmak üzere sertifikanın tam zincirini değiş tokuş etmez da meydana gelir. Doğrulamak için herhangi bir istemciden OpenSSL komutlarını kullanabilir ve Application Gateway araştırmasının yapılandırılmış ayarlarını kullanarak arka uç sunucusuna bağlanabilirsiniz.
+> Bu hata, arka uç sunucusu, TLS el sıkışması sırasında kök > ara (varsa) > yaprak dahil olmak üzere tüm sertifika zincirini değişmediğinde meydana gelebilir. Doğrulamak için herhangi bir istemciden OpenSSL komutlarını kullanabilir ve Application Gateway araştırmakta yapılandırılan ayarları kullanarak arka uç sunucusuna bağlanabilirsiniz.
 
-Örneğin,
+Örneğin:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
-Çıktı, döndürülmekte olan sertifikanın tüm zincirini göstermezse, kök sertifika dahil olmak üzere tüm zincirle sertifikayı yeniden dışarı aktarın ve bunu arka uç sunucunuzda yapılandırın. 
+Çıktı, döndürülmekte olan sertifikanın tüm zincirini göstermezse, sertifikayı Kök sertifika da dahil olmak üzere tüm zincirle yeniden dışarı aktarın. Bu sertifikayı arka uç sunucunuzda yapılandırın. 
 
 BAĞLI (00000188) \
 Derinlik = 0 OU = etki alanı denetimi doğrulanan, CN \*=. example.com \
@@ -282,123 +278,118 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx \
 
 **İleti:** Arka uç sertifikasının ortak adı (CN), araştırmanın ana bilgisayar üstbilgisiyle eşleşmiyor.
 
-**Sağlamak** Application Gateway, arka uç http ayarında belirtilen ana bilgisayar adının, arka uç sunucusunun SSL sertifikası tarafından sunulan ortak ad (CN) ile eşleşip eşleşmediğini doğrular. Bu yalnızca bir Standard_v2 ve WAF_v2 SKU davranışıdır. Standart ve WAF SKU 'sunun SNı, arka uç havuzu adresinde FQDN olarak ayarlanır.
+**Sağlamak** Application Gateway, arka uç HTTP ayarlarında belirtilen ana bilgisayar adının, arka uç sunucusunun SSL sertifikası tarafından sunulan CN ile eşleşip eşleşmediğini denetler. Bu, Standard_v2 ve WAF_v2 SKU davranışıdır. Standart ve WAF SKU 'nun Sunucu Adı Belirtme (SNı), arka uç havuzu adresinde FQDN olarak ayarlanır.
 
-V2 SKU 'sunda, varsayılan araştırma varsa (özel araştırma yapılandırılmadı/ilişkili), SNı HTTP ayarlarında belirtilen ana bilgisayar adından, veya "arka uç adresinden ana bilgisayar adı Seç" değeri, arka uç adres havuzunun bir geçerli FQDN.
+V2 SKU 'sunda, varsayılan bir yoklama varsa (özel araştırma yapılandırılmamışsa ve ilişkili değilse), SNı HTTP ayarlarında belirtilen ana bilgisayar adından ayarlanır. Veya, arka uç adres havuzunun geçerli bir FQDN içerdiği HTTP ayarlarında "arka uç adresinden ana bilgisayar adı Seç" bölümünde bahsedildiğinde, bu ayar geçerli olur.
 
-HTTP ayarlarıyla ilişkili özel bir araştırma varsa, SNı özel araştırma yapılandırmasında belirtilen ana bilgisayar adından ayarlanır veya "arka uç HTTP ayarlarından ana bilgisayar adı Seç" işlemi özel araştırmayı işaretlenmişse, HTTP 'de belirtilen ana bilgisayar adından ayarlanır. Ayarlar.
+HTTP ayarlarıyla ilişkili özel bir araştırma varsa, SNı özel araştırma yapılandırmasında belirtilen ana bilgisayar adından ayarlanacaktır. Ya da özel **Yoklamede arka uç http ayarlarından bir ana bilgisayar** adı seçilirse, SNI http ayarlarında belirtilen ana bilgisayar adından ayarlanır.
 
-Örnek olarak, "arka uç adresinden ana bilgisayar adı Seç" ayarı HTTP ayarlarında ayarlanır, arka uç adres havuzu geçerli bir FQDN içermelidir.
+HTTP ayarlarında **arka uç adresinden seçim ana bilgisayar adı** ayarlandıysa, arka uç adres havuzunun GEÇERLI bir FQDN içermesi gerekir.
 
-Yukarıda bahsedilen hata iletisini görürseniz, arka uç sertifikasının ortak adı (CN) özel araştırmakta veya HTTP ayarlarında yapılandırılan ana bilgisayar adıyla eşleşmez ("arka uç HTTP ayarlarından ana bilgisayar adı seçin" seçilir). Varsayılan bir araştırma kullanıyorsanız, ana bilgisayar adı "127.0.0.1" olarak ayarlanır. Bu istenen bir değer değilse, özel bir araştırma oluşturmanız ve bunu HTTP ayarlarıyla ilişkilendirmeniz gerekir.
+Bu hata iletisini alırsanız, arka uç sertifikasının CN 'si özel araştırmakta veya HTTP ayarlarında yapılandırılan ana bilgisayar adıyla eşleşmez ( **arka uca http ayarlarından seçim ana bilgisayar** adı seçiliyse). Varsayılan bir araştırma kullanıyorsanız, ana bilgisayar adı **127.0.0.1**olarak ayarlanır. Bu istenen bir değer değilse, özel bir araştırma oluşturmanız ve bunu HTTP ayarlarıyla ilişkilendirmeniz gerekir.
 
 **Çözüm:**
 
-Sorunu çözmek için aşağıdaki adımları izleyin:
+Sorunu çözmek için aşağıdaki adımları izleyin.
 
 Windows için:
 
-1.  Uygulamanızın barındırıldığı makinede oturum açın
+1.  Uygulamanızın barındırıldığı makinede oturum açın.
 
-2.  Win + R tuşuna basarak veya Başlat düğmesine sağ tıklayıp Çalıştır ' ı seçerek çalıştırma ' yı açın.
+1.  Win + R ' yi seçin veya **Başlat** düğmesine sağ tıklayıp **Çalıştır**' ı seçin.
 
-3.  Certmgr. msc yazın ve ENTER tuşuna basın. Ayrıca, başlangıç menüsünde Sertifika Yöneticisi ' ni de arayabilirsiniz.
+1.  **Certmgr. msc** girin ve ENTER ' u seçin. Ayrıca, **Başlangıç** menüsünde Sertifika Yöneticisi 'ni de arayabilirsiniz.
 
-4.  Sertifikayı, genellikle sertifikalar-geçerli \'Kullanıcı\\kişisel\\sertifikaları\'' nda bulun ve sertifikayı açın
+1.  Sertifikayı bulun (genellikle içinde `\Certificates - Current User\\Personal\\Certificates`) ve sertifikayı açın.
 
-5.  Ayrıntılar sekmesinde, sertifikanın konusunu denetleyin
+1.  **Ayrıntılar** sekmesinde, sertifika **konusunu**kontrol edin.
 
-6.  Ayrıntılardan sertifikanın CN 'sini doğrulayın ve özel araştırmanın veya HTTP ayarlarının ana bilgisayar adı alanına aynısını girin ("arka uç HTTP ayarlarından ana bilgisayar adı Seç" seçilirse). Bu, Web siteniz için istenen konak adı değilse, bu etki alanı için bir sertifika almanız veya özel araştırma/http ayarı yapılandırmasında doğru ana bilgisayar adını girmeniz gerekir.
+1.  Ayrıntılardan sertifikanın CN 'sini doğrulayın ve özel araştırmanın ana bilgisayar adı alanına veya HTTP ayarları ' na ( **arka uç http ayarlarından seçim ana bilgisayar** adı seçiliyse) yazın. Bu, Web siteniz için istenen konak adı değilse, bu etki alanı için bir sertifika almanız veya özel araştırmasına veya HTTP ayarı yapılandırmasına doğru ana bilgisayar adını girmeniz gerekir.
 
-OpenSSL kullanan Linux için
+OpenSSL kullanan Linux için:
 
-1.  OpenSSL içinde bu komutu çalıştırın 
-```
-openssl x509 -in certificate.crt -text -noout
-```
+1.  OpenSSL 'de şu komutu çalıştırın:
+    ```
+    openssl x509 -in certificate.crt -text -noout
+    ```
 
-2.  Görüntülenözellikler ' de, sertifikanın CN 'sini bulun ve http ayarlarının hostname alanına aynısını girin. Bu, Web siteniz için istenen konak adı değilse, bu etki alanı için bir sertifika almanız veya özel araştırma/http ayarı yapılandırmasında doğru ana bilgisayar adını girmeniz gerekir.
+2.  Görüntülenözellikler ' de, sertifikanın CN 'sini bulun ve http ayarlarının ana bilgisayar adı alanına aynısını girin. Bu, Web siteniz için istenen konak adı değilse, bu etki alanı için bir sertifika almanız veya özel araştırmasına veya HTTP ayarı yapılandırmasına doğru ana bilgisayar adını girmeniz gerekir.
 
 #### <a name="backend-certificate-is-invalid"></a>Arka uç sertifikası geçersiz
 
 **İleti:** Arka uç sertifikası geçersiz. \"Geçerli tarih, sertifikadaki\" geçerli ve \"geçerli\" bir tarih aralığı içinde değil.
 
-**Sağlamak** Sunucunun SSL sertifikası geçerli olmadığı takdirde, her sertifika bir geçerlilik süresiyle birlikte HTTPS bağlantısı güvenli olmayacaktır.
-Geçerli veriler, öğesinden geçerli ve geçerli bir aralık dahilinde olmalıdır. Aksi takdirde, sertifika geçersiz olarak kabul edilir ve güvenlik konusu olacaktır. Bu noktada, Application Gateway arka uç sunucusunu sağlıksız olarak işaretleyecek.
+**Sağlamak** Her sertifika bir geçerlilik aralığıyla birlikte gelir ve sunucunun SSL sertifikası geçerli olmadığı takdirde HTTPS bağlantısı güvende olmaz. Geçerli veriler, **öğesinden geçerli** ve **geçerli** bir aralık dahilinde olmalıdır. Aksi takdirde, sertifika geçersiz olarak kabul edilir ve Application Gateway arka uç sunucusunu sağlıksız olarak işaretleyen bir güvenlik sorunu oluşturur.
 
-**Çözüm:** SSL sertifikanızın geçerliliği dolmuşsa sertifikayı satıcınızla yenileyip sunucu ayarlarını yeni sertifikayla güncelleştirin. Otomatik olarak imzalanan bir sertifika ise, geçerli bir sertifika oluşturmanız ve kök sertifikayı Application Gateway HTTP ayarlarına yüklemeniz gerekir. Bunu yapmak için aşağıdaki adımları izleyin:
+**Çözüm:** SSL sertifikanızın süresi dolmuşsa, sertifikayı satıcınızla yenileyin ve sunucu ayarlarını yeni sertifikayla güncelleştirin. Otomatik olarak imzalanan bir sertifika ise, geçerli bir sertifika oluşturmanız ve kök sertifikayı Application Gateway HTTP ayarlarına yüklemeniz gerekir. Bunu yapmak için şu adımları uygulayın:
 
-1.  Portalda Application Gateway HTTP ayarlarınızı açın
+1.  Application Gateway HTTP ayarlarınızı portalda açın.
 
-2.  Süresi doldu sertifikası olan HTTP ayarlarını seçin, sertifika ekle ' yi seçin ve yeni sertifika dosyasını açın
+1.  Süresi biten sertifikayı içeren ayarı seçin, **sertifika ekle**' yi seçin ve yeni sertifika dosyasını açın.
 
-3.  Sertifikanın yanındaki Sil simgesini kullanarak eski sertifikayı kaldırın ve Kaydet ' e tıklayın.
+1.  Sertifikanın yanındaki **Sil** simgesini kullanarak eski sertifikayı kaldırın ve ardından **Kaydet**' i seçin.
 
 #### <a name="certificate-verification-failed"></a>Sertifika doğrulaması başarısız oldu
 
 **İleti:** Arka uç sertifikasının geçerliliği doğrulanamadı. Nedenini öğrenmek için, {errorCode} hata koduyla ilişkili ileti için SSL tanılamayı aç ' ı işaretleyin
 
-**Sağlamak** Bu hata, Application Gateway sertifikanın geçerliliğini doğrulayamadığı zaman oluşur.
+**Sağlamak** Application Gateway sertifikanın geçerliliğini doğrulayamadığı zaman bu hata oluşur.
 
-**Çözüm:** Bu sorunu çözmek için, sunucunuzun düzgün şekilde oluşturulmuş olması durumunda sertifikayı kontrol edin. Örneğin, sertifikayı ve özelliklerini doğrulamak için [OpenSSL](https://www.openssl.org/docs/man1.0.2/man1/verify.html) 'yi kullanabilir ve SERTIFIKAYı Application Gateway http ayarlarına yeniden yüklemeyi deneyebilirsiniz.
+**Çözüm:** Bu sorunu çözmek için, sunucunuzdaki sertifikanın düzgün bir şekilde oluşturulduğunu doğrulayın. Örneğin, sertifikayı ve özelliklerini doğrulamak için [OpenSSL](https://www.openssl.org/docs/man1.0.2/man1/verify.html) 'yi kullanabilir ve sonra SERTIFIKAYı Application Gateway http ayarlarına yeniden yüklemeyi deneyebilirsiniz.
 
-<a name="backend-health-status-unknown"></a>Arka uç sistem durumu bilinmiyor
+<a name="backend-health-status-unknown"></a>Arka uç sistem durumu: bilinmiyor
 -------------------------------
-Arka uç sistem durumu bilinmiyor olarak gösteriliyorsa, portalda aşağıdaki ekran görüntüsü gibi görüntülenir:
+Arka uç sistem durumu bilinmiyor olarak gösteriliyorsa, Portal görünümü aşağıdaki ekran görüntüsüne benzer olacaktır:
 
 ![Application Gateway arka uç durumu-bilinmiyor](./media/application-gateway-backend-health-troubleshooting/appgwunknown.png)
 
-Arka uç durumunun bilinmiyor olarak gösterilmesi durumunda aşağıdaki nedenlerden biri veya birkaçı olabilir:
+Bu davranış, aşağıdakilerden biri veya birkaçı nedeniyle oluşabilir:
 
-1.  Application Gateway alt ağındaki NSG, "Internet" üzerinden 65503-65534 (v1 SKU) veya 65200-65535 (v2 SKU) bağlantı noktalarına gelen erişimi engelliyor
-2.  Varsayılan yol (0.0.0.0/0) olan Application Gateway alt ağında, Internet olarak değil sonraki atlama ile UDR
-3.  BGP üzerinden VNet 'e ExpressRoute/VPN bağlantısı tarafından tanıtılan varsayılan yol
-4.  Özel DNS sunucusu, ortak etki alanı adlarını çözümleyemeyecek VNet 'te yapılandırıldı
-5.  Application Gateway sağlıksız bir durumda
+1.  Application Gateway alt ağındaki NSG, "Internet" üzerinden 65503-65534 (v1 SKU) veya 65200-65535 (v2 SKU) bağlantı noktalarına gelen erişimi engelliyor.
+1.  Application Gateway alt ağındaki UDR, varsayılan yol (0.0.0.0/0) olarak ayarlanır ve sonraki atlama "Internet" olarak belirtilmez.
+1.  Varsayılan yol, BGP üzerinden sanal ağa yönelik bir ExpressRoute/VPN bağlantısı tarafından tanıtılabilir.
+1.  Özel DNS sunucusu, ortak etki alanı adlarını giderebilecek bir sanal ağ üzerinde yapılandırılır.
+1.  Application Gateway sağlıksız bir durumda.
 
 **Çözüm:**
 
-1.  NSG 'nizin 65503-65534 (v1 SKU) veya 65200-65535 (v2 SKU) bağlantı noktalarına "Internet" üzerinden erişimi engelleyip engellemediğini denetleyin
+1.  NSG 'nizin **Internet**'ten 65503-65534 (v1 SKU) veya 65200-65535 (v2 SKU) bağlantı noktalarına erişimi engelleyip engellemediğini denetleyin:
 
-    a.  Application Gateway "genel bakış" sekmesinde, sanal ağ/alt ağ bağlantısını seçin
+    a.  Application Gateway **genel bakış** sekmesinde **sanal ağ/alt ağ** bağlantısını seçin.
 
-    b.  Sanal ağınızın alt ağlar sekmesinde Application Gateway dağıtıldığı alt ağı seçin
+    b.  Sanal ağınızın **alt ağlar** sekmesinde Application Gateway dağıtıldığı alt ağı seçin.
 
-    c.  Yapılandırılmış bir NSG olup olmadığını denetleyin
+    c.  Herhangi bir NSG 'nin yapılandırılıp yapılandırılmadığını denetleyin.
 
-    d.  Varsa, arama sekmesinde veya tüm kaynaklar altında bu NSG kaynağını arayın
+    d.  Bir NSG yapılandırılmışsa, **arama** sekmesinde veya **tüm kaynaklar**' da bu NSG kaynağını arayın.
 
-    e.  Gelen kuralları bölümünde, v1 SKU 'SU veya 65200-65535 v2 SKU 'SU için 65503-65534 hedef bağlantı noktası aralığına, herhangi bir veya Internet olarak kaynak içeren bir gelen kuralı ekleyin
+    e.  **Gelen kuralları** bölümünde, v1 SKU 'su veya 65200-65535 v2 SKU 'su için 65503-65534 hedef bağlantı noktası aralığına, **herhangi bir** veya **Internet**olarak **kaynak** kümesiyle izin veren bir gelen kuralı ekleyin.
 
-    f.  Kaydet ' e tıklayın ve arka uç durumunun başarıyla görüntüleyip görüntüleyemediğinizi doğrulayın
+    f.  **Kaydet** ' i seçin ve arka ucunu sağlıklı olarak görüntüleyebildiğinizi doğrulayın. Alternatif olarak, bunu [PowerShell/CLI](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)aracılığıyla yapabilirsiniz.
 
-    g.  Alternatif olarak, bunu [PowerShell/CLI](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) aracılığıyla yapabilirsiniz
-
-2.  UDR 'nizin bir sonraki atlama ile Internet olmayan bir varsayılan yolu (0.0.0.0/0) olup olmadığını denetleyin
+1.  UDR 'nizin bir sonraki atlama ile **Internet**olarak ayarlanmamış bir varsayılan yolu (0.0.0.0/0) olup olmadığını denetleyin:
     
-    a.  Alt ağlarınızı öğrenmek için 1. a ve 1. b adımlarını izleyin
+    a.  Alt ağını öğrenmek için 1a ve 1b adımlarını izleyin.
 
-    b.  Yapılandırılmış herhangi bir UDR olup olmadığını denetleyin. Bir varsa, arama çubuğunda veya tüm kaynaklar altında kaynağı arayın
+    b.  Yapılandırılmış herhangi bir UDR olup olmadığını kontrol edin. Varsa, arama çubuğunda veya **tüm kaynaklar**altında kaynağı arayın.
 
-    c.  Sonraki atlama ile Internet olarak değil varsayılan yolların (0.0.0.0/0) olup olmadığını denetleyin. Sanal Gereç veya sanal ağ geçidi ise, paketi değiştirmeden sanal gerecinizin veya şirket içi cihazın paketi Internet hedefine doğru bir şekilde yönlendirebilmesini sağlayın
+    c.  Sonraki atlama ile **Internet**olarak ayarlanmamış varsayılan yolların (0.0.0.0/0) olup olmadığını denetleyin. Ayar **Sanal Gereç** ya da **sanal ağ geçidi**ise, sanal gerecinizin veya şirket içi cihazın paketi değiştirmeden paketi Internet hedefine doğru şekilde yönlendirebileceğine emin olmanız gerekir.
 
-    d.  Aksi halde, bir sonraki atlamayı Internet olarak değiştirin, Kaydet ' e tıklayın ve arka uç durumunu doğrulayın
+    d.  Aksi halde, bir sonraki atlamayı **Internet**olarak değiştirin, **Kaydet**' i seçin ve arka uç durumunu doğrulayın.
 
-3.  BGP üzerinden VNet 'e ExpressRoute/VPN bağlantısı tarafından tanıtılan varsayılan yol
+1.  BGP üzerinden sanal ağa ExpressRoute/VPN bağlantısı tarafından tanıtılan varsayılan yol:
 
-    a.  BGP üzerinden sanal ağa yönelik bir ExpressRoute/VPN bağlantınız varsa ve varsayılan yolu tanıtıyorsa, paketin değişiklik yapılmadan internet hedefine geri yönlendirildiğinden emin olmanız gerekir.
+    a.  BGP üzerinden sanal ağa yönelik bir ExpressRoute/VPN bağlantınız varsa ve varsayılan bir yol tanıtıyorsa, paketin değişiklik yapılmadan internet hedefine geri yönlendirildiğinden emin olmanız gerekir. Application Gateway portalında **bağlantı sorunlarını giderme** seçeneğini kullanarak doğrulayabilirsiniz.
 
-    b.  Application Gateway portalında "bağlantı sorunlarını giderme" seçeneğini kullanarak doğrulayabilirsiniz
+    b.  1\.1.1.1 gibi internet yönlendirilebilir IP adresi olarak hedefi el ile seçin. Hedef bağlantı noktasını bir şey olarak ayarlayın ve bağlantıyı doğrulayın.
 
-    c.  "1.1.1.1" gibi internet yönlendirilebilir IP adresi ve hedef bağlantı noktası gibi her şeyi el ile seçin ve bağlantıyı denetleyin.
+    c.  Sonraki atlama sanal ağ geçidi ise, ExpressRoute veya VPN üzerinden tanıtılan bir varsayılan yol olabilir.
 
-    d.  Sonraki atlama sanal ağ geçidi ise, ExpressRoute veya VPN üzerinden tanıtılan bir varsayılan yol olabilir
+1.  Sanal ağda yapılandırılmış özel bir DNS sunucusu varsa, sunucunun (veya sunucularının) ortak etki alanlarını çözümleyebildiğini doğrulayın. Application Gateway, OCSP sunucuları gibi dış etki alanlarına ulaşabilmesi veya sertifikanın iptal durumunu denetlemesi gerektiği senaryolarda ortak etki alanı adı çözümlemesi gerekebilir.
 
-4.  VNet 'te yapılandırılmış özel bir DNS sunucusu varsa, sunucu (ler) in ortak etki alanlarını çözümleyebildiğini doğrulayın. Application Gateway, OCSP sunucuları gibi dış etki alanlarına ulaşabilmesi ya da sertifikanın iptal durumunu denetlemesi, vb. senaryolarda genel etki alanı adı çözümlemesi gerekebilir.
+1.  Application Gateway sağlıklı ve çalışır durumda olduğunu doğrulamak için, portalda **kaynak durumu** seçeneğine gidin ve durumun **sağlıklı**olduğunu doğrulayın. **Sağlıksız** veya **düşürülmüş** bir durum görürseniz [desteğe başvurun](https://azure.microsoft.com/support/options/).
 
-5.  Application Gateway sağlıklı ve çalışır durumda olup olmadığını doğrulamak için portalda Kaynak Durumu seçeneğine gidin ve "sağlıklı" olup olmadığını doğrulayın. Sağlıksız veya düşürülmüş durumu görüyorsanız [desteğe başvurun](https://azure.microsoft.com/support/options/).
-
-<a name="next-steps"></a>Sonraki Adımlar
+<a name="next-steps"></a>Sonraki adımlar
 ----------
 
-Tanılama ve günlüğe kaydetme Application Gateway hakkında daha fazla bilgi edinmek için [buraya](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)bakın.
+[Tanılama ve günlüğe kaydetme Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)hakkında daha fazla bilgi edinin.

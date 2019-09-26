@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146454"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315716"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory yönetilmeyen bir dizinden yönetici olarak yararlanın
 
@@ -101,7 +101,7 @@ Desteklenen hizmet planları şunları içerir:
 
 Dış yönetici, SharePoint, OneDrive veya Skype Kurumsal içeren hizmet planlarına sahip herhangi bir hizmette desteklenmez; Örneğin, Office ücretsiz aboneliği aracılığıyla. 
 
-İsteğe bağlı olarak, etki alanı adını yönetilmeyen kiracıdan kaldırmak ve istenen kiracı üzerinde doğrulamak için [ **Forcetakeover** seçeneğini](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) kullanabilirsiniz. **ForceTakeover seçeneği, kullanıcılar üzerinde hareket etmez veya aboneliğe erişimi korur. Bu seçenek yalnızca etki alanı adını taşıdıkça.**
+İsteğe bağlı olarak, etki alanı adını yönetilmeyen kiracıdan kaldırmak ve istenen kiracı üzerinde doğrulamak için [ **Forcetakeover** seçeneğini](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) kullanabilirsiniz. 
 
 #### <a name="more-information-about-rms-for-individuals"></a>Bireyler için RMS hakkında daha fazla bilgi
 

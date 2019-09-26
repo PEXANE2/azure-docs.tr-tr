@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 562ad0e5e6088c2fbadc853779b7533c5398e079
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 86ad892f514513840ff33e46921607221896db84
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176634"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315742"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Azure Lab Services bir laboratuvardaki Linux sanal makineleri için Uzak Masaüstü 'nü etkinleştirme
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
@@ -37,6 +37,7 @@ Laboratuvar oluşturma sırasında, öğretmenler **Linux** görüntüleri için
 
 > [!IMPORTANT] 
 > **Uzak Masaüstü bağlantısını** etkinleştirmek yalnızca Linux makinelerde **RDP** bağlantı noktasını açar. Zaten RDP, sanal makine görüntüsüne yüklenip yapılandırılmışsa (örneğin: Ubuntu Veri Bilimi Sanal Makinesi Image), siz/öğrenciler ek adımları izleyerek RDP aracılığıyla VM 'lere bağlanabilir.
+> 
 > VM görüntüsünün RDP yüklemesi ve yapılandırması yoksa, Linux makinesine ilk kez SSH kullanarak bağlanmanız ve RDP ve GUI paketlerini yüklemeniz gerekir, böylelikle/öğrenciler daha sonra RDP kullanarak Linux makinesine bağlanabilir. Daha sonra, öğrencilerin öğrenci Linux VM 'lerinde RDP kullanabilmesi için görüntüyü yayımlayın.
 
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri

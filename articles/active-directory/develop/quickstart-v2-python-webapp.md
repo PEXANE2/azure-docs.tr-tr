@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: c5817427102bf10dcd1ece932b0f582d973efaf7
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 587e7a82e2a9cde8ff6d08274928ab22aa969061
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257899"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309619"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı Başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -101,48 +101,35 @@ Bu örneği çalıştırmak için şunlar gerekir:
 1. Kök klasörde bulunan **app_config. Kopyala** dosyasını açın ve aşağıdaki kod parçacığı ile değiştirin:
 
 ```python
-AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
-CLIENT_ID = "Enter_the_Application_Id_here"
 CLIENT_SECRET = "Enter_the_Client_Secret_Here"
-SCOPE = ["https://graph.microsoft.com/User.Read"]
-REDIRECT_URI = "http://localhost:5000/getAToken"
+CLIENT_ID = "Enter_the_Application_Id_here"
 ```
 
 > [!div renderon="docs"]
 > Konumlar:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
-> - `Enter_the_Tenant_Info_Here` - Aşağıdaki seçeneklerden biridir:
->   - Uygulamanız **yalnızca Kuruluşumu**destekliyorsa, bu değeri **Kiracı kimliği** veya **kiracı adıyla** değiştirin (örneğin, contoso.onmicrosoft.com)
->   - Uygulamanız **Herhangi bir kuruluş dizinindeki hesaplar** yaklaşımını destekliyorsa bu değeri `organizations` ile değiştirin
->   - Uygulamanız **Tüm Microsoft hesabı kullanıcıları** yaklaşımını destekliyorsa bu değeri `common` ile değiştirin
 > - `Enter_the_Client_Secret_Here`-Sertifikalar 'da oluşturduğunuz **Istemci gizli anahtarı** , kaydettiğiniz uygulamanın **gizli dizileri &** .
 
 #### <a name="step-4-run-the-code-sample"></a>4\. Adım: Kod örneğini çalıştırma
 
-- Sunucu tarafı oturum yönetimi için MSAL Python kitaplığını, Flask çerçevesini, Flask oturumlarını ve PIP 'yi şu şekilde kullanarak istekleri yüklemeniz gerekir:
+1. Sunucu tarafı oturum yönetimi için MSAL Python kitaplığını, Flask çerçevesini, Flask oturumlarını ve PIP 'yi şu şekilde kullanarak istekleri yüklemeniz gerekir:
 
-```Shell
-pip install msal
-pip install flask
-pip install Flask-Session
-pip install requests
-```
+   ```Shell
+   pip install -r requirements.txt
+   ```
 
-- Flask için ortam değişkeni zaten ayarlandıysa: App.py from Shell veya komut satırından Çalıştır:
+2. App.py from Shell veya komut satırından Çalıştır:
 
-```Shell
-python app.py
-```
+   ```Shell
+   python app.py
+   ```
 
-- Flask için ortam değişkeni ayarlanmamışsa:
+## <a name="next-steps"></a>Sonraki adımlar
 
-    1. Aşağıdaki komutları, proje dizinine giderek Shell veya komut satırına yazın:
+Kullanıcılara oturum açma ve sonra Web API 'Lerini çağıran Web Apps hakkında daha fazla bilgi edinin:
 
-```Shell
-export FLASK_APP=app.py
-export FLASK_DEBUG=1
-flask run
-```
+> [!div class="nextstepaction"]
+> [Senaryo: Kullanıcılar oturum açtığında Web Apps](scenario-web-app-sign-user-overview.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

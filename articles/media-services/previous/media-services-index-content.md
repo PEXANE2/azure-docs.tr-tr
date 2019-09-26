@@ -12,23 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: a51774a1db76086440742abd5aedce3fbd26c270
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: d1502b4e0e024a93db41a97589231eef1ed6696f
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016100"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310161"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Azure Media Indexer ile medya dosyalarını dizine alma
+
+> [!NOTE]
+> [Azure Media Indexer](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) , bu eski medya işlemcisinin yerini alır. Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
+
 Azure Media Indexer, medya dosyalarınızın içeriğini aranabilir hale getirmenizi ve kapalı açıklamalı alt yazı ve anahtar sözcükler için tam metin dökümü oluşturmanıza olanak sağlar. Tek bir medya dosyasını işleyebileceğiniz gibi, birden çok medya dosyasını toplu olarak da işleyebilirsiniz.  
 
-> [!IMPORTANT]
-> İçerik dizin oluştururken, temiz konuşma içeren medya dosyalarını (arka plan müziği, gürültü, efekt veya mikrofon hisleri olmadan) kullandığınızdan emin olun. Uygun içeriğe örnek olarak şunlar verilebilir: kayıtlı toplantılar, seminerler veya sunular. Şu içerikler dizin oluşturmak için uygun olmayabilir: Filmler, TV programları, karışık ses ve ses efektleriyle herhangi bir şey, arka plan gürültüsü olan kötü kaydedilmiş içerik (hisler).
-> 
-> 
+İçerik dizin oluştururken, temiz konuşma içeren medya dosyalarını (arka plan müziği, gürültü, efekt veya mikrofon hisleri olmadan) kullandığınızdan emin olun. Uygun içeriğe örnek olarak şunlar verilebilir: kayıtlı toplantılar, seminerler veya sunular. Şu içerikler dizin oluşturmak için uygun olmayabilir: Filmler, TV programları, karışık ses ve ses efektleriyle herhangi bir şey, arka plan gürültüsü olan kötü kaydedilmiş içerik (hisler).
 
 Bir dizin oluşturma işi aşağıdaki çıktıları oluşturabilir:
 
@@ -248,7 +249,7 @@ Aynı çıkışlar (başarılı işler olarak) oluşturulur. Hata sütunu değer
 ### <a id="preset"></a>Azure Media Indexer için görev önayarı
 Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön ayarı sağlayarak özelleştirilebilir.  Bu yapılandırma XML biçimi aşağıda açıklanmıştır.
 
-| Ad | Gerekli | Açıklama |
+| Name | Gerekli | Açıklama |
 | --- | --- | --- |
 | **girişinin** |false |Dizin eklemek istediğiniz varlık dosyaları.</p><p>Azure Media Indexer aşağıdaki medya dosyası biçimlerini destekler: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Dosya adlarını **giriş** öğesinin **ad** veya **liste** özniteliğinde (aşağıda gösterildiği gibi) belirtebilirsiniz. Hangi varlık dosyasının dizine alınmayı belirtmezseniz, birincil dosya çekilir. Birincil varlık dosyası ayarlanmamışsa, giriş varlığının ilk dosyası dizine alınır.</p><p>Varlık dosya adını açıkça belirtmek için şunu yapın:<br/>`<input name="TestFile.wmv">`<br/><br/>Aynı zamanda birden çok varlık dosyasını aynı anda dizinde (en fazla 10 dosya). Bunu yapmak için:<br/><br/><ol class="ordered"><li><p>Bir metin dosyası (bildirim dosyası) oluşturun ve bir. lst uzantısı verin. </p></li><li><p>Bu bildirim dosyasına giriş varlığınızın tüm varlık dosya adlarının listesini ekleyin. </p></li><li><p>Bildirim dosyasını varlığa ekleyin (karşıya yükleyin).  </p></li><li><p>Girişin liste özniteliğinde bildirim dosyasının adını belirtin.<br/>`<input list="input.lst">`</li></ol><br/><br/>Not: Bildirim dosyasına 10 ' dan fazla dosya eklerseniz, dizin oluşturma işi 2006 hata koduyla başarısız olur. |
 | **veriyi** |false |Sözlük uyarlama için kullanılan belirtilen varlık dosyalarının meta verileri.  Uygun isimler gibi standart olmayan sözlük sözcüklerini tanımak için dizin oluşturucunun hazırlanması yararlı olur.<br/>`<metadata key="..." value="..."/>` <br/><br/>Önceden tanımlanmış **anahtarlar**için **değerler** sağlayabilirsiniz. Şu anda aşağıdaki anahtarlar desteklenir:<br/><br/>"title" ve "Description"-iş için dil modelinin ince ayar ve konuşma tanıma doğruluğunu iyileştirecek sözlük uyarlaması için kullanılır.  Temel Internet değerleri, dizin oluşturma göreviniz süresince iç sözlüğü genişletmek için içeriği kullanarak bağlamsal olarak ilgili metin belgelerini bulmak için arama yapar.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
@@ -257,7 +258,7 @@ Azure Media Indexer işleme, görevin yanı sıra isteğe bağlı bir görev ön
 ### <a id="error_codes"></a>Hata kodları
 Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini yeniden raporlemelidir:
 
-| Kod | Ad | Olası nedenler |
+| Kod | Name | Olası nedenler |
 | --- | --- | --- |
 | 2000 |Geçersiz yapılandırma |Geçersiz yapılandırma |
 | 2001 |Geçersiz giriş varlıkları |Eksik giriş varlıkları veya boş varlık. |
@@ -266,7 +267,7 @@ Bir hata durumunda, Azure Media Indexer aşağıdaki hata kodlarından birini ye
 | 2004 |Desteklenmeyen protokol |Medya URL 'SI protokolü desteklenmiyor. |
 | 2005 |Desteklenmeyen dosya türü |Giriş medya dosyası türü desteklenmiyor. |
 | 2006 |Çok fazla giriş dosyası |Giriş bildiriminde 10 ' dan fazla dosya vardır. |
-| 3000 |Medya dosyasının kodu çözülemedi |Desteklenmeyen medya codec bileşeni <br/>veya<br/> Bozuk medya dosyası <br/>veya<br/> Giriş medyasında ses akışı yok. |
+| 3000 |Medya dosyasının kodu çözülemedi |Desteklenmeyen medya codec bileşeni <br/>or<br/> Bozuk medya dosyası <br/>or<br/> Giriş medyasında ses akışı yok. |
 | 4000 |Toplu dizin oluşturma kısmen başarılı oldu |Bazı giriş medya dosyalarından dizin oluşturulamadı. Daha fazla bilgi için bkz. <a href="#output_files">çıkış dosyaları</a>. |
 | diğer |İç hatalar |Lütfen destek ekibine başvurun. [https://doi.org/10.13012/J8PN93H8](indexer@microsoft.com) |
 

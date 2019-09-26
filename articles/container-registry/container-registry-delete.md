@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: d652c511a3f54fd0b756a95fbe183b4678416a10
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: d415bef80ed8c96ff6e5df81ae9281ae681a4879
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873209"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300179"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure CLı kullanarak Azure Container Registry kapsayıcı görüntülerini silme
 
@@ -259,9 +259,12 @@ if ($enableDelete) {
 }
 ```
 
+
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>Etiketleri ve bildirimleri otomatik olarak temizleme (önizleme)
 
 Azure CLı komutlarını komut dosyası oluşturmaya alternatif olarak, belirli bir süreden daha eski olan veya belirtilen bir ad filtresiyle eşleşen tüm etiketleri silmek için isteğe bağlı veya zamanlanmış bir ACR görevi çalıştırın. Daha fazla bilgi için bkz. [Azure Container Registry 'den görüntüleri otomatik olarak temizleme](container-registry-auto-purge.md).
+
+Etiketlenmemiş bildirimleri yönetmek için isteğe bağlı olarak her kayıt defteri için bir [bekletme ilkesi](container-registry-retention-policy.md) ayarlayın. Bir bekletme ilkesini etkinleştirdiğinizde, ilişkili etiketi olmayan kayıt defterindeki görüntü bildirimleri ve temel alınan katman verileri bir ayarlanan dönemden sonra otomatik olarak silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
