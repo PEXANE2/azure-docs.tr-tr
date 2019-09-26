@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: dd1481c74cdf519dcb4588e0b7cf09b7b6ab5f1d
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d0f5f9a1d488b6be8ca91fdd057880e351ae0b3f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950117"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261038"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure dijital TWINS 'de izlemeyi yapılandırma
 
@@ -57,7 +57,7 @@ Gelişmiş etkinlik günlüğü için:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Müşteri tanılama günlüklerini etkinleştir
 
-Azure [Tanılama ayarları](../azure-monitor/platform/diagnostic-logs-overview.md) , her bir Azure örneği için etkinlik günlüğünü tamamlamak üzere ayarlanabilir. Etkinlik günlükleri abonelik düzeyindeki etkinliklerle ilgilidir, tanılama günlüğü kaynakların işletimsel geçmişiyle ilgili öngörüler sağlar.
+Azure [Tanılama ayarları](../azure-monitor/platform/resource-logs-overview.md) , her bir Azure örneği için etkinlik günlüğünü tamamlamak üzere ayarlanabilir. Etkinlik günlükleri abonelik düzeyindeki etkinliklerle ilgilidir, tanılama günlüğü kaynakların işletimsel geçmişiyle ilgili öngörüler sağlar.
 
 Tanılama günlüğü örnekleri şunları içerir:
 
@@ -129,6 +129,6 @@ Azure dijital TWINS ayrıca uygulamaya özgü günlüğe kaydetme ve güvenlik d
 
 - Azure [etkinlik günlükleri](../azure-monitor/platform/activity-logs-overview.md)hakkında daha fazla bilgi edinin.
 
-- [Tanılama günlüklerine genel bir bakış](../azure-monitor/platform/diagnostic-logs-overview.md)okuyarak Azure tanılama ayarlarını daha ayrıntılı olarak inceleyin.
+- [Tanılama günlüklerine genel bir bakış](../azure-monitor/platform/resource-logs-overview.md)okuyarak Azure tanılama ayarlarını daha ayrıntılı olarak inceleyin.
 
 - [Azure izleyici günlükleri](../azure-monitor/log-query/get-started-portal.md)hakkında daha fazla bilgi edinin.
