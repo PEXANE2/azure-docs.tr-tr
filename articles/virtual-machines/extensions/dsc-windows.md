@@ -100,9 +100,9 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 | Ad | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
-| publisher | Microsoft. PowerShell. DSC | dize |
-| type | DSC | dize |
-| typeHandlerVersion | 2,77 | int |
+| publisher | Microsoft. PowerShell. DSC | string |
+| type | DSC | string |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Ayarlar özellik değerleri
 
