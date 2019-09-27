@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6287f51d4fa0a1e4c2fb27b7cde873262ad6b3fe
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004038"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327222"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: İlk ML modelinizi eğitme
 
@@ -50,6 +50,9 @@ Tek önkoşul, bu öğreticiden birini, [kurulum ortamını ve çalışma alanı
    Bu klasör, Not defteri VM 'sinin kendisi yerine çalışma alanı [depolama hesabında](concept-workspace.md#resources) bulunur.  Not defteri VM 'sini silerseniz, işinizi yine de devam edeceksiniz.  Daha sonra yeni bir not defteri VM 'si oluşturduğunuzda, bu dosya aynı klasöre yüklenir. Çalışma alanınızı başkalarıyla paylaşıyorsanız, klasörünüzü görürler ve onu görürsünüz.
 
 1. Alt dizini açın, ardından aynı adlı `.yml` dosyayı **değil** Jupyter Not defterini `tutorials/tutorial-1st-experiment-sdk-train.ipynb`açın. `samples-*` 
+
+> [!Warning]
+> Jupyter arabiriminde *Yeni* bir Not **defteri oluşturmayın!** @No__t-0 Not defteri, bu öğretici için **gereken tüm kod ve verileri** dahil değildir.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Çalışma alanını bağlama ve deneme oluşturma
 

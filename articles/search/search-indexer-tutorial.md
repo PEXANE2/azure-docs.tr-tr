@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: heidist
-ms.openlocfilehash: d0f0abade5d1eea952c5abde293ae90745ee9b04
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 1ba0a965de356cfbe7d9a1cfc8d6d2e8da092934
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640645"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327171"
 ---
 # <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#Öğreticide Azure Search Dizinleyicileri kullanarak Azure SQL veritabanında gezinme
 
@@ -67,7 +67,7 @@ Gerekli hizmetlere bağlantı bilgileri, çözümdeki **appsettings.json** dosya
 
 1. Çözüm Gezgini, her bir ayarı doldurmanız için **appSettings. JSON** ' u açın.  
 
-İlk iki giriş, Azure Search hizmetiniz için URL ve yönetici anahtarlarını kullanarak hemen doldurabilirsiniz. Bir uç noktası `https://mydemo.search.windows.net`verildiğinde, `mydemo`sağlanacak hizmet adı.
+İlk iki giriş, Azure Search hizmetiniz için URL ve yönetici anahtarlarını kullanarak hemen doldurabilirsiniz. @No__t-0 ' nın bir uç noktası verildiğinde, sağlanacak hizmet adı `mydemo` ' dir.
 
 ```json
 {
@@ -230,7 +230,7 @@ Kodunuz, Azure'da arama hizmetinize bağlanarak Visual Studio'da yerel olarak ç
 
 + **Appsettings.json** dosyasındaki veritabanı bağlantı bilgileri. Bu, portaldan alınmış ve veritabanınız için geçerli kullanıcı adı ve parolayı içerecek şekilde değiştirilmiş ADO.NET bağlantı dizesi olmalıdır. Kullanıcı hesabının verileri alma izni olmalıdır.
 
-+ Kaynak sınırları. Paylaşılan (ücretsiz) hizmetin 3 dizin, dizin oluşturucu ve veri kaynağıyla sınırlı olduğunu hatırlayın. Sınırına dayanmış bir hizmet yeni nesneler oluşturamaz.
++ Kaynak sınırları. Ücretsiz katmanın 3 dizin, Dizin Oluşturucu ve veri kaynağı sınırlarına sahip olduğunu hatırlayın. Sınırına dayanmış bir hizmet yeni nesneler oluşturamaz.
 
 ## <a name="search-the-index"></a>Dizinde arama yapma 
 

@@ -8,19 +8,19 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: c2d4cae1689701704c866833c99ca616bbd01ec5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300670"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327156"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search hizmet limitleri
 Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınırlar, **ücretsiz**, **temel**, **Standart**veya **depolama için iyileştirilmiş** fiyatlandırma katmanlarında [Azure Search](search-create-service-portal.md) sağlayıp sağlamadığınıza bağlıdır.
 
-+ **Ücretsiz** , Azure aboneliğinizle birlikte gelen çok kiracılı bir paylaşılan hizmettir.
++ **Ücretsiz** , Azure aboneliğinizle birlikte gelen çok kiracılı bir paylaşılan hizmettir. Dizin oluşturma ve sorgu istekleri, diğer kiracılar tarafından kullanılan çoğaltmalar ve bölümler üzerinde yürütülür.
 
-+ **Temel** , üretim iş yükleri için daha küçük bir ölçekte adanmış bilgi işlem kaynakları sağlar.
++ **Temel** , üretim iş yükleri için daha küçük bir ölçekte özel bilgi işlem kaynakları sağlar, ancak bazı ağ altyapısını diğer kiracılar ile paylaşır.
 
 + **Standart** , her düzeyde daha fazla depolama ve işleme kapasitesine sahip adanmış makinelerde çalışır. Standart dört düzeyde gelir: S1, S2, S3 ve S3 HD.
 

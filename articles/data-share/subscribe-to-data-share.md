@@ -1,102 +1,102 @@
 ---
-title: Öğretici - kabul edin ve Azure veri paylaşımı Önizlemesi'ni kullanarak veri alma
-description: Öğretici - kabul edin ve Azure veri paylaşımı Önizlemesi'ni kullanarak veri alma
+title: 'Öğretici: & Alma verileri kabul etme-Azure veri paylaşımının önizlemesi'
+description: Öğretici-Azure veri paylaşma önizlemesi kullanarak verileri kabul edin ve alın
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: fc63c1a0b3b496de8e5ecea58f79f1db9d872e80
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 235ef25b2d655c4388dee5bdcf88d179f3373697
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838436"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327390"
 ---
-# <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Öğretici: Kabul edin ve Azure veri paylaşımı Önizlemesi'ni kullanarak veri alma
+# <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>Öğretici: Azure veri paylaşma önizlemesi 'ni kullanarak verileri kabul etme ve alma
 
-Bu öğreticide, Azure veri paylaşma Preview kullanılarak bir veri Paylaşım daveti kabul öğreneceksiniz. Her zaman en son sizinle paylaşılan verilerin anlık görüntüsünü olmasını sağlamak normal yenileme aralığı etkinleştirme yanı sıra sizinle paylaşılan veri almak nasıl öğreneceksiniz. 
+Bu öğreticide, Azure veri paylaşma önizlemesi kullanarak bir veri paylaşımının davetini kabul etme hakkında bilgi edineceksiniz. Sizinle paylaşılan verilerin nasıl alınacağını ve her zaman sizinle paylaşılan verilerin en son anlık görüntüsüne sahip olduğunuzdan emin olmak için düzenli yenileme aralığını nasıl etkinleştireceğinizi öğreneceksiniz. 
 
 > [!div class="checklist"]
-> * Azure veri paylaşımı Önizleme daveti kabul etme
-> * Bir Azure veri paylaşımı Önizleme hesabı oluşturma
+> * Azure veri paylaşımının önizleme davetini kabul etme
+> * Azure veri paylaşma önizleme hesabı oluşturma
 > * Verileriniz için bir hedef belirtin
-> * Zamanlanmış yenileme, veri paylaşımı için bir abonelik oluşturun
+> * Zamanlanmış yenileme için veri paylaşımınıza abonelik oluşturma
 
 ## <a name="prerequisites"></a>Önkoşullar
-Bir veri Paylaşım daveti kabul etmeden önce aşağıda listelenen Azure kaynaklarının sayısını hazırlamanız gerekir. 
+Bir veri paylaşma davetini kabul etmeden önce, aşağıda listelenen birkaç Azure kaynağı sağlamalısınız. 
 
-Bir veri Paylaşım daveti kabul etmeden önce tüm ön koşullar tamamlandı olduğundan emin olun. 
+Bir veri paylaşma davetini kabul etmeden önce tüm önkoşulların tümünün tamamlandığından emin olun. 
 
 * Azure aboneliği: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* Bir Azure depolama hesabı: Zaten yoksa, oluşturabileceğiniz bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account). 
-* Bir veri paylaşım Davetiyesi: Microsoft Azure tarafından sağlanan bir davet başlıklı bir konu ile birlikte "Azure veri paylaşımı davetini **<yourdataprovider@domain.com>** ".
-* Rol ataması bulunan depolama hesabı ekleme izni *Microsoft.Authorization/role atamaları/yazma* izni. Bu izne sahip rolü içinde var. 
-* Kaynak Sağlayıcısı kaydı Microsoft.DataShare için. Bkz: [Azure kaynak sağlayıcıları](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) bunun nasıl yapılacağı hakkında daha fazla bilgi için belgelere bakın. 
+* Bir Azure depolama hesabı: Henüz bir tane yoksa, bir [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)oluşturabilirsiniz. 
+* Veri paylaşma daveti: " **@No__t-1**' den Azure Data Share davetiyesi" başlıklı konuyla Microsoft Azure bir davetiye.
+* *Microsoft. Authorization/role atamalar/Write* izninde bulunan depolama hesabına rol ataması ekleme izni. Bu izin sahip rolünde bulunur. 
+* Microsoft. DataShare için kaynak sağlayıcısı kaydı. Bunun nasıl yapılacağı hakkında bilgi için bkz. [Azure kaynak sağlayıcıları](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) belgeleri. 
 
 > [!IMPORTANT]
-> Kabul edin ve Azure veri paylaşımı almak için önce Microsoft.DataShare kaynak sağlayıcısını kaydetmeniz gerekir ve verileri kabul eden depolama hesabının sahibi olmanız gerekir. İçindeki yönergeleri izleyin [Azure veri paylaşma Önizleme sorun giderme](data-share-troubleshoot.md) yanı sıra veri paylaşımı kaynak sağlayıcısını kaydetmek için kendinizi bir depolama hesabı sahibi olarak ekleyin. 
+> Bir Azure veri paylaşımının kabul edileceği ve alınacağı, önce Microsoft. DataShare kaynak sağlayıcısını kaydetmeniz ve verileri kabul ettiğiniz depolama hesabının sahibi olmanız gerekir. Veri paylaşımının kaynak sağlayıcısını kaydetmek için [Azure veri paylaşımının önizlemesine sorun giderme](data-share-troubleshoot.md) ve depolama hesabının sahibi olarak kendiniz ekleme konularında belgelenen yönergeleri izleyin. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
 [Azure Portal](https://portal.azure.com/) oturum açın.
 
-## <a name="open-invitation"></a>Açık davet
+## <a name="open-invitation"></a>Daveti aç
 
-Davetiye veri sağlayıcınızdan için gelen kutunuzu kontrol edin. Davet başlıklı Microsoft Azure'dan olduğundan **Azure veri paylaşımı davetini <yourdataprovider@domain.com>** . Paylaşım adı birden çok davet varsa doğru paylaşım kabul etmiyoruz sağlamak için not alın. 
+Veri sağlayıcınızdan bir davet için gelen kutunuzu denetleyin. Davet, **<yourdataprovider@domain.com> ' den Azure veri paylaşma daveti**başlıklı Microsoft Azure. Birden çok davetiye varsa doğru paylaşımın kabul edildiğinizden emin olmak için, paylaşılan adı ' nı bir yere göz atın. 
 
-SELECT deyiminde **görüntüleyebilir davet** davetinizi azure'da görmek için. Bu sizi, alınan paylaşımları görünümünüzü götürür.
+Davetinizi Azure 'da görmek için **daveti görüntüle** ' yi seçin. Bu sizi aldığınız paylaşımlar görünümüne götürür.
 
-![Davet](./media/invitations.png "davetlerin listesi") 
+![Davetiye davetlerinin](./media/invitations.png "listesi") 
 
-Görüntülemek istediğiniz paylaşımı seçin. 
+Görüntülemek istediğiniz paylaşma seçeneğini belirleyin. 
 
-## <a name="accept-invitation"></a>Daveti kabul edin
-Tüm alanları geçirilene, dahil olduğundan emin olun **kullanım**. Kullanım koşullarını kabul ediyorsanız, kabul belirtmek için onay kutusunu istenmeyecek. 
+## <a name="accept-invitation"></a>Daveti kabul et
+**Kullanım koşulları**dahil olmak üzere tüm alanların incelendiğini doğrulayın. Kullanım koşullarını kabul ediyorsanız, kabul ettiğinizi belirtmek için kutuyu denetlemeniz gerekir. 
 
-![Kullanım koşullarını](./media/terms-of-use.png "kullanım koşulları") 
+![Kullanım koşulları](./media/terms-of-use.png "kullanım koşulları") 
 
-Altında *hedef veri paylaşımı hesabı*, abonelik ve kaynak grubu, veri paylaşımınızda dağıtımı seçin. 
+*Hedef veri paylaşma hesabı*altında, veri paylaşımınızı dağıtmak istediğiniz aboneliği ve kaynak grubunu seçin. 
 
-İçin **veri paylaşımı hesabı** alanın, Seç **Yeni Oluştur** veri paylaşımı hesabınız yoksa. Aksi halde, veri paylaşımınızda kabul etmek için istediğiniz mevcut bir veri paylaşımı hesabını seçin. 
+**Veri** paylaşma hesabı alanı için, mevcut bir veri paylaşma hesabınız yoksa **Yeni oluştur** ' u seçin. Aksi takdirde, veri paylaşımınızı kabul etmek istediğiniz mevcut bir veri paylaşma hesabı seçin. 
 
-İçin *paylaşım adı alınan* alan veri sağlayan tarafından belirtilen varsayılan değeri bırakın veya alınan paylaşımı için yeni bir ad belirtin. 
+*Alınan paylaşma adı* alanı Için, veriler tarafından belirtilen varsayılanı bırakabilir veya alınan paylaşıma yönelik yeni bir ad belirtebilirsiniz. 
 
-![Hedef veri paylaşımı hesabı](./media/target-data-share.png "hesabının hedef veri paylaşma") 
+![Hedef veri paylaşma hesabı](./media/target-data-share.png "hedef veri paylaşma hesabı") 
 
-Kullanım koşullarını kabul ediyorum ve seçin, paylaşım için belirtilen bir konuma sonra *kabul et ve yapılandırma*. Bu seçeneği seçerseniz, bir paylaşım abonelik oluşturulacak ve sonraki ekranda içine kopyalanacak, verileriniz için bir hedef depolama hesabı seçmenizi ister. 
+Kullanım koşullarını kabul ettikten ve paylaşımınız için bir konum belirttikten sonra *kabul et ve Yapılandır*' ı seçin. Bu seçeneği belirlerseniz, bir paylaşılan abonelik oluşturulur ve bir sonraki ekranda, verilerinize kopyalanması için bir hedef depolama hesabı seçmeniz istenir. 
 
-![Kabul seçenekleri](./media/accept-options.png "kabul seçenekleri") 
+![Kabul etme seçenekleri](./media/accept-options.png "kabul seçenekleri") 
 
-Artık daveti kabul edin, ancak daha sonra Seç depolamanızı yapılandırın tercih ederseniz *kabul edin ve daha sonra yapılandırma*. Bu seçenek, hedef depolama hesabı daha sonra yapılandırmanıza olanak sağlar. Depolama alanınızı daha sonra yapılandırmaya devam etmek için bkz: [, depolama hesabının nasıl yapılandırılacağı](how-to-configure-mapping.md) verilerinizi sürdürmek ayrıntılı adımları yapılandırmayı paylaşan sayfası. 
+Şimdi daveti kabul etmek, ancak depolama alanınızı daha sonra yapılandırmak isterseniz, *kabul et ' i ve daha sonra Yapılandır*' ı seçin. Bu seçenek, hedef depolama hesabınızı daha sonra yapılandırmanıza olanak tanır. Depolama alanınızı daha sonra yapılandırmaya devam etmek için, bkz. [depolama hesabınızı yapılandırma](how-to-configure-mapping.md) sayfası, veri paylaşma yapılandırmanızın nasıl sürdürüleceği hakkında ayrıntılı adımlar için. 
 
-Daveti kabul etmek istemiyorsanız seçin *Reddet*. 
+Daveti kabul etmek istemiyorsanız *Reddet*' i seçin. 
 
 ## <a name="configure-storage"></a>Depolama alanını yapılandırma
-Altında *hedef depolama ayarlarını*kaynak grubunu ve istediğiniz depolama hesabı, verilerinizi almak, aboneliği seçin. 
+*Hedef depolama ayarları*altında, verilerinizi almak istediğiniz aboneliği, kaynak grubunu ve depolama hesabını seçin. 
 
-![Hedef depolama ayarlarını](./media/target-storage-settings.png "hedef depolama") 
+![Hedef depolama ayarları](./media/target-storage-settings.png "hedef depolama alanı") 
 
-Düzenli yenilemeler verilerinizi almak, anlık görüntü ayarlarını etkinleştirdiğinizden emin olun. Veri sağlayıcısı, veri paylaşımı dahil bir anlık görüntü ayarını zamanlama yalnızca görüleceğini unutmayın. 
+Verilerinizin düzenli olarak yenilenmesini almak için, anlık görüntü ayarlarını etkinleştirdiğinizden emin olun. Veri sağlayıcınız onu veri paylaşımında içerdiğine yalnızca bir anlık görüntü ayarı görürsünüz. 
 
 ![Anlık görüntü ayarları](./media/snapshot-settings.png "anlık görüntü ayarları") 
 
 *Kaydet*’i seçin. 
 
-## <a name="trigger-a-snapshot"></a>Tetikleyici bir anlık görüntü
+## <a name="trigger-a-snapshot"></a>Anlık görüntü tetikleyin
 
-Alınan paylaşımlarında anlık görüntüsünü tetikleyebilirsiniz seçerek Ayrıntılar sekmesi -> **tetikleyici anlık görüntü**. Burada, verilerinizi tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. İlk kez veri almak, veri sağlayıcısı ise, tam kopya'yı seçin. 
+Alınan paylaşımlar-> Ayrıntılar sekmesinde bir anlık görüntüyü **tetikleyici anlık görüntüsünü**seçerek tetikleyebilirsiniz. Burada, verilerinizin tam veya artımlı anlık görüntüsünü tetikleyebilirsiniz. Veri sağlayıcınızdan ilk kez veri alıyorsanız tam kopya ' ı seçin. 
 
-![Tetikleyici anlık görüntü](./media/trigger-snapshot.png "tetikleyici anlık görüntü") 
+![Anlık görüntü](./media/trigger-snapshot.png "tetikleyici anlık görüntüsünü") tetikleme 
 
-Son çalıştırma durumunu olduğunda *başarılı*, alınan verileri görüntülemek için depolama hesabı açın. 
+Son çalıştırma durumu *başarılı*olduğunda, alınan verileri görüntülemek için depolama hesabını açın. 
 
-Kullandığınız depolama hesabını denetlenecek seçin **veri kümeleri**. 
+Kullandığınız depolama hesabını denetlemek için **veri kümeleri**' ni seçin. 
 
-![Tüketici veri kümeleri](./media/consumer-datasets.png "tüketici veri kümesi eşleme") 
+![Tüketici veri kümeleri](./media/consumer-datasets.png "Tüketici veri kümesi eşleme") 
 
 ## <a name="view-history"></a>Geçmişi görüntüleme
-Anlık görüntülerin geçmişini görüntülemek için gidin alınan paylaşımları geçmişi ->. Son 60 gün için oluşturulan tüm anlık görüntülerin geçmişini burada bulabilirsiniz. 
+Anlık görüntülerinizin geçmişini görüntülemek için, alınan paylaşımlar-> geçmişi ' ne gidin. Burada, son 60 gün için oluşturulan tüm anlık görüntülerin geçmişini bulacaksınız. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, Azure veri paylaşımı alıp kabul etmek nasıl modellerin. Azure veri paylaşımı kavramları hakkında daha fazla bilgi edinmek için devam [Kavramları: Azure veri paylaşımı terminolojisi](terminology.md).
+Bu öğreticide, bir Azure veri paylaşımının nasıl kabul edileceği ve alınacağı ile karşılaşacağınızı öğrenirsiniz. Azure veri paylaşma kavramları hakkında daha fazla bilgi edinmek için [Concepts ' a geçin: Azure veri paylaşma terminolojisi @ no__t-0.

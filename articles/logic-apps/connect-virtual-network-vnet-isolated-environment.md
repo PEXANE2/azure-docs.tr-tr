@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: d6cc87947ab861e8de4dbdf754164e195f0f458c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0b04ca5c4bea00221d5a823432b6fc1934badb1a
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309313"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320512"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -58,7 +58,10 @@ Bu makalede, bu görevlerin nasıl tamamlanacağı gösterilmektedir:
     **Adres ön eki**: 0.0.0.0/0<br>
     **Sonraki atlama**: İnternet
 
-* Azure sanal ağınız için özel DNS sunucuları kullanmak istiyorsanız, ıSE 'nizi sanal ağınıza dağıtmadan önce [Bu adımları izleyerek bu sunucuları ayarlayın](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . Aksi halde, DNS sunucunuzu her değiştirdiğinizde, Ise genel önizleme ile kullanılabilen bir özellik olan ıSE 'nizi de yeniden başlatmanız gerekir.
+* Azure sanal ağınız için özel DNS sunucuları kullanmak istiyorsanız, ıSE 'nizi sanal ağınıza dağıtmadan önce [Bu adımları izleyerek bu sunucuları ayarlayın](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) . Aksi halde, DNS sunucunuzu her değiştirişinizde, ıSE 'nizi de yeniden başlatmanız gerekir.
+
+  > [!IMPORTANT]
+  > Bir ıSE oluşturduktan sonra DNS sunucusu ayarlarınızı değiştirirseniz, ıSE 'nizi yeniden başlattığınızdan emin olun. DNS sunucusu ayarlarını yönetme hakkında daha fazla bilgi için bkz. [sanal ağ oluşturma, değiştirme veya silme](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
 <a name="ports"></a>
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 440ebfffec9378e0dad1fd04e0880c90571bb0f1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 7d312f54da91c8bc8b3f659ff92f531136cdecb3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71301010"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338581"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Windows sanal masaüstü önizlemesi nedir? 
 
@@ -87,6 +87,17 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şeki
 
 >[!NOTE]
 >Bir Azure aboneliğine ihtiyacınız varsa, bir [aylık ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/). Azure 'un ücretsiz deneme sürümünü kullanıyorsanız, Windows Server Active Directory Azure Active Directory ile eşitlenmiş halde tutmak için Azure AD Domain Services kullanmanız gerekir.
+
+Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri aşağıdaki URL 'Lere giden TCP 443 erişimine sahip olmalıdır:
+* *. wvd.microsoft.com
+* *.blob.core.windows.net
+* *. core.windows.net
+* *.servicebus.windows.net
+* prod.warmpath.msftcloudes.com
+* catalogartifact.azureedge.net
+
+>[!NOTE]
+>Bu URL 'Leri açmak, güvenilir bir Windows sanal masaüstü dağıtımı için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir ve Azure AD gibi diğer hizmetlere yönelik URL 'LERI içermez.
 
 Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Genel Önizleme sırasında, masaüstleri ve uygulamalar herhangi bir Azure bölgesindeki sanal makinelere (VM 'Ler) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler (ABD Doğu 2 bölgesinde) yer alır. Bu, genel önizleme sırasında hizmeti test ederken Birleşik Devletler veri aktarımına neden olabilir. Genel kullanıma başlayan tüm Azure bölgelerinde yönetim çözümünü ve veri yerelleştirmesini ölçeklendirmeye başlayacağız.
 

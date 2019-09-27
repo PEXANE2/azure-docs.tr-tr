@@ -7,12 +7,12 @@ ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 733b7fd8ef5b302df754fc7299b420739baff153
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 51129f89f45d65007f8a7f37df0353121ebdbdd8
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172469"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338376"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk yapılandırma anlama
 
@@ -122,7 +122,7 @@ Azure İlkesi kullanan Konuk yapılandırma kaynak sağlayıcıları **complianc
 > [!NOTE]
 > **Uıınotexists** ilkesi, sonuçları döndürmek için bu **ilke için** gereklidir. **Deployifnotexists**olmadan, **auditınotexists** ilkesi "0/0" kaynağını durum olarak gösterir.
 
-Tüm yerleşik ilkeleri Konuk yapılandırması için girişim atamaları tanımlarında kullanın grubuna dahil edilmiştir. [Önizleme] adlı *yerleşik girişim: Linux ve Windows makineleri* içindeki denetim parolası güvenlik ayarları 18 ilke içerir. Altı **Deployıfnotexists** ve **AuditIfNotExists** Windows ve Linux için üç çift çifti. [İlke tanımı](definition-structure.md#policy-rule) mantığı yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
+Tüm yerleşik ilkeleri Konuk yapılandırması için girişim atamaları tanımlarında kullanın grubuna dahil edilmiştir. @No__t-0 [Önizleme] adlı yerleşik girişim: Linux ve Windows makineleri* içindeki denetim parolası güvenlik ayarları 18 ilke içerir. Altı **Deployıfnotexists** ve **AuditIfNotExists** Windows ve Linux için üç çift çifti. [İlke tanımı](definition-structure.md#policy-rule) mantığı yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
 
 ### <a name="multiple-assignments"></a>Birden çok atama
 
@@ -185,4 +185,4 @@ Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılab
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteceğinizi öğrenin.
-- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/index.md)ile yönetim grubunun ne olduğunu inceleyin.
+- [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

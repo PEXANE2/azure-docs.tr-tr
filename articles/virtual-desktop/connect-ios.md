@@ -1,20 +1,20 @@
 ---
 title: İOS 'tan Windows sanal masaüstüne bağlanma-Azure
-description: İOS 'dan Windows sanal masaüstüne bağlanma.
+description: İOS istemcisini kullanarak Windows sanal masaüstüne bağlanma.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: 3e77a77dfa2de003722419f861e957d4cb011b71
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 764ed4fefd1a3aba1f0b7812fa2965505aa34161
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310327"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338682"
 ---
-# <a name="connect-from-ios"></a>İOS 'tan Bağlan
+# <a name="connect-with-the-ios-client"></a>iOS istemcisiyle bağlanma
 
 > Uygulama hedefi: iOS 8,0 veya üzeri. İPhone, iPad ve iPod Touch ile uyumludur.
 
@@ -52,6 +52,6 @@ Bundan sonra bağlantı merkezi, uzak kaynakları görüntülemelidir.
 
 Akışa abone olduktan sonra akışın içeriği düzenli aralıklarla otomatik olarak güncelleştirilecek. Kaynaklar, yöneticiniz tarafından yapılan değişikliklere göre eklenebilir, değiştirilebilir veya kaldırılabilir.
 
-## <a name="client-documentation"></a>İstemci belgeleri
+## <a name="next-steps"></a>Sonraki adımlar
 
 İOS Beta istemcisinin kullanımı hakkında daha fazla bilgi edinmek için [iOS istemci](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios) belgelerini kullanmaya başlama konusunu inceleyin.

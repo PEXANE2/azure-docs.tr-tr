@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 29add1cff184e234cd5dcc5050b94cdd50593731
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: adb1b840fd733353e449224c9ac752e94329bde6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315905"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326741"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>IoT için Azure Güvenlik Merkezi’ne giriş
 
@@ -30,7 +30,7 @@ Güvenlik yönetimini bütünleştirin ve hibrit bulut iş yükleri ve Azure IoT
 
 Sorunsuz aracısız çözümümüzden seçim yapın veya aracı tabanlı kapsamlı güvenlik avantajlarından yararlanın, IoT için Azure Güvenlik Merkezi, IoT varlıklarınızın tamamında IoT Edge ve IoT Hub her cihaz için tehdit önleme ve çözümleme sağlar.
 
-Milyarlarca yeni cihaz internet 'e bağlıyken ve günlük yaşamlarımızla ve işletmelerimiz ile tümleştirildiği için Güvenlik operasyonlarının, güvenlik stratejilerinin bu yeni saldırı yüzeylerini kapsayacak kadar hızlı bir şekilde gelişdiğinden emin olmanız gerekir. Diğer tüm sistemleri gibi, IoT çözümünüzün güvenliğini sağlamak, uygulamanızın her aşamasında koruma gerektirir. 
+Milyarlarca yeni cihaz internet 'e bağlıyken ve günlük yaşamlarımızla ve işletmelerimiz ile tümleştirildiği için güvenlik operasyonlarının her yeni saldırı yüzeyini kapsayacak kadar hızlı bir şekilde gelişmesi gerekir. Diğer tüm sistemleri gibi IoT çözümünüzü büyük ölçüde güvenli hale getirmek için her uygulamanın her aşamasında koruma gerektirir. 
 
 IoT için Azure Güvenlik Merkezi, uçtan, şirket içinde, Azure 'da ve diğer cihazlarda çalışan iş yükleri arasında birleştirilmiş görünürlük ve denetim, uyarlamalı tehdit önleme ve akıllı tehdit algılama ve yanıt sunarak karma iş yükü korumasını basitleştirir. larının. 
 

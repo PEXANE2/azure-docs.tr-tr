@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6ed6e21f16287148c8764dd98bda378451440e58
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 593841ac95c4c6f17f33a8d35d6b3f83a6db1124
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172777"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338904"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümlerle performans ayarı 
 Azure SQL veri ambarı 'ndaki gerçekleştirilmiş görünümler, bir sorgu değişikliği yapmadan hızlı performans sağlamak üzere karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede gerçekleştirilmiş görünümleri kullanma hakkında genel yönergeler ele alınmaktadır.
@@ -49,7 +49,7 @@ Doğru şekilde tasarlanan gerçekleştirilmiş bir görünüm, aşağıdaki ava
 
 - Azure SQL veri ambarı 'nda iyileştirici, sorgu yürütme planlarını geliştirmek için dağıtılan gerçekleştirilmiş görünümleri otomatik olarak kullanabilir.  Bu işlem, daha hızlı sorgu performansı sağlayan kullanıcılar tarafından saydamdır ve gerçekleştirilmiş görünümlere doğrudan başvuru yapmak için sorgular gerektirmez. 
 
-- Görünümlerde düşük bakım gerektir.  Gerçekleştirilmiş bir görünüm, verileri iki yerde depolar, görünüm oluşturma sırasında ilk veriler için kümelenmiş bir columnstore dizini ve artımlı veri değişiklikleri için bir Delta deposu.  Taban tablolardaki tüm veri değişiklikleri, Delta deposuna zaman uyumlu şekilde otomatik olarak eklenir.  Arka plan işlemi (demet taşıyıcısı) düzenli aralıklarla verileri Delta deposundan görünümün columnstore dizinine taşımaktır.  Bu tasarım, gerçekleştirilmiş görünümlerin doğrudan temel tabloları sorgulamak için aynı verileri döndürmesini sağlar. 
+- Görünümlerde düşük bakım gerektir.  Taban tablolardaki tüm artımlı veri değişiklikleri, gerçekleştirilmiş görünümlere zaman uyumlu şekilde otomatik olarak eklenir.  Bu tasarım, gerçekleştirilmiş görünümlerin doğrudan temel tabloları sorgulamak için aynı verileri döndürmesini sağlar. 
 - Gerçekleştirilmiş bir görünümdeki veriler, temel tablolardan farklı şekilde dağıtılabilir.  
 - Gerçekleştirilmiş görünümlerde veri, normal tablolardaki verilerle aynı yüksek kullanılabilirlik ve dayanıklılık avantajlarını alır.  
  
@@ -90,7 +90,7 @@ Kullanıcılar, sorgu iyileştiricisi tarafından önerilen gerçekleştirilmiş
 
 **Daha hızlı sorgular ve maliyet arasındaki zorunluluğunu getirir farkında olun** 
 
-Gerçekleştirilmiş her bir görünüm için bir veri depolama maliyeti ve görünümün sürdürülmesi için bir maliyet vardır.  Temel tablolarda veri değişiklikleri yapıldığında, gerçekleştirilmiş görünümün boyutu artar ve fiziksel yapısı da değişir.  Sorgu performansı düşüşünü önlemek için, gerçekleştirilmiş her bir görünüm veri ambarı altyapısı tarafından ayrı tutulur; bu da satırları Delta deposundan columnstore dizin kesimlerine taşıma ve veri değişikliklerini birleştirme dahil olmak üzere.  Gerçekleştirilmiş görünümler ve temel tablo değişikliklerinin sayısı arttıkça bakım iş yükü artar.   Kullanıcılar, gerçekleştirilmiş tüm görünümlerden tahakkuk eden maliyetin sorgu performans kazancı tarafından kaydırılarak yer olup olmadığını denetlemelidir.  
+Gerçekleştirilmiş her bir görünüm için bir veri depolama maliyeti ve görünümün sürdürülmesi için bir maliyet vardır.  Temel tablolarda veri değişiklikleri yapıldığında, gerçekleştirilmiş görünümün boyutu artar ve fiziksel yapısı da değişir.  Sorgu performansı düşüşünü önlemek için, gerçekleştirilmiş her görünüm veri ambarı altyapısı tarafından ayrı olarak korunur.  Gerçekleştirilmiş görünümler ve temel tablo değişikliklerinin sayısı arttıkça bakım iş yükü artar.   Kullanıcılar, gerçekleştirilmiş tüm görünümlerden tahakkuk eden maliyetin sorgu performans kazancı tarafından kaydırılarak yer olup olmadığını denetlemelidir.  
 
 Veritabanında gerçekleştirilmiş görünüm listesi için bu sorguyu çalıştırabilirsiniz: 
 
@@ -136,7 +136,7 @@ Veri ambarı iyileştirici, sorgu performansını artırmak için dağıtılmı�
 
 **Gerçekleştirilmiş görünümleri izle** 
 
-Gerçekleştirilmiş bir görünüm, veri ambarında, kümelenmiş columnstore dizini (CCı) içeren bir tabloda olduğu gibi depolanır.  Gerçekleştirilmiş bir görünümden veri okuma, dizin taramayı ve Delta deposundan değişiklik uygulamayı içerir.  Delta deposundaki satır sayısı çok yüksekse, gerçekleştirilmiş bir görünümden bir sorgunun çözümlenmesi doğrudan temel tabloları sorgulamadan daha uzun sürebilir.  Sorgu performansı düşüşünü önlemek için, görünümün overhead_ratio (total_rows/base_view_row) izlemek için [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) çalıştırmak iyi bir uygulamadır.  Overhead_ratio çok yüksekse, gerçekleştirilmiş görünümü yeniden oluşturmayı düşünün. bu nedenle, Delta deposundaki tüm satırlar columnstore dizinine taşınır.  
+Gerçekleştirilmiş bir görünüm, veri ambarında, kümelenmiş columnstore dizini (CCı) içeren bir tabloda olduğu gibi depolanır.  Gerçekleştirilmiş görünümden veri okuma, CCı Dizin segmentlerini taramayı ve temel tablolardan artımlı değişiklikler uygulamayı içerir. Artımlı değişikliklerin sayısı çok yüksekse, gerçekleştirilmiş bir görünümden bir sorgunun çözümlenmesi doğrudan temel tabloları sorgulamadan daha uzun sürebilir.  Sorgu performansı düşüşünü önlemek için, görünümün overhead_ratio (total_rows/Max (1, base_view_row)) izlemek için [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest) çalıştırmak iyi bir uygulamadır.  Overhead_ratio çok yüksekse, kullanıcılar gerçekleştirilmiş görünümü yeniden derlemelidir. 
 
 **Gerçekleştirilmiş görünüm ve sonuç kümesi önbelleğe alma**
 

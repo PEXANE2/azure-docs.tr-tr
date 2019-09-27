@@ -3,7 +3,7 @@ title: Azure Active Directory kimlik bilgileriyle Linux VM 'de oturum açma | Mi
 description: Azure Active Directory kimlik doğrulaması kullanarak oturum açmak için bir Linux VM oluşturma ve yapılandırma hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: e30adf8b694d744e64fb7528b75b85d4a772a723
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316769"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327088"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -88,7 +88,7 @@ VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer.
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Azure AD oturum açma VM uzantısını yükler
 
 > [!NOTE]
-> Bu yüklemeyi daha önce oluşturulmuş bir VM 'ye dağıtırsanız, makinenin en az 1 GB belleğe sahip olduğundan emin olun, aksi takdirde uzantının yüklemesi başarısız olur
+> Bu uzantıyı daha önce oluşturulmuş bir VM 'ye dağıtırsanız, makinenin en az 1 GB belleğe sahip olduğundan emin olun, aksi takdirde uzantının yüklemesi başarısız olur
 
 Azure AD kimlik bilgileriyle bir Linux VM 'de oturum açmak için Azure Active Directory oturum açma VM uzantısını yükler. VM uzantıları, Azure sanal makinelerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. *Aadloginforlinux* uzantısını *myresourcegroup* kaynak GRUBUNDAKI *myvm* adlı VM 'ye yüklemek için [az VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) komutunu kullanın:
 

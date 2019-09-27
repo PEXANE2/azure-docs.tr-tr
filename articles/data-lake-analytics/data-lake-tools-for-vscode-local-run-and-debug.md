@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: 2d78523f776c909845057aaf8660a7c6fba3ef6a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 7c425ee8c9fd99420bbcbba31c7a74c360938aef
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309893"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338240"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL çalıştırma ve Visual Studio Code yerel olarak hata ayıklama
 Bu makalede, erken kodlama aşamalarını hızlandırmak veya Visual Studio Code yerel olarak kodda hata ayıklamak için U-SQL işlerinin yerel bir geliştirme makinesinde nasıl çalıştırılacağı açıklanmaktadır. Visual Studio Code Azure Data Lake aracı hakkında yönergeler için bkz. [Visual Studio için Azure Data Lake araçları kodu kullanma](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -51,7 +51,7 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
 2. Microsoft yazılımı lisans koşulları 'nı ilk kez kabul etmek için **kabul et** ' i seçin. 
 
    ![Microsoft yazılımı lisans koşulları 'nı kabul edin](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. Cmd konsolu açılır. İlk kullanıcılar için, **3**girmeniz ve ardından veri giriş ve çıkış için yerel klasör yolunu bulmanız gerekir. Diğer seçenekler için varsayılan değerleri kullanabilirsiniz. 
+3. Cmd konsolu açılır. İlk kullanıcılar için, **3**girmeniz ve ardından veri giriş ve çıkış için yerel klasör yolunu bulmanız gerekir. Yol ters eğik çizgi ile tanımlama başarısız olduysa, eğik çizgileri yeniden deneyin. Diğer seçenekler için varsayılan değerleri kullanabilirsiniz.
 
    ![Visual Studio Code yerel çalıştırma cmd için Data Lake araçları](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
 4. CTRL + SHIFT + P ' yi seçerek komut paletini açın, adl girin **: İşi**Gönder ' **i seçin ve ardından yerel '** i seçerek işi yerel hesabınıza gönderebilirsiniz.

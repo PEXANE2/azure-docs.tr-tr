@@ -1,19 +1,19 @@
 ---
-title: Azure dijital TWINS rol tabanlı erişim denetimini anlama | Microsoft Docs
-description: Rol tabanlı erişim denetimi ile dijital TWINS 'te kimlik doğrulaması öğrenin.
+title: Rol tabanlı erişim denetimini anlama-Azure dijital TWINS | Microsoft Docs
+description: Azure dijital TWINS 'de rol tabanlı erişim denetimi ve izinleri yönetme hakkında bilgi edinin.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: 6602a4df2c6e313156010102780240ba19fbac95
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4e29cb488c9b491ec551ead1873e8cfd2d33a93b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815577"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336725"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure dijital TWINS 'de rol tabanlı erişim denetimi
 
@@ -49,20 +49,20 @@ Geliştirici, RBAC 'yi kullanarak şunları alabilir:
 
 ### <a name="role-definitions"></a>Rol tanımları
 
-Rol tanımı bir rol oluşturan izinlerin ve diğer özniteliklerin koleksiyonudur. Rol tanımı, bu role sahip herhangi bir nesnenin gerçekleştirebileceği *oluşturma*, *okuma*, *güncelleştirme*ve *silme* işlemlerini içeren izin verilen işlemleri listeler. Ayrıca, hangi nesne türleri izinlerinin uygulanacağını de belirtir.
+Rol tanımı bir rol oluşturan izinlerin ve diğer özniteliklerin koleksiyonudur. Rol tanımı, bu role sahip herhangi bir nesnenin gerçekleştirebileceği *oluşturma*, *okuma*, *güncelleştirme*ve *silme* işlemlerini içeren izin verilen işlemleri listeler. Ayrıca, izinlerin hangi nesne türlerine uygulanacağını de belirtir.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
 > Önceki rollerin tam tanımlarını almak için, sistem/rol API 'sini sorgulayın.
-> [Rol atamaları oluşturmayı ve yönetmeyi](./security-create-manage-role-assignments.md#all)okuyarak daha fazla bilgi edinin.
+> [Rol atamaları oluşturmayı ve yönetmeyi](./security-create-manage-role-assignments.md#retrieve-all-roles)okuyarak daha fazla bilgi edinin.
 
 ### <a name="object-identifier-types"></a>Nesne tanımlayıcı türleri
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> [Rol atamaları oluşturma ve yönetme](./security-create-manage-role-assignments.md#grant)konusunu okuyarak hizmet sorumlusuna izin verme hakkında bilgi edinin.
+> [Rol atamaları oluşturma ve yönetme](./security-create-manage-role-assignments.md#grant-permissions-to-your-service-principal)konusunu okuyarak hizmet sorumlusuna izin verme hakkında bilgi edinin.
 
 Aşağıdaki başvuru belgesi makaleleri şunları anlatmaktadır:
 

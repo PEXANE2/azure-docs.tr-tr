@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 45fb2daaeaf9ee788207d43d805e070320372ca0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 19a618bd576687fcb0d92f8e35613e4cdc749e70
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617166"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320453"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 
@@ -44,11 +44,11 @@ Hassas parola ilkeleri (FGPPs), bir etki alanındaki farklı kullanıcılara par
 
 Aşağıdaki parola ayarları FGPP kullanılarak yapılandırılabilir:
 
-* Minimum parola uzunluğu
+* En az parola uzunluğu
 * Parola geçmişi
 * Parolaların karmaşıklık gereksinimlerini karşılaması gerekir
-* En az parola yaşı
-* Maksimum parola yaşı
+* En düşük parola geçerlilik süresi
+* En uzun parola geçerlilik süresi
 * Hesap kilitleme ilkesi
   * Hesap kilitleme süresi
   * İzin verilen başarısız oturum açma denemesi sayısı
@@ -90,6 +90,9 @@ Hassas parola ilkesi oluşturmak için, etki alanına katılmış bir VM 'den Ac
 1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
 1. OU 'Ları oluşturup yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
 1. Sol bölmede, *contoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
+1. **Sistem** kapsayıcısını ve ardından **parola ayarları** kapsayıcısını açın.
+
+    Azure AD DS yönetilen etki alanı için yerleşik FGPP gösterilmektedir. Bu yerleşik FGPP 'yi değiştiremezsiniz. Bunun yerine, varsayılan FGPP 'yi geçersiz kılmak için yeni bir özel FGPP oluşturun.
 1. Sağdaki **Görevler** panelinde **Yeni > parola ayarları**' nı seçin.
 1. **Parola ayarlarını oluştur** iletişim kutusunda, Ilke Için *Mycustomfgpp*gibi bir ad girin. Varsayılan FGPP 'yi ( *200*olan *1*) geçersiz kılmak için önceliği uygun olarak ayarlayın.
 

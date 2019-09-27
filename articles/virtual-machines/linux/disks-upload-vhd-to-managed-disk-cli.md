@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: bd4d3b9b34f951896e838d5f6f50ca204d329568
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: bc8932a9904a3e4e671edc3e624ff15e7253e1ed
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266607"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326813"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Azure CLı kullanarak bir VHD 'yi Azure 'a yükleme
 
@@ -40,6 +40,8 @@ Bu tür yönetilen disklerin iki benzersiz durumu vardır:
 - ActiveUpload, bu, diskin karşıya yükleme almaya ve SAS üretilmeye hazırlanmasıdır.
 
 Bu durumlardan birinde, yönetilen disk, gerçek disk türünden bağımsız olarak [Standart HDD fiyatlandırmasına](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır. Örneğin, bir P10 S10 olarak faturalandırılacaktır. Bu, diski bir VM `revoke-access` 'ye eklemek için gerekli olan yönetilen diskte çağrılana kadar doğru olacaktır.
+
+Karşıya yüklemek üzere boş bir standart HDD oluşturabilmeniz için önce, karşıya yüklemek istediğiniz VHD 'nin dosya boyutunu bayt cinsinden yapmanız gerekir. Bunu sağlamak için `wc -c <yourFileName>.vhd` veya `ls -al <yourFileName>.vhd` kullanabilirsiniz. Bu değer, **--karşıya yükleme-boyut-bayt** parametresi belirtildiğinde kullanılır.
 
 Bir [disk oluşturma](/cli/azure/disk#az-disk-create) cmdlet 'inde **--for-upload** parametresini ve **--upload-size-bytes** parametresini belirterek KARŞıYA yüklemek üzere boş bir standart HDD oluşturun:
 

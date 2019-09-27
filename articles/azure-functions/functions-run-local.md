@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: fc77ef6786fbd16ecfeb34397ead11be8b107176
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 45bc55141c9f338ae2f69cf4ccefae3d2492b239
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207272"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336944"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools çalışın
 
@@ -97,19 +97,37 @@ Aşağıdaki adımlarda, Ubuntu/de, Linux dağıtımına çekirdek araçları y�
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. Ubuntu sunucunuzun aşağıdaki tablodan uygun sürümlerden birini çalıştırdığından emin olun. Apt kaynağını eklemek için şunu çalıştırın:
+1. Bir APT güncelleştirmesi yapmadan önce .NET geliştirme kaynak listesini ayarlayın.
+
+   Ubuntu için APT kaynak listesini ayarlamak için şu komutu çalıştırın:
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
-    sudo apt-get update
     ```
+
+   Dekim için APT kaynak listesini ayarlamak için şu komutu çalıştırın:
+
+    ```bash
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    ```
+
+1. Aşağıda listelenen uygun Linux sürümü dizelerinden biri için `/etc/apt/sources.list.d/dotnetdev.list` dosyasını denetleyin:
 
     | Linux dağıtım | Version |
     | --------------- | ----------- |
+    | Debian 10 | `buster` |
+    | Debian 9 | `stretch` |
+    | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17,04    | `zesty`     |
     | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
+
+1. APT kaynak güncelleştirmesini başlatın:
+
+    ```bash
+    sudo apt-get update
+    ```
 
 1. Temel Araçlar paketini yükler:
 
@@ -159,12 +177,12 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
-| **`--csx`** | Bir C# betik (. CSX) projesi başlatır. Sonraki komutlarda ' `--csx` i belirtmeniz gerekir. |
-| **`--docker`** | Seçili `--worker-runtime`bir temel görüntü kullanarak kapsayıcı Için bir dockerfile oluşturun. Özel bir Linux kapsayıcısına yayımlamayı planlarken bu seçeneği kullanın. |
+| **`--csx`** | Bir C# betik (. CSX) projesi başlatır. Sonraki komutlarda `--csx` belirtmeniz gerekir. |
+| **`--docker`** | Seçilen `--worker-runtime` ' a dayanan bir temel görüntü kullanarak kapsayıcı için bir Dockerfile oluşturun. Özel bir Linux kapsayıcısına yayımlamayı planlarken bu seçeneği kullanın. |
 | **`--force`** | Projede var olan dosyalar olduğunda bile projeyi başlatın. Bu ayar aynı ada sahip varolan dosyaların üzerine yazar. Proje klasöründeki diğer dosyalar etkilenmez. |
 | **`--no-source-control -n`** | 1\. x sürümünde bir git deposunun varsayılan oluşturulmasını engeller. Sürüm 2. x içinde git deposu varsayılan olarak oluşturulmaz. |
-| **`--source-control`** | Git deposunun oluşturulup oluşturulmayacağını denetler. Varsayılan olarak, bir depo oluşturulmaz. Ne `true`zaman bir depo oluşturulur. |
-| **`--worker-runtime`** | Projenin dil çalışma zamanını ayarlar. Desteklenen değerler şunlardır `dotnet`, `node` (JavaScript), `java`ve `python`. Ayarlanmaması durumunda, başlatma sırasında çalışma zamanını seçmeniz istenir. |
+| **`--source-control`** | Git deposunun oluşturulup oluşturulmayacağını denetler. Varsayılan olarak, bir depo oluşturulmaz. @No__t-0 olduğunda, bir depo oluşturulur. |
+| **`--worker-runtime`** | Projenin dil çalışma zamanını ayarlar. Desteklenen değerler `dotnet`, `node` (JavaScript), `java` ve `python` ' dir. Ayarlanmaması durumunda, başlatma sırasında çalışma zamanını seçmeniz istenir. |
 
 > [!IMPORTANT]
 > Varsayılan olarak, temel araçların sürüm 2. x 'i, .NET çalışma zamanına yönelik işlev uygulaması projelerini [ C# sınıf projeleri](functions-dotnet-class-library.md) (. csproj) olarak oluşturur. Visual C# Studio veya Visual Studio Code ile kullanılabilen bu projeler, test sırasında ve Azure 'a yayımlarken derlenir. Bunun yerine, 1. x sürümünde oluşturulan aynı C# komut dosyası (. CSX) dosyalarını oluşturmak ve bunlarla çalışmak istiyorsanız, işlevleri oluştururken ve dağıtırken `--csx` parametresini eklemeniz gerekir.
@@ -173,7 +191,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olarak geçirilmez. Bu ayarların `--publish-local-settings` Azure 'daki işlev uygulamasına eklendiğinden emin olmak için [yayımladığınızda](#publish) , anahtarını kullanın. **ConnectionString** içindeki değerlerin hiçbir şekilde yayımlanmadığını unutmayın.
+Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olarak geçirilmez. Bu ayarların Azure 'daki işlev uygulamasına eklendiğinden emin olmak için [yayımlarken](#publish) `--publish-local-settings` anahtarını kullanın. **ConnectionString** içindeki değerlerin hiçbir şekilde yayımlanmadığını unutmayın.
 
 İşlev uygulaması ayarları değerleri, kodunuzda ortam değişkenleri olarak da okunabilir. Daha fazla bilgi için, bu dile özgü başvuru konularının ortam değişkenleri bölümüne bakın:
 
@@ -182,9 +200,9 @@ Varsayılan olarak, bu ayarlar proje Azure 'da yayımlandığında otomatik olar
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
-İçin [`AzureWebJobsStorage`] geçerli bir depolama bağlantı dizesi ayarlanmamışsa ve öykünücü kullanılmıyorsa, aşağıdaki hata iletisi gösterilir:
+[@No__t-1] için geçerli bir depolama bağlantı dizesi ayarlanmamışsa ve öykünücü kullanılmıyorsa, aşağıdaki hata iletisi görüntülenir:
 
-> Yerel. Settings. JSON içinde AzureWebJobsStorage için eksik değer. HTTP dışındaki tüm tetikleyiciler için bu gereklidir. ' Func Azure functionapp Fetch-App-Settings \<functionappname\>' öğesini çalıştırabilir veya yerel. Settings. JSON içinde bir bağlantı dizesi belirtebilirsiniz.
+> Yerel. Settings. JSON içinde AzureWebJobsStorage için eksik değer. HTTP dışındaki tüm tetikleyiciler için bu gereklidir. ' Func Azure functionapp Fetch-App-settings \<functionAppName @ no__t-1 ' öğesini çalıştırabilir veya yerel. Settings. JSON içinde bir bağlantı dizesi belirtebilirsiniz.
 
 ### <a name="get-your-storage-connection-strings"></a>Depolama bağlantı dizelerinizi alın
 
@@ -221,7 +239,7 @@ Bir işlev oluşturmak için aşağıdaki komutu çalıştırın:
 func new
 ```
 
-Sürüm 2. x ' de, çalıştırdığınızda `func new` işlev uygulamanızın varsayılan dilinde bir şablon seçmeniz istenir. Ayrıca, işleviniz için bir ad seçmeniz istenir. 1\. x sürümünde de dili seçmeniz istenir.
+Sürüm 2. x ' de `func new` ' ı çalıştırdığınızda, işlev uygulamanızın varsayılan dilinde bir şablon seçmeniz istenir, ardından işleviniz için bir ad seçmeniz istenir. 1\. x sürümünde de dili seçmeniz istenir.
 
 ```output
 Select a language: Select a template:
@@ -254,7 +272,7 @@ Ayrıca, aşağıdaki bağımsız değişkenleri kullanarak komutta bu seçenekl
 | **`--csx`** | (Sürüm 2. x) 1. x C# sürümünde ve portalda kullanılan aynı komut dosyası (. CSX) şablonlarını üretir. |
 | **`--language -l`**| ,, Veya JavaScript gibi şablon programlama C#dili F#. Bu seçenek, 1. x sürümünde gereklidir. Sürüm 2. x içinde bu seçeneği kullanmayın veya çalışan çalışma zamanıyla eşleşen bir dil seçin. |
 | **`--name -n`** | İşlev adı. |
-| **`--template -t`** | Desteklenen her dil için kullanılabilir şablonların tüm listesini görmek için komutunukullanın.`func templates list`   |
+| **`--template -t`** | Desteklenen her dil için kullanılabilir şablonların tam listesini görmek için `func templates list` komutunu kullanın.   |
 
 Örneğin, tek bir komutta bir JavaScript HTTP tetikleyicisi oluşturmak için şunu çalıştırın:
 
@@ -297,28 +315,28 @@ npm start
 
 ### <a name="version-1x"></a>Sürüm 1. x
 
-İşlevler çalışma zamanının sürüm 1. x, aşağıdaki örnekte `host` olduğu gibi komutunu gerektirir:
+Işlevler çalışma zamanının sürüm 1. x, aşağıdaki örnekte olduğu gibi `host` komutunu gerektirir:
 
 ```command
 func host start
 ```
 
-`func start`Aşağıdaki seçenekleri destekler:
+`func start` aşağıdaki seçenekleri destekler:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | Çalıştırmadan önce derleme geçerli projesi yok. Yalnızca DotNet projeleri için. Varsayılan değer false olarak ayarlanmıştır. Yalnızca sürüm 2. x. |
-| **`--cert`** | Özel anahtar içeren bir. pfx dosyasının yolu. Yalnızca ile `--useHttps`kullanılır. Yalnızca sürüm 2. x. |
+| **`--cert`** | Özel anahtar içeren bir. pfx dosyasının yolu. Yalnızca `--useHttps` ile kullanılır. Yalnızca sürüm 2. x. |
 | **`--cors-credentials`** | Yalnızca çıkış noktaları arası kimlik doğrulamalı isteklere (yani, tanımlama bilgileri ve kimlik doğrulama üstbilgisi) sürüm 2. x 'e izin verin. |
 | **`--cors`** | CORS kaynakları için boşluk olmadan virgülle ayrılmış bir liste. |
 | **`--language-worker`** | Dil çalışanını yapılandırmak için bağımsız değişkenler. Yalnızca sürüm 2. x. |
 | **`--nodeDebugPort -n`** | Kullanılacak düğüm hata ayıklayıcı bağlantı noktası. Varsayılanını Launch. JSON veya 5858 değeri. Yalnızca sürüm 1. x. |
-| **`--password`** | Bir. pfx dosyasının parolasını içeren parola veya dosya. Yalnızca ile `--cert`kullanılır. Yalnızca sürüm 2. x. |
+| **`--password`** | Bir. pfx dosyasının parolasını içeren parola veya dosya. Yalnızca `--cert` ile kullanılır. Yalnızca sürüm 2. x. |
 | **`--port -p`** | Dinlenecek yerel bağlantı noktası. Varsayılan değer: 7071. |
 | **`--pause-on-error`** | İşlemden çıkmadan önce ek giriş için duraklatın. Yalnızca tümleşik geliştirme ortamından (IDE) temel araçlar başlatılırken kullanılır.|
-| **`--script-root --prefix`** | Çalıştırılacak veya dağıtılacak işlev uygulamasının köküne ait yolu belirtmek için kullanılır. Bu, bir alt klasöre proje dosyaları üreten derlenmiş projeler için kullanılır. Örneğin, bir C# sınıf kitaplığı projesi oluşturduğunuzda, Host. JSON, Local. Settings. JSON ve function. JSON dosyaları gibi `MyProject/bin/Debug/netstandard2.0`bir yol içeren bir *kök* alt klasörde oluşturulur. Bu durumda, önekini olarak `--script-root MyProject/bin/Debug/netstandard2.0`ayarlayın. Bu, Azure 'da çalışırken işlev uygulamasının köküdür. |
+| **`--script-root --prefix`** | Çalıştırılacak veya dağıtılacak işlev uygulamasının köküne ait yolu belirtmek için kullanılır. Bu, bir alt klasöre proje dosyaları üreten derlenmiş projeler için kullanılır. Örneğin, bir C# sınıf kitaplığı projesi oluşturduğunuzda, Host. JSON, Local. Settings. JSON ve function. json dosyaları `MyProject/bin/Debug/netstandard2.0` gibi bir yol içeren bir *kök* alt klasörde oluşturulur. Bu durumda, ön eki `--script-root MyProject/bin/Debug/netstandard2.0` olarak ayarlayın. Bu, Azure 'da çalışırken işlev uygulamasının köküdür. |
 | **`--timeout -t`** | Işlevlerin başlaması için gereken zaman aşımı (saniye cinsinden). Varsayılanını 20 saniye.|
-| **`--useHttps`** | `https://localhost:{port}` Yerine öğesine`http://localhost:{port}`bağlayın. Varsayılan olarak, bu seçenek bilgisayarınızda güvenilir bir sertifika oluşturur.|
+| **`--useHttps`** | @No__t-1 yerine `https://localhost:{port}` ' a bağlayın. Varsayılan olarak, bu seçenek bilgisayarınızda güvenilir bir sertifika oluşturur.|
 
 Işlevler ana bilgisayarı başlatıldığında, HTTP ile tetiklenen işlevlerin URL 'sini verir:
 
@@ -331,7 +349,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Yerel olarak çalışırken, HTTP uç noktaları için kimlik doğrulama zorlanmaz. Bu, tüm yerel HTTP isteklerinin olarak `authLevel = "anonymous"`işlendiği anlamına gelir. Daha fazla bilgi için bkz. [http bağlama makalesi](functions-bindings-http-webhook.md#authorization-keys).
+>Yerel olarak çalışırken, HTTP uç noktaları için kimlik doğrulama zorlanmaz. Bu, tüm yerel HTTP isteklerinin `authLevel = "anonymous"` olarak işlendiği anlamına gelir. Daha fazla bilgi için bkz. [http bağlama makalesi](functions-bindings-http-webhook.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Test verilerini bir işleve geçirme
 
@@ -350,7 +368,7 @@ HTTP ve Web kancası tarafından tetiklenen işlevleri yerel olarak çalıştır
 
 Işlevlerin barındırın dinlediği sunucu adını ve bağlantı noktasını kullandığınızdan emin olun. Bunu, Işlev Konağı başlatılırken oluşturulan çıktıda görürsünüz. Tetikleyici tarafından desteklenen herhangi bir HTTP yöntemini kullanarak bu URL 'YI çağırabilirsiniz.
 
-Aşağıdaki kıvrımlı komutu, sorgu dizesinde `MyHttpTrigger` geçirilen _Name_ parametresine sahip bir Get isteğinden hızlı başlangıç işlevini tetikler.
+Aşağıdaki kıvrımlı komutu, sorgu dizesinde geçirilen _Name_ parametresine sahıp bir GET isteğinden `MyHttpTrigger` hızlı başlangıç işlevini tetikler.
 
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
@@ -380,20 +398,20 @@ Test verilerini bir işlevin yönetici uç noktasına geçirmek için, verileri 
 }
 ```
 
-`<trigger_input>` Değer, işlev tarafından beklenen bir biçimde veriler içeriyor. Aşağıdaki kıvrımlı örnek, bir `QueueTriggerJS` işlevin gönderisini sağlar. Bu durumda, giriş sırada bulunması beklenen iletiyle eşdeğer bir dizedir.
+@No__t-0 değeri, işlev tarafından beklenen bir biçimde veri içeriyor. Aşağıdaki kıvrımlı örnek, `QueueTriggerJS` işlevinin bir GÖNDERISINI sağlar. Bu durumda, giriş sırada bulunması beklenen iletiyle eşdeğer bir dizedir.
 
 ```bash
 curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
 ```
 
-#### <a name="using-the-func-run-command-in-version-1x"></a>1\. x sürümünde komutukullanma`func run`
+#### <a name="using-the-func-run-command-in-version-1x"></a>1\. x sürümünde `func run` komutu kullanma
 
 >[!IMPORTANT]
-> `func run` Komut, araçların 2. x sürümünde desteklenmez. Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md)konusu.
+> @No__t-0 komutu araçların sürüm 2. x bölümünde desteklenmez. Daha fazla bilgi için bkz. [Azure işlevleri çalışma zamanı sürümlerini hedefleme](set-runtime-version.md)konusu.
 
-Ayrıca, işlevini kullanarak `func run <FunctionName>` doğrudan bir işlevi çağırabilir ve işlev için giriş verileri sağlayabilirsiniz. Bu komut, Azure portal **Test** sekmesini kullanarak bir işlevi çalıştırmaya benzer.
+Ayrıca, `func run <FunctionName>` kullanarak doğrudan bir işlevi çağırabilir ve işlev için giriş verileri sağlayabilirsiniz. Bu komut, Azure portal **Test** sekmesini kullanarak bir işlevi çalıştırmaya benzer.
 
-`func run`Aşağıdaki seçenekleri destekler:
+`func run` aşağıdaki seçenekleri destekler:
 
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
@@ -417,13 +435,13 @@ Proje klasörü, yayınlanmaması gereken dile özgü dosyalar ve dizinler içer
 
 ### <a name="project-file-deployment"></a>Dağıtım (proje dosyaları)
 
-Yerel kodunuzu Azure 'da bir işlev uygulamasına yayımlamak için şu `publish` komutu kullanın:
+Yerel kodunuzu Azure 'da bir işlev uygulamasına yayımlamak için `publish` komutunu kullanın:
 
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
-Bu komut, Azure 'da var olan bir işlev uygulamasına yayınlar. Aboneliğinizde mevcut olmayan bir ' a `<FunctionAppName>` yayımlamayı denerseniz bir hata alırsınız. Azure CLı kullanarak komut isteminden veya Terminal penceresinde bir işlev uygulaması oluşturmayı öğrenmek için bkz. [sunucusuz yürütme için işlev uygulaması oluşturma](./scripts/functions-cli-create-serverless.md). Varsayılan olarak, bu komut uygulamanızı [dağıtım paketinden çalışacak](run-functions-from-deployment-package.md)şekilde dağıtır. Bu önerilen dağıtım modunu devre dışı bırakmak için `--nozip` seçeneğini kullanın.
+Bu komut, Azure 'da var olan bir işlev uygulamasına yayınlar. Aboneliğinizde mevcut olmayan `<FunctionAppName>` ' a yayımlamayı denerseniz bir hata alırsınız. Azure CLı kullanarak komut isteminden veya Terminal penceresinde bir işlev uygulaması oluşturmayı öğrenmek için bkz. [sunucusuz yürütme için işlev uygulaması oluşturma](./scripts/functions-cli-create-serverless.md). Varsayılan olarak, bu komut uygulamanızı [dağıtım paketinden çalışacak](run-functions-from-deployment-package.md)şekilde dağıtır. Bu önerilen dağıtım modunu devre dışı bırakmak için `--nozip` seçeneğini kullanın.
 
 >[!IMPORTANT]
 > Azure portal bir işlev uygulaması oluşturduğunuzda, varsayılan olarak Işlev çalışma zamanının 2. x sürümünü kullanır. İşlev uygulamasının çalışma zamanının sürüm 1. x ' i kullanmasını sağlamak için [Sürüm 1. x üzerinde Çalıştır](functions-versions.md#creating-1x-apps)' daki yönergeleri izleyin.
@@ -434,7 +452,7 @@ Aşağıdaki yayımlama seçenekleri, 1. x ve 2. x sürümleri için geçerlidir
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Ayarları yerel. Settings. json ' da Azure 'a yayımlayın, bu ayar zaten varsa üzerine yazma isteminde bulunur. Depolama öykünücüsünü kullanıyorsanız, önce uygulama ayarını [gerçek bir depolama bağlantısı](#get-your-storage-connection-strings)olarak değiştirin. |
-| **`--overwrite-settings -y`** | Kullanıldığında uygulama ayarlarının `--publish-local-settings -i` üzerine yazma istemi 'ni gizleyin.|
+| **`--overwrite-settings -y`** | @No__t-0 kullanıldığında uygulama ayarlarının üzerine yazma istemi 'ni gizleyin.|
 
 Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x içinde desteklenir:
 
@@ -443,9 +461,9 @@ Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x içinde desteklenir:
 | **`--publish-settings-only -o`** |  Yalnızca ayarları yayımlayın ve içeriği atlayın. Varsayılan istem. |
 |**`--list-ignored-files`** | Yayımlama sırasında yoksayılan,. funcignore dosyasını temel alan dosyaların listesini görüntüler. |
 | **`--list-included-files`** | Yayımlanan dosyaların bir listesini görüntüler, bu,. funcignore dosyasını temel alır. |
-| **`--nozip`** | Varsayılan `Run-From-Package` modu kapatır. |
+| **`--nozip`** | Varsayılan `Run-From-Package` modunu kapatır. |
 | **`--build-native-deps`** | Python işlev uygulamaları yayımlanırken. tekerlek klasörü oluşturmayı atlar. |
-| **`--additional-packages`** | Yerel bağımlılıklar oluşturulurken yüklenecek paketlerin listesi. Örneğin: `python3-dev libevent-dev` |
+| **`--additional-packages`** | Yerel bağımlılıklar oluşturulurken yüklenecek paketlerin listesi. Örneğin: `python3-dev libevent-dev`. |
 | **`--force`** | Belirli senaryolarda yayımlama öncesi doğrulamayı yoksayın. |
 | **`--csx`** | Bir C# betik (. CSX) projesi yayımlayın. |
 | **`--no-build`** | DotNet işlevlerini oluşturmayı atlayın. |
@@ -453,7 +471,7 @@ Aşağıdaki yayımlama seçenekleri yalnızca sürüm 2. x içinde desteklenir:
 
 ### <a name="deployment-custom-container"></a>Dağıtım (özel kapsayıcı)
 
-Azure Işlevleri, işlev projenizi [özel bir Docker kapsayıcısına](functions-deployment-technologies.md#docker-container)dağıtmanızı sağlar. Daha fazla bilgi için bkz. [özel bir görüntü kullanarak Linux 'ta Işlev oluşturma](functions-create-function-linux-custom-image.md). Özel kapsayıcılar bir Dockerfile içermelidir. Dockerfile ile bir uygulama oluşturmak için, üzerinde `func init`--dockerfile seçeneğini kullanın.
+Azure Işlevleri, işlev projenizi [özel bir Docker kapsayıcısına](functions-deployment-technologies.md#docker-container)dağıtmanızı sağlar. Daha fazla bilgi için bkz. [özel bir görüntü kullanarak Linux 'ta Işlev oluşturma](functions-create-function-linux-custom-image.md). Özel kapsayıcılar bir Dockerfile içermelidir. Dockerfile ile bir uygulama oluşturmak için `func init` ' da--dockerfile seçeneğini kullanın.
 
 ```bash
 func deploy
@@ -464,7 +482,7 @@ Aşağıdaki özel kapsayıcı dağıtım seçenekleri kullanılabilir:
 | Seçenek     | Açıklama                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Geçerli kullanıcının oturum açan bir Docker kayıt defterinin adı. |
-| **`--platform`** | İşlev uygulaması için platform barındırma. Geçerli seçenekler şunlardır`kubernetes` |
+| **`--platform`** | İşlev uygulaması için platform barındırma. Geçerli seçenekler `kubernetes` |
 | **`--name`** | İşlev uygulaması adı. |
 | **`--max`**  | İsteğe bağlı olarak, dağıtılacak maksimum işlev uygulaması örneği sayısını ayarlar. |
 | **`--min`**  | İsteğe bağlı olarak, dağıtılacak en düşük işlev uygulaması örneği sayısını ayarlar. |

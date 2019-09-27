@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/23/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 84cca255d8cf768d44e01c8f3a892e3c9830184e
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316706"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327242"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Takım veri bilimi süreç ekibi üzerinde ekip liderine yönelik görevler
 
@@ -140,7 +140,7 @@ Ekip depolarınızı grup yöneticiniz tarafından ayarlanan ortak depoların i�
    
    ![Içeri aktar 'ı seçin](./media/team-lead-tasks/import-repo.png)
    
-1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında grup ortak şablon deponuzun URL 'sini girin. URL *: https\/:\<\<sunucu adı >/kuruluş adı >/_Git/\</deposu adı >* . Örneğin: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_Git/GroupProjectTemplate*. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında grup ortak şablon deponuzun URL 'sini girin. URL, *https: \/ @ no__t-2 @ no__t-3sunucu adı >/\<kuruluş adı >/_git/\<repository adı >* . Örneğin: *https: \//dev. Azure. com/Databilimenceunit/GroupCommon/_Git/GroupProjectTemplate*. 
    
 1. **Içeri aktar**' ı seçin. Grup şablonu deponuzun içeriği takım şablonu deponuza aktarılır. 
    
@@ -230,7 +230,7 @@ git push
 > 
 > `git config --global user.name <your name>`
 > 
-> `git config --global user.email \<your email address>`
+> `git config --global user.email <your email address>`
 > 
 > Birden çok git deposuna çalışıyorsanız, hepsi için aynı adı ve e-posta adresini kullanın. Aynı ad ve e-posta adresinin kullanılması, git etkinliklerinizi birden çok depoda izlemek üzere Power BI panolar oluştururken kullanışlıdır.
 

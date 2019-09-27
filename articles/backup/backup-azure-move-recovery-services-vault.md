@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: 960ddcc2a082b247951b0f79d0c990acc5e557e1
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 6e95c012aed9fdcfda2b64c310458425df2b9f9e
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210390"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337883"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
@@ -38,7 +38,7 @@ Kurtarma Hizmetleri Kasası için kaynak taşıma Avustralya Doğu, Avustralya G
 - Klasik model aracılığıyla dağıtılan kaynakları taşımaya yönelik seçenekler, kaynakları bir abonelik içinde veya yeni bir aboneliğe taşıdığınıza bağlı olarak farklılık gösterir. Daha fazla bilgi için [bu makaleye](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) bakın.
 - Kasa için tanımlanan yedekleme ilkeleri, kasalardan abonelikler arasında veya yeni bir kaynak grubuna taşındıktan sonra tutulur.
 - Azure dosyaları, Azure Dosya Eşitleme ya da SQL ve kaynak grupları arasında IaaS VM 'lerinde kasanın taşınması desteklenmez.
-- VM yedekleme verilerini içeren bir kasayı abonelikler arasında taşırsanız, sanal makinelerinizi aynı aboneliğe taşımanız ve yedeklemelerin devam etmesi için aynı hedef kaynak grubunu kullanmanız gerekir.<br>
+- VM yedekleme verilerini içeren bir kasayı abonelikler arasında taşırsanız, sanal makinelerinizi aynı aboneliğe taşımanız ve yedeklemeleri sürdürmek için aynı hedef VM kaynak grubu adını (eski abonelikte olduğu gibi) kullanmanız gerekir.<br>
 
 > [!NOTE]
 >

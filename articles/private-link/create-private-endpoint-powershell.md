@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 569bc021d978714472bf40bcf39f7134fec95970
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b3f809a21dab86ac50fcf7c194c886b05977e15e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130340"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327116"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell kullanarak özel uç nokta oluşturma
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. 
@@ -33,7 +33,7 @@ New-AzResourceGroup `
 ```
 
 ## <a name="create-a-virtual-network"></a>Sanal Ağ Oluştur
-Bu bölümde, bir sanal ağ ve bir alt ağ oluşturacaksınız. Sonra, Sanal ağınızı alt ağ ile ilişkilendirirsiniz.
+Bu bölümde, bir sanal ağ ve bir alt ağ oluşturacaksınız. Sonra, alt ağı sanal ağınızla ilişkilendirirsiniz.
 
 ### <a name="create-a-virtual-network"></a>Sanal Ağ Oluştur
 

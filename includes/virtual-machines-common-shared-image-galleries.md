@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d86976ad191ffffa343ad7a94b8171759ad102c3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012304"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338350"
 ---
 Paylaşılan görüntü Galerisi, yönetilen görüntülerinizin etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -60,7 +60,7 @@ Bunların üçü de benzersiz değer kümelerine sahiptir. Bu biçim, bir market
 
 Aşağıda, kaynaklarınızı daha kolay izleyebilmek için görüntü tanımınızda ayarlanabilme diğer parametreler verilmiştir:
 
-* İşletim sistemi durumu-işletim sistemi durumunu genelleştirilemez veya özelleşmiş olarak ayarlayabilirsiniz, ancak şu anda yalnızca genelleştirilemez. Görüntülerin, Windows için Sysprep veya `waagent -deprovision` Linux için genelleştirilmiş kullanılarak genelleştirilmiş VM 'lerden oluşturulması gerekir.
+* İşletim sistemi durumu-işletim sistemi durumunu genelleştirilemez veya özelleşmiş olarak ayarlayabilirsiniz, ancak şu anda yalnızca genelleştirilemez. Görüntülerin Windows için Sysprep veya Linux için `waagent -deprovision` kullanılarak genelleştirilmiş VM 'lerden oluşturulması gerekir.
 * İşletim sistemi-Windows veya Linux olabilir.
 * Açıklama-görüntü tanımının neden mevcut olduğuna ilişkin daha ayrıntılı bilgi için açıklama kullanın. Örneğin, ön uç sunucunuz için uygulamanın önceden yüklenmiş olduğu bir görüntü tanımınız olabilir.
 * EULA-görüntü tanımına özgü bir son kullanıcı lisans anlaşmasını işaret etmek için kullanılabilir.
@@ -83,10 +83,10 @@ Kaynak bölgeler aşağıdaki tabloda listelenmiştir. Tüm ortak bölgeler hede
 | Avustralya Doğu      | East US         | Orta Kuzey ABD | Batı Hindistan      |
 | Avustralya Güneydoğu | Doğu ABD 2       | Kuzey Avrupa     | Batı ABD         |
 | Güney Brezilya        | Orta ABD 2 EUAP  | Orta Güney ABD | Batı ABD 2       |
-| Orta Kanada      | Fransa Orta  | Güney Hindistan      |                 |
-| Doğu Kanada         | Fransa Güney    | Güneydoğu Asya   |                 |
-| Orta Hindistan       | Japonya Doğu      | Birleşik Krallık Güney         |                 |
-| Orta ABD          | Japonya Batı      | Birleşik Krallık Batı          |                 |
+| Orta Kanada      | Fransa Orta  | Güney Hindistan      | Çin Doğu      |
+| Doğu Kanada         | Fransa Güney    | Güneydoğu Asya   | Çin Doğu 2    |
+| Orta Hindistan       | Japonya Doğu      | Birleşik Krallık Güney         | Çin Kuzey     |
+| Orta ABD          | Japonya Batı      | Birleşik Krallık Batı          | Çin Kuzey 2   |
 
 
 
@@ -106,8 +106,8 @@ Paylaşılan görüntü Galerisi, Azure 'un görüntüleri tutmasını istediği
 
 Paylaşılan görüntü Galerisi ile artık bir sanal makine ölçek kümesindeki bir 1.000 VM örneğine (yönetilen görüntülerle 600 ' den fazla) dağıtabilirsiniz. Görüntü çoğaltmaları daha iyi dağıtım performansı, güvenilirlik ve tutarlılık sağlar.  Bölgenin ölçek ihtiyaçlarına göre her bir hedef bölgede farklı bir çoğaltma sayısı ayarlayabilirsiniz. Her çoğaltma görüntünüzün derin bir kopyası olduğundan, bu, her bir ekstra çoğaltma ile dağıtımlarınızın ölçeğini daha erken ölçeklendirmenize yardımcı olur. İki görüntü veya bölgenin aynı olmadığını anladığımızda, bir bölgede çoğaltmaların nasıl kullanılacağına ilişkin genel kılavuzumuz aşağıda verilmiştir:
 
-- Aynı anda oluşturduğunuz her 20 VM için bir çoğaltmayı tutmanız önerilir. Örneğin, bir bölgedeki aynı görüntüyü kullanarak aynı anda 120 VM oluşturuyorsanız, resminizin en az 6 çoğaltmasını tutmanız önerilir. 
-- En fazla 600 örneği olan her ölçek kümesi dağıtımı için en az bir çoğaltma tutmanız önerilir. Örneğin, her biri tek bir bölgedeki aynı görüntüyü kullanan 600 VM örneğiyle aynı anda 5 ölçek kümesi oluşturuyorsanız, resminizin en az 5 çoğaltmasını tutmanızı öneririz. 
+- Sanal olmayan makine ölçek kümesi (VMSS) dağıtımları için-eşzamanlı olarak oluşturduğunuz her 20 VM Için bir çoğaltma tutmanız önerilir. Örneğin, bir bölgedeki aynı görüntüyü kullanarak aynı anda 120 VM oluşturuyorsanız, resminizin en az 6 çoğaltmasını tutmanız önerilir. 
+- Sanal makine ölçek kümesi (VMSS) dağıtımları için-en çok 600 örneğe sahip her ölçek kümesi dağıtımı Için en az bir çoğaltma tutmanız önerilir. Örneğin, her biri tek bir bölgedeki aynı görüntüyü kullanan 600 VM örneğiyle aynı anda 5 ölçek kümesi oluşturuyorsanız, resminizin en az 5 çoğaltmasını tutmanızı öneririz. 
 
 Görüntü boyutu, içerik ve işletim sistemi türü gibi etkenlere bağlı olarak her zaman çoğaltma sayısını fazla temin etmenizi öneririz.
 
@@ -137,9 +137,9 @@ Paylaşılan görüntü sürümünün çoğaltılacağı bölgeler, oluşturma z
 
 Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü tüm kaynaklar olduğundan, yerleşik yerel Azure RBAC denetimleri kullanılarak paylaşılabilir. RBAC kullanarak bu kaynakları diğer kullanıcılar, hizmet sorumluları ve gruplar ile paylaşabilirsiniz. Hatta, içinde oluşturuldukları kiracı dışındaki bireylere erişim de paylaşabilirsiniz. Bir kullanıcının paylaşılan görüntü sürümüne erişimi olduktan sonra, bir VM veya bir sanal makine ölçek kümesi dağıtabilirler.  Kullanıcının ne erişimi olduğunu anlamanıza yardımcı olan paylaşım matrisi aşağıda verilmiştir:
 
-| Kullanıcıyla paylaşıldı     | Paylaşılan görüntü galerisi | Görüntü Tanımı | Görüntü sürümü |
+| Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
-| Paylaşılan görüntü galerisi | Evet                  | Evet          | Evet                  |
+| Paylaşılan Görüntü Galerisi | Evet                  | Evet          | Evet                  |
 | Görüntü Tanımı     | Hayır                   | Evet          | Evet                  |
 
 En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).
@@ -271,7 +271,7 @@ Bölgesel çoğaltma sayısını belirtmek için, konumu bu bölgede oluşturmak
 
 Bölgesel çoğaltma sayısı her konum ile belirtilmediyse, varsayılan çoğaltma sayısı belirttiğiniz ortak çoğaltma sayısı olacaktır. 
 
-CLI 'de ortak çoğaltma sayısını belirtmek için, `az sig image-version create` komutta **--Replica-Count** bağımsız değişkenini kullanın.
+CLı 'de ortak çoğaltma sayısını belirtmek için `az sig image-version create` komutunda **--Replica-Count** bağımsız değişkenini kullanın.
 
 
 **S.** Paylaşılan görüntü galerisini, görüntü tanımını ve görüntü sürümünü oluşturmak istediğimizden farklı bir konumda oluşturabilir miyim?

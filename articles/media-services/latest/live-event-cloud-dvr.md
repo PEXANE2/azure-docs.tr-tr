@@ -1,5 +1,5 @@
 ---
-title: Canlı etkinlik Azure Media Services ve bulut DVR | Microsoft Docs
+title: Azure Media Services saat değiştirme ve canlı-VOD kullanma (isteğe bağlı video) | Microsoft Docs
 description: Bu makalede, canlı çıktının ne olduğu ve bulut DVR 'ın nasıl kullanılacağı açıklanmaktadır.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: a10c76dd7fb4ef1e9a45666ff3a3ca0d937d2c94
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ffcd279830cb49b64ddbb58a888ad7d653918b1b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231216"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338835"
 ---
-# <a name="using-a-cloud-digital-video-recorder-dvr"></a>Bulut dijital video kaydedicisi (DVR) kullanma
+# <a name="using-time-shifting-and-live-to-vod-video-on-demand"></a>Zaman kaydırma ve canlı-VOD kullanma (isteğe bağlı video)
 
 Azure Media Services, [canlı çıkış](https://docs.microsoft.com/rest/api/media/liveoutputs) nesnesi canlı akışınızı yakalayıp Media Services hesabınızdaki bir varlığa kaydeden dijital video kaydedicisi gibidir. Kaydedilen içerik, [varlık](https://docs.microsoft.com/rest/api/media/assets) kaynağı tarafından tanımlanan kapsayıcıda kalıcı hale getirilir (kapsayıcı, hesabınıza bağlı olan Azure Storage hesabıdır). Canlı çıktı Ayrıca, akışın ne kadarının arşiv kaydında (örneğin, bulut DVR 'ın kapasitesi) tutulması ve görüntüleyicilerin canlı akışı izlemeye başlayabileceği gibi, giden canlı akışın bazı özelliklerini denetlemenize olanak tanır. Diskteki arşiv, yalnızca canlı çıktının **archiveWindowLength** özelliğinde belirtilen içerik miktarını tutan bir dairesel arşiv "penceresidir". Bu pencerenin dışında kalan içerikler, depolama kapsayıcısından otomatik olarak atılır ve kurtarılamaz. ArchiveWindowLength değeri, DVR 'ın kapasitesini belirten ve en az 3 dakikadan en fazla 25 saate ayarlanabilir bir ISO-8601 TimeSpan süresi (örneğin, PTHH: MM: SS) temsil eder.
 

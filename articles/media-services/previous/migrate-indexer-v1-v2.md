@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 3f6f61523b8509f23ffc98b236daaf0e646a013a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 304091634c9e07f0a34029e83111a537b95bc061
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310431"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338528"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer ve Media Indexer 2 ' den Video Indexer 'e geçiş
 
-[Azure Media Indexer](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Indexer Dizin Oluşturucu 2 (Önizleme)](media-services-process-content-with-indexer2.md) medya Işlemcileri 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır.  [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
+[Azure Media Indexer v1](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Indexer v2 Preview](media-services-process-content-with-indexer2.md) medya Işlemcileri 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır.  [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
 
 Azure Media Services Video Indexer Azure Media Analytics, Azure Search, bilişsel hizmetler (Yüz Tanıma API'si, Microsoft Translator, Görüntü İşleme API'si ve Özel Konuşma Tanıma hizmeti) için oluşturulmuştur. Video Indexer’ın görüntülü ve sesli modellerini kullanarak videolarınızdan içgörü ayıklamanıza olanak sağlar. Hangi senaryolar Video Indexer kullanılabileceğini, hangi özellikleri sunduğunu ve nasıl başladıklarınızı görmek için bkz. [video Indexer video ve ses modelleri](../video-indexer/video-indexer-overview.md). 
 

@@ -1,6 +1,6 @@
 ---
-title: IoT çözümü olay toplama için Azure Güvenlik Merkezi 'ni anlama | Microsoft Docs
-description: IoT hizmeti için Azure Güvenlik Merkezi 'nde olayların nasıl toplandığından öğrenin.
+title: IoT olay toplaması için Azure Güvenlik Merkezi 'ni anlama | Microsoft Docs
+description: IoT olay toplama için Azure Güvenlik Merkezi hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933894"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327311"
 ---
-# <a name="security-agent-event-aggregation"></a>Güvenlik Aracısı olay toplama
+# <a name="azure-security-center-for-iot-event-aggregation"></a>IoT olay toplaması için Azure Güvenlik Merkezi
 
-IoT güvenlik aracıları için Azure Güvenlik Merkezi, yerel cihazınızdan veri ve sistem olayları toplayıp bu verileri işleme ve analiz için Azure bulutuna gönderir. Güvenlik Aracısı, yeni işlem ve yeni bağlantı olayları dahil olmak üzere birçok cihaz olayı türünü toplar. Yeni işlem ve yeni bağlantı olaylarının her ikisi de bir cihazda ikinci olarak sıklıkla meydana gelebilir ve güçlü ve kapsamlı güvenlik için önemli olsa da, bu durum, güvenlik aracılarını göndermeye zorlayan ileti miktarı IoT Hub hızlı bir şekilde ulaşabilir veya aşabilir Kota ve maliyet sınırları. Ancak, bu olaylar, cihazınızı korumak için önemli olan önemli ölçüde önemli güvenlik bilgilerini içerir.
+IoT güvenlik aracıları için Azure Güvenlik Merkezi, yerel cihazınızdan veri ve sistem olayları toplar ve bu verileri işleme ve analiz için Azure bulutuna gönderir. Güvenlik Aracısı, yeni işlem ve yeni bağlantı olayları dahil olmak üzere birçok cihaz olayı türünü toplar. Yeni işlem ve yeni bağlantı olaylarının her ikisi de bir cihazda ikinci olarak sıklıkla meydana gelebilir ve güçlü ve kapsamlı güvenlik için önemli olsa da, güvenlik aracılarının göndermeye zorlanacağı ileti sayısı, IoT Hub hızlı bir şekilde ulaşabilir veya bu işlemden çıkabilir Kota ve maliyet sınırları. Ancak, bu olaylar, cihazınızı korumak için önemli olan önemli ölçüde önemli güvenlik bilgilerini içerir.
 
 Cihazların korunmasını sağlarken ek kotayı ve maliyetleri azaltmak için, IoT aracıları için Azure Güvenlik Merkezi bu tür olayları toplar.
 
@@ -44,8 +44,8 @@ Aracının bellekte zaten tutulmakta olan bir olay ile aynı olayı topladığı
 
 Olaylar yalnızca aşağıdaki koşullar karşılandığında özdeş olarak değerlendirilir: 
 
-* ProcessCreate olayları- **commandLine**, **çalıştırılabilir**, **Kullanıcı adı** ve Kullanıcı **kimliği** aynı olduğunda
-* ConnectionCreate olayları- **commandLine**, **UserID**, **Direction**, **Yerel adres**, **uzak adres**, **protokol** ve **hedef bağlantı noktası** aynı olduğunda
+* ProcessCreate olayları- **commandLine**, **çalıştırılabilir**, * * Kullanıcı adı ve **Kullanıcı kimliği** aynı olduğunda
+* ConnectionCreate olayları- **commandLine**, **UserID**, **Direction**, **Yerel adres**, **uzak adres**, * * protokolü ve **hedef bağlantı noktası** aynı olduğunda
 * ProcessTerminate olayları- **yürütülebilir** ve **Çıkış durumu** aynı olduğunda
 
 ### <a name="working-with-aggregated-events"></a>Toplu olaylarla çalışma
@@ -57,7 +57,7 @@ Toplama sırasında, toplanmayan olay özellikleri atılır ve Log Analytics 'te
 ## <a name="event-aggregation-based-alerts"></a>Olay toplama tabanlı uyarılar 
 Analiz sonrasında IoT için Azure Güvenlik Merkezi, şüpheli toplanmış olaylar için güvenlik uyarıları oluşturur. Toplanan olaylardan oluşturulan uyarılar, toplanan her olay için yalnızca bir kez görünür.
 
-Her olay için toplama başlangıç saati, bitiş saati ve isabet sayısı, araştırmalar sırasında kullanılmak üzere Log Analytics içindeki olay **Extradetails** alanında günlüğe kaydedilir. 
+Her olay için toplama başlangıç zamanı, bitiş zamanı ve isabet sayısı, araştırmalar sırasında kullanılmak üzere Log Analytics içindeki olay **Extradetails** alanında günlüğe kaydedilir. 
 
 Her toplanmış olay, toplanan uyarıların 24 saatlik bir dönemini temsil eder. Her olayın sol üst kısmındaki olay seçenekleri menüsünü kullanarak, toplanan her bir olayı **kapatabilirsiniz** .    
 

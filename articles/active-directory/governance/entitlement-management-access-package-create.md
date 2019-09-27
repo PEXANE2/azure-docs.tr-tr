@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 1283549ce78535757b7ba42eaf7054538f0c9784
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678183"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326352"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde yeni bir erişim paketi oluşturma (Önizleme)
 
@@ -73,13 +73,13 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
     Oluşturmakta olduğunuz erişim paketi ve kendisine dahil edilen kaynaklar yeni kataloğa eklenecektir. Daha sonra da ek Katalog sahipleri ekleyebilirsiniz.
 
 
-1.           **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 
 ## <a name="resource-roles"></a>Kaynak rolleri
 
 **Kaynak rolleri** sekmesinde, erişim paketine dahil edilecek kaynakları seçersiniz.  Erişim paketini isteyen ve alan kullanıcılar, erişim paketindeki tüm kaynak rollerini alacaktır.
 
-1. Eklemek istediğiniz kaynak türüne (**gruplar**, **uygulamalar**veya **SharePoint siteleri**) tıklayın.
+1. Eklemek istediğiniz kaynak türüne (**gruplar ve takımlar**, **uygulamalar**veya **SharePoint siteleri**) tıklayın.
 
 1. Görüntülenen seçim bölmesinde listeden bir veya daha fazla kaynak seçin.
 
@@ -95,7 +95,7 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
 
     ![Paket-kaynak rolü seçimine erişin](./media/entitlement-management-access-package-create/resource-roles-role.png)
 
-1.           **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 
 ## <a name="policy"></a>İlke
 
@@ -111,7 +111,7 @@ Aşağıdaki diyagramda yeni bir erişim paketi oluşturmak için üst düzey i�
 
 [!INCLUDE [Entitlement management policy](../../../includes/active-directory-entitlement-management-policy.md)]
 
-## <a name="review--create"></a>Gözden geçirme + oluşturma
+## <a name="review--create"></a>Gözden geçir + oluştur
 
 **Gözden geçir + oluştur** sekmelerinde, ayarlarınızı gözden geçirebilir ve herhangi bir doğrulama hatası olup olmadığını denetleyebilirsiniz.
 

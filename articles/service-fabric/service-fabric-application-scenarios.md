@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 4/24/2019
 ms.author: atsenthi
-ms.openlocfilehash: 6563d6e7c454f44e1a70d725191e56d3f90315c2
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 91e85f762e05c836fe32f5743cc48afed30ae983
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67052609"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327292"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric uygulama senaryoları
 Azure Service Fabric, birçok iş uygulaması ve hizmeti türünü yazıp çalıştırabileceğiniz güvenilir ve esnek bir platform sunar. Bu uygulamalar ve mikro hizmetler durum bilgisiz veya durum bilgisi olabilir ve verimliliği en üst düzeye çıkarmak için sanal makineler arasında kaynak dengelenebilir. 
@@ -68,9 +68,9 @@ Durum bilgisi olan mikro hizmetler, yalnızca durum bilgisiz uygulamaların kull
 
 Aşağıdaki diyagramlarda, durum bilgisiz ve durum bilgisi olan bir uygulama tasarlama arasındaki farklar gösterilmektedir. [Reliable Services](service-fabric-reliable-services-introduction.md) ve [Reliable Actors](service-fabric-reliable-actors-introduction.md) programlama modellerinden yararlanarak, durum bilgisi olan hizmetler yüksek aktarım hızı ve düşük gecikme süresi sağlarken uygulama karmaşıklığını azaltır.
 
-Durum bilgisi olmayan hizmetler kullanan örnek bir uygulama aşağıda verilmiştir: ![Durum bilgisi olmayan hizmetler kullanan uygulama][Image1]
+Durum bilgisi olmayan hizmetler kullanan örnek bir uygulama aşağıda verilmiştir: durum bilgisi olmayan hizmetler kullanan ![Uygulama @ no__t-1
 
-Durum bilgisi olmayan hizmetler kullanan örnek bir uygulama aşağıda verilmiştir: ![Durum bilgisi olmayan hizmetler kullanan uygulama][Image2]
+Durum bilgisi olmayan hizmetler kullanan örnek bir uygulama aşağıda verilmiştir: durum bilgisi olmayan hizmetler kullanan ![Uygulama @ no__t-1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -87,5 +87,5 @@ Durum bilgisi olmayan hizmetler kullanan örnek bir uygulama aşağıda verilmi�
   * [Service Fabric hizmetlerini ölçeklendirme](service-fabric-concepts-scalability.md)
   * [Bölüm Service Fabric Hizmetleri](service-fabric-concepts-partitioning.md)
 
-[Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.jpg
-[Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.jpg
+[Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
+[Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

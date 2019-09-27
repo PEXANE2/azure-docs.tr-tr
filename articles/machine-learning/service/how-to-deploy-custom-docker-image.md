@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: b86c0d0de95581f7a47de428ffbf0b161353df83
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 84567b68c85a48d0fc02f6f6a4986d8092215a92
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260758"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326491"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel bir Docker temel görüntüsü kullanarak model dağıtma
 
@@ -183,15 +183,16 @@ Microsoft, bu bölümdeki adımlarla kullanılabilecek, herkese açık bir şeki
 | Image | Açıklama |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Azure Machine Learning için temel görüntü |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0` | ONNX çalışma zamanını içerir. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7` | ONNX çalışma zamanı ve CUDA bileşenlerini içerir. |
-| `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03` | ONNX çalışma zamanını ve TensorRT 'yi içerir. |
+| `mcr.microsoft.com/azureml/onnxruntime:latest` | CPU ınizeci için ONNX çalışma zamanını içerir |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | GPU için ONNX çalışma zamanını ve CUDA 'yı içerir |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | GPU için ONNX çalışma zamanını ve TensorRT 'yi içerir |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Movidius TM myriadx VPUs tabanlı Intel<sup> </sup> Vision Hızlandırıcısı tasarımı için Onnx<sup></sup> çalışma zamanı ve openvino içerir |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Intel<sup> </sup> Movidius<sup>TM</sup> USB etiketleri Için onnx çalışma zamanı ve openvino içerir |
+
+ONNX çalışma zamanı temel görüntüleri hakkında daha fazla bilgi için GitHub deposu 'ndaki [Onnx Runtime dockerfile bölümüne](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) bakın.
 
 > [!TIP]
 > Bu görüntüler genel kullanıma sunulduğundan, bunları kullanırken bir adres, Kullanıcı adı veya parola sağlamanız gerekmez.
-
-> [!IMPORTANT]
-> CUDA veya TensorRT kullanan Microsoft görüntülerinin yalnızca Microsoft Azure hizmetlerinde kullanılması gerekir.
 
 Daha fazla bilgi için bkz. [Azure Machine Learning kapsayıcılar](https://github.com/Azure/AzureML-Containers).
 

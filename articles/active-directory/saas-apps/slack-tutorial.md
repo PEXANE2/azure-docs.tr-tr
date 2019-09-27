@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c2d877a1dc611e02e9fbc245df230ca669a2ae4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: b94607691b662dcfcf0e166cd5c339b00ed0573d
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70171439"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326689"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Öğretici: Bolluk ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -87,7 +87,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.slack.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<your Slack company>.slack.com`
 
     b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir URL yazın:`https://slack.com`
 
@@ -110,9 +110,9 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Seçin **yeni kullanıcı** ekranın üstünde.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
 
@@ -136,7 +136,7 @@ Bu bölümde, bolluk erişimi vererek Azure çoklu oturum açma özelliğini kul
 
 1. Farklı bir Web tarayıcısı penceresinde, bolluk şirket sitenizde yönetici olarak oturum açın.
 
-2. **Microsoft Azure AD** gidin ve **Takım ayarları**' na gidin.
+2. Sol taraftaki bolluk şirketinizin adına gidin. Bu durumda **Microsoft Azure AD** olarak kurulum ve ardından aşağıdaki ekran görüntüsünde gösterildiği gibi **Takım ayarları** ' na gidin.
 
      ![Uygulama tarafında çoklu oturum açmayı yapılandırma](./media/slack-tutorial/tutorial_slack_001.png)
 
@@ -160,7 +160,7 @@ Bu bölümde, bolluk erişimi vererek Azure çoklu oturum açma özelliğini kul
 
 ### <a name="create-slack-test-user"></a>Bolluk test kullanıcısı oluşturma
 
-Bu bölümün amacı, boşluk olarak B. Simon adlı bir Kullanıcı oluşturmaktır. Bolluk, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz yoksa bolluk 'e erişme girişimi sırasında yeni bir Kullanıcı oluşturulur. Bolluk, otomatik Kullanıcı sağlamayı da destekler, Ayrıca, otomatik Kullanıcı [](slack-provisioning-tutorial.md) sağlamayı yapılandırma hakkında daha fazla ayrıntı bulabilirsiniz.
+Bu bölümün amacı, boşluk olarak B. Simon adlı bir Kullanıcı oluşturmaktır. Bolluk, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz yoksa bolluk 'e erişme girişimi sırasında yeni bir Kullanıcı oluşturulur. Bolluk, otomatik Kullanıcı sağlamayı da destekler, Ayrıca, otomatik Kullanıcı sağlamayı yapılandırma hakkında daha [fazla ayrıntı bulabilirsiniz](slack-provisioning-tutorial.md) .
 
 > [!NOTE]
 > Bir kullanıcıyı el ile oluşturmanız gerekiyorsa, [bolluk destek ekibine](https://slack.com/help/contact)başvurmanız gerekir.

@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640527"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327151"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Kaynak tüketimini ve sorgu etkinliğini izleme Azure Search
 
@@ -28,19 +28,19 @@ Bu makalede, izleme seçenekleriniz, günlüğe kaydetme ve günlük depolamayı
 
 Genel Bakış sayfasında yerleşik olarak bulunan ve kaynak tüketimine ve sorgu yürütme ölçümlerinde bulunan **kullanım** ve **izleme** bölümleri. Bu bilgiler, hizmeti kullanmaya başladığınızda yapılandırma gerekmeden kullanılabilir hale gelir. Bu sayfa birkaç dakikada bir yenilenir. [Üretim iş yükleri için hangi katmanın kullanılacağı](search-sku-tier.md)veya [etkin kopyaların ve bölümlerin sayısının ayarlanmayacağı](search-capacity-planning.md)hakkında kararlar alırsanız, bu ölçümler, kaynakların ne kadar hızlı tüketiğini göstererek bu kararlara yardımcı olabilir ve geçerli yapılandırmanın mevcut yükü ne kadar iyi işlediğini.
 
-**Kullanım** sekmesi, geçerli limitlere göre kaynak kullanılabilirliği gösterir [](search-limits-quotas-capacity.md). Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre oluşan ücretsiz hizmet içindir. Temel veya standart bir hizmetin sınırları daha yüksektir ve bölüm sayılarını artırırsanız, en fazla depolama alanı orantılı bir şekilde değişir.
+**Kullanım** sekmesi, geçerli [limitlere](search-limits-quotas-capacity.md)göre kaynak kullanılabilirliği gösterir. Aşağıdaki çizim, her bir ve 50 MB depolama alanının 3 nesnesine göre oluşan ücretsiz hizmet içindir. Temel veya standart bir hizmetin sınırları daha yüksektir ve bölüm sayılarını artırırsanız, en fazla depolama alanı orantılı bir şekilde değişir.
 
-![](./media/search-monitor-usage/usage-tab.png
- "Etkin sınırlara göre kullanım durumu geçerli sınırlara göre kullanım durumu")
+![Etkin sınırlara göre kullanım durumu](./media/search-monitor-usage/usage-tab.png
+ " kullanım durumu geçerli sınırlara göre @ no__t-2
 
 ## <a name="queries-per-second-qps-and-other-metrics"></a>Saniyedeki sorgu sayısı (QPS) ve diğer ölçümler
 
 **İzleme** sekmesi, dakikada toplanan arama *sorguları* (QPS) gibi ölçümler için hareketli ortalamaları gösterir. 
-*Arama gecikmesi* , arama hizmetinin dakika başına toplanan arama sorgularını işlemesi için ihtiyaç duyduğu süredir. *Kısıtlanmış arama sorguları yüzdesi* (gösterilmez), kısıtlanmış olan ve dakikada toplanan arama sorgularının yüzdesidir.
+*Arama gecikmesi* , arama hizmetinin dakika başına toplanan arama sorgularını işlemesi için ihtiyaç duyduğu süredir. *Kısıtlanmış arama sorguları yüzdesi* (gösterilmez), her dakika toplanmış olan arama sorgularının yüzdesidir.
 
 Bu sayılar yaklaşık değerlerdir ve sisteminizin istekleri ne kadar iyi bir şekilde sunmakta olduğu konusunda genel bir fikir sunacak şekilde tasarlanmıştır. Gerçek QPS, portalda raporlanan sayıdan daha yüksek veya daha düşük olabilir.
 
-![Saniye başına sorgu etkinliği](./media/search-monitor-usage/monitoring-tab.png "Saniye başına sorgu etkinliği")
+Saniyede saniye başına ![etkinlik](./media/search-monitor-usage/monitoring-tab.png "sorgusu") sorgusu
 
 ## <a name="activity-logs"></a>Etkinlik günlükleri
 
@@ -63,7 +63,7 @@ Aşağıdaki tabloda, günlükleri depolama ve Application Insights aracılığ�
 | [Blob depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Günlüğe kaydedilen olaylar ve sorgu ölçümleri aşağıdaki şemalara göre yapılır. Olaylar bir blob kapsayıcısına kaydedilir ve JSON dosyalarında depolanır. Dosya içeriğini görüntülemek için bir JSON düzenleyicisi kullanın.|
 | [Olay Hub’ı](https://docs.microsoft.com/azure/event-hubs/) | Günlüğe kaydedilen olaylar ve sorgu ölçümleri, bu makalede belgelenen şemaları temel alır. Çok büyük Günlükler için bunu alternatif bir veri toplama hizmeti olarak seçin. |
 
-Hem Azure Izleyici günlükleri hem de BLOB depolama alanı, ücretsiz bir paylaşılan hizmet olarak kullanılabilir. böylece, Azure aboneliğinizin kullanım ömrü boyunca ücretsiz olarak deneyebilmeniz gerekir. Application Insights, uygulama veri boyutu belirli limitlerin altında olduğu sürece, kaydolmak ve kullanmak ücretsizdir (Ayrıntılar için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/monitor/) bakın).
+Azure aboneliklerinizin kullanım ömrü boyunca ücretsiz olarak deneyebilmeniz için Azure Izleyici günlükleri ve BLOB depolama alanı ücretsiz bir hizmet olarak kullanılabilir. Application Insights, uygulama veri boyutu belirli limitlerin altında olduğu sürece, kaydolmak ve kullanmak ücretsizdir (Ayrıntılar için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/monitor/) bakın).
 
 Sonraki bölümde, Azure Search işlemler tarafından oluşturulan günlük verilerini toplamak ve erişmek için Azure Blob depolamayı etkinleştirme ve kullanma adımlarında size yol gösterilir.
 
@@ -79,13 +79,13 @@ Bu bölümde, günlüğe kaydedilen olayları ve ölçüm verilerini depolamak i
 
 2. Arama hizmeti genel bakış sayfasını açın. Sol gezinti bölmesinde **izleme** ' ye kaydırın ve **izlemeyi etkinleştir**' e tıklayın.
 
-   ![Izlemeyi etkinleştir](./media/search-monitor-usage/enable-monitoring.png "Izlemeyi etkinleştir")
+   ![İzlemeyi etkinleştirme](./media/search-monitor-usage/enable-monitoring.png "izlemeyi etkinleştir")
 
 3. Dışarı aktarmak istediğiniz verileri seçin: Günlükler, ölçümler veya her ikisi. Bir depolama hesabına kopyalayabilir, bunu bir olay hub 'ına gönderebilir veya Azure Izleyici günlüklerine aktarabilirsiniz.
 
    Blob depolamaya Arşiv için yalnızca depolama hesabının mevcut olması gerekir. Kapsayıcılar ve Bloblar, günlük verileri aktarıldığında gerekli olduğu gibi oluşturulur.
 
-   ![BLOB depolama arşivini yapılandırma](./media/search-monitor-usage/configure-blob-storage-archive.png "BLOB depolama arşivini yapılandırma")
+   ![BLOB Storage Arşivi yapılandırma](./media/search-monitor-usage/configure-blob-storage-archive.png "BLOB Storage Arşivi") yapılandırma
 
 4. Profili kaydedin.
 
@@ -96,7 +96,7 @@ Profil kaydedildikten sonra günlüğe kaydetme etkinleştirilir. Kapsayıcılar
 * ınsights günlükleri operationlogs: arama trafiği günlükleri
 * ınsights ölçümleri pt1m: ölçümler için
 
-**Kapsayıcının blob depolamada görünmesi için bir saat sürer. Her kapsayıcı için bir blob, saat başına bir blob vardır.**
+**kapsayıcının blob depolamada görünmesi için bir saat sürer. Her kapsayıcı için bir blob, saat başına bir blob vardır.**
 
 Dosyaları görüntülemek için [Visual Studio Code](#download-and-open-in-visual-studio-code) veya başka bir JSON düzenleyicisi kullanabilirsiniz. 
 
@@ -159,7 +159,7 @@ Günlük dosyasını görüntülemek için herhangi bir JSON düzenleyicisi kull
 
 1. Azure portal, depolama hesabınızı açın. 
 
-2. Sol gezinti bölmesinde Bloblar ' a tıklayın. **Öngörüler-logs-operationlogs** ve **Insights-ölçümler-pt1m**görmeniz gerekir. Bu kapsayıcılar, günlük verileri blob depolamaya aktarıldığında Azure Search tarafından oluşturulur.
+2. Sol gezinti bölmesinde **Bloblar**' a tıklayın. **Öngörüler-logs-operationlogs** ve **Insights-ölçümler-pt1m**görmeniz gerekir. Bu kapsayıcılar, günlük verileri blob depolamaya aktarıldığında Azure Search tarafından oluşturulur.
 
 3. . JSON dosyasına ulaşana kadar klasör hiyerarşisini aşağı tıklayın.  Dosyayı indirmek için bağlam menüsünü kullanın.
 

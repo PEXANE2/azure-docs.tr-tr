@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 10030cf69009c59fa607ad68c3b7ab19c7a22860
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70381802"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326721"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Hızlı Başlangıç: Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "70381802"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+> * [ARM şablonu](create-cluster-database-resource-manager.md)
 
 
 Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu hızlı başlangıçta bir küme ve bir veritabanı oluşturacaksınız.
@@ -90,13 +90,13 @@ Artık işlemin ikinci adımı olan veritabanı oluşturma bölümüne geçebili
 
 Artık bir kümeye ve veritabanına sahip olduğunuza göre sorgu ve komut çalıştırabilirsiniz. Veritabanında henüz veri yok ancak yine de araçların nasıl çalıştığını görebilirsiniz.
 
-1. Kümenizde **Sorgu**'yu seçin. Komutu `.show databases` sorgu penceresine yapıştırın ve **Çalıştır**' ı seçin.
+1. Kümenizde **Sorgu**'yu seçin. @No__t-0 komutunu sorgu penceresine yapıştırın ve **Çalıştır**' ı seçin.
 
     ![Veritabanlarını göster komutu](media/create-cluster-database-portal/show-databases.png)
 
     Sonuç kümesi, kümedeki tek veritabanı olan **TestDatabase** veritabanını gösterir.
 
-1. Komutu `.show tables` sorgu penceresine yapıştırın ve **Çalıştır**' ı seçin.
+1. Sorgu penceresine `.show tables` komutunu yapıştırın ve **Çalıştır**' ı seçin.
 
     Henüz bir tablonuz olmadığı için bu komut boş sonuç kümesi döndürür. Bu dizinin bir sonraki makalesinde tablo ekleyeceksiniz.
 
@@ -123,6 +123,6 @@ Diğer hızlı başlangıç ve öğreticilerle izlemeyi planlıyorsanız, oluşt
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Olay Hub 'ından Azure Veri Gezgini veri alma](ingest-data-event-hub.md)
+> [Hızlı Başlangıç: Olay Hub 'ından Azure 'a veri alma Veri Gezgini @ no__t-0
 
 

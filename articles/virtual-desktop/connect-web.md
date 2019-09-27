@@ -1,29 +1,29 @@
 ---
-title: Bir web tarayıcısından - Azure Windows sanal masaüstü Önizleme bağlanma
-description: Windows sanal masaüstü Önizleme için bir web tarayıcısından bağlanma.
+title: Web tarayıcısından Windows sanal masaüstü önizlemesine bağlanma-Azure
+description: Web istemcisini kullanarak Windows sanal masaüstüne bağlanma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 4f6bb7c414c38eaa605d259195218c461ddb0ca7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 961eb98bed712e3dde1b1e7ed2ec997e8992e600
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620157"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338669"
 ---
-# <a name="connect-from-a-web-browser"></a>Web tarayıcısından bağlanma
+# <a name="connect-with-the-web-client"></a>Web istemcisiyle bağlanma
 
-Web istemcisi uzun yükleme işlemi olmadan bir web tarayıcısından Windows sanal masaüstü Önizleme kaynaklarınıza erişmenize olanak tanır.
+Web istemcisi, Windows sanal masaüstü kaynaklarınıza, uzun yükleme işlemi olmadan bir Web tarayıcısından erişmenizi sağlar.
 
 >[!NOTE]
->Web istemcisi şu anda mobil işletim sistemi desteği yoktur.
+>Web istemcisinde Şu anda mobil işletim sistemi desteği yok.
 
 ## <a name="supported-operating-systems-and-browsers"></a>Desteklenen işletim sistemleri ve tarayıcılar
 
-HTML5 özellikli bir tarayıcıya çalışır ancak resmi olarak aşağıdaki işletim sistemleri ve tarayıcılar destekliyoruz.
+HTML5 özellikli herhangi bir tarayıcı çalışması gerektiği sürece, aşağıdaki işletim sistemlerini ve tarayıcıları resmi olarak destekliyoruz.
 
 | Browser           | Desteklenen İşletim Sistemi                     | Notlar               |
 |-------------------|----------------------------------|---------------------|
@@ -33,11 +33,11 @@ HTML5 özellikli bir tarayıcıya çalışır ancak resmi olarak aşağıdaki i�
 | Mozilla Firefox   | Windows, macOS, Linux            | Sürüm 55 veya üzeri |
 | Google Chrome     | Windows, macOS, Linux, Chrome OS |                     |
 
-## <a name="access-remote-resources-feed"></a>Akış erişimi uzak kaynaklar
+## <a name="access-remote-resources-feed"></a>Uzak kaynak akışına erişin
 
-Bir tarayıcıda gidin [Windows sanal masaüstü web istemcisi](https://rdweb.wvd.microsoft.com/webclient) ve kullanıcı hesabınızla oturum açın.
+Bir tarayıcıda, [Windows Sanal Masaüstü Web istemcisine](https://rdweb.wvd.microsoft.com/webclient) gidin ve Kullanıcı hesabınızla oturum açın.
 
 >[!NOTE]
->Sanal Windows Masaüstü için kullanmak istediğiniz farklı bir Azure Active Directory hesabıyla bir zaten açtıysanız, oturumunuzu veya özel bir tarayıcı penceresinde kullanmanız gerekir.
+>Windows sanal masaüstü için kullanmak istediğinden farklı bir Azure Active Directory hesabıyla oturum açtıysanız, oturumunuzu açmanız veya özel bir tarayıcı penceresi kullanmanız gerekir.
 
-Oturum açtıktan sonra artık kaynakların listesini görmeniz gerekir. Normal bir uygulamada olduğu gibi bunları seçerek kaynakları başlatabilirsiniz **tüm kaynakları** sekmesi.
+Oturum açtıktan sonra, artık kaynakların bir listesini görmeniz gerekir. Kaynakları, **tüm kaynaklar** sekmesindeki normal bir uygulama gibi seçerek de başlatabilirsiniz.

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 09/26/2019
+ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091140"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327125"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-tek sunucu
 PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar, tek bir komutla birlikte tek bir pakette yüklenebilecek veya kaldırılabileceği tek bir pakette birden çok ilgili SQL nesnesini birlikte paketleyebilir. Veritabanına yüklendikten sonra uzantı işlevleri yerleşik özellikler gibi.
@@ -62,6 +62,7 @@ Aşağıdaki uzantılar Postgres sürüm 11 ' in PostgreSQL sunucuları için Az
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS topolojisi uzamsal türleri ve işlevleri|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | uzak PostgreSQL sunucuları için yabancı veri sarmalayıcısı|
 > |[tablofunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | çapraz tablo dahil olmak üzere tüm tabloları işleyen işlevler|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Zaman serisi verilerine yönelik ölçeklenebilir eklemeleri ve karmaşık sorguları sunar|
 > |[vurgu kaldır](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | vurguları kaldıran metin arama sözlüğü|
 > |[UUID-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | evrensel benzersiz tanımlayıcılar oluşturma (UUID 'ler)|
 
@@ -206,7 +207,7 @@ Postgres sürüm 9,5 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 Pg_stat_statements uzantısı, SQL deyimlerinin yürütme istatistiklerini izlemek için her PostgreSQL için Azure veritabanı sunucusuna önceden yüklenir.
 Uzantı tarafından `pg_stat_statements.track`hangi deyimlerin sayıldığını denetleyen ayar, varsayılan olarak `top`, istemciler tarafından doğrudan verilen tüm deyimler izlenir. Diğer iki izleme düzeyi ve ' `none` `all`dir. Bu ayar, [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)aracılığıyla bir sunucu parametresi olarak yapılandırılabilir.
 
-Sorgu yürütme bilgileri pg_stat_statements tarafından sağlanır ve her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Etkin olarak pg_stat_statements uzantısını kullanmıyorsanız, ' ye `pg_stat_statements.track` `none`ayarlamanızı öneririz. Bazı üçüncü taraf izleme hizmetlerinin sorgu Performans öngörüleri sunabilmesi için pg_stat_statements 'e güvenebileceğini unutmayın. bu nedenle, sizin için bu durum olup olmadığını onaylayın.
+Sorgu yürütme bilgileri pg_stat_statements tarafından sağlanır ve her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, `pg_stat_statements.track` ' ı `none` olarak ayarlamanızı öneririz. Bazı üçüncü taraf izleme hizmetlerinin sorgu Performans öngörüleri sunabilmesi için pg_stat_statements 'e güvenebileceğini unutmayın. bu nedenle, sizin için bu durum olup olmadığını onaylayın.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink ve postgres_fdw
 dblink ve postgres_fdw, bir PostgreSQL sunucusundan diğerine veya aynı sunucuda başka bir veritabanına bağlanmanıza izin verir. Alıcı sunucunun, gönderme sunucusundan güvenlik duvarı aracılığıyla bağlantılara izin verilmesi gerekir. PostgreSQL için Azure veritabanı sunucuları arasında bağlanmak üzere bu uzantıları kullanırken, bu, "Azure hizmetlerine erişime Izin ver" ayarı kullanılarak yapılabilir. Ayrıca, uzantıları aynı sunucuya geri dönmek için kullanmak istiyorsanız bu da gereklidir. "Azure hizmetlerine erişime Izin ver" ayarı, Postgres sunucusunun Azure portal sayfasında, bağlantı güvenliği altında bulunabilir. "Azure hizmetlerine erişime Izin ver" seçeneği açıldığında tüm Azure IP 'Leri izin verilenler listesine koyar.
@@ -227,9 +228,6 @@ TimescaleDB, PostgreSQL için bir uzantı olarak paketlenmiş bir zaman serisi v
 
 ### <a name="installing-timescaledb"></a>TimescaleDB yükleniyor
 TimescaleDB yüklemek için, bunu sunucunun paylaşılan önyükleme kitaplıklarına dahil etmeniz gerekir. Postgres 'nin `shared_preload_libraries` parametresinin bir değişikliği, **sunucu yeniden başlatmanın** etkili olmasını gerektirir. [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanarak parametreleri değiştirebilirsiniz.
-
-> [!NOTE]
-> TimescaleDB, PostgreSQL için Azure veritabanı 9,6 ve 10 sürümleri üzerinde etkinleştirilebilir
 
 [Azure Portal](https://portal.azure.com/)kullanarak:
 

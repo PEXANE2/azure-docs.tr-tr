@@ -3,24 +3,21 @@ title: Apache Spark ile Azure Cosmos DB yerleşik işletimsel analizine giriş
 description: İşletimsel analiz ve AI çalıştırmak için Azure Cosmos DB Apache Spark için yerleşik desteğini nasıl kullanabileceğinizi öğrenin
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/26/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 0f070cb9a6e300dad0ec9e0b393b09b7f22d2942
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 952dd084bccd67a0a8833002d73d3aaf1d5dfb25
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212586"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338620"
 ---
-# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Apache Spark ile Azure Cosmos DB yerleşik işlemsel analiz (Önizleme) 
+# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark"></a>Apache Spark ile Azure Cosmos DB yerleşik işlemsel analiz
 
-Azure Cosmos DB Apache Spark için yerleşik destek, Azure Cosmos hesabında depolanan verilerinize karşı Apache Spark analiz çalıştırmanızı sağlar. Genel olarak dağıtılmış Cosmos veritabanlarınızı doğrudan yürütmek üzere Apache Spark işleri için yerel destek sağlar. Bu yetenekler, geliştiriciler, veri mühendisleri ve veri bilimcileri, hem **OLTP hem de OLAP/HTAP** iş yüklerini çalıştırmak için esnek, ölçeklenebilir ve performanslı bir veri platformu olarak Azure Cosmos DB kullanabilir. 
+Azure Cosmos DB ile, genel olarak dağıtılmış, düşük gecikme süreli analiz ve AI işlem verileri üzerinde çalıştırabilirsiniz. Apache Spark ve jupi Not defterleri için yerel destek sayesinde, Azure Cosmos DB öngörülerin süresini azaltmaya yardımcı olur. Verilerin yapıldığından, sunulan ve analizler bir Azure bölgesindeki yerel veritabanı çoğaltmasına karşı çalışır. Veri bölümlerinizde depolanan, dizinli çok modelli veriler üzerinde Apache Spark sorguları doğrudan yürütebilirsiniz.
 
-Spark işlem, Azure Cosmos hesabınızla ilişkili tüm Azure bölgelerinde otomatik olarak kullanılabilir. Spark işleri Azure Cosmos DB çoklu yönetici özelliğini kullanır ve her bölgedeki yerel çoğaltmaları yazabilir veya bunlara sorgu yapabilir. 
-
-> [!NOTE]
-> Azure Cosmos DB Apache Spark için yerleşik destek şu anda sınırlı önizlemededir. Önizlemeye kaydolmak için, [önizleme sayfasına](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB)gidin. 
+Azure Cosmos DB Apache Spark için yerleşik destek, Azure Cosmos hesabında depolanan verilerinize karşı Apache Spark analiz çalıştırmanızı sağlar. Genel olarak dağıtılmış Cosmos veritabanlarınızı doğrudan yürütmek üzere Apache Spark işleri için yerel destek sağlar. Bu yetenekler, geliştiriciler, veri mühendisleri ve veri bilimcileri, hem **OLTP hem de OLAP/HTAP** iş yüklerini çalıştırmak için esnek, ölçeklenebilir ve performanslı bir veri platformu olarak Azure Cosmos DB kullanabilir.
 
 Azure Cosmos DB Apache Spark desteği aşağıdaki avantajları sunmaktadır:
 
@@ -43,15 +40,17 @@ Azure Cosmos DB Apache Spark desteği, Apache Spark çalışma zamanları içind
 
 ## <a name="key-benefits"></a>Önemli avantajlar
 
-### <a name="globally-distributed-low-latency-operational-analytics-and-ai"></a>Küresel olarak dağıtılmış, düşük gecikmeli işlemsel analiz ve AI
+### <a name="low-latency-operational-analytics-and-ai"></a>Düşük gecikmeli işlemsel analiz ve AI
 
 Küresel olarak dağıtılmış Azure Cosmos veritabanında Apache Spark sayesinde dünyanın her yerindeki tüm dünyada hızlı bir anlayış elde edebilirsiniz. Azure Cosmos DB, üç anahtar teknikle esnek ölçekte **küresel olarak dağıtılmış, düşük gecikmeli işlemsel** analizler sunar:
 
-* Azure Cosmos veritabanınız küresel olarak dağıtıldığından, verilerin üreticileri (örneğin, kullanıcılar) bulunduğu tüm veriler yerel olarak alınır. Sorgular, dünyanın neresinde olursa olsun, hem üreticileri hem de veri tüketicilerine en yakın yerel çoğaltmalara göre sunulur. 
+* Azure Cosmos veritabanınız küresel olarak dağıtıldığından, verilerin üreticileri (örneğin, kullanıcılar) bulunduğu tüm veriler yerel olarak alınır. Sorgular, dünyanın neresinde olursa olsun, hem üreticileri hem de veri tüketicilerine en yakın yerel çoğaltmalara göre sunulur.
 
-* Tüm analitik sorgularınız, hiçbir gereksiz veri hareketine gerek duymadan veri bölümlerinin içinde depolanan dizinli verilerde doğrudan yürütülür. 
+* Tüm analitik sorgularınız, hiçbir gereksiz veri hareketine gerek duymadan veri bölümlerinin içinde depolanan dizinli verilerde doğrudan yürütülür.
 
 * Spark Azure Cosmos DB ile birlikte bulunduğundan, daha az ara çeviri ve veri hareketleri gerçekleştiğinden, daha iyi performans ve ölçeklenebilirlik elde edilir.
+
+* Çoklu yönetici, otomatik yük devretme, Kullanılabilirlik Alanları vb. gibi tüm Azure Cosmos DB Çekirdek özellikleri Azure Cosmos DB yerleşik Apache Spark için kullanılabilir.
 
 ### <a name="unified-serverless-experience-for-apache-spark"></a>Apache Spark için Birleşik sunucusuz deneyim
 
@@ -61,81 +60,29 @@ Azure Cosmos DB Apache Spark desteği sayesinde, Scala, Python, Java 'da yazılm
 
 ### <a name="no-schema-or-index-management"></a>Şema veya dizin yönetimi yok
 
-Azure Cosmos DB, veri mühendislerinin ve veri bilimcilerinin aksine geleneksel analitik veritabanlarının aksine, artık daha fazla şema ve dizin yönetimiyle uğraşmak zorunda kalmaz. Azure Cosmos DB ' deki veritabanı altyapısı herhangi bir açık şema veya dizin yönetimi gerektirmez ve Apache Spark sorgularını hızlı bir şekilde sunacak tüm verileri otomatik olarak dizine alabilir. 
+Azure Cosmos DB, veri mühendislerinin ve veri bilimcilerinin aksine geleneksel analitik veritabanlarının aksine, artık daha fazla şema ve dizin yönetimiyle uğraşmak zorunda kalmaz. Azure Cosmos DB ' deki veritabanı altyapısı herhangi bir açık şema veya dizin yönetimi gerektirmez ve Apache Spark sorgularını hızlı bir şekilde sunacak tüm verileri otomatik olarak dizine alabilir.
 
 ### <a name="consistency-choices"></a>Tutarlılık seçenekleri
 
-Apache Spark işleri Azure Cosmos veritabanınızın veri bölümlerinde yürütüldüğü için sorgular, [iyi tanımlanmış beş tutarlılık seçimi](consistency-levels.md)alır. Bu tutarlılık modelleri, gecikme ve yüksek kullanılabilirlikten ödün vermeden makine öğrenimi algoritmalarının en doğru sonuçlarını sağlamak üzere katı tutarlılık seçme esnekliği sunar. 
+Apache Spark işleri Azure Cosmos veritabanınızın veri bölümlerinde yürütüldüğü için sorgular, [iyi tanımlanmış beş tutarlılık seçimi](consistency-levels.md)alır. Bu tutarlılık modelleri, gecikme ve yüksek kullanılabilirlikten ödün vermeden makine öğrenimi algoritmalarının en doğru sonuçlarını sağlamak üzere katı tutarlılık seçme esnekliği sunar.
 
 ### <a name="comprehensive-slas"></a>Kapsamlı SLA’lar
 
 Apache Spark işleri, ayrı Apache Spark kümelerini yönetme ek yükü olmadan sektör lideri kapsamlı [SLA 'lar](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) (99,999) gibi Azure Cosmos DB avantajlara sahip olacaktır. Bu SLA 'Lar, iş verimini, 99. yüzdebirlik, tutarlılık ve yüksek kullanılabilirliğe göre gecikme süresini kapsayabilir. 
 
-### <a name="mixed-workloads"></a>Karışık iş yükleri
+### <a name="mixed-operational-and-analytical-workloads-with-complete-isolation"></a>Tamamen yalıtımlı karma operasyonel ve analitik iş yükleri
 
-Apache Spark tümleştirme, genel ölçekte bulutta yerel uygulamalar oluştururken önemli bir müşteri sorun noktalarından biri olan işlem ve analitik ayrımı Azure Cosmos DB köprüleyerek. 
+Apache Spark tümleştirme, genel ölçekte bulutta yerel uygulamalar oluştururken önemli bir müşteri sorun noktalarından biri olan işlem ve analitik ayrımı Azure Cosmos DB köprüleyerek. OLTP ve OLAP iş yükleri yan yana çalışır ve birbirini engellemez.
 
-## <a name="scenarios-for-azure-cosmos-db-spark-support"></a>Azure Cosmos DB Spark desteği senaryoları
+### <a name="low-latency-analytical-and-transactional-storage"></a>Düşük gecikmeli analitik ve işlem depolama
 
-### <a name="retail-and-consumer-goods"></a>Perakende ve tüketici malları
+Azure Cosmos DB, verileri yerel olarak iki ayrı depolama katmanında depolar: işlemsel (satır yönelimli) ve analitik depolama (Apache Parquet dosya biçiminde sütun odaklı). Her katmandaki verileri küresel olarak çoğaltır ve kullanıcıların bu katmanlardaki verileri, bekletme ilkelerine göre bağımsız olarak yönetmesine olanak tanır.
 
-Gerçek zamanlı öneriler ve teklifler sunmak için Azure Cosmos DB Spark desteğini kullanabilirsiniz. Müşterilerin gerçek zamanlı kişiselleştirme ve ürün önerileriyle ihtiyaç duydukları öğeleri bulmasına yardımcı olabilirsiniz.
+Bu depolama mimarisi, aynı küresel olarak dağıtılan veriler üzerinde hem görev açısından kritik işlem hem de analitik iş yükleri sunar. Cosmos DB, herhangi bir ETL işlemine ihtiyacınız yoktur veya hiçbir gereksiz veri hareketini gerçekleştiremezsiniz. Yalnızca aynı temel veriler üzerinde hem işlem hem de analitik iş yüklerini çalıştırabilirsiniz. İşlem yükleri SQL, Cassandra, MongoDB, Gremlin ve Etcd dahil tanıdık işlemsel erişim API 'Lerini kullanabilir. Analiz ve AI iş yükleri yerleşik Apache Spark SQL, ML çerçeveleri ve tüm Apache Spark araç zincirini kullanabilir.
 
-* Ürün kataloglarında gerçek zamanlı öneriler oluşturmak için, Apache Spark çalışma zamanı tarafından sunulan yerleşik Machine Learning desteğini kullanabilirsiniz.
+### <a name="snapshots-and-historical-analytical-queries"></a>Anlık görüntüler ve geçmiş analitik sorgular
 
-* Yaşam süresi değerini sağlayan hedeflenen öneriler sağlamak için, veri akışı verileri, veri satın alma ve müşteri verileri ' ne tıklayabilirsiniz.
-
-* Azure Cosmos DB küresel dağıtım özelliğini kullanarak, bölgelere yayılan yüksek hacimli ürün verileri, milisaniye cinsinden analiz edilebilir.
-
-* Coğrafi olarak dağıtılmış kullanıcılar ve veriler için hızlı bir şekilde Öngörüler elde edebilirsiniz. Doğru zamanda doğru kullanıcıyı doğru zamanda sunarak yükseltme dönüştürme oranını artırabilirsiniz.
-
-* Statik müşteri verileriyle birleştirerek canlı verileri zenginleştirmek için yerleşik Spark akış özelliğinden yararlanabilirsiniz. Bu şekilde, daha kişiselleştirilmiş ve hedeflenmiş reklamları gerçek zamanlı olarak, müşterilerin yaptığı gibi, bağlamında da dağıtabilirsiniz.
-
-Aşağıdaki görüntüde, fiyatlandırma ve yükseltmeleri iyileştirmek için Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
-
-![Fiyatlandırma ve yükseltmeleri iyileştirmek için Azure Cosmos DB Spark desteği](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
-
-
-Aşağıdaki görüntüde, Azure Cosmos DB Spark desteğinin gerçek zamanlı öneri altyapısında nasıl kullanıldığı gösterilmektedir:
-
-![Gerçek zamanlı öneri altyapısında Spark desteğini Azure Cosmos DB](./media/spark-api-introduction/real-time-recommendation-engine.png)
-
-### <a name="manufacturing-and-iot"></a>Üretim ve IoT
-
-Azure Cosmos DB yerleşik analiz platformu, küresel ölçekte Milyonlarca cihazdan IoT verilerinin gerçek zamanlı analizini etkinleştirmenizi sağlar. Hava durumu desenleri, tahmine dayalı analiz ve enerji iyileştirmeleri için öngörülü Öngörüler elde edebilirsiniz.
-
-* Azure Cosmos DB kullanarak, gerçek zamanlı varlık ölçümleri ve hava durumu faktörleri gibi verilerin içeriğini alabilir ve ardından akıllı kılavuz Analizi uygulayarak alana bağlı cihazların performansını iyileştirebilirsiniz. Akıllı kılavuz analizi, kılavuz güvenilirliğini artırmak ve tüketicilere kişiselleştirilmiş enerji hizmetleri sunmak için, işletim maliyetlerini denetleyen anahtardır.
-
-Aşağıdaki görüntüde, IoT cihazlarından ölçümleri okumak ve akıllı kılavuz Analizi uygulamak için Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
-
-![IoT cihazlarından ölçümleri okumak için Azure Cosmos DB Spark desteği](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
-
-
-### <a name="predictive-maintenance"></a>Tahmine dayalı bakım
-
-* Küçük bir ayrıntıya gitme gibi varlıkların, derinlemesine ve derin platformlar arasında saklanması karmaşık bir Endeavor. Bu varlıklar dünya genelinde bulunur ve veri petabaytlarca oluşturur. Azure Cosmos DB kullanarak, büyük miktarlarda algılayıcı telemetrisi, mağaza varlık parçaları ve algılayıcı eşlemeleri verilerini işlemek için Spark akışını kullanan uçtan uca tahmine dayalı bir veri işlem hattı oluşturabilirsiniz.
-
-* Varlık hatalarını gerçekleşmeden önce tahmin etmek ve hata oluşmadan önce bakım iş emirleri vermek için makine öğrenimi modelleri oluşturabilir ve dağıtabilirsiniz.
-
-Aşağıdaki görüntüde, tahmine dayalı bakım sistemi oluşturmak için Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
-
-![Tahmine dayalı bakım sistemi oluşturmak için Azure Cosmos DB Spark desteği](./media/spark-api-introduction/predictive-maintenance-system.png)
-
-Aşağıdaki görüntüde gerçek zamanlı bir araç Tanılama sistemi oluşturmak için Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
-
-![Gerçek zamanlı bir araç Tanılama sistemi oluşturmak için Azure Cosmos DB Spark desteği](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
-
-### <a name="gaming"></a>Oyun
-
-* Azure Cosmos DB yerleşik Spark desteğiyle, mümkün olan en iyi oyun deneyimini oluşturmak için gelişmiş analiz ve makine öğrenimi modellerini dakikalar içinde kolayca oluşturmanızı, ölçeklendirmenizi ve dağıtmanızı sağlar.
-
-* Yüksek dönüştürme oranlarına ulaşmak için ilgili kişiselleştirilmiş teklifler oluşturmak üzere oynatıcı, satın alma ve davranışsal verileri çözümleyebilirsiniz.
-
-* Spark Machine Learning 'i kullanarak, oyun telemetri verilerini analiz edebilir ve Öngörüler elde edebilirsiniz. Yavaş yükleme sürelerini ve oyun içi sorunları tanılayabilir ve engelleyebilirsiniz.
-
-Aşağıdaki görüntüde, oyun analizinin Azure Cosmos DB Spark desteğinin nasıl kullanıldığı gösterilmektedir:
-
-![Oyun analizinden Azure Cosmos DB Spark desteği](./media/spark-api-introduction/gaming-analytics.png)
+Doğrudan belirli bir anlık görüntüye karşı analitik sorgular gerçekleştirmek için analitik katmanda depolanan sütunlu sıkıştırılmış verilerin isteğe bağlı veya zamanlamaya bağlı anlık görüntülerini oluşturabilirsiniz. Bu özellik, Flashback veya Time-seyahat analitik sorguları, geri alma, tam geçmiş denetim izleri ve tekrarlanabilir makine öğrenimi ve AI denemeleri sunar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -144,7 +91,3 @@ Aşağıdaki görüntüde, oyun analizinin Azure Cosmos DB Spark desteğinin nas
 * [Azure Cosmos DB Cassandra API kullanmaya başlayın](cassandra-introduction.md)
 * [Azure Cosmos DB Gremlin API 'sini kullanmaya başlayın](graph-introduction.md)
 * [Azure Cosmos DB Tablo API'si kullanmaya başlayın](table-introduction.md)
-
-
-
-

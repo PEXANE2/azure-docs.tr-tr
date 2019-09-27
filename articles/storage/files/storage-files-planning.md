@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: beb9e1344f5dd3bf4b3c3d293e38a7a28170771c
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212015"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327663"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 
@@ -96,6 +96,8 @@ Premium dosya paylaşımının nasıl oluşturulduğunu öğrenmek isterseniz, k
 
 > [!IMPORTANT]
 > Premium dosya paylaşımları, depolama hesapları sunan ve bölgelerin daha küçük bir alt kümesindeki ZRS ile birlikte LRS ile kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası. ZRS 'nin desteklediği bölgeleri öğrenmek için bkz. [Destek kapsamı ve bölgesel kullanılabilirlik](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
+>
+> Yeni bölgelerin ve Premium katman özelliklerinin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/pfsfeedback)doldurun.
 
 #### <a name="provisioned-shares"></a>Sağlanan paylaşımlar
 

@@ -151,6 +151,8 @@
           href: azure-files-volume.md
         - name: NFS Sunucusu - Statik
           href: azure-nfs-volume.md
+        - name: Azure NetApp Files
+          href: azure-netapp-files.md
     - name: Ağ yapılandırması
       items:
         - name: Sanal ağ oluşturma veya mevcut bir sanal ağı kullanma

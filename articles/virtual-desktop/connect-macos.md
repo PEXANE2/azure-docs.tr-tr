@@ -1,20 +1,20 @@
 ---
 title: MacOS-Azure ' dan Windows sanal masaüstüne bağlanma
-description: MacOS 'tan Windows sanal masaüstüne bağlanma.
+description: MacOS istemcisini kullanarak Windows sanal masaüstüne bağlanma.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: helohr
-ms.openlocfilehash: bf6bfb52bd763eabd88f23701c3d1f240cdf4844
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: fa61d69ae7aa650b6011696fd45d05ba20d2ac8b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310197"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338697"
 ---
-# <a name="connect-from-macos"></a>MacOS 'tan Bağlan
+# <a name="connect-with-the-macos-client"></a>macOS istemcisiyle bağlanma
 
 > Uygulama hedefi: macOS 10,12 veya üzeri
 
@@ -44,6 +44,6 @@ Oturum açtıktan sonra, kullanılabilir kaynakların bir listesini görmeniz ge
 
 Bir akışa abone olduktan sonra, akışın içeriği düzenli aralıklarla otomatik olarak güncelleşmeyecektir. Kaynaklar, yöneticiniz tarafından yapılan değişikliklere göre eklenebilir, değiştirilebilir veya kaldırılabilir.
 
-## <a name="client-documentation"></a>İstemci belgeleri
+## <a name="next-steps"></a>Sonraki adımlar
 
 MacOS istemcisi hakkında daha fazla bilgi edinmek için [MacOS istemcisini kullanmaya başlama](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac) belgesine göz atın.

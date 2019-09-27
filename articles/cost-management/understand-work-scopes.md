@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479975"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338630"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -37,7 +37,7 @@ Maliyet yönetimi, kuruluşların, tüm faturalama hesabı ya da tek bir kaynak 
 
 Azure, kaynak yönetimi için üç kapsamı destekler. Her kapsam, maliyet yönetimi dahil ancak bunlarla sınırlı olmamak üzere erişim ve idare yönetimini destekler.
 
-- Azure aboneliklerini düzenlemek için, [**Yönetim grupları**](../governance/management-groups/index.md) -en fazla sekiz düzey olan hiyerarşik kapsayıcılar.
+- Azure aboneliklerini düzenlemek için, [**Yönetim grupları**](../governance/management-groups/overview.md) -en fazla sekiz düzey olan hiyerarşik kapsayıcılar.
 
     Kaynak türü: [Microsoft. Management/managementGroups](/rest/api/resources/managementgroups)
 
@@ -75,14 +75,14 @@ Kayıt olarak da bilinen Kurumsal Anlaşma (EA) Faturalandırma hesapları aşa�
 
 - [**Faturalandırma hesabı**](../billing/billing-view-all-accounts.md) -bir EA kaydını temsil eder. Faturalar bu kapsamda oluşturulur. Market ve rezervasyonlar gibi kullanım tabanlı olmayan satın alma işlemleri yalnızca bu kapsamda kullanılabilir. Departmanlar veya kayıt hesaplarında temsil edilmez.
 
-    Kaynak türü:`Microsoft.Billing/billingAccounts (accountType = Enrollment)`
+    Kaynak türü: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Departman** -isteğe bağlı kayıt hesapları gruplandırması.
 
-    Kaynak türü:`Billing/billingAccounts/departments`
+    Kaynak türü: `Billing/billingAccounts/departments`
 
 - **Kayıt hesabı** -tek bir hesap sahibini temsil eder. Birden çok kişiye erişim vermeyi desteklemez.
 
-    Kaynak türü:`Microsoft.Billing/billingAccounts/enrollmentAccounts`
+    Kaynak türü: `Microsoft.Billing/billingAccounts/enrollmentAccounts`
 
 İdare kapsamları tek bir dizine bağlansa da, EA faturalandırma kapsamları değildir. Bir EA faturalandırma hesabının herhangi bir sayıda Azure AD dizininde aboneliği olabilir.
 
@@ -118,15 +118,15 @@ Microsoft Müşteri Sözleşmesi faturalandırma hesaplarında aşağıdaki kaps
 
 - **Faturalandırma hesabı** -birden çok Microsoft ürünü ve hizmeti için bir müşteri sözleşmesi temsil eder. Müşteri Sözleşmesi faturalandırma hesapları, EA kayıtları ile aynı şekilde işlevsel değildir. EA kayıtları, faturalandırma profillerine daha yakından hizalanır.
 
-    Kaynak türü:`Microsoft.Billing/billingAccounts (accountType = Organization)`
+    Kaynak türü: `Microsoft.Billing/billingAccounts (accountType = Organization)`
 
 - **Faturalandırma profili** -bir faturaya dahil edilen abonelikleri tanımlar. Fatura profilleri, faturaların oluşturulduğu kapsam olduğundan, bir EA kaydının işlevsel eşdeğeridir. Benzer şekilde, kullanım tabanlı olmayan (Market ve rezervasyonlar gibi) satın alma işlemleri yalnızca bu kapsamda kullanılabilir. Bunlar fatura bölümlerine dahil edilmez.
 
-    Kaynak türü:`Microsoft.Billing/billingAccounts/billingProfiles`
+    Kaynak türü: `Microsoft.Billing/billingAccounts/billingProfiles`
 
 - **Fatura bölümü** -bir fatura veya faturalandırma profilindeki bir abonelik grubunu temsil eder. Fatura bölümleri departmanlar gibi, birden çok kişi de bir fatura bölümüne erişebilir.
 
-    Kaynak türü:`Microsoft.Billing/billingAccounts/invoiceSections`
+    Kaynak türü: `Microsoft.Billing/billingAccounts/invoiceSections`
 
 EA faturalandırma kapsamlarından farklı olarak, Müşteri Sözleşmesi _faturalandırma hesapları tek_ bir dizine bağlanır ve birden çok Azure AD dizininde abonelikler olamaz.
 
@@ -148,11 +148,11 @@ AWS tümleştirmesi tamamlandıktan sonra, bkz. [AWS tümleştirmesini ayarlama 
 
 - **Dış faturalandırma hesabı** -üçüncü taraf satıcı ile bir müşteri anlaşmasını temsil eder. Bu, EA faturalandırma hesabına benzer.
 
-    Kaynak türü:`Microsoft.CostManagement/externalBillingAccounts`
+    Kaynak türü: `Microsoft.CostManagement/externalBillingAccounts`
     
 - **Dış abonelik** -üçüncü taraf satıcı ile bir müşteri operasyonel hesabını temsil eder. Bu, bir Azure aboneliğine benzerdir.
 
-    Kaynak türü:`Microsoft.CostManagement/externalSubscriptions`
+    Kaynak türü: `Microsoft.CostManagement/externalSubscriptions`
 
 ## <a name="cloud-solution-provider-csp-scopes"></a>Bulut çözümü sağlayıcısı (CSP) kapsamları
 
@@ -160,18 +160,18 @@ Bulut çözümü sağlayıcısı (CSP) iş ortakları, günümüzde maliyet yön
 
 ## <a name="switch-between-scopes-in-cost-management"></a>Maliyet yönetimi 'nde kapsamlar arasında geçiş yapma
 
-Azure Portal tüm maliyet yönetimi görünümleri, görünümün sol üst kısmındaki **kapsam** seçimi hap ' i içerir. Kapsamı hızlı bir şekilde değiştirmek için kullanın. Kapsam seçiciyi açmak için **kapsama** tıklayın. Faturalandırma hesaplarını, kök yönetim grubunu ve kök yönetim grubu altında iç içe olmayan abonelikleri gösterir. Bir kapsam seçmek için, üst plana tıklayarak vurgulayın ve ardından altta **Seç** ' e tıklayın. Bir abonelikteki kaynak grupları gibi iç içe kapsamların ayrıntısına gitmek için kapsam adı bağlantısına tıklayın. Herhangi bir iç içe düzeydeki üst kapsamı seçmek için, kapsam seçicinin en üstündeki  **&lt;bu kapsamı&gt; Seç** ' e tıklayın.
+Azure Portal tüm maliyet yönetimi görünümleri, görünümün sol üst kısmındaki **kapsam** seçimi hap ' i içerir. Kapsamı hızlı bir şekilde değiştirmek için kullanın. Kapsam seçiciyi açmak için **kapsama** tıklayın. Faturalandırma hesaplarını, kök yönetim grubunu ve kök yönetim grubu altında iç içe olmayan abonelikleri gösterir. Bir kapsam seçmek için, üst plana tıklayarak vurgulayın ve ardından altta **Seç** ' e tıklayın. Bir abonelikteki kaynak grupları gibi iç içe kapsamların ayrıntısına gitmek için kapsam adı bağlantısına tıklayın. Herhangi bir iç içe düzeydeki üst kapsamı seçmek için, kapsam seçicinin en üstündeki **bu &lt;scope @ no__t-2** ' yi seçin.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Bir kapsamın kaynak KIMLIĞINI tanımla
 
 Maliyet yönetimi API 'Leri ile çalışırken, kapsamın kritik olduğunu bilmektir. Maliyet yönetimi API 'Leri için doğru kapsam URI 'sini derlemek üzere aşağıdaki bilgileri kullanın.
 
-### <a name="billing-accounts"></a>Faturalandırma hesapları
+### <a name="billing-accounts"></a>Faturalama hesapları
 
 1. Azure portal açın ve ardından hizmetler listesinden **maliyet yönetimi + faturalandırma** ' a gidin.
 2. Faturalandırma hesabı menüsünde **Özellikler** ' i seçin.
 3. Faturalandırma hesabı KIMLIĞINI kopyalayın.
-4. Kapsamınız:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
+4. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}"`
 
 ### <a name="billing-profiles"></a>Faturalama profilleri
 
@@ -180,7 +180,7 @@ Maliyet yönetimi API 'Leri ile çalışırken, kapsamın kritik olduğunu bilme
 3. İstenen fatura profilinin adına tıklayın.
 4. Faturalandırma profili menüsünde **Özellikler** ' i seçin.
 5. Faturalandırma hesabı ve faturalandırma profili kimliklerini kopyalayın.
-6. Kapsamınız:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
+6. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
 
 ### <a name="invoice-sections"></a>Fatura bölümleri
 
@@ -189,7 +189,7 @@ Maliyet yönetimi API 'Leri ile çalışırken, kapsamın kritik olduğunu bilme
 3. İstenen fatura bölümünün adına tıklayın.
 4. Fatura bölüm menüsünde **Özellikler** ' i seçin.
 5. Faturalandırma hesabı ve fatura bölümü kimliklerini kopyalayın.
-6. Kapsamınız:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
+6. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
 
 ### <a name="ea-departments"></a>EA departmanları
 
@@ -198,7 +198,7 @@ Maliyet yönetimi API 'Leri ile çalışırken, kapsamın kritik olduğunu bilme
 3. İstenen departmanın adına tıklayın.
 4. Departman menüsünde **Özellikler** ' i seçin.
 5. Faturalandırma hesabı ve departman kimliklerini kopyalayın.
-6. Kapsamınız:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
+6. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
 
 ### <a name="ea-enrollment-account"></a>EA kayıt hesabı
 
@@ -207,20 +207,20 @@ Maliyet yönetimi API 'Leri ile çalışırken, kapsamın kritik olduğunu bilme
 3. İstenen kayıt hesabının adına tıklayın.
 4. Kayıt hesabı menüsünde **Özellikler** ' i seçin.
 5. Faturalandırma hesabı ve kayıt hesabı kimliklerini kopyalayın.
-6. Kapsamınız:`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
+6. Kapsamınız: `"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
 
 ### <a name="management-group"></a>Yönetim grubu
 
 1. Azure portal açın ve Hizmetler listesinde **Yönetim grupları** ' na gidin.
 2. İstenen yönetim grubuna gidin.
 3. Yönetim grubu KIMLIĞINI tablodan kopyalayın.
-4. Kapsamınız:`"/providers/Microsoft.Management/managementGroups/{id}"`
+4. Kapsamınız: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
 ### <a name="subscription"></a>Subscription
 
 1. Azure portal açın ve hizmetler listesinden **abonelikler** ' e gidin.
 2. Tablodaki abonelik KIMLIĞINI kopyalayın.
-3. Kapsamınız:`"/subscriptions/{id}"`
+3. Kapsamınız: `"/subscriptions/{id}"`
 
 ### <a name="resource-groups"></a>Kaynak grupları
 
@@ -228,7 +228,7 @@ Maliyet yönetimi API 'Leri ile çalışırken, kapsamın kritik olduğunu bilme
 2. İstenen kaynak grubunun adına tıklayın.
 3. Kaynak grubu menüsünde **Özellikler** ' i seçin.
 4. Kaynak KIMLIĞI alan değerini kopyalayın.
-5. Kapsamınız:`"/subscriptions/{id}/resourceGroups/{name}"`
+5. Kapsamınız: `"/subscriptions/{id}/resourceGroups/{name}"`
 
 Maliyet yönetimi şu anda [Azure genel](https://management.azure.com) ve [Azure Kamu](https://management.usgovcloudapi.net)'da desteklenmektedir. Azure Kamu hakkında daha fazla bilgi için bkz. [Azure genel ve kamu API uç noktaları](../azure-government/documentation-government-developer-guide.md#endpoint-mapping) _._
 

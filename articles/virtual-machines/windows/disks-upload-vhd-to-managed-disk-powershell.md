@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 98c0316a3fa513f98031b79eefcedea5a1111539
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cd8c5b174d92edcf69801edaeabd0c0730985654
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266633"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326915"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Azure PowerShell kullanarak bir VHD 'yi Azure 'a yükleme
 
@@ -39,6 +39,8 @@ Bu tür yönetilen disklerin iki benzersiz durumu vardır:
 - ActiveUpload, bu, diskin karşıya yükleme almaya ve SAS üretilmeye hazırlanmasıdır.
 
 Bu durumlardan birinde, yönetilen disk, gerçek disk türünden bağımsız olarak [Standart HDD fiyatlandırmasına](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır. Örneğin, bir P10 S10 olarak faturalandırılacaktır. Bu, diski bir VM `revoke-access` 'ye eklemek için gerekli olan yönetilen diskte çağrılana kadar doğru olacaktır.
+
+Karşıya yüklemek üzere boş bir standart HDD oluşturmadan önce, karşıya yüklemek istediğiniz VHD 'nin bayt cinsinden dosya boyutu gerekir. Örnek kod, sizin tarafınızdan sizin için bunu sizin için kullanabilirsiniz: `$vhdSizeBytes = (Get-Item "<fullFilePathHere>").length`. Bu değer **-uploadsizeınbytes** parametresini belirtirken kullanılır.
 
 Şimdi, yerel kabuğunuzun içinde, **-createoption** parametresindeki **karşıya yükleme** ayarını ve [New-azdiskconfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig?view=azps-1.8.0) cmdlet 'inde **-uploadsizeınbytes** PARAMETRESINI belirterek karşıya yüklemek üzere boş bir standart HDD oluşturun. Ardından, diski oluşturmak için [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk?view=azps-1.8.0) ' i çağırın:
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 536ada668db724ca50d7db820aff173f7222bab2
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229536"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336850"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Active Directory Domain Services örneği oluşturma ve yapılandırma
 
@@ -42,7 +42,8 @@ Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar
     * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
 * Azure AD DS 'yi etkinleştirmek için Azure AD kiracınızda *genel yönetici* ayrıcalıklarına sahip olmanız gerekir.
 * Gerekli Azure AD DS kaynaklarını oluşturmak için Azure aboneliğinizde *katılımcı* ayrıcalıklarına sahip olmanız gerekir.
-* Azure AD kiracısı, [self servis parola sıfırlama için yapılandırılmış][configure-sspr]olmalıdır.
+
+Azure AD DS için gerekli olmasa da, Azure AD kiracısı için [self servis parola sıfırlama (SSPR) yapılandırmanız][configure-sspr] önerilir. Kullanıcılar, SSPR olmadan parolalarını değiştirebilir, ancak SSPR, parolalarını unutmaları ve sıfırlanması gerekir.
 
 > [!IMPORTANT]
 > Azure AD DS yönetilen bir etki alanı oluşturduktan sonra, örneği farklı bir kaynak grubuna, sanal ağa, aboneliğe vb. taşıyamazsınız. Azure AD DS örneğini dağıtırken en uygun aboneliği, kaynak grubunu, bölgeyi ve sanal ağı seçin.

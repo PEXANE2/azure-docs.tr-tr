@@ -6,12 +6,12 @@ ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7fd9a8e00072bfb8d3a0e57fb552822588111019
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 28bfabd5c28fe833050551e7be690c0ea3d1e6a0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241189"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338945"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
 
@@ -281,7 +281,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>Yönetim gruplarını hiyerarşide taşıma  
 
-Bir üst yönetim grubunu taşıdığınızda, bu grubun altındaki hiyerarşi onunla birlikte taşınır. Yönetim gruplarını taşımanız gereken erişim için bkz. [Yönetim grubu erişimi](index.md#management-group-access).
+Bir üst yönetim grubunu taşıdığınızda, bu grubun altındaki hiyerarşi onunla birlikte taşınır. Yönetim gruplarını taşımanız gereken erişim için bkz. [Yönetim grubu erişimi](overview.md#management-group-access).
 
 ### <a name="move-management-groups-in-the-portal"></a>Yönetim gruplarını portalda taşıma
 

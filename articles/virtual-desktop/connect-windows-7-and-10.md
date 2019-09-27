@@ -1,77 +1,60 @@
 ---
-title: Windows 10 veya Windows 7 - Azure Windows sanal masaüstü Önizleme bağlanın
-description: Windows 10 veya Windows 7 Windows sanal masaüstü önizlemesine bağlanmak nasıl.
+title: Windows 10 veya Windows 7-Azure ' dan Windows sanal masaüstü önizlemesine bağlanma
+description: Windows masaüstü istemcisini kullanarak Windows sanal masaüstüne bağlanma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 66b423ea27cc0f9112349964fcfd0d75f08c12bd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 49431f75fb801c683a167e1809724eeeef208561
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620114"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338445"
 ---
-# <a name="connect-from-windows-10-or-windows-7"></a>Windows 10 veya Windows 7'den bağlanma
+# <a name="connect-with-the-windows-desktop-client"></a>Windows Masaüstü istemcisiyle bağlantı
 
-> Şunlara uygulanır: Windows 7 ve Windows 10.
+> Şunlara uygulanır: Windows 7 ve Windows 10
 
-İndirilebilir bir istemci kullanılabilir sağlayan erişim için Windows sanal masaüstü Önizleme kaynakları Windows 7 ve Windows 10 çalıştıran cihazlardan.
+Windows Masaüstü istemcisi 'ni kullanarak Windows 7 veya Windows 10 ile cihazlarda Windows sanal masaüstü kaynaklarına erişebilirsiniz.
 
 > [!IMPORTANT]
-> Kullanmayın **RemoteApp ve Masaüstü bağlantıları (RADC)** veya **Uzak Masaüstü Bağlantısı (MSTSC)** Windows sanal masaüstü ya da istemci desteklemediğinden, Windows sanal masaüstü kaynaklara erişmek için.
+> Windows sanal masaüstü, RemoteApp ve Masaüstü bağlantıları (ÇDC) istemcisini veya Uzak Masaüstü Bağlantısı (MSTSC) istemcisini desteklemez.
 
-## <a name="install-the-client"></a>İstemciyi yükleme
+## <a name="install-the-windows-desktop-client"></a>Windows masaüstü istemcisini yükler
 
-[İndirme](https://go.microsoft.com/fwlink/?linkid=2068602) ve istemciyi yerel bilgisayarınıza yükleyin. Yönetici hakları gerektirir.
+Şu anda indirebileceğiniz istemciler şunlardır:
 
-## <a name="subscribe-to-a-feed"></a>Bir akışa abone ol
+- [Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2068602)
 
-Yönetilen kaynaklar listesi için yöneticiniz tarafından sağlanan akışına abone olarak alın. Abone kaynakları yerel Bilgisayarınızda kullanılabilmesini sağlar.
+İstemci Windows 'un daha fazla sürümü için kullanılabilir hale geldiği için bu listeyi güncelleştireceğiz.
+
+Yönetici hakları gerektirmeyen geçerli kullanıcı için istemcisini yükleyebilir veya yöneticiniz, cihazdaki tüm kullanıcıların erişebilmesi için istemciyi yükleyip yapılandırabilir.
+
+Yüklendikten sonra istemci, **Uzak Masaüstü**araması yaparak başlangıç menüsünden başlatılabilir.
+
+## <a name="subscribe-to-a-feed"></a>Bir akışa abone olma
+
+Yöneticiniz tarafından sağlanan akışa abone olarak sizin için kullanabileceğiniz yönetilen kaynakların listesini alın. Abone olmak, kaynakları yerel bilgisayarınızda kullanılabilir hale getirir.
 
 Bir akışa abone olmak için:
 
-1. Tüm uygulamalar listesini, istemciden arama için başlangıç **Uzak Masaüstü**.
-1. Seçin **abone ol** hizmete bağlanmak ve kaynaklarınızı almak için ana sayfasında.
-1. **Oturum** istendiğinde kullanıcı hesabınıza.
+1. Windows masaüstü istemcisini açın.
+2. Hizmete bağlanmak ve kaynaklarınızı almak için ana sayfada **abone ol** ' u seçin.
+3. İstendiğinde kullanıcı hesabınızla oturum açın.
 
-Başarıyla kimlik doğrulandıktan sonra artık kaynakların kullanabileceğiniz listesini görmeniz gerekir.
+Başarıyla oturum açtıktan sonra, erişebileceğiniz kaynakların bir listesini görmeniz gerekir.
 
-Kaynakları iki yöntemden birini kullanarak başlatabilirsiniz.
+Kaynakları iki yöntemden biri ile başlatabilirsiniz.
 
-- İstemcinin ana sayfadan başlatmak için bir kaynak çift tıklayın.
-- Başlat Menüsü'nden diğer uygulamalar normalde yaptığınız gibi bir kaynak başlatın.
-  - Arama çubuğunda uygulamalar için arama yapabilirsiniz.
+- İstemcinin ana sayfasından bir kaynağa çift tıklayarak başlatın.
+- Başlangıç menüsünden normalde diğer uygulamalar olacak şekilde bir kaynak başlatın.
+  - Ayrıca, arama çubuğundaki uygulamaları da arayabilirsiniz.
 
-Bir akışa abone sonra akış içeriği düzenli aralıklarla otomatik olarak güncelleştirilir. Kaynakları eklenmesine, değiştirilmesine veya yöneticiniz tarafından yapılan değişiklikler temel alınarak kaldırıldı.
+Akışa abone olduktan sonra akışın içeriği düzenli aralıklarla otomatik olarak güncelleştirilir. Kaynaklar, yöneticiniz tarafından yapılan değişikliklere göre eklenebilir, değiştirilebilir veya kaldırılabilir.
 
-## <a name="view-the-details-of-a-feed"></a>Bir akışı ayrıntılarını görüntüleyin
+## <a name="next-steps"></a>Sonraki adımlar
 
-Abone sonra Ayrıntılar bölmesini erişerek akış hakkında daha fazla bilgi görüntüleyebilirsiniz.
-
-1. İstemcinin ana sayfasında üç noktayı seçin ( **...** ) akış adının sağındaki.
-1. Açılan menüden **ayrıntıları**.
-1. Ayrıntılar bölmesini istemci sağ tarafında görünür.
-
-Ayrıntılar bölmesini akış hakkında yararlı bilgiler içerir:
-
-- Abone olmak için kullanılan kullanıcı adı ve URL
-- Uygulamalar ve Masaüstü sayısı
-- Son güncelleştirme tarih/saat
-- Son güncelleştirme durumu
-
-Gerekli olursa, el ile güncelleştirme seçerek başlayabilirsiniz **Şimdi Güncelleştir**.
-
-## <a name="unsubscribe-from-a-feed"></a>Bir akıştan aboneliği iptal et
-
-Bu bölümde bir akıştan aboneliği öğretir. Farklı bir hesapla yeniden abone ya da sistemden kaynaklarınızı kaldırmak için abonelikten çıkabilirsiniz.
-
-1. İstemcinin ana sayfasında üç noktayı seçin ( **...** ) akış adının sağındaki.
-1. Açılan menüden **Unsubscribe**.
-1. Gözden geçirin ve seçin **devam** iletişim.
-
-## <a name="update-the-client"></a>İstemci güncelleştirmesi
-
-İstemcinin yeni bir sürümü kullanılabilir olduğunda, istemci ve Windows İşlem Merkezi bildirilir. Güncelleştirme işlemini başlatmak için bildirimi seçin.
+Windows Masaüstü istemcisinin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için, [Windows Masaüstü istemcisi ile çalışmaya başlama](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop)konusunu inceleyin.

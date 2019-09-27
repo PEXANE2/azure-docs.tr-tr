@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 9664beca514abcbad4eca7c8f9dc1b494018802e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: deb13b833707849bcbce8bcae7b05aeb5e0bce3b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535194"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338869"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS maliyet ve kullanım raporu tümleştirmesini ayarlama ve yapılandırma
 
@@ -42,7 +42,7 @@ AWS 'de faturalandırma ve Maliyet Yönetimi konsolunun **maliyet & kullanım ra
     2. Bir demet adı ve yeni bir demet oluşturmak istediğiniz bölgeyi girip **İleri ' yi**seçin.
 10. **Bu ilkenin doğru olduğunu onayladım**' ı seçin ve ardından **Kaydet**' e tıklayın.
 11. Seçim Rapor yolu ön eki için, raporun adının sonuna eklemek istediğiniz rapor yolu önekini girin.
-Ön ek belirtmezseniz, varsayılan ön ek rapor için belirttiğiniz addır. Tarih aralığı `/report-name/date-range/` biçimindedir.
+Ön ek belirtmezseniz, varsayılan ön ek rapor için belirttiğiniz addır. Tarih aralığı `/report-name/date-range/` biçimine sahiptir.
 12. **Zaman birimi**için **saatlik**' ı seçin.
 13. **Rapor sürümü oluşturma**için, raporun her bir sürümünün önceki sürümün üzerine yazmasını isteyip istemediğinizi veya ek yeni raporlar istediğinizi seçin.
 14. **İçin veri tümleştirmesini etkinleştir**için seçim gerekmiyor.
@@ -79,15 +79,15 @@ Yeni rol oluşturma Sihirbazı 'nı kullanın:
 Maliyet ve kullanım raporu için izinleri yapılandırın:
 
 1. **Maliyet ve kullanım raporu**girin.
-2. **Erişim düzeyi** > okumaDescribeReportDefinitions > ' ı seçin. Bu adım maliyet yönetiminin, GEÇERLI raporların ne şekilde tanımlandığını okumasına ve rapor tanımı önkoşulu ile eşleşip eşleşmediğine nasıl izin verdiğini sağlar.
+2. @No__t **erişim düzeyi**seçin-1**okuma** > **DescribeReportDefinitions**. Bu adım maliyet yönetiminin, GEÇERLI raporların ne şekilde tanımlandığını okumasına ve rapor tanımı önkoşulu ile eşleşip eşleşmediğine nasıl izin verdiğini sağlar.
 3. **Ek Izinler Ekle**' yi seçin.
 
 S3 demet ve nesneleriniz için izinleri yapılandırın:
 
 1. **Hizmet Seç**' i seçin.
 2. **S3**girin.
-3. **Erişim düzeyi** > **listesi**listbucket öğesini seçin. >  Bu eylem, S3 demetini içindeki nesnelerin listesini alır.
-4. **Erişim düzeyi** > okumaGetObject > ' i seçin. Bu eylem faturalandırma dosyalarının indirilmesini sağlar.
+3. @No__t-1**liste** > **listbucket** **erişim düzeyini**seçin. Bu eylem, S3 demetini içindeki nesnelerin listesini alır.
+4. **Erişim düzeyi** > **okuma** > **GetObject**' i seçin. Bu eylem faturalandırma dosyalarının indirilmesini sağlar.
 5. **Kaynakları**seçin.
 6. **Demet seçin – ARN ekleyin**.
 7. **Demet adı**' nda, geçerli dosyaları depolamak için kullanılan demeti girin.
@@ -100,13 +100,13 @@ Maliyet Gezgini için izinleri yapılandırın:
 
 1. **Hizmet Seç**' i seçin.
 2. **Maliyet Gezgini hizmeti**girin.
-3. **Tüm maliyet Gezgini hizmet eylemlerini (\*CE:)** seçin. Bu eylem, koleksiyonun doğru olduğunu doğrular.
+3. **Tüm maliyet Gezgini hizmet eylemlerini seçin (CE: \*)** . Bu eylem, koleksiyonun doğru olduğunu doğrular.
 4. **Ek Izinler Ekle**' yi seçin.
 
 AWS kuruluşları için izin ekleme:
 
 1. **Kuruluşları**girin.
-2. **Erişim düzeyi** > **listesi**listaccounts ' ni seçin. >  Bu eylem, hesapların adlarını alır.
+2. @No__t **erişim düzeyi**seçin-1**liste** > **listaccounts**. Bu eylem, hesapların adlarını alır.
 3. **Inceleme ilkesi**' nde, yeni ilke için bir ad girin. Doğru bilgileri girdiğinizden emin olun ve ardından **Ilke oluştur**' u seçin.
 4. Önceki sekmeye geri dönün ve tarayıcınızın Web sayfasını yenileyin. Arama çubuğunda yeni ilkenizi arayın.
 5. İleri **' yi seçin: Gözden**geçirin.
@@ -151,12 +151,12 @@ JSON ilkesi aşağıdaki örneğe benzemelidir. _Bucketname_ değerini S3 demet 
 AWS bağlayıcısını oluşturmak ve AWS maliyetlerinizi izlemeye başlamak için aşağıdaki bilgileri kullanın:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Maliyet yönetimi + faturalandırma** > **maliyeti yönetimi**' ne gidin.
+2. **Maliyet yönetimi + faturalandırma** > **maliyet yönetimi**' ne gidin.
 3. **Ayarlar**altında **bulut bağlayıcıları ' nı (Önizleme)** seçin.  
-    ![Bulut bağlayıcıları (Önizleme) ayarını](./media/aws-integration-setup-configure/cloud-connectors-preview01.png)gösteren örnek.
+    ](./media/aws-integration-setup-configure/cloud-connectors-preview01.png) @no__t bulut bağlayıcıları (Önizleme) ayarını gösteren 0 örnek).
 4. Bağlayıcı oluşturmak için sayfanın üst kısmında **+ Ekle** ' yi seçin.
 5. **AWS Bağlayıcısı oluştur** sayfasında, **görünen ad**alanına Bağlayıcınız için bir ad girin.  
-    ![AWS Bağlayıcısı oluşturma sayfası örneği](./media/aws-integration-setup-configure/create-aws-connector01.png)
+    AWS Bağlayıcısı oluşturmaya yönelik sayfanın 0Örneği @no__t @ no__t-1
 6. İsteğe bağlı olarak, varsayılan yönetim grubunu seçin. Tüm bulunan bağlı hesapları depolayacaktır. Daha sonra ayarlayabilirsiniz.
 7. Önizlemenin süresi dolduğu zaman sürekli olarak emin olmak istiyorsanız, **faturalandırma** bölümünde, **genel kullanıma sunulmasıyla otomatik olarak% 1 oranında ücretlendirmeyi** seçin. Otomatik seçeneğini belirlerseniz, bir faturalandırma aboneliği seçmeniz gerekir.
 8. **ARN rolü**IÇIN, AWS 'de rolü ayarlarken kullandığınız değeri girin.
@@ -172,7 +172,7 @@ Bulma gerçekleştikten sonra kullanıcılara bağlayıcı izinleri atama, mevcu
 
 ## <a name="take-additional-steps"></a>Ek adımlar alın
 
-- Henüz yapmadıysanız [Yönetim gruplarını ayarlayın](../governance/management-groups/index.md#initial-setup-of-management-groups).
+- Henüz yapmadıysanız [Yönetim gruplarını ayarlayın](../governance/management-groups/overview.md#initial-setup-of-management-groups).
 - Kapsam seçiciye yeni kapsamların eklendiğinden emin olun. En son verileri görüntülemek için **Yenile** ' yi seçin.
 - **Bulut bağlayıcıları** sayfasında, bağlayıcıyı seçin ve bağlı hesabı yönetim gruplarına atamak için **faturalandırma hesabına git** ' i seçin.
 
@@ -189,7 +189,7 @@ Bulma gerçekleştikten sonra kullanıcılara bağlayıcı izinleri atama, mevcu
 
 ## <a name="set-up-azure-management-groups"></a>Azure Yönetim gruplarını ayarlama
 
-Azure aboneliklerinizi ve AWS bağlantılı hesaplarınızı aynı yönetim grubuna yerleştirip, platformlar arası sağlayıcı bilgilerini görebileceğiniz tek bir konum oluşturun. Azure ortamınızı zaten yönetim gruplarıyla yapılandırmadıysanız, bkz. [yönetim gruplarının ilk kurulumu](../governance/management-groups/index.md#initial-setup-of-management-groups).
+Azure aboneliklerinizi ve AWS bağlantılı hesaplarınızı aynı yönetim grubuna yerleştirip, platformlar arası sağlayıcı bilgilerini görebileceğiniz tek bir konum oluşturun. Azure ortamınızı zaten yönetim gruplarıyla yapılandırmadıysanız, bkz. [yönetim gruplarının ilk kurulumu](../governance/management-groups/overview.md#initial-setup-of-management-groups).
 
 Maliyetleri ayırmak istiyorsanız, yalnızca AWS bağlantılı hesaplarını tutan bir yönetim grubu oluşturabilirsiniz.
 

@@ -1,19 +1,19 @@
 ---
-title: Azure dijital TWINS güvenliği en iyi yöntemlerini anlama | Microsoft Docs
-description: Azure Digital TWINS güvenlik en iyi uygulamaları.
+title: En iyi güvenlik yöntemlerini anlama-Azure dijital TWINS | Microsoft Docs
+description: Azure dijital TWINS ve Nesnelerin İnterneti için en iyi güvenlik yöntemleri hakkında bilgi edinin.
 author: kingdomofends
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 09/17/2019
 ms.author: v-adgera
-ms.openlocfilehash: f211206bc2408fe55f6742622b5b0e56d1ab4d90
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 181176e00595daa307504d4dea7494aefa7f1942
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656516"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336698"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -46,7 +46,7 @@ IoT alanını güvenle güvenli hale getirmeye yönelik bazı önemli uygulamala
 > [!div class="checklist"]
 > * Kaydedilmiş, depolanmış veya kalıcı verileri şifreleyin.
 > * Parolaların veya anahtarların düzenli aralıklarla değiştirilmesini veya yenilenmesini gerektir.
-> * Erişimi ve izinleri role göre dikkatle kısıtlayın. Aşağıda, [rol tabanlı erişim denetimi en iyi uygulamaları](#rbac) bölümüne bakın.
+> * Erişimi ve izinleri role göre dikkatle kısıtlayın. Aşağıda, [rol tabanlı erişim denetimi en iyi uygulamaları](#role-based-access-control-best-practices) bölümüne bakın.
 > * Her ağdaki cihazların diğerlerinden yalıtılmış olması için bölünmüş bir ağ topolojisini göz önünde bulundurun.
 > * Güçlü şifreleme kullanın. Uzun parolalar gerektir ve güvenli protokoller ve iki öğeli kimlik doğrulama kullanın.
 
@@ -66,8 +66,6 @@ Azure dijital TWINS, kullanıcıların kimliğini doğrulamak ve uygulamaları k
 > * Belirtecin geçerli olduğu sürenin uzunluğunu ve belirtecin geçerli olmaya devam edilip edilmeyeceğini doğrulayın.
 > * Belirteçlerin geçerli olduğu sürenin uzunluğunu ayarlayın.
 > * Süre dolma belirteçleri yenileyin.
-
-<div id="rbac"></div>
 
 ## <a name="role-based-access-control-best-practices"></a>Rol tabanlı erişim denetimi en iyi yöntemleri
 

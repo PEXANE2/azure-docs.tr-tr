@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 96e939f8e3da58a123d9a6733b71b74c2ff0ba87
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 144b63131be68c9209835a1b8b3a01062245cfdd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311908"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326589"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -21,9 +21,9 @@ Danışman, boşta ve az kullanılan kaynakları tanımlayarak Genel Azure harca
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Az kullanılan örnekleri yeniden boyutlandırarak veya kapatarak sanal makineyi harcamayı iyileştirin 
 
-Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu ve sayısını yöneterek paradan tasarruf edebilirsiniz. Danışman, sanal makine kullanımınızı 7 gün boyunca izler ve düşük kullanım sanal makinelerini belirler. CPU kullanımı% 5 veya daha az olursa ve ağ kullanımı% 2 ' den küçük veya geçerli iş yükünün daha küçük bir sanal makine boyutuyla ele alınabiliyorsa, sanal makineler düşük kullanım olarak değerlendirilir.
+Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu ve sayısını yöneterek paradan tasarruf edebilirsiniz. Danışman, sanal makine kullanımınızı 7 gün boyunca izler ve düşük kullanım sanal makinelerini belirler.  Sanal makineler, CPU kullanımı% 5 veya daha az olursa ve ağ kullanımı% 2 ' den az olduğunda veya geçerli iş yükünün daha küçük bir sanal makine boyutuyla ele alınabiliyorsa düşük kullanım olarak değerlendirilir.
 
-Danışman, sanal makinenizi çalıştırmaya devam etmenin tahmini maliyetini gösterir. bu sayede, kapatmayı veya yeniden boyutlandırmayı seçebilirsiniz.
+Önerilen Eylemler, için önerilen kaynağa özgü olarak kapatılır veya yeniden boyutlandırılır. Danışman, önerilen eylemler için tahmini maliyet tasarrufu gösterir-yeniden boyutlandır veya kapat. Ayrıca, önerilen eylemi yeniden boyutlandır için, Advisor geçerli ve hedef SKU bilgilerini sağlar. 
 
 Aşırı kullanılan sanal makineleri tanımlamaya daha Agresif olmak istiyorsanız, CPU kullanım kuralını abonelik başına temelinde ayarlayabilirsiniz.
 

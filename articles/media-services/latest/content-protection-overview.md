@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1d95d14398bc6b5acdec89428ebe22a672551a8a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561466"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338798"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Media Services dinamik şifrelemeyi kullanarak içeriğinizi koruyun
 
@@ -68,17 +68,17 @@ Her bir varlığı birden fazla şifreleme türü (AES-128, PlayReady, Widevine,
      ```
 2. Şifrelenmiş varlığı akışa almak için yapılandırılmış bir [akış Bulucu](streaming-locators-concept.md) oluşturun. 
   
-   Akış bulucunun bir [akış ilkesiyle](streaming-policy-concept.md)ilişkilendirilmesi vardır. Örnekte, "Predefined_MultiDrmCencStreaming" ilkesine `StreamingLocator.StreamingPolicyName` ayarlanıyoruz. 
+   Akış bulucunun bir [akış ilkesiyle](streaming-policy-concept.md)ilişkilendirilmesi vardır. Örnekte, `StreamingLocator.StreamingPolicyName` ' ı "Predefined_MultiDrmCencStreaming" ilkesine ayarlayacağız. 
       
    PlayReady ve Widevine şifrelemeleri uygulanır ve anahtar, yapılandırılmış DRM lisanslarına göre kayıttan yürütme istemcisine gönderilir. Akışınızı CIBH (FairPlay) ile şifrelemek isterseniz, "Predefined_MultiDrmStreaming" ilkesini kullanın.
 
    Akış bulucu, tanımladığınız içerik anahtarı ilkesiyle de ilişkilendirilir.
 3. Bir test belirteci oluşturun.
 
-   Yöntemi `GetTokenAsync` , bir test belirtecinin nasıl oluşturulacağını gösterir.
+   @No__t-0 yöntemi bir test belirtecinin nasıl oluşturulacağını gösterir.
 4. Akış URL'sini oluşturun.
 
-   Yöntemi `GetDASHStreamingUrlAsync` , akış URL 'sinin nasıl oluşturulacağını gösterir. Bu durumda, URL DASH içeriğini akışlar.
+   @No__t-0 yöntemi, akış URL 'sinin nasıl oluşturulacağını gösterir. Bu durumda, URL DASH içeriğini akışlar.
 
 ### <a name="player-with-an-aes-or-drm-client"></a>AES veya DRM istemcisiyle oynatıcı 
 
@@ -172,7 +172,7 @@ Bir açık kısıtlanmış içerik anahtarı ilkesi, yetkilendirmesiz herkese li
 
 Belirteç kısıtlı içerik anahtar ilkesiyle, içerik anahtarı yalnızca lisans/anahtar isteğinde geçerli bir JWT belirteci veya basit bir Web belirteci (SWT) sunan bir istemciye gönderilir. Bu belirtecin bir STS tarafından verilmesi gerekir. 
 
-Azure AD 'yi STS olarak kullanabilir veya özel bir STS dağıtımı yapabilirsiniz. STS belirteci kısıtlama yapılandırmasında belirtilen belirtilen anahtarı ve sorunu talepleri ile imzalanmış bir belirteç oluşturmak için yapılandırılmalıdır. Media Services lisansı/anahtar teslim hizmeti, bu koşulların her ikisi de varsa, istenen lisansı veya anahtarı istemciye döndürür:
+Azure AD 'yi STS olarak kullanabilir veya [Özel BIR STS](#using-a-custom-sts)dağıtımı yapabilirsiniz. STS belirteci kısıtlama yapılandırmasında belirtilen belirtilen anahtarı ve sorunu talepleri ile imzalanmış bir belirteç oluşturmak için yapılandırılmalıdır. Media Services lisansı/anahtar teslim hizmeti, bu koşulların her ikisi de varsa, istenen lisansı veya anahtarı istemciye döndürür:
 
 * Belirteç geçerli. 
 * Belirteçteki talepler, lisans veya anahtar için yapılandırılananlarla eşleşiyor.
@@ -223,12 +223,12 @@ Farklı bir lisans/anahtar teslim hizmeti (Media Services değil) belirtmek isti
 
    Şablon, hizmetin çalışma zamanında, isteğe özgü değerle güncelleşeceğini değiştirilebilen belirteçleri destekler.  Şu anda desteklenen belirteç değerleri şunlardır:
    * `{AlternativeMediaId}`, bu, Streaminglocatorıd. Alternativemediaıd değeriyle değiştirilmiştir.
-   * `{ContentKeyId}`, bu, istenen anahtarın tanımlayıcısının değeriyle değiştirilmiştir.
+   * `{ContentKeyId}`, istenen anahtarın tanımlayıcısının değeriyle değiştirilmiştir.
 * `StreamingPolicyPlayReadyConfiguration.CustomLicenseAcquisitionUrlTemplate`: Son Kullanıcı oynatıcılarına lisans sunan özel hizmetin URL 'SI için şablon. Lisans vermek için Azure Media Services kullandığınızda bu gerekli değildir. 
 
    Şablon, hizmetin çalışma zamanında, isteğe özgü değerle güncelleşeceğini değiştirilebilen belirteçleri destekler. Şu anda desteklenen belirteç değerleri şunlardır:  
    * `{AlternativeMediaId}`, bu, Streaminglocatorıd. Alternativemediaıd değeriyle değiştirilmiştir.
-   * `{ContentKeyId}`, bu, istenen anahtarın tanımlayıcısının değeriyle değiştirilmiştir. 
+   * `{ContentKeyId}`, istenen anahtarın tanımlayıcısının değeriyle değiştirilmiştir. 
 * `StreamingPolicyWidevineConfiguration.CustomLicenseAcquisitionUrlTemplate`: Yalnızca Widevine için önceki şablonla aynı. 
 * `StreamingPolicyFairPlayConfiguration.CustomLicenseAcquisitionUrlTemplate`: Önceki şablonla aynı ancak yalnızca FairPlay için geçerlidir.  
 
@@ -238,13 +238,13 @@ Farklı bir lisans/anahtar teslim hizmeti (Media Services değil) belirtmek isti
 streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://mykeyserver.hostname.com/envelopekey/{AlternativeMediaId}/{ContentKeyId}";
 ```
 
-`ContentKeyId`istenen anahtarın bir değeri vardır. İsteği kendi tarafınızda bir varlıkla eşlemek istiyorsanız kullanabilirsiniz `AlternativeMediaId` . Örneğin, `AlternativeMediaId` izinleri bulmanıza yardımcı olması için kullanılabilir.
+`ContentKeyId` ' ın istenen anahtarın bir değeri vardır. @No__t-0 ' yı, sizin tarafınızda bir varlıkla eşlemek istiyorsanız kullanabilirsiniz. Örneğin, `AlternativeMediaId`, izinleri bulmanıza yardımcı olmak için kullanılabilir.
 
  Özel lisans/anahtar alma URL 'Leri kullanan REST örnekleri için bkz. [akış ilkeleri-oluştur](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-`MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` Hatayı alırsanız uygun akış ilkesini belirttiğinizden emin olun.
+@No__t-0 hatası alırsanız, uygun akış ilkesini belirttiğinizden emin olun.
 
 İle `_NOT_SPECIFIED_IN_URL`biten hatalar alırsanız, URL 'de şifreleme biçimini belirttiğinizden emin olun. `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)` bunun bir örneğidir. Bkz. [akış protokolleri ve şifreleme türleri](#streaming-protocols-and-encryption-types).
 
@@ -259,4 +259,4 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 * [Access Control ile çoklu DRM içerik koruma sistemi tasarlama](design-multi-drm-system-with-access-control.md)
 * [Depolama tarafı şifrelemesi](storage-account-concept.md#storage-side-encryption)
 * [Sık sorulan sorular](frequently-asked-questions.md)
-
+* [JSON Web Token Işleyicisi](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)

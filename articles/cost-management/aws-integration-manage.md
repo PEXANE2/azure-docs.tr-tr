@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 6767644e037c6abb3e3044c8707e923a9137a01c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 772f6cdde575a9ac669c73ecca039914357ffe2f
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019542"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338892"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure 'da AWS maliyetlerini ve kullanımını yönetme
 
@@ -82,7 +82,7 @@ Aşağıdaki tabloda, Grup ve filtreleme için kullanılabilen boyutlar maliyet 
 | Metre |   | Tümü |   |
 | Ölçüm kategorisi | LineItem/ProductCode | Tümü |   |
 | Ölçüm alt kategorisi | LineItem/UsageType | Tümü |   |
-| Çalışma | LineItem/Işlem | Tümü |   |
+| İşlem | LineItem/Işlem | Tümü |   |
 | Resource | LineItem/RESOURCEID | Tümü |   |
 | Kaynak türü | Ürün/InstanceType | Tümü | Ürün/InstanceType null ise, LineItem/UsageType kullanılır. |
 | Kaynak Guid'si | Yok | Tümü | Azure ölçüm GUID 'ı. |
@@ -91,7 +91,7 @@ Aşağıdaki tabloda, Grup ve filtreleme için kullanılabilen boyutlar maliyet 
 | Abonelik Kimliği | LineItem/Usageaccountıd | Birleştirilmiş hesap ve yönetim grubu |   |
 | Abonelik adı | Yok | Birleştirilmiş hesap ve yönetim grubu | Hesap adları AWS kuruluş API 'SI kullanılarak toplanır. |
 | Etiket | resourceTags/\* | Tümü | _Kullanıcı:_ ön ek, platformlar arası etiketlere izin vermek için Kullanıcı tanımlı etiketlerden kaldırılır. _AWS:_ öneki bozulmadan bırakılır. |
-| Faturalandırma hesabı kimliği | Fatura/Payeraccountıd | Yönetim grubu |   |
+| Faturalama hesabı kimliği | Fatura/Payeraccountıd | Yönetim grubu |   |
 | Faturalama hesabı adı | Yok | Yönetim grubu | Hesap adları AWS kuruluş API 'SI kullanılarak toplanır. |
 | Sağlayıcı | Yok | Yönetim grubu | AWS veya Azure. |
 
@@ -183,4 +183,4 @@ AWS maliyet ve kullanım raporunun tanımıyla ilgili bu hata, bu rapor için ö
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure ortamınızı zaten yönetim gruplarıyla yapılandırmadıysanız, bkz. [yönetim gruplarının ilk kurulumu](../governance/management-groups/index.md#initial-setup-of-management-groups).
+- Azure ortamınızı zaten yönetim gruplarıyla yapılandırmadıysanız, bkz. [yönetim gruplarının ilk kurulumu](../governance/management-groups/overview.md#initial-setup-of-management-groups).

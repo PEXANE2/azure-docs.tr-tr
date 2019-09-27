@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a335bcbb45b1aac48a3aaea282ffeffe1696f4c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900075"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336872"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (Azure AD) yeteneklerini dağıtmaya yönelik uçtan uca yönergeler mi arıyorsunuz? Azure AD dağıtım planları, yaygın Azure AD yeteneklerini başarıyla dağıtmak için gereken iş değeri, planlama konuları ve işlem yordamları boyunca size yol gösterir.
@@ -47,6 +47,14 @@ Roller aşağıdaki gibi bulunabilir
 - **C**ontributor-proje planı ve sonucu 
 
 - Proje planı ve sonucu **oluşturdum**
+
+
+## <a name="best-practices-for-a-pilot"></a>Pilot için en iyi uygulamalar
+Pilot, herkes için bir özelliği açmadan önce küçük bir grupla test etmenizi sağlar. Test etmenin bir parçası olarak, kuruluşunuzdaki her kullanım durumunun büyük bir şekilde sınandığından emin olun. Bunu kuruluşunuza bir bütün olarak yapmadan önce belirli bir pilot kullanıcı grubunu hedefleyecek en iyisidir.
+
+İlk dalga uygulamanızda BT 'yi, kullanılabilirliği ve geri bildirim sağlayabilen ve bunları sağlayabilecek diğer uygun kullanıcıları hedefleyebilirsiniz. Bu geri bildirim, kullanıcılarınıza göndereceğiniz iletişimleri ve talimatları daha fazla geliştirmek ve destek personelinizin görebileceği sorun türleri hakkında Öngörüler sağlamak için kullanılmalıdır. 
+
+Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttırılarak gerçekleştirilmelidir. Bu, [dinamik grup üyeliği](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)aracılığıyla veya hedeflenen gruplara el ile Kullanıcı ekleyerek yapılabilir.
 
 
 ## <a name="deploy-authentication"></a>Kimlik doğrulaması dağıtma

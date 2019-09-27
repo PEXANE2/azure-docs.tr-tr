@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 275cf20329be04e86c2e7c2a613f657733e652df
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8fbb09ecf09008c25c84a11c7b43dfb26450e30a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213439"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338762"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -214,3 +214,24 @@ kubectl get secret/azuremlfessl -o yaml
 
 >[!Note]
 >Kubernetes gizli dizileri temel-64 kodlu biçimde depolar. Ana 64 'nin `cert.pem` ve `key.pem` içindeki parolaların bileşenlerinin kodunu vermeden `attach_config.enable_ssl`önce kodu çözmelisiniz. 
+
+## <a name="recommendations-for-error-fix"></a>Hata düzeltilme önerileri
+Genel gözlemye bağlı olarak, Azure ML 'deki bazı yaygın hataları gidermeye yönelik Azure ML önerileri aşağıda verilmiştir.
+
+### <a name="moduleerrors-no-module-named"></a>ModuleErrors (modül adı yok)
+Azure ML 'de denemeleri gönderirken ModuleErrors 'da çalıştırıyorsanız, eğitim betiğinin bir paketin yüklenmesini beklediği ancak eklenmediği anlamına gelir. Paket adı 'nı sağladığınızda, Azure ML, paketi eğitiminizi için kullanılan ortama yükler. 
+
+Denemeleri göndermek için [estimators](https://docs.microsoft.com/en-us/azure/machine-learning/service/concept-azure-machine-learning-architecture#estimators) kullanıyorsanız, paketi yüklemek istediğiniz kaynağı temel alan tahmin aracı 'da `pip_packages` veya `conda_packages` parametresi aracılığıyla bir paket adı belirtebilirsiniz. Ayrıca, `conda_dependencies_file`kullanarak tüm bağımlılıklarınızı içeren bir yıml dosyası belirtebilir veya `pip_requirements_file` parametresini kullanarak bir txt dosyasındaki tüm PIP gereksinimlerinizi listeleyebilirsiniz.
+
+Azure ML, TensorFlow, PyTorch, Chainer ve Sköğren için çerçeveye özel tahminler de sağlar. Bu tahmini kullanımı, Framework bağımlılıklarının eğitim için kullanılan ortamda sizin adınıza yüklü olduğundan emin olur. Yukarıda açıklandığı gibi ek bağımlılıklar belirtme seçeneğiniz vardır. 
+ 
+ Azure ML tarafından sağlanan Docker görüntüleri ve içerikleri, [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)görülebilir.
+Çerçeveye özgü bağımlılıklar ilgili Framework belgelerinde listelenmiştir- [Chainer](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [pytorch](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [sköğrenme](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
+
+>[Note!] Belirli bir paketin Azure ML tarafından korunan görüntülere ve ortamlara eklenmek için yeterince yaygın olduğunu düşünüyorsanız, lütfen [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)GitHub sorununu yükseltin. 
+ 
+ ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (ad tanımlı değil), AttributeError (nesne bir özniteliğe sahip değil)
+Bu özel durum, eğitim betiklerinden gelmelidir. Tanımlı bir ad veya öznitelik hatası hakkında daha fazla bilgi edinmek için, Azure portal günlük dosyalarına bakabilirsiniz. SDK 'dan, hata iletisine bakmak için `run.get_details()` ' ı kullanabilirsiniz. Bu, çalıştırma için oluşturulan tüm günlük dosyalarını da listeler. Lütfen eğitim betiğe göz atın, yeniden denemeden önce hatayı onarın. 
+
+### <a name="horovod-is-shutdown"></a>Horovod kapanıyor
+Çoğu durumda, bu özel durum horovod ' nin kapanmasına neden olan işlemlerden birinde temeldeki özel durum olduğu anlamına gelir. MPı işindeki her bir derecelendirme, Azure ML 'de özel bir günlük dosyası alır. Bu Günlükler `70_driver_logs` olarak adlandırılır. Dağıtılmış eğitim söz konusu olduğunda, günlüklerin ayırt edilmesini kolaylaştırmak için günlük adlarının `_rank` ile yeniden düzeltilmesi gerekir. Horovod kapatmaya neden olan hatayı tam olarak bulmak için tüm günlük dosyalarını gözden geçirin ve driver_log dosyalarının sonundaki `Traceback` ' a bakın. Bu dosyalardan biri size gerçek temel özel durumu verecektir. 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b0a03eee06ba114ab929c8c584f382861a006bbc
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 95d133e07725f797ea3c1a903e315d5c7232e1de
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360767"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327616"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure depolama Blobları için geçici silme
 Azure Storage artık BLOB nesnelerine geçici silme olanağı sunarak, verileri yanlışlıkla değiştirildiğinde veya bir uygulama ya da başka bir depolama hesabı kullanıcısı tarafından daha kolay bir şekilde kurtarabilmeniz için daha kolay bir şekilde silinebilir.
@@ -37,11 +37,11 @@ Geçici silme bekletme süresini istediğiniz zaman değiştirebilirsiniz. Günc
 ### <a name="saving-deleted-data"></a>Silinen veriler kaydediliyor
 Geçici silme, Blobların veya blob anlık görüntülerinin silindiği veya üzerine yazıldığı birçok durumda verilerinizi korur.
 
-Blob 'u koy, **PUT bloğu**, put **bloğu listesi** veya **kopyalama blobu** **kullanılarak bir**blob üzerine yazıldığında, yazma işleminden önce blob 'un durumunun bir anlık görüntüsü otomatik olarak oluşturulur. Bu anlık görüntü, geçici olarak silinmiş bir anlık görüntüdür; geçici olarak silinen nesneler açıkça listelenmediyse görünmez. Geçici silinen nesneleri nasıl listeleyeceğinizi öğrenmek için [Kurtarma](#recovery) bölümüne bakın.
+Blob **'u koy,** **PUT bloğu**, put **bloğu listesi** veya **kopyalama blobu** kullanılarak bir blob üzerine yazıldığında, yazma işleminden önce blob 'un durumunun bir anlık görüntüsü otomatik olarak oluşturulur. Bu anlık görüntü, geçici olarak silinmiş bir anlık görüntüdür; geçici olarak silinen nesneler açıkça listelenmediyse görünmez. Geçici silinen nesneleri nasıl listeleyeceğinizi öğrenmek için [Kurtarma](#recovery) bölümüne bakın.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
-*Geçici olarak silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. B1 ile B0 'ın üzerine yazıldığında, B0 'nin geçici olarak silinmiş bir anlık görüntüsü oluşturulur. B2 ile B1 üzerine yazıldığında, B1 'nin geçici olarak silinen bir anlık görüntüsü oluşturulur.*
+*Soft silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. B1 ile B0 'ın üzerine yazıldığında, B0 'nin geçici olarak silinmiş bir anlık görüntüsü oluşturulur. B2 ile B1 üzerine yazıldığında, B1 'nin geçici olarak silinen bir anlık görüntüsü oluşturulur.*
 
 > [!NOTE]  
 > Geçici silme yalnızca hedef Blobun hesabı için açık olan kopyalama işlemleri için korumayı geçersiz kılar.
@@ -53,13 +53,13 @@ Bir anlık görüntüde **silme blobu** çağrıldığında, bu anlık görünt�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
-*Geçici olarak silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. **Anlık görüntü blobu** çağrıldığında, B0 bir anlık görüntü haline gelir ve B1, Blobun etkin durumudur. B0 anlık görüntüsü silindiğinde, geçici olarak silinmiş olarak işaretlenir.*
+*Soft silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. **Anlık görüntü blobu** çağrıldığında, B0 bir anlık görüntü haline gelir ve B1, Blobun etkin durumudur. B0 anlık görüntüsü silindiğinde, geçici olarak silinmiş olarak işaretlenir.*
 
 **BLOB silme** bir temel blob 'da (kendi anlık görüntü olmayan herhangi bir BLOB) çağrıldığında, bu blob geçici olarak silindi olarak işaretlenir. Önceki davranışla tutarlı, etkin anlık görüntülere sahip bir bloba **silme blobu** çağırma bir hata döndürüyor. Geçici olarak silinen anlık görüntülerle blob üzerinde **silme blobu** çağırma bir hata döndürmez. Geçici silme açıkken bir blobu ve tüm anlık görüntülerini tek işlemle silebilirsiniz. Bunu yaptığınızda temel blob ve anlık görüntüler geçici olarak silinir.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-explicit-include.png)
 
-*Geçici olarak silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. Burada, B2 ve ilişkili tüm anlık görüntüleri silmek için bir **silme blobu** çağrısı yapılır. Etkin blob, B2 ve tüm ilişkili anlık görüntüler, geçici olarak silinmiş olarak işaretlenir.*
+*Soft silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. Burada, B2 ve ilişkili tüm anlık görüntüleri silmek için bir **silme blobu** çağrısı yapılır. Etkin blob, B2 ve tüm ilişkili anlık görüntüler geçici olarak silinmiş olarak işaretlendi.*
 
 > [!NOTE]  
 > Geçici olarak silinen bir Blobun üzerine yazıldığında, yazma işleminden önce blob 'un durumunun geçici olarak silinmiş bir anlık görüntüsü otomatik olarak oluşturulur. Yeni blob, üzerine yazılan Blobun katmanını devralır.
@@ -91,7 +91,7 @@ Bir blobu belirli bir geçici silinen anlık görüntüye geri yüklemek için, 
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-recover.png)
 
-*Geçici olarak silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. Burada, blob B üzerinde **geri alma blobu** çağrılır, böylece temel blob, B1 ve tüm ilişkili anlık görüntüler, burada yalnızca B0 etkin olarak geri yüklenir. İkinci adımda, B0 temel blob üzerinden kopyalanır. Bu kopyalama işlemi B1 'nin geçici olarak silinmiş bir anlık görüntüsünü oluşturur.*
+*Soft silinen veriler gri, etkin veriler mavi olur. Daha eski veriler altında daha yeni yazılmış veriler görüntülenir. Burada, blob B üzerinde **geri alma blobu** çağrılır, böylece temel blob, B1 ve tüm ilişkili anlık görüntüler, burada yalnızca B0 etkin olarak geri yüklenir. İkinci adımda, B0 temel blob üzerinden kopyalanır. Bu kopyalama işlemi B1 için geçici olarak silinen bir anlık görüntü oluşturur.*
 
 Geçici silinen Blobları ve BLOB anlık görüntülerini görüntülemek için, silinen verileri **liste bloblarına**dahil etme seçeneğini belirleyebilirsiniz. Yalnızca geçici olarak silinen temel Blobları görüntülemeyi veya Ayrıca, geçici olarak silinen blob anlık görüntülerini da dahil etmek seçebilirsiniz. Tüm geçici silinen veriler için, verilerin ne zaman silindiğini ve verilerin kalıcı olarak süresi dolmadan önce geçen gün sayısını görüntüleyebilirsiniz.
 
@@ -292,7 +292,7 @@ Evet, hafif silme, sık erişimli, seyrek erişimli ve arşiv dahil tüm depolam
 **Blob katmanı API 'sini, geçici olarak silinen anlık görüntülerle katman Blobları olarak kullanabilir miyim?**  
 Evet. Geçici olarak silinen anlık görüntüler orijinal katmanda kalır, ancak temel blob yeni katmana taşınır. 
 
-**Premium Depolama hesaplarında 100 blob anlık görüntü sınırı vardır. Geçici olarak silinen anlık görüntü sayısı bu sınıra doğru mı?**  
+**Premium depolama hesaplarında, 100 blob anlık görüntü sınırı vardır. Geçici olarak silinen anlık görüntü sayısı bu sınıra doğru mi?**  
 Hayır, geçici olarak silinen anlık görüntüler bu sınıra doğru sayılmaz.
 
 **Mevcut depolama hesapları için geçici silmeyi açabilir miyim?**  

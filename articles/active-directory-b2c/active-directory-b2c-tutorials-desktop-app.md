@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9a3c11c7303d467a1a993c49d983131639683239
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3740a032db6ca9fd0fb88ce348610684d9f895bc
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064869"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326321"
 ---
 # <a name="tutorial-enable-authentication-in-a-native-client-application-using-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C kullanarak yerel istemci uygulamasında kimlik doğrulamasını etkinleştirme
 
@@ -37,20 +37,9 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="add-the-native-client-application"></a>Yerel istemci uygulamasını ekleme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-4. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
-5. Uygulama için bir ad girin. Örneğin, *nativeapp1*.
-6. **İçerme Web uygulaması/Web API 'si**için **Hayır**' ı seçin.
-7. **Yerel Istemciyi Ekle**için **Evet**' i seçin.
-8. **Yeniden yönlendirme URI 'si**için, özel bir şemaya sahip geçerli bir yeniden yönlendirme URI 'si girin. Yeniden yönlendirme URI 'SI seçerken dikkat etmeniz gereken iki önemli nokta vardır:
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
-    - **Unique** -YENIDEN yönlendirme URI 'sinin şeması her uygulama için benzersiz olmalıdır. Örnekte `com.onmicrosoft.contoso.appname://redirect/path` ,`com.onmicrosoft.contoso.appname` şemadır. Bu düzenin izlenmesi gerekir. İki uygulama aynı düzeni paylaşıyorsa, kullanıcıya bir uygulama seçme seçeneği verilir. Kullanıcı yanlış bir seçim yapıyorsa, oturum açma işlemi başarısız olur.
-    - **Tam** -yeniden yönlendirme URI 'si bir şemaya ve bir yola sahip olmalıdır. Yol, etki alanından sonra en az bir eğik çizgi içermelidir. Örneğin, `//contoso/` `//contoso` çalışıp başarısız olur. Yeniden yönlendirme URI 'sinin alt çizgi gibi özel karakterler içermediğinden emin olun.
-
-9. **Oluştur**'a tıklayın.
-10. Özellikler sayfasında, örneği yapılandırırken kullanacağınız uygulama KIMLIĞINI kaydedin.
+Daha sonraki bir adımda kullanmak üzere **uygulama kimliğini** kaydedin.
 
 ## <a name="configure-the-sample"></a>Örneği yapılandırma
 

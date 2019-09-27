@@ -5,22 +5,24 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: 18a0effcf5157ec2797707db78f9614ef12a4669
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 38250d1cd9853013ba9721ece0201a8df6dd1b4a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310249"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336283"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>P2S VPN istemcileri için özel rotalar bildirme
 
 Tüm Noktadan siteye VPN istemcilerinize özel yollar tanıtmak isteyebilirsiniz. Örneğin, VNet 'iniz üzerinde depolama uç noktalarını etkinleştirdiyseniz ve uzak kullanıcıların bu depolama hesaplarına VPN bağlantısı üzerinden erişmesini istiyorsanız. Depolama hesabı trafiğinin, genel Internet değil VPN tünelinin üzerinden aktarılması için, depolama uç noktasının IP adresini tüm uzak kullanıcılarınıza tanıtabilirsiniz.
 
+![Azure VPN Gateway Çok Siteli bağlantı örneği](./media/vpn-gateway-p2s-advertise-custom-routes/custom-routes.png)
+
 ## <a name="to-advertise-custom-routes"></a>Özel yolları tanıtmak için
 
-Özel yolları tanıtmak için öğesini kullanın `Set-AzVirtualNetworkGateway cmdlet`. Aşağıdaki örnekte, [Conotoso depolama hesabı tabloları](https://contoso.table.core.windows.net)için IP 'nin nasıl tanıtılyapılacağı gösterilmektedir.
+Özel yolları tanıtmak için öğesini kullanın `Set-AzVirtualNetworkGateway cmdlet`. Aşağıdaki örnekte, [contoso depolama hesabı tabloları](https://contoso.table.core.windows.net)için IP 'nin nasıl tanıtılyapılacağı gösterilmektedir.
 
 1. *Contoso.Table.Core.Windows.net* ping YAPıN ve IP adresini aklınızda edin. Örneğin:
 
@@ -45,10 +47,10 @@ Tüm Noktadan siteye VPN istemcilerinize özel yollar tanıtmak isteyebilirsiniz
 
 Özel yolları görüntülemek için aşağıdaki örneği kullanın:
 
-    ```azurepowershell-interactive
-    $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
-    $gw.CustomRoutes | Format-List
-    ```
+  ```azurepowershell-interactive
+  $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
+  $gw.CustomRoutes | Format-List
+  ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

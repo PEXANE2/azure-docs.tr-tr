@@ -1,29 +1,32 @@
 ---
-title: Azure dijital TWINS API kimlik doğrulamasını anlama | Microsoft Docs
-description: Azure dijital TWINS kullanarak API 'lere bağlanma ve kimlik doğrulama
+title: Azure dijital TWINS kullanarak API kimlik doğrulamasını anlama | Microsoft Docs
+description: Azure dijital TWINS kullanarak API 'lerle bağlantı kurmak ve bunları doğrulamak hakkında bilgi edinin.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/17/2019
 ms.author: lyhughes
-ms.openlocfilehash: c0b4b6a13143f613bec64c8507f1726e2450be44
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: ad51fbe7d2f8e8f115adf03d6333c0747765ee43
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815554"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338599"
 ---
-# <a name="connect-and-authenticate-to-apis"></a>API 'lere bağlanma ve kimlik doğrulama
+# <a name="connect-to-and-authenticate-with-apis"></a>API 'lerle bağlantı kurmak ve kimlik doğrulamak
 
 Azure dijital TWINS, kullanıcıların kimliğini doğrulamak ve uygulamaları korumak için Azure Active Directory (Azure AD) kullanır. Azure AD, çeşitli modern mimarilerin kimlik doğrulamasını destekler. Bunların hepsi, OAuth 2,0 veya OpenID Connect sektör standardı protokollerine dayanır. Ayrıca, geliştiriciler tek kiracılı ve iş kolu (LOB) uygulamaları oluşturmak için Azure AD 'yi kullanabilir. Geliştiriciler, çok kiracılı uygulamalar geliştirmek için Azure AD 'yi de kullanabilir.
 
-Azure AD 'ye genel bakış için, adım adım kılavuzlar, kavramlar ve hızlı başlangıçların [temelleri sayfasını](https://docs.microsoft.com/azure/active-directory/fundamentals/index) ziyaret edin.
+Azure AD 'ye genel bakış için, adım adım kılavuzlar, kavramlar ve hızlı başlangıçların [temelleri sayfasını](https://docs.microsoft.com/azure/active-directory/fundamentals/) ziyaret edin.
 
-Bir uygulama veya hizmeti Azure AD ile tümleştirmek için geliştiricilerin önce uygulamayı Azure AD'ye kaydetmesi gerekir. Ayrıntılı yönergeler ve ekran görüntüleri için bkz. [Bu hızlı başlangıç](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+> [!TIP]
+> Azure dijital TWINS örnek uygulamasını ayarlamak ve çalıştırmak için [öğreticiyi](tutorial-facilities-setup.md) izleyin.
 
-Azure AD tarafından [beş birincil uygulama senaryosu](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) desteklenir:
+Bir uygulama veya hizmeti Azure AD ile tümleştirmek için geliştiricilerin önce uygulamayı Azure AD'ye kaydetmesi gerekir. Ayrıntılı yönergeler ve ekran görüntüleri için bkz. [Bu hızlı başlangıç](../active-directory/develop/quickstart-register-app.md).
+
+Azure AD tarafından [beş birincil uygulama senaryosu](../active-directory/develop/v2-app-types.md) desteklenir:
 
 * Tek sayfalı uygulama (SPA): Bir kullanıcının Azure AD tarafından güvenliği sağlanmış tek sayfalı bir uygulamada oturum açması gerekir.
 * Web uygulamasına Web tarayıcısı: Bir kullanıcının Azure AD tarafından güvenliği sağlanmış bir Web uygulamasında oturum açması gerekir.
@@ -31,7 +34,7 @@ Azure AD tarafından [beş birincil uygulama senaryosu](https://docs.microsoft.c
 * Web uygulamasından Web API 'sine: Bir Web uygulamasının Azure AD tarafından güvenliği sağlanmış bir Web API 'sinden kaynak alması gerekir.
 * Web API 'ye yönelik Daemon veya sunucu uygulaması: Bir Web Kullanıcı arabirimi olmayan bir Daemon uygulamasının veya bir sunucu uygulamasının Azure AD tarafından güvenliği sağlanmış bir Web API 'sinden kaynak alması gerekir.
 
-Windows Azure kimlik doğrulama kitaplığı Active Directory belirteçleri edinmenin birçok yolunu sunar. Kitaplık ve kod örnekleri hakkında daha fazla bilgi için [Bu makaleye](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki)bakın.
+Windows Azure kimlik doğrulama kitaplığı Active Directory belirteçleri edinmenin birçok yolunu sunar. Kitaplık ve kod örnekleri hakkındaki ayrıntılar için bkz. [adal.net wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Orta katman Web API 'sinden dijital TWINS çağırma
 

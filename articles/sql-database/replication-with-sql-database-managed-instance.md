@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884072"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338747"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma
 
@@ -41,7 +41,7 @@ Bir yönetilen örneği yayımcı ve/veya bir dağıtıcı olarak çalışacak �
 - Yayımcı tarafından yönetilen örnek, dağıtıcı ve abone ile aynı sanal ağda, ya da her üç varlığın sanal ağları arasında [vNet eşlemesi](../virtual-network/tutorial-connect-virtual-networks-powershell.md) oluşturulmuştur. 
 - Bağlantı, çoğaltma katılımcıları arasında SQL Kimlik Doğrulaması kullanır.
 - Çoğaltma çalışma dizini için bir Azure depolama hesabı payı.
-- Bağlantı noktası 445 (TCP Giden), yönetilen örneklerin Azure dosya paylaşımında erişmesi için NSG güvenlik kurallarında açıktır. 
+- Bağlantı noktası 445 (TCP Giden), yönetilen örneklerin Azure dosya paylaşımında erişmesi için NSG güvenlik kurallarında açıktır.  "Azure depolama \<depolama hesabı adı > işletim sistemi hatası 53" hatasıyla karşılaşırsanız, uygun SQL yönetilen örnek alt ağının NSG 'ye bir giden kuralı eklemeniz gerekir.
 
 
  > [!NOTE]
@@ -50,7 +50,7 @@ Bir yönetilen örneği yayımcı ve/veya bir dağıtıcı olarak çalışacak �
 
 ## <a name="features"></a>Özellikler
 
-Desteklediği Özel Uygulamalar:
+Desteklememektedir
 
 - Azure SQL veritabanı 'nda şirket içi SQL Server ve yönetilen örneklerin işlem ve anlık görüntü çoğaltma karışımı.
 - Aboneler şirket içi SQL Server veritabanlarında, Azure SQL veritabanı 'nda tek veritabanlarında/yönetilen örneklerde veya Azure SQL veritabanı elastik havuzlarında havuza alınmış veritabanlarında bulunabilir.
@@ -63,7 +63,7 @@ Azure SQL veritabanı 'nda yönetilen bir örnekte aşağıdaki özellikler dest
  
 ## <a name="1---create-a-resource-group"></a>1-kaynak grubu oluşturma
 
-Ada`SQLMI-Repl`sahip bir kaynak grubu oluşturmak için [Azure Portal](https://portal.azure.com) kullanın.  
+@No__t-1 adlı bir kaynak grubu oluşturmak için [Azure Portal](https://portal.azure.com) kullanın.  
 
 ## <a name="2---create-managed-instances"></a>2-yönetilen örnekler oluşturma
 
@@ -78,15 +78,15 @@ Ayrıca, Azure SQL veritabanı yönetilen örneklerinizi [bağlamak için bir Az
 
 Çalışma dizini için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) ve ardından depolama hesabı içinde bir [dosya paylaşma](../storage/files/storage-how-to-create-file-share.md) oluşturun. 
 
-Dosya paylaşımının yolunu şu biçimde kopyalayın:`\\storage-account-name.file.core.windows.net\file-share-name`
+Dosya paylaşımının yolunu şu biçimde kopyalayın: `\\storage-account-name.file.core.windows.net\file-share-name`
 
-Depolama erişim anahtarlarını şu biçimde kopyalayın:`DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
+Depolama erişim anahtarlarını şu biçimde kopyalayın: `DefaultEndpointsProtocol=https;AccountName=<Storage-Account-Name>;AccountKey=****;EndpointSuffix=core.windows.net`
 
  Daha fazla bilgi için bkz. [Depolama erişim anahtarlarını görüntüleme ve kopyalama](../storage/common/storage-account-manage.md#access-keys). 
 
 ## <a name="4---create-a-publisher-database"></a>4-Yayımcı veritabanı oluşturma
 
-SQL Server Management Studio kullanarak yönetilen örneğinize bağlanın ve yayımcı veritabanınızı oluşturmak için aşağıdaki Transact-SQL (T-SQL) kodunu çalıştırın: `sql-mi-pub`
+SQL Server Management Studio kullanarak `sql-mi-pub` yönetilen örneğinize bağlanın ve yayımcı veritabanınızı oluşturmak için aşağıdaki Transact-SQL (T-SQL) kodunu çalıştırın:
 
 ```sql
 USE [master]
@@ -120,7 +120,7 @@ GO
 
 ## <a name="5---create-a-subscriber-database"></a>5-abone veritabanı oluşturma
 
-SQL Server Management Studio kullanarak yönetilen örneğinize bağlanın ve boş abone veritabanınızı oluşturmak için aşağıdaki T-SQL kodunu çalıştırın: `sql-mi-sub`
+SQL Server Management Studio kullanarak `sql-mi-sub` yönetilen örneğinize bağlanın ve boş abone veritabanınızı oluşturmak için aşağıdaki T-SQL kodunu çalıştırın:
 
 ```sql
 USE [master]
@@ -141,7 +141,7 @@ GO
 
 ## <a name="6---configure-distribution"></a>6-dağıtımı yapılandırma
 
-SQL Server Management Studio kullanarak yönetilen örneğinize bağlanın ve dağıtım veritabanınızı yapılandırmak için aşağıdaki T-SQL kodunu çalıştırın. `sql-mi-pub` 
+SQL Server Management Studio kullanarak `sql-mi-pub` yönetilen örneğinize bağlanın ve dağıtım veritabanınızı yapılandırmak için aşağıdaki T-SQL kodunu çalıştırın. 
 
 ```sql
 USE [master]
@@ -154,7 +154,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7-yayımcıyı dağıtıcı kullanacak şekilde yapılandırma 
 
-Yayımcı yönetilen `sql-mi-pub`Örneğinizde sorgu yürütmeyi [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) moduna değiştirin ve yeni dağıtıcıyı yayınınızdan kaydettirmek için aşağıdaki kodu çalıştırın. 
+Yayımcı tarafından yönetilen örnek `sql-mi-pub` ' da, sorgu yürütmeyi [sqlcmd](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) moduna değiştirin ve yeni dağıtıcıyı yayınınızdan kaydettirmek için aşağıdaki kodu çalıştırın. 
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -322,7 +322,7 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-[Yönetilen örnek kaynaklarını kaynak grubundan silerek](../azure-resource-manager/manage-resources-portal.md#delete-resources) ve sonra kaynak grubunu `SQLMI-Repl`silerek Azure kaynaklarınızı temizleyebilirsiniz. 
+[Yönetilen örnek kaynaklarını kaynak grubundan silerek](../azure-resource-manager/manage-resources-portal.md#delete-resources) ve sonra `SQLMI-Repl` kaynak grubunu silerek Azure kaynaklarınızı temizleyebilirsiniz. 
 
    
 ## <a name="see-also"></a>Ayrıca Bkz.

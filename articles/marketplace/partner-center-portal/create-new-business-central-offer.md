@@ -1,18 +1,18 @@
 ---
 title: Ticari Market 'te yeni bir Dynamics 365 Iş Merkezi teklifi oluşturun
 description: Azure Marketi, AppSource veya Microsoft Iş Ortağı Merkezi 'ndeki ticari Market portalını kullanan bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleme veya satma için yeni bir Dynamics 365 Iş Merkezi teklifi oluşturma.
-author: JnHs
+author: ChJenk
 manager: evansma
-ms.author: jenhayes
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/26/2019
+ms.openlocfilehash: 8c57fd2a2c9c5c059480f3d6ad48454724e5cc61
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033272"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327634"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Yeni bir Dynamics 365 Iş Merkezi teklifi oluşturma
 
@@ -22,13 +22,13 @@ Dynamics 365 Iş Merkezi teklifleri oluşturmaya başlamak için önce [bir Iş 
 
 ![Iş Ortağı Merkezi 'nde ticari Market panosu](./media/new-offer-overview.png)
 
-## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
+## <a name="create-a-new-offer"></a>Yeni bir teklif oluştur
 
 **+ Yeni teklif** düğmesini seçin ve ardından **Dynamics 365 İş Merkezi** menü öğesini seçin. **Yeni teklif** iletişim kutusu görüntülenir.
 
 ### <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
 
-- **TEKLIF kimliği**: Hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifi ve Azure Resource Manager şablonları (varsa) için URL adresindeki müşterilere görünür olacaktır. Teklif KIMLIĞI küçük harf alfasayısal karakterler (tireler ve alt çizgiler dahil ancak boşluk yok), 50 karakterle sınırlı ve **Oluştur**' u seçtikten sonra değiştirilemez.  Örneğin, burada *Test-teklif-1* girerseniz, teklif URL 'si `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`olur.
+- **TEKLIF kimliği**: Hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifi ve Azure Resource Manager şablonları (varsa) için URL adresindeki müşterilere görünür olacaktır. Teklif KIMLIĞI küçük harf alfasayısal karakterler (tireler ve alt çizgiler dahil ancak boşluk yok), 50 karakterle sınırlı ve **Oluştur**' u seçtikten sonra değiştirilemez.  Örneğin, burada *Test-teklif-1* girerseniz, teklif URL 'si `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` olur.
 
 - **Teklif diğer adı**: Iş Ortağı Merkezi içindeki teklifine başvurmak için kullanılan ad. Bu ad Market 'te kullanılmayacak ve teklif adından ve müşterilere gösterilecek diğer değerlerden farklı. Bu değer, **Oluştur**' u seçtikten sonra değiştirilemez.
 
@@ -48,7 +48,7 @@ Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başla
 
 #### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
 
-Ücretsiz bir deneme bağlantısı olan müşterilere teklifinizi, bir deneme sunabileceği geçerli bir URL ( *http* veya *https*ile başlayarak) sunarak listeleyin.  Örneğin: `https://contoso.com/trial/my-app` Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
+Ücretsiz bir deneme bağlantısı olan müşterilere teklifinizi, bir deneme sunabileceği geçerli bir URL ( *http* veya *https*ile başlayarak) sunarak listeleyin.  Örneğin: `https://contoso.com/trial/my-app`. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
 
 > [!NOTE]
 > Uygulamanızın deneme bağlantınız aracılığıyla alacağı belirteçler, uygulamanızda hesap oluşturmayı otomatikleştirmek için yalnızca Azure Active Directory (Azure AD) aracılığıyla Kullanıcı bilgilerini almak üzere kullanılabilir. Bu belirteci kullanarak kimlik doğrulaması için Microsoft hesapları desteklenmez.
@@ -88,7 +88,7 @@ Daha fazla bilgi için bkz. [müşteri adayı yönetimine genel bakış](./comme
 
 Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
-## <a name="properties"></a>Özellikler
+## <a name="properties"></a>properties
 
 **Özellikler** sayfası, teklifinizi Market 'te, uygulama sürümünüzde ve teklifinizi destekleyen yasal sözleşmelerde gruplandırmak için kullanılan kategorileri ve endüstrileri tanımlamanızı sağlar. Bu sayfayı tamamladıktan sonra **Kaydet** ' i seçin.
 
@@ -194,11 +194,11 @@ Hero görüntüsü isteğe bağlıdır. Bir tane sağlarsanız, 815 x 290 piksel
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
-Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. En az bir ekran görüntüsü gereklidir ve en fazla beş tane ekleyebilirsiniz. Tüm ekran görüntüleri 1280 x 720 piksel olmalıdır.
+Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. En az üç ekran görüntüsü gerekir ve beş adede kadar ekleyebilirsiniz. Tüm ekran görüntüleri 1280 x 720 piksel olmalıdır.
 
 #### <a name="videos"></a>Videolar
 
-İsteğe bağlı olarak, teklifinizi gösteren dört adede kadar video ekleyebilirsiniz. Bu videoların YouTube ve/veya Vimeo 'da barındırılması gerekir. Her biri için videonun adını, URL 'sini ve videonun küçük bir görüntüsünü girin (1280 x 720 piksel)
+İsteğe bağlı olarak, teklifinizi gösteren en fazla beş video ekleyebilirsiniz. Bu videoların YouTube ve/veya Vimeo 'da barındırılması gerekir. Her biri için videonun adını, URL 'sini ve videonun küçük bir görüntüsünü girin (1280 x 720 piksel)
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
@@ -281,7 +281,7 @@ Aşağıdaki test sürücüsü türleri, her biri kendi teknik yapılandırma ge
 
 **Sık**erişimli: Bu tür bir örnek dağıtılır ve seçilen bölgeye göre erişim bekleniyor. Müşteriler, bir dağıtımı beklemek yerine bir test sürücüsünün *sık* erişimli örneklerine anında erişebilir. Artırabilen maliyeti daha büyük bir çalışma süresi tabi şekilde, bu örneklerin her zaman Azure aboneliğinize göre çalıştığını ' dir. En az bir *sıcak* örnek olması önemle önerilir, çünkü çoğu müşteri tam dağıtımları beklemek Istemelidir ve *etkin* örnek yoksa, müşteri kullanımındaki bir bırakmaya neden olur.
 
-**Soğuk**: Bu örnek türü, bölge başına büyük olasılıkla dağıtılabilecek örneklerin toplam sayısını temsil eder. Soğuk örnekler, bir müşteri test sürücüsünü istediğinde tüm test sürücüsü Kaynak Yöneticisi şablonun dağıtılmasını gerektirir, böylece *soğuk* örnekler, *etkin* örneklere göre yüklenmeye çok daha yavaştır. Zorunluluğunu getirir, yalnızca test sürücüsünün süresi için ödeme yapmanız gereken bir deyişle, Azure aboneliğinizde her zaman bir *sıcak* örnekle birlikte çalışmıyor.
+**Soğuk**: Bu örnek türü, bölge başına büyük olasılıkla dağıtılabilecek örneklerin toplam sayısını temsil eder. Soğuk örnekler, bir müşteri test sürücüsünü istediğinde tüm test sürücüsü Kaynak Yöneticisi şablonun dağıtılmasını gerektirir, böylece *soğuk* örnekler, *etkin* örneklere göre yüklenmeye çok daha yavaştır. Zorunluluğunu getirir, yalnızca test sürücüsünün süresi için ödeme yapmanız gereken bir deyişle, Azure *aboneliğinizde her zaman* bir *sıcak* örnekle birlikte çalışmıyor.
 
 - **Test sürücüsü Azure Resource Manager şablonu**: Azure Resource Manager şablonunuzu içeren. zip ' i yükleyin.  Hızlı başlangıç makalesinde Azure Resource Manager şablonu oluşturma hakkında daha fazla bilgi edinin [Azure Portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
@@ -295,9 +295,9 @@ Microsoft, bu test sürücüsü türünü kullanarak hizmet sağlamayı ve dağ�
 
 - **Sınama sürücüsü süresi** (gerekli): Saat sayısını tanımlayarak, test sürücüsünün etkin kalacağı sürenin uzunluğunu girin. Bu süre dolduktan sonra, oturum sona erdir ve artık lisanslarınızdan birini tüketmez. Teklifinizin karmaşıklığına bağlı olarak 2-24 saat arasında bir değer öneririz. Bu süre yalnızca birkaç saat (örneğin, "2" saat, "1,5" geçerli değildir) ile ayarlanabilir.  Kullanıcı zaman aşımına uğrar ve test sürücüsüne yeniden erişmek istediğinizde yeni bir oturum isteyebilir.
 
-- **Örnek URL 'si** (gerekli): Müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (örneğin, https://testdrive.crm.dynamics.com).
+- **Örnek URL 'si** (gerekli): Müşterinin test sürücüsüne başlayacağı URL. Genellikle uygulamanızı örnek verilerle çalıştıran Dynamics 365 örneğinizin URL 'SI (örneğin, https://testdrive.crm.dynamics.com) ).
 
-- **Örnek Web API URL 'si** (gerekli): Microsoft 365 hesabınızda oturum açarak ve **Ayarlar** \&gt; ' ye giderek Dynamics 365 örneğiniz için Web API URL 'sini alın. **Özelleştirme** \&gt; **Geliştirici kaynakları** \&gt; **Örnek Web API 'si (hizmet kök URL 'si)** , burada bulunan URL 'yi kopyalayın (örneğin https://testdrive.crm.dynamics.com/api/data/v9.0),.
+- **Örnek Web API URL 'si** (gerekli): Microsoft 365 hesabınızda oturum açarak ve **ayarlar** \&gt;, Dynamics 365 örneğiniz IÇIN Web API URL 'sini alın. **Özelleştirme** \&GT; **Geliştirici kaynakları** \&GT; **Örnek Web API 'si (hizmet kök URL 'si)** , burada bulunan URL 'yi kopyalayın (örneğin, https://testdrive.crm.dynamics.com/api/data/v9.0).
 
 - **Rol adı** (gerekli): Özel Dynamics 365 test sürücünüzde tanımladığınız güvenlik rolü adını sağlayın, bu kullanıcı sınama sürücüleri sırasında kullanıcıya atanır (örneğin, test-sürücü-rolü).
 
@@ -366,7 +366,7 @@ Teklifiniz Microsoft Dynamics 365 Business Central 'ın Premium sürümünü ger
 
 ### <a name="key-usage-scenario"></a>Anahtar kullanımı senaryosu
 
-Teklifinizin bir belge (. `.pdf` PDF biçiminde) içinde listelenen anahtar kullanımı senaryolarını listeleyen bir dosya yüklemeniz gerekir. Burada listelenen tüm senaryolar, Market için teklifinizi onaylamadan önce doğrulama takımımız tarafından doğrulanabilir.
+Teklifinizin bir belge (. PDF biçiminde) içinde listelenen anahtar kullanımı senaryolarını listeleyen bir `.pdf` dosyası yüklemeniz gerekir. Burada listelenen tüm senaryolar, Market için teklifinizi onaylamadan önce doğrulama takımımız tarafından doğrulanabilir.
 
 ### <a name="app-tests-automation"></a>Uygulama testleri Otomasyonu
 

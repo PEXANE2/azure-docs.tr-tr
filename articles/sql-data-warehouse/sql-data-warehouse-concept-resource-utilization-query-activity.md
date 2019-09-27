@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/09/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f7575daa91cef5cb5be6274a699323fafe67a68
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 786ae1f18d52c6763b60f5019ecfe365f1cd540a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935128"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71334096"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Azure SQL veri ambarı 'nda kaynak kullanımını ve sorgu etkinliğini izleme
 Azure SQL veri ambarı, veri ambarı iş yükünüze yönelik içgörüler için Azure portal içinde zengin bir izleme deneyimi sağlar. Azure portal, veri Ambarınızı izlerken, ölçüm ve Günlükler için yapılandırılabilir bekletme dönemleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığından önerilen araçtır. Portal ayrıca Operations Management Suite (OMS) ve Azure Izleyici (Günlükler) gibi diğer Azure izleme hizmetleri ile tümleştirmenize olanak tanıdığından, yalnızca veri Ambarınızla değil, tüm Azure analizlerinizi değil de bir bütünsel izleme deneyimi sağlar tümleşik izleme deneyimi için platform. Bu belgelerde, SQL veri ambarı ile analiz platformunuzu iyileştirmek ve yönetmek için kullanabileceğiniz izleme özellikleri açıklanmaktadır. 
@@ -27,7 +27,7 @@ SQL veri ambarı için Azure portal aşağıdaki ölçümler mevcuttur. Bu ölç
 | Ölçüm Adı             | Açıklama                                                  | Toplama Türü |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | CPU yüzdesi          | Veri ambarı için tüm düğümlerde CPU kullanımı      | Maksimum          |
-| Veri G/Ç yüzdesi      | Veri ambarı için tüm düğümlerde GÇ kullanımı       | Maksimum          |
+| Veri GÇ yüzdesi      | Veri ambarı için tüm düğümlerde GÇ kullanımı       | Maksimum          |
 | Bellek yüzdesi       | Veri ambarı için tüm düğümlerde bellek kullanımı (SQL Server) | Maksimum          |
 | Başarılı bağlantılar  | Verilere yönelik başarılı bağlantı sayısı                 | Toplam            |
 | Başarısız Bağlantılar      | Veri ambarına yönelik başarısız bağlantı sayısı           | Toplam            |
@@ -42,6 +42,8 @@ SQL veri ambarı için Azure portal aşağıdaki ölçümler mevcuttur. Bu ölç
 > Ölçümleri görüntülerken ve uyarıları ayarlarken dikkate alınması gereken noktalar:
 >
 > - Başarısız ve başarılı bağlantılar, belirli bir veri ambarı için (mantıksal sunucu için değil) raporlanır
+> - Veri ambarı boşta durumunda olsa bile bellek yüzdesi kullanımı yansıtır; etkin iş yükü bellek tüketimini yansıtmaz. Ek önbellek kapasitesi için ölçeklendirmenin, gereksinimlerinizi karşılamak üzere iş yükü performansını artırabilmesi için bu ölçümü diğer kullanıcılarla birlikte (tempdb, Gen2 Cache) kullanın ve izleyin.
+
 
 ## <a name="query-activity"></a>Sorgu etkinliği
 SQL veri ambarı 'nı T-SQL aracılığıyla izlerken programlama deneyimi için, hizmet bir dizi dinamik yönetim görünümü (DMVs) sağlar. Bu görünümler, iş yükünüzün performans sorunlarını etkin bir şekilde gidermeye ve tanımlamaya yönelik olarak faydalıdır.
