@@ -39,7 +39,7 @@ az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resou
 ```
 **ACR kaynak KIMLIĞI aşağıdaki biçimdedir:** 
 
-/Subscriptions/< abonelik-d >/resourceGroups/< Kaynak-Grup-adı >/providers/Microsoft.ContainerRegistry/registries/{name} 
+/Subscriptions/<abonelik-d>/resourceGroups/<Kaynak-Grup-adı>/providers/Microsoft.ContainerRegistry/registries/{name} 
   
 Bu adımın tamamlanması birkaç dakika sürebilir.
 
