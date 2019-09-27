@@ -476,6 +476,8 @@
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Bir diski yeniden boyutlandırma
           href: expand-disks.md
+        - name: Diskleri yönetmek için Depolama Gezgini kullanma
+          href: disks-use-storage-explorer-managed-disks.md
         - name: Bir diskin anlık görüntüsünü alma
           href: snapshot-copy-managed-disk.md
         - name: Artımlı anlık görüntü oluşturma

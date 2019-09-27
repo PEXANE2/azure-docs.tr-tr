@@ -58,6 +58,8 @@
         - name: Windows Azure Medya Kodlayıcısı’ndan geçiş
           href: migrate-windows-azure-media-encoder.md
           displayName: WAME
+        - name: Dizin oluşturucu v1 ve v2’den geçiş
+          href: migrate-indexer-v1-v2.md
     - name: Yönetme
       items:
         - name: Hesaplar

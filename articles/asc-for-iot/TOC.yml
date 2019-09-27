@@ -21,7 +21,7 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: IoT Hub’da IoT için Azure Güvenlik Merkezi’ni etkinleştirme
+    - name: IoT Hub’da IoT için Azure Güvenlik Merkezi’ni ekleme
       href: quickstart-onboard-iot-hub.md
     - name: Çözümünüzü yapılandırma
       href: quickstart-configure-your-solution.md
@@ -73,6 +73,8 @@
       href: how-to-security-data-access.md
     - name: Cihazı araştırma
       href: how-to-investigate-device.md
+    - name: Çözümünüzü özelleştirme
+      href: how-to-customize-solution.md
 - name: Kaynaklar
   items:
     - name: Sık sorulan sorular

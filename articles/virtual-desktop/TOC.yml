@@ -28,6 +28,10 @@
           href: connect-windows-7-and-10.md
         - name: Web tarayıcısından bağlanma
           href: connect-web.md
+        - name: macOS istemcisiyle bağlanma
+          href: connect-macos.md
+        - name: iOS istemcisiyle bağlanma
+          href: connect-ios.md
     - name: Azure Resource Manager şablonuyla ana bilgisayar havuzu oluşturma
       href: create-host-pools-arm-template.md
     - name: PowerShell ile ana bilgisayar havuzu oluşturma

@@ -474,6 +474,8 @@
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Bir diski yeniden boyutlandırma
           href: expand-os-disk.md
+        - name: Diskleri yönetmek için Depolama Gezgini kullanma
+          href: disks-use-storage-explorer-managed-disks.md
         - name: Bir diskin anlık görüntüsünü alma
           href: snapshot-copy-managed-disk.md
         - name: Artımlı anlık görüntü oluşturma

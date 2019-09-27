@@ -114,7 +114,7 @@
           href: event-hubs-get-connection-string.md
         - name: Farklı protokoller kullanan uygulamalar arasında olay alışverişi yapma
           href: event-hubs-exchange-events-different-protocols.md
-        - name: Programlama kılavuzu
+        - name: .NET programlama kılavuzu
           href: event-hubs-programming-guide.md
         - name: 'Python kullanarak olayları gönderme, alma ve yakalama'
           href: event-hubs-python.md

@@ -691,6 +691,8 @@
       items:
         - name: Not defterlerini etkinleştirme
           href: enable-notebooks.md
+        - name: Yerleşik not defteri komutlarını kullanma
+          href: use-notebook-features-and-commands.md
     - name: Sunucu tarafı programlama
       items:
         - name: 'Saklı yordamlar, tetikleyiciler ve UDF’ler yazma'

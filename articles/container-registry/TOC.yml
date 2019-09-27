@@ -71,6 +71,8 @@
           items:
             - name: Görüntü verilerini silme - CLI
               href: container-registry-delete.md
+            - name: Etiketlenmemiş bildirimler için bekletme ilkesi (önizleme)
+              href: container-registry-retention-policy.md
             - name: Etiketleri ve bildirimleri otomatik olarak temizleme (önizleme)
               href: container-registry-auto-purge.md
         - name: Klasik kayıt defterini yükseltme
