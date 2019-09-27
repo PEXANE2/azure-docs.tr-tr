@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a875e028a38c085d45d062984764cd840983fc3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 66e53298625e2388e102b5a4e835fe22a9c81a21
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212335"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314970"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Sürüm yayınlama geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -46,13 +46,8 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 ## <a name="14x0"></a>1.4. X. 0
 
 >[!IMPORTANT]
->Karma Azure AD 'ye katılmış olarak kaydedilen Windows bilgisayarları, Azure AD 'de cihaz nesneleri olarak gösterilir. Bu cihaz nesneleri, koşullu erişim için kullanılabilir. Windows 10 bilgisayarları Azure AD Connect aracılığıyla buluta eşitlenir, alt düzey Windows bilgisayarları doğrudan AD FS veya kesintisiz çoklu oturum açma kullanılarak kaydedilir.
->
->Yalnızca karma Azure AD katılımı tarafından yapılandırılan belirli bir userCertificate özniteliği değerine sahip Windows 10 bilgisayarlarının Azure AD Connect tarafından buluta eşitlenmesi gerekir.  Azure AD Connect önceki sürümlerinde bu gereksinim, Azure AD 'de gereksiz cihaz nesnelerine neden olacak şekilde, daha dikkatli bir şekilde zorlanmıştı. Azure AD 'deki bu cihazlar, bu bilgisayarların Azure AD 'ye kaydolmayı amaçlandığı için her zaman "beklemede" durumunda olur.
->
->Azure AD Connect bu sürümü, karma Azure AD 'ye katılmış olarak doğru yapılandırılmış Windows 10 bilgisayarlarını eşitler. Azure AD Connect hiçbir şekilde [alt düzey Windows cihazlarını](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices)eşitlemiyor olmalıdır.  Azure AD 'de daha önce yanlış eşitlenmiş olan cihazlar artık Azure AD 'den silinecek.  Ancak, bu değişiklik karma Azure AD katılımı için Azure AD 'ye doğru şekilde kaydedilmiş tüm Windows cihazlarını silmez. 
->
->Bazı müşteriler Windows cihazlarından bazılarını veya tümünü Azure AD 'den ortadan kaldırmayabilir. Bu cihaz kimlikleri, koşullu erişim yetkilendirmesi sırasında Azure AD tarafından kullanılmadığından bu sorun için bir neden değildir. Bazı müşterilerin nasıl yapılacağını yeniden ziyaret [etmeniz gerekebilir: Windows bilgisayarlarının doğru şekilde kaydedilmesini sağlamak](../../active-directory/devices/hybrid-azuread-join-plan.md) ve bu cihazların cihaz tabanlı koşullu erişime tam olarak katılmasını sağlamak için karma Azure Active Directory katılma Uygulamanızı planlayın. Azure AD Connect [alt düzey Windows cihazlarını](../../active-directory/devices/hybrid-azuread-join-plan.md#windows-down-level-devices) silmeye çalışıyorsa, cihaz [Windows 10 olmayan bilgisayarlar için Microsoft WORKPLACE JOIN](https://www.microsoft.com/download/details.aspx?id=53554) tarafından oluşturulan MSI DEĞILDIR ve diğer Azure AD özellikleri tarafından tüketilemiyor.  Azure AD 'de bilgisayar/cihaz nesneleri silme Işlemini dışarı aktarma silme eşiğini aştıktan sonra müşterinin bu silmeleri yapmasına izin verilmesi önerilir.
+>Bu Azure AD Connect, bazı müşteriler Windows cihazlarının bazı veya tümünün Azure AD 'den kaybolabileceğini görebilir. Bu cihaz kimlikleri, koşullu erişim yetkilendirmesi sırasında Azure AD tarafından kullanılmadığından bu sorun için bir neden değildir. Daha fazla bilgi için bkz [. Azure AD Connect 1.4. xx. x Device disappearnce 'ı anlama](reference-connect-device-disappearance.md)
+
 
 ### <a name="release-status"></a>Yayın durumu
 9/10/2019: Yalnızca otomatik yükseltme için yayınlandı
@@ -63,7 +58,7 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 - Müşteriler, MIIS_Service için kullanımdan kaldırılan WMI uç noktaları kaldırılmıştır. Tüm WMI işlemleri artık PS cmdlet 'leri aracılığıyla yapılmalıdır.
 - AZUREADSSOACC nesnesinde kısıtlanmış temsilciyi sıfırlayarak güvenlik iyileştirmesi
 - Bir eşitleme kuralı eklerken/düzenlenirken, kuralda bağlayıcı şemasında bulunan ancak bağlayıcıya eklenmemiş öznitelikler varsa, bu öznitelikler otomatik olarak bağlayıcıya eklenir. Kuralın etkilediği nesne türü için de aynı değer geçerlidir. Bağlayıcıya herhangi bir şey eklenirse, bağlayıcı sonraki eşitleme döngüsüne tam içeri aktarma işlemi için işaretlenir.
-- Bağlayıcı hesabı olarak kurumsal veya etki alanı yöneticisi kullanmak artık desteklenmemektedir.
+- Bağlayıcı hesabı olarak bir kuruluş veya etki alanı yöneticisi kullanmak artık yeni AAD Connect dağıtımlarında desteklenmez. Bağlayıcı hesabı olarak bir kuruluş veya etki alanı Yöneticisi kullanan geçerli AAD Connect dağıtımları Bu sürümden etkilenmeyecektir.
 - Eşitleme yöneticisinde, kural oluşturma/düzenleme/silme üzerinde tam eşitleme çalıştırılır. Tam içeri aktarma veya tam eşitleme çalışmaya devam ederseniz, kullanıcıya bildiren bir açılan pencere, herhangi bir kural değişikliği görünür.
 - Parola hatalarının "Bağlayıcılar > Özellikler > bağlantı" sayfasına yönelik risk azaltma adımları eklendi
 - Bağlayıcı Özellikleri sayfasında Sync Service Manager için kullanımdan kaldırma uyarısı eklendi. Bu uyarı, kullanıcıya, değişikliklerin AADC Sihirbazı aracılığıyla yapılması gerektiğini bildirir.
