@@ -7,22 +7,22 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 5d823059842bf539f00ad372127fc8b636c74b65
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70746044"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351168"
 ---
 # <a name="azure-storage-samples-using-python"></a>Python kullanarak Azure Storage örnekleri
 
-Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara bir genel bakış sunulmaktadır. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
+Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara genel bir bakış sağlar. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
 | **Senaryo** | **Örnek kod** |
 |--------------|-----------------|
-| Blob Ekle | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
+| Ekleme Blobu | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
 | Blok Blobu | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L77) |
 | İstemci Tarafında Şifreleme | [Python ile Azure anahtar değerindeki depolama hesabı anahtarlarını yönetme](https://github.com/Azure-Samples/key-vault-python-storage-accounts) |
 | Kopya blob'u | [Python 'da Azure Blob hizmetini kullanmaya başlama](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L102) |
@@ -99,4 +99,5 @@ Diğer dillere yönelik örnekler hakkında bilgi için:
 
 * .NET: [.NET kullanan Azure Depolama örnekleri](storage-samples-dotnet.md)
 * Java: [Java kullanan Azure Depolama örnekleri](storage-samples-java.md)
+* JavaScript/Node. js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
 * Diğer tüm diller: [Azure depolama örnekleri](storage-samples.md)

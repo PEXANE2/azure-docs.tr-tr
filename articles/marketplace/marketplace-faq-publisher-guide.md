@@ -1,26 +1,26 @@
 ---
-title: Azure Marketi hakkında SSS
-description: Yaygın Microsoft Azure Marketi sorularının yanıtları
+title: Microsoft ticari Market hakkında SSS
+description: Azure Marketi ve Microsoft AppSource hakkında sık sorulan soruların yanıtları
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/24/2019
+ms.date: 9/26/2019
 ms.author: ellacroi
-ms.openlocfilehash: 6b9cc80dfb397d5bf330d0be947f468e9b802139
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259953"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350392"
 ---
-# <a name="marketplace-faqs"></a>Market hakkında SSS
+# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft ticari Market SSS
 
-Microsoft Azure Market hakkında sık sorulan soruların yanıtları.
+Azure Marketi ve Microsoft AppSource hakkında sık sorulan soruların yanıtları.
 
 ## <a name="faq-for-customers"></a>Müşteriler için SSS
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Azure Market hakkında bilmeniz gerekenler
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketi ve Microsoft AppSource hakkında bilmeniz gerekenler
 
 **Azure Marketi nedir?**
 
@@ -253,9 +253,26 @@ Mevcut bir aboneliğe eklenen lisanslar, abonelik süresinin kalanı için Pro d
 
 İptal edilen lisanslar, bu SSS 'de bulunan para iadesi ilkesine tabi olacaktır.  İptal edilen tüm lisanslar hesabınızdan hemen kaldırılır ve artık kullanılabilir olmaz.
 
+**Tüketim tabanlı teklifler için para iadesi destekleniyor mu?**
+
+Ücretlendirmesine göre tüm ücretler: saatlik VM 'Ler veya özel ölçümler, iptal aracılığıyla kullanılamaz duruma gelir. Tüketim gerçekleştikten sonra, ücretler Microsoft 'un ticari platformu tarafından işlenir ve bir iadesi istenen tüm hizmet anlaşmazlıklarına, yayımcı ile müşteri arasındaki Microsoft sistemlerinin dışından doğrudan işlenecektir. Sabit fiyat ve tarifeli faturalandırmayı destekleyen teklifler, sabit fiyat ücretleri için standart para iadesi ilkesini izler.
+
+**Planların orta dönem değişikliği yapılabilir mi?**
+
+Hayır, aylık ve yıllık arasında geçiş yapılamaz.
+
+**Müşteri aynı tekliften iki plan satın alabilir mi?**
+
+Evet, bir müşterinin aynı teklifin iki planı aynı anda sahip olması mümkündür.
+
+**Para iadesi ve plan değişikliği ilkeleri storefront göre farklılık gösterir mi?**
+
+Hayır, iş ilkeleri Azure Marketi ve Microsoft AppSource arasında tutarlıdır. Bulut çözümünde bir iş ortağı tarafından her zaman bir program sağlıyorsanız, iş ortağı müşterileri için farklı bir ilke uygulayabilir.
+
+
 ## <a name="faq-for-publishers"></a>Yayımcılar hakkında SSS
 
-### <a name="what-you-need-to-know-about-azure-marketplace"></a>Azure Market hakkında bilmeniz gerekenler
+### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketi ve Microsoft AppSource hakkında bilmeniz gerekenler
 
 **Azure Marketi nedir?**
 

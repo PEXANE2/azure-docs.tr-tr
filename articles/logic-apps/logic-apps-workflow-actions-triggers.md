@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: df1b03d5fbb5b8ef8cda9407e4a595bc2de8ce54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3311ca3665083ec8c71f48b28e7195aa8c14f13d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918951"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350680"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps için Iş akışı Tanım dilindeki tetikleyici ve eylem türleri için başvuru
 
@@ -156,7 +156,7 @@ Bu tetikleyici, [Microsoft tarafından yönetilen API 'ler](../connectors/apis-l
  
 | Öğe | Type | Açıklama |
 |---------|------|-------------|
-| Bilgisinde | JSON nesnesi | Yanıttaki üstbilgiler |
+| üst bilgiler | JSON nesnesi | Yanıttaki üstbilgiler |
 | body | JSON nesnesi | Yanıttaki gövde |
 | Durum kodu | Integer | Yanıttaki durum kodu |
 |||| 
@@ -329,7 +329,7 @@ Bu tetikleyici belirtilen bitiş noktasını belirtilen yinelenme zamanlaması t
 
 | Öğe | Type | Açıklama |
 |---------|------|-------------| 
-| Bilgisinde | JSON nesnesi | Yanıttaki üstbilgiler | 
+| üst bilgiler | JSON nesnesi | Yanıttaki üstbilgiler | 
 | body | JSON nesnesi | Yanıttaki gövde | 
 | Durum kodu | Integer | Yanıttaki durum kodu | 
 |||| 
@@ -424,7 +424,7 @@ Tetikleyicinin davranışı, kullandığınız veya atladığınızda bölümler
 
 | Öğe | Type | Açıklama |
 |---------|------|-------------| 
-| Bilgisinde | JSON nesnesi | Yanıttaki üstbilgiler | 
+| üst bilgiler | JSON nesnesi | Yanıttaki üstbilgiler | 
 | body | JSON nesnesi | Yanıttaki gövde | 
 | Durum kodu | Integer | Yanıttaki durum kodu | 
 |||| 
@@ -504,7 +504,7 @@ Bu tetikleyici, belirtilen yinelenme zamanlaması temelinde çalışır ve düze
 
 | Value | Type | Açıklama | 
 |-------|------|-------------| 
-| <*başlangıç-tarih-saat--biçimlendirme-YYYY-MM-DDThh: mm: ss*> | String | Bu biçimdeki başlangıç tarihi ve saati: <p>YYYY-MM-DDThh: mm: ss saat dilimi belirtirseniz <p>-veya- <p>YYYY-MM-DDThh: mm: ssZ saat dilimi belirtmezseniz <p>Örneğin, 18 Eylül 2017, 2:00 PM üzerinde istiyorsanız, "2017-09-18T14:00:00" belirtin ve "Pasifik Standart Saati" gibi bir saat dilimi belirtin ya da saat dilimi olmadan "2017-09-18T14:00:00Z" belirtin. <p>**Not:** Bu başlangıç saati, gelecekte en fazla 49 yıla sahiptir ve UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) UTC [Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC bir fark](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Saat dilimi belirtmezseniz, sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk oluşumdır, ancak karmaşık zamanlamalar için tetikleyici başlangıç zamanından daha önce harekete geçmez. Başlangıç tarihleri ve zamanları hakkında daha fazla bilgi için bkz. [düzenli olarak çalışan görevler oluşturma ve zamanlama](../connectors/connectors-native-recurrence.md). | 
+| <*başlangıç-tarih-saat--biçimlendirme-YYYY-MM-DDThh: mm: ss*> | String | Bu biçimdeki başlangıç tarihi ve saati: <p>YYYY-MM-DDThh: mm: ss saat dilimi belirtirseniz <p>veya <p>YYYY-MM-DDThh: mm: ssZ saat dilimi belirtmezseniz <p>Örneğin, 18 Eylül 2017, 2:00 PM üzerinde istiyorsanız, "2017-09-18T14:00:00" belirtin ve "Pasifik Standart Saati" gibi bir saat dilimi belirtin ya da saat dilimi olmadan "2017-09-18T14:00:00Z" belirtin. <p>**Not:** Bu başlangıç saati, gelecekte en fazla 49 yıla sahiptir ve UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) UTC [Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC bir fark](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Saat dilimi belirtmezseniz, sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk oluşumdır, ancak karmaşık zamanlamalar için tetikleyici başlangıç zamanından daha önce harekete geçmez. Başlangıç tarihleri ve zamanları hakkında daha fazla bilgi için bkz. [düzenli olarak çalışan görevler oluşturma ve zamanlama](../connectors/connectors-native-recurrence.md). | 
 | <*Saat dilimi*> | String | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici [UTC sapmasını](https://en.wikipedia.org/wiki/UTC_offset)kabul etmez. Uygulamak istediğiniz saat dilimini belirtin. | 
 | <*bir veya daha çok saat-işareti*> | Tamsayı veya tamsayı dizisi | İçin `frequency`"gün" veya "hafta" belirtirseniz, iş akışını çalıştırmak istediğiniz günün saatleri olarak virgülle ayırarak 0 ile 23 arasında bir veya daha fazla tamsayı belirtebilirsiniz. <p>Örneğin, "10", "12" ve "14" belirtirseniz, saat işaretleri olarak 10 har, 12 PM ve 2 PM alırsınız. | 
 | <*bir veya daha fazla-dakika-işareti*> | Tamsayı veya tamsayı dizisi | İçin `frequency`"gün" veya "hafta" belirtirseniz, bir veya daha fazla tamsayı belirterek, iş akışını çalıştırmak istediğiniz saatin dakikası olarak virgülle ayırarak 0 ile 59 arasında bir veya daha fazla tamsayı belirtebilirsiniz. <p>Örneğin, "30" öğesini dakika işareti olarak belirtebilir ve günün saati için önceki örneği kullanarak 10:30, 12:30 PM ve 2:30 PM kazanın. | 
@@ -656,7 +656,7 @@ Bu tetikleyici, gelen bir isteğin tetikleyiciyi çağırmak için HTTP POST met
 
 <a name="trigger-conditions"></a>
 
-## <a name="trigger-conditions"></a>Tetikleme koşulları
+## <a name="trigger-conditions"></a>Tetikleyici koşulları
 
 Herhangi bir tetikleyici ve yalnızca Tetikleyiciler için, iş akışının çalıştırılıp çalıştırılmayacağını tespit eden koşullar için bir veya daha fazla ifade içeren bir dizi ekleyebilirsiniz. `conditions` Özelliği iş akışınızda bir tetikleyiciye eklemek için, kod görünümü düzenleyicisinde mantıksal uygulamanızı açın.
 
@@ -1538,7 +1538,7 @@ Bu eylem, belirtilen haritaya göre başka bir diziden öğeleri dönüştürere
 |-------|------|-------------| 
 | <*dizide*> | Array | Kaynak öğeleri sağlayan dizi veya ifade. Bir ifadeyi çift tırnak işareti içine aldığınızdan emin olun. <p>**Not**: Kaynak dizisi boşsa, eylem boş bir dizi oluşturur. | 
 | <*key-name*> | String | <*İfadeden* sonuca atanan özellik adı> <p>Çıkış dizisindeki tüm nesneler arasında yeni bir özellik eklemek için, bu özellik için bir <*anahtar adı*> ve özellik değeri için > <*ifadesi*sağlayın. <p>Dizideki tüm nesnelerden bir özelliği kaldırmak için, bu özellik için <*anahtar adı*> atlayın. | 
-| <*ifadesini*> | String | Kaynak dizideki öğeyi dönüştüren ve sonucu <*anahtar adına* atayan ifade> | 
+| <*ifadesini*> | Dize | Kaynak dizideki öğeyi dönüştüren ve sonucu <*anahtar adına* atayan ifade> | 
 |||| 
 
 **Select** eylemi bir diziyi çıkış olarak oluşturur, bu nedenle bu çıktıyı kullanmak isteyen herhangi bir eylemin bir diziyi kabul etmesi ya da diziyi, tüketici eyleminin kabul ettiği türe dönüştürmeniz gerekir. Örneğin, çıkış dizisini bir dizeye dönüştürmek için, bu diziyi **oluşturma** eylemine geçirebilir ve sonra diğer eylemlerdeki **oluşturma** eyleminin çıktısına başvurabilirsiniz.
@@ -2402,12 +2402,38 @@ Tetikleyiciler ve eylemler için varsayılan davranışı tetikleyici veya eylem
 
 ### <a name="change-trigger-concurrency"></a>Tetikleyici eşzamanlılık değiştirme
 
-Varsayılan olarak, mantıksal uygulama örnekleri aynı anda, eşzamanlı olarak veya [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)paralel olarak çalışır. Bu nedenle, her tetikleyici örneği, önceki iş akışı örneği çalışmaya başlamadan önce tetiklenir. Bu sınır, arka uç sistemlerinin aldığı istek sayısını denetlemeye yardımcı olur. 
+Varsayılan olarak, mantıksal uygulama örnekleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)kadar aynı anda (aynı anda veya paralel) çalışır. Bu nedenle, her tetikleyici örneği, önceki iş akışı örneği çalışmaya başlamadan önce tetiklenir. Bu sınır, arka uç sistemlerinin aldığı istek sayısını denetlemeye yardımcı olur. 
 
-Varsayılan sınırı değiştirmek için, kod görünümü Düzenleyicisi 'ni veya Logic Apps tasarımcısını kullanarak eşzamanlılık ayarını tasarımcı aracılığıyla değiştirmek, temel tetikleyici tanımında `runtimeConfiguration.concurrency.runs` özelliği ekler veya günceller, ya da tam tersi. Bu özellik paralel olarak çalışabilecek en fazla iş akışı örneği sayısını denetler. 
+Varsayılan sınırı değiştirmek için, kod görünümü Düzenleyicisi 'ni veya Logic Apps tasarımcısını kullanarak eşzamanlılık ayarını tasarımcı aracılığıyla değiştirmek, temel tetikleyici tanımında `runtimeConfiguration.concurrency.runs` özelliği ekler veya günceller, ya da tam tersi. Bu özellik paralel olarak çalışabilecek en fazla iş akışı örneği sayısını denetler. Eşzamanlılık denetimini kullanırken bazı konular aşağıda verilmiştir:
 
-> [!NOTE] 
-> Tetikleyiciyi tasarımcı veya kod görünümü Düzenleyicisi kullanarak sırayla çalışacak şekilde ayarlarsanız, tetikleyicisinin `operationOptions` özelliğini kod görünümü düzenleyicisinde olarak `SingleInstance` ayarlamayın. Aksi takdirde, doğrulama hatası alırsınız. Daha fazla bilgi için bkz. [örnekleri sırayla tetikleme](#sequential-trigger).
+* Eşzamanlılık etkinken uzun süre çalışan bir mantıksal uygulama örneği, yeni mantıksal uygulama örneklerinin bekleme durumuna girmesine neden olabilir. Bu durum Azure Logic Apps yeni örnekler oluşturmasını engeller ve eşzamanlı çalışma sayısı belirtilen en fazla eşzamanlı çalışma sayısından az olduğunda bile gerçekleşir.
+
+  * Bu durumu kesmek için, *hala çalışmakta*olan en erken örnekleri iptal edin.
+
+    1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin.
+
+    1. Çalıştırma **geçmişi** bölümünde, hala çalışmakta olan en erken örneği seçin, örneğin:
+
+       ![En erken çalışan örneği Seç](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
+
+       > [!TIP]
+       > Yalnızca çalışmaya devam eden örnekleri görüntülemek için, **Tümü** listesini açın ve **çalışıyor**' ı seçin.    
+
+    1. **Mantıksal uygulama çalıştırması**altında, **çalıştırmayı iptal et**' i seçin.
+
+       ![En erken çalışan örneği bul](./media/logic-apps-workflow-actions-triggers/cancel-run.png)
+
+  * Bu olasılığa geçici bir çözüm bulmak için, bu çalışmaları tutabilecek herhangi bir eyleme bir zaman aşımı ekleyin. Kod Düzenleyicisi 'nde çalışıyorsanız, bkz. [zaman uyumsuz süreyi değiştirme](#asynchronous-limits). Aksi takdirde, tasarımcıyı kullanıyorsanız şu adımları izleyin:
+
+    1. Mantıksal uygulamanızda, zaman aşımı eklemek istediğiniz eylemde, sağ üst köşede üç nokta ( **...** ) düğmesini seçin ve ardından **Ayarlar**' ı seçin.
+
+       ![Eylem ayarlarını aç](./media/logic-apps-workflow-actions-triggers/action-settings.png)
+
+    1. **Zaman aşımı**altında [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)zaman aşımı süresini belirtin.
+
+       ![Zaman aşımı süresini belirtin](./media/logic-apps-workflow-actions-triggers/timeout.png)
+
+* Mantıksal uygulamanızı ardışık olarak çalıştırmak istiyorsanız, tetikleyicinin eşzamanlılık öğesini kod görünümü Düzenleyicisi veya Tasarımcı kullanarak `1` olarak ayarlayabilirsiniz. Ancak, tetikleyicinin `operationOptions` özelliğini kod görünümü düzenleyicisinde `SingleInstance` olarak ayarlayın. Aksi takdirde, doğrulama hatası alırsınız. Daha fazla bilgi için bkz. [örnekleri sırayla tetikleme](#sequential-trigger).
 
 #### <a name="edit-in-code-view"></a>Kod görünümünde Düzenle 
 

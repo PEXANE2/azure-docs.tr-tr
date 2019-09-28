@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: cd1dc7b55060e8262b300022f5ffd1b4da5f7922
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848896"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350353"
 ---
 # <a name="streaming-endpoints"></a>Akış Uç Noktaları 
 
@@ -31,11 +31,16 @@ Media Services bir hesap oluşturduğunuzda, bir durdurulmuş durumda sizin içi
 
 ## <a name="naming-convention"></a>Adlandırma kuralı
 
-Varsayılan uç nokta için:`{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+Akış URL 'sinin ana bilgisayar adı biçimi: `{servicename}-{accountname}-{regionname}.streaming.media.azure.net`, burada `servicename` = akış uç noktası adı veya canlı olay adı. 
 
-Ek uç noktalar için:`{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+Varsayılan akış uç noktası kullanılırken, URL: `{accountname}-{regionname}.streaming.azure.net` olacak şekilde `servicename` atlanır. 
 
-## <a name="types"></a>Türü  
+### <a name="limitations"></a>Sınırlamalar
+
+* Akış uç noktası adı, en fazla 24 karakter uzunluğunda bir değer içerir.
+* Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+
+## <a name="types"></a>Türler  
 
 İki **Akış Uç Noktası** türü vardır: **Standart** (Önizleme) ve **Premium**. Tür, akış uç noktası için ayırdığınız ölçek birimi sayısıyla (`scaleUnits`) tanımlanır. 
 
@@ -67,7 +72,7 @@ Aşamalı indirme|Evet|Evet
 
 <sup>1</sup> yalnızca CDN bitiş noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>
 
-## <a name="properties"></a>Özellikler 
+## <a name="properties"></a>properties 
 
 Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları sağlar. Yeni bir akış uç noktası ve tüm özelliklerin açıklamalarını oluşturma örnekleri için bkz. [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints/create). 
 

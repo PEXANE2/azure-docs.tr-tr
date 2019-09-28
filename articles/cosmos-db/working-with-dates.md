@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.openlocfilehash: ea7880d051303afad01ad8ba4a2d68d7331c6a89
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 9676642e96d437965fef041930b8223241cadeaa
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291140"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349033"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure cosmos DB'de tarihlerle çalışma
 Azure Cosmos DB, şema esnekliği ve zengin dizin oluşturma yerel teslim [JSON](https://www.json.org) veri modeli. Veritabanları, kapsayıcılar, belgeler ve saklı yordamlar da dahil olmak üzere tüm Azure Cosmos DB kaynaklarını modellenir ve JSON belgeleri olarak depolanır. Taşınabilir olması için, JSON (ve Azure Cosmos DB) yalnızca küçük bir temel türler kümesini destekler: Dize, sayı, Boolean, dizi, nesne ve null. Ancak, JSON esnektir ve geliştiriciler ve çerçeveleri kullanarak bu temelleri ve nesne veya dizi oluşturmayı daha karmaşık türleri temsil etmek izin verin. 
@@ -20,7 +20,9 @@ Temel türlerin yanı sıra, birçok uygulamanın tarih ve zaman damgalarını t
 
 ## <a name="storing-datetimes"></a>Tarih/saat depolama
 
-Azure Cosmos DB, bir DateTime türü içermeyen JSON türlerinin kapsamına alınır. Bu nedenle, Azure Cosmos DB tarihler dize olarak depolanmalıdır. Şu anda Azure Cosmos DB tarihlerin yerelleştirmesini desteklemez. Azure Cosmos DB `YYYY-MM-DDThh:mm:ss.sssZ` DateTime dizeleri için önerilen biçim ISO 8601 UTC standardını izler. Bu biçimdeki dizeleri biçimlendirmek, sözcüıgrafik tarihleri sıralama tarihlerine izin verir. UTC dışı tarihleri işleme mantığı istemci tarafından tanımlanmalıdır. Çoğu uygulama, aşağıdaki nedenlerden dolayı DateTime için varsayılan dize gösterimi kullanabilirsiniz:
+Azure Cosmos DB dize, sayı, Boolean, null, dizi, nesne gibi JSON türlerini destekler. Bir tarih saat türünü doğrudan desteklemez. Şu anda Azure Cosmos DB tarihlerin yerelleştirmesini desteklemez. Bu nedenle, DateTimes 'ı dizeler olarak depolamanız gerekir. Azure Cosmos DB `YYYY-MM-DDThh:mm:ss.sssZ` DateTime dizeleri için önerilen biçim ISO 8601 UTC standardını izler. Tüm tarihleri UTC olarak Azure Cosmos DB depolamanız önerilir. Tarih dizelerini bu biçime dönüştürmek, zaman sözcüıgrafik tarihleri sıralamasına izin verir. UTC dışı tarihler depolanıyorsa, mantığın istemci tarafında işlenmesi gerekir. Yerel bir tarih/saati UTC 'ye dönüştürmek için, fark JSON içinde bir özellik olarak bilinmeli/depolanmalıdır ve istemci UTC Tarih saat değerini hesaplamak için de sapmayı kullanabilir.
+
+Çoğu uygulama, aşağıdaki nedenlerden dolayı DateTime için varsayılan dize gösterimi kullanabilirsiniz:
 
 * Dizeleri karşılaştırma ve dizelere dönüştürülür, DateTime değerlerini göreli sıralamasını korunur. 
 * Bu yaklaşım, herhangi bir özel kod veya öznitelikleri için JSON dönüştürme gerektirmez.

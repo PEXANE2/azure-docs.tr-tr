@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1e7d64aabba19f04fb98bd208389dc0b2077bfe4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094708"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350101"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -52,7 +52,7 @@ Havuz boyutu sınırları Batch hizmeti tarafından ayarlanır. [Kaynak kotalar�
 | **[Düğüm içi iletişim etkin havuzunda](batch-mpi.md) işlem düğümleri**  ||
 | Batch hizmeti havuz ayırma modu | 100 |
 | Batch abonelik havuzu ayırma modu | 80 |
-| **[Özel VM görüntüsüyle oluşturulan havuzdaki](batch-custom-images.md) işlem düğümleri** <sup>1</sup> ||
+| **[Yönetilen görüntü kaynağı 1 ile oluşturulan havuzdaki](batch-custom-images.md)işlem düğümleri**<sup></sup> ||
 | Adanmış düğümler | 2000 |
 | Düşük öncelikli düğümler | 1000 |
 

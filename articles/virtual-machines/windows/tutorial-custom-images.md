@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 24a382680860890e57c8d5a380b8a1bb097baaa1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1c216e5a572a36d2306326dd0dd6e1b7ed586de8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101682"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350841"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Azure VM 'nin özel bir görüntüsünü oluşturma
 
@@ -53,11 +53,11 @@ Bir sanal makinenin görüntüsünü oluşturmak için, kaynak VM 'yi genelleşt
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep kullanarak Windows VM'sini genelleştirme
 
-Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldırır ve makineyi bir görüntü olarak kullanılacak şekilde hazırlar. Sysprep hakkındaki ayrıntılar için bkz.[Sysprep İşlemini Kullanma: Giriş](https://technet.microsoft.com/library/bb457073.aspx).
+Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldırır ve makineyi bir görüntü olarak kullanılacak şekilde hazırlar. Sysprep hakkındaki ayrıntılar için bkz.[Sysprep İşlemini Kullanma: Bir giriş @ no__t-0.
 
 
 1. Sanal makineye bağlanın.
-2. Yönetici olarak Komut İstemi penceresini açın. Dizini *%windir%\system32\sysprep*olarak değiştirip komutunu çalıştırın `sysprep.exe`.
+2. Yönetici olarak Komut İstemi penceresini açın. Dizini *%windir%\system32\sysprep*olarak değiştirip `sysprep.exe` ' i çalıştırın.
 3. **Sistem Hazırlama Aracı** iletişim kutusunda  **Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 4. **Kapatma Seçenekleri**'nde **Kapat**'ı seçin ve **Tamam**'a tıklayın.
 5. Sysprep tamamlandığında, sanal makineyi kapatır. **VM'yi yeniden başlatmayın**.
@@ -74,7 +74,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-`-Generalized` [Set-azvm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)' i kullanarak sanal makinenin durumunu ayarlayın. 
+[Set-AzVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)kullanarak sanal makinenin durumunu `-Generalized` olarak ayarlayın. 
    
 ```azurepowershell-interactive
 Set-AzVM `
@@ -117,7 +117,7 @@ New-AzImage `
 
 Artık bir görüntünüz olduğuna göre, görüntüden bir veya daha fazla yeni VM oluşturabilirsiniz. Özel görüntüden VM oluşturma işlemi, Market görüntüsü kullanarak VM oluşturmaya benzer. Market görüntüsünü kullandığınızda, görüntü, görüntü sağlayıcısı, teklif, SKU ve sürüm hakkındaki bilgileri sağlamanız gerekir. [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'i için Basitleştirilmiş parametre kümesini kullanarak, yalnızca aynı kaynak grubunda olduğu sürece özel görüntünün adını sağlamanız gerekir. 
 
-Bu örnek myresourcegroup görüntüsünden Myvmfromımage ADLı bir VM oluşturur.
+Bu örnek *Myresourcegroup*görüntüsünden *Myvmfromımage* adlı bir VM oluşturur.
 
 
 ```azurepowershell-interactive
@@ -133,6 +133,8 @@ New-AzVm `
     -OpenPorts 3389
 ```
 
+Tek bir görüntüden 20 VM 'ye eş zamanlı dağıtım sayısını kısıtlamanızı öneririz. Aynı özel görüntüden 20 ' den fazla VM 'ye ait büyük ölçekli, eşzamanlı dağıtımlar planlarken, birden çok görüntü çoğaltmasıyla paylaşılan bir [görüntü Galerisi](shared-image-galleries.md) kullanmanız gerekir. 
+
 ## <a name="image-management"></a>Görüntü yönetimi 
 
 Burada, yaygın görüntü yönetimi görevlerini ve PowerShell kullanarak bunların nasıl tamamlanacağını gösteren bazı örnekler verilmiştir.
@@ -144,7 +146,7 @@ $images = Get-AzResource -ResourceType Microsoft.Compute/images
 $images.name
 ```
 
-Görüntüyü silin. Bu örnek *Myresourcegroup*MyImage adlı görüntüyü siler.
+Görüntüyü silin. Bu örnek *Myresourcegroup* *MyImage* adlı görüntüyü siler.
 
 ```azurepowershell-interactive
 Remove-AzImage `

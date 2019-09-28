@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 56d8dff7d158cedb4ab33e811cf5134cdbc475ab
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b0024bc12f29a76da02c9f7e62af7727b9af7249
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999440"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350634"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Otomatik makine öğrenimi sonuçlarını anlama
 
@@ -30,7 +30,7 @@ Daha fazla bilgi:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* Azure portal veya çalışma alanınızın giriş sayfasında (Önizleme), SDK ile otomatik makine öğrenimi denemesi oluşturun.
+* Azure portal veya çalışma alanınızın giriş sayfasında (Önizleme), SDK ile otomatik makine öğrenimi çalıştırmak için bir deneme oluşturun.
 
     * Bir [sınıflandırma modeli](how-to-auto-train-remote.md) veya [regresyon modeli](tutorial-auto-train-models.md) oluşturmak için SDK 'yı kullanma
     * Uygun verileri karşıya yükleyerek bir sınıflandırma veya regresyon modeli oluşturmak için [Azure Portal veya çalışma alanı giriş sayfanızı (Önizleme)](how-to-create-portal-experiments.md) kullanın.
@@ -117,7 +117,7 @@ Terim duyarlık sınıflandırıcı tüm örnekleri doğru şekilde etiketlemek 
 
 Örnek 1: Düşük duyarlığa sahip bir sınıflandırma modeli, düşük ![hassasiyet ve düşük geri çağırma ile bir sınıflandırma modelini çağırır](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
-Örnek 2: Bir sınıflandırma modeli, yaklaşık% 100 duyarlık ve ~ 100% hatırlayın (ideal) ![bir sınıflandırma modeli yüksek duyarlıklı ve geri çağırma](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+Örnek 2: % 100 duyarlık ve ~ 100% geri çağırma (ideal) ![A sınıflandırma modeli yüksek duyarlıklı ve geri çağırma @ no__t-1 olan bir sınıflandırma modeli
 
 ### <a name="roc"></a>ROC
 

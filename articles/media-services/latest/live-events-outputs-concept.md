@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/25/2019
 ms.author: juliako
-ms.openlocfilehash: 7cb158490bd8a8520e101dbe321b8594cad059f9
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: efe0aaf7c7d5516401f8c72721121a5dff247b95
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309678"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350361"
 ---
 # <a name="live-events-and-live-outputs"></a>Canlı Etkinlikler ve Canlı Çıkışlar
 
@@ -35,7 +35,7 @@ Azure Media Services, Azure bulutunda müşterilerinize canlı olaylar sunmanız
 
 [Canlı bir olay](https://docs.microsoft.com/rest/api/media/liveevents) iki türden biri olabilir: doğrudan geçiş ve canlı kodlama. Türler, [Liveeventencodingtype](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)kullanılarak oluşturma sırasında ayarlanır:
 
-* **Liveeventencodingtype. None** -şirket içi bir Live Encoder çoklu bit hızı akışı gönderir. Alınan akışlar, daha fazla işlem yapılmadan canlı olaydan geçer. 
+* **Liveeventencodingtype. None** -şirket içi bir Live Encoder çoklu bit hızı akışı gönderir. Alınan akış, başka bir işlem yapılmadan canlı olaydan geçer. 
 * **Liveeventencodingtype. Standard** -şirket içi bir Live Encoder canlı olaya tek bit hızlı bir akış gönderir ve Media Services çoklu bit hızı akışları oluşturur. Katkı akışı 720p veya daha yüksek bir çözünürlüğünüz ise, **Default720p** önayar bir dizi 6 çözünürlük/bitücret çifti kodlayabilir.
 * **Liveeventencodingtype. Premium1080p** -şirket içi bir Live Encoder canlı olaya tek bit hızlı bir akış gönderir ve Media Services çoklu bit hızı akışları oluşturur. Default1080p önayarı, çözümleme/bitoranlar çiftlerinin çıkış kümesini belirtir. 
 
@@ -66,7 +66,9 @@ Live Encoder 'daki çıktıda bulunan çözünürlükler ve bitoranlar, önceden
 > [!NOTE]
 > Canlı kodlama ön ayarını özelleştirmeniz gerekiyorsa lütfen Azure portal aracılığıyla bir destek bileti açın. İstediğiniz çözünürlüklerin ve bit hızlarının yer aldığı tabloyu paylaşmanız gerekir. 720p ' de yalnızca bir katman olduğunu (Standart bir Live Encoder için önceden ayarlanmış bir değer isteğinde bulunursa) veya 1080p (Premium1080p Live Encoder için önceden ayarlanmış bir önayar istiyorsa) ve en çok 6 katman olduğunu doğrulayın.
 
-## <a name="live-event-creation-options"></a>Canlı olay oluşturma seçenekleri
+## <a name="creating-live-events"></a>Canlı olaylar oluşturma 
+
+### <a name="options"></a>Seçenekler
 
 Canlı bir olay oluştururken, aşağıdaki seçenekleri belirtebilirsiniz:
 
@@ -77,7 +79,14 @@ Canlı bir olay oluştururken, aşağıdaki seçenekleri belirtebilirsiniz:
 * Alma ve önizleme için IP kısıtlamaları. Bu canlı olaya bir video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin '10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1/22') veya bir IP adresi ve bir noktalı ondalık alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1(255.255.252.0)') olabilir.<br/>Herhangi bir IP adresi belirtilmezse ve bir kural tanımı yoksa hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.<br/>IP adreslerinin aşağıdaki biçimlerden birinde olması gerekir: 4 sayıdan oluşan IPv4 adresi, CıDR adres aralığı.
 
     Kendi Güvenlik duvarlarınızdan belirli IP 'Leri etkinleştirmek veya canlı olaylarınızın girdilerini Azure IP adreslerine kısıtlamak istiyorsanız, [Azure veri MERKEZI IP adresi aralıklarından](https://www.microsoft.com/download/details.aspx?id=41653)bir JSON dosyası indirin. Bu dosya hakkında daha fazla bilgi için, sayfasındaki **Ayrıntılar** bölümüne tıklayın.
-    
+        
+### <a name="naming-rules"></a>Adlandırma kuralları
+
+* En büyük canlı olay adı 32 karakterdir.
+* Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+
+Ayrıca bkz. [akış uç noktaları adlandırma kuralları](streaming-endpoint-concept.md#naming-convention).
+
 ## <a name="live-event-ingest-urls"></a>Canlı olay alma URL 'Leri
 
 Canlı Etkinlik oluşturulduktan sonra, şirket içi gerçek zamanlı kodlayıcıya sağlayacağınız alma URL’lerini alabilirsiniz. Gerçek zamanlı kodlayıcı bu URL'leri canlı akış girişi için kullanır. Daha fazla bilgi için bkz. [Önerilen şirket içi canlı kodlayıcılar](recommended-on-premises-live-encoders.md). 

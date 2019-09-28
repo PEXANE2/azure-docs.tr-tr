@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 68e1bcfeaa998b0698554fd93fd7ed2e88a29739
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9eb10260573978355a3b6996a6f06c0c612abe4c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143006"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350032"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 2. kullanma
 
@@ -31,7 +31,7 @@ Bir depolama hesabı ve kapsayıcı oluşturarak başlayın. Ardından, verilere
 
 Data Lake Storage 2. hesap, hiyerarşik bir ad alanı olan bir depolama hesabıdır. 
 
-Bir tane oluşturmak için bkz [. hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)oluşturun.
+Bir tane oluşturmak için bkz. [Hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)oluşturun.
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
@@ -77,7 +77,7 @@ Bu tabloda, her bir Azure hizmeti veya aracı için nasıl erişim verilecek gö
 
 Belirli dosya ve klasörlere erişim vermek için, bu makalelere bakın.
 
-* [Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](https://review.docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
+* [Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 * [Dosya ve dizinlerdeki erişim denetim listeleri](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
 
@@ -163,20 +163,20 @@ Azure ExpressRoute, Azure veri merkezleri ve şirket içi altyapı arasında öz
 
 Data Lake Storage 2. veriler kullanılabildiğinde, desteklenen büyük veri uygulamalarını kullanarak bu verilerde analiz gerçekleştirebilirsiniz. 
 
-![Data Lake Storage 2. verileri analiz etme](./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage 2. verileri analiz etme")
+(./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage 2. verileri analiz") ![Data Lake Storage 2. Içindeki verileri analiz etme]
 
 Data Lake Storage 2. depolanan veriler üzerinde veri analizi işlerini çalıştırmak için kullanabileceğiniz araçların listesi aşağıda verilmiştir.
 
 |Tool | Rehber |
 |---|--|
 |Azure HDInsight | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Hızlı Başlangıç: Azure Data Lake Storage 2. Azure Databricks kullanarak verileri çözümleme](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Databricks | [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Hızlı Başlangıç: Azure Data Lake Storage 2. Azure Databricks @ no__t-0 kullanarak verileri çözümleme<br><br>[Öğretici: Azure Databricks @ no__t-0 kullanarak verileri ayıklama, dönüştürme ve yükleme|
 
 ## <a name="visualize-the-data"></a>Verileri görselleştirme
 
 Data Lake Storage 2. depolanan verilerin görsel sunumlarını oluşturmak için bir hizmet karışımı kullanabilirsiniz.
 
-![Data Lake Storage 2. verileri görselleştirme](./media/data-lake-storage-data-scenarios/visualize-data.png "Data Lake Storage 2. verileri görselleştirme")
+(./media/data-lake-storage-data-scenarios/visualize-data.png "Data Lake Storage 2. içindeki verileri görselleştirip") ![Data Lake Storage 2. Görselleştir]
 
 * [Data Lake Storage 2. verileri Azure SQL veri ambarı 'na taşımak için Azure Data Factory](../../data-factory/copy-activity-overview.md) kullanarak başlayabilirsiniz
 * Bundan sonra, verilerin görsel temsilini oluşturmak için [Power BI Azure SQL veri ambarı ile tümleştirebilirsiniz](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) .
@@ -189,7 +189,7 @@ Ayrıca, gibi senaryolar için Azure Data Lake Storage 2. verileri indirmek veya
 
 * Uygulama prototipleri oluştururken IDE ortamlarında işlenmek üzere verileri yerel bilgisayarınıza indirin.
 
-![Data Lake Storage 2. çıkış verileri](./media/data-lake-storage-data-scenarios/egress-data.png "Data Lake Storage 2. çıkış verileri")
+(./media/data-lake-storage-data-scenarios/egress-data.png "Data Lake Storage 2. Data Lake Storage 2. çıkış verilerinden") ![çıkış verileri]
 
 Data Lake Storage 2. verileri indirmek için kullanabileceğiniz araçların listesi aşağıda verilmiştir.
 

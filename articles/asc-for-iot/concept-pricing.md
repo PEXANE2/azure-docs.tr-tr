@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
+ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933797"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348511"
 ---
 # <a name="pricing-and-associated-costs"></a>Fiyatlandırma ve ilişkili maliyetler
 
@@ -34,20 +34,17 @@ IoT fiyatlandırma modeli için Azure Güvenlik Merkezi, iki bölümden oluşur 
 
 - IoT Edge veya yaprak cihazlardan gelen güvenlik iletilerine dayalı olarak ileti ile gelişmiş güvenlik özelliklerine göre maliyet.
 
-  >[!Note]
-  > Güvenlik iletileri ayrıca IoT Hub kota tüketimine da neden olabilir.
 
 Daha fazla bilgi için bkz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>İlişkili maliyetler
 
-IoT için Azure Güvenlik Merkezi 'nin, doğrudan fiyatlandırma kapsamında olmayan iki tür ilişkilendirilmiş maliyeti vardır:
+IoT için Azure Güvenlik Merkezi 'nin, doğrudan fiyatlandırma kapsamında olmayan ilişkili maliyetleri vardır:
 
-- IoT Hub kota tüketimi
 
 - Log Analytics depolama maliyetleri
 
-Ayarlarınızı değiştirerek, belirli özelliklerden yararlanarak ilişkili maliyetleri azaltabilirsiniz.
+Belirli çözüm özelliklerinden yararlanarak ilişkili maliyetleri azaltabilirsiniz. Ayarlarınızı değiştirerek bu işlemi geri çevirin.
 
 Ayarlarınızı değiştirmek için:
 
@@ -61,8 +58,6 @@ Aşağıdaki tabloda, her bir seçeneğin ilişkili maliyetlerinin ve etkilerine
 
 |     | Kullanım | Yorum |
 | --- | --- | --- |
-| **IoT Hub kota tüketimi** |  |
-| [Cihaz Işini dışarı aktarma](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (ikizi Export) | Günde bir kez | _İkizi meta veri toplamayı_ devre dışı bırak |
 | **Log Analytics depolama** |  |
 | Cihaz önerisi ve uyarılar| Hizmet tarafından oluşturulan güvenlik önerisi ve uyarılar | İsteğe bağlı değil |
 | Ham güvenlik verileri| Güvenlik aracıları tarafından toplanan IoT cihazlarından gelen ham güvenlik verileri | _Depo ham cihaz güvenlik olaylarını_ devre dışı bırak |

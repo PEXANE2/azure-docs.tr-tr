@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
 ms.date: 06/28/2019
-ms.openlocfilehash: b96b80a735c0caee8a3aabaf19b04fd0e153ba6b
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0908ca232ee38e2b0d461aa9f597558adc4461ef
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034324"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350523"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard ve Azure Machine Learning deneme çalıştırmalarını ve ölçümlerini görselleştirin
 
@@ -81,7 +81,7 @@ tf_code = requests.get("https://raw.githubusercontent.com/tensorflow/tensorflow/
 with open(os.path.join(exp_dir, "mnist_with_summaries.py"), "w") as file:
     file.write(tf_code.text)
 ```
-Mnist_with_summaries. Kopyala kod dosyası boyunca,, `tf.summary.scalar()` `tf.summary.FileWriter()` vb. çağıran `tf.summary.histogram()`satırlar olduğunu fark edersiniz. Bu yöntemler, denemeleri 'in çalıştırma geçmişine yönelik anahtar ölçümlerini gruplar, günlüğe kaydeder ve Etiketler. Bu `tf.summary.FileWriter()` , özellikle de önem taşıyan deneme ölçümlerinden verileri serileştirerek, tensorboard 'in onları kapamasını sağlar.
+Mnist_with_summaries. CI olan MNIST kod dosyası boyunca, `tf.summary.scalar()`, `tf.summary.histogram()` `tf.summary.FileWriter()` vb. çağıran satırlar olduğunu fark edeceksiniz. Bu yöntemler, denemeleri 'in çalıştırma geçmişine yönelik anahtar ölçümlerini gruplar, günlüğe kaydeder ve Etiketler. Bu `tf.summary.FileWriter()` , özellikle de önem taşıyan deneme ölçümlerinden verileri serileştirerek, tensorboard 'in onları kapamasını sağlar.
 
  ### <a name="configure-experiment"></a>Deneme yapılandırma
 
@@ -264,7 +264,8 @@ root_run.complete()
 >[!Note]
  Ayrıca, çalıştırmanın adını belirterek belirli bir çalıştırmayı TensorBoard öğesine dışarı aktarabilirsiniz.`export_to_tensorboard(run_name, logdir)`
 
-TensorBoard 'i başlatma ve durdurma bu deneme için çalıştırma geçmişimiz verildikten sonra, TensorBoard 'ı [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-) yöntemiyle başlatabiliriz. 
+### <a name="start-and-stop-tensorboard"></a>TensorBoard başlatma ve durdurma
+Bu deneme için çalıştırma geçmişimiz verildikten sonra, TensorBoard 'ı [Start ()](https://docs.microsoft.com/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?view=azure-ml-py#start-start-browser-false-) yöntemiyle başlatabiliriz. 
 
 ```Python
 from azureml.tensorboard import Tensorboard

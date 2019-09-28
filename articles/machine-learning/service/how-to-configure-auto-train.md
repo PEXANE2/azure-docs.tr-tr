@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e6cfc18f01bb23d0b318ac1b924cf8cbb9f7a2b6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5a0f2922763f8fccb9f3eec8bab4d6eddee7e446
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259986"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350595"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python 'da otomatik ML denemeleri yapılandırma
 
@@ -328,7 +328,7 @@ Bir not defteriniz varsa, eğitim sonuçlarınızı bir pencere öğesinde veya 
 
 Otomatikleştirilmiş ML kullanılarak oluşturulan herhangi bir model aşağıdaki adımları içerir:
 + Otomatik Özellik Mühendisliği (Eğer preprocess = true ise)
-+ Hiper ölçüm değerleriyle ölçekleme/normalleştirme ve algoritma
++ Hiper parametre değerleriyle ölçekleme/normalleştirme ve algoritma
 
 Otomatikleştirilmiş ML 'den gelen fitted_model çıktısından bu bilgileri almak için saydam hale gelir.
 
@@ -410,7 +410,7 @@ Daha fazlasını anlamak için, bu 2 API 'Leri, monte edilecek modelin ilk adım
    |EngineeringFeatureCount|Otomatikleştirilmiş Özellik Mühendisliği dönüştürmeleri aracılığıyla oluşturulan özellik sayısı.|
    |Dönüşümler|Uygulanan özellikler oluşturmak için giriş özelliklerine uygulanan dönüşümlerin listesi.|
 
-### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>Hiper ölçüm değerleriyle ölçekleme/normalleştirme ve algoritma:
+### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Hiper parametre değerleriyle ölçekleme/normalleştirme ve algoritma:
 
 Bir işlem hattının ölçekleme/normalleştirme ve algoritma/hiper parametre değerlerini anlamak için fitted_model. Steps kullanın. [Ölçeklendirme/normalleştirme hakkında daha fazla bilgi edinin](concept-automated-ml.md#preprocess). Örnek çıktı aşağıdaki gibidir:
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: d6d7b4cda4bd3b3246b9bc5573246546d8020b38
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597372"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348934"
 ---
 # <a name="application-gateway-components"></a>Application Gateway bileşenleri
 
@@ -28,17 +28,17 @@ ms.locfileid: "68597372"
 
 Azure Application Gateway v2 SKU 'SU hem statik iç IP adresini hem de statik genel IP adresini ya da yalnızca statik genel IP adresini destekleyecek şekilde yapılandırılabilir. Yalnızca statik iç IP adresini destekleyecek şekilde yapılandırılamaz.
 
-V1 SKU 'SU statik iç IP adresi ve dinamik genel IP adresi, yalnızca statik iç IP adresi veya yalnızca dinamik genel IP adresi ya da yalnızca dinamik genel IP adresi ya da dinamik ortak IP adresi ya da dinamik özel IP adresi destekleyecek şekilde yapılandırılabilir. Application Gateway dinamik IP adresi çalışan bir ağ geçidinde değişmez. Yalnızca ağ geçidini durdurduğunuzda veya başlattığınızda değişiklik yapabilir. Sistem hatalarında, güncelleştirmelerde, Azure ana bilgisayar güncelleştirmelerinde vb. değişmez. 
+V1 SKU 'SU statik veya dinamik iç IP adresini ve dinamik genel IP adresini destekleyecek şekilde yapılandırılabilir. Application Gateway dinamik IP adresi çalışan bir ağ geçidinde değişmez. Yalnızca ağ geçidini durdurduğunuzda veya başlattığınızda değişiklik yapabilir. Sistem hatalarında, güncelleştirmelerde, Azure ana bilgisayar güncelleştirmelerinde vb. değişmez. 
 
 Bir uygulama ağ geçidi ile ilişkilendirilen DNS adı, ağ geçidinin yaşam döngüsü boyunca değişmez. Sonuç olarak, bir CNAME diğer adı kullanmalı ve uygulama ağ geçidinin DNS adresine işaret etmelisiniz.
 
 ## <a name="listeners"></a>Dinleyiciler
 
-Dinleyici, gelen bağlantı isteklerini denetleyen mantıksal bir varlıktır. Bir dinleyici, istekle ilişkilendirilen protokol, bağlantı noktası, konak ve IP adresi, dinleyici yapılandırmasıyla ilişkili öğelerle eşleşiyorsa bir isteği kabul eder.
+Dinleyici, gelen bağlantı isteklerini denetleyen mantıksal bir varlıktır. Bir dinleyici, istekle ilişkilendirilen protokol, bağlantı noktası, ana bilgisayar adı ve IP adresi, dinleyici yapılandırmasıyla ilişkili öğelerle eşleşiyorsa bir isteği kabul eder.
 
 Bir Application Gateway kullanmadan önce en az bir dinleyici eklemeniz gerekir. Bir uygulama ağ geçidine eklenmiş birden fazla dinleyici olabilir ve aynı protokol için kullanılabilirler.
 
-Bir dinleyici istemcilerden gelen istekleri algıladıktan sonra, uygulama ağ geçidi bu istekleri arka uç havuzundaki üyelere yönlendirir. Uygulama ağ geçidi, gelen isteği alan dinleyici için tanımlanan istek yönlendirme kurallarını kullanır.
+Bir dinleyici istemcilerden gelen istekleri algıladıktan sonra, uygulama ağ geçidi bu istekleri kuralda yapılandırılmış arka uç havuzundaki üyelere yönlendirir.
 
 Dinleyiciler aşağıdaki bağlantı noktalarını ve protokolleri destekler.
 
@@ -49,12 +49,13 @@ Bir bağlantı noktası, bir dinleyicinin istemci isteğini dinlediği yerdir. V
 ### <a name="protocols"></a>Protokoller
 
 Application Gateway dört protokolü destekler: HTTP, HTTPS, HTTP/2 ve WebSocket:
+>[!NOTE]
+>HTTP/2 protokol desteği yalnızca uygulama ağ geçidi dinleyicilerine bağlanan istemciler tarafından kullanılabilir. Arka uç sunucu havuzlarıyla iletişim, her zaman HTTP/1.1 üzerinden yapılır. HTTP/2 desteği varsayılan olarak devre dışıdır. Etkinleştirmeyi seçebilirsiniz.
 
 - Dinleyici yapılandırmasındaki HTTP ve HTTPS protokolleri arasında belirtin.
 - [WebSockets ve http/2 protokolleri](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) için destek yerel olarak sağlanır ve [WebSocket desteği](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) varsayılan olarak etkindir. WebSocket desteğini isteğe bağlı olarak etkinleştirmek veya devre dışı bırakmak için kullanıcı tarafından yapılandırılabilen bir ayar yoktur. HTTP ve HTTPS dinleyicilerine sahip WebSockets kullanın.
-- HTTP/2 protokol desteği yalnızca uygulama ağ geçidi dinleyicilerine bağlanan istemciler tarafından kullanılabilir. Arka uç sunucu havuzlarıyla iletişim HTTP/1.1 üzerinden yapılır. HTTP/2 desteği varsayılan olarak devre dışıdır. Etkinleştirmeyi seçebilirsiniz.
 
-SSL sonlandırma için HTTPS dinleyicisi kullanın. Bir HTTPS dinleyicisi, uygulama ağ geçidinizin ve şifre çözme işinin yükünü ortadan kaldırır, böylece web sunucularınız ek yük tarafından kullanılmaz. Uygulamalarınız daha sonra iş mantığına odaklanmak üzere ücretsizdir.
+SSL sonlandırma için HTTPS dinleyicisi kullanın. Bir HTTPS dinleyicisi şifreleme ve şifre çözme işini uygulama ağ geçidinize yükler, bu nedenle web sunucularınız, ek yük tarafından aşırı alınamaz.
 
 ### <a name="custom-error-pages"></a>Özel hata sayfaları
 
@@ -80,7 +81,7 @@ Application Gateway, dinleyicileri gösterildiği sırada işler. Temel dinleyic
 
 İstek yönlendirme kuralı, bir uygulama ağ geçidinin anahtar bileşenidir ve bu, trafiğin dinleyicide nasıl yönlendirileceğini belirler. Kural dinleyiciyi, arka uç sunucu havuzunu ve arka uç HTTP ayarlarını bağlar.
 
-Bir dinleyici bir isteği kabul ettiğinde, istek yönlendirme kuralı isteği arka uca iletir veya başka bir yere yeniden yönlendirir. İstek arka uca iletilirse istek yönlendirme kuralı, bu dosyayı hangi arka uç sunucu havuzunun ileteceğini tanımlar. Ayrıca, istek yönlendirme kuralı, istekteki üstbilgilerin yeniden mi yeniden yazılması gerektiğini de belirler. Bir dinleyici tek bir kurala eklenebilir.
+Bir dinleyici bir isteği kabul ettiğinde, istek yönlendirme kuralı isteği arka uca iletir veya başka bir yere yeniden yönlendirir. İstek arka uca iletilirse istek yönlendirme kuralı, bu dosyayı hangi arka uç sunucu havuzunun ileteceğini tanımlar. İstek yönlendirme kuralı, istekteki üstbilgilerin yeniden mi yeniden yazılması gerektiğini de belirler. Bir dinleyici tek bir kurala eklenebilir.
 
 İki tür istek yönlendirme kuralı vardır:
 

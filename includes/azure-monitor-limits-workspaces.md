@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 58a741b369231a353a6b8e282a6e604a63a5727d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 017c02a10137579e6e3497775e9e4a3ac0a5d72d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71210365"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350866"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -65,9 +65,12 @@ ms.locfileid: "71210365"
 | Kapasiteden bölgeler | Batı Orta ABD | Geçici kapasite sınırında olduğundan bu bölgede şu anda yeni bir çalışma alanı oluşturamazsınız. Bu sınır, Ekim 2019 ' ün sonuna kadar planlanmaktadır. |
 | Verileri dışarı aktar | Şu anda kullanılamıyor | Verileri toplamak ve dışarı aktarmak için Azure Işlevini veya mantıksal uygulamayı kullanın. | 
 
-**Veri alım oranı**
+**Veri alımı birim oranı**
 
-Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. Varsayılan alma hızı eşiği, çalışma alanı başına **500 MB/dk** olarak ayarlanır. Verileri daha yüksek bir fiyata tek bir çalışma alanına gönderirseniz, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım biriminiz, hız sınırını aşmaya devam ediyorsa veya bir süre önce bu sınıra ulaşmayı bekliyorsanız, bir destek isteği açarak çalışma alanınıza bir artış isteğinde bulunabilir.
+
+Azure Izleyici, her ay büyüyen bir hızda çok sayıda müşteriye hizmet veren binlerce müşteriyi sunan yüksek ölçekli bir veri hizmetidir. [Tanılama ayarları](../articles/azure-monitor/platform/diagnostic-settings.md) kullanılarak Azure kaynaklarından gönderilen veriler için varsayılan Alım birimi hız sınırı, çalışma alanı başına YAKLAŞıK **6 GB/dak** . Bu, gerçek boyutun günlük uzunluğuna ve sıkıştırma oranına bağlı olarak veri türleri arasında değişiklik gösterebileceğinden yaklaşık bir değerdir. Bu sınır, aracılardan veya [veri TOPLAYıCı API](../articles/azure-monitor/platform/data-collector-api.md)'sinden gönderilen verilere uygulanmaz.
+
+Verileri daha yüksek bir fiyata tek bir çalışma alanına gönderirseniz, bazı veriler bırakılır ve eşik aşılmaya devam edilirken her 6 saatte bir olay, çalışma alanınızda *işlem* tablosuna gönderilir. Alım biriminiz, hız sınırını aşmaya devam ediyorsa veya bir süre önce bu sınıra ulaşmayı bekliyorsanız, bir destek isteği açarak çalışma alanınıza bir artış isteğinde bulunabilir.
  
 Çalışma alanınızdaki bu tür bir olay hakkında bildirim almak için, sıfırdan farklı sonuç sayısına sahip uyarı mantığı temeli ile aşağıdaki sorguyu kullanarak bir [günlük uyarı kuralı](../articles/azure-monitor/platform/alerts-log.md) oluşturun.
 

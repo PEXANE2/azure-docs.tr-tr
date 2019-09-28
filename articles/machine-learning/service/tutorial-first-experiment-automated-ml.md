@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 38c319fb89e8c763f8231c18cbb59bef099193e2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259322"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350507"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
@@ -50,7 +50,7 @@ Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure porta
 
 ## <a name="create-and-run-the-experiment"></a>Deneme oluşturma ve çalıştırma
 
-Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında, tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bilimi senaryoları gerçekleştirmek için makine öğrenimi araçlarını içeren birleştirilmiş bir arabirim olan çalışma alanı giriş sayfasında adımları gerçekleştirin.
+Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında, tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bilimi senaryoları gerçekleştirmek için makine öğrenimi araçlarını içeren birleştirilmiş bir arabirim olan çalışma alanı giriş sayfasında adımları gerçekleştirin. Çalışma alanı giriş sayfası Internet Explorer tarayıcılarında desteklenmez.
 
 1. [Çalışma alanı giriş sayfasında](https://ml.azure.com/workspaceportal/)oturum açın.
 
@@ -58,7 +58,7 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
 
 1. **Kullanmaya**başlayın ' ı seçin.
 
-1. Sol bölmede, **yazma** bölümü altında **Otomatik ml** ' yi seçin.
+1. Sol bölmede **Yazar** bölümü altında **Otomatik ml** ' yi seçin.
 
    Bu ilk otomatik ML denemenize ait olduğundan Başlarken ekranını görürsünüz.
 
@@ -99,23 +99,21 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
        
     1. **Ayarlar ve önizleme** formunun aşağıdaki gibi doldurulduğunu doğrulayın ve **İleri ' yi**seçin.
         
-        Alan|Öğretici için değer
-        ---|---
-        Dosya biçimi| Sınırlandırılmış
-        Sınırlayıcı| Virgül
-        Encoding| UTF-8
-        Sütun üstbilgileri| Tüm dosyaların üst bilgileri aynı
-        Satırları atla | Yok.
+        Alan|Açıklama| Öğretici için değer
+        ---|---|---
+        Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Sınırlandırılmış
+        Sınırlayıcı|Düz metin veya diğer veri akışlarında @ no__t-0 ayrı, bağımsız bölge arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
+        Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
+        Sütun üstbilgileri| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların üst bilgileri aynı
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok.
     
-    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için, **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. Deneme için veri kümesinin karşıya yüklenmesini ve oluşturulmasını tamamladıktan sonra **bitti**' yi seçin.
-
         ![Önizleme sekmesi yapılandırması](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
 1. Tahmin görevi olarak **Sınıflandırmayı** seçin.
 
 1. Hedef sütun olarak **y** ' yi, ne tahmin etmek istediğinizi seçin. Bu sütun, istemcinin yatırma bir terime abone olup olmadığını gösterir.
 
-1. **Gelişmiş ayarlar** ' ı genişletin ve alanları aşağıdaki gibi doldurun.
+1. **Gelişmiş ayarlar** ' ı genişletin ve alanları aşağıdaki gibi doldurun. Bu ayarlar, eğitim işini daha iyi denetliyor. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır.
 
    >[!NOTE]
    > Bu öğreticide, yineleme eşiğine göre ölçüm puanı veya en fazla çekirdek ayarlayamayacağız. Ya da algoritmaların test edilmeye engel olursunuz.
@@ -138,10 +136,10 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
 
 ##  <a name="explore-iteration-results"></a>Yineleme sonuçlarını keşfet
 
-Deneme ilerledikçe ekran, **yineleme grafiği** ve **yineleme listesini** , tamamlandıkları şekilde oluşturulan farklı yinelemeler (modeller) ile güncelleştirir ve bunları ölçüm puanına göre sıralar. Varsayılan olarak, seçilen **AUC_weighted** ölçüsüne göre en yüksek düzeyde puan veren model listenin en üstünde yer alır.
+Deneme ilerledikçe ekran, **yineleme grafiği** ve **yineleme listesini** , tamamlandıkça oluşturulan farklı yinelemeler (modeller) ile güncelleştirir. Varsayılan olarak, yinelemeler ölçüm puanına göre sıralanır. Bu öğretici için, seçilen **AUC_weighted** ölçüsüne göre en yüksek düzeyde puan veren model listenin en üstünde yer alır.
 
 Deneme tekrarlarının tümünün bitmesini beklerken, performans ayrıntılarını araştırmak için tamamlanmış bir yinelemenin **adını** seçin. 
-   
+
 Aşağıda, bir duyarlık geri çağırma eğrisi, karışıklık matrisi, ağırlıklı doğruluk puanları vb. gibi her bir yineleme için oluşturulan grafikler ve çalıştırma ölçümleri gösterilmektedir. 
 
 ![Yineleme ayrıntısı Çalıştır](media/tutorial-1st-experiment-automated-ml/run-detail.gif)
@@ -199,6 +197,7 @@ Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluş
 + [Ön işleme](how-to-create-portal-experiments.md#preprocess)hakkında daha fazla bilgi edinin.
 + [Veri profili oluşturma](how-to-create-portal-experiments.md#profile)hakkında daha fazla bilgi edinin.
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
++ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesini inceleyin.
 
 >[!NOTE]
 > Bu banka pazarlama veri kümesi, [Creative Commons (CCO) altında kullanıma sunulmuştur. Genel etki alanı)](https://creativecommons.org/publicdomain/zero/1.0/)lisansı. Veritabanının bireysel içeriklerinde her türlü hak, [veritabanı Içeriği lisansı](https://creativecommons.org/publicdomain/zero/1.0/) kapsamında lisanslanır ve [kada](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)mevcuttur. Bu veri kümesi, ilk olarak [UCI Machine Learning veritabanı](https://archive.ics.uci.edu/ml/datasets/bank+marketing)dahilinde kullanılabilir.<br><br>

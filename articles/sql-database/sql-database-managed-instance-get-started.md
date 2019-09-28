@@ -10,26 +10,26 @@ ms.topic: quickstart
 author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
-ms.date: 05/07/2019
-ms.openlocfilehash: 9eae757642c2a833b60c0c22a8984e83909e772c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 09/26/2019
+ms.openlocfilehash: 4f9ea699bd6d09f902a3ff97c95ff3455926a9d8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300822"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350925"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Hızlı Başlangıç: Azure SQL veritabanı yönetilen örneği oluşturma
 
-Bu hızlı başlangıçta Azure portal Azure SQL veritabanı [yönetilen örneği](sql-database-managed-instance.md) oluşturma işlemi adım adım açıklanmaktadır.
+Bu hızlı başlangıç, Azure portal içinde Azure SQL veritabanı [yönetilen örneği](sql-database-managed-instance.md) oluşturma konusunda size yol gösterir.
 
 > [!IMPORTANT]
 > Sınırlamalar için bkz. [Desteklenen bölgeler](sql-database-managed-instance-resource-limits.md#supported-regions) ve [desteklenen Abonelik türleri](sql-database-managed-instance-resource-limits.md#supported-subscription-types).
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
+## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
 
 Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalda](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-managed-instance"></a>Yönetilen örnek oluşturma
 
@@ -45,111 +45,133 @@ Aşağıdaki adımlarda, yönetilen bir örnek oluşturma adımları gösterilme
 
 ### <a name="basics"></a>Temel
 
-Aşağıdaki tabloyu kullanarak **temel** bilgiler sekmesinde gereken bilgileri doldurun. Bu, yönetilen bir örnek sağlamak için en az bir bilgi kümesidir.
+- **Temel** bilgiler sekmesinde gerekli olan zorunlu bilgileri doldurun. Bu, yönetilen bir örnek sağlamak için gereken en düşük bilgi kümesidir.
 
-![Yönetilen örnek oluşturmak için "temel bilgiler" sekmesi](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-basics.png)
+   ![Yönetilen örnek oluşturmak için "temel bilgiler" sekmesi](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-basics.png)
 
-| Ayar| Önerilen değer | Açıklama |
-| ------ | --------------- | ----------- |
-| **Abonelik** | Aboneliğiniz. | Yeni kaynaklar oluşturmak için size izin veren bir abonelik. |
-| **Kaynak grubu** | Yeni veya mevcut bir kaynak grubu.|Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-| **Yönetilen örnek adı** | Geçerli bir ad.|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-| **Bölge** |Yönetilen örneği oluşturmak istediğiniz bölge.|Bölgeler hakkında bilgi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/).|
-| **Yönetilen örnek yöneticisi oturum açma** | Geçerli bir Kullanıcı adı. | Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Bu ayrılmış sunucu düzeyi bir rol olduğundan "serveradmin" kullanmayın.|
-| **Parola** | Herhangi bir geçerli parola.| Parola en az 16 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
+   Bu sekmede gereken bilgiler için bir başvuru olarak aşağıdaki tabloyu kullanın.
 
-İşlem ve depolama kaynaklarını belirlemek ve fiyatlandırma katmanlarını gözden geçirmek için **yönetilen örneği Yapılandır** ' ı seçin. Depolama miktarını ve sanal çekirdek sayısını belirtmek için kaydırıcıları veya metin çubuklarını kullanın. İşiniz bittiğinde seçiminizi kaydetmek için **Uygula** ' yı seçin. 
+   | Ayar| Önerilen değer | Açıklama |
+   | ------ | --------------- | ----------- |
+   | **Abonelik** | Aboneliğiniz. | Yeni kaynaklar oluşturmak için size izin veren bir abonelik. |
+   | **Kaynak grubu** | Yeni veya mevcut bir kaynak grubu.|Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
+   | **Yönetilen örnek adı** | Geçerli bir ad.|Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
+   | **Bölge** |Yönetilen örneği oluşturmak istediğiniz bölge.|Bölgeler hakkında bilgi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/).|
+   | **Yönetilen örnek yöneticisi oturum açma** | Geçerli bir Kullanıcı adı. | Geçerli adlar için bkz. [Adlandırma kuralları ve kısıtlamalar](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Bu ayrılmış sunucu düzeyi bir rol olduğundan "serveradmin" kullanmayın.|
+   | **Parola** | Herhangi bir geçerli parola.| Parola en az 16 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
 
-![Yönetilen örnek formu](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
+- İşlem ve depolama kaynaklarını belirlemek ve fiyatlandırma katmanlarını gözden geçirmek için **yönetilen örneği Yapılandır** ' ı seçin. Depolama miktarını ve sanal çekirdek sayısını belirtmek için kaydırıcıları veya metin çubuklarını kullanın. İşiniz bittiğinde seçiminizi kaydetmek için **Uygula** ' yı seçin. 
 
-Yönetilen bir örnek oluşturmadan önce Seçimlerinizi gözden geçirmek için, **gözden geçir + oluştur**seçeneğini belirleyebilirsiniz. Veya, ileri ' yi seçerek **ağ seçeneklerini yapılandırın: Ağ**iletişimi.
+   ![Yönetilen örnek formu](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-configure-performance.png)
+
+- Yönetilen bir örnek oluşturmadan önce Seçimlerinizi gözden geçirmek için, **gözden geçir + oluştur**seçeneğini belirleyebilirsiniz. Veya, ileri ' yi seçerek **ağ seçeneklerini yapılandırın: Ağ**iletişimi.
 
 ### <a name="networking"></a>Ağ
 
-Aşağıdaki tabloyu kullanarak **ağ** sekmesinde isteğe bağlı bilgileri doldurun. Bu bilgileri atlarsanız, Portal varsayılan ayarları uygular.
+- **Ağ** sekmesinde isteğe bağlı bilgileri doldurun. Bu bilgileri atlarsanız, Portal varsayılan ayarları uygular.
 
-![Yönetilen örnek oluşturmak için "ağ" sekmesi](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-networking.png)
+   ![Yönetilen örnek oluşturmak için "ağ" sekmesi](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-networking.png)
 
-| Ayar| Önerilen değer | Açıklama |
-| ------ | --------------- | ----------- |
-| **Sanal ağ** | **Yeni sanal ağ** ya da geçerli bir sanal ağ ve alt ağ oluştur ' u seçin.| Bir ağ veya alt ağ kullanılamaz durumdaysa, yeni yönetilen örnek için bir hedef olarak seçmeden önce [ağ gereksinimlerini karşılamak üzere değiştirilmesi](sql-database-managed-instance-configure-vnet-subnet.md) gerekir. Yönetilen bir örnek için ağ ortamını yapılandırma gereksinimleri hakkında bilgi için bkz. [yönetilen bir örnek için sanal ağ yapılandırma](sql-database-managed-instance-connectivity-architecture.md). |
-| **Bağlantı türü** | Proxy ve yeniden yönlendirme bağlantı türü arasında seçim yapın.|Bağlantı türleri hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı bağlantı ilkesi](sql-database-connectivity-architecture.md#connection-policy).|
-| **Genel bir uç nokta**  | Seçin **etkinleştirme**. | Yönetilen bir örneğin genel veri uç noktası üzerinden erişilebilir olması için bu seçeneği etkinleştirmeniz gerekir. | 
-| **Erişime Izin ver** ( **genel uç nokta** etkinse) | Seçeneklerden birini belirleyin.   |Portal deneyimi, bir güvenlik grubunu genel bir uç nokta ile yapılandırmaya izin vermez. </br> </br> Senaryonuza bağlı olarak, aşağıdaki seçeneklerden birini seçin: </br> <ul> <li>**Azure hizmetleri**: Power BI veya başka bir çok kiracılı hizmetten bağlanırken bu seçeneği öneririz. </li> <li> **Internet**: Yönetilen bir örneği hızlı bir şekilde çalıştırmak istediğinizde test amacıyla kullanın. Bunu üretim ortamları için önermiyoruz. </li> <li> **Erişim yok**: Bu seçenek bir **reddetme** güvenlik kuralı oluşturur. Yönetilen bir örneği ortak bir uç nokta aracılığıyla erişilebilir hale getirmek için bu kuralı değiştirin. </li> </ul> </br> Genel uç nokta güvenliği hakkında daha fazla bilgi için, bkz. [genel bir uç noktayla güvenli bir Azure SQL veritabanı yönetilen örneği kullanma](sql-database-managed-instance-public-endpoint-securely.md).|
+   Bu sekmede gereken bilgiler için bir başvuru olarak aşağıdaki tabloyu kullanın.
 
-Yönetilen bir örnek oluşturmadan önce Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Ya da ileri ' yi seçerek **daha fazla özel ayar yapılandırın: Ek ayarlar**.
+   | Ayar| Önerilen değer | Açıklama |
+   | ------ | --------------- | ----------- |
+   | **Sanal ağ** | **Yeni sanal ağ** ya da geçerli bir sanal ağ ve alt ağ oluştur ' u seçin.| Bir ağ veya alt ağ kullanılamaz durumdaysa, yeni yönetilen örnek için bir hedef olarak seçmeden önce [ağ gereksinimlerini karşılamak üzere değiştirilmesi](sql-database-managed-instance-configure-vnet-subnet.md) gerekir. Yönetilen bir örnek için ağ ortamını yapılandırma gereksinimleri hakkında bilgi için bkz. [yönetilen bir örnek için sanal ağ yapılandırma](sql-database-managed-instance-connectivity-architecture.md). |
+   | **Bağlantı türü** | Proxy ve yeniden yönlendirme bağlantı türü arasında seçim yapın.|Bağlantı türleri hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı bağlantı ilkesi](sql-database-connectivity-architecture.md#connection-policy).|
+   | **Genel bir uç nokta**  | Seçin **etkinleştirme**. | Yönetilen bir örneğin genel veri uç noktası üzerinden erişilebilir olması için bu seçeneği etkinleştirmeniz gerekir. | 
+   | **Erişime Izin ver** ( **genel uç nokta** etkinse) | Seçeneklerden birini belirleyin.   |Portal deneyimi, bir güvenlik grubunu genel bir uç nokta ile yapılandırmaya izin vermez. </br> </br> Senaryonuza bağlı olarak, aşağıdaki seçeneklerden birini seçin: </br> <ul> <li>**Azure hizmetleri**: Power BI veya başka bir çok kiracılı hizmetten bağlanırken bu seçeneği öneririz. </li> <li> **Internet**: Yönetilen bir örneği hızlı bir şekilde çalıştırmak istediğinizde test amacıyla kullanın. Bunu üretim ortamları için önermiyoruz. </li> <li> **Erişim yok**: Bu seçenek bir **reddetme** güvenlik kuralı oluşturur. Yönetilen bir örneği ortak bir uç nokta aracılığıyla erişilebilir hale getirmek için bu kuralı değiştirin. </li> </ul> </br> Genel uç nokta güvenliği hakkında daha fazla bilgi için, bkz. [genel bir uç noktayla güvenli bir Azure SQL veritabanı yönetilen örneği kullanma](sql-database-managed-instance-public-endpoint-securely.md).|
+
+- Yönetilen bir örnek oluşturmadan önce Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** ' u seçin. Ya da ileri ' yi seçerek **daha fazla özel ayar yapılandırın: Ek ayarlar**.
 
 ### <a name="additional-settings"></a>Ek ayarlar
 
-Aşağıdaki tabloyu kullanarak **ek ayarlar** sekmesinde isteğe bağlı bilgileri doldurun. Bu bilgileri atlarsanız, Portal varsayılan ayarları uygular.
+- **Ek ayarlar** sekmesinde isteğe bağlı bilgileri doldurun. Bu bilgileri atlarsanız, Portal varsayılan ayarları uygular.
 
-![Yönetilen örnek oluşturmak için "ek ayarlar" sekmesi](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-additional-settings.png)
+   ![Yönetilen örnek oluşturmak için "ek ayarlar" sekmesi](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-additional-settings.png)
 
-| Ayar| Önerilen değer | Açıklama |
-| ------ | --------------- | ----------- |
-| **Mediğinden** | Yönetilen örneğiniz için kullanmak istediğiniz harmanlamayı seçin. SQL Server veritabanlarını geçirirseniz, kullanarak `SELECT SERVERPROPERTY(N'Collation')` kaynak harmanlamasını denetleyin ve bu değeri kullanın.| Harmanlamalar hakkında daha fazla bilgi için bkz. [sunucu harmanlamasını ayarlama veya değiştirme](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
-| **Saat dilimi** | Yönetilen örneğinizin gözleneceği saat dilimini seçin.|Daha fazla bilgi için bkz. [saat dilimleri](sql-database-managed-instance-timezone.md).|
-| **Yük devretme ikincili olarak kullan** | **Evet**' i seçin. | Yönetilen örneği yük devretme grubu ikincil olarak kullanmak için bu seçeneği etkinleştirin.|
-| **Birincil yönetilen örnek** ( **Yük devretme ikincili olarak kullan** seçeneği **Evet**olarak ayarlanırsa) | Oluşturmakta olduğunuz yönetilen örnekle aynı DNS bölgesine katılacak mevcut bir birincil yönetilen örnek seçin. | Bu adım, yük devretme grubunun oluşturma sonrası yapılandırmasını etkinleştirecektir. Daha fazla bilgi için bkz [. Öğretici: Bir yük devretme grubuna](sql-database-managed-instance-failover-group-tutorial.md)SQL veritabanı yönetilen örneği ekleyin.|
+   Bu sekmede gereken bilgiler için bir başvuru olarak aşağıdaki tabloyu kullanın.
+
+   | Ayar| Önerilen değer | Açıklama |
+   | ------ | --------------- | ----------- |
+   | **Mediğinden** | Yönetilen örneğiniz için kullanmak istediğiniz harmanlamayı seçin. SQL Server veritabanlarını geçirirseniz, kullanarak `SELECT SERVERPROPERTY(N'Collation')` kaynak harmanlamasını denetleyin ve bu değeri kullanın.| Harmanlamalar hakkında daha fazla bilgi için bkz. [sunucu harmanlamasını ayarlama veya değiştirme](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
+   | **Saat dilimi** | Yönetilen örneğinizin gözleneceği saat dilimini seçin.|Daha fazla bilgi için bkz. [saat dilimleri](sql-database-managed-instance-timezone.md).|
+   | **Yük devretme ikincili olarak kullan** | **Evet**' i seçin. | Yönetilen örneği yük devretme grubu ikincil olarak kullanmak için bu seçeneği etkinleştirin.|
+   | **Birincil yönetilen örnek** ( **Yük devretme ikincili olarak kullan** seçeneği **Evet**olarak ayarlanırsa) | Oluşturmakta olduğunuz yönetilen örnekle aynı DNS bölgesine katılacak mevcut bir birincil yönetilen örnek seçin. | Bu adım, yük devretme grubunun oluşturma sonrası yapılandırmasını etkinleştirecektir. Daha fazla bilgi için bkz [. Öğretici: Bir yük devretme grubuna](sql-database-managed-instance-failover-group-tutorial.md)SQL veritabanı yönetilen örneği ekleyin.|
 
 ### <a name="review--create"></a>Gözden geçir + oluştur
 
-1. Yönetilen örneği oluşturmadan önce Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** sekmesini seçin.
+5. Yönetilen örneği oluşturmadan önce Seçimlerinizi gözden geçirmek için **gözden geçir + oluştur** sekmesini seçin.
 
    ![Yönetilen örnek İnceleme ve oluşturma sekmesi](./media/sql-database-managed-instance-get-started/tabs/mi-create-tab-review-create.png)
 
-1. Yönetilen örneği sağlamaya başlamak için **Oluştur** ' u seçin.
+6. Yönetilen örneği sağlamaya başlamak için **Oluştur** ' u seçin.
 
 > [!IMPORTANT]
 > Yönetilen bir örneği dağıtmak uzun süren bir işlemdir. Alt ağdaki ilk Örneğin dağıtımı, genellikle mevcut yönetilen örneklerle bir alt ağa dağıtmaya kıyasla çok daha uzun sürer. Ortalama sağlama süreleri için bkz. [yönetilen örnek yönetimi işlemleri](sql-database-managed-instance.md#managed-instance-management-operations).
 
 ### <a name="monitor-deployment-progress"></a>Dağıtım ilerlemesini izleme
 
-1. Dağıtım durumunu görüntülemek için **Bildirimler** simgesini seçin.
+7. Dağıtım durumunu görüntülemek için **Bildirimler** simgesini seçin.
 
-    ![Yönetilen örnek dağıtımının dağıtım ilerlemesi](./media/sql-database-managed-instance-get-started/in-progress/mi-create-deployment-in-progress.png)
+   ![Yönetilen örnek dağıtımının dağıtım ilerlemesi](./media/sql-database-managed-instance-get-started/in-progress/mi-create-deployment-in-progress.png)
 
-1. Yönetilen örnek penceresini açmak ve dağıtım ilerlemesini izlemek için bildirimde **devam etmekte olan dağıtım '** ı seçin. 
+8. Yönetilen örnek penceresini açmak ve dağıtım ilerlemesini izlemek için bildirimde **devam etmekte olan dağıtım '** ı seçin. 
 
 > [!TIP]
-> Web tarayıcınızı kapattıysanız veya dağıtım ilerleme ekranından uzaklaşmanız durumunda, bu ekranı bulmak için aşağıdaki adımları izleyin:
+> Web tarayıcınızı kapattıysanız veya dağıtım ilerleme ekranından uzaklaşmanız durumunda dağıtım ilerleme durumunu geri yüklemek için şu adımları izleyin:
 > 1. Azure portal, yönetilen bir örnek dağıttığınız kaynak grubunu ( **temel bilgiler** sekmesinde) açın.
 > 2. **Dağıtımlar**' ı seçin.
 > 3. Devam eden yönetilen örnek dağıtım işlemini seçin.
 
-## <a name="review-resources-and-retrieve-your-host-name"></a>Kaynakları gözden geçirin ve ana bilgisayar adınızı alın
+## <a name="post-deployment-operations"></a>Dağıtım sonrası işlemler
 
-Dağıtım başarılı olduktan sonra:
+Oluşturulan kaynakları gözden geçirmek için ağ ayarlarını hassas ayarlama ve konak bağlantısı ayrıntılarını alma (FQDN) Bu bölümde açıklanan adımları izleyin.
+
+### <a name="view-resources-created"></a>Oluşturulan kaynakları görüntüle
+
+Yönetilen örnek başarıyla dağıtımı sırasında, oluşturulan kaynakları görüntülemek için:
 
 1. Yönetilen örneğiniz için kaynak grubunu açın. [Yönetilen örnek oluşturma](#create-a-managed-instance) hızlı başlangıç bölümünde sizin için oluşturulan kaynaklarını görüntüleyin.
 
    ![Yönetilen örnek kaynakları](./media/sql-database-managed-instance-get-started/resources.png)
 
-2. Sizin için oluşturulan kullanıcı tanımlı yolu (UDR) gözden geçirmek için yol tablosunu seçin.
+### <a name="view-and-fine-tune-network-settings"></a>Ağ ayarlarını görüntüleme ve üzerinde ayarlama
+
+İsteğe bağlı olarak ağ ayarlarını ince ayar yapmak için aşağıdakileri inceleyin:
+
+1. Sizin için oluşturulan kullanıcı tanımlı yolu (UDR) gözden geçirmek için yol tablosunu seçin.
 
    ![Rota tablosu](./media/sql-database-managed-instance-get-started/route-table.png)
 
-3. Yönlendirme tablosunda, yönetilen örneğin sanal ağından gelen ve içindeki trafiği yönlendirmek için girişleri gözden geçirin. Yönlendirme tablonuzu el ile oluşturur veya yapılandırırsanız, bu girdileri yol tablosunda oluşturmayı unutmayın.
+2. Yönlendirme tablosunda, yönetilen örneğin sanal ağından gelen ve içindeki trafiği yönlendirmek için girişleri gözden geçirin. Yönlendirme tablonuzu el ile oluşturur veya yapılandırırsanız, bu girdileri yönetilen örnek yolu tablosunda oluşturduğunuzdan emin olun.
 
    ![Yönetilen örnek alt ağını yerel olarak giriş](./media/sql-database-managed-instance-get-started/udr.png)
 
-4. Kaynak grubuna geri dönün ve ağ güvenlik grubunu seçin.
+3. Kaynak grubuna geri dönün ve ağ güvenlik grubunu seçin.
 
    ![Ağ güvenlik grubu](./media/sql-database-managed-instance-get-started/network-security-group.png)
 
-5. Gelen ve giden güvenlik kurallarını gözden geçirin. Yönetilen örneğiniz için ortak uç noktalar yapılandırdıysanız, daha fazla bilgi için [genel uç nokta yapılandırma](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) makalesine bakın.
+4. Gelen ve giden güvenlik kurallarını gözden geçirin. 
 
    ![Güvenlik kuralları](./media/sql-database-managed-instance-get-started/security-rules.png)
 
-6. Kaynak grubuna dönün ve yönetilen örneğinizi seçin.
+> [!IMPORTANT]
+> Yönetilen örneğiniz için ortak uç nokta yapılandırdıysanız, ağ trafiğinin genel Internet 'ten yönetilen örneğe bağlantılara izin vermesini sağlamak için bağlantı noktalarını açmanız gerekir. daha fazla bilgi için bkz. [yönetilen örnek için ortak uç nokta yapılandırma](sql-database-managed-instance-public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group) .
+>
+
+### <a name="retrieve-connection-details-to-managed-instance"></a>Yönetilen örneğe bağlantı ayrıntılarını al
+
+Yönetilen örneğe bağlanmak için, ana bilgisayar adı ve tam etki alanı adı (FQDN) almak için aşağıdaki adımları izleyin:
+
+1. Kaynak grubuna dönün ve yönetilen örneğinizi seçin.
 
    ![Kaynak grubunda yönetilen örnek](./media/sql-database-managed-instance-get-started/managed-instance.png)
 
-7. **Genel bakış** sekmesinde **ana bilgisayar** özelliğini bulun. Yönetilen örnek için konak adını sonraki hızlı başlangıçta kullanılmak üzere kopyalayın.
+2. **Genel bakış** sekmesinde **ana bilgisayar** özelliğini bulun. Yönetilen örnek için konak adını sonraki hızlı başlangıçta kullanılmak üzere kopyalayın.
 
    ![Konak adı](./media/sql-database-managed-instance-get-started/host-name.png)
 
-   Ana bilgisayar adı, tam etki alanı adı (FQDN) olarak da adlandırılır. *Your_machine_name. a1b2c3d4e5f6. Database. Windows. net*ile benzerdir.
+   Kopyalanmış değer, yönetilen örneğe bağlanmak için kullanılabilecek bir tam etki alanı adı (FQDN) temsil eder. Şu adrese benzer bir örnek: *your_host_name. a1b2c3d4e5f6. Database. Windows. net*.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

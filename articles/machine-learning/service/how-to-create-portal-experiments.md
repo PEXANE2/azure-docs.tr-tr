@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3a47977f2589227347582dc6fcaff25120e380d7
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 45207eb1cdc62f2468d8b0c052723337c18d5021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034825"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350560"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Azure Machine Learning çalışma alanı giriş sayfası (Önizleme) ile otomatik makine öğrenimi denemeleri oluşturma, araştırma ve dağıtma
 
@@ -32,12 +32,11 @@ ms.locfileid: "71034825"
 
 ## <a name="get-started"></a>başlarken
 
-
 1. [Çalışma alanı giriş sayfasında](https://ml.azure.com/workspaceportal/)oturum açın. 
 
 1. Aboneliğinizi ve çalışma alanınızı seçin. 
 
-1. Sol bölmeye gidin. **Yazma** bölümünün altında **Otomatik ml** ' yi seçin.
+1. Sol bölmeye gidin. **Yazar** bölümü altında **Otomatik ml** ' yi seçin.
 
 [![Azure portal gezinti bölmesi](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
@@ -59,7 +58,7 @@ Aksi halde, SDK ile oluşturulanlar da dahil olmak üzere otomatik **makine öğ
     ---|---
     İşlem adı| İşlem bağlamını tanımlayan benzersiz bir ad girin.
     Sanal makine boyutu| İşlem için sanal makine boyutunu seçin.
-    Ek ayarlar| *En az düğüm*: İşlem için en az düğüm sayısını girin. AML işlem için düğüm sayısı alt sınırı 0 ' dır. Veri profilini oluşturmayı etkinleştirmek için, 1 veya daha fazla düğüme sahip olmanız gerekir. <br> *En fazla düğüm*: İşlem için en fazla düğüm sayısını girin. Varsayılan değer bir AML Işlem için 6 düğümünüz.
+    En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir. İşlem için en fazla düğüm sayısını girin. Varsayılan değer bir AML Işlem için 6 düğümünüz.
     
     **Oluştur**’u seçin. Yeni bir işlem oluşturmak birkaç dakika sürebilir.
 
@@ -109,7 +108,7 @@ Aksi halde, SDK ile oluşturulanlar da dahil olmak üzere otomatik **makine öğ
     Gelişmiş ayarlar|Açıklama
     ------|------
     Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#explore-model-metrics).
-    Çıkış kriterleri| Bu ölçütlerden herhangi biri karşılandığında, eğitim işi tam tamamlanmadan önce sonlanır. <br> *Eğitim iş süresi (dakika)* : Eğitim işinin ne kadar süreyle çalışmasına izin verme.  <br> *En fazla yineleme sayısı*: Eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak. <br> *Ölçüm puan eşiği*:  Tüm işlem hatları için en düşük ölçüm puanı. Bu, ulaşmak istediğiniz tanımlı bir hedef ölçüsünün olması durumunda eğitim işinde gerekli olandan daha fazla zaman harcamamanızı sağlar.
+    Çıkış kriterleri| Bu ölçütlerden herhangi biri karşılandığında eğitim işi durdurulur. <br> *Eğitim iş süresi (dakika)* : Eğitim işinin ne kadar süreyle çalışmasına izin verme.  <br> *En fazla yineleme sayısı*: Eğitim işinde sınanacak maksimum işlem hattı sayısı (yineleme). İş, belirtilen sayıda yinelemeden daha fazla çalıştırmayacak. <br> *Ölçüm puan eşiği*:  Tüm işlem hatları için en düşük ölçüm puanı. Bu, ulaşmak istediğiniz tanımlı bir hedef ölçüsünün olması durumunda eğitim işinde gerekli olandan daha fazla zaman harcamamanızı sağlar.
     Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme özelliğini etkinleştirmek veya devre dışı bırakmak için seçin. Ön işleme, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürme içerir. [Ön işleme hakkında daha fazla bilgi edinin](#preprocess).
     Doğrulama| Eğitim işinde kullanmak için çapraz doğrulama seçeneklerinden birini seçin. [Çapraz doğrulama hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md).
     Eş Zamanlılık| Çok çekirdekli işlem kullanırken kullanmak istediğiniz çok çekirdekli limitleri seçin.
@@ -134,7 +133,7 @@ Min| Sütunun minimum değeri. Boş girdiler, türü bir devralınan sıralamaya
 Maks| Sütunun en büyük değeri. 
 Count| Sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
 Eksik sayı yok| Sütundaki eksik girdi sayısı. Boş dizeler ve hatalar değer olarak değerlendirilir ve bu nedenle "eksik sayısı" öğesine katkıda bulunmazlar.
-Quantiles| Verilerin dağıtılması hakkında bir fikir sağlamak için her bir satışla yaklaşık değerler.
+Yüzdelikler| Verilerin dağıtılması hakkında bir fikir sağlamak için her bir satışla yaklaşık değerler.
 Ortalama| Sütunun aritmetik ortalaması veya ortalaması.
 Standart sapma| Bu sütun verisinin dağılım veya değişim miktarının ölçümü.
 Varyans| Bu sütunun verilerinin ne kadar yayıldığı, ortalama değerinden oluşan ölçüdür. 

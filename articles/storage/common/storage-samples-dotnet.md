@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 57249bd2fa4d3c8aefe19a85ec9a2b6b584b00d2
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 9d6e441adeb7025e09b8d73764d2defab439dd90
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743951"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350911"
 ---
 # <a name="azure-storage-samples-using-net"></a>.NET kullanan Azure depolama örnekleri
 
@@ -98,5 +98,6 @@ Azure Storage Istemci kitaplıklarını yüklemek ve kullanmaya başlamak için 
 Diğer dillere yönelik örnekler hakkında bilgi için:
 
 * Java: [Java kullanan Azure Depolama örnekleri](storage-samples-java.md)
+* JavaScript/Node. js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
 * Python: [Python kullanarak Azure Storage örnekleri](storage-samples-python.md)
 * Diğer tüm diller: [Azure depolama örnekleri](../storage-samples.md)

@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3c8e189e84e0a467125995b3e2d633c285eb7367
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012483"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350054"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Havuz ve düğüm hatalarını denetle
 
@@ -42,7 +42,7 @@ Yeniden boyutlandırma hatalarının yaygın nedenleri şunlardır:
 - Bir [havuz bir sanal ağda olduğunda](https://docs.microsoft.com/azure/batch/batch-virtual-network) yetersiz kaynak
   - Batch hesabıyla aynı abonelikte yük dengeleyiciler, genel IP 'Ler ve ağ güvenlik grupları gibi kaynaklar oluşturabilirsiniz. Abonelik kotalarının bu kaynaklar için yeterli olup olmadığını denetleyin.
 - Özel VM görüntüleri içeren büyük havuzlar
-  - Özel VM görüntülerini kullanan büyük havuzların ayrılması ve yeniden boyutlandırılması daha uzun sürebilir.  Sınırlara ve yapılandırmaya yönelik öneriler için [bir sanal makine havuzu oluşturmak için özel görüntü kullanma](https://docs.microsoft.com/azure/batch/batch-custom-images) konusuna bakın.
+  - Özel VM görüntülerini kullanan büyük havuzların ayrılması ve yeniden boyutlandırılması daha uzun sürebilir.  Sınırlara ve yapılandırmaya yönelik öneriler için bkz. [paylaşılan görüntü Galerisi ile havuz oluşturma](batch-sig-images.md) .
 
 ### <a name="automatic-scaling-failures"></a>Otomatik ölçeklendirme sorunları
 
@@ -60,7 +60,7 @@ Otomatik ölçeklendirme değerlendirmesi hakkında daha fazla bilgi edinmek iç
 
 Düğüm içeren bir havuzu sildiğinizde, ilk toplu Işlem düğümleri siler. Daha sonra havuz nesnesinin kendisini siler. Havuz düğümlerinin silinmesi birkaç dakika sürebilir.
 
-Toplu işlem, silme işlemi sırasında [havuzun durumunu](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) silinmek üzere ayarlar. Çağıran uygulama, **durum** ve **Stateattiontime** özelliklerini kullanarak havuz silmenin çok uzun sürdüğünü algılayabilir.
+Toplu işlem **, silme işlemi sırasında** [havuzun durumunu](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) silinmek üzere ayarlar. Çağıran uygulama, **durum** ve **Stateattiontime** özelliklerini kullanarak havuz silmenin çok uzun sürdüğünü algılayabilir.
 
 ## <a name="pool-compute-node-errors"></a>Havuz işlem düğümü hataları
 
@@ -92,7 +92,7 @@ Bir havuzda bir veya daha fazla kapsayıcı başvurusu belirtebilirsiniz. Batch,
 
 ### <a name="node-in-unusable-state"></a>Kullanılamayan durumda düğüm
 
-Azure Batch, [düğüm durumunu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) birçok nedenden dolayı **kullanılamaz** olarak ayarlayabilir. Düğüm durumunun kullanım dışı olarak ayarlandığı, görevler düğüme zamanlanamaz ancak ücretlendirmeye devam eder.
+Azure Batch, [düğüm durumunu](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) birçok nedenden dolayı **kullanılamaz** olarak ayarlayabilir. Düğüm durumunun kullanım **dışı olarak ayarlandığı, görevler**düğüme zamanlanamaz ancak ücretlendirmeye devam eder.
 
 **Kullanılamaz** durumdaki düğümler, ancak [hata](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) olmadan, toplu iş VM ile iletişim kuramayan anlamına gelir. Bu durumda Batch her zaman VM 'yi kurtarmaya çalışır. Toplu işlem, durumları **kullanılamaz**olsa bile uygulama paketlerini veya kapsayıcıları yükleyememiş VM 'leri otomatik olarak kurtarmaya çalışmaz.
 

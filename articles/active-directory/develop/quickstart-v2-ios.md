@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b8637bb1a1ba397750bd04c88c6535fa3d1caa0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309629"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345540"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı Başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -41,8 +41,8 @@ Bu hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. B
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
 > Hızlı başlangıç uygulamanızı başlatmak için kullanabileceğiniz iki seçenek vardır:
-> * Çaba [Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin](#option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample)
-> * Kitabında [Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> * [Express] [Seçenek 1: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin](#option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample)
+> * [Manual] [Seçenek 2: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>1\. Seçenek: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğini indirin
 > #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydedin
@@ -94,11 +94,11 @@ Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve en 
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
 > 1. **ViewController. Swift** 'u düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. Uygulamanızı, hızlı başlangıçta portala kaydettiğinizde `kClientID` kaydettiğiniz istemci kimliği ile ilgili değeri güncelleştirmeyi unutmayın:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
 > 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklatın ve > **kaynak kodu**aç ' ı seçin.
-> 1. Yalnızca iOS için, dict kök düğümünün altında, öğesini portalda `Enter_the_bundle_Id_Here`girdiğiniz ***paket kimliğiyle*** değiştirin.
+> 1. Yalnızca iOS için, dict kök düğümünün altında, `CFBundleURLSchemes` ' ı portalda girdiğiniz ***paket kimliğiyle*** değiştirin.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -120,11 +120,11 @@ Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve en 
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
 > 1. **ViewController. Swift** 'u düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. Uygulamanızı bu hızlı başlangıçta daha önce `kClientID` portala kaydettiğinizde kaydettiğiniz ClientID değeriyle güncelleştirmeyi unutmayın:
 >    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
+>    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
 > 1. Yalnızca iOS için, **Info. plist** ' i sağ tıklatın ve > **kaynak kodu**aç ' ı seçin.
-> 1. Yalnızca iOS için, dict kök düğümünün altında, Portal 'da `Enter_the_bundle_Id_Here`kullandığınız ***paket kimliğiyle*** değiştirin.
+> 1. Yalnızca iOS için, dict kök düğümünün altında, `Enter_the_bundle_Id_Here` ' ı portalda kullandığınız ***paket kimliğiyle*** değiştirin.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>

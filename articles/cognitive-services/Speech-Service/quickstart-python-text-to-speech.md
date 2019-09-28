@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0afe5897c723e22405d9bde2e9c9e729d0373a06
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8579693052ea102e34d81d84abaced52d1e7440d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553668"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350948"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>Hızlı Başlangıç: Python kullanarak metin okumayı dönüştürme
 
@@ -101,7 +101,7 @@ Ardından, istek için gerekli üst bilgileri eklemeniz gerekir. Güncelleştird
 Ardından, istek gövdesi konuşma sentezi işaretleme dili (SSML'yi) kullanarak oluşturun. Bu örnek, yapısını tanımlar ve kullandığı `tts` daha önce oluşturduğunuz giriş.
 
 >[!NOTE]
-> Bu örnekte `ZiraRUS` ses tipi. Ses/dillerde Microsoft tam bir listesi sağlanmaktadır için bkz: [dil desteği](language-support.md).
+> Bu örnekte `Guy24KRUS` ses tipi. Ses/dillerde Microsoft tam bir listesi sağlanmaktadır için bkz: [dil desteği](language-support.md).
 > Markanız için benzersiz, tanınan bir ses oluşturmak istiyorsanız bkz [özel ses tipi oluşturma](how-to-customize-voice-font.md).
 
 Son olarak, hizmete istek yapacaksınız. İstek başarılı olur ve 200 durum kodu döndürülmesine ise konuşma yanıt zaman damgalı bir dosyaya yazılır.

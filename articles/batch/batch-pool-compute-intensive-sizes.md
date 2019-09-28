@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c3c54b003017f7512cd40c7798fc351e4e4a3f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094928"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350122"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch havuzlarında RDMA veya GPU örnekleri kullanma
 
@@ -86,7 +86,7 @@ Batch havuzunuzun özelleştirilmiş bir VM boyutunu yapılandırmak için gerek
 
     * [Azure Batch kapsayıcı havuzları için Ubuntu Server (GPU ve RDMA sürücüleriyle birlikte)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-batch.ubuntu-server-container-rdma?tab=Overview)
 
-* Üzerinde sürücü, yazılım veya VM boyutu için gereken diğer ayarları yüklediğiniz [özel bir Windows veya LINUX VM görüntüsü](batch-custom-images.md) oluşturun. 
+* Üzerinde sürücü, yazılım veya VM boyutu için gereken diğer ayarları yüklediğiniz [özel bir Windows veya LINUX VM görüntüsü](batch-sig-images.md) oluşturun. 
 
 * Daraltılmış bir sürücüden veya uygulama yükleyicisinden bir toplu Işlem [uygulama paketi](batch-application-packages.md) oluşturun ve toplu işi, paketi havuz düğümlerine dağıtmak ve her düğüm oluşturulduğunda yüklemek üzere yapılandırın. Örneğin, uygulama paketi bir yükleyicidir, uygulamayı tüm havuz düğümlerine sessizce yüklemek için bir [Başlangıç görevi](batch-api-basics.md#start-task) komut satırı oluşturun. İş yükünüz belirli bir sürücü sürümüne bağımlıysa bir uygulama paketi ve havuz başlangıç görevi kullanmayı düşünün.
 
@@ -123,9 +123,9 @@ CUDA uygulamalarını bir Linux NC düğümü havuzunda çalıştırmak için, C
 1. Ubuntu 16,04 LTS çalıştıran bir Azure NC serisi VM dağıtın. Örneğin, ABD Orta Güney bölgesinde sanal makineyi oluşturun. 
 2. [Azure Portal, Azure aboneliğine bağlanan bir](../virtual-machines/extensions/hpccompute-gpu-linux.md
 ) istemci bilgisayarı veya Azure Cloud Shell kullanarak NVIDIAGPUsürücüleriuzantısınısanalmakineyeekleyin. Alternatif olarak, sanal makineye bağlanma ve [CUDA sürücülerini](../virtual-machines/linux/n-series-driver-setup.md) el ile yüklemek için adımları izleyin.
-3. Batch için bir [anlık görüntü ve özel LINUX VM görüntüsü](batch-custom-images.md) oluşturma adımlarını izleyin.
+3. Toplu Iş için [paylaşılan bir görüntü Galerisi görüntüsü](batch-sig-images.md) oluşturma adımlarını izleyin.
 4. NC VM 'Leri destekleyen bir bölgede Batch hesabı oluşturun.
-5. Batch API 'Lerini veya Azure portal kullanarak, [özel görüntüyü kullanarak](batch-custom-images.md) ve istenen sayıda düğüm ve ölçeğe sahip bir havuz oluşturun. Aşağıdaki tabloda görüntünün örnek havuz ayarları gösterilmektedir:
+5. Batch API 'Lerini veya Azure portal kullanarak, [özel görüntüyü kullanarak](batch-sig-images.md) ve istenen sayıda düğüm ve ölçeğe sahip bir havuz oluşturun. Aşağıdaki tabloda görüntünün örnek havuz ayarları gösterilmektedir:
 
 | Ayar | Value |
 | ---- | ---- |
@@ -143,8 +143,8 @@ Windows MPı uygulamalarını bir Azure H16r VM düğümü havuzunda çalıştı
 ) çalıştırarak veya Azure Cloud Shell kullanarak, 
 1. SANAL makineye Uzak Masaüstü bağlantısı oluşturun.
 1. Microsoft MPı 'nin en son sürümü için [Kurulum paketini](https://www.microsoft.com/download/details.aspx?id=57467) (msmpisetup. exe) Indirin ve Microsoft MPI 'yi yükleyin.
-1. Toplu Iş için bir [anlık görüntü ve özel WINDOWS VM görüntüsü](batch-custom-images.md) oluşturma adımlarını izleyin.
-1. Batch API 'Lerini veya Azure portal kullanarak, [özel görüntüyü kullanarak](batch-custom-images.md) ve istenen sayıda düğüm ve ölçeğe sahip bir havuz oluşturun. Aşağıdaki tabloda görüntünün örnek havuz ayarları gösterilmektedir:
+1. Toplu Iş için [paylaşılan bir görüntü Galerisi görüntüsü](batch-sig-images.md) oluşturma adımlarını izleyin.
+1. Batch API 'Lerini veya Azure portal kullanarak, [paylaşılan görüntü galerisini kullanarak](batch-sig-images.md) ve istenen sayıda düğüm ve ölçeğe sahip bir havuz oluşturun. Aşağıdaki tabloda görüntünün örnek havuz ayarları gösterilmektedir:
 
 | Ayar | Value |
 | ---- | ---- |

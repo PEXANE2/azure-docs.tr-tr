@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/29/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd630fec16ddfb269ead5f1f62af882f52501a86
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390468"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350174"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch içe büyük ölçekli paralel işlem çözümleri geliştirme
 
@@ -149,9 +149,9 @@ Havuz oluştururken VHD'nizin temel görüntüsünün işletim sistemine bağlı
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>Sanal Makine havuzları için özel görüntüler
 
-Özel görüntü kullanmak için, görüntüyü genelleştirerek hazırlamanız gerekir. Azure VM'lerinden özel Linux görüntüleri hazırlama hakkında bilgi için bkz. [Sanal makine veya VHD görüntüsü oluşturma](../virtual-machines/linux/capture-image.md). Azure sanal makinelerinden özel Windows görüntüleri hazırlama hakkında daha fazla bilgi için bkz. [Azure'da genelleştirilmiş VM'nin yönetilen görüntüsünü oluşturma](../virtual-machines/windows/capture-image-resource.md). 
+Özel görüntülerle havuz oluşturma hakkında bilgi edinmek için bkz. [paylaşılan görüntü galerisini kullanarak özel bir havuz oluşturma](batch-sig-images.md).
 
-Ayrıntılı gereksinimler ve adımlar için bkz. [Sanal makine havuzu oluşturmak için özel görüntü kullanma](batch-custom-images.md).
+Alternatif olarak, [yönetilen bir görüntü](batch-custom-images.md) kaynağı kullanarak sanal makineler için özel bir havuz oluşturabilirsiniz. Azure VM'lerinden özel Linux görüntüleri hazırlama hakkında bilgi için bkz. [Sanal makine veya VHD görüntüsü oluşturma](../virtual-machines/linux/capture-image.md). Azure sanal makinelerinden özel Windows görüntüleri hazırlama hakkında daha fazla bilgi için bkz. [Azure'da genelleştirilmiş VM'nin yönetilen görüntüsünü oluşturma](../virtual-machines/windows/capture-image-resource.md).
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Sanal Makine havuzlarında kapsayıcı desteği
 
@@ -519,21 +519,21 @@ Bir işlem düğümünde uzaktan oturum açarak ek hata ayıklama ve sorun gider
 
 Bazı görevlerinizin başarısız olduğu durumlarda, Batch istemci uygulamanız ya da hizmetiniz, hatalı davranan düğümü tanımlamak üzere başarısız görevlerin meta verilerini inceleyebilir. Bir havuzdaki her düğüme benzersiz bir kimlik verilir ve bir görevin çalıştığı düğüm görev meta verilerine eklenir. Bir sorun düğümünü tanımladıktan sonra bununla birkaç eylem gerçekleştirebilirsiniz:
 
-* **Düğümü yeniden başlatın** ([rest][rest_reboot] | [.net][net_reboot])
+* **Düğümü yeniden başlatma** ([rest][rest_reboot] | [.net][net_reboot])
 
     Düğümü yeniden başlatmak bazen takılan veya çöken işlemler gibi görünmeyen sorunları temizleyebilir. Havuzunuz bir başlangıç görevi kullanıyorsa ya da işiniz iş hazırlama görevi kullanıyorsa, düğüm yeniden başlatıldığında yürütülür.
-* **Düğümü yeniden görüntü** oluştur ([rest][rest_reimage] | [.net][net_reimage])
+* **Düğümü yeniden görüntü** oluşturma ([rest][rest_reimage] | [.net][net_reimage])
 
     Bu işlem, işletim sistemini düğüme yeniden yükler. Düğümün yeniden başlatılmasıyla düğümün görüntüsünün yeniden oluşturulmasının ardından başlangıç görevleri ve iş hazırlama görevleri yeniden çalıştırılır.
-* **Düğümü havuzdan kaldır** ([rest][rest_remove] | [.net][net_remove])
+* **Düğümü havuzdan kaldırma** ([rest][rest_remove] | [.net][net_remove])
 
     Bazen düğümün havuzdan tamamen kaldırılması gereklidir.
-* **Düğümde görev zamanlamayı devre dışı bırak** ([rest][rest_offline] | [.net][net_offline])
+* **Düğümde görev zamanlamayı devre dışı bırakma** ([rest][rest_offline] | [.net][net_offline])
 
-    Bu, başka görev atanmayacak şekilde düğümü çevrimdışı durumuna alır, ancak düğümün çalışır durumda ve havuzda kalmasına izin verir. Bu, başarısız olan görevin verilerini kaybetmeden ve düğüm, başka görev hatalarına neden olmadan hatalara ilişkin ayrıntılı araştırma gerçekleştirmenizi sağlar. Örneğin düğümde görev zamanlamayı devre dışı bırakabilir, sonra düğümün olay günlüklerini incelemek üzere [uzaktan oturum açabilir](#connecting-to-compute-nodes) ya da başka sorun giderme işlemleri uygulayabilirsiniz. Araştırmanızı bitirdikten sonra görev zamanlamayı ([rest][rest_online] | [.net][net_online]) etkinleştirerek düğümü yeniden çevrimiçi duruma getirebilir veya daha önce ele alınan diğer eylemlerden birini gerçekleştirebilirsiniz.
+    Bu, başka görev atanmayacak şekilde düğümü çevrimdışı durumuna alır, ancak düğümün çalışır durumda ve havuzda kalmasına izin verir. Bu, başarısız olan görevin verilerini kaybetmeden ve düğüm, başka görev hatalarına neden olmadan hatalara ilişkin ayrıntılı araştırma gerçekleştirmenizi sağlar. Örneğin düğümde görev zamanlamayı devre dışı bırakabilir, sonra düğümün olay günlüklerini incelemek üzere [uzaktan oturum açabilir](#connecting-to-compute-nodes) ya da başka sorun giderme işlemleri uygulayabilirsiniz. Araştırmanızı bitirdikten sonra görev zamanlamayı ([REST][rest_online] | [.net][net_online]) etkinleştirerek düğümü yeniden çevrimiçi duruma getirebilir veya daha önce ele alınan diğer eylemlerden birini gerçekleştirebilirsiniz.
 
 > [!IMPORTANT]
-> Bu bölümde açıklanan her bir eylemde (yeniden başlatma, yeniden görüntü oluşturma, görev zamanlamayı kaldırma ve devre dışı bırakma), eylemi gerçekleştirdiğinizde düğümde çalışmakta olan görevlerin nasıl işleneceğini belirtebilirsiniz. Örneğin, Batch .NET istemci kitaplığını kullanarak bir düğümde görev zamanlamayı devre dışı **bıraktığınızda, çalışan** görevlerin **sonlanıp sonlandırılmayacağını** belirtmek için bir [DisableComputeNodeSchedulingOption][net_offline_option] Enum değeri belirtebilirsiniz. diğer düğümlerde zamanlama yapın veya eylemi gerçekleştirmeden önce çalıştırma görevlerinin tamamlanmasına izin verin (**Taskcompletion**).
+> Bu bölümde açıklanan her bir eylemde (yeniden başlatma, yeniden görüntü oluşturma, görev zamanlamayı kaldırma ve devre dışı bırakma), eylemi gerçekleştirdiğinizde düğümde çalışmakta olan görevlerin nasıl işleneceğini belirtebilirsiniz. Örneğin, Batch .NET istemci kitaplığını kullanarak bir düğümde görev zamanlamayı devre dışı bıraktığınızda, çalışan görevlerin **sonlanıp sonlandırılmayacağını** belirtmek Için bir [DisableComputeNodeSchedulingOption][net_offline_option] Enum değeri belirtebilirsiniz. diğer düğümlerde zamanlama yapın veya eylemi gerçekleştirmeden önce çalıştırma görevlerinin tamamlanmasına izin verin (**Taskcompletion**).
 >
 >
 

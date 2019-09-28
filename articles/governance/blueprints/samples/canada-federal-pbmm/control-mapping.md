@@ -7,12 +7,12 @@ ms.date: 09/04/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 64f0517eece5efcd928b18c7f040fb88c3c36546
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 35bc0445494c1d72b833eecd9a8e5bec7ab10423
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309533"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350788"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>Kanada Federal pbmm şema örneğinin denetim eşlemesi
 
@@ -87,7 +87,7 @@ Azure SQL veritabanı için gelişmiş veri güvenliği 'nin veri bulma ve sın�
 
 ## <a name="ac-17-1-remote-access--automated-monitoring--control"></a>AC-17 (1) uzaktan erişim | Otomatik Izleme/denetim
 
-Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın kapalı olduğunu [](../../../policy/overview.md) ve uzak makineye Izin veren Linux sanal makinelerini denetleyen ilke tanımlarını, uzaktan erişimi izleyip denetlemenize yardımcı olur. parolasız olan hesapların bağlantıları. Bu şema ayrıca depolama hesaplarına Kısıtlanmamış erişimi izlemenize yardımcı olan bir Azure ilke tanımı atar. Bu göstergeleri izlemek, uzaktan erişim yöntemlerinin güvenlik ilkenize uyduğundan emin olmanıza yardımcı olabilir.
+Bu şema, Azure App Service uygulaması için uzaktan hata ayıklamanın kapalı olduğunu izlemek üzere [Azure ilke](../../../policy/overview.md) tanımları atayarak uzaktan erişimi izleyip denetlemenize yardımcı olur. Şema Ayrıca, parola olmadan hesaplardan gelen uzak bağlantılara izin veren Linux sanal makinelerini denetleyen ilke tanımları atar. Ayrıca, şema, depolama hesaplarına Kısıtlanmamış erişimi izlemenize yardımcı olan bir Azure ilke tanımı atar. Bu göstergeleri izlemek, uzaktan erişim yöntemlerinin güvenlik ilkenize uyduğundan emin olmanıza yardımcı olabilir.
 
 - \[Önizleme\]: Parolasız hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetleme
 - \[Önizleme\]: Parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın

@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 03a036ce5381130af4bbcea88c87d77cd93cf6a9
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e2816d8e6fdd900473cceebb20c96794f3f9f0f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743880"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350882"
 ---
 # <a name="azure-storage-samples"></a>Azure Depolama örnekleri
 
@@ -40,13 +40,7 @@ Python örneklerini araştırmak için [Python depolama Istemci kitaplığını]
 ## <a name="nodejs-samples"></a>Node.js örnekleri
 Node. js örneklerini araştırmak için [Node. js depolama Istemci kitaplığını](https://github.com/Azure/azure-storage-node)indirin.
 
-* [Blob Uploader](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
-* [Blobu karşıya yükleme ve indirme](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
-* [Devamlılık belirteci](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
-* [Yeniden deneme ilkesi](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
-* [Paylaşılan erişim imzası](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
-* [Görüntüye](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
-* [Tablo sorgusu](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
+* [JavaScript/Node. js kullanarak Azure Storage örnekleri](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C++lerinizi
 C++ Örnekleri araştırmak için, NuGet 'den [ C++ depolama istemci kitaplığını](https://www.nuget.org/packages/wastorage/) indirin.
@@ -57,7 +51,7 @@ C++ Örnekleri araştırmak için, NuGet 'den [ C++ depolama istemci kitaplığ�
 
 ## <a name="api-reference-and-source-code"></a>API başvurusu ve kaynak kodu
 
-| Dil | API başvurusu | Kaynak kod |
+| Dil | API başvurusu | Kaynak kodu |
 |----------|---------------|-------------|
 | .NET | [.NET Istemci kitaplığı başvurusu](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [.NET Storage istemci kitaplığı için kaynak kodu](https://github.com/Azure/azure-storage-net) |
 | Java | [Java Istemci kitaplığı başvurusu](https://docs.microsoft.com/java/api/overview/azure/storage) | [Java depolama istemci kitaplığı için kaynak kodu](https://github.com/azure/azure-storage-java) |
@@ -71,4 +65,5 @@ Aşağıdaki makaleler, hizmet (blob, dosya, kuyruk, tablo) örneklerinin her bi
 
 * [.NET kullanan Azure Depolama örnekleri](storage-samples-dotnet.md)
 * [Java kullanan Azure Depolama örnekleri](storage-samples-java.md)
+* [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
 * [Python kullanarak Azure Storage örnekleri](storage-samples-python.md)

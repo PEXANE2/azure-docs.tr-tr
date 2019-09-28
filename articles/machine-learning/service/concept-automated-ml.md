@@ -11,16 +11,16 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 8b38b359821d3d4926085fee8e412fbe06155739
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035715"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350620"
 ---
 # <a name="what-is-automated-machine-learning"></a>Nedir, makine öğrenimi otomatik?
 
-Oto ml olarak da adlandırılan otomatik makine öğrenimi, Machine Learning modeli geliştirmenin zaman alıcı, yinelemeli görevlerini otomatikleştirme işlemidir. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Otomatikleştirilmiş ML, [Microsoft Research](https://arxiv.org/abs/1705.05355)bölümümüzden bir kesimme dayanır.
+Otomatik ML olarak da adlandırılan otomatik makine öğrenimi, Machine Learning modeli geliştirmenin zaman alıcı, yinelemeli görevlerini otomatikleştirme işlemidir. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Otomatikleştirilmiş ML, [Microsoft Research](https://arxiv.org/abs/1705.05355)bölümümüzden bir kesimme dayanır.
 
 Geleneksel makine öğrenme modeli geliştirme kaynakları yoğun bir şekilde, çok sayıda modeli oluşturmak ve karşılaştırmak için önemli etki alanı bilgisi ve zaman gerektirir. Belirttiğiniz hedef ölçümünü kullanarak bir modeli eğitmesini ve ayarlamanıza Azure Machine Learning istediğinizde otomatik ML uygulayın. Daha sonra hizmet, her yinelemenin eğitim puanı olan bir model oluşturduğu Özellik seçimleriyle eşleştirilmiş ML algoritmaları üzerinden yinelenir. Puan arttıkça, modelin verileri "Sığdır" olarak kabul edilir.
 
@@ -115,6 +115,36 @@ Otomatik makine öğrenimi, varsayılan olarak etkin olan ensebölümlü modelle
 Sıralanmış olarak kullanılacak modellerle birlikte hangi modellerin kullanılacağına karar vermek için sıralanmış ensebölümlü başlatma ile [Caruana ensebir seçim algoritması](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) kullanılır. Yüksek düzeyde, bu algoritma en iyi tek puanları içeren 5 modelle en iyi şekilde, bu modellerin kötü bir ilk olarak yeniden birleştirmek için en iyi puanın% 5 ' inin içinde olduğunu doğrular. Ardından, her bir ensebir yineleme için, mevcut ensede yeni bir model eklenir ve elde edilen puan hesaplanır. Yeni bir model var olan ensebirlikte bulunan puanı iyileştirdiyse, yeni modeli dahil etmek için ensebirlikte bulunan olarak güncelleştirilir.
 
 Otomatik makine öğreniminde varsayılan enseletirme ayarlarını değiştirme için bkz. [nasıl yapılır](how-to-configure-auto-train.md#ensemble) .
+
+## <a name="imbalance"></a>İmdendengelenmiş veriler
+
+Makine öğrenimi sınıflandırma senaryolarına ilişkin verilerde yaygın olarak imledengeli veriler bulunur ve her sınıfta orantısız oranını içeren verilere başvurur. Bu dengesizlik, bir modelin doğruluğu üzerinde sapma yaptığından, bu durum, eğitim modelinin bu farkı taklit etmek için eğitilmesine neden olacak 
+
+Machine Learning iş akışını basitleştirmenin bir parçası olarak, otomatik ML, gibi imdengelenmiş verilerle başa çıkmanıza yardımcı olmak için yerleşik yeteneklere sahiptir 
+
+- **Ağırlık sütunu**: otomatik ml, ağırlıklı bir sütunu giriş olarak destekler, bu da verileri daha fazla veya daha az "önemli" hale getirmek için verilerin ağırlıklı veya aşağı düşmesine neden olabilir. Bu [Not defteri örneğine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/sample-weight/auto-ml-sample-weight.ipynb) bakın 
+
+- Otomatik ML tarafından kullanılan algoritmalar, 20:1 'e kadar dengesizliği doğru şekilde işleyebilir, yani en yaygın sınıf, verilerde en az ortak sınıftan 20 kat daha fazla satıra sahip olabilir.
+
+### <a name="identify-models-with-imbalanced-data"></a>İmdengelenmiş verilerle modelleri tanımla
+
+Sınıflandırma algoritmaları genellikle doğrulukla değerlendirildiğinden, bir modelin doğruluk puanı kontrol edilirken, imledengelenmiş verilerden etkilenip etkilenmediğini belirlemek için iyi bir yoldur. Belirli sınıflar için gerçekten yüksek doğruluk veya gerçekten düşük doğruluk mı var?
+
+Ayrıca, otomatik ML çalıştırmaları aşağıdaki grafikleri otomatik olarak oluşturur. Bu, modelinizdeki sınıflandırmaların doğruluğunu anlamanıza yardımcı olabilir ve imdenli verilerden etkilenen modelleri tanımlayabilir.
+
+Grafik| Açıklama
+---|---
+[Karışıklık matrisi](how-to-understand-automated-ml.md#confusion-matrix)| Doğru sınıflandırılan etiketleri verilerin gerçek etiketlerine göre değerlendirir. 
+[Precision-geri çek](how-to-understand-automated-ml.md#precision-recall-chart)| Doğru etiketlerin oranını, verilerin bulunan etiket örneklerinin oranına göre değerlendirir 
+[ROC eğrileri](how-to-understand-automated-ml.md#roc)| Doğru etiketlerin oranını, yanlış pozitif etiketlerin oranına göre değerlendirir.
+
+### <a name="handle-imbalanced-data"></a>İmdengeli verileri işle 
+
+Aşağıdaki teknikler, otomatik ML dışında imdengeli verileri işlemek için ek seçeneklerdir. 
+
+- Daha küçük sınıfları örnekleyerek veya daha büyük sınıfları aşağı örnekleyerek sınıf dengesizliği olarak yeniden örnekleme yapın. Bu yöntemler, işlemek ve analiz etmek için uzmanlık gerektirir.
+
+- İmdengeli verilerle daha iyi anlaşmalar sağlayan bir performans ölçümü kullanın. Örneğin, F1 puanı ağırlıklı duyarlık ve geri çağırma ortasıdır. Duyarlık, bir sınıflandırıcının exactness--düşük--, duyarlık değeri, bir sınıflandırıcının bir sınıflandırıcısını ölçer, ancak en düşük düzeyde geri çağırma, çok sayıda yanlış negatiflik olduğunu gösterir. 
 
 ## <a name="use-with-onnx-in-c-apps"></a>C# Uygulamalarda onnx ile kullanma
 

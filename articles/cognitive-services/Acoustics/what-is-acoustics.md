@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390300"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351142"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics nedir?
 Project Acoustics, 3B etkileşimli deneyimler için bir Wave Acoustics altyapısıdır. El ile bölge işaretlemesi veya CPU yoğun rayizlemenin gerekli olması gerekmeden, karmaşık sahneler içindeki occlusiyon, düşüşe, portallama ve geri alma etkileri gibi dalga efektlerini modellemez. Ayrıca oyun altyapısı ve ses ara yazılım tümleştirmesi de içerir. Project Acoustics ' fanlar, statik aydınlatmaya benzerdir: fiziksel bir taban çizgisi sağlamak için bakmalı ve sanal dünyadaki Acoustics hedeflerinizi karşılamak için açıklayıcı tasarım denetimleriyle basit bir çalışma zamanı kullanın.
@@ -31,7 +31,7 @@ Project Acoustics ' anahtar yeniliği, geleneksel ses tasarımı kavramlarıyla 
 ![Sahne aracılığıyla yatay 2B bir dalga yayma dilimini gösteren animasyon](media/wave-simulation.gif)
 
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>GDC 2019 'den video sunumu (~ 30 dakika)
-Project Acoustics videosu video(https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "oynatmak için tıklayın") [ ![]
+[![Project Acoustics videosu](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Videoyu oynatmak için tıklayın")
 
 ## <a name="setup"></a>Kurulum
 [Project Acoustics Unity tümleştirmesi](unity-integration.md) , sürükle ve bırak Ile bir Unity ses altyapısı eklentisi içerir. Her ses nesnesine bir Project Acoustics C# Controls bileşeni ekleyerek Unity ses kaynağı denetimlerini güçlendirin.
@@ -58,11 +58,10 @@ Project Acoustics Düzenleyicisi eklentisi aşağıdaki platformlar için kullan
 ## <a name="download"></a>İndirme
 * [Project Acoustics Unity eklentisi ve örnekleri](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
 * [Proje Acoustics Unreal & Wwise eklentileri ve örnekleri](https://www.microsoft.com/download/details.aspx?id=58090)
-  * Xbox ikilileri ve destek için aşağıdaki kaydolma formu aracılığıyla bizimle iletişim kurun
+  * Xbox ikilileri ve diğer destek için [Forum](https://github.com/microsoft/ProjectAcoustics/issues)aracılığıyla bizimle iletişim kurun.
 
 ## <a name="contact-us"></a>Bizimle iletişim kurun
 * [Project Acoustics tartışma ve sorun raporlama](https://github.com/microsoft/ProjectAcoustics/issues)
-* [Project Acoustics üzerinde güncelleştirmeler almak için kaydolun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Unity Için proje Acoustics hızlı başlangıç](unity-quickstart.md) veya [Unreal](unreal-quickstart.md) için deneme

@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 249380b5bd9d95e969a9c7a812102b694b9d1e3b
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e273d913d07d8d7b77289695a4a28a478a64123a
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726537"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350293"
 ---
 # <a name="azure-storage-security-overview"></a>Azure depolama güvenliğine genel bakış
 
 Bu makalede, Azure depolama ile kullanabileceğiniz Azure Güvenlik özelliklerine genel bir bakış sunulmaktadır. Azure Depolama, müşterilerin ihtiyaçlarını karşılamak üzere sağlamlık, kullanılabilirlik ve ölçeklenebilirliğe dayanan modern uygulamalara yönelik bulut depolama çözümüdür. Azure depolama, kapsamlı bir güvenlik özellikleri kümesi sağlar. Şunları yapabilirsiniz:
 
 * Rol tabanlı Access Control (RBAC) ve Azure Active Directory kullanarak depolama hesabını güvenli hale getirin.
-* İstemci tarafı şifreleme, HTTPS veya SMB 3,0 kullanarak bir uygulama ile Azure arasında geçiş sırasında verileri güvenli hale getirin.
+* İstemci tarafı şifrelemesi, HTTPS veya SMB 3.0 kullanarak, bir uygulama ile Azure arasında geçiş sırasında verileri güvenli hale getirin.
 * Depolama Hizmeti Şifrelemesi kullanarak Azure depolama 'ya yazıldığında verileri otomatik olarak şifrelenecek şekilde ayarlayın.
 * Sanal makineler (VM 'Ler) tarafından kullanılan işletim sistemi ve veri disklerini Azure disk şifrelemesi kullanılarak şifrelenecek şekilde ayarlayın.
 * Paylaşılan erişim imzalarını (SASs) kullanarak Azure Storage 'daki veri nesnelerine temsilci erişimi verin.
@@ -39,7 +39,7 @@ Azure depolama 'nın güvenliğine daha ayrıntılı bir bakış için bkz. [Azu
 
 Rol tabanlı Access Control kullanarak depolama hesabınızın güvenliğini sağlamaya yardımcı olabilirsiniz. Erişimi, veri erişimi için güvenlik ilkeleri zorlamak isteyen kuruluşlar için [bilmelidir](https://en.wikipedia.org/wiki/Need_to_know) ve [en az ayrıcalık](https://en.wikipedia.org/wiki/Principle_of_least_privilege) güvenlik ilkelerine göre kısıtlamak zorunludur. Bu erişim hakları, belirli bir kapsamdaki gruplara ve uygulamalara uygun RBAC rolü atanarak verilir. Kullanıcılara ayrıcalık atamak için, depolama hesabı katılımcısı gibi [YERLEŞIK RBAC rollerini](/azure/role-based-access-control/built-in-roles)kullanabilirsiniz.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Rol tabanlı Access Control Azure Active Directory](/azure/role-based-access-control/role-assignments-portal)
 
@@ -49,7 +49,7 @@ Paylaşılan erişim imzası, depolama hesabınızdaki kaynaklara temsilci eriş
 
 SAS, bir depolama kaynağına kimlik doğrulamalı erişim için gereken tüm bilgileri sorgu parametrelerinde kapsayan bir URI 'dir. SAS ile depolama kaynaklarına erişmek için, istemcinin yalnızca SAS 'yi uygun oluşturucuya veya yönteme sağlaması gerekir.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [SAS modelini anlama](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 * [BLOB depolama ile SAS oluşturma ve kullanma](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
@@ -65,7 +65,7 @@ Aktarım sırasında şifreleme, ağlar arasında iletilirken verilerin korunmas
 İstemci tarafı şifreleme hakkında daha fazla bilgi edinin:
 
 * [Microsoft Azure Depolama için istemci tarafı şifreleme](https://blogs.msdn.microsoft.com/windowsazurestorage/2015/04/28/client-side-encryption-for-microsoft-azure-storage-preview/)
-* [Cloud Security denetimleri serisi: Yoldaki verileri şifreleme](https://cloudblogs.microsoft.com/microsoftsecure/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
+* [Cloud Security denetimleri serisi: Yoldaki verileri şifreleme @ no__t-0
 
 ## <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
@@ -88,7 +88,7 @@ VM 'Ler için disk şifrelemesi, Linux ve Windows işletim sistemleri için geç
 
 Daha fazla bilgi edinin
 
-* [Windows ve Linux IaaS sanal makineleri için Azure disk şifrelemesi](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
+* [Azure disk şifrelemeye genel bakış](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview)
 
 ## <a name="firewalls-and-virtual-networks"></a>Güvenlik duvarları ve sanal ağlar
 
@@ -104,7 +104,7 @@ Data Box, Data Box Disk ve Data Box Heavy cihazları, ağ seçeneğinin olmadı�
 
 Data Box Edge ve Data Box Gateway, verilerin siteniz ile Azure arasında yönetilmesi için ağ depolama geçitleri olarak çalışan çevrimiçi veri aktarımı ürünleridir. Şirket içi bir ağ cihazı olan Data Box Edge, Azure’ın içine ve dışına veri aktarımı gerçekleştirmesinin yanı sıra verileri işlemek için yapay zeka (AI) özellikli uç işlemini kullanır. Data Box Gateway, depolama ağ geçidi özelliklerine sahip sanal bir gereçtir.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
 * [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview)
@@ -116,7 +116,7 @@ Azure depolama, depolama hesabınıza erişmek veya onları yararlanmak için ol
 
 Gelişmiş tehdit koruması uyarıları, [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)'nden görüntülenebilir. Azure Güvenlik Merkezi, algılanan şüpheli etkinliklerin ayrıntılarını sağlar ve olası tehdidi araştırmak ve düzeltmek için Eylemler önerir.
 
-Daha fazla bilgi:
+Daha fazla bilgi edinin:
 
 * [Azure depolama Gelişmiş tehdit korumasına genel bakış](/azure/storage/common/storage-advanced-threat-protection)
 

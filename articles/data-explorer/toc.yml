@@ -90,6 +90,8 @@
       items:
         - name: Power BI
           items:
+            - name: En iyi uygulamalar
+              href: power-bi-best-practices.md
             - name: bağlayıcı
               href: power-bi-connector.md
             - name: içeri aktarılan sorgu

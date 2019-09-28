@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc1e80433a09d8a56f2900ab6b24dd3804db56ac
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086767"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350115"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch havuzlarında Linux işlem düğümleri sağlama
 
@@ -38,7 +38,8 @@ Batch 'de işlem düğümleri havuzu oluşturduğunuzda, düğüm boyutunu ve i�
 **Sanal makine yapılandırması** , işlem düğümleri Için hem Linux hem de Windows görüntülerini sağlar. Kullanılabilir işlem düğüm boyutları, Azure 'daki sanal [makinelere yönelik boyutlarda](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) ve [Azure 'Daki sanal makinelerin boyutlarına](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows) göre listelenmiştir. Sanal makine yapılandırma düğümlerini içeren bir havuz oluşturduğunuzda düğümlerin boyutunu, sanal makine görüntü başvurusunu ve düğümlere yüklenecek Batch düğümü aracı SKU 'sunu belirtmeniz gerekir.
 
 ### <a name="virtual-machine-image-reference"></a>Sanal makine görüntüsü başvurusu
-Batch hizmeti, sanal makine yapılandırmasında işlem düğümleri sağlamak için [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanır. [Azure Marketi][vm_marketplace]'nden bir görüntü belirtebilir veya hazırladığınız özel bir görüntü sağlayabilirsiniz. Özel görüntüler hakkında daha fazla bilgi için bkz. [özel bir görüntü ile havuz oluşturma](batch-custom-images.md).
+
+Batch hizmeti, sanal makine yapılandırmasında işlem düğümleri sağlamak için [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanır. [Azure Marketi][vm_marketplace]'nden bir görüntü belirtebilir veya hazırladığınız özel bir görüntü sağlayabilirsiniz. Özel görüntüler hakkında daha fazla bilgi için bkz. [paylaşılan görüntü Galerisi ile havuz oluşturma](batch-sig-images.md).
 
 Bir sanal makine görüntü başvurusunu yapılandırdığınızda, sanal makine görüntüsünün özelliklerini belirtirsiniz. Bir sanal makine görüntü başvurusu oluştururken aşağıdaki özellikler gereklidir:
 

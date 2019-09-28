@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: atsenthi
-ms.openlocfilehash: 8cb35d6265bafe2b259774a55119d33f8ae94fe9
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 776d330e36e6bcafe610bbab54e13ff6c41e2edf
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599246"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350284"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric ReliableConcurrentQueue 'a giriş
 Güvenilir eşzamanlı sıra, sıraya alma ve sıradan çıkarma işlemleri için yüksek eşzamanlılık özelliklerine sahip zaman uyumsuz, işlemsel ve çoğaltılan bir sıradır. [Güvenilir sıra](https://msdn.microsoft.com/library/azure/dn971527.aspx) tarafından sağlanan katı FIFO sıralamasını inceleyerek yüksek aktarım hızı ve düşük gecikme süresi sunmak üzere tasarlanmıştır ve bunun yerine en iyi çaba sıralaması sağlar.
@@ -45,17 +45,24 @@ ReliableConcurrentQueue için bir örnek kullanım örneği, [Ileti sırası](ht
 * Sıra, kesin FıFO sıralaması garantisi vermez.
 * Sıra kendi yazma işlemlerini okumaz. Bir öğe bir işlem içinde sıraya alınmışsa, aynı işlem içindeki bir kuyruktan atılamaz.
 * Dekuyruklar birbirinden yalıtılmaz. Öğe *a* Işlem *txna*öğesinde sıraya alınmışsa, yani *txna* yürütülmese de, öğe *a* , eşzamanlı bir işlem *txnb*olarak görünür olmaz.  *Txna* durdurulduğunda, *bir* , hemen *txnb* olarak görünür hale gelir.
-* *Trtypeınfo ' zaman uyumsuz* davranışı, bir *Trydequeueasync* kullanılarak uygulanabilir ve sonra işlem iptal edilebilir. Programlama desenleri bölümünde buna bir örnek bulabilirsiniz.
+* *Trtypeınfo ' zaman uyumsuz* davranışı, bir *Trydequeueasync* kullanılarak uygulanabilir ve sonra işlem iptal edilebilir. Bu davranışa bir örnek, programlama desenleri bölümünde bulunabilir.
 * Sayı işlemsel değil. Kuyruktaki öğe sayısının bir fikrini almak için kullanılabilir, ancak bir noktayı temsil eder ve üzerinde güvenlenemez.
 * İşlem etkin durumdayken, sistem üzerinde performans etkisi olabilecek uzun süreli işlemlere engel olmak için, kuyruğa alınmış öğeler üzerinde pahalı işlemler gerçekleştirilmemelidir.
 
 ## <a name="code-snippets"></a>Kod Parçacıkları
 Birkaç kod parçacığı ve bunların beklenen çıktılarına bakmamıza izin verin. Özel durum işleme bu bölümde yok sayıldı.
 
+### <a name="instantiation"></a>Başlatıldığında
+Güvenilir bir eşzamanlı kuyruğun bir örneğini oluşturmak, diğer güvenilir koleksiyona benzer.
+
+```csharp
+IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IReliableConcurrentQueue<int>>("myQueue");
+```
+
 ### <a name="enqueueasync"></a>EnqueueAsync
 Aşağıda, EnqueueAsync 'in ardından beklenen çıkışları tarafından kullanılması için birkaç kod parçacığı verilmiştir.
 
-- *Durum 1: Tek sıraya alma görevi*
+- *Case 1: Tek sıraya alma görevi @ no__t-0
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -74,7 +81,7 @@ Görevin başarıyla tamamlandığını ve sırayı değiştiren bir eşzamanlı
 > 20, 10
 
 
-- *Durum 2: Paralel sıraya alma görevi*
+- *Case 2: Paralel sıraya alma görevi @ no__t-0
 
 ```
 // Parallel Task 1
@@ -103,7 +110,7 @@ Görevlerin başarıyla tamamlandığını, görevlerin paralel olarak çalışt
 Aşağıda, TryDequeueAsync kullanımına yönelik birkaç kod parçacığı ve ardından beklenen çıktılar verilmiştir. Kuyruğun kuyruktaki şu öğelerle zaten doldurulmuş olduğunu varsayın:
 > 10, 20, 30, 40, 50, 60
 
-- *Durum 1: Tek bir sıradan çıkarma görevi*
+- *Case 1: Tek bir sıradan çıkarma görevi @ no__t-0
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -118,7 +125,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Görevin başarıyla tamamlandığını ve sırayı değiştiren bir eşzamanlı işlem olmadığını varsayın. Kuyruktaki öğelerin sıralaması hakkında çıkarıcı bulunmadığından, öğelerin üçü herhangi bir sırada sıradan kaldırılabilir. Sıra, öğeleri özgün (sıraya alınmış) sırada tutmaya çalışır, ancak eşzamanlı işlemler veya hatalar nedeniyle bunları yeniden sıralamak zorunlu olabilir.  
 
-- *Durum 2: Paralel sıradan çıkarma görevi*
+- *Case 2: Paralel sıradan çıkarma görevi @ no__t-0
 
 ```
 // Parallel Task 1
@@ -146,7 +153,7 @@ Görevlerin başarıyla tamamlandığını, görevlerin paralel olarak çalışt
 
 Aynı öğe her iki listede *de görünmez.* Bu nedenle, dequeue1 *10*, *30*ise, dequeue2 *20*, *40*olur.
 
-- *Durum 3: Işlem Iptali Ile sıralamayı sıradan çıkarma*
+- *Case 3: Işlem Iptali Ile sıralamayı sıradan çıkarma @ no__t-0
 
 Uçuş dışı kuyrukla bir işlemi iptal etmek, öğeleri sıranın baş üzerine geri koyar. Sıranın baş üzerine maddelerin geri alındığı sıra garanti edilmez. Aşağıdaki koda bakmamıza izin verin:
 
@@ -174,7 +181,7 @@ Aynı işlem, işlemin başarıyla *tamamlanmadığı*tüm durumlarda geçerlidi
 Bu bölümde, ReliableConcurrentQueue kullanımı yararlı olabilecek birkaç programlama desenlerine bakmamıza izin verin.
 
 ### <a name="batch-dequeues"></a>Toplu iş sıraları
-Önerilen programlama deseninin her seferinde tek bir sıradan çıkarma gerçekleştirmek yerine, kendi sıralarını toplu olarak gerçekleştirmesi için önerilen bir programlama modelidir. Kullanıcı, her toplu iş veya toplu iş boyutu arasındaki gecikmeleri azaltmayı tercih edebilir. Aşağıdaki kod parçacığı, bu programlama modelini gösterir.  Bu örnekte, işlem tamamlandıktan sonra işlemin yapıldığından, işleme sırasında bir hata oluşması durumunda işlenmemiş öğelerin işlenmeksizin kaybedildiğini unutmayın.  Alternatif olarak, işlem işlemin kapsamı içinde yapılabilir, ancak bu durum performansı olumsuz etkileyebilir ve zaten işlenmiş olan öğelerin işlenmesini gerektirir.
+Önerilen programlama deseninin her seferinde tek bir sıradan çıkarma gerçekleştirmek yerine, kendi sıralarını toplu olarak gerçekleştirmesi için önerilen bir programlama modelidir. Kullanıcı, her toplu iş veya toplu iş boyutu arasındaki gecikmeleri azaltmayı tercih edebilir. Aşağıdaki kod parçacığı, bu programlama modelini gösterir. Bu örnekte, işlem tamamlandıktan sonra işlemin yapıldığından, işleme sırasında bir hata oluşması durumunda işlenmemiş öğelerin işlenmeksizin kaybedilmesi gerekir.  Alternatif olarak, işlem işlemin kapsamı içinde yapılabilir, ancak performans üzerinde olumsuz bir etkiye sahip olabilir ve zaten işlenmiş olan öğelerin işlenmesini gerektirir.
 
 ```
 int batchSize = 5;
@@ -337,7 +344,7 @@ using (var txn = this.StateManager.CreateTransaction())
 ```
 
 ## <a name="must-read"></a>Okunmalıdır
-* [Reliable Services hızlı başlangıç](service-fabric-reliable-services-quick-start.md)
+* [Hızlı başlangıç Reliable Services](service-fabric-reliable-services-quick-start.md)
 * [Güvenilir Koleksiyonlar ile çalışma](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services bildirimleri](service-fabric-reliable-services-notifications.md)
 * [Reliable Services yedekleme ve geri yükleme (olağanüstü durum kurtarma)](service-fabric-reliable-services-backup-restore.md)

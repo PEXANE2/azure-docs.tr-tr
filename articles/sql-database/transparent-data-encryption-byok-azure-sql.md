@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 07/18/2019
-ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095ecc360e5639a5d47dff4bc4675fc237cf81da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596703"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348927"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure SQL Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarlarla: Kendi Anahtarını Getir desteği
 
@@ -60,7 +60,7 @@ TDE, Key Vault ' dan bir TDE koruyucusu kullanacak şekilde yapılandırıldığ
 - Azure Key Vault ve Azure SQL veritabanı/yönetilen örneğinin aynı kiracıda yer aldığından emin olun.  Platformlar arası anahtar kasası ve sunucu etkileşimleri **desteklenmez**.
 - Bir kiracı taşıma planlıyorsanız, AKV ile TDE yeniden yapılandırılması gerekir, [kaynakları taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)hakkında daha fazla bilgi edinin.
 - TDE Azure Key Vault ile yapılandırırken, yük, yinelenen sarmalama/sarmalama işlemlerine göre anahtar kasasında yer alan yükü göz önünde bulundurmanız önemlidir. Örneğin, bir SQL veritabanı sunucusuyla ilişkili tüm veritabanları aynı TDE koruyucuyu kullandığından, sunucuda veritabanları olduğundan, bu sunucunun yük devretmesi kasada çok sayıda anahtar işlem tetikleyecektir. Deneyimimize ve belgelenen [Anahtar Kasası hizmeti sınırlarına](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)bağlı olarak, en çok 500 standart/genel amaçlı ya da 200 Premium/iş açısından kritik veritabanlarının tek bir abonelikte tek bir Azure Key Vault ilişkilendirilmesi önerilir ve tutarlı bir şekilde yüksek Kasadaki TDE koruyucuya erişirken kullanılabilirlik.
-- Önerilen Şirket içinde TDE koruyucunun bir kopyasını saklayın.  Bu, TDE koruyucu yerel olarak bir tde koruyucusu oluşturmak için bir HSM cihazının ve bir TDE 'nın yerel bir kopyasını depolayabileceği bir anahtar Emanet sistemi gerektirir.  [Yerel BIR HSM 'den Azure Key Vault bir anahtarı aktarmayı](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)öğrenin.
+- Önerilen: Şirket içinde TDE koruyucunun bir kopyasını saklayın.  Bu, TDE koruyucu yerel olarak bir tde koruyucusu oluşturmak için bir HSM cihazının ve bir TDE 'nın yerel bir kopyasını depolayabileceği bir anahtar Emanet sistemi gerektirir.  [Yerel BIR HSM 'den Azure Key Vault bir anahtarı aktarmayı](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)öğrenin.
 
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Azure Key Vault yapılandırma yönergeleri
@@ -149,7 +149,7 @@ Aşağıdaki bölümde, kurulum ve yapılandırma adımlarının daha ayrıntıl
 - Anahtar kasalarında ["geçici silme" özelliğini etkinleştirmek Için PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) 'i kullanarak iki farklı bölgede Iki Azure Anahtar Kasası oluşturun (Bu seçenek, AKTARıLAN ancak SQL için gereklidir).
 - Anahtarların yedeklenmesi ve geri yüklenmesi için Azure anahtar kasalarının her ikisi de aynı Azure coğrafi konumunda bulunan iki bölgede bulunmalıdır.  SQL coğrafi-Dr gereksinimlerini karşılamak için iki anahtar kasalarının farklı bir coğrafyalar 'da konumlandırılabilmesi gerekiyorsa, anahtarların şirket içi bir HSM 'den içeri aktarılmasını sağlayan [bYok işlemini](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) izleyin.
 - İlk anahtar kasasında yeni bir anahtar oluşturun:  
-  - RSA/RSA-HSA 2048 anahtarı
+  - RSA/RSA-HSM 2048 anahtarı
   - Sona erme tarihi yok
   - Anahtar etkin ve anahtar al ve sarmalama kaldırma işlemleri gerçekleştirme izinlerine sahip
 - Birincil anahtarı yedekleyin ve anahtarı ikinci anahtar kasasına geri yükleyin.  Bkz. [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) and [restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey).
