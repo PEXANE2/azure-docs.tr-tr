@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab593ae33f11fe3e39846c50e9f43f73f80894ba
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265972"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345253"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>Hızlı Başlangıç: Node. js için istemci kitaplığını Kişiselleştir
 
@@ -31,11 +31,21 @@ Node. js için kişiselleştirici istemci kitaplığı ile çalışmaya başlay�
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* [Node. js](https://nodejs.org)' nin geçerli sürümü.
+* Geçerli [Node. js](https://nodejs.org) ve NPM sürümü.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="using-this-quickstart"></a>Bu hızlı başlangıcı kullanma
 
-### <a name="create-a-personalizer-azure-resource"></a>Bir kişiselleştirici Azure kaynağı oluşturma
+
+Bu hızlı başlangıcı kullanmanın birkaç adımı vardır:
+
+* Azure portal, bir kişiselleştirici kaynağı oluşturun
+* Azure portal, kişiselleştirici kaynağı için, **Ayarlar** sayfasında, model güncelleştirme sıklığını değiştirin
+* Kod düzenleyicisinde bir kod dosyası oluşturun ve kod dosyasını düzenleyin
+* Komut satırı veya terminalinde, komut satırından SDK 'Yı yükler
+* Komut satırında veya terminalde, kod dosyasını çalıştırın
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Bir kişiselleştirici Azure kaynağı oluşturma
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak kişiselleştirici için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
@@ -50,7 +60,7 @@ Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ort
 Azure portal, hem anahtar hem de uç nokta değerleri **hızlı başlangıç** sayfasından kullanılabilir.
 
 
-### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
+## <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
 Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. 
 
@@ -64,7 +74,7 @@ mkdir myapp && cd myapp
 npm init -y
 ```
 
-### <a name="install-the-nodejs-library-for-personalizer"></a>Kişiselleştirici için Node. js kitaplığını yükler
+## <a name="install-the-nodejs-library-for-personalizer"></a>Kişiselleştirici için Node. js kitaplığını yükler
 
 Aşağıdaki komutla Node. js için kişiselleştirici istemci kitaplığını yükler:
 
@@ -78,9 +88,9 @@ Bu hızlı başlangıç için kalan NPM paketlerini yükler:
 npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 ```
 
-### <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
+## <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
 
-Azure portal kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
+Azure portal, **Ayarlar** sayfasındaki kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
 
 ![Model güncelleştirme sıklığını Değiştir](./media/settings/configure-model-update-frequency-settings.png)
 

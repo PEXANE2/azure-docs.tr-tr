@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 014a5f264b9beed666f718cda52d197381d58876
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266249"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345326"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Hızlı Başlangıç: Python için istemci kitaplığını Kişiselleştir
 
@@ -33,9 +33,19 @@ Python için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="using-this-quickstart"></a>Bu hızlı başlangıcı kullanma
 
-### <a name="create-a-personalizer-azure-resource"></a>Bir kişiselleştirici Azure kaynağı oluşturma
+
+Bu hızlı başlangıcı kullanmanın birkaç adımı vardır:
+
+* Azure portal, bir kişiselleştirici kaynağı oluşturun
+* Azure portal, kişiselleştirici kaynağı için, **Ayarlar** sayfasında, model güncelleştirme sıklığını değiştirin
+* Kod düzenleyicisinde bir kod dosyası oluşturun ve kod dosyasını düzenleyin
+* Komut satırı veya terminalinde, komut satırından SDK 'Yı yükler
+* Komut satırında veya terminalde, kod dosyasını çalıştırın
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Bir kişiselleştirici Azure kaynağı oluşturma
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://portal.azure.com/) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak kişiselleştirici için bir kaynak oluşturun. Daha fazla ayrıntı için lütfen Azure portal kullanarak bilişsel [Hizmetler kaynağı oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) bölümüne bakın. Aşağıdakileri de yapabilirsiniz:
 
@@ -50,7 +60,7 @@ Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ort
 Azure portal, hem anahtar hem de uç nokta değerleri **hızlı başlangıç** sayfasından kullanılabilir.
 
 
-### <a name="install-the-python-library-for-personalizer"></a>Kişiselleştirici için Python kitaplığını yükler
+## <a name="install-the-python-library-for-personalizer"></a>Kişiselleştirici için Python kitaplığını yükler
 
 Python için kişiselleştirici istemci kitaplığını aşağıdaki komutla birlikte yükler:
 
@@ -60,9 +70,9 @@ pip install azure-cognitiveservices-personalizer
 
 Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGet paketi olarak kullanılabilir.
 
-### <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
+## <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
 
-Azure portal kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
+Azure portal, **Ayarlar** sayfasındaki kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
 
 ![Model güncelleştirme sıklığını Değiştir](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -92,7 +102,7 @@ Tercih ettiğiniz düzenleyicide veya IDE 'de adlı `sample.py`yeni bir Python u
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
-Proje dizininden, **program.cs** dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Mevcut `using` kodu aşağıdaki `using` yönergelerle değiştirin:
+Proje dizininden, **Sample.py** dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Aşağıdakileri ekleyin:
 
 [!code-python[Add module dependencies](~/samples-personalizer/quickstarts/python/sample.py?name=Dependencies)]
 

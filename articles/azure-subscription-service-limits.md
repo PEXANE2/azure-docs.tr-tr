@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71018503"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345559"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet sınırları, kotalar ve kısıtlamalar
 Bu belgede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure limitlerin bazıları listelenir. Bu belge şu anda tüm Azure hizmetlerini kapsamıyor. Zamanla, liste genişletilir ve daha fazla hizmeti kapsayacak şekilde güncelleştirilir.
@@ -94,6 +94,7 @@ Aşağıdaki sınırlar listesinde, yeni bir tablo Azure Resource Manager kullan
   * [Özel bağlantı](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Sanal Ağ](#networking-limits)
+  * [Sanal WAN](#virtual-wan-limits)
 * [Notification Hubs](#notification-hubs-limits)
 * [Kaynak grubu](#resource-group-limits)
 * [Rol tabanlı erişim denetimi](#role-based-access-control-limits)
@@ -161,6 +162,9 @@ Azure Machine Learning Işlem kotaları için en son değerler [Azure Machine Le
 
 #### <a name="expressroute-limits"></a>ExpressRoute limitleri
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
+
+#### <a name="virtual-wan-limits"></a>Sanal WAN sınırları
+[!INCLUDE [virtual-wan-limits](../includes/virtual-wan-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Application Gateway sınırları
 

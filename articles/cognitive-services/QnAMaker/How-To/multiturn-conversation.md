@@ -11,24 +11,24 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: diberry
-ms.openlocfilehash: 585dc03503a61ff6666d3da3374586287e24283f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 318df27ebb822f49c1f8881d0bf68ac7167dea36
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966692"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351290"
 ---
-# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Bir konuşmanın birden çok kümesini oluşturmak için izleme istemleri kullanın
+# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Birden çok konuşma geçişi oluşturmak için takip istemlerini kullanma
 
-Botunuzun bir sorudan diğerine kadar olan birden çok dönüşi yönetmek için izlemekomut istemlerini ve bağlamını kullanın.
+Botunuzun bir sorudan diğerine kadar olan birden çok _dönüşi yönetmek_için izleme komut istemlerini ve bağlamını kullanın.
 
 Çoklu açma işlevinin nasıl çalıştığını görmek için aşağıdaki tanıtım videosunu görüntüleyin:
 
-[![Soru-Cevap Oluşturma çoklu oturum konuşması](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
+[![Çok yönlü konuşma Soru-Cevap Oluşturma](../media/conversational-context/youtube-video.png)](https://aka.ms/multiturnexample)
 
 ## <a name="what-is-a-multi-turn-conversation"></a>Çoklu açma konuşması nedir?
 
-Bazı sorular tek bir sırayla yanıtlanamaz. İstemci uygulaması (sohbet botu) konuşmalarınızı tasarlarken, bir kullanıcı doğru yanıtı belirleyebilmek için filtrelenen veya iyileştirilmesi gereken bir soru sorabilir. Bu akışı, kullanıcıyı *takip*eden istemlerle sunarak mümkün olan sorulara göre yaparsınız.
+Bazı sorular tek bir sırayla yanıtlanamaz. İstemci uygulaması (sohbet botu) konuşmalarınızı tasarlarken, bir kullanıcı doğru yanıtı belirleyebilmek için filtrelenen veya iyileştirilmesi gereken bir soru sorabilir. Bu akışı, kullanıcıyı *takip eden istemlerle*sunarak mümkün olan sorulara göre yaparsınız.
 
 Bir Kullanıcı soru sorarsa, Soru-Cevap Oluşturma yanıtı _ve_ herhangi bir izleme istemini döndürür. Bu yanıt, izleme sorularını seçimler halinde sunmanıza olanak tanır. 
 
@@ -67,7 +67,7 @@ PDF belgesini içeri aktardığınızda, Soru-Cevap Oluşturma konuşma akışı
 1. Mevcut bir Soru-Cevap Oluşturma hizmeti oluşturun veya kullanın. Önceki Microsoft Surface örneğinde, PDF dosyası daha küçük bir katman için çok büyük olduğundan, **B** (15 dizin) veya daha büyük bir **arama hizmetiyle** soru-cevap oluşturma bir hizmet kullanın.
 1. Bilgi tabanınız için **yüzey el ile**gibi bir ad girin.
 1. **URL 'ler,. PDF veya. docx dosyalarından çoklu açmayı etkinleştir** onay kutusunu seçin. 
-1. Yüzey el ile URL 'sini **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** seçin.
+1. **@No__t-1**yüzeyi El Ile URL 'sini seçin.
 
 1. **KB 'Nizi oluştur** düğmesini seçin. 
 
@@ -195,7 +195,7 @@ Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bi
 
 ## <a name="a-json-request-to-return-an-initial-answer-and-follow-up-prompts"></a>Bir başlangıç yanıtı ve izleme istemleri döndüren bir JSON isteği
 
-Kullanıcının sorusunun yanıtını `context` istemek ve izleme istemleri eklemek için boş nesneyi kullanın. 
+Kullanıcının sorusunun yanıtını istemek ve izleme istemleri eklemek için boş `context` nesnesini kullanın. 
 
 ```JSON
 {
@@ -274,7 +274,7 @@ Yukarıdaki bölüm, **hesaplara ve oturum**açmaya yönelik bir yanıt ve herha
 }
 ```
 
-Dizi, `displayText` özelliğinde ve`qnaId` değerinde metin sağlar. `prompts` Bu yanıtları, konuşma akışında bir sonraki görüntülenmiş seçimler olarak gösterebilir ve ardından seçilen `qnaId` isteği aşağıdaki istekte soru-cevap oluşturma geri gönderebilirsiniz. 
+@No__t-0 dizisi `displayText` özelliğinde ve `qnaId` değerinde metin sağlar. Bu yanıtları, konuşma akışındaki sonraki görüntülenmiş seçimler olarak gösterebilir ve sonra seçili `qnaId` ' ı aşağıdaki istekte Soru-Cevap Oluşturma geri gönderebilirsiniz. 
 
 <!--
 
@@ -284,7 +284,7 @@ The `promptsToDelete` array provides the ...
 
 ## <a name="a-json-request-to-return-a-non-initial-answer-and-follow-up-prompts"></a>İlk yanıt olmayan yanıt ve izleme istemlerini döndüren JSON isteği
 
-`context` Nesneyi önceki bağlamı içerecek şekilde doldurur.
+@No__t-0 nesnesini önceki bağlamı içerecek şekilde doldurur.
 
 Aşağıdaki JSON isteğinde, geçerli soru, *oturum açmak Için Windows Hello* ve önceki soruda *hesaplar ve oturum açmak*için kullanılır. 
 
@@ -304,7 +304,7 @@ Aşağıdaki JSON isteğinde, geçerli soru, *oturum açmak Için Windows Hello*
 
 ##  <a name="a-json-response-to-return-a-non-initial-answer-and-follow-up-prompts"></a>İlk yanıt olmayan yanıt ve izleme komut istemlerini döndüren JSON yanıtı
 
-Soru-cevap oluşturma _generateanswer_ JSON yanıtı, `context` `answers` nesnedeki ilk öğenin özelliğindeki izleme istemlerini içerir:
+_Generateanswer_ JSON yanıtı Soru-Cevap Oluşturma, `answers` nesnesindeki ilk öğenin `context` özelliğindeki izleme istemlerini içerir:
 
 ```JSON
 {
@@ -364,7 +364,7 @@ Soru-cevap oluşturma _generateanswer_ JSON yanıtı, `context` `answers` nesned
 
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Bilgi Bankası 'nı Soru-Cevap Oluşturma KIMLIĞIYLE sorgulayın
 
-İlk sorunun yanıtında, tüm izleme istemleri ve onunla ilişkili `qnaId` döndürülür. KIMLIĞINIZ olduğuna göre, bunu izleme isteminin istek gövdesinde geçirebilirsiniz. İstek gövdesi `qnaId`öğesini ve bağlam nesnesini içeriyorsa (önceki soru-cevap oluşturma özelliklerini içeren), generateanswer, soru metninin yanıtını bulmak için derecelendirme algoritmasını kullanmak yerine kimliğe göre tam soruyu döndürür. 
+İlk sorunun yanıtında, tüm izleme istemleri ve onunla ilişkili `qnaId` döndürülür. KIMLIĞINIZ olduğuna göre, bunu izleme isteminin istek gövdesinde geçirebilirsiniz. İstek gövdesi `qnaId` ' ı ve bağlam nesnesini (önceki Soru-Cevap Oluşturma özelliklerini içeren) içeriyorsa GenerateAnswer, soru metnini yanıtlamak için derecelendirme algoritmasını kullanmak yerine KIMLIĞE göre tam soruyu döndürür. 
 
 ## <a name="display-prompts-and-send-context-in-the-client-application"></a>İstemci uygulamasında istemleri ve gönderme bağlamını görüntüleme 
 
@@ -382,12 +382,12 @@ FIX - Need to go to parent, then answer column, then edit answer.
 
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Oluşturma API 'SI ile çok yönlü istemlerle Bilgi Bankası oluşturma
 
-[Soru-cevap oluşturma API oluşturma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)' yı kullanarak çok yönlü istemlerle bir bilgi talebi oluşturabilirsiniz. İstemler, `context` `prompts` özelliğin dizisine ekliyor. 
+[Soru-cevap oluşturma API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)'sini kullanarak çok yönlü istemlerle Bilgi Bankası oluşturabilirsiniz. İstemler `context` özelliğinin `prompts` dizisine ekliyor. 
 
 
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Güncelleştirme API 'SI ile çoklu açma istemlerini ekleme veya silme
 
-[Soru-cevap oluşturma Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)'sini kullanarak çok yönlü istemler ekleyebilir veya silebilirsiniz.  İstemler, `context` `promptsToAdd` özelliğin dizisine ve `promptsToDelete` dizisine ekliyor. 
+[Soru-cevap oluşturma Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)'sini kullanarak çok yönlü istemler ekleyebilir veya silebilirsiniz.  İstemler `context` özelliğinin `promptsToAdd` dizisine ve `promptsToDelete` dizisine ekliyor. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

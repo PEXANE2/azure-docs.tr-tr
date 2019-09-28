@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: ca9f8b570ee28b1913c8ec81c66a5b70827c04d6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2a9e3d16f745e8f51d1d375a774d7c687e987efe
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559962"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350813"
 ---
 # <a name="list-entity"></a>Liste varlığı 
 
@@ -61,6 +61,10 @@ Adlı bir listesi uygulamanın olduğu varsayalım `Cities`, şehir adları hava
 ]
 ```
 
+|Veri nesnesi|Varlık adı|Value|
+|--|--|--|
+|Varlık listeleme|`Cities`|`paris`|
+
 Paris için bir eşanlamlı kullanarak başka bir örnek utterance:
 
 `book 2 tickets to roissy`
@@ -81,9 +85,9 @@ Paris için bir eşanlamlı kullanarak başka bir örnek utterance:
 ]
 ```
 
-|Veri nesnesi|Varlık adı|Değer|
+|Veri nesnesi|Varlık adı|Value|
 |--|--|--|
-|Varlığın|`Customer`|`bob jones`|
+|Varlık listeleme|`Cities`|`roissy`|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 3791b2d60b84299fc3b646f7e6585002078b607f
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624251"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350171"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Konuşma Sentezi Biçimlendirme Dili (SSML)
 
@@ -34,7 +34,7 @@ Standart, sinir ve özel sesler hakkında daha fazla bilgi edinmek için bkz. [m
 
 ## <a name="special-characters"></a>Özel karakterler
 
-Metin sentezleştirilmiş konuşmayı dönüştürmek için SSML kullanırken, XML gibi özel karakterlerin, tırnak işaretleri, kesme işareti ve köşeli ayraçlar gibi özel karakterler kaçışına dikkat edilmelidir. Daha fazla bilgi için bkz [. Genişletilebilir Biçimlendirme Dili (XML) 1,0: Ek D](https://www.w3.org/TR/xml/#sec-entexpand).
+Metin sentezleştirilmiş konuşmayı dönüştürmek için SSML kullanırken, XML gibi özel karakterlerin, tırnak işaretleri, kesme işareti ve köşeli ayraçlar gibi özel karakterler kaçışına dikkat edilmelidir. Daha fazla bilgi için bkz. [Genişletilebilir biçimlendirme dili (XML) 1,0: Ek D @ no__t-0.
 
 ## <a name="supported-ssml-elements"></a>Desteklenen SSML öğeleri
 
@@ -185,7 +185,7 @@ Sözcükler arasına duraklamalar (veya kesintiler) eklemek için öğesinikulla
 | gücüyle | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>güçlü</li><li>x-Strong</li></ul> | İsteğe Bağlı |
 | time | Saniye veya milisaniye cinsinden bir duraklama 'nin mutlak süresini belirtir. Geçerli değer örnekleri 2s ve 500 ' dir | İsteğe Bağlı |
 
-| Gücüyle | Açıklama |
+| gücüyle | Açıklama |
 |----------|-------------|
 | Hiçbiri veya hiçbir değer sağlanmazsa | 0 MS |
 | x-zayıf | 250 MS |
@@ -290,7 +290,7 @@ Bürünsel öznitelik değerleri geniş bir aralığa göre değişebildiğinden
 
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
-| perde | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>düşük</li><li>orta</li><li>geniş</li><li>x-yüksek</li><li>default</li></ul></li></ul>. | İsteğe Bağlı |
+| perde | Metnin taban çizgisi aralığını gösterir. Bu aralığı şöyle ifade edebilirsiniz:<ul><li>Sayı olarak ifade edilen ve ardından "Hz" (Hertz) gelen mutlak bir değer. Örneğin, 600Hz.</li><li>"+" Veya "-" işaretinden sonra gelen ve ardından "Hz" veya "St" gelen bir sayı olarak ifade edilen, sıklığı değiştirecek bir miktar belirten göreli bir değer. Örneğin: + 80Hz veya-2ST. "St", değişim biriminin standart Diatonic ölçeğinde bir ton (yarım bir adım) yarısı olan semitone olduğunu gösterir.</li><li>Sabit değer:<ul><li>x-düşük</li><li>düşük</li><li>orta</li><li>Geniş</li><li>x-yüksek</li><li>default</li></ul></li></ul>. | İsteğe Bağlı |
 | kapalı | Sinir sesleriniz için kontur desteklenmez. Dağılım, konuşma çıkışında belirtilen zaman konumlarında bir hedef dizisi olarak konuşma içeriği için değişen değişiklik değişikliklerini temsil eder. Her hedef, parametre çiftleri kümesi tarafından tanımlanır. Örneğin: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her bir parametre kümesindeki ilk değer, metnin süresinin yüzdesi olarak sıklık değişikliğinin konumunu belirtir. İkinci değer, bir göreli değer veya sıklık için bir numaralandırma değeri kullanarak, sıklığı yükseltmek veya azaltmak için miktarı belirtir (bkz `pitch`.). | İsteğe Bağlı |
 | aralığı  | Metin için sıklık aralığını temsil eden bir değer. ' I betimleyen `range` `pitch`mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak ifade edebilirsiniz. | İsteğe Bağlı |
 | derecelendir  | Metnin konuşma oranını gösterir. Şöyle ifade `rate` edebilirsiniz:<ul><li>Varsayılan değer çarpanı olarak davranan sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, fiyata hiçbir değişikliğe neden olmaz. *5* değeri, oranın bir haline neden olur. *3* değeri, ücretle sonuçlanmasına neden olur.</li><li>Sabit değer:<ul><li>x-yavaş</li><li>dığını</li><li>orta</li><li>hızlı</li><li>x-Fast</li><li>default</li></ul></li></ul> | İsteğe Bağlı |
@@ -359,10 +359,62 @@ Sıklık değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir
     </voice>
 </speak>
 ```
+## <a name="say-as-element"></a>as öğesi  
+
+`say-as`, öğe metninin (sayı veya tarih gibi) içerik türünü belirten isteğe bağlı bir öğedir. Bu, metnin nasıl pronounce hakkında konuşma birleştirme altyapısına kılavuzluk sağlar. 
+
+**Söz dizimi**
+
+```XML
+<say-as interpret-as="string" format="digit string" detail="string"> <say-as>
+```
+
+**Öznitelikler**
+
+| Öznitelik | Açıklama | Gerekli / isteğe bağlı |
+|-----------|-------------|---------------------|
+| farklı yorumlama | Öğe metninin içerik türünü gösterir. Türlerin listesi için aşağıdaki tabloya bakın. | Gerekli |
+| format | Belirsiz biçimleri olabilecek içerik türleri için öğenin metninin kesin biçimlendirmesi hakkında ek bilgiler sağlar. SSML bunları kullanan içerik türleri için biçimleri tanımlar (aşağıdaki tabloya bakın). | İsteğe Bağlı |
+| Ayrıntılarını | Söylenen ayrıntı düzeyini gösterir. Örneğin, bu öznitelik konuşma senkiyle motor pronounce noktalama işaretlerinin olmasını isteyebilir. @No__t-0 için tanımlanmış standart değer yok. | İsteğe Bağlı |
+
+<!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
+
+@No__t-0 ve `format` öznitelikleri için desteklenen içerik türleri aşağıda verilmiştir. Yalnızca `interpret-as` Tarih ve saat olarak ayarlandıysa `format` özniteliğini ekleyin.
+
+| farklı yorumlama | format | Korunur |
+|--------------|--------|----------------|
+| address | | Metin bir adres olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Yani "150th mahkeme, Kuzey Doğu Redmond Washington." |
+| Kardinal, sayı | | Metin bir Kardinal sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"Üç alternatif vardır." |
+| karakterler, yazım denetimi | | Metin, tek tek harfler (yazılmış) olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T" olarak. |
+| date  | DMY, mdy, yımd, yıdm, YM, My, MD, DM, d, m, y | Metin bir tarih olarak konuşulur. @No__t-0 özniteliği, tarihin biçimini belirtir (*d = Day, m = month ve y = Year*). Konuşma birleştirme motoru pronounces:<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Bugün Ekim, 2016. |
+| rakamlar, number_digit | | Metin, tek basamaklı bir dizi olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9" olarak |
+| dört | | Metin kesirli bir sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"Bir inç üç sekizde biri." |
+| ordinal  | | Metin bir sıra numarası olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />As "üçüncü seçeneği belirleyin". |
+| unuzdaki  | | Metin telefon numarası olarak konuşulur. @No__t-0 özniteliği bir ülke kodunu temsil eden rakamlar içerebilir. Örneğin, Birleşik Devletler için "1" veya Italya için "39". Konuşma birleştirme altyapısı, bu bilgileri bir telefon numarası söylenişini yönlendirecek şekilde kullanabilir. Telefon numarası da ülke kodunu içerebilir ve bu durumda `format` ' daki ülke kodundan önceliklidir. Konuşma birleştirme motoru pronounces:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />As "My No Area Code 8 8 8 5 5 5 1 2 1 2." |
+| time | hms12, hms24 | Metin bir zaman olarak konuşulur. @No__t-0 özniteliği, saatin 12 saatlik bir saat (hms12) veya 24 saatlik saat (hms24) kullanılarak mı belirtilmediğini belirtir. Saatleri, dakikaları ve saniyeleri temsil eden sayıları ayırmak için iki nokta üst üste kullanın. Geçerli zaman örnekleri aşağıda verilmiştir: 12:35, 1:14:32, 08:15 ve 02:50:45. Konuşma birleştirme motoru pronounces:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"," Parçaları dört bir A 'da eğitme. " |
+
+**Kullanım**
+
+@No__t-0 öğesi yalnızca metin içerebilir.
+
+**Örnek**
+
+Konuşma sennet12 35 Me motoru, "ilk isteğiniz," Ekim 20 10 ' de erken gelişle birlikte en fazla bir yere kadar bir odada yer aldığı için aşağıdaki örneği konuşuyor. "
+ 
+```XML
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice  name="en-US-Jessa24kRUS">
+    <p>
+    Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
+    on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
+    </p>
+</speak>
+```
+
 
 ## <a name="add-recorded-audio"></a>Kayıtlı ses ekleme
 
-`audio`, bir SSML belgesine MP3 sesi eklemenize olanak sağlayan isteğe bağlı bir öğedir. Ses öğesinin gövdesi, ses dosyasının kullanılamadığı veya yürütülemeyebilir olmadığı durumlarda konuşulan düz metin veya SSML biçimlendirmesi içerebilir. `audio` Ayrıca, öğesi metin ve şu öğeleri içerebilir: `phoneme` `p` `audio`, `break`, `s`,,, `prosody`, `say-as`ve. `sub`
+`audio`, bir SSML belgesine MP3 sesi eklemenize olanak sağlayan isteğe bağlı bir öğedir. Ses öğesinin gövdesi, ses dosyasının kullanılamadığı veya yürütülemeyebilir olmadığı durumlarda konuşulan düz metin veya SSML biçimlendirmesi içerebilir. Ayrıca, `audio` öğesi metin ve şu öğeleri içerebilir: `audio`, `break`, `p`, `s`, `phoneme`, `prosody`, `say-as` ve `sub`.
 
 SSML belgesine dahil edilen tüm seslerin bu gereksinimleri karşılaması gerekir:
 
@@ -400,11 +452,11 @@ SSML belgesine dahil edilen tüm seslerin bu gereksinimleri karşılaması gerek
 
 ## <a name="add-background-audio"></a>Arka plan sesi Ekle
 
-`mstts:backgroundaudio` Öğesi SSML belgelerinize arka plan sesi eklemenize (veya metinden konuşmaya sahip bir ses dosyası karıştırabilmeniz) olanak tanır. İle `mstts:backgroundaudio` , metin okuma başlangıcında durarak bir ses dosyasını arka planda döngüye alabilir ve metin okuma sonunda soluklaştırın.
+@No__t-0 öğesi SSML belgelerinize arka plan sesi eklemenize (veya metinden konuşmaya sahip bir ses dosyası karıştırabilmeniz) olanak tanır. @No__t-0 ile bir ses dosyasını arka planda döngüye alabilir, metin okuma başlangıcında soluklaşır ve metin okuma sonunda soluklaştırın.
 
 Belirtilen arka plan sesi metinden konuşmaya veya soluklaştırmadan kısaysa, döngü gerçekleştirilir. Metinden konuşmaya daha uzunsa, bu, silinme bittiğinde durur.
 
-SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak, SSML belgenize Ek ses `audio` eklemek için `voice` öğesi içindeki etiketleri birbirine bağlayabilirsiniz.
+SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak, SSML belgenize Ek ses eklemek için `voice` öğesi içinde `audio` etiketlerini birbirine bağlayabilirsiniz.
 
 **Söz dizimi**
 
@@ -417,9 +469,9 @@ SSML belgesi başına yalnızca bir arka plan ses dosyasına izin verilir. Ancak
 | Öznitelik | Açıklama | Gerekli / isteğe bağlı |
 |-----------|-------------|---------------------|
 | YN | Arka plan ses dosyasının konumunu/URL 'sini belirtir. | SSML belgenizde arka plan sesi kullanılıyorsa gereklidir. |
-| birim | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler** `0` : `100` dahil. Varsayılan değer `1` şeklindedir. | İsteğe Bağlı |
-| FADEIN | Arka plan sesinin saniye cinsinden silinme süresini belirtir. Varsayılan değer `0`, belirme olmaması ile eşdeğerdir. **Kabul edilen değerler** `0` : `10000` dahil.  | İsteğe Bağlı |
-| fadeout | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer, soluklaştırma eşdeğeri olan ' tir `0`. **Kabul edilen değerler** `0` : `10000` dahil.  | İsteğe Bağlı |
+| birim | Arka plan ses dosyasının hacmini belirtir. **Kabul edilen değerler**: `0` ile `100` arasında. Varsayılan değer `1` şeklindedir. | İsteğe Bağlı |
+| FADEIN | Arka plan sesinin saniye cinsinden silinme süresini belirtir. Varsayılan değer `0` ' dır ve bu değer soldurmak için eşittir. **Kabul edilen değerler**: `0` ile `10000` arasında.  | İsteğe Bağlı |
+| fadeout | Arka plan sesinin milisaniye cinsinden silinme süresini belirtir. Varsayılan değer `0` ' dır ve bu, soluklaştırma eşittir. **Kabul edilen değerler**: `0` ile `10000` arasında.  | İsteğe Bağlı |
 
 **Örnek**
 

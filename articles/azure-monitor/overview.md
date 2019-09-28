@@ -12,23 +12,28 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1bc4a7634e864f0e3feb0d33cef3b967e5b6741f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 140a5cba6926e8711f0b70896ade55c11d332e0d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262220"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345303"
 ---
 # <a name="azure-monitor-overview"></a>Azure İzleyiciye Genel Bakış
 
-Azure İzleyici, bulut ve şirket içi ortamlardaki telemetriyi toplamak, analiz etmek ve bunlarda eylem gerçekleştirmek için kapsamlı bir çözüm sunarak uygulamalarınızın kullanılabilirliğini ve performansını en üst düzeye çıkarır. Uygulamalarınızın performansını anlamanıza ve uygulamalarla bağlı oldukları kaynakları etkileyen sorunları önceden tespit etmenize yardımcı olur.
+Azure Izleyici, bulut ve şirket içi ortamlarınızdaki telemetri toplama, çözümleme ve üzerinde işlem yapmaya yönelik kapsamlı bir çözüm sunarak uygulamalarınızın ve hizmetlerinizin kullanılabilirliğini ve performansını en üst düzeye çıkarır. Uygulamalarınızın performansını anlamanıza ve uygulamalarla bağlı oldukları kaynakları etkileyen sorunları önceden tespit etmenize yardımcı olur.
 
-> [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
+Azure Izleyici ile neler yapabileceğinize ilişkin birkaç örnek şunlardır:
+
+- [Application Insights](app/app-insights-overview.md)ile uygulamalarda ve bağımlılıklarda sorunları algılayın ve tanılayın.
+- [VM'ler için Azure izleyici](insights/vminsights-overview.md) ve [kapsayıcılar için Azure izleyici](insights/container-insights-overview.md)ile altyapı sorunlarını ilişkilendirme.
+- Sorun giderme ve ayrıntılı tanılama için [Log Analytics](log-query/log-query-overview.md) izleme verilerinize ulaşın.
+- [Akıllı uyarılarla](platform/alerts-smartgroups-overview.md) ve [Otomatik eylemlerle](platform/alerts-action-rules.md)birlikte işlem sırasında işlemler desteklenir.
+- Azure [panoları](learn/tutorial-logs-dashboards.md) ve [çalışma kitapları](app/usage-workbooks.md)ile görselleştirme oluşturun.
 
 ## <a name="overview"></a>Genel Bakış
 Aşağıdaki diyagramda Azure Izleyici 'nin üst düzey bir görünümü sunulmaktadır. Diyagramın merkezinde, Azure Izleyici tarafından kullanılan iki temel veri türü olan ölçümler ve Günlükler için veri depoları bulunur. Sol tarafta, bu [veri depolarını](platform/data-platform.md)dolduran [izleme verilerinin kaynakları](platform/data-sources.md) bulunur. Sağ tarafta, Azure Izleyici 'nin bu toplanan verilerle (analiz, uyarı ve dış sistemlere akış gibi) gerçekleştirdiği farklı işlevler bulunur.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Azure İzleyiciye Genel Bakış](media/overview/overview.png)
 

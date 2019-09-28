@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3a0761fad32b2cfb0387cca79b6c1c0dc83c8e98
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258890"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345413"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda kaynak, özellik veya değişken yinelemesi
 
-Bu makalede, Azure Resource Manager şablonunuzda bir kaynağın, değişkenin veya özelliğin birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. Birden çok örnek oluşturmak için, `copy` nesneyi şablonunuza ekleyin.
+Bu makalede, Azure Resource Manager şablonunuzda bir kaynağın, değişkenin veya özelliğin birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. Birden çok örnek oluşturmak için şablonunuza `copy` nesnesini ekleyin.
 
 Bir kaynakla birlikte kullanıldığında, Copy nesnesi aşağıdaki biçimdedir:
 
@@ -49,7 +49,7 @@ Bir kaynağın hiç dağıtılıp dağıtılmadığını belirtmeniz gerekiyorsa
 
 Yineleme sayısını belirtmek için Count özelliği için bir değer sağlarsınız. Sayım 800 ' i aşamaz.
 
-Sayı negatif bir sayı olamaz. Azure PowerShell 2,6 veya sonraki bir sürümü veya REST API sürüm **2019-05-10** veya üzeri bir şablon dağıtırsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell 'in önceki sürümleri ve REST API sayısı için sıfır desteği yoktur. Azure CLı Şu anda sayım için sıfır 'yi desteklemez, ancak bu destek gelecekteki bir sürüme eklenecektir.
+Sayı negatif bir sayı olamaz. Azure PowerShell 2,6 veya üzeri, Azure CLı 2.0.74 veya üzeri ya da REST API sürüm **2019-05-10** veya üzeri bir şablon dağıtırsanız, sayıyı sıfıra ayarlayabilirsiniz. PowerShell, CLı ve REST API 'nin önceki sürümleri Count için sıfırı desteklemez.
 
 Kopya ile [tamamlanmış mod dağıtımını](deployment-modes.md) kullanırken dikkatli olun. Tüm modu bir kaynak grubuna yeniden dağıtıyorsanız, kopyalama döngüsü çözümlendikten sonra şablonda belirtilmeyen tüm kaynaklar silinir.
 
@@ -57,7 +57,7 @@ Sayı sınırları, bir kaynak, değişken veya özellik ile birlikte kullanıl�
 
 ## <a name="resource-iteration"></a>Kaynak yinelemesi
 
-Bir kaynağın bir veya daha fazla örneğini oluşturmak için dağıtım sırasında karar vermeniz gerektiğinde, kaynak türüne bir `copy` öğe ekleyin. Copy öğesinde, bu döngü için yineleme sayısını ve bir adı belirtin.
+Bir kaynağın bir veya daha fazla örneğini oluşturmak için dağıtım sırasında karar vermeniz gerektiğinde, kaynak türüne `copy` öğesi ekleyin. Copy öğesinde, bu döngü için yineleme sayısını ve bir adı belirtin.
 
 Birkaç kez oluşturulacak kaynak aşağıdaki biçimi alır:
 
@@ -86,7 +86,7 @@ Birkaç kez oluşturulacak kaynak aşağıdaki biçimi alır:
 }
 ```
 
-Her bir kaynağın adı, döngüsünde geçerli yinelemeyi döndüren `copyIndex()` işlevini içerir. `copyIndex()` sıfır tabanlıdır. Bu nedenle, aşağıdaki örnek:
+Her bir kaynağın adının döngüsünde geçerli yinelemeyi döndüren `copyIndex()` işlevini içerdiğine dikkat edin. `copyIndex()` sıfır tabanlıdır. Bu nedenle, aşağıdaki örnek:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -110,28 +110,28 @@ Dizin değerini kaydırmak için copyIndex () işlevine bir değer geçirebilirs
 * storage2
 * storage3
 
-Dizideki her öğe arasında yineleme yapmak için, diziler ile çalışırken kopyalama işlemi faydalıdır. Yineleme sayısını belirtmek ve `copyIndex` dizideki geçerli dizini almak için dizideki işlevinikullanın.`length` Bu nedenle, aşağıdaki örnek:
+Dizideki her öğe arasında yineleme yapmak için, diziler ile çalışırken kopyalama işlemi faydalıdır. Yineleme sayısını belirtmek için dizideki `length` işlevini kullanın ve dizideki geçerli dizini almak için-1 @no__t. Bu nedenle, aşağıdaki örnek:
 
 ```json
-"parameters": { 
-  "org": { 
-    "type": "array", 
-    "defaultValue": [ 
-      "contoso", 
-      "fabrikam", 
-      "coho" 
-    ] 
+"parameters": {
+  "org": {
+    "type": "array",
+    "defaultValue": [
+      "contoso",
+      "fabrikam",
+      "coho"
+    ]
   }
-}, 
-"resources": [ 
-  { 
-    "name": "[concat('storage', parameters('org')[copyIndex()])]", 
-    "copy": { 
-      "name": "storagecopy", 
-      "count": "[length(parameters('org'))]" 
-    }, 
+},
+"resources": [
+  {
+    "name": "[concat('storage', parameters('org')[copyIndex()])]",
+    "copy": {
+      "name": "storagecopy",
+      "count": "[length(parameters('org'))]"
+    },
     ...
-  } 
+  }
 ]
 ```
 
@@ -143,7 +143,7 @@ Dizideki her öğe arasında yineleme yapmak için, diziler ile çalışırken k
 
 Varsayılan olarak Kaynak Yöneticisi, kaynakları paralel olarak oluşturur. Şablondaki 800 kaynağın toplam sınırının dışında, paralel olarak dağıtılan kaynak sayısına sınır uygulanmaz. Bunların oluşturulma sırası garanti edilmez.
 
-Ancak, kaynakların sırayla dağıtılmasını belirtmek isteyebilirsiniz. Örneğin, bir üretim ortamını güncelleştirirken, yalnızca belirli bir sayının herhangi bir zamanda güncelleştirilmesini sağlamak isteyebilirsiniz. Bir kaynağın birden fazla örneğini seri olarak dağıtmak için, **seri** olarak `batchSize` ve `mode` aynı anda dağıtılacak örnek sayısına ayarlayın. Seri modda Kaynak Yöneticisi, döngüdeki önceki örneklerde bir bağımlılık oluşturur, bu nedenle, önceki toplu işlem tamamlanana kadar bir toplu işlem başlatmaz.
+Ancak, kaynakların sırayla dağıtılmasını belirtmek isteyebilirsiniz. Örneğin, bir üretim ortamını güncelleştirirken, yalnızca belirli bir sayının herhangi bir zamanda güncelleştirilmesini sağlamak isteyebilirsiniz. Bir kaynağın birden fazla örneğini yeniden dağıtmak için, `mode` ' ı **seri** ve `batchSize` ' y i aynı anda dağıtılacak örnek sayısına ayarlayın. Seri modda Kaynak Yöneticisi, döngüdeki önceki örneklerde bir bağımlılık oluşturur, bu nedenle, önceki toplu işlem tamamlanana kadar bir toplu işlem başlatmaz.
 
 Örneğin, depolama hesaplarını tek seferde bir kez dağıtmak için şunu kullanın:
 
@@ -180,13 +180,13 @@ Mode özelliği, varsayılan değer olan **Parallel**öğesini de kabul eder.
 
 ## <a name="property-iteration"></a>Özellik yineleme
 
-Bir kaynaktaki bir özellik için birden fazla değer oluşturmak için, Properties öğesine bir `copy` dizi ekleyin. Bu dizi nesneleri içerir ve her bir nesne aşağıdaki özelliklere sahiptir:
+Bir kaynaktaki bir özellik için birden fazla değer oluşturmak için, Properties öğesine bir `copy` dizisi ekleyin. Bu dizi nesneleri içerir ve her bir nesne aşağıdaki özelliklere sahiptir:
 
 * ad-için birkaç değer oluşturulacak özelliğin adı
 * sayı-oluşturulacak değer sayısı.
-* Input-özelliğe atanacak değerleri içeren nesne  
+* Input-özelliğe atanacak değerleri içeren nesne
 
-Aşağıdaki örnek, bir sanal makinede datadisks özelliğine nasıl uygulanacağını `copy` gösterir:
+Aşağıdaki örnek, bir sanal makinede dataDisks özelliğine `copy` uygulanacağını gösterir:
 
 ```json
 {
@@ -207,9 +207,9 @@ Aşağıdaki örnek, bir sanal makinede datadisks özelliğine nasıl uygulanaca
       ...
 ```
 
-Bir özellik yinelemesi içinde `copyIndex` kullanırken, yinelemenin adını belirtmeniz gerektiğini unutmayın. Kaynak yinelemesi ile kullanıldığında adı sağlamanız gerekmez.
+Özellik yinelemesi içinde `copyIndex` kullanırken yinelemenin adını belirtmeniz gerektiğini unutmayın. Kaynak yinelemesi ile kullanıldığında adı sağlamanız gerekmez.
 
-Kaynak Yöneticisi, `copy` dağıtım sırasında diziyi genişletir. Dizinin adı, özelliğin adı olur. Giriş değerleri nesne özellikleri olur. Dağıtılan şablon şu şekilde olur:
+Kaynak Yöneticisi, dağıtım sırasında `copy` dizisini genişletir. Dizinin adı, özelliğin adı olur. Giriş değerleri nesne özellikleri olur. Dağıtılan şablon şu şekilde olur:
 
 ```json
 {
@@ -302,7 +302,7 @@ Kaynak ve özellik yinelemesini birlikte kullanabilirsiniz. Özellik yinelemesin
 
 ## <a name="variable-iteration"></a>Değişken yineleme
 
-Bir değişkenin birden çok örneğini oluşturmak için, değişkenler bölümünde `copy` özelliğini kullanın. `input` Özelliğindeki değerden oluşturulan bir dizi öğe oluşturursunuz. `copy` Özelliğini bir değişken içinde veya değişkenler bölümünün en üst düzeyinde kullanabilirsiniz. Bir değişken `copyIndex` yinelemesi içinde kullanırken, yinelemenin adını belirtmeniz gerekir.
+Bir değişkenin birden çok örneğini oluşturmak için, değişkenler bölümünde `copy` özelliğini kullanın. @No__t-0 özelliğindeki değerden oluşturulan bir dizi öğe oluşturursunuz. @No__t-0 özelliğini bir değişken içinde veya değişkenler bölümünün en üst düzeyinde kullanabilirsiniz. @No__t-0 ' ı bir değişken yinelemesi içinde kullanırken, yinelemenin adını sağlamanız gerekir.
 
 Dize değerleri dizisi oluşturmaya yönelik basit bir örnek için bkz. [dizi şablonunu kopyalama](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
 
@@ -426,7 +426,7 @@ Ve **en üst düzey dize-dizi** adlı değişken şunu döndürür:
 
 ## <a name="depend-on-resources-in-a-loop"></a>Bir döngüdeki kaynaklara bağlıdır
 
-Bir kaynağın, `dependsOn` öğesini kullanarak başka bir kaynaktan sonra dağıtıldığını belirtirsiniz. Bir döngüde kaynak koleksiyonuna bağlı olan bir kaynağı dağıtmak için, Bağımlıdson öğesinde kopyalama döngüsünün adını sağlayın. Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. Tam sanal makine tanımı gösterilmez. Kopyalama öğesinin adı olarak `storagecopy` ayarlanmış olduğuna ve sanal makinelerin bağımlıdson öğesinin de olarak `storagecopy`ayarlandığından emin olun.
+@No__t-0 öğesini kullanarak başka bir kaynaktan sonra bir kaynağın dağıtıldığını belirtirsiniz. Bir döngüde kaynak koleksiyonuna bağlı olan bir kaynağı dağıtmak için, Bağımlıdson öğesinde kopyalama döngüsünün adını sağlayın. Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. Tam sanal makine tanımı gösterilmez. Copy öğesinin adı `storagecopy` olarak ayarlanmış olduğuna ve sanal makinelerin Bağımlıdson öğesinin de `storagecopy` olarak ayarlandığını unutmayın.
 
 ```json
 {
@@ -450,9 +450,9 @@ Bir kaynağın, `dependsOn` öğesini kullanarak başka bir kaynaktan sonra dağ
       }
     },
     {
-      "apiVersion": "2015-06-15", 
-      "type": "Microsoft.Compute/virtualMachines", 
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
       "dependsOn": ["storagecopy"],
       ...
     }
@@ -488,7 +488,7 @@ Alt kaynak için bir kopyalama döngüsü kullanamazsınız. Genellikle başka b
 
 Birden fazla veri kümesi oluşturmak için veri fabrikası dışına taşıyın. Veri kümesi Data Factory ile aynı düzeyde olmalıdır, ancak yine de Data Factory 'nin bir alt kaynağıdır. Veri kümesi ve Veri Fabrikası arasındaki ilişkiyi tür ve ad özellikleriyle koruyabilirsiniz. Tür artık şablondaki konumundan çıkarsanamıyor, tam türü şu biçimde sağlamanız gerekir: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
-Veri fabrikasının bir örneğiyle üst/alt ilişkisi kurmak için, üst kaynak adını içeren veri kümesi için bir ad sağlayın. Şu biçimi kullanın: `{parent-resource-name}/{child-resource-name}`.  
+Veri fabrikasının bir örneğiyle üst/alt ilişkisi kurmak için, üst kaynak adını içeren veri kümesi için bir ad sağlayın. Şu biçimi kullanın: `{parent-resource-name}/{child-resource-name}`.
 
 Aşağıdaki örnek, uygulamayı göstermektedir:
 

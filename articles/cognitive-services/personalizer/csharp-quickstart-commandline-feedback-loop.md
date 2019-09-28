@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 2289c21fcc172c8dffd7d6b3f9c0e2e11736e71a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265994"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345224"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>Hızlı Başlangıç: .NET için istemci kitaplığını kişiselleştirin
 
@@ -33,9 +33,17 @@ Bu C# hızlı başlangıçta kişiselleştirilmiş Içeriği kişiselleştirici 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="using-this-quickstart"></a>Bu hızlı başlangıcı kullanma
 
-### <a name="create-a-personalizer-azure-resource"></a>Bir kişiselleştirici Azure kaynağı oluşturma
+Bu hızlı başlangıcı kullanmanın birkaç adımı vardır:
+
+* Azure portal, bir kişiselleştirici kaynağı oluşturun
+* Azure portal, kişiselleştirici kaynağı için, **Ayarlar** sayfasında, model güncelleştirme sıklığını değiştirin
+* Kod düzenleyicisinde bir kod dosyası oluşturun ve kod dosyasını düzenleyin
+* Komut satırı veya terminalinde, komut satırından SDK 'Yı yükler
+* Komut satırında veya terminalde, kod dosyasını çalıştırın
+
+## <a name="create-a-personalizer-azure-resource"></a>Bir kişiselleştirici Azure kaynağı oluşturma
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak kişiselleştirici için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
@@ -50,15 +58,15 @@ Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ort
 
 Azure portal, hem anahtar hem de uç nokta değerleri **hızlı başlangıç** sayfasından kullanılabilir.
 
-### <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
+## <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
 
-Azure portal kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
+Azure portal, **Ayarlar** sayfasındaki kişiselleştirici kaynağında, **model güncelleştirme sıklığını** 10 saniye olarak değiştirin. Bu, hizmeti hızlı bir şekilde eğitecektir ve her yineleme için en iyi eylem değişikliğini görmenizi sağlar.
 
 ![Model güncelleştirme sıklığını Değiştir](./media/settings/configure-model-update-frequency-settings.png)
 
 Bir kişiselleştirici döngüsü ilk kez oluşturulduğunda, üzerinden eğitelenecek bir API çağrısı olmadığından model yoktur. Sıralama çağrıları her öğe için eşit olasılıklara dönüşe sahip olur. Uygulamanız hala Rewarterctionıd çıkışını kullanarak içeriği her zaman derecelendirmelidir.
 
-### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
+## <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
 
 Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun. 
 
@@ -84,7 +92,7 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-sdk"></a>SDK yükle
+## <a name="install-the-sdk"></a>SDK yükle
 
 Uygulama dizini içinde, aşağıdaki komutla .NET için kişiselleştirici istemci Kitaplığı ' nı yükleyeceksiniz:
 
