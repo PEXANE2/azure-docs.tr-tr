@@ -38,9 +38,9 @@ Bu uzantı, belirli işletim sistemi sürümü için sürücü desteğine bağl�
 
 | Dağıtım | Version |
 |---|---|
-| Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
-| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6 |
-| Linux: CentOS | 7,3, 7,4, 7,5, 7,6 |
+| Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
+| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
+| Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
@@ -75,8 +75,8 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 | Name | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft. HpcCompute | string |
-| type | NvidiaGpuDriverLinux | dize |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>Ayarlar
@@ -86,7 +86,7 @@ Tüm ayarlar isteğe bağlıdır. Varsayılan davranış, sürücü yüklemesi i
 | Name | Açıklama | Default Value | Geçerli Değerler | Veri Türü |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Sürücü yüklemesi için gerekli olmasa bile çekirdeği Güncelleştir | false | true, false | boolean |
-| driverVersion | DÜZENLEME KıLAVUZ sürücüsü sürümü<br> NC/ND: CUDA araç seti sürümü. Seçilen CUDA için en son sürücüler otomatik olarak yüklenir. | latest | ÇIZGISI "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA "10.0.130", "9.2.88", "9.1.85" | dize |
+| driverVersion | DÜZENLEME KıLAVUZ sürücüsü sürümü<br> NC/ND: CUDA araç seti sürümü. Seçilen CUDA için en son sürücüler otomatik olarak yüklenir. | latest | ÇIZGISI "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA "10.0.130", "9.2.88", "9.1.85" | string |
 | ınstallcuda | CUDA araç setini yükler. Yalnızca NC/ND serisi VM 'Ler için geçerlidir. | true | true, false | boolean |
 
 
