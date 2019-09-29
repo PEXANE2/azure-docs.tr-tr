@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 09/26/2019
 ms.author: juliako
-ms.openlocfilehash: a7d178972a8c8b413e3c6336c403348f1eb78abb
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232603"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672652"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -27,6 +27,26 @@ ms.locfileid: "70232603"
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlev
+
+## <a name="september-2019"></a>Eylül 2019
+ 
+IBC 2019 ' de birden çok terfi duyurusu:
+ 
+* Animasyonlu karakter tanıma (Genel Önizleme)
+
+    Özel Vision ile tümleştirme yoluyla, animasyonlu içerikte grup ad tanıma karakterlerini algılama özelliği. Daha fazla bilgi için bkz. [animasyonlu karakter algılama](animated-characters-recognition.md).
+* Çoklu dil tanımlama (Genel Önizleme)
+
+    Ses kanalında birden çok dildeki segmentleri algılayın ve bunlara göre çok dilli bir döküm oluşturun. İlk destek: İngilizce, Ispanyolca, Almanca ve Fransızca. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
+* Kişiler ve konum için adlandırılmış varlık ayıklama
+
+    Marka, konum ve kişileri, doğal dil işleme (NLP) aracılığıyla konuşma ve görsel metinden ayıklar.
+* Düzenleme görüntüsü türü sınıflandırması
+
+    Yakın, orta görüntü, iki görüntü, ınkapılı, dış mek, vb. gibi düzenleme türleri ile anlık görüntü etiketleme. Daha fazla bilgi için bkz. [düzenleme görüntüsü türü algılama](scenes-shots-keyframes.md#editorial-shot-type-detection).
+* Konu düğümü Netleştirme geliştirme-artık düzey 2 ' ye sahip
+    
+    Bu konu başlığı altında, ıPTC sınıflandırmanın daha derin ayrıntı düzeyi artık desteklenir. [Yeni Azure MEDIA SERVICES AI destekli yeniliklerin](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/)tüm ayrıntılarını okuyun.
 
 ## <a name="august-2019"></a>Ağustos 2019
  

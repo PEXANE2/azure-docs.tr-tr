@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 9d89bc2318049f068b2bab8c0345605458678b41
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 463cd350eb3c878a7d080cdfa7c8e0fabffd1a93
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350688"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672679"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -264,21 +264,27 @@ Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam ed
 
 ## <a name="firewall-configuration-ip-addresses"></a>Güvenlik duvarı yapılandırması: IP adresleri
 
-Aynı bölgedeki tüm mantıksal uygulamalar aynı IP adresi aralıklarını kullanır. Mantıksal uygulamalarınızın [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)ve diğer http istekleriyle doğrudan yaptığı çağrıları desteklemek için, Logic Apps tarafından kullanılan *Tüm* [gelen](#inbound) *ve* [giden](#outbound) IP adresleriyle güvenlik duvarlarını ayarlayın mantıksal uygulamalarınızın bulunduğu bölgelere göre hizmet. Bu adresler, bu bölümdeki **gelen** ve **giden** başlıkların altında görüntülenir ve bölgeye göre sıralanır.
+Azure Logic Apps gelen ve giden çağrılar için kullandığı IP adresleri, mantıksal uygulamanızın bulunduğu bölgeye göre değişir. Aynı bölgedeki *Tüm* mantıksal uygulamalar aynı IP adresi aralıklarını kullanır.
 
-[Microsoft tarafından yönetilen bağlayıcıların](../connectors/apis-list.md) yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre bu bağlayıcılar tarafından kullanılan *Tüm* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **giden** başlık altında görüntülenir ve bölgeye göre sıralanır. Bir tümleştirme hizmeti ortamında (ıSE) çalışan Logic Apps için, [Bu bağlantı noktalarını açtığınızdan](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)emin olun.
+> [!NOTE]
+> **Http** ve **http + openapı** istekleri gibi bazı Microsoft Flow çağrılar, doğrudan Azure Logic Apps hizmeti aracılığıyla doğrudan gıder ve burada listelenen IP adreslerinden gelir. Microsoft Flow tarafından kullanılan IP adresleri hakkında daha fazla bilgi için, [Microsoft Flow Içindeki sınırlara ve yapılandırmaya](https://docs.microsoft.com/flow/limits-and-config#ip-address-configuration)bakın.
 
-Özel Bağlayıcılar, [Azure Kamu](../azure-government/documentation-government-overview.md)ve [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/)için, sabit veya ayrılmış IP adresleri kullanılamaz.
+* Mantıksal uygulamalarınızın [http](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)ve diğer http istekleriyle doğrudan yaptığı çağrıları desteklemek için, Logic Apps tarafından kullanılan *Tüm* [gelen](#inbound) *ve* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın mantıksal uygulamalarınızın bulunduğu bölgelere göre hizmet. Bu adresler, bu bölümdeki **gelen** ve **giden** başlıkların altında görüntülenir ve bölgeye göre sıralanır.
+
+* [Microsoft tarafından yönetilen bağlayıcıların](../connectors/apis-list.md) yaptığı çağrıları desteklemek için, mantıksal uygulamalarınızın bulunduğu bölgelere göre bu bağlayıcılar tarafından kullanılan *Tüm* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler, bu bölümdeki **giden** başlık altında görüntülenir ve bölgeye göre sıralanır. 
+
+* Bir tümleştirme hizmeti ortamında (ıSE) çalışan Logic Apps için, [Bu bağlantı noktalarını açtığınızdan](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)emin olun.
+
+* Logic Apps, [güvenlik duvarı kuralları](https://docs.microsoft.com/azure/storage/common/storage-network-security) olan ve aynı bölgede bulunan Azure depolama hesaplarına doğrudan erişemez. Ancak, bölgeler arasında iletişim kurmak için genel bir IP adresi kullanıldığından, Logic Apps, farklı bir bölgede bulunan Azure depolama hesaplarına erişebilirler. Ya da her iki seçeneği de kullanabilirsiniz:
+
+  * Bir Azure sanal ağındaki kaynaklara bağlanabilecek bir [tümleştirme hizmeti ortamı](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturun.
+
+  * Zaten API Management kullanıyorsanız bu hizmeti bu senaryo için kullanabilirsiniz. Daha fazla bilgi için bkz. [basit kurumsal tümleştirme mimarisi](https://aka.ms/aisarch).
+
+* Özel Bağlayıcılar, [Azure Kamu](../azure-government/documentation-government-overview.md)ve [Azure Çin 21Vianet](https://docs.microsoft.com/azure/china/)için, sabit veya ayrılmış IP adresleri kullanılamaz.
 
 > [!IMPORTANT]
->
-> Mevcut yapılandırmalara sahipseniz, lütfen bunları **1 eylül 2018 ' den önce mümkün olan en kısa sürede** , mantıksal uygulamalarınızın bulunduğu bölgeler için bu listelerdeki IP adreslerini içermesi ve bunlara eşleştirmek için güncelleştirin.
-
-Logic Apps, Azure Storage hesaplarına güvenlik duvarları aracılığıyla doğrudan bağlanmayı desteklemez. Bu depolama hesaplarına erişmek için şu seçeneklerden birini kullanın:
-
-* Bir Azure sanal ağındaki kaynaklara bağlanabilecek bir [tümleştirme hizmeti ortamı](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturun.
-
-* Zaten API Management kullanıyorsanız bu hizmeti bu senaryo için kullanabilirsiniz. Daha fazla bilgi için bkz. [basit kurumsal tümleştirme mimarisi](https://aka.ms/aisarch).
+> 1 Eylül 2018 ' den önce ayarladığınız güvenlik duvarı yapılandırmalarına sahipseniz, mantıksal uygulamalarınızın bulunduğu bölgeler için bu listelerdeki geçerli IP adresleriyle eşleştiğinden emin olun.
 
 <a name="inbound"></a>
 

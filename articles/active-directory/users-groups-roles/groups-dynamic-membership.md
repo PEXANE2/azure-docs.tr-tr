@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909778"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673418"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -64,7 +64,7 @@ user.department -eq "Sales"
 
 Parantezler tek bir ifade için isteğe bağlıdır. Üyelik kuralınız gövdesinin toplam uzunluğu 2048 karakteri aşamaz.
 
-# <a name="constructing-the-body-of-a-membership-rule"></a>Üyelik kuralının gövdesini oluşturma
+## <a name="constructing-the-body-of-a-membership-rule"></a>Üyelik kuralının gövdesini oluşturma
 
 Bir grubu Kullanıcı veya cihazlarla otomatik olarak dolduran bir üyelik kuralı, doğru veya yanlış bir sonuç elde eden bir ikili ifadedir. Basit bir kuralın üç bölümü şunlardır:
 
@@ -86,14 +86,14 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 
 ### <a name="properties-of-type-boolean"></a>Boole türü özellikleri
 
-| Özellikler | İzin verilen değerler | Kullanım |
+| properties | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
 | accountEnabled |doğru yanlış |User. accountEnabled-EQ doğru |
 | dirSyncEnabled |doğru yanlış |User. dirSyncEnabled-EQ doğru |
 
 ### <a name="properties-of-type-string"></a>Dize türü özellikleri
 
-| Özellikler | İzin verilen değerler | Kullanım |
+| properties | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
 | city |Herhangi bir dize değeri veya *null* |(User. City-EQ "değer") |
 | Ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
@@ -124,7 +124,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 
 ### <a name="properties-of-type-string-collection"></a>Dize koleksiyonu türü özellikleri
 
-| Özellikler | İzin verilen değerler | Kullanım |
+| properties | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
 | Diğer postalar |Herhangi bir dize değeri |(User. Otherpostalarını-"alias@domain" içerir) |
 | proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-"SMTP: alias@domain" içerir) |
@@ -249,7 +249,7 @@ Bir üyelik kuralı, özelliklerin, işleçlerin ve değerlerin daha karmaşık 
 
 Birden çok değerli özellikler aynı türdeki nesne koleksiyonlarıdır. -Any ve-All mantıksal işleçlerini kullanarak Üyelik kuralları oluşturmak için kullanılabilirler.
 
-| Özellikler | Değerler | Kullanım |
+| properties | Değerler | Kullanım |
 | --- | --- | --- |
 | assignedPlans | Koleksiyondaki her nesne şu dize özelliklerini kullanıma sunar: capabilityStatus, Service, Serviceplanıd |User. assignedPlans-any (assignedPlan. Serviceplanıd-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-ve assignedPlan. capabilityStatus-EQ "Enabled") |
 | proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -Contains "contoso")) |

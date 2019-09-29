@@ -4,17 +4,17 @@ description: Yüksek oranda kullanılabilir bir uygulamayı kesintileri işleyec
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1a5d80d6cd31621f8c3931b1845050f0a212ef08
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036614"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673122"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama
 
@@ -27,7 +27,7 @@ Coğrafi olarak yedekli çoğaltma için yapılandırılan depolama hesapları, 
 
 Bu makalede, uygulamanızı birincil bölgedeki bir kesinti işleyecek şekilde nasıl tasarlayacağız. Birincil bölge kullanılamaz duruma gelirse, uygulamanız bunun yerine ikincil bölgeye karşı okuma işlemleri gerçekleştirmeye uyarlayabilir. Başlamadan önce depolama hesabınızın RA-GRS veya RA-GZRS için yapılandırıldığından emin olun.
 
-Hangi birincil bölgelerin hangi ikincil bölgelere eşleştirildiği hakkında daha fazla bilgi için bkz [. iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Eşleştirilmiş Azure Bölgeleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Hangi birincil bölgelerin hangi ikincil bölgelere eşleştirildiği hakkında bilgi için bkz. [Iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Eşleştirilmiş Azure Bölgeleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Bu makaleye dahil kod parçacıkları vardır ve sonunda, indirebileceğiniz ve çalıştırabileceğiniz bir bütün örneğe yönelik bir bağlantı bulunur.
 
@@ -104,7 +104,7 @@ Azure Storage istemci kitaplığı, hangi hataların yeniden deneneceği tespit 
 
 Birincil depolamayla ilgili bir sorun varsa okuma istekleri ikincil depolamaya yönlendirilebilir. En [sonunda tutarlı verileri kullanma](#using-eventually-consistent-data)bölümünde belirtildiği gibi, uygulamanızın eski verileri okuyabilmesi için kabul edilebilir olması gerekir. İkincili verilere erişmek için depolama istemci kitaplığını kullanıyorsanız, **Locationmode** özelliği için bir değer ayarlayarak aşağıdakilerden birine bir okuma isteğinin yeniden deneme davranışını belirtebilirsiniz:
 
-* **Yalnızca Primary** (varsayılan)
+* **Yalnızca Primary(** varsayılan)
 
 * **PrimaryThenSecondary**
 
@@ -195,7 +195,7 @@ Bir noktada, birincil uç noktayı kullanmaya ve güncelleştirmelere izin verme
 
 ## <a name="handling-eventually-consistent-data"></a>Sonuçta tutarlı verileri işleme
 
-Coğrafi olarak yedekli depolama, işlemleri birincil sunucudan ikincil bölgeye çoğaltarak işe yarar. Bu çoğaltma işlemi, İkincil bölgedeki verilerin *sonunda tutarlı*olmasını güvence altına alır. Bu, birincil bölgedeki tüm işlemlerin son olarak ikincil bölgede görüneceği, ancak görüntülenmeden önce bir gecikme olabileceği ve ikincil bölgede işlemlerin ikincil bölgeye ait oldukları ve bunların aynı sırada olduğu garantisi olmaması durumunda İlk olarak birincil bölgeye uygulandı. İşlemleriniz ikincil bölgeye sıra dışında geldiğinde, İkincil bölgedeki verilerinizi hizmet bitene kadar tutarsız bir durumda olacak şekilde düşünebilirsiniz.
+Coğrafi olarak yedekli depolama, işlemleri birincil sunucudan ikincil bölgeye çoğaltarak işe yarar. Bu çoğaltma işlemi, İkincil bölgedeki verilerin *sonunda tutarlı*olmasını güvence altına alır. Bu, birincil bölgedeki tüm işlemlerin son olarak ikincil bölgede görüneceği, ancak görüntülenmeden önce bir gecikme olabileceği ve ikincil bölgede işlemlerin ikincil bölgeye ait oldukları ve bunların aynı sırada olduğu garantisi olmaması durumunda İlk olarak birincil bölgeye uygulandı. İşlemleriniz ikincil bölgeye sıra dışında geldiğinde, İkincil bölgedeki verilerinizi hizmet bitene kadar tutarsız bir durumda olacak *şekilde düşünebilirsiniz.*
 
 Aşağıdaki tabloda, bir çalışanın ayrıntılarını *Yöneticiler* rolünün bir üyesi haline getirmek için güncelleştirdiğinizde neler gerçekleşebileceğini gösteren bir örnek gösterilmektedir. Bu örneğin, bu örnek için **çalışan** varlığını güncelleştirmenizi ve bir **yönetici rolü** varlığını, toplam yönetici sayısı sayısıyla güncelleştirmeniz gerekir. Güncelleştirmelerin ikincil bölgede nasıl uygulandığına dikkat edin.
 
@@ -203,7 +203,7 @@ Aşağıdaki tabloda, bir çalışanın ayrıntılarını *Yöneticiler* rolün�
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | İşlem A: <br> Çalışan Ekle <br> birincil varlıktaki varlık |                                   |                    | Birincil öğesine ekli işlem<br> henüz çoğaltılmamıştır. |
 | T1       |                                                            | İşlem A <br> çoğaltma<br> ikincil | T1 | İşlem ikinciye çoğaltılır. <br>Son eşitleme zamanı güncelleştirildi.    |
-| T2       | İşlem B:<br>Güncelleştirme<br> çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
+| T2       | İşlem B:<br>Güncelleştirme<br> Çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
 | T3       | İşlem C:<br> Güncelleştirme <br>yönetici<br>içindeki rol varlığı<br>birincil |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
 | *T4*     |                                                       | İşlem C <br>çoğaltma<br> ikincil | T1         | İşlem C, ikinciye çoğaltıldı.<br>LastSyncTime güncelleştirilmedi, çünkü <br>işlem B henüz çoğaltılmamıştır.|
 | *T5*     | Varlıkları oku <br>ikincili                           |                                  | T1                 | Çalışan için eski değeri alırsınız <br> işlem B işlemi olmadığı için varlık <br> henüz çoğaltıldı. İçin yeni bir değer alırsınız<br> Yönetici rolü varlığı çünkü C<br> çoğaltılamaz. Son eşitleme saati hala değil<br> işlem B nedeniyle güncelleştirildi<br> çoğaltılmadı. Şunu yapabilirsiniz<br>Yönetici rolü varlığı tutarsız <br>varlık tarih/saat sonra olduğu için <br>Son eşitleme zamanı. |
@@ -235,7 +235,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLı kullanarak depolama hesabının son eşitleme zamanını almak için depolama hesabının **Georeplicationstats. lastSyncTime** özelliğini denetleyin. **Georeplicationstats**altında iç içe yerleştirilmiş özelliklerin değerlerini döndürmek için parametresinikullanın.`--expand` Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Azure CLı kullanarak depolama hesabının son eşitleme zamanını almak için depolama hesabının **Georeplicationstats. lastSyncTime** özelliğini denetleyin. **Georeplicationstats**altında iç içe yerleştirilmiş özelliklerin değerlerini döndürmek için `--expand` parametresini kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```azurecli
 $lastSyncTime=$(az storage account show \

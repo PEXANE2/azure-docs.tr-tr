@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: da75ca43a2576e3214d4b67f9eb61c7bad3bd5cc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c015b1afbc61e1501e656aaa480ee2a4e19ba094
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073512"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672801"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Azure API Management yeni geliştirici portalına erişin ve özelleştirin
 
@@ -39,7 +39,7 @@ Bu makalede, yeni Azure API Management geliştirici portalına nasıl erişebile
 
 Geliştirici portalınızı iki şekilde oluşturabilirsiniz:
 
-- **Yönetilen sürüm** -API Management örneğiniz içinde yerleşik olan ve URL `<your-api-management-instance-name>.developer.azure-api.net`aracılığıyla erişilebilen portalı düzenleyerek ve özelleştirerek.
+- **Yönetilen sürüm** -API Management örneğiniz içinde yerleşik olan ve `<your-api-management-instance-name>.developer.azure-api.net` URL 'si aracılığıyla erişilebilen portalı düzenleyerek ve özelleştirerek.
 - **Şirket içinde barındırılan sürüm** -portalınızın bir API Management örneği dışında dağıtıp barındırılmasına göre. Bu yaklaşım, portalın kod temelini düzenlemenizi ve sunulan çekirdek işlevselliği genişletmenizi sağlar. Ayrıntılar ve yönergeler için, [portalın kaynak kodu Ile GitHub deposuna][1]bakın.
 
 ## <a name="managed-access"></a>Portalın yönetilen sürümüne erişin
@@ -79,7 +79,7 @@ Genel kullanım amacı, eski portalla senaryo tabanlı bir özellik eşliği sa�
 
 ### <a name="ive-found-bugs-andor-id-like-to-request-a-feature"></a>Hata buldum ve/veya bir özellik istemek istiyorum.
 
-Harika! [GitHub deposunun sorunlar bölümünde](https://github.com/Azure/api-management-developer-portal/issues)bize geri bildirim verebilir, bir özellik isteği gönderebilir veya hata raporu dosyalayabilir. Bu sırada, `community` etiketle işaretlenmiş sorunlar hakkında geri bildirimlerinizi de beğeneceğiz.
+Harika! [GitHub deposunun sorunlar bölümünde](https://github.com/Azure/api-management-developer-portal/issues)bize geri bildirim verebilir, bir özellik isteği gönderebilir veya hata raporu dosyalayabilir. Bu sırada, `community` etiketiyle işaretlenmiş sorunlar hakkında geri bildirimlerinizi de beğeniriz.
 
 ### <a name="i-want-to-move-the-content-of-the-new-portal-between-environments-how-can-i-do-that-and-do-i-need-to-go-with-the-self-hosted-version"></a>Yeni portalın içeriğini ortamlar arasında taşımak istiyorum. Bunu nasıl yapabilirim ve şirket içinde barındırılan sürüme gitmem gerekir mi?
 
@@ -87,13 +87,21 @@ Bunu hem Portal sürümlerinde hem de şirket içinde barındırılan bir şekil
 
 Bu işlemi hala API Management DevOps kaynak seti ile hizalamak için çalışıyoruz.
 
+### <a name="what-do-i-need-to-configure-for-the-new-portal-to-work-in-my-api-management-service-in-vnet"></a>Yeni portalın VNET 'teki API Management hizmetimde çalışması için ne yapmam gerekir?
+
+Yeni geliştirici portalı önizlemedeyken, yönetilen portalın VNET 'teki bir API Management hizmetinde çalışmasını sağlamak için Batı ABD bölgesindeki Azure Storage Services bağlantısına izin vermeniz gerekir. [Depolama belgelerinde](../storage/common/storage-network-security.md#available-virtual-network-regions)daha fazla bilgi verilmiştir.
+
+Yeni portal genel kullanıma sunulduğunda yukarıdaki Kurulum artık gerekli olmayacaktır.
+
+Portalın şirket içinde barındırılan sürümü, kuruluma bağlı olarak ek bağlantı yapılandırması gerektirebilir.
+
 ### <a name="how-can-i-select-a-layout-when-creating-a-new-page"></a>Yeni bir *sayfa*oluştururken nasıl *Düzen* seçirim?
 
-Bir *Düzen* , URL şablonuyla *sayfanın* URL 'siyle eşleştirerek bir sayfaya uygulanır. Örneğin, URL şablonuna `/wiki/*` sahip bir düzen, `/wiki/` segment ile her *sayfaya* uygulanır: `/wiki/getting-started`, `/wiki/styles`vb.
+Bir *Düzen* , URL şablonuyla *sayfanın* URL 'siyle eşleştirerek bir sayfaya uygulanır. Örneğin, `/wiki/*` URL şablonuna sahip olan *düzen* `/wiki/` segmentine sahip her *sayfaya* uygulanır: `/wiki/getting-started`, `/wiki/styles` vb.
 
 ### <a name="why-doesnt-the-interactive-developer-console-work"></a>Etkileşimli Geliştirici Konsolu neden çalışmıyor?
 
-Bu, büyük olasılıkla CORS ile ilgilidir. Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerinize [BIR CORS ilkesi](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) ekleyerek CORS sorununu çözebilirsiniz. Tüm parametreleri el ile belirtebilirsiniz (örneğin, Origin as https://contoso.com) veya joker karakter `*` değeri kullanabilirsiniz).
+Bu, büyük olasılıkla CORS ile ilgilidir. Etkileşimli konsol tarayıcıdan istemci tarafı API isteği yapar. API 'lerinize [BIR CORS ilkesi](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) ekleyerek CORS sorununu çözebilirsiniz. Tüm parametreleri el ile belirtebilirsiniz (örneğin, Origin as https://contoso.com) ya da bir joker `*` değeri kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

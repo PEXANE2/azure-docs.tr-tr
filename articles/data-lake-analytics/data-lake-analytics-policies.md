@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Analytics ilkelerini yönetme
-description: Bir Data Lake Analytics hesabının kullanımını denetlemek için ilkeler kullanmayı öğrenin.
+description: En yüksek Avustralya ve en fazla iş gibi Data Lake Analytics hesabının kullanımını denetlemek için ilkeleri nasıl kullanacağınızı öğrenin.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,103 +9,103 @@ ms.reviewer: jasonwhowell
 ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 64095f6706bb978cd33b8fe7833fe4e65fc3b0f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 97b736d854661600a847b1d698af8f15ae58d237
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813418"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672854"
 ---
-# <a name="manage-azure-data-lake-analytics-using-policies"></a>İlkeleri kullanarak Azure Data Lake Analytics'i yönetme
+# <a name="manage-azure-data-lake-analytics-using-policies"></a>Azure Data Lake Analytics'i ilkeleri kullanarak yönetme
 
-Hesap ilkeleri kullanarak kaynakların bir Azure Data Lake Analytics hesabı şeklini denetleyebilirsiniz kullanılır. Bu ilkeler, Azure Data Lake Analytics'i kullanarak maliyeti denetlemenize olanak tanır. Örneğin, bu ilkelerle hesabı aynı anda kullanabileceğiniz kaç AU sınırlayarak beklenmeyen maliyet artışlarını engelleyebilirsiniz.
+Hesap ilkelerini kullanarak, kaynakların Azure Data Lake Analytics hesabın nasıl kullanıldığını kontrol edebilirsiniz. Bu ilkeler Azure Data Lake Analytics kullanmanın maliyetini denetlemenize olanak tanır. Örneğin, bu ilkelerle, hesabın kaç au eşzamanlı olarak kullanılabileceğini sınırlayarak beklenmeyen maliyet artışlarını engelleyebilirsiniz.
 
-## <a name="account-level-policies"></a>Hesap düzeyinde ilkeler
+## <a name="account-level-policies"></a>Hesap düzeyindeki ilkeler
 
-Bu ilkeleri, bir Data Lake Analytics hesabı tüm işler için geçerlidir.
+Bu ilkeler bir Data Lake Analytics hesabındaki tüm işler için geçerlidir.
 
-### <a name="maximum-number-of-aus-in-a-data-lake-analytics-account"></a>Bir Data Lake Analytics hesabında en fazla AU sayısını
-Bir ilke Data Lake Analytics hesabınızı kullanabilirsiniz analiz birimi (AU) toplam sayısını denetler. Varsayılan değer 250'ye ayarlanır. Örneğin, bu değer 250'ye ayarlanmışsa Avustralya, 250 ile çalışan işiniz olabilir veya 10 işleri çalıştıran 25'ine atanan AU her AU. Gönderilen ek işler çalışan işler tamamlanana kadar kuyruğa alınır. Çalışan işleri bittiğinde çalıştırmak için sıraya alınan iş için AU kurtulurlar.
+### <a name="maximum-number-of-aus-in-a-data-lake-analytics-account"></a>Data Lake Analytics hesapta maksimum AU sayısı
+İlke, Data Lake Analytics hesabınızın kullanabileceği toplam analiz birimi sayısını (Avustralya) denetler. Varsayılan olarak, değer 250 olarak ayarlanır. Örneğin, bu değer 250 au olarak ayarlandıysa, BT 'ye atanan 250 au ile çalışan bir işiniz veya 25 au ile çalışan 10 işi kullanabilirsiniz. Gönderilen ek işler, çalışan işler bitene kadar sıraya alınır. İşleri çalıştırmak bittiğinde, sıraya alınan işlerin çalışması için Avustralya serbest bırakılır.
 
 Data Lake Analytics hesabınız için AU sayısını değiştirmek için:
 
-1. Azure portalında Data Lake Analytics hesabınıza gidin.
+1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Özellikler**'e tıklayın.
-3. Altında **maksimum AUs**, bir değer seçmek için kaydırıcıyı taşıyın veya metin kutusuna bir değer girin. 
+3. **Maksimum**au altında, bir değer seçmek için kaydırıcıyı taşıyın veya metin kutusuna değeri girin. 
 4. **Kaydet**’e tıklayın.
 
 > [!NOTE]
-> En fazla ' % s'varsayılan (250) gerekiyorsa AU portalında **Yardım + Destek** için bir destek isteği gönderin. Data Lake Analytics hesabınızda kullanılabilen AU sayısı artırılabilir.
+> Varsayılan (250) Avustralya 'dan daha fazlasına ihtiyacınız varsa, portalda destek isteği göndermek için **Yardım + Destek** ' e tıklayın. Data Lake Analytics hesabınızda kullanılabilen AU sayısı artırılabilir.
 >
 
-### <a name="maximum-number-of-jobs-that-can-run-simultaneously"></a>En fazla eşzamanlı olarak çalışabilecek iş sayısı
-Bir ilke, aynı anda kaç tane işin çalıştırıp denetler. Varsayılan olarak, bu değeri 20'ye ayarlanır. Data Lake Analytics Au'lar kullanılabilir varsa, yeni işleri hemen çalışan işlerin toplam sayısı, bu ilkenin değerini ulaşana kadar çalışmak üzere zamanlanır. Aynı anda çalışan işlerin sayısı ulaştığında (AU kullanılabilirliğine bağlı olarak) bir veya daha fazla çalışan iş tamamlanana kadar sonraki işleri öncelik sırasına göre kuyruğa alınır.
+### <a name="maximum-number-of-jobs-that-can-run-simultaneously"></a>Aynı anda çalışabilecek en fazla iş sayısı
+İlke, aynı anda kaç iş çalıştıracağınızı denetler. Varsayılan olarak, bu değer 20 olarak ayarlanır. Data Lake Analytics au varsa, yeni işler, çalışan işlerin toplam sayısı bu ilkenin değerine ulaşıncaya kadar hemen çalışacak şekilde zamanlanır. Aynı anda çalışabilecek en fazla iş sayısına ulaştığınızda, bir veya daha fazla çalışan iş tamamlanana kadar (AU kullanılabilirliğine bağlı olarak) sonraki işler öncelik sırasına göre sıraya alınır.
 
-Aynı anda çalışabilecek iş sayısını değiştirmek için:
+Aynı anda çalışabilecek işlerin sayısını değiştirmek için:
 
-1. Azure portalında Data Lake Analytics hesabınıza gidin.
+1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Özellikler**'e tıklayın.
-3. Altında **en büyük sayı, çalışan işleri**, bir değer seçmek için kaydırıcıyı taşıyın veya metin kutusuna bir değer girin. 
+3. **En fazla çalışan Iş sayısı**altında, kaydırıcıyı bir değer seçmek için taşıyın veya metin kutusuna değeri girin. 
 4. **Kaydet**’e tıklayın.
 
 > [!NOTE]
-> İşleri, varsayılan (20) sayısından daha fazla portalda çalıştırmanız gerekiyorsa, tıklayın **Yardım + Destek** için bir destek isteği gönderin. Data Lake Analytics hesabınızda aynı anda çalışan işlerin sayısı artırılabilir.
+> Varsayılan (20) iş sayısından fazlasını çalıştırmanız gerekiyorsa, portalda destek isteği göndermek için **Yardım + Destek** ' e tıklayın. Data Lake Analytics hesabınızda aynı anda çalışabilecek işlerin sayısı artırılabilir.
 >
 
-### <a name="how-long-to-keep-job-metadata-and-resources"></a>Ne kadar süreyle kalmasını iş meta verileri ve kaynakları 
-Kullanıcılarınızın, U-SQL işleri çalıştırdığınızda, tüm ilişkili dosyalar Data Lake Analytics hizmetine korur. İlgili dosyalar, U-SQL betiği, U-SQL betiği, derlenmiş kaynakları ve istatistikleri başvurulan DLL dosyaları içerir. Varsayılan Azure Data Lake Store hesabının /system/ klasöründe dosyalarıdır. Bu ilke, bu kaynakları otomatik olarak silinmeden önce ne kadar süreyle saklanır denetler (varsayılan 30 gündür). Hata ayıklama ve gelecekte yeniden çalıştırmanız işleri için performans ayarlama, bu dosyaları kullanabilirsiniz.
+### <a name="how-long-to-keep-job-metadata-and-resources"></a>İş meta verileri ve kaynaklarının saklanacağı süre 
+Kullanıcılarınız U-SQL işleri çalıştırdıklarında, Data Lake Analytics hizmeti ilgili tüm dosyaları korur. İlgili dosyalar U-SQL betiğini, U-SQL betiğine başvuruda bulunulan DLL dosyalarını, derlenmiş kaynakları ve istatistikleri içerir. Dosyalar varsayılan Azure Data Lake Storage hesabının/System/klasöründedir. Bu ilke, bu kaynakların otomatik olarak silinmeden önce ne kadar süreyle depolandığını denetler (varsayılan değer 30 gündür). Bu dosyaları hata ayıklama için kullanabilir ve gelecekte yeniden çalıştıracağımız işlerin performans ayarları için kullanabilirsiniz.
 
-İş meta verileri ve kaynakları korumak için ne kadar süreyle değiştirmek için:
+İş meta verilerinin ve kaynaklarının saklanacağı süreyi değiştirmek için:
 
-1. Azure portalında Data Lake Analytics hesabınıza gidin.
+1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Özellikler**'e tıklayın.
-3. Altında **iş sorgularının korumak için gün**, bir değer seçmek için kaydırıcıyı taşıyın veya metin kutusuna bir değer girin.  
+3. **Iş sorgularını**bekletmek için, kaydırıcıyı hareket ettirmek için bir değer seçin veya metin kutusuna değeri girin.  
 4. **Kaydet**’e tıklayın.
 
-## <a name="job-level-policies"></a>Proje düzeyi ilkeleri
+## <a name="job-level-policies"></a>İş düzeyi ilkeleri
 
-Proje düzeyi ilkeleri, maksimum AUS değerini ve bireysel kullanıcılar (veya belirli güvenlik gruplarının üyesi) bunlar gönderme işlerde ayarlayabileceğiniz önceliğini kontrol edebilirsiniz. Bu ilke, kullanıcılar tarafından gerçekleştirilen giderleri denetlemenizi sağlar. Ayrıca sağlar denetimi zamanlanmış bir iş etkisi yüksek öncelikli üretim projelerde aynı Data Lake Analytics hesabında çalışıyor olabilir.
+İş düzeyi ilkeleriyle, her bir kullanıcının (veya belirli güvenlik grubu üyelerinin) gönderdikleri işlere ayarlayabilecekleri maksimum au ve en yüksek öncelik düzeyini kontrol edebilirsiniz. Bu ilke, kullanıcılar tarafından tahakkuk eden maliyetleri denetlemenizi sağlar. Aynı zamanda, zamanlanan işlerin aynı Data Lake Analytics hesabında çalışan yüksek öncelikli üretim işlerinde sahip olabileceği etkiyi denetlemenizi de sağlar.
 
-Data Lake Analytics proje düzeyinde ayarlayabileceğiniz iki ilke sahiptir:
+Data Lake Analytics, iş düzeyinde ayarlayabileceğiniz iki ilkeye sahiptir:
 
-* **İş başına AU sınırı**: Kullanıcılar yalnızca AU bu sayıya sahip bir iş gönderebilirsiniz. Varsayılan olarak, bu sınır AU sınırını hesabı ile aynıdır.
-* **Öncelik**: Kullanıcılar yalnızca bu değere eşit veya daha düşük bir önceliğe sahip iş gönderebilirsiniz. Daha yüksek bir sayı daha düşük bir öncelik gösterir. Varsayılan olarak, bu sınır, olası en yüksek öncelikli olduğu 1 olarak ayarlanır.
+* **İş başına AU sınırı**: Kullanıcılar yalnızca bu sayıda au 'ya kadar olan işleri gönderebilirler. Varsayılan olarak, bu sınır hesap için maksimum AU sınırı ile aynıdır.
+* **Öncelik**: Kullanıcılar yalnızca önceliği bu değere eşit veya daha düşük olan işleri gönderebilir. Daha yüksek bir sayı, daha düşük bir öncelik gösterir. Varsayılan olarak, bu sınır en yüksek öncelik olan 1 ' e ayarlanır.
 
-Her hesap üzerinde ayarlanmış varsayılan bir ilke yoktur. Varsayılan ilke, tüm hesap kullanıcıları için geçerlidir. Belirli kullanıcılar ve gruplar için ek ilkeler ayarlayabilir. 
+Her hesapta ayarlanmış bir varsayılan ilke vardır. Varsayılan ilke, hesabın tüm kullanıcıları için geçerlidir. Belirli kullanıcılar ve gruplar için ek ilkeler ayarlayabilirsiniz. 
 
 > [!NOTE]
-> Hesap düzeyinde ve proje düzeyinde ilkelerinin eşzamanlı olarak uygulanır.
+> Hesap düzeyindeki ilkeler ve iş düzeyi ilkeleri aynı anda geçerlidir.
 >
 
-### <a name="add-a-policy-for-a-specific-user-or-group"></a>Belirli bir kullanıcı veya grup için bir ilke Ekle
+### <a name="add-a-policy-for-a-specific-user-or-group"></a>Belirli bir kullanıcı veya grup için ilke ekleme
 
-1. Azure portalında Data Lake Analytics hesabınıza gidin.
+1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Özellikler**'e tıklayın.
-3. Altında **iş gönderme sınırları**, tıklayın **ilke Ekle** düğmesi. Sonra seçin veya aşağıdaki ayarları girin:
-    1. **İşlem İlkesi adı**: İlkenin amacı hatırlatmak için bir ilke adı girin.
-    2. **Kullanıcı veya Grup Seç**: Kullanıcı veya grup bu ilkenin uygulanacağı seçin.
-    3. **İş AU sınırını ayarlayın**: Seçilen kullanıcı veya grup için geçerlidir AU sınırını ayarlayın.
-    4. **Önceliği sınırını ayarlayın**: Seçilen kullanıcı veya grup için geçerlidir önceliği sınırını ayarlayın.
+3. **Iş gönderme sınırları**altında, **ilke Ekle** düğmesine tıklayın. Ardından, aşağıdaki ayarları seçin veya girin:
+    1. **Işlem Ilkesi adı**: İlke amacını hatırlatmak için bir ilke adı girin.
+    2. **Kullanıcı veya grup seçin**: Bu ilkenin uygulandığı Kullanıcı veya grubu seçin.
+    3. **Iş au sınırını ayarla**: Seçilen Kullanıcı veya grup için geçerli olan AU sınırını ayarlayın.
+    4. **Öncelik sınırını ayarlayın**: Seçilen Kullanıcı veya grup için geçerli olan öncelik sınırını ayarlayın.
 
 4. **Tamam**’a tıklayın.
 
-5. Yeni ilkede listelenen **varsayılan** altında ilke tablo **iş gönderme sınırları**. 
+5. Yeni ilke, **varsayılan** Ilke tablosunda **iş gönderme sınırları**altında listelenir. 
 
-### <a name="delete-or-edit-an-existing-policy"></a>Silebilir veya var olan bir ilkeyi düzenleyebilirsiniz.
+### <a name="delete-or-edit-an-existing-policy"></a>Var olan bir ilkeyi silme veya düzenleme
 
-1. Azure portalında Data Lake Analytics hesabınıza gidin.
+1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Özellikler**'e tıklayın.
-3. Altında **iş gönderme sınırları**, düzenlemek istediğiniz ilkenin bulun.
-4.  Görmek için **Sil** ve **Düzenle** tablonun en sağdaki sütunda seçenekleri `...`.
+3. **Iş gönderme sınırları**' nın altında, düzenlemek istediğiniz ilkeyi bulun.
+4.  **Silme** ve **düzenleme** seçeneklerini görmek için, tablonun en sağdaki sütununda `...` ' ye tıklayın.
 
 ## <a name="additional-resources-for-job-policies"></a>İş ilkeleri için ek kaynaklar
-* [İlke genel bakış blog gönderisi](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)
-* [Hesap düzeyinde ilkeler blog gönderisi](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
-* [Proje düzeyinde ilkeler blog gönderisi](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)
+* [İlkeye genel bakış blog gönderisi](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-overview/)
+* [Hesap düzeyindeki ilkeler blog gönderisi](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
+* [İş düzeyi ilkeleri blog gönderisi](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)
-* [Azure portalını kullanarak Data Lake Analytics ile çalışmaya başlama](data-lake-analytics-get-started-portal.md)
-* [Azure PowerShell kullanarak Azure Data Lake Analytics'i yönetme](data-lake-analytics-manage-use-powershell.md)
+* [Azure Data Lake Analytics genel bakış](data-lake-analytics-overview.md)
+* [Azure portal kullanarak Data Lake Analytics kullanmaya başlayın](data-lake-analytics-get-started-portal.md)
+* [Azure PowerShell kullanarak Azure Data Lake Analytics yönetme](data-lake-analytics-manage-use-powershell.md)
 

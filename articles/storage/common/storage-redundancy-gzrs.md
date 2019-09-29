@@ -3,17 +3,17 @@ title: Coğrafi bölge yedekli depolama (GZRS) (Önizleme) ile yüksek oranda ku
 description: Coğrafi olarak yedekli depolama (GZRS) marrıes, coğrafi olarak yedekli depolama (GRS) tarafından sağlandığı şekilde bölgesel kesintilerden koruma ile bölgesel olarak yedekli depolamanın (ZRS) yüksek oranda kullanılabilir olduğunu. Bir GZRS Storage hesabındaki veriler, birincil bölgedeki Azure kullanılabilirlik alanları arasında çoğaltılır ve ayrıca bölgesel felaketlerden koruma için ikincil bir coğrafi bölgeye çoğaltılır.
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 321866279e076bfa77d1892e64deaf4b16c08366
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 737bad504519a2ec7eee9764593245e0fee28cc3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300641"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673061"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -55,7 +55,7 @@ Bir depolama hesabı oluşturduğunuzda, bu hesaptaki verilerin nasıl çoğalt�
 
 Depolama hesabınız için RA-GZRS ' ı etkinleştirdiğinizde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–*  hesap adına ekler. Örneğin, blob hizmeti `myaccount.blob.core.windows.net`için birincil uç noktanız ise ikincil uç noktanız olur. `myaccount-secondary.blob.core.windows.net` Depolama hesabınızın erişim anahtarları hem birincil hem de ikincil uç noktalar için aynıdır.
 
-Bölgesel bir kesinti durumunda RA-GZRS avantajlarından yararlanmak için, bu senaryoyu işlemek üzere uygulamanızı önceden tasarlamanız gerekir. Uygulamanız birincil uç noktadan okuyup yazmalı, ancak birincil bölgenin kullanılamaz hale geldiği olayda ikincil uç noktayı kullanmaya geçiş yapar. RA-GZRS ile yüksek kullanılabilirlik için tasarlamaya yönelik yönergeler için bkz. [ra-GZRS veya RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](https://docs.microsoft.com/en-us/azure/storage/common/storage-designing-ha-apps-with-ragrs).
+Bölgesel bir kesinti durumunda RA-GZRS avantajlarından yararlanmak için, bu senaryoyu işlemek üzere uygulamanızı önceden tasarlamanız gerekir. Uygulamanız birincil uç noktadan okuyup yazmalı, ancak birincil bölgenin kullanılamaz hale geldiği olayda ikincil uç noktayı kullanmaya geçiş yapar. RA-GZRS ile yüksek kullanılabilirlik için tasarlamaya yönelik yönergeler için bkz. [ra-GZRS veya RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
 Veriler ikincil bölgeye zaman uyumsuz olarak çoğaltıldığından, ikincil bölge genellikle birincil bölgenin arkasında olur. İkincil bölgeye çoğaltılan yazma işlemlerini öğrenmek için, uygulamanız depolama hesabınızın son eşitleme zamanını kontrol edin. Birincil bölgeye son eşitleme zamanından önce yazılan tüm yazma işlemleri, ikincil bölgeye başarıyla çoğaltılmıştı ve bu, ikincilden okunmak üzere kullanılabilir. Son eşitleme zamanından sonra birincil bölgeye yazılan yazma işlemleri, ikincil bölgeye çoğaltılmayabilir veya bu, okuma işlemleri için uygun olmayabilir.
 
@@ -141,7 +141,7 @@ Dinamik geçiş istemek için [Azure Portal](https://ms.portal.azure.com/#blade
     - **Sorun türü**:  **Veri geçişini**seçin.
     - **Kategori**:  **Bir bölge içinde (ra-) GZRS geçir**' i seçin.
     - **Başlık**: Açıklayıcı bir başlık yazın, örneğin, **(ra-) GZRS hesabı geçişi**.
-    - **Ayrıntılar**: \_  **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, "bölgedeki [LRS, \_ GRS] öğesinden GZRS 'e geçiş yapmak istiyorum." ya da " \_ \_ bölgedeki [LRS, RA-GRS] konumundan ra-GZRS ' a geçiş yapmak istiyorum."
+    - **Ayrıntılar**:  **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, "\_ @ no__t-3 bölgesinde" [LRS, GRS] öğesinden GZRS 'e geçiş yapmak istiyorum. " ya da "\_ @ no__t-1 bölgesindeki, [LRS, RA-GRS] öğesinden RA-GZRS 'a geçiş yapmak istiyorum."
 5.  **İleri**'yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
 7.  **Oluştur**' u seçin.

@@ -4,17 +4,17 @@ description: Azure depolama, coğrafi olarak yedekli depolama hesapları için h
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 4a621f8976efe395014c073a6bd7c5d09d19d915
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376459"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671073"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage 'da olağanüstü durum kurtarma ve depolama hesabı yük devretme (Önizleme)
 
@@ -50,7 +50,7 @@ Uygulamanızı, başlangıçtan itibaren yüksek kullanılabilirlik için tasarl
 * [Azure için dayanıklı uygulamalar tasarlama](https://docs.microsoft.com/azure/architecture/resiliency/): Azure 'da yüksek oranda kullanılabilir uygulamalar tasarlayarak ilgili temel kavramlara genel bakış.
 * [Kullanılabilirlik denetim listesi](https://docs.microsoft.com/azure/architecture/checklist/availability): Uygulamanızın yüksek kullanılabilirlik için en iyi tasarım uygulamalarını uyguladığını doğrulamak için bir denetim listesi.
 * [RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md): RA-GRS avantajlarından yararlanmak için uygulama oluşturmaya yönelik tasarım kılavuzu.
-* [Öğretici: BLOB depolama](../blobs/storage-create-geo-redundant-storage.md)ile yüksek oranda kullanılabilir bir uygulama oluşturun: Hatalara ve kurtarmalar arasında otomatik olarak geçiş yapan, yüksek oranda kullanılabilir bir uygulamanın nasıl oluşturulduğunu gösteren bir öğretici. 
+* [Öğretici: BLOB depolama ile yüksek oranda kullanılabilir bir uygulama oluşturma @ no__t-0: Hatalara ve kurtarmalar arasında otomatik olarak geçiş yapan, yüksek oranda kullanılabilir bir uygulamanın nasıl oluşturulduğunu gösteren bir öğretici. 
 
 Ayrıca, Azure depolama verileriniz için yüksek kullanılabilirlik sağlamak üzere bu en iyi yöntemleri göz önünde bulundurun:
 

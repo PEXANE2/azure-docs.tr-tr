@@ -7,16 +7,38 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918989"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673016"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
-Bu makalede, Windows sanal masaüstü iş ortakları alfabetik sırayla listelenmektedir.
+Bu makalede, Windows sanal masaüstü iş ortakları listelenmektedir.
+
+## <a name="citrix"></a>Citrix
+
+![Citrix logosu](./media/partners/citrix.png)
+
+Citrix, Azure 'daki sanal uygulamalar ve masaüstü iş yükleri için şirket içi dağıtımlarla yan yana merkezi bir karma yönetim sunan, onaylanan bir sağlayıcıdır. Sanal uygulamalar ve masaüstleri hizmeti olan Citrix çalışma alanı, kullanıcıların her yerden yüksek tanımlı bir deneyim sunmak için gelişmiş Citrix HDX protokolünü kullanarak herhangi bir cihazdan uygulamalara ve masaüstlerine erişmelerini sağlar.
+
+Citrix, Kullanıcı yoğunluğu ve performansını artırmak, isteğe bağlı iş yüklerini sağlamak ve görüntü ve uygulama yönetimini basitleştirmek için Windows sanal masaüstü 'nün değerini sağlam kurumsal araçlarla genişletir. Bu, maliyetleri akıllı ölçeklendirme araçlarıyla iyileştirebildiğinden, sektörlerin genelinde en zorlu uygulamalara karşı sınanmış olan inanılmaz bir son kullanıcı deneyimi sunar.
+
+- [İş ortağı Web sitesine gidin](https://more.citrix.com/wvd).
+
+
+## <a name="vmware"></a>VMware
+
+![VMware logosu](./media/partners/vmware.png)
+
+Microsoft Azure üzerinde VMware ufuk bulutu, kuruluşların kendi Microsoft Azure örneğini basit, sezgisel ufuk bulutu denetim düzlemine bağlama olanağı sunarak, sanallaştırılmış hale getirmeye yönelik güvenli, kapsamlı ve bulutta barındırılan bir çözüm oluşturuyor Windows Uygulamaları ve masaüstleri. Windows sanal masaüstü 'Nü kullanarak, VMware, Windows sanal masaüstü 'nin işlevlerini Microsoft Azure ' de ufuk bulutu 'nı kullanan müşterilere genişleten Microsoft ile işbirliği yaptı.
+
+Onaylanan bir sağlayıcı olarak, Microsoft Azure müşterilerine VMware ufuk bulutu, çok oturum için Windows 10 Enterprise, üç yıla kadar ücretsiz genişletilmiş güvenlik güncelleştirmeleri içeren Windows 7 ve FSLogix gibi tüm avantajları elde geniş uç nokta desteği gibi, ufku bulutu 'nın tüm modern, kurumsal sınıf özelliklerinin yanı sıra yetenekler. küresel, buluta iyileştirilmiş aracılı, esnek masaüstü seçenekleri ve konfigürasyonları, Kullanıcı ortamı yönetimi ve karma ortamlar için destek. 
+
+- [Microsoft Azure 'de ufuk bulutu 'Nın teknik önizlemesine kaydolun](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
+- [İş ortağı Web sitesine gidin](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
 
 ## <a name="cloudjumper"></a>Cloudatlatıcı
 
@@ -26,8 +48,19 @@ Cloudatlatıcı, çözüm sağlayıcılarını ve Windows sanal masaüstü ortam
 
 Cloudatlatıcı yazılımı, bulut çalışma alanı yönetim paketi, Azure 'daki dağıtımı ve devam eden yönetim görevlerini basitleştirerek Windows sanal masaüstü 'nün değerini genişletir. Tek bir cam bölmeden, Kullanıcı çalışma alanları için altyapıyı sağlayabilir, yönetebilir ve iyileştirebilir. Cloudatlatıcı 'un basit betik tetikleme altyapısı, Windows sanal masaüstü sağlama ile ilgili görevleri otomatikleştirmek için BT hizmeti platformlarıyla tümleştirilir. Ayrıca, Cloudatlatıcı API 'Leri, ServiceNow ve BMC 'ye hazırlanma gibi diğer kurumsal sistemlerle daha fazla genişletilebilirlik ve tümleştirme sağlar.
 
-- [Bkz. Birleşik çözüm kısa.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg)
-- [İş ortağı Web sitesine gidin.](https://cloudjumper.com/wvd/)
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mg).
+- [İş ortağı Web sitesine gidin](https://cloudjumper.com/wvd/).
+
+## <a name="controlup"></a>ControlUp
+
+![ControlUp logosu](./media/partners/controlup.png)
+
+ControlUp, BT ekiplerinin tek bir konsoldan gerçek zamanlı olarak şirket içi, hibrit bulut ve bulut altyapılarındaki sorunları izlemelerine, sorunlarını gidermenize, çözümlemesine ve doğrudan düzeltmesine olanak tanıyan bir Windows sanal masaüstü katma hizmet sağlayıcıdır. ControlUp 'nin analiz ve yönetim platformu, hızlı bir şekılde büyüyen kullanım örnekleri kümesi için düzeltmeleri proaktif hale getirmeyi de sağlar.
+
+Windows sanal masaüstü ile kullanıldığında ControlUp, Windows sanal masaüstü ortamlarını ve son kullanıcı deneyimini iyileştirmek için ek yetenekler sağlar. Denetim konsolundan, performans sorunlarını etkili bir şekilde izlemek ve sorunlarını gidermek için Son Kullanıcı ortamı görünürlüğünü alır. Sezgisel bir Pano, sanal masaüstü dağıtımları için Öngörüler ve analizler ve topluluk kıyaslamalarıyla otomatik raporlama zenginleştirilmesi için seçenekler sağlar. Denetim, birden fazla veri kaynağını ve türünü yönetebilir ve işlem, depolama ve Windows sanal masaüstü altyapısı genelinde toplanan yüksek performanslı veri kümelerinde organize edilebilir ve tek bir cam bölmeden ayrıntılı görünürlük sağlar.
+
+- [Bkz. JOIN çözümü kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
+- [İş ortağı Web sitesine gidin](https://www.controlup.com/solutions/ms_wvd/).
 
 ## <a name="lakeside-software"></a>Lakeside yazılımı
 
@@ -37,8 +70,8 @@ Lakeside yazılımı, BT ekiplerini, performansı izlemek ve Kullanıcı iş yü
 
 Lakeside yazılımının dijital deneyim izleme çözümü olan SysTrack, performansı izleyerek ve geçiş için ideal iş yüklerini tanımlayarak harika bir kullanıcı deneyimi sağlamaya yardımcı olabilir. SysTrack, doğru boyutlandırma değerlendirmeleri ve Kullanıcı ortamlarının sürekli izlenmesi yoluyla Windows sanal masaüstü 'nün değerini genişletecek şekilde çalışmaktadır.
 
-- [Bkz. Birleşik çözüm kısa.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q)
-- [İş ortağı Web sitesine gidin.](https://www.lakesidesoftware.com/assessments/wvd)
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8Q).
+- [İş ortağı Web sitesine gidin](https://www.lakesidesoftware.com/assessments/wvd).
 
 ## <a name="liquidware"></a>Liquidware
 
@@ -48,8 +81,8 @@ Liquidware, Windows sanal masaüstü dağıtımı 'nı yöneten ve optimize eden
 
 Liquidware Essentials, Kullanıcı profillerini etkin bir şekilde ayırarak ve Kullanıcı ortamlarının Azure 'a geçişini kolaylaştırmak için anahtar kullanıcı verilerini toplarken Windows sanal masaüstü 'nün değerini genişletir. Ayrıca, Liquidware Essentials, yapılandırılabilir hak yönetimi ayarlarına bağlı olarak Kullanıcı profillerini ve katman uygulamalarını kaldırarak görüntü yönetimini basitleştirir.
 
-- [Bkz. Birleşik çözüm kısa.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1)
-- [İş ortağı Web sitesine gidin.](https://www.liquidware.com/solutions/solutions-platform/microsoft)
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
+- [İş ortağı Web sitesine gidin](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
 ## <a name="nerdio"></a>Nerdio
 
@@ -59,8 +92,8 @@ Nerdio, Windows sanal masaüstü 'Nün dağıtılmasını ve yönetilmesini kola
 
 Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kolaylaştırarak Windows sanal masaüstü 'nün değerini genişletir. Azure için Nerdio sayesinde, Windows sanal masaüstü de dahil olmak üzere tüm Azure ortamlarını iki saat içinde otomatik olarak dağıtabilir ve yönetebilir.
 
-- [Bkz. Birleşik çözüm kısa.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
-- [İş ortağı Web sitesine gidin.](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/)
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
+- [İş ortağı Web sitesine gidin](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
 
 ## <a name="thinprint"></a>Ölçülü yazdırma
 
@@ -70,8 +103,8 @@ Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kola
 
 Ölçülü yazdırma 'nın ezeep çözümü, mevcut kurumsal yazdırma altyapısına bağlantıyı etkinleştirerek Windows sanal masaüstü 'nün değerini genişletir. ezeep kullanıcılara nerede olurlarsa olsunlar üzerinde yazdırma üzerinde denetim sağlar. Ezeep kullanarak, kullanıcılar Windows sanal masaüstü ve yazdırma donanımı arasındaki boşluğu köprülemek için kullanılabilir.
 
-- [Bkz. Birleşik çözüm kısa.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
-- [İş ortağı Web sitesine gidin.](https://www.ezeep.com/wvd-printing)
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
+- [İş ortağı Web sitesine gidin](https://www.ezeep.com/wvd-printing).
 
 ## <a name="workspot"></a>Workspot
 
@@ -81,10 +114,10 @@ Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kola
 
 İş noktası, bulut masaüstü altyapısının sağlama sürecini basitleştirerek Windows sanal masaüstü 'nün değerini genişletir. Çalışma noktası ile, farklı kullanıcıların ihtiyaçlarını karşılamak ve servis taleplerini kullanması için kaynakların ölçeği kolayca ölçeklendirilebilir ve azaltılabilir. Çalışma noktası, tüm iş kullanıcıları için Windows Uygulamaları ve Windows 10 masaüstü bilgisayarların yanı sıra CAD ve mühendislik kullanıcıları için gerekli olan yüksek performanslı GPU iş istasyonları için dağıtımları en iyi hale getirebilir.
 
-- [Bkz. Birleşik çözüm kısa.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P)
-- [İş ortağı Web sitesine gidin.](https://www.workspot.com/wvd)
+- [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oL8P).
+- [İş ortağı Web sitesine gidin](https://www.workspot.com/wvd).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Windows sanal masaüstü hakkında daha fazla bilgi edinin.](overview.md)
-- [Windows sanal masaüstü 'nde kiracı oluşturun.](tenant-setup-azure-active-directory.md)
+- [Windows sanal masaüstü hakkında daha fazla bilgi edinin](overview.md).
+- [Windows sanal masaüstü 'nde kiracı oluşturun](tenant-setup-azure-active-directory.md).

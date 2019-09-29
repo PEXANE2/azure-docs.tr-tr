@@ -4,17 +4,17 @@ description: Güvenlik sorumlularına kapsayıcılara ve kuyruklara erişim atam
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 4c558da6b0a9267c03b26ca1b5f57eb5e7444881
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: ad88066ebf19bdcc9bcdb77309ce76828c09ce47
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515002"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671133"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Azure portal RBAC ile Azure Blob ve kuyruk verilerine erişim verme
 
@@ -54,7 +54,7 @@ Bir güvenlik sorumlusuna rol atamadan önce, verdiğiniz izinlerin kapsamını 
 Burada gösterilen yordam, bir kapsayıcıya kapsamlı bir rol atar, ancak bir sıraya kapsamlı bir rol atamak için aynı adımları izleyebilirsiniz: 
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin ve hesabın **genel bakışını** görüntüleyin.
-1. Hizmetler altında Bloblar' ı seçin. 
+1. Hizmetler altında **Bloblar**' ı seçin. 
 1. Rolü atamak istediğiniz kapsayıcıyı bulun ve kapsayıcının ayarlarını görüntüleyin. 
 1. Kapsayıcının erişim denetimi ayarlarını göstermek için **erişim denetimi (IAM)** seçeneğini belirleyin. Rol atamalarının listesini görmek için **rol atamaları** sekmesini seçin.
 

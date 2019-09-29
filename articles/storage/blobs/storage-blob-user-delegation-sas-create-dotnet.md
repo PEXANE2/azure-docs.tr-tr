@@ -4,17 +4,17 @@ description: .NET istemci kitaplığını kullanarak Azure Storage 'da Azure Act
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 59de768e75a88d7cfa5b68fa306d0e83f1aa0ba3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900440"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671340"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>.NET ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma (Önizleme)
 
@@ -57,7 +57,7 @@ az ad sp create-for-rbac \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 
-Komut `az ad sp create-for-rbac` , JSON biçiminde hizmet sorumlusu özelliklerinin bir listesini döndürür. Bir sonraki adımda gerekli ortam değişkenlerini oluşturmak için bunları kullanabilmeniz için bu değerleri kopyalayın.
+@No__t-0 komutu JSON biçimindeki hizmet sorumlusu özelliklerinin listesini döndürür. Bir sonraki adımda gerekli ortam değişkenlerini oluşturmak için bunları kullanabilmeniz için bu değerleri kopyalayın.
 
 ```json
 {
@@ -87,7 +87,7 @@ Azure Identity istemci kitaplığı, hizmet sorumlusunun kimliğini doğrulamak 
 
 ## <a name="add-using-directives"></a>Using yönergeleri ekleme
 
-Azure Identity ve `using` Azure Storage istemci kitaplıklarının önizleme sürümlerini kullanmak için aşağıdaki yönergeleri kodunuza ekleyin.
+Azure kimliği ve Azure depolama istemci kitaplıklarının önizleme sürümlerini kullanmak için aşağıdaki `using` yönergelerini kodunuza ekleyin.
 
 ```csharp
 using System;
@@ -102,7 +102,7 @@ using Azure.Storage.Blobs.Models;
 
 ## <a name="authenticate-the-service-principal"></a>Hizmet sorumlusu kimlik doğrulaması
 
-Hizmet sorumlusunun kimliğini doğrulamak için [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) sınıfının bir örneğini oluşturun. `DefaultAzureCredential` Oluşturucu, daha önce oluşturduğunuz ortam değişkenlerini okur.
+Hizmet sorumlusunun kimliğini doğrulamak için [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) sınıfının bir örneğini oluşturun. @No__t-0 Oluşturucusu, daha önce oluşturduğunuz ortam değişkenlerini okur.
 
 Aşağıdaki kod parçacığı kimliği doğrulanmış kimlik bilgisinin nasıl alınacağını ve BLOB depolaması için bir hizmet istemcisi oluşturmak üzere nasıl kullanılacağını gösterir
 

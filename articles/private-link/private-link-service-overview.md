@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 67bddea31a4bb375657b0df5e21fab1ab3d732f5
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cad8e3e4f32a8773fe914362b637d39765a23c21
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265550"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672525"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure özel bağlantı hizmeti nedir?
 
@@ -100,6 +100,7 @@ Bağlantıları onaylama eylemi, özel bağlantı hizmetindeki otomatik onaylama
 Özel bağlantı hizmeti kullanılırken aşağıdakiler bilinen sınırlamalar aşağıda verilmiştir:
 - Yalnızca Standart Load Balancer destekleniyor 
 - Yalnızca IPv4 trafiğini destekler
+- Yalnızca TCP trafiğini destekler
 - Yalnızca aynı bölgedeki özel uç noktalardan erişilebilir
 - Azure portal deneyim oluşturma ve yönetme desteklenmez
 - Proxy protokolünü kullanan istemci bağlantı bilgileri servis sağlayıcısına kullanılamıyor

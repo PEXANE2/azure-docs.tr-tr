@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: dech
-ms.openlocfilehash: 1eda8271a3b8aa2c9e247252bd755279d23b6e10
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 4a9bd554e0858024d656dbf35d6fb00995e6f4bd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310353"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672480"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db"></a>Azure Cosmos DB yerleşik Not defteri komutlarını ve özelliklerini kullanın
 
@@ -25,7 +25,10 @@ Yeni bir kod hücresinde, istenen Python paketiyle değiştirerek ``PackageToBeI
 import sys
 !{sys.executable} -m pip install PackageToBeInstalled –user
 ```
-Bu paket, Azure Cosmos hesabındaki herhangi bir not defterinden kullanılabilir olacaktır. 
+Bu paket, Azure Cosmos hesap çalışma alanındaki herhangi bir not defterinden kullanılabilir. 
+
+> [!TIP]
+> Not defteriniz için özel bir paket gerekiyorsa, [çalışma alanını sıfırladıktan](#reset-notebooks-workspace)sonra paketler kaldırıladıkça, paketi yüklemek için Not defterinize bir hücre eklemenizi öneririz.  
 
 ## <a name="run-a-sql-query"></a>SQL sorgusu çalıştırma
 
@@ -150,6 +153,11 @@ primary_key = os.environ["COSMOS_KEY"]
 ```
 > [!IMPORTANT]
 > ``COSMOS_ENDPOINT`` Ve``COSMOS_KEY`` ortam değişkenleri yalnızca SQL API için geçerlidir. Diğer API 'Ler için, Cosmos hesabınızdaki **bağlantı dizeleri** veya **anahtarlar** dikey penceresinde uç noktasını ve anahtarı bulun.  
+
+## <a name="reset-notebooks-workspace"></a>Not defteri çalışma alanını Sıfırla
+Not defteri çalışma alanını varsayılan ayarlara sıfırlamak için komut çubuğundan **çalışma alanını Sıfırla** ' yı seçin. Bu, tüm özel yüklü paketleri kaldıracak ve jupi sunucusunu yeniden başlatacak. Not defterleriniz, dosyalarınız ve Cosmos kaynaklarınız etkilenmeyecektir.  
+
+![Not defteri çalışma alanını Sıfırla](media/use-notebook-features-and-commands/reset-workspace.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

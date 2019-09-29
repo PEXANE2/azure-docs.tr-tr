@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 6120eee5bbd2f385fa8e76da093f7fadccb4904e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3792eed170d3e3e1cdd267c0c88d2d2d6c520733
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348980"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672803"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmeti (AKS) için Kubernetes temel kavramları
 
@@ -76,39 +76,34 @@ Farklı bir konak işletim sistemi, kapsayıcı çalışma zamanı kullanmanız 
 
 ### <a name="resource-reservations"></a>Kaynak ayırmaları
 
-Düğüm kaynakları, kümenin bir parçası olarak düğüm işlevini yapmak için AKS tarafından kullanılır. Bu, AKS 'te kullanıldığında, düğümünüz için toplam kaynak ve kaynak ayırma tablosu arasında bir benzersizlik oluşturabilir. Bu, dağıtılan yığınlarınızın istek ve sınırlarını ayarlarken dikkat etmeniz açısından önemlidir.
+Düğüm kaynakları, kümenin bir parçası olarak düğüm işlevini yapmak için AKS tarafından kullanılır. Bu, AKS 'te kullanıldığında, düğümünüz için toplam kaynak ve kaynak ayırma tablosu arasında bir benzersizlik oluşturabilir. Bu, Kullanıcı tarafından dağıtılan pods 'lerin istek ve sınırlarını ayarlarken dikkat etmeniz önemlidir.
 
 Bir düğümün allocatable kaynaklarını bulmak için şunu çalıştırın:
 ```kubectl
-kubectl describe node [NODE_NAME] | grep Allocatable -B 4 -A 3
+kubectl describe node [NODE_NAME]
 
 ```
 
-Düğüm performansını ve işlevselliğini sürdürmek için, her bir düğümde aşağıdaki işlem kaynakları ayrılmıştır. Düğüm, kaynaklarda daha büyük bir süre büyüdükçe, daha yüksek miktarda Kullanıcı tarafından dağıtılan yük olması nedeniyle kaynak ayırma artar.
+Düğüm performansını ve işlevselliğini sürdürmek için, kaynaklar her bir düğüme AKS tarafından ayrılır. Düğüm, kaynaklarda daha büyük bir süre büyüdükçe, daha yüksek miktarda Kullanıcı tarafından dağıtılan yük olması nedeniyle kaynak ayırma artar.
 
 >[!NOTE]
 > OMS gibi eklentilerin kullanılması ek düğüm kaynakları kullanacaktır.
 
-- Düğüm türüne **CPU** bağımlı
+- **CPU** Ile ayrılmış CPU, ek özellikleri çalıştırmak nedeniyle daha az ayrılamayabilir CPU türüne ve küme yapılandırmasına bağımlıdır
 
 | Konaktaki CPU çekirdekleri | 1\. | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
-|Kubelet (miliçekirdekler)|60|100|140|180|260|420|740|
+|Kule ayrılmış (miliçekirdekler)|60|100|140|180|260|420|740|
 
-- **Bellek** -kullanılabilir belleğin% 20 ' si, en fazla 4 gib
+- **Bellek-belleğin** ayırması, aşamalı bir hız izler
+  - ilk 4 GB belleğin% 25 ' i
+  - sonraki 4 GB belleğin% 20 ' si (8 GB 'a kadar)
+  - Sonraki 8 GB belleğin% 10 ' ından (16 GB 'a kadar)
+  - sonraki 112 GB belleğin% 6 ' ından (128 GB 'a kadar)
+  - 128 GB üzerinde herhangi bir belleğin% 2 ' i
 
 Bu ayırmalar, uygulamalarınız için kullanılabilir CPU ve bellek miktarının düğümün kendisinden daha az görünebileceği anlamına gelir. Çalıştırdığınız uygulama sayısı nedeniyle kaynak kısıtlamaları varsa, bu ayırmalar CPU ve bellek 'ın çekirdek Kubernetes bileşenleri için kullanılabilir olmaya devam etmesini sağlar. Kaynak ayırmaları değiştirilemez.
 
-Örneğin:
-
-- **Standart DS2 v2** düğüm boyutu 2 vCPU ve 7 gib belleği içerir
-    - 7 GiB belleği için% 20 bellek = 1,4 GiB
-    - Düğüm için toplam *(7-1,4) = 5,6 GiB* belleği mevcuttur
-    
-- **Standart E4s v3** düğüm boyutu 4 vCPU ve 32 gib belleği içerir
-    - 32 GiB bellek = 6,4 GiB için% 20, ancak AKS yalnızca en fazla 4 GiB ayırır
-    - Düğüm için toplam *(32-4) = 28 GiB* kullanılabilir
-    
 Temel düğüm işletim sistemi Ayrıca, kendi temel işlevlerini tamamlaması için bazı CPU ve bellek kaynakları gerektirir.
 
 İlişkili en iyi uygulamalar için bkz. [AKS 'deki temel Zamanlayıcı özellikleri Için en iyi uygulamalar][operator-best-practices-scheduler].

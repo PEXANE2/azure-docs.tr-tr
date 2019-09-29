@@ -4,17 +4,17 @@ description: PowerShell kullanarak Azure Storage 'da Azure Active Directory kiml
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 8a455fdb8ef81b0e06d1f77f7a9cdd5bec351b2b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164279"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673333"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>PowerShell ile bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturma (Önizleme)
 
@@ -102,7 +102,7 @@ Azure PowerShell ile bir Kullanıcı temsili SAS oluşturduğunuzda, SAS imzalam
 
 Kullanıcı temsili anahtarının geçerli olduğu maksimum Aralık, başlangıç tarihinden itibaren 7 gün olduğundan, başlangıç zamanının 7 gün içinde olan SAS için bir süre sonu zamanı belirtmeniz gerekir. Kullanıcı temsili anahtarının süresi dolduktan sonra SAS geçersiz, bu nedenle süre sonu 7 günden daha fazla olan bir SAS yalnızca 7 gün için geçerli olacaktır.
 
-Azure PowerShell olan bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak için, önce `-UseConnectedAccount` parametreyi belirterek yeni bir Azure Storage bağlam nesnesi oluşturun. `-UseConnectedAccount` Parametresi, komutun oturum açtığınız Azure AD hesabı altında bağlam nesnesini oluşturduğunu belirtir.
+Azure PowerShell olan bir kapsayıcı veya blob için Kullanıcı temsili SAS oluşturmak için, önce `-UseConnectedAccount` parametresini belirterek yeni bir Azure Storage bağlam nesnesi oluşturun. @No__t-0 parametresi, komutun oturum açtığınız Azure AD hesabı altında bağlam nesnesini oluşturduğunu belirtir.
 
 Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
@@ -134,7 +134,7 @@ Döndürülen Kullanıcı temsili SAS belirteci şuna benzer:
 
 Blob için bir Kullanıcı temsili SAS belirteci döndürmek üzere, daha önce oluşturduğunuz Azure depolama bağlamı nesnesini geçirerek [New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) komutunu çağırın.
 
-Aşağıdaki sözdizimi bir blob için Kullanıcı temsili SAS döndürür. Örnek, alt SAS `-FullUri` belirtecine eklenen blob URI 'sini döndüren parametresini belirtir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki sözdizimi bir blob için Kullanıcı temsili SAS döndürür. Örnek, SAS belirtecine eklenen blob URI 'sini döndüren `-FullUri` parametresini belirtir. Köşeli ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `

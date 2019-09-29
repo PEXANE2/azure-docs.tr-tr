@@ -11,23 +11,23 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f5810a813b6c54f190d95061e79914457f51d19c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 7e2b5c5c5d2ca4c0d6ab820866341c5f30082c5f
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067607"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672784"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUSıS uygulamanız için önceden oluşturulmuş etki alanı başvurusu
 Bu başvuru, hakkında bilgi sağlar. [önceden oluşturulmuş etki alanları](luis-how-to-use-prebuilt-domains.md), önceden oluşturulmuş koleksiyon hedefleri ve LUIS sunan varlıkların olduğu.
 
 [Özel etki alanları](luis-how-to-start-new-app.md), aksine, hiçbir hedefleri ve modelleri başlayın. Herhangi bir önceden oluşturulmuş etki alanı hedefleri ve varlıklar için özel bir model ekleyebilirsiniz.
 
-# <a name="supported-domains-across-cultures"></a>Kültürler genelinde desteklenen etki alanları
+## <a name="supported-domains-across-cultures"></a>Kültürler genelinde desteklenen etki alanları
 
 Aşağıdaki tabloda, şu anda desteklenen etki alanları özetlenmektedir. Ingilizce desteği genellikle diğerlerinden daha tamamdır. 
 
-| Varlık türü       | EN-US      | ZH-CN   | DE    | GS     | ES    | BT      | PT-BR |  JP  |      DILI |        NL |    TR |
+| Varlık Türü       | EN-US      | ZH-CN   | DE    | GS     | ES    | BT      | PT-BR |  JP  |      DILI |        NL |    TR |
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:| 
 | [Takvim](#calendar)    | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | [Kurulan](#communication)   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
@@ -47,7 +47,7 @@ Aşağıdaki tabloda, şu anda desteklenen etki alanları özetlenmektedir. Ingi
 * Hintçe
 * İspanyolca Meksika
 
-# <a name="description-for-luis-prebuilt-domains"></a>LUIS önceden oluşturulmuş etki alanları için açıklama
+## <a name="description-for-luis-prebuilt-domains"></a>LUIS önceden oluşturulmuş etki alanları için açıklama
 ## <a name="calendar"></a>**Takvim**
 Takvim, kişisel toplantılar ve randevular (örneğin, dünya Kupa zamanlamaları, Seattle olay takvimi) veya genel takvim (örneğin, bugün ne güne denk gelir, Işçilik günü ne zaman başlar) hakkında herhangi bir şeydir.
 ### <a name="intents"></a>**Hedefleri**
@@ -76,7 +76,7 @@ ShowNext | Sonraki olayı denetleyin. <br> _**Uyarı**: Daha fazla ShowNext gene
  TimeRemaining | Sonraki olaya kadar kalan süreyi kontrol edin. | Toplantılarıma ne kadar süre sonra ihtiyacım olduğunu görüntüleyin. <br> Sonraki toplantım başlamadan önce sahip olduğumu gösteren süreyi görüntüleyin.
  
 ### <a name="entities"></a>**Varlıklar**
-Varlık Adı | Varlık türü | Açıklama | Örnekler | Yuvalar
+Varlık adı | Varlık Türü | Açıklama | Örnekler | Yuvalar
 -------|-----------------------|-------------|---------|--------
 ContactName | kişi adı | Bir kişinin veya toplantı katılımcısının adı. | **Betsy**ile tanışın. <br>  3 Temmuz 'da 7 p.m. üzerinde **Aubrey** ile tanışın | Betsy <br> Aubrey <br> Amy 
 Hedef takvim | MPLE | Hedef takvim adı. | MOM ile öğle yemeği 12 **Kişisel** Salı <br> **Google** takvimimi varsayılan takvimim olarak kullan. <br> Yoga sınıfını 3 p.m. ' de Mon 'a Güncelleştir **Kişisel** takvimdeki liste. | Google <br> C <br> başlar <br> Ana
@@ -147,9 +147,9 @@ TurnSpeakerOff | Konuşmacı telefonu kapatın. | Bana hoparlör kapalı yararla
 TurnSpeakerOn | Konuşmacı telefonda açın. | Hoparlör modu. <br>   Hoparlör koyabilirsiniz.
 
 ### <a name="entities"></a>**Varlıklar**
-Varlık Adı | Varlık türü | Açıklama | Örnekler | Yuvalar
+Varlık adı | Varlık Türü | Açıklama | Örnekler | Yuvalar
 ------|-------|----------|--------------|---------------
-Attachment | MPLE | Kullanıcının metin veya e-posta ile göndermek istediği ek. | OneNote 'tan bir **dosyayı** e-posta ile gönderin. <br> Evlerimin evmi olduğunu bir kaya gönderin. | dosyası <br> Belg
+Attachment | MPLE | Kullanıcının metin veya e-posta ile göndermek istediği ek. | OneNote 'tan bir **dosyayı** e-posta ile gönderin. <br> Evlerimin evmi olduğunu bir kaya gönderin. | file <br> Belg
 AudioDeviceType | MPLE | Ses cihazının türü (konuşmacı, kulaklık, mikrofon vb.). | **Eller ücretsiz**kullanarak yanıtlayın. <br> **Konuşmacı telefonunda**yeniden arayın. | sesini <br> Eller ücretsiz <br> Bluetooth
 Category | MPLE | Bir ileti veya e-postanın kategorisi, Kategori "okunmamış", "bayrak" gibi e-posta sisteminde açık bir tanıma sahip olmalıdır. Açıklama w/o Clear Definition, örneğin, "New" ve "son" Kategoriler değildir. | Tüm e-postaları **okundu** olarak işaretle  <br> Paul için yeni **yüksek öncelikli** e-posta | önemli <br> yüksek öncelikli <br> oku
 ContactAttribute | MPLE | Kullanıcı ile ilgili olarak iletişim kurmak için bir özniteliği.| Sonraki ayın **Doğum günlerini** öğrenmem gerekir mi? | günleri <br> address <br> Telefon numarası
@@ -192,9 +192,9 @@ QueryLastText | Son e-postayı sorgulayın. | Bana e-posta gönderen kim? <br> S
 
 
 ### <a name="entities"></a>**Varlıklar**
-Varlık Adı | Varlık türü | Açıklama | Örnekler | Yuvalar
+Varlık adı | Varlık Türü | Açıklama | Örnekler | Yuvalar
 ------|-------|----------|--------------|---------------
-Attachment | MPLE | Kullanıcının metin veya e-posta ile göndermek istediği ek. | OneNote 'tan bir **dosyayı** e-posta ile gönderin. <br> Evlerimin evmi olduğunu bir kaya gönderin. | dosyası <br> Belg
+Attachment | MPLE | Kullanıcının metin veya e-posta ile göndermek istediği ek. | OneNote 'tan bir **dosyayı** e-posta ile gönderin. <br> Evlerimin evmi olduğunu bir kaya gönderin. | file <br> Belg
 ContactName | kişi adı  | Bir kişi veya ileti alıcı adı. | E-postayı **Stevens** 'e gönder | Stevenler
 Date | datetime | Alınan e-postanın tarihi. | **Bugünün**postasını okuyun <br> **Bugün**bana kim e-posta gönder? | bugün
 EmailAddress | email | Kullanıcı e-posta adresi göndermek veya sorgulamak istiyor. | e-posta gönderMegan.Flynn@MKF.com<br> abc@outlook.com 
@@ -213,7 +213,7 @@ Searchmetinmetinler | basit, model. any | E-postaları veya iletileri filtreleme
 ## <a name="homeautomation"></a>**HomeAutomation**
 HomeAutomation etki alanı, akıllı giriş cihazlarını denetleme ile ilgili amaçlar ve varlıklar sağlar. Genellikle ışıklar ve hava koşullayıcı ile ilgili denetim komutunu destekliyoruz. Ancak diğer elektrik gereçlerinde bazı Genelleştirme becerileri vardır.
 ### <a name="supported-devices-and-properties"></a>**Desteklenen cihazlar ve Özellikler**
-Cihaz | Özellikler
+Cihaz | properties
 -------|---------
 Sıcaklık algılayıcısı | Sıcaklık
 Hafif, lamba | Açık, parlaklık, renk
@@ -232,7 +232,7 @@ Amaç adı | Açıklama | Örnekler
  Kullanıma hazır | Cihazların ayarlarını ve parlaklığını açın. | Işıkları yüzde 75 oranında parlaklaştırın. <br> Parlaklığı yüzde 10 oranında artırma.  <br> Oturma odasını çarpıtma yapın.
  Kapatma | Bir cihaz kapatılıyor, ancak ışıkları, sıcaklığın veya parlaklığın parlaklığını veya parlaklığını DEĞIL. | Kitaplığı% 44 oranında kapatın. <br> Işıkları karartma. <br> Odayı daha soğuk yapın.
 ### <a name="entities"></a>**Varlıklar**
-Varlık Adı | Varlık türü | Açıklama | Örnekler
+Varlık adı | Varlık Türü | Açıklama | Örnekler
 -------|----------|--------------|---------------
 DeviceName | List | Cihazları için Kullanıcı tanımlı metin. | Mavi<br> Yan <br> İrtibat
 DeviceType | List | Desteklenen cihazlar. | Işıklar <br> Hava koşullayıcı <br> Niak ışığı
@@ -263,10 +263,10 @@ Uzaktan Boyutlandır | Notun cümlesini kaldırın. | Son tümceyi kaldırın. <
 Değişiklik başlığı | Notun başlığını değiştirin. | Bu Notda "planlama" olarak adlandırılmaktadır.
 
 ### <a name="entities"></a>**Varlıklar**
-Varlık Adı | Varlık türü | Açıklama | Örnekler 
+Varlık adı | Varlık Türü | Açıklama | Örnekler 
 ------- | ------- | ------- | -------
 Text | basit, model. Kaydedilmemiş | Not veya anımsatıcı metni. | Yürüyen önce Uzat <br> uzun süre çalışan yarın
-Başlık | basit, model. Kaydedilmemiş | Not ın başlığı. | Market <br> çağrılacak kişiler <br> Yapılacaklar
+Unvan | basit, model. Kaydedilmemiş | Not ın başlığı. | Market <br> çağrılacak kişiler <br> Yapılacaklar
 CreationDate | datetimeV2 | Bu yuva, kullanıcının belirli bir tarih/saat penceresinde oluşturulmuş notları istediğinde kullanılır. | 
 Miktar Niteleyici | List | Bir Kullanıcı ' All ', ' her ' veya ' any ' öğeleri veya bir nottaki tüm metinler üzerinde bir eylem gerçekleştirmeyi istediğinde. | tümü <br> Kaydedilmemiş <br> Her
 OrderReference | ordinal | Kullanıcı, "First", "Last", "Next" vs. Items ile eylem yapmak istiyor. | adı <br> soyadına
@@ -291,7 +291,7 @@ RatePlace | Bir yer değerlendirin. | Sıfırdan büyük bir maki 'nin pizza iç
 AddFavoritePlace | Kullanıcı, sık kullanılanları veya MVP listesine bir konum eklemek istemektedir. | Bu konumu sık kullanılanlarıma Kaydet. <br> Sık Kullanılanlarıma En Iyi satın alma ekleyin.
 
 ### <a name="entities"></a>**Varlıklar**
-LUSıS varlıkları | Varlık türü | Açıklama | Örnekler | Utterance örnekleri
+LUSıS varlıkları | Varlık Türü | Açıklama | Örnekler | Utterance örnekleri
 --------------|-------------|-------------|----------|-------------------
 AbsoluteLocation | MPLE | Konumu veya bir yerde adresidir. | Palo Alto <br> 300 112th Ave SE <br> Seattle | **1020 Middlefield Rd.** **Palo Alto** 'da <br> **Seattle** 'daki kedi tohum mağazaları <br> Buradan **300 112**' ye kadar olan mesafeyi alın.
 Kullanılmıyordu | MPLE | Genel bir yerde amaç özellikleri ve avantajları. | rıhtımının <br> Park ücretsiz | Kirkland **su ön** mevsimler restoranlar. <br> Yakınımdaki bir **Ücretsiz Park** var mı?
@@ -323,7 +323,7 @@ Findrezervationne zaman | Rezervasyonun tam süresini denetleyin | Yarın için 
 Reddet | Kullanıcı, bir ayırmayı yönetmek için hangi sanal yardımcıyı önerdiğini reddeder. <br> *Daha fazla bilgi almak için bkz **.:P kirası**, **yardımcı programlar** etki alanı. * | Olayı ayarlama gereksinimi yoktur. | Hayır, ayırmayı değiştirmek istemiyorum. <br> Hayır, kitabı, bir hata yaptık.
 
 ### <a name="entities"></a>**Varlıklar**
-LUSıS varlığı | Varlık türü | Açıklama | Örnekler
+LUSıS varlığı | Varlık Türü | Açıklama | Örnekler
 -------|------|---------|-------------------
 Adres | MPLE | Olay konumu veya bir ayırma adresi. | Palo Alto<br>300 112th Ave SE<br>Seattle
 Atmosfer | List | Restorana ait atmokürenin açıklaması. | Romantik<br>sıradan<br>gruplar için iyi<br>Adres
@@ -350,7 +350,7 @@ ShowPreviousPage | Kullanıcı için önceki sayfada liste öğelerini göster. 
 ShowToDo | Yapılacaklar listesindeki tüm öğeleri görüntüleyin. | Alışveriş listemi göster. <br> Market listemi gösterin.
 
 ### <a name="entities"></a>**Varlıklar**
-LUSıS varlığı | Varlık türü | Açıklama | Örnekler
+LUSıS varlığı | Varlık Türü | Açıklama | Örnekler
 -------|------|---------|-------------------
 ContainsAll | MPLE | Görev listesindeki tüm öğeleri veya öğeleri temsil etme | **Tüm** görevleri kaldırmaya yardımcı olabilir. <br> **Her şeyi**tamamlayın.
 ordinal | ordinal | Bir öğeye yönelik sıra veya sayısal başvuru. | **Üçüncü** bir tane tamamlandı olarak işaretleyin. <br> **İlk** görevi silin.
@@ -382,7 +382,7 @@ Amaç adı | Açıklama | Örnekler
  ReadAloud | Kullanıcıya sesli bir şeyi okuyun. | Bu sayfayı okuyun. <br> Sesli okuyun.
 
 ### <a name="entities"></a>**Varlıklar**
-LUSıS varlığı | Varlık türü | Açıklama | Örnekler
+LUSıS varlığı | Varlık Türü | Açıklama | Örnekler
 ------------|-------------|-------------|---------
 ordinal | ordinal | Bir öğeye yönelik sıra veya sayısal başvuru. | **İkinci** bir. <br> **Sonraki** bir.
 numarası | numarası | Kullanıcının istediği öğe miktarı | Sonraki **3** öğe
@@ -400,10 +400,10 @@ Amaç adı | Açıklama | Örnekler
  Getdalgalı Therdanın | Hava durumu belgelerini veya belirli bir konumdan uyarı alın. | Mempa 'da Hava durumu Danışma belgeleri var mı? <br> Alanım için hava durumu uyarıları var mı?
 
 ### <a name="entities"></a>**Varlıklar**
-LUSıS varlığı | Varlık türü | Açıklama | Örnekler
+LUSıS varlığı | Varlık Türü | Açıklama | Örnekler
 ------------|-------------|-------------|---------
 Location | Coğrafya | Hava durumu isteğinin mutlak veya örtük konumu. | Palo Alto<br>Shanghai<br>Seattle<br>Delvina<br>
-Date/Time   | datetime | Hava durumunu sorgulamak için tarih/saat veya süre. | Kasım<br>hourly<br>BAH<br>Bu hafta sonu<br>10 gün<br>
+Date/Time   | datetime | Hava durumunu sorgulamak için tarih/saat veya süre. | Kasım<br>saatlik<br>BAH<br>Bu hafta sonu<br>10 gün<br>
 Additionalhava durumu | list | Hava durumu için, Rüzgar hızı veya yönü gibi ek açıklama sözcüğü. | direction<br>Hızlı<br>Inız
 Yer | MPLE | Geçmiş hava durumu koşulunun açıklama kelimeleri, son zaman döneminde ortalama Joomla boralimli durumlar da dahil olmak üzere. | başlangıcından<br>geçmiş/geçmiş<br>Dönemsel<br>en iyi zaman<br>Şimdiye kadar kaydedildi
 PrecipitationUnit | boyut | Kar veya yağmur için yağış. | 5 inç<br>6 cm
@@ -422,7 +422,7 @@ Amaç adı | Açıklama | Örnekler
  Web araması | Belirtilen bir Web sitesine gitme veya arama altyapısında arama yapma isteği. | Google.com içinde arama yüzeyi. <br> Web 'de mutlu Doğum günü şarkısını bulun <br> Www.twitter.com adresine gidin.
 
 ### <a name="entities"></a>**Varlıklar**
-LUSıS varlığı | Varlık türü | Açıklama | Örnekler
+LUSıS varlığı | Varlık Türü | Açıklama | Örnekler
 ------------|-------------|-------------|---------
 SearchEngine | List | Arama motoru kullanıcısı kullanmak istiyor. | Bing <br> Google
 Aramametni | basit, model. Kaydedilmemiş | Kullanıcı aramak isteyen metin. <br> _"İn" bir arama altyapısı değilse, Web sitesi "Facebook 'ta arkadaşlar" ifadesini SearchText olarak etiketleyin. URL ayrıca SearchText olarak etiketlemelidir._ | Film <br> Derin öğrenme <br> Tom CRUISE

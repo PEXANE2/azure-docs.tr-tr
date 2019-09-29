@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 34e1d9fe937118a2eafcdd85c153653eb28752d4
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 824a562cb5f0562a235d903fbd4e575bc9c22572
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219250"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672743"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>Azure Cosmos DB hesapları için not defterlerini etkinleştir
 
@@ -67,3 +67,4 @@ Yeni bir not defteri oluşturmak için **Yeni Not** defteri ' ni **seçip not de
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Jupyıter Not defterlerinin Azure Cosmos DB](cosmosdb-jupyter-notebooks.md) avantajları hakkında bilgi edinin
+- [Not defteri özelliklerini ve komutlarını kullanma](use-notebook-features-and-commands.md) hakkında bilgi edinin

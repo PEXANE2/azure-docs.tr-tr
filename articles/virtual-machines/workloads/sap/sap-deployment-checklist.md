@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34d1ba13689eb820db754c5c0d9573dcdc235205
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350827"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672947"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -102,7 +102,7 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - Azure VM 'lerinizin boyutunu, planlama aşamasında seçtiğiniz VM türlerinin maksimum depolama alanı işleme ve ağ aktarım hızına göre değerlendirin ve test edin. Verileri buradan bulabilirsiniz:
            -  [Azure 'Da Windows sanal makineleri Için boyutlar](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
            -  [Azure 'Da Linux sanal makineleri Için boyutlar](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Boyut için *önbelleğe alınmamış maksimum disk aktarım hızını* göz önünde bulundurmanız önemlidir.
-   1. Depolama.
+   2. Depolama.
         - En azından, SAP uygulama katmanlarını temsil eden VM 'Ler için ve performans duyarlı olmayan DBMS 'lerin dağıtımı için [Azure Standart SSD depolama](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) kullanın.
         - Genel olarak, [Azure Standart HDD disklerinin](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)kullanımını önermiyoruz.
         - Uzaktan performansa duyarlı tüm DBMS VM 'Leri için [Azure Premium Depolama](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) kullanın.
@@ -111,11 +111,12 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - Farklı DBMS türleri için [SAP ile ilgili genel DBMS belgelerini](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) ve genel belgenin Işaret ettiği DBMS 'ye özgü belgeleri denetleyin.
         - SAP HANA hakkında daha fazla bilgi için bkz. [Azure 'da altyapı yapılandırmalarına ve işlemlerine SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
         - Azure veri disklerini, cihaz KIMLIĞI kullanarak bir Azure Linux sanal makinesine hiçbir şekilde bağlama. Bunun yerine, evrensel benzersiz tanımlayıcıyı (UUID) kullanın. Örneğin, Azure veri disklerini bağlamak için grafiksel araçlar kullanırken dikkatli olun. UUID 'nin diskleri bağlamak için kullanıldığından emin olmak için/etc/fstab içindeki girdileri çift kontrol edin. Daha fazla ayrıntı için [Bu makaleyi](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#connect-to-the-linux-vm-to-mount-the-new-disk)bulabilirsiniz.
-   1. İşlemleri.
+   3. İşlemleri.
         - Sanal ağ altyapınızı ve farklı Azure sanal ağları üzerinde veya içinde SAP uygulamalarınızın dağıtımını test edin ve değerlendirin.
-        -  Tek bir Azure sanal ağı içindeki hub ve bağlı bileşen sanal ağ mimarisi yaklaşımını veya mikro segmentleme yaklaşımını değerlendirin. Bu değerlendirmeyi temel alan:-eşlenen [Azure sanal ağları](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)arasındaki veri değişim maliyetlerinden. Maliyetler hakkında daha fazla bilgi için bkz. [sanal ağ fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network/).
-                  -Bir sanal ağ içindeki bir alt ağı yalıtmak için ağ güvenlik grubunu değiştirmenin aksine Azure sanal ağları arasındaki eşlemenin hızlı bir şekilde kesilmesi avantajlarının avantajları. Bu değerlendirme, sanal ağın alt ağında barındırılan uygulamalar veya VM 'Lerin bir güvenlik riski haline geldiğini durumlar içindir.
-                  -Şirket içi, dış dünya ve Azure 'da oluşturduğunuz sanal veri merkezi arasındaki ağ trafiğini merkezi olarak günlüğe kaydetme ve denetleme.
+        -  Tek bir Azure sanal ağı içindeki hub ve bağlı bileşen sanal ağ mimarisi yaklaşımını veya mikro segmentleme yaklaşımını değerlendirin. Bu değerlendirmeyi temel alan:
+               1. Eşlenen [Azure sanal ağları](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)arasındaki veri değişim ücretleri. Maliyetler hakkında daha fazla bilgi için bkz. [sanal ağ fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network/).
+               2. Bir sanal ağ içinde bir alt ağı yalıtmak üzere ağ güvenlik grubunu değiştirmenin aksine, Azure sanal ağları arasındaki eşlemenin hızlı bir şekilde kesilmesi avantajları. Bu değerlendirme, sanal ağın alt ağında barındırılan uygulamalar veya VM 'Lerin bir güvenlik riski haline geldiğini durumlar içindir.
+                3. Şirket içi, dış dünya ve Azure 'da oluşturduğunuz sanal veri merkezi arasındaki ağ trafiğini merkezi olarak günlüğe kaydetme ve denetleme.
         - SAP uygulama katmanı ve SAP DBMS katmanı arasındaki veri yolunu değerlendirin ve test edin.
             -  SAP NetWeaver, Hybru veya S/4HANA 'ya dayalı sap sistemleri için SAP uygulaması ve DBMS katmanı arasındaki iletişim yoluna [Azure ağ sanal gereçlerinin](https://azure.microsoft.com/solutions/network-appliances/) yerleştirilmesi desteklenmez.
             -  SAP uygulama katmanının ve SAP DBMS 'nin eşlenmeyen farklı Azure sanal ağlarında yerleştirilmesi desteklenmez.
@@ -129,13 +130,13 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
         - ILB dağıtımlarının doğrudan sunucu dönüşü kullanacak şekilde ayarlandığından emin olun. Bu ayar, DBMS katmanında yüksek kullanılabilirlik yapılandırmalarında Azure ılbs 'ler kullanıldığında gecikme süresini azaltır.
         - Linux konuk işletim sistemleriyle birlikte Azure Load Balancer kullanıyorsanız, **net. IPv4. TCP _Zaman damgaları** Linux ağ parametresinin **0**olarak ayarlandığından emin olun. Bu öneri, daha eski [SAP note #2382421](https://launchpad.support.sap.com/#/notes/2382421)sürümlerindeki önerilerle çakışıyor. SAP Note artık bu parametrenin Azure yük dengeleyiciler ile çalışması için **0** olarak ayarlanması gerektiğini belirten bir durum olarak güncelleştirilir.
         - En iyi ağ gecikmesini sağlamak için [Azure yakınlık yerleştirme gruplarını](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) kullanmayı düşünün. Daha fazla bilgi için bkz. [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleşimi grupları](sap-proximity-placement-scenarios.md).
-   1. Yüksek kullanılabilirlik ve olağanüstü durum kurtarma dağıtımları.
+   4. Yüksek kullanılabilirlik ve olağanüstü durum kurtarma dağıtımları.
         - SAP uygulama katmanını belirli bir Azure kullanılabilirlik bölgesi belirtmeden dağıtırsanız, SAP iletişim kutusu örnekleri veya tek bir SAP sisteminin ara yazılım örneklerini çalıştıran tüm VM 'Lerin bir [kullanılabilirlik kümesinde](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)dağıtıldığından emin olun.
         - SAP Merkezi Hizmetleri ve DBMS için yüksek kullanılabilirliğe ihtiyacınız yoksa, bu VM 'Leri SAP uygulama katmanıyla aynı Kullanılabilirlik kümesine dağıtabilirsiniz.
         - Pasif çoğaltma kullanarak yüksek kullanılabilirlik için SAP merkezi hizmetlerini ve DBMS katmanını koruduğunuzda, SAP Merkezi Hizmetleri için iki düğümü ayrı bir kullanılabilirlik kümesine ve farklı bir kullanılabilirlik kümesindeki iki DBMS düğümüne yerleştirin.
         - Azure Kullanılabilirlik Alanları dağıtırsanız, kullanılabilirlik kümelerini kullanamazsınız. Ancak, etkin ve pasif Merkezi Hizmetler düğümlerini iki farklı Kullanılabilirlik Alanları dağıttığınızdan emin olmanız gerekir. Aralarında en düşük gecikme süresine sahip Kullanılabilirlik Alanları kullanın.
           DBMS ve SAP Merkezi Hizmetler katmanı için Kullanılabilirlik Alanları üzerinde Windows veya Paceyapıcısı yük devretme kümeleri oluşturma durumu için [Azure Standart Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) kullanmanız gerektiğini unutmayın. Bölgesel dağıtımları için [temel Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) kullanamazsınız.
-   1. Zaman aşımı ayarları.
+   5. Zaman aşımı ayarları.
         - Sıraya alma sunucusu ve SAP iş işlemleriyle bağlantı kesmesi olmadığından emin olmak için SAP örneklerinin SAP NetWeaver geliştirici izlemelerini denetleyin. Bu iki kayıt defteri parametresini ayarlayarak bu bağlantı kesilmesinden kaçınabilirsiniz:
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. Daha fazla bilgi için bkz. [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)).
             - Hklm\system\currentcontrolset\services\tcpip\parameters\keepaliveınterval = 120000. Daha fazla bilgi için bkz. [Keepaliveınterval](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)).
@@ -152,8 +153,8 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
    1. Yük devretmenin yürütülmesi için geçen süreyi ölçer. Süreler çok uzunsa şunları göz önünde bulundurun:
         - SUSE Linux için, yük devretmeyi hızlandırmak üzere Azure çit Aracısı yerine SBD cihazlarını kullanın.
         - SAP HANA için, verilerin yeniden yüklenmesi çok uzun sürerse daha fazla depolama bant genişliği sağlamayı düşünün.
-   1. Yedekleme/geri yükleme sırasını ve zamanlamasını test edin ve gerekirse düzeltmeler yapın. Yedekleme sürelerinin yeterli olduğundan emin olun. Geri yükleme ve zaman geri yükleme etkinliklerini de test etmeniz gerekir. RTO SLA 'larınızın bir veritabanı veya VM geri yükleme işlemini temel aldığından emin olun.
-   1. Bölgeler arası DR işlevlerini ve mimarisini test edin.
+   3. Yedekleme/geri yükleme sırasını ve zamanlamasını test edin ve gerekirse düzeltmeler yapın. Yedekleme sürelerinin yeterli olduğundan emin olun. Geri yükleme ve zaman geri yükleme etkinliklerini de test etmeniz gerekir. RTO SLA 'larınızın bir veritabanı veya VM geri yükleme işlemini temel aldığından emin olun.
+   4. Bölgeler arası DR işlevlerini ve mimarisini test edin.
 1. Güvenlik denetimleri.
    1. Azure rol tabanlı erişim denetimi (RBAC) mimarinizin geçerliliğini test edin. Amaç, farklı takımların erişimini ve izinlerini ayırmak ve sınırlamak. Örneğin, SAP tabanlı ekip üyeleri VM 'Leri dağıtıp Azure depolama 'dan belirli bir Azure sanal ağına disk atayabilmelidir. Ancak SAP tabanlı ekibin kendi sanal ağlarını oluşturamayacak veya mevcut sanal ağların ayarlarını değiştirememesi gerekir. Ağ ekibinin üyeleri, SAP uygulaması ve DBMS VM 'lerinin çalıştığı sanal ağlarda VM 'Leri dağıtabilmelidir. Ya da bu ekibin üyeleri sanal makinelerin özniteliklerini değiştirebilir veya hatta VM 'Leri ya da diskleri silebilir.  
    1.  [Ağ güvenlik grubu ve ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) kurallarının beklenen şekilde çalıştığını ve korunan kaynakları koruduğuna emin olun.
@@ -161,9 +162,9 @@ Bir pilot dağıtımı sırasında tam bir HADR çözümü ve güvenlik tasarım
    1.  Bir işletim sistemi destek noktasından mümkün olduğunda, işletim sistemi diskleri için [Azure disk şifrelemesi](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) kullanın.
    1.  Çok fazla şifreleme katmanı kullandığınızdan emin olun. Bazı durumlarda, Azure disk şifrelemesi 'ni, DBMS Saydam Veri Şifrelemesi yöntemlerinden biri ile birlikte kullanmak mantıklı olur.
 1. Performans testi. SAP, SAP izleme ve ölçümlerine bağlı olarak şu karşılaştırmaları yapın:
-   1. Uygun olduğunda, ilk 10 çevrimiçi raporu geçerli uygulamanız ile karşılaştırın.
-   1. Uygun olduğunda, ilk 10 toplu işi geçerli uygulamanız ile karşılaştırın.
-   1. Arabirimler aracılığıyla SAP sistemine veri aktarımlarını karşılaştırın. Aktarımın, Şirket içinden Azure 'a benzer farklı konumlar arasında gittiğini bildiğiniz arabirimlere odaklanın.
+   - Uygun olduğunda, ilk 10 çevrimiçi raporu geçerli uygulamanız ile karşılaştırın.
+   - Uygun olduğunda, ilk 10 toplu işi geçerli uygulamanız ile karşılaştırın.
+   - Arabirimler aracılığıyla SAP sistemine veri aktarımlarını karşılaştırın. Aktarımın, Şirket içinden Azure 'a benzer farklı konumlar arasında gittiğini bildiğiniz arabirimlere odaklanın.
 
 
 ## <a name="non-production-phase"></a>Üretim dışı aşaması 

@@ -7,18 +7,18 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: a20f5b16b90b9bac7e6bc3ff808cf443b252fb44
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 75561c643c2b8881e4b390be885b77f2fff4971d
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204555"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673463"
 ---
-# <a name="fetch-shared-access-signature-tokens-in-code"></a>Koddaki paylaşılan erişim imza belirteçlerini getir
+# <a name="fetch-shared-access-signature-tokens-in-code"></a>Kodda paylaşılan erişim imza belirteçlerini getirme
 
 Depolama hesabınızı Anahtar Kasanızda [paylaşılan erişim imzası belirteçleriyle](../storage/common/storage-dotnet-shared-access-signature-part-1.md) yönetebilirsiniz. Bu makalede bir SAS belirteci C# getiren ve ile işlem gerçekleştiren kod örnekleri sağlanmaktadır.  SAS belirteçlerini oluşturma ve depolama hakkında daha fazla bilgi için bkz. [Key Vault ve Azure CLI ile depolama hesabı anahtarlarını yönetme](key-vault-ovw-storage-keys.md) veya [Key Vault ve Azure PowerShell depolama hesabı anahtarlarını yönetme](key-vault-overview-storage-keys-powershell.md).
 
-# <a name="code-samples"></a>Kod örnekleri
+## <a name="code-samples"></a>Kod örnekleri
 
 Bu örnekte, kod anahtar kasaınızdan bir SAS belirteci getirir, bunu yeni bir depolama hesabı oluşturmak için kullanır ve yeni bir blob hizmeti istemcisi oluşturur.  
 

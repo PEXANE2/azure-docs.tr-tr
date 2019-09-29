@@ -4,16 +4,16 @@ description: Performans uygulamaları geliştirmeye yönelik Azure Storage ile k
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 48a5484e2b2b663d0046fc628c02e656c5bd7a25
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e700cf04123bf02c1014aa418189221fbbb0b812
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985161"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670921"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Depolama performans ve ölçeklenebilirlik denetim listesi
 
@@ -46,8 +46,8 @@ Bu makalede, kanıtlanmış uygulamalar aşağıdaki gruplar halinde düzenler. 
 | &nbsp; | Tüm Hizmetler |.NET yapılandırması |[Gelişmiş atık toplamayı kullanan .NET 4,5 veya sonraki bir sürümü mi kullanıyorsunuz?](#subheading11) |
 | &nbsp; | Tüm Hizmetler |Paralellik |[Paralellik 'in, istemci olanaklarınızı veya ölçeklenebilirlik hedeflerini aşırı yüklemeden emin misiniz?](#subheading12) |
 | &nbsp; | Tüm Hizmetler |Araçlar |[Microsoft tarafından sunulan istemci kitaplıkları ve araçları 'nın en son sürümünü kullanıyor musunuz?](#subheading13) |
-| &nbsp; | Tüm Hizmetler |Yeniden Deneme Sayısı |[Azaltma hataları ve zaman aşımları için bir üstel geri alma yeniden deneme İlkesi kullanıyor musunuz?](#subheading14) |
-| &nbsp; | Tüm Hizmetler |Yeniden Deneme Sayısı |[Uygulamanız yeniden denenmeyen hatalara karşı yeniden denemeyi önler mi?](#subheading15) |
+| &nbsp; | Tüm Hizmetler |Yeniden deneme sayısı |[Azaltma hataları ve zaman aşımları için bir üstel geri alma yeniden deneme İlkesi kullanıyor musunuz?](#subheading14) |
+| &nbsp; | Tüm Hizmetler |Yeniden deneme sayısı |[Uygulamanız yeniden denenmeyen hatalara karşı yeniden denemeyi önler mi?](#subheading15) |
 | &nbsp; | Bloblar |Ölçeklenebilirlik hedefleri |[Aynı anda tek bir nesneye erişen çok sayıda istemciniz var mı?](#subheading46) |
 | &nbsp; | Bloblar |Ölçeklenebilirlik hedefleri |[Uygulamanız tek bir blob için bant genişliği veya işlem ölçeklenebilirliği hedefi içinde kalıyor mu?](#subheading16) |
 | &nbsp; | Bloblar |Blobları kopyalama |[Blobları etkili bir şekilde kopyaladığınızı biliyor musunuz?](#subheading17) |
@@ -234,7 +234,7 @@ Paralellik performansı performans için harika hale getirilmiş olsa da, verile
 
 Her zaman en son Microsoft tarafından sunulan istemci kitaplıklarını ve araçları kullanın. Yazma sırasında, .NET, Windows Phone, Windows Çalışma Zamanı, Java ve C++diğer dillere ait önizleme kitaplıklarında kullanılabilen istemci kitaplıkları vardır. Ayrıca, Microsoft, Azure depolama ile çalışmak için PowerShell cmdlet 'leri ve Azure CLı komutları yayımlamıştır. Microsoft bu araçları göz önünde bulundurularak etkin bir şekilde geliştirir, en son hizmet sürümleriyle güncel tutar ve kendini kanıtlamış performans uygulamalarının birçoğunu dahili olarak işlemesini sağlar.  
 
-### <a name="retries"></a>Yeniden Deneme Sayısı
+### <a name="retries"></a>Yeniden deneme sayısı
 
 #### <a name="subheading14"></a>Daraltma ve sunucu meşgul hataları
 
@@ -403,7 +403,7 @@ Tablo sorgusu, ortak bir bölüm anahtarını paylaşmayan bir varlık kümesini
 
 ##### <a name="subheading31"></a>Sorgu yoğunluğu
 
-Sorgu verimliliği ' nda başka bir anahtar faktörü, döndürülen kümeyi bulmak için taranan varlık sayısına kıyasla döndürülen varlıkların sayısıdır. Uygulamanız veri paylaşımlarının yalnızca% 1 ' i olan özellik değeri için filtre içeren bir tablo sorgusu gerçekleştirdiğinde, sorgu döndürdüğü her bir varlık için 100 varlıklarını tarar. Daha önce ele alınan tablo ölçeklenebilirliği hedefleri, döndürülen varlıkların sayısıyla değil, taranan varlık sayısıyla ilgilidir: düşük bir sorgu yoğunluğu, tablo hizmetinin uygulamanızı daha fazla sayıda varlık taraması gerektiği için kolayca genişletmesine neden olabilir. Aradığınız varlığı alın.  Bundan kaçınmak hakkında daha fazla [](#subheading34) bilgi için aşağıdaki bölüme bakın.  
+Sorgu verimliliği ' nda başka bir anahtar faktörü, döndürülen kümeyi bulmak için taranan varlık sayısına kıyasla döndürülen varlıkların sayısıdır. Uygulamanız veri paylaşımlarının yalnızca% 1 ' i olan özellik değeri için filtre içeren bir tablo sorgusu gerçekleştirdiğinde, sorgu döndürdüğü her bir varlık için 100 varlıklarını tarar. Daha önce ele alınan tablo ölçeklenebilirliği hedefleri, döndürülen varlıkların sayısıyla değil, taranan varlık sayısıyla ilgilidir: düşük bir sorgu yoğunluğu, tablo hizmetinin uygulamanızı daha fazla sayıda varlık taraması gerektiği için kolayca genişletmesine neden olabilir. Aradığınız varlığı alın.  Bundan kaçınmak hakkında daha fazla [bilgi için aşağıdaki](#subheading34) bölüme bakın.  
 
 ##### <a name="limiting-the-amount-of-data-returned"></a>Döndürülen veri miktarını sınırlama
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a6ba401d9d10e900fef5e2d296e74a07f84162cd
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389701"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670745"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure sanal ağ hakkında sık sorulan sorular (SSS)
 
@@ -200,9 +200,9 @@ Evet. Sanal makine ölçek kümesini VNet 'e bağlamanız gerekir.
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Kaynakları VNet 'e dağıtabilecek Azure hizmetlerinin tamamen bir listesi var mı?
 Evet, Ayrıntılar Için bkz. [Azure hizmetleri Için sanal ağ tümleştirmesi](virtual-network-for-azure-services.md).
 
-### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Hangi Azure PaaS kaynaklarını VNet 'ten erişimi kısıtlayabilirim?
+### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>VNet 'ten Azure PaaS kaynaklarına erişimi nasıl kısıtlayabilirim?
 
-Azure PaaS hizmetleri (Azure depolama ve Azure SQL veritabanı gibi) aracılığıyla dağıtılan kaynaklar, sanal ağ hizmet uç noktalarının kullanımı aracılığıyla yalnızca bir VNet 'teki kaynaklarla ağ erişimini kısıtlayabilir. Ayrıntılar için bkz. [sanal ağ hizmeti uç noktalarına genel bakış](virtual-network-service-endpoints-overview.md).
+Azure PaaS hizmetleri (Azure depolama ve Azure SQL veritabanı gibi) aracılığıyla dağıtılan kaynaklar, sanal ağ hizmeti uç noktaları veya Azure özel bağlantısı aracılığıyla VNet 'e ağ erişimini kısıtlayabilir. Ayrıntılar için bkz. [sanal ağ hizmeti uç noktalarına genel bakış](virtual-network-service-endpoints-overview.md), [Azure özel bağlantısına genel bakış](../private-link/private-link-overview.md)
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Hizmetlerimi VNET 'lere ve dışına taşıyabilir miyim?
 Hayır. Hizmetleri VNET 'lere ve dışına taşıyamazsınız. Kaynağı başka bir sanal ağa taşımak için, kaynağı silip yeniden dağıtmanız gerekir.

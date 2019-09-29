@@ -4,17 +4,17 @@ description: Bölgesel olarak yedekli depolama (ZRS), yüksek oranda kullanılab
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a343601ec126549926cfd4035d901862c0a585a8
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036263"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673101"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturmak için bölge yedekli depolama (ZRS)
 
@@ -66,26 +66,26 @@ ZRS 'ye veri geçirmek farklı bir strateji gerektirir. ZRS geçişi, tek bir de
 
 ZRS 'ye geçiş için iki birincil seçenek vardır: 
 
-- Mevcut bir hesaptan verileri el ile yeni bir ZRS hesabına kopyalayın veya taşıyın.
-- Dinamik geçiş isteyin.
+- Mevcut hesaptaki verileri el ile yeni ZRS hesabına kopyalayın veya taşıyın.
+- Dinamik geçiş isteğinde bulunun.
 
 > [!IMPORTANT]
 > Dinamik geçiş, Premium dosya paylaşımları için şu anda desteklenmiyor. Şu anda yalnızca el ile kopyalama veya taşıma işlemi destekleniyor.
 
-Geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş ile zamanlama denetimi olursunuz.
+Geçişin belirli bir tarihe kadar tamamlanması gerekiyorsa el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş işleminde zamanlama sizin denetiminizde olur.
 
 El ile geçiş yapmak için seçenekleriniz vardır:
 - AzCopy gibi mevcut araçları, Azure Storage istemci kitaplıklarından birini veya güvenilir üçüncü taraf araçlarından birini kullanın.
 - Hadoop veya HDInsight hakkında bilginiz varsa, kümenize hem kaynak hem de hedef (ZRS) hesabı ekleyin. Daha sonra, paralel hale getirmek gibi bir araçla veri kopyalama işlemini yapın.
 - Azure depolama istemci kitaplıklarından birini kullanarak kendi araç yapınızı oluşturun.
 
-El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft canlı bir geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçişdir. 
+El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft dinamik geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçiş işlemidir. 
 
-Dinamik geçiş sırasında, verileriniz kaynak ve hedef depolama damgaları arasında geçirildiğinde depolama hesabınızı kullanabilirsiniz. Geçiş işlemi sırasında, normalde yaptığınız şekilde aynı düzeyde dayanıklılık ve kullanılabilirlik SLA 'sına sahip olursunuz.
+Dinamik geçiş sırasında, verileriniz kaynak ve hedef depolama düğümleri arasında geçirilirken depolama hesabınızı kullanabilirsiniz. Geçiş işlemi sırasında her zamanki dayanıklılık ve kullanılabilirlik düzeyi SLA’sına sahip olursunuz.
 
 Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulundurun:
 
-- Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne zaman tamamlanacağı garanti edilemez. Verilerinizin ZRS 'ye belirli bir tarih tarafından geçirilmesi gerekiyorsa, Microsoft bunun yerine el ile geçiş gerçekleştirmenizi önerir. Genel olarak hesabınızda ne kadar çok veri varsa bu verilerin geçişi de o kadar uzun sürer. 
+- Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne zaman tamamlanacağı garanti edilemez. Verilerinizin belirli bir tarihe kadar ZRS'ye geçirilmesi gerekiyorsa, Microsoft bunun yerine el ile geçiş yapmanızı önerir. Genel olarak hesabınızda ne kadar çok veri varsa bu verilerin geçişi de o kadar uzun sürer. 
 - Dinamik geçiş yalnızca LRS veya GRS çoğaltmasını kullanan depolama hesapları için desteklenir. Hesabınız RA-GRS kullanıyorsa, önce devam etmeden önce hesabınızın çoğaltma türünü LRS veya GRS olarak değiştirmeniz gerekir. Bu ara adım, geçişten önce RA-GRS tarafından sunulan ikincil salt okuma uç noktasını kaldırır.
 - Hesabınızın veri içermesi gerekir.
 - Yalnızca aynı bölgedeki verileri geçirebilirsiniz. Verilerinizi kaynak hesaptan farklı bir bölgede bulunan bir ZRS hesabına geçirmek istiyorsanız, el ile geçiş gerçekleştirmeniz gerekir.
@@ -103,7 +103,7 @@ Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulunduru
     - **Sorun türü**: **Veri geçişini**seçin.
     - **Kategori**: **ZRS 'ye geçir**' i seçin.
     - **Başlık**: Açıklayıcı bir başlık yazın, örneğin, **ZRS hesabı geçişi**.
-    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, \_ \_ bölgedeki [LRS, GRS] öğesinden ZRS 'ye geçiş yapmak istiyorum. 
+    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, \_ @ no__t-2 bölgesindeki [LRS, GRS] öğesinden ZRS 'ye geçmek istiyorum. 
 5. **İleri**’yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
 7. **Oluştur**’u seçin.
@@ -114,11 +114,11 @@ Bir destek kişisi sizinle iletişim kuracaktır ve ihtiyacınız olan herhangi 
 
 **Geçiş sırasında kapalı kalma süresini planlıyorum mıyım?**
 
-Geçişin neden olduğu kesinti yok. Dinamik geçiş sırasında, verileriniz kaynak ve hedef depolama damgaları arasında geçirildiğinde depolama hesabınızı kullanmaya devam edebilirsiniz. Geçiş işlemi sırasında, normalde yaptığınız şekilde aynı düzeyde dayanıklılık ve kullanılabilirlik SLA 'sına sahip olursunuz.
+Geçişin neden olduğu kesinti yok. Dinamik geçiş sırasında, verileriniz kaynak ve hedef depolama damgaları arasında geçirildiğinde depolama hesabınızı kullanmaya devam edebilirsiniz. Geçiş işlemi sırasında her zamanki dayanıklılık ve kullanılabilirlik düzeyi SLA’sına sahip olursunuz.
 
 **Geçişle ilişkili bir veri kaybı var mı?**
 
-Geçişle ilişkili bir veri kaybı yok. Geçiş işlemi sırasında, normalde yaptığınız şekilde aynı düzeyde dayanıklılık ve kullanılabilirlik SLA 'sına sahip olursunuz.
+Geçişle ilişkili bir veri kaybı yok. Geçiş işlemi sırasında her zamanki dayanıklılık ve kullanılabilirlik düzeyi SLA’sına sahip olursunuz.
 
 **Geçiş tamamlandıktan sonra uygulama (lar) için gerekli güncelleştirmeler mi?**
 

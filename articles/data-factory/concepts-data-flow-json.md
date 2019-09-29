@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cde42dda47d54c03c50895bc625f99c9350b53e3
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: ad21ddffdb22f7abf999bfa12f4a8ed86f42cfa2
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210695"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673436"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Veri akışı JSON işlemesini eşleme
 
@@ -22,11 +22,11 @@ ms.locfileid: "70210695"
 Veri akışınıza karmaşık bir sütun eklemek, türetilmiş sütun ifade Düzenleyicisi aracılığıyla daha kolay olur. Yeni bir sütun ekleyip düzenleyiciyi açtıktan sonra iki seçenek vardır: JSON yapısını el ile girin veya etkileşimli olarak alt sütunlar eklemek için Kullanıcı arabirimini kullanın.
 
 #### <a name="interactive-ui-json-design"></a>Etkileşimli UI JSON tasarımı
-Çıktı şeması yan bölmesinden, `+` menü kullanılarak yeni alt sütunlar eklenebilir: ![Alt sütun Ekle](media/data-flow/addsubcolumn.png "Alt sütun Ekle")
+Çıkış şeması yan bölmesinden, yeni alt sütunlar `+` menüsü kullanılarak eklenebilir: ![Alt sütun](media/data-flow/addsubcolumn.png "Ekle alt") sütun Ekle
 
 Buradan, yeni sütunlar ve alt sütunlar aynı şekilde eklenebilir. Karmaşık olmayan her bir alan için, ifade düzenleyicisine sağa doğru bir ifade eklenebilir.
 
-![Karmaşık sütun](media/data-flow/complexcolumn.png "Karmaşık sütun")
+![Karmaşık sütun](media/data-flow/complexcolumn.png "karmaşık sütunu")
 
 #### <a name="manual-json-design"></a>El ile JSON tasarımı
 JSON yapısını el ile eklemek için yeni bir sütun ekleyin ve düzenleyicide ifadeyi girin. İfade aşağıdaki genel biçimi izler:
@@ -144,7 +144,7 @@ File3.json
 { "json": "record 3" }
 ```
 
-# <a name="higher-order-functions"></a>Daha yüksek sıra işlevleri
+## <a name="higher-order-functions"></a>Daha yüksek sıra işlevleri
 ## <a name="filter"></a>filter
 Öğeleri, belirtilen koşulu karşılamayan dizinin dışına filtreler. Filtre, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.
 
@@ -173,7 +173,7 @@ reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-## <a name="sort"></a>düzenine
+## <a name="sort"></a>Düzenine
 Belirtilen koşul işlevini kullanarak diziyi sıralar. Sıralama, #item1 ve #item2 olarak ifade işlevindeki birbirini izleyen iki öğeye bir başvuru bekliyor.
 
 ### <a name="examples"></a>Örnekler
