@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/31/2019
+ms.date: 09/27/2019
 ms.author: victorh
-ms.openlocfilehash: b558384fe6bc86cd7b0ebd640407557e23f68ddd
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 53a4fca0c05cd54bae6d01d07e72e1033a247a05
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194568"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327358"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak SSL sonlandırmasına sahip bir uygulama ağ geçidi yapılandırma
 
@@ -82,7 +82,7 @@ Export-PfxCertificate `
    - **Kaynak grubu**: Kaynak grubu için **myResourceGroupAG** öğesini seçin. Yoksa, oluşturmak için **Yeni oluştur** ' u seçin.
    - **Uygulama ağ geçidi adı**: Uygulama ağ geçidinin adı için *Myappgateway* girin.
 
-     ![Yeni uygulama ağ geçidi oluştur: Temel](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+        ![Yeni uygulama ağ geçidi oluştur: Temel](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
 2.  Azure 'un, oluşturduğunuz kaynaklar arasında iletişim kurması için bir sanal ağa ihtiyacı vardır. Yeni bir sanal ağ oluşturabilir veya var olan bir ağı kullanabilirsiniz. Bu örnekte, uygulama ağ geçidini oluşturduğunuz sırada yeni bir sanal ağ oluşturacaksınız. Application Gateway örnekleri ayrı alt ağlarda oluşturulur. Bu örnekte iki alt ağ oluşturursunuz: bir tane uygulama ağ geçidi ve arka uç sunucuları için bir diğeri.
 
@@ -98,7 +98,7 @@ Export-PfxCertificate `
 
     **Sanal ağ oluştur** penceresini kapatmak ve sanal ağ ayarlarını kaydetmek için **Tamam ' ı** seçin.
 
-     ![Yeni uygulama ağ geçidi oluştur: sanal ağ](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+    ![Yeni uygulama ağ geçidi oluştur: sanal ağ](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
     
 3. **Temel bilgiler** sekmesinde, diğer ayarlar için varsayılan değerleri kabul edin ve ardından İleri ' yi **seçin: Ön uçlar**.
 
@@ -110,7 +110,7 @@ Export-PfxCertificate `
 
 2. **Genel IP** adresi Için **Yeni oluştur** ' u seçin ve genel IP adresi adı Için *myagpublicıpaddress* girin ve **Tamam**' ı seçin. 
 
-     ![Yeni uygulama ağ geçidi oluştur: ön uçlar](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
+   ![Yeni uygulama ağ geçidi oluştur: ön uçlar](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
 3. İleri **' yi seçin: Arka uçlar**.
 
@@ -127,7 +127,7 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
 
 3. Arka uç havuzu **Ekle** penceresinde, arka uç havuzu yapılandırmasını kaydetmek ve **backends** sekmesine dönmek için **Ekle** ' yi seçin.
 
-     ![Yeni uygulama ağ geçidi oluştur: arka uçları](./media/application-gateway-create-gateway-portal/application-gateway-create-backends.png)
+   ![Yeni uygulama ağ geçidi oluştur: arka uçları](./media/application-gateway-create-gateway-portal/application-gateway-create-backends.png)
 
 4. **Backends** sekmesinde, ileri ' yi **seçin: Yapılandırma**.
 
@@ -152,19 +152,19 @@ Arka uç havuzu, isteği sunan arka uç sunucularına istekleri yönlendirmek i�
    - **Sertifika adı** -sertifika adı için *mycert1* yazın.
    - **Parola** -tür *Azure123456!* girin.
   
-      **Dinleyici** sekmesinde diğer ayarlar için varsayılan değerleri kabul edin, sonra yönlendirme kuralının geri kalanını yapılandırmak Için **arka uç hedefleri** sekmesini seçin.
+        **Dinleyici** sekmesinde diğer ayarlar için varsayılan değerleri kabul edin, sonra yönlendirme kuralının geri kalanını yapılandırmak Için **arka uç hedefleri** sekmesini seçin.
 
-   ![Yeni uygulama ağ geçidi oluşturma: dinleyici](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-listener.png)
+   ![Yeni uygulama ağ geçidi oluşturma: dinleyici](./media/create-ssl-portal/application-gateway-create-rule-listener.png)
 
 4. **Arka uç hedefleri** sekmesinde, **arka uç hedefi**Için **mybackendpool** ' u seçin.
 
 5. **Http ayarı**Için yeni **Oluştur** ' u seçerek yeni bir http ayarı oluşturun. HTTP ayarı, yönlendirme kuralının davranışını tespit eder. Açılan **http ayarı Ekle** penceresinde **http ayar adı**için *myhttpsetting* girin. **Http ayarı Ekle** penceresinde diğer ayarlar için varsayılan değerleri kabul edin ve ardından **Ekle** ' yi seçerek **yönlendirme kuralı ekle** penceresine dönün. 
 
-     ![Yeni uygulama ağ geçidi oluştur: HTTP ayarı](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
+   ![Yeni uygulama ağ geçidi oluştur: HTTP ayarı](./media/create-ssl-portal/application-gateway-create-httpsetting.png)
 
 6. Yönlendirme kuralı **Ekle** penceresinde, yönlendirme kuralını kaydetmek ve **yapılandırma** sekmesine dönmek için **Ekle** ' yi seçin.
 
-     ![Yeni uygulama ağ geçidi oluşturma: yönlendirme kuralı](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-backends.png)
+   ![Yeni uygulama ağ geçidi oluşturma: yönlendirme kuralı](./media/application-gateway-create-gateway-portal/application-gateway-create-rule-backends.png)
 
 7. İleri **' yi seçin: Etiketler** ve sonra **ileri: Gözden geçir +** oluştur.
 
@@ -214,17 +214,17 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
 2. Sanal makineye IIS yüklemek için aşağıdaki komutu çalıştırın: 
 
-    ```azurepowershell-interactive
-    Set-AzVMExtension `
-      -ResourceGroupName myResourceGroupAG `
-      -ExtensionName IIS `
-      -VMName myVM `
-      -Publisher Microsoft.Compute `
-      -ExtensionType CustomScriptExtension `
-      -TypeHandlerVersion 1.4 `
-      -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-      -Location EastUS
-    ```
+   ```azurepowershell-interactive
+          Set-AzVMExtension `
+            -ResourceGroupName myResourceGroupAG `
+            -ExtensionName IIS `
+            -VMName myVM `
+            -Publisher Microsoft.Compute `
+            -ExtensionType CustomScriptExtension `
+            -TypeHandlerVersion 1.4 `
+            -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
+            -Location EastUS
+   ```
 
 3. İkinci bir sanal makine oluşturun ve daha önce tamamladığınız adımları kullanarak IIS 'yi yükleyebilirsiniz. Sanal makine adı ve **set-Azvmexgeri** cmdlet 'Inin **VMName** ayarı için *myVM2* kullanın.
 
@@ -252,7 +252,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
 
     ![Uygulama ağ geçidi genel IP adresini kaydetme](./media/create-ssl-portal/application-gateway-ag-address.png)
 
-2. Tarayıcınızın adres çubuğuna *https://\<yazın ve uygulama ağ\>geçidi IP adresinizi*yazın.
+2. Tarayıcınızın adres çubuğunda, *https://\<, uygulama ağ geçidi IP adresi @ no__t-2*yazın.
 
    Otomatik olarak imzalanan bir sertifika kullandıysanız güvenlik uyarısını kabul etmek için **Ayrıntılar** (veya Chrome üzerinde **Gelişmiş** ) seçeneğini belirleyin ve ardından Web sayfasına gidin:
 

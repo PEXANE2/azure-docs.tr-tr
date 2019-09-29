@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a575d9f90d166ba69b14e4507d9ed7a54fac574
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291024"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326371"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde var olan bir erişim paketini düzenleyin ve yönetin (Önizleme)
 
@@ -36,7 +36,7 @@ Bu makalede, mevcut erişim paketlerinin nasıl düzenleneceği ve yönetileceğ
 
 ## <a name="add-resource-roles"></a>Kaynak rolleri ekle
 
-Kaynak rolü, bir kaynakla ilişkili izinlerin koleksiyonudur. Kaynakları kullanıcıların istemesi için kullanılabilir hale getirmenin yolu, erişim paketinize kaynak rolleri eklemektir. Gruplar, uygulamalar ve SharePoint siteleri için kaynak rolleri ekleyebilirsiniz.
+Kaynak rolü, bir kaynakla ilişkili izinlerin koleksiyonudur. Kaynakları kullanıcıların istemesi için kullanılabilir hale getirmenin yolu, erişim paketinize kaynak rolleri eklemektir. Gruplar, takımlar, uygulamalar ve SharePoint siteleri için kaynak rolleri ekleyebilirsiniz.
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
@@ -50,38 +50,49 @@ Kaynak rolü, bir kaynakla ilişkili izinlerin koleksiyonudur. Kaynakları kulla
 
     ![Erişim paketi-kaynak rolleri ekleme](./media/entitlement-management-access-package-edit/resource-roles-add.png)
 
-1. Bir grup, uygulama veya SharePoint sitesi eklemek istediğinize bağlı olarak, aşağıdaki kaynak rolü bölümlerinden birindeki adımları gerçekleştirin.
+1. Bir grup, takım, uygulama veya SharePoint sitesi eklemek istediğinize bağlı olarak, aşağıdaki kaynak rolü bölümlerinden birindeki adımları gerçekleştirin.
 
-### <a name="add-a-group-resource-role"></a>Grup kaynağı rolü ekleme
+### <a name="add-a-group-or-team-resource-role"></a>Grup veya takım kaynağı rolü ekleme
 
-Bir erişim paketi atandığında, yetkilendirme yönetiminin kullanıcıları otomatik olarak gruba eklemesini sağlayabilirsiniz. 
+Bir erişim paketi atandığında, yetkilendirme yönetiminin kullanıcıları otomatik olarak bir gruba veya Microsoft ekibine eklemesini sağlayabilirsiniz. 
 
-- Bir grup bir erişim paketinin parçası olduğunda ve bu erişim paketine bir Kullanıcı atandığında, Kullanıcı zaten mevcut değilse bu gruba eklenir.
-- Bir kullanıcının erişim paketi atamasının süresi dolarsa, o anda aynı grubu içeren başka bir erişim paketine bir atamaya sahip olmadıkları takdirde gruptan kaldırılır.
+- Bir grup veya takım bir erişim paketinin parçası olduğunda ve bu erişim paketine bir Kullanıcı atandığında, zaten mevcut değilse Kullanıcı o gruba veya takıma eklenir.
+- Bir kullanıcının erişim paketi atamasının süresi dolarsa, o anda aynı grup veya takımı içeren başka bir erişim paketine bir atamaya sahip olmadıkları takdirde, bunlar gruptan veya takımdan kaldırılır.
 
-Herhangi bir Office 365 grubunu veya Azure AD güvenlik grubunu seçebilirsiniz.  Yöneticiler, kataloğa herhangi bir grup ekleyebilir; Katalog sahipleri, grubun sahibiyseniz, kataloğa herhangi bir grup ekleyebilir. Bir grup seçerken aşağıdaki Azure AD kısıtlamalarını aklınızda bulundurun:
+Herhangi bir [Azure AD güvenlik grubunu veya Office 365 grubunu](../fundamentals/active-directory-groups-create-azure-portal.md)seçebilirsiniz.  Yöneticiler, kataloğa herhangi bir grup ekleyebilir; Katalog sahipleri, grubun sahibiyseniz, kataloğa herhangi bir grup ekleyebilir. Bir grup seçerken aşağıdaki Azure AD kısıtlamalarını aklınızda bulundurun:
 
-- Konuk dahil bir Kullanıcı bir gruba üye olarak eklendiğinde, bu grubun tüm diğer üyelerini görebilirler.
+- Konuk dahil bir Kullanıcı, bir grup veya takıma üye olarak eklendiğinde, bu grubun veya ekibin tüm diğer üyelerini görebilirler.
 - Azure AD, Azure AD Connect kullanılarak Windows Server Active Directory eşitlenen veya Exchange Online 'da bir dağıtım grubu olarak oluşturulan bir grubun üyeliğini değiştiremiyor.  
 - Dinamik grupların üyeliği üye ekleyerek veya kaldırarak güncelleştirilemez, bu nedenle dinamik grup üyelikleri yetkilendirme yönetimiyle kullanım için uygun değildir.
 
-1. **Pakete erişmek için kaynak rolleri ekle** sayfasında, **Gruplar ' a tıklayarak Grup Seç** bölmesini açın.
+Daha fazla bilgi için bkz. grupları ve [Office 365 gruplarını ve Microsoft ekiplerini](/microsoftteams/office-365-groups) [karşılaştırın](/office365/admin/create-groups/compare-groups) .
 
-1. Erişim paketine eklemek istediğiniz grupları seçin.
+1. **Pakete erişmek için kaynak rolleri ekle** sayfasında, **gruplar ve takımlar** ' a tıklayarak Grup Seç bölmesini açın.
+
+1. Erişim paketine eklemek istediğiniz grupları ve takımları seçin.
 
     ![Erişim paketi-kaynak rolleri ekleme-Grup seçme](./media/entitlement-management-access-package-edit/group-select.png)
 
 1. Tıklayın **seçin**.
 
+    Grubu veya takımı seçtiğinizde, **alt tür** sütunu aşağıdaki alt türlerinden birini listeler:
+
+    |  |  |
+    | --- | --- |
+    | Güvenlik | Kaynaklara erişim vermek için kullanılır. |
+    | Dağıtım | Bir grup kişiye bildirim göndermek için kullanılır. |
+    | O365 | Takımlar etkin olmayan Office 365 grubu. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
+    | Takım | Takımlar etkin olan Office 365 grubu. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
+
 1. **Rol** listesinde **Owner** veya **member**' ı seçin.
 
     Genellikle üye rolünü seçersiniz. Sahip rolünü seçerseniz, kullanıcıların başka Üyeler veya sahipler eklemesine veya kaldırmasına izin verir.
 
-    ![Erişim paketi-bir grup için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/group-role.png)
+    ![Erişim paketi-bir grup veya takım için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/group-role.png)
 
 1. **Ekle**'yi tıklatın.
 
-    Erişim paketine mevcut atamaları olan tüm kullanıcılar, eklendiğinde otomatik olarak bu grubun üyesi olur.
+    Erişim paketine mevcut atamaları olan tüm kullanıcılar, eklendiğinde bu grubun veya ekibin üyeleri otomatik olarak olur.
 
 ### <a name="add-an-application-resource-role"></a>Uygulama kaynağı rolü ekleme
 

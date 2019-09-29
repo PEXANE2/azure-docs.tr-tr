@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c357cba8ce2fbe2ad902d5c215f8adbfc99a9f0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 63176c325fd42c46e988ab3798f46089a43e70bf
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813019"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326783"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlama için Workday yapılandırma
 
@@ -97,7 +97,8 @@ Bu bölüm, planlamanın aşağıdaki yönlerini anlatmaktadır:
 
 Bu öğreticide özetlenen senaryo, aşağıdaki öğelerin zaten olduğunu varsayar:
 
-* Genel yönetici erişimiyle geçerli bir Azure AD Premium P1 veya daha yüksek abonelik
+* Her bir kullanıcı için, Workday 'den kaynaklayacağı ve şirket içi Active Directory veya Azure Active Directory sağlanacak olan her kullanıcı için geçerli bir Azure AD Premium P1 veya daha yüksek abonelik lisansı.
+* Sağlama aracısını yapılandırmak için Azure AD Genel yönetici erişimi
 * Test ve tümleştirme amaçları için bir Workday uygulama kiracısı
 * Bir sistem tümleştirme kullanıcısı oluşturmak için Workday 'de yönetici izinleri ve test etme amacıyla çalışan verilerinde değişiklik yapma
 * Active Directory Kullanıcı sağlaması için, [Şirket içi sağlama aracısını](https://go.microsoft.com/fwlink/?linkid=847801) barındırmak üzere .NET 4.7.1 + Runtime Ile Windows Server 2012 veya üstünü çalıştıran bir sunucu gerekir
@@ -119,7 +120,7 @@ Workday ve Active Directory arasında sağlama iş akışlarının sağlanması 
 > Normal "Workday" uygulaması, Workday ve Azure Active Directory arasında çoklu oturum açma ayarlamak için kullanılır.
 
 Senaryolarınızla ilgili olan Workday sağlama uygulamalarını belirlemek için aşağıdaki karar akışı grafiğini kullanın.
-    ![Karar akış çizelgesi](./media/workday-inbound-tutorial/wday_app_flowchart.png "Karar akış çizelgesi")
+    ![Karar akış çizelgesi](./media/workday-inbound-tutorial/wday_app_flowchart.png "karar akış çizelgesi")
 
 Bu öğreticinin ilgili bölümüne gitmek için İçindekiler tablosunu kullanın.
 
@@ -188,25 +189,25 @@ Kullanıcı sağlamayı bir Active Directory etki alanına yapılandırmadan ön
 
 * **Workday 'deki kullanıcıların bu Active Directory ormana sağlanması gerekir mi?**
 
-  * *Örnek: Workday "Company" özniteliğinin "contoso" değerini içerdiği ve "Worker_Type" özniteliğinde "Regular" değeri bulunan kullanıcılar*
+  * *Örnek: Workday "Company" özniteliğinin "contoso" değerini içerdiği ve "Worker_Type" özniteliğinin "Regular"*  içermesi durumunda olan kullanıcılar
 
 * **Kullanıcılar farklı kuruluş birimlerine (OU) nasıl yönlendirilir?**
 
-  * *Örnek: Kullanıcılar, iş günü "Municipitesi" ve "Country_Region_Reference" özniteliklerinde tanımlandığı şekilde bir Office konumuna karşılık gelen OU 'Lara yönlendirilir*
+  * *Örnek: Kullanıcılar, iş günü "Municipitesi" ve "Country_Region_Reference" özniteliklerinde tanımlanan bir Office konumuna karşılık gelen OU 'Lara yönlendirilir @ no__t-0
 
 * **Active Directory aşağıdaki öznitelikler nasıl doldurulur?**
 
   * Ortak ad (CN)
-    * *Örnek: Işgünü User_ID değerini insan kaynakları tarafından ayarlanan şekilde kullanın*
+    * *Örnek: Workday User_ID değerini insan kaynakları tarafından ayarlanan şekilde kullanın @ no__t-0
 
   * Çalışan KIMLIĞI (EmployeeID)
-    * *Örnek: Workday Worker_ID değerini kullanın*
+    * *Örnek: Workday Worker_ID değerini kullanın @ no__t-0
 
   * SAM hesap adı (sAMAccountName)
-    * *Örnek: Geçersiz karakterleri kaldırmak için bir Azure AD sağlama ifadesiyle filtrelenmiş Workday User_ID değerini kullanın*
+    * *Örnek: Geçersiz karakterleri kaldırmak için bir Azure AD sağlama ifadesiyle filtrelenmiş Workday User_ID değerini kullanın @ no__t-0
 
   * Kullanıcı asıl adı (userPrincipalName)
-    * *Örnek: Bir etki alanı adı eklemek için bir Azure AD sağlama ifadesiyle Workday User_ID değerini kullanın*
+    * *Örnek: Bir etki alanı adı eklemek için bir Azure AD sağlama ifadesiyle Workday User_ID değerini kullanın @ no__t-0
 
 * **Kullanıcıların Workday ve Active Directory arasında nasıl eşleşmesi gerekir?**
 
@@ -214,7 +215,7 @@ Kullanıcı sağlamayı bir Active Directory etki alanına yapılandırmadan ön
   
 * **Active Directory ormanı, eşleşen mantığın çalışması için gereken kullanıcı kimliklerini zaten içeriyor mu?**
 
-  * *Örnek: Bu kurulum yeni bir Workday dağıtımı ise, eşleşen mantığı mümkün olduğunca basit tutmak için Active Directory doğru Workday Worker_ID değerleriyle (ya da tercih edilen benzersiz KIMLIK değeri) önceden doldurulması önerilir.*
+  * *Örnek: Bu kurulum yeni bir Workday dağıtımı ise, eşleşen mantığı mümkün olduğunca basit tutmak için doğru Workday Worker_ID değerlerinin (veya seçime özgü KIMLIK değeri) önceden doldurulduğundan Active Directory önerilir.*
 
 Bu özel sağlama bağlayıcı uygulamalarını ayarlama ve yapılandırma, Bu öğreticinin kalan bölümlerinin konusudur. Yapılandırmak için seçtiğiniz uygulamalar hangi sistemlere sağlamanız gerektiği ve ortamınızda kaç tane Active Directory etki alanı ve Azure AD kiracılarının olduğunu gösterir.
 
@@ -237,14 +238,14 @@ Tüm Workday sağlama bağlayıcılarının ortak bir gereksinimi, Workday Insan
 
 1. Bir yönetici hesabı kullanarak Workday kiracınızda oturum açın. **Workday uygulamasında**, arama kutusuna kullanıcı oluştur yazın ve ardından **tümleştirme sistemi kullanıcısı oluştur**' a tıklayın.
 
-    ![Kullanıcı oluştur](./media/workday-inbound-tutorial/wd_isu_01.png "Kullanıcı oluştur")
+    ![Kullanıcı oluştur](./media/workday-inbound-tutorial/wd_isu_01.png "Kullanıcı") oluşturma
 2. Yeni bir tümleştirme sistemi kullanıcısı için bir Kullanıcı adı ve parola sağlayarak **tümleştirme sistemi kullanıcısı oluştur** görevini doldurun.  
   
 * Bu Kullanıcı programlı olarak oturum **açacağından, bir sonraki oturum açma seçeneğinde yeni parola gerektir** seçeneğini işaretlenmemiş olarak bırakın.
 * **Oturum zaman aşımı dakikalarını** varsayılan değeri olan 0 olarak bırakın, bu, kullanıcının oturumlarının zamanından önce tükenme süresini engeller.
 * Tümleştirme sisteminin parolasının Workday 'de oturum açmasını engelleyen bir güvenlik katmanı sağladığından, Kullanıcı **arabirimi oturumlarına Izin verme** seçeneğini belirleyin.
 
-    ![Tümleştirme sistemi kullanıcısı oluştur](./media/workday-inbound-tutorial/wd_isu_02.png "Tümleştirme sistemi kullanıcısı oluştur")
+    ![Tümleştirme sistemi kullanıcısı]oluşturma(./media/workday-inbound-tutorial/wd_isu_02.png "tümleştirme sistemi kullanıcısı") oluştur
 
 ### <a name="creating-an-integration-security-group"></a>Tümleştirme güvenlik grubu oluşturma
 
@@ -254,7 +255,7 @@ Bu adımda, Workday 'de kısıtlanmamış veya kısıtlanmış bir tümleştirme
 
 1. Arama kutusuna güvenlik grubu oluştur yazın ve ardından **güvenlik grubu oluştur**' a tıklayın.
 
-    ![Createsecurity grubu](./media/workday-inbound-tutorial/wd_isu_03.png "Createsecurity grubu")
+    ![Createsecurity grubu](./media/workday-inbound-tutorial/wd_isu_03.png "createsecurity grubu")
 2. **Güvenlik grubu oluştur** görevini doldurun. 
 
    * Workday 'de iki tür güvenlik grubu vardır:
@@ -263,11 +264,11 @@ Bu adımda, Workday 'de kısıtlanmamış veya kısıtlanmış bir tümleştirme
    * Tümleştirme için uygun güvenlik grubu türünü seçmek için lütfen Workday Tümleştirme iş ortağınıza başvurun.
    * Grup türünü öğrendikten sonra, **Kiracı güvenlik grubu** açılır listesinden **tümleştirme sistem güvenlik grubu (Kısıtlanmamış)** veya **tümleştirme sistemi güvenlik grubu ' nu (kısıtlanmış)** seçin.
 
-     ![Createsecurity grubu](./media/workday-inbound-tutorial/wd_isu_04.png "Createsecurity grubu")
+     ![Createsecurity grubu](./media/workday-inbound-tutorial/wd_isu_04.png "createsecurity grubu")
 
 3. Güvenlik grubu oluşturma başarılı olduktan sonra güvenlik grubuna üye atayabileceğiniz bir sayfa görürsünüz. Önceki adımda oluşturulan yeni tümleştirme sistemi kullanıcısını bu güvenlik grubuna ekleyin. *Kısıtlanmış* güvenlik grubu kullanıyorsanız, uygun kuruluş kapsamını da seçmeniz gerekir.
 
-    ![Güvenlik grubunu Düzenle](./media/workday-inbound-tutorial/wd_isu_05.png "Güvenlik grubunu Düzenle")
+    ![Güvenlik grubu](./media/workday-inbound-tutorial/wd_isu_05.png "düzenleme güvenlik grubunu") Düzenle
 
 ### <a name="configuring-domain-security-policy-permissions"></a>Etki alanı güvenlik ilkesi izinlerini yapılandırma
 
@@ -277,37 +278,37 @@ Bu adımda, güvenlik grubuna çalışan verileri için "etki alanı güvenliği
 
 1. Arama kutusuna **etki alanı güvenlik yapılandırması** ' nı girin ve ardından **etki alanı güvenlik yapılandırması raporuna**tıklayın.  
 
-    ![Etki alanı güvenlik ilkeleri](./media/workday-inbound-tutorial/wd_isu_06.png "Etki alanı güvenlik ilkeleri")  
+    ![Etki alanı güvenlik ilkeleri](./media/workday-inbound-tutorial/wd_isu_06.png "etki alanı güvenlik ilkeleri")  
 2. **Etki alanı** metin kutusunda, aşağıdaki etki alanlarını arayın ve tek bir filtreye tek tek ekleyin.  
    * *Dış hesap sağlama*
-   * *Çalışan verileri: Ortak çalışan raporları*
-   * *Kişi verileri: İş Iletişim bilgileri*
-   * *Çalışan verileri: Tüm konumlar*
-   * *Çalışan verileri: Geçerli personel bilgileri*
-   * *Çalışan verileri: Çalışan profilinde iş unvanı*
+   * * çalışan verileri: Ortak çalışan raporları @ no__t-0
+   * *Person verileri: İş Iletişim bilgileri @ no__t-0
+   * * çalışan verileri: Tüm pozisyonlar @ no__t-0
+   * * çalışan verileri: Geçerli personel bilgileri @ no__t-0
+   * * çalışan verileri: Çalışan profili üzerinde iş unvanı @ no__t-0
    * *Workday hesapları*
    
-     ![Etki alanı güvenlik ilkeleri](./media/workday-inbound-tutorial/wd_isu_07.png "Etki alanı güvenlik ilkeleri")  
+     ![Etki alanı güvenlik ilkeleri](./media/workday-inbound-tutorial/wd_isu_07.png "etki alanı güvenlik ilkeleri")  
 
-     ![Etki alanı güvenlik ilkeleri](./media/workday-inbound-tutorial/wd_isu_08.png "Etki alanı güvenlik ilkeleri") 
+     ![Etki alanı güvenlik ilkeleri](./media/workday-inbound-tutorial/wd_isu_08.png "etki alanı güvenlik ilkeleri") 
 
      **Tamam**'ı tıklatın.
 
 3. Görüntülenen raporda, **dış hesap sağlama** seçeneğinin yanında görüntülenen üç nokta (...) simgesini seçin ve **etki alanı-> güvenlik ilkesi izinlerini Düzenle** ' ye tıklayın.
 
-    ![Etki alanı güvenlik ilkeleri](./media/workday-inbound-tutorial/wd_isu_09.png "Etki alanı güvenlik ilkeleri")  
+    ![Etki alanı güvenlik ilkeleri](./media/workday-inbound-tutorial/wd_isu_09.png "etki alanı güvenlik ilkeleri")  
 
 4. **Etki alanı Güvenlik Ilkesi Izinlerini Düzenle** sayfasında, bölüm **tümleştirme izinleri**bölümüne gidin. Tümleştirme sistem grubunu **Al** ve **Yerleştir** tümleştirme izinleri olan güvenlik grupları listesine eklemek için "+" işaretine tıklayın.
 
-    ![Izni Düzenle](./media/workday-inbound-tutorial/wd_isu_10.png "Izni Düzenle")  
+    ![İzin](./media/workday-inbound-tutorial/wd_isu_10.png "düzenleme iznini") Düzenle  
 
 5. Tümleştirme sistem grubunu **Al** ve **Yerleştir** tümleştirme izinleri olan güvenlik grupları listesine eklemek için "+" işaretine tıklayın.
 
-    ![Izni Düzenle](./media/workday-inbound-tutorial/wd_isu_11.png "Izni Düzenle")  
+    ![İzin](./media/workday-inbound-tutorial/wd_isu_11.png "düzenleme iznini") Düzenle  
 
 6. Bu kalan güvenlik ilkelerinin her biri için yukarıdaki 3-5 adımları yineleyin:
 
-   | Çalışma | Etki alanı Güvenlik Ilkesi |
+   | İşlem | Etki alanı Güvenlik Ilkesi |
    | ---------- | ---------- |
    | Al ve koy | Çalışan verileri: Ortak çalışan raporları |
    | Al ve koy | Kişi verileri: İş Iletişim bilgileri |
@@ -344,12 +345,12 @@ Bu adımda, güvenlik grubuna çalışan verileri için "iş işlem güvenliği"
 
 1. Arama kutusuna etkinleştir ' i girin ve ardından **bekleyen Güvenlik Ilkesi değişikliklerini etkinleştir**' e tıklayın.
 
-    ![Etkinleştir](./media/workday-inbound-tutorial/wd_isu_16.png "Etkinleştir")
+    ![](./media/workday-inbound-tutorial/wd_isu_16.png "Etkinleştirmeyi") etkinleştir
 
 1. Denetim amaçlarıyla bir açıklama girerek bekleyen Güvenlik Ilkesi değişikliklerini etkinleştir görevini başlatın ve ardından **Tamam**' a tıklayın.
 1. Onay kutusu **Onayla**' yı işaretleyerek görevi bir sonraki ekranda doldurun ve ardından **Tamam**' a tıklayın.
 
-    ![Bekleyen güvenliği etkinleştir](./media/workday-inbound-tutorial/wd_isu_18.png "Bekleyen güvenliği etkinleştir")  
+    ![Bekleyen güvenliği]etkinleştirme(./media/workday-inbound-tutorial/wd_isu_18.png "bekleyen güvenliği") etkinleştir  
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Workday 'den Kullanıcı sağlamasını Active Directory olarak yapılandırma
 
@@ -374,22 +375,22 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
 
 1. Sağlama Aracısı yükleyicisini başlatın, koşulları kabul edin ve **yükleme** düğmesine tıklayın.
 
-   ![Ekranı yükler](./media/workday-inbound-tutorial/pa_install_screen_1.png "Ekranı yükler")
+   ![Install Screen](./media/workday-inbound-tutorial/pa_install_screen_1.png "Install Screen")
    
 1. Yükleme tamamlandıktan sonra, sihirbaz başlatılır ve **Azure AD 'ye Bağlan** ekranını görürsünüz. Azure AD örneğinize bağlanmak için **kimlik doğrula** düğmesine tıklayın.
 
-   ![Azure AD 'ye bağlanma](./media/workday-inbound-tutorial/pa_install_screen_2.png "Azure AD 'ye bağlanma")
+   ![Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Connect Azure AD") 'ye bağlanma
    
 1. Genel yönetici kimlik bilgilerini kullanarak Azure AD örneğiniz için kimlik doğrulaması yapın.
 
-   ![Yönetici kimlik doğrulaması](./media/workday-inbound-tutorial/pa_install_screen_3.png "Yönetici kimlik doğrulaması")
+   ![Yönetici kimlik doğrulama](./media/workday-inbound-tutorial/pa_install_screen_3.png "Yöneticisi kimlik doğrulaması")
 
    > [!NOTE]
    > Azure AD yönetici kimlik bilgileri yalnızca Azure AD kiracınıza bağlanmak için kullanılır. Aracı kimlik bilgilerini sunucuda yerel olarak depolamaz.
 
 1. Azure AD ile başarılı bir kimlik doğrulamasından sonra, **Connect Active Directory** ekranını görürsünüz. Bu adımda, AD etki alanı adınızı girip **Dizin Ekle** düğmesine tıklayın.
 
-   ![Dizin Ekle](./media/workday-inbound-tutorial/pa_install_screen_4.png "Dizin Ekle")
+   ![Dizin](./media/workday-inbound-tutorial/pa_install_screen_4.png "ekleme dizini") Ekle
   
 1. Şimdi AD etki alanına bağlanmak için gereken kimlik bilgilerini girmeniz istenir. Aynı ekranda, aracının sağlama isteklerini göndermek için kullanması gereken etki alanı denetleyicilerini belirtmek için **etki alanı denetleyicisi önceliği Seç** ' i kullanabilirsiniz.
 
@@ -397,7 +398,7 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
    
 1. Etki alanı yapılandırıldıktan sonra yükleyici, yapılandırılmış etki alanlarının bir listesini görüntüler. Bu ekranda, daha fazla etki alanı eklemek için #5 ve #6 adımını yineleyebilirsiniz veya aracı kaydına devam etmek için **İleri** ' ye tıklayabilirsiniz.
 
-   ![Yapılandırılmış etki alanları](./media/workday-inbound-tutorial/pa_install_screen_6.png "Yapılandırılmış etki alanları")
+   ![Yapılandırılmış etki alanı](./media/workday-inbound-tutorial/pa_install_screen_6.png "yapılandırılmış etki alanları")
 
    > [!NOTE]
    > Birden çok AD etki alanınız varsa (ör. na.contoso.com, emea.contoso.com), lütfen her bir etki alanını listeye ayrı olarak ekleyin.
@@ -405,11 +406,11 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
    
 1. Yapılandırma ayrıntılarını gözden geçirin ve aracıyı kaydetmek için **Onayla** ' ya tıklayın.
   
-   ![Ekranı onaylayın](./media/workday-inbound-tutorial/pa_install_screen_7.png "Ekranı onaylayın")
+   ![Ekran](./media/workday-inbound-tutorial/pa_install_screen_7.png "silmeyi onaylayın ekranı")
    
 1. Yapılandırma Sihirbazı aracı kaydının ilerlemesini görüntüler.
   
-   ![Aracı kaydı](./media/workday-inbound-tutorial/pa_install_screen_8.png "Aracı kaydı")
+   ![Aracı kayıt](./media/workday-inbound-tutorial/pa_install_screen_8.png "Aracısı kaydı")
    
 1. Aracı kaydı başarılı olduktan sonra sihirbazdan çıkmak için **Çıkış** ' a tıklayabilirsiniz.
   
@@ -439,7 +440,7 @@ Bu bölümde, tümleştirmenizi kapsamındaki her bir Active Directory etki alan
 
 8. **Yönetici kimlik bilgileri** bölümünü aşağıdaki şekilde doldurun:
 
-   * **Yönetici Kullanıcı adı** – kiracı etki alanı adının eklendiği Workday tümleştirme sistem hesabının kullanıcı adını girin. Şöyle görünmelidir: **\@Kullanıcı adı tenant_name**
+   * **Yönetici Kullanıcı adı** – kiracı etki alanı adının eklendiği Workday tümleştirme sistem hesabının kullanıcı adını girin. Şöyle görünmelidir: **kullanıcıadı @ no__t-1tenant_adı**
 
    * **Yönetici parolası –** Workday tümleştirme sistem hesabının parolasını girin
 
@@ -539,9 +540,9 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 | ---------- | ---------- | ---------- | ---------- |
 | **Workerıd**  |  Çalışan | **Evet** | Yalnızca oluşturma sırasında yazılmıştır |
 | **PreferredNameData**    |  CN =    |   |   Yalnızca oluşturma sırasında yazılmıştır |
-| **Selectuniquevalue (JOIN ("\@", JOIN (".", \[FirstName\], \[LastName\]), "contoso.com")\[, JOIN ("\@", JOIN (".", Mid (FirstName\], 1, 1), \[LastName\]), "contoso.com"), JOIN ("\@", JOIN (".", Mid (\[FirstName\], 1, 2), \[LastName\]), "contoso.com"))**   | userPrincipalName     |     | Yalnızca oluşturma sırasında yazılmıştır 
-| **Değiştir(Orta(değiştirin(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    Hesap            |     |         Yalnızca oluşturma sırasında yazılmıştır |
-| **Anahtar (\[etkin\],, "0", "true", "1", "false")** |  accountDisabled      |     | Oluştur + güncelleştir |
+| **SelectUniqueValue (JOIN ("\@", JOIN ("." \[FirstName @ no__t-3, \[LastName @ no__t-5), "contoso.com"), JOIN ("\@", JOIN (".", Mid (\[FirstName @ no__t-8, 1, 1), \[LastName @ no__t-10), "contoso.com"), JOIN ("@no__ t-11 ", JOIN (". ", Mid (2FirstName @ no__t-13, 1, 2), 4LastName @ no__t-15)," contoso.com "))**   | userPrincipalName     |     | Yalnızca oluşturma sırasında yazılmıştır 
+| **Değiştir(Orta(değiştirin(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         Yalnızca oluşturma sırasında yazılmıştır |
+| **Anahtar (\[Active @ no__t-2,, "0", "true", "1", "false")** |  accountDisabled      |     | Oluştur + güncelleştir |
 | **FirstName**   | givenName       |     |    Oluştur + güncelleştir |
 | **Soyadı**   |   sn   |     |  Oluştur + güncelleştir |
 | **PreferredNameData**  |  displayName |     |   Oluştur + güncelleştir |
@@ -560,7 +561,7 @@ Bu bölümde, Kullanıcı verilerinin Workday 'den Active Directory 'e nasıl ak
 | **Faks**      | facsimileTelephoneNumber     |     |    Oluştur + güncelleştir |
 | **Mo**  |    Mobil       |     |       Oluştur + güncelleştir |
 | **LocalReference** |  preferredLanguage  |     |  Oluştur + güncelleştir |                                               
-| **Anahtar (\[municipitesi\], "OU = standart kullanıcılar, OU = kullanıcılar, OU = varsayılan, OU = konumlar, DC = contoso, DC = com", "Dallas", "OU = standart kullanıcılar, OU = kullanıcılar, OU = Dallas, OU = konumlar, DC = contoso, DC = com", "Austin", "OU = standart kullanıcılar, OU = Kullanıcılar, OU = Austin, OU = konumlar, DC = contoso, DC = com "," Seattle "," OU = standart kullanıcılar, OU = kullanıcılar, OU = Seattle, OU = konumlar, DC = contoso, DC = com "," Londra "," OU = standart kullanıcılar, OU = kullanıcılar, OU = Londra, OU = konumlar, DC = contoso, DC = com ")**  | parentDistinguishedName     |     |  Oluştur + güncelleştir |
+| **Anahtar (\[Municipitesi @ no__t-2 "OU = standart kullanıcılar, OU = kullanıcılar, OU = varsayılan, OU = konumlar, DC = contoso, DC = com", "Dallas", "OU = standart kullanıcılar, OU = kullanıcılar, OU = Dallas, OU = konumlar, DC = contoso, DC = com", "Austin", "OU = standart kullanıcılar, OU = kullanıcılar, OU = Austin, OU = konumlar, DC = contoso, DC = com "," Seattle "," OU = standart kullanıcılar, OU = kullanıcılar, OU = Seattle, OU = konumlar, DC = contoso, DC = com "," Londra "," OU = standart kullanıcılar, OU = kullanıcılar, OU = Londra, OU = konumlar, DC = contoso, DC = com ")**  | parentDistinguishedName     |     |  Oluştur + güncelleştir |
 
 Öznitelik eşleme yapılandırmanız tamamlandıktan sonra, artık [Kullanıcı sağlama hizmetini etkinleştirebilir ve başlatabilirsiniz](#enable-and-launch-user-provisioning).
 
@@ -692,7 +693,7 @@ Kullanıcı e-posta adreslerinin ve Kullanıcı adının Azure Active Directory 
 
 8. **Yönetici kimlik bilgileri** bölümünü aşağıdaki şekilde doldurun:
 
-   * **Yönetici Kullanıcı adı** – kiracı etki alanı adının eklendiği Workday tümleştirme sistem hesabının kullanıcı adını girin. Şöyle görünmelidir: *\@Kullanıcı adı contoso4*
+   * **Yönetici Kullanıcı adı** – kiracı etki alanı adının eklendiği Workday tümleştirme sistem hesabının kullanıcı adını girin. Şöyle görünmelidir: *kullanıcıadı @ no__t-1contoso4*
 
    * **Yönetici parolası –** Workday tümleştirme sistem hesabının parolasını girin
 
@@ -760,7 +761,7 @@ Workday sağlama uygulama yapılandırması tamamlandıktan sonra, Azure portal 
   
 * **AD özniteliği eşleme ve yapılandırma sorularına iş günü**
   * [Nasıl yaparım? Workday sağlama özniteliği eşleşmesinin ve şemadaki çalışma kopyasını yedekleyin veya dışarı aktarın.](#how-do-i-back-up-or-export-a-working-copy-of-my-workday-provisioning-attribute-mapping-and-schema)
-  * [Workday ve Active Directory özel öznitelikleri var. Nasıl yaparım? çözümü özel özniteliklerim ile çalışacak şekilde yapılandırmak mı istiyorsunuz?](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
+  * [I, Workday ve Active Directory özel özniteliklere sahip. Çözümü özel özniteliklerim ile çalışacak şekilde yapılandırmak Nasıl yaparım? ](#i-have-custom-attributes-in-workday-and-active-directory-how-do-i-configure-the-solution-to-work-with-my-custom-attributes)
   * [İş gününde Kullanıcı fotoğrafını Active Directory sağlayabilir miyim?](#can-i-provision-users-photo-from-workday-to-active-directory)
   * [Nasıl yaparım? ortak kullanım için Kullanıcı onayı temelinde Workday 'den cep telefonu numaralarını eşitlemek mi istiyorsunuz?](#how-do-i-sync-mobile-numbers-from-workday-based-on-user-consent-for-public-usage)
   * [Nasıl yaparım?, kullanıcının departmanı/ülke/şehir özniteliklerine göre AD biçiminde görünen adları ve bölgesel sapmaları idare ediyor mu?](#how-do-i-format-display-names-in-ad-based-on-the-users-departmentcountrycity-attributes-and-handle-regional-variances)
@@ -833,7 +834,7 @@ Yeni bir fikir önerirken, başka birinin zaten benzer bir özelliği önerdiği
 #### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>Nasıl yaparım? sağlama aracımın sürümü bilinmiyor mu?
 
 * Sağlama aracısının yüklendiği Windows Server 'da oturum açın.
-* **Denetim Masası** -> 'na git**bir program menüsünü kaldırma veya değiştirme**
+* **Denetim masası** -> **bir program menüsünü kaldırma veya değiştirme**
 * Girişe karşılık gelen sürümü ara **Microsoft Azure AD sağlama aracısına Bağlan**
 
   ![Azure portal](./media/workday-inbound-tutorial/pa_version.png)
@@ -852,7 +853,7 @@ Yapılandırma sırasında, sağlama Aracısı Azure AD yönetici kimlik bilgile
 
 #### <a name="how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication"></a>Nasıl yaparım? sağlama aracısını giden HTTP iletişimi için bir proxy sunucu kullanacak şekilde yapılandırmak istiyor musunuz?
 
-Sağlama Aracısı giden ara sunucu kullanımını destekler. Bunu, **C:\Program Files\Microsoft Azure AD Connect sağlama Agent\AADConnectProvisioningAgent.exe.config**aracı yapılandırma dosyasını düzenleyerek yapılandırabilirsiniz. Aşağıdaki satırları, kapanış `</configuration>` etiketinden hemen önceki dosyanın sonuna doğru bir şekilde ekleyin.
+Sağlama Aracısı giden ara sunucu kullanımını destekler. Bunu, **C:\Program Files\Microsoft Azure AD Connect sağlama Agent\AADConnectProvisioningAgent.exe.config**aracı yapılandırma dosyasını düzenleyerek yapılandırabilirsiniz. Aşağıdaki satırları, kapanış `</configuration>` etiketinden hemen önce dosyanın sonuna doğru bir şekilde ekleyin.
 [Proxy-Server] ve [proxy-port] değişkenlerini ara sunucu adı ve bağlantı noktası değerlerinizle değiştirin.
 
 ```xml
@@ -906,7 +907,7 @@ Evet, bir sağlama Aracısı, aracı ilgili etki alanı denetleyicilerine bir g�
 #### <a name="how-do-i-uninstall-the-provisioning-agent"></a>Sağlama aracısını kaldırmak Nasıl yaparım? mı?
 
 * Sağlama aracısının yüklendiği Windows Server 'da oturum açın.
-* **Denetim Masası** -> 'na git**bir program menüsünü kaldırma veya değiştirme**
+* **Denetim masası** -> **bir program menüsünü kaldırma veya değiştirme**
 * Aşağıdaki programları kaldırın:
   * Microsoft Azure AD sağlama aracısına bağlanma
   * Microsoft Azure AD Aracısı güncelleştiricisi bağlama
@@ -948,7 +949,7 @@ Yalnızca güncelleştirme işlemlerinin Workday 'den AD 'ye akmasını sağlama
 * Öznitelik eşlemelerine tıklayın 
 * **Eşlemeler**altında, Iş **günü çalışanlarını şirket Içi Active Directory ile eşitlemeyi** (veya **Workday çalışanlarını Azure AD 'ye eşitlemeyi**) seçin.
 * Öznitelik eşlemeleri sayfasında, aşağı kaydırın ve "Gelişmiş seçenekleri göster" kutusunu işaretleyin.  **Workday için öznitelik listesini düzenle** 'ye tıklayın
-* Açılan dikey pencerede, "mobil" özniteliğini bulun ve ardından mobil GDPR **API ifadesini** ![düzenleyebilmek için satıra tıklayın.](./media/workday-inbound-tutorial/mobile_gdpr.png)
+* Açılan dikey pencerede, "mobil" özniteliğini bulun ve **API ifadesini** düzenleyebilmek için ![MOBILE GDPR @ no__t-2 ' ye tıklayın.
 
 * **API ifadesini** , yalnızca "genel kullanım bayrağı" Workday 'de "true" olarak ayarlandıysa iş cep telefonu numarasını alan aşağıdaki yeni ifadeyle değiştirin.
 
@@ -972,8 +973,8 @@ Bu tür gereksinimleri, örneğin, Şirket, iş birimi, şehir veya ülke/bölge
      | ----------------- | -------------------- |
      | PreferredFirstName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: First_Name/Text () |
      | PreferredLastName | WD: Worker/WD: Worker_Data/WD: Personal_Data/WD: Name_Data/WD: Preferred_Name_Data/WD: Name_Detail_Data/WD: Last_Name/Text () |
-     | Şirket | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' Company ']/wd:Organization_Reference/@wd:Descriptor |
-     | Supervisorspganleştirme | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' supervis, ']/WD: organ/Text () |
+     | Şirket | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data [WD: Organization_Data/WD: Organization_Type_Reference/WD: ID [@wd:type = ' Organization_Type_ID '] = ' Company '] /wd:Organization_Reference/@wd:Descriptor |
+     | Supervisorspganleştirme | WD: Worker/WD: Worker_Data/WD: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [WD: Organization_Type_Reference/WD: ID [@wd:type = ' Organization_Type_ID '] = ' supervis, ']/WD: organi/Text () |
   
    Workday kiracınızda, yukarıdaki API ifadesinin Workday kiracı yapılandırmanız için geçerli olduğunu doğrulayın. Gerekirse, [Workday kullanıcı özniteliklerinin listesini özelleştirme](#customizing-the-list-of-workday-user-attributes)bölümünde açıklandığı gibi düzenleyebilirsiniz.
 
@@ -983,10 +984,10 @@ Bu tür gereksinimleri, örneğin, Şirket, iş birimi, şehir veya ülke/bölge
 
      | Workday özniteliği | API XPATH Ifadesi |
      | ----------------- | -------------------- |
-     | CountryReference | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Alpha-3_Code ']/text () |
+     | CountryReference | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type = ' ISO_3166-1_Alpha-3_Code ']/text () |
      | Countryreferencedostu | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Reference/@wd:Descriptor |
-     | CountryReferenceNumeric | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Numeric-3_Code ']/text () |
-     | CountryReferenceTwoLetter | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type= ' ISO_3166-1_Alpha-2_code ']/text () |
+     | CountryReferenceNumeric | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type = ' ISO_3166-1_Numeric-3_Code ']/text () |
+     | CountryReferenceTwoLetter | WD: Worker/WD: Worker_Data/WD: Employment_Data/WD: Position_Data/WD: Business_Site_Summary_Data/WD: Address_Data/WD: Country_Reference/WD: ID [@wd:type = ' ISO_3166-1_Alpha-2_Code ']/text () |
      | CountryRegionReference | wd:Worker/wd:Worker_Data/wd:Employment_Data/wd:Position_Data/wd:Business_Site_Summary_Data/wd:Address_Data/wd:Country_Region_Reference/@wd:Descriptor |
 
   Workday kiracınızda, yukarıdaki API ifadelerinin Workday kiracı yapılandırmanız için geçerli olduğunu doğrulayın. Gerekirse, [Workday kullanıcı özniteliklerinin listesini özelleştirme](#customizing-the-list-of-workday-user-attributes)bölümünde açıklandığı gibi düzenleyebilirsiniz.
@@ -996,7 +997,7 @@ Bu tür gereksinimleri, örneğin, Şirket, iş birimi, şehir veya ülke/bölge
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
     ```
-    Doğru ifadeye sahip olduktan sonra, öznitelik eşlemeleri tablosunu düzenleyin ve *DisplayName* öznitelik eşlemesini aşağıda gösterildiği gibi değiştirin:   ![DisplayName eşlemesi](./media/workday-inbound-tutorial/wd_displayname_map.png)
+    Doğru ifadeye sahip olduktan sonra, öznitelik eşlemeleri tablosunu düzenleyin ve *DisplayName* öznitelik eşlemesini aşağıda gösterildiği gibi değiştirin:   ![DisplayName eşlemesi @ no__t-1
 
 * Yukarıdaki örneği genişlettikten sonra, Workday 'den gelen şehir adlarını stenen değerlere dönüştürmek ve sonra *Smith, John (çi)* veya *tikan (NYC)* gibi görünen adlar oluşturmak için kullanmak istediğinizi varsayalım, bu nedenle bu sonuç bir anahtar kullanılarak elde edilebilir ifade *Municipitesi* özniteliği, determinantı olan ifade.
 
@@ -1041,7 +1042,7 @@ Kullanıcı için e-posta adresi veya CN değeri oluştururken, kullanıcının 
 
 ## <a name="troubleshooting-tips"></a>Sorun giderme ipuçları
 
-Bu bölümde, Azure AD denetim günlükleri ve Windows Server Olay Görüntüleyicisi günlüklerini kullanarak Workday tümleştirmenizde sağlama sorunlarının nasıl giderileceği hakkında özel rehberlik sunulmaktadır. Genel sorun giderme adımlarının ve [öğreticide yakalanan kavramların üzerine oluşturulur: Otomatik Kullanıcı hesabı sağlama üzerinde raporlama](../manage-apps/check-status-user-account-provisioning.md)
+Bu bölümde, Azure AD denetim günlükleri ve Windows Server Olay Görüntüleyicisi günlüklerini kullanarak Workday tümleştirmenizde sağlama sorunlarının nasıl giderileceği hakkında özel rehberlik sunulmaktadır. @No__t-0Öğreticisinde yakalanan genel sorun giderme adımlarının ve kavramların üzerine oluşturulur: Otomatik Kullanıcı hesabı sağlama üzerinde raporlama @ no__t-0
 
 Bu bölüm, sorun gidermeye yönelik aşağıdaki noktaları ele almaktadır:
 
@@ -1137,17 +1138,17 @@ Denetim günlüğü kayıtlarının herhangi birine tıkladığınızda, **etkin
 
   *Olay kimliği = 2*ile dışarı aktarma işleminin zaman damgasına karşılık gelen BIR http post kaydı bulun. Bu kayıt sağlama aracısına sağlama hizmeti tarafından gönderilen öznitelik değerlerini içerecektir.
 
-  [![SCıM ekleme](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
+  [![SCıM Add](media/workday-inbound-tutorial/wd_event_viewer_05.png)](media/workday-inbound-tutorial/wd_event_viewer_05.png#lightbox)
 
   Yukarıdaki olayın hemen ardından, AD hesabı oluşturma işleminin yanıtını yakalayan başka bir olay olması gerekir. Bu olay, AD içinde oluşturulan yeni objectGUID değerini döndürür ve sağlama hizmetinde Targettutturucu özniteliği olarak ayarlanır.
 
-  [![SCıM ekleme](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
+  [![SCıM Add](media/workday-inbound-tutorial/wd_event_viewer_06.png)](media/workday-inbound-tutorial/wd_event_viewer_06.png#lightbox)
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>Yönetici güncelleştirme işlemlerine yönelik günlükleri anlama
 
 Yönetici özniteliği, AD 'deki bir başvuru özniteliğidir. Sağlama Hizmeti, Kullanıcı oluşturma işleminin parçası olarak Manager özniteliğini ayarladı. Bunun yerine, Kullanıcı için AD hesabı oluşturulduktan sonra, yönetici özniteliği bir *güncelleştirme* işleminin parçası olarak ayarlanır. Yukarıdaki örneği genişleterek, Workday 'de çalışan KIMLIĞI "21451" olan yeni bir işe giriş ve yeni işe alma yöneticisinin (*21023*) zaten bir ad hesabı var. Bu senaryoda, Kullanıcı 21451 için Denetim günlüklerini aramak 5 girişi gösterir.
 
-  [![Yönetici Güncelleştirmesi](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
+  [![Manager güncelleştirmesi](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
 İlk 4 kayıt, Kullanıcı oluşturma işleminin bir parçası olarak araştırdığımız gibidir. 5\. kayıt, yönetici öznitelik güncelleştirmesiyle ilişkili dışarı aktarma ' dır. Günlük kaydı, yöneticinin *Objectguıd* özniteliği KULLANıLARAK gerçekleştirilen ad Account Manager güncelleştirme işleminin sonucunu görüntüler.
 
@@ -1178,8 +1179,8 @@ Bu bölüm, Workday Kullanıcı sağlama ve bu sorunu çözme ile ilgili sık g�
 
 |#|Hata senaryosu |Olası nedenler|Önerilen çözüm|
 |--|---|---|---|
-|1.| Sağlama Aracısı şu hata iletisiyle yüklenirken hata oluştu:  *' Microsoft Azure AD Connect sağlama Aracısı ' (AADConnectProvisioningAgent) hizmeti başlatılamadı. Sistemi başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın.* | Bu hata genellikle, sağlama aracısını bir etki alanı denetleyicisine yüklemeye çalışıyorsanız ve Grup İlkesi hizmetin başlamasını engelliyorsa, genellikle görüntülenir.  Ayrıca, aracının çalıştığı önceki bir sürümüne sahipseniz ve yeni bir yükleme başlatmadan önce bu sürümü kaldırmadıysanız da görülür.| Sağlama aracısını DC olmayan bir sunucuya yükler. Yeni aracıyı yüklemeden önce aracının önceki sürümlerinin kaldırıldığından emin olun.|
-|2.| ' Microsoft Azure AD Connect sağlama Aracısı ' Windows hizmeti *Başlangıç* durumunda ve *çalışan* durumuna geçmiyor. | Yüklemenin bir parçası olarak, aracı Sihirbazı sunucuda bir yerel hesap (**NT Service\\aadconnectprovisioningagent**) oluşturur ve bu, hizmeti başlatmak için kullanılan **oturum** açma hesabıdır. Windows sunucunuzdaki bir güvenlik ilkesi yerel hesapların Hizmetleri çalıştırmasını engelliyorsa, bu hatayla karşılaşırsınız. | *Hizmetler konsolunu*açın. ' Microsoft Azure AD sağlama aracısına Bağlan ' Windows hizmetine sağ tıklayın ve oturum aç sekmesinde, hizmeti çalıştırmak için bir etki alanı yöneticisinin hesabını belirtin. Hizmeti yeniden başlatın. |
+|1.| Sağlama Aracısı şu hata iletisiyle yüklenirken hata oluştu:  *Service ' Microsoft Azure AD Connect sağlama Aracısı ' (AADConnectProvisioningAgent) başlatılamadı. Sistemi başlatmak için yeterli ayrıcalıklara sahip olduğunuzu doğrulayın.* | Bu hata genellikle, sağlama aracısını bir etki alanı denetleyicisine yüklemeye çalışıyorsanız ve Grup İlkesi hizmetin başlamasını engelliyorsa, genellikle görüntülenir.  Ayrıca, aracının çalıştığı önceki bir sürümüne sahipseniz ve yeni bir yükleme başlatmadan önce bu sürümü kaldırmadıysanız da görülür.| Sağlama aracısını DC olmayan bir sunucuya yükler. Yeni aracıyı yüklemeden önce aracının önceki sürümlerinin kaldırıldığından emin olun.|
+|2.| ' Microsoft Azure AD Connect sağlama Aracısı ' Windows hizmeti *Başlangıç* durumunda ve *çalışan* durumuna geçmiyor. | Yüklemenin bir parçası olarak, aracı Sihirbazı sunucuda bir yerel hesap (**NT hizmeti @ no__t-1AADConnectProvisioningAgent**) oluşturur ve bu, hizmeti başlatmak Için kullanılan **oturum** açma hesabıdır. Windows sunucunuzdaki bir güvenlik ilkesi yerel hesapların Hizmetleri çalıştırmasını engelliyorsa, bu hatayla karşılaşırsınız. | *Hizmetler konsolunu*açın. ' Microsoft Azure AD sağlama aracısına Bağlan ' Windows hizmetine sağ tıklayın ve oturum aç sekmesinde, hizmeti çalıştırmak için bir etki alanı yöneticisinin hesabını belirtin. Hizmeti yeniden başlatın. |
 |3.| Adım *bağlama Active Directory*, sağlama aracısını ad etki alanınız ile yapılandırırken, sihirbazın ad şemasını yüklemeye ve sonunda zaman aşımına uğramadan uzun bir süre sürer. | Bu hata genellikle, güvenlik duvarı sorunlarından dolayı sihirbaz AD etki alanı denetleyicisi sunucusuna bağlanamadığında gösterilir. | *Active Directory bağlanma* Sihirbazı EKRANıNDA, ad etki alanınız için kimlik bilgilerini sağlarken, *etki alanı denetleyicisi önceliği Seç*adlı bir seçenek vardır. Aracı sunucusuyla aynı sitede olan bir etki alanı denetleyicisi seçmek ve iletişimi engelleyen bir güvenlik duvarı kuralı olmadığından emin olmak için bu seçeneği kullanın. |
 
 #### <a name="connectivity-errors"></a>Bağlantı hataları
@@ -1188,7 +1189,7 @@ Sağlama hizmeti Workday veya Active Directory 'e bağlanamıyorsa, sağlama dur
 
 |#|Hata senaryosu |Olası nedenler|Önerilen çözüm|
 |--|---|---|---|
-|1.| **Bağlantıyı Sına**' ya tıkladığınızda şu hata iletisini alırsınız: *Active Directory bağlanılırken bir hata oluştu. Lütfen şirket içi sağlama aracısının çalıştığından ve doğru Active Directory etki alanı ile yapılandırıldığından emin olun.* | Bu hata genellikle, sağlama aracısının çalışmadığı veya Azure AD ile sağlama Aracısı arasındaki iletişimi engelleyen bir güvenlik duvarı varsa görüntülenir. Etki alanı aracı sihirbazında yapılandırılmamışsa da bu hatayı görebilirsiniz. | Aracının çalıştığını onaylamak için Windows Server 'da *Hizmetler* konsolunu açın. Sağlama Aracısı sihirbazını açın ve doğru etki alanının aracıya kayıtlı olduğunu doğrulayın.  |
+|1.| **Bağlantıyı Sına**' ya tıkladığınızda şu hata iletisini alırsınız: *Active Directory bağlanırken bir hata oluştu. Lütfen şirket içi sağlama aracısının çalıştığından ve doğru Active Directory etki alanı ile yapılandırıldığından emin olun.* | Bu hata genellikle, sağlama aracısının çalışmadığı veya Azure AD ile sağlama Aracısı arasındaki iletişimi engelleyen bir güvenlik duvarı varsa görüntülenir. Etki alanı aracı sihirbazında yapılandırılmamışsa da bu hatayı görebilirsiniz. | Aracının çalıştığını onaylamak için Windows Server 'da *Hizmetler* konsolunu açın. Sağlama Aracısı sihirbazını açın ve doğru etki alanının aracıya kayıtlı olduğunu doğrulayın.  |
 |2.| Sağlama işi, hafta sonları (Cum-Sat) üzerinden karantina durumuna geçer ve eşitlemede bir hata olduğunu belirten bir e-posta bildirimi alırız. | Bu hatanın yaygın nedenlerinden biri Workday'in planlı kapalı kalma süresidir. Workday uygulama kiracısını kullanıyorsanız, Workday'in uygulama kiracıları için hafta sonları zamanladığı kapalı kalma sürelerini (genellikle Cuma akşamından Cumartesi sabahına kadar) ve bu süre boyunca Workday sağlama uygulamalarının Workday'e bağlanamadığı için karantina durumuna geçebileceğini unutmayın. Workday uygulama kiracısı yeniden çevrimiçi olduğunda normal durumuna geri döner. Nadir durumlarda, kiracı yenilendiği veya hesap kilitlendiği ya da süresi dolduğu için Tümleştirme Sistemi Kullanıcısının parolası değiştirildiğinde de bu hatayı görebilirsiniz. | Workday'in kapalı kalma zamanlamasını öğrenmek için Workday yöneticinize veya iş ortağınıza danışın. Kapalı kalma süresince uyarı iletilerini yoksayın ve Workday örneği yeniden çevrimiçi olduğunda kullanılabilirliği onaylayın.  |
 
 
@@ -1196,8 +1197,8 @@ Sağlama hizmeti Workday veya Active Directory 'e bağlanamıyorsa, sağlama dur
 
 |#|Hata senaryosu |Olası nedenler|Önerilen çözüm|
 |--|---|---|---|
-|1.| Denetim günlüğündeki ileti *hatasıyla dışarı aktarma işlemi hataları: OperationsError-SvcErr: İşlem hatası oluştu. Dizin hizmeti için üst başvuru yapılandırılmamış. Bu nedenle, dizin hizmeti bu ormanın dışındaki nesnelere başvuru yayınyapamıyor.* | Bu hata genellikle *Active Directory kapsayıcı* OU doğru ayarlanmamışsa veya *ParentDistinguishedName*için kullanılan ifade eşlemesinde sorunlar varsa görüntülenir. | Yazım hataları için *Active Directory kapsayıcı* OU parametresini denetleyin. Öznitelik eşlemesinde *parentDistinguishedName* kullanıyorsanız, bunun her zaman AD etki alanı içinde bilinen bir kapsayıcı olarak değerlendirildiğinden emin olun. Oluşturulan değeri görmek için denetim günlüklerinde *dışarı aktarma* olayını kontrol edin. |
-|2.| Denetim günlüğündeki hata kodu ile dışarı aktarma işlemi hataları: *Systemforcrossdomainıdentitymanagementbadresponse* ve ileti *hatası: ConstraintViolation-AtrErr: İstekteki bir değer geçersiz. Öznitelik için bir değer, kabul edilebilir değerler aralığında değildi. \Nhata ayrıntıları: CONSTRAINT_ATT_TYPE-Company*. | Bu hata *Şirket* özniteliğine özgü olsa da, bu hatayı *CN* gibi diğer öznitelikler için de görebilirsiniz. Bu hata, AD Zorlanmış şema kısıtlaması nedeniyle görünür. Varsayılan olarak, *Şirket* ve *CN* gibi özniteliklerin üst sınırı 64 karakter olmalıdır. Workday 'den gelen değer 64 karakterden büyükse, bu hata iletisini görürsünüz. | Hata iletisinde bildirilen özniteliğin değerini görmek için denetim günlüklerinde *dışarı aktarma* olayını kontrol edin. [PARÇAAL](../manage-apps/functions-for-customizing-application-data.md#mid) Işlevini kullanarak Workday 'den gelen değeri kırpıp veya eşlemeleri benzer uzunluk kısıtlamalarına sahip olmayan bir ad özniteliğiyle değiştirmeyi göz önünde bulundurun.  |
+|1.| Denetim günlüğündeki *hatası iletisiyle dışarı aktarma işlemi hataları: OperationsError-SvcErr: İşlem hatası oluştu. Dizin hizmeti için üst başvuru yapılandırılmamış. Bu nedenle, dizin hizmeti bu ormanın dışındaki nesnelere başvuru yayınyapamıyor.* | Bu hata genellikle *Active Directory kapsayıcı* OU doğru ayarlanmamışsa veya *ParentDistinguishedName*için kullanılan ifade eşlemesinde sorunlar varsa görüntülenir. | Yazım hataları için *Active Directory kapsayıcı* OU parametresini denetleyin. Öznitelik eşlemesinde *parentDistinguishedName* kullanıyorsanız, bunun her zaman AD etki alanı içinde bilinen bir kapsayıcı olarak değerlendirildiğinden emin olun. Oluşturulan değeri görmek için denetim günlüklerinde *dışarı aktarma* olayını kontrol edin. |
+|2.| Denetim günlüğündeki hata kodu ile dışarı aktarma işlemi hataları: *Systemforcrossdomainıdentitymanagementbadresponse* ve Message *Error: ConstraintViolation-AtrErr: İstekteki bir değer geçersiz. Öznitelik için bir değer, kabul edilebilir değerler aralığında değildi. \Nhata ayrıntıları: CONSTRAINT_ATT_TYPE-Company @ no__t-0. | Bu hata *Şirket* özniteliğine özgü olsa da, bu hatayı *CN* gibi diğer öznitelikler için de görebilirsiniz. Bu hata, AD Zorlanmış şema kısıtlaması nedeniyle görünür. Varsayılan olarak, *Şirket* ve *CN* gibi özniteliklerin üst sınırı 64 karakter olmalıdır. Workday 'den gelen değer 64 karakterden büyükse, bu hata iletisini görürsünüz. | Hata iletisinde bildirilen özniteliğin değerini görmek için denetim günlüklerinde *dışarı aktarma* olayını kontrol edin. [PARÇAAL](../manage-apps/functions-for-customizing-application-data.md#mid) Işlevini kullanarak Workday 'den gelen değeri kırpıp veya eşlemeleri benzer uzunluk kısıtlamalarına sahip olmayan bir ad özniteliğiyle değiştirmeyi göz önünde bulundurun.  |
 
 #### <a name="ad-user-account-update-errors"></a>AD Kullanıcı hesabı güncelleştirme hataları
 
@@ -1237,11 +1238,11 @@ Bu değişikliği yapmak için, kullanmak istediğiniz öznitelikleri temsil ede
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio1.png)
 
-6. **Konum** alanını olarak `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources`ayarlayın, ancak "Impl-CC" yi gerçek örnek yazınızla ve "Kiracı" öğesini gerçek kiracı adınızla değiştirin.
+6. **Konum** alanını `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` olarak ayarlayın, ancak "ıMPL-CC" yi gerçek örnek yazınızla ve "Kiracı" öğesini gerçek kiracı adınızla değiştirin.
 
 7. **Işlemi** **Get_Workers** olarak ayarla
 
-8.  Workday kimlik bilgilerinizi ayarlamak için Istek/yanıt bölmelerindeki küçük **Yapılandır** bağlantısına tıklayın. **Kimlik doğrulamasını**denetleyin ve sonra Workday tümleştirme sistem hesabınız için Kullanıcı adını ve parolayı girin. Kullanıcı adını kiracı adı\@olarak biçimlendirdiğinizden emin olun ve **WS-Security UsernameToken** seçeneğini seçili bırakın.
+8.  Workday kimlik bilgilerinizi ayarlamak için Istek/yanıt bölmelerindeki küçük **Yapılandır** bağlantısına tıklayın. **Kimlik doğrulamasını**denetleyin ve sonra Workday tümleştirme sistem hesabınız için Kullanıcı adını ve parolayı girin. Kullanıcı adını @ no__t-0tenant adı olarak biçimlendirdiğinizden emin olun ve **WS-Security UsernameToken** seçeneğini seçili bırakın.
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio2.png)
 
@@ -1284,9 +1285,9 @@ Bu değişikliği yapmak için, kullanmak istediğiniz öznitelikleri temsil ede
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio3.png)
 
-14. Dosya ağacında, **/env adresine gidin: Zarf > env: Body > WD: Get_Workers_Response > WD: Response_Data > WD: Çalışan** kullanıcının verilerini bulun.
+14. Dosya ağacında **/env içinde ilerleyin: Zarf > env: Body > WD: Get_Workers_Response > WD: Response_Data > WD: Çalışan @ no__t-0, kullanıcının verilerini bulmak için.
 
-15. WD **altında: Çalışan**, eklemek istediğiniz özniteliği bulun ve seçin.
+15. @No__t-0wd altında: Worker @ no__t-0, eklemek istediğiniz özniteliği bulun ve seçin.
 
 16. Seçili özniteeniz için XPath ifadesini **Belge yolu** alanından kopyalayın.
 

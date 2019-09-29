@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: ef0001059026421584efde4c165e882197eda7a6
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 2fc2b847c18cecbcea3c137312b18bb274398cc6
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266237"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326634"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python kullanarak Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "71266237"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+> * [ARM şablonu](create-cluster-database-resource-manager.md)
 
 Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu makalede, Python kullanarak bir küme ve veritabanı oluşturursunuz.
 

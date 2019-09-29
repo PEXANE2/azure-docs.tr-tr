@@ -7,12 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 473e16c610e7dee0b2838cb1a54ef7cd98958889
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232975"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338187"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı Başlangıç: Portalda bir şema tanımlama ve atama
 
@@ -44,7 +44,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
 1. **Tanım konumu** kutusunda, sağdaki üç noktayı seçin, şemayı kaydetmek istediğiniz [yönetim grubunu](../management-groups/overview.md) veya aboneliği seçin ve **Seç**' i seçin.
 
-1. Bilgilerin doğru olduğundan emin olun. **Blueprint adı** ve **tanım konumu** alanları daha sonra değiştirilemez. Ardından İleri **' yi seçin: Sayfanın** alt kısmındaki yapıtlar veya sayfanın üst kısmındaki **yapılar** sekmesi.
+1. Bilgilerin doğru olduğundan emin olun. **Blueprint adı** ve **tanım konumu** alanları daha sonra değiştirilemez. Sonra **Ileri ' yi seçin: Sayfanın alt kısmındaki yapılar @ no__t-0 veya sayfanın üst kısmındaki **yapılar** sekmesi.
 
 1. Abonelik düzeyinde bir rol ataması ekleyin:
 
@@ -170,7 +170,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
 1. **Şema açıklamasında**, şema ve onu oluşturan yapıtlar hakkında bazı bilgiler sağlayın. Bu durumda, şöyle bir şey girin: **Bu şema, abonelik üzerinde etiket ilkesi ve rol atamasını belirler, bir ResourceGroup oluşturur ve bu ResourceGroup öğesine bir kaynak şablonu ve rol ataması dağıtır.**
 
-1. İleri **' yi seçin: Sayfanın** alt kısmındaki yapıtlar veya sayfanın üst kısmındaki **yapılar** sekmesi.
+1. @No__t seçin-0Next: Sayfanın alt kısmındaki yapılar @ no__t-0 veya sayfanın üst kısmındaki **yapılar** sekmesi.
 
 1. Kaynak grubunun altına bir rol ataması ekleyin:
 
@@ -223,7 +223,7 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
 
    1. Açılan listeden kullanılabilir **teklifi** seçin.
 
-   1. Aboneliğin bir alt öğesi olacağı [yönetim grubunu](../management-groups/index.md) seçmek için üç noktayı kullanın.
+   1. Aboneliğin bir alt öğesi olacağı [yönetim grubunu](../management-groups/overview.md) seçmek için üç noktayı kullanın.
 
    1. Sayfanın alt kısmında **Oluştur** ' u seçin.
 
@@ -247,9 +247,9 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
 
 1. **Yönetilen kimlik**altında, varsayılan olarak **atanmış sistem**' i bırakın.
 
-1. Abonelik düzeyi rol ataması **[Kullanıcı grubu veya uygulama adı]: Katkıda**bulunan, bir Kullanıcı, uygulama veya grup bulun ve seçin.
+1. Abonelik düzeyi rol ataması için ** [Kullanıcı grubu veya uygulama adı]: Katkıda bulunan @ no__t-0, bir Kullanıcı, uygulama veya grup arayın ve seçin.
 
-1. Abonelik düzeyi ilke ataması için, **etiket adı** ' nı **costcenter** olarak ayarlayın ve **Bu** **değeri** contoso.
+1. Abonelik düzeyi ilke ataması için, **etiket adı** ' nı **costcenter** olarak ayarlayın ve bu **değeri** **contoso.**
 
 1. **ResourceGroup**için, açılan listeden bir **storageaccount** **adı** ve **Doğu ABD 2** bir **konum** sağlayın.
 
@@ -300,7 +300,7 @@ Artık bir şema ataması gerekmiyorsa, aboneliği bir abonelikten kaldırın. �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](./concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](./concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](./concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](./concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](./concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

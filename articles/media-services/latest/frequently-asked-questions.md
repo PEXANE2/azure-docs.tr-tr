@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501266"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338825"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
 
@@ -65,6 +65,14 @@ Kaynak videoyu değiştirmek için [canlı bir şirket içi kodlayıcı](recomme
 Müşteriler genellikle bunlar AES şifrelemesi veya DRM sistem kullanması gerekip gerekmediğini merak ediyor. İki sistem arasındaki birincil fark, AES şifrelemesi ile, anahtarın aktarım sırasında şifrelenmesi, ancak ek şifreleme ("açık") olmadan olması için içerik anahtarı TLS üzerinden istemciye iletilir. Sonuç olarak, içeriğin şifresini çözmek için kullanılan anahtar, istemci oynatıcı tarafından erişilebilir olur ve istemci üzerindeki bir ağ izlemede düz metin olarak görüntülenebilir. AES-128 şifresiz anahtar şifrelemesi, görüntüleyicinin güvenilir bir taraf olduğu (örneğin, çalışanlar tarafından görüntülenmek üzere şirket içinde dağıtılan şirket videolarını şifrelemek) kullanım örneklerine uygundur.
 
 PlayReady, Widevine ve FairPlay gibi DRM sistemleri, bir AES-128 şifresiz anahtarla karşılaştırılan içeriğin şifresini çözmek için kullanılan anahtarda ek bir şifreleme düzeyi sağlar. İçerik anahtarı, TLS tarafından sunulan herhangi bir aktarım düzeyi şifrelemesine ek olarak DRM çalışma zamanı tarafından korunan bir anahtara şifrelenir. Ayrıca, şifre çözme, kötü niyetli bir kullanıcı saldırı daha zor olduğu işletim sistemi düzeyinde güvenli bir ortamda ele alınır. DRM burada Görüntüleyicisi güvenilen taraf olmayabilir ve yüksek düzeyde güvenlik gerektiren kullanım durumları için önerilir.
+
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Azure AD kullanmadan yalnızca belirli bir izne sahip olan kullanıcılar için bir video nasıl gösterilir?
+
+Belirli bir belirteç sağlayıcısını (Azure AD gibi) kullanmanız gerekmez. Asimetrik anahtar şifrelemesi kullanarak kendi [JWT](https://jwt.io/) sağlayıcınızı (yani STS, güvenli belirteç hizmeti) oluşturabilirsiniz. Özel STS 'de iş mantığınızı temel alarak talep ekleyebilirsiniz.
+
+Verenin, hedef kitlenin ve taleplerin, JWT içinde olanlar ve ContentKeyPolicy içinde kullanılan ContentKeyPolicyRestriction arasında tam olarak eşleştiğinden emin olun.
+
+Daha fazla bilgi için bkz. [Media Services dinamik şifrelemeyi kullanarak Içeriğinizi koruma](content-protection-overview.md).
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Nasıl ve nereye isteği lisans veya anahtar için kullanmadan önce JWT belirteci almak?
 

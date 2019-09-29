@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 64f16c2ad6fdeeb47b747eab24587b43f3df5130
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4a3f37c232fcd7a0fcbdac051ed36916ef5c2868
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355947"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326675"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturmaC#
 
@@ -22,6 +22,7 @@ ms.locfileid: "68355947"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
+> * [ARM şablonu](create-cluster-database-resource-manager.md)
 
 Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu makalede, kullanarak C#bir küme ve veritabanı oluşturursunuz.
 
@@ -98,8 +99,8 @@ Sonuç `ProvisioningState` değeri`Succeeded` ile içeriyorsa, küme başarıyla
    | clusterName | *mykustocluster* | Veritabanının oluşturulacağı Kümenizin adı.|
    | Dosyasında | *mykustodatabase* | Veritabanınızın adı.|
    | resourceGroupName | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
-   | softDeletePeriod | *3650:00:00:00* | Verilerin sorgu için kullanılabilir kalacağı zaman miktarı. |
-   | hotCachePeriod | *3650:00:00:00* | Verilerin önbellekte tutulacağı zaman miktarı. |
+   | SoftDeletePeriod | *3650:00:00:00* | Verilerin sorgu için kullanılabilir kalacağı zaman miktarı. |
+   | HotCachePeriod | *3650:00:00:00* | Verilerin önbellekte tutulacağı zaman miktarı. |
 
 2. Oluşturduğunuz veritabanını görmek için aşağıdaki komutu çalıştırın:
 
