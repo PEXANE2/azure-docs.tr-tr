@@ -24,10 +24,12 @@
   items:
     - name: Windows Sanal Masaüstü kaynaklarına bağlanma
       items:
-        - name: Windows 10 veya Windows 7'den bağlanma
+        - name: Windows Masaüstü istemcisine bağlanma
           href: connect-windows-7-and-10.md
-        - name: Web tarayıcısından bağlanma
+        - name: Web istemcisiyle bağlanma
           href: connect-web.md
+        - name: Android istemcisiyle bağlanma
+          href: connect-android.md
         - name: macOS istemcisiyle bağlanma
           href: connect-macos.md
         - name: iOS istemcisiyle bağlanma
@@ -72,6 +74,8 @@
       href: partners.md
     - name: Windows 10 Enterprise çoklu oturum hakkında SSS
       href: windows-10-multisession-faq.md
+    - name: Veri konumları
+      href: data-locations.md
 - name: Sorun giderme
   items:
     - name: 'Sorun çözümüne genel bakış, geri bildirim ve destek'

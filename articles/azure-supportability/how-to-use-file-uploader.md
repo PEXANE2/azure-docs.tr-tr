@@ -42,7 +42,7 @@ Karşıya dosya yükleme yardımcı programını kullanırken aşağıdaki yöne
 |-------------|-------|-------------|-------|----------|------------|---------|
 | .7z         | .dat  | . HWL        | .odx  | . rar     | .tdb       | . xlam   |
 | . a          | . db   | . ics        | . oft  | . rdl     | .tdf       | . XLR    |
-| . abc        | . DMP  | dosyasında        | . Old  | . rdlc    | . metin      | \    |
+| . abc        | . DMP  | dosyasında        | . Old  | . rdlc    | . metin      | \\    |
 | . adm        | .do_  | .java       | . One  | değerlendirmeyi     | . thmx      | . xlsb   |
 | .aspx       | .doc  | . jpg        | . OSD  | . reg     | . tif       | . xlsm   |
 | . ATF        | . docm | . LDF        | . DIŞI  | . Kaldır  | . trc       | . xlsx   |

@@ -49,6 +49,10 @@
         - name: Sınıflandırma (Banka verileri)
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+    - name: Machine Learning CLI
+      items:
+        - name: Modeli eğitme ve dağıtma
+          href: tutorial-train-deploy-model-cli.md
 - name: Örnekler
   items:
     - name: Notebooks
@@ -63,6 +67,9 @@
     - name: İşlem hedefi
       displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
+    - name: Model eğitimi
+      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      href: concept-train-machine-learning-model.md
     - name: Görsel arabirim
       displayName: studio
       href: ui-concept-visual-interface.md
@@ -138,7 +145,7 @@
     - name: Modelleri eğitme
       items:
         - name: Eğitim ortamlarını ayarlama
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: Eğitmek için tahmin araçlarını kullanma
           items:
