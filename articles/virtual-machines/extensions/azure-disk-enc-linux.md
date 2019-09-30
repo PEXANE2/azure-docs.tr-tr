@@ -144,8 +144,8 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 | type | AzureDiskEncryptionForLinux | string |
 | typeHandlerVersion | 0,1, 1,1 | int |
 | (0.1 Şeması) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0.1 şeması) AADClientSecret | password | string |
-| (0.1 şeması) AADClientCertificate | thumbprint | string |
+| (0,1 şeması) AADClientSecret | password | string |
+| (0,1 şeması) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path": "", "ad": "", "file_system": ""} | JSON sözlüğü |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | ' RSA-OAEP ', ' RSA-OAEP-256 ', ' RSA1_5 ' | string |
@@ -153,7 +153,7 @@ V 1.1 şeması önerilir ve Azure Active Directory özellik gerektirmez.
 | seçim KeyVaultURL | url | string |
 | Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
-| VolumeType | OS, Data, All | string |
+| Birimtürü | İşletim sistemi, veri, tümü | string |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 

@@ -75,7 +75,7 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 | Name | Değer / örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
+| publisher | Microsoft. HpcCompute | string |
 | type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
