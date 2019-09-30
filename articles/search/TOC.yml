@@ -249,6 +249,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI ile bağlanma
               href: knowledge-store-connect-power-bi.md
+        - name: Zenginleştirme sorunlarını giderme
+          href: cognitive-search-common-errors-warnings.md
     - name: Belgeleri sorgulama
       items:
         - name: Sorgu türleri ve oluşturma

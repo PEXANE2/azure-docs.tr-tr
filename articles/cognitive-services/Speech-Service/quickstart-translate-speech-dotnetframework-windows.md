@@ -50,7 +50,7 @@ Bu hızlı başlangıç şunları gerektirir:
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Uygulama derlemek için menü **çubuğundan @no__t-** 1**derleme çözümü** oluştur ' u seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Uygulama derlemek için menü **çubuğundan** > **derleme çözümü** oluştur ' u seçin. Kodun artık hatasız derlenmesi gerekir.
 
 1. **HelloWorld** uygulamasını başlatmak Için **Hata Ayıkla** > **hata ayıklamayı Başlat** (veya **F5**' i seçin) seçeneğini belirleyin.
 

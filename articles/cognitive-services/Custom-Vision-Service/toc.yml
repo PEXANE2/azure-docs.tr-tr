@@ -44,9 +44,9 @@
           href: go-tutorial-object-detection.md
 - name: Öğreticiler
   items:
-    - name: IoT Görsel Uyarılar uygulaması
+    - name: IoT cihazında görsel durumları raporlama
       href: iot-visual-alerts-tutorial.md
-    - name: Mobil cihazlar için logo algılayıcısı
+    - name: Mobil cihazda logoları tanıma
       href: logo-detector-mobile.md
 - name: Nasıl yapılır kılavuzları
   items:

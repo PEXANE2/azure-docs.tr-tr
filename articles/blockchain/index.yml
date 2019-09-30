@@ -1,0 +1,88 @@
+### YamlMime:Hub
+title: Azure Blok Zinciri belgeleri
+summary: Azure Blok Zinciri'ni kullanarak güvenli blok zinciri uygulamalarını geliştirmeyi, test etmeyi ve dağıtmayı öğrenin.
+brand: azure
+metadata:
+  title: Azure Blok Zinciri belgeleri
+  description: Azure Blok Zinciri'ni kullanarak güvenli blok zinciri uygulamalarını geliştirmeyi, test etmeyi ve dağıtmayı öğrenin.
+  services: service
+  ms.service: azure-blockchain
+  ms.topic: hub-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 93a1e54dd2f1c209792c688666782a9c9823214b
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71328633"
+productDirectory:
+  items:
+  - title: Azure Blok Zinciri Hizmeti
+    imageSrc: ./media/index/blockchain-service.svg
+    links:
+    - url: ./service/overview.md
+      text: Azure Blok Zinciri Hizmeti nedir?
+    - url: ./service/index.yml
+      text: Daha fazla göster >
+  - title: Azure Blockchain Workbench
+    imageSrc: ./media/index/blockchain-workbench.svg
+    links:
+    - url: ./workbench/overview.md
+      text: Azure Blockchain Workbench nedir?
+    - url: ./workbench/index.yml
+      text: Daha fazla göster >
+conceptualContent:
+  title: Başlarken
+  items:
+  - title: Konsorsiyum blok zinciri ağlarını kullanarak oluşturun ve geliştirin
+    links:
+    - url: ./service/create-member.md
+      itemType: quickstart
+      text: Azure Blok Zinciri Hizmeti blok zinciri üyesini dağıtın
+    - url: ./service/send-transaction.md
+      itemType: tutorial
+      text: Öğreticiyi takip edin ve akıllı bir anlaşma yazın
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+      itemType: video
+      text: Ağınızın nasıl dağıtıldığını ve yapılandırıldığını izleyin
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+      itemType: video
+      text: VS Code ile akıllı bir anlaşmanın nasıl yazıldığını izleyin
+  - title: Blok zinciri çözümünün prototipini oluşturun
+    links:
+    - url: ./workbench/deploy.md
+      itemType: how-to-guide
+      text: Azure Blockchain Workbench’i dağıtın
+    - url: ./workbench/create-app.md
+      itemType: tutorial
+      text: Öğreticiyi takip edin ve Blockchain Workbench uygulaması oluşturun
+    - url: ./workbench/integration-patterns.md
+      itemType: concept
+      text: Blockchain Workbench ile çözümleri tümleştirmeyi öğrenin
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+      itemType: video
+      text: İlk uygulamanızın nasıl oluşturulacağını izleyin
+  - title: Kullanım örneğinize uyan bir kayıt defteri ile oluşturun
+    links:
+    - url: ./templates/ethereum-poa-deployment.md
+      itemType: how-to-guide
+      text: Azure'da çok üyeli bir konsorsiyum Yetki kanıtı Ethereum ağı dağıtın
+    - url: ./templates/hyperledger-fabric-consortium-blockchain.md
+      itemType: how-to-guide
+      text: Azure'da Hyperledger Fabric konsorsiyum ağı dağıtın
+additionalContent:
+  sections:
+  - title: Geliştirme araçları ve örnekleri
+    summary: Blok zinciri uygulaması geliştirme araçları ve kod örnekleri.
+    items:
+    - title: Ethereum için Azure Blok Zinciri Geliştirme Seti
+      summary: Azure Blok Zinciri Hizmeti çözümünüzü geliştirin, dağıtın, hatalarını ayıklayın ve yönetin.
+      url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
+    - title: Ethereum Blok Zinciri bağlayıcısı
+      summary: Azure Logic Apps, Microsoft Flow ve Microsoft PowerApps kullanarak işlemleri gönderme, anlaşma durumunu okuma ve anlaşma güncelleştirmelerinde akışları tetikleme gibi akıllı anlaşma eylemleri gerçekleştirin.
+      url: https://docs.microsoft.com/connectors/blockchainethereum/
+    - title: Kod örnekleri
+      summary: Başlangıç yapmanızı sağlayacak kod örneklerinin bulunduğu GitHub deposu.
+      url: https://github.com/Azure-Samples/blockchain

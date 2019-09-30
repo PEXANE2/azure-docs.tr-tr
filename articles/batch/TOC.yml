@@ -80,6 +80,8 @@
         - name: İşlem düğümlerine erişimi yapılandırma
           href: pool-endpoint-configuration.md
         - name: Paylaşılan Görüntü Galerisi ile bir havuz oluşturma
+          href: batch-sig-images.md
+        - name: Yönetilen görüntü kaynağıyla havuz oluşturma
           href: batch-custom-images.md
         - name: Sanal ağ içinde havuz oluşturma
           href: batch-virtual-network.md

@@ -167,44 +167,76 @@
           href: storage-sync-files-troubleshoot.md
 - name: Başvuru
   items:
-    - name: PowerShell
-      href: /powershell/module/azure.storage
+    - name: Azure PowerShell
+      href: /powershell/module/az.storage
     - name: Azure CLI
       href: /cli/azure/storage
     - name: .NET
       items:
-        - name: 'Bloblar, Kuyruklar, Tablolar ve Dosyalar'
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
-        - name: Veri taşıma
+        - name: 'Bloblar, Kuyruklar ve Dosyalar'
+          href: /dotnet/api/overview/azure/storage/client
+        - name: Veri Taşıma
           href: /dotnet/api/microsoft.azure.storage.datamovement
-        - name: Resource Manager
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+        - name: Depolama Kaynak Sağlayıcısı
+          href: /dotnet/api/overview/azure/storage/management
     - name: Java
       items:
-        - name: 'Bloblar, Kuyruklar, Tablolar ve Dosyalar'
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client'
+        - name: 'Bloblar, Kuyruklar ve Dosyalar (sürüm 12.x - önizleme)'
+          href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
+        - name: Depolama Kaynak Sağlayıcısı
+          href: /java/api/overview/azure/storage/management
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/storage'
-    - name: Ruby
-      href: 'https://azure.github.io/azure-storage-ruby'
-    - name: PHP
-      href: 'https://azure.github.io/azure-storage-php/'
+      href: /javascript/api/overview/azure/storage
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/storage'
-    - name: C++
-      href: 'https://azure.github.io/azure-storage-cpp'
-    - name: iOS
-      href: 'https://azure.github.io/azure-storage-ios/'
-    - name: Android
-      href: 'https://azure.github.io/azure-storage-android'
+      href: /python/api/overview/azure/storage
     - name: REST
       items:
         - name: 'Bloblar, Kuyruklar, Tablolar ve Dosyalar'
           href: /rest/api/storageservices
-        - name: Kaynak sağlayıcısı
+        - name: Depolama Kaynak Sağlayıcısı
           href: /rest/api/storagerp
         - name: İçeri/Dışarı Aktarma
           href: /rest/api/storageimportexport
+    - name: C++
+      href: 'https://azure.github.io/azure-storage-cpp'
+    - name: Ruby
+      href: 'https://azure.github.io/azure-storage-ruby'
+    - name: PHP
+      href: 'https://azure.github.io/azure-storage-php/'
+    - name: iOS
+      href: 'https://azure.github.io/azure-storage-ios/'
+    - name: Android
+      href: 'https://azure.github.io/azure-storage-android'
+    - name: AzCopy v10
+      items:
+        - name: azcopy
+          href: ../common/storage-ref-azcopy.md
+        - name: azcopy kopya
+          href: ../common/storage-ref-azcopy-copy.md
+        - name: azcopy belge
+          href: ../common/storage-ref-azcopy-doc.md
+        - name: azcopy ortamı
+          href: ../common/storage-ref-azcopy-env.md
+        - name: azcopy işleri
+          href: ../common/storage-ref-azcopy-jobs.md
+        - name: azcopy iş listesi
+          href: ../common/storage-ref-azcopy-jobs-list.md
+        - name: azcopy işleri sürdürme
+          href: ../common/storage-ref-azcopy-jobs-resume.md
+        - name: azcopy işleri gösterme
+          href: ../common/storage-ref-azcopy-jobs-show.md
+        - name: azcopy listesi
+          href: ../common/storage-ref-azcopy-list.md
+        - name: azcopy oturum açma
+          href: ../common/storage-ref-azcopy-login.md
+        - name: azcopy oturumu kapatma
+          href: ../common/storage-ref-azcopy-logout.md
+        - name: azcopy oluşturma
+          href: ../common/storage-ref-azcopy-make.md
+        - name: azcopy kaldırma
+          href: ../common/storage-ref-azcopy-remove.md
+        - name: azcopy eşitleme
+          href: ../common/storage-ref-azcopy-sync.md
     - name: Resource Manager şablonu
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions
@@ -212,55 +244,75 @@
       href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=file'
 - name: Kaynaklar
   items:
-    - name: Azure Yol Haritası
-      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Azure güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Azure Dosya Eşitleme yayın notları
       href: storage-files-release-notes.md
-    - name: Azure Depolama istemci araçları
-      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Forum
+    - name: Azure Depolama Gezgini
+      items:
+        - name: Depolama Gezgini’ni indirme
+          href: 'https://azure.microsoft.com/features/storage-explorer/'
+        - name: Depolama Gezgini ile çalışmaya başlama
+          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Depolama Gezgini sürüm notları
+          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Depolama Gezgini sorunu giderme
+          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Depolama Gezgini erişilebilirliği
+          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Azure Depolama forumu
       href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
-    - name: Fiyatlandırma
-      href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
-    - name: Fiyatlandırma hesaplayıcı
+    - name: Stack Overflow üzerinde Azure Depolama
+      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Azure depolama fiyatlandırması
+      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Azure fiyatlandırma hesaplayıcısı
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Videolar
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
-    - name: Azure Depolama Gezgini
+    - name: NuGet paketleri (.NET)
       items:
-        - name: Depolama Gezgini
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Depolama Gezgini sürüm notları
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Depolama Gezgini sorunu giderme
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Depolama Gezgini erişilebilirliği
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: NuGet paketleri
-      items:
-        - name: Azure Depolama ortak istemci kitaplığı
+        - name: Microsoft.Azure.Storage.Common (sürüm 11.x)
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
-        - name: Azure Dosyalar depolama istemci kitaplığı
+        - name: Azure.Storage.Common (sürüm 12.x - önizleme)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
+        - name: Microsoft.Azure.Storage.File (sürüm 11.x)
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.File/'
-        - name: Azure Depolama Veri Taşıma Kitaplığı
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Azure.Storage.File (sürüm 12.x - önizleme)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Files/'
         - name: Azure Configuration Manager
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
+        - name: Azure Depolama Veri Taşıma Kitaplığı
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
     - name: Kaynak kod
       items:
         - name: .NET
           items:
-            - name: 'Bloblar, Kuyruklar ve Dosyalar'
-              href: 'https://github.com/Azure/azure-storage-net'
-            - name: Veri Taşıma
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: Depolama Kaynak Sağlayıcısı
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+            - name: Azure Depolama istemci kitaplığı
+              items:
+                - name: Sürüm 12.x (önizleme)
+                  href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
+                - name: Sürüm 11.x ve öncesi
+                  href: 'https://github.com/Azure/azure-storage-net'
+            - name: Veri Taşıma kitaplığı
+              href: 'https://github.com/Azure/azure-storage-net-data-movement'
+            - name: Depolama Kaynak Sağlayıcısı kitaplığı
+              href: /dotnet/api/overview/azure/storage/management
         - name: Java
-          href: 'https://github.com/Azure/azure-storage-java'
-        - name: C++
-          href: 'https://github.com/Azure/azure-storage-cpp'
+          items:
+            - name: Azure Depolama istemci kitaplığı sürüm 12.x (önizleme)
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
+            - name: Azure Depolama istemci kitaplığı sürüm 8.x ve öncesi
+              href: 'https://github.com/Azure/azure-storage-java'
+        - name: Node.js
+          items:
+            - name: Azure Depolama istemci kitaplığı sürüm 12.x (önizleme)
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
+            - name: Azure Depolama istemci kitaplığı sürüm 10.x
+              href: 'https://github.com/Azure/azure-storage-node'
         - name: Python
-          href: 'https://github.com/Azure/azure-storage-python'
+          items:
+            - name: Azure Depolama istemci kitaplığı sürüm 12.x (önizleme)
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
+            - name: Azure Depolama istemci kitaplığı sürüm 2.1
+              href: 'https://github.com/Azure/azure-storage-python'

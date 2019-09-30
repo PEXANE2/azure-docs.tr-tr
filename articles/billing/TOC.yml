@@ -165,6 +165,8 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: Aboneliği yönetme
   items:
+    - name: Abonelik durumları
+      href: billing-azure-subscription-states.md
     - name: Aboneliği yeniden etkinleştirme
       href: billing-subscription-become-disable.md
     - name: Sahipliği devretme

@@ -78,7 +78,7 @@
         - name: Kimlik Doğrulaması
           items:
             - name: Genel Bakış
-              href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+              href: sql-data-warehouse-authentication.md
             - name: Azure Active Directory
               href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: Oturum açma bilgileri ve kullanıcılar
@@ -92,7 +92,7 @@
             - name: Sütun düzeyi güvenlik
               href: column-level-security.md
             - name: Satır düzeyi güvenlik
-              href: /sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc
+              href: /sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Veri koruma
           items:
             - name: Saydam Veri Şifrelemesi (TDE) genel bakış
@@ -155,7 +155,7 @@
               href: sql-data-warehouse-tables-data-types.md
             - name: Dağıtılmış tablolar
               href: sql-data-warehouse-tables-distribute.md
-            - name: tablo düzeyinde kısıtlamalar
+            - name: Tablo düzeyinde kısıtlamalar
               href: sql-data-warehouse-table-constraints.md
             - name: Dizinler
               href: sql-data-warehouse-tables-index.md
@@ -234,9 +234,9 @@
     - name: Güvenlik
       items:
         - name: Azure AD kimlik doğrulamasını yapılandırma
-          href: ../sql-database/sql-database-aad-authentication-configure.md??toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+          href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Koşullu Erişim
-          href: ../sql-database/sql-database-conditional-access.md??toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+          href: ../sql-database/sql-database-conditional-access.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: PowerShell’in sanal ağ kuralları
           href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Şifrelemeyi etkinleştirme - portal
@@ -338,7 +338,7 @@
     - name: T-SQL
       items:
         - name: Tam başvuru
-          href: /sql/t-sql/language-reference
+          href: /sql/t-sql/language-reference?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: SQL DW dil öğeleri
           href: sql-data-warehouse-reference-tsql-language-elements.md
         - name: SQL DW deyimleri

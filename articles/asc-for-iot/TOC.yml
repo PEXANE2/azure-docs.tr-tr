@@ -39,6 +39,8 @@
       href: concept-security-alerts.md
     - name: Güvenlik önerileri
       href: concept-recommendations.md
+    - name: Taban çizgisi
+      href: concept-baseline.md
     - name: Olay toplama
       href: event-aggregation.md
     - name: Fiyatlandırma ve ilişkili maliyetler
