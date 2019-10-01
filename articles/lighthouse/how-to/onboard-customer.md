@@ -4,17 +4,17 @@ description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri eklene
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 09/19/2019
+ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a199dde6b9e36683b817f908e385aabcc431ce16
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: b2e935a3a5ff2b6da99ad693f2d4e924ae811caf
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155120"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694842"
 ---
-# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
+# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure tarafından atanan kaynak yönetimine müşteri ekleme
 
 Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure tarafından atanan kaynak yönetimine ekleme, temsilcili kaynakların (abonelikler ve/veya kaynak grupları) kendi Azure Active Directory erişilebilir ve yönetilme olanağı ( Azure AD) kiracısı. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. birden çok kiracıyı yöneten kuruluşlar, yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
 
@@ -52,7 +52,7 @@ Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzer
 Select-AzSubscription <subscriptionId>
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLı
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -93,7 +93,7 @@ Yetkilendirmeleri tanımlamak için, erişim vermek istediğiniz her Kullanıcı
 (Get-AzRoleDefinition -Name '<roleName>').id
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLı
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -111,13 +111,13 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 az role definition list --name "<roleName>" | grep name
 ```
 
-## <a name="create-an-azure-resource-manager-template"></a>Bir Azure Resource Manager şablonu oluşturma
+## <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu oluşturma
 
-Müşteriyi eklemek için aşağıdakileri içeren bir [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) şablonu oluşturmanız gerekir:
+Müşterinize eklemek için aşağıdaki bilgilerle teklifiniz için bir [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) şablonu oluşturmanız gerekir. Azure portal [hizmet sağlayıcıları sayfasında](view-manage-service-providers.md) teklif ayrıntılarını görüntülerken, **Mspoffername** ve **mspofferdescription** değerleri müşteri tarafından görülebilir.
 
 |Alan  |Tanım  |
 |---------|---------|
-|**mspName**     |Hizmet sağlayıcı adı         |
+|**mspOfferName**     |Bu tanımı açıklayan bir ad. Bu değer, müşteriye teklifin başlığı olarak gösterilir.         |
 |**mspOfferDescription**     |Teklifinizin kısa bir açıklaması (örneğin, "contoso VM yönetimi teklifi")      |
 |**Managedbytenantıd**     |Kiracı KIMLIĞINIZ         |
 |**yetkilendirmeleri**     |Kiracınızdaki kullanıcılar/gruplar/SPN 'Ler için **PrincipalId** değerleri, müşterinizin yetkilendirmesinin amacını anlamasına **ve bir yerleşik** **roledefinitionıd** değeriyle eşleştirilmesine yardımcı olacak şekilde erişim düzeyi         |
@@ -126,15 +126,15 @@ Bir müşterinin aboneliğini eklemek için, [örneklerimizde](https://github.co
 
 |**Bunu eklemek için**  |**Bu Azure Resource Manager şablonunu kullan**  |**Ve bu parametre dosyasını Değiştir** |
 |---------|---------|---------|
-|Subscription   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Resource group   |[rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Aboneliğiniz   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Kaynak grubu   |[rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
 |Abonelik içindeki birden fazla kaynak grubu   |[Çoğullergdelegatedresourcemanagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |Abonelik (Azure Marketi 'Nde yayınlanan bir teklifi kullanırken)   |[marketplaceDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> Burada açıklanan işlem, eklendi olan her abonelik için ayrı bir dağıtım gerektirir.
-> 
-> Farklı abonelikler içinde birden fazla kaynak grubu eklediğinizde ayrı dağıtımlar da gereklidir. Ancak, tek bir abonelik içinde birden çok kaynak grubu ekleme işlemi tek bir dağıtımda yapılabilir.
+> Burada açıklanan işlem, eklendi olan her abonelik için ayrı bir dağıtım gerektirir. Farklı abonelikler içinde birden fazla kaynak grubu eklediğinizde ayrı dağıtımlar da gereklidir. Ancak, tek bir abonelik içinde birden çok kaynak grubu ekleme işlemi tek bir dağıtımda yapılabilir.
+>
+> Aynı aboneliğe (veya bir abonelik içindeki kaynak gruplarına) uygulanan birden çok teklif için ayrı dağıtımlar da gerekir. Uygulanan her teklifin farklı bir **Mspoffername**kullanması gerekir.
 
 Aşağıdaki örnek, bir aboneliği eklemek için kullanılacak olan değiştirilmiş **Resourceprojection. Parameters. JSON** dosyasını gösterir. Kaynak grubu parametre dosyaları ( [RG-Temsilcili-kaynak-yönetim](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) klasöründe bulunur) benzerdir, ancak aynı zamanda eklendi olacak belirli kaynak gruplarını belirlemek Için bir **RgName** parametresi de içerir.
 
@@ -143,7 +143,7 @@ Aşağıdaki örnek, bir aboneliği eklemek için kullanılacak olan değiştiri
     "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "mspName": {
+        "mspOfferName": {
             "value": "Fabrikam Managed Services - Interstellar"
         },
         "mspOfferDescription": {
@@ -215,7 +215,7 @@ New-AzDeployment -Name <deploymentName> `
                  -Verbose
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLı
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -264,7 +264,7 @@ Müşterinin kiracısında:
 Get-AzContext
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLı
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell

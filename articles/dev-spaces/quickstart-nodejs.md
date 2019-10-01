@@ -10,27 +10,32 @@ ms.topic: quickstart
 description: Azure 'da kapsayıcılar, mikro hizmetler ve Node. js ile hızlı Kubernetes geliştirme
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8148f7858ac9de458daa1c15220507b0de1bad19
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 69d92db790157d67ea33a52304f0982973d9012e
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772632"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694765"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Hızlı Başlangıç: Azure Dev Spaces kullanarak Kubernetes 'te Visual Studio Code ve Node. js ile hata ayıklayın ve yineleyin
+# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Hızlı başlangıç: Azure Dev Spaces kullanarak Kubernetes 'te Visual Studio Code ve Node. js ile hata ayıklama ve yineleme
 
-Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
+Bu kılavuzda şunları yapmayı öğreneceksiniz:
 
-- Azure’da yönetilen bir Kubernetes ile Azure Dev Spaces’ı ayarlayın.
+- Azure 'da yönetilen bir Kubernetes kümesi ile Azure Dev Spaces ayarlayın.
 - Visual Studio Code kullanarak kapsayıcılardaki kodu tekrarlayarak geliştirin.
 - Visual Studio Code geliştirici alanınızdaki kodda hata ayıklayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+Azure Dev Spaces ayrıca şunları kullanarak hata ayıklamanıza ve yinelemenize olanak tanır:
+- [Java ve Visual Studio Code](quickstart-java.md)
+- [.NET Core ve Visual Studio Code](quickstart-netcore.md)
+- [.NET Core ve Visual Studio](quickstart-netcore-visualstudio.md)
 
-- Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
+## <a name="prerequisites"></a>Prerequisites
+
+- Bir Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free)oluşturabilirsiniz.
 - [Visual Studio Code yüklendi](https://code.visualstudio.com/download).
 - Visual Studio Code [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) uzantısı yüklendi.
-- [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- [Azure CLI yüklendi](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
 
@@ -43,7 +48,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
 
-Aks kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için komutunukullanın.`use-dev-spaces` Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanlarını etkinleştiriyor ve *varsayılan* bir dev alanı oluşturuyor.
+AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için `use-dev-spaces` komutunu kullanın. Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanlarını etkinleştiriyor ve *varsayılan* bir dev alanı oluşturuyor.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -79,11 +84,11 @@ Visual Studio Code açın, *Dosya* ' yı açın *..* . ' a tıklayın, *dev-Spac
 
 Artık Visual Studio Code *Web ön uç* projesi açılır. Uygulamayı geliştirme alanınızda çalıştırmak için, komut paletindeki Azure Dev Spaces uzantısını kullanarak Docker ve hele grafik varlıklarını oluşturun.
 
-Visual Studio Code içinde komut paletini açmak için, *görüntüle* ve ardından *komut paleti*' ne tıklayın. Yazmaya `Azure Dev Spaces` başlayın ve üzerine `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`tıklayın.
+Visual Studio Code içinde komut paletini açmak için, *görüntüle* ve ardından *komut paleti*' ne tıklayın. @No__t-0 yazmaya başlayın ve `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces` ' e tıklayın.
 
 ![Yapılandırma dosyalarını Azure Dev Spaces hazırlama](./media/common/command-palette.png)
 
-Visual Studio Code Ayrıca, genel uç noktanızı yapılandırmanızı de ister, genel uç `Yes` noktayı etkinleştirmeyi seçin.
+Visual Studio Code Ayrıca, genel uç noktanızı yapılandırmak için `Yes` ' ı seçerek genel bir uç noktayı etkinleştirin.
 
 ![Ortak uç noktayı seçin](media/common/select-public-endpoint.png)
 
@@ -104,18 +109,18 @@ Ortak URL 'YI açarak hizmetin çalıştığını görebilirsiniz.
 
 Hata ayıklayıcıyı durdurmak için hata *Ayıkla* ve hata *ayıklamayı Durdur* ' a tıklayın.
 
-## <a name="update-code"></a>Kodu güncelleştirme
+## <a name="update-code"></a>Kodu Güncelleştir
 
 Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve *başlatma sunucusunu*yeniden çalıştırabilirsiniz. Örneğin:
 
 1. Uygulamanız hala çalışıyorsa, *Hata Ayıkla* ' ya tıklayın, ardından *hata ayıklamayı* durdurun.
-1. [Satır 13 ' `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) i şu şekilde güncelleştir:
+1. [@No__t-1 ' de satır 13 '](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) ü güncelleştir:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
-1. Yaptığınız değişiklikleri kaydedin.
+1. Değişikliklerinizi kaydedin.
 1. *Başlatma sunucusunu*yeniden çalıştırın.
 1. Çalışan hizmetinize gidin ve değişikliklerinizi gözlemleyin.
 1. Uygulamanızı durdurmak için *Hata Ayıkla* ve *hata ayıklamayı Durdur* ' a tıklayın.
@@ -124,13 +129,13 @@ Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdek
 
 *Başlatma sunucusunu (AZD 'ler)* kullanarak hizmetinizi başlatın.
 
-*Görünüm* *' e*tıklayarak *Gezgin görünümüne geri* gidin. İmlecinizi `server.js` buraya yerleştirmek için açın ve 13. satırda herhangi bir yere tıklayın. Kesme noktası isabet *F9* ayarlamak Için, *Hata Ayıkla* ' ya tıklayın ve ardından *kesme noktasını değiştirin*
+*Görünüm* *' e*tıklayarak *Gezgin görünümüne geri* gidin. @No__t-0 ' ı açın ve imlecinizi buraya yerleştirmek için 13. satırda herhangi bir yere tıklayın. Kesme noktası isabet *F9* ayarlamak Için, *Hata Ayıkla* ' ya tıklayın ve ardından *kesme noktasını değiştirin*
 
 Hizmetinizi bir tarayıcıda açın ve hiçbir ileti görüntülenmediğini unutmayın. Visual Studio Code dön ve 13. satırı gözlemle vurgulanır. Ayarladığınız kesme noktası 13. satırda hizmeti duraklattı. Hizmeti sürdürmek için *F5* 'e basın veya *Hata Ayıkla* 'Ya tıkladıktan sonra *devam edin*. Tarayıcınıza geri dönün ve iletinin şimdi görüntülendiğini unutmayın.
 
 Bir hata ayıklayıcı eklenmiş olarak Kubernetes 'de hizmetinizi çalıştırırken, çağrı yığını, yerel değişkenler ve özel durum bilgileri gibi bilgileri hata ayıklamaya yönelik tam erişime sahip olursunuz.
 
-İmlecinizi 13 `server.js` . satıra yerleştirerek ve *F9*tuşuna basarak kesme noktasını kaldırın.
+İmlecinizi 13. satıra koyarak `server.js` ' a ve *F9*'a basarak kesme noktasını kaldırın.
 
 Hata ayıklayıcıyı durdurmak için hata *Ayıkla* ve hata *ayıklamayı Durdur* ' a tıklayın.
 
@@ -144,7 +149,7 @@ Bu komut Azure Dev Spaces ' de hizmetinizi oluşturur ve çalıştırır. Ayrıc
 
 Hizmet başladıktan sonra tarayıcınızı kullanarak bu sayfaya gidin ve etkileşime geçin.
 
-Hizmet çalışırken, VS Code ' ye dönün ve içindeki `server.js`13. satırı güncelleştirin. Örneğin:
+Hizmet çalışırken, VS Code dön ve `server.js` ' daki 13. satırı güncelleştirin. Örneğin:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```
@@ -164,7 +169,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
 
 > [!div class="nextstepaction"]
-> [Birden çok kapsayıcı ve takım geliştirme ile çalışma](multi-service-nodejs.md)
+> [Birden çok kapsayıcı ve takım geliştirmeyle çalışma](multi-service-nodejs.md)
 
 
 [supported-regions]: about.md#supported-regions-and-configurations
