@@ -1,22 +1,22 @@
 ---
-title: PowerShell ile Windows sanal masaüstü önizleme konak havuzu oluşturma-Azure
-description: PowerShell cmdlet 'leriyle Windows sanal masaüstü önizlemesinde bir konak havuzu oluşturma.
+title: PowerShell ile Windows sanal masaüstü konak havuzu oluşturma-Azure
+description: PowerShell cmdlet 'leriyle Windows sanal masaüstü 'nde bir konak havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 1fb377d482277a4776214d08b879d99f4234ca40
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a5e228417610a19c38acf9ce2db6e743ec122580
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163672"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679571"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>PowerShell ile ana bilgisayar havuzu oluşturma
+# <a name="create-a-host-pool-with-powershell"></a>PowerShell ile bir konak havuzu oluşturma
 
-Konak havuzları, Windows sanal masaüstü önizleme kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
+Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>PowerShell istemcinizi kullanarak bir konak havuzu oluşturun
 
@@ -48,7 +48,7 @@ Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGr
 
 **Add-RdsAppGroupUser** cmdlet 'i güvenlik grupları eklemeyi desteklemez ve tek seferde uygulama grubuna yalnızca bir kullanıcı ekler. Uygulama grubuna birden çok kullanıcı eklemek istiyorsanız, cmdlet 'i uygun Kullanıcı asıl adlarıyla yeniden çalıştırın.
 
-Kayıt belirtecini, daha sonra [sanal makineleri Windows sanal masaüstü ana bilgisayar havuzuna kaydet](#register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool)bölümünde kullanacağınız bir değişkene dışarı aktarmak için aşağıdaki cmdlet 'i çalıştırın.
+Kayıt belirtecini, daha sonra [sanal makineleri Windows sanal masaüstü ana bilgisayar havuzuna kaydet](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)bölümünde kullanacağınız bir değişkene dışarı aktarmak için aşağıdaki cmdlet 'i çalıştırın.
 
 ```powershell
 $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname>).Token
@@ -64,9 +64,12 @@ Bir sanal makineyi birden çok şekilde oluşturabilirsiniz:
 - [Yönetilen görüntüden sanal makine oluşturma](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
 - [Yönetilmeyen görüntüden sanal makine oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
+>[!NOTE]
+>Konak işletim sistemi olarak Windows 7 ' yi kullanarak bir sanal makine dağıtıyorsanız, oluşturma ve dağıtım işlemi biraz farklı olacaktır. Daha ayrıntılı bilgi için bkz. Windows [sanal masaüstü 'Nde Windows 7 sanal makinesi dağıtma](deploy-windows-7-virtual-machine.md).
+
 Oturum Ana bilgisayar sanal makinelerinizi oluşturduktan sonra, Windows veya Windows Server sanal makinelerinizi başka bir lisans için ödeme yapmadan çalıştırmak için bir [Oturum Ana BILGISAYAR VM 'sine bir Windows lisansı uygulayın](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) . 
 
-## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-preview-agent-installations"></a>Windows sanal masaüstü önizleme Aracısı yüklemeleri için sanal makineleri hazırlama
+## <a name="prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations"></a>Windows sanal masaüstü Aracısı yüklemeleri için sanal makineleri hazırlama
 
 Windows sanal masaüstü aracılarını yüklemeden ve sanal makineleri Windows sanal masaüstü konak havuzunuza kaydedebilmeniz için önce sanal makinelerinizi hazırlamak üzere aşağıdaki işlemleri yapmanız gerekir:
 
@@ -84,7 +87,7 @@ Başarıyla etki alanına katılmayı sağlamak için, her bir sanal makine içi
     >[!NOTE]
     > VM 'lerinizi bir Azure Active Directory Domain Services (Azure AD DS) ortamına katılıyorsanız, etki alanına katılma kullanıcısının [AAD DC Yöneticiler grubunun](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)da bir üyesi olduğundan emin olun.
 
-## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-preview-host-pool"></a>Sanal makineleri Windows sanal masaüstü önizleme ana bilgisayar havuzuna Kaydet
+## <a name="register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool"></a>Sanal makineleri Windows sanal masaüstü ana bilgisayar havuzuna Kaydet
 
 Sanal makinelerin bir Windows sanal masaüstü konak havuzuna kaydedilmesi, Windows sanal masaüstü aracılarını yüklemek kadar basittir.
 

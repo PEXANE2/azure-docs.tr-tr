@@ -1,7 +1,7 @@
 ---
 title: Para birimi önceden oluşturulmuş varlık-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, para birimi içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+description: Bu makale Language Understanding (LUSıS) içindeki para birimi önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 867e8f830542aab712b2bfe32f05dd9469c0da49
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 61be3225f22aca821f8c26522ab37eab0c82bc26
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932530"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677710"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için para birimi önceden oluşturulmuş varlık
-Önceden oluşturulmuş para birimi varlığı, LUSıS uygulama kültürüne bakılmaksızın birçok paydaya ve ülkede/bölgede para birimini algılar. Bu varlık zaten eğitildi çünkü uygulama hedefleri için para birimi içeren örnek Konuşma ekleme gerekmez. Para birimi varlık içerisinde desteklendiği [çok kültür](luis-reference-prebuilt-entities.md). 
+Önceden oluşturulmuş para birimi varlığı, LUSıS uygulama kültürüne bakılmaksızın birçok paydaya ve ülkede/bölgede para birimini algılar. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını para birimi içeren örnek bir değer eklemeniz gerekmez. Para birimi varlığı [birçok kültürde](luis-reference-prebuilt-entities.md)desteklenir. 
 
-## <a name="types-of-currency"></a>Para birimi türü
+## <a name="types-of-currency"></a>Para birimi türleri
 Para birimi [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L26) GitHub deposundan yönetilir
 
-## <a name="resolution-for-currency-entity"></a>Para birimi varlık için çözümleme
+## <a name="resolution-for-currency-entity"></a>Para birimi varlığı için çözüm
 
-### <a name="api-version-2x"></a>API sürüm 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.currency** varlık.
+Aşağıdaki örnek, **yerleşik. Currency** varlığının çözünürlüğünü gösterir.
 
 ```json
 {
@@ -64,9 +64,9 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.currency** varlı
 
 
 
-### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `false` olarak ayarlanmıştır:
 
 ```json
 {
@@ -91,7 +91,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 }
 ```
 
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `true` olarak ayarlanmıştır:
 
 ```json
 {
@@ -128,6 +128,11 @@ Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 }
 ```
 
+
+* * * 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [datetimeV2](luis-reference-prebuilt-datetimev2.md), [boyut](luis-reference-prebuilt-dimension.md), ve [e-posta](luis-reference-prebuilt-email.md) varlıklar. 
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md), [Dimension](luis-reference-prebuilt-dimension.md)ve [email](luis-reference-prebuilt-email.md) varlıkları hakkında bilgi edinin. 

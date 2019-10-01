@@ -1,7 +1,7 @@
 ---
 title: Coğrafya v2 önceden oluşturulmuş varlık-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makalede geographyV2 içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+description: Bu makale Language Understanding (LUSıS) içindeki geographyV2 önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,35 +9,35 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e28b541c1b5aa8f733c9f4ed44fd2ea5296b34d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 04bc3019a55920351b0e91c87e63b8309d94e34c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933535"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677602"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için GeographyV2 önceden oluşturulmuş varlık
-Önceden oluşturulmuş geographyV2 varlık yerler algılar. Bu varlık zaten eğitildi çünkü GeographyV2 içeren uygulama hedefleri için örnek Konuşma ekleme gerekmez. GeographyV2 varlık İngilizce olarak desteklenen [kültür](luis-reference-prebuilt-entities.md).
+Önceden oluşturulmuş geographyV2 varlığı yerleri algılar. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını GeographyV2 içeren örnek bir değer eklemeniz gerekmez. GeographyV2 varlığı Ingilizce [kültür](luis-reference-prebuilt-entities.md)' de desteklenir.
 
 ## <a name="subtypes"></a>Alt türleri
-Coğrafi konumları subtypes vardır:
+Coğrafi konumların alt türleri vardır:
 
-|Alt tür|Amaç|
+|SubType|Amaç|
 |--|--|
 |`poi`|ilgi noktası|
 |`city`|Şehir adı|
-|`countryRegion`|Ülke veya bölgesinin adı|
-|`continent`|Kıta adı|
-|`state`|Eyalet veya bölge adı|
+|`countryRegion`|ülke veya bölge adı|
+|`continent`|kıta adı|
+|`state`|Eyalet veya il adı|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 varlık için çözümleme
+## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 varlık için çözüm
 
-### <a name="api-version-2x"></a>API sürüm 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.geographyV2** varlık.
+Aşağıdaki örnek, **yerleşik. geographyV2** varlığının çözünürlüğünü gösterir.
 
 ```json
 {
@@ -93,9 +93,9 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.geographyV2** var
 } 
 ```
 
-### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `false` olarak ayarlanmıştır:
 
 ```json
 {
@@ -121,7 +121,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 }
 ```
 
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `true` olarak ayarlanmıştır:
 
 ```json
 {
@@ -191,6 +191,10 @@ Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [e-posta](luis-reference-prebuilt-email.md), [numarası](luis-reference-prebuilt-number.md), ve [sıralı](luis-reference-prebuilt-ordinal.md) varlıklar. 
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+
+[E-posta](luis-reference-prebuilt-email.md), [sayı](luis-reference-prebuilt-number.md)ve [sıralı](luis-reference-prebuilt-ordinal.md) varlıklar hakkında bilgi edinin. 

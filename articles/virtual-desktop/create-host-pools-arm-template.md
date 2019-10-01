@@ -1,22 +1,22 @@
 ---
-title: Azure Resource Manager şablonuyla Windows sanal masaüstü önizlemesi konak havuzu oluşturma-Azure
-description: Windows sanal masaüstü önizlemesinde bir Azure Resource Manager şablonuyla konak havuzu oluşturma.
+title: Azure Resource Manager şablonuyla Windows sanal masaüstü konak havuzu oluşturma-Azure
+description: Windows sanal masaüstü 'nde bir Azure Resource Manager şablonuyla konak havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 27fe19c2b1f92b67e02b4e09d5fcd607759d8abd
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163752"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679606"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla ana bilgisayar havuzu oluşturma
+# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla konak havuzu oluşturma
 
-Konak havuzları, Windows sanal masaüstü önizleme kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
+Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
 
 Microsoft tarafından sunulan bir Azure Resource Manager şablonuyla Windows sanal masaüstü kiracısı için bir konak havuzu oluşturmak üzere bu bölümün yönergelerini izleyin. Bu makalede, Windows sanal masaüstü 'nde bir konak havuzu oluşturma, bir Azure aboneliğinde VM 'Ler içeren bir kaynak grubu oluşturma, bu VM 'leri AD etki alanına ekleme ve VM 'Leri Windows sanal masaüstü ile kaydetme hakkında bilgi alınacaktır.
 
@@ -42,7 +42,7 @@ Kurumsal abonelikte dağıtım yapıyorsanız, aşağı kaydırın ve **Azure 'A
 
 1. Aşağı kaydırın ve **Azure 'A dağıt**' a sağ tıkladıktan sonra **bağlantı konumunu Kopyala**' yı seçin.
 2. Not Defteri gibi bir metin Düzenleyicisi açın ve bağlantıyı buraya yapıştırın.
-3. "https://portal.azure.com/" Ve diyez etiketinden hemen önce (#), kiracı etki alanı adının ardından bir at işareti (@) girin. Aşağıda, kullanmanız gereken biçime bir örnek verilmiştir: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
+3. "@No__t-0" işaretinden önce ve diyez etiketinden önce (#) bir at işareti (@) ve ardından kiracı etki alanı adını girin. İşte kullanmanız gereken biçim örneği: https://portal.azure.com/@Contoso.onmicrosoft.com#create/.
 4. Bulut çözümü sağlayıcısı aboneliğine yönetici/katkıda bulunan izinleri olan bir kullanıcı olarak Azure portal oturum açın.
 5. Metin düzenleyicisine kopyaladığınız bağlantıyı adres çubuğuna yapıştırın.
 

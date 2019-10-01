@@ -1,7 +1,7 @@
 ---
 title: Önceden oluşturulmuş varlık sayısı-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makale numarası önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS) içerir.
+description: Bu makale Language Understanding (LUSıS) içinde önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,24 +9,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: f2868610bf9215b1414ea3ba342e3064b9c54f63
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cb97cc5b0004442e00b970202dd01f76aa971a2a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933496"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677584"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için önceden oluşturulmuş varlık sayısı
-Hangi sayısal değerleri ölçme, express ve bilgi parçalarını tanımlamak için kullanılan birçok yolu vardır. Bu makalede yalnızca bazı olası örnekler yer almaktadır. LUIS, kullanıcı konuşma farklılığı yorumlar ve tutarlı bir sayısal değerleri döndürür. Bu varlık zaten eğitildi çünkü uygulama hedefleri için numarası içeren örnek Konuşma ekleme gerekmez. 
+Bilgi parçalarını anlatmak, ifade etmek ve tanımlamak için sayısal değerlerin kullanıldığı birçok yol vardır. Bu makalede, olası örneklerden yalnızca bazıları ele alınmaktadır. LUO, Kullanıcı araslarının çeşitlemelerini Yorumlar ve tutarlı sayısal değerler döndürür. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını sayı içeren örnek bir değer eklemeniz gerekmez. 
 
 ## <a name="types-of-number"></a>Sayı türleri
 Numara [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml) GitHub deposundan yönetiliyor
 
 ## <a name="examples-of-number-resolution"></a>Sayı çözümleme örnekleri
 
-| İfade        | Varlık   | Çözüm |
+| İfade        | Kurum   | Çözünürlük |
 | ------------- |:----------------:| --------------:|
 | ```one thousand times```  | ```"one thousand"``` |   ```"1000"```      | 
 | ```1,000 people```        | ```"1,000"```    |   ```"1000"```      |
@@ -38,14 +38,14 @@ Numara [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob
 | ```buy two dozen eggs```    | ```"two dozen"``` | ```"24"``` |
 
 
-LUIS, tanınan bir değer içeren bir **`builtin.number`** varlıkta `resolution` alanını JSON yanıtı döndürür.
+Luo, döndürdüğü JSON yanıtının `resolution` alanındaki **`builtin.number`** varlığının tanınan değerini içerir.
 
-## <a name="resolution-for-prebuilt-number"></a>Önceden oluşturulmuş numaralı çözümleme
+## <a name="resolution-for-prebuilt-number"></a>Önceden oluşturulmuş numara için çözüm
 
 
-### <a name="api-version-2x"></a>API sürüm 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-Aşağıdaki örnek, çözüm için "iki düzine" utterance 24, değeri içeren bir JSON yanıtı, luıs'den gösterir.
+Aşağıdaki örnek, "iki düzine" için 24 değerinin çözümlenme durumunu içeren LUSıS 'den bir JSON yanıtı gösterir.
 
 ```json
 {
@@ -83,9 +83,9 @@ Aşağıdaki örnek, çözüm için "iki düzine" utterance 24, değeri içeren 
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `false` olarak ayarlanmıştır:
 
 ```json
 {
@@ -107,7 +107,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 }
 ```
 
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `true` olarak ayarlanmıştır:
 
 ```json
 {
@@ -141,6 +141,10 @@ Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [para birimi](luis-reference-prebuilt-currency.md), [sıralı](luis-reference-prebuilt-ordinal.md), ve [yüzdesi](luis-reference-prebuilt-percentage.md). 
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+
+[Para birimi](luis-reference-prebuilt-currency.md), [sıra sayısı](luis-reference-prebuilt-ordinal.md)ve [yüzde](luis-reference-prebuilt-percentage.md)bilgileri hakkında bilgi edinin. 

@@ -6,14 +6,17 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 824a562cb5f0562a235d903fbd4e575bc9c22572
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 22bad3b31b8cbe54900b96bd4b327f18916e81a3
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672743"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677159"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>Azure Cosmos DB hesapları için not defterlerini etkinleştir
+
+> [!IMPORTANT]
+> Azure Cosmos DB için yerleşik Not defterleri Şu anda şu Azure bölgelerinde sunulmaktadır: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa ve Batı ABD 2. Not defterlerini kullanmak için, bu bölgelerden birindeki mevcut bir hesapta not defterleri [ile yeni bir hesap oluşturun](#enable-notebooks-in-a-new-cosmos-account) veya Not [defterlerini etkinleştirin](#enable-notebooks-in-an-existing-cosmos-account) .
 
 Azure Cosmos DB 'daki yerleşik jupi Not defterleri, Azure portal verilerinizi analiz etmenize ve görselleştirmenize olanak tanır. Bu makalede, Azure Cosmos DB hesabınız için bu özelliğin nasıl etkinleştirileceği açıklanır.
 
@@ -67,4 +70,3 @@ Yeni bir not defteri oluşturmak için **Yeni Not** defteri ' ni **seçip not de
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Jupyıter Not defterlerinin Azure Cosmos DB](cosmosdb-jupyter-notebooks.md) avantajları hakkında bilgi edinin
-- [Not defteri özelliklerini ve komutlarını kullanma](use-notebook-features-and-commands.md) hakkında bilgi edinin

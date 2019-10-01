@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: cbd55d3243426f2e6ec84986a2147ff94574bdda
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816391"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676441"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Öğretici: Hizmet uyarılarını ayarlama
+# <a name="tutorial-set-up-service-alerts"></a>Öğretici: hizmet uyarılarını ayarlama
 
 Windows sanal masaüstü için hizmet sorunlarını ve sistem durumu belgelerini izlemek üzere Azure hizmet durumu ' nu kullanabilirsiniz. Azure hizmet durumu, farklı Uyarı türleri (örneğin, e-posta veya SMS) ile size bildirimde bulunabilir, bir sorunun etkisini anlamanıza yardımcı olur ve sorun çözümlendiği sürece güncelleştirmiş olursunuz. Azure hizmet durumu, kapalı kalma süresini azaltmanıza ve kaynaklarınızın kullanılabilirliğini etkileyebilecek planlı bakım ve değişiklikler için hazırlık yapmanıza da yardımcı olabilir.
 
@@ -27,7 +27,7 @@ Azure hizmet durumu hakkında daha fazla bilgi edinmek için bkz. [Azure sistem 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Öğretici: Windows sanal masaüstü önizlemesinde kiracı oluşturma](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
+- [Öğretici: Windows sanal masaüstünde kiracı oluşturma](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
 - [Öğretici: PowerShell ile hizmet sorumluları ve rol atamaları oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
 - [Öğretici: Azure Marketi ile bir konak havuzu oluşturma](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
 
@@ -48,7 +48,7 @@ Aşağıdaki sistem durumu olay türleri için hizmet uyarıları oluşturmanız
 
 Hizmet uyarılarını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. **Hizmet durumunu seçin.**
 3. Uyarı ve bildirimlerinizi ayarlamak için [hizmet bildirimlerinde etkinlik günlüğü uyarıları oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) ' daki yönergeleri kullanın.
 

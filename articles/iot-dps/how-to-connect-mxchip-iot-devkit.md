@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: b1aac19885e2b640063e4840f047916ad51e9656
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2731bbcd6a6b0c8f7d82334c022c017d5eae35f0
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855739"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677015"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Mxyonga IoT DevKit 'i IoT Hub kaydetmek için Azure IoT Hub cihaz sağlama hizmeti 'ni otomatik sağlama
 
@@ -38,10 +38,10 @@ Bu öğreticideki adımları tamamlayabilmeniz için önce aşağıdaki görevle
 
 1. IoT DevKit 'in bilgisayarınıza **bağlı** olmadığından emin olun. Önce VS Code başlatın ve ardından DevKit 'i bilgisayarınıza bağlayın.
 
-1. Komut `F1` paletini açmak için tıklayın, Azure IoT cihaz çalışma **ekranı ' nı yazın ve seçin: Örnekleri aç...** . Ardından, pano olarak **IoT DevKit** ' i seçin.
+1. @No__t-0 ' a tıklayarak komut paletini açın, Azure IoT cihaz çalışma ekranı ' nı yazın ve seçin **: örnekleri aç...** . Ardından, pano olarak **IoT DevKit** ' i seçin.
 
 1. IoT çalışma ekranı örnekleri sayfasında, **DPS Ile cihaz kaydı** bulun ve **örnek aç**' a tıklayın. Ardından örnek kodu indirmek için varsayılan yolu seçer.
-    ![Örnek Aç](media/how-to-connect-mxchip-iot-devkit/open-sample.png)
+    ![Open örnek @ no__t-1
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Cihaz güvenlik depolaması 'nda benzersiz bir cihaz gizli anahtarı kaydetme
 
@@ -56,18 +56,18 @@ Tipik bir UDS, aşağıdaki örnekte görüldüğü gibi 64 karakter dizesidir:
 Bir UDS 'yi DevKit 'e kaydetmek için:
 
 1. VS Code, DevKit için COM bağlantı noktasını seçmek üzere durum çubuğuna tıklayın.
-  ![COM bağlantı noktası seçin](media/how-to-connect-mxchip-iot-devkit/select-com.png)
+  ![Select COM port @ no__t-1
 
 1. DevKit üzerinde, **düğme a**' yı basılı tutun, **Sıfırla** düğmesini gönderin ve sonra **A düğmesine**basın. DevKit yapılandırma moduna girer.
 
-1. Komut `F1` paletini açmak için tıklayın, Azure IoT cihaz çalışma **ekranı ' nı yazın ve seçin: Cihaz ayarlarını yapılandır... > Config benzersiz cihaz dizesi (UDS)** .
-  ![UDS 'yi yapılandırma](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
+1. @No__t-0 ' a tıklayarak komut paletini açın ve **Azure IoT cihaz çalışma ekranı: cihaz ayarlarını yapılandır... seçeneğini belirleyin. > Config benzersiz cihaz dizesi (UDS)** .
+  ![Uds @ no__t-1 yapılandırma
 
-1. Oluşturulan UDS dizesini aklınızda edin. X. 509.440 sertifikasını oluşturmak için buna ihtiyacınız olacak. Ardından tuşuna `Enter`basın.
-  ![UDS 'yi Kopyala](media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
+1. Oluşturulan UDS dizesini aklınızda edin. X. 509.440 sertifikasını oluşturmak için buna ihtiyacınız olacak. @No__t-0 ' a basın.
+  ![Copy UDS @ no__t-1
 
 1. UıDS 'nin STSAFE üzerinde başarıyla yapılandırıldığına ilişkin bildirimden emin olun.
-  ![UıDS yapılandırma başarısı](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
+  ![Uds başarısını yapılandırma no__t-1
 
 > [!NOTE]
 > Alternatif olarak, PuTTY gibi yardımcı programları kullanarak seri bağlantı noktası aracılığıyla UDS 'leri yapılandırabilirsiniz. Bunu yapmak için [yapılandırma modunu kullanın](https://microsoft.github.io/azure-iot-developer-kit/docs/use-configuration-mode/) .
@@ -77,41 +77,38 @@ Bir UDS 'yi DevKit 'e kaydetmek için:
 Cihaz kodunda, kiracı yalıtımının sağlanması için [cihaz sağlama uç noktası](/azure/iot-dps/concepts-service#device-provisioning-endpoint) ve kimlik kapsamı belirtmeniz gerekir.
 
 1. Azure portal, cihaz sağlama hizmetinizin **genel bakış** bölmesini seçin ve **genel cihaz uç noktası** ve **kimlik kapsamı** değerlerini göz önünde edin.
-  ![Cihaz sağlama hizmeti genel uç noktası ve KIMLIK kapsamı](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
+  ![Device sağlama hizmeti genel uç noktası ve KIMLIK kapsamı @ no__t-1
 
-1. **Devkitdps. ino**öğesini açın. Yeni not ettiğiniz `[Global Device Endpoint]` değerleri `[ID Scope]` bulun ve değiştirin.
-  ![Cihaz sağlama hizmeti uç noktası](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
+1. **Devkitdps. ino**öğesini açın. @No__t-0 ve `[ID Scope]` ' i az önce not ettiğiniz değerlerle bulun ve değiştirin.
+  ![Cihaz sağlama hizmeti uç noktası @ no__t-1
 
-1. `registrationId` Koddaki değişkeni doldurur. En fazla 128 karakter içeren alfasayısal, küçük harf ve kısa çizgi birleşimine izin verilir. Değer aşağı de belirtilmiştir.
-  ![Kayıt KIMLIĞI](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
+1. Koddaki `registrationId` değişkenini doldurur. En fazla 128 karakter içeren alfasayısal, küçük harf ve kısa çizgi birleşimine izin verilir. Değer aşağı de belirtilmiştir.
+  ![Kayıt KIMLIĞI @ no__t-1
 
-1. Tıklayın `F1`, yazın ve Azure **IoT cihaz çalışma ekranı ' nı seçin: Cihaz kodunu**karşıya yükleyin. Kodu derleme ve DevKit 'e yüklemeye başlar.
-  ![Cihaz karşıya yükleme](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
+1. @No__t-0 ' a tıklayın ve **Azure IoT cihaz çalışma ekranı ' nı seçin: Cihaz kodunu karşıya yükleyin**. Kodu derleme ve DevKit 'e yüklemeye başlar.
+  ![Device karşıya yükleme @ no__t-1
 
 ## <a name="generate-x509-certificate"></a>X. 509.440 sertifikası oluştur
 
 Bu örnek tarafından kullanılan [kanıtlama mekanizması](/azure/iot-dps/concepts-device#attestation-mechanism) X. 509.440 sertifikasıdır. Oluşturmak için bir yardımcı program kullanmanız gerekir.
 
-> [!NOTE]
-> X. 509.440 sertifika Oluşturucusu yalnızca Windows 'ı destekliyor.
+1. VS Code ' de, `F1` ' a tıklayın, yazın ve **yeni terminali aç** ' ı seçerek Terminal penceresini açın.
 
-1. VS Code ' de, `F1`tıklayın, yazın ve **yeni terminali aç** ' ı seçerek Terminal penceresini açın.
+1. @No__t-1 klasöründe `dps_cert_gen.exe` çalıştırın.
 
-1. Klasöründe Çalıştır `dps_cert_gen.exe`. `tool`
+1. Derlenmiş ikili dosya konumunu `..\.build\DevKitDPS` olarak belirtin. Ardından, az önce not ettiğiniz **UIDs** ve **RegistrationId** değerlerini yapıştırın. 
+  ![Generate X. 509.440 @ no__t-1
 
-1. Derlenmiş ikili dosya konumunu olarak `..\.build\DevKitDPS`belirtin. Ardından, az önce not ettiğiniz **UIDs** ve **RegistrationId** değerlerini yapıştırın. 
-  ![X. 509.440 oluştur](media/how-to-connect-mxchip-iot-devkit/gen-x509.png)
-
-1. `.pem` X. 509.440 sertifikası aynı klasörde oluşturulur.
-  ![X. 509.440 dosyası](media/how-to-connect-mxchip-iot-devkit/pem-file.png)
+1. @No__t-0 X. 509.440 sertifikası aynı klasörde oluşturulur.
+  ![X. 509.440 dosyası @ no__t-1
 
 ## <a name="create-a-device-enrollment-entry"></a>Cihaz kaydı girişi oluşturma
 
 1. Azure portal, cihaz sağlama hizmetinizi açın, kayıtları Yönet bölümüne gidin ve **bireysel kayıt Ekle**' ye tıklayın.
-  ![Bireysel kayıt Ekle](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
+  ![ bireysel kayıt ekleyin @ no__t-1
 
-1. Oluşturulan `.pem` dosyayı karşıya yüklemek için **birincil sertifika. pek veya. cer dosyasının** yanındaki dosya simgesine tıklayın.
-  ![Karşıya yükle. pek](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
+1. Oluşturulan `.pem` dosyasını karşıya yüklemek için **birincil sertifika. pek veya. cer dosyasının** yanındaki dosya simgesine tıklayın.
+  ![Upload. pek @ no__t-1
 
 ## <a name="verify-the-devkit-is-registered-with-azure-iot-hub"></a>DevKit 'in Azure IoT Hub kayıtlı olduğunu doğrulayın
 
@@ -122,7 +119,7 @@ DevKit 'teki **Sıfırla** düğmesine basın. **DPS bağlı** ' i görmeniz ger
 1. Kayıt başarılı olduğunda, cihaz sağlama hizmeti IoT Hub URI 'sini, cihaz KIMLIĞINI ve şifreli anahtarı cihaza geri gönderir.
 1. Cihazdaki IoT Hub istemci uygulaması hub 'ınıza bağlanır.
 1. Hub 'a başarıyla bağlantı için, cihazın IoT Hub Device Explorer göründüğünü görürsünüz.
-  ![Cihaz kaydedildi](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
+  ![ cihaz kaydedildi @ no__t-1
 
 ## <a name="problems-and-feedback"></a>Sorunlar ve geri bildirim
 

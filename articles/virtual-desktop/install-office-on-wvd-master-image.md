@@ -1,20 +1,20 @@
 ---
 title: Office 'i ana VHD görüntüsüne yükler-Azure
-description: Windows sanal masaüstü önizleme ana görüntüsünde Office 'i Azure 'a yüklemek ve özelleştirmek.
+description: Windows sanal masaüstü ana görüntüsünde Office 'i Azure 'a yüklemek ve özelleştirmek.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 79fe541d1bb3bea8447cf095673111362cec74d2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 378be7ebc1cc04433d42b6a05d7eafc73a515568
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816437"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679515"
 ---
-# <a name="install-office-on-a-master-vhd-image"></a>Ana VHD görüntüsü üzerinde Office yükleme
+# <a name="install-office-on-a-master-vhd-image"></a>Office 'i ana VHD görüntüsüne yükler
 
 Bu makalede, Azure 'a yüklemek üzere Office 365 ProPlus, OneDrive ve diğer yaygın uygulamaların bir ana sanal sabit disk (VHD) görüntüsüne nasıl yükleneceği açıklanır. Kullanıcılarınızın belirli iş kolu (LOB) uygulamalarına erişmesi gerekiyorsa, bu makaledeki yönergeleri tamamladıktan sonra bunları yüklemenizi öneririz.
 
@@ -23,7 +23,7 @@ Bu makalede, zaten bir sanal makine (VM) oluşturmuş olduğunuz varsayılmaktad
 Bu makalede ayrıca, Azure 'da veya Hyper-V Yöneticisi 'nde sağlanmasından bağımsız olarak, VM 'de yükseltilmiş erişiminizin olduğunu varsaymaktadır. Aksi takdirde, [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)bölümüne bakın.
 
 >[!NOTE]
->Bu yönergeler, kuruluşunuzun mevcut işlemleriyle birlikte kullanılabilecek Windows sanal masaüstü önizlemesine özgü bir yapılandırma içindir.
+>Bu yönergeler, kuruluşunuzun mevcut işlemleriyle kullanılabilecek Windows sanal masaüstüne özgü bir yapılandırma içindir.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Office 'i paylaşılan bilgisayar etkinleştirme moduna yüklerken
 
@@ -45,7 +45,7 @@ Sağladığımız Bu örnek yapılandırma XML 'i şu işlemleri yapar:
 - Paylaşılan bilgisayar etkinleştirmesini etkinleştirin.
 
 >[!NOTE]
->Visio 'daki kalıp arama özelliği, önizleme yapılandırması sırasında Windows sanal masaüstü 'nde çalışmaz.
+>Visio 'nun şablon arama özelliği, Windows sanal masaüstü 'nde beklendiği gibi çalışmayabilir.
 
 Bu örnek yapılandırma XML 'i şunları yapamayacaklarınız:
 
@@ -53,7 +53,7 @@ Bu örnek yapılandırma XML 'i şunları yapamayacaklarınız:
 - OneDrive 'ı Kullanıcı başına moda yükleyin. Daha fazla bilgi için bkz. [OneDrive 'ı makine başına moda yükleyin](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Paylaşılan bilgisayar etkinleştirme, grup ilkesi nesneleri (GPO 'Lar) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, **Yönetim Şablonları\\\\\\MicrosoftOffice2016(makine) lisanslama ayarlarındaki bilgisayar yapılandırma ilkeleri ' nde bulunur\\**
+>Paylaşılan bilgisayar etkinleştirme, grup ilkesi nesneleri (GPO 'Lar) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, **bilgisayar yapılandırması @ no__t-1Policies @ no__t-2Yönetim şablonları @ no__t-3Microsoft Office 2016 (makine) \\Lisanslama ayarları** konumunda bulunur
 
 Office dağıtım aracı Setup. exe dosyasını içerir. Office 'i yüklemek için komut satırında aşağıdaki komutu çalıştırın:
 
@@ -130,11 +130,11 @@ OneDrive, normalde Kullanıcı başına yüklenir. Bu ortamda makine başına y�
 
 OneDrive 'ı makine başına modunda yüklemek için şu adımları uygulayın:
 
-1. İlk olarak, OneDrive yükleyicisinin aşamasına kadar bir konum oluşturun. Yerel disk klasörü veya [\\\\UNC] (File://UNC) konumu iyidir.
+1. İlk olarak, OneDrive yükleyicisinin aşamasına kadar bir konum oluşturun. Yerel disk klasörü veya [\\ @ no__t-1unc] (file://unc) konumu iyidir.
 
-2. OneDriveSetup. exe dosyasını bu bağlantıyla hazırlanan konumunuza indirin:<https://aka.ms/OneDriveWVD-Installer>
+2. OneDriveSetup. exe ' yi bu bağlantıyla hazırlanan konumunuza indirin: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Office 'i,  **\<excludeapp ID =\>"OneDrive"** seçeneğini atlayarak OneDrive 'a yüklediyseniz, aşağıdaki komutu çalıştırarak yükseltilmiş bir komut isteminden mevcut OneDrive Kullanıcı başına yüklemelerini kaldırın:
+3. **@No__t-1ExcludeApp ID = "OneDrive"/\>** ' yi atlayarak Office 'i OneDrive 'a yüklediyseniz, aşağıdaki komutu çalıştırarak yükseltilmiş bir komut Isteminden mevcut OneDrive Kullanıcı başına yüklemelerini kaldırın:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

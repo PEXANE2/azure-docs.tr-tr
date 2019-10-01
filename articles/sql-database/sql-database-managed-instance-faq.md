@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9bc6cfdcbc67761e99150c730adeb23602232632
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 8b2147ead7c1a6226b68588b9d0dab53da954bf2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032952"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676952"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL veritabanı yönetilen örnek hakkında sık sorulan sorular (SSS)
 
@@ -38,12 +38,19 @@ Kullanılabilir hizmet katmanları ve özellikleri için bkz. [hizmet katmanlar�
 
 Hatalar ve bilinen sorunlar için bkz. [bilinen sorunlar](sql-database-managed-instance-transact-sql-information.md#Issues).
 
+## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>En son özellikleri ve özellikleri genel önizlemede nerede bulabilirim?
+
+Yeni ve Önizleme özellikleri için bkz. [sürüm notları](/azure/sql-database/sql-database-release-notes?tabs=managed-instance).
+
+## <a name="how-much-time-takes-to-create-or-update-instance-or-to-restore-a-database"></a>Örnek oluşturmak veya güncelleştirmek ya da bir veritabanını geri yüklemek için ne kadar süre sürer?
+
+Yeni yönetilen örnek oluşturmak için beklenen süre veya hizmet katmanını değiştirme (Vçekirdekler, depolama) çeşitli etkenlere bağlıdır. [Yönetim işlemlerine](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) göz atın 
+
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>Yönetilen bir örnek şirket içi SQL Server aynı ada sahip olabilir mi?
 
 Yönetilen örnek, *Database.Windows.net*ile biten bir ada sahip olmalıdır. Varsayılan yerine başka bir DNS bölgesi kullanmak için, örneğin, **mı-diğer-adı**. contoso.com: 
 - Bir diğer ad tanımlamak için CliConfig 'i kullanın. Araç yalnızca bir kayıt defteri ayarları sarmalayıcısıdır ve bu nedenle Grup İlkesi veya betiği kullanılarak da yapılabilir.
 - *TrustServerCertificate = true* seçeneğiyle *CNAME* kullanın.
-
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>Veritabanını yönetilen örnekten geri SQL Server veya Azure SQL veritabanı 'na nasıl taşıyabilirim?
 
@@ -51,11 +58,11 @@ Yönetilen örnek, *Database.Windows.net*ile biten bir ada sahip olmalıdır. Va
 
 Veritabanındaki tüm tablolarda birincil anahtarlar varsa işlemsel çoğaltma kullanılabilir.
 
-Yönetilen `COPY_ONLY` örnekten alınan yerel yedeklemeler, SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan SQL Server geri yüklenemez.
+Yönetilen örnek SQL Server kıyasla daha yüksek bir veritabanı sürümüne sahip olduğundan, yerel @no__t-yönetilen örnekten alınan yedeklemeler SQL Server geri yüklenemez.
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>Örnek veritabanımı tek bir Azure SQL veritabanına nasıl geçirebilirim?
 
-Bir seçenek, [veritabanını BIR BACPAC 'e aktarmak](sql-database-export.md) ve ardından [bacpac dosyasını içeri]( sql-database-import.md)aktaryıdır. 
+Bir seçenek, [veritabanını BIR BACPAC 'e aktarmak](sql-database-export.md) ve ardından [bacpac dosyasını içeri aktaryıdır](sql-database-import.md). 
 
 Veritabanınız 100 GB 'den küçükse bu önerilen yaklaşımdır. Veritabanındaki tüm tablolarda birincil anahtarlar varsa işlemsel çoğaltma kullanılabilir.
 
@@ -125,9 +132,10 @@ Herhangi bir ağ riskini azaltmak için müşterilerin bir dizi güvenlik ayarı
 Yönetilen örnek örnek olay incelemeleri:
 
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [powerdetails](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)  
-Azure SQL veritabanı yönetilen örneği dağıtmayla ilgili avantajları, maliyetleri ve riskleri daha iyi anlamak için, Forrester 'in bir incelemesi de mevcuttur: [Mı 'Nın toplam ekonomik etkisi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
+Azure SQL veritabanı yönetilen örneği dağıtmayla ilgili avantajları, maliyetleri ve riskleri daha iyi anlamak için, Forrester 'in bir incelemesi de vardır: [mı? un toplam ekonomik etkisi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 
 ## <a name="can-i-do-dns-refresh"></a>DNS yenileme yapabilir miyim? 

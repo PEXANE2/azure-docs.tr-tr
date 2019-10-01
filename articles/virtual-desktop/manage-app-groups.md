@@ -1,24 +1,24 @@
 ---
-title: Windows sanal masaüstü önizlemesi için uygulama gruplarını yönetme-Azure
-description: Azure Active Directory 'da Windows sanal masaüstü önizlemesi kiracılarının nasıl ayarlanacağını açıklar.
+title: Windows sanal masaüstü-Azure için uygulama gruplarını yönetme
+description: Azure Active Directory 'da Windows sanal masaüstü kiracılarının nasıl ayarlanacağını açıklar.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163250"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679450"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Öğretici: Windows sanal masaüstü önizlemesi için uygulama gruplarını yönetme
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Öğretici: Windows sanal masaüstü için uygulama gruplarını yönetme
 
-Yeni bir Windows sanal masaüstü önizleme ana bilgisayar havuzu için oluşturulan varsayılan uygulama grubu, tam masaüstünü de yayımlar. Ayrıca, konak havuzu için bir veya daha fazla RemoteApp uygulama grubu oluşturabilirsiniz. Bir RemoteApp uygulama grubu oluşturmak ve tek tek **Başlat** menüsü uygulamalarını yayımlamak için bu öğreticiyi izleyin.
+Yeni bir Windows sanal masaüstü konak havuzu için oluşturulan varsayılan uygulama grubu, tam masaüstünü de yayımlar. Ayrıca, konak havuzu için bir veya daha fazla RemoteApp uygulama grubu oluşturabilirsiniz. Bir RemoteApp uygulama grubu oluşturmak ve tek tek **Başlat** menüsü uygulamalarını yayımlamak için bu öğreticiyi izleyin.
 
-Bu öğreticide, bilgi nasıl yapılır:
+Bu öğreticide şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
 > * RemoteApp grubu oluşturun.
@@ -50,7 +50,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. Uygulamasına göre `AppAlias`uygulamayı yüklemek için aşağıdaki cmdlet 'i çalıştırın. `AppAlias`3. adımdaki çıktıyı çalıştırdığınızda görünür hale gelir.
+4. @No__t-0 temelinde uygulamayı yüklemek için aşağıdaki cmdlet 'i çalıştırın. `AppAlias`, 3. adımdaki çıktıyı çalıştırdığınızda görünür hale gelir.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>

@@ -1,26 +1,27 @@
 ---
-title: 'Hızlı Başlangıç: Windows DSVM’si oluşturma'
-description: Yapılandırma ve analiz için Azure'da bir veri bilimi sanal makinesi oluşturma ve makine öğrenimi.
+title: 'Hızlı başlangıç: Windows DSVM oluşturma'
+description: Analiz ve makine öğrenimi için Azure 'da bir Veri Bilimi Sanal Makinesi yapılandırın ve oluşturun.
 ms.service: machine-learning
 ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: e08287fec79ec634d6e2353328854e19565533ca
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: fcd115b672e4e2677cb7ad48fc94905747d66781
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204047"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675104"
 ---
-# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Hızlı Başlangıç: Windows için Veri Bilimi Sanal Makinesi ayarlama
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Hızlı başlangıç: Windows için Veri Bilimi Sanal Makinesi ayarlama
 
 Windows Veri Bilimi Sanal Makinesi ile çalışmaya başlayın.
 
 ## <a name="prerequisite"></a>Önkoşul
 
 Bir Windows Veri Bilimi Sanal Makinesi oluşturmak için bir Azure aboneliğinizin olması gerekir. [Azure 'ı ücretsiz deneyin](https://azure.com/free).
+Lütfen Azure Ücretsiz hesapları GPU etkin sanal makine SKU 'Larını desteklemez.
 
 ## <a name="create-your-dsvm"></a>DSVM 'nizi oluşturma
 
@@ -33,24 +34,24 @@ DSVM örneği oluşturmak için:
 
 1. Alt kısımdaki **Oluştur** düğmesini seçin.
 
-    [![](media/provision-vm/create-windows.png "Windows makinesi oluşturmak için düğme")](media/provision-vm/create-windows-expanded.png#lightbox)
+    [![](media/provision-vm/create-windows-expanded.png#lightbox)(media/provision-vm/create-windows.png "Windows makinesi oluşturmak için düğme")](media/provision-vm/create-windows-expanded.png#lightbox)
 
 1. "Sanal makine oluşturma" dikey penceresine yönlendirilmelisiniz.
-   ![Windows sanal makinesine karşılık gelen temel bilgiler sekmesi](./media/provision-vm/review-create-windows.png)
+   Windows sanal makinesine karşılık gelen ![ temel sekmesi @ no__t-1
 
 1. **Temel bilgiler** sekmesini doldur:
-      * **Abonelik**: Birden fazla aboneliğiniz varsa makinenin oluşturulacağı ve faturalandırılabileceği bir tane seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
-      * **Kaynak grubu**: Yeni bir grup oluşturun veya var olan bir grubu kullanın.
-      * **Sanal makine adı**: Sanal makinenin adını girin. Azure portal bu şekilde görünür.
-      * **Konum**: En uygun veri merkezini seçin. En hızlı ağ erişimi için bu, verilerinizin çoğunu veya fiziksel konumunuza en yakın olan veri merkezdir. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
-      * **Görüntü**: Varsayılan değeri değiştirmeyin.
-      * **Boyutu**: Bu, genel iş yükleri için uygun bir boyutla otomatik olarak doldurulur. [Azure 'Da WINDOWS VM boyutları](../../virtual-machines/windows/sizes.md)hakkında daha fazla bilgi edinin.
-      * **Kullanıcı adı**: Yönetici Kullanıcı adını girin. Bu, sanal makinenizde oturum açmak için kullanacağınız Kullanıcı adı ve Azure Kullanıcı adınızla aynı olmaması gerekir.
-      * **Parola**: Sanal makinenizde oturum açmak için kullanacağınız parolayı girin.    
-1. **İncele ve oluştur**’u seçin.
+      * **Abonelik**: birden fazla aboneliğiniz varsa makinenin oluşturulacağı ve faturalandırılabileceği bir tane seçin. Bu abonelik için kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
+      * **Kaynak grubu**: yeni bir grup oluşturun veya var olan bir grubu kullanın.
+      * **Sanal makine adı**: sanal makinenin adını girin. Azure portal bu şekilde görünür.
+      * **Konum**: en uygun veri merkezini seçin. En hızlı ağ erişimi için bu, verilerinizin çoğunu veya fiziksel konumunuza en yakın olan veri merkezdir. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
+      * **Görüntü**: varsayılan değeri bırakın.
+      * **Boyut**: Bu, genel iş yükleri için uygun bir boyutla otomatik olarak doldurulur. [Azure 'Da WINDOWS VM boyutları](../../virtual-machines/windows/sizes.md)hakkında daha fazla bilgi edinin.
+      * **Kullanıcı adı**: yönetici kullanıcı adını girin. Bu, sanal makinenizde oturum açmak için kullanacağınız Kullanıcı adı ve Azure Kullanıcı adınızla aynı olmaması gerekir.
+      * **Parola**: sanal makinenizde oturum açmak için kullanacağınız parolayı girin.    
+1. **Gözden geçir + oluştur**' u seçin.
 1. **Gözden geçir + oluştur**
    * Girdiğiniz tüm bilgilerin doğru olduğundan emin olun. 
-   * **Oluştur**’u seçin.
+   * **Oluştur**' u seçin.
 
 
 > [!NOTE]
@@ -61,7 +62,7 @@ DSVM örneği oluşturmak için:
 
 VM oluşturulup sağlandıktan sonra, [Azure tabanlı sanal makinenize bağlanmak](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md)için listelenen adımları izleyin. Bir sanal makine oluşturmanın **temelleri** adımında yapılandırdığınız Yönetici hesabı kimlik bilgilerini kullanın. 
 
-Yüklenmiş ve yapılandırılmış VM'de araçları kullanmaya başlamak hazırsınız demektir. Araçların çoğuna **Başlangıç** menüsü kutucukları ve Masaüstü simgeleri aracılığıyla erişilebilir.
+VM 'de yüklü ve yapılandırılmış araçları kullanmaya başlamaya hazırsınız. Araçların çoğuna **Başlangıç** menüsü kutucukları ve Masaüstü simgeleri aracılığıyla erişilebilir.
 
 Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücretsiz hizmet katmanının sınırlamalarını atlamak için Azure Notebooks bir DSVM ekleyebilirsiniz. Daha fazla bilgi için bkz. [Not defteri projelerini yönetme ve yapılandırma](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
 
@@ -74,7 +75,7 @@ Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücrets
 * [Azure Machine Learning hizmetin ne olduğunu](../service/overview-what-is-azure-ml.md) okuyarak Azure Machine Learning hizmeti hakkında bilgi edinin ve [öğreticiler](../index.yml)deneyin.
 * Dosya Gezgini 'nde, kurumsal ölçekte veri analizlerini destekleyen R 'deki Iptal edilmiş bir kitaplığı kullanan örnekler için C:\Program Files\Microsoft\ML Server\r_server\library\unsıscaler\demoscripts konumuna göz atın. 
 * [Veri bilimi sanal makinesi için kullanabileceğiniz on şey](https://aka.ms/dsvmtenthings)makalesini okuyun.
-* Sistematik olarak kullanarak uçtan uca analitik çözümler oluşturmayı öğrenin [Team Data Science Process](../team-data-science-process/index.yml).
-* Ziyaret [Azure AI Gallery](https://gallery.cortanaintelligence.com) Azure'da Azure Machine Learning ve ilgili verileri kullanan makine öğrenimi ve veri analizi için örnekleri Hizmetleri. Ayrıca, bu Galeri için **Başlat** menüsünde ve sanal makinenin masaüstüne bir simge sağladık.
+* [Team Data Science işlemini](../team-data-science-process/index.yml)kullanarak, sistematik olarak uçtan uca analitik çözümler oluşturmayı öğrenin.
+* Azure 'da Azure Machine Learning ve ilgili veri hizmetlerini kullanan Machine Learning ve veri analizi örnekleri için [Azure yapay zeka Galerisi](https://gallery.cortanaintelligence.com) ziyaret edin. Ayrıca, bu Galeri için **Başlat** menüsünde ve sanal makinenin masaüstüne bir simge sağladık.
 * Bu sanal makine için uygun [başvuru belgelerine](./reference-windows-vm.md) bakın.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: 4526456b608f0920c73ae28446a822661995acab
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 13a7189d9758fd6d1e7daac38e948e1b482a019b
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173996"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686771"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows için NVıDıA GPU sürücü uzantısı
 
@@ -35,11 +35,11 @@ Sürücülerin ve desteklenen geçerli sürümlerin el ile yüklenmesiyle ilgili
 
 Bu uzantı aşağıdaki OSs 'yi destekler:
 
-| Dağıtım | Version |
+| Dağıtım | Sürüm |
 |---|---|
-| Windows 10 | Core |
-| Windows Server 2016 | Core |
-| Windows Server 2012R2 | Core |
+| Windows 10 | Çekirdek |
+| Windows Server 2016 | Çekirdek |
+| Windows Server 2012 R2 | Çekirdek |
 
 ### <a name="internet-connectivity"></a>İnternet bağlantısı
 
@@ -69,25 +69,25 @@ Aşağıdaki JSON uzantı için şemayı gösterir.
 }
 ```
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Özellikler
 
-| Name | Değer / örnek | Veri Türü |
+| Adı | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft. HpcCompute | string |
+| 'In | Microsoft. HpcCompute | string |
 | type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 
-## <a name="deployment"></a>Dağıtım
+## <a name="deployment"></a>Kurulum
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager Şablonu 
 
-Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Dağıtım sonrası yapılandırması gerektiren bir veya daha fazla sanal makine dağıtıldığında şablonlar idealdir.
+Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Dağıtım sonrası yapılandırması gerektiren bir veya daha fazla sanal makine dağıtıldığında şablonlar idealdir.
 
-Sanal makine uzantısı için JSON yapılandırma içinde sanal makine kaynağı iç içe geçmiş veya kök veya bir Resource Manager JSON şablonunu üst düzey yerleştirilir. Kaynak adı ve türü değeri JSON yapılandırma yerleşimini etkiler. Daha fazla bilgi için [ayarlamak için alt kaynakları ad ve tür](../../azure-resource-manager/resource-manager-template-child-resource.md). 
+Bir sanal makine uzantısının JSON yapılandırması, sanal makine kaynağının içinde iç içe veya Kaynak Yöneticisi JSON şablonunun kök veya üst düzeyine yerleştirilmiş olabilir. JSON yapılandırmasının yerleştirilmesi, kaynak adının ve türün değerini etkiler. Daha fazla bilgi için bkz. [alt kaynaklar için ad ve tür ayarlama](../../azure-resource-manager/resource-manager-template-child-resource.md). 
 
-Aşağıdaki örnek, uzantının sanal makine kaynağının içinde iç içe olduğunu varsayar. İç içe uzantısı kaynak, JSON yerleştirildi `"resources": []` sanal makinenin nesne.
+Aşağıdaki örnek, uzantının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını yuvalama sırasında JSON, sanal makinenin `"resources": []` nesnesine yerleştirilir.
 
 ```json
 {
@@ -137,7 +137,7 @@ az vm extension set `
   }'
 ```
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
@@ -159,10 +159,10 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 ### <a name="error-codes"></a>Hata kodları
 
-| Hata Kodu | Anlamı | Olası eylemi |
+| Hata kodu | Anlamı | Olası eylem |
 | :---: | --- | --- |
 | 0 | İşlem başarılı |
-| 1\. | İşlem başarılı oldu. Yeniden başlatma gerekiyor. |
+| 1 | İşlem başarılı oldu. Yeniden başlatma gerekiyor. |
 | 100 | İşlem desteklenmiyor veya tamamlanamadı. | Olası nedenler: PowerShell sürümü desteklenmiyor, VM boyutu bir N serisi VM değil, verileri indirirken hata oluştu. Hatanın nedenini öğrenmek için günlük dosyalarını denetleyin. |
 | 240, 840 | İşlem zaman aşımı. | İşlemi yeniden deneyin. |
 | -1 | Özel durum oluştu. | Özel durumun nedenini öğrenmek için günlük dosyalarını denetleyin. |
@@ -171,7 +171,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 
 ### <a name="support"></a>Destek
 
-Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/community/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Uzantılar hakkında daha fazla bilgi için bkz. [Windows Için sanal makine uzantıları ve özellikleri](features-windows.md).

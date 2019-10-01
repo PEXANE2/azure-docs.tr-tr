@@ -1,22 +1,22 @@
 ---
 title: Sanal makine tabanlı dosya paylaşma kullanarak bir konak havuzu için FSLogix profil kapsayıcısı oluşturma-Azure
-description: Sanal makine tabanlı dosya paylaşımının kullanıldığı bir Windows sanal masaüstü önizleme ana bilgisayar havuzu için FSLogix profil kapsayıcısını ayarlama.
+description: Sanal makine tabanlı dosya paylaşımının kullanıldığı bir Windows sanal masaüstü konak havuzu için FSLogix profil kapsayıcısını ayarlama.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: cf3d682e4d0c68822267a4e63846d80b632cbdcc
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9b187696524e96bc13254a24fd8f39d5aeb89e7d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876802"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676692"
 ---
-# <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Dosya paylaşma kullanarak bir konak havuzu için profil kapsayıcısı oluşturma
+# <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
 
-Windows sanal masaüstü Önizleme hizmeti, önerilen Kullanıcı profili çözümü olarak FSLogix profil kapsayıcıları sunar. Windows sanal masaüstü 'nün gelecek sürümlerinde kullanım dışı bırakılacak Kullanıcı profili diski (UPD) çözümünü kullanmanızı önermiyoruz.
+Windows sanal masaüstü hizmeti, önerilen Kullanıcı profili çözümü olarak FSLogix profil kapsayıcıları sunar. Windows sanal masaüstü 'nün gelecek sürümlerinde kullanım dışı bırakılacak Kullanıcı profili diski (UPD) çözümünü kullanmanızı önermiyoruz.
 
 Bu makalede, sanal makine tabanlı dosya paylaşımından bir konak havuzu için bir FSLogix profil kapsayıcısı paylaşımının nasıl ayarlanacağı açıklanır. Daha fazla FSLogix belgeleri için bkz. [fslogix sitesi](https://docs.fslogix.com/).
 
@@ -56,15 +56,15 @@ Sanal makineleri FSLogix yazılımıyla yapılandırmak için, konak havuzuna ka
 
 1. Sanal makineyi oluştururken girdiğiniz kimlik bilgileriyle [sanal makineye bağlanın](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) .
 2. Bir internet tarayıcısı başlatın ve FSLogix aracısını indirmek için [Bu bağlantıya](https://go.microsoft.com/fwlink/?linkid=2084562) gidin.
-3. \\.Zip\\dosyasında Win32yayını\\veya \\x64\\sürümüne gidin ve fslogixappssetup ' ı çalıştırarak fslogix aracısını kurun. \\  FSLogix 'i yükleme hakkında daha fazla bilgi edinmek için bkz. [Fslogix indirme ve yükleme](https://docs.microsoft.com/fslogix/install-ht).
-4. Aracının yüklendiğini doğrulamak için **Program Files** > **fslogix** > **uygulamalarına** gidin.
-5. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **Bilgisayar\\HKEY_LOCAL_MACHINE\\Softwarefslogixsayfasınagidin\\** .
+3. . Zip dosyasında \\ @ no__t-1Win32 @ no__t-2Release veya \\ @ no__t-4X64 @ no__t-5Release ' e gidin ve **Fslogixappssetup** ' ı çalıştırarak FSLogix aracısını kurun.  FSLogix 'i yükleme hakkında daha fazla bilgi edinmek için bkz. [Fslogix indirme ve yükleme](https://docs.microsoft.com/fslogix/install-ht).
+4. Aracının yüklü olduğunu onaylamak için  > **Fslogix** > **uygulamalarıyla** **Program Files**' a gidin.
+5. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın. **Bilgisayar @ no__t-1HKEY_LOCAL_MACHINE @ no__t-2software @ no__t-3FSLogix**dizinine gidin.
 6. **Profiller**adlı bir anahtar oluşturun.
 7. Profiller anahtarı için aşağıdaki değerleri oluşturun:
 
-| Name                | Type               | Veri/değer                        |
+| Adı                | Tür               | Veri/değer                        |
 |---------------------|--------------------|-----------------------------------|
-| Enabled             | EKLEYEBILECEĞI              | 1\.                                 |
+| Etkin             | EKLEYEBILECEĞI              | 1                                 |
 | Vhdkonumları        | Çok dizeli değer | "Dosya paylaşımının ağ yolu"     |
 
 >[!IMPORTANT]

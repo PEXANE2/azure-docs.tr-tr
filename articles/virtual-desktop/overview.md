@@ -1,22 +1,22 @@
 ---
-title: Windows sanal masaüstü önizlemesi nedir?  - Azure
-description: Windows sanal masaüstü önizlemesine genel bakış.
+title: Windows sanal masaüstü nedir?  -Azure
+description: Windows sanal masaüstü 'ne genel bakış.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7d312f54da91c8bc8b3f659ff92f531136cdecb3
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338581"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676560"
 ---
-# <a name="what-is-windows-virtual-desktop-preview"></a>Windows sanal masaüstü önizlemesi nedir? 
+# <a name="what-is-windows-virtual-desktop"></a>Windows sanal masaüstü nedir? 
 
-Artık genel önizlemede sunulan Windows sanal masaüstü önizlemesi, bulutta çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir.
+Windows sanal masaüstü, bulutta çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir.
 
 Azure 'da Windows sanal masaüstü 'Nü çalıştırdığınızda şunları yapabilirsiniz:
 
@@ -35,7 +35,7 @@ Windows sanal masaüstü hakkında, neden benzersiz olduğunu ve bu videodaki ye
 
 Windows sanal masaüstü hakkında daha fazla video için [çalma listemize](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)bakın.
 
-## <a name="key-capabilities"></a>Temel işlevler
+## <a name="key-capabilities"></a>Anahtar özellikleri
 
 Windows sanal masaüstü ile ölçeklenebilir ve esnek bir ortam ayarlayabilirsiniz:
 
@@ -64,7 +64,7 @@ Windows sanal masaüstü 'Nü kurmak ve kullanıcılarınızı Windows Masaüst�
 
 Aşağıdaki Işletim sistemleri için destek eklemeyi planlıyoruz; bu nedenle, dağıtmayı planladığınız masaüstü ve uygulamalara bağlı olarak kullanıcılarınız için [uygun lisanslara](https://azure.microsoft.com/pricing/details/virtual-desktop/) sahip olduğunuzdan emin olun:
 
-|OS|Gerekli lisans|
+|ATAYAMADı|Gerekli lisans|
 |---|---|
 |Windows 10 Enterprise çoklu oturum veya Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
 |Windows 7 kurumsal |Microsoft 365 E3, E5, a3, A5, F1, Iş<br>Windows E3, E5, a3, a5|
@@ -89,17 +89,18 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri şu şeki
 >Bir Azure aboneliğine ihtiyacınız varsa, bir [aylık ücretsiz deneme için kaydolabilirsiniz](https://azure.microsoft.com/free/). Azure 'un ücretsiz deneme sürümünü kullanıyorsanız, Windows Server Active Directory Azure Active Directory ile eşitlenmiş halde tutmak için Azure AD Domain Services kullanmanız gerekir.
 
 Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri aşağıdaki URL 'Lere giden TCP 443 erişimine sahip olmalıdır:
+
 * *. wvd.microsoft.com
-* *.blob.core.windows.net
+* *. blob.core.windows.net
 * *. core.windows.net
-* *.servicebus.windows.net
+* *. servicebus.windows.net
 * prod.warmpath.msftcloudes.com
 * catalogartifact.azureedge.net
 
 >[!NOTE]
 >Bu URL 'Leri açmak, güvenilir bir Windows sanal masaüstü dağıtımı için gereklidir. Bu URL 'lere erişimin engellenmesi desteklenmez ve hizmet işlevlerini etkiler. Bu URL 'Ler yalnızca Windows sanal masaüstü siteleri ve kaynaklarına karşılık gelir ve Azure AD gibi diğer hizmetlere yönelik URL 'LERI içermez.
 
-Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Genel Önizleme sırasında, masaüstleri ve uygulamalar herhangi bir Azure bölgesindeki sanal makinelere (VM 'Ler) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler (ABD Doğu 2 bölgesinde) yer alır. Bu, genel önizleme sırasında hizmeti test ederken Birleşik Devletler veri aktarımına neden olabilir. Genel kullanıma başlayan tüm Azure bölgelerinde yönetim çözümünü ve veri yerelleştirmesini ölçeklendirmeye başlayacağız.
+Windows sanal masaüstü, kullanıcılara ve Microsoft tarafından Azure 'da bir hizmet olarak barındırılan yönetim çözümüne ait olan Windows Masaüstü ve uygulamalarını içerir. Masaüstleri ve uygulamalar, herhangi bir Azure bölgesindeki sanal makinelerde (VM) dağıtılabilir ve bu VM 'Lerin yönetim çözümü ve verileri Birleşik Devletler (ABD Doğu 2 bölgesinde) yer alır. Bu, Birleşik Devletler veri aktarımına neden olabilir.
 
 En iyi performans için, ağınızın aşağıdaki gereksinimleri karşıladığından emin olun:
 
@@ -119,11 +120,28 @@ Aşağıdaki uzak masaüstü istemcileri Windows sanal masaüstünü destekler:
 Windows sanal masaüstü aşağıdaki işletim sistemi görüntülerini destekler:
 
 * Windows 10 Enterprise çoklu oturum
+* Windows 10 Enterprise
+* Windows 7 kurumsal
+* Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
+
+Kullanılabilir Otomasyon ve dağıtım seçenekleri, aşağıdaki tabloda gösterildiği gibi, hangi işletim sistemi ve sürümü seçdiğinize bağlıdır: 
+
+|İşletim sistemi|Azure görüntü Galerisi|El ile VM dağıtımı|Azure Resource Manager şablonu tümleştirmesi|Azure Market 'te konak havuzları sağlama|Windows sanal masaüstü Aracısı güncelleştirmeleri|
+|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
+|Windows 10 çoklu oturum, sürüm 1903|Evet|Evet|Evet|Evet|Otomatik|
+|Windows 10 çoklu oturum, sürüm 1809|Evet|Evet|Hayır|Hayır|Otomatik|
+|Windows 10 Enterprise, sürüm 1903|Evet|Evet|Evet|Evet|Otomatik|
+|Windows 10 Enterprise, sürüm 1809|Evet|Evet|Hayır|Hayır|Otomatik|
+|Windows 7 kurumsal|Evet|Evet|Hayır|Hayır|El ile|
+|Windows Server 2019|Evet|Evet|Hayır|Hayır|Otomatik|
+|Windows Server 2016|Evet|Evet|Evet|Evet|Otomatik|
+|Windows Server 2012 R2|Evet|Evet|Hayır|Hayır|Otomatik|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Başlamak için bir kiracı oluşturmanız gerekir. Kiracı oluşturma hakkında daha fazla bilgi edinmek için kiracı oluşturma öğreticisine devam edin.
 
 > [!div class="nextstepaction"]
-> [Windows sanal masaüstü önizlemesinde kiracı oluşturma](tenant-setup-azure-active-directory.md)
+> [Windows sanal masaüstü 'nde kiracı oluşturma](tenant-setup-azure-active-directory.md)

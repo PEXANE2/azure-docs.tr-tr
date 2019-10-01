@@ -1,19 +1,19 @@
 ---
 title: Azure Izleyici 'de izleme & birleştirilmiş uyarı, klasik uyarı & izlemeyi değiştirir
 description: Daha önce uyarılar (klasik) altında Azure portal gösterildiği gibi, klasik izleme hizmetleri ve işlevlerinin kullanımdan kaldırılması hakkında genel bakış. Klasik uyarı & izleme, Azure kaynakları için klasik ölçüm uyarılarını, Application Insights için klasik ölçüm uyarılarını, Application Insights ve klasik özel ölçüm tabanlı uyarılar Application Insights için klasik özel ölçüm uyarılarını içerir Application Insights SmartDetection v1 uyarıları
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 2ba93ad347783d467d467b72cfa49ffccf309fa0
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: ea50a4f10aa1d794f875cb1eb9601774bec146cd
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147349"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676889"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Izleyici 'de izleme & birleştirilmiş uyarı, klasik uyarı & izlemeyi değiştirir
 
@@ -70,20 +70,20 @@ Azure Izleyici 'de Ağustos 2019 ' nin sonunda:
 - [Otomatik olarak geçirilemeyen](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated) ve kullanıcılardan el ile eylem gerektiren bazı klasik uyarı kuralları, Haziran 2020 ' e kadar çalışmaya devam edecektir.
 
 > [!IMPORTANT]
-> Microsoft Azure Izleyicisi, bazı bilgisayarlarda klasik uyarı kurallarını yeni platforma yakında [geçirmek için aşamalar aracında](alerts-using-migration-tool.md) kullanıma alındı. Ve yine de mevcut olan ve 2019 Eylül 'den başlayarak geçirilebilecek olan tüm klasik uyarı kurallarını zorla aracılığıyla çalıştırın. Müşterilerin, klasik uyarı kuralı yükünün, [Application Insights](#unified-metrics-and-alerts-in-application-insights) veya birleştirilmiş ölçümler ve uyarılardan gelen yeni yükü, [diğer Azure kaynakları için](#unified-metrics-and-alerts-for-other-azure-resources), geçiş sonrası ve uyarılarından işlemek için uyarlandığı emin olunması gerekir. , klasik uyarı kuralları. Daha fazla bilgi için bkz. [Klasik uyarı kuralı geçişine hazırlanma](alerts-prepare-migration.md)
+> Microsoft Azure Izleyicisi, bazı bilgisayarlarda klasik uyarı kurallarını yeni platforma yakında [geçirmek için aşamalar aracında](alerts-using-migration-tool.md) kullanıma alındı. Ve yine de mevcut olan ve 2019 Eylül 'den başlayarak geçirilebilecek olan tüm klasik uyarı kurallarını zorla aracılığıyla çalıştırın. Müşterilerin, klasik uyarı kuralı yükünün, [Application Insights](#unified-metrics-and-alerts-in-application-insights) veya birleştirilmiş ölçümler ve uyarılardan gelen yeni yükü, [diğer Azure kaynakları için, geçiş sonrası ve uyarılarından](#unified-metrics-and-alerts-for-other-azure-resources)işlemek için uyarlandığı emin olunması gerekir. , klasik uyarı kuralları. Daha fazla bilgi için bkz. [Klasik uyarı kuralı geçişine hazırlanma](alerts-prepare-migration.md)
 
 Bu makale yeni Azure izleme & uyarı işlevselliğiyle ilgili ayrıntıların & ayrıntılarla ve kullanıcılara yeni Azure Izleyici platformunu benimseme konusunda yardımcı olan araçların kullanılabilirliğine yönelik bağlantılarla birlikte sürekli olarak güncelleştirilecektir.
 
 ## <a name="pricing-for-migrated-alert-rules"></a>Geçirilen uyarı kuralları fiyatlandırması
 
-Azure Monitor [Klasik uyarılarınızı](../../azure-monitor/platform/alerts-classic.overview.md) yeni uyarılar deneyimine geçirmenize yardımcı olmak için bir geçiş aracı kullanıma sunuyoruz. Geçirilen uyarı kuralları ve karşılık gelen geçirilmiş eylem grupları (e-posta, Web kancası veya LogicApp) ücretsiz olarak kalır. Eşiği, toplama türünü ve toplama ayrıntı düzeyini düzenleme özelliği de dahil olmak üzere klasik uyarılarla sahip olduğunuz işlevsellik, geçirilen uyarı kuralınız ile ücretsiz olarak kullanılabilir olmaya devam edecektir. Ancak, yeni uyarı platformu özelliklerinden herhangi birini, bildirimleri veya eylem türlerini kullanmak için geçirilmiş uyarı kuralını düzenlerseniz, buna karşılık gelen bir ücret uygulanır. Uyarı kuralları ve bildirimlerin fiyatlandırmasıyla ilgili daha fazla bilgi için bkz. [Azure Monitor fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
+Azure Monitor [Klasik uyarılarınızı](../../azure-monitor/platform/alerts-classic.overview.md) yeni uyarılar deneyimine geçirmenize yardımcı olmak için bir geçiş aracı kullanıma sunuyoruz. Geçirilen uyarı kuralları ve bunlara karşılık gelen geçirilen eylem grupları (e-posta, web kancası veya LogicApp) ücretsiz olarak sunulmaya devam eder. Eşiği, toplama türünü ve toplama tanecikliğini düzenleme olanağı da dahil olmak üzere, klasik uyarılarda kullandığınız işlevsellik geçirilen uyarı kuralınızda ücretsiz olarak sunulmaya devam eder. Ancak geçirilen uyarı kuralını, yeni uyarı platformu özelliklerinden birini, bildirimleri veya eylem türlerini kullanması için düzenlerseniz karşılığında bir ücret alınır. Uyarı kuralları ve bildirimlerin fiyatlandırmasıyla ilgili daha fazla bilgi için bkz. [Azure Monitor fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/).
 
-Aşağıda, uyarı kuralınız için ücret ödemeniz gereken durumların örnekleri verilmiştir:
+Aşağıdakiler, uyarı kuralınız için ücret uygulanan durumlara örnek gösterilebilir:
 
-- Yeni Azure Izleyici platformunda ücretsiz birimlerin ötesinde oluşturulan yeni (geçirilmeyen) uyarı kuralı
-- Azure Izleyici tarafından dahil edilen ve ücretsiz birimlerin ötesinde saklanan tüm veriler
-- Application Insights tarafından yürütülen tüm çoklu test Web testleri
-- Azure Izleyici 'de yer alan ücretsiz birimlerin ötesinde depolanan özel ölçümler
+- Yeni Azure İzleyici platformunda, ücretsiz birimlerin ötesinde oluşturulan her yeni (geçirilmemiş) uyarı kuralı
+- Azure İzleyici’nin kapsadığı ücretsiz birimlerin ötesinde alınan ve tutulan her veri
+- Application Insights tarafından gerçekleştirilen her çok testli web testi
+- Azure İzleyici’nin kapsadığı ücretsiz birimlerin ötesinde tutulan her özel ölçüm
 - Sıklık, birden çok kaynak/boyut, [dinamik eşikler](alerts-dynamic-thresholds.md), kaynak/sinyal değiştirme vb. gibi daha yeni ölçüm uyarısı özelliklerini kullanmak için düzenlenen tüm geçirilmiş uyarı kuralları.
 - Daha yeni bildirimleri veya SMS, sesli çağrı ve/veya ıTSM tümleştirmesi gibi eylem türlerini kullanmak için düzenlenen geçirilmiş eylem grupları.
 

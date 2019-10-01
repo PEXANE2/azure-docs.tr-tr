@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816396"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676539"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Uzak Masaüstü 'nde grafik performans sorunlarını tanılama
 
@@ -24,8 +24,8 @@ Grafik performans sayaçlarını belirlemek için uzak oturum adınızın olmas�
 
 1. Uzak oturumınızdan Windows komut istemi 'ni açın.
 2. **Qwinsta** komutunu çalıştırın ve oturum adınızı bulun.
-    - Oturumunuz çok oturum bir sanal makinede (VM) barındırılıyorsa: Her sayacın örneğiniz, "RDP-TCP 37" gibi oturum adınızın son ekini kullanan aynı sayıda sondur.
-    - Oturumunuz sanal grafik Işleme birimlerini (vGPU) destekleyen bir VM 'de barındırılıyorsa: Her sayacın örneğiniz, VM 'niz yerine sunucusunda depolanır. Sayaç örneklerinizin, "Win8 Enterprise VM" gibi oturum adındaki sayı yerine VM adı vardır.
+    - Oturumunuz çok oturumlu bir sanal makinede (VM) barındırılıyorsa: her bir sayacın örneğiniz, oturum adınızın son eki olan ("RDP-TCP 37" gibi) aynı sayı ile düzeltilir.
+    - Oturumunuz sanal grafik Işlem birimlerini (vGPU) destekleyen bir VM 'de barındırılıyorsa: her bir sayacın örneği VM 'niz yerine sunucusunda depolanır. Sayaç örneklerinizin, "Win8 Enterprise VM" gibi oturum adındaki sayı yerine VM adı vardır.
 
 >[!NOTE]
 > Sayaçlar adlarında RemoteFX 'e sahip olsa da, vGPU senaryolarında uzak masaüstü grafikleri de içerirler.
@@ -34,7 +34,7 @@ Grafik performans sayaçlarını belirlemek için uzak oturum adınızın olmas�
 
 Uzak oturum adınızı belirledikten sonra, uzak oturumunuz için RemoteFX grafik performans sayaçlarını toplamak üzere aşağıdaki yönergeleri izleyin.
 
-1.  > **Yönetim**araçlarıPerformans > **izleyicisini**Başlat ' ı seçin.
+1. @No__t **Başlat**-1**Yönetim Araçları** > **Performans İzleyicisi**' ni seçin.
 2. **Performans İzleyicisi** Iletişim kutusunda **izleme araçları**' nı genişletin, **Performans İzleyicisi**' ni seçin ve ardından **Ekle**' yi seçin.
 3. **Sayaç Ekle** iletişim kutusunda, **kullanılabilir sayaçlar** listesinden, RemoteFX grafikleri bölümünü genişletin.
 4. İzlenecek sayaçları seçin.
@@ -101,6 +101,6 @@ Ağ kaynakları performans sorunlarına neden oluyorsa, oturum başına ağ kull
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- GPU ile iyileştirilmiş bir Azure sanal makinesi oluşturmak için bkz. [Windows sanal masaüstü önizleme ortamı için grafik işleme birimi (GPU) hızlandırmasını yapılandırma](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
+- GPU ile iyileştirilmiş bir Azure sanal makinesi oluşturmak için bkz. [Windows sanal masaüstü ortamı için grafik işleme birimi (GPU) hızlandırmasını yapılandırma](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
 - Sorun giderme ve yükseltme izlemelerine genel bakış için bkz. [sorun giderme genel bakış, geri bildirim ve destek](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Önizleme hizmeti hakkında daha fazla bilgi edinmek için bkz. [Windows Masaüstü önizleme ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Hizmet hakkında daha fazla bilgi edinmek için bkz. [Windows masaüstü ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).

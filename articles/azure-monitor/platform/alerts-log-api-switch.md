@@ -1,26 +1,26 @@
 ---
 title: Eski Log Analytics Uyarıları API 'sinden yeni Azure uyarıları API 'sine geçiş
 description: Eski savedSearch tabanlı Log Analytics uyarı API 'sine ve işlem, uyarı kurallarını yeni ScheduledQueryRules API 'sine geçirmek için genel müşteri sorunlarını gidermeye yönelik bilgiler.
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8f23d19b06152b633df6688489753498c86aee27
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7b3a09c9227110d6dba205987903a2c97dccf1b8
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034780"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677798"
 ---
-# <a name="switch-api-preference-for-log-alerts"></a>Günlük Uyarıları için API tercihini değiştirin
+# <a name="switch-api-preference-for-log-alerts"></a>Günlük uyarıları için anahtar API tercihi
 
 > [!NOTE]
 > Azure Kamu veya Azure Çin bulutu için **değil** yalnızca Azure genel bulutu kullanıcılarına yönelik içerik.  
 
-Kısa süre öncesine kadar uyarı kurallarını Microsoft Operations Management Suite portalında yönetiyordunuz. Yeni uyarılar deneyimi Log Analytics dahil Microsoft Azure çeşitli hizmetlerle tümleştirildi ve [Uyarı KURALLARıNıZı OMS portalından Azure 'a genişletmemiz](alerts-extend.md)istendi. Ancak, müşteriler için minimum kesintiden emin olmak için, işlem, SavedSearch 'e göre tüketim [Log Analytics uyarı API 'si](api-alerts.md) için programlı arabirimi değiştirmedi.
+Son olarak, Microsoft Operations Management Suite portalında uyarı kuralları yönetilecektir. Yeni uyarılar deneyimi Log Analytics dahil Microsoft Azure çeşitli hizmetlerle tümleştirildi ve [Uyarı KURALLARıNıZı OMS portalından Azure 'a genişletmemiz](alerts-extend.md)istendi. Ancak, müşteriler için minimum kesintiden emin olmak için, işlem, SavedSearch 'e göre tüketim [Log Analytics uyarı API 'si](api-alerts.md) için programlı arabirimi değiştirmedi.
 
 Ancak artık, [Azure Faturalandırma-for log uyarılarında](alerts-unified-log.md#pricing-and-billing-of-log-alerts)de yansıtıcı olan doğru bir Azure programlı alternatifi olan [Azure Izleyici-SCHEDULEDQUERYRULES API 'sini](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)Log Analytics uyarma konusunda duyuruyoruz. API kullanarak günlük uyarılarınızı yönetme hakkında daha fazla bilgi edinmek için bkz. [Azure kaynak şablonu kullanarak günlük uyarılarını yönetme](alerts-log.md#managing-log-alerts-using-azure-resource-template) ve [PowerShell kullanarak günlük uyarılarını yönetme](alerts-log.md#managing-log-alerts-using-powershell).
 
@@ -44,7 +44,7 @@ Aşağıdaki bir tercihe yönelik anahtar kümesi, scheduledQueryRules API 'SI i
 
 - Programlı arabirimler aracılığıyla günlük uyarılarını yönetmek için yapılan tüm etkileşimler artık bunun yerine [Scheduledqueryrules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kullanılarak yapılmalıdır. Daha fazla bilgi için bkz. [Azure kaynak şablonu aracılığıyla örnek kullanım](alerts-log.md#managing-log-alerts-using-azure-resource-template) ve [PowerShell aracılığıyla örnek kullanım](alerts-log.md#managing-log-alerts-using-powershell)
 - Azure portal ' de oluşturulan tüm yeni günlük uyarısı kuralları yalnızca [Scheduledqueryrules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kullanılarak oluşturulur ve KULLANıCıLARıN [yeni API 'nin ek işlevlerini](#benefits-of-switching-to-new-azure-api) Azure Portal aracılığıyla kullanmasına izin verir
-- Günlük uyarı kuralları için önem derecesi şu şekilde değişir: *Kritik, uyarı & bilgilendirici*, *önem derecesi değeri 0, 1 & 2*. Ayrıca, önem derecesi 3 ve 4 ile uyarı kuralları oluşturma/güncelleştirme seçeneği ile birlikte.
+- Günlük uyarı kuralları için önem derecesi: *kritik, uyarı & bilgilendirici*, *0, 1 & 2 ' nin önem derecesine*sahip olur. Ayrıca, önem derecesi 3 ve 4 ile uyarı kuralları oluşturma/güncelleştirme seçeneği ile birlikte.
 
 Uyarı kurallarının [eski Log Analytics uyarı API](api-alerts.md) 'sinden taşınması işlemi, uyarı tanımınızın, sorgunuzun veya yapılandırmanızın herhangi bir şekilde değiştirilmesini kapsamaz. Uyarı kurallarınızın ve izlemenin etkilenmemiştir ve uyarılar, anahtar sırasında veya sonrasında durdurulmaz veya durdurulmaz. Tek değişiklik, API tercihi ve yeni bir API aracılığıyla kurallarınızın erişimine yönelik bir değişiklik olur.
 

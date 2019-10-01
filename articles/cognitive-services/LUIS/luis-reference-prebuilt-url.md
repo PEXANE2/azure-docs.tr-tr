@@ -1,7 +1,7 @@
 ---
 title: URL önceden oluşturulmuş varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makalede URL'sini içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+description: Bu makale, Language Understanding (LUSıS) içindeki URL önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: b05b4f8638eedc0830c887da59c0c22706a1c4ce
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 77e1c9e64081e20ef064fd8341c54c13940f0dd4
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933377"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677307"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için URL önceden oluşturulmuş varlık
-URL varlık URL'leri ile etki alanı adlarını veya IP adreslerini ayıklar. Bu varlık zaten eğitildi olduğundan, uygulamaya URL'ler içeren örnek Konuşma ekleme gerekmez. URL varlık içerisinde desteklendiği `en-us` yalnızca kültür. 
+URL varlığı, etki alanı adlarıyla veya IP adresleriyle URL 'Leri ayıklar. Bu varlık zaten eğitiltiğinden, uygulamaya URL 'Leri içeren örnek bir parametre eklemeniz gerekmez. URL varlığı yalnızca `en-us` kültür içinde desteklenir. 
 
 ## <a name="types-of-urls"></a>URL türleri
 URL, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) GitHub deposundan yönetiliyor
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Önceden oluşturulmuş URL varlık için çözümleme
+## <a name="resolution-for-prebuilt-url-entity"></a>Önceden oluşturulmuş URL varlığı için çözüm
 
-### <a name="api-version-2x"></a>API sürüm 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.url** varlık.
+Aşağıdaki örnek, **yerleşik. URL** varlığının çözünürlüğünü gösterir.
 
 ```json
 {
@@ -54,9 +54,9 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.url** varlık.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `false` olarak ayarlanmıştır:
 
 ```json
 {
@@ -78,7 +78,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 }
 ```
 
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `true` olarak ayarlanmıştır:
 
 ```json
 {
@@ -112,6 +112,11 @@ Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 }
 ```
 
+
+* * * 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [sıralı](luis-reference-prebuilt-ordinal.md), [numarası](luis-reference-prebuilt-number.md), ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıklar.
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+
+[Sıra](luis-reference-prebuilt-ordinal.md), [sayı](luis-reference-prebuilt-number.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin.

@@ -9,18 +9,18 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253e01b6bfa6609b4ec41d69a3c4b1bbe405ba5a
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240282"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677862"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
 Azure 'da, şirket içi ortamlarda veya diğer bulut sağlayıcılarında Windows ve Linux bilgisayarlarınıza yönelik işletim sistemi güncelleştirmelerini yönetmek için Azure Otomasyonu 'nda Güncelleştirme Yönetimi çözümünü kullanabilirsiniz. Tüm aracı bilgisayarlardaki kullanılabilir güncelleştirmelerin durumunu hızla değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
-Sanal makineler için Güncelleştirme Yönetimi doğrudan Azure Otomasyonu hesabınızdan etkinleştirebilirsiniz. Otomasyon hesabınızdan sanal makineler için Güncelleştirme Yönetimi etkinleştirmeyi öğrenmek için bkz. [birden çok sanal makine için güncelleştirmeleri yönetme](manage-update-multi.md). Ayrıca, bir sanal makine için Güncelleştirme Yönetimi, Azure portal sanal makine sayfasından da etkinleştirebilirsiniz. Bu senaryo, [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) sanal makineleri için kullanılabilir.
+Sanal makineler için Güncelleştirme Yönetimi doğrudan Azure Otomasyonu hesabınızdan etkinleştirebilirsiniz. Otomasyon hesabınızdan sanal makineler için Güncelleştirme Yönetimi etkinleştirmeyi öğrenmek için bkz. [birden çok sanal makine için güncelleştirmeleri yönetme](manage-update-multi.md). Ayrıca, bir sanal makine için Güncelleştirme Yönetimi, Azure portal sanal makine sayfasından da etkinleştirebilirsiniz. Bu senaryo, [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) sanal makineleri için kullanılabilir.
 
 > [!NOTE]
 > Güncelleştirme Yönetimi çözümü, Otomasyon hesabınıza bir Log Analytics çalışma alanı bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için bkz. [Azure çalışma alanı eşlemeleri](./how-to/region-mappings.md). Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgedeki sanal makineleri yönetme özelliğini etkilemez.
@@ -87,12 +87,12 @@ Aşağıdaki tabloda, güncelleştirme değerlendirmeleri için desteklenen işl
 
 ### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
 
-Aşağıdaki tabloda, desteklenmeyen bir işletim sistemleri listelenmektedir:
+Aşağıdaki tabloda desteklenmeyen işletim sistemleri listelenmektedir:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|
 |Windows istemcisi     | İstemci işletim sistemleri (örneğin, Windows 7 ve Windows 10) desteklenmez.        |
-|Windows Server 2016 Nano sunucu     | Desteklenmiyor.       |
+|Windows Server 2016 nano sunucu     | Desteklenmiyor.       |
 |Azure Kubernetes hizmet düğümleri | Desteklenmiyor. [Azure Kubernetes Service (AKS) Içindeki Linux düğümlerine güvenlik ve çekirdek güncelleştirmelerini uygulama](../aks/node-updates-kured.md) bölümünde ayrıntılı düzeltme eki uygulama işlemini kullanın|
 
 ### <a name="client-requirements"></a>İstemci gereksinimleri
@@ -173,7 +173,7 @@ Heartbeat
 
 Bir Windows bilgisayarında, Azure Izleyici günlükleriyle aracı bağlantısını doğrulamak için aşağıdaki bilgileri gözden geçirebilirsiniz:
 
-1. Denetim Masası 'nda **Microsoft Monitoring Agent**açın. **Azure Log Analytics** sekmesinde, aracı aşağıdaki iletiyi görüntüler: **Microsoft Monitoring Agent Log Analytics başarıyla bağlandı**.
+1. Denetim Masası 'nda **Microsoft Monitoring Agent**açın. **Azure Log Analytics** sekmesinde, aracı şu iletiyi görüntüler: **Microsoft Monitoring Agent Log Analytics başarıyla bağlandı**.
 2. Windows olay günlüğü 'Nü açın. **Uygulama ve hizmetler Logs\Operations Manager** ' a gidin ve kaynak **hizmeti bağlayıcısından**olay KIMLIĞI 3000 ve olay kimliği 5002 ' ni arayın. Bu olaylar, bilgisayarın Log Analytics çalışma alanına kaydoldığını ve yapılandırma aldığını gösterir.
 
 Aracı Azure Izleyici günlükleriyle iletişim kuramıyorsa ve aracı bir güvenlik duvarı veya ara sunucu üzerinden internet ile iletişim kurmak üzere yapılandırılmışsa, güvenlik duvarının veya ara sunucunun düzgün yapılandırıldığını onaylayın. Güvenlik duvarının veya proxy sunucusunun düzgün bir şekilde yapılandırıldığını nasıl doğrulayacağınızı öğrenmek için bkz. [Windows Aracısı Için ağ yapılandırması](../azure-monitor/platform/agent-windows.md) veya [Linux Aracısı için ağ yapılandırması](../log-analytics/log-analytics-agent-linux.md).
@@ -192,13 +192,13 @@ Operations Manager yönetim grubunun Azure Izleyici günlükleriyle iletişim ku
 
 ### <a name="supported-agents"></a>Desteklenen aracılar
 
-Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
+Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
 | Bağlı kaynak | Desteklenen | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Evet |Çözüm, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Evet |Çözüm, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Evet |Çözüm, bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Verileri yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Yes |Çözüm, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Yes |Çözüm, Linux aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Yes |Çözüm, bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
@@ -220,7 +220,7 @@ Makine, güncelleştirme veya dağıtım hakkında bilgi döndüren bir günlük
 
 ![Güncelleştirme Yönetimi varsayılan görünüm](media/automation-update-management/update-management-view.png)
 
-## <a name="install-updates"></a>Güncelleştirmeleri yükle
+## <a name="install-updates"></a>Güncelleştirmeleri yükler
 
 Çalışma alanınızdaki tüm Linux ve Windows bilgisayarları için güncelleştirmeler değerlendirildikten sonra, bir *güncelleştirme dağıtımı*oluşturarak gerekli güncelleştirmeleri yükleyebilirsiniz. Bir güncelleştirme dağıtımı oluşturmak için, Otomasyon hesabına yazma erişiminizin olması ve dağıtımda hedeflenen tüm Azure VM 'lerine yazma erişiminizin olması gerekir. Güncelleştirme dağıtımı, bir veya daha fazla bilgisayar için gerekli güncelleştirmelerin zamanlanmış bir yüklemesidir. Dağıtımın ve bir bilgisayarın veya bilgisayar grubunun bir dağıtım kapsamına dahil edilecek tarih ve saati belirtirsiniz. Bilgisayar grupları hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md).
 
@@ -235,10 +235,10 @@ Azure Marketi 'nde bulunan isteğe bağlı Red Hat Enterprise Linux (RHEL) gör�
 
 Yeni bir güncelleştirme dağıtımı oluşturmak için **güncelleştirme dağıtımı zamanla**' yı seçin. **Yeni güncelleştirme dağıtım** sayfası açılır. Aşağıdaki tabloda açıklanan özellikler için değerler girin ve ardından **Oluştur**' a tıklayın:
 
-| Özellik | Description |
+| Özellik | Açıklama |
 | --- | --- |
 | Adı |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad. |
-|İşletim sistemi| Linux veya Windows|
+|İşletim Sistemi| Linux veya Windows|
 | Güncelleştirilecek gruplar |Azure makinelerinde, dağıtımınıza dahil etmek için dinamik bir Azure VM grubu oluşturmaya yönelik bir abonelik, kaynak grubu, konum ve etiket birleşimine göre bir sorgu tanımlayın. </br></br>Azure dışı makineler için, dağıtıma dahil edilecek bir Azure dışı makine grubu seçmek üzere mevcut kayıtlı bir aramayı seçin. </br></br>Daha fazla bilgi için bkz. [Dinamik Gruplar](automation-update-management.md#using-dynamic-groups)|
 | Güncelleştirilecek makineler |Açılan listeden kaydedilmiş bir arama, Içeri aktarılan grup veya Select Machine seçin ve tek tek makineler ' i seçin. **Makineler**'i seçerseniz makinenin hazır olma durumu **GÜNCELLEŞTİRME ARACISI HAZIRLIĞI** sütununda gösterilir.</br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../azure-monitor/platform/computer-groups.md) |
 |Güncelleştirme sınıflandırmaları|İhtiyaç duyduğunuz tüm güncelleştirme sınıflandırmalarını seçin|
@@ -264,8 +264,8 @@ Bakım pencereleri, güncelleştirmelerin yüklenmesi için izin verilen süre m
 
 ### <a name="multi-tenant"></a>Çapraz kiracı güncelleştirme dağıtımları
 
-Başka bir Azure kiracı raporlarında, düzeltme eki uygulamanız gerektiğini Güncelleştirme Yönetimi makineniz varsa, bunları zamanlanmak için aşağıdaki geçici çözümü kullanmanız gerekir. [Yeni-azurermautomationschedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 'ini bir zamanlama oluşturmak için anahtarıyla `-ForUpdate` kullanabilir [, New-azurermautomationsoftwareupdateconfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) cmdlet 'ini kullanabilir ve makineleri diğerine geçirebilirsiniz `-NonAzureComputer` parametreye kiracı. Aşağıdaki örnek bunun nasıl yapılacağı hakkında bir örnek göstermektedir:
+Başka bir Azure kiracı raporlarında, düzeltme eki uygulamanız gerektiğini Güncelleştirme Yönetimi makineniz varsa, bunları zamanlanmak için aşağıdaki geçici çözümü kullanmanız gerekir. Bir zamanlama oluşturmak için [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 'ini `-ForUpdate` anahtarıyla kullanabilir ve [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
+) cmdlet 'ini kullanarak diğer Kiracıdaki makineleri `-NonAzureComputer` parametresine geçirebilirsiniz. Aşağıdaki örnek bunun nasıl yapılacağı hakkında bir örnek göstermektedir:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -304,7 +304,7 @@ Aşağıdaki tablolar, Güncelleştirme Yönetimi ' deki güncelleştirme sını
 |Hizmet paketleri     | Bir uygulamaya uygulanan toplu bir düzeltme kümesi.        |
 |Tanım güncelleştirmeleri     | Virüs veya diğer tanım dosyalarına yönelik bir güncelleştirme.        |
 |Araçlar     | Bir veya daha fazla görevi tamamlamaya yardımcı olan bir yardımcı program veya özellik.        |
-|Güncelleştirmeler     | Şu anda yüklü olan bir uygulama veya dosyaya yönelik bir güncelleştirme.        |
+|Güncellemeler     | Şu anda yüklü olan bir uygulama veya dosyaya yönelik bir güncelleştirme.        |
 
 ### <a name="linux-2"></a>'Un
 
@@ -339,7 +339,7 @@ $WUSettings.Save()
 
 ### <a name="disable-automatic-installation"></a>Otomatik yüklemeyi devre dışı bırak
 
-Azure VM 'Leri varsayılan olarak etkinleştirilen güncelleştirmelerin otomatik olarak yüklenmesine sahiptir. Bu, güncelleştirmelerin Güncelleştirme Yönetimi tarafından yüklenmek üzere zamanlanmadan önce yüklenememesine neden olabilir. `NoAutoUpdate` Kayıt defteri anahtarını olarak `1`ayarlayarak bu davranışı devre dışı bırakabilirsiniz. Aşağıdaki PowerShell kod parçacığı bunu yapmanın bir yolunu gösterir.
+Azure VM 'Leri varsayılan olarak etkinleştirilen güncelleştirmelerin otomatik olarak yüklenmesine sahiptir. Bu, güncelleştirmelerin Güncelleştirme Yönetimi tarafından yüklenmek üzere zamanlanmadan önce yüklenememesine neden olabilir. @No__t-0 kayıt defteri anahtarını `1` olarak ayarlayarak bu davranışı devre dışı bırakabilirsiniz. Aşağıdaki PowerShell kod parçacığı bunu yapmanın bir yolunu gösterir.
 
 ```powershell
 $AutoUpdatePath = "HKLM:SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU"
@@ -359,18 +359,18 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="third-party"></a>Windows 'da üçüncü taraf düzeltme ekleri
 
-Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. Bu, WSUS veya Windows Update. [SystemCenterUpdatesPublisher](/sccm/sum/tools/updates-publisher
+Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. Bu, WSUS veya Windows Update. [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
 ) (Updates Publisher) gibi araçlar, özel güncelleştirmeleri WSUS 'ta yayımlamanıza izin verir. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak System Center Configuration Manager kullanan makinelere yaması sağlar. Updates Publisher 'ı yapılandırma hakkında bilgi edinmek için bkz. [Updates Publisher 'ı yüklemek](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Ağ planlama
 
 Aşağıdaki adresler Güncelleştirme Yönetimi için özel olarak gereklidir. 443 numaralı bağlantı noktası üzerinden bu adreslerle iletişim oluşur.
 
-|Azure genel  |Azure Kamu  |
+|Azure genel  |Azure Devlet Kurumları  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
 Windows makinelerinde, Windows Update için gereken tüm uç noktalara giden trafiğe de izin vermeniz gerekir.  [Http/proxy ile Ilgili sorunlarda](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy), gerekli uç noktaların güncelleştirilmiş bir listesini bulabilirsiniz. Yerel bir [Windows Update sunucunuz](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)varsa, [WSUS anahtarınıza](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)belirtilen sunucuya giden trafiğe de izin vermeniz gerekir.
@@ -383,12 +383,12 @@ Karma Runbook Worker için gereken bağlantı noktaları hakkında daha fazla bi
 
 İnternet erişimine sahip olmayan makineleri yapılandırmak için [İnternet erişimi olmadan bilgisayarları bağlama](../azure-monitor/platform/gateway.md) bölümündeki yönergeleri izleyin.
 
-## <a name="search-logs"></a>Günlük ara
+## <a name="search-logs"></a>Günlüklerde ara
 
 Azure portal belirtilen ayrıntılara ek olarak günlüklere göre aramalar yapabilirsiniz. Çözüm sayfalarında **Log Analytics**' yi seçin. **Günlük araması** bölmesi açılır.
 
-Ayrıca, ziyaret ederek sorguları özelleştirmeyi veya farklı istemcilerden ve daha fazlasını kullanmayı da öğrenebilirsiniz:  [API belgelerini](
-https://dev.loganalytics.io/)Log Analytics arama.
+Ayrıca, bkz: [Log Analytics arama API 'si belgeleri](
+https://dev.loganalytics.io/)' ni ziyaret ederek sorguları özelleştirmeyi veya farklı istemcilerden daha fazlasını kullanmayı da öğrenebilirsiniz.
 
 ### <a name="sample-queries"></a>Örnek sorgular
 
@@ -396,7 +396,7 @@ Aşağıdaki bölümler, bu çözüm tarafından toplanan güncelleştirme kayı
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>Tek Azure VM değerlendirme sorguları (Windows)
 
-VMUUID değerini, sorguladığınız sanal makinenin VM GUID 'SI ile değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+VMUUID değerini, sorguladığınız sanal makinenin VM GUID 'SI ile değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti
 
@@ -425,7 +425,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Tek Azure VM değerlendirmesi sorguları (Linux)
 
-Bazı Linux 'lar için, Azure Resource Manager ve Azure Izleyici günlüklerinde depolanan VMUUID değeri ile bir [bitiçlik](https://en.wikipedia.org/wiki/Endianness) uyumsuzluğu vardır. Aşağıdaki sorgu, her iki durumda da bir eşleşme olup olmadığını denetler. Sonuçları doğru bir şekilde döndürmek için VMUUID değerlerini, GUID 'nin büyük endian ve little-endian biçimiyle değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz:`Update | where Computer == "<machine name>"
+Bazı Linux 'lar için, Azure Resource Manager ve Azure Izleyici günlüklerinde depolanan VMUUID değeri ile bir [bitiçlik](https://en.wikipedia.org/wiki/Endianness) uyumsuzluğu vardır. Aşağıdaki sorgu, her iki durumda da bir eşleşme olup olmadığını denetler. Sonuçları doğru bir şekilde döndürmek için VMUUID değerlerini, GUID 'nin büyük endian ve little-endian biçimiyle değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti
@@ -608,10 +608,10 @@ Güncelleştirme Yönetimi, güncelleştirme dağıtımları için Azure veya Az
 
 Bu gruplar bir sorgu tarafından tanımlanır, bir güncelleştirme dağıtımı başladığında, o grubun üyeleri değerlendirilir. Dinamik Gruplar klasik VM 'Ler ile çalışmaz. Sorgunuzu tanımlarken, dinamik grubu doldurmak için aşağıdaki öğeler birlikte kullanılabilir
 
-* Subscription
+* Abonelik
 * Kaynak grupları
 * Konumlar
-* Tags
+* Etiketler
 
 ![Grupları seçin](./media/automation-update-management/select-groups.png)
 
@@ -635,7 +635,7 @@ Yönetim çözümünü System Center Configuration Manager ile tümleştirmeyi �
 
 Dahil etme, uygulanacak belirli güncelleştirmeleri belirtmenize olanak tanır. Dahil edilen düzeltme ekleri veya paketleri yüklenir. Yamaları veya paketleri dahil edildiğinde ve sınıflandırma her ikisi de seçildiğinde, hem dahil edilen öğeler hem de sınıflandırmayı karşılayan öğeler yüklenir.
 
-Dışlamaları geçersiz kılmanın dahil olduğunu bildirmek önemlidir. Örneğin, hariç tutma kuralı `*`tanımlarsanız, hepsi hariç tutulduklarında hiçbir düzeltme eki veya paket yüklenmez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için bir paket dahil, ancak dışlanan bir bağımlı paketi varsa, paket yüklenmez.
+Dışlamaları geçersiz kılmanın dahil olduğunu bildirmek önemlidir. Örneğin, `*` ' ı bir dışlama kuralı tanımlarsanız, hepsi hariç tutulduklarında hiçbir düzeltme eki veya paket yüklenmez. Dışlanan düzeltme ekleri hala makinede eksik olarak gösterilir. Linux makineler için bir paket dahil, ancak dışlanan bir bağımlı paketi varsa, paket yüklenmez.
 
 ## <a name="patch-linux-machines"></a>Linux makinelerini yama
 
@@ -665,7 +665,7 @@ Güncelleştirmelerin güncelleştirme sınıflandırmasına göre dağıtımı,
 
 Bir sanal makineyi Güncelleştirme Yönetimi kaldırmak için:
 
-* Log Analytics çalışma alanınızda, VM 'yi, kapsam yapılandırması `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan kaldırın. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
+* Log Analytics çalışma alanınızda, kapsam yapılandırması için kayıtlı aramadan VM 'yi kaldırın `MicrosoftDefaultScopeConfig-Updates`. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
 * Linux için [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 'ı veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

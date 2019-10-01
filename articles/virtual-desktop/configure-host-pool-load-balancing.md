@@ -1,5 +1,5 @@
 ---
-title: Windows sanal masaüstü önizleme yük dengeleme yöntemini Yapılandırma-Azure
+title: Windows sanal masaüstü yük dengeleme yöntemini Yapılandırma-Azure
 description: Windows sanal masaüstü ortamı için yük dengeleme yöntemini yapılandırma.
 services: virtual-desktop
 author: Heidilohr
@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: e1f1ea10dc68e501cfac7ef0cf0383ce78e8f380
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163759"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676771"
 ---
-# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Windows sanal masaüstü önizlemesi yük dengeleme yöntemini yapılandırma
+# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Sanal Masaüstü yük dengeleme yöntemini yapılandırma
 
-Bir konak havuzu için yük dengeleme yöntemini yapılandırmak, Windows sanal masaüstü önizleme ortamını gereksinimlerinize daha iyi uyacak şekilde ayarlamanıza olanak sağlar.
+Bir konak havuzu için yük dengeleme yöntemini yapılandırmak, Windows sanal masaüstü ortamını gereksinimlerinize daha iyi uyacak şekilde ayarlamanıza olanak sağlar.
 
 >[!NOTE]
 > Bu, kullanıcıların konak havuzundaki bir oturum ana bilgisayarına her zaman bir 1:1 eşlemesi olduğundan, kalıcı bir masaüstü konak havuzu için geçerlidir.

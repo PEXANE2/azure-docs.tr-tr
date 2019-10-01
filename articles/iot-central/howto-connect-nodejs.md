@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 75b900ecb37ae8d092d4e37129b7f39f801c470d
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ccded68cfaa00e6e13e2bb32e114b81108742829
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066432"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686677"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Genel bir istemci uygulamasını Azure IoT Central uygulamanıza bağlama (node. js)
 
@@ -26,7 +26,7 @@ Bu makalede, bir cihaz geliştiricisi olarak, Microsoft Azure IoT Central uygula
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 - Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md).
-- [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için `node --version` komut satırında çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
+- [Node. js](https://nodejs.org/) sürüm 4.0.0 veya üzeri yüklü bir geliştirme makinesi. Sürümünüzü denetlemek için komut satırında `node --version` ' yı çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
 
 ## <a name="create-a-device-template"></a>Cihaz şablonu oluşturma
 
@@ -36,11 +36,11 @@ Azure IoT Central uygulamanızda, aşağıdaki ölçümler, cihaz özellikleri, 
 
 **Ölçümler** sayfasına aşağıdaki Telemetriyi ekleyin:
 
-| Görünen Ad | Alan Adı  | Birimler | Min | Maks | Ondalık Basamaklar |
+| Görünen Ad | Alan Adı  | Birimler | Min | Maks. | Ondalık Basamak Sayısı |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
-| Sıcaklık  | sıcaklık | C     | 60  | 110 | 0              |
-| Nem     | Nem oranı    | %     | 0   | 100 | 0              |
-| Basınç     | basınç    | kPa   | 80  | 110 | 0              |
+| Sıcaklık  | sıcaklık | F     | 60  | 110 | 0              |
+| Nem oranı     | Nem oranı    | %     | 0   | 100 | 0              |
+| gereksiniminin     | basınç    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
 > Telemetri ölçüsünün veri türü bir kayan noktalı sayıdır.
@@ -53,7 +53,7 @@ Alan adlarını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin.
 
 | Görünen Ad | Alan Adı  | Değer 1 | Görünen Ad | Değer 2 | Görünen Ad |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
-| Fan Modu     | fanmode     | 1\.       | Çalışıyor      | 0       | Durduruldu      |
+| Fan Modu     | fanmode     | 1       | Çalışıyor      | 0       | Durdurulan      |
 
 > [!NOTE]
 > Durum ölçüsünün veri türü dizedir.
@@ -64,7 +64,7 @@ Alan adlarını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin.
 
 **Ölçümler** sayfasına aşağıdaki olayı ekleyin:
 
-| Görünen Ad | Alan Adı  | severity |
+| Görünen Ad | Alan Adı  | Önem Derecesi |
 | ------------ | ----------- | -------- |
 | Aşırı ısınmasını  | aşırı ısı    | Hata    |
 
@@ -77,7 +77,7 @@ Alan adlarını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin.
 
 | Görünen Ad | Alan Adı  |
 | ------------ | ----------- |
-| Location     | location    |
+| Konum     | location    |
 
 Konum ölçümü veri türü, boylam ve enlem için iki kayan nokta numarasından oluşur ve yükseklik için isteğe bağlı bir kayan nokta sayısıdır.
 
@@ -89,8 +89,8 @@ Aşağıdaki cihaz özelliklerini **Özellikler** sayfasına ekleyin:
 
 | Görünen Ad        | Alan Adı        | Veri türü |
 | ------------------- | ----------------- | --------- |
-| Seri Numarası       | serialNumber      | text      |
-| Cihaz üreticisi | üretici      | text      |
+| Seri Numarası       | serialNumber      | metin      |
+| Cihaz üreticisi | Üreticisini      | metin      |
 
 Alan adlarını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin. Alan adları karşılık gelen aygıt kodundaki Özellik adlarıyla eşleşmezse, Özellikler uygulamada görüntülenemez.
 
@@ -98,10 +98,10 @@ Alan adlarını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin.
 
 **Ayarlar** sayfasına aşağıdaki **sayı** ayarlarını ekleyin:
 
-| Görünen Ad    | Alan Adı     | Birimler | In | Min | Maks  | İlk |
+| Görünen Ad    | Alan Adı     | Birimler | In | Min | Maks.  | Başlatma |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | Fan hızı       | Fanın hızı       | RPM   | 0        | 0   | 3000 | 0       |
-| Sıcaklığı Ayarla | setTemperature | C     | 0        | 20  | 200  | 80      |
+| Sıcaklığı Ayarla | setTemperature | F     | 0        | 20  | 200  | 80      |
 
 Alan adını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin. Alan adları karşılık gelen aygıt kodundaki Özellik adlarıyla eşleşmezse, cihaz ayar değerini alamıyor.
 
@@ -111,13 +111,13 @@ Alan adını tam olarak tabloda gösterildiği gibi, cihaz şablonunda girin. Al
 
 | Görünen Ad    | Alan Adı     | Varsayılan Zaman Aşımı | Veri Türü |
 | --------------- | -------------- | --------------- | --------- |
-| Sayıma       | sayıma      | 30              | numarası    |
+| Sayıma       | Sayıma      | 30              | number    |
 
 Aşağıdaki giriş alanını geri sayım komutuna ekleyin:
 
-| Görünen Ad    | Alan Adı     | Veri Türü | Value |
+| Görünen Ad    | Alan Adı     | Veri Türü | Değer |
 | --------------- | -------------- | --------- | ----- |
-| Sayım      | Sayaçdan      | numarası    | 10    |
+| Sayım      | Sayaçdan      | number    | 10    |
 
 Yalnızca tablolarda gösterildiği gibi, alan adlarını cihaz şablonuna girin. Alan adları karşılık gelen aygıt kodundaki Özellik adlarıyla eşleşmezse, cihaz komutu işleyemez.
 
@@ -125,7 +125,7 @@ Yalnızca tablolarda gösterildiği gibi, alan adlarını cihaz şablonuna girin
 
 Azure IoT Central uygulamanızda, önceki bölümde oluşturduğunuz cihaz şablonuna gerçek bir cihaz ekleyin.
 
-**Cihaz bağlantısı** sayfasında cihaz bağlantı bilgilerini bir yere göz önünde oluşturun: **Kapsam kimliği**, **cihaz kimliği**ve **birincil anahtar**. Bu değerleri daha sonra bu nasıl yapılır kılavuzunda, cihaz kodunuza eklersiniz:
+**Cihaz bağlantısı** sayfasındaki cihaz bağlantı bilgilerini, **Kapsam KIMLIĞI**, **cihaz kimliği**ve **birincil anahtar**olarak bir yere unutmayın. Bu değerleri daha sonra bu nasıl yapılır kılavuzunda, cihaz kodunuza eklersiniz:
 
 ![Cihaz bağlantı bilgileri](./media/howto-connect-nodejs/device-connection.png)
 
@@ -142,9 +142,9 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. `connected-air-conditioner-adv` Klasöründe **connectedAirConditionerAdv. js** adlı bir dosya oluşturun.
+1. @No__t-1 klasöründe **connectedAirConditionerAdv. js** adlı bir dosya oluşturun.
 
-1. `require` **ConnectedAirConditionerAdv. js** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin:
+1. Aşağıdaki `require` deyimlerini **connectedAirConditionerAdv. js** dosyasının başlangıcına ekleyin:
 
     ```javascript
     "use strict";
@@ -164,7 +164,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
     var provisioningHost = 'global.azure-devices-provisioning.net';
     var idScope = '{your Scope ID}';
     var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key};
+    var symmetricKey = '{your Primary Key}';
     var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
     var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
     var hubClient;
@@ -174,7 +174,7 @@ Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihazı uygulayan bir i
     var locLat = 47.6740;
     ```
 
-    Yer tutucuları, `{your Scope ID}`, `{your Device ID}`ve `{your Primary Key}` daha önce bir notcuı yaptığınız değerlerle güncelleştirin. Bu örnekte, sıfırdan başlatın `targetTemperature` , cihazdaki geçerli okumayı veya cihazdan ikizi bir değeri kullanabilirsiniz.
+    @No__t-0, `{your Device ID}` ve `{your Primary Key}` ' yi daha önce bir notcuı yaptığınız değerlerle güncelleştirin. Bu örnekte, `targetTemperature` ' ı sıfıra başlatırsınız, geçerli okumayı cihazdan veya cihazdan ikizi bir değerden kullanabilirsiniz.
 
 1. Azure IoT Central uygulamanıza telemetri, durum, olay ve konum ölçümleri göndermek için aşağıdaki işlevi dosyasına ekleyin:
 

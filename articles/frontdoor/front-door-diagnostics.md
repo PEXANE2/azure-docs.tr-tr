@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5f76df0045fc3939392759ed0edd266380295a85
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260168"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677907"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Azure ön kapı hizmeti 'nde ölçümleri ve günlükleri izleme
 
 Azure ön kapı hizmeti 'ni kullanarak kaynakları aşağıdaki yollarla izleyebilirsiniz:
 
-- **Ölçümleri**. Application Gateway Şu anda performans sayaçlarını görüntülemek için yedi ölçüm vardır.
+- **Ölçümler**. Azure ön kapısının Şu anda performans sayaçlarını görüntülemek için yedi ölçümü vardır.
 - **Günlükler**. Etkinlik ve tanılama günlükleri, izleme amacıyla bir kaynaktan performans, erişim ve diğer verilerin kaydedilmesine veya kullanılmasına olanak tanır.
 
 ### <a name="metrics"></a>Ölçümler
@@ -31,14 +31,14 @@ Azure ön kapı hizmeti 'ni kullanarak kaynakları aşağıdaki yollarla izleyeb
 
 | Ölçüm | Ölçüm görünen adı | Birim | Boyutlar | Açıklama |
 | --- | --- | --- | --- | --- |
-| RequestCount | İstek Sayısı | Count | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapı tarafından sunulan istemci isteklerinin sayısı.  |
-| RequestSize | İstek boyutu | Bayt | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemcilerden ön kapıya istek olarak gönderilen bayt sayısı. |
-| Yanıt boyutu | Yanıt boyutu | Bayt | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapıdan istemcilere yanıt olarak gönderilen bayt sayısı. |
-| TotalLatency | Toplam gecikme süresi | Milisaniye | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemci, ön kapıdan gelen son yanıt baytını kabul edene kadar ön kapıdan alınan istemci isteğinden hesaplanan süredir. |
-| BackendRequestCount | Arka uç Istek sayısı | Count | Http durumu</br>HttpStatusGroup</br>Arka uç | Ön kapıdan arka uçlara gönderilen isteklerin sayısı. |
-| BackendRequestLatency | Arka uç Isteği gecikmesi | Milisaniye | Arka uç | Ön kapı arka uca Son Yanıt baytı aldığından, isteğin ön uca gönderildiği süre. |
-| BackendHealthPercentage | Arka uç sistem durumu yüzdesi | Percent | Arka uç</br>BackendPool | Ön kapıdan arka uçlara yapılan başarılı sistem durumu araştırmalarının yüzdesi. |
-| WebApplicationFirewallRequestCount | Web uygulaması güvenlik duvarı Istek sayısı | Count | PolicyName</br>RuleName</br>Action | Ön kapısının uygulama katmanı güvenliği tarafından işlenen istemci isteklerinin sayısı. |
+| Istek sayısı | İstek Sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapı tarafından sunulan istemci isteklerinin sayısı.  |
+| RequestSize | İstek boyutu | Sayacının | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemcilerden ön kapıya istek olarak gönderilen bayt sayısı. |
+| Yanıt boyutu | Yanıt boyutu | Sayacının | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Ön kapıdan istemcilere yanıt olarak gönderilen bayt sayısı. |
+| TotalLatency | Toplam gecikme süresi | Mayacak | Http durumu</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | İstemci, ön kapıdan gelen son yanıt baytını kabul edene kadar ön kapıdan alınan istemci isteğinden hesaplanan süredir. |
+| BackendRequestCount | Arka uç Istek sayısı | Sayı | Http durumu</br>HttpStatusGroup</br>Sunucusundan | Ön kapıdan arka uçlara gönderilen isteklerin sayısı. |
+| BackendRequestLatency | Arka uç Isteği gecikmesi | Mayacak | Sunucusundan | Ön kapı arka uca Son Yanıt baytı aldığından, isteğin ön uca gönderildiği süre. |
+| BackendHealthPercentage | Arka uç sistem durumu yüzdesi | Yüzde | Sunucusundan</br>BackendPool | Ön kapıdan arka uçlara yapılan başarılı sistem durumu araştırmalarının yüzdesi. |
+| WebApplicationFirewallRequestCount | Web uygulaması güvenlik duvarı Istek sayısı | Sayı | PolicyName</br>RuleName</br>Eylem | Ön kapısının uygulama katmanı güvenliği tarafından işlenen istemci isteklerinin sayısı. |
 
 ## <a name="activity-log"></a>Etkinlik günlükleri
 
@@ -69,7 +69,7 @@ Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere
 
 2. **Tanılama ayarları**' nı seçin.
 
-3. Seçin **tanılamayı Aç**. Tanılama günlüklerini bir depolama hesabı ölçümleriyle birlikte arşivleyin, bunları bir olay hub 'ına akıtır veya Azure Izleyici günlüklerine gönderin.
+3. **Tanılamayı aç '** ı seçin. Tanılama günlüklerini bir depolama hesabı ölçümleriyle birlikte arşivleyin, bunları bir olay hub 'ına akıtır veya Azure Izleyici günlüklerine gönderin.
 
 Ön kapı hizmeti şu anda tanılama günlükleri sağlıyor (toplu olarak saatlik). Tanılama günlükleri, her giriş için aşağıdaki şemaya sahip tek API istekleri sağlar:
 

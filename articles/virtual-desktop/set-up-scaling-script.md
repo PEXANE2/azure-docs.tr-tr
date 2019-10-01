@@ -1,22 +1,22 @@
 ---
-title: Windows sanal masaüstü önizleme oturumu konaklarınızı otomatik olarak ölçeklendirme-Azure
-description: Windows sanal masaüstü önizleme oturumu konakları için otomatik ölçeklendirme betiği ayarlamayı açıklar.
+title: Windows sanal masaüstü oturumu konaklarınızı otomatik olarak ölçeklendirme-Azure
+description: Windows sanal masaüstü oturumu konakları için otomatik ölçeklendirme betiği ayarlamayı açıklar.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 7babfca617ab42da615518726d1b1d4cafe112b5
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163228"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676483"
 ---
 # <a name="automatically-scale-session-hosts"></a>Oturum ana bilgisayarlarını otomatik olarak ölçeklendirme
 
-Azure 'daki birçok Windows sanal masaüstü önizleme dağıtımında, sanal makine maliyetleri toplam Windows sanal masaüstü dağıtım maliyetinin önemli bir kısmını temsil eder. Maliyetleri azaltmak için, en yoğun kullanım saatlerinde oturum ana bilgisayarı sanal makinelerini (VM 'Ler) kapatıp serbest bırakmak, sonra da en yüksek kullanım saatlerinde yeniden başlatmanız gerekir.
+Azure 'daki birçok Windows sanal masaüstü dağıtımında, sanal makine maliyetleri toplam Windows sanal masaüstü dağıtım maliyetinin önemli bir kısmını temsil eder. Maliyetleri azaltmak için, en yoğun kullanım saatlerinde oturum ana bilgisayarı sanal makinelerini (VM 'Ler) kapatıp serbest bırakmak, sonra da en yüksek kullanım saatlerinde yeniden başlatmanız gerekir.
 
 Bu makalede, Windows sanal masaüstü ortamınızdaki oturum ana bilgisayarı sanal makinelerini otomatik olarak ölçeklendirmek için basit bir ölçeklendirme betiği kullanılmaktadır. Ölçeklendirme betiği nasıl çalıştığı hakkında daha fazla bilgi edinmek için [ölçeklendirme betiği nasıl kullanılır](#how-the-scaling-script-works) bölümüne bakın.
 
@@ -49,7 +49,7 @@ Aşağıdaki yordamlarda, ölçeklendirme betiğinin nasıl dağıtılacağı a�
 İlk olarak, ortamınızı ölçeklendirme betiği için hazırlayın:
 
 1. Bir etki alanı yönetici hesabı ile zamanlanmış görevi çalıştıracak VM 'de (Scaler VM) oturum açın.
-2. Scaler VM üzerinde ölçeklendirme betiğini ve yapılandırmasını tutacak bir klasör oluşturun (örneğin, **C:\\ölçeklendirme-HostPool1**).
+2. Scaler VM üzerinde ölçeklendirme betiğini ve yapılandırmasını tutacak bir klasör oluşturun (örneğin, **C: \\ölçeklendirmesi-HostPool1**).
 3. **Basicscale. ps1**, **config. xml**ve **Functions-PSStoredCredentials. ps1** dosyalarını ve **powershellmodules** klasörünü, [ölçeklendirme betiği deposundan](https://github.com/Azure/RDS-Templates/tree/master/wvd-sh/WVD%20scaling%20script) indirin ve adım 2 ' de oluşturduğunuz klasöre kopyalayın. Dosyaları Scaler VM 'sine kopyalamadan önce almanın iki birincil yolu vardır:
     - Git deposunu yerel makinenize kopyalayın.
     - Her bir dosyanın **Ham** sürümünü görüntüleyin, her dosyanın içeriğini kopyalayıp bir metin düzenleyicisine yapıştırın, ardından dosyaları karşılık gelen dosya adı ve dosya türü ile kaydedin. 
@@ -72,9 +72,9 @@ Daha sonra, güvenli şekilde depolanan kimlik bilgilerini oluşturmanız gereki
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>
     ```
     
-    Örneğin, **set-değişken-adı keyPath-Scope genel-değer "c:\\ölçeklendirme-HostPool1"**
-5. **New-StoredCredential-keyPath \$keyPath** cmdlet 'ini çalıştırın. İstendiğinde, ana bilgisayar havuzunu sorgulama izinleri ile Windows sanal masaüstü kimlik bilgilerinizi girin (konak havuzu **config. xml**dosyasında belirtilir).
-    - Farklı hizmet sorumlularını veya standart hesabı kullanırsanız, her hesap için **Yeni-StoredCredential-keyPath \$keyPath** cmdlet 'ini çalıştırarak yerel depolanan kimlik bilgilerini oluşturun.
+    Örneğin, **set-değişken-adı KeyPath-Scope genel-değer "c: \\ölçeklendirmeyi-HostPool1"**
+5. **New-StoredCredential-keypath \$KeyPath** cmdlet 'ini çalıştırın. İstendiğinde, ana bilgisayar havuzunu sorgulama izinleri ile Windows sanal masaüstü kimlik bilgilerinizi girin (konak havuzu **config. xml**dosyasında belirtilir).
+    - Farklı hizmet sorumlularını veya standart hesabı kullanırsanız, her hesap için **Yeni-StoredCredential-keypath \$KeyPath** cmdlet 'ini çalıştırarak yerel depolanan kimlik bilgilerini oluşturun.
 6. Kimlik bilgilerinin başarıyla oluşturulduğunu onaylamak için **Get-StoredCredential-List** ' i çalıştırın.
 
 ### <a name="configure-the-configxml-file"></a>Config. xml dosyasını yapılandırma
@@ -83,14 +83,14 @@ Config. xml dosyasındaki ölçeklendirme betiği ayarlarını güncelleştirmek
 
 | Alan                     | Açıklama                    |
 |-------------------------------|------------------------------------|
-| AADTenantId                   | Oturum Ana bilgisayar VM 'lerinin çalıştırıldığı aboneliği ilişkilendiren Azure AD kiracı KIMLIĞI     |
+| Aadtenantıd                   | Oturum Ana bilgisayar VM 'lerinin çalıştırıldığı aboneliği ilişkilendiren Azure AD kiracı KIMLIĞI     |
 | Aadapplicationıd              | Hizmet sorumlusu uygulama KIMLIĞI                                                       |
 | Aadservicesprincipalsecret     | Bu, test aşamasında girilebilir, ancak **Functions-PSStoredCredentials. ps1** ile kimlik bilgileri oluşturduğunuzda boş tutulur    |
 | currentAzureSubscriptionId    | Oturum Ana bilgisayar VM 'lerinin çalıştırıldığı Azure aboneliğinin KIMLIĞI                        |
 | tenantName                    | Windows sanal masaüstü kiracı adı                                                    |
 | hostPoolName                  | Windows sanal masaüstü konak havuzu adı                                                 |
-| RDBroker                      | WVD Service URL 'si, varsayılan değer https:\//rdbroker.WVD.Microsoft.com             |
-| Kullanıcı Adı                      | Hizmet sorumlusu uygulama KIMLIĞI (Aadapplicationıd ile aynı hizmet sorumlusuna sahip olmak mümkündür) veya Multi-Factor Authentication olmadan standart Kullanıcı |
+| RDBroker                      | WVD Service URL 'SI, varsayılan değer https: \//rdbroker. WVD. Microsoft. com             |
+| Kullanıcı adı                      | Hizmet sorumlusu uygulama KIMLIĞI (Aadapplicationıd ile aynı hizmet sorumlusuna sahip olmak mümkündür) veya Multi-Factor Authentication olmadan standart Kullanıcı |
 | isServicePrincipal            | Kabul edilen değerler **true** veya **false**şeklindedir. Kullanılan ikinci kimlik bilgileri kümesinin bir hizmet sorumlusu veya standart bir hesap olup olmadığını gösterir. |
 | BeginPeakTime                 | Yoğun kullanım süresi başladığında                                                            |
 | EndPeakTime                   | Yoğun kullanım süresi sona erdiğinde                                                              |
@@ -111,7 +111,7 @@ Configuration. xml dosyasını yapılandırdıktan sonra, Görev Zamanlayıcı n
 4. **Tetikleyiciler** sekmesine gidin ve ardından **yeni...** seçeneğini belirleyin.
 5. **Yeni tetikleyici** Iletişim kutusunda **Gelişmiş ayarlar**altında, **görevi her zaman Yinele** ' yi işaretleyin ve uygun süreyi ve süreyi (örneğin, **15 dakika** veya **süresiz**) seçin.
 6. **Eylemler** sekmesini ve **yeni..** . seçeneğini belirleyin.
-7. **Yeni eylem** iletişim kutusunda, **PowerShell. exe** ' yi **Program/betik** alanına girin, sonra da **bağımsız değişken Ekle (isteğe bağlı)** alanına **C:\\ölçeklendirme\\basicscale. ps1** girin.
+7. **Yeni eylem** iletişim kutusunda, **PowerShell. exe** ' yi **Program/betik** alanına girin ve ardından **bağımsız değişken Ekle (isteğe bağlı)** alanına **C: \\ölçeklendirmeyi @ no__t-5basicScale. ps1** yazın.
 8. **Koşullar** ve **Ayarlar** sekmelerine gidin ve her biri için varsayılan ayarları kabul etmek üzere **Tamam** ' ı seçin.
 9. Ölçek betiğini çalıştırmayı planladığınız yönetim hesabının parolasını girin.
 

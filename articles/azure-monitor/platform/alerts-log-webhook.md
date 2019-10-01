@@ -1,19 +1,19 @@
 ---
 title: Azure uyarılarında günlük uyarıları için Web kancası eylemleri
 description: Bu makalede Log Analytics çalışma alanı veya Application Insights kullanarak bir günlük uyarı kuralının nasıl oluşturulacağı, uyarının verileri bir HTTP Web kancası olarak nasıl gönderdiği ve olası farklı özelleştirmelerin ayrıntıları açıklanmaktadır.
-author: msvijayn
+author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8bdd0d5230feeeb4c80775ce63aa7e4eaccb601c
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226785"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677764"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Günlük uyarısı kuralları için Web kancası eylemleri
 [Azure 'da bir günlük uyarısı oluşturulduğunda](alerts-log.md), bir veya daha fazla eylem gerçekleştirmek için [eylem gruplarını kullanarak yapılandırma](action-groups.md) seçeneğiniz vardır. Bu makalede, kullanılabilen farklı Web kancası eylemleri açıklanmakta ve özel bir JSON tabanlı Web kancasının nasıl yapılandırılacağı gösterilmektedir.
@@ -53,7 +53,7 @@ Web kancaları, dış hizmete gönderilen verilerin JSON 'de biçimlendirildiği
 | *SearchResults* |"Includesearchresults": true|Sorgu tarafından JSON 1.000 tablosu olarak döndürülen kayıtlar, "ıncludesearchresults": true, özel bir JSON Web kancası tanımına en üst düzey özellik olarak eklenirse. |
 | *Uyarı türü*| #alerttype | [Ölçüm ölçümü](alerts-unified-log.md#metric-measurement-alert-rules) veya [sonuç sayısı](alerts-unified-log.md#number-of-results-alert-rules)olarak yapılandırılan günlük uyarısı kuralının türü.|
 | *Workspaceıd* |#workspaceid |Log Analytics çalışma alanınızın KIMLIĞI. |
-| *Uygulama Kimliği* |#applicationid |Application Insights uygulamanızın KIMLIĞI. |
+| *Uygulama KIMLIĞI* |#applicationid |Application Insights uygulamanızın KIMLIĞI. |
 | *Abonelik KIMLIĞI* |#subscriptionid |Kullanılan Azure aboneliğinizin KIMLIĞI. 
 
 > [!NOTE]

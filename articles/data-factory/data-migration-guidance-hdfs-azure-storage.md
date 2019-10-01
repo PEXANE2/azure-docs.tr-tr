@@ -1,6 +1,6 @@
 ---
 title: Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma | Microsoft Docs
-description: Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanın.
+description: Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory nasıl kullanacağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -12,21 +12,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/30/2019
-ms.openlocfilehash: 1b26b22fa9cdf9f6671702ceb9640aa39a6ecf17
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: a2e98e46b168ff2e1270c6512aa515278190350f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211603"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677949"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-on-premises-hadoop-cluster-to-azure-storage"></a>Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
+# <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Şirket içi Hadoop kümesinden Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
 
-Azure Data Factory, verileri Şirket içinden Azure Blob depolama alanına veya Azure Data Lake Storage 2. göre ölçeklendirmeye, sağlam ve uygun maliyetli bir mekanizma sağlar. Temel olarak Azure Data Factory, verileri Şirket içinden Azure 'a geçirmek için iki yaklaşım içerir. Senaryonuza göre bunların her birini seçebilirsiniz. 
+Azure Data Factory, verileri Şirket içinden Azure Blob depolama veya Azure Data Lake Storage 2. ölçeğinde bir performans, sağlam ve ekonomik bir mekanizma sağlar. 
 
-- ADF DistCp modu. ADF, dosyaları Azure Blob ( [hazırlanan kopya](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)dahil) veya Azure Data Lake Store olarak kopyalamak Için [distcp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) 'yi kullanarak, ADF Self-barındırılan TÜMLEŞTIRME çalışma zamanı (IR) üzerinde çalıştırmak yerine kümenizin gücünden tam olarak yararlanabilen bir durumdur. Özellikle kümeniz çok güçlü olduğunda daha iyi kopyalama performansı sağlar. Azure Data Factory yapılandırmanızda yapılandırmanıza bağlı olarak, kopyalama etkinliği otomatik olarak bir DistCp komutu oluşturur, Hadoop kümenize gönderir ve kopyalama durumunu izler. DistCp ile tümleşik ADF 'yi kullanarak müşteri, en iyi kopyalama verimini elde etmek için mevcut güçlü kümeinizden yararlanamaz ve ayrıca, ADF 'den esnek zamanlama ve Birleşik izleme deneyimi avantajını elde edebilir. Varsayılan olarak, ADF DistCp modu, verileri şirket içi Hadoop kümesinden Azure 'a geçirmek için önerilen yoldur.
-- ADF yerel IR modu. Bazı senaryolarda, (örneğin, VNET ortamında, DistCp Aracı, Express Route özel eşlemesi + Azure Storage VNet uç noktası) için kullanılamaz. Bunun yanı sıra, mevcut Hadoop kümenizi kümenize daha fazla yük getirecek ve bu yana mevcut ETL işlerinin performansını etkileyebilecek şekilde, verileri geçirmek için motor olarak kullanmak istemezsiniz. Bu durumda, ADF tümleştirme çalışma zamanı (IR), verileri Şirket içinden Azure 'a kopyalamak için motor olabilecek ADF yerel özelliğini kullanabilirsiniz.
+Data Factory, şirket içi bir sunucudan Azure 'a veri geçirmek için iki temel yaklaşım sunar. Senaryonuza göre yaklaşımı seçebilirsiniz. 
 
-Bu makalede, veri mühendislerinin ve geliştiricilerin her iki yaklaşımının aşağıdaki bilgileri sağlanmaktadır:
+- **Data Factory dıtcp modu** (önerilir): Data Factory içinde, dosyaları Azure Blob depolama ( [hazırlanan kopya](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#staged-copy)dahil) veya Azure Data Lake Store Gen2 olarak kopyalamak için [distcp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) (dağıtılmış kopya) kullanabilirsiniz. En iyi kopyalama aktarım hızını elde etmek için, mevcut güçlü bir kümeden yararlanmak üzere DistCp ile tümleştirilmiş Data Factory kullanın. Ayrıca, esnek zamanlamanın avantajını ve Data Factory ' den Birleşik bir izleme deneyimini de elde edersiniz. Data Factory yapılandırmanıza bağlı olarak, kopyalama etkinliği otomatik olarak bir DistCp komutu oluşturur, verileri Hadoop kümenize gönderir ve kopyalama durumunu izler. Şirket içi Hadoop kümesinden Azure 'a veri geçirmek için Data Factory DistCp modu önerilir.
+- **Data Factory yerel tümleştirme çalışma zamanı modu**: tek TCP, tüm senaryolarda bir seçenek değildir. Örneğin, bir Azure sanal ağları ortamında, DistCp Aracı, Azure depolama sanal ağ uç noktası ile Azure ExpressRoute özel eşlemesini desteklemez. Ayrıca, bazı durumlarda, var olan Hadoop kümenizi verileri geçirmek için bir altyapı olarak kullanmak istemezsiniz, böylece kümenize ağır yükleme yerleştirmezsiniz ve bu da mevcut ETL işlerinin performansını etkileyebilir. Bunun yerine, verileri Şirket içinden Azure 'a kopyalayan motor olarak Data Factory tümleştirme çalışma zamanının yerel özelliğini kullanabilirsiniz.
+
+Bu makalede her iki yaklaşım hakkında aşağıdaki bilgiler sunulmaktadır:
 > [!div class="checklist"]
 > * Performans 
 > * Esnekliği Kopyala
@@ -36,112 +38,120 @@ Bu makalede, veri mühendislerinin ve geliştiricilerin her iki yaklaşımının
 
 ## <a name="performance"></a>Performans
 
-ADF DistCp modunda, üretilen iş, mevcut Hadoop kümenizin kapasitesini kullanan ayrı ayrı TCP aracı kullanımıyla aynıdır. DistCp (dağıtılmış kopya), büyük ölçekli ve küme içi kopyalama için kullanılan bir araçtır. MapReduce kullanarak dağıtımını, hata işlemeyi ve kurtarmayı ve raporlamayı etkiler. Bir dosya ve dizin listesini, her biri kaynak listesinde belirtilen dosyaların bir bölümünü kopyalayabileceği şekilde eşlemek için giriş olarak genişletir. DistCp ile tümleşik ADF 'yi kullanarak, ortamınız için veri taşıma aktarım hızını en üst düzeye çıkarmak için, ağ bant genişliğinizin yanı sıra depolama ıOPS ve bant genişliği ile tam olarak yararlanmak üzere işlem hatları oluşturabilirsiniz.  
+Data Factory DistCp modunda, üretilen işlem, ayrı TCP aracını bağımsız olarak kullanmanıza benzer. Data Factory, mevcut Hadoop kümenizin kapasitesini en üst düzeye çıkarır. Büyük küme içi veya küme içi kopyalama için DistCp kullanabilirsiniz. 
 
-ADF yerel IR modunda Ayrıca, otomatik olarak barındırılan IR makinesini el ile ölçeklendirerek veya ölçeğini genişletmek için ağ bant genişliğinizin yanı sıra depolama ıOPS ve bant genişliği ile veri taşıma aktarım hızını en üst düzeye çıkaran farklı düzeylerde paralellik sağlar. Şirket içinde barındırılan IR birden çok makine.
+DistCp, dağıtım, hata işleme ve kurtarma ve raporlamayı yürürlüğe eklemek için MapReduce kullanır. Görev eşleme için giriş olarak bir dosya ve dizin listesi genişletir. Her görev, kaynak listesinde belirtilen bir dosya bölümünü kopyalar. Ortamınızdaki veri taşıma aktarım hızını en üst düzeye çıkarmak için ağ bant genişliğinizi, depolama ıOPS 'nizi ve bant genişliğinizi tam olarak kullanabilmek amacıyla işlem hatları oluşturmak üzere DistCp ile tümleştirilmiş Data Factory kullanabilirsiniz.  
 
-- Tek bir kopyalama etkinliği, ölçeklenebilir işlem kaynaklarından yararlanabilir. Şirket içinde barındırılan tümleştirme çalışma zamanı ile, makineyi el ile ölçeklendirebilir veya birden fazla makineye ([4 düğüme kadar](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) ölçeklendirebilirsiniz ve tek bir kopyalama etkinliği dosya kümesini tüm düğümlerde bölümleyebilir. 
+Data Factory yerel tümleştirme çalışma zamanı modu, farklı düzeylerde paralellik de sağlar. Veri taşıma aktarım hızını en üst düzeye çıkarmak için ağ bant genişliğinizi, depolama ıOPS 'nizi ve bant genişliğini tam olarak kullanabilmek için paralellik kullanabilirsiniz:
+
+- Tek bir kopyalama etkinliği, ölçeklenebilir işlem kaynaklarından yararlanabilir. Şirket içinde barındırılan bir tümleştirme çalışma zamanı ile makineyi el ile ölçeklendirebilir veya birden çok makineye ([en fazla dört düğüme](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) ölçeklendirebilirsiniz. Tek bir kopyalama etkinliği, dosya kümesini tüm düğümlerde bölümler. 
 - Tek bir kopyalama etkinliği, birden çok iş parçacığı kullanarak veri deposundan okur ve yazar. 
-- ADF denetim akışı, örneğin [her döngü için](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)kullanarak birden çok kopyalama etkinliğini paralel olarak başlatabilir. 
+- Data Factory denetim akışı, paralel olarak birden çok kopyalama etkinliği başlatabilir. Örneğin, [her döngü için](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)bir kullanabilirsiniz. 
 
-[Kopyalama etkinliği performans kılavuzlarından](https://docs.microsoft.com/azure/data-factory/copy-activity-performance) daha fazla ayrıntı edinebilirsiniz
+Daha fazla bilgi için bkz. [kopyalama etkinliği performans Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance).
 
 ## <a name="resilience"></a>Dayanıklılık
 
-ADF DistCp modunda, farklı esnekliği seviyeleri elde etmek için farklı DistCp komut satırı parametrelerinden (örneğin,-ı, yoksayma sorunları;-güncelleştirme, kaynak dosya ve hedef dosya boyutu farklı olduğunda veri yaz) yararlanabilirsiniz.
+Data Factory DistCp modunda, farklı esnekliği seviyeleri için farklı DistCp komut satırı parametreleri (örneğin, `-i`, sorunları Yoksay veya `-update`, kaynak dosya ve hedef dosya boyutu farklı olduğunda veri yaz) kullanabilirsiniz.
 
-ADF yerel IR modunda, tek bir kopyalama etkinliği çalıştırmasında, ADF, veri depolarında veya temel ağdaki belirli bir geçici başarısızlık düzeyini işleyebilmesi için yerleşik yeniden deneme mekanizmasına sahiptir. Şirket içi bir sunucudan blob 'a ve şirket içi olarak ADLS 2. 'e ikili kopyalama yaparken, ADF otomatik olarak büyük bir ölçüde işaret noktası gerçekleştirir. Bir kopyalama etkinliği çalıştırması başarısız olduysa veya zaman aşımına uğramışsa, sonraki yeniden denemelerde (> 1 sayısını yeniden denediğinizden emin olun), kopya baştan başlamak yerine son hata noktasından devam eder.
+Data Factory yerel tümleştirme çalışma zamanı modunda, tek bir kopyalama etkinliği çalıştırmasında, Data Factory yerleşik bir yeniden deneme mekanizması vardır. Veri depolarında veya temel ağdaki belirli bir geçici başarısızlık düzeyini işleyebilir. 
+
+Şirket içi bir sunucudan blob depolamaya ve şirket içi Data Lake Store Gen2 'e ikili kopyalama yaparken, Data Factory otomatik olarak büyük bir ölçüde işaret noktası gerçekleştirir. Bir kopyalama etkinliği başarısız olursa veya zaman aşımına uğrarsa, sonraki yeniden denemelerde (yeniden deneme sayısı > 1 olduğundan emin olun), kopya başlangıçta başlamak yerine son hata noktasından devam eder.
 
 ## <a name="network-security"></a>Ağ güvenliği 
 
-ADF, varsayılan olarak şirket içi olarak Azure Blob Storage 'a veri aktarır veya HTTPS protokolü üzerinden şifreli bağlantı kullanarak Azure Data Lake Storage 2.  HTTPS, aktarım sırasında veri şifrelemesi sağlar ve gizlice dinleme ve ortadaki adam saldırıları önler. 
+Varsayılan olarak, Data Factory şirket içi sunucudan blob depolamaya veya HTTPS protokolü üzerinden şifrelenmiş bir bağlantı kullanarak Azure Data Lake Storage 2. veri aktarır. HTTPS, aktarım sırasında veri şifrelemesi sağlar ve gizlice dinleme ve ortadaki adam saldırıları önler. 
 
-Alternatif olarak, verilerin genel Internet üzerinden aktarılmasını istemiyorsanız, verileri Azure Express Route aracılığıyla özel bir eşleme bağlantısı üzerinden aktararak daha yüksek bir güvenlik elde edebilirsiniz. Bu şekilde nasıl ulaşılabilecek aşağıda çözüm mimarisine bakın.
+Alternatif olarak, verilerin genel İnternet üzerinden aktarılmasını istemiyorsanız, daha yüksek güvenlik için bir özel eşleme bağlantısı üzerinden ExpressRoute aracılığıyla veri aktarabilirsiniz. 
 
 ## <a name="solution-architecture"></a>Çözüm mimarisi
 
-Verileri genel Internet üzerinden geçirme:
+Bu görüntüde verilerin genel İnternet üzerinden geçirilmesi gösterilmektedir:
 
-![çözüm-mimari-genel-ağ](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-public-network.png)
+![Ortak ağ üzerinden veri taşımaya yönelik çözüm mimarisini gösteren diyagram](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-public-network.png)
 
-- Bu mimaride, veriler genel Internet üzerinden HTTPS kullanılarak güvenli bir şekilde aktarılır. 
-- ADF DistCp modunun ortak ağ ortamında kullanılması önerilir. Bunu yaparak, en iyi kopyalama aktarım hızını elde etmek için mevcut güçlü kümenizle yararlanamaz ve ayrıca, ADF 'den esnek zamanlama ve Birleşik izleme deneyimi avantajını elde edebilirsiniz.
-- Hadoop kümenize Dıtcp komutu göndermek ve kopyalama durumunu izlemek için, şirket güvenlik duvarının arkasındaki bir Windows makinesine ADF Self-barındırılan tümleştirme çalışma zamanı 'nı yüklemeniz gerekir. Bu makine, veri taşıma altyapısı olmayacak (yalnızca denetim amacı için), makinenin kapasitesi veri hareketinin verimini etkilemez.
-- DistCp komutunun mevcut parametreleri desteklenir.
+- Bu mimaride, veriler genel İnternet üzerinden HTTPS kullanılarak güvenli bir şekilde aktarılır. 
+- Ortak bir ağ ortamında Data Factory DistCp modunu kullanmanızı öneririz. En iyi kopyalama aktarım hızını elde etmek için, güçlü bir mevcut kümeden yararlanabilirsiniz. Ayrıca, Data Factory 'ten esnek zamanlama ve Birleşik izleme deneyimi avantajını de elde edersiniz.
+- Bu mimaride, kendi kendine barındırılan tümleştirme çalışma zamanını, bir kurumsal güvenlik duvarının arkasındaki bir Windows makinesine Data Factory yükleyerek, Hadoop kümenize DistCp komutunu gönderebilirsiniz ve kopyalama durumunu izleyebilirsiniz. Makine, verileri taşıyacağınız bir altyapı olmadığından (yalnızca denetim amacı için), makinenin kapasitesi veri hareketinin verimini etkilemez.
+- DistCp komutundan mevcut parametreler destekleniyor.
 
+Bu görüntü, özel bir bağlantı üzerinden verilerin geçirilmesini gösterir: 
 
-Verileri özel bağlantı üzerinden geçir: 
+![Özel bir ağ üzerinden veri taşımaya yönelik çözüm mimarisini gösteren diyagram](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-private-network.png)
 
-![çözüm-mimari-özel-ağ](media/data-migration-guidance-hdfs-to-azure-storage/solution-architecture-private-network.png)
+- Bu mimaride, veriler Azure ExpressRoute aracılığıyla özel bir eşleme bağlantısı üzerinden geçirilir. Veriler, genel İnternet üzerinden hiçbir şekilde gezmez.
+- DistCp Aracı, Azure Storage sanal ağ uç noktası ile ExpressRoute özel eşlemesini desteklemez. Verileri geçirmek için tümleştirme çalışma zamanı aracılığıyla Data Factory yerel özelliğini kullanmanızı öneririz.
+- Bu mimari için, Data Factory şirket içinde barındırılan tümleştirme çalışma zamanını Azure sanal ağınızdaki bir Windows sanal makinesine yüklemelisiniz. Ağınızı ve depolama ıOPS veya bant genişliğinizi tam olarak kullanabilmeniz için sanal makinelerinizi el ile ölçeklendirebilir veya birden çok VM 'ye ölçeklendirebilirsiniz.
+- Her bir Azure VM için (Data Factory şirket içinde barındırılan tümleştirme çalışma zamanı yüklü) ile başlamak için önerilen yapılandırma, 32 vCPU ve 128 GB bellek ile Standard_D32s_v3. Veri geçişi sırasında VM 'nin CPU ve bellek kullanımını, daha iyi performans için sanal makineyi ölçeklendirmeniz gerekip gerekmediğini ve maliyeti azaltmak için VM 'nin ölçeğini azaltmayı seçebilirsiniz.
+- Ayrıca, tek bir şirket içinde barındırılan tümleştirme çalışma zamanına sahip dört VM düğümünü ilişkilendirerek da ölçeği genişletebilirsiniz. Şirket içinde barındırılan tümleştirme çalışma zamanına karşı çalışan tek bir kopyalama işi otomatik olarak dosya kümesini bölümlendirir ve dosyaları paralel olarak kopyalamak için tüm VM düğümlerini kullanır. Yüksek kullanılabilirlik için, veri geçişi sırasında tek noktadan oluşan bir senaryoyu önlemek üzere iki VM düğümü ile başlamanız önerilir.
+- Bu mimariyi kullandığınızda, ilk anlık görüntü veri geçişi ve Delta veri geçişi sizin için kullanılabilir.
 
-- Bu mimaride veri geçişi, Azure Express Route aracılığıyla özel bir eşleme bağlantısı üzerinden yapılır, böylece veriler hiçbir şekilde herkese açık Internet üzerinden geçmez.
-- DistCp aracı Express Route özel eşlemesi + Azure Storage VNet uç noktasını desteklemez, bu nedenle verileri geçirmek için tümleştirme çalışma zamanı aracılığıyla ADF yerel özelliğini kullanmanız önerilir.
-- Bu mimariye ulaşmak için Azure sanal ağınızdaki bir Windows sanal makinesine ADF şirket içinde barındırılan tümleştirme çalışma zamanı 'nı yüklemeniz gerekir. Ağınızı ve depolama ıOPS/bant genişliğinizi tam olarak kullanabilmeniz için sanal makinelerinizi el ile ölçeklendirebilir veya birden çok VM 'ye ölçeklendirebilirsiniz.
-- Her bir Azure VM için (ADF şirket içinde barındırılan tümleştirme çalışma zamanı yüklü olan) yapılandırma önerilir. Standard_D32s_v3, 32 vCPU ve 128 GB bellek ile başlatılır. Veri geçişi sırasında sanal makinenin CPU ve bellek kullanımının izlenmesini, daha iyi performans için sanal makineyi daha iyi ölçeklendirmeniz veya maliyeti kazanmak için VM 'nin ölçeğini ölçeklendirmeniz gerektiğini görmek için izleyebilirsiniz.
-- Ayrıca, tek bir şirket içinde barındırılan IR ile 4 VM düğümünü ilişkilendirerek da ölçeği genişletebilirsiniz. Şirket içinde barındırılan bir IR 'ye karşı çalışan tek bir kopyalama işi otomatik olarak dosya kümesini bölümleyip, dosyaları paralel olarak kopyalamak için tüm VM düğümlerinden faydalanır. Yüksek kullanılabilirlik için, veri geçişi sırasında tek hata noktasını önlemek üzere iki VM düğümüyle başlamanız önerilir.
-- Bu mimari kullanılarak hem ilk anlık görüntü veri geçişi hem de Delta verileri geçişi elde edilebilir.
+## <a name="implementation-best-practices"></a>En iyi uygulama uygulamaları
 
-
-## <a name="implementation-best-practices"></a>En iyi uygulama uygulamaları 
+Veri geçişinizi uygularken bu en iyi yöntemleri izlemeniz önerilir.
 
 ### <a name="authentication-and-credential-management"></a>Kimlik doğrulama ve kimlik bilgisi yönetimi 
 
 - Bu durumda, bir [Windows (Kerberos) veya anonim](https://docs.microsoft.com/azure/data-factory/connector-hdfs#linked-service-properties)olarak kimlik doğrulaması yapmak için kullanabilirsiniz. 
-- Azure Blob depolamaya bağlanmak için birden çok kimlik doğrulama türü desteklenir.  [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity) kullanımı kesinlikle önerilir: Azure AD 'de otomatik olarak YÖNETILEN bir ADF tanımının üzerine inşa edilen, bağlantılı hizmet tanımında kimlik bilgileri sağlamadan işlem hatlarını yapılandırmanıza olanak tanır.  Alternatif olarak, [hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [paylaşılan erişim imzası](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)veya [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)kullanarak Azure Blob depolama alanında kimlik doğrulaması yapabilirsiniz. 
-- Azure Data Lake Storage 2. bağlanmak için birden çok kimlik doğrulama türü de desteklenir.  [Hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) veya [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication) da kullanılabilir olsa da, [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity) kullanılması önemle önerilir. 
-- Azure kaynakları için Yönetilen kimlikler kullanmıyorsanız, ADF bağlı hizmetleri değiştirmeden anahtarları merkezi olarak yönetmeyi ve döndürmeyi kolaylaştırmak için [Azure Key Vault kimlik bilgilerinin depolanması](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) kesinlikle önerilir.  Bu Ayrıca, [CI/CD için en iyi uygulamalardan](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)biridir. 
+- Azure Blob depolamaya bağlanmak için birden çok kimlik doğrulama türü desteklenir.  [Azure kaynakları için yönetilen kimliklerin](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#managed-identity)kullanılması önemle önerilir. Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen Data Factory kimliğin üzerine inşa edilirken, Yönetilen kimlikler, bağlantılı hizmet tanımında kimlik bilgileri sağlamadan işlem hatlarını yapılandırmanıza olanak tanır. Alternatif olarak, bir [hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#service-principal-authentication), [paylaşılan erişim imzası](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#shared-access-signature-authentication)veya [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#account-key-authentication)kullanarak blob depolamada kimlik doğrulaması yapabilirsiniz. 
+- Data Lake Storage 2. bağlantı için birden çok kimlik doğrulama türü de desteklenir.  [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#managed-identity)kullanmanız önemle önerilir, ancak bir [hizmet sorumlusu](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication) veya [depolama hesabı anahtarı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#account-key-authentication)da kullanabilirsiniz. 
+- Azure kaynakları için Yönetilen kimlikler kullanmadığınız durumlarda, Data Factory bağlı hizmetleri değiştirmeden anahtarları merkezi olarak yönetmeyi ve döndürmeyi kolaylaştırmak için [Azure Key Vault kimlik bilgilerinin depolanmasını](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) kesinlikle öneririz. Bu, [CI/CD için de en iyi uygulamadır](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd). 
 
 ### <a name="initial-snapshot-data-migration"></a>İlk anlık görüntü verilerini geçirme 
 
-ADF DistCp modunda, ilk veri geçiş davranışını denetlemek için DistCp komutunu farklı parametrelerle göndermek üzere bir kopyalama etkinliği oluşturabilirsiniz. 
+Data Factory DistCp modunda, DistCp komutunu göndermek ve ilk veri geçiş davranışını denetlemek için farklı parametreler kullanmak üzere bir kopyalama etkinliği oluşturabilirsiniz. 
 
-ADF yerel IR modunda, veri bölümü özellikle 10 TB 'den fazla veri geçirirken önerilir. Verileri bölümlemek için, 1 saat içinde Klasör adlarından yararlanın ve sonra her ADF kopyalama işi aynı anda bir klasör bölümünü kopyalayabilir. Daha iyi üretilen iş için birden çok ADF kopyalama işini eşzamanlı olarak çalıştırabilirsiniz.
-Ağ veya veri deposu geçici sorunu nedeniyle kopyalama işlerinin herhangi biri başarısız olursa, belirli bir bölümü Ise 'den yeniden yüklemek için başarısız kopyalama işini yeniden çalıştırabilirsiniz. Diğer bölümleri yükleyen diğer tüm kopyalama işleri etkilenmeyecektir.
+Data Factory yerel tümleştirme çalışma zamanı modunda, özellikle 10 TB 'den fazla veri geçirdiğinizde veri bölümünün kullanılması önerilir. Verileri bölümlemek için, bu dosya adını Ardından, her bir Data Factory kopyalama işi aynı anda bir klasör bölümünü kopyalayabilir. Daha iyi üretilen iş için birden çok Data Factory kopyalama işini eşzamanlı olarak çalıştırabilirsiniz.
+
+Ağ veya veri deposu geçici sorunları nedeniyle kopyalama işlerinin herhangi biri başarısız olursa, bu belirli bölümü Ise 'den yeniden yüklemek için başarısız kopyalama işini yeniden çalıştırabilirsiniz. Diğer bölümleri yükleyen diğer kopyalama işleri etkilenmez.
 
 ### <a name="delta-data-migration"></a>Delta verileri geçişi 
 
-ADF DistCp modunda, Delta veri geçişine ulaşmak için "-güncelleştirme, kaynak dosya ve hedef dosyanın boyutu farklı olduğunda verileri yaz" ile uyumlu olmayan komut satırı parametrelerini kullanabilirsiniz.
+Data Factory DistCp modunda, Delta veri geçişi için, kaynak dosya ve hedef dosya boyutu farklı olduğunda, `-update` olan DistCp komut satırı parametresini kullanabilirsiniz.
 
-ADF yerel IR modunda, yeni veya değiştirilmiş dosyaları, "Örneğin," dosya veya klasör adında zaman dilimi bilgileri ile bölümlenmiş olarak bölümlendiğinde zaman bölümlenmiş adlandırma kuralını kullanarak (örneğin,/yyyy/mm/dd/ dosya. csv), ardışık düzen, artımlı olarak hangi dosya/klasörlerin kopyalanacağını kolayca tanımlayabilir.
-Alternatif olarak,,, Eğer,, eğer... Bu yöntem, ADF 'nin tüm dosyaları her zaman olarak taramasının yanı sıra, son değiştirilme zaman damgası belirli bir değerden daha büyük olan yeni ve güncelleştirilmiş dosyayı kopyalamasıdır. Bu durumda çok sayıda dosyanız varsa ilk dosya taramanın, filtre koşuluyla kaç dosya eşleşmesinden bağımsız olarak uzun sürdüğüne dikkat edin. Bu durumda, dosya taramanın paralel olarak gerçekleşebilmesi için ilk anlık görüntü geçişi için aynı bölümü kullanarak önce verileri bölümlenmesi önerilir.
+Data Factory yerel tümleştirme modunda, yeni veya değiştirilmiş dosyaları bir süre olarak belirlemek için en iyi yol, zaman bölümlenmiş bir adlandırma kuralı kullanmaktır. 1\. sırada verileriniz, dosya veya klasör adında saat dilimi bilgileriyle zaman dilimlendiğinde (örneğin, */yyyy/mm/dd/File.exe*), işlem hattı, artımlı olarak hangi dosya ve klasörlerin kopyalanacağını kolayca tanımlayabilir.
 
-### <a name="estimating-price"></a>Fiyat tahmini 
+Alternatif olarak, LastModifiedDate ' deki veriniz zaman bölümlenmemiş değilse, Data Factory yeni veya değiştirilmiş dosyaları değerlerini kullanarak tanımlayabilir. Data Factory, tüm dosyaları da her bir küme değerinden büyük olan son değiştirme zaman damgasına sahip olan yeni ve güncelleştirilmiş dosyaları kopyalar. 
 
-Azure Blob Storage 'a veri geçirmek için oluşturulan aşağıdaki işlem hattını göz önünde bulundurun: 
+Bir çok sayıda dosyanız varsa, filtre koşuluna göre kaç dosyanın eşleşip eşleşmediğine bakılmaksızın ilk dosya taraması uzun zaman alabilir. Bu senaryoda ilk anlık görüntü geçişi için kullandığınız bölümü kullanarak verileri bölümlememenizi öneririz. Sonra, dosya tarama paralel olarak gerçekleşebilir.
 
-![fiyatlandırma-işlem hattı](media/data-migration-guidance-hdfs-to-azure-storage/pricing-pipeline.png)
+### <a name="estimate-price"></a>Tahmin fiyatı 
 
-Şunları kabul edelim: 
+Azure Blob Storage 'dan verileri bir sunucudan geçirmek için aşağıdaki ardışık düzeni göz önünde bulundurun: 
 
-- Toplam veri hacmi 1 PB
-- İkinci çözüm mimarisini kullanarak verileri geçirme (ADF yerel IR modu)
-- 1 PB 1000 bölüme ayrılmıştır ve her bir kopya bir bölüm taşıdıkça
-- Her kopyalama etkinliği, 4 makineyle ilişkili, şirket içinde barındırılan tek bir IR ile yapılandırılır ve 500 MBps aktarım hızına erişir.
-- ForEach eşzamanlılık 4 olarak ayarlanır ve toplam verimlilik 2 GBps 'dir
+![Fiyatlandırma ardışık düzenini gösteren diyagram](media/data-migration-guidance-hdfs-to-azure-storage/pricing-pipeline.png)
+
+Aşağıdaki bilgileri alalım: 
+
+- Toplam veri hacmi 1 PB 'dir.
+- Data Factory yerel tümleştirme çalışma zamanı modunu kullanarak verileri geçirin.
+- 1 PB, 1.000 bölüme ayrılmıştır ve her kopya bir bölüm taşıdır.
+- Her kopyalama etkinliği, dört makine ile ilişkili olan ve 500 MBps aktarım hızına sahip olan kendiliğinden konak bir tümleştirme çalışma zamanı ile yapılandırılır.
+- ForEach eşzamanlılık **4** olarak ayarlanır ve toplam üretilen Iş 2 GB 'dir.
 - Toplamda, geçişin tamamlandığı 146 saat sürer.
 
+Varsayımlarımıza göre tahmini fiyat aşağıda verilmiştir: 
 
-Yukarıdaki varsayımlar temelinde tahmini fiyat aşağıda verilmiştir: 
-
-![fiyatlandırma-tablo](media/data-migration-guidance-hdfs-to-azure-storage/pricing-table.png)
+![Fiyatlandırma hesaplamalarını gösteren tablo](media/data-migration-guidance-hdfs-to-azure-storage/pricing-table.png)
 
 > [!NOTE]
-> Bu bir kuramsal fiyatlandırma örneğidir.  Gerçek fiyatlandırağınız, ortamınızdaki gerçek işleme göre değişir.
-> Azure Windows VM fiyatı (Şirket içinde barındırılan tümleştirme çalışma zamanı yüklü) dahil değildir.
+> Bu bir kuramsal fiyatlandırma örneğidir. Gerçek fiyatlandırağınız, ortamınızdaki gerçek işleme göre değişir.
+> Azure Windows VM 'nin (Şirket içinde barındırılan tümleştirme çalışma zamanı yüklü) fiyatı dahil değildir.
 
-### <a name="additional-references"></a>Ek başvurular 
-- [HDFS Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
-- [Azure Blob Depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+### <a name="additional-references"></a>Ek başvurular
+
+- [Bağlantı ucu Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-hdfs)
+- [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage 2. Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Kopyalama etkinliği performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
-- [Şirket içinde barındırılan Integration Runtime oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
-- [Şirket içinde barındırılan tümleştirme çalışma zamanı HA ve ölçeklenebilirliği](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
+- [Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
+- [Şirket içinde barındırılan tümleştirme çalışma zamanı yüksek kullanılabilirlik ve ölçeklenebilirlik](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)
 - [Veri taşıma güvenlik konuları](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations)
 - [Azure Key Vault kimlik bilgilerini depolama](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)
-- [Dosyayı, bölümlenmiş dosya adına göre artımlı olarak Kopyala](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
+- [Bir dosyayı zaman bölümlenmiş bir dosya adına göre artımlı olarak Kopyala](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [LastModifiedDate göre yeni ve değiştirilmiş dosyaları Kopyala](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
-- [ADF fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+- [Data Factory fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Data Factory ile birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md)
+- [Azure Data Factory kullanarak birden çok kapsayıcıdan dosya kopyalama](solution-template-copy-files-multiple-containers.md)

@@ -1,7 +1,7 @@
 ---
 title: Yaş önceden oluşturulmuş varlık-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makalede yaş içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+description: Bu makale, Language Understanding (LUSıS) içindeki yaş önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d72af0c2126ef74f95697755a7ead354214f695c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1b2ff6b64661010136d43b8d1f10abb58a88102a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932550"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677721"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için yaş önceden oluşturulmuş varlık
-Önceden oluşturulmuş yaş varlık, hem sayısal ve gün, hafta, ay ve yıl açısından yaş değeri yakalar. Bu varlık zaten eğitildi çünkü uygulama hedefleri için yaş içeren örnek Konuşma ekleme gerekmez. Yaş varlık içerisinde desteklendiği [çok kültür](luis-reference-prebuilt-entities.md). 
+Önceden oluşturulan yaş varlığı, Yaş değerini hem sayısal hem de günler, hafta, ay ve yıl bakımından yakalar. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını yaş içeren örnek bir değer eklemeniz gerekmez. Yaş varlığı [birçok kültürde](luis-reference-prebuilt-entities.md)desteklenir. 
 
 ## <a name="types-of-age"></a>Yaş türleri
 Yaş [metni](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L3) GitHub deposundan yaş yönetiliyor
 
-## <a name="resolution-for-prebuilt-age-entity"></a>Önceden oluşturulmuş yaş varlık için çözümleme
+## <a name="resolution-for-prebuilt-age-entity"></a>Önceden oluşturulmuş yaş varlığına yönelik çözüm
 
-### <a name="api-version-2x"></a>API sürüm 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.age** varlık.
+Aşağıdaki örnek, **yerleşik. Age** varlığının çözünürlüğünü gösterir.
 
 ```json
 {
@@ -52,9 +52,9 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.age** varlık.
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `false` olarak ayarlanmıştır:
 
 ```json
 {
@@ -79,7 +79,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 }
 ```
 
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `true` olarak ayarlanmıştır:
 
 ```json
 {
@@ -116,6 +116,10 @@ Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [para birimi](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), ve [boyut](luis-reference-prebuilt-dimension.md) varlıklar. 
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+
+[Para birimi](luis-reference-prebuilt-currency.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md)ve [Boyut](luis-reference-prebuilt-dimension.md) varlıkları hakkında bilgi edinin. 

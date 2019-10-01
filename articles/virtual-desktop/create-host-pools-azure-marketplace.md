@@ -1,22 +1,22 @@
 ---
-title: Azure Marketi 'ni kullanarak Windows sanal masaüstü önizleme ana bilgisayar havuzu oluşturma-Azure
-description: Azure Marketi 'ni kullanarak Windows sanal masaüstü önizleme ana bilgisayar havuzu oluşturma.
+title: Azure Marketi 'ni kullanarak bir Windows sanal masaüstü konak havuzu oluşturma-Azure
+description: Azure Marketi 'ni kullanarak Windows sanal masaüstü konak havuzu oluşturma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c0b93529872de774e1a6e915ef8254c5c0e0a1a9
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208390"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676704"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Market kullanarak ana bilgisayar havuzu oluşturma
+# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Öğretici: Azure Marketi 'ni kullanarak bir konak havuzu oluşturma
 
-Konak havuzları, Windows sanal masaüstü önizleme kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
+Konak havuzları, Windows sanal masaüstü kiracı ortamlarında bir veya daha fazla özdeş sanal makine koleksiyonudur. Her konak havuzu, kullanıcıların fiziksel bir masaüstünde yaptıkları gibi etkileşime girebilecekleri bir uygulama grubu içerebilir.
 
 Bu öğreticide, bir Microsoft Azure Market teklifi kullanarak Windows sanal masaüstü kiracısı içinde bir konak havuzunun nasıl oluşturulacağı açıklanmaktadır. Görevler şunları içerir:
 
@@ -32,27 +32,27 @@ Başlamadan önce, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üze
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırın
 
 Yeni bir konak havuzu sağlamak için Azure Marketi teklifini çalıştırmak için:
 
-1. Kaynak **+** seçin veya **+ oluşturun**.
+1. **@No__t-1** veya **+ kaynak oluştur**' u seçin.
 2. Market arama penceresinde **Windows sanal masaüstü** ' nu girin.
 3. **Windows Sanal Masaüstü ' nü seçin-bir konak havuzu sağlayın**ve **Oluştur**' u seçin.
 
 Bundan sonra, uygun dikey pencereler için bilgi girmek üzere sonraki bölümdeki yönergeleri izleyin.
 
-### <a name="basics"></a>Temel
+### <a name="basics"></a>Temel Bilgiler
 
 **Temel bilgiler** dikey penceresinde şunları yapın:
 
 1. Windows sanal masaüstü kiracısı içinde benzersiz olan konak havuzu için bir ad girin.
 2. Kişisel masaüstü için uygun seçeneği belirleyin. **Evet**' i seçerseniz, bu konak havuzuna bağlanan her bir Kullanıcı, bir sanal makineye kalıcı olarak atanır.
-3. Windows sanal masaüstü istemcilerinde oturum açabilen ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişebilen kullanıcıların virgülle ayrılmış bir listesini girin. Örneğin, atamak user1@contoso.com ve user2@contoso.com erişmek istiyorsanız, "user1@contoso.com,user2@contoso.com" yazın.
+3. Windows sanal masaüstü istemcilerinde oturum açabilen ve Azure Marketi teklifi bittikten sonra bir masaüstüne erişebilen kullanıcıların virgülle ayrılmış bir listesini girin. Örneğin, user1@contoso.com ve user2@contoso.com erişimi atamak istiyorsanız, "user1@contoso.com, user2@contoso.com" girin.
 4. Yeni **Oluştur** ' u seçin ve yeni kaynak grubu için bir ad sağlayın.
 5. **Konum**için, Active Directory sunucusuyla bağlantısı olan sanal ağla aynı konumu seçin.
 6. **Tamam**’ı seçin.
@@ -80,7 +80,7 @@ Bundan sonra, uygun dikey pencereler için bilgi girmek üzere sonraki bölümde
 3. Active Directory sunucusuyla bağlantısı olan sanal ağı seçin ve ardından sanal makineleri barındırmak için bir alt ağ seçin.
 4. **Tamam**’ı seçin.
 
-### <a name="windows-virtual-desktop-preview-tenant-information"></a>Windows sanal masaüstü önizleme kiracı bilgileri
+### <a name="windows-virtual-desktop-tenant-information"></a>Windows sanal masaüstü kiracı bilgileri
 
 **Windows sanal masaüstü kiracı bilgileri dikey penceresi** için:
 

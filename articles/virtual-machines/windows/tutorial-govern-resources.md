@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 8c551e5c61c091e46870efcc8bffcb669aa78ea9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cb0050f79f2f6a38b9cd58ee87aa88899f0f5a15
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100325"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675000"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Windows sanal makine yönetimi hakkında bilgi edinin
 
@@ -70,7 +70,7 @@ New-AzRoleAssignment -ObjectId $adgroup.id `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-Asıl GUID 'yi belirten bir hata alırsanız  **>dizindeyoksa,yenigrupAzureActiveDirectorygenelindeyayılmaz\<** . Komutu tekrar çalıştırmayı deneyin.
+Ana @no__t belirten bir hata alırsanız **-1guıd > dizinde yoksa**, yeni grup Azure Active Directory genelinde yayılmaz. Komutu tekrar çalıştırmayı deneyin.
 
 Genellikle, kullanıcıların dağıtılmış kaynakları yönetmek için atandığından emin olmak üzere *Ağ Katılımcısı* ve *Depolama Hesabı Katılımcısı* için işlemi yinelemeniz gerekir. Bu makalede, söz konusu adımları atlayabilirsiniz.
 
@@ -235,8 +235,8 @@ Bu öğreticide, özel bir VM görüntüsü oluşturdunuz. Şunları öğrendini
 > * Kilitlerle kritik kaynakları koruma
 > * Fatura ve yönetim için kaynakları etiketleme
 
-Yüksek oranda kullanılabilir sanal makineler hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Bir Linux sanal makinesindeki değişiklikleri belirleme ve paket güncelleştirmelerini yönetme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Sanal makineleri izleme](tutorial-monitoring.md)
+> [Sanal makineleri yönetme](tutorial-config-management.md)
 

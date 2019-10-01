@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306013"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686814"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme
 
@@ -26,17 +26,17 @@ Müşteriler, e-posta ile ve her bölgede kullanılabilir olan ağ geçitlerinde
 ## <a name="impact-of-this-change"></a>Bu değişikliğin etkisi
 
 Trafik geçişinin yeni ağ geçitlerine ilk **turu, aşağıdaki bölgelerde 14 ekim 2019** için zamanlanır:
-- Güney Brezilya
+- Brezilya Güney
 - Batı ABD
 - Batı Avrupa
-- East US
+- Doğu ABD
 - Orta ABD
 - Güneydoğu Asya
-- Orta Güney ABD
+- Güney Orta ABD
 - Kuzey Avrupa
 - Orta Kuzey ABD
-- Japonya Batı
-- Japonya Doğu
+- Batı Japonya
+- Doğu Japonya
 - Doğu ABD 2
 - Doğu Asya
 
@@ -52,11 +52,11 @@ Trafik geçişi, DNS 'nin SQL veritabanınız için çözümlediği genel IP adr
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>Etkileniyorsanız yapmanız gerekenler
 
-TCP bağlantı noktası 1433 ' deki bölgedeki tüm [Azure SQL veritabanı ağ GEÇIDI IP adresleri](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) ve güvenlik duvarı cihazınızda 11000-11999 bağlantı noktası ARALıĞı için IP adreslerine giden trafiğe izin vermeniz önerilir. Bağlantı noktası aralıkları hakkında daha fazla bilgi için bkz. [bağlantı ilkesi](sql-database-connectivity-architecture.md#connection-policy).
+TCP bağlantı noktası 1433 ' deki bölgedeki tüm [Azure SQL veritabanı ağ GEÇIDI IP adresleri](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses) ve 11000-11999 bağlantı noktası ARALıĞı için IP adreslerine giden trafiğe izin vermeniz önerilir. Bu öneri, Şirket içinden bağlanan istemciler ve ayrıca hizmet uç noktaları aracılığıyla bağlanan istemciler için geçerlidir. Bağlantı noktası aralıkları hakkında daha fazla bilgi için bkz. [bağlantı ilkesi](sql-database-connectivity-architecture.md#connection-policy).
 
 4,0 sürümünün altında Microsoft JDBC sürücüsü kullanılarak gerçekleştirilen uygulamalardan yapılan bağlantılar sertifika doğrulaması başarısız olabilir. Microsoft JDBC 'nın daha düşük sürümleri, sertifikanın konu alanında ortak adı (CN) kullanır. Risk azaltma, Hostnameincercertificate özelliğinin *. database.windows.net olarak ayarlandığından emin olunması. Hostnameincercertificate özelliğinin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [SSL şifrelemesiyle bağlanma](/sql/connect/jdbc/connecting-with-ssl-encryption).
 
-Yukarıdaki hafifletme işe yaramazsa, aşağıdaki URL 'YI kullanarak SQL veritabanı için bir destek isteği dosyası kullanın: https://aka.ms/getazuresupport
+Yukarıdaki hafifletme işe yaramazsa, aşağıdaki URL 'YI kullanarak SQL veritabanı için bir destek isteği dosyasına dosya: https://aka.ms/getazuresupport
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e8a186fbcb04dc29fcf57a2353adcf89ce46b119
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844585"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677927"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 'i Azure 'a bağlama IoT Hub
 
@@ -31,7 +31,7 @@ Microsoft Azure hizmetlerinden faydalanan Nesnelerin İnterneti (IoT) çözümle
 
 Henüz bir DevKit yok mu? [Devkit simülatörünü](https://azure-samples.github.io/iot-devkit-web-simulator/) deneyin veya [bir devkit satın alın](https://aka.ms/iot-devkit-purchase).
 
-Tüm DevKit öğreticileri için kaynak kodunu [IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) deposunda bulabilirsiniz.
+[Kod örnekleri galerisindeki](https://docs.microsoft.com/samples/browse/?term=mxchip)tüm devkit öğreticileri için kaynak kodu bulabilirsiniz.
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
@@ -60,11 +60,11 @@ DevKit 'i bilgisayarınıza bağlamak için şu adımları izleyin:
 
    ![Donanım bağlantıları](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connect.jpg)
 
-## <a name="quickstart-send-telemetry-from-devkit-to-an-iot-hub"></a>Hızlı Başlangıç: DevKit 'ten bir IoT Hub telemetri gönderin
+## <a name="quickstart-send-telemetry-from-devkit-to-an-iot-hub"></a>Hızlı başlangıç: DevKit 'ten bir IoT Hub telemetri gönderin
 
 Hızlı başlangıç, telemetrinin IoT Hub göndermek için önceden derlenmiş DevKit bellenimini kullanır. Çalıştırmadan önce bir IoT Hub oluşturun ve bir cihazı hub 'a kaydedersiniz.
 
-### <a name="create-an-iot-hub"></a>IoT hub oluşturma
+### <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -74,20 +74,20 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-   **Youriothubname**: Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-   **Mynodedevice**: Kayıt yaptığınız cihazın adı. Gösterildiği gibi **Mynodedevice** kullanın. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanmanız ve örnek uygulamalarda cihaz adını çalıştırmadan önce güncelleştirmeniz gerekir.
+   **Mynodedevice**: kaydetmekte olduğunuz cihazın adı. Gösterildiği gibi **Mynodedevice** kullanın. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanmanız ve örnek uygulamalarda cihaz adını çalıştırmadan önce güncelleştirmeniz gerekir.
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
     ```
 
    > [!NOTE]
-   > Çalışırken `device-identity`bir hata alırsanız daha fazla bilgi için Azure [CLI için Azure IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) yükleyebilirsiniz.
+   > @No__t-0 ' ı çalıştırırken hata alırsanız daha fazla bilgi için Azure [CLI Için Azure IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) yükleyebilirsiniz.
   
 1. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
 
-   **Youriothubname**: Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
@@ -141,7 +141,7 @@ DevKit, IoT Hub 'ınızdaki cihaza özgü bir uç noktaya bağlanır ve sıcakl�
 
     ![WiFi IP 'si](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/wifi-ip.jpg)
 
-    ![Veri gönderme](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
+    ![Veriler gönderiliyor](media/iot-hub-arduino-devkit-az3166-get-started/quickstarts/sending-data.jpg)
 
 1. Azure 'a gönderilen telemetri verilerini doğrulamak için Azure Cloud Shell ' de aşağıdaki komutu çalıştırın:
 
@@ -157,8 +157,8 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
 
 1. [Arduino IDE](https://www.arduino.cc/en/Main/Software)'yi yükler. Arduino kodunu derlemek ve karşıya yüklemek için gerekli araç zincirini sağlar.
     * **Windows**: Windows Installer sürümünü kullanın. Uygulama mağazasından yüklemeyin.
-    * **MacOS**: Ayıklanan **Arduino. app** `/Applications` ' i klasöre sürükleyip bırakın.
-    * **Ubuntu**: Bunu şöyle bir klasöre ayıklayın`$HOME/Downloads/arduino-1.8.8`
+    * **MacOS**: ayıklanan **Arduino. uygulamayı** `/Applications` klasörüne sürükleyip bırakın.
+    * **Ubuntu**: `$HOME/Downloads/arduino-1.8.8` gibi klasöre unzip
 
 2. Güçlü IntelliSense ile platformlar arası kaynak kodu Düzenleyicisi, kod tamamlama ve hata ayıklama desteği, Market 'ten de zengin uzantılar yüklenebilir [Visual Studio Code](https://code.visualstudio.com/)yükleme.
 
@@ -208,7 +208,7 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
         "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
         ```
 
-6. Komut `F1` paletini açmak için tıklayın, yazın ve Arduino ' i seçin:  **Pano Yöneticisi**. **AZ3166** araması yapın ve en son sürümü yükler.
+6. @No__t-0 ' a tıklayarak komut paletini açın, yazın ve **Arduino: Board Manager**' ı seçin. **AZ3166** araması yapın ve en son sürümü yükler.
 
     ![DevKit SDK 'Yı yükler](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-az3166-sdk.png)
 
@@ -216,9 +216,9 @@ DevKit için geliştirme ortamını hazırlamak üzere aşağıdaki adımları i
 
 [St-link/v2](https://www.st.com/en/development-tools/st-link-v2.html) , IoT devkit 'in geliştirme makineniz ile iletişim kurmak IÇIN kullandığı USB arabirimidir. Derlenen Cihaz kodunu DevKit 'e Flash için Windows 'a yüklemeniz gerekir. Cihaza makineye erişim sağlamak için işletim sistemine özgü adımları izleyin.
 
-* **Windows**: [Stmikro elektronik Web SITESINDEN](https://www.st.com/en/development-tools/stsw-link009.html)USB sürücü indirin ve yükleyin.
+* **Windows**: [stmikro elektronık Web sitesinden](https://www.st.com/en/development-tools/stsw-link009.html)USB sürücü indirin ve yükleyin.
 * **MacOS**: MacOS için sürücü gerekmez.
-* **Ubuntu**: Bu komutları terminalde çalıştırın ve grup değişikliğinin etkili olması için oturum açın ve oturum açın:
+* **Ubuntu**: terminalde komutları çalıştırın ve grup değişikliğinin etkili olması için oturumu açın ve oturum açın:
 
     ```bash
     # Copy the default rules. This grants permission to the group 'plugdev'
@@ -240,7 +240,7 @@ IoT DevKit, DevKit 'i çeşitli Azure hizmetlerine bağlamayı öğrenmek için 
 
 1. IoT DevKit 'in bilgisayarınıza **bağlı** olmadığından emin olun. Önce VS Code başlatın ve ardından DevKit 'i bilgisayarınıza bağlayın.
 
-1. Komut `F1` paletini açmak için tıklayın, Azure IoT cihaz çalışma **ekranı ' nı yazın ve seçin: Örnekleri aç...** . Ardından, pano olarak **IoT DevKit** ' i seçin.
+1. @No__t-0 ' a tıklayarak komut paletini açın, Azure IoT cihaz çalışma ekranı ' nı yazın ve seçin **: örnekleri aç...** . Ardından, pano olarak **IoT DevKit** ' i seçin.
 
 1. IoT çalışma ekranı örnekleri sayfasında **Başlarken** ' i bulun ve **örneği aç**' a tıklayın. Ardından örnek kodu indirmek için varsayılan yolu seçer.
 
@@ -250,7 +250,7 @@ IoT DevKit, DevKit 'i çeşitli Azure hizmetlerine bağlamayı öğrenmek için 
 
 Azure portal Azure IoT Hub ve cihaz sağlamak yerine, bunu geliştirme ortamından çıkmadan VS Code yapabilirsiniz.
 
-1. Yeni açılan proje penceresinde, komut paletini açmak `F1` için tıklayın, Azure IoT cihaz çalışma ekranı ' **nı yazın ve seçin: Azure hizmetlerini sağla...** . Azure IoT Hub sağlamayı ve IoT Hub cihazı oluşturmayı tamamlayacak adım adım kılavuzu izleyin.
+1. Yeni açılan proje penceresinde, `F1` ' a tıklayarak komut paletini açın, **Azure IoT cihaz çalışma ekranı: Azure hizmetleri sağla...** seçeneğini belirleyin. Azure IoT Hub sağlamayı ve IoT Hub cihazı oluşturmayı tamamlayacak adım adım kılavuzu izleyin.
 
     ![Komutu sağla](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/provision.png)
 
@@ -293,13 +293,13 @@ Azure portal Azure IoT Hub ve cihaz sağlamak yerine, bunu geliştirme ortamınd
 
     ![Pano ve COM seçin](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-com.png)
 
-1. Komut `F1` paletini açmak için tıklayın, Azure IoT cihaz çalışma **ekranı ' nı yazın ve seçin: Cihaz ayarlarını yapılandır... sonra yapılandırma **Cihaz bağlantı dizesi > seçin IoT Hub cihaz bağlantı dizesi**' ni seçin.**
+1. @No__t-0 ' a tıklayarak komut paletini açın, Azure IoT cihaz çalışma ekranı ' nı yazın ve seçin **: cihaz ayarlarını yapılandır...** ' ı seçin ve ardından **yapılandırma cihaz bağlantı dizesi > IoT Hub cihaz bağlantı dizesi**seçin.
 
 1. DevKit üzerinde, **düğme a**' yı basılı tutun, **Sıfırla** düğmesini gönderin ve sonra **A düğmesine**basın. DevKit yapılandırma moduna girer ve bağlantı dizesini kaydeder.
 
     ![Bağlantı dizesi](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/connection-string.png)
 
-1. Yeniden `F1` tıklayın, yazın ve Azure **IoT cihaz çalışma ekranı ' nı seçin: Cihaz kodunu**karşıya yükleyin. Derlemeyi başlatır ve kodu DevKit 'e yükler.
+1. @No__t-0 ' a tekrar tıklayın, yazın ve **Azure IoT cihaz çalışma ekranı: Cihaz kodunu karşıya yükleyin**. Derlemeyi başlatır ve kodu DevKit 'e yükler.
 
     ![Arduino karşıya yükleme](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/arduino-upload.png)
 
@@ -329,13 +329,13 @@ IoT Hub içindeki cihazdan buluta (D2C) iletilerini izlemek için [Azure IoT ara
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın, oluşturduğunuz IoT Hub bulun.
 
-    ![Azure portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Azure portalı](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. **Paylaşılan erişim ilkeleri** bölmesinde, **ıothubowner Ilkesine**tıklayın ve IoT Hub 'ınızın bağlantı dizesini yazın.
 
     ![Azure IoT Hub bağlantı dizesi](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-portal-conn-string.png)
 
-1. VS Code ' de, `F1`' ye tıklayın, **Azure IoT Hub yazın ve seçin: IoT Hub bağlantı dizesi**ayarla. Bağlantı dizesini buna kopyalayın.
+1. VS Code, `F1` ' a tıklayın, yazın ve **Azure IoT Hub: IoT Hub bağlantı dizesi ayarla**' yı seçin. Bağlantı dizesini buna kopyalayın.
 
     ![Azure IoT Hub bağlantı dizesi ayarla](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/set-iothub-connection-string.png)
 
@@ -349,13 +349,13 @@ IoT Hub içindeki cihazdan buluta (D2C) iletilerini izlemek için [Azure IoT ara
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-, `GetStarted.ino` Ana Arduino taslak dosyasıdır.
+@No__t-0, ana Arduino taslak dosyasıdır.
 
 ![D2C iletisi](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/code.png)
 
-Cihaz telemetrinin Azure IoT Hub nasıl gönderildiğini görmek için, `utility.cpp` dosyayı aynı klasörde açın. IoT DevKit üzerinde algılayıcılar ve çevre birimleri kullanmayı öğrenmek için [API başvurusunu](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) görüntüleyin.
+Cihaz telemetrinin Azure IoT Hub nasıl gönderildiğini görmek için, `utility.cpp` dosyasını aynı klasörde açın. IoT DevKit üzerinde algılayıcılar ve çevre birimleri kullanmayı öğrenmek için [API başvurusunu](https://microsoft.github.io/azure-iot-developer-kit/docs/apis/arduino-language-reference/) görüntüleyin.
 
-Kullanılan `DevKitMQTTClient` , Azure IoT Hub etkileşimde bulunmak için [Microsoft Azure IoT SDK 'ları ve kütüphanelerinin](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) bir **iothub_client** sarmalayıcısıdır.
+@No__t-0, Azure IoT Hub etkileşimde bulunmak için [Microsoft Azure IoT SDK 'larının ve kitaplıklarının](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client) **iothub_client** bir sarmalayıcısıdır.
 
 ## <a name="problems-and-feedback"></a>Sorunlar ve geri bildirim
 

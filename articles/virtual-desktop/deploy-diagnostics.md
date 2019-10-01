@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233242"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676650"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -98,13 +98,13 @@ Bu bölüm, önceki bölümde PowerShell betiği olmadan oluşturulan mevcut bir
 1. Internet tarayıcınızı açın ve [Azure Portal](https://portal.azure.com/) Yönetici hesabınızla oturum açın.
 2. Sonra, yapılandırılan Windows performans sayaçlarını gözden geçirmek için **Log Analytics çalışma alanlarına** gidin.
 3. **Ayarlar** bölümünde **Gelişmiş ayarlar**' ı seçin.
-4. Bundan sonra, **veri** > **Windows performans sayaçları** ' na gidin ve aşağıdaki sayaçları ekleyin:
+4. Bundan sonra, **Data** > **Windows performans sayaçlarına** gidin ve aşağıdaki sayaçları ekleyin:
 
-    -   MantıksalDisk\*(\|)% boş alan
-    -   MantıksalDisk (C\\:) ort. Disk Kuyruğu Uzunluğu
-    -   Bellek (\*)\\kullanılabilir MBayt
-    -   İşlemci bilgileri (\*)\\işlemci zamanı
-    -   Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi
+    -   MantıksalDisk (\*) \|% boş alan
+    -   MantıksalDisk (C:) \\Ort. disk kuyruğu uzunluğu
+    -   Bellek (\*) \\Kullanılabilir MBayt
+    -   İşlemci bilgileri (\*) \\Işlemci zamanı
+    -   Oturum başına kullanıcı girişi gecikmesi (\*) \\En fazla giriş gecikmesi
 
 [Azure izleyici 'de Windows ve Linux performans verileri kaynaklarında](/azure/azure-monitor/platform/data-sources-performance-counters)performans sayaçları hakkında daha fazla bilgi edinin.
 
@@ -131,14 +131,14 @@ Log Analytics çalışma alanınızın önceden yapılandırılmış Windows per
 
 1. [Azure Portal](https://portal.azure.com/), yapılandırılmış Windows performans sayaçlarını gözden geçirmek için **Log Analytics çalışma alanları** ' na gidin.
 2. **Ayarlar**altında **Gelişmiş ayarlar**' ı seçin.
-3. Bundan sonra, **veri** > **Windows performans sayaçları**' na gidin.
+3. Bundan sonra, **Data** > **Windows performans sayaçları**' na gidin.
 4. Aşağıdaki sayaçların önceden yapılandırılmış olduğundan emin olun:
 
-   - MantıksalDisk\*(\|)% boş alan: Diskteki toplam kullanılabilir alanın boş alan miktarını yüzde olarak görüntüler.
-   - MantıksalDisk (C\\:) ort. Disk sırası uzunluğu: C sürücünüz için disk aktarım isteği uzunluğu. Değer, kısa bir süre için 2 ' den fazla olamaz.
-   - Bellek (\*)\\kullanılabilir MBayt: Sistem için megabayt cinsinden kullanılabilir bellek.
-   - İşlemci bilgileri (\*)\\işlemci zamanı: işlemcinin boş olmayan bir iş parçacığını yürütmek için harcadığı geçen sürenin yüzdesi.
-   - Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi
+   - MantıksalDisk (\*) \|% boş alan: diskte bulunan toplam kullanılabilir alanın boş alan miktarını yüzde olarak görüntüler.
+   - MantıksalDisk (C:) \\Ort. disk kuyruğu uzunluğu: C sürücünüz için disk aktarım isteği uzunluğu. Değer, kısa bir süre için 2 ' den fazla olamaz.
+   - Bellek (\*) \\Kullanılabilir MBayt: sistem için megabayt cinsinden kullanılabilir bellek.
+   - İşlemci bilgileri (\*) \\Işlemci Zamanı: işlemcinin boş olmayan bir iş parçacığını yürütmek için harcadığı geçen sürenin yüzdesi.
+   - Oturum başına kullanıcı girişi gecikmesi (\*) \\En fazla giriş gecikmesi
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Log Analytics çalışma alanınızdaki VM 'lere bağlanma
 
@@ -177,11 +177,11 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
 4.  Sol bölmede, Yönet bölümünde, **kimlik doğrulaması**' nı seçin.
 5.  **Yeniden YÖNLENDIRME URI** 'si metin kutusuna Istenen YENIDEN yönlendirme URI 'sini girin ve ardından menünün sol üst köşesindeki **Kaydet** ' i seçin.
 6. Tür ' ün altındaki açılan menüde **Web** ' i seçin.
-7. Uygulamaya genel bakış sayfasından URL 'YI girin ve sonuna **/Security/SignIn-callback** ekleyin. Örneğin: `https://<yourappname>.azurewebsites.net/security/signin-callback`
+7. Uygulamaya genel bakış sayfasından URL 'YI girin ve sonuna **/Security/SignIn-callback** ekleyin. Örneğin: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
 
    ![Yeniden yönlendirme URI 'SI sayfası](media/redirect-uri-page.png)
 
-8. Şimdi Azure kaynaklarınıza giderek, şablonda belirttiğiniz ada sahip Azure App Services kaynağını seçin ve onunla ilişkili URL 'ye gidin. (Örneğin, şablonda `contosoapp45`kullandığınız uygulama adı ise, ilişkili <https://contosoapp45.azurewebsites.net>URL 'niz).
+8. Şimdi Azure kaynaklarınıza giderek, şablonda belirttiğiniz ada sahip Azure App Services kaynağını seçin ve onunla ilişkili URL 'ye gidin. (Örneğin, şablonda kullandığınız uygulama adı `contosoapp45` ise, ilişkili URL 'niz <https://contosoapp45.azurewebsites.net>).
 9. Uygun Azure Active Directory Kullanıcı hesabını kullanarak oturum açın.
 10.   **Kabul Et**’i seçin.
 
@@ -189,8 +189,8 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
 
 Tanılama aracını kullanıcılarınız için kullanılabilir hale gelmeden önce, aşağıdaki izinlere sahip olduklarından emin olun:
 
-- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](/azure/azure-monitor/platform/roles-permissions-security).
--  Kullanıcıların ayrıca Windows sanal masaüstü kiracısı (RDS okuyucu rolü) için okuma erişimine ihtiyacı vardır. Daha fazla bilgi için bkz. [Windows sanal masaüstü önizlemesinde temsilci erişimi](delegated-access-virtual-desktop.md).
+- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](/articles/azure-monitor/platform/roles-permissions-security.md).
+-  Kullanıcıların ayrıca Windows sanal masaüstü kiracısı (RDS okuyucu rolü) için okuma erişimine ihtiyacı vardır. Daha fazla bilgi için bkz. [Windows sanal masaüstü 'Nde temsilci erişimi](delegated-access-virtual-desktop.md).
 
 Kullanıcılarınıza aşağıdaki bilgileri de vermeniz gerekir:
 
@@ -226,25 +226,25 @@ Oturum ana bilgisayarındaki kullanıcılarla da etkileşim kurabilirsiniz:
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows performans sayacı eşikleri
 
-- MantıksalDisk\*(\|)% boş alan:
+- MantıksalDisk (\*) \|% boş alan:
 
     - Boş olan mantıksal disk üzerindeki toplam kullanılabilir alan yüzdesini görüntüler.
-    - Eşiği % 20 ' den az, sağlıksız olarak işaretlendi.
+    - Eşik:% 20 ' den az, sağlıksız olarak işaretlendi.
 
-- MantıksalDisk (C\\:) ort. Disk sırası uzunluğu:
+- MantıksalDisk (C:) \\Ort. disk sırası uzunluğu:
 
     - Depolama sistemi koşullarını temsil eder.
-    - Eşiği 5 ' ten yüksek, sağlıksız olarak işaretlenir.
+    - Eşik: 5 ' ten yüksek, sağlıksız olarak işaretlendi.
 
-- Bellek (\*)\\kullanılabilir MBayt:
+- Bellek (\*) \\Kullanılabilir MBayt:
 
     - Sistem için kullanılabilir bellek.
-    - Eşiği 500 megabayttan az, sağlıksız olarak işaretlendi.
+    - Eşik: 500 megabayttan az, sağlıksız olarak işaretlendi.
 
-- İşlemci bilgileri (\*)\\işlemci zamanı:
+- İşlemci bilgileri (\*) \\Işlemci Zamanı:
 
-    - Eşiği % 80 ' den yüksek, sağlıksız olarak işaretlendi.
+    - Eşik:% 80 ' den yüksek, sağlıksız olarak işaretlendi.
 
-- [Oturum başına kullanıcı girişi gecikmesi (\*)\\en fazla giriş gecikmesi](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Oturum başına kullanıcı girişi gecikmesi (\*) \\ en fazla giriş gecikmesi](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - Eşiği 2000 MS 'den yüksek olmayan olarak işaretlenir.
+    - Eşik: 2000 MS 'den yüksek, sağlıksız olarak işaretlendi.

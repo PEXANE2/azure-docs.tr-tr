@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 1579c50f2dcf78e350ce014ffb1516cec4ac85b3
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 48dcbd51190e747859f0172473c94b0caa296071
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933482"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677559"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için sıralı v2 önceden oluşturulmuş varlık
-Ordinal v2 numarası `next`, `last`, ve `previous`gibi göreli başvurular sağlamak için [sıra](luis-reference-prebuilt-ordinal.md) sayısını genişletir. Bunlar, sıralı önceden oluşturulmuş varlık kullanılarak ayıklanmaz.
+Ordinal v2 numarası, `next`, `last` ve `previous` gibi göreli başvurular sağlamak için [sıra](luis-reference-prebuilt-ordinal.md) sayısını genişletir. Bunlar, sıralı önceden oluşturulmuş varlık kullanılarak ayıklanmaz.
 
 ## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Önceden oluşturulmuş Ordinal v2 varlığı için çözüm
 
-### <a name="api-version-2x"></a>API sürüm 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 Aşağıdaki örnek, **yerleşik. ordinalV2** varlığının çözünürlüğünü gösterir.
 
@@ -55,9 +55,9 @@ Aşağıdaki örnek, **yerleşik. ordinalV2** varlığının çözünürlüğün
 }
 ```
 
-### <a name="preview-api-version-3x"></a>Preview API sürüm 3. x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `false` olarak ayarlanmıştır:
 
 ```json
 {
@@ -82,7 +82,7 @@ Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 }
 ```
 
-Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
+Aşağıdaki JSON `verbose` parametresi `true` olarak ayarlanmıştır:
 
 ```json
 {
@@ -122,6 +122,10 @@ Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>Sonraki adımlar
+
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
 [Yüzde](luis-reference-prebuilt-percentage.md), [telefon numarası](luis-reference-prebuilt-phonenumber.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin. 

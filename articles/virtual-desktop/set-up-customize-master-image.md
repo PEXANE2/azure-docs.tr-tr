@@ -1,22 +1,22 @@
 ---
 title: Ana VHD görüntüsünü hazırlama ve özelleştirme-Azure
-description: Windows sanal masaüstü önizleme ana görüntüsünü hazırlama, özelleştirme ve Azure 'a yükleme.
+description: Windows sanal masaüstü ana görüntüsünü hazırlama, özelleştirme ve Azure 'a yükleme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 379664fb7170249b8f21ec9826f8b0b6fbe19892
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981068"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679539"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
-Bu makalede, sanal makineler (VM 'Ler) oluşturma ve bunlara yazılım yükleme dahil olmak üzere Azure 'a yükleme için bir ana sanal sabit disk (VHD) görüntüsünün nasıl hazırlanacağı açıklanmaktadır. Bu yönergeler, kuruluşunuzun mevcut işlemleriyle birlikte kullanılabilecek Windows sanal masaüstü önizlemesine özgü bir yapılandırma içindir.
+Bu makalede, sanal makineler (VM 'Ler) oluşturma ve bunlara yazılım yükleme dahil olmak üzere Azure 'a yükleme için bir ana sanal sabit disk (VHD) görüntüsünün nasıl hazırlanacağı açıklanmaktadır. Bu yönergeler, kuruluşunuzun mevcut işlemleriyle kullanılabilecek Windows sanal masaüstüne özgü bir yapılandırma içindir.
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
@@ -72,7 +72,7 @@ Kullanıcılarınızın belirli LOB uygulamalarına erişmesi gerekiyorsa, bu b�
 
 Yerel grup ilkesi aracılığıyla otomatik güncelleştirmeleri devre dışı bırakmak için:
 
-1. **Windows bileşenleri\\\\Windows Update Yönetim Şablonları yerel Grup İlkesi Düzenleyicisi açın.\\**
+1. **Yerel Grup İlkesi Düzenleyicisi @ no__t-1Yönetim şablonları @ no__t-2Windows bileşenleri @ no__t-3Windows Update**' i açın.
 2. **Otomatik güncelleştirmeyi yapılandır** ' a sağ tıklayın ve **devre dışı**olarak ayarlayın.
 
 Otomatik güncelleştirmeleri devre dışı bırakmak için komut isteminde aşağıdaki komutu da çalıştırabilirsiniz.
@@ -109,9 +109,9 @@ Bir konak havuzundaki tüm VM 'Ler aynı güvenlik grubunun parçası olduğunda
 
 Uzak oturum ilkelerini yapılandırmak için:
 
-1. **Yönetim Şablonları**Windowsbileşenleri > Uzak Masaüstü Hizmetleri Uzak Masaüstü oturumu ana bilgisayarıoturumzamansınırları'nagidin > . >  > 
+1. **Yönetim Şablonları** > **Windows bileşenlerine** > **Uzak Masaüstü Hizmetleri** > **Uzak Masaüstü oturumu ana bilgisayarı** > **oturum süresi sınırını**gidin.
 2. Sağ taraftaki bölmede, **etkin ancak boşta Uzak Masaüstü Hizmetleri oturumlar ilkesi için zaman sınırını ayarla** ilkesini seçin.
-3. Kalıcı pencere göründükten sonra ilkeyi etkinleştirmek için ilke seçeneğini **Yapılandırılmadı** olarak değiştirin.
+3. Kalıcı pencere göründükten sonra ilkeyi **etkinleştirmek için ilke** seçeneğini **Yapılandırılmadı** olarak değiştirin.
 4. İlke seçeneğinin altındaki açılan menüde, zaman miktarını **3 saate**ayarlayın.
 
 Uzak oturum ilkelerini aşağıdaki komutları çalıştırarak el ile de yapılandırabilirsiniz:
@@ -134,7 +134,7 @@ Saat dilimlerini yeniden yönlendirmek için:
 1. Active Directory sunucusunda, **Grup İlkesi Yönetim Konsolu**açın.
 2. Etki alanınızı ve grup ilkesi nesnelerini genişletin.
 3. Grup İlkesi ayarları için oluşturduğunuz **Grup İlkesi nesnesine** sağ tıklayın ve **Düzenle**' yi seçin.
-4. **Grup İlkesi Yönetimi Düzenleyicisi**, > **Windows bileşenleri** > **Yönetim Şablonları bilgisayar yapılandırma**ilkeleri ' ne gidin >  >  > **Cihaz ve kaynak yeniden yönlendirme** **Uzak Masaüstü oturumu ana bilgisayarı** > Uzak Masaüstü Hizmetleri.
+4. **Grup İlkesi Yönetimi Düzenleyicisi**, **bilgisayar yapılandırması** > **ilkeler** > **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri**@no__ t-10**Uzak Masaüstü Oturumu Ana Bilgisayarı**2**Cihaz ve kaynak yeniden yönlendirme**.
 5. **Saat dilimi yeniden yönlendirmesine Izin ver** ayarını etkinleştirin.
 
 Ayrıca, saat dilimlerini yeniden yönlendirmek için ana görüntüde bu komutu çalıştırabilirsiniz:

@@ -1,7 +1,7 @@
 ---
 title: Keyphrase önceden oluşturulmuş varlık-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makalede anahtar cümlesi içeren önceden oluşturulmuş varlık bilgilerini Language Understanding (LUIS).
+description: Bu makale Language Understanding (LUSıS) içindeki keyphrase önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,23 +9,23 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e33b5c766781bc49310dfcae55c3d390a032b522
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e55c0453c117c51e5a8e4986631516d3e61ed10b
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933517"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677588"
 ---
 # <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için keyPhrase önceden oluşturulmuş varlık
-anahtar cümlesi, anahtar ifadeleri çeşitli bir utterance ayıklar. Uygulamaya anahtar cümlesi içeren örnek Konuşma ekleme gerekmez. anahtar cümlesi varlık içerisinde desteklendiği [çok kültür](luis-language-support.md#languages-supported) parçası olarak [metin analizi](../text-analytics/overview.md) özellikleri. 
+KeyPhrase varlığı, çeşitli anahtar tümceciklerini utterance 'ten ayıklar. Uygulamaya keyPhrase içeren örnek eklemelerine ihtiyacınız yoktur. KeyPhrase varlığı, [metin analizi](../text-analytics/overview.md) özelliklerinin bir parçası olarak [birçok kültürde](luis-language-support.md#languages-supported) desteklenir. 
 
-## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Önceden oluşturulmuş bir anahtar cümlesi varlık için çözümleme
+## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Önceden oluşturulmuş keyPhrase varlığı için çözüm
 
-### <a name="api-version-2x"></a>API sürüm 2. x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.keyPhrase** varlık.
+Aşağıdaki örnek, **yerleşik. keyPhrase** varlığının çözünürlüğünü gösterir.
 
 ```json
 {
@@ -50,7 +50,83 @@ Aşağıdaki örnek, çözünürlüğünü gösterir **builtin.keyPhrase** varl�
   ]
 }
 ```
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+
+Aşağıdaki JSON `verbose` parametresi `false` olarak ayarlanmıştır:
+
+```json
+{
+    "query": "where is the educational requirements form for the development and engineering group",
+    "prediction": {
+        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
+        "topIntent": "GetJobInformation",
+        "intents": {
+            "GetJobInformation": {
+                "score": 0.157861546
+            }
+        },
+        "entities": {
+            "keyPhrase": [
+                "educational requirements",
+                "development"
+            ]
+        }
+    }
+}
+```
+
+Aşağıdaki JSON `verbose` parametresi `true` olarak ayarlanmıştır:
+
+```json
+{
+    "query": "where is the educational requirements form for the development and engineering group",
+    "prediction": {
+        "normalizedQuery": "where is the educational requirements form for the development and engineering group",
+        "topIntent": "GetJobInformation",
+        "intents": {
+            "GetJobInformation": {
+                "score": 0.157861546
+            }
+        },
+        "entities": {
+            "keyPhrase": [
+                "educational requirements",
+                "development"
+            ],
+            "$instance": {
+                "keyPhrase": [
+                    {
+                        "type": "builtin.keyPhrase",
+                        "text": "educational requirements",
+                        "startIndex": 13,
+                        "length": 24,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    },
+                    {
+                        "type": "builtin.keyPhrase",
+                        "text": "development",
+                        "startIndex": 51,
+                        "length": 11,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+* * * 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hakkında bilgi edinin [yüzdesi](luis-reference-prebuilt-percentage.md), [numarası](luis-reference-prebuilt-number.md), ve [yaş](luis-reference-prebuilt-age.md) varlıklar.
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+
+[Yüzde](luis-reference-prebuilt-percentage.md), [sayı](luis-reference-prebuilt-number.md)ve [yaş](luis-reference-prebuilt-age.md) varlıkları hakkında bilgi edinin.

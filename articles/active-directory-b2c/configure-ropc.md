@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69924674fba44595e4f5a9702607579d8c7a8bc8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064461"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679310"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
 
@@ -25,14 +25,14 @@ Kaynak sahibi parola kimlik bilgileri (ROPC) akışı, uygulamanın, bağlı ola
 
 Azure Active Directory B2C (Azure AD B2C) ' de, aşağıdaki seçenekler desteklenir:
 
-- **Yerel istemci**: Kimlik doğrulama sırasında Kullanıcı etkileşimi, kod bir Kullanıcı tarafı cihazda çalıştırıldığında oluşur. Cihaz, Android gibi yerel bir işletim sisteminde çalışan veya JavaScript gibi bir tarayıcıda çalışan bir mobil uygulama olabilir.
+- **Yerel istemci**: kimlik doğrulaması sırasında Kullanıcı etkileşimi, kod bir Kullanıcı tarafı cihazda çalıştırıldığında oluşur. Cihaz, Android gibi yerel bir işletim sisteminde çalışan veya JavaScript gibi bir tarayıcıda çalışan bir mobil uygulama olabilir.
 - **Ortak istemci akışı**: API çağrısında yalnızca bir uygulama tarafından toplanan kullanıcı kimlik bilgileri gönderilir. Uygulamanın kimlik bilgileri gönderilmez.
-- **Yeni talepler Ekle**: KIMLIK belirteci içerikleri yeni talepler eklemek için değiştirilebilir.
+- **Yeni talepler Ekle**: kimlik belirteci içerikleri yeni talepler eklemek için değiştirilebilir.
 
 Aşağıdaki akışlar desteklenmez:
 
-- **Sunucudan sunucuya**: Kimlik koruma sisteminin, etkileşimin bir parçası olarak çağırandan (yerel istemci) toplanan güvenilir bir IP adresi olması gerekir. Sunucu tarafı API çağrısında yalnızca sunucunun IP adresi kullanılır. Başarısız kimlik doğrulamaları için dinamik bir eşik aşılırsa, kimlik koruma sistemi bir saldırgan olarak yinelenen bir IP adresini tanımlayabilir.
-- **Gizli istemci akışı**: Uygulama istemci KIMLIĞI doğrulanıp, ancak uygulama gizli anahtarı doğrulanmadı.
+- **Sunucudan sunucuya**: kimlik koruma sisteminin, etkileşimin bir parçası olarak çağırandan (yerel istemci) toplanan GÜVENILIR bir IP adresi olması gerekir. Sunucu tarafı API çağrısında yalnızca sunucunun IP adresi kullanılır. Başarısız kimlik doğrulamaları için dinamik bir eşik aşılırsa, kimlik koruma sistemi bir saldırgan olarak yinelenen bir IP adresini tanımlayabilir.
+- **Gizli istemci akışı**: uygulama istemci kimliği onaylanır, ancak uygulama gizli anahtarı doğrulanmaz.
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Kaynak sahibi Kullanıcı akışı oluşturma
 
@@ -43,7 +43,7 @@ Aşağıdaki akışlar desteklenmez:
 5. Kullanıcı akışı için *ROPC_Auth*gibi bir ad girin.
 6. **Uygulama talepleri**bölümünde **daha fazla göster**' e tıklayın.
 7. Uygulamanız için gereken görünen ad, e-posta adresi ve kimlik sağlayıcısı gibi uygulama taleplerini seçin.
-8. **Tamam**’ı ve ardından **Oluştur**’u seçin.
+8. **Tamam**' ı ve ardından **Oluştur**' u seçin.
 9. **Kullanıcı akışını Çalıştır**' a tıklayın.
 
    Daha sonra bu örnek gibi bir uç nokta görürsünüz:
@@ -51,29 +51,25 @@ Aşağıdaki akışlar desteklenmez:
    `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_ROPC_Auth`
 
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydet
+## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
-1. B2C ayarlarında **uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
-2. Uygulama için *ROPC_Auth_app*gibi bir ad girin.
-3. **Web uygulaması/Web API 'si**için **Hayır** ' ı seçin ve ardından **yerel istemci**için **Evet** ' i seçin.
-4. Diğer tüm değerleri olduğu gibi bırakın ve ardından **Oluştur**' u seçin.
-5. Yeni uygulamayı seçin ve daha sonra kullanmak üzere uygulama KIMLIĞINI aklınızda yapın.
+[!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
 ## <a name="test-the-user-flow"></a>Kullanıcı akışını test etme
 
 En sevdiğiniz API Geliştirme uygulamanızı kullanarak bir API çağrısı oluşturun ve Kullanıcı akışınızda hata ayıklama yanıtı ' nı gözden geçirin. POST isteğinin gövdesi olarak aşağıdaki tablodaki bilgilerle buna benzer bir çağrı oluşturun:
-- *\<Yourtenant. onmicrosoft. com >* , B2C kiracınızın adıyla değiştirin.
-- *\<B2C_1A_ROPC_Auth >* değerini, kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
-- *\<Bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* , kaydınızdan uygulama kimliğiyle değiştirin.
+- *@No__t -1yourtenant. onmicrosoft. com >* ' i B2C kiracınızın adıyla değiştirin.
+- *@No__t-1B2C_1A_ROPC_Auth >* değerini kaynak sahibi parola kimlik bilgileri ilkenizin tam adıyla değiştirin.
+- *@No__t-1bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* , kayıt 'NIZDEN uygulama kimliğiyle değiştirin.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Anahtar | Value |
+| Anahtar | Değer |
 | --- | ----- |
-| username | leadiocl@outlook.com |
-| password | Passxword1 |
-| grant_type | password |
-| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
+| Nitelen | leadiocl@outlook.com |
+| Parolayı | Passxword1 |
+| grant_type | Parolayı |
+| kapsam | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | belirteç id_token |
 
@@ -108,12 +104,12 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Anahtar | Value |
+| Anahtar | Değer |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
-| resource | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| kaynak | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* ve *Resource* , daha önce uygulama kimliği olarak belirtilen değerlerdir. *Refresh_token* , daha önce bahsedilen kimlik doğrulama çağrısında aldığınız belirteçtir.

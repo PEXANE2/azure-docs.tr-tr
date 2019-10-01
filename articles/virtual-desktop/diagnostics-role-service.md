@@ -1,22 +1,22 @@
 ---
-title: Windows sanal masaüstü önizlemesi tanılama özelliği ile ilgili sorunları tanımlama-Azure
-description: Windows sanal masaüstü önizlemesi Tanılama özelliğini ve nasıl kullanılacağını açıklar.
+title: Windows sanal masaüstü tanılama özelliği ile ilgili sorunları tanımlama-Azure
+description: Windows sanal masaüstü Tanılama özelliğini ve nasıl kullanılacağını açıklar.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f041889f1594ef3852c8f2393be93bb7a6513b4c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163484"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676643"
 ---
 # <a name="identify-issues-with-the-diagnostics-feature"></a>Tanılama özelliğiyle sorunları belirleme
 
-Windows sanal masaüstü önizlemesi, yöneticinin sorunları tek bir arabirim üzerinden belirlemesine izin veren bir tanılama özelliği sunar. Windows sanal masaüstü rolleri, bir Kullanıcı sistemle her etkileşime geçtiğinde bir tanılama etkinliğini günlüğe kaydeder. Her günlük, işlem, hata iletileri, kiracı bilgileri ve Kullanıcı bilgilerine dahil olan Windows sanal masaüstü rolleri gibi ilgili bilgileri içerir. Tanılama etkinlikleri hem son kullanıcı hem de yönetim eylemleri tarafından oluşturulur ve üç ana demet halinde kategorilere ayrılabilir:
+Windows sanal masaüstü, yöneticinin sorunları tek bir arabirim üzerinden belirlemesine izin veren bir tanılama özelliği sunar. Windows sanal masaüstü rolleri, bir Kullanıcı sistemle her etkileşime geçtiğinde bir tanılama etkinliğini günlüğe kaydeder. Her günlük, işlem, hata iletileri, kiracı bilgileri ve Kullanıcı bilgilerine dahil olan Windows sanal masaüstü rolleri gibi ilgili bilgileri içerir. Tanılama etkinlikleri hem son kullanıcı hem de yönetim eylemleri tarafından oluşturulur ve üç ana demet halinde kategorilere ayrılabilir:
 
 * Akış aboneliği etkinlikleri: Son Kullanıcı bu etkinlikleri, Microsoft Uzak Masaüstü uygulamaları aracılığıyla akışına bağlanmayı denediğinde tetikler.
 * Bağlantı etkinlikleri: Son Kullanıcı, Microsoft Uzak Masaüstü uygulamalar aracılığıyla bir masaüstüne veya RemoteApp 'e bağlanmayı her denediğinde bu etkinlikleri tetikler.
@@ -32,7 +32,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>PowerShell ile ilgili sorunları tanılama
 
-Windows sanal masaüstü tanılaması yalnızca bir PowerShell cmdlet 'i kullanır, ancak sorunları daraltmak ve yalıtmak için birçok isteğe bağlı parametre içerir. Aşağıdaki bölümlerde, sorunları tanılamak için çalıştırabileceğiniz cmdlet 'ler listelenmektedir. Çoğu filtre birlikte uygulanabilir. Parantez içinde listelenen değerler, gibi `<tenantName>`, durumunuza uygulanan değerlerle değiştirilmelidir.
+Windows sanal masaüstü tanılaması yalnızca bir PowerShell cmdlet 'i kullanır, ancak sorunları daraltmak ve yalıtmak için birçok isteğe bağlı parametre içerir. Aşağıdaki bölümlerde, sorunları tanılamak için çalıştırabileceğiniz cmdlet 'ler listelenmektedir. Çoğu filtre birlikte uygulanabilir. Parantez içinde listelenen değerler `<tenantName>` gibi, durumunuza uygulanan değerlerle değiştirilmelidir.
 
 ### <a name="retrieve-diagnostic-activities-in-your-tenant"></a>Kiracınızdaki tanılama etkinliklerini alın
 
@@ -136,7 +136,7 @@ Hata senaryoları, hizmete ve dışarıdan Windows sanal masaüstüne göre kate
 Aşağıdaki tabloda, yöneticilerinizin çalıştırabilecek yaygın hatalar listelenmektedir.
 
 >[!NOTE]
->Bu önizleme, hataların tamamen bir kategorilerini içermez ve düzenli aralıklarla güncelleştirilir. En güncel bilgilere sahip olduğunuzdan emin olmak için, bu makaleye ayda en az bir kez tekrar kontrol ettiğinizden emin olun.
+>Bu liste, en yaygın hataları içerir ve sıradan bir temposunda güncellenir. En güncel bilgilere sahip olduğunuzdan emin olmak için, bu makaleye ayda en az bir kez tekrar kontrol ettiğinizden emin olun.
 
 ### <a name="external-management-error-codes"></a>Dış yönetim hata kodları
 
@@ -176,6 +176,6 @@ Aşağıdaki tabloda, yöneticilerinizin çalıştırabilecek yaygın hatalar li
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows sanal masaüstü içindeki roller hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü önizleme ortamı](environment-setup.md).
+Windows sanal masaüstü içindeki roller hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü ortamı](environment-setup.md).
 
 Windows sanal masaüstü için kullanılabilir PowerShell cmdlet 'lerinin listesini görmek için [PowerShell başvurusuna](/powershell/windows-virtual-desktop/overview)bakın.

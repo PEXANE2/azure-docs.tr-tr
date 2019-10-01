@@ -14,14 +14,14 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: e27635d153e58f96dad7db6870ed1dc3f640236a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f4ebbd4f37422c5aa2fea07a243eb624ec9e2961
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326478"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687015"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Hızlı Başlangıç: Azure Uygulama yapılandırması ile bir Java Spring uygulaması oluşturma
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile bir Java Spring uygulaması oluşturma
 
 Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure uygulama yapılandırmasını bir Java Spring uygulamasına katabilirsiniz.
 
@@ -35,7 +35,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma Gezgini** >  **+ Oluştur** ' u seçin:
+6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma gezgini** >  **+ Oluştur** ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -47,7 +47,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start.spring.io/) 'yi kullanırsınız.
 
-1. konumuna gözatın <https://start.spring.io/>.
+1. <https://start.spring.io/> adresine gidin.
 
 2. Aşağıdaki seçenekleri belirtin:
 
@@ -62,13 +62,13 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
 
 1. Dosyaları yerel sisteminizde ayıkladıktan sonra, basit Spring Boot uygulamanız düzenlenmek üzere hazırlanın. Uygulamanızın kök dizinindeki *Pok. xml* dosyasını bulun.
 
-2. *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve yay bulutu Azure yapılandırma başlangıç listesini şu listeye `<dependencies>`ekleyin:
+2. *Pod. xml* dosyasını bir metin düzenleyicisinde açın ve Spring Cloud Azure config starter 'ı `<dependencies>` listesine ekleyin:
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M3</version>
+        <version>1.1.0.M4</version>
     </dependency>
     ```
 
@@ -107,7 +107,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
     }
     ```
 
-5. Ana uygulama Java dosyasını açın ve bu özelliği etkinleştirmek `@EnableConfigurationProperties` için ekleyin.
+5. Ana uygulama Java dosyasını açın ve bu özelliği etkinleştirmek için `@EnableConfigurationProperties` ' ı ekleyin.
 
     ```java
     @SpringBootApplication
@@ -119,7 +119,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialvr](https://start
     }
     ```
 
-6. Uygulamanızın Resources dizininde adlı `bootstrap.properties` yeni bir dosya oluşturun ve aşağıdaki satırları dosyaya ekleyin. Örnek değerleri, uygulama yapılandırma deponuzın uygun özellikleriyle değiştirin.
+6. Uygulamanızın Resources dizininde `bootstrap.properties` adlı yeni bir dosya oluşturun ve aşağıdaki satırları dosyaya ekleyin. Örnek değerleri, uygulama yapılandırma deponuzın uygun özellikleriyle değiştirin.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]

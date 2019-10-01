@@ -1,25 +1,25 @@
 ---
 title: Yönetim aracını dağıtma-Azure
-description: Windows sanal masaüstü önizleme kaynaklarını yönetmek için bir kullanıcı arabirimi aracı nasıl yüklenir.
+description: Windows sanal masaüstü kaynaklarını yönetmek için bir kullanıcı arabirimi aracı nasıl yüklenir.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: e0f9dbd9bf6b0c12d3e3f028ab9cd4c80cdb5124
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816509"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679479"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Öğretici: Bir yönetim aracı dağıtma
+# <a name="tutorial-deploy-a-management-tool"></a>Öğretici: bir yönetim aracı dağıtın
 
-Yönetim Aracı, Microsoft Sanal Masaüstü önizleme kaynaklarını yönetmek için bir kullanıcı arabirimi (UI) sağlar. Bu öğreticide, yönetim aracını dağıtmayı ve bu sunucuya bağlanmayı öğreneceksiniz.
+Yönetim Aracı, Microsoft sanal masaüstü kaynaklarını yönetmek için bir kullanıcı arabirimi (UI) sağlar. Bu öğreticide, yönetim aracını dağıtmayı ve bu sunucuya bağlanmayı öğreneceksiniz.
 
 >[!NOTE]
->Bu yönergeler, kuruluşunuzun mevcut işlemleriyle birlikte kullanılabilecek Windows sanal masaüstü önizlemesine özgü bir yapılandırma içindir.
+>Bu yönergeler, kuruluşunuzun mevcut işlemleriyle kullanılabilecek Windows sanal masaüstüne özgü bir yapılandırma içindir.
 
 ## <a name="important-considerations"></a>Önemli konular
 
@@ -50,15 +50,15 @@ Azure Kaynak Yönetimi şablonunu dağıtmak için aşağıdaki yönergeleri izl
     - ' Yi bir bulut çözümü sağlayıcısı aboneliğine dağıtıyorsanız, Azure 'a dağıtmak için aşağıdaki yönergeleri izleyin:
         1. Aşağı kaydırın ve **Azure 'A dağıt**' a sağ tıkladıktan sonra **bağlantı konumunu Kopyala**' yı seçin.
         2. Not Defteri gibi bir metin Düzenleyicisi açın ve bağlantıyı buraya yapıştırın.
-        3. Diyez etiketinden <https://portal.azure.com/> sonra ve önce (#), bir at işareti (@) ve ardından kiracı etki alanı adını girin. Şöyle bir örnek: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
+        3. @No__t-0 ' dan sonra ve diyez etiketinden (#) önce, bir at işareti (@) ve ardından kiracı etki alanı adını girin. Şöyle bir örnek: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Bulut çözümü sağlayıcısı aboneliğine yönetici/katkıda bulunan izinleri olan bir kullanıcı olarak Azure portal oturum açın.
         5. Metin düzenleyicisine kopyaladığınız bağlantıyı adres çubuğuna yapıştırın.
 
 ### <a name="guidance-for-template-parameters"></a>Şablon parametreleri Kılavuzu
 Araç yapılandırmasına yönelik parametrelerin nasıl girilmesi aşağıda verilmiştir:
 
-- Bu, RD Aracısı URL 'sidir: https:\//rdbroker.WVD.Microsoft.com/
-- Bu, kaynak URL 'sidir: https:\//Mrs-prod.Ame.GBL/Mrs-RDInfra-prod
+- Bu, RD Aracısı URL 'sidir: https: \//rdbroker. WVD. Microsoft. com/
+- Bu kaynak URL 'sidir: https: \//Mrs-prod. Ame. GBL/Mrs-RDInfra-prod
 - Azure 'da oturum açmak için AAD kimlik bilgilerinizi MFA devre dışı olarak kullanın. [Azure Resource Manager şablonunu çalıştırmak Için gerekenler](#what-you-need-to-run-the-azure-resource-manager-template)bölümüne bakın.
 - Yönetim aracı için Azure Active Directory kaydedilecek uygulama için benzersiz bir ad kullanın; Örneğin, Apr3UX.
 

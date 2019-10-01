@@ -1,34 +1,34 @@
 ---
-title: PowerShell-Azure kullanarak Windows sanal masaüstü önizleme hizmet sorumluları ve rol atamaları oluşturma
-description: Windows sanal masaüstü önizlemesinde PowerShell kullanarak hizmet sorumluları oluşturma ve roller atama.
+title: PowerShell-Azure kullanarak Windows sanal masaüstü hizmet sorumluları ve rol atamaları oluşturma
+description: Windows sanal masaüstü 'nde PowerShell kullanarak hizmet sorumluları oluşturma ve rol atama.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: dbde4ccede7f27ae494c8326babc7ec69b4a1266
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 87057d29d9d95ac0ebca298e40ca0d8c2aa9b0b1
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985000"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679629"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Öğretici: PowerShell kullanarak hizmet sorumluları ve rol atamaları oluşturma
 
-Hizmet sorumluları, belirli bir amaçla roller ve izinler atamak için Azure Active Directory oluşturabileceğiniz kimliklerdir. Windows sanal masaüstü önizlemesinde, bir hizmet sorumlusu oluşturabilirsiniz:
+Hizmet sorumluları, belirli bir amaçla roller ve izinler atamak için Azure Active Directory oluşturabileceğiniz kimliklerdir. Windows sanal masaüstü 'nde, aşağıdakileri yapmak için bir hizmet sorumlusu oluşturabilirsiniz:
 
 - Belirli Windows sanal masaüstü yönetim görevlerini otomatikleştirin.
 - Windows sanal masaüstü için herhangi bir Azure Resource Manager şablonu çalıştırırken, MFA 'ya gerekli kullanıcıların yerine kimlik bilgilerini kullanın.
 
-Bu öğreticide, bilgi nasıl yapılır:
+Bu öğreticide şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Active Directory bir hizmet sorumlusu oluşturun.
 > * Windows sanal masaüstü 'nde bir rol ataması oluşturun.
 > * Hizmet sorumlusunu kullanarak Windows sanal masaüstü 'nde oturum açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Hizmet sorumluları ve rol atamaları oluşturabilmeniz için üç şey yapmanız gerekir:
 
@@ -42,7 +42,7 @@ Hizmet sorumluları ve rol atamaları oluşturabilmeniz için üç şey yapmanı
 
 3. Bu makaledeki tüm yönergeleri aynı PowerShell oturumunda izleyin. Pencereyi kapatarak ve daha sonra yeniden açarak PowerShell oturumunuzu keserseniz işlem çalışmayabilir.
 
-## <a name="create-a-service-principal-in-azure-active-directory"></a>Azure Active Directory'de hizmet sorumlusu oluşturma
+## <a name="create-a-service-principal-in-azure-active-directory"></a>Azure Active Directory bir hizmet sorumlusu oluşturma
 
 PowerShell oturumunuzda önkoşulları karşıladıktan sonra, Azure 'da çok kiracılı hizmet sorumlusu oluşturmak için aşağıdaki PowerShell cmdlet 'lerini çalıştırın.
 
@@ -58,7 +58,7 @@ Hizmet sorumlusu için rol atamasını oluşturmadan önce, kimlik bilgilerinizi
 
 Aşağıda, yazmanız gereken üç kimlik bilgileri ve bunları almak için çalıştırmanız gereken cmdlet 'ler verilmiştir:
 
-- Parolayı
+- Parola:
 
     ```powershell
     $svcPrincipalCreds.Value
