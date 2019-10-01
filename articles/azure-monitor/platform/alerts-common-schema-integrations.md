@@ -6,14 +6,14 @@ services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: f431e5e5f4537d1a5f889457eb81b881e47ee178
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 569b97ecc24306741c3323ce5bc526f88645c1dd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091778"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702943"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Ortak uyarı şemasını Logic Apps ile tümleştirme
 
@@ -37,11 +37,11 @@ Bu makalede, okuyucunun öğrenildiği varsayılmaktadır
 
 1.  Tetikleyiciyi seçin: **BIR http isteği alındığında**.
 
-    ![Mantıksal uygulama Tetikleyicileri](media/action-groups-logic-app/logic-app-triggers.png "Mantıksal uygulama Tetikleyicileri")
+    ![Mantıksal uygulama],(media/action-groups-logic-app/logic-app-triggers.png "mantıksal uygulama tetikleyicilerini") tetikler
 
 1.  HTTP istek tetikleyicisini değiştirmek için **Düzenle** ' yi seçin.
 
-    ![Http istek Tetikleyicileri](media/action-groups-logic-app/http-request-trigger-shape.png "Http istek Tetikleyicileri")
+    ![Http isteği Tetikleyicileri](media/action-groups-logic-app/http-request-trigger-shape.png "http istek Tetikleyicileri")
 
 
 1.  Aşağıdaki şemayı kopyalayıp yapıştırın:
@@ -113,17 +113,17 @@ Bu makalede, okuyucunun öğrenildiği varsayılmaktadır
         }
     ```
 
-1. Yeni adım ' ı ve ardından **Eylem Ekle**' yi seçin. **+**
+1. **@No__t-1** **yeni adım** ' ı seçin ve ardından **Eylem Ekle**' yi seçin.
 
-    ![Eylem ekleme](media/action-groups-logic-app/add-action.png "Eylem ekleme")
+    ![Eylem ekleme](media/action-groups-logic-app/add-action.png "eylem ekleme")
 
 1. Bu aşamada, belirli iş gereksinimlerinize göre çeşitli bağlayıcılar (Microsoft ekipleri, bolluk, Salesforce vb.) ekleyebilirsiniz. ' Temel alanlar ' kutusunu kullanabilirsiniz. 
 
-    ![Gerekli alanlar](media/alerts-common-schema-integrations/logic-app-essential-fields.png "Gerekli alanlar")
+    ![Temel alanlar](media/alerts-common-schema-integrations/logic-app-essential-fields.png "önemli alanları")
     
     Alternatif olarak, ' Ifade ' seçeneğini kullanarak uyarı türüne göre koşullu mantık yazabilirsiniz.
 
-    ![Mantıksal uygulama ifadesi](media/alerts-common-schema-integrations/logic-app-expressions.png "Mantıksal uygulama ifadesi")
+    ![Mantıksal uygulama ifadesi](media/alerts-common-schema-integrations/logic-app-expressions.png "mantıksal uygulama ifadesi")
     
      [' Monitoringservice ' alanı](alerts-common-schema-definitions.md#alert-context) , koşullu mantığı oluşturabileceğiniz uyarı türünü benzersiz olarak tanımlamanızı sağlar.
 

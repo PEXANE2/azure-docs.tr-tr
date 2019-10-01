@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 318df27ebb822f49c1f8881d0bf68ac7167dea36
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351290"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695139"
 ---
-# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Birden çok konuşma geçişi oluşturmak için takip istemlerini kullanma
+# <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Bir konuşmanın birden çok kümesini oluşturmak için izleme istemleri kullanın
 
 Botunuzun bir sorudan diğerine kadar olan birden çok _dönüşi yönetmek_için izleme komut istemlerini ve bağlamını kullanın.
 
@@ -55,23 +55,37 @@ Bir Bilgi Bankası oluşturduğunuzda, **KB 'Nizi doldur** bölümünde **URL 'l
 
 ![Çoklu açma ayıklamasını etkinleştirmek için onay kutusu](../media/conversational-context/enable-multi-turn.png)
 
-İçeri aktarılan bir belge için bu seçeneği belirlediğinizde, çoklu açma konuşması belge yapısından ima edilebilir. Bu yapı varsa, Soru-Cevap Oluşturma içeri aktarma işleminin bir parçası olarak sorularınızı ve yanıtlarını çiftler yapan bir izleme istemi oluşturur. 
+Bu seçeneği belirlediğinizde, çok yönlü konuşma belge yapısından ima edilebilir. Bu yapı varsa, Soru-Cevap Oluşturma içeri aktarma işleminin bir parçası olarak sorularınızı ve yanıtlarını çiftler yapan bir izleme istemi oluşturur. 
 
 Çoklu açma yapısı yalnızca URL 'Ler, PDF dosyaları veya DOCX dosyalarından çıkarsanamıyor. Yapının bir örneği için, [Microsoft Surface Kullanıcı El Ile PDF dosyasının](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)bir görüntüsünü görüntüleyin. Bu PDF dosyasının boyutu nedeniyle Soru-Cevap Oluşturma kaynak, **B** (15 dizin) veya daha büyük bir **arama fiyatlandırma katmanı** gerektirir. 
 
 ![! [Kullanıcı el ile yapı örneği] (.. /Media/, tional-Context/Import-File-with-konuşma tional-Structure.exe)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-PDF belgesini içeri aktardığınızda, Soru-Cevap Oluşturma konuşma akışı oluşturmak için yapıdan izleme istemlerini belirler. 
+### <a name="determine-multi-turn-structure-from-format"></a>Biçimden Çoklu açma yapısını belirleme
 
-1. Soru-Cevap Oluşturma, **Bilgi Bankası oluştur**' u seçin.
-1. Mevcut bir Soru-Cevap Oluşturma hizmeti oluşturun veya kullanın. Önceki Microsoft Surface örneğinde, PDF dosyası daha küçük bir katman için çok büyük olduğundan, **B** (15 dizin) veya daha büyük bir **arama hizmetiyle** soru-cevap oluşturma bir hizmet kullanın.
-1. Bilgi tabanınız için **yüzey el ile**gibi bir ad girin.
-1. **URL 'ler,. PDF veya. docx dosyalarından çoklu açmayı etkinleştir** onay kutusunu seçin. 
-1. **@No__t-1**yüzeyi El Ile URL 'sini seçin.
+Soru-Cevap Oluşturma, öğesinden çok yönlü yapıyı belirler:
 
-1. **KB 'Nizi oluştur** düğmesini seçin. 
+* Başlık yazı tipi boyutu-belgenizde yapıyı olduğunu sağlamak için stil, renk veya başka bir mekanizma kullanırsanız, Soru-Cevap Oluşturma çoklu açma istemlerini ayıklamaz. 
 
-    Bilgi Bankası oluşturulduktan sonra, soru-cevap çiftlerinin bir görünümü görüntülenir.
+Başlık kuralları şunları içerir:
+
+* Bir başlığı soru işaretiyle bitmeyin, `?`. 
+
+### <a name="add-file-with-multi-turn-prompts"></a>Çok yönlü istemlerle dosya ekleme
+
+Çok yönlü bir belge eklediğinizde Soru-Cevap Oluşturma, bir konuşma akışı oluşturmak için yapıdan izleme istemlerini belirler. 
+
+1. Soru-Cevap Oluşturma ' de, **URL 'ler,. PDF veya. docx dosyalarından çoklu açmayı etkinleştir** seçeneğiyle oluşturulan mevcut bir Bilgi Bankası seçin. etkinletir. 
+1. **Ayarlar** sayfasına gidin, eklenecek dosyayı veya URL 'yi seçin. 
+1. Bilgi Bankası 'nı **kaydedip eğitme** .
+
+> [!Caution]
+> Yeni veya boş Bilgi Bankası için bir veri kaynağı olarak, aktarılmış bir TSV veya XLS çoklu çift yönlü bilgi tabanı dosyası kullanma desteği desteklenmez. Dışarı aktarılan çoklu oturum istemlerini bir bilgi tabanına eklemek için, bu dosya türünü Soru-Cevap Oluşturma portalının **Ayarlar** sayfasından **içeri aktarmanız** gerekir.
+
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Oluşturma API 'SI ile çok yönlü istemlerle Bilgi Bankası oluşturma
+
+[Soru-cevap oluşturma API oluşturma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)' yı kullanarak çok yönlü istemlerle bir bilgi talebi oluşturabilirsiniz. İstemler `context` özelliğinin `prompts` dizisine ekliyor. 
 
 ## <a name="show-questions-and-answers-with-context"></a>Bağlamla soruları ve yanıtları göster
 
@@ -99,7 +113,7 @@ Mevcut bir soru-cevap çiftine Şu anda bağlı olmayan bir izleme istemi ekleyi
 1. **SignOut**satırındaki **Yanıt** sütununda, **izleme istemi Ekle**' yi seçin.
 1. **İzleme istemi (Önizleme)** açılır penceresindeki alanlarda aşağıdaki değerleri girin:
 
-    |Alan|Value|
+    |Alan|Değer|
     |--|--|
     |Metni görüntüle|**Cihazı**kapatma ' yı girin. Bu, izleme isteminde görüntülenecek özel bir metindir.|
     |Yalnızca bağlam| Bu onay kutusunu seçin. Yanıt yalnızca soru, bağlam belirttiğinde döndürülür.|
@@ -127,29 +141,6 @@ Bir izleme istemi oluşturulduğunda ve **Yanıt bağlantısı**olarak mevcut so
 1. Üst gezinti çubuğunda **Kaydet ve eğitme**.
 
 
-<!--
-
-## To find the best prompt answer, add metadata to follow-up prompts 
-
-If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
-
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
-
-1. Add metadata to each of the two follow-up question-and-answer pairs:
-
-    |Question|Add metadata|
-    |--|--|
-    |*Feedback on a QnA Maker service*|"Feature":"all"|
-    |*Feedback on an existing feature*|"Feature":"one"|
-    
-    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
-
-1. Select **Save and train**. 
-
-    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
-
--->
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Yeni soru-cevap çiftini bir izleme istemi olarak ekleyin
 
 Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bir izleme istemi olarak mevcut bir soruya bağlanması gerekir.
@@ -159,7 +150,7 @@ Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bi
 1. Bu sorunun **Yanıt** sütununda, **izleme istemi Ekle**' yi seçin. 
 1. **İzleme istemi (Önizleme)** altında, aşağıdaki değerleri girerek yeni bir izleme istemi oluşturun: 
 
-    |Alan|Value|
+    |Alan|Değer|
     |--|--|
     |Metni görüntüle|*Bir Windows hesabı oluşturun*. İzleme isteminde görüntülenecek özel metin.|
     |Yalnızca bağlam|Bu onay kutusunu seçin. Bu yanıt yalnızca soru bağlam belirttiğinde döndürülür.|
@@ -374,21 +365,13 @@ Bilgi bankasındaki istemler eklediniz ve akışı test bölmesinde test edersin
 
 JSON yanıtında döndürülen [görüntüleme metni ve görüntüleme sırası](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto), [güncelleştirme API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)tarafından düzenlenmek üzere desteklenir. 
 
-<!--
-
-FIX - Need to go to parent, then answer column, then edit answer. 
-
--->
-
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Oluşturma API 'SI ile çok yönlü istemlerle Bilgi Bankası oluşturma
-
-[Soru-cevap oluşturma API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)'sini kullanarak çok yönlü istemlerle Bilgi Bankası oluşturabilirsiniz. İstemler `context` özelliğinin `prompts` dizisine ekliyor. 
-
-
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>Güncelleştirme API 'SI ile çoklu açma istemlerini ekleme veya silme
 
 [Soru-cevap oluşturma Update API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)'sini kullanarak çok yönlü istemler ekleyebilir veya silebilirsiniz.  İstemler `context` özelliğinin `promptsToAdd` dizisine ve `promptsToDelete` dizisine ekliyor. 
 
+## <a name="export-knowledge-base-for-version-control"></a>Sürüm denetimi için Bilgi Bankası dışarı aktarma
+
+Soru-Cevap Oluşturma, Soru-Cevap Oluşturma portalındaki [Sürüm denetimini destekler](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) ve bu, dışarıya açılan dosyadaki çok yönlü konuşma adımlarını dahil edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 2376c77ecc328788c842e045aafb618cbad39b0e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 0a5059382c26afd6120dc14a1ab2c7e5d281e7a1
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421434"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695261"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Küresel aktarım ağı mimarisi ve sanal WAN
 
 Bulut merkezli modern kurumsal BT parmak izini birleştirmek, bağlanmak ve denetlemek için kuruluşlar tarafından küresel aktarım ağı mimarisi benimsemekte. Modern bulut merkezli bir kuruluşta, ağ trafiğinin HQ 'ye geri dönüşü yoktur. Küresel aktarım ağı mimarisi, hem tanıdık ağ kavramlarını hem de bulut ve bulut tabanlı mimarilere özgü yeni kavramları temel alır.
 
-![architecture](./media/virtual-wan-global-transit-network-architecture/architecture2.png)
+![mimari](./media/virtual-wan-global-transit-network-architecture/architecture2.png)
 
-**Şekil 1: Sanal WAN ile küresel transit ağı**
+**Şekil 1: sanal WAN ile küresel transit ağı**
 
 Modern kuruluşlar, bulutta ve Şirket içindeki hiper dağıtılan uygulamalar, veriler ve kullanıcılar arasında ubititous bağlantısı gerektirir. Azure sanal WAN, genel olarak dağıtılmış VNET 'ler, siteler, uygulamalar ve kullanıcılar arasında herhangi bir bağlantıyı etkinleştirerek küresel bir aktarım ağı mimarisine izin verir. Azure sanal WAN, Microsoft tarafından yönetilen bir hizmettir. Bu hizmetin tarafından oluşturulan tüm ağ bileşenleri Microsoft tarafından barındırılır ve yönetilir. Sanal WAN hakkında daha fazla bilgi için bkz. [sanal WAN genel bakış](virtual-wan-about.md) makalesi.
 
@@ -37,14 +37,14 @@ Bu modelde, bir bağlı bileşen şu olabilir:
 
 * Sanal ağ (VNet)
 * Fiziksel şube sitesi
-* Uzak kullanıcı
-* İnternet
+* Uzak Kullanıcı
+* Internet
 
 ![Hub ve bağlı bileşen küresel geçiş diyagramı](./media/virtual-wan-global-transit-network-architecture/architecture.png)
 
-**Şekil 2: Hub-ve-bağlı**
+**Şekil 2: hub-ve-bağlı**
 
-Şekil 2 ' de, coğrafi olarak dağıtılmış kullanıcıların, fiziksel sitelerin ve VNET 'lerin bulutta barındırılan bir ağ hub 'ı aracılığıyla birbirine bağlanmış olduğu küresel ağın mantıksal görünümü gösterilmektedir. Bu mimari, ağ uç noktaları arasında mantıksal bir atlama aktarım bağlantısı sunar. Bağlı bileşenler, fiziksel dallar için ExpressRoute veya siteden siteye VPN gibi çeşitli Azure Ağ Hizmetleri, sanal ağlar için VNet eşlemesi ve uzak kullanıcılar için Noktadan siteye VPN gibi çeşitli Azure ağ hizmetleriyle hub 'a bağlanır.
+Şekil 2 ' de, coğrafi olarak dağıtılmış kullanıcıların, fiziksel sitelerin ve VNET 'lerin bulutta barındırılan bir ağ hub 'ı aracılığıyla birbirine bağlanmış olduğu küresel ağın mantıksal görünümü gösterilmektedir. Bu mimari, ağ uç noktaları arasında mantıksal bir atlama aktarım bağlantısı sunar. Bağlı bileşenler, fiziksel dallar için ExpressRoute veya siteden siteye VPN gibi çeşitli Azure Ağ Hizmetleri, sanal ağlar için VNet bağlantıları ve uzak kullanıcılar için Noktadan siteye VPN gibi çeşitli Azure ağ hizmetleri tarafından hub 'a bağlanır.
 
 ## <a name="crossregion"></a>Bölgeler arası bağlantı
 
@@ -58,7 +58,7 @@ Her türlü bağlantı, genel mimari bağlamında, genel olarak dağıtılmış 
 
 ![trafik yolları](./media/virtual-wan-global-transit-network-architecture/trafficpath.png)
 
-**Şekil 3: Sanal WAN trafiği yolları**
+**Şekil 3: sanal WAN trafiği yolları**
 
 Azure sanal WAN, aşağıdaki genel transit bağlantı yollarını destekler. Parantez içindeki harfler şekil 3 ' e eşlenir.
 
@@ -71,7 +71,7 @@ Azure sanal WAN, aşağıdaki genel transit bağlantı yollarını destekler. Pa
 
 ### <a name="branchvnet"></a>Daldan VNet
 
-Daldan VNet, Azure sanal WAN tarafından desteklenen birincil yoldur. Bu yol, dalları Azure sanal ağları 'nda dağıtılan Azure ıAAS kurumsal iş yüklerine bağlamanıza olanak tanır. Dallar, ExpressRoute veya siteden siteye VPN aracılığıyla sanal WAN 'a bağlanabilir. Trafik, sanal WAN hub 'larına VNet bağlantıları aracılığıyla bağlı sanal ağlara geçiş yapılır.
+Daldan VNet, Azure sanal WAN tarafından desteklenen birincil yoldur. Bu yol, dalları Azure sanal ağları 'nda dağıtılan Azure ıAAS kurumsal iş yüklerine bağlamanıza olanak tanır. Dallar, ExpressRoute veya siteden siteye VPN aracılığıyla sanal WAN 'a bağlanabilir. Trafik, sanal WAN hub 'larına VNet bağlantıları aracılığıyla bağlı sanal ağlara geçiş yapılır. Sanal WAN, dal sitelerine otomatik olarak ağ geçidi aktarımı sağladığından sanal WAN için [ağ geçidi geçişi](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) gerekli değildir.
 
 ### <a name="branchbranch"></a>Daldan dala
 
@@ -89,7 +89,7 @@ Uzak kullanıcıdan dal yolu, Azure 'a Noktadan siteye bağlantı kullanan uzak 
 
 ### <a name="vnetvnet"></a>VNET eşlemesi kullanarak VNet 'ten VNet 'e aktarma
 
-Birden çok sanal ağ arasında uygulanan çok katmanlı uygulamaları desteklemek için VNet 'leri birbirlerine bağlamak için sanal ağ eşleme kullanın. Azure sanal WAN aracılığıyla VNet-VNet aktarma senaryosu şu anda desteklenmemektedir, ancak Azure yol haritası üzerinde. VNet eşlemesi ile sanal ağları bağlama, birbirine bağlanması gereken sanal ağlar için önerilen çözümdür. [Ağ geçidi geçişi](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (VNet eşlemesi bağlamında), sanal WAN otomatik olarak ağ geçidi geçişi sağladığından sanal WAN için gerekli değildir.
+Birden çok sanal ağ arasında uygulanan çok katmanlı uygulamaları desteklemek için VNet 'leri birbirlerine bağlamak için sanal ağ eşleme kullanın. Azure sanal WAN aracılığıyla VNet-VNet aktarma senaryosu şu anda desteklenmemektedir, ancak Azure yol haritası üzerinde. VNet eşlemesi ile sanal ağları bağlama, birbirine bağlanması gereken sanal ağlar için önerilen çözümdür. 
 
 ### <a name="globalreach"></a>ExpressRoute Global Reach
 

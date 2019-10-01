@@ -244,7 +244,7 @@
             - name: Azure portalında bilgi deposu oluşturma
               href: knowledge-store-create-portal.md
             - name: REST ve Postman kullanarak oluşturma
-              href: knowledge-store-howto.md
+              href: knowledge-store-create-rest.md
             - name: Depolama Gezgini ile görüntüleme
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI ile bağlanma

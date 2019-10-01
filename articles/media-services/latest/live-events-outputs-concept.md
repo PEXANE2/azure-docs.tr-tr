@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: efe0aaf7c7d5516401f8c72721121a5dff247b95
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 196565e84ec493352ca9765d5502c9ad8ac7edd3
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350361"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703482"
 ---
 # <a name="live-events-and-live-outputs"></a>Canlı Etkinlikler ve Canlı Çıkışlar
 
@@ -29,7 +29,7 @@ Azure Media Services, Azure bulutunda müşterilerinize canlı olaylar sunmanız
 
 ## <a name="live-events"></a>Canlı Etkinlikler
 
-[Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) sırasında canlı video akışları alınır ve işlenir. Canlı bir olay oluşturduğunuzda, uzak bir kodlayıcıdan canlı bir sinyal göndermek için kullanabileceğiniz bir birincil ve ikincil giriş uç noktası oluşturulur. Uzak Live Encoder, bu giriş uç noktasına [RTMP](https://www.adobe.com/devnet/rtmp.html) veya [kesintisiz akış](https://msdn.microsoft.com/library/ff469518.aspx) (parçalanmış-MP4) giriş protokolünü kullanarak katkı akışını gönderir. RTMP alma protokolü için içerik açık (`rtmp://`) veya kabloda (`rtmps://`) güvenli bir şekilde şifreli olarak gönderilebilir. Kesintisiz Akış alma protokolü için desteklenen URL şemaları `http://` veya. `https://`  
+[Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) sırasında canlı video akışları alınır ve işlenir. Canlı bir olay oluşturduğunuzda, uzak bir kodlayıcıdan canlı bir sinyal göndermek için kullanabileceğiniz bir birincil ve ikincil giriş uç noktası oluşturulur. Uzak Live Encoder, bu giriş uç noktasına [RTMP](https://www.adobe.com/devnet/rtmp.html) veya [kesintisiz akış](https://msdn.microsoft.com/library/ff469518.aspx) (parçalanmış-MP4) giriş protokolünü kullanarak katkı akışını gönderir. RTMP alma protokolü için içerik açık (`rtmp://`) veya kabloda güvenli bir şekilde şifrelenir (`rtmps://`). Kesintisiz Akış alma protokolü için, desteklenen URL şemaları `http://` veya `https://` ' dir.  
 
 ## <a name="live-event-types"></a>Canlı olay türleri
 
@@ -76,7 +76,7 @@ Canlı bir olay oluştururken, aşağıdaki seçenekleri belirtebilirsiniz:
 * Etkinlik oluştururken, etkinliğin otomatik başlatılmasını belirtebilirsiniz. <br/>Autostart değeri true olarak ayarlandığında, canlı olay oluşturulduktan sonra başlatılır. Faturalandırma, canlı olay çalışmaya başladıktan hemen sonra başlar. Daha fazla faturalandırmayı durdurmak için canlı olay kaynağında durdurmayı açıkça çağırmanız gerekir. Alternatif olarak, akışı başlatmaya hazırsanız olayını başlatabilirsiniz. 
 
     Daha fazla bilgi için bkz. [canlı olay durumları ve faturalandırma](live-event-states-billing.md).
-* Alma ve önizleme için IP kısıtlamaları. Bu canlı olaya bir video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin '10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1/22') veya bir IP adresi ve bir noktalı ondalık alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1(255.255.252.0)') olabilir.<br/>Herhangi bir IP adresi belirtilmezse ve bir kural tanımı yoksa hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.<br/>IP adreslerinin aşağıdaki biçimlerden birinde olması gerekir: 4 sayıdan oluşan IPv4 adresi, CıDR adres aralığı.
+* Alma ve önizleme için IP kısıtlamaları. Bu canlı olaya bir video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin '10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1/22') veya bir IP adresi ve bir noktalı ondalık alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1(255.255.252.0)') olabilir.<br/>Herhangi bir IP adresi belirtilmezse ve bir kural tanımı yoksa hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.<br/>IP adresleri aşağıdaki biçimlerden birinde olmalıdır: IPv4 adresi 4 sayı, CıDR adres aralığı.
 
     Kendi Güvenlik duvarlarınızdan belirli IP 'Leri etkinleştirmek veya canlı olaylarınızın girdilerini Azure IP adreslerine kısıtlamak istiyorsanız, [Azure veri MERKEZI IP adresi aralıklarından](https://www.microsoft.com/download/details.aspx?id=41653)bir JSON dosyası indirin. Bu dosya hakkında daha fazla bilgi için, sayfasındaki **Ayrıntılar** bölümüne tıklayın.
         
@@ -86,6 +86,9 @@ Canlı bir olay oluştururken, aşağıdaki seçenekleri belirtebilirsiniz:
 * Ad şu [Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) düzenine uymalıdır: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
 
 Ayrıca bkz. [akış uç noktaları adlandırma kuralları](streaming-endpoint-concept.md#naming-convention).
+
+> [!TIP]
+> Canlı olay adınızın benzersizliğini garantilemek için bir GUID oluşturabilir, ardından tüm kısa çizgileri ve süslü ayraçları (varsa) kaldırabilirsiniz. Dize tüm canlı etkinlikler genelinde benzersiz olacaktır ve uzunluğu 32 olarak garanti edilir.
 
 ## <a name="live-event-ingest-urls"></a>Canlı olay alma URL 'Leri
 
@@ -105,11 +108,11 @@ Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
 
     Yayın kodlayıcı donanımları kullanan ve Canlı Etkinliği başlattıktan sonra kodlayıcılarını yeniden yapılandırmak istemeyen büyük medya yayımcıları gösterim modunu tercih eder. Bu yayımcılar zaman içinde değişmeyen, tahmine dayalı bir alma URL'sini kullanmayı tercih eder.
     
-    Bu modu belirtmek için `vanityUrl` `true` oluşturma zamanı (varsayılan )olarakayarlanır.`false` Ayrıca, oluşturma zamanında kendi erişim belirtecinizi (`LiveEventInput.accessToken`) geçirmeniz gerekir. URL 'de rastgele bir belirteci önlemek için belirteç değerini belirtirsiniz. Erişim belirtecinin geçerli bir GUID dizesi olması (tire ile veya kısa çizgi olmadan) vardır. Mod ayarlandıktan sonra güncelleştirilemez.
+    Bu modu belirtmek için, oluşturma zamanında `vanityUrl` ' ı `true` olarak ayarlarsınız (varsayılan değer `false` ' dir). Ayrıca, oluşturma sırasında kendi erişim belirtecinizi (`LiveEventInput.accessToken`) geçirmeniz gerekir. URL 'de rastgele bir belirteci önlemek için belirteç değerini belirtirsiniz. Erişim belirtecinin geçerli bir GUID dizesi olması (tire ile veya kısa çizgi olmadan) vardır. Mod ayarlandıktan sonra güncelleştirilemez.
 
     Erişim belirtecinin, veri merkezinizde benzersiz olması gerekir. Uygulamanızın bir gösterim URL kullanması gerekiyorsa, erişim belirteciniz için her zaman yeni bir GUID örneği oluşturmanız önerilir (varolan GUID 'yi yeniden kullanmak yerine). 
 
-    Aşağıdaki API 'Leri kullanarak, Vanity URL 'sini etkinleştirin ve erişim belirtecini geçerli bir GUID (örneğin `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) olarak ayarlayın.  
+    Aşağıdaki API 'Leri kullanarak Vanity URL 'sini etkinleştirin ve erişim belirtecini geçerli bir GUID (örneğin `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) olarak ayarlayın.  
     
     |Dil|Gösterim URL 'sini etkinleştir|Erişim belirteci ayarlama|
     |---|---|---|

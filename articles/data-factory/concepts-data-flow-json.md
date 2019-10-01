@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: ad21ddffdb22f7abf999bfa12f4a8ed86f42cfa2
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 69dce46052c18eec7c3f1fa2082907ed62b367d6
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673436"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703340"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Veri akışı JSON işlemesini eşleme
 
@@ -22,7 +22,7 @@ ms.locfileid: "71673436"
 Veri akışınıza karmaşık bir sütun eklemek, türetilmiş sütun ifade Düzenleyicisi aracılığıyla daha kolay olur. Yeni bir sütun ekleyip düzenleyiciyi açtıktan sonra iki seçenek vardır: JSON yapısını el ile girin veya etkileşimli olarak alt sütunlar eklemek için Kullanıcı arabirimini kullanın.
 
 #### <a name="interactive-ui-json-design"></a>Etkileşimli UI JSON tasarımı
-Çıkış şeması yan bölmesinden, yeni alt sütunlar `+` menüsü kullanılarak eklenebilir: ![Alt sütun](media/data-flow/addsubcolumn.png "Ekle alt") sütun Ekle
+Çıktı şeması yan bölmesinde `+` menüsü kullanılarak yeni alt sütunlar eklenebilir: ![alt sütun](media/data-flow/addsubcolumn.png "Ekle alt sütun Ekle")
 
 Buradan, yeni sütunlar ve alt sütunlar aynı şekilde eklenebilir. Karmaşık olmayan her bir alan için, ifade düzenleyicisine sağa doğru bir ifade eklenebilir.
 
@@ -50,7 +50,7 @@ Bu ifade "complexColumn" adlı bir sütun için girilmişse, havuza aşağıdaki
 }
 ```
 
-#### <a name="sample-manual-dsl"></a>Örnek el ile DSL
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Tüm hiyerarşik tanım için örnek el ile betik
 ```
 @(
     title=Title,
@@ -145,7 +145,7 @@ File3.json
 ```
 
 ## <a name="higher-order-functions"></a>Daha yüksek sıra işlevleri
-## <a name="filter"></a>filter
+## <a name="filter"></a>Filtreyle
 Öğeleri, belirtilen koşulu karşılamayan dizinin dışına filtreler. Filtre, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.
 
 ### <a name="examples"></a>Örnekler
@@ -185,7 +185,7 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-## <a name="contains"></a>içerir
+## <a name="contains"></a>vardır
 Belirtilen dizideki herhangi bir öğe, belirtilen koşulda doğru olarak değerlendiriliyorsa true değerini döndürür. Contains, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.
 
 ### <a name="examples"></a>Örnekler

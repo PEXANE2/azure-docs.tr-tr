@@ -1,19 +1,19 @@
 ---
 title: Azure Depolama Gezgini sorun giderme kılavuzu | Microsoft Docs
 description: Azure Depolama Gezgini için hata ayıklama tekniklerine genel bakış
-services: virtual-machines
+services: storage
 author: Deland-Han
 manager: dcscontentpm
-ms.service: virtual-machines
+ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: ad73520c99dd5418fd4444b3f41d7d1e22f8d52f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ca9b4b337eed54f02f42cad53d22387eace6b76c
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090841"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694711"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -29,7 +29,7 @@ Rol tabanlı erişim denetimi [RBAC](https://docs.microsoft.com/azure/role-based
 
 RBAC aracılığıyla depolama kaynaklarına erişirken sorun yaşıyorsanız uygun rollere atanmamıştır. Aşağıdaki bölümlerde, şu anda depolama kaynaklarınıza erişim için gereken Depolama Gezgini izinleri açıklanır. Uygun rollere veya izinlere sahip olduğunuzdan emin değilseniz Azure hesap yöneticinize başvurun.
 
-#### <a name="read-listget-storage-accounts-permissions-issue"></a>Okuyamaz Depolama hesaplarını Listele/al "izinleri sorunu
+#### <a name="read-listget-storage-accounts-permissions-issue"></a>"Okuma: depolama hesaplarını Listele/al" izinleri sorunu
 
 Depolama hesaplarını listelemek için izninizin olması gerekir. Bu izni almak için _okuyucu_ rolüne atanmalısınız.
 
@@ -60,7 +60,7 @@ Herhangi bir yönetim katmanı izni veren bir rolünüz yoksa Depolama Gezgini v
 
 Şu anda bu sorun için RBAC ile ilgili bir çözümünüz yok. Geçici bir çözüm olarak, [kaynağına eklemek](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-sas-uri)IÇIN BIR SAS URI 'si isteyebilirsiniz.
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hata: Sertifika zincirindeki otomatik olarak imzalanan sertifika (ve benzer hatalar)
+## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Hata: sertifika zincirinde otomatik olarak imzalanan sertifika (ve benzer hatalar)
 
 Sertifika hataları genellikle aşağıdaki durumlardan birinde oluşur:
 
@@ -70,32 +70,32 @@ Sertifika hataları genellikle aşağıdaki durumlardan birinde oluşur:
 Depolama Gezgini kendinden imzalı veya güvenilmeyen bir sertifikayı gördüğünde, alınan HTTPS iletisinin değiştirilip değiştirilmediğini artık bilmez. Otomatik olarak imzalanan sertifikanın bir kopyasına sahipseniz, aşağıdaki adımları izleyerek Depolama Gezgini güveneceği konusunda talimat verebilirsiniz:
 
 1. Sertifikanın Base-64 kodlamalı bir X. 509.440 (. cer) kopyasını edinin.
-2. **SSL sertifikalarını** > Düzenle > **sertifikaları içeri aktar**' a gidin ve ardından dosya seçicisini kullanarak. cer dosyasını bulun, seçin ve açın.
+2. @No__t-1**SSL sertifikalarını** **Düzenle** > **sertifikaları içeri aktar**' a gidin ve ardından dosya seçiciyi kullanarak. cer dosyasını bulun, seçin ve açın.
 
 Bu sorun, birden fazla sertifika (kök ve ara) varsa da oluşabilir. Bu hatayı onarmak için her iki sertifikanın de eklenmesi gerekir.
 
 Sertifikanın nereden geldiği konusunda emin değilseniz, bulmak için aşağıdaki adımları izleyin:
 
 1. OpenSSL 'yi yükler.
-    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): Açık sürümlerden herhangi biri yeterli olmalıdır.
-    * Mac ve Linux: İşletim sisteminize eklenmelidir.
+    * [Windows](https://slproweb.com/products/Win32OpenSSL.html): tüm hafif sürümler yeterli olmalıdır.
+    * Mac ve Linux: işletim sisteminize eklenmelidir.
 2. OpenSSL 'yi çalıştırın.
-    * Windows: Yükleme dizinini açın, **/bin/** öğesini seçin ve **OpenSSL. exe**' ye çift tıklayın.
-    * Mac ve Linux: Bir `openssl` terminalden çalıştırın.
+    * Windows: yükleme dizinini açın, **/bin/** seçin ve **OpenSSL. exe**' ye çift tıklayın.
+    * Mac ve Linux: terminalden `openssl` çalıştırın.
 3. `s_client -showcerts -connect microsoft.com:443` öğesini çalıştırın.
-4. Otomatik olarak imzalanan sertifikaları bulun. Hangi sertifikaların kendinden imzalandığına ilişkin emin değilseniz, konunun `("s:")` ve verenin `("i:")` aynı olduğu her yerde dikkat edin.
-5. Her biri için otomatik olarak imzalanan sertifikalar bulduğunuzda, (ve dahil) `-----BEGIN CERTIFICATE-----` `-----END CERTIFICATE-----` her şeyi yeni bir. cer dosyasına kopyalayıp yapıştırın.
-6. Depolama Gezgini açın ve**SSL sertifikalarını** >  **düzenlemek** > için**sertifikaları içeri aktarın**' a gidin. Ardından, oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.
+4. Otomatik olarak imzalanan sertifikaları bulun. Hangi sertifikaların kendinden imzalandığından emin değilseniz, `("s:")` ' ın ve veren `("i:")` ' in aynı olduğu her yerde dikkat edin.
+5. Her biri için otomatik olarak imzalanan sertifikalar bulduğunuzda, (ve dahil) `-----BEGIN CERTIFICATE-----` ile `-----END CERTIFICATE-----` arasında her şeyi kopyalayıp yeni bir. cer dosyasına yapıştırın.
+6. Depolama Gezgini açın ve  > **SSL sertifikalarını** **Düzenle** > **sertifikaları içeri aktar**' a gidin. Ardından, oluşturduğunuz. cer dosyalarını bulmak, seçmek ve açmak için dosya seçiciyi kullanın.
 
-Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri bildirim aracı aracılığıyla bizimle iletişim kurun. `--ignore-certificate-errors` Bayrağını kullanarak komut satırından Depolama Gezgini de açabilirsiniz. Bu bayrağıyla açıldığında, Depolama Gezgini sertifika hatalarını yoksayar.
+Bu adımları izleyerek kendinden imzalı bir sertifika bulamıyorsanız, geri bildirim aracı aracılığıyla bizimle iletişim kurun. Ayrıca, `--ignore-certificate-errors` bayrağını kullanarak komut satırından Depolama Gezgini açabilirsiniz. Bu bayrağıyla açıldığında, Depolama Gezgini sertifika hatalarını yoksayar.
 
 ## <a name="sign-in-issues"></a>Oturum açma sorunları
 
 ### <a name="blank-sign-in-dialog-box"></a>Boş oturum açma iletişim kutusu
 
-Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin:
+Active Directory Federasyon Hizmetleri (AD FS) (AD FS), elektron tarafından desteklenmeyen bir yeniden yönlendirme gerçekleştirmeyi Depolama Gezgini istem yaparken, boş oturum açma iletişim kutuları çoğu zaman oluşur. Bu sorunu geçici olarak çözmek için, oturum açma için cihaz kod akışını kullanmayı deneyebilirsiniz. Bunu yapmak için şu adımları izleyin:
 
-1. Menüde **Önizleme** > **Cihaz kodunu kullan oturum aç**' a gidin.
+1. Menüde **Önizleme**' ye gidin  > **cihaz kodu oturum açma kullan ' ı kullanın**.
 2. **Bağlan** iletişim kutusunu açın (sol taraftaki dikey çubukta bulunan tak simgesi veya hesap panelinde **Hesap Ekle** ' yi seçerek).
 3. Oturum açmak istediğiniz ortamı seçin.
 4. **Oturum aç '** ı seçin.
@@ -111,7 +111,7 @@ Varsayılan tarayıcınız zaten farklı bir hesapta oturum açmış olduğu iç
 Bir yeniden kimlik doğrulaması döngüsünde veya hesaplarınızdan birinin UPN 'sini değiştirdiyseniz, şu adımları izleyin:
 
 1. Tüm hesapları kaldırın ve ardından Depolama Gezgini kapatın.
-2. Öğesini silin. Makinenizden IdentityService klasörü. Windows üzerinde, klasörü konumunda `C:\users\<username>\AppData\Local`bulunur. Mac ve Linux için, klasörü Kullanıcı dizininizin kökünde bulabilirsiniz.
+2. Öğesini silin. Makinenizden IdentityService klasörü. Windows 'da, klasör `C:\users\<username>\AppData\Local` konumunda bulunur. Mac ve Linux için, klasörü Kullanıcı dizininizin kökünde bulabilirsiniz.
 3. Mac veya Linux çalıştırıyorsanız, işletim sisteminizin keystore ' dan Microsoft. Developer. IdentityService girişini de silmeniz gerekir. Mac üzerinde, anahtar deposu *GNOME Anahtarlık* uygulamasıdır. Linux 'ta, uygulama genellikle _kimlik anahtarlığı_olarak adlandırılır ancak ad, dağıtıma bağlı olarak farklılık gösterebilir.
 
 ### <a name="conditional-access"></a>Koşullu Erişim
@@ -165,7 +165,7 @@ Kullanıcı arabirimi aracılığıyla ekli bir hesabı veya depolama kaynağın
 > Bu klasörleri silmeden önce Depolama Gezgini kapatın.
 
 > [!NOTE]
-> Herhangi bir SSL sertifikası aldıysanız, `certs` dizinin içeriğini yedekleyin. Daha sonra, SSL sertifikalarınızı yeniden içeri aktarmak için yedekleme 'yi kullanabilirsiniz.
+> Herhangi bir SSL sertifikası aldıysanız, `certs` dizininin içeriğini yedekleyin. Daha sonra, SSL sertifikalarınızı yeniden içeri aktarmak için yedekleme 'yi kullanabilirsiniz.
 
 ## <a name="proxy-issues"></a>Proxy sorunları
 
@@ -193,7 +193,7 @@ Windows için Fiddler gibi ağ araçlarınız varsa, sorunları aşağıdaki gib
 
 * Proxy 'niz üzerinden çalışmanız gerekiyorsa, ağ iletişimi aracınızı proxy üzerinden bağlanacak şekilde yapılandırmanız gerekebilir.
 * Ağ aracınız tarafından kullanılan bağlantı noktası numarasını kontrol edin.
-* Depolama Gezgini ' deki proxy ayarları olarak yerel ana bilgisayar URL 'sini ve ağ aracının bağlantı noktası numarasını girin. Bunu doğru yaptığınızda, ağ aracınız, yönetim ve hizmet uç noktalarına Depolama Gezgini tarafından yapılan ağ isteklerini günlüğe kaydetmeye başlar. Örneğin, bir tarayıcıda `https://cawablobgrs.blob.core.windows.net/` blob uç noktanız için girin ve aşağıdakine benzer bir yanıt alırsınız:
+* Depolama Gezgini ' deki proxy ayarları olarak yerel ana bilgisayar URL 'sini ve ağ aracının bağlantı noktası numarasını girin. Bunu doğru yaptığınızda, ağ aracınız, yönetim ve hizmet uç noktalarına Depolama Gezgini tarafından yapılan ağ isteklerini günlüğe kaydetmeye başlar. Örneğin, bir tarayıcıda blob uç noktanız için `https://cawablobgrs.blob.core.windows.net/` girin ve aşağıdakine benzer bir yanıt alırsınız:
 
   ![Kod örneği](./media/storage-explorer-troubleshooting/4022502_en_2.png)
 
@@ -216,11 +216,11 @@ Bu hata iletisini alırsanız, depolama hesabınız için anahtarları almak iç
 
 Hesap anahtarlarını görürseniz, sorunu çözmenize yardımcı olması için GitHub 'da bir sorun çözün.
 
-## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Yeni bağlantı eklenirken hata oluştu: TypeError Tanımsız olan ' version ' özelliği okunamıyor
+## <a name="error-occurred-while-adding-new-connection-typeerror-cannot-read-property-version-of-undefined"></a>Yeni bağlantı eklenirken hata oluştu: TypeError: tanımsız olan ' version ' özelliği okunamıyor
 
 Özel bir bağlantı eklemeye çalıştığınızda bu hata iletisini alırsanız, yerel kimlik bilgileri Yöneticisi 'nde depolanan bağlantı verileri bozulmuş olabilir. Bu sorunu geçici olarak çözmek için bozuk yerel bağlantılarınızı silmeyi ve sonra yeniden eklemeyi deneyin:
 
-1. Depolama Gezgini başlatın. Menüden, **Yardım** > **Geliştirici Araçları**seçeneğine gidin.
+1. Depolama Gezgini başlatın. Menüden, **yardım** > **geçiş geliştirici araçları**gidin.
 2. Açılan pencerede, **uygulama** sekmesinde, **File://** > **yerel depolama** (sol taraf) seçeneğine gidin.
 3. Sorun yaşadığınız bağlantı türüne bağlı olarak, anahtarını bulun ve sonra değerini bir metin düzenleyicisine kopyalayın. Değer, aşağıdaki gibi özel bağlantı adlarınızın bir dizisidir:
     * Depolama hesapları
@@ -230,11 +230,11 @@ Hesap anahtarlarını görürseniz, sorunu çözmenize yardımcı olması için 
         * `StorageExplorer_CustomConnections_Blobs_v2`
     * Dosya paylaşımları
         * `StorageExplorer_CustomConnections_Files_v1`
-    * Sıralar
+    * Kuyruklar
         * `StorageExplorer_CustomConnections_Queues_v1`
     * Tablolar
         * `StorageExplorer_CustomConnections_Tables_v1`
-4. Geçerli bağlantı adlarınızı kaydettikten sonra, Geliştirici Araçları değerini olarak `[]`ayarlayın.
+4. Geçerli bağlantı adlarınızı kaydettikten sonra Geliştirici Araçları değerini `[]` olarak ayarlayın.
 
 Bozulan bağlantıları korumak istiyorsanız, bozuk bağlantıları bulmak için aşağıdaki adımları kullanabilirsiniz. Var olan tüm bağlantıları kaybetmezseniz, bu adımları atlayabilir ve bağlantı verilerinizi temizlemek için platforma özgü yönergeleri izleyebilirsiniz.
 
@@ -248,13 +248,13 @@ Tüm bağlantılarınız bittikten sonra, geri eklenmemiş tüm bağlantı adlar
 
 1. **Başlat** menüsünde **kimlik bilgileri Yöneticisi** ' ni arayın ve açın.
 2. **Windows kimlik bilgileri**' ne gidin.
-3. **Genel kimlik bilgileri**altında, `<connection_type_key>/<corrupted_connection_name>` anahtarına sahip olan girişleri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+3. **Genel kimlik bilgileri**altında, `<connection_type_key>/<corrupted_connection_name>` anahtarına sahip girdileri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Bu girişleri silip bağlantıları yeniden ekleyin.
 
 # <a name="macostabmacos"></a>[macOS](#tab/macOS)
 
 1. Spotlight (komut + ara çubuğu) öğesini açın ve **Anahtarlık erişimi**arayın.
-2. `<connection_type_key>/<corrupted_connection_name>` Anahtarına sahip olan girişleri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+2. @No__t-0 anahtarına sahip girdileri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Bu girişleri silip bağlantıları yeniden ekleyin.
 
 # <a name="linuxtablinux"></a>[Linux](#tab/Linux)
@@ -262,7 +262,7 @@ Tüm bağlantılarınız bittikten sonra, geri eklenmemiş tüm bağlantı adlar
 Yerel kimlik bilgisi yönetimi, Linux dağıtımına bağlı olarak farklılık gösterir. Linux yönetiyoruz yerel kimlik bilgileri yönetimi için yerleşik bir GUI aracı sağlamıyorsa, yerel kimlik bilgilerinizi yönetmek için bir üçüncü taraf araç yükleyebilirsiniz. Örneğin, Linux yerel kimlik bilgilerini yönetmek için açık kaynaklı bir GUI aracı olan [Mevsimat](https://wiki.gnome.org/Apps/Seahorse/)'ı kullanabilirsiniz.
 
 1. Yerel kimlik bilgileri yönetim aracınızı açın ve kaydettiğiniz kimlik bilgilerinizi bulun.
-2. `<connection_type_key>/<corrupted_connection_name>` Anahtarına sahip olan girişleri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
+2. @No__t-0 anahtarına sahip girdileri arayın (örneğin, `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Bu girişleri silip bağlantıları yeniden ekleyin.
 ---
 
@@ -279,8 +279,8 @@ Bir güvenlik alanına bir SAS URL 'SI aracılığıyla bağlanıyorsanız ve bi
 Yanlışlıkla geçersiz bir SAS URL 'SI kullanarak eklediyseniz ve bundan sonra ayrılamaz, şu adımları izleyin:
 
 1. Depolama Gezgini çalıştırırken, Geliştirici Araçları penceresini açmak için F12 tuşuna basın.
-2. **Uygulama** sekmesinde, soldaki ağaçta **yerel depolama** > **File://** ' ı seçin.
-3. Sorunlu SAS URI 'sinin hizmet türüyle ilişkili anahtarı bulun. Örneğin, hatalı SAS URI 'SI bir blob kapsayıcısı için ise adlı `StorageExplorer_AddStorageServiceSAS_v1_blob`anahtarı bulun.
+2. **Uygulama** sekmesinde, soldaki ağaçta **yerel depolama** > **File://** ' yi seçin.
+3. Sorunlu SAS URI 'sinin hizmet türüyle ilişkili anahtarı bulun. Örneğin, hatalı SAS URI 'SI bir blob kapsayıcısı için ise, `StorageExplorer_AddStorageServiceSAS_v1_blob` adlı anahtarı arayın.
 4. Anahtarın değeri bir JSON dizisi olmalıdır. Hatalı URI ile ilişkili nesneyi bulun ve silin.
 5. Depolama Gezgini yeniden yüklemek için CTRL + R tuşlarına basın.
 
@@ -351,10 +351,10 @@ Bu paketler, Linux üzerinde Depolama Gezgini için en yaygın gereksinimlerdir:
 Depolama Gezgini 1.7.0 veya daha önceki bir sürümü için Depolama Gezgini tarafından kullanılan .NET Core sürümüne yama yapmanız gerekebilir:
 
 1. [NuGet 'Den](https://www.nuget.org/packages/StreamJsonRpc/1.5.43)StreamJsonRpc 'nin 1.5.43 sürümünü indirin. Sayfanın sağ tarafındaki "paketi Indir" bağlantısını bulun.
-2. Paketi indirdikten sonra, dosya uzantısını `.nupkg` olarak `.zip`değiştirin.
+2. Paketi indirdikten sonra, dosya uzantısını `.nupkg` ' dan `.zip` ' e değiştirin.
 3. Paketi sıkıştırmayı açın.
-4. Açık `streamjsonrpc.1.5.43/lib/netstandard1.1/` klasör.
-5. Depolama Gezgini `StreamJsonRpc.dll` klasöründe aşağıdaki konumlara kopyalayın:
+4. @No__t-0 klasörünü açın.
+5. @No__t-0 ' i Depolama Gezgini klasöründe aşağıdaki konumlara kopyalayın:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 

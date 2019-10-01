@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights kullanılabilirlik testlerinizde sorun giderin | Microsoft Docs
-description: Azure Application Insights 'de Web testlerinde sorun giderme. Web sitesi kullanılamaz duruma gelirse veya yavaş yanıt verirse uyarı alın.
+description: Azure Application Insights 'de Web testlerinde sorun giderme. Bir Web sitesi kullanılamaz hale gelirse veya yavaş yanıt verirse uyarılar alın.
 services: application-insights
 documentationcenter: ''
 author: lgayhardt
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: ee64a8af35f938def94e369bdb400fed6e2798c0
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146590"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695049"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
@@ -29,7 +29,7 @@ Bu makale, kullanılabilirlik izlemeyi kullanırken oluşabilecek yaygın sorunl
 |Belirti/hata iletisi| Olası nedenler|
 |--------|------|
 |SSL/TLS güvenli kanalı oluşturulamadı  | SSL sürümü. Yalnızca TLS 1,0, 1,1 ve 1,2 desteklenir. **SSLv3 desteklenmiyor.**
-|TLSv 1.2 kayıt katmanı: Uyarı (düzey: Önemli, Açıklama: MAC hatalı kayıt)| [Daha fazla bilgi](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)için bkz. StackExchange iş parçacığı.
+|TLSv 1.2 kayıt katmanı: uyarı (düzey: önemli, Açıklama: Hatalı kayıt MAC)| [Daha fazla bilgi](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)için bkz. StackExchange iş parçacığı.
 |Başarısız olan URL bir CDN 'ye (Content Delivery Network) | Bunun nedeni CDN 'inizdeki bir yanlış yapılandırma olabilir |  
 
 ### <a name="possible-workaround"></a>Olası geçici çözüm
@@ -44,7 +44,7 @@ Bu makale, kullanılabilirlik izlemeyi kullanırken oluşabilecek yaygın sorunl
 |    |Belirli IP adreslerini yeniden yönlendirme (yük dengeleyiciler, coğrafi trafik yöneticileri, Azure Express Route) aracılığıyla yapılır. 
 |    |Azure ExpressRoute kullanıyorsanız, paketlerin [asimetrik yönlendirmenin gerçekleştiği](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing)durumlarda nerelerde bırakılbileceği senaryolar vardır.|
 
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Protokol ihlali hatası ile aralıklı test başarısızlığı
+## <a name="test-failure-with-a-protocol-violation-error"></a>Protokol ihlali hatası ile test hatası
 
 |Belirti/hata iletisi| Olası nedenler| Olası çözümler |
 |----|---------|-----|
@@ -53,7 +53,7 @@ Bu makale, kullanılabilirlik izlemeyi kullanırken oluşabilecek yaygın sorunl
 > [!NOTE]
 > URL, HTTP üstbilgileri gevşek olarak doğrulanmış tarayıcılarda başarısız olmayabilir. Bu sorunun ayrıntılı bir açıklaması için bu blog gönderisine bakın: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-## <a name="common-troubleshooting-questions"></a>Genel sorun giderme soruları
+## <a name="common-troubleshooting-questions"></a>Ortak sorun giderme soruları
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Site sorunsuz görünüyor ancak sınama arızalarını görüyorum mi? Neden Application Insights uyarı veriyor?
 
@@ -77,44 +77,44 @@ Web kancası bildirimini alan uygulamanın kullanılabilir olduğundan ve Web ka
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Protokol ihlali hatası ile aralıklı test hatası mı?
 
-Hata ("protokol ihlali.CR’den sonra LF gelmelidir") sunucu (veya bağımlılıklar) ile ilgili bir sorun olduğunu gösterir. Bu durum, yanıtta hatalı biçimlendirilmiş üst bilgiler ayarlandığında meydana gelir. Yük dengeleyiciler veya CDN'lerden kaynaklanabilir. Özellikle, bazı üst bilgiler satır sonunu belirtmek için CRLF kullanmıyor olabilir, bu da HTTP belirtimini ihlal eder ve bu nedenle .NET WebRequest düzeyinde doğrulama başarısız olur. İhlal halinde olabilecek nokta üst bilgilerine olan yanıtı inceleyin.
+Hata ("protokol ihlali. CR 'nin arkasından LF ") sunucu (veya bağımlılıklar) ile ilgili bir sorun olduğunu gösterir. Bu durum, yanıtta hatalı biçimlendirilmiş üstbilgiler ayarlandığında oluşur. Bunun nedeni yük dengeleyiciler veya CDNs olabilir. Özellikle, bazı üst bilgiler satır sonunu belirtmek için CRLF kullanmıyor olabilir, bu da HTTP belirtimini ihlal eder ve bu nedenle .NET WebRequest düzeyinde doğrulama başarısız olur. İhlal halinde olabilecek nokta üst bilgilerine olan yanıtı inceleyin.
 
 > [!NOTE]
 > URL, HTTP üstbilgileri gevşek olarak doğrulanmış tarayıcılarda başarısız olmayabilir. Bu sorunun ayrıntılı bir açıklaması için bu blog gönderisine bakın: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
 ### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Test başarısızlıklarını tanılamak için ilgili sunucu tarafı telemetri görmüyorum? *
 
-Sunucu tarafı uygulamanız için Application Insights ayarlanmışsa, bunun nedeni [örnekleme](../../azure-monitor/app/sampling.md) işleminin devam ediyor olması olabilir. Farklı bir kullanılabilirlik sonucu seçin.
+Sunucu tarafı uygulamanız için Application Insights ayarladıysanız, bunun nedeni [örnekleme](../../azure-monitor/app/sampling.md) işleminin sürüyor olması olabilir. Farklı bir kullanılabilirlik sonucu seçin.
 
-### <a name="can-i-call-code-from-my-web-test"></a>Web testimden kod çağırabilir miyim?
+### <a name="can-i-call-code-from-my-web-test"></a>Web testimde kod çağırabilir miyim?
 
-Hayır. Test adımları .webtest dosyasında olmalıdır. Bu nedenle, başka web testlerini çağıramaz, döngüleri kullanamazsınız. Ancak yararlı bulabileceğiniz bir dizi eklenti vardır.
+Hayır. Testin adımları. webtest dosyasında olmalıdır. Diğer Web testlerini çağıramaz veya döngüleri kullanamazsınız. Ancak yararlı bulabileceğiniz çeşitli eklentiler vardır.
 
 
 ### <a name="is-there-a-difference-between-web-tests-and-availability-tests"></a>"Web testleri" ve "kullanılabilirlik testleri" arasında bir fark var mı?
 
-Bu iki terim birbirlerinin yerine kullanılabilir. Kullanılabilirlik testleri, çok adımlı web testlerine ek olarak tek URL ping testlerini de içeren daha genel bir terimdir.
+İki terim birbirinin yerine oluşturulabilir. Kullanılabilirlik testleri, çok adımlı Web testlerine ek olarak tek URL ping testlerini içeren daha genel bir terimdir.
 
-### <a name="id-like-to-use-availability-tests-on-our-internal-server-that-runs-behind-a-firewall"></a>Kullanılabilirlik testlerini, güvenlik duvarının arkasında çalışan kendi dahili sunucumuzda kullanmayı tercih ediyorum.
+### <a name="id-like-to-use-availability-tests-on-our-internal-server-that-runs-behind-a-firewall"></a>Bir güvenlik duvarının arkasında çalışan iç sunucumuzda kullanılabilirlik testlerini kullanmak istiyorum.
 
-   İki olası çözümü vardır:
+   Olası iki çözüm vardır:
 
-   * Güvenlik duvarınızı, [Web testi aracılarımızın IP adreslerinden](../../azure-monitor/app/ip-addresses.md) gelen isteklere izin verecek şekilde yapılandırın.
-   * İç sunucunuzu düzenli olarak test etmek için kendi kodunuzu yazın. Kodu, güvenlik duvarınızın arkasındaki bir test sunucusunda arka plan işlemi olarak çalıştırın. Test işleminiz, temel SDK paketindeki [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API’sini kullanarak sonuçları Application Insights’a gönderebilir. Bunun için test sunucunuzun Application Insights alım uç noktası ile giden bağlantısının olması gerekir, ancak bu, gelen isteklere izin vermeye göre çok daha küçük bir güvenlik riski oluşturur. Sonuçlar kullanılabilirlik Web testleri dikey penceresinde görünür ancak deneyim Portal aracılığıyla oluşturulan testler için kullanılabilir olan yeniliklerden biraz basitleşmiş olur. Özel kullanılabilirlik testleri analiz, arama ve ölçümler ' de kullanılabilirlik sonuçları olarak da görünür.
+   * Güvenlik duvarınızı, [Web test aracılarımızın IP adreslerinden](../../azure-monitor/app/ip-addresses.md)gelen isteklere izin verecek şekilde yapılandırın.
+   * İç sunucunuzu düzenli olarak test etmek için kendi kodunuzu yazın. Kodu, güvenlik duvarınızın arkasındaki bir test sunucusunda bir arka plan işlemi olarak çalıştırın. Test işleminiz, çekirdek SDK paketindeki [Trackavailability ()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 'sini kullanarak sonuçlarını Application Insights gönderebilir. Bu, test sunucunuzun Application Insights alma uç noktasına giden erişimine sahip olmasını gerektirir, ancak bu, gelen isteklere izin verme alternatifinden daha küçük bir güvenlik riskidir. Sonuçlar kullanılabilirlik Web testleri dikey penceresinde görünür ancak deneyim Portal aracılığıyla oluşturulan testler için kullanılabilir olan yeniliklerden biraz basitleşmiş olur. Özel kullanılabilirlik testleri analiz, arama ve ölçümler ' de kullanılabilirlik sonuçları olarak da görünür.
 
-### <a name="uploading-a-multi-step-web-test-fails"></a>Çok adımlı web testi yüklenemiyor
+### <a name="uploading-a-multi-step-web-test-fails"></a>Çok adımlı Web testi yükleme başarısız oluyor
 
 Bunun gerçekleşebileceği bazı nedenler:
    * 300 K boyut sınırı vardır.
    * Döngüler desteklenmez.
-   * Başka web testlerine başvurular desteklenmez.
-   * Veri kaynakları desteklenmez.
+   * Diğer Web testlerine başvurular desteklenmez.
+   * Veri kaynakları desteklenmiyor.
 
-### <a name="my-multi-step-test-doesnt-complete"></a>Çok adımlı testim tamamlanmadı
+### <a name="my-multi-step-test-doesnt-complete"></a>Çok adımlı sınamam tamamlanmıyor
 
-Test başına 100 istek sınırı var. Ayrıca, iki dakikadan uzun süre çalışırsa test durdurulur.
+Test başına 100 istekten oluşan bir sınır vardır. Ayrıca, iki dakikadan uzun süre çalışırsa test durdurulur.
 
-### <a name="how-can-i-run-a-test-with-client-certificates"></a>İstemci sertifikasıyla testi nasıl çalıştırırım?
+### <a name="how-can-i-run-a-test-with-client-certificates"></a>İstemci sertifikalarıyla bir testi nasıl çalıştırabilirim?
 
 Bu şu anda desteklenmiyor.
 

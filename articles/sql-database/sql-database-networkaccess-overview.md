@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981231"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703263"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL veritabanı ve veri ambarı ağ erişim denetimleri
 
@@ -24,7 +24,7 @@ ms.locfileid: "69981231"
 > Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
 
 > [!IMPORTANT]
-> Bu makale, **Azure SQL veritabanı yönetilen örneği**için geçerlidir. ağ yapılandırması hakkında daha fazla bilgi için bkz. [yönetilen örneğe bağlanma](sql-database-managed-instance-connect-app.md) .
+> Bu *Makale,* **Azure SQL veritabanı yönetilen örneği**için geçerlidir. ağ yapılandırması hakkında daha fazla bilgi için bkz. [yönetilen örneğe bağlanma](sql-database-managed-instance-connect-app.md) .
 
 [Azure Portal](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturduğunuzda sonuç, *yourservername.Database.Windows.net*biçimindeki genel bir uç noktadır. Tasarıma göre, genel uç noktaya tüm erişim reddedilir. Daha sonra, genel uç nokta aracılığıyla SQl veritabanı erişimine seçmeli olarak izin vermek için aşağıdaki ağ erişim denetimlerini kullanabilirsiniz
 - Azure hizmetlerine izin ver:-açık olarak ayarlandığında, Azure sınırının içindeki diğer kaynaklar, örneğin bir Azure sanal makinesi SQL veritabanına erişebilir
@@ -44,7 +44,7 @@ Bu ayarı, Azure SQL Server aşağıdaki gibi oluşturulduktan sonra güvenlik d
   
  ![Sunucu güvenlik duvarını yönetme ekran görüntüsü][2]
 
-Azure SQL Server olarak ayarlandığında, Azure sınırının içindeki tüm kaynaklardan gelen iletişimlere izin verir, bu da aboneliğinizin bir parçası olmayabilir veya olmayabilir.
+Azure SQL Server olarak ayarlandığında **, Azure sınırının** içindeki tüm kaynaklardan gelen iletişimlere izin verir, bu da aboneliğinizin bir parçası olmayabilir veya olmayabilir.
 
 Çoğu durumda, **Açık** ayarı, çoğu müşterinin izin verilenden daha fazla izne sahiptir. Bu ayarı **kapalı** olarak ayarlamak ve daha kısıtlayıcı IP güvenlik duvarı kuralları ya da sanal ağ güvenlik duvarı kuralları ile değiştirmek isteyebilir. Bunun yapılması aşağıdaki özellikleri etkiler:
 
@@ -66,27 +66,29 @@ Mevcut olduğunda, SQL veritabanınızda denetimi etkinleştirmenin iki yolu var
 Azure SQL veritabanı, Azure IP 'Leri kullanarak veritabanlarınıza bağlanan veri eşitleme özelliğine sahiptir. Hizmet uç noktalarını kullanırken, Azure hizmetlerinin SQL veritabanı sunucunuza sunucu erişimine erişmesine **Izin ver** ' i devre dışı bırakır ve veri eşitleme özelliğini bozacaksınız.
 
 ## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
-IP tabanlı güvenlik duvarı, istemci makinelerin [IP adreslerini](sql-database-server-level-firewall-rule.md) açıkça eklemeene kadar veritabanı sunucunuza tüm erişimi önleyen bir Azure SQL Server özelliğidir.
+IP tabanlı güvenlik duvarı, istemci makinelerin [IP adreslerini açıkça eklemeene](sql-database-server-level-firewall-rule.md) kadar veritabanı sunucunuza tüm erişimi önleyen bir Azure SQL Server özelliğidir.
 
 
 ## <a name="virtual-network-firewall-rules"></a>Sanal ağ güvenlik duvarı kuralları
 
 Azure SQL Server güvenlik duvarı, IP kurallarına ek olarak *sanal ağ kurallarını*tanımlamanızı sağlar.  
-Daha fazla bilgi için bkz. [Azure SQL veritabanı Için sanal ağ hizmet uç noktaları ve kuralları](sql-database-vnet-service-endpoint-rule-overview.md).
+Daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı Için sanal ağ hizmet uç noktaları ve kuralları](sql-database-vnet-service-endpoint-rule-overview.md) . bu videoyu izleyin:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 
  ### <a name="azure-networking-terminology"></a>Azure ağ terminolojisi  
 Sanal ağ güvenlik duvarı kurallarını araştırırken aşağıdaki Azure ağ koşullarına dikkat edin
 
 **Sanal ağ:** Azure aboneliğinizle ilişkili sanal ağlarınız olabilir 
 
-**Alt ağ** Bir sanal ağ, **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
+**Alt ağ:** Bir sanal ağ, **alt ağlar**içerir. Sahip olduğunuz tüm Azure sanal makineleri (VM 'Ler) alt ağlara atanır. Bir alt ağ birden çok VM veya başka işlem düğümü içerebilir. Ağınızı erişime izin verecek şekilde yapılandırmadığınız müddetçe, sanal ağınızın dışındaki işlem düğümleri sanal ağınıza erişemez.
 
 **Sanal ağ hizmeti uç noktası:** [Sanal ağ hizmeti uç noktası] [VM-sanal-ağ-hizmeti-uç noktaları-genel bakış-649d], özellik değerleri bir veya daha fazla resmi Azure hizmet türü adı içeren bir alt ağ. Bu makalede, SQL veritabanı adlı Azure hizmetine başvuran **Microsoft. SQL**tür adı ile ilgileniyoruz.
 
 **Sanal ağ kuralı:** SQL veritabanı sunucunuz için bir sanal ağ kuralı, SQL veritabanı sunucunuzun erişim denetim listesinde (ACL) listelenen bir alt ağıdır. SQL veritabanınızın ACL 'sinde olması için alt ağın **Microsoft. SQL** tür adını içermesi gerekir. Bir sanal ağ kuralı, SQL veritabanı sunucunuza alt ağdaki her düğümden gelen iletişimleri kabul etmesini söyler.
 
 
-## <a name="ip-vs-virtual-network-firewall-rules"></a>IP ile Sanal ağ güvenlik duvarı kuralları
+## <a name="ip-vs-virtual-network-firewall-rules"></a>IP-sanal ağ güvenlik duvarı kuralları
 
 Azure SQL Server güvenlik duvarı, iletişimlerin SQL veritabanı 'na kabul edileceği IP adresi aralıklarını belirtmenize olanak tanır. Bu yaklaşım, Azure özel ağının dışında olan kararlı IP adresleri için çok uygundur. Ancak, Azure özel ağı içindeki sanal makineler (VM) *dinamik* IP adresleriyle yapılandırılır. Dinamik IP adresleri, VM 'niz yeniden başlatıldığında değişebilir ve IP tabanlı güvenlik duvarı kuralını geçersiz kılar. Bir güvenlik duvarı kuralında, bir üretim ortamında dinamik bir IP adresi belirtmek de bu şekilde yapılır.
 
@@ -105,7 +107,7 @@ Sanal ağ kuralları, VM 'lerinizi içeren belirli bir alt ağdan erişimi kurma
 
 - Açık kaynaklı veya üçüncü taraf uygulamalardan bir Azure SQL veritabanına bağlanma konusunda yardım için bkz. [SQL veritabanı Için istemci hızlı başlangıç kodu örnekleri](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 
-- Açmanız gerekebilecek ek bağlantı noktaları hakkında daha fazla bilgi için bkz **. SQL veritabanı:**  [ADO.NET 4,5 ve SQL veritabanı için 1433 ' den sonraki bağlantı noktalarının](sql-database-develop-direct-route-ports-adonet-v12.md) iç içe geçmiş bölümü
+- Açmanız gerekebilecek ek bağlantı noktaları hakkında daha fazla bilgi için bkz **. SQL veritabanı:** [ADO.NET 4,5 ve SQL veritabanı için 1433 ' den sonraki bağlantı noktalarının](sql-database-develop-direct-route-ports-adonet-v12.md) iç içe geçmiş bölümü
 
 - Azure SQL veritabanı bağlantısına genel bakış için bkz. [Azure SQL bağlantı mimarisi](sql-database-connectivity-architecture.md)
 

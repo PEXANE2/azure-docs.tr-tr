@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 379664fb7170249b8f21ec9826f8b0b6fbe19892
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679539"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710188"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -204,7 +204,7 @@ Görüntü karşıya yüklenmek üzere hazırlandıktan sonra, sanal makinenin k
 
 Bu bölüm yalnızca ana görüntü yerel olarak oluşturulduğunda geçerlidir.
 
-Aşağıdaki yönergeler, ana görüntünüzü bir Azure depolama hesabına nasıl yükleyeceksiniz. Henüz bir Azure depolama hesabınız yoksa, bir tane oluşturmak için [Bu makaledeki](https://code.visualstudio.com/tutorials/static-website/create-storage) yönergeleri izleyin.
+Aşağıdaki yönergeler, ana görüntünüzü bir Azure depolama hesabına nasıl yükleyeceksiniz. Henüz bir Azure depolama hesabınız yoksa, bir tane oluşturmak için [Bu makaledeki](/azure/javascript/tutorial-vscode-static-website-node-03) yönergeleri izleyin.
 
 1. Henüz yapmadıysanız VM görüntüsünü (VHD) sabit olarak dönüştürün. Görüntüyü Sabitsiz dönüştürmezseniz, görüntüyü başarıyla oluşturamazsınız.
 

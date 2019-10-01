@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: 8160cd2cb77a56f3d9b13f3c43929cc4ab7565b0
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309591"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703251"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps ile Azure Blob depolamada Bloblar oluşturma ve yönetme
 
@@ -25,13 +25,14 @@ Bu makalede, Azure Blob depolama Bağlayıcısı ile bir mantık uygulamasının
 Bir Azure Web sitesinde güncelleştirilmiş bir aracınız olduğunu varsayalım. mantıksal uygulamanız için tetikleyici işlevi görür. Bu olay gerçekleştiğinde, mantıksal uygulamanızdaki bir işlem olan BLOB depolama kapsayıcısında bir dosya olan bir dosya, mantıksal uygulamanızın güncelleştirilmesini sağlayabilirsiniz.
 
 > [!NOTE]
-> Logic Apps, [güvenlik duvarı kuralları](../storage/common/storage-network-security.md) olan ve aynı bölgede bulunan Azure depolama hesaplarına doğrudan erişemez. Ancak, bölgeler arasında iletişim kurmak için genel bir IP adresi kullanıldığından, Logic Apps, farklı bir bölgede bulunan Azure depolama hesaplarına erişebilirler. Ya da her iki seçeneği de kullanabilirsiniz:
+>
+> Logic Apps, [güvenlik duvarı kuralları](../storage/common/storage-network-security.md) olan ve aynı bölgede bulunan Azure depolama hesaplarına doğrudan erişemez. Ancak, bölgeler arasında iletişim kurmak için genel bir IP adresi kullanıldığından, Logic Apps, farklı bir bölgede bulunan Azure depolama hesaplarına erişebilirler. Yalnızca [bölgenizde yönetilen bağlayıcılar için gıden IP adreslerine](../logic-apps/logic-apps-limits-and-config.md#outbound)izin verdiğinizden emin olun. İsterseniz, burada daha gelişmiş seçenekleri de kullanabilirsiniz:
 >
 > * Bir Azure sanal ağındaki kaynaklara bağlanabilecek bir [tümleştirme hizmeti ortamı](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturun.
 >
-> * Zaten API Management kullanıyorsanız bu hizmeti bu senaryo için kullanabilirsiniz. Daha fazla bilgi için bkz. [basit kurumsal tümleştirme mimarisi](https://aka.ms/aisarch).
+> * API Management için adanmış bir katman kullanıyorsanız, API Management kullanarak depolama API 'sini önyükleyebilir ve güvenlik duvarı üzerinden ikinci IP adreslerine izin verebilirsiniz. Temel olarak, API Management tarafından kullanılan Azure sanal ağını depolama hesabının güvenlik duvarı ayarına ekleyin. Daha sonra Azure depolama API 'Lerini çağırmak için API Management eylemini veya HTTP eylemini kullanabilirsiniz. Ancak, bu seçeneği belirlerseniz, kimlik doğrulama işlemini kendiniz işlemeniz gerekir. Daha fazla bilgi için bkz. [basit kurumsal tümleştirme mimarisi](https://aka.ms/aisarch).
 
-Logic Apps 'e yeni başladıysanız [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç ' ı inceleyin: İlk mantıksal uygulamanızı](../logic-apps/quickstart-create-first-logic-app-workflow.md)oluşturun. Bağlayıcıya özgü teknik bilgiler için bkz. [Azure Blob depolama Bağlayıcısı başvurusu](/connectors/azureblobconnector/).
+Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin. Bağlayıcıya özgü teknik bilgiler için bkz. [Azure Blob depolama Bağlayıcısı başvurusu](/connectors/azureblobconnector/).
 
 ## <a name="limits"></a>Sınırlar
 
@@ -55,7 +56,7 @@ Logic Apps 'e yeni başladıysanız [Azure Logic Apps](../logic-apps/logic-apps-
 
 ## <a name="add-blob-storage-trigger"></a>BLOB depolama tetikleyicisi Ekle
 
-Azure Logic Apps, her mantıksal uygulama, belirli bir olay gerçekleştiğinde [](../logic-apps/logic-apps-overview.md#logic-app-concepts)veya belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her tetiklendiğinde Logic Apps altyapısı bir mantıksal uygulama örneği oluşturur ve uygulamanızın iş akışını çalıştırmaya başlar.
+Azure Logic Apps, her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya belirli bir koşul karşılandığında tetiklenen bir [tetikleyiciyle](../logic-apps/logic-apps-overview.md#logic-app-concepts)başlamalıdır. Tetikleyici her tetiklendiğinde Logic Apps altyapısı bir mantıksal uygulama örneği oluşturur ve uygulamanızın iş akışını çalıştırmaya başlar.
 
 Bu örnek, depolama kapsayıcıınızda bir blob 'un özellikleri eklendiğinde veya güncelleştirilirken bir **BLOB eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)** tetikleyicisiyle bir mantıksal uygulama iş akışını nasıl başlatakullanabileceğinizi gösterir.
 
@@ -63,7 +64,7 @@ Bu örnek, depolama kapsayıcıınızda bir blob 'un özellikleri eklendiğinde 
 
 2. Arama kutusuna filtreniz olarak "Azure Blob" yazın. Tetikleyiciler listesinden istediğiniz tetikleyiciyi seçin.
 
-   Bu örnek, bu tetikleyiciyi kullanır: **Blob eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)**
+   Bu örnek, bu tetikleyiciyi kullanır: **bir blob eklendiğinde veya değiştirildiğinde (yalnızca Özellikler)**
 
    ![Tetikleyiciyi seçin](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
 
@@ -73,7 +74,7 @@ Bu örnek, depolama kapsayıcıınızda bir blob 'un özellikleri eklendiğinde 
 
    1. **Kapsayıcı** kutusunda klasör simgesini seçin.
 
-   2. Klasör listesinde, sağ açılı köşeli ayracı ( **>** ) seçin ve istediğiniz klasörü bulup seçinceye kadar gözatın.
+   2. Klasör listesinde, sağ açılı köşeli ayracı ( **>** ) seçin ve istediğiniz klasörü bulup seçinceye kadar tarayın.
 
       ![Klasör seçin](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
@@ -93,13 +94,13 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 2. Mantıksal uygulama Tasarımcısı ' nda, tetikleyici veya eylem altında **yeni adım**' ı seçin.
 
-   ![Eylem ekle](./media/connectors-create-api-azureblobstorage/add-action.png) 
+   ![Eylem ekleme](./media/connectors-create-api-azureblobstorage/add-action.png) 
 
    Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle**' yi seçin.
 
 3. Arama kutusuna filtreniz olarak "Azure Blob" yazın. Eylemler listesinden istediğiniz eylemi seçin.
 
-   Bu örnek, bu eylemi kullanır: **Blob içeriğini al**
+   Bu örnek şu eylemi kullanır: **BLOB Içeriğini al**
 
    ![Eylem Seç](./media/connectors-create-api-azureblobstorage/azure-blob-action.png)
 

@@ -1,58 +1,61 @@
 ---
-title: Azure veri fabrikası eşleme veri akışı ifade oluşturucusu
-description: İfade oluşturucu için Azure Data Factory eşleme veri akışları
+title: Azure Data Factory eşleme veri akışı Ifade Oluşturucusu
+description: Azure Data Factory eşleme veri akışları için Ifade Oluşturucusu
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.openlocfilehash: 67a6de6d85a58f48af4761e0b5d5b0a1a4d74b1a
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269198"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703403"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>Eşleme veri akışı ifade oluşturucusu
+# <a name="mapping-data-flow-expression-builder"></a>Eşleme veri akışı Ifade Oluşturucusu
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Azure Data Factory eşleme veri akışı içinde veri dönüştürme için ifadeler girebileceğiniz iletişim kutularında bulabilirsiniz. Bu kutularında, sütunlar, alanlar, değişkenleri, parametreleri, veri akışınız işlevleri kullanın. İfade oluşturmak için dönüştürme içindeki ifade metin kutusuna tıklayarak başlatılan ifade oluşturucu kullanın. Bazen, dönüştürme için sütunları seçerken "Hesaplanan sütun" seçenekleri görürsünüz. ' A tıkladığınızda, deyim başlatılan Oluşturucusu'nu görürsünüz.
+Azure Data Factory eşleme veri akışı ' nda, veri dönüştürme için ifadeler girebileceğiniz ifade kutuları bulacaksınız. Bu kutularda veri akışınızdan sütunları, alanları, değişkenleri, parametreleri, işlevleri kullanın. İfadeyi oluşturmak için, dönüştürme içindeki ifade metin kutusuna tıklanarak başlatılan Ifade oluşturucusunu kullanın. Ayrıca, dönüştürme için sütun seçerken bazen "hesaplanan sütun" seçeneklerini görürsünüz. Bu öğesine tıkladığınızda, Ifade oluşturucusunun başlatılmış olduğunu da görürsünüz.
 
-![İfade Oluşturucu](media/data-flow/expression.png "ifade oluşturucusu")
+![Ifade Oluşturucu](media/data-flow/xpb1.png "ifade Oluşturucusu")
 
-İfade Oluşturucu aracı metin düzenleyicisi seçeneğini kullanır. Otomatik Tamamlama özelliği tüm Azure Data Factory, veri akışı nesne modelinden denetleme ve vurgulama sözdizimiyle okur.
+Ifade Oluşturucu aracı varsayılan olarak metin düzenleyici seçeneğini belirler. Otomatik tamamlanma özelliği, sözdizimi denetimi ve vurgulaması ile tüm Azure Data Factory veri akışı nesne modelinden okur.
 
-![İfade oluşturucusu otomatik tamamlama](media/data-flow/expb1.png "ifade oluşturucusu otomatik tamamlama")
+![Ifade Oluşturucu otomatik tamamlanmış](media/data-flow/expb1.png "ifade Oluşturucu otomatik tamamlamayı")
 
-## <a name="currently-working-on-field"></a>Alan şu anda çalışıyor
+## <a name="build-schemas-in-output-schema-pane"></a>Çıktı şeması bölmesinde şema oluşturma
 
-![İfade Oluşturucu](media/data-flow/exp3.png "üzerinde şu anda çalışıyor")
+![Karmaşık sütun](media/data-flow/complexcolumn.png "ekleme sütunları") Ekle
 
-İfade Oluşturucu UI en sol üst köşesindeki, üzerinde çalıştığınız alanın adıyla "Şu anda çalışan üzerinde" adlı bir alan görürsünüz. Yalnızca şu anda çalışma alanına kullanıcı Arabiriminde yapı ifade uygulanır. Başka bir alan dönüştürmek isterseniz, geçerli çalışmanızı kaydedin ve başka bir alan seçin ve diğer alanlar için bir ifade oluşturmak için bu açılan kullanın.
+Sol taraftaki çıktı şeması bölmesinde, değiştirdiğiniz ve şemanıza eklemekte olduğunuz sütunları görürsünüz. Etkileşimli olarak basit ve karmaşık veri yapıları oluşturabilirsiniz. "Sütun Ekle" öğesini kullanarak ek alanlar ekleyin ve "alt sütun Ekle" öğesini kullanarak hiyerarşileri oluşturun.
 
-## <a name="data-preview-in-debug-mode"></a>Hata ayıklama modunda veri önizlemesi
+![Alt sütun](media/data-flow/addsubcolumn.png "Ekle alt") sütun Ekle
 
-![İfade Oluşturucu](media/data-flow/exp4b.png "ifade veri önizlemesi")
+## <a name="data-preview-in-debug-mode"></a>Hata ayıklama modundaki veri önizlemesi
 
-İfadeler üzerinde çalışırken, isteğe bağlı olarak Azure Data Factory, veri akışı tasarım yüzeyinde, hata ayıklama modunda üzerinde veri sonuçlarınızdan derlemekte olduğunuz ifade Canlı sürüyor önizlemesini etkinleştirme geçiş yapabilirsiniz. Gerçek zamanlı Canlı hata ayıklama, ifadeler için etkinleştirilir.
+![Ifade Oluşturucu](media/data-flow/exp4b.png "ifadesi veri önizleme")
 
-![Hata ayıklama modu](media/data-flow/debugbutton.png "düğmesi hata ayıklama")
+Veri akışı ifadeleriniz üzerinde çalışırken, Azure Data Factory veri akışı tasarım yüzeyinden hata ayıklama modunda geçiş yapın, böylece oluşturmakta olduğunuz ifadeden veri sonuçlarının canlı devam eden önizlemesi etkinleştiriliyor. Deyimleriniz için gerçek zamanlı canlı hata ayıklama etkinleştirilir.
 
+![Hata ayıklama modu](media/data-flow/debugbutton.png "hata ayıklama düğmesi")
 
-![İfade Oluşturucu](media/data-flow/exp5.png "ifade veri önizlemesi")
+Deyimizin sonuçlarını gerçek zamanlı olarak kaynağınızın canlı bir örneğine göre güncelleştirmek için Yenile düğmesine tıklayın.
 
-## <a name="comments"></a>Açıklamalar
+![Ifade Oluşturucu](media/data-flow/exp5.png "ifadesi veri önizleme")
 
-Tek satır ve çok satırlı açıklama söz dizimi kullanarak, ifadeleri için açıklamalar ekleyin:
+## <a name="comments"></a>Yorumlar
 
-![Açıklamalar](media/data-flow/comments.png "açıklamaları")
+Tek satırlı ve çok satırlı açıklama söz dizimini kullanarak ifadelerinizi açıklama ekleyin:
 
-## <a name="regular-expressions"></a>Normal ifadeler
+![Açıklama](media/data-flow/comments.png "açıklamaları")
 
-Azure Data Factory, veri akışı ifade dili [tam başvuru belgelerine](https://aka.ms/dataflowexpressions), normal ifade söz dizimi dahil işlevleri sağlar. Normal ifade işlevlerine kullanırken, ters eğik çizgi yorumlamak ifade oluşturucu deneyecek (\\) olarak bir kaçış karakteri dizisi. Ters eğik çizgi normal ifadeniz kullanırken ya da tüm normal ifade dalgalanmasındaki alın (\`) veya çift ters eğik çizgi kullanın.
+## <a name="regular-expressions"></a>Normal Ifadeler
 
-Saat döngüsü kullanarak örneği
+Azure Data Factory veri akışı ifade dili, [burada tam başvuru belgeleri](https://aka.ms/dataflowexpressions), normal ifade söz dizimini içeren işlevleri sunar. Normal ifade işlevleri kullanılırken, Ifade Oluşturucusu ters eğik çizgiyi (\\) bir kaçış karakter dizisi olarak yorumlamaya çalışır. Normal ifadenizde ters eğik çizgi kullandığınızda, tüm Regex ' ı (\`) içine alın ya da çift ters eğik çizgi kullanın.
+
+Tick kullanarak örnek
 
 ```
 regex_replace('100 and 200', `(\d+)`, 'digits')
@@ -64,17 +67,17 @@ veya çift eğik çizgi kullanma
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="addressing-array-indexes"></a>Dizi dizinleri adresleme
+## <a name="addressing-array-indexes"></a>Dizi dizinlerini adresleme
 
-Dizi döndüren ifade işlevleri ile belirli dizinleri, döndürülen dizi nesnesi içinde ele almak için köşeli ayraçlar [] kullanın. Dizi olanları tabanlıdır.
+Dizi döndüren ifade işlevleri ile, dönüş dizisi nesnesinin içindeki belirli dizinleri adresleyen köşeli parantezleri [] kullanın. Dizi, tabanlıdır.
 
-![İfade Oluşturucu dizi](media/data-flow/expb2.png "ifade veri önizlemesi")
+![Ifade Oluşturucu dizisi](media/data-flow/expb2.png "ifadesi veri önizlemesi")
 
-## <a name="handling-names-with-special-characters"></a>Özel karakterleri içeren işleme
+## <a name="handling-names-with-special-characters"></a>Özel karakterlerle adları işleme
 
-Özel karakterler veya boşluk içeren sütun adları olduğunda adı kaşlı ayraçlar ile çevreleyin.
+Özel karakterler veya boşluklar içeren sütun adlarınız varsa, adı küme ayraçları ile çevreleyin.
 * ```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Veri dönüştürme ifadeleri oluşturmaya başlayın](data-flow-expression-functions.md)
+[Veri dönüştürme ifadeleri oluşturmaya başla](data-flow-expression-functions.md)

@@ -1,31 +1,31 @@
 ---
 title: Bileşik varlık türü-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar, tam bir varlık oluşturur.
+description: Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar bir bütün varlığı oluşturur.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: ea258275cf954bc6e06da03324c2ae93de0e7fde
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563243"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695161"
 ---
 # <a name="composite-entity"></a>Bileşik varlık 
 
-Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar, tam bir varlık oluşturur. 
+Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar bir bütün varlığı oluşturur. 
 
 **Bu varlık, veriler şu durumlarda iyi bir uyum:**
 
-* Birbiriyle ilgilidir. 
-* Konuşma bağlamında birbiriyle ilişkilidir.
-* Varlık türleri çeşitli kullanın.
+* Birbirleriyle ilişkilidir. 
+* , Utterance bağlamında birbirleriyle ilişkilidir.
+* Çeşitli varlık türlerini kullanın.
 * İstemci uygulama tarafından bir bilgi birimi olarak gruplanıp işlenmelidir.
 * Makine öğrenimi gerektiren çeşitli Kullanıcı yelpazimine sahiptir.
 
@@ -33,66 +33,150 @@ Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve
 
 ## <a name="example-json"></a>Örnek JSON
 
-Aşağıdaki utterance ile önceden oluşturulmuş `number` ve `Location::ToLocation` bileşik bir varlık göz önünde bulundurun:
+Önceden oluşturulmuş `number` ve `Location::ToLocation` ' in bileşik bir varlığını aşağıdaki utterance ile düşünün:
 
-`book 2 tickets to paris`
+`book 2 tickets to cairo`
 
-Dikkat `2`, sayı ve `paris`, ToLocation varlıkları parçası olmayan aralarında sözcükler vardır. Etiketli bir utterance içinde kullanılan yeşil bir çizgi [LUIS](luis-reference-regions.md) Web sitesi, bileşik bir varlık gösterir.
+@No__t-0, sayı ve `cairo` ' in, ToLocation ' ın, varlıkların herhangi bir parçası olmayan aralarında sözcüklere sahip olduğuna dikkat edin. [Luo](luis-reference-regions.md) Web sitesinde etiketli bir şekilde kullanılan yeşil alt çizgi, bileşik bir varlığı gösterir.
 
 ![Bileşik varlık](./media/luis-concept-data-extraction/composite-entity.png)
 
-Bileşik varlıkları döndürülür bir `compositeEntities` dizisi ve bileşik tüm varlıklarda da döndürülür içinde `entities` dizisi:
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
+
+Bileşik varlıklar `compositeEntities` dizisinde döndürülür ve Birleşik içindeki tüm varlıklar `entities` dizisine de döndürülür:
 
 ```JSON
-
-"entities": [
+  "entities": [
     {
-    "entity": "2 tickets to cairo",
-    "type": "ticketInfo",
-    "startIndex": 0,
-    "endIndex": 17,
-    "score": 0.67200166
+      "entity": "2 tickets to cairo",
+      "type": "ticketinfo",
+      "startIndex": 5,
+      "endIndex": 22,
+      "score": 0.9214487
     },
     {
-    "entity": "2",
-    "type": "builtin.number",
-    "startIndex": 0,
-    "endIndex": 0,
-    "resolution": {
+      "entity": "cairo",
+      "type": "builtin.geographyV2.city",
+      "startIndex": 18,
+      "endIndex": 22
+    },
+    {
+      "entity": "2",
+      "type": "builtin.number",
+      "startIndex": 5,
+      "endIndex": 5,
+      "resolution": {
         "subtype": "integer",
         "value": "2"
+      }
     }
-    },
+  ],
+  "compositeEntities": [
     {
-    "entity": "cairo",
-    "type": "builtin.geographyV2",
-    "startIndex": 13,
-    "endIndex": 17
-    }
-],
-"compositeEntities": [
-    {
-    "parentType": "ticketInfo",
-    "value": "2 tickets to cairo",
-    "children": [
+      "parentType": "ticketinfo",
+      "value": "2 tickets to cairo",
+      "children": [
         {
-        "type": "builtin.geographyV2",
-        "value": "cairo"
+          "type": "builtin.number",
+          "value": "2"
         },
         {
-        "type": "builtin.number",
-        "value": "2"
+          "type": "builtin.geographyV2.city",
+          "value": "cairo"
+        }
+      ]
+    }
+  ]
+```    
+
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
+
+Sorgu dizesinde `verbose=false` ayarlanmışsa bu JSON olur:
+
+```json
+"entities": {
+    "ticketinfo": [
+        {
+            "number": [
+                2
+            ],
+            "geographyV2": [
+                "cairo"
+            ]
         }
     ]
+}
+```
+
+Sorgu dizesinde `verbose=true` ayarlanmışsa bu JSON olur:
+
+```json
+"entities": {
+    "ticketinfo": [
+        {
+            "number": [
+                2
+            ],
+            "geographyV2": [
+                "cairo"
+            ],
+            "$instance": {
+                "number": [
+                    {
+                        "type": "builtin.number",
+                        "text": "2",
+                        "startIndex": 5,
+                        "length": 1,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ],
+                "geographyV2": [
+                    {
+                        "type": "builtin.geographyV2.city",
+                        "text": "cairo",
+                        "startIndex": 18,
+                        "length": 5,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "$instance": {
+        "ticketinfo": [
+            {
+                "type": "ticketinfo",
+                "text": "2 tickets to cairo",
+                "startIndex": 5,
+                "length": 18,
+                "score": 0.9214487,
+                "modelTypeId": 4,
+                "modelType": "Composite Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
     }
-]
-```    
+}
+```
+
+* * * 
+
 
 |Veri nesnesi|Varlık adı|Değer|
 |--|--|--|
-|Önceden oluşturulmuş varlık - sayı|"builtin.number"|"2"|
-|Önceden oluşturulmuş varlık-GeographyV2|"Location::ToLocation"|"paris"|
+|Önceden oluşturulmuş varlık numarası|"yerleşik. numara"|iki|
+|Önceden oluşturulmuş varlık-GeographyV2|"Location:: ToLocation"|Cairo|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [öğreticide](luis-tutorial-composite-entity.md), çeşitli türlerin ayıklanan verilerini tek bir kapsayan varlığa dönüştürmek için bir **Bileşik varlık** ekleyin. İstemci uygulama, verileri paketleme tarafından farklı veri türlerinde ilgili verileri kolayca ayıklayabilirsiniz.
+Bu [öğreticide](luis-tutorial-composite-entity.md), çeşitli türlerin ayıklanan verilerini tek bir kapsayan varlığa dönüştürmek için bir **Bileşik varlık** ekleyin. İstemci uygulaması, verileri paketleyerek ilgili verileri farklı veri türlerinde kolayca ayıklayabilir.

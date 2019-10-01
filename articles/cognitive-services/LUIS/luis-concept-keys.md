@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 5a6c87da7ae62af54990e0a1a2c62065717a201a
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256943"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703191"
 ---
 # <a name="authoring-and-runtime-keys"></a>Yazma ve çalışma zamanı anahtarları
 
@@ -29,9 +29,9 @@ LUSıS iki tür Azure kaynağı kullanır, her tür anahtara sahiptir:
 * Amaç, varlık ve etiket oluşturma, eğitim ve yayımlama oluşturmak için [yazma](#programmatic-key) . LUSıS uygulamanızı yayımlamaya hazır olduğunuzda, uygulamaya atanan [çalışma zamanı için bir tahmin uç noktası anahtarına](luis-how-to-azure-subscription.md) ihtiyacınız vardır.
 * [Çalışma zamanı Için tahmin uç noktası anahtarı](#prediction-endpoint-runtime-key). Bir sohbet bot gibi istemci uygulamalar, bu anahtar aracılığıyla çalışma zamanının **sorgu tahmini uç noktasına** erişmesi gerekir. 
 
-|Anahtar|Amaç|Bilişsel hizmet`kind`|Bilişsel hizmet`type`|
+|Anahtar|Amaç|Bilişsel hizmet `kind`|Bilişsel hizmet `type`|
 |--|--|--|--|
-|[Anahtar yazma](#programmatic-key)|Yazma, eğitim, yayımlama, test etme.|`LUIS.Authoring`|`Cognitive Services`|
+|[Yazma anahtarı](#programmatic-key)|Yazma, eğitim, yayımlama, test etme.|`LUIS.Authoring`|`Cognitive Services`|
 |[Tahmin uç noktası çalışma zamanı anahtarı](#prediction-endpoint-runtime-key)| Hedefleri ve varlıkları tespit etmek için bir kullanıcı ile birlikte tahmin uç noktası çalışma zamanını sorgulayın.|`LUIS`|`Cognitive Services`|
 
 LUDA, aylık tahmin uç noktası kotası 1000 işlem içeren bir [Başlangıç anahtarı](luis-how-to-azure-subscription.md#starter-key) sağlar. 
@@ -42,7 +42,7 @@ LUSıS uygulamalarını yayımlamak ve sorgulamak istediğiniz [bölgelerde](lui
 
 <a name="programmatic-key" ></a>
 
-## <a name="authoring-key"></a>Anahtar yazma
+## <a name="authoring-key"></a>Yazma anahtarı
 
 Bir LUVE hesabı oluşturduğunuzda bir yazma anahtarı otomatik olarak oluşturulur ve ücretsizdir. Luo ile başladığınızda, her yazma [bölgesi](luis-reference-regions.md)IÇIN tüm lusıs uygulamalarınız genelinde bir başlangıç anahtarınız olur. Yazma anahtarının amacı, LUSıS uygulamanızı yönetmek veya tahmin uç nokta sorgularını test etmek için kimlik doğrulaması sağlamaktır. 
 
@@ -50,7 +50,7 @@ Azure portal yazma anahtarları oluşturma, kişileri [katkıda bulunan rolüne]
 
 Yazma anahtarını bulmak için, [Luo](luis-reference-regions.md#luis-website) 'da oturum açın ve sağ üst gezinti çubuğundaki hesap adına tıklayarak **Hesap ayarlarını**açın.
 
-![Anahtar yazma](./media/luis-concept-keys/authoring-key.png)
+![yazma anahtarı](./media/luis-concept-keys/authoring-key.png)
 
 **Çalışma zamanı sorguları**yapmak Istediğinizde, Azure [Luo kaynağını](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)oluşturun. 
 
@@ -67,7 +67,7 @@ Yazma anahtarını bulmak için, [Luo](luis-reference-regions.md#luis-website) '
 
 Kaynak oluşturma işlemi tamamlandığında, [anahtarı uygulamaya atayın](luis-how-to-azure-subscription.md) . 
 
-* Çalışma zamanı (sorgu tahmin uç noktası) anahtarı, çalışma zamanı anahtarı oluştururken belirlediğiniz kullanım planına bağlı olarak uç nokta isabetlerinin kotasına izin verir. Bkz: [Bilişsel hizmetler fiyatlandırması](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) fiyatlandırma bilgileri için.
+* Çalışma zamanı (sorgu tahmin uç noktası) anahtarı, çalışma zamanı anahtarı oluştururken belirlediğiniz kullanım planına bağlı olarak uç nokta isabetlerinin kotasına izin verir. Fiyatlandırma bilgileri için bkz. bilişsel [Hizmetler fiyatlandırması](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) .
 
 * Çalışma zamanı anahtarı tüm LUSıS uygulamalarınız veya belirli bir LUL Apps için kullanılabilir. 
 * LUSıS uygulamalarını yazmak için çalışma zamanı anahtarını kullanmayın. 
@@ -83,14 +83,32 @@ Bu, sizin için oluşturulan özel bir kaynaktır. Geçici bir başlangıç anah
 ### <a name="use-runtime-key-in-query"></a>Sorguda çalışma zamanı anahtarını kullan
 LUıN çalışma zamanı uç noktası iki sorgu stilini kabul eder, her ikisi de tahmin uç noktası çalışma zamanı anahtarını kullanır, ancak farklı yerlerde.
 
-Çalışma zamanına erişmek için kullanılan uç nokta, aşağıdaki tabloda belirtilen `{region}` kaynak bölgesi için benzersiz olan bir alt etki alanı kullanır. 
+Çalışma zamanına erişmek için kullanılan uç nokta, aşağıdaki tabloda `{region}` ile belirtilen, kaynağınızın bölgesi için benzersiz olan bir alt etki alanı kullanır. 
 
-|Fiili|Örnek URL'sini ve anahtarını konum|
+
+#### <a name="v2-prediction-endpointtabv2"></a>[V2 tahmin uç noktası](#tab/V2)
+
+|Ü|Örnek URL ve anahtar konumu|
 |--|--|
-|[GET](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>Sorgu dizesi değeri için `runtime-key`<br><br>Uç nokta sorgu değerini `runtime-key` yazma (Başlangıç) anahtarından LUIS uç noktası anahtarı kota oranı kullanmak için yeni uç noktası anahtarı. Anahtarı oluşturun ve tuşu atama ancak uç noktası sorgu değerini değiştirmeyin `runtime-key`, uç nokta anahtar kotanızı kullanmıyorsunuz demektir.|
-|[POST](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> üstbilgi değeri `Ocp-Apim-Subscription-Key`<br>Çalışma zamanı anahtarını oluşturur ve çalışma zamanı anahtarını atarsanız ancak için `Ocp-Apim-Subscription-Key`uç nokta sorgu değerini değiştirmeyin, çalışma zamanı anahtarınızı kullanmayın.|
+|[Al](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
+|[Yayınla](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
 
-Önceki URL'lerinde kullanılan uygulama kimliği `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, genel IOT uygulaması için kullanılan [etkileşimli tanıtım](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/). 
+#### <a name="v3-prediction-endpointtabv3"></a>[V3 tahmin uç noktası](#tab/V3)
+
+|Ü|Örnek URL ve anahtar konumu|
+|--|--|
+|[Al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
+|[Yayınla](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
+
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+
+* * * 
+
+**Get**: lusıs bitiş noktası anahtar kota oranını kullanmak için, `runtime-key` ' den yazma (başlangıç) anahtarından bitiş noktası sorgu değerini yeni uç nokta anahtarına değiştirin. Anahtarı oluşturur ve anahtarı atar ancak `runtime-key` için uç nokta sorgu değerini değiştirmeyin, uç nokta anahtar kotayı kullanmayın.
+
+**Gönderi**: `Ocp-Apim-Subscription-Key` için üst bilgi değerini değiştirme<br>Çalışma zamanı anahtarını oluşturur ve çalışma zamanı anahtarını atarsanız ancak `Ocp-Apim-Subscription-Key` için uç nokta sorgu değerini değiştirmeyin, çalışma zamanı anahtarınızı kullanmayın.
+
+Önceki URL 'Lerde kullanılan uygulama KIMLIĞI, `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, [etkileşimli Gösterim](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)için kullanılan genel IoT uygulamasıdır. 
 
 ## <a name="assignment-of-the-runtime-key"></a>Çalışma zamanı anahtarının atanması
 
@@ -102,7 +120,7 @@ Her abonelik için bölge başına en fazla 10 yazma anahtarı oluşturabilirsin
 
 Bkz. [anahtar sınırları](luis-boundaries.md#key-limits) ve [Azure bölgeleri](luis-reference-regions.md). 
 
-Yayımlama bölgeler bölge geliştirme farklıdır. İstemci uygulamanızın bulunmasını istediğiniz yayımlama bölgesine karşılık gelen yazma bölgesinde bir uygulama oluşturduğunuzdan emin olun.
+Yayımlama bölgeleri, yazma bölgelerinden farklıdır. İstemci uygulamanızın bulunmasını istediğiniz yayımlama bölgesine karşılık gelen yazma bölgesinde bir uygulama oluşturduğunuzdan emin olun.
 
 ## <a name="key-limit-errors"></a>Anahtar sınırı hataları
 İşlem/saniye (TPS) kotasını aşarsanız bir HTTP 429 hatası alırsınız. İşlem/saat (TPS) kotasını aşarsanız bir HTTP 403 hatası alırsınız. 
@@ -143,59 +161,59 @@ LUSıS uygulamanızı taşıyabilirsiniz. Azure portal veya Azure CLı 'de aşa�
 
 Sahibi ve tüm katkıda bulunanlar, uygulamayı yazmak için erişime sahiptir. 
 
-|Yazma erişimi içerir|Notlar|
+|Yazma erişimi şunları içerir|Notlar|
 |--|--|
-|Uç nokta anahtarları Ekle Kaldır||
-|Sürüm dışarı aktarma||
-|Uç nokta günlükleri Dışarı Aktar||
-|Sürümü içeri aktarılıyor||
-|Uygulama genel yap|Uygulama genel olduğunda, herhangi bir yazma ya da uç noktası anahtarı ile uygulama sorgulayabilirsiniz.|
-|Modeli Değiştir|
-|Yayımlama|
-|Gözden geçirme için uç nokta konuşma [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)|
-|Eğitim|
+|Uç nokta anahtarları ekleme veya kaldırma||
+|Sürüm dışarı aktarılıyor||
+|Uç nokta günlüklerini dışarı aktar||
+|Sürüm içeri aktarılıyor||
+|Uygulamayı genel yap|Bir uygulama genel olduğunda, yazma veya bitiş noktası anahtarına sahip herkes uygulamayı sorgulayabilir.|
+|Modeli değiştir|
+|yayınlamanız|
+|[Etkin öğrenme](luis-how-to-review-endpoint-utterances.md) için uç nokta utslerini gözden geçirme|
+|Eğit|
 
 ### <a name="prediction-endpoint-runtime-access"></a>Tahmin uç noktası çalışma zamanı erişimi
 
 Tahmin uç noktası sorgulama erişimi, **Yönet** bölümündeki **uygulama bilgileri** sayfasında bir ayarla denetlenir. 
 
-![Kümesi uygulamasına genel](./media/luis-concept-security/set-application-as-public.png)
+![Uygulamayı herkese açık olarak ayarla](./media/luis-concept-security/set-application-as-public.png)
 
-|[Özel uç nokta](#runtime-security-for-private-apps)|[Genel bir uç nokta](#runtime-security-for-public-apps)|
+|[Özel uç nokta](#runtime-security-for-private-apps)|[Ortak uç nokta](#runtime-security-for-public-apps)|
 |:--|:--|
 |Sahip ve katkıda bulunanlar için kullanılabilir|Uygulama KIMLIĞINI bilen sahip, katkıda bulunanlar ve diğer kişiler için kullanılabilir|
 
-Bir sunucudan sunucuya bir ortama çağırarak, LUSıS çalışma zamanı anahtarınızı kimlerin göreceğini denetleyebilirsiniz. LUIS ile bot arasındaki bağlantı zaten bir robotun LUIS kullanıyorsanız, güvenlidir. LUIS uç noktası doğrudan çağırıyorsanız, sunucu tarafı API oluşturmanız gerekir (bir Azure gibi [işlevi](https://azure.microsoft.com/services/functions/)) denetimli erişim (gibi [AAD](https://azure.microsoft.com/services/active-directory/)). Sunucu tarafı API 'SI çağrıldığında ve kimlik doğrulaması yapıldığında ve yetkilendirme doğrulandığında, çağrısı HALSıS 'e geçirin. Bu strateji, ortadaki adam saldırıları engellemez, ancak kullanıcılarınızın anahtar ve uç nokta URL 'nizi, kullanıcılarınızı izlemenizi sağlar ve uç nokta yanıt günlüğü (örneğin, [Application Insights](https://azure.microsoft.com/services/application-insights/)) eklemenize olanak tanır.
+Bir sunucudan sunucuya bir ortama çağırarak, LUSıS çalışma zamanı anahtarınızı kimlerin göreceğini denetleyebilirsiniz. Bir bot 'tan LUSıS kullanıyorsanız, bot ve LUYA arasındaki bağlantı zaten güvenlidir. LUU uç noktasını doğrudan arıyorsanız, denetimli erişime ( [AAD](https://azure.microsoft.com/services/active-directory/)gibi) sahip bir sunucu tarafı API (Azure [işlevi](https://azure.microsoft.com/services/functions/)gibi) oluşturmanız gerekir. Sunucu tarafı API 'SI çağrıldığında ve kimlik doğrulaması yapıldığında ve yetkilendirme doğrulandığında, çağrısı HALSıS 'e geçirin. Bu strateji, ortadaki adam saldırıları engellemez, ancak kullanıcılarınızın anahtar ve uç nokta URL 'nizi, kullanıcılarınızı izlemenizi sağlar ve uç nokta yanıt günlüğü (örneğin, [Application Insights](https://azure.microsoft.com/services/application-insights/)) eklemenize olanak tanır.
 
 #### <a name="runtime-security-for-private-apps"></a>Özel uygulamalar için çalışma zamanı güvenliği
 
 Özel bir uygulamanın çalışma zamanı yalnızca şunlar için kullanılabilir:
 
-|Anahtar ve kullanıcı|Açıklama|
+|Anahtar ve Kullanıcı|Açıklama|
 |--|--|
-|Sahibin yazma anahtarı| En fazla 1000 uç noktası İsabeti|
-|Ortak çalışan/katkıda bulunan yazma anahtarları| En fazla 1000 uç noktası İsabeti|
-|LUŞUNA atanan herhangi bir anahtar, bir yazar veya ortak çalışan/katkıda bulunan|Anahtar kullanımı katmanını temel alan|
+|Sahibin yazma anahtarı| En fazla 1000 uç nokta okuması|
+|Ortak çalışan/katkıda bulunan yazma anahtarları| En fazla 1000 uç nokta okuması|
+|LUŞUNA atanan herhangi bir anahtar, bir yazar veya ortak çalışan/katkıda bulunan|Anahtar kullanımı katmanına göre|
 
 #### <a name="runtime-security-for-public-apps"></a>Ortak uygulamalar için çalışma zamanı güvenliği
 
-Genel, bir uygulama yapılandırıldıktan sonra _herhangi_ anahtarı tüm uç nokta kota kullanmamış sürece yazma anahtarı veya LUIS uç noktası anahtarı geçerli LUIS uygulamanızı sorgulayabilir.
+Bir uygulama ortak olarak yapılandırıldıktan sonra, anahtarın _tüm uç_ nokta kotasını kullanmadığı sürece, GEÇERLI bir luya yazma anahtarı veya Luo uç nokta anahtarı uygulamanızı sorgulayabilir.
 
-Sahibi veya katkıda bulunan olmayan bir Kullanıcı, uygulama KIMLIĞI verildiğinde yalnızca ortak uygulamanın çalışma zamanına erişebilir. Genel LUIS yoksa _Pazar_ veya diğer yolu genel bir uygulamayı arayın.  
+Sahibi veya katkıda bulunan olmayan bir Kullanıcı, uygulama KIMLIĞI verildiğinde yalnızca ortak uygulamanın çalışma zamanına erişebilir. LUYA genel bir uygulama aramak için genel bir _Pazar_ veya başka bir yol yoktur.  
 
-LUIS kaynak bölge tabanlı anahtarı bir kullanıcıyla uygulama hangi bölge kaynak anahtarla ilişkilendirilen erişebilmesi için tüm bölgelerde genel bir uygulama yayımlanır.
+Ortak bir uygulama tüm bölgelerde yayımlanır, böylece bölge tabanlı bir LUTO kaynak anahtarı olan bir Kullanıcı, kaynak anahtarıyla ilişkili bölgede bulunan uygulamaya erişebilir.
 
-## <a name="transfer-of-ownership"></a>Sahipliğin aktarılması
+## <a name="transfer-of-ownership"></a>Sahiplik aktarımı
 
-**[Kaynak geçişi](luis-migration-authoring.md) yapılan uygulamalar yazmak için**: 
+**[Kaynak geçişi](luis-migration-authoring.md) yapılan uygulamalar yazmak için**: kaynağın sahibi olarak, `contributor` ekleyebilirsiniz.
 
-**Henüz geçirilmeyen uygulamalar için**: Uygulamanızı bir JSON dosyası olarak dışarı aktarın. Başka bir LUO kullanıcısı uygulamayı içeri aktarabilir, böylece uygulama sahibi olur. Yeni uygulamanın farklı bir uygulama KIMLIĞI olacaktır.  
+**Henüz geçirilmeyen uygulamalar için**: UYGULAMANıZı bir JSON dosyası olarak dışarı aktarın. Başka bir LUO kullanıcısı uygulamayı içeri aktarabilir, böylece uygulama sahibi olur. Yeni uygulamanın farklı bir uygulama KIMLIĞI olacaktır.  
 
 ## <a name="securing-the-endpoint"></a>Uç noktanın güvenliğini sağlama 
 
-Bir sunucudan sunucuya bir ortama çağırarak, LUSıS tahmin çalışma zamanı uç noktası anahtarınızı kimlerin görebileceğini denetleyebilirsiniz. LUIS ile bot arasındaki bağlantı zaten bir robotun LUIS kullanıyorsanız, güvenlidir. LUIS uç noktası doğrudan çağırıyorsanız, sunucu tarafı API oluşturmanız gerekir (bir Azure gibi [işlevi](https://azure.microsoft.com/services/functions/)) denetimli erişim (gibi [AAD](https://azure.microsoft.com/services/active-directory/)). Sunucu tarafı API olarak adlandırılır ve kimlik doğrulama ve yetkilendirme doğrulandıktan sonra LUIS açın çağrı geçirin. Bu strateji adam-de-adam saldırılarına engellemez, ancak erişimi izlemenize olanak tanır, kullanıcılarınızın uç noktanızı bilgisayardan farklı gösterir ve uç nokta yanıt günlük eklemenize izin verir (gibi [Application Insights](https://azure.microsoft.com/services/application-insights/)).  
+Bir sunucudan sunucuya bir ortama çağırarak, LUSıS tahmin çalışma zamanı uç noktası anahtarınızı kimlerin görebileceğini denetleyebilirsiniz. Bir bot 'tan LUSıS kullanıyorsanız, bot ve LUYA arasındaki bağlantı zaten güvenlidir. LUU uç noktasını doğrudan arıyorsanız, denetimli erişime ( [AAD](https://azure.microsoft.com/services/active-directory/)gibi) sahip bir sunucu tarafı API (Azure [işlevi](https://azure.microsoft.com/services/functions/)gibi) oluşturmanız gerekir. Sunucu tarafı API 'SI çağrıldığında ve kimlik doğrulaması ve yetkilendirme doğrulandıktan sonra, çağrıyı HALSıS 'e geçirin. Bu strateji, ortadaki adam saldırıları engellemez, ancak uç noktanızı kullanıcılarınıza göre gizleme, erişimi izlemenize ve uç nokta yanıt günlüğü (örneğin [Application Insights](https://azure.microsoft.com/services/application-insights/)) eklemenize olanak tanır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Anlamak [sürüm](luis-concept-version.md) kavramları. 
+* [Sürüm oluşturma](luis-concept-version.md) kavramlarını anlayın. 
 * [Anahtar oluşturmayı](luis-how-to-azure-subscription.md)öğrenin.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c922799b650de7f921cc0493eb3feb2ad90b9d92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 20c8fbd1626adaf67b790d500d8bfdeff6f27841
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183153"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702162"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Kullanıcı geçişi
 
@@ -27,7 +27,7 @@ Azure AD B2C, [Azure AD Graph API][B2C-GraphQuickStart]aracılığıyla kullanı
 
 - **Geçiş öncesi**: Bu akış, bir kullanıcının kimlik bilgilerine (Kullanıcı adı ve parola) açık erişime sahip olduğunuzda veya kimlik bilgileri şifrelendiğinde, ancak şifrelerini çözebilmeniz durumunda geçerlidir. Geçiş öncesi işlem, eski kimlik sağlayıcısından kullanıcıları okumayı ve Azure AD B2C dizininde yeni hesaplar oluşturmayı içerir.
 
-- **Geçiş öncesi ve parola sıfırlama**: Bu akış, bir kullanıcının parolası erişilebilir olmadığında geçerlidir. Örneğin:
+- **Geçiş öncesi ve parola sıfırlama**: Bu akış, bir kullanıcının parolası erişilebilir olmadığında geçerlidir. Örnek:
   - Parola, karma biçiminde depolanır.
   - Parola, erişemiyoruz bir kimlik sağlayıcısında depolanır. Eski kimlik sağlayıcınız bir Web hizmetini çağırarak kullanıcı kimlik bilgilerini doğrular.
 
@@ -37,50 +37,27 @@ Her iki akışda, önce geçiş öncesi işlemi çalıştırın, eski kimlik sa�
 
 Azure AD B2C parola ilkesi (yerel hesaplar için), Azure AD ilkesini temel alır. Azure AD B2C kaydolma veya oturum açma ve parola sıfırlama ilkeleri "güçlü" parola gücünü kullanır ve herhangi bir parolayı sona ermez. Daha fazla bilgi için bkz. [Azure AD parola ilkesi][AD-PasswordPolicies].
 
-Geçirmek istediğiniz hesaplar [Azure AD B2C tarafından zorlanan güçlü parola kuvvetinden][AD-PasswordPolicies]daha zayıf bir parola gücü kullanıyorsa, güçlü parola gereksinimini devre dışı bırakabilirsiniz. Varsayılan parola ilkesini değiştirmek için `passwordPolicies` özelliğini olarak `DisableStrongPassword`ayarlayın. Örneğin, kullanıcı oluştur isteğini aşağıdaki şekilde değiştirebilirsiniz:
+Geçirmek istediğiniz hesaplar [Azure AD B2C tarafından zorlanan güçlü parola kuvvetinden][AD-PasswordPolicies]daha zayıf bir parola gücü kullanıyorsa, güçlü parola gereksinimini devre dışı bırakabilirsiniz. Varsayılan parola ilkesini değiştirmek için `passwordPolicies` özelliğini `DisableStrongPassword` olarak ayarlayın. Örneğin, kullanıcı oluştur isteğini aşağıdaki şekilde değiştirebilirsiniz:
 
 ```JSON
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
-## <a name="step-1-use-azure-ad-graph-api-to-migrate-users"></a>1\. adım: Kullanıcıları geçirmek için Azure AD Graph API kullanma
+## <a name="step-1-use-azure-ad-graph-api-to-migrate-users"></a>1\. Adım: kullanıcıları geçirmek için Azure AD Graph API kullanma
 
 Azure AD B2C Kullanıcı hesabını Graph API (parola ile veya rastgele bir parola ile) ile oluşturursunuz. Bu bölümde Graph API kullanarak Azure AD B2C dizininde kullanıcı hesapları oluşturma işlemi açıklanmaktadır.
 
-### <a name="step-11-register-your-application-in-your-tenant"></a>Adım 1,1: Uygulamanızı kiracınıza kaydedin
+### <a name="step-11-register-your-application-in-your-tenant"></a>Adım 1,1: uygulamanızı kiracınıza kaydetme
 
-Graph API ile iletişim kurmak için, önce yönetici ayrıcalıklarına sahip bir hizmet hesabına sahip olmanız gerekir. Azure AD 'de bir uygulamayı ve kimlik doğrulamasını Azure AD 'ye kaydedersiniz. Uygulama kimlik bilgileri uygulama **kimliği** ve **uygulama gizli**bilgileridir. Uygulama, Graph API çağırmak için Kullanıcı olarak değil, kendisi gibi davranır.
+Graph API ile iletişim kurmak için, önce yönetici ayrıcalıklarına sahip bir hizmet hesabına sahip olmanız gerekir. Azure AD 'de, bir uygulamayı kaydeder ve dizine yazma erişimini etkinleştirirsiniz. Uygulama kimlik bilgileri uygulama **kimliği** ve **uygulama gizli**bilgileridir. Uygulama, Graph API çağırmak için Kullanıcı olarak değil, kendisi gibi davranır.
 
-İlk olarak, geçiş uygulamanızı Azure AD 'ye kaydedin. Ardından, bir uygulama anahtarı oluşturun (uygulama gizli dizisi) ve uygulamayı Yazma ayrıcalıklarına sahip olarak ayarlayın.
+İlk olarak, Kullanıcı Geçişi gibi yönetim görevleri için kullanabileceğiniz bir uygulamayı kaydedin.
 
-1. [Azure Portal][Portal] oturum açın.
-1. Portalın sağ üst bölümünde **Dizin + abonelik** filtresi ' ni seçin.
-1. Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol taraftaki menüde **Azure Active Directory** (Azure AD B2C*değil* ) öğesini seçin. Bunu bulmak için **tüm hizmetler**' i seçmeniz gerekebilir.
-1. **Uygulama kayıtları (eski)** seçeneğini belirleyin.
-1. **Yeni uygulama kaydı**’nı seçin.
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
-   ![Azure Active Directory ve Uygulama kayıtları menü öğeleri vurgulandı](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
+### <a name="step-12-grant-administrative-permission-to-your-application"></a>Adım 1,2: uygulamanıza yönetici izni verme
 
-1. Aşağıdakileri yaparak yeni bir uygulama oluşturun:
-
-   - **Ad**için *B2CUserMigration* veya istediğiniz diğer bir adı kullanın.
-   - **Uygulama türü**için **Web uygulaması/API**' yi seçin.
-   - **Oturum açma URL 'si**için kullanın `https://localhost` (Bu uygulama için uygun değildir).
-   - **Oluştur**’u seçin.
-
-    Uygulama oluşturulduktan sonra, **kayıtlı uygulama** sayfası özelliklerini gösteren görüntülenir.
-1. Uygulamanın **uygulama kimliğini**kopyalayın ve daha sonra için kaydedin.
-
-### <a name="step-12-create-the-application-secret"></a>Adım 1,2: Uygulama gizli anahtarı oluşturma
-
-1. **Kayıtlı uygulama** sayfasında, **Ayarlar**' ı seçin.
-1. **Anahtarlar**’ı seçin.
-1. **Parolalar**' ın altında, *myclientsecret* adlı yeni bir anahtar (istemci gizli anahtarı olarak da bilinir) ekleyin, bir süre sonu penceresi seçin, **Kaydet**' i seçin ve ardından daha sonra kullanmak üzere anahtar değerini kopyalayın.
-
-    ![Azure portal 'da vurgulanan uygulama KIMLIĞI değeri ve anahtarlar menü öğesi](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
-
-### <a name="step-13-grant-administrative-permission-to-your-application"></a>Adım 1,3: Uygulamanıza yönetici izni verme
+Ardından, uygulamaya, dizine yazmak için gereken Azure AD Graph API izinlerini verin.
 
 1. **Ayarlar** menüsünde **gerekli izinler**' i seçin.
 1. **Windows Azure Active Directory**seçin.
@@ -89,18 +66,28 @@ Graph API ile iletişim kurmak için, önce yönetici ayrıcalıklarına sahip b
 
    ![Dizini oku/yaz onay kutusu, Kaydet ve izin ver vurgulanan](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
 
-Artık Azure AD B2C kiracınızdan Kullanıcı oluşturma, okuma ve güncelleştirme izinlerine sahip bir uygulamanız var.
+### <a name="step-13-create-the-application-secret"></a>Adım 1,3: uygulama gizli anahtarını oluşturma
 
-### <a name="step-14-optional-environment-cleanup"></a>Adım 1,4: Seçim Ortam temizleme
+Daha sonraki bir adımda yapılandırdığınız Kullanıcı geçiş uygulaması tarafından kullanılmak üzere bir istemci gizli anahtarı (anahtar) oluşturun.
 
-Dizin verilerini okuma ve yazma izinleri, kullanıcıları silme hakkını içermez. Uygulamanıza kullanıcıları silme yeteneği vermek için (ortamınızı temizlemek için), PowerShell çalıştırmayı ve Kullanıcı hesabı yönetici izinlerini ayarlamayı içeren ek bir adım gerçekleştirmeniz gerekir. Aksi halde, bir sonraki bölüme atlayabilirsiniz.
+1. **Kayıtlı uygulama** sayfasında, **Ayarlar**' ı seçin.
+1. **Anahtarlar**’ı seçin.
+1. **Parolalar**' ın altında, *myclientsecret* adlı yeni bir anahtar (istemci gizli anahtarı olarak da bilinir) ekleyin, bir süre sonu penceresi seçin, **Kaydet**' i seçin ve ardından daha sonra kullanmak üzere anahtar değerini kopyalayın.
+
+    ![Azure portal 'da vurgulanan uygulama KIMLIĞI değeri ve anahtarlar menü öğesi](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
+
+Artık Azure AD B2C kiracınızda Kullanıcı oluşturma, okuma ve güncelleştirme izinlerine sahip bir uygulamanız var.
+
+### <a name="step-14-optional-environment-cleanup"></a>Adım 1,4: (Isteğe bağlı) ortam temizleme
+
+*Dizin verilerini okuma ve yazma* *izni, kullanıcıları silme hakkını içermez.* Uygulamanıza kullanıcıları silme yeteneği vermek için (ortamınızı temizlemek için), PowerShell çalıştırmayı ve Kullanıcı hesabı yönetici izinlerini ayarlamayı içeren ek bir adım gerçekleştirmeniz gerekir. Aksi halde, bir sonraki bölüme atlayabilirsiniz.
 
 > [!IMPORTANT]
-> B2C kiracısında *Yerel* olan bir B2C kiracı yönetici hesabı kullanmanız gerekir. Hesap adı sözdizimi *admin\@contosob2c.onmicrosoft.com*.
+> B2C kiracısında *Yerel* olan bir B2C kiracı yönetici hesabı kullanmanız gerekir. Hesap adı sözdizimi *admin\@contosob2c.onmicrosoft.com*' dir.
 
 [Azure AD PowerShell V2 modülünü][AD-Powershell]gerektiren bu PowerShell betiğinden şunları yapın:
 
-1. Çevrimiçi hizmetinize bağlanın. Bunu yapmak için, Windows PowerShell `Connect-AzureAD` komut isteminde cmdlet 'ini çalıştırın ve kimlik bilgilerinizi sağlayın.
+1. Çevrimiçi hizmetinize bağlanın. Bunu yapmak için, Windows PowerShell komut isteminde `Connect-AzureAD` cmdlet 'ini çalıştırın ve kimlik bilgilerinizi sağlayın.
 
 1. Uygulamanın kullanıcı hesabı yöneticisi rolünü atamak için **uygulama kimliği** ' ni kullanın. Bu roller iyi bilinen tanımlayıcılara sahiptir, bu nedenle tüm yapmanız gereken **uygulama kimliğinizi** betiğe girer.
 
@@ -135,36 +122,36 @@ Add-AzureADDirectoryRoleMember -ObjectId $role.ObjectId -RefObjectId $roleMember
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ```
 
-Azure AD **uygulama Kimliğinizle** değerideğiştirin.`$AppId`
+@No__t-0 değerini Azure AD **Uygulama Kimliğiniz**ile değiştirin.
 
-## <a name="step-2-pre-migration-application-sample"></a>2\. adım: Geçiş öncesi uygulama örneği
+## <a name="step-2-pre-migration-application-sample"></a>2\. Adım: geçiş öncesi uygulama örneği
 
 Geçiş öncesi kod örneğini, topluluk tarafından tutulan `azure-ad-b2c/user-migration` GitHub deposunda bulabilirsiniz:
 
-[Azure-AD-B2C/Kullanıcı geçişi/geçiş öncesi][UserMigrationSample-code] GitHub
+[Azure-AD-B2C/Kullanıcı geçişi/geçiş öncesi][UserMigrationSample-code] (GitHub)
 
-### <a name="step-21-edit-the-migration-data-file"></a>Adım 2,1: Geçiş verileri dosyasını düzenleme
+### <a name="step-21-edit-the-migration-data-file"></a>Adım 2,1: geçiş veri dosyasını düzenleme
 
 Örnek uygulama, kukla Kullanıcı verisi içeren bir JSON dosyası kullanır. Örneği başarıyla çalıştırdıktan sonra, kodu kendi veritabanınızdaki verileri kullanmak üzere değiştirebilirsiniz. Ya da kullanıcı profilini bir JSON dosyasına aktarabilir ve ardından uygulamayı bu dosyayı kullanacak şekilde ayarlayabilirsiniz.
 
-JSON dosyasını düzenlemek için `AADB2C.UserMigration.sln` Visual Studio çözümünü açın. `AADB2C.UserMigration` Projede dosyasını`UsersData.json` açın.
+JSON dosyasını düzenlemek için `AADB2C.UserMigration.sln` Visual Studio çözümünü açın. @No__t-0 projesinde, `UsersData.json` dosyasını açın.
 
 ![UsersData. json dosyasının iki kullanıcının JSON bloklarını gösteren bölümü](media/active-directory-b2c-user-migration/pre-migration-data-file.png)
 
 Gördüğünüz gibi, dosya Kullanıcı varlıklarının bir listesini içerir. Her kullanıcı varlığı aşağıdaki özelliklere sahiptir:
 
-- email
-- displayName
-- firstName
-- lastName
+- e-posta
+- DisplayName
+- FirstName
+- Soyadı
 - parola (boş olabilir)
 
 > [!NOTE]
-> Derleme zamanında, Visual Studio dosyayı `bin` dizine kopyalar.
+> Derleme zamanında, Visual Studio dosyayı `bin` dizinine kopyalar.
 
-### <a name="step-22-configure-the-application-settings"></a>Adım 2,2: Uygulama ayarlarını yapılandırma
+### <a name="step-22-configure-the-application-settings"></a>Adım 2,2: uygulama ayarlarını yapılandırma
 
-Proje altında *app. config* dosyasını açın. `AADB2C.UserMigration` Aşağıdaki uygulama ayarlarını kendi değerlerinizle değiştirin:
+@No__t-0 projesi altında *app. config* dosyasını açın. Aşağıdaki uygulama ayarlarını kendi değerlerinizle değiştirin:
 
 ```XML
 <appSettings>
@@ -180,9 +167,9 @@ Proje altında *app. config* dosyasını açın. `AADB2C.UserMigration` Aşağı
 > - Bir Azure Tablo bağlantı dizesinin kullanımı, sonraki bölümlerde açıklanmıştır.
 > - B2C kiracı adınız, kiracı oluşturma sırasında girdiğiniz etki alanıdır ve Azure portal görüntülenir. Kiracı adı genellikle suffix *. onmicrosoft.com* ile biter (örneğin, *contosob2c.onmicrosoft.com*).
 
-### <a name="step-23-run-the-pre-migration-process"></a>Adım 2,3: Geçiş öncesi işlemini çalıştır
+### <a name="step-23-run-the-pre-migration-process"></a>Adım 2,3: geçiş öncesi işlemi çalıştırma
 
-`AADB2C.UserMigration` Çözüme sağ tıklayın ve örneği yeniden derleyin. Başarılı olursanız, artık içinde `UserMigration.exe` `AADB2C.UserMigration\bin\Debug\net461`bulunan bir yürütülebilir dosyanız olmalıdır. Geçiş işlemini çalıştırmak için aşağıdaki komut satırı parametrelerinden birini kullanın:
+@No__t-0 çözümüne sağ tıklayın ve ardından örneği yeniden derleyin. Başarılı olursanız, artık `AADB2C.UserMigration\bin\Debug\net461` ' de bulunan @no__t 0 yürütülebilir dosyanız olmalıdır. Geçiş işlemini çalıştırmak için aşağıdaki komut satırı parametrelerinden birini kullanın:
 
 - **Kullanıcıları parolayla geçirmek**için `UserMigration.exe 1` komutunu kullanın.
 
@@ -190,7 +177,7 @@ Proje altında *app. config* dosyasını açın. `AADB2C.UserMigration` Aşağı
 
 ![UserMigration. exe komutunun çıkışını gösteren komut Istemi penceresi](media/active-directory-b2c-user-migration/pre-migration-demo.png)
 
-### <a name="step-24-check-the-pre-migration-process"></a>Adım 2,4: Geçiş öncesi işlemini denetleyin
+### <a name="step-24-check-the-pre-migration-process"></a>Adım 2,4: geçiş öncesi işlemini denetleyin
 
 Geçişi doğrulamak için aşağıdaki iki yöntemden birini kullanın:
 
@@ -208,25 +195,25 @@ Geçişi doğrulamak için aşağıdaki iki yöntemden birini kullanın:
       ```
 
       > [!TIP]
-      > Ayrıca, aşağıdaki komutu kullanarak bir kullanıcıyı görünen ada göre de alabilirsiniz: `UserMigration.exe 4 "<Display name>"`.
+      > Şu komutu kullanarak bir kullanıcıyı görünen ada göre de alabilirsiniz: `UserMigration.exe 4 "<Display name>"`.
 
    1. Kullanıcının bilgilerini görmek için, bir JSON düzenleyicisinde USERPROFILE. json dosyasını açın.
 
       ![Visual Studio Code düzenleyicisinde açık olan UserProfile. JSON dosyası](media/active-directory-b2c-user-migration/pre-migration-get-by-email2.png)
 
-### <a name="step-25-optional-environment-cleanup"></a>Adım 2,5: Seçim Ortam temizleme
+### <a name="step-25-optional-environment-cleanup"></a>Adım 2,5: (Isteğe bağlı) ortam temizleme
 
-Azure AD kiracınızı temizlemek ve Azure AD dizininden kullanıcıları kaldırmak istiyorsanız `UserMigration.exe 5` komutunu çalıştırın.
+Azure AD kiracınızı temizlemek ve Azure AD dizininden kullanıcıları kaldırmak istiyorsanız, `UserMigration.exe 5` komutunu çalıştırın.
 
 > [!NOTE]
 > * Kiracınızı temizlemek için, uygulamanız için Kullanıcı hesabı yönetici izinlerini yapılandırın.
 > * Örnek geçiş uygulaması, JSON dosyasında listelenen tüm kullanıcıları temizler.
 
-### <a name="step-26-sign-in-with-migrated-users-with-password"></a>Adım 2,6: Geçirilen kullanıcılarla oturum aç (parola ile)
+### <a name="step-26-sign-in-with-migrated-users-with-password"></a>Adım 2,6: geçirilen kullanıcılarla oturum açın (parola ile)
 
 Geçiş öncesi işlemi Kullanıcı parolalarıyla çalıştırdıktan sonra, hesaplar kullanıma hazırsa ve kullanıcılar Azure AD B2C kullanarak uygulamanızda oturum açabilirler. Kullanıcı parolalara erişiminiz yoksa, sonraki bölüme geçin.
 
-## <a name="step-3-help-users-reset-their-password"></a>3\. adım: Kullanıcıların parolalarını sıfırlamasına yardımcı olun
+## <a name="step-3-help-users-reset-their-password"></a>3\. Adım: kullanıcıların parolalarını sıfırlamasına yardımcı olun
 
 Kullanıcıları rastgele bir parolayla geçirirseniz, parolalarını sıfırlamalıdır. Parolayı sıfırlamasına yardımcı olmak için, parolayı sıfırlamak üzere bağlantı içeren bir hoş geldiniz e-postası gönderin.
 
@@ -239,18 +226,18 @@ Parola sıfırlama ilkenizin bağlantısını almak için aşağıdaki adımlar�
 1. **Uygulama Seç** açılır penceresinde uygulamanızı seçin.
 
     > [!NOTE]
-    > **Şimdi Çalıştır** , kiracınızda en az bir uygulamanın kaydedilmesini gerektirir. Uygulamaları nasıl kaydedeceğinizi öğrenmek için bkz [. Öğretici: Azure Active Directory B2C][B2C-AppRegister]bir uygulamayı kaydedin.
+    > **Şimdi Çalıştır** , kiracınızda en az bir uygulamanın kaydedilmesini gerektirir. Uygulamaları nasıl kaydedeceğinizi öğrenmek için bkz. [öğretici: uygulamayı Azure Active Directory B2C kaydetme][B2C-AppRegister].
 
 1. **Şimdi Çalıştır uç noktası** metin kutusunda gösterilen URL 'yi kopyalayın ve sonra kullanıcılarınıza gönderin.
 
     ![Şimdi Çalıştır uç noktası vurgulanmış şekilde parola sıfırlama ilkesi sayfası](media/active-directory-b2c-user-migration/pre-migration-policy-uri.png)
 
-## <a name="step-4-optional-change-your-policy-to-check-and-set-the-user-migration-status"></a>4\. Adım: Seçim Kullanıcı geçiş durumunu denetlemek ve ayarlamak için ilkenizi değiştirin
+## <a name="step-4-optional-change-your-policy-to-check-and-set-the-user-migration-status"></a>4\. Adım: (Isteğe bağlı) Kullanıcı geçiş durumunu denetlemek ve ayarlamak için ilkenizi değiştirin
 
 > [!NOTE]
 > Kullanıcı geçiş durumunu denetlemek ve değiştirmek için özel bir ilke kullanmanız gerekir. [Özel ilkelerle çalışmaya başlama][B2C-GetStartedCustom] bölümündeki kurulum yönergelerinin tamamlanması gerekir.
 
-Kullanıcılar ilk olarak parolayı sıfırlamadan oturum açmaya çalıştığında, ilkenizin kolay bir hata iletisi döndürmelidir. Örneğin:
+Kullanıcılar ilk olarak parolayı sıfırlamadan oturum açmaya çalıştığında, ilkenizin kolay bir hata iletisi döndürmelidir. Örnek:
 
 > *Parolanızın süresi doldu. Sıfırlamak için parola sıfırlama bağlantısını seçin.*
 
@@ -258,19 +245,19 @@ Bu isteğe bağlı adım, [özel Ilkelerle Başlarken][B2C-GetStartedCustom] mak
 
 Bu bölümde, oturum açma sırasında kullanıcı geçiş durumunu denetlemek için ilkeyi değiştirirsiniz. Kullanıcı parolayı değiştirmediyse, kullanıcıdan **parolanızı unuttum?** bağlantısını seçmesini ısteyen bir http 409 hata iletisi döndürür.
 
-Parola değişikliğini izlemek için bir Azure tablosu kullanırsınız. Geçiş öncesi işlemini komut satırı parametresiyle `2`çalıştırdığınızda, bir Azure tablosunda bir kullanıcı varlığı oluşturursunuz. Hizmetiniz şunları yapar:
+Parola değişikliğini izlemek için bir Azure tablosu kullanırsınız. Geçiş öncesi işlemini `2` komut satırı parametresiyle çalıştırdığınızda, bir Azure tablosunda bir kullanıcı varlığı oluşturursunuz. Hizmetiniz şunları yapar:
 
-- Oturum açma sırasında, Azure AD B2C ilkesi geçiş yeniden hizmeti 'ni çağırır ve giriş talebi olarak bir e-posta iletisi gönderir. Hizmet, Azure tablosundaki e-posta adresini arar. Adres varsa, hizmet bir hata iletisi atar: *Parolayı değiştirmeniz gerekir*.
+- Oturum açma sırasında, Azure AD B2C ilkesi geçiş yeniden hizmeti 'ni çağırır ve giriş talebi olarak bir e-posta iletisi gönderir. Hizmet, Azure tablosundaki e-posta adresini arar. Adres varsa, hizmet bir hata iletisi atar: *parolayı değiştirmeniz gerekir*.
 
 - Kullanıcı parolayı başarıyla değiştirdikten sonra, varlığı Azure tablosundan kaldırın.
 
 > [!NOTE]
 > Örneği basitleştirmek için bir Azure tablosu kullanıyoruz. Geçiş durumunu herhangi bir veritabanında veya Azure AD B2C hesapta özel bir özellik olarak saklayabilirsiniz.
 
-### <a name="41-update-your-application-setting"></a>4,1: Uygulama ayarınızı güncelleştirme
+### <a name="41-update-your-application-setting"></a>4,1: uygulama ayarınızı güncelleştirin
 
-1. Yeniden takip eden API tanıtım 'i test etmek için Visual `AADB2C.UserMigration.sln` Studio 'da açın.
-1. Projesinde, *Web. config* dosyasını açın. `AADB2C.UserMigration.API` Ayarı, [2,2. adımdaki](#step-22-configure-the-application-settings)bir yapılandırma ile değiştirin:
+1. Yeniden takip eden API tanıtım 'i test etmek için Visual Studio 'da `AADB2C.UserMigration.sln` ' ı açın.
+1. @No__t-0 projesinde *Web. config* dosyasını açın. Ayarı, [2,2. adımdaki](#step-22-configure-the-application-settings)bir yapılandırma ile değiştirin:
 
     ```json
     {
@@ -279,16 +266,16 @@ Parola değişikliğini izlemek için bir Azure tablosu kullanırsınız. Geçi�
     }
     ```
 
-### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Adım 4,2: Azure App Service Web uygulamanızı dağıtın
+### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Adım 4,2: Web uygulamanızı Azure App Service dağıtma
 
-Çözüm Gezgini ' de sağ tıklayın `AADB2C.UserMigration.API`, "Yayımla..." öğesini seçin. Azure App Service yayımlamak için yönergeleri izleyin. Daha fazla bilgi için bkz. [Azure App Service uygulamanızı dağıtma][AppService-Deploy].
+Çözüm Gezgini, `AADB2C.UserMigration.API` ' a sağ tıklayın, "Yayımla..." öğesini seçin. Azure App Service yayımlamak için yönergeleri izleyin. Daha fazla bilgi için bkz. [Azure App Service uygulamanızı dağıtma][AppService-Deploy].
 
-### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Adım 4,3: İlkenize teknik bir profil ve teknik profil doğrulaması ekleyin
+### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Adım 4,3: ilkenize teknik profil ve teknik profil doğrulama ekleme
 
 1. Çözüm Gezgini ' de, "çözüm öğeleri" ni genişletin ve *TrustFrameworkExtensions. xml* ilke dosyasını açın.
-1. Ve alanlarını kiracınızın adıyla değiştirin `TenantId`. `PublicPolicyUri` `<TenantId>` `yourtenant.onmicrosoft.com`
-1. Öğesi altında, ve `ProxyIdentityExperienceFrameworkAppId` `IdentityExperienceFrameworkAppId` öğelerinin tüm örneklerini [özel ilkelerle Başlarken][B2C-GetStartedCustom]bölümünde yapılandırılan uygulama kimlikleriyle değiştirin. `<TechnicalProfile Id="login-NonInteractive">`
-1. `<ClaimsProviders>` Düğüm altında aşağıdaki XML kod parçacığını bulun. Değerini Azure App Service URL 'nizi `ServiceUrl` gösterecek şekilde değiştirin.
+1. @No__t-0, `PublicPolicyUri` ve `<TenantId>` alanlarını `yourtenant.onmicrosoft.com` ' ten kiracınızın adına değiştirin.
+1. @No__t-0 öğesi altında, `ProxyIdentityExperienceFrameworkAppId` ve `IdentityExperienceFrameworkAppId` öğelerinin tüm örneklerini [özel Ilkelerle Başlarken][B2C-GetStartedCustom]bölümünde yapılandırılan uygulama kimlikleriyle değiştirin.
+1. @No__t-0 düğümü altında aşağıdaki XML kod parçacığını bulun. @No__t-0 değerini Azure App Service URL 'nizi gösterecek şekilde değiştirin.
 
     ```XML
     <ClaimsProvider>
@@ -328,9 +315,9 @@ Parola değişikliğini izlemek için bir Azure tablosu kullanırsınız. Geçi�
 
 Önceki teknik profil bir giriş talebini tanımlar: `signInName` (e-posta olarak gönder). Oturum açma sırasında talep, yeniden deneme uç noktanıza gönderilir.
 
-Yeniden deneme API 'niz için teknik profili tanımladıktan sonra, Azure AD B2C ilkenize teknik profili çağıracağınızı söyleyin. Temel ilkede tanımlanan XML `SelfAsserted-LocalAccountSignin-Email`kod parçacığı geçersiz kılar. XML kod parçacığı, teknik `ValidationTechnicalProfile`profilinize `LocalAccountUserMigration`işaret eden referenceıd ile de eklenir.
+Yeniden deneme API 'niz için teknik profili tanımladıktan sonra, Azure AD B2C ilkenize teknik profili çağıracağınızı söyleyin. XML kod parçacığı, temel ilkede tanımlanan `SelfAsserted-LocalAccountSignin-Email` ' ı geçersiz kılar. XML kod parçacığı Ayrıca, `ValidationTechnicalProfile` ' ı de ekler ve `LocalAccountUserMigration` Teknik profilinize işaret eder.
 
-### <a name="step-44-upload-the-policy-to-your-tenant"></a>Adım 4,4: İlkeyi kiracınıza yükleyin
+### <a name="step-44-upload-the-policy-to-your-tenant"></a>Adım 4,4: ilkeyi kiracınıza yükleme
 
 1. [Azure Portal][Portal], [Azure AD B2C kiracınızın bağlamına][B2C-NavContext]geçin ve ardından **Azure AD B2C**' yı seçin.
 1. **Kimlik deneyimi çerçevesini**seçin.
@@ -347,14 +334,14 @@ Yeniden deneme API 'niz için teknik profili tanımladıktan sonra, Azure AD B2C
 
     ![Parolayı değiştirme hata iletisini gösteren oturum açma sayfası](media/active-directory-b2c-user-migration/pre-migration-error-message.png)
 
-### <a name="step-46-optional-troubleshoot-your-rest-api"></a>Adım 4,6: Seçim REST API sorunlarını giderme
+### <a name="step-46-optional-troubleshoot-your-rest-api"></a>Adım 4,6: (Isteğe bağlı) REST API sorunlarını giderme
 
 Günlük bilgilerini neredeyse gerçek zamanlı olarak görüntüleyebilir ve izleyebilirsiniz.
 
 1. Yeniden Izlenen uygulamanızın ayarlar menüsünde, **izleme**altında **tanılama günlükleri**' ni seçin.
 1. **Uygulama günlüğünü (FileSystem)** **Açık**olarak ayarlayın.
 1. **Düzeyi** **verbose**olarak ayarlayın.
-1. Seçin **Kaydet**
+1. **Kaydet**’i seçin
 
     ![Azure portal 'de tanılama günlükleri yapılandırma sayfası](media/active-directory-b2c-user-migration/pre-migration-diagnostic-logs.png)
 

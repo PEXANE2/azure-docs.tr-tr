@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 144b63131be68c9209835a1b8b3a01062245cfdd
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326589"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703041"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
@@ -21,7 +21,7 @@ Danışman, boşta ve az kullanılan kaynakları tanımlayarak Genel Azure harca
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Az kullanılan örnekleri yeniden boyutlandırarak veya kapatarak sanal makineyi harcamayı iyileştirin 
 
-Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu ve sayısını yöneterek paradan tasarruf edebilirsiniz. Danışman, sanal makine kullanımınızı 7 gün boyunca izler ve düşük kullanım sanal makinelerini belirler.  Sanal makineler, CPU kullanımı% 5 veya daha az olursa ve ağ kullanımı% 2 ' den az olduğunda veya geçerli iş yükünün daha küçük bir sanal makine boyutuyla ele alınabiliyorsa düşük kullanım olarak değerlendirilir.
+Bazı uygulama senaryoları tasarım tarafından düşük kullanıma yol açabilir, ancak sanal makinelerinizin boyutunu ve sayısını yöneterek paradan tasarruf edebilirsiniz. Danışman gelişmiş değerlendirme modelleri, en yüksek CPU kullanımı değeri olan P95th ' in en fazla% 3 ' ten az olduğu ve ağ kullanımı 7 günlük bir dönemde% 2 ' den az olduğunda sanal makineleri kapatma için kabul eder. Sanal makineler, geçerli yükün daha küçük bir SKU 'da (aynı SKU ailesi içinde) veya daha küçük bir sayıdan (80 örneğin, Kullanıcı tarafından ilgili olmayan iş yükleri için değil) kullanıma sunulmadığı durumlarda doğru boyut olarak değerlendirilir. kullanıcıya yönelik iş yükü olduğunda% 40 üzerinde. Burada iş yükünün türü, iş yükünün CPU kullanım özelliklerinin analiz edilmesine göre belirlenir.
 
 Önerilen Eylemler, için önerilen kaynağa özgü olarak kapatılır veya yeniden boyutlandırılır. Danışman, önerilen eylemler için tahmini maliyet tasarrufu gösterir-yeniden boyutlandır veya kapat. Ayrıca, önerilen eylemi yeniden boyutlandır için, Advisor geçerli ve hedef SKU bilgilerini sağlar. 
 
@@ -29,7 +29,7 @@ Aşırı kullanılan sanal makineleri tanımlamaya daha Agresif olmak istiyorsan
 
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>Sağlaması kaldırılan ExpressRoute devreleri ortadan kaldırarak maliyetleri düşürün
 
-Danışman, sağlayıcı durumunda bir aydan daha fazla *sağlanmamış* olan ExpressRoute devreleri tanımlar ve bağlantı sağlayıcınızla devreyi sağlamayı planlamadıysanız devreyi silmeyi önerir.
+Danışman, sağlayıcı durumunda bir aydan daha fazla sağlanmamış olan ExpressRoute devreleri tanımlar ve bağlantı sağlayıcınızla devreyi sağlamayı *planlamadıysanız* devreyi silmeyi önerir.
 
 ## <a name="reduce-costs-by-deleting-or-reconfiguring-idle-virtual-network-gateways"></a>Boştaki Sanal ağ geçitlerini silerek veya yeniden yapılandırarak maliyetleri azaltın
 

@@ -4,36 +4,28 @@ description: Azure HPC önbelleğinizin, uzun süreli dosya depolaması için ş
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 7df0727a58f3d70289c5060175572dac1bbb4abb
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300037"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710033"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
-*Depolama hedefleri* , BIR Azure HPC Cache örneğinden erişilen dosyalar için arka uç depolardır. Şirket içi donanım sistemi gibi NFS depolama alanı ekleyebilir veya verileri Azure Blob 'a kaydedebilirsiniz.
+*Depolama hedefleri* , BIR Azure HPC Cache örneğinden erişilen dosyalar için arka uç depolardır. NFS depolama (Şirket içi donanım sistemi gibi) ekleyebilir veya Azure Blob 'da verileri saklayabilirsiniz.
 
 Tek bir önbellek için en fazla on farklı depolama hedefi tanımlayabilirsiniz. Önbellek, tüm depolama hedeflerini toplanmış bir ad alanında gösterir.
 
 Depolama dışarı aktarımlarının, önbelleğinizin sanal ağından erişilebilir olması gerektiğini unutmayın. Şirket içi donanım depolaması için NFS depolama erişimi için konak adlarını çözebilen bir DNS sunucusu ayarlamanız gerekebilir. [DNS erişiminde](hpc-cache-prereqs.md#dns-access)daha fazla bilgi edinin.
 
-Önbelleğinizi oluştururken depolama hedefleri veya daha sonra ekleyebilirsiniz. Yordam, Azure Blob depolama veya NFS dışarı aktarma eklediğinize bağlı olarak biraz farklılık gösterebilir. Her biri için Ayrıntılar aşağıda verilmiştir.
+Önbelleğinizi oluşturduktan sonra depolama hedefleri ekleyin. Yordam, Azure Blob depolama veya NFS dışarı aktarma eklediğinize bağlı olarak biraz farklılık gösterebilir. Her biri için Ayrıntılar aşağıda verilmiştir.
 
-## <a name="add-storage-targets-while-creating-the-cache"></a>Önbellek oluştururken depolama hedefleri ekleme
+## <a name="open-the-storage-targets-page"></a>Depolama hedefleri sayfasını açın
 
-Depolama örneğini oluşturduğunuz anda depolamayı tanımlamak için Azure HPC önbellek oluşturma Sihirbazı ' nın **depolama hedefleri** sekmesini kullanın.
-
-![depolama hedefleri sayfasının ekran görüntüsü](media/hpc-cache-storage-targets-pop.png)
-
-Depolama alanı eklemek için **depolama hedefi Ekle** bağlantısına tıklayın.
-
-## <a name="add-storage-targets-from-the-cache"></a>Önbellekten depolama hedefleri ekleyin
-
-Azure portal, önbellek örneğinizi açın ve sol kenar çubuğundaki **depolama hedefleri** ' ne tıklayın. Depolama hedefi sayfası tüm mevcut hedefleri listeler ve yeni bir bağlantı eklemek için bir bağlantı sağlar.
+Azure portal, önbellek örneğinizi açın ve sol kenar çubuğundaki **depolama hedefleri** ' ne tıklayın. Depolama hedefleri sayfası, tüm mevcut hedefleri listeler ve yeni bir bağlantı eklemek için bir bağlantı sağlar.
 
 ![Kategori başlıkları ayarları ve Izleme arasındaki başlık yapılandırması altında bulunan, alt çubukta depolama hedefleri bağlantısının ekran görüntüsü](media/hpc-cache-storage-targets-sidebar.png)
 
@@ -70,7 +62,7 @@ RBAC rolleri ekleme adımları:
 
 1. Depolama hesabı için **erişim denetimi (IAM)** sayfasını açın. ( **Depolama hedefi Ekle** sayfasındaki bağlantı, seçili hesap için otomatik olarak bu sayfayı açar.)
 
-1. Sayfanın üst kısmındaki öğesine tıklayın ve **rol ataması Ekle**' yi seçin. **+**
+1. Sayfanın üst kısmındaki **+** ' e tıklayın ve **rol ataması Ekle**' yi seçin.
 
 1. Listeden "depolama hesabı katılımcısı" rolünü seçin.
 
@@ -107,7 +99,7 @@ Her bir yol aynı depolama sisteminde farklı bir dışarı aktarma veya alt diz
 Bir depolama hedefinden tüm yolları oluşturun.
 <!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
 
-Her ad alanı yolu için bu değerleri girin: 
+Her ad alanı yolu için bu değerleri girin:
 
 * **Sanal ad alanı yolu** -bu depolama hedefi için istemciye yönelik dosya yolunu ayarlayın. Sanal ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplanan ad alanını Yapılandır](hpc-cache-namespace.md) makalesini okuyun.
 
@@ -115,7 +107,7 @@ Her ad alanı yolu için bu değerleri girin:
 
 * **NFS dışarı aktarma yolu** -NFS dışarı aktarmanın yolunu girin.
 
-* **Alt dizin yolu** -dışarı aktarmanın belirli bir alt dizinini bağlamak istiyorsanız buraya girin. Aksi takdirde, bu alanı boş bırakın. 
+* **Alt dizin yolu** -dışarı aktarmanın belirli bir alt dizinini bağlamak istiyorsanız buraya girin. Aksi takdirde, bu alanı boş bırakın.
 
 İşiniz bittiğinde, depolama hedefini eklemek için **Tamam** ' ı tıklatın.
 
@@ -124,7 +116,7 @@ Her ad alanı yolu için bu değerleri girin:
 
 Bir NFS depolama sistemine işaret eden bir depolama hedefi oluşturduğunuzda, bu hedefin *kullanım modelini* seçmeniz gerekir. Bu model, verilerinizin nasıl önbelleğe alınacağını belirler.
 
-* Yoğun okuma-veri okuma erişimini hızlandırmak için genellikle önbelleği kullanıyorsanız bu seçeneği belirleyin. 
+* Yoğun okuma-veri okuma erişimini hızlandırmak için genellikle önbelleği kullanıyorsanız bu seçeneği belirleyin.
 
 * Okuma/yazma-istemciler, okumak ve yazmak için önbellek kullanıyorsa bu seçeneği belirleyin.
 

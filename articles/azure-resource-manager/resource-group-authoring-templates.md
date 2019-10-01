@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6b027acc5a8a8b7660d5640ff4af335e51fd2dbf
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: HT
+ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676873"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694968"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın
 
@@ -88,7 +88,7 @@ Parametrelerin nasıl kullanılacağına ilişkin örnekler için, bkz. [Azure R
 
 ### <a name="data-types"></a>Veri türleri
 
-Tamsayı türleri-2147483648 ile 2147483647 arasında olabilir. Ancak, kaynak türleri bir tamsayı özelliği için alt sınır uygulayabilir.
+Satır içi parametre olarak geçirilen tamsayılar için, değer aralığı, dağıtım için kullandığınız SDK veya komut satırı aracıyla sınırlı olabilir. Örneğin, bir şablonu dağıtmak için PowerShell kullanılırken, tamsayı türleri-2147483648 ile 2147483647 arasında değişebilir. Bu sınırlamayı önlemek için bir [parametre dosyasında](resource-manager-parameter-files.md)büyük tamsayı değerlerini belirtin. Kaynak türleri, tamsayı özellikleri için kendi sınırlarını uygular.
 
 Şablonunuzda Boole ve tamsayı değerlerini belirtirken değeri tırnak işaretleriyle çevreleyin. Dize değerlerini çift tırnak işaretleriyle Başlat ve bitir.
 

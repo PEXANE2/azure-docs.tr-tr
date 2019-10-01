@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Toplu Puanlama için makine öğrenimi işlem hatları'
+title: 'Öğretici: toplu Puanlama için ML işlem hatları'
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning içindeki bir görüntü sınıflandırma modelinde toplu Puanlama çalıştırmak için bir makine öğrenimi işlem hattı oluşturun. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanma süreciyle iyileştirin. böylece, altyapı ve otomasyon yerine uzmanlık makinenizin öğrenimine odaklanırsınız.
 services: machine-learning
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/05/2019
-ms.openlocfilehash: 978cfa7926e7a035494aae11351c15a45c0251e4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3fe25f0f8297a7b743ed5f522e8a35deb165a039
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350439"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695623"
 ---
-# <a name="use-a-machine-learning-pipeline-for-batch-scoring"></a>Batch Puanlama için makine öğrenimi işlem hattı kullanma
+# <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Toplu Puanlama için & oluşturma Azure Machine Learning işlem hattı kullanma
 
 Bu öğreticide, Batch Puanlama işini çalıştırmak için Azure Machine Learning bir işlem hattı kullanırsınız. Örnek, etiketlenmemiş görüntüleri sınıflandırmak için preeğitilen [-v3](https://arxiv.org/abs/1512.00567) evsel sinir Network TensorFlow modelini kullanır. Bir işlem hattı derleyip yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetiklemek için kullanabileceğiniz bir REST uç noktası yapılandırırsınız.
 
@@ -40,7 +40,7 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa, [Kurulum öğreticisinin 1. kısmını](tutorial-1st-experiment-sdk-setup.md)doldurun.
 * Kurulum öğreticisini tamamladığınızda, *Öğreticiler/Tutorial-Pipeline-Batch-Scoring-Classification. ipynb* Not defterini açmak için aynı not defteri sunucusunu kullanın.
 
-Kurulum öğreticisini kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials)'daki öğreticiye erişebilirsiniz. Gerekli `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` paketleri almak için öğesini çalıştırın.
+Kurulum öğreticisini kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials)'daki öğreticiye erişebilirsiniz. Gerekli paketleri almak için `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` ' i çalıştırın.
 
 ## <a name="configure-workspace-and-create-a-datastore"></a>Çalışma alanını yapılandırma ve veri deposu oluşturma
 
@@ -81,7 +81,7 @@ Bir işlem hattı oluşturduğunuzda, `DataReference` nesnesi çalışma alanı 
 >
 > 2. Önceki adımda *giriş nesnesi*olarak `PipelineData` *Çıkış nesnesini* kullanın. Sonraki adımlar için tekrarlayın.
 
-Bu senaryoda, hem giriş görüntüleri hem de sınıflandırma etiketleri (y-test değerleri) için veri deposu dizinlerine karşılık gelen `DataReference` nesneleri oluşturursunuz. Toplu Puanlama çıkış verileri `PipelineData` için de bir nesne oluşturun.
+Bu senaryoda, hem giriş görüntüleri hem de sınıflandırma etiketleri (y-test değerleri) için veri deposu dizinlerine karşılık gelen `DataReference` nesneleri oluşturursunuz. Toplu Puanlama çıkış verileri için `PipelineData` nesnesi de oluşturursunuz.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -121,7 +121,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall("models")
 ```
 
-Ardından, modeli işlem hattı işleminde kolayca alabilmeniz için çalışma alanınıza kaydedin. `register()` Statik işlevde`model_name` parametresi SDK genelinde modelinizi bulmak için kullandığınız anahtardır.
+Ardından, modeli işlem hattı işleminde kolayca alabilmeniz için çalışma alanınıza kaydedin. @No__t-0 statik işlevinde, `model_name` parametresi SDK genelinde modelinizi bulmak için kullandığınız anahtardır.
 
 ```python
 from azureml.core.model import Model
@@ -164,11 +164,11 @@ Puanlama yapmak için, `batch_scoring.py` adlı bir toplu işlem Puanlama betiğ
 
 @No__t-0 betiği, bu öğreticide daha sonra oluşturduğunuz ardışık düzen adımından geçirilen aşağıdaki parametreleri alır:
 
-- `--model_name`: Kullanılan modelin adı.
-- `--label_dir`: @No__t-0 dosyasını tutan dizin.
-- `--dataset_path`: Girdi görüntülerini içeren dizin.
-- `--output_dir`: Betik sonrasında `results-label.txt` dosyası için çıkış dizini, verileri veri üzerinde çalıştırır.
-- `--batch_size`: Modeli çalıştırırken kullanılan toplu iş boyutu.
+- `--model_name`: kullanılan modelin adı.
+- `--label_dir`: `labels.txt` dosyasını tutan dizin.
+- `--dataset_path`: giriş görüntülerini içeren dizin.
+- `--output_dir`: betik sonrasında `results-label.txt` dosyası için çıkış dizini, verileri veri üzerinde çalıştırır.
+- `--batch_size`: modeli çalıştırırken kullanılan toplu iş boyutu.
 
 İşlem hattı altyapısı, parametreleri işlem hattı adımlarına geçirmek için `ArgumentParser` sınıfını kullanır. Örneğin, aşağıdaki kodda, ilk bağımsız değişken `--model_name` `model_name` özellik tanımlayıcısı verilir. @No__t-0 işlevinde, bu özelliğe erişmek için `Model.get_model_path(args.model_name)` kullanılır.
 
@@ -321,7 +321,7 @@ from azureml.pipeline.core.graph import PipelineParameter
 batch_size_param = PipelineParameter(name="param_batch_size", default_value=20)
 ```
 
-### <a name="create-the-pipeline-step"></a>İşlem hattı adım oluşturma
+### <a name="create-the-pipeline-step"></a>İşlem hattı adımını oluşturma
 
 İşlem hattı adımı, aşağıdakiler dahil olmak üzere bir işlem hattı çalıştırmak için ihtiyacınız olan her şeyi kapsülleyen bir nesnedir:
 
@@ -358,7 +358,7 @@ Farklı adım türleri için kullanabileceğiniz tüm sınıfların bir listesi 
 
 Şimdi işlem hattını çalıştırın. İlk olarak, çalışma alanı başvurusunu ve oluşturduğunuz işlem hattı adımını kullanarak `Pipeline` nesnesi oluşturun. @No__t-0 parametresi bir adım dizisidir. Bu durumda, toplu Puanlama için yalnızca bir adım vardır. Birden çok adım içeren işlem hatları oluşturmak için, adımları Bu dizide sırayla yerleştirin.
 
-Sonra, işlem hattını yürütmeye göndermek için `Experiment.submit()` işlevini kullanın. Özel parametresini `param_batch_size`de belirtirsiniz. @No__t-0 işlevi, işlem hattı derleme işlemi sırasında günlükleri çıktı. Geçerli ilerlemeyi görmek için günlükleri kullanabilirsiniz.
+Sonra, işlem hattını yürütmeye göndermek için `Experiment.submit()` işlevini kullanın. @No__t-0 özel parametresini de belirtirsiniz. @No__t-0 işlevi, işlem hattı derleme işlemi sırasında günlükleri çıktı. Geçerli ilerlemeyi görmek için günlükleri kullanabilirsiniz.
 
 > [!IMPORTANT]
 > İlk işlem hattı çalıştırması yaklaşık *15 dakika*sürer. Tüm bağımlılıklar indirilmelidir, bir Docker görüntüsü oluşturulur ve Python ortamı sağlanmakta ve oluşturulur. Bu kaynaklar oluşturulması yerine yeniden kullanıldığından işlem hattının yeniden çalıştırılması çok daha az zaman alır. Ancak, işlem hattının toplam çalışma süresi, betiklerinizin ve her bir ardışık düzen adımında çalışan işlemlerin iş yüküne bağlıdır.
@@ -388,7 +388,7 @@ df.head(10)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th: yalnızca-of-type {Dikey Hizala: Orta;}
+<style scoped>. dataframe tbody tr TH: yalnızca-of-type {Vertical-ALIGN: Middle;}
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -402,8 +402,8 @@ df.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Dosya adı</th>
-      <th>Tahmin</th>
+      <th>Kısaltın</th>
+      <th>hızlı</th>
     </tr>
   </thead>
   <tbody>
@@ -413,7 +413,7 @@ df.head(10)
       <td>Rhodesian bir Rhogeback</td>
     </tr>
     <tr>
-      <td>1\.</td>
+      <td>1</td>
       <td>ILSVRC2012_val_00000103. JPEG</td>
       <td>Tripod</td>
     </tr>

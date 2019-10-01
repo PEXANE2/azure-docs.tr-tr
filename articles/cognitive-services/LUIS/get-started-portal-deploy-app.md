@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: LUI portalı ile uygulama dağıtma'
+title: 'Hızlı başlangıç: LUO portalı ile uygulama dağıtma'
 titleSuffix: Azure Cognitive Services
 description: Uygulama, sohbet bot gibi bir istemci uygulamasına söylenişi öngörülerini döndürmeye başladıktan sonra, lusıs uygulamanızı tahmin uç noktasına dağıtmayı öğrenin. Bu hızlı başlangıç, bir tahmin uç noktası kaynağı oluşturarak, uygulamayı uygulamaya atamaya, uygulamayı eğitmek ve uygulamayı yayımlatabarak bir uygulamayı nasıl dağıtacağınızı gösterir.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f640921e6f48559db3f1414551d6ed974df15e4f
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257085"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703214"
 ---
-# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı Başlangıç: LUI portalında uygulama dağıtma
+# <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Hızlı başlangıç: Lua portalında uygulama dağıtma
 
 Lusıs uygulamanız, bir istemci uygulamasına söylenişi tahminleri (örneğin, bir sohbet bot) döndürmeye hazırsanız uygulamayı tahmin uç noktasına dağıtmanız gerekir.
 
@@ -32,19 +32,19 @@ Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğreneceksiniz. Bir ta
 
 Tahmin uç noktası kaynağını Azure portal oluşturursunuz. Bu kaynak yalnızca Endpoint tahmin sorguları için kullanılmalıdır. Uygulamada değişiklik yazmak için bu kaynağı kullanmayın.
 
-1. [Azure Portal](https://ms.portal.azure.com/) oturum açın.
+1. [Azure Portal](https://ms.portal.azure.com/)’ında oturum açın.
 
-1. Sol üst panelde **+** yeşil işaretini seçin. `Cognitive Services` Market 'te arama yapın ve seçin.
+1. Sol üst panelde yeşil **+** işaretini seçin. Market 'te `Cognitive Services` ' ı arayın ve seçin.
 
 1. Aboneliği aşağıdaki ayarlarla yapılandırın:
 
-   |Ayar|Value|Amaç|
+   |Ayar|Değer|Amaç|
    |--|--|--|
-   |Name|`my-cognitive-service-resource`|Azure kaynağının adı. Bu adı, kaynağı LUE portalında uygulamaya atarken kullanmanız gerekir.|
-   |Subscription|Aboneliğiniz|Hesabınızla ilişkili aboneliklerden birini seçin.|
-   |Location|**Batı ABD**|Bu kaynak için Azure bölgesi.|
+   |Adı|`my-cognitive-service-resource`|Azure kaynağının adı. Bu adı, kaynağı LUE portalında uygulamaya atarken kullanmanız gerekir.|
+   |Abonelik|Aboneliğiniz|Hesabınızla ilişkili aboneliklerden birini seçin.|
+   |Konum|**Batı ABD**|Bu kaynak için Azure bölgesi.|
    |Fiyatlandırma katmanı|**S0**|Bu kaynak için varsayılan fiyatlandırma katmanı.|
-   |Resource group|`my-cognitive-service-resource-group`|Tüm bilişsel hizmet kaynaklarınız için yeni bir kaynak grubu oluşturun. Kaynaklarla işiniz bittiğinde, aboneliğinizi temizlemek için kaynak grubunu silebilirsiniz. |
+   |Kaynak grubu|`my-cognitive-service-resource-group`|Tüm bilişsel hizmet kaynaklarınız için yeni bir kaynak grubu oluşturun. Kaynaklarla işiniz bittiğinde, aboneliğinizi temizlemek için kaynak grubunu silebilirsiniz. |
    | | | |
 
    ![Azure API seçimi](./media/get-started-portal-deploy-app/create-cognitive-services-resource.png)
@@ -65,11 +65,11 @@ LUHER yeni kaynak oluşturduğunuzda, kaynağı LUO uygulamasına atamanız gere
 
     <!-- TBD: get screenshot-->
 
-1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. Seçin **atama kaynak**.
+1. Kiracınızı, aboneliğinizi ve kaynak adınızı seçin. **Kaynak ata**' yı seçin.
 
    ![Uygulamanıza bir kaynak atayın](./media/get-started-portal-deploy-app/assign-resource.png)
 
-1. Tabloya yeni satır bulun ve uç nokta URL'sini kopyalayın. Bir tahmine yönelik olarak lusıs API `HTTP GET` uç noktasına bir istek oluşturmak için doğru bir şekilde oluşturulur.
+1. Tablodaki yeni satırı bulun ve uç nokta URL 'sini kopyalayın. Tahmin için LUSıS API uç noktasına `HTTP GET` isteği oluşturmak üzere doğru bir şekilde oluşturulur.
 
 ## <a name="train-and-publish-the-app"></a>Uygulamayı eğitme ve yayımlama
 
@@ -85,51 +85,58 @@ Uygulamayı test etmeye hazırsanız eğitme. Geçerli eğitilen sürümün sorg
 
 1. **Anahtarlar ve uç nokta ayarları** sayfasında, atanan kaynakların listesini ve alt kısımdaki karşılık gelen uç nokta URL 'lerini bulun.
 
-1. Yeni kaynak adınızla ilişkili uç nokta URL 'sini seçin. Bu eylem, tahmin uç noktası çalışma zamanına `GET` istek yapmak için doğru şekilde oluşturulmuş bir URL ile bir Web tarayıcısı açar.
+1. Yeni kaynak adınızla ilişkili uç nokta URL 'sini seçin. Bu eylem, tahmin uç noktası çalışma zamanına `GET` isteği getirmek için doğru şekilde oluşturulmuş bir URL ile bir Web tarayıcısı açar.
 
-1. URL 'nin sonundaki sorgu için kısa ve kullanıcının utterine GET isteğine eklendiği yerdir. `q=` `q=`Sonrasında, önceki hızlı başlangıç noktasında kullanılan aynı kullanıcı adını girin:
+## <a name="prediction-endpoint-request"></a>Tahmin uç noktası isteği
 
-    ```Is there a form named hrf-234098```
+<!-- V3FIX -->
 
-    Tarayıcı, istemci uygulamanızın alacağı JSON ile aynı yanıtı gösterir:
+URL 'nin sonundaki `q=` **sorgu** için kısaysa ve kullanıcının UTTERINE GET isteğine eklendiği yerdir. @No__t-0 ' dan sonra, önceki hızlı başlangıç için kullanılan Kullanıcı utterine 'yı girin:
 
-    ```JSON
+```Is there a form named hrf-234098```
+
+Tarayıcı, istemci uygulamanızın alacağı JSON ile aynı yanıtı gösterir:
+
+```JSON
+{
+"query": "Is there a form named hrf-234098",
+"topScoringIntent": {
+    "intent": "FindForm",
+    "score": 0.9768753
+},
+"intents": [
     {
-    "query": "Is there a form named hrf-234098",
-    "topScoringIntent": {
-        "intent": "FindForm",
-        "score": 0.9768753
+    "intent": "FindForm",
+    "score": 0.9768753
     },
-    "intents": [
-        {
-        "intent": "FindForm",
-        "score": 0.9768753
-        },
-        {
-        "intent": "None",
-        "score": 0.0216071066
-        }
-    ],
-    "entities": [
-        {
-        "entity": "hrf-234098",
-        "type": "Human Resources Form Number",
-        "startIndex": 22,
-        "endIndex": 31
-        }
-      ]
+    {
+    "intent": "None",
+    "score": 0.0216071066
     }
-    ```
+],
+"entities": [
+    {
+    "entity": "hrf-234098",
+    "type": "Human Resources Form Number",
+    "startIndex": 22,
+    "endIndex": 31
+    }
+    ]
+}
+```
 
-    Bu yanıt, önceki öğreticideki varsayılan test bölmesine göre daha fazla bilgi sağlar. Test bölmesinde aynı bilgi düzeyini görmek için uygulamayı yayımlamanız gerekir. Uygulama yayımlandıktan sonra test bölmesinde **Yayımlanla Karşılaştır** ' ı seçin. Önceki adımla aynı JSON 'ı görmek için yayımlanan test bölmesinde **JSON görünümünü göster** ' i kullanın. Bu şekilde, üzerinde çalışmakta olduğunuz geçerli uygulamayı uç noktada yayınlanan bir uygulamayla karşılaştırabilirsiniz.
+Bu yanıt, önceki öğreticideki varsayılan test bölmesine göre daha fazla bilgi sağlar. Test bölmesinde aynı bilgi düzeyini görmek için uygulamayı yayımlamanız gerekir. Uygulama yayımlandıktan sonra test bölmesinde **Yayımlanla Karşılaştır** ' ı seçin. Önceki adımla aynı JSON 'ı görmek için yayımlanan test bölmesinde **JSON görünümünü göster** ' i kullanın. Bu şekilde, üzerinde çalışmakta olduğunuz geçerli uygulamayı uç noktada yayınlanan bir uygulamayla karşılaştırabilirsiniz.
 
-    [![Şu anda düzenleyen uygulamanın yayımlanmış sürümüne göre karşılaştır](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[![Şu anda düzenleyen uygulamanın yayımlanmış sürümüne göre karşılaştırması](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+
+
+
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu hızlı başlangıç ile işiniz bittiğinde, üst gezinti menüsünden **uygulamalarım** ' ı seçin. Listeden uygulamanın onay kutusunu seçin ve sonra listenin üzerindeki bağlam araç çubuğundan **Sil** ' i seçin.
 
-[![Uygulamayı uygulamalarım listesinden sil](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
+[![Uygulamalarımın listesinden uygulamayı Sil](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

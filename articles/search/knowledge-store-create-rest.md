@@ -8,12 +8,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: laobri
-ms.openlocfilehash: 50648d22a62199d27374a1cacf617858ce9e7d6a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329277"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703565"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>REST kullanarak Azure Search bilgi deposu oluşturma
 
@@ -40,20 +40,20 @@ Bir Azure Search Indexer tarafından erişilebilmesi ve AI zenginleştirme ardı
 1. [BIR CSV dosyasına kaydedilmiş otel gözden geçirme verilerini indirin (HotelReviews_Free. csv)](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D). Bu veriler Kaggle.com adresinden kaynaklanır ve oteller hakkında müşteri geri bildirimi içerir.
 1. [Azure Portal oturum açın](https://portal.azure.com)ve Azure depolama hesabınıza gidin.
 1. [BLOB kapsayıcısı oluşturun](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal). Kapsayıcıyı oluşturmak için, depolama hesabınızın sol gezinti çubuğunda, **Bloblar**' a tıklayın ve ardından komut çubuğunda **+ kapsayıcı** ' ya tıklayın.
-1. Yeni kapsayıcı **adı**için girin `hotel-reviews`.
+1. Yeni kapsayıcı **adı**için `hotel-reviews` girin.
 1. Herhangi bir **genel erişim düzeyi**seçin. Varsayılan değer kullandık.
 1. Azure Blob kapsayıcısını oluşturmak için **Tamam** ' ı tıklatın.
-1. Yeni `hotels-review` kapsayıcıyı açın, **karşıya yükle**' ye tıklayın ve ilk adımda indirdiğiniz **HotelReviews-Free. csv** dosyasını seçin.
+1. Yeni `hotels-review` kapsayıcısını açın, **karşıya yükle**' ye tıklayın ve ilk adımda indirdiğiniz **HotelReviews-Free. csv** dosyasını seçin.
 
-    ![Verileri karşıya yükleme](media/knowledge-store-create-portal/upload-command-bar.png "Otel Incelemelerini karşıya yükleyin")
+    ![Karşıya veri yükleme](media/knowledge-store-create-portal/upload-command-bar.png "otel incelemelerini karşıya yükleyin")
 
 1. CSV dosyasını Azure Blob depolamaya aktarmak için **karşıya yükle** ' ye tıklayın. Yeni kapsayıcı görüntülenir.
 
-    ![Azure Blob kapsayıcısını oluşturma](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Azure Blob kapsayıcısını oluşturma")
+    Azure Blob ![kapsayıcısını oluşturma Azure](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "BLOB kapsayıcısını oluşturma")
 
 ## <a name="3---configure-postman"></a>3-Postman 'ı yapılandırma
 
-[Postman koleksiyonu kaynak kodunu](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) Indirin ve **Dosya, içeri aktar... öğesini**kullanarak Postman 'a aktarın. **Koleksiyonlar** sekmesine geçin ve **...** düğmesine tıklayın ve **Düzenle**' yi seçin. 
+[Postman koleksiyonu kaynak kodunu](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) Indirin ve **Dosya, içeri aktar... öğesini**kullanarak Postman 'a aktarın. **Koleksiyonlar** sekmesine geçin ve **...** düğmesine tıklayın ve **Düzenle**' yi seçin. 
 
 ![Gezinmeyi gösteren Postman uygulaması](media/knowledge-store-create-rest/postman-edit-menu.png "Postman 'da Düzenle menüsüne git")
 
@@ -61,7 +61,7 @@ Elde edilen düzenleme iletişim kutusunda, **değişkenler** sekmesine gidin.
 
 **Değişkenler** sekmesi, Postman 'ın, çift ayraç içinde karşılaştığı her seferinde takas edecek değerler eklemenize olanak tanır. Örneğin Postman `{{admin-key}}` sembolünü `admin-key` ' in "geçerli değeri" ile değiştirir. Postman bu değişikliği URL 'Ler, üst bilgiler, istek gövdesi ve benzeri olarak yapar. 
 
-@No__t-0 değerini Arama Hizmeti **anahtarlar** sekmesinde bulacaksınız. @No__t-0 ve `storage-account-name` ' i [1. adımda](#1---create-services)seçtiğiniz değerlerle değiştirmeniz gerekir. Depolama hesabının **erişim anahtarları** sekmesindeki değeri `storage-connection-string` olarak ayarlayın. Başka değerler de değişmeden bırakabilirsiniz.
+@No__t-0 değerini Arama Hizmeti **anahtarlar** sekmesinde bulacaksınız. @No__t-2 ve `storage-account-name` ' i [1. adımda](#1---create-services)seçtiğiniz değerlere değiştirmeniz gerekir. Depolama hesabının **erişim anahtarları** sekmesindeki değeri `storage-connection-string` olarak ayarlayın. Başka değerler de değişmeden bırakabilirsiniz.
 
 ![Postman uygulama değişkenleri sekmesi](media/knowledge-store-create-rest/postman-variables-window.png "Postman 'ın değişkenler penceresi")
 
@@ -334,7 +334,7 @@ Son adım, aslında verileri okuyan ve beceri etkinleştiren Dizin oluşturucuyu
 
 ## <a name="8---run-the-indexer"></a>8-Dizin oluşturucuyu çalıştırma 
 
-Azure portal Arama Hizmeti **Genel Bakış ' a** gidin ve **Dizin oluşturucular** sekmesini seçin. Önceki adımda oluşturduğunuz **oteller-incelemeler-ixR** ' a tıklayın. Dizin Oluşturucu zaten çalıştırılmışsa, **Çalıştır** düğmesine basın. Veriler, bilişsel yetenekler tarafından henüz desteklenmeyen dillerde yazılmış bazı İncelemeleri içerdiği için dizin oluşturma görevi, dil tanıma ile ilgili bazı uyarılar oluşturabilir. 
+Azure portal Arama Hizmeti **Genel Bakış ' a** gidin ve **Dizin oluşturucular** sekmesini seçin. önceki adımda oluşturduğunuz **oteller-Incelemeler-ixR** ' e tıklayın. Dizin Oluşturucu zaten çalıştırılmışsa, **Çalıştır** düğmesine basın. Veriler, bilişsel yetenekler tarafından henüz desteklenmeyen dillerde yazılmış bazı İncelemeleri içerdiği için dizin oluşturma görevi, dil tanıma ile ilgili bazı uyarılar oluşturabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

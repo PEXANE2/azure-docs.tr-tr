@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6b5be5271e2ff579d93cb70f7c8da93d861d4dc0
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: bb816658faff9fb924d075e0fca17e9643c18e40
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648719"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694754"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’i kullanmaya başlama
 
@@ -27,24 +27,32 @@ AzCopy, bir depolama hesabına blob veya dosya kopyalamak için kullanabileceği
 
 ## <a name="download-azcopy"></a>AzCopy indirin
 
-İlk olarak, AzCopy Ile v10 arasındaki çalıştırılabilir dosyasını bilgisayarınızdaki herhangi bir dizine indirin.
+İlk olarak, AzCopy Ile v10 arasındaki çalıştırılabilir dosyasını bilgisayarınızdaki herhangi bir dizine indirin. AzCopy Ile v10 arasındaki yalnızca yürütülebilir bir dosyadır, bu nedenle yüklenecek bir şey yoktur.
 
-- [Windows](https://aka.ms/downloadazcopy-v10-windows) zip
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) IK
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) zip
+- [Windows](https://aka.ms/downloadazcopy-v10-windows) (zip)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
-AzCopy Ile v10 arasındaki yalnızca yürütülebilir bir dosyadır, bu nedenle yüklenecek bir şey yoktur.
+Bu dosyalar bir ZIP dosyası (Windows ve Mac) veya bir tar dosyası (Linux) olarak sıkıştırılır.
+
+Bu komutları, Linux üzerinde tar dosyasını indirmek ve açmak için kullanabilirsiniz.
+
+```bash
+wget -O azcopy.tar.gz https://aka.ms/downloadazcopy-v10-linux
+tar -xf azcopy.tar.gz
+```
 
 > [!NOTE]
 > [Azure Tablo depolama](https://docs.microsoft.com/azure/storage/tables/table-storage-overview) hizmetinize veri kopyalamak Istiyorsanız, [azcopy sürüm 7,3](https://aka.ms/downloadazcopynet)' yi de yükleyebilirsiniz.
 
+
 ## <a name="run-azcopy"></a>AzCopy Çalıştır
 
-Kolaylık sağlaması için, AzCopy yürütülebilir dosyasının dizin konumunu, kullanım kolaylığı için sistem yolunuza eklemeyi göz önünde bulundurun. Bu şekilde, sisteminizdeki herhangi `azcopy` bir dizinden yazabilirsiniz.
+Kolaylık sağlaması için, AzCopy yürütülebilir dosyasının dizin konumunu, kullanım kolaylığı için sistem yolunuza eklemeyi göz önünde bulundurun. Bu şekilde, sisteminizdeki herhangi bir dizinden `azcopy` yazabilirsiniz.
 
-Yolunuza AzCopy dizinini eklememayı seçerseniz, dizinleri AzCopy yürütülebilir dosyanızın konumuyla değiştirmeniz ve Windows PowerShell komut istemleri ' `azcopy` `.\azcopy` nde yazmanız gerekir.
+Yolunuza AzCopy dizinini eklememayı seçerseniz, dizinleri AzCopy yürütülebilir dosyanızın konumuyla değiştirmeniz ve Windows PowerShell komut istemleri içinde `azcopy` veya `.\azcopy` yazmanız gerekir.
 
-Komutların listesini görmek için yazın `azcopy -h` ve ENTER tuşuna basın.
+Komutların listesini görmek için `azcopy -h` yazın ve sonra ENTER tuşuna basın.
 
 Belirli bir komut hakkında bilgi edinmek için, yalnızca komutun adını ekleyin (örneğin: `azcopy list -h`).
 
@@ -65,7 +73,7 @@ Bu tabloyu kılavuz olarak kullan:
 |**BLOB depolama (hiyerarşik ad alanı)** | Azure AD & SAS |
 |**Dosya depolama** | Yalnızca SAS |
 
-### <a name="option-1-use-azure-active-directory"></a>Seçenek 1: Azure Active Directory kullan
+### <a name="option-1-use-azure-active-directory"></a>Seçenek 1: Azure Active Directory kullanın
 
 Azure Active Directory kullanarak, her komuta bir SAS belirteci eklemek yerine kimlik bilgilerini bir kez sağlayabilirsiniz.  
 
@@ -87,8 +95,8 @@ Bu roller, bu kapsamların hiçbirinde güvenlik sorumlusuna atanabilir:
 
 - Kapsayıcı (dosya sistemi)
 - Depolama hesabı
-- Resource group
-- Subscription
+- Kaynak grubu
+- Abonelik
 
 Rolleri doğrulama ve atamayı öğrenmek için bkz. [Azure Portal Azure Blob 'a erişim Izni verme ve VERILERI RBAC ile sıraya](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)alma.
 
@@ -113,7 +121,7 @@ Birden fazla kuruluşa aitseniz, depolama hesabının ait olduğu kuruluşun kir
 azcopy login --tenant-id=<tenant-id>
 ```
 
-Yer tutucusunu `<tenant-id>` , depolama hesabının ait olduğu kuruluşun kiracı kimliğiyle değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin.
+@No__t-0 yer tutucusunu, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin.
 
 Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür. Web sitesini açın, kodu sağlayın ve sonra **İleri** düğmesini seçin.
 
@@ -131,13 +139,13 @@ Bir betiği çalıştırmadan önce, hizmet sorumlunuzu kimlik bilgileriyle AzCo
 
 Bir istemci gizli anahtarını veya hizmet sorumlusunun uygulama kaydıyla ilişkili bir sertifikanın parolasını kullanarak hesabınızda oturum açabilirsiniz.
 
-Hizmet sorumlusu oluşturma hakkında daha fazla bilgi edinmek için [bkz. nasıl yapılır: Kaynaklara](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)ERIŞEBILEN bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalını kullanın.
+Hizmet sorumlusu oluşturma hakkında daha fazla bilgi edinmek için bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 Genel olarak hizmet sorumluları hakkında daha fazla bilgi için, bkz. [Azure Active Directory uygulama ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 
 ##### <a name="using-a-client-secret"></a>İstemci parolası kullanma
 
-Ortam değişkenini, `AZCOPY_SPA_CLIENT_SECRET` hizmet sorumlusunun uygulama kaydının istemci gizli anahtarı olarak ayarlayarak başlayın.
+@No__t-0 ortam değişkenini, hizmet sorumlusunun uygulama kaydının istemci gizli anahtarı olarak ayarlayarak başlayın.
 
 > [!NOTE]
 > Bu değeri, işletim sisteminizin ortam değişkeni ayarlarında değil, komut isteminizden ayarladığınızdan emin olun. Bu şekilde, değer yalnızca geçerli oturum için kullanılabilir.
@@ -154,10 +162,10 @@ $env:AZCOPY_SPA_CLIENT_SECRET="$(Read-Host -prompt "Enter key")"
 Sonra, aşağıdaki komutu yazın ve ENTER tuşuna basın.
 
 ```azcopy
-azcopy login --service-principal --application-id <application-id>
+azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
 ```
 
-Yer tutucusunu `<application-id>` , hizmet sorumlusunun uygulama kaydının uygulama kimliğiyle değiştirin.
+@No__t-0 yer tutucusunu, hizmet sorumlusunun uygulama kaydının uygulama KIMLIĞIYLE değiştirin. @No__t-0 yer tutucusunu, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin. 
 
 ##### <a name="using-a-certificate"></a>Sertifika kullanma
 
@@ -165,7 +173,7 @@ Yetkilendirme için kendi kimlik bilgilerinizi kullanmayı tercih ediyorsanız, 
 
 Sertifikanızı uygulama kaydıza yüklemeye ek olarak, AzCopy 'in çalıştığı makineye veya VM 'ye kaydedilmiş sertifikanın bir kopyasına sahip olmanız da gerekir. Sertifikanın bu kopyası içinde olmalıdır. PFX veya. PEK biçimi ve özel anahtarı içermelidir. Özel anahtar parola korumalı olmalıdır. Windows kullanıyorsanız ve sertifikanız yalnızca bir sertifika deposunda mevcutsa, sertifikayı bir PFX dosyasına (özel anahtar dahil) aktardığınızdan emin olun. Rehberlik için bkz. [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps)
 
-Ardından, `AZCOPY_SPA_CERT_PASSWORD` ortam değişkenini sertifika parolası olarak ayarlayın.
+Sonra, `AZCOPY_SPA_CERT_PASSWORD` ortam değişkenini sertifika parolası olarak ayarlayın.
 
 > [!NOTE]
 > Bu değeri, işletim sisteminizin ortam değişkeni ayarlarında değil, komut isteminizden ayarladığınızdan emin olun. Bu şekilde, değer yalnızca geçerli oturum için kullanılabilir.
@@ -179,10 +187,10 @@ $env:AZCOPY_SPA_CERT_PASSWORD="$(Read-Host -prompt "Enter key")"
 Sonra, aşağıdaki komutu yazın ve ENTER tuşuna basın.
 
 ```azcopy
-azcopy login --service-principal --certificate-path <path-to-certificate-file>
+azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-`<path-to-certificate-file>` Yer tutucusunu, sertifika dosyasının göreli veya tam yoluyla değiştirin. AzCopy, bu sertifikaya olan yolu kaydeder ancak sertifikanın bir kopyasını kaydetmez, bu nedenle bu sertifikayı yerinde sakladığınızdan emin olun.
+@No__t-0 yer tutucusunu, sertifika dosyasının göreli veya tam yoluyla değiştirin. AzCopy, bu sertifikaya olan yolu kaydeder ancak sertifikanın bir kopyasını kaydetmez, bu nedenle bu sertifikayı yerinde sakladığınızdan emin olun. @No__t-0 yer tutucusunu, depolama hesabının ait olduğu kuruluşun kiracı KIMLIĞI ile değiştirin. Kiracı KIMLIĞINI bulmak için Azure portal **Azure Active Directory > özellikler > DIZIN kimliği** ' ni seçin.
 
 > [!NOTE]
 > Bu örnekte gösterildiği gibi bir istem kullanmayı düşünün. Bu şekilde, parolanız konsolunuzun komut geçmişinde görünmez. 
@@ -217,21 +225,21 @@ Ardından, komut konsolunuza aşağıdaki komutlardan birini yazın ve ENTER tu�
 azcopy login --identity --identity-client-id "<client-id>"
 ```
 
-`<client-id>` Yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin istemci kimliği ile değiştirin.
+@No__t-0 yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin istemci KIMLIĞI ile değiştirin.
 
 ```azcopy
 azcopy login --identity --identity-object-id "<object-id>"
 ```
 
-`<object-id>` Yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin nesne kimliğiyle değiştirin.
+@No__t-0 yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin nesne KIMLIĞIYLE değiştirin.
 
 ```azcopy
 azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
-`<resource-id>` Yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin kaynak kimliği ile değiştirin.
+@No__t-0 yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin kaynak KIMLIĞI ile değiştirin.
 
-### <a name="option-2-use-a-sas-token"></a>Seçenek 2: SAS belirteci kullanma
+### <a name="option-2-use-a-sas-token"></a>2\. seçenek: SAS belirteci kullanma
 
 AzCopy komutlarınız içinde kullanılan her kaynak veya hedef URL 'ye bir SAS belirteci ekleyebilirsiniz.
 
@@ -273,7 +281,7 @@ Bağlantıyı almak için şu komutu çalıştırın:
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
 
 > [!NOTE]
-> Linux için `tar` komutta `--strip-components=1` , sürüm adını içeren en üst düzey klasörü kaldırır ve bunun yerine ikili dosya doğrudan geçerli klasöre ayıklar. Bu, betiğin yalnızca `azcopy` `wget` URL 'yi güncelleştirerek yeni bir sürümüyle güncelleştirilmesini sağlar.
+> Linux için `tar` komutunda `--strip-components=1`, sürüm adını içeren en üst düzey klasörü kaldırır ve bunun yerine ikilisini doğrudan geçerli klasöre ayıklar. Bu, betiğin yalnızca `wget` URL 'sini güncelleştirerek `azcopy` ' ın yeni bir sürümüyle güncelleştirilmesini sağlar.
 
 URL Bu komutun çıktısında görüntülenir. Komut dosyası daha sonra bu URL 'YI kullanarak AzCopy 'i indirebilir.
 
@@ -284,13 +292,13 @@ URL Bu komutun çıktısında görüntülenir. Komut dosyası daha sonra bu URL 
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>SAS belirteçlerinde kaçış özel karakterleri
 
-`.cmd` Uzantısı olan toplu iş dosyalarında SAS belirteçlerinde görünen `%` karakterleri atlamanız gerekir. Bunu, SAS belirteç dizesindeki mevcut `%` `%` karakterlerin yanına bir ekleme karakteri ekleyerek yapabilirsiniz.
+@No__t-0 uzantılı toplu iş dosyalarında, SAS belirteçlerinde görünen `%` karakterlerinden çıkmak zorunda olacaksınız. Bunu, SAS belirteç dizesinde var olan `%` karakterlerinin yanına bir ek `%` karakteri ekleyerek yapabilirsiniz.
 
 ## <a name="use-azcopy-in-storage-explorer"></a>Depolama Gezgini AzCopy kullanın
 
 AzCopy 'in performans avantajlarından yararlanmak istiyorsanız, ancak dosyalarınıza etkileşimde bulunmak için komut satırı yerine Depolama Gezgini kullanmayı tercih ediyorsanız, Depolama Gezgini AzCopy özelliğini etkinleştirin.
 
-Depolama Gezgini,**Gelişmiş blob karşıya yükleme ve indirme için AzCopy kullan**' ı seçin.->
+Depolama Gezgini ' de, **Önizleme**' yi seçin ->**geliştirilmiş blob yüklemesi ve Indirilmesi Için AzCopy kullanın**.
 
 ![Azure Depolama Gezgini bir aktarım altyapısı olarak AzCopy 'i etkinleştirin](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 

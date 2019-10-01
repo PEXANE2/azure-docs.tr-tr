@@ -1,19 +1,19 @@
 ---
 title: Azure Izleyici 'de etkinlik günlüğü uyarıları
 description: Etkinlik günlüğünde belirli olaylar meydana geldiğinde SMS, Web kancası, SMS, e-posta ve daha fazlası aracılığıyla bilgilendirilirsiniz.
-author: msvijayn
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: vinagara
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 61b5b96636ea12b5c63da657e006bd3121c34756
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: b24f24edf2a3a0df8cb8ef9687f205a4a8868537
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852603"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675231"
 ---
 # <a name="alerts-on-activity-log"></a>Etkinlik günlüğündeki uyarılar 
 
@@ -36,22 +36,22 @@ Etkinlik günlüğü olayı için JSON nesnesindeki herhangi bir üst düzey öz
 
 Etkinlik günlüğü uyarıları bazı yaygın seçeneklere sahiptir:
 
-- **Kategori**: Yönetim, hizmet durumu, otomatik ölçeklendirme, güvenlik, Ilke ve öneri. 
-- **Kapsam**: Etkinlik günlüğündeki uyarının tanımlandığı tek kaynak veya kaynak kümesi. Etkinlik günlüğü uyarısı kapsamı, çeşitli düzeylerde tanımlanabilir:
+- **Kategori**: yönetim, hizmet durumu, otomatik ölçeklendirme, güvenlik, Ilke ve öneri. 
+- **Kapsam**: etkinlik günlüğündeki uyarının tanımlandığı tek kaynak veya kaynak kümesi. Etkinlik günlüğü uyarısı kapsamı, çeşitli düzeylerde tanımlanabilir:
     - Kaynak düzeyi: Örneğin, belirli bir sanal makine için
     - Kaynak grubu düzeyi: Örneğin, belirli bir kaynak grubundaki tüm sanal makineler
     - Abonelik düzeyi: Örneğin, bir abonelikteki tüm sanal makineler (veya) bir abonelikteki tüm kaynaklar
-- **Kaynak grubu**: Varsayılan olarak, uyarı kuralı kapsamda tanımlanan hedefle aynı kaynak grubuna kaydedilir. Kullanıcı, uyarı kuralının saklanacağı kaynak grubunu da tanımlayabilir.
-- **Kaynak türü**: Uyarının hedefi için tanımlı ad alanı Kaynak Yöneticisi.
-- **İşlem adı**: Rol tabanlı Access Control için kullanılan [Azure Resource Manager işlem](../../role-based-access-control/resource-provider-operations.md) adı. Azure Resource Manager kayıtlı olmayan işlemler, etkinlik günlüğü uyarı kuralında kullanılamaz.
-- **Düzey**: Etkinliğin önem derecesi (ayrıntılı, bilgilendirici, uyarı, hata veya kritik).
-- **Durum**: Etkinliğin durumu, genellikle başlatıldı, başarısız veya başarılı.
-- **Olay başlatan**: "Arayan" olarak da bilinir. İşlemi gerçekleştiren kullanıcının e-posta adresi veya Azure Active Directory tanımlayıcısı.
+- **Kaynak grubu**: varsayılan olarak, uyarı kuralı kapsamda tanımlanan hedefle aynı kaynak grubuna kaydedilir. Kullanıcı, uyarı kuralının saklanacağı kaynak grubunu da tanımlayabilir.
+- **Kaynak türü**: Kaynak Yöneticisi uyarının hedefi için tanımlı ad alanı.
+- **İşlem adı**: rol tabanlı Access Control için kullanılan [Azure Resource Manager işlem](../../role-based-access-control/resource-provider-operations.md) adı. Azure Resource Manager kayıtlı olmayan işlemler, etkinlik günlüğü uyarı kuralında kullanılamaz.
+- **Düzey**: etkinliğin önem derecesi (ayrıntılı, bilgilendirici, uyarı, hata veya kritik).
+- **Durum**: etkinliğin durumu, genellikle başlatıldı, başarısız veya başarılı.
+- **Olay tarafından başlatılan**: "arayan" olarak da bilinir. İşlemi gerçekleştiren kullanıcının e-posta adresi veya Azure Active Directory tanımlayıcısı.
 
 > [!NOTE]
 > Bir abonelikte 100 ' e kadar uyarı kuralı, tek bir kaynak, kaynak grubundaki tüm kaynaklar (veya) tüm abonelik düzeyinde bir kapsam etkinliği için oluşturulabilir.
 
-Etkinlik günlüğü uyarısı etkinleştirildiğinde, eylemler veya bildirimler oluşturmak için bir eylem grubu kullanır. Eylem grubu, e-posta adresleri, Web kancası URL 'Leri veya SMS telefon numaraları gibi yeniden kullanılabilir bir bildirim alıcıları kümesidir. Alıcıların bildirim kanallarınızı merkezileştirmek ve gruplamak için birden çok uyarıdan başvurulabilirler. Etkinlik günlüğü uyarısını tanımlarken iki seçeneğiniz vardır. Şunları yapabilirsiniz:
+Etkinlik günlüğü uyarısı etkinleştirildiğinde, eylemler veya bildirimler oluşturmak için bir eylem grubu kullanır. Eylem grubu, e-posta adresleri, Web kancası URL 'Leri veya SMS telefon numaraları gibi yeniden kullanılabilir bir bildirim alıcıları kümesidir. Alıcıların bildirim kanallarınızı merkezileştirmek ve gruplamak için birden çok uyarıdan başvurulabilirler. Etkinlik günlüğü uyarısını tanımlarken iki seçeneğiniz vardır. Yapabilecekleriniz:
 
 * Etkinlik günlüğü uyarısında mevcut bir eylem grubunu kullanın.
 * Yeni bir eylem grubu oluşturun.

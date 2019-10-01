@@ -7,20 +7,20 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: c6c7a57a2093445d3922f9349242c9a902df7370
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 22590a7ecc94efbfad5eefe27f284bdb191e876d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300713"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676400"
 ---
 # <a name="remote-desktop-client-connections"></a>Uzak Masaüstü istemcisi bağlantıları
 
 Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 
-Şu anda Windows sanal masaüstü önizlemedeyken destek talebi sunulmamaktadır. Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
+Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
 ## <a name="you-cant-open-a-web-client"></a>Bir Web istemcisi açamazsınız
 
@@ -34,23 +34,23 @@ nslookup rdweb.wvd.microsoft.com
 
 Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi gibi başka bir istemciyle bağlanmayı deneyin ve Web istemcisini açıp açmediğinizi denetleyin.
 
-### <a name="error-opening-another-site-fails"></a>Hata: Başka bir site açma başarısız
+### <a name="error-opening-another-site-fails"></a>Hata: başka bir site açma başarısız
 
-**Sağlamak** Ağ sorunları ve/veya kesintiler.
+**Neden:** Ağ sorunları ve/veya kesintiler.
 
-**Onar** Ağ desteğiyle iletişim kurun.
+**Çözüm:** Ağ desteğiyle iletişim kurun.
 
 ### <a name="error-nslookup-cannot-resolve-the-name"></a>Hata: Nslookup adı çözümleyemiyor
 
-**Sağlamak** Ağ sorunları ve/veya kesintiler.
+**Neden:** Ağ sorunları ve/veya kesintiler.
 
-**Onar** Ağ desteğiyle iletişim kurun
+**Çözüm:** Ağ desteğiyle iletişim kurun
 
-### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Hata: Bağlanamazsınız, ancak diğer istemciler bağlanabilir
+### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Hata: bağlanamazsınız, ancak diğer istemciler bağlanabilir
 
-**Sağlamak** Tarayıcı beklenildiği gibi çalışmıyor ve çalışmayı durdurdu.
+**Neden:** Tarayıcı beklenildiği gibi çalışmıyor ve çalışmayı durdurdu.
 
-**Onar** Tarayıcıda sorun gidermek için bu yönergeleri izleyin.
+**Çözüm:** Tarayıcıda sorun gidermek için bu yönergeleri izleyin.
 
 1. Tarayıcıyı yeniden başlatın.
 2. Tarayıcı tanımlama bilgilerini temizleyin. Bkz. [Internet Explorer 'da tanımlama bilgisi dosyalarını silme](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
@@ -61,11 +61,11 @@ Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi gibi başka bir istemc
 
 Başka bir tarayıcı veya istemci kullanarak bağlanmayı deneyin.
 
-### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Hata: Diğer tarayıcılar ve istemciler de hatalı veya açılmayabilir
+### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Hata: diğer tarayıcılar ve istemciler de hatalı veya açılmayabilir
 
-**Sağlamak** Ağ ve/veya işlem sistemi sorunları veya kesintiler
+**Neden:** Ağ ve/veya işlem sistemi sorunları veya kesintiler
 
-**Onar** Destek ekipleriyle iletişim kurun.
+**Çözüm:** Destek ekipleriyle iletişim kurun.
 
 ## <a name="web-client-keeps-prompting-for-credentials"></a>Web istemcisi kimlik bilgileri istemini tutar
 
@@ -135,28 +135,28 @@ Bazen kullanıcılar kendi akışına ve yerel kaynaklarına erişebilir, ancak 
     Time              : <Timestampt>
     ```
 
-### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Hata: O_ADD_USER_TO_GROUP_FAILED/Kullanıcı = ≤ Kullanıcı adı ≥, Grup = uzak masaüstü kullanıcıları 'na eklenemedi. Yüzden Win32. ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Hata: O_ADD_USER_TO_GROUP_FAILED/Kullanıcı = ≤ Kullanıcı adı ≥, Grup = uzak masaüstü kullanıcıları 'na eklenemedi. Neden: Win32. ERROR_NO_SUCH_MEMBER
 
-**Sağlamak** VM, Kullanıcı nesnesinin bulunduğu etki alanına katılmadı.
+**Neden:** VM, Kullanıcı nesnesinin bulunduğu etki alanına katılmadı.
 
-**Onar** Sanal makineyi doğru etki alanına ekleyin. Bkz. [Windows Server sanal makinesini yönetilen bir etki alanına katma](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
+**Çözüm:** Sanal makineyi doğru etki alanına ekleyin. Bkz. [Windows Server sanal makinesini yönetilen bir etki alanına katma](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 
 ### <a name="error-nslookup-cannot-resolve-the-name"></a>Hata: Nslookup adı çözümleyemiyor
 
-**Sağlamak** Ağ sorunları veya kesintiler.
+**Neden:** Ağ sorunları veya kesintiler.
 
-**Onar** Ağ desteğiyle iletişim kurun
+**Çözüm:** Ağ desteğiyle iletişim kurun
 
 ### <a name="error-connectionfailedclientprotocolerror"></a>Hata: ConnectionFailedClientProtocolError
 
-**Sağlamak** Kullanıcının bağlanmaya çalışan sanal makineler, etki alanına katılmış değildir.
+**Neden:** Kullanıcının bağlanmaya çalışan sanal makineler, etki alanına katılmış değildir.
 
-**Onar** Bir konak havuzunun parçası olan tüm VM 'Leri etki alanı denetleyicisine ekleyin.
+**Çözüm:** Bir konak havuzunun parçası olan tüm VM 'Leri etki alanı denetleyicisine ekleyin.
 
 ### <a name="error-connectionfailedusersidinformationmismatch"></a>Hata: Connectionfailedusersıınformationuyuşmazlığıdır
-**Sağlamak** Kullanıcının Azure Active Directory (AD) belirtecinden SID 'SI, Kullanıcı uzaktan oturum açma için etkinleştirilmeye çalışılırken etki alanı denetleyicisi tarafından döndürülen SID ile eşleşmiyor. Bu hata genellikle bir Windows Server AD 'den bir kullanıcı tarafından kaynak olarak bir Azure Active Directory Domain Services (Azure AD DS) ortamında oturum açmaya çalışırken meydana gelir.
+**Neden:** Kullanıcının Azure Active Directory (AD) belirtecinden SID 'SI, Kullanıcı uzaktan oturum açma için etkinleştirilmeye çalışılırken etki alanı denetleyicisi tarafından döndürülen SID ile eşleşmiyor. Bu hata genellikle bir Windows Server AD 'den bir kullanıcı tarafından kaynak olarak bir Azure Active Directory Domain Services (Azure AD DS) ortamında oturum açmaya çalışırken meydana gelir.
 
-**Onar** Bu senaryo şu anda desteklenmiyor. Yalnızca Azure Active Directory kaynaklı kullanıcılar Azure AD DS bağlı Windows sanal masaüstü VM 'lerinde oturum açabilir.
+**Çözüm:** Bu senaryo şu anda desteklenmiyor. Yalnızca Azure Active Directory kaynaklı kullanıcılar Azure AD DS bağlı Windows sanal masaüstü VM 'lerinde oturum açabilir.
 
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Kullanıcı bağlanıyor, ancak hiçbir şey görüntülenmiyor (akış yok)
 
@@ -178,7 +178,4 @@ Web istemcisi kullanılıyorsa, önbelleğe alınmış kimlik bilgileri sorunlar
 - Bir Windows sanal masaüstü ortamında kiracı ve konak havuzu oluştururken oluşan sorunları gidermek için bkz. [kiracı ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
 - Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
 - Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
-- Önizleme hizmeti hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü önizleme ortamı](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?).
-- Sorun giderme öğreticisine geçmek için bkz [. Öğretici: Kaynak Yöneticisi şablonu dağıtımlarıyla](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)ilgili sorunları giderin.
-- Denetim eylemleri hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Dağıtım sırasında hataları belirleme eylemleri hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).

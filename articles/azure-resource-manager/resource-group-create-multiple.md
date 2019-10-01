@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3a0761fad32b2cfb0387cca79b6c1c0dc83c8e98
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345413"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675097"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarda kaynak, özellik veya değişken yinelemesi
 
@@ -57,7 +57,7 @@ Sayı sınırları, bir kaynak, değişken veya özellik ile birlikte kullanıl�
 
 ## <a name="resource-iteration"></a>Kaynak yinelemesi
 
-Bir kaynağın bir veya daha fazla örneğini oluşturmak için dağıtım sırasında karar vermeniz gerektiğinde, kaynak türüne `copy` öğesi ekleyin. Copy öğesinde, bu döngü için yineleme sayısını ve bir adı belirtin.
+Bir dağıtımda kaynağın birden fazla örneğini oluşturmak istiyorsanız, kaynak türüne `copy` öğesi ekleyin. Copy öğesinde, bu döngü için yineleme sayısını ve bir adı belirtin.
 
 Birkaç kez oluşturulacak kaynak aşağıdaki biçimi alır:
 
@@ -513,7 +513,7 @@ Aşağıdaki örnek, uygulamayı göstermektedir:
 }]
 ```
 
-## <a name="example-templates"></a>Örnek şablonları
+## <a name="example-templates"></a>Örnek Şablonlar
 
 Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini oluşturmak için yaygın senaryolar gösterilmektedir.
 
@@ -523,7 +523,7 @@ Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini olu
 |[Seri kopyalama depolaması](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Birden çok depolama hesabını zamanında dağıtır. Ad, Dizin numarasını içerir. |
 |[Depolamayı dizi ile kopyalama](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Birkaç depolama hesabı dağıtır. Ad, diziden bir değer içerir. |
 |[Değişken sayıda veri diskine sahip VM dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Bir sanal makine ile birden fazla veri diski dağıtır. |
-|[Değişkenleri kopyalayın](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Değişkenlerde yinelemenin farklı yollarını gösterir. |
+|[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Değişkenlerde yinelemenin farklı yollarını gösterir. |
 |[Çoklu güvenlik kuralları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Bir ağ güvenlik grubuna birkaç güvenlik kuralı dağıtır. Bir parametreden güvenlik kuralları oluşturur. Parametresi için bkz. [birden çok NSG parametre dosyası](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Sonraki adımlar

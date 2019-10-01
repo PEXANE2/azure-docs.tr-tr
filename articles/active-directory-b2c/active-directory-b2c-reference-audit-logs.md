@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c216512aef117a332d3aabfc83ec5615b70b202c
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033823"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702816"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
 
@@ -33,12 +33,12 @@ Denetim günlüklerinde **B2C** kategorisi aşağıdaki etkinlik türlerini içe
 
 |Etkinlik türü |Açıklama  |
 |---------|---------|
-|Authorization |Bir kullanıcının B2C kaynaklarına (örneğin, B2C ilkeleri listesine erişen bir yönetici) erişmesine yönelik yetkilendirmeyle ilgili etkinlikler.         |
+|Yetkilendirme |Bir kullanıcının B2C kaynaklarına (örneğin, B2C ilkeleri listesine erişen bir yönetici) erişmesine yönelik yetkilendirmeyle ilgili etkinlikler.         |
 |Dizin |Bir yönetici Azure portal kullanarak oturum açtığında alınan dizin öznitelikleriyle ilgili etkinlikler. |
 |Uygulama | B2C uygulamalarında oluşturma, okuma, güncelleştirme ve silme (CRUD) işlemleri. |
 |Anahtar |B2C anahtar kapsayıcısında depolanan anahtarlarla CRUD işlemleri. |
-|Resource |B2C kaynaklarında CRUD işlemleri. Örneğin, ilkeler ve kimlik sağlayıcıları.
-|Authentication |Kullanıcı kimlik bilgilerinin ve belirteç verme 'nin doğrulanması.|
+|Kaynak |B2C kaynaklarında CRUD işlemleri. Örneğin, ilkeler ve kimlik sağlayıcıları.
+|Kimlik Doğrulaması |Kullanıcı kimlik bilgilerinin ve belirteç verme 'nin doğrulanması.|
 
 Kullanıcı nesnesi CRUD etkinlikleri için **çekirdek Dizin** kategorisine bakın.
 
@@ -50,15 +50,15 @@ Bu örnek Azure portal görüntüsü, bir Kullanıcı bir dış kimlik sağlayı
 
 Etkinlik ayrıntıları paneli aşağıdaki ilgili bilgileri içerir:
 
-|`Section`|Alan|Açıklama|
+|Section|Alan|Açıklama|
 |-------|-----|-----------|
-| Etkinlik | Name | Hangi etkinlik gerçekleşti. Örneğin, *uygulamaya bir id_token*gönderin ve bu, gerçek Kullanıcı oturum açma sonucuna işaret ediyor. |
-| Başlatan (aktör) | ObjectId | Kullanıcının oturum açtığı B2C uygulamasının **nesne kimliği** . Bu tanımlayıcı Azure portal görünmez, ancak Microsoft Graph API 'SI aracılığıyla erişilebilir. |
-| Başlatan (aktör) | Spn | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
-| Hedef (ler) | ObjectId | Oturum açan kullanıcının **nesne kimliği** . |
-| Ek Ayrıntılar | TenantId | Azure AD B2C kiracının **KIRACı kimliği** . |
-| Ek Ayrıntılar | `PolicyId` | Kullanıcının oturumu açmak için kullanılan Kullanıcı akışının (ilke) **Ilke kimliği** . |
-| Ek Ayrıntılar | ApplicationId | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
+| Etkinlik | Adı | Hangi etkinlik gerçekleşti. Örneğin, *uygulamaya bir id_token*gönderin ve bu, gerçek Kullanıcı oturum açma sonucuna işaret ediyor. |
+| Başlatan (aktör) | Uzantının | Kullanıcının oturum açtığı B2C uygulamasının **nesne kimliği** . Bu tanımlayıcı Azure portal görünmez, ancak Microsoft Graph API 'SI aracılığıyla erişilebilir. |
+| Başlatan (aktör) | SPN | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
+| Hedef (ler) | Uzantının | Oturum açan kullanıcının **nesne kimliği** . |
+| Ek Ayrıntılar | Değerine | Azure AD B2C kiracının **KIRACı kimliği** . |
+| Ek Ayrıntılar | PolicyId | Kullanıcının oturumu açmak için kullanılan Kullanıcı akışının (ilke) **Ilke kimliği** . |
+| Ek Ayrıntılar | Uygulama | Kullanıcının oturum açtığı B2C uygulamasının **uygulama kimliği** . |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Azure portal denetim günlüklerini görüntüleme
 
@@ -90,40 +90,38 @@ Denetim günlükleri, Azure Active Directory için diğer etkinliklerle aynı i�
 Azure AD Raporlama API 'sine betik veya uygulama tabanlı erişime izin vermek için, aşağıdaki API izinleriyle Azure AD B2C kiracınızda kayıtlı bir Azure Active Directory uygulamanız olması gerekir:
 
 * Microsoft Graph
-  * Uygulama: Tüm denetim günlüğü verilerini okuyun
+  * Uygulama: tüm denetim günlüğü verilerini okuyun
 
 Bu izinleri B2C kiracınızda mevcut bir Azure Active Directory Uygulama kaydında etkinleştirebilir veya özel olarak denetim günlüğü otomasyonu ile kullanmak için yeni bir tane oluşturabilirsiniz.
 
-Yeni bir uygulama oluşturmak, gerekli API izinlerini atamak ve bir istemci parolası oluşturmak için aşağıdaki adımları gerçekleştirin:
+Bir uygulamayı kaydedin, gerekli Microsoft Graph API izinlerini verin ve ardından bir istemci gizli anahtarı oluşturun.
 
-1. Uygulamayı Azure Active Directory Kaydet
-    1. [Azure Portal](https://portal.azure.com) oturum açın ve Azure AD B2C kiracınızı içeren dizine geçin.
-    1. Sol menüden **Azure Active Directory** (Azure AD B2C*değil* ) seçeneğini belirleyin. Ya da **tüm hizmetler**' i seçip **Azure Active Directory**arayıp seçin.
-    1. Sol menüdeki **Yönet** ' in altında **uygulama kayıtları (eski)** seçeneğini belirleyin.
-    1. **Yeni uygulama kaydı** seçin
-    1. Uygulama için bir ad girin. Örneğin, *Denetim günlüğü uygulaması*.
-    1. **Oturum açma URL**'sinde GEÇERLI bir URL girin. Örneğin, *https://localhost* . Bu uç noktanın erişilebilir olması gerekmez, ancak geçerli bir URL olması gerekir.
-    1. **Oluştur**’u seçin.
-    1. **Kayıtlı uygulama** sayfasında görüntülenen **uygulama kimliğini** kaydedin. Daha sonraki bir bölümde gösterilen örnek PowerShell betiği gibi Otomasyon betiklerinin kimlik doğrulaması için bu değere ihtiyacınız vardır.
-1. API erişim izinleri atama
-    1. **Kayıtlı uygulamaya** Genel Bakış sayfasında, **Ayarlar**' ı seçin.
-    1. **API erişimi**altında **gerekli izinler**' i seçin.
-    1. **Ekle**' yi ve ardından **bir API 'yi seçin**.
-    1. **Microsoft Graph**' yi seçin ve ardından öğesini **seçin**.
-    1. **Uygulama izinleri**altında **tüm denetim günlüğü verilerini oku**' nı seçin.
-    1. **Seç** düğmesini seçin ve **bitti**' yi seçin.
-    1. Seçin **izinleri verin**ve ardından **Evet**.
-1. İstemci parolası oluştur
-    1. **API erişimi**altında **anahtarlar**' ı seçin.
-    1. **Anahtar açıklaması** kutusuna anahtar için bir açıklama girin. Örneğin, *Denetim günlüğü anahtarı*.
-    1. Bir geçerlilik **süresi**seçin ve ardından **Kaydet**' i seçin.
-    1. Anahtarın **değerini**kaydedin. Daha sonraki bir bölümde gösterilen örnek PowerShell betiği gibi Otomasyon betiklerinin kimlik doğrulaması için bu değere ihtiyacınız vardır.
+### <a name="register-application-in-azure-active-directory"></a>Uygulamayı Azure Active Directory Kaydet
+
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+
+### <a name="assign-api-access-permissions"></a>API erişim izinleri atama
+
+1. **Kayıtlı uygulamaya** Genel Bakış sayfasında, **Ayarlar**' ı seçin.
+1. **API erişimi**altında **gerekli izinler**' i seçin.
+1. **Ekle**' yi ve ardından **bir API 'yi seçin**.
+1. **Microsoft Graph**' yi seçin ve ardından öğesini **seçin**.
+1. **Uygulama izinleri**altında **tüm denetim günlüğü verilerini oku**' nı seçin.
+1. **Seç** düğmesini seçin ve **bitti**' yi seçin.
+1. **Izin ver**' i seçin ve ardından **Evet**' i seçin.
+
+### <a name="create-client-secret"></a>İstemci parolası oluştur
+
+1. **API erişimi**altında **anahtarlar**' ı seçin.
+1. **Anahtar açıklaması** kutusuna anahtar için bir açıklama girin. Örneğin, *Denetim günlüğü anahtarı*.
+1. Bir geçerlilik **süresi**seçin ve ardından **Kaydet**' i seçin.
+1. Anahtarın **değerini**kaydedin. Daha sonraki bir bölümde gösterilen örnek PowerShell betiği gibi Otomasyon betiklerinin kimlik doğrulaması için bu değere ihtiyacınız vardır.
 
 Artık gerekli API erişimi, uygulama KIMLIĞI ve otomasyon betiklerinizde kullanabileceğiniz bir anahtar içeren bir uygulamanız var. Bir komut dosyasıyla etkinlik olaylarını nasıl alabileceğiniz hakkında bir örnek için bu makalenin ilerleyen kısımlarında bulunan PowerShell betiği bölümüne bakın.
 
 ### <a name="access-the-api"></a>API 'ye erişme
 
-API aracılığıyla Azure AD B2C denetim günlüğü olaylarını indirmek için, `B2C` kategorideki günlüklere filtre uygulayın. Kategoriye göre filtrelemek için, Azure AD `filter` Raporlama API uç noktasını çağırdığınızda sorgu dizesi parametresini kullanın.
+API aracılığıyla Azure AD B2C denetim günlüğü olaylarını indirmek için, `B2C` kategorisindeki günlüklere filtre uygulayın. Kategoriye göre filtrelemek için, Azure AD Raporlama API uç noktasını çağırdığınızda `filter` sorgu dizesi parametresini kullanın.
 
 ```HTTP
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z

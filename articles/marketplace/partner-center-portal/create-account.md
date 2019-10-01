@@ -3,22 +3,22 @@ title: Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 description: Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturmayı öğrenin.
 author: ChJenk
 manager: evansma
-ms.author: parthp
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: guide
-ms.date: 09/10/2019
-ms.openlocfilehash: 9d19b31ccce8feeb2d5ce12353d9b79841b40724
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.date: 09/26/2019
+ms.openlocfilehash: beaca02807f3ee33022854f17150d8eeff1568ac
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219436"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695603"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
 Tekliflerinizi [Azure Market](https://azuremarketplace.microsoft.com/) veya [appsource](https://appsource.microsoft.com/)'Ta yayımlamak için iş ortağı Merkezi ' nde ticari Market programında bir hesap oluşturmanız gerekir. Bu makalede, bir Iş Ortağı Merkezi hesabı oluşturmayı ve ticari Market programına nasıl yeni yayımcılar ekleneceğini ele alacağız.
 
->[!Important]
+>[!IMPORTANT]
 >[Bulut iş ortağı portalı (CPP)](https://cloudpartner.azure.com) Iş Ortağı Merkezi 'ne taşınmış bir hesabınız varsa, yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için bkz. [cpp 'tan taşınan yayımcılar](#publishers-moving-from-cpp) .
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -33,7 +33,7 @@ Bu bilgileri, hesap oluşturma işlemi sırasında doğrulayacağız.
 Hesap oluşturmanın iki yolu vardır:
 
 - Iş Ortağı Merkezi 'ne yeni başladıysanız ve bir Microsoft ağ hesabınız yoksa, [Iş ortağı merkezi kayıt sayfasını kullanarak hesap oluştur](#create-an-account-using-the-partner-center-enrollment-page)' u kullanarak hesabınızı oluşturun.
-- Zaten Microsoft İş Ortağı Ağı kaydolduysanız, [Microsoft iş ortağı ağı kaydınızı kullanarak hesap oluşturma](#create-an-account-using-your-microsoft-partner-network-enrollment)Ile doğrudan Iş Ortağı Merkezi 'nden bir hesap oluşturun.
+- Zaten Microsoft İş Ortağı Ağı kaydettiyseniz, [mevcut Microsoft Iş Ortağı Merkezi kayıtlarını kullanarak hesap oluştur](#create-an-account-using-existing-microsoft-partner-center-enrollments)' u kullanarak doğrudan Iş Ortağı Merkezi 'nden bir hesap oluşturun.
 
 ## <a name="create-an-account-using-the-partner-center-enrollment-page"></a>Iş ortağı merkezi kayıt sayfasını kullanarak hesap oluşturma
 
@@ -44,7 +44,7 @@ Iş Ortağı Merkezi 'ne yeni başladıysanız ve Microsoft İş Ortağı Ağı 
 - [Hüküm ve koşulları kabul etme](#agree-to-terms-and-conditions)
 - [Yayımcı profilinizi sağlama](#provide-your-publisher-profile)
 
->[!Important]
+>[!IMPORTANT]
 >[Bulut iş ortağı portalı (CPP)](https://cloudpartner.azure.com) Iş Ortağı Merkezi 'ne taşınmış bir hesabınız varsa, yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için bkz. [cpp 'tan taşınan yayımcılar](#publishers-moving-from-cpp) .
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Iş ortağı merkezi kayıt sayfasında kaydolun
@@ -55,7 +55,7 @@ Iş Ortağı Merkezi 'ne yeni başladıysanız ve Microsoft İş Ortağı Ağı 
 
 Şirketinizin iş e-posta hesabı etki alanını yeni iş ortağı merkezi hesabınıza bağlayabilmeniz için bir iş hesabıyla oturum açın. Bu hesapları ilişkilendirerek, şirketinizin çalışanları iş hesabı kullanıcı adları ve parolalarla iş ortağı merkezi 'Nde oturum açabilir.
 
->[!Note]
+>[!NOTE]
 >Şirketinizin zaten bir iş hesabına sahip olup olmadığını, yeni bir iş hesabı oluşturmayı veya iş ortağı merkezi ile kullanmak üzere birden çok iş hesabını ayarlamayı denetlemek için [şirketinizin iş hesabınızı ve Iş ortağı merkezini](./company-work-accounts.md)ziyaret edin.
 
 ### <a name="agree-to-terms-and-conditions"></a>Hüküm ve koşulları kabul etme
@@ -70,42 +70,78 @@ Yayımcı KIMLIĞI oluşturun. Yayımcı KIMLIĞINIZ şirketinizi ve tekliflerin
 
 Yayımcı profili bilgilerinizi onayladıktan sonra, koşulları ve koşulları kabul edin ve **kabul et ve devam et**' i seçerek Iş Ortağı Merkezi hesabınızı oluşturun.
 
->[!Important]
+>[!IMPORTANT]
 >*Bu koşulları kabul etmek için şirketinizin adına işlem yapmaya yetkiniz olmalıdır.*
 
-Iş Ortağı Merkezi 'nde bir hesap oluşturduğunuz için teşekkürler! Artık [ticari Market genel bakış](./commercial-marketplace-overview.md) sayfasına yönlendirilirsiniz.
+Kaydolduktan sonra, ticari Market 'e genel bakış sayfasına yönlendirilirsiniz. **Ticari Market** , sol gezinti çubuğunda görüntülenir. **Ayarlar** > **iş ortağı ayarları** > **Programlar**' ı seçerseniz, ticari Market 'in kayıtlı olarak listelendiğini görürsünüz.
 
-## <a name="create-an-account-using-your-microsoft-partner-network-enrollment"></a>Microsoft İş Ortağı Ağı kaydınız kullanarak hesap oluşturma
+Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturduğunuz için teşekkürler! Yardım için bkz. [ticari Market 'e genel bakış](./commercial-marketplace-overview.md). Yayımcılar ekleme konusunda yardım için bkz. [ticari Market programına yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
 
-Microsoft İş Ortağı Ağı zaten kaydolduysanız, aşağıdaki adımları kullanarak hesabınızı doğrudan Iş Ortağı Merkezi 'nden oluşturmak için bu bölümü kullanın:
+## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>Mevcut Microsoft Iş Ortağı Merkezi kayıtlarını kullanarak hesap oluşturma
 
-- [İş hesabınızla İş Ortağı Merkezi 'Nde oturum açın](#sign-into-partner-center-with-your-work-account)
-- [Yayımcı profilinizi girin](#enter-your-publisher-profile)
+Microsoft Iş Ortağı Merkezi 'nde zaten bir kaydınız varsa, ticari Market hesabı oluşturmak için bu bölümü kullanın.
 
-Microsoft İş Ortağı Ağı hesap bilgilerinizin elinizin altında olduğundan emin olun.
+Ticari Market hesabınızı kurmak için kullanabileceğiniz iki tür mevcut kayıt vardır. Size uygulanan birini seçin:
 
->[!Important]
->[Bulut iş ortağı portalı (CPP)](https://cloudpartner.azure.com) Iş Ortağı Merkezi 'ne taşınmış bir hesabınız varsa, yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için bkz. [cpp 'tan taşınan yayımcılar](#publishers-moving-from-cpp) .
+- Mevcut bir Microsoft İş Ortağı Ağı kaydınız varsa, [Microsoft iş ortağı ağı kayıtlı](#enrolled-in-the-microsoft-partner-network)öğesini kullanarak hesabınızı oluşturun.
+- Mevcut bir geliştirici programı kaydınız varsa, [bir geliştirici programına kaydolduktan](#enrolled-in-a-developer-program)sonra hesabınızı oluşturun.
 
-### <a name="sign-into-partner-center-with-your-work-account"></a>İş hesabınızla İş Ortağı Merkezi 'Nde oturum açın
+Her iki yöntemde de şu adımları kullanacaksınız:
+
+- Mevcut kimlik bilgilerinizi kullanarak Iş Ortağı Merkezi 'Nde oturum açın
+- Yayımlama profili bilgilerinizi girin
+
+Hesap bilgilerinizin elinizin altında olduğundan emin olun.
+
+>[!IMPORTANT]
+>[Bulut iş ortağı portalı (CPP)](https://cloudpartner.azure.com/) Iş Ortağı Merkezi 'ne taşınmış bir hesabınız varsa, yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için bkz. [cpp 'tan taşınan yayımcılar](#publishers-moving-from-cpp) .
+
+### <a name="enrolled-in-the-microsoft-partner-network"></a>Microsoft İş Ortağı Ağı kayıtlı
+
+Microsoft İş Ortağı Ağı zaten kaydolduysanız, hesabınızı doğrudan Iş Ortağı Merkezi 'nden oluşturmak için bu bölümü kullanın.
 
 Şirketinizin iş e-posta hesabı etki alanını yeni Iş Ortağı Merkezi hesabınıza bağlamak için Microsoft İş Ortağı Ağı hesabınızla [Iş Ortağı Merkezi 'nde](https://partner.microsoft.com/) oturum açın. Bu hesapları ilişkilendirerek, şirketinizin çalışanları iş hesabı kullanıcı adları ve parolalarla iş ortağı merkezi 'Nde oturum açabilir.
 
->[!Note]
+>[!NOTE]
 >Şirketinizin zaten bir iş ortağı merkezi iş hesabına sahip olup olmadığını, yeni bir iş hesabı oluşturmayı veya iş ortağı merkezi ile kullanmak üzere birden çok iş hesabını ayarlamayı denetlemek için [şirketinizin iş hesabınızı ve Iş ortağı merkezini](./company-work-accounts.md)ziyaret edin.
 
-### <a name="enter-your-publisher-profile"></a>Yayımcı profilinizi girin
-
-Oturum açtıktan sonra, hesabınızı ayarlamayı bitirdikten sonra bu bölümdeki adımları kullanın.
+Oturum açtıktan sonra, hesabınızı ayarlamayı tamamladıktan sonra aşağıdaki adımları kullanın.
 
 >[!NOTE]
-> Microsoft İş Ortağı Ağı oturum açmak için bir hesap yöneticisi veya genel yönetici rolüne sahip olmanız gerekir.
+> Microsoft İş Ortağı Ağı oturum açmak için bir **Hesap Yöneticisi** veya **genel yönetici** rolüne sahip olmanız gerekir.
 
-1. İş Ortağı Merkezi 'nden **Ayarlar** > **iş ortağı ayarları** > **Programlar** > **Başlarken**' i seçin.
+1. [Iş Ortağı Merkezi](https://partner.microsoft.com/)' nden **Ayarlar** > **iş ortağı ayarları** > **Program** > **kullanmaya**başlayın ' ı seçin.
 2. Microsoft İş Ortağı Ağı aboneliğinizi algılar ve şirket adınızı ve MPN KIMLIĞINI girmeniz için yayımcı profili sayfasını görüntüler.
 3. [Microsoft Market yayımcı anlaşmasındaki](https://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları okuyun ve ardından **kabul et '** i seçin ve kayıt bilgilerinizi tamamlamaya devam edin.
 
+    >[!IMPORTANT]
+    >*Bu koşulları kabul etmek için şirketinizin adına işlem yapmaya yetkiniz olmalıdır.*
+
 Kaydolduktan sonra, ticari Market 'e genel bakış sayfasına yönlendirilirsiniz. **Ticari Market** , sol gezinti çubuğunda görüntülenir. **Ayarlar** > **iş ortağı ayarları** > **Programlar**' ı seçerseniz, ticari Market 'in kayıtlı olarak listelendiğini görürsünüz.
+
+Iş Ortağı Merkezi 'nde bir hesap oluşturduğunuz için teşekkürler! Yardım için bkz. [ticari Market 'e genel bakış](./commercial-marketplace-overview.md). Yayımcılar ekleme konusunda yardım için bkz. [ticari Market programına yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
+
+### <a name="enrolled-in-a-developer-program"></a>Bir geliştirici programına kayıtlı
+
+Zaten bir Iş Ortağı Merkezi geliştirici programına kaydolduysanız, hesabınızı doğrudan Iş Ortağı Merkezi 'nden oluşturmak için bu bölümü kullanın.
+
+>[!NOTE]
+>İçinde oturum açtığınız aynı hesap altında bulunan ticari Market 'e kaydolmak için bir şirket hesabı kullanarak Iş Ortağı Merkezi 'ne kaydolmanız gerekir. Tek bir hesapla kaydolduysanız, ticari Market kaydınız yeni bir hesap altında görünür.
+>
+>Bireysel hesaplar, kendi kendilerine çalışan tek geliştiriciler içindir. Şirket hesapları kuruluşlar ve işletmeler içindir. Şirket hesapları, uygulamaları ek işlevlerle göndermek için erişim sağlar. Şirketiniz için hesap ayarlama yetkisine sahip olduğunuzu onaylamak üzere kaydolduktan sonra şirket hesapları için daha fazla doğrulama yapılması gerekir. Bu doğrulama birkaç günden birkaç haftaya kadar sürebilir ve genellikle şirketiniz için bir telefon araması içerir. Her iki hesap türü de uygulamalar, eklentiler ve hizmetler göndermenize olanak tanır. Daha fazla bilgi için bkz. [hesap türleri, konumlar ve ücretler](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
+
+Aynı hesap altında ticari Market programına kaydolmak için Microsoft Iş Ortağı Merkezi hesabınızla [Iş Ortağı Merkezi 'nde](https://partner.microsoft.com/) oturum açın. Aynı hesabı kullanarak ticari Market 'e kaydolduktan sonra, Iş Ortağı Merkezi 'nin sol gezinti menüsünde var olan program kayıtlarınızın ve ticari marketinizin her ikisini de görebilirsiniz.
+
+Oturum açtıktan sonra, hesabınızı ayarlamayı tamamladıktan sonra aşağıdaki adımları kullanın:
+
+1. İş Ortağı Merkezi 'nde **ayarlar** > **Geliştirici ayarları** > **Program** >  ' i**kullanmaya**başlayın ve iş e-posta adresinizi girin.
+2. Yayımcı profili sayfasındaki ayrıntıları doldurun.
+3. [Microsoft Market yayımcı anlaşmasındaki](http://go.microsoft.com/fwlink/?LinkID=699560)hüküm ve koşulları okuyun ve ardından **kabul et '** i seçin ve kayıt bilgilerinizi tamamlamaya devam edin.
+
+    >[!Important]
+    >*Bu koşulları kabul etmek için şirketinizin adına işlem yapmaya yetkiniz olmalıdır.*
+
+Kaydolduktan sonra, ticari Market 'e genel bakış sayfasına yönlendirilirsiniz. **Ticari Market** , sol gezinti çubuğunda görüntülenir. **Ayarlar** > **Geliştirici ayarları** > **Programlar**' ı seçerseniz, ticari Market 'in kayıtlı olarak listelendiğini görürsünüz.
 
 Iş Ortağı Merkezi 'nde bir hesap oluşturduğunuz için teşekkürler! Yardım için bkz. [ticari Market 'e genel bakış](./commercial-marketplace-overview.md). Yayımcılar ekleme konusunda yardım için bkz. [ticari Market programına yeni yayımcılar ekleme](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -121,10 +157,10 @@ Hesap bilgileriniz CPP Iş Ortağı Merkezi 'ne taşındıktan sonra, hesap gün
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Ticari Market programına yeni yayımcılar ekleme
 
-Kuruluşun bir ticari Market hesabıyla ilişkilendirilmiş birden çok yayımcısı olabilir. Mevcut bir Kullanıcı, **Hesap ayarları** > **yayımcıları** > **Yayımcı Ekle**' ye tıklayarak iş ortağı merkezi 'nde oturum açtıktan sonra daha fazla yayımcı ekleyebilir.
+Kuruluşun bir ticari Market hesabıyla ilişkilendirilmiş birden çok yayımcısı olabilir. Mevcut bir Kullanıcı, Iş Ortağı Merkezi 'Nde oturum açtıktan **sonra @no__t-** 1**yayımcılar** > **Yayımcı Ekle**' ye kadar daha fazla yayımcı ekleyebilir.
 
->[!Note]
->Yeni bir yayımcı eklemeden önce, mevcut yayımcıların bir listesini görmek için iş ortağı Merkezi ' nde oturum açarak ve **Hesap ayarları** > **yayımcıları** ' nı seçerek mevcut yayımcıları gözden geçirin.
+>[!NOTE]
+>Yeni bir yayımcı eklemeden önce, mevcut yayımcıların bir listesini görmek için Iş Ortağı Merkezi 'Nde oturum açarak mevcut yayımcıları gözden geçirin ve **Hesap ayarları** > **yayımcılar** ' ı seçin.
 
 Aynı Azure Active Directory kiracısından başka bir Kullanıcı aşağıdaki adımları izleyerek yeni bir yayımcı ekleyebilir:
 
@@ -134,9 +170,9 @@ Aynı Azure Active Directory kiracısından başka bir Kullanıcı aşağıdaki 
 4. Yayımcıyla ilişkilendirmek istediğiniz MPN KIMLIĞINI seçin.
 5. Formdaki **Yayımcı ayrıntılarını** güncelleştirin.
 
-   1. **Yayımcı adı**: Teklifle birlikte Azure Marketi 'nde veya AppSource 'ta görüntülenecek ad.
-   1. **PublisherID**: Yayımcısını benzersiz olarak tanımlamak için Iş Ortağı Merkezi tarafından kullanılan tanımlayıcı. Bu alan `PublisherID` için varsayılan değer, sistem içinde yeniden kullanılamayacak ve bu nedenle bu alanın güncelleştirilmesi gerekir.
-   1. **İletişim bilgileri**: Gerektiğinde iletişim bilgilerini güncelleştirin.
+   1. **Yayımcı adı**: teklifiyle birlikte Azure Marketi 'Nde veya appsource 'ta görüntülenecek ad.
+   1. **PublisherID**: Iş Ortağı Merkezi tarafından yayımcısını benzersiz şekilde tanımlamak için kullanılan bir tanımlayıcı. Bu alan için varsayılan değer, sistem içinde yeniden kullanılamayacak olan ve benzersiz `PublisherID` ile eşlenir ve bu nedenle bu alanın güncelleştirilmesi gerekir.
+   1. **İletişim bilgileri**: gerektiğinde iletişim bilgilerini güncelleştirin.
 
 İşlemi tamamladıktan sonra, yeni oluşturduğunuz yayımcıyı sol gezinti menüsünde listelenen **ticari Market** programına giderek yönetebilirsiniz. **Ticari Market** programını görmüyorsanız, sayfayı yenileyin. Yeni Yayımcı, **yayımcılar** listesinde görünür.
 

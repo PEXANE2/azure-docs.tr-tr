@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: kumud
 ms.reviewer: vinigam
-ms.openlocfilehash: 6c11f415fc1ea3a578893f6d14a60dfc1c4fddb0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ce59b46667f9139157a751d7d7b0205504d71ab0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203001"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695645"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -45,15 +45,15 @@ Azure sanal ağları, tek tek ağ arabirimleri, VM 'Ler veya alt ağlar ile ili�
 
 ## <a name="key-components"></a>Başlıca bileşenler
 
-- **Ağ güvenlik grubu (NSG)** : Bir Azure sanal ağına bağlı kaynaklara yönelik ağ trafiğine izin veren veya reddeden güvenlik kurallarının bir listesini içerir. Ağ güvenlik grupları (NSG’ler), alt ağlarla, ayrı ayrı VM’lerle (klasik) veya VM’lere bağlı ağ arabirimleri ile ilişkilendirilebilir (Resource Manager). Daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Ağ güvenlik grubu (NSG) akış günlükleri**: Bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize izin verir. NSG akış günlükleri, JSON biçiminde yazılır ve bir kural temelinde giden ve gelen akışları gösterir, akış için geçerli olan NIC, Flow (kaynak/hedef IP adresi, kaynak/hedef bağlantı noktası ve protokol) ile ilgili beş demet bilgileri ve trafiğe izin veriliyorsa veya reddedildi. NSG akış günlükleri hakkında daha fazla bilgi için bkz. [NSG akış günlükleri](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: İzleme verilerini toplayan ve verileri merkezi bir depoda depolayan bir Azure hizmeti. Bu veriler olayları, performans verilerini veya Azure API 'SI aracılığıyla sunulan özel verileri içerebilir. Toplanan veriler uyarı, analiz ve dışarı aktarma için kullanılabilir hale gelir. Ağ Performansı İzleyicisi ve trafik analizi gibi izleme uygulamaları, bir temel olarak Azure Izleyici günlükleri kullanılarak oluşturulmuştur. Daha fazla bilgi için bkz. [Azure izleyici günlükleri](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log Analytics çalışma alanı**: Bir Azure hesabıyla ilgili verilerin depolandığı Azure Izleyici günlüklerinin bir örneği. Log Analytics çalışma alanları hakkında daha fazla bilgi için bkz. [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Ağ İzleyicisi**: Azure 'da bir ağ senaryosu düzeyinde koşulları izlemenizi ve tanılamanıza olanak tanıyan bölgesel bir hizmet. Ağ Izleyicisi ile NSG akış günlüklerini açıp kapatabilirsiniz. Daha fazla bilgi için bkz. [Ağ İzleyicisi](network-watcher-monitoring-overview.md).
+- **Ağ güvenlik grubu (NSG)** : bir Azure sanal ağına bağlı kaynaklara yönelik ağ trafiğine izin veren veya reddeden güvenlik kurallarının bir listesini içerir. Ağ güvenlik grupları (NSG’ler), alt ağlarla, ayrı ayrı VM’lerle (klasik) veya VM’lere bağlı ağ arabirimleri ile ilişkilendirilebilir (Resource Manager). Daha fazla bilgi için bkz. [ağ güvenlik grubuna genel bakış](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Ağ güvenlik grubu (NSG) akış günlükleri**: bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize izin verir. NSG akış günlükleri, JSON biçiminde yazılır ve bir kural temelinde giden ve gelen akışları gösterir, akış için geçerli olan NIC, Flow (kaynak/hedef IP adresi, kaynak/hedef bağlantı noktası ve protokol) ile ilgili beş demet bilgileri ve trafiğe izin veriliyorsa veya reddedildi. NSG akış günlükleri hakkında daha fazla bilgi için bkz. [NSG akış günlükleri](network-watcher-nsg-flow-logging-overview.md).
+- **Log Analytics**: izleme verilerini toplayan ve verileri merkezi bir depoda depolayan Azure hizmeti. Bu veriler olayları, performans verilerini veya Azure API 'SI aracılığıyla sunulan özel verileri içerebilir. Toplanan veriler uyarı, analiz ve dışarı aktarma için kullanılabilir hale gelir. Ağ Performansı İzleyicisi ve trafik analizi gibi izleme uygulamaları, bir temel olarak Azure Izleyici günlükleri kullanılarak oluşturulmuştur. Daha fazla bilgi için bkz. [Azure izleyici günlükleri](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics çalışma alanı**: Azure hesabıyla ilgili verilerin depolandığı Azure izleyici günlüklerinin bir örneği. Log Analytics çalışma alanları hakkında daha fazla bilgi için bkz. [Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Ağ İzleyicisi**: Azure 'da bir ağ senaryosu düzeyinde koşulları izlemenizi ve tanılamanıza olanak tanıyan bölgesel bir hizmettir. Ağ Izleyicisi ile NSG akış günlüklerini açıp kapatabilirsiniz. Daha fazla bilgi için bkz. [Ağ İzleyicisi](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Trafik analizinin çalışması
 
-Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi, hedef IP adresi, hedef bağlantı noktası ve protokol arasındaki ortak akışları toplayarak azaltılan günlükleri yakalar. Örneğin, ana bilgisayar 1 (IP adresi: 10.10.10.10) ana bilgisayar 2 ile iletişim (IP adresi: 10.10.20.10), bağlantı noktasını (örneğin, 80) ve Protokolü (örneğin, http) kullanarak 1 saat boyunca 100 kez. Azaltılan günlükte tek bir giriş bulunur. ana bilgisayar 1 & ana bilgisayar 2 bağlantı noktası *80* ve protokol 100 *http*kullanılarak 1 saat boyunca 100 kez iletidedir. Azaltılan Günlükler coğrafya, güvenlik ve topoloji bilgileriyle geliştirilmiştir ve sonra bir Log Analytics çalışma alanında depolanır. Aşağıdaki resimde veri akışı gösterilmektedir:
+Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi, hedef IP adresi, hedef bağlantı noktası ve protokol arasındaki ortak akışları toplayarak azaltılan günlükleri yakalar. Örneğin, ana bilgisayar 1 (IP adresi: 10.10.10.10), ana bilgisayar 2 ' ye (IP adresi: 10.10.20.10), bağlantı noktasını (örneğin, 80) ve Protokolü (örneğin, http) kullanarak 1 saat boyunca 100 kez iletişim kurarak. Azaltılan günlükte tek bir giriş bulunur. ana bilgisayar 1 & ana bilgisayar 2 bağlantı noktası *80* ve protokol 100 *http*kullanılarak 1 saat boyunca 100 kez iletidedir. Azaltılan Günlükler coğrafya, güvenlik ve topoloji bilgileriyle geliştirilmiştir ve sonra bir Log Analytics çalışma alanında depolanır. Aşağıdaki resimde veri akışı gösterilmektedir:
 
 ![NSG akış günlükleri işleme için veri akışı](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
@@ -61,55 +61,55 @@ Trafik Analizi, ham NSG akış günlüklerini inceler ve aynı kaynak IP adresi,
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
 
-* Orta Kanada
-* Batı Orta ABD
-* East US
+* Kanada Orta
+* Orta Batı ABD
+* Doğu ABD
 * Doğu ABD 2
 * Orta Kuzey ABD
-* Orta Güney ABD
+* Güney Orta ABD
 * Orta ABD
 * Batı ABD
 * Batı ABD 2
 * Fransa Orta
 * Batı Avrupa
 * Kuzey Avrupa
-* Güney Brezilya
-* Birleşik Krallık Batı
-* Birleşik Krallık Güney
-* Avustralya Doğu
-* Avustralya Güneydoğu
+* Brezilya Güney
+* Birleşik Krallık, Batı
+* Birleşik Krallık, Güney
+* Doğu Avustralya
+* Güneydoğu Avustralya
 * Doğu Asya
 * Güneydoğu Asya
 * Kore Orta
 * Orta Hindistan
 * Güney Hindistan
-* Japonya Doğu 
-* Japonya Batı
-* ABD Devleti Virginia
+* Doğu Japonya 
+* Batı Japonya
+* ABD Hükümeti Virginia
 
-## <a name="supported-regions-log-analytics-workspaces"></a>Desteklenen bölgeler: Log Analytics Çalışma Alanları
+## <a name="supported-regions-log-analytics-workspaces"></a>Desteklenen bölgeler: Log Analytics çalışma alanları
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
-* Orta Kanada
-* Batı Orta ABD
-* East US
+* Kanada Orta
+* Orta Batı ABD
+* Doğu ABD
 * Doğu ABD 2
-* Orta Güney ABD
+* Güney Orta ABD
 * Batı ABD
 * Batı ABD 2
 * Orta ABD
 * Fransa Orta
 * Kuzey Avrupa
 * Batı Avrupa
-* Birleşik Krallık Güney
-* Avustralya Doğu
-* Avustralya Güneydoğu
+* Birleşik Krallık, Güney
+* Doğu Avustralya
+* Güneydoğu Avustralya
 * Doğu Asya
 * Güneydoğu Asya
 * Kore Orta
 * Orta Hindistan
-* Japonya Doğu
-* ABD Devleti Virginia
+* Doğu Japonya
+* ABD Hükümeti Virginia
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -117,12 +117,12 @@ Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
 
 Hesabınız aşağıdaki Azure [yerleşik rollerinin](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)birine üye olmalıdır:
 
-|Dağıtım modeli   | Role                   |
+|Dağıtım modeli   | Rol                   |
 |---------          |---------               |
-|Resource Manager   | Sahip                  |
+|Kaynak Yöneticisi   | Sahip                  |
 |                   | Katılımcı            |
 |                   | Okuyucu                 |
-|                   | Ağ Katılımcısı    |
+|                   | Ağ katılımcısı    |
 
 Hesabınız yerleşik rollerden birine atanmamışsa, abonelik düzeyinde aşağıdaki eylemler atanmış olan [özel bir role](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) atanmalıdır. şu şekilde hesaba atanmalıdır:
 
@@ -163,7 +163,7 @@ Aboneliğiniz için henüz kayıtlı değilse, Azure Insights sağlayıcısını
 Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
-NSG akış günlüklerini depolamak için henüz bir Azure depolama hesabınız yoksa bir depolama hesabı oluşturmanız gerekir. Aşağıdaki komutla bir depolama hesabı oluşturabilirsiniz. Komutu çalıştırmadan önce, yalnızca rakamlar `<replace-with-your-unique-storage-account-name>` ve küçük harfler kullanılarak 3-24 karakter uzunluğunda olan tüm Azure konumlarında benzersiz olan bir adla değiştirin. Gerekirse, kaynak grubu adını da değiştirebilirsiniz.
+NSG akış günlüklerini depolamak için henüz bir Azure depolama hesabınız yoksa bir depolama hesabı oluşturmanız gerekir. Aşağıdaki komutla bir depolama hesabı oluşturabilirsiniz. Komutu çalıştırmadan önce, `<replace-with-your-unique-storage-account-name>` ' ı tüm Azure konumlarında benzersiz olan bir adla, yalnızca sayılar ve küçük harfler kullanılarak 3-24 karakter uzunluğunda olacak şekilde değiştirin. Gerekirse, kaynak grubu adını da değiştirebilirsiniz.
 
 ```azurepowershell-interactive
 New-AzStorageAccount `
@@ -182,18 +182,21 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri belirleyin:
 4. **Bekletmeyi** , verilerini depolamak istediğiniz gün sayısına ayarlayın.
 > [!IMPORTANT]
 > Şu anda ağ Izleyicisi için ağ [güvenlik grubu (NSG) akış günlüklerinin](network-watcher-nsg-flow-logging-overview.md) , bekletme ilkesi ayarlarına göre blob depolamadan otomatik olarak silinmediği bir sorun vardır. Sıfır olmayan bir bekletme ilkeniz varsa, herhangi bir ücret ödemeden kaçınmak için saklama süresini aşan depolama bloblarını düzenli aralıklarla silmenizi öneririz. NSG akış günlüğü depolama blogunu silme hakkında daha fazla bilgi için bkz. [NSG akış günlüğü depolama Bloblarını silme](network-watcher-delete-nsg-flow-log-blobs.md).
+
 5. **Trafik Analizi durumu**Için *Açık '* ı seçin.
 6. İşleme aralığını seçin. Seçim yapmanız temelinde, akış günlüklerinizi depolama hesabından toplanacak ve Trafik Analizi tarafından işlenir. Her 1 saatte bir veya 10 dakikada bir işleme aralığı seçebilirsiniz. 
 7. Var olan bir Log Analytics (OMS) çalışma alanı seçin veya yeni bir **çalışma alanı** oluştur ' u seçerek yeni bir tane oluşturun. Log Analytics çalışma alanı, analiz oluşturmak için kullanılan toplanmış ve dizine alınmış verileri depolamak için Trafik Analizi tarafından kullanılır. Mevcut bir çalışma alanını seçerseniz, [desteklenen bölgelerden](#supported-regions-log-analytics-workspaces) birinde bulunmalıdır ve yeni sorgu diline yükseltilir. Mevcut bir çalışma alanını yükseltmek veya desteklenen bir bölgede çalışma alanınız yoksa yeni bir tane oluşturun. Sorgu dilleri hakkında daha fazla bilgi için bkz. [Azure Log Analytics yükseltme yeni günlük araması](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    Trafik Analizi çözümünü barındıran Log Analytics çalışma alanının ve NSG 'lerin aynı bölgede olması gerekmez. Örneğin, Batı Avrupa bölgesindeki bir çalışma alanında trafik analizlerinin olması, Doğu ABD ve Batı ABD NSG 'lerinizin olması olabilir. Aynı çalışma alanında birden çok NSG yapılandırılabilir.
+> [!NOTE]
+>Trafik Analizi çözümünü barındıran Log Analytics çalışma alanının ve NSG 'lerin aynı bölgede olması gerekmez. Örneğin, Batı Avrupa bölgesindeki bir çalışma alanında trafik analizlerinin olması, Doğu ABD ve Batı ABD NSG 'lerinizin olması olabilir. Aynı çalışma alanında birden çok NSG yapılandırılabilir.
+
 8. **Kaydet**’i seçin.
 
     ![Depolama hesabı, Log Analytics çalışma alanı ve Trafik Analizi etkinleştirme seçimi](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-İçin trafik analizini etkinleştirmek istediğiniz diğer NSG 'ler için önceki adımları tekrarlayın. Akış günlüklerinden veriler çalışma alanına gönderilir, böylece ülkenizde bulunan yerel yasaları ve yönetmelikler, çalışma alanının bulunduğu bölgede veri depolamaya izin verdiğinden emin olun. Farklı NSG 'ler için farklı işleme aralıkları ayarladıysanız, veriler farklı aralıklarla toplanır. Örneğin: Kritik VNET 'ler için 10 dakikalık işleme aralığını ve kritik olmayan VNET 'ler için 1 saat etkinleştirmeyi seçebilirsiniz.
+İçin trafik analizini etkinleştirmek istediğiniz diğer NSG 'ler için önceki adımları tekrarlayın. Akış günlüklerinden veriler çalışma alanına gönderilir, böylece ülkenizde bulunan yerel yasaları ve yönetmelikler, çalışma alanının bulunduğu bölgede veri depolamaya izin verdiğinden emin olun. Farklı NSG 'ler için farklı işleme aralıkları ayarladıysanız, veriler farklı aralıklarla toplanır. Örneğin: kritik VNET 'ler için 10 dakikalık işleme aralığını ve kritik olmayan VNET 'ler için 1 saat etkinleştirmeyi seçebilirsiniz.
 
-Ayrıca, Azure PowerShell içindeki [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 'ini kullanarak trafik analizini yapılandırabilirsiniz. Yüklü `Get-Module -ListAvailable Az` sürümünüzü bulmak için ' i çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps).
+Ayrıca, Azure PowerShell içindeki [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) PowerShell cmdlet 'ini kullanarak trafik analizini yapılandırabilirsiniz. Yüklü sürümünüzü bulmak için `Get-Module -ListAvailable Az` ' yı çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps).
 
 ## <a name="view-traffic-analytics"></a>Trafik analizini görüntüleme
 
@@ -308,7 +311,7 @@ Trafik Analizi tam olarak yapılandırıldıktan sonra kazanmak isteyebileceğin
     ![Sanal ağ dağıtımını gösteren Pano](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - Sanal ağ topolojisi, sanal ağın (sanal ağ bağlantıları/etkin/etkin olmayan), dış bağlantıların, etkin akışların ve sanal ağın kötü amaçlı akışlarının gibi parametrelerin seçimine yönelik üst şeridi gösterir.
-- Sanal ağ topolojisini abonelikler, çalışma alanları, kaynak grupları ve zaman aralığına göre filtreleyebilirsiniz. Akışı anlamanıza yardımcı olan ek filtreler şunlardır: Akış türü (ıntervnet, ınvnet, vb.), akış yönü (gelen, giden), akış durumu (Izin verilen, engellenen), sanal ağlar (hedeflenen ve bağlı), bağlantı türü (eşleme veya ağ geçidi-P2S ve S2S) ve NSG. Ayrıntılı incelemek istediğiniz sanal ağlara odaklanmak için bu filtreleri kullanın.
+- Sanal ağ topolojisini abonelikler, çalışma alanları, kaynak grupları ve zaman aralığına göre filtreleyebilirsiniz. Akışı anlamanıza yardımcı olan ek filtreler şunlardır: akış türü (ıntervnet, ınvnet, vb.), akış yönü (gelen, giden), Flow durumu (Izin verilen, engellenen), sanal ağlar (hedeflenen ve bağlı), bağlantı türü (eşleme veya ağ geçidi-P2S ve S2S) ve NSG. Ayrıntılı incelemek istediğiniz sanal ağlara odaklanmak için bu filtreleri kullanın.
 - Sanal ağ topolojisi, akışlar (Izin verilen/engellenen/gelen/giden/zararsız/kötü amaçlı), uygulama protokolü ve ağ güvenlik grupları gibi bir sanal ağa trafik dağılımını gösterir, örneğin:
 
     ![Trafik dağıtımı ve akış ayrıntılarını gösteren sanal ağ topolojisi](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)

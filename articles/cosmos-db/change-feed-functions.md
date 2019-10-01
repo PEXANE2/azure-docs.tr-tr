@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 299799566f0d54cc3fa017b032e15b387fe8cdd5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 876fef2b597e9a7dfd896f2b9697378e745a07f3
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467918"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709821"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Işlevleri ile sunucusuz olay tabanlı mimariler
 
@@ -29,20 +29,20 @@ Azure Işlevleri, [değişiklik akışına](change-feed.md)bağlanmak için en k
 
 Sunucusuz bir olay tabanlı akış uygulamak için şunlar gerekir:
 
-* **İzlenen kapsayıcı**: İzlenen kapsayıcı, izlenmekte olan Azure Cosmos kapsayıcısıdır ve değişiklik beslemenin oluşturulduğu verileri depolar. İzlenen kapsayıcıya yapılan tüm ekler ve değişiklikler (örn. CRUD) kapsayıcının değişiklik akışında yansıtılır.
-* **Kira kapsayıcısı**: Kira kapsayıcısı, birden çok ve dinamik sunucusuz Azure Işlev örneklerinde durum tutar ve dinamik ölçeklendirmeyi sağlar. Bu Kiralama kapsayıcısı, Cosmos DB için Azure Işlevleri tetikleyicisi tarafından el ile veya otomatik olarak oluşturulabilir. Kira kapsayıcısını otomatik olarak oluşturmak için, [yapılandırmada](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) *Createleasecollectionifnotexists* bayrağını ayarlayın. Bölümlenmiş kira kapsayıcıları, `/id` bölüm anahtarı tanımına sahip olmak için gereklidir.
+* **İzlenen kapsayıcı**: izlenen kapsayıcı, Izlenen Azure Cosmos kapsayıcısıdır ve değişiklik beslemenin oluşturulduğu verileri depolar. İzlenen kapsayıcıya yapılan tüm ekler ve değişiklikler (örn. CRUD) kapsayıcının değişiklik akışında yansıtılır.
+* **Kira kapsayıcısı**: kira kapsayıcısı, birden çok ve dinamik sunucusuz Azure işlev örneğinde durum tutar ve dinamik ölçeklendirmeyi sağlar. Bu Kiralama kapsayıcısı, Cosmos DB için Azure Işlevleri tetikleyicisi tarafından el ile veya otomatik olarak oluşturulabilir. Kira kapsayıcısını otomatik olarak oluşturmak için, [yapılandırmada](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) *Createleasecollectionifnotexists* bayrağını ayarlayın. Bölümlenmiş kira kapsayıcıları `/id` bölüm anahtarı tanımına sahip olmak için gereklidir.
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetiklerinizi oluşturma
 
 Azure işlevinizi Cosmos DB için Azure Işlevleri tetikleyicisi ile oluşturmak artık tüm Azure Işlevleri IDE ve CLı tümleştirmeleri arasında desteklenmektedir:
 
 * Visual Studio kullanıcıları için [Visual Studio uzantısı](../azure-functions/functions-develop-vs.md) .
-* Visual Studio Code kullanıcıları için [Visual Studio Core uzantısı](https://code.visualstudio.com/tutorials/functions-extension/create-function) .
+* Visual Studio Code kullanıcıları için [Visual Studio Core uzantısı](/azure/javascript/tutorial-vscode-serverless-node-01) .
 * Ve son olarak, platformlar arası IDE deneyimi için [temel CLI araçları](../azure-functions/functions-run-local.md#create-func) .
 
 ## <a name="run-your-trigger-locally"></a>Tetikleyiciyi yerel olarak çalıştırın
 
-Azure bir abonelik olmadan sunucusuz olay tabanlı akışlarınızı oluşturup geliştirmek için Azure Işlevinizi [Azure Cosmos DB öykünücüsü](./local-emulator.md) ile [yerel olarak](../azure-functions/functions-develop-local.md) çalıştırabilirsiniz.
+Azure bir abonelik olmadan sunucusuz olay tabanlı akışlarınızı oluşturup geliştirmek için [Azure işlevinizi](../azure-functions/functions-develop-local.md) [Azure Cosmos DB öykünücüsü](./local-emulator.md) ile yerel olarak çalıştırabilirsiniz.
 
 Bulutta canlı senaryoları test etmek isterseniz, kredi kartı veya Azure aboneliği gerekmeden [Cosmos DB ücretsiz olarak deneyebilirsiniz](https://azure.microsoft.com/try/cosmosdb/) .
 
@@ -52,6 +52,6 @@ Bulutta canlı senaryoları test etmek isterseniz, kredi kartı veya Azure abone
 
 * [Değişiklik akışına genel bakış](change-feed.md)
 * [Değişiklik akışını okuma yolları](read-change-feed.md)
-* [Kullanarak değişiklik akışı işlemci kitaplığı](change-feed-processor.md)
+* [Değişiklik akışı işlemci kitaplığını kullanma](change-feed-processor.md)
 * [Değişiklik akışı işlemci kitaplığıyla çalışma](change-feed-processor.md)
 * [Azure Cosmos DB ve Azure Işlevleri 'ni kullanarak sunucusuz veritabanı hesaplama](serverless-computing-database.md)
