@@ -36,20 +36,22 @@
     - name: 10 - VM’leri düzenleme
       href: tutorial-govern-resources.md
     - name: 11 - VM’leri izleme ve güncelleştirme
-      href: tutorial-monitoring.md
-    - name: 12 - VM güvenliğini yönetme
+      href: tutorial-config-management.md
+    - name: 12 - VM’leri izleme
+      href: tutorial-monitor.md
+    - name: 13 - VM güvenliğini yönetme
       href: tutorial-azure-security.md
-    - name: 13 - Jenkins dağıtma
+    - name: 14 - Jenkins dağıtma
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 14 - Azure Pipelines ile CI/CD
+    - name: 15 - Azure Pipelines ile CI/CD
       href: tutorial-build-deploy-jenkins.md
-    - name: 15a - LAMP yığını oluşturma
+    - name: 16a - LAMP yığını oluşturma
       href: tutorial-lamp-stack.md
-    - name: 15b - LEMP yığını oluşturma
+    - name: 16b - LEMP yığını oluşturma
       href: tutorial-lemp-stack.md
-    - name: 15c - MEAN yığını oluşturma
+    - name: 16c - MEAN yığını oluşturma
       href: tutorial-mean-stack.md
-    - name: 16 - SSL ile web sunucusunun güvenliğini sağlama
+    - name: 17 - SSL ile web sunucusunun güvenliğini sağlama
       href: tutorial-secure-web-server.md
 - name: Örnekler
   items:

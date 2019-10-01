@@ -219,84 +219,6 @@
                   href: scenario-mobile-call-api.md
                 - name: Üretime taşıma
                   href: scenario-mobile-production.md
-        - name: Microsoft Authentication Library (MSAL)
-          items:
-            - name: Genel Bakış
-              href: msal-overview.md
-            - name: ADAL’dan geçiş
-              items:
-                - name: MSAL.NET'e geçirme
-                  href: msal-net-migration.md
-                - name: MSAL.js'ye geçirme
-                  href: msal-compare-msal-js-and-adal-js.md
-                - name: iOS ve macOS için MSAL’a geçirme
-                  href: migrate-objc-adal-msal.md
-                - name: ADAL.NET ve MSAL.NET’ten aracıları kullanarak Xamarin uygulamalarını geçirme
-                  href: msal-net-migration-ios-broker.md
-            - name: Desteklenen kimlik doğrulama akışları
-              href: msal-authentication-flows.md
-            - name: Belirteçleri alma ve önbelleğe alma
-              items:
-                - name: Belirteçleri alma ve önbelleğe alma
-                  href: msal-acquire-cache-tokens.md
-                - name: v1.0 uygulamaları için kapsamlar
-                  href: msal-v1-app-scopes.md
-            - name: İstemci uygulamaları
-              items:
-                - name: İstemci uygulamaları
-                  href: msal-client-applications.md
-                - name: Uygulama yapılandırması
-                  href: msal-client-application-configuration.md
-                - name: Uygulamaları başlatma (.NET)
-                  href: msal-net-initializing-client-applications.md
-                - name: İstemci onaylamaları (.NET)
-                  href: msal-net-client-assertions.md
-                - name: Uygulamaları başlatma (JS)
-                  href: msal-js-initializing-client-applications.md
-            - name: Hataları ve özel durumları işleme
-              href: msal-handling-exceptions.md
-            - name: Günlüğe kaydetme
-              href: msal-logging.md
-            - name: Çoklu oturum açma
-              items:
-                - name: MSAL.js ile çoklu oturum açma
-                  href: msal-js-sso.md
-                - name: iOS ve macOS için MSAL.js ile çoklu oturum açma
-                  items:
-                    - name: MSAL uygulamaları arasında SSO
-                      href: single-sign-on-macos-ios.md
-                    - name: ADAL ve MSAL uygulamaları arasında SSO
-                      href: sso-between-adal-msal-apps-macos-ios.md
-            - name: ADFS ile tümleştirme
-              items:
-                - name: MSAL.NET’te ADFS desteği
-                  href: msal-net-adfs-support.md
-            - name: Azure AD B2C ile tümleştirme
-              items:
-                - name: JavaScript
-                  href: msal-b2c-overview.md
-                - name: .NET
-                  href: msal-net-aad-b2c-considerations.md
-                - name: iOS ve macOS
-                  href: 'config-authority.md#b2c'
-            - name: Dikkat edilmesi gerekenler ve bilinen sorunlar
-              items:
-                - name: MSAL.NET
-                  items:
-                    - name: Web tarayıcıları
-                      href: msal-net-web-browsers.md
-                - name: MSAL.js
-                  items:
-                    - name: IE kullanmaya ilişkin dikkat edilmesi gerekenler
-                      href: msal-js-use-ie-browser.md
-                    - name: Bilinen sorunlar - IE ve Microsoft Edge
-                      href: msal-js-known-issues-ie-edge-browsers.md
-                    - name: Bilinen sorunlar - Safari
-                      href: msal-js-known-issues-safari-browser.md
-                - name: iOS ve macOS için MSAL
-                  items:
-                    - name: SSL sorunları
-                      href: ssl-issues.md
         - name: Kimlik doğrulama protokolü
           items:
             - name: Uygulama türleri ve OAuth2.0
@@ -440,6 +362,98 @@
               href: vs-active-directory-webapi-what-happened.md
             - name: Kimlik doğrulama algılama sırasında bir hata oluştu
               href: vs-active-directory-error.md
+    - name: Microsoft Authentication Library (MSAL)
+      items:
+        - name: Genel Bakış
+          href: msal-overview.md
+        - name: Hesaplar ve kiracı profilleri (Android)
+          href: accounts-overview.md
+        - name: Yetkilendirme aracıları (Android)
+          href: authorization-agents.md
+        - name: Aracıyla kimlik doğrulama (Android)
+          items:
+            - name: Aracıyla kimlik doğrulama (Android)
+              href: brokered-auth.md
+        - name: Geçiş
+          items:
+            - name: MSAL.NET'e geçirme
+              href: msal-net-migration.md
+            - name: MSAL.js'ye geçirme
+              href: msal-compare-msal-js-and-adal-js.md
+            - name: MSAL.Android’e geçiş
+              href: migrate-android-adal-msal.md
+            - name: MSAL.iOS ve MacOS’a geçiş
+              href: migrate-objc-adal-msal.md
+            - name: ADAL.NET ve MSAL.NET’ten aracıları kullanarak Xamarin uygulamalarını geçirme
+              href: msal-net-migration-ios-broker.md
+        - name: Desteklenen kimlik doğrulama akışları
+          href: msal-authentication-flows.md
+        - name: Tek ve çok hesaplı genel istemci uygulamaları (Android)
+          href: single-multi-account.md
+        - name: Belirteçleri alma ve önbelleğe alma
+          items:
+            - name: Belirteçleri alma ve önbelleğe alma
+              href: msal-acquire-cache-tokens.md
+            - name: v1.0 uygulamaları için kapsamlar
+              href: msal-v1-app-scopes.md
+        - name: İstemci uygulamaları
+          items:
+            - name: İstemci uygulamaları
+              href: msal-client-applications.md
+            - name: Uygulama yapılandırması (.NET)
+              href: msal-client-application-configuration.md
+            - name: Uygulamaları başlatma (.NET)
+              href: msal-net-initializing-client-applications.md
+            - name: İstemci onaylamaları (.NET)
+              href: msal-net-client-assertions.md
+            - name: Uygulamaları başlatma (JS)
+              href: msal-js-initializing-client-applications.md
+        - name: Hataları ve özel durumları işleme
+          href: msal-handling-exceptions.md
+        - name: Günlüğe kaydetme
+          href: msal-logging.md
+        - name: Çoklu oturum açma
+          items:
+            - name: MSAL.js ile çoklu oturum açma
+              href: msal-js-sso.md
+            - name: iOS ve macOS için MSAL.js ile çoklu oturum açma
+              items:
+                - name: MSAL uygulamaları arasında SSO
+                  href: single-sign-on-macos-ios.md
+                - name: ADAL ve MSAL uygulamaları arasında SSO
+                  href: sso-between-adal-msal-apps-macos-ios.md
+        - name: ADFS ile tümleştirme
+          items:
+            - name: MSAL.NET’te ADFS desteği
+              href: msal-net-adfs-support.md
+        - name: Azure AD B2C ile tümleştirme
+          items:
+            - name: Android
+              href: msal-android-b2c.md
+            - name: JavaScript
+              href: msal-b2c-overview.md
+            - name: .NET
+              href: msal-net-aad-b2c-considerations.md
+            - name: iOS ve macOS
+              href: 'config-authority.md#b2c'
+        - name: Dikkat edilmesi gerekenler ve bilinen sorunlar
+          items:
+            - name: MSAL.NET
+              items:
+                - name: Web tarayıcıları
+                  href: msal-net-web-browsers.md
+            - name: MSAL.js
+              items:
+                - name: IE kullanmaya ilişkin dikkat edilmesi gerekenler
+                  href: msal-js-use-ie-browser.md
+                - name: Bilinen sorunlar - IE ve Microsoft Edge
+                  href: msal-js-known-issues-ie-edge-browsers.md
+                - name: Bilinen sorunlar - Safari
+                  href: msal-js-known-issues-safari-browser.md
+            - name: iOS ve macOS için MSAL
+              items:
+                - name: SSL sorunları
+                  href: ssl-issues.md
     - name: Başvurular
       items:
         - name: Kimlik doğrulama kitaplıkları
@@ -449,6 +463,8 @@
           href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta'
         - name: Uygulama bildirimi
           href: reference-app-manifest.md
+        - name: Android MSAL yapılandırma dosyası
+          href: msal-configuration.md
         - name: Kimlik doğrulaması ve yetkilendirme hata kodları
           href: reference-aadsts-error-codes.md
         - name: Yeni değişiklikler

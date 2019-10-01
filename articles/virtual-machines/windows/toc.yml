@@ -37,12 +37,14 @@
       href: tutorial-govern-resources.md
       displayName: scope policy RBAC lock tag
     - name: 11 - VM’leri izleme ve güncelleştirme
-      href: tutorial-monitoring.md
-    - name: 12 - VM güvenliğini yönetme
+      href: tutorial-config-management.md
+    - name: 12 - VM’leri izleme
+      href: tutorial-monitor.md
+    - name: 13 - VM güvenliğini yönetme
       href: tutorial-azure-security.md
-    - name: 13 - SQL\IIS\.NET yığını kurma
+    - name: 14 - SQL\IIS\.NET yığını kurma
       href: tutorial-iis-sql.md
-    - name: 14 - SSL ile web sunucusunun güvenliğini sağlama
+    - name: 15 - SSL ile web sunucusunun güvenliğini sağlama
       href: tutorial-secure-web-server.md
 - name: Örnekler
   items:

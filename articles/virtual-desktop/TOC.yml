@@ -38,6 +38,8 @@
       href: create-host-pools-arm-template.md
     - name: PowerShell ile ana bilgisayar havuzu oluşturma
       href: create-host-pools-powershell.md
+    - name: Windows Sanal Masaüstü’nde Windows 7 sanal makinesi dağıtma
+      href: deploy-windows-7-virtual-machine.md
     - name: Windows Sanal Masaüstü oturum sahiplerine Windows lisansı uygulama
       href: apply-windows-license.md
     - name: Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
@@ -86,6 +88,8 @@
       href: troubleshoot-set-up-issues.md
     - name: Oturum ana bilgisayarı sanal makine yapılandırması
       href: troubleshoot-vm-configuration.md
+    - name: Windows Sanal Masaüstü’nde Windows 7 sanal makinesiyle ilgili sorunları giderme
+      href: troubleshoot-windows-7-vm.md
     - name: Uzak Masaüstü istemcisi bağlantıları
       href: troubleshoot-client-connection.md
     - name: Windows Sanal Masaüstü PowerShell
