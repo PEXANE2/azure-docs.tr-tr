@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: HDInsight kümelerini yönetme - PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: ETL işlem hattı oluşturma
+          href: ./hdinsight-sales-insights-etl.md
     - name: Örnekler
       items:
         - name: Azure CLI örnekleri

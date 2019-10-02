@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: d24b22ad7f306e6334369ec859f5f01b2d32184e
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
-ms.translationtype: HT
+ms.openlocfilehash: c6a424ed6036016839f03f50f90ad5d911b05fad
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695837"
+ms.locfileid: "71709995"
 ---
-# <a name="example-class-types-on-azure-lab-services"></a>Azure Lab Services üzerinde örnek sınıf türleri
-Bu makale, Azure Lab Services ayarlayabileceğiniz örnek sınıfların bir listesini sağlar.
+# <a name="class-types-overview---azure-lab-services"></a>Sınıf türlerine genel bakış-Azure Lab Services
+Azure Lab Services, bulutta ders Laboratuvarı ortamlarını hızlıca ayarlamanıza olanak sağlar. Bu bölümdeki makaleler Azure Lab Services kullanarak çeşitli sınıf laboratuvarlarının nasıl ayarlanacağı hakkında rehberlik sağlar.
 
 ## <a name="deep-learning-in-natural-language-processing"></a>Doğal dil işlemede derin öğrenme
 Azure Lab Services kullanarak doğal dil işleme (NLP) için derin öğrenmeye odaklanan bir laboratuvar ayarlayabilirsiniz. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarları sağlayan yapay zeka (AI) biçimidir. Bir NLP sınıfı alan öğrenciler bir Linux sanal makinesi (VM) alır ve yazılı insan dilini çözümlemek için kullanılan derin öğrenme modelleri geliştirmek üzere sinir ağ algoritmalarının nasıl uygulanacağını öğrenin. 

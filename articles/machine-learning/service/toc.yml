@@ -32,10 +32,7 @@
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
         - name: Makine Öğrenmesi işlem hatları (gelişmiş)
-          items:
-            - name: Sınıflandırma modelini toplu puanlama
-              displayName: pipelines
-              href: tutorial-pipeline-batch-scoring-classification.md
+          href: tutorial-pipeline-batch-scoring-classification.md
     - name: Görsel arabirim
       items:
         - name: 1. Regresyon modelini eğitme
@@ -45,14 +42,10 @@
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Otomatikleştirilmiş ML (arabirim)
-      items:
-        - name: Sınıflandırma (Banka verileri)
-          displayName: 'automl, automated, auto ml, portal, ui'
-          href: tutorial-first-experiment-automated-ml.md
+      displayName: 'automl, automated, auto ml, portal, ui'
+      href: tutorial-first-experiment-automated-ml.md
     - name: Machine Learning CLI
-      items:
-        - name: Modeli eğitme ve dağıtma
-          href: tutorial-train-deploy-model-cli.md
+      href: tutorial-train-deploy-model-cli.md
 - name: Örnekler
   items:
     - name: Notebooks
@@ -222,29 +215,29 @@
         - name: Dağıtım nereye ve nasıl yapılır?
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Azure Kubernetes Service’e dağıtma
+        - name: Azure Kubernetes Service
           displayName: 'aks, aad, authentication, azure active directory'
           href: how-to-deploy-azure-kubernetes-service.md
-        - name: GPU çıkarımı için dağıtma
-          href: how-to-deploy-inferencing-gpus.md
-        - name: Azure App Service’e dağıtma
-          displayName: web app
-          href: how-to-deploy-app-service.md
-        - name: Azure Container Instances’a dağıtma
+        - name: Azure Container Instances
           displayName: aci
           href: how-to-deploy-azure-container-instance.md
-        - name: Not Defteri Sanal Makinelerine dağıtma
+        - name: IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: FPGA çıkarımı
+          href: how-to-deploy-fpga-web-service.md
+        - name: GPU çıkarımı
+          href: how-to-deploy-inferencing-gpus.md
+        - name: Azure App Service
+          displayName: web app
+          href: how-to-deploy-app-service.md
+        - name: Not Defteri Sanal Makineleri
           href: how-to-deploy-local-container-notebook-vm.md
         - name: Özel Docker görüntüsü kullanma
           href: how-to-deploy-custom-docker-image.md
-        - name: Mevcut modelleri dağıtma
+        - name: Mevcut modelleri kullanma
           displayName: publish existing model
           href: how-to-deploy-existing-model.md
-        - name: IoT Edge'e dağıtma
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: FPGA çıkarımı için dağıtma
-          href: how-to-deploy-fpga-web-service.md
-        - name: Dağıtımlarla ilgili sorunları giderme ve hataları ayıklama
+        - name: Sorun giderme ve hata ayıklama
           href: how-to-troubleshoot-deployment.md
     - name: Web hizmetlerini kullanma
       items:

@@ -70,6 +70,14 @@
               href: devtest-lab-use-claim-capabilities.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Sınıf laboratuvarları - sınıf türleri
+      items:
+        - name: Sınıf türleri
+          href: classroom-labs/class-types.md
+        - name: Doğal işleme içinde derin öğrenme
+          href: classroom-labs/class-type-deep-learning-natural-processing.md
+        - name: Linux üzerinde kabuk betiği oluşturma
+          href: classroom-labs/class-type-shell-scripting-linux.md
     - name: Sınıf laboratuvarları
       items:
         - name: Laboratuvar hesabı oluşturma ve yapılandırma (laboratuvar hesabı sahibi)

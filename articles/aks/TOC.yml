@@ -21,17 +21,17 @@
       items:
         - name: Draft kullanma
           href: kubernetes-draft.md
-        - name: Java kullanma (VS Code ve CLI)
-          href: ../dev-spaces/quickstart-java.md
-          maintainContext: true
-        - name: .NET Core kullanma (VS Code ve CLI)
+        - name: Visual Studio Code'u ve Azure Dev Spaces'i kullanma
           href: ../dev-spaces/quickstart-netcore.md
           maintainContext: true
-        - name: .NET Core kullanma (Visual Studio 2017)
+        - name: Visual Studio'yu ve Azure Dev Spaces'i kullanma
           href: ../dev-spaces/quickstart-netcore-visualstudio.md
           maintainContext: true
-        - name: Node.js kullanma (VS Code ve CLI)
-          href: ../dev-spaces/quickstart-nodejs.md
+        - name: CLI'yı ve Azure Dev Spaces'i kullanma
+          href: ../dev-spaces/quickstart-cli.md
+          maintainContext: true
+        - name: Azure Dev Spaces'i takım geliştirmesi için kullanma
+          href: ../dev-spaces/quickstart-team-development.md
           maintainContext: true
 - name: Öğreticiler
   items:
