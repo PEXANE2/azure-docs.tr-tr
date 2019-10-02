@@ -10,16 +10,16 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 09/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875370"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802299"
 ---
-# <a name="application-insights-frequently-asked-questions"></a>Application Insights: Sıkça Sorulan Sorular
+# <a name="application-insights-frequently-asked-questions"></a>Application Insights: sık sorulan sorular
 
 ## <a name="configuration-problems"></a>Yapılandırma sorunları
 *Şunları ayarlarken sorun yaşıyorum:*
@@ -59,7 +59,7 @@ Kurumsal plan her bir gün için her bir Web sunucusu düğümünün telemetri g
 
 [Fiyatlandırma planını okuyun](https://azure.microsoft.com/pricing/details/application-insights/).
 
-## <a name="how-much-is-it-costing"></a>Maliyeti ne kadar maliyetlendirsin?
+## <a name="how-much-does-it-cost"></a>Ücreti ne kadardır?
 
 * Bir Application Insights kaynağındaki **kullanım ve tahmini maliyetler sayfasını** açın. Son kullanılan kullanım grafiği. İsterseniz bir veri hacmi üst sınırı belirleyebilirsiniz.
 * Tüm kaynaklarda [faturanızı görmek Için Azure faturalama dikey penceresini](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) açın.
@@ -78,8 +78,8 @@ Ayrıntılar proje türüne bağlıdır. Bir Web uygulaması için:
   * *JavaScript uygulamaları için APPLICATION INSIGHTS API* -istemciden telemetri göndermek için kullanılır
 
     Paketler şu derlemeleri içerir:
-  * Microsoft.ApplicationInsights
-  * Microsoft.ApplicationInsights.Platform
+  * Microsoft. ApplicationInsights
+  * Microsoft. ApplicationInsights. Platform
 * İçine öğe ekler:
 
   * Web.config
@@ -90,7 +90,7 @@ Ayrıntılar proje türüne bağlıdır. Bir Web uygulaması için:
 Uygulama türüne uygun SDK için [sürüm notlarına](release-notes.md) bakın.
 
 ## <a name="update"></a>Projem hangi Azure kaynağını veri gönderdiğini nasıl değiştirebilirim?
-Çözüm Gezgini ' de sağ tıklayın ve `ApplicationInsights.config` **Application Insights Güncelleştir**' i seçin. Verileri Azure 'da var olan veya yeni bir kaynağa gönderebilirsiniz. Güncelleştirme Sihirbazı, ApplicationInsights. config dosyasında, sunucu SDK 'sının verilerinizi nereye göndereceğini belirleyen izleme anahtarını değiştirir. "Tümünü Güncelleştir" seçeneğinin işaretini kaldırmadığınız takdirde, Web sayfalarınızda göründüğü anahtarı da değiştirecek.
+Çözüm Gezgini ' de, `ApplicationInsights.config` ' a sağ tıklayın ve **güncelleştirme Application Insights**' yı seçin. Verileri Azure 'da var olan veya yeni bir kaynağa gönderebilirsiniz. Güncelleştirme Sihirbazı, ApplicationInsights. config dosyasında, sunucu SDK 'sının verilerinizi nereye göndereceğini belirleyen izleme anahtarını değiştirir. "Tümünü Güncelleştir" seçeneğinin işaretini kaldırmadığınız takdirde, Web sayfalarınızda göründüğü anahtarı da değiştirecek.
 
 ## <a name="what-is-status-monitor"></a>Durum İzleyicisi nedir?
 
@@ -103,7 +103,7 @@ Web Apps 'te Application Insights yapılandırmaya yardımcı olması için IIS 
 Sunucu Web Apps 'ten:
 
 * HTTP istekleri
-* [Bağımlılıklar](asp-net-dependencies.md). Şunu çağırır: SQL veritabanları; Dış hizmetlere HTTP çağrıları; Azure Cosmos DB, tablo, BLOB depolama ve kuyruk. 
+* [Bağımlılıklar](asp-net-dependencies.md). Çağrıları: SQL veritabanları; Dış hizmetlere HTTP çağrıları; Azure Cosmos DB, tablo, BLOB depolama ve kuyruk. 
 * [Özel durumlar](asp-net-exceptions.md) ve yığın izlemeleri.
 * [Performans sayaçları](performance-counters.md) - [durum İzleyicisi](monitor-performance-live-website-now.md)kullanıyorsanız, [uygulama hizmetleri için Azure izleme](azure-web-apps.md), [VM veya sanal makine ölçek kümesi için Azure izleme](azure-vm-vmss-apps.md)veya [toplanan yazıcı Application Insights](java-collectd.md).
 * Kodlarınızın [özel olayları ve ölçümleri](api-custom-events-metrics.md) .
@@ -137,10 +137,12 @@ Evet, şu sunucuda yazabilirsiniz:
 
 [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)kullanarak web istemcisinin IP adresini (IPv4 veya IPv6) arar.
 
-* Tarayıcı telemetrisi: Gönderenin IP adresini topladık.
-* Sunucu telemetrisi: Application Insights modülü istemci IP adresini toplar. Ayarlanırsa, toplanmaz `X-Forwarded-For` .
+* Tarayıcı telemetrisi: gönderenin IP adresini topladık.
+* Sunucu telemetrisi: Application Insights modülü istemci IP adresini toplar. @No__t-0 ayarlanmışsa bu toplanmaz.
+* IP adresi ve coğrafi konum verilerinin nasıl toplandığı hakkında daha fazla bilgi edinmek için Application Insights bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)bakın.
 
-Öğesini, `ClientIpHeaderTelemetryInitializer` IP adresini farklı bir üst bilgiden alacak şekilde yapılandırabilirsiniz. Bazı sistemlerde, örneğin, bir proxy, yük dengeleyici veya CDN `X-Originating-IP`ile taşınır. [Daha fazla bilgi edinin](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+
+IP adresini farklı bir üst bilgiden almak için `ClientIpHeaderTelemetryInitializer` yapılandırabilirsiniz. Bazı sistemlerde, örneğin, bir proxy, yük dengeleyici veya CDN tarafından `X-Originating-IP` ' a taşınır. [Daha fazla bilgi edinin](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 İstek telemetrinizi bir haritada göstermek için [Power BI kullanabilirsiniz](export-power-bi.md ) .
 
@@ -163,7 +165,7 @@ Coğrafi konum öznitelikleri arandığında, istemci Web adresinin **Tüm** sek
 
 Şunları yapabilirsiniz:
 
-* İstemci ve sunucu verileri için iki ayrı Izleme anahtarı (ayrı Application Insights kaynakları) kullanın. Or
+* İstemci ve sunucu verileri için iki ayrı Izleme anahtarı (ayrı Application Insights kaynakları) kullanın. Veya
 * Sunucunuzda çalışan bir ara sunucu yazın ve web istemcisinin bu proxy üzerinden veri göndermesini sağlayabilirsiniz.
 
 ## <a name="post"></a>Nasıl yaparım? bkz. tanılama aramasında veri gönderme?
@@ -189,7 +191,7 @@ Tek bir iş sistemindeki tüm bileşenler veya roller için tek bir kaynak kulla
 * Makineler ve tarayıcılar arasında oturum açmış bir kullanıcıyı tanımlamak için, [Setadoğrulayıcısının Catedusercontext ()](api-custom-events-metrics.md#authenticated-users)çağrısı ekleyin.
 
 ## <a name="q17"></a>Application Insights her şeyi etkinleştirmem gerekir mi?
-| Görmeniz gereken | Nasıl alınır? | Neden istediğiniz |
+| Neleri görmeniz gerekir | Nasıl alınır? | Neden istediğiniz |
 | --- | --- | --- |
 | Kullanılabilirlik grafikleri |[Web testleri](monitor-web-app-availability.md) |Web uygulamanızın çalışıyor olduğunu öğrenin |
 | Sunucu uygulaması performans: yanıt süreleri,... |[Projenize Application Insights ekleyin](asp-net.md) veya [AI durum İzleyicisi sunucuya](monitor-performance-live-website-now.md) (veya [bağımlılıklarını izlemek](api-custom-events-metrics.md#trackdependency)için kendi kodunuzu yazın) |Performans sorunlarını Algıla |
@@ -197,14 +199,14 @@ Tek bir iş sistemindeki tüm bileşenler veya roller için tek bir kaynak kulla
 | Özel durumların yığın izlemelerini al |[Kodunuzda TrackException çağrıları ekleyin](asp-net-exceptions.md) (ancak bazıları otomatik olarak bildirilir) |Özel durumları Algıla ve Tanıla |
 | Arama günlüğü izlemeleri |[Günlüğe kaydetme bağdaştırıcısı ekleme](asp-net-trace-logs.md) |Özel durumları ve performans sorunlarını tanılayın |
 | İstemci kullanımı temelleri: sayfa görünümleri, oturumlar,... |[Web sayfalarındaki JavaScript başlatıcısı](javascript.md) |Kullanım analizi |
-| İstemci özel ölçümleri |[Web sayfalarındaki çağrıları izleme](api-custom-events-metrics.md) |Kullanıcı deneyimini geliştirin |
+| İstemci özel ölçümleri |[Web sayfalarındaki çağrıları izleme](api-custom-events-metrics.md) |Kullanıcı deneyimini geliştirme |
 | Sunucu özel ölçümleri |[Sunucudaki aramalar izleniyor](api-custom-events-metrics.md) |İş zekası |
 
 ## <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Arama ve ölçüm grafiklerindeki sayımlar neden eşit değildir?
 
 [Örnekleme](sampling.md) , gerçekten uygulamanızdan portala gönderilen telemetri öğelerinin (istek, özel olay vb.) sayısını azaltır. Arama bölümünde, gerçekten alınan öğe sayısını görürsünüz. Olayların sayısını görüntüleyen ölçüm grafiklerinde, gerçekleşen özgün olay sayısını görürsünüz. 
 
-Aktarılan her öğe, öğenin kaç tane `itemCount` özgün olay temsil ettiğini gösteren bir özellik taşır. Örneklemede örnekleme gözlemlemek için bu sorguyu Analytics 'te çalıştırabilirsiniz:
+Aktarılan her öğe, öğenin kaç tane özgün olay temsil ettiğini gösteren bir `itemCount` özelliği taşır. Örneklemede örnekleme gözlemlemek için bu sorguyu Analytics 'te çalıştırabilirsiniz:
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()
@@ -247,9 +249,9 @@ SDK 'larımızı kullanmanızı ve [SDK API](api-custom-events-metrics.md)'sini 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Bir intranet Web sunucusunu izleyebilir miyim?
 
 Evet, ancak güvenlik duvarı özel durumları ya da ara sunucu yeniden yönlendirmeleri ile hizmetlerimize giden trafiğe izin vermeniz gerekir.
-- QuickPulse`https://rt.services.visualstudio.com:443` 
-- Applicationıdprovider`https://dc.services.visualstudio.com:443` 
-- TelemetryChannel`https://dc.services.visualstudio.com:443` 
+- QuickPulse `https://rt.services.visualstudio.com:443` 
+- Applicationıdprovider `https://dc.services.visualstudio.com:443` 
+- TelemetryChannel `https://dc.services.visualstudio.com:443` 
 
 
 Hizmetlerin ve IP adreslerinin tam listesini [burada](../../azure-monitor/app/ip-addresses.md)gözden geçirin.
@@ -263,7 +265,7 @@ Web sunucunuzun, uç noktalarımıza telemetri göndermesini sağlar.
 Yapılandırmanızda bulunan uç noktaların üzerine yazarak intranetteki trafiği intranetinizdeki bir ağ geçidine yönlendirin.
 Bu "uç nokta" özellikleri, config uygulamanızda yoksa, bu sınıflar örnek ApplicationInsights. config örneğinde aşağıda gösterilen varsayılan değerleri kullanır. 
 
-Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. Yapılandırmanızda varsayılan değerleri ile `http://<your.gateway.address>/<relative path>`değiştirin.
+Ağ geçidinizin trafiği bitiş noktasının temel adresine yönlendirmelidir. Yapılandırmanızda, varsayılan değerleri `http://<your.gateway.address>/<relative path>` ile değiştirin.
 
 
 #### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Varsayılan bitiş noktaları ile örnek ApplicationInsights. config:

@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967055"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719552"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
-Azure 'un Görüntü İşleme Hizmeti, geliştiricilere resimleri işleyen ve bilgileri döndüren gelişmiş algoritmalara erişim sağlar. Bir görüntüyü analiz etmek için görüntü yükleyebilir veya görüntü URL'si belirtebilirsiniz. Görüntü işleme algoritmaları, ilgilendiğiniz görsel özelliklere bağlı olarak içeriği birkaç farklı şekilde çözümleyebilir. Örneğin, Görüntü İşleme bir görüntünün yetişkinlere yönelik veya yoğun içerik içerip içermediğini belirleyebilir ya da bir görüntüdeki tüm insan yüzlerini bulabilir.
+Azure 'un Görüntü İşleme Hizmeti, geliştiricilere resimleri işleyen ve bilgileri döndüren gelişmiş algoritmalara erişim sağlar. Bir görüntüyü analiz etmek için görüntü yükleyebilir veya görüntü URL'si belirtebilirsiniz. Görüntü işleme algoritmaları, ilgilendiğiniz görsel özelliklere bağlı olarak içeriği birkaç farklı şekilde çözümleyebilir. Örneğin, Görüntü İşleme bir görüntünün yetişkinlere yönelik içerik içerip içermediğini belirtebilir veya bir görüntüdeki tüm insan yüzlerini bulabilir.
 
 Uygulamanızdaki Görüntü İşleme yerel bir SDK kullanarak veya doğrudan REST API çağırarak kullanabilirsiniz. Bu sayfa, Görüntü İşleme ile yapabileceklerinizi büyük ölçüde ele alır.
 
@@ -28,7 +28,7 @@ Uygulamanızdaki Görüntü İşleme yerel bir SDK kullanarak veya doğrudan RES
 
 Görsel özellikleri ve özellikleri hakkında öngörüleri tespit etmek ve sağlamak için görüntüleri analiz edebilirsiniz. Aşağıdaki tabloda bulunan tüm özellikler, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'si tarafından sağlanır.
 
-| Action | Açıklama |
+| Eylem | Açıklama |
 | ------ | ----------- |
 |**[Görsel özellikleri etiketleme](concept-tagging-images.md)**|Görüntüde görsel özellikleri, binlerce tanınabilir nesne, çok sayıda, manzara ve eylem kümesinden belirleyin ve etiketleyin. Etiketler belirsiz veya ortak olmayan bir bilgi olmadığında, API yanıtı etiketin bağlamını açıklığa kavuşturmak için ipuçları sağlar. Etiketleme yalnızca temel konu ile sınırlı kalmayıp ortam (iç mekân veya dış mekân), mobilyalar, aletler, bitkiler, hayvanlar, aksesuarlar, araçlar ve benzer öğeleri de kapsar.|
 |**[Nesneleri Algıla](concept-object-detection.md)**| Nesne algılama, etiketlemeyle benzerdir ancak API, uygulanan her bir etiket için sınırlayıcı kutu koordinatlarını döndürür. Örneğin, bir görüntü köpek, kedi ve kişi içeriyorsa, Algıla işlemi bu nesneleri görüntüdeki koordinatlarıyla birlikte listeler. Görüntüdeki nesneler arasında daha fazla ilişki işlemek için bu işlevi kullanabilirsiniz. Ayrıca, görüntüde aynı etiketin birden çok örneği olduğunu da bilmenizi sağlar.|
@@ -52,7 +52,7 @@ Aynı zamanda, yazdırılan metni birkaç dilde ayıklamak için [optik karakter
 
 ## <a name="moderate-content-in-images"></a>Görüntülerde orta içerik
 
-Bir görüntüdeki [yetişkinlere yönelik içeriği algılayıp](concept-detecting-adult-content.md) her ikisi için de Güvenirlik puanı döndürebilmeniz için görüntü işleme kullanabilirsiniz. Tercihlerinizi karşılayacak şekilde, bir kayan ölçekte yetişkinlere yönelik ve yoğun içerik algılaması için filtre ayarlayabilirsiniz.
+Görüntü İşleme kullanarak bir görüntüdeki [yetişkinlere yönelik içeriği algılayabilir](concept-detecting-adult-content.md) ve farklı sınıflandırmaların güvenilirlik puanlarını getirebilirsiniz. İçerik bayrak belirleme eşiği, tercihlerinize uyum sağlamak için bir kayan ölçekte ayarlanabilir.
 
 ## <a name="use-containers"></a>Kapsayıcıları kullanma
 
@@ -75,6 +75,6 @@ Tüm bilişsel hizmetlerde olduğu gibi, Görüntü İşleme hizmetini kullanan 
 
 Hızlı Başlangıç kılavuzunu izleyerek Görüntü İşleme kullanmaya başlayın:
 
-- [Hızlı Başlangıç: Görüntü İşleme .NET SDK](quickstarts-sdk/csharp-sdk.md)
-- [Hızlı Başlangıç: Python SDK Görüntü İşleme](quickstarts-sdk/python-sdk.md)
-- [Hızlı Başlangıç: Görüntü İşleme Java SDK 'Sı](quickstarts-sdk/java-sdk.md)
+- [Hızlı başlangıç: Görüntü İşleme .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [Hızlı başlangıç: Python SDK Görüntü İşleme](quickstarts-sdk/python-sdk.md)
+- [Hızlı başlangıç: Görüntü İşleme Java SDK 'Sı](quickstarts-sdk/java-sdk.md)

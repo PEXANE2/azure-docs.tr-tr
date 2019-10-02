@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Konuşmayı tanıma, Java (Windows, Linux)-konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı tanıma, Java (Windows, Linux, macOS)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, bilgisayarınızın mikrofonunuzdan Kullanıcı konuşmayı yakalayan ve kaydeden basit bir Java uygulaması oluşturmayı öğreneceksiniz.
 services: cognitive-services
@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9438cd1345d324b068db8837216afb39241cb2a2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554114"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802484"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Hızlı Başlangıç: Java için konuşma SDK 'Sı ile konuşmayı tanıma
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Hızlı başlangıç: Java için konuşma SDK 'Sı ile konuşmayı tanıma
 
-Hızlı başlangıç, [konuşma çevirisi](quickstart-translate-speech-java-jre.md) ve [ses ilk Sanal Yardımcısı](quickstart-virtual-assistant-java-jre.md)için de kullanılabilir.
+Hızlı başlangıç, [konuşma çevirisi](quickstart-translate-speech-java-jre.md), [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-java-jre.md)ve [konuşma sensimi](quickstart-text-to-speech-java-jre.md)için de kullanılabilir.
 
 İsterseniz, farklı bir programlama dili ve/veya ortamı seçin:<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Bu makalede, [Konuşma SDK'sı](speech-sdk.md) kullanarak bir Java konsol uygulaması oluşturacaksınız. Bilgisayarınızın mikrofonundan gerçek zamanda konuşmayı metne dönüştüreceksiniz. Uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve 64-bit Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9) veya macOS 10,13 veya sonraki sürümlerde tutulma Java IDE (v 4.8) ile oluşturulmuştur. 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
+Bu makalede, [Konuşma SDK'sı](speech-sdk.md) kullanarak bir Java konsol uygulaması oluşturacaksınız. Bilgisayarınızın mikrofonundan gerçek zamanlı olarak konuşmayı metne dönüştüreceksiniz. Uygulama, konuşma SDK Maven paketiyle oluşturulmuştur ve 64-bit Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9) veya macOS 10,13 veya sonraki sürümlerde tutulma Java IDE (v 4.8) ile oluşturulmuştur. 64 bit Java 8 çalışma zamanı ortamında (JRE) çalışır.
 
 > [!NOTE]
 > Konuşma Cihazları SDK’sı ve Roobo cihazı için bkz. [Konuşma Cihazları SDK’sı](speech-devices-sdk.md).
@@ -33,7 +33,7 @@ Bu makalede, [Konuşma SDK'sı](speech-sdk.md) kullanarak bir Java konsol uygula
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* İşletim Sistemi: 64-bit Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, detem 9) veya macOS 10,13 veya üzeri
+* İşletim sistemi: 64-bit Windows, 64-bit Linux (Ubuntu 16,04, Ubuntu 18,04, detem 9) veya macOS 10,13 veya üzeri
 * [Tutulma Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) veya [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Konuşma hizmeti için bir Azure abonelik anahtarı. [Ücretsiz bir tane alın](get-started.md).
@@ -61,7 +61,7 @@ Windows (64-bit) çalıştırıyorsanız, platformunuz için Microsoft Visual C+
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="add-sample-code"></a>Örnek kodu ekleme
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. Java projenize yeni bir boş sınıf eklemek için **Dosya** > **Yeni** > **Sınıf** seçeneklerini belirleyin.
 
@@ -77,7 +77,7 @@ Windows (64-bit) çalıştırıyorsanız, platformunuz için Microsoft Visual C+
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
-1. Proje üzerindeki değişiklikleri kaydedin.
+1. Değişiklikleri projeye kaydedin.
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
@@ -95,6 +95,7 @@ Ses dosyasından konuşmayı okuma gibi ek örnekler GitHub ' da bulunabilir.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Hızlı Başlangıç: Konuşmayı çevirme, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
+- [Hızlı başlangıç: konuşmayı çevirme, Java (Windows, Linux, macOS)](quickstart-translate-speech-java-jre.md)
+- [Hızlı başlangıç: Sentezleştirme konuşma, Java (Windows, Linux, macOS)](quickstart-text-to-speech-java-jre.md)
 - [Akustik modelleri özelleştirme](how-to-customize-acoustic-models.md)
 - [Dil modellerini özelleştirme](how-to-customize-language-model.md)

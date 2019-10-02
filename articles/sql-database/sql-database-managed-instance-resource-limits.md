@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 09/16/2019
-ms.openlocfilehash: 85ab8a61e0aebadf212217bc88e07e0066eca02b
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5eaade975adac86b6842d1d8f9f9b8f522d15bca
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146798"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816077"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -38,31 +38,46 @@ Azure SQL veritabanı yönetilen örneği iki donanım nesile dağıtılabilir: 
 | Donanım | Intel E5-2673 v3 (Haswell) 2,4-GHz işlemciler, ekli SSD sanal çekirdek = 1 PP (fiziksel çekirdek) | Intel E5-2673 v4 (çok Iyi) 2,3-GHz işlemcileri, Fast NVMe SSD, sanal çekirdek = 1 LP (hiper iş parçacığı) |
 | Sanal çekirdek sayısı | 8, 16, 24 sanal çekirdek | 4, 8, 16, 24, 32, 40, 64, 80 Vçekirdekler |
 | Maksimum bellek (bellek/çekirdek oranı) | Sanal çekirdek başına 7 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | vCore başına 5,1 GB<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
-| Maks. bellek Içi OLTP belleği | Örnek sınırı: Sanal çekirdek başına 3 GB<br/>Veritabanı limitleri:<br/> -8 çekirdek: veritabanı başına 8 GB<br/> -16 çekirdek: veritabanı başına 20 GB<br/> -24 çekirdek: veritabanı başına 36 GB | Örnek sınırı: vCore başına 2,5 GB<br/>Veritabanı limitleri:<br/> -8 çekirdek: veritabanı başına 13 GB<br/> -16 çekirdek: veritabanı başına 32 GB |
-| En büyük örnek ayrılmış depolama alanı |  Genel Amaçlı: 8 TB<br/>İş Açısından Kritik: 1 | Genel Amaçlı: 8 TB<br/> Çekirdek sayısına bağlı olarak 1 TB, 2 TB veya 4 TB İş Açısından Kritik |
+| Maks. bellek Içi OLTP belleği | Örnek sınırı: vCore başına 1-1,5 GB| Örnek sınırı: vCore başına 0,8-1,65 GB |
+| En büyük örnek ayrılmış depolama alanı |  Genel Amaçlı: 8 TB<br/>İş Açısından Kritik: 1TB | Genel Amaçlı: 8 TB<br/> Çekirdek sayısına bağlı olarak 1 TB, 2 TB veya 4 TB İş Açısından Kritik |
 
 > [!IMPORTANT]
 > - 4\. nesil donanım kullanıma alınıyor. 5. nesil donanımında yeni yönetilen örnekler dağıtmanız önerilir.
-> - Şu anda 4. nesil donanım hala yalnızca aşağıdaki bölgelerde kullanılabilir: Kuzey Avrupa, Batı Avrupa, Doğu ABD, Orta Güney ABD, Orta Kuzey ABD, Batı ABD 2, Orta ABD, Kanada Orta, Güney Hindistan, Güneydoğu Asya ve Kore Orta.
+> - 4\. nesil donanım Şu anda yalnızca şu bölgelerde kullanılabilir: Kuzey Avrupa, Batı Avrupa, Doğu ABD, Orta Güney ABD, Orta Kuzey ABD, Batı ABD 2, Orta ABD, Kanada Orta, Güney Hindistan, Güneydoğu Asya ve Kore Orta.
+
+#### <a name="in-memory-oltp-available-space"></a>Bellek içi OLTP kullanılabilir alanı 
+
+Bellek Içi OLTP alanı miktarı, sanal çekirdekler ve donanım oluşturma sayısına bağlıdır. Aşağıdaki tabloda, bellek Içi OLTP nesneleri için kullanılabilecek bellek sınırları listelenmiştir.
+
+| Sanal çekirdek başına bellek içi OLTP alanı    | **5. nesil** | **4. nesil** |
+| --- | --- | --- |
+| 4 | 3,14 GB | |   
+| 8 | 6,28 GB | 8 GB |
+| 16    | 15,77 GB | 20 GB |
+| 24    | 25,25 GB | 36 GB |
+| 32    | 37,94 GB | |
+| 40    | 52,23 GB | |
+| 64    | 99,9 GB   | |
+| 80    | 131,68 GB| |
 
 ### <a name="service-tier-characteristics"></a>Hizmet katmanı özellikleri
 
-Yönetilen örnek iki hizmet katmanına sahiptir: [Genel amaçlı](sql-database-service-tier-general-purpose.md) ve [iş açısından kritik](sql-database-service-tier-business-critical.md). Bu katmanlar, aşağıdaki tabloda açıklandığı gibi [farklı yetenekler](sql-database-service-tiers-general-purpose-business-critical.md)sağlar:
+Yönetilen örnekte iki hizmet katmanı vardır: [genel amaçlı](sql-database-service-tier-general-purpose.md) ve [iş açısından kritik](sql-database-service-tier-business-critical.md). Bu katmanlar, aşağıdaki tabloda açıklandığı gibi [farklı yetenekler](sql-database-service-tiers-general-purpose-business-critical.md)sağlar:
 
-| **Özelliği** | **Genel Amaçlı** | **İş Açısından Kritik** |
+| **Özellik** | **Genel Amaçlı** | **İş Açısından Kritik** |
 | --- | --- | --- |
-| Sanal çekirdek sayısı\* | 4\. nesil 8, 16, 24<br/>5\. nesil 4, 8, 16, 24, 32, 40, 64, 80 | 4\. nesil 8, 16, 24 <br/> 5\. nesil 4, 8, 16, 24, 32, 40, 64, 80 |
-| Maksimum bellek | 4\. nesil 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4\. nesil 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
-| En büyük örnek depolama boyutu (ayrılmış) | 4 sanal çekirdek için-2 TB (yalnızca 5. nesil)<br/>-8 TB diğer boyutlar için | 4\. nesil 1 TB <br/> 5\. nesil <br/>-1 TB, 4, 8, 16 sanal çekirdek<br/>-2 TB, 24 sanal çekirdek için<br/>-4 TB 32, 40, 64, 80 sanal çekirdekler |
+| Sanal çekirdek sayısı @ no__t-0 | 4\. nesil: 8, 16, 24<br/>5\. nesil: 4, 8, 16, 24, 32, 40, 64, 80 | 4\. nesil: 8, 16, 24 <br/> 5\. nesil: 4, 8, 16, 24, 32, 40, 64, 80 |
+| Maksimum bellek | 4\. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil: 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4\. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil: 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
+| En büyük örnek depolama boyutu (ayrılmış) | 4 sanal çekirdek için-2 TB (yalnızca 5. nesil)<br/>-8 TB diğer boyutlar için | 4\. nesil: 1 TB <br/> 5\. nesil <br/>-1 TB, 4, 8, 16 sanal çekirdek<br/>-2 TB, 24 sanal çekirdek için<br/>-4 TB 32, 40, 64, 80 sanal çekirdekler |
 | Maks. veritabanı boyutu | Şu anda kullanılabilir örnek boyutu (sanal çekirdek sayısına bağlı olarak en fazla 2 TB-8 TB). | Şu anda kullanılabilir örnek boyutu (sanal çekirdek sayısına bağlı olarak en fazla 1 TB-4 TB). |
 | En fazla tempDB boyutu | 24 GB/sanal çekirdek (96-1.920 GB) ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu.<br/>Daha fazla TempDB alanı almak için daha fazla sanal çekirdek ekleyin. | Şu anda kullanılabilir örnek depolama boyutuna kadar. TempDB günlük dosyası boyutu şu anda 24 GB/sanal çekirdek ile sınırlıdır. |
 | Örnek başına en fazla veritabanı sayısı | 100, örnek depolama boyutu sınırına ulaşılmadığı müddetçe. | 100, örnek depolama boyutu sınırına ulaşılmadığı müddetçe. |
 | Örnek başına en fazla veritabanı dosyası sayısı | Örnek depolama boyutu veya [Azure Premium disk depolama ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) sınırına ulaşılmadığı takdirde 280 'e kadar. | örnek depolama boyutu sınırına ulaşılmadığı takdirde veritabanı başına 32.767 dosya. |
 | En büyük veri dosyası boyutu | Şu anda kullanılabilir örnek depolama boyutu (en fazla 2 TB-8 TB) ve [Azure Premium disk depolama alanı ayırma alanı](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files)ile sınırlıdır. | Şu anda kullanılabilir örnek depolama boyutuyla sınırlıdır (en fazla 1 TB-4 TB). |
 | Günlük dosyası boyutu üst sınırı | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu. | 2 TB ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu. |
-| Veri/günlük ıOPS (yaklaşık) | dosya başına 500-7.500<br/>\*[Daha fazla ıOPS almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/vCore)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
+| Veri/günlük ıOPS (yaklaşık) | dosya başına 500-7.500<br/>\*[daha fazla IOPS almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k-110 K (1375/vCore)<br/>Daha iyi GÇ performansı almak için daha fazla sanal çekirdek ekleyin. |
 | Günlük yazma verimlilik sınırı (örnek başına) | Sanal çekirdek başına 3 MB/s<br/>En fazla 22 MB/sn | vCore başına 4 MB/s<br/>En fazla 48 MB/sn |
-| Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[Daha iyi GÇ performansı almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Sınırlı değildir. |
+| Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[daha ıyı GÇ performansı almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Sınırlı değildir. |
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |
 | Bellek içi OLTP | Desteklenmiyor | Kullanılabilir |
 | En fazla oturum sayısı | 30000 | 30000 |
@@ -96,8 +111,8 @@ Yönetilen örnek şu anda yalnızca aşağıdaki abonelik türlerinde dağıtı
 
 Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. Yönetilen örnek, Azure bölgesi başına iki varsayılan sınıra sahiptir (Bu, Azure portal) bir abonelik türü türüne bağlı olarak bir özel [destek isteği](#obtaining-a-larger-quota-for-sql-managed-instance)oluşturarak isteğe bağlı olarak artırılabilir:
 
-- **Alt ağ sınırı**: Yönetilen örneklerin tek bir bölgede dağıtıldığı en fazla alt ağ sayısı.
-- **sanal çekirdek birim sınırı**: Tek bir bölgedeki tüm örneklerde dağıtılabilecek en fazla vCore birimi sayısı. Bir GP sanal çekirdeği bir vCore birimi kullanır ve bir BC sanal çekirdek 4 sanal çekirdek birimi alır. Toplam örnek sayısı, sanal çekirdek birim sınırının içinde olduğu sürece sınırlı değildir.
+- **Alt ağ sınırı**: yönetilen örneklerin tek bir bölgede dağıtıldığı alt ağların en fazla sayısı.
+- **Vcore birim sınırı**: tek bir bölgedeki tüm örneklerde dağıtılabilecek en fazla Vcore birimi sayısı. Bir GP sanal çekirdeği bir vCore birimi kullanır ve bir BC sanal çekirdek 4 sanal çekirdek birimi alır. Toplam örnek sayısı, sanal çekirdek birim sınırının içinde olduğu sürece sınırlı değildir.
 
 > [!Note]
 > Bu sınırlar varsayılan ayarlar değildir ve teknik sınırlamalardır. Geçerli bölgede daha fazla yönetilen örneğe ihtiyacınız varsa Azure portal özel bir [destek isteği](#obtaining-a-larger-quota-for-sql-managed-instance) oluşturularak sınırlar artırılabilir. Alternatif olarak, destek istekleri göndermeden başka bir Azure bölgesinde yeni yönetilen örnekler oluşturabilirsiniz.
@@ -110,13 +125,13 @@ Aşağıdaki tabloda desteklenen Abonelik türleri için **varsayılan bölgesel
 |CSP |8 (bazı bölgelerde 15 * *)|960 (bazı bölgelerde 1440 * *)|
 |Kullandıkça Öde geliştirme ve test|3|320|
 |Kurumsal Geliştirme ve Test|3|320|
-|EA|8 (bazı bölgelerde 15 * *)|960 (bazı bölgelerde 1440 * *)|
+|UC|8 (bazı bölgelerde 15 * *)|960 (bazı bölgelerde 1440 * *)|
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional ve MSDN Platformları|2|32|
 
-\*Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP sanal çekirdek = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birim. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, yönetilen örneklerin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
+\* ' ı dağıtımda, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından fazla olması gerektiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, yönetilen örneklerin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına**eşit veya daha düşük olmalıdır.
 
-\*\*Daha büyük alt ağ ve sanal çekirdek limitleri aşağıdaki bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
+\* @ no__t-1 daha büyük alt ağ ve sanal çekirdek limitleri şu bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>SQL yönetilen örneği için daha büyük bir kota alma
 
@@ -125,7 +140,7 @@ Daha büyük bir kota elde etme işlemini başlatmak için:
 
 1. **Yardım ve destek**' i açın ve **Yeni destek isteği**' ne tıklayın.
 
-   ![Yardım ve Destek](media/sql-database-managed-instance-resource-limits/help-and-support.png)
+   ![Yardım ve destek](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Yeni destek isteği için temel bilgiler sekmesinde:
    - **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
    - **Abonelik** bölümünde aboneliğinizi seçin.

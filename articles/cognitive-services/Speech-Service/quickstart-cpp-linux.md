@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Konuşmayı tanıma, C++ (Linux)-konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı tanıma C++ , (Linux)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: Konuşma SDK 'sını kullanarak Linux 'ta C++ konuşmayı tanımayı öğrenin
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: dfbf40ef422903069352e64340fe5e3cb960a105
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f1b87d0219bdf1b317eed41f91e65bf318b31e5a
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559453"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803358"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını C++ kullanarak Linux 'ta konuşmayı tanıma
+# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK'sını kullanarak Linux üzerinde C++ dilinde konuşma tanıma
 
 Hızlı başlangıç, [metinden konuşmaya](quickstart-text-to-speech-cpp-linux.md)için de kullanılabilir.
 
@@ -34,9 +34,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için bir konuşma Hizmetleri aboneli
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bilişsel Hizmetler Konuşma SDK'sının geçerli sürümü: `1.6.0`.
-
-Linux için Konuşma SDK'sı, gerek 64 bit gerekse 32 bit uygulamalar derlemek için kullanılabilir. Gerekli kitaplıklar ve üst bilgi dosyaları, öğesinden https://aka.ms/csspeech/linuxbinary bir bataklık dosyası olarak indirilebilir.
+Linux için Konuşma SDK'sı, gerek 64 bit gerekse 32 bit uygulamalar derlemek için kullanılabilir. Gerekli kitaplıklar ve üst bilgi dosyaları https://aka.ms/csspeech/linuxbinary ' dan bir tar dosyası olarak indirilebilir.
 
 SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
@@ -85,15 +83,15 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
    [!INCLUDE [Linux Binary Archive Content](../../../includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
-## <a name="add-sample-code"></a>Örnek kodu ekleyin
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `helloworld.cpp` adlı bir C++ kaynak dosyası oluşturun ve aşağıdaki kodu dosyaya yapıştırın.
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-linux/helloworld.cpp#code)]
 
-1. Bu yeni dosyada, dizeyi `YourSubscriptionKey` konuşma Hizmetleri abonelik anahtarınızla değiştirin.
+1. Bu yeni dosyada, `YourSubscriptionKey` dizesini konuşma Hizmetleri abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 ## <a name="build-the-app"></a>Uygulama oluşturma
 
@@ -112,6 +110,12 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
+* Bir **ARM64** (64 bit) sisteminde, uygulamayı derlemek için aşağıdaki komutu çalıştırın.
+
+  ```sh
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
+  ```
+
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
 1. Yükleyicinin kitaplık yolunu Konuşma SDK'sı kitaplığına işaret edecek şekilde yapılandırın.
@@ -126,6 +130,12 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
+     ```
+
+   * Bir **ARM64** (64-bit) sisteminde, aşağıdaki komutu girin.
+
+     ```sh
+     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
      ```
 
 1. Uygulamayı çalıştırın.

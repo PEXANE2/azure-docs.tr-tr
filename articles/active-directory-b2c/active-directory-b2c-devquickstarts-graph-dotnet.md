@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 02765538ce8a351db539438837b6426c0896d2d4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: HT
+ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71701888"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802077"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API kullanma
 
@@ -49,19 +49,11 @@ Azure AD Graph API, B2C kiracınızla birlikte kullanmak için, uygulamayı Azur
 
 ### <a name="assign-api-access-permissions"></a>API erişim izinleri atama
 
-1. **Kayıtlı uygulamaya** Genel Bakış sayfasında, **Ayarlar**' ı seçin.
-1. **API erişimi**altında **gerekli izinler**' i seçin.
-1. **Windows Azure Active Directory**seçin.
-1. **Uygulama izinleri**altında, **Dizin verilerini okuma ve yazma**' yı seçin.
-1. **Kaydet**’i seçin.
-1. **Izin ver**' i seçin ve ardından **Evet**' i seçin. İzinlerin tam olarak yayılması birkaç dakika sürebilir.
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="create-client-secret"></a>İstemci parolası oluştur
 
-1. **API erişimi**altında **anahtarlar**' ı seçin.
-1. **Anahtar açıklaması** kutusuna anahtar için bir açıklama girin. Örneğin, *Yönetim anahtarı*.
-1. Bir geçerlilik **süresi** seçin ve ardından **Kaydet**' i seçin.
-1. Anahtarın **değerini**kaydedin. Yapılandırma için bu değeri sonraki bir adımda kullanırsınız.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Artık Azure AD B2C kiracınızda Kullanıcı *oluşturma*, *okuma*ve *güncelleştirme* iznine sahip bir uygulamanız var. Kullanıcı *silme* ve *parola güncelleştirme* izinleri eklemek için sonraki bölüme geçin.
 

@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: lyhughes
-ms.openlocfilehash: ad51fbe7d2f8e8f115adf03d6333c0747765ee43
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 6d8d6f03847fcd22a6d78c445ae039c73e9badfa
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338599"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719158"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>API 'lerle bağlantı kurmak ve kimlik doğrulamak
 
@@ -28,13 +28,16 @@ Bir uygulama veya hizmeti Azure AD ile tümleştirmek için geliştiricilerin ö
 
 Azure AD tarafından [beş birincil uygulama senaryosu](../active-directory/develop/v2-app-types.md) desteklenir:
 
-* Tek sayfalı uygulama (SPA): Bir kullanıcının Azure AD tarafından güvenliği sağlanmış tek sayfalı bir uygulamada oturum açması gerekir.
-* Web uygulamasına Web tarayıcısı: Bir kullanıcının Azure AD tarafından güvenliği sağlanmış bir Web uygulamasında oturum açması gerekir.
-* Web API 'sine yerel uygulama: Bir telefonda, tablette veya bılgısayarda çalışan yerel bir uygulamanın, Azure AD tarafından güvenliği sağlanan bir Web API 'sinden kaynakları almak için bir kullanıcının kimliğini doğrulaması gerekir.
-* Web uygulamasından Web API 'sine: Bir Web uygulamasının Azure AD tarafından güvenliği sağlanmış bir Web API 'sinden kaynak alması gerekir.
-* Web API 'ye yönelik Daemon veya sunucu uygulaması: Bir Web Kullanıcı arabirimi olmayan bir Daemon uygulamasının veya bir sunucu uygulamasının Azure AD tarafından güvenliği sağlanmış bir Web API 'sinden kaynak alması gerekir.
+* Tek sayfalı uygulama (SPA): kullanıcının Azure AD tarafından güvenliği sağlanmış tek sayfalı bir uygulamada oturum açması gerekir.
+* Web uygulamasına Web tarayıcısı: bir kullanıcının Azure AD tarafından güvenliği sağlanmış bir Web uygulamasında oturum açması gerekir.
+* Yerel uygulama Web API 'sine: bir telefonda, tablette veya BILGISAYAR üzerinde çalışan yerel bir uygulamanın, Azure AD tarafından güvenliği sağlanmış bir Web API 'sinden kaynak alması için bir kullanıcının kimliğini doğrulaması gerekir.
+* Web uygulaması Web API 'SI: bir Web uygulamasının Azure AD ile güvenliği sağlanmış bir Web API 'sinden kaynak alması gerekir.
+* Web API 'sine yönelik Daemon veya sunucu uygulaması: Web Kullanıcı arabirimi olmayan bir arka plan uygulaması veya bir sunucu uygulaması, Azure AD tarafından güvenliği sağlanmış bir Web API 'sinden kaynak almaya ihtiyaç duyuyor.
 
-Windows Azure kimlik doğrulama kitaplığı Active Directory belirteçleri edinmenin birçok yolunu sunar. Kitaplık ve kod örnekleri hakkındaki ayrıntılar için bkz. [adal.net wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki).
+> [!IMPORTANT]
+> Azure dijital TWINS aşağıdaki kimlik doğrulama kitaplıklarının her ikisini de destekler:
+> * Daha yeni [Microsoft kimlik doğrulama kitaplığı (msal)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * [Azure Active Directory kimlik doğrulama kitaplığı (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>Orta katman Web API 'sinden dijital TWINS çağırma
 

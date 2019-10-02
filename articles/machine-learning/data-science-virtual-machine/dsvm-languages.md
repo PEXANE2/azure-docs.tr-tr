@@ -6,18 +6,18 @@ keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 0cedc9ede43d18d0b94b8a516170db53e3a27910
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/27/2019
+ms.openlocfilehash: 586cdd6dc06a7685f17c78fa4c4ea2f2ebf52f3d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885639"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802396"
 ---
-# <a name="languages-supported-on-the-data-science-virtual-machine"></a>Veri bilimi sanal makinesi üzerinde desteklenen diller 
+# <a name="languages-supported-on-the-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi desteklenen diller 
 
 Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturmak için önceden oluşturulmuş birkaç dil ve geliştirme araçlarıyla birlikte gelir. Bazı önemli tabloları aşağıda verilmiştir.
 
@@ -27,7 +27,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | Python 2,7 ve 3,6 |
 | Desteklenen DSVM sürümleri      | Windows Server 2016     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | İki genel `conda` ortam oluşturulur: <br /> * Konumunda`/anaconda/` bulunan ortam Python 3,6 ' dir. `root` <br/> * Konumunda`/anaconda/envs/python2` bulunan ortam Python 2,7 ' dir. `python2`       |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | İki genel `conda` ortamı oluşturulur: <br /> * @No__t-1 ' de bulunan `root` ortamı Python 3,6 ' dir. <br/> * @No__t-1 ' de bulunan `python2` ortamı Python 2,7 ' dir.       |
 | Örneklere bağlantılar      | Python için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | PySpark, R, Julia.      |
 
@@ -55,7 +55,7 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
   Visual Studio Community Edition 'da yüklü olan Visual Studio için Python Araçları (PTV) kullanın. Varsayılan olarak, PTV 'lerde otomatik olarak ayarlanan tek ortam Python 3,6 ' dir. 
 
     > [!NOTE]
-    > Python 2,7 ' de PTV 'leri göstermek için PTV 'lerde özel bir ortam oluşturmanız gerekir. Visual Studio Community sürümünde bu ortam yolunu ayarlamak için **Araçlar** -> **Python araçları** -> **Python ortamları** ' na gidin ve **+ özel**' i seçin. Sonra, konumu **c:\anaconda\envs\python2** olarak ayarlayın ve **Otomatik Algıla**seçeneğini belirleyin.
+    > Python 2,7 ' de PTV 'leri göstermek için PTV 'lerde özel bir ortam oluşturmanız gerekir. Visual Studio Community sürümünde bu ortam yolunu ayarlamak için **araçlar** -> **Python araçları** -> **Python ortamları** ' na gidin ve **+ özel**' i seçin. Sonra, konumu **c:\anaconda\envs\python2** olarak ayarlayın ve **Otomatik Algıla**seçeneğini belirleyin.
 
 * Jupyter içinde kullanın:
 
@@ -63,20 +63,19 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * Python paketlerini yükler:
 
-  DSVM 'deki varsayılan Python ortamları, tüm kullanıcılar tarafından okunabilen küresel ortamlardır. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri küresel ortama yüklemek için, `activate` komutunu yönetici olarak kullanarak kök veya python2 ortamına etkinleştirin. Ardından, paketleri yüklemek veya güncelleştirmek için veya `conda` `pip` gibi bir paket Yöneticisi kullanabilirsiniz.
+  DSVM 'deki varsayılan Python ortamları, tüm kullanıcılar tarafından okunabilen küresel ortamlardır. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri genel ortama yüklemek için `activate` komutunu yönetici olarak kullanarak kök veya python2 ortamına etkinleştirin. Ardından, paketleri yüklemek veya güncelleştirmek için `conda` veya `pip` gibi bir paket Yöneticisi kullanabilirsiniz.
 
-## <a name="python-linux-and-windows-server-2012-edition"></a>Python (Linux ve Windows Server 2012 sürümü)
+## <a name="python-linux-edition"></a>Python (Linux sürümü)
 
 |    |           |
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | Python 2,7 ve 3,5 |
-| Desteklenen DSVM sürümleri      | Linux, Windows Server 2012    |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | İki genel `conda` ortam oluşturulur: <br /> * `root`konumunda `/anaconda/` bulunan ortam Python 2,7 ' dir. <br/> * `py35`konumunda `/anaconda/envs/py35`bulunan ortam Python 3,5 ' dir.       |
+| Desteklenen DSVM sürümleri      | Linux   |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | İki genel `conda` ortamı oluşturulur: <br /> *  @ no__t-1 `/anaconda/` ' de bulunan bir ortam Python 2,7 ' dir. <br/> *  @ no__t-1 `/anaconda/envs/py35`, Python 3,5 ' dir.       |
 | Örneklere bağlantılar      | Python için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | PySpark, R, Julia      |
 ### <a name="how-to-use-and-run-it"></a>Kullanma ve çalıştırma    
 
-**Linux**
 * Bir terminalde Çalıştır:
 
   Terminal ' i açın ve çalıştırmak istediğiniz Python sürümüne bağlı olarak aşağıdakilerden birini yapın:
@@ -101,36 +100,8 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * Python paketlerini yükler:
 
-  DSVM üzerinde varsayılan Python ortamları, genel ortamları okunabilir ve tüm kullanıcılar ' dir. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri küresel ortama yüklemek için, `source activate` komutunu yönetici olarak veya sudo izinleri olan bir kullanıcı olarak kullanarak kök veya py35 ortamına etkinleştirin. Ardından, paketleri yüklemek veya güncelleştirmek için veya `conda` `pip` gibi bir paket Yöneticisi kullanabilirsiniz.
+  DSVM 'deki varsayılan Python ortamları, tüm kullanıcılar tarafından okunabilen küresel ortamlardır. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri küresel ortama yüklemek için, `source activate` komutunu yönetici olarak veya sudo izinleri olan bir kullanıcı olarak kullanarak kök veya py35 ortamına etkinleştirin. Ardından, paketleri yüklemek veya güncelleştirmek için `conda` veya `pip` gibi bir paket Yöneticisi kullanabilirsiniz.
 
-**Windows 2012**
-* Komut isteminden çalıştırın:
-
-  Çalıştırmak istediğiniz Python sürümüne bağlı olarak bir komut istemi açın ve aşağıdakilerden birini yapın:
-
-     ```
-    # To run Python 2.7
-    activate 
-    python --version
-    
-    # To run Python 3.5
-    activate py35
-    python --version
-    
-    ```
-* IDE içinde kullanın:
-
-  Python araçları için Visual Studio (Visual Studio Community edition yüklü PTVS) kullanın. PTV 'lerde otomatik olarak ayarlanan tek ortam Python 2,7 ' dir.
-    > [!NOTE]
-    > Python 3,5 ' de PTV 'leri işaret etmek için PTV 'lerde özel bir ortam oluşturmanız gerekir. Visual Studio Community sürümünde bu ortam yolunu ayarlamak için **Araçlar** -> **Python araçları** -> **Python ortamları** ' na gidin ve **+ özel**' i seçin. Sonra, konumunu olarak `c:\anaconda\envs\py35` ayarlayın ve _Otomatik Algıla_öğesini seçin.
-
-* Jupyter içinde kullanın:
-
-  Jupyter ' ı açın **ve yeni ' yi seçerek yeni** bir not defteri oluşturun. Python 2,7 için bir Python **[Conda root]** ve Python 3,5 için **Python [Conda env: py35]** olarak çekirdek türünü ayarlayabilirsiniz. 
-
-* Python paketlerini yükler:
-
-  DSVM 'deki varsayılan Python ortamları, tüm kullanıcılar tarafından okunabilen küresel ortamlardır. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri küresel ortama yüklemek için, `activate` komutunu yönetici olarak kullanarak kök veya py35 ortamına etkinleştirin. Ardından, paketleri yüklemek veya güncelleştirmek için veya `conda` `pip` gibi bir paket Yöneticisi kullanabilirsiniz.
 
 ## <a name="r"></a>R
 
@@ -138,20 +109,20 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | Microsoft R Open 3. x (CRAN-R ile% 100 uyumlu)<br /> Microsoft R Server 9. x geliştirici sürümü (bir kurumsal özellikli ölçeklenebilir R platformu)|
 | Desteklenen DSVM sürümleri      | Linux, Windows     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Örneklere bağlantılar      | R için örnek Jupyıter Not defterleri dahil edilmiştir.     |
-| DSVM 'deki ilgili araçlar      | SparkR, Python, Julia      |
+| DSVM 'deki ilgili araçlar      | Parlak r, Python, Julia      |
 ### <a name="how-to-use-and-run-it"></a>Kullanma ve çalıştırma    
 
 **Windows**:
 
 * Komut isteminden çalıştırın:
 
-  Bir komut istemi açın ve yazın `R`.
+  Bir komut istemi açın ve `R` yazın.
 
 * IDE içinde kullanın:
 
-  Kullanım RTools için Visual Studio (Visual Studio Community sürümü veya RStudio yüklü RTVS). Bunlar, başlangıç menüsünde veya masaüstü simgesi olarak kullanılabilir. 
+  Visual Studio Community Edition veya RStudio 'da yüklü olan RTools for Visual Studio (RTVS) kullanın. Bunlar, başlangıç menüsünde veya masaüstü simgesi olarak kullanılabilir. 
 
 * Jupyıter 'da kullanma
 
@@ -159,13 +130,13 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * R paketlerini yükler:
 
-  R, tüm kullanıcılar tarafından okunabilen küresel bir ortamda DSVM 'ye yüklenir. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri genel ortama yüklemek için önceki yöntemlerden birini kullanarak R 'yi çalıştırın. Ardından, paketleri yüklemek veya güncelleştirmek için R paket `install.packages()` yöneticisini çalıştırabilirsiniz.
+  R, tüm kullanıcılar tarafından okunabilen küresel bir ortamda DSVM 'ye yüklenir. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri genel ortama yüklemek için önceki yöntemlerden birini kullanarak R 'yi çalıştırın. Ardından, paketleri yüklemek veya güncelleştirmek için R Package Manager `install.packages()` ' ı çalıştırabilirsiniz.
 
 **Linux**:
 
 * Terminalde Çalıştır:
 
-  Bir Terminal açın ve çalıştırın `R`.  
+  Bir Terminal açın ve @no__t çalıştırın-0.  
 
 * IDE içinde kullanın:
 
@@ -177,16 +148,16 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * R paketlerini yükler:
 
-  R, tüm kullanıcılar tarafından okunabilen küresel bir ortamda DSVM 'ye yüklenir. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri genel ortama yüklemek için önceki yöntemlerden birini kullanarak R 'yi çalıştırın. Ardından, paketleri yüklemek veya güncelleştirmek için R paket `install.packages()` yöneticisini çalıştırabilirsiniz.
+  R, tüm kullanıcılar tarafından okunabilen küresel bir ortamda DSVM 'ye yüklenir. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri genel ortama yüklemek için önceki yöntemlerden birini kullanarak R 'yi çalıştırın. Ardından, paketleri yüklemek veya güncelleştirmek için R Package Manager `install.packages()` ' ı çalıştırabilirsiniz.
 
 
-## <a name="julia"></a>Julia
+## <a name="julia"></a>J
 
 |    |           |
 | ------------- | ------------- |
 | Desteklenen dil sürümleri | 0,6 |
 | Desteklenen DSVM sürümleri      | Linux, Windows     |
-| Nasıl, yapılandırılmış / DSVM üzerinde yüklü?  | Windows: Yükleme saati:`C:\JuliaPro-VERSION`<br /> Linux: Yükleme saati:`/opt/JuliaPro-VERSION`    |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | Windows: @no__t yüklendi-0<br /> Linux: @no__t ' de yüklendi-0    |
 | Örneklere bağlantılar      | Julia için örnek Jupyıter Not defterleri dahil edilmiştir.     |
 | DSVM 'deki ilgili araçlar      | Python, R      |
 ### <a name="how-to-use-and-run-it"></a>Kullanma ve çalıştırma    
@@ -195,10 +166,10 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * Komut isteminden Çalıştır
 
-  Bir komut istemi açın ve çalıştırın `julia`.
+  Bir komut istemi açın ve `julia` ' i çalıştırın.
 * IDE içinde kullanın:
 
-  Dsvm 'de yüklü olan ve masaüstü kısayolu olarak kullanılabilen Julia IDE ile birlikte kullanın `Juno` .
+  DSVM 'de yüklü olan ve masaüstü kısayolu olarak kullanılabilen `Juno` kullanın.
 
 * Jupyter içinde kullanın:
 
@@ -206,16 +177,16 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * Julia paketlerini yükler:
 
-  Varsayılan Julia konumu, tüm kullanıcılar tarafından okunabilen küresel bir ortamdır. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri küresel ortama yüklemek için yukarıdaki yöntemlerden birini kullanarak Julia 'yı çalıştırın. Ardından, paketleri yüklemek veya güncelleştirmek `Pkg.add()` için Julia Paket Yöneticisi komutlarını çalıştırabilirsiniz.
+  Varsayılan Julia konumu, tüm kullanıcılar tarafından okunabilen küresel bir ortamdır. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri küresel ortama yüklemek için yukarıdaki yöntemlerden birini kullanarak Julia 'yı çalıştırın. Ardından, paketleri yüklemek veya güncelleştirmek için `Pkg.add()` gibi Julia Package Manager komutlarını çalıştırabilirsiniz.
 
 
 **Linux**:
 * Bir terminalde Çalıştır:
 
-  Bir Terminal açın ve çalıştırın `julia`.
+  Bir Terminal açın ve @no__t çalıştırın-0.
 * IDE içinde kullanın:
 
-  Julia `Juno`IDE 'yi dsvm 'de yüklü ve **uygulama** menüsü kısayolu olarak kullanılabilir şekilde kullanın.
+  DSVM 'de yüklü olan ve **uygulama** menüsü kısayolu olarak kullanılabilir olan `Juno` ' ı kullanın.
 
 * Jupyter içinde kullanın:
 
@@ -223,14 +194,14 @@ Veri Bilimi Sanal Makinesi (DSVM), yapay zeka (AI) uygulamalarınızı oluşturm
 
 * Julia paketlerini yükler:
 
-  Varsayılan Julia konumu, tüm kullanıcılar tarafından okunabilen küresel bir ortamdır. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri küresel ortama yüklemek için yukarıdaki yöntemlerden birini kullanarak Julia 'yı çalıştırın. Ardından, paketleri yüklemek veya güncelleştirmek `Pkg.add()` için Julia Paket Yöneticisi komutlarını çalıştırabilirsiniz.
+  Varsayılan Julia konumu, tüm kullanıcılar tarafından okunabilen küresel bir ortamdır. Ancak, genel paketleri yalnızca Yöneticiler yazabilir ve yükleyebilir. Paketleri küresel ortama yüklemek için yukarıdaki yöntemlerden birini kullanarak Julia 'yı çalıştırın. Ardından, paketleri yüklemek veya güncelleştirmek için `Pkg.add()` gibi Julia Package Manager komutlarını çalıştırabilirsiniz.
 
 ## <a name="other-languages"></a>Diğer diller
 
-**C#** : Windows 'da kullanılabilir ve Visual Studio Community Edition üzerinden veya `Developer Command Prompt for Visual Studio`üzerinde erişilebilir, burada `csc` komutu çalıştırabilirsiniz.
+**C#** : Windows 'da kullanılabilir ve Visual Studio Community Edition aracılığıyla veya `Developer Command Prompt for Visual Studio` ' de erişilebilir, burada `csc` komutunu çalıştırabilirsiniz.
 
-**Java**: OpenJDK, DSVM 'nin hem Linux hem de Windows sürümlerinde bulunur ve yolunda ayarlanır. Java kullanmak için Windows veya Linux `javac` 'taki `java` bash kabuğu 'ndaki bir komut isteminde veya komutunu yazın.
+**Java**: OpenJDK, dsvm 'Nin hem Linux hem de Windows sürümlerinde bulunur ve yolunda ayarlanır. Java kullanmak için, Windows 'da veya Linux 'taki bash kabuğu 'ndaki bir komut isteminde `javac` veya `java` komutunu yazın.
 
-**Node.js**: Node. js, DSVM 'nin hem Linux hem de Windows sürümlerinde bulunur ve yolunda ayarlanır. Node. js ' ye erişmek için Windows `node` 'ta `npm` veya Linux 'taki bash kabuğu 'ndaki bir komut isteminde veya komutunu yazın. Windows 'da Node. js Araçları için Visual Studio uzantısı, Node. js uygulamanızı geliştirmek için bir grafik IDE sağlamak üzere yüklenmiştir.
+**Node. js**: node. js, dsvm 'Nin hem Linux hem de Windows sürümlerinde bulunur ve yolunda ayarlanır. Node. js ' ye erişmek için Windows 'daki veya Linux 'taki bash kabuğu 'ndaki bir komut isteminde `node` veya `npm` komutunu yazın. Windows 'da Node. js Araçları için Visual Studio uzantısı, Node. js uygulamanızı geliştirmek için bir grafik IDE sağlamak üzere yüklenmiştir.
 
-**F#** : Windows 'da kullanılabilir ve Visual Studio Community Edition aracılığıyla veya `Developer Command Prompt for Visual Studio`' de erişilebilir, burada `fsc` komutu çalıştırabilirsiniz.
+**F#** : Windows 'da kullanılabilir ve Visual Studio Community Edition aracılığıyla veya `Developer Command Prompt for Visual Studio` ' de erişilebilir, burada `fsc` komutunu çalıştırabilirsiniz.

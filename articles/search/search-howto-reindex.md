@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a03472b72ea7c2dc69d79400e33d5ec65cc6126
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647682"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719843"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Azure Search dizinini yeniden oluşturma
 
@@ -33,9 +33,9 @@ Bir dizini çevrimdışı duruma alan yeniden oluşturma 'nın aksine, *veri yen
 | Bir dizindeki çözümleyici tanımını güncelleştirme veya silme | Tüm dizini yeniden oluşturmadığınız müddetçe, dizinde var olan bir çözümleyici yapılandırmasını (çözümleyici, belirteç Oluşturucu, belirteç filtresi veya char filtresi) silemez veya değiştiremezsiniz. |
 | Öneri aracı bir alan ekleme | Bir alan zaten varsa ve onu bir [Öneri araçları](index-add-suggesters.md) yapısına eklemek istiyorsanız, dizini yeniden oluşturmanız gerekir. |
 | Bir alanı silme | Bir alanın tüm izlemelerini fiziksel olarak kaldırmak için, dizini yeniden oluşturmanız gerekir. Hemen yeniden oluşturma pratik olmadığında, "silinen" alanına erişimi devre dışı bırakmak için uygulama kodunu değiştirebilirsiniz. Fiziksel olarak, söz konusu alanı atlayacağınız bir şemayı uyguladığınızda, alan tanımı ve içerikleri, sonraki yeniden oluşturmaya kadar dizinde kalır. |
-| Katmanları Değiştir | Daha fazla kapasiteye ihtiyacınız varsa yerinde yükseltme yoktur. Yeni kapasite noktasında yeni bir hizmet oluşturulur ve yeni hizmette dizinlerin sıfırdan oluşturulması gerekir. |
+| Katmanları Değiştir | Daha fazla kapasiteye ihtiyacınız varsa Azure portal yerinde yükseltme yoktur. Yeni bir hizmet oluşturulmalıdır ve yeni hizmette dizinlerin sıfırdan oluşturulması gerekir. Bu işlemin otomatikleştirilmesine yardımcı olmak için, bu [Azure Search .NET örnek deposu](https://github.com/Azure-Samples/azure-search-dotnet-samples)' nda **Dizin-yedekleme-geri yükleme** örnek kodunu kullanabilirsiniz. Bu uygulama, dizininizi bir dizi JSON dosyasına yedekleyecek ve sonra belirttiğiniz bir arama hizmetinde dizini yeniden oluşturacak.|
 
-Diğer herhangi bir değişiklik, mevcut fiziksel yapıları etkilemeden yapılabilir. Özellikle, aşağıdaki değişiklikler dizin yeniden oluşturma gerektirmez:
+Diğer herhangi bir değişiklik, mevcut fiziksel yapıları etkilemeden yapılabilir. Özellikle, aşağıdaki değişiklikler dizin yeniden *oluşturma gerektirmez:*
 
 + Yeni alan ekle
 + Varolan bir alanda **alınabilir** özniteliği ayarla
@@ -57,7 +57,7 @@ Ancak, kolayca yapabilecekleriniz, bir dizindeki *belgeleri yeniler* . Birçok a
 
 [Dizin oluşturucular](search-indexer-overview.md) veri yenileme görevini basitleştirir. Dizin Oluşturucu, dış veri kaynağında yalnızca bir tablo veya görünümün dizinini oluşturabilir. Birden çok tabloyu indekslemek için en basit yaklaşım, tabloları ve projeleri dizine eklemek istediğiniz sütunları birleştiren bir görünüm oluşturmaktır. 
 
-Dış veri kaynaklarını gezen Dizinleyicileri kullanırken, kaynak verilerde "yüksek su işareti" sütununu kontrol edin. Varsa, yalnızca yeni veya düzeltilmiş içerik içeren bir satırları seçerek artımlı değişiklik algılama için kullanabilirsiniz. [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection)için bir `lastModified` alan kullanılır. [Azure Tablo Depolaması](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection) `timestamp` 'nda aynı amaca hizmet eder. Benzer şekilde, hem [Azure SQL veritabanı Dizin Oluşturucusu](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) hem de [Azure Cosmos DB Indexer](search-howto-index-cosmosdb.md#indexing-changed-documents) satır güncelleştirmelerinin bayrak eklemek için alanlar vardır 
+Dış veri kaynaklarını gezen Dizinleyicileri kullanırken, kaynak verilerde "yüksek su işareti" sütununu kontrol edin. Varsa, yalnızca yeni veya düzeltilmiş içerik içeren bir satırları seçerek artımlı değişiklik algılama için kullanabilirsiniz. [Azure Blob depolama](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection)için `lastModified` alanı kullanılır. [Azure Tablo Depolaması](search-howto-indexing-azure-tables.md#incremental-indexing-and-deletion-detection)'nda `timestamp`, aynı amaca hizmet eder. Benzer şekilde, hem [Azure SQL veritabanı Dizin Oluşturucusu](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) hem de [Azure Cosmos DB Indexer](search-howto-index-cosmosdb.md#indexing-changed-documents) satır güncelleştirmelerinin bayrak eklemek için alanlar vardır 
 
 Dizin oluşturucular hakkında daha fazla bilgi için bkz. [dizin oluşturucuya genel bakış](search-indexer-overview.md) ve [Dizin Oluşturucu REST API sıfırlama](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)
 

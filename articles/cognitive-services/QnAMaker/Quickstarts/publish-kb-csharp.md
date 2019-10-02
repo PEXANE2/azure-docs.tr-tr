@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Bilgi Bankası, REST, C# -soru-cevap oluşturma yayımlama'
+title: 'Hızlı başlangıç: yayımlama bilgi tabanı, REST C# ,-soru-cevap oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bu C# REST tabanlı bir hızlı başlangıç size yol gösterir, yayımlanan Bilgi Bankası temsil eden adanmış bir Azure Search dizini için test edilmiş Bilgi Bankası en son sürümünü iter, Bilgi Bankası yayımlama aracılığıyla. Ayrıca uygulamanızda veya sohbet botunuzda çağrılabilecek bir uç nokta da oluşturulur.
+description: Bu C# REST tabanlı hızlı başlangıç, bilgi bankasını yayımlarken, sınanan bilgi tabanının en son sürümünü yayımlanan bilgi bankasını temsil eden ayrılmış bir Azure Search dizinine gönderen adım adım açıklar. Ayrıca uygulamanızda veya sohbet botunuzda çağrılabilecek bir uç nokta da oluşturulur.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/24/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: a116dd595b7bde3f320bc0617c99fdb2ab7830d4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 2b2c2ed43a229d929353767b229f8331b49a0e46
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261953"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802910"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Hızlı Başlangıç: Soru-Cevap Oluşturma kullanarak Bilgi Bankası yayımlamaC#
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Hızlı başlangıç: C# kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
-REST tabanlı bu hızlı başlangıçta, Bilgi Bankası (KB) program aracılığıyla yayımlama aracılığıyla size yol gösterir. Yayımlama, bilgi bankanızın son sürümünü adanmış bir Azure Search dizinine gönderir ve uygulamanızda ya da sohbet botunuzda çağrılabilecek bir uç nokta oluşturur.
+Bu REST tabanlı hızlı başlangıç, bilgi bankanızı (KB) programlı bir şekilde yayımlama konusunda size yol gösterir. Yayımlama, bilgi bankanızın son sürümünü adanmış bir Azure Search dizinine gönderir ve uygulamanızda ya da sohbet botunuzda çağrılabilecek bir uç nokta oluşturur.
 
 Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
@@ -28,12 +28,12 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 ## <a name="prerequisites"></a>Önkoşullar
 
 * En son [**Visual Studio Community sürümü**](https://www.visualstudio.com/downloads/).
-* [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı almak için, panonuzda **Kaynak Yönetimi** altında **Anahtarlar** öğesini seçin. 
+* [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
 * Soru-Cevap Oluşturma bilgi bankası (KB) kimliği aşağıda gösterildiği gibi URL'nin kbid sorgu dizesi bölümünde bulunur.
 
     ![Soru-Cevap Oluşturma bilgi bankası kimliği](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Henüz bir bilgi tabanınız yoksa, bu hızlı başlangıç için kullanmak üzere bir örnek oluşturabilirsiniz: [Yeni bir Bilgi Bankası oluşturun](create-new-kb-csharp.md).
+    Henüz bir bilgi bankanız yoksa, bu hızlı başlangıçta kullanmak için bir örneğini oluşturabilirsiniz: [Yeni bilgi bankası oluşturma](create-new-kb-csharp.md).
 
 > [!NOTE] 
 > Tam çözüm dosyası (ler) [ **Azure-Samples/bilişsel hizmetler-qnamaker-CSharp** GitHub deposundan](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/quickstarts/publish-knowledge-base)kullanılabilir.
@@ -41,7 +41,7 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 ## <a name="create-knowledge-base-project"></a>Bilgi bankası projesi oluşturma
 
 1. Visual Studio 2019 Community Edition 'ı açın.
-1. Yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun ve projeyi `QnaMakerQuickstart`adlandırın. Diğer ayarlar için varsayılan değerleri kabul edin.
+1. Yeni bir **konsol uygulaması (.NET Core)** projesi oluşturun ve `QnaMakerQuickstart` olarak projeyi adlandırın. Diğer ayarlar için varsayılan değerleri kabul edin.
 
 ## <a name="add-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 
@@ -57,7 +57,7 @@ Program.cs dosyasının en üst kısmındaki tek using deyimini aşağıdaki sat
 
 ## <a name="add-the-main-method-to-publish-the-knowledge-base"></a>Bilgi Bankası 'nı yayımlamak için Main metodunu ekleyin
 
-Sonra gerekli sabitleri, Bilgi Bankası yayımlama için soru-cevap Oluşturucu API'si bir HTTPS isteği yapar ve yanıtı alan aşağıdaki kodu ekleyin:
+Gerekli sabitlerden sonra, bir Bilgi Bankası yayımlamak ve yanıtı almak için Soru-Cevap Oluşturma API'si HTTPS isteği yapan aşağıdaki kodu ekleyin:
 
 [!code-csharp[Add HTTP Post request and response](~/samples-qnamaker-csharp/documentation-samples/quickstarts/publish-knowledge-base/QnAMakerPublishQuickstart/Program.cs?range=36-56 "Add HTTP Post request and response")]
 
@@ -65,7 +65,7 @@ Yayımlama başarılı olursa API çağrısı boş yanıt gövdesiyle 204 durumu
  
 ## <a name="build-and-run-the-program"></a>Programı derleme ve çalıştırma
 
-Programı derleyin ve çalıştırın. Otomatik olarak Bilgi Bankası yayımlama için soru-cevap Oluşturucu API'si isteği gönderir ve yanıtı konsol penceresinde yazdırılır.
+Programı derleyin ve çalıştırın. Bilgi Bankası 'nı yayımlamak için isteği otomatik olarak Soru-Cevap Oluşturma API'si gönderecek, yanıt konsol penceresine yazdırılır.
 
 Bilgi bankanız yayımlandıktan sonra istemci uygulaması veya sohbet botu ile uç noktadan sorgulayabilirsiniz. 
 
@@ -73,7 +73,7 @@ Bilgi bankanız yayımlandıktan sonra istemci uygulaması veya sohbet botu ile 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bilgi Bankası yayımlandıktan sonra ihtiyacınız [yanıt oluşturmak için uç nokta URL'si](../Tutorials/create-publish-answer.md#generating-an-answer). 
+Bilgi Bankası yayımlandıktan sonra, [bir yanıt oluşturmak için uç nokta URL 'sine](../Tutorials/create-publish-answer.md#generating-an-answer)ihtiyacınız vardır. 
 
 > [!div class="nextstepaction"]
 > [Soru-Cevap Oluşturma (V4) REST API Başvurusu](https://go.microsoft.com/fwlink/?linkid=2092179)

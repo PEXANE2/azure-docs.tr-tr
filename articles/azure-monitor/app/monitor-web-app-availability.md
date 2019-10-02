@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8e9cc93a74c299be6fb4898b4af143a43fc079f5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3c7ba10525dedf213a416d9ce6b55c80539fedd7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067036"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812197"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
 
@@ -30,8 +30,8 @@ Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası içi
 Üç tür kullanılabilirlik testi vardır:
 
 * [URL ping testi](#create-a-url-ping-test): Azure portalında oluşturabileceğiniz basit bir test.
-* [Çok adımlı Web testi](availability-multistep.md): Daha karmaşık senaryoları test etmek için kayıttan yürütülebilecek Web istekleri dizisinin bir kaydı. Çok adımlı Web testleri Visual Studio Enterprise oluşturulur ve yürütülmek üzere portala yüklenir.
-* [Özel Izleme kullanılabilirlik testleri](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Yöntemi `TrackAvailability()` , kendi özel kullanılabilirlik testlerinizi oluşturmak için kullanılabilir.
+* [Çok adımlı Web testi](availability-multistep.md): daha karmaşık senaryoları test etmek için oynatılabilecek Web istekleri dizisinin bir kaydı. Çok adımlı Web testleri Visual Studio Enterprise oluşturulur ve yürütülmek üzere portala yüklenir.
+* [Özel Izleme kullanılabilirlik testleri](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): kullanılabilirlik testlerini çalıştırmak için özel bir uygulama oluşturmaya karar verirseniz `TrackAvailability()` yöntemi sonuçları Application Insights göndermek için kullanılabilir.
 
 **Application Insights kaynak başına en çok 100 kullanılabilirlik testi oluşturabilirsiniz.**
 
@@ -39,7 +39,7 @@ Genel İnternet'ten erişilebilen herhangi bir HTTP veya HTTPS uç noktası içi
 
 Bir kullanılabilirlik testi oluşturmak için önce bir Application Insights kaynağı oluşturmanız gerekir. Zaten bir kaynak oluşturduysanız, [URL ping testi oluşturmak](#create-a-url-ping-test)için sonraki bölüme ilerleyin.
 
-Azure Portal **kaynak** > oluştur**Geliştirici Araçları** > **Application Insights** ve [bir Application Insights kaynağı oluştur](create-new-resource.md)' u seçin.
+Azure portal, **kaynak oluştur** > **Geliştirici Araçları** > **Application Insights** ve [Application Insights bir kaynak oluştur](create-new-resource.md)' u seçin.
 
 ## <a name="create-a-url-ping-test"></a>URL ping testi oluşturma
 
@@ -78,7 +78,7 @@ Azure Portal **kaynak** > oluştur**Geliştirici Araçları** > **Application In
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
-|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile test konumlarından oluşan** **Uyarı konum eşiği** = sayısıdır-2.|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,**en az beş test konumu ile 1 test konumunun sayısı olan (2) test** **konumunun sayısını @no__t**.|
 
 ## <a name="see-your-availability-test-results"></a>Kullanılabilirlik testi sonuçlarınızı görme
 
@@ -123,8 +123,8 @@ Yapay kullanılabilirlik testinin başarısız olmasına neden olan sunucu taraf
 
 Ham sonuçlara ek olarak, [Ölçüm Gezgini](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)' de Iki temel kullanılabilirlik ölçümü de görebilirsiniz:
 
-1. Sonrası Tüm test yürütmelerinin tamamında başarılı olan testlerin yüzdesi.
-2. Test Süresi: Tüm test yürütmelerinin tamamında ortalama test süresi.
+1. Kullanılabilirlik: Tüm test yürütmelerinde başarılı olan testlerin yüzdelik oranı.
+2. Test Süresi: Tüm test yürütmelerinde ortalama test süresi.
 
 ## <a name="automation"></a>Otomasyon
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269204"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720171"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
 
@@ -26,7 +26,7 @@ ms.locfileid: "71269204"
 
 Çalışma alanının bir sınıflandırması aşağıdaki diyagramda gösterilmiştir:
 
-[![Çalışma alanı sınıflandırma](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Çalışma alanı sınıflandırması](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 Diyagramda bir çalışma alanının aşağıdaki bileşenleri gösterilmektedir:
 
@@ -66,9 +66,6 @@ Machine Learning görevleri çalışma alanınıza yapıları okur ve/veya yazar
 + Denemeleri, işlem hatları, modeller, dağıtımlar gibi makine öğrenimi yapılarını görüntüleyin.
 + Modelleri izleyin ve izleyin.
 
-
-
-
 ## <a name="workspace-management"></a>Çalışma alanı yönetimi
 
 Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebilirsiniz:
@@ -80,7 +77,7 @@ Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebil
 | Çalışma alanı erişimini yönetme    | **&check;**   | |  **&check;**    |
 | Not defteri VM 'si oluşturma | **&check;**   | |     |
 
-### <a name='create-workspace'></a>Çalışma alanı oluşturma
+## <a name='create-workspace'></a>Çalışma alanı oluşturma
 
 Çalışma alanı oluşturmanın birden çok yolu vardır.
 
@@ -91,12 +88,12 @@ Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebil
 
 ## <a name="resources"></a>İlişkili kaynaklar
 
-Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı tarafından kullanılan bazı Azure kaynakları otomatik olarak oluşturur:
+Yeni bir çalışma alanı oluşturduğunuzda, bu, çalışma alanı tarafından kullanılan çeşitli Azure kaynaklarını otomatik olarak oluşturur:
 
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): Eğitim sırasında ve bir modeli dağıtırken kullandığınız Docker kapsayıcılarını kaydeder. Maliyetleri en aza indirmek için, dağıtım görüntüleri oluşturuluncaya kadar ACR **yavaş yüklenir** .
-+ [Azure depolama hesabı](https://azure.microsoft.com/services/storage/): , Çalışma alanı için varsayılan veri deposu olarak kullanılır.  Not defteri sanal makineleriyle kullanılan Jupyter Not defterleri burada da depolanır.
-+ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): Modelleriniz hakkında izleme bilgilerini depolar.
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): İşlem hedefleri ve çalışma alanı için gereken diğer hassas bilgiler tarafından kullanılan gizli dizileri depolar.
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): eğitim sırasında ve bir modeli dağıtırken kullandığınız Docker kapsayıcılarını kaydeder. Maliyetleri en aza indirmek için, dağıtım görüntüleri oluşturuluncaya kadar ACR **yavaş yüklenir** .
++ [Azure depolama hesabı](https://azure.microsoft.com/services/storage/): çalışma alanı için varsayılan veri deposu olarak kullanılır.  Not defteri sanal makineleriyle kullanılan Jupyter Not defterleri burada da depolanır.
++ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): modelleriniz hakkında izleme bilgilerini depolar.
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): işlem hedefleri ve çalışma alanı için gereken diğer hassas bilgiler tarafından kullanılan gizli dizileri depolar.
 
 > [!NOTE]
 > Yeni sürümler oluşturmaya ek olarak, var olan Azure hizmetlerini de kullanabilirsiniz.
@@ -108,4 +105,4 @@ Azure Machine Learning kullanmaya başlamak için bkz.:
 + [Azure Machine Learning genel bakış](overview-what-is-azure-ml.md)
 + [Çalışma Alanı oluşturma](how-to-manage-workspace.md)
 + [Çalışma Alanını Yönetme](how-to-manage-workspace.md)
-+ [Öğretici: Model eğitme](tutorial-train-models-with-aml.md)
++ [Öğretici: Modeli eğitme](tutorial-train-models-with-aml.md)

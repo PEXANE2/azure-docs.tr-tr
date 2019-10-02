@@ -10,14 +10,14 @@ ms.topic: quickstart
 description: Azure Dev Spaces ile AKS 'de mikro hizmet dağıtma
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b845a176497891f55990c560e719832c6eaebb73
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 58cb436a7c2ba0d6a49f5138e46a1f92cdc97a94
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842528"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815832"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Hızlı Başlangıç: Azure Dev Spaces kullanarak Kubernetes 'te uygulama geliştirme
+# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Hızlı başlangıç: Azure Dev Spaces kullanarak Kubernetes 'te uygulama geliştirme
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
 - Azure’da yönetilen bir Kubernetes ile Azure Dev Spaces’ı ayarlayın.
@@ -39,7 +39,10 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
 
-Aks kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için komutunukullanın.`use-dev-spaces` Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanlarını etkinleştiriyor ve *varsayılan* bir dev alanı oluşturuyor.
+AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için `use-dev-spaces` komutunu kullanın. Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanlarını etkinleştiriyor ve *varsayılan* bir dev alanı oluşturuyor.
+
+> [!NOTE]
+> @No__t-0 komutu, zaten yüklenmemişse Azure Dev Spaces CLı 'yi de yükler. Azure Dev Spaces CLı 'yi Azure Cloud Shell yükleyemezsiniz.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -74,17 +77,17 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 Uygulamanızı Azure Dev Spaces çalıştırmak için bir Dockerfile ve HELI grafiğinin olması gerekir. [Java][java-quickstart], [.NET Core][netcore-quickstart]ve [Node. js][nodejs-quickstart]gibi bazı dillerde, Azure dev Spaces istemci araçları, ihtiyacınız olan tüm varlıkları oluşturabilir. Go, PHP ve Python gibi diğer birçok dil için, istemci araçları, geçerli bir Dockerfile sağlayabilmeniz koşuluyla Held grafiğini oluşturabilir.
 
-Şu `azds prep` komutu kullanarak Kubernetes 'te uygulamayı çalıştırmak için Docker ve helk grafik varlıkları oluşturun:
+@No__t-0 komutunu kullanarak Kubernetes 'te uygulamayı çalıştırmak için Docker ve helk grafik varlıkları oluşturun:
 
 ```cmd
 azds prep --public
 ```
 
-Docker ve Held grafik varlıklarını doğru şekilde oluşturmak için `prep` *geliştirme-Spaces/Samples/NodeJS/alma-başlatma/webön uç* dizininden komutunu çalıştırmanız gerekir.
+Docker ve hele grafik varlıklarını doğru şekilde oluşturmak için, *dev-Spaces/Samples/NodeJS/alma-başlatma/webön uç* dizininden `prep` komutunu çalıştırmanız gerekir.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes'de kodu oluşturma ve çalıştırma
 
-Şu `azds up` komutu kullanarak kodlarınızı aks 'de derleyin ve çalıştırın:
+@No__t-0 komutunu kullanarak kodu AKS 'de derleyin ve çalıştırın:
 
 ```cmd
 $ azds up
@@ -108,26 +111,26 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Hizmetin çıkış `azds up` bölümünde gösterildiği genel URL 'yi açarak çalışır durumda olduğunu görebilirsiniz. Bu örnekte, genel URL olur *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
+@No__t-0 komutunun çıktısında gösterildiği genel URL 'YI açarak hizmetin çalıştığını görebilirsiniz. Bu örnekte, genel URL *http://webfrontend.1234567890abcdef1234.eus.azds.io/* ' dir.
 
 > [!NOTE]
-> Çalışırken hizmetinize `azds up`gittiğinizde, http isteği izlemeleri `azds up` komutun çıktısında de görüntülenir. Bu izlemeler, hizmetinizde sorun gidermenize ve hata ayıklamanıza yardımcı olabilir. `--disable-http-traces` Çalıştırırken`azds up`kullanarak bu izlemeleri devre dışı bırakabilirsiniz.
+> @No__t-0 çalıştırılırken hizmetinize gittiğinizde, HTTP isteği izlemeleri de `azds up` komutunun çıktısında görüntülenir. Bu izlemeler, hizmetinizde sorun gidermenize ve hata ayıklamanıza yardımcı olabilir. @No__t-1 çalıştırırken `--disable-http-traces` kullanarak bu izlemeleri devre dışı bırakabilirsiniz.
 
-*Ctrl + c*kullanarak `azds up` komutu durdurursanız, hizmet aks 'de çalışmaya devam eder ve genel URL kullanılabilir olmaya devam eder.
+*Ctrl + c*kullanarak `azds up` komutunu durdurursanız, hizmet aks 'de çalışmaya devam edecektir ve genel URL kullanılabilir kalır.
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve `azds up` komutunu yeniden çalıştırabilirsiniz. Örneğin:
+Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve `azds up` komutunu yeniden çalıştırabilirsiniz. Örnek:
 
-1. Hala çalışıyorsa, *Ctrl + c*tuşlarına basın. `azds up`
-1. [Satır 13 ' `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) i şu şekilde güncelleştir:
+1. @No__t-0 hala çalışıyorsa *Ctrl + c*tuşlarına basın.
+1. [@No__t-1 ' de satır 13 '](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) ü güncelleştir:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Yaptığınız değişiklikleri kaydedin.
-1. `azds up` Komutu yeniden çalıştırın:
+1. @No__t-0 komutunu yeniden çalıştırın:
 
     ```cmd
     $ azds up
@@ -139,7 +142,7 @@ Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdek
     ```
 
 1. Çalışan hizmetinize gidin ve değişikliklerinizi gözlemleyin.
-1. `azds up` Komutu durdurmak için *Ctrl + c* tuşlarına basın.
+1. @No__t-1 komutunu durdurmak için *Ctrl + c* tuşlarına basın.
 
 ## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
 

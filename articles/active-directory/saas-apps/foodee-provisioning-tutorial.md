@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırma | Microsoft Docs"
-description: Kullanıcı hesaplarını otomatik olarak sağlamak ve serbest bırakmak için Azure Active Directory yapılandırma hakkında bilgi edinin.
+title: "Öğretici: Azure Active Directory kullanarak otomatik Kullanıcı sağlama için Pdee 'yi yapılandırma | Microsoft Docs"
+description: Azure Active Directory yapılandırma hakkında bilgi edinmek için Kullanıcı hesaplarını otomatik olarak sağlama ve sağlama.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -15,152 +15,158 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 171a1141670e55814474390c59ae8d514491edbd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088103"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812715"
 ---
-# <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Öğretici: Otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırma
+# <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırma
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları Pdee 'ye otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için, Pdee ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
+Bu makalede, Pdee ve Azure AD 'de Azure Active Directory (Azure AD) ' nin nasıl yapılandırılacağı ve Kullanıcı veya grupları Pdee 'nin otomatik olarak sağlaması veya sağlaması için nasıl yapılandırılacağı gösterilmektedir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
+> Makalesinde, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine kurulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını ve nasıl çalıştığını öğrenmek ve sık sorulan sorulara yanıt almak için, bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md).
 >
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için Azure kullanım koşulları özelliği hakkında daha fazla bilgi için, [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)' na gidin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide, aşağıdaki önkoşulları karşıladığınızı varsayılmaktadır:
 
-* Azure AD kiracısı.
+* Bir Azure AD kiracısı
 * [Bir Pdee kiracısı](https://www.food.ee/about/)
-* Yönetici izinlerine sahip bir kullanıcı hesabı.
+* Yönetici izinlerine sahip bir kullanıcı hesabı
 
-## <a name="assigning-users-to-foodee"></a>Kullanıcıları Kandee atama 
+## <a name="assign-users-to-foodee"></a>Kullanıcıları Kandee ata 
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+Azure AD, seçilen uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adlı bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanan kullanıcılar veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Nadee 'ye erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Pdee 'ye atayabilirsiniz:
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların veya grupların Pdee 'ye erişmesi gerektiğine karar vermeniz gerekir. Bu belirleme yapıldıktan sonra, [bir kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)bölümündeki yönergeleri izleyerek bu kullanıcıları veya grupları kadee 'ye atayabilirsiniz.
 
 ## <a name="important-tips-for-assigning-users-to-foodee"></a>Kullanıcıları Kandee atamaya yönelik önemli ipuçları 
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için, tek bir Azure AD kullanıcısına pdee atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+Kullanıcıları atarken aşağıdaki ipuçlarını göz önünde bulundurun:
 
-* Bir kullanıcıyı Pdee 'ye atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için, pdee 'ye yalnızca tek bir Azure AD kullanıcısı atamanız önerilir. Daha sonra ek kullanıcı veya grup atayabilirsiniz.
 
-## <a name="setup-foodee-for-provisioning"></a>Sağlama için Pdee 'yi ayarlama
+* Bir kullanıcıyı Ordee atarken, varsa, **atama** bölmesinde, uygulamaya özgü geçerli herhangi bir rolü seçin. *Varsayılan erişim* rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-Pdee 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmadan önce, Pdee 'de SCıM sağlamasını etkinleştirmeniz gerekir.
+## <a name="set-up-foodee-for-provisioning"></a>Sağlama için Pdee 'yi ayarlama
 
-1. [Pdee](https://www.food.ee/login/)'de oturum açın. **KIRACı kimliğinize** tıklayın
+Azure AD 'yi kullanarak otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırmadan önce, Kdee 'de etki alanları arası kimlik yönetimi (SCıM) sağlama için sistemi etkinleştirmeniz gerekir.
+
+1. [Pdee](https://www.food.ee/login/)'de oturum açın ve ardından kiracı kimliğinizi seçin.
 
     ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
 
-2. Enterprise Portal altında > **Çoklu oturum açma**seçeneğini belirleyin.
+1. **Enterprise Portal**altında **Çoklu oturum açma**' yı seçin.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/scim.png)
+    ![Alt Enterprise Portal sol bölmedeki menü](media/Foodee-provisioning-tutorial/scim.png)
 
-3. **API belirtecini**kopyalayın. Bu değerler, Azure portal Pdee uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
+1. Daha sonra kullanmak üzere **API belirteç** kutusundaki değeri kopyalayın. Bu anahtarı, Azure portal Pdee uygulamanızın **sağlama** sekmesinde **gizli belirteç** kutusuna girersiniz.
 
     ![Foodee](media/Foodee-provisioning-tutorial/token.png)
 
-
 ## <a name="add-foodee-from-the-gallery"></a>Galeriden bir altbilgi ekleyin
 
-Pdee 'yi Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmak üzere, Azure AD uygulama galerisindeki Pdee 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD 'yi kullanarak otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırmak için Azure AD uygulama galerisindeki Pdee 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden Pdee eklemek için aşağıdaki adımları uygulayın:**
+Azure AD uygulama galerisinden Pdee eklemek için aşağıdakileri yapın:
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory**' ı seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Active Directory komutu](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+1. **Tüm uygulamalar**@no__t **Kurumsal uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
+1. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** ' yı seçin.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **pdee**girin, sonuçlar panelinde **pdee** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+1. Arama kutusuna **pdee**yazın, sonuçlar bölmesinde **pdee** ' yi seçin ve ardından uygulamayı eklemek için **Ekle** ' yi seçin.
 
     ![Sonuç listesindeki pdee](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-foodee"></a>Pdee için otomatik Kullanıcı sağlamayı yapılandırma  
+## <a name="configure-automatic-user-provisioning-to-foodee"></a>Pdee için otomatik Kullanıcı sağlamayı yapılandırma 
 
-Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı ve/veya Grup atamaları temelinde bulunan kullanıcıları ve/veya grupları oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
+Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup atamalarına göre kadee 'de kullanıcıları veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için yapılandırırsınız.
 
 > [!TIP]
-> Ayrıca, pdee [Çoklu oturum açma öğreticisinde](Foodee-tutorial.md)sunulan yönergeleri izleyerek, pdee için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlayabilse de.
+> Ayrıca, pdee [Çoklu oturum açma öğreticisindeki](Foodee-tutorial.md)yönergeleri izleyerek, pun için SAML tabanlı çoklu oturum açmayı etkinleştirebilirsiniz. Otomatik Kullanıcı sağlamaktan bağımsız olarak çoklu oturum açmayı yapılandırabilirsiniz, ancak bu iki özellik birbirini tamamlar.
 
-### <a name="to-configure-automatic-user-provisioning-for-foodee-in-azure-ad"></a>Azure AD 'de Pdee 'nin otomatik Kullanıcı sağlamasını yapılandırmak için:
+Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kullanıcı sağlamayı yapılandırın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure Portal](https://portal.azure.com) **Kurumsal uygulamalar** > **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Pdee**' yi seçin.
+1. **Uygulamalar** listesinde, **pdee**' yi seçin.
 
     ![Uygulamalar listesindeki Pdee bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin.
+1. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+1. **Sağlama modu** aşağı açılan listesinde **Otomatik**' i seçin.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici kimlik bilgileri bölümünde ` https://concierge.food.ee/scim/v2` , sırasıyla **kiracı URL 'si** ve **gizli belirteç** içinde alınan ve **API belirteci** değerlerini girin. Azure AD 'nin, Pdee 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Pdee hesabınızda Yönetici izinleri olduğundan emin olun ve yeniden deneyin.
+1. **Yönetici kimlik bilgileri**altında şunları yapın:
 
-    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
+   a. **Kiracı URL 'si** kutusuna, daha önce aldığınız **https://concierge.food.ee/scim/v2** değerini girin.
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+   b. **Gizli belirteç** kutusunda, daha önce aldığınız **API belirteç** değerini girin.
+   
+   c. Azure AD 'nin, Pdee 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına**' yı seçin. Bağlantı başarısız olursa, Pdee hesabınızın yönetici izinlerine sahip olduğundan emin olun ve sonra yeniden deneyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Sınama bağlantısı bağlantısı](common/provisioning-testconnection-tenanturltoken.png)
 
-7. **Kaydet**’e tıklayın.
+1. **Bildirim e-postası** kutusunda, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve ardından **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları kadee olarak eşitler**' ı seçin.
+    ![Bildirim e-postası metin kutusu](common/provisioning-notification-email.png)
+
+1. **Kaydet**’i seçin.
+
+1. **Eşlemeler**' in altında **Azure Active Directory Kullanıcıları kadee olarak eşitlemeyi**seçin.
 
     ![Pdee Kullanıcı eşlemeleri](media/Foodee-provisioning-tutorial/usermapping.png)
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'Den Pdee ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için Pdee içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+1. **Öznitelik eşlemeleri**altında, Azure AD 'Den Pdee ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için Pdee içindeki *Kullanıcı hesaplarıyla* eşleştirmek için kullanılır. 
 
-    ![Pdee Kullanıcı öznitelikleri](media/Foodee-provisioning-tutorial/userattribute.png)
+    ![Pdee Kullanıcı eşlemeleri](media/Foodee-provisioning-tutorial/userattribute.png)
 
-10. **Eşlemeler** bölümünde, * * Azure Active Directory gruplarını **pdee** ile eşitler
+1. Değişikliklerinizi uygulamak için **Kaydet**' i seçin.
+1. **Eşlemeler**' in altında, **Azure Active Directory gruplarını Pdee ile eşitler**' ı seçin.
 
-    ![Pdee Kullanıcı öznitelikleri](media/Foodee-provisioning-tutorial/groupmapping.png)
+    ![Pdee Kullanıcı eşlemeleri](media/Foodee-provisioning-tutorial/groupmapping.png)
 
-11. **Öznitelik eşleme** bölümünde Azure AD 'Den Pdee ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için Pdee içindeki grup hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+1. **Öznitelik eşlemeleri**altında, Azure AD 'Den Pdee ile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri Için Pdee içindeki *Grup hesaplarıyla* eşleştirmek için kullanılır.
 
-    ![Pdee Kullanıcı öznitelikleri](media/Foodee-provisioning-tutorial/groupattribute.png)
+    ![Pdee Kullanıcı eşlemeleri](media/Foodee-provisioning-tutorial/groupattribute.png)
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+1. Değişikliklerinizi uygulamak için **Kaydet**' i seçin.
+1. Kapsam filtrelerini yapılandırın. Nasıl yapılacağını öğrenmek için [kapsam filtresi öğreticisindeki](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)yönergelere bakın.
 
-13. Pdee için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+1. Pdee için Azure AD sağlama hizmetini etkinleştirmek üzere, **Ayarlar** bölümünde **sağlama durumunu** **Açık**olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Sağlama durumu anahtarı](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek, alt ve/veya grupları bir şekilde sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+1. **Ayarlar**' ın altında, **kapsam** açılan listesinde, pdee 'ye sağlamak istediğiniz kullanıcıları veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı açılan listesi](common/provisioning-scope.png)
 
-15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+1. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırma Kaydet düğmesi](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin sonraki eşitlemeler daha uzun sürer. Kullanıcıların ve/veya grupların sağlaması için ne kadar süreceğine ilişkin daha fazla bilgi için bkz. [kullanıcıları sağlamak için ne kadar sürer](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Yukarıdaki işlem, **kapsam** açılan listesinde tanımladığınız kullanıcıların veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin sonraki eşitlemeler daha uzun sürer. Daha fazla bilgi için bkz. [Kullanıcı sağlama ne kadar sürer?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-İlerlemeyi izlemek ve kaynak üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan sağlama etkinliği raporunuzun bağlantılarını izlemek için **geçerli durum** bölümünü kullanabilirsiniz. Daha fazla bilgi için bkz. [Kullanıcı hazırlama durumunu denetleme](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Azure AD sağlama günlüklerini okumak için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../manage-apps/check-status-user-account-provisioning.md).
-
-
+İlerlemeyi izlemek ve sağlama etkinliği raporunuzun bağlantılarını izlemek için **geçerli durum** bölümünü kullanabilirsiniz. Rapor, Azure AD sağlama hizmeti tarafından Pdee üzerinde gerçekleştirilen tüm eylemleri açıklar. Daha fazla bilgi için bkz. [Kullanıcı hazırlama durumunu denetleme](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Azure AD sağlama günlüklerini okumak için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

@@ -6,14 +6,14 @@ services: search
 ms.service: search
 ms.subservice: cognitive-search
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: ae0694c4c79527ef3b64ad68d32ef3bce0150462
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: HT
+ms.openlocfilehash: e28fa919c4c656b9ceb1d34806c3ef08aec2df2c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703565"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719932"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>REST kullanarak Azure Search bilgi deposu oluşturma
 
@@ -29,7 +29,7 @@ Bilgi deposunu oluşturduktan sonra, [Depolama Gezgini](knowledge-store-view-sto
 
 + Örnek verileri ve bilgi deposunu depolamak için [bir Azure depolama hesabı oluşturun](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) . Depolama hesabınızın Azure Search hizmetiniz için aynı konumu (ABD-Batı) kullanması gerekir. *Hesap türü* *StorageV2 (genel amaçlı v2)* (varsayılan) veya *depolama (genel amaçlı v1)* olmalıdır.
 
-+ Önerilen: Azure Search istek göndermek için [Postman masaüstü uygulaması](https://www.getpostman.com/) . REST API, HTTP istekleri ve yanıtları ile çalışan herhangi bir araçla birlikte kullanabilirsiniz. Postman, REST API 'Leri keşfetmek için iyi bir seçimdir ve bu makalede kullanılacaktır. Ayrıca, bu makaleye ait [kaynak kodu](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) Isteklerin bir Postman koleksiyonunu içerir. 
++ Önerilen: Azure Search istek göndermek için [Postman masaüstü uygulaması](https://www.getpostman.com/) . REST API, HTTP istekleri ve yanıtları ile çalışan herhangi bir araçla birlikte kullanabilirsiniz. Postman, REST API 'Leri keşfetmek için iyi bir seçimdir ve bu makalede kullanılacaktır. Ayrıca, bu makaleye ait [kaynak kodu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) Isteklerin bir Postman koleksiyonunu içerir. 
 
 ## <a name="2---store-the-data"></a>2-verileri depolama
 
@@ -53,7 +53,7 @@ Bir Azure Search Indexer tarafından erişilebilmesi ve AI zenginleştirme ardı
 
 ## <a name="3---configure-postman"></a>3-Postman 'ı yapılandırma
 
-[Postman koleksiyonu kaynak kodunu](https://github.com/Azure-Samples/azure-search-postman-samples/knowledge-store/KnowledgeStore.postman_collection.json) Indirin ve **Dosya, içeri aktar... öğesini**kullanarak Postman 'a aktarın. **Koleksiyonlar** sekmesine geçin ve **...** düğmesine tıklayın ve **Düzenle**' yi seçin. 
+[Postman koleksiyonu kaynak kodunu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) Indirin ve **Dosya, içeri aktar... öğesini**kullanarak Postman 'a aktarın. **Koleksiyonlar** sekmesine geçin ve **...** düğmesine tıklayın ve **Düzenle**' yi seçin. 
 
 ![Gezinmeyi gösteren Postman uygulaması](media/knowledge-store-create-rest/postman-edit-menu.png "Postman 'da Düzenle menüsüne git")
 
@@ -88,7 +88,7 @@ Bilgi deposu oluşturmak için dört HTTP isteği oluşturmanız gerekir:
 1. Beceri oluşturmaya yönelik bir PUT isteği. Beceri, verilerinize ve bilgi deposunun yapısına uygulanan zenginleştirme türlerini belirtir.
 1. Dizin oluşturucuyu oluşturmak için bir PUT isteği. Dizin oluşturucuyu çalıştırmak, verileri okur, Beceri uygular ve sonuçları depolar. Bu isteği en son çalıştırmanız gerekir.
 
-[Kaynak kodu](https://github.com/Azure-Samples/azure-search-postman-searches/Tutorial/Knowledge_Store/KnowledgeStore.postman_collection.json) , bu dört istek Içeren bir Postman koleksiyonu içerir. İstekleri vermek için Postman 'daki isteğin sekmesine geçin ve `api-key` ve `Content-Type` istek üst bilgilerini ekleyin. @No__t-0 değerini `{{admin-key}}` olarak ayarlayın. @No__t-0 değerini `application/json` olarak ayarlayın. 
+[Kaynak kodu](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/knowledge-store/KnowledgeStore.postman_collection.json) , bu dört istek Içeren bir Postman koleksiyonu içerir. İstekleri vermek için Postman 'daki isteğin sekmesine geçin ve `api-key` ve `Content-Type` istek üst bilgilerini ekleyin. @No__t-0 değerini `{{admin-key}}` olarak ayarlayın. @No__t-0 değerini `application/json` olarak ayarlayın. 
 
 > [!div class="mx-imgBorder"]
 > ![-1 üstbilgiler için Postman arabirimini gösteren-0Ekran görüntüsü

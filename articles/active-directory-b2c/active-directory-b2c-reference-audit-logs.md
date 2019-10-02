@@ -11,12 +11,12 @@ ms.date: 09/14/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8e35254a79ac43b35f45d1a20f3d1f6815f32be
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: HT
+ms.openlocfilehash: bf9b6a3ad40d46b628bfcdb3fa3e32b2419360c9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702816"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802099"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C denetim günlüklerine erişme
 
@@ -112,10 +112,7 @@ Bir uygulamayı kaydedin, gerekli Microsoft Graph API izinlerini verin ve ardın
 
 ### <a name="create-client-secret"></a>İstemci parolası oluştur
 
-1. **API erişimi**altında **anahtarlar**' ı seçin.
-1. **Anahtar açıklaması** kutusuna anahtar için bir açıklama girin. Örneğin, *Denetim günlüğü anahtarı*.
-1. Bir geçerlilik **süresi**seçin ve ardından **Kaydet**' i seçin.
-1. Anahtarın **değerini**kaydedin. Daha sonraki bir bölümde gösterilen örnek PowerShell betiği gibi Otomasyon betiklerinin kimlik doğrulaması için bu değere ihtiyacınız vardır.
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Artık gerekli API erişimi, uygulama KIMLIĞI ve otomasyon betiklerinizde kullanabileceğiniz bir anahtar içeren bir uygulamanız var. Bir komut dosyasıyla etkinlik olaylarını nasıl alabileceğiniz hakkında bir örnek için bu makalenin ilerleyen kısımlarında bulunan PowerShell betiği bölümüne bakın.
 

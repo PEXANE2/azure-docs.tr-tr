@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/01/2019
 ms.author: bwren
-ms.openlocfilehash: 746166713a6d7d90afb77fb03cf86b311178c5f5
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 50f973de8d1ca983725bc9e9e64eefc9de5237fa
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899657"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802121"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP Veri Toplayıcı API 'SI ile günlük verilerini Azure Izleyici 'ye gönderme (Genel Önizleme)
 Bu makalede, Azure Izleyici 'ye bir REST API istemcisinden günlük verileri göndermek için HTTP Veri Toplayıcı API 'sinin nasıl kullanılacağı gösterilmektedir.  Betik veya uygulamanız tarafından toplanan verilerin nasıl biçimlendirileceğini, bir isteğe dahil edileceğini ve bu isteğin Azure Izleyici tarafından yetkilendirildiğini açıklar.  PowerShell, C#ve Python için örnek verilmiştir.
@@ -41,30 +41,30 @@ Log Analytics çalışma alanındaki tüm veriler, belirli bir kayıt türüne s
 ## <a name="create-a-request"></a>İstek oluştur
 HTTP Veri Toplayıcı API 'sini kullanmak için, JavaScript Nesne Gösterimi (JSON) ' de gönderilecek verileri içeren bir POST isteği oluşturursunuz.  Sonraki üç tablo, her istek için gereken öznitelikleri listeler. Makalenin ilerleyen kısımlarında, her bir özniteliği daha ayrıntılı bir şekilde açıklıyoruz.
 
-### <a name="request-uri"></a>İstek URI'si
+### <a name="request-uri"></a>İstek URI 'SI
 | Öznitelik | Özellik |
 |:--- |:--- |
-| Yöntem |POST |
-| URI |https://\<CustomerID\>. ods.opinsights.Azure.com/api/logs?api-Version=2016-04-01 |
+| Yöntem |Yayınla |
+| KULLANıLMAMıŞSA |https://@no__t -0CustomerId\>.ods.opinsights.azure.com/api/logs? api-Version = 2016-04-01 |
 | İçerik türü |uygulama/json |
 
 ### <a name="request-uri-parameters"></a>İstek URI parametreleri
 | Parametre | Açıklama |
 |:--- |:--- |
 | Ister |Log Analytics çalışma alanı için benzersiz tanımlayıcı. |
-| Resource |API kaynak adı:/api/logs. |
-| API Sürümü |Bu istekle birlikte kullanılacak API sürümü. Şu anda 2016-04-01. |
+| Kaynak |API kaynak adı:/api/logs. |
+| API sürümü |Bu istekle birlikte kullanılacak API sürümü. Şu anda 2016-04-01. |
 
 ### <a name="request-headers"></a>İstek üst bilgileri
-| Üstbilgi | Açıklama |
+| Üst bilgi | Açıklama |
 |:--- |:--- |
-| Authorization |Yetkilendirme imzası. Makalenin ilerleyen kısımlarında, HMAC-SHA256 üst bilgisi oluşturma hakkında bilgi edinebilirsiniz. |
+| Yetkilendirme |Yetkilendirme imzası. Makalenin ilerleyen kısımlarında, HMAC-SHA256 üst bilgisi oluşturma hakkında bilgi edinebilirsiniz. |
 | Günlük türü |Gönderilen verilerin kayıt türünü belirtin. Yalnızca harf, rakam ve alt çizgi (_) içerebilir ve 100 karakterden uzun olamaz. |
 | x-MS-Tarih |İsteğin işlendiği tarih, RFC 1123 biçiminde. |
 | x-MS-Azureresourceıd | Verilerin ilişkilendirilmesi gereken Azure kaynağının kaynak KIMLIĞI. Bu, [_Resourceıd](log-standard-properties.md#_resourceid) özelliğini doldurur ve verilerin [kaynak bağlamı](design-logs-deployment.md#access-mode) sorgularına dahil edilmesini sağlar. Bu alan belirtilmemişse, veriler kaynak bağlamı sorgularına dahil edilmez. |
 | zaman oluşturulan alan | Veri öğesinin zaman damgasını içeren verilerdeki bir alanın adı. Bir alan belirtirseniz, bu durumda içeriği **TimeGenerated**için kullanılır. Bu alan belirtilmemişse, **TimeGenerated** için varsayılan değer, iletinin alınmasının zamanındır. İleti alanının içeriği, ISO 8601 biçiminde YYYY-MM-DDThh: mm: ssZ ' i izlemelidir. |
 
-## <a name="authorization"></a>Authorization
+## <a name="authorization"></a>Yetkilendirme
 Azure Izleyici HTTP Veri Toplayıcı API 'sine yönelik tüm istekler bir yetkilendirme üst bilgisi içermelidir. Bir isteğin kimliğini doğrulamak için isteği, isteği yapan çalışma alanının birincil veya ikincil anahtarıyla imzalamanız gerekir. Ardından, bu imzayı isteğin bir parçası olarak geçirin.   
 
 Yetkilendirme üstbilgisinin biçimi aşağıdadır:
@@ -139,11 +139,11 @@ Veri Toplayıcı API 'sine yönelik her istek, kayıt türü için adı olan bir
 
 Bir özelliğin veri türünü tanımlamak için, Azure Izleyici özellik adına bir sonek ekler. Bir özellik null değeri içeriyorsa, özelliği bu kayda dahil edilmez. Bu tabloda, özellik veri türü ve karşılık gelen sonek listelenmektedir:
 
-| Özellik veri türü | Sonek |
+| Özellik veri türü | Önekini |
 |:--- |:--- |
 | Dize |_s |
-| Boole değeri |_b |
-| Double |_D |
+| Boole |_b |
+| Çift |_D |
 | Tarih/saat |_T |
 | GUID (dize olarak depolanır) |_G |
 
@@ -171,7 +171,7 @@ Daha sonra aşağıdaki girişi gönderdikten sonra, kayıt türü oluşturulmad
 ## <a name="reserved-properties"></a>Ayrılmış Özellikler
 Aşağıdaki özellikler ayrılmıştır ve özel bir kayıt türünde kullanılmamalıdır. Yükünüzü bu özellik adlarından herhangi birini içeriyorsa bir hata alırsınız.
 
-- tenant
+- Kiracı
 
 ## <a name="data-limits"></a>Veri sınırları
 Azure Izleyici veri toplama API 'sine gönderilen verilerin etrafında bazı kısıtlamalar vardır.
@@ -187,11 +187,11 @@ HTTP durum kodu 200, isteğin işlenmek üzere alındığı anlamına gelir. Bu 
 
 Bu tabloda, hizmetin döndürebileceğini belirten tüm durum kodları listelenmektedir:
 
-| Kod | Durum | Hata kodu | Açıklama |
+| Kodlayın | Durum | Hata kodu | Açıklama |
 |:--- |:--- |:--- |:--- |
-| 200 |Tamam | |İstek başarıyla kabul edildi. |
+| 200 |TAMAM | |İstek başarıyla kabul edildi. |
 | 400 |Hatalı istek |Inactivecustomer |Çalışma alanı kapatıldı. |
-| 400 |Hatalı istek |InvalidApiVersion |Belirttiğiniz API sürümü hizmet tarafından tanınmadı. |
+| 400 |Hatalı istek |Invalidapiversion |Belirttiğiniz API sürümü hizmet tarafından tanınmadı. |
 | 400 |Hatalı istek |Invalidcustomerıd |Belirtilen çalışma alanı KIMLIĞI geçersiz. |
 | 400 |Hatalı istek |Invaliddataformat |Geçersiz JSON gönderildi. Yanıt gövdesinde hatanın nasıl çözümleneceği hakkında daha fazla bilgi bulunabilir. |
 | 400 |Hatalı istek |Invalidlogtype |Belirtilen günlük türü özel karakterler veya Numerics içeriyor. |
@@ -201,12 +201,12 @@ Bu tabloda, hizmetin döndürebileceğini belirten tüm durum kodları listelenm
 | 400 |Hatalı istek |UnsupportedContentType |İçerik türü **Application/JSON**olarak ayarlanmadı. |
 | 403 |Yasak |Invalidauthorleştirme |Hizmet, isteğin kimliğini doğrulayamadı. Çalışma alanı KIMLIĞI ve bağlantı anahtarının geçerli olduğunu doğrulayın. |
 | 404 |Bulunamadı | | Girilen URL yanlış ya da istek çok büyük. |
-| 429 |Çok Fazla İstek | | Hizmet, hesabınızdaki yüksek miktarda veri ile karşılaşıyor. Lütfen isteği daha sonra yeniden deneyin. |
-| 500 |İç Sunucu Hatası |UnspecifiedError |Hizmet bir iç hatayla karşılaştı. Lütfen isteği yeniden deneyin. |
-| 503 |Hizmet Kullanılamıyor |ServiceUnavailable |Hizmet şu anda istekleri almak için kullanılamıyor. Lütfen isteğinizi yeniden deneyin. |
+| 429 |Çok fazla Istek | | Hizmet, hesabınızdaki yüksek miktarda veri ile karşılaşıyor. Lütfen isteği daha sonra yeniden deneyin. |
+| 500 |İç sunucu hatası |UnspecifiedError |Hizmet bir iç hatayla karşılaştı. Lütfen isteği yeniden deneyin. |
+| 503 |Hizmet kullanılamıyor |ServiceUnavailable |Hizmet şu anda istekleri almak için kullanılamıyor. Lütfen isteğinizi yeniden deneyin. |
 
 ## <a name="query-data"></a>Verileri sorgulama
-Azure Izleyici HTTP Veri Toplayıcı API 'SI tarafından gönderilen verileri sorgulamak için, belirttiğiniz **LogType** değerine **eşit olan,** **_CL**ile eklenen kayıtları arayın. Örneğin, **Mycustomlog**kullandıysanız, tüm kayıtları ile `MyCustomLog_CL`döndürün.
+Azure Izleyici HTTP Veri Toplayıcı API 'SI tarafından gönderilen verileri sorgulamak için, belirttiğiniz **LogType** değerine **eşit olan,** **_CL**ile eklenen kayıtları arayın. Örneğin, **Mycustomlog**kullandıysanız, `MyCustomLog_CL` ile tüm kayıtları döndürürük.
 
 ## <a name="sample-requests"></a>Örnek istekler
 Sonraki bölümlerde, farklı programlama dilleri kullanarak Azure Izleyici HTTP Veri Toplayıcı API 'sine nasıl veri göndertireceğiz örnekleri bulacaksınız.
@@ -232,7 +232,7 @@ $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 $LogType = "MyRecordType"
 
 # You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
-$TimeStampField = ""
+$TimeStampField = "DateValue"
 
 
 # Create two records with the same set of properties to create
@@ -240,13 +240,13 @@ $json = @"
 [{  "StringValue": "MyString1",
     "NumberValue": 42,
     "BooleanValue": true,
-    "DateValue": "2016-05-12T20:00:00.625Z",
+    "DateValue": "2019-09-12T20:00:00.625Z",
     "GUIDValue": "9909ED01-A74C-4874-8ABF-D2678E3AE23D"
 },
 {   "StringValue": "MyString2",
     "NumberValue": 43,
     "BooleanValue": false,
-    "DateValue": "2016-05-12T20:00:00.625Z",
+    "DateValue": "2019-09-12T20:00:00.625Z",
     "GUIDValue": "8809ED01-A74C-4874-8ABF-D2678E3AE23D"
 }]
 "@
@@ -476,7 +476,7 @@ Veri Toplayıcı API 'SI, Azure günlüklerine serbest biçimli veriler toplamak
 
 | Yapıyı | Açıklama | En uygun |
 |---|---|---|
-| [Özel olaylar](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Application Insights 'de yerel SDK tabanlı alma | Genellikle uygulamanızdaki bir SDK aracılığıyla belgelenmiş olan Application Insights özel olaylar aracılığıyla özel veri göndermenize olanak sağlar. | <ul><li> Uygulamanızda oluşturulan, ancak varsayılan veri türlerinden biri (istekler, bağımlılıklar, özel durumlar vb.) aracılığıyla SDK tarafından çekilmemiş veriler.</li><li> Application Insights ' deki diğer uygulama verileriyle en sık bağıntılı veriler </li></ul> |
+| [Özel olaylar](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): APPLICATION INSIGHTS yerel SDK tabanlı alma | Genellikle uygulamanızdaki bir SDK aracılığıyla belgelenmiş olan Application Insights özel olaylar aracılığıyla özel veri göndermenize olanak sağlar. | <ul><li> Uygulamanızda oluşturulan, ancak varsayılan veri türlerinden biri (istekler, bağımlılıklar, özel durumlar vb.) aracılığıyla SDK tarafından çekilmemiş veriler.</li><li> Application Insights ' deki diğer uygulama verileriyle en sık bağıntılı veriler </li></ul> |
 | Azure Izleyici günlüklerinde veri toplayıcı API 'SI | Azure Izleyici günlüklerinde veri toplayıcı API 'SI, verileri almak için tamamen açık uçlu bir yoldur. JSON nesnesinde biçimlendirilen tüm veriler buraya gönderilebilir. Gönderildikten sonra işlenir ve günlüklerde bulunan diğer verilerle bağıntılı veya diğer Application Insights verilerine yönelik Günlükler kullanılabilir. <br/><br/> Verileri bir Azure Blob blob 'una dosya olarak yüklemek oldukça kolaydır, bu dosyaların nerede işleneceğini ve Log Analytics karşıya yükleneceğini buradan yükleyebilirsiniz. Bu tür bir işlem hattının örnek bir uygulanması için lütfen [Bu](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) makaleye bakın. | <ul><li> Application Insights içinde belgelenmiş bir uygulama içinde oluşturulmayan veriler.</li><li> Arama ve olgu tablolarını, başvuru verilerini, ön toplanmış istatistikleri ve benzeri örnekleri içerir. </li><li> Diğer Azure Izleyici verileri (Application Insights, diğer günlük veri türleri, Güvenlik Merkezi, kapsayıcılar/VM 'Ler için Azure Izleyici vb.) için çapraz başvurulacak verilere yöneliktir. </li></ul> |
 | [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Azure Veri Gezgini (ADX), Application Insights Analytics ve Azure Izleyici günlüklerini destekleyen veri platformudur. Genel kullanıma sunuldu ("GA"), veri platformunu ham biçimde kullanmak küme üzerinde (RBAC, bekletme oranı, şema vb.) bir bütün esnekliği (yönetim yükünü gerektirir) sağlar. ADX [CSV, TSV ve JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) dosyaları gibi birçok alma [seçeneği](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods) sunar. | <ul><li> Application Insights veya günlükleri altındaki diğer verilerle bağıntılı olmayacak veriler. </li><li> Azure Izleyici günlüklerinde gelişmiş alma veya işleme özellikleri gerektiren veriler bugün kullanılamıyor. </li></ul> |
 

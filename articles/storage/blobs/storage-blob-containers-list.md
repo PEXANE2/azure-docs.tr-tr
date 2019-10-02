@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 10/01/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 06454798deb4a5bc5064e28535a837f73c083e1c
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: a76b83218a194c2b5cbf3ce582e8094014004123
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671295"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803373"
 ---
 # <a name="list-blob-containers-with-net"></a>.NET ile blob kapsayıcılarını listeleme
 
@@ -30,21 +30,21 @@ Bu yöntemlerin aşırı yüklemeleri, kapsayıcıların listeleme işlemi taraf
 
 ### <a name="manage-how-many-results-are-returned"></a>Kaç sonuç döndürüldüğünü yönetin
 
-Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, **listcontainerkesimli** metotlardan birini `maxresults` çağırırken parametresi için sıfır dışında bir değer sağlayın.
+Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, **Listcontainerkesimli** metotlardan birini çağırırken `maxresults` parametresi için sıfır olmayan bir değer sağlayın.
 
-Depolama hesabınızda 5000 ' den fazla kapsayıcı varsa veya liste işlemi depolama hesabındaki kapsayıcıların bir alt kümesini döndürdüğünde `maxresults` bu şekilde bir değer belirttiyseniz Azure Storage, bir *devamlılık belirteci* döndürür. kapsayıcıların listesi. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
+Depolama hesabınızda 5000 ' den fazla kapsayıcı varsa veya `maxresults` ' ı bir değer belirttiyseniz, listeleme işlemi depolama hesabındaki kapsayıcıların bir alt kümesini döndürürse Azure Storage, şu liste ile bir *devamlılık belirteci* döndürür kapsayıcıları. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
 
 Kodunuzda, null olup olmadığını anlamak için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devam belirteci null olana kadar, sonraki sonuç kümesini almak için **Listcontainerskesimli** veya **ListContainersSegmentedAsync** yeniden çağırın.
 
 ### <a name="filter-results-with-a-prefix"></a>Sonuçları bir ön eke göre filtrele
 
-Kapsayıcılar listesini filtrelemek için, `prefix` parametre için bir dize belirtin. Ön ek dizesi bir veya daha fazla karakter içerebilir. Daha sonra Azure Storage yalnızca adları bu önek ile başlayan kapsayıcıları döndürür.
+Kapsayıcılar listesini filtrelemek için `prefix` parametresi için bir dize belirtin. Ön ek dizesi bir veya daha fazla karakter içerebilir. Daha sonra Azure Storage yalnızca adları bu önek ile başlayan kapsayıcıları döndürür.
 
 ### <a name="return-container-metadata"></a>Kapsayıcı meta verilerini döndür
 
 Sonuçlarla kapsayıcı meta verileri döndürmek için [Containerlistdetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her kapsayıcı tarafından döndürülen meta verileri içerir, bu nedenle kapsayıcı meta verilerini almak için **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
 
-## <a name="example-list-containers"></a>Örnek: Kapsayıcıları listeleme
+## <a name="example-list-containers"></a>Örnek: liste kapsayıcıları
 
 Aşağıdaki örnek, belirtilen bir önek ile başlayan bir depolama hesabındaki kapsayıcıları zaman uyumsuz olarak listeler. Örnek, kapsayıcıları tek seferde 5 sonuçtan oluşan artışlarla listeler ve sonraki sonuç segmentini almak için devamlılık belirtecini kullanır. Örnek ayrıca, sonuçlarla birlikte kapsayıcı meta verileri döndürür.
 
@@ -99,5 +99,4 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[](/rest/api/storageservices/list-containers2)
-[BLOB kaynaklarını listeler](/rest/api/storageservices/enumerating-blob-resources) halinde listeleme kapsayıcıları
+@No__t [kapsayıcıları listeleme](/rest/api/storageservices/list-containers2)-1[BLOB kaynaklarını numaralandırma](/rest/api/storageservices/enumerating-blob-resources)

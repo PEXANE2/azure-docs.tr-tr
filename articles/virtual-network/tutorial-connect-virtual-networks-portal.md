@@ -17,14 +17,14 @@ ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 943cad871330e2f3b6e13b33dca582ab545fe4be
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a83980c3d4d03f53a19918ed213c965e50baa406
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64726575"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720051"
 ---
-# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağları birbirine bağlama
+# <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
 
 Sanal ağ eşlemesi ile sanal ağları birbirine bağlayabilirsiniz. Bu sanal ağlar aynı bölgede veya farklı bölgelerde (Genel Sanal Ağ Eşleme olarak da bilinir) olabilir. Sanal ağlar eşlendikten sonra, kaynaklar aynı sanal ağ üzerindeymiş gibi, aynı gecikme süresi ve bant genişliği ile her iki sanal ağdaki kaynaklar birbiriyle iletişim kurabilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -50,21 +50,21 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myVirtualNetwork1|
+    |Adı|myVirtualNetwork1|
     |Adres alanı|10.0.0.0/16|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve *myResourceGroup* değerini girin.|
-    |Location| **Doğu ABD**’yi seçin.|
+    |Konum| **Doğu ABD**’yi seçin.|
     |Alt Ağ Adı|Subnet1|
     |Alt Ağ Adresi aralığı|10.0.0.0/24|
 
-      ![Sanal ağ oluşturma](./media/tutorial-connect-virtual-networks-portal/create-virtual-network.png)
+      ![Sanal ağ oluşturun](./media/tutorial-connect-virtual-networks-portal/create-virtual-network.png)
 
 4. Aşağıdaki değişikliklerle birlikte 1.-3. adımları tekrar tamamlayın:
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myVirtualNetwork2|
+    |Adı|myVirtualNetwork2|
     |Adres alanı|10.1.0.0/16|
     |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
     |Alt Ağ Adresi aralığı|10.1.0.0/24|
@@ -80,27 +80,18 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myVirtualNetwork1-myVirtualNetwork2|
+    |MyVirtualNetwork1 'ten uzak sanal ağa eşleme adı|myVirtualNetwork1-myVirtualNetwork2-sayfa ilk yüklendiğinde, burada "uzak sanal ağ" ifadesini görürsünüz. Uzak sanal ağı seçtikten sonra, "uzak sanal ağ" ifadesi uzak sanal ağın adıyla birlikte değişir.|
     |Abonelik| Aboneliğinizi seçin.|
-    |Sanal ağ|myVirtualNetwork2 - *myVirtualNetwork2* sanal ağını seçmek için **Sanal ağ**’ı seçin ve sonra **myVirtualNetwork2** seçeneğini belirleyin. Aynı bölgede veya farklı bir bölgede bulunan bir sanal ağı seçebilirsiniz.|
+    |Sanal ağ|myVirtualNetwork2- *myVirtualNetwork2* sanal ağını seçmek için **sanal ağ**' ı seçin ve ardından **myVirtualNetwork2 (myresourcegroup)** seçeneğini belirleyin. Aynı bölgede veya farklı bir bölgede bulunan bir sanal ağı seçebilirsiniz.|
+    |MyVirtualNetwork2 ile myVirtualNetwork1 arasında eşleme adı|myVirtualNetwork2-myVirtualNetwork1|
 
-    ![Eşleme ayarları](./media/tutorial-connect-virtual-networks-portal/peering-settings.png)
+    ![Eşleme ayarları](./media/tutorial-connect-virtual-networks-portal/peering-settings-bidirectional.png)
 
-    Aşağıdaki resimde gösterildiği gibi **EŞLEME DURUMU**, *Başlatıldı* durumundadır:
+    Aşağıdaki resimde gösterildiği gibi, **eşleme durumu** *bağlı*olur:
 
-    ![Eşleme durumu](./media/tutorial-connect-virtual-networks-portal/peering-status.png)
+    ![Eşleme durumu](./media/tutorial-connect-virtual-networks-portal/peering-status-connected.png)
 
     Durumu görmüyorsanız tarayıcınızı yenileyin.
-
-4. Azure portalının üst kısmındaki **Arama** kutusuna *MyVirtualNetwork2* yazmaya başlayın. Arama sonuçlarında **myVirtualNetwork2** görüntülendiğinde bunu seçin.
-5. Aşağıdaki değişikliklerle birlikte 2.-3. adımları tamamlayın ve sonra **Tamam**’ı seçin:
-
-    |Ayar|Değer|
-    |---|---|
-    |Ad|myVirtualNetwork2-myVirtualNetwork1|
-    |Sanal ağ|myVirtualNetwork1|
-
-    **EŞLEME DURUMU**, *Bağlanıldı* durumundadır. Azure, *myVirtualNetwork2-myVirtualNetwork1* eşlemesi için eşleme durumunu *Başlatıldı* durumundan *Bağlanıldı* durumuna da geçirmiştir. Her iki sanal ağın da eşleme durumu *Bağlanıldı* olana kadar sanal ağ eşlemesi tam olarak oluşturulmuş olmaz. 
 
 ## <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
@@ -114,11 +105,11 @@ Sonraki bir adımda aralarında iletişim kurabilmeniz için her sanal ağ üzer
 
     |Ayar|Değer|
     |---|---|
-    |Ad|myVm1|
+    |Adı|myVm1|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
-    |Location| **Doğu ABD**’yi seçin.|
+    |Konum| **Doğu ABD**’yi seçin.|
 4. **Boyut seçin** bölümünden bir sanal makine boyutu seçin.
 5. **Ayarlar** için aşağıdaki değerleri seçin ve **Tamam**’a tıklayın:
 
@@ -137,7 +128,7 @@ Aşağıdaki değişikliklerle birlikte 1.-6. adımları tekrar tamamlayın:
 
 |Ayar|Değer|
 |---|---|
-|Ad | myVm2|
+|Adı | myVm2|
 |Sanal ağ | myVirtualNetwork2|
 
 Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makine de oluşturulmadan kalan adımlara devam etmeyin.

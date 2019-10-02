@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: 9947d28cbde7f4804283e03cc07093b9240ca6bf
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 0f35f22d6bd32d75d5c3b07d8a20b4bb7714e247
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240995"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799553"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Microsoft Azure ve Oracle bulut altyapısını tümleştirerek Oracle uygulama çözümleri (Önizleme)
 
@@ -28,7 +28,7 @@ Microsoft ve Oracle, düşük gecikme süresi, yüksek aktarım hızı arası ba
 Bu platformlar arası bağlantıyı kullanarak, veritabanı katmanınızı Oracle bulut altyapısında (OCı), uygulama ve Microsoft Azure üzerindeki diğer katmanlara çalıştırmak için çok katmanlı bir uygulamayı bölümleyebilirsiniz. Deneyim, tüm çözüm yığınını tek bir bulutta çalıştırmaya benzer. 
 
 > [!IMPORTANT]
-> Bu platformlar arası özellik şu anda önizleme aşamasındadır ve [sınırlamalar geçerlidir](#preview-limitations). Azure ile OCı arasında düşük gecikme süresi bağlantısını etkinleştirmek için, Azure aboneliğinizin bu özellik için önce beyaz listelenmesi gerekir. Bu kısa [anket formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)tamamlayarak önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Ayrıca, bu önizleme için etkinleştirilecek Microsoft temsilcinize de başvurabilirsiniz. Önizleme özelliğine erişim, Microsoft 'un kendi takdirine bağlı olarak kullanılabilirliğine ve kısıtlanmasını sağlar. Anketin tamamlanması erişimi garanti etmez. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure önizlemeleri için [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bölümüne bakın. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> Bu platformlar arası özellik şu anda önizleme aşamasındadır ve [sınırlamalar geçerlidir](#preview-limitations). Azure ile OCı arasında düşük gecikmeli bağlantı kurmak için, bu özellik için önce Azure aboneliğinizin etkinleştirilmesi gerekir. Bu kısa [anket formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)tamamlayarak önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Ayrıca, bu önizleme için etkinleştirilecek Microsoft temsilcinize de başvurabilirsiniz. Önizleme özelliğine erişim, Microsoft 'un kendi takdirine bağlı olarak kullanılabilirliğine ve kısıtlanmasını sağlar. Anketin tamamlanması erişimi garanti etmez. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure önizlemeleri için [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bölümüne bakın. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 Oracle çözümlerini tamamen Azure altyapısına dağıtmaya ilgileniyorsanız, [Microsoft Azure Oracle VM görüntüleri ve bunların dağıtımı](oracle-vm-solutions.md)' na bakın.
 
@@ -52,7 +52,7 @@ Aşağıdaki diyagramda bağlı çözüme üst düzey bir genel bakış sunulmak
 
 * Önizlemede çapraz bulut bağlantısı, Azure Doğu ABD (eastus) & UK Güney (UKGüney) bölgeleriyle ve OCı Ashyakma (ABD Doğu) & Londra (UK Güney) bölgeleriyle sınırlıdır. UK Güney için, daha düşük gecikme süreleriyle bağlantı dağıtmak için lütfen OCı 'da kullanılabilirlik etki alanı 1 (AD 1) kullanın.
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
 Kurumsal müşteriler genellikle çeşitli iş ve işletimsel nedenlerle birden fazla bulutta iş yüklerini birbirinden ayırmak ve dağıtmak için seçer. Sıfy, müşteriler Internet, IPSec VPN 'i kullanarak bulut ağları ve şirket içi ağınız aracılığıyla bulut sağlayıcısının doğrudan bağlantı çözümünü kullanarak bağlantı sağlar. Bulut ağlarının birbirine bağlanması, zaman, para, tasarım, tedarik, yükleme, test ve işlemler için önemli yatırımlar gerektirebilir. 
 

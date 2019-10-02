@@ -1,38 +1,41 @@
 ---
 title: Konuşma SDK-konuşma hizmeti ile sıkıştırılmış ses codec bileşeni
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK 'Sı ile Azure konuşma Hizmetleri 'ne sıkıştırılmış ses akışını nasıl sağlayacağınızı öğrenin. Linux için C++, C#ve Java için kullanılabilir.
+description: Konuşma SDK 'Sı ile Azure konuşma Hizmetleri 'ne sıkıştırılmış ses akışını nasıl sağlayacağınızı öğrenin. Linux için C++, C#ve Java için, Android 'de Java ve amaç-C için kullanılabilir.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: b29b42dea9522526d49c1bda017a522855946def
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8f2896a6289ecaf4046d705da106636258cdadc5
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559553"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802253"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Konuşma SDK 'Sı ile codec ile sıkıştırılmış ses girişi kullanma
 
 Konuşma SDK 'sının **sıkıştırılmış ses giriş akışı** API 'si, sıkıştırılmış ses ' i, pullstream veya PushStream kullanarak konuşma hizmetine akışa almanın bir yolunu sağlar.
 
 > [!IMPORTANT]
-> Sıkıştırılmış ses, Linux üzerinde yalnızca, C++ C#ve Java (Ubuntu 16,04, Ubuntu 18,04, de, 9) için desteklenir.
-> Konuşma SDK sürümü 1.4.0 veya üzeri gereklidir.
+> Linux 'ta, C++ C#ve Java için (Ubuntu 16,04, Ubuntu 18,04, de, 9) akış sıkıştırılmış giriş sesi şu anda desteklenmektedir. Ayrıca iOS platformunda Android ve [Amaç-C ' d a](how-to-use-codec-compressed-audio-input-streams-ios.md) [Java](how-to-use-codec-compressed-audio-input-streams-android.md) için de desteklenir.
+> Konuşma SDK sürümü 1.7.0 veya üzeri gereklidir.
 
 WAV/PCM için ana hat konuşma belgelerine bakın.  WAV/PCM dışında, aşağıdaki codec sıkıştırılmış giriş biçimleri desteklenir:
 
-- MP3
+- ÇA
 - OPUS/OGG
+- FLAC
+- WAV w kapsayıcısında
+- WAV kapsayıcısında MULAW
 
-## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanma önkoşulları
+## <a name="prerequisites"></a>Önkoşullar
 
-Linux için konuşma SDK 'Sı ile sıkıştırılmış ses girişi kullanmak için bu ek bağımlılıkları yükler:
+Sıkıştırılmış ses işleme, [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisanslama nedeni için GStreamer ikili dosyaları derlenmez ve konuşma SDK ile bağlantılı değildir. Bu nedenle, Application Developer 'ın sıkıştırılmış giriş sesini kullanabilmesi için 18,04, 16,04 ve de, 9 ' a, aşağıdakileri yüklemesi gerekir.
 
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
@@ -40,9 +43,9 @@ sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugin
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Codec ile sıkıştırılmış ses girişini kullanan örnek kod
 
-Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için, veya `PullAudioInputStream` `PushAudioInputStream`oluşturun. Daha sonra akış sınıfınızın `AudioConfig` bir örneğinden oluşturun ve akışın sıkıştırma biçimini belirtin.
+Konuşma hizmetlerine sıkıştırılmış bir ses biçiminde akış yapmak için `PullAudioInputStream` veya `PushAudioInputStream` oluşturun. Ardından Stream sınıfınızın bir örneğinden, akışın sıkıştırma biçimini belirterek bir `AudioConfig` oluşturun.
 
-Adlandırılmış `myPushStream` bir giriş akışı sınıfınız olduğunu ve Opus/OGG kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
+@No__t-0 adlı bir giriş akışı sınıfınız olduğunu ve OPUS/OGG 'yi kullandığınızı varsayalım. Kodunuz şöyle görünebilir:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -64,4 +67,4 @@ var text = result.GetText();
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-- [C# ' de Konuşma tanıma öğrenin](quickstart-csharp-dotnet-windows.md)
+- [Bkz. konuşmayı tanımaC#](quickstart-csharp-dotnet-windows.md)

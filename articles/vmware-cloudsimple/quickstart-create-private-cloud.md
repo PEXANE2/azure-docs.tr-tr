@@ -8,18 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bbb5b90ffac4a89c14a4a6df51022bb61b10fbb0
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e5cea36760746eaa63451c9e9955368c71ba4472
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845503"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71816138"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
 
 Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı ayarlamayı öğrenin.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="before-you-begin"></a>Başlamadan önce
+
+[Ağ önkoşullarını](cloudsimple-network-checklist.md)gözden geçirin.
+
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
@@ -43,7 +47,7 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
 
     ![Özel bulut oluşturma-temel bilgi](media/create-private-cloud-basic-info.png)
 
-9. İleri **' ye tıklayın: Gelişmiş Seçenekler**.
+9. Ileri ' ye tıklayın **: Gelişmiş Seçenekler**.
 10. VSphere/vSAN alt ağları için CıDR aralığını girin. CıDR aralığının şirket içi veya diğer Azure alt ağlarınızdan (sanal ağlar) veya ağ geçidi alt ağıyla çakışmadığından emin olun.
 
     **CIDR aralığı seçenekleri:** /24,/23,/22 veya/21. A/24 ' e kadar olan bir CıDR aralığı, en fazla 26 düğüm destekler, a/23 CıDR aralığı 58 düğümü destekler ve/22 ve/21 CıDR aralığı 64 düğümlerini destekler (özel buluttaki en fazla düğüm sayısı).  Daha fazla bilgi edinmek için bkz. [VLAN ve alt ağlara genel bakış](cloudsimple-vlans-subnets.md).
@@ -51,9 +55,9 @@ Bu makalede, CloudSimple özel bulutu oluşturmayı ve özel bulut ortamınızı
       > [!IMPORTANT]
       > VSphere/vSAN CıDR aralığındaki IP adresleri özel bulut altyapısı tarafından kullanılmak üzere ayrılmıştır.  Bu aralıkta IP adresini herhangi bir sanal makinede kullanmayın.
 
-11. İleri **' ye tıklayın: Gözden geçirin ve**oluşturun.
+11. Ileri ' ye tıklayın. **İnceleme ve oluşturma**.
 12. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmeniz gerekiyorsa, **önceki**' ye tıklayın.
-13. **Oluştur**'a tıklayın.
+13. **Oluştur**’a tıklayın.
 
 Özel bulut sağlama işlemi başlar.  Özel bulutun sağlanması iki saate kadar sürebilir.
 
@@ -112,7 +116,7 @@ VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  
 4. **Kullanıcıları**seçin.
 5. **VPN yapılandırmadan indir**' e tıklayın.
 
-    ![VPN yapılandırmasını indir](media/download-p2s-vpn-configuration.png)
+    ![VPN yapılandırmasını indirme](media/download-p2s-vpn-configuration.png)
 
 6. VPN istemcinizdeki yapılandırmayı içeri aktarın.
 
@@ -135,7 +139,7 @@ VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  
 5. Listeden bir VLAN KIMLIĞI seçin.  
 6. Alt ağı tanımlamak için bir alt ağ adı girin.
 7. CıDR aralığını ve maskesini belirtin.  Bu Aralık varolan alt ağlarla çakışmamalıdır.
-8. **Gönder**'e tıklayın.
+8. **Gönder**' e tıklayın.
 
     ![VLAN/subnet ayrıntıları oluştur](media/create-new-vlan-subnet-details.png)
 
@@ -155,7 +159,7 @@ Artık sanal makineleri ve ilkeleri ayarlamak için vCenter 'da oturum açabilir
 
 2. VCenter 'a erişmek için tercih ettiğiniz vSphere istemcinizi seçin ve Kullanıcı adınızla parolanızla oturum açın.  Varsayılanlar şunlardır:
     * Kullanıcı adı: **CloudOwner@cloudsimple.local**
-    * Parolayı **CloudSimple123!**  
+    * Parola: **CloudSimple123!**  
 
 Sonraki yordamlardaki vCenter ekranları vSphere (HTML5) istemcisinden alınır.
 
@@ -164,13 +168,13 @@ Sonraki yordamlardaki vCenter ekranları vSphere (HTML5) istemcisinden alınır.
 CloudSimple, vCenter 'da ilk kez oturum açtığınızda parolanızı değiştirmenizi önerir.  
 Ayarladığınız parolanın aşağıdaki gereksinimleri karşılaması gerekir:
 
-* En yüksek yaşam süresi: Parolanın her 365 günde bir değiştirilmesi gerekir
-* Yeniden kullanımı kısıtla: Kullanıcılar önceki beş parolanın hiçbirini yeniden kullanmıyorum
+* Maksimum ömür: parolanın her 365 günde bir değiştirilmesi gerekir
+* Yeniden kullanımı kısıtla: kullanıcılar önceki beş parolanın hiçbirini yeniden kullanabilir
 * Uzunluk: 8-20 karakter
-* Özel karakter: En az bir özel karakter
-* Alfabetik karakterler: En az bir büyük harf, A-Z ve en az bir küçük harf, a-z
-* Sayılarının En az bir sayısal karakter, 0-9
-* Aynı bitişik karakterlerin üst sınırı: Üç
+* Özel karakter: en az bir özel karakter
+* Alfabetik karakterler: en az bir büyük harf, A-Z ve en az bir küçük harf, a-z
+* Sayılar: en az bir sayısal karakter, 0-9
+* En büyük bitişik karakterler: üç
 
     Örnek: CC veya CCC parolanın bir parçası olarak kabul edilebilir, ancak CCCC değildir.
 
@@ -184,7 +188,7 @@ Gereksinimleri karşılamayan bir parola ayarlarsanız:
 NSX Yöneticisi varsayılan parolayla dağıtılır.  Özel bulutunuzu oluşturduktan sonra parolayı değiştirmenizi öneririz.
 
 * Kullanıcı adı: **yönetici**
-* Parolayı **CloudSimple123!**
+* Parola: **CloudSimple123!**
 
 CloudSimple portalında tam etki alanı adını (FQDN) ve NSX Manager IP adresini bulabilirsiniz.
 

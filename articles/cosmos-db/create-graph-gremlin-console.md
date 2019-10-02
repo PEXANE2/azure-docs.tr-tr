@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: cb365517c581ebf83026046f385496afd3e28d7f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3f25bbbbc8b3f34bdb89ba8797b042826a88ca8d
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261577"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815960"
 ---
-# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Hızlı Başlangıç: Gremlin konsolunu kullanarak Azure Cosmos DB Graph veritabanı oluşturma, sorgulama ve çapraz geçiş yapma
+# <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Hızlı başlangıç: Gremlin konsolunu kullanarak Azure Cosmos DB Graph veritabanı oluşturma, sorgulama ve çapraz geçiş yapma
 
 > [!div class="op_single_selector"]
 > * [Gremlin konsolu](create-graph-gremlin-console.md)
@@ -39,7 +39,7 @@ Bu hızlı başlangıca yönelik bir Azure Cosmos DB hesabı oluşturmak için A
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/) yüklemeniz gerekir. 3\.2.5 veya daha yüksek bir sürüm kullanın. (Windows üzerinde Gremlin konsolunu kullanmak için yüklemek gereken [Java Çalışma zamanı](https://www.oracle.com/technetwork/java/javase/overview/index.html).)
+Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/) yüklemeniz gerekir. 3\.2.5 veya daha yüksek bir sürüm kullanın. (Windows üzerinde Gremlin konsolunu kullanmak için [Java çalışma zamanı](https://www.oracle.com/technetwork/java/javase/overview/index.html)'nı yüklemeniz gerekir.)
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma
 
@@ -55,16 +55,16 @@ Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/) yüklemeniz gerekir. 
 
     Ayar|Önerilen değer|Açıklama
     ---|---|---
-    hosts|[*Account-Name*. Gremlin.Cosmos.Azure.com]|Aşağıdaki ekran görüntüsüne bakın. Bu, Azure portalının Genel Bakış sayfasında bulunan, köşeli ayraç içindeki, sonundan :443/ bölümü çıkartılmış Gremlin URI değeridir.
+    hosts|[*Hesap-adı*. **Gremlin**. Cosmos.Azure.com]|Aşağıdaki ekran görüntüsüne bakın. Bu, köşeli ayraçlar içinde Azure portal Genel Bakış sayfasındaki **Gremlin URI** değeridir ve sonunda: 443/removed. Not: Gremlin değerlerini, daha sonra Gremlin sorgularını yürütmeye çalışırken, büyük olasılıkla "ana bilgisayar zamanında yanıt vermedi" özel durumuyla sonuçlanan URI 'yi **değil** , [*Account-Name*. Documents.Azure.com] ile biten URI 'yi kullanmayın. 
     port|443|443 olarak ayarlayın.
     kullanıcı adı|*Kullanıcı adınız*|`/dbs/<db>/colls/<coll>` formunun kaynağı; burada `<db>` veritabanı adınız ve `<coll>` koleksiyon adınızdır.
     password|*Birincil anahtarınız*| Aşağıdaki ikinci ekran görüntüsüne bakın. Bu sizin birincil anahtarınızdır, bu anahtarı Azure portalının Anahtarlar sayfasındaki Birincil Anahtar kutusunda bulabilirsiniz. Değeri kopyalamak için kutunun solundaki kopyala düğmesini kullanın.
     connectionPool|{enableSsl: true}|SSL için bağlantı havuzu ayarınız.
     serializer|{ className: org.apache.tinkerpop.gremlin.<br>Driver. ser. GraphSONMessageSerializerV2d0,<br> config: { serializeResultToString: true }}|Bu değere ayarlayın ve değeri yapıştırırken tüm `\n` satır sonlarını silin.
 
-    Hosts değeri için **genel bakış** sayfasından **GREMLIN URI** değerini kopyalayın: ![Azure Portalı'ndaki Genel Bakış sayfasında Gremlin URI değerini görüntüleme ve kopyalama](./media/create-graph-gremlin-console/gremlin-uri.png)
+    Hosts değeri için **Genel Bakış** sayfasından **Gremlin URI** değerini kopyalayın: ![Azure portalındaki Genel Bakış sayfasında bulunan Gremlin URI değerini görüntüleme ve kopyalama](./media/create-graph-gremlin-console/gremlin-uri.png)
 
-    Parola değeri için, **anahtarlar** sayfasından **birincil anahtarı** kopyalayın: ![Azure portal, anahtarlar sayfasında birincil anahtarınızı görüntüleyin ve kopyalayın](./media/create-graph-gremlin-console/keys.png)
+    Password değeri için, **Anahtarlar** sayfasından **Birincil Anahtar**’ı kopyalayın: ![Azure portalındaki Anahtarlar sayfasında bulunan birincil anahtarı görüntüleme ve kopyalama](./media/create-graph-gremlin-console/keys.png)
 
 Remote-secure.yaml dosyanız aşağıdaki gibi görünmelidir:
 
@@ -85,7 +85,7 @@ Ana bilgisayar parametresinin değerini köşeli ayraç [] içinde sardığını
 1. Terminalinizde uygulama hizmetinize bağlanmak için `:remote connect tinkerpop.server conf/remote-secure.yaml` çalıştırın.
 
     > [!TIP]
-    > `No appenders could be found for logger` hatasını alırsanız, remote-secure.yaml dosyasındaki seri hale getirici değerini 2. adımda açıklanan şekilde güncelleştirdiğinizden emin olun. 
+    > `No appenders could be found for logger` hatasını alırsanız, remote-secure.yaml dosyasındaki seri hale getirici değerini 2. adımda açıklanan şekilde güncelleştirdiğinizden emin olun. Yapılandırmanız doğruysa, bu uyarı, konsolunun kullanımını etkilememesi gerektiği için güvenle yok sayılabilir. 
 
 1. Ardından tüm konsol komutlarını uzak sunucuya yönlendirmek için `:remote console` komutunu çalıştırın.
 
@@ -302,7 +302,7 @@ g.E().drop()
 g.V().drop()
 ```
 
-Tebrikler! Bu Azure Cosmos DB tamamladınız: Gremlin API öğreticisi!
+Tebrikler! Bu Azure Cosmos DB: Gremlin API’si öğreticisini tamamladınız!
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure portalında SLA'ları gözden geçirme
 

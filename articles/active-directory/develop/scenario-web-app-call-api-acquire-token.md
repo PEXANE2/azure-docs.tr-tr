@@ -11,61 +11,60 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2019
+ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3aa144c76fb0a8e479658efdb5d43361fbbc085c
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 8fd66dcd6e3845aad79ebffb3cad656d0a14c1a6
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860632"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720212"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API 'Lerini çağıran Web uygulaması-uygulama için bir belirteç alın
 
 Artık size istemci uygulama nesnesi oluşturduğunuza göre, bir Web API 'SI çağırmak için bir belirteç almak üzere onu kullanacaksınız. ASP.NET veya ASP.NET Core içinde, bir Web API 'SI çağrısı daha sonra denetleyicide yapılır. Şu şekilde olur:
 
-- Belirteç önbelleğini kullanarak Web API 'SI için belirteç alma. Bu belirteci almak için öğesini çağırın `AcquireTokenSilent`.
+- Belirteç önbelleğini kullanarak Web API 'SI için belirteç alma. Bu belirteci almak için `AcquireTokenSilent` ' ı çağırın.
 - Korumalı API 'yi erişim belirteciyle çağırma.
 
-## <a name="aspnet-core"></a>ASP.NET Core
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Denetleyici yöntemleri, kullanıcıların kimlik doğrulamasından geçen `[Authorize]` ve Web uygulamasını kullanmasına zorlayan bir öznitelik tarafından korunur. Microsoft Graph çağıran kod aşağıda verilmiştir.
+Denetleyici yöntemleri, kullanıcıların kimlik doğrulamasından geçen ve Web uygulamasını kullanmasına zorlayan bir `[Authorize]` özniteliği tarafından korunur. Microsoft Graph çağıran kod aşağıda verilmiştir.
 
 ```CSharp
 [Authorize]
 public class HomeController : Controller
 {
- ...
+ readonly ITokenAcquisition tokenAcquisition;
+
+ public HomeController(ITokenAcquisition tokenAcquisition)
+ {
+  this.tokenAcquisition = tokenAcquisition;
+ }
+
+ // Code for the controller actions(see code below)
+
 }
 ```
+
+@No__t-0 hizmeti, bağımlılık ekleme yoluyla ASP.NET tarafından eklenir.
+
 
 Aşağıda, Microsoft Graph çağırmak için bir belirteç alan HomeController eyleminin basit bir kodu verilmiştir.
 
 ```CSharp
 public async Task<IActionResult> Profile()
 {
- var application = BuildConfidentialClientApplication(HttpContext, HttpContext.User);
- string accountIdentifier = claimsPrincipal.GetMsalAccountId();
- string loginHint = claimsPrincipal.GetLoginHint();
+ // Acquire the access token
+ string[] scopes = new string[]{"user.read"};
+ string accessToken = await tokenAcquisition.GetAccessTokenOnBehalfOfUserAsync(scopes);
 
- // Get the account
- IAccount account = await application.GetAccountAsync(accountIdentifier);
-
- // Special case for guest users as the Guest iod / tenant id are not surfaced.
- if (account == null)
- {
-  var accounts = await application.GetAccountsAsync();
-  account = accounts.FirstOrDefault(a => a.Username == loginHint);
- }
-
- AuthenticationResult result;
- result = await application.AcquireTokenSilent(new []{"user.read"}, account)
-                            .ExecuteAsync();
- var accessToken = result.AccessToken;
- ...
- // use the access token to call a web API
+// use the access token to call a protected web API
+HttpClient client = new HttpClient();
+client.DefaultRequestHeaders.Add("Authorization", result.CreateAuthorizationHeader());
+string json = await client.GetStringAsync(url);
 }
 ```
 
@@ -73,19 +72,82 @@ Bu senaryo için gereken kodu daha kapsamlı olarak anlamak için, [MS-Identity-
 
 Şöyle birçok ek karmaşıklık vardır:
 
-- Web uygulaması için bir belirteç önbelleği uygulama (öğretici çeşitli uygulamalar sunar)
-- Kullanıcı oturumu kapattığında hesabı önbellekten kaldırma
-- Artımlı onay dahil olmak üzere çeşitli API 'Ler çağırma
+- Çeşitli API 'Ler çağırma,
+- Artımlı onay ve koşullu erişim işleniyor.
 
-## <a name="aspnet"></a>ASP.NET
+Bu gelişmiş adımlar, [3. WebApp-WebApp-çoklu API](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) 'lerin Bölüm 3 ' te işlenir
+
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 ASP.NET ' de benzer şeyler:
 
-- [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin `ClaimsPrincipal` üyesinin Kiracı kimliğini ve Kullanıcı kimliğini ayıklar. (ASP.NET kullanımları `HttpContext.User`.)
-- Buradan, bir MSAL.NET `IConfidentialClientApplication`oluşturur.
-- Son olarak, gizli istemci `AcquireTokenSilent` uygulamasının yöntemini çağırır.
+- Bir [Yetkilendir] özniteliğiyle korunan bir denetleyici eylemi, denetleyicinin `ClaimsPrincipal` üyesinin kiracı KIMLIĞINI ve kullanıcı KIMLIĞINI ayıklar. (ASP.NET `HttpContext.User` kullanır.)
+- Buradan, bir MSAL.NET @no__t oluşturur-0.
+- Son olarak, gizli istemci uygulamasının `AcquireTokenSilent` yöntemini çağırır.
 
 Kod, ASP.NET Core gösterilen koda benzerdir.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Java örneğinde, bir API çağıran kod, getUsersFromGraph yönteminde [Authpagecontroller. Java # L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
+
+@No__t-0 ' i çağırmaya çalışır. Kullanıcının daha fazla kapsam onaylaması gerekiyorsa, kod, kullanıcıyı zorluk `MsalInteractionRequiredException` ' ı işler.
+
+```java
+@RequestMapping("/msal4jsample/graph/users")
+    public ModelAndView getUsersFromGraph(HttpServletRequest httpRequest, HttpServletResponse response)
+            throws Throwable {
+
+        IAuthenticationResult result;
+        ModelAndView mav;
+        try {
+            result = authHelper.getAuthResultBySilentFlow(httpRequest, response);
+        } catch (ExecutionException e) {
+            if (e.getCause() instanceof MsalInteractionRequiredException) {
+
+                // If silent call returns MsalInteractionRequired, then redirect to Authorization endpoint
+                // so user can consent to new scopes
+                String state = UUID.randomUUID().toString();
+                String nonce = UUID.randomUUID().toString();
+
+                SessionManagementHelper.storeStateAndNonceInSession(httpRequest.getSession(), state, nonce);
+
+                String authorizationCodeUrl = authHelper.getAuthorizationCodeUrl(
+                        httpRequest.getParameter("claims"),
+                        "User.ReadBasic.all",
+                        authHelper.getRedirectUriGraphUsers(),
+                        state,
+                        nonce);
+
+                return new ModelAndView("redirect:" + authorizationCodeUrl);
+            } else {
+
+                mav = new ModelAndView("error");
+                mav.addObject("error", e);
+                return mav;
+            }
+        }
+    // Code omitted here.
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python örneğinde Microsoft Graph çağırma kodu [app. Sip # L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
+
+Belirteç önbelleğinden bir belirteç almaya çalışır ve sonra yetkilendirme üst bilgisini ayarladıktan sonra EB API 'sini çağırır. Bu durumda, kullanıcıya yeniden oturum açar.
+
+```python
+@app.route("/graphcall")
+def graphcall():
+    token = _get_token_from_cache(app_config.SCOPE)
+    if not token:
+        return redirect(url_for("login"))
+    graph_data = requests.get(  # Use token to call downstream service
+        app_config.ENDPOINT,
+        headers={'Authorization': 'Bearer ' + token['access_token']},
+        ).json()
+    return render_template('display.html', result=graph_data)
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

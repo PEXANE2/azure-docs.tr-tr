@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088167"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811621"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service için TLS karşılıklı kimlik doğrulamasını yapılandırma
 
@@ -31,11 +31,20 @@ Azure App Service uygulamanıza erişimi, farklı kimlik doğrulama türlerini e
 
 ## <a name="enable-client-certificates"></a>İstemci sertifikalarını etkinleştir
 
-Uygulamanızı istemci sertifikaları gerektirecek şekilde ayarlamak için uygulamanızın `clientCertEnabled` ayarını olarak `true`ayarlamanız gerekir. Ayarı ayarlamak için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın.
+Uygulamanızı istemci sertifikaları gerektirecek şekilde ayarlamak için, uygulamanız için `clientCertEnabled` ayarını `true` olarak ayarlamanız gerekir. Ayarı ayarlamak için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın.
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
+
+## <a name="exclude-paths-from-requiring-authentication"></a>Kimlik doğrulama gerektirmesinden dışlanan yollar
+
+Uygulamanız için karşılıklı kimlik doğrulamasını etkinleştirdiğinizde, uygulamanızın kökündeki tüm yollar erişim için bir istemci sertifikası gerektirir. Bazı yolların anonim erişim için açık kalmasını sağlamak için, uygulama yapılandırmanızın bir parçası olarak dışlama yolları tanımlayabilirsiniz.
+
+Dışlama yolları, **yapılandırma** > **genel ayarları** seçilerek ve bir dışlama yolu tanımlayarak yapılandırılabilir. Bu örnekte, uygulamanız için `/public` yolu altında herhangi bir şey istemci sertifikası istemeyebilir.
+
+![Sertifika dışlama yolları][exclusion-paths]
+
 
 ## <a name="access-client-certificate"></a>İstemci sertifikasına erişin
 
@@ -43,7 +52,7 @@ App Service, isteğin SSL sonlandırması ön uç yük dengeleyicisinde gerçekl
 
 ASP.NET için, istemci sertifikasına **HttpRequest. ClientCertificate** özelliği aracılığıyla erişilebilir.
 
-Diğer uygulama yığınları (node. js, php, vb.) için, istemci sertifikası, `X-ARR-ClientCert` istek üstbilgisinde Base64 kodlamalı bir değer aracılığıyla uygulamanızda kullanılabilir.
+Diğer uygulama yığınları (node. js, PHP, vb.) için, istemci sertifikası `X-ARR-ClientCert` istek üstbilgisinde Base64 kodlamalı bir değer aracılığıyla uygulamanızda kullanılabilir.
 
 ## <a name="aspnet-sample"></a>ASP.NET örneği
 
@@ -171,7 +180,7 @@ Diğer uygulama yığınları (node. js, php, vb.) için, istemci sertifikası, 
 
 ## <a name="nodejs-sample"></a>Node. js örneği
 
-Aşağıdaki Node. js örnek kodu, `X-ARR-ClientCert` üstbilgiyi alır ve Base64 kodlamalı PEM dizesini bir sertifika nesnesine dönüştürmek ve doğrulamak için [node-Forge](https://github.com/digitalbazaar/forge) kullanır:
+Aşağıdaki Node. js örnek kodu `X-ARR-ClientCert` üst bilgisini alır ve [node-Forge](https://github.com/digitalbazaar/forge) kullanarak base64 kodlu PEM dizesini bir sertifika nesnesine dönüştürüp bunu doğrular:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -213,3 +222,5 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Node. js için Soru-Cevap Oluşturma istemci kitaplığı'
+title: 'Hızlı başlangıç: node. js için Soru-Cevap Oluşturma istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
 description: Node. js için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
 services: cognitive-services
@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/21/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 6759b8fdf6e68d4f0030fc4eda5eee5d1ce608b1
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ab3fa02f7285fdbde918f9e365d1ee96ba5e71a1
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203211"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802986"
 ---
-# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Hızlı Başlangıç: Node. js için Soru-Cevap Oluşturma istemci kitaplığı
+# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Hızlı başlangıç: node. js için Soru-Cevap Oluşturma istemci kitaplığı
 
 Node. js için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar. 
 
 Node. js için Soru-Cevap Oluşturma istemci kitaplığını kullanarak şunları yapın:
 
-* Bilgi bankası oluşturma 
+* Bilgi bankası oluşturun 
 * Bilgi Bankası 'nı yönetme
 * Bilgi bankası yayımlama
 
-[Başvuru belge](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [paketi (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node. js örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
+[Başvuru belgeleri](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [paket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [Node. js örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,7 +42,7 @@ Node. js için Soru-Cevap Oluşturma istemci kitaplığını kullanarak şunlar�
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak soru-cevap oluşturma için bir kaynak oluşturun. 
 
-Kaynağından bir anahtar aldıktan sonra, ve `QNAMAKER_HOST`adlı `QNAMAKER_SUBSCRIPTION_KEY` kaynak için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) . Kaynağın **anahtarlarında** bulunan anahtar ve ana bilgisayar değerlerini ve Azure Portal **genel bakış** sayfalarını kullanın.
+Kaynağından bir anahtar aldıktan sonra, kaynak için `QNAMAKER_SUBSCRIPTION_KEY` ve `QNAMAKER_HOST` adlı [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) . Kaynağın **anahtarlarında** bulunan anahtar ve uç nokta değerlerini ve Azure Portal **genel bakış** sayfalarını kullanın.
 
 ### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
@@ -50,7 +52,7 @@ Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bi
 mkdir myapp && cd myapp
 ```
 
-`npm init -y` Bir`package.json` dosya ile bir düğüm uygulaması oluşturmak için komutunu çalıştırın. 
+@No__t-1 dosyası ile bir düğüm uygulaması oluşturmak için `npm init -y` komutunu çalıştırın. 
 
 ```console
 npm init -y
@@ -58,13 +60,13 @@ npm init -y
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
-`ms-rest-azure` Ve`azure-cognitiveservices-qnamaker` NPM paketlerini yüklerken:
+@No__t-0 ve `azure-cognitiveservices-qnamaker` NPM paketlerini yükler:
 
 ```console
 npm install azure-cognitiveservices--qnamaker ms-rest-azure --save
 ```
 
-Uygulamanızın `package.json` dosyası bağımlılıklarla güncelleştirildi.
+Uygulamanızın `package.json` dosyası bağımlılıklarla güncellenir.
 
 
 ## <a name="object-model"></a>Nesne modeli
@@ -94,11 +96,10 @@ Bu kod parçacıkları, Node. js için Soru-Cevap Oluşturma istemci kitaplığ�
 
 Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun. Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 
-
 |Ortam değişkeni|Node. js değişkeni|Örnek|
 |--|--|--|
 |`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|32 karakter GUID 'SI|
-|`QNAMAKER_HOST`|`endpoint`|`https://westus.api.cognitive.microsoft.com`|
+|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com`-alt etki alanı `your-resource-name` ' i kaynağınızın adı değeri ile değiştirin|
 ||||
 
 [!code-javascript[Azure resource variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=resourcekeys)]
@@ -110,7 +111,7 @@ Ardından, anahtarınızla bir ServiceClientCredentials nesnesi oluşturun ve bu
 
 [!code-javascript[Authorization to resource key](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=authorization)]
 
-## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturma
+## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturun
 
 Bilgi Bankası, üç kaynaktan alınan [Createkbdto](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest) nesnesine soru ve yanıt çiftlerini depolar:
 
@@ -122,7 +123,7 @@ Bilgi Bankası, üç kaynaktan alınan [Createkbdto](https://docs.microsoft.com/
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
-Bir bilgi bankasını başarıyla [`wait_for_operation`](#get-status-of-an-operation) oluşturmak için yukarıdaki koda başvuruda bulunulan işlevin dahil olduğundan emin olun. 
+Bir bilgi bankasını başarıyla oluşturmak için yukarıdaki kodda başvurulan [`wait_for_operation`](#get-status-of-an-operation) işlevini eklediğinizden emin olun. 
 
 ## <a name="update-a-knowledge-base"></a>Bilgi bankası güncelleştirme
 
@@ -130,7 +131,7 @@ Bilgi Bankası KIMLIĞI ve [güncelleştirme](https://docs.microsoft.com/javascr
 
 [!code-javascript[Update a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=updatekb&highlight=19)]
 
-Bilgi bankasını başarıyla güncelleştirmek [`wait_for_operation`](#get-status-of-an-operation) için yukarıdaki koda başvuruda bulunulan işlevi dahil edin. 
+Bilgi bankasını başarıyla güncelleştirmek için yukarıdaki kodda başvurulan [`wait_for_operation`](#get-status-of-an-operation) işlevini içer ' in olduğundan emin olun. 
 
 ## <a name="publish-a-knowledge-base"></a>Bilgi bankası yayımlama
 
@@ -154,7 +155,7 @@ Aşağıdaki kod bloğundaki _setTimeout_ çağrısı, zaman uyumsuz kodun benze
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı uygulama dizininizdeki komutla çalıştırın. `node index.js`
+Uygulamayı uygulama dizininizdeki `node index.js` komutuyla çalıştırın.
 
 
 Bu makaledeki tüm kod parçacıkları [kullanılabilir](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) ve tek bir dosya olarak çalıştırılabilir.
@@ -173,8 +174,8 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Öğretici: Bir KB oluşturun ve yanıtlayın](../tutorials/create-publish-query-in-portal.md)
+>[Öğretici: bir KB oluşturun ve yanıtlayın](../tutorials/create-publish-query-in-portal.md)
 
 * [Soru-Cevap Oluşturma API'si nedir?](../Overview/overview.md)
-* [Bilgi Bankası Düzenle](../how-to/edit-knowledge-base.md)
+* [Bilgi Bankası düzenleme](../how-to/edit-knowledge-base.md)
 * [Kullanım analizlerini al](../how-to/get-analytics-knowledge-base.md)

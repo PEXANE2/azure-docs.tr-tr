@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: ebefe878393b66e5097ebbda5ef6159a8413833f
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: d6ee5f432321753b9a09749ccf45c9a5bda5300d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68298450"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802489"
 ---
 1. Eclipse’i başlatın.
 
@@ -45,7 +45,7 @@ ms.locfileid: "68298450"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#repositories)]
 
-   * Ayrıca, bir `dependencies` bağımlılık olarak konuşma SDK sürümü 1.6.0 ile bir öğesi ekleyin:
+   * Ayrıca, 1.7.0, bir bağımlılık olarak konuşma SDK sürümü ile birlikte `dependencies` öğesi ekleyin:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java-jre/pom.xml#dependencies)]
 

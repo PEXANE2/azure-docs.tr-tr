@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2019
+ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: c0a11c90b59c1c475f80b82073c6b151d57535c3
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
-ms.translationtype: HT
+ms.openlocfilehash: ab6a0d5c2a4c4623506d90b76b77462abb8fe4af
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709781"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719485"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>Hızlı başlangıç: Python için Görüntü İşleme istemci kitaplığı
 
-Görüntü İşleme Hizmeti geliştiricilere görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişim sağlar. Görüntü İşleme algoritmalar, ilgilendiğiniz görsel özelliklere bağlı olarak bir görüntünün içeriğini farklı yollarla analiz eder.
+Görüntü İşleme hizmeti geliştiricilerin görüntü işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmesini sağlar. Görüntü İşleme algoritmalar, ilgilendiğiniz görsel özelliklere bağlı olarak bir görüntünün içeriğini farklı yollarla analiz eder.
 
 Python için Görüntü İşleme istemci kitaplığını şu şekilde kullanın:
 
@@ -30,7 +30,7 @@ Python için Görüntü İşleme istemci kitaplığını şu şekilde kullanın:
 
 [Başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | [paket (pıy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/) | [örnek](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 * [Python 3. x](https://www.python.org/)
@@ -39,14 +39,14 @@ Python için Görüntü İşleme istemci kitaplığını şu şekilde kullanın:
 
 ### <a name="create-a-computer-vision-azure-resource"></a>Görüntü İşleme Azure kaynağı oluşturma
 
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak görüntü işleme için bir kaynak oluşturun. Ayrıca şunları da yapabilirsiniz:
+Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak görüntü işleme için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
 * Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
 * [Azure Portal](https://portal.azure.com/) kaynağı görüntüleyin
 
 Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, anahtar ve uç nokta URL 'SI için sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT` olarak adlandırılan [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
  
-### <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
+### <a name="create-a-new-python-application"></a>Yeni Python uygulaması oluşturma
 
 Örneğin, yeni bir Python betiği oluşturun @ no__t-0*QuickStart-File.py*. Ardından bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki kitaplıkları içeri aktarın.
 
@@ -71,7 +71,7 @@ pip install --upgrade azure-cognitiveservices-vision-computervision
 
 Aşağıdaki sınıflar ve arabirimler Görüntü İşleme Python SDK 'sının önemli özelliklerinden bazılarını işler.
 
-|Name|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |[ComputerVisionClientOperationsMixin](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.operations.computervisionclientoperationsmixin?view=azure-python)| Bu sınıf, görüntü analizi, metin algılama ve küçük resim oluşturma gibi tüm görüntü işlemlerini doğrudan işler.|
 | [ComputerVisionClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız. **ComputerVisionClientOperationsMixin**uygular.|
@@ -82,7 +82,7 @@ Aşağıdaki sınıflar ve arabirimler Görüntü İşleme Python SDK 'sının �
 Bu kod parçacıkları, Python için Görüntü İşleme istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Görüntü çözümleme](#analyze-an-image)
+* [Resim çözümleme](#analyze-an-image)
 * [Yazdırılmış ve el yazısı metin oku](#read-printed-and-handwritten-text)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
@@ -94,7 +94,7 @@ Uç noktanız ve anahtarınızla bir istemci örneği oluşturun. Anahtarınızl
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
 
-## <a name="analyze-an-image"></a>Görüntü çözümleme
+## <a name="analyze-an-image"></a>Bir resmi çözümleme
 
 Çözümlemek istediğiniz bir görüntünün URL 'sine bir başvuru kaydedin.
 
@@ -130,15 +130,15 @@ Aşağıdaki kod görüntüde kurumsal markaların ve logoları algılar ve bunl
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_brands)]
 
-### <a name="detect-faces"></a>Yüzeyleri Algıla
+### <a name="detect-faces"></a>Yüz algılama
 
 Aşağıdaki kod görüntüde dikdörtgen koordinatlarıyla algılanan yüzeyleri döndürür ve yüz niteliklerini seçer. Daha fazla ayrıntı için bkz. [yüz algılama](../concept-detecting-faces.md) .
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_faces)]
 
-### <a name="detect-adult-or-racy-content"></a>Yetişkin veya kcy içeriğini algılama
+### <a name="detect-adult-racy-or-gory-content"></a>Yetişkin, kcy veya Gori içeriğini algılama
 
-Aşağıdaki kod görüntüde yetişkinlere veya kcy içeriğinin algılanan varlığını yazdırır. Daha fazla ayrıntı için bkz. [yetişkin ve kcy içeriği](../concept-detecting-adult-content.md) .
+Aşağıdaki kod görüntüde yetişkinlere yönelik içeriğin algılanan varlığını yazdırır. Daha fazla ayrıntı için bkz. [yetişkin, korcy, Gori içeriği](../concept-detecting-adult-content.md) .
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_adult)]
 
@@ -190,12 +190,12 @@ Uygulamayı hızlı başlangıç dosyanızda `python` komutuyla çalıştırın.
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
 
 * [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
-* [Azure CLı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
+* [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

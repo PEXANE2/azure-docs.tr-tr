@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d4aae2f2ef9ccbc645647125682d999c11c99ab6
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 600c619134cae18e69b5a200cb03fbebd82dee0f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649824"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719896"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search-sık sorulan sorular (SSS)
 
@@ -30,7 +30,7 @@ Azure Search birden çok veri kaynağını, [birçok dil için dil analizini](ht
 
 Arama teknolojilerini karşılaştırırken, müşteriler, Azure Search Elau araması ile nasıl Karşılaştırıldığı hakkında daha fazla ayrıntı ister. Önemli bir görevi daha kolay hale yaptığımız veya diğer Microsoft teknolojileriyle yerleşik tümleştirmeye gerek duyduğumuz için, kendi arama uygulaması projeleri için Elaor araması üzerinden Azure Search seçen müşteriler genellikle bu şekilde yapılır.
 
-+ Azure Search,% 99,9 hizmet düzeyi sözleşmeleri (SLA) ile tam olarak yönetilen bir bulut hizmetidir (okuma erişimi için 2 çoğaltma, okuma-yazma için 3 çoğaltma).
++ Azure Search,% 99,9 hizmet düzeyi sözleşmeleri (SLA) ile tam olarak yönetilen bir bulut hizmetidir (okuma erişimi için 2 çoğaltma, okuma-yazma için üç çoğaltma).
 + Microsoft 'un [doğal dil işlemcileri](https://docs.microsoft.com/rest/api/searchservice/language-support) önde gelen Edge dil analizi sunar.  
 + [Azure Search Dizin oluşturucular](search-indexer-overview.md) , ilk ve artımlı dizin oluşturma Için çeşitli Azure veri kaynaklarına gezinebilirler.
 + Sorgu veya dizin oluşturma birimlerindeki dalgalanmalara hızlı yanıt almanız gerekiyorsa Azure portal [kaydırıcı denetimlerini](search-manage.md#scale-up-or-down) kullanabilir veya bir [PowerShell betiği](search-manage-powershell.md)çalıştırarak doğrudan yönetimi doğrudan atlayarak yönetebilirsiniz.  
@@ -42,17 +42,27 @@ Hizmeti duraklatırsınız. Hesaplama ve depolama kaynakları, hizmet oluşturul
 
 ## <a name="indexing-operations"></a>Dizin oluşturma Işlemleri
 
-### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>Dizinler veya dizin anlık görüntülerini yedekleyin ve geri yükleyin (ya da indirin ve taşıyın)?
+### <a name="move-backup-and-restore-indexes-or-index-snapshots"></a>Dizinleri veya dizin anlık görüntülerini taşıyın, yedekleyin ve geri yükleyin
 
-Herhangi bir zamanda [bir dizin tanımı alabilmeniz](https://docs.microsoft.com/rest/api/searchservice/get-index) mümkün olsa da, bulutta çalışan *doldurulmuş* bir dizini bir yerel sisteme indirmek ya da başka bir Azure Search hizmetine taşımak için Dizin ayıklama, anlık görüntü veya yedekleme-geri yükleme özelliği yoktur.
+Geliştirme aşamasında, dizininizi arama hizmetleri arasında taşımak isteyebilirsiniz. Örneğin, dizininizin geliştirilmesi için temel veya ücretsiz bir fiyatlandırma katmanı kullanabilir ve daha sonra üretim kullanımı için standart veya daha yüksek bir katmana taşımak isteyebilirsiniz. 
 
-Dizinler, yazdığınız koddan oluşturulup doldurulur ve yalnızca Bulutta Azure Search çalışır. Genellikle, bir dizini başka bir hizmete taşımak isteyen müşteriler, kendi kodlarını yeni bir uç nokta kullanacak şekilde düzenleyerek ve sonra Dizin oluşturmayı yeniden çalıştırabilmenizi sağlar. Bir anlık görüntü almak veya bir dizini yedeklemek istiyorsanız, [Kullanıcı sesine](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index)bir oy atayın.
+Ya da, daha sonra geri yüklemek için kullanılabilecek dosyalara bir dizin anlık görüntüsü yedeklemek isteyebilirsiniz. 
+
+Bu [Azure Search .NET örnek deposu](https://github.com/Azure-Samples/azure-search-dotnet-samples)' nda **Dizin-yedekleme-geri yükleme** örnek kodu ile tüm bu şeyleri yapabilirsiniz. 
+
+Ayrıca, Azure Search REST API kullanarak istediğiniz zaman [bir dizin tanımı alabilirsiniz](https://docs.microsoft.com/rest/api/searchservice/get-index) .
+
+Şu anda Azure portal yerleşik Dizin ayıklama, anlık görüntü veya yedekleme-geri yükleme özelliği yoktur. Bununla birlikte, yedekleme ve geri yükleme işlevlerini gelecek bir sürüme eklemeyi düşünüyoruz. Bu özellik için desteğiniz gösterilmesini istiyorsanız, [Kullanıcı sesine](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index)bir oy atayın.
 
 ### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>Dizin veya hizmetmi silindikten sonra geri yükleyebilir miyim?
 
-Hayır, dizinleri veya hizmetleri geri yükleyemezsiniz. Bir Azure Search dizini silerseniz, işlem son ' dur ve Dizin kurtarılamıyor. Bir Azure Search hizmetini sildiğinizde, hizmette bulunan tüm dizinler kalıcı olarak silinir. Ayrıca, bir veya daha fazla Azure Search hizmeti içeren bir Azure kaynak grubunu silerseniz, tüm hizmetler kalıcı olarak silinir.  
+Hayır, bir Azure Search dizini veya hizmeti silerseniz, bu, kurtarılamaz. Bir Azure Search hizmetini sildiğinizde, hizmette bulunan tüm dizinler kalıcı olarak silinir. Bir veya daha fazla Azure Search hizmeti içeren bir Azure kaynak grubunu silerseniz, tüm hizmetler kalıcı olarak silinir.  
 
-Dizinler, Dizin oluşturucular, veri kaynakları ve becerileri gibi kaynakları geri yükleme, bunları koddan yeniden oluşturmanız gerekir. Dizinler söz konusu olduğunda, dış kaynaklardaki verileri yeniden oluşturmanız gerekir. Bu nedenle, Azure SQL veritabanı veya Cosmos DB gibi başka bir veri deposunda orijinal verilerin bir ana kopyasını veya yedeğini tutmanız önemle tavsiye edilir.
+Dizinler, Dizin oluşturucular, veri kaynakları ve becerileri gibi kaynakların yeniden oluşturulması, bunları koddan yeniden oluşturmanızı gerektirir. 
+
+Bir dizini yeniden oluşturmak için dış kaynaklardaki verileri yeniden dizinetmeniz gerekir. Bu nedenle, Azure SQL veritabanı veya Cosmos DB gibi başka bir veri deposunda orijinal verilerin bir ana kopyasını veya yedeklemesini tutmanız önerilir.
+
+Alternatif olarak, bir dizin tanımını ve dizin anlık görüntüsünü bir dizi JSON dosyasına yedeklemek için bu [Azure Search .NET örnek deposu](https://github.com/Azure-Samples/azure-search-dotnet-samples) ' nda **Dizin-yedekleme-geri yükleme** örnek kodunu kullanabilirsiniz. Daha sonra, gerekirse, dizini geri yüklemek için aracını ve dosyalarını kullanabilirsiniz.  
 
 ### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>SQL veritabanı Çoğaltmalarından dizin oluşturabilir miyim ( [Azure SQL veritabanı Dizin oluşturucular](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers)için geçerlidir)
 
@@ -66,17 +76,17 @@ Hayır, bu işlem desteklenmiyor. Arama her zaman tek bir dizine eklenir.
 
 ### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Kullanıcı kimliğine göre arama dizini erişimini kısıtlayabilirim miyim?
 
-`search.in()` Filtreyle [Güvenlik filtreleri](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) uygulayabilirsiniz. Filtre, arama sonuçlarını tanımlanan Kullanıcı grubu üyeliğine göre kırpmak için [Azure Active Directory (AAD) gibi kimlik yönetimi hizmetleri](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) ile iyi bir bileşim sağlar.
+@No__t-1 filtresiyle [Güvenlik filtreleri](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) uygulayabilirsiniz. Filtre, arama sonuçlarını tanımlanan Kullanıcı grubu üyeliğine göre kırpmak için [Azure Active Directory (AAD) gibi kimlik yönetimi hizmetleri](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) ile iyi bir bileşim sağlar.
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Neden geçerli olduğunu bildiğiniz koşullarda hiç sıfır eşleşme var mı?
 
-En yaygın durum, her bir sorgu türünün farklı arama davranışlarını ve dil analizlerinin düzeylerini desteklediğini bilmektir. Önceden baskın iş yükü olan tam metin araması, koşulları kök formlara kesen bir dil analizi aşaması içerir. Bu sorgu ayrıştırma özelliği, belirteçlerin çok sayıda çeşitle eşleştiğinden, olası eşleşmelerin daha geniş bir kısmını yayınlar.
+En yaygın durum, her bir sorgu türünün farklı arama davranışlarını ve dil analizlerinin düzeylerini desteklediğini bilmektir. Baskın iş yükü olan tam metin araması, kök formlara koşulları kesen bir dil analizi aşaması içerir. Bu sorgu ayrıştırma özelliği, belirteçlerin çok sayıda çeşitle eşleştiğinden, olası eşleşmelerin daha geniş bir kısmını yayınlar.
 
-Ancak, joker karakter, benzer ve Regex sorguları, normal terim veya tümcecik sorguları gibi çözümlenmez ve sorgu, arama dizininde bulunan sözcüğün çözümlenme formuyla eşleşmezse kötü bir geri aramaya yol açabilir. Sorgu ayrıştırma ve çözümleme hakkında daha fazla bilgi için lütfen bkz. [sorgu mimarisi](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
+Ancak, joker karakter, benzer ve Regex sorguları, normal terim veya tümcecik sorguları gibi çözümlenmez ve sorgu, arama dizininde bulunan sözcüğün çözümlenme formuyla eşleşmezse kötü bir geri aramaya yol açabilir. Sorgu ayrıştırma ve çözümleme hakkında daha fazla bilgi için bkz. [sorgu mimarisi](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
 
 ### <a name="my-wildcard-searches-are-slow"></a>Joker karakter aramalarım yavaş.
 
-Önek, benzer ve Regex gibi çoğu joker karakter arama sorguları, arama dizininde eşleşen koşullara göre dahili olarak yeniden yazılır. Arama dizinini taramanın bu ek işlemesi gecikme süresine eklenir. Ayrıca, örneğin, birçok terim ile `a*` yeniden yazılması muhtemel büyük olasılıkla çok yavaş arama sorguları çok yavaş olabilir. Performanslı joker karakter aramaları için [özel bir çözümleyici](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)tanımlamayı düşünün.
+Önek, benzer ve Regex gibi çoğu joker karakter arama sorguları, arama dizininde eşleşen koşullara göre dahili olarak yeniden yazılır. Arama dizinini taramanın bu ek işlemesi gecikme süresine eklenir. Daha fazla, örneğin `a*` gibi geniş arama sorguları çok sayıda terimle yeniden yazılması çok yavaş olabilir. Performanslı joker karakter aramaları için [özel bir çözümleyici](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)tanımlamayı düşünün.
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Arama neden her isabet için bir sabit veya eşit puanı 1,0 olarak derecelendirmelidir?
 
@@ -96,6 +106,6 @@ Sorunuz, eksik bir özellik veya işlevlerle ilgili mi? Özelliği [Kullanıcı 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
- [StackOverflow Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
+ [StackOverflow: Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
  [Tam metin aramasının Azure Search nasıl çalıştığı](search-lucene-query-architecture.md)  
  [Azure Search nedir?](search-what-is-azure-search.md)

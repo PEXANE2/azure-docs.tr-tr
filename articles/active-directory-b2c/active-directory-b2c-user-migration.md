@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 20c8fbd1626adaf67b790d500d8bfdeff6f27841
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: HT
+ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71702162"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802090"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Kullanıcı geçişi
 
@@ -59,22 +59,13 @@ Graph API ile iletişim kurmak için, önce yönetici ayrıcalıklarına sahip b
 
 Ardından, uygulamaya, dizine yazmak için gereken Azure AD Graph API izinlerini verin.
 
-1. **Ayarlar** menüsünde **gerekli izinler**' i seçin.
-1. **Windows Azure Active Directory**seçin.
-1. **Erişimi etkinleştir** bölmesinde, **Uygulama izinleri**altında, **Dizin verilerini okuma ve yazma**' yı seçin ve ardından **Kaydet**' i seçin.
-1. **Gerekli izinler** bölmesinde, **izin ver**' i seçin ve ardından **Evet**' i seçin.
-
-   ![Dizini oku/yaz onay kutusu, Kaydet ve izin ver vurgulanan](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
 ### <a name="step-13-create-the-application-secret"></a>Adım 1,3: uygulama gizli anahtarını oluşturma
 
 Daha sonraki bir adımda yapılandırdığınız Kullanıcı geçiş uygulaması tarafından kullanılmak üzere bir istemci gizli anahtarı (anahtar) oluşturun.
 
-1. **Kayıtlı uygulama** sayfasında, **Ayarlar**' ı seçin.
-1. **Anahtarlar**’ı seçin.
-1. **Parolalar**' ın altında, *myclientsecret* adlı yeni bir anahtar (istemci gizli anahtarı olarak da bilinir) ekleyin, bir süre sonu penceresi seçin, **Kaydet**' i seçin ve ardından daha sonra kullanmak üzere anahtar değerini kopyalayın.
-
-    ![Azure portal 'da vurgulanan uygulama KIMLIĞI değeri ve anahtarlar menü öğesi](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
 Artık Azure AD B2C kiracınızda Kullanıcı oluşturma, okuma ve güncelleştirme izinlerine sahip bir uygulamanız var.
 

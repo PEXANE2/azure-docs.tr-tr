@@ -7,24 +7,30 @@ ms.date: 06/20/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 70ad44eade871d52591014ee24e645b95c52f1e5
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: c7860a098096d718a6c5d7cd661ef2b1c1b21e89
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234850"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802659"
 ---
 # <a name="classic-deployment-model"></a>Klasik Dağıtım Modeli
 
-Klasik dağıtım modeli, eski nesil Azure dağıtım modu, sanal makineler ve sanal makine ölçek kümeleri için genel bir vCPU kota sınırı uygular. Klasik dağıtım modelinin artık kullanılması önerilmez ve artık Kaynak Yöneticisi modeliyle değiştirilmiştir. Bu iki dağıtım modeli ve Kaynak Yöneticisi avantajı hakkında daha fazla bilgi edinmek için Kaynak Yöneticisi dağıtım modeli sayfasına bakın. Yeni bir abonelik oluşturulduğunda, buna varsayılan bir vCPU kotası atanır. Klasik dağıtım modeli kullanılarak yeni bir VM dağıtıldığında, tüm bölgelerde yeni ve var olan vCPU 'ların toplam kullanımı, klasik dağıtım modeli için onaylanan vCPU kotasını aşmamalıdır. [Azure aboneliği ve hizmet sınırları sayfasında](https://aka.ms/quotalimits) kotalar hakkında daha fazla bilgi edinin
+Klasik dağıtım modeli, eski nesil Azure dağıtım modelidir. Sanal makineler ve sanal makine ölçek kümeleri için genel bir vCPU kota sınırı uygular. Klasik dağıtım modelinin artık kullanılması önerilmez ve artık Kaynak Yöneticisi modeli tarafından değiştirildi. 
 
-Yardım + Destek dikey penceresinde veya portalda kullanımlar + kota dikey penceresinde, klasik dağıtım modeli için vCPU sayısı artışı isteyebilirsiniz.
+Bu iki dağıtım modeli ve Kaynak Yöneticisi kullanmanın avantajları hakkında daha fazla bilgi edinmek için [Kaynak Yöneticisi ve klasik dağıtım](../azure-resource-manager/resource-manager-deployment-model.md) sayfasına bakın.
+ 
+Yeni bir abonelik oluşturulduğunda, buna varsayılan bir vCPU kotası atanır. Klasik dağıtım modeli kullanılarak yeni bir VM 'nin dağıtılması her zaman, tüm bölgelerde yeni ve var olan vCPU kullanımının toplamı, klasik dağıtım modeli için onaylanan vCPU kotasını aşmamalıdır.
+ 
+[Azure aboneliği ve hizmet limitleri](https://aka.ms/quotalimits) sayfasında kotalar hakkında daha fazla bilgi edinin.
+
+Klasik dağıtım modeli için vCPU kota sınırı ' yardım + destek ' dikey penceresi veya portalda ' kullanımlar + kota ' dikey penceresi aracılığıyla bir artış isteğinde bulunabilir.
 
 ## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>**Yardım + Destek** dikey penceresini kullanarak ABONELIK düzeyindeki VM Serisi vCPU kotası artışına göre istek
 
 Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir destek isteği oluşturmak için aşağıdaki yönergeleri izleyin. 
 
-1. İçinden https://portal.azure.com **Yardım + Destek**' i seçin.
+1. @No__t-0 ' dan **Yardım + Destek**' i seçin.
 
    ![Yardım ve destek](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -64,7 +70,7 @@ Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir
 
 Azure 'un ' kullanım + kota ' dikey penceresi aracılığıyla Azure portal kullanılabilir bir destek isteği oluşturmak için aşağıdaki yönergeleri izleyin. 
 
-1. İçinden https://portal.azure.com **abonelikler**' i seçin.
+1. @No__t-0 ' dan **abonelikler**' i seçin.
 
    ![Abonelikler](./media/resource-manager-core-quotas-request/subscriptions.png)
 

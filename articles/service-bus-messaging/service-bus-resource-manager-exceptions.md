@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 67e95133b9d78823f37ba48f291175ae8e9058d6
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
-ms.translationtype: HT
+ms.openlocfilehash: 7b9d4099734af3a04f43d35d89f07f8b005c90f9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703549"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802525"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus Kaynak Yöneticisi özel durumları
 
@@ -36,8 +36,8 @@ Aşağıda, Azure Resource Manager üzerinden ortaya çıkacak çeşitli özel d
 
 | Hata kodu | Hata alt kodu | Hata iletisi | Açıklama | Öneri |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Hatalı İstek | 40000 | Alt kod = 40000. ' *Namespace Name '* ad alanı ' temel ' katmanını kullandığından, bir kuyruk oluşturulurken *' özellik adı '* özelliği ayarlanamaz. Bu işlem yalnızca ' standart ' veya ' Premium ' katmanda destekleniyor. | Azure Service Bus temel katmanda, aşağıdaki Özellikler ayarlanamaz veya güncelleştirilemez- <ul> <li> RequiresDuplicateDetection </li> <li> Oto Delete OnIdle </li> <li>requiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Konular </li> </ul> | Bu işlevden yararlanmak için temel bilgisayardan standart veya Premium katmana yükseltmeyi düşünün. |
-| Hatalı İstek | 40000 | Alt kod = 40000. Varolan bir kuyruğun (veya konusunun) ' requiresDuplicateDetection ' özelliğinin değeri değiştirilemez. | Yinelenen algılama, varlık oluşturma sırasında etkinleştirilmelidir/devre dışı bırakılmalıdır. Oluşturulduktan sonra, yinelenen algılama yapılandırma parametresi değiştirilemez. | Daha önce oluşturulmuş bir kuyrukta/konuda yinelenen saptamayı etkinleştirmek için, yinelenen algılama ile yeni bir kuyruk/konu oluşturabilir ve ardından orijinal kuyruktan yeni kuyruğa/konuya iletebilirsiniz. |
+| Hatalı İstek | 40000 | Alt kod = 40000. ' *Namespace Name '* ad alanı ' temel ' katmanını kullandığından, bir kuyruk oluşturulurken *' özellik adı '* özelliği ayarlanamaz. Bu işlem yalnızca ' standart ' veya ' Premium ' katmanda destekleniyor. | Azure Service Bus temel katmanda, aşağıdaki Özellikler ayarlanamaz veya güncelleştirilemez- <ul> <li> RequiresDuplicateDetection </li> <li> Oto Delete OnIdle </li> <li>requiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Konular </li> </ul> | Bu işlevselliği kullanmak için temel bilgisayardan standart veya Premium katmana yükseltmeyi düşünün. |
+| Hatalı İstek | 40000 | Alt kod = 40000. Varolan bir kuyruğun (veya konusunun) ' requiresDuplicateDetection ' özelliğinin değeri değiştirilemez. | Yinelenen algılama, varlık oluşturma sırasında etkinleştirilmelidir/devre dışı bırakılmalıdır. Yinelenen algılama yapılandırma parametresi oluşturulduktan sonra değiştirilemez. | Daha önce oluşturulmuş bir kuyrukta/konuda yinelenen saptamayı etkinleştirmek için, yinelenen algılama ile yeni bir kuyruk/konu oluşturabilir ve ardından orijinal kuyruktan yeni kuyruğa/konuya iletebilirsiniz. |
 | Hatalı İstek | 40000 | Alt kod = 40000. Belirtilen 16384 değeri geçersiz. ' Maxsizeınmegabayt ' özelliği şu değerlerden biri olmalıdır: 1024; 2048; 3072; 4096; 5120. | Maxsizeınmegabayt değeri geçersiz. | Maxsizeınmegabayt 'nin aşağıdaki-1024, 2048, 3072, 4096, 5120 değerinden biri olduğundan emin olun. |
 | Hatalı İstek | 40000 | Alt kod = 40000. Kuyruk/konu için bölümleme değiştirilemiyor. | Varlık için bölümleme değiştirilemez. | Yeni bir varlık (kuyruk veya konu) oluşturun ve bölümleri etkinleştirin. | 
 | Hatalı İstek | yok | *' Namespace Name '* ad alanı yok. | Ad alanı Azure aboneliğinizde yok. | Bu hatayı çözmek için lütfen aşağıdaki adımları deneyin <ul> <li> Azure aboneliğinin doğru olduğundan emin olun. </li> <li> Ad alanının mevcut olduğundan emin olun. </li> <li> Ad alanı adının doğru olduğundan emin olun (yazım hatası veya null dizeler yok). </li> </ul> | 
@@ -58,4 +58,17 @@ HTTP içinde olduğu gibi, "hata kodu 429", "çok fazla istek" anlamına gelir. 
 | 429 | 40901 | Alt kod = 40901. Başka bir çakışan işlem devam ediyor. | Aynı kaynak/varlık üzerinde başka bir çakışan işlem devam ediyor | Yeniden denemeden önce geçerli devam eden işlemin tamamlanmasını bekleyin. |
 | 429 | 40900 | Alt kod = 40900. Uzantıları. Kaynağın geçerli durumunda izin verilmeyen bir işlem isteğinde bulunuyoruz. | Aynı anda aynı varlık (kuyruk, konu, abonelik veya kural) üzerinde işlemleri gerçekleştirmek için birden çok istek yapıldığında bu koşul çıkabilir. | Birkaç saniye bekleyip yeniden deneyin |
 | 429 | yok | Kaynak çakışması oluştu. Başka bir çakışan işlem devam ediyor olabilir. Bu, başarısız olan bir işlem için yeniden denemeye devam ederse, arka planda temizlik hala bekliyor. Daha sonra yeniden deneyin. | Aynı varlığa karşı bekleyen bir işlem olduğunda bu durum görünebilir. | Yeniden denemeden önce önceki işlemin tamamlanmasını bekleyin. |
+| 429 | yok | *' Varlık adı '* varlığındaki istek başka bir istekle çakışıyor | Aynı kaynak/varlık üzerinde başka bir çakışan işlem devam ediyor | Yeniden denemeden önce önceki işlemin tamamlanmasını bekleyin |
+| 429 | yok | *' Varlık adı '* varlığı için başka bir güncelleştirme isteği devam ediyor. | Aynı kaynak/varlık üzerinde başka bir çakışan işlem devam ediyor | Yeniden denemeden önce önceki işlemin tamamlanmasını bekleyin |
 
+
+## <a name="error-code-not-found"></a>Hata kodu: bulunamadı
+
+Bu hata sınıfı, kaynağın bulunamadığını gösterir.
+
+| Hata kodu | Hata alt kodu | Hata iletisi | Açıklama | Öneri |
+| ---------- | ------------- | ------------- | ----------- | -------------- |
+| Bulunamadı | yok | *' Varlık adı '* varlığı bulunamadı. | İşlemin bulunamadığı varlık. | Varlığın mevcut olup olmadığını denetleyin ve işlemi yeniden deneyin. |
+| Bulunamadı | yok | Bulunamadı. Işlem yok. | Gerçekleştirmeye çalıştığınız işlem yok. | İşlemi denetleyip yeniden deneyin. |
+| Bulunamadı | yok | Gelen istek, bir ad alanı ilkesi PUT isteği olarak tanınmıyor. | Gelen istek gövdesi null ve bu nedenle bir PUT isteği olarak yürütülemez. | Lütfen, null olmadığından emin olmak için istek gövdesini kontrol edin. | 
+| Bulunamadı | yok | *' Varlık adı '* mesajlaşma varlığı bulunamadı. | İşlemi yürütmeye çalıştığınız varlık bulunamadı. | Lütfen varlığın mevcut olup olmadığını denetleyin ve işlemi yeniden deneyin. |

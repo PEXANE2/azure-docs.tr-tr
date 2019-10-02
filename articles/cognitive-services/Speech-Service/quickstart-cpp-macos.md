@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Konuşmayı tanıma, C++ (MacOS)-konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı tanıma C++ , (MacOS)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: Konuşma SDK 'sını kullanarak macOS C++ 'ta konuşmayı tanımayı öğrenin
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: d7d35c251848af5cfd5852080d01831085401227
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12abb7fb6d5e93e226ae539f8161566e3c30bd65
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554122"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803324"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını C++ kullanarak MacOS 'ta konuşmayı tanıma
+# <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK C++ 'Sını kullanarak MacOS 'Ta konuşmayı tanıma
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Bu makalede, macOS 10,13 ve C++ üzeri için bir konsol uygulaması oluşturacaksınız. Mac 'in mikrofonunuzdan gerçek zamanlı olarak konuşmayı metne eklemek için bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md) kullanın. Uygulama, [macOS Için konuşma SDK 'sı](https://aka.ms/csspeech/macosbinary) ve Mac 'in varsayılan C++ derleyicisi ile oluşturulmuştur (örneğin, `g++`).
+Bu makalede, macOS 10,13 ve C++ üzeri için bir konsol uygulaması oluşturacaksınız. Mac 'in mikrofonunuzdan gerçek zamanlı olarak konuşmayı metne eklemek için bilişsel Hizmetler [konuşma SDK 'sını](speech-sdk.md) kullanın. Uygulama, [macOS Için konuşma SDK 'sı](https://aka.ms/csspeech/macosbinary) ve Mac 'in varsayılan C++ derleyicisi (örneğin, `g++`) ile oluşturulmuştur.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -31,9 +31,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için bir konuşma Hizmetleri aboneli
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Bilişsel Hizmetler Konuşma SDK'sının geçerli sürümü: `1.6.0`.
-
-MacOS için konuşma SDK 'Sı, öğesinden https://aka.ms/csspeech/macosbinary sıkıştırılmış bir çerçeve paketi olarak indirilebilir.
+MacOS için konuşma SDK 'Sı https://aka.ms/csspeech/macosbinary ' dan daraltılmış bir çerçeve paketi olarak indirilebilir.
 
 SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
@@ -49,7 +47,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
    mkdir -p "$SPEECHSDK_ROOT"
    ```
 
-1. Konuşma SDK çerçevesini içeren `.zip` Arşivi indirin ve ayıklayın:
+1. Konuşma SDK çerçevesini içeren `.zip` arşivini indirip ayıklayın:
 
    ```sh
    wget -O SpeechSDK-macOS.zip https://aka.ms/csspeech/macosbinary
@@ -62,17 +60,17 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
    ls -l "$SPEECHSDK_ROOT"
    ```
 
-   Dizin listesi, üçüncü taraf bildirim ve lisans dosyalarının yanı sıra bir `MicrosoftCognitiveServicesSpeech.framework` dizin içermelidir.
+   Dizin listesi, üçüncü taraf bildirimi ve lisans dosyalarını, ayrıca `MicrosoftCognitiveServicesSpeech.framework` dizinini içermelidir.
 
-## <a name="add-sample-code"></a>Örnek kodu ekleme
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `helloworld.cpp` adlı bir C++ kaynak dosyası oluşturun ve aşağıdaki kodu dosyaya yapıştırın.
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-macos/helloworld.cpp#code)]
 
-1. Bu yeni dosyada, dizeyi `YourSubscriptionKey` konuşma Hizmetleri abonelik anahtarınızla değiştirin.
+1. Bu yeni dosyada, `YourSubscriptionKey` dizesini konuşma Hizmetleri abonelik anahtarınızla değiştirin.
 
-1. `YourServiceRegion` dizesini aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin ücretsiz deneme aboneliğinde `westus`) değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
 ## <a name="build-the-app"></a>Uygulama oluşturma
 

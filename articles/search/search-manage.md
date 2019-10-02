@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c4b2a03e7e5c818453eaf4ad6881b2caba3b93c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647669"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719874"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure portal Azure Search için hizmet yönetimi
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ Panoda, kaynak izleme hizmet panosunda gösterilen bilgilerle ve hizmeti sorgula
 
 Arama Hizmeti REST API kullanarak, program aracılığıyla belge ve dizinlerde bir sayı alabilirsiniz: 
 
-* [Dizin istatistiklerini alma](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Dizin Istatistiklerini al](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Belge sayısı](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Olağanüstü durum kurtarma ve hizmet kesintileri
@@ -79,10 +79,9 @@ Dizin oluşturucular kullanmıyorsanız, nesneleri ve verileri farklı arama hiz
 
 ## <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
-Azure Search bir birincil veri depolama çözümü olmadığından, self servis yedekleme ve geri yükleme için biçimsel bir mekanizma sağlamayız. Dizin oluşturmak ve doldurmak için kullanılan uygulama kodunuz, yanlışlıkla bir dizini silerseniz geri yükleme ve geri yükleme seçeneğidir. 
+Azure Search bir birincil veri depolama çözümü olmadığından, self servis yedekleme ve geri yükleme için biçimsel bir mekanizma sağlamayız. Bununla birlikte, Dizin tanımınızı ve anlık görüntüsünü bir dizi JSON dosyasına yedeklemek için bu [Azure Search .NET örnek](https://github.com/Azure-Samples/azure-search-dotnet-samples) deposundaki **Dizin-yedekleme-geri yükleme** örnek kodunu kullanabilir ve gerekirse dizini geri yüklemek için bu dosyaları kullanabilirsiniz. Bu araç Ayrıca, dizinleri hizmet katmanları arasında taşıyabilir.
 
-Bir dizini yeniden oluşturmak için (varsa) onu siler, hizmette dizini yeniden oluşturun ve birincil veri deponuzdan verileri alarak yeniden yükleyin.
-
+Aksi halde, dizin oluşturmak ve doldurmak için kullanılan uygulama kodunuz, yanlışlıkla bir dizini silerseniz geri yükleme ve geri yükleme seçeneğidir. Bir dizini yeniden oluşturmak için (varsa) onu siler, hizmette dizini yeniden oluşturun ve birincil veri deponuzdan verileri alarak yeniden yükleyin.
 
 <a id="scale"></a>
 

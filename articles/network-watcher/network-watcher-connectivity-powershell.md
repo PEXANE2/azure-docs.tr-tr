@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 0f18140036ac762c7383ed1b1d8081aa8d5f877f
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165116"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802034"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>PowerShell kullanarak Azure ağ Izleyicisi ile bağlantı sorunlarını giderme
 
@@ -39,7 +39,7 @@ Bir sanal makineden belirli bir uç noktaya doğrudan TCP bağlantısının kuru
 * İle bağlantı sorunlarını gidermek için sanal makineler.
 
 > [!IMPORTANT]
-> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız `AzureNetworkWatcherExtension` VM 'nin VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
+> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız sanal makinenin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Bir sanal makineye bağlantıyı denetle
 
@@ -57,14 +57,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 $VM2 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $destVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location} 
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta `ConnectionStatus` , **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engelleyecek şekilde yapılandırılmış, Kullanıcı tarafından `NetworkSecurityRule` yapılandırılmış adlandırılmış bir **UserRule_Port80**nedeniyle bağlantı Sanal Gereç sırasında başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
+Aşağıdaki yanıt, önceki örnekteki bir örnektir.  Bu yanıtta `ConnectionStatus` **ulaşılamaz**olur. Tüm yoklamaların başarısız olduğunu görebilirsiniz. Bağlantı noktası 80 ' de gelen trafiği engellemek üzere yapılandırılan, Kullanıcı tarafından yapılandırılan `NetworkSecurityRule` adlı **UserRule_Port80**adlı bir bağlantı, Sanal Gereç sırasında başarısız oldu. Bu bilgiler, bağlantı sorunlarını araştırmak için kullanılabilir.
 
 ```
 ConnectionStatus : Unreachable
@@ -148,14 +148,14 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki örnekte,, `ConnectionStatus` **ulaşılamaz**olarak gösterilir. Ayrıntılarda, trafiğin bir `UserDefinedRoute`nedeniyle engellenmiş `Issues` olduğunu görebilirsiniz. `Hops` 
+Aşağıdaki örnekte `ConnectionStatus`, **ulaşılamaz**olarak gösterilir. @No__t-0 ayrıntılarından `UserDefinedRoute` nedeniyle trafiğin engellendiğini `Issues` altında görebilirsiniz. 
 
 ```
 ConnectionStatus : Unreachable
@@ -211,7 +211,7 @@ $sourceVMName = "MultiTierApp0"
 $RG = Get-AzResourceGroup -Name $rgName
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location } 
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location 
 
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://bing.com/
@@ -219,7 +219,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki yanıtta, `ConnectionStatus` programları **erişilebilir**olarak görebilirsiniz. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
+Aşağıdaki yanıtta `ConnectionStatus` ' ı **erişilebilir**olarak gösterir. Bir bağlantı başarılı olduğunda, gecikme süresi değerleri sağlanır.
 
 ```
 ConnectionStatus : Reachable
@@ -264,14 +264,14 @@ $RG = Get-AzResourceGroup -Name $rgName
 
 $VM1 = Get-AzVM -ResourceGroupName $rgName | Where-Object -Property Name -EQ $sourceVMName
 
-$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $VM1.Location }
+$networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Value $VM1.Location
 
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```
 
 ### <a name="response"></a>Yanıt
 
-Aşağıdaki JSON, önceki cmdlet 'i çalıştırmanın örnek yanıtı örneğidir. Hedefe ulaşılabildiğinden, `ConnectionStatus` özelliği **erişilebilir**olarak gösterilir.  Depolama Blobu ve gecikme süresine ulaşmak için gereken atlama sayısıyla ilgili ayrıntılar verilmiştir.
+Aşağıdaki JSON, önceki cmdlet 'i çalıştırmanın örnek yanıtı örneğidir. Hedefe ulaşılabildiğinden `ConnectionStatus` özelliği **erişilebilir**olarak gösterilir.  Depolama Blobu ve gecikme süresine ulaşmak için gereken atlama sayısıyla ilgili ayrıntılar verilmiştir.
 
 ```json
 ConnectionStatus : Reachable

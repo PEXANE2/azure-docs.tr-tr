@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Hesaplar ve izinler | Microsoft Docs'
+title: 'Azure AD Connect: hesaplar ve izinler | Microsoft Docs'
 description: Bu konuda, kullanılan ve oluşturulan hesaplar ve gerekli izinler açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6760677a94855c259501103a54a96d687c87910b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8e7bd33d74d9ecf6ebc35981df7255ecc19253c7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290962"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812591"
 ---
-# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
+# <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: hesaplar ve izinler
 
 ## <a name="accounts-used-for-azure-ad-connect"></a>Azure AD Connect için kullanılan hesaplar
 
@@ -42,7 +42,7 @@ Azure AD Connect çalıştırmak için kullanılan bu üç hesaba ek olarak, Azu
 
 - **Yerel yönetici hesabı**: Azure AD Connect yükleyen ve makinede yerel yönetici izinlerine sahip olan yönetici.
 
-- **AD DS Kurumsal Yönetici hesabı**: İsteğe bağlı olarak, yukarıdaki "AD DS bağlayıcı hesabı" oluşturmak için kullanılır.
+- **AD DS Kurumsal Yönetici hesabı**: isteğe bağlı olarak, yukarıdaki "AD DS bağlayıcı hesabı" oluşturmak için kullanılır.
 
 - **Azure AD Genel yönetici hesabı**: Azure ad bağlayıcı hesabı oluşturmak ve Azure AD 'yi yapılandırmak için kullanılır.
 
@@ -57,6 +57,9 @@ Azure AD Connect çalıştırmak için kullanılan bu üç hesaba ek olarak, Azu
 > Adanmış yönetim ormanları, kuruluşların yönetim hesaplarını, iş istasyonlarını ve grupları üretim ortamından daha güçlü güvenlik denetimlerine sahip bir ortamda barındırmasına olanak tanır.
 > Adanmış yönetim ormanları hakkında daha fazla bilgi edinmek için lütfen [Esae yönetim ormanı tasarım yaklaşımını](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach) inceleyin
 >>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+
+> [!NOTE]
+> Genel yönetici rolü, İlk kurulumdan sonra gerekli değildir ve tek gerekli hesap, **Dizin eşitleme hesapları** rol hesabı olur. Bu, necssarily değil, hesabı yalnızca genel yönetici rolüyle kaldırmak istediğinizi ifade eder. Rolü daha az güçlü bir rol olarak değiştirmek daha iyidir, ancak Sihirbazı yeniden çalıştırmanız gerektiğinde hesabın sorunları ortaya çıkarabilir. Rol ayrıcalığını azaltarak, Azure AD Connect Sihirbazı 'nı yeniden kullanmanız gerekiyorsa, her zaman ayrıcalıklarınızı yeniden kapatabilirsiniz. 
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect yükleniyor
 Azure AD Connect Yükleme Sihirbazı iki farklı yol sunar:
@@ -90,7 +93,7 @@ AD DS bağlayıcı hesabı, Windows Server AD 'ye okumak ve yazmak için oluştu
 | Tüm özellikleri oku/yaz InetOrgPerson |İçeri ve Exchange karma |
 | Tüm özellikler grubunu oku/yaz |İçeri ve Exchange karma |
 | Tüm özellikleri oku/yaz Ilgili kişisi |İçeri ve Exchange karma |
-| Parola sıfırla |Parola geri yazmayı etkinleştirme hazırlığı |
+| Parola sıfırlama |Parola geri yazmayı etkinleştirme hazırlığı |
 
 ### <a name="express-installation-wizard-summary"></a>Hızlı Yükleme Sihirbazı Özeti
 
@@ -101,8 +104,8 @@ Aşağıda, Hızlı Yükleme Sihirbazı sayfalarının bir özeti, toplanan kiml
 | Sihirbaz sayfası | Toplanan kimlik bilgileri | Gerekli izinler | Kullanıldığı yer |
 | --- | --- | --- | --- |
 | Yok |Yükleme sihirbazını çalıştıran Kullanıcı |Yerel sunucunun yöneticisi |<li>Eşitleme hizmetini çalıştırmak için olarak kullanılan ADSync hizmet hesabını oluşturur. |
-| Azure AD'ye bağlan |Azure AD dizin kimlik bilgileri |Azure AD 'de Genel yönetici rolü |<li>Azure AD dizininde eşitleme etkinleştiriliyor.</li>  <li>Azure AD 'de devam eden eşitleme işlemleri için kullanılan Azure AD bağlayıcı hesabının oluşturulması.</li> |
-| AD DS'ye bağlan |Şirket içi Active Directory kimlik bilgileri |Active Directory 'de Enterprise Admins (EA) grubunun üyesi |<li>Active Directory AD DS bağlayıcı hesabı oluşturur ve buna izin verir. Bu oluşturulan hesap, eşitleme sırasında dizin bilgilerini okumak ve yazmak için kullanılır.</li> |
+| Azure AD'ye Bağlanma |Azure AD dizin kimlik bilgileri |Azure AD 'de Genel yönetici rolü |<li>Azure AD dizininde eşitleme etkinleştiriliyor.</li>  <li>Azure AD 'de devam eden eşitleme işlemleri için kullanılan Azure AD bağlayıcı hesabının oluşturulması.</li> |
+| AD DS'ye Bağlanma |Şirket içi Active Directory kimlik bilgileri |Active Directory 'de Enterprise Admins (EA) grubunun üyesi |<li>Active Directory AD DS bağlayıcı hesabı oluşturur ve buna izin verir. Bu oluşturulan hesap, eşitleme sırasında dizin bilgilerini okumak ve yazmak için kullanılır.</li> |
 
 
 ## <a name="custom-installation-settings"></a>Özel yükleme ayarları
@@ -119,11 +122,11 @@ Aşağıda, Özel Yükleme Sihirbazı sayfalarının Özeti, toplanan kimlik bil
 | --- | --- | --- | --- |
 | Yok |Yükleme sihirbazını çalıştıran Kullanıcı |<li>Yerel sunucunun yöneticisi</li><li>Tam bir SQL Server kullanılıyorsa, kullanıcının SQL 'de Sistem Yöneticisi (SA) olması gerekir</li> |Varsayılan olarak, eşitleme altyapısı hizmet hesabı olarak kullanılan yerel hesabı oluşturur. Hesap yalnızca yönetici belirli bir hesap belirtmezse oluşturulur. |
 | Eşitleme hizmetlerini, hizmet hesabı seçeneğini yükler |AD veya yerel kullanıcı hesabı kimlik bilgileri |Kullanıcı, izinler Yükleme Sihirbazı tarafından verilir |Yönetici bir hesap belirtiyorsa, bu hesap eşitleme hizmeti için hizmet hesabı olarak kullanılır. |
-| Azure AD'ye bağlan |Azure AD dizin kimlik bilgileri |Azure AD 'de Genel yönetici rolü |<li>Azure AD dizininde eşitleme etkinleştiriliyor.</li>  <li>Azure AD 'de devam eden eşitleme işlemleri için kullanılan Azure AD bağlayıcı hesabının oluşturulması.</li> |
-| Dizinlerinizi bağlayın |Azure AD 'ye bağlı her bir ormanın şirket içi Active Directory kimlik bilgileri |İzinler, etkinleştirdiğiniz özelliklere ve AD DS Bağlayıcısı hesabını oluşturma bölümünde bulunabilir. |Bu hesap, eşitleme sırasında dizin bilgilerini okumak ve yazmak için kullanılır. |
+| Azure AD'ye Bağlanma |Azure AD dizin kimlik bilgileri |Azure AD 'de Genel yönetici rolü |<li>Azure AD dizininde eşitleme etkinleştiriliyor.</li>  <li>Azure AD 'de devam eden eşitleme işlemleri için kullanılan Azure AD bağlayıcı hesabının oluşturulması.</li> |
+| Dizinlerinizi bağlama |Azure AD 'ye bağlı her bir ormanın şirket içi Active Directory kimlik bilgileri |İzinler, etkinleştirdiğiniz özelliklere ve AD DS Bağlayıcısı hesabını oluşturma bölümünde bulunabilir. |Bu hesap, eşitleme sırasında dizin bilgilerini okumak ve yazmak için kullanılır. |
 | AD FS Sunucuları |Listedeki her sunucu için, Sihirbazı çalıştıran kullanıcının oturum açma kimlik bilgileri bağlantı kurmak için yeterli olmadığında sihirbaz kimlik bilgilerini toplar |Etki alanı Yöneticisi |AD FS sunucusu rolünü yükleme ve yapılandırma. |
 | Web uygulaması ara sunucusu |Listedeki her sunucu için, Sihirbazı çalıştıran kullanıcının oturum açma kimlik bilgileri bağlantı kurmak için yeterli olmadığında sihirbaz kimlik bilgilerini toplar |Hedef makinede yerel yönetici |WAP sunucu rolünü yükleme ve yapılandırma. |
-| Ara sunucu güveni kimlik bilgileri |Federasyon hizmeti güven kimlik bilgileri (proxy 'nin bir güven sertifikasını FS 'den kaydettirmek için kullandığı kimlik bilgileri |AD FS sunucusunun yerel Yöneticisi olan etki alanı hesabı |FS-WAP güven sertifikasının ilk kaydı. |
+| Proxy güveni kimlik bilgileri |Federasyon hizmeti güven kimlik bilgileri (proxy 'nin bir güven sertifikasını FS 'den kaydettirmek için kullandığı kimlik bilgileri |AD FS sunucusunun yerel Yöneticisi olan etki alanı hesabı |FS-WAP güven sertifikasının ilk kaydı. |
 | AD FS hizmet hesabı sayfası, "etki alanı kullanıcı hesabı kullan seçeneği" |AD Kullanıcı hesabı kimlik bilgileri |Etki alanı kullanıcısı |Kimlik bilgileri sağlanmış olan Azure AD Kullanıcı hesabı, AD FS hizmetinin oturum açma hesabı olarak kullanılır. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>AD DS Bağlayıcısı hesabını oluşturma
@@ -131,7 +134,7 @@ Aşağıda, Özel Yükleme Sihirbazı sayfalarının Özeti, toplanan kimlik bil
 >[!IMPORTANT]
 >Azure AD DS bağlayıcı hesabı için doğru Active Directory izinlerini yapılandırmanıza yardımcı olacak bir cmdlet koleksiyonu içeren, ADSyncConfig. psm1 adlı yeni bir PowerShell **modülü (ağustos** 2018 ' de yayımlanmıştır) eklenmiştir.
 >
->Daha fazla bilgi için [bkz. Azure AD Connect: AD DS Bağlayıcısı hesabı Iznini yapılandırma](how-to-connect-configure-ad-ds-connector-account.md)
+>Daha fazla bilgi için bkz [. Azure AD Connect: AD DS bağlayıcı hesabı Iznini yapılandırma](how-to-connect-configure-ad-ds-connector-account.md)
 
 **Dizinlerinizi bağlama** sayfasında belirttiğiniz hesap, yüklemeden önce Active Directory bulunmalıdır.  Azure AD Connect sürüm 1.1.524.0 ve üzeri, Azure AD Connect sihirbazının Active Directory bağlanmak için kullanılan **AD DS Bağlayıcısı hesabını** oluşturmasına izin vermek için seçenek içerir.  
 
@@ -149,18 +152,18 @@ Size gereken izinler, etkinleştirdiğiniz isteğe bağlı özelliklere bağlıd
 | Cihaz geri yazma |[Cihaz geri yazma](how-to-connect-device-writeback.md)bölümünde açıklandığı şekilde bir PowerShell betiğine izin verildi. |
 | Grup geri yazma |**Office 365 gruplarını** Exchange yüklü bir ormana geri almanıza olanak sağlar.  Daha fazla bilgi için bkz. [Grup geri yazma](how-to-connect-preview.md#group-writeback).|
 
-## <a name="upgrade"></a>Yükseltme
+## <a name="upgrade"></a>Yükseltin
 Bir Azure AD Connect sürümünden yeni bir sürüme yükselttiğinizde, aşağıdaki izinlere sahip olmanız gerekir:
 
 >[!IMPORTANT]
 >Build 1.1.484 ile başlayarak, Azure AD Connect SQL veritabanını yükseltmek için sysadmin izinleri gerektiren bir gerileme hatası sunmuştur.  Bu hata Build 1.1.647 içinde düzeltilir.  Bu yapıya yükseltiyorsanız sysadmin izinlerine ihtiyacınız olacaktır.  Dbo izinleri yeterli değildir.  Azure AD Connect, sysadmin izinlerine sahip olmadan yükseltmeyi denerseniz, yükseltme başarısız olur ve Azure AD Connect artık daha sonra düzgün çalışmayacaktır.  Microsoft bu durumun farkındadır ve bu sorunu düzeltmek için çalışmaktadır.
 
 
-| Sorumlu | Gerekli izinler | Kullanıldığı yerler |
+| Sorumlusu | Gerekli izinler | Kullanıldığı yerler |
 | --- | --- | --- |
 | Yükleme sihirbazını çalıştıran Kullanıcı |Yerel sunucunun yöneticisi |İkili dosyaları güncelleştirin. |
 | Yükleme sihirbazını çalıştıran Kullanıcı |ADSyncAdmins üyesi |Eşitleme kurallarında ve diğer yapılandırmada değişiklik yapın. |
-| Yükleme sihirbazını çalıştıran Kullanıcı |Tam bir SQL Server kullanıyorsanız: Eşitleme altyapısı veritabanının DBO (veya benzeri) |Yeni sütunlara sahip tabloları güncelleştirme gibi veritabanı düzeyinde değişiklikler yapın. |
+| Yükleme sihirbazını çalıştıran Kullanıcı |Tam bir SQL Server kullanıyorsanız: eşitleme altyapısı veritabanının DBO (veya benzeri) |Yeni sütunlara sahip tabloları güncelleştirme gibi veritabanı düzeyinde değişiklikler yapın. |
 
 ## <a name="more-about-the-created-accounts"></a>Oluşturulan hesaplar hakkında daha fazla bilgi
 ### <a name="ad-ds-connector-account"></a>AD DS bağlayıcı hesabı
@@ -200,14 +203,14 @@ Deki
 
 | | Yerel veritabanı</br>Hızlı | LocalDB/LocalSQL</br>Özel | Uzak SQL</br>Özel |
 | --- | --- | --- | --- |
-| **tek başına/çalışma grubu makinesi** | Desteklenmiyor | **VSA**</br>Yerel hesap (2008)</br>Yerel hesap |  Desteklenmiyor |
-| **etki alanına katılmış makine** | **VSA**</br>Yerel hesap (2008) | **VSA**</br>Yerel hesap (2008)</br>Yerel hesap</br>Etki alanı hesabı</br>sMSA, gMSA | **gMSA**</br>Etki alanı hesabı |
+| **tek başına/çalışma grubu makinesi** | Desteklenmiyor | **'NıN**</br>Yerel hesap (2008)</br>Yerel hesap |  Desteklenmiyor |
+| **etki alanına katılmış makine** | **'NıN**</br>Yerel hesap (2008) | **'NıN**</br>Yerel hesap (2008)</br>Yerel hesap</br>Etki alanı hesabı</br>sMSA, gMSA | **gMSA**</br>Etki alanı hesabı |
 | **Etki alanı denetleyicisi** | **Etki alanı hesabı** | *gMSA*</br>**Etki alanı hesabı**</br>SMSA 'yı| *gMSA*</br>**Etki alanı hesabı**|
 
 #### <a name="virtual-service-account"></a>Sanal hizmet hesabı
 Bir sanal hizmet hesabı, parolası olmayan ve Windows tarafından yönetilen özel bir hesap türüdür.
 
-!['NIN](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
+!['NıN](./media/reference-connect-accounts-permissions/aadsyncvsa.png)
 
 VSA, eşitleme altyapısının ve SQL 'in aynı sunucuda olduğu senaryolarla birlikte kullanılmak üzere tasarlanmıştır. Uzak SQL kullanıyorsanız, bunun yerine bir grup tarafından yönetilen hizmet hesabı kullanmanız önerilir.
 
@@ -217,7 +220,7 @@ Bu özellik Windows Server 2008 R2 veya üstünü gerektirir. Azure AD Connect W
 Uzak bir SQL Server kullanıyorsanız, **Grup tarafından yönetilen bir hizmet hesabı**kullanmanızı öneririz. Grup tarafından yönetilen hizmet hesabı için Active Directory hazırlama hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesaplarına genel bakış](https://technet.microsoft.com/library/hh831782.aspx).
 
 Bu seçeneği kullanmak için, [gerekli bileşenleri yüklensin](how-to-connect-install-custom.md#install-required-components) sayfasında, **var olan bir hizmet hesabını kullan**' ı seçin ve **yönetilen hizmet hesabı**' nı seçin.  
-![VSA](./media/reference-connect-accounts-permissions/serviceaccount.png)  
+![VSA @ no__t-1  
 [Tek başına yönetilen hizmet hesabı](https://technet.microsoft.com/library/dd548356.aspx)kullanmak için de desteklenir. Ancak bunlar yalnızca yerel makinede kullanılabilir ve bunları varsayılan sanal hizmet hesabı üzerinden kullanmanın bir avantajı yoktur.
 
 Bu özellik Windows Server 2012 veya üstünü gerektirir. Daha eski bir işletim sistemi kullanmanız ve uzak SQL kullanmanız gerekiyorsa, bir [Kullanıcı hesabı](#user-account)kullanmanız gerekir.
@@ -246,9 +249,9 @@ Hesabın kullanıldığı sunucunun adı, Kullanıcı adının ikinci bölümün
 
 Hesap, sona ermeyecek uzun bir karmaşık parolayla oluşturulur. Yalnızca dizin eşitleme görevlerini gerçekleştirmek için izinlere sahip özel bir rol **dizini eşitleme hesabı** verilir. Bu özel yerleşik rol Azure AD Connect Sihirbazı dışında verilemez. Azure portal bu hesabı rol **kullanıcısına**gösterir.
 
-Azure AD 'de 20 Sync Service hesabı sınırı vardır. Azure AD 'de mevcut Azure AD hizmet hesaplarının listesini almak için aşağıdaki Azure AD PowerShell cmdlet 'ini çalıştırın:`Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
+Azure AD 'de 20 Sync Service hesabı sınırı vardır. Azure AD 'de mevcut Azure AD hizmet hesaplarının listesini almak için şu Azure AD PowerShell cmdlet 'ini çalıştırın: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
-Kullanılmayan Azure AD hizmet hesaplarını kaldırmak için aşağıdaki Azure AD PowerShell cmdlet 'ini çalıştırın:`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
+Kullanılmayan Azure AD hizmet hesaplarını kaldırmak için şu Azure AD PowerShell cmdlet 'ini çalıştırın: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
 >Yukarıdaki PowerShell komutlarını kullanabilmeniz [için, Graph modülünün Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) 'i yüklemeniz ve [Connect-Azuread](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0) kullanarak Azure AD örneğinize bağlanmanız gerekir

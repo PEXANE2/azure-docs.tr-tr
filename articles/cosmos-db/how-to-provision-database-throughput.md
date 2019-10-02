@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB’de veritabanı aktarım hızını sağlama
 description: Azure Cosmos DB’de aktarım hızını veritabanı düzeyinde sağlamayı öğrenin
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
-ms.author: rimman
-ms.openlocfilehash: 29bc65c8afaa1fe4bdc39923bd2219184e8b3a96
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/28/2019
+ms.author: mjbrown
+ms.openlocfilehash: 93961b44f1c0d063774395ab384cb84b1aa05d99
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093009"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812487"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Azure Cosmos DB bir veritabanında üretilen iş sağlama
 
@@ -19,55 +19,27 @@ Bu makalede, Azure Cosmos DB bir veritabanında işleme sağlama açıklanmaktad
 
 ## <a name="provision-throughput-using-azure-portal"></a>Azure portalını kullanarak aktarım hızı sağlama
 
-### <a id="portal-sql"></a>SQL (Core) API'si
+### <a id="portal-sql"></a>SQL (Core) API
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. [Yeni bir Azure Cosmos hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos hesabı seçin.
 
 1. **Veri Gezgini** bölmesini açın ve **Yeni veritabanı**' nı seçin. Aşağıdaki ayrıntıları sağlayın:
 
-   * Bir veritabanı KIMLIĞI girin. 
+   * Bir veritabanı KIMLIĞI girin.
    * **Sağlama işleme**' yı seçin.
    * Bir üretilen iş girin (örneğin, 1000 ru).
    * **Tamam**’ı seçin.
 
-![Yeni veritabanı iletişim kutusunun ekran görüntüsü](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+    ![Yeni veritabanı iletişim kutusunun ekran görüntüsü](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
+## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Azure CLı veya PowerShell kullanarak verimlilik sağlama
 
-## <a name="provision-throughput-using-azure-cli"></a>Azure CLI kullanarak aktarım hızı sağlama
+Paylaşılan verimlilik içeren bir veritabanı oluşturmak için bkz.
 
-```azcli-interactive
-az cosmosdb database create --db-name
-                            [--key]
-                            [--name]
-                            [--resource-group-name]
-                            [--subscription]
-                            [--throughput]
-                            [--url-connection]
-```
-
-
-
-
-## <a name="provision-throughput-using-powershell"></a>PowerShell kullanarak üretilen iş sağlama
-
-```azurepowershell-interactive
-# Create a database and provision throughput of 400 RU/s
-$resourceGroupName = "myResourceGroup"
-$accountName = "mycosmosaccount"
-$databaseName = "database1"
-$databaseResourceName = $accountName + "/sql/" + $databaseName
-
-$databaseProperties = @{
-    "resource"=@{ "id"=$databaseName };
-    "options"=@{ "Throughput"= 400 }
-}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databases" `
-    -ApiVersion "2015-04-08" -ResourceGroupName $resourceGroupName `
-    -Name $databaseResourceName -PropertyObject $databaseProperties
-```
+* [Azure CLı kullanarak veritabanı oluşturma](manage-with-cli.md#create-a-database-with-shared-throughput)
+* [PowerShell kullanarak veritabanı oluşturma](manage-with-powershell.md#create-db-ru)
 
 ## <a name="provision-throughput-using-net-sdk"></a>.NET SDK’sını kullanarak aktarım hızı sağlama
 
@@ -75,6 +47,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
 > Tüm API 'Ler için üretilen iş sağlamak üzere SQL API için Cosmos SDK 'larını kullanabilirsiniz. İsteğe bağlı olarak, Cassandra API için aşağıdaki örneği de kullanabilirsiniz.
 
 ### <a id="dotnet-all"></a>Tüm API’ler
+
 ### <a name="net-v2-sdk"></a>.Net v2 SDK
 
 ```csharp
@@ -91,6 +64,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 ```
 
 ### <a name="net-v3-sdk"></a>.Net v3 SDK
+
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Cassandra API

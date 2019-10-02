@@ -4,14 +4,14 @@ description: Azure Cosmos DB 'da dizin oluşturma ilkelerini yönetmeyi öğreni
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/28/2019
 ms.author: thweiss
-ms.openlocfilehash: b80a4b8697544a0f7fe7cee99b666a513f53a0d6
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f7d364eb5db5c6d6304944d490468edf8b5ebe2e
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104845"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811657"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB Dizin oluşturma ilkelerini yönetme
 
@@ -42,7 +42,7 @@ Burada, Azure portal üzerinde sunulduklarında, JSON biçiminde gösterilen diz
     }
 ```
 
-Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan ```kind``` ```dataType```, ve ```precision``` varsayılan değerlerine eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayabilirsiniz (Yukarıdaki örnekte gösterildiği gibi).
+Bu dizin oluşturma ilkesi, ```kind```, ```dataType``` ve ```precision``` değerlerini varsayılan değerlerine el ile ayarlayan bir değere eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayabilirsiniz (Yukarıdaki örnekte gösterildiği gibi).
 
 ```json
     {
@@ -96,7 +96,7 @@ Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan ```kind``` ```data
     }
 ```
 
-Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan ```kind``` ```dataType```, ve ```precision``` varsayılan değerlerine eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayabilirsiniz (Yukarıdaki örnekte gösterildiği gibi).
+Bu dizin oluşturma ilkesi, ```kind```, ```dataType``` ve ```precision``` değerlerini varsayılan değerlerine el ile ayarlayan bir değere eşdeğerdir. Bu özelliklerin artık açıkça ayarlanması gerekmez ve bunları Dizin ilkenizde tamamen atlayabilirsiniz (Yukarıdaki örnekte gösterildiği gibi).
 
 ```json
     {
@@ -172,7 +172,7 @@ Bu dizin oluşturma ilkesi,, ve değerlerini el ile ayarlayan ```kind``` ```data
 
 ## <a name="composite-indexing-policy-examples"></a>Bileşik dizin oluşturma ilkesi örnekleri
 
-Tek tek özellikler için yolların dahil edilmesi veya dışlanması buna ek olarak, bileşik bir dizin de belirtebilirsiniz. Birden çok özellik için `ORDER BY` yan tümcesi içeren bir sorgu gerçekleştirmek istiyorsanız, bu özelliklerde bir [bileşik dizin](index-policy.md#composite-indexes) gereklidir. Ayrıca, bileşik dizinlerin filtre içeren sorgularda bir performans avantajı ve farklı özelliklerde ORDER BY yan tümcesi vardır.
+Tek tek özellikler için yolların dahil edilmesi veya dışlanması buna ek olarak, bileşik bir dizin de belirtebilirsiniz. Birden çok özellik için `ORDER BY` yan tümcesine sahip bir sorgu gerçekleştirmek istiyorsanız, bu özelliklerde bir [bileşik dizin](index-policy.md#composite-indexes) gereklidir. Ayrıca, bileşik dizinlerin filtre içeren sorgularda bir performans avantajı ve farklı özelliklerde ORDER BY yan tümcesi vardır.
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>İçin tanımlanan bileşik dizin (ad ASC, Age DESC):
 
@@ -320,7 +320,7 @@ Bu ilke, [yaşam süresi (TTL) özelliğinin](time-to-live.md) etkin olduğu, an
 
 ### <a name="no-indexing"></a>Dizin oluşturma
 
-Bu ilke Dizin oluşturmayı devre dışı bırakır. `indexingMode` Olarak`none`ayarlanırsa, kapsayıcıda bir TTL ayarlayamazsınız.
+Bu ilke Dizin oluşturmayı devre dışı bırakır. @No__t-0 `none` olarak ayarlanırsa, kapsayıcıda bir TTL ayarlayamazsınız.
 
 ```json
     {
@@ -334,6 +334,7 @@ Azure Cosmos DB, dizin oluşturma ilkesi aşağıdaki yöntemlerden herhangi bir
 
 - Azure portal
 - Azure CLı 'yi kullanma
+- PowerShell 'i kullanma
 - SDK 'Lardan birini kullanma
 
 Dizin [oluşturma ilkesi güncelleştirmesi](index-policy.md#modifying-the-indexing-policy) bir dizin dönüşümünü tetikler. Bu dönüşümün ilerleme durumu SDK 'lardan de izlenebilir.
@@ -341,11 +342,11 @@ Dizin [oluşturma ilkesi güncelleştirmesi](index-policy.md#modifying-the-index
 > [!NOTE]
 > Dizin oluşturma ilkesi güncelleştirilirken Azure Cosmos DB yazma işlemleri kesintiye uğramadan olur. Yeniden dizinleme sırasında, Dizin güncelleştirildiğinden sorgular kısmi sonuçlar döndürebilir.
 
-## <a name="use-the-azure-portal"></a>Azure portalı kullanma
+## <a name="use-the-azure-portal"></a>Azure Portal’ı kullanma
 
 Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğrudan düzenlemenize izin veren bir JSON belgesi olarak depolar.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 1. Yeni bir Azure Cosmos hesabı oluşturun veya var olan bir hesabı seçin.
 
@@ -361,21 +362,15 @@ Azure Cosmos kapsayıcıları dizin oluşturma ilkelerini, Azure portal doğruda
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
-Azure CLı 'daki [az cosmosdb Collection Update](/cli/azure/cosmosdb/collection#az-cosmosdb-collection-update) komutu, bir kapsayıcının dizin oluşturma ilkesinin JSON tanımını değiştirmenize izin verir:
+Özel bir dizin oluşturma ilkesiyle kapsayıcı oluşturmak için bkz. [CLI kullanarak özel dizin ilkesiyle kapsayıcı oluşturma](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
 
-```azurecli-interactive
-az cosmosdb collection update \
-    --resource-group-name $resourceGroupName \
-    --name $accountName \
-    --db-name $databaseName \
-    --collection-name $containerName \
-    --indexing-policy "{\"indexingMode\": \"consistent\", \"includedPaths\": [{ \"path\": \"/*\", \"indexes\": [{ \"dataType\": \"String\", \"kind\": \"Range\" }] }], \"excludedPaths\": [{ \"path\": \"/headquarters/employees/?\" } ]}"
-```
+## <a name="use-powershell"></a>PowerShell'i kullanma
+
+Özel bir dizin oluşturma ilkesiyle kapsayıcı oluşturmak için bkz. [PowerShell kullanarak özel dizin ilkesiyle kapsayıcı oluşturma](manage-with-powershell.md#create-container-custom-index)
 
 ## <a name="use-the-net-sdk-v2"></a>.NET SDK v2 'yi kullanma
 
-`IndexingPolicy` [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) `IndexingMode` 'nin `IncludedPaths` `ExcludedPaths`nesnesi, ve ekleme veya kaldırma, ve ' i değiştirmenize olanak tanıyan bir özellik sunar. `DocumentCollection`
-
+[.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 'deki `DocumentCollection` nesnesi, `IndexingMode` ' ü değiştirmenize ve `IncludedPaths` ve `ExcludedPaths` ' i eklemenize veya kaldırmanıza imkan tanıyan bir `IndexingPolicy` özelliği sunar.
 
 ```csharp
 // Retrieve the container's details
@@ -394,7 +389,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
 ```
 
-Dizin dönüştürme ilerlemesini izlemek için `RequestOptions` `PopulateQuotaInfo` özelliğini `true`ayarlayan bir nesne geçirin.
+Dizin dönüştürme ilerlemesini izlemek için, `PopulateQuotaInfo` özelliğini `true` olarak ayarlayan bir `RequestOptions` nesnesi geçirin.
 
 ```csharp
 // retrieve the container's details
@@ -405,8 +400,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 ## <a name="use-the-net-sdk-v3"></a>.NET SDK V3 'i kullanma
 
-`IncludedPaths` `IndexingPolicy` `IndexingMode` `ExcludedPaths`.NETSDK [v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 'deki nesne(kullanımıileilgilibuhızlıbaşlangıç),veeklemeveyakaldırma,ve'ideğiştirmenizeolanaktanıyanbirözelliksunar.`ContainerProperties` [](create-sql-api-dotnet.md)
-
+[.NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) 'deki `ContainerProperties` nesnesi (kullanımı ile Ilgili [Bu hızlı başlangıç](create-sql-api-dotnet.md) ), `IndexingMode` ' ü değiştirmenize ve `IncludedPaths` ve `ExcludedPaths` ' i değiştirmenize veya kaldırmanıza imkan tanıyan bir `IndexingPolicy` özelliği sunar.
 
 ```csharp
 // Retrieve the container's details
@@ -430,7 +424,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-Dizin dönüştürme `RequestOptions` ilerlemesini izlemek için, `PopulateQuotaInfo` özelliğini `true`ayarlayan bir nesne geçirin ve ardından `x-ms-documentdb-collection-index-transformation-progress` yanıt üstbilgisinden değeri alın.
+Dizin dönüştürme ilerlemesini izlemek için, `PopulateQuotaInfo` özelliğini `true` olarak ayarlayan `RequestOptions` nesnesini geçirin, sonra `x-ms-documentdb-collection-index-transformation-progress` yanıt üstbilgisinden değeri alın.
 
 ```csharp
 // retrieve the container's details
@@ -463,7 +457,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>Java SDK 'sını kullanma
 
-`getIndexingPolicy()`JavaSDK `setIndexingPolicy()` 'sındaki [](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) [](create-sql-api-java.md) nesne(kullanımıileilgilibuhızlı`DocumentCollection` başlangıç) ve yöntemlerini gösterir. İşledikleri `IndexingPolicy` nesne, dizin oluşturma modunu değiştirmenize ve dahil edilen ve dışlanan yolları eklemenize veya kaldırmanıza olanak sağlar.
+[Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) 'sindeki `DocumentCollection` nesnesi (kullanımı ile Ilgili [Bu hızlı başlangıç](create-sql-api-java.md) ) `getIndexingPolicy()` ve `setIndexingPolicy()` yöntemlerini gösterir. İşledikleri `IndexingPolicy` nesnesi dizin oluşturma modunu değiştirmenize ve dahil edilen ve dışlanan yolları eklemenize veya kaldırmanıza olanak sağlar.
 
 Kapsayıcının ayrıntılarını alma
 
@@ -508,7 +502,7 @@ Collection<SpatialType> collectionOfSpatialTypes = new ArrayList<SpatialType>();
 
 SpatialSpec spec = new SpatialSpec();
 spec.setPath("/locations/*");
-collectionOfSpatialTypes.add(SpatialType.Point);          
+collectionOfSpatialTypes.add(SpatialType.Point);
 spec.setSpatialTypes(collectionOfSpatialTypes);
 spatialIndexes.add(spec);
 
@@ -543,7 +537,7 @@ Kapsayıcıyı değişikliklerle güncelleştirme
  client.replaceCollection(container, null);
 ```
 
-Bir kapsayıcıda Dizin dönüştürme ilerlemesini izlemek için, kota bilgisinin doldurulmasını isteyen `RequestOptions` bir nesne geçirin ve ardından `x-ms-documentdb-collection-index-transformation-progress` yanıt başlığından değeri alın.
+Bir kapsayıcıda Dizin dönüştürme ilerlemesini izlemek için, kota bilgilerinin doldurulduğu `RequestOptions` nesnesini geçirin ve ardından `x-ms-documentdb-collection-index-transformation-progress` yanıt üstbilgisinden değeri alın.
 
 ```java
 // set the RequestOptions object
@@ -559,7 +553,7 @@ containerResponse.subscribe(result -> {
 
 ## <a name="use-the-nodejs-sdk"></a>Node. js SDK 'sını kullanma
 
-`includedPaths` `indexingPolicy` [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) `indexingMode` `excludedPaths`'dan [](create-sql-api-nodejs.md) Arabirim(kullanımıileilgilibuhızlıbaşlangıç),veeklemeveyakaldırma,ve'ideğiştirmenizeolanaktanıyanbirözellik`ContainerDefinition` sunar.
+[Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) 'dan `ContainerDefinition` arabirimi (kullanımı ile Ilgili [Bu hızlı başlangıç](create-sql-api-nodejs.md) ), `indexingMode` ' ü değiştirmenize ve `includedPaths` ve `excludedPaths` ' i değiştirmenize veya kaldırmanıza imkan tanıyan bir `indexingPolicy` özelliği sunar.
 
 Kapsayıcının ayrıntılarını alma
 
@@ -616,7 +610,7 @@ Kapsayıcıyı değişikliklerle güncelleştirme
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
-Bir kapsayıcıda Dizin dönüştürme `RequestOptions` ilerlemesini izlemek için, `populateQuotaInfo` özelliğini `true`ayarlayan bir nesne geçirin ve ardından `x-ms-documentdb-collection-index-transformation-progress` yanıt üstbilgisinden değeri alın.
+Bir kapsayıcıda Dizin dönüştürme ilerlemesini izlemek için, `populateQuotaInfo` özelliğini `true` olarak ayarlayan `RequestOptions` nesnesini geçirin, sonra `x-ms-documentdb-collection-index-transformation-progress` yanıt üstbilgisinden değeri alın.
 
 ```javascript
 // retrieve the container's details

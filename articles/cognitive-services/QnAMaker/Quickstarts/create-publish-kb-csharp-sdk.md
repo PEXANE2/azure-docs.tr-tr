@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: .NET için Soru-Cevap Oluşturma istemci kitaplığı'
+title: 'Hızlı başlangıç: .NET için Soru-Cevap Oluşturma istemci kitaplığı'
 titleSuffix: Azure Cognitive Services
 description: .NET için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar.
 services: cognitive-services
@@ -8,27 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/21/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 8e52a37376e91e5c529cddd9b211d81c4b2fa442
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 31bd85ca9b106758dbb7bfd399b7a493ea7fea9f
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203848"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803099"
 ---
-# <a name="quickstart-qna-maker-client-library-for-net"></a>Hızlı Başlangıç: .NET için Soru-Cevap Oluşturma istemci kitaplığı
+# <a name="quickstart-qna-maker-client-library-for-net"></a>Hızlı başlangıç: .NET için Soru-Cevap Oluşturma istemci kitaplığı
 
 .NET için Soru-Cevap Oluşturma istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.  Soru-Cevap Oluşturma, SSS belgeleri, URL'ler ve ürün kılavuzları gibi yarı yapılandırılmış içeriklerinizden bir soru cevap hizmeti oluşturmanızı sağlar. 
 
 .NET için Soru-Cevap Oluşturma istemci kitaplığı 'nı kullanın:
 
-* Bilgi bankası oluşturma 
+* Bilgi bankası oluşturun 
 * Bilgi Bankası 'nı yönetme
 * Bilgi bankası yayımlama
 * Bilgi Bankası 'ndan bir yanıt oluşturun
 
-[Başvuru belge](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/)  |  [ örnekleriC# ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)
+[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/) | [ C# örnek](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp)
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,13 +43,13 @@ ms.locfileid: "71203848"
 
 Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak soru-cevap oluşturma için bir kaynak oluşturun. 
 
-Kaynağından bir anahtar aldıktan sonra, adlı `QNAMAKER_SUBSCRIPTION_KEY`anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Kaynağınız için bir anahtar ve uç nokta aldıktan sonra, `QNAMAKER_SUBSCRIPTION_KEY` adlı anahtar için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) . Kaynak adı, uç nokta URL 'sinin bir parçası olarak kullanılır.
 
 ### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
 
 Tercih ettiğiniz düzenleyicide veya IDE 'de yeni bir .NET Core uygulaması oluşturun. 
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), ad `new` `qna-maker-quickstart`ile yeni bir konsol uygulaması oluşturmak için DotNet komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur `Program.cs`:. 
+Bir konsol penceresinde (cmd, PowerShell veya Bash gibi), `qna-maker-quickstart` adlı yeni bir konsol uygulaması oluşturmak için DotNet `new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: `Program.cs`. 
 
 ```console
 dotnet new console -n qna-maker-quickstart
@@ -103,29 +105,32 @@ Bu kod parçacıkları, .NET için Soru-Cevap Oluşturma istemci kitaplığı il
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
-Proje dizininden, **program.cs** dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Mevcut `using` kodu aşağıdaki `using` yönergelerle değiştirin:
+Proje dizininden, **program.cs** dosyasını tercih ettiğiniz DÜZENLEYICIDE veya IDE 'de açın. Mevcut `using` kodunu aşağıdaki `using` yönergeleriyle değiştirin:
 
 [!code-csharp[Using statements](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Dependencies)]
 
 ## <a name="authenticate-the-client-for-authoring-the-knowledge-base"></a>Bilgi Bankası 'nı yazmak için istemcinin kimliğini doğrulama
 
-**Main** yönteminde, kaynak Azure anahtarı için adlı `QNAMAKER_SUBSCRIPTION_KEY`bir ortam değişkeninden çekilen bir değişken oluşturun. Uygulama başlatıldıktan sonra ortam değişkenini oluşturduysanız, bu değişkeni çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra oluşturulacak.
+**Main** yönteminde, kaynağınızın Azure anahtarı için `QNAMAKER_SUBSCRIPTION_KEY` adlı bir ortam değişkeninden çekilen bir değişken oluşturun. Uygulama başlatıldıktan sonra ortam değişkenini oluşturduysanız, bu değişkeni çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra oluşturulacak.
 
 Ardından, anahtarınızla bir [ApiKeyServiceClientCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.apikeyserviceclientcredentials?view=azure-dotnet) nesnesi oluşturun ve bunu bir [Qnamakerclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-dotnet) nesnesi oluşturmak için uç noktanızla birlikte kullanın.
 
-Anahtarınız `westus` bölgede değilse, bu örnek kodda gösterildiği gibi, **uç nokta** değişkeninin konumunu değiştirin. Bu konum, Azure portal Soru-Cevap Oluşturma kaynağınız için **genel bakış** sayfasında bulunur.
+@No__t-1 olan **bitiş noktası** değişkenini özel etki alanınızı adına değiştirin. Bu konum, Azure portal Soru-Cevap Oluşturma kaynağınız için **genel bakış** sayfasında bulunur.
 
-[!code-csharp[Authorization to resource key](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=Authorization)]
+```csharp
+var subscriptionKey = Environment.GetEnvironmentVariable("QNAMAKER_SUBSCRIPTION_KEY");
+var client = new QnAMakerClient(new ApiKeyServiceClientCredentials(subscriptionKey)) { Endpoint = "https://<your-custom-domain>.api.cognitive.microsoft.com" };
+```
 
 ## <a name="authenticate-the-runtime-for-generating-an-answer"></a>Yanıt oluşturmak için çalışma zamanının kimliğini doğrulama
 
-**Ana** yöntemde, ve `QNAMAKER_ENDPOINT_HOSTNAME` `QNAMAKER_ENDPOINT_KEY`adlı bir ortam değişkenlerinden çekil, kaynağınızın Azure anahtarı için bir değişken oluşturun. Bilgi tabanınızı yayımladığınızda, bu değerler döndürülür. Yayımladıktan sonra, bu ayarları Soru-Cevap Oluşturma portalının **Ayarlar** sayfasında bulabilirsiniz. 
+**Main** yönteminde, kaynağınızın kimlik doğrulaması için `QNAMAKER_ENDPOINT_HOSTNAME` ve `QNAMAKER_ENDPOINT_KEY` adlı ortam değişkenlerinden çekilen bir değişken oluşturun. Bilgi tabanınızı yayımladığınızda, bu değerler döndürülür. Yayımladıktan sonra, bu ayarları Soru-Cevap Oluşturma portalının **Ayarlar** sayfasında bulabilirsiniz. 
 
 Bilgi Bankası 'nı sorgulamak için bir [Qnamakerruntimeclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) oluşturun ve bir yanıt oluşturun ya da etkin öğreninden eğitme yapın.
 
 [!code-csharp[Authenticate the runtime](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=EndpointKey)]
 
-## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturma
+## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturun
 
 Bilgi Bankası, üç kaynaktan alınan [Createkbdto](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.models.createkbdto?view=azure-dotnet) nesnesine soru ve yanıt çiftlerini depolar:
 
@@ -139,7 +144,7 @@ Aşağıdaki kodun son satırı, Monitortorooperation öğesinden alınan yanıt
 
 [!code-csharp[Create a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=CreateKB&highlight=29,30)]
 
-Bir bilgi bankasını başarıyla [`MonitorOperation`](#get-status-of-an-operation) oluşturmak için yukarıdaki koda başvuruda bulunulan işlevin dahil olduğundan emin olun. 
+Bir bilgi bankasını başarıyla oluşturmak için yukarıdaki kodda başvurulan [`MonitorOperation`](#get-status-of-an-operation) işlevini eklediğinizden emin olun. 
 
 ## <a name="update-a-knowledge-base"></a>Bilgi bankası güncelleştirme
 
@@ -147,7 +152,7 @@ Bilgi Bankası KIMLIĞINI ve [UpdateAsync](https://docs.microsoft.com/dotnet/api
 
 [!code-csharp[Update a knowledge base](~/samples-qnamaker-csharp/documentation-samples/quickstarts/Knowledgebase_Quickstart/Program.cs?name=UpdateKB&highlight=4,13)]
 
-Bilgi bankasını başarıyla güncelleştirmek [`MonitorOperation`](#get-status-of-an-operation) için yukarıdaki koda başvuruda bulunulan işlevi dahil edin. 
+Bilgi bankasını başarıyla güncelleştirmek için yukarıdaki kodda başvurulan [`MonitorOperation`](#get-status-of-an-operation) işlevini içer ' in olduğundan emin olun. 
 
 ## <a name="download-a-knowledge-base"></a>Bilgi Bankası indirin
 
@@ -204,8 +209,8 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Öğretici: Bir KB oluşturun ve yanıtlayın](../tutorials/create-publish-query-in-portal.md)
+>[Öğretici: bir KB oluşturun ve yanıtlayın](../tutorials/create-publish-query-in-portal.md)
 
 * [Soru-Cevap Oluşturma API'si nedir?](../Overview/overview.md)
-* [Bilgi Bankası Düzenle](../how-to/edit-knowledge-base.md)
+* [Bilgi Bankası düzenleme](../how-to/edit-knowledge-base.md)
 * [Kullanım analizlerini al](../how-to/get-analytics-knowledge-base.md)

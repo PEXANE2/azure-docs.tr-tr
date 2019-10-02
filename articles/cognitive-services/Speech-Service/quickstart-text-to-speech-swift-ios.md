@@ -1,0 +1,95 @@
+---
+title: 'Hızlı başlangıç: Sentezleştirme konuşma, Swift-konuşma hizmeti'
+titleSuffix: Azure Cognitive Services
+description: Konuşma SDK 'sını kullanarak iOS 'ta bir konuşmayı nasıl sentezleyeceğinizi öğrenin
+services: cognitive-services
+author: yulin-li
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: speech-service
+ms.topic: quickstart
+ms.date: 09/20/2019
+ms.author: yulili
+ms.openlocfilehash: 1cede1ced4d1973a5c1da59c5e53f888c54f22b9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803960"
+---
+# <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak iOS 'ta Swift 'ta konuşma Sentezleştirme
+
+Hızlı başlangıç, [konuşma tanıma](quickstart-swift-ios.md)için de kullanılabilir.
+
+Bu makalede, bilişsel hizmetler konuşma SDK 'sını kullanarak Swift 'ta bir iOS uygulamasının nasıl oluşturulduğunu öğrenirsiniz ve metinden konuşmayı sentezleştirme.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Başlamadan önce, önkoşulların bir listesi aşağıda verilmiştir:
+
+* Konuşma hizmeti için bir [abonelik anahtarı](get-started.md) .
+* [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) veya üzeri ve [Cocoapods](https://cocoapods.org/) yüklü bir MacOS makinesi.
+
+## <a name="get-the-speech-sdk-for-ios"></a>iOS için Konuşma SDK’sını alın
+
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+
+Bu öğreticinin SDK sürümü 1.7.0 ' den önceki sürümüyle çalışmadığını unutmayın.
+
+İOS için bilişsel hizmetler konuşma SDK 'Sı, bir çerçeve paketi olarak dağıtılır.
+Xcode projelerinde [CocoaPod](https://cocoapods.org/)olarak veya https://aka.ms/csspeech/macosbinary ' den indirilen ve el ile bağlanmış bir şekilde kullanılabilir. Bu kılavuzda bir CocoaPod kullanılır.
+
+## <a name="create-an-xcode-project"></a>Xcode projesi oluşturma
+
+Xcode’u başlatın ve **Dosya** > **Yeni** > **Proje** seçeneklerine tıklayarak yeni bir proje başlatın.
+Şablon seçimi iletişim kutusunda, “iOS Tek Görünüm Uygulaması” şablonunu seçin.
+
+Takip eden iletişim kutularında, aşağıdaki seçimleri yapın:
+
+1. Proje Seçenekleri İletişim Kutusu
+    1. Hızlı başlangıç uygulaması için bir ad girin, örneğin `helloworld`.
+    1. Zaten bir Apple geliştirici hesabınız varsa, uygun bir kuruluş adı ve kuruluş tanımlayıcısı girin. Test amacıyla, `testorg` gibi herhangi bir ad seçebilirsiniz. Uygulamayı imzalamak için uygun bir sağlama profiline ihtiyacınız vardır. Ayrıntılar için [Apple Developer sitesine](https://developer.apple.com/) bakın.
+    1. Swift 'un proje için dil olarak seçildiğinden emin olun.
+    1. Görsel taslakları kullanmak ve belge tabanlı bir uygulama oluşturmak için onay kutularını devre dışı bırakın. Örnek uygulama için basit kullanıcı arabirimi programlı olarak oluşturulacaktır.
+    1. Testler ve temel veriler için tüm onay kutularını devre dışı bırakın.
+1. Proje dizini seçin
+    1. Projeyi içine koymak için bir dizin seçin. Bu, seçili dizinde Xcode projesi için tüm dosyaları içeren bir `helloworld` dizini oluşturur.
+    1. Bu örnek için Git deposu oluşturmayı devre dışı bırakın.
+1. Xcode projesini kapatın. Daha sonra CocoaPods ayarladıktan sonra farklı bir örneğini kullanacaksınız.
+
+## <a name="add-the-sample-code"></a>Örnek kod ekleme
+
+1. HelloWorld projesi içindeki `helloworld` dizinine `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` adlı yeni bir üst bilgi dosyası yerleştirin ve içine aşağıdaki kodu yapıştırın:  
+   [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/swift-ios/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
+1. Hedef *-C köprü oluşturma üst* bilgisi alanı ![header Özellikler @ no__t-3 ' teki helloworld hedefinin `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` göreli yolunu köprü oluşturma başlığına ekleyin
+1. Aşağıdaki şekilde otomatik oluşturulan `AppDelegate.swift` dosyasının içeriğini değiştirin:  
+   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/swift-ios/helloworld/helloworld/AppDelegate.swift#code)]
+1. Aşağıdaki şekilde otomatik oluşturulan `ViewController.swift` dosyasının içeriğini değiştirin:  
+   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/swift-ios/helloworld/helloworld/ViewController.swift#code)]
+1. @No__t-0 ' da, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
+1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
+
+## <a name="install-the-sdk-as-a-cocoapod"></a>SDK 'Yı bir CocoaPod olarak yükler
+
+1. [Yükleme yönergeleri](https://guides.cocoapods.org/using/getting-started.html)bölümünde açıklandığı gibi CocoaPod Dependency Manager 'ı yükleme.
+1. Örnek uygulamanızın dizinine gidin (`helloworld`). @No__t-0 adlı bir metin dosyası ve bu dizine aşağıdaki içeriği koyun:  
+   [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/swift-ios/helloworld/Podfile)]
+1. Terminalde `helloworld` dizinine gidin ve `pod install` komutunu çalıştırın. Bu işlem, bağımlılık olarak hem örnek uygulamayı hem de konuşma SDK 'sını içeren `helloworld.xcworkspace` Xcode çalışma alanı oluşturur. Bu çalışma alanı aşağıdaki şekilde kullanılacaktır.
+
+## <a name="build-and-run-the-sample"></a>Örneği derleme ve çalıştırma
+
+1. Xcode 'da `helloworld.xcworkspace` çalışma alanını açın.
+1. Hata ayıklama çıkışını görünür hale getirin (**Görünüm** > **Hata Ayıklama Alanı** > **Konsolu Etkinleştir**).
+1. **Ürün** > **hedef** menüsündeki listeden uygulama hedefi olarak, geliştirme makinenize bağlı iOS simülatörü veya iOS cihazını seçin.
+1. Menüden **Ürün** > **Çalıştır** seçeneklerini belirleyerek veya **Oynat** düğmesine tıklayarak iOS simülatöründe örnek kodu derleyin ve çalıştırın.
+1. Bazı metinleri girdikten ve uygulamadaki düğmeye tıkladıktan sonra, birleştirilmiş sesin çalındığını duymalısınız.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+> [!div class="nextstepaction"]
+> [GitHub 'da örneklerimizi keşfet](https://aka.ms/csspeech/samples)
+
+## <a name="see-also"></a>Ayrıca bkz.
+
+- [Ses yazı tiplerini özelleştirme](how-to-customize-voice-font.md)
+- [Ses örneklerini Kaydet](record-custom-voice-samples.md)

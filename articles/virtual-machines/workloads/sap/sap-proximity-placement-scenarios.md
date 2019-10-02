@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c56bfda2b4f74bf31ce847f1fdb42f77f43eb372
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: deffcb81a4f66783fedc89c3e21ea46b15ad1c64
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677992"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720006"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleştirme grupları
 SAP NetWeaver veya SAP S/4HANA mimarisine dayanan SAP uygulamaları, SAP uygulama katmanı ve SAP veritabanı katmanı arasındaki ağ gecikmesinden duyarlıdır. Bu duyarlılık, uygulama katmanında çalışan iş mantığının büyük bir sonucudur. SAP uygulama katmanı iş mantığını çalıştırdığı için, bir saniyede binlerce veya onlarca binlerce veya on binde bir hızda veritabanı katmanına sorgu verir. Çoğu durumda, bu sorguların doğası basittir. Bunlar, genellikle 500 mikrosaniye veya daha az bir veritabanı katmanında çalıştırılabilir.
@@ -34,7 +34,7 @@ Bu sorunları engellemek için Azure, [yakınlık yerleştirme grupları](https:
 ## <a name="what-are-proximity-placement-groups"></a>Yakınlık yerleşimi grupları nelerdir? 
 Bir Azure yakınlık yerleşimi grubu, mantıksal bir yapıdır. Biri tanımlandığında bir Azure bölgesine ve bir Azure Kaynak grubuna bağlanır. VM 'Ler dağıtıldığında, bir yakınlık yerleşimi grubuna şunun tarafından başvuruluyor:
 
-- Veri merkezinde dağıtılan ilk Azure VM. Son olarak, belirli bir kullanılabilirlik bölgesi için Kullanıcı tanımlarıyla birleştirilmiş Azure ayırma algoritmalarına dayalı olarak, ilk sanal makineyi bir veri merkezinde dağıtılan bir "bağlayıcı VM" olarak düşünebilirsiniz.
+- Veri merkezinde dağıtılan ilk Azure VM. Son olarak, belirli bir kullanılabilirlik bölgesi için Kullanıcı tanımlarıyla birleştirilmiş Azure ayırma algoritmalarına dayalı olarak, ilk sanal makineyi bir veri merkezinde dağıtılan bir "kapsam VM" olarak düşünebilirsiniz.
 - Daha sonra dağıtılan tüm VM 'Leri ilk sanal makineyle aynı veri merkezine yerleştirmek için yakınlık yerleşimi grubuna başvuran sonraki tüm VM 'Ler.
 
 > [!NOTE]
@@ -44,7 +44,7 @@ Tek bir [Azure Kaynak grubuna](https://docs.microsoft.com/azure/azure-resource-m
 
 Yakınlık yerleştirme gruplarını kullanırken, bu noktaları göz önünde bulundurun:
 
-- SAP sisteminiz için en iyi performansı hedefleyerek ve kendinizi, yakınlık yerleşimi gruplarını kullanarak sistem için tek bir Azure veri merkezi ile sınırlandırdığınızda, yerleştirme grubundaki tüm VM aileleri türlerini birleştiremeyebilirsiniz. Bu sınırlamalar, belirli bir VM türünü çalıştırmak için gereken konak donanımının, yerleştirme grubunun bağlayıcı VM 'sinin dağıtıldığı veri merkezinde mevcut olmaması nedeniyle oluşur.
+- SAP sisteminiz için en iyi performansı hedefleyerek ve kendinizi, yakınlık yerleşimi gruplarını kullanarak sistem için tek bir Azure veri merkezi ile sınırlandırdığınızda, yerleştirme grubundaki tüm VM aileleri türlerini birleştiremeyebilirsiniz. Bu sınırlamalar, belirli bir sanal makine türünü çalıştırmak için gereken ana bilgisayar donanımının, yerleştirme grubunun "kapsamlı VM" öğesinin dağıtıldığı veri merkezinde mevcut olmaması nedeniyle oluşur.
 - Bu tür bir SAP sisteminin yaşam döngüsü boyunca, sistemi başka bir veri merkezine taşımaya zorlanabilirsiniz. Bu taşıma, genişleme HANA DBMS katmanınızın, örneğin dört düğümden 16 düğüme taşınması ve veri merkezinde kullandığınız türde 12 VM 'ye kadar yeterli kapasiteye sahip olması gerektiğine karar verirseniz gerekli olabilir.
 - Microsoft, donanım yetkisini alma nedeniyle, ilk kullandığınız bir veri merkezinde kullandığınız bir VM türü için kapasiteler oluşturabilir. Bu senaryoda, tüm yakınlık yerleşimi grubunun sanal makinelerini başka bir veri merkezine taşımanız gerekebilir.
 
@@ -55,7 +55,7 @@ Azure 'da SAP NetWeaver ve S/4HANA sistem dağıtımları, [Hana büyük örnekl
 
 Tek bir yakınlık yerleşimi grubunda birkaç SAP üretimi veya üretim dışı sistemler paketlemeyi önleyin. Az sayıda SAP sistemi veya SAP sistemi ve çevresindeki uygulamaların düşük gecikmeli ağ iletişimine ihtiyacı olduğunda, bu sistemleri tek bir yakınlık yerleşimi grubuna taşımayı düşünebilirsiniz. Bir yakınlık yerleşimi grubunda daha fazla sistem gruplandırdığı için sistem paketlerinin olmaması gerekir, bu da daha yüksek bir şansınız olur:
 
-- Bu, yakınlık yerleşimi grubunun tutturulduğu belirli bir veri merkezinde çalıştıramıyoruz.
+- Bu, yakınlık yerleşimi grubunun kapsamında olduğu belirli bir veri merkezinde çalıştırılamaz bir VM türüne ihtiyacınız olduğunu unutmayın.
 - M serisi VM 'Ler gibi temel olmayan VM 'lerin kaynakları, zaman içinde bir yakınlık yerleşimi grubuna yazılım eklerken daha fazla ihtiyacınız olduğunda yerine getirilir.
 
 Aşağıda açıklandığı gibi ideal yapılandırma şöyle görünür:

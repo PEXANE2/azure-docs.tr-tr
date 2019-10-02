@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: diberry
-ms.openlocfilehash: f565d95f8270612a8d83dd44a1e1bb895d1a4373
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 11b626c0033814f0886ac76fff0c5d4087a80554
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662778"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720232"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Kişiselleştirici sorumlu uygulamasına ilişkin yönergeler
 
@@ -25,7 +25,7 @@ Bu yönergeler yasal öneri olarak düşünülmemiştir ve uygulamanızın bu al
 
 Ayrıca, kişiselleştirici kullanarak uygulamanızı tasarlarken, her türlü veri merkezli AI sistemi geliştirirken, etklilik, gizlilik, güvenlik, güvenlik, içerme, saydamlık ve sorumluluk dahil olmak üzere sahip olduğunuz çok sayıda sorumluluğu göz önünde bulundurmanız gerekir. [Önerilen okuma](#recommended-reading) bölümünde bunlar hakkında daha fazla bilgi edinebilirsiniz.
 
-Aşağıdaki içeriği bir başlatıcı denetim listesi olarak kullanabilir ve senaryonuza özelleştirip geliştirebilirsiniz. Bu belgenin iki ana bölümü vardır: Birincisi, Kişiselleştiriciye yönelik senaryolar, Özellikler ve ödüller seçerken sorumlu kullanım konularını vurgulamak için ayrılmıştır. İkincisi, Microsoft 'un AI sistemleri derlerken göz önünde bulundurulması gereken bir değer kümesi alır ve kişiselleştirici kullanım kullanmanın bunları nasıl etkilediği hakkında eylem yapılabilir öneriler ve riskler sağlar. 
+Aşağıdaki içeriği bir başlatıcı denetim listesi olarak kullanabilir ve senaryonuza özelleştirip geliştirebilirsiniz. Bu belgenin iki ana bölümü vardır: ilki, Kişiselleştiriciye yönelik senaryolar, Özellikler ve ödüller seçerken sorumlu kullanım konularını vurgulamak için ayrılmıştır. İkincisi, Microsoft 'un AI sistemleri derlerken göz önünde bulundurulması gereken bir değer kümesi alır ve kişiselleştirici kullanım kullanmanın bunları nasıl etkilediği hakkında eylem yapılabilir öneriler ve riskler sağlar. 
 
 
 ## <a name="your-responsibility"></a>Sorumluluğu
@@ -50,20 +50,21 @@ Kişiselleştirici uygulama, kullanıcılarınız ve işletmeniz için harika bi
 
 İçeriği ve kullanıcı arabirimlerini kişiselleştirmek için öğrenmiş bir hizmet kullanmak faydalıdır. Bu, kişiselleştirmenin gerçek dünyada negatif yan etkileri oluşturmasının, kullanıcılar içerik kişiselleştirmenin farkında olup olmadığı da dahil olmak üzere, yanlış bir şekilde uygulanabilir. 
 
-Negatif yan etkileri veya "ödül" de daha fazla basitleştirilmesi gereken çok uzun süreli karmaşık faktörlere bağlı olan ve "ödül" de saydamlık ekleme senaryolarına bağlı olan kişiselleştirici kullanımları örnekleri bireyler için sonuçlar. Bu, "SONUÇSAL" seçimler veya bir zarar riski içeren seçimler olarak değerlendirilir. Örneğin: 
+Negatif yan etkileri veya "ödül" de daha fazla basitleştirilmesi gereken çok uzun süreli karmaşık faktörlere bağlı olan ve "ödül" de saydamlık ekleme senaryolarına bağlı olan kişiselleştirici kullanımları örnekleri bireyler için sonuçlar. Bu, "SONUÇSAL" seçimler veya bir zarar riski içeren seçimler olarak değerlendirilir. Örnek: 
 
 
-* **Finans**: Risk faktörlerinin, kişiler hakkında bilgi sahibi olmadığı, bu bilgileri edinemediğini veya itiraz etmediğini bir yere dayanmakta olduğu kredi, mali ve sigorta ürünleri için teklifleri kişiselleştirme. 
-* **Eğitim**: Önerilerin okullara ve eğitim kurumlarına yönelik dereceleri, önerilerin yaymasına ve diğer seçeneklere kullanıcıların farkında olabileceği bir şekilde kişiselleştirilmesi.
-* **Democracy ve Cıvic katılımı**: Kullanıcıları etkileyen kullanıcılar için içerik kişiselleştirilmesi, işlem açısından ve işlecedir.
-* **Üçüncü taraf ödül değerlendirmesi**: Kullanıcının kendi davranışında bir işleme sahip olmak yerine, kullanıcının bir ikinci üçüncü taraf değerlendirmesini temel alan öğelerin kişiselleştirilmesi.
-* **Araştırmayla karşı dayanıklılık**: Kişiselleştirici araştırma davranışının zararlı olmasına neden olabilecek herhangi bir durum.
+* **Finans**: kredi, mali ve sigorta ürünlerinin tekliflerini kişiselleştirmek, risk faktörleri kişilerin bilgi sahibi olmadığı, bu bilgileri edinemediğini veya itiraz etmediğini öğrenmez. 
+* **Eğitim**: önerilerin okullara ve eğitim kurumlarına yönelik dereceleri kişiselleştirilmesi ve bunların diğer seçeneklere yönelik kullanıcıların farkında olabileceğini tahmin etmek.
+* **Democracy ve Cıvic katılımı**: Kullanıcı için içerik kişiselleştirilmesi, etkili bir şekilde opvaons
+* **Üçüncü taraf ödül değerlendirmesi**: kullanıcının kendi davranışından bir değerlendirme yapmak yerine, kullanıcının bir ikinci üçüncü taraf değerlendirmesini temel alan öğelerin kişiselleştirilmesi.
+* **Araştırmayla Ilgili toleranslı**: kişiselleştiriciye ait araştırma davranışının zararlı olmasına neden olabilecek herhangi bir durum.
 
 Kişiselleştirici için kullanım durumları seçerken:
 
 * Kişiselleştirmenin kullanıcılarınıza nasıl yardımcı olduğunu göz önünde bulundurarak tasarım sürecini başlatın.
 * Kişiselleştirme desenleri veya araştırması nedeniyle bazı öğeler kullanıcılar için derecelendirilmemişse gerçek dünyada olumsuz sonuçları göz önünde bulundurun.
-* Kendi kendini karşılayan Prophecy döngülerini düşünün. Bu durum, bir kişiselleştirmenin bir modeli daha sonra ilgili içeriğe erişimini daha sonra daha sonra dışlanmasını sağlamak için meydana gelebilir. Örneğin, düşük bir ön gelir komşudaki kişilerin çoğu Premium bir sigorta teklifi elde etmeyin ve komşulardan hiç kimse teklifi bir bütün olarak görebilir.
+* Kullanım durumlarınızın otomatik işleme oluşturduğunu, [GDPR](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679) article 22 veya diğer yasalar kapsamında düzenlenen veri konularını önemli ölçüde etkilediği konusunda düşünün.
+* Kendi kendini karşılayan Prophecy döngülerini düşünün. Bu durum, bir kişiselleştirmenin bir modeli daha sonra ilgili içeriğe erişimini daha sonra daha sonra dışlanmasını sağlamak için meydana gelebilir. Örneğin, düşük bir gelir alanındaki kişilerin çoğu Premium bir sigorta teklifi elde etmeyin ve komşulardan hiç kimse, yeterince araştırma olmaması durumunda teklifi bir bütün olarak görebilir.
 * Daha sonra kişiselleştirici yeniden oluşturulması gereken durumlarda modellerin ve öğrenme ilkelerinin kopyalarını kaydedin. Bu işlemi düzenli aralıklarla veya her model yenileme döneminde yapabilirsiniz.
 * Alan için araştırma düzeyini göz önünde bulundurun ve "yankı oluklığı" efektlerini azaltmak için bunu bir araç olarak nasıl kullanacağınızı düşünün.
 
@@ -74,16 +75,16 @@ Kişiselleştirici için kullanım durumları seçerken:
 
 Bu özelliklerin etkisini göz önünde bulundurun:
 
-* **Kullanıcı demografgrafikleri**: Cinsel, cinsiyet, yaş, Yarış, dini ile ilgili Özellikler: Bu özelliklere, yasal nedenlerden dolayı belirli uygulamalarda izin verilmiyor olabilir ve kişiselleştirme, genelleştirmeler ve sapma yaydığı için bunları kişiselleştirmek üzere hiç bir çözüm olmayabilir. Bu sapma yayılmaya bir örnek, Mühendislik için, ELDERLY veya cinsiyet tabanlı hedef kitlelere gösterilmeyecek bir iş postadır.
-* **Yerel ayar bilgileri**: Dünyanın pek çok yerinde, konum bilgileri (örneğin, bir posta kodu, posta kodu veya komşuları adı) gelir, yarış ve dini ile son derece bağıntılı olabilir.
-* **Eşitliği 'ın Kullanıcı tarafından açıklaması**: Uygulamanızın ses kararları verirken bile, kullanıcıların uygulama değişikliklerinde görüntülenen içeriğin, discriminatory olacak özelliklerle bağıntılı şekilde görünmesi için perceiving etkisini göz önünde bulundurun.
-* **Özelliklerde ISTENMEDEN sapma**:  Yalnızca popülasyonun bir alt kümesini etkileyen özellikler kullanılarak ortaya çıkan birçok Kaynakça vardır. Bu, bir resim veya metin analizinde metin halinde varlıkları saptamak için görüntü analizini kullanırken olduğu gibi, Özellikler oluşturulduysa, daha fazla dikkat gerektirir. Bu özellikleri oluşturmak için kullandığınız hizmetlerin özelliklerinden haberdar olun.
+* **Kullanıcı demograflarına**yönelik özellikler: cinsel, cinsiyet, yaş, Yarış, dini ile ilgili Özellikler: Bu özelliklere, yasal nedenlerle belirli uygulamalarda izin verilmiyor olabilir ve kişiselleştirmenin yaydığı için bu özelliklere, bu özelliklerin çevresinde kişiselleştirilmesi istenebilir genelleştirmeler ve sapma. Bu sapma yayılmaya bir örnek, Mühendislik için, ELDERLY veya cinsiyet tabanlı hedef kitlelere gösterilmeyecek bir iş postadır.
+* **Yerel ayar bilgileri**: dünyanın birçok yerinde, konum bilgileri (örneğin, bir posta kodu, posta kodu veya komşuları adı) gelir, yarış ve dini ile yüksek bir şekilde bağıntılı olabilir.
+* **Eşitliği 'ın Kullanıcı tarafından algılanma sayısı**: Uygulamanızın ses kararları aldığı durumlarda bile, uygulamanızda görüntülenen içeriğin, uygulama değişiklikleri olan özellikler ile bağıntılı bir şekilde değişiklikler olduğunu göz önünde bulundurun. discriminatory.
+* **Özelliklerde ISTENMEDEN sapma**: yalnızca popülasyonun bir alt kümesini etkileyen özellikler kullanılarak tanıtılamayabilir. Bu, bir resim veya metin analizinde metin halinde varlıkları saptamak için görüntü analizini kullanırken olduğu gibi, Özellikler oluşturulduysa, daha fazla dikkat gerektirir. Bu özellikleri oluşturmak için kullandığınız hizmetlerin özelliklerinden haberdar olun.
 
 İçerik ve eylemlerde, Kişiselleştiriciye göndermek için özellikler seçerken aşağıdaki uygulamaları uygulayın:
 
 * Bazı uygulamalar için belirli özellikleri kullanmanın yasallığını ve ahiteyi göz önünde bulundurun ve masum görünümlü özelliklerin,
 * Algoritmaların ve veri analizinin göreceği seçenekleri kişiselleştirmek için kullanıldığı kullanıcılara saydam olun.
-* Kendinize sorun: Kullanıcılarınızın içeriği kişiselleştirmek için bu bilgileri kullandığımda, Kullanıcılarım ilgilendi ve kutlu olsun mi? Belirli öğeleri vurgulamak veya gizlemek için kararının nasıl yapıldığını rahatlıkla göstermem gerekir mi?
+* Kendinize sorun: kullanıcılarınızın içeriği kişiselleştirmek için bu bilgileri kullandım. Belirli öğeleri vurgulamak veya gizlemek için kararının nasıl yapıldığını rahatlıkla göstermem gerekir mi?
 * Diğer özelliklere göre sınıflandırma veya segmentasyon verileri yerine davranış kullanın. Demografik bilgileri, geçmiş nedenlerle perakendeciler tarafından, bir dijital çağdan önce toplanması ve üzerinde işlem yapması basit olan, ancak ilgili demografik bilgilerinin gerçek etkileşime sahip olduğunuzda nasıl olduğunu sorulandı. bağlamsal veriler ve kullanıcı kimliğine daha yakından ilişki kuran geçmiş verileri.
 * Özelliklerin kötü amaçlı kullanıcılar tarafından ' sahte ' olarak nasıl önlenebildiğini, büyük sayılarda yararlanılması durumunda eğitim kişiselleştirmesine, emtibss ve belirli kullanıcı sınıflarının tacklerini yanıltmak için bir yanılmmaya yol açabilecek şekilde nasıl engelleyebileceğiniz göz önünde bulundurun. 
 * Uygun ve uygun olduğunda, kullanıcılarınızın belirli kişisel özelliklerine sahip olmaya izin vermek veya bu özellikleri kabul etmek için uygulamanızı tasarlayın. Bunlar, "konum bilgileri", "cihaz bilgileri", "geçmiş satın alma geçmişi" vb. gibi gruplandırılabilir.
@@ -120,7 +121,7 @@ Aşağıda AI 'nin sorumlu uygulamalarına ilişkin tasarımın alanları verilm
 
 ![Gelecekte hesaplanan AI değerleri](media/ethics-and-responsible-use/ai-values-future-computed.png)
 
-### <a name="accountability"></a>Sorumluluk
+### <a name="accountability"></a>Altına
 *AI sistemlerini tasarlayan ve dağıtan kişilerin, sistemlerinin nasıl çalıştığı konusunda sorumlu olması gerekir*. 
 
 * Kişiselleştirici, belge oluşturma ve bunları ekibiniz, Yöneticiler ve tedarikçilerle iletişim kurma hakkında iç yönergeler oluşturun.
@@ -131,7 +132,7 @@ Aşağıda AI 'nin sorumlu uygulamalarına ilişkin tasarımın alanları verilm
 ### <a name="transparency"></a>Saydamlık
 *AI sistemleri*anlaşılabilir olmalıdır. Kişiselleştirici ile:
 
-* *Kullanıcılara içeriğin nasıl kişiselleştirilme hakkında bilgi verin.* Örneğin, kullanıcılarınıza Kullanıcı ve eylemlerin, kişiselleştirici sonuçlarında bir `Why These Suggestions?` rol oynadığı en iyi özellikleri gösteren bir düğme gösterebilirsiniz.
+* *Kullanıcılara içeriğin nasıl kişiselleştirilme hakkında bilgi verin.* Örneğin, kullanıcılarınızı, Kullanıcı ve eylemlerin kişiselleştirici sonuçlarında bir rol oynadığı `Why These Suggestions?` etiketli bir düğme gösterebilirsiniz.
 * Kullanım koşullarınızın, deneyimi kişiselleştirmek için kullanıcılar ve davranışları hakkında bilgi kullanacağınızı söylediğinizden emin olun.
 
 ### <a name="fairness"></a>Eşitliği
@@ -193,7 +194,7 @@ Microsoft, bu sorumluluklar üzerinde işlem yapmanıza yardımcı olmak için s
 
 * Microsoft 'un, Ocak 2018 defterinde yayımlanan AI 'nin sorumlu geliştirmesi için, [gelecekte hesaplanan](https://news.microsoft.com/futurecomputed/)
 * [Geleceğe kim sahip?](https://www.goodreads.com/book/show/15802693-who-owns-the-future) Jaron Lanier.
-* [Matematik ve matematiksel bir](https://www.goodreads.com/book/show/28186015-weapons-of-math-destruction) şekilde yıkıcıkları
+* [Matematik ve matematiksel bir şekilde Yıkıcıkları](https://www.goodreads.com/book/show/28186015-weapons-of-math-destruction)
 * DJ Patil, Hietmason, Mike Loukides tarafından [ETCS ve veri bilimi](https://www.oreilly.com/library/view/ethics-and-data/9781492043898/) .
 * [ACM, Etics kodu](https://www.acm.org/code-of-ethics)
 * [Genesel bilgiler ayırt edici olmayan bir Işlem-GINA](https://en.wikipedia.org/wiki/Genetic_Information_Nondiscrimination_Act)

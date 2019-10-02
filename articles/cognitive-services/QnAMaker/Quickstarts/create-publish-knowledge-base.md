@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Bilgi Bankası oluşturma, eğitme ve yayımlama-Soru-Cevap Oluşturma'
+title: 'Hızlı başlangıç: Bilgi Bankası oluşturma, eğitme ve yayımlama-Soru-Cevap Oluşturma'
 titleSuffix: Azure Cognitive Services
 description: SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kullanarak bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturabilirsiniz. Bu örnekteki Soru-Cevap Oluşturma Bilgi Bankası, BitLocker anahtar kurtarma hakkındaki sorulara yanıt vermek için basit bir SSS Web sayfasından oluşturulmuştur.
 author: diberry
@@ -8,18 +8,20 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 229956b41f7f26637e6a6aa62e341c4b06b8a429
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: cafc1e2f3f195301a6c0f9485ebaa10111b08c7d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376373"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803057"
 ---
-# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı Başlangıç: Soru-Cevap Oluşturma bilgi bankanızı oluşturma, eğitme ve yayımlama
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
 SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kullanarak bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturabilirsiniz. Bu makale, BitLocker anahtar kurtarma ile ilgili soruları yanıtlamak için basit bir SSS Web sayfasından Soru-Cevap Oluşturma bilgi tabanı oluşturma hakkında bir örnek içerir.
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisite"></a>Önkoşul
 
@@ -54,7 +56,7 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
 
 ## <a name="edit-the-knowledge-base"></a>Bilgi Bankası 'nı düzenleme
 
-1. Bilgi Bankası 'na yeni bir satır eklemek için Soru-Cevap Oluşturma portalında **Düzenle** bölümünde **QNA Pair Ekle** ' yi seçin. **Question** (Soru) bölümüne **Hi** (Merhaba) yazın. **Answer** (Cevap) bölümüne **Hello. Bana BitLocker sorularını sorma.**
+1. Bilgi Bankası 'na yeni bir satır eklemek için Soru-Cevap Oluşturma portalında **Düzenle** bölümünde **QNA Pair Ekle** ' yi seçin. **Question** (Soru) bölümüne **Hi** (Merhaba) yazın. **Yanıt**' ın altında, **Merhaba yazın. Bana BitLocker sorularını sorma.**
 
     ![Soru-Cevap Oluşturma portalının ekran görüntüsü](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
@@ -100,7 +102,7 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
     * Bot oluştururken Azure portal aşağıdaki ayarları değiştirmeyin. Bunlar, mevcut bilgi tabanınız için önceden doldurulur: 
         * QnA auth anahtarı
         * App Service planı ve konumu
-        * Azure Storage
+        * Azure Depolama
     * Bot ve Soru-Cevap Oluşturma Web App Service planını paylaşabilir, ancak Web uygulamasını paylaşamaz. Bu, **uygulama adının** soru-cevap oluşturma hizmeti oluştururken kullandığınız uygulama adından farklı olması gerektiği anlamına gelir. 
 
 

@@ -1,6 +1,6 @@
 ---
 title: Azure CLı kullanarak bir VHD 'yi Azure 'a yükleme
-description: Azure CLı kullanarak bir VHD 'yi Azure yönetilen diskine yüklemeyi öğrenin.
+description: Azure yönetilen diskine bir VHD yükleme ve Azure CLı kullanarak bölgeler arasında yönetilen bir disk kopyalama hakkında bilgi edinin.
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 938f1696c95f8feb9aeebd28139870e3ce020613
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
-ms.translationtype: HT
+ms.openlocfilehash: d16e37849ce8ba043fdb1fddb13df2abe8732cda
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695441"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71717182"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Azure CLı kullanarak bir VHD 'yi Azure 'a yükleme
 
@@ -24,11 +24,13 @@ Azure 'da IaaS sanal makineleri için bir yedekleme çözümü sağlıyorsanız,
 
 Şu anda, standart HDD, standart SSD ve Premium SSD tarafından yönetilen diskler için doğrudan karşıya yükleme desteklenir. Henüz Ultra SSD 'Ler için desteklenmez.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 - [AzCopy ile v10 arasındaki 'ın](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)en son sürümünü indirin.
 - [Azure CLI 'Yı yükler](/cli/azure/install-azure-cli).
 - Yerel olarak depolanan bir VHD dosyası
+- Şirket içi bir VHD 'yi karşıya yüklemeyi planlıyorsanız: [Azure için hazırlanan](../windows/prepare-for-upload-vhd-image.md)bir VHD, yerel olarak depolanır.
+- Ya da bir kopyalama eylemi gerçekleştirmek istiyorsanız Azure 'da yönetilen bir disk.
 
 ## <a name="create-an-empty-managed-disk"></a>Boş bir yönetilen disk oluşturma
 
@@ -45,7 +47,7 @@ Karşıya yüklemek üzere boş bir standart HDD oluşturabilmeniz için önce, 
 
 Bir [disk oluşturma](/cli/azure/disk#az-disk-create) cmdlet 'inde-- **for-upload** parametresini ve **--upload-size-bytes** parametresini belirterek KARŞıYA yüklemek için boş bir standart HDD oluşturun:
 
-```azurecli-interactive
+```bash
 az disk create -n mydiskname -g resourcegroupname -l westus2 --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
@@ -55,7 +57,7 @@ Premium SSD veya standart SSD yüklemek isterseniz, **standard_lrs** değerini *
 
 Boş yönetilen diskinizin yazılabilir bir SAS oluşturmak için aşağıdaki komutu kullanın:
 
-```azurecli-interactive
+```bash
 az disk grant-access -n mydiskname -g resourcegroupname --access-level Write --duration-in-seconds 86400
 ```
 
@@ -75,7 +77,7 @@ Yerel VHD dosyanızı oluşturduğunuz SAS URI 'sini belirterek yönetilen bir d
 
 Bu karşıya yükleme, eşdeğer [Standart HDD](disks-types.md#standard-hdd)ile aynı aktarım hızına sahiptir. Örneğin, S4 'e karşılık gelen bir boyutunuz varsa, 60 MIB/sn 'ye kadar bir aktarım hızına sahip olursunuz. Ancak, S70 'e karşılık gelen bir boyutunuz varsa, 500 MIB/sn 'ye kadar bir aktarım hızına sahip olursunuz.
 
-```
+```bash
 AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 ```
 
@@ -83,8 +85,41 @@ Yükleme sırasında SAS süresinin dolması ve `revoke-access` ' ı henüz ça�
 
 Karşıya yükleme tamamlandıktan sonra ve diske daha fazla veri yazmanıza gerek kalmadığında, SAS 'yi iptal edin. SAS iptal edildiğinde, yönetilen diskin durumu değişir ve diski bir VM 'ye eklemenize olanak tanır.
 
-```azurecli-interactive
+```bash
 az disk revoke-access -n mydiskname -g resourcegroupname
+```
+
+## <a name="copy-a-managed-disk"></a>Yönetilen diski çoğaltma
+
+Doğrudan karşıya yükleme, yönetilen bir disk kopyalama işlemini de basitleştirir. Aynı bölge veya çapraz bölge içinde (başka bir bölgeye) kopyalayabilirsiniz.
+
+İzleme betiği bunu sizin için işler, mevcut bir diskle çalıştığınızdan daha önce açıklanan adımlara benzer.
+
+> [!IMPORTANT]
+> Azure 'dan yönetilen bir diskin bayt cinsinden disk boyutunu sağlarken 512 sapmasını eklemeniz gerekir. Bunun nedeni, Azure 'un disk boyutunu döndürürken alt bilgiyi atatmesinden kaynaklanır. Bunu yapmazsanız kopya başarısız olur. Aşağıdaki komut dosyası sizin için zaten bunu yapar.
+
+@No__t-0, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>` ve `<yourTargetLocationHere>` (bir konum değerinin bir örneği uswest2) değerlerini değerleriyle değiştirin, ardından yönetilen bir diski kopyalamak için aşağıdaki betiği çalıştırın.
+
+```bash
+sourceDiskName = <sourceDiskNameHere>
+sourceRG = <sourceResourceGroupHere>
+targetDiskName = <targetDiskNameHere>
+targetRG = <targetResourceGroupHere>
+targetLocale = <yourTargetLocationHere>
+
+sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
+
+az disk create -n $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+
+targetSASURI = $(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
+
+sourceSASURI=$(az disk grant-access -n <sourceDiskNameHere> -g $sourceRG --duration-in-seconds 86400 --query [acessSas] -o tsv)
+
+.\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
+
+az disk revoke-access -n $sourceDiskName -g $sourceRG
+
+az disk revoke-access -n $targetDiskName -g $targetRG
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

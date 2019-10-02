@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Konuşmayı tanıma, Java (Android)-konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı tanıma, Java (Android)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: Konuşma SDK 'sını kullanarak Android 'te Java 'da konuşmayı tanımayı öğrenin
 services: cognitive-services
@@ -10,19 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: c9b63685ae73fb4e056c72a640d6c4049e98b8b8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2f728231c01056ecb8709f84f13e834ef3618dc8
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559500"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803308"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak Android 'de Java 'da konuşmayı tanıma
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK’sını kullanarak Android üzerinde Java dilinde konuşma tanıma
+
+Hızlı başlangıçlara [konuşma sensıs](quickstart-text-to-speech-java-android.md) ve [ses-ilk Sanal Yardımcısı](quickstart-virtual-assistant-java-android.md)için de erişilebilir.
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Bu makalede, konuşmayı metne eklemek için bilişsel hizmetler konuşma SDK 'sını kullanarak Android için bir Java uygulaması geliştirmeyi öğreneceksiniz.
-Uygulama, konuşma SDK Maven paketini, sürüm 1.6.0 ve Android Studio 3,3 ' i temel alır.
+Uygulama, konuşma SDK Maven paketini temel alır ve 3,3 Android Studio.
 Konuşma SDK’sı şu anda 32/64 bit ARM işlemcilerine sahip Android cihazlarıyla ve Intel x86/x64 uyumlu işlemcilerle uyumludur.
 
 > [!NOTE]
@@ -56,7 +58,7 @@ UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/res/layout/activity_main.xml)]
 
-## <a name="add-sample-code"></a>Örnek kodu ekleme
+## <a name="add-sample-code"></a>Örnek kod ekleme
 
 1. `MainActivity.java` kaynak dosyasını açın. Bu dosyanın içindeki kodun tamamını aşağıdakiyle değiştirin.
 

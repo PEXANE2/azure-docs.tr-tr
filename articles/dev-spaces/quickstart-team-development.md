@@ -10,14 +10,14 @@ ms.topic: quickstart
 description: Azure 'da kapsayıcılar ve mikro hizmetlerle ekip Kubernetes geliştirme
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3509fd32e06117ce3709f110223b38ef0e0eed30
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842594"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815799"
 ---
-# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Hızlı Başlangıç: Azure Dev Spaces kullanarak Kubernetes üzerinde takım geliştirme
+# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Hızlı başlangıç: Azure Dev Spaces kullanarak Kubernetes üzerinde takım geliştirme
 
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
@@ -46,7 +46,10 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
 
-Aks kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için komutunukullanın.`use-dev-spaces` Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanları sunar ve *dev*adlı bir dev alanı oluşturur.
+AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için `use-dev-spaces` komutunu kullanın. Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanları sunar ve *dev*adlı bir dev alanı oluşturur.
+
+> [!NOTE]
+> @No__t-0 komutu, zaten yüklenmemişse Azure Dev Spaces CLı 'yi de yükler. Azure Dev Spaces CLı 'yi Azure Cloud Shell yükleyemezsiniz.
 
 ```cmd
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
@@ -65,7 +68,7 @@ cd dev-spaces/samples/BikeSharingApp/
 
 ## <a name="retrieve-the-hostsuffix-for-dev"></a>*Geliştirme* Için hostsuffix alma
 
-*Geliştirme için*hostsuffix öğesini göstermek için komutunu`azds show-context` kullanın.
+*Dev*Için hostsuffix öğesini göstermek için `azds show-context` komutunu kullanın.
 
 ```cmd
 $ azds show-context
@@ -77,7 +80,7 @@ MyAKS               MyResourceGroup   dev       fedcab0987.eus.azds.io
 
 ## <a name="update-the-helm-chart-with-your-hostsuffix"></a>Held grafiğini HostSuffix ile güncelleştirme
 
-[Grafikler/değerler. YAML](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) 'yi açın ve tüm örneklerini `<REPLACE_ME_WITH_HOST_SUFFIX>` daha önce aldığınız hostsuffix değeri ile değiştirin. Değişikliklerinizi kaydedin ve dosyayı kapatın.
+[Grafik/değer. YAML](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) 'yi açın ve `<REPLACE_ME_WITH_HOST_SUFFIX>` ' in tüm örneklerini daha önce aldığınız hostsuffix değeri ile değiştirin. Değişikliklerinizi kaydedin ve dosyayı kapatın.
 
 ## <a name="run-the-sample-application-in-kubernetes"></a>Kubernetes 'te örnek uygulamayı çalıştırma
 
@@ -85,7 +88,7 @@ Kubernetes üzerinde örnek uygulamayı çalıştırmaya yönelik komutlar, var 
 
 Bir uygulama bir kümede çalıştıktan sonra, dağıtımı yapmak için kullanılan araç ne olursa olsun, takım geliştirmesi için Azure Dev Spaces kullanabilirsiniz.
 
-Örnek uygulamayı kümenize `helm install` kurmak ve kurmak için vekomutlarınıkullanın.`helm init`
+Kümenize örnek uygulamayı ayarlamak ve yüklemek için `helm init` ve `helm install` komutlarını kullanın.
 
 ```cmd
 cd charts/
@@ -93,9 +96,9 @@ helm init --wait
 helm install -n bikesharing . --dep-up --namespace dev --atomic 
 ```
 > [!Note]
-> **RBAC özellikli bir küme kullanıyorsanız**, [Tiller için bir hizmet hesabı](https://helm.sh/docs/using_helm/#role-based-access-control)yapılandırmadığınızdan emin olun. Aksi takdirde `helm` , komutlar başarısız olur.
+> **RBAC özellikli bir küme kullanıyorsanız**, [Tiller için bir hizmet hesabı](https://helm.sh/docs/using_helm/#role-based-access-control)yapılandırmadığınızdan emin olun. Aksi takdirde, `helm` komutları başarısız olur.
 
-`helm install` Komutun tamamlanması birkaç dakika sürebilir. Komutun çıktısı tamamlandığında kümeye dağıtıldığı tüm hizmetlerin durumunu gösterir:
+@No__t-0 komutunun tamamlanması birkaç dakika sürebilir. Komutun çıktısı tamamlandığında kümeye dağıtıldığı tüm hizmetlerin durumunu gösterir:
 
 ```cmd
 $ cd charts/
@@ -117,7 +120,7 @@ reservationengine  1/1    1           1          4m32s
 users              1/1    1           1          4m32s
 ```
 
-Örnek uygulama kümenize yüklendikten sonra ve kümenizde geliştirme alanları etkinleştirildikten sonra, şu anda seçili olan *geliştirme* ortamında örnek uygulamanın URL 'lerini `azds list-uris` göstermek için komutunu kullanın.
+Örnek uygulama kümenize yüklendikten sonra ve kümenizde geliştirme alanları etkin olduktan sonra, şu anda seçili olan *dev* 'de örnek uygulamanın URL 'lerini göstermek için `azds list-uris` komutunu kullanın.
 
 ```cmd
 $ azds list-uris
@@ -127,13 +130,13 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-`azds list-uris` Komuttan ortak URL 'yi açarak *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *bıkesharingweb* hizmeti 'nin `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`genel URL 'si. Kullanıcı olarak *Aurelia Briggs (müşteri)* seçeneğini belirleyin. *Yüksek bir Brig metnini gördiğinizi doğrulayın | En üstte oturumu kapatın* .
+@No__t-1 komutundan ortak URL 'yi açarak *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *bıkesharingweb* hizmeti IÇIN genel URL `http://dev.bikesharingweb.fedcab0987.eus.azds.io/` ' dir. Kullanıcı olarak *Aurelia Briggs (müşteri)* seçeneğini belirleyin. *Yüksek bir Brig metnini gördiğinizi doğrulayın | En üstte oturumu kapatın* .
 
 ![Azure Dev Spaces bisiklet paylaşımı örnek uygulaması](media/quickstart-team-development/bikeshare.png)
 
 ## <a name="create-child-dev-spaces"></a>Alt dev alanları oluşturma
 
-*Geliştirme altında*iki alt boşluk oluşturmak için komutunu`azds space select` kullanın:
+*Dev*altında iki alt boşluk oluşturmak için `azds space select` komutunu kullanın:
 
 ```cmd
 azds space select -n dev/azureuser1 -y
@@ -142,7 +145,7 @@ azds space select -n dev/azureuser2 -y
 
 Yukarıdaki komutlar *dev* adında *azureuser1* ve *azureuser2*adlı iki alt boşluk oluşturur. Bu iki alt boşluk, geliştiricilerin örnek uygulamada değişiklikler yapmak için kullanması için ' *azureuser1* ve *azureuser2* ' nin farklı geliştirme alanlarını temsil eder.
 
-Tüm dev alanlarını listelemek için komutunukullanınvedev/azureuser2'ınseçiliolduğunu`azds space list` onaylayın.
+Tüm dev alanlarını listelemek için `azds space list` komutunu kullanın ve *dev/azureuser2* ' ın seçili olduğunu onaylayın.
 
 ```cmd
 $ azds space list
@@ -154,7 +157,7 @@ $ azds space list
 *  dev/azureuser2  True
 ```
 
-*Geliştirme/azureuser2*olan şu anda seçili olan alanda örnek uygulamanın URL 'lerini göstermek içinöğesinikullanın.`azds list-uris`
+*Geliştirici/azureuser2*olan seçili alanda örnek uygulamanın URL 'lerini göstermek için `azds list-uris` kullanın.
 
 ```cmd
 $ azds list-uris
@@ -164,13 +167,13 @@ http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-`azds list-uris` Komut tarafından görüntülenen URL 'lerin *azureuser2. s. dev* ön ekine sahip olduğunu doğrulayın. Bu ön ek, seçilen geçerli alanın *dev*öğesinin bir alt öğesi olan *azureuser2*olduğunu onaylar.
+@No__t-0 komutunda görüntülenen URL 'Lerin *azureuser2. s. dev* ön ekine sahip olduğunu doğrulayın. Bu ön ek, seçilen geçerli alanın *dev*öğesinin bir alt öğesi olan *azureuser2*olduğunu onaylar.
 
-Komuttan ortak URL 'yi açarak *dev/azureuser2* dev alanı için *bıkesharingweb* hizmetine gidin. `azds list-uris` Yukarıdaki örnekte, *bıkesharingweb* hizmeti 'nin `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`genel URL 'si. Kullanıcı olarak *Aurelia Briggs (müşteri)* seçeneğini belirleyin. *Yüksek bir Brig metnini gördiğinizi doğrulayın | En üstte oturumu kapatın* .
+@No__t-2 komutundan ortak URL 'yi açarak *dev/azureuser2* dev alanı için *bıkesharingweb* hizmetine gidin. Yukarıdaki örnekte, *bıkesharingweb* hizmeti IÇIN genel URL `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/` ' dir. Kullanıcı olarak *Aurelia Briggs (müşteri)* seçeneğini belirleyin. *Yüksek bir Brig metnini gördiğinizi doğrulayın | En üstte oturumu kapatın* .
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Bir metin düzenleyici ile *bıkesharingweb/Components/Header. js* ' i açın ve [span öğesindeki metni `userSignOut` ClassName ile](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16)değiştirin.
+Bir metin düzenleyici ile *Bıkesharingweb/Components/Header. js* ' i açın ve [span öğesindeki metni `userSignOut` ClassName ile](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16)değiştirin.
 
 ```html
 <span className="userSignOut">
@@ -198,16 +201,16 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 
 Bu komut, *bıkesharingweb* hizmetini *geliştirme/azureuser2* dev alanında oluşturur ve çalıştırır. Bu hizmet *dev* 'da çalışan *bıkesharingweb* hizmetine ek olarak çalışır ve yalnızca *azureuser2. s* URL ön ekine sahip istekler için kullanılır. Yönlendirmenin üst ve alt dev alanları arasında nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure dev Spaces nasıl çalışıyor ve yapılandırılır](how-dev-spaces-works.md).
 
-Komutun çıktısında görüntülenecek genel URL 'yi açarak *dev/azureuser2* dev alanı için *bıkesharingweb* hizmetine gidin. `azds up` Kullanıcı olarak *Aurelia Briggs (müşteri)* seçeneğini belirleyin. Sağ üst köşedeki güncelleştirilmiş metni gördiğinizi doğrulayın. Bu değişikliği hemen görmüyorsanız sayfayı yenilemeniz veya tarayıcınızın önbelleğini temizlemeniz gerekebilir.
+@No__t-2 komutunun çıkışında görüntülenecek genel URL 'YI açarak *dev/azureuser2* dev alanı için *bıkesharingweb* hizmetine gidin. Kullanıcı olarak *Aurelia Briggs (müşteri)* seçeneğini belirleyin. Sağ üst köşedeki güncelleştirilmiş metni gördiğinizi doğrulayın. Bu değişikliği hemen görmüyorsanız sayfayı yenilemeniz veya tarayıcınızın önbelleğini temizlemeniz gerekebilir.
 
 ![Azure Dev Spaces bisiklet paylaşımı örnek uygulaması güncelleştirildi](media/quickstart-team-development/bikeshare-update.png)
 
 > [!NOTE]
-> Çalışırken hizmetinize `azds up`gittiğinizde, http isteği izlemeleri `azds up` komutun çıktısında de görüntülenir. Bu izlemeler, hizmetinizde sorun gidermenize ve hata ayıklamanıza yardımcı olabilir. `--disable-http-traces` Çalıştırırken`azds up`kullanarak bu izlemeleri devre dışı bırakabilirsiniz.
+> @No__t-0 çalıştırılırken hizmetinize gittiğinizde, HTTP isteği izlemeleri de `azds up` komutunun çıktısında görüntülenir. Bu izlemeler, hizmetinizde sorun gidermenize ve hata ayıklamanıza yardımcı olabilir. @No__t-1 çalıştırırken `--disable-http-traces` kullanarak bu izlemeleri devre dışı bırakabilirsiniz.
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>Diğer geliştirme alanlarının değiştirilmediğinden emin olun
 
-Komut hala çalışıyorsa, *Ctrl + c*tuşlarına basın. `azds up`
+@No__t-0 komutu hala çalışıyorsa, *Ctrl + c*tuşlarına basın.
 
 ```cmd
 $ azds list-uris --all

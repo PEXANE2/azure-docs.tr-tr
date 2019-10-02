@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 9b78c18547ef61b388a56a1272b5621cada43806
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120482"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803395"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -21,19 +21,19 @@ Bu makalede, Azure Cosmos DB farklı kaynaklara sunulan varsayılan kotalarla bi
 
 Aboneliğiniz kapsamında bir Azure Cosmos hesabı oluşturduktan sonra [veritabanları, kapsayıcılar ve öğeler oluşturarak](databases-containers-items.md)hesabınızdaki verileri yönetebilirsiniz. [İstek birimi (ru/s veya Rus)](request-units.md)bakımından bir kapsayıcı düzeyinde veya veritabanı düzeyinde üretilen iş sağlayabilirsiniz. Aşağıdaki tabloda kapsayıcı/veritabanı başına depolama ve işleme sınırları listelenmektedir.
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | Kapsayıcı başına en fazla ru ([adanmış aktarım hızı sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
 | Veritabanı başına en fazla ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | Varsayılan olarak 1.000.000. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz |
 | Maksimum ru/(mantıksal) bölüm anahtarı | 10,000 |
 | Tüm öğelerin tamamında en fazla depolama alanı (mantıksal) bölüm anahtarı| 10 GB |
-| En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |
-| Kapsayıcı başına en fazla depolama alanı | Sınırsız |
-| Veritabanı başına en fazla depolama alanı | Sınırsız |
+| En fazla farklı (mantıksal) bölüm anahtarı sayısı | İş çalışma zamanında |
+| Kapsayıcı başına en fazla depolama alanı | İş çalışma zamanında |
+| Veritabanı başına en fazla depolama alanı | İş çalışma zamanında |
 | Hesap başına en fazla ek boyutu (ek özelliği amorti edilir) | 2 GB | 
 
 > [!NOTE]
-> Depolama veya işleme için daha yüksek sınırlara ihtiyaç duyulan bölüm anahtarlarına sahip iş yüklerini yönetmek için en iyi uygulamalar için bkz. [sık erişimli bölüm anahtarları Için tasarlama](synthetic-partition-keys.md)
+> Depolama veya işleme için daha fazla sınır gerektiren bölüm anahtarlarına sahip iş yüklerini yönetmeye yönelik en iyi yöntemler hakkında bilgi edinmek için bkz. [yapay bir bölüm anahtarı oluşturma](synthetic-partition-keys.md).
 >
 
 Cosmos kapsayıcısının (veya paylaşılan üretilen iş veritabanı) en az 400 ru işleme sahip olması gerekir. Kapsayıcı büyüdükçe, desteklenen en düşük aktarım hızı da aşağıdaki etkenlere bağlıdır:
@@ -49,7 +49,7 @@ Kapsayıcının veya bir veritabanının geçerli ve en düşük aktarım hızı
 
 Özet bölümünde, sağlanan en düşük RU sınırları aşağıda verilmiştir. 
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | Kapsayıcı başına en az ru ([özel üretilen iş işleme modu](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | Veritabanı başına en az ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | 400 |
@@ -61,7 +61,7 @@ Cosmos DB, SDK veya Portal aracılığıyla kapsayıcı veya veritabanı başın
 
 Azure portal, Azure PowerShell, Azure CLı ve Azure Resource Manager şablonlarını kullanarak [Azure Cosmos hesabınızı temin edebilir ve yönetebilirsiniz](how-to-manage-database-account.md) . Aşağıdaki tabloda abonelik, hesap ve işlem sayısına göre sınırlar listelenmektedir.
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | Abonelik başına en fazla veritabanı hesabı | Varsayılan olarak 50. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
 | En fazla bölgesel yük devretme sayısı | Varsayılan olarak 1/saat. [Azure destek bileti](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) kaydederek bunu artırabilirsiniz|
@@ -73,32 +73,32 @@ Cosmos DB, düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır
 
 ## <a name="per-account-limits"></a>Hesap başına sınırlar
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
-| En fazla veritabanı sayısı | Sınırsız |
-| Veritabanı başına en fazla kapsayıcı sayısı (veya hesap) | Sınırsız |
+| En fazla veritabanı sayısı | İş çalışma zamanında |
+| Veritabanı başına en fazla kapsayıcı sayısı (veya hesap) | İş çalışma zamanında |
 | En fazla bölge sayısı | Sınır yok (tüm Azure bölgeleri) |
 
 ## <a name="per-container-limits"></a>Kapsayıcı başına sınırlar
 
 Kullandığınız API 'ye bağlı olarak bir Azure Cosmos kapsayıcısı bir koleksiyon, tablo veya grafik temsil edebilir. Kapsayıcılar [benzersiz anahtar kısıtlamaları](unique-keys.md), [saklı yordamlar, Tetikleyiciler ve UDF](stored-procedures-triggers-udfs.md)'ler ve [Dizin oluşturma ilkesi](how-to-manage-indexing-policy.md)için konfigürasyonları destekler. Aşağıdaki tabloda bir kapsayıcı içindeki yapılandırmalara özgü sınırlar listelenmektedir. 
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | En fazla veritabanı veya kapsayıcı adı uzunluğu | 255 |
-| Kapsayıcı başına en fazla saklı yordam | 100<sup>*</sup>|
-| Kapsayıcı başına en fazla UDF | 250<sup>*</sup>|
-| Dizin oluşturma ilkesindeki en fazla yol sayısı| 100<sup>*</sup>|
-| Kapsayıcı başına en fazla benzersiz anahtar sayısı|(<sup>*</sup>|
-| Benzersiz anahtar kısıtlaması başına en fazla yol sayısı|k<sup>*</sup>|
+| Kapsayıcı başına en fazla saklı yordam | 100 <sup>*</sup>|
+| Kapsayıcı başına en fazla UDF | 25 <sup>*</sup>|
+| Dizin oluşturma ilkesindeki en fazla yol sayısı| 100 <sup>*</sup>|
+| Kapsayıcı başına en fazla benzersiz anahtar sayısı|10 <sup>*</sup>|
+| Benzersiz anahtar kısıtlaması başına en fazla yol sayısı|16 <sup>*</sup>|
 
-<sup>*</sup>Azure desteği ile iletişime geçerek bu kapsayıcı başına limitlerin herhangi birini artırabilirsiniz.
+<sup>*</sup> Azure desteği ile iletişime geçerek bu kapsayıcı başına limitlerin herhangi birini artırabilirsiniz.
 
 ## <a name="per-item-limits"></a>Öğe başına sınırlar
 
 Kullandığınız API 'ye bağlı olarak, bir Azure Cosmos öğesi koleksiyondaki bir belgeyi, tablodaki bir satırı veya bir grafikteki bir düğümü ya da kenarı temsil edebilir. Aşağıdaki tabloda, Cosmos DB her öğe için sınır gösterilmektedir. 
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | En büyük öğe boyutu | 2 MB (UTF-8 JSON gösteriminin uzunluğu) |
 | Bölüm anahtarı değerinin uzunluk üst sınırı | 2048 bayt |
@@ -116,7 +116,7 @@ Bölüm anahtarı ve kimlik değerleri için uzunluk kısıtlamaları ve 2 MB To
 
 Cosmos DB kapsayıcılar, öğeler ve veritabanları gibi kaynaklara karşı [CRUD ve sorgu işlemlerini](https://docs.microsoft.com/rest/api/cosmos-db/) destekler.  
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | Tek bir işlem için en fazla yürütme süresi (saklı yordam yürütme veya tek bir sorgu sayfası alma gibi)| 5 sn |
 | En fazla istek boyutu (saklı yordam, CRUD)| 2 MB |
@@ -126,7 +126,7 @@ Sorgu gibi bir işlem, yürütme zaman aşımı veya Yanıt boyut sınırına ul
 
 Cosmos DB yetkilendirme için HMAC kullanır. Kapsayıcılar, bölüm anahtarları veya öğeler gibi kaynaklara yönelik ayrıntılı erişim denetimi için bir ana anahtar ya da [kaynak belirteçleri](secure-access-to-data.md) kullanabilirsiniz. Aşağıdaki tabloda Cosmos DB yetkilendirme belirteçleri için sınırlar listelenmektedir.
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | En büyük ana belirteç süre sonu zamanı | 15 dk  |
 | En düşük kaynak belirteci süre sonu zamanı | 10 dakika  |
@@ -139,17 +139,17 @@ Cosmos DB, yazma işlemleri sırasında tetikleyicilerin yürütülmesini destek
 
 Cosmos DB, [SQL](how-to-sql-query.md)kullanılarak öğelerin sorgulanmasını destekler. Aşağıdaki tabloda sorgu deyimlerinde, örnek tümce sayısı veya sorgu uzunluğu gibi kısıtlamalar açıklanmaktadır.
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
-| Maksimum SQL sorgusu uzunluğu| 256 KB<sup>*</sup>|
-| Sorgu başına en fazla birleşim| e<sup>*</sup>|
-| Sorgu başına maksimum and| 2000<sup>*</sup>|
-| Sorgu başına en fazla ORs| 2000<sup>*</sup>|
-| Sorgu başına en fazla UDF| (<sup>*</sup>|
-| İfade başına maksimum bağımsız değişken| 6000<sup>*</sup>|
-| Çokgen başına en fazla punto| 4096<sup>*</sup>|
+| Maksimum SQL sorgusu uzunluğu| 256 KB <sup>*</sup>|
+| Sorgu başına en fazla birleşim| 5 <sup>*</sup>|
+| Sorgu başına maksimum and| 2000 <sup>*</sup>|
+| Sorgu başına en fazla ORs| 2000 <sup>*</sup>|
+| Sorgu başına en fazla UDF| 10 <sup>*</sup>|
+| İfade başına maksimum bağımsız değişken| 6000 <sup>*</sup>|
+| Çokgen başına en fazla punto| 4096 <sup>*</sup>|
 
-<sup>*</sup>Azure desteğiyle iletişim kurarak bu SQL sorgu limitlerinin herhangi birini artırabilirsiniz.
+<sup>*</sup> Azure desteğiyle iletişim kurarak bu SQL sorgu limitlerinin herhangi birini artırabilirsiniz.
 
 ## <a name="mongodb-api-specific-limits"></a>MongoDB API 'sine özgü sınırlar
 
@@ -157,7 +157,7 @@ Cosmos DB, MongoDB 'ye karşı yazılan uygulamalar için MongoDB tel protokolü
 
 Aşağıdaki tabloda MongoDB Özellik desteğine özgü sınırlar listelenmektedir. SQL (çekirdek) API 'SI için bahsedilen diğer hizmet limitleri de MongoDB API 'SI için de geçerlidir.
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | Maksimum MongoDB sorgu belleği boyutu | 40 MB |
 | MongoDB işlemleri için maksimum yürütme süresi| 30 saniye |
@@ -166,10 +166,10 @@ Aşağıdaki tabloda MongoDB Özellik desteğine özgü sınırlar listelenmekte
 
 Aşağıdaki tabloda, [Try Azure Cosmos DB ücretsiz deneme için](https://azure.microsoft.com/try/cosmosdb/) sınırlar listelenmektedir.
 
-| Resource | Varsayılan limit |
+| Kaynak | Varsayılan limit |
 | --- | --- |
 | Deneme süresi | 30 gün (herhangi bir sayıda yenilenebilir) |
-| Abonelik başına en fazla kapsayıcı (SQL, Gremlin, Tablo API'si) | 1\. |
+| Abonelik başına en fazla kapsayıcı (SQL, Gremlin, Tablo API'si) | 1 |
 | Abonelik başına en fazla kapsayıcı (MongoDB API) | 3 |
 | Kapsayıcı başına en fazla aktarım hızı | 5000 |
 | Paylaşılan işleme veritabanı başına en fazla aktarım hızı | 20000 |

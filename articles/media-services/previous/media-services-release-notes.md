@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: media
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 91dead0953d6c124f9179e70b4ed38fe0c13bdc2
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 7684acbd26848bbccb09416df44a9669965dcfe9
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338560"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720135"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services sürüm notları
 
@@ -29,8 +29,8 @@ Bu sürüm notları, önceki sürümlerden ve bilinen sorunlardan değişiklikle
 
 Sizi etkileyen sorunları gidermeye odaklanabilmeniz için müşterilerimizden haberdar olmak istiyoruz. Bir sorunu bildirmek veya soru sormak için [Azure Media Services MSDN Forumu]bir gönderi gönderin. 
 
-## <a name="a-idissuesknown-issues"></a><a id="issues"/>Bilinen sorunlar
-### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services genel sorunlar
+## <a name="a-idissuesknown-issues"></a>@no__t-bilinen sorunlar
+### <a name="a-idgeneral_issuesmedia-services-general-issues"></a><a id="general_issues"/>Media Services genel sorunları
 
 | Sorun | Açıklama |
 | --- | --- |
@@ -50,9 +50,9 @@ Media Services REST API sürümü geçmişi hakkında daha fazla bilgi için [Az
 
 ### <a name="deprecation-of-media-processors"></a>Medya işlemcilerinin kullanımdan kaldırılması
 
-*Azure Media Indexer v1* ve *Azure Media Indexer v2 önizlemenin*kullanım dışı bırakıldığımızda duyuruluyoruz. [Azure Media Indexer v1](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Indexer v2 Preview](media-services-process-content-with-indexer2.md) medya Işlemcileri 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
+*Azure Media Indexer* ve *Azure Media Indexer 2 Preview*kullanım dışı olarak duyuruluyoruz. [Azure Media Indexer](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) medya Işlemcileri 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
 
-Daha fazla bilgi için, bkz. [Azure Media Indexer v1 ve Azure Media Indexer v2 'den Azure Media Services video Indexer 'ye geçirme](migrate-indexer-v1-v2.md).
+Daha fazla bilgi için [Azure Media Indexer ve Azure Media Indexer 2 ' den Azure Media Services video Indexer geçiş](migrate-indexer-v1-v2.md)konusuna bakın.
 
 ## <a name="august-2019"></a>Ağustos 2019
 
@@ -93,7 +93,7 @@ En son hizmet sürümü sayesinde, bir Iş başarısız olduğunda hizmet taraf�
 > Media Services Azure Access Control Service kimlik doğrulama anahtarları desteğini kullanımdan kaldırır. 22 Haziran 2018 ' de, Access Control Service anahtarlarını kullanarak kod aracılığıyla Media Services arka ucu ile kimlik doğrulaması yapamayacaktır. Kodunuzu [Azure AD tabanlı kimlik doğrulaması](media-services-use-aad-auth-to-access-ams-api.md)başına Azure Active Directory (Azure AD) kullanacak şekilde güncelleştirmeniz gerekir. Azure portal bu değişiklik hakkındaki uyarıları izleyin.
 
 ### <a name="updates-for-october-2017"></a>2017 Ekim güncelleştirmeleri
-#### <a name="sdks"></a>SDK’lar
+#### <a name="sdks"></a>SDK'ler
 * .NET SDK, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Azure AD 'ye daha hızlı geçiş yapmak için, Access Control Service kimlik doğrulaması desteği Nuget.org üzerindeki en son .NET SDK 'sinden kaldırılmıştır. 
 * JAVA SDK 'Sı, Azure AD kimlik doğrulamasını destekleyecek şekilde güncelleştirildi. Java SDK 'sına Azure AD kimlik doğrulaması desteği eklenmiştir. Java SDK 'sını Media Services ile kullanma hakkında daha fazla bilgi için bkz [. Java istemci SDK 'sını kullanmaya başlama Azure Media Services](media-services-java-how-to-use.md)
 
@@ -111,7 +111,7 @@ En son hizmet sürümü sayesinde, bir Iş başarısız olduğunda hizmet taraf�
     * Standart kodlayıcıda kullanılan H. ve kod çözücü geliştirmeleri, bazı nadir yapıtları ortadan kaldırır. 
 
 #### <a name="media-analytics"></a>Media Analytics
-Azure Media Redactor genel kullanılabilirliği: Bu medya işlemcisi, seçilen kişilerin yüzlerini bulanıklaştırma ve genel güvenlik ve haber medya senaryolarında kullanılmak üzere ideal olan bir anonim seçme gerçekleştirir. 
+Azure Media Redactor genel kullanılabilirliği: Bu medya işlemcisi, seçilen kişilerin yüzlerini bulanıklaştırma ve genel güvenlik ve haber medya senaryolarında kullanılmak üzere ideal bir seçenektir. 
 
 Bu yeni işlemciye genel bakış için, [Bu blog gönderisine](https://azure.microsoft.com/blog/azure-media-redactor/)bakın. Belgeler ve ayarlar hakkında daha fazla bilgi için, [Azure Media Analytics ile yüzeyleri redaksiyonu](media-services-face-redaction.md)bölümüne bakın.
 
@@ -170,7 +170,7 @@ En son hizmet sürümünden itibaren, bir veya daha fazla MP4 dosyası üreten b
 > 
 > 
 
-Daha fazla bilgi için [bu bloga](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/) bakın.
+Daha fazla bilgi için [Bu bloga](https://blogs.msdn.microsoft.com/randomnumber/2016/07/08/encoder-changes-within-azure-media-services-now-create-ismc-file/)bakın.
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 Bazı istemciler Kesintisiz Akış bildiriminde bir yineleme Etiketi sorunu üzerinden gelebilir. Daha fazla bilgi için [Bu bölüme](media-services-deliver-content-overview.md#known-issues)bakın.
@@ -183,7 +183,7 @@ Bazı istemciler Kesintisiz Akış bildiriminde bir yineleme Etiketi sorunu üze
 Artık, Apple FairPlay ile HTTP Canlı Akışı (HLS) içeriğinizi dinamik olarak şifrelemek için Media Services kullanabilirsiniz. Ayrıca, istemcilere FairPlay lisansları sunmak için Media Services lisans teslim hizmetini de kullanabilirsiniz. Daha fazla bilgi için bkz. Apple FairPlay ile korunan HLS içeriğinizi akışa almak için Azure Media Services kullanma. "
 
 ## <a id="feb_changes16"></a>Şubat 2016 sürümü
-.NET için Media Services SDK 'nın en son sürümü (3.5.3), Google Widevine ile ilgili hata düzeltmesini içerir. Widevine ile şifrelenen birden çok varlık için AssetDeliveryPolicy yeniden kullanılması imkansız oldu. Bu hata düzeltmesinin bir parçası olarak SDK 'ya aşağıdaki özellik eklenmiştir: Widevınebaselicensetanışıtionurl.
+.NET için Media Services SDK 'nın en son sürümü (3.5.3), Google Widevine ile ilgili hata düzeltmesini içerir. Widevine ile şifrelenen birden çok varlık için AssetDeliveryPolicy yeniden kullanılması imkansız oldu. Bu hata düzeltmesinin bir parçası olarak, aşağıdaki özellik SDK 'ya eklenmiştir: Widevınebaselicensetanışytionurl.
 
     Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
         new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
@@ -209,20 +209,20 @@ Azure SDK ekibi, Media Services için güncelleştirmeler ve yeni özellikler i�
 Daha fazla bilgi için bkz.
 
 * Aşağıdaki [kod örnekleri](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices) hızlı bir şekilde başlamanıza yardımcı olur:
-  * **vodworkflow_aes. php**: Bu PHP dosyası, AES-128 dinamik şifrelemesini ve anahtar teslim hizmetini nasıl kullanacağınızı gösterir. Bu, [AES-128 dinamik şifrelemesini ve anahtar teslim hizmetini kullanma](media-services-protect-with-aes128.md)bölümünde açıklanan .net örneğine dayalıdır.
-  * **vodworkflow_aes. php**: Bu PHP dosyası, PlayReady dinamik şifrelemesini ve lisans teslimi hizmetini nasıl kullanacağınızı gösterir. Bu, [PlayReady ve/veya Widevine dinamik ortak şifrelemeyi kullanma](media-services-protect-with-playready-widevine.md)bölümünde açıklanan .net örneğine dayalıdır.
-  * **scale_encoding_units. php**: Bu PHP dosyası, kodlama ayrılmış birimlerinin nasıl ölçeklenmesi gerektiğini gösterir.
+  * **vodworkflow_aes. php**: Bu php dosyası, aes-128 dinamik şifrelemesini ve anahtar teslim hizmetini nasıl kullanacağınızı gösterir. Bu, [AES-128 dinamik şifrelemesini ve anahtar teslim hizmetini kullanma](media-services-protect-with-aes128.md)bölümünde açıklanan .net örneğine dayalıdır.
+  * **vodworkflow_aes. php**: Bu php dosyası, PlayReady dinamik şifrelemesini ve lisans teslimi hizmetini nasıl kullanacağınızı gösterir. Bu, [PlayReady ve/veya Widevine dinamik ortak şifrelemeyi kullanma](media-services-protect-with-playready-widevine.md)bölümünde açıklanan .net örneğine dayalıdır.
+  * **scale_encoding_units. php**: Bu php dosyası, kodlama ayrılmış birimlerinin nasıl ölçeklenmesi gerektiğini gösterir.
 
 ## <a id="nov_changes_15"></a>Kasım 2015 sürümü
- Media Services artık bulutta Widevine lisans teslim hizmetini sunmaktadır. Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/) bakın. Ayrıca, [Bu öğreticiye](media-services-protect-with-playready-widevine.md) ve [GitHub deposuna](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)bakın. 
+ Media Services artık bulutta Widevine lisans teslim hizmetini sunmaktadır. Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)bakın. Ayrıca, [Bu öğreticiye](media-services-protect-with-playready-widevine.md) ve [GitHub deposuna](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)bakın. 
 
-Media Services tarafından sunulan Widevine lisans Teslim Hizmetleri önizleme aşamasındadır. Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/) bakın.
+Media Services tarafından sunulan Widevine lisans Teslim Hizmetleri önizleme aşamasındadır. Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/announcing-google-widevine-license-delivery-services-public-preview-in-azure-media-services/)bakın.
 
 ## <a id="oct_changes_15"></a>Ekim 2015 sürümü
-Media Services artık aşağıdaki veri merkezlerinde canlı: Brezilya Güney, Hindistan Batı, Hindistan Güney ve Hindistan Orta. Artık [Media Service hesapları oluşturmak](media-services-portal-create-account.md) ve [Media Services belgeler Web sayfasında](https://azure.microsoft.com/documentation/services/media-services/)açıklanan çeşitli görevleri gerçekleştirmek için Azure Portal kullanabilirsiniz. Live Encoding bu veri merkezlerinde etkin değildir. Ayrıca, bu veri merkezlerinde Encoding 'e ayrılan birimlerin her türlü türü kullanılabilir değildir.
+Media Services artık şu veri merkezlerinde canlı: Brezilya Güney, Hindistan Batı, Hindistan Güney ve Hindistan Orta. Artık [Media Service hesapları oluşturmak](media-services-portal-create-account.md) ve [Media Services belgeler Web sayfasında](https://azure.microsoft.com/documentation/services/media-services/)açıklanan çeşitli görevleri gerçekleştirmek için Azure Portal kullanabilirsiniz. Live Encoding bu veri merkezlerinde etkin değildir. Ayrıca, bu veri merkezlerinde Encoding 'e ayrılan birimlerin her türlü türü kullanılabilir değildir.
 
-* Brezilya Güney:                                          Yalnızca standart ve temel kodlamaya ayrılan birimler kullanılabilir.
-* Hindistan Batı, Hindistan Güney ve Hindistan Orta:             Yalnızca temel kodlamaya ayrılan birimler kullanılabilir.
+* Brezilya Güney: yalnızca standart ve temel kodlamaya ayrılan birimler kullanılabilir.
+* Hindistan Batı, Hindistan Güney ve Hindistan Orta: yalnızca temel kodlamaya ayrılan birimler kullanılabilir.
 
 ## <a id="september_changes_15"></a>Eylül 2015 sürümü
 Media Services artık Widevine modüler DRM teknolojisine sahip hem isteğe bağlı hem de canlı akışlara sahip videoyu koruma olanağı sunar. Widevine lisansları sunabilmenize yardımcı olması için aşağıdaki teslim hizmetleri iş ortaklarını kullanabilirsiniz:
@@ -230,19 +230,19 @@ Media Services artık Widevine modüler DRM teknolojisine sahip hem isteğe bağ
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
-Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) bakın.
+Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/)bakın.
   
 AssetDeliveryConfiguration’ı Widevine kullanacak şekilde yapılandırmak için [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (3.5.1 sürümünden başlayarak) veya REST API'yi kullanabilirsiniz. 
-* Media Services Apple ProRes videoları için destek eklendi. Artık Apple ProRes veya diğer codec bileşenleri kullanan QuickTime kaynak videoları dosyalarınızı karşıya yükleyebilirsiniz. Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/) bakın.
-* Artık Media Encoder Standard, alt kırpma ve Canlı Arşiv ayıklama yapmak için kullanabilirsiniz. Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/) bakın.
+* Media Services Apple ProRes videoları için destek eklendi. Artık Apple ProRes veya diğer codec bileşenleri kullanan QuickTime kaynak videoları dosyalarınızı karşıya yükleyebilirsiniz. Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/announcing-support-for-apple-prores-videos-in-azure-media-services/)bakın.
+* Artık Media Encoder Standard, alt kırpma ve Canlı Arşiv ayıklama yapmak için kullanabilirsiniz. Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/)bakın.
 * Aşağıdaki filtreleme güncelleştirmeleri yapıldı: 
   
   * Artık Apple HLS biçimini yalnızca bir ses filtresi ile kullanabilirsiniz. Bu güncelleştirmeyi, URL 'de (yalnızca ses = false) belirterek yalnızca bir ses parçasını kaldırmak için kullanabilirsiniz.
   * Varlıklarınız için filtre tanımladığınızda, artık tek bir URL 'de birden çok (en fazla üç) filtre birleştirebilirsiniz.
     
-    Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) bakın.
+    Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)bakın.
 * Media Services artık HLS sürüm 4 ' te ı-Frame 'leri destekliyor. G-kare desteği, ileri sarma ve geri sarma işlemlerini iyileştirir. Varsayılan olarak, tüm HLS sürüm 4 çıkışları ı-Frame şarkı listesini (EXT-X-I-FRAME-STREAM-INF) içerir.
-Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) bakın.
+Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)bakın.
 
 ## <a id="august_changes_15"></a>Ağustos 2015 sürümü
 * Java sürüm 0.8.0 sürümü ve yeni örnekler için Media Services SDK artık kullanılabilir. Daha fazla bilgi için bkz.
@@ -289,12 +289,12 @@ Aşağıdaki yeni özellikler duyurulmuştur:
 * Ispanyolca Dil desteği eklendi.
 * XML biçimi için yeni bir yapılandırma eklendi.
 
-Daha fazla bilgi için [bu bloga](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/) bakın.
+Daha fazla bilgi için [Bu bloga](https://azure.microsoft.com/blog/2015/04/13/azure-media-indexer-spanish-v1-2/)bakın.
 
 ### <a name="media-services-net-sdk-updates"></a>Media Services .NET SDK güncelleştirmeleri
 Media Services .NET SDK artık sürüm 3.2.0.0. Aşağıdaki güncelleştirmeler yapılmıştır:
 
-* Hataya neden olan değişiklik: TokenRestrictionTemplate. Issuer ve TokenRestrictionTemplate. Audience, bir dize türünde olacak şekilde değiştirilmiştir.
+* Son değişiklik: TokenRestrictionTemplate. Issuer ve TokenRestrictionTemplate. Audience bir dize türünde olacak şekilde değiştirildi.
 * Özel yeniden deneme ilkeleri oluşturmayla ilgili güncelleştirmeler yapıldı.
 * Dosya yükleme ve indirme ile ilgili hata düzeltmeleri yapıldı.
 * MediaServicesCredentials sınıfı artık kimlik doğrulaması için birincil ve ikincil erişim denetimi uç noktalarını kabul eder.
@@ -395,7 +395,7 @@ Bir varlığı kodlarken, kodlama işi tamamlandığında bir çıkış varlığ
 Azure Media Services Paketleyici ve Şifreleyici için aşağıdaki hata düzeltmeleri yapılmıştır:
 
 * Canlı bir arşiv varlığı HLS 'ye aktarıldığında yalnızca ses yeniden oynatılır: Bu sorun düzeltildi ve artık ses ve video oynayabilir.
-* Bir varlık HLS 'ye ve AES 128-bit zarf şifrelemeye göre paketlenmişse, paketlenmiş akışlar Android cihazlarda kayıttan çalmaz: Bu hata düzeltildi ve paketlenmiş akış, HLS 'yi destekleyen Android cihazlarda yeniden oynuyor.
+* Bir varlık HLS ve AES 128-bit zarf şifrelemesi olarak paketlendiğinde, paketlenmiş akışlar Android cihazlarda kayıttan çalmaz: Bu hata düzeltildi ve paketlenmiş akış, HLS 'yi destekleyen Android cihazlarda yeniden oynuyor.
 
 ## <a id="may_changes_14"></a>Mayıs 2014 sürümü
 ### <a id="may_14_changes"></a>Genel Media Services güncelleştirmeleri
@@ -450,7 +450,7 @@ Bu sürümden itibaren, .NET için Media Services SDK, Media Services REST API k
 ### <a name="aug_13_powershell_changes"></a>Azure SDK araçları 'nda bulunan PowerShell cmdlet 'leri Media Services
 Aşağıdaki Media Services PowerShell cmdlet 'leri artık [Azure SDK araçlarına](https://github.com/Azure/azure-sdk-tools)eklenmiştir:
 
-* Get-AzureMediaServices 
+* Get-Azudüzeltmelere Aservices 
 
     Örneğin, `Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 
@@ -484,38 +484,38 @@ Aşağıdaki değişiklikler Haziran 2013 Media Services SDK yayınlarına eklen
 * Sürüm 2.3.0.0 ile başlayarak, Media Services SDK birden çok depolama hesabının bir Media Services hesabına bağlanmasını destekler. Aşağıdaki API 'Ler bu özelliği destekler:
   
     * Itoesgeaccount türü
-    * Microsoft.WindowsAzure.MediaServices.Client.CloudMediaContext.StorageAccounts property
+    * Microsoft. WindowsAzure. MediaServices. Client. CloudMediaContext. StorageAccounts özelliği
     * StorageAccount özelliği
     * StorageAccountName özelliği
   
       Daha fazla bilgi için bkz. [birden çok depolama hesabı genelinde Media Services varlıkları yönetme](https://msdn.microsoft.com/library/azure/dn271889.aspx).
 * Bildirimle ilgili API 'Ler. Sürüm 2.2.0.0 'den başlayarak, Azure kuyruk depolama bildirimlerini dinleyebilirsiniz. Daha fazla bilgi için bkz. [tanıtıcı Media Services iş bildirimleri](https://msdn.microsoft.com/library/azure/dn261241.aspx).
   
-    * Microsoft.WindowsAzure.MediaServices.Client.IJob.JobNotificationSubscriptions property
-    * Microsoft.WindowsAzure.MediaServices.Client.INotificationEndPoint type
-    * Microsoft.WindowsAzure.MediaServices.Client.IJobNotificationSubscription type
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointCollection type
-    * Microsoft.WindowsAzure.MediaServices.Client.NotificationEndPointType type
+    * Microsoft. WindowsAzure. MediaServices. Client. ıjob. Jobnotificationabonelikler özelliği
+    * Microsoft. WindowsAzure. MediaServices. Client. ınocertificate Ationendpoint türü
+    * Microsoft. WindowsAzure. MediaServices. Client. ıjobnotificationsubscription türü
+    * Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointCollection türü
+    * Microsoft. WindowsAzure. MediaServices. Client. NotificationEndPointType türü
 * Depolama istemcisi SDK 2,0 bağımlılığı (Microsoft. WindowsAzure. StorageClient. dll)
 * OData 5,5 bağımlılığı (Microsoft. Data. OData. dll)
 
 ## <a id="december_changes_12"></a>Aralık 2012 sürümü
 ### <a name="dec_12_dotnet_changes"></a>.NET SDK değişikliklerini Media Services
-* IntelliSense Birçok tür için eksik IntelliSense belgeleri eklenmiştir.
+* IntelliSense: birçok tür için eksik IntelliSense belgeleri eklenmiştir.
 * Microsoft. Yöntemler. TransientFaultHandling. Core: SDK 'nın hala bu derlemenin eski bir sürümüne bağımlılığı olduğu bir sorun düzeltildi. SDK artık bu derlemenin 5.1.1209.1 sürümüne başvurmuş.
 
 Kasım 2012 SDK 'sında bulunan sorunlara yönelik düzeltmeler:
 
-* Ivarlık. Konumlandırıcı. Count: Bu sayı, artık tüm konum belirleyicilerinin silindiği yeni ıvarlık arabirimlerinde doğru şekilde raporlanır.
+* Ivarlık. Konumlandırıcı. Count: Bu sayı artık, tüm Konumlandırıcıları silindikten sonra yeni ıvarlık arabirimlerinde doğru şekilde raporlanır.
 * Iassetfile. ContentFileSize: Bu değer artık ıassetfile. upload (FilePath) tarafından karşıya yüklendikten sonra düzgün şekilde ayarlanır.
 * Iassetfile. ContentFileSize: Bu özellik artık bir varlık dosyası oluşturduğunuzda ayarlanabilir. Daha önce salt okunurdur.
-* Iassetfile. upload (FilePath): Bu zaman uyumlu yükleme yönteminin, varlığa birden çok dosya yüklendiğinde aşağıdaki hatayı aldığı bir sorun düzeltildi. Hata: "Sunucu isteğin kimliğini doğrulayamadı. Yetkilendirme üstbilgisinin değerinin imza dahil doğru biçimlendirildiğinden emin olun. "
-* Iassetfile. UploadAsync: Dosyaları beş dosyaya aynı anda karşıya yüklemeyi sınırlı bir sorun düzeltildi.
-* Iassetfile. UploadProgressChanged: Bu olay artık SDK tarafından sağlanmaktadır.
-* Iassetfile. DownloadAsync (dize, BlobTransferClient, ıpicator, CancellationToken): Bu yöntem aşırı yüklemesi artık sağlanmaktadır.
-* Iassetfile. DownloadAsync: Dosyaları beş dosyaya eşzamanlı olarak indirmeyi sınırlı olan bir sorun düzeltildi.
-* Iassetfile. Delete (): Delete çağrısı, ıassetdosyası için hiçbir dosya yüklenmediyse özel durum oluşturabilecek bir sorun düzeltildi.
-* Çizelge Bir sorun, bir iş şablonu kullanarak "PlayReady koruma görevi" ile "bir" PlayReady "
+* Iassetfile. upload (FilePath): Bu zaman uyumlu yükleme yönteminin, varlığa birden çok dosya yüklendiğinde aşağıdaki hatayı aldığı bir sorun düzeltildi. Hata "sunucu, isteğin kimliğini doğrulayamadı. Yetkilendirme üstbilgisinin değerinin imza dahil doğru biçimlendirildiğinden emin olun. "
+* Iassetfile. UploadAsync: dosyaları beş dosyaya aynı anda karşıya yüklemeyi sınırlı olan bir sorun düzeltildi.
+* Iassetfile. UploadProgressChanged: Bu olay artık SDK tarafından sağlanıyor.
+* Iassetfile. DownloadAsync (dize, BlobTransferClient, IBU, CancellationToken): Bu yöntem aşırı yüklemesi artık sağlanıyor.
+* Iassetfile. DownloadAsync: dosyaların eşzamanlı olarak beş dosyaya indirilmesini sınırlı olan bir sorun düzeltildi.
+* Iassetfile. Delete (): bir sorun düzeltildiğinde, ıassetdosyası için hiçbir dosya karşıya yüklenemediğinde Delete çağrısı bir özel durum oluşturabilir.
+* İşler: bir iş şablonu kullanarak bir "PlayReady koruma görevi" ile "bir MP4 to sorunsuz akışlar görevi" zincirleme bir sorun düzeltildi.
 * EncryptionUtils. GetCertificateFromStore (): Bu yöntem, sertifika yapılandırma sorunlarına göre sertifikayı bulmayla ilgili bir hata nedeniyle artık null başvuru özel durumu oluşturmaz.
 
 ## <a id="november_changes_12"></a>Kasım 2012 sürümü
@@ -536,8 +536,8 @@ Bu bölümde bahsedilen değişiklikler Kasım 2012 (sürüm 2.0.0.0) SDK 'sınd
         * Iassetfile. upload (filePath): Bu zaman uyumlu yöntem iş parçacığını engeller ve yalnızca tek bir dosyayı karşıya yüklediğinizde önerilir.
         * Iassetfile. UploadAsync (filePath, blobTransferClient, Locator, cancellationToken): Bu zaman uyumsuz yöntem, tercih edilen karşıya yükleme mekanizmasıdır. 
     
-            Bilinen hata: İptal belirtecini kullanırsanız karşıya yükleme iptal edilir. Görevler birçok iptal durumuna sahip olabilir. Özel durumları doğru bir şekilde yakalayıp işlemeniz gerekir.
-* Bulucular
+            Bilinen hata: iptal belirtecini kullanırsanız karşıya yükleme iptal edilir. Görevler birçok iptal durumuna sahip olabilir. Özel durumları doğru bir şekilde yakalayıp işlemeniz gerekir.
+* Bulucuları
   
     * Kaynağa özgü sürümler kaldırılmıştır. SAS 'a özgü bağlam. Konumlandırıcı. CreateSasLocator (varlık, accessPolicy) kullanım dışı olarak işaretlenir veya genel kullanıma sunulacaktır. Güncelleştirilmiş davranış için "yeni işlevsellik" altındaki "Konumlandırıcı" bölümüne bakın.
 
@@ -547,7 +547,7 @@ Aşağıdaki işlev SDK 'nın Kasım sürümünde yenidir:
 * Varlıkları silme
   
     * Ivarlık, ıassetfile, ıIAccessPolicy ve ıditentkey nesneleri artık nesne düzeyinde silinir, yani koleksiyonda silme gerektirmek yerine ıobject. Delete (), yani cloudMediaContext. ObjCollection. Delete (Objınstance).
-* Bulucular
+* Bulucuları
   
     * Konumlandırıcı artık CreateLocator yöntemi kullanılarak oluşturulmalıdır. Oluşturmak istediğiniz konum belirleyici türü için bir bağımsız değişken olarak, LocatorType. SAS veya LocatorType. OnDemandOrigin Enum değerlerini kullanmaları gerekir.
     * İçerik için kullanılabilir URI 'Leri edinmeyi kolaylaştırmak için, konum belirleyicilerinin yeni özellikler eklenmiştir. Konumlandırıcı 'nın bu şekilde yeniden tasarlanması, gelecekteki üçüncü taraf genişletilebilirliği için daha fazla esneklik sağlar ve medya istemci uygulamaları için kullanım kolaylığını artırır.
@@ -555,7 +555,7 @@ Aşağıdaki işlev SDK 'nın Kasım sürümünde yenidir:
   
     * Tüm yöntemlere zaman uyumsuz destek eklenmiştir.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma
+## <a name="provide-feedback"></a>Geri bildirim sağlayın
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 <!-- Anchors. -->

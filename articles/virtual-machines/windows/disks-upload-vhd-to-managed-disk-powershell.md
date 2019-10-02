@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell kullanarak bir VHD 'yi Azure 'a yükleme
-description: Azure PowerShell kullanarak bir VHD 'yi Azure yönetilen diskine yüklemeyi öğrenin.
+description: Bir VHD 'yi Azure yönetilen diskine yüklemeyi ve Azure PowerShell kullanarak bir yönetilen diski bölgeler arasında kopyalamayı öğrenin.
 author: roygara
 ms.author: rogarana
 ms.date: 05/06/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 5b7c612d349c3f596487db4af025e5e599b6589c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
-ms.translationtype: HT
+ms.openlocfilehash: de9975151270ccce8d4a7abd58210c6550d40464
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694788"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720333"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Azure PowerShell kullanarak bir VHD 'yi Azure 'a yükleme
 
@@ -27,7 +27,8 @@ Azure 'da IaaS sanal makineleri için bir yedekleme çözümü sağlıyorsanız,
 
 - [AzCopy ile v10 arasındaki 'ın](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)en son sürümünü indirin.
 - [Azure PowerShell modülünü yükler](/powershell/azure/install-Az-ps).
-- Yerel olarak depolanan bir VHD dosyası.
+- Şirket içi bir VHD 'yi karşıya yüklemeyi planlıyorsanız: [Azure için hazırlanan](prepare-for-upload-vhd-image.md)bir VHD, yerel olarak depolanır.
+- Ya da bir kopyalama eylemi gerçekleştirmek istiyorsanız Azure 'da yönetilen bir disk.
 
 ## <a name="create-an-empty-managed-disk"></a>Boş bir yönetilen disk oluşturma
 
@@ -82,6 +83,45 @@ Karşıya yükleme tamamlandıktan sonra ve diske daha fazla veri yazmanıza ger
 
 ```powershell
 Revoke-AzDiskAccess -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
+```
+
+## <a name="copy-a-managed-disk"></a>Yönetilen diski çoğaltma
+
+Doğrudan karşıya yükleme, yönetilen bir disk kopyalama işlemini de basitleştirir. Aynı bölge veya çapraz bölge içinde (başka bir bölgeye) kopyalayabilirsiniz.
+
+İzleme betiği bunu sizin için işler, mevcut bir diskle çalıştığınızdan daha önce açıklanan adımlara benzer.
+
+> [!IMPORTANT]
+> Azure 'dan yönetilen bir diskin bayt cinsinden disk boyutunu sağlarken 512 sapmasını eklemeniz gerekir. Bunun nedeni, Azure 'un disk boyutunu döndürürken alt bilgiyi atatmesinden kaynaklanır. Bunu yapmazsanız kopya başarısız olur. Aşağıdaki komut dosyası sizin için zaten bunu yapar.
+
+@No__t-0, `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, `<yourOSTypeHere>` ve `<yourTargetLocationHere>` (bir konum değerinin bir örneği uswest2) değerlerini değerleriyle değiştirin, ardından yönetilen bir diski kopyalamak için aşağıdaki betiği çalıştırın.
+
+```powershell
+
+$sourceRG = <sourceResourceGroupHere>
+$sourceDiskName = <sourceDiskNameHere>
+$targetDiskName = <targetDiskNameHere>
+$targetRG = <targetResourceGroupHere>
+$targetLocate = <yourTargetLocationHere>
+#Expected value for OS is either "Windows" or "Linux"
+$targetOS = <yourOSTypeHere>
+
+$sourceDisk = Get-AzDisk -ResourceGroupName $sourceRG -DiskName $sourceDiskName
+
+# Adding the sizeInBytes with the 512 offset, and the -Upload flag
+$targetDiskconfig = New-AzDiskConfig -SkuName 'Standard_LRS' -osType $targetOS -UploadSizeInBytes $($sourceDisk.DiskSizeBytes+512) -Location $targetLocate -CreateOption 'Upload'
+
+$targetDisk = New-AzDisk -ResourceGroupName $targetRG -DiskName $targetDiskName -Disk $targetDiskconfig
+
+$sourceDiskSas = Grant-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName -DurationInSecond 86400 -Access 'Read'
+
+$targetDiskSas = Grant-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName -DurationInSecond 86400 -Access 'Write'
+
+azcopy copy $sourceDiskSas.AccessSAS $targetDiskSas.AccessSAS --blob-type PageBlob
+
+Revoke-AzDiskAccess -ResourceGroupName $sourceRG -DiskName $sourceDiskName
+
+Revoke-AzDiskAccess -ResourceGroupName $targetRG -DiskName $targetDiskName 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

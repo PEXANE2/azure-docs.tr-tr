@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/22/2019
+ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: e9ce71f12d50aa414579e5fc7c2961156965a337
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1fe1d50f24c70c89ea0fbaa952673cdeacc4f1bf
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037520"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803155"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Klasik abonelik yönetici rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri
 
@@ -31,7 +31,7 @@ Azure'da yeniyseniz farklı rolleri kavrama konusunda zorluk yaşıyor olabilirs
 
 ## <a name="how-the-roles-are-related"></a>Roller arasındaki ilişki
 
-Azure'un geçmişine göz atmanız rolleri daha iyi anlamanıza yardımcı olabilir. Azure ilk kez yayınlandığında, kaynaklara erişim yalnızca üç yönetici rolü ile yönetilmektedir: Hesap Yöneticisi, hizmet yöneticisi ve ortak yönetici. Sonradan Azure kaynakları için rol tabanlı erişim denetimi (RBAC) özelliği eklendi. Azure RBAC, Azure kaynakları için daha ayrıntılı bir erişim yönetimi sunan daha yeni bir yetkilendirme sistemidir. RBAC farklı kapsamlarda atanabilen birçok yerleşik role sahiptir ve kendi özel rollerinizi oluşturmanıza imkan tanır. Azure AD'deki kullanıcılar, gruplar veya etki alanları gibi kaynakları yönetmek için birden fazla Azure AD yönetici rolü bulunur.
+Azure'un geçmişine göz atmanız rolleri daha iyi anlamanıza yardımcı olabilir. Azure ilk kez kullanıma sunulduğunda kaynaklara erişim yalnızca üç yönetici rolüyle yönetiliyordu: Hesap Yöneticisi, Hizmet Yöneticisi ve Ortak Yönetici. Sonradan Azure kaynakları için rol tabanlı erişim denetimi (RBAC) özelliği eklendi. Azure RBAC, Azure kaynakları için daha ayrıntılı bir erişim yönetimi sunan daha yeni bir yetkilendirme sistemidir. RBAC farklı kapsamlarda atanabilen birçok yerleşik role sahiptir ve kendi özel rollerinizi oluşturmanıza imkan tanır. Azure AD'deki kullanıcılar, gruplar veya etki alanları gibi kaynakları yönetmek için birden fazla Azure AD yönetici rolü bulunur.
 
 Aşağıdaki diyagramda klasik abonelik yönetici rolleri, Azure RBAC rolleri ve Azure AD yönetici rolleri arasındaki ilişki yüksek düzeyde gösterilmiştir.
 
@@ -45,7 +45,7 @@ Hesap Yöneticisi, Hizmet Yöneticisi ve Ortak Yönetici, Azure'daki üç klasik
 | Klasik abonelik yöneticisi | Sınır | İzinler | Notlar |
 | --- | --- | --- | --- |
 | Hesap Yöneticisi | Azure hesabı başına 1 | <ul><li>[Azure Hesap Merkezi](https://account.azure.com/Subscriptions)'ne erişme</li><li>Hesaptaki tüm abonelikleri yönetme</li><li>Yeni abonelik oluşturma</li><li>Abonelikleri iptal etme</li><li>Aboneliğin faturalama bilgilerini değiştirme</li><li>Hizmet Yöneticisini değiştirme</li></ul> | Kavramsal açıdan aboneliğin faturalama sahibidir.<br>Hesap Yöneticisi’nin Azure portala erişim yoktur. |
-| Hizmet Yöneticisi | Azure aboneliği başına 1 | <ul><li>[Azure portal](https://portal.azure.com)'da hizmetleri yönetme</li><li>Ortak Yönetici rolüne kullanıcı atama</li></ul> | Yeni bir abonelikte Hesap Yöneticisi varsayılan olarak Hizmet Yöneticisi olur.<br>Hizmet Yöneticisi, abonelik kapsamında Sahip rolü atanmış olan kullanıcıyla eşit düzeyde erişime sahiptir.<br>Hizmet Yöneticisi’nin Azure portala tam erişimi vardır. |
+| Hizmet Yöneticisi | Azure aboneliği başına 1 | <ul><li>[Azure portal](https://portal.azure.com)'da hizmetleri yönetme</li><li>Aboneliği iptal et</li><li>Ortak Yönetici rolüne kullanıcı atama</li></ul> | Yeni bir abonelikte Hesap Yöneticisi varsayılan olarak Hizmet Yöneticisi olur.<br>Hizmet Yöneticisi, abonelik kapsamında Sahip rolü atanmış olan kullanıcıyla eşit düzeyde erişime sahiptir.<br>Hizmet Yöneticisi’nin Azure portala tam erişimi vardır. |
 | Ortak Yönetici | Abonelik başına 200 | <ul><li>Hizmet Yöneticisi ile aynı erişim ayrıcalıklarına sahiptir, ancak aboneliklerin Azure dizinleriyle ilişkisini değiştiremez</li><li>Ortak Yönetici rolüne kullanıcı atayabilir ancak Hizmet Yöneticisini değiştiremez</li></ul> | Ortak Yönetici, abonelik kapsamında Sahip rolü atanmış olan kullanıcıyla eşit düzeyde erişime sahiptir. |
 
 Azure portal, ortak yöneticileri yönetebilir veya **Klasik Yöneticiler** sekmesini kullanarak hizmet yöneticisini görüntüleyebilirsiniz.
@@ -63,6 +63,8 @@ Daha fazla bilgi için bkz. [Azure klasik abonelik yöneticileri](classic-admini
 Azure hesabı bir faturalama ilişkisini temsil eder. Azure hesabı bir kullanıcı kimliğinden, bir veya daha fazla Azure aboneliğinden ve ilgili Azure kaynakları kümesinden oluşur. Hesabı oluşturan kişi, bu hesapta oluşturulan tüm aboneliklerin Hesap Yöneticisi olur. Bu kişi ayrıca aboneliğin varsayılan Hizmet Yöneticisi de olur.
 
 Azure abonelikleri, Azure kaynaklarına erişimi düzenlemenize de yardımcı olur. Ayrıca kaynak kullanımının nasıl raporlandığını, faturalandırıldığını ve ödendiği denetlemenize yardımcı olur. Her abonelik farklı bir faturalandırma ve ödeme ayarına sahip olabilir, bu nedenle ofise, departmana, projeye vs. göre farklı abonelikleriniz ve farklı planlarınız olabilir. Her hizmet bir aboneliğe aittir ve programlama işlemleri için abonelik kimliği gerekebilir.
+
+Her abonelik bir Azure AD diziniyle ilişkilendirilir. Aboneliğin ilişkilendirildiği dizini bulmak için Azure portal **abonelikler** ' i açın ve ardından dizini görmek için bir abonelik seçin.
 
 Hesaplar ve abonelikler [Azure Hesap Merkezi](https://account.azure.com/Subscriptions)'nden yönetilir.
 
@@ -99,7 +101,7 @@ Azure AD yönetici rolleri kullanıcı oluşturma veya düzenleme, başkalarına
 | --- | --- | --- |
 | [Genel Yönetici](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Azure Active Directory'deki tüm yönetim özelliklerine ve Azure Active Directory'yi federasyona ekleyen hizmetlere erişimi yönetme</li><li>Diğer kullanıcılara yönetici rolü atama</li><li>Tüm kullanıcıların ve diğer yöneticilerin parolasını sıfırlama</li></ul> | Azure Active Directory'ye kaydolan kullanıcı, Genel Yönetici olur. |
 | [Kullanıcı Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Kullanıcı ve grup oluşturma ve bunların tüm özelliklerini yönetme</li><li>Destek biletlerini yönetme</li><li>Hizmet durumunu izleme</li><li>Kullanıcıların, Yardım Masası yöneticilerinin ve Kullanıcı Yöneticilerinin parolalarını değiştirme</li></ul> |  |
-| [Faturalama Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Satın alma gerçekleştirme</li><li>Abonelikleri yönet</li><li>Destek biletlerini yönetme</li><li>Hizmet durumunu izleme</li></ul> |  |
+| [Faturalama Yöneticisi](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Satın alma gerçekleştirme</li><li>Abonelikleri yönetme</li><li>Destek biletlerini yönetme</li><li>Hizmet durumunu izleme</li></ul> |  |
 
 Azure portalda Azure AD yönetici rollerinin listesini **Roller ve yöneticiler** dikey penceresinde görebilirsiniz. Tüm Azure AD yöneticisi rollerinin bir listesi için [Azure Active Directory Içindeki yönetici rolü izinleri](../active-directory/users-groups-roles/directory-assign-admin-roles.md)bölümüne bakın.
 

@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 304091634c9e07f0a34029e83111a537b95bc061
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 329c7191482787f25cfddfd8c4d70074df9a7c1f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338528"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719976"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer ve Media Indexer 2 ' den Video Indexer 'e geçiş
 
-[Azure Media Indexer v1](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Indexer v2 Preview](media-services-process-content-with-indexer2.md) medya Işlemcileri 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır.  [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
+[Azure Media Indexer](media-services-index-content.md) medya işlemcisi, 1 Ekim 2020 ' de kullanımdan kaldırılacaktır. [Azure Media Indexer 2 Preview](media-services-process-content-with-indexer2.md) medya Işlemcileri 1 Ocak 2020 tarihinde kullanımdan kaldırılacaktır.  [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) bu eski medya işlemcilerinin yerini alır.
 
 Azure Media Services Video Indexer Azure Media Analytics, Azure Search, bilişsel hizmetler (Yüz Tanıma API'si, Microsoft Translator, Görüntü İşleme API'si ve Özel Konuşma Tanıma hizmeti) için oluşturulmuştur. Video Indexer’ın görüntülü ve sesli modellerini kullanarak videolarınızdan içgörü ayıklamanıza olanak sağlar. Hangi senaryolar Video Indexer kullanılabileceğini, hangi özellikleri sunduğunu ve nasıl başladıklarınızı görmek için bkz. [video Indexer video ve ses modelleri](../video-indexer/video-indexer-overview.md). 
 
 [Azure Media Services v3 çözümleyici önayarlarını](../latest/analyzing-video-audio-files-concept.md) kullanarak veya doğrudan [video Indexer API 'lerini](https://api-portal.videoindexer.ai/)kullanarak video ve ses dosyalarınızda öngörüleri ayıklayabilirsiniz. Şu anda, Video Indexer API 'leri ve Media Services v3 API 'Leri tarafından sunulan özellikler arasında bir çakışma var.
 
 > [!NOTE]
-> Video Indexer’ı ve Media Services çözümleyicisinin önceden belirlenmiş ayarlarını hangi durumlarda kullanacağınızı anlamak için [karşılaştırma belgesine](../video-indexer/compare-video-indexer-with-media-services-presets.md) bakın. 
+> Video Indexer ve Media Services çözümleyici önayarlarının ne zaman kullanılacağını anlamak için [karşılaştırma belgesine](../video-indexer/compare-video-indexer-with-media-services-presets.md)göz atın. 
 
 Bu makalede, Azure Media Indexer geçiş adımlarını ve Azure Media Indexer 2 ' ye Azure Media Services Video Indexer.  
 
@@ -42,7 +42,7 @@ Bu makalede, Azure Media Indexer geçiş adımlarını ve Azure Media Indexer 2 
 
 ## <a name="getting-started-with-video-indexer"></a>Video Indexer kullanmaya başlama
 
-Aşağıdaki bölüm ilgili bağlantıları gösterir: [Video Indexer nasıl başlamalıyım?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
+Aşağıdaki bölümde ilgili bağlantılar [gösterilmektedir: video Indexer kullanmaya nasıl başlamalıyım?](https://docs.microsoft.com/azure/media-services/video-indexer/video-indexer-overview#how-can-i-get-started-with-video-indexer) 
 
 ## <a name="getting-started-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile çalışmaya başlama
 
@@ -50,13 +50,13 @@ Azure Media Services v3 API, [Azure Media Services v3 Çözümleyicisi ön ayarl
 
 **Audioanalsete önceden ayarlanmış** , bir ses veya video dosyasından birden çok ses öngörülerini ayıklamanızı sağlar. Çıktı, ses dökümü için bir VTT veya TTML dosyası ve bir JSON dosyası (tüm ek ses öngörüleri ile) içerir. Ses öngörüleri, anahtar sözcükleri, konuşmacı dizin oluşturma ve konuşma yaklaşımı analizini içerir. Audioanalönayarı belirli diller için dil algılamayı de destekler. Ayrıntılı bilgi için bkz. [dönüşümler](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>başlarken
+### <a name="get-started"></a>Kullanmaya Başlayın
 
 Başlamak için bkz:
 
 * [Öğretici](../latest/analyze-videos-tutorial-with-api.md)
-* Audioanaliz Zerönayarı örnekleri: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) veya [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
-* Videoanaliz Zerönayarı örnekleri: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) veya [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
+* Audioanaliz Zerönayar örnekleri: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/AudioAnalytics/AudioAnalyzer) veya [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/AudioAnalytics/AudioAnalyzer)
+* Videoanaliz Zerönayar örnekleri: [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/VideoAnalytics/VideoAnalyzer) veya [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/VideoAnalytics/VideoAnalyzer)
 
 ## <a name="getting-started-with-cognitive-services-speech-services"></a>Bilişsel hizmetler konuşma Hizmetleri 'ni kullanmaya başlama
 
@@ -77,9 +77,9 @@ Bazı bilinen farklılıklar şunlardır:
 * Ses dizin oluşturma Blobu (AıB) dosyaları artık desteklenmeyecektir. Bu özellik, Dizin Oluşturucu 1 teknolojisine özeldir ve artık sunulmamaktadır.  
 * Bilişsel hizmetler konuşma Hizmetleri anahtar sözcüğünün ayıklanmasını desteklemez. Ancak, Video Indexer ve Media Services v3 Audioanalönayarı, JSON dosya biçiminde daha sağlam bir anahtar sözcük kümesi sunmaktadır. 
 
-## <a name="contact-us"></a>Bizimle iletişim kurun 
+## <a name="contact-us"></a>Bize ulaşın 
 
-Azure Media Indexer 1 ve Azure Media Indexer 2 ' nin kullanımdan kaldırılması veya diğer hizmetlerden herhangi birine geçiş yapmak için sorularınız varsa lütfen bizimle iletişime geçinamshelp@microsoft.com 
+Azure Media Indexer 1 ve Azure Media Indexer 2 ' nin kullanımdan kaldırılması veya diğer hizmetlerden herhangi birine geçiş yapmak için sorularınız varsa, lütfen amshelp@microsoft.com üzerinden bize ulaşın 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

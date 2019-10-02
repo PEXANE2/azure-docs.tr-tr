@@ -11,21 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 10/01/2019
 ms.author: bwren
-ms.openlocfilehash: d50a680ed2b054f87a9cf36e761bd16d79677fb3
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 7cdd471e6618e83483f6cc304f284a1669f3b67b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304696"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718905"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Izleyici günlüğü sorgu örnekleri
 Bu makalede, Azure Izleyici 'den farklı günlük verisi türlerini almak için [kusto sorgu dilini](/azure/kusto/query/) kullanan çeşitli [sorgu](log-query-overview.md) örnekleri yer almaktadır. Verileri birleştirmek ve analiz etmek için farklı yöntemler kullanılır. bu sayede, kendi gereksinimleriniz için kullanabileceğiniz farklı stratejileri belirlemek için bu örnekleri kullanabilirsiniz.  
 
 Bu örneklerde kullanılan farklı anahtar sözcüklerle ilgili ayrıntılı bilgi için [kusto dil başvurusuna](https://docs.microsoft.com/azure/kusto/query/) bakın. Azure Izleyici 'de yeni başladıysanız [sorgu oluşturma konusunda bir derste](get-started-queries.md) ilerleyin.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Etkinlikler
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>"Şifreleme" olarak açıklanan uygulama düzeyi olayları ara
 Bu örnek, **olay** tablosunda **EventLog** 'ın _uygulama_ ve **rendereddescription** 'un _şifreleme_içerdiği kayıtlar için arama yapar. Son 24 saat içindeki kayıtları içerir.
@@ -79,7 +79,7 @@ Heartbeat
 ### <a name="match-protected-status-records-with-heartbeat-records"></a>Korumalı durum kayıtlarını sinyal kayıtlarıyla Eşleştir
 
 Bu örnek, hem bilgisayar hem de zaman ile eşleşen ilgili koruma durum kayıtlarını ve sinyal kayıtlarını bulur.
-Zaman alanı en yakın dakikaya yuvarlanır. Bunu yapmak için çalışma zamanı küme hesaplamasını kullandık `round_time=bin(TimeGenerated, 1m)`:.
+Zaman alanı en yakın dakikaya yuvarlanır. Çalışma zamanı bölme hesaplamasını bunu yapmak için kullandık: `round_time=bin(TimeGenerated, 1m)`.
 
 ```Kusto
 let protection_data = ProtectionStatus
@@ -237,7 +237,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Etkinlik KIMLIĞINE göre güvenlik olaylarını say
 
 
-Bu örnek, **etkinlik** sütununun sabit yapısına bağımlıdır: \<Kimlik\>-adı.\>\<
+Bu örnek, **etkinlik** sütununun sabit yapısına bağımlıdır: \<id @ no__t-2 @ no__t-3 @ No__t-4name @ no__t-5.
 **Etkinlik** değerini iki yeni sütuna ayrıştırır ve her bir **ActivityId**'nin oluşma sayısını sayar.
 
 ```Kusto
@@ -278,7 +278,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Ayrıştırma etkinliği adı ve KIMLIĞI
-Aşağıdaki iki örnek, **etkinlik** sütununun sabit yapısına dayanır: \<Kimlik\>-adı.\>\< İlk örnek, iki yeni sütuna değer atamak için **Parse** işlecini kullanır: **ActivityId** ve **activitydesc**.
+Aşağıdaki iki örnek, **etkinlik** sütununun sabit yapısına dayanır: \<id @ no__t-2 @ no__t-3 @ No__t-4name @ no__t-5. İlk örnek, iki yeni sütuna değer atamak için **Parse** işlecini kullanır: **ActivityId** ve **activitydesc**.
 
 ```Kusto
 SecurityEvent
@@ -418,20 +418,19 @@ Usage
 | sort by TimeGenerated desc nulls last
 ```
 
-## <a name="updates"></a>Güncelleştirmeler
+## <a name="updates"></a>Güncellemeler
 
 ### <a name="computers-still-missing-updates"></a>Hala güncelleştirmeleri eksik olan bilgisayarlar
 Bu örnek, birkaç gün önce bir veya daha fazla kritik güncelleştirmenin eksik olduğu ve hala güncelleştirmeleri eksik olan bilgisayarların listesini gösterir.
 
 ```Kusto
 let ComputersMissingUpdates3DaysAgo = Update
-| where TimeGenerated between (ago(3d)..ago(2d))
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where TimeGenerated between (ago(30d)..ago(1h))
+| where Classification !has "Critical" and UpdateState =~ "Needed"
 | summarize makeset(Computer);
-
 Update
 | where TimeGenerated > ago(1d)
-| where  Classification == "Critical Updates" and UpdateState != "Not needed" and UpdateState != "NotNeeded"
+| where Classification has "Critical" and UpdateState =~ "Needed"
 | where Computer in (ComputersMissingUpdates3DaysAgo)
 | summarize UniqueUpdatesCount = dcount(Product) by Computer, OSType
 ```

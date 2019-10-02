@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Konuşmayı tanıma, JavaScript (tarayıcı)-konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı tanıma, JavaScript (tarayıcı)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: Konuşma SDK 'sını kullanarak bir tarayıcıda JavaScript 'te konuşmayı tanımayı öğrenin
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 7c1c616ec6ce36ee58f32dbcada8ead6fc339f2e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 77afdb491e4a6cee0a3d6861ea76f57502e56278
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306966"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802426"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Hızlı Başlangıç: Konuşma SDK 'sını kullanarak bir tarayıcıda JavaScript 'te konuşmayı tanıma
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Hızlı başlangıç: konuşma SDK 'sını kullanarak tarayıcıda JavaScript 'te konuşmayı tanıma
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Bu makalede, konuşmayı metne dönüştürmek için Bilişsel Hizmetler Konuşma SDK’sının JavaScript bağlamasını kullanarak bir web sitesi oluşturmayı öğreneceksiniz.
-Uygulama, JavaScript için konuşma SDK 'sını temel alır ([Sürüm 1.6.0 indir](https://aka.ms/csspeech/jsbrowserpackage)).
+Uygulama, [JavaScript Için konuşma SDK 'sını](https://aka.ms/csspeech/jsbrowserpackage)temel alır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,7 +40,7 @@ Yeni, boş bir klasör oluşturun. Örneği bir web sunucusunda barındırmak is
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Konuşma SDK’sını [.zip paketi](https://aka.ms/csspeech/jsbrowserpackage) olarak indirin ve yeni oluşturulan klasöre çıkarın. Bu, iki dosya için bir paketi, `microsoft.cognitiveservices.speech.sdk.bundle.js` ve `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
+Konuşma SDK’sını [.zip paketi](https://aka.ms/csspeech/jsbrowserpackage) olarak indirin ve yeni oluşturulan klasöre çıkarın. Bu, iki dosyanın @no__t,-0 ve `microsoft.cognitiveservices.speech.sdk.bundle.js.map` ' i paketten oluşur.
 İkinci dosya isteğe bağlıdır ve SDK kodunda hata ayıklamak için faydalıdır.
 
 ## <a name="create-an-indexhtml-page"></a>Bir index.html sayfası oluşturma

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736108"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718370"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Şirket içi Apache Hadoop kümelerini Azure HDInsight 'a geçirme-mosyon ve avantajlar
 
@@ -39,7 +39,7 @@ Azure HDInsight, Hadoop bileşenlerinin bulut dağıtımıdır. Azure HDInsight,
 
 - **Yönetilen donanım ve yapılandırma** -bir HDInsight kümesiyle fiziksel donanım veya altyapıyla uğraşmanız gerekmez. Kümenin yapılandırmasını belirtmeniz yeterlidir ve Azure tarafından ayarlanır.
 
-- **Kolayca ölçeklenebilir** -HDInsight, iş yüklerini [ölçek](../hdinsight-administer-use-portal-linux.md) yukarı veya aşağı ölçeklendirmenizi sağlar. Azure, veri işleme işlerini kesintiye uğramadan veri yeniden dağıtımı ve iş yükü yeniden dengelemesinden yararlanır.
+- **Kolayca ölçeklenebilir** -HDInsight, iş yüklerini yukarı veya aşağı [ölçeklendirmenizi](../hdinsight-administer-use-portal-linux.md) sağlar. Azure, veri işleme işlerini kesintiye uğramadan veri yeniden dağıtımı ve iş yükü yeniden dengelemesinden yararlanır.
 
 - **Genel kullanılabilirlik** -HDInsight, diğer büyük veri analizi sunumından daha fazla [bölgede](https://azure.microsoft.com/regions/services/) kullanılabilir. Azure HDInsight ayrıca temel bağımsız bölgelerde kurumsal ihtiyaçlarınızı karşılamanıza olanak sağlayan Azure Kamu, Çin ve Almanya’da da kullanılabilir.
 
@@ -51,17 +51,17 @@ Azure HDInsight, Hadoop bileşenlerinin bulut dağıtımıdır. Azure HDInsight,
 
 - **Üretkenlik** -tercih ettiğiniz geliştirme ortamınızda Hadoop ve Spark için çeşitli araçlar kullanabilirsiniz.
 
-- **Özel araçlar veya üçüncü taraf uygulamalarla genişletilebilirlik** -HDInsight kümeleri yüklü bileşenlerle genişletilebilir ve ayrıca, bu, ['](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) dan tek tıklamayla dağıtımlar kullanılarak diğer büyük veri çözümleriyle de tümleştirilebilir. Azure pazar yeri.
+- **Özel araçlar veya üçüncü taraf uygulamalarla genişletilebilirlik** -HDInsight kümeleri yüklü bileşenlerle genişletilebilir ve Azure 'dan [tek](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)tıklamayla  dağıtımları kullanılarak diğer büyük veri çözümleriyle de tümleştirilebilir. Pazar yeri.
 
-- **Kolay yönetim, yönetim ve izleme** -Azure HDInsight, tüm kümelerinizi izleyebilmeniz için tek bir arabirim sağlamak üzere [Azure izleyici günlükleri](../hdinsight-hadoop-oms-log-analytics-tutorial.md) ile tümleşir.
+- **Kolay yönetim, yönetim ve izleme** -Azure HDInsight, tüm kümelerinizi izleyebilmeniz için tek bir arabirim sağlamak üzere [azure izleyici günlükleri](../hdinsight-hadoop-oms-log-analytics-tutorial.md)  ile tümleşir.
 
 - **Diğer Azure hizmetleriyle tümleştirme** -HDInsight, aşağıdakiler gibi diğer popüler Azure hizmetleriyle kolayca tümleştirilebilir:
 
     - Azure Data Factory (ADF)
     - Azure Blob Depolama
-    - Azure Data Lake Storage 2. Nesil
+    - Azure Data Lake Storage Gen2
     - Azure Cosmos DB
-    - Azure SQL Database
+    - Azure SQL Veritabanı
     - Azure Analysis Services
 
 - Kendi **kendini onaran süreçler ve bileşenleri** -HDInsight, kendi izleme altyapısını kullanarak altyapıyı ve açık kaynaklı bileşenleri sürekli olarak denetler. Ayrıca, açık kaynaklı bileşenlerin ve düğümlerin kullanım dışı kalması gibi kritik sorunları otomatik olarak kurtarır. Herhangi bir OSS bileşeni başarısız olursa, bu durumda uyarılar ambarı 'nda tetiklenir.
@@ -89,7 +89,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 
 | **Unuza** | **Örnek** | **Yanıtınıza** |
 |---|---|---|
-|**Konu başlığı**: **Ortam**|||
+|**Konu**: **ortam**|||
 |Küme dağıtım sürümü|HDP 2.6.5, CDH 5,7|
 |Büyük veri ekonomik-sistem bileşenleri|Ise, Yarn, Hive, LLAP, Impala, kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, Falcon, Zeppelin, R|
 |Küme türleri|Hadoop, Spark, confluent Kafka, fırtınası, Solr|
@@ -101,19 +101,19 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |Ana düğüm yapılandırması|d/y, CPU, disk vb.|
 |Veri düğümleri yapılandırması|d/y, CPU, disk vb.|
 |Kenar düğümleri yapılandırması|d/y, CPU, disk vb.|
-|Bu şifreleme?|Evet|
+|Bu şifreleme?|Yes|
 |Yüksek Kullanılabilirlik|, Metasha, meta veri deposu HA|
 |Olağanüstü durum kurtarma/yedekleme|Yedekleme kümesi mi?|  
 |Kümeye bağımlı sistemler|SQL Server, Teradata, Power BI, MongoDB|
 |Üçüncü taraf tümleştirmeler|Tableau, Gridkazanç, Qubole, bilgiler, splunk|
-|**Konu başlığı**: **Güvenlik**|||
+|**Konu**: **güvenlik**|||
 |Çevre güvenliği|Güvenlik Duvarları|
 |Küme kimlik doğrulama & yetkilendirmesi|Active Directory, ambarı, Cloudera Yöneticisi, kimlik doğrulaması yok|
 |Access Control|  El ile, SSH kullanıcıları|
 |Hive kimlik doğrulama & yetkilendirmesi|Sentry, LDAP, Kerberos, Ranger ile AD|
 |Denetim|Ambarı, Cloudera Navigator, Ranger|
 |İzleme|Graphite, collectd, statsd, telegraf, etkileyen|
-|Uyarı|Kapacitor, Prometheus, Dataköpek|
+|Uyarılar|Kapacitor, Prometheus, Dataköpek|
 |Veri saklama süresi| 3 yıl, 5 yıl|
 |Küme yöneticileri|Tek yönetici, birden çok yönetici|
 
@@ -121,7 +121,7 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 
 |**Unuza**|**Örnek**|**Yanıtınıza**|
 |---|---|---|
-|**Konu başlığı**: **İş yükleri ve sıklık**|||
+|**Konu başlığı**: **Iş yükleri ve sıklık**|||
 |MapReduce işleri|10 iş--iki kez günlük||
 |Hive işleri|100 iş--her saat||
 |Spark Batch işleri|50 iş--15 dakikada bir||
@@ -129,73 +129,73 @@ Bu bölümde hakkında önemli bilgiler toplamaya yardımcı olacak şablon anke
 |Yapılandırılmış akış işleri|5 iş--her dakika||
 |ML modeli eğitim işleri|2 iş--haftada bir kez||
 |Programlama Dilleri|Python, Scala, Java||
-|Komut Dosyası|Kabuk, Python||
-|**Konu başlığı**: **Veri**|||
+|Komut dosyaları|Kabuk, Python||
+|**Konu**: **veri**|||
 |Veri kaynakları|Düz dosyalar, JSON, Kafka, RDBMS||
-|Verileri düzenleme|Oozie iş akışları, Airflow||
+|Veri düzenleme|Oozie iş akışları, Airflow||
 |Bellek aramaları|Apache Ignite, Redsıs||
 |Veri hedefleri|, RDBMS, Kafka, MPP ||
-|**Konu başlığı**: **Meta veriler**|||
+|**Konu**: **meta veriler**|||
 |Hive DB türü|MySQL, Postgres||
-|Hayır. Hive meta veri kümesi|2||
-|Hayır. Hive tablolarının|100||
-|Hayır. Ranger ilkelerinin|20||
-|Hayır. Oozie iş akışlarının|100||
-|**Konu başlığı**: **Ölçeklendirme**|||
+|Hive meta veri sayısı|2||
+|Hive tablolarının sayısı|100||
+|Ranger ilkelerinin sayısı|20||
+|Oozie iş akışlarının sayısı|100||
+|**Konu**: **Ölçek**|||
 |Çoğaltma dahil veri hacmi|100 TB||
 |Günlük alma birimi|50 GB||
 |Veri büyüme oranı|yıl başına% 10||
 |Küme düğümlerinin büyüme oranı|yıl başına% 5
-|**Konu başlığı**: **Küme kullanımı**|||
-|Ortalama CPU yüzdesi kullanıldı|60%||
+|**Konu**: **küme kullanımı**|||
+|Ortalama CPU yüzdesi kullanıldı|%60||
 |Kullanılan ortalama bellek yüzdesi|% 75||
 |Kullanılan disk alanı|% 75||
 |Kullanılan ortalama ağ yüzdesi|%25
-|**Konu başlığı**: **Personeli**|||
-|Hayır. Yöneticiler|2||
-|Hayır. Geliştiricilerin|10||
-|Hayır. Son kullanıcıların|100||
-|Beceriler|Hadoop, Spark||
-|Hayır. Geçiş çabaları için kullanılabilir kaynaklar|2||
-|**Konu başlığı**: **Sınırlamalar**|||
+|**Konu**: **personel**|||
+|Yönetici sayısı|2||
+|Geliştirici sayısı|10||
+|Son Kullanıcı sayısı|100||
+|Becerilere|Hadoop, Spark||
+|Geçiş çabaları için kullanılabilir kaynak sayısı|2||
+|**Konu başlığı**: **sınırlamalar**|||
 |Geçerli sınırlamalar|Gecikme yüksek||
 |Güncel sorunlar|Eşzamanlılık sorunu||
 
 ### <a name="azure-requirements-questionnaire"></a>Azure gereksinimleri Anketi
 
-|**Konu başlığı**: **Gerekli** |||
+|**Konu**: **altyapı** |||
 |---|---|---|
 |**Unuza**|**Örnek**|**Yanıtınıza**|
-| Tercih Edilen Bölge|ABD Doğu||
-|VNet tercih edildi mi?|Evet||
-|HA/DR gerekli mi?|Evet||
+| Tercih edilen bölge|ABD Doğu||
+|VNet tercih edildi mi?|Yes||
+|HA/DR gerekli mi?|Yes||
 |Diğer bulut hizmetleriyle tümleştirme yapılsın mı?|ADF, CosmosDB||
-|**Konu başlığı**:   **Veri Taşıma**  |||
+|**Konu**: **veri taşıma**  |||
 |İlk yükleme tercihi|DistCp, Data Box, ADF, WANDisco||
 |Veri aktarımı Delta|DistCp, AzCopy||
 |Devam eden artımlı veri aktarımı|DistCp, Sqoop||
-|**Konu başlığı**:   **& Uyarma izleniyor** |||
+|**Konu**: **izleme & uyarma** |||
 |Azure Izleme & uyarı, üçüncü taraf izlemeyi tümleştirme karşılaştırması|Azure Izleme & uyarma kullanma||
-|**Konu başlığı**:   **Güvenlik tercihleri** |||
-|Özel ve korunan veri ardışık düzeni?|Evet||
-|Etki alanına katılmış küme (ESP)?|     Evet||
-|Şirket Içi AD Eşitleme buluta mı?|     Evet||
-|Hayır. AD kullanıcıları eşitlenecek mi?|          100||
-|Parolalar buluta eşitlensin mi?|    Evet||
-|Yalnızca bulut kullanıcıları mı?|                 Evet||
+|**Konu**: **Güvenlik tercihleri** |||
+|Özel ve korunan veri ardışık düzeni?|Yes||
+|Etki alanına katılmış küme (ESP)?|     Yes||
+|Şirket Içi AD Eşitleme buluta mı?|     Yes||
+|Eşitlenecek AD kullanıcılarının sayısı?|          100||
+|Parolalar buluta eşitlensin mi?|    Yes||
+|Yalnızca bulut kullanıcıları mı?|                 Yes||
 |MFA gerekli mi?|                       Hayır|| 
-|Veri yetkilendirme gereksinimleri?|  Evet||
-|Rol tabanlı Access Control?|        Evet||
-|Denetim gerekli mi?|                  Evet||
-|Bekleyen veri şifrelemesi|          Evet||
-|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Evet||
-|**Konu başlığı**:   **Yeniden mimari tercihleri** |||
+|Veri yetkilendirme gereksinimleri?|  Yes||
+|Rol tabanlı Access Control?|        Yes||
+|Denetim gerekli mi?|                  Yes||
+|Bekleyen veri şifrelemesi|          Yes||
+|Geçiş sırasında veri şifrelemesi yapılsın mı?|       Yes||
+|**Konu**: **yeniden mimari tercihleri** |||
 |Tek küme, belirli küme türlerine karşı|Belirli küme türleri||
 |Birlikte bulunan depolama ve uzak depolama karşılaştırması|Uzak depolama||
 |Veriler uzaktan depolandığından daha küçük küme boyutu var mı?|Daha küçük küme boyutu||
 |Tek bir büyük küme yerine birden çok daha küçük küme kullanın mi?|Birden çok daha küçük küme kullanın||
-|Uzak bir meta veri deposu mı kullanıyorsunuz?|Evet||
-|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Evet||
+|Uzak bir meta veri deposu mı kullanıyorsunuz?|Yes||
+|Farklı kümeler arasında meta tasares paylaşma yapılsın mı?|Yes||
 |İş yüklerini kaldırma|Hive işlerini Spark işleriyle değiştirme||
 |Veri düzenleme için ADF kullanılsın mı?|Hayır||
 

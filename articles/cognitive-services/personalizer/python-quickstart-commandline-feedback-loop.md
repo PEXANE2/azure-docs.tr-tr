@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Python için kişiselleştirici istemci kitaplığı | Microsoft Docs'
+title: 'Hızlı başlangıç: Python için kişiselleştirici istemci kitaplığı | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Bir öğrenme döngüsü kullanarak Python için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 877a28e5f672bbd61bad2b4c5c9175c7dafa71ab
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345326"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802542"
 ---
-# <a name="quickstart-personalize-client-library-for-python"></a>Hızlı Başlangıç: Python için istemci kitaplığını Kişiselleştir
+# <a name="quickstart-personalize-client-library-for-python"></a>Hızlı başlangıç: Python için istemci kitaplığını kişiselleştirin
 
 Kişiselleştirilmiş içeriği bu Python hızlı penceresinde kişiselleştirici hizmeti ile görüntüleyin.
 
@@ -26,7 +26,7 @@ Python için kişiselleştirici istemci kitaplığı ile çalışmaya başlayın
  * Kişiselleştirmeye yönelik eylemlerin listesini sıralama.
  * En çok kullanılan derecelendirme eyleminin başarısını belirten rapor ödül.
 
-[Package (Pypı)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Package (pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | [örnek](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -54,8 +54,8 @@ Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil
 
 Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra, iki [ortam değişkeni](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)oluşturun:
 
-* `PERSONALIZER_KEY`Kaynak anahtarı için.
-* `PERSONALIZER_ENDPOINT`Kaynak uç noktası için.
+* Kaynak anahtarı için `PERSONALIZER_KEY`.
+* Kaynak uç noktası için `PERSONALIZER_ENDPOINT`.
 
 Azure portal, hem anahtar hem de uç nokta değerleri **hızlı başlangıç** sayfasından kullanılabilir.
 
@@ -67,8 +67,6 @@ Python için kişiselleştirici istemci kitaplığını aşağıdaki komutla bir
 ```console
 pip install azure-cognitiveservices-personalizer
 ```
-
-Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGet paketi olarak kullanılabilir.
 
 ## <a name="change-the-model-update-frequency"></a>Model güncelleştirme sıklığını değiştirme
 
@@ -98,7 +96,7 @@ Bu kod parçacıkları, Python için kişiselleştirici istemci kitaplığı ile
 
 ## <a name="create-a-new-python-application"></a>Yeni bir Python uygulaması oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE 'de adlı `sample.py`yeni bir Python uygulaması oluşturun. 
+Tercih ettiğiniz düzenleyicide veya `sample.py` adlı IDE 'de yeni bir Python uygulaması oluşturun. 
 
 ## <a name="add-the-dependencies"></a>Bağımlılıkları ekleme
 
@@ -108,19 +106,21 @@ Proje dizininden, **Sample.py** dosyasını tercih ettiğiniz DÜZENLEYICIDE vey
 
 ## <a name="add-personalizer-resource-information"></a>Kişiselleştirici kaynak bilgileri ekleme
 
-**Program** sınıfında, ve `PERSONALIZER_RESOURCE_KEY` `PERSONALIZER_RESOURCE_ENDPOINT`adlı ortam değişkenlerinden çekilen kaynak Azure anahtarı ve uç nokta için değişkenler oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
+Kaynağınızın Azure anahtarı ve uç noktası için `PERSONALIZER_RESOURCE_KEY` ve `PERSONALIZER_RESOURCE_ENDPOINT` adlı ortam değişkenlerinden çekilen bir değişken oluşturun. Uygulama başlatıldıktan sonra ortam değişkenlerini oluşturduysanız, değişkene erişmek için bu uygulamayı çalıştıran düzenleyici, IDE veya kabuğun kapatılıp yeniden yüklenmesi gerekir. Yöntemler daha sonra bu hızlı başlangıçta oluşturulacaktır.
+
+Kaynak adı, uç nokta URL 'sinin bir parçası: `https://<your-resource-name>.api.cognitive.microsoft.com/`.
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
 ## <a name="create-a-personalizer-client"></a>Bir kişiselleştirici istemci oluşturma
 
-Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine `PERSONALIZER_RESOURCE_ENDPOINT` parametresi, ve apikey `PERSONALIZER_RESOURCE_KEY`' dir.
+Sonra, bir kişiselleştirici istemci döndürmek için bir yöntem oluşturun. Yöntemine parametresi `PERSONALIZER_RESOURCE_ENDPOINT` ' dır ve ApiKey, `PERSONALIZER_RESOURCE_KEY` ' dir.
 
 [!code-python[Create the Personalizer client](~/samples-personalizer/quickstarts/python/sample.py?name=Client)]
 
 ## <a name="get-content-choices-represented-as-actions"></a>Eylem olarak temsil edilen içerik seçimlerini al
 
-Eylemler, Kişiselleştiriciye göre derecelendirmek istediğiniz içerik seçimlerini temsil eder. Komut satırından günün saati ve geçerli yiyecek tercihi için bir kullanıcının girişini almak üzere program sınıfına aşağıdaki yöntemleri ekleyin.
+Eylemler, Kişiselleştiriciye göre derecelendirmek istediğiniz içerik seçimlerini temsil eder. Günün saati ve geçerli yiyecek tercihi için komut satırından bir kullanıcının girişini almak üzere aşağıdaki yöntemleri ekleyin.
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
@@ -132,7 +132,7 @@ Eylemler, Kişiselleştiriciye göre derecelendirmek istediğiniz içerik seçim
 
 Kişiselleştirici öğrenme döngüsü, bir [derece](#request-a-rank) ve [yeniden](#send-a-reward) arama çağrısı döngüsüdür. Bu hızlı başlangıçta, içeriği kişiselleştirmek için her bir derecelendirme çağrısı, kişiselleştirmeden hizmetin içeriği derecelendirerek ne kadar iyi bir şekilde bilgi verdiğini söyleyerek bir ödül çağrısıyla izlenir. 
 
-Program `main` yönteminde aşağıdaki kod, kullanıcıdan komut satırında tercihlerini isteme, bu bilgileri kişisel olarak derecelendirmeyi bir şekilde gönderme ve derecelendirme seçimini bir Kullanıcı arasından seçim yapmak üzere müşteriye sunma daha sonra, kişiselleştirmeden bir ödül göndererek hizmetin seçimi derecelendirerek ne kadar iyi olduğunu işaret edin.
+Aşağıdaki kod, kullanıcıya komut satırında tercihlerini sorma, bu bilgileri kişisel olarak derecelendirmaya gönderme, derecelendirme seçimini, liste arasından seçim yapmak üzere müşteriye sunma ve sonra kişiselleştirici için bir ödül gönderme amacıyla bir döngüyle geçer hizmetin seçimi derecelendirmesi ne kadar iyi olduğunu işaret edin.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 
@@ -146,7 +146,7 @@ Kod dosyasını çalıştırmadan önce [içerik seçimlerini almak](#get-conten
 
 ## <a name="request-a-rank"></a>Bir derece iste
 
-Sıralama isteğini gerçekleştirmek için, program kullanıcının tercihlerini içerik seçimlerinden `currentContent` birini oluşturacak şekilde sorar. İşlem, olarak `excludeActions`gösterilen derecenin dışında tutulacak içerik oluşturabilir. Sıralama isteğinin, sıralanmış yanıtı almak için Eylemler, currentContext, excludeActions ve benzersiz bir sıra olay KIMLIĞI (GUID olarak) gerekir. 
+Program, derecelendirme isteğini gerçekleştirmek için kullanıcının tercihlerine içerik seçeneklerinin `currentContent` oluşturmasını ister. İşlem, `excludeActions` olarak gösterilen derecenin dışında tutulacak içerik oluşturabilir. Sıralama isteğinin, sıralanmış yanıtı almak için Eylemler, currentContext, excludeActions ve benzersiz bir sıra olay KIMLIĞI (GUID olarak) gerekir. 
 
 Bu hızlı başlangıçta, günün saati ve Kullanıcı yiyecek tercihi basit bağlam özelliklerine sahiptir. Üretim sistemlerinde, [eylemleri ve özellikleri](concepts-features.md) belirlemek ve [değerlendirmek](concept-feature-evaluation.md) önemsiz olmayan bir şekilde olabilir.  
 

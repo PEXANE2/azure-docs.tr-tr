@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 99e61cef55bd97704063e4d2da90909d0376c327
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 06dfa40b6f320646513ab759f0ad5f4d10790236
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70961459"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719989"
 ---
 # <a name="entity-functions-preview"></a>Varlık işlevleri (Önizleme)
 
@@ -30,7 +30,7 @@ Varlıklar (bazen varlık *örnekleri*olarak adlandırılır) benzersiz bir tan�
 * Bir **varlık adı**: varlığın türünü tanımlayan bir ad (örneğin, "Counter").
 * Bir **varlık anahtarı**: varlığı, aynı ada sahip diğer tüm varlıklar arasında benzersiz şekilde tanımlayan bir dize (örneğin, bir GUID).
 
-Örneğin, bir *sayaç* varlığı işlevi çevrimiçi bir oyunda puanı korumak için kullanılabilir. Oyunun her bir örneği, ve gibi benzersiz bir varlık kimliğine `@Counter@Game1` `@Counter@Game2`sahip olacaktır. Belirli bir varlığı hedefleyen tüm işlemler, bir varlık KIMLIĞINI parametre olarak belirtmeyi gerektirir.
+Örneğin, bir *sayaç* varlığı işlevi çevrimiçi bir oyunda puanı korumak için kullanılabilir. Oyunun her örneği, `@Counter@Game1`, `@Counter@Game2` gibi benzersiz bir varlık KIMLIĞINE sahip olur. Belirli bir varlığı hedefleyen tüm işlemler, bir varlık KIMLIĞINI parametre olarak belirtmeyi gerektirir.
 
 ## <a name="programming-models"></a>Programlama modelleri
 
@@ -38,7 +38,7 @@ Dayanıklı varlıklar iki farklı programlama modelini destekler. İlk model, v
 
 ### <a name="defining-entities"></a>Varlıkları tanımlama
 
-Dayanıklı varlıklar yazmak için iki isteğe bağlı programlama modeli vardır. Aşağıdaki kod, standart bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, `get` `add` `reset` herbiribirtamsayıdurumdeğeriüzerindeçalışanüçişlem,,,ve`currentValue`tanımlar.
+Dayanıklı varlıklar yazmak için iki isteğe bağlı programlama modeli vardır. Aşağıdaki kod, standart bir işlev olarak uygulanan basit bir *sayaç* varlığına bir örnektir. Bu işlev, `add`, `reset` ve `get`, her biri bir tamsayı durum değeri üzerinde çalışan üç *işlem*tanımlar, `currentValue`.
 
 ```csharp
 [FunctionName("Counter")]
@@ -50,7 +50,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
     {
         case "add":
             int amount = ctx.GetInput<int>();
-            currentValue += operand;
+            currentValue += amount;
             break;
         case "reset":
             currentValue = 0;
@@ -64,7 +64,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Bu model basit varlık uygulamaları veya dinamik bir işlem kümesi olan uygulamalar için en iyi şekilde kullanılır. Ancak, statik olan ancak daha karmaşık uygulamalar içeren varlıklar için kullanışlı olan sınıf tabanlı bir programlama modeli de kullanabilirsiniz. Aşağıdaki örnek, sınıfları ve yöntemleri kullanarak `Counter` varlığın eşdeğer bir uygulamasıdır.
+Bu model basit varlık uygulamaları veya dinamik bir işlem kümesi olan uygulamalar için en iyi şekilde kullanılır. Ancak, statik olan ancak daha karmaşık uygulamalar içeren varlıklar için kullanışlı olan sınıf tabanlı bir programlama modeli de kullanabilirsiniz. Aşağıdaki örnek, sınıfları ve yöntemleri kullanarak `Counter` varlığının eşdeğer bir uygulamasıdır.
 
 ```csharp
 public class Counter
@@ -85,9 +85,9 @@ public class Counter
 ```
 
 > [!NOTE]
-> Varlık sınıfları kullanılırken `[FunctionName]` özniteliği olan işlev giriş noktası *yöntemi bildirilmelidir.* `static` Statik olmayan giriş noktası yöntemleri, birden fazla nesne başlatmaya ve olasılıkla diğer tanımsız davranışlara neden olabilir.
+> @No__t-0 özniteliğine sahip işlev giriş noktası yöntemi, varlık sınıfları kullanılırken-2 *@no__t bildirilmelidir.* Statik olmayan giriş noktası yöntemleri, birden fazla nesne başlatmaya ve olasılıkla diğer tanımsız davranışlara neden olabilir.
 
-Sınıf tabanlı programlama modelinde, `IDurableEntityContext` nesnesi `Entity.Current` static özelliğinde kullanılabilir.
+Sınıf tabanlı programlama modelinde, `IDurableEntityContext` nesnesi `Entity.Current` statik özelliğinde kullanılabilir.
 
 Sınıf tabanlı model, [Orleans](https://www.microsoft.com/research/project/orleans-virtual-actors/)tarafından popularile benzerdir. Bu modelde, bir varlık türü .NET sınıfı olarak tanımlanmıştır. Sınıfının her yöntemi, bir dış istemci tarafından çağrılabilen bir işlemdir. Ancak, Orleans 'un aksine .NET arabirimleri isteğe bağlıdır. Önceki *sayaç* örneği bir arabirim kullanmadı, ancak yine de diğer IŞLEVLER veya HTTP API çağrıları aracılığıyla çağrılabilir.
 
@@ -160,7 +160,7 @@ Yalnızca düzenlemeler, varlık çağırma ve bir dönüş değeri ya da özel 
 
 ### <a name="dependency-injection-in-entity-classes-net"></a>Varlık sınıflarında bağımlılık ekleme (.NET)
 
-Varlık sınıfları [Azure Işlevleri bağımlılığı ekleme](../functions-dotnet-dependency-injection.md)işlemini destekler. Aşağıdaki örnekte, bir `IHttpClientFactory` hizmetin sınıf tabanlı bir varlığa nasıl kaydedileceği gösterilmektedir.
+Varlık sınıfları [Azure Işlevleri bağımlılığı ekleme](../functions-dotnet-dependency-injection.md)işlemini destekler. Aşağıdaki örnekte, bir `IHttpClientFactory` hizmetinin sınıf tabanlı bir varlığa nasıl kaydedileceği gösterilmektedir.
 
 ```csharp
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
@@ -205,13 +205,13 @@ public class HttpEntity
 ```
 
 > [!NOTE]
-> Normal .NET Azure Işlevlerinde Oluşturucu Ekleme kullanmanın aksine, sınıf *tabanlı varlıkların işlevler* giriş noktası yöntemi bildirilmelidir `static`. Statik olmayan bir işlev giriş noktası bildirmek, normal Azure Işlevleri nesne Başlatıcısı ve dayanıklı varlıklar nesne Başlatıcısı arasında çakışmalara neden olabilir.
+> Normal .NET Azure Işlevlerinde Oluşturucu Ekleme kullanmanın aksine, sınıf tabanlı varlıkların işlevler giriş noktası yöntemi- *1 olarak bildirilmelidir* @no__t. Statik olmayan bir işlev giriş noktası bildirmek, normal Azure Işlevleri nesne Başlatıcısı ve dayanıklı varlıklar nesne Başlatıcısı arasında çakışmalara neden olabilir.
 
 ### <a name="bindings-in-entity-classes-net"></a>Varlık sınıflarında bağlamalar (.NET)
 
-Normal işlevlerin aksine, varlık sınıfı yöntemlerinin giriş ve çıkış bağlamalarına doğrudan erişimi yoktur. Bunun yerine, bağlama verileri giriş noktası işlev bildiriminde yakalanmalı ve ardından `DispatchAsync<T>` yöntemine geçirilmelidir. Öğesine `DispatchAsync<T>` geçirilen herhangi bir nesne, bağımsız değişken olarak varlık sınıfı oluşturucusuna otomatik olarak geçirilir.
+Normal işlevlerin aksine, varlık sınıfı yöntemlerinin giriş ve çıkış bağlamalarına doğrudan erişimi yoktur. Bunun yerine, bağlama verileri giriş noktası işlev bildiriminde yakalanmalı ve sonra `DispatchAsync<T>` yöntemine geçirilmelidir. @No__t-0 ' a geçirilen tüm nesneler, bağımsız değişken olarak varlık sınıfı oluşturucusuna otomatik olarak geçirilir.
 
-Aşağıdaki örnek, `CloudBlobContainer` [BLOB giriş bağlamasındaki](../functions-bindings-storage-blob.md#input) bir başvurunun, sınıf tabanlı bir varlık için nasıl kullanılabilir hale getirilebilir olduğunu gösterir.
+Aşağıdaki örnek, [BLOB giriş bağlamasındaki](../functions-bindings-storage-blob.md#input) bir `CloudBlobContainer` başvurusunun, sınıf tabanlı bir varlık için nasıl kullanılabilir hale getirilebilir olduğunu gösterir.
 
 ```csharp
 public class BlobBackedEntity
@@ -245,10 +245,10 @@ Birden çok varlık arasında işlem koordine etmeniz gerektiğinde zaman alabil
 
 ### <a name="transfer-funds-example-in-c"></a>Fonları buraya aktarC#
 
-Aşağıdaki örnek kod, bir Orchestrator işlevi kullanarak iki _Hesap_ varlığı arasındaki fonları aktarır. Varlık güncelleştirmelerini koordine etmek için, `LockAsync` düzenleme içinde kritik bir _bölüm_ oluşturmak için yönteminin kullanılması gerekir:
+Aşağıdaki örnek kod, bir Orchestrator işlevi kullanarak iki _Hesap_ varlığı arasındaki fonları aktarır. Varlık güncelleştirmelerini koordine etmek, düzenleme içinde _kritik bir bölüm_ oluşturmak için `LockAsync` yönteminin kullanılmasını gerektirir:
 
 > [!NOTE]
-> Kolaylık olması için bu örnek daha önce `Counter` tanımlanan varlığı yeniden kullanır. Ancak gerçek bir uygulamada, daha ayrıntılı bir varlık daha ayrıntılı `BankAccount` bir şekilde tanımlanması daha iyidir.
+> Kolaylık olması için bu örnek, daha önce tanımlanan `Counter` varlığını yeniden kullanır. Ancak gerçek bir uygulamada, daha ayrıntılı bir `BankAccount` varlığı tanımlanması daha iyi olacaktır.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -290,18 +290,18 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-.Net ' te `LockAsync` , elden `IDisposable` çıkarıldığı zaman kritik bölümü sonlandıran bir döndürür. Bu `IDisposable` sonuç, kritik bölümün sözdizimsel bir gösterimini `using` almak için bir blokla birlikte kullanılabilir.
+.NET ' te, `LockAsync`, aktiften çıkarıldığı zaman kritik bölümü sonlandıran bir `IDisposable` döndürür. Bu `IDisposable` sonucu, kritik bölümün sözdizimsel bir gösterimini elde etmek için bir `using` bloğu ile birlikte kullanılabilir.
 
-Önceki örnekte, bir Orchestrator işlevi bir _kaynak_ varlıktan bir _hedef_ varlığa fon aktardı. Yöntemi hem kaynak hem de _hedef_ hesap varlıklarını kilitlediği. `LockAsync` Bu, düzenleme mantığı `using` deyimin sonundaki _kritik bölümden_ çıkana kadar başka hiçbir istemcinin herhangi bir hesabın durumunu sorgulayamayarak veya değiştirememesi için bu kilidi kilitler. Bu, _kaynak_ hesaptan daha fazla taslak oluşturma olasılığını ortadan kaldırmayacak şekilde engelledi.
+Önceki örnekte, bir Orchestrator işlevi bir _kaynak_ varlıktan bir _hedef_ varlığa fon aktardı. @No__t-0 yöntemi hem _kaynak_ hem de _hedef_ hesap varlıklarını kilitlediği. Bu, düzenleme mantığı `using` ifadesinin sonundaki _önemli bölümden_ çıkana kadar, başka hiçbir istemcinin herhangi bir hesabın durumunu sorgulayamaması veya değiştirememesi için bu kilidi kilitler. Bu, _kaynak_ hesaptan daha fazla taslak oluşturma olasılığını ortadan kaldırmayacak şekilde engelledi.
 
 ### <a name="critical-section-behavior"></a>Kritik bölüm davranışı
 
-Yöntemi bir düzenleme içinde _kritik bir bölüm_ oluşturur. `LockAsync` Bu _kritik bölümler_ , diğer düzenlemeler için, belirli bir varlık kümesinde çakışan değişiklikler yapılmasını engeller. Dahili olarak, `LockAsync` API, varlıklara "kilit" işlemleri gönderir ve aynı varlıkların her birinden "kilit alındı" yanıt iletisi aldığında döndürür. Hem *kilit* hem de *kilit açma* , tüm varlıkların desteklediği yerleşik işlemlerdir.
+@No__t-0 yöntemi bir düzenleme içinde _kritik bir bölüm_ oluşturur. Bu _kritik bölümler_ , diğer düzenlemeler için, belirli bir varlık kümesinde çakışan değişiklikler yapılmasını engeller. Dahili olarak, `LockAsync` API 'SI varlıklara "kilit" işlemleri gönderir ve aynı varlıkların her birinden "kilit alındı" yanıt iletisi aldığında bunu döndürür. Hem *kilit* hem de *kilit açma* , tüm varlıkların desteklediği yerleşik işlemlerdir.
 
 Kilitli durumda olan bir varlıkta diğer istemcilerden herhangi bir işlem yapılmasına izin verilmez. Bu davranış, tek seferde yalnızca bir düzenleme örneğinin bir varlığı kilitleyebilmesini sağlar. Bir çağıran bir düzenleme tarafından kilitliyken bir varlık üzerinde bir işlem çağırmaya çalışırsa, bu işlem *bekleyen bir işlem kuyruğuna*yerleştirilir. Bekleyen bir işlem, ' ın düzenleme kilidini serbest bırakana kadar işlenmeyecektir.
 
 > [!NOTE] 
-> Bu, içindeki `lock` C#bildiri gibi çoğu programlama dilinde kullanılan eşitleme temel larından biraz farklıdır. Örneğin, içinde C# `lock` , birden çok iş parçacığında doğru eşitlemeyi sağlamak için deyimin tüm iş parçacıkları tarafından kullanılması gerekir. Ancak varlıklar, tüm çağıranların bir varlığı açıkça _kilitlemesine_ gerek yoktur. Herhangi bir çağıran bir varlığı kilitlerse, o varlıktaki tüm diğer işlemler engellenir ve bu kilidin arkasında sıraya alınır.
+> Bu, içindeki C#`lock` açıklaması gibi çoğu programlama dilinde kullanılan eşitleme temel elemanlarından biraz farklıdır. Örneğin, ' de C#, `lock` ifadesinin birden çok iş parçacığında doğru bir şekilde eşitlenip emin olmak için tüm iş parçacıkları tarafından kullanılması gerekir. Ancak varlıklar, tüm çağıranların bir varlığı açıkça _kilitlemesine_ gerek yoktur. Herhangi bir çağıran bir varlığı kilitlerse, o varlıktaki tüm diğer işlemler engellenir ve bu kilidin arkasında sıraya alınır.
 
 Varlıkların kilitleri dayanıklı olduğundan, yürütülmekte olan işlem geri dönüştürülüp bile devam ederler. Kilitler, bir varlığın dayanıklı durumunun bir parçası olarak dahili olarak kalıcı hale getirilir.
 

@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Başlangıç: Bilgi Bankası 'ndan yanıt alın-REST, Python-Soru-Cevap Oluşturma"
+title: "Hızlı başlangıç: Bilgi Bankası 'ndan yanıt alın-REST, Python-Soru-Cevap Oluşturma"
 titleSuffix: Azure Cognitive Services
 description: Bu Python REST tabanlı hızlı başlangıç, Bilgi Bankası 'ndan programlama yoluyla yanıt alma konusunda size kılavuzluk eder.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/03/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 34c85de456e7ec96f3244d327fd53c91ed90d109
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f7bf73561cadab866c08ae279d18bc1bd4655983
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306905"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802968"
 ---
-# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Hızlı Başlangıç: Python ile Bilgi Bankası 'ndan bir soruya yanıt alın
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Hızlı başlangıç: Python ile Bilgi Bankası 'ndan bir soruya yanıt alın
 
 Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından programlı bir yanıt alma işlemi adım adım gösterilmektedir. Bilgi Bankası, SSS gibi [veri kaynaklarından](../Concepts/data-sources-supported.md) gelen sorular ve yanıtlar içerir. [Soru](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) soru-cevap oluşturma hizmetine gönderilir. [Yanıt](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) , en fazla tahmini yanıtı içerir. 
 
@@ -25,24 +25,26 @@ Bu hızlı başlangıçta, yayımlanan Soru-Cevap Oluşturma bilgi bankasından 
 
 * [Python 3,6 veya üzeri](https://www.python.org/downloads/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı almak için seçin **anahtarları** altında **kaynak yönetimi** Azure Panonuzda soru-cevap Oluşturucu kaynağınızın. 
+* [Soru-Cevap Oluşturma hizmetine](../How-To/set-up-qnamaker-service-azure.md) sahip olmanız gerekir. Anahtarınızı almak için Azure panonuzda Soru-Cevap Oluşturma kaynağınız için **kaynak yönetimi** altındaki **anahtarlar** ' ı seçin. 
 * **Yayımlama** sayfası ayarları. Yayımlanmış bir bilgi tabanınız yoksa, boş bir Bilgi Bankası oluşturun ve ardından **Ayarlar** sayfasına bir Bilgi Bankası alın ve ardından yayımlayın. [Bu temel Bilgi Bankası](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/knowledge-bases/basic-kb.tsv)'nı indirip kullanabilirsiniz. 
 
     Yayımlama sayfası ayarları, POST yol değerini, ana bilgisayar değerini ve EndpointKey değerini içerir. 
 
     ![Yayımlama ayarları](../media/qnamaker-quickstart-get-answer/publish-settings.png)
 
-Bu hızlı başlangıç [https://github.com/Azure-Samples/cognitive-services-qnamaker-python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/get-answer) kodu depoda. 
+Bu hızlı başlangıç kodu [https://github.com/Azure-Samples/cognitive-services-qnamaker-python](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/get-answer) deposudur. 
 
 ## <a name="create-a-python-file"></a>Python dosyası oluşturma
 
-Adlı yeni bir dosya oluşturun ve açın VSCode `get-answer-3x.py`.
+VSCode 'u açın ve `get-answer-3x.py` adlı yeni bir dosya oluşturun.
 
 ## <a name="add-the-required-dependencies"></a>Gerekli bağımlılıkları ekleme
 
-`get-answer-3x.py` Dosyanın en üstünde, gerekli bağımlılıkları projeye ekleyin:
+@No__t-0 dosyasının en üstünde projeye gerekli bağımlılıkları ekleyin:
 
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=1-2 "Add the required dependencies")]
+
+<!--TBD - reword this following paragraph -->
 
 Konak ve rota **Yayımla** sayfasında göründükleri şekilde farklıdır. Bunun nedeni, Python kitaplığının konakta herhangi bir yönlendirmeye izin vermez. **Yayımla** sayfasında ana bilgisayarın bir parçası olarak görünen yönlendirme yola taşındı.
 
@@ -58,13 +60,13 @@ Aşağıdaki kod, soruyu bilgi tabanına göndermek için Soru-Cevap Oluşturma 
 
 [!code-python[Add a POST request to send question to knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=27-48 "Add a POST request to send question to knowledge base")]
 
-Üstbilginin değeri dizeyi `EndpointKey`içerir. `Authorization` 
+@No__t-0 üstbilgisinin değeri, `EndpointKey` dizesini içerir. 
 
 ## <a name="run-the-program"></a>Programı çalıştırma
 
-Programı komut satırından çalıştırın. Otomatik olarak için soru-cevap Oluşturucu API'si isteği gönderir ve ardından konsol penceresine yazdırır.
+Programı komut satırından çalıştırın. İstek otomatik olarak Soru-Cevap Oluşturma API'si gönderilir, ardından konsol penceresine yazdırılır.
 
-Dosyasını çalıştırın:
+Dosyayı çalıştırın:
 
 ```bash
 python get-answer-3x.py

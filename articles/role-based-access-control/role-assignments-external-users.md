@@ -16,12 +16,12 @@ ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 5ed9088bcc5776fe1fb0d09e6ae771adabb1b879
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967465"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802678"
 ---
 # <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>RBAC kullanarak dış Konuk kullanıcılar için Azure kaynaklarına erişimi yönetme
 
@@ -45,7 +45,7 @@ Azure Active Directory sayfasını kullanarak dizininize Konuk Kullanıcı eklem
 
 1. Kuruluşunuzun dış işbirliği ayarlarının, konukları davet etmenize izin verilecek şekilde yapılandırıldığından emin olun. Daha fazla bilgi için bkz. [B2B dış Işbirliğini etkinleştirme ve konukları kimlerin davet edebileceğini yönetme](../active-directory/b2b/delegate-invitations.md).
 
-1. Azure Portal,**Kullanıcılar** > Yeni > **Konuk Kullanıcı**Azure Active Directory ' a tıklayın.
+1. Azure portal, **Azure Active Directory** > **Kullanıcı** > **Yeni Konuk Kullanıcı**' ya tıklayın.
 
     ![Azure portal yeni Konuk Kullanıcı özelliği](./media/role-assignments-external-users/invite-guest-user.png)
 
@@ -71,7 +71,7 @@ RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcıya eri
 
 1. Belirli kaynağa tıklayın.
 
-1. Tıklayın **erişim denetimi (IAM)** .
+1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
     Aşağıdaki ekran görüntüsünde, bir kaynak grubu için erişim denetimi (ıAM) dikey penceresi örneği gösterilmektedir. Burada herhangi bir erişim denetimi değişikliği yaparsanız, bu değişiklikler yalnızca kaynak grubuna uygulanır.
 
@@ -79,7 +79,7 @@ RBAC 'de, erişim izni vermek için bir rol atarsınız. Konuk kullanıcıya eri
 
 1. Bu kapsamdaki tüm rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
 
-1. Rol **ataması Ekle bölmesini**açmak için**rol ataması** Ekle ' ye tıklayın. > 
+1. Rol ataması Ekle bölmesini açmak için @no__t **Ekle**-1**rol ataması Ekle** ' ye tıklayın.
 
     Rol atama izniniz yoksa rol ataması Ekle seçeneği devre dışı bırakılır.
 
@@ -107,11 +107,11 @@ Konuk Kullanıcı henüz dizininizde değilse, kullanıcıyı doğrudan rol atam
 
 1. Belirli kaynağa tıklayın.
 
-1. Tıklayın **erişim denetimi (IAM)** .
+1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
 1. Bu kapsamdaki tüm rol atamalarını görüntülemek için **rol atamaları** sekmesine tıklayın.
 
-1. Rol **ataması Ekle bölmesini**açmak için**rol ataması** Ekle ' ye tıklayın. > 
+1. Rol ataması Ekle bölmesini açmak için @no__t **Ekle**-1**rol ataması Ekle** ' ye tıklayın.
 
     ![Menü ekle](./media/role-assignments-external-users/add-menu.png)
 
@@ -155,11 +155,11 @@ Konuk kullanıcıyı bir dizinden kaldırmadan önce, önce bu Konuk Kullanıcı
 
 1. Görüntülenen rol atamasını Kaldır iletisinde **Evet**' e tıklayın.
 
-1. Sol gezinti çubuğunda **Azure Active Directory** > **Kullanıcılar**' a tıklayın.
+1. Sol gezinti çubuğunda **Azure Active Directory** > **Kullanıcı**' ya tıklayın.
 
 1. Kaldırmak istediğiniz Konuk Kullanıcı ' ya tıklayın.
 
-1. Tıklayın **Sil**.
+1. **Sil**'e tıklayın.
 
    ![Konuk kullanıcıyı sil](./media/role-assignments-external-users/delete-guest-user.png)
 
@@ -203,6 +203,7 @@ Bir konuk kullanıcıya bir dizin erişimi verildiyse, ancak Azure portal erişi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portalında Azure Active Directory B2B işbirliği kullanıcıları ekleme](../active-directory/b2b/add-users-administrator.md)
+- [Azure portal Azure Active Directory B2B işbirliği kullanıcıları ekleyin](../active-directory/b2b/add-users-administrator.md)
 - [Azure Active Directory B2B işbirliği kullanıcısının özellikleri](../active-directory/b2b/user-properties.md)
 - [B2B işbirliği davetiyesi e-postası öğeleri-Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)
+- [Konuk kullanıcıyı ortak yönetici olarak ekleme](classic-administrators.md#adding-a-guest-user-as-a-co-administrator)

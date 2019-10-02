@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc6fdde4daa2d671b9d93673c2a78c2d9d85963c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 0e03cd3747fe6770be7dddaf36d634547ed75b39
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275734"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718950"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme
 
@@ -32,17 +32,17 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | AllocationFailed | Küme veya bölgenin kullanılabilir kaynakları yok veya istenen VM boyutunu destekleyemiyorum. İsteği daha sonra yeniden deneyin veya farklı bir VM boyutu isteyin. | Linux, [Windows için sağlama ve ayırma sorunları](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) [için sağlama ve ayırma sorunları](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)ve [ayırma hatalarında sorun giderme](../virtual-machines/troubleshooting/allocation-failure.md)|
 | Anotheroperationınprogress | Eşzamanlı işlemin tamamlanmasını bekleyin. | |
 | AuthorizationFailed | Hesabınızın veya hizmet sorumlusunun dağıtımı tamamlaması için yeterli erişimi yok. Hesabınızın ait olduğu rolü ve dağıtım kapsamına erişimini denetleyin.<br><br>Gerekli bir kaynak sağlayıcısı kayıtlı olmadığında bu hatayı alabilirsiniz. | [Azure rol tabanlı Access Control](../role-based-access-control/role-assignments-portal.md)<br><br>[Kaydı çözümle](resource-manager-register-provider-errors.md) |
-| BadRequest | Kaynak Yöneticisi tarafından beklenildiği eşleşmeyen dağıtım değerleri gönderdiniz. Sorun gidermeye yardımcı olması için iç durum iletisini kontrol edin. | [Şablon başvurusu](/azure/templates/) ve [Desteklenen konumlar](resource-location.md) |
-| Çakışma | Kaynağın geçerli durumunda izin verilmeyen bir işlem isteğinde bulunuyoruz. Örneğin, yalnızca bir VM oluşturulurken veya VM serbest bırakıldığında disk yeniden boyutlandırılmasına izin verilir. | |
+| Işlemindeki hatalı istek | Kaynak Yöneticisi tarafından beklenildiği eşleşmeyen dağıtım değerleri gönderdiniz. Sorun gidermeye yardımcı olması için iç durum iletisini kontrol edin. | [Şablon başvurusu](/azure/templates/) ve [Desteklenen konumlar](resource-location.md) |
+| Uzantıları | Kaynağın geçerli durumunda izin verilmeyen bir işlem isteğinde bulunuyoruz. Örneğin, yalnızca bir VM oluşturulurken veya VM serbest bırakıldığında disk yeniden boyutlandırılmasına izin verilir. | |
 | DeploymentActive | Bu kaynak grubuna yönelik eşzamanlı dağıtımın tamamlanmasını bekleyin. | |
 | DeploymentFailed | DeploymentFailed hatası, hatayı çözmeniz için gereken ayrıntıları sağlamayan genel bir hatadır. Daha fazla bilgi sağlayan bir hata kodu için hata ayrıntılarına bakın. | [Hata kodunu bul](#find-error-code) |
-| Deploymentquotageçildi | Kaynak grubu başına 800 dağıtım sınırına ulaşırsanız, artık gerekli olmayan geçmişten dağıtımları silin. Geçmişten girdileri, [az önce grup dağıtımı Delete](/cli/azure/group/deployment#az-group-deployment-delete) for Azure CLI veya PowerShell 'de [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) ile silebilirsiniz. Dağıtım geçmişinden bir girişi silmek, kaynakları dağıtmayı etkilemez. | |
+| Deploymentquotageçildi | Kaynak grubu başına 800 dağıtım sınırına ulaşırsanız, artık gerekli olmayan geçmişten dağıtımları silin. | [Dağıtım sayısı 800 ' i aştığında hatayı çözümle](deployment-quota-exceeded.md) |
 | DnsRecordInUse | DNS kayıt adı benzersiz olmalıdır. Farklı bir ad girin. | |
-| ImageNotFound | VM görüntüsü ayarlarını kontrol edin. |  |
+| Imagenotfound | VM görüntüsü ayarlarını kontrol edin. |  |
 | Inusesubnetcannotbedeleted | Bir kaynağı güncelleştirmeye çalışırken bu hatayı alabilir ve kaynak silinerek ve oluşturularak istek işlenir. Tüm değiştirilmeyen değerleri belirttiğinizden emin olun. | [Güncelleştirme kaynağı](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | Invalidauthenticationtokentenant | Uygun kiracı için erişim belirteci alın. Yalnızca hesabınızın ait olduğu kiracının belirtecini alabilir. | |
-| InvalidContentLink | Büyük olasılıkla kullanılamayan iç içe bir şablona bağlantı yapmaya çalıştınız. İç içe geçmiş şablon için verdiğiniz URI 'yi iki kez kontrol edin. Şablon bir depolama hesabında varsa, URI 'nin erişilebilir olduğundan emin olun. Bir SAS belirteci geçirmeniz gerekebilir. Şu anda, [Azure Storage güvenlik duvarının](../storage/common/storage-network-security.md)arkasındaki bir depolama hesabında bulunan bir şablona bağlayamazsınız. Şablonunuzu GitHub gibi başka bir depoya taşımayı düşünün. | [Bağlantılı şablonlar](resource-group-linked-templates.md) |
-| InvalidParameter | Bir kaynak için verdiğiniz değerlerden biri beklenen değerle eşleşmiyor. Bu hata, birçok farklı koşulun oluşmasına neden olabilir. Örneğin, bir parola yetersiz olabilir veya bir blob adı yanlış olabilir. Hata iletisi hangi değerin düzeltilmesi gerektiğini göstermelidir. | |
+| Invalidcontentlink | Büyük olasılıkla kullanılamayan iç içe bir şablona bağlantı yapmaya çalıştınız. İç içe geçmiş şablon için verdiğiniz URI 'yi iki kez kontrol edin. Şablon bir depolama hesabında varsa, URI 'nin erişilebilir olduğundan emin olun. Bir SAS belirteci geçirmeniz gerekebilir. Şu anda, [Azure Storage güvenlik duvarının](../storage/common/storage-network-security.md)arkasındaki bir depolama hesabında bulunan bir şablona bağlayamazsınız. Şablonunuzu GitHub gibi başka bir depoya taşımayı düşünün. | [Bağlantılı şablonlar](resource-group-linked-templates.md) |
+| Geçersiz parametre | Bir kaynak için verdiğiniz değerlerden biri beklenen değerle eşleşmiyor. Bu hata, birçok farklı koşulun oluşmasına neden olabilir. Örneğin, bir parola yetersiz olabilir veya bir blob adı yanlış olabilir. Hata iletisi hangi değerin düzeltilmesi gerektiğini göstermelidir. | |
 | Invalidrequestcontent | Dağıtım değerleri, tanınmayan ya da gerekli değerler eksik olan değerleri içerir. Kaynak türü için değerleri onaylayın. | [Şablon başvurusu](/azure/templates/) |
 | Invalidrequestformat | Dağıtımı çalıştırırken hata ayıklama günlüğünü etkinleştirin ve isteğin içeriğini doğrulayın. | [Hata ayıklama günlüğü](#enable-debug-logging) |
 | Invalidresourcenamespace | **Type** özelliğinde belirttiğiniz kaynak ad alanını denetleyin. | [Şablon başvurusu](/azure/templates/) |
@@ -58,11 +58,11 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | MissingRegistrationForLocation | Kaynak sağlayıcısı kayıt durumunu ve desteklenen konumları denetleyin. | [Kaydı çözümle](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Aboneliğinizi kaynak sağlayıcısına kaydedin. | [Kaydı çözümle](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | Kaynak sağlayıcısı kayıt durumunu denetleyin. | [Kaydı çözümle](resource-manager-register-provider-errors.md) |
-| Bulunamadı | Bağımlı bir kaynağı bir üst kaynakla paralel olarak dağıtmaya çalışıyor olabilirsiniz. Bir bağımlılık eklemeniz gerekiyorsa denetleyin. | [Bağımlılıkları çözümle](resource-manager-not-found-errors.md) |
+| NotFound | Bağımlı bir kaynağı bir üst kaynakla paralel olarak dağıtmaya çalışıyor olabilirsiniz. Bir bağımlılık eklemeniz gerekiyorsa denetleyin. | [Bağımlılıkları çözümle](resource-manager-not-found-errors.md) |
 | OperationNotAllowed | Dağıtım, aboneliğin, kaynak grubunun veya bölgenin kotasını aşan bir işlem gerçekleştirmeye çalışıyor. Mümkünse, Kotalarınızın kotalar dahilinde kalmasını sağlamak için dağıtımınızı gözden geçirin. Aksi takdirde, kotalarınızda değişiklik yapmayı deneyin. | [Kotaları çözümleyin](resource-manager-quota-errors.md) |
 | ParentResourceNotFound | Alt kaynakları oluşturmadan önce bir üst kaynağın mevcut olduğundan emin olun. | [Üst kaynağı çözümle](resource-manager-parent-resource-errors.md) |
 | PasswordTooLong | Çok fazla karakter içeren bir parola seçmiş olabilirsiniz veya parola değerini parametre olarak geçirmeden önce güvenli bir dizeye dönüştürülemeyebilirsiniz. Şablon bir **güvenli dize** parametresi içeriyorsa, değeri güvenli bir dizeye dönüştürmeniz gerekmez. Parola değerini metin olarak girin. |  |
-| PrivateIPAddressInReservedRange | Belirtilen IP adresi, Azure için gereken bir adres aralığını içeriyor. Ayrılmış aralığın önüne geçmek için IP adresini değiştirin. | [IP adresleri](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
+| Privateipaddressınreservedrange | Belirtilen IP adresi, Azure için gereken bir adres aralığını içeriyor. Ayrılmış aralığın önüne geçmek için IP adresini değiştirin. | [IP adresleri](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PrivateIPAddressNotInSubnet | Belirtilen IP adresi alt ağ aralığının dışında. IP adresini alt ağ aralığı içinde olacak şekilde değiştirin. | [IP adresleri](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PropertyChangeNotAllowed | Dağıtılan bir kaynakta bazı özellikler değiştirilemez. Bir kaynağı güncelleştirirken, değişikliklerinizi izin verilen özelliklerle sınırlayın. | [Güncelleştirme kaynağı](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | Aboneliğiniz, dağıtım sırasında gerçekleştirmeye çalıştığınız bir eylemi önleyen bir kaynak ilkesi içerir. Eylemi engelleyen ilkeyi bulun. Mümkünse, ilkeden gelen sınırlamaları karşılamak için dağıtımınızı değiştirin. | [İlkeleri çözümle](resource-manager-policy-requestdisallowedbypolicy-error.md) |
@@ -122,13 +122,13 @@ Portalda bildirimi seçin.
 
 Dağıtım hakkında daha fazla ayrıntı görürsünüz. Hata hakkında daha fazla bilgi bulmak için seçeneği belirtin.
 
-![dağıtım başarısız](./media/resource-manager-common-deployment-errors/deployment-failed.png)
+![dağıtım başarısız oldu](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
 Hata iletisini ve hata kodlarını görürsünüz. İki hata kodu olduğuna dikkat edin. İlk hata kodu (**DeploymentFailed**), hataya çözmek için ihtiyacınız olan ayrıntıları sağlamayan genel bir hatadır. İkinci hata kodu (**StorageAccountNotFound**) ihtiyacınız olan ayrıntıları sağlar. 
 
-![hata ayrıntıları](./media/resource-manager-common-deployment-errors/error-details.png)
+![Hata ayrıntıları](./media/resource-manager-common-deployment-errors/error-details.png)
 
-## <a name="enable-debug-logging"></a>Hata ayıklama günlük kaydını etkinleştirme
+## <a name="enable-debug-logging"></a>Hata ayıklama günlüğünü etkinleştir
 
 Bazen sorunun ne olduğunu öğrenmek için istek ve yanıt hakkında daha fazla bilgiye ihtiyacınız vardır. Dağıtım sırasında, dağıtım sırasında ek bilgilerin günlüğe kaydedilmesini isteyebilirsiniz. 
 
@@ -194,7 +194,7 @@ az group deployment operation list \
   --query [].properties.response
 ```
 
-### <a name="nested-template"></a>İç içe geçmiş şablon
+### <a name="nested-template"></a>İç içe şablon
 
 İç içe geçmiş bir şablon için hata ayıklama bilgilerini günlüğe kaydetmek için **Debugsetting** öğesini kullanın.
 

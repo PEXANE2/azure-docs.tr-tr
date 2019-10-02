@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81deaaffa301c4453842875f9cfd6b63bb6bbfd7
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: ab6139e1f87938edaa0a8a94453faa213d39e23f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672979"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719006"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -59,7 +59,7 @@ Belgelerinin bu bölümü SAP HANA farklı yönlerini kapsamaktadır. Bir önko�
 
 Azure 'da HANA hakkında daha fazla bilgi için aşağıdaki makalelere ve bunların alt makalelerine bakın:
 
-- [Hızlı Başlangıç: Azure VM 'lerinde tek örnekli SAP HANA el ile yüklenmesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Hızlı başlangıç: Azure VM 'lerinde tek örnekli SAP HANA El Ile yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
 - [Azure 'da SAP S/4HANA veya siyah beyaz/4HANA dağıtma](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)
 - [Azure'da SAP HANA altyapısı yapılandırmaları ve işlemleri](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 - [Azure sanal makineleri için yüksek kullanılabilirlik SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
@@ -103,13 +103,13 @@ Bu belge, diğer çeşitli mimari ve senaryo belgelerini gösterir. Sonraki sena
 
 Azure Active Directory (Azure AD) ile SAP Hizmetleri ve çoklu oturum açma arasında tümleştirme hakkında daha fazla bilgi için bkz.:
 
-- [Öğretici: Müşteri için SAP bulutuyla Azure Active Directory tümleştirme](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Öğretici: SAP Cloud Platform kimlik doğrulamasıyla Azure Active Directory tümleştirme](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [Öğretici: SAP Cloud Platform ile Azure Active Directory tümleştirme](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Öğretici: müşteri için SAP bulutu ile Azure Active Directory tümleştirme](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-customer-cloud-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Öğretici: SAP Cloud Platform Identity Authentication ile tümleştirme Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
+- [Öğretici: SAP Cloud Platform ile tümleştirme Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-hana-cloud-platform-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Öğretici: SAP NetWeaver ile tümleştirme Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-netweaver-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Öğretici: SAP Business ByDesign ile Azure Active Directory tümleştirme](https://docs.microsoft.com/azure/active-directory/saas-apps/sapbusinessbydesign-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 - [Öğretici: SAP HANA ile tümleştirme Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/saphana-tutorial?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
-- [S/4HANA ortamınız: Azure AD ile Fiori Launchpad SAML çoklu oturum açma](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
+- [S/4HANA ortamınız: Fiori Launchpad SAML çoklu oturum açma Azure AD ile](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad/)
 
 Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi için bkz.:
 
@@ -120,16 +120,18 @@ Azure hizmetlerini SAP bileşenleriyle tümleştirme hakkında daha fazla bilgi 
 
 
 ## <a name="change-log"></a>Değişiklik günlüğü
-- 09/28/2019: Chel kümelerinde bir geçiş mekanizması için SBD 'yi netleştirmek üzere [Azure 'daki Red Hat Enterprise Linux pacemaker ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) değişikliği  
-- 09/17/2019: SAP için VM uzantısının etrafındaki terimleri birleştirme NetWeaver planlama ve dağıtım kılavuzundaki değişiklikler  
-- 08/22/2019: Özel rol oluşturma için URL 'Leri güncelleştirmek üzere [Azure 'daki SUSE Linux Enterprise Server pacemaker ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) değişiklikleri  
-- 08/16/2019: Azure 'un yeni sürümüne güncelleştirilüyorsam, müşterilerin özel roldeki eylemleri güncelleştirmesine anımsatmak için [Azure 'daki Red Hat Enterprise Linux Paceyapıcısı ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) değişiklikleri  
+- 10/01/2019: daha fazla açıklık elde etmek için [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarının](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) grafiklerde değişiklik yapın
+- 10/01/2019: [Azure 'daki SAP HANA altyapı yapılandırmalarında ve işlemlerinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) ,/Hana/sharediçin yüksek düzeyde kullanılabilir NFS paylaşımındaki deyimleri düzeltmek üzere değiştirin. 
+- 09/28/2019: RHEL kümelerinde, bir Chel kümelerinde SBD 'yi açıklığa kavuşturmaya yönelik olarak [Azure 'daki Red Hat Enterprise Linux Paceyapıcısı ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) sırasında değişiklik  
+- 09/17/2019: SAP için VM uzantısının etrafındaki terimleri bütünleştirme NetWeaver planlama ve dağıtım kılavuzunda değiştirin  
+- 08/22/2019: özel rol oluşturmaya yönelik URL 'Leri güncelleştirmek için [Azure 'daki SUSE Linux Enterprise Server pacemaker ayarlama](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) değişiklikleri  
+- 08/16/2019: Azure ['da Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) , Azure sınır aracısının yeni sürümüne güncelleştirilüyorsam, müşterilere özel roldeki eylemleri güncelleştirme  
 - 08/15/2019: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , Ultra diskin genel kullanılabilirliğini yansıtacak değişiklikler (eski adıyla Ultra SSD)
-- 08/01/2019: Değişiklikleri özel olarak SLES 15 için tümleştirmede [Azure 'daki SUSE Linux Enterprise Server pacemaker ayarlamaya](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) yönelik değişiklikler 
-- 07/23/2019: [Bir Windows Yük devretme kümesindeki BIR SAP ASCS/SCS örneği](sap-high-availability-guide-wsfc-file-share.md) , Azure Site Recovery Hizmetleri tarafından doğrudan depolama alanı desteğini yansıtmak için Azure 'da bir dosya paylaşma kullanarak
+- 08/01/2019: [Azure 'daki SUSE Linux Enterprise Server pacemaker 'ı ayarlamaya](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) yönelik değişiklikler, SLES 15 için değişiklikleri özellikle tümleştirin 
+- 07/23/2019: [bir Windows Yük devretme kümesindeki BIR SAP ASCS/SCS örneği kümesindeki](sap-high-availability-guide-wsfc-file-share.md) değişiklikler, Azure Site Recovery Hizmetleri tarafından doğrudan depolama alanı desteğini yansıtmak için Azure 'da bir dosya paylaşımının kullanılması
 - 07/14/2019: [SAP uygulamalarıyla en iyi ağ gecikmesi Için Azure yakınlık yerleştirme gruplarının](sap-proximity-placement-scenarios.md) yayını
 - 07/11/2019: Hana büyük örneklerinin 3. düzeltmesini kapsayan çeşitli belgelerdeki değişiklikler
 - 07/09/2019: [Red Hat Enterprise Server 'Da IBM DB2 HADR](high-availability-guide-rhel-ibm-db2-luw.md) için yeni kılavuz sürümü
-- 06/13/2019: SAP [NetWeaver Için yüksek kullanılabilirlik sürümü SAP uygulamaları için Azure NetApp Files ile Red Hat Enterprise Linux](high-availability-guide-rhel-netapp-files.md)
+- 06/13/2019: SAP [NetWeaver için Red Hat Enterprise Linux yüksek kullanılabilirlik sürümü SAP uygulamaları için Azure NetApp Files](high-availability-guide-rhel-netapp-files.md)
 
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 993064a36bd12c95e83ffb7c9635c3e4dfcec0f0
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068839"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803341"
 ---
 # <a name="what-are-the-speech-services"></a>Konuşma Tanıma Hizmetleri nelerdir?
 
@@ -28,9 +28,9 @@ Bu özellikler Azure konuşma hizmetlerini yapar. Her bir özellik için genel k
 
 | Hizmet | Özellik | Açıklama | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [Konuşmayı metne dönüştürme](speech-to-text.md) | Konuşmayı Metne Dönüştürme | Konuşmadan metne dönüştürme, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği gerçek zamanlı olarak metin halinde ses akışları. Kullanıcı amaçlarını [Language Understanding (lusıs)](https://docs.microsoft.com/azure/cognitive-services/luis/) ile birlikte kullanarak konuşma ve ses komutları üzerinde Kullanıcı hedefleri türetebilirsiniz. | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Konuşmayı metne dönüştürme](speech-to-text.md) | Konuşmayı metne dönüştürme | Konuşmadan metne dönüştürme, uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği gerçek zamanlı olarak metin halinde ses akışları. Kullanıcı amaçlarını [Language Understanding (lusıs)](https://docs.microsoft.com/azure/cognitive-services/luis/) ile birlikte kullanarak konuşma ve ses komutları üzerinde Kullanıcı hedefleri türetebilirsiniz. | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Toplu iş dökümü](batch-transcription.md) | Toplu iş dökümü, büyük hacimde verilerin zaman uyumsuz konuşmadan metne dökümünü sağlar. Bu, özelleştirme ve model yönetimi ile aynı uç noktayı kullanan REST tabanlı bir hizmettir. | Hayır | [Evet](https://westus.cris.ai/swagger/ui/index) |
-| | [Konuşma dökümü](conversation-transcription-service.md) | Gerçek zamanlı konuşma tanımayı, konuşmacı tanımlamayı ve okumayı mümkün hale getirme. Hoparlörleri, konuşmacıları ayırt etme imkanına sahip olmak için bir kişi içi toplantılar için mükemmeldir. | Evet | Hayır |
+| | [Konuşma dökümü](conversation-transcription-service.md) | Gerçek zamanlı konuşma tanımayı, konuşmacı tanımlamayı ve okumayı mümkün hale getirme. Hoparlörleri, konuşmacıları ayırt etme imkanına sahip olmak için bir kişi içi toplantılar için mükemmeldir. | Yes | Hayır |
 | | [Özel Konuşma Tanıma modelleri oluşturma](#customize-your-speech-experience) | Benzersiz bir ortamda tanıma ve döküm için konuşmaya metin kullanıyorsanız, çevresel gürültü veya sektöre özgü sözlük için özel akustik, dil ve telaffuz modeller oluşturup eğitebilirsiniz. | Hayır | [Evet](https://westus.cris.ai/swagger/ui/index) |
 | [Metin okuma](text-to-speech.md) | Metin okuma | Metin okuma [, konuşma birleştirme biçimlendirme dili (SSML)](text-to-speech.md#speech-synthesis-markup-language-ssml)kullanarak giriş metnini insan benzeri sentezleştirilmiş konuşmaya dönüştürür. Standart sesler ve sinir sesler arasından seçim yapın (bkz. [dil desteği](language-support.md)). | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Özel sesler oluşturma](#customize-your-speech-experience) | Markanızı veya ürününüzün benzersiz özel ses yazı tiplerini oluşturun. | Hayır | [Evet](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -41,9 +41,11 @@ Bu özellikler Azure konuşma hizmetlerini yapar. Her bir özellik için genel k
 
 Azure konuşma Hizmetleri yenilikleri hakkında bilgi edinin.
 
+* Eylül 2019
+  * Yayınlanan konuşma SDK 1.7.0. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
 * Ağustos 2019
-  * **Yeni öğretici**: [Konuşma SDK’sı ile botunuzu ses ile etkinleştirme, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-  * Ses için yeni bir konuşma stili [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)eklendi. `en-US-JessaNeural` 
+  * **Yeni öğretici**: [konuşma SDK 'sı ile sesinizi etkinleştirme, C# ](tutorial-voice-enable-your-bot-speech-sdk.md)
+  * @No__t 2 sesi için [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)yeni bir konuşma stili eklendi. 
 * Haziran 2019
   * Yayınlanan konuşma SDK 1.6.0. Güncelleştirmelerin, geliştirmelerin ve bilinen sorunların tam listesi için bkz. [sürüm notları](releasenotes.md).
 * 2019 Mayıs-belgeler artık [konuşma dökümü](conversation-transcription-service.md), [çağrı merkezi dökümü](call-center-transcription.md)ve [sesli ilk sanal yardımcılar](voice-first-virtual-assistants.md)için kullanılabilir.
@@ -67,9 +69,9 @@ Her biri 10 dakikadan kısa bir süre içinde kod çalıştırmak için tasarlan
 
 Konuşma hizmetlerini kullanma şansınız olduktan sonra, konuşma SDK 'sını ve LUO kullanarak konuşmayı nasıl anlayacağınızı öğreten Öğreticimizi deneyin.
 
-* [Öğretici: Konuşma SDK 'Sı ve LUSıS ile konuşmadan amaçları tanımaC#](how-to-recognize-intents-from-speech-csharp.md)
-* [Öğretici: Konuşmayı konuşma SDK 'Sı ile etkinleştirin,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-* [Öğretici: Metin çevirmek, yaklaşımı çözümlemek ve çevrilmiş metni konuşmaya, REST 'e eklemek için bir Flask uygulaması oluşturun](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+* [Öğretici: konuşma SDK 'Sı ve LUSıS ile konuşma amaçlarını tanımaC#](how-to-recognize-intents-from-speech-csharp.md)
+* [Öğretici: konuşma SDK 'Sı ile sesinizi etkinleştirme,C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Öğretici: metin çevirmek, yaklaşımı çözümlemek ve çevrilmiş metni konuşmaya dönüştürmek için bir Flask uygulaması oluşturun, REST](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
 ## <a name="get-sample-code"></a>Örnek kodu alma
 
@@ -86,16 +88,16 @@ Azure konuşma Hizmetleri yerleşik modellerle iyi çalışmaktadır, ancak ür�
 
 | Konuşma Hizmeti | Platform | Açıklama |
 |----------------|-------------|-------------|
-| Konuşmayı Metne Dönüştürme | [Özel konuşma tanıma](https://aka.ms/customspeech) | Konuşma tanıma modellerini gereksinimlerinize ve kullanılabilir verilerinize göre özelleştirin. Konuşma tarzı, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerini aşın. |
+| Konuşmayı Metne Dönüştürme | [Özel Konuşma Tanıma](https://aka.ms/customspeech) | Konuşma tanıma modellerini gereksinimlerinize ve kullanılabilir verilerinize göre özelleştirin. Konuşma tarzı, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerini aşın. |
 | Metin Okuma | [Özel ses](https://aka.ms/customvoice) | Konuşma verileriniz kullanılabilir olduğunda, metinden konuşmaya uygulamanız için tanınabilir, tek bir tür sesi oluşturun. Ses çıkışlarını bir dizi parametre kümesini ayarlayarak daha fazla hassas ayarlamalar yapabilirsiniz. |
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
 * [Konuşma SDK'sı](speech-sdk-reference.md)
 * [Konuşma cihazları SDK 'Sı](speech-devices-sdk.md)
-* [REST API: Konuşmayı metne dönüştürme](rest-speech-to-text.md)
-* [REST API: Metin okuma](rest-text-to-speech.md)
-* [REST API: Toplu iş dökümü ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
+* [REST API: konuşmayı metne dönüştürme](rest-speech-to-text.md)
+* [REST API: metinden konuşmaya](rest-text-to-speech.md)
+* [REST API: toplu Iş dökümü ve özelleştirme](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

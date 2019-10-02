@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2019
 ms.author: rogirdh
-ms.openlocfilehash: eb5d03d50a99978e4f3ee58fba206dd730f7d5fe
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 63543c0ac34536b736bd4b8cdbd47fdd98e9f9be
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100132"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802203"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure ile Oracle bulut altyapısı arasında doğrudan bir iç bağlantı kurma  
 
 [Tümleşik bir çok kiracılı deneyim](oracle-oci-overview.md) (Önizleme) oluşturmak için Microsoft ve Oracle, [ExpressRoute](../../../expressroute/expressroute-introduction.md) ve [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)aracılığıyla Azure ile Oracle bulut altyapısı (OCI) arasında doğrudan bağlantı sağlar. ExpressRoute ve FastConnect bağlantısı aracılığıyla müşteriler, iki bulut arasında düşük gecikme süresi, yüksek aktarım hızı, özel doğrudan bağlantı ile karşılaşabilir.
 
 > [!IMPORTANT]
-> Microsoft Azure ile OCı arasındaki bağlantı önizleme aşamasındadır. Azure ile OCı arasında düşük gecikme süresi bağlantısını etkinleştirmek için, Azure aboneliğinizin bu özellik için önce beyaz listelenmesi gerekir. Bu kısa [anket formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)tamamlayarak önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Ayrıca, bu önizleme için etkinleştirilecek Microsoft temsilcinize de başvurabilirsiniz. Önizleme özelliğine erişim, Microsoft 'un kendi takdirine bağlı olarak kullanılabilirliğine ve kısıtlanmasını sağlar. Anketin tamamlanması erişimi garanti etmez. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure önizlemeleri için [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bölümüne bakın. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> Microsoft Azure ile OCı arasındaki bağlantı önizleme aşamasındadır. Azure ile OCı arasında düşük gecikmeli bağlantı kurmak için, bu özellik için önce Azure aboneliğinizin etkinleştirilmesi gerekir. Bu kısa [anket formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)tamamlayarak önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Onay e-postası alınana kadar özelliği kullanamazsınız. Ayrıca, bu önizleme için etkinleştirilecek Microsoft temsilcinize de başvurabilirsiniz. Önizleme özelliğine erişim, Microsoft 'un kendi takdirine bağlı olarak kullanılabilirliğine ve kısıtlanmasını sağlar. Anketin tamamlanması erişimi garanti etmez. Bu önizleme, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure önizlemeleri için [ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bölümüne bakın. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış gösterilmektedir:
 
@@ -37,7 +37,7 @@ Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış g�
 
 * Yalnızca bir Azure ExpressRoute eşleme konumunun, OCı FastConnect ile aynı eşleme konumuna eşit olduğu durumlarda bağlantı kurulabilir. Bkz. [Önizleme sınırlamaları](oracle-oci-overview.md#preview-limitations).
 
-* Azure aboneliğiniz bu önizleme özelliği için beyaz listeye eklenmelidir.
+* Bu önizleme özelliği için Azure aboneliğinizin etkinleştirilmesi gerekir.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>ExpressRoute ve FastConnect arasında doğrudan bağlantı yapılandırma
 
@@ -45,7 +45,7 @@ Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış g�
     * ExpressRoute oluştururken, hizmet sağlayıcı olarak **Oracle Cloud FastConnect** ' i seçin. ExpressRoute bağlantı hattı oluşturmak için, bkz. adım adım [Kılavuzu](../../../expressroute/expressroute-howto-circuit-portal-resource-manager.md).
     * Azure ExpressRoute bağlantı hattı, ayrıntılı bant genişliği seçenekleri sunar, ancak FastConnect 1, 2, 5 veya 10 Gbps 'yi destekler. Bu nedenle, ExpressRoute altındaki bu eşleşen bant genişliği seçeneklerinden birini seçmeniz önerilir.
 
-    ![ExpressRoute bağlantı hattı oluştur](media/configure-azure-oci-networking/exr-create-new.png)
+    ![ExpressRoute devresi oluşturma](media/configure-azure-oci-networking/exr-create-new.png)
 1. ExpressRoute **hizmet anahtarınızı**aklınızda edin. FastConnect devrenizi yapılandırırken anahtarı sağlamanız gerekir.
 
     ![ExpressRoute hizmet anahtarı](media/configure-azure-oci-networking/exr-service-key.png)
@@ -57,13 +57,13 @@ Aşağıdaki görüntüde, iç bağlantı için üst düzey bir genel bakış g�
 1. Dinamik yönlendirme ağ geçidi (DRG) oluşturun. FastConnect devrenizi oluştururken buna ihtiyacınız olacak. Daha fazla bilgi için bkz. [dinamik yönlendirme ağ geçidi](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) belgeleri.
 1. Oracle kiracınız kapsamında bir FastConnect devresi oluşturun. Daha fazla bilgi için [Oracle belgelerine](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)bakın.
   
-    * FastConnect yapılandırması altında Microsoft Azure ' **yi seçin: Sağlayıcı olarak** ExpressRoute.
+    * FastConnect yapılandırması altında **Microsoft Azure: sağlayıcı olarak ExpressRoute** ' u seçin.
     * Önceki adımda sağladığınız dinamik yönlendirme ağ geçidini seçin.
     * Sağlanacak bant genişliğini seçin. En iyi performans için, bant genişliğinin ExpressRoute bağlantı hattı oluşturulurken seçilen bant genişliğiyle eşleşmesi gerekir.
     * **Sağlayıcı hizmet anahtarı**' nda ExpressRoute hizmet anahtarını yapıştırın.
     * **BIRINCIL BGP IP adresi** ve **İkincil BGP IP** adresi için ıkıncı/30 özel IP adresi alanı için önceki bir adımda yer alan Ilk/30 özel IP adresi alanını kullanın.
         * Oracle BGP IP adresi (birincil ve ikincil) için iki aralığın ilk kullanışlı adresini ve ikinci adresi Müşteri BGP IP adresine (FastConnect perspektifinden) atayın. İlk kullanılan IP adresi/30 adres alanındaki ikinci IP adresidir (ilk IP adresi Microsoft tarafından ayrılmıştır).
-    * **Oluştur**'a tıklayın.
+    * **Oluştur**’a tıklayın.
 1. Yönlendirme tablosunu kullanarak, dinamik yönlendirme ağ geçidi aracılığıyla Oracle kiracınız kapsamındaki sanal bulut ağına FastConnect bağlantısını tamamen yapın.
 1. Azure 'a gidin ve ExpressRoute devrenizin **sağlayıcının durumunun** **sağlandı** olarak değiştirildiğinden ve **Azure Private** türünde bir eşlemenin sağlandığından emin olun. Bu, aşağıdaki adımlarla ilgili bir önkoşul değildir.
 
