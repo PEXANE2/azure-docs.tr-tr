@@ -259,7 +259,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
 ## <a name="monitor-incoming-email"></a>Gelen e-postayı izleme
 
-1. Tasarımcının arama kutusuna filtre olarak "yeni e-posta geldiğinde" öğesini seçin. E-posta sağlayıcınız için bu tetikleyiciyi seçin: **Yeni bir e-posta geldiğinde-*e-posta-sağlayıcınızı* <>**
+1. Tasarımcının arama kutusuna filtre olarak "yeni e-posta geldiğinde" öğesini seçin. E-posta sağlayıcınız için bu tetikleyiciyi seçin: **Yeni bir e-posta geldiğinde <*e-posta-sağlayıcınızı*>**
 
    Örneğin:
 

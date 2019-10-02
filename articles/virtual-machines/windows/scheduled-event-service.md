@@ -164,7 +164,7 @@ Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için
 1. **Eylemler**altında **eylem grubu oluştur**' u seçin. **Eylem grubu Ekle** sayfası açılır.
 1. **Eylem grubu adı**' nda, *Myactiongroup*yazın.
 1. **Kısa ad**alanına **Myactiongroup**yazın.
-1. **Kaynak grubu**' nda * myResourceGroupAvailability * * seçeneğini belirleyin.
+1. **Kaynak grubu**' nda *myResourceGroupAvailability* * seçeneğini belirleyin.
 1. Eylemler ' in altında, **eylem adı** tür **e-** postası ' na ve ardından **e-posta/SMS/Push/ses** **E-posta/SMS/Push/ses** sayfası açılır.
 1. **E-posta**seçeneğini belirleyin, e-posta adresinizi yazın ve **Tamam**' ı seçin.
 1. **Eylem grubu Ekle** sayfasında **Tamam**' ı seçin. 

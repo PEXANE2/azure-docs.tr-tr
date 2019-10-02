@@ -94,8 +94,8 @@ Kullanıcılar, düzenli cihazlarda yapılandırılabilir gün sayısı için ik
 3. Sağ tarafta, araç çubuğunda **Multi-Factor Authentication** ' yi seçin. Multi-Factor Authentication sayfası açılır.
 4. Yönetmek istediğiniz kullanıcı veya kullanıcıların yanındaki kutuyu işaretleyin. Sağ tarafta hızlı adım seçeneklerinin bir listesi görüntülenir.
 5. **Kullanıcı ayarlarını yönet**' i seçin.
-6. 
-    **Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ı geri yükle**kutusunu işaretleyin Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ıgeriyükleyin![](./media/howto-mfa-userdevicesettings/rememberdevices.png)
+6. **Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ı geri yükle**kutusunu işaretleyin 
+   ![Tüm hatırlanan cihazlarda Multi-Factor Authentication 'ıgeriyükleyin](./media/howto-mfa-userdevicesettings/rememberdevices.png)
 7. **Kaydet**’e tıklayın.
 8. **Kapat**' a tıklayın.
 

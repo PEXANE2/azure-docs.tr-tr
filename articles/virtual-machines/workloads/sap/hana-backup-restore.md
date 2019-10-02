@@ -330,7 +330,7 @@ Betiği bu ayarla çalıştırırsanız, yeni depolama anlık görüntüsünü i
  >[!NOTE]
  > Bu betik, yalnızca bir saatten daha eski anlık görüntüler varsa, anlık görüntü sayısını azaltır. Betik, bir saatten daha eski olan anlık görüntüleri silmez. Bu kısıtlamalar, sunulan isteğe bağlı olağanüstü durum kurtarma işleviyle ilgilidir.
 
-Bir anlık görüntü kümesini artık, ** Yedekleme ön eki ile korumak istemiyorsanız , komut dosyasını saklama numarası olarak **0** ile çalıştırın. Bu etiketle eşleşen tüm anlık görüntüler daha sonra kaldırılır. Tüm anlık görüntülerin kaldırılması, HANA büyük örnek olağanüstü durum kurtarma işlevinin yeteneklerini etkileyebilir.
+Bir anlık görüntü kümesini artık, **Yedekleme ön eki ile korumak istemiyorsanız** , komut dosyasını saklama numarası olarak **0** ile çalıştırın. Bu etiketle eşleşen tüm anlık görüntüler daha sonra kaldırılır. Tüm anlık görüntülerin kaldırılması, HANA büyük örnek olağanüstü durum kurtarma işlevinin yeteneklerini etkileyebilir.
 
 Belirli anlık görüntüleri silmek için ikinci bir seçenek betiği `azure_hana_snapshot_delete`kullanmaktır. Bu betik, HANA Studio 'da bulunan ya da anlık görüntü adının kendisi aracılığıyla HANA yedekleme KIMLIĞI kullanılarak bir anlık görüntüyü veya anlık görüntü kümesini silmek için tasarlanmıştır. Şu anda yedekleme KIMLIĞI yalnızca **Hana** anlık görüntü türü için oluşturulan anlık görüntülere bağlıdır. Tür **günlüklerinin** anlık görüntü yedeklemeleri ve **önyüklemesi** SAP HANA bir anlık görüntü gerçekleştirmez, bu nedenle bu anlık görüntüler için hiçbir yedekleme kimliği bulunamadı. Anlık görüntü adı girilirse, girilen anlık görüntü adıyla eşleşen farklı birimlerdeki tüm anlık görüntüleri arar. 
 

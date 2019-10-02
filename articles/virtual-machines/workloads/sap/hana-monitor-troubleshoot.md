@@ -129,7 +129,7 @@ SAP HANA Studio 'da, **sistem bilgileri** sekmesinde **ad** sütununa sağ tıkl
 
 Yerel olarak depolanan SQL deyimlerini. zip dosyasını seçin ve karşılık gelen SQL deyimlerine sahip bir klasör içeri aktarılır. Bu noktada, birçok farklı tanılama denetimi bu SQL deyimleriyle çalıştırılabilir.
 
-Örneğin, SAP HANA sistem çoğaltması bant genişliği gereksinimlerini test etmek için, çoğaltma altındaki  ****bant genişliği** bildirimine sağ tıklayın: Bant** genişliği ve SQL konsolunda **Aç** ' ı seçin.
+Örneğin, SAP HANA sistem çoğaltması bant genişliği gereksinimlerini test etmek için, çoğaltma altındaki **bant genişliği** bildirimine sağ **tıklayın: Bant** genişliği ve SQL konsolunda **Aç** ' ı seçin.
 
 Tüm SQL deyimleri, giriş parametrelerinin (değiştirme bölümü) değiştirilmesine ve sonra yürütülmesine izin vererek açılır.
 
