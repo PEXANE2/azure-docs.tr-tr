@@ -261,6 +261,8 @@
       items:
         - name: Python’da ML işlem hatları oluşturma
           href: how-to-create-your-first-pipeline.md
+        - name: ML işlem hatlarında hata ayıklama ve sorun giderme
+          href: how-to-debug-pipelines.md
         - name: CI/CD için Azure Pipelines
           displayName: 'continuous, integration, delivery'
           href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context

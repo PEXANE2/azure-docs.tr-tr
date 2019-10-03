@@ -72,7 +72,7 @@
   items:
     - name: Sınıf laboratuvarları - sınıf türleri
       items:
-        - name: Sınıf türleri
+        - name: Sınıf türlerine genel bakış
           href: classroom-labs/class-types.md
         - name: Doğal işleme içinde derin öğrenme
           href: classroom-labs/class-type-deep-learning-natural-processing.md
@@ -220,6 +220,8 @@
               href: connect-environment-lab-virtual-network.md
             - name: İç içe şablonlarla test ortamlarını yapılandırma
               href: deploy-nested-template-environments.md
+            - name: Ortamları dağıtmak için Azure yönetilen kimliklerini kullanma
+              href: use-managed-identities-environments.md
         - name: Yeniden kullanılabilir şablonları yönetme
           items:
             - name: Özel görüntülerle formülleri karşılaştırma

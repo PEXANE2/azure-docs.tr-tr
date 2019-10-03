@@ -65,8 +65,10 @@
           href: known-issues-azure-sql-online.md
         - name: Bilinen Sorunlar - MySQL için Azure DB’ye çevrimiçi geçiş
           href: known-issues-azure-mysql-online.md
-        - name: Bilinen Sorunlar - PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçiş
+        - name: Bilinen Sorunlar - PostgreSQL'den PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçiş
           href: known-issues-azure-postgresql-online.md
+        - name: Bilinen Sorunlar - Oracle'dan PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçiş
+          href: known-issues-oracle-azure-postgresql-online.md
     - name: Videolar
       items:
         - name: Veritabanı Geçiş Kılavuzu’nu kullanma

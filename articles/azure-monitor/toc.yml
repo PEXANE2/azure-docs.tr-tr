@@ -830,6 +830,8 @@
                   href: log-query/app-expression.md
                 - name: çalışma alanı ifadesi
                   href: log-query/workspace-expression.md
+                - name: kaynak ifadesi
+                  href: log-query/resource-expression.md
                 - name: Uygulama veri kaynaklarını birleştirme
                   href: log-query/unify-app-resource-data.md
             - name: Örnekler ve yönergeler

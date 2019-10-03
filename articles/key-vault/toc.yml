@@ -66,12 +66,12 @@
       items:
         - name: Güvenliğe genel bakış
           href: overview-security.md
-        - name: Yerleşik güvenlik denetimleri
-          href: key-vault-security-controls.md
         - name: Güvenlik dünyaları
           href: key-vault-ovw-security-worlds.md
         - name: Anahtar kasanızın güvenliğini sağlama
           href: key-vault-secure-your-key-vault.md
+        - name: Yerleşik güvenlik denetimleri
+          href: key-vault-security-controls.md
     - name: Geçici silme
       href: key-vault-ovw-soft-delete.md
     - name: Azaltma
@@ -98,8 +98,12 @@
       items:
         - name: Öneriler
           href: security-recommendations.md
-    - name: App Service yönetilen kimlik kullanma
-      href: managed-identity.md
+    - name: Kimlik Doğrulaması
+      items:
+        - name: App Service yönetilen kimlik kullanma
+          href: managed-identity.md
+        - name: Erişim denetimi ilkesi kullanma
+          href: key-vault-group-permissions-for-apps.md
     - name: Azure Key Vault günlüğü
       href: key-vault-logging.md
     - name: Güvenlik duvarı arkasına erişme
@@ -114,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: Anahtar Kasası geçici silmeyi Azure PowerShell ile kullanma
       href: key-vault-soft-delete-powershell.md
-    - name: Erişim vermek için grupları kullanma
-      href: key-vault-group-permissions-for-apps.md
     - name: Güvenlik duvarlarını ve sanal ağları yapılandırma
       href: key-vault-network-security.md
     - name: Java geliştirme

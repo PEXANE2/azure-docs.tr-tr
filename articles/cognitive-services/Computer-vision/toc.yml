@@ -113,7 +113,7 @@
       href: concept-generating-thumbnails.md
     - name: Yazdırılmış ve el yazısı ile yazılan metinleri tanıma
       href: concept-recognizing-text.md
-    - name: Yetişkinlere yönelik ve müstehcen içerikleri algılama
+    - name: Yetişkinlere yönelik içeriği algılama
       href: concept-detecting-adult-content.md
 - name: Nasıl yapılır kılavuzları
   items:

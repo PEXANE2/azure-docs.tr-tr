@@ -47,6 +47,8 @@
       href: manage-cli.md
     - name: PowerShell kullanarak konsorsiyum yönetme
       href: manage-consortium-powershell.md
+    - name: Logic Apps kullanma
+      href: ethereum-logic-app.md
 - name: Kaynaklar
   items:
     - name: Blok Zinciri REST API

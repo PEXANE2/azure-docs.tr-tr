@@ -4,10 +4,12 @@
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Veri Bilimi Sanal Makineleri nedir?
+    - name: Veri Bilimi Sanal Makinesi (DSVM) nedir?
       href: overview.md
     - name: Coğrafi Yapay Zeka DSVM’si nedir?
       href: geo-ai-dsvm-overview.md
+    - name: DSVM'ye Dahil Edilen Araçlar
+      href: tools-included.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

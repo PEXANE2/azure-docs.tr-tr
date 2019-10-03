@@ -7,6 +7,12 @@
       items:
         - name: Linux kapsayıcısında web uygulaması
           href: secure-web-app.md
+        - name: Azure Active Directory ile web uygulaması
+          href: secure-aad-app.md
+    - name: Endüstride uyumlu çözümler
+      items:
+        - name: Ödeme kartı endüstrisi
+          href: secure-pci-web-app.md
 - name: Kavramlar
   expanded: true
   items:

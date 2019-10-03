@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Soru-Cevap Oluşturma portalına soru ve yanıt ekleme'
+title: 'Hızlı başlangıç: Soru-Cevap Oluşturma portalına soru ve yanıt ekleme'
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/27/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc4548e0c07adc485d1bb5785179aeb7ea2f3fe1
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195697"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803540"
 ---
-# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı Başlangıç: Soru-Cevap Oluşturma Portal ile soru ve yanıt ekleme
+# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
 Bir Bilgi Bankası oluşturulduktan sonra, kullanıcılarınızın sorularını doğru yanıtı bulabilmesi için meta verilerle soru ve yanıt kümeleri ekleyin.
 
@@ -28,7 +28,7 @@ Doğru yanıt tek bir yanıttır ancak bir müşterinin söz konusu tek yanıta 
 <a name="qna-table"></a>
 
 
-|Küme|Sorular|Yanıt|Meta Veriler|
+|Ayarla|Sorular|Yanıt|Meta Veriler|
 |--|--|--|--|
 |1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Search tier supports.`|`service=search`<br>`link_in_answer=false`|
@@ -61,7 +61,7 @@ Bu URL içeri aktarıldığında, yalnızca bir yanıtla birlikte tek bir soru o
 
 Bu yordamda, ek sorular ekleyin.
 
-1. **Düzenleme** sayfasında, soruyu bulmak için soru ve yanıt kümelerinin üzerindeki arama metin kutusunu kullanın`How large a knowledge base can I create?`
+1. **Düzenleme** sayfasında, soru-cevap kümelerinin üzerindeki arama metin kutusunu kullanın `How large a knowledge base can I create?` sorusunu bulun.
 
 1. **Soru** sütununda **+ Alternatif ifade Ekle** ' yi seçin ve aşağıdaki tabloda belirtilen her yeni bir ifade ekleyin.
 
@@ -76,7 +76,7 @@ Bu yordamda, ek sorular ekleyin.
 
     `What GB size can a knowledge base be?`
 
-    Doğru yanıt markaşağı biçiminde döndürülür:`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    Doğru yanıt markaşağı biçiminde döndürülür: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
     Döndürülen yanıtın altında **İncele** ' yi seçerseniz, soruyu karşılayan daha fazla yanıt görebilirsiniz, ancak aynı yüksek düzeyde güvenle bilgi alabilirsiniz. 
 
@@ -86,20 +86,20 @@ Bu yordamda, ek sorular ekleyin.
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Yanıtları filtrelemek için meta veriler ekleyin
 
-Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrelenmiş yanıtlar istemesine izin verir. Bu filtre, [ilk ve ikinci](../concepts/knowledge-base.md#ranker-process) ranranlar uygulanmadan önce uygulanır.
+Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrelenmiş yanıtlar istemesine izin verir. Bu filtre, [ilk ve ikinci ranranlar](../concepts/knowledge-base.md#ranker-process) uygulanmadan önce uygulanır.
 
 1. İkinci soruyu ve yanıt kümesini meta veriler olmadan, [Bu hızlı başlangıçtaki ilk tablodan](#qna-table)ekleyin ve ardından aşağıdaki adımlarla devam edin. 
 
 1. **Görünüm seçeneklerini**belirleyin ve **meta verileri göster**' i seçin. 
 
-1. Az önce eklediğiniz soru ve yanıt kümesi için **meta veri etiketleri Ekle**' yi seçin, sonra adı `service` `service:search`ve değeri `search`ekleyin.
+1. Az önce eklediğiniz soru ve yanıt kümesi için **meta veri etiketleri Ekle**' yi seçin, ardından `service` ve değer `search` `service:search` değerini ekleyin.
 
-1. Adı `link_in_answer` ve `false`değeri olanbaşkabirmeta`link_in_answer:false`veri etiketi ekleyin.
+1. Adı `link_in_answer` ve değeri `false` `link_in_answer:false` olan başka bir meta veri etiketi ekleyin.
 
 1. Tablodaki ilk yanıtı arayın, `How large a knowledge base can I create?`. 
 1. Aynı iki meta veri etiketi için meta veri çiftleri ekleyin:
 
-    `link_in_answer` : `true`<br>
+    `link_in_answer`: `true`<br>
     `server`: `qna_maker`
 
     Artık, farklı değerlerle aynı meta veri etiketlerine sahip iki sorunuz vardır. 
@@ -121,7 +121,7 @@ Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrele
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Sorunun yalnızca tek bir kelime `size`olduğunu ve bu da soru ve yanıt kümesi döndürebileceğini fark edebilirsiniz. Dizi, yanıta `qna_maker` yalnızca yanıtları azaltmasını söyler. `strictFilters` 
+    Sorunun yalnızca tek bir kelime olan `size` olduğunu ve soru ve yanıt kümesi döndürebileceğini unutmayın. @No__t-0 dizisi, yanıta yalnızca `qna_maker` yanıtlarına azaltmasını söyler. 
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
@@ -162,7 +162,7 @@ Bir soru ve yanıt kümesine meta veri eklemek, istemci uygulamanızın filtrele
     }
     ```
 
-    Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt kümesi varsa, bu geri döndürülemez. Bunun yerine, genel yanıt `No good match found in KB.` döndürülür.
+    Arama terimini karşılamayan ancak filtreye uyan bir soru ve yanıt kümesi varsa, bu geri döndürülemez. Bunun yerine, `No good match found in KB.` genel cevabı döndürülür.
 
     Meta veri adınızı ve değer çiftlerini gerekli limitlerin içinde tutduğunuzdan emin olun. 
 

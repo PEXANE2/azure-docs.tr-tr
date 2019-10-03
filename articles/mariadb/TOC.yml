@@ -4,6 +4,8 @@
   items:
     - name: MySQL için Azure DB nedir?
       href: overview.md
+    - name: Hangi MariaDB seçeneğini kullanmalıyım?
+      href: select-right-deployment-type.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

@@ -1,42 +1,41 @@
 ---
-title: Yetişkin ve kcy içeriği-Görüntü İşleme
+title: Yetişkin, korcy, Gori içeriği-görüntü işleme
 titleSuffix: Azure Cognitive Services
-description: Görüntü İşleme API 'sini kullanarak görüntülerde yetişkinlere ve kçsi içerikleri algılamayla ilgili kavramlar.
+description: Görüntü İşleme API 'sini kullanarak görüntülerde yetişkinlere yönelik içeriği algılamayla ilgili kavramlar.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ca5f35ab47822d74de556671c38886942d23d9ff
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946274"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718524"
 ---
-# <a name="detect-adult-and-racy-content"></a>Yetişkin ve kcy içeriğini algılama
+# <a name="detect-adult-content"></a>Yetişkin içeriğini algıla
 
-Görüntü İşleme, geliştiricilerin yazılımında bu görüntülerin görüntülenmesini kısıtlayabilmeleri için resimlerde yetişkinlere yönelik malzemeleri algılayabilir. İçerik bayrakları, geliştiricilerin sonuçları kendi tercihlerine göre yorumlayabilmesi için sıfır ile diğeri arasında bir puan ile uygulanır. 
+Görüntü İşleme, geliştiricilerin bu görüntülerin yazılımda görüntülenmesini kısıtlayabilmeleri için resimlerde yetişkinlere yönelik malzemeleri algılayabilir. İçerik bayrakları, geliştiricilerin sonuçları kendi tercihlerine göre yorumlayabilmesi için sıfır ile diğeri arasında bir puan ile uygulanır.
 
 > [!NOTE]
-> Bu özellik [Azure Content moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) hizmeti tarafından da sunulur. Metin denetleme ve insan incelemesi iş akışları gibi daha ayrıntılı içerik denetleme senaryolarına yönelik çözümler için bu alternatif bölümüne bakın.
+> Bu işlevlerin çoğu [Azure Content moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) hizmeti tarafından sunulur. Metin denetleme ve insan incelemesi iş akışları gibi daha ayrıntılı içerik denetleme senaryolarına yönelik çözümler için bu alternatif bölümüne bakın.
 
 ## <a name="content-flag-definitions"></a>İçerik bayrağı tanımları
 
-**Yetişkinlere yönelik** görüntüler, pornografik olarak tanımlananlar ve genellikle çıplaklık ve cinsel işlemler belirleyen bir şekilde tanımlanır. 
+"Yetişkinlere yönelik" sınıflandırma içinde birkaç farklı kategoride:
 
-Kışkırtıcı görüntüler, açık cinsel içerikli görüntüler olarak tanımlanır ve genellikle **yetişkin**olarak etiketlenen görüntülerden daha az cinsel içerikli içerik içerir. 
+- **Yetişkinlere yönelik** görüntüler, doğası gereği açıkça cinsel ve genellikle çıplaklık ve cinsel işlemler belirleyen bir şekilde tanımlanır.
+- Kışkırtıcı görüntüler, açık cinsel **içerikli görüntüler olarak** tanımlanır ve genellikle **yetişkin**olarak etiketlenen görüntülerden daha az cinsel içerikli içerik içerir.
+- **Gory** görüntüleri, gore ' i belirleyen şekilde tanımlanır.
 
-## <a name="identify-adult-and-racy-content"></a>Yetişkin ve kcy içeriğini tanımla
+## <a name="use-the-api"></a>API’yi kullanma
 
-[Analiz](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'si.
+[Görüntü analizi](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 'siyle yetişkinlere yönelik içeriği algılayabilirsiniz. @No__t-0 değerini **Visualfeatures** sorgu parametresine EKLEDIĞINIZDE, API, JSON yanıtında @ no__t-2 @ no__t-3, `isRacyContent` ve `isGoryContent` @ no__t-6Üç Boole özelliği döndürür. Bu yöntem aynı zamanda, karşılık gelen her kategori için sıfır ile bir arasındaki güven puanlarını temsil eden @ no__t-0 @ no__t-1, `racyScore` ve `goreScore` @ no__t-4özelliklerine karşılık gelen özellikleri döndürür.
 
-Görüntüyü çözümle yöntemi, iki Boole özelliği, `isAdultContent` ve `isRacyContent`sırasıyla yetişkin ve kcy içeriğini göstermek için yönteminin JSON yanıtında. Yöntemi, Ayrıca, Yetişkin ve kcy `racyScore`içeriğini belirlemek için güven puanlarını temsil eden iki özellik `adultScore` de döndürür.
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-[Etki alanına özgü içeriği algılama](concept-detecting-domain-content.md) ve [yüzeyleri algılama](concept-detecting-faces.md)hakkında kavramlar öğrenin.
+- [Hızlı başlangıç: bir görüntüyü çözümleme (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [Hızlı başlangıç: bir görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)

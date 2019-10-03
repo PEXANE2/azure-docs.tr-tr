@@ -26,7 +26,7 @@ Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle, Micro
 
 Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1.  **AzurePortal**  genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
