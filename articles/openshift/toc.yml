@@ -14,6 +14,14 @@
           href: tutorial-scale-cluster.md
         - name: 3 - Azure Red Hat OpenShift kümesini silme
           href: tutorial-delete-cluster.md
+- name: Küme yönetimi
+  items:
+    - name: Azure Red Hat OpenShift kümesi yönetimi
+      items:
+        - name: 1 - Azure Red Hat OpenShift kümesi yönetici rolü
+          href: cluster-administration-cluster-admin-role.md
+        - name: 2 - Güvenlik bağlamı kısıtlamalarını yönetme
+          href: cluster-administration-security-context-constraints.md
 - name: Nasıl yapılır kılavuzları
   expanded: true
   items:
