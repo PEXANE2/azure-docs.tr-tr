@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/30/2019
 ms.author: diberry
-ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: bad581fbc53292b5a7c25157ef839e07f33e131e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962510"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827887"
 ---
 # <a name="personalizer-settings"></a>Kişiselleştirici ayarları
 
@@ -31,7 +31,7 @@ Her geri bildirim döngüsü için bir kişiselleştirici kaynağı oluşturun.
 
 ## <a name="configure-service-settings-in-the-azure-portal"></a>Azure portal hizmet ayarlarını yapılandırma
 
-1. [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) oturum açın.
+1. [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)’ında oturum açın.
 1. Kişiselleştirici kaynağını bulun. 
 1. **Kaynak yönetimi** bölümünde **Ayarlar**' ı seçin.
 
@@ -45,7 +45,7 @@ Geri bildirim döngünüz için hizmetin ayarlarını yapılandırın. Aşağıd
 
 |Ayar|Amaç|
 |--|--|
-|Bekleme süresi|Bir derecelendirme çağrısı için Kişiselleştiriciye ait değer toplama işleminin ne kadar süre olacağını belirleyen süreyi ayarlar. Bu değer, şunu sorarak ayarlanır: "Kişiselleştirici, yeniden ödüller için ne kadar bekleneceği?" Bu pencere günlüğe yazılır, ancak öğrenimi için kullanılmaz.|
+|Bekleme süresi|Bir derecelendirme çağrısı için Kişiselleştiriciye ait değer toplama işleminin ne kadar süre olacağını belirleyen süreyi ayarlar. Bu değer şu sorarak ayarlanır: "kişiselleştirici, yeniden ödüller için ne kadar bekleneceği?" Bu pencere günlüğe yazılır, ancak öğrenimi için kullanılmaz.|
 |Varsayılan değer|Bir derecelendirme çağrısıyla ilişkili bir yeniden bekleme süresi penceresi sırasında kişiselleştirici tarafından hiçbir yeniden çağrı alınmıyorsa, kişiselleştirici varsayılan bir ödül atar. Varsayılan olarak ve çoğu senaryoda varsayılan değer sıfırdır.|
 |Yeniden toplama|Aynı derecelendirme API çağrısı için birden fazla yeniden yer alınmışsa, bu toplama yöntemi kullanılır: **Sum** veya **en erken**. En erken alınan puanı seçer ve kalanı atar. Muhtemelen yinelenen çağrılar arasında benzersiz bir ödül istiyorsanız bu yararlı olur. |
 
@@ -87,6 +87,21 @@ Bu ayarı değiştirdikten sonra **Kaydet**' i seçtiğinizden emin olun.
 
 **Model ve ilke**için kaynak yönetiminin bölümünde yeni bir öğrenme ilkesi içeri aktarın veya geçerli öğrenme ilkesini dışarı aktarın.
 Önceki dışarı aktarımlardan öğrenme ilkesi dosyalarını alabilir veya çevrimdışı değerlendirmeler sırasında bulunan en iyi duruma getirilmiş ilkeleri karşıdan yükleyebilirsiniz. Bu dosyalarda el ile yapılan değişikliklerin yapılması, makine öğrenimi performansını ve çevrimdışı değerlendirmelerinin doğruluğunu etkiler ve Microsoft, makine öğrenimi ve değerlendirmelerinin doğruluğunu veya el ile düzenlenen ilkelerden kaynaklanan hizmet özel durumlarını da aşamaz.
+
+## <a name="clear-data-for-your-learning-loop"></a>Öğrenme döngünüz için verileri temizleme
+
+1. Azure portal, kişiselleştirici kaynağınız için **model ve ilke** sayfasında, **verileri temizle**' yi seçin.
+1. Tüm verileri temizlemek ve öğrenme döngüsünü özgün durumuna sıfırlamak için 3 onay kutusunu seçin.
+
+    ![Azure portal, kişiselleştirici kaynaktaki verileri temizleyin.](./media/settings/clear-data-from-personalizer-resource.png)
+
+    |Ayar|Amaç|
+    |--|--|
+    |Günlüğe kaydedilen kişiselleştirme ve yeniden dengeleme verileri.|Bu günlüğe kaydetme verileri, çevrimdışı değerlendirmelere göre kullanılır. Kaynağı sıfırlarken verileri temizleyin.|
+    |Kişiselleştirici modelini sıfırlayın.|Bu model her yeniden eğitimine göre değişir. Bu eğitim frekansı, **Ayarlar** sayfasında **model yükleme sıklığı** ' nda belirtilmiştir. |
+    |Öğrenme ilkesini varsayılan olarak ayarlayın.|Öğrenme ilkesini çevrimdışı değerlendirmenin bir parçası olarak değiştirdiyseniz, bu, özgün öğrenme ilkesine sıfırlanır.|
+
+1. Temizleme işlemini başlatmak için **seçili verileri temizle** ' yi seçin. Durum, Azure bildirimlerinde sağ üst gezinti bölmesinde raporlanır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

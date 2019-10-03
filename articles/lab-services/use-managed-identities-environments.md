@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
-ms.openlocfilehash: fc06d5d36cb6004c79bec79838c8f0d51961d560
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
-ms.translationtype: HT
+ms.openlocfilehash: d1dd059f1a6f9ce96b27d4fe1f214978dfc06a8f
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720150"
+ms.locfileid: "71815994"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Laboratuvar ortamında ortamları dağıtmak için Azure yönetilen kimliklerini kullanma 
 Laboratuvar sahibi olarak, bir laboratuvarda ortamları dağıtmak için yönetilen bir kimlik kullanabilirsiniz. Bu özellik, ortamda Anahtar Kasası, paylaşılan görüntü galerileri ve ortamın kaynak grubu dışındaki ağlar gibi Azure kaynaklarına başvuru içeren veya bu kaynaklara sahip olan senaryolarda faydalıdır. Bu ortamın kaynak grubuyla sınırlı olmayan korumalı alan ortamları oluşturulmasına olanak sağlar.
@@ -54,7 +54,7 @@ Laboratuvara atanan kullanıcı tarafından yönetilen kimliği değiştirmek i�
 1. Kimlik oluşturduktan sonra, bu kimliğin kaynak KIMLIĞI ' ni aklınızda edin. Aşağıdaki örnekteki gibi görünmelidir: 
 
     `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
-1. **Fiddler**'ı kullanarak, aşağıdaki örneğe benzer bir put komutu çalıştırın. Hizmet Çalıştırıcısı adı için istediğiniz herhangi bir adı belirtebileceğiniz halde kimliğin adını kullanmanızı öneririz. 
+1. Laboratuvara aşağıdaki örneğe benzer yeni bir `ServiceRunner` kaynağı eklemek için bir PUT https yöntemi gerçekleştirin. Hizmet Çalıştırıcısı kaynağı, DevTest Labs 'de yönetilen kimlikleri yönetmek ve denetlemek için bir ara sunucu kaynağıdır. Hizmet Çalıştırıcısı adı geçerli bir ad olabilir, ancak yönetilen kimlik kaynağının adını kullanmanızı öneririz. 
  
     ```json
     PUT https://management.azure.com/subscriptions/{subId}/resourceGroups/{rg}/providers/Microsoft.Devtestlab/labs/{yourlabname}/serviceRunners/{serviceRunnerName}

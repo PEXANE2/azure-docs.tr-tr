@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 0ae2b695a64e55b493453549627860872166ed25
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202491"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71822286"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde disk şifrelemeyi uygulama
 Azure Güvenlik Merkezi, Azure disk şifrelemesi kullanılarak şifrelenmeyen Windows veya Linux VM disklerinizde bulunan disk şifrelemeyi uygulamanızı önerir. Disk şifrelemesi, Windows ve Linux IaaS VM disklerini şifrelemenize olanak tanır.  Şifreleme hem işletim sistemi hem de VM’nizin üzerindeki veri birimleri için önerilir.
@@ -43,15 +43,15 @@ Disk şifrelemesi Windows 'un sektör standardı [BitLocker](https://technet.mic
 * Azure disk şifrelemesi önkoşulları Azure PowerShell betiği edinin ve çalıştırın.
 * Sanal makinelerinizi şifreleyin.
 
-[Windows IaaS VM 'sini Azure PowerShell Ile şifreleme](../security/azure-disk-encryption-linux-powershell-quickstart.md) , bu adımlarda size yol gösterir. Bu konu, disk şifrelemesini yapılandırdığınız bir Windows istemci makinesini kullandığınızı varsayar.
+[Windows IaaS VM 'sini Azure PowerShell Ile şifreleme](../virtual-machines/linux/disk-encryption-powershell-quickstart.md) , bu adımlarda size yol gösterir. Bu konu, disk şifrelemesini yapılandırdığınız bir Windows istemci makinesini kullandığınızı varsayar.
 
 Azure sanal makineleri için kullanılabilecek birçok yaklaşım vardır. Azure PowerShell veya Azure CLI konusunda zaten bilgiliyseniz alternatif yaklaşımlar kullanmayı tercih edebilirsiniz. Bu diğer yaklaşımlar hakkında bilgi edinmek için bkz. [Azure disk şifrelemesi](../security/azure-security-disk-encryption.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 Bu belge, güvenlik merkezi 'nin "disk şifrelemeyi uygulama" önerilerini nasıl uygulayacağınızı gösterdi. Disk şifrelemesi hakkında daha fazla bilgi edinmek için aşağıdakilere bakın:
 
-* [Azure Key Vault Ile şifreleme ve anahtar yönetimi](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 dakikalık 39 sn)--IaaS VM 'Leri için disk şifreleme yönetimi 'ni nasıl kullanacağınızı öğrenin ve verilerinizi korumaya ve korumaya yardımcı olmak için Azure Key Vault.
-* [Azure disk şifrelemesi](../security/azure-security-disk-encryption-overview.md) (belge)--Windows ve Linux VM 'Leri için disk şifrelemeyi etkinleştirmeyi öğrenin.
+* [Şifreleme ve anahtar yönetimi Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 dakikalık 39 sn)--verilerinizi korumaya ve korumaya yardımcı olmak Için IaaS VM 'leri için disk şifreleme yönetimi ve Azure Key Vault nasıl kullanacağınızı öğrenin.
+* [Azure disk şifrelemesi](../security/azure-security-disk-encryption-overview.md) (belge)-Windows ve Linux VM 'leri için disk şifrelemeyi etkinleştirmeyi öğrenin.
 
 Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7f47798ec3d0be8885853454ced8c1ea4c2a268c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 94e9a484afe42f8621380fa685f8bc9faeb894d3
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720381"
+ms.locfileid: "71816049"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -544,7 +544,15 @@ Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata g
 
 ## <a name="Issues"></a>Bilinen sorunlar
 
-### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongioing-database-restore"></a>Hizmet katmanını değiştirme ve örnek oluşturma işlemleri, ongiining veritabanı geri yüklemesi tarafından engelleniyor
+### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Boş olmayan bir dosya kaldırılmaya çalışılırken hatalı hata döndürüldü
+
+**Tarih:** Eki 2019
+
+SQL Server/yönetilen örnek [, kullanıcının boş olmayan bir dosyayı bırakmaya izin vermez](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database.md#Prerequisites). Boş olmayan bir veri dosyasını `ALTER DATABASE REMOVE FILE` ifadesini kullanarak kaldırmaya çalışırsanız, `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` hatası hemen döndürülmeyecektir. Yönetilen örnek dosyayı bırakmaya devam eder ve `Internal server error` ile 30 dakika sonra işlem başarısız olur.
+
+**Geçici çözüm**: `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` komutunu kullanarak dosyanın içeriğini kaldırın. Dosya grubunda tek dosya varsa, dosyayı daralmadan önce bu dosya grubuyla ilişkili tablodan veya bölümden verileri silmeniz ve isteğe bağlı olarak bu verileri başka bir tabloya/bölüme yüklemeniz gerekir.
+
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Hizmet katmanını değiştirme ve örnek oluşturma işlemleri sürekli veritabanı geri yükleme tarafından engelleniyor
 
 **Tarih:** Eyl 2019
 
