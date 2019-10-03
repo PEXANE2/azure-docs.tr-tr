@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Java ile Azure IoT Hub bir cihazı denetleme'
+title: 'Hızlı başlangıç: Java ile Azure IoT Hub bir cihazı denetleme'
 description: Bu hızlı başlangıçta iki örnek Java uygulaması çalıştıracaksınız. Bir uygulama, hub’ınıza bağlı cihazları uzaktan denetleyebilen bir arka uç uygulamasıdır. Diğer uygulama, uzaktan denetlenebilen hub’ınıza bağlanan bir cihazın simülasyonunu yapar.
 author: wesmc7777
 manager: philmea
@@ -10,14 +10,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: 9fb110eff1d498b2b20952048759c76a2dac39f2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f59a3409d508c63f232294d8d66ade5669815b3c
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306479"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843376"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Hızlı Başlangıç: Java ile Azure IoT Hub 'ına bağlı bir cihazı denetleme
+# <a name="quickstart-control-a-device-connected-to-an-azure-iot-hub-with-java"></a>Hızlı başlangıç: Java ile Azure IoT Hub 'ına bağlı bir cihazı denetleme
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -61,23 +61,23 @@ az extension add --name azure-cli-iot-ext
 
 Örnek Java projesini önceden indirmediyseniz https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip adresinden indirip ZIP arşivini ayıklayın.
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
-Önceki [hızlı başlangıcı tamamladıysanız: Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md)telemetri gönderin, bu adımı atlayabilirsiniz.
+Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-java.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Cihaz kaydetme
 
-Önceki [hızlı başlangıcı tamamladıysanız: Bir cihazdan IoT Hub 'ına](quickstart-send-telemetry-java.md)telemetri gönderin, bu adımı atlayabilirsiniz.
+Önceki [Hızlı Başlangıç: Bir cihazdan IoT hub’a telemetri gönderme](quickstart-send-telemetry-java.md) öğreticisini tamamladıysanız bu adımı atlayabilirsiniz.
 
 Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu hızlı başlangıçta Azure Cloud Shell kullanarak bir simülasyon cihazı kaydedeceksiniz.
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-   **Youriothubname**: Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-   **Myjavadevice**: Kayıt yaptığınız cihazın adı. Gösterilen **Myjavadevice** ' i kullanın. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanmanız ve örnek uygulamalarda cihaz adını çalıştırmadan önce güncelleştirmeniz gerekir.
+   **Myjavadevice**: kayıt yaptığınız cihazın adı. Gösterilen **Myjavadevice** ' i kullanın. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanmanız ve örnek uygulamalarda cihaz adını çalıştırmadan önce güncelleştirmeniz gerekir.
 
     ```azurecli-interactive
     az iot hub device-identity create \
@@ -86,7 +86,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 2. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
 
-   **Youriothubname**: Aşağıdaki yer tutucusunu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string \
@@ -105,7 +105,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 Arka uç uygulamasının IoT hub’ınıza bağlanmasına ve iletileri almasına olanak sağlamak için bir _hizmet bağlantı dizesi_ de gerekir. Aşağıdaki komut, IoT hub'ınız için hizmeti bağlantı dizesini alır:
 
-**Youriothubname**: Aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+**Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
 ```azurecli-interactive
 az iot hub show-connection-string --name YourIoTHubName --policy-name service --output table
@@ -119,7 +119,7 @@ Bu değeri hızlı başlangıcın ilerleyen bölümlerinde kullanacaksınız. Hi
 
 ## <a name="listen-for-direct-method-calls"></a>Doğrudan yöntem çağrılarını dinleme
 
-Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlanır, sanal telemetri gönderir ve hub’ınızdan gelen doğrudan yöntem çağrılarını dinler. Bu hızlı başlangıçta, hub’dan gelen doğrudan yöntem çağrısı, telemetri gönderme aralığını değiştirmesini cihaza bildirir. Simülasyon cihazı, doğrudan yöntemi yürüttükten sonra hub’ınıza geri bir onay gönderir.
+Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlanır, sanal telemetri gönderir ve hub’ınızdan gelen doğrudan yöntem çağrılarını dinler. Bu hızlı başlangıçta, hub’dan gelen doğrudan yöntem çağrısı, telemetri gönderme aralığını değiştirmesini cihaza bildirir. Sanal cihaz, doğrudan yöntemini yürütmeden sonra hub 'ınıza bir bildirim gönderir.
 
 1. Yerel terminal penceresinde, örnek Java projesinin kök klasörüne gidin. Daha sonra **iot-hub\Quickstarts\simulated-device-2** klasörüne gidin.
 
@@ -141,11 +141,11 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
     Aşağıdaki ekran görüntüsünde, simülasyon cihazı uygulaması, IoT hub’ınıza telemetri gönderdiğinde oluşan çıktı gösterilmektedir:
 
-    ![Simülasyon cihazını çalıştırma](./media/quickstart-control-device-java/SimulatedDevice-1.png)
+    ![Cihazın IoT Hub 'ınıza gönderdiği telemetriden çıkış](./media/quickstart-control-device-java/iot-hub-application-send-telemetry-output.png)
 
 ## <a name="call-the-direct-method"></a>Doğrudan yöntem çağırma
 
-Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına bağlanır. Uygulama, IoT hub’ınız üzerinden bir cihaza doğrudan yöntem çağrıları yapar ve onayları dinler. IoT Hub arka uç uygulaması genellikle bulutta çalışır.
+Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına bağlanır. Uygulama, IoT Hub 'ınız aracılığıyla bir cihaza doğrudan Yöntem çağrıları yapar ve bu bildirimleri dinler. IoT Hub arka uç uygulaması genellikle bulutta çalışır.
 
 1. Başka bir yerel terminal penceresinde, örnek Java projesinin kök klasörüne gidin. Daha sonra **iot-hub\Quickstarts\back-end-application** klasörüne gidin.
 
@@ -165,13 +165,13 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
     java -jar target/back-end-application-1.0.0-with-deps.jar
     ```
 
-    Aşağıdaki ekran görüntüsünde, uygulama cihaza bir doğrudan yöntem çağrısı yapıp onay aldığında elde edilen çıktı gösterilmektedir:
+    Aşağıdaki ekran görüntüsünde, uygulamanın cihaza doğrudan yöntem çağrısı yaptığı ve bir bildirim aldığı için çıkış gösterilmektedir:
 
-    ![Arka uç uygulamasını çalıştırma](./media/quickstart-control-device-java/BackEndApplication.png)
+    ![Uygulama, IoT Hub 'ınız aracılığıyla doğrudan yöntem çağrısı yaptığında çıktı](./media/quickstart-control-device-java/iot-hub-direct-method-call-output.png)
 
     Arka uç uygulamasını çalıştırdıktan sonra, simülasyon cihazını çalıştıran konsol penceresinde bir ileti ve ileti değişikliklerini gönderdiği hızı görürsünüz:
 
-    ![Sanal istemcide değişiklik](./media/quickstart-control-device-java/SimulatedDevice-2.png)
+    ![Cihazdan konsol iletisi, değişikliğin hızını gösterir](./media/quickstart-control-device-java/iot-hub-sent-message-change-rate.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -184,4 +184,4 @@ Bu hızlı başlangıçta, arka uç uygulamasından bir cihazda doğrudan yönte
 Cihazdan buluta iletileri, buluttaki farklı hedeflere yönlendirmeyi öğrenmek için sonraki öğreticiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Öğretici: İşlem için telemetri farklı uç noktalara yol](tutorial-routing.md)
+> [Öğretici: Telemetriyi işlenmek üzere farklı uç noktalara yönlendirme](tutorial-routing.md)

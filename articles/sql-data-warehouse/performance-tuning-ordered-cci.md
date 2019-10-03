@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 74a1a2218020718a05c9d01de96ddf4fccb35eb4
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802562"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845692"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore diziniyle performans ayarı  
 
 Kullanıcılar Azure SQL veri ambarı 'nda bir columnstore tablosunu sorgudığında, iyileştirici her kesimde depolanan en düşük ve en yüksek değerleri denetler.  Sorgu koşulunun sınırları dışında kalan segmentler diskten belleğe okunamaz.  Okunan parçaların sayısı ve toplam boyutu küçük olduğunda sorgu daha hızlı bir performans alabilir.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Sıralı ve sıralı olmayan kümelenmiş columnstore dizini 
-Varsayılan olarak, bir dizin seçeneği olmadan oluşturulan her Azure veri ambarı tablosu için, bir iç bileşen (Dizin Oluşturucu), üzerinde sıralı olmayan bir kümelenmiş columnstore dizini (CCı) oluşturur.  Her sütundaki veriler ayrı bir CCI satır grubu segmentinde sıkıştırılır.  Her bir segmentin değer aralığında meta veriler bulunur, bu nedenle sorgu koşulunun sınırları dışında kalan segmentler sorgu yürütme sırasında diskten okunmazlar.  CCı, en yüksek düzeyde veri sıkıştırması sağlar ve sorguların daha hızlı çalışabilmesi için okunacak parçaların boyutunu azaltır. Ancak, Dizin Oluşturucu verileri kesimlere sıkıştırmadan önce sıralamadığından, çakışan değer aralıklarına sahip kesimler meydana gelebilir ve sorguların diskten daha fazla kesim okumasına ve daha uzun sürmesine neden olabilir.  
+Varsayılan olarak, bir dizin seçeneği olmadan oluşturulan her Azure veri ambarı tablosu için, bir iç bileşen (Dizin Oluşturucu), üzerinde sıralı olmayan bir kümelenmiş columnstore dizini (CCı) oluşturur.  Her sütundaki veriler ayrı bir CCI satır grubu segmentinde sıkıştırılır.  Her bir segmentin değer aralığında meta veriler bulunur, bu nedenle sorgu koşulunun sınırları dışında kalan segmentler sorgu yürütme sırasında diskten okunmazlar.  CCı, en yüksek düzeyde veri sıkıştırması sağlar ve sorguların daha hızlı çalışabilmesi için okunacak parçaların boyutunu azaltır. Ancak, Dizin Oluşturucu verileri segmentlere sıkıştırmadan önce sıralamadığından, çakışan değer aralıklarına sahip kesimler meydana gelebilir ve sorguların diskten daha fazla kesim okumasına ve daha uzun sürmesine neden olabilir.  
 
-Sıralı bir CCı oluştururken, Azure SQL veri ambarı altyapısı bellekteki verileri Dizin Oluşturucu tarafından dizin kesimlerine sıkıştırmadan önce sıralama anahtarına göre sıralar.  Sıralanmış verilerle, çakışan bölüm, sorguların daha verimli bir kesim yok etme ve bu nedenle diskten okunan segmentlerin sayısı daha az olduğundan daha hızlı performans sağlar.  Tüm veriler bellekte aynı anda sıralanmışsa, çakışan segmentden kaçınılabilir.  Veri ambarı tablolarında verilerin büyük boyutu verildiğinde, bu senaryo genellikle gerçekleşmez.  
+Sıralı bir CCı oluştururken, Dizin Oluşturucu onları Dizin kesimlerine sıkıştırmadan önce, Azure SQL veri ambarı altyapısı bellekteki mevcut verileri sıra anahtarları ile sıralar.  Sıralanmış verilerle, çakışan bölüm, sorguların daha verimli bir kesim yok etme ve bu nedenle diskten okunan segmentlerin sayısı daha az olduğundan daha hızlı performans sağlar.  Tüm veriler bellekte aynı anda sıralanmışsa, çakışan segmentden kaçınılabilir.  Veri ambarı tablolarında verilerin büyük boyutu verildiğinde, bu senaryo genellikle gerçekleşmez.  
 
 Bir sütunun kesim aralıklarını denetlemek için şu komutu tablo adınızla ve sütun adınızla çalıştırın:
 
@@ -42,6 +42,9 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 ```
 
+> [!NOTE] 
+> Sıralı bir CCı tablosunda, DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler otomatik olarak sıralanmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  
+
 ## <a name="data-loading-performance"></a>Veri yükleme performansı
 
 Sıralı bir CCı tablosuna yükleme verilerinin performansı bölümlenmiş bir tabloya veri yüklemeye benzer.  
@@ -51,12 +54,24 @@ Aşağıda, verileri farklı şemalara sahip tablolara yüklemenin bir örnek pe
 ![Performance_comparison_data_loading @ no__t-1
  
 ## <a name="reduce-segment-overlapping"></a>Çakışan kesimi azalt
-Aşağıda, CTAS aracılığıyla veya mevcut bir tabloda veri içeren bir tablo üzerinde sıralı CCı oluştururken çakışan segmenti daha fazla azaltma seçenekleri verilmiştir:
 
-- Dizin Oluşturucu onları kesimlere sıkıştırmadan önce bellekte bir kez daha fazla verinin sıralanmasını sağlamak için daha büyük bir kaynak sınıfı kullanın.  Dizin segmentinde, verilerin fiziksel konumu değiştirilemez.  Bir kesim içinde veya kesimlerde veri sıralaması yoktur.  
+Çakışan parçaların sayısı, sıralanan CCı oluşturma sırasında sıralanacak verilerin boyutuna, kullanılabilir belleğe ve en yüksek paralellik (MAXDOP) ayarına bağlıdır. Aşağıda, sıralı CCı oluşturulurken çakışan parçayı azaltma seçenekleri verilmiştir.
 
-- Daha düşük bir paralellik derecesi kullanın (örneğin, DOP = 1).  Sıralı CCı oluşturma için kullanılan her iş parçacığı verilerin bir alt kümesinde çalışarak yerel olarak sıralar.  Farklı iş parçacıkları tarafından sıralanan veriler arasında genel sıralama yoktur.  Paralel iş parçacıklarının kullanılması, sıralı bir CCı oluşturma süresini azaltabilir, ancak tek bir iş parçacığı kullanmaktan daha fazla çakışan kesim oluşturur. 
+- Dizin Oluşturucu verileri kesimlere sıkıştırmadan önce veri sıralamasına daha fazla bellek sağlamak için xlargerc kaynak sınıfını daha yüksek bir DWU üzerinde kullanın.  Dizin segmentinde, verilerin fiziksel konumu değiştirilemez.  Bir kesim içinde veya kesimlerde veri sıralaması yoktur.  
+
+- MAXDOP = 1 ile sıralı CCı oluştur.  Sıralı CCı oluşturma için kullanılan her iş parçacığı verilerin bir alt kümesinde çalışarak yerel olarak sıralar.  Farklı iş parçacıkları tarafından sıralanan veriler arasında genel sıralama yoktur.  Paralel iş parçacıklarının kullanılması, sıralı bir CCı oluşturma süresini azaltabilir, ancak tek bir iş parçacığı kullanmaktan daha fazla çakışan kesim oluşturur.  Şu anda, MAXDOP seçeneği yalnızca SELECT komutu olarak CREATE TABLE kullanılarak sıralı bir CCı tablosu oluşturulurken desteklenir.  CREATE INDEX veya CREATE TABLE komutları aracılığıyla sıralı bir CCı oluşturma, MAXDOP seçeneğini desteklemez. Örneğin,
+
+```sql
+CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
+AS SELECT * FROM ExampleTable
+OPTION (MAXDOP 1);
+```
 - Verileri Azure SQL veri ambarı tablolarına yüklemeden önce sıralama anahtarına göre önceden sıralayın.
+
+
+Aşağıda, Yukarıdaki önerilerden sonra çakışan sıfır kesimine sahip sıralı bir CCı tablo dağıtımına örnek verilmiştir. Sıralı CCı tablosu, MAXG 1 ve xlargerc kullanılarak 20 GB yığın tablosundan CTAS aracılığıyla bir DWU1000c veritabanında oluşturulur.  CCı, yinelenen olmayan bir BIGINT sütununda sıralanır.  
+
+![Segment_No_Overlapping](media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
 ## <a name="create-ordered-cci-on-large-tables"></a>Büyük tablolarda sıralı CCı oluşturma
 Sıralı bir CCı oluşturma, çevrimdışı bir işlemdir.  Bölüm içermeyen tablolar için, sıralı CCı oluşturma işlemi tamamlanana kadar verilere kullanıcılar erişemez.   Bölümlenmiş tablolar için, altyapı sıralı CCı bölümünü bölüm tarafından oluşturduğundan, kullanıcılar sıralı CCı oluşturma işleminin işlem içinde olmadığı bölümlerdeki verilere erişmeye devam edebilir.   Büyük tablolarda sıralı CCı oluşturma sırasında kapalı kalma süresini en aza indirmek için bu seçeneği kullanabilirsiniz: 
