@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 03/13/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 37f129526cb184a2eeee9e36028e8f00b5bbc247
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 8ff402299b26637473f3fb762a3320255ea4df64
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68443469"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719921"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets ile maliyetleri yönetme
 
@@ -170,7 +170,7 @@ Eşik miktarının %100 veya daha yüksek olmayacak şekilde, bütçenin %80 vey
     İfade aşağıdaki gibi olacaktır:<br>
     `float(body('Parse_JSON')?['data']?['NotificationThresholdAmount'])`
 
-5.  İfadeyi ayarlamak için **Tamam**'ı seçin.
+5.  İfadeyi ayarlamak için **Tamam**’ı seçin.
 6.  **Koşul** açılır kutusundaki **büyüktür veya eşittir** öğesini seçin.
 7.  Koşulun **Değer seçin** kutusuna `.8` değerini girin.
 

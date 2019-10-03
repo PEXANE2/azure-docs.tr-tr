@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 6/13/2018
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 3d06df9b9a90f26b39afc17b8fcd02c85da567a1
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 54c4426fb8bdb1476b33defb5351b3fb0e6a0663
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68443245"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718844"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Faturalama ve maliyet yönetimi için otomasyon senaryoları
 
 Bu makalede Azure faturalama ve maliyet yönetimi için yaygın senaryolar listelenir. Bu senaryolar kullanabileceğiniz API'lerle eşlenir. Her senaryo-API eşlemesinde API'lerin özetini ve sağladıkları işlevleri bulabilirsiniz.
 
-## <a name="common-scenarios"></a>Yaygın senaryolar
+## <a name="common-scenarios"></a>Genel senaryolar
 
 Maliyetle ilgili ve kullanımla ilgili soru ları yanıtlamak için faturalama ve maliyet yönetimi API'lerini çeşitli senaryolarda kullanabilirsiniz. Yaygın senaryolar genel hatlarıyla şöyledir:
 

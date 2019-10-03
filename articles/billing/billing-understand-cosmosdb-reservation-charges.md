@@ -6,15 +6,15 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 09/30/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d10418e5095a3331c343f805d2c8385aa4974ffc
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60370756"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701805"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Rezervasyon indiriminin Azure Cosmos DB’ye nasıl uygulandığını anlama
 
@@ -59,13 +59,13 @@ Rezervasyon indirimi Azure Cosmos DB işleme hızı maliyetlerine saat bazında 
 |Azure Cosmos DB - 100 RU/sn/saat - Güney Afrika Kuzey|     Güney Afrika Kuzey    |   1      |
 |Azure Cosmos DB - 100 RU/sn/saat - Güney Afrika Batı |    Güney Afrika Batı      |    1     |
 |Azure Cosmos DB - 100 RU/sn/saat - IN Güney|    IN Güney     |    1,0375    |
-|Azure Cosmos DB - 100 RU/sn/saat - CA Doğu|   CA Doğu      |    1,1      |
+|Azure Cosmos DB - 100 RU/sn/saat - CA Doğu|   CA Doğu      |    1.1      |
 |Azure Cosmos DB - 100 RU/sn/saat - JA Doğu|   JA Doğu      |    1,125     |
 |Azure Cosmos DB - 100 RU/sn/saat - JA Batı|     JA Batı    |   1,125       |
 |Azure Cosmos DB - 100 RU/sn/saat - IN Batı|     IN Batı    |    1,1375     |
 |Azure Cosmos DB - 100 RU/sn/saat - IN Orta|    IN Orta     |  1,1375       |
 |Azure Cosmos DB - 100 RU/sn/saat - AU Doğu|     AU Doğu    |   1,15       |
-|Azure Cosmos DB - 100 RU/sn/saat - CA Orta|  CA Orta       |   1,2       |
+|Azure Cosmos DB - 100 RU/sn/saat - CA Orta|  CA Orta       |   1.2       |
 |Azure Cosmos DB - 100 RU/sn/saat - FR Orta|   FR Orta      |    1,25      |
 |Azure Cosmos DB - 100 RU/sn/saat - BR Güney|  BR Güney       |   1,5      |
 |Azure Cosmos DB - 100 RU/sn/saat - AU Orta|   AU Orta      |   1,5      |
