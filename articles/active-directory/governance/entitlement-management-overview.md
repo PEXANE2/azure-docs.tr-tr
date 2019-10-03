@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241705"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827149"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD yetkilendirme yönetimi nedir? (Önizleme)
 
@@ -46,7 +46,7 @@ Kurumsal kuruluşlar, şu gibi kaynaklara erişimi yönetirken genellikle güçl
 - Kullanıcılar, doğru bireyler veya doğru kaynakları bulmada zorluk gösterebilir
 - Kullanıcılar bir kaynağa erişim bulup aldıktan sonra, iş amaçları için gerekenden daha uzun bir süre erişim için açık kalabilir
 
-Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir dizinden erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örneğin:
+Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından gelen harici kullanıcılar gibi başka bir dizinden erişmesi gereken kullanıcılar için bir bileşim oluşturur. Örnek:
 
 - Kuruluşlar, diğer dizinlerdeki tüm kişilerin bunları davet edebilmeleri için bu dizinlerin tümünü bilmiyor olabilir
 - Kuruluşlar bu kullanıcıları davet edebilse bile, kuruluşlar tüm Kullanıcı erişimini sürekli olarak yönetmeyi anımsamayabilir
@@ -77,7 +77,7 @@ Yetkilendirme yönetimiyle erişimi yönetebileceğiniz kaynak türleri şunlard
 - SaaS uygulaması ve Federasyon veya sağlamayı destekleyen özel tümleşik uygulamalar dahil olmak üzere Azure AD kurumsal uygulamaları
 - SharePoint Online site koleksiyonları ve siteleri
 
-Ayrıca, Azure AD güvenlik gruplarına veya Office 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örneğin:
+Ayrıca, Azure AD güvenlik gruplarına veya Office 365 gruplarına bağlı diğer kaynaklara erişimi de denetleyebilirsiniz.  Örnek:
 
 - Erişim paketindeki bir Azure AD güvenlik grubunu kullanarak ve bu grup için [grup tabanlı lisanslamayı](../users-groups-roles/licensing-groups-assign.md) yapılandırarak, Microsoft Office 365 için kullanıcılara lisans verebilirsiniz
 - Erişim paketindeki bir Azure AD güvenlik grubunu kullanarak ve bu grup için bir [Azure rol ataması](../../role-based-access-control/role-assignments-portal.md) oluşturarak kullanıcılara Azure kaynaklarını yönetmeye yönelik erişim izni verebilirsiniz.
@@ -119,20 +119,20 @@ Dış kullanıcının en son sonsuza kadar erişimini istemediğiniz için ilked
 
 Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için aşağıdaki koşulları gözden geçirmeniz gerekir.
 
-| Kavram veya sözleşme | Açıklama |
+| Terim veya kavram | Açıklama |
 | --- | --- |
 | Yetkilendirme Yönetimi | Erişim paketlerini atayan, iptal eden ve yöneten bir hizmet. |
-| erişim paketi | Kullanıcıların isteye, kaynaklara yönelik izinlerin ve ilkelerin toplanması. Bir erişim paketi her zaman bir katalogda bulunur. |
-| erişim isteği | Erişim paketine erişim isteği. İstek genellikle bir iş akışından geçer. |
-| policy | Kullanıcıların erişim alma, kimlerin ne kadar süreceğine ve kullanıcıların ne kadar süreceğine ilişkin erişim yaşam döngüsünü tanımlayan bir kurallar kümesi. Örnek ilkeler, çalışan erişimini ve dış erişimi içerir. |
-| catalog | İlgili kaynakların ve erişim paketlerinin kapsayıcısı. |
+| erişim paketi | Bir ekibin veya projenin ihtiyaç duyacağı ve ilkelerle ilişkilendirilen kaynak demeti. Bir erişim paketi her zaman bir katalogda bulunur. |
+| erişim isteği | Erişim paketindeki kaynaklara erişim isteği. İstek genellikle bir iş akışından geçer. |
+| ilke | Kullanıcıların erişim alma, kimlerin ne kadar süreceğine ve kullanıcıların ne kadar süreceğine ilişkin erişim yaşam döngüsünü tanımlayan bir kurallar kümesi. Örnek ilkeler, çalışan erişimini ve dış erişimi içerir. |
+| kataloglarını | İlgili kaynakların ve erişim paketlerinin kapsayıcısı. |
 | Genel Katalog | Her zaman kullanılabilir olan yerleşik bir katalog. Genel kataloğa kaynak eklemek için belirli izinler gerekir. |
-| resource | Bir kullanıcıya izin verilebilecek bir varlık veya hizmet (örneğin, bir Office grubu, güvenlik grubu, uygulama veya SharePoint Online sitesi). |
-| kaynak türü | Gruplar, uygulamalar ve SharePoint Online siteleri içeren kaynak türü. |
+| Kaynak | Bir kullanıcıya izin verilebilecek bir varlık veya hizmet (örneğin, bir Office grubu, güvenlik grubu, uygulama veya SharePoint Online sitesi). |
+| Kaynak türü | Gruplar, uygulamalar ve SharePoint Online siteleri içeren kaynak türü. |
 | Kaynak rolü | Bir kaynakla ilişkili izinler koleksiyonu. |
 | Kaynak dizini | Paylaşılacak bir veya daha fazla kaynağı olan bir dizin. |
 | atanan kullanıcılar | Kullanıcının bu erişim paketinin tüm kaynak rollerine sahip olması için bir erişim paketinin kullanıcıya atanması. |
-| etkinleştir | Kullanıcılara istemek için bir erişim paketi oluşturma işlemi. |
+| Etkinleştirebilir | Kullanıcılara istemek için bir erişim paketi oluşturma işlemi. |
 
 ## <a name="license-requirements"></a>Lisans gereksinimleri
 
@@ -154,5 +154,5 @@ Kullanıcılarınıza lisansları atama hakkında daha fazla bilgi için, bkz. [
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: İlk erişim paketinizi oluşturma](entitlement-management-access-package-first.md)
-- [Yaygın senaryolar](entitlement-management-scenarios.md)
+- [Öğretici: ilk erişim paketinizi oluşturma](entitlement-management-access-package-first.md)
+- [Genel senaryolar](entitlement-management-scenarios.md)

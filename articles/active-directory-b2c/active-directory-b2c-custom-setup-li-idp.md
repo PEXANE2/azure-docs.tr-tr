@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9da5b4c88bab964bfc3ad686377d3c3efd2d4e6a
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 6d7beae75e13ef797c9e80a9a012e9f48b69d407
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315188"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827190"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak LinkedIn hesabı ile oturum açmayı ayarlama
 
@@ -51,7 +51,7 @@ LinkedIn 'i Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için bir L
 1. **AUTH** sekmesini seçin.
 1. **ISTEMCI kimliğini**kaydedin.
 1. **Istemci gizliliğini**açığa çıkar ve kaydedin.
-1. **OAuth 2,0 ayarları**altında aşağıdaki **yeniden yönlendirme URL 'sini**ekleyin. Kiracınızın adıyla değiştirin `your-tenant` . Azure AD B2C büyük harfle tanımlansa bile kiracı adı için **tüm küçük harfleri** kullanın.
+1. **OAuth 2,0 ayarları**altında aşağıdaki **yeniden yönlendirme URL 'sini**ekleyin. @No__t-0 değerini kiracınızın adıyla değiştirin. Azure AD B2C büyük harfle tanımlansa bile kiracı adı için **tüm küçük harfleri** kullanın.
 
     `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`
 
@@ -59,15 +59,15 @@ LinkedIn 'i Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için bir L
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
 5. **İlke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
-6. **Seçenekler**için öğesini seçin `Manual`.
+6. **Seçenekler**için `Manual` ' i seçin.
 7. İlke anahtarı için bir **ad** girin. Örneğin, `LinkedInSecret`. *B2C_1A_* ön eki, anahtarınızın adına otomatik olarak eklenir.
 8. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
-9. **Anahtar kullanımı**için öğesini seçin `Signature`.
+9. **Anahtar kullanımı**için `Signature` ' i seçin.
 10. **Oluştur**’a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
@@ -76,7 +76,7 @@ Kullanıcıların bir LinkedIn hesabı kullanarak oturum açmasını istiyorsan�
 
 Bir LinkedIn hesabını, ilkenizin uzantısı dosyasındaki **Claimsproviders** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayın.
 
-1. Düzenleyicinizde *SocialAndLocalAccounts/ **TrustFrameworkExtensions. xml*** dosyasını açın. Bu dosya, önkoşullardan birinin bir parçası olarak indirdiğiniz [özel ilke başlangıç paketidir][starter-pack] .
+1. Düzenleyicinizde *SocialAndLocalAccounts/* * TrustFrameworkExtensions. xml** * dosyasını açın. Bu dosya, önkoşullardan birinin bir parçası olarak indirdiğiniz [özel ilke başlangıç paketidir][starter-pack] .
 1. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
 1. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
 
@@ -184,7 +184,7 @@ Artık Azure AD B2C LinkedIn hesabınızla nasıl iletişim kuracağını bilmes
 Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum açma ekranlarından hiçbirinde kullanılamaz. Kullanılabilir hale getirmek için, var olan bir şablon Kullanıcı yolculuğunun bir yinelemesini oluşturun ve ardından LinkedIn kimlik sağlayıcısı 'nı da içerecek şekilde değiştirin.
 
 1. Starter paketindeki *TrustFrameworkBase. xml* dosyasını açın.
-2. Dahil`Id="SignUpOrSignIn"`olan **userelde ney** öğesinin tüm içeriğini bulup kopyalayın.
+2. @No__t-1 içeren **Useryolculuney** öğesinin tüm içeriğini bulup kopyalayın.
 3. *TrustFrameworkExtensions. xml* ' i açın ve **User, neys** öğesini bulun. Öğe yoksa, bir tane ekleyin.
 4. **User, neys** öğesinin bir alt öğesi olarak kopyaladığınız **User, ney** öğesinin tüm içeriğini yapıştırın.
 5. Kullanıcı yolculuğunun KIMLIĞINI yeniden adlandırın. Örneğin, `SignUpSignInLinkedIn`.
@@ -193,7 +193,7 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum 
 
 **Claimsproviderselection** öğesi, kaydolma veya oturum açma ekranındaki bir kimlik sağlayıcısı düğmesine benzer. LinkedIn hesabı için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
 
-1. Oluşturduğunuz Kullanıcı yolculuğuna dahil `Order="1"` olan **orchestrationstep** öğesini bulun.
+1. Oluşturduğunuz Kullanıcı yolculuğunda `Order="1"` içeren **Orchestrationstep** öğesini bulun.
 2. **Claimsproviderseçimleri**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `LinkedInExchange`:
 
     ```XML
@@ -204,7 +204,7 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum 
 
 Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerekir. Bu durumda, Azure AD B2C bir, belirteç almak üzere bir LinkedIn hesabıyla iletişim kurmak için kullanılır.
 
-1. Kullanıcı yolculuğu `Order="2"` ' nda yer alan **orchestrationstep** ' i bulun.
+1. Kullanıcı yolculuğunda `Order="2"` içeren bir düzenleyen **Tionstep** bulun.
 2. **Targetclaimsexchangeıd**IÇIN kullandığınız kimlik için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
 
     ```XML
@@ -217,6 +217,8 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C uygulaması oluşturma
 
+Azure AD B2C ile iletişim, B2C kiracınıza kaydolmanızı sağlayan bir uygulama aracılığıyla oluşur. Bu bölümde, daha önce yapmadıysanız bir test uygulaması oluşturmak için tamamlayabildiğiniz isteğe bağlı adımlar listelenmektedir.
+
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 ## <a name="update-and-test-the-relying-party-file"></a>Bağlı olan taraf dosyasını güncelleştirme ve test etme
@@ -225,7 +227,7 @@ Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosy
 
 1. Çalışma dizininizde *Signuporsignın. xml* ' in bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, bunu *Signupsignınlinkedın. xml*olarak yeniden adlandırın.
 2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInLinkedIn`.
-3. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin,`http://contoso.com/B2C_1A_signup_signin_linkedin`
+3. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin, `http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, oluşturduğunuz yeni Kullanıcı yolculuğu (signupsignlinkedın) kimliğiyle eşleşecek şekilde güncelleştirin.
 5. Değişikliklerinizi kaydedin, dosyayı karşıya yükleyin ve ardından listeden yeni ilkeyi seçin.
 6. Oluşturduğunuz Azure AD B2C uygulamasının **Uygulama Seç** alanında seçildiğinden emin olun ve **Şimdi Çalıştır**' a tıklayarak test edin.
@@ -333,7 +335,7 @@ V 1.0 ile v 2.0 arasında LinkedIn geçişinin bir parçası olarak, e-posta adr
 
 1. Kullanıcının oturum açmasını sağlamak için Azure AD B2C LinkedIn ile federasyona eklemek için yukarıdaki adımları uygulayın. Federasyonun bir parçası olarak, Azure AD B2C LinkedIn 'e erişim belirtecini alır.
 2. LinkedIn erişim belirtecini bir talebe kaydedin. [Buradaki yönergelere bakın](idp-pass-through-custom.md).
-3. LinkedIn `/emailAddress` API 'sine istek yapan aşağıdaki talep sağlayıcısını ekleyin. Bu isteği yetkilendirmek için LinkedIn erişim belirtecine ihtiyacınız vardır.
+3. @No__t-0 API 'sine istek yapan aşağıdaki talep sağlayıcısını ekleyin. Bu isteği yetkilendirmek için LinkedIn erişim belirtecine ihtiyacınız vardır.
 
     ```XML
     <ClaimsProvider>
@@ -361,7 +363,7 @@ V 1.0 ile v 2.0 arasında LinkedIn geçişinin bir parçası olarak, e-posta adr
     </ClaimsProvider>
     ```
 
-4. Kullanıcı yolculuğuna aşağıdaki düzenleme adımını ekleyin, böylece Kullanıcı LinkedIn kullanarak oturum açtığında API talep sağlayıcısı tetiklenir. `Order` Sayıyı uygun şekilde güncelleştirdiğinizden emin olun. Bu adımı, LinkedIn teknik profilini tetikleyen düzenleme adımından hemen sonra ekleyin.
+4. Kullanıcı yolculuğuna aşağıdaki düzenleme adımını ekleyin, böylece Kullanıcı LinkedIn kullanarak oturum açtığında API talep sağlayıcısı tetiklenir. @No__t-0 sayısını uygun şekilde güncelleştirdiğinizden emin olun. Bu adımı, LinkedIn teknik profilini tetikleyen düzenleme adımından hemen sonra ekleyin.
 
     ```XML
     <!-- Extra step for LinkedIn to get the email -->

@@ -4,16 +4,16 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 5c90d7b5eefdf8357c0f6f8efb619bd69af12b06
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 53c9dea83fc6d413d7e82194696ffedabcc8cf7b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843350"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830192"
 ---
 Çalıştırdığınız uygulamalar için sanal makinenizin (VM) güvenli tutulması önemlidir. Sanal makinelerinizin güvenliğini sağlamak, sanal makinelerinize güvenli erişimi kapsayan bir veya daha fazla Azure hizmetini ve özelliğini ve verilerinizin güvenli şekilde depolanmasını içerebilir. Bu makalede, sanal makinenizin ve uygulamalarınızın güvenliğini sağlamanıza olanak tanıyan bilgiler sağlanmaktadır.
 
-## <a name="antimalware"></a>Kötü Amaçlı Yazılımdan Koruma Yazılımı
+## <a name="antimalware"></a>Kötü Amaçlı Yazılımdan Koruma
 
 Bulut ortamları için modern tehdit yatay, uyumluluk ve güvenlik gereksinimlerini karşılamak üzere etkili koruma sağlamak için basıncını artırarak dinamik bir deneyimdir. [Azure Için Microsoft Antimalware](../articles/security/fundamentals/antimalware.md) , virüslerin, casus yazılımların ve diğer kötü amaçlı yazılımların tanımlanmasına ve kaldırılmasına yardımcı olan ücretsiz bir gerçek zamanlı koruma özelliğidir. Uyarılar, bilinen kötü amaçlı veya istenmeyen yazılımlar kendisini yüklemeyi veya VM 'niz üzerinde çalışmayı denediğinde sizi bilgilendirmek üzere yapılandırılabilir. Linux veya Windows Server 2008 çalıştıran VM 'lerde desteklenmez.
 
@@ -25,7 +25,7 @@ Güvenlik Merkezi 'nin tam zamanında erişimi, sanal makinelerinize gelen trafi
 
 ## <a name="encryption"></a>Şifreleme
 
-Gelişmiş [WINDOWS VM](../articles/virtual-machines/windows/encrypt-disks.md) ve [Linux VM](../articles/virtual-machines/linux/encrypt-disks.md) güvenliği ve uyumluluğu için, Azure 'daki sanal diskler şifrelenebilir. Windows VM 'lerinde sanal diskler, Rest 'de BitLocker kullanılarak şifrelenir. Linux VM 'lerinde sanal diskler, dm-crypt kullanılarak Rest 'te şifrelenir. 
+Gelişmiş [WINDOWS VM](../articles/virtual-machines/windows/encrypt-disks.md) ve [Linux VM](../articles/virtual-machines/linux/disk-encryption-overview.md) güvenliği ve uyumluluğu için, Azure 'daki sanal diskler şifrelenebilir. Windows VM 'lerinde sanal diskler, Rest 'de BitLocker kullanılarak şifrelenir. Linux VM 'lerinde sanal diskler, dm-crypt kullanılarak Rest 'te şifrelenir. 
 
 Azure 'da sanal diskleri şifrelemek için ücret alınmaz. Şifreleme anahtarları yazılım korumasını kullanarak Azure Key Vault depolanır veya anahtarlarınızı FIPS 140-2 düzey 2 standartlarına sertifikalı donanım güvenlik modüllerinde (HSM 'ler) içeri aktarabilir veya oluşturabilirsiniz. Bu şifreleme anahtarları, VM 'nize bağlı sanal diskleri şifrelemek ve şifrelerini çözmek için kullanılır. Bu şifreleme anahtarlarının denetimini koruyabilir ve kullanımlarını denetleyebilir. Azure Active Directory hizmet sorumlusu, VM 'Ler açık ve kapalı olduğu için bu şifreleme anahtarlarını vermek üzere güvenli bir mekanizma sağlar.
 
