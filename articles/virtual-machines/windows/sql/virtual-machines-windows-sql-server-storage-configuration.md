@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309236"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828605"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 'Ler için depolama yapılandırması
 
@@ -28,7 +28,7 @@ Bu konu, Azure 'un sağlama ve mevcut VM 'Ler için SQL Server sanal makinelerin
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Otomatik depolama yapılandırma ayarlarını kullanmak için, sanal makineniz aşağıdaki özellikleri gerektirir:
 
@@ -42,9 +42,28 @@ Aşağıdaki bölümlerde, yeni SQL Server sanal makineler için depolamanın na
 
 ### <a name="azure-portal"></a>Azure portal
 
-SQL Server Galeri görüntüsü kullanarak bir Azure VM sağlarken, yeni sanal makine için depolamayı otomatik olarak yapılandırmayı seçebilirsiniz. Depolama boyutunu, performans sınırlarını ve iş yükü türünü belirtirsiniz. Aşağıdaki ekran görüntüsünde, SQL VM sağlama sırasında kullanılan depolama yapılandırması dikey penceresi gösterilmektedir.
+SQL Server Galeri görüntüsü kullanarak bir Azure VM sağlarken, **SQL Server ayarları** sekmesinde **yapılandırmayı Değiştir** ' i seçerek performans için iyileştirilmiş depolama yapılandırması sayfasını açın. Değerleri varsayılan olarak bırakabilir ya da iş yükünüze göre gereksinimlerinize en uygun disk yapılandırma türünü değiştirebilirsiniz. 
 
 ![Sağlama sırasında depolama yapılandırması SQL Server VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
+
+**Depolama iyileştirmesi**altında SQL Server dağıttığınız iş yükünün türünü seçin. **Genel** iyileştirme seçeneğiyle, varsayılan olarak en fazla 5000 IOPS içeren bir veri diskine sahip olursunuz ve bu sürücüyü verileriniz, işlem günlüğü ve tempdb depolaması için kullanacaksınız. **İşlemsel işleme** (OLTP) veya **veri depolama** alanı seçildiğinde veriler için ayrı bir disk, işlem günlüğü için ayrı bir disk oluşturulur ve tempdb için yerel SSD kullanılır. **İşlemsel işleme** ve **veri depolama**arasında bir depolama farkı yoktur, ancak [Stripe yapılandırmanızı ve izleme bayraklarını](#workload-optimization-settings)değiştirir. Premium Depolama ' yı seçtiğinizde, veri sürücüsü için önbelleğe alma özelliği *ReadOnly* olarak ayarlanır ve günlük sürücü için [SQL Server VM performans En Iyi uygulamalarına](virtual-machines-windows-sql-performance.md)göre *yoktur* . 
+
+![Sağlama sırasında depolama yapılandırması SQL Server VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+Disk yapılandırması tamamen özelleştirilebilir olduğundan, SQL Server VM iş yükünüz için gereken depolama topolojisini, disk türünü ve IOPS 'yi yapılandırabilirsiniz. Ayrıca, SQL Server VM desteklenen bölgelerden birinde (Doğu ABD 2, Güneydoğu Asya ve Kuzey Avrupa) ve [aboneliğiniz için Ultra diskler](/azure/virtual-machines/windows/disks-enable-ultra-ssd)etkinleştirdiyseniz, **disk türü** Için bir seçenek olarak UltraSSD (Önizleme) özelliğini kullanabilirsiniz.  
+
+Ayrıca, diskler için önbelleğe alma özelliğini ayarlayabilirsiniz. Azure VM 'Leri, [Premium disklerle](/azure/virtual-machines/windows/disks-types#premium-ssd)kullanıldığında [blob önbelleği](/azure/virtual-machines/windows/premium-storage-performance#disk-caching) adlı çok katmanlı bir önbelleğe alma teknolojisine sahiptir. Blob önbelleği, önbelleğe alma için sanal makine RAM ve yerel SSD 'nin bir birleşimini kullanır. 
+
+Premium SSD için disk önbelleğe alma *ReadOnly*, *ReadWrite* veya *none*olabilir. 
+
+- *ReadOnly* önbelleğe alma, Premium depolamada depolanan SQL Server veri dosyaları için oldukça faydalıdır. *ReadOnly* önbelleğe alma işlemi, düşük okuma gecikmesi, yüksek okuma IOPS ve aktarım hızı olarak, VM belleği ve yerel SSD içinde işletim sistemi olan önbellekten, okuma işlemleri yapar. Bu okumalar, Azure Blob depolamadan olan veri diskinden okumalarından çok daha hızlıdır. Premium Depolama, önbellekten sunulan okuma sayısını disk ıOPS ve aktarım hızı ile saymaz. Bu nedenle, uygulamanız toplam ıOPS iş verimini daha yüksek olarak elde edebilir. 
+- Günlük dosyası sıralı olarak yazıldığı ve *salt okunur* önbelleğe alma özelliğinden yararlanmadığı için, SQL Server günlük dosyası barındıran diskler için *hiçbiri* önbellek yapılandırması kullanılmamalıdır. 
+- SQL Server, *ReadWrite* önbelleği ile veri tutarlılığını desteklemediğinden SQL Server dosyaları barındırmak için *ReadWrite* önbelleği kullanılmamalıdır. *ReadOnly* blob önbelleğinin çöp kapasitesini yazar ve yazmalar *salt okunur* blob önbelleği katmanlarına gitmez biraz artar. 
+
+
+   > [!TIP]
+   > Depolama yapılandırmanızın seçili VM boyutu tarafından uygulanan kısıtlamalarla eşleştiğinden emin olun. VM boyutunun performans üst sınırını aşan depolama parametrelerinin seçilmesi şu hatayla sonuçlanır: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`. Disk türünü değiştirerek IOPS 'yi azaltın veya VM boyutunu artırarak performans üst sınırı değerini artırın. 
+
 
 Azure, seçimlerinize bağlı olarak VM 'yi oluşturduktan sonra aşağıdaki depolama yapılandırma görevlerini gerçekleştirir:
 
@@ -64,6 +83,13 @@ Aşağıdaki Kaynak Yöneticisi şablonlarını kullanıyorsanız, varsayılan o
 * [Otomatik düzeltme eki uygulama ile VM oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [AKV tümleştirmesi ile VM oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
+### <a name="quickstart-template"></a>Hızlı başlangıç şablonu
+
+Depolama iyileştirmesi kullanarak bir SQL Server VM dağıtmak için aşağıdaki hızlı başlangıç şablonunu kullanabilirsiniz. 
+
+* [Depolama iyileştirmesi ile VM oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage/)
+* [UltraSSD kullanarak VM oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage-ultrassd)
+
 ## <a name="existing-vms"></a>Mevcut VM 'Ler
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
@@ -79,32 +105,11 @@ Depolama ayarlarını değiştirmek için **Ayarlar**altında **Yapılandır** '
 
 ![Mevcut SQL Server VM için depolamayı yapılandırma](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
-Gördüğünüz yapılandırma seçenekleri, bu özelliği daha önce kullanıp kullandığınıza bağlı olarak farklılık gösterir. İlk kez kullanırken, yeni bir sürücü için depolama gereksinimlerinizi belirtebilirsiniz. Bu özelliği daha önce bir sürücü oluşturmak üzere kullandıysanız, bu sürücünün depolama alanını genişletmeyi seçebilirsiniz.
+SQL Server VM oluşturma işlemi sırasında yapılandırılmış sürücüler için disk ayarlarını değiştirebilirsiniz. **Sürücüyü Genişlet** ' i seçtiğinizde sürücü değiştirme sayfası açılır ve bu da disk türünü değiştirmenize ve ek diskler eklemenize olanak tanır. 
 
-### <a name="use-for-the-first-time"></a>İlk kez kullan
+![Mevcut SQL Server VM için depolamayı yapılandırma](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
-Bu özelliği ilk kez kullanıyorsanız, yeni bir sürücü için depolama boyutunu ve performans sınırlarını belirtebilirsiniz. Bu deneyim, sağlama zamanında gördüklerinize benzer. Temel fark, iş yükü türünü belirtmenize izin verilmemektedir. Bu kısıtlama, sanal makinede var olan SQL Server yapılandırmalarının kesintiye engel olmasını önler.
 
-Azure, belirtimlerinize göre yeni bir sürücü oluşturur. Bu senaryoda, Azure aşağıdaki depolama yapılandırma görevlerini gerçekleştirir:
-
-* Premium depolama veri disklerini oluşturur ve sanal makineye ekler.
-* SQL Server için erişilebilir olacak veri disklerini yapılandırır.
-* Veri disklerini, belirtilen boyut ve performans (ıOPS ve aktarım hızı) gereksinimlerine bağlı olarak bir depolama havuzunda yapılandırır.
-* Depolama havuzunu sanal makinede yeni bir sürücüyle ilişkilendirir.
-
-Azure 'un depolama ayarlarını yapılandırma hakkında daha fazla bilgi için [depolama yapılandırması bölümüne](#storage-configuration)bakın.
-
-### <a name="add-a-new-drive"></a>Yeni sürücü ekle
-
-SQL Server VM depolamayı zaten yapılandırdıysanız, depolama alanı genişletme iki yeni seçenek getirir. İlk seçenek, sanal makinenizin performans düzeyini artırabilen yeni bir sürücü eklemektir.
-
-Ancak sürücü eklendikten sonra, performans artışına ulaşmak için bazı ek el ile yapılandırma gerçekleştirmeniz gerekir.
-
-### <a name="extend-the-drive"></a>Sürücüyü genişletme
-
-Depolamayı genişletmeye yönelik diğer seçenek mevcut sürücüyü genişletmelidir. Bu seçenek sürücünüzün kullanılabilir depolama alanını artırır, ancak performansı artırmaz. Depolama havuzları ile, depolama havuzu oluşturulduktan sonra sütun sayısını değiştiremezsiniz. Sütun sayısı, veri diskleri genelinde şeritlenebilir paralel yazma sayısını belirler. Bu nedenle, tüm eklenen veri diskleri performansı artırabilir. Yalnızca yazılmakta olan veriler için daha fazla depolama alanı sağlayabilir. Bu sınırlama Ayrıca sürücüyü genişletirken, ekleyebileceğiniz en az sayıda veri diski belirleyen sütun sayısını belirler anlamına gelir. Bu nedenle, dört veri diskine sahip bir depolama havuzu oluşturursanız, sütun sayısı da dört olur. Depolamayı her genişletmenizde, en az dört veri diski eklemeniz gerekir.
-
-![Bir SQL VM için sürücüyü genişletme](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>Depolama yapılandırması
 
@@ -119,14 +124,14 @@ Fiyatlandırma bilgileri için **disk depolama** sekmesindeki [Depolama fiyatlan
 
 Azure, SQL Server VM 'lerde depolama havuzu oluşturmak için aşağıdaki ayarları kullanır.
 
-| Ayar | Value |
+| Ayar | Değer |
 | --- | --- |
 | Şerit boyutu |256 KB (veri ambarı); 64 KB (Işlem) |
 | Disk boyutları |1 TB her |
-| Önbellek |Okuma |
+| Önbellek |Oku |
 | Ayırma boyutu |64 KB NTFS ayırma birimi boyutu |
-| Anlık dosya başlatma |Enabled |
-| Bellekteki sayfaları kilitleme |Enabled |
+| Anlık dosya başlatma |Etkin |
+| Bellekteki sayfaları kilitleme |Etkin |
 | Kurtarma |Basit kurtarma (dayanıklılık yok) |
 | Sütun sayısı |Veri diski sayısı<sup>1</sup> |
 | TempDB konumu |Veri disklerinde depolandı<sup>2</sup> |
@@ -143,7 +148,7 @@ Aşağıdaki tabloda, kullanılabilir üç iş yükü türü seçeneği ve bunla
 | --- | --- | --- |
 | **Genel** |Çoğu iş yüklerini destekleyen varsayılan ayar |Yok. |
 | **İşlemsel işleme** |Geleneksel veritabanı OLTP iş yükleri için depolamayı iyileştirir |İzleme bayrağı 1117<br/>İzleme bayrağı 1118 |
-| **Veri ambarı** |Analitik ve raporlama iş yükleri için depolamayı iyileştirir |İzleme bayrağı 610<br/>İzleme bayrağı 1117 |
+| **Veri depolama** |Analitik ve raporlama iş yükleri için depolamayı iyileştirir |İzleme bayrağı 610<br/>İzleme bayrağı 1117 |
 
 > [!NOTE]
 > Yalnızca depolama yapılandırması adımında bir SQL sanal makinesi sağladığınızda iş yükü türünü belirtebilirsiniz.

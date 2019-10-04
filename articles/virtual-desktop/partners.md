@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 90007a82acce0010504bc06e96801869aea4a87a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673016"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937514"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -33,9 +33,9 @@ Citrix, Kullanıcı yoğunluğu ve performansını artırmak, isteğe bağlı i�
 
 ![VMware logosu](./media/partners/vmware.png)
 
-Microsoft Azure üzerinde VMware ufuk bulutu, kuruluşların kendi Microsoft Azure örneğini basit, sezgisel ufuk bulutu denetim düzlemine bağlama olanağı sunarak, sanallaştırılmış hale getirmeye yönelik güvenli, kapsamlı ve bulutta barındırılan bir çözüm oluşturuyor Windows Uygulamaları ve masaüstleri. Windows sanal masaüstü 'Nü kullanarak, VMware, Windows sanal masaüstü 'nin işlevlerini Microsoft Azure ' de ufuk bulutu 'nı kullanan müşterilere genişleten Microsoft ile işbirliği yaptı.
-
-Onaylanan bir sağlayıcı olarak, Microsoft Azure müşterilerine VMware ufuk bulutu, çok oturum için Windows 10 Enterprise, üç yıla kadar ücretsiz genişletilmiş güvenlik güncelleştirmeleri içeren Windows 7 ve FSLogix gibi tüm avantajları elde geniş uç nokta desteği gibi, ufku bulutu 'nın tüm modern, kurumsal sınıf özelliklerinin yanı sıra yetenekler. küresel, buluta iyileştirilmiş aracılı, esnek masaüstü seçenekleri ve konfigürasyonları, Kullanıcı ortamı yönetimi ve karma ortamlar için destek. 
+Microsoft Azure üzerinde VMware ufuk bulutu, kuruluşların kendi Microsoft Azure örneğini basit, sezgisel ufuk bulutu denetim düzlemine bağlama olanağı sunarak, sanallaştırılmış hale getirmeye yönelik güvenli, kapsamlı ve bulutta barındırılan bir çözüm oluşturuyor Windows Uygulamaları ve masaüstleri. Windows sanal masaüstü 'Nü kullanarak, VMware, Windows sanal masaüstü 'nin işlevlerini Microsoft Azure ' de ufuk bulutu 'nı kullanan müşterilere genişleten Microsoft ile işbirliği yaptı. Bu işlevsellik, 2019 sonuna kadar teknik önizlemede kullanıma sunulacaktır.
+ 
+Onaylanan bir sağlayıcı olarak, Windows sanal masaüstü 'nün avantajları Microsoft Azure müşteriler üzerinde VMware ufuk bulutu 'na genişletilir. çok oturum için Windows 10 Enterprise, üç yıla kadar ücretsiz genişletilmiş güvenlik güncelleştirmeleri içeren Windows 7 ve FSLogix. Ayrıca, müşteriler geniş uç nokta desteği gibi, ufku bulutu 'nın kurumsal sınıf özelliklerini de alır; küresel, buluta iyileştirilmiş aracılı; Esnek masaüstü seçenekleri ve yapılandırması; Kullanıcı ortamı yönetimi; ve karma ortamlar için destek.
 
 - [Microsoft Azure 'de ufuk bulutu 'Nın teknik önizlemesine kaydolun](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [İş ortağı Web sitesine gidin](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
@@ -93,7 +93,7 @@ Nerdio, Windows sanal masaüstü 'Nün dağıtılmasını ve yönetilmesini kola
 Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kolaylaştırarak Windows sanal masaüstü 'nün değerini genişletir. Azure için Nerdio sayesinde, Windows sanal masaüstü de dahil olmak üzere tüm Azure ortamlarını iki saat içinde otomatik olarak dağıtabilir ve yönetebilir.
 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
-- [İş ortağı Web sitesine gidin](https://getnerdio.com/academy/windows-virtual-desktop-explained-for-msps/).
+- [İş ortağı Web sitesine gidin](https://getnerdio.com/windows-virtual-desktop/).
 
 ## <a name="thinprint"></a>Ölçülü yazdırma
 
@@ -106,7 +106,7 @@ Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kola
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
 - [İş ortağı Web sitesine gidin](https://www.ezeep.com/wvd-printing).
 
-## <a name="workspot"></a>Workspot
+## <a name="workspot"></a>Çalışma noktası
 
 ![Çalışma noktası logosu](./media/partners/workspot.png)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 19ccd44888d64967baf82568c1cbb2540f3b3f68
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 75edb385a86be849ec7c165759d3b451eab804f6
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780336"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828519"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric güvenliği 
 
@@ -79,7 +79,7 @@ Service Fabric kümesi işlemleriniz için sertifikalarınızı bir ACL uygulama
 
 ## <a name="secure-a-service-fabric-cluster-certificate-by-common-name"></a>Ortak ada göre Service Fabric kümesi sertifikasını güvenli hale getirme
 
-Service Fabric kümenizin sertifikaya `Common Name`göre güvenliğini sağlamak için [certificatecommonnames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)Kaynak Yöneticisi şablon özelliğini aşağıdaki gibi kullanın:
+Service Fabric kümenizi @no__t sertifikaya göre güvenli hale getirmek için, aşağıdaki gibi, [Certificatecommonnames](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterproperties#certificatecommonnames)Kaynak Yöneticisi şablon özelliğini kullanın:
 
 ```json
 "certificateCommonNames": {
@@ -96,16 +96,16 @@ Service Fabric kümenizin sertifikaya `Common Name`göre güvenliğini sağlamak
 > [!NOTE]
 > Service Fabric kümeler, ana bilgisayarınızın sertifika deposunda bulduğu ilk geçerli sertifikayı kullanır. Bu, Windows 'ta, ortak ad ve veren parmak iziyle eşleşen son geçerlilik tarihi olan sertifika olacaktır.
 
-*\< \<\>Sizin alt etki alanı. cloudapp.Azure.com veya alt etki alanı. trafficmanager.NET gibi Azure etki alanları Microsoft 'a aittir.\> Sertifika yetkilileri, yetkisiz kullanıcılara etki alanları için sertifika yayınmayacak. Çoğu kullanıcının, bir sertifika yetkilisinin bu ortak ada sahip bir sertifika vermesi için bir kayıt grubundan bir etki alanı satın alması veya yetkili bir etki alanı yöneticisi olması gerekir.
+\* @No__t-0SIZIN SUBDOMAIN\>.cloudapp.azure.com veya \<SIZIN SUBDOMAIN\>.trafficmanager.net gibi Azure etki alanları Microsoft 'a aittir. Sertifika yetkilileri, yetkisiz kullanıcılara etki alanları için sertifika yayınmayacak. Çoğu kullanıcının, bir sertifika yetkilisinin bu ortak ada sahip bir sertifika vermesi için bir kayıt grubundan bir etki alanı satın alması veya yetkili bir etki alanı yöneticisi olması gerekir.
 
 DNS hizmetini, etki alanınızı bir Microsoft IP adresine çözümlemek üzere yapılandırma hakkında daha fazla bilgi için, [etki alanınızı barındırmak üzere Azure DNS](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)yapılandırma konusunu gözden geçirin.
 
 > [!NOTE]
 > Etki alanı adı sunucularınızın Azure DNS bölge adı sunucularınıza yetkisini aldıktan sonra, DNS bölgenize aşağıdaki iki kaydı ekleyin:
-> - Özel etki alanınız için bir `Alias record set` IP adresi olmayan etki alanı tepesinde için bir ' A ' kaydı.
-> - Sağladığınız Microsoft alt etki alanları için bir `Alias record set`' C ' kaydı. Örneğin, Traffic Manager veya Load Balancer DNS adını kullanabilirsiniz.
+> - Özel etki alanınız çözülecek tüm IP adreslerine `Alias record set` olmayan etki alanı TEPESINDE için bir ' A ' kaydı.
+> - Sağladığınız Microsoft Sub Domains için bir ' C ' kaydı, `Alias record set` DEĞILDIR. Örneğin, Traffic Manager veya Load Balancer DNS adını kullanabilirsiniz.
 
-Portalınızı Service Fabric kümeniz `"managementEndpoint"`için özel bir DNS adı görüntüleyecek şekilde güncelleştirmek için, Service Fabric kümesini izle Kaynak Yöneticisi şablon özelliklerini güncelleştirin:
+Portalınızı Service Fabric kümeniz için özel bir DNS adı görüntüleyecek şekilde güncelleştirmek üzere `"managementEndpoint"` ' ı Service Fabric kümeyi izle Kaynak Yöneticisi şablon özelliklerini güncelleştirin:
 
 ```json
  "managementEndpoint": "[concat('https://<YOUR CUSTOM DOMAIN>:',parameters('nt0fabricHttpGatewayPort'))]",
@@ -152,6 +152,18 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 
 Korumalı değerlerinizi şifrelemeden sonra, [Service Fabric uygulamasında şifrelenmiş gizli dizileri belirtin](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#specify-encrypted-secrets-in-an-application)ve [şifreli gizli dizileri hizmet kodundan çözün](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-secret-management#decrypt-encrypted-secrets-from-service-code).
 
+## <a name="include-certificate-in-service-fabric-applications"></a>Service Fabric uygulamalara sertifika ekleme
+
+Uygulamanıza gizli dizi erişimi sağlamak için, uygulama bildirimine bir **Secretscercertificate** öğesi ekleyerek sertifikayı dahil edin.
+
+```xml
+<ApplicationManifest … >
+  ...
+  <Certificates>
+    <SecretsCertificate Name="MyCert" X509FindType="FindByThumbprint" X509FindValue="[YourCertThumbrint]"/>
+  </Certificates>
+</ApplicationManifest>
+```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>Yönetilen Hizmet Kimliği (MSI) kullanarak Azure kaynaklarında Service Fabric uygulamalarının kimliğini doğrulama
 
 Azure kaynakları için Yönetilen kimlikler hakkında bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work).
@@ -159,7 +171,7 @@ Azure Service Fabric kümeleri, [yönetilen hizmet kimliği](https://docs.micros
 Üzerinde kimlik doğrulaması yapmak için MSI tarafından kullanılabilecek hizmetlerin bir listesini almak için, bkz. [Azure Active Directory kimlik doğrulamasını destekleyen Azure hizmetleri](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication).
 
 
-Bir sanal makine ölçek kümesi veya var olan bir sanal makine ölçek kümesi oluşturma sırasında sistem tarafından atanan yönetilen kimliği etkinleştirmek için aşağıdaki `"Microsoft.Compute/virtualMachinesScaleSets"` özelliği bildirin:
+Bir sanal makine ölçek kümesi veya var olan bir sanal makine ölçek kümesi oluşturma sırasında sistem tarafından atanan yönetilen kimliği etkinleştirmek için aşağıdaki `"Microsoft.Compute/virtualMachinesScaleSets"` özelliğini bildirin:
 
 ```json
 "identity": { 
@@ -168,7 +180,7 @@ Bir sanal makine ölçek kümesi veya var olan bir sanal makine ölçek kümesi 
 ```
 Daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler nedir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vmss#system-assigned-managed-identity) .
 
-[Kullanıcı tarafından atanan bir yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)oluşturduysanız, sanal makine ölçek kümesine atamak için şablonunuzda aşağıdaki kaynağı bildirin. Öğesini `\<USERASSIGNEDIDENTITYNAME\>` , oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliğin adıyla değiştirin:
+[Kullanıcı tarafından atanan bir yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity)oluşturduysanız, sanal makine ölçek kümesine atamak için şablonunuzda aşağıdaki kaynağı bildirin. @No__t-0 ' yı, oluşturduğunuz Kullanıcı tarafından atanan yönetilen kimliğin adıyla değiştirin:
 
 ```json
 "identity": {
@@ -205,7 +217,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 [Bir taban çizgisi oluşturmak yerine, Microsoft güvenlik temelleri gibi yaygın olarak bilinen ve iyi test edilmiş sektör standardı bir yapılandırma uygulamanızı öneririz](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines). bunları sanal makine ölçek kümelerinde sağlamaya yönelik bir seçenek, Azure Istenen durum yapılandırması (DSC) uzantı işleyicisini kullanarak VM 'Leri çevrimiçi olduklarında yapılandırmak için, üretim yazılımını çalıştırırlar.
 
 ## <a name="azure-firewall"></a>Azure Güvenlik Duvarı
-[Azure Güvenlik Duvarı, Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe sahip ve sınırsız sayıda bulut ölçeklenebilirliğe sahip bir hizmet olarak tam durum bilgisi olmayan bir güvenlik duvarıdır. ](https://docs.microsoft.com/azure/firewall/overview)bu, giden HTTP/S trafiğini, joker karakterler de dahil olmak üzere, tam etki alanı adları (FQDN) ile sınırlama imkanı sağlar. Bu özelliğe SSL sonlandırması gerekmez. Windows güncelleştirmeleri için [Azure Güvenlik DUVARı FQDN etiketleri](https://docs.microsoft.com/azure/firewall/fqdn-tags) kullanmanız ve Microsoft Windows Update uç noktalarına ağ trafiğini etkinleştirmek için, güvenlik duvarınız üzerinden akabilir. [Şablon kullanarak Azure Güvenlik Duvarı dağıtmak](https://docs.microsoft.com/azure/firewall/deploy-template) , Microsoft. Network/azureFirewalls kaynak şablonu tanımı için bir örnek sağlar. Service Fabric uygulamalarda ortak olan güvenlik duvarı kuralları, kümeleriniz sanal ağınız için aşağıdakilere izin verdir:
+[Azure Güvenlik Duvarı, Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe sahip ve sınırsız sayıda bulut ölçeklenebilirliğe sahip bir hizmet olarak tam durum bilgisi olmayan bir güvenlik duvarıdır.](https://docs.microsoft.com/azure/firewall/overview); Bu, giden HTTP/S trafiğini, joker karakterler de dahil olmak üzere, tam etki alanı adları (FQDN) belirtilen bir listeyle sınırlandırmanızı sağlar. Bu özellik SSL sonlandırması gerektirmez. Windows güncelleştirmeleri için [Azure Güvenlik DUVARı FQDN etiketleri](https://docs.microsoft.com/azure/firewall/fqdn-tags) kullanmanız ve Microsoft Windows Update uç noktalarına ağ trafiğini etkinleştirmek için, güvenlik duvarınız üzerinden akabilir. [Şablon kullanarak Azure Güvenlik Duvarı dağıtmak](https://docs.microsoft.com/azure/firewall/deploy-template) , Microsoft. Network/azureFirewalls kaynak şablonu tanımı için bir örnek sağlar. Service Fabric uygulamalarda ortak olan güvenlik duvarı kuralları, kümeleriniz sanal ağınız için aşağıdakilere izin verdir:
 
 - \* download.microsoft.com
 - \* servicefabric.azure.com
@@ -213,7 +225,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 
 Bu güvenlik duvarı kuralları, sanal ağınızdan izin verilen hedefler olarak ServiceFabric ve Storage dahil olmak üzere izin verilen giden ağ güvenlik gruplarınızı tamamlar.
 
-## <a name="tls-12"></a>TLS 1.2
+## <a name="tls-12"></a>TLS 1,2
 [TSG](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
 ## <a name="windows-defender"></a>Windows Defender 
@@ -264,8 +276,8 @@ Varsayılan olarak, Service Fabric uygulamalar, kendisini farklı formlarda bild
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* VM 'lerde veya bilgisayarlarda Windows Server çalıştıran bir küme oluşturun: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md).
-* VM 'lerde veya bilgisayarlarda Linux çalıştıran bir küme oluşturun: [Bir Linux kümesi oluşturun](service-fabric-cluster-creation-via-portal.md).
+* Windows Server çalıştıran VM 'lerde veya bilgisayarlarda küme oluşturma: [Windows Server için Service Fabric kümesi oluşturma](service-fabric-cluster-creation-for-windows-server.md).
+* VM 'lerde veya bilgisayarlarda Linux çalıştıran bir küme oluşturun: [Linux kümesi oluşturma](service-fabric-cluster-creation-via-portal.md).
 * [Service Fabric destek seçenekleri](service-fabric-support.md)hakkında bilgi edinin.
 
 [Image1]: ./media/service-fabric-best-practices/generate-common-name-cert-portal.png

@@ -1,27 +1,27 @@
 ---
-title: 'Öğretici: Azure Zaman Serisi Görüşleri ortamı oluşturma | Microsoft Docs'
+title: 'Öğretici: Azure Time Series Insights ortam oluşturma | Microsoft Docs'
 description: Sanal cihazlardan alınan verilerle doldurulan bir Time Series Insights ortamı oluşturmayı öğrenmek için öğretici.
 services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6144fd58a98376f9091fc7045d0e60e99feda709
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725749"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841863"
 ---
-# <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Öğretici: Azure Time Series Insights ortamı oluşturma
+# <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Öğretici: Azure Time Series Insights ortam oluşturma
 
-Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Series Insights ortamı oluşturma sürecinde size rehberlik eder. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Series Insights ortamı oluşturma sürecinde size rehberlik eder. Bu öğreticide şunların nasıl yapıladığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Zaman serisi görüşleri ortamı oluşturun.
+> * Time Series Insights ortamı oluşturun.
 > * IoT Hub içeren bir cihaz benzetim çözümü oluşturun.
 > * Time Series Insights ortamını IoT Hub 'ına bağlayın.
 > * Time Series Insights ortamına veri akışı sağlamak için bir cihaz benzetimi çalıştırın.
@@ -30,7 +30,7 @@ Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Ser
 > [!IMPORTANT]
 > Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free/) kaydolun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure oturum açma hesabınız Ayrıca aboneliğin **sahip** rolünün bir üyesi olmalıdır. Daha fazla bilgi için bkz. [rol tabanlı erişim denetimi ve Azure Portal kullanarak erişimi yönetme](../role-based-access-control/role-assignments-portal.md).
 
@@ -40,7 +40,7 @@ Bu öğretici, sanal cihazlardan alınan verilerle doldurulan bir Azure Time Ser
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Time Series Insights ortamı, cihaz verilerinin toplandığı ve depolandığı yerdir. Depolanan [Azure Time Series Insights Gezgini](time-series-quickstart.md) ve [Time Series Insights sorgu API 'si](/rest/api/time-series-insights/ga-query-api) , verileri sorgulamak ve analiz etmek için kullanılabilir.
 
@@ -57,7 +57,7 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
 
 1. Ayrı bir pencere veya sekmede [azureiotsolutions.com](https://www.azureiotsolutions.com)adresine gidin. Aynı Azure aboneliği hesabını kullanarak oturum açın ve **cihaz benzetimi** hızlandırıcıyı seçin.
 
-   [![Cihaz benzetimi hızlandırıcıyı çalıştırın](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+   [![ cihaz benzetimi hızlandırıcıyı Çalıştır](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
 
 1. **Cihaz simülasyonu çözümü oluştur** sayfasında gerekli parametreleri girin.
 
@@ -70,7 +70,7 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
 
    İşiniz bittiğinde çözümün Azure kaynaklarını sağlamak için **çözüm oluştur** ' u seçin. Bu işlemin tamamlanması 20 dakikaya kadar sürebilir.
 
-   [![Cihaz benzetimi çözümünü sağlama](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+   [![ cihaz benzetimi çözümünü sağlama](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
 
 1. Sağlama tamamlandıktan sonra, yeni çözümünüzün üzerindeki metin, **hazırlama** işleminden **başlamaya**değişir.
 
@@ -88,27 +88,27 @@ Bu öğretici Ayrıca IoT Hub için örnek telemetri verileri oluşturmak ve ak�
 İkinci olarak, Azure aboneliğinizde bir Time Series Insights ortamı oluşturun.
 
 1. Azure abonelik hesabınızı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. 
-1. Üstteki menüden **+ Kaynak oluştur**'u seçin. 
-1. Seçin **nesnelerin interneti** kategori tıklayın ve ardından **Time Series Insights**. 
+1. Sol üst köşedeki **+ kaynak oluştur** ' u seçin. 
+1. **Nesnelerin interneti** kategorisini seçin ve ardından **Time Series Insights**' ı seçin. 
 
-   [![Time Series Insights ortam kaynağını seçin](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png#lightbox)
+   [![Time Series Insights ortam kaynağını seçme](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png#lightbox)
 
 1. **Time Series Insights ortamı** sayfasında, gerekli parametreleri girin.
 
    Parametre|Açıklama
    ---|---
    **Ortam adı** | Time Series Insights ortamı için benzersiz bir ad seçin. Adlar Time Series Insights Gezgini ve [sorgu API 'leri](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)tarafından kullanılır.
-   **Abonelik** | Abonelikler, Azure kaynaklarına yönelik kapsayıcılardır. Time Series Insights ortamını oluşturmak için bir abonelik seçin.
-   **Kaynak grubu** | Kaynak grubu, Azure kaynaklarına yönelik bir kapsayıcıdır. Mevcut bir kaynak grubunu seçin veya Time Series Insights ortam kaynağı için yeni bir tane oluşturun.
-   **Location** | Time Series Insights ortamınız için bir veri merkezi bölgesi seçin. Ek gecikmeyi önlemek için, diğer IoT kaynaklarıyla aynı bölgede Time Series Insights ortamı oluşturun.
-   **Tier** | Gerekli aktarım hızını seçin. **S1**' i seçin.
-   **Kapasite** | Kapasite, seçilen SKU ile ilişkili giriş hızına ve depolama kapasitesine uygulanan çarpandır. Oluşturulduktan sonra kapasiteyi değiştirebilirsiniz. **1**kapasitesini seçin.
+   **Aboneliğiniz** | Abonelikler Azure kaynakları için kapsayıcılardır. Time Series Insights ortamını oluşturmak için bir abonelik seçin.
+   **Kaynak grubu** | Kaynak grubu, Azure kaynakları için bir kapsayıcıdır. Mevcut bir kaynak grubunu seçin veya Time Series Insights ortam kaynağı için yeni bir tane oluşturun.
+   **Konum** | Time Series Insights ortamınız için bir veri merkezi bölgesi seçin. Ek gecikmeyi önlemek için, diğer IoT kaynaklarıyla aynı bölgede Time Series Insights ortamı oluşturun.
+   **Tier** | Gereken üretilen işi seçin. **S1**' i seçin.
+   **Kü** | Kapasite, seçilen SKU ile ilişkili giriş hızına ve depolama kapasitesine uygulanan çarpandır. Oluşturulduktan sonra kapasiteyi değiştirebilirsiniz. **1**kapasitesini seçin.
 
    İşiniz bittiğinde sonraki adıma geçmek için **gözden geçir + oluştur** ' u seçin.
 
    [![Time Series Insights ortam kaynağı oluşturma](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
 
-1. Şimdi, Time Series Insights ortamını Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ına bağlayın. Hub`Select existing` **seçin seçeneğini** belirleyin. Daha sonra, **IoT Hub adı**ayarlanırken Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ını seçin.
+1. Şimdi, Time Series Insights ortamını Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ına bağlayın. @No__t-1 için **bir hub seçin** ayarla. Daha sonra, **IoT Hub adı**ayarlanırken Çözüm Hızlandırıcısı tarafından oluşturulan IoT Hub 'ını seçin.
 
    [![Time Series Insights ortamını oluşturulan IoT Hub 'ına bağlama](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
 
@@ -122,7 +122,7 @@ Dağıtım ve ilk yapılandırmanın tamamlandığına göre, Time Series Insigh
 
 IoT Hub ile birlikte, sanal cihaz telemetrisini oluşturmak ve iletmek için bir Azure App Service Web uygulaması oluşturulmuştur.
 
-1. [Çözüm hızlandırıcıları panonuza](https://www.azureiotsolutions.com/Accelerators#dashboard) geri dönün. Gerekirse, bu öğreticide kullandığınız Azure hesabını kullanarak yeniden oturum açın. Şimdi "cihaz benzetimi" çözümünüz altında **Başlat** ' ı seçebilirsiniz.
+1. [Çözüm Hızlandırıcıları panonuza](https://www.azureiotsolutions.com/Accelerators#dashboard)geri dönün. Gerekirse, bu öğreticide kullandığınız Azure hesabını kullanarak yeniden oturum açın. Şimdi "cihaz benzetimi" çözümünüz altında **Başlat** ' ı seçebilirsiniz.
 
      [![Çözüm Hızlandırıcılar panosu](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
 
@@ -134,11 +134,11 @@ IoT Hub ile birlikte, sanal cihaz telemetrisini oluşturmak ve iletmek için bir
 
    Parametre|Açıklama
    ---|---
-   **Hedef IoT Hub'ı** | **Önceden sağlanmış IoT Hub kullan**' ı seçin.
+   **Hedef IoT Hub** | **Önceden sağlanmış IoT Hub kullan**' ı seçin.
    **Cihaz modeli** | **Chiller**'i seçin.
-   **Cihaz sayısı**  | Miktar `1000` altındagirin.
-   **Telemetri sıklığı** | Saniyeleri `10` girin.
-   **Benzetim süresi** | **Bitiş: '** i seçin ve `5` dakikaları girin.
+   **Cihaz sayısı**  | @No__t-0 **sayısını**girin.
+   **Telemetri frekansı** | @No__t-0 saniye girin.
+   **Simülasyon süresi** | **Bitiş: '** i seçin ve `5` dakika girin.
 
    İşiniz bittiğinde **Benzetim Başlat**' ı seçin. Simülasyon toplam 5 dakika boyunca çalışır. Her 10 saniyede 1.000 sanal cihazdan veri üretir. 
 
@@ -150,7 +150,7 @@ IoT Hub ile birlikte, sanal cihaz telemetrisini oluşturmak ve iletmek için bir
 
 ## <a name="verify-the-telemetry-data"></a>Telemetri verilerini doğrulama
 
-Bu son bölümde Telemetri verilerinin Time Series Insights ortamda oluşturulduğunu ve depolandığını doğrularsınız. Verileri doğrulamak için, telemetri verilerini sorgulamak ve çözümlemek için kullanılan Time Series Insights gezgininden yararlanın.
+Bu son bölümde Telemetri verilerinin Time Series Insights ortamda oluşturulduğunu ve depolandığını doğrularsınız. Verileri doğrulamak için telemetri verilerini sorgulamak ve analiz etmek üzere kullanılan Time Series Insights Gezginini kullanırsınız.
 
 1. Time Series Insights ortamının kaynak grubuna **genel bakış** sayfasına dönün. Time Series Insights ortamını seçin.
 
@@ -162,17 +162,17 @@ Bu son bölümde Telemetri verilerinin Time Series Insights ortamda oluşturuldu
 
 1. Time Series Insights Gezgini Azure portal hesabınızı kullanarak yükler ve kimliğini doğrular. İlk görünümden sonra, Time Series Insights ortamının sanal telemetri verileriyle doldurulduğu grafik alanında görebilirsiniz. Daha dar bir zaman aralığını filtrelemek için sol üst köşedeki açılan eklentiyi seçin. Cihaz benzetimi süresini kapsayacak kadar büyük bir zaman aralığı girin. Ardından, arama Büyüteç Camı ' nı seçin.
 
-   [![Time Series Insights Explorer zaman aralığı Filtresi](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
+   [![Time Series Insights Gezgini zaman aralığı Filtresi](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
 1. Zaman aralığını daraltmak grafiğin, IoT Hub 'ına ve Time Series Insights ortamına veri aktarımının farklı dünyanlarına yakınlaştırmasını sağlar. Ayrıca, sağ üst köşedeki **akış tam** metnine, bulunan toplam olay sayısını gösteren dikkat edin. Ayrıca, grafikteki çizim ayrıntı düzeyini denetlemek için **Aralık boyutu** kaydırıcısını sürükleyebilirsiniz.
 
-   [![Time Series Insights Explorer zaman aralığı filtrelenmiş görünümü](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
+   [![Time Series Insights Gezgini zaman aralığı filtrelenmiş görünümü](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
 
 1. Son olarak, bir aralığı filtrelemek için bir bölgeye da sol tıklayabilirsiniz. Ardından sağ tıklayıp tablo **olayları** görünümünde olay ayrıntılarını göstermek Için **olayları keşfet** ' i kullanın.
 
-   [![Time Series Insights Explorer zaman aralığı filtrelenmiş görünümü ve olayları](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
+   [![Time Series Insights Gezgini zaman aralığı filtrelenmiş görünümü ve olayları](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
 Bu öğreticide, Time Series Insights ortamı ve cihaz benzetimi çözümünü desteklemek için birkaç çalışan Azure hizmeti oluşturulur. Bunları kaldırmak için Azure portal geri gidin.
 
@@ -184,10 +184,10 @@ Azure portal sol taraftaki menüden:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+Bu öğreticide, nasıl yapılacağını öğrendiniz:
 
 > [!div class="checklist"]
-> * Zaman serisi görüşleri ortamı oluşturun.
+> * Time Series Insights ortamı oluşturun.
 > * IoT Hub içeren bir cihaz benzetim çözümü oluşturun.
 > * Time Series Insights ortamını IoT Hub 'ına bağlayın.
 > * Time Series Insights ortamına veri akışı sağlamak için bir cihaz benzetimi çalıştırın.
@@ -196,4 +196,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Artık kendi Time Series Insights ortamınızı oluşturmayı bildiğinize göre, bir Time Series Insights ortamından veri tüketen bir Web uygulaması oluşturmayı öğrenin:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights tek sayfalı web uygulaması oluşturma](tutorial-create-tsi-sample-spa.md)
+> [Azure Time Series Insights tek sayfalı Web uygulaması oluşturma](tutorial-create-tsi-sample-spa.md)

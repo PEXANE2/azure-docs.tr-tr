@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 154317e558c2c9a22f569f569684cced467900d5
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716619"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937473"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2"></a>Web uygulaması güvenlik duvarı v2 için özel kurallar
 
@@ -37,7 +37,7 @@ Normal ifadeler Ayrıca, benzer RuleSets gibi özel kurallarda de desteklenir. B
 
 Özel kurallar sayesinde trafiğin izin verilmesi ve engellenmesi basittir. Örneğin, bir IP adresi aralığından gelen tüm trafiği engelleyebilirsiniz. İstek belirli bir tarayıcıdan geliyorsa, trafiğe izin vermek için başka bir kural yapabilirsiniz.
 
-Bir şeye izin vermek için, `-Action` parametrenin **izin ver**' e ayarlandığından emin olun. Bir şeyi engellemek için, `-Action` parametresinin **Block**olarak ayarlandığından emin olun.
+Bir şeye izin vermek için `-Action` parametresinin **Izin ver**olarak ayarlandığından emin olun. Bir şeyi engellemek için `-Action` parametresinin **Engelle**olarak ayarlandığından emin olun.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -96,8 +96,8 @@ Kuralın adıdır. Bu ad günlüklerde görüntülenir.
 
 ### <a name="priority-required"></a>Öncelik [gerekli]
 
-- Kuralların değerlendirildiği sırayı belirler. Değer ne kadar düşükse, kural değerlendirme daha erken yapılır.
--Tüm özel kurallar arasında benzersiz olmalıdır. Öncelik 100 olan bir kural, öncelik 200 olan bir kuraldan önce değerlendirilir.
+- Kuralların değerlendirildiği sırayı belirler. Değer ne kadar düşükse, kural değerlendirme daha erken yapılır. İzin verilen Aralık 1-100 ' dir. 
+- Tüm özel kurallar arasında benzersiz olmalıdır. Öncelik 40 olan bir kural, öncelik 80 olan bir kuraldan önce değerlendirilir.
 
 ### <a name="rule-type-required"></a>Kural türü [gerekli]
 
@@ -129,11 +129,11 @@ Aşağıdaki işleçlerden biri olmalıdır:
 - İçerir
 - LessThan
 - GreaterThan
-- LessThanOrEqual
+- Yetersiz Otalep al
 - GreaterThanOrEqual
 - Ile başlıyor
 - EndsWith
-- Regex
+- Düzenli ifadesi
 
 ### <a name="negate-condition-optional"></a>Negate koşulu [isteğe bağlı]
 
@@ -144,7 +144,7 @@ Geçerli koşulu geçersiz kılar.
 Eşleşmesinden önce yapılacak dönüşümlerdeki adlara sahip dizelerin listesi. Bunlar aşağıdaki dönüşümler olabilir:
 
 - Küçük
-- Kırp
+- kırpma
 - URL kod çözme
 - UrlEncode 
 - RemoveNulls

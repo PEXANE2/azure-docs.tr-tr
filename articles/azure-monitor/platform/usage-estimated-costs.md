@@ -1,6 +1,6 @@
 ---
-title: Kullanım ve Tahmini maliyetler Azure İzleyici'de izleme
-description: Azure İzleyici kullanım ve Tahmini maliyetler sayfasında kullanma işlemine genel bakış
+title: Azure Izleyici 'de kullanımı ve tahmini maliyetleri izleme
+description: Azure Izleyici kullanımını ve tahmini maliyetleri kullanma sürecine genel bakış sayfası
 author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,107 +9,105 @@ ms.date: 04/18/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 787618b59cd18dd4c38892ddf0861808211671cb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453825"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936617"
 ---
-# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Kullanım ve Tahmini maliyetler Azure İzleyici'de izleme
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Izleyici 'de kullanımı ve tahmini maliyetleri izleme
 
 > [!NOTE]
-> Bu makalede, kullanım ve Tahmini maliyetler arasında farklı fiyatlandırma modelleri için birden çok Azure İzleme özelliklerini görüntülemek açıklar.  İlgili bilgiler için aşağıdaki makalelere göz atın.
-> - [Veri hacmi ve saklama Log analytics'te kontrol ederek maliyet yönetme](manage-cost-storage.md) veri saklama döneminizin değiştirerek maliyetlerinizi denetlemek nasıl açıklar.
-> - [Log analytics'te veri kullanımını çözümleme](../../azure-monitor/platform/data-usage.md) analiz ve veri kullanımınızı uyarı açıklar.
-> - [Application ınsights fiyatlandırma ve veri hacmini yönetme](../../azure-monitor/app/pricing.md) Application ınsights'ta veri kullanımını çözümleme açıklar.
+> Bu makalede, farklı fiyatlandırma modelleri için birden çok Azure izleme özelliği genelinde kullanım ve tahmini maliyetlerin nasıl görüntüleneceği açıklanmaktadır. Azure Izleyici 'nin belirli bileşenlerine ilişkin makaleler şunlardır:
+> - [Azure Izleyici günlükleri ile kullanımı ve maliyetleri yönetme](manage-cost-storage.md) , veri saklama dönemini değiştirerek maliyetlerinizi nasıl denetleyeceğinizi ve veri kullanımınızın nasıl analiz edileceğini ve uyarılanacağını açıklar.
+> - [Kullanım ve maliyetleri yönetme Application Insights](../../azure-monitor/app/pricing.md) , Application Insights veri kullanımının nasıl analiz edileceğini açıklar.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+Azure portal Monitor hub 'ında **kullanım ve tahmini maliyetler** sayfası, [uyarı, ölçümler, bildirimler](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)ve [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)gibi çekirdek izleme özelliklerinin kullanımını açıklar. Fiyatlandırma planlarındaki müşteriler 2018 Nisan 'dan önce kullanılabilir ve ayrıca, Öngörüler ve analiz teklifiyle satın alınan Log Analytics kullanımını da içerir.
 
-Azure portal'ın İzleyici hub'ında **kullanım ve Tahmini maliyetler** sayfası izleme özellikleri gibi Çekirdek kullanımını açıklar [bildirimleri ölçümleri, uyarılar](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics ](https://azure.microsoft.com/pricing/details/log-analytics/), ve [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). Nisan 2018 tarihinden önce kullanılabilir fiyatlandırma planları müşteriler, bu öngörüleri satın alınan Log Analytics kullanımı da içerir ve analizi sunar.
+Bu sayfada, kullanıcılar, abonelik başına toplanan son 31 gün boyunca kaynak kullanımını görüntüleyebilirler. Detaya gitme, 31 günlük dönem boyunca kullanım eğilimlerini gösterir. Bu tahmin için çok fazla veri gelmesi gerekir, bu nedenle lütfen sayfa yüklenirken hasta olun.
 
-Bu sayfada, kullanıcılar kendi kaynak kullanımı son 31 gün için abonelik başına toplanan görüntüleyebilir. Bağlantılı bileşenler 31 günlük dönem boyunca kullanım eğilimlerini gösterir. Çok fazla veri için bu tahmin, bu nedenle birlikte gelen gerektiğinde sayfa yüklenirken lütfen sabırlı olun.
+Bu örnekte, izleme kullanımı ve elde edilen maliyetlerin tahmini gösterilmektedir:
 
-Bu örnek, izleme kullanımını ve elde edilen maliyet tahmini gösterir:
+![Kullanım ve tahmini maliyetler portalı ekran görüntüsü](./media/usage-estimated-costs/001.png)
 
-![Kullanım ve Tahmini maliyetler portalı ekran görüntüsü](./media/usage-estimated-costs/001.png)
+Son 31 günlük dönemde kullanım eğilimlerini gösteren bir grafik açmak için aylık kullanım sütunundaki bağlantıyı seçin:
 
-Son 31 gün dönem boyunca kullanım eğilimlerini gösteren bir grafiği'ni açmak için aylık kullanım sütunundaki bağlantıyı seçin:
+![Düğüm başına çubuk grafik ekran görüntüsü](./media/usage-estimated-costs/002.png)
 
-![Çubuk grafik ekran düğüm başına dahil edilen](./media/usage-estimated-costs/002.png)
+Diğer bir benzer kullanım ve maliyet özeti aşağıda verilmiştir. Bu örnekte, yeni Nisan 2018 tüketim tabanlı fiyatlandırma modelinde bir abonelik gösterilmektedir. Düğüm tabanlı tüm faturalandırmaya yer olmadığını göz önünde edin. Log Analytics ve Application Insights veri alımı ve saklama, artık yeni bir ortak ölçüm üzerinden raporlanır.
 
-İşte başka bir benzer kullanım ve maliyet özeti. Bu örnekte, yeni Nisan 2018 tüketim tabanlı fiyatlandırma modeliyle bir abonelik gösterilmektedir. Tüm düğüm kullanıma dayalı faturalandırma eksikliği unutmayın. Veri alımı ve Log Analytics ve Application Insights için bekletme artık yeni bir ortak ölçüm olarak raporlanır.
+![Kullanım ve tahmini maliyetler portalı ekran görüntüsü-Nisan 2018 fiyatlandırması](./media/usage-estimated-costs/003.png)
 
-![Kullanım ve Tahmini maliyetler portalı ekran görüntüsü - Nisan 2018 fiyatlandırma](./media/usage-estimated-costs/003.png)
+## <a name="pricing-model"></a>Fiyatlandırma modeli
 
-## <a name="new-pricing-model"></a>Yeni fiyatlandırma modeli
+Nisan 2018 ' de [Yeni bir izleme fiyatlandırma modeli yayımlanmıştır](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Bu özellikler bulutta kullanımı kolay, tüketim tabanlı fiyatlandırma ("Kullandıkça öde"). Düğüm tabanlı taahhütler olmadan yalnızca kullandığınız kadar ödersiniz. Yeni fiyatlandırma modelinin ayrıntıları, [uyarı, ölçümler, bildirimler](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) ve [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)için kullanılabilir. 
 
-Nisan 2018'de bir [yeni fiyatlandırma modeli izleme bırakıldığını](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Bu, bulut kullanımı kolay, tüketim tabanlı fiyatlandırma sunar. Yalnızca, düğüm tabanlı taahhüt kullandıklarınız için ödeme yaparsınız. Yeni fiyatlandırma modeline ayrıntılarını kullanılabilir [bildirimleri ölçümleri, uyarılar](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) ve [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). 
+Kullandıkça Öde modeline ek olarak, Eylül 2019 ' de, Kullandıkça Öde fiyatına kıyasla% 25 ' e kadar tasarruf etmeniz için kapasite ayırmaları ekledik Log Analytics. Kapasite ayırma fiyatlandırması, 100 GB/gün üzerinden başlayan bir rezervasyon satın almanıza olanak sağlar. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Kapasite ayırma fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) .
 
-Log Analytics veya Application ınsights'ı 2 Nisan 2018 tarihinden sonra müşterilerin eklenmesi için yeni fiyatlandırma modeline tek seçenektir. Bu hizmetler kullanan müşteriler için yeni fiyatlandırma modeline taşıma isteğe bağlıdır.
+2 Nisan 2018 ' den sonra Log Analytics veya Application Insights olan müşteriler için yeni fiyatlandırma modeli tek seçenektir. Bu hizmetleri zaten kullanan müşteriler için yeni fiyatlandırma modeline taşıma isteğe bağlıdır.
 
-## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Yeni fiyatlandırma modeline etkisini değerlendirme
-Yeni fiyatlandırma modeli, kendi izleme kullanım düzenlerini esas alarak her müşteri farklı etkiler olacaktır. Log Analytics veya Application ınsights'ı 2 Nisan 2018'den önce kullanan müşteriler için **kullanım ve tahmini maliyet** Azure İzleyicisi'nde sayfa bunlar yeni fiyatlandırma modeline geçmeniz durumunda herhangi bir değişiklik maliyetleri tahmin eder. Yeni modele bir aboneliği taşımak için bir yol sunar. Çoğu müşteri için yeni fiyatlandırma modeline yararlı olacaktır. Özellikle yüksek veri kullanım düzenlerine sahip ya da daha yüksek maliyetli bölgelerindeki müşteriler için bu durumda olmayabilir.
+## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Yeni fiyatlandırma modelinin etkisi değerlendiriliyor
+Yeni fiyatlandırma modelinin, izleme kullanım düzenlerine göre her müşteri üzerinde farklı etkileri olacaktır. 2 Nisan 2018 tarihinden önce Log Analytics veya Application Insights kullanan müşteriler için, Azure Izleyici 'de **kullanım ve tahmini maliyet** sayfası, yeni fiyatlandırma modeline taşındıklarında maliyetlerdeki tüm değişiklikleri tahmin eder. Aboneliği yeni modele taşımanın yolunu sağlar. Çoğu müşteri için yeni fiyatlandırma modeli avantajlı olacaktır. Özellikle yüksek veri kullanımı desenleri veya daha yüksek maliyetli bölgelerde olan müşteriler için bu durum olmayabilir.
 
-Tahmini maliyetlerinizi abonelik üzerinde seçtiğiniz görmek için **kullanım ve Tahmini maliyetler** sayfasında, sayfanın üst kısmındaki mavi renkli bir başlık seçin. Yeni fiyatlandırma modeline önemsenmeksizin devralınabilir düzeyi, çünkü bu bir aboneliği bir zaman yapmanız önerilir.
+**Kullanım ve tahmini maliyetler** sayfasında seçtiğiniz Aboneliklerle ilgili maliyetlerinizin bir tahminini görmek için sayfanın üst kısmındaki mavi başlık ' ı seçin. Bu, yeni fiyatlandırma modelinin benimseme düzeyi olduğundan, bu aboneliği tek seferde yapmak en iyisidir.
 
-![Kullanım ve Tahmini maliyetler yeni fiyatlandırma modeli ekran izleme](./media/usage-estimated-costs/004.png)
+![Yeni fiyatlandırma modelinde kullanımı ve tahmini maliyetleri izleme ekran görüntüsü](./media/usage-estimated-costs/004.png)
 
-Yeni sayfa, önceki sayfanın yeşil başlığı ile benzer bir sürümü göstermektedir:
+Yeni sayfada yeşil bir başlık içeren önceki sayfanın benzer bir sürümü gösterilmektedir:
 
-![Kullanım ve Tahmini maliyetler geçerli fiyatlandırma modeli ekran izleme](./media/usage-estimated-costs/005.png)
+![Geçerli fiyatlandırma modelinde kullanımı ve tahmini maliyetleri izleme ekran görüntüsü](./media/usage-estimated-costs/005.png)
 
-Sayfa, yeni fiyatlandırma modeline karşılık gelen ölçümleri farklı bir kümesini de gösterir. Bu liste örneği verilmiştir:
+Bu sayfada Ayrıca yeni fiyatlandırma modeline karşılık gelen farklı ölçüm kümesi de gösterilmektedir. Bu liste bir örnektir:
 
-- İçgörü ve düğüm başına Analytics\Overage
-- İçgörü ve düğüm başına Analytics\Included
-- Uygulama Insights\Basic fazlalık veri
-- Uygulama Insights\Included verileri
+- Her düğüm için Öngörüler ve analiz Tics\fazla kullanım
+- Her düğüm için Öngörüler ve analiz ticiyi
+- Application ınsilars\temel Fazla Kullanım Verileri
+- Uygulama ınsilars\eklenen veriler
 
-Yeni fiyatlandırma modelinin düğüm tabanlı dahil edilen veri ayırma yok. Bu nedenle, bu veri alımı ölçümlerine adlı yeni ortak veri alımı bir ölçüm birleştirilir **paylaşılan Services\Data alımı**. 
+Yeni fiyatlandırma modelinde düğüm tabanlı dahil edilen veri ayırmaları yok. Bu nedenle, bu veri alma ölçümleri, **paylaşılan Services\Data**alımı adlı yeni bir ortak veri alımı ölçesinde birleştirilir. 
 
-Log Analytics veya Application ınsights'ı daha yüksek maliyetleri bölgelerde alınan verileri başka bir değişiklik yoktur. Bu yüksek maliyetli bölgelere verilerini yeni bölgesel ölçümlere ile gösterilir. Bir örnek **veri alımı (ABD Orta Batı)** .
+Log Analytics veya daha yüksek maliyetlere sahip bölgelerde Application Insights veri için başka bir değişiklik vardır. Bu yüksek maliyetli bölgelere yönelik veriler, yeni bölgesel ölçümler ile gösterilir. Veri alımı bir örnektir **(ABD Orta Batı)** .
 
 > [!NOTE]
-> Abonelik başına maliyetleri değil hesap düzeyinde düğüm yetkilendirmelerini Operations Management Suite (OMS) abonelik başına içine faktörü tahmini. Hesap temsilcinizle için daha ayrıntılı bir tartışma yeni fiyatlandırma modeli, bu durumda başvurun.
+> Abonelik başına tahmini maliyetler, Operations Management Suite (OMS) aboneliğinin düğüm başına hesap düzeyi yetkilendirmelerine göre hesaba katmaz. Bu durumda yeni fiyatlandırma modelinin daha ayrıntılı bir tartışmasını öğrenmek için hesap temsilcinize başvurun.
 
-## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Yeni fiyatlandırma modeli ve Operations Management Suite aboneliği destek hakları
+## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Yeni fiyatlandırma modeli ve Operations Management Suite abonelik yetkilendirmeleri
 
-Microsoft Operations Management Suite E1 ve E2 satın alan müşteriler için düğüm başına veri alımı yetkilendirmeler için uygun [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) ve [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing). Belirli bir abonelikte Bu destek haklarını Log Analytics çalışma alanları veya Application Insights kaynakları almak için: 
+Microsoft Operations Management Suite E1 ve E2 satın alan müşteriler, [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) ve [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing)için düğüm başına veri alma yetkilendirmelerinde uygun değildir. Log Analytics çalışma alanları için bu yetkilendirmeleri veya belirli bir abonelikteki kaynakları Application Insights almak için: 
 
-- Aboneliğin fiyatlandırma modeli, Nisan 2018 öncesi modele kalmalıdır.
-- Log Analytics çalışma alanları "fiyatlandırma katmanında düğüm başına (OMS)" kullanmanız gerekir.
-- Application Insights kaynakları "Kurumsal" fiyatlandırma planını kullanmanız gerekir.
+- Aboneliğin fiyatlandırma modelinin, Nisan 2018 modelinde kalması gerekir.
+- Log Analytics çalışma alanları "düğüm başına (OMS)" fiyatlandırma katmanını kullanmalıdır.
+- Application Insights kaynaklar "Kurumsal" fiyatlandırma planını kullanmalıdır.
 
-Kuruluşunuzun satın aldığı, paketin düğüm sayısına bağlı olarak bazı taşıma, yeni fiyatlandırma modeline abonelikleri yararlı olabilir ancak bunu dikkatli gerektirir. Genel olarak, yalnızca yukarıda açıklanan şekilde pre-Nisan 2018 modelinde kalmak için tavsiye edilir.
+Kuruluşunuzun satın aldığı paketin düğüm sayısına bağlı olarak, bazı aboneliklerin yeni fiyatlandırma modeline taşınması avantajlı olabilir, ancak bu dikkatli bir göz önünde bulundurmanız gerekir. Genel olarak, yukarıda açıklandığı gibi önceden Nisan 2018 modelinde kalmak önerilir.
 
 > [!WARNING]
-> Kuruluşunuz Microsoft Operations Management Suite E1 ve E2 satın aldıysa aboneliklerinizi pre-Nisan 2018 fiyatlandırma modelinde tutmak en iyisidir. 
+> Kuruluşunuz E1 ve E2 Microsoft Operations Management Suite satın alıyorsa, genellikle aboneliklerinizi önceden Nisan 2018 fiyatlandırma modelinde tutmak en iyisidir. 
 >
 
-## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Yeni fiyatlandırma modeline geçerken değişiklikleri
+## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Yeni fiyatlandırma modeline taşıdığınız zaman değişir
 
-Log Analytics ve Application Insights fiyatlandırma seçenekleri yalnızca tek bir katman (veya planı) için yeni fiyatlandırma modeline basitleştirir. Bir aboneliği yeni fiyatlandırma modeli taşıma:
+Yeni fiyatlandırma modeli Log Analytics ve Application Insights fiyatlandırma seçeneklerini yalnızca tek bir katmana (veya plana) basitleştirir. Bir aboneliği yeni fiyatlandırma modeline taşımak şu şekilde olur:
 
-- (Azure Resource Manager'da "pergb2018" olarak adlandırılır) yeni GB başına katmanı her bir Log Analytics için fiyatlandırma katmanını değiştirme
-- Kurumsal plandaki tüm Application Insights kaynakları temel plana değiştirilir.
+- Her bir Log Analytics fiyatlandırma katmanını yeni bir GB başına katmana değiştirin (Azure Resource Manager "pergb2018" olarak adlandırılır)
+- Kurumsal plandaki Application Insights kaynaklar temel plana dönüştürülür.
 
-Maliyet tahmini, bu değişikliklerin etkisini gösterir.
+Maliyet tahmini, bu değişikliklerin etkilerini gösterir.
 
 > [!WARNING]
-> Buradan dağıtmak için Azure Resource Manager'ı veya PowerShell'i kullanıyorsanız, önemli bir Not [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) veya [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) fiyatlandırma modeli yeni taşınmış bir abonelik. Bir fiyatlandırma katmanı/planı "pergb2018" dışında için Log Analytics veya "Temel" için Application ınsights'ı belirtirseniz, yerine geçersiz bir fiyatlandırma katmanı/planını belirten nedeniyle dağıtım başarısız başarılı **ancak yalnızca geçerli kullanın Fiyatlandırma katmanı/planını** (Bu geçersiz bir fiyatlandırma katmanı iletisi burada oluşturulur Log Analytics'i ücretsiz katmanı için geçerli değildir).
+> Yeni fiyatlandırma modeline taşıdığınız bir abonelikte [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) veya [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) dağıtmak üzere Azure Resource Manager veya PowerShell kullanıyorsanız, burada önemli bir notun olması gerekir. Log Analytics veya "temel Application Insights" için "pergb2018" dışında bir fiyatlandırma katmanı/planı belirtirseniz, geçersiz bir fiyatlandırma katmanı/plan belirtilmesi nedeniyle dağıtım başarısız olmak yerine, bu işlem başarılı olur **ancak yalnızca geçerli fiyatlandırma katmanını kullanır/ plan** (Bu, geçersiz bir fiyatlandırma katmanı iletisinin oluşturulduğu Log Analytics ücretsiz katman için geçerli değildir).
 >
 
 ## <a name="moving-to-the-new-pricing-model"></a>Yeni fiyatlandırma modeline taşıma
 
-Her Application Insights kaynağına, açık, belirli bir aboneliği yeni fiyatlandırma modeline benimsemeye karar verdiyseniz, Git **kullanım ve Tahmini maliyetler** temel fiyatlandırma katmanını olduğundan emin olun ve her Log Analytics'e Git Çalışma alanı, açık **fiyatlandırma katmanı** sayfasında ve değiştirmek **GB (2018) başına** fiyatlandırma katmanı. 
+Belirli bir abonelik için yeni fiyatlandırma modelini benimsemeye karar verdiyseniz, her bir Application Insights kaynağına gidin, **kullanımı ve tahmini maliyetleri** açın ve temel fiyatlandırma katmanında olduğundan emin olun ve her bir Log Analytics çalışma alanına gidin.  **Fiyatlandırma Katmanı** sayfası ve **GB başına (2018)** fiyatlandırma katmanında değişiklik. 
 
 > [!NOTE]
-> Tüm Application Insights kaynaklarını ve Log Analytics çalışma alanları belirli bir aboneliği yeni fiyatlandırma modeli benimsemek gereksinim artık, daha fazla esneklik ve daha kolay yapılandırma olanağı kaldırılmıştır. 
+> Belirli bir abonelik içindeki tüm Application Insights kaynaklarının ve Log Analytics çalışma alanlarının en yeni fiyatlandırma modelini benimseme gereksinimi, daha fazla esneklik ve daha kolay yapılandırmaya olanak tanıyacak şekilde kaldırılmıştır. 
 
-## <a name="automate-moving-to-the-new-pricing-model"></a>Yeni fiyatlandırma modeline taşıma otomatikleştirin
+## <a name="automate-moving-to-the-new-pricing-model"></a>Yeni fiyatlandırma modeline geçmeyi otomatikleştirme
 
-Yukarıda belirtildiği gibi artık tüm izleme kaynakları bir aboneliği yeni fiyatlandırma modeline aynı anda taşımak için bir gereksinim değildir ve dolayısıyla ``migratetonewpricingmodel`` eylemi artık herhangi bir etkisi yoktur. Artık Application Insights kaynaklarını ve Log Analytics çalışma alanlarını ayrı olarak yeni fiyatlandırma katmanlarına geçebilirsiniz.  
+Yukarıda belirtildiği gibi, bir abonelikteki tüm izleme kaynaklarını aynı anda yeni fiyatlandırma modeline taşıma gereksinimi yoktur ve bu nedenle ``migratetonewpricingmodel`` eylemi artık herhangi bir etkiye sahip olmayacaktır. Artık Application Insights kaynakları ve Log Analytics çalışma alanlarını en yeni fiyatlandırma katmanlarına ayrı olarak taşıyabilirsiniz.  
 
-Bu değişiklik otomatikleştirme kullanarak Application Insights için belgelenen [kümesi AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) ile ``-PricingPlan "Basic"`` ve Log Analytics kullanarak [Set-Azurermoperationalınsightsworkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) ile ``-sku "PerGB2018"``. 
-
+Bu değişikliği otomatik hale getirmek Application Insights, [set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) ile ``-PricingPlan "Basic"`` ve [set-Azurermoperationalınsightsworkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) kullanılarak ``-sku "PerGB2018"`` ile Log Analytics için belgelenmiştir. 

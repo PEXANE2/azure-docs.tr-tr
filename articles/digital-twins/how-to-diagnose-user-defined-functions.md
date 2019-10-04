@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 10/01/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: c1bd33ea5cbe45d6ff862645d614d54d20110ef4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
-ms.translationtype: MT
+ms.openlocfilehash: df12d6866f5e9e6bf492e228e32b0b10f7266eb4
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260850"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843857"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevlerde hata ayıklama
 
@@ -43,7 +43,7 @@ Yapılandırıldıktan sonra tüm günlük kategorilerini, ölçümleri seçebil
 
 Algılayıcı telemetrisini izlemek için, Azure dijital TWINS örneğiniz için tanılama ayarlarının etkinleştirildiğini doğrulayın. Sonra, istenen tüm günlük kategorilerinin seçili olduğundan emin olun. Son olarak, istenen günlüklerin Azure Izleyici günlüklerine gönderildiğinden emin olun.
 
-Bir algılayıcı telemetri iletisini ilgili günlükleriyle eşleştirmek için, gönderilmekte olan olay verileri üzerinde bir bağıntı KIMLIĞI belirtebilirsiniz. Bunu yapmak için, `x-ms-client-request-id` özelliği bir GUID olarak ayarlayın.
+Bir algılayıcı telemetri iletisini ilgili günlükleriyle eşleştirmek için, gönderilmekte olan olay verileri üzerinde bir bağıntı KIMLIĞI belirtebilirsiniz. Bunu yapmak için `x-ms-client-request-id` özelliğini bir GUID olarak ayarlayın.
 
 Telemetri gönderdikten sonra, set bağıntı KIMLIĞINI kullanarak günlükleri sorgulamak için Azure Izleyici Log Analytics 'i açın:
 
@@ -52,11 +52,18 @@ AzureDiagnostics
 | where CorrelationId == 'YOUR_CORRELATION_IDENTIFIER'
 ```
 
-| Sorgu değeri | Şununla değiştir |
+| Sorgu değeri | Değiştir |
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | Olay verilerinde belirtilen bağıntı KIMLIĞI |
 
-Kullanıcı tanımlı işleviniz için günlük kaydını etkinleştirirseniz, bu Günlükler Log Analytics örneğiniz kategorisi `UserDefinedFunction`ile görüntülenir. Bunları almak için Log Analytics 'te aşağıdaki sorgu koşulunu girin:
+Tüm son telemetri günlükleri sorgusunu görmek için:
+
+```Kusto
+AzureDiagnostics
+| order by CorrelationId desc
+```
+
+Kullanıcı tanımlı işleviniz için günlük kaydını etkinleştirirseniz, bu Günlükler Log Analytics örneğiniz `UserDefinedFunction` kategorisiyle görüntülenir. Bunları almak için Log Analytics 'te aşağıdaki sorgu koşulunu girin:
 
 ```Kusto
 AzureDiagnostics
@@ -81,7 +88,7 @@ Yönetim API 'niz aracılığıyla Kullanıcı tanımlı işleviniz için bir ro
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
-| Parametre değeri | Şununla değiştir |
+| Parametre değeri | Değiştir |
 | --- | --- |
 | YOUR_USER_DEFINED_FUNCTION_ID | Rol atamalarını almak için Kullanıcı tanımlı işlevin KIMLIĞI|
 
@@ -95,12 +102,12 @@ Azure Digital TWINS örneklerinizin yönetim API 'sine karşı aşağıdaki ça�
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
-| Parametre | Şununla değiştir |
+| Parametre | Değiştir |
 | --- | --- |
 | *YOUR_MATCHER_IDENTIFIER* | Değerlendirmek istediğiniz eşleştirici KIMLIĞI |
 | *YOUR_SENSOR_IDENTIFIER* | Değerlendirmek istediğiniz sensör KIMLIĞI |
 
-Yanıt:
+Yanıtıyla
 
 ```JavaScript
 {
@@ -119,11 +126,11 @@ Azure dijital TWINS yönetim API 'Lerine yönelik aşağıdaki çağrı sayesind
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 
-| Parametre | Şununla değiştir |
+| Parametre | Değiştir |
 | --- | --- |
 | *YOUR_SENSOR_IDENTIFIER* | Telemetri göndermek için sensör KIMLIĞI |
 
-Yanıt:
+Yanıtıyla
 
 ```JavaScript
 [
@@ -166,7 +173,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Space", JSON.stringify(customNotification));
 ```
 
-Bu senaryo, kullanılan tanımlayıcı, belirtilen topoloji nesne türü olduğu `Space`sürece bir algılayıcı başvurduğu için ortaya çıkar.
+Bu senaryo, kullanılan tanımlayıcı bir sensöre başvurduğundan, belirtilen topoloji nesne türü `Space` olduğunda ortaya çıkar.
 
 **Doğru** Örneğinde
 
@@ -178,7 +185,7 @@ var customNotification = {
 sendNotification(telemetry.SensorId, "Sensor", JSON.stringify(customNotification));
 ```
 
-Bu sorunu çözmek için en kolay yol, `Notify` yöntemi meta veri nesnesi üzerinde kullanmaktır.
+Bu sorunu çözmek için en kolay yol, meta veri nesnesi üzerinde `Notify` yöntemini kullanmaktır.
 
 Örnek:
 

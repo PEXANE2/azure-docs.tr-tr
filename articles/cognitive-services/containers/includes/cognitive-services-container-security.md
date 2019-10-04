@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/13/2019
+ms.date: 09/24/2019
 ms.author: dapine
-ms.openlocfilehash: 0e9fa9146292bf7dabbbf06d3bb436aa6cd2e6e2
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 7322d356d972635b81bc1bdd4b329bd3d5ac02df
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124109"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842593"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure bilişsel hizmetler kapsayıcı güvenliği
 
@@ -31,7 +31,7 @@ Alternatif ve *güvenli* bir yaklaşım olarak bilişsel hizmet kapsayıcıları
 
 [NGINX][nginx] aynı kategoride yer alan başka bir popüler seçenektir. Hem Istio hem de NGINX hizmet ağı olarak davranır ve Yük Dengeleme, Yönlendirme ve oran denetimi gibi ek özellikler sunar.
 
-### <a name="container-networking"></a>Kapsayıcı ağ iletişimi
+### <a name="container-networking"></a>Kapsayıcı ağı
 
 Bilişsel hizmetler kapsayıcıları, faturalandırma amaçlarıyla ölçüm bilgilerini göndermek için gereklidir. Tek özel durum, farklı bir faturalandırma metodolojisini izledikleri için *çevrimdışı kapsayıcılardır* . İzin verme hatası, bilişsel hizmetler kapsayıcılarının bağlı olduğu çeşitli ağ kanallarının kapsayıcının çalışmasını engelleyecek.
 
@@ -44,7 +44,7 @@ Ana bilgisayar, liste **bağlantı noktası 443** ve aşağıdaki etki alanları
 
 #### <a name="disable-deep-packet-inspection"></a>Derin paket incelemesini devre dışı bırak
 
-> [Derin paket incelemesi](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPı), bir bilgisayar ağı üzerinden gönderilen verilerin ayrıntılarını inceler ve genellikle işlem gerçekleştirerek, yeniden yönlendirerek veya uygun şekilde kaydederek işlem gerçekleştirir.
+> [Derin paket incelemesi](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPI), bir bilgisayar ağı üzerinden gönderilen verilerin ayrıntılarını inceleyerek ve genellikle işlem gerçekleştirerek, yeniden yönlendirerek veya uygun şekilde kaydederek işlem yapması gereken veri işleme türüdür.
 
 Bilişsel hizmetler kapsayıcılarının Microsoft sunucuları 'nda oluşturmakta olduğu güvenli kanallarda DPı 'yi devre dışı bırakın. Bunun başarısız olması, kapsayıcının düzgün çalışmasını engeller.
 

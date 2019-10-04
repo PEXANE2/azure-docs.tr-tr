@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 10/01/2019
 ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: d0f5f9a1d488b6be8ca91fdd057880e351ae0b3f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
-ms.translationtype: MT
+ms.openlocfilehash: 3fb00977a2e1dba5cf9627b8081aee2f76bc8bd4
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261038"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845453"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure dijital TWINS 'de izlemeyi yapılandırma
 
@@ -70,12 +70,12 @@ Bir örnek için tanılama günlüklerini etkinleştirmek için:
 1. Kaynağı Azure portal alın.
 1. **Tanılama ayarlarını**seçin:
 
-    [![Tanılama ayarları tek](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
+    [![ Tanılama ayarları bir](media/how-to-configure-monitoring/diagnostic-settings-one.png)](media/how-to-configure-monitoring/diagnostic-settings-one.png#lightbox)
 
 1. Veri toplamak için **tanılamayı aç '** ı seçin (daha önce etkinleştirilmemişse).
 1. İstenen alanları girin ve verilerin nasıl ve nerede kaydedileceğini seçin:
 
-    [![Tanılama ayarları iki](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
+    [![ Tanılama ayarları iki](media/how-to-configure-monitoring/diagnostic-settings-two.png)](media/how-to-configure-monitoring/diagnostic-settings-two.png#lightbox)
 
     Tanılama günlükleri genellikle [Azure dosya depolama](../storage/files/storage-files-deployment-guide.md) kullanılarak kaydedilir ve [Azure izleyici günlükleriyle](../azure-monitor/log-query/get-started-portal.md)paylaşılır. Her iki seçenek de seçilebilir.
 
@@ -103,11 +103,11 @@ Tam günlük sorgulama [Azure izleyici günlükleri](../azure-monitor/log-query/
 
 1. Zaten bir **Log Analytics çalışma alanı** örneğiniz yoksa, **Ekle** düğmesini seçerek bir çalışma alanı oluşturabilirsiniz:
 
-    [![OMS oluşturma](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
+    [![ OMS oluşturma](media/how-to-configure-monitoring/log-analytics-oms.png)](media/how-to-configure-monitoring/log-analytics-oms.png#lightbox)
 
 **Log Analytics çalışma alanı** örneğiniz sağlandıktan sonra, tek tek günlüklerde girişleri bulmak veya **günlük yönetimi**kullanarak belirli ölçütleri kullanarak aramak için güçlü sorgular kullanabilirsiniz:
 
-   [![Günlük yönetimi](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
+   [![günlük yönetimi](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
 Güçlü sorgu işlemleri hakkında daha fazla bilgi için bkz. [sorguları](../azure-monitor/log-query/get-started-queries.md)kullanmaya başlama.
 
@@ -116,7 +116,7 @@ Güçlü sorgu işlemleri hakkında daha fazla bilgi için bkz. [sorguları](../
 
 Azure Izleyici günlükleri Ayrıca, **Tanılama ve çözme sorunlarını**belirleyerek görüntülenebilen güçlü hata ve uyarı bildirim hizmetleri sağlar:
 
-   [![Uyarı ve hata bildirimleri](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
+   [![ uyarı ve hata bildirimleri](media/how-to-configure-monitoring/log-analytics-notifications.png)](media/how-to-configure-monitoring/log-analytics-notifications.png#lightbox)
 
 >[!TIP]
 >Birden çok uygulama işlevi, abonelik veya hizmet için günlük geçmişlerini sorgulamak üzere **Log Analytics çalışma alanını** kullanın.

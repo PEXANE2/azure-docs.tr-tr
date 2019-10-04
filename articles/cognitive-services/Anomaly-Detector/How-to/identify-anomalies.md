@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: c7b3d9b66d74f16dc0938c888456d673b9cd4b77
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882880"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840216"
 ---
-# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Nasıl yapılır: Zaman serisi verilerinizde anomali algılayıcı API 'sini kullanın  
+# <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Nasıl yapılır: zaman serisi verilerinizde anomali algılayıcısı API 'sini kullanma  
 
 [Anomali algılayıcı API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/AnomalyDetector/operations/post-timeseries-entire-detect) iki anomali algılama yöntemi sağlar. Anormallikleri, zaman serilerinden bir toplu iş olarak algılayabilir ya da verileriniz en son veri noktasının anomali durumunu algılayarak oluşturulur. Algılama modeli, her bir veri noktasının beklenen değeriyle birlikte anomali sonuçları ve üst ve düşük anomali algılama sınırlarını döndürür. Bu değerleri normal değerlerin aralığını görselleştirmek ve verilerdeki bozukluklar için kullanabilirsiniz.
 
@@ -26,7 +26,7 @@ ms.locfileid: "68882880"
 Anomali algılayıcı API 'SI algılama modları sağlar: Batch ve streaming.
 
 > [!NOTE]
-> Aşağıdaki istek URL 'Leri, aboneliğiniz için uygun uç noktayla birleştirilmelidir. Örneğin, `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> Aşağıdaki istek URL 'Leri, aboneliğiniz için uygun uç noktayla birleştirilmelidir. Örneğin: `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`.
 
 
 ### <a name="batch-detection"></a>Toplu iş algılama
@@ -47,7 +47,7 @@ Yeni veri noktalarını oluştururken gönderdiğinizde verilerinizi gerçek zam
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Alt ve üst anomali algılama sınırlarını ayarlama
 
-Varsayılan olarak, anomali algılama için üst ve alt sınırlar, `expectedValue` `upperMargin`, ve `lowerMargin`kullanılarak hesaplanır. Farklı sınırlara ihtiyaç duyuyorsanız, `marginScale` `upperMargin` veya `lowerMargin`' a uygulanmasını öneririz. Sınırlar aşağıdaki şekilde hesaplanır:
+Varsayılan olarak anomali algılama için üst ve alt sınırlar `expectedValue`, `upperMargin` ve `lowerMargin` kullanılarak hesaplanır. Farklı sınırlara ihtiyaç duyuyorsanız, `upperMargin` veya `lowerMargin` ' ye `marginScale` ' ı uygulayaöneririz. Sınırlar aşağıdaki şekilde hesaplanır:
 
 |Oluşturmasını  |Hesaplama  |
 |---------|---------|
@@ -71,4 +71,4 @@ Aşağıdaki örneklerde farklı sensitivities bir anomali algılayıcı API son
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 * [Anomali algılayıcı API nedir?](../overview.md)
-* [Hızlı Başlangıç: Anomali algılayıcısı 'nı kullanarak zaman serisi verilerinizde bozukluklar olup REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar Algıla REST API](../quickstarts/detect-data-anomalies-csharp.md)

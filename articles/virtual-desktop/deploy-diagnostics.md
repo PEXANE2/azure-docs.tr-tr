@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 07a45f54eb7c00e20abcfb05979e24493e5b9604
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
-ms.translationtype: MT
+ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676650"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839629"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -25,7 +25,7 @@ Windows sanal masaüstü için tanılama aracı sizin için şunları yapabilir:
 - Belirli bir oturum ana bilgisayarındaki etkin kullanıcılara ileti gönderin.
 - Kullanıcıları oturum ana bilgisayarında imzalayın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Araç için Azure Resource Manager şablonunu dağıtabilmeniz için önce bir Azure Active Directory uygulama kaydı ve Log Analytics çalışma alanı oluşturmanız gerekir. Bunun için yönetici bu izinlere gerek duyar:
 
@@ -148,7 +148,7 @@ VM 'lerin sistem durumunu görüntüleyebilmek için Log Analytics bağlantısı
 2. Log Analytics çalışma alanınıza gidin.
 3. Sol bölmede, çalışma alanı veri kaynakları altında **sanal makineler**' i seçin.
 4. Bağlanmak istediğiniz VM 'nin adını seçin.
-5. **Bağlan**’ı seçin.
+5. **Bağlan**' ı seçin.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -159,7 +159,7 @@ Tanılama aracı için Azure Kaynak Yönetimi şablonunu dağıtmak için:
 
     -   İstemci kimliği
     -   İstemci parolası
-    -   Log Analytics çalışma alanı kimliği
+    -   Log Analytics çalışma alanı KIMLIĞI
 
 3.  Giriş parametreleri sağlandığında, hüküm ve koşulları kabul edin ve ardından **satın al**' ı seçin.
 
@@ -183,7 +183,7 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
 
 8. Şimdi Azure kaynaklarınıza giderek, şablonda belirttiğiniz ada sahip Azure App Services kaynağını seçin ve onunla ilişkili URL 'ye gidin. (Örneğin, şablonda kullandığınız uygulama adı `contosoapp45` ise, ilişkili URL 'niz <https://contosoapp45.azurewebsites.net>).
 9. Uygun Azure Active Directory Kullanıcı hesabını kullanarak oturum açın.
-10.   **Kabul Et**’i seçin.
+10.   **Kabul et**'i seçin.
 
 ## <a name="distribute-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -203,7 +203,7 @@ Kuruluşunuzda aldığınız bilgileri kullanarak hesabınızda oturum açtıkta
 
 ### <a name="how-to-read-activity-search-results"></a>Etkinlik arama sonuçlarını okuma
 
-Etkinlikler zaman damgasına göre sıralanır ve öncelikle en son etkinliklerdir. Sonuçlar bir hata döndürmezse, önce bir hizmet hatası olup olmadığını kontrol edin. Hizmet hataları için, sorunu ayıklamamıza yardımcı olması için etkinlik bilgileriyle bir destek bileti oluşturun. Diğer tüm hata türleri genellikle kullanıcı veya yönetici tarafından çözülebilir. En yaygın hata senaryolarının listesi ve bunları çözme hakkında bilgi için bkz. [Tanılama özelliğiyle ilgili sorunları tanımlama](diagnostics-role-service.md#common-error-scenarios).
+Etkinlikler zaman damgasına göre sıralanır ve öncelikle en son etkinliklerdir. Sonuçlar bir hata döndürmezse, önce bir hizmet hatası olup olmadığını kontrol edin. Hizmet hataları için, sorunu ayıklamamıza yardımcı olması için etkinlik bilgileriyle bir destek bileti oluşturun. Diğer tüm hata türleri genellikle kullanıcı veya yönetici tarafından çözülebilir. En yaygın hata senaryolarının listesi ve bunları çözme hakkında bilgi için bkz. [sorunları belirleme ve tanılama](diagnostics-role-service.md#common-error-scenarios).
 
 >[!NOTE]
 >Hizmet hataları, bağlantılı belgelerde "dış hatalar" olarak adlandırılır. Bu, PowerShell başvurusunu güncelleştirdiğimiz zaman değişecektir.

@@ -1,34 +1,34 @@
 ---
-title: Azure AD uygulama önkoşulları (önceki sürüm) ile Azure Disk şifrelemesi
-description: Bu makale, Iaas sanal makineleri için Microsoft Azure Disk şifrelemesi kullanılarak önkoşulları sağlar.
+title: Azure AD Uygulaması önkoşulları ile Azure disk şifrelemesi (önceki sürüm)
+description: Bu makalede, IaaS VM 'Leri için Microsoft Azure disk şifrelemesi kullanma önkoşulları sağlanır.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: da3cb81eaeaa3b1609ffe67b2aea92a69b6bb47a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 07db6c5cecf2b8dec803e73d5775edef3f8906fa
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726259"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828625"
 ---
-# <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure Disk şifrelemesi önkoşulları (önceki sürüm)
+# <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure disk şifrelemesi önkoşulları (önceki sürüm)
 
-**Azure Disk Şifrelemesi'nın yeni sürümüne VM disk şifrelemeyi etkinleştirmek için bir Azure AD uygulama parametresi sağlama gereksinimini ortadan kaldırır. Yeni sürümle birlikte, etkinleştirme şifreleme adımı sırasında Azure AD kimlik bilgilerini sağlamak için artık gerekli değildir. Tüm yeni Vm'lere yeni sürümünü kullanarak Azure AD uygulama parametresiz şifrelenmelidir. Yeni sürümünü kullanarak VM disk şifrelemeyi etkinleştirmek için yönergeleri görüntülemek için bkz: [Azure Disk şifrelemesi önkoşulları](azure-security-disk-encryption-prerequisites.md). Zaten Azure AD uygulama parametreleri ile şifrelenmiş VM'ler hala desteklenmektedir ve AAD sözdizimiyle korunmasını devam etmelidir.**
+**Azure disk şifrelemesi 'nin yeni sürümü, VM disk şifrelemeyi etkinleştirmek için bir Azure AD uygulama parametresi sağlama gereksinimini ortadan kaldırır. Yeni sürümde, artık şifrelemeyi Etkinleştir adımını kullanarak Azure AD kimlik bilgilerini sağlamanız gerekmez. Yeni sürüm kullanılarak Azure AD uygulama parametreleri olmadan tüm yeni VM 'Ler şifrelenmelidir. Yeni sürümü kullanarak VM disk şifrelemesini etkinleştirme yönergelerini görüntülemek için bkz. [Azure disk şifrelemesi önkoşulları](azure-security-disk-encryption-prerequisites.md). Azure AD uygulama parametreleriyle zaten şifrelenmiş VM 'Ler hala desteklenmektedir ve AAD sözdizimi ile sürdürülmeye devam etmelidir.**
 
- Bu makalede, Azure Disk şifrelemesi önkoşulları, Azure Disk şifrelemesi kullanabilmeniz için önce karşılanması gereken öğeleri açıklar. Genel Önkoşullar yanı sıra, Azure Disk şifrelemesi ile tümleşiktir [Azure anahtar kasası](https://docs.microsoft.com/azure/key-vault/) ve şifreleme anahtarları key vault'ta yönetmek için kimlik doğrulaması sağlamak için bir Azure AD uygulaması kullanır. Ayrıca kullanmak isteyebileceğiniz [Azure PowerShell](/powershell/azure/overview) veya [Azure CLI](/cli/azure/) ayarlamak veya Key Vault ve Azure AD uygulaması'nı yapılandırmak için.
+ Bu makalede, Azure disk şifrelemesi önkoşulları, Azure disk şifrelemesi 'ni kullanabilmeniz için önce yerinde olması gereken öğeleri açıklar. Azure disk şifrelemesi, genel önkoşulların yanı sıra [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) ile tümleşiktir ve anahtar kasasındaki şifreleme anahtarlarını yönetmek için kimlik doğrulaması sağlamak üzere BIR Azure AD uygulaması kullanır. Ayrıca, Key Vault ve Azure AD uygulaması kurmak veya yapılandırmak için [Azure PowerShell](/powershell/azure/overview) ya da [Azure CLI](/cli/azure/) 'yi kullanmak isteyebilirsiniz.
 
-Ele alınan desteklenen senaryolar için Azure Iaas sanal makinelerinde Azure Disk Şifrelemesi'ı etkinleştirmeden önce [Azure Disk Şifrelemesi'ne genel bakış](azure-security-disk-encryption-overview.md) makalesi, önkoşulların sağlandığından emin olun. 
+Azure [disk şifrelemesi genel bakış](azure-security-disk-encryption-overview.md) makalesinde açıklanan desteklenen senaryolar Için Azure IaaS VM 'Lerinde Azure disk şifrelemesini etkinleştirmeden önce önkoşulların yerinde olduğundan emin olun. 
 
 > [!WARNING]
-> - Bazı öneriler, veri, ağ veya ek lisans ya da abonelik maliyetlerinizi kaynaklanan işlem kaynak kullanımını artırabilir. Desteklenen bölgelerdeki Azure kaynakları oluşturmak için geçerli bir etkin Azure aboneliğinizin olması gerekir.
+> - Bazı öneriler veri, ağ veya işlem kaynak kullanımını artırabilir, bu da ek lisans veya abonelik maliyetlerine neden olur. Desteklenen bölgelerde Azure 'da kaynak oluşturmak için geçerli bir etkin Azure aboneliğiniz olması gerekir.
 > - Bu VM 'yi şifrelemek için Azure [ad uygulaması Ile Azure disk şifrelemesi](azure-security-disk-encryption-prerequisites-aad.md) 'ni daha önce KULLANDıYSANıZ, VM 'nizi şifrelemek için bu seçeneği kullanmaya devam etmeniz gerekir. Bu desteklenen bir senaryo olmadığından, bu şifrelenmiş VM 'de [Azure disk şifrelemesi](azure-security-disk-encryption-prerequisites.md) 'ni kullanamazsınız. Bu, bu şifrelenmiş VM için AAD uygulamasından uzağa geçiş henüz desteklenmiyor. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
+## <a name="supported-operating-systems"></a>Supported operating systems
 
 ### <a name="windows"></a>Windows
 
@@ -48,24 +48,26 @@ Azure disk şifrelemesi, [Azure tarafından onaylanan Linux dağıtımların](..
 
 Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemesini desteklemez ve onaylama işlemleri için yalnızca aşağıdaki dağıtımlar ve sürümler Azure disk şifrelemesini destekler:
 
-| Linux dağıtım | Sürüm | Desteklenen şifreleme için birim türü|
+| Linux dağıtımı | Version | Şifreleme için desteklenen birim türü|
 | --- | --- |--- |
 | Ubuntu | 18,04| İşletim sistemi ve veri diski |
-| Ubuntu | 16.04| İşletim sistemi ve veri diski |
+| Ubuntu | 16,04| İşletim sistemi ve veri diski |
 | Ubuntu | 14.04.5</br>[Azure 'da ayarlanmış çekirdek, 4,15 veya üzeri bir sürüme güncelleştirildi](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | İşletim sistemi ve veri diski |
-| RHEL | 7,6 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 7.5 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 7.4 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 7.3 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 7.2 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
-| RHEL | 6.8 | Veri diski (aşağıdaki nota bakın) |
-| RHEL | 6.7 | Veri diski (aşağıdaki nota bakın) |
+| RHEL for | 7,7 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL for | 7,6 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL for | 7,5 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL for | 7,4 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL for | 7,3 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL for | 7,2 | İşletim sistemi ve veri diski (aşağıdaki nota bakın) |
+| RHEL for | 6,8 | Veri diski (aşağıdaki nota bakın) |
+| RHEL for | 6,7 | Veri diski (aşağıdaki nota bakın) |
+| CentOS | 7,7 | İşletim sistemi ve veri diski |
 | CentOS | 7,6 | İşletim sistemi ve veri diski |
-| CentOS | 7.5 | İşletim sistemi ve veri diski |
-| CentOS | 7.4 | İşletim sistemi ve veri diski |
-| CentOS | 7.3 | İşletim sistemi ve veri diski |
-| CentOS | 7.2n | İşletim sistemi ve veri diski |
-| CentOS | 6.8 | Veri diski |
+| CentOS | 7,5 | İşletim sistemi ve veri diski |
+| CentOS | 7,4 | İşletim sistemi ve veri diski |
+| CentOS | 7,3 | İşletim sistemi ve veri diski |
+| CentOS | 7.2 n | İşletim sistemi ve veri diski |
+| CentOS | 6,8 | Veri diski |
 | openSUSE | 42,3 | Veri diski |
 | SLES | 12-SP4 | Veri diski |
 | SLES | 12-SP3 | Veri diski |
@@ -73,28 +75,28 @@ Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemes
 > [!NOTE]
 > Yeni ADE uygulama, RHEL7 Kullandıkça Öde görüntüleri için RHEL OS ve veri diski için desteklenir. ADE Şu anda RHEL kendi abonelik (KCG) görüntüleri için desteklenmiyor. Daha fazla bilgi için bkz. [Linux Için Azure disk şifrelemesi](azure-security-disk-encryption-linux.md) .
 
-- Azure Disk şifrelemesi, anahtar kasası ve VM'lerin aynı Azure bölgesindeki ve abonelikte bulunmasını gerektirir. Kaynaklarını ayrı bölge içinde yapılandırma Azure Disk şifreleme özelliği etkinleştirilirken bir hata neden olur.
+- Azure disk şifrelemesi, anahtar kasalarınızın ve sanal makinelerinizin aynı Azure bölgesinde ve abonelikte bulunmasını gerektirir. Kaynakları ayrı bölgelerde yapılandırmak, Azure disk şifrelemesi özelliğinin etkinleştirilmesinde hata oluşmasına neden olur.
 
 #### <a name="additional-prerequisites-for-linux-iaas-vms"></a>Linux IaaS VM 'Leri için ek önkoşullar 
 
 - Azure disk şifrelemesi, sistemde dm-crypt ve VFAT modüllerinin bulunmasını gerektirir. VFAT 'i varsayılan görüntüden kaldırmak veya devre dışı bırakmak, sistemin anahtar birimini okumasını ve sonraki yeniden başlatmalarda disklerin kilidini açmak için gereken anahtarı almasını engeller. VFAT modülünü sistemden kaldırmak için sistem sağlamlaştırma adımları Azure disk şifrelemesi ile uyumlu değildir. 
-- Şifreleme etkinleştirilmeden önce şifrelenmiş veri diskleri düzgün /etc/fstab içinde listelenmesi gerekir. Kalıcı blok cihaz adı bu giriş için "/ dev/sdX" biçimindeki adlarını sırasında özellikle şifreleme uygulandıktan sonra yeniden başlatmaları arasında aynı disk ile ilişkilendirilmesi dayanan olamaz cihazı olarak kullanın. Bu davranış hakkında daha fazla ayrıntı için bkz. [Linux VM cihaz adı değişikliklerinde sorun giderme](../virtual-machines/linux/troubleshoot-device-names-problems.md)
-- /Etc/fstab ayarlarını, bağlama için düzgün şekilde yapılandırıldığından emin olun. Bu ayarları yapılandırmak için bağlama - bir komut çalıştırın veya VM'yi yeniden başlatın ve bu şekilde onarılmasının tetikleyin. Bu işlem tamamlandıktan sonra sürücüyü yine de bağlandığını doğrulamak için lsblk komutunun çıkışını kontrol edin. 
-  - Azure Disk şifrelemesi, /etc/fstab dosya sürücünün doğru şifreleme etkinleştirilmeden önce değil bağlarsanız, düzgün bir şekilde bağlamak mümkün olmayacaktır.
-  - Azure Disk şifreleme işlemi /etc/fstab dışında ve kendi yapılandırma dosyasına bağlama bilgilerini şifreleme işleminin bir parçası olarak taşınır. Tamamlandıktan sonra veri Sürücü Şifrelemesi /etc/fstab eksik giriş görmek için alarmed çekinmeyin.
+- Şifrelemeyi etkinleştirmeden önce, şifrelenecek veri disklerinin/etc/fstabin içinde düzgün listelenmesi gerekir. "/Dev/sdX" biçimindeki cihaz adları, özellikle şifreleme uygulandıktan sonra, yeniden başlatmalar genelinde aynı diskle ilişkilendirilemediğinden, bu giriş için kalıcı bir blok cihaz adı kullanın. Bu davranış hakkında daha fazla bilgi için bkz. [LINUX VM cihaz adı değişikliklerinde sorun giderme](../virtual-machines/linux/troubleshoot-device-names-problems.md)
+- /Etc/fstab ayarlarının bağlama için doğru yapılandırıldığından emin olun. Bu ayarları yapılandırmak için, Mount-a komutunu çalıştırın veya VM 'yi yeniden başlatın ve bu şekilde uzak yeniden bağlama 'yı tetikleyin. Bu tamamlandıktan sonra, sürücünün hala bağlı olduğunu doğrulamak için lsblk komutunun çıkışını kontrol edin. 
+  - /Etc/fstab dosyası Şifrelemeyi etkinleştirmeden önce sürücüyü doğru bağmazsa, Azure disk şifrelemesi onu düzgün bir şekilde bağlanamaz.
+  - Azure Disk Şifrelemesi işlemi, bağlama bilgilerini şifreleme sürecinin bir parçası olarak/etc/fstab ' dan ve kendi yapılandırma dosyasına taşıyacaktır. Veri sürücüsü şifrelemesi tamamlandıktan sonra/etc/fstab içinde eksik girişi görmek için uyarıda yok.
   - Şifrelemeyi başlatmadan önce, bağlı veri disklerine yazmak ve devre dışı bırakmak için yeniden başlatmadan sonra otomatik olarak yeniden başlatabilmeleri için tüm hizmetleri ve süreçlerini durdurmayı unutmayın. Bunlar, dosyaları bu bölümlerde açık tutabilir, böylece şifreleme yordamının yeniden bağlanmasını önler ve bu da şifrelemenin başarısız olmasına neden olur. 
-  - Yeniden başlatıldıktan sonra yeni şifrelenmiş diskler bağlamak Azure Disk şifrelemesi işlemi için saat sürer. Bunlar yeniden başlatmanın ardından hemen kullanılabilir olmaz. İşlemi başlatmak, kilidini açmak ve ardından erişmek diğer işlemler için kullanılabilir olan önce şifrelenmiş sürücüleri bağlamak için zaman gerekir. Bu işlem, sistem özelliklerine bağlı olarak yeniden başlatma işleminden sonra birden fazla işlem birkaç dakika sürebilir.
+  - Yeniden başlatmadan sonra, Azure disk şifrelemesi işleminin yeni şifrelenmiş diskleri bağlaması zaman alır. Yeniden başlatmadan sonra hemen kullanılamayacak. İşlem, diğer işlemlerin erişebilmesi için önce şifrelenmiş sürücüleri açmak, kilitlerini açmak ve ardından bağlamak için zaman gerektirir. Bu işlem, sistem özelliklerine bağlı olarak yeniden başlatma sonrasında bir dakikadan uzun sürebilir.
 
-Veri diskleri bağlayın ve gerekli/etc/fstab girişleri oluşturmak için kullanılan komutlar örneği bulunabilir [244 248 bu betik dosyasının satırları](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248). 
+Veri disklerini bağlamak ve gerekli/etc/fstab girdilerini oluşturmak için kullanılabilen komutların bir örneği, [Bu betik dosyasının 244-248. satırlarında](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248)bulunabilir. 
 
-## <a name="bkmk_GPO"></a> Ağ ve Grup İlkesi
+## <a name="bkmk_GPO"></a>Ağ ve grup ilkesi
 
-**Parametresi söz dizimi, Iaas Vm'leri eski AAD kullanan Azure Disk şifrelemesi özelliği etkinleştirmek için aşağıdaki ağ uç noktası yapılandırması gereksinimleri karşılaması gerekir:** 
-  - Anahtar kasanızı bağlanmak için bir belirteç almak üzere Iaas VM bir Azure Active Directory uç noktasına bağlanabilir olmalıdır \[login.microsoftonline.com\].
-  - Şifreleme anahtarları için anahtar kasanıza yazmak için Iaas VM anahtar kasası uç noktasına bağlanabilir olmalıdır.
-  - Iaas VM Azure uzantısı depoyu ve VHD dosyalarını barındıran Azure depolama hesabı'nı barındıran bir Azure depolama uç noktasına bağlanabiliyor olmanız gerekir.
-  -  Güvenlik ilkeniz Azure vm'lerinden Internet erişimi sınırlayan, önceki URI çözmek ve IP'ler giden bağlantıya izin verecek bir kuralı yapılandırın. Daha fazla bilgi için [bir güvenlik duvarının ardındayken Azure anahtar kasası](../key-vault/key-vault-access-behind-firewall.md).
-  - Windows üzerinde TLS 1.0 açıkça devre dışı bırakıldı ve .NET sürümünü 4.6 veya üzeri güncelleştirilmemiş ADE daha yeni TLS sürümünü seçmek aşağıdaki kayıt defteri değişikliği olanak tanıyacak:
+**Eski AAD parametresi söz dizimini kullanarak Azure Disk Şifrelemesi özelliğini etkinleştirmek için IaaS VM 'lerinin aşağıdaki ağ uç noktası yapılandırma gereksinimlerini karşılaması gerekir:** 
+  - Anahtar kasanıza bağlanmak üzere bir belirteç almak için, IaaS VM 'nin bir Azure Active Directory uç noktasına bağlanabilmesi gerekir @no__t -0login. microsoftonline. com @ no__t-1.
+  - Şifreleme anahtarlarını anahtar kasanıza yazmak için, IaaS VM 'sinin Anahtar Kasası uç noktasına bağlanabilmesi gerekir.
+  - IaaS sanal makinesi, Azure uzantı deposunu barındıran bir Azure depolama uç noktasına ve VHD dosyalarını barındıran bir Azure depolama hesabına bağlanabilmelidir.
+  -  Güvenlik ilkeniz, Azure VM 'lerinden Internet 'e erişimi sınırlayıp, önceki URI 'yi çözümleyebilir ve IP 'lere giden bağlantılara izin vermek için belirli bir kuralı yapılandırabilirsin. Daha fazla bilgi için bkz. [Azure Key Vault bir güvenlik duvarı arkasında](../key-vault/key-vault-access-behind-firewall.md).
+  - Windows 'da, TLS 1,0 açıkça devre dışıysa ve .NET sürümü 4,6 veya üzeri bir sürüme güncelleştirilmemiş ise, aşağıdaki kayıt defteri değişikliği ADE 'nin daha son TLS sürümünü seçmesini sağlayacak:
     
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
         "SystemDefaultTlsVersions"=dword:00000001
@@ -108,25 +110,25 @@ Veri diskleri bağlayın ve gerekli/etc/fstab girişleri oluşturmak için kulla
  
 
 
-**Grup İlkesi:**
- - Azure Disk şifrelemesi çözümü, BitLocker dış anahtar koruyucusu Windows Iaas Vm'leri için kullanır. Etki alanına katılmış sanal makineleri, TPM koruyucusu zorlamak için tüm grup ilkeleri anında iletme yok. "Uyumlu TPM'siz BitLocker izin ver" için Grup İlkesi hakkında bilgi için bkz: [BitLocker Grup İlkesi başvurusu](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
+**Grup ilkesi:**
+ - Azure disk şifrelemesi çözümü, Windows IaaS VM 'Leri için BitLocker dış anahtar koruyucusunu kullanır. Etki alanına katılmış VM 'Ler için TPM koruyucuları uygulayan herhangi bir grup ilkesi göndermeyin. "Uyumlu TPM olmadan BitLocker 'a Izin ver" Grup ilkesi hakkında bilgi için bkz. [bitlocker Grup İlkesi başvurusu](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
--  Özel grup ilkesiyle etki alanına katılmış sanal makinelerde BitLocker ilkesi aşağıdaki ayarı içermelidir: [BitLocker kurtarma bilgileri 'nin Kullanıcı depolamasını yapılandırma-> Izin ver 256-bit kurtarma anahtarı](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). BitLocker için özel Grup İlkesi ayarları uyumsuz olduğunda Azure disk şifrelemesi başarısız olur. Doğru ilkeyi gerekmedi makinelerde yeni ilkeyi uygulamak, (gpupdate.exe/Force) güncelleştirmek için yeni ilke zorlayın ve daha sonra yeniden başlatmak gerekli olabilir.  
+-  Özel grup ilkesiyle etki alanına katılmış sanal makinelerde BitLocker ilkesi şu ayarı içermelidir: [BitLocker kurtarma bilgileri 'nin Kullanıcı depolamasını yapılandırma-> Izin ver 256-bit kurtarma anahtarı](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). BitLocker için özel Grup İlkesi ayarları uyumsuz olduğunda Azure disk şifrelemesi başarısız olur. Doğru ilke ayarına sahip olmayan makinelerde, yeni ilkeyi uygulayın, yeni ilkeyi güncelleştirmeye zorlayın (gpupdate. exe/Force) ve yeniden başlatma gerekebilir.  
 
 
-## <a name="bkmk_PSH"></a> Azure PowerShell
-[Azure PowerShell](/powershell/azure/overview) kullanan cmdlet'leri takımına [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) Azure kaynaklarınızı yönetmek için model. İle tarayıcınızda kullanmak [Azure Cloud Shell](../cloud-shell/overview.md), veya her PowerShell oturumunda kullanmak için aşağıdaki yönergeleri kullanarak yerel makinenize yükleyin. Yerel olarak zaten yüklüyse, Azure disk şifrelemesini yapılandırmak için Azure PowerShell en son sürümünü kullandığınızdan emin olun.
+## <a name="bkmk_PSH"></a>Azure PowerShell
+[Azure PowerShell](/powershell/azure/overview) , Azure kaynaklarınızı yönetmek için [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) modelini kullanan bir cmdlet kümesi sağlar. [Azure Cloud Shell](../cloud-shell/overview.md)tarayıcınızda kullanabilir veya bunu, herhangi bir PowerShell oturumunda kullanmak için aşağıdaki yönergeleri kullanarak yerel makinenize yükleyebilirsiniz. Yerel olarak zaten yüklüyse, Azure disk şifrelemesini yapılandırmak için Azure PowerShell en son sürümünü kullandığınızdan emin olun.
 
-### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Yerel makinenizde (isteğe bağlı) kullanmak için Azure PowerShell'i yükleyin:  
+### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Yerel makinenizde kullanım için Azure PowerShell yüklemesi yapın (isteğe bağlı):  
 1. [Azure PowerShell yükleyip yapılandırın](/powershell/azure/install-az-ps). 
 
-2. Yükleme [Azure Active Directory PowerShell Modülü](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module). 
+2. [Azure Active Directory PowerShell modülünü](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module)yükler. 
 
      ```powershell
      Install-Module AzureAD
      ```
 
-3. Yüklü modülleri sürümleri doğrulayın.
+3. Modüllerin yüklü sürümlerini doğrulayın.
       ```powershell
       Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
       Get-Module AzureAD -ListAvailable | Select-Object -Property Name,Version,Path
@@ -145,27 +147,27 @@ Veri diskleri bağlayın ve gerekli/etc/fstab girişleri oluşturmak için kulla
      Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
      ```
 
-5.  Azure AD'ye bağlanma [Connect-AzureAD](/powershell/module/azuread/connect-azuread).
+5.  Azure AD [Connect-AzureAD](/powershell/module/azuread/connect-azuread)'e bağlanın.
      
      ```powershell
      Connect-AzureAD
      ```
 
-6. Gözden geçirme [Azure PowerShell'i kullanmaya başlama](/powershell/azure/get-started-azureps) ve [AzureAD](/powershell/module/azuread), gerekirse.
+6. Gerekirse Azure PowerShell ve [Azuread](/powershell/module/azuread) [ile çalışmaya](/powershell/azure/get-started-azureps) başlama konusunu gözden geçirin.
 
-## <a name="bkmk_CLI"></a> Azure CLI
+## <a name="bkmk_CLI"></a>Azure CLı
 
-[Azure CLI 2.0](/cli/azure) Azure kaynaklarını yönetmek için bir komut satırı aracıdır. CLI, esnek bir şekilde verileri sorgulamak, engelleyici olmayan süreçler olarak uzun süreli işlemleri desteklemek ve kolay bir komut dosyası yapmak için tasarlanmıştır. [Azure Cloud Shell](../cloud-shell/overview.md) ile tarayıcınızda kullanabilir veya yerel makinenize yükleyip herhangi bir PowerShell oturumunda kullanabilirsiniz.
+[Azure clı 2,0](/cli/azure) , Azure kaynaklarını yönetmeye yönelik bir komut satırı aracıdır. CLı, verileri esnek bir şekilde sorgulamak, engelleyici olmayan işlemler olarak uzun süreli işlemleri desteklemek ve komut dosyasını kolay hale getirmek için tasarlanmıştır. [Azure Cloud Shell](../cloud-shell/overview.md)tarayıcınızda kullanabilir veya bunu yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz.
 
-1. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli) kullanılmak üzere yerel makinenize (isteğe bağlı):
+1. [Azure CLI](/cli/azure/install-azure-cli) 'yi yerel makinenizde kullanım için (isteğe bağlı) kullanın:
 
-2. Yüklü sürümünü doğrulayın.
+2. Yüklü sürümü doğrulayın.
      
      ```azurecli-interactive
      az --version
      ``` 
 
-3. Oturum açmak için Azure kullanarak [az login](/cli/azure/authenticate-azure-cli).
+3. [Az Login](/cli/azure/authenticate-azure-cli)kullanarak Azure 'da oturum açın.
      
      ```azurecli
      az login
@@ -178,31 +180,31 @@ Veri diskleri bağlayın ve gerekli/etc/fstab girişleri oluşturmak için kulla
      az account set --subscription "<subscription name or ID>"
      ```
 
-4. Gözden geçirme [Azure CLI 2.0 ile çalışmaya başlama](/cli/azure/get-started-with-azure-cli) gerekirse. 
+4. Gerekirse [Azure clı 2,0 ile çalışmaya başlama](/cli/azure/get-started-with-azure-cli) konusunu inceleyin. 
 
 
-## <a name="prerequisite-workflow-for-key-vault-and-the-azure-ad-app"></a>Anahtar kasası ve Azure AD uygulaması için önkoşul iş akışı
+## <a name="prerequisite-workflow-for-key-vault-and-the-azure-ad-app"></a>Key Vault ve Azure AD uygulaması için önkoşul iş akışı
 
-Zaten Azure Disk şifrelemesi için Key Vault ve Azure AD önkoşulları alışık olduğunuz, kullanabileceğiniz [Azure Disk şifrelemesi önkoşulları PowerShell Betiği](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Önkoşul betiğini kullanma hakkında daha fazla bilgi için bkz. [Azure disk şifrelemesi eki](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
+Azure disk şifrelemesi için Key Vault ve Azure AD önkoşullarını zaten biliyorsanız, [Azure disk şifrelemesi önkoşulları PowerShell betiğini](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 )kullanabilirsiniz. Önkoşul betiğini kullanma hakkında daha fazla bilgi için bkz. [Azure disk şifrelemesi eki](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
 
-1. Bir anahtar kasası oluşturma. 
+1. Bir Anahtar Kasası oluşturun. 
 2. Bir Azure AD uygulaması ve hizmet sorumlusu ayarlayın.
-3. Azure AD uygulaması için anahtar kasası erişim ilkesi ayarlayın.
-4. Set anahtar kasası erişim ilkeleri Gelişmiş.
+3. Azure AD uygulaması için Anahtar Kasası erişim ilkesini ayarlayın.
+4. Anahtar Kasası Gelişmiş erişim ilkeleri ayarlayın.
  
-## <a name="bkmk_KeyVault"></a> Anahtar kasası oluşturma 
-Azure Disk şifrelemesi ile tümleşiktir [Azure anahtar kasası](https://azure.microsoft.com/documentation/services/key-vault/) denetlemenize ve disk şifreleme anahtarlarını ve gizli anahtar kasası aboneliğinizi yönetmenize yardımcı olmak için. Anahtar kasası oluşturma veya mevcut bir Azure Disk şifrelemesi kullanın. Anahtar kasası hakkında daha fazla bilgi için bkz: [Azure anahtar kasası ile çalışmaya başlama](../key-vault/key-vault-get-started.md) ve [anahtar kasanızın güvenliğini sağlama](../key-vault/key-vault-secure-your-key-vault.md). Bir anahtar kasası oluşturmak için Resource Manager şablonu, Azure PowerShell veya Azure CLI'yı kullanabilirsiniz. 
+## <a name="bkmk_KeyVault"></a>Anahtar Kasası oluşturma 
+Azure disk şifrelemesi, Anahtar Kasası aboneliğinizdeki disk şifreleme anahtarlarını ve gizli dizileri denetlemenize ve yönetmenize yardımcı olmak için [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ile tümleşiktir. Bir Anahtar Kasası oluşturabilir veya mevcut bir Azure disk şifrelemesi kullanabilirsiniz. Anahtar kasaları hakkında daha fazla bilgi için bkz. [Azure Key Vault kullanmaya başlama](../key-vault/key-vault-get-started.md) ve [anahtar kasanızın güvenliğini sağlama](../key-vault/key-vault-secure-your-key-vault.md). Bir Anahtar Kasası oluşturmak için Kaynak Yöneticisi şablonu, Azure PowerShell veya Azure CLı kullanabilirsiniz. 
 
 
 >[!WARNING]
->Şifreleme parolaları bölgesel sınırlar arası yoksa emin olmak için Azure Disk şifrelemesi anahtar kasası ve VM'lerin aynı bölgede bulunması gerekir. Oluşturun ve şifrelenmiş VM ile aynı bölgede olan bir anahtar Kasası'nı kullanın. 
+>Şifreleme gizli dizileri 'nin bölgesel sınırların dışına bulunmadığından emin olmak için, Azure disk şifrelemesi Key Vault ve VM 'Lerin aynı bölgede birlikte bulunması gerekir. Şifrelenecek VM ile aynı bölgedeki bir Key Vault oluşturun ve kullanın. 
 
 
-### <a name="bkmk_KVPSH"></a> PowerShell ile key vault oluşturma
+### <a name="bkmk_KVPSH"></a>PowerShell ile Anahtar Kasası oluşturma
 
 [New-Azkeykasa](/powershell/module/az.keyvault/New-azKeyVault) cmdlet 'ini kullanarak Azure PowerShell bir Anahtar Kasası oluşturabilirsiniz. Key Vault ek cmdlet 'ler için, bkz [. az. Keykasası](/powershell/module/az.keyvault/). 
 
-1. Gerekirse, [Azure aboneliğinize bağlanma](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH). 
+1. Gerekirse [Azure aboneliğinize bağlanın](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH). 
 2. Gerekirse, [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup)ile yeni bir kaynak grubu oluşturun.  Veri merkezi konumlarını listelemek için [Get-AzLocation](/powershell/module/az.resources/get-azlocation)kullanın. 
      
      ```azurepowershell-interactive
@@ -216,44 +218,44 @@ Azure Disk şifrelemesi ile tümleşiktir [Azure anahtar kasası](https://azure.
      New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -Location 'East US'
      ```
 
-4. Not **kasa adı**, **kaynak grubu adı**, **kaynak kimliği**, **kasa URI'si**ve **nesne kimliği** diskleri şifreleme, daha sonra kullanmak üzere getirilir. 
+4. Daha sonra diskleri şifrelerken kullanılmak üzere döndürülen **kasa adı**, **kaynak grubu adı**, **kaynak kimliği**, **kasa URI 'si**ve **nesne kimliği** ' ni unutmayın. 
 
 
-### <a name="bkmk_KVCLI"></a> Azure CLI ile anahtar kasası oluşturma
-Azure CLI kullanarak anahtar kasanıza yönetebileceğiniz [az keyvault](/cli/azure/keyvault#commands) komutları. Bir anahtar kasası oluşturmak için kullanın [az keyvault oluşturma](/cli/azure/keyvault#az-keyvault-create).
+### <a name="bkmk_KVCLI"></a>Azure CLı ile Anahtar Kasası oluşturma
+[Az keykasa](/cli/azure/keyvault#commands) komutlarını kullanarak anahtar kasanızı Azure CLI ile yönetebilirsiniz. Bir Anahtar Kasası oluşturmak için [az keykasacreate](/cli/azure/keyvault#az-keyvault-create)komutunu kullanın.
 
-1. Gerekirse, [Azure aboneliğinize bağlanma](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
-2. Gerekirse, yeni bir kaynak grubu oluşturma ile [az grubu oluşturma](/cli/azure/group#az-group-create). Konumlar listesinde, kullanmak için [az hesabı konumları-Listele](/cli/azure/account#az-account-list) 
+1. Gerekirse [Azure aboneliğinize bağlanın](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
+2. Gerekirse, [az Group Create](/cli/azure/group#az-group-create)ile yeni bir kaynak grubu oluşturun. Konumları listelemek için [az Account List-Locations](/cli/azure/account#az-account-list) kullanın 
      
      ```azurecli-interactive
      # To list locations: az account list-locations --output table
      az group create -n "MyKeyVaultResourceGroup" -l "East US"
      ```
 
-3. Kullanarak yeni bir anahtar kasası oluşturma [az keyvault oluşturma](/cli/azure/keyvault#az-keyvault-create).
+3. [Az keykasa Create](/cli/azure/keyvault#az-keyvault-create)komutunu kullanarak yeni bir Anahtar Kasası oluşturun.
     
      ```azurecli-interactive
      az keyvault create --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --location "East US"
      ```
 
-4. Not **kasa adı** (ad), **kaynak grubu adı**, **kaynak kimliği** (ID) **Vault URI'si**ve **nesnekimliği** , döndürülür kullanılmak üzere daha sonra. 
+4. **Kasa adı** (ad), **kaynak grubu adı**, **kaynak kimliği** (kimlik), **kasa URI 'Si**ve daha sonra kullanılmak üzere döndürülen **nesne kimliği** ' ni unutmayın. 
 
-### <a name="bkmk_KVRM"></a> Resource Manager şablonu ile anahtar kasası oluşturma
+### <a name="bkmk_KVRM"></a>Kaynak Yöneticisi şablonuyla Anahtar Kasası oluşturma
 
-Bir anahtar kasası kullanarak oluşturabileceğiniz [Resource Manager şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create).
+[Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)kullanarak bir Anahtar Kasası oluşturabilirsiniz.
 
-1. Azure Hızlı Başlangıç şablonu üzerinde **azure'a Dağıt**.
-2. Abonelik, kaynak grubu, kaynak grubu konumu, anahtar kasası adını, nesne kimliği, yasal koşulları ve Sözleşmesi'ni seçin ve ardından **satın alma**. 
-
-
-## <a name="bkmk_ADapp"></a> Bir Azure AD uygulaması ve hizmet sorumlusu ayarlama 
-Azure'da çalışan bir VM'de etkinleştirilmesi için şifreleme, ihtiyacınız olduğunda, Azure Disk şifrelemesi oluşturur ve şifreleme anahtarları için anahtar kasanıza yazar. Anahtar kasanızı şifreleme anahtarları yönetme, Azure AD kimlik doğrulaması gerektirir. Bu amaç için bir Azure AD uygulaması oluşturun. Kimlik doğrulama amacıyla ya da istemci gizli anahtarı tabanlı kimlik doğrulaması kullanabilirsiniz veya [istemci Azure AD'ye sertifika tabanlı kimlik doğrulaması](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
+1. Azure hızlı başlangıç şablonunda **Azure 'A dağıt**' a tıklayın.
+2. Abonelik, kaynak grubu, kaynak grubu konumu, Key Vault adı, nesne KIMLIĞI, yasal koşullar ve anlaşma ' ı seçin ve ardından **satın al**' a tıklayın. 
 
 
-### <a name="bkmk_ADappPSH"></a> Bir Azure AD uygulaması ve hizmet sorumlusu ile Azure PowerShell ayarlama 
-Aşağıdaki komutları yürütün için alma ve [Azure AD PowerShell modülünün](/powershell/azure/active-directory/install-adv2). 
+## <a name="bkmk_ADapp"></a>Bir Azure AD uygulaması ve hizmet sorumlusu ayarlama 
+Azure 'da çalışan bir VM 'de şifrelemenin etkinleştirilmesi gerektiğinde, Azure disk şifrelemesi anahtar kasanıza şifreleme anahtarları oluşturur ve yazar. Anahtar Kasanızda şifreleme anahtarlarını yönetmek için Azure AD kimlik doğrulaması gerekir. Bu amaçla bir Azure AD uygulaması oluşturun. Kimlik doğrulama amacıyla, istemci gizli tabanlı kimlik doğrulaması veya [istemci sertifikası tabanlı Azure AD kimlik doğrulaması](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)kullanabilirsiniz.
 
-1. Gerekirse, [Azure aboneliğinize bağlanma](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH).
+
+### <a name="bkmk_ADappPSH"></a>Azure PowerShell ile bir Azure AD uygulaması ve hizmet sorumlusu ayarlama 
+Aşağıdaki komutları yürütmek için [Azure AD PowerShell modülünü](/powershell/azure/active-directory/install-adv2)alın ve kullanın. 
+
+1. Gerekirse [Azure aboneliğinize bağlanın](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH).
 2. [New-AzADApplication](/powershell/module/az.resources/new-azadapplication) PowerShell cmdlet 'ini kullanarak BIR Azure AD uygulaması oluşturun. MyApplicationHomePage ve MyApplicationUri istediğiniz herhangi bir değer olabilir.
 
      ```azurepowershell
@@ -263,43 +265,43 @@ Aşağıdaki komutları yürütün için alma ve [Azure AD PowerShell modülün�
      $servicePrincipal = New-AzADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
      ```
 
-3. Azure AD ClientID $azureAdApplication.ApplicationId bağlıdır ve $aadClientSecret daha sonra Azure Disk Şifrelemesi'ni etkinleştirmek için kullanacağınız istemci gizli anahtarı. Azure AD gizli uygun şekilde koruyun. Çalışan `$azureAdApplication.ApplicationId` ApplicationId gösterilir.
+3. $AzureAdApplication. ApplicationId, Azure AD ClientID 'dir ve $aadClientSecret, daha sonra Azure disk şifrelemeyi etkinleştirmek için kullanacağınız istemci gizli anahtarı olur. Azure AD İstemci gizliliğini uygun şekilde koruma. @No__t çalıştırmak-0, ApplicationId gösterecektir.
 
 
-### <a name="bkmk_ADappCLI"></a> Bir Azure AD uygulaması ve hizmet sorumlusu Azure CLI ile ayarlama
+### <a name="bkmk_ADappCLI"></a>Azure CLı ile bir Azure AD uygulaması ve hizmet sorumlusu ayarlama
 
-Hizmet sorumluları, Azure CLI kullanarak yönetebileceğiniz [az ad sp](/cli/azure/ad/sp) komutları. Daha fazla bilgi için bkz. [Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli).
+Hizmet sorumlularını, [az ad SP](/cli/azure/ad/sp) komutlarını kullanarak Azure CLI ile yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure hizmet sorumlusu oluşturma](/cli/azure/create-an-azure-service-principal-azure-cli).
 
-1. Gerekirse, [Azure aboneliğinize bağlanma](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
+1. Gerekirse [Azure aboneliğinize bağlanın](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
 2. Yeni bir hizmet sorumlusu oluşturun.
      
      ```azurecli-interactive
      az ad sp create-for-rbac --name "ServicePrincipalName" --password "My-AAD-client-secret" --skip-assignment 
      ```
-3.  Azure AD ClientID diğer komutlarında kullanılan AppID döndürdü. Ayrıca, az keyvault set-policy için kullanacağınız SPN bir hizmettir. Daha sonra Azure Disk Şifrelemesi'ni etkinleştirmek için kullanması gereken gizli paroladır. Azure AD gizli uygun şekilde koruyun.
+3.  Döndürülen uygulama kimliği, diğer komutlarda kullanılan Azure AD ClientID 'dir. Bu, az keykasası Set-Policy için kullanacağınız SPN 'YI de kullanabilirsiniz. Parola, daha sonra Azure disk şifrelemeyi etkinleştirmek için kullanmanız gereken istemci sırrı olur. Azure AD İstemci gizliliğini uygun şekilde koruma.
  
-### <a name="bkmk_ADappRM"></a> Bir Azure AD uygulaması ve hizmet sorumlusu ancak Azure portalında ayarlama
-Adımları uygulayın [Azure Active Directory kaynaklarına erişmek uygulama ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md) makale bir Azure AD uygulaması oluşturmak için. Aşağıda listelenen her adımı tamamlamak için doğrudan makale bölümüne sürer. 
+### <a name="bkmk_ADappRM"></a>Azure portal bir Azure AD uygulaması ve hizmet sorumlusu ayarlama
+Azure AD uygulaması oluşturmak için, [kaynak makalesine erişebilen Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturmak için portalı kullanma](../active-directory/develop/howto-create-service-principal-portal.md) adımlarını kullanın. Aşağıda listelenen her adımın tamamlanması doğrudan makale bölümüne götürür. 
 
 1. [Gerekli izinleri doğrulama](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
-2. [Bir Azure Active Directory uygulaması oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
-     - Herhangi bir ad kullanabilir ve oturum açma URL'si uygulama oluştururken istediğiniz.
-3. [Uygulama kimliği ve kimlik doğrulama anahtarını alma](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in). 
+2. [Azure Active Directory uygulaması oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+     - Uygulamayı oluştururken istediğiniz ad ve oturum açma URL 'sini kullanabilirsiniz.
+3. [Uygulama kimliğini ve kimlik doğrulama anahtarını alın](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in). 
      - Kimlik doğrulama anahtarı, istemci sırrı ve set-AzVMDiskEncryptionExtension için AadClientSecret olarak kullanılır. 
-        - Kimlik doğrulama anahtarı, Azure AD'de oturum açmak için bir kimlik bilgisi olarak bir uygulama tarafından kullanılır. Azure portalında bu gizli anahtarları olarak adlandırılır, ancak anahtar kasalarına ilgisi yoktur. Bu gizli dizi uygun şekilde güvenli hale getirin. 
+        - Kimlik doğrulama anahtarı, uygulama tarafından Azure AD 'de oturum açmak için kimlik bilgileri olarak kullanılır. Azure portal, bu gizliliğe anahtarlar denir, ancak anahtar kasalarıyla ilgili hiçbir ilişki yoktur. Bu gizli anahtarı uygun şekilde koruyun. 
      - Uygulama KIMLIĞI daha sonra set-AzVMDiskEncryptionExtension için Aadclitıd ve set-AzKeyVaultAccessPolicy için ServicePrincipalName olarak kullanılacaktır. 
 
-## <a name="bkmk_KVAP"></a> Azure AD uygulaması için anahtar kasası erişim ilkesini ayarlama
-Belirtilen bir anahtar Kasası'na şifreleme gizli anahtarları yazmak için Azure Disk şifrelemesi istemci kimliği ve gizli anahtar Kasası'na yazmak için izne sahip olan Azure Active Directory uygulamasının istemci gizli anahtarı gerekir. 
+## <a name="bkmk_KVAP"></a>Azure AD uygulaması için Anahtar Kasası erişim ilkesini ayarlama
+Şifreleme gizli dizilerini belirtilen bir Key Vault yazmak için Azure disk şifrelemesi, Key Vault gizli dizileri yazma izinlerine sahip Azure Active Directory uygulamanın Istemci KIMLIĞI ve Istemci gizli anahtarı gerektirir. 
 
 > [!NOTE]
-> Azure disk şifrelemesi, Azure AD İstemci uygulamanıza aşağıdaki erişim ilkelerini yapılandırmanızı gerektirir: _WrapKey_ ve izinleri _Ayarla_ .
+> Azure disk şifrelemesi, Azure AD İstemci uygulamanıza aşağıdaki erişim ilkelerini yapılandırmanızı gerektirir: _WrapKey_ ve izinleri _ayarlayın_ .
 
-### <a name="bkmk_KVAPPSH"></a> Azure PowerShell ile Azure AD uygulaması için anahtar kasası erişim ilkesini ayarlama
-Azure AD uygulamanızın ihtiyaç duyduğu kasadaki gizli dizileri ve anahtarları erişim hakları. Uygulamaya izin vermek için [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 'ini kullanarak, istemci kimliğini (uygulama kaydedildiğinde oluşturulan) _– servicePrincipalName_ parametre değeri olarak kullanın. Daha fazla bilgi için blog gönderisine bakın [Azure Key Vault - adım adım](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx). 
+### <a name="bkmk_KVAPPSH"></a>Azure PowerShell Azure AD uygulaması için Anahtar Kasası erişim ilkesini ayarlama
+Azure AD uygulamanız, kasadaki anahtarlara veya gizli anahtara erişmek için haklara ihtiyaç duyuyor. Uygulamaya izin vermek için [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 'ini kullanarak, istemci kimliğini (uygulama kaydedildiğinde oluşturulan) _– servicePrincipalName_ parametre değeri olarak kullanın. Daha fazla bilgi edinmek için [Azure Key Vault](https://blogs.technet.com/b/kv/archive/2015/06/02/azure-key-vault-step-by-step.aspx)blog gönderisine bakın. adım adım. 
 
-1. Gerekirse, [Azure aboneliğinize bağlanma](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH).
-2. PowerShell ile AD uygulaması için anahtar kasası erişim ilkesi ayarlayın.
+1. Gerekirse [Azure aboneliğinize bağlanın](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH).
+2. PowerShell ile AD uygulaması için Anahtar Kasası erişim ilkesini ayarlayın.
 
      ```azurepowershell
      $keyVaultName = 'MySecureVault'
@@ -308,36 +310,36 @@ Azure AD uygulamanızın ihtiyaç duyduğu kasadaki gizli dizileri ve anahtarlar
      Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ServicePrincipalName $aadClientID -PermissionsToKeys 'WrapKey' -PermissionsToSecrets 'Set' -ResourceGroupName $KVRGname
      ```
 
-### <a name="bkmk_KVAPCLI"></a> Azure CLI ile Azure AD uygulaması için anahtar kasası erişim ilkesini ayarlama
-Kullanım [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) erişim ilkesini ayarlama. Daha fazla bilgi için [yönetme CLI 2.0 kullanarak Key Vault](../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
+### <a name="bkmk_KVAPCLI"></a>Azure CLı ile Azure AD uygulaması için Anahtar Kasası erişim ilkesini ayarlama
+Erişim ilkesini ayarlamak için [az keykasası Set-Policy](/cli/azure/keyvault#az-keyvault-set-policy) komutunu kullanın. Daha fazla bilgi için bkz. [clı 2,0 kullanarak Key Vault yönetme](../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
 
-1. Gerekirse, [Azure aboneliğinize bağlanma](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
-2. Aşağıdaki komutla gizli dizileri ve kaydırma almak için Azure CLI erişim oluşturulan hizmet sorumlusu anahtarları verin:
+1. Gerekirse [Azure aboneliğinize bağlanın](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
+2. Aşağıdaki komutla gizli anahtar almak ve anahtarları kaydırmak için Azure CLı erişimi aracılığıyla oluşturduğunuz hizmet sorumlusuna izin verin:
  
      ```azurecli-interactive
      az keyvault set-policy --name "MySecureVault" --spn "<spn created with CLI/the Azure AD ClientID>" --key-permissions wrapKey --secret-permissions set
      ```
 
-### <a name="bkmk_KVAPRM"></a> Portal ile Azure AD uygulaması için anahtar kasası erişim ilkesini ayarlama
+### <a name="bkmk_KVAPRM"></a>Portal ile Azure AD uygulaması için Anahtar Kasası erişim ilkesini ayarlama
 
-1. Kaynak grubunu, key vault ile açın.
-2. Anahtar kasanızı seçin, Git **erişim ilkeleri**, ardından **yeni Ekle**.
-3. Altında **Select sorumlusu**, oluşturduğunuz Azure AD uygulaması için arama yapın ve seçin. 
-4. İçin **anahtar izinleri**, kontrol **Wrap Key** altında **şifreleme işlemleri**.
-5. İçin **gizli dizi izinleri**, kontrol **ayarlamak** altında **gizli dizi yönetimi işlemleri**.
-6. Tıklayın **Tamam** erişim ilkesini kaydedin. 
+1. Anahtar kasanızın bulunduğu kaynak grubunu açın.
+2. Anahtar kasanızı seçin, **erişim ilkeleri**' ne gidin ve **Yeni Ekle**' ye tıklayın.
+3. **Asıl seçin**altında oluşturduğunuz Azure AD uygulamasını arayın ve seçin. 
+4. **Anahtar izinleri**Için, **şifreleme işlemleri**altında **Sarla tuşu** ' nı işaretleyin.
+5. **Gizli izinler**Için, **gizli yönetim işlemleri**altında **Ayarla** ' yı işaretleyin.
+6. Erişim ilkesini kaydetmek için **Tamam** ' ı tıklatın. 
 
-![Azure Key Vault şifreleme işlemleri - Wrap Key](./media/azure-security-disk-encryption/keyvault-portal-fig3.png)
+![Azure Key Vault şifreleme işlemleri-Wrap tuşu](./media/azure-security-disk-encryption/keyvault-portal-fig3.png)
 
-![Azure Key Vault gizli izinleri - ayarlayın](./media/azure-security-disk-encryption/keyvault-portal-fig3b.png)
+![Azure Key Vault gizli izinleri-ayarla](./media/azure-security-disk-encryption/keyvault-portal-fig3b.png)
 
-## <a name="bkmk_KVper"></a> Set anahtar kasası erişim ilkeleri Gelişmiş
-Azure platform şifreleme anahtarları veya gizli anahtar kasanızı önyükleme ve birimler şifresini çözmek için VM ayıklanarak erişmesi gerekir. Disk şifrelemeyi etkinleştirme anahtar kasası veya dağıtımları başarısız olur.  
+## <a name="bkmk_KVper"></a>Anahtar Kasası Gelişmiş erişim ilkelerini ayarlama
+Azure platformunun, birimleri önyüklemek ve şifrelerini çözmek için sanal makine için kullanılabilir hale getirmek üzere anahtar kasasındaki şifreleme anahtarlarına veya gizli anahtarlara erişmesi gerekir. Anahtar kasasında disk şifrelemeyi etkinleştirin veya dağıtımlar başarısız olur.  
 
-### <a name="bkmk_KVperPSH"></a> Gelişmiş erişim ilkeleri Azure PowerShell ile anahtar kasası ayarlama
+### <a name="bkmk_KVperPSH"></a>Azure PowerShell ile Anahtar Kasası Gelişmiş erişim ilkeleri ayarlama
  Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) Anahtar Kasası PowerShell cmdlet 'ini kullanın.
 
-  - **Key Vault disk şifrelemesi için etkinleştir:** Azure disk şifrelemesi için EnabledForDiskEncryption gereklidir.
+  - **Key Vault disk şifrelemesi Için etkinleştir:** Azure disk şifrelemesi için EnabledForDiskEncryption gereklidir.
       
      ```azurepowershell-interactive 
      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForDiskEncryption
@@ -355,10 +357,10 @@ Azure platform şifreleme anahtarları veya gizli anahtar kasanızı önyükleme
      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MyKeyVaultResourceGroup' -EnabledForTemplateDeployment
      ```
 
-### <a name="bkmk_KVperCLI"></a> Gelişmiş erişim ilkeleri Azure CLI kullanarak anahtar kasası ayarlama
-Kullanım [az keyvault update](/cli/azure/keyvault#az-keyvault-update) anahtar kasası disk şifrelemeyi etkinleştirmek için. 
+### <a name="bkmk_KVperCLI"></a>Azure CLı kullanarak Anahtar Kasası Gelişmiş erişim ilkelerini ayarlama
+Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [az keykasatıon Update](/cli/azure/keyvault#az-keyvault-update) kullanın. 
 
- - **Key Vault disk şifrelemesi için etkinleştir:** Etkin-disk şifrelemesi gereklidir. 
+ - **Key Vault disk şifrelemesi Için etkinleştir:** Etkin-disk şifrelemesi gereklidir. 
 
      ```azurecli-interactive
      az keyvault update --name "MySecureVault" --resource-group "MyKeyVaultResourceGroup" --enabled-for-disk-encryption "true"
@@ -375,33 +377,33 @@ Kullanım [az keyvault update](/cli/azure/keyvault#az-keyvault-update) anahtar k
      ```
 
 
-### <a name="bkmk_KVperrm"></a> Gelişmiş erişim ilkeleri Azure portalı üzerinden anahtar kasası ayarlama
+### <a name="bkmk_KVperrm"></a>Azure portal aracılığıyla Anahtar Kasası Gelişmiş erişim ilkeleri ayarlama
 
-1. Anahtar Kasası'nı seçin, Git **erişim ilkeleri**, ve **Gelişmiş erişim ilkelerini görüntülemek için tıklayın**.
-2. Etiketli kutunun seçili olduğunu seçin **Azure Disk şifrelemesi birim şifreleme için erişimi etkinleştirme**.
-3. Seçin **dağıtımı için Azure sanal Makineler'e erişimi etkinleştir** ve/veya **erişimi için Azure Resource Manager şablon dağıtımı için Etkinleştir**, gerekirse. 
-4. **Kaydet**’e tıklayın.
+1. Keykasanızı seçin, **erişim ilkeleri**' ne gidin ve **Gelişmiş erişim Ilkelerini göstermek için tıklayın**.
+2. **Birim şifrelemesi Için Azure disk şifrelemesi 'ne erişimi etkinleştir**etiketli kutuyu seçin.
+3. **Dağıtım Için Azure sanal makinelerine erişimi etkinleştir** ' i seçin ve/veya gerekirse **şablon dağıtımı Için Azure Resource Manager erişimi etkinleştirin**. 
+4. **Kaydet**'e tıklayın.
 
-![Gelişmiş erişim ilkeleri azure anahtar kasası](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
+![Azure Anahtar Kasası Gelişmiş erişim ilkeleri](./media/azure-security-disk-encryption/keyvault-portal-fig4.png)
 
 
-## <a name="bkmk_KEK"></a> Bir anahtar şifreleme anahtarı (isteğe bağlı) ayarlama
-Bir ek şifreleme anahtarları için güvenlik katmanı için bir anahtar şifreleme anahtarı (KEK) kullanmak istiyorsanız bir KEK anahtar kasanızı ekleyin. Anahtar kasasında anahtar şifreleme anahtarı oluşturmak için [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 'ini kullanın. Ayrıca, şirket içi Anahtar Yönetimi'nden HSM bir KEK içeri aktarabilirsiniz. Daha fazla bilgi için [Key Vault belgeleri](../key-vault/key-vault-hsm-protected-keys.md). Anahtar şifreleme anahtarı belirtildiğinde, Azure Disk şifrelemesi anahtar Kasası'na yazmadan önce şifreleme parolaları sarmalamak için bu anahtarı kullanır. 
+## <a name="bkmk_KEK"></a>Anahtar şifreleme anahtarı ayarlama (isteğe bağlı)
+Şifreleme anahtarları için ek bir güvenlik katmanı için anahtar şifreleme anahtarı (KEK) kullanmak istiyorsanız, anahtar kasanıza bir KEK ekleyin. Anahtar kasasında anahtar şifreleme anahtarı oluşturmak için [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet 'ini kullanın. Ayrıca, şirket içi anahtar yönetimi HSM 'nizden bir KEK içeri aktarabilirsiniz. Daha fazla bilgi için bkz. [Key Vault belgeleri](../key-vault/key-vault-hsm-protected-keys.md). Anahtar şifreleme anahtarı belirtildiğinde Azure disk şifrelemesi, Key Vault yazmadan önce şifreleme gizli dizilerini kaydırmak için bu anahtarı kullanır. 
 
 * Anahtar oluştururken bir RSA anahtar türü kullanın. Azure disk şifrelemesi henüz eliptik eğri anahtarlarını kullanmayı desteklemiyor.
 
-* Anahtar kasası gizli dizi ve KEK URL'leri tutulan olmalıdır. Azure, sürüm oluşturma bu kısıtlamayı zorlar. Geçerli bir gizli dizi ve KEK URL'ler için aşağıdaki örneklere bakın:
+* Anahtar Kasası gizli ve KEK URL 'Lerinin sürümü oluşturulmalıdır. Azure, sürüm oluşturma kısıtlaması uygular. Geçerli gizli ve KEK URL 'Leri için aşağıdaki örneklere bakın:
 
-  * Geçerli bir gizli URL örneği:   *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Geçerli bir KEK URL örneği:   *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Geçerli bir gizli dizi URL 'SI örneği: *https://contosovault.vault.azure.net/secrets/EncryptionSecretWithKek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Geçerli bir KEK URL örneği: *https://contosovault.vault.azure.net/keys/diskencryptionkek/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-* Azure Disk şifrelemesi, anahtar kasası gizli dizileri ve KEK URL'leri bir parçası olarak belirten bir bağlantı noktası numaralarını desteklemez. Desteklenen ve desteklenmeyen key vault URL'leri örnekleri için aşağıdaki örneklere bakın:
+* Azure disk şifrelemesi, Anahtar Kasası gizli dizileri ve KEK URL 'Lerinin bir parçası olarak bağlantı noktası numaraları belirtilmesini desteklemez. Desteklenmeyen ve desteklenen Anahtar Kasası URL 'Leri örnekleri için aşağıdaki örneklere bakın:
 
-  * Kabul edilebilir bir key vault URL'si  *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * Kabul edilebilir bir key vault URL'si:   *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Kabul edilmeyen Anahtar Kasası URL 'SI *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * Kabul edilebilir Anahtar Kasası URL 'SI: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="bkmk_KEKPSH"></a> Azure PowerShell ile bir anahtar şifreleme anahtarı ayarlama 
-PowerShell betiğini kullanmadan önce betiği adımları anlamak için Azure Disk şifrelemesi önkoşulları hakkında bilgi sahibi olmalıdır. Örnek betik, ortamınız için değişiklikleri gerekebilir. Bu betik, tüm Azure Disk şifrelemesi önkoşulları oluşturur ve disk şifreleme anahtarı bir anahtar şifreleme anahtarı kullanılarak sarmalama var olan bir Iaas VM, şifreler. 
+### <a name="bkmk_KEKPSH"></a>Azure PowerShell ile anahtar şifreleme anahtarı ayarlama 
+PowerShell betiğini kullanmadan önce, betikteki adımları anlamak için Azure disk şifrelemesi önkoşulları hakkında bilgi sahibi olmanız gerekir. Örnek betik, ortamınız için değişiklikler gerektirebilir. Bu betik, tüm Azure disk şifrelemesi önkoşullarını oluşturur ve var olan bir IaaS sanal makinesini şifreler, anahtar şifreleme anahtarını kullanarak disk şifreleme anahtarını sarmalama. 
 
  ```powershell
  # Step 1: Create a new resource group and key vault in the same location.
@@ -448,8 +450,8 @@ PowerShell betiğini kullanmadan önce betiği adımları anlamak için Azure Di
      Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
 ```
 
-## <a name="bkmk_Cert"></a> Sertifika tabanlı kimlik doğrulaması (isteğe bağlı)
-Sertifika kimlik doğrulaması kullanmak istiyorsanız, anahtar kasanıza karşıya yükleyin ve istemciye dağıtın. PowerShell betiğini kullanmadan önce betiği adımları anlamak için Azure Disk şifrelemesi önkoşulları hakkında bilgi sahibi olmalıdır. Örnek betik, ortamınız için değişiklikleri gerekebilir.
+## <a name="bkmk_Cert"></a>Sertifika tabanlı kimlik doğrulaması (isteğe bağlı)
+Sertifika kimlik doğrulamasını kullanmak isterseniz, anahtar kasanıza bir tane yükleyebilir ve istemciye dağıtabilirsiniz. PowerShell betiğini kullanmadan önce, betikteki adımları anlamak için Azure disk şifrelemesi önkoşulları hakkında bilgi sahibi olmanız gerekir. Örnek betik, ortamınız için değişiklikler gerektirebilir.
 
      
  ```powershell
@@ -527,12 +529,12 @@ Sertifika kimlik doğrulaması kullanmak istiyorsanız, anahtar kasanıza karş�
    Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $VMName -AadClientID $AADClientID -AadClientCertThumbprint $AADClientCertThumbprint -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId
  ```
 
-## <a name="bkmk_CertKEK"></a> Sertifika tabanlı kimlik doğrulaması ve (isteğe bağlı) bir KEK
+## <a name="bkmk_CertKEK"></a>Sertifika tabanlı kimlik doğrulaması ve bir KEK (isteğe bağlı)
 
-Şifreleme anahtarı bir KEK ile kaydırma ve sertifika kimlik doğrulaması kullanmak istiyorsanız, kullanabileceğiniz aşağıdaki örnek betiği. PowerShell betiğini kullanmadan önce tüm betik adımları anlamak için önceki Azure Disk şifrelemesi önkoşulları sahibi olmalısınız. Örnek betik, ortamınız için değişiklikleri gerekebilir.
+Sertifika kimlik doğrulamasını kullanmak ve şifreleme anahtarını bir KEK ile kaydırmak isterseniz, aşağıdaki betiği örnek olarak kullanabilirsiniz. PowerShell betiğini kullanmadan önce, betikteki adımları anlamak için önceki tüm Azure disk şifrelemesi önkoşullarını bilmeniz gerekir. Örnek betik, ortamınız için değişiklikler gerektirebilir.
 
 > [!IMPORTANT]
-> Linux Vm'lerinde Azure AD sertifika tabanlı kimlik doğrulaması şu anda desteklenmiyor.
+> Azure AD Sertifika tabanlı kimlik doğrulaması şu anda Linux sanal makinelerinde desteklenmez.
 
 
 
@@ -622,7 +624,7 @@ Sertifika kimlik doğrulaması kullanmak istiyorsanız, anahtar kasanıza karş�
  
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Windows için Azure Disk şifrelemesini etkinleştirme](azure-security-disk-encryption-windows-aad.md)
+> [Windows için Azure disk şifrelemesini etkinleştirme](azure-security-disk-encryption-windows-aad.md)
 
 > [!div class="nextstepaction"]
-> [Linux için Azure Disk şifrelemesini etkinleştirme](azure-security-disk-encryption-linux-aad.md)
+> [Linux için Azure disk şifrelemesini etkinleştirme](azure-security-disk-encryption-linux-aad.md)

@@ -1,24 +1,24 @@
 ---
-title: Windows sanal masaüstü-Azure 'da kiracı ve konak havuzu oluşturma
-description: Bir Windows sanal masaüstü ortamında kiracı ve oturum ana bilgisayar sanal makinesini (VM) yapılandırırken oluşan sorunları çözme.
+title: Oturum konak sanal makine yapılandırması-Azure
+description: Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini yapılandırırken sorunları çözme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: d163bbf50193743b6602bc9ec3d330df4c14ebcc
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 4c684a2db02b7587b6d81eaf2f034540250fc001
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676413"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841286"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Kiracı ve ana bilgisayar havuzu oluşturma
+# <a name="session-host-virtual-machine-configuration"></a>Oturum konak sanal makine yapılandırması
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geribildirim gönderme
 
 Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
@@ -335,8 +335,8 @@ Windows 10, sürüm 1903 ' e yükseltmek için:
     
     ![Adım 6 ' daki yönergelere göre yapılandırılan "Uzak Masaüstü lisans modunu ayarla" penceresinin ekran görüntüsü.](media/group-policy-editor-per-user.png)
 
-7. **Uygula**’yı seçin.
-8. **Tamam**’ı seçin.
+7. **Uygula**' yı seçin.
+8. **Tamam ' ı**seçin.
 9.  Bilgisayarınızı yeniden başlatın.
 
 Konak havuzunu en son görüntüyle yeniden dağıtmak için:
@@ -347,8 +347,8 @@ Konak havuzunu en son görüntüyle yeniden dağıtmak için:
 4. Bilgisayar Yapılandırması altında, **Yönetim Şablonları** > **Windows bileşenleri** > **Uzak Masaüstü Hizmetleri** **@no__t-** 7**lisanslaması**' na gidin.
 5. **Uzak Masaüstü lisans modunu ayarla**' yı seçin.
 6. Açılan pencerede, önce **etkin**' i seçin, ardından Seçenekler altında **Kullanıcı başına**RD Oturumu Ana Bilgisayarı sunucusu için lisans modunu belirtin.
-7. **Uygula**’yı seçin.
-8. **Tamam**’ı seçin.
+7. **Uygula**' yı seçin.
+8. **Tamam ' ı**seçin.
 9.  Bilgisayarınızı yeniden başlatın.
 
 ### <a name="version-1903"></a>Sürüm 1903
@@ -363,8 +363,8 @@ Sürüm numaranız "1903" diyor ise şu yönergeleri izleyin:
     
     ![Adım 6 ' daki yönergelere göre yapılandırılan "Uzak Masaüstü lisans modunu ayarla" penceresinin ekran görüntüsü.](media/group-policy-editor-per-user.png)
 
-7. **Uygula**’yı seçin.
-8. **Tamam**’ı seçin.
+7. **Uygula**' yı seçin.
+8. **Tamam ' ı**seçin.
 9.  Bilgisayarınızı yeniden başlatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: dfc0cd6686ac4ea1af2beb34edeadd17e4c952e1
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b8aa87b871b86a8dab3b1984b638366a42708483
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329441"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936888"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
@@ -24,11 +24,11 @@ ms.locfileid: "71329441"
 > * [Python](create-cluster-database-python.md)
 > * [ARM şablonu](create-cluster-database-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir bir veri araştırma hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. 
 
-Bu makalede, bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md)kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturacaksınız. Makalede nasıl tanımlamak için hangi kaynaklara dağıtılır ve parametrelerin nasıl dağıtıldığının ve dağıtım yürütülürken belirtilen gösterilmektedir. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](/azure/azure-resource-manager/resource-group-authoring-templates). Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. kusto kaynak türleri](/azure/templates/microsoft.kusto/allversions).
+Bu makalede, bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md)kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturacaksınız. Makalede hangi kaynakların dağıtıldığını ve dağıtım yürütüldüğünde belirtilen parametrelerin nasıl tanımlanacağı gösterilmektedir. Bu şablonu kendi dağıtımlarınız için kullanabilir veya gereksinimlerinizi karşılayacak şekilde özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](/azure/azure-resource-manager/resource-group-authoring-templates). Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. kusto kaynak türleri](/azure/templates/microsoft.kusto/allversions).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>Küme ve veritabanı oluşturma için Azure Resource Manager şablonu
 
@@ -104,13 +104,13 @@ Daha fazla şablon örneği bulmak için bkz. [Azure hızlı başlangıç şablo
 
 1. Bir küme ve veritabanı oluşturmak için, dağıtımı başlatmak üzere aşağıdaki düğmeyi kullanın. Sağ tıklayıp **Yeni pencerede aç**' ı seçerek bu makaledeki adımların geri kalanını izleyebilirsiniz.
 
-    [![Azure’a dağıtma](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
+    [![Azure 'a dağıtın](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
 
-    **Azure'a dağıtma** düğmesi Azure portalda doldurmanız gereken bir form sayfasını açar.
+    **Azure 'A dağıt** düğmesi, bir dağıtım formunu doldurmanız için sizi Azure Portal götürür.
 
     ![Azure’a dağıtma](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
-Formunu kullanarak [Azure Portal şablonu düzenleyebilir ve dağıtabilirsiniz](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) .
+    Formunu kullanarak [Azure Portal şablonu düzenleyebilir ve dağıtabilirsiniz](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) .
 
 1. Tüm **temel bilgiler** ve **Ayarlar** bölümleri. Benzersiz küme ve veritabanı adları ' nı seçin.
 Azure Veri Gezgini kümesi ve veritabanının oluşturulması birkaç dakika sürer.
@@ -136,13 +136,13 @@ Azure Veri Gezgini kümesi ve veritabanının oluşturulması birkaç dakika sü
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-1. Seçin **kopyalama** PowerShell betiğini kopyalanacak.
+1. PowerShell betiğini kopyalamak için **Kopyala** ' yı seçin.
 1. Kabuk konsoluna sağ tıklayın ve ardından **Yapıştır**' ı seçin.
 Azure Veri Gezgini kümesi ve veritabanının oluşturulması birkaç dakika sürer.
 
 #### <a name="verify-the-deployment-using-powershell"></a>PowerShell kullanarak dağıtımı doğrulama
 
-Dağıtımı doğrulamak için aşağıdaki Azure PowerShell betiğini kullanın.  Cloud Shell hala açıksa, ilk satırı (Read-Host) kopyalamanız/çalıştırmanız gerekmez. PowerShell 'de Azure Veri Gezgini kaynaklarını yönetme hakkında daha fazla bilgi için [az. kusto](/powershell/module/az.kusto/?view=azps-2.7.0)makalesini okuyun. İlgili değişiklikleri yapın
+Dağıtımı doğrulamak için aşağıdaki Azure PowerShell betiğini kullanın.  Cloud Shell hala açıksa, ilk satırı (Read-Host) kopyalamanız/çalıştırmanız gerekmez. PowerShell 'de Azure Veri Gezgini kaynaklarını yönetme hakkında daha fazla bilgi için [az. kusto](/powershell/module/az.kusto/?view=azps-2.7.0)makalesini okuyun. 
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -155,9 +155,9 @@ Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
-Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. 
+Azure kaynaklarına artık ihtiyaç duyulmadığında, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. 
 
 ### <a name="clean-up-resources-using-the-azure-portal"></a>Azure portal kullanarak kaynakları Temizleme
 

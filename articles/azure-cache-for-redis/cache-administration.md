@@ -14,30 +14,30 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: ddb9dd49af4557e6ff8d38110de4a99a9cf6fed7
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: eb6773d1547499fcd3a73aebf8f17ec61b6dc06a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687013"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827597"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yönetme
 Bu konu, Redsıs örnekleri için Azure önbelleğiniz için güncelleştirmeleri yeniden [başlatma](#reboot) ve [zamanlama](#schedule-updates) gibi yönetim görevlerinin nasıl gerçekleştirileceğini açıklamaktadır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="reboot"></a>Yeniden başlatma
+## <a name="reboot"></a>Yeniden başlatın
 **Yeniden başlatma** dikey penceresi, önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmanızı sağlar. Bu yeniden başlatma özelliği, bir önbellek düğümünde hata oluşursa uygulamanızı dayanıklılık açısından test etmenizi sağlar.
 
-![Yeniden başlatma](./media/cache-administration/redis-cache-administration-reboot.png)
+![Yeniden başlatın](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Yeniden başlatılacak düğümleri seçin ve **Yeniden Başlat**' a tıklayın.
 
-![Yeniden başlatma](./media/cache-administration/redis-cache-reboot.png)
+![Yeniden başlatın](./media/cache-administration/redis-cache-reboot.png)
 
 Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, önbelleğin hangi parçaları yeniden başlatılacağını seçebilirsiniz.
 
-![Yeniden başlatma](./media/cache-administration/redis-cache-reboot-cluster.png)
+![Yeniden başlatın](./media/cache-administration/redis-cache-reboot-cluster.png)
 
 Önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmak için, istenen düğümleri seçin ve **Yeniden Başlat**' a tıklayın. Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, yeniden başlatmak için istenen parçaları seçin ve ardından **Yeniden Başlat**' a tıklayın. Birkaç dakika sonra, seçili düğümler yeniden başlatılır ve birkaç dakika sonra tekrar çevrimiçi olacak.
 
@@ -82,15 +82,15 @@ Evet, PowerShell yönergeleri için bkz. [Reda Için Azure önbelleğini yeniden
 ### <a name="what-pricing-tiers-can-use-the-reboot-functionality"></a>Hangi fiyatlandırma katmanlarındaki yeniden başlatma işlevleri kullanılabilir?
 Tüm fiyatlandırma katmanlarında yeniden başlatma kullanılabilir.
 
-## <a name="schedule-updates"></a>Güncelleştirmeleri zamanlama
-**Güncelleştirmeleri zamanla** dikey penceresi, Premium katman önbelleğiniz için bir bakım penceresi atamanıza olanak tanır. Bakım penceresi belirtildiğinde, bu pencere sırasında tüm Red, Server güncelleştirmeleri yapılır. 
+## <a name="schedule-updates"></a>Güncelleştirmeleri zamanla
+**Güncelleştirmeleri zamanla** dikey penceresi, önbellek örneğiniz için bir bakım penceresi atamanıza olanak tanır. Bakım penceresi belirtildiğinde, bu pencere sırasında tüm Red, Server güncelleştirmeleri yapılır. 
 
 > [!NOTE] 
 > Bakım penceresi yalnızca Redsıs sunucu güncelleştirmeleri için geçerlidir ve önbelleği barındıran VM 'lerin işletim sisteminde herhangi bir Azure güncelleştirmesi ya da güncelleştirmesi için geçerli değildir.
 > 
 > 
 
-![Güncelleştirmeleri zamanlama](./media/cache-administration/redis-schedule-updates.png)
+![Güncelleştirmeleri zamanla](./media/cache-administration/redis-schedule-updates.png)
 
 Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün için bakım penceresi başlangıç saatini belirtip **Tamam**' a tıklayın. Bakım penceresi saatinin UTC olarak olduğunu unutmayın. 
 

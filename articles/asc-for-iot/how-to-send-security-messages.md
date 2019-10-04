@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/03/2019
 ms.author: mlottner
-ms.openlocfilehash: af775a57356af304aa27453baffa518788d0f5e7
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 4d91eecc6168ae195fecdf788f091fd70b785f05
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326540"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937125"
 ---
 # <a name="send-security-messages-sdk"></a>Güvenlik iletileri SDK 'Sı gönder
 
 Bu nasıl yapılır kılavuzunda, IoT Aracısı için Azure Güvenlik Merkezi 'ni kullanmadan cihaz güvenlik iletilerinizi toplayıp göndermenizi ve bunun nasıl yapılacağını anlatan IoT hizmeti özelliklerine yönelik Azure Güvenlik Merkezi açıklanır.  
 
-Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz: 
+Bu kılavuzda şunları yapmayı öğreneceksiniz: 
 > [!div class="checklist"]
 > * Azure IoT C SDK 'sını kullanarak güvenlik iletileri gönderme
 > * Azure IoT C# SDK kullanarak güvenlik iletileri gönderme
@@ -46,7 +46,7 @@ IoT için Azure Güvenlik Merkezi, aşağıdaki ölçütleri kullanarak bir güv
 - İleti [güvenlik iletisi şemasına](https://aka.ms/iot-security-schemas) uygunsa
 - İleti gönderilmeden önce bir güvenlik iletisi olarak ayarlandıysa
 
-Her güvenlik iletisi `AgentId` `AgentVersion`,göndereninmeta verilerini, vegüvenlikolaylarınınbirlistesiniiçerir.`MessageSchemaVersion`
+Her güvenlik iletisi, gönderenin meta verilerini `AgentId`, `AgentVersion`, `MessageSchemaVersion` ve güvenlik olaylarının bir listesini içerir.
 Şema, olay türleri dahil olmak üzere güvenlik iletisinin geçerli ve gerekli özelliklerini tanımlar.
 
 >[!Note]
@@ -101,7 +101,7 @@ Doğru üst bilgiyle işaretlenmiş olsa bile gönderilen tüm veriler, [IoT ile
 
 **Güvenlik Iletileri gönderme** API 'si Şu anda C ve C#, Python, Node. js ve Java 'da kullanılabilir.  
 
-#### <a name="c-api"></a>C API 'SI
+#### <a name="c-api"></a>C APı 'SI
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
@@ -145,7 +145,7 @@ static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* 
     }
 }
 ```
-#### <a name="c-api"></a>C# API’si
+#### <a name="c-api"></a>C#'SINDEKI
 
 ```cs
 
@@ -190,7 +190,7 @@ function SendSecurityMessage(messageContent)
 }
 ```
 
-#### <a name="python-api"></a>Python API
+#### <a name="python-api"></a>Python API 'SI
 
 ```python
 async def send_security_message_async(message_content):
@@ -203,6 +203,19 @@ async def send_security_message_async(message_content):
     await device_client.disconnect()
 ```
 
+#### <a name="java-api"></a>Java API 'SI
+
+```java
+public void SendSecurityMessage(string message)
+{
+    ModuleClient client = new ModuleClient("<connection_string>", IotHubClientProtocol.MQTT);
+    Message msg = new Message(message);
+    msg.setAsSecurityMessage();
+    EventCallback callback = new EventCallback();
+    string context = "<user_context>";
+    client.sendEventAsync(msg, callback, context);
+}
+```
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

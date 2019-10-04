@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2019
+ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4bc4e8e02c5b44c63ee531a295f2b59e91c056bd
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 85e1ebc05ad4ebe1d58716981c0688df0126efb0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900458"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937235"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Ağ güvenliği için en iyi Azure uygulamaları
 Bu makalede, ağ güveninizi geliştirmeye yönelik bir Azure en iyi yöntemleri koleksiyonu ele alınmaktadır. Bu en iyi uygulamalar, Azure ağ deneyimimizden ve bizim gibi müşterilerin deneyimlerimizden türetilir.
@@ -49,22 +49,22 @@ Azure sanal ağları, şirket içi ağınızdaki lan 'Lara benzer. Bir Azure san
 
 Alt ağları mantıksal olarak parçalara ayırma için en iyi uygulamalar şunlardır:
 
-**En iyi uygulama**: Geniş aralıklara izin verme kuralları atamayın (örneğin, 0.0.0.0 ila 255.255.255.255 'ye izin verir).  
-**Ayrıntı**: Sorun giderme yordamlarının bu tür kuralları ayarlamayı önleyin veya yasaklaın. Bu kurallar, önemli bir güvenlik hissi oluşmasına neden olur ve kırmızı takımlar tarafından sık olarak bulunur ve bu açıktan yararlanabilir.
+**En iyi yöntem**: geniş aralıklara izin verme kuralları atamayın (örneğin, 0.0.0.0 ila 255.255.255.255 'ye izin verin).  
+**Ayrıntı**: sorun giderme yordamlarının bu tür kuralları ayarlamayı önleyin veya yasaklaın. Bu kurallar, önemli bir güvenlik hissi oluşmasına neden olur ve kırmızı takımlar tarafından sık olarak bulunur ve bu açıktan yararlanabilir.
 
-**En iyi uygulama**: Daha büyük adres alanını alt ağlara bölüler.   
-**Ayrıntı**: Alt ağlarınızı oluşturmak için [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)tabanlı alt ağ oluşturma ilkelerini kullanın.
+**En iyi yöntem**: daha büyük adres alanını alt ağlara bölüler.   
+**Ayrıntı**: alt ağlarınızı oluşturmak için [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)tabanlı alt ağ oluşturma ilkelerini kullanın.
 
-**En iyi uygulama**: Alt ağlar arasında ağ erişim denetimleri oluşturun. Alt ağlar arasında yönlendirme otomatik olarak gerçekleşir ve yönlendirme tablolarını el ile yapılandırmanız gerekmez. Varsayılan olarak, bir Azure sanal ağında oluşturduğunuz alt ağlar arasında ağ erişim denetimi yoktur.   
+**En iyi yöntem**: alt ağlar arasında ağ erişim denetimleri oluşturun. Alt ağlar arasında yönlendirme otomatik olarak gerçekleşir ve yönlendirme tablolarını el ile yapılandırmanız gerekmez. Varsayılan olarak, bir Azure sanal ağında oluşturduğunuz alt ağlar arasında ağ erişim denetimi yoktur.   
 **Ayrıntı**: Azure alt ağlarındaki istenmeyen trafiğe karşı korumak için bir [ağ güvenlik grubu](/azure/virtual-network/virtual-networks-nsg) kullanın. Ağ güvenlik grupları, ağ trafiği için izin verme/reddetme kuralları oluşturmak için 5 tanımlama grubu yaklaşımını (kaynak IP, kaynak bağlantı noktası, hedef IP, hedef bağlantı noktası ve katman 4 Protokolü) kullanan basit, durum bilgisi olmayan paket denetleme cihazlarıdır. Tek bir IP adresine, birden fazla IP adresine veya, tüm alt ağlardan/veya bunların tamamına giden trafiğe izin verir veya bu adresi engelleyin.
 
 Alt ağlar arasında ağ erişim denetimi için ağ güvenlik grupları 'nı kullandığınızda, kendi alt ağlarında aynı güvenlik bölgesine veya rolüne ait olan kaynakları yerleştirebilirsiniz.
 
-**En iyi uygulama**: Basitlik ve esneklik sağlamak için küçük sanal ağlardan ve alt ağlardan kaçının.   
-**Ayrıntı**: Çoğu kuruluş başlangıçta planlanandan daha fazla kaynak ekler ve adreslerin yeniden tahsis olması işgücü. Küçük alt ağların kullanılması sınırlı güvenlik değeri ekler ve bir ağ güvenlik grubunu her alt ağ ile eşleyerek ek yük ekler. Büyüme esnekliğine sahip olduğunuzdan emin olmak için alt ağları geniş bir şekilde tanımlayın.
+**En iyi yöntem**: basitlik ve esneklik sağlamak için küçük sanal ağlardan ve alt ağlardan kaçının.   
+**Ayrıntı**: çoğu kuruluş başlangıçta planlanandan daha fazla kaynak ekler ve adreslerin yeniden tahsis etme işlemi yoğun olur. Küçük alt ağların kullanılması sınırlı güvenlik değeri ekler ve bir ağ güvenlik grubunu her alt ağ ile eşleyerek ek yük ekler. Büyüme esnekliğine sahip olduğunuzdan emin olmak için alt ağları geniş bir şekilde tanımlayın.
 
-**En iyi uygulama**: [Uygulama güvenlik gruplarını](https://docs.microsoft.com/rest/api/virtualnetwork/applicationsecuritygroups)tanımlayarak ağ güvenlik grubu kural yönetimini kolaylaştırın.  
-**Ayrıntı**: Gelecekte değiştirebileceğiniz veya birçok ağ güvenlik grubu genelinde kullanabileceğiniz IP adresi listeleri için bir uygulama güvenlik grubu tanımlayın. Başkalarının içeriğini ve amacını anlayabilmesi için uygulama güvenlik gruplarını açık bir şekilde girdiğinizden emin olun.
+**En iyi yöntem**: [uygulama güvenlik gruplarını](https://azure.microsoft.com/blog/applicationsecuritygroups/)tanımlayarak ağ güvenlik grubu kural yönetimini kolaylaştırın.  
+**Ayrıntı**: gelecekte değiştirebileceğiniz veya birçok ağ güvenlik grubu genelınde kullanılabilecek IP adresleri listeleri Için bir uygulama güvenlik grubu tanımlayın. Başkalarının içeriğini ve amacını anlayabilmesi için uygulama güvenlik gruplarını açık bir şekilde girdiğinizden emin olun.
 
 ## <a name="adopt-a-zero-trust-approach"></a>Sıfır güven yaklaşımını benimseyin
 Çevre tabanlı ağlar, bir ağdaki tüm sistemlere güvenildiğini varsayımıyla çalışır. Ancak, günümüzde çalışanlar kuruluşunuzun kaynaklarına çeşitli cihazlar ve uygulamalar üzerinde her yerden erişir ve bu da çevre güvenlik denetimlerinin ilgisiz olmasını sağlar. Yalnızca bir kaynağa erişebilecek olan erişim denetimi ilkeleri yeterli değildir. Güvenlik ve üretkenlik arasındaki dengeyi ana şekilde sağlamak için, güvenlik yöneticilerinin bir kaynağa nasıl erişildiği *konusunda* da etken olması gerekir.
@@ -73,14 +73,14 @@ Ağlarda güvenlik açıkları ihlal edildiği için ağların geleneksel savunm
 
 En iyi uygulamalar şunlardır:
 
-**En iyi uygulama**: Cihaza, kimliğe, güvenine, ağ konumuna ve daha fazlasına göre kaynaklara koşullu erişim izni verin.  
+**En iyi yöntem**: cihaza, kimliğe, güvenine, ağ konumuna ve daha fazlasına göre kaynaklara koşullu erişim verin.  
 **Ayrıntı**: [Azure AD koşullu erişim](/azure/active-directory/conditional-access/overview) , gerekli koşullara göre otomatik erişim denetimi kararları uygulayarak doğru erişim denetimlerini uygulamanıza olanak tanır. Daha fazla bilgi için bkz. [koşullu erişim Ile Azure yönetimine erişimi yönetme](../../role-based-access-control/conditional-access-azure-management.md).
 
-**En iyi uygulama**: Yalnızca iş akışı onayına sonra bağlantı noktası erişimini etkinleştirin.  
-**Ayrıntı**: Azure [Güvenlik Merkezi 'nde tam ZAMANıNDA VM erişimi](../../security-center/security-center-just-in-time.md) 'Ni kullanarak Azure VM 'lerinize gelen trafiği kilitleyebilir ve gerektiğinde sanal makinelere bağlanmak için kolay erişim sağlarken saldırılara maruz kalmayı azaltabilirsiniz.
+**En iyi yöntem**: yalnızca iş akışı onayını yaptıktan sonra bağlantı noktası erişimini etkinleştirin.  
+**Ayrıntı**: Azure [Güvenlik Merkezi 'NDE tam zamanında VM erişimi](../../security-center/security-center-just-in-time.md) 'ni kullanarak Azure VM 'lerinize gelen trafiği kilitleyebilir ve gerektiğinde sanal makinelere bağlanmak için kolay erişim sağlarken saldırılara maruz kalmayı azaltabilirsiniz.
 
-**En iyi uygulama**: Ayrıcalıklı görevleri gerçekleştirmek için geçici izinler verin, bu, kötü amaçlı veya yetkisiz kullanıcıların izinlerin dolduktan sonra erişim kazanmasını önler. Erişim yalnızca kullanıcılara ihtiyaç duymadan verilir.  
-**Ayrıntı**: Ayrıcalıklı görevleri gerçekleştirmek için izin vermek üzere Azure AD Privileged Identity Management veya bir üçüncü taraf çözümünde tam zamanında erişim kullanın.
+**En iyi yöntem**: ayrıcalıklı görevleri gerçekleştirmek için geçici izinler verin, bu, kötü amaçlı veya yetkisiz kullanıcıların izinlerin dolduktan sonra erişim kazanmasını önler. Erişim yalnızca kullanıcılara ihtiyaç duymadan verilir.  
+**Ayrıntı**: ayrıcalıklı görevleri gerçekleştirmek için izin vermek üzere Azure AD Privileged Identity Management veya bir üçüncü taraf çözümünde tam zamanında erişim kullanın.
 
 Sıfır güveni, ağ güvenliğine bir sonraki gelişmelidir. Cybersaldýrıların durumu, "ihlal varsay" Mindset değerini alır, ancak bu yaklaşım sınırlandırmamalıdır. Sıfır güven ağı, kuruluşların her zaman, her yerden, herhangi bir şekilde üretken olmalarını sağlayan teknolojiler kullanarak modern bir çalışma alanı derleyebilmesini sağlarken şirket verilerini ve kaynaklarını korur.
 
@@ -131,7 +131,7 @@ Birçok kuruluş, karma BT yolunu seçti. Karma BT sayesinde, şirketin bazı bi
 Karma BT senaryosunda, genellikle bazı şirket içi bağlantı türleri vardır. Şirketler arası bağlantı, şirketin şirket içi ağlarını Azure sanal ağlarına bağlanmasına izin verir. İki şirket içi bağlantı çözümü mevcuttur:
 
 * [Siteden sıteye VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md). Bu, güvenilir, güvenilir ve kurulu bir teknolojidir, ancak bağlantı Internet üzerinden gerçekleşir. Bant genişliği en fazla yaklaşık 1,25 Gbps ile sınırlıdır. Siteden siteye VPN, bazı senaryolarda istenen seçenektir.
-* **Azure ExpressRoute**. Şirket içi bağlantınız için [ExpressRoute](../../expressroute/expressroute-introduction.md) kullanmanızı öneririz. ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştırılan özel bağlantı üzerinden şirket içi ağlarınızı Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Azure, Office 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. ExpressRoute, şirket içi konumunuz veya Microsoft Exchange barındırma sağlayıcısı arasında adanmış bir WAN bağlantıdır. Bu bir telekomünikasyon bağlantısı olduğundan, verileriniz Internet üzerinden hareket etmez, bu nedenle internet iletişimlerinin olası risklerine maruz değildir.
+* **Azure ExpressRoute**. Şirket içi bağlantınız için [ExpressRoute](../../expressroute/expressroute-introduction.md) kullanmanızı öneririz. ExpressRoute, şirket içi ağlarınızı bir bağlantı sağlayıcısı tarafından kolaylaştırarak özel bir bağlantı üzerinden Microsoft bulutuna genişletmenizi sağlar. ExpressRoute ile Azure, Office 365 ve Dynamics 365 gibi Microsoft bulut hizmetleriyle bağlantı kurabilirsiniz. ExpressRoute, şirket içi konumunuz veya Microsoft Exchange barındırma sağlayıcısı arasında adanmış bir WAN bağlantıdır. Bu bir telekomünikasyon bağlantısı olduğundan, verileriniz Internet üzerinden hareket etmez, bu nedenle internet iletişimlerinin olası risklerine maruz değildir.
 
 ExpressRoute bağlantınızın konumu güvenlik duvarı kapasitesini, ölçeklenebilirliği, güvenilirliği ve ağ trafiği görünürlüğünü etkileyebilir. Mevcut (Şirket içi) ağlarda ExpressRoute 'un nerede sonlandırılacağına yönelik bir kimlik belirlemeniz gerekir. Şunları yapabilirsiniz:
 
@@ -147,25 +147,25 @@ Bu trafik dağıtımı, Web sunucularından biri kullanılamaz hale gelirse, yü
 
 Hizmetleriniz için uygun olan her durumda yük dengelemeyi kullanmanızı öneririz. Aşağıdaki senaryolar hem Azure sanal ağ düzeyinde hem de genel düzeyde, her biri için Yük Dengeleme seçenekleriyle birlikte senaryolardır.
 
-**Senaryo**: Şunları içeren bir uygulamanız vardır:
+**Senaryo**: şunları içeren bir uygulamanız vardır:
 
 - Aynı kullanıcı/istemci oturumundan gelen isteklerin aynı arka uç sanal makineye ulaşmasını gerektirir. Bunun örnekleri, alışveriş sepeti uygulamaları ve web posta sunucularıdır.
 - Yalnızca güvenli bir bağlantı kabul eder, bu nedenle sunucuya şifrelenmemiş iletişim kabul edilebilir bir seçenek değildir.
 - Aynı uzun süre çalışan aynı TCP bağlantısında, farklı arka uç sunucularına yönlendirilmek veya yük dengelemesi yapmak için birden çok HTTP isteği gerektirir.
 
-**Yük Dengeleme seçeneği**: HTTP Web trafiği yük dengeleyici olan [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction)kullanın. Application Gateway, ağ geçidinde uçtan uca SSL şifrelemesini ve [SSL sonlandırmasını](/azure/application-gateway/application-gateway-introduction) destekler. Daha sonra Web sunucuları şifreleme ve şifre çözme ek yükünün yanı sıra şifrelenmemiş akış ile arka uç sunucularına akışı yapılabilir.
+**Yük Dengeleme seçeneği**: http Web trafiği yük dengeleyici olan [Azure Application Gateway](/azure/application-gateway/application-gateway-introduction)kullanın. Application Gateway, ağ geçidinde uçtan uca SSL şifrelemesini ve [SSL sonlandırmasını](/azure/application-gateway/application-gateway-introduction) destekler. Daha sonra Web sunucuları şifreleme ve şifre çözme ek yükünün yanı sıra şifrelenmemiş akış ile arka uç sunucularına akışı yapılabilir.
 
-**Senaryo**: Azure sanal ağında bulunan sunucularınız arasında internet 'ten gelen bağlantıların yükünü dengelemenize gerek duyarsınız. Senaryolar şunlardır:
+**Senaryo**: bir Azure sanal ağında bulunan sunucularınız arasında internet 'ten gelen bağlantıların yükünü dengelemenize gerek duyarsınız. Senaryolar şunlardır:
 
 - İnternet 'ten gelen istekleri kabul eden durum bilgisiz uygulamalar vardır.
 - Yapışkan oturumlara veya SSL yük boşaltma gerektirmeyin. Yapışkan oturumlar, sunucu benzeşimi elde etmek için uygulama yük dengelemesi ile kullanılan bir yöntemdir.
 
-**Yük Dengeleme seçeneği**: Daha yüksek düzeyde kullanılabilirlik sağlamak için birden çok sanal makineye gelen istekleri yayan [bir dış yük dengeleyici oluşturmak](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) için Azure Portal kullanın.
+**Yük Dengeleme seçeneği**: daha yüksek düzeyde kullanılabilirlik sağlamak için birden çok sanal makineye gelen istekleri yayan [bir dış yük dengeleyici oluşturmak](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) için Azure Portal kullanın.
 
-**Senaryo**: İnternet üzerinde olmayan VM 'lerden yük dengeleme bağlantıları yapmanız gerekir. Çoğu durumda, yük dengeleme için kabul edilen bağlantılar SQL Server örnekleri veya iç Web sunucuları gibi bir Azure sanal ağındaki cihazlar tarafından başlatılır.   
-**Yük Dengeleme seçeneği**: Daha yüksek düzeyde kullanılabilirlik sağlamak için birden çok sanal makineye gelen istekleri yayan [bir iç yük dengeleyici oluşturmak](../../load-balancer/quickstart-create-basic-load-balancer-powershell.md) için Azure Portal kullanın.
+**Senaryo**: internet üzerinde olmayan VM 'lerden yük dengeleme bağlantıları yapmanız gerekir. Çoğu durumda, yük dengeleme için kabul edilen bağlantılar SQL Server örnekleri veya iç Web sunucuları gibi bir Azure sanal ağındaki cihazlar tarafından başlatılır.   
+**Yük Dengeleme seçeneği**: daha yüksek düzeyde kullanılabilirlik sağlamak için birden çok sanal makineye gelen istekleri yayan [bir iç yük dengeleyici oluşturmak](../../load-balancer/quickstart-create-basic-load-balancer-powershell.md) için Azure Portal kullanın.
 
-**Senaryo**: Şu nedenle genel yük dengelemeye ihtiyacınız vardır:
+**Senaryo**: şu şekilde genel yük dengelemeye ihtiyacınız vardır:
 
 - Birden çok bölgeye yaygın olarak dağıtılan ve mümkün olan en yüksek çalışma süresi düzeyini (kullanılabilirlik) gerektiren bir bulut çözümüne sahip olmak.
 - Tüm veri merkezinde kullanılamaz hale gelirse emin olmak için hizmetinizin kullanılabilir olmasını sağlamak için en yüksek çalışma süresi düzeyi gereklidir.
@@ -181,31 +181,31 @@ Bu protokolleri Internet üzerinden kullanmayla ilgili olası güvenlik sorunu, 
 
 İnternet 'ten Azure sanal makinelerinize doğrudan RDP ve SSH erişimini devre dışı bırakmanızı öneririz. İnternet 'ten doğrudan RDP ve SSH erişimi devre dışı bırakıldıktan sonra, bu VM 'Lere uzaktan yönetim için erişmek üzere kullanabileceğiniz diğer seçenekleriniz vardır.
 
-**Senaryo**: Tek bir kullanıcının Internet üzerinden bir Azure sanal ağına bağlanmasını etkinleştirin.   
-**Seçenek**: [Noktadan sıteye VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) , uzaktan erişim VPN istemcisi/sunucu bağlantısı için başka bir terimdir. Noktadan siteye bağlantı kurulduktan sonra, Kullanıcı, kullanıcının Noktadan siteye VPN aracılığıyla bağlandığı Azure sanal ağ üzerinde bulunan tüm VM 'lere bağlanmak için RDP veya SSH kullanabilir. Bu, kullanıcının bu VM 'Lere erişme yetkisi olduğunu varsayar.
+**Senaryo**: tek bir kullanıcının Internet üzerinden bir Azure sanal ağına bağlanmasını etkinleştirin.   
+**Seçenek**: [Noktadan siteye VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) , uzaktan erişim VPN istemcisi/sunucu bağlantısı için başka bir terimdir. Noktadan siteye bağlantı kurulduktan sonra, Kullanıcı, kullanıcının Noktadan siteye VPN aracılığıyla bağlandığı Azure sanal ağ üzerinde bulunan tüm VM 'lere bağlanmak için RDP veya SSH kullanabilir. Bu, kullanıcının bu VM 'Lere erişme yetkisi olduğunu varsayar.
 
 Kullanıcının bir VM 'ye bağlanmadan önce iki kez kimlik doğrulaması yapması gerektiğinden, Noktadan siteye VPN Direct RDP veya SSH bağlantılarından daha güvenlidir. İlk olarak, kullanıcının Noktadan siteye VPN bağlantısı kurması için kimlik doğrulaması yapması (ve yetkilendirilmesi) gerekir. İkincisi, kullanıcının RDP veya SSH oturumu kurması için kimlik doğrulaması yapması (ve yetkilendirilmesi) gerekir.
 
-**Senaryo**: Şirket içi ağınızdaki kullanıcıların Azure sanal ağınızdaki VM 'lere bağlanmasına olanak sağlar.   
-**Seçenek**: [Siteden sıteye VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) , ağın tamamını Internet üzerinden başka bir ağa bağlar. Şirket içi ağınızı bir Azure sanal ağına bağlamak için siteden siteye VPN kullanabilirsiniz. Şirket içi ağınızdaki kullanıcılar, siteden siteye VPN bağlantısı üzerinden RDP veya SSH protokolünü kullanarak bağlanır. İnternet üzerinden doğrudan RDP veya SSH erişimine izin vermeniz gerekmez.
+**Senaryo**: şirket içi ağınızdaki kullanıcıların Azure sanal ağınızdaki VM 'lere bağlanmasını etkinleştirin.   
+**Seçenek**: [siteden siteye VPN](/azure/vpn-gateway/vpn-gateway-site-to-site-create) , ağın tamamını Internet üzerinden başka bir ağa bağlar. Şirket içi ağınızı bir Azure sanal ağına bağlamak için siteden siteye VPN kullanabilirsiniz. Şirket içi ağınızdaki kullanıcılar, siteden siteye VPN bağlantısı üzerinden RDP veya SSH protokolünü kullanarak bağlanır. İnternet üzerinden doğrudan RDP veya SSH erişimine izin vermeniz gerekmez.
 
-**Senaryo**: Siteden siteye VPN 'ye benzer işlevler sağlamak için adanmış bir WAN bağlantısı kullanın.   
+**Senaryo**: sıteden siteye VPN 'ye benzer işlevler sağlamak için ADANMıŞ bir WAN bağlantısı kullanın.   
 **Seçenek**: [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/)kullanın. Siteden siteye VPN 'ye benzer işlevsellik sağlar. Temel farklılıklar şunlardır:
 
 - Adanmış WAN bağlantısı Internet 'te geçiş yapmaz.
 - Adanmış WAN bağlantıları genellikle daha kararlı olur ve daha iyi gerçekleştirilir.
 
 ## <a name="secure-your-critical-azure-service-resources-to-only-your-virtual-networks"></a>Kritik Azure hizmeti kaynaklarınızı yalnızca sanal ağlarınızla güvenli hale getirin
-Sanal ağ hizmet uç noktalarını, sanal ağ özel adres alanınızı ve sanal ağınızın kimliğini doğrudan bir bağlantı üzerinden Azure hizmetlerine genişletmek için kullanın. Uç noktalar kritik Azure hizmeti kaynaklarınızı sanal ağlarınızla sınırlayarak güvenliğini sağlamanıza imkan verir. Sanal ağınızdan Azure hizmetine giden trafik her zaman Microsoft Azure omurga ağında kalır.
+Sanal ağ hizmet uç noktalarını, sanal ağ özel adres alanınızı ve sanal ağınızın kimliğini doğrudan bir bağlantı üzerinden Azure hizmetlerine genişletmek için kullanın. Uç noktalar, kritik Azure hizmeti kaynaklarınızı yalnızca sanal ağlarınızla korumanıza olanak sağlar. Sanal ağınızdan Azure hizmetine giden trafik her zaman Microsoft Azure omurga ağında kalır.
 
 Hizmet uç noktaları aşağıdaki avantajları sağlar:
 
-- **Azure hizmet kaynaklarınız Için geliştirilmiş güvenlik**: Hizmet uç noktaları sayesinde Azure hizmet kaynakları sanal ağınızla sınırlandırılarak güvenli hale getirilebilir. Hizmet kaynaklarının bir sanal ağ ile güvenliğini sağlamak, kaynaklara genel İnternet erişimini tamamen kaldırarak ve yalnızca sanal ağınızdan gelen trafiğe izin vererek geliştirilmiş güvenlik sağlar.
-- **Sanal ağınızdan gelen Azure hizmet trafiği Için en iyi yönlendirme**: Sanal ağınızda internet trafiğini, Zorlamalı tünel olarak bilinen şirket içi ve/veya sanal gereçleriniz için zorlayan tüm yollar, ayrıca Azure hizmet trafiğini internet trafiğiyle aynı rotaya zorlayacak şekilde zorlar. Hizmet uç noktaları Azure trafiği için en uygun rotayı sunar.
+- **Azure hizmet kaynaklarınız Için geliştirilmiş güvenlik**: hizmet uç noktaları ile Azure hizmet kaynakları sanal ağınızla güvenli hale getirilmiş olabilir. Hizmet kaynaklarının bir sanal ağ ile güvenliğini sağlamak, kaynaklara genel İnternet erişimini tamamen kaldırarak ve yalnızca sanal ağınızdan gelen trafiğe izin vererek geliştirilmiş güvenlik sağlar.
+- **Sanal ağınızdan gelen Azure hizmet trafiği Için en iyi yönlendirme**: sanal ağınızda internet trafiğini, Zorlamalı tünel olarak bilinen şirket içi ve/veya sanal gereçlere zorlayan tüm yollar, ayrıca Azure hizmet trafiğini İnternet trafiğiyle aynı rota. Hizmet uç noktaları, Azure trafiği için en iyi yönlendirmeyi sağlar.
 
   Uç noktalar her zaman hizmet trafiğini doğrudan sanal ağınızdan Azure omurga ağındaki hizmete götürür. Trafiğin Azure omurga ağında tutulması, hizmet trafiğini etkilemeden, Zorlamalı tünel aracılığıyla sanal ağlarınızdan giden internet trafiğini denetlemeye ve izlemeye devam etmenize olanak tanır. [Kullanıcı tanımlı rotalar ve Zorlamalı tünel oluşturma](../../virtual-network/virtual-networks-udr-overview.md)hakkında daha fazla bilgi edinin.
 
-- **Daha az yönetim yükü ile ayarlama basittir**: Azure kaynaklarını bir IP güvenlik duvarı aracılığıyla güvenli hale getirmek için sanal ağlarınızda artık ayrılmış, genel IP adresleri gerekmez. Hizmet uç noktalarını ayarlamak için herhangi bir NAT veya ağ geçidi cihazı gerekmez. Hizmet uç noktaları alt ağda tek tıklamayla yapılandırılabilir. Uç noktaların bakımını yapmak için ek yük yoktur.
+- **Daha az yönetim yükü ile ayarlama basittir**: Azure kaynaklarını bir IP güvenlik duvarı aracılığıyla güvenli hale getirmek için sanal ağlarınızda artık ayrılmış, genel IP adresleri gerekmez. Hizmet uç noktalarını ayarlamak için herhangi bir NAT veya ağ geçidi cihazı gerekmez. Hizmet uç noktaları, bir alt ağ üzerinde basit bir tıklama ile yapılandırılır. Uç noktaların bakımını yapmak için ek yük yoktur.
 
 Hizmet uç noktaları ve hizmet uç noktalarının kullanılabildiği Azure hizmetleri ve bölgeleri hakkında daha fazla bilgi edinmek için bkz. [sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md).
 

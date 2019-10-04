@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 10/03/2019
 ms.author: mlottner
-ms.openlocfilehash: a9de9924b851024dd36c848203cc3ada2cde208c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b0f5696b36082375a29e99298395cf16734d5bb4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329415"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937151"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>IoT temeli ve özel denetimler için Azure Güvenlik Merkezi
 
@@ -32,7 +32,7 @@ Taban çizgisi her cihaz için standart davranış oluşturur ve beklenen Norms 
 
 ## <a name="baseline-custom-checks"></a>Taban çizgisi özel denetimleri
 
-Taban çizgisi özel denetimleri, cihazın modül kimliği ikizi kullanarak her bir cihaz temeli için özel bir denetim listesi kurar. 
+Taban çizgisi özel denetimleri, cihazın **modül kimliği ikizi** kullanarak her bir cihaz temeli için özel bir denetim listesi kurar. 
 
 ## <a name="setting-baseline-properties"></a>Taban çizgisi özelliklerini ayarlama
 
@@ -66,9 +66,9 @@ Temel özel denetimleri yapılandırmak için:
 
 | Name| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|baselineCustomChecksEnabled|Gerekli: true |Geçerli değerler: **Boole değeri** |Varsayılan değer: **false** |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
-|baselineCustomChecksFilePath |Gerekli: true|Geçerli değerler: **Dize**, **null** |Varsayılan değer: **PT5H** |Taban çizgisi XML yapılandırmasının tam yolu|
-|baselineCustomChecksFileHash |Gerekli: true|Geçerli değerler: **Dize**, **null** |Varsayılan değer: **PT5H** |XML yapılandırma dosyasının `sha256sum` ' dır. Ek bilgi için [SHA256sum başvurusunu](https://linux.die.net/man/1/sha256sum) kullanın. |
+|baselineCustomChecksEnabled|Gerekli: true |Geçerli değerler: **Boolean** |Varsayılan değer: **false** |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
+|baselineCustomChecksFilePath |Gerekli: true|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |Taban çizgisi XML yapılandırmasının tam yolu|
+|baselineCustomChecksFileHash |Gerekli: true|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |XML yapılandırma dosyasının `sha256sum` ' dır. Ek bilgi için [SHA256sum başvurusunu](https://linux.die.net/man/1/sha256sum) kullanın. |
 
 Ek temel örnekleri gözden geçirmek için bkz. [özel taban çizgisi örneği-1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) ve [özel taban çizgisi örneği-2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml).
 

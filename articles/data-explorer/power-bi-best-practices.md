@@ -7,16 +7,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 53bed3fe50afef260ac44f73a9f82e6894015c90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349001"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937316"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmaya yönelik en iyi uygulamalar
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. [Power BI](https://docs.microsoft.com/power-bi/) , verilerinizi görselleştirmenizi ve sonuçları kuruluşunuz genelinde paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini Power BI verilere bağlanmak için üç seçenek sunar. [Yerleşik bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini bir sorguyu Power BI içine aktarın](power-bi-imported-query.md)veya bir [SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makale, Azure Veri Gezgini verilerinizi Power BI ile sorgulama ve görselleştirme için ipuçları sağlar. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir bir veri araştırma hizmetidir. [Power BI](https://docs.microsoft.com/power-bi/) , verilerinizi görselleştirmenizi ve sonuçları kuruluşunuz genelinde paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini Power BI verilere bağlanmak için üç seçenek sunar. [Yerleşik bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini bir sorguyu Power BI içine aktarın](power-bi-imported-query.md)veya bir [SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makale, Azure Veri Gezgini verilerinizi Power BI ile sorgulama ve görselleştirme için ipuçları sağlar. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Power BI kullanmak için en iyi uygulamalar 
 
@@ -34,7 +34,7 @@ En yeni terabaytlarca ham veri ile çalışırken, Power BI panoları ve raporla
 
    * [Paralellik kalitesini artırmak için zayıf tutarlılığı](/azure/kusto/concepts/queryconsistency)kullanın. Bu, verilerin yeniliği üzerinde bir etkiye sahip olabilir.
 
-* **Etkin Dilimleyiciler** : kullanılabilir hale gelmeden önce raporların veri yüklemesini engellemek için [eşitleme Dilimleyicileri](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) kullanabilirsiniz. Veri kümesini yapılandırdıktan sonra tüm görselleri yerleştirip tüm Dilimleyicileri işaretledikten sonra yalnızca gerekli verileri yüklemek için eşitleme Dilimleyiciyi seçebilirsiniz.
+* **Etkin Dilimleyiciler** : raporların, kullanıma almadan verileri yüklemesini engellemek için [eşitleme Dilimleyicileri](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-slicers#sync-and-use-slicers-on-other-pages) kullanın. Veri kümesini yapılandırdıktan sonra tüm görselleri yerleştirip tüm Dilimleyicileri işaretledikten sonra yalnızca gerekli verileri yüklemek için eşitleme Dilimleyiciyi seçebilirsiniz.
 
 * **Filtreleri kullanma** -Azure Veri Gezgini aramasını ilgili veri parçalarında odaklamak için olabildiğince çok Power BI filtresi kullanın.
 
@@ -46,7 +46,7 @@ Aşağıdaki bölümde, Power BI ile kusto sorgu dilini kullanmaya yönelik ipu�
 
 ### <a name="complex-queries-in-power-bi"></a>Power BI 'de karmaşık sorgular
 
-Karmaşık sorgular, kusto içinde Power Query kıyasla daha kolay bir şekilde ifade edilir. [Kusto işlevleri](/azure/kusto/query/functions)olarak uygulanmalıdır ve Power BI çağrılır. Bu yöntem, kusto sorgunuzda `let` deyimleriyle **DirectQuery** kullanılırken gereklidir. Power BI iki sorguyu birleşdiğinden ve `let` deyimleri `join` işleciyle birlikte kullanılamaz, söz dizimi hataları oluşabilir. Bu nedenle, birleştirmenin her bölümünü bir kusto işlevi olarak kaydedin ve Power BI bu iki işlevi birlikte katılmasına izin verin.
+Karmaşık sorgular, kusto içinde Power Query kıyasla daha kolay bir şekilde ifade edilir. [Kusto işlevleri](/azure/kusto/query/functions)olarak uygulanmalıdır ve Power BI çağrılır. Bu yöntem, kusto sorgunuzda `let` deyimleriyle **DirectQuery** kullanılırken gereklidir. Power BI iki sorguyu birleştiğinden ve `let` deyimleri `join` işleciyle birlikte kullanılamaz, söz dizimi hataları oluşabilir. Bu nedenle, birleştirmenin her bölümünü bir kusto işlevi olarak kaydedin ve Power BI bu iki işlevi birlikte katılmasına izin verin.
 
 ### <a name="how-to-simulate-a-relative-data-time-operator"></a>Göreli veri-zaman işlecinin benzetimini yapma
 
@@ -104,7 +104,7 @@ Sorgudaki bilgileri filtrelemek ve sorgu performansını iyileştirmek için bir
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])
     ```
 
-1. Sorgunun ilgili bölümünü parametrenizle değiştirin. Sorguyu birden çok parçaya bölmek ve & işaretini kullanarak, parametresiyle birlikte birleştirmek.
+1. Sorgunun ilgili bölümünü parametrenizle değiştirin. Sorguyu birden çok parçaya ayırın ve parametresi ile birlikte bir ve işareti (&) kullanarak tekrar birleştirin.
 
    Örneğin, Yukarıdaki sorguda, `State == 'ALABAMA'` bölümünü alacağız ve: `State == '` ve `'` ' ye bölecektir. `State` parametresini bunlar arasında yerleştireceğiz:
    
@@ -138,11 +138,11 @@ Sorgu parametresini, destekleyen herhangi bir sorgu adımında kullanabilirsiniz
 
 ### <a name="dont-use-power-bi-data-refresh-scheduler-to-issue-control-commands-to-kusto"></a>Kusto 'e denetim komutları vermek için Power BI veri yenileme zamanlayıcısını kullanmayın
 
-Power BI, düzenli aralıklarla bir veri kaynağına yönelik sorgular veren bir veri yenileme Zamanlayıcısı içerir. Power BI, tüm sorguların salt okunurdur olduğunu varsaydığından, denetim komutlarının kusto 'e zamanlaması için bu mekanizma kullanılmamalıdır.
+Power BI, düzenli aralıklarla bir veri kaynağına yönelik sorgular veren bir veri yenileme Zamanlayıcısı içerir. Power BI, tüm sorguların salt okunurdur olduğunu varsaydığından, denetim komutlarının kusto olarak zamanlanmasında bu mekanizma kullanılmamalıdır.
 
 ### <a name="power-bi-can-send-only-short-lt2000-characters-queries-to-kusto"></a>Power BI, kusto 'e yalnızca Short (&lt;2000 karakter) sorguları gönderebilir
 
-Power BI ' de bir sorgu çalıştırırsanız aşağıdaki hata oluşur:  _"DataSource. Error: Web. Contents içeriğini alamadı... "_ , sorgu muhtemelen 2000 karakterden daha uzun. Power BI, sorguyu alınmakta olan URI 'nin bir parçası olarak kodlayan bir HTTP GET isteği vererek kusto sorgulamak için **powerquery** 'yi kullanır. Bu nedenle, Power BI tarafından verilen kusto sorguları bir istek URI 'SI (2000 karakter, eksi küçük fark) uzunluk üst sınırı ile sınırlıdır. Geçici bir çözüm olarak, kusto içinde [saklı bir işlev](/azure/kusto/query/schema-entities/stored-functions) tanımlayabilir ve bu işlevi Sorguda Power BI kullanabilirsiniz.
+Power BI ' de bir sorgu çalıştırırsanız, şu hata oluşur: _"DataSource. Error: Web. Contents öğesinden içerikleri alamadı..."_ sorgu muhtemelen 2000 karakterden daha uzun. Power BI, sorguyu alınmakta olan URI 'nin bir parçası olarak kodlayan bir HTTP GET isteği vererek kusto sorgulamak için **powerquery** 'yi kullanır. Bu nedenle, Power BI tarafından verilen kusto sorguları bir istek URI 'SI (2000 karakter, eksi küçük fark) uzunluk üst sınırı ile sınırlıdır. Geçici bir çözüm olarak, kusto içinde [saklı bir işlev](/azure/kusto/query/schema-entities/stored-functions) tanımlayabilir ve bu işlevi Sorguda Power BI kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,28 +7,28 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b02e819255db0cdf8b9d241f2ec0d41df7494162
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742560"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844353"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM 'Leri ve fiziksel sunucular için çoğaltma sorunlarını giderme
 
 Bu makalede, [Site Recovery](site-recovery-overview.md)kullanarak şirket Içi VMware VM 'lerini ve fiziksel sunucuları Azure 'a çoğaltırken karşılaşabileceğiniz bazı yaygın sorunlar ve belirli hatalar açıklanmaktadır.
 
-## <a name="step-1-monitor-process-server-health"></a>1\. adım: İşlem sunucusu sistem durumunu izleme
+## <a name="step-1-monitor-process-server-health"></a>1\. Adım: işlem sunucusu sistem durumunu Izleme
 
 Site Recovery, çoğaltılan verileri almak ve iyileştirmek ve Azure 'a göndermek için [işlem sunucusunu](vmware-physical-azure-config-process-server-overview.md#process-server) kullanır.
 
 Bağlı olduklarından ve düzgün çalıştığından ve işlem sunucusuyla ilişkili kaynak makinelerde çoğaltmanın ilerlemesinde emin olmak için portalda işlem sunucularının sistem durumunu izlemenizi öneririz.
 
 - İşlem sunucularını izleme [hakkında bilgi edinin](vmware-physical-azure-monitor-process-server.md) .
-- [En iyi uygulamaları inceleme](vmware-physical-azure-troubleshoot-process-server.md#best-practices-for-process-server-deployment)
+- [En iyi uygulamaları gözden geçirme](vmware-physical-azure-troubleshoot-process-server.md#best-practices-for-process-server-deployment)
 - İşlem sunucusu sistem durumu [sorunlarını giderin](vmware-physical-azure-troubleshoot-process-server.md#check-process-server-health) .
 
-## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>2\. adım: Bağlantı ve çoğaltma sorunlarını giderme
+## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>2\. Adım: bağlantı ve çoğaltma sorunlarını giderme
 
 İlk ve devam eden çoğaltma hataları genellikle kaynak sunucu ile işlem sunucusu arasındaki veya işlem sunucusu ile Azure arasında bağlantı sorunlarından kaynaklanır. 
 
@@ -37,53 +37,33 @@ Bu sorunları çözmek için [bağlantı ve çoğaltmada sorun giderin](vmware-p
 
 
 
-## <a name="step-3-troubleshoot-source-machines-that-arent-available-for-replication"></a>3\. adım: Çoğaltma için kullanılamayan kaynak makinelerin sorunlarını giderme
+## <a name="step-3-troubleshoot-source-machines-that-arent-available-for-replication"></a>3\. Adım: çoğaltma için kullanılamayan kaynak makinelerin sorunlarını giderme
 
 Site Recovery kullanarak çoğaltmayı etkinleştirmek için kaynak makineyi seçmeyi denediğinizde, makine aşağıdaki nedenlerden biri için kullanılamayabilir:
 
-* **Aynı örnek UUID 'ye sahip iki sanal makine**: VCenter altındaki iki sanal makine aynı örnek UUID 'sine sahip ise, yapılandırma sunucusu tarafından bulunan ilk sanal makine Azure portal gösterilir. Bu sorunu çözmek için, iki sanal makinenin aynı örnek UUID 'ye sahip olmadığından emin olun. Bu senaryo genellikle bir yedekleme VM 'sinin etkin olduğu ve bulma kayıtlarımızla oturum açtığı örneklerde görülür. VMware 'den Azure 'a AzureSiteRecoverybaşvurun:[ Yinelenen veya eski girdileri](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) çözümlemek için temizleme.
-* **Geçersiz vCenter kullanıcısı kimlik bilgileri**: OVF şablonunu veya Birleşik kurulumu kullanarak yapılandırma sunucusunu ayarlarken doğru vCenter kimlik bilgilerini seçtiğinizden emin olun. Kurulum sırasında eklediğiniz kimlik bilgilerini doğrulamak için bkz. [otomatik bulma için kimlik bilgilerini değiştirme](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
-* **vCenter yetersiz ayrıcalıklar**: VCenter 'a erişim için belirtilen izinler gerekli izinlere sahip değilse, sanal makineleri bulma başarısız olabilir. [Otomatik bulma için bir hesap hazırlama](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) bölümünde açıklanan izinlerin vCenter Kullanıcı hesabına eklendiğinden emin olun.
-* **Yönetim sunucuları Azure Site Recovery**: Sanal makine, aşağıdaki roller-yapılandırma sunucusu/Scale-Out işlem sunucusu/ana hedef sunucusundan bir veya daha fazla yönetim sunucusu olarak kullanılıyorsa, portaldan sanal makineyi seçemezsiniz. Managements sunucuları çoğaltılamaz.
-* **Azure Site Recovery Hizmetleri Ile zaten korunuyor/devredildi**: Sanal makine zaten korunuyorsa veya Site Recovery üzerinden yük devretmemişse, sanal makine portalda koruma için seçilecek şekilde kullanılamaz. Portalda Aradığınız sanal makinenin başka bir kullanıcı veya başka bir abonelik kapsamında zaten korumalı olmadığından emin olun.
-* **vCenter bağlanmadı**: VCenter 'ın bağlı durumda olup olmadığını denetleyin. Doğrulamak için, kurtarma hizmetleri Kasası > Site Recovery altyapı > yapılandırma sunucuları ' na gidin > ilgili yapılandırma sunucusuna tıklayın > ilişkili sunucuların ayrıntıları ile sağ tarafta bir dikey pencere açılır. VCenter 'ın bağlanıp bağlanmadığından emin olun. "Bağlı değil" durumundaysa, sorunu çözün ve ardından portalda [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server) . Bu işlem sonrasında, sanal makine portalda listelenecektir.
-* **ESXi kapalı**: Sanal makinenin altında bulunduğu ESXi ana bilgisayarı kapalı durumdaysa, sanal makine listelenmez veya Azure portal seçilemeyecektir. ESXi ana bilgisayarında güç, portalda [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server) . Bu işlem sonrasında, sanal makine portalda listelenecektir.
-* **Yeniden başlatma bekleniyor**: Sanal makinede bekleyen bir yeniden başlatma varsa, Azure portal makineyi seçemezsiniz. Bekleyen yeniden başlatma etkinliklerinin tamamlandığından emin olun, [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Bu işlem sonrasında, sanal makine portalda listelenecektir.
-* **IP bulunamadı**: Sanal makineye ilişkili geçerli bir IP adresi yoksa, Azure portal makineyi seçemeyeceksiniz. Sanal makineye geçerli bir IP adresi atadığınızdan emin olun, [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Bu işlem sonrasında, sanal makine portalda listelenecektir.
+* **Aynı örnek UUID 'ye sahip iki sanal**makine: vCenter 'ın altındaki iki sanal makine aynı örnek UUID 'ye sahip ise, yapılandırma sunucusu tarafından bulunan ilk sanal makine Azure Portal gösterilir. Bu sorunu çözmek için, iki sanal makinenin aynı örnek UUID 'ye sahip olmadığından emin olun. Bu senaryo genellikle bir yedekleme VM 'sinin etkin olduğu ve bulma kayıtlarımızla oturum açtığı örneklerde görülür. VMware 'den [Azure 'a Azure Site Recovery başvurun: yinelenen veya eski girdileri](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx) gidermek için temizleme.
+* **Geçersiz vCenter kullanıcısı kimlik bilgileri**: ovf şablonunu veya Birleşik kurulumu kullanarak yapılandırma sunucusunu ayarlarken doğru vCenter kimlik bilgilerini seçtiğinizden emin olun. Kurulum sırasında eklediğiniz kimlik bilgilerini doğrulamak için bkz. [otomatik bulma için kimlik bilgilerini değiştirme](vmware-azure-manage-configuration-server.md#modify-credentials-for-automatic-discovery).
+* **vCenter yetersiz ayrıcalıklar**: vCenter 'a erişim için belirtilen izinler gerekli izinlere sahip değilse, sanal makineleri bulma başarısız olabilir. [Otomatik bulma için bir hesap hazırlama](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) bölümünde açıklanan izinlerin vCenter Kullanıcı hesabına eklendiğinden emin olun.
+* **Yönetim sunucuları Azure Site Recovery**: sanal makine, aşağıdaki roller-yapılandırma sunucusu/Scale-Out işlem sunucusu/ana hedef sunucusu altında bir veya daha fazla yönetim sunucusu olarak kullanılıyorsa, sanal makineyi seçemeyeceksiniz portaldan makine. Managements sunucuları çoğaltılamaz.
+* **Azure Site Recovery Services Ile zaten korunuyor/** devredildi: sanal makine zaten korunuyor veya Site Recovery yük devretmemişse, sanal makine portalda koruma için seçilecek şekilde kullanılamaz. Portalda Aradığınız sanal makinenin başka bir kullanıcı veya başka bir abonelik kapsamında zaten korumalı olmadığından emin olun.
+* **vCenter bağlanmadı**: vCenter 'ın bağlı durumda olup olmadığını denetleyin. Doğrulamak için, kurtarma hizmetleri Kasası > Site Recovery altyapı > yapılandırma sunucuları ' na gidin > ilgili yapılandırma sunucusuna tıklayın > ilişkili sunucuların ayrıntıları ile sağ tarafta bir dikey pencere açılır. VCenter 'ın bağlanıp bağlanmadığından emin olun. "Bağlı değil" durumundaysa, sorunu çözün ve ardından portalda [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server) . Bu işlem sonrasında, sanal makine portalda listelenecektir.
+* **ESXi kapalı**: altında sanal makinenin bulunduğu ESXi ana bilgisayarı kapalı durumdaysa, sanal makine listelenmez veya Azure Portal seçilemeyecektir. ESXi ana bilgisayarında güç, portalda [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server) . Bu işlem sonrasında, sanal makine portalda listelenecektir.
+* **Yeniden başlatma bekleniyor**: sanal makinede bekleyen bir yeniden başlatma varsa, Azure Portal makineyi seçemezsiniz. Bekleyen yeniden başlatma etkinliklerinin tamamlandığından emin olun, [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Bu işlem sonrasında, sanal makine portalda listelenecektir.
+* **IP bulunamadı**: sanal makinenin kendisiyle ilişkili GEÇERLI bir IP adresi yoksa, Azure Portal makineyi seçemezsiniz. Sanal makineye geçerli bir IP adresi atadığınızdan emin olun, [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server). Bu işlem sonrasında, sanal makine portalda listelenecektir.
 
 ### <a name="troubleshoot-protected-virtual-machines-greyed-out-in-the-portal"></a>Portalda korunan korumalı sanal makinelerin sorunlarını giderme
 
-Site Recovery altında çoğaltılan sanal makineler, sistemde yinelenen girdiler varsa Azure portal kullanılamaz. Eski girişleri silmeyi ve sorunu çözmeyi öğrenmek için, VMware 'den Azure 'a [Azure Site Recovery başvurun: Yinelenen veya eski girdileri](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)Temizleme.
+Site Recovery altında çoğaltılan sanal makineler, sistemde yinelenen girdiler varsa Azure portal kullanılamaz. Eski girişleri silmeyi ve sorunu çözmeyi öğrenmek için, VMware 'den Azure 'a Azure Site Recovery bkz. [yinelenen veya eski girdileri Temizleme](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
 
-## <a name="common-errors-and-solutions"></a>Yaygın hatalar ve çözümler
+## <a name="no-crash-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Son ' XXX ' dakika içinde VM için kilitlenmeyle tutarlı bir kurtarma noktası yok
+
+En yaygın sorunlardan bazıları aşağıda listelenmiştir
 
 ### <a name="initial-replication-issues-error-78169"></a>İlk çoğaltma sorunları [hata 78169]
 
 Yukarıdaki bir bağlantı, bant genişliği veya zaman eşitlemeye ilişkin sorunlar olmadığından emin olun:
 
 - Virüsten koruma yazılımı Azure Site Recovery engelliyor. Azure Site Recovery için gereken klasör dışlamaları hakkında [daha fazla](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) bilgi edinin.
-
-### <a name="missing-app-consistent-recovery-points-error-78144"></a>Uygulamayla tutarlı kurtarma noktaları eksik [hata 78144]
-
- Bu durum, birim gölge kopyası hizmeti (VSS) sorunları nedeniyle oluşur. Bunu çözmek için: 
- 
-- Azure Site Recovery aracısının yüklü sürümünün en az 9.22.2 olduğunu doğrulayın. 
-- VSS sağlayıcısı 'nın Windows hizmetlerinde bir hizmet olarak yüklendiğini doğrulayın ve ayrıca Azure Site Recovery VSS sağlayıcısının listelendiğini denetlemek için bileşen hizmeti MMC 'YI doğrulayın.
-- VSS sağlayıcısı yüklü değilse, [yükleme hatası sorun giderme makalesine](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)bakın.
-
-- VSS devre dışıysa,
-    - VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlandığını doğrulayın.
-    - Aşağıdaki hizmetleri yeniden başlatın:
-        - VSS hizmeti
-        - VSS sağlayıcısı Azure Site Recovery
-        - VDS hizmeti
-
-- SQL veya Exchange iş yüklerini çalıştırıyorsanız, bu uygulama yazıcılarının günlüklerini hatalara karşı denetleyin. Sık karşılaşılan hatalar ve bunların çözülmesi aşağıdaki makalelerde yakalanır:
-    -  [SQL Server veritabanının otomatik kapatma seçeneği TRUE olarak ayarlandı](https://support.microsoft.com/help/4504104)
-    - [SQL Server 2008 R2 yeniden denenmesiz bir hata üretiliyor](https://support.microsoft.com/help/4504103)
-    - [SQL Server 2016 ve 2017 ' de bilinen sorunlar](https://support.microsoft.com/help/4493364)
-    - [Exchange Server 2013 ve 2016 ile ilgili genel sorunlar](https://support.microsoft.com/help/4037535)
-
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>Yüksek dalgalanma sahip kaynak makineler [hata 78188]
 
@@ -138,19 +118,32 @@ Sorunu çözmek için, hizmet durumunu doğrulamak üzere aşağıdaki adımlar�
     - Hata ayrıntıları için konumdaki günlükleri kontrol edin:
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+3. Ana hedefi yapılandırma sunucusuna kaydetmek için **%ProgramData%\asr\agent**klasörüne gidin ve komut isteminde aşağıdaki komutu çalıştırın:
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Hata KIMLIĞI 78144-son ' XXX ' dakika içinde VM için uygulamayla tutarlı bir kurtarma noktası yok
+
+Mobility Agent [9,23](vmware-physical-mobility-service-overview.md##from-923-version-onwards) & [9,27](site-recovery-whats-new.md#update-rollup-39) sürümlerinde VSS yükleme hatası davranışlarını işleyecek geliştirmeler yapılmıştır. VSS hatalarında sorun giderme konusunda en iyi yönergeler için en son sürümlere sahip olduğunuzdan emin olun.
 
 En yaygın sorunlardan bazıları aşağıda listelenmiştir
 
 #### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Neden 1: SQL Server 2008/2008 R2 'de bilinen sorun 
-**Nasıl düzeltilir** : SQL Server 2008/2008 R2 ile ilgili bilinen bir sorun vardır. Lütfen bu KB makalesine bakın [Azure Site Recovery aracı veya bileşen olmayan DIĞER VSS yedeklemesi SQL Server 2008 R2 barındıran bir sunucu için başarısız oluyor](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
+**Nasıl düzeltileceğini öğrenin** : SQL Server 2008/2008 R2 ile ilgili bilinen bir sorun var. Lütfen bu KB makalesine bakın [Azure Site Recovery aracı veya bileşen olmayan DIĞER VSS yedeklemesi SQL Server 2008 R2 barındıran bir sunucu için başarısız oluyor](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Neden 2: Azure Site Recovery işleri, AUTO_CLOSE DBs ile SQL Server örneklerinin herhangi bir sürümünü barındıran sunucularda başarısız oluyor 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>2\. neden: Azure Site Recovery işlerin, AUTO_CLOSE DBs ile SQL Server örneklerinin herhangi bir sürümünü barındıran sunucularda başarısız olması 
 **Nasıl düzeltilir** : KB [makalesine](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) başvurun 
 
 
-#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Neden 3: SQL Server 2016 ve 2017 ' de bilinen sorunlar
+#### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Neden 3: SQL Server 2016 ve 2017 ' de bilinen sorun
 **Nasıl düzeltilir** : KB [makalesine](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) başvurun 
 
 
@@ -169,12 +162,12 @@ Yukarıdaki örnekte **2147754994** , hatayı aşağıda gösterildiği gibi bil
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS yazıcısı yüklü değil-hata 2147221164 
 
-*Nasıl düzeltilir*: Uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'ni (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin yüklü olmaması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi, 0x80040154 "sınıf kayıtlı değil" hata kimliğiyle başarısız olur. </br>
+*Nasıl düzeltilir*: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin yüklü olmaması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi, 0x80040154 "sınıf kayıtlı değil" hata kimliğiyle başarısız olur. </br>
 [VSS yazıcı yükleme sorunlarını giderme makalesine](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) bakın 
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS yazıcı devre dışı-hata 2147943458
 
-**Nasıl düzeltilir**: Uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'ni (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin devre dışı bırakılması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi hata kimliğiyle başarısız olur "belirtilen hizmet devre dışı bırakıldı ve başlatılamıyor (0x80070422)". </br>
+**Nasıl düzeltilir**: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için işlemi için bir VSS sağlayıcısı yüklenir. Bu VSS sağlayıcısı bir hizmet olarak yüklendi. VSS sağlayıcısı hizmetinin devre dışı bırakılması durumunda, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi hata kimliğiyle başarısız olur "belirtilen hizmet devre dışı bırakıldı ve başlatılamıyor (0x80070422)". </br>
 
 - VSS devre dışıysa,
     - VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlandığını doğrulayın.
@@ -185,11 +178,11 @@ Yukarıdaki örnekte **2147754994** , hatayı aşağıda gösterildiği gibi bil
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS sağlayıcısı NOT_REGISTERED-hata 2147754756
 
-**Nasıl düzeltilir**: Uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'ni (VSS) kullanır. Azure Site Recovery VSS sağlayıcısı hizmeti 'nin yüklü olup olmadığını denetleyin. </br>
+**Nasıl düzeltilir**: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery Microsoft birim gölge kopyası hizmeti 'NI (VSS) kullanır. Azure Site Recovery VSS sağlayıcısı hizmeti 'nin yüklü olup olmadığını denetleyin. </br>
 
 - Aşağıdaki komutları kullanarak sağlayıcı yüklemesini yeniden deneyin:
 - Mevcut sağlayıcıyı kaldır: C:\Program Files (x86) \Microsoft Azure Site Recovery\lationt\ınmagevssprovider_uninstall.cmd
-- Yeniden yükleyin C:\Program Files (x86) \Microsoft Azure Site Recovery\lationt\ınmagevssprovider_ınstall.cmd
+- Yeniden yükle: C:\Program Files (x86) \Microsoft Azure Site Recovery\lationt\ınmagevssprovider_ınstall.cmd
  
 VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlandığını doğrulayın.
     - Aşağıdaki hizmetleri yeniden başlatın:

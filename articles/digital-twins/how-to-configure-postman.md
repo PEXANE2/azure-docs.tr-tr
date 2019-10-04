@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: f33e5be2408d2ebacd215c5f0601d712197254a7
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
-ms.translationtype: MT
+ms.openlocfilehash: f04946dffd66dcd44743197a0ca8f0fe21624285
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803435"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844531"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure dijital TWINS için Postman 'ı yapılandırma
 
@@ -52,11 +52,11 @@ Azure Active Directory uygulamanızı OAuth 2,0 örtük izin akışını kullana
 
 1. Seçilen API, aynı **istek API 'si izinleri** bölmesinde **Azure dijital TWINS** olarak gösterilir. **Oku (1)** açılır öğesini seçin ve ardından **oku. yazma** onay kutusunu seçin. **Izin Ekle** düğmesini seçin.
 
-    [![API izinleri ekleme](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    [![Apı izinleri ekleme](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. Kuruluşunuzun ayarlarına bağlı olarak, bu API 'ye yönetici erişimi sağlamak için ek adımlar gerçekleştirmeniz gerekebilir. Daha fazla bilgi için yöneticinize başvurun. Yönetici erişimi onaylandıktan sonra **API izinleri** BÖLMESINDEKI **yönetici onayı gerekli** sütunu, API 'leriniz için aşağıdakine benzer şekilde görünür:
 
-    [![API izinleri ekleme](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [![Apı izinleri ekleme](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
 
 1. Uygulamanızın uygulama bildirimini açmak için **bildirim** ' ı seçin. *Oauth2AllowImplicitFlow* `true` olarak ayarlayın.
@@ -85,7 +85,7 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Adı  | Şununla değiştir | Örnek |
+    | Name  | Değiştir | Örnek |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | Kiracınızın veya kuruluşunuzun adı | `microsoft` |
 
@@ -96,9 +96,9 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
     | Verme türü | `Implicit` |
     | Geri çağırma URL 'SI | `https://www.getpostman.com/oauth2/callback` |
     | Kimlik doğrulama URL 'SI | **2. adımdaki** **yetkilendirme URL 'sini** kullanın |
-    | İstemci Kimliği | Önceki bölümden oluşturulmuş veya yeniden kullanılan Azure Active Directory uygulamasının **uygulama kimliğini** kullanın |
-    | Kapsam | Boş bırakın |
-    | Eyalet | Boş bırakın |
+    | İstemci KIMLIĞI | Önceki bölümden oluşturulmuş veya yeniden kullanılan Azure Active Directory uygulamasının **uygulama kimliğini** kullanın |
+    | Kapsam | boş bırakın |
+    | Durum | boş bırakın |
     | İstemci kimlik doğrulaması | `Send as Basic Auth header` |
 
 1. İstemci şu şekilde görünmelidir:
@@ -122,7 +122,8 @@ Azure Active Directory belirtecini almak için Postman ayarlayın ve yapılandı
    [![Içerik türü Multipart/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
 
 1. Metin olmayan verileri dosyalara serileştirme. JSON verileri bir JSON dosyası olarak kaydedilir.
-1. **Gövde** sekmesi altında, her dosyayı bir **anahtar** adı atayarak ekleyin, `file` veya `text` ' ü seçin.
+1. **Gövde** sekmesinde `form-data` ' i seçin. 
+1. Her dosyayı bir **anahtar** adı atayarak ekleyin, `file` ' i seçin.
 1. Sonra, **Dosya Seç** düğmesini kullanarak her bir dosyayı seçin.
 
    [![Postman istemci örneği](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)

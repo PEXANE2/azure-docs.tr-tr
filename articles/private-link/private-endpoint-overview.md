@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 80f2e8a8fd41fbafbaf6d30bc1001b86c5dcdd50
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 1fff9c076349d98d7a72c4bf69edb0a2795ac88f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266377"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937369"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure özel uç noktası nedir?
 
@@ -22,15 +22,15 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
  Özel bir uç nokta aşağıdaki özellikleri belirtir: 
 
 
-|Özellik  |Description |
+|Özellik  |Açıklama |
 |---------|---------|
 |Name    |    Kaynak grubu içinde benzersiz bir ad.      |
-|Subnet    |  Sanal bir ağdan özel IP adresleri dağıtmak ve ayırmak için alt ağ. Alt ağ gereksinimleri için, bu makaledeki sınırlamalar bölümüne bakın.         |
+|Alt ağ    |  Sanal bir ağdan özel IP adresleri dağıtmak ve ayırmak için alt ağ. Alt ağ gereksinimleri için, bu makaledeki sınırlamalar bölümüne bakın.         |
 |Özel bağlantı kaynağı    |   Kullanılabilir türler listesinden kaynak KIMLIĞI veya diğer ad kullanarak bağlanacak özel bağlantı kaynağı. Bu kaynağa gönderilen tüm trafik için benzersiz bir ağ tanımlayıcısı oluşturulacak.       |
 |Hedef alt kaynak   |      Bağlanılacak alt kaynak. Her özel bağlantı kaynağı türü, tercihe göre seçim yapmak için farklı seçeneklere sahiptir.    |
 |Bağlantı onay yöntemi    |  Otomatik veya el ile. Rol tabanlı erişim denetimi (RBAC) izinlerine bağlı olarak, Özel uç noktanız otomatik olarak onaylanabilir. RBAC olmadan bir özel bağlantı kaynağına bağlanmaya çalışırsanız, kaynağın sahibinin bağlantıyı onaylamasını sağlamak için el ile yöntemini kullanın.        |
 |İstek Iletisi     |  İstenen bağlantıların el ile onaylanabilmesi için bir ileti belirtebilirsiniz. Bu ileti, belirli bir isteği tanımlamak için kullanılabilir.        |
-|Bağlantı durumu   |   Özel uç noktanın etkin olup olmadığını belirten bir salt okunurdur özelliği. Trafiği göndermek için yalnızca onaylanan durumdaki özel uç noktalar kullanılabilir. Kullanılabilir ek durumlar: <br>-**Onaylandı**: Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir.</br><br>-**Bekliyor**: Bağlantı el ile oluşturuldu ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.</br><br>-**Reddedildi**: Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.</br><br>-**Bağlantısı kesik**: Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı. Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. </br>|
+|Bağlantı durumu   |   Özel uç noktanın etkin olup olmadığını belirten bir salt okunurdur özelliği. Trafiği göndermek için yalnızca onaylanan durumdaki özel uç noktalar kullanılabilir. Kullanılabilir ek durumlar: <br>-**Onaylandı**: bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir.</br><br>-**bekliyor**: bağlantı el ile oluşturuldu ve özel bağlantı kaynak sahibi tarafından onay bekliyor.</br><br>-**reddedildi**: bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.</br><br>-**bağlantısı kesildi**: bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı. Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. </br>|
 
 Özel uç noktalarla ilgili bazı önemli ayrıntılar aşağıda verilmiştir: 
 - Özel uç nokta, özel bağlantı tarafından desteklenen [VPN](https://azure.microsoft.com/services/vpn-gateway/) veya [Express Route](https://azure.microsoft.com/services/expressroute/) ve Hizmetleri kullanarak, bölgesel olarak eşlenmiş sanal ağlar, genel olarak eşlenmiş sanal ağlar ve şirket içi olan sanal ağlar arasında bağlantı sağlar.
@@ -52,11 +52,11 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
  
 |Özel bağlantı kaynağı adı  |Kaynak türü   |Alt kaynaklar  |
 |---------|---------|---------|
-|**Özel bağlantı hizmeti** (Kendi hizmetiniz)   |  Microsoft. Network/privateLinkServices       | boş |
-|**Azure SQL Veritabanı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
-|**Azure SQL Veri Ambarı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
-|**Azure Depolama**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (Queue, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
-|**Azure Data Lake Storage 2.**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
+|**Özel bağlantı hizmeti** (kendi hizmetiniz)   |  Microsoft. Network/privateLinkServices       | empty |
+|**Azure SQL veritabanı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
+|**Azure SQL veri ambarı** | Microsoft. SQL/sunucuları    |  SQL Server (sqlServer)        |
+|**Azure Depolama**  | Microsoft. Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Kuyruk (Queue, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (Web, web_secondary)        |
+|**Azure Data Lake Storage 2.**  | Microsoft. Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
  
  
 ## <a name="network-security-of-private-endpoints"></a>Özel uç noktaların ağ güvenliği 
@@ -66,7 +66,7 @@ Desteklenen bir Azure hizmetine bağlanmak için iş yüklerinizin genel uç nok
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Onay iş akışı kullanarak bir özel bağlantı kaynağına erişim 
 Aşağıdaki bağlantı onay yöntemlerini kullanarak bir özel bağlantı kaynağına bağlanabilirsiniz:
-- Belirli özel bağlantı kaynağına sahip olduğunuzda veya izniniz olduğunda **otomatik olarak** onaylandı. Gerekli olan izin, özel bağlantı kaynak türüne aşağıdaki biçimde dayalıdır: MICROSOFT. \<Sağlayıcı >/< resource_type >/privateendpointconnectionapproval/Action
+- Belirli özel bağlantı kaynağına sahip olduğunuzda veya izniniz olduğunda **otomatik olarak** onaylandı. Gereken izin, özel bağlantı kaynak türüne şu biçimde dayalıdır: Microsoft. \<Provider >/< resource_type >/privateEndpointConnectionApproval/action
 - Gerekli izinlere sahip olmadığınız ve erişim istemek istediğiniz zaman **el ile** istek. Bir onay iş akışı başlatılacak. Özel uç nokta ve sonraki özel uç nokta bağlantısı "beklemede" durumunda oluşturulur. Özel bağlantı kaynağı sahibi bağlantıyı onaylamaya sorumludur. Onaylandıktan sonra, aşağıdaki onay iş akışı diyagramında gösterildiği gibi özel uç nokta trafiği normal şekilde göndermek üzere etkinleştirilir.  
 
 ![iş akışı onayı](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -119,13 +119,14 @@ Uygulamalarınızın bağlantı URL 'sini değiştirmesi gerekmez. Genel bir DNS
 Aşağıdaki tabloda özel uç noktalar kullanılırken bilinen kısıtlamaların bir listesi yer almaktadır: 
 
 
-|Sınırlama |Açıklama |Risk azaltma  |
+|Sınırlama |Açıklama |Azaltma  |
 |---------|---------|---------|
 |Ağ güvenlik grubu (NSG) kuralları özel uç nokta için uygulanmıyor    |NSG özel uç noktalar üzerinde desteklenmez. Özel uç noktayı içeren alt ağlarda NSG ile ilişkili olabilir, kurallar özel uç nokta tarafından işlenen trafikte geçerli olmayacaktır. Bir alt ağda özel uç noktalar dağıtmak için [ağ ilkeleri zorlamasının devre dışı](disable-private-endpoint-network-policy.md) olması gerekir. NSG aynı alt ağda barındırılan diğer iş yükleri üzerinde de zorlanır.   | Kaynak istemcilerde giden trafik için NSG kurallarını kullanarak trafiği denetleyin.        |
 |Hizmet uç noktası veya özel iş yükleri için etkinleştirilen alt ağlarda özel uç noktalar oluşturulamaz    |Özel uç noktalar, hizmet uç noktaları veya özel iş yükleri için temsilci atanmış alt ağlarda etkinleştirilmiş alt ağlarda dağıtılamaz|  Özel uç noktaları dağıtmak için ayrı bir alt ağ oluşturun.        |
 |Özel uç nokta yalnızca aynı bölgedeki özel bağlantı hizmetine (müşteriye ait) eşlenebilir    |   Farklı bir bölgeden özel bir bağlantı hizmetine (kendinizinkini) bağlanma desteklenmez       |  Önizleme süresince özel bağlantı hizmetinizi aynı bölgede dağıtmanız gerekir.        |
-|Özelleştirilmiş iş yükleri özel uç noktalara erişemez    |   Sanal ağınıza dağıtılan aşağıdaki hizmetler özel uç noktaları kullanarak herhangi bir özel bağlantı kaynağına erişemez:<br>Uygulama Hizmeti Planı</br>Azure Container Örneği</br>Azure NetApp Files</br>Azure Ayrılmış HSM<br>       |   Önizleme süresince risk azaltma.       |
-|  Portal diğer adı kullanarak özel uç noktalar oluşturmayı desteklemez  |   Portal yalnızca kaynak URI 'sini kullanarak özel uç noktalar oluşturulmasına izin veriyor      | Özel uç nokta bağlantıları istemek için kaynak URI 'SI kullan        |
+|  Yalnızca özel uç noktalar içeren eşlenmiş sanal ağ desteklenmiyor   |   Başka iş yükü olmadan eşlenmiş bir sanal ağdaki özel uç noktalara bağlanırken bu desteklenmez       | Bağlantıyı etkinleştirmek için eşlenen sanal ağda tek bir VM dağıtın |
+|Özelleştirilmiş iş yükleri özel uç noktalara erişemez    |   Sanal ağınıza dağıtılan aşağıdaki hizmetler özel uç noktaları kullanarak herhangi bir özel bağlantı kaynağına erişemez:<br>App Service planı</br>Azure Container örneği</br>Azure NetApp Files</br>Azure ayrılmış HSM<br>       |   Önizleme süresince risk azaltma.       |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Portal kullanarak SQL veritabanı sunucusu için özel bir uç nokta oluşturma](create-private-endpoint-portal.md)

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 77d70aaa9c1ae5a111a47e08f259c0ce95fd7c92
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300124"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844401"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Bölümlendirilmemiş kapsayıcıları bölümlenmiş kapsayıcılara geçirme
 
@@ -24,7 +24,7 @@ Bölümlenmemiş kapsayıcılar eski ve depolama ve aktarım hızını ölçekle
 
 ## <a name="migrate-container-using-the-system-defined-partition-key"></a>Sistem tanımlı bölüm anahtarını kullanarak kapsayıcıyı geçirme
 
-Azure Cosmos DB geçişi desteklemek için, bölüm anahtarı olmayan tüm kapsayıcılarda adlı `/_partitionkey` sistem tanımlı bir bölüm anahtarı sağlar. Kapsayıcılar geçirildikten sonra bölüm anahtarı tanımını değiştiremezsiniz. Örneğin, bölümlenmiş bir kapsayıcıya geçirilmiş bir kapsayıcının tanımı aşağıdaki gibi olacaktır:
+Azure Cosmos DB geçişi desteklemek için, bölüm anahtarı olmayan tüm kapsayıcılar üzerinde `/_partitionkey` adlı sistem tanımlı bir bölüm anahtarı sağlar. Kapsayıcılar geçirildikten sonra bölüm anahtarı tanımını değiştiremezsiniz. Örneğin, bölümlenmiş bir kapsayıcıya geçirilmiş bir kapsayıcının tanımı aşağıdaki gibi olacaktır:
 
 ```json
 {
@@ -38,7 +38,7 @@ Azure Cosmos DB geçişi desteklemek için, bölüm anahtarı olmayan tüm kapsa
 }
 ```
 
-Kapsayıcı geçirildikten sonra, `_partitionKey` özelliği belgenin diğer özellikleriyle birlikte doldurarak belgeler oluşturabilirsiniz. Özelliği `_partitionKey` , belgelerinizin bölüm anahtarını temsil eder.
+Kapsayıcı geçirildikten sonra, `_partitionKey` özelliğini belgenin diğer özellikleriyle birlikte doldurarak belgeler oluşturabilirsiniz. @No__t-0 özelliği, belgelerinizin bölüm anahtarını temsil eder.
 
 Doğru bölüm anahtarının seçilmesi, sağlanan aktarım hızını en iyi şekilde kullanmak için önemlidir. Daha fazla bilgi için bkz. [bölüm anahtarını seçme](partitioning-overview.md) makalesi.
 
@@ -95,11 +95,11 @@ Tüm örnek için bkz. [.NET örnekleri](https://github.com/Azure/azure-cosmos-d
                       
 ## <a name="migrate-the-documents"></a>Belgeleri geçirme
 
-Kapsayıcı tanımı bir bölüm anahtarı özelliği ile geliştirirken, kapsayıcıdaki belgeler otomatik olarak geçirilmez. Bu, sistem bölümü anahtar özelliği `/_partitionKey` yolunun varolan belgelere otomatik olarak eklenmeyeceği anlamına gelir. Bir bölüm anahtarı olmadan oluşturulmuş belgeleri okuyarak ve bunları belgelerdeki özelliği ile `_partitionKey` yeniden yazarak, varolan belgeleri yeniden bölümlemeniz gerekir.
+Kapsayıcı tanımı bir bölüm anahtarı özelliği ile geliştirirken, kapsayıcıdaki belgeler otomatik olarak geçirilmez. Yani, sistem bölümü anahtar özelliği `/_partitionKey` yolu varolan belgelere otomatik olarak eklenmez. Bölüm anahtarı olmadan oluşturulan belgeleri okuyarak mevcut belgeleri yeniden bölümlemeniz ve belgelerde `_partitionKey` özelliği ile geri yazmanız gerekir.
 
 ## <a name="access-documents-that-dont-have-a-partition-key"></a>Bölüm anahtarı olmayan belgelere erişin
 
-Uygulamalar, "CosmosContainerSettings. NonePartitionKeyValue" adlı özel sistem özelliğini kullanarak bölüm anahtarı olmayan mevcut belgelere erişebilir, bu, geçirilmeyen belgelerin değeridir. Tüm CRUD ve sorgu işlemlerinde bu özelliği kullanabilirsiniz. Aşağıdaki örnek, NonePartitionKey öğesinden tek bir belgeyi okumak için bir örnek gösterir. 
+Uygulamalar, "PartitionKey. None" adlı özel sistem özelliğini kullanarak bölüm anahtarı olmayan mevcut belgelere erişebilir, bu, geçirilmeyen belgelerin değeridir. Tüm CRUD ve sorgu işlemlerinde bu özelliği kullanabilirsiniz. Aşağıdaki örnek, NonePartitionKey öğesinden tek bir belgeyi okumak için bir örnek gösterir. 
 
 ```csharp
 CosmosItemResponse<DeviceInformationItem> readResponse = 
@@ -120,7 +120,7 @@ Geçirilen bir kapsayıcı SDK 'nın en son/v3 sürümü tarafından tüketiledi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos DB'de bölümleme](partitioning-overview.md)
-* [Azure Cosmos DB'de İstek birimleri](request-units.md)
+* [Azure Cosmos DB bölümleniyor](partitioning-overview.md)
+* [Azure Cosmos DB istek birimleri](request-units.md)
 * [Kapsayıcılar ve veritabanları üzerinde üretilen iş sağlama](set-throughput.md)
 * [Azure Cosmos hesabıyla çalışma](account-overview.md)

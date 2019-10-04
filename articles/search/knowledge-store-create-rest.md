@@ -4,16 +4,15 @@ description: Bilişsel arama işlem hattından, REST API ve Postman kullanarak k
 author: lobrien
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: laobri
-ms.openlocfilehash: e28fa919c4c656b9ceb1d34806c3ef08aec2df2c
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 26dc66474eecffd7f5a34bcfcaf93fd49f59606c
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719932"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936509"
 ---
 # <a name="create-an-azure-search-knowledge-store-using-rest"></a>REST kullanarak Azure Search bilgi deposu oluşturma
 
@@ -66,7 +65,7 @@ Elde edilen düzenleme iletişim kutusunda, **değişkenler** sekmesine gidin.
 ![Postman uygulama değişkenleri sekmesi](media/knowledge-store-create-rest/postman-variables-window.png "Postman 'ın değişkenler penceresi")
 
 
-| Değişken    | Nereden alınır? |
+| Değişken    | Nereden edinilir: |
 |-------------|-----------------|
 | `admin-key` | Arama Hizmeti, **anahtarlar** sekmesi              |
 | `api-version` | "2019-05-06-Preview" olarak bırakın |
@@ -348,6 +347,6 @@ Bu bilgi deposunu Depolama Gezgini kullanarak nasıl keşfedeceğinizi öğrenme
 Bu bilgi deposunu Power BI nasıl bağlayacağınızı öğrenmek için aşağıdaki izlenecek yolu inceleyin.
 
 > [!div class="nextstepaction"]
-> [Power BI ile bağlanma](knowledge-store-connect-power-bi.md)
+> [Power BI bağlanma](knowledge-store-connect-power-bi.md)
 
 Bu alıştırmayı yinelemek veya farklı bir AI zenginleştirme Kılavuzu denemek istiyorsanız, *otel-incelemeler-ıdxr* Dizin oluşturucuyu silin. Dizin oluşturucunun silinmesi, ücretsiz günlük işlem sayacını yeniden sıfıra sıfırlar.

@@ -17,12 +17,12 @@ ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8024130b986d111abe3b470d6b06e86ed6419dc4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: def5dc82f8cbda93f6ac18f8a2af41d5c82ce5da
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68320926"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936759"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Azure AD uygulama galerisine çok kiracılı bir uygulama ekleme
 
@@ -33,9 +33,9 @@ Azure Active Directory (Azure AD), bulut tabanlı bir kimlik hizmetidir. [Azure 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Uygulamanız SAML veya Openıdconnect destekliyorsa
 Azure AD uygulama galerisinde listelenmesini istediğiniz bir çok kiracılı uygulamanız varsa, öncelikle uygulamanızın aşağıdaki çoklu oturum açma teknolojisinden birini desteklediğinden emin olmanız gerekir:
 
-- **OpenID Connect**: Uygulamanızın listelenmesini sağlamak için Azure AD 'de çok kiracılı uygulamayı oluşturun ve uygulamanız için [Azure AD onay çerçevesini](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) uygulayın. Herhangi bir müşterinin uygulamaya onay sağlayabilmesi için oturum açma isteğini ortak bir uç noktaya gönderin. Bir kullanıcının erişim belirtecini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz. Uygulamanızı [Azure Active Directory Uygulama galerisinde listeleme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)bölümünde özetlenen işlemi kullanarak gönderebilirsiniz.
+- **OpenID Connect**: uygulamanızın listelenmesini sağlamak IÇIN Azure AD 'de çok kiracılı uygulamayı oluşturun ve uygulamanız IÇIN [Azure AD onay çerçevesini](https://docs.microsoft.com/azure/active-directory/develop/consent-framework) uygulayın. Herhangi bir müşterinin uygulamaya onay sağlayabilmesi için oturum açma isteğini ortak bir uç noktaya gönderin. Bir kullanıcının erişim belirtecini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz. Uygulamanızı [Azure Active Directory Uygulama galerisinde listeleme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)bölümünde özetlenen işlemi kullanarak gönderebilirsiniz.
 
-- **SAML**: Uygulamanız SAML 2,0 ' yi destekliyorsa, uygulama galeride listelenebilir. [Azure Active Directory Uygulama galerisinde uygulamanızı listeleme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)içindeki yönergeleri izleyin.
+- **SAML**: uygulamanız SAML 2,0 ' yi destekliyorsa, uygulama galeride listelenebilir. [Azure Active Directory Uygulama galerisinde uygulamanızı listeleme](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)içindeki yönergeleri izleyin.
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Uygulamanız SAML veya Openıdconnect 'i desteklemiyorsa
 SAML veya Openıdconnect desteği olmayan uygulamalar, parola çoklu oturum açma teknolojisi aracılığıyla uygulama galerisiyle de tümleştirilebilirler.
@@ -51,4 +51,4 @@ Uygulamanızı bu teknolojiyle listelemek istiyorsanız:
 Tüm yürüyen değişiklikler için [Azure AD SSO tümleştirmesi ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) e-posta gönderin ve mümkün olan en kısa sürede size geri başlayacağız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Uygulamanızı Azure Active Directory Uygulama galerisinde](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)nasıl listeleyeceğinizi öğrenin.
+[Uygulamanızı Azure Active Directory Uygulama galerisinde nasıl listeleyeceğinizi](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)öğrenin.

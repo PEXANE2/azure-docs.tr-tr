@@ -13,15 +13,15 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210104"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827575"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağıyla tümleştirin
-Bu belgede Azure App Service sanal ağ tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanmaktadır. [Azure sanal ağları][VNETOverview] (VNet 'ler), internet 'ten yönlendirilebilir olmayan bir ağa birçok Azure kaynağınız yerleştireklemenize olanak tanır.  
+Bu belgede Azure App Service sanal ağ tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanmaktadır. [Azure sanal ağları][VNETOverview] (VNet), internet 'ten yönlendirilebilir olmayan bir ağa Azure kaynaklarınızın çoğunu yerleştirme izni verir.  
 
 Azure App Service iki çeşitliliğe sahiptir. 
 
@@ -37,7 +37,7 @@ VNet tümleştirme özelliğine iki biçim vardır
 
 Bir uygulama tek seferde VNet tümleştirme özelliğinin yalnızca bir biçimini kullanabilir. Bu soruyu daha sonra kullanmanız gereken özelliktir. Birçok şey için kullanabilirsiniz. Farklılık göstericiler şunlardır:
 
-| Sorun  | Çözüm | 
+| Gidermek  | Çözüm | 
 |----------|----------|
 | Aynı bölgedeki bir RFC 1918 adresine (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) ulaşmak ister | bölgesel VNet tümleştirmesi |
 | Klasik VNet veya başka bir bölgedeki VNet 'teki kaynaklara ulaşmak ister | Ağ Geçidi gerekli VNet tümleştirmesi |
@@ -108,11 +108,11 @@ Bölgesel VNet tümleştirmesi, tümleştirme alt ağınızın Microsoft. Web 'e
 Uygulamanızın VNet bağlantısını kesmek için **bağlantıyı kes**' i seçin. Bu işlem Web uygulamanızı yeniden başlatacak. 
 
 
-#### <a name="web-app-for-containers"></a>Kapsayıcılar için Web Uygulaması
+#### <a name="web-app-for-containers"></a>Kapsayıcılar için Web App
 
 Yerleşik görüntülerle Linux üzerinde App Service kullanıyorsanız, bölgesel VNet tümleştirme özelliği ek değişiklik yapılmadan işe yarar. Kapsayıcılar için Web App kullanıyorsanız, VNet tümleştirmesini kullanabilmeniz için Docker görüntünüzü değiştirmeniz gerekir. Docker yansımanıza, sabit kodlanmış bir bağlantı noktası numarası kullanmak yerine ana Web sunucusunun dinleme bağlantı noktası olarak bağlantı noktası ortam değişkenini kullanın. Bağlantı noktası ortam değişkeni, kapsayıcı başlangıç saatinde App Service platformu tarafından otomatik olarak ayarlanır. SSH kullanıyorsanız, SSH Daemon 'ın bölgesel VNet tümleştirmesi kullanılırken SSH_PORT ortam değişkeni tarafından belirtilen bağlantı noktası numarasını dinlemek üzere yapılandırılması gerekir.
 
-### <a name="service-endpoints"></a>Hizmet Uç Noktaları
+### <a name="service-endpoints"></a>Hizmet uç noktaları
 
 Yeni VNet tümleştirme özelliği, hizmet uç noktalarını kullanmanıza olanak sağlar.  Hizmet uç noktalarını uygulamanızla birlikte kullanmak için, seçili bir sanal ağa bağlanmak üzere yeni VNet tümleştirmesini kullanın ve ardından tümleştirme için kullandığınız alt ağdaki hizmet uç noktalarını yapılandırın. 
 
@@ -121,7 +121,7 @@ Yeni VNet tümleştirme özelliği, hizmet uç noktalarını kullanmanıza olana
 
 App Service uygulamalar çalışan rollerinde barındırılır. Temel ve daha yüksek fiyatlandırma planları, aynı çalışanlar üzerinde çalışan başka müşteri iş yükleri bulunmayan ayrılmış barındırma planlardır. VNet tümleştirmesi, yetkilendirilmiş alt ağdaki adreslerle sanal arabirimler bağlayarak işe yarar. Kimden adresi sanal ağınız içinde olduğundan, VNET 'iniz içindeki bir VM 'de olduğu gibi, sanal ağınız üzerinde veya içinde birçok şeyin erişimi vardır. Ağ uygulamasının VNet 'iniz üzerinde bir VM çalıştırmasının dışında ve bu özellik kullanılırken bazı ağ özellikleri henüz kullanılamaz.
 
-![Sanal Ağ Tümleştirmesi](media/web-sites-integrate-with-vnet/vnet-integration.png)
+![VNet tümleştirmesi](media/web-sites-integrate-with-vnet/vnet-integration.png)
 
 VNet tümleştirmesi etkinleştirildiğinde, uygulamanız yine de normal olarak aynı kanallar üzerinden İnternet 'e giden çağrılar yapmaya devam edecektir. Uygulama özellikleri portalında listelenen giden adresler hala uygulamanız tarafından kullanılan adreslerdir. Uygulamanız için değişiklikler, hizmet uç noktası güvenliği sağlanmış hizmetler veya RFC 1918 adresleri için de sanal ağınıza gider. 
 
@@ -143,7 +143,7 @@ Ağ Geçidi gereken VNet tümleştirme özelliği:
 Bu özellik şunları desteklemez:
 * Linux uygulamalarıyla kullanma
 * ExpressRoute üzerinden kaynaklara erişme 
-* Hizmet Uç Noktaları üzerinden kaynaklara erişme 
+* Hizmet uç noktaları genelinde kaynaklara erişme 
 
 ### <a name="getting-started"></a>Başlarken
 
@@ -171,13 +171,13 @@ Yalnızca App Service VNet tümleştirmesiyle kullanmak üzere ağ geçidini olu
 Uygulamanızda VNet tümleştirmesini etkinleştirmek için: 
 
 1. Azure portal uygulamanıza gidin ve uygulama ayarları ' nı açın ve ağ > VNet tümleştirmesi ' ni seçin. ASP 'niz standart bir SKU 'da olmalıdır veya VNet tümleştirme özelliğinin kullanılması daha iyidir. 
- ![VNet tümleştirme Kullanıcı arabirimi][1]
+ ![VNet tümleştirmesi Kullanıcı arabirimi @ no__t-1
 
 1. **VNET Ekle**' yi seçin. 
- ![VNet tümleştirmesi ekleme][2]
+ ![Vnet tümleştirmesi ekleme @ no__t-1
 
 1. VNet ' i seçin. 
-  ![VNet 'iniz seçin][8]
+  @no__t-VNet 'iniz @ no__t-1 ' i seçin
   
 Uygulamanız, bu son adımdan sonra yeniden başlatılacak.  
 
@@ -245,7 +245,7 @@ Bölgesel VNet tümleştirme özelliğinin, ASP fiyatlandırma katmanı ücretle
 
 Ağ Geçidi gerekli VNet tümleştirme özelliğinin kullanımına yönelik üç ilgili ücret vardır:
 
-* ASP fiyatlandırma katmanı ücretleri-uygulamalarınızın standart, Premium veya PremiumV2 App Service bir planda olması gerekir. Bu maliyetlerle ilgili daha fazla ayrıntı için buradan bakabilirsiniz: [App Service fiyatlandırması][ASPricing]. 
+* ASP fiyatlandırma katmanı ücretleri-uygulamalarınızın standart, Premium veya PremiumV2 App Service bir planda olması gerekir. Bu maliyetler hakkında daha fazla ayrıntı için şu adımları görebilirsiniz: [App Service fiyatlandırması][ASPricing]. 
 * Veri aktarımı maliyetleri-VNet aynı veri merkezinde olsa bile veri çıkışı için ücret uygulanır. Bu ücretler [veri aktarımı fiyatlandırma ayrıntılarında][DataPricing]açıklanmaktadır. 
 * VPN Gateway maliyetler-Noktadan siteye VPN için gereken VNet ağ geçidinin maliyeti vardır. Ayrıntılar [VPN Gateway fiyatlandırma][VNETPricing] sayfasıdır.
 
@@ -269,7 +269,7 @@ Sonraki araç, bir konak ve bağlantı noktası birleşimine TCP bağlantısı i
 #### <a name="debugging-access-to-vnet-hosted-resources"></a>VNet barındırılan kaynaklara erişim hatası ayıklama
 Uygulamanızın belirli bir konağa ve bağlantı noktasına ulaşmasını engelleyebilen birçok şey vardır. Çoğu zaman üç işlemlerden biridir:
 
-* **Bir güvenlik duvarı bu şekilde yapılır.** Bu şekilde bir güvenlik duvarınız varsa, TCP zaman aşımına uğrayacaktır. Bu durumda TCP zaman aşımı 21 saniyedir. Bağlantıyı sınamak için tcma aracını kullanın. TCP zaman aşımları, güvenlik duvarlarının ötesinde çok sayıda şey olabilir ancak buradan başlayabilir. 
+* **Bir güvenlik duvarı bu şekilde yapılır.** Bu şekilde bir güvenlik duvarınız varsa, TCP zaman aşımına uğrayacaktır. Bu durumda TCP zaman aşımı 21 saniyedir. Bağlantıyı sınamak için **tcma** aracını kullanın. TCP zaman aşımları, güvenlik duvarlarının ötesinde çok sayıda şey olabilir ancak buradan başlayabilir. 
 * **DNS erişilebilir değil.** DNS sunucusu başına DNS zaman aşımı üç saniyedir. İki DNS sunucunuz varsa, zaman aşımı 6 saniyedir. DNS çalışıp çalışmadığını görmek için nameresolver kullanın. Sanal ağınızın yapılandırıldığı DNS 'i kullanmayan için nslookup 'ı kullanamıyoruz. Erişilemezse, DNS erişimi engelleyen bir güvenlik duvarına veya NSG 'ye sahip olabilirsiniz veya bu durumda olabilir.
 
 Bu öğeler sorunlarınızı yanıtlamazsanız, şunun gibi şeyler için göz atın: 
@@ -277,13 +277,13 @@ Bu öğeler sorunlarınızı yanıtlamazsanız, şunun gibi şeyler için göz a
 **bölgesel VNet tümleştirmesi**
 * hedef bir RFC 1918 adresi mi?
 * Tümleştirme alt ağınızdan çıkış engelliyor bir NSG var
-* ExpressRoute veya VPN üzerinden gitecekseniz, trafiği Azure 'a yeniden yönlendirmek üzere yapılandırılmış şirket içi ağ geçidiniz var mı? VNet 'iniz içindeki uç noktalara ulaşabiliyor ancak şirket içinde değil, bu denetlenecek.
+* ExpressRoute veya VPN üzerinden gitecekseniz, şirket içi ağ geçidiniz trafiği Azure 'a yeniden yönlendirmek üzere yapılandırılmış mı? VNet 'iniz içindeki uç noktalara ulaşabiliyor ancak şirket içinde değil, bu denetlenecek.
 
 **Ağ Geçidi gerekli VNet tümleştirmesi**
 * , RFC 1918 aralıklarında (10.0.0.0-10.255.255.255/172.16.0.0-172.31.255.255/192.168.0.0-192.168.255.255) Noktadan siteye adres aralığıdır mi?
 * Ağ Geçidi portalda mi çalışıyor? Ağ geçidinizin kapalıysa, daha sonra geri getirin.
 * Sertifikalar eşitlenmiş olarak gösteriliyor mu veya ağ yapılandırmasının değiştiğini kuşkulu mı?  Sertifikalarınız eşitlenmemiş veya VNet yapılandırmanızda ASPs 'niz ile eşitlenmemiş bir değişiklik yapıldığından şüphelenirseniz, "ağa eşitleme" düğmesine basın.
-* ExpressRoute veya VPN üzerinden gitecekseniz, trafiği Azure 'a yeniden yönlendirmek üzere yapılandırılmış şirket içi ağ geçidiniz var mı? VNet 'iniz içindeki uç noktalara ulaşabiliyor ancak şirket içinde değil, bu denetlenecek.
+* ExpressRoute veya VPN üzerinden gitecekseniz, şirket içi ağ geçidiniz trafiği Azure 'a yeniden yönlendirmek üzere yapılandırılmış mı? VNet 'iniz içindeki uç noktalara ulaşabiliyor ancak şirket içinde değil, bu denetlenecek.
 
 Belirli bir konağa erişimi engelleyip engellemediğini göremediği için, ağ sorunlarını ayıklama işlemi bir zorluk mıdır: bağlantı noktası birleşimi. Bazı nedenler şunlardır:
 
@@ -343,6 +343,6 @@ PowerShell kullanarak App Service bir Azure sanal ağı ile tümleştirebilirsin
 [V2VNETPortal]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md
 [VPNERCoex]: ../expressroute/expressroute-howto-coexist-resource-manager.md
 [ASE]: environment/intro.md
-[creategatewaysubnet]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#gatewaysubnet
+[creategatewaysubnet]: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw
 [creategateway]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool

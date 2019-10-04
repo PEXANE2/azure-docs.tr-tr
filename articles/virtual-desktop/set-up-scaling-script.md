@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: f0d847596ef21af67973b6572737e27e1d015991
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 932fbe6814df8ec324dd3360bcacfcbcf1c19b62
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676483"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842781"
 ---
-# <a name="automatically-scale-session-hosts"></a>Oturum ana bilgisayarlarını otomatik olarak ölçeklendirme
+# <a name="scale-session-hosts-dynamically"></a>Oturum Konakları dinamik olarak ölçeklendirin
 
 Azure 'daki birçok Windows sanal masaüstü dağıtımında, sanal makine maliyetleri toplam Windows sanal masaüstü dağıtım maliyetinin önemli bir kısmını temsil eder. Maliyetleri azaltmak için, en yoğun kullanım saatlerinde oturum ana bilgisayarı sanal makinelerini (VM 'Ler) kapatıp serbest bırakmak, sonra da en yüksek kullanım saatlerinde yeniden başlatmanız gerekir.
 
 Bu makalede, Windows sanal masaüstü ortamınızdaki oturum ana bilgisayarı sanal makinelerini otomatik olarak ölçeklendirmek için basit bir ölçeklendirme betiği kullanılmaktadır. Ölçeklendirme betiği nasıl çalıştığı hakkında daha fazla bilgi edinmek için [ölçeklendirme betiği nasıl kullanılır](#how-the-scaling-script-works) bölümüne bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Komut dosyasını çalıştırdığınız ortam aşağıdaki şeylere sahip olmalıdır:
 
@@ -66,7 +66,7 @@ Daha sonra, güvenli şekilde depolanan kimlik bilgilerini oluşturmanız gereki
     ```
     
 3. Düzenle bölmesini açın ve **Function-PSStoredCredentials. ps1** dosyasını yükleyin, sonra tüm betiği çalıştırın (F5)
-4. Aşağıdaki cmdlet'i çalıştırın:
+4. Aşağıdaki cmdlet 'i çalıştırın:
     
     ```powershell
     Set-Variable -Name KeyPath -Scope Global -Value <LocalScalingScriptFolder>

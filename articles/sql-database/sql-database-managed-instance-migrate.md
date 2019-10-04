@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 9508ce927ef03c83f1c4ef7bf28d2fc02b831a99
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f877306170b45d65a52a4c76afd7f064e83f240a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879934"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937302"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğine örnek geçişi SQL Server
 
@@ -45,7 +45,7 @@ Yüksek düzeyde, veritabanı geçiş işlemi şöyle görünür:
 
 Azure SQL veritabanında veritabanı işlevselliğini etkileyen olası uyumluluk sorunlarını algılamak için [Data Migration Yardımcısı (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kullanın. DMA, yönetilen örneği henüz geçiş hedefi olarak desteklemez, ancak Azure SQL veritabanı 'na karşı değerlendirme çalıştırmak ve bildirilen özellik eşliği ve ürün belgelerine karşı uyumluluk sorunları listesini dikkatle gözden geçirmeniz önerilir. Azure SQL veritabanı 'na geçişi engelleyen engelleyici sorunların çoğu yönetilen örnekle kaldırıldığından, bu nedenle [Azure SQL veritabanı özellikleri](sql-database-features.md) 'ne göz atın. Örneğin, çapraz veritabanı sorguları, aynı örnekteki veritabanları arası işlemler, bağlantılı sunucu diğer SQL kaynakları, CLR, genel geçici tablolar, örnek düzeyi görünümler, Hizmet Aracısı ve benzer özellikler yönetilen örneklerde mevcuttur.
 
-Yönetilen örnek dağıtımı seçeneği ile kaldırılmayan bazı raporlanan engelleyici sorunlar varsa, [Azure sanal makinelerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. Bazı örnekler şunlardır:
+Yönetilen örnek dağıtımı seçeneği ile kaldırılmayan bazı raporlanan engelleyici sorunlar varsa, [Azure sanal makinelerinde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)gibi alternatif bir seçeneği göz önünde bulundurmanız gerekebilir. Aşağıda bazı örnekler verilmiştir:
 
 - İşletim sistemine veya dosya sistemine doğrudan erişim istiyorsanız, örneğin, SQL Server ile aynı sanal makineye üçüncü taraf veya özel aracılar yüklemek için.
 - FILESTREAM/FileTable, PolyBase ve platformlar arası işlemler gibi hala desteklenmeyen özelliklerde kesin bağımlılığı varsa.
@@ -107,13 +107,13 @@ Yönetilen örnek, düzenli bir DBA etkinliklerinin bazılarını yerleşik oldu
 Yönetilen örnek, aşağıdaki veritabanı geçiş seçeneklerini destekler (Şu anda desteklenen tek geçiş yöntemleridir):
 
 - Azure veritabanı geçiş hizmeti-neredeyse sıfır kapalı kalma süresi ile geçiş
-- Yerel `RESTORE DATABASE FROM URL` -SQL Server yerel yedeklemeleri kullanır ve bazı kapalı kalma süresi gerektirir.
+- Yerel `RESTORE DATABASE FROM URL`-SQL Server yerel yedeklemeleri kullanır ve bazı kapalı kalma süresi gerektirir.
 
-### <a name="azure-database-migration-service"></a>Azure Veritabanı Geçişi Hizmeti
+### <a name="azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti
 
 [Azure veritabanı geçiş hizmeti (DMS)](../dms/dms-overview.md) , birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçiş sağlamak için tasarlanan, tam olarak yönetilen bir hizmettir. Bu hizmet, var olan üçüncü taraf ve SQL Server veritabanlarını Azure 'a taşımak için gereken görevleri basitleştirir. Genel önizlemede dağıtım seçenekleri Azure SQL veritabanı 'ndaki veritabanlarını ve bir Azure sanal makinesinde SQL Server veritabanlarını içerir. DMS, kurumsal iş yükleriniz için önerilen geçiş yöntemidir.
 
-Şirket içinde SQL Server SQL Server Integration Services (SSIS) kullanıyorsanız, DMS, SSIS paketlerini depolayan SSIS kataloğunu (SSSıSDB) geçirmeyi henüz desteklememektedir, ancak Azure-SSIS Integration Runtime (IR) Azure Data Factory ' de (ADF), yönetilen bir örnekte yeni bir SSıSDB oluşturun ve ardından paketlerinizi buna yeniden dağıtabilirsiniz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)konusuna bakın.
+Şirket içinde SQL Server SQL Server Integration Services (SSIS) kullanıyorsanız, DMS, SSIS paketlerini depolayan SSIS kataloğunu (SSSıSDB) geçirmeyi henüz desteklememektedir, Azure-SSIS Integration Runtime ancak Azure Data Factory (ADF) içinde, yönetilen bir örnekte yeni bir SSıSDB oluşturun ve ardından paketlerinizi buna yeniden dağıtabilirsiniz, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 DMS için bu senaryo ve yapılandırma adımları hakkında daha fazla bilgi edinmek için bkz. Şirket [içi VERITABANıNıZı DMS kullanarak yönetilen örneğe geçirme](../dms/tutorial-sql-server-to-managed-instance.md).  
 
@@ -130,7 +130,7 @@ Aşağıdaki tabloda, çalıştırdığınız kaynak SQL Server sürümüne bağ
 |Adım|SQL altyapısı ve sürümü|Yedekleme/geri yükleme yöntemi|
 |---|---|---|
 |Azure depolama 'ya yedeklemeyi yerleştirme|Önceki SQL 2012 SP1 CU2 UYGULAMAZSANıZ|. Bak dosyasını doğrudan Azure Storage 'a yükleme|
-||2012 SP1 CU2 UYGULAMAZSANIZ-2016|[KIMLIK bilgisi sözdizimi ile](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) kullanım dışı kullanarak doğrudan yedekleme|
+||2012 SP1 CU2 UYGULAMAZSANıZ-2016|[KIMLIK bilgisi sözdizimi ile](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) kullanım dışı kullanarak doğrudan yedekleme|
 ||2016 ve üzeri|[SAS KIMLIK bilgisiyle](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) kullanarak doğrudan yedekleme|
 |Azure depolama 'dan yönetilen örneğe geri yükleme|[SAS KIMLIK BILGISIYLE URL 'den GERI yükleme](sql-database-managed-instance-get-started-restore.md)|
 
@@ -143,7 +143,7 @@ Bir veritabanı yedeklemesinin SAS kimlik bilgilerini kullanarak yönetilen örn
 > [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 
-## <a name="monitor-applications"></a>Uygulamaları izleme
+## <a name="monitor-applications"></a>Uygulama izleme
 
 Yönetilen örneğe geçişi tamamladıktan sonra, iş yükünüzün uygulama davranışını ve performansını izlemeniz gerekir. Bu işlem aşağıdaki etkinlikleri içerir:
 - [Yönetilen örnekte çalışan iş yükünün performansını](#compare-performance-with-the-baseline) [, kaynak SQL Server oluşturduğunuz performans temeliyle](#create-performance-baseline)karşılaştırın.
@@ -169,7 +169,7 @@ Sonuç olarak, performans parametrelerini taban çizgisiyle karşılaştırmalı
 Performans karşılaştırmasının sonucu şu olabilir:
 - Yönetilen örnekteki iş yükü performansı, SQL Server iş yükü performansının hizalanması veya daha iyi bir seçenektir. Bu durumda, geçişin başarılı olduğunu başarıyla onaylamışdı.
 - Performans parametrelerinin ve iş yükündeki sorguların büyük çoğunluğu, performans düşüklüğü olan bazı özel durumlarla birlikte ince çalışır. Bu durumda, farkları ve bunların önemini belirlemeniz gerekir. Performansı düşürülmüş bazı önemli sorgular varsa, temel alınan SQL planlarının değiştiği veya sorguların bazı kaynak limitlerine ulaşmanız gerekir. Bu durumda hafifletme, kritik sorgulara (örneğin, değiştirilen uyumluluk düzeyi, eski kardinalite Estimator), doğrudan veya plan kılavuzlarını kullanarak bir ipucu uygulayabilir, planları etkileyebilecek istatistikleri ve dizinleri yeniden oluşturabilir ya da oluşturabilirsiniz. 
-- Sorguların çoğu, kaynak SQL Server kıyasla yönetilen örnekte daha yavaştır. Bu durumda, örneğin GÇ sınırları, bellek sınırı, örnek günlük hızı sınırı vb. gibi [bazı kaynak sınırlarına ulaşmak]( sql-database-managed-instance-resource-limits.md#instance-level-resource-limits) gibi farkın kök nedenlerini belirlemeyi deneyin. Farka neden olabilecek kaynak sınırları yoksa, veritabanının uyumluluk düzeyini değiştirmeyi deneyin veya eski kardinalite tahmini gibi veritabanı ayarlarını değiştirip testi yeniden başlatın. Performansı gerileyen sorguları belirlemek için yönetilen örnek veya sorgu deposu görünümleri tarafından sunulan önerileri gözden geçirin.
+- Sorguların çoğu, kaynak SQL Server kıyasla yönetilen örnekte daha yavaştır. Bu durumda, örneğin GÇ sınırları, bellek sınırı, örnek günlük hızı sınırı vb. gibi [bazı kaynak sınırlarına ulaşmak]( sql-database-managed-instance-resource-limits.md#service-tier-characteristics) gibi farkın kök nedenlerini belirlemeyi deneyin. Farka neden olabilecek kaynak sınırları yoksa, veritabanının uyumluluk düzeyini değiştirmeyi deneyin veya eski kardinalite tahmini gibi veritabanı ayarlarını değiştirip testi yeniden başlatın. Performansı gerileyen sorguları belirlemek için yönetilen örnek veya sorgu deposu görünümleri tarafından sunulan önerileri gözden geçirin.
 
 > [!IMPORTANT]
 > Yönetilen örnek, varsayılan olarak etkinleştirilen yerleşik otomatik plan düzeltme özelliğine sahiptir. Bu özellik, yapıştırırken düzgün çalışan sorguların gelecekte azalmamasını sağlar. Temel performans ve planlar hakkında bilgi edinmek için, yönetilen örneği etkinleştirmek üzere yeni ayarları değiştirmeden önce, bu özelliğin etkinleştirildiğinden ve eski ayarlarla iş yüküyle yeterince uzun süredir yürütülmekte olduğunuzdan emin olun.
@@ -181,7 +181,7 @@ Gereksinimlerinize uygun iş yükü performansını elde edene kadar parametrele
 Yönetilen örnek, izleme ve sorun giderme için çok sayıda gelişmiş araç sağlar ve bunları örneğinizin performansını izlemek için kullanmanız gerekir. İzlemeniz gereken parametrelerden bazıları şunlardır:
 - Örneğin CPU kullanımı, sağladığınız sanal çekirdek sayısının iş yükünüz için doğru eşleşme olduğunu belirlemektir.
 - Daha [fazla bellek](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444)gerekip gerekmediğini öğrenmek için yönetilen Örneğinizde sayfa ömrü erkeklerin.
-- Örneğin, daha `INSTANCE_LOG_GOVERNOR` iyi `PAGEIOLATCH` GÇ performansı almak için dosyaları önceden ayırmanız gerekebilecek genel amaçlı katmanda depolama GÇ sorunları olduğunu belirten veya gibi bekleme istatistikleri.
+- @No__t-0 veya `PAGEIOLATCH` gibi bekleme istatistikleri, özellikle daha iyi GÇ performansı sağlamak için dosyaları önceden ayırmanız gerekebilecek Genel Amaçlı katmanda depolama GÇ sorunları olduğunu söyleyecektir.
 
 ## <a name="leverage-advanced-paas-features"></a>Gelişmiş PaaS özelliklerinden yararlanın
 
@@ -190,7 +190,7 @@ Tam olarak yönetilen bir platformda olduğunuzda ve iş yükü performansların
 Geçiş sırasında yönetilen örnekte bazı değişiklikler yapmasanız bile, en son veritabanı altyapısı geliştirmelerinden faydalanmak için örneğinizi çalıştırırken yeni özelliklerden bazılarını açmanıza çok daha yüksek bir şansınız vardır. Bazı değişiklikler yalnızca [veritabanı uyumluluk düzeyi değiştirildikten](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)sonra etkinleştirilir.
 
 
-Örneğin, yönetilen örnek üzerinde yedeklemeler oluşturmanız gerekmez; hizmet yedeklemeleri sizin için otomatik olarak gerçekleştirir. Yedeklemeleri zamanlama, alma ve yönetme konusunda artık endişelenmeniz gerekmez. Yönetilen örnek, bu bekletme döneminde zaman içindeki herhangi bir noktaya geri yükleme olanağını, zaman içindeki bir [noktaya kurtarma (sür)](sql-database-recovery-using-backups.md#point-in-time-restore)kullanarak sağlar. Ayrıca, yüksek kullanılabilirlik yerleşik olarak ayarlanması konusunda endişelenmeniz gerekmez. [](sql-database-high-availability.md)
+Örneğin, yönetilen örnek üzerinde yedeklemeler oluşturmanız gerekmez; hizmet yedeklemeleri sizin için otomatik olarak gerçekleştirir. Yedeklemeleri zamanlama, alma ve yönetme konusunda artık endişelenmeniz gerekmez. Yönetilen örnek, bu bekletme döneminde zaman içindeki herhangi bir noktaya geri yükleme olanağını, zaman içindeki bir [noktaya kurtarma (sür)](sql-database-recovery-using-backups.md#point-in-time-restore)kullanarak sağlar. Ayrıca, [yüksek kullanılabilirlik yerleşik olarak ayarlanması](sql-database-high-availability.md) konusunda endişelenmeniz gerekmez.
 
 Güvenliği güçlendirin, [Azure Active Directory kimlik doğrulaması](sql-database-security-overview.md), [Denetim](sql-database-managed-instance-auditing.md), [tehdit algılama](sql-database-advanced-data-security.md), [satır düzeyi güvenlik](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) kullanmayı düşünün.
 

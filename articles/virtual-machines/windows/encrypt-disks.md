@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 6a92ee6fe53b1676c493c54510dd0f6c4b4b5dc9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bee4b108d2747e8c386abe41dc61b5b19aecf4f5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079564"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828693"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Windows VM 'de sanal diskleri şifreleme
-Gelişmiş sanal makine (VM) güvenliği ve uyumluluğu için, Azure 'daki sanal diskler şifrelenebilir. Diskler, bir Azure Key Vault güvenli hale getirilmiş şifreleme anahtarları kullanılarak şifrelenir. Bu şifreleme anahtarlarını kontrol edersiniz ve kullanımlarını denetleyebilir. Bu makalede, Azure PowerShell kullanarak bir Windows VM 'de sanal disklerin nasıl şifreleneceği açıklanır. Ayrıca [, Azure CLI kullanarak bir Linux VM 'yi şifreleyebilirsiniz](../linux/encrypt-disks.md).
+Gelişmiş sanal makine (VM) güvenliği ve uyumluluğu için, Azure 'daki sanal diskler şifrelenebilir. Diskler, bir Azure Key Vault güvenli hale getirilmiş şifreleme anahtarları kullanılarak şifrelenir. Bu şifreleme anahtarlarını kontrol edersiniz ve kullanımlarını denetleyebilir. Bu makalede, Azure PowerShell kullanarak bir Windows VM 'de sanal disklerin nasıl şifreleneceği açıklanır. Ayrıca [, Azure CLI kullanarak bir Linux VM 'yi şifreleyebilirsiniz](../linux/disk-encryption-overview.md).
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
@@ -38,7 +38,7 @@ Bir VM 'yi şifreleme işlemi aşağıdaki gibidir:
 1. Sanal diskler, belirtilen şifreleme anahtarı kullanılarak şifrelenir.
 
 
-## <a name="requirements-and-limitations"></a>Gereksinimler ve sınırlamalar
+## <a name="requirements-and-limitations"></a>Gereksinimler ve kısıtlamalar
 
 Disk şifrelemesi için desteklenen senaryolar ve gereksinimler:
 
@@ -60,7 +60,7 @@ Aşağıdaki senaryolarda disk şifrelemesi Şu anda desteklenmemektedir:
 
 
 ## <a name="create-an-azure-key-vault-and-keys"></a>Azure Key Vault ve anahtarlar oluşturma
-Başlamadan önce, Azure PowerShell modülünün en son sürümünün yüklendiğinden emin olun. Daha fazla bilgi için bkz. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/overview). Aşağıdaki komut örneklerinde, tüm örnek parametreleri *Myresourcegroup*, *mykeykasa,* *myvm*gibi kendi adlarınız, konumunuz ve anahtar değerlerinizle değiştirin.
+Başlamadan önce, Azure PowerShell modülünün en son sürümünün yüklendiğinden emin olun. Daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview). Aşağıdaki komut örneklerinde, tüm örnek parametreleri *Myresourcegroup*, *mykeykasa,* *myvm*gibi kendi adlarınız, konumunuz ve anahtar değerlerinizle değiştirin.
 
 İlk adım, şifreleme anahtarlarınızın depolanması için bir Azure Key Vault oluşturmaktır. Azure Anahtar kasaları, uygulama ve hizmetlerinize güvenli bir şekilde uygulamanızı sağlayan anahtarları, parolaları veya parolaları depolayabilirler. Sanal disk şifrelemesi için, sanal disklerinizi şifrelemek veya şifresini çözmek için kullanılan bir şifreleme anahtarını depolamak üzere bir Key Vault oluşturacaksınız. 
 

@@ -6,49 +6,49 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: b558e046f3402fdfa127192788d7d3ee1307ddeb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194767"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937030"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için dize işlevleri
 
 Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 
-* [base64](#base64)
+* [biçiminde](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
-* [concat](#concat)
-* [contains](#contains)
+* [Concat](#concat)
+* [vardır](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
-* [empty](#empty)
+* [olmamalıdır](#empty)
 * [endsWith](#endswith)
-* [first](#first)
-* [format](#format)
-* [guid](#guid)
+* [adı](#first)
+* [formatını](#format)
+* ['ini](#guid)
 * [IndexOf](#indexof)
-* [last](#last)
+* [soyadına](#last)
 * [LastIndexOf](#lastindexof)
-* [length](#length)
+* [uzunluklu](#length)
 * [newGuid](#newguid)
 * [Asma sol](#padleft)
-* [replace](#replace)
-* [skip](#skip)
-* [split](#split)
+* [değiştirin](#replace)
+* [Şimdilik](#skip)
+* [ayırmayı](#split)
 * [startsWith](#startswith)
 * [string](#string)
-* [substring](#substring)
-* [take](#take)
+* [dizeden](#substring)
+* [almanız](#take)
 * [toLower](#tolower)
 * [toUpper](#toupper)
-* [trim](#trim)
+* [kırpma](#trim)
 * [uniqueString](#uniquestring)
-* [uri](#uri)
+* [kullanılmamışsa](#uri)
 * [URIComponent](#uricomponent)
-* [uriComponentToString](#uricomponenttostring)
+* [Urıonenttostring](#uricomponenttostring)
 * [utcNow](#utcnow)
 
 ## <a name="base64"></a>biçiminde
@@ -108,13 +108,13 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | base64Output | Dize | b25lLCB0d28sIHRocmVl |
 | toStringOutput | Dize | Bir iki üç |
-| toJsonOutput | Object | {"One": "a", "iki": "b"} |
+| toJsonOutput | Nesne | {"One": "a", "iki": "b"} |
 
 ## <a name="base64tojson"></a>base64ToJson
 
@@ -126,7 +126,7 @@ Base64 gösterimini JSON nesnesine dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| base64Value |Evet |dize |JSON nesnesine dönüştürülecek Base64 temsili. |
+| Base64value değeri |Evet |dize |JSON nesnesine dönüştürülecek Base64 temsili. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -173,13 +173,13 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | base64Output | Dize | b25lLCB0d28sIHRocmVl |
 | toStringOutput | Dize | Bir iki üç |
-| toJsonOutput | Object | {"One": "a", "iki": "b"} |
+| toJsonOutput | Nesne | {"One": "a", "iki": "b"} |
 
 ## <a name="base64tostring"></a>base64ToString
 
@@ -191,7 +191,7 @@ Base64 gösterimini dizeye dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| base64Value |Evet |dize |Dizeye dönüştürülecek Base64 temsili. |
+| Base64value değeri |Evet |dize |Dizeye dönüştürülecek Base64 temsili. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -238,15 +238,15 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | base64Output | Dize | b25lLCB0d28sIHRocmVl |
 | toStringOutput | Dize | Bir iki üç |
-| toJsonOutput | Object | {"One": "a", "iki": "b"} |
+| toJsonOutput | Nesne | {"One": "a", "iki": "b"} |
 
-## <a name="concat"></a>Concat
+## <a name="concat"></a>concat
 
 `concat (arg1, arg2, arg3, ...)`
 
@@ -286,9 +286,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | Içtoutput | Dize | önek-5yıj4yıjf5mbg72 |
 
@@ -327,11 +327,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| döndürülmesini | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| return | dizide | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
 ## <a name="contains"></a>içerir
 
@@ -343,7 +343,7 @@ Bir dizinin bir değer içerip içermediğini denetler, bir nesne anahtar içeri
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| container |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
+| Kapsayıcı |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
 | ıtemtofind |Evet |dize veya tamsayı |Bulunacak değer. |
 
 ### <a name="return-value"></a>Dönüş değeri
@@ -403,16 +403,16 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| stringTrue | Bool | Doğru |
-| stringFalse | Bool | False |
-| objectTrue | Bool | Doğru |
-| Objectfali | Bool | False |
-| arrayTrue | Bool | Doğru |
-| arrayFalse | Bool | False |
+| stringTrue | bool | Doğru |
+| stringFalse | bool | False |
+| objectTrue | bool | Doğru |
+| Objectfali | bool | False |
+| arrayTrue | bool | Doğru |
+| arrayFalse | bool | False |
 
 ## <a name="datauri"></a>dataUri
 
@@ -462,9 +462,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | dataUriOutput | Dize | veri: metin/düz; charset = utf8; Base64, SGVsbG8 = |
 | toStringOutput | Dize | Merhaba Dünya! |
@@ -517,14 +517,14 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | dataUriOutput | Dize | veri: metin/düz; charset = utf8; Base64, SGVsbG8 = |
 | toStringOutput | Dize | Merhaba Dünya! |
 
-## <a name="empty"></a>boş
+## <a name="empty"></a>empty
 
 `empty(itemToTest)`
 
@@ -581,15 +581,15 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | Doğru |
-| objectEmpty | Bool | Doğru |
-| stringEmpty | Bool | Doğru |
+| arrayEmpty | bool | Doğru |
+| objectEmpty | bool | Doğru |
+| stringEmpty | bool | Doğru |
 
-## <a name="endswith"></a>endsWith
+## <a name="endswith"></a>EndsWith
 
 `endsWith(stringToSearch, stringToFind)`
 
@@ -644,16 +644,16 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| startsTrue | Bool | Doğru |
-| startsCapTrue | Bool | Doğru |
-| startsFalse | Bool | False |
-| endsTrue | Bool | Doğru |
-| endsCapTrue | Bool | Doğru |
-| endsFalse | Bool | False |
+| startsTrue | bool | Doğru |
+| startsCapTrue | bool | Doğru |
+| startsFalse | bool | False |
+| endsTrue | bool | Doğru |
+| endsCapTrue | bool | Doğru |
+| endsFalse | bool | False |
 
 ## <a name="first"></a>adı
 
@@ -700,14 +700,14 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | arrayOutput | Dize | bir |
 | stringOutput | Dize | O |
 
-## <a name="format"></a>format
+## <a name="format"></a>biçim
 
 `format(formatString, arg1, arg2, ...)`
 
@@ -758,13 +758,13 @@ Aşağıdaki örnek şablon, biçim işlevinin nasıl kullanılacağını göste
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | formatTest | Dize | Merhaba, Kullanıcı. Biçimli sayı: 8.175.133 |
 
-## <a name="guid"></a>guid
+## <a name="guid"></a>'ini
 
 `guid(baseString, ...)`
 
@@ -886,17 +886,17 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| firstT | Int | 0 |
-| lastT | Int | 3 |
-| firstString | Int | 2 |
-| lastString | Int | 0 |
-| Bulunamadı | Int | -1 |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| Bulunamadı | int | -1 |
 
-## <a name="last"></a>soyadına
+## <a name="last"></a>Son
 
 `last (arg1)`
 
@@ -941,11 +941,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayOutput | Dize | üç |
+| arrayOutput | Dize | Ünden |
 | stringOutput | Dize | e |
 
 ## <a name="lastindexof"></a>LastIndexOf
@@ -999,15 +999,15 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| firstT | Int | 0 |
-| lastT | Int | 3 |
-| firstString | Int | 2 |
-| lastString | Int | 0 |
-| Bulunamadı | Int | -1 |
+| firstT | int | 0 |
+| lastT | int | 3 |
+| firstString | int | 2 |
+| lastString | int | 0 |
+| Bulunamadı | int | -1 |
 
 ## <a name="length"></a>length
 
@@ -1077,13 +1077,13 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayLength | Int | 3 |
-| stringLength | Int | 13 |
-| objectLength | Int | 4 |
+| arrayLength | int | 3 |
+| stringLength | int | 13 |
+| objectLength | int | 4 |
 
 ## <a name="newguid"></a>newGuid
 
@@ -1134,7 +1134,7 @@ Aşağıdaki örnek şablonda, yeni tanımlayıcı içeren bir parametre göster
 
 Yukarıdaki örnekteki çıktı her dağıtım için farklılık gösterir, ancak şuna benzer olacaktır:
 
-| Name | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | guidOutput | dize | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1177,7 +1177,7 @@ Aşağıdaki örnek, bir depolama hesabı için benzersiz bir ad oluşturmak üz
 
 Yukarıdaki örnekteki çıktı her dağıtım için farklılık gösterir, ancak şuna benzer olacaktır:
 
-| Name | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | nameOutput | dize | storagenziwvyru7uxie |
 
@@ -1226,13 +1226,13 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | stringOutput | Dize | 0000000123 |
 
-## <a name="replace"></a>değiştirin
+## <a name="replace"></a>replace
 
 `replace(originalString, oldString, newString)`
 
@@ -1278,14 +1278,14 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | firstOutput | Dize | 1231231234 |
 | secondOutput | Dize | 123-123-xxxx |
 
-## <a name="skip"></a>atla
+## <a name="skip"></a>Atla
 
 `skip(originalValue, numberToSkip)`
 
@@ -1346,14 +1346,14 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["üç"] |
+| arrayOutput | dizide | ["üç"] |
 | stringOutput | Dize | 2 3 |
 
-## <a name="split"></a>split
+## <a name="split"></a>ayırmayı
 
 `split(inputString, delimiter)`
 
@@ -1364,7 +1364,7 @@ Belirtilen sınırlayıcılar tarafından ayrılan giriş dizesinin alt dizeleri
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | InputString |Evet |dize |Bölünecek dize. |
-| ayırıcı |Evet |dizelerin dizesi veya dizisi |Dizeyi bölmek için kullanılacak sınırlayıcı. |
+| Ayırıcı |Evet |dizelerin dizesi veya dizisi |Dizeyi bölmek için kullanılacak sınırlayıcı. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1405,12 +1405,12 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| firstOutput | Array | ["bir", "iki", "üç"] |
-| secondOutput | Array | ["bir", "iki", "üç"] |
+| firstOutput | dizide | ["bir", "iki", "üç"] |
+| secondOutput | dizide | ["bir", "iki", "üç"] |
 
 ## <a name="startswith"></a>startsWith
 
@@ -1467,16 +1467,16 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| startsTrue | Bool | Doğru |
-| startsCapTrue | Bool | Doğru |
-| startsFalse | Bool | False |
-| endsTrue | Bool | Doğru |
-| endsCapTrue | Bool | Doğru |
-| endsFalse | Bool | False |
+| startsTrue | bool | Doğru |
+| startsCapTrue | bool | Doğru |
+| startsFalse | bool | False |
+| endsTrue | bool | Doğru |
+| endsCapTrue | bool | Doğru |
+| endsFalse | bool | False |
 
 ## <a name="string"></a>dize
 
@@ -1488,7 +1488,7 @@ Belirtilen değeri bir dizeye dönüştürür.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Evet | Any |Dizeye dönüştürülecek değer. Nesneler ve diziler dahil olmak üzere herhangi bir değer türü dönüştürülebilirler. |
+| valueToConvert |Evet | Kaydedilmemiş |Dizeye dönüştürülecek değer. Nesneler ve diziler dahil olmak üzere herhangi bir değer türü dönüştürülebilirler. |
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1541,9 +1541,9 @@ Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | objectOutput | Dize | {"valueA": 10, "valueB": "örnek metin"} |
 | arrayOutput | Dize | ["a", "b", "c"] |
@@ -1604,13 +1604,13 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| substringOutput | Dize | iki |
+| substringOutput | Dize | İkiye |
 
-## <a name="take"></a>take
+## <a name="take"></a>almanız
 
 `take(originalValue, numberToTake)`
 
@@ -1671,12 +1671,12 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| arrayOutput | Array | ["bir", "iki"] |
-| stringOutput | Dize | açık |
+| arrayOutput | dizide | ["bir", "iki"] |
+| stringOutput | Dize | on |
 
 ## <a name="tolower"></a>toLower
 
@@ -1722,12 +1722,12 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | Toharfe çıkışı | Dize | Bir iki üç |
-| Toüsteçıkış | Dize | BİR İKİ ÜÇ |
+| Toüsteçıkış | Dize | Bir iki üç |
 
 ## <a name="toupper"></a>toUpper
 
@@ -1773,12 +1773,12 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | Toharfe çıkışı | Dize | Bir iki üç |
-| Toüsteçıkış | Dize | BİR İKİ ÜÇ |
+| Toüsteçıkış | Dize | Bir iki üç |
 
 ## <a name="trim"></a>kırpma
 
@@ -1820,11 +1820,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
-| döndürülmesini | Dize | Bir iki üç |
+| return | Dize | Bir iki üç |
 
 ## <a name="uniquestring"></a>uniqueString
 
@@ -1904,7 +1904,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-## <a name="uri"></a>uri
+## <a name="uri"></a>URI
 
 `uri (baseUri, relativeUri)`
 
@@ -1914,10 +1914,26 @@ BaseUri ve relativeUri dizesini birleştirerek mutlak bir URI oluşturur.
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| baseUri |Evet |dize |Taban URI dizesi. |
+| baseUri |Evet |dize |Taban URI dizesi. Bu tabloda açıklandığı gibi sondaki eğik çizginin ('/') işlenmesiyle ilgili davranışı gözlemlemeye özen gösterin.  |
 | relativeUri |Evet |dize |Taban URI dizesine eklenecek göreli URI dizesi. |
 
-**BaseUri** parametresinin değeri belirli bir dosyayı içerebilir, ancak URI oluşturulurken yalnızca temel yol kullanılır. Örneğin, baseUri parametresi `http://contoso.com/resources/azuredeploy.json` olarak geçirmek, taban `http://contoso.com/resources/`URI 'si ile sonuçlanır.
+* **BaseUri** bir sondaki eğik çizgiyle sonlanıyorsa, sonuç yalnızca **BaseUri** URI ve ardından **relativeUri**olur.
+
+* **BaseUri** bir sondaki eğik çizgi ile bitmezse iki şeyin meydana gelir.  
+
+   * **BaseUri** 'nin hiç eğik çizgi yoksa (önde gelen "//" dışında), sonuç yalnızca **BaseUri** 'nin ardından **relativeUri**olur.
+
+   * **BaseUri** 'de bazı eğik çizgiler varsa, ancak eğik çizgiyle bitmezse, son eğik çizgiden elde edilen her şey **BaseUri** 'Den kaldırılır ve sonuç **BaseUri** 'nin ardından **relativeUri**olur.
+     
+Aşağıda bazı örnekler verilmiştir:
+
+```
+uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh
+uri('http://contoso.org/firstpath/', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://contoso.org/firstpath/azuredeploy.json/myscript.sh
+```
+Tüm ayrıntılar için, **BaseUri** ve **relativeUri** parametreleri, [RFC 3986, Bölüm 5](https://tools.ietf.org/html/rfc3986#section-5)' te belirtilen şekilde çözümlenir.
 
 ### <a name="return-value"></a>Dönüş değeri
 
@@ -1960,9 +1976,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | uriOutput | Dize | http://contoso.com/resources/nested/azuredeploy.json |
 | Bileşen Entoutput | Dize | http% 3 A% 2 F% 2 F contoso. com% 2Fresources% 2Fnested% 2Fazuredeploy. JSON |
@@ -2015,9 +2031,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | uriOutput | Dize | http://contoso.com/resources/nested/azuredeploy.json |
 | Bileşen Entoutput | Dize | http% 3 A% 2 F% 2 F contoso. com% 2Fresources% 2Fnested% 2Fazuredeploy. JSON |
@@ -2070,9 +2086,9 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
-| Ad | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | uriOutput | Dize | http://contoso.com/resources/nested/azuredeploy.json |
 | Bileşen Entoutput | Dize | http% 3 A% 2 F% 2 F contoso. com% 2Fresources% 2Fnested% 2Fazuredeploy. JSON |
@@ -2088,7 +2104,7 @@ Belirtilen biçimdeki geçerli (UTC) Tarih/saat değerini döndürür. Biçim sa
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| format |Hayır |dize |Dizeye dönüştürülecek URI kodlamalı değer. [Standart biçim dizelerini](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
+| biçim |Hayır |dize |Dizeye dönüştürülecek URI kodlamalı değer. [Standart biçim dizelerini](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -2145,7 +2161,7 @@ Aşağıdaki örnek şablonda tarih saat değeri için farklı biçimler göster
 
 Yukarıdaki örnekteki çıktı her dağıtım için farklılık gösterir, ancak şuna benzer olacaktır:
 
-| Name | Tür | Value |
+| Name | Tür | Değer |
 | ---- | ---- | ----- |
 | utcOutput | dize | 20190305T175318Z |
 | Utckısaltoutput | dize | 03/05/2019 |
@@ -2188,8 +2204,8 @@ Sonraki örnekte, bir etiket değeri ayarlanırken işlevden bir değerin nasıl
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Bir Azure Resource Manager şablonu olarak bölümlerde açıklaması için bkz: [Azure Resource Manager şablonları yazma](resource-group-authoring-templates.md).
-* Birden fazla şablon birleştirmek için bkz: [Azure Resource Manager ile bağlı şablonları kullanma](resource-group-linked-templates.md).
-* Belirtilen sayıda yineleme için bir kaynak türünü oluştururken bkz [Azure Resource Manager'da kaynakları birden çok örneğini oluşturma](resource-group-create-multiple.md).
-* Oluşturduğunuz bir şablonu dağıtmayı öğrenmek için bkz [Azure Resource Manager şablonu ile uygulama dağıtma](resource-group-template-deploy.md).
+* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](resource-group-authoring-templates.md).
+* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](resource-group-linked-templates.md).
+* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](resource-group-create-multiple.md).
+* Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](resource-group-template-deploy.md).
 

@@ -4,14 +4,14 @@ description: Azure Resource Manager şablonlarda kaynak türlerinin tamamlanma m
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 10/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: d8238dddee041573d9b122e62cec66118c681ef6
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: cdc00ccc61e20865e993a18c72b930d9570896f2
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995257"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937044"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tüm mod dağıtımları için Azure kaynaklarını silme
 
@@ -33,7 +33,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. AppConfiguration](#microsoftappconfiguration)
 > - [Microsoft. AppPlatform](#microsoftappplatform)
 > - [Microsoft. kanıtlama](#microsoftattestation)
-> - [Microsoft.Authorization](#microsoftauthorization)
+> - [Microsoft. Authorization](#microsoftauthorization)
 > - [Microsoft. Automation](#microsoftautomation)
 > - [Microsoft. Azconfig](#microsoftazconfig)
 > - [Microsoft. Azure. Genfiliz](#microsoftazuregeneva)
@@ -43,7 +43,6 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Batch](#microsoftbatch)
 > - [Microsoft. Faturalandırma](#microsoftbilling)
 > - [Microsoft. BingMaps](#microsoftbingmaps)
-> - [Microsoft. BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft. Blockzinciri](#microsoftblockchain)
 > - [Microsoft. Blueprint](#microsoftblueprint)
 > - [Microsoft. BotService](#microsoftbotservice)
@@ -126,11 +125,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. NetApp](#microsoftnetapp)
 > - [Microsoft. Network](#microsoftnetwork)
 > - [Microsoft. Notificationhub 'Lar](#microsoftnotificationhubs)
+> - [Microsoft. ObjectStore](#microsoftobjectstore)
 > - [Microsoft. OffAzure](#microsoftoffazure)
 > - [Microsoft. Operationalınsights](#microsoftoperationalinsights)
 > - [Microsoft. OperationsManagement](#microsoftoperationsmanagement)
 > - [Microsoft. eşleme](#microsoftpeering)
-> - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
+> - [Microsoft. Poliyelei](#microsoftpolicyinsights)
 > - [Microsoft. Portal](#microsoftportal)
 > - [Microsoft. PowerBI](#microsoftpowerbi)
 > - [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated)
@@ -146,7 +146,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Security](#microsoftsecurity)
 > - [Microsoft. SecurityGraph](#microsoftsecuritygraph)
 > - [Microsoft. Securityınsights](#microsoftsecurityinsights)
-> - [Microsoft.ServiceBus](#microsoftservicebus)
+> - [Microsoft. ServiceBus](#microsoftservicebus)
 > - [Microsoft. ServiceFabric](#microsoftservicefabric)
 > - [Microsoft. Servicefabrickafesi](#microsoftservicefabricmesh)
 > - [Microsoft. Services](#microsoftservices)
@@ -172,10 +172,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > - [Microsoft. Windowsıot](#microsoftwindowsiot)
 > - [Microsoft. WorkloadMonitor](#microsoftworkloadmonitor)
 
-## <a name="microsoftaad"></a>Microsoft.AAD
+## <a name="microsoftaad"></a>Microsoft. AAD
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | DomainServices | Evet |
 > | DomainServices/oucontainer | Hayır |
@@ -184,63 +184,63 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftaddons"></a>Microsoft. addons
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Destek sağlayıcıları | Hayır |
 
-## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
+## <a name="microsoftadhybridhealthservice"></a>Microsoft. ADHybridHealthService
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | aadsupportcases | Hayır |
 > | addsservices | Hayır |
-> | Aracısını | Hayır |
+> | aracılar | Hayır |
 > | anonymousapiusers | Hayır |
 > | yapılandırma | Hayır |
-> | logs | Hayır |
+> | günlükler | Hayır |
 > | raporlar | Hayır |
 > | servicehealthölçümleri | Hayır |
-> | services | Hayır |
+> | hizmetler | Hayır |
 
-## <a name="microsoftadvisor"></a>Microsoft.Advisor
+## <a name="microsoftadvisor"></a>Microsoft. Advisor
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | konfigürasyonları | Hayır |
+> | yapılandırmalar | Hayır |
 > | Generatereyorumgeçişleri | Hayır |
 > | meta veriler | Hayır |
-> | Önerileri | Hayır |
+> | Öneri | Hayır |
 > | gizlemeleri | Hayır |
 
-## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | actionRules | Evet |
-> | alerts | Hayır |
+> | Larınız | Hayır |
 > | alertsList | Hayır |
 > | alertsMetaData | Hayır |
 > | alertsSummary | Hayır |
 > | alertsSummaryList | Hayır |
-> | Lerimi | Hayır |
+> | geri bildirim | Hayır |
 > | smartDetectorAlertRules | Evet |
 > | Smartdetectorruntimeortamortamları | Hayır |
 > | smartGroups | Hayır |
 
-## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
+## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | sunucu | Evet |
+> | sunucular | Evet |
 
-## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
+## <a name="microsoftapimanagement"></a>Microsoft. Apimanane
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | reportFeedback | Hayır |
 > | hizmet | Evet |
@@ -249,7 +249,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Configurationmağazaların | Evet |
 > | Configurationmağazaların/eventGridFilters | Hayır |
@@ -257,27 +257,27 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | İlkbahar | Evet |
+> | Yay | Evet |
 
 ## <a name="microsoftattestation"></a>Microsoft. kanıtlama
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | attestationProviders | Hayır |
 
 ## <a name="microsoftauthorization"></a>Microsoft. Authorization
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | classicAdministrators | Hayır |
 > | Datatakma adlar | Hayır |
 > | Denyasatamaları | Hayır |
 > | Erişimi yükseltme | Hayır |
-> | kaynaktaki | Hayır |
+> | kilitler | Hayır |
 > | izinler | Hayır |
 > | Poliyasatamaları | Hayır |
 > | policyDefinitions | Hayır |
@@ -289,7 +289,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | automationAccounts | Evet |
 > | automationAccounts/Configurations | Evet |
@@ -301,7 +301,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftazconfig"></a>Microsoft. Azconfig
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Configurationmağazaların | Evet |
 > | Configurationmağazaların/eventGridFilters | Hayır |
@@ -309,17 +309,17 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftazuregeneva"></a>Microsoft. Azure. Genfiliz
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | lý | Hayır |
+> | ortamlar | Hayır |
 > | ortamlar/hesaplar | Hayır |
 > | ortamlar/hesaplar/ad alanları | Hayır |
 > | ortamlar/hesaplar/ad alanları/yapılandırma | Hayır |
 
-## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
+## <a name="microsoftazureactivedirectory"></a>Microsoft. AzureActiveDirectory
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | b2cDirectories | Evet |
 > | b2ctenants | Hayır |
@@ -327,7 +327,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Hybriddatayöneticileri | Evet |
 > | Postgresınstances | Evet |
@@ -336,26 +336,26 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Sqlserverkayıtları | Evet |
 > | Sqlserverkayıtları/sqlServers | Hayır |
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | kayıtlarında | Evet |
 > | kayıt/müşteri abonelikleri | Hayır |
 > | kayıtlar/ürünler | Hayır |
 
-## <a name="microsoftbatch"></a>Microsoft.Batch
+## <a name="microsoftbatch"></a>Microsoft. Batch
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | batchAccounts | Evet |
 
-## <a name="microsoftbilling"></a>Microsoft.Billing
+## <a name="microsoftbilling"></a>Microsoft. Faturalandırma
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | billingAccounts | Hayır |
 > | billingAccounts/anlaşmalar | Hayır |
@@ -396,6 +396,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | billingAccounts/müşteriler | Hayır |
 > | billingAccounts/müşteriler/Billingabonelikleri | Hayır |
 > | billingAccounts/müşteriler/ınitiatetransfer | Hayır |
+> | billingAccounts/müşteriler/ilkeler | Hayır |
 > | billingAccounts/müşteriler/ürünler | Hayır |
 > | billingAccounts/müşteriler/işlemler | Hayır |
 > | billingAccounts/müşteriler/aktarımlar | Hayır |
@@ -436,33 +437,26 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | aktarımlar/validateTransfer | Hayır |
 > | validateAddress | Hayır |
 
-## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
+## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Mapapsıs | Evet |
 > | updateCommunicationPreference | Hayır |
 
-## <a name="microsoftbiztalkservices"></a>Microsoft. BizTalkServices
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | BizTalk | Evet |
-
 ## <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | blockchainMembers | Evet |
-> | izleyici | Evet |
+> | izleyicileri | Evet |
 
 ## <a name="microsoftblueprint"></a>Microsoft. Blueprint
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Şema tasmi | Hayır |
 > | Blueprintasbir/Atamaperations | Hayır |
@@ -475,18 +469,18 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | botServices | Evet |
 > | botServices/kanallar | Hayır |
 > | botServices/Connections | Hayır |
-> | Diller | Hayır |
+> | diller | Hayır |
 > | templates | Hayır |
 
-## <a name="microsoftcache"></a>Microsoft.Cache
+## <a name="microsoftcache"></a>Microsoft. Cache
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Redis | Evet |
 > | RedisConfigDefinition | Hayır |
@@ -494,7 +488,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftcapacity"></a>Microsoft. Capacity
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | appliedReservations | Hayır |
 > | calculateExchange | Hayır |
@@ -512,37 +506,37 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Rezervler/geri dönüş | Hayır |
 > | Rezervler/Böl | Hayır |
 > | Rezervler/takas | Hayır |
-> | rezervasyonlar | Hayır |
-> | resources | Hayır |
+> | oluşturamaz | Hayır |
+> | kaynaklar | Hayır |
 > | validateReservationOrder | Hayır |
 
-## <a name="microsoftcdn"></a>Microsoft.Cdn
+## <a name="microsoftcdn"></a>Microsoft. CDN
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | CdnWebApplicationFirewallManagedRuleSets | Hayır |
 > | CdnWebApplicationFirewallPolicies | Evet |
 > | edgenodes | Hayır |
-> | profiles | Evet |
+> | profiller | Evet |
 > | Profiller/uç noktalar | Evet |
 > | Profiller/uç noktalar/customdomains | Hayır |
 > | Profiller/uç noktalar/kaynaklar | Hayır |
 > | Validatearaştırması | Hayır |
 
-## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
+## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Sertifikadüzenleri | Evet |
 > | certificateOrders/Certificates | Hayır |
 > | Validatecertificateregistrationınformation | Hayır |
 
-## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
+## <a name="microsoftclassiccompute"></a>Microsoft. ClassicCompute
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Yetenek | Hayır |
 > | domainNames | Evet |
@@ -556,7 +550,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | moveSubscriptionResources | Hayır |
 > | operatingSystemFamilies | Hayır |
 > | operatingSystems | Hayır |
-> | quotas | Hayır |
+> | kota | Hayır |
 > | resourceTypes | Hayır |
 > | Validatesubscriptionmoveavaılabılıty | Hayır |
 > | VirtualMachines | Evet |
@@ -567,38 +561,38 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | classicInfrastructureResources | Hayır |
 
-## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
+## <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Yetenek | Hayır |
 > | expressRouteCrossConnections | Hayır |
 > | expressRouteCrossConnections/peerler | Hayır |
 > | gatewaySupportedDevices | Hayır |
 > | networkSecurityGroups | Evet |
-> | quotas | Hayır |
+> | kota | Hayır |
 > | Rezervler | Evet |
 > | virtualNetworks | Evet |
 > | virtualNetworks/Remotevirtualnetworkpeeringproxy 'Leri | Hayır |
 > | virtualNetworks/Virtualnetworkpeerler | Hayır |
 
-## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
+## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Yetenek | Hayır |
-> | diskler | Hayır |
+> | Disklerinden | Hayır |
 > | görüntüler | Hayır |
 > | osImages | Hayır |
 > | Osplatformımages | Hayır |
 > | Publicımages | Hayır |
-> | quotas | Hayır |
+> | kota | Hayır |
 > | storageAccounts | Evet |
 > | storageAccounts/blobServices | Hayır |
 > | storageAccounts/fileServices | Hayır |
@@ -613,34 +607,34 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | storageAccounts/Vmımages | Hayır |
 > | Vmımages | Hayır |
 
-## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
+## <a name="microsoftcognitiveservices"></a>Microsoft. Biliveservices
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | hesaplar | Evet |
 
 ## <a name="microsoftcommerce"></a>Microsoft. Commerce
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | RateCard | Hayır |
 > | Usagetoplamaları | Hayır |
 
-## <a name="microsoftcompute"></a>Microsoft.Compute
+## <a name="microsoftcompute"></a>Microsoft. COMPUTE
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | availabilitySets | Evet |
 > | diskEncryptionSets | Evet |
-> | diskler | Evet |
+> | Disklerinden | Evet |
 > | Galeriler | Evet |
-> | Galeriler/uygulamalar | Evet |
-> | Galeriler/uygulamalar/sürümler | Evet |
-> | Galeriler/görüntüler | Evet |
-> | Galeriler/resimler/sürümler | Evet |
+> | Galeriler/uygulamalar | Hayır |
+> | Galeriler/uygulamalar/sürümler | Hayır |
+> | Galeriler/görüntüler | Hayır |
+> | Galeriler/resimler/sürümler | Hayır |
 > | hostGroups | Evet |
 > | hostGroups/konaklar | Evet |
 > | görüntüler | Evet |
@@ -648,13 +642,11 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | restorePointCollections | Evet |
 > | restorePointCollections/restorePoints | Hayır |
 > | Sharedvmımages | Evet |
-> | Sharedvmımages/sürümler | Evet |
+> | Sharedvmımages/sürümler | Hayır |
 > | anlık görüntüler | Evet |
 > | VirtualMachines | Evet |
 > | virtualMachines/uzantıları | Evet |
 > | virtualMachines/metricDefinitions | Hayır |
-> | virtualMachines/scriptJobs | Hayır |
-> | virtualMachines/Softwareupdatedağıtımları | Hayır |
 > | virtualMachineScaleSets | Evet |
 > | virtualMachineScaleSets/uzantılar | Hayır |
 > | virtualMachineScaleSets/NetworkInterfaces | Hayır |
@@ -665,41 +657,41 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftconsumption"></a>Microsoft. tüketim
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Aggregmalyt maliyeti | Hayır |
-> | Bakiyeler | Hayır |
-> | Bütçeler | Hayır |
-> | Ücretler | Hayır |
+> | Dengeler | Hayır |
+> | Bütçelerinin | Hayır |
+> | Ücretleriyle | Hayır |
 > | CostTags | Hayır |
 > | iler | Hayır |
-> | events | Hayır |
-> | Tahminler | Hayır |
+> | olaylar | Hayır |
+> | Hesaplansın | Hayır |
 > | oluş | Hayır |
 > | Marketlerinden | Hayır |
 > | Pricesheets | Hayır |
-> | ürünler | Hayır |
+> | ürün | Hayır |
 > | Rezervde ayrıntıları | Hayır |
 > | Rezervationönerilere | Hayır |
 > | Rezervlerin Özeti | Hayır |
 > | Rezervlik Işlemleri | Hayır |
-> | Tags | Hayır |
+> | Etiketler | Hayır |
 > | Kira | Hayır |
-> | Koşullar | Hayır |
+> | Larındaki | Hayır |
 > | UsageDetails | Hayır |
 
-## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft. Containerınstance
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Kapsayıcı grupları | Evet |
 > | serviceAssociationLinks | Hayır |
 
-## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | kayıt | Evet |
 > | kayıt defterleri/derlemeler | Hayır |
@@ -724,19 +716,19 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | kayıt defterleri/Web kancaları/getCallbackConfig | Hayır |
 > | kayıt defterleri/Web kancaları/ping | Hayır |
 
-## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
+## <a name="microsoftcontainerservice"></a>Microsoft. ContainerService
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | containerServices | Evet |
 > | Managedkümeler | Evet |
 > | openShiftManagedClusters | Evet |
 
-## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
+## <a name="microsoftcontentmoderator"></a>Microsoft. Contentmoderatör
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | uygulamalar | Evet |
 > | updateCommunicationPreference | Hayır |
@@ -744,24 +736,24 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftcortanaanalytics"></a>Microsoft. Cortanaanalizi
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | hesaplar | Evet |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Uyarılar | Hayır |
 > | billingAccounts | Hayır |
-> | Bütçeler | Hayır |
+> | Bütçelerinin | Hayır |
 > | Cloudbağlayıcıları | Hayır |
-> | Bağlayıcılar | Evet |
-> | Bölümler | Hayır |
+> | Larında | Evet |
+> | bölümlerinin | Hayır |
 > | Boyutlar | Hayır |
 > | kayıt sayısı | Hayır |
-> | Dışarı aktarmalar | Hayır |
+> | Aktarımları | Hayır |
 > | ExternalBillingAccounts | Hayır |
 > | ExternalBillingAccounts/uyarılar | Hayır |
 > | ExternalBillingAccounts/Boyutlar | Hayır |
@@ -772,9 +764,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Externalabonelikler/Boyutlar | Hayır |
 > | Externalabonelikler/tahmin | Hayır |
 > | Externalabonelikler/sorgu | Hayır |
-> | Tahmin | Hayır |
+> | t | Hayır |
 > | Sorgu | Hayır |
-> | kaydolunamadı | Hayır |
+> | register | Hayır |
 > | Reportconfigs | Hayır |
 > | Raporlar | Hayır |
 > | Ayarlar | Hayır |
@@ -784,44 +776,44 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftcustomerlockbox"></a>Microsoft. Customerkasası
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | istekler | Hayır |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | içermektedir | Hayır |
+> | ilişkilendirmeler | Hayır |
 > | resourceProviders | Evet |
 
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | işler | Evet |
+> | Çizelge | Evet |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | DataBoxEdgeDevices | Evet |
 
 ## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | çalışma alanı | Evet |
+> | çalışma alanları | Evet |
 > | çalışma alanları/Virtualnetworkpeerler | Hayır |
 
-## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
+## <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | larına | Evet |
 > | veri katalogları | Evet |
@@ -832,22 +824,22 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | veri katalogları/scantargets | Hayır |
 > | veri katalogları/scantargets/veri kümeleri | Hayır |
 
-## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
+## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Veri fabrikaları | Evet |
 > | DataFactory/diagnosticSettings | Hayır |
 > | DataFactory/metricDefinitions | Hayır |
 > | dataFactorySchema | Hayır |
-> | larının | Evet |
+> | oluşturucular | Evet |
 > | Fabrika/tümleştirme çalışma zamanları | Hayır |
 
-## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
+## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | hesaplar | Evet |
 > | hesaplar/dataLakeStoreAccounts | Hayır |
@@ -855,10 +847,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | hesaplar/storageAccounts/kapsayıcılar | Hayır |
 > | hesaplar/Transferanaliz tici | Hayır |
 
-## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
+## <a name="microsoftdatalakestore"></a>Microsoft. DataLakeStore
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | hesaplar | Evet |
 > | hesaplar/eventGridFilters | Hayır |
@@ -867,16 +859,15 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | services | Evet |
+> | hizmetler | Evet |
 > | Hizmetler/Projeler | Evet |
-> | Lara | Evet |
 
 ## <a name="microsoftdatashare"></a>Microsoft. DataShare
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | hesaplar | Evet |
 > | hesaplar/paylaşımlar | Hayır |
@@ -892,9 +883,9 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdbformariadb"></a>Microsoft. Dbformarıdb
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | sunucu | Evet |
+> | sunucular | Evet |
 > | sunucular/danışmanları | Hayır |
 > | sunucular/Querymetinmetinleri | Hayır |
 > | sunucular/recoverableServers | Hayır |
@@ -902,12 +893,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sunucular/virtualNetworkRules | Hayır |
 > | sunucular/waitStatistics | Hayır |
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft. Dbformyısql
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | sunucu | Evet |
+> | sunucular | Evet |
 > | sunucular/danışmanları | Hayır |
 > | sunucular/Querymetinmetinleri | Hayır |
 > | sunucular/recoverableServers | Hayır |
@@ -915,14 +906,17 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | sunucular/virtualNetworkRules | Hayır |
 > | sunucular/waitStatistics | Hayır |
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Sunucu grupları | Evet |
-> | sunucu | Evet |
+> | sunucular | Evet |
 > | sunucular/danışmanları | Hayır |
+> | sunucular/Privateendpointconnectionproxy 'Leri | Hayır |
+> | sunucular/privateEndpointConnections | Hayır |
+> | sunucular/privateLinkResources | Hayır |
 > | sunucular/Querymetinmetinleri | Hayır |
 > | sunucular/recoverableServers | Hayır |
 > | sunucular/topQueryStatistics | Hayır |
@@ -933,19 +927,19 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | artifactSources | Evet |
 > | piyasaya çıkarma | Evet |
 > | Servicetopolojileri | Evet |
 > | Servicetopolojileri/hizmetler | Evet |
 > | Servicetopolojileri/hizmetler/serviceUnits | Evet |
-> | adımlar | Evet |
+> | olanları | Evet |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | applicationgroups | Evet |
 > | applicationgroups/uygulamalar | Hayır |
@@ -954,12 +948,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | hostpools/oturumkonakları | Hayır |
 > | hostpools/sessionkonakları/usersessions | Hayır |
 > | hosthavuzlar/usersessions | Hayır |
-> | çalışma alanı | Evet |
+> | çalışma alanları | Evet |
 
 ## <a name="microsoftdevices"></a>Microsoft. Devices
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Elaun havuzları | Evet |
 > | Elaun havuzları/ıothubkiracılar | Evet |
@@ -971,41 +965,41 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | ardışık düzenler | Evet |
+> | düzenler | Evet |
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | Örleri | Evet |
+> | denetleyiciler | Evet |
 
-## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | labcenters | Evet |
-> | larda | Evet |
+> | labs | Evet |
 > | Laboratuvarlar/ortamlar | Evet |
 > | Labs/Servicerunanlar | Evet |
 > | Labs/virtualMachines | Evet |
 > | cağını | Evet |
 
-## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
+## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | databaseAccountNames | Hayır |
 > | Veritabanı hesapları | Evet |
 
-## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
+## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | etki alanları | Evet |
 > | Domains/Domainownershiptanýmlayýcýlarý | Hayır |
@@ -1013,10 +1007,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | topLevelDomains | Hayır |
 > | Validatedomainregistrationınformation | Hayır |
 
-## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
+## <a name="microsoftdynamicslcs"></a>Microsoft. DynamicsLcs
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | lcsprojects | Hayır |
 > | lcsprojects/clouddağıtımları | Hayır |
@@ -1025,26 +1019,26 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | services | Evet |
+> | hizmetler | Evet |
 
-## <a name="microsofteventgrid"></a>Microsoft.EventGrid
+## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | etki alanları | Evet |
 > | etki alanları/konular | Hayır |
 > | Eventabonelikleri | Hayır |
 > | Extensionkonuları | Hayır |
-> | konularıyla | Evet |
+> | konuları | Evet |
 > | topicTypes | Hayır |
 
-## <a name="microsofteventhub"></a>Microsoft.EventHub
+## <a name="microsofteventhub"></a>Microsoft. EventHub
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | leriniz | Evet |
 > | ad alanları | Evet |
@@ -1058,15 +1052,15 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftfeatures"></a>Microsoft. Features
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | SaaS Uygulamaları Geliştirme | Hayır |
-> | sağlayıcıları | Hayır |
+> | özellikler | Hayır |
+> | sağlayıcılar | Hayır |
 
 ## <a name="microsoftgallery"></a>Microsoft. Gallery
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | kaydedemez | Hayır |
 > | gallergıtems | Hayır |
@@ -1077,32 +1071,32 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | myareas/Areas/Areas/gallergıtems | Hayır |
 > | myareas/Areas/gallergıtems | Hayır |
 > | myarea/gallergıtems | Hayır |
-> | kaydolunamadı | Hayır |
-> | resources | Hayır |
+> | register | Hayır |
+> | kaynaklar | Hayır |
 > | elde edilecek esourcesbyıd | Hayır |
 
 ## <a name="microsoftgenomics"></a>Microsoft. Genomiks
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | hesaplar | Evet |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Oto Managedvmconfigurationprofiles | Evet |
 > | Guestconfigurationatamaları | Hayır |
-> | Yazılımıdır | Hayır |
+> | yazılım | Hayır |
 > | softwareUpdateProfile | Hayır |
 > | softwareUpdates | Hayır |
 
 ## <a name="microsofthanaonazure"></a>Microsoft. HanaOnAzure
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Hanaınstances | Evet |
 > | Sapizleyicileri | Evet |
@@ -1110,14 +1104,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | ayrılmış Atedhsms | Evet |
 
-## <a name="microsofthdinsight"></a>Microsoft.HDInsight
+## <a name="microsofthdinsight"></a>Microsoft. HDInsight
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | leriniz | Evet |
 > | kümeler/uygulamalar | Hayır |
@@ -1125,43 +1119,43 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsofthealthcareapis"></a>Microsoft. Healthgelişme API 'leri
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | services | Evet |
+> | hizmetler | Evet |
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | makineler | Evet |
+> | larla | Evet |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Veri yöneticileri | Evet |
 
 ## <a name="microsofthydra"></a>Microsoft. Hydra
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | Bileşenleri | Evet |
+> | bileşenler | Evet |
 > | networkScopes | Evet |
 
-## <a name="microsoftimportexport"></a>Microsoft.ImportExport
+## <a name="microsoftimportexport"></a>Microsoft. ımportexport
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | işler | Evet |
+> | Çizelge | Evet |
 
 ## <a name="microsoftintune"></a>Microsoft. Intune
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | diagnosticSettings | Hayır |
 > | diagnosticSettingsCategories | Hayır |
@@ -1169,7 +1163,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | appTemplates | Hayır |
 > | Iotapps | Evet |
@@ -1177,14 +1171,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftiotspaces"></a>Microsoft. ıotspaces
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | Graf | Evet |
+> | çıkarılamıyor | Evet |
 
-## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
+## <a name="microsoftkeyvault"></a>Microsoft. Keykasası
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Silinkaults | Hayır |
 > | hsmPools | Evet |
@@ -1196,63 +1190,64 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftkusto"></a>Microsoft. kusto
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | leriniz | Evet |
 > | kümeler/attacheddatabaseconfigurations | Hayır |
 > | kümeler/veritabanları | Hayır |
 > | kümeler/veritabanları/veri bağlantıları | Hayır |
 > | kümeler/veritabanları/eventhubconnections | Hayır |
+> | kümeler/parçalar | Hayır |
 
 ## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | labaccounts | Evet |
-> | kullanıcı | Hayır |
+> | kullanıcılar | Hayır |
 
-## <a name="microsoftlogic"></a>Microsoft.Logic
+## <a name="microsoftlogic"></a>Microsoft. Logic
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | hostingEnvironments | Evet |
 > | Tümleştirme hesapları | Evet |
 > | ıntegrationserviceortamortamları | Evet |
 > | ıntegrationserviceortamortamları/managedap | Evet |
 > | ısotedenvironments | Evet |
-> | sürdürülen | Evet |
+> | iş akışları | Evet |
 
-## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
+## <a name="microsoftmachinelearning"></a>Microsoft. Machinöğrenim
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Commitmentplanlar | Evet |
 > | Hizmetleri | Evet |
-> | Çalışma Alanı | Evet |
+> | Çalışma Alanları | Evet |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft. MachineLearningServices
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | çalışma alanı | Evet |
+> | çalışma alanları | Evet |
 > | çalışma alanları/hesaplar | Hayır |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. Managedıdentity
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | Kimlikler | Hayır |
+> | Lerinizde | Hayır |
 > | Userassignedıdentities | Evet |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Pazar Placeryumuristrationdefinitions | Hayır |
 > | Registrationatamaları | Hayır |
@@ -1261,18 +1256,18 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftmanagement"></a>Microsoft. Management
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | getEntities | Hayır |
 > | Yönetim grupları | Hayır |
-> | resources | Hayır |
+> | kaynaklar | Hayır |
 > | startTenantBackfill | Hayır |
 > | tenantBackfillStatus | Hayır |
 
 ## <a name="microsoftmaps"></a>Microsoft. Maps
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | hesaplar | Evet |
 > | hesaplar/eventGridFilters | Hayır |
@@ -1280,7 +1275,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftmarketplace"></a>Microsoft. Market
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | sunar | Hayır |
 > | offerTypes | Hayır |
@@ -1291,15 +1286,15 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | offerTypes/yayımcılar/teklifler/planlar/configs | Hayır |
 > | offerTypes/yayımcılar/teklifler/planlar/configs/ımportımage | Hayır |
 > | privategallergıtems | Hayır |
-> | ürünler | Hayır |
-> | yayımcılar | Hayır |
+> | ürün | Hayır |
+> | Publishers | Hayır |
 > | Yayımcılar/teklifler | Hayır |
 > | Yayımcılar/teklifler/Düzeltme | Hayır |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | classicDevServices | Evet |
 > | updateCommunicationPreference | Hayır |
@@ -1307,7 +1302,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftmarketplaceordering"></a>Microsoft. Marketplacesıralaması
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | anlaşmalar | Hayır |
 > | offertypes | Hayır |
@@ -1315,7 +1310,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftmedia"></a>Microsoft. Media
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | mediaservices | Evet |
 > | mediaservices/accountFilters | Hayır |
@@ -1337,23 +1332,23 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Appkümeler | Evet |
 
 ## <a name="microsoftmigrate"></a>Microsoft. Migrate
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | assessmentProjects | Evet |
 > | migrateprojects | Evet |
-> | projeyle | Evet |
+> | projeler | Evet |
 
 ## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | holographicsBroadcastAccounts | Evet |
 > | objectUnderstandingAccounts | Evet |
@@ -1364,18 +1359,20 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | netAppAccounts | Evet |
+> | netAppAccounts/backupPolicies | Evet |
 > | netAppAccounts/Capacityhavuzları | Evet |
 > | netAppAccounts/Capacityhavuzları/birimleri | Evet |
+> | netAppAccounts/Capacityhavuzları/birimleri/yedeklemeleri | Hayır |
 > | netAppAccounts/Capacityhavuzlar/Volumes/Mount hedefleri | Evet |
 > | netAppAccounts/Capacityhavuzlar/birimler/anlık görüntüler | Evet |
-
-## <a name="microsoftnetwork"></a>Microsoft.Network
+> | netAppAccounts/Vaults | Hayır |
+## <a name="microsoftnetwork"></a>Microsoft. Network
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Applicationgateway 'ler | Evet |
 > | applicationGatewayWebApplicationFirewallPolicies | Evet |
@@ -1407,7 +1404,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | expressRoutePorts | Evet |
 > | expressRouteServiceProviders | Hayır |
 > | firewallPolicies | Evet |
-> | frontdoors | Evet |
+> | frontkapıların | Evet |
 > | frontdoorWebApplicationFirewallManagedRuleSets | Hayır |
 > | frontdoorWebApplicationFirewallPolicies | Evet |
 > | getDnsResourceReference | Hayır |
@@ -1457,63 +1454,70 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | vpnSites | Evet |
 > | webApplicationFirewallPolicies | Evet |
 
-## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
+## <a name="microsoftnotificationhubs"></a>Microsoft. Notificationhub 'Lar
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | ad alanları | Evet |
 > | ad alanları/Notificationhub 'Lar | Evet |
 
+## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tamamlanmış mod silme |
+> | ------------- | ----------- |
+> | osNamespaces | Evet |
+
 ## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Hiper sanal siteler | Evet |
 > | Importsites | Evet |
 > | Sunucusiteleri | Evet |
 > | VMwareSites | Evet |
 
-## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
+## <a name="microsoftoperationalinsights"></a>Microsoft. Operationalınsights
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | leriniz | Evet |
-> | cihazlar | Hayır |
+> | Cihazlarınız | Hayır |
 > | Bağlantı hedefleri | Hayır |
 > | Storageınsii configs | Hayır |
-> | çalışma alanı | Evet |
+> | çalışma alanları | Evet |
 > | çalışma alanları/veri kaynakları | Hayır |
 > | çalışma alanları/linkedServices | Hayır |
 > | çalışma alanları/sorgu | Hayır |
 
-## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | managementassociations | Hayır |
 > | managementconfigurations | Evet |
 > | çözümler | Evet |
-> | görüntüleme | Evet |
+> | görünümler | Evet |
 
 ## <a name="microsoftpeering"></a>Microsoft. eşleme
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Yasallıklar | Hayır |
 > | peerAsns | Hayır |
-> | eşlemeler | Evet |
+> | eşlemeleri | Evet |
 > | peeringServiceProviders | Hayır |
 > | peeringServices | Evet |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft. Poliyelei
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Poliyevents | Hayır |
 > | policyStates | Hayır |
@@ -1523,30 +1527,30 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | konsolları | Hayır |
-> | Panoların | Evet |
+> | panolar | Evet |
 > | userSettings | Hayır |
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | workspaceCollections | Evet |
 
-## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
+## <a name="microsoftpowerbidedicated"></a>Microsoft. Powerbiadanmış
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | kapasiteler | Evet |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Backupkorunabilir | Hayır |
 > | kasaları | Evet |
@@ -1554,7 +1558,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | ad alanları | Evet |
 > | ad alanları/authorizationrules | Hayır |
@@ -1566,10 +1570,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftremoteapp"></a>Microsoft. RemoteApp
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | hesaplar | Hayır |
-> | Koleksiyonlarıyla | Evet |
+> | koleksiyonları | Evet |
 > | Koleksiyonlar/uygulamalar | Hayır |
 > | Koleksiyonlar/SecurityPrincipals | Hayır |
 > | Templateımages | Hayır |
@@ -1577,24 +1581,24 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | sorgu | Evet |
+> | sorgular | Evet |
 > | resourceChangeDetails | Hayır |
 > | resourceChanges | Hayır |
-> | resources | Hayır |
+> | kaynaklar | Hayır |
 > | resourcesHistory | Hayır |
 > | subscriptionsStatus | Hayır |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft. ResourceHealth
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Kullanılabilirlik durumları | Hayır |
 > | Childadvailabilitydurumlar | Hayır |
 > | childResources | Hayır |
-> | events | Hayır |
+> | olaylar | Hayır |
 > | ımpactedresources | Hayır |
 > | meta veriler | Hayır |
 > | bildirimler | Hayır |
@@ -1602,29 +1606,28 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftresources"></a>Microsoft. resources
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | dağıtımlar | Hayır |
 > | dağıtımlar/işlemler | Hayır |
-> | Köprü | Hayır |
+> | bağlantılar | Hayır |
 > | notifyResourceJobs | Hayır |
-> | sağlayıcıları | Hayır |
+> | sağlayıcılar | Hayır |
 > | resourceGroups | Hayır |
-> | resources | Hayır |
-> | abonelik | Hayır |
+> | kaynaklar | Hayır |
+> | Aboneliklerin | Hayır |
 > | Abonelikler/sağlayıcılar | Hayır |
 > | Abonelikler/resourceGroups | Hayır |
 > | Abonelikler/ResourceGroups/kaynaklar | Hayır |
 > | Abonelikler/kaynaklar | Hayır |
 > | Abonelikler/etiket adları | Hayır |
 > | Abonelikler/etiket adları/tagValues | Hayır |
-> | tags | Hayır |
 > | Kira | Hayır |
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | uygulamalar | Evet |
 > | saasresources | Hayır |
@@ -1632,14 +1635,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | işlere | Evet |
 
-## <a name="microsoftsearch"></a>Microsoft.Search
+## <a name="microsoftsearch"></a>Microsoft. Search
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | resourceHealthMetadata | Hayır |
 > | searchServices | Evet |
@@ -1647,11 +1650,11 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | adaptiveNetworkHardenings | Hayır |
 > | advancedThreatProtectionSettings | Hayır |
-> | alerts | Hayır |
+> | Larınız | Hayır |
 > | allowedConnections | Hayır |
 > | Applicationwhitedökümler | Hayır |
 > | assessmentMetadata | Hayır |
@@ -1682,14 +1685,15 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | securityStatusesSummaries | Hayır |
 > | Sunucukullanılabilirliği | Hayır |
 > | ayarlar | Hayır |
-> | Görevler | Hayır |
+> | subAssessments | Hayır |
+> | görevler | Hayır |
 > | anlatır | Hayır |
 > | çalışma alanı ayarları | Hayır |
 
 ## <a name="microsoftsecuritygraph"></a>Microsoft. SecurityGraph
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | diagnosticSettings | Hayır |
 > | diagnosticSettingsCategories | Hayır |
@@ -1697,23 +1701,23 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftsecurityinsights"></a>Microsoft. Securityınsights
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | Verilerinize dair öngörüler | Hayır |
+> | toplamaları | Hayır |
 > | alertRules | Hayır |
 > | Alertrutatemplates | Hayır |
-> | Leriniz | Hayır |
+> | yer işaretleri | Hayır |
 > | çalışmaların | Hayır |
 > | Veri bağlayıcıları | Hayır |
-> | varlıklar | Hayır |
+> | Varlık | Hayır |
 > | entityQueries | Hayır |
 > | officeConsents | Hayır |
 > | ayarlar | Hayır |
 
-## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
+## <a name="microsoftservicebus"></a>Microsoft. ServiceBus
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | ad alanları | Evet |
 > | ad alanları/authorizationrules | Hayır |
@@ -1728,10 +1732,10 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ad alanları/konular/abonelikler/kurallar | Hayır |
 > | premiumMessagingRegions | Hayır |
 
-## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
+## <a name="microsoftservicefabric"></a>Microsoft. ServiceFabric
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | uygulamalar | Evet |
 > | leriniz | Evet |
@@ -1744,24 +1748,24 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | secretmağazaları | Evet |
 > | secretmağazaları/sertifikaları | Hayır |
 > | secretmağazaları/gizli dizileri | Hayır |
-> | birim | Evet |
+> | Dörtten | Evet |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. Servicefabrickafesi
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | uygulamalar | Evet |
 > | Kapsayıcı grupları | Evet |
 > | geçidinin | Evet |
 > | ağlar | Evet |
-> | gizli dizi | Evet |
-> | birim | Evet |
+> | kaynaklanır | Evet |
+> | Dörtten | Evet |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Providerkayıtları | Hayır |
 > | Providerkayıtlarıyla/resourceTypeRegistrations | Hayır |
@@ -1770,29 +1774,29 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | SignalR | Evet |
 > | SignalR/eventGridFilters | Hayır |
 
-## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
+## <a name="microsoftsiterecovery"></a>Microsoft. Sıterecovery
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | SiteRecoveryVault | Evet |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | Hybriduseavantajlar | Hayır |
 
 ## <a name="microsoftsolutions"></a>Microsoft. Solutions
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | applicationDefinitions | Evet |
 > | uygulamalar | Evet |
@@ -1801,7 +1805,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftsql"></a>Microsoft. SQL
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | ManagedInstances | Evet |
 > | ManagedInstances/veritabanları | Evet |
@@ -1813,7 +1817,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ManagedInstances/anahtarlar | Hayır |
 > | ManagedInstances/Restokbledroppeddatabases/backupShortTermRetentionPolicies | Hayır |
 > | ManagedInstances/ | Hayır |
-> | sunucu | Evet |
+> | sunucular | Evet |
 > | sunucular/Yöneticiler | Hayır |
 > | sunucular/communicationLinks | Hayır |
 > | sunucular/veritabanları | Evet |
@@ -1828,16 +1832,16 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | SqlVirtualMachineGroups | Evet |
-> | SqlVirtualMachineGroups/AvailabilityGroupListeners | Hayır |
+> | SqlVirtualMachineGroups/kullanılabilirliği Bilitygrouplisteners | Hayır |
 > | SqlVirtualMachines | Evet |
 
-## <a name="microsoftstorage"></a>Microsoft.Storage
+## <a name="microsoftstorage"></a>Microsoft. Storage
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | storageAccounts | Evet |
 > | storageAccounts/blobServices | Hayır |
@@ -1851,7 +1855,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | önbelleklerinde | Evet |
 > | önbellekler/Storagetaral | Hayır |
@@ -1860,14 +1864,14 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftstoragereplication"></a>Microsoft. Storagerepce
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | replicationGroups | Hayır |
 
-## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
+## <a name="microsoftstoragesync"></a>Microsoft. Storagessync
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | storageSyncServices | Evet |
 > | storageSyncServices/registeredServers | Hayır |
@@ -1879,7 +1883,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | storageSyncServices | Evet |
 > | storageSyncServices/registeredServers | Hayır |
@@ -1891,7 +1895,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftstoragesyncint"></a>Microsoft. Storagesyncınt
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | storageSyncServices | Evet |
 > | storageSyncServices/registeredServers | Hayır |
@@ -1900,38 +1904,38 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | storageSyncServices/syncGroups/serverEndpoints | Hayır |
 > | storageSyncServices/iş akışları | Hayır |
 
-## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
+## <a name="microsoftstorsimple"></a>Microsoft. StorSimple
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | ilerinde | Evet |
 
-## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
+## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | streammingjobs | Evet |
 
 ## <a name="microsoftsubscription"></a>Microsoft. Subscription
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | iptal | Hayır |
+> | İptal | Hayır |
 > | CreateSubscription | Hayır |
-> | etkinleştir | Hayır |
-> | yeniden adlandır | Hayır |
+> | Etkinleştirebilir | Hayır |
+> | rename | Hayır |
 > | SubscriptionDefinitions | Hayır |
 > | SubscriptionOperations | Hayır |
 
-## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
+## <a name="microsofttimeseriesinsights"></a>Microsoft. Timeseriesınsights
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | lý | Evet |
+> | ortamlar | Evet |
 > | ortamlar/accessPolicies | Hayır |
 > | ortamlar/EventSources | Evet |
 > | ortamlar/Referencedataset 'ler | Evet |
@@ -1939,7 +1943,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. Vmwarechoparlör basit
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | ayrılmış Cloudnodes | Evet |
 > | ayrılmış CloudService | Evet |
@@ -1948,7 +1952,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | apiManagementAccounts | Hayır |
 > | apiManagementAccounts/Apiacl 'Ler | Hayır |
@@ -1961,7 +1965,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | apiManagementAccounts/Connectionacl 'Ler | Hayır |
 > | apiManagementAccounts/bağlantılar | Hayır |
 > | billingMeters | Hayır |
-> | sertifika | Evet |
+> | sertifikalar | Evet |
 > | Connectiongateway 'ler | Evet |
 > | bağlantılar | Evet |
 > | Customapsıs | Evet |
@@ -1971,12 +1975,12 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | hostingEnvironments/multiRolePools | Hayır |
 > | hostingEnvironments/workerPools | Hayır |
 > | publishingUsers | Hayır |
-> | Önerileri | Hayır |
+> | Öneri | Hayır |
 > | resourceHealthMetadata | Hayır |
 > | zamanları | Hayır |
 > | serverFarms | Evet |
 > | Sunucugrupları/eventGridFilters | Hayır |
-> | siteler | Evet |
+> | barındıra | Evet |
 > | siteler/yapılandırma  | Hayır |
 > | siteler/eventGridFilters | Hayır |
 > | siteler/hostNameBindings | Hayır |
@@ -1993,7 +1997,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftwindowsdefenderatp"></a>Microsoft. Windowssavunma Deratp
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | diagnosticSettings | Hayır |
 > | diagnosticSettingsCategories | Hayır |
@@ -2001,20 +2005,20 @@ Kaynak sağlayıcısı ad alanına atlayın:
 ## <a name="microsoftwindowsiot"></a>Microsoft. Windowsıot
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
 > | DeviceServices | Evet |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft. WorkloadMonitor
 
 > [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
+> | Kaynak türü | Tamamlanmış mod silme |
 > | ------------- | ----------- |
-> | Bileşenleri | Hayır |
+> | bileşenler | Hayır |
 > | componentsSummary | Hayır |
 > | Izleme örnekleri | Hayır |
 > | Izleme ınstancessummary | Hayır |
-> | Monitörün | Hayır |
+> | monitörler | Hayır |
 > | notificationSettings | Hayır |
 
 ## <a name="next-steps"></a>Sonraki adımlar

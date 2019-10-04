@@ -1,19 +1,19 @@
 ---
 title: Spark işlerini performans için iyileştirin-Azure HDInsight
 description: Azure HDInsight 'ta Apache Spark kümelerinin en iyi performansı için ortak stratejileri görüntüleyin.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/03/2019
-ms.openlocfilehash: 64dfd26e02526664a4edb204521f7a47a4463a12
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 10/01/2019
+ms.openlocfilehash: aa5329c6321866fd26e393b581702a392f510108
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181071"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936841"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight 'ta Apache Spark işlerini iyileştirme
 
@@ -55,29 +55,30 @@ Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snap
 
 ## <a name="select-default-storage"></a>Varsayılan depolamayı seçin
 
-Yeni bir Spark kümesi oluşturduğunuzda, kümenizin varsayılan depolama alanı olarak Azure Blob depolama veya Azure Data Lake Storage seçeneklerini belirleyebilirsiniz. Her iki seçenek de, geçici kümeler için uzun süreli depolamanın avantajını sağlar. bu sayede, kümenizi sildiğinizde verileriniz otomatik olarak silinmez. Geçici bir kümeyi yeniden oluşturabilir ve verilerinize erişmeye devam edebilirsiniz.
+Yeni bir Spark kümesi oluşturduğunuzda, kümenizin varsayılan depolama alanı olarak Azure Blob depolama veya Azure Data Lake Storage seçebilirsiniz. Her iki seçenek de, geçici kümeler için uzun süreli depolamanın avantajını sağlar. bu sayede, kümenizi sildiğinizde verileriniz otomatik olarak silinmez. Geçici bir kümeyi yeniden oluşturabilir ve verilerinize erişmeye devam edebilirsiniz.
 
-| Mağaza türü | Dosya sistemi | Hız | Geçici | Kullanım örnekleri |
+| Mağaza türü | Dosya sistemi | Inız | Larsa | Kullanım örnekleri |
 | --- | --- | --- | --- | --- |
-| Azure Blob Depolama | fazla **b:** // | **Standart** | Evet | Geçici küme |
+| Azure Blob depolama | fazla **b:** // | **Stand** | Evet | Geçici küme |
+| Azure Blob depolama (güvenli) | fazla **BS:** // | **Stand** | Evet | Geçici küme |
 | Azure Data Lake Storage Gen 2| **ABFS:** // | **Lýdýr** | Evet | Geçici küme |
 | Azure Data Lake Storage Gen 1| **adl:** // | **Lýdýr** | Evet | Geçici küme |
 | Yerel olarak | Bu **:** // | **En hızlı** | Hayır | Etkileşimli 24/7 kümesi |
 
 ## <a name="use-the-cache"></a>Önbelleği kullanma
 
-Spark,, ve `.persist()` `CACHE TABLE`gibi farklı yöntemler `.cache()`aracılığıyla kullanılabilecek kendi yerel önbelleğe alma mekanizmalarını sağlar. Bu yerel önbelleğe alma, küçük veri kümeleri ve ara sonuçları önbelleğe almanız gereken ETL işlem hatları ile etkilidir. Ancak, bir önbelleğe alınmış tablo bölümlendirme verilerini korumadığından Spark yerel önbelleğe alma özelliği şu anda bölümlendirme ile iyi çalışmaz. Daha genel ve güvenilir önbelleğe alma tekniği, *depolama katmanı önbelleğe alma*tekniğidir.
+Spark, `.persist()`, `.cache()` ve `CACHE TABLE` gibi farklı yöntemler aracılığıyla kullanılabilecek kendi yerel önbelleğe alma mekanizmalarını sağlar. Bu yerel önbelleğe alma, küçük veri kümeleri ve ara sonuçları önbelleğe almanız gereken ETL işlem hatları ile etkilidir. Ancak, bir önbelleğe alınmış tablo bölümleme verilerini tutduğundan Spark Native Caching Şu anda bölümlendirme ile iyi çalışmaz. Daha genel ve güvenilir önbelleğe alma tekniği, *depolama katmanı önbelleğe alma*tekniğidir.
 
 * Yerel Spark önbelleğe alma (önerilmez)
     * Küçük veri kümeleri için iyi.
-    * Bölümlemede çalışmaz ve bu, gelecekteki Spark sürümlerinde değişebilir.
+    * Bölümlendirme ile çalışmaz ve bu, gelecekteki Spark sürümlerinde değişebilir.
 
 * Depolama düzeyi önbelleğe alma (önerilir)
     * , [Alluxıo](https://www.alluxio.org/)kullanılarak uygulanabilir.
     * Bellek içi ve SSD önbelleği kullanır.
 
 * Yerel olarak (önerilir)
-    * `hdfs://mycluster`Yolun.
+    * `hdfs://mycluster` yolu.
     * SSD önbelleği kullanır.
     * Önbelleğe alınmış veriler, kümeyi sildiğinizde, önbellek yeniden oluşturması gerekmeden kaybedilir.
 
@@ -87,7 +88,7 @@ Spark, verileri belleğe yerleştirerek çalışır, bu nedenle bellek kaynaklar
 
 * Bölümleme stratejinizde veri boyutu, türleri ve dağıtımı için daha küçük veri bölümleri ve hesabı tercih edin.
 * Varsayılan Java serileştirmesi yerine, daha yeni, daha verimli [Kronyo veri serileştirmesini](https://github.com/EsotericSoftware/kryo)göz önünde bulundurun.
-* Batch 'e `spark-submit` göre ayrılan Yarn kullanmayı tercih edin.
+* @No__t-0 ' ı toplu işleme göre ayıracak şekilde YARN kullanmayı tercih edin.
 * Spark yapılandırma ayarlarını izleyin ve ayarlayın.
 
 Başvurunuz için Spark bellek yapısı ve bazı önemli yürütücü belleği parametreleri sonraki görüntüde gösterilmiştir.
@@ -101,8 +102,8 @@ Başvurunuz için Spark bellek yapısı ve bazı önemli yürütücü belleği p
 ' Bellek yetersiz ' iletilerini ele almak için şunu deneyin:
 
 * DAG yönetim karışık Les 'yi gözden geçirin. Harita tarafı reducting, ön bölüm (veya bucketize) kaynaklı verileri azaltarak, tek bir karayı en üst düzeye çıkarın ve gönderilen veri miktarını azaltın.
-* Toplamaları `ReduceByKey` , Pencereleme ve diğer işlevleri sağlayan `GroupByKey`ancak sınırsız bellek sınırına sahip olan sabit bellek sınırı ile tercih edilir.
-* Yürüticilere veya bölümlerle `TreeReduce` `Reduce`üzerinde daha fazla çalışmayı, yani sürücü üzerinde çalışmayı tercih eder.
+* Toplamaları, Pencereleme ve diğer işlevleri sağlayan ancak sınırsız bellek sınırına sahip olan `GroupByKey` ' e kadar `ReduceByKey` ' ı tercih edin.
+* @No__t-0 ' ı tercih eder ve bölümler üzerinde daha fazla iş yapar, bu da sürücüde çalışan tüm işleri `Reduce` ' dir.
 * Alt düzey RDD nesneleri yerine veri çerçevelerinden yararlanın.
 * "Ilk N", çeşitli toplamalar veya Pencereleme işlemleri gibi eylemleri kapsülleyen Karmaşıktürler oluşturun.
 
@@ -127,13 +128,13 @@ Bölümleme ve demetlenmesidir 'ı aynı anda kullanabilirsiniz.
 
 ## <a name="optimize-joins-and-shuffles"></a>Birleştirmeleri ve karışık yerleri iyileştirme
 
-Bir JOIN veya karıştırma üzerinde işleriniz yavaşsa, neden büyük olasılıkla iş verilerinizde asymmetry olan *veri eğriliği*olur. Örneğin, bir harita işi 20 saniye sürebilir, ancak verilerin katıldığı veya karıştırılmış bir işi çalıştıralsa da saat sürer.   Veri eğriliğini onarmak için, anahtarın tamamını tam olarak yapmanız gerekir ya da anahtarların yalnızca bir alt kümesi için *yalıtılmış bir anahtar* kullanırsınız.  Yalıtılmış bir güvenlik kullanıyorsanız, eşleme birleştirmelerde sallanan anahtarların alt kümesini yalıtmak için daha fazla filtre uygulamanız gerekir. Diğer bir seçenek de demet sütunu tanıtmak ve öncelikle demetlerde ön toplama işlemi yapmak.
+Bir JOIN veya karıştırma üzerinde işleriniz yavaşsa, neden büyük olasılıkla iş verilerinizde asymmetry olan *veri eğriliği*olur. Örneğin, bir harita işi 20 saniye sürebilir, ancak verilerin katıldığı veya karıştırılmış bir işi çalıştıralsa da saat sürer. Veri eğriliğini onarmak için, anahtarın tamamını tam olarak yapmanız gerekir ya da anahtarların yalnızca bir alt kümesi için *yalıtılmış bir anahtar* kullanırsınız. Yalıtılmış bir güvenlik kullanıyorsanız, eşleme birleştirmelerde sallanan anahtarların alt kümesini yalıtmak için daha fazla filtre uygulamanız gerekir. Diğer bir seçenek de demet sütunu tanıtmak ve öncelikle demetlerde ön toplama işlemi yapmak.
 
-Yavaş birleştirmelere neden olan başka bir faktör birleştirme türü olabilir. Spark, varsayılan olarak, `SortMerge` JOIN türünü kullanır. Bu tür bir birleştirme, büyük veri kümeleri için idealdir, ancak bunları birleştirmeden önce verilerin sol ve sağ tarafını sıralacağından hesaplama açısından pahalıdır.
+Yavaş birleştirmelere neden olan başka bir faktör birleştirme türü olabilir. Spark, varsayılan olarak `SortMerge` JOIN türünü kullanır. Bu tür bir birleştirme, büyük veri kümeleri için idealdir, ancak bunları birleştirmeden önce verilerin sol ve sağ tarafını sıralacağından hesaplama açısından pahalıdır.
 
-Bir `Broadcast` JOIN, daha küçük veri kümeleri için en uygun seçenektir veya birleştirmenin bir tarafı diğer taraftan çok daha küçüktür. Bu tür bir JOIN, tüm yürüticilerine bir taraf yayınlar ve bu nedenle genel olarak yayınlar için daha fazla bellek gerektirir.
+@No__t-0 birleştirmesi, daha küçük veri kümeleri için en uygun seçenektir veya birleştirmenin bir tarafı diğer taraftan çok daha küçüktür. Bu tür bir JOIN, tüm yürüticilerine bir taraf yayınlar ve bu nedenle genel olarak yayınlar için daha fazla bellek gerektirir.
 
-Ayarları `spark.sql.autoBroadcastJoinThreshold`yaparak yapılandırmanızda JOIN türünü değiştirebilir veya dataframe API 'lerini (`dataframe.join(broadcast(df2))`) kullanarak bir JOIN ipucu ayarlayabilirsiniz.
+@No__t-0 ayarlayarak yapılandırmanızda JOIN türünü değiştirebilir veya DataFrame API 'Lerini (`dataframe.join(broadcast(df2))`) kullanarak bir JOIN ipucu ayarlayabilirsiniz.
 
 ```scala
 // Option 1
@@ -144,14 +145,15 @@ val df1 = spark.table("FactTableA")
 val df2 = spark.table("dimMP")
 df1.join(broadcast(df2), Seq("PK")).
     createOrReplaceTempView("V_JOIN")
+
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Buckelenmiş tablolar kullanıyorsanız, `Merge` birleşimi üçüncü bir birleşme türüne sahip olursunuz. Doğru bir önceden bölümlenmiş ve önceden sıralanmış veri kümesi, bir `SortMerge` birleşimden pahalı sıralama aşamasını atlar.
+Buckelenmiş tablolar kullanıyorsanız, `Merge` birleşimi üçüncü bir birleşme türüne sahip olursunuz. Doğru bir önceden bölümlenmiş ve önceden sıralanmış veri kümesi, `SortMerge` JOIN öğesinden pahalı sıralama aşamasını atlar.
 
 Birleştirme sırası, özellikle daha karmaşık sorgularda önemlidir. En seçmeli birleştirmelere başlayın. Ayrıca, mümkün olduğunda toplamaların ardından satır sayısını artıran birleştirmeleri taşıyın.
 
-Paralellik 'i yönetmek için, özellikle de Kartezyen birleşimler söz konusu olduğunda iç içe yapılar, Pencereleme ve belki Spark Işinizin bir veya daha fazla adımını atlayabilirsiniz.
+Kartezyen birleştirmeler için paralellik 'i yönetmek üzere iç içe yapılar, Pencereleme ve belki Spark işinizdeki bir veya daha fazla adımı atlayabilirsiniz.
 
 ## <a name="customize-cluster-configuration"></a>Küme yapılandırmasını özelleştirme
 
@@ -159,9 +161,9 @@ Spark kümesi iş yükünüze bağlı olarak, varsayılan olmayan bir Spark yap�
 
 Ayarlayabileceğiniz bazı yaygın parametreler şunlardır:
 
-* `--num-executors`uygun sayıda yürütme sayısını ayarlar.
-* `--executor-cores`Her bir yürütücü için çekirdek sayısını ayarlar. Genellikle, diğer süreçler kullanılabilir belleğin bir kısmını tükettiği için orta ölçekli yürüticiler olmalıdır.
-* `--executor-memory`YARN üzerindeki yığın boyutunu denetleyen her bir yürütücü için bellek boyutunu ayarlar. Yürütme ek yükü için bazı bellek bırakmanız gerekir.
+* `--num-executors`, uygun sayıda yürütme sayısını ayarlar.
+* `--executor-cores` her bir yürütücü için çekirdek sayısını ayarlar. Genellikle, diğer süreçler kullanılabilir belleğin bir kısmını tükettiği için orta ölçekli yürüticiler olmalıdır.
+* `--executor-memory`, YARN üzerindeki yığın boyutunu denetleyen her bir yürütücü için bellek boyutunu ayarlar. Yürütme ek yükü için bazı bellek bırakmanız gerekir.
 
 ### <a name="select-the-correct-executor-size"></a>Doğru yürütücü boyutunu seçin
 
@@ -175,23 +177,23 @@ Yürütücü yapılandırmanıza karar verirken Java çöp toplama (GC) ek yük�
     1. Yürüticileri arasındaki iletişim yükünü azaltın.
     2. Daha büyük kümelerdeki (> 100 yürütme) yürüticileri (N2) arasındaki açık bağlantı sayısını azaltın.
     3. Bellek kullanımı yoğun görevlere uyum sağlamak için yığın boyutunu artırın.
-    4. İsteğe bağlı: Yürütücü başına bellek ek yükünü azaltın.
-    5. İsteğe bağlı: Aşırı abone olma CPU 'SU ile kullanımı ve eşzamanlılık düzeyini artırın.
+    4. İsteğe bağlı: yürütücü başına bellek ek yükünü azaltın.
+    5. İsteğe bağlı: CPU 'YU aşırı abone yaparak kullanımı ve eşzamanlılık düzeyini artırın.
 
 Yürütücü boyutunu seçerken bir Thumb genel kuralı olarak:
-    
+
 1. Yürütücü başına 30 GB ile başlayın ve kullanılabilir makine çekirdeğini dağıtın.
 2. Daha büyük kümeler (> 100 yürüticileri) için Yürütücü çekirdekleri sayısını artırın.
-3. Deneme çalışmalarındaki ve GC yükü gibi önceki faktörlere göre boyutları artırın veya azaltın.
+3. Hem deneme çalışmalarından hem de GC yükü gibi önceki faktörlere göre boyut boyutunu değiştirin.
 
 Eşzamanlı sorgular çalıştırılırken şunları göz önünde bulundurun:
 
 1. Yürütücü başına 30 GB ve tüm makine çekirdekleri ile başlayın.
 2. Daha fazla sayıda paralel Spark uygulaması oluşturun (% 30 ' dan fazla gecikme geliştirmesi).
 3. Sorguları paralel uygulamalar arasında dağıtın.
-4. Deneme çalışmalarındaki ve GC yükü gibi önceki faktörlere göre boyutları artırın veya azaltın.
+4. Hem deneme çalışmalarından hem de GC yükü gibi önceki faktörlere göre boyut boyutunu değiştirin.
 
-Zaman çizelgesi görünümüne, SQL grafiğine, iş istatistiklerine vb. bakarak, aykırı değerler veya diğer performans sorunları için sorgu performansınızı izleyin. Bazen yürüticilerinin biri veya birkaçı diğerlerinden daha yavaştır ve görevlerin yürütülmesi çok daha uzun sürer. Bu çoğunlukla daha büyük kümelerde (> 30 düğüm) oluşur. Bu durumda, Scheduler 'ın yavaş görevleri dengeyapabilmesi için çalışmayı daha fazla sayıda göreve bölün. Örneğin, uygulamadaki yürütücü çekirdekleri sayısı kadar en az iki görev vardır. Ayrıca, ile `conf: spark.speculation = true`görevlerin yansımalı yürütülmesini de etkinleştirebilirsiniz.
+Zaman çizelgesi görünümüne, SQL grafiğine, iş istatistiklerine vb. bakarak, aykırı değerler veya diğer performans sorunları için sorgu performansınızı izleyin. Bazen yürüticilerinin biri veya birkaçı diğerlerinden daha yavaştır ve görevlerin yürütülmesi çok daha uzun sürer. Bu çoğunlukla daha büyük kümelerde (> 30 düğüm) oluşur. Bu durumda, Scheduler 'ın yavaş görevleri dengeyapabilmesi için çalışmayı daha fazla sayıda göreve bölün. Örneğin, uygulamadaki yürütücü çekirdekleri sayısı kadar en az iki görev vardır. Ayrıca, `conf: spark.speculation = true` ile görevlerin yansımalı yürütülmesini de etkinleştirebilirsiniz.
 
 ## <a name="optimize-job-execution"></a>İş yürütmeyi iyileştirme
 
@@ -204,7 +206,7 @@ Performans sorunları için çalışan işlerinizi düzenli olarak izleyin. Beli
 * [INTEL PAL aracı](https://github.com/intel-hadoop/PAT) CPU, depolama ve ağ bant genişliği kullanımını izler.
 * [Oracle Java 8 görev denetimi](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profilleri Spark ve yürütücü kodu.
 
-Spark 2. x sorgu performansına yönelik anahtar, tam aşamalı kod oluşturmaya bağlı olan tungsten altyapısıdır. Bazı durumlarda, tam aşama kod üretimi devre dışı bırakılabilir. Örneğin, toplama ifadesinde kesilebilir olmayan bir tür (`string`) kullanırsanız, `SortAggregate` yerine `HashAggregate`görünür. Örneğin, daha iyi performans için aşağıdakileri deneyin ve kod oluşturmayı yeniden etkinleştirin:
+Spark 2. x sorgu performansına yönelik anahtar, tam aşamalı kod oluşturmaya bağlı olan tungsten altyapısıdır. Bazı durumlarda, tam aşama kod üretimi devre dışı bırakılabilir. Örneğin, toplama ifadesinde kesilebilir olmayan bir tür (`string`) kullanırsanız, `HashAggregate` yerine `SortAggregate` görüntülenir. Örneğin, daha iyi performans için aşağıdakileri deneyin ve kod oluşturmayı yeniden etkinleştirin:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
@@ -212,7 +214,7 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure HDInsight üzerinde çalışan Apache Spark işlerinin hatasını ayıklama](apache-spark-job-debugging.md)
+* [Azure HDInsight üzerinde çalışan hata ayıklama Apache Spark işleri](apache-spark-job-debugging.md)
 * [HDInsight üzerinde Apache Spark kümesi için kaynakları yönetme](apache-spark-resource-manager.md)
 * [Uzak işleri bir Apache Spark kümesine göndermek için Apache Spark REST API kullanma](apache-spark-livy-rest-interface.md)
 * [Apache Spark ayarlama](https://spark.apache.org/docs/latest/tuning.html)
