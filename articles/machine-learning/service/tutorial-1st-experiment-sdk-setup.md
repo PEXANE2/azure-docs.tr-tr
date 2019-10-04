@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: İlk ML denemenizi oluşturun: Kurulum'
+title: 'Öğretici: ilk ML denemenize oluşturma: Kurulum'
 titleSuffix: Azure Machine Learning
 description: Bu öğretici serisinde, Jupyıter not defterlerinde çalışan Azure Machine Learning Python SDK 'sını kullanmaya başlamak için uçtan uca adımları tamamlarız.  Birinci bölüm, bir bulut Not defteri sunucu ortamının oluşturulmasını ve denemeleri ve makine öğrenimi modellerinizi yönetmek için bir çalışma alanı oluşturmayı kapsamaktadır.
 services: machine-learning
@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 08/28/2019
-ms.openlocfilehash: 9bc5b9688a8cd568b47fe2dad88d6d007ceca0c4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 09/25/2019
+ms.openlocfilehash: 3bbda22689bb330acc836173162a64b840f1bbd8
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004052"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828043"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama
 
@@ -25,44 +25,65 @@ Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
 > * Sonraki öğreticide kullanmak üzere bir [Azure Machine Learning çalışma alanı](concept-workspace.md) oluşturun.
+> * Öğreticiler Not defterini çalışma alanındaki klasörünüze kopyalayın.
 > * Azure Machine Learning Python SDK yüklü ve önceden yapılandırılmış bir bulut tabanlı Jupyter Not defteri VM 'si oluşturun.
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz SDK 'daki kolayca tüketilen bir nesneye sahiptir. Zaten bir Azure Machine Learning çalışma alanınız varsa, [sonraki bölüme](#azure)atlayın. Aksi takdirde, şimdi bir tane oluşturun.
+Azure Machine Learning çalışma alanı, bulutta makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullandığınız temel bir kaynaktır. Azure aboneliğiniz ve kaynak grubunuz, hizmette kolayca tüketilen bir nesne ile aynı olur. 
+
+Azure kaynaklarınızı yönetmek için Web tabanlı bir konsol olan Azure portal bir çalışma alanı oluşturursunuz. 
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="azure"></a>Bulut Not defteri sunucusu oluşturma
+>[!IMPORTANT] 
+> **Çalışma alanınızı** ve **aboneliğinizi**bir yere göz atın. Denemenizin doğru yerde oluşturulmasını sağlamak için bunlara ihtiyacınız olacaktır. 
+
+
+## <a name="azure"></a>Not defteri klasörünü Kopyala
 
 Bu örnek, bir yüklemeden ücretsiz ve önceden yapılandırılmış bir deneyim için çalışma alanınızdaki bulut Not defteri sunucusunu kullanır. Ortamınız, paketler ve bağımlılıklarınız üzerinde denetim sahibi olmayı tercih ediyorsanız [kendi ortamınızı](how-to-configure-environment.md#local) kullanın.
 
-Jupyıter not defterlerini kullanmaya başlamak için çalışma alanınızdan bir bulut kaynağı oluşturursunuz. Bu kaynak, Azure Machine Learning çalıştırmanız gereken her şey ile önceden yapılandırılmış bulut tabanlı bir Linux sanal makinedir.
+Aşağıdaki deneme kurulumunu tamamlayıp çalışma alanı giriş sayfasında (Önizleme), tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri bilimi senaryoları gerçekleştirmek için Machine Learning araçları 'nı içeren birleştirilmiş bir arabirim olan
 
-1. Çalışma alanınızı [Azure Portal](https://portal.azure.com/)açın.  Portalda çalışma alanınızı bulma konusunda emin değilseniz, bkz. [çalışma alanınızı bulma](how-to-manage-workspace.md#view).
+1. [Çalışma alanı giriş sayfasında](https://ml.azure.com/)oturum açın.
 
-1. Azure portal çalışma alanı sayfanızda, sol taraftaki **Not defteri VM** 'lerini seçin.
+1. Aboneliğinizi ve oluşturduğunuz çalışma alanını seçin.
 
-1. Bir not defteri VM 'si oluşturmak için **+ Yeni** ' yi seçin.
+1. Sol taraftaki **not defterlerini ve dosyaları** seçin.
 
-     ![Yeni VM 'yi seçin](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
+1. **Örnekler** klasörünü açın.
 
-1. VM 'niz için bir ad sağlayın. 
-   + Not defteri sanal makinenizin adı 2 ila 16 karakter arasında olmalıdır. Geçerli karakterler harfler, rakamlar ve-karakterdir.  
-   + Ad ayrıca Azure aboneliğinizde benzersiz olmalıdır.
+1. **Öğreticiler** klasörünün sağ tarafındaki **"..."** öğesini seçin ve ardından **Kopyala**' yı seçin.
 
-1. Ardından **Oluştur**’u seçin. SANAL makinenizin ayarlanması biraz zaman alabilir.
+    ![Klasörü kopyala](media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
 
-1. Durum **çalışıyor**olarak değişene kadar bekleyin.
-   VM 'niz çalıştıktan sonra, Jupyter Web arabirimini başlatmak için **Not defteri VM 'leri** bölümünü kullanın.
+1. Çalışma alanına erişen her kullanıcı için bir klasör görüntülenir.  **Eğitim** klasörünü kopyalamak için klasörünüzü seçin.
 
-1. VM 'niz için **URI** sütununda **Jupyıter** ' ı seçin.
+## <a name="a-nameopenselect-a-vm-to-run-the-notebook"></a><a name="open"> Not defterini çalıştırmak için bir VM seçin
 
-    ![Jupyter Not defteri sunucusunu başlatma](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+1. **Kullanıcı dosyaları** altında klasörünüzü açın ve kopyalanan **öğreticiler** klasörünü açın.
 
-   Bağlantı, Not defteri sunucunuzu başlatır ve yeni bir tarayıcı sekmesinde Jupyter Not defteri Web sayfasını açar.  Bu bağlantı yalnızca VM 'yi oluşturan kişi için çalışır. Çalışma alanının her bir kullanıcısının kendi sanal makinesini oluşturması gerekir.
+    ![Öğreticiler klasörünü aç](media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+
+    > [!IMPORTANT]
+    > Not defterlerini **örnekler** klasöründe görüntüleyebilirsiniz, ancak buradan Not defteri çalıştıramazsınız.  Bir not defteri çalıştırmak için, **Kullanıcı dosyaları** bölümünde Not defterinin kopyalanmış sürümünü çalıştırdığınızdan emin olun.
+    
+1. **Öğreticiler** klasörünüzdeki **öğretici-1-deneme-SDK-eğitme. ipynb** dosyasını seçin.
+
+1. Üstteki çubukta, Not defterini çalıştırmak için kullanılacak bir not defteri sanal makinesi seçin. Bu VM 'Ler Azure Machine Learning çalıştırmanız gereken her şey ile önceden yapılandırılmıştır. Çalışma alanınızın herhangi bir kullanıcısı tarafından oluşturulan bir VM 'yi seçebilirsiniz. 
+
+1. VM bulunamazsa, sanal makineyi oluşturmak için **+ yenı VM** ' yi seçin.
+
+    ![VM oluşturma](media/tutorial-1st-experiment-sdk-setup/no-vm.png)
+
+    1. Bir VM oluşturduğunuzda, bir ad sağlayın.  Ad, 2 ila 16 karakter arasında olmalıdır. Geçerli karakterler harfler, rakamlar ve-karakterdir ve ayrıca Azure aboneliğinizde benzersiz olmalıdır.
+
+    1. Ardından **Oluştur**’u seçin. VM 'nizi ayarlamak yaklaşık 5 dakika sürebilir.
+
+1. VM kullanılabilir olduktan sonra, üst araç çubuğunda görüntülenir.  Artık Not defterini, araç çubuğunda **Tümünü Çalıştır** ' ı kullanarak veya Not defterinin kod hücrelerinde **SHIFT + enter** ' u kullanarak çalıştırabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -72,10 +93,10 @@ Bu öğreticide, şu görevleri tamamladınız:
 * Azure Machine Learning çalışma alanı oluşturuldu.
 * Çalışma alanınızda bir bulut Not defteri sunucusu oluşturulup yapılandırıldı.
 
-Öğreticinin **ikinci bölümünde** , bir makine öğrenimi modelini eğitebilmeniz `tutorial-1st-experiment-sdk-train.ipynb` için kodu çalıştırırsınız. 
+Öğreticinin **ikinci bölümünde** , Machine Learning modelini eğitmek için `tutorial-1st-experiment-sdk-train.ipynb` ' deki kodu çalıştırırsınız. 
 
 > [!div class="nextstepaction"]
-> [Öğretici: İlk modelinizi eğitme](tutorial-1st-experiment-sdk-train.md)
+> [Öğretici: ilk modelinizi eğitme](tutorial-1st-experiment-sdk-train.md)
 
 > [!IMPORTANT]
 > Bu öğreticinin veya diğer öğreticilerin 2. bölümünü planlamıyorsanız, maliyeti azaltmak için kullanmadığınız durumlarda [bulut Not defteri sunucu VM 'sini durdurmanız](tutorial-1st-experiment-sdk-train.md#clean-up-resources) gerekir.

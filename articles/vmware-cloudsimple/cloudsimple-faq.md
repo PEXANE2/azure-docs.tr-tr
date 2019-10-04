@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d1cbca20b9f1ee1d5f7eefb760ed60fa4d019050
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972836"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828928"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple ile VMware çözümü hakkında sık sorulan sorular
 
@@ -29,11 +29,11 @@ CloudSimple özel bulutu, Azure konumlarında Microsoft Azure altyapısına (don
 
 **CloudSimple hizmeti nerede kullanılabilir?**
 
-CloudSimple, Doğu ABD ve Batı ABD bölgelerinde çok yakında kullanıma sunulacak.
+CloudSimple, çok yakında başka bölgelere sahip Doğu ABD, Batı ABD ve Batı Avrupa bölgelerinde kullanılabilir.
 
 **CloudSimple için aboneliğimi etkinleştirmek Nasıl yaparım? mı?**
 
-Microsoft hesabı temsilcinizle [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) , cloudsimple hizmeti aboneliğinizi etkinleştirmek için ' de başvurabilirsiniz. CloudSimple hizmetinin etkin olmasını istediğiniz e-postada abonelik KIMLIĞINIZI belirtin.  
+Microsoft hesabı temsilcinizle, CloudSimple hizmeti aboneliğinizi etkinleştirmek için [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) ' de başvurabilirsiniz. CloudSimple hizmetinin etkin olmasını istediğiniz e-postada abonelik KIMLIĞINIZI belirtin.  
 
 **CloudSimple portalına erişmek Nasıl yaparım? mı?**
 
@@ -72,7 +72,7 @@ Azure ExpressRoute bağlantı hattı yüksek hızlı, düşük gecikmeli, güven
 
 Ağ çıkışı için CloudSimple ücreti yoktur.  Azure Standart ücretleri, sanal ağınızdan veya şirket içi ExpressRoute bağlantı hattınızdan gelen çıkış trafiği için geçerlidir.
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Networking (Ağ İletişimi)
 
 **Özel bulutum için hangi ağ özellikleri kullanılabilir?**
 
@@ -106,8 +106,9 @@ CloudSimple, özel bulut ortamınızı güvenli hale getirmek için aşağıdaki
 
 CloudSimple şu ana bilgisayar türlerini sunar:
 
-* **CS28 düğümü:** CPU: 2x 2,2 GHz, toplam 28 çekirdek, 48 HT.  RAM: 256 GB.  Depolama: 1600 GB NVMe önbelleği, 5760 GB veri (tümü-Flash). Network 2x25Gbe NIC
-* **CS36 düğümü:** CPU 2x 2,3 GHz, toplam 36 çekirdek, 72 HT.  RAM: 512 GB.  Depolama: 3200 GB NVMe önbellek 11520 GB veri (tümü-Flash).  Network 2x25Gbe NIC
+* **CS28 düğümü:** CPU: 2x 2,2 GHz, toplam 28 çekirdek, 48 HT.  RAM: 256 GB.  Depolama: 1600 GB NVMe önbelleği, 5760 GB veri (tümü-Flash). Ağ: 4x25Gbe NIC
+* **CS36 düğümü:** CPU 2x 2,3 GHz, toplam 36 çekirdek, 72 HT.  RAM: 512 GB.  Depolama: 3200 GB NVMe Cache 11520 GB veri (tümü-Flash).  Ağ: 4x25Gbe NIC
+* **CS36m düğümü:** CPU 2x 2,3 GHz, toplam 36 çekirdek, 72 HT.  RAM: 576 GB.  Depolama: 3200 GB NVMe Cache 13360 GB veri (tümü-Flash).  Ağ: 4x25Gbe NIC
 
 **Donanım hatalarının tümü nasıl işlenir?**
 
@@ -130,7 +131,7 @@ CloudSimple, özel bulutun tüm donanım bileşenlerini sürekli olarak izler.  
 
 **Şirket içinden uygulamalar ve veriler için büyük ölçekli karşıya yükleme veya geçiş Nasıl yaparım? istiyor musunuz?**
 
-CloudSimple, yerel bir VMware vSphere çözümü sağlar.  Toplu veri geçişi için tüm VMware araçları, özel bulutunuz ile kullanılabilir.  Şu seçenekler mevcuttur:
+CloudSimple, yerel bir VMware vSphere çözümü sağlar.  Toplu veri geçişi için tüm VMware araçları, özel bulutunuz ile kullanılabilir.  Seçeneklere şunlar dahildir:
 
 * Verilerin toplu geçirilmesi için VMware HCX.
 * Şirket içinden CloudSimple 'a Depolama vMotion kullanılarak verilerin soğuk geçirilmesi.
@@ -149,7 +150,7 @@ CloudSimple, özel bulutta yüklü uygulamaların yükseltmelerini veya güncell
 
 **Hangi Azure hizmetleri destekleniyor?**
 
-CloudSimple, Azure 'da Aboneliğinize yönelik bir Azure ExpressRoute bağlantısı sağlar.  Aboneliğinizde çalışan tüm hizmetler özel bulutunuzun bağlanmasına izin verebilir.  Örneklere şunlar dahildir:
+CloudSimple, Azure 'da Aboneliğinize yönelik bir Azure ExpressRoute bağlantısı sağlar.  Aboneliğinizde çalışan tüm hizmetler özel bulutunuzun bağlanmasına izin verebilir.  Örneğin:
 
 * CloudSimple vCenter için bir kimlik kaynağı olarak **Azure Active Directory** .
 * Özel bulutunuzun yedeklerini, görüntülerini ve diğer verilerini depolamak için **Azure depolama** .

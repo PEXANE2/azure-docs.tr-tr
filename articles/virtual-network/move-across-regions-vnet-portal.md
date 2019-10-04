@@ -1,51 +1,51 @@
 ---
-title: Azure portal kullanarak Azure sanal ağını başka bir Azure bölgesine taşıyın.
-description: Azure sanal ağını Azure portal kullanarak bir Azure bölgesinden diğerine taşımak için Azure Resource Manager şablonu kullanın.
+title: Azure portal kullanarak bir Azure sanal ağını başka bir Azure bölgesine taşıyın.
+description: Bir Azure sanal ağını bir Azure bölgesinden diğerine, Kaynak Yöneticisi şablonu ve Azure portal kullanarak taşıyın.
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: a09ce7b77dfcaa51e7c82f67a5d20000f3e22b61
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d6f417e53e7d7a1a242a0c0dc56c2356f78f5344
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219998"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828960"
 ---
-# <a name="move-azure-virtual-network-to-another-region-using-the-azure-portal"></a>Azure portal kullanarak Azure sanal ağını başka bir bölgeye taşıma
+# <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Azure portal kullanarak bir Azure sanal ağını başka bir bölgeye taşıma
 
-Mevcut Azure sanal ağlarınızı (VNet) bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, var olan sanal ağınızın sınanması ve kullanılabilirliği için aynı yapılandırmaya sahip bir sanal ağ oluşturmak isteyebilirsiniz. Ayrıca, olağanüstü durum kurtarma planlamasının bir parçası olarak bir üretim sanal ağını başka bir bölgeye taşımak isteyebilirsiniz.
+Mevcut bir Azure sanal ağını bir bölgeden diğerine taşımaya yönelik çeşitli senaryolar vardır. Örneğin, var olan sanal ağınız ile test ve kullanılabilirlik için aynı yapılandırmaya sahip bir sanal ağ oluşturmak isteyebilirsiniz. Ya da bir üretim sanal ağını olağanüstü durum kurtarma planlamanızın bir parçası olarak başka bir bölgeye taşımak isteyebilirsiniz.
 
-Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Resource Manager şablonu kullanabilirsiniz. Bunu, sanal ağı bir şablona vererek, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtarak yapabilirsiniz.  Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz [. hızlı başlangıç: Azure portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
+Sanal ağı başka bir bölgeye taşımayı gerçekleştirmek için bir Azure Resource Manager şablonu kullanabilirsiniz. Bunu, sanal ağı bir şablona vererek, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtarak yapabilirsiniz. Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Azure sanal ağının, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
+- Sanal ağınızın, taşımak istediğiniz Azure bölgesinde olduğundan emin olun.
 
-- Bir sanal ağı dışa aktarmak ve başka bir bölgede bir sanal ağ oluşturmak için şablon dağıtmak için, ağ katılımcısı rolü veya daha yüksek bir sürümü gerekir.
+- Bir sanal ağı dışa aktarmak ve başka bir bölgede bir sanal ağ oluşturmak üzere bir şablon dağıtmak için, ağ katılımcısı rolüne veya daha üst bir sürüme sahip olmanız gerekir.
 
-- Sanal ağ eşlemeleri yeniden oluşturulmaz ve şablonda hala mevcutsa başarısız olur.  Şablonu dışarı aktarmadan önce sanal ağ eşlerini kaldırmalı ve ardından sanal ağ taşıdıktan sonra eşleri yeniden kurmalısınız.
+- Sanal ağ eşlemeleri yeniden oluşturulmayacak ve şablonda hala mevcutsa başarısız olur. Şablonu dışarı aktarmadan önce tüm sanal ağ eşlerini kaldırmanız gerekir. Daha sonra sanal ağ taşıdıktan sonra yeniden kurabilirsiniz.
 
 - Kaynak ağ düzeni ve şu anda kullanmakta olduğunuz tüm kaynakları belirler. Bu düzen, yük dengeleyiciler, ağ güvenlik grupları (NSG 'Ler) ve genel IP 'Leri içerir ancak bunlarla sınırlı değildir.
 
-- Azure aboneliğinizin, kullanılan hedef bölgede sanal ağlar oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı sağlamak için desteğe başvurun.
+- Azure aboneliğinizin hedef bölgede sanal ağlar oluşturmanıza izin verdiğini doğrulayın. Gerekli kotayı etkinleştirmek için desteğe başvurun.
 
-- Aboneliğinizin bu işleme yönelik sanal ağların eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun.  Bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)
+- Aboneliğinizin bu işleme yönelik sanal ağların eklenmesini desteklemek için yeterli kaynağa sahip olduğundan emin olun. Daha fazla bilgi için bkz. [Azure aboneliği ile hizmet limitleri, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
 
 
-## <a name="prepare-and-move"></a>Hazırlama ve taşıma
-Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak taşıma için nasıl hazırlanacağı ve Portal kullanılarak sanal ağın hedef bölgeye taşınması gösterilmektedir.
+## <a name="prepare-for-the-move"></a>Taşıma için hazırlanma
+Bu bölümde, Kaynak Yöneticisi şablonu kullanarak taşıma için sanal ağı hazırlarsınız. Daha sonra Azure portal kullanarak sanal ağı hedef bölgeye taşıyabilirsiniz.
 
-### <a name="export-the-template-and-deploy-from-the-portal"></a>Şablonu dışarı aktarma ve portaldan dağıtma
+Sanal ağı dışa aktarmak ve Azure portal kullanarak hedef sanal ağı dağıtmak için aşağıdakileri yapın:
 
-1. [Azure Portal](https://portal.azure.com) > **kaynak gruplarında**oturum açın.
-2. Kaynak sanal ağı içeren kaynak grubunu bulun ve üzerine tıklayın.
-3. > **Ayarları** > **dışarı aktarma şablonu**' nu seçin.
-4. **Şablonu dışarı aktar** dikey penceresinde **Dağıt** ' ı seçin.
-5. **Şablon** > **düzenleme parametreleri** ' ne tıklayarak **Parameters. JSON** dosyasını çevrimiçi düzenleyicide açın.
-6. Sanal ağ adının parametresini düzenlemek için, **Parametreler**altındaki **değer** özelliğini değiştirin:
+1. [Azure Portal](https://portal.azure.com)oturum açın ve **kaynak grupları**' nı seçin.
+1. Kaynak sanal ağı içeren kaynak grubunu bulun ve ardından seçin.
+1. @No__t **ayarları**seçin-1**şablonu dışarı aktar**.
+1. **Şablonu dışarı aktar** bölmesinde **Dağıt**' ı seçin.
+1. Çevrimiçi Düzenleyicinizde *Parameters. JSON* dosyasını açmak için **şablon** > **parametreleri Düzenle**' yi seçin.
+1. Sanal ağ adının parametresini düzenlemek için, **Parametreler**altındaki **değer** özelliğini değiştirin:
 
     ```json
     {
@@ -58,13 +58,14 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
         }
     }
     ```
-7. Düzenleyicideki kaynak sanal ağ adı değerini hedef VNET için seçtiğiniz bir adla değiştirin. Adı tırnak içine aldığınızdan emin olun.
 
-8.  Düzenleyicide **Kaydet** ' e tıklayın.
+1. Düzenleyicide, düzenleyicideki kaynak sanal ağ adı değerini hedef sanal ağ için istediğiniz bir adla değiştirin. Adı tırnak işaretleri içine aldığınızdan emin olun.
 
-9.  Çevrimiçi düzenleyicide **Template. JSON** dosyasını açmak için **şablon** > **düzenleme** şablonu ' na tıklayın.
+1. Düzenleyicide **Kaydet** ' i seçin.
 
-10. VNET 'in taşınacağı hedef bölgeyi düzenlemek için, çevrimiçi düzenleyicideki **kaynaklar** altındaki **Location** özelliğini değiştirin:
+1. Çevrimiçi düzenleyicide *Template. JSON* dosyasını açmak için **şablon** > **Şablonu Düzenle**' yi seçin.
+
+1. Çevrimiçi düzenleyicide, sanal ağın taşınacağı hedef bölgeyi düzenlemek için **kaynaklar**altındaki **Location** özelliğini değiştirin:
 
     ```json
     "resources": [
@@ -84,11 +85,11 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
 
     ```
 
-11. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/).  Bir bölgenin kodu, alanı olmayan bölge adıdır, **Orta ABD** = **merkezileştirme**.
+1. Bölge konum kodlarını almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). Bölge için kod, boşluk olmadan (örneğin, **Orta ABD** = **merkezileştirme**) bölge adıdır.
 
-12. Ayrıca, isterseniz şablondaki diğer parametreleri değiştirebilir ve gereksinimlerinize bağlı olarak isteğe bağlıdır:
+1. Seçim Gereksinimlerinize bağlı olarak, şablondaki diğer parametreleri de değiştirebilirsiniz:
 
-    * **Adres alanı** -sanal ağın adres alanı, **Resources** > **AddressSpace** bölümü değiştirilerek ve **Template. JSON** dosyasındaki **addresspredüzeltmelerinin** özelliği değiştirilerek kaydedilmeden önce değiştirilebilir:
+    * **Adres alanı**: dosyayı kaydetmeden önce, **kaynak** > **Adresalanı** bölümünü değiştirerek ve **addresspredüzeltmelerinin** özelliğini değiştirerek sanal ağın adres alanını değiştirebilirsiniz:
 
         ```json
                 "resources": [
@@ -108,7 +109,7 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
 
         ```
 
-    * **Alt ağ** -alt ağ adı ve alt ağ adres alanı, **Template. JSON** dosyasının **alt ağlar** bölümü değiştirilerek değiştirilebilir veya öğesine eklenebilir. Alt ağın adı, **ad** özelliğini değiştirerek değiştirilebilir. Alt ağ adres alanı, **Template. JSON** dosyasındaki **addresspredüzeltmesini** özelliğini değiştirerek değiştirilebilir:
+    * **Alt ağ**: şablonun **alt ağlar** bölümünü değiştirerek alt ağ adını ve alt ağ adres alanını değiştirebilir veya ekleyebilirsiniz. **Ad** özelliğini değiştirerek alt ağın adını değiştirebilirsiniz. Ve **Addresspredüzeltmesini** özelliğini değiştirerek alt ağ adres alanını değiştirebilirsiniz:
 
         ```json
                 "subnets": [
@@ -139,7 +140,7 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
                 ]
         ```
 
-         **Şablon. JSON** dosyasında, adres önekini değiştirmek için, yukarıda listelenen bölüm ve aşağıda listelenen **tür** bölümü olmak üzere iki yerde düzenlenmelidir.  **Addresspredüzeltmesini** özelliğini, yukarıdaki bir ile eşleşecek şekilde değiştirin:
+        *Template. JSON* dosyasındaki adres önekini değiştirmek için, bu dosyayı iki yerde düzenleyin: önceki bölümdeki kodda ve aşağıdaki kodun **tür** bölümünde. Aşağıdaki kodda **Addresspredüzeltmesini** özelliğini, önceki bölümdeki koddaki **addresspredüzeltmesini** özelliğiyle eşleşecek şekilde değiştirin.
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -175,32 +176,38 @@ Aşağıdaki adımlarda, sanal ağın bir Kaynak Yöneticisi şablonu kullanarak
          ]
         ```
 
-13. Çevrimiçi düzenleyicide **Kaydet** ' e tıklayın.
+1. Çevrimiçi düzenleyicide **Kaydet**' i seçin.
 
-14. Hedef VNET 'in dağıtılacağı aboneliği seçmek için **temel bilgiler** > **aboneliği** ' ne tıklayın.
+1. Hedef sanal ağın dağıtılacağı aboneliği seçmek için **temel** > **aboneliği**' ni seçin.
 
-15. Hedef VNET 'in dağıtılacağı kaynak grubunu seçmek için **temel bilgiler** > **kaynak grubu** ' na tıklayın.  Hedef sanal ağ için yeni bir kaynak grubu oluşturmak için **Yeni oluştur** ' a tıklayabilirsiniz.  Adın mevcut VNET 'in kaynak kaynak grubuyla aynı olmadığından emin olun.
+1. Hedef sanal ağın dağıtılacağı kaynak grubunu seçmek için **temel** > **kaynak grubu**' nu seçin. 
 
-16. **Temel bilgilerin** >  **, sanal** ağın dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
+    Hedef sanal ağ için yeni bir kaynak grubu oluşturmanız gerekiyorsa, **Yeni oluştur**' u seçin. Adın, var olan sanal ağdaki kaynak kaynak grubu adıyla aynı olmadığından emin olun.
 
-17. **Ayarların** , yukarıdaki parametreler düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.
+1. **Temel** > **konumunun** , sanal ağın dağıtılmasını istediğiniz hedef konuma ayarlandığını doğrulayın.
 
-18. **Hüküm ve koşullar**altındaki kutuyu işaretleyin.
+1. **Ayarlar**' ın altında, ad ' ın daha önce parametreler düzenleyicisinde girdiğiniz adla eşleştiğini doğrulayın.
 
-19. Hedef sanal ağı dağıtmak için **satın al** düğmesine tıklayın.
+1. **Hüküm ve koşullar** onay kutusunu seçin.
 
-## <a name="discard"></a>At
+1. Hedef sanal ağı dağıtmak için **satın al**' ı seçin.
 
-Hedef sanal ağı atmak istiyorsanız hedef sanal ağı içeren kaynak grubunu silin.  Bunu yapmak için, portalda panodaki kaynak grubunu seçin ve genel bakış sayfasının en üstünde **Sil** ' i seçin.
+## <a name="delete-the-target-virtual-network"></a>Hedef sanal ağı silme
+
+Hedef sanal ağı atmak için, hedef sanal ağı içeren kaynak grubunu silersiniz. Bunu yapmak için:
+1. Azure portal panosunda kaynak grubunu seçin.
+1. **Genel bakış** bölmesinin üst kısmında **Sil**' i seçin.
 
 ## <a name="clean-up"></a>Temizleme
 
-Değişiklikleri uygulamak ve sanal ağı taşımayı tamamlamak için kaynak sanal ağını veya kaynak grubunu silin. Bunu yapmak için, portalda panodaki sanal ağı veya kaynak grubunu seçin ve her sayfanın en üstünde **Sil** ' i seçin.
+Değişiklikleri uygulamak ve sanal ağ taşımayı tamamlamak için kaynak sanal ağını veya kaynak grubunu silersiniz. Bunu yapmak için:
+1. Azure portal panosunda, sanal ağ veya kaynak grubunu seçin.
+1. Her bölmenin üst kısmında **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Azure sanal ağını bir bölgeden diğerine taşıdı ve kaynak kaynakları temizledi.  Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz:
+Bu öğreticide, bir Azure sanal ağını Azure portal kullanarak bir bölgeden diğerine taşımış sonra gereksiz kaynak kaynaklarını temizlülüsiniz. Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz.:
 
 
 - [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure VM’lerini başka bir bölgeye taşıma](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Azure sanal makinelerini başka bir bölgeye taşıma](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

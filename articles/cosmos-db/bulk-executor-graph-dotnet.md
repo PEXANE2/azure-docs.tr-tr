@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 127c12b6a36f31f91fdce3700c43e2602a5c0194
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 51bd14c536e46291c8720e6c22e2e03a30243ddf
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624538"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827263"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'de toplu işlemler gerçekleştirmek için Graph toplu yürütücü .NET kitaplığını kullanma
 
@@ -23,7 +23,7 @@ Bir veritabanına Gremlin sorguları göndermenin aksine, komutun değerlendiril
 
 ## <a name="bulk-operations-with-graph-data"></a>Grafik verileriyle toplu işlemler
 
-[Toplu yürütücü kitaplığı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) , grafik nesneleri `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` oluşturma ve içeri aktarma işlevselliği sağlayan bir ad alanı içerir. 
+[Toplu yürütücü kitaplığı](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) , Graph nesneleri oluşturma ve içeri aktarma işlevlerini sağlamak için bir `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` ad alanı içerir. 
 
 Aşağıdaki işlem, veri geçişinin bir Gremlin API kapsayıcısı için nasıl kullanılabileceğini göstermektedir:
 1. Kayıtları veri kaynağından alın.
@@ -73,7 +73,7 @@ catch (Exception e)
 }
 ```
 
-Toplu yürütücü kitaplığının parametreleri hakkında daha fazla bilgi için, [Azure Cosmos DB konusuna yönelik Bulkımportdata](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#bulk-import-data-to-azure-cosmos-db)bölümüne bakın.
+Toplu yürütücü kitaplığının parametreleri hakkında daha fazla bilgi için, [Azure Cosmos DB konusuna yönelik Bulkımportdata](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)bölümüne bakın.
 
 Yükün `GremlinVertex` ve `GremlinEdge` nesnelerinde oluşturulması gerekir. Bu nesneler şu şekilde oluşturulabilir:
 
@@ -131,7 +131,7 @@ Bu depo, aşağıdaki dosyalara sahip olan GraphBulkExecutor örneğini içerir:
 Dosya|Açıklama
 ---|---
 `App.config`|Uygulama ve veritabanına özgü parametreler burada belirtilir. Hedef veritabanına ve koleksiyonlara bağlanmak için bu dosyanın değiştirilmesi gerekir.
-`Program.cs`| Bu dosya, `DocumentClient` koleksiyon oluşturma, temizleme işlemlerini işleme ve toplu yürütücü isteklerini gönderme kavramlarını kapsayan mantığı içerir.
+`Program.cs`| Bu dosya `DocumentClient` toplamayı oluşturma, temizleme işlemlerini işleme ve toplu yürütücü isteklerini gönderme 'nin arkasındaki mantığı içerir.
 `Util.cs`| Bu dosya, test verileri oluşturmaya ek olarak veritabanı ve koleksiyonların var olup olmadığını kontrol eden mantığı içeren yardımcı sınıfı içerir.
 
 `App.config` dosyasında aşağıdaki yapılandırma değerleri sağlanabilir:

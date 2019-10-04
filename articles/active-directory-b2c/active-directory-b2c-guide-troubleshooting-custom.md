@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dee0ef768180057452a232436fc295b36fd756c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4893025b7d54dad1f1da6c5967d3c1dec99b499b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963745"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826920"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Özel ilkelerin ve kimlik deneyimi çerçevesinin Azure AD B2C sorunlarını giderme
 
@@ -39,34 +39,32 @@ XML ilke dosyasının doğrulanması, karşıya yükleme sırasında otomatik ol
 
 Yaygın doğrulama hataları şunları içerir:
 
-> Hata parçacığı:`...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
+> Hata parçacığı: `...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
 
 * ClaimType değeri yanlış yazılmış veya şemada yok olabilir.
 * ClaimType değerlerinin ilkedeki dosyalardan en az birinde tanımlanması gerekir.
     Örneğin, `<ClaimType Id="issuerUserId">`
 * ClaimType, uzantılar dosyasında tanımlıysa, ancak temel dosyadaki bir teknisyen dosyasında kullanılıyorsa, temel dosyayı karşıya yüklemek bir hataya neden olur.
 
-> Hata parçacığı:`...makes a reference to a ClaimsTransformation with id...`
+> Hata parçacığı: `...makes a reference to a ClaimsTransformation with id...`
 
 * Bu hatanın nedenleri, ClaimType hatası ile aynı olabilir.
 
-> Hata parçacığı:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+> Hata parçacığı: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
-* `<TrustFrameworkPolicy\>` Ve`<BasePolicy\>` öğelerindeki tenantıd değerinin hedef Azure AD B2C kiracınızla eşleşip eşleştiğinden emin olun.
+* @No__t-0 ve `<BasePolicy\>` öğelerindeki Tenantıd değerinin hedef Azure AD B2C kiracınızla eşleşip eşleştiğinden emin olun.
 
 ## <a name="troubleshoot-the-runtime"></a>Çalışma zamanının sorunlarını giderme
 
-* **Şimdi Çalıştır** 'ı kullanın `https://jwt.ms` ve ilkelerinizi Web veya mobil uygulamanızdan bağımsız olarak test edin. Bu web sitesi, bağlı olan taraf uygulaması gibi davranır. Azure AD B2C ilkeniz tarafından oluşturulan JSON Web Token (JWT) içeriğini görüntüler. Bir test uygulaması oluşturmak için, Azure Portal **Azure AD B2C** \> **uygulamalara** gidin ve aşağıdaki değerlere sahip bir uygulama ekleyin:
+* **Şimdi Çalıştır** ' a `https://jwt.ms` ' i kullanarak ilkelerinizi Web veya mobil uygulamanızdan bağımsız olarak test edin. Bu web sitesi, bağlı olan taraf uygulaması gibi davranır. Azure AD B2C ilkeniz tarafından oluşturulan JSON Web belirtecinin (JWT) içeriğini görüntüler.
 
-  * **Ad**: TestApp
-  * **Web uygulaması/Web API 'si**: Hayır
-  * **Yerel istemci**: Hayır
+    Belirteç incelemesi için `https://jwt.ms` ' a yeniden yönlendirebileceğinizi bir test uygulaması oluşturmak için:
 
-  Ardından, `https://jwt.ms` **yanıt URL 'si**olarak ekleyin.
+    [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 * İstemci tarayıcınızla Azure AD B2C ileti alışverişi izlemek için [Fiddler](https://www.telerik.com/fiddler)'ı kullanın. Bu, Kullanıcı yolculuğunun düzenleme adımlarınızın başarısız olduğunu belirten bir bildirim almanıza yardımcı olabilir.
 
-* **Geliştirme modunda**, kimlik deneyimi çerçevesi Kullanıcı yolculuğunun etkinliğini izlemek için [Application Insights](active-directory-b2c-troubleshoot-custom.md) kullanın. **Geliştirme modunda**, kimlik deneyimi çerçevesi ile kimlik SAĞLAYıCıLARı, API tabanlı hizmetler, Azure AD B2C kullanıcısı gibi teknik profiller tarafından tanımlanan çeşitli talep sağlayıcıları arasındaki taleplerin değişimini gözlemleyebilirsiniz. Azure Multi-Factor Authentication gibi dizin ve diğer hizmetler.
+* **Geliştirme modunda**, kimlik deneyimi çerçevesi Kullanıcı yolculuğunun etkinliğini izlemek için [Application Insights](active-directory-b2c-troubleshoot-custom.md) kullanın. **Geliştirme modunda**, kimlik deneyimi çerçevesi ile kimlik SAĞLAYıCıLARı, API tabanlı hizmetler, Azure AD B2C kullanıcısı gibi teknik profiller tarafından tanımlanan çeşitli talep sağlayıcıları arasındaki taleplerin değişimini gözlemleyebilirsiniz. Dizin ve Azure Multi-Factor Authentication gibi diğer hizmetler.
 
 ## <a name="recommended-practices"></a>Önerilen uygulamalar
 

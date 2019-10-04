@@ -1,20 +1,20 @@
 ---
-title: Azure dijital TWINS 'de rol atamaları oluşturma ve yönetme | Microsoft Docs
-description: Azure dijital TWINS 'de rol atamaları oluşturun ve yönetin.
+title: Rol atamaları oluşturma ve yönetme-Azure dijital TWINS | Microsoft Docs
+description: Azure dijital TWINS 'de rol atamaları oluşturma ve yönetme hakkında bilgi edinin.
 author: lyrana
 manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.author: lyhughes
 ms.custom: seodec18
-ms.openlocfilehash: 2c43dd7c0700efdd2fbf2f16c57c9c9dc69d3c6b
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 9a9f3398df099eca7d83b38595364956e6b3b76b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703363"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827681"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure dijital TWINS 'de rol atamaları oluşturma ve yönetme
 
@@ -165,8 +165,8 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | Dize |   UserID Objectıdtype için ObjectID. |
 | YOUR_PATH | True | Dize |   Erişimi denetlemek için seçilen yol. |
-| YOUR_ACCESS_TYPE |  True | Dize |   Denetlenecek erişim türü. |
-| YOUR_RESOURCE_TYPE | True | Dize |  Denetlenecek kaynak. |
+| YOUR_ACCESS_TYPE |  True | Dize |   *Okuma*, *oluşturma*, *güncelleştirme*veya *silme* |
+| YOUR_RESOURCE_TYPE | True | Dize |  *Cihaz*, *deviceblobmetadata*, *deviceextendedproperty*, *extendedpropertykey*, *ExtendedType*, *uç nokta*, *keystore*, *Matcher*, *ontology*, *Report*,  *RoleDefinition*, *algılayıcı*, *sensorextendedproperty*, *Space*, *spaceblobmetadata*, *spaceextendedproperty*, *SpaceResource*, *spaceroleatama*, *sistem* , *Uerdefinedfunction*, *User*, *Userblobmetadata*veya *userextendedproperty* |
 
 Başarılı bir istek, belirtilen yol ve kaynak için erişim türünün kullanıcıya atanıp atanmadığını göstermek için bir Boole `true` veya `false` döndürür.
 
@@ -198,7 +198,7 @@ Başarılı bir istek, seçili **yol** parametresiyle ilişkili her bir rol atam
 
 ### <a name="revoke-a-permission"></a>Bir izni iptal etme
 
-Bir alıcıdan bir izinleri iptal etmek için, kimliği doğrulanmış bir HTTP SILME isteği yaparak rol atamasını silin:
+Bir alıcıdan bir izni iptal etmek için, kimliği doğrulanmış bir HTTP SILME isteği yaparak rol atamasını silin:
 
 ```plaintext
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID

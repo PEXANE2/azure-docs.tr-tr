@@ -12,22 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 9/25/2019
+ms.date: 10/02/2019
 ms.author: b-juche
-ms.openlocfilehash: 3d34caba9512dc0c0b20cf10476f5c38a2fab8ce
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299660"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827501"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
-Azure NetApp Files NFS ve SMBv3 birimlerini destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. Bu makalede, SMBv3 birimi oluşturma konusu gösterilmektedir. NFS birimi oluşturmak istiyorsanız, bkz. [Azure NetApp Files IÇIN NFS birimi oluşturma](azure-netapp-files-create-volumes.md). 
+Azure NetApp Files NFS ve SMBv3 birimlerini destekler. Birimin kapasite tüketimi havuzun sağlanan kapasitesine göre sayılır. Bu makalede, SMBv3 birimi oluşturma konusu gösterilmektedir. NFS birimi oluşturmak istiyorsanız, bkz. [Azure NetApp Files IÇIN NFS birimi oluşturma](azure-netapp-files-create-volumes.md). 
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
-Zaten bir kapasite havuzu ayarlamış olmalısınız.   
-[Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md)   
+Zaten bir kapasite havuzu ayarlamış olmanız gerekir.   
+@No__t [Kapasite havuzu ayarlama](azure-netapp-files-set-up-capacity-pool.md)-1  
 Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
 [Azure NetApp Files için bir alt ağ temsilcisi seçme](azure-netapp-files-delegate-subnet.md)
 
@@ -40,7 +40,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 * Uygun bağlantı noktaları geçerli Windows Active Directory (AD) sunucusunda açık olmalıdır.  
     Gerekli bağlantı noktaları aşağıdaki gibidir: 
 
-    |     Hizmet           |     Port     |     Protocol     |
+    |     Hizmet           |     Bağlantı Noktası     |     Protokol     |
     |-----------------------|--------------|------------------|
     |    AD Web Hizmetleri    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
@@ -68,7 +68,11 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     Desteklenen ağ topolojileri için [Azure NetApp Files ağ planlama yönergelerine](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) bakın.
 
-    Ağ güvenlik grupları (NSG 'ler) ve güvenlik duvarları, Active Directory ve DNS trafiği isteklerine izin vermek için uygun şekilde yapılandırılmış kurallara sahip olmalıdır.
+    Ağ güvenlik grupları (NSG 'ler) ve güvenlik duvarları, Active Directory ve DNS trafiği isteklerine izin vermek için uygun şekilde yapılandırılmış kurallara sahip olmalıdır. 
+
+* Azure NetApp Files atanmış alt ağ, tüm yerel ve uzak etki alanı denetleyicileri dahil olmak üzere etki alanındaki tüm Active Directory Domain Services (ekleme) etki alanı denetleyicilerine erişebilmelidir. Aksi takdirde, hizmet kesintisi meydana gelebilir.  
+
+    Azure NetApp Files Temsilcili alt ağ üzerinden erişilemeyen etki alanı denetleyicileriniz varsa, kapsamı **küresel** (varsayılan) olarak **siteye**değiştirmek için bir Azure destek isteği gönderebilirsiniz.  Azure NetApp Files, yalnızca Azure NetApp Files atanmış alt ağ adres alanının bulunduğu sitedeki etki alanı denetleyicileriyle iletişim kurması gerekir.
 
     Bkz. AD siteleri ve hizmetleriyle ilgili [site topolojisini tasarlama](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) . 
 
@@ -82,9 +86,9 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     * **Birincil DNS**  
         Bu, Active Directory etki alanına ekleme ve SMB kimlik doğrulama işlemleri için gereken DNS 'dir. 
-    * **İkincil DNS**   
+    * **IKINCIL DNS**   
         Bu, gereksiz ad hizmetleri sağlamak için ikincil DNS sunucusudur. 
-    * **Etki alanı**  
+    * **Alanını**  
         Bu, birleştirmek istediğiniz Active Directory Domain Services etki alanı adıdır.
     * **SMB sunucusu (bilgisayar hesabı) ön eki**  
         Bu, Azure NetApp Files yeni hesapların oluşturulması için kullanacağı Active Directory makine hesabının adlandırma ön ekidir.
@@ -96,13 +100,13 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     * **Kuruluş birimi yolu**  
         Bu, SMB sunucu makinesi hesaplarının oluşturulacağı kuruluş birimi (OU) için LDAP yoludur. Diğer bir deyişle, OU = ikinci düzey, OU = ilk düzey. 
 
-        Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, kuruluş birimi yolu, NetApp hesabınız için `OU=AADDC Computers` Active Directory yapılandırdığınızda olur.
+        Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, NetApp hesabınız için Active Directory yapılandırdığınızda kuruluş birimi yolu `OU=AADDC Computers` ' dır.
         
     * **Kullanıcı adınız** ve **Parolanız** dahil kimlik bilgileri
 
-    ![Active Directory ekleyin](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
+    ![Active Directory Birleştir](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
 
-3. **Katıl**’a tıklayın.  
+3. **Birleştir**' e tıklayın.  
 
     Oluşturduğunuz Active Directory bağlantı görüntülenir.
 
@@ -114,12 +118,12 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     ![Birimlere git](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
-2. Birim oluşturmak için **+ Birim ekle**'ye tıklayın.  
+2. Birim oluşturmak için **+ Birim Ekle** ' ye tıklayın.  
     Birim oluştur penceresi görüntülenir.
 
 3. Birim Oluştur penceresinde **Oluştur** ' a tıklayın ve aşağıdaki alanlar için bilgi sağlayın:   
     * **Birim adı**      
-        Oluşturmakta olduğunuz birim için ad belirtin.   
+        Oluşturmakta olduğunuz birimin adını belirtin.   
 
         Birim adı her bir kapasite havuzu içinde benzersiz olmalıdır. En az üç karakter uzunluğunda olmalıdır. Herhangi bir alfasayısal karakter kullanabilirsiniz.   
 
@@ -128,10 +132,10 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     * **Kapasite havuzu**  
         Birimin oluşturulmasını istediğiniz kapasite havuzunu belirtin.
 
-    * **Kota**  
-        Birime ayrılmış mantıksal depolama miktarını belirtin.  
+    * **Kotasının**  
+        Birime ayrılan mantıksal depolama miktarını belirtin.  
 
-        **Kullanılabilir kota** alanı, yeni birimi oluştururken kullanabildiğiniz, seçilen kapasite havuzundaki kullanılmamış alan miktarını gösterir. Yeni birimin boyutu kullanılabilir kotayı aşamaz.  
+        **Kullanılabilir kota** alanı, yeni bir birim oluşturmak için kullanabileceğiniz seçili kapasite havuzundaki kullanılmayan alan miktarını gösterir. Yeni birimin boyutu kullanılabilir kotayı aşmamalıdır.  
 
     * **Sanal ağ**  
         Birime erişmek istediğiniz Azure sanal ağını (VNet) belirtin.  
@@ -144,9 +148,9 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
         
         Bir alt ağ temsilcisi yoksa, birim oluştur sayfasında **Yeni oluştur** ' a tıklayabilirsiniz. Sonra alt ağ oluştur sayfasında alt ağ bilgilerini belirtin ve alt ağın Azure NetApp Files için temsilci olarak **Microsoft. NetApp/birimler** ' i seçin. Her VNet 'te Azure NetApp Files için yalnızca bir alt ağ atanabilir.   
  
-        ![Birim oluştur](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
+        ![Birim oluşturma](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
-        ![Alt ağ oluşturma](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+        ![Alt ağ oluştur](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
 4. **Protokol** ' e tıklayın ve aşağıdaki bilgileri doldurun:  
     * Birimin protokol türü olarak **SMB** ' yi seçin. 
@@ -159,7 +163,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
     Oluşturduğunuz birim birimler sayfasında görünür. 
  
-    Birim, kapasite havuzundan aboneliği, kaynak grubunu ve konum özniteliklerini devralır. Birimin dağıtım durumunu izlemek için Bildirimler sekmesini kullanabilirsiniz.
+    Bir birim, kapasite havuzundan abonelik, kaynak grubu ve konum özniteliklerini devralır. Toplu dağıtım durumunu izlemek için bildirimler sekmesini kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

@@ -6,16 +6,16 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
-ms.openlocfilehash: 181176e00595daa307504d4dea7494aefa7f1942
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: e98f8a4becad41d27d89de16f598b6fa531ad5e3
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336698"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827654"
 ---
-# <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
+# <a name="security-best-practices"></a>Güvenlik en iyi uygulamaları
 
 Azure dijital TWINS güvenliği, IoT grafiğinizde belirli kaynaklara ve eylemlere kesin erişim sağlar. Bu, ayrıntılı rol ve [rol tabanlı erişim denetimi](./security-role-based-access-control.md)adlı izin yönetimini kolaylaştırır.
 

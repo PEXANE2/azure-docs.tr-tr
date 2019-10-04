@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 0a718786cc7c72ef4ee9573c3c3e40401c53a315
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308059"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827617"
 ---
-# <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
+# <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: sık sorulan sorular
 
 Bu makalede, [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)'ın nasıl çalıştırılacağı hakkında en yaygın soruların yanıtları sağlanmaktadır.
 
@@ -44,7 +44,7 @@ Daha fazla bilgi için bkz. [HDInsight kümeleri Için kapasite planlaması](htt
 
 Genel kapasite sorunu hataları ve risk azaltma teknikleri Bu bölümde verilmiştir.
 
-#### <a name="error-the-deployment-would-exceed-the-quota-of-800"></a>Hata: Dağıtım ' 800 ' kotasını aşacak
+#### <a name="error-the-deployment-would-exceed-the-quota-of-800"></a>Hata: dağıtım ' 800 ' kotasını aşacak
 
 Azure'da kaynak grubu başına 800 dağıtımlık kota sınırı vardır. Her kaynak grubu, abonelik, hesap veya başka kapsamlar için farklı kotalar uygulanır. Örneğin aboneliğiniz bir bölge için çekirdek sayısını sınırlandıracak şekilde yapılandırılmış olabilir. İzin verilen miktardan daha fazla çekirdeğe sahip bir sanal makineyi dağıtmaya çalışırsanız, kotanın aşıldığını belirten bir hata iletisi alırsınız.
 
@@ -52,7 +52,7 @@ Bu sorunu çözmek için Azure portal, CLı veya PowerShell kullanarak artık ge
 
 Daha fazla bilgi için bkz. [Kaynak kotaları hatalarını düzeltme](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
 
-#### <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Hata: En fazla düğüm, bu bölgedeki kullanılabilir çekirdekleri aştı
+#### <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Hata: en fazla düğüm, bu bölgedeki kullanılabilir çekirdekleri aştı
 
 Aboneliğiniz bir bölge için çekirdek sayısını sınırlandıracak şekilde yapılandırılmış olabilir. İzin verilen miktardan daha fazla çekirdeğe sahip bir kaynak dağıtmaya çalışırsanız, kotanın aşıldığını belirten bir hata iletisi alırsınız.
 
@@ -65,7 +65,7 @@ Kota artırma isteğinde bulunmak için şu adımları izleyin:
 1. **Yeni destek isteği** sayfasının **temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
    
    - **Sorun türü:** **Hizmet ve abonelik sınırlarını (kotalar)** seçin.
-   - **Aboneliğiniz** Değiştirmek istediğiniz aboneliği seçin.
+   - **Abonelik:** Değiştirmek istediğiniz aboneliği seçin.
    - **Kota türü:** **HDInsight**' ı seçin.
 
 Daha fazla bilgi için bkz. [Çekirdeği artırmak için destek bileti oluşturma](hdinsight-capacity-planning.md#quotas).
@@ -84,7 +84,7 @@ Evet. Ek bileşenler yüklemek veya küme yapılandırmasını özelleştirmek i
 
 - Oluşturma sırasında veya sonrasında betikler. Betikler, Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK ' dan kullanabileceğiniz bir yapılandırma seçeneği olan [betik eylemi](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)aracılığıyla çağrılır. Bu yapılandırma seçeneği Azure portal, HDInsight Windows PowerShell cmdlet 'leri veya HDInsight .NET SDK 'dan kullanılabilir.
 
-- `sudo`veya kümeyi sağlamadıktan sonra diğer yöntemler.
+- kümeyi sağlamadıktan sonra 0 veya diğer yöntemler @no__t.
   
 - Ekosistem uygulamalarını yüklemek için [HDInsight uygulama platformu](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) .
 
@@ -114,7 +114,7 @@ Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak 
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Nasıl yaparım?, ambarı 'nda saat dilimini değiştirmek mi istiyorsunuz?
 
-1. Konumundaki https://CLUSTERNAME.azurehdinsight.net ambarı Web Kullanıcı arabirimini açın, burada clustername kümenizin adıdır.
+1. @No__t-0 ' da ambarı Web Kullanıcı arabirimini açın, burada CLUSTERNAME kümenizin adıdır.
 2. Sağ üst köşede Yönetici ' yi seçin | Ayarlar. 
 
    ![Ambarı ayarları](media/hdinsight-faq/ambari-settings.png)
@@ -127,15 +127,15 @@ Hayır, aynı HDInsight kümesinde Apache Kafka ve Apache Spark çalıştırmak 
 
 ### <a name="how-can-i-migrate-from-the-existing-metastore-to-azure-sql-server"></a>Mevcut meta veri deposunu Azure SQL Server nasıl geçirebilirim? 
 
-SQL Server 'den Azure SQL Server 'e geçiş yapmak için bkz [. Öğretici: DMS](../dms/tutorial-sql-server-to-azure-sql.md)kullanarak Azure SQL veritabanı 'nda bulunan tek bir veritabanına veya havuza alınmış bir veritabanına SQL Server geçirin.
+SQL Server 'den Azure SQL Server 'e geçiş yapmak için bkz. [öğretici: Azure SQL veritabanı 'NDA DMS kullanarak SQL Server tek bir veritabanına veya havuza alınmış veritabanına geçirme](../dms/tutorial-sql-server-to-azure-sql.md).
 
 ### <a name="is-the-hive-metastore-deleted-when-the-cluster-is-deleted"></a>Hive meta veri deposu, küme silindiğinde silinir mi?
 
 Bu, kümenizin kullanılmak üzere yapılandırıldığı meta veri deposu türüne bağlıdır.
 
-Varsayılan bir meta veri deposu için: Varsayılan meta veri deposu, küme yaşam döngüsünün bir parçasıdır. Bir kümeyi sildiğinizde, karşılık gelen meta veri deposu ve meta veriler de silinir.
+Varsayılan meta veri deposu için: varsayılan meta veri kümesi, küme yaşam döngüsünün bir parçasıdır. Bir kümeyi sildiğinizde, karşılık gelen meta veri deposu ve meta veriler de silinir.
 
-Özel bir meta veri deposu için: Meta veri deposu yaşam döngüsü bir kümenin yaşam döngüsüne bağlı değildir. Bu nedenle, meta verileri kaybetmeden kümeler oluşturabilir ve silebilirsiniz. Hive şemalarınız gibi meta veriler, HDInsight kümesini silip yeniden oluşturduktan sonra bile devam ettirir.
+Özel bir meta veri deposu için: meta veri deposu yaşam döngüsü bir kümenin yaşam döngüsüne bağlı değildir. Bu nedenle, meta verileri kaybetmeden kümeler oluşturabilir ve silebilirsiniz. Hive şemalarınız gibi meta veriler, HDInsight kümesini silip yeniden oluşturduktan sonra bile devam ettirir.
 
 Daha fazla bilgi için bkz. [Azure HDInsight 'ta dış meta veri depoları kullanma](hdinsight-use-external-metadata-stores.md).
 
@@ -179,7 +179,7 @@ Evet, bir HDInsight kümesiyle aynı alt ağ içinde ek bir sanal makine dağıt
 
 - Kenar düğümleri: [HDInsight 'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma](hdinsight-apps-use-edge-node.md)bölümünde açıklandığı gibi, kümeye başka bir kenar düğümü ekleyebilirsiniz.
 
-- Tek başına düğümler:  Aynı alt ağa tek başına bir sanal makine ekleyebilir ve özel uç noktasını `https://<CLUSTERNAME>-int.azurehdinsight.net`kullanarak bu sanal makineden kümeye erişebilirsiniz. Daha fazla bilgi için bkz. [ağ trafiğini denetleme](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+- Tek başına düğümler: tek başına bir sanal makineyi aynı alt ağa ekleyebilir ve bu sanal makineden kümeye erişim `https://<CLUSTERNAME>-int.azurehdinsight.net` ' ı kullanın. Daha fazla bilgi için bkz. [ağ trafiğini denetleme](hdinsight-plan-virtual-network-deployment.md#networktraffic).
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Var olan bir HDInsight kümesini başka bir sanal ağa ekleyebilir miyim?
 
@@ -193,7 +193,7 @@ Kötü amaçlı yazılımdan koruma hakkında bilgi için bkz. [Azure Cloud Serv
 
 ### <a name="how-do-i-create-a-keytab-for-an-hdinsight-esp-cluster"></a>HDInsight ESP kümesi için bir keytab oluşturmak Nasıl yaparım? misiniz?
 
-Etki alanı kullanıcı adınız için bir Kerberos keytab oluşturun. Daha sonra bu keytab 'ı kullanarak etki alanına katılmış kümelerin parolasını girmeden kimlik doğrulaması yapabilirsiniz. Etki alanı adının büyük harfli olduğunu unutmayın:
+Etki alanı kullanıcı adınız için bir Kerberos keytab oluşturun. Daha sonra bu keytab 'ı kullanarak etki alanına katılmış kümelerin parolasını girmeden kimlik doğrulaması yapabilirsiniz. Etki alanı adı büyük harfli:
 
 ```shell
 ktutil
@@ -290,7 +290,7 @@ Azure Depolama Gezgini kullanarak kullanıcılarınızın güvenlik gruplarına 
 
 Hayır, herhangi bir çalışan düğümünün disk boyutunu artıramıyorum, bu nedenle disk boyutunu artırmanın tek yolu kümeyi bırakıp daha büyük çalışan VM 'lerle yeniden oluşturacak. Kümenizi silerseniz veriler silindiğinden, HDInsight verilerinizi depolamak için bir bu kullanmayın. Bunun yerine, verilerinizi Azure 'da depolayın. Kümenin ölçeğini ölçeklendirmek, HDInsight kümenize daha fazla kapasite de ekleyebilir.
 
-## <a name="edge-nodes"></a>Uç düğümleri
+## <a name="edge-nodes"></a>Kenar düğümleri
 
 ### <a name="can-i-add-an-edge-node-after-the-cluster-has-been-created"></a>Küme oluşturulduktan sonra bir kenar düğümü ekleyebilir miyim?
 
@@ -310,14 +310,14 @@ Kalıcı betikleri, ölçek işlemleri aracılığıyla kümeye eklenen yeni ça
 
 Gerekli bilgileri JSON biçiminde çekmek için aşağıdaki REST uç noktalarını kullanabilirsiniz. İstekleri yapmak için temel kimlik doğrulama üst bilgilerini kullanın.
 
-- Tez sorgu görünümü: *https:\//\<küme adı >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
-- Tez dag görünümü: *https:\//\<küme adı >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
+- Tez Sorgu Görünümü: *https: \/ @ no__t-2 @ no__t-3cluster adı >. azurehdinsight. net/WS/v1/Timeline/HIVE_QUERY_ID/*
+- Tez dag görünümü: *https: \/ @ no__t-2 @ no__t-3cluster adı >. azurehdinsight. net/WS/v1/Timeline/TEZ_DAG_ID/*
 
 ### <a name="how-do-i-retrieve-the-configuration-details-from-hdi-cluster-by-using-an-azure-active-directory-user"></a>Nasıl yaparım? Azure Active Directory Kullanıcı kullanarak HDI kümesinden yapılandırma ayrıntılarını almak istiyor musunuz?
 
 AAD kullanıcılarınız ile uygun kimlik doğrulama belirteçlerini anlaşmak için aşağıdaki biçimi kullanarak ağ geçidine gidin:
 
-* https://`<cluster dnsname>`. azurehdinsight.net/api/v1/Clusters/testclusterdem/stack_versions/1/repository_versions/1 
+* https://`<cluster dnsname>`.azurehdinsight.net/api/v1/clusters/testclusterdem/stack_versions/1/repository_versions/1 
 
 ### <a name="how-do-i-use-ambari-restful-api-to-monitor-yarn-performance"></a>YARN performansını izlemek için Nasıl yaparım? ambarı yeniden oluşturma API 'sini kullanmak mı istiyorsunuz?
 
@@ -352,6 +352,10 @@ Komutu sanal ağ dışından veya eşlenmiş olmayan bir sanal ağdan çağırı
 ### <a name="how-much-does-it-cost-to-deploy-an-hdinsight-cluster"></a>HDInsight kümesini dağıtma maliyeti ne kadar sürer?
 
 Faturalandırma ile ilgili fiyatlandırma ve SSS hakkında daha fazla bilgi için bkz. [Azure HDInsight fiyatlandırma](https://azure.microsoft.com/pricing/details/hdinsight/) sayfası.
+
+### <a name="when-does-hdinsight-billing-start--stop"></a>HDInsight faturalandırma başlangıç & ne zaman duruyor?
+
+HDInsight kümesi faturalandırması küme oluşturulduğunda başlar ve küme silindiğinde sona erer. Faturalandırma, dakika başına eşit olarak derecelendirilmiştir.
 
 ### <a name="how-do-i-cancel-my-subscription"></a>Aboneliğimi iptal Nasıl yaparım? mi?
 

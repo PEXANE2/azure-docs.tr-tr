@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 30751bebd397b378924453987462c9e2b3b55ebf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4b46bc952782fc7c9b56d6f0c049fe17b63d0f2
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803932"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71836439"
 ---
 # <a name="electric-vehicle-routing-using-azure-notebooks-python"></a>Azure Notebooks kullanarak elektrik araç yönlendirmesi (Python)
 
-Azure haritalar, geliştiricilerin, kuruluşların ve ISV 'lerin konuma duyarlı uygulamalar ve IoT, Mobility, lojistik ve varlık izleme çözümleri oluşturmasına olanak sağlayan, Azure ile yerel olarak tümleştirilmiş Jeo-uzamsal hizmet API 'Lerinin bir portföyüdür. Azure haritalar REST API 'Leri, Jeo-uzamsal veri analizi ve makine öğrenimi senaryolarını etkinleştirmek için Python ve R gibi dillerden çağrılabilir. Azure Maps, kullanıcıların araç türü veya ulaşılabilir alan gibi çeşitli koşullara göre çeşitli veri noktaları arasındaki yolları hesaplamasını sağlayan sağlam bir [yönlendirme API]([https://docs.microsoft.com/rest/api/maps/route) 'si kümesi sunar. Bu öğreticide, aracı pil ücreti düşük olan elektrik araç sürücüsüne yardımcı olmak için bir senaryoya kılavuzluk edecek ve sürücü süresine göre olası en iyi doldurma istasyonunu bulacağız.
+Azure haritalar, geliştiricilerin, kuruluşların ve ISV 'lerin konuma duyarlı uygulamalar ve IoT, Mobility, lojistik ve varlık izleme çözümleri oluşturmasına olanak sağlayan, Azure ile yerel olarak tümleştirilmiş Jeo-uzamsal hizmet API 'Lerinin bir portföyüdür. Azure haritalar REST API 'Leri, Jeo-uzamsal veri analizi ve makine öğrenimi senaryolarını etkinleştirmek için Python ve R gibi dillerden çağrılabilir. Azure Maps, kullanıcıların araç türü veya ulaşılabilir alan gibi çeşitli koşullara göre çeşitli veri noktaları arasındaki yolları hesaplamasını sağlayan sağlam bir [yönlendirme API](https://docs.microsoft.com/rest/api/maps/route) 'si kümesi sunar. Bu öğreticide, aracı pil ücreti düşük olan elektrik araç sürücüsüne yardımcı olmak için bir senaryoya kılavuzluk edecek ve sürücü süresine göre olası en iyi doldurma istasyonunu bulacağız.
 
 Bu öğreticide şunları yapmanız gerekir:
 

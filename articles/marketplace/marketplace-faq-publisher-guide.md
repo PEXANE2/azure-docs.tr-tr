@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 9/26/2019
+ms.date: 10/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: abc3b3a6be5f8c61c07fb29a6f168c8738733099
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350392"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827980"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft ticari Market SSS
 
@@ -35,9 +35,9 @@ Azure Marketi, ticari BT yazılımı ve hizmetleriyle ilgilenen BT uzmanları ve
 Azure Market, Azure ürünlerini ve hizmetlerini genişletmek için oluşturulmuş Microsoft ve iş ortaklarının sağladığı teknik çözümleri ve hizmetleri sunar. Çözüm Kataloğu, aşağıdakiler dahil olmak üzere birkaç kategoriyi kapsar, ancak bunlarla sınırlı değildir:
 
 * temel işletim sistemleri
-* databases
+* veritabanları
 * güvenlik
-* identity
+* kimlik
 * ağ iletişimi
 * blok zinciri
 * geliştirici araçları
@@ -49,7 +49,7 @@ Azure Marketi, SaaS uygulamaları, sanal makineler, çözüm şablonları, Azure
 
 **Azure Market ' te kullanmaya başlamak Nasıl yaparım? misiniz?**
 
-Azure [Market](https://azuremarketplace.microsoft.com/marketplace/apps)'i ziyaret ederek Azure 'da çalışmak üzere sertifikalı ve en iyi duruma getirilmiş çok sayıda kurumsal uygulama ve çözüm bulabilirsiniz. [**Kaynak oluşturduğunuzda**](https://portal.azure.com/#create/hub) [Azure Portal] aracılığıyla Azure Market 'e de erişilebilir.
+Azure [Market](https://azuremarketplace.microsoft.com/marketplace/apps)'i ziyaret ederek Azure 'da çalışmak üzere sertifikalı ve en iyi duruma getirilmiş çok sayıda kurumsal uygulama ve çözüm bulabilirsiniz. [**Kaynak oluşturduğunuzda**](https://portal.azure.com/#create/hub) [Azure portalda] aracılığıyla Azure Market 'e de erişilebilir.
 
 **Azure Marketi 'nin başlıca avantajları nelerdir?**
 
@@ -60,11 +60,11 @@ Müşteriler Azure Market ile Azure üzerinde oluşturulmuş veya oluşturulmuş
 Azure Market teklifleri şu şekilde satın alınabilir:
 
 * [Web tabanlı storefront](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Azure Portal] [Azure Portal]
+* [Azure portal][azure portalda]
 * [Azure komut satırı arabirimi (CLı)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
->Ön ödemeli krediler ve diğer parasal taahhüt formları, yazılım lisansı ücretleri için ödeme yapmak üzere kullanılamaz, ancak ilişkili Azure kullanım ücretlerini ödemek için kullanılabilir. Özel durumlar [Azure parasal](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)taahhüdünde listelenmiştir.
+>Ön ödemeli krediler ve diğer parasal taahhüt formları, yazılım lisansı ücretleri için ödeme yapmak üzere kullanılamaz, ancak ilişkili Azure kullanım ücretlerini ödemek için kullanılabilir. Özel durumlar [Azure parasal taahhüdünde](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/)listelenmiştir.
 
 **Azure Marketi satın alımımın dağıtılacağı Azure bölgelerini seçebilir miyim?**
 
@@ -92,7 +92,7 @@ Azure Market, [katılım ilkelerinde](/legal/marketplace/participation-policy)li
 
 **Azure Marketi tarafından hangi para birimleri destekleniyor?**
 
-İşlemler aşağıdaki 17 para birimlerinde çalıştırılabilir: AUD, BRL, CAD, CHF, DKK, EUR, GBP, INR, JBIR, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
+İşlemler şu 17 para biriminde çalıştırılabilir: AUD, BRL, CAD, CHF, DKK, EUR, GBP, ıNR, JBIR, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
 
 ### <a name="deploying-a-solution-from-azure-marketplace"></a>Azure Market’ten çözüm dağıtma
 
@@ -112,7 +112,7 @@ Fiyatlandırma, ürün türü ve yayımcı belirtimlerine göre değişiklik gö
 
 *Paket açılmamış:*
 
-+ *Kendi lisansını getir (KLG) modeli*: Doğrudan yayımcı veya satıcıdan yazılım lisansı edinirken yazılımla ilgili ek ücretler veya ücretler yoktur.
++ *Kendi lisansını getir (KLG) modeli*: doğrudan yayımcı veya satıcıdan yazılım lisansı edinirken, yazılımla ilgili ek ücretler veya ücretler bulunmamaktadır.
 
 *Birlikte*
 
@@ -120,7 +120,7 @@ Azure aboneliği, yayımcının bağımsız yazılım satıcıları (ISV) çöz�
 
 *Şarj*
 
-+ *Süz* Ücretsiz SKU. Yazılım lisansı ücretleri veya teklifin kullanımı için herhangi bir ücret uygulanmaz.
++ *Ücretsiz:* Ücretsiz SKU. Yazılım lisansı ücretleri veya teklifin kullanımı için herhangi bir ücret uygulanmaz.
 
 + *Ücretsiz yazılım denemesi:* Sınırlı bir süre için ücretsiz olan teklif. Deneme süresi boyunca yayımcının yazılım lisansı ücretleri için ücret alınmaz. Süre dolduktan sonra, yayımcı tarafından verilen standart fiyatları temel alarak otomatik olarak ücretli bir teklifine dönüştürür.
 
@@ -130,7 +130,7 @@ Azure aboneliği, yayımcının bağımsız yazılım satıcıları (ISV) çöz�
 
 + *Kullanıcı başına:* SaaS abonelikleri, aylık veya yıllık olarak faturalandırılan Kullanıcı başına esasına göre fiyatlandırılabilirler. 
 
-Önermaya özgü fiyatlandırma ayrıntıları [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) [Azure Portal]çözüm ayrıntıları sayfasında veya içinde bulunabilir.
+[@No__t-1](https://azure.microsoft.com/pricing/) ' deki çözüm ayrıntıları sayfasında veya [Azure portalda]içinde, teklifine özgü fiyatlandırma ayrıntıları bulunabilir.
 
 > [!Note]
 > Aylık ücretler haricinde Azure kullanım ücretleri, aksi belirtilmediği sürece tüm fiyatlandırma modelleriyle geçerli değildir.
@@ -155,7 +155,7 @@ Bunlar, her teklif türü için en yaygın seçeneklerdir:
 
 **Ne tür denemeler destekleniyor?**
 
-Ücretsiz deneme teklifleri, denemeyi başlatmak için eyleme çağrı içeren listelerdir. Bu, müşteriyi, deneme deneyimini ayarlamak için yayımcı tarafından tanımlanan bir Web sitesine yönlendirir. Denemeler, ilk ayın ücretsiz olduğu ücretli tekliflere de eklenebilir. 
+Yayımcılar, ücretli SaaS teklifleri ve VM görüntüleri için bir veya üç aylık tüketim için ücretsiz bir ay ekleyebilir. Ücretsiz deneme teklifleri, denemeyi başlatmak için eyleme çağrı içeren listelerdir. Bu, müşteriyi, deneme deneyimini ayarlamak için yayımcı tarafından tanımlanan bir Web sitesine yönlendirir. Denemeler, ilk ayın ücretsiz olduğu ücretli tekliflere de eklenebilir. 
 
 **Ücretsiz katman dağıtmak veya kendi lisansını getir (KLG) tekliflerinizi getirmek için dosyada bir ödeme aracına (örneğin, kredi kartı) sahip olmanız gerekiyor mu?**
 
@@ -169,6 +169,10 @@ Kurumsal Anlaşma (EA) dolaylı müşterilerin tüm Azure Marketi fiyatlandırma
 
 Evet, Kurumsal Anlaşma (EA) müşterileri için kayıt yöneticisi, kayıt üzerindeki tüm hesapların satın alma ayrıcalıklarını kapatabilir ve satın alma işlemini yapmak için yeterince uzun süre açık bırakabilir. Ayrıca, tüm müşteriler Azure Market kaynakları yönetimi de dahil olmak üzere Azure aboneliklerine yönelik dağıtım seçeneklerini kısıtlamak için Azure Ilkesini kullanabilir.
 
+**Ticari Market satınalmaları için hangi ödeme yöntemleri desteklenir?**
+
+Müşteriler Azure Market 'ten teklifler satın alabilir ve kredi kartları kullanarak Microsoft AppSource. Mevcut bir Azure aboneliğiniz varsa, Azure Marketi 'nden satın alma işlemleri hesapta yapılandırılan ödeme yöntemini kullanır ve ayrı bir satır öğesiyle aynı faturada görüntülenir. Bazı teklifler Azure parasal taahhüdünü tüketir, ancak çoğu ommercial Market satın alma işlemleri, Azure altyapı tüketimine rağmen Kurumsal Anlaşma taahhütlerini çizmez.
+
 **Hesabım halinde Azure abonelik kredileri veya parasal taahhüt fonlarını Azure Market teklifleri doğrultusunda uygulayabilir miyim?**
 
 Belirli Azure Market teklifleri, Azure abonelik kredilerini veya parasal taahhüt fonlarını kullanabilir. Bu programa katılan ürünlerin tüm listesi için bkz. [Azure parasal taahhüt](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) . Bu teklifler KLG veya BYOS seçeneklerini içermez. Diğer tüm Azure Market teklifleri, ücretsiz bir aylık deneme kredisi, aylık MSDN kredileri, Azure promosyonları, parasal taahhüt bakiyeleri ve tarafından sunulan diğer tüm ücretsiz krediler gibi Azure abonelik kredileri veya parasal taahhüt kullanamaz. Mavisi.
@@ -177,17 +181,11 @@ Belirli Azure Market teklifleri, Azure abonelik kredilerini veya parasal taahhü
 
 Hayır. Azure Marketi 'nde çözümlere sahip yayımcı fiyatlandırma ayarlayabilir.  Standart Microsoft toplu lisans indirimleri, Azure Marketi satın alımlarında doğru uygulanmaz.
 
-**Bu abonelikler için Nasıl yaparım? ödeme yapılsın mı? Azure Marketi satın alımlarım Azure faturanızda mi görünüyor, yoksa başka bir fatura mi var?**
-
-MOSP- [Microsoft çevrimiçi abonelik programı](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (örneğin, Web-Direct) müşterileri, Azure abonelik profili için dosyada bulunan kredi kartına göre ücretlendirilir. Dosya üzerinde bir kredi kartınız yoksa, Azure Marketi 'nden satın alabilirsiniz. Bu durumda, Azure ücretlerinizi sizin için faturalandırmanız için özel bir feragat aldığınız aldınız.
-
-Kurumsal Anlaşma (EA) müşterileri EA 'ya göre ücretlendirilir. Burada listelenen belirli Azure Market teklifleri, kullanılabilir parasal taahhütten düşülür ve sonra tek bir üç aylık faturada fazla kullanım olarak faturalandırılır. EA dolaylı, eğitim ve kamu müşterileri lisanslama çözümü sağlayıcısı (LSP) tarafından faturalandırılır.
-
 **Azure Marketi abonelik ayrıntılarımı ve faturalandırma bilgilerini nereden görüntüleyebilirim?**
 
-MOSP- [Microsoft çevrimiçi abonelik programı](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (doğrudan Web) müşterileri Market satın alma ayrıntılarını [Azure Portal]maliyet yönetimi + faturalama bölümünün faturalar sekmesinde görüntüleyebilir.
+MOSP- [Microsoft çevrimiçi abonelik programı](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (doğrudan Web) müşterileri Market satın alma ayrıntılarını [Azure portalda]maliyet yönetimi + faturalama bölümünün faturalar sekmesinde görüntüleyebilir.
 
-Kurumsal Anlaşma (EA) müşterileri, [Azure Portal]maliyet yönetimi + faturalandırma bölümünün faturalar sekmesinde Market satın alma ayrıntılarını görüntüleyebilir.
+Kurumsal Anlaşma (EA) müşterileri, [Azure portalda]maliyet yönetimi + faturalandırma bölümünün faturalar sekmesinde Market satın alma ayrıntılarını görüntüleyebilir.
 
 Bulut çözümü sağlayıcısı (CSP) iş ortakları, müşteriler görünümünde bir şirket seçtikten sonra, Iş Ortağı Merkezi 'nde her bir müşterinin Market satın alma ayrıntılarını sipariş geçmişi sekmesinde görüntüleyebilir.
 
@@ -197,7 +195,7 @@ Eklenti Azure sanal makinesi (VM) ile ilişkili olduğundan, Azure Marketi satı
 
 **Azure Marketi satın alımlarım için ne sıklıkla faturalandırılırım?**
 
-Ana hatlarıyla belirtilen belirli hizmetler için Kurumsal Anlaşma müşterilerin, tüketildikleri ay içinde bu hizmetlerin toplam maliyetiyle bu hizmetlere göre daha düşük olan parasal taahhüt fonları vardır. Parasal taahhütten düşmez tüm Azure Marketi teklifleri, aylık olarak aylık olarak faturalandırılır. Yıllık SaaS abonelikleri, tam yıl Hizmetleri için bir kez faturalandırılır.
+Parasal taahhütten düşmez tüm Azure Marketi teklifleri, aylık olarak aylık olarak faturalandırılır. Yıllık SaaS abonelikleri, tam yıl Hizmetleri için bir kez faturalandırılır.
 
 MOSP- [Microsoft çevrimiçi abonelik programı](https://azure.microsoft.com/support/legal/subscription-agreement/) (doğrudan Web) müşterileri, Azure abonelik profiliyle ilgili dosyadaki aynı kredi kartına göre aylık olarak ücretlendirilir. Yıllık SaaS abonelikleri, tam yıl Hizmetleri için bir kez faturalandırılır.
 
@@ -211,13 +209,9 @@ Azure Marketi 'nden satın alınan diğer hizmetleri bir EA aboneliğine geçirm
 
 *Fiyat* , yazılımı çalıştırmak Için Azure sanal makinesinin maliyetine başvurur. *Yazılım fiyatı* , Azure sanal makinesinde çalışan Market yayımcısının yazılımının maliyetini ifade eder. *Toplam fiyat* , Azure sanal makinesi 'Nin ve Azure sanal makinesi üzerinde çalışan Market yayımcısının yazılımının toplam maliyetini ifade eder.
 
-**Azure Market tekliflerini çalıştırmak için gereken Azure ürün ve hizmetlerine yönelik Azure abonelik kredilerini veya parasal fonları uygulayabilirim miyim?**
-
-Evet. Hesapta yer alan Azure abonelik kredileri veya parasal taahhüt fonları, Azure ürünlerinde ve Azure Market tekliflerinden daha fazla kullanılabilir. Örneğin, Azure parasal taahhüt fonları, Azure Marketi 'nde bir sanal makine teklifinin *Fiyat* bileşenine uygulanabilir. Bununla birlikte, Azure abonelik kredileri ve parasal taahhüt fonları yalnızca bir Azure sanal makinesinde çalışan belirli Market yayımcılarının yazılımlarına (*yazılım fiyatı*) uygulanabilir.
-
 **Azure Market satın alımımın ne kadarının kullandığını öğrenmek Nasıl yaparım??**
 
-Tahmin edilen kullanım bilgileri [Azure Portal]bulunabilir. Bu tahmini kullanım bilgileri, en son etkinlikleri içermeyebilir ve geçmiş tüketiminden türetilmiş projeksiyonları temel alabilir. Genel Önizleme sırasında, bu özellik tüm satın alımlarda kullanılamayabilir ve ürün türüne göre değişiklik gösterebilir.
+Tahmin edilen kullanım bilgileri [Azure portalda]bulunabilir. Bu tahmini kullanım bilgileri, en son etkinlikleri içermeyebilir ve geçmiş tüketiminden türetilmiş projeksiyonları temel alabilir. Genel Önizleme sırasında, bu özellik tüm satın alımlarda kullanılamayabilir ve ürün türüne göre değişiklik gösterebilir.
 
 ### <a name="customer-support"></a>Müşteri desteği
 
@@ -344,7 +338,7 @@ Müşteri adayları, ürünlerinizi Market 'ten dağıtan müşterilerdir. Ürü
 
 **Lider hedefini ayarlama konusunda nereden yardım alabilirim?**
 
-Bulut iş ortağı portalı hakkında daha fazla bilgi edinin. [müşteri adaylarını alma belgelerini alın](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) veya teklif türü ve [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) müşteri adayı yönetiğinizi seçerek bir destek bileti gönderebilirsiniz.
+Bulut İş Ortağı Portalı hakkında daha fazla bilgi edinin. [müşteri adaylarını alma belgelerini alın](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) veya teklif türü ve müşteri adayı yönetiğinizi seçerek [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) aracılığıyla bir destek bileti gönderebilirsiniz.
 
 **Market 'teki bir teklifi yayımlamak için bir müşteri adayı hedefi yapılandırmak istiyorum mu?**
 
@@ -356,7 +350,7 @@ Teklifi tamamladıktan ve bir müşteri adayı hedefi ayarladıktan sonra, liste
 
 **Azure Marketi hangi ülkelerde/bölgelerde Satım için kullanılabilir?**
 
-Şu ülkelerde/bölgelerde bulunan yayımcılar şu anda Azure Marketi 'nde satıtabilecekleri: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Belarus, Belçika, Benin, Bolivya, Bosna Kamerun, Kanada, Orta Afrika Cumhuriyeti, Chad, Şili, Kolombiya, Komorolar, Kongo, Kongo (KDC), Kosta Rika, Fildişi Sahili, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Dominika, Dominik Cumhuriyeti, Ekvador, Mısır, El Salvador, Eritre, Estonya, Etiyopya, Adaları, Finlandiya, Fransa, Georgia, Almanya, Ghana, Yunanistan, Litvanya, Gine, Haiti, Honduras, Hong Kong ÖIB, Macaristan, Izlanda, Hindistan, Endonezya, Irak, Irlanda, Hindistan, Endonezya, Irak, Irlanda, Israil, Kazakistan, Gürcistan IKA, Japonya, Ürdün, Kazakistan, Kenya, Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberia, Liechtenstein, Litvanya, Lüksemburg, Madagaskar, Malavi, Malezya, mali, Malta, Mauritius, Meksika, Monako, Moğolistan, Karadağ, Fas, Mozambik, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz, Qtor, Romanya, Rusya, Ruanda, Suudi Arabistan, Senegal, Sırbistan, Sierra Taone, Singapur, Slovakya, Slovenya, Somalia, Güney Afrika, Ispanya, Sri Lanka, Isveç, Isviçre, Tacikistan, Tanzanya, Tayland, Timor-Leste, Togo, Tonga, Trinidad ve Tobago, Tunus, Türkiye, Türkmenistan, Uganda, Ukrayna, Birleşik Arap Emirlikleri, Birleşik Krallık, Birleşik Devletler, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya ve Zimbabve.
+Şu ülkelerde/bölgelerde yer alarak bulunan yayımcılar şu anda Azure Marketi 'nde satıbiliyor: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Belarus, Belçika, Benin, Bolivya, Bosna Hersek, Botsvana, Brezilya, Bulgaristan, Burkina Faso, Burundi, Kamboçya, Kamerun, Kanada, Orta Afrika Cumhuriyeti, Chad, Şili, Kolombiya, Komorolar, Kongo, Kongo (KDC), Kosta Rika, Fildişi Sahili, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Dominik, Dominik Cumhuriyeti, Ekvador, Mısır, El Salvador, Eritre, Estonya, Etiyopya, Fiji Adaları, Finlandiya, Fransa, Georgia, Almanya, Ghana, Yunanistan, Guatemala, Gine, Haiti, Honduras, Hong Kong ÖIB, Macaristan, Izlanda, Hindistan, Endonezya, Irak, İrlanda, Israil, Italya, Jamaika, Japonya, Ürdün, Kazakistan, Kenya, Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberia, Liechtenstein, Litvanya, Lüksemburg, Madagaskar, Malavi, Malezya, mali, Malta, Mauritius, Meksika, Monako, Moğolistan, Karadağ, Fas, Mozambik, Nepal, Hollanda, Yeni Zelanda, Nikaragua, Nijer, Nijerya, Norveç, Umman, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz Slovakya, Slovenya, Vamalia, Güney Afrika, Ispanya, Sri Lanka, Isveç, Isviçre, Tacikistan, Tanzanya, bir Tayland, Timor-Leste, Togo, Tonga, Trinidad ve Tobago, Tunus, Türkiye, Türkmenistan, Uganda, Ukrayna, Birleşik Arap, Birleşik Krallık, Birleşik Durumlar, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya ve Zimbabve.
 
 **Nasıl yaparım? Azure Marketi 'nden bir listeyi silmek mi istiyorsunuz?**
 
@@ -381,7 +375,7 @@ Daha fazla bilgi için bkz. [bir teklifi silme](./cloud-partner-portal/manage-of
 
 *O365 uygulamaları:*
 
-1.  <https://sellerdashboard.microsoft.com> Geliştirme hesabınızla oturum açın.
+1.  Geliştirme hesabınızla <https://sellerdashboard.microsoft.com> ' da oturum açın.
 1.  Eklentiyi geri çekme.
 
     > [!NOTE]
@@ -389,7 +383,7 @@ Daha fazla bilgi için bkz. [bir teklifi silme](./cloud-partner-portal/manage-of
 
 *Power BI uygulamalar:*
 
-İrtibata [Anjana Sompur (slalom danışmanlık LLC)](mailto:v-ansomp@microsoft.com).
+İletişim: [Anjana Sompur (slalom danışmanlık LLC)](mailto:v-ansomp@microsoft.com).
 
 ### <a name="benefits-and-go-to-market-gtm-resources"></a>Avantajlar ve pazara sunma (GTM) kaynakları
 
@@ -401,7 +395,7 @@ GTM avantajlarımızla ilgili daha fazla bilgi edinmek ve Market 'te işletmeniz
 
 **Azure Market çözümleri Microsoft Web özellikleri 'nde nerede yükseltilir?**
 
-Azure Market çözümleri, Microsoft [Azure Portal]ve [Azure Market web sitesinde](https://azuremarketplace.microsoft.com/marketplace/)bulunabilir. Azure kullanan bulut geliştiricileri ve BT profesyonelleri, her oturum açtıklarında iş ortağı çözümlerini açığa sunmaktır. Ortak çözümlerin bir alt kümesi de [Azure Marketi giriş](https://azuremarketplace.microsoft.com/marketplace) sayfası ve [Azure çözümleri sayfasında](https://azure.microsoft.com/solutions/)de görüntülenir ve döndürülür.
+Azure Market çözümleri, Microsoft [Azure portalda]ve [Azure Market web sitesinde](https://azuremarketplace.microsoft.com/marketplace/)bulunabilir. Azure kullanan bulut geliştiricileri ve BT profesyonelleri, her oturum açtıklarında iş ortağı çözümlerini açığa sunmaktır. Ortak çözümlerin bir alt kümesi de [Azure Marketi giriş](https://azuremarketplace.microsoft.com/marketplace) sayfası ve [Azure çözümleri sayfasında](https://azure.microsoft.com/solutions/)de görüntülenir ve döndürülür.
 
 ### <a name="billing-and-payments"></a>Faturalandırma ve ödemeler
 
@@ -441,7 +435,7 @@ Sık sorulan sorular konusunda güncel kaynak ve belge belgeleri için [Azure Ma
 
     ![Bölgeleri seçin](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 
-1.  Bir liste, satış yapılacak tüm kullanılabilir ülkelerin/bölgelerin açılır.  Bu SKU 'nun kullanılabilir olmasını istediğiniz her ülkenin/bölgenin yanındaki onay kutusuna tıklayın. **Tamam**'ı tıklatın.
+1.  Bir liste, satış yapılacak tüm kullanılabilir ülkelerin/bölgelerin açılır.  Bu SKU 'nun kullanılabilir olmasını istediğiniz her ülkenin/bölgenin yanındaki onay kutusuna tıklayın. **Tamam**’a tıklayın.
 
     ![Ülke/bölge listesi seçin](media/marketplace-publishers-guide/FAQ-select-countries.png)
 
@@ -462,7 +456,7 @@ Azure Marketi, müşterinin fatura adresinde tanımlanan coğrafi bilgisayarlard
 
 **Azure Marketi tarafından hangi para birimleri destekleniyor?**
 
-İşlemler aşağıdaki 17 para birimlerinde çalıştırılabilir: AUD, BRL, CAD, CHF, DKK, EUR, GBP, ıNR, JBIR, KRONW, NOK, NZD, RUB, SEK, TWD ve USD.
+İşlemler şu 17 para birimlerinde çalıştırılabilir: AUD, BRL, CAD, CHF, DKK, EUR, GBP, ıNR, JÇıS, KRONW, NOK, NZD, RUB, SEK, TWD ve ABD Doları.
 
 ### <a name="pricing-and-payment"></a>Fiyatlandırma ve Ödeme
 
@@ -475,4 +469,4 @@ Azure Marketi, müşterinin fatura adresinde tanımlanan coğrafi bilgisayarlard
 [Azure Marketi ve AppSource yayımcı Kılavuzu](/azure/marketplace/marketplace-publishers-guide) sayfasını ziyaret edin.
 
 
-[Azure portal]: https://portal.azure.com
+[Azure portalda]: https://portal.azure.com

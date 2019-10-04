@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 1da5d8aba92ac5cca5f7cdc281e169ce284b202d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 63008de6d29790333764f4dcca27b8dc03cedbdb
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169182"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838188"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Ölçümleri ve günlükleri izlemek için Linux Tanılama uzantısı 'nı kullanın
 
@@ -23,7 +23,7 @@ Bu belgede Linux Tanılama uzantısının sürüm 3,0 ve daha yeni bir sürümü
 > [!IMPORTANT]
 > Sürüm 2,3 ve üzeri hakkında daha fazla bilgi için [Bu belgeye](../linux/classic/diagnostic-extension-v2.md)bakın.
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Linux Tanılama uzantısı, bir kullanıcının Microsoft Azure üzerinde çalışan bir Linux sanal makinesinin sistem durumunu izlemesine yardımcı olur. Aşağıdaki özellikleri içerir:
 
@@ -51,11 +51,11 @@ Bu yükleme yönergeleri ve [indirilebilir bir örnek yapılandırma](https://ra
 
 ### <a name="prerequisites"></a>Önkoşullar
 
-* **Azure Linux Aracısı sürüm 2.2.0 veya üzeri**. Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. VM `/usr/sbin/waagent -version` 'de yüklü sürümü onaylamak için ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) izleyin.
+* **Azure Linux Aracısı sürüm 2.2.0 veya üzeri**. Azure VM Linux Galeri görüntülerinin çoğu, sürüm 2.2.7 veya üstünü içerir. VM 'de yüklü sürümü onaylamak için `/usr/sbin/waagent -version` ' i çalıştırın. VM, Konuk aracısının eski bir sürümünü çalıştırıyorsa, güncelleştirmek için [Bu yönergeleri](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) izleyin.
 * **Azure CLI**. Makinenizde [Azure CLI ortamını ayarlayın](https://docs.microsoft.com/cli/azure/install-azure-cli) .
-* Henüz yoksa wget komutu: `sudo apt-get install wget` öğesini çalıştırın.
+* Wget komutu henüz yoksa: `sudo apt-get install wget` ' ı çalıştırın.
 * Mevcut bir Azure aboneliği ve içindeki mevcut bir depolama hesabı, verileri depolamak için.
-* Desteklenen Linux dağıtımların listesi açık https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
+* Desteklenen Linux dağıtımları listesi https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
 
 ### <a name="sample-installation"></a>Örnek yükleme
 
@@ -111,7 +111,7 @@ Uzantının en son sürümü **3,0**' dir. **Tüm eski sürümler (2. x) kullan�
   * Azure Resource Manager dağıtım modeli VM 'lerinde, VM Dağıtım şablonuna ' "Oto Upgrademinorversion": true ' ekleyin.
 * LAD 3,0 için yeni/farklı bir depolama hesabı kullanın. Sorunlu hesabını paylaşmayı sağlayan LAD 2,3 ile LAD 3,0 arasında birkaç küçük uyumsuzluk vardır:
   * LAD 3,0, syslog olaylarını farklı bir ada sahip bir tabloda depolar.
-  * Ölçümler için `builtin` onay tanımlayıcısı dizeleri lad 3,0 ' de farklılık gösterir.
+  * @No__t-0 ölçümleri için onay tanımlayıcısı dizeleri LAD 3,0 içinde farklılık gösterir.
 
 ## <a name="protected-settings"></a>Korumalı ayarlar
 
@@ -127,11 +127,11 @@ Bu yapılandırma bilgileri kümesi, genel görünümden korunması gereken hass
 }
 ```
 
-Name | Value
+Adı | Değer
 ---- | -----
 storageAccountName | Verilerin uzantı tarafından yazıldığı depolama hesabının adı.
-storageAccountEndPoint | seçim Depolama hesabının bulunduğu bulutu tanımlayan uç nokta. Bu ayar yoksa, LAD varsayılan olarak Azure genel bulutu `https://core.windows.net`'na sahiptir. Azure Almanya, Azure Kamu veya Azure Çin 'de bir depolama hesabı kullanmak için bu değeri uygun şekilde ayarlayın.
-storageAccountSasToken | Ekleme, oluşturma, listeleme, güncelleştirme ve yazma izinleri`ss='bt'`(`sp='acluw'`) veren kapsayıcılar ve nesneler (`srt='co'`) için geçerli olan blob ve tablo Hizmetleri () için bir [Hesap SAS belirteci](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) . Önde gelen soru işareti (? *) eklemeyin.*
+storageAccountEndPoint | seçim Depolama hesabının bulunduğu bulutu tanımlayan uç nokta. Bu ayar yoksa, LAD varsayılan olarak Azure genel bulutuna `https://core.windows.net` ' dır. Azure Almanya, Azure Kamu veya Azure Çin 'de bir depolama hesabı kullanmak için bu değeri uygun şekilde ayarlayın.
+storageAccountSasToken | (@No__t-3) ekleme, oluşturma, listeleme, güncelleştirme ve yazma izinleri veren kapsayıcı ve nesneler (`srt='co'`) için geçerli olan blob ve tablo Hizmetleri (`ss='bt'`) için bir [Hesap SAS belirteci](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) . Önde gelen soru işareti (? *) eklemeyin.*
 mdsdHttpProxy | seçim Uzantının belirtilen depolama hesabına ve uç noktaya bağlanmasını sağlamak için HTTP proxy bilgileri gerekir.
 sinksConfig | seçim Ölçüm ve olayların sunulabilecek alternatif hedeflerin ayrıntıları. Uzantı tarafından desteklenen her bir veri havuzunun belirli ayrıntıları, izleyen bölümlerde ele alınmıştır.
 
@@ -165,12 +165,12 @@ Oluşturulan SAS 'yi storageAccountSasToken alanına kopyalayın; Baştaki soru 
 
 Bu isteğe bağlı bölüm, uzantının topladığı bilgileri gönderdiği ek hedefleri tanımlar. "Sink" dizisi her ek veri havuzu için bir nesne içerir. "Type" özniteliği nesnedeki diğer öznitelikleri belirler.
 
-Öğe | Value
+Öğe | Değer
 ------- | -----
-name | Bu havuza uzantı yapılandırmasında başka bir yerde başvurmak için kullanılan bir dize.
+ad | Bu havuza uzantı yapılandırmasında başka bir yerde başvurmak için kullanılan bir dize.
 type | Tanımlanmakta olan havuz türü. Bu türün örneklerinde diğer değerleri (varsa) belirler.
 
-Linux Tanılama uzantısının 3,0 sürümü iki havuz türünü destekler: EventHub ve JsonBlob.
+Linux Tanılama uzantısının 3,0 sürümü iki havuz türünü destekliyor: EventHub ve JsonBlob.
 
 #### <a name="the-eventhub-sink"></a>EventHub havuzu
 
@@ -187,9 +187,9 @@ Linux Tanılama uzantısının 3,0 sürümü iki havuz türünü destekler: Even
 
 "SasURL" girdisi, verilerin yayımlanması gereken olay hub 'ı için SAS belirteci dahil olmak üzere tam URL 'yi içerir. LAD, gönderme talebini sağlayan bir ilkeyi adlandırma için bir SAS gerektirir. Örnek:
 
-* Adlı bir Event Hubs ad alanı oluşturun`contosohub`
-* Adlı ad alanında bir olay hub 'ı oluşturma`syslogmsgs`
-* Adlı `writer` Olay Hub 'ında, gönderme talebini sağlayan bir paylaşılan erişim ilkesi oluşturun
+* @No__t adlı bir Event Hubs ad alanı oluşturun-0
+* Ad alanında `syslogmsgs` adlı bir olay hub 'ı oluşturma
+* @No__t-0 adlı olay hub 'ında, gönderme talebini sağlayan bir paylaşılan erişim ilkesi oluşturun
 
 1 Ocak 2018 ' de gece yarısı UTC 'ye kadar bir SAS oluşturduysanız, sasURL değeri şu olabilir:
 
@@ -215,7 +215,7 @@ JsonBlob havuzuna yöneltilen veriler, Azure depolama 'daki bloblarda depolanır
 
 ## <a name="public-settings"></a>Ortak ayarlar
 
-Bu yapı, uzantı tarafından toplanan bilgileri denetleyen çeşitli ayarlar bloklarını içerir. Her ayar isteğe bağlıdır. Belirtirseniz `ladCfg`, öğesini de belirtmeniz `StorageAccount`gerekir.
+Bu yapı, uzantı tarafından toplanan bilgileri denetleyen çeşitli ayarlar bloklarını içerir. Her ayar isteğe bağlıdır. @No__t-0 ' ı belirtirseniz, `StorageAccount` ' i de belirtmeniz gerekir.
 
 ```json
 {
@@ -227,14 +227,14 @@ Bu yapı, uzantı tarafından toplanan bilgileri denetleyen çeşitli ayarlar bl
 }
 ```
 
-Öğe | Value
+Öğe | Değer
 ------- | -----
 StorageAccount | Verilerin uzantı tarafından yazıldığı depolama hesabının adı. [Korunan ayarlarda](#protected-settings)belirtilen adla aynı olmalıdır.
 mdsdHttpProxy | seçim [Korumalı ayarlarınızdaki](#protected-settings)gibi. Ayarlanırsa, ortak değer özel değer tarafından geçersiz kılınır. [Korumalı ayarlar](#protected-settings)' da, parola gibi gizli dizi içeren ara sunucu ayarlarını yerleştirin.
 
 Kalan öğeler aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.
 
-### <a name="ladcfg"></a>ladCfg
+### <a name="ladcfg"></a>El cfg
 
 ```json
 "ladCfg": {
@@ -248,14 +248,14 @@ Kalan öğeler aşağıdaki bölümlerde ayrıntılı olarak açıklanmıştır.
 }
 ```
 
-Bu isteğe bağlı yapı, Azure ölçümleri hizmetine ve diğer veri havuzları 'na teslime ilişkin ölçüm ve günlüklerin toplanması için denetim sağlar. Ya da ya da `performanceCounters` `syslogEvents` ikisini birden belirtmeniz gerekir. `metrics` Yapıyı belirtmeniz gerekir.
+Bu isteğe bağlı yapı, Azure ölçümleri hizmetine ve diğer veri havuzları 'na teslime ilişkin ölçüm ve günlüklerin toplanması için denetim sağlar. @No__t-0 veya `syslogEvents` ya da her ikisini de belirtmeniz gerekir. @No__t-0 yapısını belirtmeniz gerekir.
 
-Öğe | Value
+Öğe | Değer
 ------- | -----
-eventVolume | seçim Depolama tablosu içinde oluşturulan bölüm sayısını denetler. `"Large"` ,`"Medium"`, Veya`"Small"`' den biri olmalıdır. Belirtilmemişse, varsayılan değer `"Medium"`.
-Samplerateınseconds | seçim Ham (toplanmayan) ölçümler koleksiyonu arasındaki varsayılan Aralık. Desteklenen en küçük örnek oranı 15 saniyedir. Belirtilmemişse, varsayılan değer `15`.
+eventVolume | seçim Depolama tablosu içinde oluşturulan bölüm sayısını denetler. @No__t-0, `"Medium"` veya `"Small"` ' den biri olmalıdır. Belirtilmemişse, varsayılan değer `"Medium"` ' dır.
+Samplerateınseconds | seçim Ham (toplanmayan) ölçümler koleksiyonu arasındaki varsayılan Aralık. Desteklenen en küçük örnek oranı 15 saniyedir. Belirtilmemişse, varsayılan değer `15` ' dır.
 
-#### <a name="metrics"></a>ölçümler
+#### <a name="metrics"></a>metrics
 
 ```json
 "metrics": {
@@ -267,7 +267,7 @@ Samplerateınseconds | seçim Ham (toplanmayan) ölçümler koleksiyonu arasınd
 }
 ```
 
-Öğe | Value
+Öğe | Değer
 ------- | -----
 resourceId | VM 'nin veya VM 'nin ait olduğu sanal makine ölçek kümesinin Azure Resource Manager kaynak KIMLIĞI. Bu ayar, yapılandırmada bir JsonBlob havuzu kullanılıyorsa da belirtilmelidir.
 scheduledTransferPeriod | Toplam ölçümlerin hesaplanacağı ve Azure ölçümlerine aktarılacağı sıklık, bir 8601 zaman aralığı olarak ifade edilir. En küçük aktarım süresi 60 saniyedir, yani PT1M. En az bir scheduledTransferPeriod belirtmeniz gerekir.
@@ -301,40 +301,40 @@ PerformanceCounters bölümünde belirtilen ölçümlerin örnekleri, her 15 san
 
 Bu isteğe bağlı bölüm, ölçüm koleksiyonunu denetler. Ham örnekler her bir [Scheduledtransferperiod](#metrics) için toplanır ve bu değerleri üretir:
 
-* Ortalama
-* en az
-* en fazla
+* Ortası
+* En düşük
+* çok
 * Son toplanan değer
 * toplamı hesaplamak için kullanılan ham örnek sayısı
 
-Öğe | Value
+Öğe | Değer
 ------- | -----
 yapma | seçim LAD 'nin toplanmış ölçüm sonuçları gönderdiği havuz adlarının virgülle ayrılmış bir listesi. Tüm toplanan ölçümler listelenen her havuza yayımlanır. Bkz. [Sinksconfig](#sinksconfig). Örnek: `"EHsink1, myjsonsink"`.
 type | Ölçümün gerçek sağlayıcısını tanımlar.
-sınıf | "Counter" ile birlikte, sağlayıcının ad alanı içinde belirli ölçümü tanımlar.
+Sınıfı | "Counter" ile birlikte, sağlayıcının ad alanı içinde belirli ölçümü tanımlar.
 counter | "Class" ile birlikte, sağlayıcının ad alanı içinde belirli bir ölçümü tanımlar.
 Onay Belirleyicisi | Azure ölçümleri ad alanı içindeki belirli ölçüyü tanımlar.
-condition | seçim Bir nesnenin geçerli bir örneğini seçer veya bu nesnenin tüm örneklerinde toplamayı seçer. Daha fazla bilgi için bkz `builtin` . Ölçüm tanımları.
+Koşul | seçim Bir nesnenin geçerli bir örneğini seçer veya bu nesnenin tüm örneklerinde toplamayı seçer. Daha fazla bilgi için `builtin` ölçüm tanımlarına bakın.
 Örnekleray | Bu ölçüm için ham örneklerin toplandığı oranı ayarlayan 8601 aralığıdır. Ayarlanmamışsa, koleksiyon aralığı [Samplerateınseconds](#ladcfg)değerine göre ayarlanır. Desteklenen en kısa örnek hızı 15 saniyedir (PT15S).
-birim | Şu dizelerden biri olmalıdır: "Count", "bytes", "saniye", "yüzde", "CountPerSecond", "BytesPerSecond", "milisaniyelik". Ölçüm için birimi tanımlar. Toplanan verilerin tüketicileri, toplanan veri değerlerinin bu birimle eşleşmesini bekler. LAD bu alanı yoksayar.
-displayName | Azure ölçümlerinde bu verilere eklenecek olan etiket (ilişkili yerel ayar tarafından belirtilen dilde). LAD bu alanı yoksayar.
+birim | Şu dizelerden biri olmalıdır: "Count", "bytes", "saniye", "percent", "CountPerSecond", "BytesPerSecond", "milisaniyelik". Ölçüm için birimi tanımlar. Toplanan verilerin tüketicileri, toplanan veri değerlerinin bu birimle eşleşmesini bekler. LAD bu alanı yoksayar.
+DisplayName | Azure ölçümlerinde bu verilere eklenecek olan etiket (ilişkili yerel ayar tarafından belirtilen dilde). LAD bu alanı yoksayar.
 
-Counterbelirleyicisi, rastgele bir tanımlayıcıdır. Ölçüm tüketicileri, Azure portal grafik oluşturma ve uyarı özelliği gibi, ölçüm veya ölçüm örneğini tanımlayan "anahtar" olarak Counterbelirleyicisi kullanın. Ölçümler `builtin` için, ile `/builtin/`başlayan counterbelirleyicisi değerlerini kullanmanızı öneririz. Bir ölçümün belirli bir örneğini topluyorsanız, örneğin tanımlayıcısını Counterıdentifier değerine iliştirmenizi öneririz. Bazı örnekler:
+Counterbelirleyicisi, rastgele bir tanımlayıcıdır. Ölçüm tüketicileri, Azure portal grafik oluşturma ve uyarı özelliği gibi, ölçüm veya ölçüm örneğini tanımlayan "anahtar" olarak Counterbelirleyicisi kullanın. @No__t-0 ölçümleri için, `/builtin/` ile başlayan onay belirticisi değerlerini kullanmanızı öneririz. Bir ölçümün belirli bir örneğini topluyorsanız, örneğin tanımlayıcısını Counterıdentifier değerine iliştirmenizi öneririz. Bazı örnekler:
 
-* `/builtin/Processor/PercentIdleTime`-Tüm vCPU 'larda ortalama boşta geçen süre
+* `/builtin/Processor/PercentIdleTime`-tüm vCPU 'larda ortalama boşta geçen süre
 * `/builtin/Disk/FreeSpace(/mnt)`-/MNT dosya sistemi için boş alan
-* `/builtin/Disk/FreeSpace`-Tüm bağlı dosya sistemleri genelinde ortalama boş alan
+* `/builtin/Disk/FreeSpace`-tüm bağlı dosya sistemleri genelinde ortalama boş alan
 
 Ne de ne de Azure portal, Counterbelirtici değerinin herhangi bir kalıpla eşleşmesini bekler. Onay tanımlayıcısı değerlerini nasıl oluşturabileceğinize göre tutarlı olun.
 
-Belirttiğinizde `performanceCounters`, Lad verileri her zaman Azure Storage 'daki bir tabloya yazar. JSON bloblarına ve/veya Event Hubs yazılmış verilere sahip olabilirsiniz, ancak verileri bir tabloya depolamayı devre dışı bırakabilirsiniz. Aynı depolama hesabı adını ve uç noktasını kullanmak üzere yapılandırılan tanılama uzantısının tüm örnekleri, ölçümlerini ve günlüklerini aynı tabloya ekler. Aynı tablo bölümüne çok fazla sayıda VM yazıyorsanız Azure bu bölüme yazma işlemlerini kısıtlayabilir. EventVolume ayarı, girdilerin 1 (küçük), 10 (orta) veya 100 (büyük) farklı bölümler arasında yayılmasına neden olur. Genellikle trafiğin kısıtlanmadığından emin olmak için "Orta" yeterlidir. Azure portal Azure ölçümleri özelliği, grafik oluşturmak veya uyarıları tetiklemek için bu tablodaki verileri kullanır. Tablo adı, Bu dizelerin bitiştirilmesi:
+@No__t-0 belirttiğinizde, LAD verileri her zaman Azure Storage 'daki bir tabloya yazar. JSON bloblarına ve/veya Event Hubs yazılmış verilere sahip olabilirsiniz, ancak verileri bir tabloya depolamayı devre dışı bırakabilirsiniz. Aynı depolama hesabı adını ve uç noktasını kullanmak üzere yapılandırılan tanılama uzantısının tüm örnekleri, ölçümlerini ve günlüklerini aynı tabloya ekler. Aynı tablo bölümüne çok fazla sayıda VM yazıyorsanız Azure bu bölüme yazma işlemlerini kısıtlayabilir. EventVolume ayarı, girdilerin 1 (küçük), 10 (orta) veya 100 (büyük) farklı bölümler arasında yayılmasına neden olur. Genellikle trafiğin kısıtlanmadığından emin olmak için "Orta" yeterlidir. Azure portal Azure ölçümleri özelliği, grafik oluşturmak veya uyarıları tetiklemek için bu tablodaki verileri kullanır. Tablo adı, Bu dizelerin bitiştirilmesi:
 
 * `WADMetrics`
 * Tabloda depolanan toplanmış değerler için "scheduledTransferPeriod"
 * `P10DV2S`
 * "YYYYMMDD" biçiminde, her 10 günde bir tarih değiştiren bir tarih
 
-Örnekler ve `WADMetricsPT1HP10DV2S20170410` `WADMetricsPT1MP10DV2S20170609`içerir.
+Örnek `WADMetricsPT1HP10DV2S20170410` ve `WADMetricsPT1MP10DV2S20170609` sayılabilir.
 
 #### <a name="syslogevents"></a>syslogEvents
 
@@ -353,18 +353,18 @@ Bu isteğe bağlı bölüm, syslog 'dan gelen günlük olayları koleksiyonunu d
 
 SyslogEventConfiguration koleksiyonunda, ilgilendiğiniz her Syslog özelliği için bir giriş vardır. Bu özellik belirli bir tesis için Minönem derecesi "NONE" ise veya bu tesis öğede görünmüyorsa, bu olandakilerden hiçbir olay yakalanmaz.
 
-Öğe | Value
+Öğe | Değer
 ------- | -----
 yapma | Ayrı günlük olaylarının yayımlandığı havuz adlarının virgülle ayrılmış listesi. SyslogEventConfiguration ' deki kısıtlamalarla eşleşen tüm günlük olayları listelenen her havuza yayımlanır. Örnek: "EHforsyslog"
-facilityName | Syslog tesis adı ("log\_user" veya "log\_LOCAL0" gibi). Tam liste için [Syslog Man sayfasının](http://man7.org/linux/man-pages/man3/syslog.3.html) "tesis" bölümüne bakın.
-Minönem derecesi | Syslog önem derecesi düzeyi ("log\_ERR" veya "log\_Info" gibi). Tam liste için [Syslog Man sayfasının](http://man7.org/linux/man-pages/man3/syslog.3.html) "düzey" bölümüne bakın. Uzantı, belirtilen düzeyin üzerinde veya üzerinde tesise gönderilen olayları yakalar.
+facilityName | Syslog tesis adı (örneğin, "LOG @ no__t-0USER" veya "LOG @ no__t-1LOCAL0"). Tam liste için [Syslog Man sayfasının](http://man7.org/linux/man-pages/man3/syslog.3.html) "tesis" bölümüne bakın.
+Minönem derecesi | Syslog önem derecesi düzeyi ("LOG @ no__t-0ERR" veya "LOG @ no__t-1ıNFO"). Tam liste için [Syslog Man sayfasının](http://man7.org/linux/man-pages/man3/syslog.3.html) "düzey" bölümüne bakın. Uzantı, belirtilen düzeyin üzerinde veya üzerinde tesise gönderilen olayları yakalar.
 
-Belirttiğinizde `syslogEvents`, Lad verileri her zaman Azure Storage 'daki bir tabloya yazar. JSON bloblarına ve/veya Event Hubs yazılmış verilere sahip olabilirsiniz, ancak verileri bir tabloya depolamayı devre dışı bırakabilirsiniz. Bu tablo için bölümleme davranışı, konusunda açıklandığı `performanceCounters`gibi aynıdır. Tablo adı, Bu dizelerin bitiştirilmesi:
+@No__t-0 belirttiğinizde, LAD verileri her zaman Azure Storage 'daki bir tabloya yazar. JSON bloblarına ve/veya Event Hubs yazılmış verilere sahip olabilirsiniz, ancak verileri bir tabloya depolamayı devre dışı bırakabilirsiniz. Bu tablo için bölümleme davranışı `performanceCounters` ' da açıklananla aynıdır. Tablo adı, Bu dizelerin bitiştirilmesi:
 
 * `LinuxSyslog`
 * "YYYYMMDD" biçiminde, her 10 günde bir tarih değiştiren bir tarih
 
-Örnekler ve `LinuxSyslog20170410` `LinuxSyslog20170609`içerir.
+Örnek `LinuxSyslog20170410` ve `LinuxSyslog20170609` sayılabilir.
 
 ### <a name="perfcfg"></a>perfCfg
 
@@ -382,11 +382,11 @@ Bu isteğe bağlı bölüm, rastgele [OMI](https://github.com/Microsoft/omi) sor
 ]
 ```
 
-Öğe | Value
+Öğe | Değer
 ------- | -----
-ad alanı | seçim Sorgunun yürütülmesi gereken OMı ad alanı. Belirtilmemişse, varsayılan değer, [System Center platformlar arası sağlayıcılar](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)tarafından uygulanan "root/SCX" dır.
-query | Yürütülecek OMı sorgusu.
-table | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
+ad alanı | seçim Sorgunun yürütülmesi gereken OMı ad alanı. Belirtilmemişse, varsayılan değer, [System Center platformlar arası sağlayıcılar](https://github.com/Microsoft/SCXcore)tarafından uygulanan "root/SCX" dır.
+sorgu | Yürütülecek OMı sorgusu.
+Tablosundan | seçim Azure Storage tablosu, belirtilen depolama hesabında (bkz. [korumalı ayarlar](#protected-settings)).
 frequency | seçim Sorgunun yürütülmesi arasındaki saniye sayısı. Varsayılan değer 300 ' dir (5 dakika); minimum değer 15 saniyedir.
 yapma | seçim Ham örnek ölçüm sonuçlarının yayımlanması gereken ek havuz adlarının virgülle ayrılmış bir listesi. Bu ham örneklerin toplaması, uzantı veya Azure ölçümleri tarafından hesaplanmadı.
 
@@ -406,10 +406,10 @@ Günlük dosyalarının yakalanmasını denetler. LAD, dosyaya yazıldığı ve 
 ]
 ```
 
-Öğe | Value
+Öğe | Değer
 ------- | -----
-file | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
-table | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
+Dosyasýný | İzlenen ve yakalanan günlük dosyasının tam yol adı. Yol adının tek bir dosya adı olmalıdır; bir dizini veya joker karakter içeremez.
+Tablosundan | seçim Belirtilen depolama hesabında (korumalı yapılandırmada belirtildiği gibi), dosyanın "Tail" içindeki yeni satırların yazıldığı Azure Storage tablosu.
 yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virgülle ayrılmış bir listesi.
 
 "Table" veya "Havuzlar" ya da her ikisi de belirtilmelidir.
@@ -419,9 +419,9 @@ yapma | seçim Günlük satırlarının gönderildiği ek havuz adlarının virg
 Yerleşik ölçüm sağlayıcısı, geniş bir Kullanıcı kümesiyle en ilginç ölçüm kaynağıdır. Bu ölçümler beş geniş sınıfa ayrılır:
 
 * İşlemci
-* Bellek
+* Hafıza
 * Ağ
-* dosya sistemi
+* Biçimlendiri
 * Disk
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>Işlemci sınıfı için yerleşik ölçümler
@@ -440,7 +440,7 @@ PercentPrivilegedTime | Boşta olmayan süre, ayrıcalıklı (çekirdek) modda h
 
 İlk dört sayaç% 100 olmalıdır. Son üç sayaç ayrıca% 100 ' a kadar toplam PercentProcessorTime, PercentIOWaitTime ve PercentInterruptTime toplamını alt bölümlere bölüler.
 
-Tüm işlemciler genelinde toplanmış tek bir ölçüm elde etmek için, `"condition": "IsAggregate=TRUE"`ayarlayın. Dört vCPU VM 'nin ikinci mantıksal işlemcisi gibi belirli bir işlemcinin ölçüsünü almak için, ayarlayın `"condition": "Name=\\"1\\""`. Mantıksal işlemci numaraları, aralığındadır `[0..n-1]`.
+Tüm işlemciler genelinde toplanmış tek bir ölçüm elde etmek için `"condition": "IsAggregate=TRUE"` ' ı ayarlayın. Dört vCPU sanal makinesinin ikinci mantıksal işlemcisi gibi belirli bir işlemcinin ölçüsünü almak için `"condition": "Name=\\"1\\""` ' ı ayarlayın. Mantıksal işlemci numaraları `[0..n-1]` aralığındadır.
 
 ### <a name="builtin-metrics-for-the-memory-class"></a>Bellek sınıfı için yerleşik ölçümler
 
@@ -477,7 +477,7 @@ Toplam Rxerrors | Önyüklemeden bu yana alma hatalarının sayısı
 TotalTxErrors | Önyüklemeden bu yana aktarılan hataların sayısı
 Toplam çarpışmalar | Önyüklemeden bu yana ağ bağlantı noktaları tarafından raporlanan çakışmaların sayısı
 
- Bu sınıf ınstanmiş olsa da, LAD tüm ağ cihazlarında toplanan ağ ölçümlerinin yakalanmayı desteklemez. Eth0 gibi belirli bir arabirim için ölçümleri elde etmek üzere `"condition": "InstanceID=\\"eth0\\""`.
+ Bu sınıf ınstanmiş olsa da, LAD tüm ağ cihazlarında toplanan ağ ölçümlerinin yakalanmayı desteklemez. Eth0 gibi belirli bir arabirime yönelik ölçümleri almak için `"condition": "InstanceID=\\"eth0\\""` olarak ayarlayın.
 
 ### <a name="builtin-metrics-for-the-filesystem-class"></a>Dosya sistemi sınıfı için yerleşik ölçümler
 
@@ -498,9 +498,9 @@ ReadsPerSecond | Saniye başına okuma işlemi
 WritesPerSecond | Saniye başına yazma işlemi
 TransfersPerSecond | Saniye başına okuma veya yazma işlemi
 
-Tüm dosya sistemleri genelinde toplanmış değerler, ayarıyla `"condition": "IsAggregate=True"`elde edilebilir. "/Mnt" gibi belirli bir bağlı dosya sisteminin değerleri ayarıyla `"condition": 'Name="/mnt"'`elde edilebilir. 
+Tüm dosya sistemleri genelinde toplanmış değerler `"condition": "IsAggregate=True"` ayarlanarak elde edilebilir. "/Mnt" gibi belirli bir bağlı dosya sisteminin değerleri, `"condition": 'Name="/mnt"'` ayarlanarak elde edilebilir. 
 
-**NOT**: JSON yerine Azure portalını kullanıyorsanız, doğru koşul alanı formu adı = '/mnt ' olur
+**Note**: JSON yerine Azure portalını kullanıyorsanız, doğru koşul alanı formu adı = '/mnt ' olur
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>Disk sınıfı için yerleşik ölçümler
 
@@ -519,7 +519,7 @@ ReadBytesPerSecond | Saniye başına okunan bayt sayısı
 WriteBytesPerSecond | Saniye başına yazılan bayt sayısı
 BytesPerSecond | Saniye başına okunan veya yazılan bayt sayısı
 
-Tüm diskler genelinde toplanmış değerler ayarıyla `"condition": "IsAggregate=True"`elde edilebilir. Belirli bir cihazla ilgili bilgi almak için (örneğin,/dev/sdf1), ayarlayın `"condition": "Name=\\"/dev/sdf1\\""`.
+Tüm diskler genelinde toplanmış değerler `"condition": "IsAggregate=True"` ayarlanarak elde edilebilir. Belirli bir cihazla ilgili bilgi almak için (örneğin,/dev/sdf1), `"condition": "Name=\\"/dev/sdf1\\""` ' ı ayarlayın.
 
 ## <a name="installing-and-configuring-lad-30-via-cli"></a>CLı aracılığıyla LAD 3,0 yükleme ve yapılandırma
 
@@ -529,13 +529,13 @@ Korunan ayarlarınızın PrivateConfig. json dosyasında olduğunu ve ortak yap�
 az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
 ```
 
-Bu komut, Azure CLı 'nın Azure Kaynak yönetimi modunu (ARM) kullandığınızı varsayar. Klasik dağıtım modeli (asm) VM 'leri için lad 'yi yapılandırmak üzere, "asm" moduna geçin`azure config mode asm`() ve komutta kaynak grubu adını atlayın. Daha fazla bilgi için [platformlar arası CLI belgelerine](https://docs.microsoft.com/azure/xplat-cli-connect)bakın.
+Bu komut, Azure CLı 'nın Azure Kaynak yönetimi modunu (ARM) kullandığınızı varsayar. Klasik dağıtım modeli (ASM) VM 'Leri için LAD 'yi yapılandırmak üzere, "asm" moduna geçin (`azure config mode asm`) ve komutta kaynak grubu adını atlayın. Daha fazla bilgi için [platformlar arası CLI belgelerine](https://docs.microsoft.com/azure/xplat-cli-connect)bakın.
 
 ## <a name="an-example-lad-30-configuration"></a>Örnek LAD 3,0 yapılandırması
 
 Önceki tanımları temel alarak, bazı açıklamayla örnek bir LAD 3,0 uzantı yapılandırması aşağıda verilmiştir. Bu örneği çalışmanıza uygulamak için kendi depolama hesabı adınızı, hesap SAS belirtecinizi ve EventHubs SAS belirteçlerini kullanmanız gerekir.
 
-### <a name="privateconfigjson"></a>PrivateConfig.json
+### <a name="privateconfigjson"></a>PrivateConfig. JSON
 
 Bu özel ayarlar yapılandırılır:
 
@@ -585,14 +585,14 @@ Bu özel ayarlar yapılandırılır:
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig.json
+### <a name="publicconfigjson"></a>PublicConfig. JSON
 
 Bu genel ayarlar, LAD 'ye neden olur:
 
-* Yüzde işlemci zamanı ve kullanılan disk alanı ölçümlerini `WADMetrics*` tabloya yükleme
-* Syslog tesis "Kullanıcı" ve önem derecesi "bilgi" `LinuxSyslog*` den tabloya ileti yükleyin
-* Ham OMI sorgu sonuçlarını (percentprocessortime ve PercentIdleTime) adlandırılmış `LinuxCPU` tabloya yükle
-* `/var/log/myladtestlog` Dosyadaki`MyLadTestLog` eklenmiş satırları tabloya yükle
+* Yüzde işlemci zamanı ve kullanılan disk alanı ölçümlerini `WADMetrics*` tablosuna yükleme
+* Syslog tesis "user" ve önem derecesi "Info" dan iletileri `LinuxSyslog*` tablosuna yükleme
+* Ham OMı sorgu sonuçlarını (PercentProcessorTime ve PercentIdleTime) adlandırılmış `LinuxCPU` tablosuna yükleyin
+* @No__t-0 dosyasına eklenen satırları `MyLadTestLog` tablosuna yükle
 
 Her durumda, veriler öğesine de yüklenir:
 
@@ -676,7 +676,7 @@ Her durumda, veriler öğesine de yüklenir:
 }
 ```
 
-`resourceId` Yapılandırmadaki öğesinin VM veya sanal makine ölçek kümesi ile aynı olması gerekir.
+Yapılandırmadaki `resourceId`, VM veya sanal makine ölçek kümesi ile aynı olmalıdır.
 
 * Azure platformu ölçümleri grafik oluşturma ve uyarı, üzerinde çalıştığınız VM 'nin RESOURCEID olduğunu bilir. RESOURCEID arama anahtarını kullanarak VM 'niz için verileri bulmayı bekler.
 * Azure otomatik ölçeklendirme kullanırsanız, otomatik ölçeklendirme yapılandırmasındaki RESOURCEID, LAD tarafından kullanılan RESOURCEID ile aynı olmalıdır.
@@ -688,14 +688,14 @@ Performans verilerini görüntülemek veya uyarıları ayarlamak için Azure por
 
 ![image](./media/diagnostics-linux/graph_metrics.png)
 
-`performanceCounters` Veriler her zaman bir Azure depolama tablosunda depolanır. Azure depolama API 'Leri birçok dil ve platformda kullanılabilir.
+@No__t-0 verileri her zaman bir Azure depolama tablosunda depolanır. Azure depolama API 'Leri birçok dil ve platformda kullanılabilir.
 
 JsonBlob havuzları 'na gönderilen veriler, [korunan ayarlarda](#protected-settings)adlı depolama hesabındaki bloblara depolanır. Blob verilerini Azure Blob depolama API 'Leri kullanarak kullanabilirsiniz.
 
 Ayrıca, bu kullanıcı arabirimi araçlarını kullanarak Azure Storage 'daki verilere erişebilirsiniz:
 
 * Visual Studio Sunucu Gezgini.
-* [Microsoft Azure Depolama Gezgini] (https://azurestorageexplorer.codeplex.com/ "Azure Depolama Gezgini").
+* [Microsoft Azure Depolama Gezgini](https://azurestorageexplorer.codeplex.com/ "Azure Depolama Gezgini").
 
 Microsoft Azure Depolama Gezgini oturumunun bu anlık görüntüsü, test sanal makinesinde doğru yapılandırılmış bir LAD 3,0 uzantısının oluşturulan Azure depolama tablolarını ve kapsayıcılarını gösterir. Görüntü, [örnek LAD 3,0 yapılandırmasıyla](#an-example-lad-30-configuration)tam olarak eşleşmez.
 

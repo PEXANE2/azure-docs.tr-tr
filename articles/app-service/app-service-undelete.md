@@ -6,12 +6,12 @@ ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
 ms.service: app-service
-ms.openlocfilehash: a766f7ed7a82874df8ef7506226de0d6f38a5847
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 7b3a21f3cfee806dc94353e0bc6c11e88641ea34
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219545"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827533"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>PowerShell kullanarak silinen App Service uygulamasını geri yükleme
 
@@ -19,7 +19,7 @@ Uygulamanızı Azure App Service yanlışlıkla sildikten sonra, [az PowerShell 
 
 ## <a name="list-deleted-apps"></a>Silinen uygulamaları listeleme
 
-Silinen uygulamalar koleksiyonunu almak için kullanabilirsiniz `Get-AzDeletedWebApp`.
+Silinen uygulamalar koleksiyonunu almak için `Get-AzDeletedWebApp` ' ı kullanabilirsiniz.
 
 Silinen belirli bir uygulamayla ilgili ayrıntılar için şunları kullanabilirsiniz:
 
@@ -29,17 +29,17 @@ Get-AzDeletedWebApp -Name <your_deleted_app>
 
 Ayrıntılı bilgiler şunları içerir:
 
-- **Silinsiteıd**: Uygulamanın benzersiz tanımlayıcısı, aynı ada sahip birden fazla uygulamanın silindiği senaryolar için kullanılır
-- **Abonelik kimliği**: Silinen kaynağı içeren abonelik
-- **Konum**: Orijinal uygulamanın konumu
-- **Resourcegroupname**: Özgün kaynak grubunun adı
-- **Ad**: Orijinal uygulamanın adı.
+- **Deletedsiteıd**: aynı ada sahip birden çok uygulama silindiği senaryolar için kullanılan, uygulamanın benzersiz tanımlayıcısı
+- **SubscriptionID**: silinen kaynağı içeren abonelik
+- **Konum**: özgün uygulamanın konumu
+- **Resourcegroupname**: özgün kaynak grubunun adı
+- **Ad**: özgün uygulamanın adı.
 - **Yuva**: yuvanın adı.
-- **Silme zamanı**: Uygulamanın ne zaman silindiği  
+- **Silme zamanı**: uygulamanın ne zaman silindiği  
 
 ## <a name="restore-deleted-app"></a>Silinen uygulamayı geri yükle
 
-Geri yüklemek istediğiniz uygulama tanımlandıktan sonra öğesini kullanarak `Restore-AzDeletedWebApp`geri yükleyebilirsiniz.
+Geri yüklemek istediğiniz uygulama tanımlandıktan sonra, `Restore-AzDeletedWebApp` kullanarak geri yükleyebilirsiniz.
 
 ```powershell
 Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
@@ -47,8 +47,10 @@ Restore-AzDeletedWebApp -ResourceGroupName <my_rg> -Name <my_app> -TargetAppServ
 
 Komut girişleri şunlardır:
 
-- **Kaynak grubu**: Uygulamanın geri yükleneceği hedef kaynak grubu
-- **Ad**: Uygulamanın adı, genel olarak benzersiz olmalıdır.
-- **Targetappserviceplanname**: Uygulamayla bağlantılı App Service planı
+- **Kaynak grubu**: uygulamanın geri yükleneceği hedef kaynak grubu
+- **Ad**: uygulamanın adı, genel olarak benzersiz olmalıdır.
+- **Targetappserviceplanname**: uygulamaya bağlı App Service plan
 
-Varsayılan `Restore-AzDeletedWebApp` olarak, hem uygulama yapılandırmanızı hem de içeriği geri yükler. Yalnızca içeriği geri yüklemek istiyorsanız bu komutu kullanın `-RestoreContentOnly` .
+Varsayılan olarak `Restore-AzDeletedWebApp`, hem uygulama yapılandırmanızı hem de içeriği geri yükler. Yalnızca içeriği geri yüklemek istiyorsanız, bu commandlet ile `-RestoreContentOnly` bayrağını kullanın.
+
+Tam komutunu başvurusunu buradan bulabilirsiniz: [restore-azdeletedwebapp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).

@@ -5,15 +5,15 @@ services: digital-twins
 author: kingdomofends
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 09/30/2019
 ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 10161d6b1d944857aa45d5152c77e107a208d98d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f9b9341be32e5707ef646bd6d08d9d7ec92a8575
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012309"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827709"
 ---
 Aşağıdaki tabloda, Azure dijital TWINS 'de kullanılabilen roller açıklanmaktadır:
 
@@ -25,6 +25,6 @@ Aşağıdaki tabloda, Azure dijital TWINS 'de kullanılabilen roller açıklanma
 | Anahtar Yöneticisi | Erişim tuşları için *oluşturma*, *okuma*, *güncelleştirme*ve *silme* izni. Boşluklar için *Oku* izni. | 5a0b1afc-e118-4068-969f-b50efb8e5da6 |
 | Belirteç Yöneticisi |  Erişim anahtarları için *Oku* ve *Güncelleştir* izinleri. Boşluklar için *Oku* izni. | 38a3bb21-5424-43b4-b0bf-78ee228840c3 |
 | Kullanıcı |  İlgili ilgili nesneleri içeren boşluklar, algılayıcılar ve kullanıcılar için *okuma* izni. | b1ffdb77-c635-4e7e-ad25-948237d85b30 |
-| Destek uzmanı |  Erişim anahtarları hariç her şey için *Oku* izni. | 6e46958b-dc62-4e7c-990c-c3da2e030969 |
+| Destek uzmanı |  Erişim anahtarları hariç her şey için *Oku* izni. | 6e46958b-dc62-4e7c-990C-c3da2e030969 |
 | Cihaz yükleyicisi | İlgili ilgili nesneleri içeren cihazlar ve algılayıcılar için *okuma* ve *güncelleştirme* izni. Boşluklar için *Oku* izni. | b16dd9fe-4efe-467b-8c8c-720e2ff8817c |
 | Ağ geçidi cihazı | Algılayıcılar için izin *Oluştur* . İlgili ilgili nesneleri içeren cihazlar ve algılayıcılar için *okuma* izni. | d4c69766-e9bd-4e61-bfc1-d8b6e686c7a8 |

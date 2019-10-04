@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: 032a907e45e007cb51357300e4bbf3c7afb40dde
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 9344d2832c37c34d5690dc8f3aae7394ca644276
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542874"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827316"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Istio 'yu yükleyip kullanma
 
 [Istio][istio-github] , bir Kubernetes kümesindeki mikro hizmetlerde anahtar bir işlevsellik kümesi sağlayan açık kaynaklı bir hizmet kafesidir. Bu özellikler trafik yönetimi, hizmet kimliği ve güvenlik, ilke zorlama ve Observability içerir. Istio hakkında daha fazla bilgi için resmi [nedir?][istio-docs-concepts] belgesine bakın.
 
-Bu makalede, Istio 'un nasıl yükleneceği gösterilmektedir. İstio `istioctl` istemci ikilisi istemci makinenize yüklenir ve IKS bileşenleri aks 'deki bir Kubernetes kümesine yüklenir.
+Bu makalede, Istio 'un nasıl yükleneceği gösterilmektedir. IBU `istioctl` istemci ikilisi istemci makinenize yüklenir ve ıKS bileşenleri AKS üzerinde bir Kubernetes kümesine yüklenir.
 
 > [!NOTE]
-> Bu yönergeler, Istio sürümüne `1.1.3`başvurur.
+> Bu yönergeler, `1.1.3` ' a başvurun.
 >
-> Bu sürümler, Kubernetes `1.12`sürümlerinde `1.11`,,,,, `1.13`. `1.1.x` [GitHub-Istio yayınları][istio-github-releases] ve en yeni [sürüm notlarındaki][istio-release-notes]yayınların her biri hakkında bilgi edinmek için ek istio sürümlerini bulabilirsiniz.
+> Ilero `1.1.x` yayınları, Kubernetes sürümleri `1.11`, `1.12`, `1.13` ' e karşı Istio ekibi tarafından test edilmiştir. [GitHub-Istio yayımlarında][istio-github-releases] ek istio sürümlerini ve her bir [Yayınımo haberleri][istio-release-notes]hakkındaki bilgileri bulabilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -38,9 +38,9 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede açıklanan adımlarda bir aks kümesi (RBAC etkinleştirilmiş Kubernetes `1.11` ve üzeri) oluşturduğunuz ve kümeyle bir `kubectl` bağlantı oluşturmuş olduğunuz varsayılır. Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın.
+Bu makalede açıklanan adımlarda, RBAC etkin olan bir AKS kümesi (Kubernetes `1.11` ve üzeri) oluşturduğunuzu ve kümeyle birlikte `kubectl` bağlantısı kurtığınızı varsayalım. Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın.
 
-Bu yönergeleri izlemek ve Istio 'yu yüklemek için [Helm][helm] gerekir. Kümenizde doğru bir sürüm `2.12.2` veya daha sonra yüklenip yapılandırılmış olması önerilir. Held 'yi yüklemeyle ilgili yardıma ihtiyacınız varsa bkz. [aks helk Yükleme Kılavuzu][helm-install]. Tüm istio Pod 'ler de Linux düğümlerinde çalışacak şekilde zamanlanmalıdır.
+Bu yönergeleri izlemek ve Istio 'yu yüklemek için [Helm][helm] gerekir. Kümenizde doğru bir şekilde yüklenip yapılandırılanınızın @no__t veya daha yeni bir sürüme sahip olmanız önerilir. Held 'yi yüklemeyle ilgili yardıma ihtiyacınız varsa bkz. [aks helk Yükleme Kılavuzu][helm-install]. Tüm istio Pod 'ler de Linux düğümlerinde çalışacak şekilde zamanlanmalıdır.
 
 AKS kümenizde Istio çalıştırmaya yönelik ek kaynak gereksinimlerini anlamak için, [Istio performans ve ölçeklenebilirlik](https://istio.io/docs/concepts/performance-and-scalability/) belgelerini okuduğunuzdan emin olun. Çekirdek ve bellek gereksinimleri, belirli iş yükünüze göre farklılık gösterecektir. Kuruluma uygun sayıda düğüm ve VM boyutu seçin.
 
@@ -55,7 +55,7 @@ Bu makale, Istio yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nihai 
 
 ### <a name="bash"></a>Bash
 
-MacOS 'ta, en `curl` son istio sürümünü indirmek için kullanın ve ardından aşağıdaki gibi `tar` ile ayıklayın:
+MacOS 'ta en son Istio sürümünü indirmek için `curl` kullanın ve ardından `tar` ' i kullanarak aşağıdaki şekilde ayıklayın:
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -65,7 +65,7 @@ ISTIO_VERSION=1.1.3
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```
 
-Linux veya Linux için Windows alt sistemi üzerinde, `curl` en son istio sürümünü indirmek için kullanın ve ardından aşağıdaki `tar` gibi ile ayıklayın:
+Linux veya Linux için Windows alt sistemi üzerinde, en son Istio sürümünü indirmek için `curl` kullanın ve ardından `tar` ' i kullanarak aşağıdaki şekilde ayıklayın:
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -78,7 +78,7 @@ curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell 'de, en `Invoke-WebRequest` son istio sürümünü indirmek için kullanın ve ardından aşağıdaki gibi `Expand-Archive` ile ayıklayın:
+PowerShell 'de, en son Istio sürümünü indirmek için `Invoke-WebRequest` kullanın ve ardından `Expand-Archive` ' i kullanarak aşağıdaki şekilde ayıklayın:
 
 ```powershell
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -98,15 +98,15 @@ Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 > [!IMPORTANT]
 > Bu bölümdeki adımları, indirdiğiniz ve ayıkladığınız Istio sürümünün en üst düzey klasöründen çalıştırtığınızdan emin olun.
 
-İstemci `istioctl` ikili dosyası, istemci makinenizde çalışır ve istio hizmeti ağıyla etkileşime girebilmeniz için sağlar. Yüklemeyi adımlar, istemci işletim sistemleri arasında biraz farklıdır. Tercih ettiğiniz ortamla eşleşen aşağıdaki yüklemede birini seçin:
+@No__t-0 istemci ikili dosyası, istemci makinenizde çalışır ve Istio hizmeti ağıyla etkileşime girebilmeniz için sağlar. Yüklemeyi adımlar, istemci işletim sistemleri arasında biraz farklıdır. Tercih ettiğiniz ortamla eşleşen aşağıdaki yüklemede birini seçin:
 
 * [MacOS](#macos)
 * [Linux için Linux veya Windows alt sistemi](#linux-or-windows-subsystem-for-linux)
 * [Windows](#windows)
 
-### <a name="macos"></a>macOS
+### <a name="macos"></a>MacOS
 
-MacOS üzerinde bir bash `istioctl` istemci ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `istioctl` istemci ikilisini `PATH`içindeki standart Kullanıcı programı konumuna kopyalar.
+MacOS `istioctl` istemci ikilisini MacOS üzerinde Bash tabanlı bir kabuğa yüklemek için aşağıdaki komutları kullanın. Bu komutlar `istioctl` istemci ikilisini `PATH` ' inizdeki standart Kullanıcı programı konumuna kopyalar.
 
 ```bash
 cd istio-$ISTIO_VERSION
@@ -114,7 +114,7 @@ sudo cp ./bin/istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 
-İstio `istioctl` istemci ikilisi için komut satırı tamamlamayı isterseniz, bunu aşağıdaki şekilde ayarlayın:
+IBU `istioctl` istemci ikilisi için komut satırı tamamlamayı isterseniz, bunu aşağıdaki şekilde ayarlayın:
 
 ```bash
 # Generate the bash completion file and source it in your current shell
@@ -126,11 +126,11 @@ source ~/completions/istioctl.bash
 echo "source ~/completions/istioctl.bash" >> ~/.bashrc
 ```
 
-Şimdi de bir sonraki bölüme geçiş yapın. [](#install-the-istio-crds-on-aks)
+Şimdi de bir sonraki bölüme geçiş [yapın.](#install-the-istio-crds-on-aks)
 
 ### <a name="linux-or-windows-subsystem-for-linux"></a>Linux için Linux veya Windows alt sistemi
 
-`istioctl` İstemci ikilisini Linux veya [Linux için Windows alt sistemi][install-wsl]üzerinde Bash tabanlı bir kabuğa yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `istioctl` istemci ikilisini `PATH`içindeki standart Kullanıcı programı konumuna kopyalar.
+Linux veya [Linux Için Windows alt sistemi veya Linux][install-wsl]üzerinde bir bash tabanlı kabuğa `istioctl` istemci ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar `istioctl` istemci ikilisini `PATH` ' inizdeki standart Kullanıcı programı konumuna kopyalar.
 
 ```bash
 cd istio-$ISTIO_VERSION
@@ -138,7 +138,7 @@ sudo cp ./bin/istioctl /usr/local/bin/istioctl
 sudo chmod +x /usr/local/bin/istioctl
 ```
 
-İstio `istioctl` istemci ikilisi için komut satırı tamamlamayı isterseniz, bunu aşağıdaki şekilde ayarlayın:
+IBU `istioctl` istemci ikilisi için komut satırı tamamlamayı isterseniz, bunu aşağıdaki şekilde ayarlayın:
 
 ```bash
 # Generate the bash completion file and source it in your current shell
@@ -150,11 +150,11 @@ source ~/completions/istioctl.bash
 echo "source ~/completions/istioctl.bash" >> ~/.bashrc
 ```
 
-Şimdi de bir sonraki bölüme geçiş yapın. [](#install-the-istio-crds-on-aks)
+Şimdi de bir sonraki bölüme geçiş [yapın.](#install-the-istio-crds-on-aks)
 
 ### <a name="windows"></a>Windows
 
-Windows üzerinde bir **PowerShell**tabanlı `istioctl` bir kabuğa istio Client ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `istioctl` istemci ikilisini bir istio klasörüne kopyalar ve sonra (geçerli kabukta) ve kalıcı olarak (kabukta yeniden başlatmalar arasında) `PATH`ile birlikte kullanılabilir hale getirir. Bu komutları çalıştırmak için yükseltilmiş (yönetici) ayrıcalıklarına ihtiyacınız yoktur ve kabuğunu yeniden başlatmanız gerekmez.
+@No__t-0 istemci ikilisini Windows üzerinde **PowerShell**tabanlı bir kabuğa yüklemek için aşağıdaki komutları kullanın. Bu komutlar `istioctl` istemci ikilisini bir Istio klasörüne kopyalar ve ardından, `PATH` ' i kullanarak (geçerli kabukta) ve kalıcı olarak (kabukta yeniden başlatmalar arasında) kullanılabilir hale getirir. Bu komutları çalıştırmak için yükseltilmiş (yönetici) ayrıcalıklarına ihtiyacınız yoktur ve kabuğunu yeniden başlatmanız gerekmez.
 
 ```powershell
 # Copy istioctl.exe to C:\Istio
@@ -169,14 +169,14 @@ $PATH = [environment]::GetEnvironmentVariable("PATH", "User") + "; C:\Istio\"
 [environment]::SetEnvironmentVariable("PATH", $PATH)
 ```
 
-Şimdi de bir sonraki bölüme geçiş yapın. [](#install-the-istio-crds-on-aks)
+Şimdi de bir sonraki bölüme geçiş [yapın.](#install-the-istio-crds-on-aks)
 
 ## <a name="install-the-istio-crds-on-aks"></a>AKS 'e Istio CRDs 'yi yükler
 
 > [!IMPORTANT]
 > Bu bölümdeki adımları, indirdiğiniz ve ayıkladığınız Istio sürümünün en üst düzey klasöründen çalıştırtığınızdan emin olun.
 
-İstio, çalışma zamanı yapılandırmasını yönetmek için [özel kaynak tanımları (CRDs)][kubernetes-crd] kullanır. IBU bileşenleri üzerinde bir bağımlılığı olduğundan, önce Istio CRDs 'yi yüklememiz gerekir. Aks kümenizdeki `istio-system` ad alanına `istio-init` istio crds 'yi yüklemek için Helm ve grafiği kullanın:
+İstio, çalışma zamanı yapılandırmasını yönetmek için [özel kaynak tanımları (CRDs)][kubernetes-crd] kullanır. IBU bileşenleri üzerinde bir bağımlılığı olduğundan, önce Istio CRDs 'yi yüklememiz gerekir. AKS kümenizdeki `istio-system` ad alanına Istio CRDs 'yi yüklemek için Helm ve `istio-init` grafiğini kullanın:
 
 ```azurecli
 helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
@@ -196,7 +196,7 @@ istio-init-crd-10   1/1           16s        18s
 istio-init-crd-11   1/1           15s        18s
 ```
 
-İşlerin başarılı bir şekilde tamamlandığını Onayladığımıza göre, doğru sayıda Istio CRDs yüklü olduğunu doğrulayalım. Ortamınız için uygun komutu çalıştırarak tüm 53 Istio CRDs 'nin yüklendiğini doğrulayabilirsiniz. Komut, numarayı `53`döndürmelidir.
+İşlerin başarılı bir şekilde tamamlandığını Onayladığımıza göre, doğru sayıda Istio CRDs yüklü olduğunu doğrulayalım. Ortamınız için uygun komutu çalıştırarak tüm 53 Istio CRDs 'nin yüklendiğini doğrulayabilirsiniz. Komut `53` sayısını döndürmelidir.
 
 Bash
 
@@ -223,7 +223,7 @@ Istio bileşenlerini yükleyebilmemiz için, hem Grafana hem de Kiali için gizl
 
 ### <a name="add-grafana-secret"></a>Grafana gizli dizisi Ekle
 
-`REPLACE_WITH_YOUR_SECURE_PASSWORD` Belirteci parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
+@No__t-0 belirtecini parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
 
 #### <a name="macos-linux"></a>MacOS, Linux
 
@@ -267,7 +267,7 @@ data:
 
 ### <a name="add-kiali-secret"></a>Kiali gizli dizisi Ekle
 
-`REPLACE_WITH_YOUR_SECURE_PASSWORD` Belirteci parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
+@No__t-0 belirtecini parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
 
 #### <a name="macos-linux"></a>MacOS, Linux
 
@@ -311,15 +311,15 @@ data:
 
 ### <a name="install-istio-components"></a>Istio bileşenlerini yükler
 
-AKS kümenizdeki Grafana ve Kiali gizli dizilerini başarıyla oluşturduğumuzdan, bu durumda Istio bileşenlerinin yüklenmesi zaman alabilir. Aks kümenizdeki `istio-system` ad alanına `istio` istio bileşenlerini yüklemek için Helm ve grafiği kullanın. Ortamınız için uygun komutları kullanın.
+AKS kümenizdeki Grafana ve Kiali gizli dizilerini başarıyla oluşturduğumuzdan, bu durumda Istio bileşenlerinin yüklenmesi zaman alabilir. AKS kümenizdeki `istio-system` ad alanına Istio bileşenlerini yüklemek için Helm ve `istio` grafiğini kullanın. Ortamınız için uygun komutları kullanın.
 
 > [!NOTE]
 > Yüklememizin kapsamında aşağıdaki seçenekleri kullanıyoruz:
-> - `global.controlPlaneSecurityEnabled=true`-Denetim düzlemi için etkin ve karşılıklı TLS
+> - `global.controlPlaneSecurityEnabled=true`-denetim düzlemi için etkin ve karşılıklı TLS
 > - `mixer.adapters.useAdapterCRDs=false`-devre dışı oldukları için karıştırıcı bağdaştırıcısı CRDs 'deki izlemeleri kaldırın ve bu, performansı iyileştirir
 > - `grafana.enabled=true`-analiz ve izleme panoları için Grafana dağıtımını etkinleştirme
 > - `grafana.security.enabled=true`-Grafana için kimlik doğrulamasını etkinleştir
-> - `tracing.enabled=true`-izleme için Jaeger dağıtımını etkinleştirin
+> - `tracing.enabled=true`-izleme için Jaeger dağıtımını etkinleştir
 > - `kiali.enabled=true`-bir hizmet ağı Observability panosu için Kiali dağıtımını etkinleştirme
 
 Bash
@@ -344,7 +344,7 @@ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
   --set kiali.enabled=true
 ```
 
-`istio` Helb grafiği çok sayıda nesne dağıtır. Yukarıdaki `helm install` komutun çıktısından listesini görebilirsiniz. Istio bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 4 ila 5 dakika sürebilir.
+@No__t-0 Held grafiği çok sayıda nesne dağıtır. Listeyi yukarıdaki `helm install` komutunun çıktısından görebilirsiniz. Istio bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 4 ila 5 dakika sürebilir.
 
 > [!NOTE]
 > Tüm istio Pod 'leri Linux düğümlerinde çalışacak şekilde zamanlanmalıdır. Kümenizde Linux düğüm havuzlarının yanı sıra Windows Server düğüm havuzlarınız varsa, tüm Istil 'lerin Linux düğümlerinde çalışacak şekilde zamanlandığını doğrulayın.
@@ -353,7 +353,7 @@ Bu noktada, AKS kümenize Istio 'u dağıttık. Başarılı bir Istio dağıtım
 
 ## <a name="validate-the-istio-installation"></a>Istio yüklemesini doğrulama
 
-Önce beklenen hizmetlerin oluşturulduğunu onaylayın. Çalışan hizmetleri görüntülemek için [kubectl Get svc][kubectl-get] komutunu kullanın. Ad alanını sorgulayın, burada, istio ve eklenti bileşenlerinin `istio` Helm grafiği tarafından yüklendiği yer: `istio-system`
+Önce beklenen hizmetlerin oluşturulduğunu onaylayın. Çalışan hizmetleri görüntülemek için [kubectl Get svc][kubectl-get] komutunu kullanın. @No__t-0 ad alanını sorgulayın, burada, Istio ve eklenti bileşenlerinin `istio` Helm grafiği tarafından yüklendiği yer:
 
 ```console
 kubectl get svc --namespace istio-system --output wide
@@ -361,13 +361,13 @@ kubectl get svc --namespace istio-system --output wide
 
 Aşağıdaki örnek çıktıda Şu anda çalışıyor olması gereken hizmetler gösterilmektedir:
 
-- `istio-*`servislere
-- `jaeger-*`, `tracing`, ve `zipkin` eklenti izleme hizmetleri
-- `prometheus`eklenti ölçümleri hizmeti
-- `grafana`Eklenti analizi ve izleme panosu hizmeti
-- `kiali`eklenti hizmet ağı Pano hizmeti
+- `istio-*` hizmetleri
+- `jaeger-*`, `tracing` ve `zipkin` eklenti izleme hizmetleri
+- `prometheus` eklenti ölçüm hizmeti
+- `grafana` eklenti Analizi ve izleme panosu hizmeti
+- `kiali` eklenti hizmeti kafesi Pano hizmeti
 
-, `istio-ingressgateway` Bir dış `<pending>`IP gösteriyorsa, Azure ağı tarafından bir IP adresi atanmadan birkaç dakika bekleyin.
+@No__t-0 ' ı bir dış IP `<pending>` gösteriyorsa, Azure ağ tarafından bir IP adresi atanmadan birkaç dakika bekleyin.
 
 ```console
 NAME                     TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                                                                                                                                      AGE       SELECTOR
@@ -388,7 +388,7 @@ tracing                  ClusterIP      10.0.165.210   <none>          80/TCP   
 zipkin                   ClusterIP      10.0.126.211   <none>          9411/TCP                                                                                                                                     118s      app=jaeger
 ```
 
-Ardından, gerekli yığınların oluşturulduğunu onaylayın. [Kubectl Get Pod][kubectl-get] komutunu kullanın ve `istio-system` ad alanını yeniden sorgulayın:
+Ardından, gerekli yığınların oluşturulduğunu onaylayın. [Kubectl Get Pod][kubectl-get] komutunu kullanın ve `istio-system` ad alanını sorgulayın:
 
 ```console
 kubectl get pods --namespace istio-system
@@ -396,7 +396,7 @@ kubectl get pods --namespace istio-system
 
 Aşağıdaki örnek çıktı, çalıştıran Pod 'leri göstermektedir:
 
-- `istio-*` Pod 'ler
+- `istio-*` Pod
 - `prometheus-*` eklenti ölçümleri Pod
 - `grafana-*` eklenti Analizi ve izleme panosu Pod
 - `kiali` eklenti hizmeti kafes panosu Pod
@@ -418,7 +418,7 @@ kiali-5c4cdbb869-s28dv                   1/1       Running     0          6m26s
 prometheus-67599bf55b-pgxd8              1/1       Running     0          6m26s
 ```
 
-`istio-init-crd-*` Bir`Completed` durumu olan iki tane olmalıdır. Bu FID 'ler, daha önceki bir adımda CRDs 'yi oluşturan işleri çalıştırmaktan sorumludur. Diğer tüm yığınların durumu `Running`gösterilmesi gerekir. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
+@No__t-1 durumu olan iki `istio-init-crd-*` Pod olmalıdır. Bu FID 'ler, daha önceki bir adımda CRDs 'yi oluşturan işleri çalıştırmaktan sorumludur. Diğer tüm yığınların `Running` durumunu göstermesi gerekir. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
 
 ## <a name="accessing-the-add-ons"></a>Eklentilere erişme
 
@@ -428,7 +428,7 @@ Bu makalenin önceki kısımlarında yer aldığı için kimlik bilgilerini beli
 
 ### <a name="grafana"></a>Grafana
 
-Istio için analiz ve izleme panoları [Grafana][grafana]tarafından sağlanır. İstemci makinenizdeki yerel bağlantı `3000` noktasını aks kümenizde Grafana çalıştıran `3000` Pod üzerindeki bağlantı noktasına iletin:
+Istio için analiz ve izleme panoları [Grafana][grafana]tarafından sağlanır. İstemci makinenize `3000` yerel bağlantı noktasını, AKS kümenizde Grafana çalıştıran Pod üzerindeki `3000` numaralı bağlantı noktasına iletin:
 
 ```console
 kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=grafana -o jsonpath='{.items[0].metadata.name}') 3000:3000
@@ -441,11 +441,11 @@ Forwarding from 127.0.0.1:3000 -> 3000
 Forwarding from [::1]:3000 -> 3000
 ```
 
-Artık Grafana ile [http://localhost:3000](http://localhost:3000)istemci makinenizde aşağıdaki URL 'ye ulaşabilirsiniz. İstendiğinde, Grafana gizli anahtarı aracılığıyla oluşturduğunuz kimlik bilgilerini kullanmayı unutmayın.
+Artık Grafana [-1 @no__t](http://localhost:3000)istemci makinenizde aşağıdaki URL 'ye ulaşabilirsiniz. İstendiğinde, Grafana gizli anahtarı aracılığıyla oluşturduğunuz kimlik bilgilerini kullanmayı unutmayın.
 
 ### <a name="prometheus"></a>Prometheus
 
-Ceso ölçümleri [Prometheus][prometheus]tarafından sağlanmaktadır. İstemci makinenizdeki yerel bağlantı `9090` noktasını aks kümenizde Prometheus çalıştıran pod üzerinde bağlantı noktasına `9090` iletin:
+[Ceso ölçümleri Prometheus][prometheus]tarafından sağlanmaktadır. İstemci makinenizde `9090` yerel bağlantı noktasını AKS kümenizde Prometheus çalıştıran pod üzerinde `9090` bağlantı noktasına iletin:
 
 ```console
 kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=prometheus -o jsonpath='{.items[0].metadata.name}') 9090:9090
@@ -458,11 +458,11 @@ Forwarding from 127.0.0.1:9090 -> 9090
 Forwarding from [::1]:9090 -> 9090
 ```
 
-Artık, istemci makinenizde [http://localhost:9090](http://localhost:9090)aşağıdaki URL 'de Prometheus ifade tarayıcısına ulaşabilirsiniz.
+Artık, istemci makinenizde ( [http://localhost:9090](http://localhost:9090)) aşağıdaki URL 'de Prometheus ifade tarayıcısına ulaşabilirsiniz.
 
 ### <a name="jaeger"></a>Jaeger
 
-Istio 'da izleme, [Jaeger][jaeger]tarafından sağlanır. İstemci makinenizdeki yerel bağlantı `16686` noktasını, aks kümenizde caeger çalıştıran Pod üzerindeki bağlantı noktasına `16686` iletin:
+Istio 'da izleme, [Jaeger][jaeger]tarafından sağlanır. İstemci makinenizdeki `16686` ' a ait yerel bağlantı noktasını AKS kümenizde Caeger çalıştıran pod üzerinde `16686` bağlantı noktasına iletin:
 
 ```console
 kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 16686:16686
@@ -475,11 +475,11 @@ Forwarding from 127.0.0.1:16686 -> 16686
 Forwarding from [::1]:16686 -> 16686
 ```
 
-Artık, istemci makinenizde [http://localhost:16686](http://localhost:16686)aşağıdaki URL 'de Jaeger izleme Kullanıcı arabirimine ulaşabilirsiniz.
+Artık, istemci makinenizde aşağıdaki URL 'de Jaeger izleme Kullanıcı arabirimine ulaşabilirsiniz- [http://localhost:16686](http://localhost:16686).
 
 ### <a name="kiali"></a>Kiali
 
-Bir hizmet ağı Observability panosu [Kiali][kiali]tarafından sağlanır. İstemci makinenizdeki yerel bağlantı `20001` noktasını, aks kümenizde kiali çalıştıran Pod üzerindeki bağlantı noktasına `20001` iletin:
+Bir hizmet ağı Observability panosu [Kiali][kiali]tarafından sağlanır. İstemci makinenize `20001` yerel bağlantı noktasını, AKS kümenizde Kiali çalıştıran Pod üzerindeki `20001` numaralı bağlantı noktasına iletin:
 
 ```console
 kubectl port-forward -n istio-system $(kubectl get pod -n istio-system -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
@@ -492,7 +492,7 @@ Forwarding from 127.0.0.1:20001 -> 20001
 Forwarding from [::1]:20001 -> 20001
 ```
 
-Artık Kiali Service kafesobservability panosuna istemci makinenizde aşağıdaki URL ile [http://localhost:20001/kiali/console/](http://localhost:20001/kiali/console/)ulaşabilirsiniz. İstendiğinde Kiali gizli dizisi aracılığıyla oluşturduğunuz kimlik bilgilerini kullanmayı unutmayın.
+Artık Kiali Service kafesobservability panosuna istemci makinenizde aşağıdaki URL 'ye ulaşabilirsiniz- [http://localhost:20001/kiali/console/](http://localhost:20001/kiali/console/). İstendiğinde Kiali gizli dizisi aracılığıyla oluşturduğunuz kimlik bilgilerini kullanmayı unutmayın.
 
 ## <a name="uninstall-istio-from-aks"></a>AKS 'ten Istio 'dan kaldırma
 
@@ -501,7 +501,7 @@ Artık Kiali Service kafesobservability panosuna istemci makinenizde aşağıdak
 
 ### <a name="remove-istio-components-and-namespace"></a>Istio bileşenlerini ve ad alanını kaldır
 
-AKS kümenizdeki ICU 'yi kaldırmak için aşağıdaki komutları kullanın. `helm delete` `istio` Komutlar ve`istio-init` grafiklerini kaldırır ve komutdeadalanınıkaldırır.`kubectl delete ns` `istio-system`
+AKS kümenizdeki ICU 'yi kaldırmak için aşağıdaki komutları kullanın. @No__t-0 komutları, `istio` ve `istio-init` grafiklerini kaldırır ve `kubectl delete ns` komutu `istio-system` ad alanını kaldırır.
 
 ```azurecli
 helm delete --purge istio
@@ -555,7 +555,7 @@ Application Insights ve Istio kullanarak AKS uygulamanızı nasıl izleyeceğini
 [istio-docs-concepts]: https://istio.io/docs/concepts/what-is-istio/
 [istio-github]: https://github.com/istio/istio
 [istio-github-releases]: https://github.com/istio/istio/releases
-[istio-release-notes]: https://istio.io/about/notes/
+[istio-release-notes]: https://istio.io/news/
 [istio-install-download]: https://istio.io/docs/setup/kubernetes/download-release/
 [istio-install-helm]: https://istio.io/docs/setup/kubernetes/install/helm/
 [istio-install-helm-options]: https://istio.io/docs/reference/config/installation-options/
