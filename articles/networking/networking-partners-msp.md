@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: 8d71863406eb6e8b032a78f65ab5be97cca91bd7
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: bf62e62e1235c7a37c092e79df57ca518e07ff4b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212894"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828194"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ağ MSP iş ortakları hakkında
 
@@ -26,7 +26,7 @@ Müşteriler, Azure Market 'te veya doğrudan MSP 'den MSP ile yönetilen hizmet
 
 ## <a name="msp"></a>Azure ağ MSP iş ortakları
 
-Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetleri hakkında daha fazla bilgi için bu bölümdeki bağlantıları kullanın. Bulut ağ hizmetleri ortağınız aşağıdaki bölümde listelenmiyorsa, sağlayıcının bizimle iletişim kurun. E-posta ManagedVirtualWAN@microsoft.comgöndererek bizimle iletişim kurabilirler. 
+Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetleri hakkında daha fazla bilgi için bu bölümdeki bağlantıları kullanın. Bulut ağ hizmetleri ortağınız aşağıdaki bölümde listelenmiyorsa, sağlayıcının bizimle iletişim kurun. @No__t-0 ' a bir e-posta göndererek bizimle iletişim kurabilirler. 
 
 [ANS grubu UK](https://www.ans.co.uk/)
 
@@ -40,11 +40,13 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 
 [Intercloud](https://www.intercloud.com/partners/cloud-service-providers/get-azure-expressroute)
 
-[IIJ](https://www.iij.ad.jp/biz/cloudex/)
+[IıJ](https://www.iij.ad.jp/biz/cloudex/)
 
-[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/)
+[Interxiyon](https://www.interxion.com/products/interconnection/cloud-connect/)
 
 [ixreach](https://www.ixreach.com/)
+
+[KINX](https://www.kinx.net/service/cloud/?lang=en)
 
 [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
 
@@ -54,7 +56,9 @@ Azure ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağı hizmetle
 
 [Tata Iletişimleri](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
 
-[Vandis](https://www.vandis.com/services/azure-migration/)
+[Vandis](https://www.vandis.com/microsoft-azure-practice/)
+
+[Dikkatli IT](https://vigilant.it/manage-cloud-service/)
 
 ## <a name="expressroute"></a>ExpressRoute iş ortakları
 

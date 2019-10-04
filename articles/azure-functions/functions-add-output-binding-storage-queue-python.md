@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171079"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839188"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python işleviniz için bir Azure depolama kuyruğu bağlama ekleme
 
@@ -24,26 +24,17 @@ Azure Işlevleri, kendi tümleştirme kodunuzu yazmak zorunda kalmadan Azure hiz
 
 Bu makalede, [önceki hızlı başlangıç makalesinde](functions-create-first-function-python.md) oluşturduğunuz Işlevi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
 
-Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Bu bağlantıyı daha kolay hale getirmek için, işlev uygulamanızla oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı `AzureWebJobsStorage`bir uygulama ayarında depolanıyor.  
+Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Bu bağlantıyı daha kolay hale getirmek için, işlev uygulamanızla oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten `AzureWebJobsStorage` adlı bir uygulama ayarında depolanıyor.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Bu makaleye başlamadan önce, [Python hızlı](functions-create-first-function-python.md)başlangıcının 1. bölümündeki adımları uygulayın.
 
+[!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
+
 ## <a name="download-the-function-app-settings"></a>İşlev uygulaması ayarlarını indirin
 
-Önceki hızlı başlangıç makalesinde, Azure 'da gerekli depolama hesabıyla birlikte bir işlev uygulaması oluşturdunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu makalede, aynı hesaptaki bir depolama kuyruğuna iletiler yazarsınız. İşlevi yerel olarak çalıştırırken depolama hesabınıza bağlanmak için, uygulama ayarlarını yerel. Settings. JSON dosyasına indirmeniz gerekir. Ayarları yerel. Settings. json ' a indirmek için, önceki makaledeki işlev uygulamanızın adıyla `<APP_NAME>` değiştirerek aşağıdaki Azure Functions Core Tools komutunu çalıştırın:
-
-```bash
-func azure functionapp fetch-app-settings <APP_NAME>
-```
-
-Azure hesabınızda oturum açmanız gerekebilir.
-
-> [!IMPORTANT]  
-> Gizli dizi içerdiğinden, Local. Settings. JSON dosyası asla yayımlanmaz ve kaynak denetiminden dışlanmalıdır.
-
-Depolama hesabı bağlantı dizesi `AzureWebJobsStorage`olan değere ihtiyacınız vardır. Çıkış bağlamasının beklendiği gibi çalıştığını doğrulamak için bu bağlantıyı kullanın.
+[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>Uzantı paketlerini etkinleştir
 
@@ -51,86 +42,19 @@ Depolama hesabı bağlantı dizesi `AzureWebJobsStorage`olan değere ihtiyacın�
 
 Artık, depolama çıkış bağlamasını projenize ekleyebilirsiniz.
 
-## <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
+## <a name="add-an-output-binding"></a>Çıkış bağlaması ekleme
 
-İşlevlerde, her bağlama türü, function. json dosyasında `direction`bir, `type`a ve UNIQUE `name` tanımlanmasını gerektirir. Bağlama türüne bağlı olarak ek özellikler gerekli olabilir. [Kuyruk çıkış yapılandırması](functions-bindings-storage-queue.md#output---configuration) , bir Azure depolama kuyruğu bağlaması için gereken alanları açıklar.
+Işlevlerde, her bağlama türü, function. json dosyasında tanımlanacak bir `direction`, `type` ve benzersiz bir `name` gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
 
-Bir bağlama oluşturmak için, function. JSON dosyasına bir bağlama yapılandırma nesnesi eklersiniz. Bu özelliklere sahip `bindings` diziye bir nesne eklemek için httptrigger klasörünüzdeki function. json dosyasını düzenleyin:
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-| Özellik | Value | Açıklama |
-| -------- | ----- | ----------- |
-| **`name`** | `msg` | Kodunuzda başvurulan bağlama parametresini tanımlayan ad. |
-| **`type`** | `queue` | Bağlama bir Azure depolama kuyruğu bağlamadır. |
-| **`direction`** | `out` | Bağlama bir çıkış bağlamadır. |
-| **`queueName`** | `outqueue` | Bağlamanın yazdığı kuyruğun adı. `queueName` Yoksa, bağlama ilk kullanımda onu oluşturur. |
-| **`connection`** | `AzureWebJobsStorage` | Depolama hesabı için bağlantı dizesini içeren bir uygulama ayarının adı. `AzureWebJobsStorage` Ayar, işlev uygulamasıyla oluşturduğunuz depolama hesabı için bağlantı dizesini içerir. |
+## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlamayı kullanan kodu ekleyin
 
-Function. JSON dosyanız Şu örneğe benzer şekilde görünmelidir:
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-  {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-
-## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
-
-`name` Yapılandırıldıktan sonra, işlev imzasında bir yöntem özniteliği olarak bağlamaya erişmek için kullanmaya başlayabilirsiniz. Aşağıdaki örnekte `msg` , bir örneğidir [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest).
-
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
 Çıkış bağlamayı kullandığınızda, kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
 
-## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
+## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırın
 
 Daha önce olduğu gibi, Işlevleri çalışma zamanını yerel olarak başlatmak için aşağıdaki komutu kullanın:
 
@@ -141,48 +65,25 @@ func host start
 > [!NOTE]  
 > Önceki hızlı başlangıçta ana bilgisayar. JSON içindeki uzantı paketlerinin etkinleştirilmesi nedeniyle, [depolama bağlama uzantısı](functions-bindings-storage-blob.md#packages---functions-2x) , başlangıç sırasında diğer Microsoft bağlama uzantılarıyla birlikte indirilip sizin için yüklendi.
 
-Çalışma zamanı çıktısından `HttpTrigger` işlevinizin URL’sini kopyalayın ve tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesini `?name=<yourname>` bu URL 'ye ekleyin ve isteği çalıştırın. Önceki makalede yaptığınız gibi tarayıcıda aynı yanıtı görmeniz gerekir.
+@No__t-0 işlevinizin URL 'sini çalışma zamanı çıktısından kopyalayın ve tarayıcınızın adres çubuğuna yapıştırın. @No__t-0 sorgu dizesini bu URL 'ye ekleyin ve isteği çalıştırın. Önceki makalede yaptığınız gibi tarayıcıda aynı yanıtı görmeniz gerekir.
 
-Bu kez, çıkış bağlaması aynı zamanda depolama hesabınızda adlı `outqueue` bir kuyruk oluşturur ve bu dizeyi içeren bir ileti ekler.
+Bu kez, çıkış bağlama aynı zamanda depolama hesabınızda `outqueue` adlı bir kuyruk oluşturur ve bu dizeyi içeren bir ileti ekler.
 
 Ardından, yeni kuyruğu görüntülemek ve bir iletinin eklendiğini doğrulamak için Azure CLı 'yi kullanırsınız. Kuyruğunuzu, [Microsoft Azure Depolama Gezgini][Azure Storage Explorer] veya [Azure Portal](https://portal.azure.com)kullanarak da görüntüleyebilirsiniz.
 
 ### <a name="set-the-storage-account-connection"></a>Depolama hesabı bağlantısını ayarla
 
-Local. Settings. json dosyasını açın ve depolama hesabı bağlantı dizesi olan `AzureWebJobsStorage`değerini kopyalayın. Aşağıdaki Bash komutunu kullanarak ortamdeğişkeninibağlantıdizesineayarlayın:`AZURE_STORAGE_CONNECTION_STRING`
-
-```azurecli-interactive
-export AZURE_STORAGE_CONNECTION_STRING=<STORAGE_CONNECTION_STRING>
-```
-
-`AZURE_STORAGE_CONNECTION_STRING` Ortam değişkeninde bağlantı dizesini ayarladığınızda, her seferinde kimlik doğrulaması sağlamak zorunda kalmadan depolama hesabınıza erişebilirsiniz.
+[!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 ### <a name="query-the-storage-queue"></a>Depolama kuyruğunu sorgulama
 
-Aşağıdaki örnekte olduğu gibi [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) , hesabınızdaki depolama kuyruklarını görüntülemek için komutunu kullanabilirsiniz:
-
-```azurecli-interactive
-az storage queue list --output tsv
-```
-
-Bu komutun çıktısı, işlev çalıştırıldığında oluşturulan kuyruk olan `outqueue`adlı bir kuyruk içerir.
-
-Sonra, bu kuyruktaki [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) iletileri görüntülemek için komutunu kullanın:
-
-```azurecli-interactive
-echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-```
-
-Döndürülen dize, işlevi test etmek için gönderdiğiniz iletiyle aynı olmalıdır.
-
-> [!NOTE]  
-> Önceki örnek, Base64 olan döndürülen dizenin kodunu çözer. Bunun nedeni, kuyruk depolama bağlamalarının Azure depolama 'ya [Base64 dizeleri](functions-bindings-storage-queue.md#encoding)olarak yazma ve okuma.
+[!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
 Şimdi güncelleştirilmiş işlev uygulamasını Azure 'da yeniden yayımlamanız zaman.
 
 [!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
 
-Yine, dağıtılan işlevi test etmek için kıvrımlı veya tarayıcı kullanabilirsiniz. Daha önce olduğu gibi, aşağıdaki örnekte `&name=<yourname>` olduğu gibi sorgu dizesini URL 'ye ekleyin:
+Yine, dağıtılan işlevi test etmek için kıvrımlı veya tarayıcı kullanabilirsiniz. Daha önce olduğu gibi, aşağıdaki örnekte olduğu gibi `&name=<yourname>` sorgu dizesini URL 'ye ekleyin:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
@@ -199,6 +100,6 @@ HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için günce
 Sonra, işlev uygulamanız için Application Insights izlemeyi etkinleştirmelisiniz:
 
 > [!div class="nextstepaction"]
-> [Application Insights tümleştirmesini etkinleştirme](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Application Insights tümleştirmeyi etkinleştir](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 manager: jeconnoc
-ms.openlocfilehash: 63065c918a6f78510b4908c5e2ae80df67665b40
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: dfb4abaf3868b76e17fb35f952c4db6bcdf30634
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672611"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838970"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Visual Studio Code kullanarak işlevleri Azure depolama 'ya bağlama
 
@@ -23,7 +23,7 @@ Bu makalede, [önceki hızlı başlangıç makalesinde](functions-create-first-f
 
 Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Daha kolay hale getirmek için, işlev uygulamanız ile oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten `AzureWebJobsStorage` adlı bir uygulama ayarında depolanıyor.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Bu makaleye başlamadan önce, aşağıdaki gereksinimleri karşılamanız gerekir:
 
@@ -47,7 +47,7 @@ Bu makalede, Visual Studio Code Azure aboneliğinizde zaten oturum açmış oldu
 
 1. Depolama hesabı bağlantı dizesi değeri için anahtar olan `AzureWebJobsStorage` değerini kopyalayın. Çıkış bağlamasının beklendiği gibi çalıştığını doğrulamak için bu bağlantıyı kullanın.
 
-## <a name="register-binding-extensions"></a>Bağlama uzantılarını kaydetme
+## <a name="register-binding-extensions"></a>Bağlama uzantılarını Kaydet
 
 Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştırmadan önce depolama bağlamaları uzantısının yüklü olması gerekir. 
 
@@ -55,7 +55,7 @@ Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştır
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
 
 HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketleri olarak uygulanır. Depolama uzantısı paketini projenize eklemek için Terminal penceresinde aşağıdaki [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın.
 
@@ -65,102 +65,29 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ---
 Şimdi, depolama çıkış bağlamasını projenize ekleyebilirsiniz.
 
-## <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
+## <a name="add-an-output-binding"></a>Çıkış bağlaması ekleme
 
 Işlevlerde, her bağlama türü, function. json dosyasında tanımlanacak bir `direction`, `type` ve benzersiz bir `name` gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-Bağlama öznitelikleri doğrudan function. json dosyasında tanımlanır. Bağlama türüne bağlı olarak ek özellikler gerekli olabilir. [Kuyruk çıkış yapılandırması](functions-bindings-storage-queue.md#output---configuration) , bir Azure depolama kuyruğu bağlaması için gereken alanları açıklar. Uzantı, function. JSON dosyasına bağlama eklemeyi kolaylaştırır. 
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-Bir bağlama oluşturmak için, HttpTrigger klasörünüzdeki `function.json` dosyasını sağ tıklatın (macOS üzerinde CTRL + tıklama) ve **bağlama Ekle...** öğesini seçin. Yeni bağlama yönelik aşağıdaki bağlama özelliklerini tanımlamak için istemleri izleyin:
-
-| İstem | Value | Açıklama |
-| -------- | ----- | ----------- |
-| **Bağlama yönünü seçin** | `out` | Bağlama bir çıkış bağlamadır. |
-| **Yön içeren bağlamayı seçin...** | `Azure Queue Storage` | Bağlama bir Azure depolama kuyruğu bağlamadır. |
-| **Kodunuzda bu bağlamayı tanımlamak için kullanılan ad** | `msg` | Kodunuzda başvurulan bağlama parametresini tanımlayan ad. |
-| **İletinin gönderileceği kuyruk** | `outqueue` | Bağlamanın yazdığı kuyruğun adı. *SıraAdı* mevcut olmadığında, bağlama ilk kullanımda oluşturulur. |
-| **"Yerel. Setting. JSON" ayarını seçin** | `AzureWebJobsStorage` | Depolama hesabı için bağlantı dizesini içeren bir uygulama ayarının adı. @No__t-0 ayarı, işlev uygulamasıyla oluşturduğunuz depolama hesabı için bağlantı dizesini içerir. |
-
-Function. JSON dosyanızdaki `bindings` dizisine bir bağlama eklenir ve bundan sonra aşağıdaki örnekte olduğu gibi görünmelidir:
-
-```json
-{
-   ...
-
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
 
 ---
 
-## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
+## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlamayı kullanan kodu ekleyin
 
 Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişmek için bağlamanın `name` ' ı kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-Bir kuyruk iletisi oluşturmak için `context.bindings` üzerinde `msg` çıkış bağlama nesnesini kullanan kodu ekleyin. Bu kodu `context.res` deyiminden önce ekleyin.
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
-```javascript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + 
-(req.query.name || req.body.name);
-```
-
-Bu noktada, işleviniz aşağıdaki gibi görünmelidir:
-
-```javascript
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
-
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + 
-        (req.query.name || req.body.name);
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
-
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
@@ -170,7 +97,7 @@ module.exports = async function (context, req) {
 
 Çıkış bağlaması ilk kullanıldığında, depolama hesabınızda Işlevler çalışma zamanına göre **outqueue** adlı yeni bir kuyruk oluşturulur. Depolama Gezgini, sıranın yeni iletiyle birlikte oluşturulduğunu doğrulamak için kullanacaksınız.
 
-### <a name="connect-storage-explorer-to-your-account"></a>Depolama Gezgini’ni hesabınıza bağlama
+### <a name="connect-storage-explorer-to-your-account"></a>Depolama Gezgini hesabınıza bağlama
 
 Azure Depolama Gezgini zaten yüklediyseniz ve Azure hesabınıza bağladıysanız bu bölümü atlayın.
 
@@ -180,17 +107,17 @@ Azure Depolama Gezgini zaten yüklediyseniz ve Azure hesabınıza bağladıysan�
 
 1. **Bağlan** iletişim kutusunda, **Azure hesabı ekle**' yi seçin, **Azure ortamınızı**seçin ve oturum aç ' ı seçin. **..** 
 
-    ![Azure hesabınızda oturum açma](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
+    ![Azure hesabınızda oturum açın](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-connect-azure-account.png)
 
 Hesabınızda başarıyla oturum açtıktan sonra hesabınızla ilişkili tüm Azure aboneliklerini görürsünüz.
 
-### <a name="examine-the-output-queue"></a>Çıkış kuyruğunu inceleme
+### <a name="examine-the-output-queue"></a>Çıkış sırasını İnceleme
 
 1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın, sonra `Azure Storage: Open in Storage Explorer` komutunu arayıp çalıştırın ve depolama hesabınızın adını seçin. Depolama Hesabınız Azure Depolama Gezgini açılır.  
 
-1. **Kuyruklar** düğümünü genişletin ve sonra **outqueue** adlı kuyruğu seçin. 
+1. **Kuyruklar** düğümünü genişletin ve ardından **outqueue**adlı kuyruğu seçin. 
 
-   Kuyruk, HTTP ile tetiklenen işlevi çalıştırdığınızda kuyruk çıkış bağlamasının oluşturduğu iletiyi içerir. İşlevi *Azure*'un varsayılan `name` değeriyle çağırdıysanız, kuyruk iletisi işleve *name olarak geçirilir: Azure @ no__t-0.
+   Sıra, HTTP ile tetiklenen işlevi çalıştırdığınızda sıra çıkış bağlamasının oluşturduğu iletiyi içerir. İşlevi *Azure*'un varsayılan `name` değeriyle çağırdıysanız, kuyruk iletisi *Işleve geçirilir: Azure*.
 
     ![Azure Depolama Gezgini gösterilen kuyruk iletisi](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
@@ -212,11 +139,11 @@ Hesabınızda başarıyla oturum açtıktan sonra hesabınızla ilişkili tüm A
 
 1. Çıktı bağlamasının sırada yeni bir ileti oluşturmadığını doğrulamak için, [depolama sırasındaki iletiyi yeniden görüntüleyin](#examine-the-output-queue) .
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
-Azure’da *Kaynaklar*; işlev uygulamalarını, işlevleri, depolama hesaplarını ve benzeri öğeleri ifade eder. *Kaynak grupları* halinde gruplandırılırlar ve bir grubu silerek içindeki her şeyi silebilirsiniz.
+Azure 'daki *kaynaklar* , işlev uygulamaları, işlevler, depolama hesapları ve benzeri işlemler anlamına gelir. Bunlar *kaynak grupları*halinde gruplandırılır ve grubu silerek bir gruptaki her şeyi silebilirsiniz.
 
-Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap durumunuza](https://azure.microsoft.com/account/) ve [hizmet fiyatlandırmanıza](https://azure.microsoft.com/pricing/) bağlı olarak size bu kaynakların ücretleri yansıtılabilir. Kaynaklara artık ihtiyacınız yoksa, şunları yaparak silebilirsiniz:
+Bu hızlı başlangıçlarını gerçekleştirmek için kaynaklar oluşturdunuz. [Hesap durumunuz](https://azure.microsoft.com/account/) ve [hizmet fiyatlandırmasına](https://azure.microsoft.com/pricing/)bağlı olarak bu kaynaklar için faturalandırılırsınız. Kaynaklara artık ihtiyacınız yoksa, bunların nasıl silineceği aşağıda verilmiştir:
 
 1. Visual Studio Code ' de, F1 tuşuna basarak komut paletini açın. Komut paletinde, `Azure Functions: Open in portal` ' ı arayıp seçin.
 
@@ -226,11 +153,11 @@ Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap du
 
     ![İşlev uygulaması sayfasından silinecek kaynak grubunu seçin.](./media/functions-add-output-binding-storage-queue-vs-code/functions-app-delete-resource-group.png)
 
-1. **Kaynak grubu** sayfasında, dahil edilen kaynakların listesini gözden geçirin ve silmek istediğiniz kaynakların bunlar olduğunu doğrulayın.
+1. **Kaynak grubu** sayfasında, dahil edilen kaynakların listesini gözden geçirin ve silmek istedikleriniz olduğunu doğrulayın.
  
-1. **Kaynak grubunu sil**’i seçin ve yönergeleri izleyin.
+1. **Kaynak grubunu sil**' i seçin ve yönergeleri izleyin.
 
-   Silme işlemi birkaç dakika sürebilir. İşlem tamamlandığında, birkaç saniye boyunca bir bildirim görüntülenir. Bildirimi görüntülemek için sayfanın üst kısmındaki zil simgesini de seçebilirsiniz.
+   Silme işlemi birkaç dakika sürebilir. İşlem tamamlandığında, birkaç saniye boyunca bir bildirim görüntülenir. Ayrıca, bildirimi görüntülemek için sayfanın üst kısmındaki zil simgesini de seçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -239,6 +166,6 @@ HTTP ile tetiklenen işlevinizi bir depolama kuyruğuna veri yazmak için günce
 Sonra, işlev uygulamanız için Application Insights izlemeyi etkinleştirmelisiniz:
 
 > [!div class="nextstepaction"]
-> [Application Insights tümleştirmesini etkinleştirme](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Application Insights tümleştirmeyi etkinleştir](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Depolama Gezgini]: https://storageexplorer.com/

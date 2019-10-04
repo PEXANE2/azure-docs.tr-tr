@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f468b2afce1609de126859546a72544ba403424e
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650451"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838879"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -46,7 +46,7 @@ Her planın farklı davranışları vardır. Her Azure Işlevleri özelliği iç
 [el ile tetikleyici eşitlemesi](#trigger-syncing)gerektiren <sup>1</sup> dağıtım teknolojisi.  
 <sup>2</sup> Portal düzenlemesi yalnızca Premium ve adanmış planlar kullanılarak Linux üzerinde IŞLEVLERE yönelik http ve Zamanlayıcı Tetikleyicileri için etkindir.
 
-## <a name="key-concepts"></a>Önemli kavramlar
+## <a name="key-concepts"></a>Temel kavramlar
 
 Bazı temel kavramlar, dağıtımların Azure Işlevlerinde nasıl çalıştığını anlamak için önemlidir.
 
@@ -55,8 +55,8 @@ Bazı temel kavramlar, dağıtımların Azure Işlevlerinde nasıl çalıştığ
 Tetikleyicilerden herhangi birini değiştirdiğinizde, Işlevler altyapısının değişiklikler farkında olmalıdır. Eşitleme, birçok dağıtım teknolojisi için otomatik olarak gerçekleşir. Ancak, bazı durumlarda tetikleyiclerinizi el ile eşitlemeniz gerekir. Güncelleştirmelerinizi bir dış paket URL 'sine, yerel git 'e, bulut eşitlemesine veya FTP 'ye başvurarak dağıttığınızda, tetikleyiclerinizi el ile eşitlemeniz gerekir. Tetikleyicileri üç yönden biriyle eşitleyebilirsiniz:
 
 * İşlev uygulamanızı Azure portal yeniden başlatın
-* `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` [Ana anahtarı](functions-bindings-http-webhook.md#authorization-keys)kullanarak bir http post isteği gönderin.
-* Uygulamasına `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`bir http post isteği gönderin. Yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve işlev uygulamanızın adıyla değiştirin.
+* [Ana anahtarı](functions-bindings-http-webhook.md#authorization-keys)kullanarak `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` ' a http post isteği gönderin.
+* @No__t-0 ' a HTTP POST isteği gönderin. Yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve işlev uygulamanızın adıyla değiştirin.
 
 ### <a name="remote-build"></a>Uzak derleme
 
@@ -69,7 +69,7 @@ Azure Işlevleri, ZIP dağıtımlarından sonra aldığı kodda derlemeleri otom
 
 Windows üzerinde çalışan tüm işlev uygulamalarının SCM (veya [kudu](https://github.com/projectkudu/kudu)) sitesi küçük bir yönetim uygulamasına sahiptir. Bu site, Azure Işlevleri için dağıtım ve derleme mantığının çoğunu işler.
 
-Bir uygulama Windows 'a dağıtıldığında, ( `dotnet restore` C#) veya `npm install` (JavaScript) gibi dile özgü komutlar çalıştırılır.
+Bir uygulama Windows 'a dağıtıldığında, `dotnet restore` (C#) veya `npm install` (JavaScript) gibi dile özgü komutlar çalıştırılır.
 
 #### <a name="remote-build-on-linux-preview"></a>Linux üzerinde uzak derleme (Önizleme)
 
@@ -99,7 +99,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
 İşlev uygulamanızı içeren bir uzak paket (. zip) dosyasına başvurmak için bir dış paket URL 'SI kullanabilirsiniz. Dosya, girilen URL 'den indirilir ve uygulama [paket modundan Çalıştır](run-functions-from-deployment-package.md) bölümünde çalışır.
 
->__Nasıl kullanılır:__ Uygulama `WEBSITE_RUN_FROM_PACKAGE` ayarlarınıza ekleyin. Bu ayarın değeri bir URL olmalıdır (çalıştırmak istediğiniz belirli paket dosyasının konumu). Ayarları [portalda](functions-how-to-use-azure-function-app-settings.md#settings) ya da [Azure CLI kullanarak](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)ekleyebilirsiniz. 
+>__Nasıl kullanılır:__ Uygulama ayarlarınıza `WEBSITE_RUN_FROM_PACKAGE` ekleyin. Bu ayarın değeri bir URL olmalıdır (çalıştırmak istediğiniz belirli paket dosyasının konumu). Ayarları [portalda](functions-how-to-use-azure-function-app-settings.md#settings) ya da [Azure CLI kullanarak](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)ekleyebilirsiniz. 
 >
 >Azure Blob depolama kullanırsanız, IŞLEVLERE pakete erişim sağlamak için [paylaşılan erişim imzası (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) olan bir özel kapsayıcı kullanın. Uygulamanın her yeniden başlatıldığı zaman içeriğin bir kopyasını getirir. Başvurunuz, uygulamanın ömrü için geçerli olmalıdır.
 
@@ -109,7 +109,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
 İşlev uygulamanızı içeren bir. zip dosyasını Azure 'a göndermek için ZIP Deploy kullanın. İsteğe bağlı olarak, uygulamanızı [paketten çalışmaya](run-functions-from-deployment-package.md)başlayacak şekilde ayarlayabilir veya [uzak bir derleme](#remote-build) gerçekleşmektir.
 
->__Nasıl kullanılır:__ En sevdiğiniz istemci aracını kullanarak dağıtın: [Vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual STUDIO](functions-develop-vs.md#publish-to-azure)veya [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Bir. zip dosyasını işlev uygulamanıza el ile dağıtmak için, [bir. zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)' daki yönergeleri izleyin.
+>__Nasıl kullanılır:__ En sevdiğiniz istemci aracını kullanarak dağıtın: [vs Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual STUDIO](functions-develop-vs.md#publish-to-azure)veya [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Bir. zip dosyasını işlev uygulamanıza el ile dağıtmak için, [bir. zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)' daki yönergeleri izleyin.
 
 [Uzak yapıyla](#remote-build)bir ZIP dağıtımı gerçekleştirmek Için aşağıdaki [çekirdek araçları](functions-run-local.md) komutunu kullanın:
 
@@ -119,7 +119,7 @@ func azure functionapp publish <app name> --build remote
 
 Alternatif olarak, ' ' azureFunctions. scmDoBuildDuringDeployment "bayrağını ekleyerek dağıtımı yaparken uzak bir derlemeyi gerçekleştirmesini VS Code bildirebilirsiniz. VS Code bayrak eklemeyi öğrenmek için [Azure Işlevleri uzantısı wiki](https://github.com/microsoft/vscode-azurefunctions/wiki)'deki yönergeleri okuyun.
 
->ZIP dağıtımını kullanarak dağıtırken, uygulamanızı [paketten çalışacak](run-functions-from-deployment-package.md)şekilde ayarlayabilirsiniz. Paketten çalıştırmak için `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarı değerini olarak `1`ayarlayın. ZIP dağıtımı önerilir. Uygulamalarınız için daha hızlı yükleme süreleri verir ve VS Code, Visual Studio ve Azure CLı için varsayılandır. 
+>ZIP dağıtımını kullanarak dağıtırken, uygulamanızı [paketten çalışacak](run-functions-from-deployment-package.md)şekilde ayarlayabilirsiniz. Paketten çalıştırmak için `WEBSITE_RUN_FROM_PACKAGE` uygulama ayarı değerini `1` olarak ayarlayın. ZIP dağıtımı önerilir. Uygulamalarınız için daha hızlı yükleme süreleri verir ve VS Code, Visual Studio ve Azure CLı için varsayılandır. 
 
 >__Ne zaman kullanılır:__ ZIP dağıtımı, Azure Işlevleri için önerilen dağıtım teknolojisidir.
 
@@ -130,9 +130,9 @@ Alternatif olarak, ' ' azureFunctions. scmDoBuildDuringDeployment "bayrağını 
 >__Nasıl kullanılır:__ Premium veya adanmış planda bir Linux işlev uygulaması oluşturun ve hangi kapsayıcı görüntüsünün çalıştırılacağını belirtin. Bunu iki şekilde yapabilirsiniz:
 >
 >* Azure portal bir Azure App Service planında bir Linux işlev uygulaması oluşturun. **Yayımla**Için **Docker görüntüsü**' nü seçin ve kapsayıcıyı yapılandırın. Resmin barındırıldığı konumu girin.
->* Azure CLı kullanarak App Service planında bir Linux işlev uygulaması oluşturun. Nasıl yapılacağını öğrenmek için bkz. [özel bir görüntü kullanarak Linux üzerinde Işlev oluşturma](functions-create-function-linux-custom-image.md#create-and-deploy-the-custom-image).
+>* Azure CLı kullanarak App Service planında bir Linux işlev uygulaması oluşturun. Nasıl yapılacağını öğrenmek için bkz. [özel bir görüntü kullanarak Linux üzerinde Işlev oluşturma](functions-create-function-linux-custom-image.md#create-a-premium-plan).
 >
->Özel bir kapsayıcı kullanarak mevcut bir uygulamaya dağıtmak için, [Azure Functions Core Tools](functions-run-local.md)bölümünde [`func deploy`](functions-run-local.md#publish) komutunu kullanın.
+>Özel bir kapsayıcı kullanarak mevcut bir uygulamaya dağıtmak için, [Azure Functions Core Tools](functions-run-local.md) [`func deploy`](functions-run-local.md#publish) komutunu kullanın.
 
 >__Ne zaman kullanılır:__ İşlev uygulamanızın çalıştırıldığı Linux ortamı üzerinde daha fazla denetime ihtiyacınız olduğunda Docker kapsayıcı seçeneğini kullanın. Bu dağıtım mekanizması yalnızca Linux üzerinde çalışan Işlevler için kullanılabilir.
 
@@ -142,7 +142,7 @@ Web Dağıtımı paketler ve Windows uygulamalarınızı Azure 'da Windows üzer
 
 >__Nasıl kullanılır:__ [Azure işlevleri Için Visual Studio Araçları](functions-create-your-first-function-visual-studio.md)'nı kullanın. Paket dosyasından **Çalıştır (önerilir)** onay kutusunu temizleyin.
 >
->Ayrıca, [3,6 Web dağıtımı](https://www.iis.net/downloads/microsoft/web-deploy) indirebilir ve doğrudan çağırabilirsiniz `MSDeploy.exe` .
+>Ayrıca, [3,6 Web dağıtımı](https://www.iis.net/downloads/microsoft/web-deploy) indirebilir ve doğrudan `MSDeploy.exe` ' i çağırabilirsiniz.
 
 >__Ne zaman kullanılır:__ Web Dağıtımı desteklenir ve sorun yoktur, ancak tercih edilen mekanizma, [paketten Çalıştır özelliği etkinken ZIP dağıtmaktır](#zip-deploy). Daha fazla bilgi için bkz. [Visual Studio geliştirme Kılavuzu](functions-develop-vs.md#publish-to-azure).
 
@@ -154,7 +154,7 @@ Web Dağıtımı paketler ve Windows uygulamalarınızı Azure 'da Windows üzer
 
 >__Ne zaman kullanılır:__ Kaynak denetimini kullanmak, işlev uygulamalarında işbirliği yapan takımlar için en iyi uygulamadır. Kaynak denetimi, daha karmaşık dağıtım işlem hatlarını sağlayan iyi bir dağıtım seçeneğidir.
 
-### <a name="local-git"></a>Yerel Git
+### <a name="local-git"></a>Yerel git
 
 Yerel bir git 'i kullanarak yerel makinenizden Azure Işlevlerine kod göndererek git 'i kullanabilirsiniz.
 
@@ -182,7 +182,7 @@ FTP 'yi kullanarak doğrudan Azure Işlevlerine dosya aktarabilirsiniz.
 
 Portal tabanlı düzenleyicide, işlev uygulamanızda olan dosyaları doğrudan düzenleyebilirsiniz (aslında yaptığınız değişiklikleri her kaydedişinizde dağıtım yapabilirsiniz).
 
->__Nasıl kullanılır:__ Azure portal işlevlerinizi düzenleyebilmek için, [işlevlerinizi portalda oluşturmuş](functions-create-first-azure-function.md)olmanız gerekir. Tek bir gerçeği kaynağını korumak için, başka bir dağıtım yöntemi kullanmak, işlevinizi salt okunurdur ve Portal düzenlemesini devam ettirmesini önler. Azure Portal dosyalarınızı düzenleyebileceğiniz bir duruma dönmek için, düzenleme modunu el ile yeniden `Read/Write` açıp dağıtıma ilişkin tüm uygulama ayarlarını (gibi `WEBSITE_RUN_FROM_PACKAGE`) kaldırabilirsiniz. 
+>__Nasıl kullanılır:__ Azure portal işlevlerinizi düzenleyebilmek için, [işlevlerinizi portalda oluşturmuş](functions-create-first-azure-function.md)olmanız gerekir. Tek bir gerçeği kaynağını korumak için, başka bir dağıtım yöntemi kullanmak, işlevinizi salt okunurdur ve Portal düzenlemesini devam ettirmesini önler. Azure portal dosyalarınızı düzenleyebileceğiniz bir duruma geri dönmek için, düzenleme modunu `Read/Write` ' a geri döndürebilir ve dağıtımla ilgili tüm uygulama ayarlarını (`WEBSITE_RUN_FROM_PACKAGE` gibi) kaldırabilirsiniz. 
 
 >__Ne zaman kullanılır:__ Portal, Azure Işlevleri 'ni kullanmaya başlamak için iyi bir yoldur. Daha yoğun bir geliştirme çalışması için aşağıdaki istemci araçlarından birini kullanmanızı öneririz:
 >
@@ -198,14 +198,14 @@ Aşağıdaki tabloda, Portal düzenlemesini destekleyen işletim sistemleri ve d
 | C#SCRIPT |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
 | F# | | | | | | |
 | Java | | | | | | |
-| JavaScript (Node.js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
+| JavaScript (node. js) |✔|✔|✔| |✔<sup>\*</sup>|✔<sup>\*</sup>|
 | Python (Önizleme) | | | | | | |
 | PowerShell (Önizleme) |✔|✔|✔| | | |
 | TypeScript (node. js) | | | | | | |
 
-<sup>*</sup>Portal düzenlemesi yalnızca Premium ve adanmış planlar kullanılarak Linux üzerinde IŞLEVLERE yönelik HTTP ve Zamanlayıcı Tetikleyicileri için etkindir.
+<sup>*</sup> Portal düzenlemesi yalnızca Premium ve adanmış planlar kullanılarak Linux üzerinde IŞLEVLERE yönelik HTTP ve Zamanlayıcı Tetikleyicileri için etkindir.
 
-## <a name="deployment-slots"></a>Dağıtım yuvaları
+## <a name="deployment-slots"></a>Dağıtım Yuvaları
 
 İşlev uygulamanızı Azure 'a dağıttığınızda, doğrudan üretime eklemek yerine ayrı bir dağıtım yuvasına dağıtım yapabilirsiniz. Dağıtım yuvaları hakkında daha fazla bilgi için bkz. Ayrıntılar için [Azure Işlevleri dağıtım yuvaları](../app-service/deploy-staging-slots.md) belgeleri.
 
@@ -213,7 +213,7 @@ Aşağıdaki tabloda, Portal düzenlemesini destekleyen işletim sistemleri ve d
 
 İşlev uygulamalarınızı dağıtma hakkında daha fazla bilgi edinmek için şu makaleleri okuyun: 
 
-+ [Azure İşlevleri için sürekli dağıtım](functions-continuous-deployment.md)
++ [Azure Işlevleri için sürekli dağıtım](functions-continuous-deployment.md)
 + [Azure DevOps kullanarak sürekli teslim](functions-how-to-azure-devops.md)
 + [Azure Işlevleri için ZIP dağıtımları](deployment-zip-push.md)
 + [Azure Işlevlerinizi bir paket dosyasından çalıştırın](run-functions-from-deployment-package.md)

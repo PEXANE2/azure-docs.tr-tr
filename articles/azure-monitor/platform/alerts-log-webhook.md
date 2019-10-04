@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3e29bdf41b0421aa4461b11fbf9bc0535179486d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677764"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838580"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Günlük uyarısı kuralları için Web kancası eylemleri
 [Azure 'da bir günlük uyarısı oluşturulduğunda](alerts-log.md), bir veya daha fazla eylem gerçekleştirmek için [eylem gruplarını kullanarak yapılandırma](action-groups.md) seçeneğiniz vardır. Bu makalede, kullanılabilen farklı Web kancası eylemleri açıklanmakta ve özel bir JSON tabanlı Web kancasının nasıl yapılandırılacağı gösterilmektedir.
 
 > [!NOTE]
-> Web kancası tümleştirmelerinizin [ortak uyarı şemasını](https://aka.ms/commonAlertSchemaDocs) da kullanabilirsiniz. Ortak uyarı şeması, Azure Izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve birleştirilmiş uyarı yüküne sahip olmanın avantajlarından yararlanır. [Ortak uyarı şeması tanımları hakkında bilgi edinin.](https://aka.ms/commonAlertSchemaDefinitions)
+> Web kancası tümleştirmelerinizin [ortak uyarı şemasını](https://aka.ms/commonAlertSchemaDocs) da kullanabilirsiniz. Ortak uyarı şeması, Azure Izleyici 'deki tüm uyarı hizmetlerinde tek bir Genişletilebilir ve Birleşik bir uyarı yüküne sahip olmanın avantajlarından yararlanır. lütfen genel uyarı şemasının günlük uyarıları için özel JSON seçeneğini gözlemleyemediğini unutmayın. , Uyarı kuralı düzeyinde yapmış olabileceğiniz özelleştirmeleri ne olursa olsun, ortak uyarı şeması yüküne erteler. [Ortak uyarı şeması tanımları hakkında bilgi edinin.](https://aka.ms/commonAlertSchemaDefinitions)
 
 ## <a name="webhook-actions"></a>Web kancası eylemleri
 

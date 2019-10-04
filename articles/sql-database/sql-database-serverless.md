@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 04e3881b553f639bb2df948b6ad1154f86f1c9da
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123096"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828227"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL veritabanı sunucusuz (Önizleme)
 
@@ -66,10 +66,10 @@ Aşağıdaki tabloda sunucusuz bilgi işlem katmanı ve sağlanan işlem katman�
 | | **Sunucusuz işlem** | **Sağlanan işlem** |
 |:---|:---|:---|
 |**Veritabanı kullanım deseninin**| Zaman içinde daha düşük ortalama işlem kullanımı ile öngörülemeyen kullanım |  Zamana göre daha fazla ortalama işlem kullanımı veya elastik havuzlar kullanan birden çok veritabanı içeren daha düzenli kullanım düzenleri.|
-| **Performans yönetimi çabaları** |Düşürül|Daha yüksek|
+| **Performans yönetimi çabaları** |Düşürül|Sırada|
 |**İşlem ölçekleme**|Otomatik|El ile|
 |**İşlem yanıtlama hızı**|Etkin olmayan dönemlerden sonra düşük|Hemen|
-|**Faturalandırma ayrıntı düzeyi**|/Saniye|Saatlik|
+|**Faturalandırma ayrıntı düzeyi**|/Saniye|/Saat|
 
 ## <a name="purchasing-model-and-service-tier"></a>Model ve hizmet katmanı satın alma
 
@@ -126,7 +126,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 |Özellik|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulama ve yetkilendirme|Oturum aç|
+|Kimlik doğrulaması ve yetkilendirme|LOGIN|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
 |Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
@@ -141,11 +141,11 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 Ayrıca, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto devam etme işlemi tetiklenir.
 
-### <a name="connectivity"></a>Bağlantı
+### <a name="connectivity"></a>Bağlanabilirlik
 
 Sunucusuz bir veritabanı duraklatıldığında, ilk oturum açma işlemi veritabanını sürdürür ve 40613 hata koduyla veritabanının kullanılamadığını belirten bir hata döndürür. Veritabanı devam ettirdikten sonra, bağlantı kurmak için oturum açma yeniden denenmelidir. Bağlantı yeniden deneme mantığının bulunduğu veritabanı istemcilerinin değiştirilmesi gerekmez.
 
-### <a name="latency"></a>Gecikme süresi
+### <a name="latency"></a>Dönemlerinde
 
 Bir sunucusuz veritabanını oto Resume ve oto duraklatma gecikmesi genellikle 1 dakikalık ve oto duraklamaya 1-10 dakika sıradır.
 
@@ -157,33 +157,33 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
 
    |Hizmet hedefi adı|Hizmet katmanı|Donanım oluşturma|En fazla sanal çekirdek|
    |---|---|---|---|
-   |GP_S_Gen5_1|Genel Amaçlı|Gen5|1\.|
-   |GP_S_Gen5_2|Genel Amaçlı|Gen5|2|
-   |GP_S_Gen5_4|Genel Amaçlı|Gen5|4|
-   |GP_S_Gen5_6|Genel Amaçlı|Gen5|6|
-   |GP_S_Gen5_8|Genel Amaçlı|Gen5|8|
-   |GP_S_Gen5_10|Genel Amaçlı|Gen5|10|
-   |GP_S_Gen5_12|Genel Amaçlı|Gen5|12|
-   |GP_S_Gen5_14|Genel Amaçlı|Gen5|14|
-   |GP_S_Gen5_16|Genel Amaçlı|Gen5|16|
+   |GP_S_Gen5_1|Genel Amaçlı|5\. nesil|1\.|
+   |GP_S_Gen5_2|Genel Amaçlı|5\. nesil|2|
+   |GP_S_Gen5_4|Genel Amaçlı|5\. nesil|4|
+   |GP_S_Gen5_6|Genel Amaçlı|5\. nesil|6|
+   |GP_S_Gen5_8|Genel Amaçlı|5\. nesil|8|
+   |GP_S_Gen5_10|Genel Amaçlı|5\. nesil|10|
+   |GP_S_Gen5_12|Genel Amaçlı|5\. nesil|12|
+   |GP_S_Gen5_14|Genel Amaçlı|5\. nesil|14|
+   |GP_S_Gen5_16|Genel Amaçlı|5\. nesil|16|
 
 2. İsteğe bağlı olarak, varsayılan değerlerini değiştirmek için en düşük sanal çekirdekleri ve oto duraklatma gecikmesini belirtin. Aşağıdaki tabloda bu parametreler için kullanılabilir değerler gösterilmektedir.
 
    |Parametre|Değer seçimleri|Varsayılan değer|
    |---|---|---|---|
-   |En düşük sanal çekirdekler|Herhangi biri {0,5, 1, 2, 4} maksimum sanal çekirdekleri aşmıyor|0,5 sanal çekirdekler|
-   |Oto duraklatma gecikmesi|En düşük 60 dakika (1 saat)<br>Çok 10080 dakika (7 gün)<br>Halinde 60 dakika<br>Oto duraklamayı devre dışı bırak:-1|60 dakika|
+   |En düşük sanal çekirdekler|Yapılandırılan en fazla sanal çekirdek sayısını gösterir- [kaynak sınırlarına](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)bakın.|0,5 sanal çekirdekler|
+   |Oto duraklatma gecikmesi|En az: 60 dakika (1 saat)<br>Maksimum: 10080 dakika (7 gün)<br>Artımlar: 60 dakika<br>Oto duraklamayı devre dışı bırak:-1|60 dakika|
 
 > [!NOTE]
 > Var olan bir veritabanını sunucusuz 'e taşımak veya işlem boyutunu değiştirmek için T-SQL kullanmak, şu anda desteklenmemektedir ancak Azure portal veya PowerShell aracılığıyla yapılabilir.
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Sunucusuz işlem katmanında yeni veritabanı oluştur 
 
-#### <a name="use-azure-portal"></a>Azure portalı kullanma
+#### <a name="use-azure-portal"></a>Azure portal kullan
 
-Bkz [. hızlı başlangıç: Azure SQL veritabanı 'nda Azure portal](sql-database-single-database-get-started.md)kullanarak tek bir veritabanı oluşturun.
+Bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda Azure Portal kullanarak tek bir veritabanı oluşturma](sql-database-single-database-get-started.md).
 
-#### <a name="use-powershell"></a>PowerShell kullanma
+#### <a name="use-powershell"></a>PowerShell 'i kullanma
 
 Aşağıdaki örnek sunucusuz işlem katmanında yeni bir veritabanı oluşturur.  Bu örnek, en az sanal çekirdekler, en fazla sanal çekirdek ve oto duraklatma gecikmesini açıkça belirtir.
 
@@ -202,7 +202,7 @@ New-AzSqlDatabase `
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Veritabanını sağlanan işlem katmanından sunucusuz işlem katmanına taşıma
 
-#### <a name="use-powershell"></a>PowerShell kullanma
+#### <a name="use-powershell"></a>PowerShell 'i kullanma
 
 Aşağıdaki örnek, bir veritabanını sağlanan işlem katmanından sunucusuz işlem katmanına taşımakta. Bu örnek, en az sanal çekirdekler, en fazla sanal çekirdek ve oto duraklatma gecikmesini açıkça belirtir.
 
@@ -225,23 +225,23 @@ Bir sunucusuz veritabanı, sağlanan bir işlem veritabanını sunucusuz bir iş
 
 ## <a name="modifying-serverless-configuration"></a>Sunucusuz yapılandırmayı değiştirme
 
-### <a name="maximum-vcores"></a>En fazla vCore
+### <a name="maximum-vcores"></a>Maksimum sanal çekirdek
 
-#### <a name="use-powershell"></a>PowerShell kullanma
+#### <a name="use-powershell"></a>PowerShell 'i kullanma
 
-Maksimum sanal çekirdekleri değiştirmek, PowerShell 'de `MaxVcore` bağımsız değişkeni kullanılarak [set-azsqldatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir.
+Maksimum sanal çekirdekleri değiştirmek, PowerShell 'de `MaxVcore` bağımsız değişkeni kullanılarak [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir.
 
-### <a name="minimum-vcores"></a>En Az vCore
+### <a name="minimum-vcores"></a>En düşük sanal çekirdekler
 
-#### <a name="use-powershell"></a>PowerShell kullanma
+#### <a name="use-powershell"></a>PowerShell 'i kullanma
 
-Min sanal çekirdeklerinin değiştirilmesi, PowerShell `MinVcore` 'deki [set-azsqldatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak bağımsız değişkeni kullanılarak gerçekleştirilir.
+Minimum sanal çekirdekleri değiştirmek, PowerShell 'de `MinVcore` bağımsız değişkeni kullanılarak [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir.
 
 ### <a name="autopause-delay"></a>Oto duraklatma gecikmesi
 
-#### <a name="use-powershell"></a>PowerShell kullanma
+#### <a name="use-powershell"></a>PowerShell 'i kullanma
 
-Oto duraklatma gecikmesini değiştirmek, PowerShell 'de `AutoPauseDelayInMinutes` bağımsız değişkeni kullanılarak [set-azsqldatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir.
+Oto duraklatma gecikmesini değiştirmek, PowerShell 'de `AutoPauseDelayInMinutes` bağımsız değişkeni kullanılarak [set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) komutu kullanılarak gerçekleştirilir.
 
 ## <a name="monitoring"></a>İzleme
 
@@ -261,16 +261,16 @@ Kullanıcı kaynak havuzu, veritabanının sunucusuz veya sağlanmış bir işle
 
 Bir sunucusuz veritabanının uygulama paketinin ve Kullanıcı havuzunun kaynak kullanımını izlemeye yönelik ölçümler aşağıdaki tabloda listelenmiştir:
 
-|Varlık|Ölçüm|Açıklama|Birimler|
+|Varlık|Ölçüm|Açıklama|Birim|
 |---|---|---|---|
-|Uygulama paketi|app_cpu_percent|Uygulama tarafından, uygulama için izin verilen en fazla Vçekirdelere göre kullanılan sanal çekirdekler yüzdesi.|Yüzde|
+|Uygulama paketi|app_cpu_percent|Uygulama tarafından, uygulama için izin verilen en fazla Vçekirdelere göre kullanılan sanal çekirdekler yüzdesi.|Den|
 |Uygulama paketi|app_cpu_billed|Raporlama döneminde uygulama için faturalandırılan işlem miktarı. Bu süre boyunca ödenen miktar, bu ölçümün ve vCore birim fiyatının ürünüdür. <br><br>Bu ölçümün değerleri, en fazla CPU kullanımı ve her saniye kullanılan bellek için toplanan zamana göre belirlenir. Kullanılan miktar, en düşük sanal çekirdekler ve minimum bellek tarafından ayarlanan şekilde sağlanan minimum miktardan azsa, sağlanan minimum miktar faturalandırılır. İşlemci amacıyla CPU 'yu bellek ile karşılaştırmak için, bellek miktarı GB cinsinden vCore başına 5 GB olarak yeniden ayarlayarak sanal çekirdek birimlerine normalleştirilmelidir.|Sanal çekirdek Saniyeler|
-|Uygulama paketi|app_memory_percent|Uygulama tarafından uygulama için izin verilen en fazla belleğe göre kullanılan bellek yüzdesi.|Yüzde|
-|Kullanıcı havuzu|cpu_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla sanal çekirdeğe göre kullanılan sanal çekirdekler yüzdesi.|Yüzde|
-|Kullanıcı havuzu|data_IO_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla veri ıOPS 'ye göre kullanılan veri ıOPS yüzdesi.|Yüzde|
-|Kullanıcı havuzu|log_IO_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla günlük MB/sn 'ye göre kullanılan günlük MB/sn yüzdesi.|Yüzde|
-|Kullanıcı havuzu|workers_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla çalışanlara göre kullanılan çalışanların yüzdesi.|Yüzde|
-|Kullanıcı havuzu|sessions_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla oturumlara göre kullanılan oturumların yüzdesi.|Yüzde|
+|Uygulama paketi|app_memory_percent|Uygulama tarafından uygulama için izin verilen en fazla belleğe göre kullanılan bellek yüzdesi.|Den|
+|Kullanıcı havuzu|cpu_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla sanal çekirdeğe göre kullanılan sanal çekirdekler yüzdesi.|Den|
+|Kullanıcı havuzu|data_IO_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla veri ıOPS 'ye göre kullanılan veri ıOPS yüzdesi.|Den|
+|Kullanıcı havuzu|log_IO_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla günlük MB/sn 'ye göre kullanılan günlük MB/sn yüzdesi.|Den|
+|Kullanıcı havuzu|workers_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla çalışanlara göre kullanılan çalışanların yüzdesi.|Den|
+|Kullanıcı havuzu|sessions_percent|Kullanıcı iş yükü tarafından Kullanıcı iş yükü için izin verilen en fazla oturumlara göre kullanılan oturumların yüzdesi.|Den|
 
 ### <a name="pause-and-resume-status"></a>Durumu duraklatma ve devam etmeyi
 
@@ -290,13 +290,13 @@ Get-AzSqlDatabase `
 
 Kaynak sınırları için bkz. [sunucusuz işlem katmanı](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
 
-## <a name="billing"></a>Faturalandırma
+## <a name="billing"></a>Ödeme
 
 Faturalandırılan işlem miktarı, her saniye kullanılan en yüksek CPU ve bellek sayısıdır. Kullanılan CPU miktarı ve kullanılan bellek miktarı her biri için sağlanan minimum tutardan azsa, sağlanan miktar faturalandırılır. İşlemci amacıyla CPU 'yu bellek ile karşılaştırmak için, bellek miktarı GB cinsinden vCore başına 5 GB olarak yeniden ayarlayarak sanal çekirdek birimlerine normalleştirilmelidir.
 
 - **Faturalandırılan kaynak**: CPU ve bellek
 - **Faturalandırılan miktar**: Vcore birim fiyatı * Max (en az sanal çekirdek, sanal çekirdek, en az bellek gb * 1/3, bellek GB kullanıldı * 1/3) 
-- **Faturalandırma sıklığı**: /Saniye
+- **Faturalama sıklığı**: saniye başına
 
 VCore birim fiyatı, saniye başına sanal çekirdek başına maliyettir. Belirli bir bölgedeki belirli birim fiyatları için [Azure SQL Veritabanı fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/sql-database/single/) bakın.
 
@@ -304,7 +304,7 @@ Faturalandırılan işlem miktarı aşağıdaki ölçüm tarafından sunulur:
 
 - **Ölçüm**: App_cpu_billed (sanal çekirdek saniye)
 - **Tanım**: Max (min sanal çekirdekler, sanal çekirdekler, en az bellek gb * 1/3, bellek GB kullanılan * 1/3)
-- **Raporlama sıklığı**: Dakika başına
+- **Raporlama sıklığı**: dakika başına
 
 Bu miktar saniyede hesaplanır ve 1 dakikadan fazla toplanır.
 
@@ -314,7 +314,7 @@ Bu durumda, veritabanı ilk 8 saat boyunca işlem ve depolama için faturalandı
 
 Daha kesin olarak, bu örnekteki işlem faturanız aşağıdaki gibi hesaplanır:
 
-|Zaman Aralığı|her saniye kullanılan sanal çekirdekler|Her saniye kullanılan GB|Faturalandırılan işlem boyutu|zaman aralığı içinde faturalandırılan sanal çekirdek Saniyeler|
+|Zaman aralığı|her saniye kullanılan sanal çekirdekler|Her saniye kullanılan GB|Faturalandırılan işlem boyutu|zaman aralığı içinde faturalandırılan sanal çekirdek Saniyeler|
 |---|---|---|---|---|
 |0:00-1:00|4|9|kullanılan sanal çekirdekler|4 sanal çekirdek * 3600 saniye = 14400 sanal çekirdek saniye|
 |1:00-2:00|1\.|12|Kullanılan bellek|12 GB * 1/3 * 3600 saniye = 14400 sanal çekirdek saniye|
@@ -324,11 +324,11 @@ Daha kesin olarak, bu örnekteki işlem faturanız aşağıdaki gibi hesaplanır
 
 İşlem birimi fiyatının $0.000073/vCore/Second olduğunu varsayalım.  Ardından bu 24 saatlik dönem için faturalandırılan işlem, faturalandırılan işlem birimi fiyatının ve sanal çekirdek saniyenin ürünüdür: $0.000073/vCore/Second * 50400 sanal çekirdek saniyeler = $3,68
 
-## <a name="available-regions"></a>Kullanılabilen bölgeler
+## <a name="available-regions"></a>Kullanılabilir bölgeler
 
-Sunucusuz bilgi işlem katmanı, aşağıdaki bölgeler dışında Dünya çapında kullanılabilir: Avustralya Orta, Çin Doğu, Çin Kuzey, Fransa Güney, Almanya Orta, Almanya Kuzeydoğu, Hindistan Batı, Kore Güney, Güney Afrika Batı, UK Kuzey, UK Güney, UK Batı ve Orta Batı ABD.
+Sunucusuz bilgi işlem katmanı, aşağıdaki bölgeler dışında Dünya çapında kullanılabilir: Avustralya Orta, Çin Doğu, Çin Kuzey, Fransa Güney, Almanya Orta, Almanya Kuzeydoğu, Hindistan Batı, Kore Güney, Güney Afrika Batı, UK Kuzey, UK Güney, UK Batı ve Batı Orta ABD.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Başlamak için bkz [. hızlı başlangıç: Azure SQL veritabanı 'nda Azure portal](sql-database-single-database-get-started.md)kullanarak tek bir veritabanı oluşturun.
+- Başlamak için bkz. [hızlı başlangıç: Azure SQL veritabanı 'nda Azure Portal kullanarak tek bir veritabanı oluşturma](sql-database-single-database-get-started.md).
 - Kaynak sınırları için bkz. [sunucusuz işlem katmanı kaynak sınırları](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
