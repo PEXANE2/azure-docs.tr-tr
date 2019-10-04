@@ -1,21 +1,21 @@
 ---
 title: Azure dijital TWINS genel önizleme hizmeti sınırları | Microsoft Docs
 description: Azure Digital TWINS genel önizleme hizmeti sınırlarını anlayın.
-author: dwalthermsft
-manager: deshner
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: dwalther
-ms.openlocfilehash: d182a4aea00581b044b5734a5b7d6831f9e55c45
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 10/03/2019
+ms.openlocfilehash: 88a66506b5102a4efaeefe1c7033b337dff9889a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638485"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949236"
 ---
-# <a name="public-preview-service-limits"></a>Genel önizleme hizmet sınırları
+# <a name="public-preview-service-limits"></a>Genel Önizleme hizmeti sınırları
 
 Genel Önizleme sırasında Azure dijital TWINS 'in aşağıdaki geçici abonelik, örnek ve hız sınırları vardır.
 

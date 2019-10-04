@@ -1,20 +1,20 @@
 ---
 title: Azure dijital TWINS 'de Kullanıcı tanımlı işlevler oluşturma | Microsoft Docs
 description: Azure dijital TWINS 'de Kullanıcı tanımlı işlevler, eşleştiriciler ve rol atamaları oluşturma.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
+ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8a39a79f4b3aeacd267a0c4b9351d2400f11d1ff
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 24b7f05bc59f3eb951897f5e36030b531d8f3aa9
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336905"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959089"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure dijital TWINS 'de Kullanıcı tanımlı işlevler oluşturma
 
@@ -67,11 +67,11 @@ JSON gövdesi ile:
 }
 ```
 
-| Value | Şununla değiştir |
+| Değer | Değiştir |
 | --- | --- |
-| YOUR_SPACE_IDENTIFIER | Örneğiniz üzerinde barındırılıyorsa hangi sunucu bölge |
+| YOUR_SPACE_IDENTIFIER | Örneğinizin barındırıldığı sunucu bölgesi |
 
-## <a name="create-a-user-defined-function"></a>Kullanıcı tanımlı işlev oluşturma
+## <a name="create-a-user-defined-function"></a>Kullanıcı tanımlı bir işlev oluşturma
 
 Kullanıcı tanımlı bir işlev oluşturmak, Azure Digital TWINS yönetim API 'Lerine çok parçalı bir HTTP isteği yapmayı içerir.
 
@@ -107,7 +107,7 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Value | Şununla değiştir |
+| Değer | Değiştir |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Çok parçalı bir içerik sınır adı |
 | YOUR_SPACE_IDENTIFIER | Alan tanımlayıcısı  |
@@ -212,7 +212,7 @@ Kullanıcı tanımlı işlevin altında çalışacağı bir rol ataması oluştu
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Value | Şununla değiştir |
+    | Değer | Değiştir |
     | --- | --- |
     | YOUR_SPACE_NAME | Kullanmak istediğiniz alanın adı |
 
@@ -232,7 +232,7 @@ Kullanıcı tanımlı işlevin altında çalışacağı bir rol ataması oluştu
     }
     ```
 
-    | Value | Şununla değiştir |
+    | Değer | Değiştir |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | İstenen rolün tanımlayıcısı |
     | YOUR_USER_DEFINED_FUNCTION_ID | Kullanmak istediğiniz kullanıcı tanımlı işlevin KIMLIĞI |

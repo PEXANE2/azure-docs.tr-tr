@@ -1,25 +1,26 @@
 ---
-title: 'Öğretici: Azure Digital Twins ile alan izleme | Microsoft Docs'
+title: 'Öğretici: Azure dijital TWINS ile bir alanı Izleme | Microsoft Docs'
 description: Bu öğreticideki adımları kullanarak, uzamsal kaynaklarınızı sağlamayı ve Azure Digital TWINS ile çalışma koşullarını izlemeyi öğrenin.
 services: digital-twins
+ms.author: alinast
 author: alinamstanciu
+manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: alinast
-ms.openlocfilehash: bdf37225e815d3848a87b88737daf4b5a5d2560c
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 74e3c46b2b1427c27923ed91846755797b8da690
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300045"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949080"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Öğretici: Azure dijital TWINS önizlemesi ile derleme ve izleme çalışma koşullarınızı sağlama
 
 Bu öğreticide, Azure Digital TWINS önizlemesi 'ni kullanarak istediğiniz sıcaklık koşulları ve rahatlık düzeyi için boşlukların nasıl izleneceği gösterilmektedir. [Örnek yapıınızı](tutorial-facilities-setup.md)yapılandırdıktan sonra, bu öğreticideki adımları kullanarak, oluşturma ve algılayıcı verilerinize özel işlevler çalıştırma sağlayabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıladığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İzlenecek koşulları tanımlayın.
@@ -27,43 +28,43 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Algılayıcı verilerinin benzetimini yapın.
 > * Kullanıcı tanımlı bir işlevin sonuçlarını alın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
-Bu öğreticide, [Azure dijital TWINS kurulumunuzu tamamladığınız](tutorial-facilities-setup.md)varsayılmaktadır. Devam etmeden önce aşağıdakilere sahip olduğunuzdan emin olun:
+Bu öğreticide, [Azure dijital TWINS kurulumunuzu tamamladığınız](tutorial-facilities-setup.md)varsayılmaktadır. Devam etmeden önce, şunları yaptığınızdan emin olun:
 
 - Bir [Azure hesabı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Çalışan bir Digital Twins örneği. 
-- Çalışma makinenize indirilmiş ve ayıklanmış [Digital Twins C# örnekleri](https://github.com/Azure-Samples/digital-twins-samples-csharp). 
-- Örnek derlemek ve çalıştırmak için geliştirme makinenizde [sürüm 2.1.403 veya sonraki bir sürümü .NET Core SDK](https://www.microsoft.com/net/download) . Doğru `dotnet --version` sürümün yüklendiğini doğrulamak için ' i çalıştırın. 
-- Örnek kodu incelemek için [Visual Studio Code](https://code.visualstudio.com/). 
+- Çalışan bir dijital TWINS örneği. 
+- İş makinenize indirilen ve ayıklanan [dijital TWINS C# örnekleri](https://github.com/Azure-Samples/digital-twins-samples-csharp) . 
+- Örnek derlemek ve çalıştırmak için geliştirme makinenizde [sürüm 2.1.403 veya sonraki bir sürümü .NET Core SDK](https://www.microsoft.com/net/download) . Doğru sürümün yüklendiğini doğrulamak için `dotnet --version` ' yı çalıştırın. 
+- Örnek kodu araştırmak için [Visual Studio Code](https://code.visualstudio.com/) . 
 
 > [!TIP]
 > Yeni bir örnek sağlıyorsanız benzersiz bir dijital TWINS örnek adı kullanın.
 
-## <a name="define-conditions-to-monitor"></a>İzleme koşullarını tanımlama
+## <a name="define-conditions-to-monitor"></a>İzlenecek koşulları tanımlama
 
 *Eşleme*olarak adlandırılan cihaz veya algılayıcı verilerinde izlenecek belirli koşullar kümesini tanımlayabilirsiniz. Ardından, *Kullanıcı tanımlı işlevler*adlı işlevleri tanımlayabilirsiniz. Kullanıcı tanımlı işlevler, boşluklarla ve cihazlarınızdan gelen veriler üzerinde özel mantık yürütür ve bu durum, Matchers tarafından belirtilen koşullardır. Daha fazla bilgi için, [veri işleme ve Kullanıcı tanımlı işlevleri](concepts-user-defined-functions.md)okuyun. 
 
-**İs-QuickStart** örnek projesinden, Visual Studio Code içinde **Src\actions\provisionsample.exe** adlı dosyayı açın. **matchers** türü ile başlayan bölümü bulun. Bu tür altındaki her giriş, belirtilen **ada**sahip bir Eşleştiricisi oluşturur. Eşleştiricisi, **datatypevalue**türünde bir algılayıcı izler. Birkaç algılayıcı içeren bir **cihazlar** düğümüne sahip olan, *odak odası a1*adlı alanla nasıl ilişkili olduğuna dikkat edin. Bu sensörlerden birini izleyecek bir eşleştirici sağlamak için, **Datatypevalue değerinin** algılayıcı **veri türüyle**eşleştiğinden emin olun. 
+**İs-QuickStart** örnek projesinden, Visual Studio Code içinde **Src\actions\provisionsample.exe** adlı dosyayı açın. Tür **eşleştiriciler**ile başlayan bölümü unutmayın. Bu tür altındaki her giriş, belirtilen **ada**sahip bir Eşleştiricisi oluşturur. Eşleştiricisi, **datatypevalue**türünde bir algılayıcı izler. Birkaç algılayıcı içeren bir **cihazlar** düğümüne sahip olan, *odak odası a1*adlı alanla nasıl ilişkili olduğuna dikkat edin. Bu sensörlerden birini izleyecek bir eşleştirici sağlamak için, **Datatypevalue değerinin** algılayıcı **veri türüyle**eşleştiğinden emin olun. 
 
-Aşağıdaki eşleştiriciyi mevcut eşleştiriciler altına ekleyin. Anahtarların hizalandığından ve boşlukların sekmeyle değiştirilmediğinden emin olun. Bu satırlar ayrıca, *Provisionsample. YAML* dosyasında, açıklamalı çizgiler olarak da mevcuttur. Her satırın önündeki `#` karakteri kaldırarak bunların açıklamasını kaldırabilirsiniz.
+Aşağıdaki eşleştiriciyi mevcut eşleştiriciler altına ekleyin. Anahtarların hizalandığından ve boşlukların sekmeyle değiştirilmediğinden emin olun. Bu satırlar ayrıca, *Provisionsample. YAML* dosyasında, açıklamalı çizgiler olarak da mevcuttur. Her satırın önünde `#` karakterini kaldırarak bu açıklamaları özelleştirebilirsiniz.
 
 ```yaml
       - name: Matcher Temperature
         dataTypeValue: Temperature
 ```
 
-Bu Eşleştiricisi `SAMPLE_SENSOR_TEMPERATURE` [, ilk öğreticide](tutorial-facilities-setup.md)eklediğiniz sensöri takip eder. 
+Bu Eşleştiricisi [, ilk öğreticide](tutorial-facilities-setup.md)eklediğiniz `SAMPLE_SENSOR_TEMPERATURE` sensörini izler. 
 
-## <a name="create-a-user-defined-function"></a>Kullanıcı tanımlı işlev oluşturma
+## <a name="create-a-user-defined-function"></a>Kullanıcı tanımlı bir işlev oluşturma
 
 Algılayıcı verilerinizin işlenmesini özelleştirmek için Kullanıcı tanımlı işlevleri kullanabilirsiniz. Bunlar, eşleştiriciler tarafından açıklanan belirli koşullar gerçekleştiğinde, Azure dijital TWINS Örneğinizde çalışabilecek özel JavaScript kodlarıdır. İzlemek istediğiniz her algılayıcı için eşleştiriciler ve Kullanıcı tanımlı işlevler oluşturabilirsiniz. Daha fazla bilgi için, [veri işleme ve Kullanıcı tanımlı işlevleri](concepts-user-defined-functions.md)okuyun. 
 
-Örnek *provisionsample. YAML* dosyasında, **UserDefinedFunctions**türünde başlayan bir bölüm bulun. Bu bölüm, belirli bir **ada**sahip kullanıcı tanımlı bir işlev sağlar. Bu UDF, **Matchernames**altındaki eşleştiriciler listesi üzerinde çalışır. UDF için kendi JavaScript dosyanızı **script** bölümünde sağlayabilirsiniz.
+Örnek *provisionsample. YAML* dosyasında, **UserDefinedFunctions**türünde başlayan bir bölüm bulun. Bu bölüm, belirli bir **ada**sahip kullanıcı tanımlı bir işlev sağlar. Bu UDF, **Matchernames**altındaki eşleştiriciler listesi üzerinde çalışır. **Betik**olarak UDF Için kendi JavaScript Dosyanızı Nasıl sağlayabildiğine dikkat edin.
 
-Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı işleve alan yöneticisi rolünü atar. Bu rol, sağlanan boşlukların herhangi birinden gelen olaylara erişmesine izin verir. 
+Ayrıca **roleatamalar**adlı bölümü de aklınızda bulabilirsiniz. Kullanıcı tanımlı işleve alan yöneticisi rolünü atar. Bu rol, sağlanan boşlukların herhangi birinden gelen olaylara erişmesine izin verir. 
 
-1. *provisionSample.yaml* adlı dosyanın `matcherNames` düğümüne aşağıdaki satırı ekleyerek veya var olan satırın açıklamasını kaldırarak UDF'yi sıcaklık eşleştiricisini içerecek şekilde yapılandırın:
+1. Aşağıdaki satırı, *Provisionsample. YAML* dosyasının `matcherNames` düğümüne ekleyerek ve açıklama ekleyerek sıcaklık eşleştirici 'yi içerecek şekilde yapılandırın:
 
     ```yaml
             - Matcher Temperature
@@ -74,16 +75,16 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
    Sıcaklık ve diğer koşulları izlemek için JavaScript dosyasını değiştirin. Odada hiçbir hareket algılanmadığında koşullara bakmak için aşağıdaki kod satırlarını ekleyin; karbon dioksit seviyelerinin 1.000 ppm ve sıcaklığın 78 derece Fahrenbir süre altında olması gerekir.
 
    > [!NOTE]
-   > Bu bölüm, Kullanıcı tanımlı bir işlevi yazmanın tek bir yolu hakkında bilgi edinmek için *Src\actions\userdefinedfunctions\kullanılabilirliği bility.exe* dosyasını değiştirir. Ancak, [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) dosyasını doğrudan kurulumda kullanmayı seçebilirsiniz. Bu dosya, öğretici için gerekli olan tüm değişikliklere sahiptir. Bunun yerine bu dosyayı kullanırsanız, [Src\actions\provisionsample.exe](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)yolunda **betik** anahtarı için doğru dosya adını kullandığınızdan emin olun.
+   > Bu bölüm, Kullanıcı tanımlı bir işlevi yazmanın tek bir yolu hakkında bilgi edinmek için *Src\actions\userdefinedfunctions\kullanılabilirliği bility.exe* dosyasını değiştirir. Ancak, [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) dosyasını doğrudan kurulumda kullanmayı seçebilirsiniz. Bu dosya, bu öğretici için gereken tüm değişiklikleri içerir. Bunun yerine bu dosyayı kullanırsanız, [Src\actions\provisionsample.exe](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)yolunda **betik** anahtarı için doğru dosya adını kullandığınızdan emin olun.
 
-    a. Dosyanın en üstünde, `// Add your sensor type here` açıklamasının altına sıcaklık için şu satırları ekleyin:
+    a. Dosyanın üst kısmında, @no__t açıklamanın altına sıcaklık altına aşağıdaki satırları ekleyin: 0:
 
     ```JavaScript
         var temperatureType = "Temperature";
         var temperatureThreshold = 78;
     ```
 
-    b. `var motionSensor` Açıklamanın`// Add your sensor variable here`altında, tanımlayan deyimden sonra aşağıdaki satırları ekleyin:
+    b. @No__t-0 tanımlayan deyimden sonra aşağıdaki satırları ekleyin `// Add your sensor variable here`:
 
      ```JavaScript
         var temperatureSensor = otherSensors.find(function(element) {
@@ -91,13 +92,13 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
         });
     ```
 
-    c. `var carbonDioxideValue` Açıklamanın`// Add your sensor latest value here`altında, tanımlayan deyimden sonra aşağıdaki satırı ekleyin:
+    ,. @No__t-0 ' ı tanımlayan deyimden sonra, `// Add your sensor latest value here` ' in altında aşağıdaki satırı ekleyin:
 
     ```JavaScript
         var temperatureValue = getFloatValue(temperatureSensor.Value().Value);
     ```
 
-    d. Şu kod satırlarını `// Modify this line to monitor your sensor value` açıklamasının altından kaldırın:
+    TID. Aşağıdaki kod satırlarını @no__t açıklamanın altında kaldırın-0:
 
      ```JavaScript
         if(carbonDioxideValue === null || motionValue === null) {
@@ -106,7 +107,7 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
         }
     ```
 
-    Bunları şu satırlarla değiştirin:
+    Bunları aşağıdaki satırlarla değiştirin:
 
     ```JavaScript
         if(carbonDioxideValue === null || motionValue === null || temperatureValue === null){
@@ -115,21 +116,21 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
         }
     ```
 
-    e. Şu kod satırlarını `// Modify these lines as per your sensor` açıklamasının altından kaldırın:
+    a. Aşağıdaki kod satırlarını @no__t açıklamanın altında kaldırın-0:
 
     ```JavaScript
         var availableFresh = "Room is available and air is fresh";
         var noAvailableOrFresh = "Room is not available or air quality is poor";
     ```
 
-    Bunları şu satırlarla değiştirin:
+    Bunları aşağıdaki satırlarla değiştirin:
 
     ```JavaScript
         var alert = "Room with fresh air and comfortable temperature is available.";
         var noAlert = "Either room is occupied, or working conditions are not right.";
     ```
 
-    f. Şu *if-else* kod bloğunu `// Modify this code block for your sensor` açıklamasının altından kaldırın:
+    vadeli. Açıklamadan sonra aşağıdaki *if-else* kod bloğunu kaldırın `// Modify this code block for your sensor`:
 
     ```JavaScript
         // If carbonDioxide less than threshold and no presence in the room => log, notify and set parent space computed value
@@ -146,7 +147,7 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
         }
     ```
 
-    Sonrasında şu *if-else* bloğuyla değiştirin:
+    Ve bunu aşağıdaki *if-else* bloğu ile değiştirin:
 
     ```JavaScript
         // If sensor values are within range and room is available
@@ -167,9 +168,9 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
         }
     ```
 
-    Değiştirilen UDF, bir odanın kullanılabilir durumda olması, karbondioksit ve sıcaklık sınırlarının kabul edilen sınırlar içinde olması durumunu izler. Bu koşul yerine getirildiğinde `parentSpace.Notify(JSON.stringify(alert));` deyimiyle bir bildirim oluşturur. Sağlanan koşuldan bağımsız olarak izlenen alanın değerini ayarlayacak ve aşağıdaki iletiyi görüntüleyecektir.
+    Değiştirilen UDF, bir odanın kullanılabilir olacağı ve tolerandime limitlerinin içinde bilgi ve sıcaklık içeren bir koşulu arar. Bu koşul karşılandığında, `parentSpace.Notify(JSON.stringify(alert));` ifadesiyle bir bildirim oluşturacaktır. Koşul karşılanıp karşılanmadığına bakılmaksızın, izlenen alanın değerini, karşılık gelen iletiyle ayarlar.
 
-    g. Dosyayı kaydedin.
+    Acil. Dosyayı kaydedin.
 
 1. Bir komut penceresi açın ve **Occupancy-quickstart\src**klasörüne gidin. Uzamsal zeka grafınızı ve Kullanıcı tanımlı işlevinizi sağlamak için aşağıdaki komutu çalıştırın:
 
@@ -178,24 +179,24 @@ Ayrıca **roleassignments** adlı bölüme de dikkat edin. Kullanıcı tanımlı
     ```
 
    > [!IMPORTANT]
-   > Dijital TWINS yönetim API 'nize yetkisiz erişimi engellemek için, **doluluk-hızlı başlangıç** uygulaması Azure hesabı kimlik bilgilerinizle oturum açmanızı gerektirir. Kimlik bilgilerinizi kısa bir süre kaydeder, bu nedenle her çalıştırdığınızda oturum açmanız gerekmez. Bu program ilk kez çalıştığında ve bu tarihten sonra kaydettiğiniz kimlik bilgilerinizin süresi dolduğunda, uygulama sizi oturum açma sayfasına yönlendirir ve bu sayfaya girilecek oturuma özgü bir kod verir. Azure hesabınızda oturum açmak için yönergeleri izleyin.
+   > Dijital TWINS yönetim API 'nize yetkisiz erişimi engellemek için, **doluluk-hızlı başlangıç** uygulaması Azure hesabı kimlik bilgilerinizle oturum açmanızı gerektirir. Kimlik bilgilerinizi kısa bir süre kaydeder, bu nedenle her çalıştırdığınızda oturum açmanız gerekmez. Bu program ilk kez çalıştığında ve bu tarihten sonra kaydettiğiniz kimlik bilgilerinizin süresi dolduğunda, uygulama sizi oturum açma sayfasına yönlendirir ve bu sayfaya girilecek oturuma özgü bir kod verir. Azure hesabınızla oturum açmak için istemleri izleyin.
 
-1. Hesabınız doğrulandıktan sonra uygulama, *provisionsample. YAML*içinde yapılandırılmış şekilde örnek bir uzamsal grafik oluşturmaya başlar. Sağlama bitene kadar bekleyin. İşlem birkaç dakika sürer. Bundan sonra, komut penceresindeki iletileri gözlemleyin ve uzamsal grafiklerinizin nasıl oluşturulduğuna dikkat edin. Uygulamanın kök düğümde veya `Venue`' de bir IoT Hub 'ı nasıl oluşturduğunu fark edin.
+1. Hesabınız doğrulandıktan sonra uygulama, *provisionsample. YAML*içinde yapılandırılmış şekilde örnek bir uzamsal grafik oluşturmaya başlar. Sağlama bitene kadar bekleyin. İşlem birkaç dakika sürer. Bundan sonra, komut penceresindeki iletileri gözlemleyin ve uzamsal grafiklerinizin nasıl oluşturulduğuna dikkat edin. Uygulamanın kök düğümde veya `Venue` ' a bir IoT Hub 'ı nasıl oluşturduğunu fark edin.
 
-1. Komut penceresindeki çıktıdan, `ConnectionString` `Devices` bölümünün altındaki değerini panonuza kopyalayın. Sonraki bölümde cihaz bağlantısının benzetimini yapmak için bu değere ihtiyacınız olacaktır.
+1. Komut penceresindeki çıktıdan, `Devices` bölümü altındaki `ConnectionString` değerini panonuza kopyalayın. Sonraki bölümde cihaz bağlantısının benzetimini yapmak için bu değere ihtiyacınız olacaktır.
 
-    [![Örnek sağla](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
+    [![ sağlama örneği](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > Hatanın ortasında "bir iş parçacığı çıkışı veya uygulama isteği nedeniyle g/ç işlemi iptal edildi" hatasıyla benzer bir hata iletisi alırsanız, komutu yeniden çalıştırmayı deneyin. Bu durum, HTTP istemcisinin bir ağ sorunundan zaman aşımına uğramasından kaynaklanabilir.
 
-## <a name="simulate-sensor-data"></a>Sensör verilerinin simülasyonunu yapma
+## <a name="simulate-sensor-data"></a>Algılayıcı verilerinin benzetimini yap
 
-Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Hareket, sıcaklık ve karbon dioksit saptamak için algılayıcı verilerinin benzetimini yapabilirsiniz. Bu proje, sensörler için rastgele değerler oluşturur ve bunları cihaz bağlantı dizesini kullanarak IoT hub'a gönderir.
+Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Hareket, sıcaklık ve karbon dioksit saptamak için algılayıcı verilerinin benzetimini yapabilirsiniz. Bu proje sensörler için rastgele değerler oluşturur ve cihaz bağlantı dizesini kullanarak bunları IoT Hub 'ına gönderir.
 
 1. Ayrı bir komut penceresinde Azure dijital TWINS örneğine ve ardından **cihaz bağlantısı** klasörüne gidin.
 
-1. Projenizin bağımlılıklarının doğru olduğundan emin olmak için şu komutu çalıştırın:
+1. Proje bağımlılıklarının doğru olduğundan emin olmak için bu komutu çalıştırın:
 
     ```cmd/sh
     dotnet restore
@@ -203,9 +204,9 @@ Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Ha
 
 1. Düzenleyicinizde [appSettings. JSON](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) dosyasını açın ve aşağıdaki değerleri düzenleyin:
 
-   a. **Deviceconnectionstring**: Önceki bölümden çıkış penceresinde `ConnectionString` değerini atayın. Bu dizeyi tırnak içinde tamamen kopyalayın, böylece simülatör IoT Hub ile düzgün bir şekilde bağlanabilir.
+   a. **Deviceconnectionstring**: önceki bölümden çıkış penceresinde `ConnectionString` değerini atayın. Bu dizeyi tırnak içinde tamamen kopyalayın, böylece simülatör IoT Hub ile düzgün bir şekilde bağlanabilir.
 
-   b. **Algılayıcılar** dizisinin Içindeki **HardwareID** : Azure dijital TWINS örneğiniz tarafından sağlanan sensörlerden olayları taklit ettiğiniz için, bu dosyadaki donanım kimliği ve sensörlerinin adı, `sensors` *provisionsample. YAML* dosyasının düğümüyle eşleşmelidir.
+   b. Algılayıcılar dizisinin içindeki **HardwareID** : Azure dijital TWINS örneğinizle sağlanan sensörlerden olayları taklit ettiğiniz için, bu DOSYADAKI donanım kimliği ve sensörlerinin adları, bu dosyadaki `sensors` düğümüyle eşleşmelidir  *provisionSample. YAML* dosyası.
 
       Sıcaklık algılayıcısı için yeni bir giriş ekleyin. *AppSettings. JSON* içindeki **Algılayıcılar** düğümü aşağıdaki gibi görünmelidir:
 
@@ -222,7 +223,7 @@ Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Ha
       }]
       ```
 
-1. Sıcaklık, hareket ve karbondioksit için cihaz olayı simülasyonunu başlatmak üzere şu komutu çalıştırın:
+1. Sıcaklık, hareket ve karbon dioksit cihaz olaylarının benzetimini başlatmak için bu komutu çalıştırın:
 
     ```cmd/sh
     dotnet run
@@ -233,7 +234,7 @@ Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Ha
 
 ## <a name="get-results-of-the-user-defined-function"></a>Kullanıcı tanımlı işlevin sonuçlarını al
 
-Örneğiniz cihaz ve sensör verilerini her aldığında kullanıcı tanımlı işlev çalışır. Bu bölüm, Kullanıcı tanımlı işlevin sonuçlarını almak için Azure dijital TWINS örneğinizi sorgular. Neredeyse gerçek zamanlı olarak, bir odanın yeni olduğunu ve sıcaklığın doğru olduğunu göreceksiniz. 
+Kullanıcı tanımlı işlev, örneğiniz cihaz ve algılayıcı verileri aldığı her seferinde çalışır. Bu bölüm, Kullanıcı tanımlı işlevin sonuçlarını almak için Azure dijital TWINS örneğinizi sorgular. Neredeyse gerçek zamanlı olarak, bir odanın yeni olduğunu ve sıcaklığın doğru olduğunu göreceksiniz. 
 
 1. Örneği veya yeni bir komut penceresini sağlamak için kullandığınız komut penceresini açın ve örneğin **Occupancy-quickstart\src** klasörüne yeniden gidin.
 
@@ -245,18 +246,18 @@ Bu bölümde, örnekte *cihaz bağlantısı* adlı projeyi kullanacaksınız. Ha
 
 Çıkış penceresi, Kullanıcı tanımlı işlevin cihaz benzetimine ait olayları nasıl yürüttüğünde gösterir. 
 
-   [![UDF için çıkış](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [![ UDF için çıkış](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
-İzlenen koşul karşılanıyorsa, Kullanıcı tanımlı işlevi, [daha önce](#create-a-user-defined-function)gördüğünüz gibi ilgili iletiyle birlikte alanın değerini ayarlar. `GetAvailableAndFreshSpaces` İşlevi konsolundaki iletiyi yazdırır.
+İzlenen koşul karşılanıyorsa, Kullanıcı tanımlı işlevi, [daha önce](#create-a-user-defined-function)gördüğünüz gibi ilgili iletiyle birlikte alanın değerini ayarlar. @No__t-0 işlevi konsolundaki iletiyi yazdırır.
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
-Bu noktada Azure dijital İkizlerini keşfetmeye durdurmak istiyorsanız, bu öğreticide oluşturulan kaynakları silmek çekinmeyin:
+Bu noktada Azure dijital TWINS araştırmalarını durdurmak istiyorsanız bu öğreticide oluşturulan kaynakları silebilirsiniz:
 
-1. Sol menüden [Azure portalında](https://portal.azure.com)seçin **tüm kaynakları**dijital İkizlerini kaynak grubunuzu seçin ve seçin **Sil**.
+1. [Azure Portal](https://portal.azure.com)sol menüden **tüm kaynaklar**' ı seçin, dijital TWINS kaynak grubunuzu seçin ve **Sil**' i seçin.
 
     > [!TIP]
-    > Dijital İkizlerini örneğinizin silme sorun olduysa, bir hizmet güncelleştirmesi düzeltme alındı. Örneğiniz silme yeniden deneyin.
+    > Dijital TWINS örneğinizi silme konusunda sorun yaşıyorsanız, bu düzeltmeyle birlikte bir hizmet güncelleştirmesi kullanıma alındı. Lütfen örneğinizi silmeyi yeniden deneyin.
 
 2. Gerekirse, iş makinenizdeki örnek uygulamaları silin.
 
@@ -265,7 +266,7 @@ Bu noktada Azure dijital İkizlerini keşfetmeye durdurmak istiyorsanız, bu ö�
 Artık alanları sağladığınıza ve özel bildirimleri tetiklemek için bir çerçeve oluşturduğunuza göre, aşağıdaki öğreticilerden birine gidebilirsiniz:
 
 > [!div class="nextstepaction"]
-> [Öğretici: Logic Apps kullanarak Azure dijital TWINS boşluklarından bildirim alın](tutorial-facilities-events.md)
+> [Öğretici: Logic Apps kullanarak Azure dijital TWINS boşluklarından bildirimler alma](tutorial-facilities-events.md)
 
 > [!div class="nextstepaction"]
 > [Öğretici: Time Series Insights kullanarak Azure dijital TWINS boşluklarınızın olaylarını görselleştirin ve çözümleyin](tutorial-facilities-analyze.md)

@@ -1,19 +1,19 @@
 ---
 title: Azure dijital TWINS kullanarak API kimlik doğrulamasını anlama | Microsoft Docs
 description: Azure dijital TWINS kullanarak API 'lerle bağlantı kurmak ve bunları doğrulamak hakkında bilgi edinin.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: lyhughes
-ms.openlocfilehash: 6d8d6f03847fcd22a6d78c445ae039c73e9badfa
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719158"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949789"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>API 'lerle bağlantı kurmak ve kimlik doğrulamak
 
@@ -24,7 +24,7 @@ Azure AD 'ye genel bakış için, adım adım kılavuzlar, kavramlar ve hızlı 
 > [!TIP]
 > Azure dijital TWINS örnek uygulamasını ayarlamak ve çalıştırmak için [öğreticiyi](tutorial-facilities-setup.md) izleyin.
 
-Bir uygulama veya hizmeti Azure AD ile tümleştirmek için geliştiricilerin önce uygulamayı Azure AD'ye kaydetmesi gerekir. Ayrıntılı yönergeler ve ekran görüntüleri için bkz. [Bu hızlı başlangıç](../active-directory/develop/quickstart-register-app.md).
+Bir uygulamayı veya hizmeti Azure AD ile bütünleştirmek için, bir geliştiricinin uygulamayı önce Azure AD ile kaydetmesi gerekir. Ayrıntılı yönergeler ve ekran görüntüleri için bkz. [Bu hızlı başlangıç](../active-directory/develop/quickstart-register-app.md).
 
 Azure AD tarafından [beş birincil uygulama senaryosu](../active-directory/develop/v2-app-types.md) desteklenir:
 

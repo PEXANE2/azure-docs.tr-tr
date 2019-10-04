@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 2c1473083c4fdb025588a7c4b410860a5f18dd5a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 1482ac4b885507e37ba5972065810682c19bebed
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937072"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958472"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM 'lerinde SQL Server yedekleme hakkında
 
@@ -45,10 +45,10 @@ Başlamadan önce, aşağıdakileri doğrulayın:
 **Support** | **Bilgileri**
 --- | ---
 **Desteklenen dağıtımlar** | SQL Market Azure VM 'Leri ve Market olmayan (SQL Server el ile yüklenmiş) VM 'Ler desteklenir.
-**Desteklenen coğrafyalar** | Avustralya Güney Doğu (Ao), Doğu Avustralya (AE), Avustralya Orta (AC), Avustralya Orta 2 (AC) <br> Brezilya Güney (BRS)<br> Kanada Orta (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> Doğu ABD (EUS), Doğu ABD 2 (EUS2), Orta Batı ABD (WCUS), Batı ABD (WUS); Batı ABD 2 (WUS 2) Orta Kuzey ABD (NCUS) Orta ABD (cu DÜZEYINDE KAPSANıR) Orta Güney ABD (SCUS) <br> Hindistan Orta (ıNC), Hindistan Güney (INS), Hindistan Batı <br> Japonya Doğu (JPE), Japonya Batı (JPW) <br> Kore Orta (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> UK Güney (UKS), UK Batı (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Teksas, US DoD Orta, US DoD Doğu <br> Almanya Kuzey, Almanya Orta Batı <br>
-**Desteklenen işletim sistemleri** İsviçre Batı İsviçre Kuzey | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux Şu anda desteklenmiyor.
+**Desteklenen coğrafyalar** | Avustralya Güney Doğu (Ao), Doğu Avustralya (AE), Avustralya Orta (AC), Avustralya Orta 2 (AC) <br> Brezilya Güney (BRS)<br> Kanada Orta (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> Doğu ABD (EUS), Doğu ABD 2 (EUS2), Orta Batı ABD (WCUS), Batı ABD (WUS); Batı ABD 2 (WUS 2) Orta Kuzey ABD (NCUS) Orta ABD (cu DÜZEYINDE KAPSANıR) Orta Güney ABD (SCUS) <br> Hindistan Orta (ıNC), Hindistan Güney (INS), Hindistan Batı <br> Japonya Doğu (JPE), Japonya Batı (JPW) <br> Kore Orta (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> UK Güney (UKS), UK Batı (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Teksas, US DoD Orta, US DoD Doğu <br> Almanya Kuzey, Almanya Orta Batı <br> İsviçre Kuzey, İsviçre Batı
+**Desteklenen işletim sistemleri** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012<br/><br/> Linux Şu anda desteklenmiyor.
 **Desteklenen SQL Server sürümleri** | [Burada](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)açıklandığı gibi 2017 SQL Server, SQL Server 2016 ve SPs SQL Server 2014 [, SQL Server](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)2012.<br/><br/> Enterprise, Standard, Web, geliştirici, Express.
-**Desteklenen .NET sürümleri** | .NET Framework 4.5.2 ve üzeri VM 'de yüklü
+**Desteklenen .NET sürümleri** | VM 'de yüklü .NET Framework 4.5.2 ve üzeri
 
 ### <a name="support-for-sql-server-2008-and-sql-server-2008-r2"></a>SQL Server 2008 ve SQL Server 2008 R2 desteği
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: e7f565a995e4c2a5338f08437b0dd336846ba154
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3a6fb67ce531ed8cc028d2d0a8dfc3022544efe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679925"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947578"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows sanal masaüstü 'nde Windows 7 sanal makinesini dağıtma
 
@@ -43,9 +43,15 @@ Windows sanal masaüstü 'nde Windows 7 VM ayarlamak için:
      shutdown /r /t 0
      ```
     
+11. Kayıt belirteci almak için [buradaki](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) yönergeleri izleyin.
+12. Windows [7 Için Windows sanal masaüstü aracısını indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+13. Windows [7 Için Windows sanal masaüstü Aracısı Yöneticisi 'Ni indirin](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
+14. Windows sanal masaüstü Aracısı yükleyicisini açın ve yönergeleri izleyin. İstendiğinde, 11. adımda oluşturduğunuz kayıt anahtarını verin.
+15. Windows sanal masaüstü yükleyicisi 'ni açın ve yönergeleri izleyin.
+16. İsteğe bağlı olarak, VM 'ye doğrudan Uzak Masaüstü Protokolü erişimi kaldırmak için TCP/3389 bağlantı noktasını engelleyin.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows 7 VM 'niz artık Windows sanal masaüstü 'nde dağıtıma hazırdır. Dağıtımı tamamlaması için [sanal makineleri Windows sanal masaüstü Aracısı yüklemelerine hazırlama](create-host-pools-powershell.md#prepare-the-virtual-machines-for-windows-virtual-desktop-agent-installations) bölümündeki yönergeleri izleyin.
+Windows sanal masaüstü dağıtımınız artık kullanıma hazırdır. Başlamak için [Windows sanal masaüstü istemcisinin en son sürümünü indirin](https://aka.ms/wvd/clients/windows) .
 
 Windows sanal masaüstündeki Windows 7 ' de bilinen sorunların ve sorun giderme yönergelerinin bir listesi için, Windows [sanal masaüstündeki Windows 7 sanal makinelerinde sorun](troubleshoot-windows-7-vm.md)giderme makalesindeki sorun giderme makalemizi inceleyin.
-

@@ -1,19 +1,19 @@
 ---
 title: Rol tabanlı erişim denetimini anlama-Azure dijital TWINS | Microsoft Docs
 description: Azure dijital TWINS 'de rol tabanlı erişim denetimi ve izinleri yönetme hakkında bilgi edinin.
-author: lyrana
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: lyhughes
-ms.openlocfilehash: a5953aab179a62d4a8e37b7f5c7659318628918e
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827028"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949058"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure dijital TWINS 'de rol tabanlı erişim denetimi
 
@@ -45,7 +45,7 @@ Geliştirici, RBAC 'yi kullanarak şunları alabilir:
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-rbac-best-practices.md)]
 
-## <a name="roles"></a>Roller
+## <a name="roles"></a>Lerdir
 
 ### <a name="role-definitions"></a>Rol tanımları
 

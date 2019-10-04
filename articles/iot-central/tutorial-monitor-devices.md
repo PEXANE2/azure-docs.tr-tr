@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central'da cihazlarınızı izleme | Microsoft Docs
-description: Bir operatör olarak, Azure IoT Central uygulamanızı cihazlarınızı izlemek için kullanın.
+title: Azure IoT Central cihazlarınızı izleyin | Microsoft Docs
+description: Bir operatör olarak, cihazlarınızı izlemek için Azure IoT Central uygulamanızı kullanın.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/09/2019
@@ -9,75 +9,75 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d716eb761ab406b65f10898b29775327a801ac45
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f68bc211be3cffb61b3381390ae2eeacaffa4213
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875482"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960417"
 ---
-# <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Öğretici: Azure IoT Central kullanarak cihazlarınızı izleme
+# <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Öğretici: cihazlarınızı izlemek için Azure IoT Central kullanma
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-Bu öğreticide, bir operatör olarak cihazlarınızı izlemek ve ayarlarınızı değiştirmek için Microsoft Azure IoT Central uygulamasını nasıl kullanacağınız gösterilmektedir.
+Bu öğreticide, bir operatör olarak, cihazlarınızı izlemek ve ayarları değiştirmek için Microsoft Azure IoT Central uygulamanızı nasıl kullanacağınız gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıladığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Bildirim alma
-> * Sorun araştırma
-> * Sorunu düzeltme
+> * Bildirim alın
+> * Bir sorunu araştırın
+> * Bir sorunu düzeltin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
-Başlamadan önce, oluşturucunun Azure IoT Central uygulamasını oluşturmaya yönelik üç oluşturucu öğreticisini tamamlaması gerekir:
+Başlamadan önce, oluşturucunun Azure IoT Central uygulamasını oluşturmak için üç Oluşturucu öğreticilerini tamamlaması gerekir:
 
-* [Yeni bir cihaz türü belirleme](tutorial-define-device-type.md)
-* [Cihazınız için kurallar ve eylemler yapılandırma](tutorial-configure-rules.md)
-* [Operatörün görünümlerini özelleştirme](tutorial-customize-operator.md)
+* [Yeni bir cihaz türü tanımlayın](tutorial-define-device-type.md)
+* [Cihazınız için kuralları ve eylemleri yapılandırma](tutorial-configure-rules.md)
+* [İşlecin görünümlerini özelleştirme](tutorial-customize-operator.md)
 
-## <a name="receive-a-notification"></a>Bildirim alma
+## <a name="receive-a-notification"></a>Bildirim alın
 
-Azure IoT Central, e-posta iletileri halinde cihazlara ilişkin bildirimler gönderir. Oluşturucu, bağlı bir klima cihazındaki sıcaklık belirli bir eşiği aştığında bildirim gönderecek şekilde bir kural eklemiştir. Oluşturucunun bildirim almayı seçtiği hesaba gönderilen e-postaları kontrol edin.
+Azure IoT Central, cihazlar hakkında e-posta iletileri olarak bildirimler gönderir. Oluşturucu, bağlı bir AIR klimaları cihazındaki sıcaklık bir eşiği aştığında bildirim göndermek için bir kural ekledi. Oluşturucunun bildirimleri almak için seçtiği hesaba gönderilen e-postaları denetleyin.
 
-[Cihazınız için kurallar ve eylemler yapılandırma](tutorial-configure-rules.md) öğreticisinin sonunda aldığınız e-posta iletisini açın. E-postada **Cihazınızı açmak için buraya tıklayın**’ı seçin:
+[Cihaz öğreticinizi yapılandırma kuralları ve eylemlerinin](tutorial-configure-rules.md) sonunda aldığınız e-posta iletisini açın. E-postada, **Ayrıntılar** bölümünde **Cihaz adı** ' nın yanındaki cihaza bağlantıyı seçin:
 
 ![Uyarı bildirimi e-postası](media/tutorial-monitor-devices/email.png)
 
-Önceki öğreticilerde oluşturduğunuz **Bağlı Klima-1** sanal cihazının **Cihaz** sayfası tarayıcıda açılır:
+Önceki öğreticilerde oluşturduğunuz sanal cihaz **1** ' in **cihaz** sayfası tarayıcınızda açılır:
 
 ![Bildirim e-posta iletisini tetikleyen cihaz](media/tutorial-monitor-devices/sourcedevice.png)
 
-## <a name="investigate-an-issue"></a>Sorun araştırma
+## <a name="investigate-an-issue"></a>Bir sorunu araştırın
 
-Operatör olarak, bir cihaza ilişkin bilgileri **Ölçümler**, **Ayarlar**, **Özellikler**, **Kurallar** ve **Pano** sayfalarında görüntüleyebilirsiniz. Oluşturucu, **Pano**’yu bağlı bir klima cihazına ilişkin önemli bilgileri gösterecek şekilde özelleştirmiştir.
+Bir operatör olarak **ölçümler**, **Ayarlar**, **Özellikler**, **kurallar**ve **Pano** sayfalarında cihaz hakkındaki bilgileri görüntüleyebilirsiniz. Oluşturucu, bağlantılı bir AIR klimaları cihazı hakkında önemli bilgileri göstermek için **panoyu** özelleştirdi.
 
-Cihaza ilişkin bilgileri görmek için **Pano** görünümünü seçin.
+Cihaz hakkındaki bilgileri görmek için **Pano** görünümünü seçin.
 
 ![Cihaz panosu](media/tutorial-monitor-devices/initial_screen.png)
 
-Panodaki grafik, cihaz sıcaklığının bir çizimini gösterir. Cihaz **özellikleri** kutucuğunda cihaz için geçerli hedef sıcaklığını da görebilirsiniz. Hedef sıcaklığın çok yüksek olmasına karar verdiniz.
+Panodaki grafik, cihaz sıcaklığının bir grafiğini gösterir. Cihaz **özellikleri** kutucuğunda cihaz için geçerli hedef sıcaklığını da görebilirsiniz. Hedef sıcaklığın çok yüksek olduğuna karar verirsiniz.
 
-## <a name="remediate-an-issue"></a>Sorunu düzeltme
+## <a name="remediate-an-issue"></a>Bir sorunu düzeltin
 
 Cihazın hedef sıcaklığını değiştirmek için **Ayarlar** sayfasını kullanın:
 
-1. **Ayarlar**'ı seçin. **Sıcaklığı Ayarla**’yı 75 olarak değiştirin. Yeni hedef sıcaklığı cihaza göndermek için **Güncelleştir**’i seçin. Cihaz, ayarlar değişikliğini onayladığında, ayarın durumu **eşitlenmiş**olarak değişir:
+1. **Ayarlar**' ı seçin. **Küme sıcaklığını** 75 olarak değiştirin. Yeni hedef sıcaklığını cihaza göndermek için **Güncelleştir** ' i seçin. Cihaz, ayarlar değişikliğini onayladığında, ayarın durumu **eşitlenmiş**olarak değişir:
 
-    ![Ayarları güncelleştir](media/tutorial-monitor-devices/change_settings.png)
+    ![Güncelleştirme ayarları](media/tutorial-monitor-devices/change_settings.png)
 
-2. **Pano**’yu seçin ve yeni ayar değerini doğrulayın:
+2. **Pano** ' yı seçin ve yeni ayar değerini doğrulayın:
 
     ![Güncelleştirilmiş cihaz panosu](media/tutorial-monitor-devices/new_settings.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+Bu öğreticide, nasıl yapılacağını öğrendiniz:
 
 > [!div class="nextstepaction"]
-> * Bildirim alma
-> * Sorun araştırma
-> * Sorunu düzeltme
+> * Bildirim alın
+> * Bir sorunu araştırın
+> * Bir sorunu düzeltin
 
-Artık cihazınızı nasıl izleyeceğinizi bildiğinize göre [Cihaz ekleme](tutorial-add-device.md) adımını uygulamanız önerilir.
+Artık cihazınızı izleyeceğinizi bildiğinize göre, önerilen sonraki adım [bir cihaz eklemektir](tutorial-add-device.md).

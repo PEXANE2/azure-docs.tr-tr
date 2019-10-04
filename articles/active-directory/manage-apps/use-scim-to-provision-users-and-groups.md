@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 'de SCıM kullanarak uygulama sağlamayı otomatikleştirin | Microsoft Docs
-description: Azure Active Directory, SCıM protokol belirtiminde tanımlı arabirimi olan bir Web hizmeti tarafından belirlenen herhangi bir uygulamaya veya kimlik deposuna otomatik olarak Kullanıcı ve grup sağlayabilir
+title: Azure Active Directory ile SCıM Kullanıcı hazırlama | Microsoft Docs
+description: Bir SCıM uç noktası oluşturmayı, SCıM API 'nizi Azure Active Directory ile tümleştirmeyi ve uygulamalarınıza kullanıcıları ve grupları otomatik hale getirmeye başlamak için öğrenin.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 922e5a2d5c639d7df380f686ddf7843ab59fca59
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 9344feeadc5f4146c3b3f853082cd9255100af5c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802369"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949643"
 ---
-# <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Kullanıcıları ve grupları Azure Active Directory uygulamalara otomatik olarak sağlamak için etki alanları arası kimlik yönetimi (SCıM) için sistem kullanma
+# <a name="scim-user-provisioning-with-azure-active-directory"></a>Azure Active Directory ile SCıM Kullanıcı sağlama
 
-SCıM, kimliklerin sistemler arasında nasıl yönetildiği hakkında daha fazla tutarlılık sağlayan standartlaştırılmış bir protokol ve şemadır. Bir uygulama, Kullanıcı yönetimi için bir SCıM uç noktasını desteklediğinde, Azure AD Kullanıcı sağlama hizmeti bu uç noktaya atanmış kullanıcıları ve grupları oluşturmak, değiştirmek veya silmek için istek gönderebilir.
+Etki alanları arası kimlik yönetimi (SCıM) sistemi, kimliklerin sistemler arasında nasıl yönetildiği hakkında daha fazla tutarlılık sağlayan standartlaştırılmış bir protokol ve şemadır. Bir uygulama, Kullanıcı yönetimi için bir SCıM uç noktasını desteklediğinde, Azure AD Kullanıcı sağlama hizmeti bu uç noktaya atanmış kullanıcıları ve grupları oluşturmak, değiştirmek veya silmek için istek gönderebilir.
 
 Azure AD 'nin [önceden tümleştirilmiş otomatik Kullanıcı sağlamasını](../saas-apps/tutorial-list.md) desteklediği birçok uygulama, Kullanıcı değişikliği bildirimlerini alma yöntemi olarak SCIM 'i uygular.  Bunlara ek olarak, müşteriler, Azure portal [SCIM 2,0 protokol belirtiminin](https://tools.ietf.org/html/rfc7644) belirli bir profilini destekleyen uygulamaları, genel "Galeri dışı" tümleştirme seçeneğini kullanarak bağlayabilirler.
 
@@ -53,7 +53,7 @@ Bu gereksinimlerle uyumluluk bildirimleri için uygulama sağlayıcınıza veya 
 > [!IMPORTANT]
 > Azure AD SCıM uygulaması, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuştur. Bu, kullanıcıların Azure AD ile hedef uygulama arasında sürekli olarak eşitlenmesi için tasarlanan ve çok özel bir standart işlem kümesi uyguladığı şekilde tasarlanmıştır. Azure AD SCıM istemcisinin davranışını anlamak için bu davranışları anlamak önemlidir. Daha fazla bilgi için bkz. [Kullanıcı hazırlama sırasında ne olur?](user-provisioning.md#what-happens-during-provisioning).
 
-### <a name="getting-started"></a>Başlangıç
+### <a name="getting-started"></a>Başlarken
 
 Bu makalede açıklanan SCıM profilini destekleyen uygulamalar, Azure AD uygulama galerisinde "Galeri dışı uygulama" özelliği kullanılarak Azure Active Directory bağlanabilir. Bağlantı kurulduktan sonra Azure AD, her 40 dakikada bir eşitleme işlemi çalıştırarak, atanan kullanıcılar ve gruplar için uygulamanın SCıM uç noktasını sorgular ve atama ayrıntılarına göre bunları oluşturur veya değiştirir.
 
@@ -151,48 +151,48 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 - [Kullanıcı Işlemleri](#user-operations)
   - [Kullanıcı Oluştur](#create-user)
-    - [İstek](#request)
-    - [Yanıt](#response)
+    - [İsteyen](#request)
+    - [Yanıtıyla](#response)
   - [Kullanıcı al](#get-user)
-    - [İstek](#request-1)
-    - [Yanıt](#response-1)
+    - [İsteyen](#request-1)
+    - [Yanıtıyla](#response-1)
   - [Sorguya göre Kullanıcı al](#get-user-by-query)
-    - [İstek](#request-2)
-    - [Yanıt](#response-2)
+    - [İsteyen](#request-2)
+    - [Yanıtıyla](#response-2)
   - [Sorguya göre Kullanıcı al-sıfır sonuçları](#get-user-by-query---zero-results)
-    - [İstek](#request-3)
-    - [Yanıt](#response-3)
+    - [İsteyen](#request-3)
+    - [Yanıtıyla](#response-3)
   - [Kullanıcı güncelleştirme [çok değerli özellikler]](#update-user-multi-valued-properties)
-    - [İstek](#request-4)
-    - [Yanıt](#response-4)
+    - [İsteyen](#request-4)
+    - [Yanıtıyla](#response-4)
   - [Kullanıcı güncelleştirme [tek değerli özellikler]](#update-user-single-valued-properties)
-    - [İstek](#request-5)
-    - [Yanıt](#response-5)
+    - [İsteyen](#request-5)
+    - [Yanıtıyla](#response-5)
   - [Kullanıcı Sil](#delete-user)
-    - [İstek](#request-6)
-    - [Yanıt](#response-6)
+    - [İsteyen](#request-6)
+    - [Yanıtıyla](#response-6)
 - [Grup Işlemleri](#group-operations)
   - [Grup Oluştur](#create-group)
-    - [İstek](#request-7)
-    - [Yanıt](#response-7)
+    - [İsteyen](#request-7)
+    - [Yanıtıyla](#response-7)
   - [Grubu al](#get-group)
-    - [İstek](#request-8)
-    - [Yanıt](#response-8)
+    - [İsteyen](#request-8)
+    - [Yanıtıyla](#response-8)
   - [Grubu displayName 'e göre al](#get-group-by-displayname)
-    - [İstek](#request-9)
-    - [Yanıt](#response-9)
+    - [İsteyen](#request-9)
+    - [Yanıtıyla](#response-9)
   - [Güncelleştirme grubu [Üye olmayan öznitelikler]](#update-group-non-member-attributes)
-    - [İstek](#request-10)
-    - [Yanıt](#response-10)
+    - [İsteyen](#request-10)
+    - [Yanıtıyla](#response-10)
   - [Güncelleştirme grubu [Üye Ekleme]](#update-group-add-members)
-    - [İstek](#request-11)
-    - [Yanıt](#response-11)
+    - [İsteyen](#request-11)
+    - [Yanıtıyla](#response-11)
   - [Güncelleştirme grubu [üyeleri kaldır]](#update-group-remove-members)
-    - [İstek](#request-12)
-    - [Yanıt](#response-12)
+    - [İsteyen](#request-12)
+    - [Yanıtıyla](#response-12)
   - [Grubu Sil](#delete-group)
-    - [İstek](#request-13)
-    - [Yanıt](#response-13)
+    - [İsteyen](#request-13)
+    - [Yanıtıyla](#response-13)
 
 ### <a name="user-operations"></a>Kullanıcı Işlemleri
 
@@ -200,7 +200,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 #### <a name="create-user"></a>Kullanıcı Oluştur
 
-###### <a name="request"></a>İste
+###### <a name="request"></a>İstek
 
 *POST/Users*
 ```json
@@ -228,7 +228,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-##### <a name="response"></a>Yanıt
+##### <a name="response"></a>Yanıtıyla
 
 *HTTP/1.1 201 oluşturuldu*
 ```json
@@ -445,7 +445,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 }
 ```
 
-#### <a name="delete-user"></a>Kullanıcıyı Silme
+#### <a name="delete-user"></a>Kullanıcı Sil
 
 ##### <a name="request-6"></a>İsteyen
 
@@ -462,7 +462,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 * Grup düzeltme eki isteğine güncelleştirme, yanıtta bir *HTTP 204 içeriği* getirmelidir. Tüm üyelerin listesini içeren bir gövde döndürülmesi önerilmez.
 * Grubun tüm üyelerini döndürmeyi desteklemek gerekli değildir.
 
-#### <a name="create-group"></a>Grup Oluşturma
+#### <a name="create-group"></a>Grup Oluştur
 
 ##### <a name="request-7"></a>İsteyen
 
@@ -615,7 +615,7 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
 
 *HTTP/1.1 204 Içerik yok*
 
-#### <a name="delete-group"></a>Grubu Silme
+#### <a name="delete-group"></a>Grubu Sil
 
 ##### <a name="request-13"></a>İsteyen
 
@@ -647,7 +647,7 @@ Bu işlemi daha kolay hale getirmek için, bir SCıM Web hizmeti uç noktası ol
 * SCıM uç noktası olarak kullanılacak ASP.NET Framework 4,5 'yi destekleyen Windows makinesi. Bu makinenin buluttan erişilebilir olması gerekir.
 * [Deneme sürümü veya lisanslı sürümüne sahip bir Azure aboneliği Azure AD Premium](https://azure.microsoft.com/services/active-directory/)
 
-### <a name="getting-started"></a>Başlangıç
+### <a name="getting-started"></a>Başlarken
 
 Azure AD 'den sağlama isteklerini kabul edebilecek bir SCıM uç noktası uygulamanın en kolay yolu, sağlanan kullanıcıları bir virgülle ayrılmış değer (CSV) dosyasına çıkaran kod örneğini derleyip dağıtmaktır.
 
@@ -1337,12 +1337,12 @@ Grup kaynakları, `urn:ietf:params:scim:schemas:core:2.0:Group` şema tanımlay�
 
 | Azure Active Directory Kullanıcı | "urn: IETF: params: SCIM: schemas: Extension: Enterprise: 2.0: user" |
 | --- | --- |
-| Issoftdeleted |Bkz |
-| DisplayName |DisplayName |
+| Issoftdeleted |etkin |
+| displayName |displayName |
 | Facsıle-TelephoneNumber |phoneNumbers [tür EQ "Faks"]. değer |
 | givenName |ad. |
 | jobTitle |Başlığın |
-| - |e-postalar [tür EQ "iş"]. değer |
+| posta |e-postalar [tür EQ "iş"]. değer |
 | mailNickname |externalID |
 | Manager |Manager |
 | Mo |phoneNumbers [tür EQ "mobil"]. değer |
@@ -1359,10 +1359,10 @@ Grup kaynakları, `urn:ietf:params:scim:schemas:core:2.0:Group` şema tanımlay�
 
 | Azure Active Directory grubu | urn: IETF: params: Scim: schemas: Core: 2.0: Grup |
 | --- | --- |
-| DisplayName |externalID |
-| - |e-postalar [tür EQ "iş"]. değer |
-| mailNickname |DisplayName |
-| Üyeleri |Üyeleri |
+| displayName |externalID |
+| posta |e-postalar [tür EQ "iş"]. değer |
+| mailNickname |displayName |
+| üyeler |üyeler |
 | Uzantının |Kimlik |
 | proxyAddresses |e-postalar [tür EQ "Other"]. Deeri |
 

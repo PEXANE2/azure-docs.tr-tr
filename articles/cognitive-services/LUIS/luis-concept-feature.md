@@ -1,7 +1,7 @@
 ---
 title: Özellikler-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bir dil modeli, ipuçlarını, etiket veya sınıflandırmak istediğiniz giriş anlamayı hakkında sağlamaya özellikleri ekleyin.
+description: Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,21 +11,21 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: dab4b4c6f41a95623a40e5d3fd859f9613afac27
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624579"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949610"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUSıS uygulamanızdaki ifade listesi özellikleri
 
-Machine learning'de bir *özellik* bir ayırt edici nitelik veya sisteminizin gözlemler veri özniteliği. 
+Machine Learning 'de, bir *özellik* sistem engelinizdeki verilerin bir ayırt edici nitelik veya özniteliğidir. 
 
-Bir dil modeli, ipuçlarını, etiket veya sınıflandırmak istediğiniz giriş anlamayı hakkında sağlamaya özellikleri ekleyin. Özellikleri, hedefleri ve varlıkları hem LUIS yardımcı olur, ancak özellikleri, hedefleri ve varlıkları kendilerini değildir. Bunun yerine, özellikler, ilgili koşulları örnekleri sağlayabilir.  
+Etiketlemek veya sınıflandırmak istediğiniz girişin nasıl tanınılacağı hakkında ipuçları sağlamak için bir dil modeline özellikler ekleyin. Özellikler LUıN hem amaçları hem de varlıkları tanımasına karşın özellikler, amaç veya varlıkların kendileri değildir. Bunun yerine, Özellikler ilgili koşullara örnek verebilir.  
 
-## <a name="what-is-a-phrase-list-feature"></a>Bir ifade listesi özelliği nedir?
-Tümcecik listesi, uygulamanız için önemli olan sözcüklerin veya deyimlerin listesidir ve diğer sözcüklerden daha fazlasını yapın. Bir tümcecik listesi, bu sözcüklerin yaklaşık olarak LUO 'ya ek bir sinyal olarak uygulama etki alanının sözlüğüne ekler. LUIS bunları biri hakkında ne öğrenir otomatik olarak başkaları için de uygulanır. Bu liste, tam metin eşleştirmelerinin kapalı bir [liste varlığı](luis-concept-entity-types.md#types-of-entities) değildir.
+## <a name="what-is-a-phrase-list-feature"></a>Tümcecik listesi özelliği nedir?
+Tümcecik listesi, uygulamanız için önemli olan sözcüklerin veya deyimlerin listesidir ve diğer sözcüklerden daha fazlasını yapın. Bir tümcecik listesi, bu sözcüklerin yaklaşık olarak LUO 'ya ek bir sinyal olarak uygulama etki alanının sözlüğüne ekler. Bunlardan biri hakkında ne tür bir saldırgan, diğerlerine de otomatik olarak uygulanır. Bu liste, tam metin eşleştirmelerinin kapalı bir [liste varlığı](luis-concept-entity-types.md#types-of-entities) değildir.
 
 Tümcecik listeleri, sözcük ve tümcecik için çok sayıda sözcük ve tümcecik kullanan söylenişi örnekleri eklemeniz gerekir.
 
@@ -33,7 +33,7 @@ Tümcecik listeleri, sözcük ve tümcecik için çok sayıda sözcük ve tümce
 
 Tümcecik listeleri belirli bir amaca veya varlığa bağlı değildir, ancak tüm amaçlar ve varlıklara önemli bir artırma olarak eklenmiştir. Amacı, amaç algılamayı ve varlık sınıflandırmasını geliştirmaktır.
 
-## <a name="how-to-use-phrase-lists"></a>İfade listeleri kullanma
+## <a name="how-to-use-phrase-lists"></a>Tümcecik listelerini kullanma
 
 Uygulamanızda uygulama için önemli sözcükler veya tümcecikler olduğunda [bir tümcecik listesi oluşturun](luis-how-to-add-features.md) , örneğin:
 
@@ -46,14 +46,7 @@ Uygulamanızda uygulama için önemli sözcükler veya tümcecikler olduğunda [
 
 Birkaç sözcük veya tümcecik girdikten sonra, ilgili değerleri bulmak için **öner** özelliğini kullanın. İfade listesi değerlerinize eklemeden önce ilgili değerleri gözden geçirin.
 
-|Liste türü|Amaç|
-|--|--|
-|Değiştirilebilir|Listedeki başka bir sözcüğe değiştirildiğinde, aynı amaca ve varlık ayıklamasını içeren eş anlamlılar veya sözcükler.|
-|Çapraz olmayan|Uygulamanıza özgü uygulama sözlüğü, genellikle bu dildeki diğer sözcüklerden daha fazla.|
-
-### <a name="interchangeable-lists"></a>Değiştirilebilir listeler
-
-Bir *değiştirilebilir* ifade listesi, eş anlamlı olan değerler içindir. Örneğin, tüm su gövdelerini, ve gibi örnek bir örnek elde etmek istiyorsanız: 
+Tümcecik listesi, eş anlamlı olan değerler içindir. Örneğin, tüm su gövdelerini, ve gibi örnek bir örnek elde etmek istiyorsanız: 
 
 * Harika Lakes 'e hangi şehirler yakınlıyor? 
 * Gölü Havasu hangi yolda çalışır?
@@ -65,44 +58,34 @@ Her söylük, su gövdesinden bağımsız olarak hem amaç hem de varlıklar iç
 * [Bodyofsu] üzerinde hangi yol çalıştırılır?
 * [Bodyofsu] başlangıcı ve bitişi nerede? 
 
-Su gövdesi için sözcükler veya ifadeler eş anlamlı olduğundan ve söyleyenlerde birbirinin yerine kullanılabileceği için, tümcecik listesindeki bir **değiştirilebilir** ayarını kullanın. 
-
-### <a name="non-interchangeable-lists"></a>Çapraz olmayan listeler
-
-Çapraz olmayan bir tümcecik listesi, LUSıS 'de algılama yapan bir sinyaldir. Tümcecik listesi, diğer sözcüklerden daha önemli olan kelimeleri veya tümceleri gösterir. Bu, hem amacı hem de varlık algılamayı belirlemede yardımcı olur. Örneğin, genel (kültürler genelinde, ancak hala tek bir dilde) seyahat gibi bir konu etki alanınız olduğunu varsayalım. Uygulama için önemli olan ancak eş anlamlı olmayan sözcükler ve deyimler vardır. 
-
-Diğer bir örnek için, nadir, özel ve yabancı sözcükler için, çakışmayan bir tümcecik listesi kullanın. LUIS yabancı kelimeler (dışında uygulamanın kültür) yanı sıra, nadir ve özel sözcük tanıyamadı olabilir. Nadir bir sözcükler kümesini LUIS tanımayı öğrenin bir sınıf oluşturur, ancak eş anlamlılar olmayan değiştirilebilir olmayan ayarını gösterir veya birbirleri ile değiştirilebilir.
-
-Bir tümcecik listesine her bir olası sözcüğü veya tümceciği eklemeyin, bir seferde birkaç sözcük veya tümce ekleyin, sonra yeniden eğitme ve yayımlayın. 
-
-Tümcecik listesi zaman içinde büyüdükçe, bazı terimlerin birçok formu (eş anlamlı) olduğunu fark edebilirsiniz. Bunları, değiştirilebilecek başka bir tümcecik listesine bölün. 
+Su gövdesi için sözcükler veya ifadeler eşanlamlı olduğundan ve söylerde birbirinin yerine kullanılabilir. 
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
 ## <a name="phrase-lists-help-identify-simple-interchangeable-entities"></a>Tümcecik listeleri basit bir değiştirilebilir varlıkların belirlenmesine yardımcı olur
-Birbirinin yerine ifade listeleri LUIS uygulamanızın performansını ayarlamak için iyi bir yoludur. Uygulamanızın doğru amaç konuşma tahmin etme veya varlık tanıma sorun varsa, konuşma olağan dışı bir sözcük veya anlamları belirsiz olabilir sözcükler içeren hakkında düşünün. Bu sözcükler tümcecik listesinde içermek için iyi adaylar değildir.
+Değiştirilebilir tümcecik listeleri, LUSıS uygulamanızın performansını ayarlamak için iyi bir yoldur. Uygulamanız, doğru amaca göre tahmin etmeye veya varlıkları tanıma karşı bir sorunla karşılaşmışsa, en fazla alışılmadık sözcükler içerip içermediğini veya anlamı anlamlı olabilecek kelimeleri düşünün. Bu sözcükler, bir tümcecik listesine dahil etmek için iyi adaylardır.
 
-## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Tümcecik listeler Yardım hedefleri daha iyi anlama bağlamdan tanımlayın
-Bir ifade listesi LUIS sıkı eşleştirme işlemi yapmak veya her zaman deyim listesindeki tüm koşulları tamamen aynı etiket için bir yönerge değil. Bu, yalnızca bir ipucu verir. Örneğin, "Patti" ve "Selma" adların olup olmadığını belirten bir ifade listesi olabilir, ancak LUIS kullanmaya devam edebilirsiniz bağlamsal bilgiler farklı bir şey anlamına olduğunu bilmek "2 için bir ayırma sırasında Patti'nın Diner Akşam olun" ve "bana sürüş bulma yönlendirmeler Selma, Gürcistan". 
+## <a name="phrase-lists-help-identify-intents-by-better-understanding-context"></a>Tümcecik listeleri, bağlamı daha iyi anlamak için amaçları belirlemesine yardımcı olur
+Tümcecik listesi, bir LUSıS için bir yönerge değildir ve her zaman tümcecik listesindeki tüm terimleri tamamen aynı şekilde etiketleyebilir. Yalnızca bir ipucu. Örneğin, "PATTI" ve "Selma" adlarının olduğunu gösteren bir tümcecik listeniz olabilir, ancak LUP, "Şunun için PATTI için" bir ayırma, akşam yemeği için de Selma 'nın yönleri, Georgia ". 
 
-Bir ifade listesine eklenmesi, daha fazla örnek konuşma eklemeye yönelik bir amacı bir alternatiftir. 
+Tümcecik listesi eklemek, bir amaca daha fazla örnek eklemek için bir alternatiftir. 
 
-## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Ne zaman tümceciğini kullanın varlıklar listesi listeler
-Her iki ifade listesi ve [liste varlığı](reference-entity-list.md) , her türlü amaç genelinde bir şekilde etkilenirken, bu, her biri farklı bir şekilde olur. Hedefi tahmin puanı etkilemek için bir ifade listesini kullanın. Bir liste varlığı, bir tam metin eşleşmesi için varlık ayıklama etkilemek için kullanın. 
+## <a name="when-to-use-phrase-lists-versus-list-entities"></a>Tümcecik listeleri ve liste varlıkları ne zaman kullanılır?
+Her iki ifade listesi ve [liste varlığı](reference-entity-list.md) , her türlü amaç genelinde bir şekilde etkilenirken, bu, her biri farklı bir şekilde olur. Amaç tahmin Puanını etkilemek için bir tümcecik listesi kullanın. Tam metin eşleşmesi için varlık ayıklamayı etkilemek üzere bir liste varlığı kullanın. 
 
-### <a name="use-a-phrase-list"></a>Bir ifade listesini kullanın
-Bir ifade listesiyle LUIS hala bağlam dikkate alın ve benzer öğeleri, ancak tam bir eşleşme yok, listedeki öğeleri tanımlamak için generalize. LUIS uygulamanızı generalize ve bir kategorideki yeni öğeleri tanımlamak için gerekiyorsa, bir ifade listesini kullanın. 
+### <a name="use-a-phrase-list"></a>Tümcecik listesi kullanma
+Bir ifade listesi ile, LUSıS, bir listedeki öğeler olarak tam bir eşleşmeye benzer ancak tam eşleşme olmayan öğeleri belirlemek için yine de hesap ve genelleştirilebilen bir içerik alabilir. LUSıS uygulamanızın bir kategorideki yeni öğeleri genelleştirabilmesi ve belirleyebilmesi gerekiyorsa, bir tümcecik listesi kullanın. 
 
-Yeni kişilerin adlarını tanıması gereken bir toplantı Zamanlayıcısı veya yeni ürünleri tanıması gereken bir envanter uygulaması gibi bir varlığın yeni örneklerini tanıyabilmek istediğinizde, basit bir varlık gibi başka bir makine tarafından öğrenilen varlık türü kullanın. Ardından, başka bir deyişle varlığa benzer Bul LUIS yardımcı olan bir ifade listesini sözcük ve tümcecikleri oluşturun. Bu liste değeri olarak sözcükleri ek anlam ekleyerek varlık örnekleri tanımak için LUIS size yol gösterir. 
+Yeni kişilerin adlarını tanıması gereken bir toplantı Zamanlayıcısı veya yeni ürünleri tanıması gereken bir envanter uygulaması gibi bir varlığın yeni örneklerini tanıyabilmek istediğinizde, basit bir varlık gibi başka bir makine tarafından öğrenilen varlık türü kullanın. Ardından, LUTO 'nın varlığa benzer diğer sözcükleri bulmasına yardımcı olan sözcüklerin ve tümceciklerin bir ifade listesi oluşturun. Bu liste, bu sözcüklerin değerine daha fazla anlam ekleyerek, bu kelimelerin örneklerini tanımak için LUSıS 'e kılavuzluk eder. 
 
-Hedefleri ve varlıkları anlama kalitesini geliştirme ile yardımcı etki alanına özel sözlük ifade listeleri gibidir. İfade listesinin ortak kullanım Şehir adları gibi uygun isimleri ' dir. Bir şehir adı kısa çizgi veya kesme işaretleri dahil olmak üzere birkaç sözcük olabilir.
+Tümcecik listeleri, hem amaçları hem de varlıkların anlaşılmasına yardımcı olan, etki alanına özgü sözlük gibidir. Bir tümcecik listesinin yaygın kullanımları, şehir adları gibi uygun adlarla aynıdır. Şehir adı, kısa çizgiler veya kesme işareti dahil olmak üzere birkaç sözcük olabilir.
  
-### <a name="dont-use-a-phrase-list"></a>Bir ifade listesi kullanma 
-Bir liste varlık varlığın alabilir ve yalnızca tam olarak aynı değerleri tanımlar. her bir değeri açıkça tanımlar. Bir liste varlık varlığın tüm örneklerini'nın bilinen ve genellikle değişmez bir uygulama için uygun olabilir. Seyrek değişen bir restoran menüsü Gıda öğelerde verilebilir. Bir varlığın bir tam metin eşleşmesi gerekiyorsa, ifade listesi kullanmayın. 
+### <a name="dont-use-a-phrase-list"></a>Tümcecik listesi kullanma 
+Bir liste varlığı bir varlığın aldığı her değeri açıkça tanımlar ve yalnızca tam olarak eşleşen değerleri tanımlar. Bir liste varlığı, bir varlığın tüm örneklerinin bilinen ve sık değişmediği bir uygulama için uygun olabilir. Örnek olarak, bir restoran menüsünde seyrek olarak değişen yiyecek öğeleri verilebilir. Bir varlıkla tam metin eşleşmesi gerekiyorsa, tümcecik listesi kullanmayın. 
 
-## <a name="best-practices"></a>En iyi uygulamalar
-Bilgi [en iyi uygulamalar](luis-concept-best-practices.md).
+## <a name="best-practices"></a>Önerilen uygulamalar
+[En iyi yöntemleri](luis-concept-best-practices.md)öğrenin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [Özellik Ekle](luis-how-to-add-features.md) LUIS uygulamanızı özellikleri ekleme hakkında daha fazla bilgi için.
+LUSıS uygulamanıza özellikler ekleme hakkında daha fazla bilgi edinmek için bkz. [özellik ekleme](luis-how-to-add-features.md) .

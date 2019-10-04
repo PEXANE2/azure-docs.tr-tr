@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: b9ab36343dd11bdb5bd7cc1adcf2c8b1b971dab3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300674"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947895"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio 'Yu kullanarak Service Fabric uygulamanızda hata ayıklama
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "71300674"
 Azure Service Fabric uygulamanızı yerel bir bilgisayar geliştirme kümesinde dağıtarak ve hata ayıkladıktan sonra zamandan ve paradan tasarruf edebilirsiniz. Visual Studio 2019 veya 2015, uygulamayı yerel kümeye dağıtabilir ve hata ayıklayıcıyı otomatik olarak uygulamanızın tüm örneklerine bağlayın. Hata ayıklayıcıya bağlanmak için Visual Studio 'nun yönetici olarak çalıştırılması gerekir.
 
 1. [Service Fabric geliştirme ortamınızı ayarlama](service-fabric-get-started.md)adımlarını izleyerek bir yerel geliştirme kümesi başlatın.
-2. **F5** tuşuna basın veya **hata** > **ayıklamayı Başlat**' a tıklayın.
+2. **F5** tuşuna basın veya **Hata Ayıkla** > **hata ayıklamayı Başlat**öğesine tıklayın.
    
     ![Bir uygulamada hata ayıklamayı başlatma][startdebugging]
 3. Kodunuzda kesme noktaları ayarlayın ve **Hata Ayıkla** menüsündeki komutlar ' a tıklayarak uygulamada gezinin.
@@ -76,14 +76,10 @@ Service Fabric uygulamalarınız Azure 'da bir Service Fabric kümesinde çalı�
 
 > [!NOTE]
 > Özelliği, .NET 2,9 için [SERVICE fabrıc SDK 2,0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) ve [Azure SDK 'sını](https://azure.microsoft.com/downloads/)gerektirir.    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > Uzaktan hata ayıklama, çalışan uygulamalar üzerindeki etkisi nedeniyle geliştirme ve test senaryolarına yöneliktir ve üretim ortamlarında kullanılmamalıdır.
-> 
-> 
 
 1. **Cloud Explorer**'da kümenize gidin. Sağ tıklayın ve **hata ayıklamayı etkinleştir** ' i seçin
    
@@ -128,8 +124,6 @@ Ayrıca, izlemeleri doğrudan uzak bir küme düğümünden Visual Studio 'ya de
 > [!WARNING]
 > Akış izlemeleri geliştirme ve test senaryolarına yöneliktir ve çalışan uygulamalardaki etki nedeniyle üretim ortamlarında kullanılmamalıdır.
 > Bir üretim senaryosunda, Azure Tanılama kullanarak olayları iletme ' yi kullanmanız gerekir.
-> 
-> 
 
 1. **Cloud Explorer**'da kümenize gidin. Sağ tıklayın ve **akış Izlemelerini etkinleştir** ' i seçin
    

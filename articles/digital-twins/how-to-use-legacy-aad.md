@@ -1,26 +1,26 @@
 ---
 title: Azure dijital TWINS için eski AAD uygulama kaydını kullanma | Microsoft Docs
 description: Bu makalede, Azure dijital TWINS kurulumlarınız için Azure Active Directory ile uygulama kaydı oluşturma yönteminin nasıl kullanılacağı gösterilmektedir.
+ms.author: alinast
 author: alinamstanciu
-manager: philmea
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 08/16/2019
-ms.author: alinast
-ms.openlocfilehash: e9689c71c881c7f5f29ac05fea53bb2c27f75591
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 204b048dad348e37d44399025c5cd7a9526dbd2d
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624744"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949945"
 ---
 # <a name="register-your-azure-digital-twins-app-with-azure-active-directory-legacy"></a>Azure dijital Twins uygulamanızı eski Azure Active Directory kaydetme
 
 Bu makalede, örnek uygulamanızı kaydetmek için kullanım dışı **uygulama kayıtları (eski)** dikey penceresinin nasıl kullanılacağı açıklanır.
 
 > [!IMPORTANT]
-> * Yeni **Azure Active Directory** > **uygulama kayıtları** dikey penceresi, eski **Azure Active Directory** > **uygulama kayıtları (eski)** dikey pencerenin yerini 2019 olabilir.
+> * Yeni **Azure Active Directory** > **uygulama kayıtları** dikey penceresi, eski **Azure Active Directory** > **uygulama kayıtları (eski)** dikey penceresinin 2019 Mayıs.
 > * Eski dikey pencerede oluşturulan veya görüntülenen Uygulama kayıtları, otomatik olarak yeni dikey pencerede görüntülenir.
 > * Yeni Azure uygulama kayıt deneyimine geçiş hakkında kapsamlı bilgi için [azure uygulama kayıtları Eğitim Kılavuzu](https://docs.microsoft.com/azure/active-directory/develop/app-registrations-training-guide) ' nu okuyun ve [hızlı başlangıç Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 

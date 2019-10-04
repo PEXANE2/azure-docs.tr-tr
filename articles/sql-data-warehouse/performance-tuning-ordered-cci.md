@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 7adf43110cffdc669b39632521c69ed5d3723257
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845692"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948172"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore diziniyle performans ayarı  
 
@@ -44,6 +44,43 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 > [!NOTE] 
 > Sıralı bir CCı tablosunda, DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler otomatik olarak sıralanmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  
+
+## <a name="query-performance"></a>Sorgu performansı
+
+Sorgunun düzenli bir CCı 'den performans kazancı, sorgu desenlerine, verilerin boyutuna, verilerin ne kadar iyi sıralandığına, parçaların fiziksel yapısına ve sorgu yürütmesi için seçilen DWU ve kaynak sınıfına bağlıdır.  Kullanıcılar, sıralı bir CCı tablosu tasarlarken sütunları sıralamayı seçmeden önce tüm bu faktörleri incelemelidir.
+
+Tüm bu desenleri içeren sorgular genellikle sıralı CCı ile daha hızlı çalışır.  
+1. Sorgular eşitlik, eşitsizlik veya Aralık koşullarına sahiptir
+1. Koşul sütunları ve sıralı CCı sütunları aynı.  
+1. Koşul sütunları, sıralı CCı sütunlarının sütun sırası ile aynı sırada kullanılır.  
+ 
+Bu örnekte, T1 tablosunun Col_C, Col_B ve Col_A dizisinde sıralanmış bir kümelenmiş columnstore dizini vardır.
+
+```sql
+
+CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
+ORDER (Col_C, Col_B, Col_A)
+
+```
+
+Sorgu 1 ' in performansı, sıralı CCı 'dan diğer 3 sorgudan daha fazla avantaj sağlayabilir. 
+
+```sql
+-- Query #1: 
+
+SELECT * FROM T1 WHERE Col_C = 'c' AND Col_B = 'b' AND Col_A = 'a';
+
+-- Query #2
+
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_C = 'c' AND Col_A = 'a';
+
+-- Query #3
+SELECT * FROM T1 WHERE Col_B = 'b' AND Col_A = 'a';
+
+-- Query #4
+SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
+
+```
 
 ## <a name="data-loading-performance"></a>Veri yükleme performansı
 
@@ -101,4 +138,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Geliştirme ile ilgili daha fazla ipucu için bkz. [SQL Data Warehouse geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).
+Daha fazla geliştirme ipucu için bkz. [SQL veri ambarı geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).

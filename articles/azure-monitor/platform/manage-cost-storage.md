@@ -14,39 +14,41 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e21bad930bba02e4cbf715a050278ada812e55fa
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: fa0bd847596a601875d5662da1c000a5b1388eef
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718931"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960275"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
 > [!NOTE]
-> Bu makalede, Log Analytics çalışma alanınızın veri saklama süresini ayarlayarak Azure Izleyici 'de maliyetlerinizi nasıl denetleyeceğinizi açıklanmaktadır.  İlgili bilgiler için aşağıdaki makaleye bakın.
-> - [Kullanımı ve tahmini maliyetleri izlemek,](usage-estimated-costs.md) farklı fiyatlandırma modelleri için birden çok Azure izleme özelliği genelinde kullanımı ve tahmini maliyetleri görüntülemeyi açıklar. Fiyatlandırma modelinizin nasıl değiştirileceğini da açıklar.
+> Bu makalede, Azure Izleyici günlüklerine yönelik maliyetlerinizi anlama ve denetleme işlemlerinin nasıl yapılacağı açıklanır. [Kullanımı ve tahmini maliyetleri izleyen](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) ilgili bir makale, farklı fiyatlandırma modelleri için birden çok Azure izleme özelliği genelinde kullanım ve tahmini maliyetlerin nasıl görüntüleneceğini açıklar.
 
 Azure Izleyici günlükleri, kuruluşunuzda bulunan veya Azure 'da dağıtılan herhangi bir kaynakta çok büyük miktarlarda veri toplamayı, dizinlemesini ve depolamayı, ölçeklendirmek ve desteklemek üzere tasarlanmıştır.  Bu, kuruluşunuz için bir birincil sürücü olabilir, ancak maliyet verimliliği sonunda temel alınan sürücü. Bu uçta, bir Log Analytics çalışma alanının maliyetinin yalnızca toplanan verilerin hacmine dayanmadığını anlamak önemlidir, Ayrıca, seçilen plana de bağlıdır ve bağlı kaynaklarınızdan oluşturulan verileri depolamayı ne kadar tercih edersiniz.  
 
-Bu makalede, veri hacmi ve depolama büyümesinin nasıl proaktif olarak izleneceğini ve ilgili maliyetleri denetlemek için sınırları tanımlamanızı gözden geçiririz. 
-
+Bu makalede, alınan veri hacmi ve depolama büyümesinin nasıl proaktif bir şekilde izleneceğini ve ilgili maliyetleri denetlemek için sınırları tanımlamanızı inceliyoruz. 
 
 ## <a name="pricing-model"></a>Fiyatlandırma modeli
 
-Log Analytics fiyatlandırması, verileri alınan veri hacmine ve isteğe bağlı olarak daha uzun veri saklama için temel alır. Her Log Analytics çalışma alanı ayrı bir hizmet olarak ücretlendirilir ve Azure aboneliğiniz için faturaya katkıda bulunur. Veri alma miktarı aşağıdaki faktörlere göre önemli ölçüde olabilir: 
+Log Analytics için varsayılan fiyatlandırma, veri hacmine dayalı ve isteğe bağlı olarak daha uzun veri saklama için bir **Kullandıkça Öde** modelidir. Her Log Analytics çalışma alanı ayrı bir hizmet olarak ücretlendirilir ve Azure aboneliğiniz için faturaya katkıda bulunur. Veri alma miktarı aşağıdaki faktörlere göre önemli ölçüde olabilir: 
 
-  - Etkin yönetim çözümü sayısı
-  - [Azure Güvenlik Merkezi](https://azure.microsoft.com/en-us/pricing/details/security-center/) örneği için kendi faturalandırma modeliyle çözümlerin kullanımı
+  - Etkin yönetim çözümü sayısı ve yapılandırmaları (ör. 
   - İzlenen VM sayısı
   - İzlenen her bir VM 'den toplanan verilerin türü 
+  
+Kullandıkça Öde modeline ek olarak, Kullandıkça Öde fiyatına kıyasla% 25 ' e kadar tasarruf etmeniz için Log Analytics için **Kapasite ayırmaları** sunuyoruz. Kapasite ayırma fiyatlandırması, 100 GB/gün üzerinden başlayan bir rezervasyon satın almanıza olanak sağlar. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Log Analytics Kullandıkça öde ve kapasite rezervasyon fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) . 
 
-> [!NOTE]
-> Son bildirilen kapasite rezervasyonu fiyatlandırma katmanları 1 Kasım 2019 ' de Log Analytics için kullanılabilir. [@No__t-1](Azure Monitor pricing page)' den daha fazla bilgi edinin.
+[Azure Güvenlik Merkezi](https://azure.microsoft.com/pricing/details/security-center/) ve [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)gibi bazı çözümlerin kendi fiyatlandırma modeline sahip olduğunu unutmayın. 
+
+## <a name="estimating-the-costs-to-manage-your-environment"></a>Ortamınızı yönetme maliyetlerini tahmin etme 
+
+Henüz Azure Izleyici günlüklerini kullanmıyorsanız, Log Analytics kullanmanın maliyetini tahmin etmek için [Azure izleyici Fiyatlandırma Hesaplayıcı](https://azure.microsoft.com/pricing/calculator/?service=monitor) ' ı kullanabilirsiniz. Arama kutusuna "Azure Izleyici" girerek ve sonuçta elde edilen Azure Izleyici kutucuğuna tıklayarak başlayın. Sayfayı Azure Izleyici 'ye kaydırın ve tür açılan menüsünden Log Analytics ' yi seçin.  Buraya, her bir VM 'den toplamak istediğiniz sanal makine sayısını ve GB veri miktarını girebilirsiniz. Typcially 1 ila 3 GB veri ayı tipik bir Azure VM 'sinden alınır. Zaten Azure Izleyici günlüklerini değerlendiriyorsanız, kendi ortamınızdan veri istatistiklerinizi kullanabilirsiniz. [Izlenen sanal makinelerin sayısını](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-nodes-sending-data) ve [çalışma alanınızın veri hacmini](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)nasıl belirleyeceğini öğrenmek için aşağıya bakın. 
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Kullanımınız ve Tahmini maliyetlerinizi anlayın
 
-Azure Izleyici günlükleri, en son kullanım desenlerine göre maliyetlerin büyük olasılıkla ne olduğunu anlamak kolaylaşır. Bunu yapmak için, veri kullanımını gözden geçirmek ve çözümlemek üzere **Log Analytics kullanımı ve tahmini maliyetleri** kullanın. , Her bir çözüm tarafından ne kadar veri toplandığını, ne kadar veri saklanacağını ve dahil edilen veri miktarına ve dahil edilen miktarın ötesinde ek bekletmeye göre maliyetlerinizin bir tahminini gösterir.
+Azure Izleyici günlüklerini şimdi kullanıyorsanız, maliyetlerin en son kullanım desenlerine göre büyük olasılıkla ne olduğunu anlamak kolaydır. Bunu yapmak için, veri kullanımını gözden geçirmek ve çözümlemek üzere **Log Analytics kullanımı ve tahmini maliyetleri** kullanın. , Her bir çözüm tarafından ne kadar veri toplandığını, ne kadar veri saklanacağını ve dahil edilen veri miktarına ve dahil edilen miktarın ötesinde ek bekletmeye göre maliyetlerinizin bir tahminini gösterir.
 
 ![Kullanım ve tahmini maliyetler](media/manage-cost-storage/usage-estimated-cost-dashboard-01.png)
 
@@ -57,6 +59,12 @@ Verilerinizi daha ayrıntılı bir şekilde araştırmak için **kullanım ve ta
 **Kullanım ve tahmini maliyetler** sayfasında, veri hacminin ayı için gözden geçirebilirsiniz. Bu, Log Analytics çalışma alanınızda alınan ve saklanan tüm verileri içerir.  Kaynak, bilgisayar ve teklife göre veri hacmi eğilimlerini hakkında bilgi içeren Kullanım panosunu görüntülemek için sayfanın üst kısmından **kullanım ayrıntıları** ' na tıklayın. Günlük ucunu görüntülemek ve ayarlamak ya da saklama süresini değiştirmek için, **veri hacmi yönetimi**' ne tıklayın.
  
 Log Analytics ücretleri Azure faturanızda eklenir. Azure faturanızın ayrıntılarını Azure portal Faturalandırma bölümünde veya [Azure faturalama portalı](https://account.windowsazure.com/Subscriptions)görebilirsiniz.  
+
+## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Azure faturanızda Log Analytics kullanımı görüntüleme 
+
+Azure, [Azure maliyet yönetimi + faturalandırma](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. Kaynak türüne göre bir filtre ekleme (Log Analytics için Microsoft. operationalınsights/çalışma alanı için), harcamalarınızı izlemenize imkan tanır.
+
+Kullanımınızı [Azure portalından indirerek](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)kullanımınız daha fazla anlamak için kazanılabilir. İndirilen elektronik tabloda, Azure kaynağı başına kullanım (ör. Log Analytics çalışma alanı) için günlük kullanımını görebilirsiniz. Bu Excel elektronik tablosunda, Log Analytics çalışma alanlarınızın kullanımı, "içgörüler ve çözümlemeler" (bazı eski fiyatlandırma katmanlarından bazıları tarafından kullanılır) ve "Log Analytics" göstermek ve "örneğe" bir filtre eklemek için "ölçüm kategorisi" sütununda ilk filtrelemeye göre bulunabilir. ID "," Workspace içerir "olan sütun. Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı bulabilirsiniz. 
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>Günlük veri hacminin maksimum sayısını yönetin
 
@@ -75,7 +83,7 @@ Veri alma eğilimi ve tanımlanacak günlük hacim üst sınırı olduğunu anla
 
 Aşağıdaki adımlarda, Log Analytics çalışma alanının günlük olarak kullanacağı veri hacmini yönetmek için bir sınırın nasıl yapılandırılacağı açıklanır.  
 
-1. Çalışma alanınızın sayfasında, soldaki bölmeden **Kullanım ve tahmini maliyetler**’i seçin.
+1. Çalışma alanınızda, sol bölmedeki **kullanım ve tahmini maliyetler** ' i seçin.
 2. Seçili çalışma alanı için **kullanım ve tahmini maliyetler** sayfasında, sayfanın üst kısmından **veri hacmi yönetimi** ' ne tıklayın. 
 3. Günlük uç varsayılan olarak **kapalıdır** : etkinleştirmek için **Açık** ' a tıklayın ve ardından veri hacmi sınırını GB/gün cinsinden ayarlayın.
 
@@ -104,16 +112,59 @@ Uyarı tanımlandıktan ve sınıra ulaşıldığında, bir uyarı tetiklenir ve
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
 Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar süreyle saklanacağını nasıl yapılandıracağınız açıklanır.
+
+### <a name="default-retention"></a>Varsayılan saklama
+
+Çalışma alanınız için varsayılan saklama alanını ayarlamak için 
  
-1. Çalışma alanınızın sayfasında, soldaki bölmeden **Kullanım ve tahmini maliyetler**’i seçin.
-2. **Kullanım ve tahmini maliyetler** sayfasının üst kısmındaki **Veri hacmi yönetimi**'ni seçin.
+1. Azure portalında, çalışma alanınızdan sol bölmeden **kullanım ve tahmini maliyetler** ' i seçin.
+2. **Kullanım ve tahmini maliyetler** sayfasında, sayfanın üst kısmından **veri hacmi yönetimi** ' ne tıklayın.
 3. Bölmede, gün sayısını artırmak veya azaltmak için kaydırıcıyı kaydırın ve ardından **Tamam**' a tıklayın.  *Ücretsiz* katmanınız varsa, veri saklama süresini değiştiremeyeceksiniz ve bu ayarı denetlemek için ücretli katmana yükseltmeniz gerekir.
 
     ![Çalışma alanı verilerini bekletme ayarını değiştir](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-Saklama, `dataRetention` parametresi kullanılarak [ARM aracılığıyla da ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu işlevsellik yalnızca ARM aracılığıyla sunulur. 
+Saklama, `retentionInDays` parametresi kullanılarak [ARM aracılığıyla da ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu işlevsellik yalnızca ARM aracılığıyla sunulur. 
 
 İki veri türü--`Usage` ve `AzureActivity`, varsayılan olarak 90 gün boyunca korunur ve bu 90 günlük bekletme için ücret alınmaz. Bu veri türleri de veri alma ücretlerinden ücretsizdir. 
+
+### <a name="retention-by-data-type"></a>Veri türüne göre bekletme
+
+Ayrıca, bireysel veri türleri için farklı bekletme ayarları belirtmek mümkündür. Her veri türü, çalışma alanının alt kaynağıdır. Örneğin, SecurityEvent tablosu [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) ' de şu şekilde çözülebilir:
+
+```
+/subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
+```
+
+Veri türünün (tablo) büyük/küçük harfe duyarlı olduğunu unutmayın.  Belirli bir veri türünün (Bu örnekte SecurityEvent) veri türü bekletme ayarlarını geçerli olarak almak için şunu kullanın:
+
+```JSON
+    GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
+```
+
+Çalışma alanınızdaki tüm veri türleri için geçerli veri türü bekletme ayarlarını almak için, yalnızca belirli veri türünü atlayın, örneğin:
+
+```JSON
+    GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables?api-version=2017-04-26-preview
+```
+
+Belirli bir veri türünün (Bu örnekte SecurityEvent) bekletmesini 730 güne ayarlamak için
+
+```JSON
+    PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
+    {
+        "properties": 
+        {
+            "retentionInDays": 730
+        }
+    }
+```
+
+@No__t-0 ve `AzureActivity` veri türleri özel saklama ile ayarlanamaz. Bu, varsayılan çalışma alanı saklama veya 90 gün üst sınırını alır. 
+
+Veri türüne göre bekletme ayarlamak için doğrudan ARM 'e bağlanmak için harika bir araç, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' dur.  [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin. 
+
+> [!NOTE]
+> Veri saklama maliyetlerinizi azaltmak için bireysel veri türlerinde bekletme ayarlama kullanılabilir.  2019 Ekim 'den başlayarak toplanan veriler için (Bu özellik yayınlandığında), bazı veri türlerine yönelik saklama süresini azaltmak zaman içinde bekletme maliyetinizi azaltabilir.  Daha önce toplanan veriler için, tek bir tür için daha düşük bir bekletme ayarlamak, bekletme maliyetlerinizi etkilemez.  
 
 ## <a name="legacy-pricing-tiers"></a>Eski fiyatlandırma katmanları
 
@@ -138,7 +189,7 @@ Log Analytics çalışma alanınızın eski fiyatlandırma katmanlarına erişim
 3. **Fiyatlandırma katmanı**altında bir fiyatlandırma katmanı seçin ve ardından **Seç**' e tıklayın.  
     ![Selected fiyatlandırma planı @ no__t-1
 
-Ayrıca, `ServiceTier` parametresini kullanarak, [fiyatlandırma KATMANıNı ARM aracılığıyla da ayarlayabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . 
+Ayrıca, `sku` parametresini kullanarak (ARM şablonunda `pricingTier`), [fiyatlandırma KATMANıNı ARM aracılığıyla da ayarlayabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Log Analytics neden artık veri toplamadığına ilişkin sorun giderme
 
@@ -158,9 +209,9 @@ Veri toplama durdurulduğunda, OperationStatus **uyarısı**olur. Veri toplama b
 
 Veri toplama durdurulduğunda uyarılmak için, veri toplama durdurulduğunda bildirim almak üzere *günlük veri Cap uyarısı oluşturma* bölümünde açıklanan adımları kullanın. Uyarı kuralı için bir e-posta, Web kancası veya Runbook eylemi yapılandırmak üzere [eylem grubu oluşturma](action-groups.md) bölümünde açıklanan adımları kullanın. 
 
-## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Kullanımın neden beklenenden daha yüksek olduğuyla ilgili sorunları giderme
+## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Kullanımının beklenenden yüksek olması için sorun giderme
 
-Yüksek kullanımın nedeni aşağıdakilerden biri veya her ikisidir:
+Daha yüksek kullanım nedeni aşağıdakilerden biridir:
 - Log Analytics çalışma alanına beklenenden daha fazla düğüm gönderilemedi
 - Log Analytics çalışma alanına gönderilmekte olan beklenenden daha fazla veri
 
@@ -289,12 +340,12 @@ Belirli bir veri türü için veri kaynağını daha ayrıntılı bir şekilde i
 
 + **Güvenlik** çözümü
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
-+ **Günlük Yönetimi** çözümü
++ **Günlük yönetimi** çözümü
   - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
 + **Perf** veri türü
   - `Perf | summarize AggregatedValue = count() by CounterPath`
   - `Perf | summarize AggregatedValue = count() by CounterName`
-+ **Event** veri türü
++ **Olay** veri türü
   - `Event | summarize AggregatedValue = count() by EventID`
   - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
 + **Syslog** veri türü
@@ -307,14 +358,14 @@ Belirli bir veri türü için veri kaynağını daha ayrıntılı bir şekilde i
 
 Toplanan günlüklerin hacmini azaltmaya yönelik bazı öneriler şunlardır:
 
-| Yüksek veri hacminin kaynağı | Veri hacmi nasıl azaltılır |
+| Yüksek veri hacmi kaynağı | Veri hacmini azaltma |
 | -------------------------- | ------------------------- |
-| Güvenlik olayları            | [Yaygın veya en az güvenlik olaylarını](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) seçin <br> Güvenlik denetimi ilkesini yalnızca gerekli olayları toplayacak şekilde değiştirin. Özellikle, şunlarla ilgili olayları toplamak gerekip gerekmediğini gözden geçirin: <br> - [filtre platformu denetimi](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [kayıt defteri denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [dosya sistemi denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [çekirdek nesnesi denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [tanıtıcı değiştirme denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - çıkarılabilir depolama birimi denetimi |
-| Performans sayaçları       | [Performans sayacı yapılandırmasını](data-sources-performance-counters.md) şöyle değiştirin: <br> - Koleksiyonun sıklığını azaltın <br> - Performans sayaçlarının sayısını azaltın |
-| Olay günlükleri                 | [Olay günlüğü yapılandırmasını](data-sources-windows-events.md) şöyle değiştirin: <br> - Toplanan olay günlüklerinin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneğin, *Bilgi* düzeyindeki olayları toplamayın |
-| Syslog                     | [Syslog yapılandırmasını](data-sources-syslog.md) şu şekilde değiştirin: <br> - Toplanan tesislerin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneği *Bilgi* ve *Hata Ayıklama* düzeyindeki olayları toplamayın |
-| AzureDiagnostics           | Aşağıdaki amaçlarla kaynak günlüğü koleksiyonunu değiştirin: <br> - Log Analytics’e günlük gönderen kaynak sayısını azaltma <br> - Yalnızca gerekli günlükleri toplama |
-| Çözüm ihtiyacı olmayan bilgisayarlardan toplanan çözüm verileri | Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) özelliğini kullanın. |
+| Güvenlik olayları            | [Ortak veya en düşük güvenlik olaylarını](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) seçin <br> Güvenlik Denetim ilkesini yalnızca gerekli olayları toplayacak şekilde değiştirin. Özellikle, için olay toplama gereksinimini gözden geçirin <br> - [Denetim filtreleme platformu](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [denetim kayıt defteri](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [Denetim dosya sistemi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [Denetim çekirdek nesnesi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [Denetim tanıtıcı işleme](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> -çıkarılabilir depolamayı denetle |
+| Performans sayaçları       | [Performans sayacı yapılandırmasını](data-sources-performance-counters.md) Değiştir: <br> -Koleksiyonun sıklığını azaltma <br> -Performans sayacı sayısını azaltma |
+| Olay günlükleri                 | [Olay günlüğü yapılandırmasını](data-sources-windows-events.md) şu şekilde değiştirin: <br> -Toplanan olay günlüklerinin sayısını azaltın <br> -Yalnızca gerekli olay düzeylerini toplayın. Örneğin, *bilgi* düzeyi olayları toplama |
+| Syslog                     | [Syslog yapılandırmasını](data-sources-syslog.md) şu şekilde değiştirin: <br> -Toplanan tesis sayısını azaltın <br> -Yalnızca gerekli olay düzeylerini toplayın. Örneğin, *bilgi* ve *hata ayıklama* düzeyi olayları toplanmaz |
+| AzureDiagnostics           | Kaynak günlük koleksiyonunu Değiştir: <br> -Log Analytics günlük gönderme kaynak sayısını azaltın <br> -Yalnızca gerekli günlükleri topla |
+| Çözüme gerek olmayan bilgisayarlardan çözüm verileri | Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) kullanın. |
 
 ### <a name="getting-security-and-automation-node-counts"></a>Güvenlik ve otomasyon düğüm sayılarını alma
 
@@ -362,13 +413,13 @@ Farklı Otomasyon düğümlerinin sayısını görmek için sorguyu kullanın:
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Veri toplama işlemi yüksekse uyarı oluştur
 
-Bu bölümde, aşağıdaki durumlarda nasıl uyarı oluşturulacağı açıklanır:
-- Veri hacmi belirtilen bir miktarı aştığında.
-- Veri hacminin belirtilen bir miktarı aşacağı tahmin edildiğinde.
+Bu bölümde aşağıdaki durumlarda bir uyarı oluşturulması açıklanmaktadır:
+- Veri hacmi belirtilen miktarı aşıyor.
+- Veri hacmi belirtilen miktarı aşacak şekilde tahmin edilir.
 
-Azure Uyarıları, arama sorguları kullanan [günlük uyarılarını](alerts-unified-log.md) destekler. 
+Azure uyarıları, arama sorguları kullanan [günlük uyarılarını](alerts-unified-log.md) destekler. 
 
-Aşağıdaki sorgu, son 24 saatte 100 GB'den fazla veri toplandığında bir sonuç verir:
+Son 24 saat içinde 100 GB 'den fazla veri toplandığında aşağıdaki sorguda bir sonuç bulunur:
 
 ```kusto
 union withsource = $table Usage 
@@ -377,7 +428,7 @@ union withsource = $table Usage
 | where DataGB > 100
 ```
 
-Aşağıdaki sorgu, ne zaman bir günde 100 GB'den fazla veri toplanacağını tahmin etmek için basit bir formül kullanır: 
+Aşağıdaki sorgu, günde 100 GB 'den fazla veri gönderileceğini tahmin etmek için basit bir formül kullanır: 
 
 ```kusto
 union withsource = $table Usage 
@@ -387,43 +438,43 @@ union withsource = $table Usage
 | where EstimatedGB > 100
 ```
 
-Farklı bir veri hacminde uyarıda bulunmak için, sorgulardaki 100 değerini uyarılmak istediğiniz GB sayısıyla değiştirin.
+Farklı bir veri biriminde uyarı almak için sorgularda 100 ' i, uyarı vermek istediğiniz GB sayısıyla değiştirin.
 
-Toplanan veri beklenen miktarı aştığında size bildirilmesini sağlamak için, [yeni günlük uyarısı oluşturma](alerts-metric.md) başlığı altında açıklanan adımları kullanın.
+Veri toplama beklenenden yüksek olduğunda bildirim almak için [Yeni bir günlük uyarısı oluşturma](alerts-metric.md) bölümünde açıklanan adımları kullanın.
 
-İlk sorgu için, yani 24 saat içinde 100 GB'den fazla veri toplandığında uyarı oluştururken şu ayarları yapın:  
+İlk sorgu için uyarı oluştururken--24 saat içinde 100 GB 'den fazla veri olduğunda şunları ayarlayın:  
 
-- **Uyarı koşulunu tanımlama** adımında Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
-- **Uyarı ölçütleri** alanında aşağıdakileri belirtin:
-   - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
-   - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
-   - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
-   - Kullanım verileri saatte bir güncelleştirildiğinden **Süre** *1440* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
-- **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
-   - **Ad**: *24 saat içinde 100 GB'den büyük veri hacmi*
-   - **Önem derecesi**: *Uyarı*
+- **Uyarı koşulunu tanımlayın** Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
+- **Uyarı ölçütleri** şunları belirtin:
+   - **Sinyal adı** **özel günlük aramasını** seçin
+   - **Sorgu** `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100` ' e ara
+   - **Uyarı mantığı** , *sonuç sayısına* ve **koşula** göre *0* *eşikinden büyük*
+   - Kullanım verileri saat başına yalnızca bir kez güncelleştirdiği için, *1440* dakikalık ve **Uyarı sıklığının** her *60* dakikada bir **zaman aralığı** .
+- **Uyarı ayrıntılarını tanımlayın** şunları belirtin:
+   - *24 saat içinde 100 GB 'tan büyük veri hacmi* **adı**
+   - *Uyarı* **önem derecesi**
 
-Günlük uyarısı ölçütlerle eşleştiğinde bilgilendirme yapılması için var olan bir [Eylem Grubunu](action-groups.md) kullanın veya yeni bir tane oluşturun.
+Mevcut bir [eylem grubu](action-groups.md) belirtin veya günlük uyarısı ölçütlerle eşleştiğinde size bildirimde bulunulması gerekir.
 
-İkinci sorgu için, yani 24 saat içinde 100 GB'den fazla veri olacağı tahmin edildiğinde uyarı oluştururken şu ayarları yapın:
+İkinci sorgu için uyarı oluştururken--24 saat içinde 100 GB 'den fazla veri olacağını tahmin edildiğinde şunları ayarlayın:
 
-- **Uyarı koşulunu tanımlama** adımında Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
-- **Uyarı ölçütleri** alanında aşağıdakileri belirtin:
-   - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
-   - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
-   - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
-   - Kullanım verileri saatte bir güncelleştirildiğinden **Süre** *180* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
-- **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
-   - **Ad**: *24 saat içinde veri hacminin 100 GB'den büyük olacağı tahmin ediliyor*
-   - **Önem derecesi**: *Uyarı*
+- **Uyarı koşulunu tanımlayın** Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
+- **Uyarı ölçütleri** şunları belirtin:
+   - **Sinyal adı** **özel günlük aramasını** seçin
+   - **Sorgu** `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100` ' e ara
+   - **Uyarı mantığı** , *sonuç sayısına* ve **koşula** göre *0* *eşikinden büyük*
+   - Kullanım verileri saat başına yalnızca bir kez güncelleştirdiği için, *180* dakikalık ve **Uyarı sıklığının** her *60* dakikada bir **zaman aralığı** .
+- **Uyarı ayrıntılarını tanımlayın** şunları belirtin:
+   - *24 saat içinde 100 GB 'tan büyük veri hacmi* **adı** bekleniyor
+   - *Uyarı* **önem derecesi**
 
-Günlük uyarısı ölçütlerle eşleştiğinde bilgilendirme yapılması için var olan bir [Eylem Grubunu](action-groups.md) kullanın veya yeni bir tane oluşturun.
+Mevcut bir [eylem grubu](action-groups.md) belirtin veya günlük uyarısı ölçütlerle eşleştiğinde size bildirimde bulunulması gerekir.
 
-Uyarı aldığınızda, kullanımın neden beklenenden fazla olduğu konusundaki sorunları gidermek için aşağıdaki bölümde yer alan adımları kullanın.
+Bir uyarı aldığınızda, kullanımın neden beklenenden yüksek olduğunu gidermek için aşağıdaki bölümdeki adımları kullanın.
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Log Analytics kullanarak veri aktarımı ücretleri
 
-Verilerin Log Analytics gönderilmesi veri bant genişliği ücretlerine neden olabilirler. [Azure bant genişliği fiyatlandırma sayfasında](https://azure.microsoft.com/en-us/pricing/details/bandwidth/)açıklandığı gibi, iki bölgede bulunan Azure hizmetleri arasındaki veri aktarımı, normal fiyata giden veri aktarımı olarak ücretlendirilir. Gelen veri aktarımı ücretsizdir. Ancak, bu ücret çok küçük (az%) Log Analytics veri alımı maliyetleriyle karşılaştırılır. Sonuç olarak, Log Analytics için maliyetleri denetlemek, verileri alınan veri hacminin üzerine odaklamalıdır ve [burada](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)bu konuda bilgi sağlanmasına yardımcı olacak rehberlik sunuyoruz.   
+Verilerin Log Analytics gönderilmesi veri bant genişliği ücretlerine neden olabilirler. [Azure bant genişliği fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/bandwidth/)açıklandığı gibi, iki bölgede bulunan Azure hizmetleri arasındaki veri aktarımı, normal fiyata giden veri aktarımı olarak ücretlendirilir. Gelen veri aktarımı ücretsizdir. Ancak, bu ücret çok küçük (az%) Log Analytics veri alımı maliyetleriyle karşılaştırılır. Sonuç olarak, Log Analytics için maliyetleri denetlemek, verileri alınan veri hacminin üzerine odaklamalıdır ve [burada](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understanding-ingested-data-volume)bu konuda bilgi sağlanmasına yardımcı olacak rehberlik sunuyoruz.   
 
 ## <a name="limits-summary"></a>Limit Özeti
 
@@ -432,10 +483,10 @@ Bazıları Log Analytics fiyatlandırma katmanına bağlı olan bazı ek Log Ana
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Arama dilinin nasıl kullanılacağını öğrenmek için bkz. [Azure Izleyici günlüklerinde günlük aramaları](../log-query/log-query-overview.md) . Kullanım verilerinde başka analizler yapmak için arama sorgularını kullanabilirsiniz.
-- Bir arama ölçütü karşılandığında size bildirilmesini sağlamak için, [yeni günlük uyarısı oluşturma](alerts-metric.md) başlığı altında açıklanan adımları kullanın.
-- Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) özelliğini kullanın.
+- Arama dilinin nasıl kullanılacağını öğrenmek için bkz. [Azure Izleyici günlüklerinde günlük aramaları](../log-query/log-query-overview.md) . Kullanım verileri üzerinde ek analizler gerçekleştirmek için arama sorguları ' nı kullanabilirsiniz.
+- Bir arama ölçütü karşılandığında bildirim almak için [Yeni bir günlük uyarısı oluşturma](alerts-metric.md) bölümünde açıklanan adımları kullanın.
+- Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) kullanın.
 - Etkin bir olay toplama ilkesini yapılandırmak için [Azure Güvenlik Merkezi filtreleme ilkesini](../../security-center/security-center-enable-data-collection.md)gözden geçirin.
-- [Performans sayacı yapılandırmasını](data-sources-performance-counters.md) değiştirin.
-- Olay toplama ayarlarınızda değişiklik yapmak için, [olay günlüğü yapılandırması](data-sources-windows-events.md) konusunu gözden geçirin.
-- Syslog koleksiyonu ayarlarınızda değişiklik yapmak için, [syslog yapılandırması](data-sources-syslog.md) konusunu gözden geçirin.
+- [Performans sayacı yapılandırmasını](data-sources-performance-counters.md)değiştirin.
+- Olay koleksiyonu ayarlarınızı değiştirmek için [olay günlüğü yapılandırması](data-sources-windows-events.md)' nı gözden geçirin.
+- Syslog koleksiyon ayarlarınızı değiştirmek için [Syslog yapılandırmasını](data-sources-syslog.md)gözden geçirin.

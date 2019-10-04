@@ -54,7 +54,7 @@
     - name: İsabet vurgulamayı gerçekleştirme
       href: hit-highlighting.md
     - name: Sonuçları sayfalama
-      href: paging-webpages.md
+      href: paging-search-results.md
     - name: Küçük resimleri yeniden boyutlandırma ve kırpma
       href: resize-and-crop-thumbnails.md
     - name: v5’ten v7’ye yükseltme

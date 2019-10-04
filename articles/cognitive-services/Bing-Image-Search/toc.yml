@@ -52,8 +52,9 @@
       href: gif-images.md
     - name: Popüler resimler alma
       href: trending-images.md
-    - name: Görüntüleri sayfalama
-      href: paging-images.md
+    - name: Arama sonuçları sayfalarında gezinme
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: Küçük resimleri yeniden boyutlandırma ve kırpma
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

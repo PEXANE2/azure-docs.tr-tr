@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9796a4efdacef04390705607defb7b5cdd462886
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 704c1cdf95424bffa19e0946d13fa45d1b520753
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828736"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959946"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -329,6 +329,7 @@ Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez
 
 - `BULK INSERT` komutunda, Azure Blob depolamadan dosya içeri aktarılırken `DATASOURCE` gereklidir. Bkz. [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
 - Azure Blob depolama alanındaki bir dosyanın içeriğini okurken `OPENROWSET` işlevinde `DATASOURCE` gereklidir. Bkz. [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+- `OPENROWSET`, diğer Azure SQL tek veritabanlarından, yönetilen örneklerden veya SQL Server örneklerinden veri okumak için kullanılabilir. Oracle veritabanları veya Excel dosyaları gibi diğer kaynaklar desteklenmez.
 
 ### <a name="clr"></a>CLR
 

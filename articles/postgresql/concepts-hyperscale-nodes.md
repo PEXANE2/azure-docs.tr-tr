@@ -1,28 +1,28 @@
 ---
-title: PostgreSQL – hiper ölçekli (Citus) (Önizleme) için Azure veritabanı'nda düğümleri
-description: Bir sunucu grubundaki düğümleri iki tür.
+title: PostgreSQL için Azure veritabanı 'nda düğümler – hiper ölçek (Citus) (Önizleme)
+description: PostgreSQL için Azure veritabanı 'ndaki bir sunucu grubunda bulunan iki tür düğüm, düzenleyici ve çalışan hakkında bilgi edinin.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: c6b948ed63f43f1597103d123be5ed39f42bd276
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 097fcdb3a7e53bb63db9dc2d352d754062df7be6
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077283"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947550"
 ---
-# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>PostgreSQL – hiper ölçekli (Citus) (Önizleme) için Azure veritabanı'nda düğümleri
+# <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>PostgreSQL için Azure veritabanı 'nda düğümler – hiper ölçek (Citus) (Önizleme)
 
-Barındırma türü hiper ölçekli (Citus) (Önizleme), "hiçbir şey paylaşılmayan" bir mimaride birbiriyle koordine etmek için (düğümler adı verilir) PostgreSQL sunucuları için Azure veritabanı sağlar. Sunucu grubundaki düğümleri topluca daha fazla veri tutun ve tek bir sunucu üzerinde sağlayabileceğinizden çok daha fazla CPU çekirdeği kullanın. Mimari Ayrıca sunucu grubuna daha fazla düğüm ekleyerek ölçeğini veritabanı sağlar.
+Hiper ölçek (Citus) (Önizleme) barındırma türü, PostgreSQL için Azure veritabanı sunucularına (düğümler adı verilir) "paylaşılan öğe olmayan" mimaride birbiriyle koordine etmesine olanak tanır. Bir sunucu grubundaki düğümler toplu olarak daha fazla veri tutar ve tek bir sunucuda mümkün olduğunca daha fazla CPU çekirdeği kullanır. Mimari Ayrıca, sunucu grubuna daha fazla düğüm ekleyerek veritabanının ölçeklendirilmesine de olanak tanır.
 
-## <a name="coordinator-and-workers"></a>Düzenleyici ve çalışanları
+## <a name="coordinator-and-workers"></a>Koordinatör ve çalışanlar
 
-Her sunucu grubu bir düzenleyici düğüm ve birden fazla çalışana sahip. Uygulamaları, sonuçları toplar ve ilgili çalışanlarına geçişleri Düzenleyici düğüm sorguları gönderin. Uygulamaları doğrudan çalışanlarına bağlanmanız mümkün değildir.
+Her sunucu grubunda bir düzenleyici düğümü ve birden çok çalışan bulunur. Uygulamalar, sorgularını ilgili çalışanlara aktaran ve sonuçlarını toplayan düzenleyici düğümüne gönderir. Uygulamalar doğrudan çalışanlara bağlanamaz.
 
-Her bir sorgu için düzenleyici için tek çalışan düğüme yönlendiren ya da gerekli verileri tek bir düğüm veya birden çok olup yaşadığı bağlı olarak birkaç arasında parallelizes. Düzenleyici meta veri tablolarını consulting tarafından yapmanız gerekenler karar verir. Bu tablolar düğümlere DNS adları ve çalışan düğümlerinin durumunu ve veri dağıtımını izleyin.
+Her sorgu için, düzenleyici bunu tek bir çalışan düğümüne yönlendirir ya da gerekli verilerin tek bir düğümde veya birden çok üzerinde olmasına bağlı olarak bir kaç tane üzerinde paralelleştirme yapın. Düzenleyici, meta veri tablolarına danışarak ne yapılacağını belirler. Bu tablolar, çalışan düğümlerinin DNS adlarını ve sistem durumunu ve verilerin düğümler arasında dağıtımını izler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Düğümler nasıl depolamak öğrenin [dağıtılmış veriler](concepts-hyperscale-distributed-data.md)
+- Düğümlerin [Dağıtılmış verileri](concepts-hyperscale-distributed-data.md) nasıl depoleyeceğinizi öğrenin

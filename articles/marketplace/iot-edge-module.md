@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: pabutler
-ms.openlocfilehash: 3010b63c7c4c575d915789c19b60710194c79196
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 54369e0f2c943c146d186605833198253b960022
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874679"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949536"
 ---
-# <a name="iot-edge-modules"></a>IoT Edge modülleri
+# <a name="iot-edge-modules"></a>IoT Edge modüller
 
 [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platformu Azure bulutu tarafından desteklenmektedir.  Bu platform, kullanıcıların doğrudan IoT cihazlarında çalışacak bulut iş yüklerini dağıtmasına olanak sağlar.  IoT Edge bir modül çevrimdışı iş yüklerini çalıştırabilir ve veri analizini yerel olarak gerçekleştirebilir. Bu teklif türü, bant genişliğini kaydetmeye, yerel ve hassas verilerin korunmasına yardımcı olur ve düşük Gecikmeli yanıt süresi sağlar.  Artık önceden oluşturulmuş bu iş yüklerinden faydalanmak için seçenekleriniz vardır. Bu aşamada, Microsoft 'tan yalnızca birkaç birinci taraf çözüm kullanıma sunulmuştur.  Kendi özel IoT çözümlerinizi oluşturmak için zaman ve kaynakları yatırım yapmanız gerekiyordu.
 
@@ -51,7 +51,7 @@ Market şu anda **ücretsiz** olarak destekler ve IoT Edge modüller Için **ken
 
 Her durumda IoT Edge modüller **Transact** yayımlama seçeneğini seçmelidir.  Yayımlama seçenekleri hakkında daha fazla bilgi için bkz. [yayımlama seçeneği seçme](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) .  
 
-## <a name="eligibility-criteria"></a>Uygunluk Ölçütleri
+## <a name="eligibility-criteria"></a>Uygunluk ölçütleri
 
 Microsoft Azure Market sözleşmelerinin ve ilkelerin tüm koşulları IoT Edge modül teklifleri için geçerlidir.  Ayrıca, IoT Edge modüller için önkoşulları ve teknik gereksinimleri vardır.  
 
@@ -82,9 +82,7 @@ Azure Market 'te sertifikalı ve yayımlanmış olması için bir IoT Edge modü
 
 Daha önce yapmadıysanız,
 
-- [Microsoft iş ortağı ağı](https://partner.microsoft.com/membership)kaydolun.
-- Bir [Microsoft hesabı](https://account.microsoft.com/account/) oluşturun (Azure Marketi Transact teklifleri için gereklidir; diğerleri için önerilir).
-- [Market kayıt formunu](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)gönderme. Daha fazla bilgi için bkz. [Iş Ortağı Merkezi hesabı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) .
+- Market 'e [kaydolun](https://azuremarketplace.microsoft.com/sell) .
 
 Kaydolduysanız ve yeni bir teklif oluşturuyor ya da mevcut bir teklif üzerinde çalışıyorsanız,
 

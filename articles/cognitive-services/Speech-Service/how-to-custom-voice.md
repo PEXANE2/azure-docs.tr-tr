@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9bb654f37ecc4fda46171e859adac0236b51e4b2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881486"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959408"
 ---
-# <a name="get-started-with-custom-voice"></a>Özel Ses’i kullanmaya başlama
+# <a name="get-started-with-custom-voice"></a>Özel sesle çalışmaya başlama
 
 [Özel ses](https://aka.ms/customvoice) , markanız için tanınabilir, tek bir tür ses oluşturmanıza olanak sağlayan bir dizi çevrimiçi araç. Kullanmaya başlamak her şey için çok sayıda ses dosyası ve ilişkili dökümlerdir. Özel bir metin okuma deneyimi oluşturmaya başlamak için aşağıdaki bağlantıları izleyin.
 
@@ -55,10 +55,10 @@ Bir Azure hesabı ve bir konuşma Hizmetleri aboneliği oluşturduktan sonra, ö
 
 Veriler, modeller, testler ve uç noktalar gibi içerikler, özel ses portalındaki **Projeler** halinde düzenlenmiştir. Her proje, oluşturmak istediğiniz sesin ülke/dil ve cinsiyetine özgüdür. Örneğin, Birleşik Devletler (en-US) içinde Ingilizce kullanan çağrı merkezinizin sohbet botları için kadın sesi için bir proje oluşturabilirsiniz.
 
-İlk projenizi oluşturmak için, **metinden konuşmaya/özel ses** sekmesini seçin ve ardından **Yeni proje**' ye tıklayın. Projenizi oluşturmak için sihirbaz tarafından sunulan yönergeleri izleyin. Projeyi oluşturduktan sonra dört sekme görürsünüz: **Veri**, **eğitim**, **Test**ve **dağıtım**. Her bir sekmeyi nasıl kullanacağınızı öğrenmek için [sonraki adımlarda](#next-steps) sunulan bağlantıları kullanın.
+İlk projenizi oluşturmak için, **metinden konuşmaya/özel ses** sekmesini seçin ve ardından **Yeni proje**' ye tıklayın. Projenizi oluşturmak için sihirbaz tarafından sunulan yönergeleri izleyin. Projeyi oluşturduktan sonra dört sekme görürsünüz: **veri**, **eğitim**, **Test**ve **dağıtım**. Her bir sekmeyi nasıl kullanacağınızı öğrenmek için [sonraki adımlarda](#next-steps) sunulan bağlantıları kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel ses verileri hazırlama](how-to-custom-voice.md)
+- [Özel ses verileri hazırlama](how-to-custom-voice-prepare-data.md)
 - [Özel bir ses oluşturun](how-to-custom-voice-create-voice.md)
-- [Rehberi Ses örneklerinizi kaydedin](record-custom-voice-samples.md)
+- [Kılavuz: ses örneklerinizi kaydetme](record-custom-voice-samples.md)

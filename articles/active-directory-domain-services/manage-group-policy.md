@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c6d7b3403209710c9086b90abcb0e2ce61a0e8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612629"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958556"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında grup ilkesi yönetme
 
@@ -38,6 +38,9 @@ Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar ger
 * Azure AD DS yönetilen etki alanına katılmış bir Windows Server Yönetim sanal makinesi.
     * Gerekirse, [bir Windows Server VM oluşturma ve bunu yönetilen bir etki alanına katma][create-join-windows-vm]öğreticisini doldurun.
 * Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
+
+> [!NOTE]
+> [Azure AD DS etki alanı denetleyicilerine erişim olmadığından](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop), yönetilen bir etki alanında Grup İlkesi Yönetim Şablonları için merkezi bir mağaza oluşturamaz ve kullanamazsınız. [SYSVOL, şirket içi Azure AD Connect eşitlemeye dahil değildir](synchronization.md#what-isnt-synchronized-to-azure-ad-ds), bu nedenle şirket içi merkezi bir mağaza OLUŞTURUP Azure AD aracılığıyla Azure AD DS ile eşitleyemiyorsanız.
 
 ## <a name="install-group-policy-management-tools"></a>grup ilkesi yönetim araçları 'nı yükler
 

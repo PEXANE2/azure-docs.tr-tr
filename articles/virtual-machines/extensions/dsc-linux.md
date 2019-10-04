@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: c37b81e08e5d9f150081a9dc12af51175e3f590c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6df6bb5c0be4bf1779541a815bd933965024809f
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084694"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960398"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
 İstenen Durum Yapılandırması (DSC), BT ve geliştirme altyapınızı kod olarak yapılandırma ile yönetmenizi sağlayan bir yönetim platformudur.
+
+> ! Not Linux için DSC Uzantısı ve [Linux Için Azure izleyici sanal makine uzantısı](/virtual-machines/extensions/oms-linux) Şu anda bir çakışma var ve yan yana yapılandırmada desteklenmez.  Bu, iki çözümü aynı VM 'de birlikte kullanmamalısınız anlamına gelir.
 
 DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı, Azure sanal makinelerine OMı ve DSC aracısını yükleme. DSC Uzantısı aşağıdaki işlemleri de yapabilir
 
@@ -35,13 +37,13 @@ DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzant�
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-DSC Linux uzantısı, aşağıdakiler dışında [Azure 'da onaylı tüm Linux dağıtımlarını](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) destekler:
+DSC Linux uzantısı, aşağıdakiler dışında [Azure 'da onaylı tüm Linux dağıtımlarını](/virtual-machines/linux/endorsed-distros) destekler:
 
-| Dağıtım | Version |
+| Dağılı | Version |
 |---|---|
 | Debian | tüm sürümler |
 | Ubuntu| 18,04 |
@@ -58,12 +60,12 @@ Desteklenen tüm ortak yapılandırma parametreleri şunlardır:
 
 * `FileUri`: (isteğe bağlı, dize) MOF dosyası/meta MOF dosyası/özel kaynak ZIP dosyasının URI 'si.
 * `ResourceName`: (isteğe bağlı, dize) özel kaynak modülünün adı
-* `ExtensionAction`: (isteğe bağlı, dize) bir uzantının ne yaptığını belirtir. geçerli değerler: Kaydolun, gönderin, çekin, yükleme, kaldır. Belirtilmemişse, varsayılan olarak gönderme eylemi olarak kabul edilir.
+* `ExtensionAction`: (isteğe bağlı, dize) bir uzantının ne yaptığını belirtir. geçerli değerler: Kaydet, gönder, Çek, yükleme, kaldır. Belirtilmemişse, varsayılan olarak gönderme eylemi olarak kabul edilir.
 * `NodeConfigurationName`: (isteğe bağlı, dize) uygulanacak düğüm yapılandırmasının adı.
-* `RefreshFrequencyMins`: (isteğe bağlı, int) DSC 'nin yapılandırmayı çekme sunucusundan elde etmek için ne sıklıkta (dakika cinsinden) çalıştığını belirtir. 
+* `RefreshFrequencyMins`: (isteğe bağlı, int) DSC 'nin yapılandırmayı çekme sunucusundan edinmeye ne sıklıkta (dakika cinsinden) çalıştığını belirtir. 
        Çekme sunucusundaki yapılandırma hedef düğümdeki geçerli olandan farklıysa, bu, bekleyen depoya kopyalanır ve uygulanır.
-* `ConfigurationMode`: (isteğe bağlı, dize) DSC 'nin yapılandırmayı nasıl uygulayacağınızı belirtir. Geçerli değerler şunlardır: ApplyOnly, ApplyAndMonitor, Applyandadutocorrect.
-* `ConfigurationModeFrequencyMins`: (isteğe bağlı, int), ne sıklıkta (dakika cinsinden) DSC 'nin yapılandırmanın istenen durumda olmasını sağlar.
+* `ConfigurationMode`: (isteğe bağlı, dize) DSC 'nin yapılandırmayı nasıl uygulanacağını belirtir. Geçerli değerler: ApplyOnly, ApplyAndMonitor, Applyandadutocorrect.
+* `ConfigurationModeFrequencyMins`: (isteğe bağlı, int) DSC 'nin, yapılandırmanın istenen durumda olmasını ne sıklıkta (dakika cinsinden) belirtir.
 
 > [!NOTE]
 > 2,3 < sürümünü kullanıyorsanız, mode parametresi ExtensionAction ile aynı olur. Mod aşırı yüklenmiş bir terim gibi görünüyor. Bu nedenle, karışıklığın önüne geçmek için, 2,3 sürümden sonraki sürümlerde ExtensionAction kullanılır. Uzantı, geriye dönük uyumluluk için hem modu hem de ExtensionAction 'ı destekler. 
@@ -274,17 +276,17 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure VM uzantıları Azure Resource Manager şablonları ile dağıtılabilir. Azure Otomasyonu 'na ekleme gibi dağıtım sonrası yapılandırma gerektiren bir veya daha fazla sanal makine dağıtıldığında şablonlar idealdir. 
+Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Azure Otomasyonu 'na ekleme gibi dağıtım sonrası yapılandırma gerektiren bir veya daha fazla sanal makine dağıtıldığında şablonlar idealdir. 
 
 Örnek Kaynak Yöneticisi şablonu [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) ve [201-DSC-Linux-genel-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu)olur.
 
 Azure Resource Manager şablonu hakkında daha fazla ayrıntı için, [yazma Azure Resource Manager şablonları](../../azure-resource-manager/resource-group-authoring-templates.md)' nı ziyaret edin.
 
 
-## <a name="azure-cli-deployment"></a>Azure CLI dağıtım
+## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
 
-### <a name="21-using-azure-cliazure-cli"></a>2.1. [**Azure CLI**] [Azure-CLI] kullanma
-Dscforlinux uzantısını dağıtmaya başlamadan önce, `public.json` ve `protected.json`' yi, Bölüm 3 ' teki farklı senaryolara göre yapılandırmanız gerekir.
+### <a name="21-using-azure-cliazure-cli"></a>2,1. [**Azure CLI**] [Azure-CLI] kullanma
+DSCForLinux uzantısını dağıtmadan önce, Bölüm 3 ' teki farklı senaryolara göre `public.json` ve `protected.json` ' i yapılandırmanız gerekir.
 
 #### <a name="211-classic"></a>2.1.1. Klasik
 Klasik moda Azure hizmet yönetimi modu da denir. Şunu çalıştırarak geçiş yapabilirsiniz:
@@ -303,7 +305,7 @@ Kullanılabilir en son uzantı sürümünü öğrenmek için şunu çalıştır�
 $ azure vm extension list
 ```
 
-#### <a name="212-resource-manager"></a>2.1.2 'yi. Resource Manager
+#### <a name="212-resource-manager"></a>2.1.2 'yi. Kaynak Yöneticisi
 Şunu çalıştırarak Azure Resource Manager moduna geçebilirsiniz:
 ```
 $ azure config mode arm
@@ -316,10 +318,10 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 --private-config-path protected.json --public-config-path public.json
 ```
 > [!NOTE]
-> Azure Resource Manager modunda, `azure vm extension list` şimdilik kullanılamaz.
+> Azure Resource Manager modunda `azure vm extension list` şu anda kullanılamıyor.
 >
 
-### <a name="22-using-azure-powershellazure-powershell"></a>2.2. [**Azure PowerShell**] [Azure-PowerShell] kullanma
+### <a name="22-using-azure-powershellazure-powershell"></a>2,2. [**Azure PowerShell**] [Azure-PowerShell] kullanma
 
 #### <a name="221-classic"></a>2.2.1 klasik
 
@@ -402,30 +404,30 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
 ```
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Uzantı dağıtım durumuyla ilgili veriler, Azure portalından ve Azure CLI kullanılarak alınabilir. Belirli bir VM'nin için uzantıları dağıtım durumunu görmek için Azure CLI kullanarak aşağıdaki komutu çalıştırın.
+Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure CLı 'yı kullanarak aşağıdaki komutu çalıştırın.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Uzantı yürütme çıkış aşağıdaki dosyasına kaydedilir:
+Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir:
 
 ```
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
 Hata kodu: 51, desteklenmeyen ya da desteklenmeyen uzantı eylemini temsil eder.
-Bazı durumlarda DSC Linux uzantısı, makinede OMı 'nın daha yüksek bir sürümü zaten mevcut olduğunda OMı 'yi yükleyemez. [hata yanıtı: (000003) Düşürme izni yok]
+Bazı durumlarda DSC Linux uzantısı, makinede OMı 'nın daha yüksek bir sürümü zaten mevcut olduğunda OMı 'yi yükleyemez. [hata yanıtı: (000003) Indirgeme izin verilmiyor]
 
 
 
 ### <a name="support"></a>Destek
 
-Bu makalede herhangi bir noktada daha fazla yardıma ihtiyacınız olursa, üzerinde Azure uzmanlarıyla iletişime geçebilirsiniz [Azure MSDN ve Stack Overflow forumları](https://azure.microsoft.com/support/community/). Alternatif olarak, bir Azure destek olayına dosya. Git [Azure Destek sitesi](https://azure.microsoft.com/support/options/) ve Destek Al'ı seçin. Azure desteği hakkında daha fazla bilgi için okuma [Microsoft Azure desteği SSS](https://azure.microsoft.com/support/faq/).
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Uzantılar hakkında daha fazla bilgi için bkz. [Linux Için sanal makine uzantıları ve özellikleri](features-linux.md).

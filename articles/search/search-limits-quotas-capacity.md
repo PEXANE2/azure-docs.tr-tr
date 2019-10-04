@@ -6,14 +6,14 @@ manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/03/2019
 ms.author: heidist
-ms.openlocfilehash: fd65bb134d9057246a1b8c5cc2986e979713d20b
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 2d3b74476def5bdf46a6292996f0af9162b20b43
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327156"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947771"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search hizmet limitleri
 Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınırlar, **ücretsiz**, **temel**, **Standart**veya **depolama için iyileştirilmiş** fiyatlandırma katmanlarında [Azure Search](search-create-service-portal.md) sağlayıp sağlamadığınıza bağlıdır.
@@ -35,7 +35,7 @@ Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınır
 > Belirli bir katmanda bir hizmet sağlanır. Kapasite kazanmak için katman atlama, yeni bir hizmet sağlamayı içerir (yerinde yükseltme yoktur). Daha fazla bilgi için bkz. [BIR SKU veya katman seçme](search-sku-tier.md). Zaten sağladığınız bir hizmette kapasiteyi ayarlama hakkında daha fazla bilgi edinmek için bkz. [sorgu ve dizin oluşturma iş yükleri Için ölçek kaynak düzeyleri](search-capacity-planning.md).
 >
 
-## <a name="subscription-limits"></a>Abonelik sınırları
+## <a name="subscription-limits"></a>Abonelik limitleri
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
 ## <a name="storage-limits"></a>Depolama sınırları
@@ -45,9 +45,9 @@ Depolama, iş yükleri ve dizin, belge ve diğer nesneler için maksimum sınır
 
 ## <a name="index-limits"></a>Dizin sınırları
 
-| Resource | Boş | Temel&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| Kaynak | Boş | Temel @ no__t-0<sup>1</sup>  | S1 | S2 | Bekletmeden | S3 @ no__t-0HD | L1 | L2 |
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
-| En fazla dizin |3 |5 veya 15 |50 |200 |200 |Bölüm başına 1000 veya hizmet başına 3000 |10 |10 |
+| En fazla dizin |3 |5 veya 15 |50 |200 |200 |Her hizmet için bölüm başına 1000 veya 3000 |10 |10 |
 | Dizin başına en fazla basit alan |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
 | Dizin başına en fazla karmaşık koleksiyon alanı |40 |40 |40 |40 |40 |40 |40 |40 |
 | Belge başına tüm karmaşık koleksiyonlardaki en fazla öğe |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
@@ -78,13 +78,13 @@ Portal bir belge sınırını gösteriyorsa, hizmetiniz en geç 2017 ' dan önce
 + Doğu Asya
 + Orta Hindistan
 + Japonya Batı
-+ Batı Orta ABD
++ Orta Batı ABD
 
 Belge sınırlarına tabi olan hizmetler için aşağıdaki en fazla sınır geçerlidir:
 
-|  Boş | Temel | S1 | S2 | S3 | S3&nbsp;HD |
+|  Boş | Temel | S1 | S2 | Bekletmeden | S3 @ no__t-0HD |
 |-------|-------|----|----|----|-------|
-|  10,000 |1&nbsp;milyon |Bölüm başına 15 milyon veya hizmet başına 180 milyon |Bölüm başına 60 milyon veya hizmet başına 720 milyon |Bölüm başına 120 milyon veya hizmet başına 1.4 milyar |Dizin başına 1 milyon veya bölüm başına 200 milyon |
+|  10,000 |1 @ no__t-0milyon |Her hizmet için bölüm başına 15.000.000 veya 180.000.000 |Her hizmet için bölüm başına 60.000.000 veya 720.000.000 |Her hizmet için bölüm başına 120.000.000 veya 1.400.000.000 |Bölüm başına 1.000.000 dizin veya 200.000.000 |
 
 Hizmetiniz sizi engelleyen sınırlar içeriyorsa, yeni bir hizmet oluşturun ve tüm içeriği bu hizmete yeniden yayımlayın. Hizmetinizi arka planda yeni donanıma sorunsuz bir şekilde yeniden sağlamaya yönelik bir mekanizma yoktur.
 
@@ -105,17 +105,17 @@ Belge boyutunu aşağı tutmak için, sorgulanabilir olmayan verileri istekten �
 Hizmete bir bütün olarak denge ve kararlılık sağlamak için en fazla çalışma süresi mevcuttur, ancak daha büyük veri kümelerinde izin verilen en fazla dizin oluşturma süresi daha fazla olabilir. Bir dizin oluşturma işi izin verilen en uzun süre içinde tamamlanamaz, bir zamanlamaya göre çalıştırmayı deneyin. Zamanlayıcı, dizin oluşturma durumunu izler. Zamanlanan bir dizin oluşturma işi herhangi bir nedenle kesintiye uğrarsa, Dizin Oluşturucu bir sonraki zamanlanmış çalıştırmada en son kaldığınız yeri alabilir.
 
 
-| Resource | Ücretsiz&nbsp;<sup>1</sup> | Temel&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
+| Kaynak | Ücretsiz @ no__t-0<sup>1</sup> | Temel @ no__t-0<sup>2</sup>| S1 | S2 | Bekletmeden | S3 @ no__t-0HD @ no__t-1<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
-| En fazla dizin oluşturucu |3 |5 veya 15|50 |200 |200 |Yok |10 |10 |
-| En fazla veri kaynağı |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
+| En fazla dizin oluşturucular |3 |5 veya 15|50 |200 |200 |Yok |10 |10 |
+| En fazla veri kaynakları |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
 | En fazla becerileri <sup>4</sup> |3 |5 veya 15 |50 |200 |200 |Yok |10 |10 |
 | Çağrı başına en fazla dizin oluşturma yükü |10.000 belge |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yalnızca en fazla belgelerle sınırlı |Yok |Sınır yok |Sınır yok |
 | En düşük zamanlama | 5 dakika |5 dakika |5 dakika |5 dakika |5 dakika |5 dakika |5 dakika | 5 dakika |
 | Maksimum çalışma süresi <sup>5</sup> | 1-3 dakika |24 saat |24 saat |24 saat |24 saat |Yok  |24 saat |24 saat |
 | Bilişsel arama becerileri için maksimum çalışma süresi veya görüntü analizi ile blob dizin oluşturma <sup>5</sup> | 3-10 dakika |2 saat |2 saat |2 saat |2 saat |Yok  |2 saat |2 saat |
 | Blob Indexer: maksimum BLOB boyutu, MB |16 |16 |128 |256 |256 |Yok  |256 |256 |
-| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32,000 |64,000 |4&nbsp;milyon |4&nbsp;milyon |4&nbsp;milyon |Yok |4&nbsp;milyon |4&nbsp;milyon |
+| Blob Indexer: bir bloba ayıklanan maksimum içerik karakterleri |32.000 |64.000 |4 @ no__t-0milyon |4 @ no__t-0milyon |4 @ no__t-0milyon |Yok |4 @ no__t-0milyon |4 @ no__t-0milyon |
 
 <sup>1</sup> ücretsiz hizmet dizin oluşturucunun en yüksek yürütme süresi olan blob kaynakları için 3 dakika ve diğer tüm veri kaynakları için 1 dakikadır. Bilişsel hizmetler 'e çağıran AI dizin oluşturma için ücretsiz hizmetler, bir işlemin, enzenginleştirme ardışık düzeninde başarıyla geçen bir belge olarak tanımlandığı gün başına 20 ücretsiz işlem ile sınırlıdır.
 
@@ -131,7 +131,7 @@ Beceri <sup>başına en fazla</sup> 30 yetenek.
 
 İzin verilen en fazla eş anlamlı eşleme sayısı fiyatlandırma katmanına göre değişir. Her kural, bir genişlemenin eş bir terim olduğu en fazla 20 genişlemeye sahip olabilir. Örneğin, "Cat", "Kitty", "Feline" ve "Felis" (kediler için Genus) ilişkisi, 3 genişletmeleri olarak sayılır.
 
-| Resource | Boş | Temel | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| Kaynak | Boş | Temel | S1 | S2 | Bekletmeden | S3-HD |L1 | L2 |
 | -------- | -----|------ |----|----|----|-------|---|----|
 | En fazla eş anlamlı eşlemeler |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Eşleme başına en fazla kural sayısı |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
@@ -146,7 +146,19 @@ Depolama için Iyileştirilmiş katmanlar için, standart katmanlardan daha dü�
 
 ## <a name="data-limits-cognitive-search"></a>Veri limitleri (bilişsel arama)
 
-[Varlık tanıma](cognitive-search-skill-entity-recognition.md), [anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md), yaklaşım [analizi](cognitive-search-skill-sentiment.md)ve [dil algılama](cognitive-search-skill-language-detection.md) için metin analizi kaynağa çağrı yapan bilişsel [Arama işlem hattı](cognitive-search-concept-intro.md) veri sınırlarına tabidir. Bir kaydın en büyük boyutu, tarafından [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanın.
+[Varlık tanıma](cognitive-search-skill-entity-recognition.md), [anahtar ifade ayıklama](cognitive-search-skill-keyphrases.md), yaklaşım [analizi](cognitive-search-skill-sentiment.md)ve [dil algılama](cognitive-search-skill-language-detection.md) için metin analizi kaynağa çağrı yapan bilişsel [Arama işlem hattı](cognitive-search-concept-intro.md) veri sınırlarına tabidir. Bir kaydın en büyük boyutu, [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ile ölçülen 50.000 karakter olmalıdır. Bu verileri yaklaşım Çözümleyicisi 'ne göndermeden önce bölmeniz gerekirse, [metin bölünmüş yeteneği](cognitive-search-skill-textsplit.md)kullanın.
+
+## <a name="throttling-limits"></a>Azaltma sınırları
+
+Sistem yoğun kapasiteye yaklaşırsa, arama sorgusu ve dizin oluşturma istekleri azaltılır. Kısıtlama, farklı API 'Ler için farklı davranır. Sorgu API 'Leri (arama/önerme/otomatik tamamlama) ve dizin oluşturma API 'Leri, hizmet üzerindeki yüke göre dinamik olarak azaldı. Dizin API 'Leri statik istek hızı sınırlarına sahiptir. 
+
+Bir dizinle ilgili işlemler için statik hız isteği sınırları:
+
++ Dizinleri listeleme (/Indexes al): her arama birimi için saniyede 5
++ Dizini Al (GET/Indexes/MyIndex): her arama birimi için saniyede 10
++ Dizin Oluştur (POST/Indexes): arama birimi başına dakika başına 12
++ Dizin Oluştur veya güncelleştir (PUT/Indexes/MyIndex): arama birimi başına saniyede 6
++ Dizini Sil (DELETE/Indexes/MyIndex): arama birimi başına dakika başına 12 
 
 ## <a name="api-request-limits"></a>API isteği sınırları
 * <sup>1</sup> . istek başına en fazla 16 MB

@@ -8,42 +8,50 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 8017f02e694f5c9e2cd677c7b1f28c5de973d077
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f8c38c46bd60834c166721f62088d8edb2c722a9
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932582"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949588"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API için Azure Cosmos DB .NET SDK: Notları indir ve serbest bırak
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API için Azure Cosmos DB .NET SDK: Indirme ve sürüm notları
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET](sql-api-sdk-dotnet-standard.md)
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
+> * [Zaman uyumsuz Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST kaynak sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Toplu yürütücü-.NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
 |---|---|
-|**SDK'sını indirme**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
+|**SDK indirmesi**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
 |**API belgeleri**|[.NET API başvuru belgeleri](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**Örnekler**|[.NET kodu örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
+|**Örnekler**|[.NET kod örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples)|
 |**Kullanmaya başlama**|[Azure Cosmos DB .NET SDK ile çalışmaya başlama](sql-api-get-started.md)|
-|**Web uygulaması Öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
-|**Geçerli desteklenen çerçevesi**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
+|**Web uygulaması öğreticisi**|[Azure Cosmos DB ile Web uygulaması geliştirme](sql-api-dotnet-application.md)|
+|**Desteklenen geçerli çerçeve**|[Microsoft .NET Framework 4,5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>Sürüm notları
 
 > [!NOTE]
 > .NET Framework kullanıyorsanız, lütfen .NET Standard hedefleyen [.NET SDK 'sının](sql-api-sdk-dotnet-standard.md)en son sürüm 3. x sürümünü inceleyin. 
+
+### <a name="a-name270270"></a><a name="2.7.0"/>2.7.0
+
+* Sorgular tarafından sırasıyla diziler ve nesneler için destek eklendi
+* Etkili bölüm anahtarı çakışmalarını işle
+* ThenBy işleciyle birden çok OrderBy işleci için LINQ desteği eklendi
+* Özel serileştirme ayarları artık tüm upsert ve değiştirme işlemlerine uygulandı
+* Tek iş parçacıklı bir Görev Zamanlayıcısı ile çalışabilmesi için sabit bir bellek kilitlenme sorunu düzeltildi
 
 ### <a name="a-name260260"></a><a name="2.6.0"/>2.6.0
 
@@ -103,75 +111,75 @@ ms.locfileid: "70932582"
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 
-* Güncelleştirilmiş System.Net.Security 4.3.2 için.
+* System .net. Security, 4.3.2 ile güncelleştirildi.
 
-### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2'yi
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
 
 * Tanılama izleme iyileştirmeleri
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 
-* Çok bölgeli isteği geçici hatalara karşı daha fazla esneklik eklenmiştir.
+* Çok bölgeli istek geçici hatalarıyla daha fazla esnekliği eklendi.
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
-* Eklenen çok bölgeli yazma desteği.
-* Bölüm sorgu performansı geliştirmelerinin üst ve MaxBufferedItemCount çapraz.
+* Çok bölgeli yazma desteği eklendi.
+* ÜST ve MaxBufferedItemCount ile çapraz bölüm sorgu performansı iyileştirmeleri.
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 
-* Eklenen isteği iptal etme desteği.
-* Eklenen SetCurrentLocation için form veya ConnectionPolicy tercih edilen konumlar bölgeye göre otomatik olarak doldurur.
-* Çapraz bölüm Min/Maks ve sorgular tek bir bölüme belge eşleşen filtre hata düzeltildi.
-* DocumentClient yöntemleri artık IDocumentClient ile eşlik vardır.
-* Kurulan bağlantı sayısını azaltmak için güncelleştirilmiş doğrudan TCP taşıma yığını.
-* Windows olmayan istemciler için eklenen destek doğrudan modu TCP için.
+* İstek iptali desteği eklendi.
+* Bölgeye göre tercih edilen konumları otomatik olarak dolduran ConnectionPolicy öğesine SetCurrentLocation eklendi.
+* Minimum/Max ve tek bir bölümdeki hiçbir belge olmadan eşleşen bir filtre içeren çapraz bölüm sorgularında hata düzeltildi.
+* DocumentClient yöntemlerinde artık ıdocumentclient ile eşlik vardır.
+* Kurulan bağlantı sayısını azaltmak için doğrudan TCP Aktarım yığını güncelleştirildi.
+* Windows olmayan istemciler için doğrudan mod TCP desteği eklendi.
 
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
-* Eklenen isteği iptal etme desteği.
-* Eklenen SetCurrentLocation için form veya ConnectionPolicy tercih edilen konumlar bölgeye göre otomatik olarak doldurur.
-* Çapraz bölüm Min/Maks ve sorgular tek bir bölüme belge eşleşen filtre hata düzeltildi.
+* İstek iptali desteği eklendi.
+* Bölgeye göre tercih edilen konumları otomatik olarak dolduran ConnectionPolicy öğesine SetCurrentLocation eklendi.
+* Minimum/Max ve tek bir bölümdeki hiçbir belge olmadan eşleşen bir filtre içeren çapraz bölüm sorgularında hata düzeltildi.
 
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
-* DocumentClient yöntemleri artık IDocumentClient ile eşlik vardır.
-* Kurulan bağlantı sayısını azaltmak için güncelleştirilmiş doğrudan TCP taşıma yığını.
-* Windows olmayan istemciler için eklenen destek doğrudan modu TCP için.
+* DocumentClient yöntemlerinde artık ıdocumentclient ile eşlik vardır.
+* Kurulan bağlantı sayısını azaltmak için doğrudan TCP Aktarım yığını güncelleştirildi.
+* Windows olmayan istemciler için doğrudan mod TCP desteği eklendi.
 
 ### <a name="a-name12201220"></a><a name="1.22.0"/>1.22.0
 
-* FeedOptions için ConsistencyLevel özelliği eklendi.
-* Eklenen JsonSerializerSettings RequestOptions ve FeedOptions.
-* Eklenen EnableReadRequestsFallback ConnectionPolicy için.
+* Feest Level özelliği, Feedoseçenekleri 'ne eklendi.
+* RequestOptions ve Feedoseçenekleri 'ne JsonSerializerSettings eklendi.
+* ConnectionPolicy 'e EnableReadRequestsFallback eklendi.
 
 ### <a name="a-name12111211"></a><a name="1.21.1"/>1.21.1
 
-* Çapraz bölüm sıralama ölçütü sorguları köşe durumlarda sabit KeyNotFoundException için.
+* Köşe durumlarında, çapraz bölüm sıralaması için sabit KeyNotFoundException.
 * LINQ sorguları için select yan tümcesinde JsonProperty özniteliğinin kabul edildiği düzeltilmedi.
 
 ### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
 
-* Belirli yarış koşullarında oluşan hata düzeltildi, bu durum aralıklı olarak "Microsoft. Azure. Documents. NotFoundException" ile sonuçlanır: Oturum tutarlılığı düzeyi kullanılırken, okuma oturumu, giriş oturumu belirtecinin hataları için kullanılamaz.
+* Belirli yarış koşullarında oluşan düzeltilen hata, bu durum aralıklı olarak "Microsoft. Azure. Documents. NotFoundException: oturum tutarlılığı düzeyi kullanılırken okuma oturumu, giriş oturum belirteci için kullanılamıyor" hataları ile sonuçlanır.
 
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
-* Gerilemesi düzeltildi burada FeedOptions.MaxItemCount = -1 bir System.ArithmeticException oluşturdu: sayfa boyutu negatif ise.
-* Yeni bir ToString() işlevini QueryMetrics için eklendi.
-* Bölüm istatistikleri okuma koleksiyonlar üzerinde açık.
-* ChangeFeedOptions için PartitionKey özelliği eklendi.
+* Feedotik. Maxıtemcount =-1 bir System. ArithmeticException tarafından oluşturulduğu ve sayfa boyutu negatif olan gerileme düzeltildi.
+* Queryölçümler 'e yeni bir ToString () işlevi eklendi.
+* Koleksiyonları okurken sunulan Bölüm istatistikleri.
+* Changefeedoseçenekler 'e PartitionKey özelliği eklendi.
 * Küçük hata düzeltmeleri.
 
 ### <a name="a-name11911191"></a><a name="1.19.1"/>1.19.1
 
-* Belgeler için benzersiz dizinler hakkında DocumentCollection UniqueKeyPolicy özelliğini kullanarak belirtme olanağı ekler.
-* İçinde özel JsonSerializer ayarları bazı sorguları ve saklı yordam yürütme için kabul değil, bir hata düzeltildi.
+* DocumentCollection üzerinde UniqueKeyPolicy özelliğini kullanarak belgeler için benzersiz dizinler belirtme yeteneği ekler.
+* Bazı sorgular ve saklı yordam yürütmesi için özel JsonSerializer ayarlarının kabul edildiği bir hata düzeltildi.
 
 ### <a name="a-name11901190"></a><a name="1.19.0"/>1.19.0
 
-* Azure Cosmos DB API Başvurusu'ndaki Azure documentdb'den bir değişiklik, belgeler, meta veri bilgilerini derlemelerde ve NuGet paketini marka. 
-* Tanılama bilgileri ve gecikme süresi ile doğrudan bağlantı modunu gönderilen isteklerin yanıtından kullanıma sunar. Özellik adlarını, ResourceResponse sınıfı üzerinde RequestDiagnosticsString ve RequestLatency bulunur.
-* Bu SDK sürüm Merkezi'nden Azure Cosmos DB Emulator kullanılabilir en son sürümünü gerektirir. https://aka.ms/cosmosdb-emulator. 
+* Azure DocumentDB 'den, API başvuru belgeleri, derlemelerdeki meta veri bilgileri ve NuGet paketindeki Azure Cosmos DB için marka değişikliği. 
+* Doğrudan bağlantı moduyla gönderilen isteklerin yanıtından tanılama bilgilerini ve gecikme süresini kullanıma sunun. Özellik adları, Resourdiagnosticsstring ve RequestLatency for Resourceresbir Class.
+* Bu SDK sürümü, Azure Cosmos DB öykünücüsü 'nin https://aka.ms/cosmosdb-emulator ' dan indirileceği en son sürümünü gerektirir. 
 
 ### <a name="a-name11811181"></a><a name="1.18.1"/>1.18.1 
 
@@ -179,15 +187,15 @@ ms.locfileid: "70932582"
 
 ### <a name="a-name11801180"></a><a name="1.18.0"/>1.18.0 
 
-* Birçok güvenilirlik düzeltmeleri ve geliştirmeleri eklendi.
+* Çeşitli güvenilirlik düzeltmeleri ve iyileştirmeler eklendi.
 
 ### <a name="a-name11701170"></a><a name="1.17.0"/>1.17.0 
 
-* Sorgu Sonuçları belirli bir bölüm anahtar aralığı değeri için kapsam için bir FeedOption olarak PartitionKeyRangeId desteği eklendi. 
-* Bundan sonra değişikliklerin bakmaya başlamak için bir ChangeFeedOption olarak StartTime desteği eklendi.
+* Belirli bir bölüm anahtar aralığı değerine sorgu sonuçlarının kapsamını belirlemek için bir FeedOption olarak Partitionkeyrangeıd desteği eklendi. 
+* Bu süreden sonra değişiklikleri aramaya başlamak için bir ChangeFeedOption olarak StartTime desteği eklendi.
 
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
-* Bir yığın taşması özel durumuna neden olabilir JsonSerializable sınıfında bir sorun düzeltildi.
+* JsonSerializable sınıfında yığın taşması özel durumuna neden olabilecek bir sorun düzeltildi.
 
 ### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
 *   JsonSerializerSettings 'in DocumentClient oluşturucusunda isteğe bağlı bir parametre olarak eklenmesi nedeniyle uygulamanın yeniden derlenmesi için gereken bir sorun düzeltildi.
@@ -200,11 +208,11 @@ ms.locfileid: "70932582"
 *   SSE4 yönergesini desteklemeyen ve Azure Cosmos DB SQL sorguları çalıştırırken bir şehir özel durumu oluşturan x64 makinelerin etkilendiğine ilişkin bir sorun düzeltildi.
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
-*   Yeni bir tutarlılık düzeyi için destek eklendi ConsistentPrefix çağrılır.
-*   Tek tek bölümler için sorgu ölçümler için destek eklendi.
-*   Sorgular için devamlılık belirteci boyutunu sınırlamak için destek eklendi.
-*   Başarısız istekler için ayrıntılı izleme desteği eklendi.
-*   SDK'ın bazı performans iyileştirmeleri yapıldı.
+*   Tutarlık ön eki olarak adlandırılan yeni bir tutarlılık düzeyi için destek eklendi.
+*   Ayrı bölümlere yönelik sorgu ölçümleri için destek eklendi.
+*   Sorgular için devamlılık belirtecinin boyutunu sınırlandırmaya yönelik destek eklendi.
+*   Başarısız isteklere yönelik daha ayrıntılı izleme için destek eklendi.
+*   SDK 'da bazı performans geliştirmeleri yapılmıştır.
 
 ### <a name="a-name11341134"></a><a name="1.13.4"/>1.13.4
 * 1\.13.3 ile aynı işlev. Bazı iç değişiklikler yapıldı.
@@ -213,28 +221,28 @@ ms.locfileid: "70932582"
 * 1\.13.2 ile aynı işlev. Bazı iç değişiklikler yapıldı.
 
 ### <a name="a-name11321132"></a><a name="1.13.2"/>1.13.2
-* Toplam sorgularında FeedOptions içinde sağlanan PartitionKey değeri yok sayıldı bir sorun düzeltildi.
-* Bölümler arası sorgu yürütme Order By Orta uçuş sırasında bölüm yönetimi saydam işlemede bir sorun düzeltildi.
+* Toplama sorguları için Feedotik değerleri içinde belirtilen PartitionKey değerini yoksayan bir sorun düzeltildi.
+* Sorgu yürütmeye göre orta kol çapraz bölüm sıralaması sırasında bölüm yönetiminin saydam işlenmesinde sorun düzeltildi.
 
 ### <a name="a-name11311131"></a><a name="1.13.1"/>1.13.1
-* Bazı zaman uyumsuz API'leri ASP.NET bağlam içinde kullanıldığında kilitlenmeleri neden bir sorun düzeltildi.
+* ASP.NET bağlamında kullanıldığında zaman uyumsuz API 'lerde kilitlenmeleri neden olan bir sorun düzeltildi.
 
 ### <a name="a-name11301130"></a><a name="1.13.0"/>1.13.0
-* Belirli koşullar altında otomatik yük devretme karşı daha dayanıklı SDK yapmak için düzeltmeleri.
+* Belirli koşullar altında SDK 'Yı otomatik yük devretmeye daha dayanıklı hale getirmek için düzeltmeler.
 
 ### <a name="a-name11221122"></a><a name="1.12.2"/>1.12.2
-* Bazen WebException neden olan bir sorun için çözüm: Uzak ad çözümlenemedi.
-* Doğrudan ReadDocumentAsync API'sine yeni aşırı yüklemeler ekleyerek türü belirtilmiş bir belgeyi okumak için destek eklendi.
+* Her zaman bir WebException neden olan bir sorun için çözüm: uzak ad çözümlenemedi.
+* Readbelgesiyle Tasync API 'sine yeni aşırı yüklemeler ekleyerek, yazılı bir belgeyi doğrudan okuma desteği eklendi.
 
 ### <a name="a-name11211121"></a><a name="1.12.1"/>1.12.1
-* Toplama sorguları (sayısı, MIN, MAX, toplam ve ortalama) için LINQ desteği eklendi.
-* Olay işleyicisi kullanımından kaynaklanan ConnectionPolicy nesne için bir bellek sızıntısı sorunu düzeltildi.
-* ETag kullanıldığında burada görüntülerle UpsertAttachmentAsync çalıştığı olmayan bir sorunu düzeltin.
-* Burada görüntülerle sorgu devamlılığı sırası tarafından çapraz bölüm sıralarken dize alanı üzerinde çalıştığı değil bir sorun düzeltildi.
+* Toplama sorguları için LINQ desteği eklendi (COUNT, MIN, MAX, SUM ve AVG).
+* Olay işleyicisinin kullanılması nedeniyle ConnectionPolicy nesnesi için bellek sızıntısı sorunu için çözüm.
+* ETag kullanılırken UpsertAttachmentAsync 'nin çalışmamasıyla ilgili bir sorunu giderme.
+* Dize alanına göre sıralama yapılırken, çapraz bölüm sırası ile sorgu devamlılığını devam ettirme sorunu için çözüm çalışmıyor.
 
 ### <a name="a-name11201120"></a><a name="1.12.0"/>1.12.0
-* Toplama sorguları (sayısı, MIN, MAX, toplam ve ortalama) için destek eklendi. Bkz: [toplama Destek](sql-query-aggregates.md).
-* Bölümlenmiş koleksiyonlardan 10,100 RU/sn 2500 RU/sn için en düşük aktarım hızını düşürdü.
+* Toplama sorguları (COUNT, MIN, MAX, SUM ve AVG) için destek eklendi. Bkz. [toplama desteği](sql-query-aggregates.md).
+* 10.100 RU/sn 'den 2500 RU/sn 'ye kadar bölümlenmiş koleksiyonlar üzerinde en düşük aktarım hızını düşürdü.
 
 ### <a name="a-name11141114"></a><a name="1.11.4"/>1.11.4
 * 32 bit ana bilgisayar işleminde bazı çapraz bölüm sorgularının başarısız olduğu bir sorunu giderme.
@@ -263,12 +271,12 @@ ms.locfileid: "70932582"
 ### <a name="a-name11001100"></a><a name="1.10.0"/>1.10.0
 * Bölümlenmiş koleksiyonlar için doğrudan bağlantı desteği eklendi.
 * Sınırlanmış Stalet tutarlılığı düzeyi için iyileştirilmiş performans.
-* Eklenen Çokgen ve dizin oluşturma ilkesi şirketin coğrafı uzamsal sorgular için koleksiyon belirtirken LineString veri türleri.
+* Coğrafi olarak uzamsal sorgular için koleksiyon dizin oluşturma ilkesi belirtilirken Çokgen ve LineString veri türleri eklendi.
 * Koşullar çevrilirken StringEnumConverter, IsoDateTimeConverter ve UnixDateTimeConverter için LINQ desteği eklendi.
 * Çeşitli SDK hata düzeltmeleri.
 
 ### <a name="a-name195195"></a><a name="1.9.5"/>1.9.5
-* Aşağıdaki NotFoundException neden olan bir sorun düzeltildi: Giriş oturum belirteci için oku oturumu kullanılamaz. Bu özel durum, coğrafi olarak dağıtılmış bir hesabın okuma bölgesi sorgulanırken bazı durumlarda meydana geldi.
+* Şu NotFoundException neden olan bir sorun düzeltildi: giriş oturum belirteci için oku oturumu kullanılamıyor. Bu özel durum, coğrafi olarak dağıtılmış bir hesabın okuma bölgesi sorgulanırken bazı durumlarda meydana geldi.
 * Bir yanıttan temeldeki akışa doğrudan erişim sağlayan Resourceresıse sınıfında ResponseStream özelliği kullanıma sunuldu.
 
 ### <a name="a-name194194"></a><a name="1.9.4"/>1.9.4
@@ -276,7 +284,7 @@ ms.locfileid: "70932582"
 * Verileri seri hale getirmek için özel bir JsonSerializerSettings nesnesi kullanılırken hatalı biçimlendirilmiş bölüm anahtarı başlığına neden olan bir sorun düzeltildi.
 
 ### <a name="a-name193193"></a><a name="1.9.3"/>1.9.3
-* Uzun süre çalışan sorguların hata vererek başarısız olmasına neden olan bir sorun düzeltildi: Yetkilendirme belirteci geçerli zamanda geçerli değil.
+* Uzun süre çalışan sorguların hata vererek başarısız olmasına neden olan bir sorun düzeltildi: geçerli zamanda yetkilendirme belirteci geçerli değil.
 * Özgün SqlParameterCollection 'ı, kesit üst/sıra sorgularının içinden kaldıran bir sorun düzeltildi.
 
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
@@ -292,7 +300,7 @@ ms.locfileid: "70932582"
 * Idocumentclient arabiriminde kullanıma sunulan korumasız ortak sınıflar.
 
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
-* Çoklu bölge veritabanı hesapları için destek eklendi.
+* Çok bölgeli veritabanı hesapları için destek eklendi.
 * Kısıtlanmış isteklerde yeniden deneme desteği eklendi.  Kullanıcı, ConnectionPolicy. RetryOptions özelliğini yapılandırarak yeniden deneme sayısını ve en uzun bekleme süresini özelleştirebilir.
 * Tüm DocumentClient özelliklerinin ve yöntemlerinin imzalarını tanımlayan yeni bir ıdocumentclient arabirimi eklendi.  Bu değişikliğin bir parçası olarak, IQueryable ve IOrderedQueryable oluşturan genişletme yöntemleri de DocumentClient sınıfının yöntemlerine değişti.
 * Belirli bir Azure Cosmos DB uç noktası URI 'Si için ServicePoint. ConnectionLimit ayarlamak üzere yapılandırma seçeneği eklendi.  50 olarak ayarlanan varsayılan değeri değiştirmek için ConnectionPolicy. MaxConnectionLimit komutunu kullanın.
@@ -302,16 +310,16 @@ ms.locfileid: "70932582"
 * Bir parametre olarak RequestOptions alan URI tabanlı ExecuteStoredProcedureAsync metoduna aşırı yükleme eklendi.
 
 ### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
-* Belgeler için eklenen zaman canlı (TTL) desteği.
+* Belgeler için yaşam süresi (TTL) desteği eklendi.
 
 ### <a name="a-name163163"></a><a name="1.6.3"/>1.6.3
 * Azure bulut hizmeti çözümünün bir parçası olarak paketlenmesi için .NET SDK 'nın NuGet paketinizdeki bir hata düzeltildi.
 
 ### <a name="a-name162162"></a><a name="1.6.2"/>1.6.2
-* Uygulanan [bölümlenmiş koleksiyonları](partition-data.md) ve [kullanıcı tanımlı performans düzeyleri](performance-levels.md). 
+* [Bölümlenmiş koleksiyonlar](partition-data.md) ve [Kullanıcı tanımlı performans düzeyleri](performance-levels.md)uygulandı. 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[Düzeltildi]** Azure Cosmos DB uç noktası sorgulaması: ' System .net. http. HttpRequestException: İçerik bir akışa kopyalanırken hata oluştu '.
+* **[Düzeltildi]** Azure Cosmos DB bitiş noktasını sorgulama: ' System .net. http. HttpRequestException: içerik bir akışa kopyalanırken hata oluştu '.
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * Sayfalama, Koşullu ifadeler ve Aralık karşılaştırması için yeni işleçler dahil olmak üzere genişletilmiş LINQ desteği.
@@ -348,7 +356,7 @@ ms.locfileid: "70932582"
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 * Dizin oluşturma ilkelerini değiştirme desteği eklendi.
   * DocumentClient 'da yeni ReplaceDocumentCollectionAsync yöntemi
-  * Kaynak İlkesi değişikliklerinin tamamlanma yüzdesini izlemek için\<resourcereslationt ' de yeni ındexdönüşümtionprogress özelliği >
+  * Resourcereslation@ no__t-0T içinde yeni ındexdönüşümtionprogress özelliği, Dizin İlkesi değişikliklerinin yüzde ilerlemesini izlemek için >
   * DocumentCollection. ındexingpolicy artık değişebilir
 * Uzamsal dizin oluşturma ve sorgu için destek eklendi.
   * Nokta ve çokgen gibi uzamsal türleri serileştirmek/seri durumdan çıkarmak için yeni Microsoft. Azure. Documents. uzamsal ad alanı
@@ -373,7 +381,7 @@ ms.locfileid: "70932582"
 * LINQ 'te UDF desteği eklendi.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* GA SDK'SI
+* GA SDK
 
 ## <a name="release--retirement-dates"></a>Yayın & kullanımdan kaldırma tarihleri
 Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlar.
@@ -388,8 +396,9 @@ Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler h
 >
 <br/>
 
-| Version | Yayınlanma Tarihi | Sona erme tarihi |
+| Version | Yayın Tarihi | Emeklilik tarihi |
 | --- | --- | --- |
+| [2.7.0](#2.7.0) |23 Eylül 2019 |--- |
 | [2.6.0](#2.6.0) |30 Ağustos 2019 |--- |
 | [2.5.1](#2.5.1) |02 Temmuz 2019 |--- |
 | [2.4.1](#2.4.1) |20 Haziran 2019 |--- |
@@ -400,10 +409,10 @@ Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler h
 | [2.2.1](#2.2.1) |24 Aralık 2018 |--- |
 | [2.2.0](#2.2.0) |07 Aralık 2018 |--- |
 | [2.1.3](#2.1.3) |15 Ekim 2018 |--- |
-| [2.1.2'yi](#2.1.2) |04 Ekim 2018 |--- |
-| [2.1.1](#2.1.1) |27 Eylül 2018'den |--- |
+| [2.1.2 'yi](#2.1.2) |04 Ekim 2018 |--- |
+| [2.1.1](#2.1.1) |27 Eylül 2018 |--- |
 | [2.1.0](#2.1.0) |21 Eylül 2018 |--- |
-| [2.0.0](#2.0.0) |07 Eylül 2018'den |--- |
+| [2.0.0](#2.0.0) |Eylül 07, 2018 |--- |
 | [1.22.0](#1.22.0) |19 Nisan 2018 | 30 Ağustos 2020 |
 | [1.21.1](#1.20.1) |09 Mart 2018 |30 Ağustos 2020 |
 | [1.20.2](#1.20.1) |21 Şubat 2018 |30 Ağustos 2020 |
@@ -428,7 +437,7 @@ Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler h
 | [1.12.0](#1.12.0) |15 Şubat 2017 |30 Ağustos 2020 |
 | [1.11.4](#1.11.4) |06 Şubat 2017 |30 Ağustos 2020 |
 | [1.11.3](#1.11.3) |26 Ocak 2017 |30 Ağustos 2020 |
-| [1.11.1](#1.11.1) |21 aralık 2016 |30 Ağustos 2020 |
+| [1.11.1](#1.11.1) |21 Aralık 2016 |30 Ağustos 2020 |
 | [1.11.0](#1.11.0) |08 Aralık 2016 |30 Ağustos 2020 |
 | [1.10.0](#1.10.0) |27 Eylül 2016 |30 Ağustos 2020 |
 | [1.9.5](#1.9.5) |01 Eylül 2016 |30 Ağustos 2020 |
@@ -441,7 +450,7 @@ Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler h
 | [1.6.3](#1.6.3) |08 Nisan 2016 |30 Ağustos 2020 |
 | [1.6.2](#1.6.2) |29 Mart 2016 |30 Ağustos 2020 |
 | [1.5.3](#1.5.3) |19 Şubat 2016 |30 Ağustos 2020 |
-| [1.5.2](#1.5.2) |14 Aralık 2015 |30 Ağustos 2020 |
+| [1.5.2 planlama](#1.5.2) |14 Aralık 2015 |30 Ağustos 2020 |
 | [1.5.1](#1.5.1) |23 Kasım 2015 |30 Ağustos 2020 |
 | [1.5.0](#1.5.0) |05 Ekim 2015 |30 Ağustos 2020 |
 | [1.4.1](#1.4.1) |25 Ağustos 2015 |30 Ağustos 2020 |
@@ -456,5 +465,5 @@ Kullanımdan kaldırılan bir SDK kullanarak Azure Cosmos DB yönelik istekler h
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.
-Cosmos DB hakkında daha fazla bilgi için bkz: [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmeti sayfası. 
+Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası. 
 

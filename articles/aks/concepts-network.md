@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69969642"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950374"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki uygulamalar için ağ kavramları
 
@@ -25,11 +25,11 @@ Bu makalede, AKS 'teki uygulamalarınıza ağ iletişimi sağlayan temel kavraml
 - [Giriş denetleyicileri](#ingress-controllers)
 - [Ağ ilkeleri](#network-policies)
 
-## <a name="kubernetes-basics"></a>Kubernetes hakkında temel bilgiler
+## <a name="kubernetes-basics"></a>Kubernetes temelleri
 
 Uygulamalarınıza erişime izin vermek veya uygulama bileşenlerinin birbirleriyle iletişim kurması için Kubernetes, sanal ağ için bir soyutlama katmanı sağlar. Kubernetes düğümleri bir sanal ağa bağlanır ve pods için gelen ve giden bağlantılar sağlayabilir. *Kuin-proxy* bileşeni, bu ağ özelliklerini sağlamak için her düğümde çalışır.
 
-Kubernetes 'te *Hizmetler* , IP adresi veya DNS adı üzerinden ve belirli bir bağlantı noktası üzerinden doğrudan erişime izin vermek üzere Pod 'yi mantıksal olarak gruplar. Ayrıca, *yük dengeleyici*kullanarak trafik dağıtabilirsiniz. Uygulama trafiğinin daha karmaşık yönlendirmesi, giriş *denetleyicileriyle*de elde edilebilir. Kubernetes *ağ ilkeleriyle* (aks 'deki önizlemede), pod için ağ trafiğinin güvenliği ve filtrelenmesi mümkündür.
+Kubernetes 'te *Hizmetler* , IP adresi veya DNS adı üzerinden ve belirli bir bağlantı noktası üzerinden doğrudan erişime izin vermek üzere Pod 'yi mantıksal olarak gruplar. Ayrıca, *yük dengeleyici*kullanarak trafik dağıtabilirsiniz. Uygulama trafiğinin daha karmaşık yönlendirmesi, giriş *denetleyicileriyle*de elde edilebilir. Kubernetes *ağ ilkeleriyle*, pod için ağ trafiğinin güvenliği ve filtrelenmesi mümkündür.
 
 Azure platformu, AKS kümeleri için sanal ağı basitleştirmeye de yardımcı olur. Bir Kubernetes yük dengeleyici oluşturduğunuzda, temel alınan Azure yük dengeleyici kaynağı oluşturulur ve yapılandırılır. Ağ bağlantı noktalarını pods 'de açtığınızda, karşılık gelen Azure ağ güvenlik grubu kuralları yapılandırılır. HTTP uygulama yönlendirmesi için, Azure *dış DNS* 'i de yeni giriş yolları yapılandırıldığında yapılandırabilir.
 
@@ -99,14 +99,14 @@ Kubernetes kullanan ve Azure CNı arasında aşağıdaki davranış farklılıkl
 
 | Özellik                                                                                   | Kubernetes kullanan   | Azure CNı |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| Kümeyi var olan veya yeni bir sanal ağda dağıt                                            | Desteklenen-UDRs el ile uygulandı | Desteklenen |
-| Pod-POD bağlantısı                                                                         | Desteklenen | Desteklenen |
+| Kümeyi var olan veya yeni bir sanal ağda dağıt                                            | Desteklenen-UDRs el ile uygulandı | Desteklenir |
+| Pod-POD bağlantısı                                                                         | Desteklenir | Desteklenir |
 | Pod-VM bağlantısı; Aynı sanal ağdaki VM                                          | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
 | Pod-VM bağlantısı; Eşlenen sanal ağdaki VM                                            | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
 | VPN veya Express Route kullanarak şirket içi erişim                                                | Pod tarafından başlatıldığında çalışma | Her iki şekilde de geçerlidir |
-| Hizmet uç noktaları tarafından güvenli hale getirilmiş kaynaklara erişim                                             | Desteklenen | Desteklenen |
-| Yük Dengeleyici Hizmeti, uygulama ağ geçidi veya giriş denetleyicisi kullanarak Kubernetes hizmetlerini kullanıma sunma | Desteklenen | Desteklenen |
-| Varsayılan Azure DNS ve özel bölgeler                                                          | Desteklenen | Desteklenen |
+| Hizmet uç noktaları tarafından güvenli hale getirilmiş kaynaklara erişim                                             | Desteklenir | Desteklenir |
+| Yük Dengeleyici Hizmeti, uygulama ağ geçidi veya giriş denetleyicisi kullanarak Kubernetes hizmetlerini kullanıma sunma | Desteklenir | Desteklenir |
+| Varsayılan Azure DNS ve özel bölgeler                                                          | Desteklenir | Desteklenir |
 
 ### <a name="support-scope-between-network-models"></a>Ağ modelleri arasındaki Destek kapsamı
 

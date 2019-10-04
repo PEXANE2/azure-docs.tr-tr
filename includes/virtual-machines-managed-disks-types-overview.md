@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: içerme dosyası
+description: içerme dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 87e130d3a4569971bffb9b1ac2e189babb900225
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 3dfc3c309fe3583ddd4307cbfe4e55bf6522ffc3
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70997745"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955882"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 'da hangi disk türleri kullanılabilir?
 
@@ -25,11 +25,11 @@ Aşağıdaki tabloda, ne kullanacağınıza karar vermenize yardımcı olmak üz
 
 |   | Ultra disk   | Premium SSD   | Standart SSD   | Standart HDD   |
 |---------|---------|---------|---------|---------|
-|Disk türü   |SSD   |SSD   |SSD   |HDD   |
+|Disk türü   |SSD   |SSD   |SSD   |BARıNDıRABILIR   |
 |Senaryo   |SAP HANA, üst katman veritabanları (örneğin, SQL, Oracle) ve diğer işlem açısından ağır iş yükleri gibi GÇ yoğunluklu iş yükleri.   |Üretim ve performansa duyarlı iş yükleri   |Web sunucuları, hafif kullanılan kurumsal uygulamalar ve geliştirme/test   |Yedekleme, kritik olmayan, seyrek erişimli erişim   |
-|Disk boyutu   |65.536 gibibayt (gib)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
+|En fazla disk boyutu   |65.536 gibibayt (gib)    |32.767 GiB    |32.767 GiB   |32.767 GiB   |
 |En fazla aktarım hızı   |2\.000 MIB/sn    |900 MIB/sn   |750 MIB/sn   |500 MIB/sn   |
-|Maks. IOPS   |160.000    |20.000   |6,000   |2,000   |
+|Maksimum ıOPS   |160.000    |20.000   |6\.000   |2\.000   |
 
 ## <a name="ultra-disk"></a>Ultra disk
 
@@ -41,24 +41,24 @@ Bir ultra disk sağladığınızda, diskin kapasitesini ve performansını bağ�
 
 Ultra disklerin bazı önemli özellikleri şunlardır:
 
-- Disk kapasitesi: Ultra diskler kapasitesi, 4 GiB 'den 64 TiB 'ye kadar olan kapasite aralıklarıyla değişir.
+- Disk kapasitesi: Ultra diskler kapasitesi 4 GiB 'den 64 TiB 'ye kadar değişir.
 - Disk ıOPS: Ultra diskler, disk başına en fazla 160 K ıOPS 'ye kadar 300 ıOPS/GiB 'nin ıOPS sınırlarını destekler. Sağladığınız ıOPS 'yi başarmak için, seçilen disk ıOPS 'nin VM ıOPS sınırından küçük olduğundan emin olun. Disk başına minimum ıOPS, en az 100 ıOPS olan 2 ıOPS/GiB 'dir. Örneğin, 4 GiB Ultra diskiniz varsa sekiz ıOPS yerine en az 100 ıOPS olur.
 - Disk işleme: Ultra disklerle, tek bir diskin aktarım hızı sınırı her sağlanan ıOPS için 256 KiB/sn, disk başına en fazla 2000 MB/sn (MB/sn = 10 ^ 6 bayt/saniye). Disk başına en düşük aktarım hızı, sağlanan her ıOPS için 4KiB/sn, genel taban çizgisi 1 MB/sn 'dir.
 - Ultra diskler, diski sanal makineden kullanımdan çıkarmadan, çalışma zamanında disk performansı özniteliklerinin (ıOPS ve aktarım hızı) ayarlanmasını destekler. Disk performansı yeniden boyutlandırma işlemi bir diskte verildikten sonra, değişikliğin gerçekten etkili olması bir saate kadar sürebilir. 24 saatlik bir pencere sırasında dört performans yeniden boyutlandırma işlemi sınırı vardır. Performans yeniden boyutlandırma işleminin performans bant genişliği kapasitesinin olmaması nedeniyle başarısız olması mümkündür.
 
 ### <a name="disk-size"></a>Disk boyutu
 
-|Disk Boyutu (GiB)  |IOPS Cap  |Verimlilik sınırı (MBps)  |
+|Disk boyutu (GiB)  |IOPS Cap  |Verimlilik sınırı (MBps)  |
 |---------|---------|---------|
-|4     |1,200         |300         |
-|8     |2,400         |600         |
-|16     |4,800         |1,200         |
-|32     |9\.600         |2,000         |
-|64     |19.200         |2,000         |
-|128     |38.400         |2,000         |
-|256     |76.800         |2,000         |
-|512     |80,000         |2,000         |
-|1024-65536 (Bu aralıktaki Boyutlar 1 TiB artışlarına göre artar)     |160.000         |2,000         |
+|4     |1\.200         |300         |
+|8     |2\.400         |600         |
+|16     |4\.800         |1\.200         |
+|32     |9\.600         |2\.000         |
+|64     |19.200         |2\.000         |
+|128     |38.400         |2\.000         |
+|256     |76.800         |2\.000         |
+|512     |80.000         |2\.000         |
+|1024-65536 (Bu aralıktaki Boyutlar 1 TiB artışlarına göre artar)     |160.000         |2\.000         |
 
 ### <a name="ga-scope-and-limitations"></a>GA kapsamı ve sınırlamaları
 

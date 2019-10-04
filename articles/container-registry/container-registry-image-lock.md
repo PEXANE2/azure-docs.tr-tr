@@ -6,20 +6,23 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 09/30/2019
 ms.author: danlep
-ms.openlocfilehash: 7a313353ee1c7afae10fd7af84570565037e40ab
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 1ef6d5366e5db07a7f03bac251c24b1ff76a13e9
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310657"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949512"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure Container Registry 'de kapsayıcı görüntüsünü kilitleme
 
 Bir Azure Container Registry 'de, bir görüntü sürümünü veya depoyu, silinememesi veya güncelleştirilemeyebilir. Bir görüntüyü veya depoyu kilitlemek için [az ACR Repository Update][az-acr-repository-update]olan Azure CLI komutunu kullanarak özniteliklerini güncelleştirin. 
 
-Bu makale, Azure CLı 'yı Azure Cloud Shell veya yerel olarak çalıştırmanızı gerektirir (sürüm 2.0.55 veya üzeri önerilir). Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
+Bu makale, Azure CLı 'yı Azure Cloud Shell veya yerel olarak çalıştırmanızı gerektirir (sürüm 2.0.55 veya üzeri önerilir). Sürümü bulmak için `az --version` ' yı çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][azure-cli].
+
+> [!IMPORTANT]
+> Bu makale, bir kayıt defterinin tamamını kilitlemek için (örneğin, Azure portal **ayarları >** veya Azure clı içindeki `az lock` komutları kullanılarak) uygulanmaz. Kayıt defteri kaynağını kilitlemek, depolarda veri oluşturmanızı, güncelleştirmenizi veya silmenizi önler. Kayıt defterinin kilitlenmesi, yalnızca çoğaltmaları ekleme veya silme veya kayıt defterinin kendisini silme gibi yönetim işlemlerini etkiler. [Beklenmedik değişiklikleri engellemek için kaynakları kilitle ' ye](../azure-resource-manager/resource-group-lock-resources.md)daha fazla bilgi.
 
 ## <a name="scenarios"></a>Senaryolar
 
@@ -67,7 +70,7 @@ az acr repository update \
 
 ### <a name="lock-an-image-by-manifest-digest"></a>Bir görüntüyü bildirim özetine göre kilitleme
 
-Bildirim Özeti (SHA-256 karması `sha256:...`) tarafından tanımlanan bir *myrepo/MyImage* görüntüsünü kilitlemek için aşağıdaki komutu çalıştırın. (Bir veya daha fazla görüntü etiketleriyle ilişkili bildirim özetini bulmak için [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu çalıştırın.)
+Bildirim Özeti tarafından tanımlanan bir *myrepo/MyImage* görüntüsünü kilitlemek için (`sha256:...` olarak temsıl edilen SHA-256 karması), aşağıdaki komutu çalıştırın. (Bir veya daha fazla görüntü etiketleriyle ilişkili bildirim özetini bulmak için [az ACR Repository Show-bildirimleri][az-acr-repository-show-manifests] komutunu çalıştırın.)
 
 ```azurecli
 az acr repository update \

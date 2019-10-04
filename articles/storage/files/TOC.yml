@@ -53,7 +53,7 @@
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Depolama güvenliği
           href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Depolama hesabı şifrelemesi
+        - name: Azure Depolama şifrelemesi
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: SMB üzerinden Azure AD kimlik doğrulaması
           href: storage-files-active-directory-overview.md

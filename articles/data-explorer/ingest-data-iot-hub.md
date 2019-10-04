@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 83f5339dbc4f093ba0b7287b53c053e319f928c9
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: 327fd5352a3f067638c7f9ceb51e2de9e284d845
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937385"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947841"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>IoT Hub verileri Azure Veri Gezgini 'a alma (Önizleme)
 
@@ -76,11 +76,11 @@ Artık Azure Veri Gezgini IoT Hub bağlanıyorsunuz. Bu bağlantı tamamlandığ
 
     **Ayarlanmasını** | **Alan açıklaması**
     |---|---|
-    | Veri bağlantısı adı | Azure Veri Gezgini içinde oluşturmak istediğiniz bağlantının adı.
-    | IoT Hub | IoT Hub adı. |
-    | Paylaşılan erişim ilkesi | Paylaşılan erişim ilkesinin adı. Okuma izinlerine sahip olmalıdır. |
-    | Tüketici grubu |  IoT Hub yerleşik uç noktasında tanımlanan Tüketici grubu. |
-    | Olay sistemi özellikleri | IoT Hub olay sistemi özellikleri. Olay iletisi başına birden çok kayıt varsa, sistem özellikleri birincine eklenir. |
+    | Veri bağlantısı adı | Azure Veri Gezgini oluşturmak istediğiniz bağlantının adı
+    | IoT Hub | IoT Hub adı |
+    | Paylaşılan erişim ilkesi | Paylaşılan erişim ilkesinin adı. Okuma izinlerine sahip olmalıdır |
+    | Tüketici grubu |  IoT Hub yerleşik uç noktasında tanımlanan Tüketici grubu |
+    | Olay sistemi özellikleri | Olay [sistemi özellikleri IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) olay iletisi başına birden çok kayıt varsa, sistem özellikleri ilk birine eklenir.|
     | | 
 
     > [!NOTE]
@@ -94,7 +94,7 @@ Artık Azure Veri Gezgini IoT Hub bağlanıyorsunuz. Bu bağlantı tamamlandığ
      **Ayarlanmasını** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
     | Tablo | *TestTable* | **TestDB**'de oluşturduğunuz tablo. |
-    | Veri biçimi | *NESNESINDE* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOH, SCSV, TSV ve TXT. |
+    | Veri biçimi | *NESNESINDE* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOHSV, SCSV, TSV, TSVE ve TXT. |
     | Sütun eşleme | *TestMapping* | **TestDB**'de oluşturduğunuz ve gelen JSON verilerini **TestDB**'nin sütun adlarıyla ve veri türleriyle eşleyen eşleme. JSON, çok SATıRLı JSON ve AVRO için gereklidir ve diğer biçimler için isteğe bağlıdır.|
     | | |
 

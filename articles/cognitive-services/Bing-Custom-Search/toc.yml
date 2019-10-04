@@ -60,8 +60,9 @@
     - name: İsabet vurgulamayı gerçekleştirme
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Web sayfalarında ilerleme
-      href: page-webpages.md
+    - name: Arama sonuçları sayfalarında gezinme
+      href: ../Bing-Web-Search/paging-search-results.md
+      maintainContext: true
 - name: Başvuru
   items:
     - name: Bing Özel Otomatik Öneri API Başvurusu

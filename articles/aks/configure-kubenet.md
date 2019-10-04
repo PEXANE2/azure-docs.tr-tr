@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615753"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950327"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -28,7 +28,7 @@ Bu makalede, bir aks kümesi için bir sanal ağ alt ağı oluşturmak ve kullan
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için @ no__t-0 ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Kendi alt ağınızla Kubernetes kullanan ağlarına genel bakış
 
@@ -38,9 +38,9 @@ Birçok ortamda, ayrılmış IP adresi aralıklarına sahip sanal ağları ve al
 
 ![AKS kümesi ile kubenet ağ modeli](media/use-kubenet/kubenet-overview.png)
 
-Azure, bir UDR 'de en fazla 400 yolu destekler, bu nedenle 400 düğümden daha büyük bir AKS kümeniz olamaz. [Sanal düğümler][virtual-nodes] veya ağ ilkeleri gibi aks özellikleri, *Kubernetes kullanan*ile desteklenmez.
+Azure, bir UDR 'de en fazla 400 yolu destekler, bu nedenle 400 düğümden daha büyük bir AKS kümeniz olamaz. Aks [sanal düğümleri][virtual-nodes] ve Azure ağ ilkeleri, *Kubernetes kullanan*ile desteklenmez.  [Calıco ağ ilkelerini][calico-network-policies], kubenet ile desteklendiği için kullanabilirsiniz.
 
-*Azure CNI*ile her Pod, IP alt ağında bir IP adresi alır ve diğer Pod ve hizmetlerle doğrudan iletişim kurabilir. Kümeleriniz, belirttiğiniz IP adresi aralığı kadar büyük olabilir. Bununla birlikte, IP adresi aralığı önceden planlanmalıdır ve tüm IP adresleri AKS düğümleri tarafından destekleyeceği maksimum düğüm sayısına göre tüketilir. *Azure CNI*Ile [sanal düğümler][virtual-nodes] veya ağ ilkeleri gibi gelişmiş ağ özellikleri ve senaryolar desteklenir.
+*Azure CNI*ile her Pod, IP alt ağında bir IP adresi alır ve diğer Pod ve hizmetlerle doğrudan iletişim kurabilir. Kümeleriniz, belirttiğiniz IP adresi aralığı kadar büyük olabilir. Bununla birlikte, IP adresi aralığı önceden planlanmalıdır ve tüm IP adresleri AKS düğümleri tarafından destekleyeceği maksimum düğüm sayısına göre tüketilir. *Azure CNI*Ile [sanal düğümler][virtual-nodes] veya ağ ilkeleri (Azure ya da calıco) gibi gelişmiş ağ özellikleri ve senaryolar desteklenir.
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP adresi kullanılabilirliği ve tükenmesi
 
@@ -72,23 +72,20 @@ AKS kümeniz için hangi ağ eklentisinin kullanılacağını tercih etmek, gene
 
 - Sınırlı IP adresi alanı var.
 - Pod iletişiminin çoğu küme içinde bulunur.
-- Sanal düğümler veya ağ ilkesi gibi gelişmiş özelliklere ihtiyacınız yoktur.
+- Sanal düğümler veya Azure ağ Ilkesi gibi gelişmiş AKS özelliklerine ihtiyacınız yoktur.  [Calıco ağ ilkelerini][calico-network-policies]kullanın.
 
 *Azure CNI* şu durumlarda kullanın:
 
 - Kullanılabilir IP adresi alanı var.
 - Pod iletişiminin çoğu, küme dışındaki kaynaklara göre yapılır.
 - UDRs 'yi yönetmek istemezsiniz.
-- Sanal düğümler veya ağ ilkesi gibi gelişmiş özelliklere ihtiyacınız vardır.
+- Sanal düğümler veya Azure ağ Ilkesi gibi gelişmiş özelliklere ihtiyacınız vardır.  [Calıco ağ ilkelerini][calico-network-policies]kullanın.
 
 Hangi ağ modelini kullanacağınıza karar vermenize yardımcı olacak daha fazla bilgi için bkz. [ağ modellerini ve bunların destek kapsamını karşılaştırın][network-comparisons].
 
-> [!NOTE]
-> Kuberouter, Kubernetes kullanan kullanırken ağ ilkesini etkinleştirmeyi mümkün kılar ve bir AKS kümesinde daemonset olarak yüklenebilir. Lütfen farkında olan Kuto-Router hala beta aşamasındadır ve proje için Microsoft tarafından sunulan destek sunulmaz.
-
 ## <a name="create-a-virtual-network-and-subnet"></a>Sanal ağ ve alt ağ oluşturma
 
-*Kubernetes kullanan* ve kendi sanal ağ alt ağınızı kullanmaya başlamak için önce [az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+*Kubernetes kullanan* ve kendi sanal ağ alt ağınızı kullanmaya başlamak için önce [az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -134,7 +131,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Şimdi, [az role atama Create][az-role-assignment-create] komutunu kullanarak sanal ağ üzerinde aks kümesi *katılımcısı* izinleriniz için hizmet sorumlusu atayın. Hizmet sorumlusunu oluşturmak için önceki komutun çıktısında gösterildiği gibi kendi  *\<AppID >* sağlayın:
+Şimdi, [az role atama Create][az-role-assignment-create] komutunu kullanarak sanal ağ üzerinde aks kümesi *katılımcısı* izinleriniz için hizmet sorumlusu atayın. Hizmet sorumlusunu oluşturmak için önceki komutun çıktısında gösterildiği gibi, kendi *\<Appıd >* sağlayın:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -142,7 +139,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Sanal ağda AKS kümesi oluşturma
 
-Artık bir sanal ağ ve alt ağ oluşturdunuz ve bu ağ kaynaklarını kullanmak için bir hizmet sorumlusu için oluşturduğunuz ve atanan izinler. Şimdi [az aks Create][az-aks-create] komutunu kullanarak sanal ağınızda ve alt ağınızda bir aks kümesi oluşturun. Hizmet sorumlusu oluşturmak için önceki komutun çıktısında gösterildiği gibi, kendi hizmet sorumlusu  *\<AppID >* ve  *\<parola >* tanımlayın.
+Artık bir sanal ağ ve alt ağ oluşturdunuz ve bu ağ kaynaklarını kullanmak için bir hizmet sorumlusu için oluşturduğunuz ve atanan izinler. Şimdi [az aks Create][az-aks-create] komutunu kullanarak sanal ağınızda ve alt ağınızda bir aks kümesi oluşturun. Hizmet sorumlusu oluşturmak için önceki komutun çıktısında gösterildiği gibi, kendi hizmet sorumlusu *\<Appıd >* ve *\<password >* tanımlayın.
 
 Aşağıdaki IP adresi aralıkları, küme oluşturma işleminin parçası olarak da tanımlanmıştır:
 
@@ -172,6 +169,24 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!Note]
+> Bir AKS kümesini [Calıco ağ ilkesi][calico-network-policies] içerecek şekilde etkinleştirmek istiyorsanız aşağıdaki komutu kullanabilirsiniz.
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 3 \
+    --network-plugin kubenet --network-policy calico \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --pod-cidr 10.244.0.0/16 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal <appId> \
+    --client-secret <password>
+```
+
 Bir AKS kümesi oluşturduğunuzda, bir ağ güvenlik grubu ve yol tablosu oluşturulur. Bu ağ kaynakları AKS denetim düzlemi tarafından yönetilir. Ağ güvenlik grubu, düğümlerinizin sanal NIC 'Leri ile otomatik olarak ilişkilendirilir. Yol tablosu, sanal ağ alt ağıyla otomatik olarak ilişkilendirilir. Ağ güvenlik grubu kuralları ve yol tabloları ve hizmetleri oluşturup kullanıma sunabileceğiniz otomatik olarak güncelleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -182,6 +197,7 @@ Var olan sanal ağ alt ağınıza dağıtılmış bir AKS kümesi ile, artık k�
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy
 
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

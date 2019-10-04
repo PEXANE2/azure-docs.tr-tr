@@ -1,19 +1,19 @@
 ---
 title: Azure dijital TWINS 'teki çıkış ve uç noktalar | Microsoft Docs
 description: Azure dijital TWINS ile uç noktalar oluşturma yönergeleri.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
-ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.date: 10/02/2019
+ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013932"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959109"
 ---
 # <a name="egress-and-endpoints"></a>Çıkış ve uç noktalar
 
@@ -23,7 +23,7 @@ Olaylar, önceden tanımlanmış yönlendirme tercihlerine göre uç noktalara y
 
 Olaylar, Yönlendirme ve olay türleri hakkında daha fazla bilgi edinmek için bkz. [Azure dijital TWINS 'de yönlendirme olayları ve iletileri](./concepts-events-routing.md).
 
-## <a name="events"></a>Events
+## <a name="events"></a>Olaylar
 
 Olaylar, Azure ileti ve olay aracıları tarafından işlenmek üzere IoT nesneleri (cihazlar ve algılayıcılar gibi) tarafından gönderilir. Olaylar aşağıdaki [Azure Event Grid olay şeması başvurusu](../event-grid/event-schema.md)tarafından tanımlanır.
 
@@ -47,16 +47,16 @@ Olaylar, Azure ileti ve olay aracıları tarafından işlenmek üzere IoT nesnel
 }
 ```
 
-| Öznitelik | Type | Açıklama |
+| Öznitelik | Tür | Açıklama |
 | --- | --- | --- |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| subject | string | Olay konusunun yayımcı tanımlı yolu. |
-| data | object | Kaynak sağlayıcısına özel olay verileri. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| Veri sürümü | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
-| topic | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
+| kimlik | dize | Etkinliğin benzersiz tanımlayıcısı. |
+| Konu | dize | Olay konusunun yayımcı tanımlı yolu. |
+| veri | nesne | Kaynak sağlayıcısına özel olay verileri. |
+| Türü | dize | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | dize | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| Veri sürümü | dize | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
+| metadataVersion | dize | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| ilerde | dize | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 
 Event Grid olay şeması hakkında daha fazla bilgi için:
 
@@ -87,10 +87,10 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 - Anahtar deposu
 - Rapor
 - RoleDefinition
-- Algılayıcı
+- Algılayıcısı
 - SensorBlobMetadata
 - SensorExtendedProperty
-- Boşluk
+- Alan
 - SpaceBlobMetadata
 - SpaceExtendedProperty
 - SpaceResource
@@ -122,7 +122,7 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 }
 ```
 
-| Value | Şununla değiştir |
+| Değer | Değiştir |
 | --- | --- |
 | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
 
@@ -153,7 +153,7 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 }
 ```
 
-| Value | Şununla değiştir |
+| Değer | Değiştir |
 | --- | --- |
 | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
 
@@ -188,7 +188,7 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 }
 ```
 
-| Value | Şununla değiştir |
+| Değer | Değiştir |
 | --- | --- |
 | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
 
@@ -223,7 +223,7 @@ Her olay türü için olay biçimleri aşağıdaki alt bölümlerde daha ayrınt
 }
 ```
 
-| Value | Şununla değiştir |
+| Değer | Değiştir |
 | --- | --- |
 | YOUR_TOPIC_NAME | Özelleştirilmiş konunun adı |
 
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Şununla değiştir |
+    | Değer | Değiştir |
     | --- | --- |
     | YOUR_NAMESPACE | Uç noktanızın ad alanı |
     | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Şununla değiştir |
+    | Değer | Değiştir |
     | --- | --- |
     | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi|
     | YOUR_SECONDARY_KEY | Kimlik doğrulaması için kullanılan ikincil bağlantı dizesi |
@@ -313,14 +313,14 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Şununla değiştir |
+    | Değer | Değiştir |
     | --- | --- |
     | YOUR_NAMESPACE | Uç noktanızın ad alanı |
     | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi |
     | YOUR_SECONDARY_KEY | Kimlik doğrulaması için kullanılan ikincil bağlantı dizesi |
     | YOUR_EVENT_HUB_NAME | Olay Hub 'ınızın adı |
 
-- Event Hubs olay türü **Devicemessage**'ye yönlendir. ConnectionString 'e dahil `EntityPath` etme zorunludur :
+- Event Hubs olay türü **Devicemessage**'ye yönlendir. **ConnectionString** 'e `EntityPath` eklenmesi zorunludur:
 
   ```JSON
   {
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Value | Şununla değiştir |
+    | Değer | Değiştir |
     | --- | --- |
     | YOUR_NAMESPACE | Uç noktanızın ad alanı |
     | YOUR_PRIMARY_KEY | Kimlik doğrulaması için kullanılan birincil bağlantı dizesi |

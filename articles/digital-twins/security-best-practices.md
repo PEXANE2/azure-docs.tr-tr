@@ -1,21 +1,21 @@
 ---
 title: En iyi güvenlik yöntemlerini anlama-Azure dijital TWINS | Microsoft Docs
 description: Azure dijital TWINS ve Nesnelerin İnterneti için en iyi güvenlik yöntemleri hakkında bilgi edinin.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-adgera
-ms.openlocfilehash: e98f8a4becad41d27d89de16f598b6fa531ad5e3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: ba10a6105972eddc8474841b234d2eeddc994f5d
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827654"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948928"
 ---
-# <a name="security-best-practices"></a>Güvenlik en iyi uygulamaları
+# <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
 Azure dijital TWINS güvenliği, IoT grafiğinizde belirli kaynaklara ve eylemlere kesin erişim sağlar. Bu, ayrıntılı rol ve [rol tabanlı erişim denetimi](./security-role-based-access-control.md)adlı izin yönetimini kolaylaştırır.
 
@@ -29,7 +29,7 @@ Bu makalede, izlenecek başlıca en iyi yöntemler özetlenmektedir.
 > [!TIP]
 > IoT güvenlik tehditlerini ve güvenlik açıklarını algılamaya yardımcı olması için [IoT Için Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/asc-for-iot/) 'ni kullanın.
 
-## <a name="iot-security-best-practices"></a>IoT güvenliği için en iyi uygulamalar
+## <a name="iot-security-best-practices"></a>IoT güvenlik en iyi uygulamaları
 
 IoT cihazlarınızı güvenle güvenli hale getirmeye yönelik bazı önemli uygulamalar şunlardır:
 

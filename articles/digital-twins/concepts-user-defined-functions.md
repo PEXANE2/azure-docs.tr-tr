@@ -1,21 +1,21 @@
 ---
-title: Azure dijital TWINS ile veri işleme ve Kullanıcı tanımlı işlevler | Microsoft Docs
+title: Veri işleme ve Kullanıcı tanımlı işlevler-Azure dijital TWINS | Microsoft Docs
 description: Azure dijital TWINS ile veri işleme, eşleştiriciler ve Kullanıcı tanımlı işlevlere genel bakış.
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 07facf06702a63df8ea93d43b9896b72322b209f
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178257"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949981"
 ---
-# <a name="data-processing-and-user-defined-functions"></a>Veri işleme ve kullanıcı tanımlı işlevleri
+# <a name="data-processing-and-user-defined-functions"></a>Veri işleme ve Kullanıcı tanımlı işlevler
 
 Azure dijital TWINS, gelişmiş işlem özellikleri sunar. Geliştiriciler, önceden tanımlanmış uç noktalara olay göndermek için gelen telemetri iletilerine karşı özel işlevler tanımlayabilir ve çalıştırabilir.
 
@@ -40,11 +40,11 @@ Azure dijital TWINS 'de veri işleme üç nesne tanımlamayı içerir: *eşleşt
 
 Eşleştiriciler, gelen algılayıcı telemetrisine göre hangi eylemlerin gerçekleşmekte olduğunu değerlendiren bir koşul kümesi tanımlar. Eşleşmeyi belirleme koşulları, sensörden, sensörün üst cihazından ve sensörün üst alanıyla eşleşen özellikler içerebilir. Koşullar, bu örnekte özetlenen bir [JSON yoluna](https://jsonpath.com/) yönelik karşılaştırmalar olarak ifade edilir:
 
-- Kaçan dize değeriyle temsil edilen veri türü **sıcaklığının** tüm sensörlerinden`\"Temperature\"`
-- Bağlantı `01` noktasında olma
-- Genişletilmiş özellik anahtarı **üreticisine** sahip cihazlara, kaçan dize değeri olarak ayarlanmış olan cihazlar`\"GoodCorp\"`
-- Kaçan dize tarafından belirtilen türdeki boşluklara ait olan`\"Venue\"`
-- Üst **Spaceıd** 'nin alt öğeleri`DE8F06CA-1138-4AD7-89F4-F782CC6F69FD`
+- Kaçan dize değeri ile temsil edilen veri türü **sıcaklığının** tüm sensörlerinden `\"Temperature\"`
+- Bağlantı noktasında `01` olması
+- Genişletilmiş özellik anahtarı **üreticisine** sahip cihazlara ait olan, @no__t kaçış dize değerine ayarlanmıştır.-1
+- Kaçan dize tarafından belirtilen türdeki boşluklara ait olan `\"Venue\"`
+- Üst **Spaceıd** @no__t alt öğesi olan-1
 
 ```JSON
 {
@@ -83,16 +83,16 @@ Eşleştiriciler, gelen algılayıcı telemetrisine göre hangi eylemlerin gerç
 > [!IMPORTANT]
 > - JSON yolları büyük/küçük harfe duyarlıdır.
 > - JSON yükü, tarafından döndürülen yük ile aynıdır:
->   - `/sensors/{id}?includes=properties,types`algılayıcısı için.
->   - `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`algılayıcısı için üst cihaz.
->   - `/spaces/{id}?includes=properties,types,location,timezone`algılayıcı üst alanı için.
+>   - algılayıcı için `/sensors/{id}?includes=properties,types`.
+>   - algılayıcıyı üst cihaz için `/devices/{id}?includes=properties,types,sensors,sensorsproperties,sensorstypes`.
+>   - sensör üst alanı için `/spaces/{id}?includes=properties,types,location,timezone`.
 > - Karşılaştırmalar büyük/küçük harfe duyarlıdır.
 
 ### <a name="user-defined-functions"></a>Kullanıcı tanımlı işlevler
 
 Kullanıcı tanımlı bir işlev, yalıtılmış bir Azure dijital TWINS ortamı içinde yürütülen özel bir işlevdir. Kullanıcı tanımlı işlevlerin, alındığı için ham algılayıcı telemetri iletisine erişimi vardır. Kullanıcı tanımlı işlevlerin de uzamsal grafik ve dağıtıcı hizmetine erişimi vardır. Kullanıcı tanımlı işlev bir grafik içinde kaydedildikten sonra, işlevin ne zaman yürütüleceğini belirtmek için bir eşleştirici ( [yukarıya](#matchers)ayrıntılı) oluşturulmalıdır. Örneğin, Azure dijital TWINS, belirli bir sensörden yeni telemetri aldığında, eşleşen kullanıcı tanımlı işlev, son birkaç algılayıcı okumasının hareketli ortalamasını hesaplayabilir.
 
-Kullanıcı tanımlı işlevler JavaScript 'te yazılabilir. Yardımcı yöntemler Kullanıcı tanımlı yürütme ortamında grafikle etkileşime geçin. Geliştiriciler, algılayıcı telemetri iletilerine karşı özel kod parçacıkları yürütebilir. Örneklere şunlar dahildir:
+Kullanıcı tanımlı işlevler JavaScript 'te yazılabilir. Yardımcı yöntemler Kullanıcı tanımlı yürütme ortamında grafikle etkileşime geçin. Geliştiriciler, algılayıcı telemetri iletilerine karşı özel kod parçacıkları yürütebilir. Örnekler:
 
 - Algılayıcısı grafik içindeki algılayıcı nesnesine doğrudan okumayı ayarlayın.
 - Grafikteki bir boşluk içindeki farklı algılayıcı okumaları temelinde bir eylem gerçekleştirir.

@@ -10,25 +10,25 @@ ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d6976e872223cbb66682b9a02ce343487bec35d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8a1395c89b047bb120c7f7e2d2d9bb9b4d2b0c50
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240269"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959954"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Değişiklik İzleme çözümü ile ortamınızdaki değişiklikleri izleyin
 
 Bu makale, ortamınızdaki değişiklikleri kolayca belirlemek için Değişiklik İzleme çözümünü kullanmanıza yardımcı olur. Çözüm Windows ve Linux yazılım, Windows ve Linux dosyaları, Windows kayıt defteri anahtarları, Windows Hizmetleri ve Linux Daemon 'ları üzerindeki değişiklikleri izler. Yapılandırma değişikliklerinin belirlenmesi, işlemsel sorunları belirlemenize yardımcı olabilir.
 
-İzlenen sunuculardaki yüklü yazılım, Windows Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları üzerinde yapılan değişiklikler, işlenmek üzere buluttaki Azure Izleyici hizmetine gönderilir. Mantıksal alınan verilere uygulanır ve bulut hizmeti olan verileri kaydeder. Değişiklik İzleme panosundaki bilgileri kullanarak, sunucu altyapınızda yapılan değişiklikleri kolayca görebilirsiniz.
+İzlenen sunuculardaki yüklü yazılım, Windows Hizmetleri, Windows kayıt defteri ve dosyalar ve Linux Daemon 'ları üzerinde yapılan değişiklikler, işlenmek üzere buluttaki Azure Izleyici hizmetine gönderilir. Logic, alınan verilere uygulanır ve bulut hizmeti verileri kaydeder. Değişiklik İzleme panosundaki bilgileri kullanarak, sunucu altyapınızda yapılan değişiklikleri kolayca görebilirsiniz.
 
 > [!NOTE]
 > Azure Otomasyonu Değişiklik İzleme sanal makinelerdeki değişiklikleri izler. Azure Resource Manager özellik değişikliklerini izlemek için bkz. Azure Kaynak grafiğinin [değişiklik geçmişi](../governance/resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="supported-windows-operating-systems"></a>Desteklenen Windows işletim sistemleri
 
-Aşağıdaki Windows işletim sistemi sürümleri Windows aracısı için resmi olarak desteklenir:
+Windows işletim sisteminin aşağıdaki sürümleri resmi olarak Windows Agent için desteklenir:
 
 * Windows Server 2008 R2 veya üzeri
 
@@ -46,7 +46,7 @@ Aşağıdaki Linux dağıtımları resmi olarak desteklenmektedir. Ancak, Linux 
 * Ubuntu Linux 14,04 LTS, 16,04 LTS ve 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32 bit
+### <a name="32-bit"></a>32 bit:
 
 * CentOS 6
 * Oracle Linux 6
@@ -65,7 +65,7 @@ Değişiklikleri izlemeye başlamak için Değişiklik İzleme ve envanter çöz
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Değişiklik İzleme ve envanteri yapılandırma
 
-Bilgisayarlara nasıl bilgisayar ekleneceğini öğrenmek için ziyaret edin: [Otomasyon çözümlerini ekleme](automation-onboard-solutions-from-automation-account.md). Değişiklik İzleme ve envanter çözümüne sahip bir makine ekleme yaptıktan sonra, izlenecek öğeleri yapılandırabilirsiniz. İzlemek üzere yeni bir dosya veya kayıt defteri anahtarı etkinleştirdiğinizde, hem Değişiklik İzleme hem de envanterde etkinleştirilir.
+Bilgisayarlara nasıl bilgisayar ekleneceğini öğrenmek için ziyaret edin: [otomasyon çözümlerini ekleme](automation-onboard-solutions-from-automation-account.md). Değişiklik İzleme ve envanter çözümüne sahip bir makine ekleme yaptıktan sonra, izlenecek öğeleri yapılandırabilirsiniz. İzlemek üzere yeni bir dosya veya kayıt defteri anahtarı etkinleştirdiğinizde, hem Değişiklik İzleme hem de envanterde etkinleştirilir.
 
 Hem Windows hem de Linux dosyalarındaki dosyalardaki değişiklikleri izlemek için dosyaların MD5 karmaları kullanılır. Daha sonra, son envanterden bu yana bir değişikliğin yapıldığını algılamak için kullanılır.
 
@@ -97,18 +97,18 @@ Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımlar
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Enabled     | Ayarın uygulandığını belirler.        |
-|Öğe Adı     | İzlenecek dosyanın kolay adı.        |
+|Etkin     | Ayarın uygulandığını belirler.        |
+|Öğe adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu Gir     | Dosyanın denetlenecek yol. Örneğin: "/etc/*. conf"       |
-|Yol Türü     | İzlenecek öğenin türü, olası değerler dosya ve dizindir.        |
-|Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
-|Sudo Kullan     | Bu ayar, öğe denetlenirken sudonun kullanılıp kullanılmadığını belirler.         |
-|Bağlantılar     | Bu ayar, dizinleri dolaşırken sembolik bağlantıların nasıl ele alındığını belirler.<br> **Ignore** -sembolik bağlantıları yoksayar ve başvurulan dosya/dizinleri içermez.<br>**Takip et** -özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosya/dizinleri de içerir.<br>**Yönet** -sembolik bağlantıları izler ve döndürülen içeriğin değiştirilmesine izin verir.     |
-|Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: **True** veya **false**.|
+|Yolu girin     | Dosyanın denetlenecek yol. Örneğin: "/etc/*. conf"       |
+|Yol türü     | İzlenecek öğenin türü, olası değerler dosya ve dizindir.        |
+|Yinelenme     | İzlenecek öğeyi ararken özyineleme kullanıldığını belirler.        |
+|Sudo kullan     | Bu ayar, öğe denetlenirken sudo 'ın kullanıldığını belirler.         |
+|Bağlantılar     | Bu ayar dizinlerde çapraz geçiş yaparken sembolik bağlantıların nasıl ele alınacağını belirler.<br> **Ignore** -sembolik bağlantıları yoksayar ve başvurulan dosya/dizinleri içermez.<br>**Takip et** -özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosya/dizinleri de içerir.<br>**Yönet** -sembolik bağlantıları izler ve döndürülen içeriğin değiştirilmesine izin verir.     |
+|Tüm ayarlar için dosya içeriğini karşıya yükle| İzlenen değişikliklerle dosya içeriğini karşıya yüklemeyi açar veya kapatır. Kullanılabilir seçenekler: **true** veya **false**.|
 
 > [!NOTE]
-> “Yönet” bağlantıları seçeneği önerilmez. Dosya içeriğini alma desteklenmiyor.
+> "Yönet" bağlantıları seçeneği önerilmez. Dosya içeriği alımı desteklenmiyor.
 
 ### <a name="configure-windows-files-to-track"></a>İzlemek için Windows dosyalarını yapılandırma
 
@@ -120,21 +120,21 @@ Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adıml
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Enabled     | Ayarın uygulandığını belirler.        |
-|Öğe Adı     | İzlenecek dosyanın kolay adı.        |
+|Etkin     | Ayarın uygulandığını belirler.        |
+|Öğe adı     | İzlenecek dosyanın kolay adı.        |
 |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu Gir     | Dosyayı denetlemek için kullanılacak yol (örneğin, "c:\temp\\\*.txt")<br>"%winDir%\System32\\\*.*" gibi ortam değişkenleri de kullanabilirsiniz       |
-|Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
-|Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: **True** veya **false**.|
+|Yolu girin     | Dosyanın denetlenecek yolu örneğin: "c:\Temp @ no__t-0\*.txt"<br>"%WinDir%\System32 @ no__t-0 @ no__t-1. *" gibi ortam değişkenlerini de kullanabilirsiniz.       |
+|Yinelenme     | İzlenecek öğeyi ararken özyineleme kullanıldığını belirler.        |
+|Tüm ayarlar için dosya içeriğini karşıya yükle| İzlenen değişikliklerle dosya içeriğini karşıya yüklemeyi açar veya kapatır. Kullanılabilir seçenekler: **true** veya **false**.|
 
 ## <a name="wildcard-recursion-and-environment-settings"></a>Joker karakter, özyineleme ve ortam ayarları
 
 Özyineleme, dizinler genelinde izlemeyi basitleştirecek ve ortam değişkenlerinin birden çok veya dinamik sürücü adına sahip ortamlarda dosya izlemenize imkan tanıyan joker karakterler belirtmenize olanak tanır. Aşağıdaki listede, özyineleme yapılandırılırken bilmeniz gereken yaygın bilgiler gösterilmektedir:
 
 * Birden çok dosyayı izlemek için joker karakterler gerekir
-* Joker karakterler kullanılıyorsa, bunlar yalnızca bir yolun son segmentinde kullanılabilir. `c:\folder\*file*` ( veya`/etc/*.conf`gibi)
+* Joker karakterler kullanılıyorsa, bunlar yalnızca bir yolun son segmentinde kullanılabilir. (`c:\folder\*file*` veya `/etc/*.conf`)
 * Bir ortam değişkeni geçersiz bir yol içeriyorsa, doğrulama başarılı olur ancak envanter çalıştırıldığında bu yol başarısız olur.
-* Yolu ayarlarken olduğu `c:\*.*` gibi genel yollardan kaçının. bu nedenle, çok fazla klasörün çapraz yapılmasına neden olur.
+* Yolu ayarlarken `c:\*.*` gibi genel yollardan kaçının. Bu, çapraz geçilen klasörlerin oluşmasına neden olur.
 
 ## <a name="configure-file-content-tracking"></a>Dosya Içeriği izlemeyi yapılandırma
 
@@ -152,10 +152,10 @@ Windows bilgisayarlarda kayıt defteri anahtarı izlemeyi yapılandırmak için 
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Enabled     | Ayarın uygulandığını belirler.        |
-|Öğe Adı     | İzlenecek kayıt defteri anahtarının kolay adı.        |
+|Etkin     | Ayarın uygulandığını belirler.        |
+|Öğe adı     | İzlenecek kayıt defteri anahtarının kolay adı.        |
 |Grup     | Kayıt defteri anahtarlarını mantıksal olarak gruplandırmak için bir grup adı.        |
-|Windows Kayıt Defteri Anahtarı   | Kayıt defteri anahtarını denetlemek için yol. Örneğin: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Windows kayıt defteri anahtarı   | Kayıt defteri anahtarını denetlemek için yol. Örneğin: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -176,32 +176,32 @@ Diğer sınırlamalar:
 Değişiklik İzleme çözümü Şu anda aşağıdaki sorunları yaşıyor:
 
 * Düzeltme güncelleştirmeleri Windows Server 2016 Core RS3 makinelerinde toplanmaz.
-* Linux Daemon 'ları, değişiklik olmamasına rağmen değiştirilmiş bir durumu gösterebilir. Bunun nedeni `SvcRunLevels` alanın yakalanmasına neden olur.
+* Linux Daemon 'ları, değişiklik olmamasına rağmen değiştirilmiş bir durumu gösterebilir. Bunun nedeni, `SvcRunLevels` alanının yakalanmasına neden olur.
 
 ## <a name="change-tracking-data-collection-details"></a>Veri toplama ayrıntılarını Değişiklik İzleme
 
 Aşağıdaki tabloda değişiklik türleri için veri toplama sıklığı gösterilmektedir. Her tür için, geçerli durumun veri anlık görüntüsü en az 24 saatte bir yenilenir:
 
-| **Türü Değiştir** | **Sıklık** |
+| **Türü Değiştir** | **Lemiyor** |
 | --- | --- |
 | Windows kayıt defteri | 50 dakika |
 | Windows dosyası | 30 dakika |
 | Linux dosyası | 15 dakika |
-| Windows hizmetleri | 10 saniye ila 30 dakika</br> Varsayılanını 30 dakika |
+| Windows hizmetleri | 10 saniye ila 30 dakika</br> Varsayılan: 30 dakika |
 | Linux Daemon 'ları | 5 dakika |
 | Windows yazılımı | 30 dakika |
 | Linux yazılımı | 5 dakika |
 
 Aşağıdaki tabloda, Değişiklik İzleme makine başına izlenen öğe sınırları gösterilmektedir.
 
-| **Kaynak** | **Sınırı**| **Notlar** |
+| **Kaynak** | **Sınırlı**| **Notlar** |
 |---|---|---|
 |Dosya|500||
 |Kayıt defteri|250||
 |Windows yazılımı|250|Yazılım düzeltmelerini içermez|
 |Linux paketleri|1250||
 |Hizmetler|250||
-|Program|250||
+|İnin|250||
 
 Değişiklik İzleme ve envanter kullanan bir makineye yönelik ortalama Log Analytics veri kullanımı ayda yaklaşık 40MB 'tır. Bu değer yalnızca bir yaklaşık değerdir ve ortamınıza bağlı olarak değişebilir. Sahip olduğunuz tam kullanımı görmek için ortamınızı izlemeniz önerilir.
 
@@ -221,42 +221,25 @@ Aracı yalnızca değişiklikleri izler, bu, aracının performansını iyileşt
 Kayıt defteri anahtarlarındaki değişiklikleri izlemenin amacı, üçüncü taraf kod ve kötü amaçlı yazılımların etkinleştirebileceği genişletilebilirlik noktalarını bulmaktır. Aşağıdaki listede önceden yapılandırılmış kayıt defteri anahtarlarının listesi gösterilmektedir. Bu anahtarlar yapılandırıldı ancak etkin değil. Bu kayıt defteri anahtarlarını izlemek için her birini etkinleştirmeniz gerekir.
 
 > [!div class="mx-tdBreakAll"]
-> |  |
-> |---------|
-> |**HKEY\_Local\_machıne\software\classes\directory\shellex\contextmenuhandlers**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Doğrudan Windows Gezgini 'nde bulunan ve genellikle Explorer. exe ile işlem içinde çalıştırılan ortak autostart girdilerini izler.    |
-> |**HKEY\_Local\_machıne\software\microsoft\windows\currentversion\group ilkescripts\startup**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Başlangıçta çalıştırılan betikleri izler.     |
-> |**HKEY\_Local\_machıne\software\microsoft\windows\currentversion\group ilkescripts\kapatması**    |
-|&nbsp;&nbsp;&nbsp;&nbsp;Kapatılırken çalıştırılan betikleri izler.     |
-> |**HKEY\_Local\_machıne\software\wow6432node\microsoft\windows\currentversion\run**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Kullanıcı Windows hesabında oturum açmadan önce yüklenen anahtarları izler. Anahtar, 64 bit bilgisayarlarda çalışan 32 bitlik programlar için kullanılır.    |
-> |**HKEY\_Local\_machıne\software\microsoft\etkin setup\yüklü bileşenleri**     |
-|&nbsp;&nbsp;&nbsp;&nbsp;Uygulama ayarlarındaki değişiklikleri izler.     |
-> |**HKEY\_Local\_machıne\software\classes\directory\shellex\contextmenuhandlers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Doğrudan Windows Gezgini 'nde bulunan ve genellikle Explorer. exe ile işlem içinde çalıştırılan ortak autostart girdilerini izler.|
-> |**HKEY\_Local\_machıne\software\classes\directory\shellex\copykancahandlers**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Doğrudan Windows Gezgini 'nde bulunan ve genellikle Explorer. exe ile işlem içinde çalıştırılan ortak autostart girdilerini izler.|
-> |**HKEY\_Local\_machıne\software\microsoft\windows\currentversion\explorer\shelliconoverlaytanımlayıcılar**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Simge kaplama işleyicisi kaydını izler.|
-|**HKEY\_Local\_machıne\software\wow6432node\microsoft\windows\currentversion\explorer\shelliconoverlaytanýtýcý**|
-|&nbsp;&nbsp;&nbsp;&nbsp;64 bit bilgisayarlarda çalışan 32 bitlik programlar için simge kaplama işleyici kaydını izler.|
-> |**HKEY\_Local\_machıne\software\microsoft\windows\currentversion\explorer\browser yardımcı nesneleri**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Internet Explorer için yeni tarayıcı yardımcısı nesne eklentilerini izler. Geçerli sayfanın Belge Nesne Modeli (DOM) erişmek ve gezintiyi denetlemek için kullanılır.|
-> |**HKEY\_Local\_machıne\software\wow6432node\microsoft\windows\currentversion\explorer\browser yardımcı nesneleri**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Internet Explorer için yeni tarayıcı yardımcısı nesne eklentilerini izler. Geçerli sayfanın Belge Nesne Modeli (DOM) ve 64 bit bilgisayarlarda çalışan 32 bitlik programların gezintisini denetlemek için kullanılır.|
-> |**HKEY\_Local\_machıne\software\microsoft\ınternet explorer\extensions**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Özel araç menüleri ve özel araç çubuğu düğmeleri gibi yeni Internet Explorer uzantılarını izler.|
-> |**HKEY\_Local\_machıne\software\wow6432node\microsoft\ınternet explorer\extensions**|
-|&nbsp;&nbsp;&nbsp;&nbsp;64 bit bilgisayarlarda çalışan 32 bitlik programlar için özel araç menüleri ve özel araç çubuğu düğmeleri gibi yeni Internet Explorer uzantılarına yönelik izleyiciler.|
-> |**HKEY\_Local\_machıne\software\microsoft\windows NT\CurrentVersion\drivers 32**|
-|&nbsp;&nbsp;&nbsp;&nbsp;WaveMapper, wave1 ve Wave2, msacm. ımaadpcm,. msadpcm,. msgsm610 ve vidc ile ilişkili 32 bitlik sürücüleri izler. SISTEMDEKI [Drivers] bölümüne benzer. INı dosyası.|
-> |**HKEY\_Local\_machıne\software\wow6432node\microsoft\windows NT\CurrentVersion\drivers 32**|
-|&nbsp;&nbsp;&nbsp;&nbsp;, 64 bit bilgisayarlarda çalışan 32 bit programlar için WaveMapper, wave1 ve Wave2, msacm. ımaadpcm,. msadpcm,. msgsm610 ve vidc ile ilişkili 32 bitlik sürücüleri izler. SISTEMDEKI [Drivers] bölümüne benzer. INı dosyası.|
-> |**HKEY\_Local\_makinesystem\currentcontrolset\control\session manager\knowndlls**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Bilinen veya yaygın olarak kullanılan sistem dll 'lerinin listesini izler; Bu sistem, sistem dll 'lerinin Truva atı sürümlerini bırakarak kullanıcıların zayıf uygulama dizini izinleriyle yararlanmasını engeller.|
-> |**HKEY\_Local\_machıne\software\microsoft\windows NT\CurrentVersion\Winlogon\Notify**|
-|&nbsp;&nbsp;&nbsp;&nbsp;Windows işletim sistemi için etkileşimli oturum açma desteği modeli olan Winlogon 'dan olay bildirimleri alabilen paketlerin listesini izler.|
+> |Kayıt Defteri Anahtarı | Amaç |
+> |---------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Doğrudan Windows Gezgini 'nde bulunan ve genellikle Explorer. exe ile işlem içinde çalıştırılan ortak autostart girdilerini izler.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Başlangıçta çalıştırılan betikleri izler.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | Kapatılırken çalıştırılan betikleri izler.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | Kullanıcı Windows hesabında oturum açmadan önce yüklenen anahtarları izler. Anahtar, 64 bit bilgisayarlarda çalışan 32 bitlik programlar için kullanılır.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | Uygulama ayarlarındaki değişiklikleri izler.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | Doğrudan Windows Gezgini 'nde bulunan ve genellikle Explorer. exe ile işlem içinde çalıştırılan ortak autostart girdilerini izler.
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | Doğrudan Windows Gezgini 'nde bulunan ve genellikle Explorer. exe ile işlem içinde çalıştırılan ortak autostart girdilerini izler.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | Simge kaplama işleyicisi kaydını izler.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 64 bit bilgisayarlarda çalışan 32 bitlik programlar için simge kaplama işleyici kaydını izler.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Internet Explorer için yeni tarayıcı yardımcısı nesne eklentilerini izler. Geçerli sayfanın Belge Nesne Modeli (DOM) erişmek ve gezintiyi denetlemek için kullanılır.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | Internet Explorer için yeni tarayıcı yardımcısı nesne eklentilerini izler. Geçerli sayfanın Belge Nesne Modeli (DOM) ve 64 bit bilgisayarlarda çalışan 32 bitlik programların gezintisini denetlemek için kullanılır.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Internet Explorer\Extensions` | Özel araç menüleri ve özel araç çubuğu düğmeleri gibi yeni Internet Explorer uzantılarını izler.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Internet Explorer\Extensions` | 64 bit bilgisayarlarda çalışan 32 bitlik programlar için özel araç menüleri ve özel araç çubuğu düğmeleri gibi yeni Internet Explorer uzantılarına yönelik izleyiciler.
+> |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | WaveMapper, wave1 ve Wave2, msacm. ımaadpcm,. msadpcm,. msgsm610 ve vidc ile ilişkili 32 bitlik sürücüleri izler. SISTEMDEKI [Drivers] bölümüne benzer. INı dosyası.
+> |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | , 64 bit bilgisayarlarda çalışan 32 bit programlar için WaveMapper, wave1 ve Wave2, msacm. ımaadpcm,. msadpcm,. msgsm610 ve vidc ile ilişkili 32 bitlik sürücüleri izler. SISTEMDEKI [Drivers] bölümüne benzer. INı dosyası.
+> |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Bilinen veya yaygın olarak kullanılan sistem dll 'lerinin listesini izler; Bu sistem, sistem dll 'lerinin Truva atı sürümlerini bırakarak kullanıcıların zayıf uygulama dizini izinleriyle yararlanmasını engeller.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Windows işletim sistemi için etkileşimli oturum açma desteği modeli olan Winlogon 'dan olay bildirimleri alabilen paketlerin listesini izler.
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -264,10 +247,10 @@ Aşağıdaki adresler Değişiklik İzleme için özel olarak gereklidir. Bu adr
 
 |Azure genel  |Azure Kamu  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*. azure-automation.us|
+|*. ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*. oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*. blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*. azure-automation.net|*. azure-automation.us|
 
 ## <a name="use-change-tracking"></a>Değişiklik İzleme kullan
 
@@ -281,7 +264,7 @@ Bir değişikliği veya olayı tıklatmak, bu değişiklik hakkındaki ayrıntı
 
 ![değişiklik izleme ayrıntılarının görüntüsü](./media/change-tracking/change-tracking-details.png)
 
-## <a name="search-logs"></a>Günlük ara
+## <a name="search-logs"></a>Günlüklerde ara
 
 Portalda sunulan ayrıntıların yanı sıra, aramalar günlüklere göre de yapılabilir. **Değişiklik izleme** sayfası açıkken **Log Analytics**' a tıklayın. Bu, **Günlükler** sayfasını açar.
 
@@ -298,11 +281,11 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan değişiklik kayıtları 
 
 Değişiklik İzleme ve envanterin temel bir özelliği, yapılandırma durumu ve karma ortamınızın yapılandırma durumunda yapılan tüm değişiklikler hakkında uyarı verme olanağıdır.
 
-Aşağıdaki örnekte, ekran görüntüsü dosyanın `C:\windows\system32\drivers\etc\hosts` bir makinede değiştirildiğini gösterir. Bu dosya, ana bilgisayar adlarını IP adreslerine çözümlemek için Windows tarafından kullanılır ve bağlantı sorunları ya da trafiğin kötü amaçlı veya tehlikeli olmayan Web sitelerine yeniden yönlendirilmesi nedeniyle bile, hatta DNS 'den önceliklidir.
+Aşağıdaki örnekte ekran görüntüsü, bir makinede `C:\windows\system32\drivers\etc\hosts` dosyasının değiştirildiğini gösterir. Bu dosya, ana bilgisayar adlarını IP adreslerine çözümlemek için Windows tarafından kullanılır ve bağlantı sorunları ya da trafiğin kötü amaçlı veya tehlikeli olmayan Web sitelerine yeniden yönlendirilmesi nedeniyle bile, hatta DNS 'den önceliklidir.
 
 ![Hosts dosyası değişikliğini gösteren bir grafik](./media/change-tracking/changes.png)
 
-Bu değişikliği daha fazla analiz etmek için **Log Analytics**tıklamasından günlük araması bölümüne gidin. Günlük araması ' nda, ana bilgisayar dosyasına sorgu `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`ile içerik değişikliklerini arayın. Bu sorgu, tam yolu "konaklar" sözcüğünü içeren dosyalar için dosya içeriği değişikliğini içeren değişiklikleri arar. Ayrıca, yol bölümünü tam nitelikli biçimde (gibi `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`) değiştirerek belirli bir dosya için sorun da yapabilirsiniz.
+Bu değişikliği daha fazla analiz etmek için **Log Analytics**tıklamasından günlük araması bölümüne gidin. Günlük araması sırasında, Hosts dosyasında `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"` sorgusuyla içerik değişikliklerini arayın. Bu sorgu, tam yolu "konaklar" sözcüğünü içeren dosyalar için dosya içeriği değişikliğini içeren değişiklikleri arar. Ayrıca, yol bölümünü tam nitelikli biçimde (`FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`) değiştirerek belirli bir dosyayı da isteyebilirsiniz.
 
 Sorgu istenen sonuçları döndürdüğünden, uyarı oluşturma sayfasını açmak için günlük araması deneyimindeki **Yeni uyarı kuralı** düğmesine tıklayın. Ayrıca, Azure portal **Azure izleyici** aracılığıyla bu deneyime gidebilirsiniz. Uyarı oluşturma deneyiminde sorgumuzu yeniden denetleyin ve uyarı mantığını değiştirin. Bu durumda, ortamdaki tüm makinelerde tek bir değişiklik algılanırsa uyarının tetiklenmesi istersiniz.
 
@@ -320,14 +303,14 @@ Hosts dosyasında yapılan değişikliklerle ilgili uyarı, Değişiklik İzleme
 
 |Sorgu  |Açıklama  |
 |---------|---------|
-|ConfigurationChange <br>&#124;Burada configchangetype = = "Files" ve\\filesystemmpath "c: Windows\\system32\\Drivers\\" içerir|Sistem açısından kritik dosyalardaki değişiklikleri izlemek için faydalıdır|
-|ConfigurationChange <br>&#124;Burada yer değiştirme yerleri "filecontentchecksum" ve filesystemmpath = = "c:\\Windows\\system32\\Drivers\\v.b.\\"|Anahtar yapılandırma dosyalarında yapılan değişiklikleri izlemek için faydalıdır|
+|ConfigurationChange <br>&#124;Burada ConfigChangeType = = "Files" ve Filesystemmpath "c: \\Windows @ no__t-2system32 @ no__t-3drivers @ no__t-4" içerir|Sistem açısından kritik dosyalardaki değişiklikleri izlemek için faydalıdır|
+|ConfigurationChange <br>&#124;Burada yer değiştirme alanları "FileContentChecksum" ve Filesystemmpath = = "c: \\Windows @ no__t-2system32 @ no__t-3drivers @ no__t-4vs @ no__t-5konakları" içerir|Anahtar yapılandırma dosyalarında yapılan değişiklikleri izlemek için faydalıdır|
 |ConfigurationChange <br>&#124;Burada ConfigChangeType = = "WindowsServices" ve SvcName "W3SVC" ve SvcState = = "durduruldu" içerir|Sistem açısından kritik hizmetlerde yapılan değişiklikleri izlemek için faydalıdır|
 |ConfigurationChange <br>&#124;Burada ConfigChangeType = = "Daemon 'ları" ve SvcName "SSH" ve SvcState! = "Running" içerir|Sistem açısından kritik hizmetlerde yapılan değişiklikleri izlemek için faydalıdır|
 |ConfigurationChange <br>&#124;Burada ConfigChangeType = = "Software" ve ChangeCategory = = "Added"|Kilitleme yazılım yapılandırmalarına ihtiyaç duyulan ortamlar için faydalıdır|
 |ConfigurationData <br>&#124;Burada SoftwareName "Izleme Aracısı" ve CurrentVersion! = "8.0.11081.0" içerir|Güncel olmayan veya uyumsuz bir yazılım sürümünün yüklü olduğu makineleri görmek için faydalıdır. Son bildirilen yapılandırma durumunu bildirir, değişiklikler değildir.|
-|ConfigurationChange <br>&#124;WHERE RegistryKey = = "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| Kritik Anti-Virus anahtarlarındaki değişiklikleri izlemek için faydalıdır|
-|ConfigurationChange <br>&#124;\\RegistryKey "HKEY_LOCAL_MACHINE System\\CurrentControlSet\\Services\\SharedAccess\\parametrelerifirewallpolicy"içerdiğinde\\| Güvenlik Duvarı ayarlarında yapılan değişiklikleri izlemek için yararlıdır|
+|ConfigurationChange <br>&#124;WHERE RegistryKey = = @ "HKEY_LOCAL_MACHINE @ no__t-1SOFTWARE @ no__t-2Microsoft @ no__t-3Windows @ no__t-4CurrentVersion @ no__t-5QualityCompat"| Kritik Anti-Virus anahtarlarındaki değişiklikleri izlemek için faydalıdır|
+|ConfigurationChange <br>&#124;RegistryKey @ "HKEY_LOCAL_MACHINE @ no__t-1SISTEM @ no__t-2CurrentControlSet @ no__t-3Services @ no__t-4SharedAccess @ no__t-5Parameters @ no__t-6FirewallPolicy" içerdiğinde| Güvenlik Duvarı ayarlarında yapılan değişiklikleri izlemek için yararlıdır|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

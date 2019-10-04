@@ -11,19 +11,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: a14926dea576e0331cb8c0f8010f060f47faa3e7
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 11e3a9931d424433f2e3fd1f64e2e95a5835b65c
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991155"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960479"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL ile Azure Active Directory kimlik doğrulamasını yapılandırma ve yönetme
 
 Bu makalede Azure AD 'nin nasıl oluşturulacağı ve doldurulması ve Azure [SQL veritabanı](sql-database-technical-overview.md), [yönetilen örnek](sql-database-managed-instance.md)ve [SQL veri ambarı](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)ile Azure AD 'nin nasıl kullanılacağı gösterilir. Genel bakış için [Azure Active Directory kimlik doğrulaması](sql-database-aad-authentication.md)' na bakın.
 
 > [!NOTE]
-> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
+> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de SQL veri ambarı 'na başvururken kullanılır.
 > [!IMPORTANT]  
 > Bir Azure VM üzerinde çalışan SQL Server bağlanmak Azure Active Directory hesabı kullanılarak desteklenmez. Bunun yerine bir etki alanı Active Directory hesabını kullanın.
 
@@ -35,14 +35,14 @@ Bu makalede Azure AD 'nin nasıl oluşturulacağı ve doldurulması ve Azure [SQ
 
 Bir Azure AD oluşturun ve Kullanıcı ve gruplarla doldurun. Azure AD, ilk Azure AD tarafından yönetilen etki alanı olabilir. Azure AD, Azure AD ile federe olan bir şirket içi Active Directory Domain Services de olabilir.
 
-Daha fazla bilgi edinmek için bkz. [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](../active-directory/hybrid/whatis-hybrid-identity.md), [Kendi etki alanı adınızı Azure AD'ye ekleme](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure artık Windows Server Active Directory ile federasyonu destekliyor](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Azure AD dizininizi yönetme](../active-directory/fundamentals/active-directory-administer.md), [Azure AD'yi Windows PowerShell kullanarak yönetme](/powershell/azure/overview) ve [Karma Kimlik için gerekli bağlantı noktaları ve protokoller](../active-directory/hybrid/reference-connect-ports.md).
+Daha fazla bilgi için bkz. Şirket [içi kimliklerinizi Azure Active Directory Ile tümleştirme](../active-directory/hybrid/whatis-hybrid-identity.md), [Azure AD 'ye kendi etki alanı adınızı ekleme](../active-directory/active-directory-domains-add-azure-portal.md) [Microsoft Azure artık Windows Server Active Directory, yönetme ile Federasyonu destekliyor](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/) [ Azure AD dizininiz](../active-directory/fundamentals/active-directory-administer.md)ve [Azure AD 'Yi Windows PowerShell kullanarak yönetin](/powershell/azure/overview)ve [karma kimlik bağlantı noktası ve protokoller gereklidir](../active-directory/hybrid/reference-connect-ports.md).
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure Active Directory bir Azure aboneliği ilişkilendirin veya ekleyin
 
 1. Dizine, veritabanını barındıran Azure aboneliği için güvenilen bir dizin oluşturarak Azure aboneliğinizi Azure Active Directory ilişkilendirin. Ayrıntılar için bkz. [Azure aboneliklerinin Azure AD ile ilişkilendirilmesi](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 2. Etki alanıyla ilişkili aboneliğe geçmek için Azure portal Dizin değiştiricisini kullanın.
 
-   **Ek bilgiler:** Her Azure aboneliği bir Azure AD örneğiyle güven ilişkisine sahiptir. Bu; Azure aboneliğinin kullanıcılar, hizmetler ve cihazlar için kimlik doğrulaması yapmak üzere bu dizine güvendiği anlamına gelir. Birden çok abonelik aynı dizine güvenebilir ancak bir abonelik yalnızca bir dizine güvenir. Aboneliğin bir dizinle arasındaki bu güven ilişkisi, bir aboneliğin daha çok abonelik alt kaynakları gibi olan, Azure'daki tüm diğer kaynaklarla (web siteleri, veritabanları ve benzeri) sahip olduğu ilişkiye benzer nitelikte değildir. Bir aboneliğin süresi dolarsa abonelikle ilişkili bu diğer kaynaklara erişim de durdurulur. Ancak dizin Azure içinde kalır, siz de başka bir aboneliği bu dizinle ilişkilendirebilir, dizin kullanıcılarını yönetmeye devam edebilirsiniz. Kaynaklar hakkında daha fazla bilgi için bkz. [Azure 'da kaynak erişimini anlama](../active-directory/active-directory-b2b-admin-add-users.md). Bu güvenilen ilişki hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Azure aboneliğini ilişkilendirme veya ekleme](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+   **Ek bilgiler:** Her Azure aboneliğinin bir Azure AD örneğiyle bir güven ilişkisi vardır. Bu, kullanıcıların, hizmetlerin ve cihazların kimliğini doğrulamak için bu dizine güvendiği anlamına gelir. Birden çok abonelik aynı dizine güvenebilir, ancak bir abonelik yalnızca bir dizine güvenir. Bir aboneliğin bir dizin ile olan bu güven ilişkisi, bir aboneliğin alt kaynakları olan Azure 'daki diğer tüm kaynaklarla (Web siteleri, veritabanları ve benzeri) sahip olduğu ilişkinin aksine olur. Bir aboneliğin süresi dolarsa abonelikle ilişkili diğer kaynaklara erişim de duraklar. Ancak dizin Azure 'da kalır ve başka bir aboneliği bu dizinle ilişkilendirebilir ve Dizin kullanıcılarını yönetmeye devam edebilirsiniz. Kaynaklar hakkında daha fazla bilgi için bkz. [Azure 'da kaynak erişimini anlama](../active-directory/active-directory-b2b-admin-add-users.md). Bu güvenilen ilişki hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory Azure aboneliğini ilişkilendirme veya ekleme](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Azure SQL Server için Azure AD Yöneticisi oluşturma
 
@@ -128,7 +128,7 @@ Yönetilen Örneğinizde, güvenlik grubu üyeliği veya Yeni Kullanıcı oluşt
 
 5. İşlem başarıyla tamamlandıktan sonra, sağ üst köşede aşağıdaki bildirim görünür:
 
-    ![success](./media/sql-database-aad-authentication/success.png)
+    ![başarılı](./media/sql-database-aad-authentication/success.png)
 
 6. Artık yönetilen örneğiniz için Azure AD yöneticinizle seçim yapabilirsiniz. Bunun için, Active Directory yönetici sayfasında, **yönetici komutunu ayarla** ' yı seçin.
 
@@ -160,7 +160,7 @@ Aşağıdaki iki yordamda, Azure portal Azure SQL Server için ve PowerShell kul
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve SQL Server aynı aboneliğin kullanıldığından emin olmak için abonelikle ilişkili Active Directory Azure SQL Server ile bağlantılandırır. (Azure SQL Server, Azure SQL veritabanı veya Azure SQL veri ambarı 'nı barındırıyor olabilir.) ![ad seçin][8]
+1. [Azure Portal](https://portal.azure.com/), sağ üst köşede, olası etkin dizinlerin listesini aşağı eklemek için bağlantınızı seçin. Varsayılan Azure AD olarak doğru Active Directory seçin. Bu adım, Azure AD ve SQL Server aynı aboneliğin kullanıldığından emin olmak için abonelikle ilişkili Active Directory Azure SQL Server ile bağlantılandırır. (Azure SQL Server, Azure SQL veritabanı veya Azure SQL veri ambarı 'nı barındırıyor olabilir.) ![choose-ad @ no__t-1
 
 2. Sol başlıkta **tüm hizmetler**' i ve **SQL Server**'daki filtre türü ' nü seçin. **SQL sunucuları**' nı seçin.
 
@@ -170,13 +170,13 @@ Aşağıdaki iki yordamda, Azure portal Azure SQL Server için ve PowerShell kul
     > Bu sayfada, **SQL Server**'ı seçmeden önce, kategorinin en *sevdiğiniz* adı yanındaki **yıldızı** seçip sol gezinti çubuğuna **SQL sunucuları** ekleyebilirsiniz.
 
 3. **SQL Server** sayfasında, **Active Directory yönetici**' yi seçin.
-4. **Active Directory Yöneticisi** sayfasında, **yönetici ayarla**' yı seçin.  ![Active Directory 'yi seçin](./media/sql-database-aad-authentication/select-active-directory.png)  
+4. **Active Directory Yöneticisi** sayfasında, **yönetici ayarla**' yı seçin.  ![ Active Directory 'yi seçin @ no__t-3  
 
 5. **Yönetici Ekle** sayfasında, bir Kullanıcı arayın, yönetici olacak kullanıcıyı veya grubu seçin ve ardından **Seç**' i seçin. (Active Directory yönetici sayfası, Active Directory tüm üyelerini ve gruplarını gösterir. Gri olan kullanıcılar veya gruplar Azure AD yöneticileri olarak desteklenmediğinden seçilemiyor. ( [SQL veritabanı veya SQL veri ambarı ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullan](sql-database-aad-authentication.md)' ın **Azure AD özellikleri ve sınırlamaları** bölümünde desteklenen Yöneticiler listesine bakın.) Rol tabanlı erişim denetimi (RBAC) yalnızca Portal için geçerlidir ve SQL Server yayılmaz.
-    ![Yönetici seçin](./media/sql-database-aad-authentication/select-admin.png)  
+    ![select admin @ no__t-1  
 
 6. **Active Directory Yöneticisi** sayfasının en üstünde **Kaydet**' i seçin.
-    ![Yöneticiyi Kaydet](./media/sql-database-aad-authentication/save-admin.png)
+    ![save admin @ no__t-1
 
 Yöneticiyi değiştirme işlemi birkaç dakika sürebilir. Ardından yeni yönetici **Active Directory yönetici** kutusunda görünür.
 
@@ -187,7 +187,7 @@ Bir yöneticiyi daha sonra kaldırmak için, **Active Directory yönetici** sayf
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell cmdlet 'lerini çalıştırmak için Azure PowerShell yüklü ve çalışıyor olması gerekir. Ayrıntılı bilgi için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview). Bir Azure AD yöneticisi sağlamak için aşağıdaki Azure PowerShell komutları yürütün:
+PowerShell cmdlet 'lerini çalıştırmak için Azure PowerShell yüklü ve çalışıyor olması gerekir. Ayrıntılı bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview). Bir Azure AD yöneticisi sağlamak için aşağıdaki Azure PowerShell komutları yürütün:
 
 - Connect-AzAccount
 - Select-AzSubscription
@@ -200,9 +200,9 @@ Azure AD yöneticisi 'ni sağlamak ve yönetmek için kullanılan cmdlet 'ler:
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Azure SQL Server veya Azure SQL veri ambarı için Azure Active Directory yöneticisini kaldırır. |
 | [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Azure SQL Server veya Azure SQL veri ambarı için şu anda yapılandırılmış bir Azure Active Directory Yöneticisi hakkında bilgi döndürür. |
 
-Örneğin ``get-help Set-AzSqlServerActiveDirectoryAdministrator``, bu komutların her biri hakkında daha fazla bilgi için Get-Help PowerShell komutunu kullanın.
+Bu komutların her biri hakkında daha fazla bilgi için Get-Help komutunu kullanın, örneğin ``get-help Set-AzSqlServerActiveDirectoryAdministrator``.
 
-Aşağıdaki betik, **Grup-23**adlı bir kaynak grubunda **demo_server** sunucusu için **DBA_Group** (nesne kimliği `40b79501-b343-44ed-9ce7-da4c8cc7353f`) adlı bir Azure AD yönetici grubu sağlar:
+Aşağıdaki betik, **Grup-23**adlı bir kaynak grubunda **demo_server** sunucusu için @no__t **DBA_Group** adlı bir Azure AD yönetici grubu sağlar:
 
 ```powershell
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
@@ -212,7 +212,7 @@ Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 **DisplayName** giriş parametresi, Azure AD görünen adını veya Kullanıcı asıl adını kabul eder. Örneğin, ``DisplayName="John Smith"`` ve ``DisplayName="johns@contoso.com"``. Azure AD grupları için yalnızca Azure AD görünen adı desteklenir.
 
 > [!NOTE]
-> Azure PowerShell komutu ```Set-AzSqlServerActiveDirectoryAdministrator``` , desteklenmeyen kullanıcılar için Azure AD yöneticileri 'ni sağlamanıza engel olmaz. Desteklenmeyen bir Kullanıcı sağlanabilir, ancak bir veritabanına bağlanamaz.
+> @No__t-0 Azure PowerShell komutu, desteklenmeyen kullanıcılar için Azure AD yöneticileri 'ni sağlamanıza engel olmaz. Desteklenmeyen bir Kullanıcı sağlanabilir, ancak bir veritabanına bağlanamaz.
 
 Aşağıdaki örnek, isteğe bağlı **ObjectID**'yi kullanır:
 
@@ -255,7 +255,7 @@ CLı komutları hakkında daha fazla bilgi için bkz. [SQL-az SQL](https://docs.
 
 Uygulamalarınızın veya kullanıcılarınızın Azure AD kimliklerini kullanarak Azure SQL veritabanı veya Azure SQL veri ambarı 'na bağlandığı tüm istemci makinelerde aşağıdaki yazılımları yüklemelisiniz:
 
-- .NET Framework 4,6 veya sonraki bir [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx)sürümü.
+- .NET Framework 4,6 veya üzeri [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
 - SQL Server için Azure Active Directory kimlik doğrulama kitaplığı (**Adalsql. DLL**), [Microsoft SQL Server için Microsoft Active Directory Authentication Library](https://www.microsoft.com/download/details.aspx?id=48742)'de bulunan İndirme Merkezi 'nden birden çok dilde (x86 ve AMD64) kullanılabilir.
 
 Bu gereksinimleri şu şekilde karşılayabilirsiniz:
@@ -275,7 +275,7 @@ Azure Active Directory kimlik doğrulaması, veritabanı kullanıcılarının ka
 > [!NOTE]
 > Veritabanı kullanıcıları (Yöneticiler hariç) Azure portal kullanılarak oluşturulamaz. RBAC rolleri SQL Server, SQL veritabanı veya SQL veri ambarı 'na yayılmaz. Azure RBAC rolleri, Azure kaynaklarını yönetmek için kullanılır ve veritabanı izinlerine uygulanmaz. Örneğin, **SQL Server katkıda** bulunan rolü, SQL VERITABANı veya SQL veri ambarına bağlanmak için erişim vermez. Erişim izni doğrudan veritabanında Transact-SQL deyimleri kullanılarak verilmelidir.
 > [!WARNING]
-> T-SQL create `:` LOGIN ve `&` Create User deyimlerine Kullanıcı adları olarak dahil edildiğinde iki nokta veya ampersan gibi özel karakterler desteklenmez.
+> T-SQL CREATE LOGıN ve CREATE USER deyimlerinin Kullanıcı adları olarak dahil edildiğinde, iki nokta `:` veya ampersan `&` gibi özel karakterler desteklenmez.
 
 Azure AD tabanlı bir kapsanan veritabanı kullanıcısı (veritabanının sahibi olan Sunucu Yöneticisi dışında) oluşturmak için, en az **Kullanıcı Değiştirme** iznine sahip bir kullanıcı olarak BIR Azure AD kimliğiyle veritabanına bağlanın. Ardından aşağıdaki Transact-SQL sözdizimini kullanın:
 
@@ -303,6 +303,9 @@ Bir Azure AD belirteci kullanarak bağlanan bir uygulamayı temsil eden bir kaps
 ```sql
 CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
+
+> [!NOTE]
+> Bu komut, oturum açmış kullanıcı adına SQL 'e Azure AD 'nin ("dış sağlayıcı") erişmesini gerektirir. Bazen Azure AD 'nin SQL 'e bir özel durum döndürmesine neden olacak durumlar ortaya çıkar. Bu durumlarda, Kullanıcı AAD 'ye özgü hata iletisini içermesi gereken SQL hatası 33134 ' i görür. Çoğu zaman, hata erişimin reddedildiğini veya kullanıcının kaynağa erişmek için MFA 'ya kaydolması gerekir ya da birinci taraf uygulamalar arasındaki erişimin ön kimlik doğrulama aracılığıyla işlenmesi gerekir. İlk iki durumda, sorun genellikle kullanıcının AAD kiracısında ayarlanan koşullu erişim ilkelerinin oluşmasına neden olur: kullanıcının dış sağlayıcıya erişmesini önler. CA ilkelerinin ' 00000002-0000-0000-C000-000000000000 ' uygulamasına erişime izin verecek şekilde güncelleştirilmesi (AAD Graph API uygulama KIMLIĞI) sorunu çözmelidir. Hatanın ilk taraf uygulamalar arasındaki erişimi, ön kimlik doğrulama aracılığıyla işlenmesi gerektiğinden sorun, kullanıcının hizmet sorumlusu olarak oturum açmış olmasından kaynaklanır. Bunun yerine bir kullanıcı tarafından yürütüldüğünde komutun başarılı olması gerekir.
 
 > [!TIP]
 > Azure aboneliğinizle ilişkili Azure Active Directory dışında bir Azure Active Directory doğrudan Kullanıcı oluşturamazsınız. Ancak, ilişkili Active Directory (dış kullanıcılar olarak bilinir) içeri aktarılan diğer etkin dizinlerin üyeleri, kiracı Active Directory bir Active Directory grubuna eklenebilir. Bu AD grubu için kapsanan bir veritabanı kullanıcısı oluşturarak, dış Active Directory kullanıcılar SQL veritabanına erişim sağlayabilir.
@@ -351,7 +354,7 @@ Azure AD tarafından yönetilen etki alanını kullanarak bir Azure AD asıl ad�
 Yerel veya federal Azure AD kullanıcıları için Azure AD ile SQL DB/DW kimlik doğrulaması yapmak için bu yöntemi kullanın. Yerel Kullanıcı Azure AD 'de açık bir şekilde oluşturulur ve Kullanıcı adı ve parola kullanılarak kimlik doğrulaması yapılır, ancak Federasyon kullanıcısı etki alanı Azure AD ile federe olan bir Windows kullanıcısı olduğunda. İkinci Yöntem (Kullanıcı & parolasını kullanarak), bir Kullanıcı Windows kimlik bilgilerini kullanmak istediğinde, ancak yerel makineleri etki alanına katılmadığında (örneğin, uzaktan erişim kullanarak) kullanılabilir. Bu durumda, bir Windows kullanıcısı etki alanı hesabını ve parolasını belirtebilir ve Federasyon kimlik bilgilerini kullanarak SQL DB/DW kimlik doğrulamasını yapabilir.
 
 1. Management Studio veya veri araçlarını başlatın ve **sunucuya Bağlan** (veya **veritabanı altyapısına Bağlan**) Iletişim kutusunda, **kimlik doğrulama** kutusunda **Active Directory-Password**' ı seçin.
-2. **Kullanıcı adı** kutusuna Azure Active Directory Kullanıcı adınızı **UserName\@Domain.com**biçiminde yazın. Kullanıcı adları, Azure Active Directory bir hesap veya Azure Active Directory bir etki alanı Federasyondan bir hesap olmalıdır.
+2. **Kullanıcı adı** kutusuna, Azure Active Directory kullanıcı adınızı **UserName\@domain.com**biçiminde yazın. Kullanıcı adları, Azure Active Directory bir hesap veya Azure Active Directory bir etki alanı Federasyondan bir hesap olmalıdır.
 3. **Parola** kutusuna Azure Active Directory hesabı veya Federasyon etki alanı hesabı için Kullanıcı parolanızı yazın.
 
     ![AD parola kimlik doğrulamasını seçin][12]
@@ -374,7 +377,7 @@ SqlConnection conn = new SqlConnection(ConnectionString);
 conn.Open();
 ```
 
-Azure SQL veritabanı 'na ``Integrated Security=True`` bağlanmak için bağlantı dizesi anahtar sözcüğü desteklenmiyor. ODBC bağlantısı yaparken, boşlukları kaldırmanız ve kimlik doğrulamasını ' Activedirectoryıntegrated ' olarak ayarlamanız gerekir.
+@No__t-0 bağlantı dizesi anahtar sözcüğü Azure SQL veritabanı 'na bağlanmak için desteklenmiyor. ODBC bağlantısı yaparken, boşlukları kaldırmanız ve kimlik doğrulamasını ' Activedirectoryıntegrated ' olarak ayarlamanız gerekir.
 
 ### <a name="active-directory-password-authentication"></a>Active Directory parola kimlik doğrulaması
 
@@ -414,7 +417,7 @@ Daha fazla bilgi için bkz. [güvenlik blogu SQL Server](https://blogs.msdn.micr
 Aşağıdaki deyimler, [Indirme merkezinden](https://go.microsoft.com/fwlink/?LinkID=825643)erişilebilen sqlcmd sürüm 13,1 ' i kullanarak bağlanır.
 
 > [!NOTE]
-> `sqlcmd``-G` komutuyla sistem kimlikleriyle birlikte çalışmaz ve Kullanıcı sorumlusu oturum açması gerekir.
+> `-G` komutuyla `sqlcmd` sistem kimlikleriyle çalışmaz ve Kullanıcı sorumlusu oturumu gerektirir.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  
@@ -423,11 +426,11 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- SQL Veritabanında erişim ve denetime genel bakış için bkz. [SQL Veritabanında erişim ve denetim](sql-database-control-access.md).
-- SQL Veritabanındaki oturum açma bilgileri, kullanıcılar ve veritabanı rollerine genel bakış için bkz. [Oturum açma bilgileri, kullanıcılar ve veritabanı rolleri](sql-database-manage-logins.md).
-- Veritabanı sorumluları hakkında daha fazla bilgi için bkz. [Sorumlular](https://msdn.microsoft.com/library/ms181127.aspx).
-- Veritabanı rolleri hakkında daha fazla bilgi için bkz. [Veritabanı rolleri](https://msdn.microsoft.com/library/ms189121.aspx).
-- SQL Veritabanındaki güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [SQL Veritabanı güvenlik duvarı kuralları](sql-database-firewall-configure.md).
+- SQL veritabanında erişim ve denetime genel bakış için bkz. [SQL veritabanı erişimi ve denetimi](sql-database-control-access.md).
+- SQL veritabanında oturum açma bilgileri, kullanıcılar ve veritabanı rollerine genel bakış için bkz. [oturum açma, kullanıcılar ve veritabanı rolleri](sql-database-manage-logins.md).
+- Veritabanı sorumluları hakkında daha fazla bilgi için bkz. [sorumlular](https://msdn.microsoft.com/library/ms181127.aspx).
+- Veritabanı rolleri hakkında daha fazla bilgi için bkz. [veritabanı rolleri](https://msdn.microsoft.com/library/ms189121.aspx).
+- SQL veritabanı 'nda güvenlik duvarı kuralları hakkında daha fazla bilgi için bkz. [SQL veritabanı güvenlik duvarı kuralları](sql-database-firewall-configure.md).
 
 <!--Image references-->
 

@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/01/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e7681afe3f5361b17670312c8391349c650a89d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: fd752540d078ef57c8b6150edbf9b124bc445fe0
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936781"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949321"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -83,6 +83,20 @@ Nameıdpolicy özniteliği hakkında daha fazla bilgi edinmek için bkz. [Çoklu
 | Uzantı öznitelikleri 1-15 | Azure AD şemasını genişletmek için kullanılan şirket içi uzantı öznitelikleri |
 
 Daha fazla bilgi için bkz. [Tablo 3: kaynak başına GEÇERLI kimlik değerleri](active-directory-claims-mapping.md#table-3-valid-id-values-per-source).
+
+Ayrıca, Azure AD 'de tanımladığınız talepler için herhangi bir sabit (statik) değer atayabilirsiniz. Sabit değer atamak için lütfen aşağıdaki adımları izleyin:
+
+1. [Azure Portal](https://portal.azure.com/), **Kullanıcı öznitelikleri & talepler** bölümünde, talepleri düzenlemek için **Düzenle** simgesine tıklayın.
+
+1. Değiştirmek istediğiniz gerekli talebe tıklayın.
+
+1. **Kaynak özniteliğinde** kuruluşa göre sabit değeri girin ve **Kaydet**' e tıklayın.
+
+    ![Azure portal Kullanıcı öznitelikleri & talepler bölümünü açın](./media/active-directory-saml-claims-customization/organization-attribute.png)
+
+1. Sabit değer aşağıda gösterildiği gibi görüntülenecektir.
+
+    ![Azure portal Kullanıcı öznitelikleri & talepler bölümünü açın](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>Özel talepler-dönüşümler
 

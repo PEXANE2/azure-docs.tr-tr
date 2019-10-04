@@ -50,7 +50,8 @@
     - name: Popüler videoları alma
       href: trending-videos.md
     - name: Sayfa videoları
-      href: paging-videos.md
+      maintainContext: true
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Küçük resimleri yeniden boyutlandırma ve kırpma
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

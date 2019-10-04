@@ -15,24 +15,18 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3be5d6eb443d90d3413510576a9609fe43df7caa
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: e51ad8faecd935ea999b1287e542e4b14d55290a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499626"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948235"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplara veya uygulamalara erişimi gözden geçirme
 
 Azure Active Directory (Azure AD), kuruluşların Azure AD 'de bulunan gruplara ve uygulamalara ve Azure AD erişim gözden geçirmeleri adlı bir özellik ile diğer Microsoft çevrimiçi hizmetlerine erişimi nasıl yöneteceğini basitleştirir.
 
 Bu makalede, belirlenen bir gözden geçirenin, bir grubun üyeleri veya bir uygulamaya erişimi olan kullanıcılar için erişim incelemesi nasıl gerçekleştirdiği açıklanır.
-
-## <a name="prerequisites"></a>Önkoşullar
-
-- Azure AD Premium P2
-
-Daha fazla bilgi için [hangi kullanıcıların lisanslarına sahip olması gerektiğini](access-reviews-overview.md#which-users-must-have-licenses)görün.
 
 ## <a name="open-the-access-review"></a>Erişim gözden geçirmesini açın
 
@@ -46,15 +40,15 @@ Erişim gözden geçirmesi gerçekleştirmeye yönelik ilk adım, erişim incele
 
 E-postanız yoksa, bekleyen erişim incelemelerinizi aşağıdaki adımları izleyerek bulabilirsiniz.
 
-1. Konumundaki [https://myapps.microsoft.com](https://myapps.microsoft.com)uygulamaps portalında oturum açın.
+1. [@No__t-1](https://myapps.microsoft.com)' de uygps portalında oturum açın.
 
     ![Uygulamaps portalı izinleriniz olan uygulamaları listeleme](./media/perform-access-review/myapps-access-panel.png)
 
-1. Sayfanın sağ üst köşesinde yer alan ve adınızla varsayılan kuruluşunuzun gösterildiği kullanıcı simgesine tıklayın. Listede birden fazla kuruluş varsa erişim gözden geçirmesi isteğinde bulunan kuruluşu seçin.
+1. Sayfanın sağ üst köşesinde, adınızı ve varsayılan kuruluşunuzu görüntüleyen Kullanıcı simgesine tıklayın. Birden fazla kuruluş listeleniyorsa, erişim incelemesi isteyen organizasyonu seçin.
 
 1. Bekleyen erişim incelemelerinin listesini görmek için **erişim İncelemeleri** kutucuğuna tıklayın.
 
-    Kutucuk yoksa ilgili kuruluş için bekleyen erişim gözden geçirmesi yoktur ve herhangi bir işlem yapmanız gerekmez.
+    Kutucuk görünür değilse, bu kuruluş için gerçekleştirilecek hiçbir erişim incelemesi yoktur ve şu anda hiçbir işlem yapmanız gerekmez.
 
     ![Uygulamalar ve gruplar için bekleyen erişim İncelemeleri listesi](./media/perform-access-review/access-reviews-list.png)
 

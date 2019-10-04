@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 2dbb900d297f1acf05e77dca3e1753745e9b2b38
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
-ms.translationtype: HT
+ms.openlocfilehash: a83e2163c9aa970932f2eea8e2e04a715107ac7f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937410"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950265"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Olay Hub 'ından Azure Veri Gezgini veri alma
 
@@ -114,6 +114,7 @@ Artık Azure Veri Gezgini Olay Hub 'ına bağlanıyorsunuz. Bu bağlantı olduğ
     | Olay Hub 'ı ad alanı | Benzersiz bir ad alanı adı | Daha önce seçtiğiniz ad alanınızı tanımlayan ad. |
     | Olay Hub 'ı | *Test-Hub* | Oluşturduğunuz Olay Hub 'ı. |
     | Tüketici grubu | *test-Grup* | Oluşturduğunuz Olay Hub 'ında tanımlanan Tüketici grubu. |
+    | Olay sistemi özellikleri | İlgili özellikleri seçin | [Olay Hub 'ı sistem özellikleri](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) |
     | | |
 
     Hedef tablo:
@@ -124,7 +125,7 @@ Artık Azure Veri Gezgini Olay Hub 'ına bağlanıyorsunuz. Bu bağlantı olduğ
      **Ayarlanmasını** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
     | Tablo | *TestTable* | **TestDatabase**'te oluşturduğunuz tablo. |
-    | Veri biçimi | *NESNESINDE* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOH, SCSV, TSV ve TXT. Desteklenen sıkıştırma seçenekleri: GZip |
+    | Veri biçimi | *NESNESINDE* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOHSV, SCSV, TSV, TSVE ve TXT. Desteklenen sıkıştırma seçenekleri: GZip |
     | Sütun eşleme | *TestMapping* | **TestDatabase**'te oluşturduğunuz ve gelen JSON verilerini **TestTable**'ın sütun adlarıyla ve veri türleriyle eşleyen eşleme. JSON, çok SATıRLı JSON veya AVRO için gereklidir ve diğer biçimler için isteğe bağlıdır.|
     | | |
 

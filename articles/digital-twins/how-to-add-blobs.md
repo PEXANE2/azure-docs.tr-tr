@@ -1,20 +1,20 @@
 ---
-title: Azure dijital TWINS 'de nesnelere blob ekleme | Microsoft Docs
+title: Nesnelere blob ekleme-Azure dijital TWINS | Microsoft Docs
 description: Azure dijital TWINS 'deki nesnelere blob ekleme hakkında bilgi edinin.
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
-ms.author: v-adgera
 ms.custom: seodec18
-ms.openlocfilehash: 35bc5a4532f040aeb464a91b14adcb540ccc113a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 3a278501f1110da0ab332d0e1acf170892be26ee
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71845520"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949117"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure dijital TWINS 'de nesnelere blob ekleme
 
@@ -117,7 +117,7 @@ Ayrı olarak döndürülen blob 'lar aşağıdaki JSON şemasına uygundur:
 | **Alt TypeId** | Tamsayı | Blob 'un alt tür KIMLIĞI- *alt tür* ve *alt TypeId* kullanamaz |
 | **paylaşıyorsa** | Dize | Blobun paylaşılıp paylaşılamayacağını-enum [`None`, `Tree`, `Global`] |
 | **açıklaması** | Dize | Blobun özelleştirilmiş açıklaması |
-| **Contentınfos** | dizide | Sürüm dahil yapılandırılmamış meta veri bilgilerini belirtir |
+| **Contentınfos** | Dizide | Sürüm dahil yapılandırılmamış meta veri bilgilerini belirtir |
 | **fullName** | Dize | Blobun tam adı |
 | **spacePaths** | Dize | Boşluk yolu |
 
@@ -242,7 +242,7 @@ Başarılı istekler, [daha önce açıklandığı](#blobs-response-data)gıbı 
 
 Aynı uç noktaya yönelik bir yama isteği meta veri açıklamalarını güncelleştirir ve BLOB sürümlerini oluşturur. HTTP isteği, gerekli meta ve çok parçalı form verileriyle birlikte PATCH yöntemi aracılığıyla yapılır.
 
-### <a name="users"></a>kullanıcılarına
+### <a name="users"></a>Kullanıcılarına
 
 Blob 'ları Kullanıcı modellerine ekleyebilirsiniz (örneğin, bir profil resmini ilişkilendirmek için). Aşağıdaki görüntüde, ilgili Kullanıcı API uç noktaları ve `id` gibi gerekli yol parametreleri gösterilmektedir:
 

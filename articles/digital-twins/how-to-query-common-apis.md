@@ -1,19 +1,19 @@
 ---
 title: Azure dijital TWINS ortak sorgu desenleri | Microsoft Docs
 description: Azure dijital TWINS yönetim API 'Lerini sorgulama genel düzenlerini öğrenin.
-author: kingdomofends
-manager: philmea
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: v-adgera
-ms.openlocfilehash: 55b0676ce0a0dc6d4347ddcadf43b7b650f0f9a1
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1d1c0e2f12d5a971cf08933e5d469093eb1f6d52
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172801"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949866"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Ortak görevler için Azure dijital TWINS API 'Lerini sorgulama
 
@@ -56,7 +56,7 @@ Bu bölümde, sağlanan boşluklarınız hakkında daha fazla bilgi almak için 
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- *Areaınsqmeters* adlı Özellik anahtarı ile boşluk alın ve değeri 30 ' dur. Ayrıca dize işlemleri yapabilirsiniz, örneğin, ile `name = X contains Y`Özellik anahtarını içeren boşluklar alabilirsiniz.
+- *Areaınsqmeters* adlı Özellik anahtarı ile boşluk alın ve değeri 30 ' dur. Ayrıca dize işlemleri yapabilirsiniz, örneğin, `name = X contains Y` ile Özellik anahtarı içeren boşluklar alabilirsiniz.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30

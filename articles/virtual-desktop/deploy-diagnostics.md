@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: c9ae01b3a8f49b210c363fea20bc3c221d9e837a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839629"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947612"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -51,14 +51,22 @@ Bu bölümde, bir hizmet sorumlusu ile Azure Active Directory uygulamasını olu
 >API izinleri Windows Sanal Masaüstü ' dir, Log Analytics ve Microsoft Graph API izinleri Azure Active Directory uygulamasına eklenir.
 
 1. PowerShell 'i yönetici olarak açın.
-2. [RDS-Templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) deposuna gidin ve PowerShell 'de **Tanılama. ps1 betiği Için ad uygulama kaydı oluştur** ' u çalıştırın.
-3.  Betik sizden uygulamanızı girmenizi istediğinde, benzersiz bir uygulama adı girin.
-4.  Betik daha sonra bir yönetici hesabıyla oturum açmanızı ister. [Yönetici erişimine](delegated-access-virtual-desktop.md)sahip bir kullanıcının kimlik bilgilerini girin. Yönetici, RDS sahibi ya da katkıda bulunan haklarına sahip olmalıdır.
+2. Tanılama aracı için kullanmak istediğiniz Azure aboneliğinde sahip veya katkıda bulunan izinleri olan bir hesapla Azure 'da oturum açın:
+   ```powershell
+   Login-AzAccount
+   ```
+3. Azure AD 'de aynı hesapla oturum açın:
+   ```powershell
+   Connect-AzureAD
+   ```
+4. [RDS-Templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) deposuna gidin ve PowerShell 'de **Createuyarlanpregistrationfordiagnostics. ps1** betiğini çalıştırın.
+5.  Betik sizden uygulamanızı girmenizi istediğinde, benzersiz bir uygulama adı girin.
+
 
 Komut dosyası başarıyla çalıştıktan sonra, çıktıda şu işlemleri göstermelidir:
 
 -  Uygulamanızı doğrulayan bir ileti artık hizmet sorumlusu rolü atamasına sahiptir.
--  Tanılama aracını dağıtırken gereken yazdırma Istemci KIMLIĞI ve Istemci gizli anahtarı.
+-  Tanılama aracını dağıtırken ihtiyacınız olacak Istemci KIMLIĞINIZ ve Istemci gizli anahtarı.
 
 Uygulamanızı kaydettirdiğiniz için artık Log Analytics çalışma alanınızı yapılandırma zamanı vardır.
 
@@ -76,7 +84,7 @@ Bir Log Analytics çalışma alanı oluşturmak ve Kullanıcı deneyimini ve uyg
 PowerShell betiğini çalıştırmak için:
 
 1.  PowerShell 'i yönetici olarak açın.
-2.  [RDS-Templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) deposuna gidin ve PowerShell 'deki **Diagnostics. ps1 betiği için Loganaldeposu oluşturma çalışma alanı** ' nı çalıştırın.
+2.  [RDS-Templates GitHub](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) deposuna gidin ve PowerShell 'de **Createloganalticsworkspace fordiagnostics. ps1** betiğini çalıştırın.
 3. Parametreler için aşağıdaki değerleri girin:
 
     - **Resourcegroupname**için kaynak grubunun adını girin.

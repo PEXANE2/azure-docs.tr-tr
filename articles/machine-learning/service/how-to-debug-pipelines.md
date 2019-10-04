@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.author: trbye
 author: trevorbye
-ms.date: 10/01/2019
-ms.openlocfilehash: 50593741e185a146c5a376c34da959063198e7d0
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.date: 10/03/2019
+ms.openlocfilehash: 3df95f88c057fa564078dbf05d5dfa4b26150f6a
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813814"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959649"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenimi ardışık düzenleri hata ayıklama ve sorunlarını giderme
 
@@ -27,7 +27,7 @@ Aşağıdaki bölümler, işlem hatları oluştururken ortak olan genel bakışa
 
 Bir işlem hattındaki en yaygın hatalardan biri, ekli bir betiğin (veri temizleme betiği, Puanlama betiği, vb.), istenen şekilde çalışmadığı veya Azure portal çalışma alanınızda hata ayıklamanın zor olduğu uzak işlem bağlamında çalışma zamanı hataları içerdiğinde. 
 
-İşlem hatları yerel olarak çalıştırılamaz, ancak arka plandaki betikleriniz, tam işlem hattı çalıştırma süresini beklemeden, betiklerinizin yalıtıma beklediğiniz şeyi gerçekleştirdiğinizden emin olmanın kolay bir yoludur. Bunu yapmak için bazı geliştirme işleri gereklidir:
+Ardışık düzenleri yerel olarak çalıştırılamaz, ancak komut dosyalarını yerel makinenizde yalıtımlarda çalıştırmak, işlem ve ortam oluşturma işlemini beklemek zorunda olmadığınızdan daha hızlı hata ayıklamanıza olanak tanır. Bunu yapmak için bazı geliştirme işleri gereklidir:
 
 * Verileriniz bir bulut veri deposunda yer alıyorsa, verileri indirmeniz ve betiğiniz için kullanılabilir hale getirmeniz gerekir. Verilerinizin küçük bir örneğini kullanmak çalışma zamanını kesmek ve betik davranışında hızlıca geri bildirim almak için iyi bir yoldur
 * Ara işlem hattı adımının benzetimini gerçekleştirmeye çalışıyorsanız, belirli bir betiğin önceki adımdan beklediği nesne türlerini el ile oluşturmanız gerekebilir
@@ -38,6 +38,9 @@ Yerel ortamınızda çalıştırmak üzere bir betik kurulumuna sahip olduktan s
 * Özel hata ayıklama yapılandırması iliştirme
 * Yürütmeyi duraklatma ve nesne durumunu inceleme
 * Çalışma zamanına kadar sunulmayacak tür veya mantıksal hataları yakalama
+
+> [!TIP] 
+> Betiğinizin beklendiği gibi çalıştığını doğrulayabilmeniz için, bir sonraki adım komut dosyasını birden çok adımla bir işlem hattında çalıştırmayı denemeden önce tek adımlı bir işlem hattında çalıştırıyor.
 
 ## <a name="debugging-scripts-from-remote-context"></a>Uzak bağlamdaki betiklerin hatalarını ayıklama
 
@@ -71,7 +74,7 @@ Belirli bir adım için çalıştırma KIMLIĞI ' ne tıklayın.
 
 Aşağıdaki tabloda, potansiyel çözümlerle birlikte işlem hattı geliştirme sırasında yaygın sorunlar yer almaktadır.
 
-| Sorun | Olası çözüm |
+| Gidermek | Olası çözüm |
 |--|--|
 | @No__t-0 dizinine veri geçirilemez | Komut dosyasında, işlem hattının adım çıkış verilerini beklediği yere karşılık gelen bir dizin oluşturduğunuzdan emin olun. Çoğu durumda, bir giriş bağımsız değişkeni çıkış dizinini tanımlar ve ardından dizini açıkça oluşturursunuz. Çıkış dizinini oluşturmak için `os.makedirs(args.output_dir, exist_ok=True)` kullanın. Bu tasarım modelini gösteren bir Puanlama betiği örneği için [öğreticiye](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) bakın. |
 | Bağımlılık hataları | Komut dosyalarını yerel olarak geliştirdiyseniz, ancak işlem hattındaki uzak bir işlem üzerinde çalışırken bağımlılık sorunları bulursanız, işlem ortamı bağımlılıklarınızın ve sürümlerinin test ortamınızla eşleştiğinden emin olun. |

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: b4fd931142f8a3daf11b0540241323453e25ea4f
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
-ms.translationtype: HT
+ms.openlocfilehash: 54d7dc4e57991f6b773169f539a86fdc8451cbba
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71839153"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950382"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Linux üzerinde özel görüntü kullanarak bir işlev oluşturma
 
@@ -295,11 +295,12 @@ Bu bölümde, işlevinizi bir Azure depolama kuyruğu ile tümleştirme işlemi 
 
 Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştırmadan önce depolama bağlamaları uzantısının yüklü olması gerekir. 
 
-#### <a name="javascriptpython"></a>JavaScript/Python
+
+# <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-#### <a name="c-class-library"></a>C#sınıf kitaplığı
+# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
 
 HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketleri olarak uygulanır. Depolama uzantısı paketini projenize eklemek için Terminal penceresinde aşağıdaki [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın.
 
@@ -310,35 +311,41 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 > [!TIP]
 > Visual Studio 'yu kullanırken, bu paketi eklemek için NuGet Paket Yöneticisi 'ni de kullanabilirsiniz.
 
+---
+
 Şimdi projenize bir depolama çıkış bağlaması ekleyebilirsiniz.
 
 ### <a name="add-an-output-binding"></a>Çıkış bağlaması ekleme
 
 Işlevlerde, her bağlama türü, function. json dosyasında tanımlanacak bir `direction`, `type` ve benzersiz bir `name` gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
 
-####  <a name="javascriptpython"></a>JavaScript/Python
+# <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-#### <a name="c-class-library"></a>C#sınıf kitaplığı
+# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+---
 
 ### <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlamayı kullanan kodu ekleyin
 
 Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişmek için bağlamanın `name` ' ı kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
 
-#### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
-#### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
-#### <a name="c-class-library"></a>C#sınıf kitaplığı
+# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
+---
 
 ### <a name="update-the-hosted-container"></a>Barındırılan kapsayıcıyı güncelleştirme
 

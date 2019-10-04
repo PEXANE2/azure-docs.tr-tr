@@ -1,19 +1,20 @@
 ---
-title: include dosyası
-description: include dosyası
+title: içerme dosyası
+description: içerme dosyası
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
 ms.date: 09/30/2019
-ms.author: v-adgera
 ms.custom: include file
-ms.openlocfilehash: 1c8237ce4e8b758395567e939c1ed4bda1f297ff
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: d25f6f0d787b7343b93025ff2dd2bd5bf4f0f6d8
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827656"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948931"
 ---
 Rol tabanlı erişim denetimi, erişimi, izinleri ve rolleri yönetmeye yönelik devralma temelli bir güvenlik stratejisidir. Alt roller, üst rollerden izinleri devralınır. İzinler, üst rolden devralınmaksızın da atanabilir. Ayrıca, gerektiğinde bir rolü özelleştirmek için de atanabilir.
 

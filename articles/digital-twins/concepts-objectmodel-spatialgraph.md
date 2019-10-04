@@ -1,19 +1,19 @@
 ---
-title: Dijital TWINS nesne modellerini ve uzamsal zeka grafiğini anlama | Microsoft Docs
-description: İnsanlar, yerler ve cihazlar arasındaki ilişkileri modellemek için Azure Digital Twins’i kullanın
+title: Azure Digital TWINS nesne modellerini ve uzamsal zeka grafiğini anlayın | Microsoft Docs
+description: Kişiler, Yerlerim ve cihazlar arasındaki ilişkileri modellemek için Azure dijital TWINS kullanma
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 37f2afbd9bae4ca6bccc5062515f166687d8913c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177059"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950002"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Dijital TWINS nesne modellerini ve uzamsal zeka grafiğini anlama
 
@@ -31,30 +31,30 @@ Uzamsal grafik, boşluk, cihaz, algılayıcı ve Kullanıcı gibi bir araya geti
 
 Dijital TWINS nesne modelleri bu nesne ana kategorilerini destekler:
 
-- **Alanlar** ,,, ve `Tenant` `Region` `Customer` gibi`Venue`sanal veya fiziksel konumlardır.
-- **Cihazlar** , ve `AwesomeCompany Device` `Raspberry Pi 3`gibi donanımların sanal veya fiziksel parçalarından oluşur.
-- **Algılayıcılar** , örneğin `AwesomeCompany Temperature Sensor` ve `AwesomeCompany Presence Sensor`olaylarını algılayan nesnelerdir.
+- **Boşluk** , sanal veya fiziksel konumlardır; örneğin, `Tenant`, `Customer`, `Region` ve `Venue`.
+- **Cihazlar** , örneğin `AwesomeCompany Device` ve `Raspberry Pi 3` gibi sanal veya fiziksel donanım parçalarından oluşur.
+- **Algılayıcılar** , örneğin `AwesomeCompany Temperature Sensor` ve `AwesomeCompany Presence Sensor` gibi olayları algılayan nesnelerdir.
 - **Kullanıcılar** , iştları ve bunların özelliklerini belirler.
 
 Diğer nesne kategorileri şunlardır:
 
-- **Kaynaklar** bir alana iliştirilir ve genellikle uzamsal grafikteki nesneler tarafından kullanılacak Azure kaynaklarını temsil eder, örneğin `IoTHub`.
-- **Bloblar** nesnelere (boşluklar, cihazlar, algılayıcılar ve kullanıcılar gibi) eklenir. Bunlar,,, ve `maps` `manuals`gibi MIME türü ve meta verileri `pictures`olan dosyalar olarak kullanılırlar.
-- **Genişletilmiş türler** , `SpaceType` ve `SpaceSubtype`gibi belirli özelliklere sahip varlıkları geliştiren Genişletilebilir Numaralandırmalar.
-- **Ontolo,** ,, `Default`, ve `EnergyGrid`gibi bir genişletilmiş türler `Building` `BACnet`kümesini temsil eder.
-- **Özellik anahtarları ve değerleri** , boşlukların, cihazların, sensörların ve kullanıcıların özel özelliklerdir. Bunlar, örneğin, `DeltaProcessingRefreshTime` anahtar ve `10` değer olarak yerleşik özelliklerle birlikte kullanılabilir.
-- **Roller** , uzamsal grafikteki kullanıcılara ve cihazlara atanan izin kümeleridir; örneğin `Space Administrator` `User Administrator`,, ve `Device Administrator`.
+- **Kaynaklar** bir alana iliştirilir ve genellikle uzamsal grafikteki nesneler tarafından kullanılacak Azure kaynaklarını temsil eder; örneğin, `IoTHub`.
+- **Bloblar** nesnelere (boşluklar, cihazlar, algılayıcılar ve kullanıcılar gibi) eklenir. MIME türü ve meta veriler (örneğin, `maps`, `pictures` ve `manuals`) dosyaları olarak kullanılırlar.
+- **Genişletilmiş türler** , belirli özelliklere sahip varlıkları geliştiren Genişletilebilir numaralandırmalar, örneğin `SpaceType` ve `SpaceSubtype`.
+- **Ontolo,** bir genişletilmiş türler kümesini temsil eder, örneğin, `Default`, `Building`, `BACnet` ve `EnergyGrid`.
+- **Özellik anahtarları ve değerleri** , boşlukların, cihazların, sensörların ve kullanıcıların özel özelliklerdir. Bunlar, yerleşik özelliklerle birlikte kullanılabilir; Örneğin, anahtar olarak `DeltaProcessingRefreshTime` ve değer olarak `10`.
+- **Roller** , uzamsal grafikteki kullanıcılara ve cihazlara atanan izin kümeleridir; örneğin, `Space Administrator`, `User Administrator` ve `Device Administrator`.
 - **Rol atamaları** , uzamsal grafikteki bir rol ve bir nesne arasındaki ilişkidir. Örneğin, bir kullanıcı veya hizmet sorumlusu, uzamsal grafikteki bir alanı yönetmek için izin verebilir.
 - **Güvenlik anahtarı depoları** , cihazın dijital TWINS ile güvenli bir şekilde iletişim kurmasına izin vermek için belirli bir alan nesnesinin altındaki hiyerarşideki tüm cihazlar için güvenlik anahtarlarını sağlar.
-- **Kullanıcı tanımlı işlevler** (UDF 'ler) uzamsal grafik içinde özelleştirilebilir algılayıcı telemetri işlemesine izin verir. Örneğin, bir UDF şunları yapabilir:
+- **Kullanıcı tanımlı işlevler** (UDF 'ler), uzamsal grafik içinde özelleştirilebilir algılayıcı telemetri işlemesine izin verir. Örneğin, bir UDF şunları yapabilir:
   - Bir algılayıcı değeri ayarlayın.
   - Algılayıcı okumaları temelinde özel mantık gerçekleştirin ve çıktıyı bir boşluk olarak ayarlayın.
   - Bir alana meta veriler ekleyin.
   - Önceden tanımlanmış koşullar karşılandığında bildirim gönder. Şu anda, UDF 'ler JavaScript 'te yazılabilir.
 - **Eşleştiriciler** , belirli bir telemetri iletisi Için hangi UDF 'leri çalıştırılacağını belirleyen nesnelerdir.
-- **Uç noktalar** telemetri iletilerinin ve dijital TWINS olaylarının yönlendirilebileceği konumlardır, örneğin `Event Hub` `Service Bus`, ve `Event Grid`.
+- **Uç noktalar** telemetri Iletilerinin ve dijital TWINS olaylarının yönlendirilebileceği konumlardır; örneğin, `Event Hub`, `Service Bus` ve `Event Grid`.
 
-## <a name="spatial-intelligence-graph"></a>Uzamsal zeka grafı
+## <a name="spatial-intelligence-graph"></a>Uzamsal zeka grafiği
 
 Uzamsal grafik, dijital TWINS nesne modelinde tanımlanan boşlukların, cihazların ve kişilerin hiyerarşik grafiktir. Uzamsal grafik devralma, filtreleme, geçiş, ölçeklenebilirlik ve genişletilebilirliği destekler. Bir REST API koleksiyonu ile uzamsal grafınızı yönetebilir ve bunlarla etkileşim kurabilirsiniz.
 
@@ -78,10 +78,10 @@ Aboneliğinizde bir dijital TWINS hizmeti dağıtırsanız, kök düğümün gen
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | Şununla değiştir |
+| Name | Değiştir |
 | --- | --- |
-| YOUR_INSTANCE_NAME | Dijital İkizlerini örneğinizin adı |
-| YOUR_LOCATION | Örneğiniz üzerinde barındırılıyorsa hangi sunucu bölge |
+| YOUR_INSTANCE_NAME | Dijital TWINS örneğinizin adı |
+| YOUR_LOCATION | Örneğinizin barındırıldığı sunucu bölgesi |
 
  Tam URL biçimi bu görüntüde görünür.
 

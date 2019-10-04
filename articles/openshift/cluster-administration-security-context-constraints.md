@@ -1,26 +1,26 @@
 ---
 title: Azure Red Hat OpenShift 'te güvenlik bağlamı kısıtlamalarını yönetme | Microsoft Docs
-description: Azure Red Hat OpenShift Küme Yöneticisi güvenlik bağlamı kısıtlamalarını yönetme
+description: Azure Red Hat OpenShift küme yöneticileri için güvenlik bağlamı kısıtlamaları
 services: container-service
 author: troy0820
 ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 8e85ac98683487c6b18be7f502f28cad9a0c2251
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: afbde512ecb5a38eac38d6f5db614d92cd44c908
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709943"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937429"
 ---
-# <a name="overview"></a>Genel bakış 
+# <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Azure Red Hat OpenShift 'te güvenlik bağlamı kısıtlamalarını yönetme 
 
-Güvenlik bağlamı kısıtlamaları, yöneticilerin pods izinlerini denetlemesine olanak tanır. Bu API türü hakkında daha fazla bilgi edinmek için bkz. [güvenlik bağlamı kısıtlamaları](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html) (SCCS) mimari belgeleri. CLı kullanarak, örneğiniz içindeki SCCs 'YI normal API nesneleri olarak yönetebilirsiniz.
+Güvenlik bağlamı kısıtlamaları (SCCs), küme yöneticilerinin pods izinlerini denetlemesine olanak tanır. Bu API türü hakkında daha fazla bilgi edinmek için bkz. [SCCs için mimari belgeleri](https://https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). CLı kullanarak, örneğiniz içindeki SCCs 'YI normal API nesneleri olarak yönetebilirsiniz.
 
-## <a name="listing-security-context-constraints"></a>Güvenlik bağlamı kısıtlamalarını listeleme
+## <a name="list-security-context-constraints"></a>Güvenlik bağlamı kısıtlamalarını listeleme
 
-Geçerli SCCs listesini almak için 
+Geçerli SCCs listesini almak için şu komutu kullanın: 
 
 ```bash
 $ oc get scc
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examining-a-security-context-constraints-object"></a>Bir güvenlik bağlamı kısıtlama nesnesini İnceleme
+## <a name="examine-an-object-for-security-context-constraints"></a>Bir nesneyi güvenlik bağlamı kısıtlamaları için inceleyin
 
-Belirli bir SCC 'i incelemek için `oc get`, `oc describe` veya `oc edit` kullanın.  Örneğin, **Kısıtlanmış** SCC 'yi incelemek için:
+Belirli bir SCC 'i incelemek için `oc get`, `oc describe` veya `oc edit` kullanın.  Örneğin, **Kısıtlanmış** SCC 'yi incelemek için şu komutu kullanın:
 ```bash
 $ oc describe scc restricted
 Name:                   restricted
@@ -72,6 +72,5 @@ Settings:
     Ranges:             <none>
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
-OSA nasıl yapılandırılır-müşteri-yönetici rolü:
 > [!div class="nextstepaction"]
-> [Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi](howto-aad-app-configuration.md) 
+> [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) 

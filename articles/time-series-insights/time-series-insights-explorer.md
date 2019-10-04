@@ -10,20 +10,20 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9ea9240ce5fa791734ab7b650ebdfa56b3f8dced
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3a6bebfa11294821ff717f221e3e0ddfd68cd65c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840572"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71948220"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezgini
 
 Bu makalede, Azure Time Series Insights [Explorer Web uygulaması](https://insights.timeseries.azure.com/)için genel kullanıma yönelik özellikler ve seçenekler açıklanmaktadır. Time Series Insights Gezgini, hizmet tarafından sunulan güçlü veri görselleştirme yeteneklerini gösterir ve kendi ortamınız dahilinde erişilebilir.
 
-Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran ve tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Verilerinize ilişkin genel bir görünüm sunar. bu sayede IoT çözümünüzü hızla doğrulamanıza ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi yapmaktan kaçınabilirsiniz. Gizli eğilimleri bulabilir, anormallikleri tespit edebilir ve neredeyse gerçek zamanlı olarak kök neden analizleri gerçekleştirebilirsiniz. Time Series Insights Gezgini Şu anda genel önizlemededir.
+Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran, tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Verilerinize ilişkin genel bir görünüm sunar. bu sayede IoT çözümünüzü hızla doğrulamanıza ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi yapmaktan kaçınabilirsiniz. Gizli eğilimleri bulabilir, anormallikleri tespit edebilir ve neredeyse gerçek zamanlı olarak kök neden analizleri gerçekleştirebilirsiniz. Time Series Insights Gezgini Şu anda genel önizlemededir.
 
 > [!TIP]
 > Tanıtım ortamında kılavuzlu bir tur için [Azure Time Series Insights hızlı](time-series-quickstart.md)başlangıcı makalesini okuyun.
@@ -37,11 +37,11 @@ Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip anali
 >[!NOTE]
 >Yukarıdaki <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Azure IoT Çözüm Hızlandırıcısı kullanarak Time Series Insights</a> kullanmaya başlama" videosunu inceleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Time Series Insights Gezginini kullanabilmeniz için şunları yapmanız gerekir:
 
-- Zaman serisi görüşleri ortamı oluşturun. Daha fazla bilgi için bkz. [Time Series Insights kullanmaya başlama](./time-series-insights-get-started.md).
+- Time Series Insights ortamı oluşturun. Daha fazla bilgi için bkz. [Time Series Insights kullanmaya başlama](./time-series-insights-get-started.md).
 - Ortamda hesabınıza [erişim sağlayın](time-series-insights-data-access.md) .
 - Bir [IoT Hub](time-series-insights-how-to-add-an-event-source-iothub.md) veya [Olay Hub](time-series-insights-how-to-add-an-event-source-eventhub.md) 'ı olay kaynağı ekleyin.
 
@@ -51,7 +51,7 @@ Olay kaynağınızı Time Series Insights ortamınıza bağlama sırasında, zam
 
 1. Başlamak için Web tarayıcınızda [Time Series Insights Gezginini](https://insights.timeseries.azure.com/) açın. Pencerenin sol tarafında bir ortam seçin. Erişiminiz olan tüm ortamlar alfabetik sırada listelenir.
 
-1. Bir ortam seçtikten sonra, üstteki ve en üstteki yapılandırmalardan birini kullanın veya istediğiniz TimeSpan üzerine tıklayıp sürükleyin. Sağ üst köşedeki Büyüteç Camı ' nı seçin veya seçili zaman aralığı ' na sağ tıklayıp **Ara**' yı seçin.
+1. Bir ortam seçtikten sonra, üstteki ve en üstteki **yapılandırmalardan birini kullanın** **veya istediğiniz TimeSpan** üzerine tıklayıp sürükleyin. Sağ üst köşedeki Büyüteç Camı ' nı seçin veya seçili zaman aralığı ' na sağ tıklayıp **Ara**' yı seçin.
 
 1. Ayrıca **Otomatik aç** düğmesini seçerek kullanılabilirliği otomatik olarak her dakikada yenileyebilirsiniz. **Otomatik aç** düğmesi yalnızca kullanılabilirlik grafiğine uygulanır, ana görselleştirmenin içeriğine uygulanmaz.
 
@@ -61,26 +61,26 @@ Olay kaynağınızı Time Series Insights ortamınıza bağlama sırasında, zam
 
 1. Ardından, seçili TimeSpan sırasında tüm olayların sayısını gösteren bir grafik görürsünüz. Burada bir dizi denetimleriniz vardır:
 
-    - **Terimler düzenleyici paneli**: Terimi, ortamınızı sorgulayan yerdir. Ekranın sol tarafında bulunur:
-      - **Ölçü**: Bu açılan liste, tüm sayısal sütunları gösterir (**Double**).
+    - **Terimler Düzenleyicisi paneli**: çalışma alanı, ortamınızı sorgulayan yerdir. Ekranın sol tarafında bulunur:
+      - **Ölçü**: Bu açılan liste, tüm sayısal sütunları (**Double**) gösterir.
       - **Bölme ölçütü**: Bu açılan liste kategorik sütunları (**dizeler**) gösterir.
       - Adım ilişkilendirmeyi etkinleştirebilir, minimum ve maksimum ' ı gösterebilir ve **ölçüm**' in yanındaki denetim masasından y eksenini ayarlayabilirsiniz. Ayrıca, gösterilen verilerin bir sayı, ortalama veya veri toplamı olup olmadığını da ayarlayabilirsiniz.
       - Aynı x ekseninde görüntülenecek en fazla beş terim ekleyebilirsiniz. Ek bir terim eklemek için **aşağı Kopyala** düğmesini kullanın veya yeni bir terim eklemek için **Ekle** ' yi seçin.
 
-        [![Terimler Düzenleyicisi bölmesi](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
+        [![Terms düzenleyici paneli](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
 
-      - **Koşul**: Aşağıdaki tabloda listelenen işlenenleri kümesini kullanarak olaylarınızı hızlıca filtrelemek için koşulunu kullanın. Veya öğesini seçerek bir arama yaparsanız, koşul otomatik olarak bu aramaya göre güncelleştirilir. Desteklenen işlenen türleri şunlardır:
+      - **Koşul**: aşağıdaki tabloda listelenen işlenenleri kümesini kullanarak olaylarınızı hızlıca filtrelemek için koşulunu kullanın. Veya öğesini seçerek bir arama yaparsanız, koşul otomatik olarak bu aramaya göre güncelleştirilir. Desteklenen işlenen türleri şunlardır:
 
-         |İşlem  |Desteklenen türler  |Notlar  |
+         |Çalışma  |Desteklenen türler  |Notlar  |
          |---------|---------|---------|
-         |`<`, `>`, `<=`, `>=`     |  Çift, DateTime, zaman aralığı       |         |
-         |`=`, `!=`, `<>`     | Dize, Bool, Double, DateTime, zaman aralığı, NULL        |         |
-         |IN     | Dize, Bool, Double, DateTime, zaman aralığı, NULL        |  Tüm işlenenler aynı türde veya NULL sabiti olması.        |
+         |`<`, `>`, `<=`, `>=`     |  Double, DateTime, TimeSpan       |         |
+         |`=`, `!=`, `<>`     | Dize, bool, Double, DateTime, TimeSpan, NULL        |         |
+         |IN     | Dize, bool, Double, DateTime, TimeSpan, NULL        |  Tüm işlenenler aynı türde veya NULL sabit olmalıdır.        |
          |SILINDI     | Dize        |  Sağ tarafta yalnızca sabit dize sabit değerlerine izin verilir. Boş dize ve NULL değerlerine izin verilmez.       |
 
       - **Sorgu örnekleri**
 
-         [![Örnek sorgular](media/time-series-insights-explorer/explorer9.png)](media/time-series-insights-explorer/explorer9.png#lightbox)
+         [![ örnek sorgu](media/time-series-insights-explorer/explorer9.png)](media/time-series-insights-explorer/explorer9.png#lightbox)
 
 1. **Aralık boyutu** kaydırıcı aracını, aynı TimeSpan üzerinde yer alarak ve aralıkları yakınlaştırmak için kullanabilirsiniz. Kaydırıcı, verilerinizin parçalı, yüksek çözünürlüklü olarak ölçeğini görmenizi sağlayan, çok sayıda dilimde dilimlere doğru eğilimler gösteren, büyük zaman dilimleri arasında hareket konusunda daha kesin bir denetim sağlar. Kaydırıcının varsayılan başlangıç noktası, çözümleme, sorgu hızı ve ayrıntı düzeyi dengelemek için Seçiminizdeki verilerin en uygun görünümü olarak ayarlanır.
 
@@ -88,7 +88,7 @@ Olay kaynağınızı Time Series Insights ortamınıza bağlama sırasında, zam
 
 1. Geçerli sorgunuzu kaydetmek ve ortamın diğer kullanıcılarıyla paylaşmak için **Kaydet** komutunu kullanın. **Aç**'ı kullandığınızda, tüm kaydedilmiş sorgularınızı ve erişiminiz olan ortamlarda diğer kullanıcıların paylaşılan sorgularını görebilirsiniz.
 
-   [![Lardır](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
+   [![Sorgu](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
 
 ## <a name="visualize-data"></a>Verileri görselleştirme
 
@@ -108,18 +108,18 @@ Olay kaynağınızı Time Series Insights ortamınıza bağlama sırasında, zam
 
 1. Belirli bir sorgudaki benzersiz veya anormal veri serisini hızlıca belirlemek için **ısı haritasını** ' i kullanın. Tek bir arama terimi, heatmap olarak görselleştirilir.
 
-    [![Isı haritasını](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
+    [![Heatmap](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
 
 1. Olayları araştırdığınızda veya sağ tıkladıktan sonra **Olaylar** paneli kullanılabilir hale getirilir. Burada, tüm ham olaylarınızı görebilir ve olaylarınızı JSON veya CSV dosyaları olarak dışarı aktarabilirsiniz. Time Series Insights tüm ham verileri depolar.
 
-    [![Olayları](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
+    [![Olay](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
 
 1. Desenleri ve sütun istatistiklerini göstermek için olayları araştırdıktan sonra **İstatistikler** sekmesini seçin.
 
-    - **Desenler**: Bu özellik seçili bir veri bölgesinde en istatistiksel olarak önemli desenleri proaktif olarak yüzey halinde gösterir. Hangi desenlerin en fazla ve enerji gerektirdiğini anlamak için binlerce olaya bakmanız gerekmez. Time Series Insights, analiz yapmaya devam etmek için doğrudan bu istatistiksel olarak önemli desenlere geçebilirsiniz. Bu özellik ayrıca, daha sonra geçmiş verilere yönelik sonrası araştırmalar için de yararlıdır.
-    - **Sütun istatistikleri**: Sütun istatistikleri seçili zaman aralığı boyunca seçilen veri serisinin her bir sütunundaki verileri kesen grafikler ve tablolar sağlar.
+    - **Desenler**: Bu özellik, seçilen bir veri bölgesinde en istatistiksel olarak önemli desenleri proaktif olarak yüzey halinde gösterir. Hangi desenlerin en fazla ve enerji gerektirdiğini anlamak için binlerce olaya bakmanız gerekmez. Time Series Insights, analiz yapmaya devam etmek için doğrudan bu istatistiksel olarak önemli desenlere geçebilirsiniz. Bu özellik ayrıca, daha sonra geçmiş verilere yönelik sonrası araştırmalar için de yararlıdır.
+    - **Sütun istatistikleri**: sütun istatistikleri seçili zaman aralığı boyunca seçilen veri serisinin her bir sütunundaki verileri kesen grafikler ve tablolar sağlar.
 
-      [![STA](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
+      [![STATS](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
 
 Artık Time Series Insights Explorer Web uygulamasında bulunan çeşitli özellikleri ve seçenekleri gördünüz.
 

@@ -1,21 +1,21 @@
 ---
-title: Azure dijital TWINS ile olayları ve iletileri yönlendirme | Microsoft Docs
+title: Olayları ve iletileri yönlendirme-Azure dijital TWINS | Microsoft Docs
 description: Azure dijital TWINS ile hizmet uç noktalarına olayları ve iletileri yönlendirmeye genel bakış
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: alinast
-ms.openlocfilehash: 81f2cc32ee10e891ffab127d6ecd7909eb75abd6
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177091"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949258"
 ---
-# <a name="routing-events-and-messages"></a>Yönlendirme olayları ve iletileri
+# <a name="routing-events-and-messages"></a>Olayları ve iletileri yönlendirme
 
 IoT çözümleri genellikle depolama, analiz ve daha fazlasını içeren birkaç güçlü hizmeti kapsar. Bu makalede, Azure dijital TWINS uygulamalarının Azure Analytics, AI ve depolama hizmetlerine bağlanarak daha ayrıntılı Öngörüler ve işlevler vermesini açıklar.
 
@@ -23,9 +23,9 @@ IoT çözümleri genellikle depolama, analiz ve daha fazlasını içeren birkaç
 
 Azure dijital TWINS, IoT olaylarını diğer Azure hizmetleriyle veya iş uygulamalarıyla bağlamak için iki yol sunar:
 
-* **Azure dijital TWINS olaylarını yönlendirme**: Uzamsal grafikteki değişiklik, alınan telemetri verileri veya önceden tanımlanmış koşullara dayalı bir bildirim oluşturan kullanıcı tanımlı bir işlev Azure dijital TWINS olaylarını tetikleyebilirler. Kullanıcılar bu olayları daha fazla işleme için [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus konularına](https://azure.microsoft.com/services/service-bus/)veya [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) gönderebilir.
+* **Azure dijital TWINS olaylarını yönlendirme**: uzamsal grafikteki değişiklik, alınan telemetri verileri veya önceden tanımlanmış koşullara dayalı bir bildirim oluşturan kullanıcı tanımlı bir Işlev Azure dijital TWINS olaylarını tetikleyebilirler. Kullanıcılar bu olayları daha fazla işleme için [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure Service Bus konularına](https://azure.microsoft.com/services/service-bus/)veya [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) gönderebilir.
 
-* **Yönlendirme aygıtı telemetrisi**: Azure dijital TWINS, olayları yönlendirmeye ek olarak ayrıca ham cihaz telemetri iletilerini daha fazla öngörü ve analiz için Event Hubs yönlendirebilir. Bu tür iletiler Azure dijital TWINS tarafından işlenmez. Yalnızca Olay Hub 'ına iletilir.
+* **Yönlendirme cihaz telemetrisi**: olayları yönlendirmeye ek olarak Azure dijital TWINS, daha ayrıntılı bilgiler ve analizler için ham cihaz telemetri iletilerini de Event Hubs yönlendirebilir. Bu tür iletiler Azure dijital TWINS tarafından işlenmez. Yalnızca Olay Hub 'ına iletilir.
 
 Kullanıcılar, olayları göndermek veya iletileri iletmek için bir veya daha fazla çıkış uç noktası belirtebilir. Olaylar ve iletiler, bu önceden tanımlanmış yönlendirme tercihlerine göre uç noktalara gönderilir. Diğer bir deyişle, kullanıcılar, Graph işlem olaylarını almak için başka bir uç nokta belirtebilir, diğer bir deyişle cihaz telemetri olaylarını alabilir ve bu şekilde devam edebilir.
 

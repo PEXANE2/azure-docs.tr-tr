@@ -1,19 +1,19 @@
 ---
 title: Azure dijital TWINS ile çok kiracılı uygulamaları etkinleştirme | Microsoft Docs
 description: Azure dijital TWINS için çok kiracılı Azure Active Directory uygulamalarını yapılandırma.
-author: mavoge
+ms.author: alinast
+author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: mavoge
-ms.openlocfilehash: 2ee3681640f68839c32e2963b34d5547abb6943b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 10/02/2019
+ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976890"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958776"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Azure dijital TWINS ile çok kiracılı uygulamaları etkinleştirme
 
@@ -57,20 +57,16 @@ Sorun:
   1. **Abonelikleri**açın.
   1. **Geliştirici**uygulamasında kullanılacak Azure Active Directory kiracıya sahip aboneliği seçin.
 
-     ![Azure Active Directory abonelikler][1]
+     [![Azure Active Directory abonelikleri](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
   1. **Kaynak sağlayıcıları**' nı seçin.
   1. **Microsoft. ıotspaces**için arama yapın.
-  1. **Kaydol**’u seçin.
+  1. **Kaydol**' u seçin.
 
-     ![Azure Active Directory kaynak sağlayıcıları][2]
+     [![Azure Active Directory kaynak sağlayıcıları](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure dijital TWINS ile Kullanıcı tanımlı işlevlerin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için [Azure dijital TWINS Kullanıcı tanımlı işlevleri oluşturma](./how-to-user-defined-functions.md)makalesini okuyun.
 
 - Rol atamaları ile uygulamayı daha güvenli hale getirmek için rol tabanlı erişim denetimini nasıl kullanacağınızı öğrenmek için [Azure dijital TWINS rol tabanlı erişim denetimi oluşturma ve yönetme](./security-create-manage-role-assignments.md)makalesini okuyun.
-
-<!-- Images -->
-[1]: media/multitenant/ad-subscriptions.png
-[2]: media/multitenant/ad-resource-providers.png

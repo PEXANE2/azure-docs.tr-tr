@@ -1,18 +1,18 @@
 ---
 title: PostgreSQL için Azure veritabanı 'nda dağıtılmış veriler – hiper ölçek (Citus)
-description: Sunucu grubunda dağıtılan tablolar ve parçalar.
+description: PostgreSQL için Azure veritabanı 'nda dağıtılmış tablolar, başvuru tabloları, yerel tablolar ve parçalar hakkında bilgi edinin.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: acc07086f4eaac523cb27e1361cb9cc6d380c695
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 8a0fe871685f2a140cd8272d93f49f594cd2c910
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998034"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947497"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda dağıtılmış veriler – hiper ölçek (Citus)
 
@@ -23,7 +23,7 @@ Dağıtılmış tabloların parçalar halinde nasıl depolandığını ve parça
 
 Her biri farklı amaçlar için kullanılan bir hiper ölçek (Citus) sunucu grubunda üç tür tablo vardır.
 
-### <a name="type-1-distributed-tables"></a>Tür 1: Dağıtılmış tablolar
+### <a name="type-1-distributed-tables"></a>Tür 1: dağıtılmış tablolar
 
 İlk tür ve en yaygın, dağıtılmış tablolardır. Bunlar SQL deyimlerine normal tablolar gibi görünürler, ancak bunlar alt düğümlerde yatay olarak bölümlendirilir. Bunun anlamı, tablo satırlarının parçalar olarak adlandırılan parça tablolarında farklı düğümlerde depolanmasıdır.
 
@@ -35,13 +35,13 @@ Dağıtılmış tablo basamaklarının şemasını değiştirerek tüm tablo par
 Hiper ölçek (Citus), parçaları parçalara eklemek için algoritmik parçalama kullanır. Atama, dağıtım sütunu olarak adlandırılan tablo sütununun değerine göre belirleyici olarak yapılır. Küme yöneticisinin bir tabloyu dağıtırken bu sütunu belirlemesi gerekir.
 Performans ve işlevsellik için doğru seçimi yapmak önemlidir.
 
-### <a name="type-2-reference-tables"></a>Tür 2: Başvuru tabloları
+### <a name="type-2-reference-tables"></a>Tür 2: başvuru tabloları
 
 Başvuru tablosu, tüm içerikleri tek bir parça halinde yoğunlaştı olan bir dağıtılmış tablo türüdür. Parça her çalışan üzerinde çoğaltılır. Herhangi bir çalışan sorguları, başka bir düğümden satır isteme ağ ek yükü olmadan başvuru bilgilerine yerel olarak erişebilir. Satır başına ayrı parçaları ayırt etmenize gerek olmadığı için başvuru tablolarında dağıtım sütunu yoktur.
 
 Başvuru tabloları genellikle küçüktür ve herhangi bir çalışan düğümünde çalışan sorgularla ilgili verileri depolamak için kullanılır. Sipariş durumları veya ürün kategorileri gibi bir örnek olarak numaralandırılan değerler aşağıda bulunur.
 
-### <a name="type-3-local-tables"></a>Tür 3: Yerel tablolar
+### <a name="type-3-local-tables"></a>Tür 3: yerel tablolar
 
 Hyperscale (Citus) kullandığınızda, bağlandığınız düzenleyici düğümü normal bir PostgreSQL veritabanıdır. Düzenleyici üzerinde sıradan tablolar oluşturabilir ve bunları parçalara parçalamayı seçemezsiniz.
 
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Düzenleyici düğümü, hangi parçanın bir satırı `github_events`bulundurduğunu belirleme istiyorsa, satırdaki dağıtım sütununun değerini karma hale getirir. Sonra düğüm, hangi\'parça aralığının karma değeri içerdiğini denetler. Aralıklar, karma işlevin görüntüsünün ayrık birleşimi olması için tanımlanır.
+Düzenleyici düğümü, `github_events` satırını tutan parçayı belirleyebilmek isterse, satırdaki dağıtım sütununun değerini karma hale getirir. Sonra düğüm, hangi parça @ no__t-0s aralığının karma değeri içerdiğini denetler. Aralıklar, karma işlevin görüntüsünün ayrık birleşimi olması için tanımlanır.
 
 ### <a name="shard-placements"></a>Parça yerleştirme
 
-Parça 102027 ' nin söz konusu satırla ilişkili olduğunu varsayalım. Satır, çalışanlarından birinde çağrılan `github_events_102027` bir tabloda okunabilir veya yazılır. Hangi çalışan? Bu, tamamen meta veri tabloları tarafından belirlenir. Parça ile çalışan arasındaki eşleme, parça yerleşimi olarak bilinir.
+Parça 102027 ' nin söz konusu satırla ilişkili olduğunu varsayalım. Satır, çalışanlarından birinde `github_events_102027` adlı bir tabloda okunabilir veya yazılır. Hangi çalışan? Bu, tamamen meta veri tabloları tarafından belirlenir. Parça ile çalışan arasındaki eşleme, parça yerleşimi olarak bilinir.
 
-Düzenleyici düğümü, gibi `github_events_102027` belirli tablolara başvuran ve ilgili çalışanlar üzerinde bu parçaları çalıştıran parçalara sorguları yeniden yazar. Parça KIMLIĞI 102027 olan düğümü bulmak için arka planda çalıştırılan bir sorgu örneği aşağıda verilmiştir.
+Düzenleyici düğümü, sorguları `github_events_102027` gibi belirli tablolara başvuran parçalar halinde yeniden yazar ve bu parçaları uygun çalışanlar üzerinde çalıştırır. Parça KIMLIĞI 102027 olan düğümü bulmak için arka planda çalıştırılan bir sorgu örneği aşağıda verilmiştir.
 
 ```sql
 SELECT

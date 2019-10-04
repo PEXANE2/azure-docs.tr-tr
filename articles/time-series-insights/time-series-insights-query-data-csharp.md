@@ -10,32 +10,32 @@ reviewer: jasonwhowell, kfile, tsidocs
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66c79bed59c8966156d6f000e74e5300edc0245a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 353e3463c2be552210847ac3fe17bbfe2cec58c7
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883917"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958127"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Kullanarak Azure Time Series Insights GA ortamından veri sorgulamaC#
 
 Bu C# örnek, Azure Time Series Insights GA ortamından verilerin nasıl sorgulanacağını gösterir.
 
-Örnek, Sorgu API’si kullanımının birkaç temel örneğini gösterir:
+Örnekte, sorgu API 'SI kullanımının birkaç temel örneği gösterilmektedir:
 
-1. Bir hazırlık adımı olarak, Azure Active Directory API 'SI aracılığıyla erişim belirtecini alın. Bu belirteci `Authorization` her sorgu API isteğinin üstbilgisine geçirin. Etkileşimli olmayan uygulamalar ayarlamak için bkz. [kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md). Ayrıca, örneğin başlangıcında tanımlanan tüm sabitlerin doğru ayarlandığından emin olun.
+1. Bir hazırlık adımı olarak, Azure Active Directory API 'SI aracılığıyla erişim belirtecini alın. Bu belirteci her sorgu API isteğinin `Authorization` üst bilgisinde geçirin. Etkileşimli olmayan uygulamalar ayarlamak için bkz. [kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md). Ayrıca, örneğin başlangıcında tanımlanan tüm sabitlerin doğru ayarlandığından emin olun.
 1. Kullanıcının erişimi olan ortamların listesi alınır. Ortamların biri, ilgilendiğiniz ortam olarak alınır ve bu ortam için daha fazla veri sorgulanır.
 1. HTTPS isteğinin bir örneği olarak, ilgilenilen ortam için kullanılabilirlik verileri istenir.
-1. Web yuvası isteğinin bir örneği olarak, ilgilenilen ortam için toplam olay verileri istenir. Veriler kullanılabilir oldukları tüm zaman aralığı için istenir.
+1. Web yuva isteğine örnek olarak, ilgilenilen ortam için olay toplamaları verileri istenir. Tüm kullanılabilirlik zaman aralığı için veri istenir.
 
 > [!NOTE]
-> Örnek kodu adresinde [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)bulabilirsiniz.
+> Örnek kod [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)' de mevcuttur.
 
 ## <a name="project-dependencies"></a>Proje bağımlılıkları
 
-NuGet paketleri `Microsoft.IdentityModel.Clients.ActiveDirectory` ve `Newtonsoft.Json`ekleyin.
+-0 ve `Newtonsoft.Json` @no__t NuGet paketleri ekleyin.
 
 ## <a name="c-example"></a>C#örneğinde
 

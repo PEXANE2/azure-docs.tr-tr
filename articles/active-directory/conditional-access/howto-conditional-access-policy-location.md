@@ -24,7 +24,7 @@ Koşullu erişimde konum koşulu ile, bir kullanıcının ağ konumuna bağlı o
 
 ## <a name="define-locations"></a>Konumları tanımlama
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1.   **AzurePortal**  genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. **Yeni konum**' ı seçin.
 1. Konumunuza bir ad verin.
@@ -37,7 +37,7 @@ Koşullu erişim 'deki konum koşulu hakkında daha fazla bilgi için, [Azure Ac
 
 ## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1.   **AzurePortal**  genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
@@ -49,10 +49,10 @@ Koşullu erişim 'deki konum koşulu hakkında daha fazla bilgi için, [Azure Ac
    1. **Yapılandır** 'ı **Evet** olarak ayarla
    1. **Seçili konumların** seçimini **Ekle**
    1. Kuruluşunuz için oluşturduğunuz engellenen konumu seçin.
-   1. **Bitti**bitti ' ye tıklayın. >  > 
+   1. **********Bitti**bitti ' ye tıklayın. >  > 
 1. **Erişim denetimleri** > **bloğu**altında, **Seç**' i seçin.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi etkinleştirmek için oluşturmak için Oluştur ' u seçin.
+1. İlkenizi **** etkinleştirmek için oluşturmak için Oluştur ' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

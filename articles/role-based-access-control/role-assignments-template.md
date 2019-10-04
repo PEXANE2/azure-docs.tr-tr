@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b7f701cd3ce07099d80bca40e506108bcc9a9da9
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: b4eebf7dac4d388411f570b1546c96e3b82b2a98
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178103"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950054"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>RBAC ve Azure Resource Manager şablonlarını kullanarak Azure kaynaklarına erişimi yönetme
 
@@ -26,14 +26,14 @@ ms.locfileid: "71178103"
 
 ## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Kaynak grubu kapsamında (parametresiz) bir rol ataması oluşturma
 
-RBAC'de erişim vermek için bir rol ataması oluşturmanız gerekir. Aşağıdaki şablonda rol ataması oluşturmanın temel bir yolu gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir. Aşağıdaki şablonda şunları gösterilmektedir:
+RBAC 'de, erişim izni vermek için bir rol ataması oluşturun. Aşağıdaki şablonda rol ataması oluşturmanın temel bir yolu gösterilmektedir. Bazı değerler şablon içinde belirtilmiştir. Aşağıdaki şablonda şunları gösterilmektedir:
 
 -  Bir kaynak grubu kapsamındaki Kullanıcı, Grup veya uygulamaya [okuyucu](built-in-roles.md#reader) rolü atama
 
 Şablonu kullanmak için aşağıdakileri yapmanız gerekir:
 
 - Yeni bir JSON dosyası oluşturun ve şablonu kopyalayın
-- Rolün `<your-principal-id>` atanacağı bir Kullanıcı, Grup veya uygulamanın benzersiz tanımlayıcısı ile değiştirin. Tanımlayıcının biçimi vardır:`11111111-1111-1111-1111-111111111111`
+- Rolü atamak için `<your-principal-id>` ' ı bir Kullanıcı, Grup veya uygulamanın benzersiz tanımlayıcısı ile değiştirin. Tanımlayıcı şu biçimdedir: `11111111-1111-1111-1111-111111111111`
 
 ```json
 {
@@ -159,6 +159,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
 ```
 
+> [!NOTE]
+> Bu şablon, şablon dağıtımı için bir parametre olarak aynı `roleNameGuid` değeri sağlanmamışsa ıdempotent değildir. @No__t-0 sağlanmamışsa, varsayılan olarak her dağıtımda yeni bir GUID oluşturulur ve sonraki dağıtımlar, `Conflict: RoleAssignmentExists` hatasıyla başarısız olur.
+
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>Kaynak kapsamında rol ataması oluşturma
 
 Bir kaynak düzeyinde bir rol ataması oluşturmanız gerekiyorsa, rol atamasının biçimi farklıdır. Rolün atanacağı kaynağın kaynak sağlayıcısı ad alanını ve kaynak türünü sağlarsınız. Ayrıca, rol atamasının adına kaynağın adını da dahil edersiniz.
@@ -180,8 +183,6 @@ Aşağıdaki şablonda şunları gösterilmektedir:
 
 - Rolün atanacağı bir kullanıcının, grubun veya uygulamanın benzersiz tanımlayıcısı
 - Atanacak rol
-- Rol ataması için kullanılacak benzersiz bir tanımlayıcı ya da varsayılan tanımlayıcıyı kullanabilirsiniz
-
 
 ```json
 {
@@ -203,13 +204,6 @@ Aşağıdaki şablonda şunları gösterilmektedir:
             ],
             "metadata": {
                 "description": "Built-in role to assign"
-            }
-        },
-        "roleNameGuid": {
-            "type": "string",
-            "defaultValue": "[newGuid()]",
-            "metadata": {
-                "description": "A new GUID used to identify the role assignment"
             }
         },
         "location": {
@@ -238,7 +232,7 @@ Aşağıdaki şablonda şunları gösterilmektedir:
         {
             "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
             "apiVersion": "2018-09-01-preview",
-            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', parameters('roleNameGuid'))]",
+            "name": "[concat(variables('storageName'), '/Microsoft.Authorization/', guid(uniqueString(parameters('storageName'))))]",
             "dependsOn": [
                 "[variables('storageName')]"
             ],
@@ -267,12 +261,12 @@ Aşağıda, şablonu dağıttıktan sonra bir depolama hesabı için kullanıcı
 
 ## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Yeni hizmet sorumlusu için rol ataması oluşturma
 
-Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturup aynı Azure Resource Manager şablonunda bu hizmet sorumlusuna bir rol atamayı denerseniz, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir. Bu senaryoya yönelik olarak, rol atamasını oluştururken `principalType` özelliğini olarak `ServicePrincipal` ayarlamanız gerekir.
+Yeni bir hizmet sorumlusu oluşturur ve bu hizmet sorumlusuna hemen bir rol atamayı denerseniz, bu rol ataması bazı durumlarda başarısız olabilir. Örneğin, yeni bir yönetilen kimlik oluşturup aynı Azure Resource Manager şablonunda bu hizmet sorumlusuna bir rol atamayı denerseniz, rol ataması başarısız olabilir. Bu hatanın nedeni büyük olasılıkla çoğaltma gecikmesi. Hizmet sorumlusu tek bir bölgede oluşturulur; Ancak, rol ataması henüz hizmet sorumlusunu çoğaltılmamış farklı bir bölgede gerçekleşebilir. Bu senaryoya yönelik olarak, rol atamasını oluştururken `principalType` özelliğini `ServicePrincipal` olarak ayarlamanız gerekir.
 
 Aşağıdaki şablonda şunları gösterilmektedir:
 
 - Yeni bir yönetilen kimlik hizmeti sorumlusu oluşturma
-- Şunu belirtme`principalType`
+- @No__t belirtme-0
 - Kaynak grubu kapsamındaki bu hizmet sorumlusuna katkıda bulunan rolü atama
 
 Şablonu kullanmak için aşağıdaki girişleri belirtmeniz gerekir:
@@ -335,7 +329,7 @@ Aşağıda, şablonu dağıttıktan sonra yeni bir yönetilen kimlik hizmeti sor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı Başlangıç: Azure portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Azure Resource Manager şablonlarının yapısını ve söz dizimini anlama](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Hızlı başlangıç: Azure portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](../azure-resource-manager/deploy-to-subscription.md)
-- [Azure Hızlı Başlangıç Şablonları](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?term=rbac)

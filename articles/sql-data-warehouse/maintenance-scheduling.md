@@ -10,30 +10,32 @@ ms.subservice: design
 ms.date: 07/16/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3875106e8c6301c95bc8d0fbce6a1c0400d07f78
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 0e5df583112bbb6db9651004e5deaceb6b5b9d12
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278119"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958886"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Bakım zamanlamalarını kullanarak hizmet güncelleştirmelerini ve bakımını yönetme
 
-Bakım zamanlamaları artık tüm Azure SQL veri ambarı bölgelerinde kullanılabilir. Bu özellik, hizmet durumu planlı bakım bildirimlerini, Kaynak Durumu denetim Izleyicisini ve Azure SQL veri ambarı bakım zamanlaması hizmetini tümleştirir.
+Bakım zamanlamaları artık tüm Azure SQL veri ambarı bölgelerinde kullanılabilir. Bakım zamanlaması özelliği, hizmet durumu planlı bakım bildirimlerini, Kaynak Durumu denetim Izleyicisini ve Azure SQL veri ambarı bakım zamanlaması hizmetini tümleştirir.
 
-Yeni özellikler, yükseltmeler ve düzeltme ekleri almak için uygun olduğunda bir zaman penceresi seçmek için bakım zamanlamasını kullanırsınız. Birincil ve ikincil bakım penceresini yedi günlük bir süre içinde seçersiniz. Bir örnek, Cumartesi 22:00 ' nin Pazar 01:00 ' nin birincil bir penceresidir ve Çarşamba 19:00 ' nin ikinci bir penceresinde 22:00. Birincil bakım pencereniz sırasında SQL Data Warehouse bakım gerçekleştiremediği takdirde, bakım, ikincil bakım pencereniz sırasında yeniden denenecek. Hizmet bakımı hem birincil hem de Ikincil pencereler sırasında gerçekleşebilir. Tüm bakım işlemlerinin hızlı bir şekilde tamamlanmasını sağlamak için, DW400 (c) ve daha düşük veri ambarı katmanları, belirli bir bakım penceresi dışında bakım işlemini tamamlayabilir.
+Yeni özellikler, yükseltmeler ve düzeltme ekleri almak için uygun olduğunda bir zaman penceresi seçmek için bakım zamanlamasını kullanırsınız. Birincil ve ikincil bakım penceresini yedi günlük bir süre içinde seçersiniz. Bu özelliği kullanmak için, ayrı gün aralıklarında bir birincil ve ikincil pencere belirlemeniz gerekir.
+
+Örneğin, Cumartesi 22:00 ' nin birincil bir penceresini Pazar 01:00 ' e zamanlayabilir ve sonra da Çarşamba 19:00 ikincil penceresini 22:00 olarak zamanlayabilirsiniz. Birincil bakım pencereniz sırasında SQL Data Warehouse bakım gerçekleştiremediği takdirde, bakım, ikincil bakım pencereniz sırasında yeniden denenecek. Hizmet bakımı hem birincil hem de ikincil pencereler sırasında gerçekleşebilir. Tüm bakım işlemlerinin hızlı bir şekilde tamamlanmasını sağlamak için, DW400 (c) ve daha düşük veri ambarı katmanları, belirli bir bakım penceresi dışında bakım işlemini tamamlayabilir.
 
 Yeni oluşturulan tüm Azure SQL veri ambarı örneklerinin, dağıtım sırasında uygulanan sistem tanımlı bir bakım zamanlaması olacaktır. Zamanlama, dağıtım tamamlandıktan hemen sonra düzenlenebilir.
 
-Her bakım penceresi üç ile sekiz saat arasında olabilir. Bakım, pencerenin içinde herhangi bir zamanda gerçekleşebilir. Bakım başladığında, tüm etkin oturumlar iptal edilir ve teslim edilmemiş işlemler geri alınacaktır. Hizmet, veri ambarınıza yeni kod dağıttığı için bağlantıda birden çok kısa kayıp beklemeniz gerekir. Veri Ambarınızda bakım tamamlandıktan hemen sonra bilgilendirilirsiniz
+Her bakım penceresi üç ve sekiz saat arasında olabilir. Bakım, pencerenin içinde herhangi bir zamanda gerçekleşebilir. Bakım başladığında, tüm etkin oturumlar iptal edilir ve teslim edilmemiş işlemler geri alınacaktır. Hizmet, veri ambarınıza yeni kod dağıttığı için bağlantıda birden çok kısa kayıp beklemeniz gerekir. Veri ambarı bakım işlemi tamamlandıktan hemen sonra bilgilendirilirsiniz.
 
-Bu özelliği kullanmak için, ayrı gün aralıklarında bir birincil ve ikincil pencere belirlemeniz gerekir. Tüm bakım işlemleri, zamanlanmış bakım pencereleri içinde bitmelidir. Önceki bildirim olmadan belirtilen bakım pencerelerinin dışında hiçbir bakım gerçekleşmeyecektir. Zamanlanan Bakım sırasında veri ambarınız duraklatıldıysa, sürdürme işlemi sırasında güncelleştirilir.  
+ Tüm bakım işlemleri, zamanlanmış bakım pencereleri içinde bitmelidir. Önceki bildirim olmadan belirtilen bakım pencerelerinin dışında hiçbir bakım gerçekleşmeyecektir. Zamanlanan Bakım sırasında veri ambarınız duraklatıldıysa, sürdürme işlemi sırasında güncelleştirilir. 
 
 ## <a name="alerts-and-monitoring"></a>Uyarılar ve izleme
 
-Hizmet durumu bildirimleri ve Kaynak Durumu Check Monitor ile tümleştirme, müşterilerin yaklaşan bakım etkinliklerinden haberdar olmasına olanak sağlar. Yeni otomasyon, Azure Izleyici 'den yararlanır. Yaklaşan bakım olayları hakkında nasıl bilgilendirilmek istediğinize karar verebilirsiniz. Ayrıca, hangi otomatikleştirilmiş akışların kapalı kalma süresini yönetmenize ve işlemlerinizin etkisini en aza indirmenize yardımcı olmaya karar verin
+Hizmet durumu bildirimleri ve Kaynak Durumu Check Monitor ile tümleştirme, müşterilerin yaklaşan bakım etkinliklerinden haberdar olmasına olanak sağlar. Yeni otomasyon, Azure Izleyici 'den yararlanır. Yaklaşan bakım olayları hakkında nasıl bilgilendirilmek istediğinize karar verebilirsiniz. Ayrıca, hangi otomatik akışların kapalı kalma süresini yönetmenize ve işlemsel etkiyi en aza indirmenize yardımcı olacağını seçebilirsiniz.
 
-24 saatlik bir ön bildirim, DW400c ve alt katmanların geçerli özel durumu ile tüm bakım olaylarının önüne gelir. Örnek kapalı kalma süresini en aza indirmek için, veri ambarınızın seçtiğiniz bakım süresinden önce uzun süre çalışan işlemlere sahip olmadığından emin olun.
+24 saatlik bir öncelikli bildirim, DWC400c ve alt katmanlar için olmayan tüm bakım olaylarının önüne gelir. Örnek kapalı kalma süresini en aza indirmek için, veri ambarınızın seçtiğiniz bakım süresinden önce uzun süre çalışan işlemlere sahip olmadığından emin olun.
 
 > [!NOTE]
 > Zaman açısından kritik güncelleştirme dağıtımı için gerekli olan olayda gelişmiş bildirim süreleri önemli ölçüde azaltılabilir.
@@ -46,10 +48,54 @@ Tüm etkin bakım olayları, **hizmet durumu-planlı bakım** bölümünde gör�
 
 Bakım zamanlaması seçtiğiniz bölgede mevcut olmasa bile, bakım zamanlamanızı dilediğiniz zaman görüntüleyebilir ve düzenleyebilirsiniz. Bölgede bakım zamanlaması kullanılabilir hale geldiğinde, belirlenen zamanlama hemen veri Ambarınızda etkin olur.
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="view-a-maintenance-schedule"></a>Bakım zamanlaması görüntüleme 
 
-- Bakım zamanlamasını görüntüleme hakkında [daha fazla bilgi edinin](viewing-maintenance-schedule.md) .
-- Bakım zamanlamasını değiştirme hakkında [daha fazla bilgi edinin](changing-maintenance-schedule.md) .
+### <a name="portal"></a>Portal
+
+Varsayılan olarak, yeni oluşturulan tüm Azure SQL veri ambarı örneklerinin, dağıtım sırasında en fazla sekiz saat birincil ve ikincil bakım penceresi vardır. Yukarıda belirtildiği gibi, en kısa sürede dağıtımı tamamlandıktan sonra pencereleri değiştirebilirsiniz. Önceki bildirim olmadan belirtilen bakım pencerelerinin dışında hiçbir bakım gerçekleşmeyecektir.
+
+Veri ambarınıza uygulanan bakım zamanlamasını görüntülemek için aşağıdaki adımları izleyin:
+
+1.  [Azure Portal](https://portal.azure.com/)oturum açın.
+2.  Görüntülemek istediğiniz veri ambarını seçin. 
+3.  Seçilen veri ambarı genel bakış dikey penceresinde açılır. Veri ambarına uygulanan bakım zamanlaması **bakım zamanlaması**altında görünür.
+
+![Genel Bakış dikey penceresi](media/sql-data-warehouse-maintenance-scheduling/clear-overview-blade.PNG)
+
+## <a name="change-a-maintenance-schedule"></a>Bakım zamanlamasını değiştirme 
+
+### <a name="portal"></a>Portal
+Bakım zamanlaması dilediğiniz zaman güncelleştirilebilirler veya değiştirilebilir. Seçili örnek etkin bir bakım döngüsüyle gezinecekse, ayarlar kaydedilir. Bir sonraki tanımlanan bakım döneminde etkin hale gelirler. Etkin bir bakım olayı sırasında veri Ambarınızı izleme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/service-health/resource-health-overview) . 
+
+### <a name="identifying-the-primary-and-secondary-windows"></a>Birincil ve ikincil pencereleri tanımlama
+
+Birincil ve ikincil pencerelerin ayrı gün aralıkları olmalıdır. Örnek olarak, Salı – Perşembe ve Cumartesi – Pazar ayının ikincili bir pencere yer aldığı bir örnektir.
+
+Veri ambarınızın bakım zamanlamasını değiştirmek için aşağıdaki adımları izleyin:
+1.  [Azure Portal](https://portal.azure.com/)oturum açın.
+2.  Güncelleştirmek istediğiniz veri ambarını seçin. Sayfa, genel bakış dikey penceresinde açılır. 
+3.  Genel Bakış dikey penceresinde **bakım zamanlaması (Önizleme) Özeti** bağlantısını seçerek bakım zamanlaması ayarları sayfasını açın. Ya da sol taraftaki kaynak menüsünde **bakım zamanlaması** seçeneğini belirleyin.  
+
+    ![Genel Bakış dikey penceresi seçenekleri](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
+
+4. Sayfanın üst kısmındaki seçenekleri kullanarak birincil bakım pencereniz için tercih edilen gün aralığını belirler. Bu seçim, birincil pencerenizin hafta içi veya hafta sonu üzerinde mi gerçekleşeceğini belirler. Seçiminiz, açılan değerleri güncelleştirecek. Önizleme süresince bazı bölgeler, kullanılabilir **gün** seçeneklerinin tam kümesini henüz desteklemeyebilir.
+
+   ![Bakım ayarları dikey penceresi](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
+
+5. Açılan liste kutularını kullanarak tercih ettiğiniz birincil ve ikincil bakım pencerelerini seçin:
+   - **Gün**: seçili pencere sırasında bakım gerçekleştirmek için tercih edilen gün.
+   - **Başlangıç zamanı**: bakım penceresi için tercih edilen başlangıç zamanı.
+   - **Zaman penceresi**: zaman pencerenizin tercih edilen süresi.
+
+   Dikey pencerenin alt kısmındaki **zamanlama Özeti** alanı, seçtiğiniz değerlere göre güncelleştirilir. 
+  
+6. **Kaydet**' i seçin. Yeni zamanlamanız artık etkin olduğunu onaylayan bir ileti görüntülenir. 
+
+   Bakım zamanlamasını desteklemeyen bir bölgede bir zamanlama kaydediyorsanız aşağıdaki ileti görüntülenir. Ayarlarınız kaydedilir ve bu özellik seçtiğiniz bölgede kullanılabilir hale geldiğinde etkin hale gelir.    
+
+   ![Bölge kullanılabilirliği hakkında ileti](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
+
+## <a name="next-steps"></a>Sonraki adımlar
 - Azure Izleyici 'yi kullanarak uyarı oluşturma, görüntüleme ve yönetme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-usage) .
 - Günlük uyarı kuralları için Web kancası eylemleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) .
 - [Daha fazla bilgi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) Eylem grupları oluşturma ve yönetme.
