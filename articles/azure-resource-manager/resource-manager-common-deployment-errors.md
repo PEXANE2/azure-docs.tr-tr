@@ -6,20 +6,20 @@ author: tfitzmac
 keywords: Dağıtım hatası, Azure dağıtımı, Azure 'a dağıtma
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 08/30/2019
+ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0e03cd3747fe6770be7dddaf36d634547ed75b39
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: ac700592a63e88936593c24f8f7ce06a08e289ce
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718950"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972683"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme
 
 Bu makalede bazı yaygın Azure dağıtım hataları açıklanmakta ve hatalar çözümlenme bilgileri sağlanmaktadır. Dağıtım hatası için hata kodu bulamazsanız bkz. [bulma hata kodu](#find-error-code).
 
-Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bize bize izin verin. Bu sayfanın en altında geri bildirimde olabilirsiniz. Geri bildirim, GitHub sorunlarıyla izlenir. 
+Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bize bize izin verin. Bu sayfanın en altında geri bildirimde olabilirsiniz. Geri bildirim, GitHub sorunlarıyla izlenir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,7 +34,9 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | AuthorizationFailed | Hesabınızın veya hizmet sorumlusunun dağıtımı tamamlaması için yeterli erişimi yok. Hesabınızın ait olduğu rolü ve dağıtım kapsamına erişimini denetleyin.<br><br>Gerekli bir kaynak sağlayıcısı kayıtlı olmadığında bu hatayı alabilirsiniz. | [Azure rol tabanlı Access Control](../role-based-access-control/role-assignments-portal.md)<br><br>[Kaydı çözümle](resource-manager-register-provider-errors.md) |
 | Işlemindeki hatalı istek | Kaynak Yöneticisi tarafından beklenildiği eşleşmeyen dağıtım değerleri gönderdiniz. Sorun gidermeye yardımcı olması için iç durum iletisini kontrol edin. | [Şablon başvurusu](/azure/templates/) ve [Desteklenen konumlar](resource-location.md) |
 | Uzantıları | Kaynağın geçerli durumunda izin verilmeyen bir işlem isteğinde bulunuyoruz. Örneğin, yalnızca bir VM oluşturulurken veya VM serbest bırakıldığında disk yeniden boyutlandırılmasına izin verilir. | |
-| DeploymentActive | Bu kaynak grubuna yönelik eşzamanlı dağıtımın tamamlanmasını bekleyin. | |
+| Deploymentactiveanddüzenlenemeyen | Bu kaynak grubuna yönelik eşzamanlı dağıtımın tamamlanmasını bekleyin. | |
+| Deploymentnameınvalidcharacters | Dağıtım adı yalnızca harf, rakam, '-', '. ' veya ' _ ' içerebilir. | |
+| Deploymentnamelengthlimitexceıbaşında | Dağıtım adları 64 karakterle sınırlıdır.  | |
 | DeploymentFailed | DeploymentFailed hatası, hatayı çözmeniz için gereken ayrıntıları sağlamayan genel bir hatadır. Daha fazla bilgi sağlayan bir hata kodu için hata ayrıntılarına bakın. | [Hata kodunu bul](#find-error-code) |
 | Deploymentquotageçildi | Kaynak grubu başına 800 dağıtım sınırına ulaşırsanız, artık gerekli olmayan geçmişten dağıtımları silin. | [Dağıtım sayısı 800 ' i aştığında hatayı çözümle](deployment-quota-exceeded.md) |
 | DnsRecordInUse | DNS kayıt adı benzersiz olmalıdır. Farklı bir ad girin. | |
@@ -124,13 +126,13 @@ Dağıtım hakkında daha fazla ayrıntı görürsünüz. Hata hakkında daha fa
 
 ![dağıtım başarısız oldu](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
-Hata iletisini ve hata kodlarını görürsünüz. İki hata kodu olduğuna dikkat edin. İlk hata kodu (**DeploymentFailed**), hataya çözmek için ihtiyacınız olan ayrıntıları sağlamayan genel bir hatadır. İkinci hata kodu (**StorageAccountNotFound**) ihtiyacınız olan ayrıntıları sağlar. 
+Hata iletisini ve hata kodlarını görürsünüz. İki hata kodu olduğuna dikkat edin. İlk hata kodu (**DeploymentFailed**), hataya çözmek için ihtiyacınız olan ayrıntıları sağlamayan genel bir hatadır. İkinci hata kodu (**StorageAccountNotFound**) ihtiyacınız olan ayrıntıları sağlar.
 
-![Hata ayrıntıları](./media/resource-manager-common-deployment-errors/error-details.png)
+![hata ayrıntıları](./media/resource-manager-common-deployment-errors/error-details.png)
 
 ## <a name="enable-debug-logging"></a>Hata ayıklama günlüğünü etkinleştir
 
-Bazen sorunun ne olduğunu öğrenmek için istek ve yanıt hakkında daha fazla bilgiye ihtiyacınız vardır. Dağıtım sırasında, dağıtım sırasında ek bilgilerin günlüğe kaydedilmesini isteyebilirsiniz. 
+Bazen sorunun ne olduğunu öğrenmek için istek ve yanıt hakkında daha fazla bilgiye ihtiyacınız vardır. Dağıtım sırasında, dağıtım sırasında ek bilgilerin günlüğe kaydedilmesini isteyebilirsiniz.
 
 ### <a name="powershell"></a>PowerShell
 

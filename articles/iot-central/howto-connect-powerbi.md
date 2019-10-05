@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/09/2019
+ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3ce2f4304787107d0d6875333e4630dae8d7d1dd
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877467"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973781"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central verilerinizi Power BI panosunda görselleştirin ve çözümleyin
 
@@ -31,16 +31,23 @@ IoT cihazlarınızın performansını izlemek üzere güçlü bir Power BI panos
 
 Bu çözüm, Azure Blob Depolama hesabınızdaki verileri [sürekli veri dışa aktarma](howto-export-data.md)işleminden alan işlem hattını ayarlar. Bu veriler, verileri işlemek ve dönüştürmek için Azure Işlevleri, Azure Data Factory ve Azure SQL veritabanı 'na akar. Çıktı, bir PBIX dosyası olarak indirebileceğiniz bir Power BI raporunda görselleştirilir ve analiz edilebilir. Tüm bu kaynaklar Azure aboneliğinizde oluşturulur, böylece her bileşeni gereksinimlerinize uyacak şekilde özelleştirebilirsiniz.
 
+> [!Note] 
+> Azure IoT Central Power BI çözümü, IoT Tak ve Kullan desteklemeyen IoT Central uygulamalarıyla birlikte çalışarak (günümüzde uygulama Önizleme)
+
 ## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Microsoft AppSource [Azure IoT Central için Power BI çözümünü](https://aka.ms/iotcentralpowerbisolutiontemplate) alın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Çözümü ayarlamak için aşağıdakiler gereklidir:
 - Bir Azure aboneliğine erişim
-- IoT Central uygulamanızdan [sürekli veri dışa aktarma](howto-export-data.md) kullanarak verileri dışarı aktarın. Power BI panosundan en iyi şekilde yararlanmak için ölçümleri, cihazları ve cihaz şablonu akışlarını açmanızı öneririz.
+- IoT Tak ve Kullan desteklemeyen IoT Central uygulaması (günümüzde uygulama Önizleme)
+- IoT Central uygulamanızdan Azure Blob depolama için sürekli veri aktarma ayarlama
+    - Veri biçiminin avro olduğundan emin olun
+    - Power BI panosundan en iyi şekilde yararlanmak için ölçümleri, cihazları ve cihaz şablonu akışlarını açmanızı öneririz.
+    - [Sürekli veri vermeyi ayarlamayı](howto-export-data-blob-storage.md) öğrenin
 - Power BI Desktop (en son sürüm)
 - Power BI Pro (panoyu başkalarıyla paylaşmak istiyorsanız)
 
-## <a name="reports"></a>Raporlar
+## <a name="reports"></a>Reports
 
 İki rapor otomatik olarak oluşturulur. 
 
@@ -65,7 +72,7 @@ Blob depolamaya her yeni dosya yazıldığında Azure Işlevi uygulaması tetikl
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory, SQL veritabanına bağlı hizmet olarak bağlanır. Verileri işleyen ve analiz tablolarında depolayan saklı yordam etkinliklerini çalıştırır.
 
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>Azure SQL Veritabanı
 Bu tablolar varsayılan raporları doldurmak için otomatik olarak oluşturulur. Power BI içinde bu şemaları keşfet ve bu veriler üzerinde kendi görselleştirmelerinizi oluşturabilirsiniz.
 
 | Tablo adı |

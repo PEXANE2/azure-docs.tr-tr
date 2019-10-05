@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 08/01/2019
 ms.author: diberry
-ms.openlocfilehash: f56798359cdc8739a363bed3bfddadd584617adf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815509"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973800"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Soru-Cevap Oluşturma Hizmeti nedir?
 
@@ -38,7 +38,7 @@ Bir Soru-Cevap Oluşturma Bilgi Bankası yayımlandığında, istemci uygulamas�
 
 |Adım|Eylem|
 |:--|:--|
-|1\.|İstemci uygulaması, kullanıcının _sorusunu_ (metni kendi kelimelerimi) gönderir, "nasıl yaparım? program aracılığıyla bilgi bankamı Güncelleştir" Bilgi Bankası uç noktanıza.|
+|1|İstemci uygulaması, kullanıcının _sorusunu_ (metni kendi kelimelerimi) gönderir, "nasıl yaparım? program aracılığıyla bilgi bankamı Güncelleştir" Bilgi Bankası uç noktanıza.|
 |2|Soru-Cevap Oluşturma, doğru yanıtı ve en iyi yanıtı aramayı iyileştirmek için kullanılabilecek herhangi bir izleme istemini sağlamak için eğitilen Bilgi Bankası 'nı kullanır. Soru-Cevap Oluşturma JSON biçimli bir yanıt döndürür.|
 |3|İstemci uygulaması, konuşmayı sürdürmek üzere kararlar almak için JSON yanıtını kullanır. Bu kararlar, en iyi yanıt aramasını iyileştirmek için en iyi yanıtı göstermeyi veya daha fazla seçenek sunmayı içerebilir. |
 |||
@@ -77,29 +77,16 @@ Soru-Cevap Oluşturma, tam geliştirme yaşam döngüsü ile tümleştirme için
 
 ## <a name="how-do-i-start"></a>Kullanmaya nasıl başlayabilirim?
 
-**1. adım**: [Azure Portal](https://portal.azure.com)bir soru-cevap oluşturma kaynağı oluşturun. 
+**1. adım**: [Azure Portal](https://portal.azure.com)soru-cevap oluşturma kaynak oluşturma. 
 
-**2. adım**: [Soru-cevap oluşturma](https://www.qnamaker.ai) portalında bir Bilgi Bankası oluşturun. Bilgi Bankası oluşturmak için [dosya ve URL 'ler](../concepts/data-sources-supported.md) ekleyin.  
+**2. adım**: [soru-cevap oluşturma](https://www.qnamaker.ai) portalında Bilgi Bankası oluşturma. Bilgi Bankası oluşturmak için [dosya ve URL 'ler](../concepts/data-sources-supported.md) ekleyin.  
 
-**Adım 3**: [Kıvrımlı](../quickstarts/get-answer-from-kb-using-curl.md) veya [Postman](../quickstarts/get-answer-from-kb-using-postman.md)kullanarak özel uç noktanıza bilgi bankasını ve testinizi yayımlayın. 
+**Adım 3**: [kıvrımlı](../quickstarts/get-answer-from-kb-using-curl.md) veya [Postman](../quickstarts/get-answer-from-kb-using-postman.md)kullanarak özel uç noktanıza bilgi bankasını ve testinizi yayımlayın. 
 
-**4. adım**: İstemci uygulamanızdan, programlı olarak bilgi tabanınızın bitiş noktasını çağırın ve JSON yanıtını okuyarak kullanıcıya en iyi yanıtı görüntüleyin.  
-
-## <a name="news-and-updates"></a>Haberler ve güncelleştirmeler
-
-Soru-Cevap Oluşturma yenilikleri öğrenin.
-
-* Haziran 2019
-    * Fransızca, İtalyanca, Almanca, İspanyolca ve Portekizce için geliştirilmiş derecelendiricisini modeli
-* 2019 Nisan
-    * Destek Web sitesi içeriği ayıklama
-    * SharePoint belge desteği
-* Mart 2019
-    * Etkin öğrenme 
-    * İngilizce için geliştirilmiş NLP derecelendiricisini modeli, 
+**4. adım**: istemci uygulamanızdan, programlı olarak bilgi tabanınızın bitiş noktasını ÇAĞıRıN ve JSON yanıtını okuyarak kullanıcıya en iyi yanıtı görüntüleyin.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Soru-Cevap Oluşturma, özel bilgi tabanınızı oluşturmak, yönetmek ve dağıtmak için ihtiyacınız olan her şeyi sağlar. 
 
 > [!div class="nextstepaction"]
-> [Soru-Cevap Oluşturma hizmeti oluşturma](../how-to/set-up-qnamaker-service-azure.md)
+> [En son değişiklikleri gözden geçirin](../whats-new.md)

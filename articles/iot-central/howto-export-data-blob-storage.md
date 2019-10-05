@@ -4,27 +4,27 @@ description: Azure IoT Central uygulamanızdan Azure Blob depolama alanına veri
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/08/2019
+ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
-manager: peterpr
-ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+manager: corywink
+ms.openlocfilehash: 7ee9d2bf32fcec5f5f4435fe09916f437d6323ee
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876041"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971644"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Verilerinizi Azure Blob depolama alanına aktarma
 
-[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+[!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 *Bu konu, Yöneticiler için geçerlidir.*
 
-Bu makalede, Azure **BLOB depolama hesabınıza**düzenli aralıklarla veri aktarmak için Azure IoT Central sürekli veri dışa aktarma özelliğinin nasıl kullanılacağı açıklanır. **Ölçümleri**, **cihazları**ve **cihaz şablonlarını** Apache avro biçimindeki dosyalara aktarabilirsiniz. Bu veriler, Microsoft Power BI 'de Azure Machine Learning veya uzun süreli eğilim analizinde eğitim modelleri gibi soğuk yol analizi için kullanılabilir.
+Bu makalede, Azure **BLOB depolama hesabınıza** veya **Azure Data Lake Storage 2. depolama hesabınıza**düzenli aralıklarla veri aktarmak için Azure IoT Central sürekli veri dışa aktarma özelliğinin nasıl kullanılacağı açıklanır. **Ölçümleri**, **cihazları**ve **cihaz şablonlarını** JSON veya Apache avro biçimindeki dosyalara dışarı aktarabilirsiniz. Bu veriler, Microsoft Power BI 'de Azure Machine Learning veya uzun süreli eğilim analizinde eğitim modelleri gibi soğuk yol analizi için kullanılabilir.
 
 > [!Note]
-> Bir kez daha, sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
+> Sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -36,17 +36,15 @@ Bu makalede, Azure **BLOB depolama hesabınıza**düzenli aralıklarla veri akta
 
 Uygulamasına dışarı aktarmak için mevcut bir depolama alanı yoksa, aşağıdaki adımları izleyin:
 
-## <a name="create-storage-account"></a>Depolama hesabı oluştur
-
-1. [Azure Portal yeni bir depolama hesabı](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)oluşturun. [Azure depolama belgeleri](https://aka.ms/blobdocscreatestorageaccount)' nde daha fazla bilgi edinebilirsiniz.
-2. Hesap türü için **genel amaçlı** veya **BLOB depolama**' yı seçin.
-3. Bir abonelik seçin. 
+1. [Azure Portal yeni bir depolama hesabı](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)oluşturun. Yeni [Azure Blob depolama hesapları](https://aka.ms/blobdocscreatestorageaccount) veya [Azure Data Lake Storage v2 depolama hesapları](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account)oluşturma hakkında daha fazla bilgi edinebilirsiniz.
 
     > [!Note] 
-    > Artık verileri, Kullandıkça Öde IoT Central uygulamanızla **aynı olmayan** diğer aboneliklerle dışarı aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanacaksınız.
+    > Verileri bir ADLS v2 depolama hesabına aktarmayı seçerseniz, **Blobstorage**olarak **hesap türünü** seçmeniz gerekir. 
 
-4. Depolama hesabınızda bir kapsayıcı oluşturun. Depolama hesabınıza gidin. **BLOB hizmeti**altında bloblara **gözatamıyorum**' ı seçin. Yeni bir kapsayıcı oluşturmak için üstte **+ kapsayıcı** seçin
+    > [!Note] 
+    > Kullandıkça Öde IoT Central uygulamanız için olandan farklı aboneliklerdeki depolama hesaplarına veri aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanacaksınız.
 
+2. Depolama hesabınızda bir kapsayıcı oluşturun. Depolama hesabınıza gidin. **BLOB hizmeti**altında **bloblara gözatamıyorum**' ı seçin. Yeni bir kapsayıcı oluşturmak için üst kısımdaki **+ kapsayıcı** ' yı seçin.
 
 ## <a name="set-up-continuous-data-export"></a>Sürekli veri dışarı aktarma ayarlama
 
@@ -54,19 +52,17 @@ Verilerin dışarı aktarılacağı bir depolama hedefine sahip olduğunuza gör
 
 1. IoT Central uygulamanızda oturum açın.
 
-2. Sol taraftaki menüden **sürekli veri dışarı aktarma**' yı seçin.
+2. Sol taraftaki menüden **veri dışarı aktarma**' yı seçin.
 
     > [!Note]
-    > Sol menüde sürekli veri dışa aktarma görmüyorsanız, uygulamanızda yönetici değilsiniz demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
-
-    ![Yeni CDE Olay Hub 'ı oluştur](media/howto-export-data/export_menu1.png)
+    > Sol menüde veri dışa aktarma görmüyorsanız, uygulamanızda yönetici değilsiniz demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
 
 3. Sağ üst köşedeki **+ Yeni** düğmesini seçin. Dışarı aktarma işlemi hedefi olarak **Azure Blob depolama** ' yı seçin. 
 
     > [!NOTE] 
     > Uygulama başına en fazla dışarı aktarma sayısı beştir. 
 
-    ![Yeni sürekli veri dışa aktarma oluştur](media/howto-export-data/export_new1.png)
+    ![Yeni sürekli veri dışa aktarma oluştur](media/howto-export-data/export-new2.png)
 
 4. Aşağı açılan liste kutusunda **depolama hesabı ad**alanınızı seçin. Ayrıca, listede **bir bağlantı dizesi girerek**son seçeneği de seçebilirsiniz. 
 
@@ -76,34 +72,41 @@ Verilerin dışarı aktarılacağı bir depolama hedefine sahip olduğunuza gör
     > [!NOTE] 
     > 7 günlük deneme uygulamaları için sürekli veri vermeyi yapılandırmanın tek yolu bir bağlantı dizesidir. Bunun nedeni 7 günlük deneme uygulamalarının ilişkili bir Azure aboneliğine sahip olmaması olabilir.
 
-    ![Yeni CDE Olay Hub 'ı oluştur](media/howto-export-data/export-create-blob.png)
+    ![Bloba yeni dışarı aktarma oluştur](media/howto-export-data/export-create-blob2.png)
 
-5. Seçim **Bir bağlantı dizesi girin**' i seçerseniz, Bağlantı dizenizi yapıştırmanız için yeni bir kutu belirir. İçin bağlantı dizesini almak için:
-    - Depolama hesabı, Azure portal depolama hesabına gidin.
-        - **Ayarlar**altında **erişim anahtarları** ' nı seçin.
-        - KEY1 bağlantı dizesini veya key2 bağlantı dizesini kopyalayın
+5. Seçim **Bir bağlantı dizesi girin**' i seçerseniz, Bağlantı dizenizi yapıştırmanız için yeni bir kutu belirir. Depolama hesabınızın bağlantı dizesini almak için Azure portal:- **Ayarlar**altında **erişim anahtarları** ' nı seçin-KEY1 bağlantı dizesini veya key2 bağlantı dizesini kopyalayın
  
-6. Açılan liste kutusundan bir kapsayıcı seçin.
+6. Açılan liste kutusundan bir kapsayıcı seçin. Bir Kapsayıcınız yoksa Azure portal depolama hesabınıza gidin:
+    - **BLOB hizmeti**altında **Bloblar**' ı seçin. **+ Kapsayıcı** ' ya tıklayın ve kapsayıcınıza bir ad verin. Verileriniz için bir genel erişim düzeyi seçin (herhangi bir sürekli veri dışa aktarma ile çalışır). [Azure Storage belgelerinden](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)daha fazla bilgi edinin.
 
-7. **Dışarı aktarılacak veriler**' in altında, türü **üzerine**ayarlayarak dışarı aktarılacak her bir veri türünü belirtin.
+7. Tercih ettiğiniz **veri biçimini** SEÇIN: JSON veya [Apache avro](https://avro.apache.org/docs/current/index.html) Format.
 
-6. Sürekli veri dışa aktarmayı açmak için, **veri dışa aktarmanın** **Açık**olduğundan emin olun. **Kaydet**’i seçin.
+8. **Dışarı aktarılacak veriler**' in altında, türü **üzerine**ayarlayarak dışarı aktarılacak her bir veri türünü belirtin.
 
-   ![Sürekli veri vermeyi yapılandırma](media/howto-export-data/export-list-blob.png)
+9. Sürekli veri dışa aktarmayı açmak için, **veri dışa aktarma** geçişi 'nin **Açık**olduğundan emin olun. **Kaydet**’i seçin.
 
-7. Birkaç dakika sonra verileriniz seçtiğiniz hedefte görüntülenir.
+   ![Sürekli veri vermeyi yapılandırma](media/howto-export-data/export-list-blob2.png)
+
+10. Birkaç dakika sonra verileriniz depolama hesabınızda görüntülenir.
 
 
-## <a name="export-to-azure-blob-storage"></a>Azure Blob depolama 'ya aktarma
+## <a name="path-structure"></a>Yol yapısı
 
-Ölçümler, cihazlar ve cihaz şablonları verileri, depolama hesabınıza dakikada bir kez, son verilden bu yana yapılan değişiklikleri içeren her bir dosyayla birlikte verilir. Bu veriler [Apache avro](https://avro.apache.org/docs/current/index.html) biçiminde bulunur ve üç klasöre aktaralınacaktır. Depolama hesabınızdaki varsayılan yollar şunlardır:
-- İletiler: {Container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Cihazlar: {Container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- Cihaz şablonları: {Container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+Ölçümler, cihazlar ve cihaz şablonları verileri, depolama hesabınıza dakikada bir kez, son verilden bu yana yapılan değişiklikleri içeren her bir dosyayla birlikte verilir. Verilen veriler, JSON veya avro biçimindeki üç klasöre yerleştirilir. Depolama hesabınızdaki varsayılan yollar şunlardır:
+- Mesajlar: {Container}/measurements/{hubname}/{yyyy}/{mm}/{dd}/{ss}/{mm}/{filename}
+- Cihazlar: {Container}/Devices/{yyyy}/{mm}/{dd}/{ss}/{mm}/{filename}
+- Cihaz şablonları: {Container}/Devicetemplates/{yyyy}/{mm}/{dd}/{ss}/{mm}/{filename}
+
+Dosyaya giderek ve **blobu Düzenle** sekmesini seçerek Azure Portal dışarıya aktarılmış dosyalara gidebilirsiniz.
+
+## <a name="data-format"></a>Veri biçimi 
 
 ### <a name="measurements"></a>Ölçümler
 
 Yayımlanan ölçüm verilerinde, bu süre boyunca tüm cihazlardan IoT Central tarafından alınan tüm yeni iletiler bulunur. İçeri aktarılmış dosyalar, blob depolamaya [IoT Hub ileti yönlendirme tarafından içeri](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) aktarılmış ileti dosyalarıyla aynı biçimi kullanır.
+
+> [!NOTE]
+> Cihazlarınızın `contentType: application/JSON` ve `contentEncoding:utf-8` (veya `utf-16`, `utf-32`) olan iletiler göndermesini sağlayın. Bir örnek için [IoT Hub belgelerine](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-body) bakın.
 
 > [!NOTE]
 > Ölçümleri gönderen cihazlar cihaz kimliklerine göre temsil edilir (aşağıdaki bölümlere bakın). Cihazların adlarını almak için cihaz anlık görüntülerini dışarı aktarın. Her ileti kaydını, cihaz kaydının **DeviceID** 'Siyle eşleşen **connectiondeviceıd** kullanarak ilişkilendirin.
@@ -111,25 +114,25 @@ Yayımlanan ölçüm verilerinde, bu süre boyunca tüm cihazlardan IoT Central 
 Aşağıdaki örnek, kodu çözülmüş bir avro dosyasındaki kaydı gösterir:
 
 ```json
-{
-    "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
-    "Properties": {},
-    "SystemProperties": {
-        "connectionDeviceId": "<connectionDeviceId>",
-        "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "<generationId>",
-        "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
-    },
-    "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
+{ 
+  "EnqueuedTimeUtc":"2019-06-11T00:00:08.2250000Z",
+  "Properties":{},
+  "SystemProperties":{ 
+    "connectionDeviceId":"<deviceId>",
+    "connectionAuthMethod":"{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+    "connectionDeviceGenerationId":"<generationId>",
+    "enqueuedTime":"2019-06-11T00:00:08.2250000Z"
+  },
+  "Body":"{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
 }
 ```
 
 ### <a name="devices"></a>Cihazlar
 
 Sürekli veri dışa aktarma ilk açıldığında, tüm cihazları içeren tek bir anlık görüntü dışa aktarılabilir. Her cihaz şunları içerir:
-- `id`IoT Central cihaz
-- `name`Cihazın
-- `deviceId`[cihaz sağlama hizmeti](https://aka.ms/iotcentraldocsdps) 'nden
+- IoT Central cihazın `id`
+- @no__t-cihazın 0
+- [cihaz sağlama hizmeti](https://aka.ms/iotcentraldocsdps) 'nden 0 @no__t
 - Cihaz şablonu bilgileri
 - Özellik değerleri
 - Ayar değerleri
@@ -144,42 +147,42 @@ Dakikada yeni bir anlık görüntü yazılır. Anlık görüntü şunları içer
 >
 > Her cihazın ait olduğu cihaz şablonu, bir cihaz şablonu KIMLIĞI ile temsil edilir. Cihaz şablonunun adını almak için cihaz şablonu anlık görüntülerini dışarı aktarın.
 
-Kodu çözülmüş avro dosyasındaki bir kayıt şöyle görünebilir:
+İçe aktarılmış dosyalar kayıt başına tek bir satır içerir. Aşağıdaki örnek, kodu çözülen avro biçimindeki bir kaydı gösterir:
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerator 2",
-    "simulated": true,
-    "deviceId": "<deviceId>",
-    "deviceTemplate": {
-        "id": "<template id>",
-        "version": "1.0.0"
+{ 
+  "id":"<id>",
+  "name":"Refrigerator 2",
+  "simulated":true,
+  "deviceId":"<deviceId>",
+  "deviceTemplate":{ 
+    "id":"<template id>",
+    "version":"1.0.0"
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":"New York",
+      "maintCon":true,
+      "tempThresh":20
     },
-    "properties": {
-        "cloud": {
-            "location": "New York",
-            "maintCon": true,
-            "tempThresh": 20
-        },
-        "device": {
-            "lastReboot": "2018-02-09T22:22:47.156Z"
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": 0
-        }
+    "device":{ 
+      "lastReboot":"2018-02-09T22:22:47.156Z"
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":0
+    }
+  }
 }
 ```
 
 ### <a name="device-templates"></a>Cihaz şablonları
 
 Sürekli veri dışa aktarma ilk açıldığında, tüm cihaz şablonlarının bulunduğu tek bir anlık görüntü dışa aktarılabilir. Her cihaz şablonu şunları içerir:
-- `id`cihaz şablonu
-- `name`cihaz şablonu
-- `version`cihaz şablonu
+- cihaz şablonunun `id`
+- cihaz şablonunun `name`
+- cihaz şablonunun `version`
 - Ölçüm veri türleri ve min/max değerleri.
 - Özellik veri türleri ve varsayılan değerler.
 - Veri türleri ve varsayılan değerler ayarlanıyor.
@@ -192,79 +195,79 @@ Dakikada yeni bir anlık görüntü yazılır. Anlık görüntü şunları içer
 > [!NOTE]
 > Son anlık görüntü aktarılmadığından, cihaz şablonları silinir. Şu anda anlık görüntülerde Silinen cihaz şablonları için göstergeler yok.
 
-Kodu çözülmüş avro dosyasındaki bir kayıt şöyle görünebilir:
+İçe aktarılmış dosyalar kayıt başına tek bir satır içerir. Aşağıdaki örnek, kodu çözülen avro biçimindeki bir kaydı gösterir:
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerated Vending Machine",
-    "version": "1.0.0",
-    "measurements": {
-        "telemetry": {
-            "humidity": {
-                "dataType": "double",
-                "name": "Humidity"
-            },
-            "magnetometerX": {
-                "dataType": "double",
-                "name": "Magnetometer X"
-            },
-            "magnetometerY": {
-                "dataType": "double",
-                "name": "Magnetometer Y"
-            },
-            "magnetometerZ": {
-                "dataType": "double",
-                "name": "Magnetometer Z"
-            }
-        },
-        "states": {
-            "connectivity": {
-                "dataType": "enum",
-                "name": "Connectivity"
-            }
-        },
-        "events": {
-            "opened": {
-                "name": "Door Opened",
-                "category": "informational"
-            }
-        }
+{ 
+  "id":"<id>",
+  "name":"Refrigerated Vending Machine",
+  "version":"1.0.0",
+  "measurements":{ 
+    "telemetry":{ 
+      "humidity":{ 
+        "dataType":"double",
+        "name":"Humidity"
+      },
+      "magnetometerX":{ 
+        "dataType":"double",
+        "name":"Magnetometer X"
+      },
+      "magnetometerY":{ 
+        "dataType":"double",
+        "name":"Magnetometer Y"
+      },
+      "magnetometerZ":{ 
+        "dataType":"double",
+        "name":"Magnetometer Z"
+      }
     },
-    "settings": {
-        "device": {
-            "fanSpeed": {
-                "dataType": "double",
-                "name": "Fan Speed",
-                "initialValue": 0
-            }
-        }
+    "states":{ 
+      "connectivity":{ 
+        "dataType":"enum",
+        "name":"Connectivity"
+      }
     },
-    "properties": {
-        "cloud": {
-            "location": {
-                "dataType": "string",
-                "name": "Location",
-                "initialValue": "Seattle"
-            },
-            "maintCon": {
-                "dataType": "boolean",
-                "name": "Maintenance Contract",
-                "initialValue": true
-            },
-            "tempThresh": {
-                "dataType": "double",
-                "name": "Temperature Alert Threshold",
-                "initialValue": 30
-            }
-        },
-        "device": {
-            "lastReboot": {
-                "dataType": "dateTime",
-                "name": "Last Reboot"
-            }
-        }
+    "events":{ 
+      "opened":{ 
+        "name":"Door Opened",
+        "category":"informational"
+      }
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":{ 
+        "dataType":"double",
+        "name":"Fan Speed",
+        "initialValue":0
+      }
+    }
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":{ 
+        "dataType":"string",
+        "name":"Location",
+        "initialValue":"Seattle"
+      },
+      "maintCon":{ 
+        "dataType":"boolean",
+        "name":"Maintenance Contract",
+        "initialValue":true
+      },
+      "tempThresh":{ 
+        "dataType":"double",
+        "name":"Temperature Alert Threshold",
+        "initialValue":30
+      }
+    },
+    "device":{ 
+      "lastReboot":{ 
+        "dataType":"dateTime",
+        "name":"Last Reboot"
+      }
+    }
+  }
 }
 ```
 

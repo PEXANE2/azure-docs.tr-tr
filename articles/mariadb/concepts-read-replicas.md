@@ -1,17 +1,17 @@
 ---
 title: MariaDB için Azure veritabanı 'nda çoğaltmaları okuma
-description: Bu makalede, MariaDB için Azure veritabanı için okuma çoğaltmaları açıklanmaktadır.
+description: "MariaDB için Azure veritabanı 'nda çoğaltmaları okuma hakkında bilgi edinin: bölge seçme, çoğaltmalar oluşturma, çoğaltmalara bağlanma, çoğaltmayı izleme ve çoğaltmayı durdurma."
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 5018cab1213fb99f4c3b07944d0cb3172d1cd2c7
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 29725c302887448689f4aafd86f1f834d81c23ed
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123220"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973586"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda çoğaltmaları okuma
 
@@ -19,7 +19,7 @@ ms.locfileid: "71123220"
 
 Çoğaltmalar, yönettiğiniz yeni sunuculardır ve bu sunucular, MariaDB sunucuları için normal Azure veritabanı ile benzerdir. Her okuma çoğaltması için, sanal çekirdekler ve depolama biriminde GB/ay içinde sağlanan işlem için faturalandırılırsınız.
 
-GTıD çoğaltma hakkında daha fazla bilgi edinmek için lütfen [MariaDB çoğaltma belgelerine](https://mariadb.com/kb/en/library/gtid/)bakın.
+GTıD çoğaltma hakkında daha fazla bilgi için bkz. [MariaDB çoğaltma belgeleri](https://mariadb.com/kb/en/library/gtid/).
 
 ## <a name="when-to-use-a-read-replica"></a>Okuma çoğaltması ne zaman kullanılır?
 
@@ -40,10 +40,10 @@ Ana sunucunuzdaki farklı bir bölgede bir okuma çoğaltması oluşturabilirsin
 
 [MariaDB Için Azure veritabanı bölgesine](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)bir ana sunucu ekleyebilirsiniz.  Ana sunucu, eşleştirilmiş bölge veya evrensel çoğaltma bölgelerinde bir çoğaltmaya sahip olabilir. Aşağıdaki resimde, ana bölgenize göre hangi çoğaltma bölgelerinin kullanılabildiği gösterilmektedir.
 
-[![Çoğaltma bölgelerini oku](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![ çoğaltma bölgelerini oku](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Evrensel çoğaltma bölgeleri
-Ana sunucunuzun bulunduğu yere bakılmaksızın aşağıdaki bölgelerin herhangi birinde her zaman bir okuma çoğaltması oluşturabilirsiniz. Evrensel çoğaltma bölgeleri şunlardır:
+Ana sunucunuzun bulunduğu yere bakılmaksızın, aşağıdaki bölgelerin herhangi birinde bir okuma çoğaltması oluşturabilirsiniz. Desteklenen evrensel çoğaltma bölgeleri şunları içerir:
 
 Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu ABD 2, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Orta Kuzey ABD, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, UK Batı, Batı Avrupa, Batı ABD, Batı ABD 2.
 
@@ -55,9 +55,9 @@ Olağanüstü durum kurtarma planlaması için çapraz bölge çoğaltmaları ku
 
 Ancak göz önünde bulundurulması gereken sınırlamalar vardır: 
 
-* Bölgesel kullanılabilirlik: MariaDB için Azure veritabanı Batı ABD 2, Fransa Orta, BAE Kuzey ve Almanya Orta sunulmaktadır. Ancak, eşleştirilmiş bölgeleri kullanılamaz.
+* Bölgesel kullanılabilirlik: MariaDB için Azure veritabanı Batı ABD 2, Fransa Orta, BAE Kuzey ve Almanya Orta kullanılabilir. Ancak, eşleştirilmiş bölgeleri kullanılamaz.
     
-* Tek yönlü çiftler: Bazı Azure bölgeleri yalnızca bir yönde eşleştirilmelidir. Bu bölgeler Batı Hindistan, Brezilya Güney ve US Gov Virginia içerir. 
+* Tek yönlü çiftler: bazı Azure bölgeleri yalnızca bir yönde eşleştirilmelidir. Bu bölgeler Batı Hindistan, Brezilya Güney ve US Gov Virginia içerir. 
    Bu, Batı Hindistan 'deki bir ana sunucunun Güney Hindistan bir çoğaltma oluşturmasıdır. Ancak, Güney Hindistan bir ana sunucu Batı Hindistan bir çoğaltma oluşturamaz. Bunun nedeni, Batı Hindistan ikincil bölgesinin Güney Hindistan, ancak Güney Hindistan ikincil bölgesi Batı Hindistan değildir.
 
 
@@ -90,11 +90,11 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 
 MariaDB için Azure veritabanı, Azure Izleyici 'de **saniye cinsinden çoğaltma gecikmesi** sağlar. Bu ölçüm yalnızca çoğaltmalar için kullanılabilir.
 
-Bu ölçüm, MariaDB `seconds_behind_master` 'nin `SHOW SLAVE STATUS` komutunda kullanılabilir olan ölçüm kullanılarak hesaplanır.
+Bu ölçüm, MariaDB 'nin `SHOW SLAVE STATUS` komutunda bulunan `seconds_behind_master` ölçümü kullanılarak hesaplanır.
 
 Çoğaltma gecikmesi iş yükünüz için kabul edilebilir bir değere ulaştığında sizi bilgilendirmek için bir uyarı ayarlayın.
 
-## <a name="stop-replication"></a>Çoğaltmayı durdur
+## <a name="stop-replication"></a>Çoğaltmayı durdurma
 
 Ana ve çoğaltma arasında çoğaltmayı durdurabilirsiniz. Bir ana sunucu ve bir okuma çoğaltması arasında çoğaltma durdurulduktan sonra çoğaltma tek başına bir sunucu haline gelir. Tek başına sunucusundaki veriler, çoğaltma durdurma komutunun başlatıldığı zamanda çoğaltma üzerinde kullanılabilir olan veri. Tek başına sunucu, ana sunucu ile birlikte yakalamaz.
 
@@ -114,7 +114,7 @@ Okuma çoğaltmaları Şu anda yalnızca Genel Amaçlı ve bellek için Iyileşt
 
 ### <a name="master-server-restart"></a>Ana sunucu yeniden başlatması
 
-Var olan çoğaltmaları olmayan bir ana öğe için bir çoğaltma oluşturduğunuzda, ana, önce kendisini çoğaltma için hazırlamak üzere yeniden başlatılır. Lütfen bunu göz önünde bulundurun ve yoğun olmayan bir süre boyunca bu işlemleri gerçekleştirin.
+Var olan çoğaltmaları olmayan bir ana öğe için bir çoğaltma oluşturduğunuzda, ana, önce kendisini çoğaltma için hazırlamak üzere yeniden başlatılır. Bunu dikkate alın ve yoğun bir süre boyunca bu işlemleri gerçekleştirin.
 
 ### <a name="new-replicas"></a>Yeni çoğaltmalar
 
@@ -141,13 +141,13 @@ Ana sunucudaki kullanıcılar okuma çoğaltmalarına çoğaltılır. Bir okuma 
 
 ### <a name="server-parameters"></a>Sunucu parametreleri
 
-Verilerin eşitlenmemiş hale gelmesini önlemek ve olası veri kaybını veya bozulmasını önlemek için, okuma çoğaltmaları kullanılırken bazı sunucu parametrelerinin güncelleştirilmesini engellenir.
+Verilerin eşitlenmemiş duruma gelmesini ve olası veri kaybını önlemek için, okuma amaçlı çoğaltmaları kullanırken bazı sunucu parametreleri güncelleştirmeye karşı kilitlenir.
 
 Aşağıdaki sunucu parametreleri hem ana hem de çoğaltma sunucularında kilitlidir:
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) Parametresi, çoğaltma sunucularında kilitlidir.
+[@No__t-1](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) parametresi çoğaltma sunucularında kilitlidir.
 
 ### <a name="other"></a>Diğer
 

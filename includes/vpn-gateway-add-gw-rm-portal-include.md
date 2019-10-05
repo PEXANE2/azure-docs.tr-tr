@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 09/24/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 12d3f06ca349413231d69fc9de7b9d2f36645b23
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: ed828a09843648b129b701c9afd22aac9e2fa9b0
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273764"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970821"
 ---
 1. Portalda, sol tarafta **+ Kaynak oluştur**’a tıklayın ve arama alanına ‘Sanal Ağ Geçidi’ yazın. Arama sonuçlarında **Sanal ağ geçidi** seçeneğini bulun ve girişe tıklayın. **Sanal ağ geçidi** sayfasında **Oluştur**' a tıklayın. Bu işlem **Sanal ağ geçidi oluşturma** sayfasını açar.
 
@@ -24,28 +24,28 @@ ms.locfileid: "71273764"
 
    **Proje ayrıntıları**
 
-   - **Abonelik**: Açılan listeden kullanmak istediğiniz aboneliği seçin.
-   - **Kaynak grubu**: Bu sayfa üzerinde Sanal ağınızı seçtiğinizde bu ayar tekrar doldurulur.
+   - **Abonelik**: açılan listeden kullanmak istediğiniz aboneliği seçin.
+   - **Kaynak grubu**: Bu sayfada Sanal ağınızı seçtiğinizde bu ayar tekrar doldurulur.
 
    **Örnek ayrıntıları**
 
    - **Ad**: Ağ geçidinizi adlandırın. Ağ geçidinizi adlandırma ağ geçidi alt ağını adlandırmayla aynı değildir. Bu ad, oluşturduğunuz ağ geçidi nesnesinin adıdır.
    - **Bölge**: Bu kaynağı oluşturmak istediğiniz bölgeyi seçin. Ağ geçidinin bölgesi, sanal ağ ile aynı olmalıdır.
-   - **Ağ geçidi türü**: **VPN**' yi seçin. VPN ağ geçitleri, **VPN** sanal ağ geçidi türünü kullanır. 
-   - **VPN türü**: Yapılandırmanız için belirtilen VPN türünü seçin. Çoğu yapılandırma, Yol Tabanlı bir VPN türü gerektirir.
-   - **SKU**: Açılan listeden ağ geçidi SKU 'sunu seçin. Açılır listede sıralanan SKU’lar seçtiğiniz VPN türüne bağlıdır. Ağ geçidi SKU’ları hakkında bilgi için bkz. [Ağ geçidi SKU’ları](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+   - **Ağ geçidi türü**: **VPN**’i seçin. VPN ağ geçitleri, **VPN** sanal ağ geçidi türünü kullanır. 
+   - **VPN türü**: Yapılandırmanızla ilgili belirtilen VPN türünü seçin. Çoğu yapılandırma, Yol Tabanlı bir VPN türü gerektirir.
+   - **SKU**: Açılır listeden ağ geçidi SKU’sunu seçin. Açılır listede sıralanan SKU’lar seçtiğiniz VPN türüne bağlıdır. Ağ geçidi SKU’ları hakkında bilgi için bkz. [Ağ geçidi SKU’ları](../articles/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
       **Sanal ağ**: Bu ağ geçidini eklemek istediğiniz sanal ağı seçin.
 
-      **Ağ geçidi alt ağ adres aralığı**: Bu alan yalnızca seçtiğiniz sanal ağ bir ağ geçidi alt ağına sahip değilse görüntülenir. Zaten bir ağ geçidi alt ağınız yoksa, aralığı girin. Mümkünse, Aralık/27 veya daha büyük (/26,/25 vb.) aralığı yapın
+      **Ağ geçidi alt ağ adres aralığı**: Bu alan yalnızca VNET 'iniz bir ağ geçidi alt ağına sahip değilse görüntülenir. Mümkünse, aralığı/27 veya daha büyük (/26,/25 vb.) aralığı yapın. /28 ' den küçük bir Aralık oluşturmanız önerilmez. Zaten bir ağ geçidi alt ağınız varsa, sanal ağınıza giderek GatewaySubnet ayrıntılarını görüntüleyebilirsiniz. Aralığı görüntülemek için **alt ağlar** ' a tıklayın. Aralığı değiştirmek istiyorsanız, GatewaySubnet 'i silip yeniden oluşturabilirsiniz.
 
-   **Genel IP adresi**: Bu ayar, VPN ağ geçidiyle ilişkili genel IP adresi nesnesini belirtir. VPN ağ geçidi oluşturulduğunda genel IP adresi bu nesneye dinamik olarak atanır. Genel IP adresi, yalnızca ağ geçidi silinip yeniden oluşturulduğunda değişir. VPN ağ geçidiniz üzerinde gerçekleştirilen yeniden boyutlandırma, sıfırlama veya diğer iç bakım/yükseltme işlemleri sırasında değişmez.
+   **Genel IP adresi**: Bu ayar, VPN ağ geçidiyle ilişkilendirilen genel IP adresi nesnesini belirtir. VPN ağ geçidi oluşturulduğunda genel IP adresi bu nesneye dinamik olarak atanır. Genel IP adresi, yalnızca ağ geçidi silinip yeniden oluşturulduğunda değişir. VPN ağ geçidiniz üzerinde gerçekleştirilen yeniden boyutlandırma, sıfırlama veya diğer iç bakım/yükseltme işlemleri sırasında değişmez.
 
-     - **Genel IP adresi**: **Yeni oluştur**'u seçili bırakın.
-     - **Genel IP adresi adı**: Metin kutusuna, genel IP adresi örneğiniz için bir ad yazın.
+     - **Genel IP adresi**: **Yeni oluştur** seçili kalsın.
+     - **Genel IP adresi adı**: metin kutusuna, genel IP adresi örneğiniz için bir ad yazın.
      - **Atama**: VPN Gateway yalnızca dinamik destekler.
 
-   **Etkin-etkin mod**: **Etkin-etkin modu etkinleştir** seçeneğini, yalnızca etkin-etkin ağ geçidi yapılandırması oluştururken kullanın. Aksi takdirde bu ayarı seçmeyin.
+   **Etkin-etkin mod**: yalnızca etkin-etkin ağ geçidi yapılandırması oluşturuyorsanız **etkin-etkin modunu etkinleştir** ' i seçin. Aksi takdirde bu ayarı seçmeyin.
 
    Yapılandırmanız için **BGP ASN yapılandır** ayarı özellikle gerekli değilse bu ayarı işaretlemeyin. Bu ayar gerekliyse varsayılan ASN değeri 65515’tir ancak bu değiştirilebilir.
 

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: bd43e919cc0b2bcf1d130c7e616b7da064abcc65
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: bef9d0490ce9109a960b69febf2970a289c25e40
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971023"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973403"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma
 
@@ -96,48 +96,13 @@ az group deployment create --resource-group examplegroup \
   --parameters storageAccountType=Standard_GRS
 ```
 
-## <a name="redeploy-when-deployment-fails"></a>Dağıtım başarısız olduğunda yeniden Dağıt
-
-Bu özellik *hata durumunda geri alma*olarak da bilinir. Bir dağıtım başarısız olduğunda, dağıtım geçmişinizden daha önceki ve başarılı bir dağıtımı otomatik olarak yeniden dağıtabilirsiniz. Yeniden dağıtımı belirtmek için dağıtım komutundaki `--rollback-on-error` parametresini kullanın. Bu işlevsellik, altyapı dağıtımınız için bilinen iyi bir durumanız varsa ve bu duruma dönmek istiyorsanız yararlıdır. Çeşitli uyarılar ve kısıtlamalar vardır:
-
-- Yeniden dağıtım, daha önce aynı parametrelerle çalıştırıldığı için tam olarak çalıştırılır. Parametreleri değiştiremezsiniz.
-- Önceki dağıtım, [Tüm modu](./deployment-modes.md#complete-mode)kullanılarak çalıştırılır. Önceki dağıtıma dahil olmayan tüm kaynaklar silinir ve tüm kaynak konfigürasyonları önceki durumlarına ayarlanır. [Dağıtım modlarını](./deployment-modes.md)tam olarak anladığınızdan emin olun.
-- Yeniden dağıtım yalnızca kaynakları etkiler, tüm veri değişiklikleri etkilenmez.
-- Bu özellik yalnızca kaynak grubu dağıtımlarında desteklenir, abonelik düzeyinde dağıtımlar değildir. Abonelik düzeyi dağıtımı hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](./deploy-to-subscription.md).
-
-Bu seçeneği kullanmak için, dağıtımlarınızın geçmişte tanımlanabilmeleri için benzersiz adlara sahip olması gerekir. Benzersiz adlarınız yoksa geçerli başarısız dağıtım, geçmişte daha önce başarılı olan dağıtımın üzerine yazabilir. Bu seçeneği yalnızca kök düzeyinde dağıtımlar ile kullanabilirsiniz. İç içe geçmiş bir şablondan dağıtımlar yeniden dağıtım için kullanılamaz.
-
-Son başarılı dağıtımı yeniden dağıtmak için `--rollback-on-error` parametreyi bir bayrak olarak ekleyin.
-
-```azurecli-interactive
-az group deployment create \
-  --name ExampleDeployment \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS \
-  --rollback-on-error
-```
-
-Belirli bir dağıtımı yeniden dağıtmak için `--rollback-on-error` parametresini kullanın ve dağıtımın adını sağlayın.
-
-```azurecli-interactive
-az group deployment create \
-  --name ExampleDeployment02 \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters storageAccountType=Standard_GRS \
-  --rollback-on-error ExampleDeployment01
-```
-
-Belirtilen dağıtım başarılı olmalıdır.
-
 ## <a name="parameters"></a>Parametreler
 
 Parametre değerlerini geçirmek için satır içi parametreleri ya da bir parametre dosyasını kullanabilirsiniz.
 
 ### <a name="inline-parameters"></a>Satır içi parametreler
 
-Satır içi parametreleri geçirmek için içindeki `parameters`değerleri sağlayın. Örneğin, bir dizeye dize ve dizi geçirmek bir bash kabuğudur, şunu kullanın:
+Satır içi parametreleri geçirmek için `parameters` ' daki değerleri sağlayın. Örneğin, bir dizeye dize ve dizi geçirmek bir bash kabuğudur, şunu kullanın:
 
 ```azurecli
 az group deployment create \
@@ -174,7 +139,7 @@ Komut dosyanıza satır içi değer olarak parametre geçirmek yerine, parametre
 
 Parametre dosyası hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](resource-manager-parameter-files.md).
 
-Yerel bir parametre dosyasını geçirmek için, depolama `@` . Parameters. JSON adlı yerel bir dosya belirtmek için öğesini kullanın.
+Yerel bir parametre dosyasını geçirmek için, `@` kullanarak Storage. Parameters. JSON adlı yerel bir dosya belirtin.
 
 ```azurecli-interactive
 az group deployment create \
@@ -237,7 +202,7 @@ Bir hata algılanırsa, komut bir hata mesajı döndürür. Örneğin, depolama 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bu makaledeki örneklerde, varsayılan aboneliğinizde kaynakları bir kaynak grubuna dağıtır. Farklı bir abonelik kullanmak için bkz. [birden çok Azure aboneliğini yönetme](/cli/azure/manage-azure-subscriptions-azure-cli).
+- Hata aldığınızda başarılı bir dağıtıma geri dönmek için, [başarılı bir dağıtımda hata durumunda geri alma](rollback-on-error.md)konusuna bakın.
 - Kaynak grubunda var olan, ancak şablonda tanımlanmamış kaynakların nasıl işleneceğini belirtmek için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
 - Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](resource-group-authoring-templates.md).
 - Yaygın dağıtım hatalarını çözümlemeye yönelik ipuçları için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](resource-manager-common-deployment-errors.md).

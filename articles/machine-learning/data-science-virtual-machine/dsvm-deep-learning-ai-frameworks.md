@@ -10,12 +10,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: conceptual
 ms.date: 10/1/2019
-ms.openlocfilehash: fd38bf1f7741c4d610ef43a12d90533d4ac7b703
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: db95788b0f2c041157bdc16000d0328c042e86d5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802423"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973682"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Azure Veri Bilimi VM'si için derin öğrenme ve AI çerçeveleri
 DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
@@ -83,6 +83,33 @@ DSVM üzerindeki derin öğrenme çerçeveleri aşağıda listelenmiştir.
 | Desteklenen DSVM sürümleri      | Windows ve Linux   |
 | DSVM 'de nasıl yapılandırılır/yüklenir?  | CNTK, [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) ' de Python 3,6 ' de ve [Linux](./dsvm-languages.md#python-linux-edition)üzerinde Python 3,5 ' de yüklüdür) |
 | Nasıl çalıştırılır?      | Terminal: doğru ortamı etkinleştirin ve Python 'U çalıştırın. <br/>Jupyter: [Jupyter](provision-vm.md) veya [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)'a bağlanın ve ardından örnekler için cntk dizinini açın. |
+
+## <a name="mxnethttpsmxnetapacheorg"></a>[MXNet](https://mxnet.apache.org/)
+|    |           |
+| ------------- | ------------- |
+| Desteklenen sürüm (ler) | 1.3.0 |
+| Desteklenen DSVM sürümleri      | Windows ve Linux   |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | MXNet, Windows üzerinde `C:\dsvm\tools\mxnet` ' a ve Ubuntu üzerinde `/dsvm/tools/mxnet` ' a yüklenir. Python bağlamaları [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) ' de Python 3,6 ' ye yüklenir ve [Linux](./dsvm-languages.md#python-linux-edition)üzerinde Python 3,5 ' de bulunur), Ubuntu dsvm 'ye de R bağlamaları dahildir. |
+| Nasıl çalıştırılır?      | Terminal: doğru Conda ortamını etkinleştirin, sonra `import mxnet` ' ı çalıştırın. <br/>Jupyter: [Jupyter](provision-vm.md#access-the-dsvm) veya [Jupyterhub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)'a bağlanın ve ardından örnekler için `mxnet` dizinini açın. |
+
+## <a name="mxnet-model-serverhttpsgithubcomawslabsmxnet-model-serverquick-start"></a>[MXNet model sunucusu](https://github.com/awslabs/mxnet-model-server#quick-start)
+
+|    |           |
+| ------------- | ------------- |
+| Desteklenen sürüm (ler) | 1.0.1 |
+| Desteklenen DSVM sürümleri      | Windows ve Linux   |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | MXNet model sunucusu, [Windows 2016](dsvm-languages.md#python-windows-server-2016-edition) ' de Python 3,6 ' de ve [Linux](./dsvm-languages.md#python-linux-edition)üzerinde Python 3,5 ' de yüklüdür) |
+| Nasıl çalıştırılır?      | Terminal: her ikisi de aynı bağlantı noktasını dinlemek için, önce JupyterHub hizmetini durdurmak üzere `sudo systemctl stop jupyterhub` ' ı çalıştırın. Ardından, doğru Conda ortamını etkinleştirin ve @no__t çalıştırın-0 |
+
+## <a name="nvidia-system-management-interface-nvidia-smihttpsdevelopernvidiacomnvidia-system-management-interface"></a>[NVIDIA sistem yönetimi arabirimi (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface)
+
+|    |           |
+| ------------- | ------------- |
+| Desteklenen sürüm (ler) |  |
+| Desteklenen DSVM sürümleri      | Windows ve Linux   |
+| Ne için? | GPU etkinliğini sorgulamak için NVıDıA aracı |
+| DSVM 'de nasıl yapılandırılır/yüklenir?  | `nvidia-smi` sistem yolunda yer alır. |
+| Nasıl çalıştırılır?      | **GPU 'nun bulunduğu**bir sanal makinede, bir komut istemi açın (Windows üzerinde) veya bir Terminal (Linux 'ta) ve ardından `nvidia-smi` ' i çalıştırın. |
 
 ## <a name="pytorchhttpspytorchorg"></a>[PyTorch](https://pytorch.org/)
 

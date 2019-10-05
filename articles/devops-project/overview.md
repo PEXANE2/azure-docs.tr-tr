@@ -4,7 +4,7 @@ description: Azure DevOps Projeleri değerini anlayın
 services: devops-project
 documentationcenter: ''
 author: mlearned
-manager: douge
+manager: gwallace
 editor: mlearned
 ms.assetid: ''
 ms.service: az-devops-project
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: fed4f0976dd118186c122b0152f255d0c452c0ce
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: d39702f8e30046dd3cf634fc67ed7095471cd629
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404492"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971484"
 ---
 # <a name="overview-of-azure-devops-projects"></a>Azure DevOps Projeleri genel bakış
 
- Azure DevOps projeleri, Azure'da kullanmaya başlamak kolaylaştırır. Yalnızca birkaç hızlı adımda Azure portal en sevdiğiniz uygulamanızı seçtiğiniz Azure hizmetinde başlatmanıza yardımcı olur. 
+ Azure DevOps Projeleri Azure 'u kullanmaya başlamanızı kolaylaştırır. Yalnızca birkaç hızlı adımda Azure portal en sevdiğiniz uygulamanızı seçtiğiniz Azure hizmetinde başlatmanıza yardımcı olur. 
 
  DevOps Projeleri uygulamanızı geliştirmek, dağıtmak ve izlemek için ihtiyacınız olan her şeyi ayarlar. Kod yürütmelerinin, derlemelerin ve dağıtımlarınızın tümünü Azure portal tek bir görünümden izlemek için DevOps Projeleri panosunu kullanabilirsiniz.
 

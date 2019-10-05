@@ -3,8 +3,8 @@ title: Linux 'ta Python uygulaması oluşturma-Azure App Service | Microsoft Doc
 description: Linux üzerinde Azure App Service'te ilk Python merhaba dünya uygulamanızı birkaç dakika içinde dağıtın.
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: app-service-web
@@ -14,18 +14,16 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 08b1b85b980f992e799fc5198891290ec0d55c5d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4ffa202a717c75462cd2d715a7883756d49f5a9f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070995"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972090"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Linux üzerinde Azure App Service Python uygulaması oluşturma (Önizleme)
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
-[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta, [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanılarak Linux üzerinde App Service Içinde yerleşik Python görüntüsünün (Önizleme) üzerine bir Python uygulamasının nasıl dağıtılacağı gösterilmektedir.
-
-Mac, Windows veya Linux makinesi kullanarak bu makaledeki adımları izleyebilirsiniz.
+[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta, [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanılarak Linux üzerinde App Service yerleşik Python görüntüsünün üzerine bir Python uygulamasının nasıl dağıtılacağı gösterilmektedir.
 
 ![Azure'da çalışan örnek uygulama](media/quickstart-python/hello-world-in-browser.png)
 
@@ -124,7 +122,7 @@ Python örnek kodu, yerleşik bir görüntüyle Linux üzerinde App Service çal
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Kodu yerel makinede güncelleştirme ve yeniden dağıtma
 
-Cloud Shell, Cloud Shell düzenleyiciyi açmak `code application.py` için yazın.
+Cloud Shell, Cloud Shell düzenleyicisini açmak için `code application.py` yazın.
 
 ![Kod application.py](media/quickstart-python/code-applicationpy.png)
 
@@ -136,7 +134,7 @@ return "Hello Azure!"
 
 Değişikliklerinizi kaydedin ve düzenleyiciden çıkın. Kaydetmek için `^S` ve çıkmak için `^Q` komutunu kullanın.
 
-Şimdi uygulamayı yeniden dağıtacaksınız. Uygulamanız `<app_name>` ile değiştirin.
+Şimdi uygulamayı yeniden dağıtacaksınız. @No__t-0 ' yı uygulamanız ile değiştirin.
 
 ```bash
 az webapp up -n <app_name>
@@ -164,8 +162,6 @@ Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Linux üzerinde App Service yerleşik Python görüntüsü şu anda önizleme aşamasındadır ve uygulamanızı başlatmak için kullanılan komutu özelleştirebilirsiniz. Ayrıca bunun yerine özel bir kapsayıcı kullanarak üretim aşamasında Python uygulamaları oluşturabilirsiniz.
-
 > [!div class="nextstepaction"]
 > [Öğretici: PostgreSQL ile Python uygulaması](tutorial-python-postgresql-app.md)
 
@@ -173,4 +169,4 @@ Linux üzerinde App Service yerleşik Python görüntüsü şu anda önizleme a�
 > [Python uygulamasını yapılandırma](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
-> [Öğretici: Özel kapsayıcı deposundan dağıtma](tutorial-custom-docker-image.md)
+> [Öğretici: özel kapsayıcı deposundan dağıtma](tutorial-custom-docker-image.md)

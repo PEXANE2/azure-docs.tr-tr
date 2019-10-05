@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: e96d501196a629c7e37de7e5ad66b68863bf556f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: b2973a8e826ab8cc8da29f1ec9678d6a6e4fa975
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097908"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971860"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Önizleme-Azure Kubernetes Service (AKS) üzerinde uygulama taleplerini karşılamak üzere bir kümeyi otomatik olarak ölçeklendirme
 
@@ -90,21 +90,21 @@ az aks create \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --node-count 1 \
-  --vm-set-type VirtualMachineScaleSets \
+  ---enable-vmss \
   --enable-cluster-autoscaler \
   --min-count 1 \
   --max-count 3
 ```
 
 > [!NOTE]
-> Çalıştırılırken`az aks create`bir *--Kubernetes-Version* belirtirseniz, bu sürüm [başlamadan önce, başlamadan önce](#before-you-begin) belirtilen en düşük sürüm numarasını karşılamalıdır veya aşmalıdır.
+> @No__t-1 çalıştırırken bir *--Kubernetes-Version* belirtirseniz, bu sürüm, [başlamadan önce](#before-you-begin) öncesinde belirtilen en düşük sürüm numarasını karşılamalıdır veya aşmalıdır.
 
 Kümeyi oluşturmak ve küme otomatik Scaler ayarlarını yapılandırmak birkaç dakika sürer.
 
 ## <a name="change-the-cluster-autoscaler-settings"></a>Küme otomatik Scaler ayarlarını değiştirme
 
 > [!IMPORTANT]
-> Aboneliğinizde *birden çok aracı havuzu* özelliği etkinleştirilmişse, [birden çok aracı havuzu ile otomatik ölçeklendirmeyi](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)atlayın. Birden çok aracı havuzu etkin olan kümeler, `az aks nodepool` `az aks`yerine düğüm havuzuna özgü özellikleri değiştirmek için komut kümesinin kullanılmasını gerektirir. Aşağıdaki yönergelerde birden çok düğüm havuzu etkinleştirilmemiş varsayılmaktadır. BT 'nin etkinleştirilip etkinleştirilmediğini denetlemek için, öğesini çalıştırın `az feature  list -o table` ve `Microsoft.ContainerService/multiagentpoolpreview`bulun.
+> Aboneliğinizde *birden çok aracı havuzu* özelliği etkinleştirilmişse, [birden çok aracı havuzu ile otomatik ölçeklendirmeyi](#use-the-cluster-autoscaler-with-multiple-node-pools-enabled)atlayın. Birden çok aracı havuzu etkin olan kümeler, `az aks` yerine düğüm havuzuna özgü özellikleri değiştirmek için `az aks nodepool` komut kümesinin kullanılmasını gerektirir. Aşağıdaki yönergelerde birden çok düğüm havuzu etkinleştirilmemiş varsayılmaktadır. BT 'nin etkinleştirilip etkinleştirilmediğini denetlemek için `az feature  list -o table` ' ı çalıştırın ve `Microsoft.ContainerService/multiagentpoolpreview` ' i arayın.
 
 Önceki adımda, bir AKS kümesi oluşturmak veya var olan bir düğüm havuzunu güncelleştirmek için, küme otomatik algılama en düşük düğüm sayısı *1*olarak ayarlanmıştır ve en fazla düğüm sayısı *3*olarak ayarlanmıştır. Uygulamanız değiştikçe değişiklik yaparken, küme otomatik Scaler düğüm sayısını ayarlamanız gerekebilir.
 
@@ -159,7 +159,7 @@ az aks nodepool update \
   --max-count 5
 ```
 
-Küme otomatik Scaler, [az aks nodepool Update][az-aks-nodepool-update] ile devre dışı bırakılabilir ve `--disable-cluster-autoscaler` parametresi geçiliyor.
+Küme otomatik Scaler, [az aks nodepool Update][az-aks-nodepool-update] ile devre dışı bırakılabilir ve `--disable-cluster-autoscaler` parametresini geçirilerek.
 
 ```azurecli-interactive
 az aks nodepool update \

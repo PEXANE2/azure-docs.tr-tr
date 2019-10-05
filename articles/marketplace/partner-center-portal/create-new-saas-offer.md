@@ -6,19 +6,22 @@ manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: e846db86ce95bd32d21727a4a5ec3195458cb9eb
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.date: 10/04/2019
+ms.openlocfilehash: 48ef7aeb1804aca9001288f6babd302b9c3a8347
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936869"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969547"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturun
 
 Hizmet olarak yazılım (SaaS) teklifi oluşturmaya başlamak için, ilk olarak [bir Iş Ortağı Merkezi hesabı](./create-account.md) oluşturduğunuzdan ve **genel bakış** sekmesi seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açın.
 
 ![Iş Ortağı Merkezi 'nde ticari Market panosu](./media/new-offer-overview.png)
+
+>[!Note]
+> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Lütfen değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
 
 \+ **Yeni teklifi seçin...** düğmesine tıklayın ve ardından **hizmet olarak yazılım** menü öğesini seçin. 
 
@@ -41,7 +44,7 @@ Başka bir teklif türü seçerseniz, eski [bulut iş ortağı portalı](https:/
 
 <br>Örnek: test teklifi 1&#8482;
 
-**Oluştur**' u seçin.  Bu teklif için bir **teklif genel bakış** sayfası oluşturulur.  
+**Oluştur**'u seçin.  Bu teklif için bir **teklif genel bakış** sayfası oluşturulur.  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -118,7 +121,7 @@ Market listesi oluşturarak işletmenizi Microsoft ile yükseltin. Microsoft 'un
 - **Potansiyel müşterilerin bu liste teklifiyle nasıl etkileşime geçmesini istiyorsunuz?**
 
 ##### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
-Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başlayarak) sağlayarak müşterilerinizin teklifinizi ücretsiz olarak listeleyin.  Örneğin: `https://contoso.com/saas-app`.
+Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başlayarak) sağlayarak müşterilerinizin teklifinizi ücretsiz olarak listeleyin.  Örneğin, `https://contoso.com/saas-app`
 
 ##### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
 [Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)aracılığıyla denemeyi alabileceğiniz, GEÇERLI bir URL ( *http* veya *https*ile başlayarak) sağlayarak, ücretsiz bir deneme bağlantısı olan müşterilere teklifinizi listeleyin.  Örneğin: `https://contoso.com/trial/saas-app`. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
@@ -185,7 +188,7 @@ Bu alanları tamamladıktan sonra **Kaydet** ' i seçin.
 ### <a name="category"></a>Kategori
 Teklifinizi uygun Market arama alanlarında gruplandırmak için en az bir (1) ve en fazla üç (3) kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini lütfen unutmayın. 
 
-### <a name="industry"></a>Standardındaki
+### <a name="industry"></a>Sektör
 Teklifinizi uygun Market arama alanlarıyla gruplandırmak için kullanılan en fazla iki (2) sektör seçin. Teklifiniz bir sektöre özgü değilse, bir tane seçmeyin. Teklifinizin, teklif açıklamasında seçili sektörlerin nasıl destekdiğine lütfen ulaşın. 
 
 ### <a name="app-version"></a>Uygulama sürümü
@@ -220,7 +223,7 @@ Teklif listesi sekmesinde teklifinizin kullanılabildiği diller (ve pazarlar) g
 
 Teklif ve pazarlama varlıklarınızın açıklamaları dahil olmak üzere Market 'te görüntülenecek ayrıntıları sağlayın.
 
-- **Ad** (gerekli): burada tanımlanan ad, seçtiğiniz Market (ler) de teklif listelerinizin başlığı olarak görünür. Ad, önceki **yeni teklif** girişinizin temel alınarak önceden doldurulur.  Bu, trademarked olabilir.  Bu, bir boşluk, emojıs (ticari marka ve telif hakkı sembolleri olmadıkları müddetçe) içermemelidir ve 50 karakterle sınırlı olmalıdır.
+- **Ad** (gerekli): burada tanımlanan ad, seçtiğiniz Market (ler) de teklif listelerinizin başlığı olarak görünür. Ad, önceki **yeni teklif** girişinizin temel alınarak önceden doldurulur.  Bu, trademarked olabilir.  Bu, emojıs (ticari marka ve telif hakkı sembolleri olmadıkları müddetçe) içermemelidir ve 50 karakterle sınırlı olmalıdır.
 - **Özet** (gerekli): market listeleme arama sonuçlarında kullanılacak teklifinizin kısa bir açıklamasını sağlayın. Bu alana en fazla 100 karakter metin girilebilir.
 - **Açıklama** (gerekli): market dökümüne genel bakış bölümünde gösterilecek teklifin açıklamasını sağlayın. Bir değer teklifi, önemli avantajlar, herhangi bir kategori veya sektör ilişkilendirmesi, uygulama içi satın alma fırsatları, gerekli ön kapanışlar ve daha fazla bilgi edinmek için bir bağlantı dahil etmeyi göz önünde bulundurun.
 Bu alana en fazla 3.000 karakter metin girilebilir. Ek ipuçları için [harika uygulama açıklaması yazma](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)makalesine bakın.
@@ -466,7 +469,7 @@ Planınızı özel ve yalnızca seçtiğiniz kısıtlanmış kitlele görünür 
 
 Bu özel plana erişimi olacak hedef kitleyi atayın. Atanan her kiracı KIMLIĞININ açıklamasını ekleme seçeneğiyle kiracı kimlikleri kullanılarak erişim atanır. Bir. csv elektronik tablo dosyası içeri aktarıldıysanız, en fazla 10 Kiracı kimliği eklenebilir veya 20.000 müşteri Kiracı kimliği olabilir.
 
-Kiracı, bir GUID (genel benzersiz tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen KIMLIĞE sahip bir kuruluşun gösterimidir. Kuruluş veya uygulama geliştiricisi, Microsoft ile Azure, Microsoft Intune veya Microsoft 365 kaydolma gibi bir ilişki oluştururken bir kuruluşun veya uygulama geliştiricisinin aldığı adanmış bir Azure AD örneğidir. Her Azure AD kiracısı farklı ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetmek üzere kullanmak istediğiniz hesapla Azure portal oturum açın. Bir kiracınız varsa, otomatik olarak oturum açar ve doğrudan hesap adınızın altında kiracı adını görebilirsiniz. Ad, e-posta, Dizin/kiracı KIMLIĞI (GUID) ve etki alanınızı görmek için, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelin. Hesabınız birden çok kiracı ile ilişkiliyse, kiracılar arasında geçiş yapmak istediğiniz bir menü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı KIMLIĞI vardır. Ayrıca, [https://www.whatismytenantid.com](https://www.whatismytenantid.com)' de bir etki alanı adı URL 'si kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
+Kiracı, bir GUID (genel benzersiz tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen KIMLIĞE sahip bir kuruluşun gösterimidir. Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetmek üzere kullanmak istediğiniz hesapla Azure portal oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, [https://www.whatismytenantid.com](https://www.whatismytenantid.com)' de bir etki alanı adı URL 'si kullanarak KURULUŞUNUZUN Kiracı kimliğini de arayabilirsiniz.
 
 SaaS, özel bir hedef kitle tanımlamak için kiracı kimlikleri kullanır, diğer teklif türleri de Azure abonelik kimliklerini (GUID 'Ler olarak da temsil edilir) kullanabilir.
 
@@ -477,11 +480,11 @@ SaaS, özel bir hedef kitle tanımlamak için kiracı kimlikleri kullanır, diğ
 
 ![Notlardaki örnek Market planı listesi](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>Sınama sürücüsü
+## <a name="test-drive"></a>Test sürüşü
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
-## <a name="publish"></a>Yayınlamanız
+## <a name="publish"></a>Yayımlama
 
 #### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 530869928f7a25e779cb01f0fe392efdbb54c5ba
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 52d4efaba25dcede3322586d05fceb4d166f51e3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695112"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973815"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Soru-Cevap Oluşturma Bilgi Bankası yaşam döngüsü
 Soru-cevap oluşturma, bir model değişikliği, söylenişi örnekleri, yayımlama ve uç nokta sorgularından veri toplamayı en iyi şekilde öğrenir. 
@@ -24,7 +24,7 @@ Soru-cevap oluşturma, bir model değişikliği, söylenişi örnekleri, yayıml
 ![Yazma çevrimi](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
 ## <a name="creating-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma bilgi tabanı oluşturma
-Soru-Cevap Oluşturma Bilgi Bankası (KB) uç noktası, KB içeriğine göre bir Kullanıcı sorgusuna en iyi eşleşme yanıtı sağlar. Bilgi Bankası oluşturma, soruların, yanıtların ve ilişkili meta verilerin bir içerik deposunu ayarlamaya yönelik tek seferlik bir işlemdir. SSS sayfaları, ürün el kitapları veya yapılandırılmış Q-A çiftleri gibi önceden var olan içerikler gezilirken bir Bilgi Bankası oluşturulabilir. [Bilgi Bankası oluşturma](../How-To/create-knowledge-base.md)hakkında bilgi edinin.
+Soru-Cevap Oluşturma Bilgi Bankası (KB) uç noktası, KB içeriğine göre bir Kullanıcı sorgusuna en iyi eşleşme yanıtı sağlar. Bilgi Bankası oluşturma, soruların, yanıtların ve ilişkili meta verilerin bir içerik deposunu ayarlamaya yönelik tek seferlik bir işlemdir. SSS sayfaları, ürün el kitapları veya yapılandırılmış Q-A çiftleri gibi önceden var olan içerikler gezilirken bir Bilgi Bankası oluşturulabilir. [Bilgi Bankası oluşturma](../quickstarts/create-publish-knowledge-base.md)hakkında bilgi edinin.
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Bilgi Bankası 'nı test etme ve güncelleştirme
 
@@ -74,8 +74,3 @@ Belirli bir sürüme geri dönmelisiniz, bu dosyayı yerel sisteminizden içeri 
 
 > [!div class="nextstepaction"]
 > [Güvenirlik puanı](./confidence-score.md)
-
-## <a name="see-also"></a>Ayrıca bkz. 
-
-[Bilgi bankası](./knowledge-base.md)
-[soru-cevap oluşturma genel bakış](../Overview/overview.md)

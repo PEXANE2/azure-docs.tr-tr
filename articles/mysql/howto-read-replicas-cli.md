@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme-Azure CLı, REST API
-description: Bu makalede, Azure CLı kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmalarının nasıl ayarlanacağı ve yönetileceği açıklanmaktadır REST API
+title: Okuma çoğaltmaları oluşturma & yönetme-MySQL için Azure veritabanı
+description: Azure CLı veya REST API kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları ayarlamayı ve yönetmeyi öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/14/2019
-ms.openlocfilehash: 5bec4e7284e78506372d395bf022055fa31998e3
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 741b50bdb2ec9c8d29a9f759e46209856de3a49c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993548"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970317"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Azure CLı ve REST API kullanarak MySQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -23,26 +23,26 @@ Azure CLı kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 ### <a name="prerequisites"></a>Önkoşullar
 
 - [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- Bir [MySQL sunucusu için Azure veritabanı](quickstart-create-mysql-server-database-using-azure-portal.md) ana sunucu olarak kullanılır. 
+- Ana sunucu olarak kullanılacak [MySQL Için Azure veritabanı sunucusu](quickstart-create-mysql-server-database-using-azure-portal.md) . 
 
 > [!IMPORTANT]
-> Salt okunur çoğaltma özelliği yalnızca için Azure veritabanı genel amaçlı veya bellek için iyileştirilmiş fiyatlandırma katmanları MySQL sunucuları için kullanılabilir. Bu fiyatlandırma katmanlarından birini ana sunucusu olduğundan emin olun.
+> Çoğaltma oku özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında MySQL için Azure veritabanı sunucuları için kullanılabilir. Ana sunucunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
-### <a name="create-a-read-replica"></a>Salt okunur bir çoğaltma oluşturma
+### <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
 
-Salt okunur çoğaltma sunucusu, aşağıdaki komutu kullanarak oluşturulabilir:
+Aşağıdaki komut kullanılarak bir okuma çoğaltması sunucusu oluşturulabilir:
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-`az mysql server replica create` Komut takip eden parametreleri gerektiriyor:
+@No__t-0 komutu aşağıdaki parametreleri gerektirir:
 
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Çoğaltma sunucusu oluşturulacağı kaynak grubu.  |
+| resource-group |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | ad | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
-| source-server | mydemoserver | Adı veya çoğaltma kaynağı için mevcut ana sunucu kimliği. |
+| source-server | mydemoserver | Çoğaltılacak var olan ana sunucunun adı veya KIMLIĞI. |
 
 Bir çapraz bölge okuma çoğaltması oluşturmak için `--location` parametresini kullanın. Aşağıdaki CLı örneği Batı ABD içinde çoğaltmayı oluşturur.
 
@@ -54,56 +54,56 @@ az mysql server replica create --name mydemoreplicaserver --source-server mydemo
 > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
 
 > [!NOTE]
-> Okuma çoğaltmaları aynı sunucu yapılandırma yöneticisi olarak oluşturulur. Çoğaltma sunucusu yapılandırması, oluşturulduktan sonra değiştirilebilir. Çoğaltma sunucusunun yapılandırmasını çoğaltma ana ayak olduğundan emin olmak için ana daha eşit veya daha fazla değerlerinde tutulması gereken önerilir.
+> Okuma çoğaltmaları, ana sunucuyla aynı sunucu yapılandırmasıyla oluşturulur. Çoğaltma sunucusu yapılandırması oluşturulduktan sonra değiştirilebilir. Çoğaltmanın ana öğe ile devam edebileceğinden emin olmak için çoğaltma sunucusunun yapılandırmasının ana değerden eşit veya daha büyük tutulması önerilir.
 
 
-### <a name="list-replicas-for-a-master-server"></a>Ana sunucu için liste çoğaltmaları
+### <a name="list-replicas-for-a-master-server"></a>Ana sunucu için çoğaltmaları listeleme
 
-Verilen bir ana sunucu için tüm çoğaltmaları görüntülemek için aşağıdaki komutu çalıştırın: 
+Belirli bir ana sunucu için tüm çoğaltmaları görüntülemek için aşağıdaki komutu çalıştırın: 
 
 ```azurecli-interactive
 az mysql server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-`az mysql server replica list` Komut takip eden parametreleri gerektiriyor:
+@No__t-0 komutu aşağıdaki parametreleri gerektirir:
 
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Çoğaltma sunucusu oluşturulacağı kaynak grubu.  |
-| server-name | mydemoserver | Adı veya ana sunucu kimliği. |
+| resource-group |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
+| server-name | mydemoserver | Ana sunucunun adı veya KIMLIĞI. |
 
-### <a name="stop-replication-to-a-replica-server"></a>Bir çoğaltma sunucusu için çoğaltma durdurma
+### <a name="stop-replication-to-a-replica-server"></a>Çoğaltma sunucusuna çoğaltmayı durdur
 
 > [!IMPORTANT]
-> Bir sunucuya çoğaltma durdurma işlemi geri alınamaz. Bir ana ve çoğaltma arasında çoğaltmayı durdurdu sonra geri alınamaz. Çoğaltma sunucusu bir tek başına sunucu olur ve artık hem okuma hem de yazma işlemleri destekler. Bu sunucu bir yinelemeye yeniden yapılamıyor.
+> Bir sunucuya çoğaltma durdurulduğunda geri alınamaz. Bir ana ve çoğaltma arasında çoğaltma durdurulduktan sonra geri alınamaz. Çoğaltma sunucusu daha sonra tek başına bir sunucu olur ve artık hem okuma hem de yazma işlemlerini destekler. Bu sunucu tekrar bir çoğaltmaya yapılamaz.
 
-Aşağıdaki komutu kullanarak bir salt okunur çoğaltma sunucusuna çoğaltma durdurulabilir:
+Bir okuma çoğaltması sunucusuna çoğaltma, aşağıdaki komut kullanılarak durdurulabilir:
 
 ```azurecli-interactive
 az mysql server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-`az mysql server replica stop` Komut takip eden parametreleri gerektiriyor:
+@No__t-0 komutu aşağıdaki parametreleri gerektirir:
 
 | Ayar | Örnek değer | Açıklama  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Çoğaltma sunucusunun mevcut olduğu kaynak grubu.  |
-| ad | mydemoreplicaserver | Üzerindeki çoğaltma durdurma çoğaltma sunucusunun adı. |
+| resource-group |  myresourcegroup |  Çoğaltma sunucusunun bulunduğu kaynak grubu.  |
+| ad | mydemoreplicaserver | Çoğaltmayı durdurulacak çoğaltma sunucusunun adı. |
 
-### <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu Sil
+### <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu silme
 
-Salt okunur çoğaltma sunucusu silme yapılabilir çalıştırarak **[az mysql server delete](/cli/azure/mysql/server)** komutu.
+**[Az MySQL Server DELETE](/cli/azure/mysql/server)** komutu çalıştırılarak bir okuma çoğaltması sunucusunu silme işlemi gerçekleştirilebilir.
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver
 ```
 
-### <a name="delete-a-master-server"></a>Bir ana sunucu silme
+### <a name="delete-a-master-server"></a>Ana sunucuyu silme
 
 > [!IMPORTANT]
-> Ana sunucu silme tüm çoğaltma sunucuları için çoğaltma durdurulur ve ana sunucusunu siler. Artık hem okuma hem de yazma işlemleri destekleyen tek başına sunucular çoğaltma sunucusu olur.
+> Bir ana sunucu durdurulduğunda, tüm çoğaltma sunucularına çoğaltma durdurulur ve ana sunucu silinir. Çoğaltma sunucuları artık hem okuma hem de yazma işlemlerini destekleyen tek başına sunucular haline gelir.
 
-Ana sunucu silmek için çalıştırabileceğiniz **[az mysql server delete](/cli/azure/mysql/server)** komutu.
+Ana Sunucuyu silmek için **[az MySQL Server DELETE](/cli/azure/mysql/server)** komutunu çalıştırabilirsiniz.
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
@@ -113,7 +113,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="rest-api"></a>REST API
 [Azure REST API](/rest/api/azure/)kullanarak okuma çoğaltmaları oluşturabilir ve yönetebilirsiniz.
 
-### <a name="create-a-read-replica"></a>Salt okunur bir çoğaltma oluşturma
+### <a name="create-a-read-replica"></a>Okuma çoğaltması oluşturma
 [Oluşturma API](/rest/api/mysql/servers/create)'sini kullanarak bir okuma çoğaltması oluşturabilirsiniz:
 
 ```http
@@ -133,7 +133,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > [!NOTE]
 > İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin. 
 
-`azure.replication_support` Parametreyi genel amaçlı veya bellek için iyileştirilmiş ana sunucuda **çoğaltma** olarak ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
+@No__t-0 parametresini Genel Amaçlı veya bellek için Iyileştirilmiş ana sunucuda **çoğaltmaya** ayarlamadıysanız ve sunucuyu yeniden başlattıktan sonra bir hata alırsınız. Bir çoğaltma oluşturmadan önce bu iki adımı uygulayın.
 
 Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak oluşturulur. Bir çoğaltma oluşturulduktan sonra, birden fazla ayar ana sunucudan bağımsız olarak değiştirilebilir: işlem oluşturma, sanal çekirdek, depolama ve yedekleme saklama süresi. Fiyatlandırma Katmanı, temel katmandan veya dışında bağımsız olarak da değiştirilebilir.
 
@@ -148,7 +148,7 @@ Bir çoğaltma, ana öğe ile aynı işlem ve depolama ayarları kullanılarak o
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Bir çoğaltma sunucusu için çoğaltma durdurma
+### <a name="stop-replication-to-a-replica-server"></a>Çoğaltma sunucusuna çoğaltmayı durdur
 [GÜNCELLEŞTIRME API](/rest/api/mysql/servers/update)'sini kullanarak bir ana sunucu ve okuma çoğaltması arasındaki çoğaltmayı durdurabilirsiniz.
 
 Bir ana sunucu ve bir okuma çoğaltması için çoğaltmayı durdurduktan sonra geri alınamaz. Okuma çoğaltması, hem okuma hem de yazma işlemlerini destekleyen tek başına bir sunucu haline gelir. Tek başına sunucu tekrar bir çoğaltmaya yapılamaz.
@@ -177,4 +177,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi edinin [çoğaltmaları okuyun](concepts-read-replicas.md)
+- [Okuma çoğaltmaları](concepts-read-replicas.md) hakkında daha fazla bilgi edinin

@@ -4,14 +4,14 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1190798b234f9c73e02fda41c03ffa296246be63
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69626415"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975352"
 ---
-| Resource | Varsayılan limit | Üst sınır |
+| Kaynak | Varsayılan sınır | Maksimum sınır |
 | --- | --- | --- |
 | Kaynak [grubu](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)başına kaynaklar, kaynak türü başına |800 |Bazı kaynak türleri 800 sınırını aşabilir. [Kaynak grubu başına 800 örnek için sınırlı kaynaklara](../articles/azure-resource-manager/resources-without-rg-limit.md)bakın. |
 | Dağıtım geçmişinde kaynak grubu başına dağıtımlar |800<sup>1</sup> |800 |
@@ -21,16 +21,16 @@ ms.locfileid: "69626415"
 | Etiket anahtarı uzunluğu |512 |512 |
 | Etiket değeri uzunluğu |256 |256 |
 
-<sup>1</sup> Kaynak grubu başına 800 dağıtım sınırına ulaşırsanız, artık gerekli olmayan geçmişten dağıtımları silin. Dağıtım geçmişinden bir girişin silinmesi dağıtılan kaynakları etkilemez. Geçmişten girdileri, [az önce grup dağıtımı Delete](/cli/azure/group/deployment) for Azure CLI veya PowerShell 'de [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) ile silebilirsiniz.  Sürekli tümleştirme ve sürekli teslim (CI/CD) senaryosunda dağıtımları silmeyi otomatikleştiren bir PowerShell betiği için, bkz [. Remove-Deployments. ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f).
+<sup>1</sup> Kaynak grubu başına 800 dağıtım sınırına ulaşırsanız, artık gerekli olmayan geçmişten dağıtımları silin. Dağıtım geçmişinden bir girişin silinmesi dağıtılan kaynakları etkilemez. Daha fazla bilgi için bkz. [dağıtım sayısı 800 ' i aştığında hata çözümleme](../articles/azure-resource-manager/deployment-quota-exceeded.md).
 
 #### <a name="template-limits"></a>Şablon sınırları
 
-| Value | Varsayılan limit | Üst sınır |
+| Değer | Varsayılan sınır | Maksimum sınır |
 | --- | --- | --- |
-| Parametreler |256 |256 |
-| Değişkenler |256 |256 |
+| Parametrelere |256 |256 |
+| Değişkenlerinin |256 |256 |
 | Kaynaklar (kopya sayısı dahil) |800 |800 |
-| outputs |64 |64 |
+| Çıkışı |64 |64 |
 | Şablon ifadesi |24.576 karakter |24.576 karakter |
 | Aktarılmış şablonlarda kaynaklar |200 |200 | 
 | Şablon boyutu |4 MB |4 MB |

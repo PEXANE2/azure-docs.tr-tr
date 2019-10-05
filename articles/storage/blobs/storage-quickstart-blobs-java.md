@@ -1,33 +1,37 @@
 ---
-title: Java v7 için istemci kitaplığını kullanarak Azure depolama 'da blob oluşturma | Microsoft Docs
-description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Java v7 için Azure Storage istemci kitaplığı 'nı kullanın.
+title: "Hızlı başlangıç: Java SDK 'Sı için Azure Blob depolama istemci kitaplığı V8"
+description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Java SDK 'Sı için Azure depolama istemci Kitaplığı ' nı kullanın V8.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/04/2019
+ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 87bae74265c4d3abe7301af35888561fcd256717
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390327"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971984"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Java v7 için istemci kitaplığını kullanarak Blobları karşıya yükleme, indirme ve listeleme
+# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Hızlı başlangıç: Java SDK 'Sı için Azure Blob depolama istemci kitaplığı V8
 
-Bu nasıl yapılır kılavuzunda, Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Java v7 istemci kitaplığını kullanmayı öğreneceksiniz.
+Java için Azure Blob depolama istemci kitaplığı 'nı kullanmaya başlayın. Azure Blob depolama, Microsoft 'un bulut için nesne depolama çözümüdür. Paketi yüklemek ve temel görevler için örnek kodu denemek için adımları izleyin. Blob depolama, çok miktarda yapılandırılmamış veriyi depolamak için iyileştirilmiştir.
+
+Java için Azure Blob depolama istemci kitaplığını kullanarak şunları yapın:
+
+* Bir kapsayıcı oluşturma
+* Bir kapsayıcıda izinleri ayarlama
+* Azure depolama 'da blob oluşturma
+* Blobu yerel bilgisayarınıza indirme
+* Bir kapsayıcıdaki tüm Blobları listeleme
+* Kapsayıcı silme
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-
-Ayrıca [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM)bir Azure depolama hesabı oluşturun. Hesap oluşturmayla ilgili yardım için bkz. [Depolama hesabı oluşturma](../common/storage-quickstart-create-account.md).
-
-Aşağıdaki önkoşullara sahip olduğunuzdan emin olun:
-
-* Maven tümleştirmesine sahip bir IDE yükleyin.
-
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Maven tümleştirmesi olan bir IDE.
 * Alernatif olarak, Maven’ı yükleyip komut satırından çalışacak şekilde de yapılandırabilirsiniz.
 
 Bu kılavuz, "Java geliştiricileri için tutulma IDE" yapılandırması ile [Çakışan Küreler](https://www.eclipse.org/downloads/) kullanır.
@@ -42,7 +46,7 @@ Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 ```
 
-Bu komut, depoyu yerel Git klasörünüze kopyalar. Projeyi açmak için, Eclipse’ı başlatın ve Karşılama ekranını kapatın. **Dosya**’yı ve ardından **Dosya Sisteminden Proje Aç**’ı seçin. **Proje niteliklerini algıla ve yapılandır** seçeneğinin belirlenmiş olduğundan emin olun. **Dizin**’i seçin ve ardından kopyalanan dizini depoladığınız konuma gidin. Kopyalanan deponun içinde **blobAzureApp** klasörünü seçin. **blobAzureApp** projesinin Eclipse projesi olarak göründüğünden emin olun ve ardından **Son**’u seçin.
+Bu komut, depoyu yerel Git klasörünüze kopyalar. Projeyi açmak için, Eclipse’ı başlatın ve Karşılama ekranını kapatın. **Dosya**’yı ve ardından **Dosya Sisteminden Proje Aç**’ı seçin. **Proje nlarını algılayıp Yapılandır '** ın işaretli olduğundan emin olun. **Dizin**’i seçin ve ardından kopyalanan dizini depoladığınız konuma gidin. Kopyalanan deponun içinde **blobAzureApp** klasörünü seçin. **blobAzureApp** projesinin Eclipse projesi olarak göründüğünden emin olun ve ardından **Son**’u seçin.
 
 Projenin içeri aktarılması tamamlandığında, **AzureApp.java**’yı açın (**src/main/java** içinde, **blobQuickstart.blobAzureApp** konumundadır) ve `storageConnectionString` dizesindeki `accountname` ve `accountkey` öğelerini değiştirin. Sonra, uygulamayı çalıştırın. Aşağıdaki bölümlerde bu görevleri tamamlamak için gereken özel yönergeler açıklanmıştır.
 
@@ -93,7 +97,7 @@ Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inc
 
 ### <a name="get-references-to-the-storage-objects"></a>Depolama nesneleriyle ilgili başvuruları alma
 
-İlk önce, Blob depolamaya erişmek ve Blob depolamayı yönetmek için kullanılan nesnelere başvuru oluşturmaktır. Bu nesneler birbirleri üzerinde derlenir; her dosya, listede yanında yer alan dosya tarafından kullanılır.
+İlk önce, Blob depolamaya erişmek ve Blob depolamayı yönetmek için kullanılan nesnelere başvuru oluşturmaktır. Bu nesneler birbirleri üzerinde derlenir - her bir dosya, listede yanında yer alan dosya tarafından kullanılır.
 
 * [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage.storageaccount) nesnesinin depolama hesabına işaret eden bir örneğini oluşturun.
 
@@ -205,6 +209,4 @@ sourceFile.deleteOnExit();
 Bu makalede, Java kullanarak dosyaları yerel bir disk ve Azure Blob depolama arasında aktarmayı öğrendiniz. Java ile çalışma hakkında daha fazla bilgi edinmek için GitHub kaynak kod depomuza devam edin.
 
 > [!div class="nextstepaction"]
-> [Java için Microsoft Azure depolama SDK ile v10 arasındaki](https://github.com/azure/azure-storage-java) 
-> Java[API 'si başvuru](https://docs.microsoft.com/java/azure/)
-> [kodu örnekleri](../common/storage-samples-java.md)
+> Java [API başvurusu](https://docs.microsoft.com/java/azure/)@no__t-[Java Için 1 kod örnekleri](../common/storage-samples-java.md)

@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 10/2/2019
+ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 4096b9201afc98f6e5eb239cf9e6883ac69b6e79
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827980"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969573"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft ticari Market SSS
 
@@ -171,7 +171,7 @@ Evet, Kurumsal Anlaşma (EA) müşterileri için kayıt yöneticisi, kayıt üze
 
 **Ticari Market satınalmaları için hangi ödeme yöntemleri desteklenir?**
 
-Müşteriler Azure Market 'ten teklifler satın alabilir ve kredi kartları kullanarak Microsoft AppSource. Mevcut bir Azure aboneliğiniz varsa, Azure Marketi 'nden satın alma işlemleri hesapta yapılandırılan ödeme yöntemini kullanır ve ayrı bir satır öğesiyle aynı faturada görüntülenir. Bazı teklifler Azure parasal taahhüdünü tüketir, ancak çoğu ommercial Market satın alma işlemleri, Azure altyapı tüketimine rağmen Kurumsal Anlaşma taahhütlerini çizmez.
+Müşteriler Azure Market 'ten teklifler satın alabilir ve kredi kartları kullanarak Microsoft AppSource. Mevcut bir Azure aboneliğiniz varsa, Azure Marketi 'nden satın alma işlemleri hesapta yapılandırılan ödeme yöntemini kullanır ve ayrı bir satır öğesiyle aynı faturada görüntülenir. Bazı teklifler Azure parasal taahhüdünü tüketir, ancak çoğu ticari Market satın alma işlemleri, Azure altyapı tüketimine rağmen Kurumsal Anlaşma taahhütlerini çizmez.
 
 **Hesabım halinde Azure abonelik kredileri veya parasal taahhüt fonlarını Azure Market teklifleri doğrultusunda uygulayabilir miyim?**
 
@@ -381,9 +381,9 @@ Daha fazla bilgi için bkz. [bir teklifi silme](./cloud-partner-portal/manage-of
     > [!NOTE]
     > Uygulamalar, 90 gün sonra mevcut bir listeden kaybolur.
 
-*Power BI uygulamalar:*
+**Neden neden önerimde yansıtılmıyor?**
 
-İletişim: [Anjana Sompur (slalom danışmanlık LLC)](mailto:v-ansomp@microsoft.com).
+Iş Ortağı Merkezi 'nde yapılan değişiklikler yalnızca sistemde ve teklifi yeniden yayımlandıktan sonra mağaza 'dan güncelleştirilir. Lütfen herhangi bir değişiklik sonrasında yayın teklifini gönderdiğinizden emin olun.
 
 ### <a name="benefits-and-go-to-market-gtm-resources"></a>Avantajlar ve pazara sunma (GTM) kaynakları
 
@@ -463,6 +463,16 @@ Azure Marketi, müşterinin fatura adresinde tanımlanan coğrafi bilgisayarlard
 **Ücretsiz katman ve ücretsiz yazılım deneme sürümü arasındaki fark nedir?**
 
 Ücretsiz bir katman aboneliği teklifi adet sürekli ücretsizdir.  Ücretsiz yazılım deneme sürümü (şimdi deneyin) teklifi ücretli bir abonelik, yalnızca sınırlı bir süre için ücretsizdir.
+
+**Son satın alma ve sağlama akışını doğrulama işlemi ne olur?**
+
+Yayımlama işlemi sırasında teklifinizin önizlemesine erişim verilir. Erişim, önizleme sekmesinde belirttiğiniz kullanıcılarla kısıtlıdır ve bu, başka bir kişiye görünmeyen canlı bir tekliftir. Bunu satın alabilir ve işlemi test edebilirsiniz; Ancak, teklifinizin yapılandırmasına göre tam miktarı ücretlendirilecektir.
+
+Bir satın almayı çok düşük bir fiyatla tamamlamaya yönelik olarak, Microsoft, sınama maliyeti olarak kabul ettiğiniz bir fiyata özel bir plan yayımlamayı önerir. Sıfır desteklenir, ancak ücretli bir abonelik gibi tüm deneyimi yansıtmayacaktır.
+
+**Microsoft, standart ilkelerin dışında bir para iadesi sağlar mi?**
+
+Evet, destek bileti aracılığıyla isteğinizi tamamladıktan sonra, uygun değilse Microsoft kredilerinizi müşteriye göre işler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

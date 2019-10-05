@@ -1,18 +1,18 @@
 ---
 title: MariaDB için Azure Veritabanı ilişkisel veritabanı hizmetine genel bakış
-description: MariaDB için Azure Veritabanı ilişkisel veritabanı hizmetine genel bakış.
+description: MySQL Community Edition 'ı temel alan Microsoft bulutundaki bir ilişkisel veritabanı hizmeti olan MariaDB hizmeti için Azure veritabanı hakkında bilgi edinin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 08/13/2019
-ms.openlocfilehash: 20f6ff518daae71856446415099ae4cb095ff728
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 2a23cf4edef268c4690806117b3dac588848a420
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013620"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973491"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı nedir?
 
@@ -41,7 +41,7 @@ For a set of Azure CLI samples, see:
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Saniyeler içinde performansı ve ölçeği ayarlama
 
-MariaDB için Azure veritabanı hizmeti birkaç hizmet katmanı sunar: Temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Her katman, hafiften ağıra kadar tüm iş yüklerini desteklemek üzere farklı performans ve özellikler getirir. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesine yardımcı olur. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [fiyatlandırma katmanları](concepts-pricing-tiers.md) .
+MariaDB için Azure veritabanı hizmeti birçok hizmet katmanı sunar: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Her katman, hafiften ağıra kadar tüm iş yüklerini desteklemek üzere farklı performans ve özellikler getirir. İlk uygulamanızı aylık birkaç dolar ücretle küçük bir veritabanı üzerinde oluşturabilir ve sonra çözümünüzün gereksinimlerine göre ölçeği ayarlayabilirsiniz. Dinamik ölçeklendirebilirlik, veritabanınızın hızla değişen kaynak gereksinimlerine saydam bir şekilde yanıt verebilmesine yardımcı olur. Yalnızca ihtiyacınız olan kaynaklar için ve yalnızca bunlara ihtiyacınız olduğunda ödeme yaparsınız. Ayrıntılar için bkz. [fiyatlandırma katmanları](concepts-pricing-tiers.md) .
 
 ## <a name="monitoring-and-alerting"></a>İzleme ve uyarı
 
@@ -51,11 +51,11 @@ MariaDB için Azure veritabanı hizmeti birkaç hizmet katmanı sunar: Temel, Ge
 
 Azure 'un sektörde önde gelen% 99,99 kullanılabilirlik SLA 'Sı, Microsoft tarafından yönetilen küresel bir veri merkezi ağı ile desteklenmektedir. Ağ, uygulamanızın 7/24 çalışmasına yardımcı olur. MariaDB için Azure Veritabanı'ndaki yerleşik güvenlik, hataya dayanıklılık ve veri koruma özelliklerinden faydalanabilirsiniz. MariaDB için Azure Veritabanı ile, sunucuyu daha önceki bir durumuna (35 güne kadar) döndürüp kurtarmak için belirli bir noktaya geri yükleme işlemini gerçekleştirebilirsiniz.
 
-## <a name="secure-your-data"></a>Verilerinizin güvenliğini sağlama
+## <a name="secure-your-data"></a>Verilerinizi güvenli hale getirin
 
 Azure veritabanı hizmetlerinin sahip olduğu veri güvenliği anlayışı, MariaDB için Azure Veritabanı'nda da devam etmektedir. MariaDB için Azure Veritabanı bekleyen ve hareket halindeki verileri koruyan, erişimi sınırlandıran ve etkinliği izlemenize yardımcı olan özellikler sunmaktadır. Azure'ın platform güvenliği hakkında bilgi edinmek için [Azure Güven Merkezi](https://www.microsoft.com/en-us/trustcenter/security)'ni ziyaret edin.
 
-MariaDB hizmeti için Azure veritabanı, bekleyen veriler için depolama şifrelemeyi kullanır ve FIPS 140-2 uyumludur. Yedeklenen veriler dahil olmak üzere disk üzerindeki tüm veriler şifrelenir. (Sorgu çalıştırıldığında altyapı tarafından oluşturulan geçici dosyalar, diskte şifrelenmez.) Hizmet, Azure Depolama şifrelemesi kapsamında yer alan AES 256 bit şifrelemesini kullanır. Anahtarlar sistem tarafından yönetilir. Depolama şifrelemesi her zaman açıktır ve devre dışı bırakılamaz.
+MariaDB hizmeti için Azure veritabanı, bekleyen veriler için depolama şifrelemeyi kullanır ve FIPS 140-2 uyumludur. Yedeklenen veriler dahil olmak üzere disk üzerindeki tüm veriler şifrelenir. (Motor tarafından oluşturulan ve sorguları çalıştıran geçici dosyalar diskte şifrelenmez.) Hizmet, Azure depolama şifrelemesi 'ne dahil olan AES 256 bit şifre kullanır. Anahtarlar sistem tarafından yönetilir. Depolama şifrelemesi her zaman açıktır ve devre dışı bırakılamaz.
 
 Varsayılan olarak, MariaDB için Azure Veritabanı hizmeti ağ genelinde hareket halindeki veriler için [SSL bağlantı güvenliğini](./concepts-ssl-connection-security.md) zorunlu tutacak şekilde yapılandırılmıştır. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur. İsteğe bağlı olarak, istemci uygulamanızın SSL bağlantısını desteklememesi durumunda veritabanı hizmetinize bağlanmak için SSL gereksinimini devre dışı bırakabilirsiniz.
 

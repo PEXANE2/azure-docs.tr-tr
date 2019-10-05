@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya ekle
+description: dosya ekle
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ffc77d2a175d300be306b1566324b2551e38aeab
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266883"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973008"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ve yönetilen ve yönetilmeyen Premium diskler hakkında sık sorulan sorular
 
 Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
-## <a name="managed-disks"></a>Yönetilen Diskler
+## <a name="managed-disks"></a>Yönetilen diskler
 
 **Azure yönetilen diskler nedir?**
 
@@ -27,15 +27,15 @@ Yönetilen diskler, depolama hesabı yönetimini sizin için işleyerek Azure Ia
 
 **Mevcut bir VHD 'den 80 GB olan standart bir yönetilen disk oluşturdum, ne kadar ücret alınacaktır?**
 
-80 GB 'lık bir VHD 'den oluşturulan standart bir yönetilen disk, S10 disk olan bir sonraki kullanılabilir standart disk boyutu olarak değerlendirilir. S10 disk fiyatlandırmasına göre ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
+80 GB 'lık bir VHD 'den oluşturulan standart bir yönetilen disk, S10 disk olan bir sonraki kullanılabilir standart disk boyutu olarak değerlendirilir. S10 disk fiyatlandırmasına göre ücretlendirilirsiniz. Daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage)bakın.
 
 **Standart yönetilen diskler için herhangi bir işlem maliyeti var mı?**
 
-Evet. Her işlem için ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
+Evet. Her işlem için ücretlendirilirsiniz. Daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage)bakın.
 
 **Standart yönetilen bir disk için, diskteki verilerin gerçek boyutu veya diskin sağlanmış kapasitesi için ücretlendirilecektir mi?**
 
-Diskin sağlanan kapasitesine göre ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
+Diskin sağlanan kapasitesine göre ücretlendirilirsiniz. Daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage)bakın.
 
 **Premium yönetilen disklerin fiyatlandırması yönetilmeyen disklerden nasıl farklıdır?**
 
@@ -85,9 +85,9 @@ VM Tanılama için bir özel depolama hesabı ayarlarsınız.
 
 Yönetilen diskler üç temel varsayılan rolü destekler:
 
-* İnde Erişim dahil her şeyi yönetebilir
-* Mcý Erişim dışında her şeyi yönetebilir
-* Okuyucu Her şeyi görüntüleyebilir, ancak değişiklik yapamaz
+* Sahip: erişim dahil her şeyi yönetebilir
+* Katkıda bulunan: erişim dışında her şeyi yönetebilir
+* Okuyucu: her şeyi görüntüleyebilir, ancak değişiklik yapamaz
 
 **Yönetilen bir diski özel depolama hesabına kopyalayabiliyorum veya dışarı aktardığım bir yol var mı?**
 
@@ -157,7 +157,7 @@ Premium SSD, standart SSD ve standart HDD desteği anlık görüntüleri. Bu ü�
 - DSv3
 
 **Son derece disk verimini ne şekilde ayarlayamalıyım?**
-Disk aktarım hızını hangi şekilde ayarlayacağınızdan emin değilseniz, 16 KiB 'nin GÇ boyutunu kabul ederek ve uygulamanızı izlerken performansı buradan ayarlamanız önerilir. Formül şu şekilde olur: MB/sn cinsinden aktarım hızı = ıOPS * 16/1000.
+Disk aktarım hızını hangi şekilde ayarlayacağınızdan emin değilseniz, 16 KiB 'nin GÇ boyutunu kabul ederek ve uygulamanızı izlerken performansı buradan ayarlamanız önerilir. Formül: MB/sn cinsinden aktarım hızı = ıOPS * 16/1000.
 
 **Diskmi 40000 ıOPS olarak yapılandırdım, ancak yalnızca 12800 ıOPS görüyorum, diskin performansını neden göremiyorum?**
 Disk azaltma 'ya ek olarak, VM düzeyinde uygulanan bir GÇ azaltması vardır. Lütfen kullandığınız VM boyutunun disklerinizde yapılandırılan düzeyleri destekleyebileceğini doğrulayın. VM 'niz tarafından uygulanan GÇ limitleriyle ilgili ayrıntılar için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../articles/virtual-machines/windows/sizes.md).
@@ -218,8 +218,8 @@ Evet, Azure Backup artık kullanılabilir.
 **Nasıl yaparım? Standart SSD diskler mi oluşturulsun?**
 Azure Resource Manager şablonları, SDK, PowerShell veya CLı kullanarak Standart SSD diskleri oluşturabilirsiniz. Standart SSD disk oluşturmak için Kaynak Yöneticisi şablonunda gereken parametreler şunlardır:
 
-* Microsoft. COMPUTE için *apiversion* , (veya üzeri `2018-04-01` ) olarak ayarlanmalıdır
-* *Manageddisk. storageAccountType* olarak belirtin`StandardSSD_LRS`
+* Microsoft. COMPUTE için *Apiversion* , `2018-04-01` (veya üzeri) olarak ayarlanmalıdır
+* @No__t-1 olarak *Manageddisk. storageAccountType* belirtin
 
 Aşağıdaki örnek, Standart SSD diskleri kullanan bir VM için *Properties. storageProfile. osDisk* bölümünü gösterir:
 
@@ -238,7 +238,7 @@ Aşağıdaki örnek, Standart SSD diskleri kullanan bir VM için *Properties. st
 Şablon ile Standart SSD disk oluşturma hakkında ayrıntılı bir örnek için, bkz. [Standart SSD Veri disklerine sahip bir Windows GÖRÜNTÜSÜNDEN VM oluşturma](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
 
 **Mevcut disklerimi Standart SSD dönüştürebilir miyim?**
-Evet, uygulayabilirsiniz. [Azure yönetilen diskler depolama alanını standartdan Premium 'A dönüştürme ve](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) yönetilen diskleri dönüştürmeye yönelik genel yönergeler için tam tersi. Ve, disk türünü Standart SSD güncelleştirmek için aşağıdaki değeri kullanın.
+Evet, şunları yapabilirsiniz. [Azure yönetilen diskler depolama alanını standartdan Premium 'A dönüştürme ve](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) yönetilen diskleri dönüştürmeye yönelik genel yönergeler için tam tersi. Ve, disk türünü Standart SSD güncelleştirmek için aşağıdaki değeri kullanın.
 -AccountType StandardSSD_LRS
 
 **HDD yerine Standart SSD diskleri kullanmanın avantajı nedir?**
@@ -250,7 +250,7 @@ Hayır, standart SSD diskler yalnızca yönetilen diskler olarak kullanılabilir
 **Standart SSD diskleri "tek örnekli VM SLA 'Sı" destekliyor mu?**
 Hayır, standart SSD 'Lerin tek örnekli VM SLA 'Sı yoktur. Tek örnekli VM SLA 'Sı için Premium SSD diskleri kullanın.
 
-## <a name="migrate-to-managed-disks"></a>Yönetilen Disklere geçin
+## <a name="migrate-to-managed-disks"></a>Yönetilen disklere geçirme
 
 **Yönetilen diskler performansında geçişin etkileri var mı?**
 
@@ -294,6 +294,10 @@ Evet
 
 Evet.
 
+**Önyükleme birimi, yönetilen bir diskte varsayılan olarak şifrelendi mı?**
+
+Evet. Varsayılan olarak, işletim sistemi diski dahil olmak üzere tüm yönetilen diskler şifrelenir.
+
 **Şifreleme anahtarlarını kim yönetir?**
 
 Microsoft, şifreleme anahtarlarını yönetir.
@@ -329,7 +333,7 @@ Evet
 
 Hayır. Ancak, şifrelenen bir yönetilen diskten veya anlık görüntüsünden bir VHD 'yi şifrelenmiş bir depolama hesabına dışa aktardığınızda, bu durumda şifrelenir. 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Premium diskler: Yönetilen ve yönetilmeyen
+## <a name="premium-disks-managed-and-unmanaged"></a>Premium diskler: yönetilen ve yönetilmeyen
 
 **Bir VM, DSv2 gibi Premium SSD diskleri destekleyen bir boyut serisi kullanıyorsa hem Premium hem de standart veri disklerini ekleyebilir miyim?** 
 
@@ -345,7 +349,7 @@ Bir 80 GB VHD 'den oluşturulan Premium veri diski, P10 disk olan bir sonraki ku
 
 **Premium SSD diskleri kullanmak için işlem maliyetleri var mı?**
 
-Her disk boyutu için sabit bir maliyet vardır ve bu, ıOPS ve aktarım hızı için belirli limitlerle sağlanır. Varsa, diğer maliyetler ise giden bant genişliğidir ve anlık görüntü kapasitesidir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
+Her disk boyutu için sabit bir maliyet vardır ve bu, ıOPS ve aktarım hızı için belirli limitlerle sağlanır. Varsa, diğer maliyetler ise giden bant genişliğidir ve anlık görüntü kapasitesidir. Daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage)bakın.
 
 **Disk önbelleğinden alabileceği ıOPS ve aktarım hızı sınırları nelerdir?**
 
@@ -359,7 +363,7 @@ Yerel SSD, yönetilen diskler VM 'ye dahil olan geçici bir depodır. Bu geçici
 
 Azure disklerinde, Premium veya Standart diskler üzerinde KıRPMA kullanmanın bir alt tarafı yoktur.
 
-## <a name="new-disk-sizes-managed-and-unmanaged"></a>Yeni disk boyutları: Yönetilen ve yönetilmeyen
+## <a name="new-disk-sizes-managed-and-unmanaged"></a>Yeni disk boyutları: yönetilen ve yönetilmeyen
 
 **İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilen disk boyutu nedir?**
 
@@ -379,10 +383,10 @@ Azure 'un desteklediği en büyük Sayfa Blobu boyutu 8 TiB 'dir (8.191 GiB). Bi
 
 |Azure Araçları      | Desteklenen sürümler                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Sürüm numarası 4.1.0: Haziran 2017 sürümü veya üzeri|
-|Azure CLı v1     | Sürüm numarası 0.10.13: Mayıs 2017 sürümü veya üzeri|
+|Azure PowerShell | Sürüm numarası 4.1.0: Haziran 2017 sürüm veya üzeri|
+|Azure CLı v1     | Sürüm numarası 0.10.13: Mayıs 2017 sürüm veya sonrası|
 |Azure CLı v2     | Sürüm numarası 2.0.12: Temmuz 2017 sürümü veya üzeri|
-|AzCopy           | Sürüm numarası 6.1.0: Haziran 2017 sürümü veya üzeri|
+|AzCopy           | Sürüm numarası 6.1.0: Haziran 2017 sürüm veya üzeri|
 
 **P4 ve P6 disk boyutları yönetilmeyen diskler veya sayfa Blobları için destekleniyor mu?**
 
@@ -406,7 +410,7 @@ Azure Backup ve Azure Site Recovery hizmeti tarafından desteklenen en büyük d
 
 **İyileştirilmiş disk ıOPS ve bant genişliğine ulaşmak için Standart SSD ve Standart HDD diskler için daha büyük disk boyutları (> 4 TiB) için önerilen VM boyutları nelerdir?**
 
-Standart SSD disk işleme elde etmek Standart HDD ve büyük disk boyutları (> 4 TiB) 500 ıOPS ve 60 MIB/sn 'den daha fazla almak için, performansınızı iyileştirmek üzere aşağıdaki VM boyutlarından birinden yeni bir VM dağıtmanızı öneririz: B-serisi, DSv2-serisi, Dsv3-serisi, ESv3-serisi, FS-Serisi, Fsv2-serisi, M-serisi, GS-serisi, NCv2-serisi, NCv3-serisi, ya da LS Serisi VM 'Ler. Mevcut VM 'lere veya yukarıda önerilen boyutları kullanmayan VM 'lere büyük diskler eklemek daha düşük performans yaşayabilir.
+Standart SSD disk işleme elde etmek Standart HDD ve büyük disk boyutlarını (> 4 TiB) 500 ıOPS ve 60 MIB/sn 'den daha iyi karşılamak için, performansınızı iyileştirmek üzere aşağıdaki VM boyutlarından birinden yeni bir VM dağıtmanız önerilir: B-serisi, DSv2-serisi, Dsv3-serisi, ESv3-serisi , FS Serisi, Fsv2-serisi, d serisi, GS-Series, NCv2-serisi, NCv3-Series veya LS Serisi VM 'Ler. Mevcut VM 'lere veya yukarıda önerilen boyutları kullanmayan VM 'lere büyük diskler eklemek daha düşük performans yaşayabilir.
 
 **En büyük disk boyutları önizlemesi sırasında dağıtılan disklerimi nasıl yükseltebilirim (> 4 TiB) ve daha yüksek ıOPS, GA & bant genişliğine sahip olabilir mi?**
 

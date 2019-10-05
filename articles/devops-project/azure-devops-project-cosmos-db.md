@@ -1,20 +1,20 @@
 ---
-title: 'Öğretici: Azure DevOps Projeleri ile Azure Cosmos DB tarafından desteklenen Node. js uygulamalarını dağıtın'
-description: Azure DevOps projeleri, Azure'da kullanmaya başlamak kolaylaştırır. DevOps Projeleri ile, birkaç hızlı adımda Windows Web App 'e Azure Cosmos DB desteklenen Node. js uygulamanızı dağıtabilirsiniz.
+title: 'Öğretici: Azure DevOps Projeleri ile Azure Cosmos DB tarafından desteklenen Node. js uygulamalarını dağıtma'
+description: Azure DevOps Projeleri Azure 'u kullanmaya başlamanızı kolaylaştırır. DevOps Projeleri ile, birkaç hızlı adımda Windows Web App 'e Azure Cosmos DB desteklenen Node. js uygulamanızı dağıtabilirsiniz.
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/11/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 38fc4aa04269924ad0acd529e961dd3228ec236e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1c16368990148406fbacdde2981c10fab0b2d405
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884411"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969655"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>DevOps Projeleri ile Azure Cosmos DB tarafından desteklenen Node. js uygulamalarını dağıtın
 
@@ -30,7 +30,7 @@ Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
 > * Azure Cosmos DB tarafından desteklenen bir Node. js uygulamasını dağıtmak için DevOps Projeleri kullanın
-> * Azure DevOps ve Azure aboneliğinin yapılandırın
+> * Azure DevOps ve bir Azure aboneliği yapılandırma
 > * Azure Cosmos DB inceleyin
 > * CI işlem hattını inceleme
 > * CD işlem hattını inceleme
@@ -45,7 +45,7 @@ Bu öğreticide şunları yapacaksınız:
 
 DevOps Projeleri, Azure Pipelines bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Projeleri ayrıca, tercih ettiğiniz Azure aboneliğinde Azure Cosmos DB, Application Insights, App Service ve App Service planları gibi Azure kaynakları da oluşturur.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. Sol bölmede **kaynak oluştur**' u seçin.
 
@@ -103,13 +103,13 @@ DevOps Projeleri, Azure DevOps kuruluşunuzda bir CI/CD işlem hattını otomati
 
     ![Derleme bölmesi](_img/azure-devops-project-cosmos-db/build.png)
 
-1. **Düzenle**’yi seçin. Bu bölmede, derleme işlem hattı için çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak kodu getirme, uygulamayı oluşturma, birim testlerini çalıştırma ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
+1. **Düzenle**’yi seçin. Bu bölmede, derleme işlem hattınızla ilgili çeşitli görevleri inceleyebilirsiniz. Derleme, git deposundan kaynak kodu getirme, uygulamayı oluşturma, birim testlerini çalıştırma ve dağıtımlar için kullanılan yayınlama çıkışları gibi çeşitli görevleri gerçekleştirir.
 
 1. **Tetikleyiciler**’i seçin. DevOps Projeleri otomatik olarak bir CI tetikleyicisi oluşturur ve depoya yapılan her bir işleme yeni bir derleme başlatır. CI işlemindeki dalları dahil etmek veya hariç tutmak seçebilirsiniz.
 
-1. **Saklama**’yı seçin. Senaryonuza bağlı olarak, saklamak veya belirli bir sayıda derlemeleri kaldırmak için ilkeleri belirtebilirsiniz.
+1. **Saklama**’yı seçin. Senaryonuza bağlı olarak, belirli sayıda derlemeyi tutmanın veya kaldırabilmeniz için ilkeler belirtebilirsiniz.
 
-1. Derleme işlem hattı üstünde derleme işlem hattı adı seçin.
+1. Yapı işlem hattının en üstünde derleme işlem hattı adını seçin.
 
 1. Derleme işlem hattınızı daha açıklayıcı bir şekilde değiştirin ve ardından **& kuyruğu kaydet** açılan listesinden **Kaydet** ' i seçin.
 
@@ -154,7 +154,7 @@ Artık App Service en son çalışmalarınızı dağıtan bir CI/CD işlemi kull
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyaç duymadığınızda oluşturduğunuz ilgili kaynakları silin. Kullanım **Sil** DevOps projeleri Pano işlevselliği.
+Artık ihtiyaç duymadığınızda oluşturduğunuz ilgili kaynakları silin. DevOps Projeleri panosundaki **silme** işlevini kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -162,7 +162,7 @@ Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatla
 
 > [!div class="checklist"]
 > * Azure Cosmos DB tarafından desteklenen bir Node. js uygulamasını dağıtmak için DevOps Projeleri kullanın
-> * Azure DevOps ve Azure aboneliğinin yapılandırın 
+> * Azure DevOps ve bir Azure aboneliği yapılandırma 
 > * Azure Cosmos DB inceleyin
 > * CI işlem hattını inceleme
 > * CD işlem hattını inceleme

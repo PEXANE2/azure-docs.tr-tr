@@ -4,14 +4,14 @@ description: Bir kaynak grubunda 800 taneden fazla örneğe sahip olabilir Azure
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 7/30/2019
+ms.date: 10/4/2019
 ms.author: tomfitz
-ms.openlocfilehash: eec448dcbf1c550b6b0a0ee0f17505fd6ddd3c74
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194743"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973317"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örneğiyle sınırlı kaynak yok
 
@@ -24,7 +24,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 * automationAccounts
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 * kayıtlarında
 * kayıt/müşteri abonelikleri
@@ -36,12 +36,16 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
-* diskler
-* görüntüler
-* anlık görüntüler
+* disklerinden
+* images
+* görüntüsünü
 * virtualMachines
 
-## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
+## <a name="microsoftcontainerinstance"></a>Microsoft. Containerınstance
+
+* Kapsayıcı grupları
+
+## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
 * kayıt defterleri/buildTasks
 * kayıt defterleri/buildTasks/listSourceRepositoryProperties
@@ -54,16 +58,16 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. Dbformarıdb
 
-* sunucu
+* sunucular
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft. Dbformyısql
 
-* sunucu
+* sunucular
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 * Sunucu grupları
-* sunucu
+* sunucular
 * serversv2
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
@@ -77,10 +81,18 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftlogic"></a>Microsoft.Logic
+## <a name="microsoftlogic"></a>Microsoft. Logic
 
 * Tümleştirme hesapları
 * sürdürülen
+
+## <a name="microsoftnetapp"></a>Microsoft. NetApp
+
+* netAppAccounts
+* netAppAccounts/Capacityhavuzları
+* netAppAccounts/Capacityhavuzları/birimleri
+* netAppAccounts/Capacityhavuzlar/Volumes/Mount hedefleri
+* netAppAccounts/Capacityhavuzlar/birimler/anlık görüntüler
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -133,6 +145,15 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 * işlere
 
+## <a name="microsoftservicefabricmesh"></a>Microsoft. Servicefabrickafesi
+
+* uygulama
+* Kapsayıcı grupları
+* geçidinin
+* Mamak
+* kaynaklanır
+* volumes
+
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 * storageAccounts
@@ -140,7 +161,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 * apiManagementAccounts/API 'ler
-* siteler
+* barındıra
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

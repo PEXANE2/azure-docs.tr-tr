@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2f9b624ffcc04963046ad817bb2bc9c025161506
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300263"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971801"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API ve meta verileri ile bir yanıt alın
 
@@ -46,9 +46,9 @@ Soru ve yanıt kümelerinden en iyi eşleşmeyi elde etmek için, bot veya uygul
 Bilgi bankanızı [soru-cevap oluşturma portalından](https://www.qnamaker.ai)yayımladığınızda veya [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)'Yi kullanarak, generateanswer uç noktanızın ayrıntılarını alabilirsiniz.
 
 Uç nokta ayrıntılarınızı almak için:
-1. [https://www.qnamaker.ai](https://www.qnamaker.ai) adresinde oturum açın.
+1. [@No__t-1](https://www.qnamaker.ai)' de oturum açın.
 1. **Bilgi tabanlarım**' da bilgi tabanınız Için **kodu görüntüle** ' yi seçin.
-    ![Bilgi temellerimin ekran görüntüsü](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
+    @no__t--bilgi temellerimin @ ekran görüntüsü @ no__t-1
 1. GenerateAnswer uç noktası ayrıntılarınızı alın.
 
     ![Uç nokta ayrıntılarının ekran görüntüsü](../media/qnamaker-how-to-metadata-usage/view-code.png)
@@ -64,7 +64,7 @@ HTTP POST isteğiyle GenerateAnswer öğesini çağırın. GenerateAnswer çağr
 POST isteği şunu kullanır:
 
 * Gerekli [URI parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Güvenlik için gerekli [üst bilgi özelliği](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer) `Authorization`
+* Güvenlik için gerekli [üst bilgi özelliği](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer)`Authorization`
 * Gerekli [gövde özellikleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
 
 GenerateAnswer URL 'SI aşağıdaki biçime sahiptir: 
@@ -73,7 +73,7 @@ GenerateAnswer URL 'SI aşağıdaki biçime sahiptir:
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-Öğesinin `Authorization` http üst bilgisi özelliğini, sonundaki boşluk ve sonra **Ayarlar** sayfasında bulunan uç `EndpointKey` nokta anahtarı ile birlikte dizenin bir değeriyle ayarlamayı unutmayın.
+@No__t-0 ' ın HTTP üst bilgi özelliğini, sonunda boşluk olan `EndpointKey` dizesinin bir değeriyle ve ardından **Ayarlar** sayfasında bulunan uç nokta anahtarıyla ayarlamayı unutmayın.
 
 Örnek bir JSON gövdesi şöyle görünür:
 
@@ -161,7 +161,7 @@ Destek bot, bu koda [bir örnek](https://github.com/microsoft/BotBuilder-Samples
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>Özel meta veri etiketlerine göre yanıtları filtrelemek için meta verileri kullanma
 
-Meta veri eklemek, yanıtları bu meta veri etiketlerine göre filtrelemenize izin verir. **Görünüm seçenekleri** menüsünden meta veri sütununu ekleyin. Meta veri **+** simgesini seçerek, meta veri çifti eklemek için bilgi bankasından meta veriler ekleyin. Bu çift bir anahtar ve bir değer içerir.
+Meta veri eklemek, yanıtları bu meta veri etiketlerine göre filtrelemenize izin verir. **Görünüm seçenekleri** menüsünden meta veri sütununu ekleyin. Meta veri çifti eklemek için meta veri **+** simgesini seçerek bilgi tabanınızı meta veriler ekleyin. Bu çift bir anahtar ve bir değer içerir.
 
 ![Meta veri ekleme ekran görüntüsü](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -219,9 +219,9 @@ GenerateAnswer yanıtı, eşleşen soru ve yanıt kümesi için karşılık gele
 
 ## <a name="match-questions-only-by-text"></a>Yalnızca soruları Eşleştir, metne göre
 
-Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama yapar. Yalnızca sorulardan arama yapmak istiyorsanız, yanıt oluşturmak için generateanswer isteğinin gönderi gövdesinde öğesini `RankerType=QuestionOnly` kullanın.
+Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama yapar. Yalnızca sorulardan arama yapmak istiyorsanız, yanıt oluşturmak için GenerateAnswer isteğinin GÖNDERI gövdesinde `RankerType=QuestionOnly` kullanın.
 
-`isTest=false` Kullanarak`isTest=true`, veya kullanarak, ile yayımlanan KB veya test KB içinde arama yapabilirsiniz.
+@No__t-0 ' ı veya `isTest=true` kullanarak test KB ' yi kullanarak yayımlanmış KB içinde arama yapabilirsiniz.
 
 ```json
 {
@@ -237,10 +237,10 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
 |Kod|Açıklama|
 |:--|--|
 |2xx|Başarılı|
-|400|isteğin parametreleri yanlış gerekli parametreler eksik, hatalı biçimlendirilmiş ya da çok büyük olduğu anlamına gelir|
-|400|isteğin gövde JSON eksik, hatalı biçimlendirilmiş ya da çok büyük yani yanlış|
+|400|İsteğin parametreleri yanlış, gerekli parametreler eksik, hatalı biçimlendirilmiş veya çok büyük|
+|400|İsteğin gövdesi yanlış anlamı, JSON eksik, hatalı biçimlendirilmiş veya çok büyük|
 |401|Geçersiz anahtar|
-|403|Yasak - sizin doğru izinlere sahip değilsiniz|
+|403|Yasak-doğru izinleriniz yok|
 |404|KB yok|
 |410|Bu API kullanım dışı ve artık kullanılamıyor|
 
@@ -249,4 +249,4 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
 **Yayımla** sayfası, [Postman](../Quickstarts/get-answer-from-kb-using-postman.md) ve [kıvrımlı](../Quickstarts/get-answer-from-kb-using-curl.md)bir yanıt oluşturmak için bilgi de sağlar. 
 
 > [!div class="nextstepaction"]
-> [Bilgi bankası oluşturma](./create-knowledge-base.md)
+> [Bilgi Bankası bot oluştur](../tutorials/integrate-qnamaker-luis.md)

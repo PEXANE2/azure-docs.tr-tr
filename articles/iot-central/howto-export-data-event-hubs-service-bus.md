@@ -8,12 +8,12 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: e6df6a1f751106f62cdfecc3a7b5efb0fe4c63bf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 732ce570f8235d1f147055af6972c2a8d12599dc
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875989"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971612"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Azure IoT Central verilerinizi dışarı aktarın
 
@@ -33,9 +33,9 @@ Bu makalede verilerinizi kendi **azure Event Hubs**ve **Azure Service Bus** örn
 
 ## <a name="set-up-export-destination"></a>Dışarı aktarma hedefini ayarla
 
-Uygulamasına dışarı aktarmak için mevcut bir Event Hubs/Service Bus yoksa, aşağıdaki adımları izleyin:
+Uygulamasına dışarı aktarmak için mevcut bir Event Hubs/Service Bus yoksa, oluşturmak için aşağıdaki adımları izleyin:
 
-## <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluştur
+### <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluştur
 
 1. [Azure Portal yeni bir Event Hubs ad alanı](https://ms.portal.azure.com/#create/Microsoft.EventHub)oluşturun. [Azure Event Hubs docs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)'ta daha fazla bilgi edinebilirsiniz.
 2. Bir abonelik seçin. 
@@ -44,7 +44,7 @@ Uygulamasına dışarı aktarmak için mevcut bir Event Hubs/Service Bus yoksa, 
     > Artık verileri, Kullandıkça Öde IoT Central uygulamanızla **aynı olmayan** diğer aboneliklerle dışarı aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanacaksınız.
 3. Event Hubs ad alanında bir olay hub 'ı oluşturun. Ad alanına gidin ve bir olay hub 'ı örneği oluşturmak için en üstteki **+ Olay Hub 'ını** seçin.
 
-## <a name="create-service-bus-namespace"></a>Service Bus ad alanı oluştur
+### <a name="create-service-bus-namespace"></a>Service Bus ad alanı oluştur
 
 1. [Azure Portal yeni bir Service Bus ad alanı](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) oluşturun. [Azure Service Bus docs](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)' de daha fazla bilgi edinebilirsiniz.
 2. Bir abonelik seçin. 
@@ -66,14 +66,12 @@ Verilerin dışarı aktarılacağı Event Hubs/Service Bus hedefine sahip olduğ
     > [!Note]
     > Sol menüde sürekli veri dışa aktarma görmüyorsanız, uygulamanızda yönetici değilsiniz demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
 
-    ![Yeni CDE Olay Hub 'ı oluştur](media/howto-export-data/export_menu1.png)
-
 3. Sağ üst köşedeki **+ Yeni** düğmesini seçin. Dışarı aktarmanın hedefi olarak **Azure Event Hubs** veya **Azure Service Bus** birini seçin. 
 
     > [!NOTE] 
     > Uygulama başına en fazla dışarı aktarma sayısı beştir. 
 
-    ![Yeni sürekli veri dışa aktarma oluştur](media/howto-export-data/export_new1.png)
+    ![Yeni sürekli veri dışa aktarma oluştur](media/howto-export-data/export-new2.png)
 
 4. Aşağı açılan liste kutusunda **Event Hubs ad alanı/Service Bus ad alanını**seçin. Ayrıca, listede **bir bağlantı dizesi girerek**son seçeneği de seçebilirsiniz. 
 
@@ -83,7 +81,7 @@ Verilerin dışarı aktarılacağı Event Hubs/Service Bus hedefine sahip olduğ
     > [!NOTE] 
     > 7 günlük deneme uygulamaları için sürekli veri vermeyi yapılandırmanın tek yolu bir bağlantı dizesidir. Bunun nedeni 7 günlük deneme uygulamalarının ilişkili bir Azure aboneliğine sahip olmaması olabilir.
 
-    ![Yeni CDE Olay Hub 'ı oluştur](media/howto-export-data/export_create1.png)
+    ![Yeni CDE Olay Hub 'ı oluştur](media/howto-export-data/export-eh.png)
 
 5. Seçim **Bir bağlantı dizesi girin**' i seçerseniz, Bağlantı dizenizi yapıştırmanız için yeni bir kutu belirir. İçin bağlantı dizesini almak için:
     - Event Hubs veya Service Bus, Azure portal ad alanına gidin.
@@ -95,14 +93,12 @@ Verilerin dışarı aktarılacağı Event Hubs/Service Bus hedefine sahip olduğ
 
 7. **Dışarı aktarılacak veriler**' in altında, türü **üzerine**ayarlayarak dışarı aktarılacak her bir veri türünü belirtin.
 
-6. Sürekli veri dışa aktarmayı açmak için, **veri dışa aktarmanın** **Açık**olduğundan emin olun. **Kaydet**’i seçin.
+8. Sürekli veri dışa aktarmayı açmak için, **veri dışa aktarma** geçişi 'nin **Açık**olduğundan emin olun. **Kaydet**’i seçin.
 
-    ![Sürekli veri vermeyi yapılandırma](media/howto-export-data/export_list1.png)
-
-7. Birkaç dakika sonra verileriniz seçtiğiniz hedefte görüntülenir.
+9. Birkaç dakika sonra verileriniz seçtiğiniz hedefte görüntülenir.
 
 
-## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Azure Event Hubs ve Azure Service Bus dışarı aktarma
+## <a name="data-format"></a>Veri biçimi
 
 Ölçümler, cihazlar ve cihaz şablonları verileri, Olay Hub 'ınıza veya Service Bus kuyruğuna veya konuya neredeyse gerçek zamanlı olarak verilir. Aktarılmış ölçüm verileri, cihazlarınızın yalnızca ölçümlerin değerlerini değil, IoT Central gönderilen iletinin tamamını içerir. Aktarılmış cihazlar verileri tüm cihazların özelliklerine ve ayarlarına yapılan değişiklikleri içerir ve aktarılmış cihaz şablonları tüm cihaz şablonlarında değişiklikler içerir. "Body" özelliği olan ve JSON biçiminde olan veriler.
 
@@ -146,7 +142,7 @@ Aşağıdaki örnek, Olay Hub 'ında veya Service Bus kuyruğu veya konusunda al
     "x-opt-enqueued-time": 1539381030200
   },
   "sequenceNumber": 25325,
-  "enqueuedTimeUtc": "2018-10-12T21:50:30.200Z",
+  "enqueuedTimeUtc": "2018-10-02T21:50:30.200Z",
   "offset": "<offset>",
   "properties": {
     "content_type": "application/json",
@@ -162,9 +158,9 @@ Cihaz verileri içeren iletiler, her birkaç dakikada bir olay hub 'ınıza veya
 - Değiştirilen özellik ve ayar değerleri içeren cihazlar
 
 Her ileti, son dışarıya alınan iletiden bu yana bir cihazdaki bir veya daha fazla değişikliği temsil eder. Her iletide gönderilecek bilgiler şunları içerir:
-- `id`IoT Central cihaz
-- `name`Cihazın
-- `deviceId`[cihaz sağlama hizmeti](https://aka.ms/iotcentraldocsdps) 'nden
+- IoT Central cihazın `id`
+- @no__t-cihazın 0
+- [cihaz sağlama hizmeti](https://aka.ms/iotcentraldocsdps) 'nden 0 @no__t
 - Cihaz şablonu bilgileri
 - Özellik değerleri
 - Ayar değerleri
@@ -211,7 +207,7 @@ Aşağıdaki örnek, Olay Hub 'ındaki veya Service Bus kuyruğu veya konusunun 
   },
   "partitionKey": "<partitionKey>",
   "sequenceNumber": 39740,
-  "enqueuedTimeUtc": "2018-10-11T16:22:39.654Z",
+  "enqueuedTimeUtc": "2018-10-02T16:22:39.654Z",
   "offset": "<offset>",
 }
 ```
@@ -223,9 +219,9 @@ Cihaz şablonu verilerini içeren iletiler, her birkaç dakikada bir olay hub '�
 - Değiştirilen ölçümler, özellik ve ayar tanımlarına sahip cihaz şablonları
 
 Her ileti, son dışarıya alınan iletiden bu yana bir cihaz şablonunda yapılan bir veya daha fazla değişikliği temsil eder. Her iletide gönderilecek bilgiler şunları içerir:
-- `id`cihaz şablonu
-- `name`cihaz şablonu
-- `version`cihaz şablonu
+- cihaz şablonunun `id`
+- cihaz şablonunun `name`
+- cihaz şablonunun `version`
 - Ölçüm veri türleri ve min/max değerleri
 - Özellik veri türleri ve varsayılan değerler
 - Veri türlerini ve varsayılan değerleri ayarlama
@@ -236,62 +232,62 @@ Her ileti, son dışarıya alınan iletiden bu yana bir cihaz şablonunda yapıl
 Aşağıdaki örnek, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz şablonları verileri hakkında bir ileti gösterir:
 
 ```json
-{
-  "body": {
-    "id": "<id>",
-    "version": "1.0.0",
-    "name": "<templateName>",
-    "measurements": {
-      "telemetry": {
-        "humidity": {
-          "dataType": "double",
-          "name": "humidity"
+{ 
+  "body":{ 
+    "id":"<id>",
+    "version":"1.0.0",
+    "name":"<templateName>",
+    "measurements":{ 
+      "telemetry":{ 
+        "humidity":{ 
+          "dataType":"double",
+          "name":"humidity"
         },
-        "pressure": {
-          "dataType": "double",
-          "name": "pressure"
+        "pressure":{ 
+          "dataType":"double",
+          "name":"pressure"
         },
-        "temp": {
-          "dataType": "double",
-          "name": "temperature"
+        "temp":{ 
+          "dataType":"double",
+          "name":"temperature"
         }
       }
     },
-    "properties": {
-      "cloud": {
-        "location": {
-          "dataType": "string",
-          "name": "Location"
+    "properties":{ 
+      "cloud":{ 
+        "location":{ 
+          "dataType":"string",
+          "name":"Location"
         }
       },
-      "device": {
-        "dieNumber": {
-          "dataType": "double",
-          "name": "Die Number"
+      "device":{ 
+        "dieNumber":{ 
+          "dataType":"double",
+          "name":"Die Number"
         }
       }
     },
-    "settings": {
-      "device": {
-        "fanSpeed": {
-          "dataType": "double",
-          "name": "Fan Speed",
-          "initialValue": 0
+    "settings":{ 
+      "device":{ 
+        "fanSpeed":{ 
+          "dataType":"double",
+          "name":"Fan Speed",
+          "initialValue":0
         }
       }
     }
   },
-  "annotations": {
-    "iotcentral-message-source": "deviceTemplates",
-    "x-opt-partition-key": "<partitionKey>",
-    "x-opt-sequence-number": 25315,
-    "x-opt-offset": "<offset>",
-    "x-opt-enqueued-time": 1539274985085
+  "annotations":{ 
+    "iotcentral-message-source":"deviceTemplates",
+    "x-opt-partition-key":"<partitionKey>",
+    "x-opt-sequence-number":25315,
+    "x-opt-offset":"<offset>",
+    "x-opt-enqueued-time":1539274985085
   },
-  "partitionKey": "<partitionKey>",
-  "sequenceNumber": 25315,
-  "enqueuedTimeUtc": "2018-10-11T16:23:05.085Z",
-  "offset": "<offset>",
+  "partitionKey":"<partitionKey>",
+  "sequenceNumber":25315,
+  "enqueuedTimeUtc":"2018-10-02T16:23:05.085Z",
+  "offset":"<offset>"
 }
 ```
 

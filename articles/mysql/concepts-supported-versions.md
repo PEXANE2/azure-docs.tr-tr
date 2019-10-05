@@ -1,17 +1,17 @@
 ---
-title: MySQL için Azure veritabanı 'nda desteklenen sürümler
-description: MySQL için Azure veritabanı 'nda desteklenen sürümleri açıklar.
+title: Desteklenen sürümler-MySQL için Azure veritabanı
+description: MySQL Server 'ın hangi sürümlerini MySQL için Azure veritabanı hizmetinde destekleyeceğinizi öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 25251b617522840412a4868331e155285f64a18c
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: f9c7278e60c8342aa7d5b68ab8da7143abaf4c89
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962577"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970523"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>MySQL sunucu sürümleri için desteklenen Azure veritabanı
 
@@ -48,7 +48,7 @@ Bu sürümdeki geliştirmeler ve düzeltmeler hakkında daha fazla bilgi edinmek
 ## <a name="managing-updates-and-upgrades"></a>Güncelleştirmeleri ve yükseltmeleri yönetme
 Hizmet, hata düzeltme sürümü güncelleştirmeleri için düzeltme eki uygulamayı otomatik olarak yönetir. Örneğin, 5.7.20 yükle to 5.7.21.  
 
-Şu anda, küçük ve büyük sürüm yükseltmeleri desteklenmez. Örneğin, MySQL 5,6 ' den MySQL 5,7 ' ye yükseltme desteklenmez. 5,6 ' den 5,7 ' ye yükseltmek istiyorsanız, bir dökümünü alın ve yeni altyapı sürümüyle oluşturulmuş bir sunucuya [geri yükleyin](./concepts-migrate-dump-restore.md) .
+Şu anda alt ve ana sürüm yükseltmeleri desteklenmez. Örneğin MySQL 5.6'dan MySQL 5.7'ye yükseltme desteklenmez. 5\.6'dan 5.7'ye yükseltmek isterseniz [döküm alın ve bunu yeni altyapı sürümüyle oluşturulmuş bir sunucuya geri yükleyin](./concepts-migrate-dump-restore.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

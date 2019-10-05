@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: fa0bd847596a601875d5662da1c000a5b1388eef
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: e1875ebdb62cfc6d606465b863215513aaa47c02
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960275"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972914"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -83,7 +83,7 @@ Veri alma eğilimi ve tanımlanacak günlük hacim üst sınırı olduğunu anla
 
 Aşağıdaki adımlarda, Log Analytics çalışma alanının günlük olarak kullanacağı veri hacmini yönetmek için bir sınırın nasıl yapılandırılacağı açıklanır.  
 
-1. Çalışma alanınızda, sol bölmedeki **kullanım ve tahmini maliyetler** ' i seçin.
+1. Çalışma alanınızın sayfasında, soldaki bölmeden **Kullanım ve tahmini maliyetler**’i seçin.
 2. Seçili çalışma alanı için **kullanım ve tahmini maliyetler** sayfasında, sayfanın üst kısmından **veri hacmi yönetimi** ' ne tıklayın. 
 3. Günlük uç varsayılan olarak **kapalıdır** : etkinleştirmek için **Açık** ' a tıklayın ve ardından veri hacmi sınırını GB/gün cinsinden ayarlayın.
 
@@ -118,7 +118,7 @@ Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar s
 Çalışma alanınız için varsayılan saklama alanını ayarlamak için 
  
 1. Azure portalında, çalışma alanınızdan sol bölmeden **kullanım ve tahmini maliyetler** ' i seçin.
-2. **Kullanım ve tahmini maliyetler** sayfasında, sayfanın üst kısmından **veri hacmi yönetimi** ' ne tıklayın.
+2. **Kullanım ve tahmini maliyetler** sayfasının üst kısmındaki **Veri hacmi yönetimi**'ni seçin.
 3. Bölmede, gün sayısını artırmak veya azaltmak için kaydırıcıyı kaydırın ve ardından **Tamam**' a tıklayın.  *Ücretsiz* katmanınız varsa, veri saklama süresini değiştiremeyeceksiniz ve bu ayarı denetlemek için ücretli katmana yükseltmeniz gerekir.
 
     ![Çalışma alanı verilerini bekletme ayarını değiştir](media/manage-cost-storage/manage-cost-change-retention-01.png)
@@ -147,7 +147,7 @@ Veri türünün (tablo) büyük/küçük harfe duyarlı olduğunu unutmayın.  B
     GET /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables?api-version=2017-04-26-preview
 ```
 
-Belirli bir veri türünün (Bu örnekte SecurityEvent) bekletmesini 730 güne ayarlamak için
+Belirli bir veri türünün (Bu örnekte SecurityEvent) bekletilmesini 730 gün olarak ayarlamak için
 
 ```JSON
     PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview
@@ -161,7 +161,11 @@ Belirli bir veri türünün (Bu örnekte SecurityEvent) bekletmesini 730 güne a
 
 @No__t-0 ve `AzureActivity` veri türleri özel saklama ile ayarlanamaz. Bu, varsayılan çalışma alanı saklama veya 90 gün üst sınırını alır. 
 
-Veri türüne göre bekletme ayarlamak için doğrudan ARM 'e bağlanmak için harika bir araç, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' dur.  [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin. 
+Veri türüne göre bekletme ayarlamak için doğrudan ARM 'e bağlanmak için harika bir araç, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' dur.  [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin.  ARMClient kullanarak, SecurityEvent verilerinin 730 günlük bekletmeye göre ayarlanması aşağıda verilmiştir:
+
+```
+armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
+```
 
 > [!NOTE]
 > Veri saklama maliyetlerinizi azaltmak için bireysel veri türlerinde bekletme ayarlama kullanılabilir.  2019 Ekim 'den başlayarak toplanan veriler için (Bu özellik yayınlandığında), bazı veri türlerine yönelik saklama süresini azaltmak zaman içinde bekletme maliyetinizi azaltabilir.  Daha önce toplanan veriler için, tek bir tür için daha düşük bir bekletme ayarlamak, bekletme maliyetlerinizi etkilemez.  
@@ -209,9 +213,9 @@ Veri toplama durdurulduğunda, OperationStatus **uyarısı**olur. Veri toplama b
 
 Veri toplama durdurulduğunda uyarılmak için, veri toplama durdurulduğunda bildirim almak üzere *günlük veri Cap uyarısı oluşturma* bölümünde açıklanan adımları kullanın. Uyarı kuralı için bir e-posta, Web kancası veya Runbook eylemi yapılandırmak üzere [eylem grubu oluşturma](action-groups.md) bölümünde açıklanan adımları kullanın. 
 
-## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Kullanımının beklenenden yüksek olması için sorun giderme
+## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Kullanımın neden beklenenden daha yüksek olduğuyla ilgili sorunları giderme
 
-Daha yüksek kullanım nedeni aşağıdakilerden biridir:
+Yüksek kullanımın nedeni aşağıdakilerden biri veya her ikisidir:
 - Log Analytics çalışma alanına beklenenden daha fazla düğüm gönderilemedi
 - Log Analytics çalışma alanına gönderilmekte olan beklenenden daha fazla veri
 
@@ -340,12 +344,12 @@ Belirli bir veri türü için veri kaynağını daha ayrıntılı bir şekilde i
 
 + **Güvenlik** çözümü
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
-+ **Günlük yönetimi** çözümü
++ **Günlük Yönetimi** çözümü
   - `Usage | where Solution == "LogManagement" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | summarize AggregatedValue = count() by DataType`
 + **Perf** veri türü
   - `Perf | summarize AggregatedValue = count() by CounterPath`
   - `Perf | summarize AggregatedValue = count() by CounterName`
-+ **Olay** veri türü
++ **Event** veri türü
   - `Event | summarize AggregatedValue = count() by EventID`
   - `Event | summarize AggregatedValue = count() by EventLog, EventLevelName`
 + **Syslog** veri türü
@@ -358,14 +362,14 @@ Belirli bir veri türü için veri kaynağını daha ayrıntılı bir şekilde i
 
 Toplanan günlüklerin hacmini azaltmaya yönelik bazı öneriler şunlardır:
 
-| Yüksek veri hacmi kaynağı | Veri hacmini azaltma |
+| Yüksek veri hacminin kaynağı | Veri hacmi nasıl azaltılır |
 | -------------------------- | ------------------------- |
-| Güvenlik olayları            | [Ortak veya en düşük güvenlik olaylarını](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) seçin <br> Güvenlik Denetim ilkesini yalnızca gerekli olayları toplayacak şekilde değiştirin. Özellikle, için olay toplama gereksinimini gözden geçirin <br> - [Denetim filtreleme platformu](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [denetim kayıt defteri](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [Denetim dosya sistemi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [Denetim çekirdek nesnesi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [Denetim tanıtıcı işleme](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> -çıkarılabilir depolamayı denetle |
-| Performans sayaçları       | [Performans sayacı yapılandırmasını](data-sources-performance-counters.md) Değiştir: <br> -Koleksiyonun sıklığını azaltma <br> -Performans sayacı sayısını azaltma |
-| Olay günlükleri                 | [Olay günlüğü yapılandırmasını](data-sources-windows-events.md) şu şekilde değiştirin: <br> -Toplanan olay günlüklerinin sayısını azaltın <br> -Yalnızca gerekli olay düzeylerini toplayın. Örneğin, *bilgi* düzeyi olayları toplama |
-| Syslog                     | [Syslog yapılandırmasını](data-sources-syslog.md) şu şekilde değiştirin: <br> -Toplanan tesis sayısını azaltın <br> -Yalnızca gerekli olay düzeylerini toplayın. Örneğin, *bilgi* ve *hata ayıklama* düzeyi olayları toplanmaz |
-| AzureDiagnostics           | Kaynak günlük koleksiyonunu Değiştir: <br> -Log Analytics günlük gönderme kaynak sayısını azaltın <br> -Yalnızca gerekli günlükleri topla |
-| Çözüme gerek olmayan bilgisayarlardan çözüm verileri | Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) kullanın. |
+| Güvenlik olayları            | [Yaygın veya en az güvenlik olaylarını](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) seçin <br> Güvenlik denetimi ilkesini yalnızca gerekli olayları toplayacak şekilde değiştirin. Özellikle, şunlarla ilgili olayları toplamak gerekip gerekmediğini gözden geçirin: <br> - [filtre platformu denetimi](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [kayıt defteri denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [dosya sistemi denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [çekirdek nesnesi denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [tanıtıcı değiştirme denetimi](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - çıkarılabilir depolama birimi denetimi |
+| Performans sayaçları       | [Performans sayacı yapılandırmasını](data-sources-performance-counters.md) şöyle değiştirin: <br> - Koleksiyonun sıklığını azaltın <br> - Performans sayaçlarının sayısını azaltın |
+| Olay günlükleri                 | [Olay günlüğü yapılandırmasını](data-sources-windows-events.md) şöyle değiştirin: <br> - Toplanan olay günlüklerinin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneğin, *Bilgi* düzeyindeki olayları toplamayın |
+| Syslog                     | [Syslog yapılandırmasını](data-sources-syslog.md) şu şekilde değiştirin: <br> - Toplanan tesislerin sayısını azaltın <br> - Yalnızca gerekli olay düzeylerini toplayın. Örneği *Bilgi* ve *Hata Ayıklama* düzeyindeki olayları toplamayın |
+| AzureDiagnostics           | Aşağıdaki amaçlarla kaynak günlüğü koleksiyonunu değiştirin: <br> - Log Analytics’e günlük gönderen kaynak sayısını azaltma <br> - Yalnızca gerekli günlükleri toplama |
+| Çözüm ihtiyacı olmayan bilgisayarlardan toplanan çözüm verileri | Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) özelliğini kullanın. |
 
 ### <a name="getting-security-and-automation-node-counts"></a>Güvenlik ve otomasyon düğüm sayılarını alma
 
@@ -413,13 +417,13 @@ Farklı Otomasyon düğümlerinin sayısını görmek için sorguyu kullanın:
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Veri toplama işlemi yüksekse uyarı oluştur
 
-Bu bölümde aşağıdaki durumlarda bir uyarı oluşturulması açıklanmaktadır:
-- Veri hacmi belirtilen miktarı aşıyor.
-- Veri hacmi belirtilen miktarı aşacak şekilde tahmin edilir.
+Bu bölümde, aşağıdaki durumlarda nasıl uyarı oluşturulacağı açıklanır:
+- Veri hacmi belirtilen bir miktarı aştığında.
+- Veri hacminin belirtilen bir miktarı aşacağı tahmin edildiğinde.
 
-Azure uyarıları, arama sorguları kullanan [günlük uyarılarını](alerts-unified-log.md) destekler. 
+Azure Uyarıları, arama sorguları kullanan [günlük uyarılarını](alerts-unified-log.md) destekler. 
 
-Son 24 saat içinde 100 GB 'den fazla veri toplandığında aşağıdaki sorguda bir sonuç bulunur:
+Aşağıdaki sorgu, son 24 saatte 100 GB'den fazla veri toplandığında bir sonuç verir:
 
 ```kusto
 union withsource = $table Usage 
@@ -428,7 +432,7 @@ union withsource = $table Usage
 | where DataGB > 100
 ```
 
-Aşağıdaki sorgu, günde 100 GB 'den fazla veri gönderileceğini tahmin etmek için basit bir formül kullanır: 
+Aşağıdaki sorgu, ne zaman bir günde 100 GB'den fazla veri toplanacağını tahmin etmek için basit bir formül kullanır: 
 
 ```kusto
 union withsource = $table Usage 
@@ -438,39 +442,39 @@ union withsource = $table Usage
 | where EstimatedGB > 100
 ```
 
-Farklı bir veri biriminde uyarı almak için sorgularda 100 ' i, uyarı vermek istediğiniz GB sayısıyla değiştirin.
+Farklı bir veri hacminde uyarıda bulunmak için, sorgulardaki 100 değerini uyarılmak istediğiniz GB sayısıyla değiştirin.
 
-Veri toplama beklenenden yüksek olduğunda bildirim almak için [Yeni bir günlük uyarısı oluşturma](alerts-metric.md) bölümünde açıklanan adımları kullanın.
+Toplanan veri beklenen miktarı aştığında size bildirilmesini sağlamak için, [yeni günlük uyarısı oluşturma](alerts-metric.md) başlığı altında açıklanan adımları kullanın.
 
-İlk sorgu için uyarı oluştururken--24 saat içinde 100 GB 'den fazla veri olduğunda şunları ayarlayın:  
+İlk sorgu için, yani 24 saat içinde 100 GB'den fazla veri toplandığında uyarı oluştururken şu ayarları yapın:  
 
-- **Uyarı koşulunu tanımlayın** Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
-- **Uyarı ölçütleri** şunları belirtin:
-   - **Sinyal adı** **özel günlük aramasını** seçin
-   - **Sorgu** `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100` ' e ara
-   - **Uyarı mantığı** , *sonuç sayısına* ve **koşula** göre *0* *eşikinden büyük*
-   - Kullanım verileri saat başına yalnızca bir kez güncelleştirdiği için, *1440* dakikalık ve **Uyarı sıklığının** her *60* dakikada bir **zaman aralığı** .
-- **Uyarı ayrıntılarını tanımlayın** şunları belirtin:
-   - *24 saat içinde 100 GB 'tan büyük veri hacmi* **adı**
-   - *Uyarı* **önem derecesi**
+- **Uyarı koşulunu tanımlama** adımında Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
+- **Uyarı ölçütleri** alanında aşağıdakileri belirtin:
+   - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
+   - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
+   - Kullanım verileri saatte bir güncelleştirildiğinden **Süre** *1440* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
+- **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
+   - **Ad**: *24 saat içinde 100 GB'den büyük veri hacmi*
+   - **Önem derecesi**: *Uyarı*
 
-Mevcut bir [eylem grubu](action-groups.md) belirtin veya günlük uyarısı ölçütlerle eşleştiğinde size bildirimde bulunulması gerekir.
+Günlük uyarısı ölçütlerle eşleştiğinde bilgilendirme yapılması için var olan bir [Eylem Grubunu](action-groups.md) kullanın veya yeni bir tane oluşturun.
 
-İkinci sorgu için uyarı oluştururken--24 saat içinde 100 GB 'den fazla veri olacağını tahmin edildiğinde şunları ayarlayın:
+İkinci sorgu için, yani 24 saat içinde 100 GB'den fazla veri olacağı tahmin edildiğinde uyarı oluştururken şu ayarları yapın:
 
-- **Uyarı koşulunu tanımlayın** Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
-- **Uyarı ölçütleri** şunları belirtin:
-   - **Sinyal adı** **özel günlük aramasını** seçin
-   - **Sorgu** `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100` ' e ara
-   - **Uyarı mantığı** , *sonuç sayısına* ve **koşula** göre *0* *eşikinden büyük*
-   - Kullanım verileri saat başına yalnızca bir kez güncelleştirdiği için, *180* dakikalık ve **Uyarı sıklığının** her *60* dakikada bir **zaman aralığı** .
-- **Uyarı ayrıntılarını tanımlayın** şunları belirtin:
-   - *24 saat içinde 100 GB 'tan büyük veri hacmi* **adı** bekleniyor
-   - *Uyarı* **önem derecesi**
+- **Uyarı koşulunu tanımlama** adımında Log Analytics çalışma alanınızı kaynak hedefi olarak belirtin.
+- **Uyarı ölçütleri** alanında aşağıdakileri belirtin:
+   - **Sinyal Adı** bölümünde **Özel günlük araması**'nı seçin
+   - **Arama sorgusu**: `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **Uyarı mantığı**, **Temeli** *bir dizi sonuçtur* ve **Koşul**, *Büyüktür* bir **Eşik değeri**, *0*
+   - Kullanım verileri saatte bir güncelleştirildiğinden **Süre** *180* dakika, **Uyarı sıklığı** ise *60* dakikada bir olarak belirlenmiştir.
+- **Uyarı ayrıntılarını tanımlama** adımında aşağıdakileri belirtin:
+   - **Ad**: *24 saat içinde veri hacminin 100 GB'den büyük olacağı tahmin ediliyor*
+   - **Önem derecesi**: *Uyarı*
 
-Mevcut bir [eylem grubu](action-groups.md) belirtin veya günlük uyarısı ölçütlerle eşleştiğinde size bildirimde bulunulması gerekir.
+Günlük uyarısı ölçütlerle eşleştiğinde bilgilendirme yapılması için var olan bir [Eylem Grubunu](action-groups.md) kullanın veya yeni bir tane oluşturun.
 
-Bir uyarı aldığınızda, kullanımın neden beklenenden yüksek olduğunu gidermek için aşağıdaki bölümdeki adımları kullanın.
+Uyarı aldığınızda, kullanımın neden beklenenden fazla olduğu konusundaki sorunları gidermek için aşağıdaki bölümde yer alan adımları kullanın.
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>Log Analytics kullanarak veri aktarımı ücretleri
 
@@ -483,10 +487,10 @@ Bazıları Log Analytics fiyatlandırma katmanına bağlı olan bazı ek Log Ana
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Arama dilinin nasıl kullanılacağını öğrenmek için bkz. [Azure Izleyici günlüklerinde günlük aramaları](../log-query/log-query-overview.md) . Kullanım verileri üzerinde ek analizler gerçekleştirmek için arama sorguları ' nı kullanabilirsiniz.
-- Bir arama ölçütü karşılandığında bildirim almak için [Yeni bir günlük uyarısı oluşturma](alerts-metric.md) bölümünde açıklanan adımları kullanın.
-- Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) kullanın.
+- Arama dilinin nasıl kullanılacağını öğrenmek için bkz. [Azure Izleyici günlüklerinde günlük aramaları](../log-query/log-query-overview.md) . Kullanım verilerinde başka analizler yapmak için arama sorgularını kullanabilirsiniz.
+- Bir arama ölçütü karşılandığında size bildirilmesini sağlamak için, [yeni günlük uyarısı oluşturma](alerts-metric.md) başlığı altında açıklanan adımları kullanın.
+- Yalnızca gerekli bilgisayar gruplarından veri toplamak için [çözüm hedefleme](../insights/solution-targeting.md) özelliğini kullanın.
 - Etkin bir olay toplama ilkesini yapılandırmak için [Azure Güvenlik Merkezi filtreleme ilkesini](../../security-center/security-center-enable-data-collection.md)gözden geçirin.
-- [Performans sayacı yapılandırmasını](data-sources-performance-counters.md)değiştirin.
-- Olay koleksiyonu ayarlarınızı değiştirmek için [olay günlüğü yapılandırması](data-sources-windows-events.md)' nı gözden geçirin.
-- Syslog koleksiyon ayarlarınızı değiştirmek için [Syslog yapılandırmasını](data-sources-syslog.md)gözden geçirin.
+- [Performans sayacı yapılandırmasını](data-sources-performance-counters.md) değiştirin.
+- Olay toplama ayarlarınızda değişiklik yapmak için, [olay günlüğü yapılandırması](data-sources-windows-events.md) konusunu gözden geçirin.
+- Syslog koleksiyonu ayarlarınızda değişiklik yapmak için, [syslog yapılandırması](data-sources-syslog.md) konusunu gözden geçirin.

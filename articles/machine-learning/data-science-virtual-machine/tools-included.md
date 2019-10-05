@@ -2,7 +2,7 @@
 title: DSVM 'ye dahil edilen araçlar
 titleSuffix: Azure Data Science Virtual Machine tools
 description: Windows ve Ubuntu DSVM görüntülerine dahil olan araçların listesi
-keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi araçları, Linux veri bilimi
+keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,26 +10,26 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
 ms.date: 09/27/2019
-ms.openlocfilehash: e8f0eeabd4e869b3812f2d690d2665a8ec31cd14
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: eef8ddf31f038afffddfa6b818c266c1cb4a3d44
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950140"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973666"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi hangi araçlar dahildir?
 
 Aşağıda, her aracın nasıl yapılandırıldığını anlamak için bağlantılarla birlikte Veri Bilimi Sanal Makinesi eklenen araçların güncel bir listesini sunuyoruz.
 
 
-| **Aracı**                                                           | **Windows DSVM** | **Linux DSVM** | **Kullanım notları** |
+| **Araç**                                                           | **Windows DSVM** | **Linux DSVM** | **Kullanım notları** |
 | :------------------------------------------------------------------ |:-------------------:|:------------------:|:------:|
-| Popüler paketlerle önceden yüklenmiş [Microsoft R Open](https://mran.microsoft.com/open/)   |<span class='green-check'>&#9989;</span></br> 3\.4.3                    |<span class='green-check'>&#9989;</span></br> 3\.4.3  | [DSVM üzerinde R](./dsvm-languages.md#r)           |
+| Popüler paketlerin önceden yüklü olduğu [Microsoft R Open](https://mran.microsoft.com/open/)   |<span class='green-check'>&#9989;</span></br> 3\.4.3                    |<span class='green-check'>&#9989;</span></br> 3\.4.3  | [DSVM üzerinde R](./dsvm-languages.md#r)           |
 | [Microsoft Machine Learning Server (R, Python)](https://docs.microsoft.com/machine-learning-server/) Geliştirici sürümü şunları içerir: <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [iptal/Iptal eden](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-revoscaler) paralel ve dağıtılmış yüksek performanslı çerçeve (R ve Python)<br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Microsoftml](https://docs.microsoft.com/machine-learning-server/r/concept-what-is-the-microsoftml-package), Microsoft 'tan yeni bir son teknoloji makine öğrenimi algoritmaları <br />  &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [R ve Python işlemleştirme](https://docs.microsoft.com/machine-learning-server/what-is-operationalization)                                            |<span class='green-check'>&#9989;</span>  </br> (9.3.0)                 |<span class='green-check'>&#9989;</span> | |
 | [Microsoft Office](https://products.office.com/business/office-365-proplus-business-software) Paylaşılan etkinleştirme ile ProPlus: Excel, Word ve PowerPoint   |<span class='green-check'>&#9989;</span>                       |<span class='red-x'>&#10060;</span>              | |
 | Popüler paketler önceden yüklenmiş [Anaconda Python](https://www.continuum.io/) 2,7 ve 3,5    |<span class='green-check'>&#9989;</span>                       |<span class='green-check'>&#9989;</span></br> (4,2)        | |
-| Julia dil için popüler paketler önceden yüklenmiş olarak [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |<span class='green-check'>&#9989;</span> </br> (0.6.4)                   |<span class='green-check'>&#9989;</span></br> (0.6.2)              | [DSVM 'de Julia](./dsvm-languages.md#julia) |
-| İlişkisel veritabanları                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Geliştirici sürümü| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Geliştirici sürümü (Ubuntu) | [DSVM üzerinde SQL Server](./dsvm-data-platforms.md#sql-server-2017-developer-edition) |
+| Julia diline yönelik popüler paketlerin önceden yüklü olduğu [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |<span class='green-check'>&#9989;</span> </br> (0.6.4)                   |<span class='green-check'>&#9989;</span></br> (0.6.2)              | [DSVM 'de Julia](./dsvm-languages.md#julia) |
+| İlişkisel veritabanları                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) | [DSVM üzerinde SQL Server](./dsvm-data-platforms.md#sql-server-2017-developer-edition) |
 | Veritabanı araçları                                                       |  SQL Server Management Studio <br/> SQL Server Integration Services<br/> [BCP, sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br />  ODBC/JDBC sürücüleri|  [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/) (Sorgulama Aracı), <br />  BCP, sqlcmd <br />  ODBC/JDBC sürücüleri| |
 | SQL Server Machine Learning Hizmetleri (R, Python) ile ölçeklenebilir veritabanı Analizi |<span class='green-check'>&#9989;</span>    | <span class='red-x'>&#10060;</span>                | |
 | Aşağıdaki çekirdekler ile [sunucu Jupyter Notebook](https://jupyter.org/) :                                  |<span class='green-check'>&#9989;</span></br> 5\.5.0   |<span class='green-check'>&#9989;</span> | [Jupyter Notebook örnekleri](./dsvm-samples-and-walkthroughs.md) | 
@@ -55,7 +55,7 @@ Aşağıda, her aracın nasıl yapılandırıldığını anlamak için bağlant�
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [OpenJDK](https://openjdk.java.net) |<span class='green-check'>&#9989;</span></br> (1.8.0 _201) |<span class='green-check'>&#9989;</span></br> (1.8.0 _222) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 .NET Framework |<span class='green-check'>&#9989;</span></br> 4\.7.2 |<span class='red-x'>&#10060;</span>   | |
 | [Power BI Desktop](https://powerbi.microsoft.com/en-us/) |<span class='green-check'>&#9989;</span></br> (2.65.5313.1381) |<span class='red-x'>&#10060;</span>   |
-| Azure ve hizmet Cortana Intelligence Suite erişim için SDK 'lar |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span> | [DSVM 'de masaüstü Power BI](./dsvm-tools-development.md#power-bi-desktop) |
+| Azure ve Cortana Intelligence Hizmet paketine erişim SDK’ları |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span> | [DSVM 'de masaüstü Power BI](./dsvm-tools-development.md#power-bi-desktop) |
 | Veri taşıma ve yönetim araçları: | | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure Depolama Gezgini](https://azure.microsoft.com/en-us/features/storage-explorer/) |<span class='green-check'>&#9989;</span></br> 1\.6.2 |<span class='green-check'>&#9989;</span></br> (0.7.20160129.1) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure CLI](https://docs.microsoft.com/cli/azure) |<span class='green-check'>&#9989;</span></br> (2.0.56) |<span class='green-check'>&#9989;</span></br> (2.0.58) | |
@@ -81,6 +81,9 @@ Aşağıda, her aracın nasıl yapılandırıldığını anlamak için bağlant�
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Horovod](https://github.com/horovod/horovod) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (0.16.1) | [DSVM 'de horovod](./dsvm-deep-learning-ai-frameworks.md#horovod) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [keras](https://keras.io) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (2.2.4) | [DSVM üzerinde keras](./dsvm-deep-learning-ai-frameworks.md#keras) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/en-us/cognitive-toolkit/) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> 2\.5.1 | [DSVM üzerinde CNTK](./dsvm-deep-learning-ai-frameworks.md#microsoft-cognitive-toolkit-cntk) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Mxnet](https://mxnet.apache.org/) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> (1.3.0) | [DSVM üzerinde MXNet](./dsvm-deep-learning-ai-frameworks.md#mxnet) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Mxnet model sunucusu](https://github.com/awslabs/mxnet-model-server#quick-start) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br> 1\.0.1 | [DSVM 'de MXNet model sunucusu](./dsvm-deep-learning-ai-frameworks.md#mxnet-model-server) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [NVIDIA sistem yönetimi arabirimi (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface) |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span></br>| [DSVM 'de NVIDIA-SMI](./dsvm-deep-learning-ai-frameworks.md#nvidia-system-management-interface-nvidia-smi) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Pytorch](https://pytorch.org) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> 1\.2.0 | [DSVM üzerinde PyTorch](./dsvm-deep-learning-ai-frameworks.md#pytorch) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorFlow](https://www.tensorflow.org) |<span class='green-check'>&#9989;</span></br> (1,13) |<span class='green-check'>&#9989;</span></br> (1,13) | [DSVM 'de TensorFlow](./dsvm-deep-learning-ai-frameworks.md#tensorflow) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [TensorFlow sunma](https://www.tensorflow.org/tfx/guide/serving) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> 1\.12.0 | [DSVM 'ye hizmet veren TensorFlow](./dsvm-deep-learning-ai-frameworks.md#tensorflow-serving) |

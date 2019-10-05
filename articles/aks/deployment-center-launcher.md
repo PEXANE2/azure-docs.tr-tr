@@ -2,25 +2,24 @@
 title: Azure Kubernetes için dağıtım merkezi
 description: Azure DevOps 'daki dağıtım merkezi, uygulamanız için sağlam bir Azure DevOps işlem hattı ayarlamayı basitleştirir
 ms.author: puagarw
-ms.manager: douge
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 35484566890f3bfd964e3fda337bfb3666d1da6c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618732"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972970"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes için dağıtım merkezi
 
 Azure DevOps 'daki dağıtım merkezi, uygulamanız için güçlü bir Azure DevOps işlem hattı ayarlamayı basitleştirir. Dağıtım Merkezi, varsayılan olarak, uygulama güncelleştirmelerinizi Kubernetes kümesine dağıtmak için bir Azure DevOps işlem hattı yapılandırır. Varsayılan yapılandırılmış Azure DevOps işlem hattını genişletebilir ve ayrıca daha zengin yetenekler ekleyebilirsiniz: dağıtımdan önce onay kazanma, ek Azure kaynakları sağlama, betikleri çalıştırma, uygulamanızı yükseltme, hatta daha fazla doğrulama testi çalıştırma olanağı.
 
-Bu öğreticide şunları yapacaksınız:
+Bu öğreticide şunları yapmanız gerekir:
 
 > [!div class="checklist"]
 > * Uygulama güncelleştirmelerinizi Kubernetes kümesine dağıtmak için bir Azure DevOps işlem hattı yapılandırın.
@@ -30,7 +29,7 @@ Bu öğreticide şunları yapacaksınız:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) aracılığıyla ücretsiz bir abonelik alabilirsiniz.
+* Bir Azure aboneliği. [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/)aracılığıyla bir ücretsiz edinebilirsiniz.
 
 * Bir Azure Kubernetes hizmeti (AKS) kümesi.
 
@@ -58,24 +57,24 @@ Bu öğreticide şunları yapacaksınız:
 
 1. AKS kümesini seçin ve ardından sol dikey pencerede **Dağıtım Merkezi (Önizleme)** öğesini seçin. **Kullanmaya**başlayın ' ı seçin.
 
-   ![ayarlar](media/deployment-center-launcher/settings.png)
+   ![Ayarlar](media/deployment-center-launcher/settings.png)
 
 1. Kodun konumunu seçin ve **İleri ' yi**seçin. Daha sonra, şu anda desteklenen depolardan birini seçin: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** veya **GitHub**.
 
     Azure Repos, kodunuzu yönetmenize yardımcı olan bir sürüm denetimi araçları kümesidir. Yazılım projenizin büyük veya küçük olup olmadığı, sürüm denetiminin olabildiğince erken kullanılması iyi bir fikirdir.
 
-    - **Azure Repos**: Mevcut projenizden ve kuruluşunuzdan bir depo seçin.
+    - **Azure Repos**: mevcut projenizden ve kuruluşunuzdan bir depoyu seçin.
 
         ![Azure Repos](media/deployment-center-launcher/azure-repos.gif)
 
-    - **GitHub**: GitHub hesabınız için depoyu yetkilendirme ve seçme.
+    - **GitHub**: Github hesabınız için depoyu yetkilendirme ve seçme.
 
         ![GitHub](media/deployment-center-launcher/github.gif)
 
 
 1. Dağıtım merkezi depoyu analiz eder ve Dockerfile dosyanızı algılar. Dockerfile dosyasını güncelleştirmek istiyorsanız, tanımlanan bağlantı noktası numarasını düzenleyebilirsiniz.
 
-    ![Uygulama Ayarları](media/deployment-center-launcher/application-settings.png)
+    ![Uygulama ayarları](media/deployment-center-launcher/application-settings.png)
 
     Depo Dockerfile içermiyorsa, sistem bir tane kaydetmek için bir ileti görüntüler.
 
@@ -85,15 +84,15 @@ Bu öğreticide şunları yapacaksınız:
 
     Azure Pipelines, kod projenizi otomatik olarak derlemek ve test etmek ve diğer kullanıcıların kullanımına sunmak için kullanabileceğiniz bir bulut hizmetidir. Azure Pipelines sürekli tümleştirme ve sürekli teslimi sürekli ve tutarlı bir şekilde bir araya getirerek kodunuzu oluşturup her hedefe sunamaz.
 
-    ![Container Kayıt Defteri](media/deployment-center-launcher/container-registry.png)
+    ![Container Registry](media/deployment-center-launcher/container-registry.png)
 
 1. Devam eden ardışık düzeni görmek için bağlantıyı seçin.
 
 1. Dağıtım tamamlandıktan sonra başarılı günlükleri görürsünüz.
 
-    ![Günlükler](media/deployment-center-launcher/logs.png)
+    ![Logs](media/deployment-center-launcher/logs.png)
 
-## <a name="examine-the-ci-pipeline"></a>CI işlem hattını inceleme
+## <a name="examine-the-ci-pipeline"></a>CI işlem hattını İnceleme
 
 Dağıtım Merkezi, Azure DevOps kuruluşunuzun CI/CD ardışık düzenini otomatik olarak yapılandırır. İşlem hattı araştırılabilir ve özelleştirilebilir.
 
@@ -111,11 +110,11 @@ Dağıtım Merkezi, Azure DevOps kuruluşunuzun CI/CD ardışık düzenini otoma
 
 1. Yapı ardışık düzeni altında **Geçmiş**' i seçin. Bu bölmede, son yapı değişikliklerinizin bir denetim izi gösterilmektedir. Azure DevOps, derleme ardışık düzeninde yapılan tüm değişiklikleri izler ve sürümleri karşılaştırmanızı sağlar.
 
-1. **Tetikleyiciler**’i seçin. CI işleminden dalları dahil edebilir veya dışlayabilirsiniz.
+1. **Tetikleyiciler**' i seçin. CI işleminden dalları dahil edebilir veya dışlayabilirsiniz.
 
-1. **Saklama**’yı seçin. Senaryonuza bağlı olarak bir dizi derlemeyi tutan veya kaldırabilmeniz için ilkeler belirtebilirsiniz.
+1. **Bekletme**' yi seçin. Senaryonuza bağlı olarak bir dizi derlemeyi tutan veya kaldırabilmeniz için ilkeler belirtebilirsiniz.
 
-## <a name="examine-the-cd-pipeline"></a>CD işlem hattını inceleme
+## <a name="examine-the-cd-pipeline"></a>CD işlem hattını inceleyin
 
 Dağıtım Merkezi, Azure DevOps kuruluşunuz ile Azure aboneliğiniz arasındaki ilişkiyi otomatik olarak oluşturur ve yapılandırır. Söz konusu adımlarda, Azure DevOps ile Azure aboneliğiniz için kimlik doğrulaması yapmak üzere bir Azure hizmet bağlantısı kurulması dahildir. Otomatikleştirilmiş süreç ayrıca Azure 'a sürekli teslim sağlayan bir yayın işlem hattı oluşturur.
 
@@ -133,9 +132,9 @@ Dağıtım Merkezi, Azure DevOps kuruluşunuz ile Azure aboneliğiniz arasındak
 
 1. Özeti görmek için **yayın**' ı seçin. Yayın Özeti, ilişkili iş öğeleri ve testler gibi birden çok menü araştırmak için aşamaların herhangi birini seçin. 
 
-1. **İşlemeler**'i seçin. Bu görünüm, bu dağıtımla ilgili kod yürütmelerini gösterir. Dağıtımlar arasındaki tamamlama farklarını görmek için yayınları karşılaştırın.
+1. **İşlemeler**' i seçin. Bu görünüm, bu dağıtımla ilgili kod yürütmelerini gösterir. Dağıtımlar arasındaki tamamlama farklarını görmek için yayınları karşılaştırın.
 
-1. **Günlükler**’i seçin. Günlükler, dağıtımları sırasında ve sonrasında görüntüleyebileceğiniz yararlı dağıtım bilgilerini içerir.
+1. **Günlükleri**seçin. Günlükler, dağıtımları sırasında ve sonrasında görüntüleyebileceğiniz yararlı dağıtım bilgilerini içerir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -143,4 +142,4 @@ Artık ihtiyaç duymadığınızda oluşturduğunuz ilgili kaynakları silebilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ekibinizin ihtiyaçlarını karşılamak için bu derleme ve yayın işlem hatlarını değiştirebilirsiniz. Ya da bu CI/CD modelini diğer işlem hatlarınız için şablon olarak kullanabilirsiniz.
+Bu derleme ve yayın işlem hatlarını takımınızın ihtiyaçlarını karşılayacak şekilde değiştirebilirsiniz. Ya da bu CI/CD modelini diğer işlem hatlarınız için şablon olarak kullanabilirsiniz.

@@ -7,19 +7,19 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: cf04efd8dac3ba4d252701d79c65b1bf56619fe0
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: cf971d71c2566d91bc5a2490d47521725c62b17d
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968251"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973419"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Service Fabric uygulamasını sistem tarafından atanan yönetilen kimlikle dağıtma (Önizleme)
 
 Azure Service Fabric uygulamaları için yönetilen kimlik özelliğine erişebilmek için öncelikle kümede yönetilen kimlik belirteci hizmetini etkinleştirmeniz gerekir. Bu hizmet, yönetilen kimliklerini kullanan Service Fabric uygulamalarının kimlik doğrulamasından ve kendi adına erişim belirteçleri elde etmeye sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **sistem** bölümü altında, diğer sistem hizmetleri ' nin yanında bulunan **Fabric:/System/Managedıdentitytokenservice** altında çalışan Service Fabric Explorer görebilirsiniz.
 
 > [!NOTE] 
-> Yönetilen kimliklere sahip Service Fabric uygulamalarının dağıtımı API sürümü `"2019-06-01-preview"`ile başlayarak desteklenir. Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz. Desteklenen en düşük Service Fabric çalışma zamanı 6,5 CU2 UYGULAMAZSANıZ.
+> Yönetilen kimliklere sahip Service Fabric uygulamalarının dağıtımı, API sürümü `"2019-06-01-preview"` ' dan başlayarak desteklenir. Uygulama türü, uygulama türü sürümü ve hizmet kaynakları için aynı API sürümünü de kullanabilirsiniz. Desteklenen en düşük Service Fabric çalışma zamanı 6,5 CU2 UYGULAMAZSANıZ. Ek olarak, derleme/paket ortamında CU2 UYGULAMAZSANıZ veya üzeri sürümlerde SF .NET SDK 'Sı de bulunmalıdır
 
 ## <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 
@@ -47,7 +47,7 @@ Uygulamayı sistem tarafından atanan bir yönetilen kimlikle etkinleştirmek i�
       }
     }
 ```
-Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe sahip olması için sırasıyla, yönetilen kimliği ve Service Fabric kaynak sağlayıcılarını bildirir (Azure Resource Manager.
+Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe sahip olması için sırasıyla Azure Resource Manager ve yönetilen kimliği ve Service Fabric kaynak sağlayıcılarını bildirir.
 
 ### <a name="application-and-service-package"></a>Uygulama ve hizmet paketi
 
@@ -76,9 +76,9 @@ Bu özellik, bu kaynağın örtük (`system assigned`) yönetilen bir kimliğe s
         </ServiceManifestImport>
       ```
 
-    Bu öğe, uygulamanın kimliğini hizmete atar; Bu atama olmadan, hizmet uygulamanın kimliğine erişemez. Yukarıdaki kod parçacığında, `SystemAssigned` kimlik (ayrılmış bir anahtar sözcük), kolay ad `WebAdmin`altında hizmetin tanımına eşlenir.
+    Bu öğe, uygulamanın kimliğini hizmete atar; Bu atama olmadan, hizmet uygulamanın kimliğine erişemez. Yukarıdaki kod parçacığında, `SystemAssigned` kimliği (ayrılmış bir anahtar sözcük), `WebAdmin` kolay adı altında hizmetin tanımına eşlenir.
 
-3. **Kaynak** bölümündeki bir `ServiceIdentityRef` **managedıdentity** öğesi eklemek için hizmet bildirimini güncelleştirin ve bu ayar, uygulama bildirimindeki `IdentityBindingPolicy` tanımdaki ayarın değeriyle eşleşen ada sahiptir:
+3. Uygulama bildiriminde `IdentityBindingPolicy` tanımından `ServiceIdentityRef` ayarının değeriyle eşleşen ada sahip **kaynaklar** bölümünün Içine bir **managedıdentity** öğesi eklemek için hizmet bildirimini güncelleştirin:
 
     **ServiceManifest. xml**
 

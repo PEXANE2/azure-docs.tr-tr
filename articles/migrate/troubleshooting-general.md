@@ -1,17 +1,18 @@
 ---
 title: Azure geçişi sorunlarını giderme | Microsoft Docs
 description: Azure geçişi hizmetindeki bilinen sorunlara genel bir bakış ve sık karşılaşılan hatalara yönelik sorun giderme ipuçları sağlar.
-author: rayne-wiselman
+author: musa-57
+ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: raynew
-ms.openlocfilehash: 49c43d393ef0722424088e0073942b56787f1bc7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.author: hamusa
+ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067820"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970645"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Geçişi sorunlarını giderme
 
@@ -87,8 +88,8 @@ Azure geçişi 'nin eski sürümündeki bir projeyi silmek için:
 ### <a name="delete-a-workspace"></a>Çalışma alanını silme
 
 Projeye bağlı Log Analytics çalışma alanına gidin.
-* Azure geçişi projesini sildiyseniz, **Essentials** > **Sunucu değerlendirmesi**' nde çalışma alanının bağlantısını bulabilirsiniz.
-       ![LA çalışma alanı](./media/troubleshooting-general/loganalytics-workspace.png)
+* Azure geçişi projesini sildiyseniz, **Essentials** > **Sunucu değerlendirmesi**içindeki çalışma alanının bağlantısını bulabilirsiniz.
+       ![LA çalışma alanı @ no__t-1
 
      * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
@@ -105,13 +106,13 @@ Proje oluştururken bu hata, kuruluşun Azure Active Directory (Azure AD) kirac�
 
 ## <a name="error-invalid-ovf-manifest-entry"></a>Hata "geçersiz OVF manifest entry"
 
-"Belirtilen bildirim dosyası geçersiz: Geçersiz OVF manifest girdisi ", şunları yapın:
+"Belirtilen bildirim dosyası geçersiz: geçersiz OVF manifest entry" hatasını alırsanız şunları yapın:
 
 1. Azure geçişi gereç OVA dosyasının karma değerini denetleyerek doğru şekilde indirildiğini doğrulayın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Karma değeri eşleşmiyorsa, OVA dosyasını yeniden indirin ve dağıtımı yeniden deneyin.
 2. Dağıtım hala başarısız olursa ve OVF dosyasını dağıtmak için VMware vSphere istemcisini kullanıyorsanız, vSphere Web istemcisi aracılığıyla dağıtmayı deneyin. Dağıtım hala başarısız olursa, farklı bir Web tarayıcısı kullanmayı deneyin.
 3. VSphere Web istemcisini kullanıyorsanız ve vCenter Server 6,5 veya 6,7 ' de dağıtmaya çalışıyorsanız, OVA 'yı doğrudan ESXi konağına dağıtmayı deneyin:
    - Web istemcisi (https://<*ana BILGISAYAR IP adresi*>/UI) Ile ESXi konağına doğrudan (vCenter Server yerine) bağlanın.
-   -  > Ev > **envanterinde**,**ovf şablonu**' nu Dağıt ' **ı seçin.** OVA 'ya gidin ve dağıtımı doldurun.
+   - **Ana** > **envanterinde** **Dosya** > **ovf şablonu dağıt**' ı seçin. OVA 'ya gidin ve dağıtımı doldurun.
 4. Dağıtım hala başarısız olursa Azure geçiş desteği 'ne başvurun.
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>Gereç internet 'e bağlanamıyor
@@ -151,7 +152,7 @@ Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğes
     4. VCenter Server çalışır olduğunu doğrulayın.
 
 
-## <a name="error-appliance-might-not-be-registered"></a>Hata: Gereç kaydettirilmemiş olabilir
+## <a name="error-appliance-might-not-be-registered"></a>Hata: gereç kaydettirilmemiş olabilir
 
 - Hata 60052, "gereci kaydetmek için kullanılan Azure hesabının izinleri yetersizse," gereç Azure geçişi projesine başarıyla kaydedilmemiş olabilir "hatası oluşur.
     - Gereci kaydetmek için kullanılan Azure Kullanıcı hesabının abonelikte en az katkıda bulunan izinleri olduğundan emin olun.
@@ -168,14 +169,14 @@ Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğes
 - Sorun devam ederse, Microsoft desteği 'ne başvurun.
 - Gerekli Azure rolleri ve izinleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) .
 
-## <a name="fix-discovery-couldnt-be-initiated"></a>Onar Bulma başlatılamadı
+## <a name="fix-discovery-couldnt-be-initiated"></a>Çözüm: bulma başlatılamadı
 
-Hata 60028: "Bir hata nedeniyle bulma başlatılamadı. Belirtilen konaklar veya kümeler listesi için işlem başarısız oldu "VM bilgilerine erişirken veya alırken bir sorun nedeniyle hatada listelenen konaklarda bulma işleminin başlatılamayacağını gösterir. Ana bilgisayarların geri kalanı başarıyla eklendi.
+Hata 60028: "bir hata nedeniyle bulma başlatılamadı. Belirtilen konaklar veya kümeler listesi için işlem başarısız oldu "VM bilgilerine erişirken veya alırken bir sorun nedeniyle hatada listelenen konaklarda bulma işleminin başlatılamayacağını gösterir. Ana bilgisayarların geri kalanı başarıyla eklendi.
 
 - Hatada listelenen Konakları, **ana bilgisayar Ekle** seçeneğini kullanarak yeniden ekleyin.
 - Doğrulama hatası varsa, hataları onarmak için düzeltme kılavuzunu gözden geçirin ve sonra **bulmayı Kaydet ve Başlat** seçeneğini tekrar deneyin.
 
-## <a name="fix-azure-ad-operation-failed-60025"></a>Onar Azure AD işlemi başarısız oldu (60025)
+## <a name="fix-azure-ad-operation-failed-60025"></a>Çözüm: Azure AD işlemi başarısız oldu (60025)
 
 Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturulurken veya güncelleştirilirken oluşan hata oluştu "bulmayı başlatmak için kullanılan Azure Kullanıcı hesabı gereci kaydetmek için kullanılan hesaptan farklı olduğunda gerçekleşir. Aşağıdakilerden birini yapın:
 
@@ -200,7 +201,7 @@ Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturul
 - Gereç tarafından toplanan bulgu verilerinin portalda yansıtılması 30 dakikaya kadar sürer.
 - 30 dakikadan sonra güncel bilgileri görmüyorsanız, bu adımları izleyerek verileri yenileyin:
 
-    1. **Sunucular** > **Azure geçişi sunucu değerlendirmesi**' nde, **genel bakış**' ı seçin.
+    1. **Sunucular** > **Azure sunucu değerlendirmesini geçir**bölümünde **genel bakış**' ı seçin.
     2. **Yönet**' in altında **Aracı durumu** ' yi seçin.
     3. **Aracıyı Yenile**' yi seçin.
     1. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
@@ -210,15 +211,15 @@ Hata 60025: "Azure AD işlemi başarısız oldu. Azure AD uygulaması oluşturul
 - Gereç tarafından toplanan bulgu verilerinin portalda yansıtılması 30 dakikaya kadar sürer.
 - 30 dakikadan sonra güncel bilgileri görmüyorsanız, bu adımları izleyerek verileri yenileyin:
 
-    1. **Sunucular** > **Azure geçişi sunucu değerlendirmesi**' nde, **genel bakış**' ı seçin.
+    1. **Sunucular** > **Azure sunucu değerlendirmesini geçir**bölümünde **genel bakış**' ı seçin.
     2. **Yönet**' in altında **Aracı durumu** ' yi seçin.
     3. **Aracıyı Yenile**' yi seçin.
     1. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
 
 
-## <a name="fix-cant-connect-to-host-or-cluster"></a>Onar Konağa veya kümeye bağlanılamıyor
+## <a name="fix-cant-connect-to-host-or-cluster"></a>Çözüm: konağa veya kümeye bağlanılamıyor
 
-Hata 50004: "Sunucu adı çözümlenemediği için bir konağa veya kümeye bağlanılamıyor. WinRM hata kodu: Gereç için Azure DNS hizmeti, verdiğiniz küme veya ana bilgisayar adını çözümleyemezse, 0x803381B9 "gerçekleşebilir.
+Hata 50004: "sunucu adı çözümlenemediği için bir konağa veya kümeye bağlanılamıyor. WinRM hata kodu: gereç için Azure DNS hizmeti, verdiğiniz küme veya ana bilgisayar adını çözümleyemezse, 0x803381B9 "gerçekleşebilir.
 
 - Kümede bu hatayı görürseniz, küme FQDN 'SI.
 - Ayrıca, bir kümedeki konaklar için bu hatayı görebilirsiniz. Bu, gerecin kümeye bağlanabildiğini, ancak kümenin FQDN olmayan ana bilgisayar adlarını döndürdüğünü gösterir. Bu hatayı çözmek için, IP adresi ve ana bilgisayar adlarının eşlemesini ekleyerek gereç üzerindeki Hosts dosyasını güncelleştirin:
@@ -234,23 +235,23 @@ Hata 50004: "Sunucu adı çözümlenemediği için bir konağa veya kümeye bağ
 
 Değerlendirme hazırlık sorunlarını aşağıdaki şekilde giderin:
 
-**Konuda** | **Fix**
+**Konuda** | **Onar**
 --- | ---
 Desteklenmeyen önyükleme türü | Azure, EFı önyükleme türü olan VM 'Leri desteklemez. Geçiş çalıştırmadan önce önyükleme türünü BIOS 'a dönüştürmeniz önerilir. <br/><br/>Bu sanal makinelerin geçişini yönetmek için Azure geçişi sunucu geçişini kullanabilirsiniz. Geçiş sırasında VM 'nin önyükleme türünü BIOS 'a dönüştürür.
 Koşullu olarak desteklenen Windows işletim sistemi | İşletim sistemi destek son tarihini geçti ve [Azure 'da destek](https://aka.ms/WSosstatement)için özel bir destek SÖZLEŞMESINE (CSA) ihtiyaç duyuyor. Azure 'a geçiş yapmadan önce yükseltmeyi göz önünde bulundurun.
 Desteklenmeyen Windows işletim sistemi | Azure yalnızca [Seçili Windows işletim sistemi sürümlerini](https://aka.ms/WSosstatement)destekler. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün.
-Koşullu olarak desteklenen Linux işletim sistemi | Azure yalnızca [Seçili Linux işletim sistemleri sürümlerini](../virtual-machines/linux/endorsed-distros.md)onaylar. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün.
-Desteklenmeyen Linux İşletim Sistemi | Makine Azure 'da başlayabilir, ancak Azure işletim sistemi desteği sağlamaz. Azure 'a geçiş yapmadan önce, [onaylı bir Linux sürümüne](../virtual-machines/linux/endorsed-distros.md) yükseltmeyi düşünün.
+Koşullu olarak onaylama Linux işletim sistemi | Azure yalnızca [Seçili Linux işletim sistemleri sürümlerini](../virtual-machines/linux/endorsed-distros.md)onaylar. Azure 'a geçiş yapmadan önce makineyi yükseltmeyi düşünün.
+Hazırlanmamış Linux işletim sistemi | Makine Azure 'da başlayabilir, ancak Azure işletim sistemi desteği sağlamaz. Azure 'a geçiş yapmadan önce, [onaylı bir Linux sürümüne](../virtual-machines/linux/endorsed-distros.md) yükseltmeyi düşünün.
 Bilinmeyen işletim sistemi | VM 'nin işletim sistemi vCenter Server içinde "Other" olarak belirtilmiştir. Bu davranış, Azure geçişi 'nin VM 'nin Azure 'un hazır olduğunu doğrulamasını engeller. Makineyi geçirmeden önce işletim sisteminin Azure tarafından [desteklendiğinden](https://aka.ms/azureoslist) emin olun.
 Desteklenmeyen bit sürümü | 32 bitlik bir işletim sistemi olan VM 'Ler Azure 'da önbaşlatılabilir, ancak Azure 'a geçmeden önce 64 bit 'e yükseltmeniz önerilir.
 Microsoft Visual Studio aboneliği gerektirir | Makine, yalnızca bir Visual Studio aboneliği aracılığıyla desteklenen bir Windows istemci işletim sistemi çalıştırıyor.
 Gerekli depolama performansı için VM bulunamadı | Makine için gereken depolama performansı (saniye başına giriş/çıkış işlemi [ıOPS] ve üretilen iş), Azure VM desteğini aşıyor. Geçişten önce makinenin depolama gereksinimlerini azaltın.
 Gerekli ağ performansı için VM bulunamadı | Makine için gereken ağ performansı (ın/out) Azure VM desteğini aşıyor. Makinenin ağ gereksinimlerini azaltın.
 Belirtilen konumda VM bulunamadı | Geçişten önce farklı bir hedef konum kullanın.
-Bir veya daha fazla disk uyumsuz | VM 'ye bağlı bir veya daha fazla disk, Azure gereksinimlerini karşılamıyor. A<br/><br/> Azure Geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklememektedir ve Premium yönetilen diskler (32 TB) için disk sınırlarına göre diskleri değerlendirir.<br/><br/> SANAL makineye bağlı her disk için, diskin boyutunun < 64 TB (Ultra SSD diskler tarafından desteklenir) olduğundan emin olun.<br/><br/> Değilse, Azure 'a geçmeden önce disk boyutunu azaltın veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) . Her disk için gereken performansın (ıOPS ve aktarım hızı) Azure [yönetilen sanal makine diskleri](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)tarafından desteklendiğinden emin olun.
+Bir veya daha fazla uygun olmayan disk | VM 'ye bağlı bir veya daha fazla disk, Azure gereksinimlerini karşılamıyor. A<br/><br/> Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklememektedir ve Premium yönetilen diskler (32 TB) için disk sınırlarına göre diskleri değerlendirir.<br/><br/> SANAL makineye bağlı her disk için, diskin boyutunun < 64 TB (Ultra SSD diskler tarafından desteklenir) olduğundan emin olun.<br/><br/> Değilse, Azure 'a geçmeden önce disk boyutunu azaltın veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) . Her disk için gereken performansın (ıOPS ve aktarım hızı) Azure [yönetilen sanal makine diskleri](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)tarafından desteklendiğinden emin olun.
 Bir veya daha fazla uygun olmayan ağ bağdaştırıcısı. | Kullanılmayan ağ bağdaştırıcılarını geçişten önce makineden kaldırın.
-Disk sayısı, sınırı aşıyor | Kullanılmayan diskleri geçişten önce makineden kaldırın.
-Disk boyutu, sınırı aşıyor | Azure Geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklemezler ve diskleri Premium disk sınırlarına (32 TB) göre değerlendirir.<br/><br/> Ancak Azure, 64 TB 'a kadar olan diskleri destekler (Ultra SSD diskleri tarafından desteklenir). Geçiş işleminden önce diskleri 64 TB 'den daha az bir değere küçültün veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) .
+Disk sayısı sınırı aşıyor | Kullanılmayan diskleri geçişten önce makineden kaldırın.
+Disk boyutu sınırı aşıyor | Azure geçişi: Sunucu değerlendirmesi Şu anda Ultra SSD diskleri desteklemez ve değerlendirir disk sınırlarına (32 TB) dayalı diskleri destekler.<br/><br/> Ancak Azure, 64 TB 'a kadar olan diskleri destekler (Ultra SSD diskleri tarafından desteklenir). Geçiş işleminden önce diskleri 64 TB 'den daha az bir değere küçültün veya Azure 'da birden çok disk kullanın ve daha yüksek depolama sınırları almak için [bunları birlikte toplayın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) .
 Belirtilen konumda disk yok | Geçirmeden önce diskin hedef konumunda olduğundan emin olun.
 Belirtilen artıklık için disk kullanılamıyor | Disk, değerlendirme ayarlarında tanımlanan artıklık depolama türünü kullanmalıdır (varsayılan olarak LRS).
 Bir iç hata nedeniyle disk uygunluğu belirlenemedi | Grup için yeni bir değerlendirme oluşturmayı deneyin.
@@ -275,7 +276,7 @@ Azure geçişi sunucu değerlendirmesi, Azure VM SKU 'Larını, değerlendirme t
 
 
 - VM SKU 'SU önerisi, değerlendirme özelliklerine bağlıdır.
-- Bu, sunucu değerlendirmesi sırasında gerçekleştirdiğiniz değerlendirme türünden etkilenir: *Performans tabanlı*veya *Şirket içi olarak*.
+- Bu, sunucu değerlendirmesi: *performans tabanlı*veya *Şirket içi olarak*gerçekleştirdiğiniz değerlendirme türünden etkilenir.
 - Performans tabanlı değerlendirmelere yönelik sunucu değerlendirmesi, şirket içi sanal makinelerinize yönelik doğru hedef VM SKU 'sunu belirlemede şirket içi VM 'lerin (CPU, bellek, disk ve ağ kullanımı) kullanım verilerini dikkate alır. Ayrıca, etkin kullanımı belirlerken bir rahatlık faktörü ekler.
 - Şirket içi boyutlandırma için performans verileri göz önünde bulundurulmaz ve hedef SKU, şirket içi ayırmaya göre önerilir.
 
@@ -296,7 +297,7 @@ Azure geçişi sunucu değerlendirmesi, değerlendirme türüne göre daha büy�
 
 Örnek olarak, 32 GB bellek içeren bir şirket içi diskiniz varsa, ancak diskin toplanmış okuma ve yazma ıOPS değeri 800 ıOPS ise, sunucu değerlendirmesi bir Premium disk önerir (daha yüksek ıOPS gereksinimleri nedeniyle) ve ardından r 'yi destekleyebilen bir disk SKU 'SU önerir rekli ıOPS ve boyut. Bu örnekteki en yakın eşleşme P15 (256 GB, 1100 IOPS) olabilir. Şirket içi diskin gerektirdiği boyut 32 GB olsa da, şirket içi diskin yüksek ıOPS gereksinimi nedeniyle sunucu değerlendirmesi daha büyük bir disk önerir.
 
-## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Onar Kullanılan çekirdek veya belleğin yüzdesi eksik
+## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Çözüm: kullanılan çekirdek veya belleğin yüzdesi eksik
 
 Sunucu değerlendirmesi, "PercentageOfCoresUtilizedMissing" veya "PercentageOfMemoryUtilizedMissing" raporlarını Azure geçiş gereci ilgili şirket içi VM 'Ler için performans verilerini toplayamayacak şekilde bildirir.
 
@@ -332,7 +333,7 @@ Azure geçişi, bağımlılık görselleştirme işlevselliği için Hizmet Eşl
 
 Windows VM 'Leri için:
 1. Denetim Masası 'nda MMA 'yı başlatın.
-2. **Azure Log Analytics (OMS)** **Microsoft Monitoring Agent özelliklerinde** > , çalışma alanının **durumunun** yeşil olduğundan emin olun.
+2. **Microsoft Monitoring Agent özellikler** > **Azure Log Analytics (OMS)** Içinde, çalışma alanı **durumunun** yeşil olduğundan emin olun.
 3. Durum yeşil değilse, çalışma alanını kaldırmayı ve onu yeniden eklemeyi deneyin.
 
       ![MMA özellikleri iletişim kutusu](./media/troubleshooting-general/mma-status.png)
@@ -374,7 +375,7 @@ Bağımlılık görselleştirmesi etkinleştirilmiş makineleri Azure 'a geçird
 
 Günlükleri aşağıdaki şekilde toplayın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 2. Geliştirici Araçları başlamak için F12 tuşuna basın. Gerekirse, **Gezinti ayarında girişleri temizle** ' yi temizleyin.
 3. **Ağ** sekmesini seçin ve ağ trafiğini yakalamaya başlayın:
    - Chrome 'da **günlüğü koru**' yı seçin. Kayıt otomatik olarak başlamalıdır. Kırmızı bir daire trafiğin yakalandığını gösterir. Kırmızı daire görünmezse başlamak için siyah daireyi seçin.

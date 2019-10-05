@@ -8,18 +8,20 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 10/04/2019
 ms.author: diberry
-ms.openlocfilehash: cafc1e2f3f195301a6c0f9485ebaa10111b08c7d
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: aab64822730531acdcf5f3d91ed8bf028ce7cfd4
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803057"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971894"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
 SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kullanarak bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturabilirsiniz. Bu makale, BitLocker anahtar kurtarma ile ilgili soruları yanıtlamak için basit bir SSS Web sayfasından Soru-Cevap Oluşturma bilgi tabanı oluşturma hakkında bir örnek içerir.
+
+Bilgilerinizi kullanıcılarınız hakkında daha ilgi çekici hale getirmek için bir CHIT-chat kişilik ekleyin.
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -28,61 +30,79 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
 > [!div class="checklist"]
 > * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma bilgi bankası oluşturma
+## <a name="create-a-new-qna-maker-knowledge-base"></a>Yeni bir Soru-Cevap Oluşturma Bilgi Bankası oluşturun
 
 1. Azure kimlik bilgilerinizle [QnAMaker.ai](https://QnAMaker.ai) portalında oturum açın.
 
 1. Soru-Cevap Oluşturma portalında **Bilgi Bankası oluştur**' u seçin.
 
-   ![Soru-Cevap Oluşturma portalının ekran görüntüsü](../media/qna-maker-create-kb.png)
+1. **Oluştur** sayfasında, **QNA hizmeti oluştur**' u seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz. 
 
-1. **Create** (Oluştur) sayfasındaki 1. adımda **Create a QnA service** (Soru-Cevap hizmeti oluştur) öğesini seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz. Azure portal zaman aşımına uğrarsa sitede **Try again** (Yeniden deneyin) öğesini seçin. Bağlantı kurulduktan sonra Azure panonuz görünür.
-
-1. Azure'da yeni bir Soru-Cevap Oluşturma hizmetini başarıyla oluşturduktan sonra qnamaker.ai/create sayfasına geri dönün. 2\. adımdaki açılan listelerden Soru-Cevap Oluşturma hizmetinizi seçin. Yeni bir Soru-Cevap Oluşturma Hizmeti oluşturduysanız, sayfayı yenilediğinizden emin olun.
+1. Soru-Cevap Oluşturma portalında, açılan listelerden Soru-Cevap Oluşturma hizmetinizi seçin. Yeni bir Soru-Cevap Oluşturma Hizmeti oluşturduysanız, sayfayı yenilediğinizden emin olun.
 
    ![Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. Adım 3 ' te bilgi tabanınızı **örnek QnA KB**olarak adlandırın.
+1. Bilgi bankasını **örnek QnA KB**olarak adlandırın.
 
-1. Bilgi tabanınızı içerik eklemek için üç tür veri kaynağı seçin. 4\. adımdaki **Populate your KB** (KB'nizi doldurun) bölümünde **URL** kutusuna [BitLocker Kurtarma Hakkında SSS](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) sayfasının URL'sini girin.
+1. URL olarak örnek bir Word belgesi ekleyin: 
 
-   ![Veri kaynağı ekleme ekran görüntüsü](../media/qnamaker-quickstart-kb/add-datasources.png)
+    `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`
 
-1. 5\. adımda **Create your KB** (KB'nizi oluşturun) öğesini seçin.
+1. `+ Add URL` öğesini seçin.
 
-1. Bilgi Bankası Soru-Cevap Oluşturma oluştururken, bir açılır pencere görüntülenir. Ayıklama işleminin HTML sayfasını okuyup soruları ve yanıtları tanımlaması birkaç dakika sürer.
+1. Bir  **_profesyonel_ ÇıT-** KB 'nize sohbet ekleyin. 
 
-1. Bilgi Bankası Soru-Cevap Oluşturma başarıyla oluşturulduktan sonra **Bilgi Bankası** sayfası açılır. Bilgi Bankası 'nın içeriğini bu sayfada düzenleyebilirsiniz.
+1. **KB 'Nizi oluştur ' u**seçin.
 
-## <a name="edit-the-knowledge-base"></a>Bilgi Bankası 'nı düzenleme
+    Ayıklama işlemi, belgeyi okuyup soruları ve yanıtları tanımlamak için birkaç dakika sürer.
 
-1. Bilgi Bankası 'na yeni bir satır eklemek için Soru-Cevap Oluşturma portalında **Düzenle** bölümünde **QNA Pair Ekle** ' yi seçin. **Question** (Soru) bölümüne **Hi** (Merhaba) yazın. **Yanıt**' ın altında, **Merhaba yazın. Bana BitLocker sorularını sorma.**
+    Bilgi Bankası Soru-Cevap Oluşturma başarıyla oluşturulduktan sonra **Bilgi Bankası** sayfası açılır. Bilgi Bankası 'nın içeriğini bu sayfada düzenleyebilirsiniz.
 
-    ![Soru-Cevap Oluşturma portalının ekran görüntüsü](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+## <a name="add-a-new-question-and-answer-set"></a>Yeni soru ve yanıt kümesi ekleme
 
-1. Sağ üst köşeden **Save and train** (Kaydet ve eğit) öğesine tıklayarak yaptığınız düzenlemeleri kaydedin ve Soru-Cevap Oluşturma modelinizi eğitin. Kaydedilmeyen düzenlemeler silinir.
+1. Soru-Cevap Oluşturma portalında, **düzenleme** sayfasında **QNA çifti Ekle**' yi seçin.
+1. Aşağıdaki soruyu ekleyin: 
+
+    `How many Azure services are used by a knowledge base?`
+
+1. _Markaşağı_ile biçimlendirilen yanıtı ekleyin:
+
+    ` * Azure QnA Maker service\n* Azure Search\n* Azure web app\n* Azure app plan`
+
+    ![ Soruyu metin olarak ve markaşağı ile biçimlendirilen yanıtı ekleyin.](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
+
+    @No__t-0, markaşağı simgesi, madde işareti noktaları için kullanılır. @No__t-0 yeni bir satır için kullanılır.  
+
+    **Düzenle** sayfası markın gösterir. Daha sonra **Test** panelini kullandığınızda markaşağı doğru görüntülendiğini görürsünüz. 
+
+## <a name="save-and-train"></a>Kaydet ve eğit
+
+Sağ üst köşeden **Save and train** (Kaydet ve eğit) öğesine tıklayarak yaptığınız düzenlemeleri kaydedin ve Soru-Cevap Oluşturma modelinizi eğitin. Kaydedilmeyen düzenlemeler silinir.
 
 ## <a name="test-the-knowledge-base"></a>Bilgi Bankası 'nı test etme
 
-1. Soru-Cevap Oluşturma portalında, sağ üst köşedeki **Test** ' i seçerek yaptığınız değişikliklerin etkili olduğunu test edin. Kutuya `hi there` girin ve ENTER ' u seçin. Yanıt olarak oluşturduğunuz cevabı almanız gerekir.
+1. Soru-Cevap Oluşturma portalında, sağ üst köşedeki **Test** ' i seçerek yaptığınız değişikliklerin etkili olduğunu test edin. 
+1. Metin kutusuna bir örnek Kullanıcı sorgusu girin. 
 
-1. Yanıtı daha ayrıntılı bir şekilde incelemek için **Inspect** (Denetle) öğesini seçin. Test penceresi, bilgi bankasından yayımlanmadan önce yaptığınız değişiklikleri test etmek için kullanılır.
+    `How many Azure services are used by a knowledge base?`  
 
-    ![Test panelinin ekran görüntüsü](../media/qnamaker-quickstart-kb/inspect.png)
+    ![ Metin kutusuna bir örnek Kullanıcı sorgusu girin. ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
 
-1. **Test**'i tekrar seçerek **Test** penceresini kapatın.
+1. Yanıtı daha ayrıntılı bir şekilde incelemek için **Inspect** (Denetle) öğesini seçin. Bilgi tabanınızı yayımlamadan önce Bilgi Bankası 'nda yaptığınız değişiklikleri test etmek için test penceresi kullanılır.
+
+1. **Test panelini kapatmak** Için yeniden **Test** ' i seçin.
 
 ## <a name="publish-the-knowledge-base"></a>Bilgi bankasını yayımlama
 
-Bir Bilgi Bankası yayımladığınızda, bilgi Bankalarınızın sorusu ve yanıt içerikleri, test dizininden Azure Search 'teki bir üretim dizinine gider.
+Bir Bilgi Bankası yayımladığınızda, bilgi Bankalarınızın içeriği `test` dizininden Azure Search 'te bir `prod` dizinine gider.
 
 ![Bilgi Bankalarınızın içeriğini taşıma ekran görüntüsü](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
-1. Soru-Cevap Oluşturma portalında, **Düzenle**' nin yanındaki menüde **Yayımla**' yı seçin. Ardından onaylamak için sayfadaki **Publish** (Yayımla) öğesini seçin.
+1. Soru-Cevap Oluşturma portalında **Yayımla**' yı seçin. Ardından onaylamak için sayfadaki **Publish** (Yayımla) öğesini seçin.
 
-1. Soru-Cevap Oluşturma hizmeti başarıyla yayımlandı. Uç noktayı uygulamanızda veya bot kodunuzda kullanabilirsiniz.
+    Soru-Cevap Oluşturma hizmeti başarıyla yayımlandı. Uç noktayı uygulamanızda veya bot kodunuzda kullanabilirsiniz.
 
-    ![Başarılı yayımlamanın ekran görüntüsü](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![Başarılı yayımlamanın ekran görüntüsü](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
 
 ## <a name="create-a-bot"></a>Bot oluşturun
 
@@ -97,16 +117,36 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
 
     ![Bot oluşturma ekran görüntüsü](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-1. Azure bot hizmetinin oluşturma sayfası ile Azure portal için yeni bir tarayıcı sekmesi açılır. Azure bot hizmetini yapılandırın. Bu yapılandırma ayarları hakkında daha fazla bilgi için bkz. [Azure bot hizmeti v4 Ile QnA bot oluşturma](../tutorials/create-qna-bot.md).
+1. Azure bot hizmetinin oluşturma sayfası ile Azure portal için yeni bir tarayıcı sekmesi açılır. Azure bot hizmetini yapılandırın. 
     
     * Bot oluştururken Azure portal aşağıdaki ayarları değiştirmeyin. Bunlar, mevcut bilgi tabanınız için önceden doldurulur: 
         * QnA auth anahtarı
         * App Service planı ve konumu
-        * Azure Depolama
-    * Bot ve Soru-Cevap Oluşturma Web App Service planını paylaşabilir, ancak Web uygulamasını paylaşamaz. Bu, **uygulama adının** soru-cevap oluşturma hizmeti oluştururken kullandığınız uygulama adından farklı olması gerektiği anlamına gelir. 
+    * Bot ve Soru-Cevap Oluşturma Web App Service planını paylaşabilir, ancak Web uygulamasını paylaşamaz. Bu, bot 'ın **uygulama adının** soru-cevap oluşturma hizmeti için uygulama adından farklı olması anlamına gelir. 
 
+1. Bot oluşturulduktan sonra, **bot hizmeti** kaynağını açın. 
+1. **Bot Management**altında **Web sohbeti ' nda test**' i seçin.
+1. **Iletinizi yazın**sohbet isteminde şunu girin:
+
+    `Azure services?`
+
+    Sohbet bot, bilgi tabanınızdan bir cevap vererek yanıt verir. 
+
+    ![Test Web sohbetine bir Kullanıcı sorgusu girin.](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Azure portal Soru-Cevap Oluşturma ve bot Framework kaynaklarını temizleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+Daha fazla bilgi için:
+
+* [Yanıt olarak markaşağı biçimi](../concepts/data-sources-supported.md)
+* [Marka testinizi test etme](../concepts/data-sources-supported.md#testing-your-markdown)
+* [Veri kaynaklarını](../Concepts/data-sources-supported.md)soru-cevap oluşturma. 
+* [Bot kaynak yapılandırma ayarları](../tutorials/create-qna-bot.md).
+
 > [!div class="nextstepaction"]
-> [Bilgi bankası oluşturma](../How-To/create-knowledge-base.md)
+> [Meta verilerle soru ekleme](add-question-metadata-portal.md)
+

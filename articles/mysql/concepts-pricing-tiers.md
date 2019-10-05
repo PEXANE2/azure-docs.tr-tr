@@ -1,26 +1,26 @@
 ---
 title: MySQL için Azure veritabanı fiyatlandırma katmanları
-description: Bu makalede MySQL için Azure veritabanı fiyatlandırma katmanları açıklanmaktadır.
+description: Bilgi işlem oluşturmaları, depolama türleri, depolama boyutu, sanal çekirdek, bellek ve yedekleme bekletme dönemleri dahil olmak üzere MySQL için Azure veritabanı için çeşitli fiyatlandırma katmanları hakkında bilgi edinin.
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 087a88322175b1908ab591a5b9afb5ae45227bb1
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: f53f260ebe80ce2e3d6d6349e3fa892fa3c021a3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177966"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972818"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>MySQL için Azure veritabanı fiyatlandırma katmanları
 
-MySQL için Azure veritabanı sunucusu oluşturmak için üç farklı fiyatlandırma katmanlarından birini kullanabilirsiniz: Temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Fiyatlandırma katmanları, sağlanan sanal çekirdekler, sanal çekirdek başına bellek ve verileri depolamak için kullanılan depolama teknolojisi miktarına göre farklılaştırılabilir. Tüm kaynaklar MySQL sunucu düzeyinde sağlanır. Sunucuda bir veya daha fazla veritabanı olabilir.
+Bir MySQL için Azure veritabanı sunucusu oluşturmak için üç farklı fiyatlandırma katmanlarından birini kullanabilirsiniz: temel, Genel Amaçlı ve bellek için Iyileştirilmiş. Fiyatlandırma katmanları, sağlanan sanal çekirdekler, sanal çekirdek başına bellek ve verileri depolamak için kullanılan depolama teknolojisi miktarına göre farklılaştırılabilir. Tüm kaynaklar MySQL sunucu düzeyinde sağlanır. Sunucuda bir veya daha fazla veritabanı olabilir.
 
 |    | **Temel** | **Genel Amaçlı** | **Bellek için Iyileştirilmiş** |
 |:---|:----------|:--------------------|:---------------------|
-| İşlem nesli | Gen 4, Gen 5 | Gen 4, Gen 5 | 5\. Nesil |
-| Sanal çekirdekler | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
+| İşlem oluşturma | Gen 4, Gen 5 | Gen 4, Gen 5 | 5\. Nesil |
+| Sanal çekirdek | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Sanal çekirdek başına bellek | 2 GB | 5 GB | 10 GB |
 | Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 4 TB | 5 GB ila 4 TB |
 | Depolama türü | Azure Standart depolama | Azure Premium Depolama | Azure Premium Depolama |
@@ -49,7 +49,7 @@ Sağladığınız depolama alanı, MySQL için Azure veritabanı sunucunuz için
 | Depolama türü | Azure Standart depolama | Azure Premium Depolama | Azure Premium Depolama |
 | Depolama boyutu | 5 GB ila 1 TB | 5 GB ila 4 TB | 5 GB ila 4 TB |
 | Depolama artış boyutu | 1 GB | 1 GB | 1 GB |
-| IOPS | Değişken |3 IOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 6000 ıOPS | 3 IOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 6000 ıOPS |
+| IOPS | Değişken |3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 6000 ıOPS | 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 6000 ıOPS |
 
 Sunucu oluşturma sırasında ve sonrasında ek depolama kapasitesi ekleyebilir ve sistemin iş yükünüzün depolama tüketimine göre depolamayı otomatik olarak büyümesine izin verebilirsiniz. 
 
@@ -69,10 +69,10 @@ Genel Amaçlı ve bellek için Iyileştirilmiş katmanlarımızda depolama sın�
 | Depolama türü | Azure Premium Depolama | Azure Premium Depolama |
 | Depolama boyutu | 32 GB ila 16 TB| 32 GB ila 16 TB |
 | Depolama artış boyutu | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS| 3 IOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS |
+| IOPS | 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS| 3 ıOPS/GB<br/>Minimum 100 ıOPS<br/>Maksimum 20.000 ıOPS |
 
 > [!IMPORTANT]
-> Büyük depolama Şu anda şu bölgelerde genel önizlemededir: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Kuzey Avrupa, Batı Avrupa, UK Güney, UK Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Avustralya Doğu, Avustralya Güney Doğu.
+> Büyük depolama Şu anda şu bölgelerde genel önizlemede: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Kuzey Avrupa, Batı Avrupa, UK Güney, UK Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Avustralya Doğu, Avustralya Güney Üzerinden.
 >
 > Büyük depolama önizlemesi Şu anda şunları desteklemez:
 >
@@ -81,7 +81,7 @@ Genel Amaçlı ve bellek için Iyileştirilmiş katmanlarımızda depolama sın�
 
 ### <a name="reaching-the-storage-limit"></a>Depolama sınırına ulaşıyor
 
-100 GB 'den az kullanılabilir depolama alanı olan sunucular, boş depolama alanı 512 MB 'tan veya sağlanan depolama boyutunun% 5 ' inden küçükse salt okunurdur. 100 GB 'den fazla sağlanmış depolama alanı olan sunucular salt okunurdur ve boş depolama alanı 5 GB 'tan az olduğunda okunabilir olarak işaretlenir.
+Sağlanan depolama alanı 100 GB'tan az olan sunucular, boş depolama alanı 512 MB'ın altına veya sağlanan depolama boyutunun %5'ine düştüğünde salt okunur olarak işaretlenir. Sağlanan depolama alanı 100 GB'tan fazla olan sunucular, boş depolama alanı 5 GB'ın altına düştüğünde salt okunur olarak işaretlenir.
 
 Örneğin, 110 GB depolama alanı sağladıysanız ve gerçek kullanım 105 GB 'den fazla olursa sunucu salt okunurdur olarak işaretlenir. Alternatif olarak, 5 GB depolama alanı sağladıysanız, ücretsiz depolama 256 MB 'tan az kaldığında sunucu salt okunurdur olarak işaretlenir.
 
@@ -97,7 +97,7 @@ Depolama otomatik büyüme, sunucunuzun depolama dışı ve Salt okunabilir hale
 
 Depolamanın yalnızca yukarı ölçeklenebileceğinden, aşağı doğru ölçeklenemediğini unutmayın.
 
-## <a name="backup"></a>Yedekleme
+## <a name="backup"></a>Backup
 
 Hizmet, sunucunuzun yedeklerini otomatik olarak alır. Yedeklemeler için en düşük saklama süresi yedi gündür. 35 güne kadar bir bekletme dönemi belirleyebilirsiniz. Bekletme, sunucunun kullanım ömrü boyunca herhangi bir noktada ayarlanabilir. Yerel olarak yedekli ve coğrafi olarak yedekli yedeklemeler arasından seçim yapabilirsiniz. Coğrafi olarak yedekli yedeklemeler, sunucunuzun oluşturulduğu bölgenin [coğrafi eşlenmiş bölgesinde](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) da depolanır. Bu artıklık, bir olağanüstü durum durumunda bir koruma düzeyi sağlar. Ayrıca, aynı zamanda sunucunuzu, coğrafi olarak yedekli yedeklemelerle kullanılabilir olan diğer Azure bölgelerine geri yükleme imkanına sahip olursunuz. Sunucu oluşturulduktan sonra iki yedekleme depolama seçeneği arasında değişiklik yapmak mümkün değildir.
 
