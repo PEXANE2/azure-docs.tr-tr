@@ -7,19 +7,14 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: victorh
-ms.openlocfilehash: 0921a1ac7aa1192fae78f168c2eb51ee3e74e24a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 152087ab3dc20dfc95cfeaa0353d961917d362d6
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774617"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959343"
 ---
 # <a name="what-is-azure-private-dns"></a>Azure Özel DNS nedir?
-
-> [!IMPORTANT]
-> Azure Özel DNS şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Etki alanı adı sistemi veya DNS, bir hizmet adını IP adresine çevirmekten (veya çözümlemeden) sorumludur.  Azure DNS, Microsoft Azure altyapısını kullanarak ad çözümlemesi sağlayan DNS etki alanları için bir barındırma hizmetidir. İnternet 'e yönelik DNS etki alanlarını desteklemeye ek olarak, Azure DNS özel DNS bölgelerini de destekler.
 
@@ -32,7 +27,7 @@ Azure Özel DNS, bir sanal ağdaki etki alanı adlarını yönetmek ve çözüml
 > [!NOTE]
 > En iyi uygulama olarak, özel DNS bölgeniz için bir *. Local* etki alanı kullanmayın. Tüm işletim sistemleri bunu desteklemez.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Azure Özel DNS aşağıdaki avantajları sağlar:
 
@@ -60,22 +55,14 @@ Azure DNS aşağıdaki özellikleri sağlar:
 
 * **Ters DNS araması, sanal ağ kapsamı içinde desteklenir**. Özel bir bölgeye atanan sanal ağ içindeki özel bir IP için ters DNS araması, ana bilgisayar/kayıt adını ve sonek olarak bölge adını içeren FQDN 'yi döndürür.
 
-## <a name="known-issues"></a>Bilinen sorunlar
-Aşağıdaki öğeler önizleme sürümündeki bilinen hatalar ve sorunlardır:
-* Özel bir DNS bölgesine bağlı bir sanal ağı silerseniz, özel DNS bölgesinin bağlantılarını silmez. Sanal ağı aynı ad ve kaynak grubuyla yeniden oluşturup bir özel DNS bölgesine yeniden bağlamayı denerseniz bağlantı başarısız olur. Bu sorunu geçici olarak çözmek için, sanal ağı farklı bir kaynak grubunda veya aynı kaynak grubunda farklı bir adla oluşturun.
-* Bir sanal ağı başka bir kaynak grubuna veya aboneliğe taşırsanız, özel DNS bölgesinin bağlantılarını güncelleştirmez. Taşınan sanal ağın ad çözümlemesi çalışmaya devam eder, ancak özel DNS bölgesinin sanal ağ bağlantılarını görüntülediğinizde sanal ağın eski ARM kimliklerini görürsünüz.
-* Şu anda BAE Kuzey, BAE Orta, Güney Afrika Batı, Güney Afrika Kuzey, Kanada Doğu ve Fransa Güney barındırılan bağlı sanal ağlar başarısız olabilir ve aralıklı DNS çözümleme sorunları görebilirsiniz. 
-
-
-## <a name="other-considerations"></a>Dikkat edilecek diğer noktalar
+## <a name="other-considerations"></a>Diğer konular
 
 Azure DNS aşağıdaki sınırlamalara sahiptir:
 
 * Belirli bir sanal ağ, VM DNS kayıtlarının otomatik kaydı etkinse yalnızca bir özel bölgeye bağlanabilir. Ancak, birden çok sanal ağı tek bir DNS bölgesine bağlayabilirsiniz.
 * Ters DNS yalnızca bağlı sanal ağdaki özel IP alanı için geçerlidir
-* Bağlı bir sanal ağın özel IP 'si için ters DNS, sanal makine için varsayılan sonek olarak "internal.cloudapp.net" döndürür. Bir özel bölgeyle bağlantılı olan sanal ağlar için, bir özel IP için ters DNS, *internal.cloudapp.net* varsayılan sonekine ve diğeri de özel bölge sonekine sahip olan 2 FQDN döndürür.
-* Koşullu iletme Şu anda yerel olarak desteklenmiyor. Azure ile şirket içi ağlar arasında çözünürlüğü etkinleştirmek için bkz. [VM 'ler ve rol örnekleri Için ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-
+* Bağlı bir sanal ağın özel IP adresi için ters DNS, sanal makine için varsayılan sonek olarak *internal.cloudapp.net* döndürür. Gizli bir IP adresi için bir özel bölgeye bağlı sanal ağlar için, bir özel IP adresi için ters DNS iki FQDN döndürür: biri varsayılan sonek *internal.cloudapp.net* ve özel bölge sonekiyle bir diğeri.
+* Koşullu iletme Şu anda yerel olarak desteklenmiyor. Azure ile şirket içi ağlar arasında çözünürlüğü etkinleştirmek için. Bkz. [VM 'ler ve rol örnekleri Için ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
  
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -91,4 +78,4 @@ Fiyatlandırma bilgileri için bkz. [Azure DNS fiyatlandırması](https://azure.
 
 * DNS bölgelerini ve [kayıtları](dns-zones-records.md)ziyaret ederek DNS bölgeleri ve kayıtları hakkında bilgi edinin.
 
-* Azure'un diğer önemli [ağ özelliklerinden](../networking/networking-overview.md) bazıları hakkında bilgi edinin.
+* Azure 'un diğer önemli [ağ özellikleri](../networking/networking-overview.md) hakkında bilgi edinin.

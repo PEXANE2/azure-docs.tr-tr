@@ -1,34 +1,34 @@
 ---
-title: Hızlı başlangıç - Azure CLI kullanarak Azure DNS bölgesi ve kaydı oluşturma
-description: Hızlı başlangıç - Azure DNS'te DNS bölgesi ve kaydı oluşturma hakkında bilgi edinin. Bu, Azure CLI kullanarak ilk DNS bölgenizi ve kaydınızı oluşturmaya ve yönetmeye yönelik adım adım bir kılavuzdur.
+title: Hızlı başlangıç-Azure CLı kullanarak Azure DNS bir bölge ve kayıt oluşturma
+description: Hızlı başlangıç-Azure DNS bir DNS bölgesi ve kaydı oluşturma hakkında bilgi edinin. Bu, Azure CLı kullanarak ilk DNS bölgenizi ve kaydınızı oluşturup yönetmek için adım adım kılavuzudur.
 services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5d842c2d6ff84a0f17c4e8be0bfade018edc48b
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111342"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959984"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Hızlı Başlangıç: Bir Azure DNS bölgesi ve kaydı Azure CLI kullanarak oluşturma
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure DNS bir bölge ve kayıt oluşturma
 
-Bu makale Windows, Mac ve Linux platformlarında kullanılabilen Azure CLI'yi kullanarak ilk DNS bölgenizi ve kaydınızı oluşturma adımlarında size rehberlik yapacaktır. Ayrıca, [Azure portal](dns-getstarted-portal.md) veya [Azure PowerShell](dns-getstarted-powershell.md) kullanarak aşağıdaki adımları gerçekleştirebilirsiniz.
+Bu makale, Windows, Mac ve Linux 'ta kullanılabilen Azure CLı kullanarak ilk DNS bölgenizi ve kaydınızı oluşturma adımlarında size kılavuzluk eder. [Azure Portal](dns-getstarted-portal.md) veya [Azure PowerShell](dns-getstarted-powershell.md)kullanarak da bu adımları uygulayabilirsiniz.
 
-DNS bölgesi belirli bir etki alanıyla ilgili DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Son olarak, DNS bölgenizi Internet'te yayımlamak için etki alanının ad sunucularını yapılandırmanız gerekir. Bu adımların her biri aşağıda açıklanmıştır.
+DNS bölgesi, belirli bir etki alanı için DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS barındırılmaya başlamak için, bu etki alanı adı için bir DNS bölgesi oluşturmanız gerekir. Etki alanınız için her bir DNS kaydı daha sonra bu DNS bölgesi içinde oluşturulur. Son olarak, DNS bölgenizi Internet 'Te yayımlamak için etki alanı için ad sunucularını yapılandırmanız gerekir. Bu adımların her biri aşağıda açıklanmıştır.
 
-Azure DNS artık özel DNS bölgelerini de destekler (şu anda genel önizlemede). Özel DNS bölgeleri hakkında daha fazla bilgi için bkz. [Özel etki alanları için Azure DNS'i kullanma](private-dns-overview.md). Özel bir DNS bölgesi oluşturma örneği için bkz. [CLI kullanarak Azure DNS özel bölgeleriyle çalışmaya başlama](./private-dns-getstarted-cli.md).
+Ayrıca, özel DNS bölgelerini de destekler Azure DNS. Özel DNS bölgeleri hakkında daha fazla bilgi için bkz. [özel etki alanları için Azure DNS kullanma](private-dns-overview.md). Özel bir DNS bölgesi oluşturma hakkında bir örnek için bkz. [CLI kullanarak Azure DNS özel bölgelerini kullanmaya başlama](./private-dns-getstarted-cli.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="create-the-resource-group"></a>Kaynak grubunu oluşturma
+## <a name="create-the-resource-group"></a>Kaynak grubu oluşturma
 
-DNS bölgesini oluşturmadan önce, DNS bölgesini içerecek kaynak grubunu oluşturun.
+DNS bölgesini oluşturmadan önce, DNS bölgesini içerecek bir kaynak grubu oluşturun:
 
 ```azurecli
 az group create --name MyResourceGroup --location "East US"
@@ -36,9 +36,9 @@ az group create --name MyResourceGroup --location "East US"
 
 ## <a name="create-a-dns-zone"></a>DNS bölgesi oluşturma
 
-DNS bölgesi, `az network dns zone create` komutu kullanılarak oluşturulur. Bu komutla ilgili yardım içeriğini görmek için `az network dns zone create -h` yazın.
+@No__t-0 komutu kullanılarak bir DNS bölgesi oluşturulur. Bu komuta ilişkin yardımı görmek için `az network dns zone create -h` yazın.
 
-Aşağıdaki örnekte adlı bir DNS bölgesi oluşturur *contoso.xyz* kaynak grubundaki *MyResourceGroup*. Değerleri kendinizinkilerle değiştirerek DNS bölgesini oluşturmak için örneği kullanın.
+Aşağıdaki örnek, *Myresourcegroup*kaynak grubunda *contoso. xyz* adlı bir DNS bölgesi oluşturur. Değerleri kendi değerlerinizle değiştirerek bir DNS bölgesi oluşturmak için örneği kullanın.
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.xyz
@@ -46,35 +46,35 @@ az network dns zone create -g MyResourceGroup -n contoso.xyz
 
 ## <a name="create-a-dns-record"></a>DNS kaydı oluşturma
 
-DNS kaydı oluşturmak için `az network dns record-set [record type] add-record` komutunu kullanın. A kayıtları hakkında yardım için bkz. `azure network dns record-set A add-record -h`.
+DNS kaydı oluşturmak için `az network dns record-set [record type] add-record` komutunu kullanın. Kayıtlar hakkında yardım için bkz. `azure network dns record-set A add-record -h`.
 
-Aşağıdaki örnek, "MyResourceGroup" kaynak grubunda "contoso.xyz" DNS bölgesinde "www" göreli adı olan bir kayıt oluşturur. Kayıt kümesi tam olarak nitelenmiş adını "www.contoso.xyz" dir. Kayıt türü "A", "10.10.10.10" IP adresi ve varsayılan TTL 3600 saniye (1 saat) değeri var.
+Aşağıdaki örnek, "MyResourceGroup" kaynak grubundaki "contoso. xyz" DNS bölgesinde "www" göreli adına sahip bir kayıt oluşturur. Kayıt kümesinin tam adı "www. contoso. xyz" dir. Kayıt türü "A", IP adresi "10.10.10.10" ve varsayılan TTL 3600 saniyedir (1 saat).
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.xyz -n www -a 10.10.10.10
 ```
 
-## <a name="view-records"></a>Kayıtları görüntüleme
+## <a name="view-records"></a>Kayıtları görüntüle
 
-Bölgenizdeki DNS kayıtlarını listelemek için şu komutu çalıştırın:
+Bölgenizdeki DNS kayıtlarını listelemek için şunu çalıştırın:
 
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.xyz
 ```
 
-## <a name="test-the-name-resolution"></a>Ad çözümlemesini test etme
+## <a name="test-the-name-resolution"></a>Ad çözünürlüğünü test etme
 
-Test 'A' kaydı test DNS bölgesi olduğuna göre ad çözümlemesi adında bir araç ile test edebilirsiniz *nslookup*. 
+Test ' A ' kaydıyla bir test DNS bölgesine sahip olduğunuza göre, ad çözümlemesini *nslookup*adlı bir araçla test edebilirsiniz. 
 
 **DNS ad çözümlemesini test etmek için:**
 
-1. Bölgeniz için ad sunucuları listesini almak için aşağıdaki cmdlet'i çalıştırın:
+1. Bölgenizin ad sunucularının listesini almak için aşağıdaki cmdlet 'i çalıştırın:
 
    ```azurecli
    az network dns record-set ns show --resource-group MyResourceGroup --zone-name contoso.xyz --name @
    ```
 
-1. Ad sunucusu adlarını biri önceki adımın çıktıdan kopyalayın.
+1. Ad sunucusu adlarından birini, önceki adımın çıktısından kopyalayın.
 
 1. Bir komut istemi açın ve aşağıdaki komutu çalıştırın:
 
@@ -92,11 +92,11 @@ Test 'A' kaydı test DNS bölgesi olduğuna göre ad çözümlemesi adında bir 
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-Ana bilgisayar adı **www\.contoso.xyz** çözümler **10.10.10.10**yapılandırdığınız şekilde. Bu sonuç, ad çözümlemesi doğru şekilde çalıştığını doğrular.
+**Www\.contoso.xyz** ana bilgisayar adı, yalnızca yapılandırdığınız gibi **10.10.10.10**olarak çözümlenir. Bu sonuç, ad çözümlemenin doğru çalıştığını doğrular.
 
-## <a name="delete-all-resources"></a>Tüm kaynakları silme
+## <a name="delete-all-resources"></a>Tüm kaynakları Sil
 
-Artık gerekmediğinde, kaynak grubunu silerek bu hızlı başlangıçta oluşturulan tüm kaynakları silebilirsiniz:
+Artık gerekli olmadığında, kaynak grubunu silerek bu hızlı başlangıçta oluşturulan tüm kaynakları silebilirsiniz:
 
 ```azurecli
 az group delete --name MyResourceGroup
@@ -104,7 +104,7 @@ az group delete --name MyResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Azure CLI kullanarak ilk DNS bölgenizi ve kaydınızı oluşturduğunuza göre, özel etki alanında bir web uygulaması için kayıtlar oluşturabilirsiniz.
+Azure CLı kullanarak ilk DNS bölgenizi ve kaydınızı oluşturduğunuza göre, özel bir etki alanında bir Web uygulaması için kayıtlar oluşturabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Özel etki alanında web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)
+> [Özel bir etki alanında bir Web uygulaması için DNS kayıtları oluşturma](./dns-web-sites-custom-domain.md)

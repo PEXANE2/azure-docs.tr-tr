@@ -1,19 +1,20 @@
 ---
-title: include dosyası
-description: include dosyası
+title: içerme dosyası
+description: içerme dosyası
 services: digital-twins
-author: dsk-2015
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
 ms.date: 09/30/2019
-ms.author: dkshir
 ms.custom: include file
-ms.openlocfilehash: 6e808fb64d004f117a3c25946ad97e26ddfadaa3
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 880c2a811df7b4d41760676d4d6e0153e9384f38
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802381"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949733"
 ---
 >[!NOTE]
 >Bu bölüm, [yeni Azure AD uygulama kaydı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)için yönergeler sağlar. Hala eski bir yerel uygulama kaydınız varsa, desteklenmiş olduğu sürece bu dosyayı kullanabilirsiniz. Ek olarak, bazı nedenlerle uygulama kayıt defteri 'nin yeni yolu kurulumda çalışmadıysanız, eski bir yerel AAD uygulaması oluşturmayı deneyebilirsiniz. Daha fazla yönerge için [Azure dijital Twins uygulamanızı Azure Active Directory eski adıyla kaydet](../articles/digital-twins/how-to-use-legacy-aad.md) bölümünü okuyun. 
@@ -22,7 +23,7 @@ ms.locfileid: "71802381"
 
     [![Uygulama kaydedildi](./media/digital-twins-permissions/aad-app-register.png)](./media/digital-twins-permissions/aad-app-register.png#lightbox)
 
-1. **Ad** kutusuna bu uygulama kaydı için kolay bir ad verin. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, sol taraftaki açılan kutuda **ortak istemci (mobil & Masaüstü)** öğesini seçin ve sağdaki metin kutusuna `https://microsoft.com` girin. **Kaydol**’u seçin.
+1. **Ad** kutusuna bu uygulama kaydı için kolay bir ad verin. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, sol taraftaki açılan kutuda **ortak istemci (mobil & Masaüstü)** öğesini seçin ve sağdaki metin kutusuna `https://microsoft.com` girin. **Kaydol**' u seçin.
 
     [![ pencere oluştur](./media/digital-twins-permissions/aad-app-reg-create.png)](./media/digital-twins-permissions/aad-app-reg-create.png#lightbox)
 
@@ -54,9 +55,9 @@ ms.locfileid: "71802381"
 
 1. Seçilen API, aynı **istek API 'si izinleri** bölmesinde **Azure dijital TWINS** olarak gösterilir. **Oku (1)** açılır öğesini seçin ve ardından **oku. yazma** onay kutusunu seçin. **Izin Ekle** düğmesini seçin.
 
-    [![API izinleri ekleme](./media/digital-twins-permissions/aad-app-req-permissions.png)](./media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    [![Apı izinleri ekleme](./media/digital-twins-permissions/aad-app-req-permissions.png)](./media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. Kuruluşunuzun ayarlarına bağlı olarak, bu API 'ye yönetici erişimi sağlamak için ek adımlar gerçekleştirmeniz gerekebilir. Daha fazla bilgi için yöneticinize başvurun. Yönetici erişimi onaylandıktan sonra **API izinleri** BÖLMESINDEKI **yönetici onayı gerekli** sütunu, API 'leriniz için aşağıdakine benzer şekilde görünür:
 
-    [![API izinleri ekleme](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [![Apı izinleri ekleme](./media/digital-twins-permissions/aad-app-admin-consent.png)](./media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
