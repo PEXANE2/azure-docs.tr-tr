@@ -49,8 +49,8 @@
     - name: İsabet vurgulamayı gerçekleştirme
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Sayfa haberleri
-      href: paging-news.md
+    - name: Arama sonuçları sayfalarında gezinme
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: Küçük resimleri yeniden boyutlandırma ve kırpma
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
