@@ -1,27 +1,26 @@
 ---
-title: Örnek - uygulama içinde bir Linux VM yüklü değilse denetim
-description: Linux sanal makineleri içinde belirtilen uygulamaları yüklü değilse, bu örnek ilke Konuk yapılandırma girişimi ve tanımları denetim.
+title: Örnek-uygulamaların Linux VM 'Ler içinde yüklü olup olmadığını denetleyin
+description: Bu örnek Ilke Konuk yapılandırma girişimi ve tanımları, belirtilen uygulamalar Linux sanal makineleri içinde yüklenmezse denetim girişimi ve tanımlar.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: eda5a2a6d2dae58f8da72deccbb89a34c7f21dae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204007"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977028"
 ---
-# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Örneği - Linux sanal makineleri içinde belirtilen uygulamaları yüklü değilse denetim
+# <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>Örnek-belirtilen uygulamalar Linux VM 'Ler içinde yüklü değilse denetleyin
 
-Bu ilke Konuk yapılandırması girişim Linux sanal makineleri içinde belirtilen uygulamaları yüklü olmayan bir denetim olayı oluşturur. Bu yerleşik girişim kimliğidir `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e`.
+Bu Ilke Konuk yapılandırması girişimi, belirtilen uygulamalar Linux sanal makineleri içinde yüklü olmadığında bir denetim olayı oluşturur. Bu yerleşik girişim KIMLIĞI `/providers/Microsoft.Authorization/policySetDefinitions/c937dcb4-4398-4b39-8d63-4a6be432252e` ' dır.
 
 > [!IMPORTANT]
-> Tüm Konuk yapılandırma girişimleri oluşur **denetim** ve **Deployıfnotexists** ilke tanımları. Bir ilke tanımlarının neden yalnızca konuk doğru şekilde çalışmamasına yapılandırması atanıyor.
+> Tüm konuk yapılandırma girişimleri **audit** ve **Deployifnotexists** ilke tanımlarından oluşur. İlke tanımlarından yalnızca birini atamak Konuk yapılandırmanın doğru şekilde çalışmamasına neden olur.
 
-Bu örnek kullanarak atayabilirsiniz:
+Bu örneği aşağıdaki kullanarak atayabilirsiniz:
 
 - [Azure portalı](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
@@ -30,29 +29,29 @@ Bu örnek kullanarak atayabilirsiniz:
 
 ## <a name="components-of-the-initiative"></a>Girişim bileşenleri
 
-Bu [Konuk yapılandırma](../concepts/guest-configuration.md) girişim oluşur aşağıdaki ilkeleri:
+Bu [Konuk yapılandırması](../concepts/guest-configuration.md) girişimi aşağıdaki ilkelerden oluşur:
 
-- [Denetim](#audit-definition) -uygulamalar içinde bir Linux VM yüklü olduğunda denetim
-  - KİMLİĞİ: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
-- [Deployıfnotexists](#deployIfNotExists-definition) -uygulamalar içinde bir Linux VM yüklü denetim dağıtma VM uzantısı
-  - KİMLİĞİ: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
+- [Denetim](#audit-definition) -uygulamalar Linux VM 'ler içinde yüklü olmadığında denetle
+  - KIMLIK: `/providers/Microsoft.Authorization/policyDefinitions/fee5cb2b-9d9b-410e-afe3-2902d90d0004`
+- [Deployifnotexists](#deployIfNotExists-definition) -uygulamalar Linux sanal makineleri içinde yüklü OLMADıĞıNDA denetlenecek VM uzantısını dağıtın
+  - KIMLIK: `/providers/Microsoft.Authorization/policyDefinitions/4d1c04de-2172-403f-901b-90608c35c721`
 
 ### <a name="initiative-definition"></a>Girişim tanımı
 
-Girişim birleştirilerek oluşturulan **denetim** ve **Deployıfnotexists** birlikte tanımları ve [girişim parametreleri](#initiative-parameters). JSON tanımı budur.
+Girişim, **audit** ve **Deployifnotexists** tanımlarına birlikte ve [girişim parametrelerine](#initiative-parameters)katılarak oluşturulur. Bu, tanımın JSON ' dır.
 
 [!code-json[initiative-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/azurepolicyset.json "Initiative definition (JSON)")]
 
 ### <a name="initiative-parameters"></a>Girişim parametreleri
 
-|Ad |Tür |Açıklama |
+|Adı |Tür |Açıklama |
 |---|---|---|
-|ApplicationName |String |Uygulama adları. Örnek: 'python', 'powershell' veya 'python, powershell' gibi bir virgülle ayrılmış listesi. Kullanım \* joker karakter eşleme, gibi ' power\*'. |
+|applicationName |Dize |Uygulama adları. Örnek: ' Python ', ' PowerShell ' veya ' Python, PowerShell ' gibi virgülle ayrılmış bir liste. ' Power @ no__t-1 ' gibi joker karakter eşleştirme için \* kullanın. |
 
 PowerShell veya Azure CLI ile atama oluştururken parametre verileri `-PolicyParameter` (PowerShell) veya `--params` (Azure CLI) kullanılarak dize ya da dosya şeklinde JSON biçiminde iletilebilir.
 PowerShell aynı zamanda cmdlet'e bir Ad/Değer hashtable iletilmesini gereken `-PolicyParameterObject` parametresini de destekler. Burada **Ad** parametrenin adı, **Değer** ise atama sırasında iletilen tek bir değer veya değer dizisidir.
 
-Bu örnek parametresinde, uygulamaların yüklenmesini _python_ ve _powershell_ denetlenir.
+Bu örnek parametresinde, _Python_ ve _PowerShell_ uygulamalarının yüklenmesi denetlenir.
 
 ```json
 {
@@ -62,64 +61,62 @@ Bu örnek parametresinde, uygulamaların yüklenmesini _python_ ve _powershell_ 
 }
 ```
 
-Yalnızca **Deployıfnotexists** ilke tanımı girişim parametreleri kullanır.
+Yalnızca **Deployifnotexists** ilke tanımı girişim parametrelerini kullanır.
 
 ### <a name="audit-definition"></a>Denetim tanımı
 
-Kurallarını tanımlayan JSON **denetim** ilke tanımı.
+**Denetim** ilkesi tanımının KURALLARıNı tanımlayan JSON.
 
 [!code-json[audit-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/audit/azurepolicy.rules.json "audit policy rules (JSON)")]
 
-### <a name="deployifnotexists-definition"></a>Deployıfnotexists tanımı
+### <a name="deployifnotexists-definition"></a>deployIfNotExists tanımı
 
-Kurallarını tanımlayan JSON **Deployıfnotexists** ilke tanımı.
+**Deployifnotexists** ilke tanımının KURALLARıNı tanımlayan JSON.
 
 [!code-json[deployIfNotExists-definition](../../../../policy-templates/samples/GuestConfiguration/installed-application-linux/deployIfNotExists/azurepolicy.rules.json "deployIfNotExists policy rules (JSON)")]
 
-**Deployıfnotexists** ilke tanımı, ilke doğrulanmışsa Azure görüntüleri tanımlar:
+**Deployifnotexists** ilke tanımı, Ilkenin doğrulanan Azure görüntülerini tanımlar:
 
-|Yayımcı |Sunduğu |SKU |
+|Yayımcı |Teklif |SKU |
 |-|-|-|
-|OpenLogic |CentOS\* |Tüm dışında 6\* |
-|RedHat |RHEL |Tüm dışında 6\* |
-|RedHat |osa | Tümü |
-|credativ |Debian | Tüm 7 dışında\* |
-|SuSE |SLES\* |Tüm dışında 11\* |
-|Kurallı| UbuntuServer |12 dışında tümü\* |
-|microsoft-dsvm |linux-data-science-vm-ubuntu |Tümü |
-|microsoft-dsvm |azureml |Tümü |
-|Cloudera |cloudera-centos-os |Tüm dışında 6\* |
-|Cloudera |cloudera-altus-centos-os |Tümü |
-|Microsoft reklamları |Linux\* |Tümü |
+|OpenLogic |CentOS @ no__t-0 |6 @ no__t-0 dışında tümü |
+|RedHat |RHEL |6 @ no__t-0 dışında tümü |
+|RedHat |bitince | Tümü |
+|credativ |Debian | Tüm 7 @ no__t-0 dışında |
+|SUSE |SLES @ no__t-0 |11 @ no__t-0 dışında tümü |
+|Canonical| UbuntuServer |12 @ no__t-0 dışında tümü |
+|Microsoft-dsvm |Linux-Data-Science-VM-Ubuntu |Tümü |
+|Microsoft-dsvm |azureml |Tümü |
+|Cloudera |Cloudera-CentOS-OS |6 @ no__t-0 dışında tümü |
+|Cloudera |Cloudera-aly-CentOS-OS |Tümü |
+|Microsoft-ads |Linux @ no__t-0 |Tümü |
 |Microsoft-aks |Tümü |Tümü |
 |AzureDatabricks |Tümü |Tümü |
-|qubole dahil edilen |Tümü |Tümü |
-|datastax |Tümü |Tümü |
+|qubole-Inc |Tümü |Tümü |
+|DataStax |Tümü |Tümü |
 |Couchbase |Tümü |Tümü |
 |scalegrid |Tümü |Tümü |
-|Denetim noktası |Tümü |Tümü |
+|mak |Tümü |Tümü |
 |paloaltonetworks |Tümü |Tümü |
 
-**Dağıtım** kural kısmı geçirir _installedApplication_ sanal makineye konuk yapılandırma aracı için parametre. Bu yapılandırma, doğrulama gerçekleştirmek aracı etkinleştirir ve rapor uyumluluk geri aracılığıyla **denetim** ilke tanımı.
+Kuralın **dağıtım** kısmı _ınstaltadadpplication_ parametresini sanal makinedeki konuk yapılandırma aracısına geçirir. Bu yapılandırma, aracının **Denetim** ilkesi tanımıyla doğrulamaları ve rapor uyumluluğunu geri gerçekleştirmesini sağlar.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
-Sonra **denetim** ve **Deployıfnotexists** tanımları, portalda oluşturulur, bunları Grup önerilir bir [girişim](../concepts/definition-structure.md#initiatives) ataması.
+Portalda **audit** ve **Deployifnotexists** tanımları oluşturulduktan sonra, atamaları atama için bir [girişimde](../concepts/definition-structure.md#initiatives) gruplamak önerilir.
 
-### <a name="create-copy-of-audit-definition"></a>Denetim tanımının bir kopyasını oluşturun
+### <a name="create-copy-of-audit-definition"></a>Denetim tanımının kopyasını oluştur
 
-[![İlke örneği Azure'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
-[![Azure kamu için ilke örneği dağıtma](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
+[![ ilke örneğini azure @no__t dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)-2[![Ilke örneğini Azure gov 'ye dağıtma](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2Faudit%2Fazurepolicy.json)
 
-Portal üzerinden dağıtmak için bu düğmeleri kullanarak bir kopyasını oluşturur **denetim** ilke tanımı.
-Eşleştirilmiş olmadan **Deployıfnotexists** ilke tanımı, Konuk yapılandırma düzgün çalışmaz.
+Portal aracılığıyla dağıtmak için bu düğmelerin kullanılması, **Denetim** ilkesi tanımının bir kopyasını oluşturur.
+Eşleştirilmiş **Deployifnotexists** ilke tanımı olmadan Konuk yapılandırması doğru çalışmaz.
 
-### <a name="create-copy-of-deployifnotexists-definition"></a>Deployıfnotexists tanımının bir kopyasını oluşturun
+### <a name="create-copy-of-deployifnotexists-definition"></a>DeployIfNotExists tanımının kopyasını oluştur
 
-[![İlke örneği Azure'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
-[![Azure kamu için ilke örneği dağıtma](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
+[![ ilke örneğini azure @no__t dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)-2[![Ilke örneğini Azure gov 'ye dağıtma](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FGuestConfiguration%2Finstalled-application-linux%2FdeployIfNotExists%2Fazurepolicy.json)
 
-Portal üzerinden dağıtmak için bu düğmeleri kullanarak bir kopyasını oluşturur **Deployıfnotexists** ilke tanımı. Eşleştirilmiş olmadan **denetim** ilke tanımı, Konuk yapılandırma düzgün çalışmaz.
+Portal aracılığıyla dağıtmak için bu düğmelerin kullanılması, **Deployifnotexists** ilke tanımının bir kopyasını oluşturur. Eşleştirilmiş **Denetim** ilkesi tanımı olmadan, Konuk yapılandırması doğru çalışmaz.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -127,9 +124,9 @@ Portal üzerinden dağıtmak için bu düğmeleri kullanarak bir kopyasını olu
 
 ### <a name="deploy-with-azure-powershell"></a>Azure PowerShell ile dağıtma
 
-#### <a name="copy-and-assign-the-initiative"></a>Kopyalama ve girişim Ata
+#### <a name="copy-and-assign-the-initiative"></a>Girişimi Kopyala ve ata
 
-Bu adımları her ikisi için yerleşik ilkeleri içeren bir girişim kopyasını oluşturma **denetim** ve **Deployıfnotexists** ve girişim bir kaynak grubuna atar.
+Bu adımlar, hem **Denetim** hem de **Deployifnotexists** için yerleşik ilkeleri içeren girişimin bir kopyasını oluşturur ve girişimi bir kaynak grubuna atar.
 
 ```azurepowershell-interactive
 # Create the policy initiative (Subscription scope)
@@ -164,9 +161,9 @@ Remove-AzRoleAssignment -ObjectId $saIdentity -Scope $scope.ResourceId -RoleDefi
 Remove-AzPolicySetDefinition -Id $initDef
 ```
 
-#### <a name="copy-and-assign-the-audit-definition"></a>Kopyalama ve denetim tanımı atama
+#### <a name="copy-and-assign-the-audit-definition"></a>Denetim tanımını kopyalama ve atama
 
-Bu adımları bir kopyasını oluşturmak **denetim** tanımı ve kaynak grubuna atayın. Bu tanımı düzgün eşleştirilmiş çalışmaz **Deployıfnotexists** tanımı da atanmış.
+Bu adımlar, **Denetim** tanımının bir kopyasını oluşturur ve bir kaynak grubuna atar. Bu tanım, eşleştirilmiş **Deployifnotexists** tanımı da atanmaksızın düzgün çalışmayacak.
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -189,10 +186,10 @@ Remove-AzPolicyAssignment -Id $assignment.ResourceId
 Remove-AzPolicyDefinition -Id $definition
 ```
 
-#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>Kopyalama ve Deployıfnotexists tanımı atama
+#### <a name="copy-and-assign-the-deployifnotexists-definition"></a>DeployIfNotExists tanımını kopyalayın ve atayın
 
-Bu adımları bir kopyasını oluşturmak **Deployıfnotexists** tanımı ve kaynak grubuna atayın.
-Bu tanımı düzgün eşleştirilmiş çalışmaz **denetim** tanımı da atanmış.
+Bu adımlar, **Deployifnotexists** tanımının bir kopyasını oluşturur ve bir kaynak grubuna atar.
+Bu tanım, eşleştirilmiş **Denetim** tanımı da atanmaksızın düzgün çalışmayacak.
 
 ```azurepowershell-interactive
 # Create the policy definition (Subscription scope)
@@ -233,17 +230,17 @@ Betikleri dağıtmak ve kaldırmak için aşağıdaki komutları kullanın. Aşa
 
 | Komut | Notlar |
 |---|---|
-| [Yeni AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Azure İlkesi girişim oluşturur. |
-| [Yeni AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Azure İlkesi tanım oluşturur. |
+| [New-AzPolicySetDefinition](/powershell/module/az.resources/New-AzPolicySetDefinition) | Azure Ilke girişimi oluşturur. |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-AzPolicyDefinition) | Bir Azure Ilke tanımı oluşturur. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-AzResourceGroup) | Tek bir kaynak grubunu alır. |
-| [Yeni AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Yeni bir Azure İlkesi ataması için bir girişim veya tanımını oluşturur. |
-| [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Mevcut bir rol ataması, belirli sorumlusuna sağlar. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-AzPolicyAssignment) | Bir girişim veya tanım için yeni bir Azure Ilke ataması oluşturur. |
+| [New-AzRoleAssignment](/powershell/module/az.resources/New-AzRoleAssignment) | Belirli bir sorumlu için var olan bir rol atamasını sağlar. |
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-AzPolicyAssignment) | Var olan bir Azure İlkesi atamasını kaldırır. |
-| [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Girişim kaldırır. |
+| [Remove-AzPolicySetDefinition](/powershell/module/az.resources/Remove-AzPolicySetDefinition) | Bir girişimi kaldırır. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-AzPolicyDefinition) | Bir tanımı kaldırır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Gözden geçirme ek [Azure ilkesi örnekleri](index.md).
-- Daha fazla bilgi edinin [Azure İlkesi Konuk Yapılandırması](../concepts/guest-configuration.md).
-- Gözden geçirme [Azure İlkesi tanım yapısı](../concepts/definition-structure.md).
+- Ek [Azure ilkesi örneklerini](index.md)gözden geçirin.
+- [Azure Ilkesi Konuk yapılandırması](../concepts/guest-configuration.md)hakkında daha fazla bilgi edinin.
+- [Azure ilke tanımı yapısını](../concepts/definition-structure.md)gözden geçirin.

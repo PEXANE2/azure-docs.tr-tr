@@ -7,14 +7,14 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 4d371026b932a0870798a32b3102102836962b78
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203947"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981218"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Hızlı Başlangıç: Python ile Blobları karşıya yükleme, indirme ve listeleme
+# <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Hızlı Başlangıç: Python ile blobları karşıya yükleme, indirme ve listeleme
 
 Bu hızlı başlangıçta, Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Python 'u kullanırsınız. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri dahil olmak üzere büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Azure depolama 'daki Bloblar dosya paylaşımlarından, şema-daha seyrek tablolardan ve ileti kuyruklarından farklıdır.  Daha fazla bilgi için bkz. [Azure depolama 'Ya giriş](/azure/storage/common/storage-introduction).
 
@@ -50,7 +50,7 @@ Uygulamada, `BlockBlobService` nesnesi oluşturmak için depolama hesabı adın�
 
 1. IDE'nizdeki Çözüm Gezgini'nde *example.py* dosyasını açın.
 
-1. `accountname` Ve`accountkey` değerlerini depolama hesabı adınızla ve anahtarınızla değiştirin:
+1. @No__t-0 ve `accountkey` değerlerini depolama hesabı adınızla ve anahtarınızla değiştirin:
 
     ```python
     block_blob_service = BlockBlobService(
@@ -96,8 +96,8 @@ Uygulamada, `BlockBlobService` nesnesi oluşturmak için depolama hesabı adın�
 
 1. Devam etmeden önce *Belgeler* klasörünüze gidin ve iki dosyayı kontrol edin.
 
-    * *QuickStart_\<evrensel-benzersiz-tanımlayıcı\>*
-    * *QuickStart_\<evrensel-benzersiz-tanımlayıcı\>_indirildi*
+    * *QuickStart_ @ no__t-1evrensel-Unique-Identifier @ no__t-2*
+    * *QuickStart_ @ no__t-1evrensel-Unique-Identifier @ no__t-2_INDIRILEN*
 
 1. Dosyaları açarak aynı olduklarını görebilirsiniz.
 
@@ -111,7 +111,7 @@ Artık örnek dosyanın işlevini gördüğünüze göre, koda göz atmak için 
 
 ### <a name="get-references-to-the-storage-objects"></a>Depolama nesneleriyle ilgili başvuruları alma
 
-Bu bölümde nesne örneği ve yeni bir kapsayıcı oluşturacak ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarlayacaksınız. Kapsayıcıyı `quickstartblobs`çağıracaksınız. 
+Bu bölümde nesne örneği ve yeni bir kapsayıcı oluşturacak ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarlayacaksınız. @No__t-0 kapsayıcısını çağıracaksınız. 
 
 ```python
 # Create the BlockBlockService that the system uses to call the Blob service for the storage account.
@@ -140,11 +140,11 @@ Bulut Blobu kapsayıcınız olduktan sonra, ilgilendiğiniz bloba işaret eden *
 
 ### <a name="upload-blobs-to-the-container"></a>Blobları kapsayıcıya yükleme
 
-Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. Blok bloblarının boyutu 4,7 TB'yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Bir dosyaya yazmak ve daha sonra daha fazla bilgi eklemeye devam etmek istediğinizde, günlüğe kaydetme için ekleme bloblarını kullanabilirsiniz. Sayfa Blobları birincil olarak hizmet sanal makineleri (IaaS VM 'Ler) olan sanal sabit disk (VHD) dosyaları için kullanılır. Blok blobları, en sık kullanılan bloblardır. Bu hızlı başlangıç blok bloblarını kullanır.
+Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. Blok bloblarının boyutu 4,7 TB’yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Bir dosyaya yazmak ve daha sonra daha fazla bilgi eklemeye devam etmek istediğinizde, günlüğe kaydetme için ekleme bloblarını kullanabilirsiniz. Sayfa Blobları birincil olarak hizmet sanal makineleri (IaaS VM 'Ler) olan sanal sabit disk (VHD) dosyaları için kullanılır. Blok blobları, en sık kullanılan bloblardır. Bu hızlı başlangıç blok bloblarını kullanır.
 
 Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Sonra, dosyayı belirtilen yola `create_blob_from_path` yöntemiyle yükleyebilirsiniz. 
 
-Örnek kod, sistemin karşıya yükleme ve indirme için kullandığı yerel bir dosya oluşturur, dosyayı *full_path_to_file* olarak ve BLOB adını *local_file_name*olarak depolar. Bu örnek, dosyayı adlı `quickstartblobs`kapsayıcıya yükler:
+Örnek kod, sistemin karşıya yükleme ve indirme için kullandığı yerel bir dosya oluşturur, dosyayı *full_path_to_file* olarak ve BLOB adını *local_file_name*olarak depolar. Bu örnek, dosyayı `quickstartblobs` adlı kapsayıcınıza yükler:
 
 ```python
 # Create a file in Documents to test the upload and download.
@@ -169,7 +169,7 @@ Blob depolamayla kullanabileceğiniz çeşitli karşıya yükleme yöntemleri va
 
 ### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
-Aşağıdaki kod, `list_blobs` yöntemi için `generator` bir oluşturur. Kod, kapsayıcıdaki Blobların listesi boyunca döngü sağlar ve adlarını konsola yazdırır.
+Aşağıdaki kod, `list_blobs` yöntemi için `generator` oluşturur. Kod, kapsayıcıdaki Blobların listesi boyunca döngü sağlar ve adlarını konsola yazdırır.
 
 ```python
 # List the blobs in the container.
@@ -182,8 +182,8 @@ for blob in generator:
 ### <a name="download-the-blobs"></a>Blobları indirme
 
 
-`get_blob_to_path` Yöntemini kullanarak Blobları yerel diskinize indirin.
-Aşağıdaki kod, daha önce karşıya yüklediğiniz blobu indirir. Sistem, yerel diskinizde her iki dosyayı da görebilmeniz için blob adına *_Indirilen* ekler. "
+@No__t-0 yöntemini kullanarak Blobları yerel diskinize indirin.
+Aşağıdaki kod, daha önce karşıya yüklediğiniz blobu indirir. Sistem, yerel diskinizde her iki dosyayı da görebilmeniz için blob adına *_Indirilen* ekler.
 
 ```python
 # Download the blob(s).

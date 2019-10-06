@@ -6,15 +6,14 @@ ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 225f5cfe36daaafb7f6ab5d64e77c626e52edaac
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: f4dc13717b65a53b90a68ac48a2281687c157edf
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338187"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978569"
 ---
-# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı Başlangıç: Portalda bir şema tanımlama ve atama
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı başlangıç: portalda bir şema tanımlama ve atama
 
 Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonları, ilkesi, güvenliği ve daha fazlasını temel alan yeniden kullanılabilir ve hızlı dağıtılabilir yapılandırma geliştirmek için ortak desenler tanımlayabilirsiniz. Bu öğreticide, kuruluşunuzda şema oluşturma, yayımlama ve atama ile ilgili genel görevlerden bazılarını yapmak için Azure şemaları kullanmayı öğreneceksiniz. Bu görevler şunları içerir:
 
@@ -28,7 +27,7 @@ Planlar oluşturmayı ve atamayı öğrendikçe, Azure Resource Manager şablonl
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
-## <a name="create-a-blueprint"></a>Şema oluşturun
+## <a name="create-a-blueprint"></a>Şema oluşturma
 
 Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumdaki kaynaklardan bir şema oluşturmaktır. Bu örnekte, abonelik için rol ve ilke atamalarını yapılandırmak üzere **myblueprint** adlı yeni bir şema oluşturun. Ardından yeni bir kaynak grubu ekleyin ve yeni kaynak grubunda bir Kaynak Yöneticisi şablonu ve rol ataması oluşturun.
 
@@ -44,7 +43,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
 1. **Tanım konumu** kutusunda, sağdaki üç noktayı seçin, şemayı kaydetmek istediğiniz [yönetim grubunu](../management-groups/overview.md) veya aboneliği seçin ve **Seç**' i seçin.
 
-1. Bilgilerin doğru olduğundan emin olun. **Blueprint adı** ve **tanım konumu** alanları daha sonra değiştirilemez. Sonra **Ileri ' yi seçin: Sayfanın alt kısmındaki yapılar @ no__t-0 veya sayfanın üst kısmındaki **yapılar** sekmesi.
+1. Bilgilerin doğru olduğundan emin olun. **Blueprint adı** ve **tanım konumu** alanları daha sonra değiştirilemez. Ardından Ileri: sayfanın en altındaki **yapıtlar** ' ı veya sayfanın en üstündeki **yapılar** sekmesini seçin.
 
 1. Abonelik düzeyinde bir rol ataması ekleyin:
 
@@ -168,9 +167,9 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
 1. Planlar listesinde, daha önce oluşturduğunuz birine sağ tıklayın ve şemayı **Düzenle**' yi seçin.
 
-1. **Şema açıklamasında**, şema ve onu oluşturan yapıtlar hakkında bazı bilgiler sağlayın. Bu durumda, şöyle bir şey girin: **Bu şema, abonelik üzerinde etiket ilkesi ve rol atamasını belirler, bir ResourceGroup oluşturur ve bu ResourceGroup öğesine bir kaynak şablonu ve rol ataması dağıtır.**
+1. **Şema açıklamasında**, şema ve onu oluşturan yapıtlar hakkında bazı bilgiler sağlayın. Bu durumda, şöyle bir şey girin: **Bu şema, abonelik üzerinde etiket ilkesi ve rol atamasını ayarlar, bir resourcegroup oluşturur ve bu resourcegroup 'e bir kaynak şablonu ve rol ataması dağıtır.**
 
-1. @No__t seçin-0Next: Sayfanın alt kısmındaki yapılar @ no__t-0 veya sayfanın üst kısmındaki **yapılar** sekmesi.
+1. Ileri ' yi seçin: sayfanın en altındaki **yapıtlar** veya sayfanın en üstündeki **yapılar** sekmesi.
 
 1. Kaynak grubunun altına bir rol ataması ekleyin:
 
@@ -247,7 +246,7 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
 
 1. **Yönetilen kimlik**altında, varsayılan olarak **atanmış sistem**' i bırakın.
 
-1. Abonelik düzeyi rol ataması için ** [Kullanıcı grubu veya uygulama adı]: Katkıda bulunan @ no__t-0, bir Kullanıcı, uygulama veya grup arayın ve seçin.
+1. Abonelik düzeyinde rol ataması **[Kullanıcı grubu veya uygulama adı]:Katkıda bulunan** için bir kullanıcı, uygulama veya grup arayıp seçin.
 
 1. Abonelik düzeyi ilke ataması için, **etiket adı** ' nı **costcenter** olarak ayarlayın ve bu **değeri** **contoso.**
 
@@ -278,7 +277,7 @@ Bir şema bir veya daha fazla aboneliğe atandığında iki şey gerçekleşir:
 
 1. **Blueprint atama** sayfasında, tüm yapıtların başarıyla dağıtıldığını ve dağıtım sırasında hata olmadığını doğrulayın. Hata oluştuysa, nelerin yanlış olduğunu belirlemek için bkz. [sorun giderme şemaları](./troubleshoot/general.md) .
 
-## <a name="unassign-a-blueprint"></a>Şema atamasını kaldırma
+## <a name="unassign-a-blueprint"></a>Şemanın atamasını kaldırma
 
 Artık bir şema ataması gerekmiyorsa, aboneliği bir abonelikten kaldırın. Şema, güncelleştirilmiş desenler, ilkeler ve tasarımlarla daha yeni bir şema ile değiştirilmiş olabilir. Bir şema kaldırıldığında o şemanın bir parçası olarak atanan yapıtlar geride kalır. Şema atamasını kaldırmak için aşağıdaki adımları izleyin:
 
@@ -288,7 +287,7 @@ Artık bir şema ataması gerekmiyorsa, aboneliği bir abonelikten kaldırın. �
 
 1. Onay iletisini okuyun ve **Tamam**' ı seçin.
 
-## <a name="delete-a-blueprint"></a>Şema silme
+## <a name="delete-a-blueprint"></a>Şemayı silme
 
 1. Soldaki sayfadan **Blueprint tanımlarını** seçin.
 

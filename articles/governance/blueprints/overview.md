@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146110"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981704"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure şemaları hizmetine genel bakış
 
@@ -52,9 +51,9 @@ Bir ilke, şema tanımındaki birçok _yapıtlardan_ biri olarak eklenebilir. Ş
 
 Şemalar, _yapıtlardan_ meydana gelir. Şu an için aşağıdaki kaynaklar şemalarda yapıtlar olarak kullanılabilir:
 
-|Resource  | Hiyerarşi seçenekleri| Açıklama  |
+|Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
 |---------|---------|---------|
-|Kaynak Grupları | Subscription | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz yapıda düzenlemenizi sağlar ve dahil olan ilke ve rol ataması yapıtlarına ek olarak Azure Resource Manager şablonları için kapsam sınırlayıcı olarak görev yapar. |
+|Kaynak Grupları | Abonelik | Şema içindeki diğer yapıtlar tarafından kullanılacak yeni bir kaynak grubu oluşturur.  Bu yer tutucu kaynak grupları, kaynakları tam olarak istediğiniz yapıda düzenlemenizi sağlar ve dahil olan ilke ve rol ataması yapıtlarına ek olarak Azure Resource Manager şablonları için kapsam sınırlayıcı olarak görev yapar. |
 |Azure Resource Manager şablonu | Abonelik, Kaynak Grubu | Şablonlar, karmaşık ortamlar oluşturmak için kullanılır. Örnek ortamlar: SharePoint grubu, Azure Otomasyonu Durum Yapılandırması veya Log Analytics çalışma alanı. |
 |İlke Ataması | Abonelik, Kaynak Grubu | Bir ilkenin veya girişimin, şemanın atanmış olduğu aboneliğe atanmasını sağlar. İlke veya girişim, şema tanım konumunun kapsamında olmalıdır. İlke veya girişimde parametre varsa bu parametreler şema oluşturma veya şema ataması sırasında atanır. |
 |Rol Ataması | Abonelik, Kaynak Grubu | Kaynaklarınıza her zaman doğru kişilerin doğru şekilde erişmesini sağlamak için var olan bir kullanıcıyı veya grubu yerleşik role ekleyin. Rol atamaları aboneliğin tamamı için tanımlanabilir veya şemada bulunan belirli bir kaynak grubuna yerleştirilebilir. |
@@ -124,12 +123,12 @@ Bu yerleşik roller güvenlik gereksinimlerinize uygun değilse [özel rol](../.
 
 Belirli alanlar için aşağıdaki sınırlamalar mevcuttur:
 
-|Object|Alan|İzin verilen karakterler|En çok, Uzunluk|
+|Nesne|Alan|İzin verilen karakterler|En çok, Uzunluk|
 |-|-|-|-|
-|Blueprint|Name|harfler, rakamlar, tireler ve noktalar|48|
-|Blueprint|Version|harfler, rakamlar, tireler ve noktalar|20|
-|Şema ataması|Name|harfler, rakamlar, tireler ve noktalar|90|
-|Blueprint yapıtı|Name|harfler, rakamlar, tireler ve noktalar|48|
+|Şema|Adı|harfler, rakamlar, tireler ve noktalar|48|
+|Şema|Sürüm|harfler, rakamlar, tireler ve noktalar|20|
+|Şema ataması|Adı|harfler, rakamlar, tireler ve noktalar|90|
+|Blueprint yapıtı|Adı|harfler, rakamlar, tireler ve noktalar|48|
 
 ## <a name="video-overview"></a>Videoya genel bakış
 

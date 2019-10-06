@@ -14,21 +14,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: eb5de6bf42769e7fd04782fc52d93764d1d7a3d6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e341cc5beeb8e8362a848bb1e208ddf1dc773978
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093919"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976794"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry ile Azure’ı tümleştirme
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) , bulut sağlayıcılarının IaaS platformunun en üstünde çalışan bir PaaS platformudur. Bulut sağlayıcıları genelinde tutarlı uygulama dağıtım deneyimi sağlar. Ayrıca kurumsal sınıf HA, ölçeklenebilirlik ve maliyet tasarrufları ile çeşitli Azure hizmetleriyle de tümleştirilebilir.
-[Cloud Foundry 6 alt sistemi](https://docs.cloudfoundry.org/concepts/architecture/)vardır ve bu da aşağıdakiler dahil olmak üzere çevrimiçi olarak ölçeklendirilebilir: Yönlendirme, kimlik doğrulama, uygulama yaşam döngüsü yönetimi, hizmet yönetimi, mesajlaşma ve Izleme. Alt sistemlerin her biri için Cloud Foundry, Azure hizmeti 'ni kullanacak şekilde yapılandırabilirsiniz. 
+[Cloud Foundry 6 alt sistemi](https://docs.cloudfoundry.org/concepts/architecture/)vardır; yönlendirme, kimlik doğrulama, uygulama yaşam döngüsü yönetimi, hizmet yönetimi, mesajlaşma ve izleme dahil olmak üzere çevrimiçi olarak ölçeklenebilir. Alt sistemlerin her biri için Cloud Foundry, Azure hizmeti 'ni kullanacak şekilde yapılandırabilirsiniz. 
 
 ![Azure tümleştirme mimarisinde Cloud Foundry](media/CFOnAzureEcosystem-colored.png)
 
-## <a name="1-high-availability-and-scalability"></a>1. Yüksek kullanılabilirlik ve ölçeklenebilirlik
+## <a name="1-high-availability-and-scalability"></a>1. yüksek kullanılabilirlik ve ölçeklenebilirlik
 ### <a name="managed-disk"></a>Yönetilen disk
 Bosh, disk oluşturma ve silme yordamları için Azure MPE 'yi (bulut sağlayıcısı arabirimi) kullanır. Varsayılan olarak, yönetilmeyen diskler kullanılır. Müşterinin el ile depolama hesapları oluşturmasını ve ardından CF bildirim dosyalarındaki hesapları yapılandırmasını gerektirir. Bunun nedeni, depolama hesabı başına disk sayısı kısıtlamasıdır.
 Artık [yönetilen disk](https://azure.microsoft.com/services/managed-disks/) kullanılabilir, sanal makineler için yönetilen güvenli ve güvenilir disk depolama alanı sunar. Müşterinin artık ölçek ve HA için depolama hesabıyla uğraşmak zorunda değildir. Azure diskleri otomatik olarak düzenler. Yeni veya mevcut bir dağıtım olup olmadığı için Azure MPE, bir CF dağıtımı sırasında yönetilen diskin oluşturulmasını veya geçirilmesini işleymeyecektir. PCF 1,11 ile desteklenir. Ayrıca, başvuru için açık kaynaklı Cloud Foundry [yönetilen disk kılavuzunu](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/managed-disks) inceleyebilirsiniz. 
@@ -39,7 +39,7 @@ Azure kullanılabilirlik bölgesi, 2 + veri merkezlerine bir VM kümesi yerleşt
 > [!NOTE] 
 > Azure kullanılabilirlik bölgesi henüz tüm bölgelere sunulmaz, [desteklenen bölgelerin listesi için](https://docs.microsoft.com/azure/availability-zones/az-overview)en son duyuruyu denetleyin. Açık kaynak Cloud Foundry için, [açık kaynak Cloud Foundry Kılavuzu Için Azure kullanılabilirlik bölgesi](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone)' ne bakın.
 
-## <a name="2-network-routing"></a>2. Ağ yönlendirme
+## <a name="2-network-routing"></a>2. ağ yönlendirme
 Varsayılan olarak, Azure temel yük dengeleyici, gelen CF API/uygulama istekleri için kullanılır ve bunları Gorulara ileterek. Diego bey, MySQL, ERT gibi CF bileşenleri, HA trafiğini dengelemek için yük dengeleyiciyi de kullanabilir. Azure, tam olarak yönetilen bir Yük Dengeleme çözümleri kümesi de sağlar. TLS sonlandırmasını ("SSL boşaltması") veya HTTP/HTTPS isteği uygulama katmanı işleme için arıyorsanız, Application Gateway göz önünde bulundurun. Katman 4 ' te yüksek kullanılabilirlik ve ölçeklenebilirlik yük dengelemesi için standart yük dengeleyiciyi göz önünde bulundurun.
 ### <a name="azure-application-gateway-"></a>Azure Application Gateway *
 [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) , SSL boşaltma, uçtan uca SSL, Web uygulaması güvenlik duvarı, tanımlama bilgisi tabanlı oturum benzeşimi ve daha fazlasını içeren çeşitli katman 7 yük dengeleme özellikleri sunar. [Açık kaynak Cloud Foundry Application Gateway yapılandırabilirsiniz](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). PCF için, POC testi için [pcf 2,1 sürüm notlarına](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) bakın.
@@ -47,7 +47,7 @@ Varsayılan olarak, Azure temel yük dengeleyici, gelen CF API/uygulama istekler
 ### <a name="azure-standard-load-balancer-"></a>Azure Standart Load Balancer *
 Azure Load Balancer katman 4 yük dengeleyicidir. Trafiği, yük dengeli bir küme içindeki hizmet örnekleri arasında dağıtmak için kullanılır. Standart sürüm, temel sürümün üstünde [Gelişmiş Özellikler](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) sağlar. Örneğin 1. Arka uç havuzu en yüksek sınırı 100 ' den 1000 VM 'ye yükseltilir.  2. Uç noktalar artık tek kullanılabilirlik kümesi yerine birden çok kullanılabilirlik kümesini destekler.  3. HA bağlantı noktaları, daha zengin izleme verileri vb. gibi ek özellikler. Azure kullanılabilirlik bölgesine taşındıysanız standart yük dengeleyici gereklidir. Yeni bir dağıtım için Azure Standart Load Balancer ile başlamanız önerilir. 
 
-## <a name="3-authentication"></a>3. Authentication 
+## <a name="3-authentication"></a>3. kimlik doğrulaması 
 [Cloud Foundry Kullanıcı hesabı ve kimlik doğrulaması](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) , CF ve çeşitli bileşenleri için merkezi kimlik yönetimi hizmetidir. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) , Microsoft 'un çok kiracılı, bulut tabanlı dizin ve kimlik yönetimi hizmetidir. Varsayılan olarak, Cloud Foundry kimlik doğrulaması için UAA kullanılır. Ayrıca, UAA, gelişmiş bir seçenek olarak Azure AD 'yi dış kullanıcı deposu olarak da destekler. Azure AD kullanıcıları, Cloud Foundry hesabı olmadan LDAP kimliklerini kullanarak Cloud Foundry erişebilir. [PCF 'de UAA Için Azure AD 'yi yapılandırmak](https://docs.pivotal.io/p-identity/1-6/azure/index.html)için aşağıdaki adımları izleyin.
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Cloud Foundry çalışma zamanı sistemi için veri depolama
@@ -65,9 +65,9 @@ Kullanıcı hesabı ve kimlik doğrulaması için veritabanı. Kullanıcı kimli
 Varsayılan olarak, bir yerel sistem veritabanı (MySQL) kullanılabilir. HA ve ölçeklendirmek için Azure Managed MySQL veya PostgreSQL hizmetlerinden yararlanın. [CCDB, UAADB ve açık kaynaklı Cloud Foundry diğer sistem veritabanları Için Azure MySQL/PostgreSQL etkinleştirme](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/configure-cf-external-databases-using-azure-mysql-postgres-service)yönergesi aşağıda verilmiştir.
 
 ## <a name="5-open-service-broker"></a>5. Hizmet Aracısı açın
-Azure Hizmet Aracısı, uygulamanın Azure Hizmetlerine erişimini yönetmek için tutarlı bir arabirim sunar. [Azure projesi için yeni açık hizmet Aracısı](https://github.com/Azure/open-service-broker-azure) , Hizmetleri Cloud Foundry, OpenShift ve Kubernetes 'te uygulamalara sunmaya yönelik tek ve basit bir yol sağlar. PCF üzerindeki dağıtım yönergeleri için bkz. [PCF Için Azure açık hizmet Aracısı](https://network.pivotal.io/products/azure-open-service-broker-pcf/) .
+Azure Hizmet Aracısı, uygulamanın Azure Hizmetlerine erişimini yönetmek için tutarlı bir arabirim sunar. [Azure projesi için yeni açık hizmet Aracısı](https://github.com/Azure/open-service-broker-azure) , Hizmetleri Cloud Foundry, OpenShift ve Kubernetes 'te uygulamalara sunmaya yönelik tek ve basit bir yol sağlar. PCF üzerindeki dağıtım yönergeleri için bkz. [PCF Için Azure açık hizmet Aracısı](https://pivotal.io/platform/services-marketplace/data-management/microsoft-azure) .
 
-## <a name="6-metrics-and-logging"></a>6. Ölçümler ve günlüğe kaydetme
+## <a name="6-metrics-and-logging"></a>6. ölçümler ve günlüğe kaydetme
 Azure Log Analytics başlık, [Cloud Foundry loggregator fire'tan](https://docs.cloudfoundry.org/loggregator/architecture.html) [Azure izleyici günlüklerine](https://azure.microsoft.com/services/log-analytics/)olan ölçümleri ileten bir Cloud Foundry bileşenidir. Başlık sayesinde, CF sistem durumu ve performans ölçümlerinizi birden çok dağıtımda toplayabilir, görüntüleyebilir ve çözümleyebilirsiniz.
 Azure Log Analytics başlığı 'nı hem açık kaynak hem de Özet Cloud Foundry ortamına dağıtmayı öğrenmek için [buraya](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) tıklayın ve sonra Azure izleyici günlükleri konsolundan verilere erişin. 
 > [!NOTE]
@@ -75,7 +75,7 @@ Azure Log Analytics başlığı 'nı hem açık kaynak hem de Özet Cloud Foundr
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="7-cost-saving"></a>7. Maliyet tasarrufu
+## <a name="7-cost-saving"></a>7. maliyet kaydetme
 ### <a name="cost-saving-for-devtest-environments"></a>Geliştirme ve test ortamları için maliyet tasarrufu
 #### <a name="b-series-"></a>B Serisi: *
 F ve D VM Serisi, Özet Cloud Foundry üretim ortamı için sıklıkla önerilse de yeni "Burstable" [B serisi](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) yeni seçenekleri getirir. B serisi Burstable VM 'Ler, Web sunucuları, küçük veritabanları ve geliştirme ve test ortamları gibi CPU 'nun tam performansına gerek olmayan iş yükleri için idealdir. Bu iş yükleri genellikle ani performans gereksinimlerine sahiptir. $0.012/Hour (B1) $0,05/Saat (F1) ile karşılaştırıldığında, Ayrıntılar için [VM boyutlarının](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general) tam listesine ve [fiyatlarına](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) bakın. 

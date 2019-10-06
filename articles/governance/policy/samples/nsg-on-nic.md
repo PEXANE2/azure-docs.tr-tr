@@ -1,20 +1,19 @@
 ---
-title: Örnek - NSG her NIC üzerinde x
-description: Bu örnek ilke tanımı, belirli bir ağ güvenlik grubu ile her sanal ağ arabirimi kullanılır gerektirir.
+title: Her NIC 'de örnek-NSG x
+description: Bu örnek ilke tanımı, her sanal ağ arabirimiyle belirli bir ağ güvenlik grubunun kullanılmasını gerektirir.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8880b23933b5a32c4c829d429ddc032c1c2ae057
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e529ce3dbb54a7ac7422d9c6dd6b727730d641bb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60536976"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981349"
 ---
-# <a name="sample---network-security-group-x-on-every-nic"></a>Örnek - her NIC üzerinde ağ güvenlik grubu X
+# <a name="sample---network-security-group-x-on-every-nic"></a>Her NIC üzerinde örnek ağ güvenlik grubu X
 
 Bu ilke, her sanal ağ arabirimiyle belirli bir ağ güvenlik grubunun kullanılmasını gerektirir. Kullanılacak ağ güvenlik grubunun kimliğini belirtirsiniz.
 
@@ -28,7 +27,7 @@ Bu ilke, her sanal ağ arabirimiyle belirli bir ağ güvenlik grubunun kullanıl
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![İlke örneği Azure'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fenforce-nsg-on-nic%2Fazurepolicy.json)
+[![ Ilke örneğini Azure 'a dağıtın](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fenforce-nsg-on-nic%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

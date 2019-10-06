@@ -1,18 +1,17 @@
 ---
-title: Başlatıcı sorgu örnekleri
+title: Başlangıç sorgu örnekleri
 description: Kaynakları sayma, kaynakları sıralama veya belirli bir etiket gibi bazı başlangıç sorgularını çalıştırmak için Azure Kaynak Grafiği ' ni kullanın.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 688c591cbe94c69c73779843011cb24c3d2fd4cf
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 14bac2299505214b8b087946222c5560a9d90efd
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241089"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976859"
 ---
 # <a name="starter-resource-graph-queries"></a>Başlangıç Kaynak Grafiği sorguları
 
@@ -56,7 +55,7 @@ az graph query -q "summarize count()"
 Search-AzGraph -Query "summarize count()"
 ```
 
-## <a name="a-namelist-resourceslist-resources-sorted-by-name"></a><a name="list-resources"/>Ada göre sıralanan kaynakları Listele
+## <a name="a-namelist-resourceslist-resources-sorted-by-name"></a>ada göre sıralanmış <a name="list-resources"/> liste kaynağı
 
 Bu sorgu herhangi bir türdeki kaynakların yalnızca **name**, **type** ve **location** özelliklerini döndürür. `order by` kullanarak özellikleri **name** özelliğine göre artan (`asc`) düzende sıralar.
 
@@ -91,7 +90,7 @@ az graph query -q "project name, location, type| where type =~ 'Microsoft.Comput
 Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Compute/virtualMachines' | order by name desc"
 ```
 
-## <a name="a-nameshow-sortedshow-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted"/>Ada ve işletim sistemi türlerine göre ilk beş sanal makineyi göster
+## <a name="a-nameshow-sortedshow-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted"/>Ilk beş sanal makineyi ada göre ve işletim sistemi türlerine göre göster
 
 Bu sorgu `top`’i yalnızca ada göre sıralanmış beş eşleşen kaydı almak için kullanır. Azure kaynağının türü `Microsoft.Compute/virtualMachines`’dir. `project`, Azure Kaynak Grafiği’ne hangi özelliklerin dahil edileceğini bildirir.
 
@@ -109,7 +108,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project n
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project name, properties.storageProfile.osDisk.osType | top 5 by name desc"
 ```
 
-## <a name="a-namecount-oscount-virtual-machines-by-os-type"></a><a name="count-os"/>Sanal makineleri işletim sistemi türüne göre say
+## <a name="a-namecount-oscount-virtual-machines-by-os-type"></a>@no__t-işletim sistemi türüne göre sanal makine sayısı
 
 Bir önceki sorguyu oluşturmada, hâlâ `Microsoft.Compute/virtualMachines` türündeki Azure kaynaklarına göre sınırlandırıyoruz, ancak geri gönderilen kayıtların sayısını sınırlandırmıyoruz.
 Bunu yerine, değerleri (bu örnekte `properties.storageProfile.osDisk.osType`) özelliğe göre gruplandırma ve toplamayı tanımlamak için `summarize` ve `count()` kullandık. Bu dizenin tam nesnede nasıl göründüğüne ilişkin bir örnek için, bkz. [ kaynakları keşfetme - sanal makine bulma](../concepts/explore-resources.md#virtual-machine-discovery).
@@ -162,11 +161,10 @@ az graph query -q "where type contains 'storage' | distinct type"
 Search-AzGraph -Query "where type contains 'storage' | distinct type"
 ```
 
-## <a name="a-namelist-publiciplist-all-public-ip-addresses"></a><a name="list-publicip"/>Tüm genel IP adreslerini Listele
+## <a name="a-namelist-publiciplist-all-public-ip-addresses"></a>Tüm genel IP adreslerini <a name="list-publicip"/>List
 
 Önceki sorguya benzer şekilde, **publicIPAddresses** sözcüğünü içeren bir tür olan her şeyi bulun.
-Bu sorgu yalnızca **Properties. IPAddress**
-`isnotempty`' in yalnızca Properties **. IPAddress ve** `limit` en üstteki sonuçları geri döndürecek sonuçları dahil etmek için bu modele genişletilir.
+Bu sorgu yalnızca **Properties. ıpaddress @no__t-** 1 @ no__t-2 ' nin yalnızca **Properties. IPAddress**ve en üst kısımdaki sonuçları @no__t
 100. Seçtiğiniz kabuğa bağlı olarak tırnak işaretlerinin dışına çıkmanız gerekebilir.
 
 ```kusto
@@ -183,7 +181,7 @@ az graph query -q "where type contains 'publicIPAddresses' and isnotempty(proper
 Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | project properties.ipAddress | limit 100"
 ```
 
-## <a name="a-namecount-resources-by-ipcount-resources-that-have-ip-addresses-configured-by-subscription"></a><a name="count-resources-by-ip"/>Abonelik tarafından yapılandırılmış IP adreslerine sahip kaynakları say
+## <a name="a-namecount-resources-by-ipcount-resources-that-have-ip-addresses-configured-by-subscription"></a>abonelik tarafından yapılandırılan IP adreslerine sahip <a name="count-resources-by-ip"/>Count kaynakları
 
 Önceki örnek sorguyu kullanarak ve `summarize` ile `count()` ekleyerek, yapılandırılmış IP adreslerine sahip kaynakların aboneliğe göre listesini elde edebiliriz.
 
@@ -200,7 +198,7 @@ az graph query -q "where type contains 'publicIPAddresses' and isnotempty(proper
 Search-AzGraph -Query "where type contains 'publicIPAddresses' and isnotempty(properties.ipAddress) | summarize count () by subscriptionId"
 ```
 
-## <a name="a-namelist-taglist-resources-with-a-specific-tag-value"></a><a name="list-tag"/>Belirli bir etiket değerine sahip kaynakları listeleyin
+## <a name="a-namelist-taglist-resources-with-a-specific-tag-value"></a>@no__t-belirli bir etiket değerine sahip olan kaynakları-0Listeleme
 
 Sonuçları, etiket gibi Azure kaynak türünden başka özelliklere göre de sınırlandırabiliriz. Bu örnekte, Azure kaynaklarını **Dahili** değerine sahip **Ortam** etiket adıyla filtreliyoruz.
 
@@ -232,7 +230,7 @@ az graph query -q "where tags.environment=~'internal' | project name, tags"
 Search-AzGraph -Query "where tags.environment=~'internal' | project name, tags"
 ```
 
-## <a name="a-namelist-specific-taglist-all-storage-accounts-with-specific-tag-value"></a><a name="list-specific-tag"/>Belirli bir etiket değerine sahip tüm depolama hesaplarını Listele
+## <a name="a-namelist-specific-taglist-all-storage-accounts-with-specific-tag-value"></a>@no__t-belirli bir etiket değerine sahip tüm depolama hesaplarını listeleme
 
 Önceki örneğin filtre işleviyle birleştirerek Azure kaynak türünü **type** özelliğine göre filtreleyin. Bu sorgu da aramayı belirli bir etiket adına ve değerine sahip olan belirli Azure kaynağı türleriyle sınırlar.
 
@@ -254,7 +252,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 
 ## <a name="a-nameshow-aliasesshow-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases"/>Bir sanal makine kaynağı için diğer adları göster
 
-Azure [ilkesi diğer adları](../../policy/concepts/definition-structure.md#aliases) , Azure ilkesi tarafından kaynak uyumluluğunu yönetmek için kullanılır. Azure Kaynak Grafiği, bir kaynak türünün _diğer adlarını_ döndürebilir. Bu değerler, özel bir ilke tanımı oluştururken diğer adların geçerli değerlerini karşılaştırmak için yararlıdır. _Diğer adlar_ dizisi, bir sorgunun sonuçlarında varsayılan olarak sağlanmaz. Bunu `project aliases` sonuçlara açıkça eklemek için kullanın.
+Azure [ilkesi diğer adları](../../policy/concepts/definition-structure.md#aliases) , Azure ilkesi tarafından kaynak uyumluluğunu yönetmek için kullanılır. Azure Kaynak Grafiği, bir kaynak türünün _diğer adlarını_ döndürebilir. Bu değerler, özel bir ilke tanımı oluştururken diğer adların geçerli değerlerini karşılaştırmak için yararlıdır. _Diğer adlar_ dizisi, bir sorgunun sonuçlarında varsayılan olarak sağlanmaz. Sonuçlara açıkça eklemek için `project aliases` kullanın.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -270,7 +268,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 |
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
 ```
 
-## <a name="a-namedistinct-alias-valuesshow-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values"/>Belirli bir diğer ad için farklı değerleri göster
+## <a name="a-namedistinct-alias-valuesshow-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values"/>Belirli bir diğer ad için ayrı değerleri göster
 
 Diğer adların değerini tek bir kaynakta görmek faydalı olur, ancak abonelikler arasında sorgulama yapmak için Azure Kaynak grafiğinin kullanıldığı doğru değeri göstermez. Bu örnek, belirli bir diğer adın tüm değerlerine bakar ve ayrı değerleri döndürür.
 

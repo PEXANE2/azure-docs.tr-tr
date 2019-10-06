@@ -1,20 +1,19 @@
 ---
-title: Örnek - DB denetim düzeyi tehdit algılama ayarı
-description: Bu ilkeler için belirli durumda ayarlanmamışsa bu örnek ilke tanımını SQL veritabanı güvenlik uyarı ilkeleri denetler.
+title: Örnek-VERITABANı düzeyi tehdit algılama ayarını denetle
+description: Bu ilkeler belirtilen duruma ayarlanmamışsa, bu örnek ilke tanımı SQL veritabanı güvenlik uyarısı ilkelerini denetler.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8fbe687a08e36cfa9503078cbcb75ee85f43b7a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7c8c5f4530f6f34cfe94143fa03c89647369f5b7
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545634"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977539"
 ---
-# <a name="sample---audit-db-level-threat-detection-setting"></a>Örnek - DB denetim düzeyi tehdit algılama ayarı
+# <a name="sample---audit-db-level-threat-detection-setting"></a>Örnek-VERITABANı düzeyi tehdit algılama ayarını denetle
 
 Bu ilke, SQL veritabanı güvenlik uyarısı ilkeleri belirtilen duruma ayarlanmadıysa bu ilkeleri denetler. Tehdit algılamanın etkin mi devre dışı mı olduğunu gösteren bir değer belirtirsiniz.
 
@@ -28,7 +27,7 @@ Bu ilke, SQL veritabanı güvenlik uyarısı ilkeleri belirtilen duruma ayarlanm
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![İlke örneği Azure'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-sql-db-threat-detection%2Fazurepolicy.json)
+[![ Ilke örneğini Azure 'a dağıtın](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-sql-db-threat-detection%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

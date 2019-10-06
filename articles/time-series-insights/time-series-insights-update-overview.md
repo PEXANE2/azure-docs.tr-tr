@@ -1,5 +1,5 @@
 ---
-title: 'Genel Bakış: Azure Time Series Insights önizlemesi | Microsoft Docs'
+title: 'Genel Bakış: Azure Time Series Insights Önizleme | Microsoft Docs'
 description: Azure Time Series Insights önizlemeye genel bakış.
 ms.service: time-series-insights
 services: time-series-insights
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: ffa4424dd3173cf6493ec219fe92925c970ad08c
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e4a57c6d4a9034d9145058e9137759c2cea19aa6
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258318"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978665"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights Önizleme nedir?
 
@@ -37,7 +37,7 @@ IoT verileri, varlık açısından yoğun kuruluşlarda bulunan tüm endüstriye
 
 IoT verileri genellikle yalnızca, CRM veya ERP gibi birinci taraf kaynaklardan gelen ek veri girişlerinin bağlamında anlamlıdır. Girişler, hava durumu veya konum gibi üçüncü taraf veri kaynaklarından de gelir.
 
-Sonuç olarak, yalnızca işletimsel ve iş amaçları için verilerin bir bölümü kullanılır. Bu tür veriler iş raporlama ve analiz için tutarlı, kapsamlı, geçerli ve doğru bilgileri sağlar. Toplanan IoT verilerini eyleme dönüştürülebilir içgörüler halinde açmak şunları gerektirir:
+Sonuç olarak, yalnızca işletimsel ve iş amaçları için verilerin bir bölümü kullanılır. Bu veriler, iş raporlama ve analizine yönelik tutarlı, kapsamlı, güncel ve doğru bilgiler sağlar. Toplanan IoT verilerini eyleme dönüştürülebilir içgörüler halinde açmak şunları gerektirir:
 
 * Verilerin çözümlenmesi, filtreleneceği, enterpola, dönüştürülemesinde ve analiz amacıyla hazırlanması için veri işleme.
 * Verileri normalleştirerek, diğer bir deyişle verileri normalleştirmek ve anlamak için bir yapı.
@@ -45,11 +45,11 @@ Sonuç olarak, yalnızca işletimsel ve iş amaçları için verilerin bir böl�
 
 Aşağıdaki görüntüde tipik bir IoT veri akışı gösterilmektedir.
 
-  ![IOT veri akışı][1]
+  ![IoT veri akışı][1]
 
-## <a name="azure-time-series-insights-for-industrial-iot"></a>Endüstriyel IOT için Azure Time Series Insights
+## <a name="azure-time-series-insights-for-industrial-iot"></a>Endüstriyel IoT için Azure Time Series Insights
 
-Geçerli IOT yatay farklı. Müşteriler, üretim, oto ve enerji, yardımcı programları, akıllı binalar ve danışmanlık sektörlere yaymıştır. Senaryolar, verilerin şeklinin bilinmediği, geçici veri araştırması içerir. Senaryolar Ayrıca, işlem verimliliğini şema üzerinde veya açıkça modellenen verileri kapsayan işlem analizini de kapsar. Bu senaryolar genellikle yan yana bulunur ve farklı kullanım durumlarını destekler. Endüstriyel IoT kuruluşları ve bunların dijital devrimlerinin başarısına yönelik anahtar olan platform özellikleri şunlardır:
+Geçerli IoT yatay, farklı. Müşteriler, üretim, oto ve enerji, yardımcı programları, akıllı binalar ve danışmanlık sektörlere yaymıştır. Senaryolar, verilerin şeklinin bilinmediği, geçici veri araştırması içerir. Senaryolar Ayrıca, işlem verimliliğini şema üzerinde veya açıkça modellenen verileri kapsayan işlem analizini de kapsar. Bu senaryolar genellikle yan yana bulunur ve farklı kullanım durumlarını destekler. Endüstriyel IoT kuruluşları ve bunların dijital devrimlerinin başarısına yönelik anahtar olan platform özellikleri şunlardır:
 
 - Çoklu katmanlı depolama, hem sıcak hem de soğuk.
 - Zaman serisi verilerinin Decades 'i depolama olanağı.
@@ -81,7 +81,7 @@ Bu temel Endüstriyel IoT özelliklerine giriş ile Time Series Insights aşağ�
 | Diğer veri çözümleriyle sorunsuz ve sürekli tümleştirme | Time Series Insights veriler, açık kaynaklı Apache Parquet dosyalarında [depolanır](./time-series-insights-update-storage-ingress.md) . Bu diğer veri çözümleriyle tümleştirme, birinci veya üçüncü taraf, uçtan uca senaryolar için kolaydır. Bu senaryolar iş zekası, gelişmiş makine öğrenimi ve tahmine dayalı analiz bilgilerini içerir. |
 | Neredeyse gerçek zamanlı veri araştırması | [Azure Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md) Kullanıcı deneyimi, alma işlem hattı aracılığıyla tüm veri akışı için görselleştirme sağlar. Bir olay kaynağını bağlandıktan kısa süre sonra olay verilerini görüntüleyebilir, keşfedebilir ve sorgulayabilirsiniz. Bu şekilde, bir cihazın verileri beklendiği gibi yayıp yaymadığını doğrulayabilirsiniz. Ayrıca, bir IoT varlığını sistem durumu, üretkenlik ve genel verimlilik için izleyebilirsiniz. |
 | Kök nedeni analiz ve anomali algılama | [Azure Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md) , çoklu adım, kök neden analizini yürütmek ve kaydetmek için hem model hem de perspektif görünümlerini destekler. Azure Stream Analytics ile birlikte, uyarıları ve anormallikleri neredeyse gerçek zamanlı olarak algılamak için Time Series Insights kullanabilirsiniz. |
-| Time Series Insights platformunda oluşturulan özel uygulamalar | Time Series Insights [JavaScript SDK 'sını](./tutorial-explore-js-client-lib.md)destekler. SDK, zengin denetimleri ve sorguları yönelik Basitleştirilmiş erişim sağlar. Belirli iş gereksinimlerinize uyacak şekilde Time Series Insights en üstünde özel IoT uygulamaları oluşturmak için SDK 'Yı kullanın. Ayrıca, verileri özel IoT uygulamalarına yönlendirmek için doğrudan Time Series Insights [sorgu API 'lerini](./time-series-insights-update-tsq.md) de kullanabilirsiniz. |
+| Time Series Insights platformunda oluşturulan özel uygulamalar | Time Series Insights [JavaScript SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)destekler. SDK, sorgulara zengin denetimler ve Basitleştirilmiş erişim sağlar. Belirli iş gereksinimlerinize uyacak şekilde Time Series Insights en üstünde özel IoT uygulamaları oluşturmak için SDK 'Yı kullanın. Ayrıca, verileri özel IoT uygulamalarına yönlendirmek için doğrudan Time Series Insights [sorgu API 'lerini](./time-series-insights-update-tsq.md) de kullanabilirsiniz. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

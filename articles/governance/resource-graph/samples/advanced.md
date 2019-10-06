@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 33c67f77a26e2a4fc97d7f5483aad53c121e117b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 668dfc908418792c1258d112fbdfb640e85abbe2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239012"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980296"
 ---
 # <a name="advanced-resource-graph-queries"></a>Gelişmiş Kaynak Grafiği sorguları
 
@@ -70,7 +69,7 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a>Normal ifade tarafından eşleştirilen sanal makineler
 
-Bu sorgu, [normal ifadeyle](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_ olarak bilinir) eşleşen sanal makineleri arar. **Eşleşen Regex \@**  , `^Contoso(.*)[0-9]+$`eşleşecek olan Regex tanımlamanızı sağlar, yani.
+Bu sorgu, [normal ifadeyle](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_ olarak bilinir) eşleşen sanal makineleri arar. **@No__t-1 ile eşleşen Regex** , eşleştirilecek Regex tanımlamanızı sağlar, bu `^Contoso(.*)[0-9]+$` ' dir.
 Bu normal ifade tanımı şöyle açıklanmıştır:
 
 - `^` - Eşleşme dizenin başında başlamalıdır.
@@ -116,6 +115,6 @@ Search-AzGraph -Query "limit 1" -Include DisplayNames
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Başlangıç sorguları](starter.md) örnekleri
+- Bkz. [başlangıç sorguları](starter.md) örnekleri
 - [Sorgu dili](../concepts/query-language.md) hakkında daha fazla bilgi edinin
 - [Kaynakları keşfetmeyi](../concepts/explore-resources.md) öğrenin

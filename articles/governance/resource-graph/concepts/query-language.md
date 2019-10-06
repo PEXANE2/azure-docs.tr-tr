@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c6e35d688581d0839e12806117e63c7d71fbc459
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 54bb0b4f21752b91ceb9d4004c153ff4d95006aa
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231519"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976771"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Kaynak Grafiği sorgu dilini anlama
 
@@ -35,7 +34,7 @@ Kaynak grafiğinde desteklenen tablolu işleçlerin listesi aşağıda verilmiş
 - [örnek-benzersiz](/azure/kusto/query/sampledistinctoperator)
 - [sıralama ölçütü](/azure/kusto/query/sortoperator)
 - [ölçütü](/azure/kusto/query/summarizeoperator)
-- [take](/azure/kusto/query/takeoperator)
+- [almanız](/azure/kusto/query/takeoperator)
 - [Sayfanın Üstü](/azure/kusto/query/topoperator)
 - [üst iç içe](/azure/kusto/query/topnestedoperator)
 - [en büyük-hitters](/azure/kusto/query/tophittersoperator)
@@ -50,13 +49,13 @@ Kaynak grafiğinde desteklenen işlevlerin listesi aşağıdadır:
 - [strcat ()](/azure/kusto/query/strcatfunction)
 - [isnotempty ()](/azure/kusto/query/isnotemptyfunction)
 - [ToString ()](/azure/kusto/query/tostringfunction)
-- [zip()](/azure/kusto/query/zipfunction)
+- [zip ()](/azure/kusto/query/zipfunction)
 
 ## <a name="escape-characters"></a>Kaçış karakterleri
 
-`.` Ya`$`da dahil olanlar gibi bazı özellik adları, sorgunun sarmalanması veya kaçışlanması ya da özellik adının yanlış yorumlanması ve beklenen sonuçları sağlamamalıdır.
+@No__t-0 veya `$` gibi bazı özellik adlarının, sorguda sarmalanması veya kaçışlanması ya da özellik adının yanlış yorumlanması ve beklenen sonuçları sağlamamalıdır.
 
-- `.`-Özellik adını şu şekilde kaydırın:`['propertyname.withaperiod']`
+- `.`-özellik adını şu şekilde kaydırın: `['propertyname.withaperiod']`
   
   OData özelliğini sarmalayan örnek sorgu _. tür_:
 
@@ -64,21 +63,21 @@ Kaynak grafiğinde desteklenen işlevlerin listesi aşağıdadır:
   where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.['odata.type']
   ```
 
-- `$`-Özellik adındaki karakteri kaçış. Kullanılan kaçış karakteri, Shell kaynak grafiğine göre çalıştırılır.
+- `$`-özellik adındaki karakteri kaçış. Kullanılan kaçış karakteri, Shell kaynak grafiğine göre çalıştırılır.
 
-  - **Bash** - `\`
+  - **Bash** -  @ no__t-2
 
-    Bash içindeki özellik  _\$türünü_ iptal eden örnek sorgu:
+    Bash içinde _\$türünde_ Özellik kaçışlayan örnek sorgu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.\$type
     ```
 
-  - **cmd** - `$` karakterden kaçmayın.
+  - **cmd** -1 karakterden kaçmayın @no__t.
 
-  - **PowerShell** - ``` ` ```
+  - **PowerShell** -  @ no__t-2
 
-    PowerShell 'deki özellik  _\$türünü_ iptal eden örnek sorgu:
+    PowerShell 'de _\$türünde_ özelliğin kaçış örnek sorgusu:
 
     ```kusto
     where type=~'Microsoft.Insights/alertRules' | project name, properties.condition.`$type

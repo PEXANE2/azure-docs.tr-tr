@@ -1,20 +1,19 @@
 ---
-title: Örnek - seyrek erişimli depolama hesapları için katmanlama Reddet
-description: Bu örnek ilke tanımı, seyrek erişimli blob depolama hesapları katman ayarlamayı kullanımını engeller.
+title: Örnek-depolama hesapları için seyrek erişimli erişimi reddetme
+description: Bu örnek ilke tanımı, BLOB depolama hesapları için seyrek erişimli erişim katmanlama kullanımını yasaklar.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 90c579871a2cc19d226f56febca17ceb5e7561b6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21ee0e62e300b5807e3a38a0834c3365ab123dad
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545306"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977247"
 ---
-# <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Örnek - seyrek erişimli depolama hesapları için katmanlama Reddet
+# <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Örnek-depolama hesapları için seyrek erişimli erişimi reddetme
 
 Bu ilke, blob depolama hesapları için seyrek erişimli depolama katmanının kullanılmasını engeller.
 
@@ -28,7 +27,7 @@ Bu ilke, blob depolama hesapları için seyrek erişimli depolama katmanının k
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![İlke örneği Azure'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-access-tier%2Fazurepolicy.json)
+[![ Ilke örneğini Azure 'a dağıtın](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fstorage-account-access-tier%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

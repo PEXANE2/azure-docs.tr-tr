@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 4cd4d89f276770cba401d7941a975fad8e49c8cd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: abf6d22f2010db9bff97c7a93354c1cf8e1e1644
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000535"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976615"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Azure Kaynak Grafiği 'ni kullanarak hatalarda sorun giderme
 
@@ -24,7 +23,7 @@ Birçok hata, Azure Kaynak Graf ile bir sorgu çalıştırılırken bir sorunun 
 
 ## <a name="general-errors"></a>Genel hatalar
 
-### <a name="toomanysubscription"></a>Senaryon Çok fazla abonelik
+### <a name="toomanysubscription"></a>Senaryo: çok fazla abonelik
 
 #### <a name="issue"></a>Sorun
 
@@ -34,7 +33,7 @@ Birçok hata, Azure Kaynak Graf ile bir sorgu çalıştırılırken bir sorunun 
 
 Azure CLı ve PowerShell yalnızca ilk 1000 aboneliğini Azure Kaynak grafiğine ilet. Azure Kaynak Grafiği REST API, üzerinde sorgu gerçekleştirmek için en fazla abonelik sayısını kabul eder.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Aboneliklerin bir alt kümesiyle 1000 abonelik sınırının altında kalmak için toplu istek istekleri. Çözüm, PowerShell 'deki **abonelik** parametresini kullanıyor.
 
@@ -61,7 +60,7 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="rest-contenttype"></a>Senaryon Desteklenmeyen Içerik türü REST üst bilgisi
+### <a name="rest-contenttype"></a>Senaryo: desteklenmeyen Içerik türü REST üst bilgisi
 
 #### <a name="issue"></a>Sorun
 
@@ -69,12 +68,12 @@ Azure Kaynak grafiğini sorgulayan müşteriler REST API bir _500_ (Iç sunucu h
 
 #### <a name="cause"></a>Nedeni
 
-Azure Kaynak Grafiği REST API yalnızca bir `Content-Type` **uygulama/JSON**'ı destekler. Bazı REST araçları veya aracıları, REST API tarafından desteklenmeyen **metin/düz**için varsayılan değer.
+Azure Kaynak Grafiği REST API yalnızca bir `Content-Type` **uygulama/JSON**destekler. Bazı REST araçları veya aracıları, REST API tarafından desteklenmeyen **metin/düz**için varsayılan değer.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
-Azure Kaynak Grafiği 'ni sorgulamak için kullanmakta olduğunuz aracın veya aracının, **Application/JSON**için yapılandırılmış REST API `Content-Type` üst bilgisine sahip olduğunu doğrulayın.
-### <a name="rest-403"></a>Senaryon Listedeki tüm abonelikler için okuma izni yok
+Azure Kaynak Grafiği 'ni sorgulamak için kullanmakta olduğunuz aracın veya aracının, **uygulama/JSON**için yapılandırılmış `Content-Type` REST API üst bilgisine sahip olduğunu doğrulayın.
+### <a name="rest-403"></a>Senaryo: listedeki tüm abonelikler için okuma izni yok
 
 #### <a name="issue"></a>Sorun
 
@@ -84,7 +83,7 @@ Azure Kaynak grafik sorgusuna sahip bir abonelik listesini açıkça geçiren m�
 
 Müşterinin tüm sağlanmış abonelikler üzerinde okuma izni yoksa, uygun güvenlik haklarının olmaması nedeniyle istek reddedilir.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Sorguyu çalıştıran müşterinin en azından okuma erişimine sahip olduğu abonelik listesine en az bir abonelik ekleyin. Daha fazla bilgi için bkz. [Azure Kaynak Grafında izinler](../overview.md#permissions-in-azure-resource-graph).
 

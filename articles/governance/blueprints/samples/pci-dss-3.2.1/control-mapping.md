@@ -7,19 +7,18 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 2ec299a79f852c553763439290b014a91d3a9414
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: fca86163cdfc8790da007a1f0f9264534b512cdd
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918594"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981497"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, Azure şemaları PCI-DSS v 3.2.1 şema örneğinin PCI-DSS v 3.2.1 denetimleriyle nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [PCI-DSS v 3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf).
 
-Aşağıdaki eşlemeler **PCI-DSS v 3.2.1:2018** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından,  **\[Preview\] Audit PCI v 3.2.1:2018 denetimlerini** bulun ve seçin ve denetim gereksinimleri yerleşik ilke girişimi ' ni desteklemek için belirli VM uzantılarını dağıtın.
+Aşağıdaki eşlemeler **PCI-DSS v 3.2.1:2018** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, **\[Preview @ no__t-2 DENETIM PCI v 3.2.1:2018 denetimleri ve belırlı VM uzantılarını, denetim gereksinimleri** yerleşik ilke girişimi ' ni destekleyecek şekilde bulun ve seçin.
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md)bakın.
@@ -35,7 +34,7 @@ Bu şema, ağ güvenlik gruplarını, izin veren kurallarla izleyen [Azure ilke]
 
 Bu şema, belirli bir cryptograph denetimi ve zayıf şifreleme ayarları kullanımını zorlayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak, ilkenizi cryptograph denetimleri ile zorlamanıza yardımcı olur. Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilkeler SQL veritabanlarında saydam veri şifrelemesi gerektirir; depolama hesaplarında eksik şifrelemeyi denetleyin ve Otomasyon hesabı değişkenleri. Ayrıca, depolama hesaplarına, Işlev uygulamalarına, WebApp, API Apps ve Redis Cache güvenli olmayan bağlantıları denetlemeye yönelik ilkeler de vardır ve şifrelenmemiş Service Fabric iletişimini denetleyebilir.
 
-- İşlev uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
+- İşlev Uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - Web uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - API uygulaması yalnızca HTTPS üzerinden erişilebilir olmalıdır
 - SQL veritabanlarındaki Saydam Veri Şifrelemesi etkinleştirilmelidir
@@ -101,12 +100,12 @@ Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı
 
 Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows VM 'Leri denetleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden VM 'lerin farkında, tüm VM Kullanıcı hesaplarının parolalarının ilkeyle uyumlu olduğundan emin olmak için düzeltici eylemler almanıza yardımcı olur.
 
-- \[Önizleme\]: Maksimum 70 gün parola yaşı olmayan Windows VM 'lerini denetleyin
-- \[Önizleme\]: Maksimum parola yaşı 70 gün olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: En az parola uzunluğu 14 karakter olan Windows VM 'lerini denetleyin
-- \[Önizleme\]: En az parola uzunluğu 14 karakter olan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: Önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerini denetleyin
-- \[Önizleme\]: Önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview @ no__t-1: maksimum parola yaşı 70 güne sahip olmayan Windows VM 'Leri denetleyin
+- \[Preview @ no__t-1: maksimum parola yaşı 70 gün olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
+- \[Preview @ no__t-1: en az parola uzunluğu 14 karakter olan Windows VM 'lerini denetleyin
+- \[Preview @ no__t-1: en az parola uzunluğu 14 karakter olan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview @ no__t-1: önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerini denetleyin
+- \[Preview @ no__t-1: önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'Leri denetlemek için gereksinimleri dağıtın
 
 ## <a name="103-and-1054-audit-generation"></a>10,3 ve 10.5.4 denetim oluşturma
 
@@ -116,7 +115,7 @@ Tanılama günlükleri, Azure kaynakları içinde gerçekleştirilen işlemlere 
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Tanılama ayarını denetle
 - SQL Server Level denetim ayarlarını denetleme
-- SQL sunucularına Denetim dağıt
+- SQL Server 'lar üzerinde denetim dağıtma
 - Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
 - Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
 

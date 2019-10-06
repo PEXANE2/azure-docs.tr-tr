@@ -6,15 +6,14 @@ ms.author: dacoulte
 ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: c12345791e62aa99bd07dde7fc44dd52d0989941
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 82c56a01d7f14f1eeae26dfa784f3545552bf6b9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979177"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981381"
 ---
-# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Öğretici: Uyumluluğu zorunlu tutmak için ilkeleri oluşturma ve yönetme
+# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme
 
 Kurumsal standartlarınıza ve hizmet düzeyi sözleşmelerinize uyumluluğu korumak için Azure'da ilkelerin nasıl oluşturulduğunu ve yönetildiğini anlamak önemlidir. Bu öğreticide, Azure İlkesi'ni kullanarak kuruluşunuz genelinde ilkeler oluşturma, atama ve yönetmeyle ilgili en yaygın görevlerden bazılarını yerine getirmeyi öğreneceksiniz; örneğin:
 
@@ -32,11 +31,11 @@ Azure İlkesi ile uyumluluğu zorlamanın ilk adımı bir ilke tanımı atamakt�
 
 1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
 
-   ![Tüm hizmetler ilkesinde arayın](../media/create-and-manage/search-policy.png)
+   ![Tüm hizmetlerde Ilke ara](../media/create-and-manage/search-policy.png)
 
 1. Azure İlkesi sayfasının sol tarafından **Atamalar**'ı seçin. Atama, belirli bir kapsamda gerçekleşmesi için atanmış olan bir ilkedir.
 
-   ![İlkeye genel bakış sayfasından atamaları seçin](../media/create-and-manage/select-assignments.png)
+   ![Ilkeye genel bakış sayfasından atamaları seçin](../media/create-and-manage/select-assignments.png)
 
 1. **İlke - Atamalar** sayfasının üst kısmından **İlke Ata**'yı seçin.
 
@@ -50,26 +49,26 @@ Azure İlkesi ile uyumluluğu zorlamanın ilk adımı bir ilke tanımı atamakt�
 
 1. **İlke tanımı** üç nokta öğesini seçerek kullanılabilen tanımların listesini açın. **Tür** değeri *Yerleşik* olan ilke tanımlarını filtreleyerek bunların tümünü görüntüleyebilir ve açıklamalarını okuyabilirsiniz.
 
-1. **SQL Server sürüm 12.0 gerektir**'i seçin. Hemen bulamıyorsanız, yazın **sql server gerektiren** Ara kutusuna ve ardından ENTER tuşuna basın veya dışında arama kutusuna tıklayın. İlke tanımını bulup seçtikten sonra **Kullanılabilen Tanımlar** sayfasının en altından **Seç**’e tıklayın.
+1. **SQL Server sürüm 12.0 gerektir**'i seçin. Hemen bulamıyorsanız, arama kutusuna **SQL Server gerektir** yazın ve ardından ENTER tuşuna basın veya arama kutusuna tıklayın. İlke tanımını bulup seçtikten sonra **Kullanılabilen Tanımlar** sayfasının en altından **Seç**’e tıklayın.
 
-   ![Bir ilke bulmak için arama filtresi kullanın.](../media/create-and-manage/select-available-definition.png)
+   ![İlkeyi bulmak için arama filtresini kullanın](../media/create-and-manage/select-available-definition.png)
 
 1. **Atama adı** otomatik olarak seçtiğiniz ilke adıyla doldurulur, ancak bunu değiştirebilirsiniz. Bu örnekte, *SQL Server sürüm 12.0 gerektir* ayarını değiştirmeyin. İsteğe bağlı bir **Açıklama** da ekleyebilirsiniz. Açıklama, bu ilke atamasıyla ilgili ayrıntıları sağlar.
-   **Tarafından atanan** açan temel alınarak otomatik olarak doldurulur. Bu alan isteğe bağlı olduğu için özel değerler girilebilir.
+   **Tarafından atanan** , oturum açan kim temel alınarak otomatik olarak doldurulur. Bu alan isteğe bağlı olduğu için özel değerler girilebilir.
 
-1. **Yönetilen Kimlik Oluşturun** seçeneğini işaretsiz bırakın. Bu kutuyu _gerekir_ işaretli olduğunda ilke veya girişim atandıktan sahip bir ilke içerir [Deployıfnotexists](../concepts/effects.md#deployifnotexists) efekt. Bu öğreticide kullanılan ilke bulunmadığından, boş bırakın. Daha fazla bilgi için [yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md) ve [düzeltme güvenliğinin işleyişi](../how-to/remediate-resources.md#how-remediation-security-works) bölümlerine bakın.
+1. **Yönetilen Kimlik Oluşturun** seçeneğini işaretsiz bırakın. Atanan ilke veya girişim, [Deployifnotexists](../concepts/effects.md#deployifnotexists) efektli bir ilke içerdiğinde bu kutu _denetlenmelidir_ . Bu öğretici için kullanılan ilke olmadığından boş bırakın. Daha fazla bilgi için [yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md) ve [düzeltme güvenliğinin işleyişi](../how-to/remediate-resources.md#how-remediation-security-works) bölümlerine bakın.
 
 1. **Ata**'ya tıklayın.
 
 ## <a name="implement-a-new-custom-policy"></a>Yeni bir özel ilke uygulama
 
-Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha fazlasını da yapabilirsiniz. Ardından, ortamınızda oluşturulan sanal makinelerin G serisinden olamayacağını doğrulayarak maliyetlerden tasarruf etmek için yeni bir özel ilke oluşturun. Bu yolla, kuruluşunuzdaki kullanıcılar G serisinden bir sanal makine oluşturmayı her denediğinde istekleri reddedilir.
+Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha fazlasını da yapabilirsiniz. Ardından, ortamınızda oluşturulan VM 'Lerin G serisinde yer aldığı doğrulayarak maliyetleri kaydetmek için yeni bir özel ilke oluşturun. Bu yolla, kuruluşunuzdaki kullanıcılar G serisinden bir sanal makine oluşturmayı her denediğinde istekleri reddedilir.
 
 1. Azure İlkesi sayfasının sol tarafındaki **Yazma** bölümünden **Tanımlar**’ı seçin.
 
-   ![Tanım Sayfası yazma grubu altında](../media/create-and-manage/definition-under-authoring.png)
+   ![Yazma grubu altındaki tanım sayfası](../media/create-and-manage/definition-under-authoring.png)
 
-1. Sayfanın üst kısmındaki **+ İlke tanımı** seçeneğini belirleyin. Bu düğme açılır **ilke tanımı** sayfası.
+1. Sayfanın üst kısmındaki **+ İlke tanımı** seçeneğini belirleyin. Bu düğme, **ilke tanımı** sayfası için açılır.
 
 1. Aşağıdaki bilgileri girin:
 
@@ -109,7 +108,7 @@ Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha
    }
    ```
 
-   *Alan* ilke kuralı özelliği şu değerlerden biri olmalıdır: Adı, türü, konum, etiketler veya bir diğer ad. Diğer adlara örnek olarak `"Microsoft.Compute/VirtualMachines/Size"` verilebilir.
+   İlke kuralındaki *field* özelliği şu değerlerden biri olmalıdır: ad, tür, konum, Etiketler veya diğer ad. Diğer adlara örnek olarak `"Microsoft.Compute/VirtualMachines/Size"` verilebilir.
 
    Diğer Azure ilkesi örneklerini görüntülemek için bkz. [Azure İlkesi örnekleri](../samples/index.md).
 
@@ -117,7 +116,7 @@ Artık bir yerleşik ilke tanımı atadığınıza göre, Azure İlkesi'yle daha
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>REST API ile ilke tanımı oluşturma
 
-Azure ilke tanımları için REST API ile bir ilke oluşturabilirsiniz. REST API, ilke tanımlarını oluşturmanıza ve silmenize, ayrıca mevcut tanımlar hakkında bilgi almanıza olanak tanır. İlke tanımı oluşturmak için aşağıdaki örneği kullanın:
+Azure Ilke tanımları için REST API bir ilke oluşturabilirsiniz. REST API, ilke tanımlarını oluşturmanıza ve silmenize, ayrıca mevcut tanımlar hakkında bilgi almanıza olanak tanır. İlke tanımı oluşturmak için aşağıdaki örneği kullanın:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
@@ -157,7 +156,7 @@ Aşağıdaki örnekte gösterilene benzer bir istek gövdesi ekleyin:
 
 ## <a name="create-a-policy-definition-with-powershell"></a>PowerShell ile ilke tanımı oluşturma
 
-PowerShell örneğine devam etmeden önce Azure PowerShell Az modülünün en son sürümünü yüklediğiniz emin olun.
+PowerShell örneğine devam etmeden önce, Azure PowerShell az Module 'ün en son sürümünü yüklediğinizden emin olun.
 
 `New-AzPolicyDefinition` cmdlet'ini kullanarak ilke tanımı oluşturabilirsiniz.
 
@@ -321,13 +320,13 @@ Yerleşik ilkeler de dahil olmak üzere tüm kullanılabilir ilke tanımlarını
 
 ## <a name="create-and-assign-an-initiative-definition"></a>Girişim tanımı oluşturma ve atama
 
-Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir hedefe ulaşabilirsiniz. Dahil edilen ilkelere uyum için atama kapsamındaki kaynakların girişim değerlendirir. Girişim tanımları hakkında daha fazla bilgi için bkz. [Azure İlkesine genel bakış](../overview.md).
+Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir hedefe ulaşabilirsiniz. Bir girişim, dahil edilen ilkelerle uyumluluk için atamanın kapsamındaki kaynakları değerlendirir. Girişim tanımları hakkında daha fazla bilgi için bkz. [Azure İlkesine genel bakış](../overview.md).
 
 ### <a name="create-an-initiative-definition"></a>Girişim tanımı oluşturma
 
 1. Azure İlkesi sayfasının sol tarafındaki **Yazma** bölümünden **Tanımlar**’ı seçin.
 
-   ![Tanımları sayfasında tanımı seçin](../media/create-and-manage/definition-under-authoring.png)
+   ![Tanımlar sayfasından tanımı seçin](../media/create-and-manage/definition-under-authoring.png)
 
 1. Sayfanın üst kısmından **+ Giriş Tanımı**'nı seçerek **Girişim Tanımı** sayfasını açın.
 
@@ -337,7 +336,7 @@ Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir
 
 1. Girişimin **Adını** ve **Açıklamasını** girin.
 
-   Bu örnekte, kaynakların ilgili ilke tanımlarıyla uyumlu olduğunu doğrular. Girişimin adını **güvenliği sağlama** ve açıklama olarak ayarlayın: **Bu girişim kaynakların güvenliğini sağlamakla ilişkili tüm ilke tanımlarını işlemek için oluşturulan**.
+   Bu örnek, kaynakların güvenli hale getirme ile ilgili ilke tanımlarıyla uyumlu olduğunu doğrular. Girişimi **Güvenliği Sağlama** olarak adlandırın ve şöyle bir açıklama yazın: **Bu girişim kaynakların güvenliğini sağlamakla ilişkili tüm ilke tanımlarını işlemek için oluşturuldu**.
 
 1. **Kategori** için mevcut seçenekler arasından seçim yapın veya yeni bir kategori oluşturun.
 
@@ -349,41 +348,41 @@ Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir
    - [Preview]: Monitor possible app Whitelisting in Security Center.
    - [Preview]: Monitor unencrypted VM Disks in Security Center.
 
-   İlke tanımı listeden seçtikten sonra bu seçeneğin altına eklenir **ilkeler ve parametreler**.
+   Listeden ilke tanımı seçildikten sonra, **ilkeler ve parametreler**altına eklenir.
 
-   ![Girişim tanımı parametreleri gözden geçir](../media/create-and-manage/initiative-definition-2.png)
+   ![Girişim tanımı parametrelerini gözden geçirin](../media/create-and-manage/initiative-definition-2.png)
 
-1. Girişim için eklenen bir ilke tanımı parametrelere sahipse, bunlar ilke adı altında gösterilen **ilkeler ve parametreler** alan. _Değer_'i, "Değer ata" (bu girişimin tüm atamaları için sabit kodlanmıştır) veya "Girişim Parametresini Kullan" (her girişim ataması sırasında ayarlanır) olarak ayarlayabilirsiniz. 'Set değeri' seçilirse sağındaki açılan _değerleri_ girerek veya değerleri seçerek sağlar. 'Girişim Parametresini Kullan' seçildiğinde ise girişim ataması sırasında ayarlanan parametreyi tanımlamanıza olanak sağlayan yeni bir **Giriş parametreleri** bölümü görüntülenir. Bu girişim parametresinde izin verilen değerler, girişim ataması sırasında ayarlanabilecek değerleri daha fazla kısıtlayabilir.
+1. Girişim öğesine eklenen bir ilke tanımı parametrelere sahipse, bunlar **ilkeler ve parametreler** alanında ilke adı altında gösterilir. _Değer_'i, "Değer ata" (bu girişimin tüm atamaları için sabit kodlanmıştır) veya "Girişim Parametresini Kullan" (her girişim ataması sırasında ayarlanır) olarak ayarlayabilirsiniz. ' Değeri ayarla ' seçilirse, _değerlerin_ sağında açılan liste, değer girilmesine veya seçmeye izin verir. 'Girişim Parametresini Kullan' seçildiğinde ise girişim ataması sırasında ayarlanan parametreyi tanımlamanıza olanak sağlayan yeni bir **Giriş parametreleri** bölümü görüntülenir. Bu girişim parametresinde izin verilen değerler, girişim ataması sırasında ayarlanabilecek değerleri daha fazla kısıtlayabilir.
 
-   ![Girişim tanımı parametrelerini izin verilen değerleri Değiştir](../media/create-and-manage/initiative-definition-3.png)
+   ![İzin verilen değerlerden girişim tanımı parametrelerini değiştirme](../media/create-and-manage/initiative-definition-3.png)
 
    > [!NOTE]
    > Bazı `strongType` parametrelerinde değer listesi otomatik olarak belirlenebilir. Böyle durumlarda parametre satırının sağ tarafında üç nokta simgesi görünür. Bu simgeye tıklandığında 'Parametre kapsamı (&lt;parametre adı&gt;)' sayfası açılır. Bu sayfada, değer seçeneklerini sağlamak için kullanılacak aboneliği seçin. Bu parametre kapsamı yalnızca girişim tanımı oluşturma işlemi sırasında kullanılır ve atandığında, ilke değerlendirmesi veya girişim kapsamı üzerinde herhangi bir etkisi olmaz.
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet** düğmesine tıklayın.
 
 ### <a name="assign-an-initiative-definition"></a>Girişim tanımını atama
 
 1. Azure İlkesi sayfasının sol tarafındaki **Yazma** bölümünden **Tanımlar**’ı seçin.
 
-1. Daha önce oluşturduğunuz **Güvenliği Sağlama** adlı girişim tanımını bulup tıklayın. Seçin **atama** açmak için sayfanın üst kısmındaki **güvenliği sağlama: Girişim Ata** sayfası.
+1. Daha önce oluşturduğunuz **Güvenliği Sağlama** adlı girişim tanımını bulup tıklayın. Sayfanın üst kısmından **Ata**’yı seçerek **Güvenliği Sağlama: Girişimi atama** sayfasını açın.
 
-   ![Girişim tanımı sayfasından bir tanımı atama](../media/create-and-manage/assign-definition.png)
+   ![Girişim tanımı sayfasından tanım atama](../media/create-and-manage/assign-definition.png)
 
-   Ayrıca, seçilen satıra sağ tıklayın veya bağlamsal menü satırın sonundaki üç noktaya üzerinde sol. Sonra da **Ata**’yı seçebilirsiniz.
+   Ayrıca, seçilen satıra sağ tıklayıp bir bağlamsal menü için satırın sonundaki üç nokta simgesine sol tıklayabilirsiniz. Sonra da **Ata**’yı seçebilirsiniz.
 
-   ![Girişim için diğer seçenekleri](../media/create-and-manage/select-right-click.png)
+   ![Girişim için alternatif seçenekler](../media/create-and-manage/select-right-click.png)
 
-1. Doldurun **güvenliği sağlama: Girişim Ata** aşağıdaki örnek bilgileri girerek sayfası. Kendi bilgilerinizi de kullanabilirsiniz.
+1. Aşağıdaki örnek bilgileri girerek **Güvenliği Sağlama: Girişimi Ata** sayfasını doldurun. Kendi bilgilerinizi de kullanabilirsiniz.
 
-   - Kapsam: Yönetim grubuna veya aboneliğe girişime kaydettiğiniz varsayılan olur.
+   - Kapsam: Girişimi kaydettiğiniz yönetim grubu veya abonelik, varsayılan kapsam olur.
      Kapsamı değiştirerek girişimi kayıt konumundaki bir aboneliğe veya kaynak grubuna atayabilirsiniz.
-   - Dışlamaları: Bunları uygulanmasını girişim atamasını önlemek için kapsam içi herhangi bir kaynağa yapılandırın.
-   - Girişim tanımını ve atama adı: Güvenli (atanan girişim adıyla önceden doldurulmuş) alın.
+   - Dışlamalar: Kapsam dahilinde yer alan ancak girişim atamasının uygulanmasını önlemek istediğiniz kaynaklar varsa bunları yapılandırın.
+   - Girişim tanımı ve Atama adı: Güvenliği Sağlama (atanan girişimin adı olarak önceden oluşturulur).
    - Açıklama: Bu girişim ataması, bu ilke tanımları grubunu zorunlu tutmak için uyarlanmıştır.
-   - Atanan: Otomatik olarak açan temel alınarak doldurulur. Bu alan isteğe bağlı olduğu için özel değerler girilebilir.
+   - Atayan: Oturum açmış kişiye göre otomatik olarak doldurulur. Bu alan isteğe bağlı olduğu için özel değerler girilebilir.
 
-1. **Yönetilen Kimlik Oluşturun** seçeneğini işaretsiz bırakın. Bu kutuyu _gerekir_ işaretli olduğunda ilke veya girişim atandıktan sahip bir ilke içerir [Deployıfnotexists](../concepts/effects.md#deployifnotexists) efekt. Bu öğreticide kullanılan ilke bulunmadığından, boş bırakın. Daha fazla bilgi için [yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md) ve [düzeltme güvenliğinin işleyişi](../how-to/remediate-resources.md#how-remediation-security-works) bölümlerine bakın.
+1. **Yönetilen Kimlik Oluşturun** seçeneğini işaretsiz bırakın. Atanan ilke veya girişim, [Deployifnotexists](../concepts/effects.md#deployifnotexists) efektli bir ilke içerdiğinde bu kutu _denetlenmelidir_ . Bu öğretici için kullanılan ilke olmadığından boş bırakın. Daha fazla bilgi için [yönetilen kimlikler](../../../active-directory/managed-identities-azure-resources/overview.md) ve [düzeltme güvenliğinin işleyişi](../how-to/remediate-resources.md#how-remediation-security-works) bölümlerine bakın.
 
 1. **Ata**'ya tıklayın.
 
@@ -391,33 +390,33 @@ Girişim tanımıyla, çeşitli ilke tanımlarını gruplandırıp kapsamlı bir
 
 1. Azure İlkesi sayfasının sol tarafından **Uyumluluklar**'ı seçin.
 
-1. **Kaynak Alma** girişimini bulun. Yine de olasıdır _uyumluluk durumu_ , **başlatılmadı**.
+1. **Kaynak Alma** girişimini bulun. Hala **başlatılmamış**olan _uyumluluk durumunda_ olabilir.
    Atamanın ilerleme durumunun tüm ayrıntılarını almak için girişime tıklayın.
 
-   ![Girişim uyumluluğu sayfası - değerlendirmeleri başlatılmadı](../media/create-and-manage/compliance-status-not-started.png)
+   ![Girişim uyumluluk sayfası-değerlendirmeler başlatılmadı](../media/create-and-manage/compliance-status-not-started.png)
 
 1. Girişim ataması tamamlandıktan sonra, uyumluluk sayfası güncelleştirilerek _Uyumluluk durumu_ değeri **Uyumlu** olur.
 
-   ![Girişim uyumluluğu sayfası-uyumlu kaynakları](../media/create-and-manage/compliance-status-compliant.png)
+   ![Girişim uyumluluk sayfası-kaynaklar uyumlu](../media/create-and-manage/compliance-status-compliant.png)
 
 1. Girişim uyumluluk sayfasında herhangi bir ilke tıklandığında, ilkenin uyumluluk ayrıntıları sayfası açılır. Bu sayfada uyumluluk için kaynak düzeyinde ayrıntılar sağlanır.
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Dışlama'yı kullanarak uyumlu olmayan veya reddedilen kaynağı hariç tutma
 
-Yukarıdaki örneği izleyerek, SQL Server sürüm 12.0'ı gerektirecek bir ilke tanımı atadıktan sonra 12.0’dan farklı bir sürümde oluşturulan SQL Server reddedilebilir. Bu bölümde, reddedilen SQL server tek bir kaynak grubu üzerinde bir dışlama oluşturarak oluşturma isteğine çözümünde size yol gösterir. Dışlama, ilkenin (veya girişimin) ilgili kaynağa uygulanmasını engeller.
+Yukarıdaki örneği izleyerek, SQL Server sürüm 12.0'ı gerektirecek bir ilke tanımı atadıktan sonra 12.0’dan farklı bir sürümde oluşturulan SQL Server reddedilebilir. Bu bölümde, tek bir kaynak grubunda dışlama oluşturarak, bir SQL Server oluşturmak için reddedilen isteği çözmeye adım adım ilerleyerek. Dışlama, ilkenin (veya girişimin) ilgili kaynağa uygulanmasını engeller.
 Aşağıdaki örnekte, tek bir kaynak grubunda tüm SQL Server sürümlerine izin verilir. Aboneliğe, kaynak grubuna dışlama uygulanabilir veya dışlamayı tek tek kaynakları içerecek şekilde daraltabilirsiniz.
 
-Bir atanan ilke veya girişim engelleyen bir dağıtıma iki konumda görüntülenebilir:
+Atanan bir ilke veya girişim tarafından engellenen bir dağıtım, iki konumda görüntülenebilir:
 
-- Dağıtım tarafından hedeflenen kaynak grubu üzerinde: Seçin **dağıtımları** sayfasında, ardından sol tarafındaki ve tıklayarak **dağıtım adı** başarısız dağıtım. Reddedilen kaynak, _Yasaklandı_ durum bilgisiyle listelenir. Kaynağı reddeden ilkeyi veya girişimi belirlemek için Dağıtıma Genel Bakış sayfasında **Başarısız oldu. Ayrıntılar için buraya tıklayın ->** seçeneğine tıklayın. Sayfanın sağ tarafında hata bilgilerini içeren bir pencere açılır. Altında **hata ayrıntılarını** ilgili ilke nesnelerin guıd'lerdir.
+- Dağıtım tarafından hedeflenen kaynak grubunda: sayfanın sol tarafındaki **dağıtımlar** ' ı seçin ve ardından başarısız dağıtımın **dağıtım adına** tıklayın. Reddedilen kaynak, _Yasaklandı_ durum bilgisiyle listelenir. Kaynağı reddeden ilkeyi veya girişimi ve atamayı öğrenmek için başarısız ' a tıklayın **. Dağıtım Genel Bakış sayfasında Ayrıntılar-> için buraya tıklayın** . Sayfanın sağ tarafında hata bilgilerini içeren bir pencere açılır. **Hata ayrıntıları** ' nın altında, ilgili Ilke nesnelerinin GUID 'leri vardır.
 
   ![Dağıtım ilke ataması tarafından reddedildi](../media/create-and-manage/rg-deployment-denied.png)
 
-- Azure İlkesi sayfasında: Seçin **Uyumluluk** tıklayın ve sayfanın sol tarafındaki **SQL Server sürüm 12.0 gerektir** ilkesi. Açılan sayfada **Ret** sayısında bir artış görürsünüz. Altında **olayları** sekmesinde de gördüğünüz kimin ilke tarafından reddedildi dağıtım çalıştı.
+- Azure İlkesi sayfasında: Sayfanın sol tarafından **Uyumluluk**’u seçin ve **SQL Server sürüm 12.0 gerektir** ilkesine tıklayın. Açılan sayfada **Ret** sayısında bir artış görürsünüz. **Olaylar** sekmesinin altında, ilke tarafından reddedilen dağıtımı kimin denediğinden de karşılaşırsınız.
 
   ![Atanan bir ilkenin uyumluluğuna genel bakış](../media/create-and-manage/compliance-overview.png)
 
-Bu örnekte, Contoso'nun üst düzey sanallaştırma uzmanları birini Trent Etikan gerekli işi yapmakta olduğu. Bir özel durum Trent vermek ihtiyacımız ancak biz yalnızca bir kaynak grubunda sürüm 12.0 SQL Server'lar istemiyorsanız. **SQLServers_Excluded** adlı yeni bir kaynak grubu oluşturduk ve bu gruba bu ilke ataması için özel durum izni vereceğiz.
+Bu örnekte, contoso SR. Virtualization uzmanlarının biri olan Trent Baker, gerekli işleri yapıyor. Bir özel durum vermemiz gerekir, ancak yalnızca herhangi bir kaynak grubunda sürüm 12,0 SQL Server 'lar istemezsiniz. **SQLServers_Excluded** adlı yeni bir kaynak grubu oluşturduk ve bu gruba bu ilke ataması için özel durum izni vereceğiz.
 
 ### <a name="update-assignment-with-exclusion"></a>Atamayı özel durumla güncelleştirme
 
@@ -427,20 +426,20 @@ Bu örnekte, Contoso'nun üst düzey sanallaştırma uzmanları birini Trent Eti
 
 1. Üç noktaya tıklayıp dışlanacak kaynak grubunu (bu örnekte *SQLServers_Excluded*) seçerek **Dışlama**’yı ayarlayın.
 
-   ![Hariç tutulan bir kaynak grubu için ilke ataması ekleme](../media/create-and-manage/request-exclusion.png)
+   ![İlke atamasına dışlanan bir kaynak grubu ekleme](../media/create-and-manage/request-exclusion.png)
 
    > [!NOTE]
    > İlkeye ve sahip olduğu etkiye bağlı olarak atama kapsamı içindeki bir kaynak grubunda yer alan belirli kaynaklara da dışlama izni verilebilir. Bu öğreticide bir **Ret** etkisi kullanıldığından, zaten mevcut olan belirli bir kaynakta dışlama ayarlanması mantıklı değildir.
 
 1. **Seç**'e ve ardından **Kaydet**'e tıklayın.
 
-Bu bölümde, reddedilen istek tek bir kaynak grubu üzerinde bir dışlama oluşturarak çözüldü.
+Bu bölümde, tek bir kaynak grubunda dışlama oluşturarak reddedilen isteği çözümlettiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-İşiniz bittiğinde, bu öğreticiden kaynaklarla çalışmak, atamaları veya tanımları yukarıda oluşturulan silmek için aşağıdaki adımları kullanın:
+Bu öğreticideki kaynaklarla çalışmayı bitirdiğinizde, yukarıda oluşturulan atamalardan veya tanımlardan birini silmek için aşağıdaki adımları kullanın:
 
-1. Seçin **tanımları** (veya **atamaları** atamayı silmeye çalışıyorsanız) altında **yazma** Azure İlkesi sayfasının sol tarafında.
+1. Azure Ilkesi sayfasının sol tarafında **yazma** ' nın altında **tanımlar** (veya atamayı silmeye çalışıyorsanız **atamalar** ) ' ı seçin.
 
 1. Kaldırmak istediğiniz yeni girişim veya tanımını (ya da atamayı) arayın.
 

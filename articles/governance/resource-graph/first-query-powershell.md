@@ -6,15 +6,14 @@ ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 7c47b233e508c22ef7b380acfb7720ad763d8de3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 95cf19d4a782f9e4c866d31fac0da74aebff5d2d
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241101"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976783"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı Başlangıç: Azure PowerShell kullanarak ilk Kaynak Grafiği sorgunuzu çalıştırma
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın
 
 Azure Kaynak Grafiği’ni kullanmada ilk adım, Azure PowerShell modülünün yüklenip yüklenmediğini denetlemektir. Bu hızlı başlangıç, Azure PowerShell yüklemenize modül ekleme işlemini incelemenizi sağlar.
 
@@ -88,7 +87,7 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
 Son sorgu birkaç kere çalıştırıldığında, ortamınızda hiçbir şeyin değişmediği varsayılarak döndürülen sonuçlar tutarlı ve beklendiği gibi olur, yani **Ad** özelliğine göre düzenlenir ama yine de en iyi beş sonuçla sınırlıdır.
 
 > [!NOTE]
-> Sorgu, zaten erişiminiz olan bir abonelikteki sonuçları döndürmezse, cmdlet 'in varsayılan bağlamdaki abonelikler için varsayılan değerleri `Search-AzGraph` olduğunu unutmayın. Varsayılan bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için, erişiminiz olan tüm aboneliklerde `(Get-AzContext).Account.ExtendedProperties.Subscriptions` arama yapmak istiyorsanız, bir tane çalıştırarak cmdlet için `Search-AzGraph` psdefaultparametervalues 'ı çalıştırabilirsiniz.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Sorgu zaten erişiminiz olan bir abonelikten sonuç döndürmezse, `Search-AzGraph` cmdlet 'inin varsayılan bağlamdaki abonelikler olduğunu unutmayın. Varsayılan bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için bu @no__t çalıştırın-0 ' a erişiminiz olan tüm abonelikler arasında arama yapmak istiyorsanız, birisi `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` ' i çalıştırarak `Search-AzGraph` cmdlet 'inin PSDefaultParameterValues değerlerini ayarlayabilir
    
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -110,6 +109,6 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 - [Sorgu dili](./concepts/query-language.md) hakkında daha fazla bilgi edinme
 - [Kaynakları keşfetmeyi](./concepts/explore-resources.md) öğrenin
 - [Azure CLI](first-query-azurecli.md) ile ilk sorgunuzu çalıştırma
-- Bkz. [Başlangıç sorguları](./samples/starter.md) örnekleri
+- Bkz. [başlangıç sorguları](./samples/starter.md) örnekleri
 - Bkz. [Gelişmiş sorgular](./samples/advanced.md) örnekleri
 - [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) ile ilgili geri bildirim gönderme

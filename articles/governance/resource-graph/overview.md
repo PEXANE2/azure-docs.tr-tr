@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 6721769b0ab6df4165281d9b5b75c0e1332ed1dc
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: bf54f1a96c6be7bbfb19770472752b3f958695c4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001643"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976811"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Kaynak Grafiği hizmetine genel bakış
 
@@ -26,8 +25,8 @@ Azure Kaynak Grafiği, Azure 'da Azure Kaynak yönetimini uzatmak için tasarlan
 Bu belgede her özelliği ayrıntılı olarak inceleyeceksiniz.
 
 > [!NOTE]
-> Azure Kaynak Grafiği Azure Portal 'nin arama çubuğunu, yeni ' tüm kaynaklar ' deneyimini ve Azure ilkesinin [değişiklik geçmişi](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> _görsel farkını_bir şekilde güçlendirir. Müşterilerin büyük ölçekli ortamları yönetmesine yardımcı olmak için tasarlanmıştır.
+> Azure Kaynak Grafiği Azure portal 'nin arama çubuğunu, yeni ' tüm kaynaklar ' deneyimini ve Azure Ilkesinin [değişiklik geçmişini](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> _görsel fark_olarak güçlendirir. Müşterilerin büyük ölçekli ortamları yönetmesine yardımcı olmak için tasarlanmıştır.
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 
@@ -63,7 +62,7 @@ Kaynak Grafı’nı kullanmak için, sorgulamak istediğiniz kaynaklara en az ok
 > [!NOTE]
 > Kaynak Grafiği, oturum açma sırasında bir sorumlu için kullanılabilen abonelikleri kullanır. Etkin bir oturum sırasında eklenen yeni aboneliğin kaynaklarını görmek için sorumlu bağlamı yenilemeniz gerekir. Bu eylem, oturumunuzu kapatıp yeniden oturum açarken otomatik olarak gerçekleşir.
 
-Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları çağırma ile](/rest/api/resources/resourcegroups/list) \- aynıdır; sonucun kısmi olabileceğini belirten herhangi bir gösterge olmadan, erişebileceğiniz kaynak gruplarını elde edersiniz.
+Azure CLı ve Azure PowerShell kullanıcının erişimi olan abonelikleri kullanır. REST API doğrudan kullanırken, abonelik listesi Kullanıcı tarafından sağlanır. Kullanıcının listedeki aboneliklerden herhangi birine erişimi varsa, sorgu sonuçları kullanıcının erişimi olan abonelikler için döndürülür. Bu davranış, [kaynak grupları-liste](/rest/api/resources/resourcegroups/list) \- ' i çağırırken, sonucun kısmi olabileceğini belirten herhangi bir gösterge olmadan, erişim sağladığınız kaynak gruplarını elde edersiniz.
 Abonelik listesinde kullanıcının uygun haklara sahip bir abonelik yoksa, yanıt _403_ (yasak) olur.
 
 ## <a name="throttling"></a>Azaltma
@@ -73,8 +72,8 @@ Takımınızın sizinle iletişim kurabilmesi için iş büyük ve küçük ' Mi
 
 Kaynak Grafiği, kullanıcı düzeyindeki sorguları kısıtlar. Hizmet yanıtı aşağıdaki HTTP üstbilgilerini içerir:
 
-- `x-ms-user-quota-remaining`(int): Kullanıcı için kalan Kaynak kotası. Bu değer sorgu sayısı ile eşlenir.
-- `x-ms-user-quota-resets-after`(SS: DD: SS): Kullanıcının kota tüketimi sıfırlanana kadar geçen süre
+- `x-ms-user-quota-remaining` (int): Kullanıcı için kalan Kaynak kotası. Bu değer sorgu sayısı ile eşlenir.
+- `x-ms-user-quota-resets-after` (SS: DD: SS): kullanıcının kota tüketimi sıfırlanana kadar geçen süre
 
 Daha fazla bilgi için bkz. [Kısıtlanmış istekler Için rehberlik](./concepts/guidance-for-throttled-requests.md).
 
