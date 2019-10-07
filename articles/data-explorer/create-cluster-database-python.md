@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 2fc2b847c18cecbcea3c137312b18bb274398cc6
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b3329ccb3edb3077a45e3bbf9ba7b48d7e3a93a2
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326634"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996237"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python kullanarak Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
@@ -24,65 +24,70 @@ ms.locfileid: "71326634"
 > * [Python](create-cluster-database-python.md)
 > * [ARM şablonu](create-cluster-database-resource-manager.md)
 
-Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu makalede, Python kullanarak bir küme ve veritabanı oluşturursunuz.
+Azure Veri Gezgini, uygulamalardan, Web sitelerinden, IoT cihazlarından ve daha pek çok büyük miktarlarda veri akışı için gerçek zamanlı analizler için hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu makalede, Python kullanarak bir küme ve veritabanı oluşturursunuz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="install-python-package"></a>Python paketini yükle
+## <a name="install-python-package"></a>Python paketini yükler
 
 Azure Veri Gezgini Python paketini yüklemek için (kusto), yolunda Python içeren bir komut istemi açın. Şu komutu çalıştırın:
 
 ```
+pip install azure-common
 pip install azure-mgmt-kusto
-pip install adal
-pip install msrestazure
 ```
+## <a name="authentication"></a>Kimlik doğrulaması
+Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu olması gerekir. [Azure AD uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) ' yı denetleyerek ücretsiz BIR Azure AD uygulaması oluşturun ve abonelik kapsamında rol ataması ekleyin. Ayrıca, `Directory (tenant) ID`, `Application ID` ve `Client Secret` ' nin nasıl alınacağını gösterir.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesi oluşturma
 
 1. Aşağıdaki komutu kullanarak kümenizi oluşturun:
 
     ```Python
-    from azure.mgmt.kusto.kusto_management_client import KustoManagementClient
+    from azure.mgmt.kusto import KustoManagementClient
     from azure.mgmt.kusto.models import Cluster, AzureSku
-    from adal import AuthenticationContext
-    from msrestazure.azure_active_directory import AdalAuthentication
+    from azure.common.credentials import ServicePrincipalCredentials
 
+    #Directory (tenant) ID
     tenant_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Application ID
     client_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
+    #Client Secret
     client_secret = "xxxxxxxxxxxxxx"
     subscription_id = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx"
-    context = AuthenticationContext('https://login.microsoftonline.com/{}'.format(tenant_id))
-    credentials = AdalAuthentication(context.acquire_token_with_client_credentials,
-                                         resource="https://management.core.windows.net/",
-                                         client_id=client_id,
-                                         client_secret=client_secret)
+    credentials = ServicePrincipalCredentials(
+        client_id=client_id,
+        secret=client_secret,
+        tenant=tenant_id
+    )
 
     location = 'Central US'
-    sku = 'D13_v2'
+    sku_name = 'Standard_D13_v2'
     capacity = 5
+    tier = "Standard"
     resource_group_name = 'testrg'
     cluster_name = 'mykustocluster'
-    cluster = Cluster(location=location, sku=AzureSku(name=sku, capacity=capacity))
+    cluster = Cluster(location=location, sku=AzureSku(name=sku_name, capacity=capacity, tier=tier))
     
     kustoManagementClient = KustoManagementClient(credentials, subscription_id)
     
     cluster_operations = kustoManagementClient.clusters
     
-    cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
+    poller = cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
     ```
 
-   |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
+   |**Ayarlanmasını** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
    | cluster_name | *mykustocluster* | Kümenizin istenen adı.|
-   | sku | *D13_v2* | Kümeniz için kullanılacak SKU. |
+   | sku_name | *Standard_D13_v2* | Kümeniz için kullanılacak SKU. |
+   | katman | *Stand* | SKU katmanı. |
+   | kü | *sayısından* | Küme örneklerinin sayısı. |
    | resource_group_name | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
 
-    Küme kapasitesi gibi kullanabileceğiniz ek isteğe bağlı parametreler vardır.
-    
-1. [ *Kimlik bilgilerinizi* ayarlama](/azure/python/python-sdk-azure-authenticate)
+    > [!NOTE]
+    > **Küme oluşturma** işlemi uzun süredir çalışır. **Create_or_update** yöntemi lropoller 'ın bir örneğini döndürür, daha fazla bilgi almak için bkz. [lropoller sınıfı](/python/api/msrest/msrest.polling.lropoller?view=azure-python) .
 
 1. Kümenizin başarıyla oluşturulup oluşturulmayacağını denetlemek için şu komutu çalıştırın:
 
@@ -90,7 +95,7 @@ pip install msrestazure
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-Sonuç `provisioningState` değeri`Succeeded` ile içeriyorsa, küme başarıyla oluşturuldu.
+Sonuç `Succeeded` değeriyle `provisioningState` içeriyorsa, küme başarıyla oluşturuldu.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesinde veritabanı oluşturma
 
@@ -109,10 +114,11 @@ Sonuç `provisioningState` değeri`Succeeded` ile içeriyorsa, küme başarıyla
                         soft_delete_period=softDeletePeriod,
                         hot_cache_period=hotCachePeriod)
     
-    database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
+    #Returns an instance of LROPoller, see https://docs.microsoft.com/python/api/msrest/msrest.polling.lropoller?view=azure-python
+    poller =database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
     ```
 
-   |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
+   |**Ayarlanmasını** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
    | cluster_name | *mykustocluster* | Veritabanının oluşturulacağı Kümenizin adı.|
    | veritabanı | *mykustodatabase* | Veritabanınızın adı.|
@@ -128,7 +134,7 @@ Sonuç `provisioningState` değeri`Succeeded` ile içeriyorsa, küme başarıyla
 
 Artık bir kümeniz ve veritabanınız var.
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
 * Diğer makalelerimizi izlemeyi planlıyorsanız oluşturduğunuz kaynakları saklayın.
 * Kaynakları temizlemek için kümeyi silin. Bir kümeyi sildiğinizde, içindeki tüm veritabanlarını da siler. Kümenizi silmek için aşağıdaki komutu kullanın:

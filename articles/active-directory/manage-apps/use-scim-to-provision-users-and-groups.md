@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9344feeadc5f4146c3b3f853082cd9255100af5c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: b5c24a2340775712f1105448b2aacfdc9a75f1a6
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949643"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001716"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory"></a>Azure Active Directory ile SCıM Kullanıcı sağlama
 
-Etki alanları arası kimlik yönetimi (SCıM) sistemi, kimliklerin sistemler arasında nasıl yönetildiği hakkında daha fazla tutarlılık sağlayan standartlaştırılmış bir protokol ve şemadır. Bir uygulama, Kullanıcı yönetimi için bir SCıM uç noktasını desteklediğinde, Azure AD Kullanıcı sağlama hizmeti bu uç noktaya atanmış kullanıcıları ve grupları oluşturmak, değiştirmek veya silmek için istek gönderebilir.
+Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/bg-p/IdentityStandards)) sistemi, kimliklerin sistemler arasında nasıl yönetildiği hakkında daha fazla tutarlılık sağlayan standartlaştırılmış bir protokol ve şemadır. Bir uygulama, Kullanıcı yönetimi için bir SCıM uç noktasını desteklediğinde, Azure AD Kullanıcı sağlama hizmeti bu uç noktaya atanmış kullanıcıları ve grupları oluşturmak, değiştirmek veya silmek için istek gönderebilir.
 
 Azure AD 'nin [önceden tümleştirilmiş otomatik Kullanıcı sağlamasını](../saas-apps/tutorial-list.md) desteklediği birçok uygulama, Kullanıcı değişikliği bildirimlerini alma yöntemi olarak SCIM 'i uygular.  Bunlara ek olarak, müşteriler, Azure portal [SCIM 2,0 protokol belirtiminin](https://tools.ietf.org/html/rfc7644) belirli bir profilini destekleyen uygulamaları, genel "Galeri dışı" tümleştirme seçeneğini kullanarak bağlayabilirler.
 
@@ -1338,16 +1338,16 @@ Grup kaynakları, `urn:ietf:params:scim:schemas:core:2.0:Group` şema tanımlay�
 | Azure Active Directory Kullanıcı | "urn: IETF: params: SCIM: schemas: Extension: Enterprise: 2.0: user" |
 | --- | --- |
 | Issoftdeleted |etkin |
-| displayName |displayName |
+| DisplayName |DisplayName |
 | Facsıle-TelephoneNumber |phoneNumbers [tür EQ "Faks"]. değer |
-| givenName |ad. |
-| jobTitle |Başlığın |
+| GivenName |ad. |
+| JobTitle |Başlığın |
 | posta |e-postalar [tür EQ "iş"]. değer |
-| mailNickname |externalID |
+| MailNickname |externalID |
 | Manager |Manager |
 | Mo |phoneNumbers [tür EQ "mobil"]. değer |
 | Uzantının |Kimlik |
-| postalCode |adresler [tür EQ "iş"]. PostaKodu |
+| PostalCode |adresler [tür EQ "iş"]. PostaKodu |
 | Proxy-adresler |e-postalar [tür EQ "Other"]. Deeri |
 | fiziksel-teslim-OfficeName |adresler [tür EQ "Other"]. Miyor |
 | streetAddress |adresler [tür EQ "Work"]. streetAddress |
@@ -1359,9 +1359,9 @@ Grup kaynakları, `urn:ietf:params:scim:schemas:core:2.0:Group` şema tanımlay�
 
 | Azure Active Directory grubu | urn: IETF: params: Scim: schemas: Core: 2.0: Grup |
 | --- | --- |
-| displayName |externalID |
+| DisplayName |externalID |
 | posta |e-postalar [tür EQ "iş"]. değer |
-| mailNickname |displayName |
+| MailNickname |DisplayName |
 | üyeler |üyeler |
 | Uzantının |Kimlik |
 | proxyAddresses |e-postalar [tür EQ "Other"]. Deeri |

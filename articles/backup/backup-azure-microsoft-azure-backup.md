@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3f427726a128eed426a64bc533075ba0cdde9544
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7a0f1f7dd79be250370fa97096a0cbf6dfc7f637
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241069"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982847"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Sunucusu yükleyip yükseltin
 
@@ -47,7 +47,7 @@ Azure Backup Sunucusu çalışmaya ve çalıştırmaya yönelik ilk adım, bir W
 
 ### <a name="using-a-server-in-azure"></a>Azure 'da sunucu kullanma
 
-Azure Backup Sunucusu çalıştırmak için bir sunucu seçerken, Windows Server 2016 Datacenter veya Windows Server 2019 Datacenter 'un Galeri görüntüsüyle başlamanız önerilir. [Ilk Windows sanal makinenizi Azure Portal oluşturun](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), daha önce Azure 'u hiç kullanmamış olsanız bile, Azure 'da önerilen sanal makineyle çalışmaya başlama hakkında bir öğretici sağlar. Sunucu sanal makinesi (VM) için önerilen minimum gereksinimler şunlardır: Dört çekirdek ve 8 GB RAM ile Standard_A4_v2.
+Azure Backup Sunucusu çalıştırmak için bir sunucu seçerken, Windows Server 2016 Datacenter veya Windows Server 2019 Datacenter 'un Galeri görüntüsüyle başlamanız önerilir. [Ilk Windows sanal makinenizi Azure Portal oluşturun](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), daha önce Azure 'u hiç kullanmamış olsanız bile, Azure 'da önerilen sanal makineyle çalışmaya başlama hakkında bir öğretici sağlar. Sunucu sanal makinesi (VM) için önerilen minimum gereksinimler: dört çekirdek ve 8 GB RAM ile Standard_A4_v2 olmalıdır.
 
 Azure Backup Sunucusu olan iş yüklerini koruma çok sayıda nusmaya sahiptir. [Azure sanal makinesi olarak DPM 'Yi yükleyen](https://technet.microsoft.com/library/jj852163.aspx)makale, bu nusların açıklanmasına yardımcı olur. Makineyi dağıttıktan önce, bu makaleyi tamamen okuyun.
 
@@ -55,21 +55,21 @@ Azure Backup Sunucusu olan iş yüklerini koruma çok sayıda nusmaya sahiptir. 
 
 Temel sunucuyu Azure 'da çalıştırmak istemiyorsanız, sunucuyu bir Hyper-V VM 'sinde, VMware VM 'de veya fiziksel bir konakta çalıştırabilirsiniz. Sunucu donanımı için önerilen minimum gereksinimler iki çekirdek ve 8 GB RAM 'dir. Desteklenen işletim sistemleri aşağıdaki tabloda listelenmiştir:
 
-| İşletim sistemi | Platform | SKU |
+| İşletim sistemi | Platform | ISTEYIN |
 |:--- | --- |:--- |
-| Windows Server 2019 |64 bit |Standard, Datacenter, Essentials |
-| Windows Server 2016 ve en son SPs |64 bit |Standard, Datacenter, Essentials  |
+| Windows Server 2019 |64 bit |Standart, veri merkezi, temel parçalar |
+| Windows Server 2016 ve en son SPs |64 bit |Standart, veri merkezi, temel parçalar  |
 
 
 Windows Server yinelenenleri kaldırma 'yı kullanarak DPM depolama alanını yineleyebilirsiniz. Hyper-V VM 'lerinde dağıtıldığında [DPM ve yinelenenleri kaldırma](https://technet.microsoft.com/library/dn891438.aspx) özelliğinin birlikte nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
 > Azure Backup Sunucusu, özel, tek amaçlı bir sunucuda çalışmak üzere tasarlanmıştır. Üzerinde Azure Backup Sunucusu yükleyemezsiniz:
-> - Etki alanı denetleyicisi olarak çalıştırılan bir bilgisayar
-> - Uygulama Sunucusu rolünün yüklü olduğu bir bilgisayar
-> - System Center Operations Manager yönetim grubu olan bir bilgisayar
-> - Exchange Server’ın çalıştırıldığı bir bilgisayar
-> - Küme düğümü olan bir bilgisayar
+> - Etki alanı denetleyicisi olarak çalışan bir bilgisayar
+> - Uygulama sunucusu rolünün yüklü olduğu bir bilgisayar
+> - System Center Operations Manager yönetim sunucusu olan bir bilgisayar
+> - Exchange Server 'ın çalıştığı bir bilgisayar
+> - Bir kümenin düğümü olan bir bilgisayar
 
 Azure Backup Sunucusu her zaman bir etki alanına ekleyin. Sunucuyu farklı bir etki alanına taşımayı planlıyorsanız, önce Azure Backup Sunucusu yükleyip sunucuyu yeni etki alanına katın. Mevcut bir Azure Backup Sunucusu makinenin dağıtımdan sonra yeni bir etki alanına taşınması *desteklenmez*.
 
@@ -77,40 +77,40 @@ Yedekleme verilerini Azure 'a göndermenizi veya yerel olarak saklamayı, Azure 
 
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
-### <a name="set-storage-replication"></a>Depolama Çoğaltmayı Ayarlama
+### <a name="set-storage-replication"></a>Depolama çoğaltmasını ayarla
 
-Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama ve yerel olarak yedekli depolama arasında seçim yapmanıza olanak sağlar. Varsayılan olarak, kurtarma hizmetleri kasaları coğrafi olarak yedekli depolama kullanır. Bu kasa birincil kasanız, depolama seçeneğini coğrafi olarak yedekli depolama olarak ayarlayın. Daha düşük dayanıklılık düzeyinde olan daha uygun maliyetli bir seçenek istiyorsanız yerel olarak yedekli depolamayı seçin. [Coğrafi olarak yedekli](../storage/common/storage-redundancy-grs.md) ve [yerel olarak yedekli](../storage/common/storage-redundancy-lrs.md) depolama seçenekleri hakkında daha fazla bilgiyi [Azure Storage çoğaltmaya genel bakış](../storage/common/storage-redundancy.md) bölümünde edinebilirsiniz.
+Depolama çoğaltma seçeneği, coğrafi olarak yedekli depolama ve yerel olarak yedekli depolama arasında seçim yapmanıza olanak sağlar. Varsayılan olarak, kurtarma hizmetleri kasaları coğrafi olarak yedekli depolama kullanır. Bu kasa birincil kasanız, depolama seçeneğini coğrafi olarak yedekli depolama olarak ayarlayın. Oldukça dayanıklı olmayan bir ucuz seçeneği istiyorsanız yerel olarak yedekli depolamayı seçin. [Azure Storage Çoğaltmaya genel bakış](../storage/common/storage-redundancy.md)bölümünde [coğrafi olarak yedekli](../storage/common/storage-redundancy-grs.md) ve [yerel olarak yedekli](../storage/common/storage-redundancy-lrs.md) depolama seçenekleri hakkında daha fazla bilgi edinin.
 
 Depolama çoğaltma ayarını düzenlemek için:
 
-1. **Kurtarma Hizmetleri kasaları** dikey penceresinden yeni kasaya tıklayın. **Ayarlar** bölümünde, **Özellikler**' e tıklayın.
+1. **Kurtarma Hizmetleri kasaları** dikey penceresinde, yeni kasaya tıklayın. **Ayarlar** bölümünde, **Özellikler**' e tıklayın.
 2. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' e tıklayın.
 
 3. Depolama çoğaltma türünü seçin ve **Kaydet**' e tıklayın.
 
-     ![Yeni kasa için depolama yapılandırması ayarlama](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+     ![Yeni kasa için depolama yapılandırmasını ayarlama](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="software-package"></a>Yazılım paketi
 
 ### <a name="downloading-the-software-package"></a>Yazılım paketi indiriliyor
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)oturum açın.
 2. Zaten açık bir kurtarma hizmetleri Kasası varsa adım 3 ' e geçin. Bir kurtarma hizmetleri Kasası açık değilse, ancak Azure portal, ana menüde, **Araştır**' a tıklayın.
 
-   * Kaynak listesinde **Kurtarma Hizmetleri** yazın.
-   * Yazmaya başladığınızda liste, girdinize göre filtrelenir. **Kurtarma Hizmetleri kasaları** seçeneğini gördüğünüzde buna tıklayın.
+   * Kaynak listesinde **Kurtarma Hizmetleri**yazın.
+   * Yazmaya başladığınızda liste, girişinizi temel alarak filtreleyecek. **Kurtarma Hizmetleri kasalarını**gördüğünüzde buna tıklayın.
 
-     ![Kurtarma Hizmetleri Kasası oluşturma 1. adım](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Kurtarma Hizmetleri Kasası oluşturma adımı 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
      Kurtarma Hizmetleri kasalarının listesi görünür.
    * Kurtarma Hizmetleri kasalarının listesinden bir kasa seçin.
 
-     Seçilen kasa panosu açılır.
+     Seçili kasa panosu açılır.
 
-     ![Kasa dikey penceresini açma](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+     ![Kasa dikey penceresini aç](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 3. **Ayarlar** dikey penceresi varsayılan olarak açılır. Kapalıysa, ayarlar dikey penceresini açmak için **Ayarlar** ' a tıklayın.
 
-    ![Kasa dikey penceresini açma](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
+    ![Kasa dikey penceresini aç](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
 4. Başlangıç Sihirbazı 'nı açmak için **Yedekle** ' ye tıklayın.
 
     ![Yedekleme başlangıç](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
@@ -134,7 +134,7 @@ Depolama çoğaltma ayarını düzenlemek için:
 
     ![Başlarken Sihirbazı değişikliği](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. Açılan **altyapıyı hazırla** dikey penceresinde, Yükle Azure Backup sunucusu **yükleme bağlantıları '** na tıklayın ve kasa kimlik bilgilerini indirin. Kurtarma Hizmetleri kasasına Azure Backup Sunucusu kayıt sırasında kasa kimlik bilgilerini kullanırsınız. Bağlantılar sizi yazılım paketinin indirilebileceği Indirme merkezine götürür.
+6. Açılan **altyapıyı hazırla** dikey penceresinde **, Yükle Azure Backup sunucusu yükleme bağlantıları '** na tıklayın ve kasa kimlik bilgilerini indirin. Kurtarma Hizmetleri kasasına Azure Backup Sunucusu kayıt sırasında kasa kimlik bilgilerini kullanırsınız. Bağlantılar sizi yazılım paketinin indirilebileceği Indirme merkezine götürür.
 
     ![Altyapıyı Azure Backup Sunucusu için hazırla](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
@@ -183,12 +183,15 @@ Ayıklama işlemi tamamlandıktan sonra, Microsoft Azure Backup sunucusunu yükl
     Kendi SQL 2017 örneğinizi kullandığınızda SSRS 'yi el ile yapılandırmanız gerekir. SSRS yapılandırmasından sonra, SSRS 'nin *ısınbaşlatılmış* özelliğinin *true*olarak ayarlandığından emin olun. Bu true olarak ayarlandığında, MABS SSRS 'nin zaten yapılandırıldığını varsayar ve SSRS yapılandırmasını atlar.
 
     SSRS yapılandırması için aşağıdaki değerleri kullanın: 
-    - Hizmet hesabı: ' Yerleşik hesabı kullan ' ağ hizmeti olmalıdır
-    - Web hizmeti URL 'SI: ' Sanal dizin ' ReportServer_ olmalıdır<SQLInstanceName>
-    - Veritabanınızı DatabaseName ReportServer $ olmalıdır<SQLInstanceName>
-    - Web portalı URL 'SI: ' Sanal dizin ' Reports_ olmalıdır<SQLInstanceName>
+    - Hizmet hesabı: ' yerleşik hesabı kullan ' ağ hizmeti olmalıdır
+    - Web hizmeti URL 'SI: ' sanal dizin ' ReportServer_ @ no__t-0 olmalıdır
+    - Veritabanı: DatabaseName ReportServer $ <SQLInstanceName> olmalıdır
+    - Web portalı URL 'SI: ' sanal dizin ' Reports_ @ no__t-0 olmalıdır
 
     SSRS yapılandırması hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) .
+
+    > [!NOTE]
+    > MABS için veritabanı olarak kullanılan SQL Server Lisanslama, [Microsoft çevrimiçi hizmet koşulları](https://www.microsoft.com/en-us/licensing/product-licensing/products) (OST) tarafından yönetilir. OST 'ye göre, MABS ile paketlenmiş SQL Server yalnızca MABS için veritabanı olarak kullanılabilir.
 
 4. Microsoft Azure Backup sunucusu dosyalarının yüklenmesi için bir konum belirtin ve **İleri**' ye tıklayın.
 
@@ -235,7 +238,7 @@ MABS, System Center Data Protection Manager koruma Aracısı 'nı kullanır. Kor
 
 Aşağıdaki bölümlerde, istemci bilgisayarlar için koruma aracılarının nasıl güncelleştirilmesi anlatılmaktadır.
 
-1. Yedekleme sunucusu yönetici konsolu, **Yönetim** > **aracıları**' nı seçin.
+1. Yedekleme sunucusu Yönetici Konsolu, **yönetim** > **aracıları**' nı seçin.
 
 2. Görüntüleme bölmesinde, koruma aracısını güncelleştirmek istediğiniz istemci bilgisayarları seçin.
 
@@ -270,7 +273,7 @@ Depolama alanını korurken MABS 'i yeni bir sunucuya taşımanız gerekiyorsa b
 9. SQL geri yükleme 'den DPMDB
 10. Yeni sunucu CD 'sindeki yönetici komut satırı Microsoft Azure Backup konum ve bin klasörünü yüklemek için
 
-    Yol örneği: C:\Windows\System32 > CD 'si "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\"
+    Yol örneği: C:\Windows\System32 > CD "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin @ no__t-0
 
 11. Azure Backup 'ta DPMSYNC-SYNC çalıştırın
 
@@ -278,30 +281,30 @@ Depolama alanını korurken MABS 'i yeni bir sunucuya taşımanız gerekiyorsa b
 
 ## <a name="network-connectivity"></a>Ağ bağlantısı
 
-Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için Azure Backup sunucusu PowerShell konsolundaki ```Get-DPMCloudConnection``` cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
+Azure Backup Sunucusu, ürünün başarıyla çalışması için Azure Backup hizmetine bağlantı kurulmasını gerektirir. Makinenin Azure bağlantısına sahip olup olmadığını doğrulamak için, Azure Backup Sunucusu PowerShell konsolundaki ```Get-DPMCloudConnection``` cmdlet 'ini kullanın. Cmdlet 'in çıktısı TRUE ise, bağlantı var, aksi durumda bağlantı yok.
 
 Aynı zamanda Azure aboneliğinin sağlıklı bir durumda olması gerekir. Aboneliğinizin durumunu öğrenmek ve yönetmek için [abonelik portalında](https://account.windowsazure.com/Subscriptions)oturum açın.
 
 Azure bağlantısının ve Azure aboneliğinin durumunu öğrendikten sonra, sunulan yedekleme/geri yükleme işlevlerine etkisini öğrenmek için aşağıdaki tabloyu kullanabilirsiniz.
 
-| Bağlantı durumu | Azure Aboneliği | Azure 'a yedekleme | Diske Yedekle | Azure 'dan geri yükleme | Diskten geri yükleme |
+| Bağlantı durumu | Azure Aboneliği | Azure'a yedekleme | Diske Yedekle | Azure 'dan geri yükleme | Diskten geri yükle |
 | --- | --- | --- | --- | --- | --- |
-| Bağlı |Etkin |İzin Verildi |İzin Verildi |İzin Verildi |İzin Verildi |
-| Bağlı |Süresi dolmuş |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
-| Bağlı |Yetki Kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
-| Kesilen bağlantı > 15 gün |Etkin |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
-| Kesilen bağlantı > 15 gün |Süresi dolmuş |Durduruldu |Durduruldu |İzin Verildi |İzin Verildi |
-| Kesilen bağlantı > 15 gün |Yetki Kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
+| Bağlı |Bkz |İzin verilen |İzin verilen |İzin verilen |İzin verilen |
+| Bağlı |Aşıldığı |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Bağlı |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
+| Kesilen bağlantı > 15 gün |Bkz |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Kesilen bağlantı > 15 gün |Aşıldığı |Durduruldu |Durduruldu |İzin verilen |İzin verilen |
+| Kesilen bağlantı > 15 gün |Sağlaması kaldırıldı |Durduruldu |Durduruldu |Durdurulmuş ve Azure kurtarma noktaları silindi |Durduruldu |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Bağlantı kaybından kurtarma
 
 Azure 'a erişimi engelleyen bir güvenlik duvarınız veya bir ara sunucu varsa, güvenlik duvarı/proxy profilinde aşağıdaki etki alanı adreslerine izin vermeniz gerekir:
 
 * `http://www.msftncsi.com/ncsi.txt`
-* \*.Microsoft.com
-* \*.WindowsAzure.com
-* \*. microsoftonline.com
-* \*. windows.net
+* \*. Microsoft.com
+* \*. WindowsAzure.com
+* \*.microsoftonline.com
+* \*.windows.net
 
 Azure 'a bağlantı Azure Backup Sunucusu makineye geri yüklendikten sonra, gerçekleştirilebilecek işlemler Azure abonelik durumu tarafından belirlenir. Yukarıdaki tabloda, makine "bağlandı" olduktan sonra izin verilen işlemlerle ilgili ayrıntılar bulunur.
 

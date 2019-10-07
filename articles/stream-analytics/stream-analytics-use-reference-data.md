@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 8d094113107d8c49e34779cf8be62ecd71cb8cce
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 3bf90812abcef30b6bf300ba00ebd9f4186229cb
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937195"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000395"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics aramalar için başvuru verilerini kullanma
 
@@ -31,15 +31,15 @@ Başvuru verilerinizi yapılandırmak için önce **başvuru verileri**türünde
 
 |**Özellik adı**  |**Açıklama**  |
 |---------|---------|
-|Giriş diğer adı   | Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.   |
-|Depolama hesabı   | Bloblarınızın bulunduğu depolama hesabının adı. Stream Analytics Işiniz ile aynı abonelikte yer alıyorsa, açılır listeden seçim yapabilirsiniz.   |
+|Girdi Diğer Adı   | Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.   |
+|Depolama Hesabı   | Bloblarınızın bulunduğu depolama hesabının adı. Stream Analytics Işiniz ile aynı abonelikte yer alıyorsa, açılır listeden seçim yapabilirsiniz.   |
 |Depolama hesabı anahtarı   | Depolama hesabıyla ilişkili gizli anahtar. Depolama hesabı Stream Analytics işle aynı abonelikte ise bu otomatik olarak doldurulur.   |
 |Depolama kapsayıcısı   | Kapsayıcılar Microsoft Azure Blob hizmetinde depolanan Bloblar için mantıksal bir gruplama sağlar. Blob hizmetine bir blob yüklediğinizde, o blob için bir kapsayıcı belirtmeniz gerekir.   |
-|Yol kalıbı   | Belirtilen kapsayıcı içindeki bloblarınızı bulmak için kullanılan yol. Yol içinde, aşağıdaki 2 değişkenlerin bir veya daha fazla örneğini belirtmeyi seçebilirsiniz:<BR>{date}, {Time}<BR>Örnek 1: Ürünler/{Date}/{Time}/Product-List. csv<BR>Örnek 2: Ürünler/{Date}/Product-List. csv<BR>Örnek 3: Product-List. csv<BR><br> Blob belirtilen yolda yoksa, blob 'un kullanılabilir olması için Stream Analytics işi süresiz olarak bekler.   |
+|Yol Deseni   | Belirtilen kapsayıcı içindeki bloblarınızı bulmak için kullanılan yol. Yol içinde, aşağıdaki 2 değişkenlerin bir veya daha fazla örneğini belirtmeyi seçebilirsiniz:<BR>{date}, {Time}<BR>Örnek 1: Ürünler/{Date}/{Time}/Product-List. csv<BR>Örnek 2: Ürünler/{Date}/Product-List. csv<BR>Örnek 3: Product-List. csv<BR><br> Blob belirtilen yolda yoksa, blob 'un kullanılabilir olması için Stream Analytics işi süresiz olarak bekler.   |
 |Tarih biçimi [isteğe bağlı]   | Belirttiğiniz yol deseninin içinde {Date} kullandıysanız, bloblarınızın desteklenen biçimlerin açılan listesinden düzenlendiği tarih biçimini seçebilirsiniz...<BR>Örnek: YYYY/AA/GG, AA/GG/YYYY vb.   |
 |Saat biçimi [isteğe bağlı]   | Belirttiğiniz yol deseninin içinde {Time} kullandıysanız, bloblarınızın desteklenen biçimlerin açılan listesinden düzenlendiği zaman biçimini seçebilirsiniz...<BR>Örnek: HH, HH/mm veya HH-mm.  |
 |Olay serileştirme biçimi   | Sorgularınızın istediğiniz şekilde çalıştığından emin olmak için, Stream Analytics gelen veri akışları için hangi serileştirme biçimini kullandığınızı bilmeniz gerekir. Başvuru verileri için desteklenen biçimler CSV ve JSON ' tır.  |
-|Şifreleme   | Şu anda desteklenen tek kodlama biçimi UTF-8 ' i destekler.  |
+|Encoding   | Şu anda desteklenen tek kodlama biçimi UTF-8 ' i destekler.  |
 
 ### <a name="static-reference-data"></a>Statik başvuru verileri
 
@@ -60,7 +60,7 @@ Azure Stream Analytics, yenilenen başvuru verileri bloblarını bir dakikalık 
 > 
 > Bunun bir özel durumu, işin, verileri zamanında yeniden işlemesi veya işin ilk başlatılışında olması gerekir. Başlangıç zamanında iş, belirtilen iş başlangıç zamanından önce üretilen en son blobu arıyor. Bu, iş başladığında **boş olmayan** bir başvuru veri kümesi olduğundan emin olmak için yapılır. Bir tane bulunamazsa, iş şu tanılamayı görüntüler: `Initializing input without a valid reference data blob for UTC time <start time>`.
 
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) , başvuru veri tanımlarını güncelleştirmek için Stream Analytics gereken güncelleştirilmiş blob 'ların oluşturulması görevini düzenlemek üzere kullanılabilir. Data Factory, verilerin hareketini ve dönüştürülmesini düzenleyen ve otomatikleştiren bulut tabanlı bir veri tümleştirme hizmetidir. Data Factory, [çok sayıda bulut tabanlı ve şirket içi veri depolarına bağlanmayı](../data-factory/copy-activity-overview.md) ve verileri belirttiğiniz düzenli bir zamanlamaya göre kolayca taşımayı destekler. Daha fazla bilgi ve bir Data Factory işlem hattının, önceden tanımlanmış bir zamanlamaya göre yenileyen Stream Analytics için başvuru verileri oluşturmak üzere nasıl ayarlanacağı hakkında adım adım yönergeler için bu [GitHub örneğine](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ReferenceDataRefreshForASAJobs)göz atın.
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) , başvuru veri tanımlarını güncelleştirmek için Stream Analytics gereken güncelleştirilmiş blob 'ların oluşturulması görevini düzenlemek üzere kullanılabilir. Veri Fabrikası, veri taşımayı ve dönüştürmeyi düzenleyen ve otomatikleştiren bulut tabanlı bir veri tümleştirme hizmetidir. Data Factory, [çok sayıda bulut tabanlı ve şirket içi veri depolarına bağlanmayı](../data-factory/copy-activity-overview.md) ve verileri belirttiğiniz düzenli bir zamanlamaya göre kolayca taşımayı destekler. Daha fazla bilgi ve bir Data Factory işlem hattının, önceden tanımlanmış bir zamanlamaya göre yenileyen Stream Analytics için başvuru verileri oluşturmak üzere nasıl ayarlanacağı hakkında adım adım yönergeler için bu [GitHub örneğine](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs)göz atın.
 
 ### <a name="tips-on-refreshing-blob-reference-data"></a>Blob başvuru verilerini yenileme ipuçları
 
@@ -72,7 +72,7 @@ Azure Stream Analytics, yenilenen başvuru verileri bloblarını bir dakikalık 
 3. Başvuru verileri Blobları, Blobun "son değiştirilme" zamanına **göre sıralanır,** ancak yalnızca {Date} ve {Time} değiştirmeler kullanılarak blob adında belirtilen saat ve Tarih ile belirtilir.
 3. Çok sayıda blob listelemeyi önlemek için, işleme artık yapılmayacak olan çok eski blob 'ları silmeyi göz önünde bulundurun. Lütfen ASA 'nin yeniden başlatma gibi bazı senaryolarda küçük bir miktarı yeniden işlemesi gerekebileceğini unutmayın.
 
-## <a name="azure-sql-database"></a>Azure SQL veritabanı
+## <a name="azure-sql-database"></a>Azure SQL Veritabanı
 
 Azure SQL veritabanı başvuru verileri Stream Analytics işiniz tarafından alınır ve işlenmek üzere bellekte bir anlık görüntü olarak depolanır. Başvuru verilerinizin anlık görüntüsü Ayrıca yapılandırma ayarlarında belirttiğiniz depolama hesabındaki bir kapsayıcıda depolanır. İş başladığında kapsayıcı otomatik olarak oluşturulur. İş durdurulmuşsa veya başarısız durumuna girerse, iş yeniden başlatıldığında otomatik oluşturulan kapsayıcılar silinir.  
 
@@ -90,11 +90,11 @@ SQL veritabanı başvuru verilerinizi yapılandırmak için önce **başvuru ver
 
 |**Özellik adı**|**Açıklama**  |
 |---------|---------|
-|Giriş diğer adı|Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.|
-|Aboneliğiniz|Aboneliğinizi seçin|
-|Veritabanı|Başvuru verilerinizi içeren Azure SQL veritabanı. Azure SQL veritabanı yönetilen örneği için 3342 numaralı bağlantı noktasını belirtmeniz gerekir. Örneğin, *sampleserver. public. Database. Windows. net, 3342*|
+|Girdi diğer adı|Bu girişe başvurmak için iş sorgusunda kullanılacak kolay bir ad.|
+|Abonelik|Aboneliğinizi seçin|
+|Database|Başvuru verilerinizi içeren Azure SQL veritabanı. Azure SQL veritabanı yönetilen örneği için 3342 numaralı bağlantı noktasını belirtmeniz gerekir. Örneğin, *sampleserver. public. Database. Windows. net, 3342*|
 |Kullanıcı adı|Azure SQL veritabanınız ile ilişkilendirilen Kullanıcı adı.|
-|istemcisiyle yönetilen bir cihaz için)|Azure SQL veritabanınız ile ilişkilendirilen parola.|
+|Parola|Azure SQL veritabanınız ile ilişkilendirilen parola.|
 |Düzenli aralıklarla Yenile|Bu seçenek, yenileme ücreti seçmenizi sağlar. "Açık" seçilirse yenileme hızını gg: ss: dd olarak belirtmenize izin verirsiniz.|
 |Anlık görüntü sorgusu|Bu, SQL veritabanından başvuru verilerini alan varsayılan sorgu seçeneğidir.|
 |Delta sorgusu|Büyük veri kümelerine ve kısa yenileme hızına sahip gelişmiş senaryolar için, bir Delta sorgusu eklemeyi seçin.|
@@ -105,7 +105,7 @@ Stream Analytics **en fazla 300 MB boyutlu**başvuru verilerini destekler. En b�
 
 |**Akış birimi sayısı**  |**Yaklaşık olarak desteklenen en büyük boyut (MB)**  |
 |---------|---------|
-|1\.   |50   |
+|1   |50   |
 |3   |150   |
 |6 ve daha fazla   |300   |
 

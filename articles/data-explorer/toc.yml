@@ -114,22 +114,34 @@
           href: sisense.md
     - name: Yönetme
       items:
-        - name: Küme durumunu denetleme
-          href: check-cluster-health.md
-        - name: Küme VM SKU’su seçme
-          href: manage-cluster-choose-sku.md
-        - name: Kümelerin yatay ölçeklemesini yönetme
-          href: manage-cluster-horizontal-scaling.md
-        - name: Kümelerin dikey ölçeklemesini yönetme
-          href: manage-cluster-vertical-scaling.md
-        - name: Küme güvenliğini yönetme
-          href: manage-cluster-security.md
-        - name: Veritabanı izinlerini yönetme
-          href: manage-database-permissions.md
-        - name: Verileri silme
-          href: delete-data.md
-        - name: Yinelenen verilerle ilgilenme
-          href: dealing-with-duplicates.md
+        - name: Küme
+          items:
+            - name: Küme VM SKU’su seçme
+              href: manage-cluster-choose-sku.md
+            - name: Kümelerin yatay ölçeklemesini yönetme
+              href: manage-cluster-horizontal-scaling.md
+            - name: Kümelerin dikey ölçeklemesini yönetme
+              href: manage-cluster-vertical-scaling.md
+            - name: Küme güvenliğini yönetme
+              href: manage-cluster-security.md
+            - name: Küme durumunu denetleme
+              href: check-cluster-health.md
+        - name: Database
+          items:
+            - name: Veritabanı izinlerini yönetme
+              href: manage-database-permissions.md
+            - name: İlkeler
+              items:
+                - name: 'C#'
+                  href: database-table-policies-csharp.md
+                - name: Python
+                  href: database-table-policies-python.md
+        - name: Veriler
+          items:
+            - name: Verileri silme
+              href: delete-data.md
+            - name: Yinelenen verilerle ilgilenme
+              href: dealing-with-duplicates.md
     - name: İzleme
       items:
         - name: Veri alımını izlemek için tanılama günlüklerini kullanma

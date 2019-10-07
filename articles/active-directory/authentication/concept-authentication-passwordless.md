@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc633780d8b816d8fc2e313bb1955a5719979efe
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240862"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000322"
 ---
 # <a name="what-is-passwordless"></a>Parolasız işlevi nedir?
 
@@ -28,7 +28,7 @@ Multi-Factor Authentication (MFA), kuruluşunuzu güvenli hale getirmenin harika
 
 Her kuruluş, kimlik doğrulamasına geldiğinde farklı gereksinimlere sahiptir. Microsoft şu anda Windows bilgisayarlarımız için Windows Hello 'Yu sunmaktadır. Microsoft Authenticator App ve FIDO2 güvenlik anahtarlarını passwordless ailesine ekliyoruz.
 
-## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator Uygulaması
+## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması
 
 Çalışanın telefonunun parolasız kimlik doğrulama yöntemi olmasına izin verin. Microsoft Authenticator uygulamasını bir parolanın yanı sıra uygun bir Multi-Factor Authentication seçeneği olarak zaten kullanıyor olabilirsiniz. Ancak şimdi, passwordless seçeneği olarak kullanılabilir.
 
@@ -50,22 +50,22 @@ Bir güvenlik anahtarı, FIDO2 CTAP protokolünden Microsoft ile uyumlu olmak i�
 
 | # | Özellik/uzantı güveni | Bu özellik veya uzantı neden gereklidir? |
 | --- | --- | --- |
-| 1\. | Yerleşik anahtar | Bu özellik, kimlik bilgilerinizin güvenlik anahtarında depolandığı güvenlik anahtarının taşınabilir olmasını sağlar. |
+| 1 | Yerleşik anahtar | Bu özellik, kimlik bilgilerinizin güvenlik anahtarında depolandığı güvenlik anahtarının taşınabilir olmasını sağlar. |
 | 2 | İstemci PIN 'i | Bu özellik, kimlik bilgilerinizi ikinci bir faktörle korumanıza olanak sağlar ve Kullanıcı arabirimine sahip olmayan güvenlik anahtarları için geçerlidir. |
 | 3 | HMAC-gizli | Bu uzantı, hatta çevrimdışı veya uçak modunda cihazınızda oturum açabilmenizi sağlar. |
 | 4 | RP başına birden çok hesap | Bu özellik, Microsoft hesabı ve Azure Active Directory gibi birden çok hizmet arasında aynı güvenlik anahtarını kullanmanıza da sağlar. |
 
 Aşağıdaki sağlayıcılar, paswordless deneyimiyle uyumlu oldukları bilinen farklı form faktörlerinin FIDO2 güvenlik anahtarlarını sunmaktadır. Microsoft, müşterilerin ve FIDO Alliance ile iletişim kurarak bu anahtarların güvenlik özelliklerini değerlendirmesini önermektedir.
 
-| Sağlayıcı | İlgili kişi |
+| Sağlayıcı | İletişim |
 | --- | --- |
 | Yılıco | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
 | CIHAZDAN | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
-| Ensurlik | [https://ensurity.com/contact-us.html](https://ensurity.com/contact-us.html) |
+| Ensurlik | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | eWBM | [https://www.ewbm.com/page/sub1_5](https://www.ewbm.com/page/sub1_5) |
 
-Bir satıcısıysanız ve cihazınızı bu listede almak istiyorsanız, iletişim kurun [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com).
+Bir satıcısıysanız ve cihazınızı bu listede almak istiyorsanız [Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com)' e başvurun.
 
 FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numarası ikinci bir faktör olarak kullanabilecek senaryolar veya çalışanlar olan kuruluşlar için harika bir seçenektir.
 
@@ -75,8 +75,8 @@ FIDO2 güvenlik anahtarları, çok güvenliğe duyarlı olan veya telefon numara
 - Yöneticiler tüm kullanıcıları hedefleyebilir veya kiracının her bir yöntemi için kullanıcıları/grupları seçebilir
 - Son kullanıcılar, bu passwordless kimlik doğrulama yöntemlerini hesap portalında kaydedebilir ve yönetebilir
 - Son kullanıcılar bu passwordless kimlik doğrulama yöntemleriyle oturum açabilirler
-   - Microsoft Authenticator uygulaması: Tüm tarayıcılarda, Windows 10 kutudan çıkar (OOBE) kurulumu sırasında ve herhangi bir işletim sisteminde tümleşik mobil uygulamalarla birlikte Azure AD kimlik doğrulamasının kullanıldığı senaryolarda çalışacaktır.
-   - Güvenlik anahtarları: , Microsoft Edge gibi desteklenen tarayıcılarda Windows 10 sürüm 1809 veya üzeri ve Web için kilit ekranında çalışır.
+   - Microsoft Authenticator uygulama: tüm tarayıcılarda, Windows 10 kutudan çıkar (OOBE) kurulumu sırasında ve herhangi bir işletim sisteminde tümleşik mobil uygulamalarla birlikte Azure AD kimlik doğrulamasının kullanıldığı senaryolarda çalışacaktır.
+   - Güvenlik anahtarları: Windows 10 sürüm 1809 veya üzeri için kilit ekranında ve Microsoft Edge gibi desteklenen tarayıcılarda web üzerinde çalışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

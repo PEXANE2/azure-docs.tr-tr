@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
+ms.lasthandoff: 10/07/2019
 ms.locfileid: "70735999"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory-JSON betik başvurusu
@@ -1341,7 +1341,7 @@ Verileri bir Azure Search dizinine kopyalıyorsunuz, kopyalama etkinliğinin **H
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. | Birleştir (varsayılan)<br/>Kaydederek| Hayır |
-| WriteBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri Azure Search dizinine yükler. | 1 ile 1.000 arasında. Varsayılan değer 1000 ' dir. | Hayır |
+| writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri Azure Search dizinine yükler. | 1 ile 1.000 arasında. Varsayılan değer 1000 ' dir. | Hayır |
 
 #### <a name="example"></a>Örnek
 
@@ -3729,7 +3729,7 @@ Bir IBir ıbağlantılı hizmet tanımlamak için, bağlı hizmetin **türünü*
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | türü |Type **özelliği:,** olarak ayarlanmalıdır |Evet |
-| 'Deki |Bu URL 'nin URL 'si |Evet |
+| 'deki |Bu URL 'nin URL 'si |Evet |
 | authenticationType |Anonim veya Windows. <br><br> Bir bağlantı **kimliği Için Kerberos kimlik doğrulaması** kullanmak üzere, şirket içi ortamınızı uygun şekilde ayarlamak için bu bölüme bakın. |Evet |
 | Nitelen |Windows kimlik doğrulaması için Kullanıcı adı. |Evet (Windows kimlik doğrulaması için) |
 | parolayı |Windows kimlik doğrulaması için parola. |Evet (Windows kimlik doğrulaması için) |
@@ -4716,7 +4716,7 @@ Web bağlantılı hizmet tanımlamak için, bağlantılı hizmetin **türünü**
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| 'Deki |Web kaynağının URL 'SI |Evet |
+| 'deki |Web kaynağının URL 'SI |Evet |
 | authenticationType |Deðeri. |Evet |
 
 
@@ -4743,7 +4743,7 @@ Bir Web veri kümesi tanımlamak için, veri kümesinin **türünü** **webtable
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| türü |veri kümesinin türü. **Webtable** olarak ayarlanmalıdır |Evet |
+| türü |Veri kümesinin türü. **Webtable** olarak ayarlanmalıdır |Evet |
 | yol |Tabloyu içeren kaynağın göreli URL 'SI. |Hayır. Yol belirtilmediğinde, yalnızca bağlı hizmet tanımında belirtilen URL kullanılır. |
 | dizin |Kaynaktaki tablonun dizini. HTML sayfasındaki bir tablonun dizinini alma adımları için bkz. HTML sayfasındaki tablonun dizinini alma bölümü. |Evet |
 

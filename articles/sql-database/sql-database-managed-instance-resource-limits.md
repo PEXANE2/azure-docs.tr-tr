@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 10/02/2019
-ms.openlocfilehash: a360d836f1ef09b0bb87e2af39aeab0460034cd4
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 74fd8abbe78395a75d9c0a49eb717fb8ceecd11e
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71935617"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982782"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL veritabanı yönetilen örneği kaynak sınırlarına genel bakış
 
@@ -58,12 +58,15 @@ Yönetilen örnek, temel altyapıyı ve mimarisine bağlı olan özelliklere ve 
 
 ## <a name="service-tier-characteristics"></a>Hizmet katmanı özellikleri
 
-Yönetilen örnekte iki hizmet katmanı vardır: [genel amaçlı](sql-database-service-tier-general-purpose.md) ve [iş açısından kritik](sql-database-service-tier-business-critical.md). Bu katmanlar, aşağıdaki tabloda açıklandığı gibi [farklı yetenekler](sql-database-service-tiers-general-purpose-business-critical.md)sağlar:
+Yönetilen örnekte iki hizmet katmanı vardır: [genel amaçlı](sql-database-service-tier-general-purpose.md) ve [iş açısından kritik](sql-database-service-tier-business-critical.md). Bu katmanlar, aşağıdaki tabloda açıklandığı gibi [farklı yetenekler](sql-database-service-tiers-general-purpose-business-critical.md)sağlar.
+
+> [!Important]
+> İş Açısından Kritik hizmet katmanı, salt okuma iş yükü için kullanılabilen örneğin ek yerleşik kopyasını (ikincil çoğaltma) sağlar. Okuma-yazma sorgularını ve salt okunurdur/analitik/raporlama sorgularını ayırabiliyorsanız, aynı fiyat için iki sanal çekirdek ve bellek elde edersiniz. İkincil çoğaltma, birincil örnekten birkaç saniye daha fazla gecikme gösterebilir ve bu nedenle, tam olarak geçerli veri durumunu gerektirmeyen raporlama/analiz iş yükünü devretmek üzere tasarlanmıştır. Aşağıdaki tabloda, salt yazılır **sorgular** , ikincil çoğaltmada yürütülen sorgulardır.
 
 | **Özellik** | **Genel Amaçlı** | **İş Açısından Kritik** |
 | --- | --- | --- |
-| Sanal çekirdek sayısı @ no__t-0 | 4\. nesil: 8, 16, 24<br/>5\. nesil: 4, 8, 16, 24, 32, 40, 64, 80 | 4\. nesil: 8, 16, 24 <br/> 5\. nesil: 4, 8, 16, 24, 32, 40, 64, 80 |
-| Maksimum bellek | 4\. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil: 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4\. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil: 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
+| Sanal çekirdek sayısı @ no__t-0 | 4\. nesil: 8, 16, 24<br/>5\. nesil: 4, 8, 16, 24, 32, 40, 64, 80 | 4\. nesil: 8, 16, 24 <br/> 5\. nesil: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*-salt okuma sorguları için aynı sayıda sanal çekirdek ayrılmış. |
+| Maksimum bellek | 4\. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>5\. nesil: 20,4 GB-408 GB (5.1 GB/sanal çekirdek)<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. | 4\. nesil: 56 GB-168 GB (7GB/sanal çekirdek)<br/>Okuma-yazma sorguları için 5. nesil: 20,4 GB-408 GB (5.1 GB/vCore)<br/>+ salt okuma sorguları için + ek 20,4 GB-408 GB (5.1 GB/vCore).<br/>Daha fazla bellek almak için daha fazla sanal çekirdek ekleyin. |
 | En büyük örnek depolama boyutu (ayrılmış) | 4 sanal çekirdek için-2 TB (yalnızca 5. nesil)<br/>-8 TB diğer boyutlar için | 4\. nesil: 1 TB <br/> 5\. nesil <br/>-1 TB, 4, 8, 16 sanal çekirdek<br/>-2 TB, 24 sanal çekirdek için<br/>-4 TB 32, 40, 64, 80 sanal çekirdekler |
 | En fazla veritabanı boyutu | Şu anda kullanılabilir örnek boyutu (sanal çekirdek sayısına bağlı olarak en fazla 2 TB-8 TB). | Şu anda kullanılabilir örnek boyutu (sanal çekirdek sayısına bağlı olarak en fazla 1 TB-4 TB). |
 | En fazla tempDB boyutu | 24 GB/sanal çekirdek (96-1.920 GB) ile sınırlıdır ve şu anda kullanılabilir örnek depolama boyutu.<br/>Daha fazla TempDB alanı almak için daha fazla sanal çekirdek ekleyin. | Şu anda kullanılabilir örnek depolama boyutuna kadar. TempDB günlük dosyası boyutu şu anda 24 GB/sanal çekirdek ile sınırlıdır. |
@@ -75,7 +78,7 @@ Yönetilen örnekte iki hizmet katmanı vardır: [genel amaçlı](sql-database-s
 | Günlük yazma verimlilik sınırı (örnek başına) | Sanal çekirdek başına 3 MB/s<br/>En fazla 22 MB/sn | vCore başına 4 MB/s<br/>En fazla 48 MB/sn |
 | Veri işleme (yaklaşık) | dosya başına 100-250 MB/s<br/>\*[daha ıyı GÇ performansı almak için dosya boyutunu artırın](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | Sınırlı değildir. |
 | Depolama GÇ gecikmesi (yaklaşık) | 5-10 MS | 1-2 MS |
-| Bellek içi OLTP | Desteklenmez | Kullanılabilir |
+| Bellek içi OLTP | Desteklenmez | Kullanılabilir, [Boyut sanal çekirdek sayısına bağlıdır](#in-memory-oltp-available-space) |
 | En fazla oturum sayısı | 30000 | 30000 |
 | [Salt okuma çoğaltmaları](sql-database-read-scale-out.md) | 0 | 1 (fiyata dahildir) |
 

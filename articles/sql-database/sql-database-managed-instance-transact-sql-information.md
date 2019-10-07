@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 704c1cdf95424bffa19e0946d13fa45d1b520753
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959946"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000503"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -36,7 +36,7 @@ Bu özelliklerin çoğu mimari kısıtlamalardır ve hizmet özelliklerini temsi
 
 Bu sayfada Ayrıca, gelecekte çözümlenecek olan yönetilen örnekte bulunan [bilinen geçici sorunlar](#Issues) açıklanmaktadır.
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Erişilebilirlik
 
 ### <a name="always-on-availability"></a>Her zaman açık
 
@@ -48,7 +48,7 @@ Bu sayfada Ayrıca, gelecekte çözümlenecek olan yönetilen örnekte bulunan [
 - [KULLANıLABILIRLIK GRUBU BıRAKMA](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - [Alter database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql) ifadesinin [set HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) yan tümcesi
 
-### <a name="backup"></a>Yedeklenmiş
+### <a name="backup"></a>Backup
 
 Yönetilen örneklerin otomatik yedeklemeleri vardır, bu sayede kullanıcılar `COPY_ONLY` yedeklemesi için tam veritabanı oluşturabilir. Fark, günlük ve dosya anlık görüntüsü yedeklemeleri desteklenmez.
 
@@ -61,7 +61,7 @@ Yönetilen örneklerin otomatik yedeklemeleri vardır, bu sayede kullanıcılar 
   - Bant seçenekleri: `REWIND`, `NOREWIND`, `UNLOAD` ve `NOUNLOAD` desteklenmez.
   - Günlüğe özel seçenekler: `NORECOVERY`, `STANDBY` ve `NO_TRUNCATE` desteklenmez.
 
-Sınırlamalar: 
+Algılan 
 
 - Yönetilen bir örnek ile, yedekleme sıkıştırması kullanılıyorsa 4 TB 'a kadar olan veritabanları için yeterli olan bir örnek veritabanını en fazla 32 şeritli bir yedeklemeye yedekleyebilirsiniz.
 - Hizmet tarafından yönetilen Saydam Veri Şifrelemesi (TDE) ile şifrelenen bir veritabanında `BACKUP DATABASE ... WITH COPY_ONLY` ' i çalıştıramazsınız. Hizmet tarafından yönetilen TDE, yedeklemelerin dahili bir TDE anahtarla şifrelenmesini zorlar. Anahtar verilemiyor, bu nedenle yedeklemeyi geri alamazsınız. Otomatik yedeklemeler ve zaman içinde geri yükleme kullanın veya bunun yerine [müşteri tarafından yönetilen (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key) kullanın. Ayrıca, veritabanında şifrelemeyi devre dışı bırakabilirsiniz.
@@ -95,7 +95,7 @@ Azure Blob depolamaya yönelik denetim için `CREATE AUDIT` sözdiziminde öneml
 - @No__t-1 dosyalarının yerleştirildiği Azure Blob depolama kapsayıcısının URL 'sini belirtmek için kullanabileceğiniz yeni bir sözdizimi `TO URL` sağlanır.
 - Yönetilen bir örnek Windows dosya paylaşımlarına erişemediği için `TO FILE` sözdizimi desteklenmez.
 
-Daha fazla bilgi için bkz.: 
+Daha fazla bilgi için bkz. 
 
 - [SUNUCU DENETIMI OLUŞTUR](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql) 
 - [SUNUCU DENETIMINI DEĞIŞTIR](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
@@ -110,7 +110,7 @@ Yönetilen bir örnek dosya paylaşımlarına ve Windows klasörlerine erişemez
 
 Bkz. SERTIFIKA ve [yedekleme sertifikası](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql) [oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) . 
  
-**Geçici çözüm**: sertifika veya özel anahtar betiği,. SQL dosyası olarak depola ve ikiliden oluştur:
+**Geçici çözüm**: sertifika yedeklemesi oluşturmak ve yedeklemeyi geri yüklemek yerine [sertifika ikili içeriğini ve özel anahtarı alın, bunu. SQL dosyası olarak depolayın ve ikiliden oluşturun](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -118,7 +118,7 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="credential"></a>Credential
+### <a name="credential"></a>Kimlik Bilgisi
 
 Yalnızca Azure Key Vault ve `SHARED ACCESS SIGNATURE` kimlikleri desteklenir. Windows kullanıcıları desteklenmez.
 
@@ -131,7 +131,7 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 - `CREATE CRYPTOGRAPHIC PROVIDER` desteklenmez. Bkz. [ŞIFRELEME sağlayıcısı oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER` desteklenmez. Bkz. [alter CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
-### <a name="logins-and-users"></a>Oturum açmalar ve kullanıcılar
+### <a name="logins-and-users"></a>Oturum açma bilgileri ve kullanıcılar
 
 - @No__t-0, `FROM ASYMMETRIC KEY` ve `FROM SID` kullanılarak oluşturulan SQL oturum açmaları desteklenir. Bkz. [oturum oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Azure Active Directory (Azure AD) [create LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) sözdizimi veya [login from LOGıN [Azure AD Login]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) sözdizimi kullanılarak oluşturulan sunucu sorumluları (oturum açmalar) desteklenir (Genel Önizleme). Bu oturumlar sunucu düzeyinde oluşturulur.
@@ -195,7 +195,7 @@ Yönetilen bir örnek dosyalara erişemez, bu nedenle şifreleme sağlayıcılar
 - [Arabellek havuzu uzantısı](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) desteklenmiyor.
 - `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` desteklenmez. Bkz. [Alter Server CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
 
-### <a name="collation"></a>Harmanlama
+### <a name="collation"></a>Mediğinden
 
 Varsayılan örnek harmanlama `SQL_Latin1_General_CP1_CI_AS` ' dır ve bir oluşturma parametresi olarak belirtilebilir. Bkz. [harmanlamalar](https://docs.microsoft.com/sql/t-sql/statements/collations).
 
@@ -276,11 +276,11 @@ Aşağıdaki seçenekler değiştirilemez:
 
 Daha fazla bilgi için bkz. [alter database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
-### <a name="sql-server-agent"></a>SQL Server Aracısı
+### <a name="sql-server-agent"></a>SQL Server Agent
 
 - SQL Server Agent etkinleştirme ve devre dışı bırakma Şu anda yönetilen örnekte desteklenmiyor. SQL Aracısı her zaman çalışır.
 - SQL Server Agent ayarları salt okunurdur. @No__t-0 yordamı yönetilen örnekte desteklenmez. 
-- İşler
+- İş
   - T-SQL iş adımları desteklenir.
   - Aşağıdaki çoğaltma işleri desteklenir:
     - İşlem-günlük okuyucu
@@ -310,7 +310,7 @@ Aşağıdaki SQL Aracısı özellikleri şu anda desteklenmiyor:
 
 SQL Server Agent hakkında bilgi için bkz. [SQL Server Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
 
-### <a name="tables"></a>Takvimleri
+### <a name="tables"></a>Tablolar
 
 Aşağıdaki tablo türleri desteklenmez:
 
@@ -355,7 +355,7 @@ SQL Server ' de etkin olan belgelenmemiş DBCC deyimleri yönetilen örneklerde 
 
 Şu anda yönetilen örneklerde MSDTC ve [elastik işlemler](sql-database-elastic-transactions-overview.md) desteklenmez.
 
-### <a name="extended-events"></a>Genişletilmiş olaylar
+### <a name="extended-events"></a>Genişletilmiş Olaylar
 
 Genişletilmiş olaylar (XEvents) için Windows 'a özgü bazı hedefler desteklenmez:
 
@@ -393,19 +393,19 @@ Yönetilen örneklerdeki bağlı sunucular sınırlı sayıda hedef destekler:
 - Bağlı sunucular dağıtılmış yazılabilir işlemleri (MS DTC) desteklemez.
 - Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. Dosya içeri aktarma için alternatif olarak `BULK INSERT` veya `OPENROWSET` kullanarak Azure Blob depolamadan yerel CSV içeri aktarmayı kullanmayı deneyin.
 
-İşlemler
+Operations
 
 - Çapraz örnek yazma işlemleri desteklenmez.
 - `sp_dropserver`, bağlı bir sunucunun atılması için desteklenir. Bkz. [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - @No__t-0 işlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Bkz. [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
-- @No__t-0 işlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Sağlayıcı olarak yalnızca `SQLNCLI`, `SQLNCLI11` ve `SQLOLEDB` değerleri desteklenir. Örnek `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` ' dır. Bkz. [opendatasource](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
+- @No__t-0 işlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Sağlayıcı olarak yalnızca `SQLNCLI`, `SQLNCLI11` ve `SQLOLEDB` değerleri desteklenir. `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` bunun bir örneğidir. Bkz. [opendatasource](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
 - Bağlı sunucular ağ paylaşımlarından dosyaları (Excel, CSV) okumak için kullanılamaz. Azure Blob depolamadan CSV dosyalarını okuyan [bulk INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) veya [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) kullanmayı deneyin. @No__t [yönetilen örnek geri bildirim öğesinde](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)bu istekleri izle-1
 
 ### <a name="polybase"></a>PolyBase
 
 , Bir veya Azure Blob depolama alanındaki dosyalara başvuran dış tablolar desteklenmez. PolyBase hakkında daha fazla bilgi için bkz. [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
-### <a name="replication"></a>Yinelemesi
+### <a name="replication"></a>Çoğaltma
 
 - Anlık görüntü ve Iki yönlü çoğaltma türleri desteklenir. Birleştirme çoğaltması, eşler arası çoğaltma ve güncelleştirilebilir abonelikler desteklenmez.
 - [Işlem çoğaltma](sql-database-managed-instance-transactional-replication.md) , yönetilen örnek üzerinde bazı kısıtlamalarla genel önizleme için kullanılabilir:
@@ -457,7 +457,7 @@ Yönetilen örneklerdeki bağlı sunucular sınırlı sayıda hedef destekler:
 - Desteklenmeyen sözdizimi:
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
-- Kaynaktaki 
+- Kaynak: 
   - `FROM URL` (Azure Blob depolama) desteklenen tek seçenektir.
   - `FROM DISK` @ no__t-1 @ no__t-2/Backup cihazı desteklenmez.
   - Yedekleme kümeleri desteklenmez.
@@ -474,7 +474,7 @@ Aşağıdaki veritabanı seçenekleri ayarlanır veya geçersiz kılınır ve da
 - Bellek için iyileştirilmiş mevcut dosya grubu XTP olarak yeniden adlandırılır. 
 - `SINGLE_USER` ve `RESTRICTED_USER` seçenekleri `MULTI_USER` ' ye dönüştürülür.
 
-Sınırlamalar: 
+Algılan 
 
 - Bozulan veritabanlarının yedeklemeleri, bozulmanın türüne bağlı olarak geri yüklenebilir, ancak bozulma düzeltilinceye kadar otomatik yedeklemeler alınmaz. Kaynak örneğinde `DBCC CHECKDB` ' ın çalıştığından emin olun ve bu sorunu engellemek için yedekleme `WITH CHECKSUM` ' i kullanın.
 - Bu belgede açıklanan (örneğin, `FILESTREAM` veya `FILETABLE` nesneleri) herhangi bir sınırlama içeren bir veritabanının `.BAK` dosyasını geri yükleme, yönetilen örnek üzerinde geri yüklenemez.
@@ -543,7 +543,7 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
-## <a name="Issues"></a> Bilinen sorunlar
+## <a name="Issues"></a>Bilinen sorunlar
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Boş olmayan bir dosya kaldırılmaya çalışılırken hatalı hata döndürüldü
 

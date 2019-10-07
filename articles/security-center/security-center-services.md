@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: ad662cdeb0a87e57eb9e3e7480d120be1c6c729e
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218268"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982832"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde sunulan desteklenen özellikler
 
@@ -38,24 +38,25 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 |Sunucusu|Windows|||Linux|||Fiyatlandırma|
 |----|----|----|----|----|----|----|----|
 |**Ortam**|**Azure**||**Azure dışı**|**Azure**||**Azure dışı**||
-||**Sanal Makine**|**Sanal makine ölçek kümesi**||**Sanal Makine**|**Sanal makine ölçek kümesi**|
-|VMBA tehdit algılama uyarıları|✔|✔|✔|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
-|Ağ tabanlı tehdit algılama uyarıları|✔|✔|X|✔|✔|X|Standart|
-|Microsoft Defender ATP tümleştirmesi|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|X|X|X|Standart|
+||**Sanal makine**|**Sanal makine ölçek kümesi**||**Sanal makine**|**Sanal makine ölçek kümesi**|
+|Sanal makine davranış analizi tehdit algılama uyarıları|✔|✔|✔|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
+|Ağ tabanlı tehdit algılama uyarıları|✔|✔|X|✔|✔|X|Stand|
+|Microsoft Defender ATP tümleştirmesi|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|X|X|X|Stand|
 |Eksik düzeltme ekleri|✔|✔|✔|✔|✔|✔|Boş|
-|Güvenlik yapılandırmaları|✔|✔|✔|✔|✔|✔|Boş|
+|Güvenlik Yapılandırması|✔|✔|✔|✔|✔|✔|Boş|
 |Endpoint Protection değerlendirmesi|✔|✔|✔|X|X|X|Boş|
-|JIT VM erişimi|✔|X|X|✔|X|X|Standart|
-|Uyarlamalı uygulama denetimleri|✔|X|✔|✔|X|✔|Standart|
-|FIM|✔|✔|✔|✔|✔|✔|Standart|
+|Tam zamanında VM erişimi|✔|X|X|✔|X|X|Stand|
+|Uyarlamalı uygulama denetimleri|✔|X|✔|✔|X|✔|Stand|
+|Dosya bütünlüğünü Izleme|✔|✔|✔|✔|✔|✔|Stand|
 |Disk şifrelemesi değerlendirmesi|✔|✔|X|✔|✔|X|Boş|
 |Üçüncü taraf dağıtımı|✔|X|X|✔|X|X|Boş|
 |NSG değerlendirmesi|✔|✔|X|✔|✔|X|Boş|
-|Dosya daha az tehdit algılama|✔|✔|✔|X|X|X|Standart|
-|Ağ haritası|✔|✔|X|✔|✔|X|Standart|
-|Uyarlamalı ağ denetimleri|✔|✔|X|✔|✔|X|Standart|
-|Mevzuat uyumluluk panosu & raporları|✔|✔|✔|✔|✔|✔|Standart|
-|Docker tarafından barındırılan IaaS kapsayıcılarında öneriler ve tehdit algılama|X|X|X|✔|✔|✔|Standart|
+|Dosya daha az tehdit algılama|✔|✔|✔|X|X|X|Stand|
+|Ağ eşlemesi|✔|✔|X|✔|✔|X|Stand|
+|Uyarlamalı ağ sağlamlaştırma|✔|X|X|✔|X|X|Stand|
+|Uyarlamalı ağ denetimleri|✔|✔|X|✔|✔|X|Stand|
+|Mevzuat uyumluluk panosu & raporları|✔|✔|✔|✔|✔|✔|Stand|
+|Docker tarafından barındırılan IaaS kapsayıcılarında öneriler ve tehdit algılama|X|X|X|✔|✔|✔|Stand|
 
 ### Desteklenen Endpoint Protection çözümleri<a name="endpoint-supported"></a>
 
@@ -66,15 +67,15 @@ Aşağıdaki tabloda bir matrisi verilmiştir:
 
 Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bilgi için bkz. [Endpoint Protection değerlendirme ve öneriler](security-center-endpoint-protection.md).
 
-| Endpoint Protection| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
+| Endpoint Protection| Platformlar | Güvenlik Merkezi yüklemesi | Güvenlik Merkezi bulma |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Evet |
-| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Evet |
-| Trend Micro – tüm sürümler * | Windows Server Ailesi  | Hayır | Evet |
-| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Evet |
-| McAfee v10+ | Windows Server Ailesi  | Hayır | Evet |
-| McAfee v10+ | Linux sunucu ailesi  | Hayır | Yes **\*** |
-| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes **\***  |
+| Windows Defender (Microsoft kötü amaçlı yazılımdan koruma)| Windows Server 2016| Hayır, işletim sistemine yerleşik| Evet |
+| System Center Endpoint Protection (Microsoft kötü amaçlı yazılımdan koruma) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı aracılığıyla | Evet |
+| Trend Micro – tüm sürümler * | Windows Server ailesi  | Hayır | Evet |
+| Symantec v 12.1.1100 +| Windows Server ailesi  | Hayır | Evet |
+| McAfee ile v10 arasındaki + | Windows Server ailesi  | Hayır | Evet |
+| McAfee ile v10 arasındaki + | Linux sunucu ailesi  | Hayır | Evet **\*** |
+| Sophos v9 +| Linux sunucu ailesi  | Hayır | Evet **\***  |
 
  **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili Log Analytics çalışma alanında kullanılabilir ve Azure Güvenlik Merkezi portalında yansıtılmamaktadır.
 
@@ -95,32 +96,32 @@ Aşağıdaki PaaS kaynakları Azure Güvenlik Merkezi tarafından desteklenir:
 |MySQL|✔| ✔|
 |CosmosDB|X| ✔|
 |Blob depolama|✔| ✔|
-|Depolama hesabı|✔| NA|
+|Depolama hesabı|✔| Yok|
 |App Service|✔| ✔|
 |İşlev|✔| X|
-|Bulut Hizmeti|✔| X|
-|Sanal ağ|✔| NA|
-|Subnet|✔| NA|
-|NIC|✔| NA|
-|NSG|✔| NA|
-|Subscription|✔ * *| ✔|
+|Bulut hizmeti|✔| X|
+|Adlı|✔| Yok|
+|Alt ağ|✔| Yok|
+|'I|✔| Yok|
+|NSG|✔| Yok|
+|Aboneliğiniz|✔ * *| ✔|
 |Batch hesabı|✔| X|
 |Service Fabric hesabı|✔| X|
 |Otomasyon hesabı|✔| X|
 |Yük dengeleyici|✔| X|
 |Ara|✔| X|
-|Service bus ad alanı|✔| X|
+|Service Bus ad alanı|✔| X|
 |Stream Analytics|✔| X|
-|Olay hub’ı ad alanı|✔| X|
+|Olay Hub 'ı ad alanı|✔| X|
 |Logic Apps|✔| X|
-|Redis|✔| NA|
+|Redis|✔| Yok|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
-|Anahtar kasası|✔| X|
+|Anahtar Kasası|✔| X|
 
-\*Bu özellikler Şu anda genel önizlemede desteklenmektedir.
+\* Bu özellikler Şu anda genel önizlemede destekleniyor.
 
-\*\*Azure Active Directory (Azure AD) önerileri yalnızca standart abonelikler için kullanılabilir.
+\* @ no__t-1 Azure Active Directory (Azure AD) önerileri yalnızca standart abonelikler için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

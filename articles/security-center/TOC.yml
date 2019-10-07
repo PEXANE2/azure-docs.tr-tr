@@ -147,6 +147,8 @@
   items:
     - name: REST API'leri
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Sürüm notları
+      href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Özellik ve API’yi kullanımdan kaldırma (Temmuz 2019)
       href: security-center-features-retirement-july2019.md
     - name: Uç nokta koruma değerlendirmesi ve önerileri

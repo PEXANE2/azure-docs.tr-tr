@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a97c10303a1ce74e53f46c21176c876faed307e7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958649"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001741"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uygulamanızı Azure Active Directory Uygulama galerisinde listeleyin
 
@@ -36,7 +36,7 @@ Bu makalede, Azure Active Directory (Azure AD) uygulama galerisinde bir uygulama
 - Hızlı arama, uygulamanızı galeride bulur.
 - Ücretsiz, temel ve Premium Azure AD müşterilerinin hepsi bu tümleştirmeyi kullanabilir.
 - Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
-- Etki alanları arası kimlik yönetimi (SCıM) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
+- Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
 ## <a name="prerequisites"></a>Prerequisites
 

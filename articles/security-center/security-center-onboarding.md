@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: 7448516e464a379e27abd45834b31760fca3fedd
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 01cc625767cbf437031f503cf4b0d4dc59b62e08
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201853"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996306"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Gelişmiş güvenlik için Azure Güvenlik Merkezi standardına ekleme
 Karma bulut iş yükleriniz için gelişmiş güvenlik yönetimi ve tehdit koruması avantajlarından yararlanmak için Güvenlik Merkezi standardına yükseltin.  Standart ücretsiz deneyebilirsiniz. Daha fazla bilgi için Güvenlik Merkezi [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
 
 Güvenlik Merkezi Standart şunları içerir:
 
-- **Karma güvenlik** : tüm şirket içi ve bulut iş yüklerinizde güvenliğin birleştirilmiş bir görünümünü alın. Güvenlik standartları ile uyumluluğu sağlamak için güvenlik ilkelerini uygulayın ve hibrit bulut iş yüklerinizin güvenliğini sürekli değerlendirin. Güvenlik duvarları ve diğer iş ortaklarının çözümleri gibi farklı kaynaklardan güvenlik verileri toplayın, bunlar üzerinde arama ve analiz gerçekleştirin.
-- **Gelişmiş tehdit algılama** -gelişmiş analizler ve Microsoft Intelligent Security Graph gelişen Cyber saldırılarına karşı bir kenar almak için kullanın.  Yerleşik davranış analizi ve makine öğrenimi özelliklerinden yararlanarak saldırıları ve sıfır gün saldırılarına yol açabilecek güvenlik açıklarını tespit edin. Ağları, makineleri ve bulut hizmetlerini gelen saldırılara veya güvenlik ihlali sonrası etkinliklere karşı izleyin. Etkileşimli araçlar ve bağlama dayalı tehdit zekası ile araştırmaları kolaylaştırın.
+- **Karma güvenlik** : tüm şirket içi ve bulut iş yüklerinizde güvenliğin birleştirilmiş bir görünümünü alın. Güvenlik standartları ile uyumluluğu sağlamak için güvenlik ilkelerini uygulayın ve hibrit bulut iş yüklerinizin güvenliğini sürekli değerlendirin. Güvenlik duvarları ve diğer iş ortağı çözümleri dahil olmak üzere çeşitli kaynaklardan güvenlik verileri toplayın, arayın ve çözümleyin.
+- **Gelişmiş tehdit algılama** -gelişmiş analizler ve Microsoft Intelligent Security Graph gelişen Cyber saldırılarına karşı bir kenar almak için kullanın.  , Saldırıları ve sıfır günlük güvenlik açıklarını belirlemek için yerleşik davranış analizi ve makine öğrenimi özelliğinden yararlanın. Gelen saldırılar ve ihlal sonrası etkinlik için ağları, makineleri ve bulut hizmetlerini izleyin. Etkileşimli araçlar ve bağlamsal tehdit zekasıyla araştırmayı kolaylaştırın.
 - **Erişim ve uygulama denetimleri** -belirli iş yüklerinize ve makine öğrenimine göre destekli, beyaz listeye ekleme önerileri uygulayarak kötü amaçlı yazılımları ve diğer istenmeyen uygulamaları engelleyin. Azure VM 'lerinde yönetim bağlantı noktalarına tam zamanında, denetimli erişime sahip ağ saldırısı yüzeyini azaltarak, deneme yanılma ve diğer ağ saldırılarına maruz kalma olasılığını büyük ölçüde azaltır.
 
 ## <a name="detecting-unprotected-resources"></a>Korumasız kaynakları algılama     
-Güvenlik Merkezi, Güvenlik Merkezi Standart sürümü için etkinleştirilmemiş herhangi bir Azure aboneliğini veya çalışma alanını otomatik olarak algılar. Buna, Güvenlik Merkezi Ücretsiz sürümünü kullanan Azure abonelikleri ve etkin bir Güvenlik çözümü olmayan çalışma alanları dahildir.
+Güvenlik Merkezi, güvenlik merkezi standardı için etkinleştirilmemiş tüm Azure aboneliklerini veya çalışma alanlarını otomatik olarak algılar. Bu, Güvenlik Merkezi Ücretsiz ve güvenlik çözümü etkinleştirilmemiş çalışma alanlarını kullanarak Azure abonelikleri içerir.
 
 Tüm Azure aboneliğini, abonelik dahilindeki tüm desteklenen kaynaklar tarafından devralınan Standart katmana yükseltebilirsiniz. Standart katmanın bir çalışma alanına uygulanması, çalışma alanına rapor veren tüm kaynaklar için geçerlidir.
 
@@ -41,14 +41,14 @@ Tüm Azure aboneliğini, abonelik dahilindeki tüm desteklenen kaynaklar tarafı
 
 ## <a name="upgrade-an-azure-subscription-or-workspace"></a>Azure aboneliğini veya çalışma alanını yükseltme
 Bir aboneliği veya çalışma alanını standart olarak yükseltmek için:
-1. Güvenlik Merkezi ana menüsü altında, **Başlarken**’i seçin.
+1. Güvenlik Merkezi ana **menüsünde Başlarken ' i seçin.**
   ![Başlarken](./media/security-center-onboarding/get-started.png)
-2. **Yükselt** altında, Güvenlik Merkezi, ekleme işlemi için uygun abonelikleri ve çalışma alanlarını listeler. 
-   - Tüm abonelikleri ve çalışma alanlarını deneme sürümü uygunluk durumlarıyla birlikte listelemek için, genişletilebilir **Deneme sürümünüzü uygulayın**’a tıklayabilirsiniz.
-   -    Deneme sürümü için uygun olmayan abonelikler ve çalışma alanlarını yükseltebilirsiniz.
+2. **Yükseltme**altında Güvenlik Merkezi, ekleme için uygun olan abonelikleri ve çalışma alanlarını listeler. 
+   - Tüm aboneliklerin ve çalışma alanlarının bir listesini, deneme uygunluğu durumuyla birlikte görmek için Genişletilebilir **uygulama** ' ya tıklayabilirsiniz.
+   -    Deneme yanılma uygun olmayan abonelikleri ve çalışma alanlarını yükseltebilirsiniz.
    -    Deneme sürümünüzü başlatmak için uygun çalışma alanlarını ve abonelikleri seçebilirsiniz.
-3.  Seçili aboneliklerde deneme sürümünüzü başlatmak için **Deneme sürümünü başlat**’a tıklayın.
-  ![Abonelik seçin](./media/security-center-onboarding/select-subscription.png)
+3.  Deneme sürümünüzü seçili abonelikler üzerinde başlatmak için **denemeyi Başlat** ' a tıklayın.
+  ![Select Subscription @ no__t-1
 
 
    > [!NOTE]
@@ -57,16 +57,16 @@ Bir aboneliği veya çalışma alanını standart olarak yükseltmek için:
    >
 
 ## <a name="onboard-non-azure-computers"></a>Azure dışı bilgisayarlar ekleme
-Güvenlik Merkezi, Azure dışı bilgisayarların güvenlik durumunu izleyebilir ancak öncelikle bu kaynakları eklemeniz gerekir. Azure olmayan bilgisayarları, **Başlarken** dikey penceresinden veya **işlem** dikey penceresinden ekleyebilirsiniz. Her iki yöntemde de izlenecek.
+Güvenlik Merkezi, Azure olmayan bilgisayarlarınızın güvenlik duruşunu izleyebilir, ancak önce bu kaynakları eklemeniz gerekir. Azure olmayan bilgisayarları, **Başlarken** dikey penceresinden veya **işlem** dikey penceresinden ekleyebilirsiniz. Her iki yöntemde de izlenecek.
 
 ### <a name="add-new-non-azure-computers-from-getting-started"></a>**Başlarken** 'Den yeni Azure dışı bilgisayarlar ekleyin
 
 1. **Başlarken**'e geri dönün.   
-2. **Başlangıç** sekmesini seçin.
+2. **Kullanmaya** başlayın sekmesini seçin.
 
    ![Azure dışı](./media/security-center-onboarding/non-azure.png)
 
-3. **Yeni Azure dışı bilgisayarlar ekle** altında, **Yapılandır**’a tıklayın. Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya kullanmak istediğiniz başka bir çalışma alanını seçin.
+3. **Yeni Azure dışı bilgisayarlar Ekle**altında **Yapılandır** ' a tıklayın. Log Analytics çalışma alanlarınızın listesi gösterilir. Bu liste, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanını içerir. Bu çalışma alanını veya kullanmak istediğiniz başka bir çalışma alanını seçin.
 
    ![Azure olmayan bilgisayar ekleme][7]
 
@@ -93,12 +93,12 @@ Daha önce gösterildiği gibi, **ekleme**işleminden sonra iş akışını izle
 
 1. Güvenlik Merkezi 'nin ana menüsüne ve **genel bakış** panosuna geri dönün.
 
-   ![Genel Bakış][5]
+   ![Genel bakış][5]
 
 2. **İşlem & uygulamalar**' ı seçin.
 3. **İşlem & uygulamalar**altında **Bilgisayar Ekle**' yi seçin.
 
-   ![Bilgi İşlem dikey penceresi][6]
+   ![İşlem dikey penceresi][6]
 
 4. **Azure olmayan yeni bilgisayarlar Ekle**' nin altında, bilgisayarınızı bağlamak için bir çalışma alanı seçin ve bilgisayar **Ekle**' ye tıklayın.
 
@@ -109,8 +109,8 @@ Daha önce gösterildiği gibi, **ekleme**işleminden sonra iş akışını izle
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, güvenlik merkezi 'nin gelişmiş güvenlik avantajlarından yararlanmak için Azure ve Azure dışı kaynakları nasıl kullanabileceğiniz hakkında daha fazla kaynak bulabilirsiniz.  Eklendi kaynaklarınız hakkında daha fazla bilgi için bkz.
 
-- [Veri toplamayı etkinleştirme](security-center-enable-data-collection.md)
-- [Tehdit zekası raporu](security-center-threat-report.md)
+- [Veri toplamayı etkinleştir](security-center-enable-data-collection.md)
+- [Tehdit bilgileri raporu](security-center-threat-report.md)
 - [Tam zamanında VM erişimi](security-center-just-in-time.md)
 
 <!--Image references-->
