@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 528be96f95523089c78562814c292fb0f40849e1
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b9d724a44a94ed13786391a235bb9967036f29dc
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240233"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338491"
 ---
 ::: zone target="docs"
 
@@ -53,7 +53,7 @@ Başlamadan önce aşağıdakilerden emin olun:
     - Yüksek hızlı ağa bağlısınız. En az bir adet 10 GbE bağlantınızın olması önemle tavsiye edilir. 10 GbE bağlantı yoksa, 1 GbE veri bağlantısı kullanılabilir ancak kopyalama hızı etkilenir. 
 6. Data Box’ı yerleştirebileceğiniz düz bir yüzeye erişiminiz olmalıdır. Cihazı standart bir rafa yerleştirmek istiyorsanız, veri merkezi rafınızda bir 7U yuvası olmalıdır. Cihazı düz veya dik şekilde rafa yerleştirebilirsiniz.
 7. Data Box'ınızı ana bilgisayara bağlamak için aşağıdaki kabloları temin ettiniz.
-    - Bir veya daha fazla 10 GbE SFP+ Twinax bakır ya da SFP+ fiber optik kablo (DATA 1, DATA 2 ağ arabirimleri ile kullanın). Data Box; PCI Express 3.0 ağ arabirimi ile birlikte Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Bağdaştırıcılara sahiptir; bu nedenle bu arabirimle uyumlu kablolar çalışmalıdır. Örneğin, a şirket içi testlerde bir SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M kablo kullanılmıştır. Daha fazla bilgi için bkz. [Desteklenen Mellanox kablo ve anahtarlarının listesi](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Bir veya daha fazla 10 GbE SFP+ Twinax bakır ya da SFP+ fiber optik kablo (DATA 1, DATA 2 ağ arabirimleri ile kullanın). Data Box; PCI Express 3.0 ağ arabirimi ile birlikte Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Bağdaştırıcılara sahiptir; bu nedenle bu arabirimle uyumlu kablolar çalışmalıdır. Örneğin, şirket içi testlerde bir SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M kablo kullanılmıştır. Daha fazla bilgi için bkz. [Desteklenen Mellanox kablo ve anahtarlarının listesi](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Bir RJ-45 CAT 6 ağ kablosu (MGMT ağ arabirimi ile kullanın)
     - Bir RJ-45 CAT 6A VEYA bir RJ-45 CAT 6 ağ kablosu (sırasıyla 10 Gb/sn veya 1 Gb/sn olarak yapılandırılmış DATA 3 ağ arabirimi ile birlikte kullanın)
 
