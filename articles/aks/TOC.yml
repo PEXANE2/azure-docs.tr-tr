@@ -191,6 +191,8 @@
       items:
         - name: Hizmet sorumlusu oluşturma
           href: kubernetes-service-principal.md
+        - name: Yönetilen kimlikleri kullanma (önizleme)
+          href: use-managed-identity.md
         - name: Küme yapılandırma dosyasına erişimi sınırlama
           href: control-kubeconfig-access.md
         - name: Ağ ilkeleri ile pod trafiğinin güvenliğini sağlama

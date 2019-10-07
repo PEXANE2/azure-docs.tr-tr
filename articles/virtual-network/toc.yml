@@ -230,6 +230,8 @@
           items:
             - name: Alt ağlar
               href: virtual-network-manage-subnet.md
+            - name: Alt ağ temsilcisi
+              href: manage-subnet-delegation.md
             - name: Eşlemeler
               href: virtual-network-manage-peering.md
             - name: DDoS koruması

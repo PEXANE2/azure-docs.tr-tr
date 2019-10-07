@@ -241,6 +241,8 @@
           items:
             - name: Kullanıcı hazırlama sorunlarını giderme
               href: application-provisioning-config-problem.md
+            - name: Karantina durumu
+              href: application-provisioning-quarantine-status.md
             - name: Sağlama günlükleri
               href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: Eşleme için özniteliği eşitleme - galeri uygulaması
@@ -357,6 +359,8 @@
           href: provisioning-agent-release-version-history.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu
       items:
+        - name: Uygulama Ara Sunucusu SSS
+          href: application-proxy-faq.md
         - name: Uygulama Proxy’si sürüm geçmişi
           href: application-proxy-release-version-history.md
 - name: Kaynaklar

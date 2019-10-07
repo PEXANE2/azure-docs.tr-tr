@@ -65,8 +65,14 @@
       href: detailed-troubleshoot-ssh-connection.md
 - name: Genel hata iletileri
   href: error-messages.md
+- name: Microsoft Azure Otomasyonu için bir servis talebi açtığınızda toplanan veriler
+  href: collect-data-microsoft-azure-automation-case.md
 - name: VM’lerle ilgili performans sorunları
   href: performance-diagnostics.md
+- name: Linux veya Windows çalıştıran Azure Virtual Machine için genel performans sorunlarını giderme
+  href: troubleshoot-performance-virtual-machine-linux-windows.md
+- name: Azure sanal makinelerinde 32 bit işletim sistemleri desteği
+  href: support-32-bit-operating-systems-virtual-machines.md
   items:
     - name: Windows
       items:

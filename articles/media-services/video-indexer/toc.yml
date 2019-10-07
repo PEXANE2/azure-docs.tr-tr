@@ -9,6 +9,8 @@
   items:
     - name: Başlarken
       href: video-indexer-get-started.md
+    - name: Kullanıcıları davet etme
+      href: invite-users.md
 - name: Öğreticiler
   items:
     - name: Video Indexer API'sini kullanma

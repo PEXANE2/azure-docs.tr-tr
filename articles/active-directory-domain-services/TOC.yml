@@ -85,7 +85,7 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: Uygulamaları Azure AD DS'ye dağıtma
+    - name: Uygulamaları dağıtma
       items:
         - name: Azure AD Uygulama Ara Sunucusunu Dağıtma
           href: deploy-azure-app-proxy.md
@@ -95,11 +95,17 @@
       items:
         - name: Sık karşılaşılan hatalar
           href: troubleshoot.md
-        - name: Eşleşmeyen kiracı hataları
+        - name: Etki alanına ekleme sorunları
+          href: troubleshoot-domain-join.md
+        - name: Hesap kilitlenmeleri
+          href: troubleshoot-account-lockout.md
+        - name: Oturumu açma sorunları
+          href: troubleshoot-sign-in.md
+        - name: Eşleşmeyen kiracı hatalarını düzeltme
           href: mismatched-tenant-error.md
         - name: Askıya alınan etki alanları
           href: suspension.md
-        - name: Güvenli LDAP
+        - name: Güvenli LDAP hataları
           href: tshoot-ldaps.md
         - name: Bilinen sorunlar
           items:

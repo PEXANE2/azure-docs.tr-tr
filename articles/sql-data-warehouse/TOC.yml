@@ -139,6 +139,12 @@
           items:
             - name: Performans ayarlama kılavuzu
               href: performance-tuning-ordered-CCI.md
+            - name: Tablo oluşturma
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=aps-pdw-2016-au7'
+            - name: CTAS
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7'
+            - name: Dizini oluşturma ve değiştirme
+              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-2017#examples--and-'
         - name: Sonuç kümesini önbelleğe alma
           items:
             - name: Veritabanı için ayarlama

@@ -54,7 +54,7 @@
       href: install-office-on-wvd-master-image.md
     - name: Windows Sanal Masaüstü için GPU'yu yapılandırma
       href: configure-vm-gpu.md
-    - name: Oturum ana bilgisayarlarını otomatik olarak ölçeklendirme
+    - name: Oturum konaklarını dinamik olarak ölçeklendirme
       href: set-up-scaling-script.md
     - name: Windows Sanal Masaüstü kullanıcıları için akışı özelleştirme
       href: customize-feed-for-virtual-desktop-users.md
@@ -84,7 +84,7 @@
   items:
     - name: 'Sorun çözümüne genel bakış, geri bildirim ve destek'
       href: troubleshoot-set-up-overview.md
-    - name: Tanılama özelliğiyle sorunları belirleme
+    - name: Sorunları belirleme ve tanılama
       href: diagnostics-role-service.md
     - name: Kiracı ve ana bilgisayar havuzu oluşturma
       href: troubleshoot-set-up-issues.md

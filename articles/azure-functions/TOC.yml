@@ -82,6 +82,8 @@
       href: functions-deployment-technologies.md
     - name: Olaylar ve mesajlaşma
       items:
+        - name: Güvenilir olay işleme
+          href: functions-reliable-event-processing.md
         - name: Özdeş giriş için tasarlama
           href: functions-idempotent.md
     - name: Tetikleyiciler ve bağlamalar
