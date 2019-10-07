@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 14e957986df7a114b8c865ee82e2ac447683dc2c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257183"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978220"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure şemaları 'nı kullanarak hatalarda sorun giderme
 
@@ -34,7 +33,7 @@ Hatanın bir bütün olarak değil bir yapıtın neden olması yaygındır. Bir 
 
 ## <a name="general-errors"></a>Genel hatalar
 
-### <a name="policy-violation"></a>Senaryon İlke Ihlali
+### <a name="policy-violation"></a>Senaryo: Ilke Ihlali
 
 #### <a name="issue"></a>Sorun
 
@@ -47,11 +46,11 @@ Bir ilke, birkaç nedenden dolayı dağıtımla çakışabilir:
 - Oluşturulan kaynak ilkeyle kısıtlıdır (genellikle SKU veya konum kısıtlamaları)
 - Dağıtım, ilke tarafından yapılandırılan alanları ayarlıyor (etiketlerle ortak)
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
 Şema, hata ayrıntılarında ilkelerle çakışmayacak şekilde değiştirin. Bu değişiklik mümkün değilse, ilke atamasının kapsamının, şema ile çakışmadan, artık ilkeyle çakışmamasını sağlamak için alternatif bir seçenek bulunur.
 
-### <a name="escape-function-parameter"></a>Senaryon Blueprint parametresi bir işlevdir
+### <a name="escape-function-parameter"></a>Senaryo: Blueprint parametresi bir işlevdir
 
 #### <a name="issue"></a>Sorun
 
@@ -59,11 +58,11 @@ Bir ilke, birkaç nedenden dolayı dağıtımla çakışabilir:
 
 #### <a name="cause"></a>Nedeni
 
-Bir yapıtı gibi bir işlevi `[resourceGroup().tags.myTag]`kullanan bir şema parametresini geçirmek, dinamik işlev yerine yapıtın üzerinde ayarlanan işlevin işlenmiş sonucuna neden olur.
+Bir yapıya `[resourceGroup().tags.myTag]` gibi bir işlevi kullanan bir şema parametresi geçirmek, dinamik işlev yerine yapıtın üzerinde ayarlanan işlevin işlenmiş sonucuna neden olur.
 
-#### <a name="resolution"></a>Çözüm
+#### <a name="resolution"></a>Çözünürlük
 
-Bir işlevi bir parametre olarak kullanarak geçirmek için, tüm dizeyi `[` , şema parametresi gibi `[[resourceGroup().tags.myTag]`görünen şekilde kaçış. Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/template-expressions.md).
+Bir işlevi parametre olarak kullanarak geçirmek için, `[` ile tüm dizeyi, şema parametresinin `[[resourceGroup().tags.myTag]` gibi görünmesini sağlar. Kaçış karakteri, şema, şema işlerken değeri bir dize olarak işlemeye neden olur. Daha sonra, planlar, işlevin beklenen şekilde dinamik olmasını sağlayan yapıtı üzerine koyar. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarındaki sözdizimi ve ifadeler](../../../azure-resource-manager/template-expressions.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

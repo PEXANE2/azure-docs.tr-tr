@@ -1,46 +1,45 @@
 ---
 title: İlke uyumluluk verilerini al
-description: Azure İlkesi değerlendirmeleri ve etkileri uyumluluğunu belirler. Uyumluluk ayrıntıları almayı öğrenin.
+description: Azure Ilke değerlendirmeleri ve etkileri uyumluluğu tespit edin. Uyumluluk ayrıntılarını nasıl alabileceğinizi öğrenin.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: d9aadc477c3f39cfbb108d2f3eece0c9e0b06264
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: ff50619d7b3d5bc803e8ee8d9e4cbf4389a4191f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239154"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978094"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure kaynaklarının uyumluluk verilerini alın
 
-Azure İlkesi'nin en büyük avantajlarından biri olan içgörü ve denetimler sağlar bir Abonelikteki kaynakları üzerinden veya [yönetim grubu](../../management-groups/overview.md) abonelikler. Bu denetim, yanlış konumda oluşturulan kaynaklarını genel ve tutarlı etiket kullanım zorlamayı engelleyen gibi birçok farklı şekillerde uygulanabilecek veya yapılandırmaları ve ayarları denetim mevcut kaynakları için uygun. Her durumda, ortamınız uyumluluk durumunu anlamanıza olanak tanımak için Azure Ilkesi tarafından veriler oluşturulur.
+Azure Ilkesinin en büyük avantajlarından biri, bir abonelik ya da bir abonelik [Yönetim grubundaki](../../management-groups/overview.md) kaynaklar üzerinde sağladığı Öngörüler ve denetimlerdir. Bu denetim, kaynakları yanlış konumda oluşturulmasını önlemek, ortak ve tutarlı etiket kullanımı uygulanmasını sağlamak ya da uygun yapılandırma ve ayarlar için mevcut kaynakları denetlemek gibi birçok farklı yolla uygulanabilir. Her durumda, ortamınız uyumluluk durumunu anlamanıza olanak tanımak için Azure Ilkesi tarafından veriler oluşturulur.
 
-Girişim atamaları ve ilke tarafından oluşturulan uyumluluk bilgileri erişmek için çeşitli yollar vardır:
+İlke ve girişim atamalarınız tarafından oluşturulan uyumluluk bilgilerine erişmenin birkaç yolu vardır:
 
-- Kullanarak [Azure portalı](#portal)
-- Aracılığıyla [komut satırı](#command-line) betik oluşturma
+- [Azure Portal](#portal) kullanma
+- [Komut satırı](#command-line) komut dosyası aracılığıyla
 
-Uyumluluk üzerinde yöntemleri bakarak önce uyumluluk bilgilerini güncelleştirildiğinde ve sıklığı ve değerlendirme döngüsü tetikleyen olayları göz atalım.
+Uyumluluk hakkında raporlama yöntemlerine bakmadan önce uyumluluk bilgilerinin ne zaman güncelleştirildiğini ve bir değerlendirme döngüsünü tetikleyen sıklığı ve olayları inceleyelim.
 
 > [!WARNING]
 > Uyumluluk durumu **kayıtlı değil**olarak bildiriliyorsa, **Microsoft. policınghts** kaynak sağlayıcısı 'nın kayıtlı olduğunu ve kullanıcının RBAC ' de açıklandığı gibi uygun rol tabanlı erişim denetimi (RBAC) izinlerine sahip olduğunu doğrulayın. [ Azure Ilkesi](../overview.md#rbac-permissions-in-azure-policy).
 
 ## <a name="evaluation-triggers"></a>Değerlendirme Tetikleyicileri
 
-Tamamlanan değerlendirme döngüsü sonuçlarını kullanılabilir `Microsoft.PolicyInsights` kaynak sağlayıcısı aracılığıyla `PolicyStates` ve `PolicyEvents` operations. Azure Policy Insights REST API işlemleri hakkında daha fazla bilgi için bkz. [Azure Ilke öngörüleri](/rest/api/policy-insights/).
+Tamamlanmış bir değerlendirme döngüsünün sonuçları, `PolicyStates` ve `PolicyEvents` işlemleri aracılığıyla `Microsoft.PolicyInsights` kaynak sağlayıcısında kullanılabilir. Azure Policy Insights REST API işlemleri hakkında daha fazla bilgi için bkz. [Azure Ilke öngörüleri](/rest/api/policy-insights/).
 
-Atanan ilkeleri ve girişimler değerlendirmeleri çeşitli olayları sonucu olarak ortaya çıkar:
+Atanan ilkelerin ve girişimlerin değerlendirmeleri çeşitli olayların sonucu olarak gerçekleşir:
 
-- Yeni bir ilke veya girişim bir kapsama atanmış. Tanımlanan kapsamına uygulanacak ataması için yaklaşık 30 dakika sürer. Bunu uygulandıktan sonra yeni atanan ilke veya girişim ve ilke tarafından kullanılan etkilerine bağlı olarak, kapsamı içindeki kaynaklar için değerlendirme döngüsü başlatır veya girişim, kaynaklar uyumlu veya uyumsuz olarak işaretlenir. Bir ilke veya girişim kaynaklarının büyük bir kapsam karşı değerlendirilir zaman alabilir. Bu nedenle, değerlendirme döngüsü tamamlanır, önceden tanımlanmış hiçbir beklentisi yoktur. İşlem tamamlandıktan sonra güncelleştirilmiş uyumluluk sonuçları portal ve SDK'ları kullanılabilir.
+- Bir ilke veya girişim yeni bir kapsama atanır. Atamanın tanımlanan kapsama uygulanması 30 dakika içinde sürer. Bu bir kez uygulandıktan sonra, değerlendirme çevrimi, bu kapsamdaki kaynaklar için yeni atanan ilke veya girişim ile başlar ve ilke ya da girişim tarafından kullanılan etkilere bağlı olarak, kaynaklar uyumlu veya uyumlu değil olarak işaretlenir. Büyük bir kaynak kapsamı için değerlendirilen büyük bir ilke veya girişim zaman alabilir. Bu nedenle, değerlendirme döngüsünün tamamlandığının önceden tanımlanmış bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
 
-- Bir ilke veya girişim bir kapsama atanmış güncelleştirilir. Bu senaryo için zamanlama ve değerlendirme döngüsü aynıdır bir kapsam için yeni bir atama.
+- Bir kapsama zaten atanmış olan bir ilke veya girişim güncellenir. Bu senaryonun değerlendirme çevrimi ve zamanlaması, bir kapsama yönelik yeni atama ile aynıdır.
 
-- Bir kaynak atama Resource Manager, REST, Azure CLI veya Azure PowerShell aracılığıyla bir kapsamla dağıtılır. Bu senaryoda, geçerli olay (ekleme, Denetim, reddetme, dağıtım) ve tek tek kaynak için uyumlu durumu bilgileri kullanılabilir portal ve SDK'ları yaklaşık 15 dakika sonra. Bu olay, bir değerlendirme diğer kaynakların neden olmaz.
+- Bir kaynak, Kaynak Yöneticisi, REST, Azure CLı veya Azure PowerShell aracılığıyla atama içeren bir kapsama dağıtılır. Bu senaryoda, tek tek kaynak için etkinlik olayı (ekleme, denetim, reddetme, dağıtma) ve uyumlu durum bilgileri portalda ve bu süre içinde 15 dakika daha sonra SDK 'larda kullanılabilir hale gelir. Bu olay diğer kaynakların değerlendirilmesine neden olmaz.
 
-- Standart uyumluluk değerlendirme döngüsü. Her 24 saatte bir kez atamaları otomatik olarak yeniden hesaplanır. Bu yüzden zaman değerlendirme döngüsünü, önceden tanımlanmış hiçbir beklentisi tamamlayacak bir ilke veya girişim birçok kaynak zaman alabilir. İşlem tamamlandıktan sonra güncelleştirilmiş uyumluluk sonuçları portal ve SDK'ları kullanılabilir.
+- Standart uyumluluk değerlendirme çevrimi. Her 24 saatte bir, atamalar otomatik olarak yeniden değerlendirilecektir. Çok sayıda kaynak için büyük bir ilke veya girişim zaman alabilir, bu nedenle değerlendirme döngüsünün tamamlanması için önceden tanımlanmış bir beklentisi yoktur. İşlem tamamlandıktan sonra portalda ve SDK 'larda güncelleştirilmiş uyumluluk sonuçları bulunur.
 
 - [Konuk yapılandırma](../concepts/guest-configuration.md) kaynak sağlayıcısı, yönetilen bir kaynak tarafından uyumluluk ayrıntılarıyla güncelleştirildi.
 
@@ -48,14 +47,14 @@ Atanan ilkeleri ve girişimler değerlendirmeleri çeşitli olayları sonucu ola
 
 ### <a name="on-demand-evaluation-scan"></a>İsteğe bağlı değerlendirme taraması
 
-Bir abonelik veya kaynak grubu için bir değerlendirme taraması, REST API çağrısı ile başlatılabilir. Bu tarama zaman uyumsuz bir işlemdir. Bu nedenle, tarama yanıt tamamlanana kadar tarama başlatmak için REST uç noktasını beklemez. Bunun yerine, istenen değerlendirme durumunu sorgulamak için bir URI sağlar.
+Bir abonelik veya kaynak grubu için bir değerlendirme taraması, REST API çağrısıyla başlatılabilir. Bu tarama zaman uyumsuz bir işlemdir. Bu nedenle, taramanın başlaması için REST uç noktası, taramanın yanıt vermek için tamamlanana kadar beklemez. Bunun yerine, istenen değerlendirmenin durumunu sorgulamak için bir URI sağlar.
 
 Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değişkenler bulunur:
 
-- `{YourRG}` -Kaynak grubunuzun adıyla değiştirin
+- `{YourRG}`-kaynak grubunuzun adıyla değiştirin
 - `{subscriptionId}` - Abonelik kimliğinizle değiştirin
 
-Tarama, bir abonelik veya kaynak grubundaki kaynakların değerlendirme destekler. Bir tarama kapsama göre bir REST API'sini kullanmaya başlama **POST** komutunu aşağıdaki URI yapıları kullanarak:
+Tarama, bir abonelikteki veya bir kaynak grubundaki kaynakların değerlendirilmesini destekler. Aşağıdaki URI yapılarını kullanarak bir REST API **Post** komutuyla kapsama göre tarama başlatın:
 
 - Abonelik
 
@@ -69,13 +68,13 @@ Tarama, bir abonelik veya kaynak grubundaki kaynakların değerlendirme destekle
   POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
   ```
 
-Çağrı döndürür bir **202 kabul edildi** durumu. Dahil edilen yanıtta başlığıdır bir **konumu** cfg aşağıdaki formatta özelliği:
+Çağrı, **202 kabul edilen** bir durum döndürür. Yanıt üst bilgisine eklenen bir **konum** özelliği aşağıdaki biçimdedir:
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
 ```
 
-`{ResourceContainerGUID}` İstenen kapsam için statik olarak oluşturulur. Bir kapsam bir isteğe bağlı tarama zaten çalışıyorsa, yeni bir tarama başlatıldı değil. Yeni istek aynı bunun yerine, sağlanan `{ResourceContainerGUID}` **konumu** durumu için URI. REST API **alma** komutunu **konumu** URI'sini döndürür bir **202 kabul edildi** değerlendirme devam ederken. Değerlendirme taraması tamamlandıktan sonra döndürür bir **200 Tamam** durumu. Tamamlanmış bir tarama durumuyla birlikte bir JSON yanıt gövdesidir:
+`{ResourceContainerGUID}`, istenen kapsam için statik olarak oluşturulur. Bir kapsam zaten bir isteğe bağlı tarama çalıştırıyorsa yeni bir tarama başlatılmaz. Bunun yerine, yeni istek durum için aynı `{ResourceContainerGUID}` **konum** URI 'si olarak sağlanır. **Konum** URI 'sine yönelik bir REST API **Get** komutu, değerlendirme devam ederken **kabul edilen bir 202** döndürür. Değerlendirme taraması tamamlandığında, **200 bir Tamam** durumu döndürür. Tamamlanmış taramanın gövdesi, şu duruma sahip bir JSON yanıtdır:
 
 ```json
 {
@@ -83,10 +82,10 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 }
 ```
 
-## <a name="how-compliance-works"></a>Uyumluluk nasıl çalışır?
+## <a name="how-compliance-works"></a>Uyumluluk nasıl işe yarar?
 
-Atama, bir kaynaktır **uyumlu** ilke veya girişim kuralların izleyin değil ise.
-Aşağıdaki tabloda, farklı ilke efektler elde edilen uyumluluk durumu için Koşul değerlendirmesi ile çalışma gösterilmektedir:
+Bir atamada, ilke veya girişim kurallarını takip etmez bir kaynak **uyumlu** değildir.
+Aşağıdaki tabloda, farklı ilke efektlerinin, sonuçta elde edilen uyumluluk durumu için koşul değerlendirmesiyle nasıl çalıştığı gösterilmektedir:
 
 | Kaynak durumu | Etki | İlke değerlendirmesi | Uyumluluk durumu |
 | --- | --- | --- | --- |
@@ -98,43 +97,43 @@ Aşağıdaki tabloda, farklı ilke efektler elde edilen uyumluluk durumu için K
 \* Append, DeployIfNotExist ve AuditIfNotExist etkileri IF deyiminin TRUE olmasını gerektirir.
 Etkiler ayrıca varlık koşulunun uyumlu olmaması için FALSE olmasını gerektirir. TRUE olduğunda, IF koşulu ilgili kaynaklar için varlık koşulunun değerlendirilmesini tetikler.
 
-Örneğin, ortak ağlara sunulan bazı depolama hesapları (kırmızı renkte vurgulanmış) ile bir kaynak grubu – ContsoRG, olduğunu varsaymaktadır.
+Örneğin, ortak ağlara sunulan bazı depolama hesaplarıyla (kırmızı renkle vurgulanmış) bir kaynak grubunuz olduğunu varsayalım.
 
-![Ortak ağlara maruz depolama hesapları](../media/getting-compliance-data/resource-group01.png)
+![Ortak ağlara açık olan depolama hesapları](../media/getting-compliance-data/resource-group01.png)
 
-Bu örnekte, güvenlik risklerini dikkatli olmanız gerekir. Bir ilke ataması oluşturduğunuza göre ContosoRG kaynak grubundaki tüm depolama hesapları için değerlendirilir. Üç uyumlu olmayan depolama hesapları, sonuç durumlarına değiştirme denetimleri **uyumlu.**
+Bu örnekte, güvenlik riskleri konusunda dikkatli olmanız gerekir. Artık bir ilke ataması oluşturduğunuza göre, ContosoRG kaynak grubundaki tüm depolama hesapları için değerlendirilir. Bu, uyumlu olmayan üç depolama hesabını denetler, sonuç olarak durumlarını **uyumlu değil** olarak değiştirir.
 
-![Uyumlu olmayan depolama hesapları denetlendi](../media/getting-compliance-data/resource-group03.png)
+![Denetlenen, uyumlu olmayan depolama hesapları](../media/getting-compliance-data/resource-group03.png)
 
-Yanında **uyumlu** ve **uyumlu**, ilkeleri ve kaynakları diğer üç durumu vardır:
+**Uyumlu** ve **uyumlu olmayan**, ilkelerin ve kaynakların yanında üç farklı durum vardır:
 
-- **Çakışan**: Çakışan kurallarla iki veya daha fazla ilke var. Örneğin, iki ilke aynı etiketi farklı değerlerle ekleme.
-- **Başlamadı**: Değerlendirme çevrimi ilke veya kaynak için başlatılmadı.
+- **Çakışıyor**: çakışan kurallara sahip iki veya daha fazla ilke var. Örneğin, iki ilke aynı etiketi farklı değerlerle yeniden ekleniyor.
+- **Başlamadı**: ilke veya kaynak için değerlendirme çevrimi başlatılmadı.
 - **Kayıtlı değil**: Azure Ilke kaynak sağlayıcısı kayıtlı değil veya oturum açmış hesabın uyumluluk verilerini okuma izni yok.
 
-Azure Ilkesi, bir kaynağın eşleşme olup olmadığını anlamak için tanımdaki **tür** ve **ad** alanlarını kullanır. Kaynak eşleştiğinde, geçerli olarak kabul edilir ve durumu ya da **uyumlu** veya **uyumlu**. Ya da **türü** veya **adı** tüm kaynakların uygun olarak kabul edilir ve değerlendirilir tanımındaki özelliktir.
+Azure Ilkesi, bir kaynağın eşleşme olup olmadığını anlamak için tanımdaki **tür** ve **ad** alanlarını kullanır. Kaynak eşleştiğinde, geçerli kabul edilir ve durumu **uyumlu** veya **uyumsuz**olarak değerlendirilir. Her iki **tür** veya **ad** tanımdaki tek özelliktir, tüm kaynaklar uygulanabilir kabul edilir ve değerlendirilir.
 
-Uyumluluk yüzdesi bölünmesiyle belirlenir **uyumlu** kaynaklar tarafından _toplam kaynakları_.
-_Toplam kaynakları_ toplamı olarak tanımlanan **uyumlu**, **uyumlu**, ve **çakışan** kaynakları. Farklı kaynaklar toplamını genel uyumluluk sayılardır **uyumlu** toplamı tüm farklı kaynaklar tarafından ayrılmış. Aşağıdaki görüntüde, geçerli olan 20 farklı kaynak vardır ve yalnızca **uyumlu**. Genel kaynak uyumluluk % 95'inden (19 / 20) ' dir.
+Uyumluluk yüzdesi, **uyumlu** kaynakları _Toplam kaynağa_bölerek belirlenir.
+_Toplam kaynak_ , **uyumlu**, **uyumlu olmayan**ve **Çakışan** kaynakların toplamı olarak tanımlanır. Genel uyumluluk numaraları, tüm ayrı kaynakların **toplamına ayrılan ayrı** kaynakların toplamıdır. Aşağıdaki görüntüde, uygulanabilir ve yalnızca bir tane **uyumlu olmayan**20 farklı kaynak vardır. Genel kaynak uyumluluğu% 95 ' dir (19/20).
 
 ![Uyumluluk sayfasından ilke uyumluluğu örneği](../media/getting-compliance-data/simple-compliance.png)
 
 ## <a name="portal"></a>Portal
 
-Azure portalında bir grafik deneyimi Görselleştirme ve anlama ortamınızın uyumluluk durumunu gösterir. Üzerinde **ilke** sayfasında **genel bakış** seçeneği kullanılabilir kapsamlarda uyumluluk ilkeleri ve girişimler için Ayrıntılar sağlar. Uyumluluk durumu ve başına atama sayısı ile birlikte, son yedi güne uyumluluk gösteren bir grafiği içerir. **Uyumluluk** sayfası (grafik dışında) aynı bilgilerin çoğunu içerir, ancak ek filtreleme ve sıralama seçenekleri sağlar.
+Azure portal, ortamınızdaki uyumluluk durumunu görselleştirmenin ve anlayabilecek grafiksel bir deneyim gösterir. **İlke** sayfasında **genel bakış** seçeneği, hem ilkelerin hem de girişimlerin uyumluluğuyla kullanılabilir kapsamlar için ayrıntılar sağlar. Atama başına uyumluluk durumu ve sayı ile birlikte, son yedi güne ait uyumluluğu gösteren bir grafik içerir. **Uyumluluk** sayfası, bu bilgilerin büyük bölümünü (grafik dışında) içerir, ancak ek filtreleme ve sıralama seçenekleri sağlar.
 
 ![Azure Ilkesi uyumluluk sayfası örneği](../media/getting-compliance-data/compliance-page.png)
 
-Bir ilke veya girişim farklı kapsamlara atanabilir olduğundan, tablo, her atama ve tür tanımının atandığı için kapsamı içerir. Uyumlu olmayan kaynakları ve her atama için uyumlu olmayan ilkeler de sağlanır. Bir ilke veya girişim tabloda tıklayarak bu atama için Uyumluluk, daha kapsamlı bir bakış sağlar.
+Bir ilke veya girişim farklı kapsamlara atanabileceği için tablo, her atamanın kapsamını ve atanan tanım türünü içerir. Her atamaya yönelik uyumlu olmayan kaynakların ve uyumlu olmayan ilkelerin sayısı da sağlanır. Tablodaki bir ilkeye veya girişimye tıkladığınızda, söz konusu atamaya yönelik uyumluluğa daha ayrıntılı bir bakış sunulmaktadır.
 
 ![Azure Ilke uyumluluğu ayrıntıları sayfası örneği](../media/getting-compliance-data/compliance-details.png)
 
-Kaynakları listesini **kaynak Uyumluluk** sekmesinde mevcut kaynaklar mevcut atamanın için değerlendirme durumunu gösterir. Varsayılanları sekmesi **uyumlu**, ancak filtrelenebilir.
-Olaylar (ekleme, Denetim, reddetme, dağıtım) kaynak oluşturmak için istek tarafından tetiklenen altında gösterilen **olayları** sekmesi.
+**Kaynak uyumluluğu** sekmesindeki kaynakların listesi, geçerli atama için mevcut kaynakların değerlendirme durumunu gösterir. Sekme varsayılan olarak **uyumlu değildir**, ancak filtrelenebilir.
+Kaynak oluşturma isteği tarafından tetiklenen olaylar (Append, denetle, Reddet, dağıt), **Olaylar** sekmesi altında gösterilir.
 
 ![Azure Ilkesi uyumluluk olayları örneği](../media/getting-compliance-data/compliance-events.png)
 
-Olay hakkında daha ayrıntılı bilgi toplamak ve seçmek için istediğiniz satıra sağ **etkinlik günlüklerini göster**. Etkinlik günlüğü sayfasında açılır ve atama ve olayların ayrıntılarını gösteren arama önceden filtre uygulanmış. Etkinlik günlüğü ek bağlam ve bu olaylar hakkında bilgi sağlar.
+Daha fazla ayrıntı toplamak istediğiniz olayın satırına sağ tıklayın ve **etkinlik günlüklerini göster**' i seçin. Etkinlik günlüğü sayfası açılır ve atamanın ayrıntılarını ve olayları gösteren aramaya önceden filtrelenmiştir. Etkinlik günlüğü ek bağlam ve bu olaylar hakkında bilgi sağlar.
 
 ![Azure Ilke uyumluluğu etkinlik günlüğü örneği](../media/getting-compliance-data/compliance-activitylog.png)
 
@@ -146,9 +145,9 @@ Bir kaynağın **uyumsuz**olduğu belirlendiğinde birçok olası neden vardır.
 
 ## <a name="command-line"></a>Komut satırı
 
-REST API ile aynı bilgileri portalda kullanılabilir alınabilir (dahil olmak üzere [ARMClient](https://github.com/projectkudu/ARMClient)) veya Azure PowerShell. REST API hakkında tam Ayrıntılar için bkz. [Azure Policy Insights](/rest/api/policy-insights/) başvurusu. REST API başvuru sayfalarına deneyin olanak tanıyan her işlemi ''deneyin It bir yeşil düğmeyi sahip sağdaki tarayıcıdaki.
+Portalda bulunan bilgiler REST API ( [Armclient](https://github.com/projectkudu/ARMClient)dahil) veya Azure PowerShell ile alınabilir. REST API hakkında tam Ayrıntılar için bkz. [Azure Policy Insights](/rest/api/policy-insights/) başvurusu. REST API başvuru sayfalarında, her bir işlemin üzerinde yeşil bir ' deneyin ' düğmesi vardır ve bu, tarayıcıyı tarayıcıda doğrudan denemenize olanak tanır.
 
-Azure PowerShell'de aşağıdaki örnekleri kullanmak için bir kimlik doğrulama belirteci ile bu kod örneği oluşturun. Ardından $restUri ardından ayrıştırılabilir bir JSON nesnesi almak için örnekler dizeyi değiştirin.
+Aşağıdaki örnekleri Azure PowerShell kullanmak için, bu örnek kodla bir kimlik doğrulama belirteci oluşturun. Daha sonra ayrıştırılabilecek bir JSON nesnesi almak için $restUri örneklerdeki dizeyle değiştirin.
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -173,15 +172,15 @@ $response = Invoke-RestMethod -Uri $restUri -Method POST -Headers $authHeader
 $response
 ```
 
-### <a name="summarize-results"></a>Sonuçlarını özetleme
+### <a name="summarize-results"></a>Sonuçları özetleme
 
-REST API ile kapsayıcı, tanımını veya atamasını özetleme gerçekleştirilebilir. Azure Policy Insight 'ın abonelik Özeti kullanılarak abonelik düzeyinde [özetlemeye](/rest/api/policy-insights/policystates/summarizeforsubscription)bir örnek aşağıda verilmiştir:
+REST API, özetleme kapsayıcı, tanım veya atamaya göre gerçekleştirilebilir. Azure Policy Insight 'ın abonelik Özeti kullanılarak abonelik düzeyinde [özetlemeye](/rest/api/policy-insights/policystates/summarizeforsubscription)bir örnek aşağıda verilmiştir:
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04
 ```
 
-Çıkış abonelik özetler. Aşağıdaki örnek çıktıda özetlenen uyumluluk altındadır **value.results.nonCompliantResources** ve **value.results.nonCompliantPolicies**. Bu istek hakkında daha fazla ayrıntı, uyumlu olmayan sayılar ve her bir atama için tanım bilgisi yapılan her atama dahil olmak üzere sağlar. Hiyerarşideki her ilke nesnesi sağlayan bir **queryResultsUri** o seviyede ek bilgi almak için kullanılabilir.
+Çıktı, aboneliği özetler. Aşağıdaki örnek çıktıda, özetlenen uyumluluk **değer. Results., uyumsuz Antresources** ve **Value. Results. Nonkarmaşıkolmayan bir ilke**. Bu istek, her atamaya yönelik uyumlu olmayan numaraları ve tanım bilgilerini oluşturan her atama dahil olmak üzere daha fazla ayrıntı sağlar. Hiyerarşideki her ilke nesnesi, bu düzeyde ek ayrıntı almak için kullanılabilecek bir **Queryresultsurı** sağlar.
 
 ```json
 {
@@ -219,13 +218,13 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 
 ### <a name="query-for-resources"></a>Kaynaklar için sorgu
 
-Yukarıdaki örnekte **value.policyAssignments.policyDefinitions.results.queryResultsUri** belirli bir ilke tanımı için tüm uyumlu olmayan kaynaklar için örnek URI sağlar. Bakarak **$filter** değeri, IsCompliant eşittir (eq) false olarak PolicyAssignmentId ilke tanımı, ardından Policydefinitionıd için belirtilir. Birden çok ilke veya girişim atamaları farklı kapsamlarla Policydefinitionıd var olabilir çünkü PolicyAssignmentId filtreye dahil olmak üzere nedenidir. PolicyAssignmentId hem Policydefinitionıd belirterek, biz bekliyoruz sonuçlarında açık olabilir. Daha önce PolicyStates için kullandığımız **son**, otomatik olarak ayarlayan bir **gelen** ve **için** son 24 saatlik zaman penceresi.
+Yukarıdaki örnekte **Value. Policyaslamalar. policyDefinitions. Results. queryResultsUri** , belirli bir ilke tanımı için uyumlu olmayan tüm kaynaklar için örnek bir URI sağlar. **$Filter** değerine bakarak, ısuyumlu değeri (EQ) false olarak, Policyassignmentıd, ilke tanımı için belirtilir ve sonra Policydefinitionıd 'nin kendisi için belirlenir. Filtrede Policyassignmentıd ekleme nedeni, Policydefinitionıd 'nin farklı kapsamlarla çeşitli ilkede veya girişim atamalarında mevcut olmasından kaynaklanır. Hem Policyassignmentıd hem de Policydefinitionıd belirterek aradığımız sonuçlara açık bir şekilde olabiliriz. Daha önce, PolicyStates için son **24 saatin bir** **Kimden** ve zaman penceresini otomatik olarak ayarlayan **en son**kullandık.
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2018-04-04&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
 ```
 
-Aşağıdaki örnek yanıt, tek bir uyumsuz kaynağı kısaltma için kırpılır. Ayrıntılı yanıt, veri kaynağı, ilke veya girişim ve atama hakkında birkaç bölümü ele alınmakta sahiptir. Ayrıca ilke tanımını atama parametreleri geçirilen gördüğünüzden dikkat edin.
+Aşağıdaki örnek yanıt, kısaltma için uyumlu olmayan tek bir kaynağa kırpılmıştır. Ayrıntılı yanıtta, kaynak, ilke veya girişim ve atama hakkında çeşitli veri parçaları bulunur. İlke tanımına hangi atama parametrelerinin geçtiğini de görebileceğinize dikkat edin.
 
 ```json
 {
@@ -265,7 +264,7 @@ Aşağıdaki örnek yanıt, tek bir uyumsuz kaynağı kısaltma için kırpılı
 
 ### <a name="view-events"></a>Etkinlikleri görüntüleme
 
-Bir kaynak oluşturulduğunda veya güncelleştirildiğinde, ilke değerlendirme sonucu üretilir. Sonuçları çağrılır _ilke olaylarını_. Abonelikle ilişkili son ilke olaylarını görüntülemek için aşağıdaki URI'ı kullanın.
+Bir kaynak oluşturulduğunda veya güncelleştirilirken bir ilke değerlendirme sonucu oluşturulur. Sonuçlara _ilke olayları_denir. Abonelikle ilişkili en son ilke olaylarını görüntülemek için aşağıdaki URI 'yi kullanın.
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyEvents/default/queryResults?api-version=2018-04-04
@@ -290,7 +289,7 @@ Sonuçlarınız aşağıdaki örneğe benzer:
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Azure Ilkesi için Azure PowerShell modülü, PowerShell Galerisi [az. Poliyghts](https://www.powershellgallery.com/packages/Az.PolicyInsights)olarak kullanılabilir.
-PowerShellGet kullanarak modülü kullanarak yükleyebilirsiniz `Install-Module -Name Az.PolicyInsights` (en son sahip olduğunuzdan emin olun [Azure PowerShell](/powershell/azure/install-az-ps) yüklü):
+PowerShellGet kullanarak modülü `Install-Module -Name Az.PolicyInsights` kullanarak yükleyebilirsiniz (en son [Azure PowerShell](/powershell/azure/install-az-ps) yüklü olduğundan emin olun):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -313,7 +312,7 @@ Modül aşağıdaki cmdlet 'lere sahiptir:
 - `Start-AzPolicyRemediation`
 - `Stop-AzPolicyRemediation`
 
-Örnek: En yüksek sayıda uyumlu olmayan kaynağa sahip en üstteki atanan ilkeye ait durum özeti alınıyor.
+Örnek: en yüksek sayıda uyumsuz kaynağa sahip en üstteki atanan ilkeye ait durum özeti alınıyor.
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyStateSummary -Top 1
@@ -324,7 +323,7 @@ PolicyAssignments     : {/subscriptions/{subscriptionId}/resourcegroups/RG-Tags/
                         oft.authorization/policyassignments/37ce239ae4304622914f0c77}
 ```
 
-Örnek: En son değerlendirilen kaynağın durum kaydını alma (varsayılan değer zaman damgasına göre azalan sırada).
+Örnek: en son değerlendirilen kaynağın durum kaydını alma (varsayılan değer zaman damgasına göre azalan sırada).
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyState -Top 1
@@ -350,7 +349,7 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-Örnek: Uyumlu olmayan tüm sanal ağ kaynaklarının ayrıntılarını alma.
+Örnek: uyumlu olmayan tüm sanal ağ kaynaklarının ayrıntılarını alma.
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyState -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'"
@@ -376,7 +375,7 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-Örnek: Belirli bir tarihten sonra oluşan uyumlu olmayan sanal ağ kaynaklarıyla ilgili olayları alma.
+Örnek: belirli bir tarihten sonra gerçekleşen, uyumlu olmayan sanal ağ kaynaklarıyla ilgili olayları alma.
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
@@ -404,7 +403,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-**PrincipalOid** alan, belirli bir kullanıcının Azure PowerShell cmdlet'iyle almak için kullanılabilir `Get-AzADUser`. Değiştirin **{principalOid}** yanıt veren önceki örnekten alın.
+**Prenıd** alanı, Azure PowerShell cmdlet 'ini `Get-AzADUser` olan belirli bir kullanıcıyı almak için kullanılabilir. **{Prenaloıd}** değerini, önceki örnekte aldığınız Yanıtla değiştirin.
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
@@ -413,7 +412,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure İzleyici günlükleri
 
-Aboneliğinize bağlı [etkinlik günlüğü Analizi çözümünden](../../../azure-monitor/platform/activity-log-collect.md) sahip `AzureActivity` `AzureActivity` bir [Log Analytics çalışma alanınız](../../../log-analytics/log-analytics-overview.md) varsa, basit kusto sorguları ve ' ı kullanarak değerlendirme döngüsünün uyumsuzluk sonuçlarını da görüntüleyebilirsiniz. tablosundan. Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
+Aboneliğinize bağlı [etkinlik günlüğü Analizi çözümünden](../../../azure-monitor/platform/activity-log-collect.md) `AzureActivity` ile [Log Analytics bir çalışma alanınız](../../../log-analytics/log-analytics-overview.md) varsa, basit kusto sorguları ve `AzureActivity` tablosunu kullanarak, değerlendirme döngüsünden uyumsuzluk sonuçlarını da görüntüleyebilirsiniz. Azure Izleyici günlüklerindeki Ayrıntılar sayesinde, uyarılar uyumsuzluk izlemek üzere yapılandırılabilir.
 
 
 ![Azure Izleyici günlüklerini kullanarak Azure Ilke uyumluluğu](../media/getting-compliance-data/compliance-loganalytics.png)

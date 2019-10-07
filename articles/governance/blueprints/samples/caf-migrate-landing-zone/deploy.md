@@ -6,14 +6,13 @@ ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 520eded941f625bf90204213188ac1afc94d3111
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cec8d224e52de25fe026a17d57144da3cd53fc5b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802587"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981676"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-migrate-landing-zone-blueprint-sample"></a>Azure geçişi giriş bölgesi şeması örneği için Microsoft Bulut benimseme çerçevesini dağıtma
 
@@ -43,7 +42,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
    - **Blueprint adı** CAF geçiş giriş bölgesi şeması örneğinin kopyasına bir ad verin.
    - **Tanım konumu** Üç noktayı kullanın ve örnek kopyanızı ' e kaydetmek için yönetim grubunu seçin.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya **ileri ' yi seçin: Sayfanın** alt kısmındaki yapıtlar.
+1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
 
 1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunda, daha sonra tanımlayacağımız parametreler vardır. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
 
@@ -69,16 +68,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema atamasının parametre değerlerini sağlayın:
 
-   - Temel
-     - **Abonelikler**: Şema örneğinin kopyasına kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
-     - **Atama adı**: Ad, BLUEPRINT adına göre önceden doldurulur.
+   - Temel Bilgiler
+     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
-     - **Konum**: Yönetilen kimliğin oluşturulacağı bölgeyi seçin.
+     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin.
      - Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır.
        Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Blueprint tanım sürümü**: Şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
+     - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
     
-   - Atamayı Kilitle
+   - Kilit ataması
 
      Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 
@@ -90,8 +89,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
      Bu bölümde tanımlanan parametreler, tutarlılığı sağlamak için şema tanımındaki birçok yapıtlar tarafından kullanılır.
 
-       - **Kuruluş**: Contoso veya fabrikam gibi kuruluşunuzun adını girin, benzersiz olmalıdır.
-       - **Azureregion**: Dağıtım için bir Azure bölgesi seçin.
+       - **Kuruluş**: contoso veya fabrikam gibi kuruluşunuzun adını girin, benzersiz olmalıdır.
+       - **Azureregion**: dağıtım Için bir Azure bölgesi seçin.
        
    - Yapıt parametreleri
 

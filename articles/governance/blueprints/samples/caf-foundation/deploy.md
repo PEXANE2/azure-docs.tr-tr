@@ -6,14 +6,13 @@ ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 98ade4e5c8a14c2d4f5c2a22c2c973fac844861f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 544e5e5eb9884a91fde3898464aa7ce839658a80
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802539"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981685"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft bulut benimseme çerçevesini dağıtma
 
@@ -38,10 +37,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema örneği _hakkında temel bilgileri_ girin:
 
-   - **Blueprint adı**: CAF Foundation şema örneğinin kopyasına bir ad verin.
-   - **Tanım konumu**: Üç noktayı kullanın ve örnek kopyanızı ' e kaydetmek için yönetim grubunu seçin.
+   - **Şema adı**: CAF Foundation şema örneğinin kopyasına bir ad verin.
+   - **Tanım konumu**: üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya **ileri ' yi seçin: Sayfanın** alt kısmındaki yapıtlar.
+1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
 
 1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunda, daha sonra tanımlayacağımız parametreler vardır. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
 
@@ -67,16 +66,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema atamasının parametre değerlerini sağlayın:
 
-   - Temel
-       - **Abonelikler**: Şema örneğinin kopyasına kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
-     - **Atama adı**: Ad, BLUEPRINT adına göre önceden doldurulur.
+   - Temel Bilgiler
+       - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
-     - **Konum**: Yönetilen kimliğin oluşturulacağı bölgeyi seçin.
+     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin.
      - Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır.
        Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Blueprint tanım sürümü**: Şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
+     - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
-   - Atamayı Kilitle
+   - Kilit ataması
 
      Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 
@@ -88,9 +87,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
      Bu bölümde tanımlanan parametreler, tutarlılığı sağlamak için şema tanımındaki birçok yapıtlar tarafından kullanılır.
 
-     - **Kuruluş**: Contoso gibi kuruluşunuzun adını girin, benzersiz olmalıdır.
-     - **Azure bölgesi**: Dağıtım için Azure bölgesini seçin.
-     - **Izin verilen konumlar**: Kaynaklara hangi Azure bölgeleri derlensin?
+     - **Kuruluş**: contoso gibi kuruluşunuzun adını girin, benzersiz olmalıdır.
+     - **Azure bölgesi**: dağıtım Için Azure bölgesini seçin.
+     - **Izin verilen konumlar**: kaynaklara hangi Azure bölgeleri derlensin?
      
    - Yapıt parametreleri
 
@@ -108,10 +107,10 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
 |İzin verilen depolama hesabı SKU'ları|İlke ataması|Policy_Allowed-StorageAccount-SKU 'Lar|Tanılama günlük depolama hesaplarında kullanılan SKU|
-|İzin verilen sanal makine SKU'ları|İlke ataması|Policy_Allowed-VM-SKU 'Lar|İzin verilen sanal makine SKU'ları|
+|İzin verilen sanal makine SKU 'Ları|İlke ataması|Policy_Allowed-VM-SKU 'Lar|İzin verilen sanal makine SKU 'Ları|
 |Kaynak gruplarına CostCenter etıketı Ekle|İlke ataması|Policy_CostCenter_Tag|Maliyetmerkezi etıketını ve değerini kaynak grubundan ekleyin|
 |Ortamınızda izin vermek istemediğiniz kaynak türleri|İlke ataması|İlke _Izin verilen-kaynak türleri|Ortamınızda izin vermek istediğiniz Azure kaynakları|
-|Key Vault dağıt|Resource Manager şablonu|KV-AccessPolicy|Key Vault için izin vermek üzere **kilitli** - <Object ID> Azure AD grubu veya Kullanıcı|
+|Key Vault dağıt|Resource Manager şablonu|KV-AccessPolicy|**Kilitli** -Azure AD grubu veya kullanıcı @no__t Key Vault ' de izin vermek için-1|
 |Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_DataRetention|**Kilitli** -Log Analytics verilerin tutulacağı gün sayısı|
 |Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_Location|Çalışma alanı oluşturulurken kullanılan **kilitli** bölge|
 

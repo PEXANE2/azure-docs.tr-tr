@@ -1,20 +1,19 @@
 ---
-title: Örnek - SQL Server denetim düzeyi denetimi ayarlama
-description: Bu örnek ilke tanımını, bu ayarları belirli bir ayarı eşleşmiyorsa SQL sunucusunun denetim ayarlarını denetler.
+title: Örnek-denetim SQL Server düzeyi denetim ayarı
+description: Bu ayarların belirtilen bir ayarla eşleşmemesi durumunda bu örnek ilke tanımı SQL Server denetim ayarlarını denetler.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: dcba50cc3ed30940c461312c7f09577e693f9b2e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 158efc86c460cfc96f1cd01294bbd653aff1d0f9
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545131"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980584"
 ---
-# <a name="sample---audit-sql-server-level-audit-setting"></a>Örnek - SQL Server denetim düzeyi denetimi ayarlama
+# <a name="sample---audit-sql-server-level-audit-setting"></a>Örnek-denetim SQL Server düzeyi denetim ayarı
 
 Bu ilke, bu ayarlar belirli bir ayarla eşleşmiyorsa SQL sunucusu denetim ayarlarını denetler. Denetim ayarlarının etkin veya devre dışı olması gerektiğini gösteren bir değer belirtirsiniz.
 
@@ -28,7 +27,7 @@ Bu ilke, bu ayarlar belirli bir ayarla eşleşmiyorsa SQL sunucusu denetim ayarl
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![İlke örneği Azure'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-sql-server-auditing%2Fazurepolicy.json)
+[![ Ilke örneğini Azure 'a dağıtın](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FSQL%2Faudit-sql-server-auditing%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

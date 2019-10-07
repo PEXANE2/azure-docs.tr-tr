@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: a0faaeee369a2227f6018141e5aa5d18c9037e9d
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 556a8029b9b5f831ac3ace7ed0fcc474fb2e262e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161991"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978106"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Uyumsuzluk nedenlerini belirleme
 
@@ -85,7 +84,7 @@ Bu ayrıntılar, bir kaynağın Şu anda uyumsuz olduğunu, ancak kaynağın uyu
 
 Aşağıdaki matris, her olası _nedeni_ ilke tanımındaki sorumlu [koşula](../concepts/definition-structure.md#conditions) eşler:
 
-|Reason | Koşul |
+|Neden | Koşul |
 |-|-|
 |Geçerli değer, anahtar olarak hedef değeri içermelidir. |containsKey veya notcontainskey **değil** |
 |Geçerli değer hedef değer içermelidir. |notcontains içerir veya **içermez** |
@@ -94,7 +93,7 @@ Aşağıdaki matris, her olası _nedeni_ ilke tanımındaki sorumlu [koşula](..
 |Geçerli değer, hedef değere eşit veya ondan büyük olmalıdır. |greaterOrEquals veya daha az **değil** |
 |Geçerli değer, hedef değerden büyük olmalıdır. |daha büyük veya **azalmayan** öğeler |
 |Geçerli değer, hedef değere eşit veya ondan küçük olmalıdır. |Azallar veya daha büyük **değil** |
-|Geçerli değer mevcut olmalıdır. |Bulunur |
+|Geçerli değer mevcut olmalıdır. |bulunur |
 |Geçerli değer, hedef değerde olmalıdır. |notın içinde veya **değil** |
 |Geçerli değer hedef değer gibi olmalıdır. |Beğen gibi |
 |Geçerli değer, büyük/küçük harfe duyarlı olmalıdır ve hedef değerle eşleşmelidir. |Match veya notmatch **değil** |
@@ -115,7 +114,7 @@ _Konuk yapılandırma_ kategorisindeki _Auditınotexists_ ilkeleri için, VM 'de
 
 Ayrıca, VM 'de doğrudan oturum açma erişimi de olmayabilir, ancak VM 'nin neden _uyumlu_olmadığı hakkında rapor etmeniz gerekir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 İlke uyumluluk ayrıntılarını görüntülemek için yukarıdaki bölümde bulunan adımları izleyerek başlayın.
 
@@ -125,7 +124,7 @@ Ayrıca, VM 'de doğrudan oturum açma erişimi de olmayabilir, ancak VM 'nin ne
 
 **Konuk atama** sayfası tüm kullanılabilir uyumluluk ayrıntılarını görüntüler. Görünümdeki her satır, makine içinde gerçekleştirilen bir değerlendirmeyi temsil eder. **Neden** sütununda, Konuk atamasının neden _uyumlu_ olmadığı açıklayan bir ifade gösterilmektedir. Örneğin, parola ilkelerini denetleriz, **Reason** sütununda her ayar için geçerli değer de dahil olmak üzere metin görüntülenir.
 
-![Uyumluluk ayrıntılarını görüntüleyin.](../media/determine-non-compliance/guestconfig-compliance-details.png)
+![Uyumluluk ayrıntılarını görüntüle](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -192,7 +191,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Değişiklik geçmişi (Önizleme)
+## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/> değişiklik geçmişi (Önizleme)
 
 Yeni bir **genel önizlemenin**parçası olarak, değişiklik geçmişinin son 14 günü, [tamamlanmış mod silme Işlemini](../../../azure-resource-manager/complete-mode-deletion.md)destekleyen tüm Azure kaynakları için kullanılabilir. Değişiklik geçmişi bir değişikliğin ne zaman algılandığına ilişkin ayrıntıları ve her değişiklik için _görsel bir farkı_ sağlar. Kaynak Yöneticisi Özellikler eklendiğinde, kaldırıldığında veya değiştirilmediğinde değişiklik algılama tetiklenir.
 
@@ -221,5 +220,5 @@ Değişiklik geçmişi verileri [Azure Kaynak Grafiği](../../resource-graph/ove
 - [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](getting-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları](remediate-resources.md)nasıl düzelteceğinizi öğrenin.
+- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

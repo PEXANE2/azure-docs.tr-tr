@@ -1,20 +1,19 @@
 ---
-title: Örnek - etiketi ve değerini kaynak grupları zorunlu kıl
-description: Bu örnek ilke tanımı, bir etiket ve bir kaynak grubu üzerinde bir değer gerektirir.
+title: Örnek-kaynak gruplarında etiketi ve değerini zorunlu kıl
+description: Bu örnek ilke tanımı, kaynak grubunda bir etiket ve bir değer gerektirir.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: a7a76fbde74ab80f8aa0f5e67e6445504c3aafa5
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 00c94aa6077c8a8599b31e9ab37f925fdfebefb0
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545698"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977166"
 ---
-# <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Örnek - etiketi ve değerini kaynak grupları zorunlu kıl
+# <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>Örnek-kaynak gruplarında etiketi ve değerini zorunlu kıl
 
 Bu ilke, kaynak grubunda bir etiket ve değer gerektirir. Gerekli etiket adını ve değerini belirtirsiniz.
 
@@ -50,10 +49,10 @@ Azure CLI ve Azure PowerShell tarafından kullanılan, ilke parametrelerini tan�
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Ad |Tür |Alan |Açıklama |
+|Adı |Tür |Alan |Açıklama |
 |---|---|---|---|
-|tagName |String |etiketler |Etiketin adı; örneğin costCenter|
-|tagValue |String |etiketler |Etiketin değeri; örneğin headquarter|
+|tagName |Dize |etiketler |Etiketin adı; örneğin costCenter|
+|tagValue |Dize |etiketler |Etiketin değeri; örneğin headquarter|
 
 PowerShell veya Azure CLI ile atama oluştururken parametre verileri `-PolicyParameter` (PowerShell) veya `--params` (Azure CLI) kullanılarak dize ya da dosya şeklinde JSON biçiminde iletilebilir.
 PowerShell aynı zamanda cmdlet'e bir Ad/Değer hashtable iletilmesini gereken `-PolicyParameterObject` parametresini de destekler. Burada **Ad** parametrenin adı, **Değer** ise atama sırasında iletilen tek bir değer veya değer dizisidir.
@@ -71,10 +70,9 @@ Bu örnek parametrede _tagName_ alanı için **costCenter** değeri, _tagValue_ 
 }
 ```
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
-[![İlke örneği Azure'a dağıtma](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
-[![Azure kamu için ilke örneği dağıtma](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
+[![ ilke örneğini azure @no__t dağıtma](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)-2[![Ilke örneğini Azure gov 'ye dağıtma](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FResourceGroup%2Fenforce-resourceGroup-tags%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -114,9 +112,9 @@ Betikleri dağıtmak ve kaldırmak için aşağıdaki komutları kullanın. Aşa
 
 | Komut | Notlar |
 |---|---|
-| [Yeni AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Yeni bir Azure İlkesi tanımı oluşturur. |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Yeni bir Azure İlkesi tanımı oluşturur. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | Tek bir kaynak grubunu alır. |
-| [Yeni AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Yeni bir Azure İlkesi ataması oluşturur. Bu örnekte bir tanım sağlıyoruz ancak girişim de kullanılabilir. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Yeni bir Azure İlkesi ataması oluşturur. Bu örnekte bir tanım sağlıyoruz ancak girişim de kullanılabilir. |
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Var olan bir Azure İlkesi atamasını kaldırır. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Var olan bir Azure İlkesi tanımını kaldırır. |
 
@@ -167,7 +165,7 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 ## <a name="rest-api"></a>REST API
 
-### <a name="deploy-with-rest-api"></a>REST API'si ile dağıtma
+### <a name="deploy-with-rest-api"></a>REST API ile dağıtma
 
 - İlke Tanımını (Abonelik kapsamı) oluşturun. İstek Gövdesi için [ilke tanımı](#policy-definition) JSON kodunu kullanın.
 
@@ -218,10 +216,10 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 
 | Hizmet | Grup | İşlem | Notlar |
 |---|---|---|---|
-| Kaynak Yönetimi | İlke Tanımları | [Oluşturma](/rest/api/resources/policydefinitions/createorupdate) | Abonelikte yeni bir Azure İlkesi tanımı oluşturur. Alternatif: [Yönetim grubu oluşturma](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Kaynak Yönetimi | İlke Tanımları | [Oluşturma](/rest/api/resources/policydefinitions/createorupdate) | Abonelikte yeni bir Azure İlkesi tanımı oluşturur. Alternatif: [Yönetim grubunda oluşturma](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
 | Kaynak Yönetimi | İlke Atamaları | [Oluşturma](/rest/api/resources/policyassignments/create) | Yeni bir Azure İlkesi ataması oluşturur. Bu örnekte bir tanım sağlıyoruz ancak girişim de kullanılabilir. |
 | Kaynak Yönetimi | İlke Atamaları | [Silme](/rest/api/resources/policyassignments/delete) | Var olan bir Azure İlkesi atamasını kaldırır. |
-| Kaynak Yönetimi | İlke Tanımları | [Silme](/rest/api/resources/policydefinitions/delete) | Var olan bir Azure İlkesi tanımını kaldırır. Alternatif: [Yönetim Grubu Sil](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Kaynak Yönetimi | İlke Tanımları | [Silme](/rest/api/resources/policydefinitions/delete) | Var olan bir Azure İlkesi tanımını kaldırır. Alternatif: [Yönetim grubunda silme](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

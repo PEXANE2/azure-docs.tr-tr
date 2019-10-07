@@ -7,19 +7,18 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 654ae2da9bcdb6d73de47730aff6870c2e3dfaeb
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 823b890f1898de5006b965ffa19520016aceb121
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001534"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980873"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
 
 Aşağıdaki makalede, UK RESMI ve UK NHS şeması örneklerinin UK RESMI ve UK NHS denetimleriyle nasıl eşlendiğini ayrıntılarıyla anlatılmaktadır. Denetimler hakkında daha fazla bilgi için bkz. [UK resmi](https://www.gov.uk/government/publications/government-security-classifications).
 
-Aşağıdaki eşlemeler **UK resmi** ve **UK NHS** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından,  **\[Önizleme\] denetimi UK resmi ve UK NHS 'ler denetimlerini bulup seçin ve denetim gereksinimleri yerleşik ilke girişimi ' ni desteklemek için belirli VM uzantılarını dağıtın** .
+Aşağıdaki eşlemeler **UK resmi** ve **UK NHS** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, **\[Preview @ no__t-2 DENETIM UK resmi ve UK NHS denetimlerini bulun ve seçin ve denetim gereksinimleri yerleşik ilke girişimi ' ni desteklemek için belırlı VM uzantılarını dağıtın** .
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md)bakın.
@@ -91,27 +90,27 @@ Bu şema Ayrıca, amortisman hesapları ve dış hesaplar dahil olmak üzere inc
 
 Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıklarında uyarı vermek üzere denetleyen bir Azure ilke tanımı atar. Bu tasarım, kimlik doğrulayıcılar güvenliğinin aşılmadığından emin olmak için düzeltici eylem gerçekleştirmenizi sağlar.
 
-- \[Önizleme\]: Linux VM/etc/passwd dosya izinlerinin denetimi 0644 olarak ayarlanır
+- \[Preview @ no__t-1: denetim Linux VM/etc/passwd dosyası izinleri 0644 olarak ayarlanmıştır
 
 Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Windows VM 'Leri denetleyen Azure Ilke tanımlarını atayarak güçlü parolalar zorlamanıza yardımcı olur. Parola gücü ilkesini ihlal eden VM 'lerin farkında, tüm VM Kullanıcı hesaplarının parolalarının ilkeyle uyumlu olduğundan emin olmak için düzeltici eylemler almanıza yardımcı olur.
 
-- \[Önizleme\]: Parola karmaşıklığı ayarı etkin olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtma
-- \[Önizleme\]: Maksimum parola yaşı 70 gün olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: En az 1 günlük parola yaşı olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: En az parola uzunluğu 14 karakter olan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: Önceki 24 parolanın yeniden kullanılmasına izin veren Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: Parola karmaşıklığı ayarı etkin olmayan Windows VM 'Leri denetleme
-- \[Önizleme\]: Maksimum 70 gün parola yaşı olmayan Windows VM 'lerini denetleyin
-- \[Önizleme\]: En az 1 günlük parola yaşı olmayan Windows VM 'lerini denetleyin
-- \[Önizleme\]: En az parola uzunluğu 14 karakter olan Windows VM 'lerini denetleyin
-- \[Önizleme\]: Önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerini denetleyin
+- \[Preview @ no__t-1: parola karmaşıklığı ayarı etkin olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtma
+- \[Preview @ no__t-1: maksimum parola yaşı 70 gün olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
+- \[Preview @ no__t-1: en az 1 günlük parola yaşı olmayan Windows VM 'Leri denetlemek için gereksinimleri dağıtın
+- \[Preview @ no__t-1: en az parola uzunluğu 14 karakter olan Windows sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview @ no__t-1: önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'Leri denetlemek için gereksinimleri dağıtın
+- \[Preview @ no__t-1: parola karmaşıklığı ayarı etkin olmayan Windows VM 'Leri denetleme
+- \[Preview @ no__t-1: maksimum parola yaşı 70 güne sahip olmayan Windows VM 'Leri denetleyin
+- \[Preview @ no__t-1: en az 1 günlük parola yaşı olmayan Windows VM 'Leri denetleyin
+- \[Preview @ no__t-1: en az parola uzunluğu 14 karakter olan Windows VM 'lerini denetleyin
+- \[Preview @ no__t-1: önceki 24 parolanın yeniden kullanılmasına izin veren Windows VM 'lerini denetleyin
 
 Bu şema ayrıca Azure ilke tanımlarını atayarak Azure kaynaklarına erişimi denetlemenize yardımcı olur. Bu ilkeler, kaynaklara daha fazla izin vermeyi sağlayan kaynak türlerinin ve yapılandırmaların kullanımını denetler. Bu ilkeleri ihlal eden kaynakları anlamak, Azure kaynaklarının yetkili kullanıcılarla sınırlı olduğundan emin olmak için düzeltici eylemler almanıza yardımcı olabilir.
 
-- \[Önizleme\]: Parolaları olmayan hesaplara sahip Linux sanal makinelerini denetlemek için gereksinimleri dağıtma
-- \[Önizleme\]: Parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
-- \[Önizleme\]: Parolası olmayan hesaplara sahip Linux VM 'lerini denetleme
-- \[Önizleme\]: Parolasız hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetleme
+- \[Preview @ no__t-1: parolaları olmayan hesaplara sahip Linux sanal makinelerini denetlemek için gereksinimleri dağıtın
+- \[Preview @ no__t-1: parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetlemek için gereksinimleri dağıtın
+- \[Preview @ no__t-1: parolası olmayan hesaplara sahip Linux VM 'lerini denetleme
+- \[Preview @ no__t-1: parola olmadan hesaplardan uzak bağlantılara izin veren Linux VM 'lerini denetleme
 - Depolama hesaplarının yeni Azure Resource Manager kaynaklarına geçirilmesi gerekir
 - Sanal makinelerin yeni Azure Resource Manager kaynaklara geçirilmesi gerekir
 - Yönetilen diskleri kullanmayan VM 'Leri denetleme
@@ -148,7 +147,7 @@ Bu şema Ayrıca, hesap tanımlarını, ve yükseltilmiş izinlere sahip olan am
 
 Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıklarında uyarı vermek üzere denetleyen bir Azure ilke tanımı atar. Bu tasarım, kimlik doğrulayıcılar güvenliğinin aşılmadığından emin olmak için düzeltici eylem gerçekleştirmenizi sağlar.
 
-- \[Önizleme\]: Linux VM/etc/passwd dosya izinlerinin denetimi 0644 olarak ayarlanır
+- \[Preview @ no__t-1: denetim Linux VM/etc/passwd dosyası izinleri 0644 olarak ayarlanmıştır
 
 ## <a name="13-audit-information-for-users"></a>Kullanıcılar için 13 denetim bilgileri
 
@@ -157,8 +156,8 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 - SQL Server üzerindeki gelişmiş veri güvenliği ayarlarında denetim etkinleştirilmelidir
 - Tanılama ayarını denetle
 - SQL Server Level denetim ayarlarını denetleme
-- \[Önizleme\]: Linux sanal makineleri için Log Analytics aracısı dağıtma
-- \[Önizleme\]: Windows VM 'Leri için Log Analytics aracısı dağıtma
+- \[Preview @ no__t-1: Linux sanal makineleri için Log Analytics aracısı dağıtma
+- \[Preview @ no__t-1: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Sanal ağlar oluşturulduğunda Ağ İzleyicisi dağıt
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -167,7 +166,7 @@ UK RESMI ve UK NHS şemaları denetim eşlemesini gözden geçirdiğinize göre,
 
 > [!div class="nextstepaction"]
 > [UK resmi ve UK NHS şemaları-genel bakış](./index.md)
-> [UK resmi ve UK NHS şemaları-dağıtım adımları](./deploy.md)
+> [Birleşik KRALLıK resmi ve UK NHS şemaları-dağıtım adımları](./deploy.md)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 

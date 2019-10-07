@@ -1,20 +1,19 @@
 ---
-title: Örnek - izin verilmeyen kaynak türleri
-description: Bu örnek ilke tanımını belirtilen kaynak türleri dağıtımını engelliyor.
+title: Örnek-izin verilmeyen kaynak türleri
+description: Bu örnek ilke tanımı, belirtilen kaynak türlerinin dağıtımına izin vermez.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: d84fdaad34ef35ac9aace86ca0813ad7982a4db0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b053d3de627432ec5d0db9ff25d826a4dd7464d7
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60545087"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980429"
 ---
-# <a name="sample---not-allowed-resource-types"></a>Örnek - izin verilmeyen kaynak türleri
+# <a name="sample---not-allowed-resource-types"></a>Örnek-izin verilmeyen kaynak türleri
 
 Bu ilke, belirtilen kaynak türlerinin dağıtımını engeller. Engellenen kaynak türü dizisini belirtirsiniz.
 
@@ -28,7 +27,7 @@ Bu ilke, belirtilen kaynak türlerinin dağıtımını engeller. Engellenen kayn
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![İlke örneği Azure'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fnot-allowed-resourcetypes%2Fazurepolicy.json)
+[![ Ilke örneğini Azure 'a dağıtın](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fnot-allowed-resourcetypes%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

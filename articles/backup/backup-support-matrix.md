@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6b79b34b1db6c201a8f132e4c608e251edb3666a
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 9671ddcf98ae97c0a3df49cce008faf403f5dcd2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735413"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981105"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -30,12 +30,12 @@ Azure Backup yedeklemeleri düzenlemek ve yönetmek için kurtarma hizmetleri ka
 
 Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanmaktadır:
 
-**Özelliği** | **Ayrıntılar**
+**Özellik** | **Ayrıntılar**
 --- | ---
 **Abonelikte kasa** | Tek bir abonelikte en fazla 500 kurtarma hizmeti Kasası.
 **Kasadaki makineler** | Tek bir kasada en fazla 1.000 Azure VM.<br/><br/> 50 MABS sunucusuna kadar tek bir kasada kayıt yapılabilir.
 **Kasa depolamadaki veri kaynakları** | Maksimum 54.400 GB. Azure VM yedeklemeleri için sınır yoktur.
-**Kasaya yedeklemeler** | **Azure VM 'Leri:** Günde bir kez.<br/><br/>**DPM/MABS tarafından korunan makineler:** Günde iki kez.<br/><br/> **MARS Aracısı kullanılarak doğrudan yedeklenen makineler:** Günde üç kez.
+**Kasaya yedeklemeler** | **Azure VM 'leri:** Günde bir kez.<br/><br/>**DPM/MABS tarafından korunan makineler:** Günde iki kez.<br/><br/> **Mars Aracısı kullanılarak doğrudan yedeklenen makineler:** Günde üç kez.
 **Kasaların arasındaki yedeklemeler** | Yedekleme bir bölgede yer alan.<br/><br/> Yedeklemek istediğiniz VM 'Leri içeren her Azure bölgesinde bir kasaya ihtiyacınız vardır. Farklı bir bölgeye yedekleme yapamazsınız.
 **Kasaları taşı** | Kasalarını abonelikler arasında veya aynı abonelikteki kaynak grupları arasında [taşıyabilirsiniz](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) .
 **Kasaları arasında veri taşıma** | Yedeklenen verilerin kasaların arasına taşınması desteklenmez.
@@ -45,7 +45,7 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 
 Şirket içi makineleri yedeklemek istiyorsanız bu adım desteklenir:
 
-**Makin** | **Yedeklenen Özellikler** | **Location** | **Özellikler**
+**Makin** | **Yedeklenen Özellikler** | **Konum** | **Özellikler**
 --- | --- | --- | ---
 **Windows makinenin MARS aracısıyla doğrudan yedeklenmesi** | Dosyalar, klasörler, sistem durumu | Kurtarma Hizmetleri kasasına yedekleyin. | Günde üç kez yedekleme<br/><br/> Uygulamayla uyumlu yedekleme yok<br/><br/> Dosya, klasör, birim geri yükleme
 **MARS Aracısı ile Linux makinenin doğrudan yedeklemesi** | Yedekleme desteklenmiyor
@@ -56,16 +56,16 @@ Aşağıdaki tabloda, kurtarma hizmetleri kasalarının özellikleri açıklanma
 
 ### <a name="azure-vm-limits"></a>Azure VM sınırları
 
-**Sınırı** | **Ayrıntılar**
+**Sınır** | **Ayrıntılar**
 --- | ---
 **Azure VM veri diskleri** | 16 sınırı
-**Azure VM veri diski boyutu** | Ayrı diskler 4.095 GB 'a kadar olabilir
+**Azure VM veri diski boyutu** | , Sanal makinelerin her disk boyutu için 30 TB 'a kadar ve bir VM 'deki tüm diskler için en fazla 256 TB 'lık şekilde yedeklenmesini destekler.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM yedekleme seçenekleri
 
 Azure VM 'lerini yedeklemek istiyorsanız bu destek aşağıda verilmiştir:
 
-**Makin** | **Yedeklenen Özellikler** | **Location** | **Özellikler**
+**Makin** | **Yedeklenen Özellikler** | **Konum** | **Özellikler**
 --- | --- | --- | ---
 **VM uzantısı kullanarak Azure VM yedeklemesi** | Tüm VM | Kasaya yedekleyin. | Bir VM için yedeklemeyi etkinleştirdiğinizde uzantı yüklendi.<br/><br/> Günde bir kez yedekleyin.<br/><br/> Windows VM 'Leri için uygulamayla uyumlu yedekleme; Linux VM 'Ler için dosya tutarlı yedekleme. Linux makineler için uygulama tutarlılığını, Özel betikler kullanarak yapılandırabilirsiniz.<br/><br/> VM 'yi veya diski geri yükleyin.<br/><br/> Bir Azure VM 'yi şirket içi bir konuma yedekleyemiyorum.
 **MARS Aracısı kullanarak Azure VM yedeklemesi** | Dosyalar, klasörler, sistem durumu | Kasaya yedekleyin. | Günde üç kez yedekleyin.<br/><br/> Tüm VM yerine belirli dosya veya klasörleri yedeklemek istiyorsanız, MARS Aracısı VM uzantısıyla birlikte çalışabilir.
@@ -116,10 +116,10 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 
 **Makin** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-**DPM/MABS olmayan şirket içi Windows makineleri** | ![Evet][green] | ![Evet][green]
-**Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
-**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
-**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
+**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Yes][green]
+**Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Sıkıştırma desteği
 
@@ -130,18 +130,18 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 
 **Makin** | **MABS/DPM 'ye Sıkıştır (TCP)** | **Kasaya Sıkıştır (HTTPS)**
 --- | --- | ---
-**Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Evet][green]
-**VM uzantısı kullanarak Azure VM 'lerini yedekleme** | NA | NA
-**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Evet][green] | ![Evet][green]
+**Şirket içi Windows makinelerini doğrudan yedekleme** | Yok | ![Yes][green]
+**VM uzantısı kullanarak Azure VM 'lerini yedekleme** | Yok | Yok
+**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
 **Ayar** | **Limitler**
 --- | ---
 **Korumalı örnek başına en fazla kurtarma noktası (makine veya iş yükü)** | 9\.999
-**Kurtarma noktası için en uzun süre sonu zamanı** | Sınır yok
+**Kurtarma noktası için en uzun süre sonu zamanı** | Sınırsız
 **DPM/MABS için maksimum yedekleme sıklığı** | SQL Server için 15 dakikada bir<br/><br/> Diğer iş yükleri için saatte bir
-**Kasadan maksimum yedekleme sıklığı** | **Şirket içi Windows makineleri veya MARS çalıştıran Azure VM 'Leri:** Günde üç<br/><br/> **DPM/MABS:** Günde iki<br/><br/> **Azure VM yedeklemesi:** Günde bir
+**Kasadan maksimum yedekleme sıklığı** | Şirket **Içi Windows makineleri veya Mars çalıştıran Azure VM 'leri:** Günde üç<br/><br/> **DPM/MABS:** Günde iki<br/><br/> **Azure VM yedeklemesi:** Günde bir
 **Kurtarma noktası bekletme** | Günlük, haftalık, aylık, yıllık
 **Maksimum bekletme süresi** | Yedekleme sıklığına bağlıdır
 **DPM/MABS diskindeki kurtarma noktaları** | dosya sunucuları için 64; uygulama sunucuları için 448 <br/><br/>Şirket içi DPM için sınırsız bant kurtarma noktası

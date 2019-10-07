@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 8d3cee73d8614c4aea2d2883cdcf2f049b1b8f67
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5c62fdb698dddf293d339904fd0c854052d636eb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232940"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981041"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
@@ -20,17 +19,17 @@ ms.locfileid: "70232940"
 
 ## <a name="locking-modes-and-states"></a>Kilitleme modları ve durumlar
 
-Kilitleme modu, şema ataması için geçerlidir ve üç seçeneğe sahiptir: **Kilitleme**, **salt okuma**veya **silme**. Kilitleme modu, bir şema ataması sırasında yapıt dağıtımı sırasında yapılandırılır. Şema ataması güncelleştirilerek farklı bir kilitleme modu ayarlanabilir.
+Kilitleme modu, şema ataması için geçerlidir ve üç seçeneğe sahiptir: **kilitleme**, **salt okuma**veya **silme**. Kilitleme modu, bir şema ataması sırasında yapıt dağıtımı sırasında yapılandırılır. Şema ataması güncelleştirilerek farklı bir kilitleme modu ayarlanabilir.
 Ancak, kilitleme modları, şema dışında değiştirilemez.
 
-Bir şema atamasında yapıtlar tarafından oluşturulan kaynaklar dört duruma sahiptir: **Kilitli değil**, **salt oku**, **düzenlenemiyor/silinemiyor**veya silinemiyor. Her yapıt türü **kilitli değil** durumunda olabilir. Aşağıdaki tablo bir kaynağın durumunu belirlemede kullanılabilir:
+Şema atamasında yapıtlar tarafından oluşturulan kaynakların dört durumu vardır: **kilitli değil**, **salt okunurdur**, **düzenleme/silme yapılamaz** **veya silinemez**. Her yapıt türü **kilitli değil** durumunda olabilir. Aşağıdaki tablo bir kaynağın durumunu belirlemede kullanılabilir:
 
-|Mod|Yapıt kaynak türü|State|Açıklama|
+|Mod|Yapıt kaynak türü|Eyalet|Açıklama|
 |-|-|-|-|
 |Kilitleme|*|Kilitlenmedi|Kaynaklar, planlar tarafından korunmuyor. Bu durum, bir **salt okunurdur** veya bir şema atamasının dışında kaynak grubu yapıtı **silme** ' ya eklenen kaynaklar için de kullanılır.|
-|Salt Okunur|Resource group|Düzenleme/silme yapılamıyor|Kaynak grubu salt okunurdur ve kaynak grubundaki Etiketler değiştirilemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
+|Salt Okunur|Kaynak grubu|Düzenleme/silme yapılamıyor|Kaynak grubu salt okunurdur ve kaynak grubundaki Etiketler değiştirilemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
 |Salt Okunur|Kaynak olmayan Grup|Salt Okunur|Kaynak hiçbir şekilde değiştirilemez--değişiklik yok ve silinemez.|
-|Silmeyin|*|Silinemiyor|Kaynaklar değiştirilebilir, ancak silinemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
+|Silme|*|Silinemiyor|Kaynaklar değiştirilebilir, ancak silinemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
 
 ## <a name="overriding-locking-states"></a>Kilitleme durumlarını geçersiz kılma
 
@@ -42,14 +41,14 @@ Bu güvenlik ölçüsü, tanımlanan şema 'in ve yanlışlıkla ya da programl�
 
 Atama tarafından korunan bir kaynağı değiştirmek veya silmek için gerekli hale gelirse, bunu iki şekilde yapabilirsiniz.
 
-- Şema atamasını kilitleme moduna yükseltme
+- Şema atamasını kilitleme **moduna yükseltme**
 - Şema atamasını silme
 
 Atama kaldırıldığında, planlar tarafından oluşturulan kilitler kaldırılır. Ancak, kaynak arka planda bırakılır ve normal yollarla silinmelidir.
 
 ## <a name="how-blueprint-locks-work"></a>Şema kilitleri nasıl çalışır?
 
-Atama **yalnızca okuma** veya **silme** seçeneği belirlenmişse, bir şema atama sırasında yapıt kaynaklarına reddetme izni reddetme eylemi uygulanır. [](../../../role-based-access-control/deny-assignments.md) Reddetme eylemi, BLUEPRINT atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimliğe göre yapıt kaynaklarından kaldırılabilir. Bu güvenlik ölçüsü, kilitleme mekanizmasını zorlar ve şema kilidi 'nin şemalar dışında kaldırılmasını önler.
+Atama **yalnızca okuma** veya **silme** seçeneği belirlenmişse, bir şema atama sırasında yapıt [kaynaklarına reddetme izni reddetme eylemi](../../../role-based-access-control/deny-assignments.md) uygulanır. Reddetme eylemi, BLUEPRINT atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimliğe göre yapıt kaynaklarından kaldırılabilir. Bu güvenlik ölçüsü, kilitleme mekanizmasını zorlar ve şema kilidi 'nin şemalar dışında kaldırılmasını önler.
 
 ![Kaynak grubunda Blueprint reddetme ataması](../media/resource-locking/blueprint-deny-assignment.png)
 
@@ -57,8 +56,8 @@ Her modun [reddetme atama özellikleri](../../../role-based-access-control/deny-
 
 |Mod |İzinler. eylemler |Permissions. NotActions |Sorumlular [i]. Türüyle |Excludesorumlularını [i]. Numarasını | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Salt Okunur |**\*** |**\*/Read** |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
-|Silmeyin |**\*/Delete** | |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
+|Salt Okunur |**\*** |**\*/okuma** |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
+|Silme |**\*/Sil** | |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
 
 > [!IMPORTANT]
 > Azure Resource Manager, rol atama ayrıntılarını 30 dakikaya kadar önbelleğe alır. Sonuç olarak, şemayı reddetme, şema kaynaklarını reddetme eylemini reddetme işlemleri hemen etkili olmayabilir. Bu süre boyunca, BLUEPRINT kilitleri tarafından korunması amaçlanan bir kaynağı silmek mümkün olabilir.
@@ -111,7 +110,7 @@ Bu, **Excludedsorumlularını**içeren bir istek gövdesi örneğidir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Yeni kaynakları koru](../tutorials/protect-new-resources.md) öğreticisini izleyin.
-- [Şema yaşam döngüsü](lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
 - [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.

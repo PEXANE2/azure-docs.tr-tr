@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: pafarley
-ms.openlocfilehash: fdf2b132b5d07b2b12c679cb436968c6fb19887e
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: a51a8e02ec08b9a4ee353c2c45345c4d01246894
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719505"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981823"
 ---
 # <a name="quickstart-computer-vision-client-library-for-nodejs"></a>Hızlı başlangıç: node. js için Görüntü İşleme istemci kitaplığı
 
@@ -228,7 +228,7 @@ Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karak
 
 ### <a name="set-up-test-images"></a>Test görüntülerini ayarlama
 
-Bir başvuru kaydedin metin ayıklamak istediğiniz görüntülerin URL 'SI.
+Metin ayıklamak istediğiniz görüntülerin URL 'SI başvurusunu kaydedin.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 

@@ -7,13 +7,12 @@ ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 430cf7cde22cc8de337d33e1f083121503d084f5
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802346"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980936"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğini dağıtma
 
@@ -38,10 +37,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema örneği _hakkında temel bilgileri_ girin:
 
-   - **Blueprint adı**: PCI DSS v 3.2.1 şema örneğinin kopyasına bir ad verin.
-   - **Tanım konumu**: Üç noktayı kullanın ve örnek kopyanızı ' e kaydetmek için yönetim grubunu seçin.
+   - **Şema adı**: PCI-DSS v 3.2.1 şema örneğinin kopyası için bir ad sağlayın.
+   - **Tanım konumu**: üç noktayı kullanın ve örneğin kopyasını kaydetmek için yönetim grubunu seçin.
 
-1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya **ileri ' yi seçin: Sayfanın** alt kısmındaki yapıtlar.
+1. Sayfanın üst kısmındaki _yapıtlar_ sekmesini veya sonraki: sayfanın en altındaki **yapıtları** seçin.
 
 1. Şema örneğini oluşturan yapıtların listesini gözden geçirin. Yapıtların çoğunda, daha sonra tanımlayacağımız parametreler vardır. Şema örneğini gözden geçirmeyi bitirdiğinizde **Taslağı kaydet** ' i seçin.
 
@@ -67,15 +66,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema atamasının parametre değerlerini sağlayın:
 
-   - Temel
+   - Temel Bilgiler
 
-     - **Abonelikler**: Şema örneğinin kopyasına kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
-     - **Atama adı**: Ad, BLUEPRINT adına göre önceden doldurulur.
+     - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
+     - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
-     - **Konum**: Yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Blueprint tanım sürümü**: Şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
+     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
-   - Atamayı Kilitle
+   - Kilit ataması
 
      Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 
@@ -98,11 +97,11 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Preview\] Audit PCI v 3.2.1:2018 denetimleri ve belirli VM uzantılarını, denetim gereksinimlerini destekleyecek şekilde dağıtın|İlke Ataması|Kaynak türleri listesi | Seçili kaynak türleri için tanılama ayarını denetleyin. Varsayılan değer tüm kaynaklar seçilidir| 
+|\[Preview @ no__t-1 denetim PCI v 3.2.1: denetim gereksinimlerini desteklemek için belirli VM uzantılarını 2018 denetimleri ve dağıtımı|İlke Ataması|Kaynak türleri listesi | Seçili kaynak türleri için tanılama ayarını denetleyin. Varsayılan değer tüm kaynaklar seçilidir| 
 |İzin verilen konumlar|İlke Ataması|Izin verilen konumların listesi|Herhangi bir kaynağın dağıtılması için izin verilen veri merkezi konumları listesi. Bu liste, istenen Azure konumlarına küresel olarak özelleştirilebilir. İzin vermek istediğiniz konumları seçin.| 
 |Kaynak grupları için izin verilen konumlar|İlke Ataması |İzin verilen konum |Bu ilke, kuruluşunuzun içinde kaynak grupları oluşturabileceğiniz konumları kısıtlamanıza olanak sağlar. Coğrafi uyumluluk gereksinimlerinizi zorlamak için kullanın.| 
-|SQL sunucularına Denetim dağıt|İlke Ataması|Bekletme günleri|Gün sayısı cinsinden veri randevu. Varsayılan değer 180, ancak PCI 365 gerektirir.| 
-|SQL sunucularına Denetim dağıt|İlke Ataması|Depolama hesabı için kaynak grubu adı|Denetim, veritabanı olaylarını Azure Depolama hesabınızdaki bir denetim günlüğüne yazar (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılacak bir SQL Server oluşturulduğu her bölgede oluşturulur).| 
+|SQL Server 'lar üzerinde denetim dağıtma|İlke Ataması|Bekletme günleri|Gün sayısı cinsinden veri randevu. Varsayılan değer 180, ancak PCI 365 gerektirir.| 
+|SQL Server 'lar üzerinde denetim dağıtma|İlke Ataması|Depolama hesabı için kaynak grubu adı|Denetim, veritabanı olaylarını Azure Depolama hesabınızdaki bir denetim günlüğüne yazar (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılacak bir SQL Server oluşturulduğu her bölgede oluşturulur).| 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

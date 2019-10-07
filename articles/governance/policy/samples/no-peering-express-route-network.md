@@ -1,20 +1,19 @@
 ---
-title: Örnek - ağ için Express Route ağ eşlemesi yok
-description: Bu örnek ilke tanımı, bir ağ eşlemesi için belirtilen kaynak grubunda bir ağ ilişkili yasaklar.
+title: Örnek-Express Route Network 'e ağ eşlemesi yok
+description: Bu örnek ilke tanımı, ağ eşlemesinin belirtilen bir kaynak grubundaki bir ağla ilişkilendirilmesini engeller.
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: d9376a3f241cfd43d8e9a8d4ed3d18de31f997b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 21149cb1dce03b358d4fc36e0038ea8c5267b3d1
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60509642"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980460"
 ---
-# <a name="sample---no-network-peering-to-express-route-network"></a>Örnek - ağ için Express Route ağ eşlemesi yok
+# <a name="sample---no-network-peering-to-express-route-network"></a>Örnek-Express Route Network 'e ağ eşlemesi yok
 
 Bu ilke, bir ağ eşlemesinin belirli bir kaynak grubundaki bir ağ ile ilişkilendirilmesini önler. Merkezi yönetilen ağ altyapısı ile bağlantıyı engellemek için kullanın. İlişkilendirmeyi önlemek için kaynak grubunun adını belirtirsiniz.
 
@@ -28,7 +27,7 @@ Bu ilke, bir ağ eşlemesinin belirli bir kaynak grubundaki bir ağ ile ilişkil
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-[![İlke örneği Azure'a dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fno-network-peerings-to-er-network%2Fazurepolicy.json)
+[![ Ilke örneğini Azure 'a dağıtın](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FNetwork%2Fno-network-peerings-to-er-network%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 

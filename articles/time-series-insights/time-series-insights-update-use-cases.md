@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: f4eb1b69a1464cacaf666e49f4aff7422d63611d
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264524"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981164"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights Önizleme kullanım örnekleri
 
@@ -30,7 +30,7 @@ Bu makalede Azure Time Series Insights önizlemesi için bazı yaygın kullanım
 
 Bu kullanım senaryolarına genel bir bakış aşağıdaki bölümlerde açıklanmıştır.
 
-## <a name="introduction"></a>Giriş
+## <a name="introduction"></a>Tanıtım
 
 Azure Time Series Insights, uçtan uca bir hizmet olarak platform sunumudur. Yüksek düzeyde tanımlı, zaman serisi iyileştirilmiş IoT ölçeğinde verileri toplamak, işlemek, depolamak, çözümlemek ve sorgulamak için kullanılır. Time Series Insights, geçici veri araştırması ve işletimsel analizler için idealdir. Time Series Insights, endüstriyel IoT dağıtımlarının geniş ihtiyaçlarını karşılayan benzersiz bir şekilde genişletilebilir, özelleştirilmiş bir hizmet sunumudur.
 
@@ -56,11 +56,11 @@ Time Series Insights depolanan verilerle etkileşimde bulunmak için üç temel 
 
 - Başlangıç yapmanın ikinci yolu, Web uygulamanıza güçlü grafikler ve grafikler eklemek için JavaScript SDK 'sını kullanmaktır. Yalnızca birkaç satır kodla, güçlü sorgular yazabilirsiniz. Çizgi grafiklerini, pasta grafiklerini, çubuk grafiklerini, heavharitaları, veri kılavuzlarını ve daha fazlasını doldurmak için bunları kullanın. Bu öğelerin tümü SDK kullanılarak kullanıma hazır. SDK Ayrıca Time Series Insights sorgu API 'Lerini de soyutlar. Bunları, bir panoda göstermek istediğiniz verileri sorgulamak için SQL benzeri koşullar yazmak üzere kullanabilirsiniz. Karma sunum katmanı çözümleri için Time Series Insights parametreli URL 'Ler sunar. Verilerle ilgili ayrıntılı bilgi için Time Series Insights önizleme Gezgini ile sorunsuz bağlantı noktaları sağlar.
 
-    * JavaScript SDK hakkında daha fazla bilgi edinmek için [TIME SERIES INSIGHTS js istemci kitaplığı](tutorial-explore-js-client-lib.md) ve [Time Series Insights istemci](https://github.com/Microsoft/tsiclient) belgelerini okuyun.
+    * JavaScript SDK hakkında daha fazla bilgi edinmek için [TIME SERIES INSIGHTS js istemci kitaplığı](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) ve [Time Series Insights istemci](https://github.com/Microsoft/tsiclient) belgeleri hakkında bilgi edinin.
 
     * [Azure Time Series Insights önizleme Gezgininde verileri görselleştirmeyi](time-series-insights-update-explorer.md)Inceleyerek URL 'leri ve yeni kullanıcı arabirimini paylaşma hakkında daha fazla bilgi edinin.
 
-- Başlangıç yapmanın üçüncü yolu Time Series Insights ' de depolanan verileri sorgulamak için güçlü API 'Leri kullanmaktır. Time Series Insights, `from`, ve `first` `to` gibi`last`zamana bağlı işleçlere sahiptir. ,,, `average`, Ve `split by` `order by` `min` `max` gibitoplamalarave`DateHistogram`Dönüştürmelere sahiptir. `has`Ayrıca ,`in` ,,`REGEX`,, ve gibi filtreleme işleçleri vardır. `and` `or` `greater than` Tüm bu işleçler, aşağı akış uygulamalarının verilerinize yönelik ilginç eğilimleri ve desenleri hızlı bir şekilde bulmasını sağlar. Eğilimleri belirlemek için ana büyümeleri doldurmak üzere bunları kullanın.
+- Başlangıç yapmanın üçüncü yolu Time Series Insights ' de depolanan verileri sorgulamak için güçlü API 'Leri kullanmaktır. Time Series Insights, `from`, `to`, `first` ve `last` gibi zamana bağlı işleçlere sahiptir. @No__t-0, `min`, `max`, `split by`, `order by` ve `DateHistogram` gibi toplamalara ve Dönüştürmelere sahiptir. Ayrıca, `has`, `in`, `and`, `or`, `greater than` ve `REGEX` gibi filtreleme işleçleri de vardır. Tüm bu işleçler, aşağı akış uygulamalarının verilerinize yönelik ilginç eğilimleri ve desenleri hızlı bir şekilde bulmasını sağlar. Eğilimleri belirlemek için ana büyümeleri doldurmak üzere bunları kullanın.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>İşlem analizi ve işlem verimliliğini sağlama
 
@@ -82,11 +82,11 @@ Toplanan veriler, akış sorgulama ve analiz senaryoları için onu temizleştir
 
 Time Series Insights, geçmiş veriler üzerinde neredeyse gerçek zamanlı veri araştırması ve varlık tabanlı öngörüler sunar. İş gereksinimlerinize bağlı olarak, MapReduce ve Hive işleri, Time Series Insights Azure HDInsight 'a bağlanarak Time Series Insights depolanan veriler üzerinde çalışabilir. Time Series Insights depolanan veriler, Time Series Insights ortak yüzey sorgu API 'Leri aracılığıyla Power BI ve diğer müşteri uygulamaları tarafından kullanılabilir. Bu veriler, derin iş ve operasyonel zeka senaryoları için kullanılabilir.
 
-## <a name="advanced-analytics"></a>Gelişmiş analiz
+## <a name="advanced-analytics"></a>İleri düzey analitik
 
 Machine Learning ve Azure Databricks gibi gelişmiş analiz hizmetleriyle tümleştirin. Milyonlarca cihazdan ham verileri Time Series Insights. Azure Analytics Hizmetleri paketi tarafından sorunsuz şekilde kullanılabilecek bağlamsal verileri ekler.
 
-[![Analiz](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
+[![Analytics](media/v2-update-use-cases/advanced-analytics.svg)](media/v2-update-use-cases/advanced-analytics.svg#lightbox)
 
 Gelişmiş analiz ve makine öğrenimi, büyük hacimlerden oluşan verileri kullanır ve işler. Bu veriler, veri odaklı kararlar almak ve tahmine dayalı analiz yapmak için kullanılır. IoT kullanım durumlarında, gelişmiş analiz algoritmaları Milyonlarca cihazdan toplanan verilerden bilgi edinirsiniz. Bu cihazlar her saniye birden çok kez veri iletir. IoT cihazlarından toplanan veriler RAW olur. Cihazın konumu ve algılayıcı okuma birimi gibi bağlamsal bilgiler eksiktir. Sonuç olarak, ham verilerin doğrudan gelişmiş analiz için kullanılması zordur.
 

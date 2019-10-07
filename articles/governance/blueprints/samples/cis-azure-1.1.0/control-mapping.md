@@ -6,20 +6,19 @@ ms.author: dacoulte
 ms.date: 08/09/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: f048262003a3567175c40ebf4ee744c41e11b5f9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3814b5169a687a854cb977eee90fbf6c3fd45afe
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918703"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980971"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure temel kıyaslama kıyaslama şeması örneği
 
 Aşağıdaki makalede, Azure şemaları CIS Microsoft Azure, kıyaslama şeması örnek haritaları olan CIS Microsoft Azure, kıyaslama önerilerini temel alarak ve Öneriler hakkında daha fazla bilgi için bkz. [cıs Microsoft Azure kuruluş kıyaslaması](https://www.cisecurity.org/benchmark/azure/).
 
 Aşağıdaki eşlemeler, **Yönetim ve kıyaslama v 1.1.0** önerilerini temel alarak Microsoft Azure. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir öneri eşlemesine atlayın.
-Eşlenmiş önerilerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından,  **\[Önizleme\] denetimi Microsoft Azure CIS 'yi bulun ve seçin. kıyaslama v 1.1.0 önerilerini temel alarak ve denetim gereksinimleri yerleşik ilke girişimi 'ni desteklemek için belirli VM uzantılarını dağıtın** .
+Eşlenmiş önerilerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, **\[Preview @ no__t-2 denetim MICROSOFT Azure CIS ' yi bulun ve seçin, kıyaslama v 1.1.0 önerilerini ve belırlı VM uzantılarını dağıtarak denetim gereksinimleri** yerleşik ilke girişimi ' ni destekler.
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ve bir veya daha fazla ilke arasında genellikle bir 1:1 veya bir eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md)bakın.
@@ -201,7 +200,7 @@ Bu şema, bu CIS önerisiyle hizalanan bir [Azure ilke](../../../policy/overview
 
 Bu şema, bu CIS önerisiyle hizalanan bir [Azure ilke](../../../policy/overview.md) tanımı atar.
 
-- \[Önizleme\]: Rol tabanlı Access Control (RBAC), Kubernetes hizmetlerinde kullanılmalıdır
+- \[Preview @ no__t-1: Kubernetes hizmetlerinde rol tabanlı Access Control (RBAC) kullanılmalıdır
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Web uygulamasının tüm HTTP trafiğini Azure App Service ' de HTTPS 'ye yönlendirdiğinden emin olun
 
@@ -214,7 +213,7 @@ Bu şema, bu CIS önerisiyle hizalanan bir [Azure ilke](../../../policy/overview
 Artık CIS Microsoft Azure temel alan Kıyaslanmaların denetim eşlemesini gözden geçirdiğinize göre, girişimi atamak için Azure portal Azure Ilkesi şeması hakkında bilgi edinmek için aşağıdaki makaleyi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [CIS Microsoft Azure temel geçişleri kıyaslama şeması-genel bakış](./index.md)
+> [Cıs Microsoft Azure temel geçişleri kıyaslama şeması-genel bakış](./index.md)
 > [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/Definitions)
 
 Şemalar ve bunların kullanımı hakkındaki diğer makaleler:

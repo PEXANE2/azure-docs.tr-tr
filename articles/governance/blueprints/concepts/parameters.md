@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: ee44d744c580dd9fbf20e7186b6e76fdc74cc5d0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2bb38e0698d7504ba1bb139ca1bd5e3b14e5cdd4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71004087"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981065"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
@@ -62,7 +61,7 @@ Azure Key Vault hakkında daha fazla bilgi için bkz. [Key Vault genel bakış](
 
 1. Mevcut bir şema öğesine tıklayın ve ardından şemayı **Düzenle** ' ye tıklayın veya **+ şema oluştur** ' a tıklayın ve **temel** bilgiler sekmesindeki bilgileri doldurun.
 
-1. İleri **' ye tıklayın: Yapılar veya yapılar sekmesine tıklayın.**
+1. **İleri: yapıtlar** ' e tıklayın veya **yapılar** sekmesine tıklayın.
 
 1. Parametre seçeneklerine sahip şema öğesine eklenen yapılar, **Parameters** sütununda **doldurulmuş X/Y parametrelerini** görüntüler. Yapıt parametrelerini düzenlemek için yapıt satırına tıklayın.
 
@@ -135,7 +134,7 @@ Aşağıdaki REST API örnek, şema üzerinde bir rol atama yapıtı oluşturur 
   }
   ```
 
-Bu örnekte, **Prenalids** özelliği `[parameters('owners')]`bir değerini kullanarak **sahipler** şeması ' nı kullanır. Bir şema üzerinde bir parametre ayarlamak bir şema düzeyi parametresini kullanarak bir **statik parametre**örneği olmaya devam eder. Şema level parametresi, şema atama sırasında ayarlanamaz ve her atamada aynı değer olacaktır.
+Bu örnekte, **Prenalids** özelliği `[parameters('owners')]` değerini kullanarak **sahipler** şeması düzeyi parametresini kullanır. Bir şema üzerinde bir parametre ayarlamak bir şema düzeyi parametresini kullanarak bir **statik parametre**örneği olmaya devam eder. Şema level parametresi, şema atama sırasında ayarlanamaz ve her atamada aynı değer olacaktır.
 
 ##### <a name="artifact-level-parameter"></a>Yapıt düzeyi parametresi
 
@@ -185,7 +184,7 @@ Statik parametrenin tersi, **dinamik bir parametredir**. Bu parametre Blueprint 
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API dinamik parametreleri ayarlama
 
-Atama sırasında **dinamik parametrelerin** ayarlanması, doğrudan değer girilerek yapılır. [Parametreler ()](../reference/blueprint-functions.md#parameters)gibi bir işlev kullanmak yerine, belirtilen değer uygun bir dizedir. Bir kaynak grubunun yapıtları, "şablon adı", **ad**ve **konum** özellikleriyle tanımlanır. Dahil edilen yapıt için diğer tüm parametreler, bir  **\<\> ad** ve **değer** anahtarı çiftiyle **Parametreler** altında tanımlanmıştır. Şema, atama sırasında sağlanmayan dinamik bir parametre için yapılandırılmışsa, atama başarısız olur.
+Atama sırasında **dinamik parametrelerin** ayarlanması, doğrudan değer girilerek yapılır. [Parametreler ()](../reference/blueprint-functions.md#parameters)gibi bir işlev kullanmak yerine, belirtilen değer uygun bir dizedir. Bir kaynak grubunun yapıtları, "şablon adı", **ad**ve **konum** özellikleriyle tanımlanır. Dahil edilen yapıt için diğer tüm parametreler, **\<name @ no__t-3** ve **değer** anahtarı çiftiyle **Parametreler** altında tanımlanmıştır. Şema, atama sırasında sağlanmayan dinamik bir parametre için yapılandırılmışsa, atama başarısız olur.
 
 - REST API URI'si
 

@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 05cc12f5416cbbbff470b40c870f41647ef37cd5
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bda7a6caea931a993a6ddd6731688792bf0b3948
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231914"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981010"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure 'de dağıtım sırasını anlayın
 
@@ -48,7 +47,7 @@ Her **kaynak grubu** yapıtları içinde, bu kaynak grubu içinde yapıların ol
 
 Büyük şema tanımları oluştururken kaynakların belirli bir sırada oluşturulması gerekebilir. Bu senaryonun en yaygın kullanım deseninin, bir şema tanımının birçok Azure Resource Manager şablonu içermesi durumunda olur. Planlar sıralama düzeninin tanımlanmasına izin vererek bu düzeni işler.
 
-Sıralama, JSON içinde bir `dependsOn` Özellik tanımlayarak yapılır. Kaynak grupları ve yapıt nesneleri için şema tanımı bu özelliği destekler. `dependsOn`, belirli yapıtın oluşturulmadan önce oluşturulması gereken yapıt adlarından oluşan bir dize dizisidir.
+Sıralama, JSON içinde bir `dependsOn` özelliği tanımlayarak gerçekleştirilir. Kaynak grupları ve yapıt nesneleri için şema tanımı bu özelliği destekler. `dependsOn`, belirli bir yapıtın oluşturulmadan önce oluşturulması gereken yapıt adlarından oluşan bir dize dizisidir.
 
 > [!NOTE]
 > Şema nesneleri oluştururken, her yapıt kaynağı, [PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact)kullanıyorsanız veya [REST API](/rest/api/blueprints/artifacts/createorupdate)kullanılıyorsa URL uç noktası olan adı dosya adıyla alır.
@@ -56,7 +55,7 @@ Sıralama, JSON içinde bir `dependsOn` Özellik tanımlayarak yapılır. Kaynak
 
 ### <a name="example---ordered-resource-group"></a>Örnek-sıralı kaynak grubu
 
-Bu örnek şema tanımında, için `dependsOn`bir değer bildirerek bir standart kaynak grubuyla birlikte özel bir sıralama düzeni tanımlamış bir kaynak grubu vardır. Bu durumda, Atamaadı adlı yapıt , **sıralı-RG** kaynak grubundan önce işlenir.
+Bu örnek şema tanımında, bir standart kaynak grubuyla birlikte `dependsOn` için bir değer bildirerek özel bir sıralama düzeni tanımlamış bir kaynak grubu vardır. Bu durumda, **atamaadı** adlı yapıt, **sıralı-RG** kaynak grubundan önce işlenir.
 **Standart-RG** , varsayılan sıralama düzeni başına işlenir.
 
 ```json
@@ -141,11 +140,11 @@ Bu örnek, bir kaynak grubuna bağlı olmak için abonelik düzeyinde dağıtıl
 
 Oluşturma işlemi sırasında, planlar yapıtlarının bağımlılık grafiğini oluşturmak için bir topik sıralama kullanılır. Denetim, kaynak grupları ve yapıtlar arasındaki her bağımlılık düzeyinin desteklendiğinden emin olmanızı sağlar.
 
-Bir yapıt bağımlılığının varsayılan sırayı değiştirmediği bildirilirse, hiçbir değişiklik yapılmaz. Bir örnek, abonelik düzeyi ilkesine bağlı olan bir kaynak grubudur. Diğer bir örnek, kaynak grubu ' standart-RG ' alt rol atamasına bağlı olan bir kaynak grubu ' standart-RG ' alt ilke atamasıdır. Her iki durumda `dependsOn` da varsayılan sıralama sırasını değiştirmezdi ve hiçbir değişiklik yapılmaz.
+Bir yapıt bağımlılığının varsayılan sırayı değiştirmediği bildirilirse, hiçbir değişiklik yapılmaz. Bir örnek, abonelik düzeyi ilkesine bağlı olan bir kaynak grubudur. Diğer bir örnek, kaynak grubu ' standart-RG ' alt rol atamasına bağlı olan bir kaynak grubu ' standart-RG ' alt ilke atamasıdır. Her iki durumda da `dependsOn` varsayılan sıralama sırasını değiştirmezdi ve hiçbir değişiklik yapılmazlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Şema yaşam döngüsü](lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](parameters.md) kullanımını anlayın.
 - [Şema kaynak kilitleme](resource-locking.md) özelliğini kullanmayı öğrenin.
 - [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.

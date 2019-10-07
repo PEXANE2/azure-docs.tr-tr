@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cee148b6cb17f18c06e98158ac21638cedf519c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: e98c004b802711c83558bf4d7ec86c418679836b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828752"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981147"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 'SI için kimlik doğrulaması ve yetkilendirme
 
@@ -65,7 +65,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
    [@no__t-Kullanıcı Seç iletişim kutusunda bir uygulama bulun](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-user.png#lightbox)
 
-1. Rolü seçin. Verileri sorgulamak ve başvuru verilerini değiştirmek **Için** **okuyucu** ' yı seçin. **Tamam ' ı**seçin.
+1. Rolü seçin. Verileri sorgulamak ve başvuru verilerini değiştirmek **Için** **okuyucu** ' yı seçin. **Tamam**’ı seçin.
 
    [![ Kullanıcı rolü Seç iletişim kutusunda okuyucu veya katkıda bulunan seçin](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png)](media/authentication-and-authorization/time-series-insights-data-access-policies-select-role.png#lightbox)
 
@@ -105,7 +105,7 @@ Azure Active Directory uygulama kayıt akışı üç ana adımdan oluşur.
 
 Bu bölümde, Time Series Insights GA ve Preview API 'Lerinde sorgu yapmak için kullanılan genel HTTP istek üstbilgileri ve parametreleri açıklanmaktadır. API 'ye özgü gereksinimler [Time Series Insights REST API başvuru belgelerinde](https://docs.microsoft.com/rest/api/time-series-insights/)daha ayrıntılı bir şekilde ele alınmıştır.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 [TIME SERIES INSIGHTS REST API 'lerinde](https://docs.microsoft.com/rest/api/time-series-insights/)kimliği doğrulanmış sorgular gerçekleştirmek için, seçtiğiniz Rest Istemcisi (Postman, JavaScript, C#) kullanılarak [Yetkilendirme üst bilgisinde](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) geçerli bir OAuth 2,0 taşıyıcı belirtecinin geçirilmesi gerekir. 
 
@@ -114,7 +114,7 @@ Bu bölümde, Time Series Insights GA ve Preview API 'Lerinde sorgu yapmak için
 > * Bu nedenle [Postman](https://www.getpostman.com/) **AuthUrl** 'niz şu şekilde uyumlu: `https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
 
 > [!TIP]
-> [JavaScript istemci SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)kullanarak Time Series Insights API 'lerinde program aracılığıyla nasıl kimlik doğrulaması yapılacağını öğrenmek Için [Azure Time Series Insights JavaScript Istemci kitaplığı 'nı inceleyin](tutorial-explore-js-client-lib.md#authentication) .
+> [JavaScript istemci SDK 'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) grafik ve grafiklerle birlikte kullanarak, Time Series Insights API 'lerinde program aracılığıyla nasıl kimlik doğrulaması yapılacağını görmek için barındırılan Azure TIME SERIES INSIGHTS [istemci SDK örnek görselleştirmesine](https://tsiclientsample.azurewebsites.net/) bakın.
 
 ### <a name="http-headers"></a>HTTP üstbilgileri
 

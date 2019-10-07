@@ -12,23 +12,23 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 353e3463c2be552210847ac3fe17bbfe2cec58c7
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 5928a8ee048b608d691ecea33d186838ec743e4b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958127"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981135"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Kullanarak Azure Time Series Insights GA ortamından veri sorgulamaC#
 
 Bu C# örnek, Azure Time Series Insights GA ortamından verilerin nasıl sorgulanacağını gösterir.
 
-Örnekte, sorgu API 'SI kullanımının birkaç temel örneği gösterilmektedir:
+Örnek, Sorgu API’si kullanımının birkaç temel örneğini gösterir:
 
 1. Bir hazırlık adımı olarak, Azure Active Directory API 'SI aracılığıyla erişim belirtecini alın. Bu belirteci her sorgu API isteğinin `Authorization` üst bilgisinde geçirin. Etkileşimli olmayan uygulamalar ayarlamak için bkz. [kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md). Ayrıca, örneğin başlangıcında tanımlanan tüm sabitlerin doğru ayarlandığından emin olun.
 1. Kullanıcının erişimi olan ortamların listesi alınır. Ortamların biri, ilgilendiğiniz ortam olarak alınır ve bu ortam için daha fazla veri sorgulanır.
 1. HTTPS isteğinin bir örneği olarak, ilgilenilen ortam için kullanılabilirlik verileri istenir.
-1. Web yuva isteğine örnek olarak, ilgilenilen ortam için olay toplamaları verileri istenir. Tüm kullanılabilirlik zaman aralığı için veri istenir.
+1. Web yuvası isteğinin bir örneği olarak, ilgilenilen ortam için toplam olay verileri istenir. Veriler kullanılabilir oldukları tüm zaman aralığı için istenir.
 
 > [!NOTE]
 > Örnek kod [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)' de mevcuttur.
@@ -45,4 +45,4 @@ Bu C# örnek, Azure Time Series Insights GA ortamından verilerin nasıl sorgula
 
 - Sorgulama hakkında daha fazla bilgi edinmek için [sorgu API 'si başvurusunu](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)okuyun.
 
-- [JavaScript tek sayfalı uygulamasını Time Series Insights bağlama](tutorial-create-tsi-sample-spa.md) hakkında bilgi edinin.
+- Time Series Insights için [istemci SDK 'sını kullanarak bir JavaScript uygulamasının nasıl bağlanacağını](https://github.com/microsoft/tsiclient) okuyun.

@@ -6,17 +6,16 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 51129f89f45d65007f8a7f37df0353121ebdbdd8
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ac8d4d2519ce918a943cfe1e93ed2c5c7afd9a47
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338376"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978053"
 ---
-# <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk yapılandırma anlama
+# <a name="understand-azure-policys-guest-configuration"></a>Azure Ilkesinin Konuk yapılandırmasını anlama
 
-Azure Ilkesi, Azure kaynaklarını denetlemeye ve yeniden [düzeltmelere](../how-to/remediate-resources.md) göre, bir makine içindeki ayarları denetleyebilir. Doğrulama Konuk yapılandırma uzantısı ve istemci tarafından gerçekleştirilir. İstemci aracılığıyla uzantı, şu gibi ayarları doğrular:
+Azure Ilkesi, Azure kaynaklarını denetlemeye ve yeniden [düzeltmelere](../how-to/remediate-resources.md) göre, bir makine içindeki ayarları denetleyebilir. Doğrulama, Konuk yapılandırma uzantısı ve istemcisi tarafından gerçekleştirilir. İstemci aracılığıyla uzantı, şu gibi ayarları doğrular:
 
 - İşletim sisteminin yapılandırması
 - Uygulama yapılandırması veya varlığı
@@ -26,47 +25,47 @@ Azure Ilkesi Konuk yapılandırması şu anda yalnızca makinenin içindeki ayar
 
 ## <a name="extension-and-client"></a>Uzantı ve istemci
 
-Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkindir. Uzantı geçerli ilke ataması ve karşılık gelen yapılandırma tanımını indirir.
+Bir makine içindeki ayarları denetlemek için, bir [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkindir. Uzantı, uygulanabilir ilke atamasını ve ilgili yapılandırma tanımını indirir.
 
 ### <a name="limits-set-on-the-extension"></a>Uzantı üzerinde ayarlanan sınırlar
 
 Uzantının makinede çalışan etkileyen uygulamalarla sınırlandırılacağından, Konuk yapılandırmasının CPU kullanımının% 5 ' inden fazla olmasına izin verilmez. Bu sınırlama hem yerleşik hem de özel tanımlar için vardır.
 
-## <a name="register-guest-configuration-resource-provider"></a>Konuk yapılandırma kaynak sağlayıcısını kaydetme
+## <a name="register-guest-configuration-resource-provider"></a>Konuk yapılandırma kaynak sağlayıcısını Kaydet
 
-Konuk yapılandırma kullanabilmeniz için kaynak sağlayıcısını kaydetmeniz gerekir. Portal veya PowerShell aracılığıyla kaydedebilirsiniz. Bir konuk yapılandırma ilkesinin atanması Portal üzerinden yapıldığında kaynak sağlayıcı otomatik olarak kaydedilir.
+Konuk yapılandırması 'nı kullanabilmeniz için önce kaynak sağlayıcısını kaydetmeniz gerekir. Portala veya PowerShell aracılığıyla kaydolabilirsiniz. Bir konuk yapılandırma ilkesinin atanması Portal üzerinden yapıldığında kaynak sağlayıcı otomatik olarak kaydedilir.
 
-### <a name="registration---portal"></a>Kayıt - Portal
+### <a name="registration---portal"></a>Kayıt-Portal
 
-Azure portalı üzerinden Konuk yapılandırması için kaynak sağlayıcısını kaydetmek için aşağıdaki adımları izleyin:
+Azure portal aracılığıyla konuk yapılandırma kaynak sağlayıcısını kaydetmek için aşağıdaki adımları izleyin:
 
-1. Azure portalını başlatma ve tıklayarak **tüm hizmetleri**. Arayın ve seçin **abonelikleri**.
+1. Azure portal başlatın ve **tüm hizmetler**' e tıklayın. **Abonelik**arayın ve seçin.
 
-1. Bulun ve Konuk yapılandırma için etkinleştirmek istediğiniz aboneliğe tıklayın.
+1. Konuk yapılandırmasını etkinleştirmek istediğiniz aboneliği bulun ve tıklatın.
 
-1. Soldaki menüde **abonelik** sayfasında **kaynak sağlayıcıları**.
+1. **Abonelik** sayfasının sol menüsünde **kaynak sağlayıcıları**' na tıklayın.
 
-1. Filtre uygulamak veya bulduktan kadar kaydırın **Microsoft.GuestConfiguration**, ardından **kaydetme** aynı satırda.
+1. **Microsoft. GuestConfiguration**öğesini bulana kadar filtre uygulayın veya kaydırın, ardından aynı satırda **Kaydet** ' e tıklayın.
 
-### <a name="registration---powershell"></a>Kayıt - PowerShell
+### <a name="registration---powershell"></a>Kayıt-PowerShell
 
-PowerShell üzerinden Konuk yapılandırması için kaynak sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
+PowerShell aracılığıyla konuk yapılandırma kaynak sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
-## <a name="validation-tools"></a>Doğrulama Araçları
+## <a name="validation-tools"></a>Doğrulama araçları
 
 Makinenin içinde, Konuk yapılandırma istemcisi denetimi çalıştırmak için yerel araçları kullanır.
 
-Aşağıdaki tabloda, desteklenen her işletim sisteminde kullanılan yerel Araçlar listesi gösterilmektedir:
+Aşağıdaki tabloda, desteklenen her bir işletim sisteminde kullanılan yerel araçların bir listesi gösterilmektedir:
 
 |İşletim sistemi|Doğrulama Aracı|Notlar|
 |-|-|-|
-|Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby ve Python Konuk Configuration uzantısı tarafından yüklenir. |
+|Windows|[Microsoft Istenen durum yapılandırması](/powershell/dsc) v2| |
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| Ruby ve Python, Konuk yapılandırma uzantısı tarafından yüklenir. |
 
 ### <a name="validation-frequency"></a>Doğrulama sıklığı
 
@@ -74,17 +73,17 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 
 ## <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Aşağıdaki tabloda, desteklenen işletim sistemi listesini Azure görüntülerinde gösterilmektedir:
+Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sisteminin bir listesi gösterilmektedir:
 
-|Yayımcı|Ad|Sürümler|
+|Yayımcı|Adı|Sürümler|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04, 16.04 18.04|
-|credativ|Debian|8, 9|
+|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
+|Credavtiv|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Windows İstemcisi|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4 7.5|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
-|SuSE|SLES|12 SP3|
+|OpenLogic|CentOS|7,3, 7,4, 7,5|
+|Red Hat|Red Hat Enterprise Linux|7,4, 7,5|
+|SUSE|SLES|12 SP3|
 
 > [!IMPORTANT]
 > Konuk yapılandırması, desteklenen bir işletim sistemi çalıştıran düğümleri denetleyebilir. Özel bir görüntü kullanan sanal makineleri denetlemek isterseniz, **Deployifnotexists** tanımını çoğaltmanız ve resim özelliklerinizi dahil etmek için **IF** bölümünü değiştirmeniz gerekir.
@@ -106,23 +105,23 @@ IP adresi listelerinde [Microsoft Azure veri MERKEZI IP aralıklarını](https:/
 
 Konuk yapılandırması tarafından çalıştırılan her denetim, bir **Deployifnotexists** tanımı ve bir **auditınotexists** tanımı olmak üzere iki ilke tanımı gerektirir. **Deployifnotexists** tanımı, makineyi Konuk yapılandırma Aracısı ve diğer bileşenleri [doğrulama araçlarını](#validation-tools)destekleyecek şekilde hazırlamak için kullanılır.
 
-**Deployıfnotexists** ilke tanımı doğrular ve düzeltir aşağıdaki öğeleri:
+**Deployifnotexists** ilke tanımı, aşağıdaki öğeleri doğrular ve düzeltir:
 
 - Makineye değerlendirmek için bir yapılandırma atandığını doğrulayın. Şu anda bir atama yoksa, atamayı alın ve makineyi şu şekilde hazırlayın:
   - [Yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) kullanarak makinede kimlik doğrulama
-  - En son sürümünü yükleme **Microsoft.GuestConfiguration** uzantısı
-  - Yükleme [Doğrulama Araçları](#validation-tools) ve gerekirse bağımlılıkları
+  - **Microsoft. GuestConfiguration** uzantısının en son sürümünü yükleme
+  - Gerekirse [doğrulama araçlarını](#validation-tools) ve bağımlılıklarını yükleme
 
 **Deployifnotexists** ataması uyumlu değilse, bir [Düzeltme görevi](../how-to/remediate-resources.md#create-a-remediation-task) kullanılabilir.
 
-**Deployifnotexists** ataması uyumlu olduğunda, **auditınotexists** ilke ataması, yapılandırma atamasının uyumlu veya uyumsuz olduğunu anlamak için yerel doğrulama araçlarını kullanır. Doğrulama Aracı sonuçları Konuk yapılandırma istemciye sağlar. İstemci, Konuk yapılandırma kaynak sağlayıcısı kullanılabilir hale getirir Konuk uzantısına sonuçları iletir.
+**Deployifnotexists** ataması uyumlu olduğunda, **auditınotexists** ilke ataması, yapılandırma atamasının uyumlu veya uyumsuz olduğunu anlamak için yerel doğrulama araçlarını kullanır. Doğrulama Aracı, sonuçları Konuk yapılandırma istemcisine sağlar. İstemci, sonuçları Konuk yapılandırması kaynak sağlayıcısı aracılığıyla kullanılabilir hale getiren konuk uzantısına iletir.
 
-Azure İlkesi kullanan Konuk yapılandırma kaynak sağlayıcıları **complianceStatus** rapor uyumluluk özelliğini **Uyumluluk** düğümü. Daha fazla bilgi için [uyumluluk verilerini alma](../how-to/getting-compliance-data.md).
+Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk yapılandırma kaynak sağlayıcıları **karmaşık ancestatus** özelliğini kullanır. Daha fazla bilgi için bkz. [uyumluluk verilerini alma](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
 > **Uıınotexists** ilkesi, sonuçları döndürmek için bu **ilke için** gereklidir. **Deployifnotexists**olmadan, **auditınotexists** ilkesi "0/0" kaynağını durum olarak gösterir.
 
-Tüm yerleşik ilkeleri Konuk yapılandırması için girişim atamaları tanımlarında kullanın grubuna dahil edilmiştir. @No__t-0 [Önizleme] adlı yerleşik girişim: Linux ve Windows makineleri* içindeki denetim parolası güvenlik ayarları 18 ilke içerir. Altı **Deployıfnotexists** ve **AuditIfNotExists** Windows ve Linux için üç çift çifti. [İlke tanımı](definition-structure.md#policy-rule) mantığı yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
+Konuk yapılandırması için tüm yerleşik ilkeler, atamalarda kullanılmak üzere tanımları gruplamak için bir girişimde bulunur. [Önizleme] adlı yerleşik girişim *: Linux ve Windows makineler Içindeki denetim parolası güvenlik ayarları* 18 ilke içerir. Windows için altı **Deployifnotexists** ve **Auditınotexists** çiftleri ve Linux için üç çift vardır. [İlke tanımı](definition-structure.md#policy-rule) mantığı yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
 
 ### <a name="multiple-assignments"></a>Birden çok atama
 
@@ -141,11 +140,11 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
-, Geçerli sürüm numarasını belirtir.`<version>`
+@No__t-0 geçerli sürüm numarasını gösterir.
 
 ### <a name="collecting-logs-remotely"></a>Günlükleri uzaktan toplama
 
-Konuk yapılandırma yapılandırmalarının veya modüllerinin sorun gidermede ilk adım, [Konuk yapılandırma paketini test](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)etme `Test-GuestConfigurationPackage` bölümündeki adımları izleyerek cmdlet 'ini kullanmalıdır.
+Konuk yapılandırma yapılandırmalarının veya modülleriyle ilgili sorunları gidermeye yönelik ilk adım, [Konuk yapılandırma paketini test](../how-to/guest-configuration-create.md#test-a-guest-configuration-package)etme bölümündeki adımları izleyerek `Test-GuestConfigurationPackage` cmdlet 'ini kullanmalıdır.
 Bu başarılı olmazsa, istemci günlüklerinin toplanması sorunları tanılamanıza yardımcı olabilir.
 
 #### <a name="windows"></a>Windows
@@ -184,5 +183,5 @@ Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılab
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
-- [Uyumlu olmayan kaynakları](../how-to/remediate-resources.md)nasıl düzelteceğinizi öğrenin.
+- [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.

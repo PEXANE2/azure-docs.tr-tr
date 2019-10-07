@@ -1,18 +1,17 @@
 ---
-title: Azure kaynaklarınızı araştırma
+title: Azure kaynaklarınızı inceleme
 description: Kaynak grafik sorgu dilini kullanarak kaynaklarınızı keşfetme ve bunların nasıl bağlandığını bulma hakkında bilgi edinin.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: e6a43db764a3dbc001e132ef5e321f20aa36041f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241120"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981266"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Kaynak Grafiği ile Azure kaynaklarınızı keşfedin
 
@@ -40,7 +39,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 ```
 
 > [!NOTE]
-> Azure PowerShell `Search-AzGraph` cmdlet 'i varsayılan olarak bir **PSCustomObject** döndürür. Çıktının Azure CLI `ConvertTo-Json` tarafından döndürülme ile aynı görünmesini sağlamak için cmdlet kullanılır. **Derinlik** için varsayılan değer _2_' dir. _100_ olarak ayarlanması, döndürülen tüm düzeyleri dönüştürmelidir.
+> Azure PowerShell `Search-AzGraph` cmdlet 'i varsayılan olarak bir **PSCustomObject** döndürür. Çıktının Azure CLı tarafından döndürülen ile aynı görünmesi için `ConvertTo-Json` cmdlet 'i kullanılır. **Derinlik** için varsayılan değer _2_' dir. _100_ olarak ayarlanması, döndürülen tüm düzeyleri dönüştürmelidir.
 
 JSON sonuçları, aşağıdaki örneğe benzer şekilde yapılandırılır:
 
