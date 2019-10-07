@@ -33,7 +33,7 @@ Bu ilke uyumluluk bilgileri, Koşullu erişimin kaynaklara erişim izni vermek v
 
 Aşağıdaki adımlar, kaynaklara erişen cihazların kuruluşunuzun Intune uyumluluk ilkeleriyle uyumlu olarak işaretlenmesi için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1.  **AzurePortal**genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın. 
 1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.

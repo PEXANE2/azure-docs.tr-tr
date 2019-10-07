@@ -5,15 +5,15 @@ metadata:
   description: " Azure Veritabanı Geçiş Hizmeti'ni kullanarak çok kısa kapalı kalma süreleriyle birden çok veri kaynağından Azure Veri platformlarına sorunsuz geçişler yapmayı öğrenin."
   author: HJToland3
   ms.author: jtoland
-  ms.date: 10/02/2019
+  ms.date: 10/04/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: e3688c4795590fa2b74421055a6cf6f80d2d2d17
-  ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+  ms.openlocfilehash: 41b2733152a93705c81134ccbb75866bf6f0af1b
+  ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/02/2019
-  ms.locfileid: "71802139"
+  ms.lasthandoff: 10/03/2019
+  ms.locfileid: "71843000"
 landingContent:
 - title: Azure Veritabanı Geçiş Hizmeti hakkında
   linkLists:
@@ -55,7 +55,7 @@ landingContent:
     links:
     - text: Blogumuza göz atın
       url: https://techcommunity.microsoft.com/t5/Microsoft-Data-Migration/bg-p/MicrosoftDataMigration
-- title: SQL Server'ı Azure SQL Veritabanı tek veritabanına geçirme
+- title: SQL Server'ı Azure SQL Veritabanı'na geçirme
   linkLists:
   - linkListType: tutorial
     links:
@@ -63,22 +63,6 @@ landingContent:
       url: tutorial-sql-server-azure-sql-online.md
     - text: SQL Server'ı Azure SQL Veritabanı tek veritabanına çevrimdışı geçirme
       url: tutorial-sql-server-to-azure-sql.md
-    - text: RDS SQL Server'ı Azure SQL Veritabanı tek veritabanına veya Azure SQL DB yönetilen örneğine çevrimiçi geçirme
-      url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
-  - linkListType: how-to-guide
-    links:
-    - text: SQL Server’ı Azure SQL DB tek veritabanına geçirmek için PowerShell kullanma
-      url: howto-sql-server-to-azure-sql-powershell.md
-    - text: SSIS paketlerini Azure SQL Veritabanı tek veritabanına yeniden dağıtma
-      url: how-to-migrate-ssis-packages.md
-  - linkListType: concept
-    links:
-    - text: Bilinen Sorunlar - Azure SQL DB tek veritabanına çevrimiçi geçiş
-      url: known-issues-azure-sql-online.md
-- title: SQL Server'ı Azure SQL Veritabanı yönetilen örneğine geçirme
-  linkLists:
-  - linkListType: tutorial
-    links:
     - text: SQL Server’ı Azure SQL DB yönetilen örneğine çevrimiçi geçirme
       url: tutorial-sql-server-managed-instance-online.md
     - text: SQL Server’ı Azure SQL DB yönetilen örneğine çevrimdışı geçirme
@@ -87,19 +71,25 @@ landingContent:
       url: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
   - linkListType: how-to-guide
     links:
+    - text: SQL Server’ı Azure SQL DB tek veritabanına geçirmek için PowerShell kullanma
+      url: howto-sql-server-to-azure-sql-powershell.md
     - text: SQL Server’ı Azure SQL DB yönetilen örneğine geçirmek için PowerShell kullanma
       url: howto-sql-server-to-azure-sql-mi-powershell.md
+    - text: SSIS paketlerini Azure SQL Veritabanı tek veritabanına yeniden dağıtma
+      url: how-to-migrate-ssis-packages.md
     - text: SSIS paketlerini Azure SQL Veritabanı yönetilen örneğine yeniden dağıtma
       url: how-to-migrate-ssis-packages-managed-instance.md
   - linkListType: concept
     links:
+    - text: Bilinen sorunlar - Azure SQL DB tek veritabanına çevrimiçi geçiş
+      url: known-issues-azure-sql-online.md
     - text: Azure SQL DB yönetilen örneği geçişlerinin ağ topolojileri
       url: resource-network-topologies.md
   - linkListType: video
     links:
     - text: SQL Server 2008’i Azure SQL Veritabanı yönetilen örneğine geçirme
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/
-- title: PostgreSQL’i PostgreSQL için Azure Veritabanı–Tek sunucuya geçirme
+- title: PostgreSQL’i PostgreSQL için Azure Veritabanı’na geçirme
   linkLists:
   - linkListType: tutorial
     links:
@@ -109,7 +99,7 @@ landingContent:
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
   - linkListType: concept
     links:
-    - text: Bilinen Sorunlar - PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçiş
+    - text: Bilinen sorunlar - PostgreSQL'den PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçiş
       url: known-issues-azure-postgresql-online.md
   - linkListType: video
     links:
@@ -125,7 +115,7 @@ landingContent:
       url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
   - linkListType: concept
     links:
-    - text: Bilinen Sorunlar - MySQL için Azure DB’ye çevrimiçi geçiş
+    - text: Bilinen sorunlar - MySQL için Azure DB’ye çevrimiçi geçiş
       url: known-issues-azure-mysql-online.md
 - title: MongoDB’yi Azure Cosmos DB’ye geçirme
   linkLists:
@@ -145,9 +135,13 @@ landingContent:
     links:
     - text: Oracle'ı PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçirme
       url: tutorial-oracle-azure-postgresql-online.md
+  - linkListType: concept
+    links:
+    - text: Bilinen sorunlar - Oracle'dan PostgreSQL için Azure DB-Tek sunucuya çevrimiçi geçiş
+      url: known-issues-oracle-azure-postgresql-online.md
   - linkListType: video
     links:
-    - text: Oracle’ı Azure SQL Veritabanı Tek veritabanına geçirme
+    - text: Oracle'ı Azure SQL Veritabanı tek veritabanına geçirme
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/
 - title: Araçlar ve rehberlik
   linkLists:
