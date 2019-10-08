@@ -198,6 +198,14 @@
           href: compute-benchmark-scores.md
         - name: vCPU kotaları
           href: quotas.md
+        - name: Ayrılmış örnekler
+          items:
+            - name: VM'ler için ön ödeme yapma
+              href: prepay-reserved-vm-instances.md
+            - name: Azure ayırmaları nedir?
+              href: ../../billing/billing-save-compute-costs-reservations.md
+            - name: Sanal makine örneği boyut esnekliği
+              href: reserved-vm-instance-size-flexibility.md
     - name: Ayrılmış konaklar
       href: dedicated-hosts.md
     - name: Bakım ve güncelleştirmeler
@@ -359,14 +367,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Günlük uyarıları oluşturma
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Maliyetleri yönetme
-      items:
-        - name: VM'ler için ön ödeme yapma - Azure ayırmaları
-          href: prepay-reserved-vm-instances.md
-        - name: Azure ayırmaları nedir?
-          href: ../../billing/billing-save-compute-costs-reservations.md
-        - name: Sanal makine örneği boyut esnekliği
-          href: reserved-vm-instance-size-flexibility.md
     - name: Görüntüleri Kullanma
       items:
         - name: Paylaşılan görüntüler
@@ -422,8 +422,6 @@
         - name: Yakınlık yerleştirme grubu oluşturma
           href: proximity-placement-groups.md
         - name: Dikey olarak ölçeklendirme
-          href: vertical-scaling-automation.md
-        - name: Kullanılabilirlik alanında VM oluşturma
           items:
             - name: PowerShell
               href: create-powershell-availability-zone.md
