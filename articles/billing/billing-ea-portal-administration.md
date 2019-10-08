@@ -4,16 +4,16 @@ description: Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdi
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2019
+ms.date: 09/25/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 236a8d6d280e75102df84fec5ab3df51f7ba355b
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105477"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308100"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -31,7 +31,7 @@ Bir Azure EA kaydına ilk kez yeni Hesap Sahipleri (AO) eklendiğinde durumları
 
 Azure EA yöneticisi bir departman oluşturduktan sonra, Azure Kuruluş yöneticisi departman yöneticileri ekleyebilir ve her birini bir departmanla ilişkilendirebilir. Bir departman yöneticisi yeni hesaplar oluşturabilir. Azure EA aboneliklerinin oluşturulabilmesi için yeni hesaplar gereklidir.
 
-Departman ekleme hakkında daha fazla bilgi için bkz. Azure EA departmanı oluşturma.
+Departman yöneticisi ekleme hakkında daha fazla bilgi için bkz. [Azure EA departman yöneticisi oluşturma](billing-ea-portal-get-started.md#add-a-department-admin).
 
 ## <a name="enterprise-user-roles"></a>Kurumsal kullanıcı rolleri
 
@@ -124,14 +124,14 @@ Hesap aktarımı sırasında hizmet kesintisi olmaz. Gerekli tüm bilgiler sağl
 
 Bir kayıt aktarımı istediğinizde aşağıdaki bilgileri sağlayın:
 
-- Kaynak kaydı için, aktarılacak kayıt numarası ve hesap
-- Kaynak kaydı için, aktarımın yapılacağı kayıt numarası
+- Kaynak kaydı için, aktarılacak kayıt numarası ve hesap.
+- Hedef kaydı için, aktarımın yapılacağı kayıt numarası.
 - Kayıt aktarımı geçerlilik tarihi, hedef kaydın başlangıç tarihi veya sonrasındaki bir tarih olabilir. Seçilen tarih, daha önce düzenlenmiş bir fazla kullanım faturası için kullanımı etkilemez.
 
 Kayıt aktarımından önce göz önünde bulundurmanız gereken diğer noktalar:
 
-- Hedef ve kaynak kaydı için bir EA yöneticisinden onay gerekir
-  - Bazı durumlarda Microsoft, kaynak kaydının EA yöneticisinden ek onay isteyebilir
+- Hedef ve kaynak kaydı için bir EA yöneticisinden onay gerekir.
+  - Bazı durumlarda Microsoft, kaynak kaydının EA yöneticisinden ek onay isteyebilir.
 - Kayıt aktarımı gereksinimlerinizi karşılamıyorsa, hesap aktarımı yapmayı düşünün.
 - Yalnızca belirttiğiniz hesaplar aktarılır. Tüm hesaplarınızı aktarmayı isteyebilirsiniz.
 - Kaynak kaydının durumu etkin/genişletilmiş olarak kalır. Kaydı süresi dolana kadar kullanmaya devam edebilirsiniz.
@@ -208,7 +208,7 @@ Bir kullanıcı tarafından bildirim alınmadıysa, kullanıcının bildirim aya
 6. Gerekirse bir kişi ekleyin ve **Ekle**'ye tıklayın.
 7. **Kaydet**’e tıklayın.
 
-![Eklemek için Kişi Ekle seçeneğini gösteren örnek ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
+![Kişi Ekle kutusunu gösteren örnek ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorluğu teklifi
 Azure Sponsorluğu teklifi, bir sınırlı sponsorlu Microsoft Azure hesabıdır. Yalnızca Microsoft tarafından seçilen sınırlı müşteriler tarafından e-posta daveti ile kullanılabilir. Microsoft Azure Sponsorluğu teklifine hak kazandıysanız hesap kimliğinize bir e-posta davetiyesi alırsınız.

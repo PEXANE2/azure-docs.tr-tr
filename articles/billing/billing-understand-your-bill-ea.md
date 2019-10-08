@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f89d7935af10ebb477125c598a01278a4ceef0bd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490276"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326936"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Kurumsal Anlaşma faturanızı anlama
 
@@ -28,10 +28,10 @@ Kuruluşunuzun kredisi, parasal taahhüdünüzü kapsar. Parasal taahhüt, kurul
 
 Bu bölüm, Avustralya, Japonya veya Singapur’daki Azure müşterileri için geçerli değildir. Bu ülkelerden/bölgelerden birinde yaşıyorsanız bkz. [Diğer müşteriler için faturalar](#invoices-for-other-customers).
 
-Faturalama döngünüzde aşağıdakilerden biri gerçekleştiğinde bir Azure faturası alırsınız:
+Faturalama döneminizde aşağıdakilerden herhangi biri gerçekleştiğinde bir Azure faturası alırsınız:
 
 - **Hizmet fazla kullanımı**: Kuruluşunuzun kullanım ücretleri, kredi bakiyenizi aştığında.
-- **Ayrı olarak faturalandırılan ücretler**: Kuruluşunuzun kullandığı hizmetler, kredi kapsamında olmadığında. Kredi bakiyenize bakılmaksızın aşağıdaki hizmetler için faturalandırılırsınız:
+- **Ayrı olarak faturalandırılan ücretler**: Kuruluşunuzun kullandığı hizmetler, kredi kapsamında olmadığında. Kredi bakiyeniz ne olursa olsun aşağıdaki hizmetler için faturalandırılırsınız:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -43,7 +43,7 @@ Faturalama döngünüzde aşağıdakilerden biri gerçekleştiğinde bir Azure f
     - Visual Studio Enterprise (Yıllık)
     - Visual Studio Professional (Aylık)
     - Visual Studio Professional (Yıllık)
-- **Market ücretleri**: Azure Market satın alma işlemleri ve kullanımı, kuruluşunuzun kredisi kapsamında yer almaz. Bu nedenle, kredi bakiyenize bakılmaksızın Pazar ücretleri için faturalandırılırsınız. Enterprise Portal’da bir Kurumsal Yönetici, Pazar satın alma işlemlerini etkinleştirebilir ve devre dışı bırakabilir.
+- **Market ücretleri**: Azure Market satın alma işlemleri ve kullanımı, kuruluşunuzun kredi kapsamında yer almaz. Bu nedenle, kredi bakiyeniz ne olursa olsun Pazar ücretleri için faturalandırılırsınız. Enterprise Portal’da bir Kurumsal Yönetici, Pazar satın alma işlemlerini etkinleştirebilir ve devre dışı bırakabilir.
 
 ## <a name="review-charges-for-most-customers"></a>Çoğu müşteri için ücretleri gözden geçirme
 Bu bölüm, Avustralya, Japonya veya Singapur’daki Azure müşterileri için geçerli değildir. Bu ülkelerden birinde yaşıyorsanız bkz. [Diğer müşteriler için ücretleri gözden geçirme](#review-charges-for-other-customers).
@@ -54,7 +54,7 @@ Faturanızda tüm Azure kullanımınız, sonrasında tüm Market ücretleriyle b
 
 Enterprise Portal’da **Raporlar** > **Kullanım Özeti** bölümünde gösterilen birleşik toplam tutarı, Azure faturanızla karşılaştırın. **Kullanım Özeti**’ndeki tutarlara vergiler dahil değildir.
 
-1. [Enterprise Portal](https://ea.azure.com)’da oturum açın.
+1. [Enterprise portal](https://ea.azure.com)'da oturum açın.
 1. **Raporlar**’ı seçin.
 1. Sekmenin sağ üst köşesinde**M** görünümünü **C** olarak değiştirin ve fatura dönemine göre ayarlayın.  
     ![Kullanım özetinde M + C seçeneğini gösteren ekran görüntüsü.](./media/billing-understand-your-bill-ea/ea-portal-usage-sumary-cm-option.png)
@@ -66,10 +66,10 @@ Enterprise Portal’da **Raporlar** > **Kullanım Özeti** bölümünde gösteri
 
 Bu bölüm yalnızca Avustralya, Japonya veya Singapur’daki Azure müşterileri için geçerlidir.
 
-Aşağıdakiler gerçekleştiğinde bir veya daha fazla Azure faturası alırsınız:
+Aşağıdaki olaylardan herhangi biri gerçekleştiğinde bir veya birden fazla Azure faturası alırsınız:
 
 - **Hizmet fazla kullanımı**: Kuruluşunuzun kullanım ücretleri, kredi bakiyenizi aştığında.
-- **Ayrı olarak faturalandırılan ücretler**: Kuruluşunuzun kullandığı hizmetler, kredi kapsamında olmadığında. Kredi bakiyenize bakılmaksızın aşağıdaki hizmetler için faturalandırılırsınız:
+- **Ayrı olarak faturalandırılan ücretler**: Kuruluşunuzun kullandığı hizmetler, kredi kapsamında olmadığında. Aşağıdaki hizmetler için faturalandırılırsınız:
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -81,7 +81,7 @@ Aşağıdakiler gerçekleştiğinde bir veya daha fazla Azure faturası alırsı
     - Visual Studio Enterprise (Yıllık)
     - Visual Studio Professional (Aylık)
     - Visual Studio Professional (Yıllık)
-- **Market ücretleri**: Azure Market satın alma işlemleri ve kullanımı, kuruluşunuzun kredisi kapsamında yer almaz ve ayrı olarak faturalandırılır. Enterprise Portal’da bir Kurumsal Yönetici, Pazar satın alma işlemlerini etkinleştirebilir ve devre dışı bırakabilir.
+- **Market ücretleri**: Azure Market satın alma işlemleri ve kullanımı, kuruluşunuzun kredi kapsamında yer almaz ve ayrı olarak faturalandırılır. Enterprise Portal’da bir Kurumsal Yönetici, Pazar satın alma işlemlerini etkinleştirebilir ve devre dışı bırakabilir.
 
 Hizmet fazla kullanımı için ödenmesi gereken ücretleriniz ve faturalama döneminde ayrı olarak faturalandırılan ücretleriniz varsa tek bir fatura alırsınız. Bu, her iki masraf türünü de içerir. Pazar ücretleri her zaman ayrı olarak faturalandırılır.
 

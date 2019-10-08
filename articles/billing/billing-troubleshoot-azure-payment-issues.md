@@ -12,48 +12,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: jaserano
-ms.openlocfilehash: 45f6f181ddbf7e76662f76c433d8ff68c18f0de1
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 7795007b5bb27b9da540c6c3bcb0df45d1e17d80
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69657092"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718713"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Azure ödeme sorunlarını giderme
 
-Microsoft Azure portalında veya Azure hesap merkezinde ödeme bilgileri hesabını güncelleştirmeye çalıştığınızda bir sorunla karşılaşabilirsiniz. Sorunu gidermeye çalışmadan önce aşağıdaki yönergeleri dikkate alın:
+Microsoft Azure portalında veya Azure hesap merkezinde ödeme bilgileri hesabını güncelleştirmeye çalıştığınızda bir sorun veya hatayla karşılaşabilirsiniz.
 
-- Azure hesabınız için sağladığınız bilgilerin (iletişim e-posta adresi, açık adres ve telefon numarası dahil) doğru olduğundan emin olun.
-- Kredi kartı bilgilerinin doğru olduğundan emin olun.
-- Aynı bilgilerle oluşturulmuş başka bir Microsoft hesabınızın olmadığından emin olun.
+Sorununuzu çözmek için aşağıda hatanıza en çok benzeyen konu başlığını seçin.
 
-## <a name="issues"></a>Sorunlar
-
-Hataları çözmek için, Azure’a kaydolmaya çalışırken karşılaştığınız sorunu seçin.
-
-### <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Kredi kartı, kaydedilen faturalama ödeme yönteminden kaldırılamıyor
+## <a name="unable-to-remove-a-credit-card-from-a-saved-billing-payment-method"></a>Kredi kartı, kaydedilen faturalama ödeme yönteminden kaldırılamıyor
 
 Tasarım gereği bir kredi kartını Etkin abonelikten kaldıramazsınız.
 
 Mevcut bir kartın silinmesi gerekiyorsa, eski ödeme aracının başarıyla silinebilmesi için aboneliğe yeni bir kart eklenmelidir; aksi takdirde aboneliği iptal etmeniz gerekir. Bu işlem sonucunda abonelik kalıcı olarak silinir ve kart kaldırılır.
 
-### <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Yeni bir ödeme yöntemi eklendikten sonra eski ödeme yöntemi silinemiyor
+## <a name="unable-to-delete-an-old-payment-method-after-adding-a-new-payment-method"></a>Yeni bir ödeme yöntemi eklendikten sonra eski ödeme yöntemi silinemiyor
 
 Yeni ödeme aracı abonelikle ilişkili olmayabilir. Ödeme aracının abonelikle ilişkilendirilmesine yardımcı olmak için bkz. [Azure için kredi kartı veya ATM kartı ekleme, güncelleştirme ya da kaldırma](billing-how-to-change-credit-card.md).
 
 Reddedilen kartla ilgili sorunları gidermek için bkz [Azure’a kaydolurken reddedilen kart ile ilgili sorunları giderme](billing-troubleshoot-declined-card.md).
 
-### <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>*Ödeme yöntemi silinemiyor* hatası nedeniyle ödeme yöntemi silinemiyor
+## <a name="unable-to-delete-a-payment-method-because-of-cannot-delete-payment-method-error"></a>*Ödeme yöntemi silinemiyor* hatası nedeniyle ödeme yöntemi silinemiyor
 
 Bu, kalan bakiyeden kaynaklanır. Ödeme yöntemini silmeden önce kalan tüm bakiyeyi ödeyin.
 
-### <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ödeme yöntemini güncelleştirmek için hesabım altında abonelikler görüntülenemiyor
+## <a name="unable-to-see-subscriptions-under-my-account-to-update-the-payment-method"></a>Ödeme yöntemini güncelleştirmek için hesabım altında abonelikler görüntülenemiyor
 
 Abonelikler için kullanılandan farklı bir e-posta kimliği kullanıyor olabilirsiniz.
 
 Bu sorunu gidermek için bkz. [Azure portalı veya Azure hesap merkezi için Abonelik bulunamadı oturum açma hatası](billing-no-subscriptions-found.md).
 
-### <a name="unable-to-make-payment-for-a-subscription"></a>Abonelik için ödeme yapılamıyor
+## <a name="unable-to-make-payment-for-a-subscription"></a>Abonelik için ödeme yapılamıyor
 
 Hata iletisini alırsanız: *Ödemenin süresi geçti. Ödeme yönteminiz ile ilgili bir sorun var* veya *Ne yazık ki bilgiler kaydedilemiyor. Tarayıcıyı kapatıp yeniden deneyin.* Bu durumda kart ilgili finans kurumu tarafından reddedildiğinden kartta bekleyen bir ödeme vardır.
 
@@ -65,7 +59,7 @@ Lütfen aşağıdaki sorunlar için bankanızla görüşün:
 - Kartın kredi limiti var ve bakiyenin kapatılması gerekiyor.
 - Kartta yinelenen ödeme etkin.
 
-### <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>Tarayıcı sorunları nedeniyle ödeme yöntemi değiştirilemiyor (tarayıcı yanıt vermiyor, yüklenmiyor vb.)
+## <a name="unable-to-change-payment-method-because-of-browser-issues-browser-does-not-respond-does-not-load-and-so-on"></a>Tarayıcı sorunları nedeniyle ödeme yöntemi değiştirilemiyor (tarayıcı yanıt vermiyor, yüklenmiyor vb.)
 
 Tüm etkin Azure oturumlarını kapatın ve sonra Microsoft Edge veya Internet Explorer’da InPrivate oturumu başlatmak için [Microsoft Edge’de InPrivate gözatma makalesindeki](https://support.microsoft.com/help/4026200/microsoft-edge-browse-inprivate) adımları izleyin.
 
@@ -77,11 +71,11 @@ Aşağıdakileri de yapmayı deneyebilirsiniz:
 - Başka bir tarayıcı kullanın
 - Önbelleğe alınmış tanımlama bilgilerini silin
 
-### <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>Ödeme yöntemini güncelleştirdikten sonra aboneliğim devre dışı kalmaya devam ediyor.
+## <a name="my-subscription-is-still-disabled-after-updating-the-payment-method"></a>Ödeme yöntemini güncelleştirdikten sonra aboneliğim devre dışı kalmaya devam ediyor.
 
 Bu sorun, kalan bakiyeden kaynaklanır. Ödeme yöntemini silmeden önce kalan tüm bakiyeyi ödeyin.
 
-### <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>XML hata yanıt sayfası nedeniyle ödeme yöntemi değiştirilemiyor
+## <a name="unable-to-change-payment-method-because-of-an-xml-error-response-page"></a>XML hata yanıt sayfası nedeniyle ödeme yöntemi değiştirilemiyor
 
 Yeni bir kredi kartı eklemek için [Azure portalını](https://portal.azure.com/) kullanıyorsanız bu iletiyi alırsınız.
 

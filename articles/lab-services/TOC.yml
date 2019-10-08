@@ -78,6 +78,8 @@
           href: classroom-labs/class-type-deep-learning-natural-processing.md
         - name: Linux üzerinde kabuk betiği oluşturma
           href: classroom-labs/class-type-shell-scripting-linux.md
+        - name: Etik korsanlık
+          href: classroom-labs/class-type-ethical-hacking.md
     - name: Sınıf laboratuvarları
       items:
         - name: Laboratuvar hesabı oluşturma ve yapılandırma (laboratuvar hesabı sahibi)
@@ -90,6 +92,8 @@
               href: classroom-labs/how-to-connect-peer-virtual-network.md
             - name: Paylaşılan görüntü galerisi ekleme ve kaldırma
               href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+            - name: Şablon VM üzerinde iç içe yerleştirilmiş sanallaştırmayı etkinleştirme
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
         - name: Sınıf laboratuvarı oluşturma ve yapılandırma (eğitmen)
           items:
             - name: Sınıf laboratuvarları oluşturma ve yönetme

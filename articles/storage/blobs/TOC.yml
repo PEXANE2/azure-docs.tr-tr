@@ -27,14 +27,14 @@
           items:
             - name: .NET
               href: storage-quickstart-blobs-dotnet.md
-            - name: Node.js
-              href: storage-quickstart-blobs-nodejs-v10.md
+            - name: Java
+              href: storage-quickstart-blobs-java.md
             - name: Python
               href: storage-quickstart-blobs-python.md
-            - name: v10 SDK'sı kullanarak JS/HTML
+            - name: JavaScript (Node.js)
+              href: storage-quickstart-blobs-nodejs-v10.md
+            - name: JavaScript (tarayıcı)
               href: storage-quickstart-blobs-javascript-client-libraries-v10.md
-            - name: v2 SDK'sı kullanarak JS/HTML
-              href: storage-quickstart-blobs-javascript-client-libraries.md
             - name: Başlayın
               href: storage-quickstart-blobs-go.md
             - name: PHP
@@ -101,7 +101,7 @@
           items:
             - name: Güvenliğe genel bakış
               href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Depolama hizmeti şifrelemesi
+            - name: Azure Depolama şifrelemesi
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Yetkilendirme
               href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -334,7 +334,7 @@
                       href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Depolanan erişim ilkesi tanımlama
                       href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Müşteri tarafından yönetilen anahtarları hizmet şifrelemesi için kullanma
+            - name: Şifreleme için müşteri tarafından yönetilen anahtarları kullanma
               items:
                 - name: Portal
                   href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -410,12 +410,12 @@
                   href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
             - name: Xamarin
               href: storage-xamarin-blob-storage.md
-            - name: Eski SDK’lar
+            - name: Önceki SDK sürümleri
               items:
-                - name: Java (Depolama SDK v7)
-                  href: storage-quickstart-blobs-java.md
-                - name: Node.js (Depolama SDK v2)
+                - name: JavaScript (Node.js) (Depolama SDK v2)
                   href: storage-quickstart-blobs-nodejs.md
+                - name: JavaScript (tarayıcı) (Depolama SDK v2)
+                  href: storage-quickstart-blobs-javascript-client-libraries.md
         - name: Blobları yönetme
           items:
             - name: Azure CLI

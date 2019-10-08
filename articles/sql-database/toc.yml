@@ -778,29 +778,35 @@
   items:
     - name: Terimler sözlüğü
       href: sql-database-glossary-terms.md
-    - name: Microsoft Learn ile becerilerinizi geliştirin
-      href: /learn/browse/?products=azure-sql-database
-    - name: SQL Server Blogu
-      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
-    - name: Microsoft Azure Blogu
-      href: 'https://azure.microsoft.com/blog/'
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Genel veri kümeleri
-      href: sql-database-public-data-sets.md
-    - name: Bağlantı sorunlarını giderme
-      href: 'https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database'
-    - name: Fiyatlandırma
-      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
-    - name: MSDN forumu
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: Videolar
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
-    - name: Hizmet güncelleştirmeleri
-      href: 'https://azure.microsoft.com/updates/?service=sql-database'
     - name: Mimari merkezi
       href: /azure/architecture/
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      href: /learn/browse/?products=azure-sql-database
     - name: Müşteri hikayeleri
       href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
+    - name: Microsoft Azure Blogu
+      href: 'https://azure.microsoft.com/blog/'
+    - name: MSDN forumu
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+    - name: Genel veri kümeleri
+      href: sql-database-public-data-sets.md
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?service=sql-database'
+    - name: SQL Server Blogu
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
+    - name: Sorun giderme
+      items:
+        - name: Bağlantı sorunları
+          href: troubleshoot-connectivity-issues-microsoft-azure-sql-database.md
+        - name: Sorun Çözme
+          items:
+            - name: İçeri/Dışarı aktarma hizmetinin yanıt vermemeye başlaması
+              href: azure-sql-database-hangs-importing-exporting.md
+    - name: Videolar
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'

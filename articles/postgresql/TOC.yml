@@ -94,7 +94,8 @@
               href: concepts-connectivity-architecture.md
         - name: İş sürekliliği
           items:
-            - name: Genel Bakış
+            - name: İş sürekliliğine giriş
+              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
               href: concepts-business-continuity.md
             - name: Yedekleme ve geri yükleme
               href: concepts-backup.md

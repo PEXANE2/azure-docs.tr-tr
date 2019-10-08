@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 8e87bcb9f7d05fd5041623693c96f8c737758c32
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e382b4bf12b53573f3506474837093456f9b84c6
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490975"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709629"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure aboneliğinizi farklı bir teklife geçirme
 
@@ -101,7 +101,7 @@ Teklifleri değiştirdiğinizde, [varsayılan limitin üzerindeki limit veya kot
 
 Geçiş yaptığınız gün, kalan tüm ücretler için bir fatura oluşturulur. Daha sonra aboneliğiniz yeni teklifin fiyatlandırma koşullarına göre faturalanır. Abonelik faturanızın yıldönümü, teklifleri değiştirdiğiniz tarihe değiştirilir. Teklif değişikliğinden önceki kullanım ve faturalama verileri saklanmadığından, geçiş yapmadan önce bir kopya indirmenizi öneririz.
 
-### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Kullandıkça öde fiyatlarına tabi bir abonelikten [Bulut Çözümü Sağlayıcısı](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) veya [Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA) teklifine geçebilir miyim?
+### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Kullandıkça öde fiyatlarına tabi bir abonelikten Bulut Çözümü Sağlayıcısı (CSP) veya Kurumsal Anlaşma (EA) teklifine geçebilir miyim?
 
 * CSP’ye geçiş yapmak için bkz. [Azure Kullandıkça Öde Aboneliğinin CSP’ye Geçişi](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
 * Kurumsal Anlaşmaya geçiş yapmak için Kayıt Yöneticinizin hesabınızı Kurumsal Anlaşmaya eklemesini sağlayın. Aboneliklerinizin Kurumsal Anlaşma kaydı kapsamına taşınmasını sağlamak için davet e-postasındaki yönergeleri izleyin. Daha fazla bilgi edinmek için, Kurumsal Anlaşma portalında [Mevcut Bir Hesabı İlişkilendirme](https://ea.azure.com/helpdocs/associateExistingAccount) bölümüne bakın.

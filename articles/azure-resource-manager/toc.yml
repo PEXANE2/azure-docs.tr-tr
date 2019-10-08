@@ -6,52 +6,75 @@
       href: resource-group-overview.md
     - name: Şablona genel bakış
       href: template-deployment-overview.md
-- name: Hızlı Başlangıçlar
-  expanded: true
-  items:
-    - name: Şablon oluşturma - portal
-      href: resource-manager-quickstart-create-templates-use-the-portal.md
-    - name: Şablon oluşturma - VS Code
-      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - name: Şablon oluşturma - Visual Studio
-      href: vs-azure-tools-update-deploy-script-to-az-powershell.md
-    - name: Şablon oluşturma - IntelliJ IDEA
-      href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: Öğreticiler
   items:
-    - name: Şablon başvurusunu kullanma
-      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-    - name: Birden çok örnek oluşturma
-      displayName: 'iteration,copy'
-      href: resource-manager-tutorial-create-multiple-instances.md
-    - name: Kaynak dağıtım sırasını ayarlama
-      displayName: 'dependent resources, dependency'
-      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - name: Koşulları kullanma
-      href: resource-manager-tutorial-use-conditions.md
-    - name: Key Vault oluşturma
-      displayName: secrets
-      href: resource-manager-tutorial-use-key-vault.md
-    - name: Bağlı şablonlar oluşturma
-      href: resource-manager-tutorial-create-linked-templates.md
-    - name: VM uzantılarını dağıtma
-      displayName: virtual machine extensions
-      href: resource-manager-tutorial-deploy-vm-extensions.md
-    - name: SQL uzantılarını dağıtma
-      href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
-    - name: Güvenli yapıtlar
-      href: resource-manager-tutorial-secure-artifacts.md
-    - name: Azure Pipelines ile sürekli tümleştirme
-      displayName: DevOps
-      href: resource-manager-tutorial-use-azure-pipelines.md
-    - name: Güvenli dağıtım uygulamalarını kullanma
-      displayName: adm
-      href: deployment-manager-tutorial.md
-    - name: Dağıtım Yöneticisi’nde sistem durumu denetimini kullanma
-      displayName: adm
-      href: deployment-manager-tutorial-health-check.md
-    - name: Şablon dağıtımı sorunlarını giderme
-      href: resource-manager-tutorial-troubleshoot.md
+    - name: Başlangıç
+      items:
+        - name: 1 - İlk şablonu oluşturma
+          href: template-tutorial-create-first-template.md
+        - name: 2 - Kaynak ekleme
+          href: template-tutorial-add-resource.md
+        - name: 3 - Parametre ekleme
+          href: template-tutorial-add-parameters.md
+        - name: 4 - Şablon işlevleri ekleme
+          href: template-tutorial-add-functions.md
+        - name: 5 - Değişkenleri ekleme
+          href: template-tutorial-add-variables.md
+        - name: 6 - Çıkışları ekleme
+          href: template-tutorial-add-outputs.md
+        - name: 7 - Dışarı aktarılan şablonu kullanma
+          href: template-tutorial-export-template.md
+        - name: 8 - Hızlı başlangıç şablonu kullanma
+          href: template-tutorial-quickstart-template.md
+        - name: 9 - Etiketleri ekleme
+          href: template-tutorial-add-tags.md
+        - name: 10 - Parametre dosyasını kullanma
+          href: template-tutorial-use-parameter-file.md
+    - name: Gelişmiş
+      items:
+        - name: Şablon oluşturma - portal
+          href: resource-manager-quickstart-create-templates-use-the-portal.md
+        - name: Şablon oluşturma - VS Code
+          href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+        - name: Şablon oluşturma - Visual Studio
+          href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+        - name: Şablon oluşturma - IntelliJ IDEA
+          href: resource-manager-quickstart-create-templates-use-intellij.md
+        - name: Şablon başvurusunu kullanma
+          href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+        - name: Birden çok örnek oluşturma
+          displayName: 'iteration,copy'
+          href: resource-manager-tutorial-create-multiple-instances.md
+        - name: Kaynak dağıtım sırasını ayarlama
+          displayName: 'dependent resources, dependency'
+          href: resource-manager-tutorial-create-templates-with-dependent-resources.md
+        - name: Koşulları kullanma
+          href: resource-manager-tutorial-use-conditions.md
+        - name: Key Vault oluşturma
+          displayName: secrets
+          href: resource-manager-tutorial-use-key-vault.md
+        - name: Bağlı şablonlar oluşturma
+          href: resource-manager-tutorial-create-linked-templates.md
+        - name: VM uzantılarını dağıtma
+          displayName: virtual machine extensions
+          href: resource-manager-tutorial-deploy-vm-extensions.md
+        - name: SQL uzantılarını dağıtma
+          href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
+        - name: Güvenli yapıtlar
+          href: resource-manager-tutorial-secure-artifacts.md
+        - name: Azure Pipelines ile sürekli tümleştirme
+          displayName: DevOps
+          href: resource-manager-tutorial-use-azure-pipelines.md
+        - name: Güvenli dağıtım uygulamalarını kullanma
+          displayName: adm
+          href: deployment-manager-tutorial.md
+        - name: Dağıtım Yöneticisi’nde sistem durumu denetimini kullanma
+          displayName: adm
+          href: deployment-manager-tutorial-health-check.md
+        - name: VS dağıtım betiğini Az PowerShell kullanacak şekilde güncelleştirme
+          href: vs-azure-tools-update-deploy-script-to-az-powershell.md
+        - name: Şablon dağıtımı sorunlarını giderme
+          href: resource-manager-tutorial-troubleshoot.md
 - name: Örnekler
   items:
     - name: Resource Manager şablonları
@@ -76,8 +99,8 @@
           href: deployment-manager-health-check.md
     - name: Resource Manager ve klasik dağıtım
       href: resource-manager-deployment-model.md
-    - name: Yerleşik güvenlik denetimleri
-      href: azure-resource-manager-security-controls.md
+    - name: Azure ortak güvenlik öznitelikleri
+      href: azure-resource-manager-security-attributes.md
 - name: Nasıl yapılır
   items:
     - name: Şablon oluşturma
@@ -120,14 +143,17 @@
           displayName: deployment
           href: resource-group-template-deploy-portal.md
         - name: Dağıtma - CLI
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-cli.md
         - name: Dağıtma - PowerShell
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy.md
         - name: Dağıtma - REST API
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: Hata durumunda yeniden dağıtma
+          displayName: rollback
+          href: rollback-on-error.md
         - name: SAS belirteciyle şablon güvenliğini sağlama
           href: secure-template-with-sas-token.md
         - name: Birden çok kaynak grubuna veya aboneliğe dağıtma
@@ -221,8 +247,6 @@
           href: resource-manager-common-deployment-errors.md
         - name: AccountNameInvalid
           href: resource-manager-storage-account-name-errors.md
-        - name: DeploymentQuotaExceeded
-          href: deployment-quota-exceeded.md
         - name: InvalidTemplate
           href: resource-manager-invalid-template-errors.md
         - name: Linux dağıtım sorunları
