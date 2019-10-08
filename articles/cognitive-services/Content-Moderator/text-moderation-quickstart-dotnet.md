@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Content Moderator metin içeriğini C# analiz etme'
+title: 'Hızlı başlangıç: Content Moderator metin içeriğini C# analiz etme'
 titleSuffix: Azure Cognitive Services
 description: .NET için Content Moderator SDK kullanarak çeşitli sakıncalı malzemeler için metin içeriğini çözümleme
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 45ac641948531aa27334762704eba3333aebba4d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 69c190b9ce9e5a99d39a46c147f7159ace47e4f7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564330"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001433"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Hızlı Başlangıç: ' Deki sakıncalı malzeme için metin içeriğini analiz edinC#
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Hızlı Başlangıç: C# dilinde uygunsuz malzemeler için metin içeriğini analiz etme
 
 Bu makalede, [.NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) için Content Moderator SDK'sını kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlanır. Potansiyel olarak sakıncalı olan malzemelere yönelik olarak, metin içeriğinin terim tabanlı filtrelemesini ve sınıflandırmasını nasıl çalıştıracağınızı öğreneceksiniz.
 
@@ -34,10 +34,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Visual Studio'da yeni bir **Konsol uygulaması (.NET Framework)** projesi oluşturun ve projeyi **TextModeration** olarak adlandırın. 
 1. Çözümünüzde başka projeler de varsa, tek başlangıç projesi olarak bunu seçin.
-1. Gereken NuGet paketlerini alın. Çözüm Gezgini'nde projenize sağ tıklayın ve **NuGet Paketlerini Yönet**'i seçin; ardından aşağıdaki projeleri bulun ve yükleyin:
-    - `Microsoft.Azure.CognitiveServices.ContentModerator`
-    - `Microsoft.Rest.ClientRuntime`
-    - `Newtonsoft.Json`
+1. Gerekli NuGet paketini alın. Çözüm Gezgini ' de projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. Sonra **`Microsoft.Azure.CognitiveServices.ContentModerator` paketini**bulup yükler. Alternatif olarak, çözüm dizininden aşağıdaki komutu çalıştırabilirsiniz:
+
+```console
+dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator
+```
 
 ## <a name="add-text-moderation-code"></a>Metin moderasyon kodu ekleme
 

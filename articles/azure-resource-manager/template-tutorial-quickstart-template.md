@@ -8,18 +8,18 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1ef6dd913958f963cb62b4014c09a47903831aa
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: a29d86d105579dda7c12b885e2977406f7b598a4
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963852"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001490"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Öğretici: Azure hızlı başlangıç şablonlarını kullanma
 
 [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/) , topluluk tarafından katkıda bulunulan şablonların bir deposudur. Şablon geliştirmede örnek şablonları kullanabilirsiniz. Bu öğreticide bir Web sitesi kaynak tanımı bulur ve kendi şablonunuza eklersiniz. Yaklaşık **12 dakika** sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [İçe aktarılmış şablonlar hakkında öğreticiyi](template-tutorial-export-template.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -50,7 +50,7 @@ Hızlı başlangıç şablonunu mevcut şablonla birleştirin:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
 
-WEBAPP adının Azure genelinde benzersiz olması gerekir. Yinelenen adlara sahip olmasını engellemek için, **webappportalname** değişkeni **"webappportalname" kaynağından güncelleştirilmiştir: "[Concat (Parameters (' webappname '), '-WebApp ')]"** , " **webappportalname": "[Concat (Parametreler (' webappname '), uniqueString (resourceGroup (). ID))] "** .
+WebApp adının Azure genelinde benzersiz olması gerekir. Yinelenen adlara sahip olmasını engellemek için, **webappportalname** değişkeni **"webappportalname" kaynağından güncelleştirilmiştir: "[Concat (Parameters (' webappname '), '-WebApp ')]"** , " **webappportalname": "[Concat (Parametreler (' webappname '), uniqueString (resourceGroup (). ID))] "** .
 
 Kaynak tanımını `Microsoft.Web/sites` tanımından ayırmak için `Microsoft.Web/serverfarms` tanımının sonuna virgül ekleyin.
 
@@ -78,7 +78,7 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -90,16 +90,16 @@ az group deployment create \
 
 ---
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
 Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
+1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -371,7 +371,7 @@
               href: delete-vault.md
     - name: Uygulamalar için olağanüstü durum kurtarma
       items:
-        - name: Şirket içi uygulamalar için Azure’a olağanüstü durum kurtarmayı ayarlama
+        - name: Şirket içi uygulamalar için olağanüstü durum kurtarma hakkında
           href: site-recovery-workload.md
         - name: Active Directory ve DNS
           href: site-recovery-active-directory.md

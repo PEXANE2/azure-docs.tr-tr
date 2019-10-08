@@ -8,18 +8,18 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: beb2e6a16a303f633b36709fee2a60cca160d1b6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963810"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001528"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza çıktılar ekleme
 
 Bu öğreticide, şablonunuzda bir değer döndürmeyi öğrenirsiniz. Dağıtılan bir kaynaktan bir değere ihtiyacınız olduğunda çıktıları kullanırsınız. Bu öğreticinin tamamlana **7 dakika** sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [Değişkenler hakkında öğreticiyi](template-tutorial-add-variables.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -49,7 +49,7 @@ Depolama hesabının çalışma zamanı durumunu almak için [başvuru](resource
 
 Son olarak, depolama hesabından en son eden **yenyenler** özelliğini döndürür
 
-## <a name="deploy-template"></a>Şablonu dağıt
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 Şablonu dağıtmaya ve döndürülen değere bakmaya hazırsınız.
 
@@ -66,7 +66,7 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -93,11 +93,11 @@ Dağıtım komutunun çıktısında şuna benzer bir nesne görürsünüz:
 
 ## <a name="review-your-work"></a>Çalışmanızı gözden geçirin
 
-Son altı öğreticilerde bir çok şey yaptınız. Ne yaptığını gözden geçirmeniz biraz zaman atalım. Kolayca sağlanması gereken parametrelere sahip bir şablon oluşturdunuz. Şablon, özelleştirmeye izin verdiğinden ve gerekli değerleri dinamik olarak oluşturduğundan farklı ortamlarda yeniden kullanılabilir. Betikte kullanabileceğiniz depolama hesabı hakkındaki bilgileri döndürür.
+Son altı öğreticilerde bir çok şey yaptınız. Ne yaptığını gözden geçirmeniz biraz zaman atalım. Kolayca sağlanması gereken parametrelere sahip bir şablon oluşturdunuz. Şablon, özelleştirmeye izin verdiğinden ve gerekli değerleri dinamik olarak oluşturduğundan farklı ortamlarda yeniden kullanılabilir. Ayrıca, betiğinizdeki kullanabileceğiniz depolama hesabı hakkındaki bilgileri de döndürür.
 
 Şimdi, kaynak grubuna ve dağıtım geçmişine bakalım.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Yaptığınız adımlara bağlı olarak, kaynak grubunda en az bir ve belki birkaç depolama hesabınız olmalıdır.
@@ -121,16 +121,16 @@ Son altı öğreticilerde bir çok şey yaptınız. Ne yaptığını gözden ge�
 
    ![Şablonu göster](./media/template-tutorial-add-outputs/show-template.png)
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
 Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
+1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

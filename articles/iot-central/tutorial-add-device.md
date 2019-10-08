@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Central uygulamasına gerçek bir cihaz ekleme | Microsoft Docs
-description: Bir operatör olarak, Azure IoT Central uygulamanıza gerçek bir cihaz ekleyin.
+description: Bir işleç olarak Azure IoT Central uygulamanıza gerçek bir cihaz ekleyin.
 author: sandeeppujar
 ms.author: sandeepu
 ms.date: 08/23/2019
@@ -9,97 +9,94 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 96b8090bd0e178be53cb49f42438951645def5d9
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 2673d0d2c1cb174316e99a79a10a67347e2bc031
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960519"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001342"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza gerçek bir cihaz ekleme
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-Bu öğreticide, Microsoft Azure IoT Central uygulamanıza gerçek bir cihaz ekleme ve yapılandırma açıklanmaktadır. 
-_* Bu öğreticiyi tamamlayabilmeniz için kendi dış cihazınıza ihtiyacınız yoktur. "Gerçek cihaz", komut satırı ortamında çalışan kodlanmış bir uygulama olarak oluşturulur._ 
+Bu öğreticide, Microsoft Azure IoT Central uygulamanıza *gerçek bir cihaz* ekleme ve yapılandırma açıklanmaktadır. Bu öğreticide, Node. js ' yi kullanarak gerçek cihazı kodlayın ve kodu bir masaüstü makinesinde çalıştırın. Bu öğreticiyi tamamlayabilmeniz için Raspberry PI veya Mxyonga IoT DevKit cihazı gibi ayrı bir IoT cihazına gerek yoktur.
 
 Bu öğretici iki bölümden oluşur:
 
-* İlk olarak, bir operatör olarak, Azure IoT Central uygulamanıza gerçek bir cihaz ekleme ve yapılandırma hakkında bilgi edineceksiniz. Bu bölümün sonunda, ikinci bölümde kullanmak üzere bir bağlantı dizesi alırsınız.
-* Daha sonra, bir cihaz geliştiricisi olarak gerçek cihazınızdaki kodu öğrenirsiniz. Bağlantı dizesini ilk bölümden örnek koda eklersiniz.
+* İlk olarak, bir operatör olarak Azure IoT Central uygulamanıza gerçek bir cihaz eklemeyi ve yapılandırmayı öğrenirsiniz. Bu bölümün sonunda, ikinci bölümde kullanmak için bir bağlantı dizesi alırsınız.
+* Daha sonra, cihaz geliştirici olarak, gerçek cihazınızdaki kod hakkında bilgi edinirsiniz. Örnek kodun ilk bölümünden bağlantı dizesini eklersiniz.
 
-
-
-Bu öğreticide şunların nasıl yapıladığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Yeni bir gerçek cihaz ekleyin
+> * Yeni gerçek cihaz ekleme
 > * Gerçek cihazı yapılandırma
-> * Uygulamadan gerçek cihaz için bağlantı dizesi al
-> * İstemci kodunun uygulamayla nasıl eşlendiğini anlayın
-> * Gerçek cihaz için istemci kodunu yapılandırma
+> * Gerçek cihaz için uygulamadan bağlantı dizesi alma
+> * İstemci kodunun uygulamaya nasıl eşlendiğini anlama
+> * Gerçek cihaz için istemci kodu yapılandırma
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, oluşturucunun Azure IoT Central uygulamasını oluşturmak için en azından ilk Oluşturucu öğreticisini tamamlaması gerekir: [Yeni bir cihaz türü tanımlama](tutorial-define-device-type.md) (gerekli)
 
-Geliştirme makinenize [Node. js](https://nodejs.org/) sürüm 8.0.0 veya üstünü yükler. Sürümünüzü denetlemek için komut satırında `node --version` ' yı çalıştırabilirsiniz. Node. js, çok çeşitli işletim sistemleri için kullanılabilir.
+Geliştirme makinenize [Node. js](https://nodejs.org/) sürüm 8.0.0 veya üstünü yükler. Sürümünüzü denetlemek için komut satırında `node --version` ' yı çalıştırabilirsiniz. Node.js çeşitli işletim sistemleri için kullanılabilir.
 
-## <a name="add-a-real-device"></a>Gerçek bir cihaz ekleme
+## <a name="add-a-real-device"></a>Gerçek cihaz ekleme
 
-Uygulamanıza gerçek bir cihaz eklemek için, [Yeni bir cihaz türü tanımlama](tutorial-define-device-type.md) öğreticisinde oluşturduğunuz **bağlı AIR conditioner** cihaz şablonunu kullanırsınız.
+Uygulamanıza gerçek bir cihaz eklemek için, [Yeni bir cihaz türü belirleme](tutorial-define-device-type.md) öğreticisinde oluşturduğunuz **Bağlı Klima** cihaz şablonunu kullanırsınız.
 
 1. Yeni bir cihazı operatör olarak eklemek için sol gezinti menüsünde **cihazlar** ' ı seçin:
 
-   ![Bağlı hava koşullayıcı gösteren cihaz Gezgini sayfası](media/tutorial-add-device/explorer.png)
+   ![Bağlı klimayı gösteren Device Explorer sayfası](media/tutorial-add-device/explorer.png)
 
    **Device Explorer** , **bağlantılı AIR conditioner** cihaz şablonunu ve sanal cihazı gösterir. Bir cihaz şablonu oluşturduğunuzda, IoT Central otomatik olarak sanal bir cihaz oluşturur.
 
 2. **Bağlı hava layıcı** cihaz şablonunun **Device Explorer**seçili olduğunu unutmayın. Bu şablonu kullanan gerçek bir AIR klimaları cihazını bağlamaya başlamak için **+** ' i seçin ve ardından **Gerçek**:
 
-   ![Yeni, gerçek bağlantılı bir AIR klimaları cihazı eklemeye başlayın](media/tutorial-add-device/newreal.png)
+   ![Yeni, gerçek bir klima cihazı eklemeye başlama](media/tutorial-add-device/newreal.png)
 
 3. Kendi **CIHAZ kimliğinizi** girin (küçük harfle yazılmalıdır) veya önerilen değeri kullanın. Ayrıca, yeni cihazınız için bir **Cihaz adı** girip **Oluştur**' a tıklayın.
 
    ![Cihazı yeniden adlandırma](media/tutorial-add-device/rename.png)
 
-## <a name="configure-a-real-device"></a>Gerçek bir cihazı yapılandırma
+## <a name="configure-a-real-device"></a>Gerçek bir cihaz yapılandırma
 
-Gerçek cihaz, **bağlantılı hava koşullayıcı** cihaz şablonundan oluşturulur. Cihazınızı yapılandırmak için **ayarları** kullanabilir ve cihazlarınızın bilgilerini kaydetmek için özellik değerlerini ayarlayabilirsiniz.
+Gerçek cihaz **Bağlı Klima** cihaz şablonundan oluşturulur. Cihazınızı yapılandırmak ve cihazınız hakkında bilgileri kaydetmek üzere özellik değerlerini ayarlamak için **Ayarlar**’ı kullanabilirsiniz.
 
-1. **Ayarlar** sayfasında, **sıcaklık ayarlama** durumunun **güncelleştirme**olmadığına dikkat edin. Gerçek cihaz uygulamaya bağlanana kadar bu durumda kalır ve bu ayar üzerinde işlem yaptığı konusunda sizi onaylar.
+1. **Ayarlar** sayfasında, **Sıcaklık Ayarla** ayar durumunun **güncelleştirme yok** olduğuna dikkat edin. Gerçek cihaz uygulamaya bağlanıp bu ayar üzerine işlem gerçekleştirdiğini tanıyana kadar bu durumda kalır.
 
-    ![Ayarları eşitlemeyi göster](media/tutorial-add-device/settingssyncing.png)
+    ![Ayarları gösterme eşitleniyor](media/tutorial-add-device/settingssyncing.png)
 
-2. Yeni, gerçek cihazınızın **Özellikler** sayfasında, hizmet konumu ve son hizmet tarihi düzenlenebilir özelliklerdir. Seri numarası ve bellenim sürümü alanları, cihaz uygulamaya bağlanana kadar boştur. Bu salt yazılır değerler cihazdan gönderilir ve düzenlenemez.
+2. Yeni, gerçek cihazınızın **Özellikler** sayfasında, hizmet konumu ve son hizmet tarihi düzenlenebilir özelliklerdir. Cihaz uygulamaya bağlanana kadar seri numarası ve üretici yazılımı sürümü alanları boş kalır. Bu salt yazılır değerler cihazdan gönderilir ve düzenlenemez.
 
-    ![Gerçek cihaz için cihaz özellikleri](media/tutorial-add-device/setproperties1.png)
+    ![Gerçek cihazın Cihaz Özellikleri](media/tutorial-add-device/setproperties1.png)
 
-3. Gerçek cihazınız için **ölçümleri**, **kuralları**ve **Pano** sayfalarını görüntüleyebilirsiniz.
+3. Gerçek cihazınız için **Ölçüler**, **Kurallar** ve **Pano** sayfalarını görüntüleyebilirsiniz.
 
-## <a name="prepare-the-client-code"></a>İstemci kodunu hazırlama
+## <a name="prepare-the-client-code"></a>İstemci kodu hazırlama
 
 Bu makaledeki örnek kod [Node. js](https://nodejs.org/) ' de yazılmıştır ve bir cihazın şunları yapmak için yeterli kodu gösterir:
 
 * Azure IoT Central uygulamanıza bağlanın.
-* Sıcaklık telemetrisini bağlı bir AIR klimaları cihazı olarak gönderin.
-* Azure IoT Central uygulamanıza cihaz özellikleri gönderin.
-* **Sıcaklık ayarla** ayarını kullanan bir işlece yanıt verir.
-* Azure IoT Central uygulamanızdan yankı komutunu işleyin.
+* Bağlı bir klima cihazı olarak sıcaklık telemetrisi gönderin.
+* Azure IoT Central uygulamanıza cihaz özelliklerini gönderin.
+* **Sıcaklık Ayarla** ayarını kullana bir işleci yanıtlayın.
+* Azure IoT Central uygulamanızdan Echo komutunu işleyin.
 
-[Sonraki adımlar](#next-steps) bölümünde listelenen makaleler, daha fazla örnek içerir ve diğer programlama dillerini gösterir. Cihazların Azure IoT Central 'e nasıl bağlanacağı hakkında daha fazla bilgi için bkz. [cihaz bağlantısı](concepts-connectivity.md) makalesi.
+[Sonraki adımlar](#next-steps) bölümünde listelenen makaleler, daha fazla örnek içerir ve diğer programlama dillerini gösterir. Cihazların Azure IoT Central’a bağlanması hakkında daha fazla bilgi için [Cihaz bağlantısı](concepts-connectivity.md) adlı makaleye bakın.
 
-Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl hazırlanacağı gösterilmektedir:
+Aşağıdaki adımlar [Node.js](https://nodejs.org/) örneğinin nasıl hazırlanacağını gösterir:
 
 ### <a name="get-the-device-connection-information"></a>Cihaz bağlantı bilgilerini al
 
-1. Uygulamanızdaki bir cihaz örneği için bağlantı dizesi, IoT Central tarafından belirtilen cihaz bilgileriyle oluşturulur.
+1. Uygulamanızdaki bir cihaz örneğinin bağlantı dizesi, IoT Central tarafından sağlanan cihaz bilgilerine göre oluşturulur.
 
-   Gerçek bağlantılı hava koşullarınızın cihaz ekranında **Bağlan**' ı seçin.
+   Gerçek bağlı klima cihazınızın ekranında **Bağlan**'ı seçin.
 
-   ![Bağlantı bilgilerini görüntüle bağlantısını gösteren cihaz sayfası](media/tutorial-add-device/connectionlink.png)
+   ![Bağlantı bilgilerini görüntüleme bağlantısını gösteren cihaz sayfası](media/tutorial-add-device/connectionlink.png)
 
-1. **Cihaz bağlantısı** sayfasında, **Kapsam KIMLIĞI**, **cihaz kimliği** ve **birincil anahtar** değerlerini bir yere unutmayın. Bu değerleri daha sonra bu öğreticide kullanacaksınız.
+1. **Cihaz bağlantısı** sayfasında, **Kapsam KIMLIĞI**, **cihaz kimliği**ve **birincil anahtar** değerlerini bir yere unutmayın. Bu değerleri daha sonra bu öğreticide kullanacaksınız.
 
    ![Bağlantı ayrıntıları](media/tutorial-add-device/device-connect.png)
 
@@ -109,21 +106,21 @@ Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl haz�
 
 1. Komut satırı ortamınızda, oluşturduğunuz `connectedairconditioner` klasörüne gidin.
 
-1. Node. js projenizi başlatmak için, tüm varsayılanları kabul eden aşağıdaki komutu çalıştırın:
+1. Node.js projenizi başlatmak için, tüm varsayılanları kabul ederek aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     npm init
       ```
 
-1. Gerekli paketleri yüklemek için şu komutu çalıştırın:
+1. Gerekli paketleri yüklemek için, aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Bir metin düzenleyicisi kullanarak, `connectedairconditioner` klasöründe **ConnectedAirConditioner. js** adlı bir dosya oluşturun.
+1. Bir metin düzenleyicisi kullanarak, `connectedairconditioner` klasöründe **ConnectedAirConditioner.js** adlı bir dosya oluşturun.
 
-1. Aşağıdaki `require` deyimlerini **ConnectedAirConditioner. js** dosyasının başlangıcına ekleyin:
+1. Aşağıdaki `require` deyimlerini **ConnectedAirConditioner.js** dosyasının başlangıcına ekleyin:
 
     ```javascript
     'use strict';
@@ -149,7 +146,7 @@ Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl haz�
     var targetTemperature = 0;
     ```
 
-1. Şimdiye kadar yaptığınız değişiklikleri kaydedin, ancak dosyayı açık tutun.
+1. Şu ana kadar yaptığınız değişiklikleri kaydedin ancak dosyayı açık tutun.
 
 ## <a name="review-client-code"></a>İstemci kodunu gözden geçir
 
@@ -157,11 +154,11 @@ Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl haz�
 
 * Azure IoT Central uygulamanıza bağlanın.
 * Azure IoT Central uygulamanıza telemetri gönderin.
-* Azure IoT Central uygulamanıza cihaz özellikleri gönderin.
+* Azure IoT Central uygulamanıza cihaz özelliklerini gönderin.
 * Azure IoT Central uygulamanızdan ayarları alın.
-* Azure IoT Central uygulamanızdan yankı komutunu işleyin.
+* Azure IoT Central uygulamanızdan Echo komutunu işleyin.
 
-1. Azure IoT Central uygulamanıza sıcaklık telemetrisi göndermek için, **ConnectedAirConditioner. js** dosyasına aşağıdaki kodu ekleyin:
+1. Azure IoT Central uygulamanıza sıcaklık telemetrisi göndermek için, aşağıdaki kodu **ConnectedAirConditioner.js** dosyasına ekleyin:
 
     ```javascript
     // Send device measurements.
@@ -175,9 +172,9 @@ Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl haz�
     }
     ```
 
-    Göndereceğiniz JSON 'daki alanın adı, cihaz şablonunuzda sıcaklık telemetri için belirttiğiniz alanın adıyla eşleşmelidir. Bu örnekte, alanın adı **sıcaklık**olur.
+    Gönderdiğiniz JSON’deki alanın adı cihaz şablonunuzdaki sıcaklık telemetrisi için belirttiğiniz alanın adıyla eşleşmelidir. Bu örnekte, alanın adı **sıcaklıktır**.
 
-1. **Firmwareversion** ve **SerialNumber**gibi cihaz özelliklerini göndermek için aşağıdaki tanımı ekleyin:
+1. **firmwareVersion** ve **serialNumber** gibi cihaz özelliklerini göndermek için şu tanımı ekleyin:
 
     ```javascript
     // Send device properties
@@ -191,7 +188,7 @@ Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl haz�
     }
     ```
 
-1. Cihazınızın desteklediği ayarları **Setsıcaklık**gibi tanımlamak için aşağıdaki tanımı ekleyin:
+1. Cihazınızın desteklediği **setTemperature** gibi ayarları tanımlamak için, aşağıdaki tanımı ekleyin:
 
     ```javascript
     // Add any settings your device supports
@@ -211,7 +208,7 @@ Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl haz�
     };
     ```
 
-1. Azure IoT Central gönderilen ayarları işlemek için, uygun cihaz kodunu bulan ve yürüten aşağıdaki işlevi ekleyin:
+1. Azure IoT Central’dan gönderilen ayarları işlemek için, uygun cihaz kodunu bulan ve yürüten aşağıdaki işlevi ekleyin:
 
     ```javascript
     // Handle settings changes that come from Azure IoT Central via the device twin.
@@ -240,11 +237,11 @@ Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl haz�
 
     Bu işlev:
 
-    * İstenen bir özelliği göndermek için Azure IoT Central izler.
+    * İstenen bir özellik gönderen Azure IoT Central’ı izler.
     * Ayar değişikliğini işlemek için çağrılacak uygun işlevi bulur.
     * Azure IoT Central uygulamanıza geri bildirim gönderir.
 
-1. Azure IoT Central uygulamanızdan **yankı** gibi bir komuta yanıt vermek için aşağıdaki tanımı ekleyin:
+1. Azure IoT Central uygulamanızdan gelen **echo** gibi bir komuta yanıt vermek için şu tanımı ekleyin:
 
     ```javascript
     // Respond to the echo command
@@ -256,7 +253,7 @@ Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl haz�
     }
     ```
 
-1. Azure IoT Central bağlantısını tamamlayıp istemci kodundaki işlevleri bağlamak için aşağıdaki kodu ekleyin:
+1. Azure IoT Central bağlantısını tamamlamak ve istemci kodundaki işlevleri bağlamak için aşağıdaki kodu ekleyin:
 
     ```javascript
     // Handle device connection to Azure IoT Central.
@@ -313,7 +310,7 @@ Aşağıdaki adımlarda, [Node. js](https://nodejs.org/) örneğinin nasıl haz�
 
 Artık istemci kodunu çalıştırabilir ve IoT Central uygulamanızla nasıl etkileşime gireceğini görebilirsiniz:
 
-1. Örneği çalıştırmak için komut satırı ortamınıza aşağıdaki komutu girin:
+1. Örneği çalıştırmak için, komut satırı ortamınıza aşağıdaki komutu girin:
 
     ```cmd/sh
     node ConnectedAirConditioner.js
@@ -322,52 +319,52 @@ Artık istemci kodunu çalıştırabilir ve IoT Central uygulamanızla nasıl et
     > [!NOTE]
     > Bu komutu çalıştırdığınızda `connectedairconditioner` klasöründe olduğunuzdan emin olun.
 
-1. Uygulama çıktıyı konsola yazdırır:
+1. Uygulama çıkışı konsola yazdırır:
 
-   ![İstemci uygulama çıkışı](media/tutorial-add-device/output.png)
+   ![İstemci uygulaması çıkışı](media/tutorial-add-device/output.png)
 
-1. Yaklaşık 30 saniye sonra, cihaz **ölçümleri** sayfasında Telemetriyi görürsünüz:
+1. 30 saniyeden sonra, cihaz **Ölçüm** sayfasında telemetriyi görürsünüz:
 
    ![Gerçek telemetri](media/tutorial-add-device/realtelemetry.png)
 
-1. **Ayarlar** sayfasında, ayarın artık eşitlenmiş olduğunu görebilirsiniz. Cihaz ilk kez bağlandığında, ayar değerini aldı ve değişikliği kabul edildi:
+1. **Ayarlar** sayfasında, ayarın şimdi eşitlenmiş olduğunu görebilirsiniz. Cihaz ilk bağlandığında, ayar değerini aldı ve değişikliği onayladı:
 
-   ![Ayar eşitlendi](media/tutorial-add-device/settingsynced.png)
+   ![Ayarlar eşitlendi](media/tutorial-add-device/settingsynced.png)
 
-1. **Ayarlar** sayfasında, cihaz sıcaklığını **95** olarak ayarlayın ve **cihazı Güncelleştir**' i seçin. Örnek uygulamanız bu değişikliği alır ve işler:
+1. **Ayarlar** sayfasında, cihaz sıcaklığını **95** olarak ayarlayıp **Cihazı güncelleştir**’i seçin. Örnek uygulamanız bu değişikliği alır ve işler:
 
-   ![Alma ve işleme ayarı](media/tutorial-add-device/receivesetting.png)
+   ![Ayarı alma ve işleme](media/tutorial-add-device/receivesetting.png)
 
    > [!NOTE]
-   > İki "ayar güncelleştirmesi" iletisi vardır. @No__t-0 durumu gönderildiğinde ve `completed` durumu gönderildiğinde bir tane.
+   > İki “ayar güncelleştirmesi” iletisi vardır. `pending` durumu gönderildiğinde bir tane ve `completed` durumu gönderildiğinde bir tane.
 
-1. **Ölçümler** sayfasında, cihazın daha yüksek sıcaklık değerleri gönderdiğini görebilirsiniz:
+1. **Ölçümler** sayfasında cihazın daha yüksek sıcaklık değerleri gönderdiğini görebilirsiniz:
 
-    ![Sıcaklık telemetrisi artık daha yüksek](media/tutorial-add-device/highertemperature.png)
+    ![Sıcaklık telemetrisi şimdi daha yüksek](media/tutorial-add-device/highertemperature.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, nasıl yapılacağını öğrendiniz:
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="nextstepaction"]
-> * Yeni bir gerçek cihaz ekleyin
+> * Yeni gerçek cihaz ekleme
 > * Yeni cihazı yapılandırma
-> * Uygulamadan gerçek cihaz için bağlantı dizesi al
-> * İstemci kodunun uygulamayla nasıl eşlendiğini anlayın
-> * Gerçek cihaz için istemci kodunu yapılandırma
+> * Gerçek cihaz için uygulamadan bağlantı dizesi alma
+> * İstemci kodunun uygulamaya nasıl eşlendiğini anlama
+> * Gerçek cihaz için istemci kodu yapılandırma
 
 Azure IoT Central uygulamanıza gerçek bir cihaz bağladığınıza göre, sonraki adımlarda önerilen bazı adımları bulabilirsiniz.
 
-Bir operatör olarak şunları yapmayı öğrenebilirsiniz:
+Bir operatör olarak, aşağıdakileri yapmayı öğrenebilirsiniz:
 
-* [Cihazlarınızı yönetin](howto-manage-devices.md)
+* [Cihazlarınızı yönetme](howto-manage-devices.md)
 * [Cihaz kümelerini kullanma](howto-use-device-sets.md)
-* [Özel analiz oluştur](howto-use-device-sets.md)
+* [Özel analiz oluşturma](howto-use-device-sets.md)
 
-Bir cihaz geliştiricisi olarak şunları yapmayı öğrenebilirsiniz:
+Cihaz geliştiricisi olarak, şunları yapmayı öğrenebilirsiniz:
 
 * [Bir DevKit cihazını hazırlama ve bağlama (C)](howto-connect-devkit.md)
 * [Raspberry Pi (Python) hazırlama ve bağlama](howto-connect-raspberry-pi-python.md)
 * [Raspberry Pi (C#) hazırlama ve bağlama](howto-connect-raspberry-pi-csharp.md)
 * [Windows 10 IoT çekirdek cihazını hazırlama ve bağlama (C#)](howto-connect-windowsiotcore.md)
-* [Azure IoT Central uygulamanıza genel bir Node. js istemcisini bağlama](howto-connect-nodejs.md)
+* [Genel bir Node.js istemcisini Azure IoT Central uygulamanıza bağlama](howto-connect-nodejs.md)

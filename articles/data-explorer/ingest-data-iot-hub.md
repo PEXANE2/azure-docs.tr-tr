@@ -7,18 +7,18 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 327fd5352a3f067638c7f9ceb51e2de9e284d845
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
-ms.translationtype: MT
+ms.openlocfilehash: ef66e6a69b6d33b16a558293fe29b8adf51cd137
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947841"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996766"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>IoT Hub verileri Azure Veri Gezgini 'a alma (Önizleme)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir bir veri araştırma hizmetidir. Azure Veri Gezgini, büyük bir veri akışı platformu ve IoT alma hizmeti olan IoT Hub alma (veri yükleme) sağlar.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük bir veri akışı platformu ve IoT alma hizmeti olan IoT Hub alma (veri yükleme) sağlar.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
@@ -36,7 +36,7 @@ Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oran
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="create-a-target-table-in-azure-data-explorer"></a>Azure Veri Gezgini hedef tablo oluşturma
+## <a name="create-a-target-table-in-azure-data-explorer"></a>Azure Veri Gezgini'nde hedef tablo oluşturma
 
 Artık Azure Veri Gezgini 'da IoT Hub 'Larının veri göndereceği bir tablo oluşturursunuz. Tabloyu, [**ön**](#prerequisites)koşullarda sağlanan kümede ve veritabanında oluşturursunuz.
 
@@ -50,7 +50,7 @@ Artık Azure Veri Gezgini 'da IoT Hub 'Larının veri göndereceği bir tablo ol
     .create table TestTable (temperature: real, humidity: real)
     ```
     
-    ![Oluşturma sorgusu Çalıştır](media/ingest-data-iot-hub/run-create-query.png)
+    ![Oluşturma sorgusunu çalıştırma](media/ingest-data-iot-hub/run-create-query.png)
 
 1. Aşağıdaki komutu pencereye kopyalayın ve gelen JSON verilerini tablonun sütun adlarıyla ve veri türleriyle (TestTable) eşlemek için **Çalıştır** ' ı seçin.
 
@@ -66,7 +66,7 @@ Artık Azure Veri Gezgini IoT Hub bağlanıyorsunuz. Bu bağlantı tamamlandığ
 
 1. Oluşturduğunuz küme altında **veritabanları** ' nı seçin ve ardından **TestDB**oluşturduğunuz veritabanını seçin.
     
-    ![Test veritabanını seçin](media/ingest-data-iot-hub/select-database.png)
+    ![Test veritabanını seçme](media/ingest-data-iot-hub/select-database.png)
 
 1. **Veri** alımı ' nı seçin ve **veri bağlantısı ekleyin**. Ardından, aşağıdaki bilgilerle formu doldurun. İşiniz bittiğinde **Oluştur** ' u seçin.
 
@@ -74,14 +74,13 @@ Artık Azure Veri Gezgini IoT Hub bağlanıyorsunuz. Bu bağlantı tamamlandığ
 
     **Veri kaynağı**:
 
-    **Ayarlanmasını** | **Alan açıklaması**
+    **Ayar** | **Alan açıklaması**
     |---|---|
     | Veri bağlantısı adı | Azure Veri Gezgini oluşturmak istediğiniz bağlantının adı
     | IoT Hub | IoT Hub adı |
     | Paylaşılan erişim ilkesi | Paylaşılan erişim ilkesinin adı. Okuma izinlerine sahip olmalıdır |
     | Tüketici grubu |  IoT Hub yerleşik uç noktasında tanımlanan Tüketici grubu |
-    | Olay sistemi özellikleri | Olay [sistemi özellikleri IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages) olay iletisi başına birden çok kayıt varsa, sistem özellikleri ilk birine eklenir.|
-    | | 
+    | Olay sistemi özellikleri | [IoT Hub olay sistemi özellikleri](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Sistem Özellikleri eklenirken, tablo şemasını [oluşturun](/azure/kusto/management/tables#create-table) veya [güncelleştirin](/azure/kusto/management/tables#alter-table-and-alter-merge-table) ve seçili özellikleri dahil etmek için [eşleme](/azure/kusto/management/mappings) yapın. | | | 
 
     > [!NOTE]
     > [El ile yük devretme](/azure/iot-hub/iot-hub-ha-dr#manual-failover)durumunda, veri bağlantısını yeniden oluşturmanız gerekir.
@@ -91,11 +90,11 @@ Artık Azure Veri Gezgini IoT Hub bağlanıyorsunuz. Bu bağlantı tamamlandığ
     Alınan verileri yönlendirmeye yönelik iki seçenek vardır: *statik* ve *dinamik*. 
     Bu makalede, tablo adını, veri biçimini ve eşlemeyi belirttiğiniz statik yönlendirme kullanırsınız. Bu nedenle, **verilerim yönlendirme bilgilerini içeren verileri** işaretsiz olarak bırak.
 
-     **Ayarlanmasını** | **Önerilen değer** | **Alan açıklaması**
+     **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
     | Tablo | *TestTable* | **TestDB**'de oluşturduğunuz tablo. |
-    | Veri biçimi | *NESNESINDE* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOHSV, SCSV, TSV, TSVE ve TXT. |
-    | Sütun eşleme | *TestMapping* | **TestDB**'de oluşturduğunuz ve gelen JSON verilerini **TestDB**'nin sütun adlarıyla ve veri türleriyle eşleyen eşleme. JSON, çok SATıRLı JSON ve AVRO için gereklidir ve diğer biçimler için isteğe bağlıdır.|
+    | Veri biçimi | *JSON* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOHSV, SCSV, TSV, TSVE ve TXT. |
+    | Sütun eşleme | *TestMapping* | **TestDB**'de oluşturduğunuz ve gelen JSON verilerini **TestDB**'nin sütun adlarıyla ve veri türleriyle eşleyen [eşleme](/azure/kusto/management/mappings) . JSON, çok SATıRLı JSON ve AVRO için gereklidir ve diğer biçimler için isteğe bağlıdır.|
     | | |
 
     > [!NOTE]
@@ -104,33 +103,33 @@ Artık Azure Veri Gezgini IoT Hub bağlanıyorsunuz. Bu bağlantı tamamlandığ
 
 ## <a name="generate-sample-data-for-testing"></a>Test için örnek veri oluşturma
 
-Sanal cihaz uygulaması, IoT Hub 'ınızdaki cihaza özgü bir uç noktaya bağlanır ve sanal sıcaklık ve nem telemetrisini gönderir.
+Simülasyon cihazı uygulaması, IoT hub’ınız üzerindeki cihaza özgü bir uç noktaya bağlanır ve sanal sıcaklık ve nem telemetrisi gönderir.
 
-1. Örnek C# projeyi https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip ' den INDIRIN ve ZIP arşivini ayıklayın.
+1. https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip adresinden örnek C# projesini indirin ve ZIP arşivini ayıklayın.
 
-1. Yerel bir Terminal penceresinde, örnek C# projenin kök klasörüne gidin. Ardından **iot-hub\Quickstarts\simulated-Device** klasörüne gidin.
+1. Yerel terminal penceresinde, örnek C# projesinin kök klasörüne gidin. Daha sonra **iot-hub\Quickstarts\simulated-device** klasörüne gidin.
 
-1. **SimulatedDevice.cs** dosyasını istediğiniz bir metin düzenleyicisinde açın.
+1. **SimulatedDevice.cs** dosyasını, istediğiniz bir metin düzenleyicide açın.
 
-    @No__t-0 değişkeninin değerini, cihaz bağlantı dizesiyle [bir cihazı IoT Hub kaydet](#register-a-device-to-the-iot-hub)öğesinden değiştirin. Sonra değişikliklerinizi **SimulatedDevice.cs** dosyasına kaydedin.
+    @No__t-0 değişkeninin değerini, cihaz bağlantı dizesiyle [bir cihazı IoT Hub kaydet](#register-a-device-to-the-iot-hub)öğesinden değiştirin. Daha sonra **SimulatedDevice.cs** dosyasına değişikliklerinizi kaydedin.
 
-1. Yerel Terminal penceresinde, sanal cihaz uygulaması için gerekli paketleri yüklemek üzere aşağıdaki komutları çalıştırın:
+1. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli paketleri yükleyin:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. Yerel Terminal penceresinde, sanal cihaz uygulamasını derlemek ve çalıştırmak için aşağıdaki komutu çalıştırın:
+1. Yerel terminal penceresinde, aşağıdaki komutu çalıştırarak simülasyon cihazı uygulamasını derleyip çalıştırın:
 
     ```cmd/sh
     dotnet run
     ```
 
-    Aşağıdaki ekran görüntüsünde, sanal cihaz uygulamasının IoT Hub 'ınıza telemetri gönderdiği çıkış gösterilmektedir:
+    Aşağıdaki ekran görüntüsünde, simülasyon cihazı uygulaması, IoT hub’ınıza telemetri gönderdiğinde oluşan çıktı gösterilmektedir:
 
-    ![Sanal cihazı Çalıştır](media/ingest-data-iot-hub/simulated-device.png)
+    ![Simülasyon cihazını çalıştırma](media/ingest-data-iot-hub/simulated-device.png)
 
-## <a name="review-the-data-flow"></a>Veri akışını gözden geçirme
+## <a name="review-the-data-flow"></a>Veri akışını inceleme
 
 Uygulama verileri ürettiğinde, artık IoT Hub 'ından kümenizdeki tabloya veri akışını görebilirsiniz.
 
@@ -138,7 +137,7 @@ Uygulama verileri ürettiğinde, artık IoT Hub 'ından kümenizdeki tabloya ver
 
     ![IoT Hub ölçümleri](media/ingest-data-iot-hub/iot-hub-metrics.png)
 
-1. Şimdiye kadar kaç tane ileti yapıldığını denetlemek için test veritabanınızda aşağıdaki sorguyu çalıştırın.
+1. Veritabanına ulaşan ileti sayısını denetlemek için test veritabanınızda aşağıdaki sorguyu çalıştırın.
 
     ```Kusto
     TestTable
@@ -159,19 +158,19 @@ Uygulama verileri ürettiğinde, artık IoT Hub 'ından kümenizdeki tabloya ver
     > * Azure Veri Gezgini, alım işlemini iyileştirmek için tasarlanan veri alımı için toplama (toplu işlem) ilkesine sahiptir. İlke, varsayılan olarak 5 dakika veya 500 MB veri olarak yapılandırılır, bu nedenle bir gecikmeyle karşılaşabilirsiniz. Toplama seçenekleri için bkz. [toplu işlem ilkesi](/azure/kusto/concepts/batchingpolicy) . 
     > * Tablonuzu, akışı destekleyecek şekilde yapılandırın ve yanıt süresi içinde gecikme süresini kaldırın. [Akış ilkesi](/azure/kusto/concepts/streamingingestionpolicy)bölümüne bakın. 
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 IoT Hub yeniden kullanmayı planlamıyorsanız, maliyetlerden kaçınmak için **Test-Hub-RG**'yi temizleyin.
 
-1. Azure portal, en solda bulunan **kaynak grupları** ' nı seçin ve ardından oluşturduğunuz kaynak grubunu seçin.  
+1. Azure portalında, en solda bulunan **Kaynak grupları**’nı ve ardından oluşturduğunuz kaynak grubunu seçin.  
 
-    Sol menü daraltılmışsa, şunu seçin ![Genişlet düğmesi](media/ingest-data-event-hub/expand.png) genişletin.
+    Soldaki menü daraltılmışsa, genişletmek için ![Genişletme düğmesi](media/ingest-data-event-hub/expand.png) öğesine tıklayın.
 
    ![Silinecek kaynak grubunu seçin](media/ingest-data-event-hub/delete-resources-select.png)
 
-1. **Test-Resource-Group**altında, **kaynak grubunu sil**' i seçin.
+1. **test-resource-group** altında **Kaynak grubunu sil**'i seçin.
 
-1. Yeni pencerede, silinecek kaynak grubunun adını yazın (*Test-Hub-RG*) ve ardından **Sil**' i seçin.
+1. Yeni pencerede silinecek kaynak grubunun adını yazın (*test-hub-rg*) ve **Sil**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

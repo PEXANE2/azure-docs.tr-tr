@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 9bc0d1b31ebeaecce8b4be8699cf87811047b6f9
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
-ms.translationtype: MT
+ms.openlocfilehash: 77c90cccbbfa5865878ae4dc47e5009697560ed3
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123252"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001322"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute yönlendirme gereksinimleri
 Microsoft bulut hizmetlerine ExpressRoute kullanarak bağlanmak için yönlendirmeyi ayarlamanız ve yönetmeniz gerekir. Bazı bağlantı sağlayıcıları yönlendirme ayarlama ve yönetimini yönetilen bir hizmet olarak sunar. Bu hizmetin sunulup sunulmadığını öğrenmek için bağlantı sağlayıcınıza başvurun. Bu hizmet sağlanmıyorsa aşağıdaki gereksinimlere uymalısınız:
@@ -40,7 +40,7 @@ Eşlikleri yapılandırmak için özel IP adresleri veya ortak IP adresleri kull
   * [Kullanılabilirlik SLA](https://azure.microsoft.com/support/legal/sla/)’sının geçerli olması için her iki BGP oturumunu da ayarlamanız gerekir.  
 
 #### <a name="example-for-private-peering"></a>Özel eşleme örneği
-Eşlik oluşturmak için a.b.c.d/29 kullanmayı seçerseniz iki /30 alt ağına bölünür. Aşağıdaki örnekte, a.b.c.d/29 alt ağının nasıl kullanıldığına dikkat edin:
+Eşlik oluşturmak için a.b.c.d/29 kullanmayı seçerseniz iki /30 alt ağına bölünür. Aşağıdaki örnekte, a. b. c. d/29 alt ağının nasıl kullanıldığına dikkat edin:
 
 * a.b.c.d/29; a.b.c.d/30 ve a.b.c.d+4/30 olarak ayrılır ve sağlama API'leri yoluyla Microsoft'a geçirilir.
   * a.b.c.d+1'i Birincil PE'nin VRF IP'si olarak kullanırsınız ve Microsoft birincil MSEE'nin VRF IP'si olarak a.b.c.d+2 kullanır.
@@ -67,7 +67,7 @@ BGP oturumlarını ayarlamak için sahip olduğunuz ortak IP adreslerini kullanm
 ### <a name="ip-addresses-used-for-azure-public-peering"></a>Azure genel eşlemesi için kullanılan IP adresleri
 
 > [!NOTE]
-> Azure genel eşdüzey hizmet sağlama, yeni bağlantı hatları için avialable değil.
+> Azure genel eşlemesi yeni devreler için kullanılamaz.
 > 
 
 BGP oturumlarını ayarlamak için sahip olduğunuz ortak IP adreslerini kullanmanız gerekir. Microsoft, IP adreslerinin sahipliğini Routing Internet Registries ve Internet Routing Registries ile doğrulayabilmelidir. 
@@ -98,21 +98,21 @@ IP adresi ve AS numarasının aşağıdaki kayıt defterlerinden birinde size ka
 
 Ön ekleriniz ve AS numaranız yukarıdaki kayıtlarla atanmamışsa ön eklerinizin ve ASN değerinizin el ile doğrulanması amacıyla bir destek olayı oluşturmanız gerekir. Destek ekibi kaynakları kullanma izniniz olduğunu gösteren Yetki Yazısı gibi bir belge talep edecektir.
 
-Özel AS Numarası, Microsoft Eşlemesi ile birlikte kullanılabilir ancak bunun için de el ile doğrulama yapılması gerekecektir. Ayrıca, alınan ön ekler için AS YOLU’ndaki özel AS numaralarını kaldırırız. Bunun sonucu olarak, [Microsoft Eşlemesi için yönlendirmeyi etkilemek](expressroute-optimize-routing.md) amacıyla AS YOLU’nda özel AS numaraları ekleyemezsiniz. 
+Özel AS Numarası, Microsoft Eşlemesi ile birlikte kullanılabilir ancak bunun için de el ile doğrulama yapılması gerekecektir. Ayrıca, alınan ön ekler için AS YOLU’ndaki özel AS numaralarını kaldırırız. Bunun sonucu olarak, Microsoft Eşlemesi için yönlendirmeyi etkilemek amacıyla AS YOLU’nda özel AS numaraları ekleyemezsiniz. 
 
 > [!IMPORTANT]
-> Aynı genel IP yolu genel İnternet'e ve ExpressRoute üzerinden tanıtmıyoruz. Asimetrik yönlendirmeye neden olan hatalı yapılandırmanın riskini azaltmak için, ExpressRoute üzerinden Microsoft 'a tanıtılan [NAT IP adreslerinin](expressroute-nat.md) , internet 'e tanıtılmayan bir aralıktan olması önemle önerilir. Bu ulaşmak mümkün değilse, ExpressRoute üzerinde Internet bağlantından daha belirli bir Aralık tanıttığınızdan emin olmak önemlidir. NAT için genel yönlendirme yanı sıra ayrıca genel IP ExpressRoute üzerinden tanıtabilirsiniz içinden, Microsoft Office 365 uç noktaları ile iletişim kuran sunucular şirket içi ağınızda tarafından kullanılan adresleri. 
+> Genel Internet ve ExpressRoute üzerinden aynı genel IP yolunu duyurmayın. Asimetrik yönlendirmeye neden olan hatalı yapılandırmanın riskini azaltmak için, ExpressRoute üzerinden Microsoft 'a tanıtılan [NAT IP adreslerinin](expressroute-nat.md) , internet 'e tanıtılmayan bir aralıktan olması önemle önerilir. Bu ulaşmak mümkün değilse, ExpressRoute üzerinde Internet bağlantından daha belirli bir Aralık tanıttığınızdan emin olmak önemlidir. NAT için ortak yolun yanı sıra, Microsoft içindeki Office 365 uç noktaları ile iletişim kuran şirket içi ağınızda bulunan sunucular tarafından kullanılan genel IP adreslerini ExpressRoute üzerinden de tanıtabilirsiniz. 
 > 
 > 
 
-### <a name="public-peering-deprecated---not-available-for-new-circuits"></a>Ortak eşleme (kullanım dışı - yeni bağlantı hatları için kullanılamaz)
+### <a name="public-peering-deprecated---not-available-for-new-circuits"></a>Ortak eşleme (kullanım dışı-yeni devreler için kullanılamaz)
 Azure ortak eşleme yolu, Azure’da barındırılan tüm hizmetlere ortak IP adresleri üzerinden bağlanmanıza olanak sağlar. Bunlar [ExpessRoute hakkında SSS](expressroute-faqs.md)’de listelenen tüm hizmetleri ve ISV’ler tarafından Microsoft Azure üzerinde barındırılan hizmetleri içerir. Ortak eşleme üzerinden Microsoft Azure hizmetlerine bağlama, her zaman sizin ağınızdan Microsoft ağına doğru başlatılır. Microsoft ağını hedefleyen trafik için Genel IP adreslerini kullanmanız gerekir.
 
 > [!IMPORTANT]
 > Tüm Azure PaaS hizmetlerine Microsoft eşlemesi üzerinden erişilebilir.
 >   
 
-Özel AS numarası, genel eşleme ile izin verilir.
+Ortak eşleme ile özel bir AS numarasına izin verilir.
 
 ## <a name="dynamic-route-exchange"></a>Dinamik yönlendirme değişimi
 Yönlendirme değişimi bir eBGP protokolü üzerinden olacaktır. EBGP oturumları MSEE’ler ile yönlendiricileriniz arasında oluşturulur. BGP oturumlarının kimlik doğrulaması zorunlu değildir. Gerekirse bir MD5 karması yapılandırılabilir. BGP oturumlarını yapılandırma hakkında bilgi için [Yönlendirmeyi yapılandırma](how-to-routefilter-portal.md) ve [Devre sağlama iş akışları ve devre durumları](expressroute-workflows.md) bölümlerine bakın.
@@ -152,7 +152,7 @@ Microsoft’a ExpressRoute aracılığıyla jeopolitik bir bölgedeki herhangi b
 
 Jeopolitik bölgeler, ilişkili Azure bölgeleri ve karşılık gelen ExpressRoute eşleme konumlarını içeren ayrıntılı liste için [ExpressRoute iş ortakları ve eşleme konumları](expressroute-locations.md) sayfasına bakın.
 
-Bir jeopolitik bölge için birden fazla ExpressRoute devresi satın alabilirsiniz. Birden fazla bağlantıya sahip olmanız coğrafi artıklık nedeniyle yüksek kullanılabilirliğe ilişkin önemli avantajlar sunar. Birden fazla ExpressRoute devrenizin olduğu durumlarda, Microsoft eşlemesi ve genel eşleme yollarındaki Microsoft'tan tanıtılan ön ekleri aynı kümesini alır. Bu durum ağınız ile Microsoft arasında birden fazla yol olacağı anlamına gelir. Bu durum ağınızın içinde en iyi olmayan yönlendirme kararlarına neden olabilir. Sonuç olarak, farklı hizmetlerde en iyi düzeyin altında bağlantı deneyimleri yaşayabilirsiniz. [Kullanıcılar için en iyi yönlendirmeyi](expressroute-optimize-routing.md) sunmak üzere uygun yönlendirme kararlarını almak için topluluk değerlerini kullanabilirsiniz.
+Bir jeopolitik bölge için birden fazla ExpressRoute devresi satın alabilirsiniz. Birden fazla bağlantıya sahip olmanız coğrafi artıklık nedeniyle yüksek kullanılabilirliğe ilişkin önemli avantajlar sunar. Birden çok ExpressRoute devreniz olduğu durumlarda Microsoft eşlemesi ve genel eşleme yollarında Microsoft 'tan tanıtılan aynı önek kümesini alırsınız. Bu durum ağınız ile Microsoft arasında birden fazla yol olacağı anlamına gelir. Bu durum ağınızın içinde en iyi olmayan yönlendirme kararlarına neden olabilir. Sonuç olarak, farklı hizmetlerde en iyi düzeyin altında bağlantı deneyimleri yaşayabilirsiniz. [Kullanıcılar için en iyi yönlendirmeyi](expressroute-optimize-routing.md) sunmak üzere uygun yönlendirme kararlarını almak için topluluk değerlerini kullanabilirsiniz.
 
 | **Microsoft Azure bölgesi** | **Bölgesel BGP topluluğu** | **Depolama BGP topluluğu** | **SQL BGP topluluğu** | **Cosmos DB BGP topluluğu** |
 | --- | --- | --- | --- | --- |
@@ -161,30 +161,30 @@ Bir jeopolitik bölge için birden fazla ExpressRoute devresi satın alabilirsin
 | Doğu ABD 2 | 12076:51005 | 12076:52005 | 12076:53005 | 12076:54005 |
 | Batı ABD | 12076:51006 | 12076:52006 | 12076:53006 | 12076:54006 |
 | Batı ABD 2 | 12076:51026 | 12076:52026 | 12076:53026 | 12076:54026 |
-| Batı Orta ABD | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
+| Orta Batı ABD | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 |
 | Orta Kuzey ABD | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 |
-| Orta Güney ABD | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
+| Güney Orta ABD | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 |
 | Orta ABD | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 |
-| Orta Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
-| Doğu Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
+| Kanada Orta | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 |
+| Kanada Doğu | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 |
 | **Güney Amerika** | |
-| Güney Brezilya | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
+| Brezilya Güney | 12076:51014 | 12076:52014 | 12076:53014 | 12076:54014 |
 | **Avrupa** | |
 | Kuzey Avrupa | 12076:51003 | 12076:52003 | 12076:53003 | 12076:54003 |
 | Batı Avrupa | 12076:51002 | 12076:52002 | 12076:53002 | 12076:54002 |
-| Birleşik Krallık Güney | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
-| Birleşik Krallık Batı | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
+| Birleşik Krallık, Güney | 12076:51024 | 12076:52024 | 12076:53024 | 12076:54024 |
+| Birleşik Krallık, Batı | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
 | Fransa Orta | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
 | Fransa Güney | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
 | **Asya Pasifik** | |
 | Doğu Asya | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
 | Güneydoğu Asya | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
 | **Japonya** | |
-| Japonya Doğu | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
-| Japonya Batı | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
+| Doğu Japonya | 12076:51012 | 12076:52012 | 12076:53012 | 12076:54012 |
+| Batı Japonya | 12076:51013 | 12076:52013 | 12076:53013 | 12076:54013 |
 | **Avustralya** | |
-| Avustralya Doğu | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 |
-| Avustralya Güneydoğu | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 |
+| Doğu Avustralya | 12076:51015 | 12076:52015 | 12076:53015 | 12076:54015 |
+| Güneydoğu Avustralya | 12076:51016 | 12076:52016 | 12076:53016 | 12076:54016 |
 | **Australia Government** | |
 | Avustralya Orta | 12076:51032 | 12076:52032 | 12076:53032 | 12076:54032 |
 | Avustralya Orta 2 | 12076:51033 | 12076:52033 | 12076:53033 | 12076:54033 |
@@ -218,7 +218,7 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | Exchange Online | 12076:5010 |
 | SharePoint Online | 12076:5020 |
 | Skype Kurumsal Çevrimiçi Sürüm | 12076:5030 |
-| Azure genel Hizmetleri * | 12076:5050 |
+| Azure küresel hizmetler * | 12076:5050 |
 | Diğer Office 365 Çevrimiçi hizmetleri | 12076:5100 |
 
 \* Azure küresel hizmetler şu anda yalnızca Azure DevOps içerir.
@@ -234,12 +234,12 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 | **Ulusal Bulutlar Azure Bölgesi**| **BGP topluluk değeri** |
 | --- | --- |
 | **ABD Devleti** |  |
-| ABD Devleti Arizona | 12076:51106 |
+| US Gov Arizona | 12076:51106 |
 | US Gov Iowa | 12076:51109 |
-| ABD Devleti Virginia | 12076:51105 |
-| ABD Devleti Texas | 12076:51108 |
+| ABD Hükümeti Virginia | 12076:51105 |
+| US Gov Texas | 12076:51108 |
 | US DoD Orta | 12076:51209 |
-| US DoD Doğu | 12076:51205 |
+| ABD DoD Doğu | 12076:51205 |
 
 
 | **Ulusal Bulutlardaki Hizmet** | **BGP topluluk değeri** |

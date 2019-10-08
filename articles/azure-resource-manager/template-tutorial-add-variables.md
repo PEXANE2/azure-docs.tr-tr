@@ -8,18 +8,18 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9fc6e57a7e002cd4ffcf62c7779fb2626ce9c839
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fb577c0c0f00da3735da98fc2e94f3610c9bd80d
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963803"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001474"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza değişkenler ekleme
 
 Bu öğreticide, şablonunuza nasıl değişken ekleneceğini öğrenirsiniz. Değişkenler, bir ifadeyi bir kez yazmanızı ve şablon boyunca yeniden kullanılmasını sağlayarak şablonlarınızı basitleştirir. Bu öğreticinin tamamlana **7 dakika** sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [İşlevlerle ilgili öğreticiyi](template-tutorial-add-functions.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -47,13 +47,13 @@ Ayrıca, [resourceGroup](resource-group-template-functions-resource.md#resourceg
 
 [Uniquestring](resource-group-template-functions-string.md#uniquestring) işlevi bir 13 karakterlik karma değeri oluşturur. Döndürülen değer geçirdiğiniz parametrelere göre belirlenir. Bu öğreticide, karma değer girişi olarak kaynak grubu KIMLIĞINI kullanırsınız. Bu, bu şablonu farklı kaynak gruplarına dağıtabileceğiniz ve farklı bir benzersiz dize değeri alabileceğiniz anlamına gelir. Ancak, aynı kaynak grubuna dağıtırsanız aynı değeri alırsınız.
 
-[Concat](resource-group-template-functions-string.md#concat) işlevi değerleri alır ve bunları birleştirir. Bu değişken için bir parametre ve uniqueString işlevindeki dizeden bir dize alır ve bunları tek bir dize olarak birleştirir.
+[Concat](resource-group-template-functions-string.md#concat) işlevi değerleri alır ve bunları birleştirir. Bu değişken için, dizeden ve uniqueString işlevindeki dizeden dize alır ve bunları tek bir dize olarak birleştirir.
 
-**Storageprefix** parametresi, depolama hesaplarını belirlemenize yardımcı olan ön ekine geçiş yapmanızı sağlar. Depolama hesaplarının uzun bir kaynak listesinden dağıtımdan sonra tanımlanmasını kolaylaştıran kendi adlandırma kuralınızın oluşturulmasını sağlayabilirsiniz.
+**Storageprefix** parametresi, depolama hesaplarını belirlemenize yardımcı olan bir ön ek geçirmenize olanak sağlar. Depolama hesaplarının uzun bir kaynak listesinden dağıtımdan sonra tanımlanmasını kolaylaştıran kendi adlandırma kuralınızın oluşturulmasını sağlayabilirsiniz.
 
 Son olarak, depolama adının bir parametre yerine artık değişkene ayarlı olduğuna dikkat edin.
 
-## <a name="deploy-template"></a>Şablonu dağıt
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 Şablonu dağıtalım. Yalnızca depolama adı için ön ek sağlamanız gerektiğinden, bu şablonu dağıtmak önceki şablonlardan daha kolaydır.
 
@@ -70,7 +70,7 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -86,21 +86,21 @@ az group deployment create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Bir depolama hesabı kaynağının dağıtıldığını görürsünüz. Depolama hesabının adı, **Depo** ve rastgele karakterlerden oluşan bir dizedir.
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
 Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
+1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

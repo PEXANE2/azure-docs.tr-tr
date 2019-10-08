@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: b8aa87b871b86a8dab3b1984b638366a42708483
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: e2e051db00c9b8de5268e64be70ab99752bf7a55
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936888"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001420"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturma
 
@@ -24,11 +24,11 @@ ms.locfileid: "71936888"
 > * [Python](create-cluster-database-python.md)
 > * [ARM şablonu](create-cluster-database-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir bir veri araştırma hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. 
 
-Bu makalede, bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md)kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturacaksınız. Makalede hangi kaynakların dağıtıldığını ve dağıtım yürütüldüğünde belirtilen parametrelerin nasıl tanımlanacağı gösterilmektedir. Bu şablonu kendi dağıtımlarınız için kullanabilir veya gereksinimlerinizi karşılayacak şekilde özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](/azure/azure-resource-manager/resource-group-authoring-templates). Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. kusto kaynak türleri](/azure/templates/microsoft.kusto/allversions).
+Bu makalede, bir [Azure Resource Manager şablonu](../azure-resource-manager/resource-group-overview.md)kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturacaksınız. Makalede hangi kaynakların dağıtıldığını ve dağıtım yürütüldüğünde belirtilen parametrelerin nasıl tanımlanacağı gösterilmektedir. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz. Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma](/azure/azure-resource-manager/resource-group-authoring-templates). Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. kusto kaynak türleri](/azure/templates/microsoft.kusto/allversions).
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="azure-resource-manager-template-for-cluster-and-database-creation"></a>Küme ve veritabanı oluşturma için Azure Resource Manager şablonu
 
@@ -67,11 +67,11 @@ Bu makalede, [mevcut bir hızlı başlangıç şablonunu](https://raw.githubuser
           "name": "[parameters('clusters_kustocluster_name')]",
           "type": "Microsoft.Kusto/clusters",
           "sku": {
-              "name": "D13_v2",
+              "name": "Standard_D13_v2",
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2019-09-07-preview",
+          "apiVersion": "2019-05-15",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
@@ -80,7 +80,7 @@ Bu makalede, [mevcut bir hızlı başlangıç şablonunu](https://raw.githubuser
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2019-09-07-preview",
+          "apiVersion": "2019-05-15",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"
@@ -104,11 +104,11 @@ Daha fazla şablon örneği bulmak için bkz. [Azure hızlı başlangıç şablo
 
 1. Bir küme ve veritabanı oluşturmak için, dağıtımı başlatmak üzere aşağıdaki düğmeyi kullanın. Sağ tıklayıp **Yeni pencerede aç**' ı seçerek bu makaledeki adımların geri kalanını izleyebilirsiniz.
 
-    [![Azure 'a dağıtın](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
+    [![Azure’a dağıtma](media/create-cluster-database-resource-manager/deploybutton.png)](https://github.com/Azure/azure-quickstart-templates/blob/master/101-kusto-cluster-database/azuredeploy.json)
 
-    **Azure 'A dağıt** düğmesi, bir dağıtım formunu doldurmanız için sizi Azure Portal götürür.
+    **Azure'a dağıtma** düğmesi Azure portalda doldurmanız gereken bir form sayfasını açar.
 
-    ![Azure’a dağıtma](media/create-cluster-database-resource-manager/deploy-2-azure.png)
+    ![Azure'a Dağıt](media/create-cluster-database-resource-manager/deploy-2-azure.png)
 
     Formunu kullanarak [Azure Portal şablonu düzenleyebilir ve dağıtabilirsiniz](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) .
 
@@ -155,15 +155,15 @@ Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure kaynaklarına artık ihtiyaç duyulmadığında, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. 
+Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. 
 
 ### <a name="clean-up-resources-using-the-azure-portal"></a>Azure portal kullanarak kaynakları Temizleme
 
 [Kaynakları Temizleme](create-cluster-database-portal.md#clean-up-resources)bölümündeki adımları izleyerek Azure Portal kaynakları silin.
 
-### <a name="clean-up-resources-using-powershell"></a>PowerShell kullanarak kaynakları Temizleme
+### <a name="clean-up-resources-using-powershell"></a>PowerShell kullanarak kaynakları temizleme
 
 Cloud Shell hala açıksa, ilk satırı (Read-Host) kopyalamanız/çalıştırmanız gerekmez.
 

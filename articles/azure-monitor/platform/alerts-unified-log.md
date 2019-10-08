@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: f78f7c37fafd7f0b29f76220206b9adfb62f52c9
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: d0314e94e627a42ab55f9e91017acac0cdc8b541
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677741"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001627"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
 
@@ -127,16 +127,25 @@ Uyarı toplam ihlal temelinde tetiklenecek şekilde yapılandırıldığından, 
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Günlük arama uyarısı kuralı-tetikleme ve durum
 
-Günlük arama uyarısı kuralı, Kullanıcı tarafından yapılandırma başına ve kullanılan özel analiz sorgusu için tahmine dayalı mantık üzerinde çalışır. İzleme mantığı, uyarı kuralının tetiklenmesi gereken tam koşul veya neden da dahil olmak üzere, her bir günlük uyarı kuralında farklılık gösteren bir analiz sorgusu içinde kapsüllenir. Azure uyarıları, günlük arama uyarı kuralının eşik koşulu karşılandığında veya aşıldığında belirli bir temel kök neden (veya) senaryonun değerlendirilme bilgilerini içerir. Bu nedenle, günlük uyarıları durum-daha az olarak adlandırılır. Uyarı koşulu, belirtilen özel analiz sorgusunun sonucuyla karşılandığı sürece, günlük uyarı kuralları da başlatılır. Her çözümlenmeden uyarı olmadan, izleme hatasının tam kök olmasının mantığı Kullanıcı tarafından sağlanmış olan analiz sorgusunun içinde maskelenir. Şu anda Azure Izleyici uyarıları için yaratacağı, çözülen kök nedeni çözümlenme mekanizması yoktur.
+Günlük arama uyarı kuralları yalnızca sorguya oluşturduğunuz mantığa göre çalışır. Uyarı sistemi, herhangi bir sistem durumu bağlamı, amacı veya sorgu tarafından kapsanan kök nedeni içermez. Bu nedenle, günlük uyarıları durum-Less olarak adlandırılır. Koşullar her çalıştırıldıklarında "TRUE" veya "FALSE" olarak değerlendirilir.  Uyarı koşulunun değerlendirmesi, daha önce tetiklenmeden bağımsız olarak "TRUE" olduğunda bir uyarı tetiklenir.    
 
-Pratik bir örnekle aynı olduğunu görmemize olanak sağlar. Özel uyarı sorgusunun günlüklerde 500 sonuç kodunu aramak üzere tasarlandığı [sonuç türü günlük uyarısı için belirtilen örnekte](#example-of-number-of-records-type-log-alert) yapılandırma başına *contoso-log-Alert*adlı bir günlük uyarısı kuralına sahip olduğumuz olduğunu varsayalım.
+Pratik bir örnekle bu davranışı eylemde görelim. [Sonuç türü günlük uyarısı için belirtilen örnekte](#example-of-number-of-records-type-log-alert)gösterildiği gibi, *contoso-log-Alert*adlı bir günlük uyarısı kuralına sahip olduğumuz olduğunu varsayalım. Bu koşul, günlüklerde 500 sonuç kodunu aramak için tasarlanan özel bir uyarı sorgusudur. Günlüklerde bir daha fazla 500 sonuç kodu bulunursa, uyarının koşulu true olur. 
 
-- 1:05 ' de, contoso-günlük uyarısı Azure uyarıları tarafından yürütüldüğünde günlük araması sonucu, sonuç kodu 500 olan sıfır kayıt döndürdü. Sıfır eşiğin altında olduğundan ve uyarının tetiklenmesinden dolayı.
-- 1:10 ' de bir sonraki yinelemede, contoso-log-Alert Azure uyarıları tarafından yürütüldüğünde günlük araması sonucu, sonuç 500 kodu olan beş kayıt sağlamıştır. Beş, eşiği aştığından ve uyarı ilişkili eylemlerle birlikte tetiklendiğinden uyarı tetiklenir.
-- 1:15: contoso-log-Alert Azure uyarıları tarafından yürütüldüğünde günlük araması sonucu, 500 sonuç koduyla iki kayıt sağladı. İki eşik değeri aştığından ve uyarı ilişkili eylemlerle birlikte tetiklendiğinden uyarı tetiklenir.
-- Şimdi 1:20 ' de bir sonraki yinelemede, contoso-log-Alert Azure uyarısı tarafından yürütüldüğünde günlük araması sonucu, 500 sonuç koduyla sıfır kayıt olarak yeniden sağlandı. Sıfır eşiğin altında olduğundan ve uyarının tetiklenmesinden dolayı.
+Aşağıdaki her aralıkta, Azure uyarıları sistemi *contoso-log uyarısı*için koşulu değerlendirir.
 
-Ancak yukarıdaki listede 1:15 PM-Azure uyarıları, 1:10 ' de görülen temeldeki sorunların devam ediyor olduğunu ve ağ yeni hataları olup olmadığını belirleyemez. Kullanıcı tarafından sağlanmış olan sorgu önceki kayıtları dikkate alabilir, Azure uyarıları emin olabilir. Uyarının mantığı uyarı sorgusunda kapsüllendiği için, 500 sonuç kodu içeren iki kayıt 1:15 PM 'de görünür veya zaten saat sonra 1:10 görülmeyebilir. Bu nedenle, contoso-log-Alert 1:15 PM ' de yürütüldüğünde, yapılandırma eylemi yeniden tetiklenir. 1:20 Şu anda 500 sonuç kodu ile sıfır kayıt görüldüğünde, Azure uyarıları 1:10 PM ve 1:15 PM ' de görülen 500 sonuç kodu nedeninin çözümlenme nedenidir ve Azure Izleyici uyarıları, 500 hata sorunlarını aynı nedenden dolayı gerçekleşmeyecek şekilde ortaya çıkarabilir yeniden deneyin. Bu nedenle contoso-log-Alert, Azure uyarı panosu 'nda çözümlenmiş olarak değiştirilmeyecektir ve/veya uyarı çözümlemesini bildiren bildirimler gönderilir. Bunun yerine, analiz sorgusuna gömülü mantık için tam durumu veya nedeni anlayan Kullanıcı, uyarıyı gerektiği gibi [kapalı olarak işaretleyebilir](alerts-managing-alert-states.md) .
+
+| Zaman    | Günlük arama sorgusu tarafından döndürülen kayıt sayısı | Evalution günlük koşulu | Sonuç 
+| ------- | ----------| ----------| ------- 
+| 1:05 PM | 0 kayıt | 0 > 0 değil, yanlış |  Uyarı başlatılmıyor. Hiçbir eylem çağrılmadı.
+| 1:10 PM | 2 kayıt | 2 > 0 so doğru  | Uyarı ateşlenir ve eylem grupları çağırılır. Uyarı durumu ETKIN.
+| 1:15 PM | 5 kayıt | 5 > 0 so doğru  | Uyarı ateşlenir ve eylem grupları çağırılır. Uyarı durumu ETKIN.
+| 1:20 PM | 0 kayıt | 0 > 0 değil, yanlış |  Uyarı başlatılmıyor. Hiçbir eylem çağrılmadı. Uyarı durumu ETKIN kaldı.
+
+Önceki durumu örnek olarak kullanma:
+
+1:15 ' de Azure uyarıları, 1:10 ' de görülen temeldeki sorunların kalıcı olup olmadığını ve kayıtlar net yeni hatalara mi yoksa 1:10PM 'de eski hatalardan mi yinelendiğini belirleyemez. Kullanıcı tarafından girilen sorgu daha önceki kayıtlara sahip olabilir veya olmayabilir ve sistem bunu bilmez. Azure uyarıları sistemi, dikkatli bir şekilde oluşturulmuştur ve uyarı ve ilişkili eylemleri 1:15 PM 'de yeniden harekete geçirilir. 
+
+1:20 ' de, 500 sonuç koduyla sıfır kayıt görüldüğünde Azure uyarıları, 1:10 PM ve 1:15 PM ' de görülen 500 sonuç kodu nedenine zarar verebilir. Bu durum, 500 hata sorunlarının aynı nedenlerden sonra gerçekleşmediğini bilmez. Bu nedenle *contoso-log-Alert* , Azure uyarı panosu 'nda **Çözümlenmiş** olarak değişmez ve/veya uyarı çözümlendiğini belirten bildirimler gönderilmez. Yalnızca siz, analiz sorgusuna gömülü mantık için tam koşulu veya nedeni anlamış olursunuz, uyarıyı gerektiği gibi [kapalı olarak işaretleyebilir](alerts-managing-alert-states.md) .
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Günlük uyarılarını fiyatlandırma ve faturalama
 

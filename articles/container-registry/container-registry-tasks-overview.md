@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: danlep
-ms.openlocfilehash: c62987031a73aa4840c1d036689a3c52fb4dc4a0
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: e2686dcd5615c42abf78cbf4575bab6008024718
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914675"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001393"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -27,7 +27,7 @@ Kapsayıcılar, altyapı ve işletimsel gereksinimlerden uygulama ve geliştiric
 
 ACR görevleri kapsayıcı görüntülerini ve diğer yapıtları derlemek ve sürdürmek için çeşitli senaryoları destekler. Ayrıntılar için bu makaledeki aşağıdaki bölümlere bakın.
 
-* **[Hızlı görev](#quick-task)** -tek bir kapsayıcı görüntüsünü oluşturun ve Azure 'da, yerel bir Docker altyapısı yüklemesine gerek kalmadan bir kapsayıcı kayıt defterine gönderin. `docker build` Buluta`docker push` göz önünde bulundurun.
+* **[Hızlı görev](#quick-task)** -tek bir kapsayıcı görüntüsünü oluşturun ve Azure 'da, yerel bir Docker altyapısı yüklemesine gerek kalmadan bir kapsayıcı kayıt defterine gönderin. @No__t-0, `docker push` ' i buluta düşünün.
 * **Otomatik tetiklenen görevler** -bir görüntü oluşturmak için bir veya daha fazla *tetikleyici* etkinleştirin:
   * **[Kaynak kodu güncelleştirmesinde Tetikle](#trigger-task-on-source-code-update)** 
   * **[Temel görüntü güncelleştirmesinde Tetikle](#automate-os-and-framework-patching)** 
@@ -44,7 +44,7 @@ Kaynak denetimine işlemeden önce uygulamanızı kod yazma, oluşturma ve test 
 
 İlk kod satırlarınızı işlemeden önce, ACR görevlerinin [hızlı görev](container-registry-tutorial-quick-task.md) özelliği, kapsayıcı görüntüsü derlemelerinizi Azure 'a devrederek bir tümleşik geliştirme deneyimi sağlayabilir. Hızlı görevlerle, kodunuzu işlemeden önce otomatik derleme tanımlarınızı doğrulayabilirsiniz ve olası sorunları yakalayabilin.
 
-Tanıdık `docker build` biçimi kullanarak, Azure CLI 'deki [az ACR Build][az-acr-build] komutu bir [bağlam](#context-locations) alır (oluşturulacak dosya kümesi), ACR görevlerini gönderir ve varsayılan olarak, oluşturulan görüntüyü tamamlandıktan sonra kayıt defterine gönderir.
+Tanıdık `docker build` biçimini kullanarak, Azure CLı 'deki [az ACR Build][az-acr-build] komutu bir [bağlam](#context-locations) alır (oluşturulacak dosya kümesi), ACR görevlerini gönderir ve varsayılan olarak, oluşturulan görüntüyü tamamlandıktan sonra kayıt defterine iter.
 
 Giriş için bkz. Azure Container Registry [bir kapsayıcı görüntüsü oluşturma ve çalıştırma](container-registry-quickstart-task-cli.md) hızlı başlangıcı.  
 
@@ -63,7 +63,7 @@ ACR görevleri görevin bağlamı olarak bir git deposu ayarladığınızda aşa
 
 | Tetikleyici | Varsayılan olarak etkin |
 | ------- | ------------------ |
-| Yürüt | Evet |
+| İşleme | Yes |
 | Çekme isteği | Hayır |
 
 Tetikleyiciyi yapılandırmak için, bir kişisel erişim belirteci (PAT) görevini GitHub veya Azure DevOps deposunda bir Web kancasını ayarlamaya sağlarsınız.
@@ -74,7 +74,7 @@ Tetikleyiciyi yapılandırmak için, bir kişisel erişim belirteci (PAT) görev
 
 ACR görevlerinin, kapsayıcı derleme iş akışınızı gerçek anlamda geliştirme gücü, bir temel görüntüde güncelleştirme algılama özelliğinden geliyor. Güncelleştirilmiş temel görüntü kayıt defterinize gönderildiğinde veya Docker Hub 'daki gibi bir genel depoda bir temel görüntü güncelleştirilirse, ACR görevleri bu uygulamayı temel alan herhangi bir uygulama görüntüsünü otomatik olarak oluşturabilir.
 
-Kapsayıcı görüntüleri, *temel* görüntülere ve *uygulama* görüntülerine büyük ölçüde kategorilere ayrılabilir. Temel görüntüleriniz genellikle uygulamanızın oluşturulduğu işletim sistemini ve uygulama çerçevelerini, diğer özelleştirmelerle birlikte içerir. Bu temel görüntüler genellikle genel yukarı akış görüntülerini temel alır, örneğin: [Alp Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]veya [Node. js][base-node]. Uygulama görüntülerinizin birkaçı ortak bir temel görüntü paylaşabilir.
+Kapsayıcı görüntüleri, *temel* görüntülere ve *uygulama* görüntülerine büyük ölçüde kategorilere ayrılabilir. Temel görüntüleriniz genellikle uygulamanızın oluşturulduğu işletim sistemini ve uygulama çerçevelerini, diğer özelleştirmelerle birlikte içerir. Bu temel görüntüler genellikle genel yukarı akış görüntülerini temel alır, örneğin: [alp Linux][base-alpine], [Windows][base-windows], [.net][base-dotnet]veya [Node. js][base-node]. Uygulama görüntülerinizin birkaçı ortak bir temel görüntü paylaşabilir.
 
 Bir işletim sistemi veya uygulama çerçevesi görüntüsü, örneğin, kritik bir işletim sistemi güvenlik düzeltme ekine sahip olan yukarı akış bakımını tarafından güncelleştirildiği zaman, temel görüntülerinizi de kritik düzeltme içerecek şekilde güncelleştirmeniz gerekir. Ayrıca, bu yukarı akış düzeltmelerini temel görüntıza dahil etmek için her bir uygulama görüntüsünün yeniden oluşturulması gerekir.
 
@@ -108,7 +108,7 @@ Görevi oluştururken veya güncelleştirdiğinizde bir veya daha fazla *Zamanla
 1. Web uygulaması test görüntüsü oluşturma
 1. Çalışan uygulama kapsayıcısına karşı testler gerçekleştiren Web uygulaması test kapsayıcısını çalıştırın
 1. Testler başarılı olursa bir Helu grafik arşiv paketi oluşturun
-1. Yeni helmchart arşiv paketini kullanarak bir `helm upgrade` gerçekleştir
+1. Yeni Held grafik Arşivi paketini kullanarak `helm upgrade` gerçekleştirin
 
 Çok adımlı görevler, bir görüntünün oluşturma, çalıştırma ve test etme özelliğini, adım adım bağımlılık desteğiyle daha birleştirilebilir adımlara bölmeye olanak tanır. ACR görevlerinde çok adımlı görevlerle, görüntü oluşturma, test etme ve işletim sistemi ve çerçeve düzeltme eki uygulama iş akışları üzerinde daha ayrıntılı denetime sahip olursunuz.
 
@@ -124,13 +124,14 @@ Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarına yöne
 | GitHub ana dalı | GitHub deposunun ana (veya diğer varsayılan) daldaki dosyalar.  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub dalı | GitHub deposunun belirli bir dalı.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub alt klasörü | GitHub deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, bir dal ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Azure DevOps alt klasörü | Bir Azure deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, dal ve alt klasör belirtiminin birleşimini gösterir. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Uzak tarbol | Uzak Web sunucusu üzerindeki sıkıştırılmış arşivdeki dosyalar. | `http://remoteserver/myapp.tar.gz` |
 
 ## <a name="image-platforms"></a>Görüntü platformları
 
-Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi için görüntüler oluşturur. Diğer mimarilere yönelik Windows görüntülerini veya Linux görüntülerini oluşturmak için etiketibelirtin.`--platform` İşletim sistemini ve isteğe bağlı olarak desteklenen bir mimariyi OS/Architecture biçiminde belirtin (örneğin, `--platform Linux/arm`). ARM mimarileri için isteğe bağlı olarak OS/Architecture/VARIANT biçiminde bir değişken belirtin (örneğin, `--platform Linux/arm64/v8`):
+Varsayılan olarak ACR görevleri, Linux işletim sistemi ve AMD64 mimarisi için görüntüler oluşturur. Diğer mimarilere yönelik Windows görüntülerini veya Linux görüntülerini derlemek için `--platform` etiketi belirtin. İşletim sistemini ve isteğe bağlı olarak desteklenen bir mimariyi OS/Architecture biçiminde belirtin (örneğin, `--platform Linux/arm`). ARM mimarileri için isteğe bağlı olarak OS/Architecture/VARIANT biçiminde bir değişken belirtin (örneğin, `--platform Linux/arm64/v8`):
 
-| OS | Mimari|
+| İşletim Sistemi | Mimari|
 | --- | ------- | 
 | Linux | 'tür<br/>uzaklığını<br/>arm64<br/>386 |
 | Windows | 'tür |

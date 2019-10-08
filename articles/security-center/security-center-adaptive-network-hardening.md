@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 28761b78b49ad0774594b45db4587c710fc7d810
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202774"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996729"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma
 Azure Güvenlik Merkezi 'nde Uyarlamalı ağ sağlamlaştırma yapılandırma hakkında bilgi edinin.
@@ -33,17 +33,17 @@ Uyarlamalı ağ sağlamlaştırma, NSG kurallarına daha fazla uyum sağlamak i�
 ![Ağ sağlamlaştırma görünümü](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
 > [!NOTE]
-> Uyarlamalı ağ sağlamlaştırma önerileri aşağıdaki bağlantı noktalarında desteklenir: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
+> Uyarlamalı ağ sağlamlaştırma önerileri şu bağlantı noktalarında desteklenir: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Uyarlamalı ağ sağlamlaştırma uyarılarını ve kurallarını görüntüle
 
-1. Güvenlik Merkezi 'nde **ağ** -> **Uyarlamalı ağ sağlamlaştırma**' ı seçin. Ağ VM 'Leri üç ayrı sekme altında listelenir:
-   * **Sağlıksız kaynaklar**: Şu anda Uyarlamalı ağ sağlamlaştırma algoritması çalıştırılarak tetiklenen önerilere ve uyarılara sahip VM 'Ler. 
-   * **Sağlıklı kaynaklar**: Uyarıları ve önerileri olmayan VM 'Ler.
-   * **Taranmamış kaynaklar**: Aşağıdaki nedenlerden biri dolayısıyla Uyarlamalı ağ sağlamlaştırma algoritmasının üzerinde çalıştırılamaz VM 'Ler:
-      * **Sanal makineler klasik sanal**makinelerdir: Yalnızca Azure Resource Manager VM 'Ler desteklenir.
-      * **Yeterli veri**yok: Doğru trafik sağlamlaştırma önerilerini oluşturmak için Güvenlik Merkezi 'nin en az 30 günlük trafik verisi olması gerekir.
-      * **VM, ASC standardı tarafından korunmuyor**: Yalnızca güvenlik merkezi 'nin standart fiyatlandırma katmanına ayarlanmış olan VM 'Ler bu özellik için uygundur.
+1. Güvenlik Merkezi 'nde **ağ**@no__t**Uyarlamalı ağ sağlamlaştırma**' ı seçin. Ağ VM 'Leri üç ayrı sekme altında listelenir:
+   * **Sağlıksız kaynaklar**: Şu anda Uyarlamalı ağ sağlamlaştırma algoritması çalıştırılarak tetiklenen önerilere ve uyarılara sahip VM 'ler vardır. 
+   * **Sağlıklı kaynaklar**: uyarılar ve öneriler olmadan VM 'ler.
+   * **Taranmamış kaynaklar**: aşağıdaki nedenlerden biri nedeniyle Uyarlamalı ağ sağlamlaştırma algoritması üzerinde çalıştırılamaz VM 'ler:
+      * **Sanal makineler klasik VM**'ler: yalnızca Azure Resource Manager VM 'ler desteklenir.
+      * **Yeterli veri**yok: doğru trafik sağlamlaştırma önerilerini oluşturmak Için, güvenlik merkezi 'nin en az 30 günlük trafik verisi olması gerekir.
+      * **VM, ASC standardı tarafından korunmuyor**: yalnızca güvenlik merkezi 'nin standart fiyatlandırma katmanına ayarlanmış olan VM 'ler bu özellik için uygun değildir.
 
      ![sağlıksız kaynaklar](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -131,9 +131,9 @@ Güvenlik Merkezi 'nin önerilmeyen bir "izin verme" kuralı ekleyebilirsiniz.
 
 ### Bir kuralı <a name ="delete-rule"></a> silme
 
-Gerektiğinde, önerilen bir kuralı silebilirsiniz. Örneğin, önerilen bir kuralı uygulamanın meşru trafiği engelleyeceğini belirleyebilirsiniz.
+Gerektiğinde, geçerli oturum için önerilen bir kuralı silebilirsiniz. Örneğin, önerilen bir kuralı uygulamanın meşru trafiği engelleyeceğini belirleyebilirsiniz.
 
-*Uyarlamalı ağ sağlamlaştırma kuralını silmek için:*
+*Geçerli oturumunuz için uyarlamalı ağ sağlamlaştırma kuralını silmek için:*
 
 1. **Kurallar** sekmesinde, kuralın satırının sonundaki üç noktaya (...) tıklayın ve **Sil**' e tıklayın.  
 

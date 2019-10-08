@@ -132,7 +132,7 @@ Kaynak ve hedef depolama hesaplarının URL 'Lerine ihtiyacınız vardır. URL '
 
 URL 'YI almak için Azure portal veya Azure PowerShell kullanabilirsiniz:
 
-* **Portal**: **Tüm hizmetler** **depolama hesapları***depolama hesabı* Blobları ' na tıklayın ve kaynak VHD dosyanız büyük olasılıkla VHD kapsayıcısında bulunur.  >  >  **>**  >  Kapsayıcının **Özellikler** ' e tıklayın ve **URL**etiketli metni kopyalayın. Kaynak ve hedef kapsayıcıların URL 'Lerine ihtiyacınız olacaktır. 
+* **Portal**: **Tüm hizmetler** **depolama hesapları** *depolama hesabı* **Blobları** ' na tıklayın ve kaynak VHD dosyanız büyük olasılıkla VHD kapsayıcısında bulunur. ** > **  >  **>**  >  Kapsayıcının **Özellikler** ' e tıklayın ve **URL**etiketli metni kopyalayın. Kaynak ve hedef kapsayıcıların URL 'Lerine ihtiyacınız olacaktır. 
 * **PowerShell**: **Myresourcegroup**kaynak grubundaki **MYVM** adlı VM 'Nin bilgilerini almak Için [Get-azvm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ' i kullanın. Sonuçlarda, **VHD URI 'si**için **depolama profili** bölümüne bakın. URI 'nin ilk bölümü kapsayıcının URL 'sidir ve son parça VM 'nin işletim sistemi VHD adıdır.
 
 ```powershell

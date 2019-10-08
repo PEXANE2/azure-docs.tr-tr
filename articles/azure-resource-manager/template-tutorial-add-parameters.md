@@ -8,18 +8,18 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 407148dadb774c72ef252ba0044655c2e219985f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963754"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001504"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuza parametreler ekleme
 
 [Önceki öğreticide](template-tutorial-add-resource.md), şablona bir depolama hesabı eklemeyi ve bunu dağıtmayı öğrendiniz. Bu öğreticide, parametreleri ekleyerek şablonu geliştirmeyi öğrenirsiniz. Bu öğreticinin tamamlanabilmesi yaklaşık **14 dakika** sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [Kaynaklar hakkında öğreticiyi](template-tutorial-add-resource.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -33,7 +33,7 @@ Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı il
 
 Bu şablonla ilgili bir sorun olduğunu fark etmiş olabilirsiniz. Depolama hesabı adı sabit kodlanmış. Bu şablonu yalnızca aynı depolama hesabını her seferinde dağıtmak için kullanabilirsiniz. Bir depolama hesabını farklı bir adla dağıtmak için, dağıtımlarınızı otomatik hale getirmenin pratik bir yolu olmayan yeni bir şablon oluşturmanız gerekir.
 
-## <a name="make-template-reusable"></a>Şablonu yeniden kullanılabilir yap
+## <a name="make-your-template-reusable"></a>Şablonunuzu yeniden kullanılabilir hale getirin
 
 Şablonunuzu yeniden kullanılabilir hale getirmek için, depolama hesabı adında geçiş yapmak üzere kullanabileceğiniz bir parametre ekleyelim. Aşağıdaki örnekteki vurgulanmış JSON, şablonunuzda nelerin değiştiğini gösterir. **Storagename** parametresi bir dize olarak tanımlanır. Çok uzun olan adların önlenmesi için en fazla uzunluk 24 karakter olarak ayarlanır.
 
@@ -41,7 +41,7 @@ Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-template"></a>Şablonu dağıt
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 Şablonu dağıtalım. Aşağıdaki örnek, şablonu Azure CLı veya PowerShell ile dağıtır. Depolama hesabı adını dağıtım komutundaki değerlerden biri olarak sağladığınızdan emin olun. Depolama hesabı adı için, önceki öğreticide kullandığınız adı belirtin.
 
@@ -57,7 +57,7 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -79,7 +79,7 @@ Güncelleştirmeleri işlemenin bu yolu, şablonunuz bir Azure çözümü için 
 
 ## <a name="customize-by-environment"></a>Ortama göre özelleştirme
 
-Parametreler, belirli bir ortam için uyarlanmış değerler sağlayarak dağıtımı özelleştirmenizi sağlar. Örneğin, geliştirme, test ve üretim için bir ortama dağıtıp dağıtsanız farklı değerleri geçirebilirsiniz.
+Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıtımı özelleştirmenizi sağlar. Örneğin, geliştirme, test ve üretim için bir ortama dağıtıp dağıtsanız farklı değerleri geçirebilirsiniz.
 
 Önceki şablon her zaman bir Standard_LRS Storage hesabı dağıttı. Ortama bağlı olarak farklı SKU 'Ları dağıtma esnekliği isteyebilirsiniz. Aşağıdaki örnek, SKU için bir parametre eklemek için yapılan değişiklikleri gösterir. Tüm dosyayı kopyalayın ve şablonunuzun üzerine yapıştırın.
 
@@ -87,7 +87,7 @@ Parametreler, belirli bir ortam için uyarlanmış değerler sağlayarak dağıt
 
 **Storagesku** parametresinin varsayılan bir değeri vardır. Bu değer, dağıtım sırasında bir değer belirtilmediğinde kullanılır. Ayrıca, izin verilen değerlerin bir listesini içerir. Bu değerler, bir depolama hesabı oluşturmak için gereken değerlerle eşleşir. Şablon kullanıcılarının çalışmayan SKU 'Larda geçmesini istemezsiniz.
 
-## <a name="redeploy-template"></a>Şablonu yeniden Dağıt
+## <a name="redeploy-the-template"></a>Şablonu yeniden dağıtın
 
 Yeniden dağıtım için hazırsınız. Varsayılan SKU **Standard_LRS**olarak ayarlandığından, bu parametre için bir değer sağlamanız gerekmez.
 
@@ -101,7 +101,7 @@ New-AzResourceGroupDeployment `
   -storageName "{your-unique-name}"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -126,7 +126,7 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_GRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -151,7 +151,7 @@ New-AzResourceGroupDeployment `
   -storageSKU basic
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLı](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -165,16 +165,16 @@ az group deployment create \
 
 Komut, hangi değerlere izin verileceğini belirten bir hata iletisiyle hemen başarısız olur. Kaynak Yöneticisi, dağıtım başlamadan önce hatayı tanımlar.
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
 Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
+1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+4. Üstteki menüden **Kaynak grubunu sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
