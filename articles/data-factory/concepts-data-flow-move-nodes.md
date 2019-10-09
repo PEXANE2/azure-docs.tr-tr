@@ -1,36 +1,36 @@
 ---
 title: Azure Data Factory veri akışı taşıma düğümleri
-description: Bir Azure veri fabrikası eşleme veri akışı diyagramda düğümleri taşıma
+description: Azure Data Factory eşleme veri akışı diyagramında düğümleri taşıma
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 951a5d4fcbd561b085b0377bde48e820dc8972a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 853fff955a953052b94ad4e7e1dd55371069c30b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65519963"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030194"
 ---
-# <a name="mapping-data-flow-move-nodes"></a>Veri akışı taşıma düğümleri eşleştirme
+# <a name="mapping-data-flow-move-nodes"></a>Veri akışı taşıma düğümlerini eşleme
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Dönüştürme seçenekleri toplama](media/data-flow/agghead.png "toplayıcısı üstbilgisi")
 
-Azure Data Factory, veri akışı tasarım yüzeyine veri akışları yukarıdan aşağıya, soldan sağa, oluşturduğunuz bir "yapı" yüzeyidir. Her dönüştürme bir artı ile bağlı bir araç kutusu yok (+) simgesi. Serbest biçimli DAG ortamında kenarlar aracılığıyla düğümlerini bağlayan yerine iş mantığınıza yoğunlaşır.
+![Toplu dönüştürme seçenekleri](media/data-flow/agghead.png "toplayıcı üstbilgisi")
 
-Bu nedenle, bir Sürükle ve bırak paradigma "dönüştürme düğümü, Taşı" yoludur gelen değiştirmek için. Bunun yerine, dönüşümler "gelen akış" değiştirerek taşınacaktır.
+Azure Data Factory veri akışı tasarım yüzeyi, yukarıdan aşağı doğru veri akışları oluşturduğunuz bir "yapım" yüzeyidir. Her bir dönüşümün bir artı (+) simgesiyle eklenmiş bir araç kutusu vardır. Serbest biçimli bir DAG ortamındaki kenarlar aracılığıyla düğümleri bağlamak yerine iş mantığınızı yoğunlaşın.
 
-## <a name="streams-of-data-inside-of-data-flow"></a>Veri akışı içinde veri akışları
+Bu nedenle, bir sürükle ve bırak paradigması olmadan, bir dönüşüm düğümünü "taşıma" yolu, gelen akışı değiştirlemektir. Bunun yerine, "gelen akışı" değiştirerek dönüşümleri taşıyabilirsiniz.
 
-Azure Data Factory veri akışı, akış veri akışını temsil eder. Dönüştürme ayarlar bölmesinde, bir "Gelen Buhar" alan görürsünüz. Bu, hangi gelen veri akışını, bu dönüştürme besleme bildirir. Gelen Stream adına tıklayarak ve başka bir veri akışı seçerek, grafik dönüştürme düğümünde fiziksel konumunu değiştirebilirsiniz. Geçerli dönüşümü, stream'deki tüm sonraki dönüşümler yanı sıra, ardından yeni konumuna taşınır.
+## <a name="streams-of-data-inside-of-data-flow"></a>Veri akışı içindeki veri akışları
 
-Bir veya daha fazla dönüşümler ile dönüştürme sonraki taşıyorsanız yeni konumda veri akışı yeni bir dal katılır.
+Azure Data Factory veri akışı ' nda akışlar, veri akışını temsil eder. Dönüştürme ayarları bölmesinde bir "gelen Buhar" alanı görürsünüz. Bu, size gelen veri akışının bu dönüşümü beslemeyi olduğunu söyler. Gelen akış adına tıklayıp başka bir veri akışı seçerek, grafikteki dönüştürme düğümünüz fiziksel konumunu değiştirebilirsiniz. O akıştaki sonraki dönüşümlerle birlikte geçerli dönüşüm yeni konuma taşınır.
 
-Seçtiğiniz düğümünün sonra sonraki hiçbir dönüştürme varsa, yalnızca dönüşüm yeni konumuna taşıyın.
+Bir dönüştürmeyi sonrasında bir veya daha fazla dönüşümle taşıyorsanız, veri akışındaki yeni konum yeni bir dal ile birleştirilir.
+
+Seçtiğiniz düğümden sonra sonraki dönüşümünüz yoksa, yalnızca o dönüşüm yeni konuma taşınır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hata Ayıkla düğmesine veri akışı tasarımınızı tamamladıktan sonra ' ı açma ve kapatma hata ayıklama modunda ya da doğrudan test [veri akışı Tasarımcısı](concepts-data-flow-debug-mode.md) veya [işlem hattı hata ayıklama](control-flow-execute-data-flow-activity.md).
+Veri akışı tasarımınızı tamamladıktan sonra, hata ayıklama düğmesini açın ve doğrudan [veri akışı Tasarımcısı](concepts-data-flow-debug-mode.md) 'nda veya işlem [hattı hata ayıklamada](control-flow-execute-data-flow-activity.md)hata ayıklama modunda test edin.

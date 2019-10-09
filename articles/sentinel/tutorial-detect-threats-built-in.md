@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: fdb34173e0ca52f57a004e3a5b4a076e423ff5bd
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 6d61b94a50716966ac0b3c75551ddd9d8e291965
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240097"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024464"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>Öğretici: Kullanıma hazır tehditleri algılama
+# <a name="tutorial-detect-threats-out-of-the-box"></a>Öğretici: kullanıma hazır tehditleri algılama
 
 
 > [!IMPORTANT]
@@ -29,7 +29,7 @@ ms.locfileid: "71240097"
 > Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 > Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
- [Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanız için Azure Sentinel, kullanıma hazır yerleşik şablonlar sağlar. Bu şablonlar, Microsoft 'un, bilinen tehditler, yaygın saldırı vektörleri ve şüpheli etkinlik yükseltme zincirlerine göre güvenlik uzmanı ve analistlerinin ekibi tarafından tasarlanmıştır. Bu şablonları etkinleştirdikten sonra, ortamınız genelinde şüpheli görünen tüm etkinlikleri otomatik olarak arar. Birçok şablon, gereksinimlerinize göre, etkinlikleri aramak veya filtrelemek için özelleştirilebilir. Bu şablonlar tarafından oluşturulan uyarılar, ortamınızda atayabileceğiniz ve araştırabilmeniz için olaylar oluşturur.
+Veri kaynaklarınızı  Azure Sentinel 'e [bağladıktan](quickstart-onboard.md)sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanız için Azure Sentinel, kullanıma hazır yerleşik şablonlar sağlar. Bu şablonlar, Microsoft 'un, bilinen tehditler, yaygın saldırı vektörleri ve şüpheli etkinlik yükseltme zincirlerine göre güvenlik uzmanı ve analistlerinin ekibi tarafından tasarlanmıştır. Bu şablonları etkinleştirdikten sonra, ortamınız genelinde şüpheli görünen tüm etkinlikleri otomatik olarak arar. Birçok şablon, gereksinimlerinize göre, etkinlikleri aramak veya filtrelemek için özelleştirilebilir. Bu şablonlar tarafından oluşturulan uyarılar, ortamınızda atayabileceğiniz ve araştırabilmeniz için olaylar oluşturur.
 
 Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur:
 
@@ -39,7 +39,7 @@ Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur:
 
 ## <a name="about-out-of-the-box-detections"></a>Kullanıma hazır algılamalar hakkında
 
-Kullanıma hazır tüm algılamaları görüntülemek için analizler **' e ve ardından**  **kural şablonları**' na gidin. Bu sekme, tüm Azure Sentinel yerleşik kurallarını içerir.
+Kullanıma hazır tüm algılamaları görüntülemek için analizler **' e ve ardından** **kural şablonları**' na gidin. Bu sekme, tüm Azure Sentinel yerleşik kurallarını içerir.
 
    ![Azure Sentinel ile tehditleri bulmak için yerleşik algılamaları kullanın](media/tutorial-detect-built-in/view-oob-detections.png)
 
@@ -58,7 +58,7 @@ Aşağıdaki şablon türleri kullanılabilir:
  
 1. Bu, seçilen şablona göre kural oluşturma Sihirbazı ' nı açar. Tüm ayrıntılar, yeniden doldurulur ve **zamanlanan kurallar** veya **Microsoft güvenlik kuralları**için, mantığı kuruluşunuza daha iyi uyacak şekilde özelleştirebilir veya yerleşik şablonu temel alan ek kurallar oluşturabilirsiniz. Kural oluşturma Sihirbazı 'ndaki adımları uyguladıktan ve şablonu temel alan bir kural oluşturmayı tamamladıktan sonra, yeni kural **etkin kurallar** sekmesinde görünür.
 
-Sihirbazdaki alanlarla ilgili daha fazla bilgi için bkz [. Öğretici: Şüpheli tehditleri](tutorial-detect-threats-custom.md)algılamak için özel analitik kurallar oluşturun.
+Sihirbazdaki alanlarla ilgili daha fazla bilgi için bkz. [öğretici: şüpheli tehditleri algılamak için özel analitik kurallar oluşturma](tutorial-detect-threats-custom.md).
 
 
 

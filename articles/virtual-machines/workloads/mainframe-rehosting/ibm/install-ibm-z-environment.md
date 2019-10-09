@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 7ba3323f0811f3f9b76d73796264bf17712a1179
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841328"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025945"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure 'da IBM zD & T geliştirme ve test ortamı 'nı yükler
 
@@ -62,11 +62,11 @@ Bu makalede, Azure 'da Z geliştirme ve test ortamı (zD & T) Enterprise Edition
 
 3. **Bağlan** DÜĞMESI aracılığıyla VM 'Nin **genel bakış** dikey penceresinde gösterilen SSH kimlik bilgilerini alın. **SSH** sekmesini SEÇIN ve SSH oturum açma komutunu panoya kopyalayın.
 
-4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](/azure/cloud-shell/quickstart) 'nda oturum açın ve komutu yapıştırın. **SSHKullanıcıkimliği\>IPadresi\>biçiminde olacaktır.\@\<\<** Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
+4. Yerel BILGISAYARıNıZDAN bir [bash kabuğu](/azure/cloud-shell/quickstart) 'nda oturum açın ve komutu yapıştırın. **SSH @ no__t-1User ID @ no__t-2 @ no__t-3 @ no__t-4ıP Address @ no__t-5**biçiminde olacaktır. Kimlik bilgileriniz istendiğinde, Giriş dizininize bir bağlantı kurmak için bu bilgileri girin.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Yükleme dosyasını sunucuya Kopyala
 
-Web sunucusunun yükleme dosyası **\_zdt Install\_Ee\_v 12.0.0.1. tgz**' dir. IBM tarafından sağlanan medyaya dahildir. Bu dosyayı Ubuntu sanal makinenize yüklemeniz gerekir.
+Web sunucusunun yükleme dosyası **Zdt @ no__t-1ınstall @ no__t-2EE\_V12.0.0.1.tgz**. IBM tarafından sağlanan medyaya dahildir. Bu dosyayı Ubuntu sanal makinenize yüklemeniz gerekir.
 
 1. Yeni oluşturulan görüntüde her şeyin güncel olduğundan emin olmak için komut satırından aşağıdaki komutu girin:
 
@@ -91,7 +91,7 @@ Web sunucusunun yükleme dosyası **\_zdt Install\_Ee\_v 12.0.0.1. tgz**' dir. I
 
 ## <a name="install-the-enterprise-edition"></a>Enterprise Edition 'ı yükleyin
 
-1. Zdt dizinine gidin ve aşağıdaki komutları kullanarak zdt\_Install\_Ee\_v 12.0.0.1. tgz dosyasını açın:
+1. ZDT dizinine gidin ve aşağıdaki komutları kullanarak ZDT @ no__t-0ınstall @ no__t-1EE\_V12.0.0.1.tgz dosyasını açın:
 
     ```
     cd ZDT
@@ -104,7 +104,7 @@ Web sunucusunun yükleme dosyası **\_zdt Install\_Ee\_v 12.0.0.1. tgz**' dir. I
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 
-3. Enterprise Server 'ı yüklemek için **1** ' i seçin.
+3. Enterprise Server 'ı yüklemek için **1** ' i seçin.
 
 4. **ENTER** tuşuna basın ve lisans sözleşmelerini dikkatle okuyun. Lisansın sonunda devam etmek için **Evet** girin.
 

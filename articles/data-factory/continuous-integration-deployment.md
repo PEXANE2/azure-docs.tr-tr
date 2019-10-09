@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 4386a7adba17eefe3c373697597abdb7d69c476a
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: ff1d34852890a8d5005153ebdfa2fa0f9749d129
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265975"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030608"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory 'de sürekli tümleştirme ve teslim (CI/CD)
 
@@ -102,7 +102,7 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
 1.  **Aşama adı** alanına ortamınızın adını girin.
 
-1.  **Yapıt Ekle**' yi seçin ve Data Factory yapılandırılan depoyu seçin. En `adf_publish` son varsayılan sürüme sahip varsayılan dal olarak seçin.
+1.  **Yapıt Ekle**' yi seçin ve Data Factory yapılandırılan depoyu seçin. Varsayılan dal olarak `adf_publish` ' ı en son varsayılan sürümle seçin.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
@@ -118,11 +118,11 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
     d.  Eylem açılan menüsünde **kaynak grubu oluştur veya Güncelleştir**' i seçin.
 
-    e.  Seç **...** **şablon** alanında. [Her ortam için Resource Manager şablonu oluşturma](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)' daki **ARM şablonunu içeri aktar** adımı aracılığıyla Azure Resource Manager şablonu oluşturma ' yı inceleyin. Dalın`adf_publish` klasöründe `<FactoryName>` bu dosyayı arayın.
+    e.  Seç **...** **şablon** alanında. [Her ortam için Resource Manager şablonu oluşturma](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment)' daki **ARM şablonunu içeri aktar** adımı aracılığıyla Azure Resource Manager şablonu oluşturma ' yı inceleyin. @No__t-1 dalının `<FactoryName>` klasöründe bu dosyayı arayın.
 
     f.  Seç **...** **şablon parametreleri alanında.** parametre dosyasını seçin. Bir kopya oluşturup oluşturamayacağını veya *Armtemplateparametersforfactory. JSON*varsayılan dosyasını kullandığınızı bağlı olarak doğru dosyayı seçin.
 
-    g.  Seç **...** **şablon parametrelerini geçersiz kıl** alanının yanında, hedef Data Factory için bilgileri girin. Anahtar kasasından gelen kimlik bilgileri için, çift tırnak arasında gizli dizi adını girin. Örneğin, gizli dizi adı ise `cred1`, değeri için girin. `"$(cred1)"`
+    g.  Seç **...** **şablon parametrelerini geçersiz kıl** alanının yanında, hedef Data Factory için bilgileri girin. Anahtar kasasından gelen kimlik bilgileri için, çift tırnak arasında gizli dizi adını girin. Örneğin, gizli dizinin adı `cred1` ise, değeri için `"$(cred1)"`girin.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
@@ -176,7 +176,7 @@ Gizli dizileri ele almanın iki yolu vardır:
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines aracısına izin verme
 
-Doğru izinler yoksa Azure Key Vault görevi bir erişim reddedildi hatasıyla başarısız olabilir. Yayın için günlükleri indirin ve Azure Pipelines aracısına izin vermek için `.ps1` komutunu içeren dosyayı bulun. Komutu doğrudan çalıştırabilirsiniz veya birincil KIMLIĞI dosyadan kopyalayabilir ve Azure portal erişim ilkesini el ile ekleyebilirsiniz. **Get** ve **list** , gereken en düşük izinlerdir.
+Doğru izinler yoksa Azure Key Vault görevi bir erişim reddedildi hatasıyla başarısız olabilir. Yayın için günlükleri indirin ve Azure Pipelines aracısına izin vermek için komutuyla `.ps1` dosyasını bulun. Komutu doğrudan çalıştırabilirsiniz veya birincil KIMLIĞI dosyadan kopyalayabilir ve Azure portal erişim ilkesini el ile ekleyebilirsiniz. **Get** ve **list** , gereken en düşük izinlerdir.
 
 ### <a name="update-active-triggers"></a>Etkin Tetikleyicileri Güncelleştir
 
@@ -196,7 +196,7 @@ Etkin Tetikleyicileri güncelleştirmeye çalışırsanız dağıtım başarıs�
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-Dağıtımdan sonra Tetikleyicileri yeniden başlatmak için benzer adımları `Start-AzDataFactoryV2Trigger` (işleviyle birlikte) izleyebilirsiniz.
+Dağıtımdan sonra Tetikleyicileri yeniden başlatmak için benzer adımları (`Start-AzDataFactoryV2Trigger` işleviyle birlikte) izleyebilirsiniz.
 
 > [!IMPORTANT]
 > Sürekli tümleştirme ve dağıtım senaryolarında, farklı ortamlarda Integration Runtime türü aynı olmalıdır. Örneğin, geliştirme ortamında *Şirket Içinde barındırılan* bir INTEGRATION RUNTIME (IR) varsa, aynı IR, test ve üretim gibi diğer ortamlarda da *kendi kendine barındırılan* türde olmalıdır. Benzer şekilde, tümleştirme çalışma zamanlarını birden çok aşamada paylaşıyorsanız, tümleştirme çalışma zamanlarını, geliştirme, test ve üretim gibi tüm ortamlarda *bağlanmış* bir şekilde yapılandırmanız gerekir.
@@ -328,21 +328,21 @@ GIT modundaysanız, şablonda parametreli olan özellikleri ve sabit kodlanmış
 * Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreleştirimez.
 * Fabrikanızın izin verilen en fazla sayıda parametreye (256) sahip olduğu için varsayılan Kaynak Yöneticisi şablonunun geçersiz olması çok büyük.
 
-Bu koşullar altında, varsayılan parameterleştirme şablonunu geçersiz kılmak için, deponun kök klasöründe *ARM-Template-Parameters-Definition. JSON* adlı bir dosya oluşturun. Dosya adı tam olarak eşleşmelidir. Data Factory, bu dosyayı, yalnızca işbirliği dalından değil, Azure Data Factory portalında yaptığınız herhangi bir daldan okumaya çalışır. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabirimindeki **ARM şablonunu dışarı aktar** ' ı kullanarak yaptığınız değişiklikleri test edebilirsiniz. Daha sonra, dosyayı işbirliği dalında birleştirebilirsiniz. Dosya bulunamazsa, varsayılan şablon kullanılır.
+Bu koşullar altında, varsayılan parameterleştirme şablonunu geçersiz kılmak için, deponun kök klasöründe *ARM-Template-Parameters-Definition. JSON* adlı bir dosya oluşturun. Dosya adı tam olarak eşleşmelidir. Data Factory, bu dosyayı, yalnızca işbirliği dalından değil, Azure Data Factory portalında yaptığınız herhangi bir daldan okumaya çalışır. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabirimindeki **ARM şablonunu dışarı aktar** ' ı kullanarak yaptığınız değişiklikleri test edebilirsiniz. Daha sonra, dosyayı işbirliği dalında birleştirebilirsiniz. Dosya bulunamazsa, varsayılan şablon kullanılır.
 
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Özel parametre dosyasının sözdizimi
 
 Özel parametreler dosyasını yazarken kullanabileceğiniz bazı yönergeler aşağıda verilmiştir. Dosya her varlık türü için bir bölümden oluşur: tetikleyici, işlem hattı, bağlı hizmet, veri kümesi, tümleştirme çalışma zamanı vb.
 * İlgili varlık türünün altında özellik yolunu girin.
-* '\*' ' Olarak bir özellik adı belirlediğinizde, altındaki tüm özellikleri parametreleştirmek istediğinizi (özyinelemeli değil, yalnızca ilk düzeye kadar) istediğinizi belirtirsiniz. Bunun için özel durumlar da sağlayabilirsiniz.
-* Bir özelliğin değerini bir dize olarak belirlediğinizde, özelliği parametreleştirmek istediğinizi belirtirsiniz. Biçimini `<action>:<name>:<stype>`kullanın.
-   *  `<action>` Aşağıdaki karakterlerden biri olabilir:
-      * `=` , geçerli değeri parametresi için varsayılan değer olarak tutacağı anlamına gelir.
-      * `-` parametresi için varsayılan değeri saklama anlamına gelir.
-      * `|` , bağlantı dizeleri veya anahtarlar için Azure Key Vault parolalar için özel bir durumdur.
-   * `<name>` parametrenin adıdır. Boşsa, özelliğin adını alır. Değer bir `-` karakterle başlıyorsa, ad kısaltılmıştır. Örneğin, `AzureStorage1_properties_typeProperties_connectionString` olarak `AzureStorage1_connectionString`kısaltılacak.
-   * `<stype>` parametrenin türüdür. Boşsa, varsayılan tür olur `string`. `<stype>`  Desteklenen değerler: `string`, `bool`, `number` ,`object`ve .`securestring`
+* ' @No__t-0 ' ' olarak bir özellik adı belirlediğinizde, altındaki tüm özellikleri parametreleştirmek istediğinizi (özyinelemeli değil, yalnızca ilk düzeye doğru değil) belirtmeniz gerektiğini belirtirsiniz. Bunun için özel durumlar da sağlayabilirsiniz.
+* Bir özelliğin değerini bir dize olarak belirlediğinizde, özelliği parametreleştirmek istediğinizi belirtirsiniz. @ No__t-0 biçimini kullanın.
+   *  `<action>` @ no__t-1Aşağıdaki karakterlerden biri olabilir:
+      * `=` @ no__t-1, geçerli değeri parametresi için varsayılan değer olarak tutacağı anlamına gelir.
+      * `-` @ no__t-1parametre için varsayılan değeri saklama anlamına gelir.
+      * `|` @ no__t-1, bağlantı dizeleri veya anahtarlar için Azure Key Vault parolaların özel bir durumdur.
+   * `<name>` @ no__t-1parametrenin adıdır. Boşsa, özelliğin adını alır. Değer bir `-` karakteriyle başlıyorsa, ad kısaltıldı. Örneğin, `AzureStorage1_properties_typeProperties_connectionString` `AzureStorage1_connectionString` olarak kısaltılacaktır.
+   * `<stype>` @ no__t-1parametre türüdür. @ No__t-0 @ no__t-1boş ise, varsayılan tür `string` ' dir. Desteklenen değerler: `string`, `bool`, `number`, `object` ve `securestring`.
 * Tanım dosyasında bir dizi belirttiğinizde, şablondaki eşleşen özelliğin bir dizi olduğunu belirteirsiniz. Data Factory, dizinin Integration Runtime nesnesinde belirtilen tanımı kullanarak dizideki tüm nesneler arasında yinelenir. İkinci nesne, bir dize, her yineleme için parametresinin adı olarak kullanılan özelliğin adı olur.
 * Kaynak örneğine özgü bir tanım olması mümkün değildir. Herhangi bir tanım, bu türdeki tüm kaynaklar için geçerlidir.
 * Varsayılan olarak, Key Vault gizli dizileri gibi tüm güvenli dizeler ve bağlantı dizeleri, anahtarlar ve belirteçler gibi güvenli dizeler parametrelenir.
@@ -412,29 +412,29 @@ Aşağıda, bir Parametreleştirme şablonunun nasıl görünebileceklerini bir 
 ```
 Aşağıda, yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre bölündüğü hakkında bir açıklama verilmiştir.
 
-#### <a name="pipelines"></a>İşlem Hatları
+#### <a name="pipelines"></a>İşlem hatları
     
-* Activities/typeProperties/Waittimeınseconds yolundaki herhangi bir özellik parametreleştiriledir. Bir işlem hattındaki (örneğin `waitTimeInSeconds` `Wait` , etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
-* Benzer şekilde, adlı `headers` bir Özellik (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikası ile aynı değer olan varsayılan bir değere sahiptir.
+* Activities/typeProperties/Waittimeınseconds yolundaki herhangi bir özellik parametreleştiriledir. @No__t-0 adlı bir işlem hattındaki herhangi bir etkinlik (örneğin, `Wait` etkinliği), varsayılan bir ada sahip bir sayı olarak parametrelenir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
+* Benzer şekilde, `headers` (örneğin, `Web` etkinliğinde) adlı bir özellik, `object` (JObject) türü ile parametrelenir. Kaynak fabrikası ile aynı değer olan varsayılan bir değere sahiptir.
 
 #### <a name="integrationruntimes"></a>Tümleştirme çalışma zamanları
 
-* Yolun `typeProperties` altındaki tüm özellikler, kendi varsayılan değerleriyle parametrelenir. Örneğin, **ıntegrationçalışma zamanları** türü Özellikler altında iki özellik vardır: `computeProperties` ve. `ssisProperties` Her iki özellik türü de ilgili varsayılan değerleri ve türleri (nesne) ile oluşturulur.
+* @No__t-0 yolu altındaki tüm özellikler, kendi varsayılan değerleriyle parametrelenir. Örneğin, **ıntegrationçalışma zamanları** türü Özellikler altında iki özellik vardır: `computeProperties` ve `ssisProperties`. Her iki özellik türü de ilgili varsayılan değerleri ve türleri (nesne) ile oluşturulur.
 
 #### <a name="triggers"></a>Tetikleyiciler
 
-* Altında `typeProperties`iki özellik parametrelenir. Birincisi `maxConcurrency`, varsayılan bir değere sahip ve türünde`string`olan bir ' dır. Varsayılan parametre adına `<entityName>_properties_typeProperties_maxConcurrency`sahiptir.
-* `recurrence` Özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum `interval` , sayı türü olarak parametreleştirilen ve parametre adı sonekli `<entityName>_properties_typeProperties_recurrence_triggerSuffix`olan özelliktir. Benzer şekilde, `freq` özelliği bir dizedir ve dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
+* @No__t-0 ' ın altında iki özellik parametrelenir. Birincisi, varsayılan bir değere sahip olmak ve @ no__t-1 türünde olması için belirtilen `maxConcurrency` ' dır. Varsayılan parametre adı `<entityName>_properties_typeProperties_maxConcurrency` ' dır.
+* @No__t-0 özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Bir özel durum, sayı türü olarak parametreleştirilen ve parametre adı `<entityName>_properties_typeProperties_recurrence_triggerSuffix` ile düzeltilen `interval` özelliğidir. Benzer şekilde, `freq` özelliği bir dizedir ve bir dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
 
-#### <a name="linkedservices"></a>linkedServices
+#### <a name="linkedservices"></a>LinkedServices
 
-* Bağlı hizmetler benzersizdir. Bağlı hizmetler ve veri kümelerinin çok sayıda türü olduğundan, türe özgü özelleştirme sağlayabilirsiniz. Bu örnekte, türündeki `AzureDataLakeStore`tüm bağlı hizmetler, belirli bir şablon uygulanır ve diğerleri için (aracılığıyla \*) farklı bir şablon uygulanır.
-* Özelliği bir `securestring` değer olarak parametrelendirilecektir, varsayılan bir değere sahip olmayacaktır ve ile `connectionString`Sonekli bir kısaltılmış parametre adı olacaktır. `connectionString`
-* Özelliği `secretAccessKey` `AmazonS3` bir `AzureKeyVaultSecret` (örneğin, bağlı bir hizmette) olur. Otomatik olarak Azure Key Vault gizli dizi olarak parametrelenir ve yapılandırılan anahtar kasasından alınır. Ayrıca, anahtar kasasının kendisini parametreleştirebilirsiniz.
+* Bağlı hizmetler benzersizdir. Bağlı hizmetler ve veri kümelerinin çok sayıda türü olduğundan, türe özgü özelleştirme sağlayabilirsiniz. Bu örnekte, `AzureDataLakeStore` türündeki tüm bağlı hizmetler, belirli bir şablon uygulanır ve diğerleri için (\* aracılığıyla) farklı bir şablon uygulanır.
+* @No__t-0 özelliği bir `securestring` değeri olarak parametrelendirilecektir, varsayılan bir değere sahip olmayacaktır ve `connectionString` ile Sonekli bir kısaltılmış parametre adı olacaktır.
+* @No__t-0 özelliği bir `AzureKeyVaultSecret` (örneğin, `AmazonS3` bağlantılı hizmette) olur. Otomatik olarak Azure Key Vault gizli dizi olarak parametrelenir ve yapılandırılan anahtar kasasından alınır. Ayrıca, anahtar kasasının kendisini parametreleştirebilirsiniz.
 
 #### <a name="datasets"></a>Veri kümeleri
 
-* Veri kümeleri için türe özgü özelleştirme kullanılabilir olsa da, yapılandırma açıkça bir \*düzeyi yapılandırmaya sahip olmadan sağlanabilmelidir. Yukarıdaki örnekte, altındaki `typeProperties` tüm veri kümesi özellikleri parametrelenir.
+* Veri kümeleri için türe özgü özelleştirme kullanılabilir olsa da, yapılandırma açıkça @no__t -0 düzeyinde bir yapılandırmaya sahip olmadan sağlanabilmelidir. Yukarıdaki örnekte, `typeProperties` ' ın altındaki tüm veri kümesi özellikleri parametrelenir.
 
 ### <a name="default-parameterization-template"></a>Varsayılan parameterleştirme şablonu
 
@@ -545,7 +545,7 @@ Geçerli varsayılan parameterleştirme şablonu aşağıda verilmiştir. Yalnı
 }
 ```
 
-Varsayılan parameterleştirme şablonuna tek bir değer eklemenin bir örneği aşağıda verilmiştir. Yalnızca bir Databricks bağlı hizmeti için parametreler dosyasına mevcut bir Databricks etkileşimli küme KIMLIĞI eklemek istiyoruz. Aşağıdaki dosya, öğesinin `existingClusterId` `Microsoft.DataFactory/factories/linkedServices`Özellikler alanının altında bulunanlar hariç yukarıdaki dosyayla aynıdır.
+Varsayılan parameterleştirme şablonuna tek bir değer eklemenin bir örneği aşağıda verilmiştir. Yalnızca bir Databricks bağlı hizmeti için parametreler dosyasına mevcut bir Databricks etkileşimli küme KIMLIĞI eklemek istiyoruz. Aşağıdaki dosya, `Microsoft.DataFactory/factories/linkedServices` ' in Özellikler alanına dahil edilen `existingClusterId` haricinde yukarıdaki dosyayla aynıdır.
 
 ```json
 {
@@ -657,11 +657,11 @@ Varsayılan parameterleştirme şablonuna tek bir değer eklemenin bir örneği 
 
 Veri fabrikalarınız için sürekli tümleştirme ve dağıtım (CI/CD) ayarladıysanız, fabrikanızın daha Büyük büyüdüğü için Azure Resource Manager şablon limitleriyle karşılaşabilirsiniz. Sınır örneği bir Kaynak Yöneticisi şablonundaki en fazla kaynak sayısıdır. Büyük fabrikalara uyum sağlamak için, bir fabrika için tam Kaynak Yöneticisi şablonu oluşturmaya, Data Factory artık bağlantılı Kaynak Yöneticisi şablonları oluşturuyor. Bu özellik sayesinde, tüm fabrika yükü birçok dosyaya bölünür ve bu sayede sınırlara devam edersiniz.
 
-Git yapılandırdıysanız, bağlantılı şablonlar oluşturulur ve `adf_publish` daldaki tam kaynak yöneticisi şablonlarıyla birlikte, adlı `linkedTemplates`yeni bir klasör altında kaydedilir.
+Git yapılandırdıysanız, bağlantılı şablonlar oluşturulur ve `linkedTemplates` adlı yeni bir klasör altındaki `adf_publish` dalında tam Kaynak Yöneticisi şablonlarıyla birlikte kaydedilir.
 
 ![Bağlı Kaynak Yöneticisi şablonları klasörü](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-Bağlantılı Kaynak Yöneticisi şablonları genellikle ana şablona ve ana şablona bağlı bir alt şablonlar kümesine sahiptir. Üst şablon çağrılır `ArmTemplate_master.json`ve alt şablonlar, ve gibi `ArmTemplate_1.json`düzeniyle `ArmTemplate_0.json`adlandırılır. Tam Kaynak Yöneticisi şablonu yerine bağlantılı şablonlar kullanmak için, CI/CD görevinizi `ArmTemplate_master.json` `ArmTemplateForFactory.json` yerine üzerine gelin (tam kaynak yöneticisi şablonu). Kaynak Yöneticisi ayrıca, dağıtım sırasında Azure tarafından erişilebilmeleri için bağlantılı şablonları bir depolama hesabına yüklemenizi gerektirir. Daha fazla bilgi için bkz. [VSTS Ile bağlantılı ARM şablonlarını dağıtma](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+Bağlantılı Kaynak Yöneticisi şablonları genellikle ana şablona ve ana şablona bağlı bir alt şablonlar kümesine sahiptir. Üst şablon `ArmTemplate_master.json` olarak adlandırılır ve alt şablonlar `ArmTemplate_0.json`, `ArmTemplate_1.json` vb. düzeniyle adlandırılır. Tam Kaynak Yöneticisi şablonu yerine bağlantılı şablonlar kullanmak için, CI/CD görevinizi `ArmTemplateForFactory.json` yerine `ArmTemplate_master.json` ' a işaret etmek üzere güncelleştirin (tam Kaynak Yöneticisi şablonu). Kaynak Yöneticisi ayrıca, dağıtım sırasında Azure tarafından erişilebilmeleri için bağlantılı şablonları bir depolama hesabına yüklemenizi gerektirir. Daha fazla bilgi için bkz. [VSTS Ile bağlantılı ARM şablonlarını dağıtma](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
 
 Dağıtım görevinden önce ve sonra, CI/CD işlem hattınızda Data Factory betikleri eklemeyi unutmayın.
 

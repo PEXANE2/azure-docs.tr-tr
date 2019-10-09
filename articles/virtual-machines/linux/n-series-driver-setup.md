@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ef060127840838778a00fdabd2d56b2ef23d6f4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3abc221295a90dfbf7e46e3bd5bff1c8c0937162
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082693"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035010"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler
 
@@ -98,7 +98,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS veya Red Hat Enterprise Linux
 
-1. Çekirdeği güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz, `kernel-devel` ve `dkms` sürümlerinin çekirdeğe uygun olduğundan emin olun.
+1. Çekirdeği güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz `kernel-devel` ve `dkms` sürümlerinin, çekirdekte uygun olduğundan emin olun.
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -159,7 +159,7 @@ Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. Şu anda
 
 RDMA ağ bağlantısı, aynı Kullanılabilirlik kümesinde veya bir VM Ölçek kümesindeki tek bir yerleştirme grubunda dağıtılan NC24r gibi, RDMA özellikli N serisi VM 'lerde etkinleştirilebilir. RDMA ağı, Intel MPı 5. x veya sonraki bir sürümde çalışan uygulamalar için Ileti geçirme arabirimi (MPı) trafiğini destekler. Ek gereksinimler şunları izler:
 
-### <a name="distributions"></a>Dağıtımlar
+### <a name="distributions"></a>Dağıtımları
 
 N serisi VM 'lerde RDMA bağlantısını destekleyen Azure Marketi 'ndeki görüntülerden birinde RDMA özellikli N serisi VM 'Leri dağıtın:
   
@@ -190,7 +190,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    
    sudo apt-get install linux-azure -y
    ```
-3. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NVv2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki içeriklerle `/etc/modprobe.d` adlandırılmış `nouveau.conf` bir dosya oluşturun:
+3. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NVv2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki içeriklerle `/etc/modprobe.d` adlı `nouveau.conf` adında bir dosya oluşturun:
 
    ```
    blacklist nouveau
@@ -223,14 +223,14 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. Aşağıdakileri öğesine `/etc/nvidia/gridd.conf`ekleyin:
+8. @No__t-0 ' a aşağıdakileri ekleyin:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE
    ```
    
-9. Varsa şunları `/etc/nvidia/gridd.conf` kaldırın:
+9. Varsa `/etc/nvidia/gridd.conf` ' dan kaldırın:
  
    ```
    FeatureType=0
@@ -240,7 +240,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS veya Red Hat Enterprise Linux 
 
-1. Kernel ve DKMS 'yi güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz, `kernel-devel` ve `dkms` sürümlerinin çekirdeğe uygun olduğundan emin olun.
+1. Kernel ve DKMS 'yi güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz `kernel-devel` ve `dkms` sürümlerinin, çekirdekte uygun olduğundan emin olun.
  
    ```bash  
    sudo yum update
@@ -254,7 +254,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    sudo yum install hyperv-daemons
    ```
 
-2. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NV2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki içeriklerle `/etc/modprobe.d` adlandırılmış `nouveau.conf` bir dosya oluşturun:
+2. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NV2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki içeriklerle `/etc/modprobe.d` adlı `nouveau.conf` adında bir dosya oluşturun:
 
    ```
    blacklist nouveau
@@ -277,7 +277,7 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
 
    ```
  
-4. Sanal makineye yeniden bağlanın ve `lspci` komutu çalıştırın. NVıDıA M60 kartının veya kartlarının PCI cihazlar olarak görünür olduğunu doğrulayın.
+4. SANAL makineye yeniden bağlanın ve `lspci` komutunu çalıştırın. NVıDıA M60 kartının veya kartlarının PCI cihazlar olarak görünür olduğunu doğrulayın.
  
 5. KıLAVUZ sürücüsünü indirip yükleyin:
 
@@ -296,13 +296,13 @@ NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. Aşağıdakileri öğesine `/etc/nvidia/gridd.conf`ekleyin:
+8. @No__t-0 ' a aşağıdakileri ekleyin:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. Varsa şunları `/etc/nvidia/gridd.conf` kaldırın:
+9. Varsa `/etc/nvidia/gridd.conf` ' dan kaldırın:
  
    ```
    FeatureType=0
@@ -321,7 +321,7 @@ Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. Şu anda
  
 
 ### <a name="x11-server"></a>X11 sunucusu
-NV veya NVv2 VM 'sine yönelik uzak bağlantılar için X11 sunucusuna ihtiyacınız varsa, grafiklerin donanım hızlandırılmasını sağladığından [x11vnc](http://www.karlrunge.com/x11vnc/) önerilir. M60 cihazının Busıd 'Si, X11 yapılandırma dosyasına (genellikle, `etc/X11/xorg.conf`) el ile eklenmelidir. Aşağıdakine benzer `"Device"` bir bölüm ekleyin:
+NV veya NVv2 VM 'sine yönelik uzak bağlantılar için X11 sunucusuna ihtiyacınız varsa, grafiklerin donanım hızlandırılmasını sağladığından [x11vnc](http://www.karlrunge.com/x11vnc/) önerilir. M60 cihazının Busıd 'Si, X11 yapılandırma dosyasına (genellikle `etc/X11/xorg.conf`) el ile eklenmelidir. Aşağıdakine benzer bir `"Device"` bölümü ekleyin:
  
 ```
 Section "Device"
@@ -333,7 +333,7 @@ Section "Device"
 EndSection
 ```
  
-Ayrıca, bu cihazı `"Screen"` kullanmak için bölümünü güncelleştirin.
+Ayrıca, bu cihazı kullanmak için `"Screen"` bölümünü güncelleştirin.
  
 Ondalık Busıd, şu şekilde çalıştırılarak bulunabilir
 
@@ -341,7 +341,7 @@ Ondalık Busıd, şu şekilde çalıştırılarak bulunabilir
 nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'
 ```
  
-Bir VM yeniden ayrıldığında veya yeniden başlatıldığında Busıd değişebilir. Bu nedenle, bir VM yeniden başlatıldığında X11 yapılandırmasındaki Busıd 'yi güncelleştirmek için bir komut dosyası oluşturmak isteyebilirsiniz. Örneğin, aşağıdakine benzer içeriğe sahip ( `busidupdate.sh` veya seçtiğiniz başka bir ad) adlı bir komut dosyası oluşturun:
+Bir VM yeniden ayrıldığında veya yeniden başlatıldığında Busıd değişebilir. Bu nedenle, bir VM yeniden başlatıldığında X11 yapılandırmasındaki Busıd 'yi güncelleştirmek için bir komut dosyası oluşturmak isteyebilirsiniz. Örneğin, aşağıdakine benzer içeriğe sahip `busidupdate.sh` (veya seçtiğiniz başka bir ad) adlı bir komut dosyası oluşturun:
 
 ```bash 
 #!/bin/bash
@@ -357,11 +357,12 @@ else
 fi
 ```
 
-Ardından, içinde `/etc/rc.d/rc3.d` güncelleştirme betiğinizin bir girdisini oluşturun, böylece betik önyüklemede kök olarak çağrılır.
+Daha sonra, `/etc/rc.d/rc3.d` ' da güncelleştirme betiği için bir giriş oluşturun, bu nedenle betik önyüklemede kök olarak çağırılır.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-* ' I kullanarak `nvidia-smi` Kalıcılık modunu ayarlayabilirsiniz. böylece, kartları sorgulamak için komutun çıktısının daha hızlı olması gerekir. Kalıcılık modunu ayarlamak için yürütün `nvidia-smi -pm 1`. VM yeniden başlatılırsa mod ayarının dışarıda olacağını unutmayın. Başlatma sırasında her zaman Mod ayarını çalıştırmak için komut dosyası oluşturabilirsiniz.
+* @No__t-0 kullanarak Kalıcılık modu ayarlayabilirsiniz. böylece, kartları sorgulamak için komutun çıktısının daha hızlı olması gerekir. Kalıcılık modunu ayarlamak için `nvidia-smi -pm 1` yürütün. VM yeniden başlatılırsa mod ayarının dışarıda olacağını unutmayın. Başlatma sırasında her zaman Mod ayarını çalıştırmak için komut dosyası oluşturabilirsiniz.
+* NVıDıA CUDA sürücülerini en son sürüme güncelleştirdiyseniz ve RDMA connectivcity bulma işlemi artık çalışmıyorsa, bu bağlantıyı yeniden kurmak için [RDMA sürücülerini yeniden yükleyin](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) . 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

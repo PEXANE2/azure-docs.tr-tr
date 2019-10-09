@@ -11,18 +11,18 @@ ms.workload: na
 ms.topic: article
 ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 2d01828cb61937b45665e953a13795b5346a5f1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801396"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030538"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
-İle en son gelişmeleri güncel kalmak için bu makalede, ile hakkında bilgi sağlar:
+En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmektedir:
 
-* En son sürümleri
+* En son yayınlar
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlev
@@ -48,7 +48,7 @@ Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölg
 
 ## <a name="july-2019"></a>2019 Temmuz
 
-### <a name="content-protection"></a>Content protection
+### <a name="content-protection"></a>Content Protection
 
 Belirteç kısıtlamasıyla korunan içerik akışı yaparken, son kullanıcılar anahtar teslim isteğinin bir parçası olarak gönderilen bir belirteç elde etmeniz gerekir. *Belirteç yeniden yürütme engellemesi* özelliği, Media Services müşterilerin aynı belirtecin bir anahtar veya lisans istemek için kaç kez kullanılabileceği konusunda bir sınır ayarlamasına olanak tanır. Daha fazla bilgi için bkz. [belirteç yeniden yürütme engellemesi](content-protection-overview.md#token-replay-prevention).
 
@@ -153,31 +153,31 @@ CLı 2,0 modülü artık [Azure Media Services v3 GA](https://docs.microsoft.com
 
 #### <a name="asset-commands"></a>Varlık komutları
 
-- ```--storage-account```ve ```--container``` bağımsız değişkenler eklendi.
-- Sona erme saati (şimdi + 23h) için varsayılan değerler ve ```az ams asset get-sas-url``` komutta izinler (okuma) eklendi.
+- ```--storage-account``` ve ```--container``` bağımsız değişkenleri eklendi.
+- @No__t-0 komutunda, sona erme saati (şimdi + 23h) ve izinler (okuma) için varsayılan değerler eklendi.
 
 #### <a name="job-commands"></a>İş komutları
 
-- ```--correlation-data```ve ```--label``` eklenen bağımsız değişkenler
-- ```--output-asset-names```olarak ```--output-assets```yeniden adlandırıldı. Şimdi, ' assetName = Label ' biçiminde varlıkların boşlukla ayrılmış bir listesini kabul eder. Etiketi olmayan bir varlık şu şekilde gönderilebilir: ' assetName = '.
+- ```--correlation-data``` ve ```--label``` bağımsız değişkenleri eklendi
+- ```--output-asset-names``` ```--output-assets``` olarak yeniden adlandırıldı. Şimdi, ' assetName = Label ' biçiminde varlıkların boşlukla ayrılmış bir listesini kabul eder. Etiketi olmayan bir varlık şu şekilde gönderilebilir: ' assetName = '.
 
 #### <a name="streaming-locator-commands"></a>Akış Bulucu komutları
 
-- ```az ams streaming locator```temel komut ile ```az ams streaming-locator```değiştirilmiştir.
-- ```--streaming-locator-id```ve ```--alternative-media-id support``` bağımsız değişkenler eklendi.
-- ```--content-keys argument```bağımsız değişken güncelleştirildi.
-- ```--content-policy-name```olarak ```--content-key-policy-name```yeniden adlandırıldı.
+- ```az ams streaming locator``` taban komutu ```az ams streaming-locator``` ile değiştirilmiştir.
+- ```--streaming-locator-id``` ve ```--alternative-media-id support``` bağımsız değişkenleri eklendi.
+- ```--content-keys argument``` bağımsız değişkeni güncelleştirildi.
+- ```--content-policy-name``` ```--content-key-policy-name``` olarak yeniden adlandırıldı.
 
 #### <a name="streaming-policy-commands"></a>Akış Ilkesi komutları
 
-- ```az ams streaming policy```temel komut ile ```az ams streaming-policy```değiştirilmiştir.
-- Şifreleme parametreleri desteği ```az ams streaming-policy create``` eklendi.
+- ```az ams streaming policy``` taban komutu ```az ams streaming-policy``` ile değiştirilmiştir.
+- @No__t-0 ' da şifreleme parametreleri desteği eklendi.
 
 #### <a name="transform-commands"></a>Dönüşüm komutları
 
-- ```--preset-names```bağımsız değişken ile ```--preset```değiştirilmiştir. Artık tek seferde yalnızca 1 çıkış/önayar ayarlayabilirsiniz (çalıştırmanız ```az ams transform output add```gerekir daha fazla bilgi için). Ayrıca, yolu özel JSON 'unuza geçirerek özel Standardencoderönayar ayarlayabilirsiniz.
+- ```--preset-names``` bağımsız değişkeni ```--preset``` ile değiştirilmiştir. Artık tek seferde yalnızca 1 çıkış/ön ayar ayarlayabilirsiniz (daha fazlasını eklemek için ```az ams transform output add```). Ayrıca, yolu özel JSON 'unuza geçirerek özel Standardencoderönayar ayarlayabilirsiniz.
 - ```az ams transform output remove```, kaldırılacak çıkış dizini geçirerek gerçekleştirilebilir.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``````az ams transform create``` ve```az ams transform output add``` komutlarına eklenen bağımsız değişkenler.
+- ```az ams transform create``` ve ```az ams transform output add``` komutlarında @no__t 0 bağımsız değişken eklendi.
 
 ## <a name="october-2018---ga"></a>Ekim 2018-GA
 
@@ -236,11 +236,11 @@ Aşağıdaki Event Grid destek geliştirmelerini görebilirsiniz:
 
 Apple HLS (iOS 11 +) için CMAF ve ' CBCS ' şifreleme desteği ve CMAF 'yi destekleyen MPEG-DASH çalarlar.
 
-### <a name="video-indexer"></a>Video Indexer
+### <a name="video-indexer"></a>Video Dizinleyici
 
 Video Indexer GA yayını Ağustos ayında duyuruldu. Şu anda desteklenen özellikler hakkında daha fazla bilgi için bkz. [video Indexer nedir](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 
-### <a name="plans-for-changes"></a>Değişiklikleri planları
+### <a name="plans-for-changes"></a>Değişiklik planları
 
 #### <a name="azure-cli-20"></a>Azure CLI 2.0
  
@@ -275,4 +275,5 @@ Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel bakış](media-services-overview.md)
+- [Genel Bakış](media-services-overview.md)
+- [Media Services V2 sürüm notları](../previous/media-services-release-notes.md)

@@ -10,20 +10,20 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: 4af269faab21207e1a754e309cac16e5e0a94b69
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 10/01/2019
+ms.openlocfilehash: af2e8826c40fb0d16844b6c67f151b0affbf3efd
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164335"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034991"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Sanal çekirdek hizmet katmanları arasında seçim yapın ve DTU hizmeti katmanlarından geçiş yapın
 
 Sanal çekirdek (vCore) tabanlı satın alma modeli, işlem ve depolama kaynaklarını bağımsız olarak ölçeklendirmenize, şirket içi performansı eşleşmenize ve fiyatı iyileştirmenize olanak tanır. Ayrıca, donanım üretimini seçmenizi sağlar:
 
-- **4. nesil**: Intel E5-2673 v3 (Haswell) 2,4-GHz işlemcileri, sanal çekirdek = 1 PP (fiziksel çekirdek), vCore başına 7 GB, bağlı SSD 'yi temel alan en fazla 24 mantıksal CPU
-- **5. nesil**: Intel E5-2673 v4 (çok Iyi) 2,3-GHz işlemcileri, vCore = 1 LP (hiper iş parçacığı) 5,1, sağlanan işlem için Vcore başına 80 GB ve sunucusuz işlem için vCore başına 24 GB 'a kadar mantıksal CPU
+- **4. nesil**: Intel E5-2673 v3 (Haswell) 2,4-GHz Işlemcileri, sanal çekirdek = 1 PP (fiziksel çekirdek), her Vcore IÇIN 7 GB, ekli SSD 'yi temel alan en fazla 24 mantıksal CPU
+- **5. nesil**: Intel E5-2673 v4 (çok iyi) 2,3-GHz Işlemciler, vCore = 1 LP (hiper iş parçacığı) 5,1, sağlanan işlem Için her vcore IÇIN 80 GB ve sunucusuz Işlem Için Vcore BAŞıNA 24 GB 'a kadar mantıksal CPU
 
 4\. nesil donanım, vCore başına önemli ölçüde daha fazla bellek sunar. Ancak, 5. nesil donanım, işlem kaynaklarını çok daha yüksek bir şekilde ölçeklendirmenize olanak tanır.
 
@@ -36,18 +36,18 @@ Sanal çekirdek (vCore) tabanlı satın alma modeli, işlem ve depolama kaynakla
 
 Sanal çekirdek tabanlı satın alma modeli üç hizmet katmanı sunar: genel amaçlı, hiper ölçek ve iş açısından kritik. Bu hizmet katmanları, bir dizi işlem boyutuna, yüksek kullanılabilirliğe sahip tasarımlara, hata yalıtımı yöntemlerine, tür ve depolama ve g/ç aralıklarına göre farklılaştırılabilir.
 
-Yedeklemeler için gereken depolama ve bekletme süresini ayrı olarak yapılandırmanız gerekir. Yedekleme bekletme süresini ayarlamak için Azure Portal açın, sunucuya gidin (veritabanına değil) ve sonra **yedeklemeleri** > Yönet ' e gidin,**zaman içinde** > **ilke** > noktası yapılandırma yapılandırma**7- 35 gün**.
+Yedeklemeler için gereken depolama ve bekletme süresini ayrı olarak yapılandırmanız gerekir. Yedekleme bekletme süresini ayarlamak için, Azure portal açın, sunucuya gidin (veritabanına değil) ve ardından **Yedeklemeleri Yönet**' e gidin  > **İlkeyi Yapılandır** > **zaman yükleme yapılandırma** > **7-35 gün**.
 
 Aşağıdaki tabloda üç katman arasındaki farklar açıklanmaktadır:
 
 ||**Genel amaçlı**|**İş açısından kritik**|**Hiper ölçekli**|
 |---|---|---|---|
-|En uygun olduğu durum|Birçok iş yükü. Bütçeye dayalı, dengeli ve ölçeklenebilir işlem ve depolama seçenekleri sunar.|Yüksek g/ç gereksinimlerine sahip iş uygulamaları. Birkaç yalıtılmış çoğaltma kullanarak hatalara en yüksek esnekliği sağlar.|Yüksek düzeyde ölçeklenebilir depolama ve okuma ölçeği gereksinimlerine sahip iş yüklerinin çoğu.|
-|İşlem|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek<br/>**Sunucusuz işlem**:<br/>5\. nesil 0,5-16 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil 1-24 sanal çekirdek<br/>5\. nesil 2-80 sanal çekirdek|
-|Bellek|**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB<br/>**Sunucusuz işlem**:<br/>5\. nesil VCore başına en fazla 24 GB|**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB |**Sağlanan işlem**:<br/>4\. nesil Sanal çekirdek başına 7 GB<br/>5\. nesil vCore başına 5,1 GB|
+|Şunlar için en iyisidir:|Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.|Yüksek işlem hızına sahip OLTP uygulamaları ve düşük GÇ gecikme süresi. Birden çok zaman uyumlu olarak güncellenen çoğaltmaları kullanarak hatalara en yüksek esnekliği ve hızlı yük devretme olanağı sunar.|Birçok iş yükü. Depolama boyutunu 100 TB 'a kadar otomatik ölçeklendirme, sıvı dikey ve yatay işlem ölçekleme, hızlı veritabanı geri yükleme.|
+|İşlem|**Sağlanan işlem**:<br/>4\. nesil: 1-24 sanal çekirdek<br/>5\. nesil: 2-80 sanal çekirdek<br/>**Sunucusuz işlem**:<br/>5\. nesil: 0,5-16 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil: 1-24 sanal çekirdek<br/>5\. nesil: 2-80 sanal çekirdek|**Sağlanan işlem**:<br/>4\. nesil: 1-24 sanal çekirdek<br/>5\. nesil: 2-80 sanal çekirdek|
+|Hafıza|**Sağlanan işlem**:<br/>4\. nesil: vCore başına 7 GB<br/>5\. nesil: vCore başına 5,1 GB<br/>**Sunucusuz işlem**:<br/>5\. nesil: vCore başına en fazla 24 GB|**Sağlanan işlem**:<br/>4\. nesil: vCore başına 7 GB<br/>5\. nesil: vCore başına 5,1 GB |**Sağlanan işlem**:<br/>4\. nesil: vCore başına 7 GB<br/>5\. nesil: vCore başına 5,1 GB|
 |Depolama|Uzak depolamayı kullanır.<br/>**Tek veritabanı ve elastik havuz sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Sunucusuz işlem**:<br/>5 GB-3 TB<br/>**Yönetilen örnek**: 32 GB-8 TB |Yerel SSD depolama kullanır.<br/>**Tek veritabanı ve elastik havuz sağlanan işlem**:<br/>5 GB – 4 TB<br/>**Yönetilen örnek**:<br/>32 GB-4 TB |Gerektiğinde depolamanın esnek otomatik büyümesi. 100 TB 'a kadar depolamayı destekler. Yerel ara havuz önbelleği ve yerel veri depolaması için yerel SSD depolama kullanır. Son uzun süreli veri deposu olarak Azure uzak depolama kullanır. |
-|G/ç verimlilik (yaklaşık)|**Tek veritabanı ve elastik havuz**: 500 ıOPS, vCore başına en fazla 40000 ıOPS.<br/>**Yönetilen örnek**: [Dosyanın boyutuna](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)bağlıdır.|çekirdek başına 5000 ıOPS, en fazla 200.000 maksimum ıOPS|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin IOPS iş yüküne bağlı olacaktır.|
-|Kullanılabilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](sql-database-read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](sql-database-read-scale-out.md)|
+|G/ç verimlilik (yaklaşık)|**Tek veritabanı ve elastik havuz**: 500 IOPS, vCore başına en fazla 40000 IOPS.<br/>**Yönetilen örnek**: [dosyanın boyutuna](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)bağlıdır.|çekirdek başına 5000 ıOPS, en fazla 200.000 maksimum ıOPS|Hiper ölçek, birden çok düzeyde önbelleğe alma özelliği olan çok katmanlı bir mimaridir. Etkin IOPS iş yüküne bağlı olacaktır.|
+|Erişilebilirlik|1 çoğaltma, okuma ölçeğinde çoğaltmalar yok|3 çoğaltma, 1 [okuma ölçeği çoğaltma](sql-database-read-scale-out.md),<br/>bölge yedekli yüksek kullanılabilirlik (HA)|1 okuma-yazma çoğaltması, artı 0-4 [okuma ölçekli çoğaltmalar](sql-database-read-scale-out.md)|
 |Yedeklemeler|[Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 gün (varsayılan olarak 7 gün)|Azure uzak depolama 'da anlık görüntü tabanlı yedeklemeler. Geri yükleme bu anlık görüntüleri hızlı kurtarma için kullanır. Yedeklemeler anında gerçekleşir ve işlem g/ç performansını etkilemez. Geri yükleme işlemleri hızlıdır ve veri boyutu (saatler veya günler yerine dakikalar içinde).|
 |Bellek içi|Desteklenmiyor|Desteklenen|Desteklenmiyor|
 |||
@@ -63,7 +63,7 @@ Aşağıdaki tabloda üç katman arasındaki farklar açıklanmaktadır:
 
 Sanal çekirdek tabanlı satın alma modelinin sağlanan işlem katmanında, [SQL Server için Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)kullanarak SQL veritabanı 'nda indirimli ücretler için mevcut lisanslarınızı Exchange 'e dönüştürebilirsiniz. Bu Azure avantajı, Yazılım Güvencesi kapsamındaki şirket içi SQL Server lisanslarınızı kullanarak Azure SQL veritabanında yüzde 30 ' a varan tasarruf etmenize olanak tanır.
 
-![fiyatlandırma](./media/sql-database-service-tiers/pricing.png)
+![Fiyat](./media/sql-database-service-tiers/pricing.png)
 
 Azure Hibrit Avantajı ile yalnızca SQL veritabanı altyapısının kendisi için mevcut SQL Server lisansınızı kullanarak (temel Işlem fiyatlandırması) yalnızca temeldeki Azure altyapısı için ödeme yapmayı seçebilirsiniz veya hem temel alınan altyapı hem de SQL Server için ödeme yapabilirsiniz Lisans (lisans dahil fiyatlar).
 
@@ -109,17 +109,17 @@ Aşağıdaki tablo, belirli geçiş senaryoları için rehberlik sağlar:
 
 |Geçerli hizmet katmanı|Hedef hizmet katmanı|Geçiş türü|Kullanıcı eylemleri|
 |---|---|---|---|
-|Standart|Genel amaçlı|Geni|Herhangi bir sırada geçirebilir, ancak uygun sanal çekirdek boyutlandırmayı sağlamak için gerekir *|
+|Standart|Genel amaç|Geni|Herhangi bir sırada geçirebilir, ancak uygun sanal çekirdek boyutlandırmayı sağlamak için gerekir *|
 |Premium|İş açısından kritik|Geni|Herhangi bir sırada geçirebilir, ancak uygun sanal çekirdek boyutlandırmayı sağlamak için gerekir *|
-|Standart|İş açısından kritik|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
-|İş açısından kritik|Standart|Eski sürümü yükle|Önce birincil önce geçirilmesi gerekir|
-|Premium|Genel amaçlı|Eski sürümü yükle|Önce birincil önce geçirilmesi gerekir|
-|Genel amaçlı|Premium|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
-|İş açısından kritik|Genel amaçlı|Eski sürümü yükle|Önce birincil önce geçirilmesi gerekir|
-|Genel amaçlı|İş açısından kritik|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
+|Standart|İş açısından kritik|Yükseltin|Önce ikinciye geçirilmesi gerekiyor|
+|İş açısından kritik|Standart|Eski sürüme düşür|Önce birincil önce geçirilmesi gerekir|
+|Premium|Genel amaç|Eski sürüme düşür|Önce birincil önce geçirilmesi gerekir|
+|Genel amaç|Premium|Yükseltin|Önce ikinciye geçirilmesi gerekiyor|
+|İş açısından kritik|Genel amaç|Eski sürüme düşür|Önce birincil önce geçirilmesi gerekir|
+|Genel amaç|İş açısından kritik|Yükseltin|Önce ikinciye geçirilmesi gerekiyor|
 ||||
 
-\*Standart katmandaki her 100 DTU, en az 1 sanal çekirdek gerektirir ve Premium katmandaki her 125 DTU en az 1 sanal çekirdek gerektirir.
+\* her 100 DTU Standart katmanda en az 1 sanal çekirdek gerektirir ve Premium katmandaki her 125 DTU en az 1 sanal çekirdek gerektirir.
 
 ### <a name="migrate-failover-groups"></a>Yük devretme gruplarını geçirme
 
@@ -129,7 +129,7 @@ Birden çok veritabanına sahip yük devretme gruplarının geçirilmesi, birinc
 
 Yalnızca birincil veritabanı için kullandığınız hizmet katmanını kullanarak coğrafi çoğaltma ikincil veritabanı (coğrafi-ikincil) oluşturabilirsiniz. Yüksek günlük oluşturma hızına sahip veritabanları için, birincil ile aynı işlem boyutuyla coğrafi ikincil oluşturmanız önerilir.
 
-Tek bir birincil veritabanı için elastik havuzda bir coğrafi ikincil oluşturuyorsanız, havuz `maxVCore` ayarının birincil veritabanının işlem boyutuyla eşleştiğinden emin olun. Başka bir elastik havuzda birincil için bir coğrafi bölge oluşturuyorsanız, havuzların aynı `maxVCore` ayarlara sahip olması önerilir.
+Tek bir birincil veritabanı için elastik havuzda bir coğrafi ikincil oluşturuyorsanız, havuzun `maxVCore` ayarının birincil veritabanının işlem boyutuyla eşleştiğinden emin olun. Başka bir elastik havuzda birincil için bir coğrafi-ikincil oluşturuyorsanız, havuzların aynı `maxVCore` ayarlarına sahip olmasını öneririz.
 
 ### <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>DTU tabanlı bir veritabanını sanal çekirdek tabanlı veritabanına dönüştürmek için veritabanı kopyasını kullanma
 

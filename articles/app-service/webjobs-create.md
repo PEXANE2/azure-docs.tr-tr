@@ -12,12 +12,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 66c1b62dc94fc071d3b04fc0d4e89220df74d1f8
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 748f49a3f6f36617271a1497ccac6c63821a7693
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945800"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024649"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service Web Işleri ile arka plan görevleri çalıştırma
 
@@ -38,7 +38,7 @@ Azure Işlevleri, programları ve betikleri çalıştırmak için başka bir yol
 Aşağıdaki tabloda, *sürekli* ve *tetiklenen* Web işleri arasındaki farklar açıklanmaktadır.
 
 
-|Sürekli  |Tetiklenmiş  |
+|Sürekli  |Diğini  |
 |---------|---------|
 | WebJob oluşturulduğunda hemen başlar. İşin sonlandırmasına devam etmek için program veya komut dosyası genellikle sonsuz bir döngü içinde çalışır. İş sona erdirmek için yeniden başlatabilirsiniz. | Yalnızca el ile veya bir zamanlamaya göre tetiklendiğinde başlatılır. |
 | Web uygulamasının üzerinde çalıştığı tüm örneklerde çalışır. WebJob 'u isteğe bağlı olarak tek bir örnekle kısıtlayabilirsiniz. |Yük Dengeleme için Azure 'un seçtiği tek bir örnek üzerinde çalışır.|
@@ -75,18 +75,18 @@ when making changes in one don't forget the other two.
 
     ![WebJob sayfası](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Tabloda belirtilen **WebJob** Ekle ayarlarını kullanın.
+3. Tabloda belirtilen **WebJob Ekle** ayarlarını kullanın.
 
    ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | Ayar      | Örnek değer   | Açıklama  |
    | ------------ | ----------------- | ------------ |
-   | **Ad** | myContinuousWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
-   | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
-   | **Türüyle** | Sürekli | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
+   | **Adı** | myContinuousWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
+   | **Karşıya dosya yükleme** | ConsoleApp. zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
+   | **Tür** | Sürekli | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
    | **Ölçeklendirme** | Çoklu örnek | Yalnızca sürekli WebJobs için kullanılabilir. Programın veya betiğin tüm örneklerde mı yoksa yalnızca bir örnek üzerinde mi çalışacağını belirler. Birden çok örnek üzerinde çalıştırma seçeneği ücretsiz veya paylaşılan [fiyatlandırma katmanlarına](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)uygulanmaz. | 
 
-4. **Tamam**'ı tıklatın.
+4. **Tamam**’a tıklayın.
 
    Yeni WebJob, **WebJobs** sayfasında görünür.
 
@@ -113,18 +113,18 @@ when making changes in one don't forget the other two.
 
     ![WebJob sayfası](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Tabloda belirtilen **WebJob** Ekle ayarlarını kullanın.
+3. Tabloda belirtilen **WebJob Ekle** ayarlarını kullanın.
 
    ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
    | Ayar      | Örnek değer   | Açıklama  |
    | ------------ | ----------------- | ------------ |
-   | **Ad** | myTriggeredWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir.|
-   | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
-   | **Türüyle** | Tetiklenmiş | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
-   | **Tetikleyiciler** | El ile | |
+   | **Adı** | myTriggeredWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir.|
+   | **Karşıya dosya yükleme** | ConsoleApp. zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
+   | **Tür** | Diğini | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
+   | **Tetikleyiciler** | Manual | |
 
-4.           **Tamam**'ı tıklatın.
+4. **Tamam**’a tıklayın.
 
    Yeni WebJob, **WebJobs** sayfasında görünür.
 
@@ -132,7 +132,7 @@ when making changes in one don't forget the other two.
 
 7. WebJob 'ı çalıştırmak için, listede adına sağ tıklayın ve **Çalıştır**' a tıklayın.
    
-    ![WebJob'ı çalıştır](./media/web-sites-create-web-jobs/runondemand.png)
+    ![WebJob Çalıştır](./media/web-sites-create-web-jobs/runondemand.png)
 
 ## <a name="CreateScheduledCRON"></a>Zamanlanan WebJob oluşturma
 
@@ -151,19 +151,19 @@ when making changes in one don't forget the other two.
 
    ![WebJob sayfası](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. Tabloda belirtilen **WebJob** Ekle ayarlarını kullanın.
+3. Tabloda belirtilen **WebJob Ekle** ayarlarını kullanın.
 
    ![WebJob ekleme sayfası](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
    | Ayar      | Örnek değer   | Açıklama  |
    | ------------ | ----------------- | ------------ |
-   | **Ad** | myScheduledWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
-   | **Karşıya dosya yükleme** | ConsoleApp.zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
-   | **Türüyle** | Tetiklenmiş | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
-   | **Tetikleyiciler** | Zamanlanmış | Zamanlamanın güvenilir bir şekilde çalışması için Always On özelliğini etkinleştirin. Her zaman açık, yalnızca temel, standart ve Premium fiyatlandırma katmanlarında kullanılabilir.|
-   | **CRON Ifadesi** | 0 0/20 * * * * | [Cron ifadeleri](#ncrontab-expressions) aşağıdaki bölümde açıklanmıştır. |
+   | **Adı** | myScheduledWebJob | App Service uygulaması içinde benzersiz olan bir ad. Bir harf veya sayı ile başlamalı ve "-" ve "_" dışında özel karakterler içermemelidir. |
+   | **Karşıya dosya yükleme** | ConsoleApp. zip | Yürütülebilir dosyayı veya betik dosyanızı içeren bir *. zip* dosyası ve program veya betiği çalıştırmak için gereken destekleyici dosyalar. Desteklenen yürütülebilir dosya veya betik dosyası türleri, [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
+   | **Tür** | Diğini | [WebJob türleri](#webjob-types) Bu makalenin önceki kısımlarında açıklanmıştır. |
+   | **Tetikleyiciler** | Zamanlanan | Zamanlamanın güvenilir bir şekilde çalışması için Always On özelliğini etkinleştirin. Her zaman açık, yalnızca temel, standart ve Premium fiyatlandırma katmanlarında kullanılabilir.|
+   | **CRON Ifadesi** | 0 0/20 * * * * | [Cron ifadeleri](#ncrontab-expressions) aşağıdaki bölümde açıklanmıştır. |
 
-4. **Tamam**'ı tıklatın.
+4. **Tamam**’a tıklayın.
 
    Yeni WebJob, **WebJobs** sayfasında görünür.
 
@@ -171,7 +171,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB ifadeleri
 
-Portala bir [ncronrampaifadesi](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) girebilir veya aşağıdaki örnekte olduğu gibi WebJob `settings.job` *. zip* dosyanızın köküne bir dosya ekleyebilirsiniz:
+Portala bir [NCP Ronoyb ifadesi](../azure-functions/functions-bindings-timer.md#ncrontab-expressions) girebilir veya aşağıdaki örnekte olduğu gibi WebJob *. zip* dosyanızın köküne bir `settings.job` dosyası ekleyebilirsiniz:
 
 ```json
 {

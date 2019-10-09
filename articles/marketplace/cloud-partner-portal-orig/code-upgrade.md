@@ -1,34 +1,22 @@
 ---
-title: En son platform için kod yükseltme | Azure Market
-description: Bu konu başlığında, Microsoft Dynamics 365 Operations platform sürümü için en son platform sürümüne yükseltmek açıklanmaktadır
+title: Kodu en son platforma yükseltme | Azure Marketi
+description: Bu CPP, bılgısayar makalesine bağlı olan kullanım dışı bırakıldı makalesi; "Bu konuda, Operations platform sürümü için Microsoft Dynamics 365 ' i en son Platform sürümüne nasıl yükselteceğiniz açıklanmaktadır"
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: aedc2c7474de0fe068a329eb2205e9bb08e62c3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: ea3aff527f6dbd6e6da2010529ad575440504d6a
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935276"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034948"
 ---
-# <a name="upgrading-code-to-the-latest-platform"></a>En son platform yükseltme kodu
+# <a name="upgrading-code-to-the-latest-platform"></a>Kodu en son platforma yükseltme
 
-Bu makalede, Microsoft Dynamics 365 Operations platform sürümü için en son platform sürüm yükseltme açıklanmaktadır.
+[Bulut iş ortağı portalı](https://cloudpartner.azure.com/) artık finans ve operasyon teklifleri için Dynamics 365 oluşturma ve yönetimini desteklememektedir. Bunun yerine, bu işlevsellik Microsoft [Iş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için bkz. [Yeni Dynamics 365 for Operations teklifini oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer).
 
-## <a name="overview"></a>Genel Bakış
-
-Microsoft Dynamics 365 Operations platform için aşağıdaki bileşenlerden oluşur:
-
-Dynamics 365 uygulama nesnesi sunucusu (AOS), veri yönetimi altyapısını, raporlama ve iş zekası (BI) çerçevesi, geliştirme araçları ve Analiz Hizmetleri gibi işlemleri platform ikililer için. Aşağıdaki uygulama nesne ağacının (AOT) paketleri:
-
-1. Uygulama Platformu
-2. Uygulama temeli
-3. Sınama Essentials
-
-**Önemli**: İşlem platformuna yönelik en son Dynamics 365 taşımak için işlem uygulaması, Dynamics 365 özelleştirmeler (overlayering) herhangi bir platforma ait AOT paketleri sahip olamaz. Bu kısıtlama, sorunsuz sürekli güncelleştirmeler platforma hale getirilebilir, böylece platform güncelleştirmesi 3, kullanılmaya başlandı. Çalıştırıyorsanız, platformu eski bir platform güncelleştirme 3, güncelleştirme 3, bu makalenin sonunda daha eski bir yapı bölümünden yükseltme platforma bakın.
-
-Kod yükseltme hakkında daha fazla bilgi için lütfen bakın [burada](https://docs.microsoft.com/dynamics365/operations/dev-itpro/migration-upgrade/upgrade-latest-platform-update).
+Yeni bir Dynamics 365 for Operations teklifi oluşturmadan önce, [Iş Ortağı Merkezi hesabı oluştur](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ' u okuyup **genel bakış** sayfası seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/directory) açmanız gerekir. Teklifinizi oluşturmak için [Yeni Dynamics 365 for Operations teklifini oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer) bölümündeki yönergeleri izleyin.

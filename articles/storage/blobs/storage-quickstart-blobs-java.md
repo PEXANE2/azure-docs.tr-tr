@@ -7,12 +7,12 @@ ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 87bae74265c4d3abe7301af35888561fcd256717
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c88202c41a7ee6b6d215bd185aeca580bcc88eef
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71971984"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030456"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>Hızlı başlangıç: Java SDK 'Sı için Azure Blob depolama istemci kitaplığı V8
 
@@ -209,4 +209,4 @@ sourceFile.deleteOnExit();
 Bu makalede, Java kullanarak dosyaları yerel bir disk ve Azure Blob depolama arasında aktarmayı öğrendiniz. Java ile çalışma hakkında daha fazla bilgi edinmek için GitHub kaynak kod depomuza devam edin.
 
 > [!div class="nextstepaction"]
-> Java [API başvurusu](https://docs.microsoft.com/java/azure/)@no__t-[Java Için 1 kod örnekleri](../common/storage-samples-java.md)
+> Java [API başvurusu](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)@no__t-[Java Için 1 kod örnekleri](../common/storage-samples-java.md)

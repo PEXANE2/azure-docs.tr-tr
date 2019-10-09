@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: df9e6e3a9116b9a4490d8847e9a9d3e9e112f4f7
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 10/03/2019
+ms.openlocfilehash: 16b0fdcbae51b30e14fbf7ea4d98699dfaf19804
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098786"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035748"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -24,8 +24,8 @@ Betik eylemleri, Azure Marketi 'Nde de HDInsight uygulaması olarak yayımlanabi
 
 Etki alanına katılmış bir HDInsight kümesi için, kümeyle birlikte betik eylemlerini kullandığınızda gereken iki Apache ambarı izni vardır:
 
-* **AMBARI. \_ÖZELKOMUTU\_ÇALIŞTIRIN**. Varsayılan olarak, ambarı yönetici rolü bu izne sahiptir.
-* **KÜME. \_ÖZELKOMUTU\_ÇALIŞTIRIN**. HDInsight kümesi Yöneticisi ve ambarı yöneticisinin bu izni varsayılan olarak vardır.
+* **Ambarı. @ No__t-1CUSTOM @ no__t-2KOMUTUNU ÇALıŞTıRıN**. Varsayılan olarak, ambarı yönetici rolü bu izne sahiptir.
+* **Küme. @ No__t-1CUSTOM @ no__t-2KOMUTUNU ÇALıŞTıRıN**. HDInsight kümesi Yöneticisi ve ambarı yöneticisinin bu izni varsayılan olarak vardır.
 
 Etki alanına katılmış HDInsight ile izinlerle çalışma hakkında daha fazla bilgi için bkz. [Kurumsal güvenlik paketi HDInsight kümelerini yönetme](./domain-joined/apache-domain-joined-manage.md).
 
@@ -48,7 +48,7 @@ Bir betik eylemi, HDInsight kümesindeki düğümlerde çalışan Bash betiktir.
 
     * Normal kümeler için:
 
-      * ADLS 1.: Hizmet sorumlusu HDInsight 'ın erişim için kullandığı Data Lake Storage, betikte okuma erişiminin olması gerekir. Data Lake Storage 1. depolanan betiklerin URI biçimi `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
+      * ADLS 1.: hizmet sorumlusu HDInsight 'ın, Data Lake Storage erişmek için kullandığı hizmet, betikte okuma erişimine sahip olmalıdır. Data Lake Storage 1. depolanan betiklerin URI biçimi `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` ' dır.
 
       * HDInsight kümesi için birincil veya ek depolama hesabı olan bir Azure depolama hesabındaki blob. HDInsight, küme oluşturma sırasında bu tür depolama hesaplarının her ikisine de erişim izni verilir.
 
@@ -144,11 +144,11 @@ Betik eylemi betikleri aşağıdaki yardımcı programlar aracılığıyla kulla
 
 HDInsight, HDInsight kümelerine aşağıdaki bileşenleri yüklemek için komut dosyaları sağlar:
 
-| Name | Komut Dosyası |
+| Adı | Komut Dosyası |
 | --- | --- |
-| Azure Depolama hesabı ekleme |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Bkz. [HDInsight 'a ek depolama hesapları ekleme](hdinsight-hadoop-add-storage.md). |
-| Hue Yükleme |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Bkz. [HDInsight Hadoop kümelerinde ton 'U yükleyip kullanma](hdinsight-hadoop-hue-linux.md). |
-| Giraph Yükleme |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Bkz. [HDInsight Hadoop kümelerine Apache Giraph 'Yi Install](hdinsight-hadoop-giraph-install-linux.md). |
+| Azure depolama hesabı ekleme |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Bkz. [HDInsight 'a ek depolama hesapları ekleme](hdinsight-hadoop-add-storage.md). |
+| Hue yükleme |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Bkz. [HDInsight Hadoop kümelerinde ton 'U yükleyip kullanma](hdinsight-hadoop-hue-linux.md). |
+| Giraph 'yi yükler |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Bkz. [HDInsight Hadoop kümelerine Apache Giraph 'Yi Install](hdinsight-hadoop-giraph-install-linux.md). |
 | Hive kitaplıklarını Önyükle |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Bkz. [HDInsight kümenizi oluştururken özel Apache Hive kitaplıkları ekleme](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Küme oluşturma sırasında betik eylemi kullanma
@@ -157,13 +157,9 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Azure portal küme oluşturma sırasında bir betik eylemi kullanın
 
-1. [Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasını kullanarak HDInsight 'ta kümeler ayarlama](hdinsight-hadoop-provision-linux-clusters.md)bölümünde açıklandığı gibi bir küme oluşturmaya başlayın. Küme oluşturma sırasında bir __küme Özet__ sayfasına geldiğinizde. __Küme Özeti__ sayfasında, __Gelişmiş ayarlar__için __Düzenle__ bağlantısını seçin.
+1. [Azure Portal kullanarak HDInsight 'Ta Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md)bölümünde açıklandığı gibi bir küme oluşturmaya başlayın. Küme oluşturma sırasında 6. adım, **betik eylemleri**' ne ulaşır. **Isteğe bağlı** >  **+ Yeni Gönder**' e gidin.
 
-    ![Küme gelişmiş ayarlarını Azure portal](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
-
-1. __Gelişmiş ayarlar__ bölümünde __betik eylemleri__' ni seçin. __Betik eylemleri__ bölümünde __+ Yeni Gönder__' i seçin.
-
-    ![Portal betik eylemleri yeni gönder](./media/hdinsight-hadoop-customize-cluster-linux/add-new-script-action.png)
+    ![Azure portal kümesi betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-classic-script-action.png)
 
 1. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
 
@@ -171,12 +167,12 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
     Aşağıdaki tablo, formundaki öğeleri açıklar:
 
-    | Özellik | Value |
+    | Özellik | Değer |
     | --- | --- |
-    | Bir betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, belirtilen betiklerin birini seçin. |
-    | Name |Betik eylemi için bir ad belirtin. |
-    | Bash betiği URI'si |Betiğin URI 'sini belirtin. |
-    | Baş/çalışan/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Baş**, **çalışan**veya **ZooKeeper**. |
+    | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, belirtilen betiklerin birini seçin. |
+    | Adı |Betik eylemi için bir ad belirtin. |
+    | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
+    | Baş/çalışan/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker**veya **ZooKeeper**. |
     | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
 
     Komut dosyasının ölçeklendirme işlemleri sırasında uygulandığından emin olmak için __bu betiği Sürdür eylem__ girişini kullanın.
@@ -185,7 +181,7 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
     ![HDInsight birden çok betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts-actions.png)
 
-    Betikleri eklemeyi tamamladığınızda, __küme Özeti__ bölümüne geri dönmek için __Seç__ düğmesini ve sonra __İleri__ düğmesini seçin.
+    Betikler ekleme işiniz bittiğinde, __küme Özeti__ bölümüne devam etmek için __Seç__ düğmesini ve sonra __İleri__ düğmesini seçin.
 
 1. Kümeyi oluşturmak için __küme Özeti__ seçiminden __Oluştur__ ' u seçin.
 
@@ -209,7 +205,7 @@ Bir şablonu dağıtma hakkında daha fazla bilgi alın:
 
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
+* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Azure PowerShell kümeden küme oluşturma sırasında betik eylemi kullan
 
@@ -235,9 +231,7 @@ Bu bölümde, çalışan bir kümeye betik eylemlerinin nasıl uygulanacağı a�
 
 [Azure Portal](https://portal.azure.com)gidin:
 
-1. Sol menüden **tüm hizmetler**' i seçin.
-
-1. **Analiz**altında **HDInsight kümeleri**' ni seçin.
+1. Sol menüden **tüm hizmetler** >  **analiz** > **HDInsight kümelerine**gidin.
 
 1. Listeden, varsayılan görünümü açan kümenizi seçin.
 
@@ -253,12 +247,12 @@ Bu bölümde, çalışan bir kümeye betik eylemlerinin nasıl uygulanacağı a�
 
     Aşağıdaki tablo, formundaki öğeleri açıklar:
 
-    | Özellik | Value |
+    | Özellik | Değer |
     | --- | --- |
-    | Bir betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, bir belirtilen betiği seçin. |
-    | Name |Betik eylemi için bir ad belirtin. |
-    | Bash betiği URI'si |Betiğin URI 'sini belirtin. |
-    | HEAD/Worker/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Baş**, **çalışan**veya **ZooKeeper**. |
+    | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, bir belirtilen betiği seçin. |
+    | Adı |Betik eylemi için bir ad belirtin. |
+    | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
+    | Baş/çalışan/Zookeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker**veya **ZooKeeper**. |
     | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
 
     Komut dosyasının ölçeklendirme işlemleri sırasında uygulandığından emin olmak için __bu betiği Sürdür eylem__ girişini kullanın.
@@ -306,11 +300,11 @@ Başlamadan önce Azure CLı 'yi yüklediğinizden ve yapılandırmadığınızd
     azure hdinsight script-action create <clustername> -g <resourcegroupname> -n <scriptname> -u <scriptURI> -t <nodetypes>
     ```
 
-    Bu komutun parametrelerini atlarsanız sizden sorulur. İle `-u` belirttiğiniz betik parametreleri kabul ederse, `-p` parametresini kullanarak belirtebilirsiniz.
+    Bu komutun parametrelerini atlarsanız sizden sorulur. @No__t-0 ile belirttiğiniz betik parametreleri kabul ediyorsa, bunları `-p` parametresini kullanarak belirtebilirsiniz.
 
-    Geçerli düğüm türleri `headnode`, `workernode`, ve `zookeeper`. Betiğin birkaç düğüm türüne uygulanması gerekiyorsa, noktalı `;`virgülle ayrılmış türleri belirtin. Örneğin: `-n headnode;workernode`.
+    Geçerli düğüm türleri `headnode`, `workernode` ve `zookeeper` ' dir. Komut dosyasının birkaç düğüm türüne uygulanması gerekiyorsa, noktalı virgülle ayrılmış türleri @no__t belirtin-0. Örneğin, `-n headnode;workernode`.
 
-    Betiği kalıcı hale getirmek için, `--persistOnSuccess`ekleyin. Ayrıca, kullanarak `azure hdinsight script-action persisted set`betiği daha sonra da kalıcı hale getirebilirsiniz.
+    Betiği kalıcı hale getirmek için @no__t ekleyin-0. Betiği daha sonra `azure hdinsight script-action persisted set` kullanarak da kalıcı hale getirebilirsiniz.
 
     İş bittikten sonra aşağıdaki metin gibi bir çıktı alırsınız:
 
@@ -334,11 +328,9 @@ Bir kümeye betikleri uygulamak üzere .NET SDK kullanmanın bir örneği için 
 
 ### <a name="the-azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-1. Sol menüden **tüm hizmetler**' i seçin.
-
-1. **Analiz**altında **HDInsight kümeleri**' ni seçin.
+1. Sol menüden **tüm hizmetler** > **analiz** > **HDInsight kümelerine**gidin.
 
 1. Listeden, varsayılan görünümü açan kümenizi seçin.
 
@@ -358,7 +350,7 @@ Bir kümeye betikleri uygulamak üzere .NET SDK kullanmanın bir örneği için 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-| Cmdlet | İşlev |
+| cmdlet | İşlev |
 | --- | --- |
 | `Get-AzHDInsightPersistedScriptAction` |Kalıcı betik eylemleriyle ilgili bilgileri alın. |
 | `Get-AzHDInsightScriptActionHistory` |Belirli bir betiğin kümesine veya ayrıntılarına uygulanan betik eylemlerinin geçmişini alın. |
@@ -366,7 +358,7 @@ Bir kümeye betikleri uygulamak üzere .NET SDK kullanmanın bir örneği için 
 | `Remove-AzHDInsightPersistedScriptAction` |Kalıcı bir betik eylemini geçici bir eyleme indirgeyin. |
 
 > [!IMPORTANT]  
-> `Remove-AzHDInsightPersistedScriptAction`bir komut dosyası tarafından gerçekleştirilen eylemleri geri almaz. Bu cmdlet yalnızca kalıcı bayrağını kaldırır.
+> `Remove-AzHDInsightPersistedScriptAction` bir komut dosyası tarafından gerçekleştirilen eylemleri geri almaz. Bu cmdlet yalnızca kalıcı bayrağını kaldırır.
 
 Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'leri kullanmayı göstermektedir.
 
@@ -374,7 +366,7 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 
 ### <a name="the-azure-classic-cli"></a>Klasik Azure CLı
 
-| Cmdlet | İşlev |
+| cmdlet | İşlev |
 | --- | --- |
 | `azure hdinsight script-action persisted list <clustername>` |Kalıcı betik eylemlerinin bir listesini alın. |
 | `azure hdinsight script-action persisted show <clustername> <scriptname>` |Belirli bir kalıcı betik eylemiyle ilgili bilgileri alın. |
@@ -384,7 +376,7 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 | `azure hdinsight script-action persisted delete <clustername> <scriptname>` |Kalıcı bir betik eylemini geçici bir eyleme indirgeyin. |
 
 > [!IMPORTANT]  
-> `azure hdinsight script-action persisted delete`bir komut dosyası tarafından gerçekleştirilen eylemleri geri almaz. Bu cmdlet yalnızca kalıcı bayrağını kaldırır.
+> `azure hdinsight script-action persisted delete` bir komut dosyası tarafından gerçekleştirilen eylemleri geri almaz. Bu cmdlet yalnızca kalıcı bayrağını kaldırır.
 
 ### <a name="the-hdinsight-net-sdk"></a>HDInsight .NET SDK 'Sı
 
@@ -403,8 +395,8 @@ HDInsight hizmetinde iki tür açık kaynaklı bileşen mevcuttur:
 
   * [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager.
   * Hive sorgu dili [Hiveql](https://cwiki.apache.org/confluence/display/Hive/LanguageManual).
-  * [Apache Mahout](https://mahout.apache.org/). 
-    
+  * [Apache Mahout](https://mahout.apache.org/).
+
     [HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri olan](hdinsight-component-versioning.md) küme bileşenlerinin tam listesi mevcuttur
 
 * **Özel bileşenler**. Kümenin bir kullanıcısı olarak, kuruluşunuzda bulunan veya sizin tarafınızdan oluşturulan herhangi bir bileşeni iş yükünüze yükleyebilir veya kullanabilirsiniz.
@@ -430,7 +422,7 @@ Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntülemek içi
 
 ### <a name="the-apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimi
 
-1. Tarayıcınızda öğesine https://CLUSTERNAME.azurehdinsight.net gidin. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.
+1. Tarayıcınızda https://CLUSTERNAME.azurehdinsight.net ' a gidin. **CLUSTERNAME** değerini HDInsight kümenizin adıyla değiştirin.
 
     İstendiğinde, küme için yönetici hesap adı, **yönetici**ve parolayı girin. Yönetici kimlik bilgilerini bir Web formunda yeniden girmeniz gerekebilir.
 
@@ -438,7 +430,7 @@ Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntülemek içi
 
     ![Ops seçiliyken ambarı Web UI çubuğu](./media/hdinsight-hadoop-customize-cluster-linux/hdi-apache-ambari-nav.png)
 
-3. **İşlemler** sütununda **customscriptaction çalıştıran\_** girişleri bulun. Bu girişler, betik eylemleri çalıştırıldığında oluşturulur.
+3. **İşlemler** sütununda **@ no__t-1customscriptaction** çalıştıran girişleri bulun. Bu girişler, betik eylemleri çalıştırıldığında oluşturulur.
 
     ![Apache ambarı betik eylem işlemleri](./media/hdinsight-hadoop-customize-cluster-linux/ambari-script-action.png)
 
@@ -448,25 +440,25 @@ Betik eylemleri tarafından günlüğe kaydedilen bilgileri görüntülemek içi
 
 Küme oluşturma bir betik hatası nedeniyle başarısız olursa Günlükler küme depolama hesabında tutulur.
 
-* Depolama günlükleri ' nde `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`kullanılabilir.
+* Depolama günlükleri `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE` ' da kullanılabilir.
 
     ![Betik eylemi günlükleri](./media/hdinsight-hadoop-customize-cluster-linux/script-action-logs-in-storage.png)
 
     Bu dizin altında Günlükler, **baş düğümüne**, **çalışan düğümü**ve **Zookeeper düğümü**için ayrı olarak düzenlenir. Aşağıdaki örneklere bakın:
 
-    * **Headnode**:`<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
+    * **Headnode**: `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
 
-    * **Çalışan düğümü**:`<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
+    * **Çalışan düğümü**: `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
 
-    * **Zookeeper düğümü**:`<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+    * **Zookeeper düğümü**: `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
-* Karşılık gelen konağın tüm **stdout** ve **stderr** depolama hesabına yüklenir. Her betik eylemi için bir **output-\*. txt** ve **Errors-\*. txt** vardır. **Output-*. txt** dosyası, konakta çalıştırılan betiğin URI 'si hakkında bilgiler içerir. Aşağıdaki metin bu bilgilere bir örnektir:
+* Karşılık gelen konağın tüm **stdout** ve **stderr** depolama hesabına yüklenir. Her betik eylemi için bir **çıkış @no__t -1. txt** ve **Errors-@no__t -3. txt** . **Output-*. txt** dosyası, konakta çalıştırılan betiğin URI 'si hakkında bilgiler içerir. Aşağıdaki metin bu bilgilere bir örnektir:
 
         'Start downloading script locally: ', u'https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh'
 
 * Yinelenen olarak aynı ada sahip bir betik eylemi kümesi oluşturmanız mümkündür. Bu durumda, ilgili günlükleri **Tarih** klasörü adı temelinde ayırabilirsiniz. Örneğin, bir kümenin klasör yapısı, farklı tarihlerde oluşturulan **MyCluster**, aşağıdaki günlük girdilerine benzer şekilde görünür:
 
-    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04``\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
+    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
 * Aynı günde aynı ada sahip bir betik eylemi kümesi oluşturursanız, ilgili günlük dosyalarını tanımlamak için benzersiz öneki kullanabilirsiniz.
 
@@ -492,7 +484,7 @@ ImportError: cannot import name BlobService
 
 __Neden__. Bu hata, HDInsight kümesine dahil edilen Python Azure depolama istemcisini yükseltirseniz oluşur. HDInsight, Azure Storage Client 0.20.0 gerektirir.
 
-__Çözümleme__. Bu hatayı çözmek için kullanarak `ssh`her bir küme düğümüne el ile bağlanın. Doğru depolama istemci sürümünü yeniden yüklemek için aşağıdaki komutu çalıştırın:
+__Çözümleme__. Bu hatayı çözmek için `ssh` kullanarak her bir küme düğümüne el ile bağlanın. Doğru depolama istemci sürümünü yeniden yüklemek için aşağıdaki komutu çalıştırın:
 
 ```bash
 sudo pip install azure-storage==0.20.0

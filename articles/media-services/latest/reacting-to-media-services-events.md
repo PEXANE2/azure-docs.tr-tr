@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
-ms.openlocfilehash: d8cb8fdebb5a7e4bcbc9f979c98085e90ebd4c68
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 07ad39bdcec6e4b00d3b47553930fc05694ca2af
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147150"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026626"
 ---
 # <a name="handling-event-grid-events"></a>Event Grid olaylarını işleme
 
@@ -40,7 +40,7 @@ Media Services olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı 
 * Olayları belirli bir olayla sınırlamak için "konu" önekini ve sonek eşleşmelerini kullanın.
 
 > [!NOTE]
-> Olaylar Event Grid [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)konusuna tabidir. API 'Leri kullanarak olay bildirimleri almak istiyorsanız, [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/ContentProtection/BasicAESClearKey) veya [Java SDK](https://github.com/Azure-Samples/media-services-v3-java/tree/master/ContentProtection/BasicAESClearKey)ile olayları kullanma örneklerine bakın.
+> Olaylar Event Grid [hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)konusuna tabidir. API 'Leri kullanarak olay bildirimleri almak istiyorsanız, [.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet) veya [Java SDK](https://github.com/Azure-Samples/media-services-v3-java)ile olayları kullanma örneklerine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 8e9e1189c3eb9de273926645ad0d4cfde5ba1c49
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 483ac9380fa8d58f294112cb6c80e0393fa01589
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260034"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028984"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
@@ -23,15 +23,15 @@ ms.locfileid: "71260034"
 
 GitHub eylemlerinde, bir [iş akışı](https://help.github.com/articles/about-github-actions#workflow) GitHub deponuzda tanımladığınız otomatikleştirilmiş bir işlemdir. Bu süreç, GitHub 'da işlevler uygulama projenizi nasıl oluşturup dağıtacağınızı gösterir. 
 
-Bir iş akışı, deponuzdaki `/.github/workflows/` yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir. 
+Bir iş akışı, deponuzdaki `/.github/workflows/` yolundaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir. 
 
 Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır: 
 
-| `Section` | Görevler |
+| Section | Görevler |
 | ------- | ----- |
-| **Kimlik Doğrulaması** | <ol><li>Hizmet sorumlusu tanımlayın.</li><li>GitHub gizli dizisi oluşturun.</li></ol>|  
-| **Derleme** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
-| **Dağıt** | <ol><li>İşlev uygulamasını dağıtın.</li></ol>| 
+| **Kimlik doğrulaması** | <ol><li>Hizmet sorumlusu tanımlayın.</li><li>Yayımlama profilini indirin.</li><li>GitHub gizli dizisi oluşturun.</li></ol>|
+| **Derlemeyi** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
+| **Dağıtma** | <ol><li>İşlev uygulamasını dağıtın.</li></ol>|
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
@@ -43,16 +43,27 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 Bu örnekte, kaynak içindeki yer tutucuları abonelik KIMLIĞINIZ, kaynak grubunuz ve işlev uygulaması adıyla değiştirin. Çıktı, işlev uygulamanıza erişim sağlayan rol atama kimlik bilgileridir. GitHub 'dan kimlik doğrulamak için kullanabileceğiniz bu JSON nesnesini kopyalayın.
 
+> [!NOTE]
+> Kimlik doğrulaması için Yayımlama profili kullanmaya karar verirseniz bir hizmet sorumlusu oluşturmanız gerekmez.
+
 > [!IMPORTANT]
 > En az erişim sağlamak her zaman iyi bir uygulamadır. Bu nedenle, önceki örnekteki kapsamın tüm kaynak grubu değil, belirli işlev uygulamasıyla sınırlı olması neden olur.
 
+## <a name="download-the-publishing-profile"></a>Yayımlama profilini indir
+
+Uygulamanızın **genel bakış** sayfasına gidip **Yayımlama profili al**' a tıklayarak functionapp sitenizin yayımlama profilini indirebilirsiniz.
+
+   ![Yayımlama profilini indir](media/functions-how-to-github-actions/get-publish-profile.png)
+
+Dosyanın içeriğini kopyalayın.
+
 ## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
 
-1. [GitHub](https://github.com)'da deponuza gözatıp **Ayarlar** > **gizli** > dizileri**Yeni bir gizli dizi Ekle**' yi seçin.
+1. [GitHub](https://github.com)'da deponuza gözatıp **ayarları** > **gizli**dizileri  >  ' ü seçerek**Yeni bir parola ekleyin**.
 
-    ![Gizli dizi Ekle](media/functions-how-to-github-actions/add-secret.png)
+   ![Gizli dizi Ekle](media/functions-how-to-github-actions/add-secret.png)
 
-1. Değer `AZURE_CREDENTIALS` için **ad** ve kopyalanmış komut çıktısı için kullanın,ardından **gizli dizi Ekle**' yi seçin. 
+1. Daha sonra **gizli dizi Ekle**' yi seçerseniz, **ad** ve kopyalanmış komut **çıktısı için @no__t**-0 kullanın. Yayımlama profili kullanıyorsanız, **ad** için `SCM_CREDENTIALS` ve **değer**için dosya içeriği kullanın.
 
 GitHub artık Azure 'daki işlev uygulamanıza kimlik doğrulaması yapabilir.
 
@@ -195,7 +206,7 @@ Kodunuzu bir işlev uygulamasına dağıtmak için `Azure/functions-action` eyle
 |_**yuva adı**_ | Seçim Dağıtmak istediğiniz [dağıtım yuvasının](functions-deployment-slots.md) adı. Yuva, işlev uygulamanızda zaten tanımlanmış olmalıdır. |
 
 
-Aşağıdaki örnek, öğesinin 1. `functions-action`sürümünü kullanır:
+Aşağıdaki örnek @no__t 1 sürümünü kullanır-0:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -207,7 +218,7 @@ Aşağıdaki örnek, öğesinin 1. `functions-action`sürümünü kullanır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm iş akışı. YAML 'yi görüntülemek için, adında bulunan [Azure GitHub eylemleri iş akışı örnekleri](https://github.com/Azure/actions-workflow-samples) `functionapp` deposunda bulunan dosyalardan birine bakın. Bu örnekleri, iş akışınız için bir başlangıç noktası olarak kullanabilirsiniz.
+Tam bir Workflow. YAML 'yi görüntülemek için, adında `functionapp` olan [Azure GitHub Actions Workflow örnekleri](https://github.com/Azure/actions-workflow-samples) deposunda bulunan dosyalardan birine bakın. Bu örnekleri, iş akışınız için bir başlangıç noktası olarak kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
 > [GitHub eylemleri hakkında daha fazla bilgi edinin](https://help.github.com/en/articles/about-github-actions)

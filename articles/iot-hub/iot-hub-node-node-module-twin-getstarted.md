@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 3796017af643c993871757482ed17d1765cd6494
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: e33987d382a2afd93644a413084339fcd330d2e2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802407"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029708"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub Module kimliği ve Module ikizi (node. js) ile çalışmaya başlama
 
@@ -38,7 +38,7 @@ Bu öğreticinin sonunda iki Node. js uygulamanız vardır:
 
 * Etkin bir Azure hesabı. (Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturabilirsiniz.)
 
-## <a name="create-an-iot-hub"></a>IoT hub oluşturma
+## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -54,9 +54,9 @@ Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve
 
 1. Kodunuzu barındıracak bir dizin oluşturun.
 
-2. Bu dizinin içinde ilk olarak **NPM init-y** ' yi çalıştırarak boş bir Package. json ' ı varsayılan olarak oluşturun. Bu, kodunuzun proje dosyasıdır.
+2. Bu dizinin içinde ilk olarak **NPM init-y** ' yi çalıştırarak boş bir Package. json ' ı varsayılan olarak oluşturun. Bu, kodunuzun proje dosyasıdır.
 
-3. Service SDK 'sını **** node_modules alt dizinine yüklemek için **NPM Install\@-S Azure-ıothub modules-Preview** ' i çalıştırın.
+3. Service SDK 'sını **node_modules** alt dizinine yüklemek için **NPM Install-S Azure-ıothub @ no__t-1modules-Preview** ' i çalıştırın.
 
     > [!NOTE]
     > Node_modules alt dizin adı, "bir düğüm kitaplığı" demek için Word modülünü kullanır. Buradaki terim IoT Hub modüllerle hiçbir şey yapmaz.
@@ -118,7 +118,7 @@ Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve
 
     ```
 
-Bu uygulama, **MYFIRSTDEVICE** kimliği ile bir cihaz kimliği ve myfirstdevice **adlı cihaz**altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. (Bu modül kimliği, kimlik kayıt defterinde zaten varsa, kod yalnızca mevcut modül bilgilerini alır.) Bu durumda uygulama, bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
+Bu uygulama, **MYFIRSTDEVICE** kimliği ile bir cihaz kimliği ve myfirstdevice **adlı cihaz**altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. (Bu modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan modül bilgilerini alır.) Uygulama daha sonra bu kimliğin birincil anahtarını görüntüler. IoT hub'ınıza bağlanmak için sanal modül uygulamasında bu anahtarı kullanırsınız.
 
 Node Add. js kullanarak bunu çalıştırın. Bu, size cihaz kimliğiniz için bir bağlantı dizesi ve modül Kimliğiniz için bir tane sağlar.
 
@@ -133,7 +133,7 @@ Bu bölümde, sanal cihazınızda modül ikizi bildirilen özelliklerini güncel
 
    ![Azure portalı modül ayrıntısı](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. Yukarıdaki adımda yaptığınız gibi, cihaz kodunuz için bir dizin oluşturun ve NPM kullanarak aygıtı başlatın ve cihaz SDK 'sını (**NPM Install-S Azure-IoT-Device-AMQP\@modülleri-Preview**) yükleyebilirsiniz.
+2. Yukarıdaki adımda yaptığınız gibi, cihaz kodunuz için bir dizin oluşturun ve NPM kullanarak aygıtı başlatın ve cihaz SDK 'sını (**NPM Install-S Azure-IoT-Device-AMQP @ no__t-1modüller-önizleme**) yükleyebilirsiniz.
 
    > [!NOTE]
    > NPM install komutu yavaş olabilir. Hasta olun, paket deposundan birçok kod çekiliyor.
@@ -192,7 +192,7 @@ Bu bölümde, sanal cihazınızda modül ikizi bildirilen özelliklerini güncel
     });
     ```
 
-4. Şimdi, **ikizi. js komut düğümünü**kullanarak bunu çalıştırın.
+4. Şimdi, **ikizi. js komut düğümünü**kullanarak bunu çalıştırın.
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js

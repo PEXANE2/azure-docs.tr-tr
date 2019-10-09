@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845595"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028263"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Bulutta yeni DBA: Azure SQL veritabanı 'nda tek ve havuza alınmış veritabanlarınızı yönetme
 
@@ -130,7 +130,7 @@ Elden çıkarmada, uygulamanız için en uygun bağlantı kuruluşunu sağlamak 
 
 Bir güvenlik duvarı SQL veritabanı sunucunuza yalnızca belirli varlıkların erişmesine izin vererek, dış bir varlıktan sunucunuza erişimi engeller. Varsayılan olarak, SQL veritabanı sunucusu içindeki tüm bağlantılara ve veritabanlarına, diğer Azure hizmetlerinden gelen bağlantılar dışında izin verilmez. Bir güvenlik duvarı kuralıyla, bu bilgisayarın IP adresine güvenlik duvarı üzerinden izin vererek, yalnızca onayladığınız varlıklara (örneğin, bir geliştirici makinesi) erişimi açabilirsiniz. Ayrıca, SQL veritabanı sunucusuna erişime izin vermek istediğiniz bir IP aralığı belirtmenize olanak tanır. Örneğin, kuruluşunuzdaki geliştirici makinesi IP adresleri, güvenlik duvarı ayarları sayfasında bir Aralık belirtilerek bir kerede eklenebilir.
 
-Sunucu düzeyinde veya veritabanı düzeyinde güvenlik duvarı kuralları oluşturabilirsiniz. Sunucu düzeyi IP güvenlik duvarı kuralları Azure portal kullanılarak veya SSMS ile oluşturulabilir. Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralı ayarlama hakkında daha fazla bilgi edinmek için bkz.: [SQL VERITABANıNDA IP güvenlik duvarı kuralları oluşturun](sql-database-security-tutorial.md#create-firewall-rules).
+Sunucu düzeyinde veya veritabanı düzeyinde güvenlik duvarı kuralları oluşturabilirsiniz. Sunucu düzeyi IP güvenlik duvarı kuralları Azure portal kullanılarak veya SSMS ile oluşturulabilir. Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralı ayarlama hakkında daha fazla bilgi edinmek için bkz. [SQL veritabanı 'NDA IP güvenlik duvarı kuralları oluşturma](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Hizmet uç noktaları
 
@@ -138,7 +138,7 @@ Varsayılan olarak, SQL veritabanınız "Azure hizmetlerinin sunucuya erişmesin
 
 Hizmet uç noktaları (o), kritik Azure kaynaklarınızı yalnızca Azure 'daki özel sanal ağınıza sunmanıza olanak tanır. Bunu yaparak kaynaklarınıza genel erişimi ortadan kaldırabilirsiniz. Azure ile sanal ağınız arasındaki trafik Azure omurga ağında kalır. Zorunlu olmadan Zorlamalı tünel paket yönlendirmesi edinirsiniz. Sanal ağınız, internet trafiğini kuruluşunuza ve Azure hizmet trafiğine aynı rotaya göre devam etmeye zorlar. Hizmet uç noktaları ile, paketlerin sanal ağınızdan Azure omurga ağı üzerindeki hizmetine doğrudan akışı nedeniyle bunu iyileştirebilirsiniz.
 
-![Sanal ağ hizmet uç noktaları](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
+![VNet hizmet uç noktaları](./media/sql-database-manage-after-migration/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Ayrılmış IP’ler
 
@@ -152,11 +152,11 @@ Bağlantı noktası 1433. SQL veritabanı bu bağlantı noktası üzerinden ilet
 
 #### <a name="sql-database-auditing"></a>SQL veritabanı denetimi
 
-SQL veritabanı ile veritabanı olaylarını izlemek için denetim özelliğini açabilirsiniz. [SQL veritabanı denetimi](sql-database-auditing.md) , veritabanı olaylarını kaydeder ve bunları Azure Storage hesabınızdaki bir denetim günlüğü dosyasına yazar. Denetim, özellikle olası güvenlik ve ilke ihlalleriyle ilgili Öngörüler elde etmek, mevzuata uyumluluklarını sağlamak için yararlıdır. Bu, Denetim gerektiren belirli olay kategorilerini tanımlamanıza ve yapılandırmanıza ve veritabanınızda gerçekleşen olaylara genel bir bakış almak için önceden yapılandırılmış raporları ve bir panoyu almanızı sağlar. Bu denetim ilkelerini veritabanı düzeyinde ya da sunucu düzeyinde uygulayabilirsiniz. Sunucu/veritabanınız için denetimin nasıl etkinleştirileceği hakkında bir kılavuz, bkz.: [SQL veritabanı denetimini etkinleştirin](sql-database-security-tutorial.md#enable-security-features).
+SQL veritabanı ile veritabanı olaylarını izlemek için denetim özelliğini açabilirsiniz. [SQL veritabanı denetimi](sql-database-auditing.md) , veritabanı olaylarını kaydeder ve bunları Azure Storage hesabınızdaki bir denetim günlüğü dosyasına yazar. Denetim, özellikle olası güvenlik ve ilke ihlalleriyle ilgili Öngörüler elde etmek, mevzuata uyumluluklarını sağlamak için yararlıdır. Bu, Denetim gerektiren belirli olay kategorilerini tanımlamanıza ve yapılandırmanıza ve veritabanınızda gerçekleşen olaylara genel bir bakış almak için önceden yapılandırılmış raporları ve bir panoyu almanızı sağlar. Bu denetim ilkelerini veritabanı düzeyinde ya da sunucu düzeyinde uygulayabilirsiniz. Sunucu/veritabanınız için denetimin nasıl etkinleştirileceği hakkında bir kılavuz, bkz. [SQL veritabanı denetimini etkinleştirme](sql-database-security-tutorial.md#enable-security-features).
 
 #### <a name="threat-detection"></a>Tehdit algılama
 
-[Tehdit algılama](sql-database-threat-detection.md)sayesinde, çok kolay bir şekilde denetim aracılığıyla keşfedilen güvenlik veya ilke ihlalleri üzerinde işlem yapma imkanına sahip olursunuz. Sisteminizdeki olası tehditleri veya ihlalleri ele almak için bir güvenlik uzmanı olmanız gerekmez. Tehdit algılama için SQL ekleme algılaması gibi bazı yerleşik yetenekler de vardır. SQL ekleme, verileri değiştirme veya ele almanın bir yoludur ve genel olarak bir veritabanı uygulamasına saldırmaya yönelik oldukça yaygın bir yoldur. Tehdit algılama, olası güvenlik açıklarını ve SQL ekleme saldırılarını ve anormal veritabanı erişim düzenlerini (alışılmadık bir konumdan veya bilmediğiniz bir sorumlu ile erişim gibi) algılayan birden çok algoritma kümesini çalıştırır. Veritabanında bir tehdit algılanırsa Güvenlik ofisleri veya diğer belirlenen yöneticiler bir e-posta bildirimi alır. Her bildirim şüpheli etkinliğin ayrıntılarını ve tehdidi daha fazla araştırıp azaltmaya ilişkin önerileri sağlar. Tehdit algılamayı açma hakkında bilgi edinmek için bkz.: [Tehdit algılamayı etkinleştirin](sql-database-security-tutorial.md#enable-security-features).
+[Tehdit algılama](sql-database-threat-detection.md)sayesinde, çok kolay bir şekilde denetim aracılığıyla keşfedilen güvenlik veya ilke ihlalleri üzerinde işlem yapma imkanına sahip olursunuz. Sisteminizdeki olası tehditleri veya ihlalleri ele almak için bir güvenlik uzmanı olmanız gerekmez. Tehdit algılama için SQL ekleme algılaması gibi bazı yerleşik yetenekler de vardır. SQL ekleme, verileri değiştirme veya ele almanın bir yoludur ve genel olarak bir veritabanı uygulamasına saldırmaya yönelik oldukça yaygın bir yoldur. Tehdit algılama, olası güvenlik açıklarını ve SQL ekleme saldırılarını ve anormal veritabanı erişim düzenlerini (alışılmadık bir konumdan veya bilmediğiniz bir sorumlu ile erişim gibi) algılayan birden çok algoritma kümesini çalıştırır. Veritabanında bir tehdit algılanırsa Güvenlik ofisleri veya diğer belirlenen yöneticiler bir e-posta bildirimi alır. Her bildirim şüpheli etkinliğin ayrıntılarını ve tehdidi daha fazla araştırıp azaltmaya ilişkin önerileri sağlar. Tehdit algılamayı nasıl etkinleştireceğinizi öğrenmek için bkz: [tehdit algılamayı etkinleştirme](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>SQL veritabanı 'nda verilerimi genel olarak korumak Nasıl yaparım?
 
@@ -181,7 +181,7 @@ Hassas verilerinizi uçuş sırasında ve bekleyen bir şekilde korumak için SQ
 
 Her uygulamanın, veritabanında herkese görünür olması gereken belirli bir hassas verileri vardır. Kuruluşun içindeki belirli personelin bu verileri görüntülemesi gerekir, ancak başkaları bu verileri görüntüleyemez. Çalışanların ücretleri bir örnektir. Yöneticinin doğrudan raporlarının ücret bilgilerine erişmesi gerekir, ancak bireysel takım üyelerinin, eşlerinin ücret bilgilerine erişimi olmaz. Başka bir senaryo, geliştirme aşamaları veya test sırasında hassas verilerle etkileşim kurmak isteyebileceğiniz veri geliştiricileridir, örneğin SSNs müşterileri. Bu bilgilerin yeniden geliştiriciye sunulmasıdır. Bu gibi durumlarda, hassas verilerinizin maskelenmiş olması veya hiç gösterilmemesi gerekir. SQL veritabanı, yetkisiz kullanıcıların hassas verileri görüntüleyebilmesini engellemek için iki tür yaklaşım sunar:
 
-[Dinamik veri maskeleme](sql-database-dynamic-data-masking-get-started.md) , uygulama katmanındaki ayrıcalıklı olmayan kullanıcılarla maskeleyerek hassas veri pozlamasını sınırlandırmanızı sağlayan bir veri maskeleme özelliğidir. Bir maskeleme stili (örneğin, yalnızca bir ulusal KIMLIğIN en son dört basamağını göstermek için) oluşturabileceğiniz bir maskeleme kuralı tanımlarsınız: XXX-XX-0000 ve bunların çoğunu XS olarak işaretleyin) ve maskeleme kuralından hangi kullanıcıların dışlanacağını belirler. Maskeleme anında gerçekleşir ve çeşitli veri kategorileri için çeşitli maskeleme işlevleri mevcuttur. Dinamik veri maskeleme, veritabanınızdaki hassas verileri otomatik olarak algılamanıza ve ona maskeleme uygulamanıza olanak tanır.
+[Dinamik veri maskeleme](sql-database-dynamic-data-masking-get-started.md) , uygulama katmanındaki ayrıcalıklı olmayan kullanıcılarla maskeleyerek hassas veri pozlamasını sınırlandırmanızı sağlayan bir veri maskeleme özelliğidir. Bir maskeleme stili (örneğin, yalnızca bir ulusal kimliğin en son dört basamağını göstermek için) bir maskeleme kuralı tanımlayın (örneğin, yalnızca bir ulusal kimlik için en fazla dört basamak, her biri XS olarak işaretle) ve maskeleme kuralından hangi kullanıcıların dışlanacağını belirleyin. Maskeleme anında gerçekleşir ve çeşitli veri kategorileri için çeşitli maskeleme işlevleri mevcuttur. Dinamik veri maskeleme, veritabanınızdaki hassas verileri otomatik olarak algılamanıza ve ona maskeleme uygulamanıza olanak tanır.
 
 [Satır düzeyi güvenliği](/sql/relational-databases/security/row-level-security) , satır düzeyinde erişimi denetlemenize olanak sağlar. Yani, sorguyu yürüten kullanıcıyı (Grup üyeliği veya yürütme bağlamı) temel alan bir veritabanı tablosundaki belirli satırlar gizlidir. Erişim kısıtlaması, Uygulama mantığınızı basitleştirmek için bir uygulama katmanında değil, veritabanı katmanında yapılır. Bir filtre koşulu oluşturarak başlar, gösterilmeyen satırları filtreleyip ve bu satırlara kimlerin erişebileceğini tanımlayan bir sonraki güvenlik ilkesi. Son olarak, Son Kullanıcı kendi sorgusuna sahiptir ve kullanıcının ayrıcalığına bağlı olarak, bu kısıtlı satırları görüntüler ya da onları hiç göremez.
 
@@ -218,7 +218,7 @@ Kuruluşunuz ve SQL veritabanı arasındaki ağ trafiği genellikle genel ağ ü
 - [Herhangi bir](../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Noktadan noktaya](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Express Route Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği sınırına kadar en fazla 2x veri bloğu oluşturmanızı sağlar. Ayrıca, Express Route kullanılarak çapraz bölge bağlantısını yapılandırmak da mümkündür. ER bağlantı sağlayıcılarının listesini görmek için bkz.: [Express Route Iş ortakları ve eşleme konumları](../expressroute/expressroute-locations.md). Aşağıdaki makalelerde Express Route daha ayrıntılı olarak açıklanır:
+Express Route Ayrıca, ek ücret ödemeden satın aldığınız bant genişliği sınırına kadar en fazla 2x veri bloğu oluşturmanızı sağlar. Ayrıca, Express Route kullanılarak çapraz bölge bağlantısını yapılandırmak da mümkündür. ER bağlantı sağlayıcılarının listesini görmek için bkz. [Express Route ortakları ve eşleme konumları](../expressroute/expressroute-locations.md). Aşağıdaki makalelerde Express Route daha ayrıntılı olarak açıklanır:
 
 - [Express Route 'a giriş](../expressroute/expressroute-introduction.md)
 - [Önkoşullar](../expressroute/expressroute-prerequisites.md)
@@ -260,7 +260,7 @@ Bu Analizi "Advisor" bölümünde da görüntüleyebilirsiniz:
 
 SQL veritabanında, performansı izlemek ve uygun şekilde ayarlamak için platformun akıllı öngörülerini kullanabilirsiniz. Aşağıdaki yöntemleri kullanarak SQL veritabanı 'nda performans ve kaynak kullanımını izleyebilirsiniz:
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Azure portal, veritabanını seçip Genel Bakış bölmesinde grafiğe tıklayarak bir veritabanının kullanımını gösterir. Grafiği CPU yüzdesi, DTU yüzdesi, veri GÇ yüzdesi, oturum yüzdesi ve veritabanı boyutu yüzdesi gibi birden çok ölçümü gösterecek şekilde değiştirebilirsiniz.
 
@@ -282,9 +282,9 @@ Son 14 günün geçmişini döndürmek için son saatten ve [sys. resource_stats
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde Azure SQL Analytics (Önizleme)
 
-[Azure izleyici günlükleri](../azure-monitor/insights/azure-sql.md) , temel Azure SQL Azure performans ölçümlerini toplayıp görselleştirmenize olanak tanır. Bu, çalışma alanı BAŞıNA 150.000 SQL veritabanı ve 5.000 SQL elastik havuzu destekler. Bunu, bildirimleri izlemek ve almak için kullanabilirsiniz. SQL veritabanı ve elastik havuz ölçümlerini birden çok Azure aboneliği ve elastik havuzlarda izleyebilir ve uygulama yığınının her katmanında sorunları belirlemek için kullanılabilir.
+[Azure izleyici günlükleri](../azure-monitor/insights/azure-sql.md) , temel Azure SQL veritabanı performans ölçümlerini toplamanıza ve görselleştirmenize olanak tanır. bu sayede, çalışma alanı BAŞıNA 150.000 SQL veritabanı ve 5.000 SQL elastik havuzu sağlayabilirsiniz. Bunu, bildirimleri izlemek ve almak için kullanabilirsiniz. SQL veritabanı ve elastik havuz ölçümlerini birden çok Azure aboneliği ve elastik havuzlarda izleyebilir ve uygulama yığınının her katmanında sorunları belirlemek için kullanılabilir.
 
-### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Yaşıyorsanız performans sorunları: SQL veritabanı sorun giderme metodolojimin SQL Server farklıdır
+### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Yaşıyorsanız performans sorunları: SQL veritabanı sorun giderme yöntemlerimin SQL Server farklıdır
 
 Sorgu ve veritabanı performans sorunlarını tanılamak için kullanacağınız sorun giderme tekniklerinin büyük bir bölümü aynı kalır. Tüm aynı SQL Server altyapısı bulutu güçlendirir. Ancak platform-Azure SQL DB, ' Intelligence ' içinde yerleşik olarak bulunur. Performans sorunlarını daha kolay bir şekilde gidermenize ve tanılamanıza yardımcı olabilir. Ayrıca, bu düzeltme eylemlerinin bazılarını sizin adınıza gerçekleştirebilir ve bazı durumlarda onları otomatik olarak yeniden düzeltir.
 
@@ -294,7 +294,7 @@ Performans sorunlarını giderme sayesinde, uygulamanın yalnızca uygulamanın 
 
 Ayrıca, veritabanınızın genel performansına karşı bir düşüş fark ederseniz, CPU, GÇ ve bellek tüketimini anlamak için [sys. DM _db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) ve [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamik yönetim görünümlerini izleyebilirsiniz. Veritabanınız kaynakları kullandığından, performanstan etkilenmiş olabilirsiniz. Artan ve daraltma iş yükü taleplerine göre işlem boyutunu ve/veya hizmet katmanını değiştirmeniz gerekebilir.
 
-Performans sorunlarını ayarlama konusunda kapsamlı bir öneriler kümesi için bkz.: [Veritabanınızı ayarlayın](sql-database-performance-guidance.md#tune-your-database).
+Performans sorunlarını ayarlama hakkında kapsamlı bir öneriler kümesi için bkz.: [veritabanınızı ayarlama](sql-database-performance-guidance.md#tune-your-database).
 
 ### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Uygun hizmet katmanını ve işlem boyutunu kullanmaktan Nasıl yaparım? emin olun
 
@@ -309,7 +309,7 @@ SQL veritabanı, temel, standart ve Premium çeşitli hizmet katmanları sunmakt
 
 Doğru işlem boyutunda olduğunuzdan emin olmak için, Nasıl yaparım? "SQL veritabanı 'nda performansı ve kaynak kullanımını izleme" bölümünde, yukarıdaki belirtilen yollarla sorgu ve veritabanı kaynak tüketiminizi izleyebilirsiniz. Sorgular/veritabanlarınızın, CPU/bellek üzerinde düzenli olarak çalışır şekilde çalıştığını bulmanız gerekir. daha yüksek bir işlem boyutuna kadar ölçeklendirmeyi deneyebilirsiniz. Benzer şekilde, yoğun saatleriniz sırasında bile, kaynakları çok sayıda kullanmaya gerek kalmaz; geçerli işlem boyutundan ölçeği azaltmayı göz önünde bulundurun.
 
-SaaS uygulama düzeniniz veya veritabanı birleştirme senaryonuz varsa, maliyet iyileştirmesi için esnek havuz kullanmayı düşünün. Elastik havuz, Veritabanı konsolidasyonu ve maliyet iyileştirmesi elde etmenin harika bir yoludur. Elastik havuz kullanarak birden çok veritabanını yönetme hakkında daha fazla bilgi edinmek için bkz.: [Havuzları ve veritabanlarını yönetin](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
+SaaS uygulama düzeniniz veya veritabanı birleştirme senaryonuz varsa, maliyet iyileştirmesi için esnek havuz kullanmayı düşünün. Elastik havuz, Veritabanı konsolidasyonu ve maliyet iyileştirmesi elde etmenin harika bir yoludur. Elastik havuz kullanarak birden çok veritabanını yönetme hakkında daha fazla bilgi için bkz.: [havuzları ve veritabanlarını yönetme](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases).
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Veritabanı için veritabanı bütünlüğü denetimlerini hangi sıklıkta çalıştırmalıyım?
 
@@ -319,11 +319,11 @@ SQL veritabanı, belirli veri bozulması sınıflarının otomatik olarak ve ver
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>Verileri SQL veritabanından BACPAC dosyaları olarak dışarı ve içeri aktarma Nasıl yaparım?
 
-- **Dışarı aktar**: Azure SQL veritabanınızı Azure portal BACPAC dosyası olarak dışarı aktarabilirsiniz.
+- **Dışarı aktarma**: Azure SQL veritabanınızı Azure Portal bacpac dosyası olarak dışarı aktarabilirsiniz.
 
-   ![Veritabanı dışarı aktarma](./media/sql-database-export/database-export1.png)
+   ![veritabanı dışarı aktarma](./media/sql-database-export/database-export1.png)
 
-- **Içeri aktar**: Ayrıca, Azure portal kullanarak verileri BACPAC dosyası olarak veritabanına aktarabilirsiniz.
+- **Içeri aktarma**: ayrıca, Azure Portal kullanarak verileri bacpac dosyası olarak veritabanına aktarabilirsiniz.
 
    ![veritabanı içeri aktarma](./media/sql-database-import/import1.png)
 
@@ -332,7 +332,7 @@ SQL veritabanı, belirli veri bozulması sınıflarının otomatik olarak ve ver
 Bunu başarmanın birkaç yolu vardır:
 
 - **[Veri eşitleme](sql-database-sync-data.md)** : Bu özellik, birden çok şirket içi SQL Server VERITABANLARı ve SQL veritabanı arasında veri çift ile eşitleme yapmanıza yardımcı olur. Şirket içi SQL Server veritabanlarıyla eşitleme yapmak için, eşitleme aracısını yerel bir bilgisayara yükleyip yapılandırmanız ve giden TCP bağlantı noktası 1433 ' u açmanız gerekir.
-- **[Işlem çoğaltma](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – işlem çoğaltma ile verilerinizi şirket IÇINDEN Azure SQL DB 'ye, şirket içi yayımcı ve Azure SQL DB 'yi abone olmak üzere şirket içi olarak eşzamanlı olarak aktarabilirsiniz. Şimdilik yalnızca bu kurulum desteklenir. Verilerinizi Şirket içinden Azure SQL 'e en az kapalı kalma süresiyle geçirme hakkında daha fazla bilgi için bkz.: [Işlem çoğaltmasını kullanma](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
+- **[Işlem çoğaltma](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – işlem çoğaltma ile verilerinizi şirket IÇINDEN Azure SQL DB 'ye, şirket içi yayımcı ve Azure SQL DB 'yi abone olmak üzere şirket içi olarak eşzamanlı olarak aktarabilirsiniz. Şimdilik yalnızca bu kurulum desteklenir. Verilerinizi Şirket içinden Azure SQL 'e en az kapalı kalma süresiyle geçirme hakkında daha fazla bilgi için bkz. [Işlem çoğaltmasını kullanma](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

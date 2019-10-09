@@ -1,29 +1,29 @@
 ---
-title: Azure veri fabrikası veri akışını referans düğümün eşleme
-description: Data Factory veri akışı birleşimler, arama, birleşimler için bir başvuru düğüm ekler
+title: Azure Data Factory eşleme veri akışı başvuru düğümü
+description: Data Factory veri akışı, birleştirmeler, aramalar, birleşimler için bir başvuru düğümü ekler
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 626943143e8fa193f143e66d856d9b00e3589fb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ed17114cc0ce586c68c5b3e087acffdb82ea96c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61262692"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030498"
 ---
-# <a name="mapping-data-flow-reference-node"></a>Veri akışı referans düğümün eşleme
+# <a name="mapping-data-flow-reference-node"></a>Veri akışı başvuru düğümünü eşleme
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ![Başvuru düğümü](media/data-flow/referencenode.png "başvuru düğümü")
 
-Referans düğümün otomatik olarak bağlı olduğu düğüme tuval var olan başka bir düğümde başvuran geldiğiniz tuvaline eklenir. Bir referans düğümün bir işaretçi veya başka bir veri akışı dönüştürme için bir başvuru olarak düşünün.
+Eklenmiş olan düğümün tuvalde varolan başka bir düğüme başvurduğundan emin olmak için bir başvuru düğümü otomatik olarak tuvale eklenir. Bir başvuru düğümünü işaretçi olarak veya başka bir veri akışı dönüştürmesi için bir başvuru olarak düşünün.
 
-Örneğin: Ne zaman, birleştirme veya birleşim birden fazla veri bir akış, veri akışı tuval adı ve birincil olmayan gelen akış ayarları yansıtan bir referans düğümün ekleyebilir.
+Örneğin: birden fazla veri akışı birleştirdiğinizde veya Toplandığınızda, veri akışı tuvali, birincil olmayan gelen akışın adını ve ayarlarını yansıtan bir başvuru düğümü ekleyebilir.
 
-Referans düğümün taşınmış veya silinmiş. Ancak, kaynak dönüştürme ayarlarını değiştirmek için düğümüne tıklayın.
+Başvuru düğümü taşınamaz veya silinemez. Ancak, kaynak dönüştürme ayarlarını değiştirmek için düğüme tıklayabilirsiniz.
 
-Kullanılabilir alan ve dikey boşluğu satırlar arasında veri akışını referans düğümün eklediğinde yöneten UI kurallarını temel alır.
+Veri akışı, başvuru düğümünü eklediğinde görüntülenen kullanıcı arabirimi kuralları, kullanılabilir alanı ve satırlar arasındaki dikey boşluğu temel alır.

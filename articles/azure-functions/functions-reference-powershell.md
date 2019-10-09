@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 6cf03d1269cac5dcfa67c2d4778be3fce9ee63aa
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973361"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029023"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Işlevleri PowerShell Geliştirici Kılavuzu
 
@@ -434,6 +434,9 @@ Yönetilen bağımlılıkların nasıl indirileceğini ve yükleneceğini deği�
 | MDMaxBackgroundUpgradePeriod      | "7.00:00:00" (7 gün)     | Her PS çalışanı, çalışan işlemi başlatma ve sonrasında her MDMaxBackgroundUpgradePeriod üzerindeki PS galerisinde modül yükseltmelerini denetlemeyi başlatır. PS galerisinde yeni modül sürümleri varsa, bu sürümler PS çalışanlarının kullanabildiği dosya sistemine yüklenir. Bu değeri azaltmak, Işlev uygulamanızın daha önce daha yeni modül sürümlerini almasına izin verir, ancak aynı zamanda uygulama kaynak kullanımını (ağ g/ç, CPU, depolama) de artırır. Bu değerin artırılması, uygulama kaynak kullanımını azaltır, ancak uygulamanıza yeni modül sürümlerinin teslim edilmesini de erteleyebilir.      | 
 | MDNewSnapshotCheckPeriod          | "01:00:00" (1 saat)       | Yeni modül sürümleri dosya sistemine yüklendikten sonra, her PS çalışanının yeniden başlatılması gerekir. PS çalışanlarının yeniden başlatılması, geçerli işlev etkinleştirmeleri kesintiye uğradığı için uygulamanızın kullanılabilirliğini etkileyebilir. Tüm PS çalışanları yeniden başlatılana kadar, işlev etkinleştirmeleri eski ya da yeni modül sürümlerini kullanabilir. Tüm PS çalışanlarının yeniden başlatılması MDNewSnapshotCheckPeriod içinde tamamlanır. Bu değerin artırılması, kesintiler sıklığını düşürür, ancak işlev etkinleştirmeleri eski veya yeni modül sürümlerini belirleyici olmayan şekilde kullandığınızda zaman dilimini de artırabilir. |
 | MDMinBackgroundUpgradePeriod      | "1,00:00:00" (1 gün)     | Sık gerçekleştirilen çalışan yeniden başlatmalarının aşırı modül yükseltmelerini önlemek için, son MDMinBackgroundUpgradePeriod içinde herhangi bir çalışan zaten başlatılmış olursa modül yükseltmelerini denetleme işlemi gerçekleştirilmez. |
+
+> [!NOTE]
+> Yönetilen bağımlılıklar, modülleri indirmek için www.powershellgallery.com erişimine bağımlıdır. Gerekli güvenlik duvarı kurallarını ekleyerek işlev çalışma zamanının bu URL 'ye erişiminin olduğundan emin olmanız gerekir.
 
 Kendi özel modüllerinizi kullanmak, normal şekilde nasıl yapacağınıza göre biraz farklıdır.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: c92dd48e81512b79fb72cbb751303504d1036594
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71982040"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028681"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Ahlak hacme sınıfı öğretmek için laboratuvar ayarlama 
 Bu makalede, ahlak korsanın adli tarafına odaklanan bir sınıfın nasıl ayarlanacağı gösterilmektedir. Ahlak hacham topluluk tarafından kullanılan bir uygulama olan sızma testi, birisi kötü niyetli bir saldırganın yararlanmasına yönelik güvenlik açıklarını göstermek üzere sisteme veya ağa erişim kazanmayı denediğinde oluşur. 
@@ -128,7 +128,11 @@ Rapid7 Metasplosever görüntüsü, özellikle güvenlik açıklarına göre yap
 ## <a name="cost"></a>Maliyet  
 Bu laboratuvarın maliyetini tahmin etmek isterseniz, aşağıdaki örneği kullanabilirsiniz: 
  
-20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atama için 10 saatlik kota içeren 25 öğrencideki bir sınıf için, laboratuvar fiyatı şöyle olacaktır: 25 öğrenci * (20 + 10) saat * 55 laboratuvar birimi * 0,01 saat başına USD = 412,50. Fiyatlandırma hakkında daha fazla bilgi Için bkz. [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
+20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atamalar için 10 saatlik kota içeren 25 öğrenciye sahip bir sınıf için, laboratuvar fiyatı şöyle olacaktır: 
+
+25 öğrenci * (20 + 10) saat * 55 laboratuvar birimi * 0,01 saat başına USD = 412,50 ABD Doları. 
+
+Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Sonuç
 Bu makale, ahlak hacme sınıfı için Laboratuvar oluşturma adımlarında size kılavuzluk eden adımlar. Bu, penetderecelendirme testi için konak sanal makinesi içinde iki sanal makine oluşturmak üzere iç içe sanallaştırmayı ayarlama adımlarını içerir.

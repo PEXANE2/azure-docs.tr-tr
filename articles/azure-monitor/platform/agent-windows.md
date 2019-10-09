@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 5e1fe6252f396a4585b5d7d7190728b79229d5c7
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6c8d25a9df49323866e99487ef6c648dede40ec4
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073983"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033960"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows bilgisayarlarını Azure Izleyici 'ye bağlama
 
@@ -51,21 +51,25 @@ Windows için Log Analytics aracısını yüklemeden önce, Log Analytics çalı
 5. **Çalışma alanı kimliği** ve **birincil anahtar**olan en sevdiğiniz düzenleyiciye kopyalayıp yapıştırın.    
    
 ## <a name="configure-agent-to-use-tls-12"></a>Aracıyı TLS 1,2 kullanacak şekilde yapılandırma
-Windows Aracısı ve Log Analytics hizmeti arasındaki iletişimde [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) protokolünün kullanımını yapılandırmak için, aracı sanal makineye yüklenmeden önce veya daha sonra etkinleştirmek üzere aşağıdaki adımları izleyebilirsiniz.   
+Windows Aracısı ve Log Analytics hizmeti arasındaki iletişimde [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) protokolünün kullanımını yapılandırmak için, aracı sanal makineye yüklenmeden önce veya daha sonra etkinleştirmek üzere aşağıdaki adımları izleyebilirsiniz.
 
-1. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
+>[!NOTE]
+>Windows Server 2008 SP2 x64 çalıştıran bir VM 'yi TLS 1,2 kullanmak üzere yapılandırıyorsanız, önce aşağıdaki adımları gerçekleştirmeden önce aşağıdaki [SHA-2 kod imzalama desteği güncelleştirmesini](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) yüklemeniz gerekir. 
+>
+
+1. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. TLS 1,2 için **protokoller** altında bir alt anahtar oluşturma **Hklm\system\currentcontrolset\control\securityproviders\schannel\protocols\tls 1,2**
 3. Daha önce oluşturduğunuz TLS 1,2 protokol sürümü alt anahtarı altında bir **istemci** alt anahtarı oluşturun. Örneğin, **Hklm\system\currentcontrolset\control\securityproviders\schannel\protocols\tls 1.2 \ Client**.
 4. **Hklm\system\currentcontrolset\control\securityproviders\schannel\protocols\tls 1.2 \ Client**altında aşağıdaki DWORD değerlerini oluşturun:
 
-    * **Etkin** [Değer = 1]
-    * **DisabledByDefault** [Değer = 0]  
+    * **Etkin** [değer = 1]
+    * **DisabledByDefault** [değer = 0]  
 
 Varsayılan olarak devre dışı olduğu gibi, .NET Framework 4,6 veya üstünü güvenli şifrelemeyi destekleyecek şekilde yapılandırın. [Güçlü şifreleme](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) , TLS 1,2 gibi daha güvenli ağ protokolleri kullanır ve güvenli olmayan protokolleri engeller. 
 
-1. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\Software\Microsoft\\. NETFramework\v4.0.30319**.  
+1. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\Software\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
 2. Bu alt anahtar altında **1**değeriyle **Schusestrongşifre** DWORD değeri oluşturun.  
-3. Aşağıdaki kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319**.  
+3. Şu kayıt defteri alt anahtarını bulun: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft @ no__t-1. NETFramework\v4.0.30319**.  
 4. Bu alt anahtar altında **1**değeriyle **Schusestrongşifre** DWORD değeri oluşturun. 
 5. Ayarların etkili olması için sistemi yeniden başlatın. 
 
@@ -106,7 +110,7 @@ Aşağıdaki tabloda, Automation DSC kullanılarak dağıtıldığında de dahil
 |OPINSIGHTS_PROXY_USERNAME               | Kimliği doğrulanmış bir ara sunucuya erişmek için Kullanıcı adı |
 |OPINSIGHTS_PROXY_PASSWORD               | Kimliği doğrulanmış bir ara sunucuya erişmek için parola |
 
-1. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden çalıştırın `MMASetup-<platform>.exe /c` ve dosyaları ayıklama yolunu sorar.  Alternatif olarak, bağımsız değişkenleri `MMASetup-<platform>.exe /c /t:<Full Path>`geçirerek yolu belirtebilirsiniz.  
+1. Aracı yükleme dosyalarını ayıklamak için, yükseltilmiş bir komut isteminden `MMASetup-<platform>.exe /c` ' ı çalıştırın ve dosyaları ayıklama yolunu sorar.  Alternatif olarak, `MMASetup-<platform>.exe /c /t:<Full Path>` bağımsız değişkenlerini geçirerek yolu belirtebilirsiniz.  
 2. Aracıyı sessizce yüklemek ve Azure ticari bulutundaki bir çalışma alanına raporlamak üzere yapılandırmak için, kurulum dosyalarını ayıkladığınız klasörden şunu yazın: 
    
      ```dos
@@ -134,11 +138,11 @@ Aşağıdaki örnek, `URI` değeri tarafından tanımlanan 64 bitlik aracıyı y
 >[!NOTE]
 >Bu yordam ve betik örneği, bir Windows bilgisayarına zaten dağıtılan aracının yükseltilmesini desteklemez.
 
-Aracı paketinin 32-bit ve 64 bit sürümleri farklı ürün kodlarına sahiptir ve yayımlanan yeni sürümler de benzersiz bir değer içermelidir.  Ürün kodu, bir uygulamanın veya ürünün asıl kimliği olan ve Windows Installer **ProductCode** özelliği tarafından temsil EDILEN bir GUID 'dir.  **Mmagent. ps1** betiğinin değeri,32-bitveya64bitaracıyükleyicisipaketindekiürünkoduylaeşleşmelidir.`ProductId`
+Aracı paketinin 32-bit ve 64 bit sürümleri farklı ürün kodlarına sahiptir ve yayımlanan yeni sürümler de benzersiz bir değer içermelidir.  Ürün kodu, bir uygulamanın veya ürünün asıl kimliği olan ve Windows Installer **ProductCode** özelliği tarafından temsil EDILEN bir GUID 'dir.  **Mmagent. ps1** betiğindeki `ProductId` değeri 32-bit veya 64 bit aracı yükleyicisi paketindeki ürün koduyla eşleşmelidir.
 
 Ürün kodunu aracı yüklemesi paketinden doğrudan almak için, Windows yazılım geliştirme seti 'nin bir bileşeni olan veya PowerShell 'i kullanarak [](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) bir [bileşen olan Windows Installer geliştiriciler Için Windows SDK bileşenlerinden Orca. exe ' yi kullanabilirsiniz. örnek betik](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) , Microsoft değerli bir profesyonel (MVP) tarafından yazılmıştır.  Her iki yaklaşım için, önce MMASetup yükleme paketinden **MOMAgent. msi** dosyasını ayıklamanız gerekir.  Bu, [komut satırını kullanarak aracıyı Install](#install-the-agent-using-the-command-line)bölümünün altındaki ilk adımda gösterilmektedir.  
 
-1. Xpsdesiredstateconfiguration DSC modülünü [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) Azure Automation 'a aktarın.  
+1. XPSDesiredStateConfiguration DSC modülünü [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) ' den Azure Otomasyonu 'na aktarın.  
 2.  *OPSINSIGHTS_WS_ID* ve *OPSINSIGHTS_WS_KEY*için Azure Otomasyonu değişken varlıkları oluşturun. Log Analytics çalışma alanı KIMLIĞINIZLE *OPSINSIGHTS_WS_ID* ayarlayın ve *OPSINSIGHTS_WS_KEY* ' i çalışma alanınızın birincil anahtarına ayarlayın.
 3.  Betiği kopyalayın ve MMAgent. ps1 olarak kaydedin.
 
@@ -178,7 +182,7 @@ Aracı paketinin 32-bit ve 64 bit sürümleri farklı ürün kodlarına sahiptir
 
     ```
 
-4. Komut dosyasındaki `ProductId` değeri, daha önce önerilen yöntemleri kullanarak aracı yüklemesi paketinin en son sürümünden ayıklanan ürün koduyla güncelleştirin. 
+4. Betikteki `ProductId` değerini, daha önce önerilen yöntemleri kullanarak aracı yüklemesi paketinin en son sürümünden ayıklanan ürün koduyla güncelleştirin. 
 5. [MMAgent. ps1 yapılandırma betiğini](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) Otomasyon hesabınıza aktarın. 
 5. Yapılandırmaya [bir Windows bilgisayarı veya düğüm atayın](../../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) . 15 dakika içinde düğüm yapılandırmasını denetler ve aracı düğümüne gönderilir.
 
@@ -186,7 +190,7 @@ Aracı paketinin 32-bit ve 64 bit sürümleri farklı ürün kodlarına sahiptir
 
 Aracının yüklenmesi tamamlandıktan sonra, başarılı bir şekilde bağlandığının doğrulanması ve raporlama iki şekilde gerçekleştirilebilir.  
 
-Bilgisayarın **Denetim Masası** sayfasında **Microsoft Monitoring Agent**'ı bulun.  Bu girişi seçtiğinizde **Azure Log Analytics** sekmesinde aracının şu iletiyi görüntülemesi gerekir: **Microsoft Monitoring Agent, Microsoft Operations Management Suite hizmetine başarıyla bağlandı.**<br><br> ![MMA'nın Log Analytics'e bağlantı durumu](media/agent-windows/log-analytics-mma-laworkspace-status.png)
+Bilgisayarın **Denetim Masası** sayfasında **Microsoft Monitoring Agent**'ı bulun.  Bunu seçin ve **Azure Log Analytics** sekmesinde aracı şöyle bir ileti görüntülemelidir: **Microsoft Monitoring Agent Microsoft Operations Management Suite hizmetine başarıyla bağlandı.**<br><br> ![MMA'nın Log Analytics'e bağlantı durumu](media/agent-windows/log-analytics-mma-laworkspace-status.png)
 
 Azure portal basit bir günlük sorgusu da gerçekleştirebilirsiniz.  
 

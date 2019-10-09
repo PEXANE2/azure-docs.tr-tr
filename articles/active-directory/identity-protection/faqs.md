@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 8d36b513b6835088b5120072906667cd30af505d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70126517"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025728"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Kimlik Koruması SSS
 
@@ -24,7 +24,7 @@ Bu makale Azure Active Directory (Azure AD) kimlik koruması hakkında sık soru
 
 ## <a name="why-do-some-risk-detections-have-closed-system-status"></a>Bazı risk algılamaları neden "kapalı (sistem)" durumuna sahip?
 
-**C:** Bu risk algılamaları kimlik koruması tarafından algılandı ve daha sonra olaylar riskli olarak değerlendirilmediği için kapatıldı. Bu olaylar kullanıcının risk düzeyine doğru sayılmaz. 
+Y **:** Bu risk algılamaları kimlik koruması tarafından algılandı ve daha sonra olaylar riskli olarak değerlendirilmediği için kapatıldı. Bu olaylar kullanıcının risk düzeyine doğru sayılmaz. 
 
 ---
 
@@ -35,12 +35,12 @@ Bu makale Azure Active Directory (Azure AD) kimlik koruması hakkında sık soru
 
 ## <a name="how-do-i-get-identity-protection"></a>Kimlik koruması Nasıl yaparım? mi?
 
-**C:** Bu soruya cevap vermek için [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama bölümüne bakın.
+Y **:** Bu soruya cevap vermek için [Azure Active Directory Premium kullanmaya](../fundamentals/active-directory-get-started-premium.md) başlama bölümüne bakın.
 
 ---
 
 ## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>"Risk için işaretlenen kullanıcılar" bölümünde kullanıcıları nasıl sıralayabilirim?
 
-**C:** Risk **için işaretlenen kullanıcılar** sayfasının en üstünde **İndir** ' i tıklatarak risk için işaretlenen kullanıcılar raporunu indirin. Daha sonra, indirilen verileri, son güncelleştirilme (UTC) dahil olmak üzere kullanılabilir alanlara göre sıralayabilirsiniz.
+Y **:** Risk **için Işaretlenen kullanıcılar** sayfasının en üstünde **İndir** ' i tıklatarak risk için işaretlenen kullanıcılar raporunu indirin. Daha sonra, indirilen verileri, son güncelleştirilme (UTC) dahil olmak üzere kullanılabilir alanlara göre sıralayabilirsiniz.
 
 ---

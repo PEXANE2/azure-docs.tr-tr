@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c81f4cacd4c93d681122f3c8cd692ca8645288af
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 676a41b64b79be6b11c3ef22b34d3de0e37e2a92
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240081"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023800"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel’ı kullanmaya başlama
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı başlangıç: Azure Sentinel ile çalışmaya başlama
 
 
 
@@ -43,16 +43,16 @@ Ortamınızda neler olduğunu görselleştirmek ve analiz etmek için öncelikle
 
 Genel Bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik durumunu gösteren bir bakışta fikir verir:
 
-- **Zaman Içindeki olaylar ve uyarılar**: Olayların sayısını ve bu olaylardan kaç uyarı oluşturulduğunu listeler. Olağan dışı bir ani artış görürseniz, bunun için uyarıları görmeniz gerekir. olaylarda ani bir artış olduğunda ancak uyarı görmezseniz, sorun oluşması gerekebilir.
+- **Zaman Içindeki olaylar ve uyarılar**: olay sayısını ve bu olaylardan kaç uyarı oluşturulduğunu listeler. Olağan dışı bir ani artış görürseniz, bunun için uyarıları görmeniz gerekir. olaylarda ani bir artış olduğunda ancak uyarı görmezseniz, sorun oluşması gerekebilir.
 
-- **Olası kötü amaçlı olaylar**: Kötü amaçlı oldukları bilinen kaynaklardan trafik algılandığında, Azure Sentinel, haritada sizi uyarır. Turuncu görürseniz, bu gelen trafiktir: birisi kuruluşunuza bilinen bir kötü amaçlı IP adresinden erişmeyi deniyor. Giden (kırmızı) etkinlik görürseniz, ağınızdaki verilerin kuruluşunuzun dışında, bilinen bir kötü amaçlı IP adresine akışını sağlarsınız.
+- **Olası kötü amaçlı olaylar**: kötü amaçlı oldukları bilinen kaynaklardan trafik algılandığında, Azure Sentinel, haritada sizi uyarır. Turuncu görürseniz, bu gelen trafiktir: birisi kuruluşunuza bilinen bir kötü amaçlı IP adresinden erişmeyi deniyor. Giden (kırmızı) etkinlik görürseniz, ağınızdaki verilerin kuruluşunuzun dışında, bilinen bir kötü amaçlı IP adresine akışını sağlarsınız.
 
    ![Azure Sentinel eşlemesi](./media/qs-get-visibility/map.png)
 
 
-- **Son olaylar**: Son olaylarınızı, bu olayların önem derecesini ve olayla ilişkili uyarı sayısını görüntülemek için. Belirli bir uyarı türünde ani Tepe olarak görüyorsanız, çalışmakta olan etkin bir saldırı olduğu anlamına gelebilir. Örneğin, Azure ATP 'den en fazla 20 geçiş karma olay uygulamanız varsa, birisi şu anda sizi saldırılara çalışıyor olabilir.
+- **Son olaylar**: son olaylarınızı, bunların önem derecesini ve olayla ilişkili uyarı sayısını görüntülemek için. Belirli bir uyarı türünde ani Tepe olarak görüyorsanız, çalışmakta olan etkin bir saldırı olduğu anlamına gelebilir. Örneğin, Azure ATP 'den en fazla 20 geçiş karma olay uygulamanız varsa, birisi şu anda sizi saldırılara çalışıyor olabilir.
 
-- **Veri kaynağı bozuklukları**: Microsoft 'un veri analistleri, veri kaynaklarınızdan verileri sürekli olarak arayanlara yönelik modeller oluşturdu. Herhangi bir sorun yoksa, hiçbir şey görüntülenmez. Bozukluklar algılanırsa, ne olduğunu görmek için bunlara ayrıntılı bir bakış uygulamanız gerekir. Örneğin, Azure 'da ani artış ' a tıklayın. Ne zaman meydana geldiğini görmek için **grafiğe** tıklayabilir ve sonra ne olduğunu görmek için o zaman diliminde gerçekleşen etkinliklere filtre uygulayabilirsiniz.
+- **Veri kaynağı Anomali**: Microsoft 'un veri analistleri için veri kaynaklarınızdan verileri sürekli olarak arama modellerini oluşturdu. Herhangi bir sorun yoksa, hiçbir şey görüntülenmez. Bozukluklar algılanırsa, ne olduğunu görmek için bunlara ayrıntılı bir bakış uygulamanız gerekir. Örneğin, Azure 'da ani artış ' a tıklayın. Ne zaman meydana geldiğini görmek için **grafiğe** tıklayabilir ve sonra ne olduğunu görmek için o zaman diliminde gerçekleşen etkinliklere filtre uygulayabilirsiniz.
 
    ![Azure Sentinel eşlemesi](./media/qs-get-visibility/anomolies.png)
 
@@ -63,7 +63,7 @@ Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemes
 1. **Ayarlar**altında **çalışma kitapları**' nı seçin. **Yüklü**' ın altında, tüm yüklü çalışma kitabınızı görebilirsiniz. **Tümü**altında, yükleme için kullanılabilen yerleşik çalışma kitaplarının tamamını görebilirsiniz. 
 2. Tüm liste ve her bir tekliflerinin açıklamasını görmek için belirli bir çalışma kitabı arayın. 
 3. Azure AD 'yi kullandığınız varsayılarak, Azure Sentinel ile çalışmaya başlayın ve en azından aşağıdaki çalışma kitaplarını yüklemenizi öneririz:
-   - **Azure AD**: Aşağıdakilerden birini veya her ikisini birden kullanın:
+   - **Azure AD**: aşağıdakilerden birini veya her ikisini kullanın:
        - **Azure AD oturum** açma işlemleri zaman içinde oturum açma işlemlerini çözümleyerek, bozukluklar olup olmadığını görebilir. Bu çalışma kitapları uygulamalar, cihazlar ve konumlar tarafından başarısız oturum açma işlemleri sunarak, olağan dışı bir durum meydana olursa bir bakışta fark edebilirsiniz. Birden çok başarısız oturum açma ile ilgilenmeyi ödeyin. 
        - **Azure AD denetim günlükleri** , kullanıcılar üzerindeki değişiklikler (ekleme, kaldırma, vs.), Grup oluşturma ve değişiklikler gibi yönetici etkinliklerini analiz eder.  
 
@@ -72,14 +72,14 @@ Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemes
       ![PAL Alto panosu](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Ana sorgu ![düğmesini](./media/qs-get-visibility/edit-query-button.png)düzenleyerek çalışma kitaplarını özelleştirebilirsiniz. [Sorguyu düzenlemek için Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek ![üzere](./media/qs-get-visibility/go-to-la-button.png) düğme düğmesine tıklayabilir ve üç nokta (...) simgesini seçip, ana saat filtresini düzenlemenizi sağlayan **kutucuk verilerini Özelleştir**' i seçebilirsiniz. çalışma kitabından belirli kutucuklar.
+@No__t-0button @ no__t-1 ana sorgusunu düzenleyerek çalışma kitaplarını özelleştirebilirsiniz. [Sorguyu düzenlemek için](../azure-monitor/log-query/get-started-portal.md)![button @ no__t-Log Analytics 1 düğmesine tıklayabilir ve üç nokta (...) simgesini seçebilir ve **kutucuk verilerini Özelleştir**' i seçerek, ana saat filtresini düzenlemenizi veya belirli kutucukları kaldırmanıza olanak sağlayabilirsiniz. çalışma kitabı.
 
-Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log Analytics 'daki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
+Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 ### <a name="add-a-new-tile"></a>Yeni kutucuk Ekle
 
 Yeni bir kutucuk eklemek istiyorsanız, onu oluşturduğunuz veya Azure Sentinel yerleşik çalışma kitabının bulunduğu mevcut bir çalışma kitabına ekleyebilirsiniz. 
-1. Log Analytics, [öğreticide bulunan yönergeleri kullanarak bir kutucuk oluşturun: Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)görsel verileri. 
+1. Log Analytics, [öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)' de bulunan yönergeleri kullanarak bir kutucuk oluşturun. 
 2. Kutucuk oluşturulduktan sonra, **PIN**altında kutucuğun görünmesini istediğiniz çalışma kitabını seçin.
 
 ## <a name="create-new-workbooks"></a>Yeni çalışma kitapları oluşturma
@@ -122,11 +122,11 @@ Kuruluşunuzdaki tehditleri araştırmak için [Azure Sentinel 'e bağladığın
 
 Yeni bir algılama oluşturduğunuzda, Microsoft güvenlik araştırmacıları tarafından, bağlandığınız veri kaynaklarına uyarlanmış yerleşik algılamalardan yararlanın.
 
-Kullanıma hazır tüm algılamaları görüntülemek için analizler **' e ve ardından**  **kural şablonları**' na gidin. Bu sekme, tüm Azure Sentinel yerleşik kurallarını içerir.
+Kullanıma hazır tüm algılamaları görüntülemek için analizler **' e ve ardından** **kural şablonları**' na gidin. Bu sekme, tüm Azure Sentinel yerleşik kurallarını içerir.
 
    ![Azure Sentinel ile tehditleri bulmak için yerleşik algılamaları kullanın](media/tutorial-detect-built-in/view-oob-detections.png)
 
-Kullanıma hazır algılamaları alma hakkında daha fazla bilgi için bkz [. Öğretici: Yerleşik analiz](tutorial-detect-threats-built-in.md)edin.
+Kullanıma hazır algılamaları alma hakkında daha fazla bilgi için bkz. [öğretici: yerleşik analiz alma](tutorial-detect-threats-built-in.md).
  
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu hızlı başlangıçta, Azure Sentinel 'i kullanmaya nasıl başladığınıza öğrendiniz. [Tehditleri algılayarak](tutorial-detect-threats-built-in.md)ilgili öğreticiye devam edin.

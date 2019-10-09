@@ -1,0 +1,162 @@
+---
+title: Azure CLı kullanarak bir Java Spring uygulaması başlatma
+description: Bu hızlı başlangıçta, Azure CLı üzerinde Azure Spring Cloud 'a örnek bir uygulama dağıtırsınız.
+services: spring-cloud
+author: v-vasuke
+manager: jeconnoc
+editor: ''
+ms.service: spring-cloud
+ms.topic: quickstart
+ms.date: 10/04/2019
+ms.author: v-vasuke
+ms.openlocfilehash: 632059710bf54847eb7a0a1aa388fd1409a3075a
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038975"
+---
+# <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Java Spring uygulaması başlatma
+
+Azure Spring Cloud, Azure 'da bir Spring Boot tabanlı mikro hizmetler uygulamasını kolayca çalıştırmanıza olanak sağlar.
+
+Bu hızlı başlangıçta, mevcut bir Java Spring Cloud uygulamasının Azure 'a nasıl dağıtılacağı gösterilir. İşiniz bittiğinde, uygulamayı Azure CLı aracılığıyla yönetmeye devam edebilir veya Azure portal kullanarak geçiş yapabilirsiniz.
+
+Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğreneceksiniz:
+
+> [!div class="checklist"]
+> * Hizmet örneği sağlama
+> * Bir örnek için yapılandırma sunucusu ayarlama
+> * Yerel olarak bir mikro Hizmetler uygulaması oluşturma
+> * Her mikro hizmeti dağıtma
+> * Uygulamanız için genel uç nokta atama
+
+## <a name="prerequisites"></a>Önkoşullar
+
+>[!Note]
+> Bu hızlı başlangıca başlamadan önce Azure aboneliğinizin Azure Spring Cloud 'a erişimi olduğundan emin olun.  Bir önizleme hizmeti olarak, aboneliğinizi izin verilenler-listemize ekleyebilmemiz için bize ulaşmamızı isteyeceğiz.  Azure Spring Cloud 'ın yeteneklerini araştırmak istiyorsanız lütfen bize e-posta ile ulaşın: azure-spring-cloud@service.microsoft.com.
+
+>[!TIP]
+> Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur.  Git, JDK, Maven ve Azure CLı 'nin en son sürümleri de dahil olmak üzere önceden yüklenmiş ortak Azure araçları vardır. Azure aboneliğinizde oturum açtıysanız, shell.azure.com adresinden [Azure Cloud Shell](https://shell.azure.com) başlatın.  [Belgelerimizi okuyarak](../cloud-shell/overview.md) Azure Cloud Shell hakkında daha fazla bilgi edinebilirsiniz
+
+Bu hızlı başlangıcı tamamlamak için:
+
+1. [Git'i yükleyin](https://git-scm.com/)
+2. [JDK 8 ' i yükler](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
+3. [Maven 3,0 veya üstünü yükler](https://maven.apache.org/download.cgi)
+4. [Azure CLI'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+5. [Azure aboneliğine kaydolma](https://azure.microsoft.com/free/)
+
+## <a name="install-the-azure-cli-extension"></a>Azure CLı uzantısını yükler
+
+Aşağıdaki komutu kullanarak Azure CLı için Azure yay bulutu uzantısını yükler
+
+```azurecli
+az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+```
+
+## <a name="provision-a-service-instance-on-the-azure-cli"></a>Azure CLı üzerinde bir hizmet örneği sağlama
+
+1. Azure CLı 'da oturum açın ve etkin aboneliğinizi seçin. Azure yay bulutu için beyaz listeye eklenen etkin aboneliği seçtiğinizden emin olun
+
+    ```azurecli
+        az login
+        az account list -o table
+        az account set --subscription
+    ```
+
+2. Azure yay bulut hizmetiniz için bir ad hazırlayın.  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
+
+3. Azure yay bulut hizmetinizi içeren bir kaynak grubu oluşturun.
+
+    ```azurecli
+        az group create --location eastus --name <resource group name>
+    ```
+    [Azure Kaynak Grupları](../azure-resource-manager/resource-group-overview.md) hakkında daha fazla bilgi edinin.
+
+4. Bir Azure CLı penceresi açın ve Azure Spring Cloud 'ın bir örneğini sağlamak için aşağıdaki komutları çalıştırın.
+
+    ```azurecli
+        az spring-cloud create -n <service name> -g <resource group name>
+    ```
+
+    Hizmet örneğinin dağıtılması yaklaşık beş dakika sürer.
+
+5. Aşağıdaki komutları kullanarak varsayılan kaynak grubu adınızı ve küme adınızı ayarlayın:
+
+    ```azurecli
+        az configure --defaults group=<service group name>
+        az configure --defaults spring-cloud=<service instance name>
+    ```
+
+## <a name="setup-your-configuration-server"></a>Yapılandırma sunucunuzu kurun
+
+Yapılandırma-sunucunuzu, projemizin git deposunun konumuyla güncelleştirin:
+
+```git
+az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics --label config
+```
+
+## <a name="build-the-microservices-applications-locally"></a>Mikro hizmet uygulamalarını yerel olarak oluşturma
+
+1. Yeni bir klasör oluşturun ve örnek uygulama deposunu Azure bulut hesabınıza kopyalayın.  
+
+    ```azurecli
+        mkdir source-code
+        git clone https://github.com/Azure-Samples/piggymetrics
+    ```
+
+2. Dizini değiştirin ve projeyi derleyin.
+
+    ```azurecli
+        cd PiggyMetrics
+        mvn clean package -D skipTests
+    ```
+
+Projenin derlenmesi yaklaşık 5 dakika sürer.  Tamamlandıktan sonra, ilgili klasörlerinde her bir hizmet için bireysel JAR dosyaları olmalıdır.
+
+## <a name="create-the-microservices"></a>Mikro hizmetleri oluşturma
+
+Önceki adımda oluşturulan JAR dosyalarını kullanarak yay bulutu mikro hizmetleri oluşturun. Üç mikro hizmet oluşturacaksınız: **Gateway**, **AUTH-Service**ve **Account-Service**.
+
+```azurecli
+az spring-cloud app create --name gateway
+az spring-cloud app create --name auth-service
+az spring-cloud app create --name account-service
+```
+
+>[!NOTE]
+> Belirtilen yapılandırma sunucusunun düzgün çalışması için uygulama adlarının, JARS adlarıyla tam olarak eşleşmesi gerekir.
+
+## <a name="deploy-applications-and-set-environment-variables"></a>Uygulamaları dağıtma ve ortam değişkenlerini ayarlama
+
+Uygulamalarımızı gerçekten Azure 'a dağıtmamız gerekiyor. Üç uygulamayı da dağıtmak için aşağıdaki komutları kullanın:
+
+```azurecli
+az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
+az spring-cloud app deploy -n account-service --jar-path ./account-service/target/account-service.jar
+az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
+```
+
+## <a name="assign-public-endpoint-to-gateway"></a>Ağ geçidine genel uç nokta ata
+
+Bir Web tarayıcısı aracılığıyla uygulamaya erişmek için bir yönteme ihtiyacımız var. Ağ Geçidi uygulamamız, aşağıdaki komut kullanılarak atanabilecek, herkese açık bir uç nokta gerektirir:
+
+```azurecli
+az spring-cloud app update -n gateway --is-public true
+```
+
+Son olarak, uygulamanın çalıştığını doğrulayabilmeniz için **ağ geçidi** uygulamasını genel IP 'si için sorgulayın:
+
+```azurecli
+az spring-cloud app show --name gateway | grep url
+```
+
+Plımetrik uygulamasının çalıştığını görmek için önceki komutun sunduğu URL 'ye gidin.
+
+## <a name="next-steps"></a>Sonraki Adımlar
+
+Bu hızlı başlangıçta, Azure CLı 'dan bir yay bulutu uygulaması dağıttık.  Azure Spring Cloud hakkında daha fazla bilgi edinmek için uygulamanızı dağıtıma hazırlama öğreticisiyle devam edin.
+
+> [!div class="nextstepaction"]
+> [Azure Spring Cloud uygulamanızı dağıtıma hazırlama](spring-cloud-tutorial-prepare-app-deployment.md)

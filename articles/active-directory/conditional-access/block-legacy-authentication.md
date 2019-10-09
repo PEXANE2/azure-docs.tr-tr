@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d227b4cf7090cdc3177c7045d6137f30a13f71b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f4e4dc33d670c5f6c5ebefa21ccf1a1ff941e913
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931965"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024584"
 ---
-# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Nasıl yapılır: Koşullu erişimle Azure AD 'de eski kimlik doğrulamasını engelleyin   
+# <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Azure AD 'de eski kimlik doğrulamasını engelleme   
 
 Kullanıcılarınıza bulut uygulamalarınıza kolay erişim sağlamak için Azure Active Directory (Azure AD) eski kimlik doğrulaması dahil olmak üzere çok çeşitli kimlik doğrulama protokollerini destekler. Ancak, eski protokoller Multi-Factor Authentication 'ı (MFA) desteklemez. MFA birçok ortamda, kimlik hırsızlığına yönelik ortak bir gereksinimdir. 
 
@@ -52,9 +52,9 @@ Bu bölümde, eski kimlik doğrulamasını engellemek için bir koşullu erişim
 
 Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanıcılarınızın eski kimlik doğrulaması kullanan uygulamalar olup olmadığını ve bunun genel dizininizi nasıl etkileyeceğini anlamanız gerekir. Azure AD oturum açma günlükleri, eski kimlik doğrulaması kullanıp kullandığınızı anlamak için kullanılabilir.
 
-1. **Azure Portal** > Azure Active Directoryoturum > **açma**işlemleri ' ne gidin.
-1. **Sütunlar** > **istemci uygulaması**' na tıklanarak gösterilmezse, istemci uygulaması sütununu ekleyin.
-1. Filtre > ekleme**istemci uygulaması** > **diğer istemciler** için tüm seçenekleri belirleyip **Uygula**' ya tıklayın.
+1. @No__t 3**oturum açma** **Azure Active Directory** **Azure Portal** >  ' e gidin.
+1. @No__t-1**Istemci uygulaması** **sütunlarına**tıklanarak gösterilmezse istemci uygulaması sütununu ekleyin.
+1. @No__t-1**Istemci uygulaması** Için **filtre ekleyin**> **diğer Istemciler** için tüm seçenekleri belirleyip **Uygula**' ya tıklayın.
 
 Filtreleme yalnızca eski kimlik doğrulama protokolleri tarafından yapılan oturum açma girişimlerini gösterir. Her bir bireysel oturum açma girişimine tıkladığınızda ek ayrıntılar gösterilecektir. **Temel bilgi** sekmesindeki **istemci uygulaması** alanı, hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir.
 
@@ -101,7 +101,7 @@ Daha fazla bilgi için bkz. [Yeni bir Ilkeyi nasıl dağıtmanız gerekir?](best
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
-**Diğer istemcileri** kullanarak erişimin engellenmesi, temel kimlik doğrulaması kullanarak Exchange Online PowerShell 'i de engeller.
+**Diğer istemcileri** kullanarak erişimin engellenmesi, Exchange Online PowerShell ve Dynamics 365 ' i temel kimlik doğrulaması kullanarak engeller.
 
 **Diğer istemciler** için bir ilkeyi yapılandırmak, kuruluşun tamamını spconnect gibi belirli istemcilerden engeller. Eski istemciler beklenmeyen yollarla kimlik doğrulaması yaptığından bu blok oluşur. Sorun, eski Office istemcileri gibi başlıca Office uygulamalarına uygulanmaz.
 

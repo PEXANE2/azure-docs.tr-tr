@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 083a7e7ad4ac40a7782936e664a9136d0452e93d
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 69fe370029cef391b8ee483ffdee5c588df41d58
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694673"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030665"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvar kurun
 Bu makalede, Linux 'ta kabuk betiği oluşturmaya yönelik bir laboratuvarın nasıl ayarlanacağı gösterilmektedir. Komut dosyası, yöneticilerin yinelenen görevleri önlemeyi sağlayan, sistem yönetiminin yararlı bir parçasıdır. Bu örnek senaryoda, sınıfı geleneksel Bash betiklerini ve gelişmiş betikleri içerir. Gelişmiş betikler, Bash komutlarını ve Ruby 'yi birleştiren betiklerdir. Bu yaklaşım, Ruby 'nin kabuğa ve Bash komutlarına karşı etkileşimde bulunmak için veri geçmesini sağlar. 
@@ -83,9 +83,11 @@ Bu bölümde, birkaç metin Düzenleyicisi 'nin nasıl yükleneceği gösterilme
 ## <a name="cost"></a>Maliyet 
 Bu laboratuvarın maliyetini tahmin etmek isterseniz, aşağıdaki örneği kullanabilirsiniz:
  
-20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atama için 10 saatlik kota içeren 25 öğrencideki bir sınıf için, laboratuvar fiyatı şöyle olacaktır: 25 öğrenci * (20 + 10) saat * 20 laboratuvar birimi * 0,01 ABD 150 doları
+20 saatlik zamanlanan sınıf süresi ve ev ödevi veya atamalar için 10 saatlik kota içeren 25 öğrenciye sahip bir sınıf için, laboratuvar fiyatı şöyle olacaktır: 
 
-Fiyatlandırma hakkında daha fazla ayrıntı için şu belgede bulunabilir: [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
+25 öğrenci * (20 + 10) saat * 20 laboratuvar birimi * 0,01 ABD Doları/150 saat
+
+Fiyatlandırma hakkında daha fazla bilgi için şu belgede bulunabilir: [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
 
 ## <a name="conclusion"></a>Sonuç
 Bu makale, komut dosyası sınıfları için Laboratuvar oluşturma adımlarında size yardımcı olacak. Bu makale, Linux makinesinde Ruby betik araçları ayarlamaya odaklanırken, Linux üzerinde Python gibi diğer betik sınıfları için de aynı kurulum kullanılabilir.

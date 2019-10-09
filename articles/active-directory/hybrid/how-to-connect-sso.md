@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Kesintisiz çoklu oturum açma | Microsoft Docs'
+title: 'Azure AD Connect: sorunsuz çoklu oturum açma | Microsoft Docs'
 description: Bu konuda, Azure Active Directory (Azure AD) sorunsuz çoklu oturum açma ve Şirket ağınızdaki kurumsal masaüstü kullanıcıları için isteğe bağlı çoklu oturum açma sağlamanıza nasıl izin verdiği açıklanmaktadır.
 services: active-directory
 keywords: Azure AD Connect nedir, yükler Active Directory, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86895ab315784c49c2b240badb249dce57ae958a
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 7791e7b50a963d2f92a2cbc460e36f9e83bb1b52
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622570"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025708"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Kesintisiz çoklu oturum açma Azure Active Directory
 
@@ -51,10 +51,10 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 ## <a name="feature-highlights"></a>Özellik vurguları
 
-- Oturum açma Kullanıcı adı, şirket içi varsayılan Kullanıcı adı (`userPrincipalName`) veya Azure AD Connect (`Alternate ID`) içinde yapılandırılmış başka bir öznitelik olabilir. Her iki kullanım çalışması da çalışır çünkü sorunsuz SSO `securityIdentifier` , Azure AD 'de karşılık gelen Kullanıcı nesnesini aramak için Kerberos anahtarındaki talebi kullanır.
+- Oturum açma Kullanıcı adı, şirket içi varsayılan Kullanıcı adı (`userPrincipalName`) ya da Azure AD Connect (`Alternate ID`) yapılandırılmış başka bir öznitelik olabilir. Her iki kullanım çalışması da çalışır çünkü sorunsuz SSO, Azure AD 'de karşılık gelen Kullanıcı nesnesini aramak için Kerberos anahtarındaki `securityIdentifier` talebini kullanır.
 - Sorunsuz SSO, fırsatçı bir özelliktir. Herhangi bir nedenle başarısız olursa, Kullanıcı oturum açma deneyimi normal davranışına geri döner. Yani, kullanıcının oturum açma sayfasında parolasını girmesi gerekir.
-- Bir uygulama `https://myapps.microsoft.com/contoso.com`(örneğin,) bir `domain_hint` (OpenID Connect) veya `whr` (SAML) parametresini ilettiğinde, kiracınızı tanımlama veya `login_hint` kullanıcıyı parametre tanımlama, Azure AD oturum açma isteğinde, kullanıcılar Kullanıcı adları veya parolalar girilmeksizin otomatik olarak oturum açıldı.
-- Kullanıcılar aynı zamanda bir `https://contoso.sharepoint.com`uygulama (örneğin,) Azure AD uç noktalarına kiracı `https://login.microsoftonline.com/contoso.com/<..>` `https://login.microsoftonline.com/<tenant_ID>/<..>` olarak ayarlanan oturum açma isteklerini (örneğin, Azure `https://login.microsoftonline.com/common/<...>` ad 'nin ortak uç noktası yerine) gönderirse, bu, .
+- Bir uygulama (örneğin, `https://myapps.microsoft.com/contoso.com`), kiracınızı tanımlayan bir `domain_hint` (OpenID Connect) veya `whr` (SAML) parametresini ya da `login_hint` parametresini (kullanıcıyı tanımlama), Azure AD oturum açma isteğinde otomatik olarak oturum açanlar olmadan oturum açabilirler Kullanıcı adları veya parolalar girme.
+- Ayrıca, bir uygulama (örneğin, `https://contoso.sharepoint.com`) Azure AD uç noktalarına kiracı olarak ayarlanan oturum açma isteklerini, `https://login.microsoftonline.com/contoso.com/<..>` veya `https://login.microsoftonline.com/<tenant_ID>/<..>`-diğer bir deyişle, `https://login.microsoftonline.com/common/<...>`.
 - Oturumu kapatma destekleniyor. Bu, kullanıcıların sorunsuz SSO 'yu otomatik olarak kullanarak oturum açmak yerine farklı bir Azure AD hesabı seçmesine olanak sağlar.
 - 16.0.8730. xxxx ve üzeri sürümleriyle Office 365 Win32 istemcileri (Outlook, Word, Excel ve diğerleri) etkileşimli olmayan bir akış kullanılarak desteklenir. OneDrive için, [OneDrive sessiz yapılandırma özelliğini](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bir sessiz oturum açma deneyimi için etkinleştirmeniz gerekir.
 - Bu, Azure AD Connect aracılığıyla etkinleştirilebilir.
@@ -63,19 +63,19 @@ Kesintisiz SSO, [Parola karması eşitlemesi](how-to-connect-password-hash-synch
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Yes\*|Hayır|Evet|Yes\*\*\*|Yok
-|Windows 8.1|Yes\*|Yok|Evet|Yes\*\*\*|Yok
-|Windows 8|Yes\*|Yok|Evet|Yes\*\*\*|Yok
-|Windows 7|Yes\*|Yok|Evet|Yes\*\*\*|Yok
-|Windows Server 2012 R2 veya üzeri|Yes\*\*|Yok|Evet|Yes\*\*\*|Yok
-|Mac OS X|Yok|Yok|Yes\*\*\*|Yes\*\*\*|Yes\*\*\*
+|Windows 10|Evet @ no__t-0|Yes|Yes|Evet @ no__t-0 @ no__t-1 @ no__t-2|Yok
+|Windows 8.1|Evet @ no__t-0|Yok|Yes|Evet @ no__t-0 @ no__t-1 @ no__t-2|Yok
+|Windows 8|Evet @ no__t-0|Yok|Yes|Evet @ no__t-0 @ no__t-1 @ no__t-2|Yok
+|Windows 7|Evet @ no__t-0|Yok|Yes|Evet @ no__t-0 @ no__t-1 @ no__t-2|Yok
+|Windows Server 2012 R2 veya üzeri|Evet @ no__t-0 @ no__t-1|Yok|Yes|Evet @ no__t-0 @ no__t-1 @ no__t-2|Yok
+|Mac OS X|Yok|Yok|Evet @ no__t-0 @ no__t-1 @ no__t-2|Evet @ no__t-0 @ no__t-1 @ no__t-2|Evet @ no__t-0 @ no__t-1 @ no__t-2
 
 
 \*Internet Explorer sürümleri 10 veya üzerini gerektirir
 
-\*\*Internet Explorer sürümleri 10 veya üstünü gerektirir. Gelişmiş korumalı modu devre dışı bırak
+\* @ no__t-1ınternet Explorer sürümleri 10 veya üstünü gerektirir. Gelişmiş korumalı modu devre dışı bırak
 
-\*\*\*[Ek yapılandırma](how-to-connect-sso-quick-start.md#browser-considerations) gerektirir
+\* @ no__t-1 @ no__t- [2ek yapılandırma](how-to-connect-sso-quick-start.md#browser-considerations) gerektirir
 
 >[!NOTE]
 >Windows 10 ' da, Azure AD 'ye yönelik en iyi çoklu oturum açma deneyimi için [Azure AD JOIN](../active-directory-azureadjoin-overview.md) 'in kullanılması önerilir.

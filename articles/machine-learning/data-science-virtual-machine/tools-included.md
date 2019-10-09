@@ -1,5 +1,5 @@
 ---
-title: DSVM 'ye dahil edilen araçlar
+title: DSVM'ye Dahil Edilen Araçlar
 titleSuffix: Azure Data Science Virtual Machine tools
 description: Windows ve Ubuntu DSVM görüntülerine dahil olan araçların listesi
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
@@ -10,12 +10,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
 ms.date: 09/27/2019
-ms.openlocfilehash: eef8ddf31f038afffddfa6b818c266c1cb4a3d44
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 68c48bd4288b80d6cab515aa981d0f72461c0849
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973666"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035268"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi hangi araçlar dahildir?
 
@@ -40,7 +40,7 @@ Aşağıda, her aracın nasıl yapılandırıldığını anlamak için bağlant�
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [mini sihirli](https://github.com/jupyter-incubator/sparkmagic) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (Yalnızca Ubuntu) | |
 |     &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 parlak r     |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | |
 | JupyterHub (çok kullanıcılı Not defteri sunucusu)|<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | |
-| JupyterLab (çok kullanıcılı Not defteri sunucusu) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (Yalnızca Ubuntu) | |
+| JupyterLab (çok kullanıcılı Not defteri sunucusu) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> | |
 | Geliştirme araçları, IDEs ve kod düzenleyicileri:| | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) with git eklentisi, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server veri araçları, [Node. js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs)ve [Visual Studio için R araçları (rtvs)](https://microsoft.github.io/RTVS-docs/) |<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span>   | [DSVM 'de Visual Studio](./dsvm-tools-development.md#visual-studio-2017) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio Code](https://code.visualstudio.com/) |<span class='green-check'>&#9989;</span></br> (1.31.1) |<span class='green-check'>&#9989;</span></br> (1,31) | [DSVM üzerinde Visual Studio Code](./dsvm-tools-development.md#visual-studio-code) |

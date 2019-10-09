@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d4b7733ce3ac6db4c39f632401661eefce11d20c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a6d0cba41e694e154da32a878cb4c076aae13e65
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827575"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034716"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağıyla tümleştirin
 Bu belgede Azure App Service sanal ağ tümleştirme özelliği ve [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)uygulamalarla nasıl ayarlanacağı açıklanmaktadır. [Azure sanal ağları][VNETOverview] (VNet), internet 'ten yönlendirilebilir olmayan bir ağa Azure kaynaklarınızın çoğunu yerleştirme izni verir.  
@@ -37,7 +37,7 @@ VNet tümleştirme özelliğine iki biçim vardır
 
 Bir uygulama tek seferde VNet tümleştirme özelliğinin yalnızca bir biçimini kullanabilir. Bu soruyu daha sonra kullanmanız gereken özelliktir. Birçok şey için kullanabilirsiniz. Farklılık göstericiler şunlardır:
 
-| Gidermek  | Çözüm | 
+| Sorun  | Çözüm | 
 |----------|----------|
 | Aynı bölgedeki bir RFC 1918 adresine (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) ulaşmak ister | bölgesel VNet tümleştirmesi |
 | Klasik VNet veya başka bir bölgedeki VNet 'teki kaynaklara ulaşmak ister | Ağ Geçidi gerekli VNet tümleştirmesi |
@@ -63,6 +63,10 @@ VNet tümleştirmesinin şunları dahil desteklemediği bazı şeyler vardır:
 * NetBios
 
 ## <a name="regional-vnet-integration"></a>Bölgesel VNet tümleştirmesi 
+
+> [!NOTE]
+> Eşleme, Linux tabanlı App Service için henüz kullanılabilir değil.
+>
 
 VNet tümleştirmesi, uygulamanızla aynı bölgedeki sanal ağlar ile kullanıldığında, en az 32 adresi olan bir temsilci alt ağın kullanılmasını gerektirir. Alt ağ başka bir şey için kullanılamaz. Uygulamanızdan gerçekleştirilen giden çağrılar, temsilcili alt ağdaki adreslerden yapılır. VNet tümleştirmesinin bu sürümünü kullandığınızda, sanal ağınızdaki adreslerden çağrılar yapılır. Sanal ağınızdaki adreslerin kullanılması, uygulamanızın şunları yapmasını sağlar:
 
@@ -108,11 +112,11 @@ Bölgesel VNet tümleştirmesi, tümleştirme alt ağınızın Microsoft. Web 'e
 Uygulamanızın VNet bağlantısını kesmek için **bağlantıyı kes**' i seçin. Bu işlem Web uygulamanızı yeniden başlatacak. 
 
 
-#### <a name="web-app-for-containers"></a>Kapsayıcılar için Web App
+#### <a name="web-app-for-containers"></a>Kapsayıcılar için Web Apps
 
 Yerleşik görüntülerle Linux üzerinde App Service kullanıyorsanız, bölgesel VNet tümleştirme özelliği ek değişiklik yapılmadan işe yarar. Kapsayıcılar için Web App kullanıyorsanız, VNet tümleştirmesini kullanabilmeniz için Docker görüntünüzü değiştirmeniz gerekir. Docker yansımanıza, sabit kodlanmış bir bağlantı noktası numarası kullanmak yerine ana Web sunucusunun dinleme bağlantı noktası olarak bağlantı noktası ortam değişkenini kullanın. Bağlantı noktası ortam değişkeni, kapsayıcı başlangıç saatinde App Service platformu tarafından otomatik olarak ayarlanır. SSH kullanıyorsanız, SSH Daemon 'ın bölgesel VNet tümleştirmesi kullanılırken SSH_PORT ortam değişkeni tarafından belirtilen bağlantı noktası numarasını dinlemek üzere yapılandırılması gerekir.
 
-### <a name="service-endpoints"></a>Hizmet uç noktaları
+### <a name="service-endpoints"></a>Hizmet Uç Noktaları
 
 Yeni VNet tümleştirme özelliği, hizmet uç noktalarını kullanmanıza olanak sağlar.  Hizmet uç noktalarını uygulamanızla birlikte kullanmak için, seçili bir sanal ağa bağlanmak üzere yeni VNet tümleştirmesini kullanın ve ardından tümleştirme için kullandığınız alt ağdaki hizmet uç noktalarını yapılandırın. 
 
@@ -121,7 +125,7 @@ Yeni VNet tümleştirme özelliği, hizmet uç noktalarını kullanmanıza olana
 
 App Service uygulamalar çalışan rollerinde barındırılır. Temel ve daha yüksek fiyatlandırma planları, aynı çalışanlar üzerinde çalışan başka müşteri iş yükleri bulunmayan ayrılmış barındırma planlardır. VNet tümleştirmesi, yetkilendirilmiş alt ağdaki adreslerle sanal arabirimler bağlayarak işe yarar. Kimden adresi sanal ağınız içinde olduğundan, VNET 'iniz içindeki bir VM 'de olduğu gibi, sanal ağınız üzerinde veya içinde birçok şeyin erişimi vardır. Ağ uygulamasının VNet 'iniz üzerinde bir VM çalıştırmasının dışında ve bu özellik kullanılırken bazı ağ özellikleri henüz kullanılamaz.
 
-![VNet tümleştirmesi](media/web-sites-integrate-with-vnet/vnet-integration.png)
+![Sanal Ağ Tümleştirmesi](media/web-sites-integrate-with-vnet/vnet-integration.png)
 
 VNet tümleştirmesi etkinleştirildiğinde, uygulamanız yine de normal olarak aynı kanallar üzerinden İnternet 'e giden çağrılar yapmaya devam edecektir. Uygulama özellikleri portalında listelenen giden adresler hala uygulamanız tarafından kullanılan adreslerdir. Uygulamanız için değişiklikler, hizmet uç noktası güvenliği sağlanmış hizmetler veya RFC 1918 adresleri için de sanal ağınıza gider. 
 
@@ -143,9 +147,9 @@ Ağ Geçidi gereken VNet tümleştirme özelliği:
 Bu özellik şunları desteklemez:
 * Linux uygulamalarıyla kullanma
 * ExpressRoute üzerinden kaynaklara erişme 
-* Hizmet uç noktaları genelinde kaynaklara erişme 
+* Hizmet Uç Noktaları üzerinden kaynaklara erişme 
 
-### <a name="getting-started"></a>Başlarken
+### <a name="getting-started"></a>Başlangıç
 
 Web uygulamanızı bir sanal ağa bağlamadan önce göz önünde bulundurmanız gereken bazı noktalar şunlardır:
 
@@ -254,7 +258,7 @@ Ağ Geçidi gerekli VNet tümleştirme özelliğinin kullanımına yönelik üç
 Özelliği kolayca ayarlanabilir, bu da deneyiminizin ücretsiz olacağı anlamına gelmez. İstenen uç noktanıza erişmede sorun yaşamanız gerekir, bu, uygulama konsolundan bağlantıyı test etmek için kullanabileceğiniz bazı yardımcı programlar vardır. Kullanabileceğiniz iki konsol vardır. Birisi kudu konsoludur ve diğeri Azure portal konsoludur. Uygulamanızın kudu konsoluna ulaşmak için Araçlar-> kudu ' ye gidin. Ayrıca, Kudo konsoluna [SiteName]. scm. azurewebsites. net adresinden ulaşabilirsiniz. Web sitesi yüklendiğinde, hata ayıklama konsolu sekmesine gidin. Daha sonra Azure portal barındırılan konsola ulaşmak için Araçlar-> konsoluna gidin. 
 
 #### <a name="tools"></a>Araçlar
-Araçlar **ping**, **nslookup** ve **tracert** , güvenlik kısıtlamaları nedeniyle konsolda çalışmaz. Void 'yi dolduracak şekilde iki ayrı araç eklenmiştir. DNS işlevselliğini test etmek için, nameresolver. exe adlı bir araç ekledik. Sözdizimi şöyledir:
+Araçlar **ping**, **nslookup** ve **tracert** , güvenlik kısıtlamaları nedeniyle konsolda çalışmaz. Void 'yi dolduracak şekilde iki ayrı araç eklenmiştir. DNS işlevselliğini test etmek için, nameresolver. exe adlı bir araç ekledik. Söz dizimi aşağıdaki gibidir:
 
     nameresolver.exe hostname [optional: DNS Server]
 
@@ -298,7 +302,7 @@ Uygulamanızın gerçekten kullanacağı adresi bilmiyorsanız unutmayın. Tüml
 
 Ek hata ayıklama adımları şunlardır:
 
-* VNet 'iniz içindeki bir VM 'ye bağlanın ve kaynak konağınız üzerinde bağlantı noktasını buradan ulaşmaya çalışın. TCP erişimini test etmek için PowerShell komut **testi-NetConnection**komutunu kullanın. Sözdizimi şöyledir:
+* VNet 'iniz içindeki bir VM 'ye bağlanın ve kaynak konağınız üzerinde bağlantı noktasını buradan ulaşmaya çalışın. TCP erişimini test etmek için PowerShell komut **testi-NetConnection**komutunu kullanın. Söz dizimi aşağıdaki gibidir:
 
       test-netconnection hostname [optional: -Port]
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5f10bb2062d7c805b485d5cfbfe8989a6aee0995
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: ae8421ca9e3705d697e9638e80fc61f853ff9d28
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162227"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028286"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services kasasını silme
 
@@ -44,7 +44,7 @@ Senaryo | Kasayı silmek için bağımlılıkları kaldırma adımları |
 Azure Backup Aracısı kullanılarak korunan şirket içi dosya ve Klasörlerim var ve Azure 'a yedekleniyor | [Mars yönetim konsolundan yedekleme öğelerini silme](#delete-backup-items-from-the-mars-management-console) adımlarını gerçekleştirin.
 Azure 'da MABS (Microsoft Azure Backup Server) veya DPM (System Center Data Protection Manager) kullanılarak korunan şirket içi makinelerim var | [MABS yönetim konsolundan yedekleme öğelerini silme](#delete-backup-items-from-the-mabs-management-console) adımlarını gerçekleştirin.
 Bulutta korumalı öğeler var (örneğin, bir laaS sanal makinesi veya Azure dosya paylaşımında)  | [Bulutta korunan öğeleri silme](#delete-protected-items-in-the-cloud) adımlarını uygulayın
-Hem şirket içinde hem de bulutta korumalı Öğelerim var | Aşağıdaki bölümlerde bulunan adımları aşağıdaki sırayla gerçekleştirin: <br> 1. [Bulutta korunan öğeleri silme](#delete-protected-items-in-the-cloud)<br> 2. [MARS yönetim konsolundan yedekleme öğelerini silme](#delete-backup-items-from-the-mars-management-console) <br> 3. [MABS yönetim konsolundan yedekleme öğelerini silme](#delete-backup-items-from-the-mabs-management-console)
+Hem şirket içinde hem de bulutta korumalı Öğelerim var | Aşağıdaki bölümlerde bulunan adımları aşağıdaki sırayla gerçekleştirin: <br> 1. [buluttaki korumalı öğeleri silme](#delete-protected-items-in-the-cloud)<br> 2. [Mars yönetim konsolundan yedekleme öğelerini silme](#delete-backup-items-from-the-mars-management-console) <br> 3. [MABS yönetim konsolundan yedekleme öğelerini silme](#delete-backup-items-from-the-mabs-management-console)
 Şirket içinde veya bulutta herhangi bir korumalı öğe yok; Ancak yine de kasa silme hatası alıyorum | [Azure Resource Manager kullanarak kurtarma hizmetleri kasasını silme](#delete-the-recovery-services-vault-by-using-azure-resource-manager) bölümündeki adımları gerçekleştirin
 
 
@@ -68,7 +68,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 
          ![Yedekleme verilerini sil bölmesi.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-5. **Bildirim** simgesini kontrol edin: ![Bildirim simgesi.](./media/backup-azure-delete-vault/messages.png) İşlem tamamlandıktan sonra hizmet aşağıdaki iletiyi görüntüler: *Yedekleme durduruluyor ve yedekleme verileri siliniyor "* Yedekleme öğesi *"* . *Işlem başarıyla tamamlandı*.
+5. **Bildirim simgesine bakın** : ![bildirim simgesi. ](./media/backup-azure-delete-vault/messages.png) İşlem tamamlandıktan sonra hizmet şu iletiyi görüntüler: *yedekleme durduruluyor ve "yedekleme öğesi" için yedekleme verileri siliniyor*. *Işlem başarıyla tamamlandı*.
 6. Yedekleme öğesinin silindiğinden emin olmak için **yedekleme öğeleri** menüsünde **Yenile** ' yi seçin.
 
       ![Yedekleme öğelerini silme sayfası.](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -84,7 +84,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 
         ![MARS için, kendi panosunu açmak için kasanızı seçin.](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
-      - MABS veya DPM için **yedekleme yönetim sunucuları**' nı seçin. Ardından, silmek istediğiniz sunucuyu seçin. 
+      - MABS veya DPM için **yedekleme yönetim sunucuları**' nı seçin. Ardından, silmek istediğiniz sunucuyu seçin. 
 
 
           ![MABS için, kendi panosunu açmak için kasanızı seçin.](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
@@ -102,7 +102,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için aşağıdaki adımları
 4. Onay onay kutusunu seçin ve **Sil**' i seçin.
 
 
-5. Yedekleme verilerini ![silmebildirimsimgesine](./media/backup-azure-delete-vault/messages.png)bakın. İşlem tamamlandıktan sonra hizmet şu iletiyi görüntüler: *Yedekleme durduruluyor ve "yedekleme öğesi" için yedekleme verileri siliniyor.* *Işlem başarıyla tamamlandı*.
+5. **Bildirim** simgesine bakın ![Yedekleme verilerini sil @ no__t-2. İşlem tamamlandıktan sonra hizmet şu iletiyi görüntüler: *yedekleme durduruluyor ve "yedekleme öğesi" için yedekleme verilerini silme.* *Işlem başarıyla tamamlandı*.
 6. Yedekleme öğesinin silindiğinden emin olmak için **yedekleme öğeleri** menüsünde **Yenile** ' yi seçin.
 
 Bu işlem tamamlandıktan sonra, yedekleme öğelerini yönetim konsolundan silebilirsiniz:
@@ -122,13 +122,13 @@ Bu işlem tamamlandıktan sonra, yedekleme öğelerini yönetim konsolundan sile
 
     ![Zamanlanmış bir yedeklemeyi durdurun.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. El ile oluşturmanız gereken bir güvenlik PIN 'ı (kişisel kimlik numarası) girmeniz istenir. Bunu yapmak için öncelikle Azure portal oturum açın.
-5. **Kurtarma Hizmetleri Kasası** > **ayarları** > **özellikleri**' ne gidin.
+5. **Kurtarma Hizmetleri kasası** > **ayarları** > **özelliklerine**gidin.
 6. **GÜVENLIK PIN**'ı altında **Oluştur**' u seçin. Bu PIN 'ı kopyalayın. PIN yalnızca beş dakika için geçerlidir.
 7. Yönetim konsolunda PIN 'i yapıştırın ve **Tamam**' ı seçin.
 
     ![Güvenlik PIN 'ı oluştur.](./media/backup-azure-delete-vault/security-pin.png)
 
-8. **Yedekleme Ilerlemesini Değiştir** sayfasında, aşağıdaki ileti görünür: *Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir.*  
+8. **Yedekleme Ilerlemesini Değiştir** sayfasında aşağıdaki ileti görüntülenir: *silinen yedekleme verileri 14 gün boyunca saklanacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir.*  
 
     ![Yedekleme altyapısını silin.](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
@@ -212,7 +212,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için:
        [-Confirm] 
        [<CommonParameters>] 
     ```
-    [](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0) Yedekleme korumalı bir öğe için korumayı devre dışı bırakır hakkında daha fazla bilgi edinin. 
+    [Daha fazla bilgi](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0) Hakkında yedekleme korumalı bir öğe için korumayı devre dışı bırakır. 
 
 - Azure 'a yedekleme Azure Backup Aracısı (MARS) kullanılarak korunan şirket içi dosyalar ve klasörler için, her bir MARS PowerShell modülündeki yedeklenen verileri silmek için aşağıdaki PowerShell komutunu kullanın:
 
@@ -222,7 +222,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için:
 
     Aşağıdaki istemin görüntüleneceği Gönderi:
      
-    *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir. <br/> [Y] Evet [A] Evet [A] Evet [A] Hayır [N] tüm [S] askıya alma [?] Yardım (varsayılan: "Y"):*
+    *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir. <br/> [Y] Evet [A] Evet [A] Evet [A] Hayır [N] Hayır [S] Hayır [S] Hayır [?] Yardım (varsayılan: "Y"):*
 
 
 - MABS (Microsoft Azure Backup Server) veya DPM 'den Azure 'a (System Center Data Protection Manager) korunan şirket içi makineler için, Azure 'daki yedeklenen verileri silmek üzere aşağıdaki komutu kullanın.
@@ -233,7 +233,7 @@ Korumayı durdurmak ve yedekleme verilerini silmek için:
 
     Aşağıdaki istemin görüntüleneceği Gönderi: 
          
-   *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir. <br/> [Y] Evet [A] Evet [A] Evet [A] Hayır [N] tüm [S] askıya alma [?] Yardım (varsayılan: "Y"):*
+   *Microsoft Azure Backup bu yedekleme ilkesini kaldırmak istediğinizden emin misiniz? Silinen yedekleme verileri 14 gün boyunca tutulacaktır. Bu süreden sonra, yedekleme verileri kalıcı olarak silinir. <br/> [Y] Evet [A] Evet [A] Evet [A] Hayır [N] Hayır [S] Hayır [S] Hayır [?] Yardım (varsayılan: "Y"):*
 
 Yedeklenen verileri sildikten sonra şirket içi kapsayıcıların ve yönetim sunucularının kaydını kaldırın. 
 
@@ -344,7 +344,7 @@ ARMClient komutu hakkında daha fazla bilgi için, [ARMCLIENT Benioku](https://g
    ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
-2. Kasa boş değilse aşağıdaki hata iletisini alırsınız: *Bu kasada mevcut kaynaklar olduğundan kasa silinemiyor.* Bir kasadaki korumalı bir öğeyi veya kapsayıcıyı kaldırmak için aşağıdaki komutu çalıştırın:
+2. Kasa boş değilse şu hata iletisini alırsınız: *Bu kasada mevcut kaynaklar olduğundan kasa silinemez.* Bir kasadaki korumalı bir öğeyi veya kapsayıcıyı kaldırmak için aşağıdaki komutu çalıştırın:
 
    ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01

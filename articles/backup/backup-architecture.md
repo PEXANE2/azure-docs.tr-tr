@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881863"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035254"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup mimarisi ve bileşenler
 
-Microsoft Azure bulut platformuna veri yedeklemek için [Azure Backup hizmeti](backup-overview.md) kullanabilirsiniz. Bu makalede Azure Backup mimarisi, bileşenler ve süreçler özetlenmektedir. 
+Microsoft Azure bulut platformuna veri yedeklemek için [Azure Backup hizmeti](backup-overview.md) kullanabilirsiniz. Bu makalede Azure Backup mimarisi, bileşenler ve süreçler özetlenmektedir.
 
 ## <a name="what-does-azure-backup-do"></a>Azure Backup ne yapar?
 
@@ -27,13 +27,13 @@ Azure Backup, şirket içi makinelerde ve Azure sanal makine (VM) örneklerinde 
 Makineleri ve verileri bir dizi yöntemi kullanarak yedekleyebilirsiniz:
 
 - **Şirket içi makineleri yedekleme**:
-    - Şirket içi Windows makinelerini, Azure Backup Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanarak doğrudan Azure 'a yedekleyebilirsiniz. Linux makineleri desteklenmez.
-    - Şirket içi makineleri, bir yedekleme sunucusuna (System Center Data Protection Manager (DPM) veya Microsoft Azure Backup sunucusu (MABS)) yedekleyebilirsiniz. Daha sonra yedekleme sunucusunu Azure 'da bir kurtarma hizmetleri kasasına yedekleyebilirsiniz.
+  - Şirket içi Windows makinelerini, Azure Backup Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanarak doğrudan Azure 'a yedekleyebilirsiniz. Linux makineleri desteklenmez.
+  - Şirket içi makineleri, System Center Data Protection Manager (DPM) veya Microsoft Azure Backup sunucusu (MABS) olan bir yedekleme sunucusuna yedekleyebilirsiniz. Daha sonra yedekleme sunucusunu Azure 'da bir kurtarma hizmetleri kasasına yedekleyebilirsiniz.
 
 - **Azure VM 'Lerini yedekleme**:
-    - Azure VM 'lerini doğrudan yedekleyebilirsiniz. Azure Backup, VM üzerinde çalışan Azure VM aracısına bir yedekleme uzantısı yüklüyor. Bu uzantı tüm VM 'yi yedekler.
-    - MARS Aracısı 'nı çalıştırarak, Azure VM 'de belirli dosya ve klasörleri yedekleyebilirsiniz.
-    - Azure VM 'lerini Azure 'da çalışan MABS 'lere yedekleyebilir ve ardından MABS 'yi bir kurtarma hizmetleri kasasına yedekleyebilirsiniz.
+  - Azure VM 'lerini doğrudan yedekleyebilirsiniz. Azure Backup, VM üzerinde çalışan Azure VM aracısına bir yedekleme uzantısı yüklüyor. Bu uzantı tüm VM 'yi yedekler.
+  - MARS Aracısı 'nı çalıştırarak, Azure VM 'de belirli dosya ve klasörleri yedekleyebilirsiniz.
+  - Azure VM 'lerini Azure 'da çalışan MABS 'lere yedekleyebilir ve ardından MABS 'yi bir kurtarma hizmetleri kasasına yedekleyebilirsiniz.
 
 [Neleri yedekleyebileceğiniz](backup-overview.md) ve [Desteklenen yedekleme senaryoları](backup-support-matrix.md)hakkında daha fazla bilgi edinin.
 
@@ -48,17 +48,17 @@ Kurtarma Hizmetleri kasaları aşağıdaki özelliklere sahiptir:
 - Azure VM 'Leri ve şirket içi makineler dahil olmak üzere bir kasadaki yedeklenen öğeleri izleyebilirsiniz.
 - Azure [rol tabanlı erişim denetimi (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)ile kasa erişimini yönetebilirsiniz.
 - Kasadaki verilerin artıklık için nasıl çoğaltılacağı belirtirsiniz:
-    - **Yerel olarak yedekli depolama (LRS)** : Bir veri merkezinde hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
-    - **Coğrafi olarak yedekli depolama (GRS)** : Bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). 
-    - Varsayılan olarak, kurtarma hizmetleri kasaları GRS kullanır. 
+  - **Yerel olarak yedekli depolama (LRS)** : bir veri merkezindeki hataya karşı korumak için LRS kullanabilirsiniz. LRS, verileri bir depolama ölçek birimine çoğaltır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs).
+  - **Coğrafi olarak yedekli depolama (GRS)** : bölge genelinde kesintilere karşı koruma sağlamak için GRS kullanabilirsiniz. GRS, verilerinizi ikincil bir bölgeye çoğaltır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
+  - Varsayılan olarak, kurtarma hizmetleri kasaları GRS kullanır.
 
 ## <a name="backup-agents"></a>Yedekleme aracıları
 
 Azure Backup, ne tür bir makinenin yedeklendiğine bağlı olarak farklı yedekleme aracıları sağlar:
 
-**Aracı** | **Ayrıntılar** 
---- | --- 
-**MARS Aracısı** | <ul><li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için tek bir şirket içi Windows Server makinesi üzerinde çalışır.</li> <li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için Azure VM 'lerde çalışır.</li> <li>DPM/mabs sunucularında DPM/MABS yerel depolama diskini Azure 'a yedeklemek için çalışır.</li></ul> 
+**Aracı** | **Ayrıntılar**
+--- | ---
+**MARS Aracısı** | <ul><li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için tek bir şirket içi Windows Server makinesi üzerinde çalışır.</li> <li>Dosyaları, klasörleri ve sistem durumunu yedeklemek için Azure VM 'lerde çalışır.</li> <li>DPM/mabs sunucularında DPM/MABS yerel depolama diskini Azure 'a yedeklemek için çalışır.</li></ul>
 **Azure VM Uzantısı** | Azure VM 'lerde çalışarak bunları bir kasaya yedekler.
 
 ## <a name="backup-types"></a>Yedekleme türleri
@@ -69,7 +69,7 @@ Aşağıdaki tabloda farklı yedekleme türleri ve ne zaman kullanıldıkları a
 --- | --- | ---
 **Tümünü** | Tam yedekleme, tüm veri kaynağını içerir. Değişiklik veya artımlı yedeklerden daha fazla ağ bant genişliği alır. | İlk yedekleme için kullanılır.
 **Di** |  Değişiklik yedeklemesi, ilk tam yedeklemeden bu yana değiştirilen blokları depolar. Daha küçük bir ağ ve depolama alanı kullanır ve değiştirilmemiş verilerin gereksiz kopyalarını tutar.<br/><br/> Daha sonraki yedeklemeler arasında değişmeyen veri blokları aktarıldığından ve depolandığından, verimsiz. | Azure Backup tarafından kullanılmıyor.
-**Kaydetmenin** | Artımlı yedekleme yalnızca önceki yedeklemeden bu yana değiştirilen veri bloklarını depolar. Yüksek depolama ve ağ verimliliği. <br/><br/> Artımlı yedekleme ile tam yedeklemeler ile ek bir şekilde erişmeniz gerekmez. | DPM/MABS tarafından Disk yedeklemeleri için kullanılır ve tüm Azure yedeklemelerinde kullanılır.
+**Kaydetmenin** | Artımlı yedekleme yalnızca önceki yedeklemeden bu yana değiştirilen veri bloklarını depolar. Yüksek depolama ve ağ verimliliği. <br/><br/> Artımlı yedekleme ile tam yedeklemeler ile ek bir şekilde erişmeniz gerekmez. | DPM/MABS tarafından Disk yedeklemeleri için kullanılır ve tüm Azure yedeklemelerinde kullanılır. SQL Server yedekleme için kullanılmıyor.
 
 ## <a name="sql-server-backup-types"></a>SQL Server yedekleme türleri
 
@@ -88,7 +88,7 @@ Depolama alanı tüketimi, kurtarma süresi hedefi (RTO) ve ağ tüketimi her bi
 - A veri kaynağı, aylık olarak yedeklenen, a1-A10 olan 10 depolama blobundan oluşur.
 - A2, A3, A4 ve A9 blokları ilk ayda, A5 bloku ise sonraki ayda değişmektedir.
 - İkinci ayda değişiklik yedeklemeleri için a2, a3, A4 ve A9 blokları yedeklenir. Üçüncü ayda değiştirilen A5 blokuna ek olarak aynı bloklar tekrar yedeklenir. Sonraki tam yedeklemeye kadar değiştirilen bloklar yedeklenmeye devam eder.
-- Artımlı yedeklemeler için, ikinci ayda, a2, a3, A4 ve A9 blokları değiştirilmiş ve aktarıldı olarak işaretlenir. Üçüncü ayda yalnızca değiştirilen A5 bloku işaretlenir ve aktarılır. 
+- Artımlı yedeklemeler için, ikinci ayda, a2, a3, A4 ve A9 blokları değiştirilmiş ve aktarıldı olarak işaretlenir. Üçüncü ayda yalnızca değiştirilen A5 bloku işaretlenir ve aktarılır.
 
 ![Yedekleme yöntemlerinin karşılaştırmalarını gösteren resim](./media/backup-architecture/backup-method-comparison.png)
 
@@ -96,37 +96,37 @@ Depolama alanı tüketimi, kurtarma süresi hedefi (RTO) ve ağ tüketimi her bi
 
 Aşağıdaki tabloda farklı yedekleme türleri için desteklenen özellikler özetlenmektedir:
 
-**Özelliği** | **Şirket içi Windows Server makineleri (doğrudan)** | **Azure VM 'Leri** | **DPM/MABS ile makineler veya uygulamalar**
+**Özellik** | **Şirket içi Windows Server makineleri (doğrudan)** | **Azure VM 'Leri** | **DPM/MABS ile makineler veya uygulamalar**
 --- | --- | --- | ---
-Kasaya yedekleme | ![Evet][green] | ![Evet][green] | ![Evet][green] 
-DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Evet][green] 
-Yedekleme için gönderilen verileri sıkıştır | ![Evet][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Evet][green] 
-Artımlı yedekleme Çalıştır |![Evet][green] |![Evet][green] |![Evet][green] 
-Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için. 
+Kasaya yedekleme | ![Yes][green] | ![Yes][green] | ![Yes][green]
+DPM/MABS diskine ve ardından Azure 'a yedekleme | | | ![Yes][green]
+Yedekleme için gönderilen verileri sıkıştır | ![Yes][green] | Veri aktarımı sırasında sıkıştırma kullanılmaz. Depolama biraz az, ancak geri yükleme daha hızlıdır.  | ![Yes][green]
+Artımlı yedekleme Çalıştır |![Yes][green] |![Yes][green] |![Yes][green]
+Yinelenenleri kaldırılmış diskleri yedekleme | | | ![Kısmi][yellow]<br/><br/> Yalnızca şirket içinde dağıtılan DPM/MABS sunucuları için.
 
 ![Tablo anahtarı](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Mimarisini Azure VM 'lerinin doğrudan yedeklemesi
+## <a name="architecture-direct-backup-of-azure-vms"></a>Mimari: Azure VM 'lerinin doğrudan yedeklemesi
 
 1. Bir Azure VM için yedeklemeyi etkinleştirdiğinizde, belirttiğiniz zamanlamaya göre bir yedekleme çalışır.
 1. İlk yedekleme sırasında VM çalışıyorsa VM 'ye bir yedekleme uzantısı yüklenir.
     - Windows VM 'Leri için VMSnapshot uzantısı yüklenir.
     - Linux VM 'Leri için VMSnapshot Linux uzantısı yüklenir.
-1. Uzantı, depolama düzeyinde bir anlık görüntü alır. 
+1. Uzantı, depolama düzeyinde bir anlık görüntü alır.
     - Çalıştıran Windows VM 'Leri için, VM 'nin uygulamayla tutarlı bir anlık görüntüsünü almak üzere Windows Birim Gölge Kopyası Hizmeti (VSS) ile yedekleme koordinatları. Varsayılan olarak, yedekleme tam VSS yedeklemeleri alır. Yedekleme, uygulamayla tutarlı bir anlık görüntü alacağından, dosya ile tutarlı bir anlık görüntü alır.
     - Linux VM 'Leri için yedekleme, dosya ile tutarlı bir anlık görüntü alır. Uygulamayla tutarlı anlık görüntüler için, ön/son betikleri el ile özelleştirmeniz gerekir.
-    - Yedekleme, her bir sanal makine diski paralel olarak yedeklenerek en iyi duruma getirilir. Yedeklenmekte olan her disk için Azure Backup disk üzerindeki blokları okur ve yalnızca değiştirilen verileri depolar. 
-1. Anlık görüntü alındıktan sonra veriler kasaya aktarılır. 
+    - Yedekleme, her bir sanal makine diski paralel olarak yedeklenerek en iyi duruma getirilir. Yedeklenmekte olan her disk için Azure Backup disk üzerindeki blokları okur ve yalnızca değiştirilen verileri depolar.
+1. Anlık görüntü alındıktan sonra veriler kasaya aktarılır.
     - Yalnızca son yedeklemeden bu yana değiştirilen veri blokları.
     - Veriler şifrelenmedi. Azure Backup, Azure disk şifrelemesi kullanılarak şifrelenmiş Azure VM 'Leri yedekleyebilir.
     - Anlık görüntü verileri hemen kasaya kopyalanmayabilir. Yoğun saatlerde yedekleme birkaç saat sürebilir. Bir VM için toplam Yedekleme süresi, günlük yedekleme ilkeleri için 24 saatten daha az olacaktır.
 1. Veriler kasaya gönderildikten sonra bir kurtarma noktası oluşturulur. Varsayılan olarak, anlık görüntüler silinmeden önce iki gün boyunca tutulur. Bu özellik bu anlık görüntülerden geri yükleme işlemine izin verir ve bu sayede geri yükleme sürelerini kapatır. Verileri kasadan geri dönüştürmek ve kopyalamak için gereken süreyi azaltır. Bkz. [Azure Backup Instant Restore özelliği](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
 
-Azure VM 'lerinin denetim komutlarına internet erişimi olması gerekir. VM içindeki iş yüklerini yedekliyorsanız (örneğin, veritabanı yedeklemeleri SQL Server), arka uç verilerinde de internet erişimi gerekir. 
+Azure VM 'lerinin denetim komutlarına internet erişimi olması gerekir. VM içindeki iş yüklerini yedekliyorsanız (örneğin, veritabanı yedeklemeleri SQL Server), arka uç verilerinde de internet erişimi gerekir.
 
 ![Azure VM 'lerinin yedeklenmesi](./media/backup-architecture/architecture-azure-vm.png)
 
-## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Mimarisini Şirket içi Windows Server makinelerini veya Azure VM dosyalarını veya klasörlerini doğrudan yedekleme
+## <a name="architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders"></a>Mimari: şirket içi Windows Server makinelerini veya Azure VM dosyalarını veya klasörlerini doğrudan yedekleyin
 
 1. Senaryoyu ayarlamak için MARS aracısını makineye indirip yüklersiniz. Ardından, yedeklemelerin ne zaman çalışacağını ve Azure 'da ne kadar süreyle saklanacağını seçersiniz.
 1. İlk yedekleme, yedekleme ayarlarınıza göre çalışır.
@@ -140,7 +140,7 @@ Azure VM 'lerinin denetim komutlarına internet erişimi olması gerekir. VM iç
 
 ![MARS Aracısı ile şirket içi Windows Server makinelerini yedekleme](./media/backup-architecture/architecture-on-premises-mars.png)
 
-## <a name="architecture-back-up-to-dpmmabs"></a>Mimarisini DPM/MABS 'ye yedekleme
+## <a name="architecture-back-up-to-dpmmabs"></a>Mimari: DPM/MABS 'e yedekleme
 
 1. Korumak istediğiniz makinelere DPM veya MABS koruma aracısını yüklersiniz. Ardından makineleri bir DPM koruma grubuna eklersiniz.
     - Şirket içi makineleri korumak için DPM veya MABS sunucusu şirket içinde bulunmalıdır.
@@ -157,15 +157,15 @@ Azure VM 'lerinin denetim komutlarına internet erişimi olması gerekir. VM iç
 Azure VM 'Leri, işletim sistemlerini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Her Azure sanal makinesinde en az iki disk vardır: işletim sistemi ve geçici disk için bir disk. Azure VM 'Leri, uygulama verileri için veri disklerine da sahip olabilir. Diskler VHD olarak depolanır.
 
 - VHD 'ler, Azure 'da standart veya Premium Depolama hesaplarında sayfa Blobları olarak depolanır:
-    - **Standart depolama:** Gecikme süresine duyarlı olmayan iş yüklerini çalıştıran VM 'Ler için güvenilir, düşük maliyetli disk desteği. Standart depolama, standart katı hal sürücüsü (SSD) disklerini veya standart sabit disk sürücüsü (HDD) disklerini kullanabilir.
-    - **Premium Depolama:** Yüksek performanslı disk desteği. Premium SSD disklerini kullanır.
+  - **Standart depolama:** Gecikme süresine duyarlı olmayan iş yüklerini çalıştıran VM 'Ler için güvenilir, düşük maliyetli disk desteği. Standart depolama, standart katı hal sürücüsü (SSD) disklerini veya standart sabit disk sürücüsü (HDD) disklerini kullanabilir.
+  - **Premium Depolama:** Yüksek performanslı disk desteği. Premium SSD disklerini kullanır.
 - Diskler için farklı performans katmanları vardır:
-    - **Standart HDD Disk:** HDD 'Ler tarafından desteklenir ve uygun maliyetli depolama için kullanılır.
-    - **Standart SSD disk:** Premium SSD disklerinin ve standart HDD disklerinin öğelerini birleştirir. HDD 'den daha tutarlı performans ve güvenilirlik sunar, ancak yine de ekonomik maliyetli olur.
-    - **Premium SSD disk:** SSD 'ler tarafından desteklenir ve g/ç yoğunluklu iş yükleri çalıştıran VM 'Ler için yüksek performanslı ve düşük gecikme süresi sağlar.
+  - **Standart HDD Disk:** HDD 'Ler tarafından desteklenir ve uygun maliyetli depolama için kullanılır.
+  - **Standart SSD disk:** Premium SSD disklerinin ve standart HDD disklerinin öğelerini birleştirir. HDD 'den daha tutarlı performans ve güvenilirlik sunar, ancak yine de ekonomik maliyetli olur.
+  - **Premium SSD disk:** SSD 'ler tarafından desteklenir ve g/ç yoğunluklu iş yükleri çalıştıran VM 'Ler için yüksek performanslı ve düşük gecikme süresi sağlar.
 - Diskler yönetilebilir veya yönetilmeyen olabilir:
-    - **Yönetilmeyen diskler:** VM 'Ler tarafından kullanılan geleneksel disk türü. Bu diskler için kendi depolama hesabınızı oluşturur ve diski oluştururken belirtirsiniz. Daha sonra sanal makinelerinize yönelik depolama kaynaklarını en üst düzeye çıkarmayı bilmeniz gerekir.
-    - **Yönetilen diskler:** Azure depolama hesaplarını sizin için oluşturur ve yönetir. Disk boyutunu ve performans katmanını belirtirsiniz ve Azure yönetilen diskleri sizin için oluşturur. Diskler eklerken ve VM 'Leri ölçeklendirerek, Azure depolama hesaplarını işler.
+  - **Yönetilmeyen diskler:** VM 'Ler tarafından kullanılan geleneksel disk türü. Bu diskler için kendi depolama hesabınızı oluşturur ve diski oluştururken belirtirsiniz. Daha sonra sanal makinelerinize yönelik depolama kaynaklarını en üst düzeye çıkarmayı bilmeniz gerekir.
+  - **Yönetilen diskler:** Azure depolama hesaplarını sizin için oluşturur ve yönetir. Disk boyutunu ve performans katmanını belirtirsiniz ve Azure yönetilen diskleri sizin için oluşturur. Diskler eklerken ve VM 'Leri ölçeklendirerek, Azure depolama hesaplarını işler.
 
 Disk depolama ve VM 'Ler için kullanılabilir disk türleri hakkında daha fazla bilgi için şu makalelere bakın:
 
@@ -173,7 +173,7 @@ Disk depolama ve VM 'Ler için kullanılabilir disk türleri hakkında daha fazl
 - [Linux sanal makineleri için Azure yönetilen diskler](../virtual-machines/linux/managed-disks-overview.md)
 - [VM 'Ler için kullanılabilir disk türleri](../virtual-machines/windows/disks-types.md)
 
-### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Premium Depolama ile Azure VM 'lerini yedekleme ve geri yükleme 
+### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Premium Depolama ile Azure VM 'lerini yedekleme ve geri yükleme
 
 Azure Backup ile Premium depolamayı kullanarak Azure VM 'Leri yedekleyebilirsiniz:
 
@@ -201,13 +201,11 @@ VM 'Leri yönetilen disklere geri yüklerken, yönetilen disklere veya bir depol
 
 - [Yedekleme senaryolarında desteklenen özellikler ve sınırlamalar hakkında bilgi edinmek](backup-support-matrix.md)için destek matrisini gözden geçirin.
 - Aşağıdaki senaryolardan biri için Yedeklemeyi ayarlayın:
-    - [Azure VM 'Lerini yedekleyin](backup-azure-arm-vms-prepare.md).
-    - [Windows makinelerini](tutorial-backup-windows-server-to-azure.md), yedekleme sunucusu olmadan doğrudan yedekleyin.
-    - Azure 'a yedekleme için [MABS ayarlayın](backup-azure-microsoft-azure-backup.md) ve sonra iş yüklerini mabs 'a yedekleyin.
-    - Azure 'a yedekleme için [DPM 'Yi ayarlayın](backup-azure-dpm-introduction.md) ve sonra Iş yüklerini DPM 'ye yedekleyin.
-
+  - [Azure VM 'Lerini yedekleyin](backup-azure-arm-vms-prepare.md).
+  - [Windows makinelerini](tutorial-backup-windows-server-to-azure.md), yedekleme sunucusu olmadan doğrudan yedekleyin.
+  - Azure 'a yedekleme için [MABS ayarlayın](backup-azure-microsoft-azure-backup.md) ve sonra iş yüklerini mabs 'a yedekleyin.
+  - Azure 'a yedekleme için [DPM 'Yi ayarlayın](backup-azure-dpm-introduction.md) ve sonra Iş yüklerini DPM 'ye yedekleyin.
 
 [green]: ./media/backup-architecture/green.png
 [yellow]: ./media/backup-architecture/yellow.png
 [red]: ./media/backup-architecture/red.png
-

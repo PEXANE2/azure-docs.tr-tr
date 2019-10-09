@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 611d3b3fdf2f76a9d5e79b8f3728dedae59074cd
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 18c11198f6b81e72e371b3ab06ed3a7330078c52
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240446"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023777"
 ---
-# <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Öğretici: Şüpheli tehditleri algılamak için özel analitik kurallar oluşturma
+# <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Öğretici: şüpheli tehditleri algılamak için özel analitik kurallar oluşturma
 
- [Veri kaynaklarınızı](quickstart-onboard.md) Azure Sentinel 'e bağladıktan sonra, ortamınızda belirli kriterleri arayabilmeniz ve ölçüt eşleştirildiği zaman bunları araştırabilmeniz için olaylar oluşturabileceğiniz özel kurallar oluşturabilirsiniz. Bu öğretici, Azure Sentinel ile tehditleri algılamak için özel kurallar oluşturmanıza yardımcı olur.
+Veri kaynaklarınızı  Azure Sentinel 'e [bağladıktan](quickstart-onboard.md)sonra, ortamınızda belirli kriterleri arayabilmeniz ve ölçüt eşleştirildiği sırada olayları oluşturabilmeniz için özel kurallar oluşturabilirsiniz. Bu öğretici, Azure Sentinel ile tehditleri algılamak için özel kurallar oluşturmanıza yardımcı olur.
 
 Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur.
 > [!div class="checklist"]
@@ -34,17 +34,17 @@ Bu öğretici, Azure Sentinel ile tehditleri algılamanıza yardımcı olur.
 
 Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yardımcı olacak özel analitik kurallar oluşturabilirsiniz. Bu kural, tehditleri önceliklendirmenize, araştırmanıza ve düzeltebilmeniz için hemen bilgilendirildiğinizden emin olur.
 
-1. Azure Sentinel altında Azure portal **analiz**' yı seçin.
+1. Azure Sentinel altında Azure portal **analiz**' yı seçin.
 
-1. Üstteki menü çubuğunda **+ Oluştur** ' u seçin ve **zamanlanan sorgu kuralı**' nı seçin. Bu, **özel kural oluşturma Sihirbazı 'nı**açar.
+1. Üstteki menü çubuğunda **+ Oluştur** ' u seçin ve **zamanlanan sorgu kuralı**' nı seçin. Bu, **özel kural oluşturma Sihirbazı 'nı**açar.
 
     ![Zamanlanmış sorgu oluştur](media/tutorial-detect-threats-custom/create-scheduled-query.png)
 
-1.  **** Genel sekmesinde açıklayıcı bir ad ve açıklama sağlayın.  **Uyarı önem derecesini** gerektiği şekilde ayarlayın. Kuralı oluşturduğunuzda, onu oluşturmayı bitirdikten sonra hemen çalışmasına neden olacak şekilde etkinleştirebilirsiniz. Devre dışı olarak oluşturursanız, kural **etkin kurallar** sekmesine eklenir ve ihtiyacınız olduğunda bu seçeneği etkinleştirebilirsiniz.
+1. **Genel** sekmesinde açıklayıcı bir ad ve açıklama sağlayın. **Uyarı önem derecesini** gerektiği şekilde ayarlayın. Kuralı oluşturduğunuzda, onu oluşturmayı bitirdikten sonra hemen çalışmasına neden olacak şekilde etkinleştirebilirsiniz. Devre dışı olarak oluşturursanız, kural **etkin kurallar** sekmesine eklenir ve ihtiyacınız olduğunda bu seçeneği etkinleştirebilirsiniz.
 
     ![Özel analitik kural oluşturmaya başlayın](media/tutorial-detect-threats-custom/general-tab.png)
 
-1.   **** Ayarlar sekmesinde doğrudan bir sorgu yazabilir veya Log Analytics sorgu oluşturabilir ve sonra **arama sorgusu**alanına yapıştırabilirsiniz. Sorgunuzu değiştirirken ve yapılandırırken, Azure Sentinel sorgu sonuçlarının sağ taraftaki **sonuçlar önizleme** penceresinde benzetimini yapar. Bu, oluşturmakta olduğunuz uyarının belirli bir zaman aralığında ne kadar veri üretilecektir hakkında fikir edinmenizi sağlar. Bu miktar  **, son verilerden her veri**için **çalışma sorgusu**ve arama için ayarlandığınıza bağlıdır. Bu durumda, uyarılarınızın uyarıları çok sık tetikleyebilmesini görürseniz, sonuçların sayısını, ortalama taban çizgisinin üstünde olacak şekilde ayarlayabilirsiniz.
+1. **Ayarlar** sekmesinde doğrudan bir sorgu yazabilir veya Log Analytics sorgu oluşturabilir ve sonra **arama sorgusu** alanına yapıştırabilirsiniz. Sorgunuzu değiştirirken ve yapılandırırken, Azure Sentinel sorgu sonuçlarının sağ taraftaki **sonuçlar önizleme** penceresinde benzetimini yapar. Bu, oluşturmakta olduğunuz uyarının belirli bir zaman aralığında ne kadar veri üretilecektir hakkında fikir edinmenizi sağlar. Bu miktar **, son verilerden her veri**için **çalışma sorgusu** ve arama için ayarlandığınıza bağlıdır. Bu durumda, uyarılarınızın uyarıları çok sık tetikleyebilmesini görürseniz, sonuçların sayısını, ortalama taban çizgisinin üstünde olacak şekilde ayarlayabilirsiniz.
 
    ![Azure Sentinel 'de sorgu oluştur](media/tutorial-detect-threats-custom/settings-tab.png)
 
@@ -58,27 +58,27 @@ Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yar
    > [!NOTE]
    > Sorgu uzunluğu 1 ile 1, 0000 karakter arasında olmalıdır ve "Search \*" veya "Union \*" içeremez.
 
-    1.  **Sorgu zamanlaması**' nın altında, aşağıdaki parametreleri ayarlayın:
+    1. **Sorgu zamanlaması**' nın altında, aşağıdaki parametreleri ayarlayın:
 
-        1.  Sorgunun her 5 dakikada bir veya bir günde yaklaşık olarak ne sıklıkta çalıştığı hakkında **sıklığı** ayarlamak için **çalışma sorgusunu her** zaman ayarlayın.
+        1.  Sorgunun her 5 dakikada bir veya bir günde yaklaşık olarak ne sıklıkta çalıştığı hakkında **sıklığı** ayarlamak için **çalışma sorgusunu her** zaman ayarlayın.
 
         1.  Sorgunun ne kadar veri üzerinde çalıştığı hakkında zaman penceresini denetlemek için **en son Içinden arama verilerini** ayarlayın. örneğin, 60 dakikalık veriler arasında her saat çalışabilir.
 
         1. Uyarı oluşturulduktan sonra yalnızca uyarıyı bir kez almak istiyorsanız, **Uyarı oluşturulduktan sonra sorguyu çalıştırmayı durduracak** şekilde, Azure Sentinel 'i ayarlayabilirsiniz. Sorgunun çalışmayı durdurması gereken, 24 saate kadar olan pencereyi ayarlamanız gerekir.
 
-    1.  **Uyarı tetikleyicisi**altında uyarı tetikleyicisi koşullarını tanımlayın.  **Varlık eşleme**altında, Sorgunuzdaki sütunları Azure Sentinel tarafından tanınan varlık alanlarıyla eşleyebilirsiniz. Her alan için Log Analytics oluşturduğunuz sorgudaki ilgili sütunu uygun varlık alanına eşleyin. Her varlık, SID ve GUID gibi birden çok alan içerir. Varlığı yalnızca üst düzey varlık değil, herhangi bir alana göre eşleyebilirsiniz.
+    1. **Uyarı tetikleyicisi**altında uyarı tetikleyicisi koşullarını tanımlayın. **Varlık eşleme**altında, Sorgunuzdaki sütunları Azure Sentinel tarafından tanınan varlık alanlarıyla eşleyebilirsiniz. Her alan için Log Analytics oluşturduğunuz sorgudaki ilgili sütunu uygun varlık alanına eşleyin. Her varlık, SID ve GUID gibi birden çok alan içerir. Varlığı yalnızca üst düzey varlık değil, herhangi bir alana göre eşleyebilirsiniz.
 
-1.   **Yanıtları otomatikleştir** sekmesinde, özel kural tarafından bir uyarı oluşturulduğunda otomatik olarak çalıştırmak istediğiniz tüm PlayBook 'ları seçin. PlayBook 'ları oluşturma ve otomatikleştirme hakkında daha fazla bilgi için bkz. [tehditlere yanıt verme](tutorial-respond-threats-playbook.md).
+1.  **Yanıtları otomatikleştir** sekmesinde, özel kural tarafından bir uyarı oluşturulduğunda otomatik olarak çalıştırmak istediğiniz tüm PlayBook 'ları seçin. PlayBook 'ları oluşturma ve otomatikleştirme hakkında daha fazla bilgi için bkz. [tehditlere yanıt verme](tutorial-respond-threats-playbook.md).
 
     ![Azure Sentinel 'de tehditlere yanıt otomatik hale getirme](media/tutorial-detect-threats-custom/response-automation-custom.png)
 
-1. Yeni uyarı kuralınızın tüm ayarlarını gözden geçirmek için **gözden geçir** ' i seçin ve ardından **Uyarı kuralınızı başlatmak için Oluştur**' u seçin.
+1. Yeni uyarı kuralınızın tüm ayarlarını gözden geçirmek için **gözden geçir** ' i seçin ve ardından **Uyarı kuralınızı başlatmak için Oluştur**' u seçin.
 
    ![Özel sorgunuzu gözden geçirin](media/tutorial-detect-threats-custom/review-tab.png)
 
 1.  Uyarı oluşturulduktan sonra, **etkin kurallar**altındaki tabloya özel bir kural eklenir. Bu listeden her kuralı etkinleştirebilir, devre dışı bırakabilir veya silebilirsiniz.
 
-1.  Oluşturduğunuz uyarı kurallarının sonuçlarını görüntülemek için **Olaylar** sayfasına gidin; burada, olayları önceliklendirebilirsiniz, [araştırın](tutorial-investigate-cases.md)ve tehditleri düzeltin.
+1.  Oluşturduğunuz uyarı kurallarının sonuçlarını görüntülemek için **Olaylar** sayfasına gidin; burada, olayları önceliklendirebilirsiniz, [araştırın](tutorial-investigate-cases.md)ve tehditleri düzeltin.
 
 
 > [!NOTE]

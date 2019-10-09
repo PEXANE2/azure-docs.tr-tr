@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 69dce46052c18eec7c3f1fa2082907ed62b367d6
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 37db3e153e8dfcbc1120fcb1f6d2f77187edc78e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703340"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029655"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Veri akışı JSON işlemesini eşleme
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ## <a name="creating-json-structures-in-expression-editor"></a>İfade düzenleyicisinde JSON yapıları oluşturma
 ### <a name="derived-column-transformation"></a>Türetilmiş sütun dönüşümü
@@ -145,7 +145,7 @@ File3.json
 ```
 
 ## <a name="higher-order-functions"></a>Daha yüksek sıra işlevleri
-## <a name="filter"></a>Filtreyle
+## <a name="filter"></a>filtreyle
 Öğeleri, belirtilen koşulu karşılamayan dizinin dışına filtreler. Filtre, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.
 
 ### <a name="examples"></a>Örnekler

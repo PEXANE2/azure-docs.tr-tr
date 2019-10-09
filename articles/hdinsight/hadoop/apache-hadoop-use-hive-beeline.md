@@ -2,17 +2,17 @@
 title: Apache Hive-Azure HDInsight ile Apache Beeline kullanma
 description: HDInsight 'ta Hadoop ile Hive sorguları çalıştırmak için Beeline istemcisini nasıl kullanacağınızı öğrenin. Beeline, JDBC üzerinden HiveServer2 ile çalışmaya yönelik bir yardımcı programdır.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/03/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8a1bb4f0315be70cfe8debab0ee9eb1e4b576738
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 10/03/2019
+ms.openlocfilehash: d6063daa649b507057fd2a4468c32dad1cd35eec
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181119"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030436"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive ile Apache Beeline istemcisini kullanma
 
@@ -24,7 +24,7 @@ Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdı
 
 ### <a name="from-an-ssh-session"></a>Bir SSH oturumundan
 
-Bir SSH oturumundan bir küme headnode 'a bağlanırken, bağlantı noktasındaki `headnodehost` `10001`adrese bağlanabilirsiniz:
+Bir SSH oturumundan bir küme headnode 'a bağlanırken, `10001` bağlantı noktasındaki `headnodehost` adresine bağlanabilirsiniz:
 
 ```bash
 beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
@@ -34,32 +34,32 @@ beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
 
 ### <a name="over-an-azure-virtual-network"></a>Bir Azure sanal ağı üzerinden
 
-Bir istemciden HDInsight 'a bir Azure sanal ağı üzerinden bağlanılırken, bir küme baş düğümünün tam etki alanı adını (FQDN) sağlamanız gerekir. Bu bağlantı doğrudan küme düğümlerine yapıldığından, bağlantı şu bağlantı noktasını `10001`kullanır:
+Bir istemciden HDInsight 'a bir Azure sanal ağı üzerinden bağlanılırken, bir küme baş düğümünün tam etki alanı adını (FQDN) sağlamanız gerekir. Bu bağlantı doğrudan küme düğümlerine yapıldığından, bağlantı bağlantı noktasını kullanır `10001`:
 
 ```bash
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-Bir `<headnode-FQDN>` küme headnode 'un tam etki alanı adıyla değiştirin. Bir headnode 'un tam etki alanı adını bulmak için [Apache ambarı REST API belgesini kullanarak HDInsight 'ı yönetme](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) bölümündeki bilgileri kullanın.
+@No__t-0 ' i bir küme headnode 'ın tam etki alanı adıyla değiştirin. Bir headnode 'un tam etki alanı adını bulmak için [Apache ambarı REST API belgesini kullanarak HDInsight 'ı yönetme](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) bölümündeki bilgileri kullanın.
 
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Kerberos kullanarak HDInsight Kurumsal Güvenlik Paketi (ESP) kümesine
 
-Bir istemciden, kümenin aynı bölgesindeki bir makinede Azure Active Directory (AAD)-DS 'ye katılmış bir kurumsal güvenlik paketi (ESP) kümesine bağlandığında, etki alanı adını `<AAD-Domain>` ve etki alanı kullanıcı hesabının adını ile de belirtmeniz gerekir. kümeye `<username>`erişim izinleri:
+Bir istemciden, kümenin aynı bölgesindeki bir makinede Azure Active Directory (AAD)-DS 'ye katılmış bir Kurumsal Güvenlik Paketi (ESP) kümesine bağlandığında, etki alanı adını `<AAD-Domain>` ve izinleri olan bir etki alanı kullanıcı hesabının adını da belirtmeniz gerekir. `<username>` kümesine erişin:
 
 ```bash
 kinit <username>
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
 ```
 
-Kümeye `<username>` erişim izinleri olan etki alanındaki hesabın adıyla değiştirin. Kümenin `<AAD-DOMAIN>` katıldığı Azure Active Directory (AAD) adıyla değiştirin. `<AAD-DOMAIN>` Değer için bir büyük dize kullanın, aksi takdirde kimlik bilgisi bulunamadı. Gerekirse `/etc/krb5.conf` bölge adlarını kontrol edin.
+@No__t-0 ' yı, kümeye erişim izinleri olan etki alanındaki bir hesabın adıyla değiştirin. @No__t-0 ' yı kümenin katıldığı Azure Active Directory (AAD) adıyla değiştirin. @No__t-0 değeri için bir büyük dize kullanın, aksi takdirde kimlik bilgisi bulunamadı. Gerekirse bölge adları için `/etc/krb5.conf` ' yı işaretleyin.
 
 ---
 
 ### <a name="over-public-or-private-endpoints"></a>Herkese açık veya özel uç noktalar
 
-Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `<clustername>.azurehdinsight.net` adrese bağlanmak için bir istemci sisteminden Beeline kullanma. Bu bağlantı bağlantı noktası `443`üzerinden yapılır ve SSL kullanılarak şifrelenir:
+Ortak veya özel uç noktaları kullanarak bir kümeye bağlanırken, küme oturum açma hesabı adını (varsayılan `admin`) ve parolayı sağlamanız gerekir. Örneğin, `<clustername>.azurehdinsight.net` adresine bağlanmak için bir istemci sisteminden Beeline kullanımı. Bu bağlantı `443` bağlantı noktası üzerinden yapılır ve SSL kullanılarak şifrelenir:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
@@ -71,7 +71,7 @@ veya özel uç nokta için:
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
 ```
 
-`clustername` değerini HDInsight kümenizin adıyla değiştirin. Kümenizin `admin` küme oturum açma hesabı ile değiştirin. Küme `password` oturum açma hesabının parolasıyla değiştirin.
+`clustername` değerini HDInsight kümenizin adıyla değiştirin. @No__t-0 değerini kümenizin küme oturum açma hesabı ile değiştirin. @No__t-0 ' yı küme oturum açma hesabı parolasıyla değiştirin.
 
 ---
 
@@ -81,7 +81,7 @@ Apache Spark, bazı durumlarda Spark Thrift sunucusu olarak da adlandırılan ke
 
 #### <a name="through-public-or-private-endpoints"></a>Ortak veya özel uç noktalar aracılığıyla
 
-Kullanılan bağlantı dizesi biraz farklı. Şunu içerir `httpPath=/hive2`: `httpPath/sparkhive2`
+Kullanılan bağlantı dizesi biraz farklı. @No__t-0 olan `httpPath/sparkhive2` ' i içerir:
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
@@ -93,13 +93,13 @@ veya özel uç nokta için:
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
 ```
 
-`clustername` değerini HDInsight kümenizin adıyla değiştirin. Kümenizin `admin` küme oturum açma hesabı ile değiştirin. Küme `password` oturum açma hesabının parolasıyla değiştirin.
+`clustername` değerini HDInsight kümenizin adıyla değiştirin. @No__t-0 değerini kümenizin küme oturum açma hesabı ile değiştirin. @No__t-0 ' yı küme oturum açma hesabı parolasıyla değiştirin.
 
 ---
 
 #### <a name="from-cluster-head-or-inside-azure-virtual-network-with-apache-spark"></a>Apache Spark ile küme kafası veya Azure sanal ağı içinden
 
-Doğrudan küme baş düğümünden veya HDInsight kümesiyle aynı Azure sanal ağı içindeki bir kaynaktan bağlantı `10002` kurulurken, `10001`yerine Spark Thrift sunucusu için kullanılmalıdır. Aşağıdaki örnek, baş düğüme doğrudan nasıl bağlanılacağını gösterir:
+Doğrudan küme baş düğümünden veya HDInsight kümesiyle aynı Azure sanal ağı içindeki bir kaynaktan bağlanırken, `10001` yerine Spark Thrift sunucusu için bağlantı noktası `10002` kullanılmalıdır. Aşağıdaki örnek, baş düğüme doğrudan nasıl bağlanılacağını gösterir:
 
 ```bash
 /usr/hdp/current/spark2-client/bin/beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
@@ -111,13 +111,11 @@ Doğrudan küme baş düğümünden veya HDInsight kümesiyle aynı Azure sanal 
 
 * HDInsight üzerinde bir Hadoop kümesi. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](./apache-hadoop-linux-tutorial-get-started.md).
 
-* Kümenizin birincil depolama alanı için [URI düzenine](../hdinsight-hadoop-linux-information.md#URI-and-scheme) dikkat edin. Örneğin, `wasb://` Azure `abfs://` depolama için, Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://`. Daha fazla bilgi için bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
+* Kümenizin birincil depolama alanı için [URI düzenine](../hdinsight-hadoop-linux-information.md#URI-and-scheme) dikkat edin. Örneğin, Azure depolama için `wasb://`, Azure Data Lake Storage 2. için `abfs://` veya Azure Data Lake Storage 1. için `adl://`. Azure depolama için güvenli aktarım etkinse, URI `wasbs://` ' dır. Daha fazla bilgi için bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 
+* Seçenek 1: bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md). Bu belgedeki adımların çoğu, kümeye bir SSH oturumundan Beeline kullandığınızı varsayar.
 
-* 1\. Seçenek: Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md). Bu belgedeki adımların çoğu, kümeye bir SSH oturumundan Beeline kullandığınızı varsayar.
-
-* 2\. Seçenek:  Yerel bir Beeline istemcisi.
-
+* Seçenek 2: yerel bir Beeline istemcisi.
 
 ## <a id="beeline"></a>Hive sorgusu çalıştırma
 
@@ -135,9 +133,9 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
     ```
 
-3. Beeline Commands bir `!` karakterle başlar, örneğin `!help` yardımı görüntüler. `!` Ancak bazı komutlar için atlanabilir. Örneğin, `help` Ayrıca işe yarar.
+3. Beeline Commands `!` karakteriyle başlar, örneğin `!help`, yardımı görüntüler. Ancak bazı komutlarda `!` atlanabilir. Örneğin `help` de geçerlidir.
 
-    Hiveql `!sql`deyimlerini yürütmek için kullanılan bir vardır. Ancak, HiveQL, önceki `!sql`bir sürümünü atlamanızı sağlamak için yaygın olarak kullanılır. Aşağıdaki iki deyim eşdeğerdir:
+    HiveQL deyimlerini yürütmek için kullanılan `!sql` vardır. Ancak, HiveQL, önceki `!sql` ' ı atlamanızı sağlayan yaygın olarak kullanılır. Aşağıdaki iki deyim eşdeğerdir:
 
     ```hiveql
     !sql show tables;
@@ -172,7 +170,7 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
 
     Bu bilgiler tablodaki sütunları açıklar.
 
-5. HDInsight kümesiyle birlikte sunulan örnek verileri kullanarak **log4jLogs** adlı bir tablo oluşturmak için aşağıdaki deyimlerini girin: ( [URI şemanız](../hdinsight-hadoop-linux-information.md#URI-and-scheme)temelinde gereken şekilde gözden geçirin.)
+5. HDInsight kümesiyle birlikte sunulan örnek verileri kullanarak **log4jLogs** adlı bir tablo oluşturmak için aşağıdaki deyimlerini girin: ( [URI şemanız](../hdinsight-hadoop-linux-information.md#URI-and-scheme)temelinde gerektiği şekilde gözden geçirin.)
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -193,17 +191,17 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
 
     Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-    * `DROP TABLE`-Tablo varsa, silinir.
+    * `DROP TABLE`-tablo varsa, silinir.
 
     * `CREATE EXTERNAL TABLE`-Hive içinde bir **dış** tablo oluşturur. Dış tablolar yalnızca tablo tanımını Hive içinde depolar. Veriler özgün konumda bırakılır.
 
-    * `ROW FORMAT`-Veriler nasıl biçimlendirilir. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
+    * `ROW FORMAT`-veriler nasıl biçimlendirilir. Bu durumda, her günlükteki alanlar boşlukla ayrılır.
 
-    * `STORED AS TEXTFILE LOCATION`-Verilerin depolandığı yer ve dosya biçimi.
+    * `STORED AS TEXTFILE LOCATION`-verilerin depolandığı yer ve dosya biçimi.
 
-    * `SELECT`- **T4** sütununun **[Error]** değerini içerdiği tüm satırların sayısını seçer. Bu sorgu, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
+    * `SELECT`- **T4** sütununun **[Error]** değerini Içerdiği tüm satırların sayısını seçer. Bu sorgu, bu değeri içeren üç satır olduğu için **3** değerini döndürür.
 
-    * `INPUT__FILE__NAME LIKE '%.log'`-Hive, şemayı dizindeki tüm dosyalara uygulamayı dener. Bu durumda, Dizin şemayla eşleşmeyen dosyaları içerir. Sonuçlarda çöp verilerinin oluşmasını engellemek için, bu ifade Hive 'ye yalnızca. log ile biten dosyalardaki verileri döndürmeyeceğini söyler.
+    * `INPUT__FILE__NAME LIKE '%.log'`-Hive dizindeki tüm dosyalara şemayı uygulamaya çalışır. Bu durumda, Dizin şemayla eşleşmeyen dosyaları içerir. Sonuçlarda çöp verilerinin oluşmasını engellemek için, bu ifade Hive 'ye yalnızca. log ile biten dosyalardaki verileri döndürmeyeceğini söyler.
 
    > [!NOTE]  
    > Dış tablolar, temel alınan verilerin bir dış kaynak tarafından güncelleştirilmesini beklediğinde kullanılmalıdır. Örneğin, otomatik bir veri yükleme işlemi veya MapReduce işlemi.
@@ -234,7 +232,7 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. Beeline çıkmak için kullanın `!exit`.
+6. Beeline çıkmak için `!exit` kullanın.
 
 ## <a id="file"></a>HiveQL dosyası çalıştırma
 
@@ -255,14 +253,14 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
 
     Bu deyimler aşağıdaki eylemleri gerçekleştirir:
 
-   * **Create Table** yoksa-tablo zaten yoksa oluşturulur. **Dış** anahtar sözcük kullanılmadığından, bu ifade bir iç tablo oluşturur. İç tablolar Hive veri ambarında depolanır ve tamamen Hive tarafından yönetilir.
+   * **Create Table** yoksa-tablo henüz yoksa oluşturulur. **Dış** anahtar sözcük kullanılmadığından, bu ifade bir iç tablo oluşturur. İç tablolar Hive veri ambarında depolanır ve tamamen Hive tarafından yönetilir.
    * **Orc olarak depolanır** -verileri en Iyileştirilmiş satır sütunlu (ORC) biçimde depolar. ORC biçimi, Hive verilerinin depolanması için yüksek düzeyde iyileştirilmiş ve verimli bir biçimdir.
-   * **ÜZERINE YAZMA EKLE... Log4jLogs** tablosundan **[Error]** içeren satırları Seç ' i seçin, sonra da verileri **errorlogs** tablosuna ekler.
+   * **ÜZERINE yazma Ekle...**  **Log4jLogs** tablosundan **[Error]** IÇEREN satırları Seç ' i seçin, sonra da verileri **errorlogs** tablosuna ekler.
 
     > [!NOTE]  
     > Dış tablolardan farklı olarak, iç tablo bırakılırken temel alınan veriler de silinir.
 
-3. Dosyayı kaydetmek için **CTRL**+ **_X**kullanın, ardından **Y**girin ve son olarak **girin**.
+3. Dosyayı kaydetmek için **Ctrl**+ **_X**kullanın, ardından **Y**girin ve son olarak **girin**.
 
 4. Dosyayı Beeline kullanarak çalıştırmak için aşağıdakileri kullanın:
 
@@ -271,7 +269,7 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
     ```
 
     > [!NOTE]  
-    > Parametresi, Beeline başlar ve `query.hql` dosyadaki deyimleri çalıştırır. `-i` Sorgu tamamlandıktan sonra, `jdbc:hive2://headnodehost:10001/>` istemde bir uyarı alırsınız. Ayrıca, sorgu tamamlandıktan sonra Beeline çıkış `-f` eden parametresini kullanarak bir dosya çalıştırabilirsiniz.
+    > @No__t-0 parametresi, Beeline başlar ve `query.hql` dosyasında deyimleri çalıştırır. Sorgu tamamlandıktan sonra, `jdbc:hive2://headnodehost:10001/>` istemine ulaşrsınız. Sorgu tamamlandıktan sonra Beeline çıkar `-f` parametresini kullanarak da bir dosya çalıştırabilirsiniz.
 
 5. **Errorlogs** tablosunun oluşturulduğunu doğrulamak Için, **hata günlüklerinden**tüm satırları döndürmek için aşağıdaki ifadeyi kullanın:
 
@@ -290,9 +288,6 @@ Bu, önceki örnekteki devamlılık. Bir dosya oluşturmak için aşağıdaki ad
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (1.538 seconds)
 
-
-
-
 ## <a id="summary"></a><a id="nextsteps"></a>Sonraki adımlar
 
 HDInsight 'ta Hive hakkında daha fazla genel bilgi için aşağıdaki belgeye bakın:
@@ -303,26 +298,3 @@ HDInsight 'ta Hadoop ile çalışmanın diğer yolları hakkında daha fazla bil
 
 * [HDInsight üzerinde Apache Hadoop Apache Pig kullanma](hdinsight-use-pig.md)
 * [HDInsight üzerinde Apache Hadoop MapReduce kullanma](hdinsight-use-mapreduce.md)
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[apache-tez]: https://tez.apache.org
-[apache-hive]: https://hive.apache.org/
-[apache-log4j]: https://en.wikipedia.org/wiki/Log4j
-[hive-on-tez-wiki]: https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez
-[import-to-excel]: https://azure.microsoft.com/documentation/articles/hdinsight-connect-excel-power-query/
-
-
-[hdinsight-use-oozie]: hdinsight-use-oozie-linux-mac.md
-
-[putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
-
-
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-
-
-[powershell-here-strings]: https://technet.microsoft.com/library/ee692792.aspx

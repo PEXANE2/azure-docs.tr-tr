@@ -12,19 +12,22 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.author: mbullwin
-ms.openlocfilehash: ac9bd6021b5fcec36e3aadfdf4c30020971f3be5
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 99a18125fa5ce07a46fcc1af554fd03746ebf110
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299257"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038140"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights Java izleme günlüklerini keşfet
 İzleme için Logback veya Log4J (v 1.2 veya v 2.0) kullanıyorsanız, izleme günlüklerinizin otomatik olarak gönderilmesini ve bunları araştırıp araygeçirebileceğiniz Application Insights sağlayabilirsiniz.
 
+> [!TIP]
+> Uygulamanız için yalnızca Application Insights araçları anahtarınızı bir kez ayarlamanız gerekir. Java Spring gibi bir çerçeve kullanıyorsanız, anahtarı uygulamanızın yapılandırmasına başka bir yere kaydetmiş olabilirsiniz.
+
 ## <a name="using-the-application-insights-java-agent"></a>Application Insights Java Aracısı 'nı kullanma
 
-Application Insights Java aracısını, `AI-Agent.xml` dosyadaki özelliği etkinleştirerek günlüklerinizi otomatik olarak yakalayacak şekilde yapılandırabilirsiniz:
+Application Insights Java aracısını, `AI-Agent.xml` dosyasındaki özelliği etkinleştirerek günlüklerinizi otomatik olarak yakalayacak şekilde yapılandırabilirsiniz:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -65,7 +68,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
     </dependencies>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -78,7 +81,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
     </dependencies>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 
@@ -92,7 +95,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
 ```
 
 #### <a name="if-youre-using-gradle"></a>Gradle kullanıyorsanız...
-Projeniz zaten derleme için Gradle kullanmak üzere ayarlandıysa, yapı. Gradle dosyanızdaki `dependencies` gruba aşağıdaki satırlardan birini ekleyin:
+Projeniz zaten derleme için Gradle kullanmak üzere ayarlandıysa, yapı. Gradle dosyanızdaki `dependencies` grubuna aşağıdaki satırlardan birini ekleyin:
 
 Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyin.
 
@@ -103,13 +106,13 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v2.0**
+**Log4J v 2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v1.2**
+**Log4J v 1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -118,7 +121,7 @@ Ardından, indirilen ikilileri almak için Proje bağımlılıklarını yenileyi
 #### <a name="otherwise-"></a>Aksi taktirde...
 Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyin (Maven Merkezi sayfasına ulaşan bağlantı kurulduktan sonra) uygun bir uygulama için karşıdan yükleme bölümündeki ' jar ' bağlantısına tıklayın.
 
-| Günlükçü | İndirme | Kitaplık |
+| Medi | İndirin | Kitaplık |
 | --- | --- | --- |
 | Logback |[Logback uygulama jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |ApplicationInsights-günlüğe kaydetme-logback |
 | Log4J v 2.0 |[Log4J v2 Ekleyici jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |ApplicationInsights-günlüğe kaydetme-log4j2 |
@@ -141,7 +144,7 @@ Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyi
     </root>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -157,7 +160,7 @@ Application Insights Java SDK 'sını el ile yüklemek için yönergeleri izleyi
     </Configuration>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 6f9094a52ff3558fa8d1f2fee1d80ed8eb09a416
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: d7a9f365c9e2b6039451375f4ad50a7ce04cdd5b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076335"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029738"
 ---
-# <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı Başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
+# <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
 Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını oluşturmak için Azure uygulama yapılandırmasını bir ASP.NET Core Web uygulamasına katabilirsiniz. Tüm özellik Bayraklarınızı merkezi olarak depolamak ve durumlarını denetlemek için uygulama yapılandırma hizmetini kullanabilirsiniz. 
 
@@ -36,9 +36,9 @@ Bu hızlı başlangıçta, özellik yönetiminin uçtan uca bir uygulamasını o
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki özellik bayraklarını eklemek için **Özellik Yöneticisi** >  **+ Ekle** ' yi seçin:
+6. Aşağıdaki özellik bayraklarını eklemek için **özellik yöneticisi** >  **+ Ekle** ' yi seçin:
 
-    | Anahtar | State |
+    | Anahtar | Eyalet |
     |---|---|
     | Beta | Kapalı |
 
@@ -51,7 +51,7 @@ Yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.NET Core k
 1. Yeni klasörde, yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için aşağıdaki komutu çalıştırın:
 
    ```    
-   dotnet new mvc
+   dotnet new mvc --no-https
    ```
 
 ## <a name="add-secret-manager"></a>Gizli dizi Yöneticisi ekleme
@@ -59,7 +59,7 @@ Yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.NET Core k
 Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/security/app-secrets) projenize ekleyin. Gizli dizi Yöneticisi Aracı, geliştirme çalışması için hassas verileri proje ağacınızdaki dışında depolar. Bu yaklaşım, uygulama gizli dizilerini kaynak kodunun içinde yanlışlıkla paylaşmayı önlemeye yardımcı olur.
 
 1. *. Csproj* dosyasını açın.
-1. Aşağıdaki örnekte `UserSecretsId` gösterildiği gibi bir öğe ekleyin ve değerini, genellikle GUID olan kendi değeri ile değiştirin:
+1. Aşağıdaki örnekte gösterildiği gibi `UserSecretsId` öğesi ekleyin ve değerini, genellikle GUID olan kendi değeri ile değiştirin:
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -81,7 +81,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
-1. Aşağıdaki komutları çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` `Microsoft.FeatureManagement.AspNetCore` ve NuGet paketlerine başvuru ekleyin:
+1. Aşağıdaki komutları çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` ve `Microsoft.FeatureManagement.AspNetCore` NuGet paketlerine başvuru ekleyin:
 
     ```
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
@@ -96,7 +96,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
 
 1. Gizli dizi adlı **ConnectionString: AppConfig** adında bir gizli dizi ekleyin.
 
-    Bu gizli anahtar, uygulama yapılandırma deponuza erişmek için bağlantı dizesini içerir. Aşağıdaki komutta bulunan değeri, uygulama yapılandırma deponuzdaki bağlantı dizesiyle değiştirin. `<your_connection_string>`
+    Bu gizli anahtar, uygulama yapılandırma deponuza erişmek için bağlantı dizesini içerir. Aşağıdaki komutta `<your_connection_string>` değerini, uygulama yapılandırma deponuzdaki bağlantı dizesiyle değiştirin.
 
     Bu komut, *.csproj* dosyası ile aynı dizinde yürütülmelidir.
 
@@ -114,7 +114,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-1. Yöntemini çağırarak uygulama yapılandırmasını kullanmak için yöntemigüncelleştirin.`CreateWebHostBuilder` `config.AddAzureAppConfiguration()`
+1. @No__t-0 yöntemini, `config.AddAzureAppConfiguration()` yöntemini çağırarak uygulama yapılandırmasını kullanacak şekilde güncelleştirin.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -136,7 +136,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     using Microsoft.FeatureManagement;
     ```
 
-1. Yöntemini çağırarak özellik bayrağı desteği eklemek için yönteminigüncelleştirin.`ConfigureServices` `services.AddFeatureManagement()` İsteğe bağlı olarak, özelliği çağırarak `services.AddFeatureFilter<FilterType>()`Özellik bayraklarıyla kullanılacak herhangi bir filtre ekleyebilirsiniz:
+1. @No__t-1 yöntemini çağırarak özellik bayrağı desteği eklemek için `ConfigureServices` yöntemini güncelleştirin. İsteğe bağlı olarak, `services.AddFeatureFilter<FilterType>()` ' ı çağırarak özellik bayraklarıyla birlikte kullanılacak herhangi bir filtre ekleyebilirsiniz:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -145,7 +145,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     }
     ```
 
-1. ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlamak üzere bir ara yazılım eklemek için yöntemigüncelleştirin.`Configure`
+1. ASP.NET Core Web uygulaması istekleri almaya devam ederken, özellik bayrağı değerlerinin yinelenen bir aralıkta yenilenmesini sağlamak üzere bir ara yazılım eklemek için `Configure` yöntemini güncelleştirin.
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -200,7 +200,7 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
     ```
 
-1. *Görünümler* `<body>` `<nav>`  >  `<header>` paylaşılandizininde_Layout.cshtmldosyasınıaçınvealtındakibarkoduaşağıdakikodladeğiştirin:\\
+1. *Görünümler*\\*paylaşılan* dizininde *_Layout. cshtml* dosyasını açın ve `<body>` @ no__t-6 @ no__t-7 altındaki `<nav>` bar kodunu şu kodla değiştirin:
 
     ```html
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -255,19 +255,19 @@ Gizli dizi [Yöneticisi aracını](https://docs.microsoft.com/aspnet/core/securi
     dotnet run
     ```
 
-1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan `https://localhost:5001`Web uygulaması için varsayılan URL olan öğesine gidin.
+1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `https://localhost:5001` ' a gidin.
 
     ![Hızlı başlangıç uygulaması başlatma yerel](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık**olarak değiştirin:
 
-    | Anahtar | State |
+    | Anahtar | Eyalet |
     |---|---|
     | Beta | Açık |
 
-1. Komut istemine geri dönüp çalışan `Ctrl-C` `dotnet` işlemi iptal etmek için tuşuna basarak ve sonra yeniden çalıştırarak `dotnet run`uygulamanızı yeniden başlatın.
+1. Komut istemine geri dönüp `Ctrl-C` tuşlarına basarak çalışan `dotnet` işlemini iptal edip `dotnet run` ' yi yeniden çalıştırarak uygulamanızı yeniden başlatın.
 
 1. Yeni yapılandırma ayarlarını görmek için tarayıcı sayfasını yenileyin.
 

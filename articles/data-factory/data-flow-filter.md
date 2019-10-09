@@ -1,32 +1,32 @@
 ---
-title: Azure veri fabrikası veri akışı filtre dönüştürme eşlemesi
-description: Azure veri fabrikası veri akışı filtre dönüştürme eşlemesi
+title: Azure Data Factory eşleme veri akışı filtresi dönüştürmesi
+description: Azure Data Factory eşleme veri akışı filtresi dönüştürmesi
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: e0b41850c149ff7095333cf77b780dec1f03b882
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd29753ff14d16081a46eebbc2ea02d94e5985f1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234424"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029349"
 ---
-# <a name="azure-data-factory-filter-transformation"></a>Azure veri fabrikası filtre dönüştürme
+# <a name="azure-data-factory-filter-transformation"></a>Azure Data Factory filtresi dönüşümü
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Filtre dönüşümleri satır filtreleme sağlar. Filtre koşulu tanımlayan bir ifade oluşturun. İfade oluşturucuyu başlatmak için metin kutusuna tıklayın. Hangi satır, geçerli veri akışı (filtre) geçmek için İleri dönüşümü izin verileceğini denetlemek için bir filtre ifadesi ifade oluşturucu içinde oluşturun. Filtre dönüşümü SQL deyiminin WHERE yan tümcesi olarak düşünün.
 
-## <a name="filter-on-loanstatus-column"></a>Loan_status sütunu Filtrele:
+Filtre dönüştürmeleri satır filtreleme sağlar. Filtre koşulunu tanımlayan bir ifade oluşturun. Ifade oluşturucuyu başlatmak için metin kutusuna tıklayın. İfade oluşturucusunun içinde, geçerli veri akışından gelen ve bir sonraki dönüşüme (filtre) geçiş yapmasına izin verilen satırları denetlemek için bir filtre ifadesi oluşturun. Filtre dönüşümünü bir SQL ifadesinin WHERE yan tümcesi olarak düşünün.
+
+## <a name="filter-on-loan_status-column"></a>Loan_status sütununa filtre uygula:
 
 ```
 in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).
 ```
 
-Filmler tanıtım yıl sütunu filtreleyin:
+Filmler tanıtımında yıl sütununda filtreleyin:
 
 ```
 year > 1980
@@ -34,4 +34,4 @@ year > 1980
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Dönüştürme, filtre sütunu deneyin [dönüştürme seçin](data-flow-select.md)
+[Seçim dönüşümü](data-flow-select.md) olan bir sütun filtreleme dönüşümü deneyin

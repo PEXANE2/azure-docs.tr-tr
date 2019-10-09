@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 302d727ede9604d11972eaa8f46a3e27f204858f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: dbcc68bacf8a11a7a85d5fad7fb4435fd03c7f93
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710033"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024567"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -37,13 +37,16 @@ Bir Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 
 ![Yeni bir Azure Blob depolama hedefi için bilgilerle doldurulmuş depolama hedefi ekleme sayfasının ekran görüntüsü](media/hpc-cache-add-blob.png)
 
-<!-- need to replace screenshot after note text is updated with both required RBAC roles -->
+<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **Depolama hedefi adı** -Azure HPC önbelleğinde bu depolama hedefini tanımlayan bir ad ayarlayın.
 * **Hedef türü** - **BLOB**seçin.
 * **Depolama hesabı** -başvurulacak kapsayıcıyı içeren hesabı seçin.
 
   [Erişim rolleri ekleme](#add-the-access-control-roles-to-your-account)bölümünde açıklandığı gibi, depolama hesabına erişmek için önbellek örneğini yetkilendirmeniz gerekecektir.
+
+  Kullanabileceğiniz depolama hesabı türü hakkında daha fazla bilgi için, [BLOB depolama gereksinimlerini](hpc-cache-prereqs.md#blob-storage-requirements)okuyun.
+
 * **Depolama kapsayıcısı** -bu hedefin blob kapsayıcısını seçin.
 
 * **Sanal ad alanı yolu** -bu depolama hedefi için istemciye yönelik dosya yolunu ayarlayın. Sanal ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplanan ad alanını Yapılandır](hpc-cache-namespace.md) makalesini okuyun.
@@ -54,7 +57,7 @@ Bir Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 
 Azure HPC Cache, önbellek uygulamasının Azure Blob depolama hedeflerine yönelik depolama hesabınıza erişmesini yetkilendirmek için [rol tabanlı erişim denetimi 'ni (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index) kullanır.
 
-Depolama hesabı sahibi, "StorageCache kaynak sağlayıcısı" kullanıcısı için, rol [depolama hesabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) ve [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) ' nı açıkça eklemesi gerekir.
+Depolama hesabı sahibi, "HPC Cache kaynak sağlayıcısı" kullanıcısı için rol [depolama hesabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) ve [Depolama Blobu veri katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) ' nı açıkça eklemesi gerekir.
 
 Bunu zaman içinde yapabilir veya bir BLOB depolama hedefi eklediğiniz sayfada bir bağlantıya tıklayarak yapabilirsiniz.
 
@@ -68,7 +71,10 @@ RBAC rolleri ekleme adımları:
 
 1. **Erişim ata** alanına, varsayılan değeri seçili bırakın ("Azure AD kullanıcısı, Grup veya hizmet sorumlusu").  
 
-1. **Seç** alanında "storagecache" ifadesini arayın.  Bu dize, "HPC Cache Resource Provider" adlı bir güvenlik sorumlusu ile eşleşmelidir. Bu sorumluyu seçmek için tıklayın.
+1. **Seç** alanında "HPC" ifadesini arayın.  Bu dize, "HPC Cache Resource Provider" adlı bir hizmet sorumlusu ile eşleşmelidir. Bu sorumluyu seçmek için tıklayın.
+
+   > [!NOTE]
+   > "HPC" araması işe yaramazsa bunun yerine "storagecache" dizesini kullanmayı deneyin. Önizlemeye daha önce katılmış olan kullanıcıların hizmet sorumlusu için eski adı kullanması gerekebilir.
 
 1. Rol atamasını depolama hesabına eklemek için **Kaydet** düğmesine tıklayın.
 

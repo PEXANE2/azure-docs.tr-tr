@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb5c82e551ed6299f754f518ebeebca0be4964d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: ca17d049d988b2bc8b60249d99c03f70c555d3fb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679310"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023746"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C kaynak sahibi parola kimlik bilgileri akışını yapılandırma
 
@@ -25,7 +25,7 @@ Kaynak sahibi parola kimlik bilgileri (ROPC) akışı, uygulamanın, bağlı ola
 
 Azure Active Directory B2C (Azure AD B2C) ' de, aşağıdaki seçenekler desteklenir:
 
-- **Yerel istemci**: kimlik doğrulaması sırasında Kullanıcı etkileşimi, kod bir Kullanıcı tarafı cihazda çalıştırıldığında oluşur. Cihaz, Android gibi yerel bir işletim sisteminde çalışan veya JavaScript gibi bir tarayıcıda çalışan bir mobil uygulama olabilir.
+- **Yerel istemci**: kimlik doğrulaması sırasında Kullanıcı etkileşimi, kod bir Kullanıcı tarafı cihazda çalıştırıldığında oluşur. Cihaz, Android ve iOS gibi yerel bir işletim sisteminde çalışan bir mobil uygulama olabilir.
 - **Ortak istemci akışı**: API çağrısında yalnızca bir uygulama tarafından toplanan kullanıcı kimlik bilgileri gönderilir. Uygulamanın kimlik bilgileri gönderilmez.
 - **Yeni talepler Ekle**: kimlik belirteci içerikleri yeni talepler eklemek için değiştirilebilir.
 
@@ -43,7 +43,7 @@ Aşağıdaki akışlar desteklenmez:
 5. Kullanıcı akışı için *ROPC_Auth*gibi bir ad girin.
 6. **Uygulama talepleri**bölümünde **daha fazla göster**' e tıklayın.
 7. Uygulamanız için gereken görünen ad, e-posta adresi ve kimlik sağlayıcısı gibi uygulama taleplerini seçin.
-8. **Tamam**' ı ve ardından **Oluştur**' u seçin.
+8. **Tamam**’ı ve ardından **Oluştur**’u seçin.
 9. **Kullanıcı akışını Çalıştır**' a tıklayın.
 
    Daha sonra bu örnek gibi bir uç nokta görürsünüz:
@@ -66,10 +66,10 @@ En sevdiğiniz API Geliştirme uygulamanızı kullanarak bir API çağrısı olu
 
 | Anahtar | Değer |
 | --- | ----- |
-| Nitelen | leadiocl@outlook.com |
-| Parolayı | Passxword1 |
-| grant_type | Parolayı |
-| kapsam | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
+| kullanıcı adı | leadiocl@outlook.com |
+| password | Passxword1 |
+| grant_type | password |
+| scope | OpenID \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | belirteç id_token |
 
@@ -109,7 +109,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
-| kaynak | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| Kaynak | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* ve *Resource* , daha önce uygulama kimliği olarak belirtilen değerlerdir. *Refresh_token* , daha önce bahsedilen kimlik doğrulama çağrısında aldığınız belirteçtir.

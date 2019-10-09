@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: ca0ac228bfe10992b658796d123c8dfbed74947f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0aecb2309743ffecc2fb68435192224c6c690aee
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948172"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035119"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore diziniyle performans ayarı  
 
@@ -43,7 +43,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Sıralı bir CCı tablosunda, DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler otomatik olarak sıralanmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  
+> Sıralı bir CCı tablosunda, DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler otomatik olarak sıralanmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  Azure SQL veri ambarı 'nda, columnstore dizini yeniden oluşturma, çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için, yeniden oluşturma tek seferde bir bölüm olarak gerçekleştirilir.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" ve bu bölüm için yeniden oluşturma tamamlanana kadar kullanılamaz. 
 
 ## <a name="query-performance"></a>Sorgu performansı
 
@@ -84,11 +84,17 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ## <a name="data-loading-performance"></a>Veri yükleme performansı
 
-Sıralı bir CCı tablosuna yükleme verilerinin performansı bölümlenmiş bir tabloya veri yüklemeye benzer.  
-Verilerin sıralı bir CCı tablosuna yüklenmesi, veri sıralaması nedeniyle sıralı olmayan bir CCı tablosuna veri yüklemeden daha fazla zaman alabilir.  
+Sıralı bir CCı tablosuna yükleme verilerinin performansı bölümlenmiş bir tabloyla benzerdir.  Verilerin sıralı bir CCı tablosuna yüklenmesi, veri sıralama işlemi nedeniyle sıralı olmayan bir CCı tablosundan daha uzun sürebilir, ancak sorgular daha sonra sıralı CCı ile daha hızlı çalışabilir.  
 
 Aşağıda, verileri farklı şemalara sahip tablolara yüklemenin bir örnek performans karşılaştırması verilmiştir.
-![Performance_comparison_data_loading @ no__t-1
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
+
+
+CCı ve sıralı CCı arasında örnek bir sorgu performansı karşılaştırması aşağıda verilmiştir.
+
+![Performance_comparison_data_loading](media/performance-tuning-ordered-cci/occi_query_performance.png)
+
  
 ## <a name="reduce-segment-overlapping"></a>Çakışan kesimi azalt
 
@@ -116,7 +122,7 @@ Sıralı bir CCı oluşturma, çevrimdışı bir işlemdir.  Bölüm içermeyen 
 1.  Hedef büyük tabloda (Tablo A olarak adlandırılır) bölümler oluşturun.
 2.  Tablo A ile aynı tablo ve bölüm şemasına sahip boş bir sıralı CCı tablosu (Tablo B olarak adlandırılır) oluşturun.
 3.  A tablosundan tablo B 'ye bir bölüm geçirin.
-4.  Değiştirilmiş bölümü yeniden derlemek için ALTER INDEX < Ordered_CCI_Index > yeniden oluşturma ' yı Tablo B üzerinde çalıştırın.  
+4.  Anahtarlı bölümü yeniden derlemek için ALTER INDEX < Ordered_CCI_Index > yeniden oluşturma PARTITION = < Partition_ID > Tablo B üzerinde çalıştırın.  
 5.  A tablosundaki her bölüm için 3. ve 4. adımı yineleyin.
 6.  Tüm bölümler tablo A 'dan tablo B 'ye geçildiğinde ve yeniden oluşturulduktan sonra tabloyu bir kez bırakın ve tablo B 'yi yeniden adlandırın. 
 
@@ -138,4 +144,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla geliştirme ipucu için bkz. [SQL veri ambarı geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).
+Geliştirme ile ilgili daha fazla ipucu için bkz. [SQL Data Warehouse geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).

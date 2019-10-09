@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 026689b68244052c3ad7cb50cd90d7319b6760ef
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229412"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024613"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Öğretici: Azure Sentinel ile olayları araştırın
 
@@ -31,11 +31,11 @@ ms.locfileid: "71229412"
 
 Bu öğretici, Azure Sentinel ile olayları araştırmanıza yardımcı olur. Veri kaynaklarınızı Azure Sentinel 'e bağladıktan sonra, şüpheli bir sorun olduğunda bildirim almak istersiniz. Bunu yapmanızı sağlamak için Azure Sentinel, atayabileceğiniz ve araştırmanız gereken olayları üreten gelişmiş uyarı kuralları oluşturmanıza olanak sağlar.
 
-Bu makalede ele alınmıştır:
+Bu makalede şunları ele alınmaktadır:
 > [!div class="checklist"]
 > * Olayları araştırma
 > * Araştırma grafiğini kullanma
-> * Tehditleri yanıtlayın
+> * Tehditlere yanıt verme
 
 Bir olay birden çok uyarı içerebilir. Bu, belirli bir araştırma için ilgili tüm kanıtın bir toplamadır. **Analiz** sayfasında oluşturduğunuz analitik kurallara göre bir olay oluşturulur. Önem derecesi ve durum gibi uyarılarla ilgili özellikler olay düzeyinde ayarlanır. Azure Sentinel 'e hangi tür tehditleri aradığınızı ve bunların nasıl bulunacağını öğrendikten sonra, olayları inceleyerek algılanan tehditleri izleyebilirsiniz.
 
@@ -44,7 +44,7 @@ Yalnızca analitik kuralınızı ayarlarken varlık eşleme alanlarını kulland
 
 ## <a name="how-to-investigate-incidents"></a>Olayları araştırma
 
-1.  **Olayları**seçin.  **** Olaylar sayfası, kaç olay olduğunu, kaç tane açık olduğunu, **devam**ediyor olarak ayarlamış olduğunuzu ve kaç tane kapatıldığını görmenizi sağlar. Her olay için, gerçekleştiği zamanı ve olayın durumunu görebilirsiniz. İlk olarak hangi olayların işleneceğini belirlemek için önem derecesine bakın.
+1. **Olayları**seçin. **Olaylar** sayfası, kaç olay olduğunu, kaç tane açık olduğunu, **devam**ediyor olarak ayarlamış olduğunuzu ve kaç tane kapatıldığını görmenizi sağlar. Her olay için, gerçekleştiği zamanı ve olayın durumunu görebilirsiniz. İlk olarak hangi olayların işleneceğini belirlemek için önem derecesine bakın.
 
     ![Olay önem derecesini görüntüle](media/tutorial-investigate-cases/incident-severity.png)
 
@@ -70,22 +70,22 @@ Araştırma grafiği analistlerin her İnceleme için doğru soruları sormasın
   
 Araştırma grafiği size şunları sağlar:
 
-- **Ham verilerden görsel bağlam**: Canlı, görsel grafik, ham verilerden otomatik olarak ayıklanan varlık ilişkilerini görüntüler. Bu, farklı veri kaynakları genelinde bağlantıları kolayca görmenizi sağlar.
+- **Ham verilerden görsel bağlam**: canlı, görsel grafik, ham verilerden otomatik olarak ayıklanan varlık ilişkilerini görüntüler. Bu, farklı veri kaynakları genelinde bağlantıları kolayca görmenizi sağlar.
 
-- **Tam araştırma kapsamı bulma**: Bir ihlalin tam kapsamını yüzeye almak için yerleşik araştırma sorgularını kullanarak araştırma kapsamınızı genişletin.
+- **Tam araştırma kapsamı bulma**: bir ihlalin tam kapsamını yüzeye almak için yerleşik araştırma sorgularını kullanarak araştırma kapsamınızı genişletin.
 
-- **Yerleşik araştırma adımları**: Tehdit yüzlerindeki doğru soruları sorduğunuzdan emin olmak için önceden tanımlı araştırma seçeneklerini kullanın.
+- **Yerleşik araştırma adımları**: bir tehdit tarafında doğru soruları sorduğunuzdan emin olmak için önceden tanımlanmış araştırma seçeneklerini kullanın.
 
 Araştırma grafiğini kullanmak için:
 
-1. Bir olay seçin ve ardından **Araştır**' ı seçin. Bu sizi araştırma grafiğine götürür. Grafik, uyarıya doğrudan bağlı varlıkların bir tanım haritasını ve her bir kaynağı daha fazla bağlantılı olarak sağlar.
+1. Bir olay seçin ve ardından **Araştır**' ı seçin. Bu sizi araştırma grafiğine götürür. Grafik, uyarıya doğrudan bağlı varlıkların bir tanım haritasını ve her bir kaynağı daha fazla bağlantılı olarak sağlar.
 
    > [!IMPORTANT] 
    > Yalnızca analitik kuralınızı ayarlarken varlık eşleme alanlarını kullandıysanız olayı araştırabileceksiniz. Araştırma grafiğinde, özgün olaylarınızın varlıkları içermesi gerekir.
 
-   ![Haritayı görüntüle](media/tutorial-investigate-cases/map1.png)
+   ![Haritayı görüntüleme](media/tutorial-investigate-cases/map1.png)
 
-1.  **** Varlıklar bölmesini açmak için bir varlık seçin, böylece ilgili varlık hakkındaki bilgileri gözden geçirebilirsiniz.
+1. **Varlıklar** bölmesini açmak için bir varlık seçin, böylece ilgili varlık hakkındaki bilgileri gözden geçirebilirsiniz.
 
     ![Haritalardaki varlıkları görüntüle](media/tutorial-investigate-cases/map-entities.png)
   
@@ -95,9 +95,9 @@ Araştırma grafiğini kullanmak için:
 
    Örneğin, bir bilgisayarda ilgili uyarılar isteyebilirsiniz. Bir araştırma sorgusu seçerseniz, elde edilen sahibine grafiğe geri eklenir. Bu örnekte, **ilgili uyarıları** seçmek grafiğe aşağıdaki uyarıları döndürdü:
 
-    ![İlgili uyarıları görüntüle](media/tutorial-investigate-cases/related-alerts.png)
+    ![İlgili Uyarıları görüntüle](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Her araştırma sorgusu için, **Olaylar\>** ' ı seçerek Ham olay sonuçlarını ve Log Analytics ' de kullanılan sorguyu açma seçeneğini belirleyebilirsiniz.
+1. Her araştırma sorgusu için, **@ no__t-1 olaylarını**seçerek Ham olay sonuçlarını ve Log Analytics ' de kullanılan sorguyu açma seçeneğini belirleyebilirsiniz.
 
 1. Olayı anlamak için, grafik size paralel bir zaman çizelgesi sunar.
 
