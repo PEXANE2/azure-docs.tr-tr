@@ -134,8 +134,7 @@
           href: resource-group-linked-templates.md
         - name: Birden çok örnek oluşturma
           href: resource-group-create-multiple.md
-        - name: Abonelikte kaynak grupları ve kaynaklar oluşturma
-          displayName: subscription level deployment
+        - name: Abonelik düzeyi kaynakları
           href: deploy-to-subscription.md
     - name: Şablon dağıtma
       items:

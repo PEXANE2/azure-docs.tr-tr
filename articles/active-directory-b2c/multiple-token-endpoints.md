@@ -122,7 +122,7 @@ Daha önce belirtildiği gibi, diğer OWIN kitaplıkları genellikle birden çok
 
 Artık Web API 'niz tarafından desteklenen URI 'Ler sayesinde, Web uygulamanızı b2clogin.com uç noktasından belirteçleri alması için güncelleştirmeniz gerekir.
 
-Örneğin, `ida:AadInstance` **taskwebapp** projesinin *taskwebapp\\**Web. config*** dosyasındaki değeri değiştirerek, örnek Web uygulamasını yeni uç noktayı kullanacak şekilde yapılandırabilirsiniz.
+Örneğin, `ida:AadInstance` **taskwebapp** projesinin *taskwebapp\\**Web. config** dosyasındaki* değeri değiştirerek, örnek Web uygulamasını yeni uç noktayı kullanacak şekilde yapılandırabilirsiniz.
 
 Taskwebapp 'in *Web. config* dosyasındaki `{your-b2c-tenant-name}.b2clogin.com` `login.microsoftonline.com` `ida:AadInstance` değeri, yerine başvuru olacak şekilde değiştirin.
 
