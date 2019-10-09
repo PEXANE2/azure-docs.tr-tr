@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: magoedte
-ms.openlocfilehash: fa3c8b8cee0b8621a6a2800655f62a3d339f67c3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211991"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177602"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Izleyici günlükleri dağıtımınızı tasarlama
 
@@ -32,7 +32,7 @@ Bir Log Analytics çalışma alanı şunları sağlar:
 
 * Veri depolama için coğrafi bir konum.
 * Önerilen tasarım stratejilerimizden birini izleyerek farklı kullanıcılara erişim hakları vererek veri yalıtımı.
-* [Fiyatlandırma katmanı](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [bekletme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)ve [veri dönüşü](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)gibi ayarların yapılandırılması için kapsam.
+* [Fiyatlandırma katmanı](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier), [bekletme](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)ve [veri dönüşü](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)gibi ayarların yapılandırılması için kapsam.
 
 Bu makalede, tasarım ve geçiş konuları, erişim denetimine genel bakış ve BT kuruluşunuz için önerdiğimiz tasarım uygulamalarının anlaşılmasına ilişkin ayrıntılı bir genel bakış sunulmaktadır.
 
@@ -43,14 +43,14 @@ Bu makalede, tasarım ve geçiş konuları, erişim denetimine genel bakış ve 
 İhtiyaç duyduğunuz çalışma alanı sayısını belirlemek aşağıdaki gereksinimlerinden biri veya daha fazlası tarafından etkilenir:
 
 * Küresel bir şirkettir ve veri egemenliği veya uyumluluk nedenleriyle belirli bölgelerde depolanan günlük verilerine ihtiyacınız vardır.
-* Azure kullanıyorsanız ve çalışma alanını, yönettiği Azure kaynaklarıyla aynı bölgede bulundurarak giden veri aktarımı ücretlerini ortadan kaldırmak istiyorsanız.
+* Azure kullanıyorsunuz ve yönettiği Azure kaynaklarıyla aynı bölgede bir çalışma alanı bulundurarak giden veri aktarımı ücretlerinden kaçınmak istiyorsunuz.
 * Birden çok Departmanı veya iş grubunu yönetebilir ve bunların her birinin kendi verilerini görmesini, ancak başkalarından verileri görmelerini istersiniz. Ayrıca, birleştirilmiş bir çapraz departman veya iş grubu görünümü için bir iş gereksinimi yoktur.
 
 Günümüzde BT kurumları, merkezi bir, merkezi olarak veya her iki yapının de içinden bir arada bir karma olarak modellenmiştir. Sonuç olarak, aşağıdaki çalışma alanı dağıtım modelleri yaygın olarak bu kuruluş yapılarından birine eşlemek için kullanılır:
 
-* **Merkezi**: Tüm Günlükler merkezi bir çalışma alanında depolanır ve tek bir takım tarafından yönetilir ve Azure Izleyici, ekip başına farklılaştırılan erişim sağlar. Bu senaryoda kolayca yönetilmesi, kaynaklar arasında arama yapmak ve çapraz bağıntılı Günlükler vardır. Çalışma alanı, aboneliğinizdeki birden fazla kaynaktan toplanan veri miktarına bağlı olarak, farklı kullanıcılara erişim denetimi sağlamak için ek yönetim yüküyle önemli ölçüde büyüyebilir.
-* **Merkezi olmayan:** Her takımın sahip olduğu ve yönettikleri bir kaynak grubunda kendi çalışma alanı oluşturulmuş ve günlük verileri kaynak başına ayrılmış. Bu senaryoda, çalışma alanı güvenli tutulabilir ve erişim denetimi, kaynak erişimiyle tutarlıdır, ancak günlükleri çapraz bir şekilde ilişkilendirmek zor olabilir. Birçok kaynağın geniş bir görünümüne ihtiyacı olan kullanıcılar verileri anlamlı bir şekilde analiz edemez.
-* **Karma**: Birçok kuruluş her iki dağıtım modelini de paralel olarak uygulamadığından, güvenlik denetimi uyumluluk gereksinimleri bu senaryoyu daha karmaşıklaştırır. Bu, genellikle günlük kapsamındaki boşluklar ile karmaşık, pahalı ve bakım açısından zor bir yapılandırmaya neden olur.
+* **Merkezi**: tüm Günlükler merkezi bir çalışma alanında depolanır ve tek bir takım tarafından yönetilir ve Azure izleyici, ekip başına farklılaştırılan erişim sağlar. Bu senaryoda kolayca yönetilmesi, kaynaklar arasında arama yapmak ve çapraz bağıntılı Günlükler vardır. Çalışma alanı, aboneliğinizdeki birden fazla kaynaktan toplanan veri miktarına bağlı olarak, farklı kullanıcılara erişim denetimi sağlamak için ek yönetim yüküyle önemli ölçüde büyüyebilir.
+* **Merkezi olmayan: her**takımın, sahip olduğu ve yönettikleri bir kaynak grubunda kendi çalışma alanı oluşturulmuş ve günlük verileri kaynak başına ayrılmış. Bu senaryoda, çalışma alanı güvenli tutulabilir ve erişim denetimi, kaynak erişimiyle tutarlıdır, ancak günlükleri çapraz bir şekilde ilişkilendirmek zor olabilir. Birçok kaynağın geniş bir görünümüne ihtiyacı olan kullanıcılar verileri anlamlı bir şekilde analiz edemez.
+* **Karma**: güvenlik denetimi uyumluluk gereksinimleri bu senaryoyu daha karmaşıklaştırır çünkü birçok kuruluş her iki dağıtım modelini de paralel olarak uygular. Bu, genellikle günlük kapsamındaki boşluklar ile karmaşık, pahalı ve bakım açısından zor bir yapılandırmaya neden olur.
 
 Veri toplamak için Log Analytics aracılarını kullanırken, aracı dağıtımınızı planlamak için aşağıdakileri anlamanız gerekir:
 
@@ -69,7 +69,7 @@ Rol tabanlı erişim denetimi (RBAC) sayesinde kullanıcılara ve yalnızca çal
 
 Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen faktörlerin birleşimiyle belirlenir. Her biri aşağıdaki bölümlerde açıklanmıştır.
 
-| faktörü | Açıklama |
+| Çarpan | Description |
 |:---|:---|
 | [Erişim modu](#access-mode) | Kullanıcının çalışma alanına erişmek için kullandığı yöntem.  Kullanılabilir verilerin kapsamını ve uygulanan erişim denetimi modunu tanımlar. |
 | [Erişim denetimi modu](#access-control-mode) | Çalışma alanında izinlerin, çalışma alanında veya kaynak düzeyinde uygulanıp uygulanmadığını tanımlayan ayar. |
@@ -82,11 +82,11 @@ Bir kullanıcının erişimi olan veriler, aşağıdaki tabloda listelenen fakt�
 
 Kullanıcılara verilere erişim için iki seçenek vardır:
 
-* **Çalışma alanı bağlamı**: İzniniz olan çalışma alanındaki tüm günlükleri görüntüleyebilirsiniz. Bu moddaki sorgular, çalışma alanındaki tüm tablolardaki tüm verilerin kapsamına alınır. Bu, Azure portal **Azure izleyici** menüsünden **Günlükler** ' i seçerken olduğu gibi, kapsam olarak çalışma alanıyla erişildiğinde kullanılan erişim modudur.
+* **Çalışma alanı bağlamı**: izninizin bulunduğu çalışma alanındaki tüm günlükleri görüntüleyebilirsiniz. Bu moddaki sorgular, çalışma alanındaki tüm tablolardaki tüm verilerin kapsamına alınır. Bu, Azure portal **Azure izleyici** menüsünden **Günlükler** ' i seçerken olduğu gibi, kapsam olarak çalışma alanıyla erişildiğinde kullanılan erişim modudur.
 
     ![Çalışma alanından Log Analytics bağlamı](./media/design-logs-deployment/query-from-workspace.png)
 
-* **Kaynak bağlamı**: Belirli bir kaynak, kaynak grubu veya abonelik için çalışma alanına eriştiğinizde, örneğin Azure portal bir kaynak menüsünden **Günlükler** ' i seçtiğinizde, yalnızca erişiminiz olan tüm tablolardaki kaynakların günlüklerini görüntüleyebilirsiniz. Bu moddaki sorgular yalnızca söz konusu kaynakla ilişkili verilere göre kapsamlandırılır. Bu mod, ayrıntılı RBAC de sunar.
+* **Kaynak bağlamı**: belirli bir kaynak, kaynak grubu veya abonelik için çalışma alanına eriştiğinizde, örneğin Azure Portal bir kaynak menüsünden **Günlükler** ' i seçerken, yalnızca sahip olduğunuz tüm tablolardaki kaynakların günlüklerini görüntüleyebilirsiniz. erişimi. Bu moddaki sorgular yalnızca söz konusu kaynakla ilişkili verilere göre kapsamlandırılır. Bu mod, ayrıntılı RBAC de sunar.
 
     ![Kaynaktan Log Analytics bağlamı](./media/design-logs-deployment/query-from-resource.png)
 
@@ -115,13 +115,13 @@ Aşağıdaki tabloda erişim modları özetlenmektedir:
 
 *Erişim denetimi modu* , çalışma alanı için izinlerin nasıl belirlendiğini tanımlayan her çalışma alanındaki bir ayardır.
 
-* **Çalışma alanı Izinleri iste**: Bu denetim modu parçalı RBAC 'e izin vermiyor. Bir kullanıcının çalışma alanına erişmesi için, çalışma alanına veya belirli tablolara izin verilmesi gerekir.
+* **Çalışma alanı Izinleri iste**: Bu denetim modu parçalı RBAC 'e izin vermez. Bir kullanıcının çalışma alanına erişmesi için, çalışma alanına veya belirli tablolara izin verilmesi gerekir.
 
     Bir kullanıcı çalışma alanına, çalışma alanı bağlamı modundan sonra erişirse, erişim izni verilen herhangi bir tablodaki tüm verilere erişebilirler. Bir Kullanıcı, kaynak bağlamı modundan sonra çalışma alanına eriştiğinde, erişim izni verilen her tabloda yalnızca o kaynağa yönelik verilere erişebilirler.
 
     Bu, 2019 Mart 'tan önce oluşturulan tüm çalışma alanları için varsayılan ayardır.
 
-* **Kaynak veya çalışma alanı Izinlerini kullanın**: Bu denetim modu parçalı RBAC sağlar. Kullanıcılara, yalnızca Azure `read` izni atayarak görüntüleyebileceği kaynaklarla ilişkili verilere erişim izni verilebilir. 
+* **Kaynak veya çalışma alanı Izinlerini kullanın**: Bu denetim modu parçalı RBAC 'e izin verir. Kullanıcılara yalnızca Azure `read` izni atayarak görüntüleyebilecekleri kaynaklarla ilişkili verilere erişim verilebilir. 
 
     Bir kullanıcı çalışma alanı bağlam modunda çalışma alanına eriştiğinde, çalışma alanı izinleri geçerlidir. Bir Kullanıcı, kaynak-bağlam modundaki çalışma alanına eriştiğinde yalnızca kaynak izinleri doğrulanır ve çalışma alanı izinleri yoksayılır. Çalışma alanı izinlerinden kaldırarak ve kaynak izinlerinin tanınmasını sağlayarak bir kullanıcı için RBAC 'yi etkinleştirin.
 

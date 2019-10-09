@@ -1,41 +1,41 @@
 ---
-title: Bir veri kümesi eşlemesi yapılandırma
-description: Bir veri kümesi eşlemesi yapılandırma
+title: Azure veri paylaşımında önizleme sürümünde bir veri kümesi eşlemesi yapılandırma
+description: Azure veri paylaşma önizlemesi 'ni kullanarak alınan bir paylaşımın veri kümesi eşlemesini nasıl yapılandıracağınızı öğrenin.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 581e1eef5f1d64e68a6501f56ce60218281c605d
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 035235116240bdc6de3bc689c2430fee018b202d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67789247"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169145"
 ---
-# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Azure veri paylaşma önizlemesinde bir veri kümesi eşlemeyi alınan bir paylaşım için yapılandırma
+# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share-preview"></a>Azure veri paylaşımında önizleme sürümünde alınan bir paylaşıma yönelik veri kümesi eşlemesi yapılandırma
 
-Bu makalede bir alınan kullanarak Azure veri paylaşımı Önizleme paylaşımı için bir veri kümesi eşlemeyi yapılandırma açıklanmaktadır. Bir veri Paylaşım daveti kabul ettiyseniz, ancak için seçimi yaptıysanız Bunu yapmak isteyebilirsiniz "kabul et ve daha sonra yapılandırmak". Aksi takdirde, yalnızca alınan verileriniz için hedef depolama hesabını değiştirmek isteyebilirsiniz. 
+Bu makalede, Azure veri paylaşımının önizlemesi kullanılarak alınan bir paylaşımın veri kümesi eşlemesinin nasıl yapılandırılacağı açıklanır. Bir veri paylaşma davetini kabul ettiyseniz ancak "daha sonra kabul et ve Yapılandır" seçeneğini tercih ettiyseniz bunu yapmak isteyeceksiniz. Aksi takdirde, yalnızca alınan verileriniz için hedef depolama hesabını değiştirmek isteyebilirsiniz. 
 
-## <a name="navigate-to-a-received-data-share"></a>Alınan veri paylaşımına gidin
+## <a name="navigate-to-a-received-data-share"></a>Alınan bir veri paylaşımında gezin
 
-Azure veri paylaşımı hizmetinde, alınan paylaşımına gidin ve seçin **ayrıntıları** sekmesi. 
+Azure veri paylaşma hizmetinde, aldığınız paylaşıma gidin ve **Ayrıntılar** sekmesini seçin. 
 
-![Veri kümesi eşleme](./media/dataset-mapping.png "Dataset eşleme") 
+![Veri kümesi eşleme](./media/dataset-mapping.png "veri kümesi") eşleme 
 
-Bir hedefe atayın ve istediğiniz veri kümesinin yanındaki kutuyu işaretleyin **+ harita hedef**. Bir hedef depolama hesabı zaten yapılandırılmış ve farklı bir depolama hesabı için eşlemesini değiştirmek istiyorsanız, ilk eşlemeyi gerekebilir. 
+Hedef atamak istediğiniz veri kümesinin yanındaki kutuyu işaretleyin ve **+ hedefe eşle**' ye tıklayın. Zaten bir hedef depolama hesabı yapılandırdıysanız ve eşlemeyi farklı bir depolama hesabıyla değiştirmek istiyorsanız, öncelikle eşlemesini kaldırmanız gerekebilir. 
 
-![Hedef eşlemesine](./media/dataset-map-target.png "hedefe eşleme") 
+Hedef(./media/dataset-map-target.png "haritaya hedefle") ![eşle] 
 
 ## <a name="select-a-new-storage-account"></a>Yeni bir depolama hesabı seçin 
 
-Depolama hesabı içinde yerleşmesi veri istediğinizi seçin. Not birinde zaten herhangi bir veri depolama hesaplarını önceden eşlenmiş, yeni depolama hesabına otomatik olarak taşınmayacak.
+Verilerin içinde olmasını istediğiniz bir depolama hesabı seçin. Önceden eşlenmiş depolama hesaplarında bulunan tüm verilerin otomatik olarak yeni depolama hesabına taşınacağını unutmayın.
 
-![Hedef depolama hesabı](./media/map-target.png "hedef depolama") 
+![Hedef depolama hesabı](./media/map-target.png "hedef depolama alanı") 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Verileri paylaşmaya başlayın öğrenmek için devam [verilerinizi paylaşmak](share-your-data.md) öğretici.
+Verileri paylaşmaya nasıl başlayacağınızı öğrenmek için [verilerinizi paylaşma](share-your-data.md) öğreticiye geçin.
 
 
 

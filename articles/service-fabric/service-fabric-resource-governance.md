@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: subramar
-ms.openlocfilehash: ed9ea8f9c340331fd9b8fcc014ab1af88e7b3bae
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa388a688e76b0ba69231d8a11aa1bfa686f7f51
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599243"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166545"
 ---
-# <a name="resource-governance"></a>Kaynak idaresi
+# <a name="resource-governance"></a>Kaynak İdaresi
 
 Aynı düğüm veya küme üzerinde birden fazla hizmet çalıştırırken, bir hizmetin daha fazla kaynak tüketmesi ve bu da işlemdeki diğer hizmetlerden kaynaklanabilir. Bu sorun, "gürültülü komşu" sorunu olarak adlandırılır. Azure Service Fabric, geliştiricilerin kaynakları garanti etmek ve kaynak kullanımını sınırlamak için hizmet başına ayırmaları ve sınırları belirtmesini sağlar.
 
@@ -32,14 +32,14 @@ Aynı düğüm veya küme üzerinde birden fazla hizmet çalıştırırken, bir 
 
 Kaynak İdaresi, [hizmet paketine](service-fabric-application-model.md)uygun olarak Service Fabric desteklenir. Hizmet paketine atanan kaynaklar kod paketleri arasında daha da ayrılabilir. Belirtilen kaynak sınırları, kaynakların rezervasyonu da anlamına gelir. Service Fabric, iki yerleşik [ölçüm](service-fabric-cluster-resource-manager-metrics.md)ile hizmet PAKETI başına CPU ve bellek belirtmeyi destekler:
 
-* *CPU* (ölçüm adı `servicefabric:/_CpuCores`): Ana makinede bulunan mantıksal çekirdek. Tüm düğümlerdeki tüm çekirdekler aynı şekilde ağırlıklı olarak dağıtılır.
+* *CPU* (ölçüm adı `servicefabric:/_CpuCores`): konak makinede bulunan mantıksal çekirdek. Tüm düğümlerdeki tüm çekirdekler aynı şekilde ağırlıklı olarak dağıtılır.
 
-* *Bellek* (ölçüm adı `servicefabric:/_MemoryInMB`): Bellek megabayt cinsinden ifade edilir ve makinede bulunan fiziksel bellekle eşlenir.
+* *Bellek* (ölçüm adı `servicefabric:/_MemoryInMB`): bellek megabayt cinsinden ifade edilir ve makinede bulunan fiziksel bellekle eşlenir.
 
 Bu iki ölçüm için [küme kaynak yöneticisi](service-fabric-cluster-resource-manager-cluster-description.md) toplam küme kapasitesini, kümedeki her düğümdeki yükü ve kümedeki kalan kaynakları izler. Bu iki ölçüm, diğer Kullanıcı veya özel ölçümle eşdeğerdir. Var olan tüm özellikler bunlarla birlikte kullanılabilir:
 
-* Küme, bu iki [](service-fabric-cluster-resource-manager-balancing.md) ölçümlere (varsayılan davranış) göre dengelenebilir.
-* Küme, bu iki [](service-fabric-cluster-resource-manager-defragmentation-metrics.md) ölçümlere göre birleştirilebilirler.
+* Küme, bu iki ölçümlere (varsayılan davranış) göre [dengelenebilir](service-fabric-cluster-resource-manager-balancing.md) .
+* Küme, bu iki ölçümlere göre [birleştirilebilirler](service-fabric-cluster-resource-manager-defragmentation-metrics.md) .
 * [Bir kümeyi açıkladığında](service-fabric-cluster-resource-manager-cluster-description.md), bu iki ölçüm için arabelleğe alınan kapasite ayarlanabilir.
 
 [Dinamik yük raporlama](service-fabric-cluster-resource-manager-metrics.md) bu ölçümler için desteklenmez ve bu ölçümler için Yüklemeler oluşturma sırasında tanımlanmıştır.
@@ -56,9 +56,9 @@ Bu noktada, limitlerin toplamı, düğümün kapasitesine eşittir. Bir işlem v
 
 Ancak, diğer işlemlerin CPU için çekişme olabileceği iki durum vardır. Bu durumlarda, örneğimizde bir işlem ve bir kapsayıcı, gürültülü komşu sorunu yaşayabilirler:
 
-* *Yönetilen ve yönetilmeyen Hizmetleri ve kapsayıcıları karıştırma*: Bir Kullanıcı herhangi bir kaynak İdaresi olmadan bir hizmet oluşturursa, çalışma zamanı bunu kaynak tükettiği şekilde görür ve örneğimizde düğüme yerleştirebilir. Bu durumda, bu yeni işlem düğümde zaten çalışmakta olan hizmetlerin ücretine göre bazı CPU kullanımını etkili bir şekilde tüketir. Bu soruna yönelik iki çözüm vardır. Aynı kümede yönetilen ve yönetilmeyen Hizmetleri karışmayın ya da bu iki hizmet türünün aynı düğüm kümesine bitmesi için [yerleştirme kısıtlamalarını](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) kullanın.
+* *Yönetilen ve yönetilmeyen Hizmetleri ve kapsayıcıları karıştırma*: bir Kullanıcı hiçbir kaynak İdaresi olmadan bir hizmet oluşturursa, çalışma zamanı bu dosyayı kaynak olmadan görür ve örneğimizdeki düğüme yerleştirebilir. Bu durumda, bu yeni işlem düğümde zaten çalışmakta olan hizmetlerin ücretine göre bazı CPU kullanımını etkili bir şekilde tüketir. Bu soruna yönelik iki çözüm vardır. Aynı kümede yönetilen ve yönetilmeyen Hizmetleri karışmayın ya da bu iki hizmet türünün aynı düğüm kümesine bitmesi için [yerleştirme kısıtlamalarını](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) kullanın.
 
-* *Düğüm üzerinde başka bir işlem başlatıldığında Service Fabric dışında (örneğin, bir işletim sistemi hizmeti)* : Bu durumda, Service Fabric dışındaki işlem, var olan hizmetlerle CPU için de sona erer. Bu sorunun çözümü, sonraki bölümde gösterildiği gibi, işletim sistemi ek yükünü hesaba eklemek için düğüm kapasitelerinin doğru şekilde ayarlanmadır.
+* *Düğüm üzerinde başka bir işlem başlatıldığında Service Fabric dışında (örneğin, bir işletim sistemi hizmeti)* : Bu durumda, Service Fabric dışındaki işlem, var olan hizmetlerle CPU için de devam ediyor. Bu sorunun çözümü, sonraki bölümde gösterildiği gibi, işletim sistemi ek yükünü hesaba eklemek için düğüm kapasitelerinin doğru şekilde ayarlanmadır.
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>Kaynak yönetimini etkinleştirmek için küme kurulumu
 
@@ -133,11 +133,11 @@ Kaynak idare limitleri, aşağıdaki örnekte gösterildiği gibi uygulama bildi
   </ServiceManifestImport>
 ```
 
-Bu örnekte, **Servicepackagea** adlı hizmet paketi, yerleştirildiği düğümlerde bir çekirdek alır. Bu hizmet paketi iki kod paketi (**CodeA1** ve **CodeA2**) içerir ve `CpuShares` her ikisi de parametreyi belirtir. CpuShares 512:256 oranı, çekirdeği iki kod paketine böler.
+Bu örnekte, **Servicepackagea** adlı hizmet paketi, yerleştirildiği düğümlerde bir çekirdek alır. Bu hizmet paketi iki kod paketi (**CodeA1** ve **CodeA2**) içerir ve her ikisi de `CpuShares` parametresini belirtir. CpuShares 512:256 oranı, çekirdeği iki kod paketine böler.
 
 Bu nedenle, bu örnekte, CodeA1 'in iki katı DS 'yi alır ve CodeA2 bir çekirdekli (ve aynı şekilde bir yazılım garantisi rezervasyonu) alır. Kod paketleri için CpuShares belirtilmemişse, Service Fabric çekirdekleri aralarında eşit olarak böler.
 
-Bellek sınırları mutlak olduğundan, her iki kod paketi de 1024 MB bellekle (ve aynı şekilde bir yazılım garantisi rezervasyonu) sınırlıdır. Kod paketleri (kapsayıcılar veya süreçler) Bu sınırdan daha fazla bellek ayıramıyor ve bu işlemi gerçekleştirmeye çalışırken bellek yetersiz özel durumu oluşur. Kaynak sınırı zorlamasının çalışması için, hizmet paketi içindeki tüm kod paketlerinin bellek sınırlarının belirtilmiş olması gerekir.
+Bellek sınırları mutlak olduğundan, her iki kod paketi de 1024 MB bellekle (ve aynı şekilde bir yazılım garantisi rezervasyonu) sınırlıdır. Kod paketleri (kapsayıcılar veya süreçler) Bu sınırdan daha fazla bellek ayıramıyor ve bu işlemi gerçekleştirmeye çalışırken bellek yetersiz özel durumu oluşur. Kaynak sınırı zorlamasının çalışması için, bir hizmet paketi içindeki tüm kod paketlerinde bellek sınırları belirtilmelidir.
 
 ### <a name="using-application-parameters"></a>Uygulama parametrelerini kullanma
 
@@ -190,12 +190,12 @@ Bu örnekte, her bir hizmet paketinin 4 çekirdek ve 2 GB bellek aldığı, üre
 
 CPU ve belleğin yanı sıra, kapsayıcılar için diğer kaynak sınırlarını belirtmek mümkündür. Bu sınırlar, kod paketi düzeyinde belirtilir ve kapsayıcı başlatıldığında uygulanır. CPU ve bellek ile farklı olarak, Cluster Kaynak Yöneticisi bu kaynakları bilmez ve hiçbir kapasite denetimi veya yük dengelemesi yapamayacaktır.
 
-* *Memoryswapınmb*: Bir kapsayıcının kullanabileceği takas belleği miktarı.
-* *Memoryrezervationınmb*: Yalnızca düğümde bellek çakışması algılandığında zorlanan bellek yönetimi için geçici sınır.
-* *Cpuyüzdesi*: Kapsayıcının kullanabileceği CPU yüzdesi. Hizmet paketi için CPU sınırları belirtilmişse, bu parametre etkin bir şekilde yok sayılır.
-* *Maximumıops*: Bir kapsayıcının kullanabileceği maksimum ıOPS (okuma ve yazma).
-* *Maximumiobytesps*: Kapsayıcının kullanabileceği en yüksek GÇ (saniye başına bayt) (okuma ve yazma).
-* *Blockioweight*: Diğer kapsayıcılara göreli olarak blok GÇ ağırlığı.
+* *Memoryswapınmb*: bir kapsayıcının kullanabileceği takas belleği miktarı.
+* *Memoryrezervationınmb*: yalnızca düğümde bellek çakışması algılandığında uygulanan bellek yönetimi için geçici sınır.
+* *Cpupercent*: KAPSAYıCıNıN kullanabileceği CPU yüzdesi. Hizmet paketi için CPU sınırları belirtilmişse, bu parametre etkin bir şekilde yok sayılır.
+* *Maximumıops*: bir kapsayıcının KULLANABILECEĞI Maksimum IOPS (okuma ve yazma).
+* *Maximumiobytesps*: bir kapsayıcının kullanabileceği en yüksek GÇ (saniye başına bayt) (okuma ve yazma).
+* *Blockioweight*: diğer kapsayıcılara göreli olarak blok GÇ ağırlığı.
 
 Bu kaynaklar, CPU ve bellekle birleştirilebilir. Kapsayıcılar için ek kaynakların nasıl belirtilbir örneği aşağıda verilmiştir:
 

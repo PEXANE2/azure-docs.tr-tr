@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7f8c029c5ceff0865b060cf8edc794454d6c282
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0a1515144f340938cddfd5ca9f2ac4803bcb3f77
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828476"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174712"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 'lerinde Azure disk şifrelemesi senaryoları
 
@@ -36,7 +36,7 @@ Her durumda, [bir anlık görüntü](snapshot-copy-managed-disk.md) almalısın�
 
 ## <a name="install-tools-and-connect-to-azure"></a>Araçları yükleyip Azure 'a bağlanın
 
-Azure disk şifrelemesi, [Azure CLI](/cli/azure) ve [Azure PowerShell](/azure/new-azureps-module-az)aracılığıyla etkinleştirilebilir ve yönetilebilir. Bunu yapmak için araçları yerel olarak yüklemeli ve Azure aboneliğinize bağlamanız gerekir.
+Azure disk şifrelemesi, [Azure CLI](/cli/azure) ve [Azure PowerShell](/powershell/azure/new-azureps-module-az)aracılığıyla etkinleştirilebilir ve yönetilebilir. Bunu yapmak için araçları yerel olarak yüklemeli ve Azure aboneliğinize bağlamanız gerekir.
 
 ### <a name="azure-cli"></a>Azure CLı
 
@@ -66,7 +66,7 @@ az account set --subscription "<subscription name or ID>"
 Daha fazla bilgi için bkz. [Azure CLI ile çalışmaya başlama 2,0](/cli/azure/get-started-with-azure-cli). 
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell az Module](/azure/new-azureps-module-az) , Azure kaynaklarınızı yönetmek için [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) modelini kullanan bir cmdlet kümesi sağlar. Bunu tarayıcınızda [Azure Cloud Shell](../../cloud-shell/overview.md)ile kullanabilir veya [Azure PowerShell modülünü yüklemeye](/powershell/azure/install-az-ps)ilişkin yönergeleri kullanarak yerel makinenize yükleyebilirsiniz. 
+[Azure PowerShell az Module](/powershell/azure/new-azureps-module-az) , Azure kaynaklarınızı yönetmek için [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) modelini kullanan bir cmdlet kümesi sağlar. Bunu tarayıcınızda [Azure Cloud Shell](../../cloud-shell/overview.md)ile kullanabilir veya [Azure PowerShell modülünü yüklemeye](/powershell/azure/install-az-ps)ilişkin yönergeleri kullanarak yerel makinenize yükleyebilirsiniz. 
 
 Yerel olarak zaten yüklüyse, Azure disk şifrelemesini yapılandırmak için Azure PowerShell SDK sürümünün en son sürümünü kullandığınızdan emin olun. [Azure PowerShell sürümünün](https://github.com/Azure/azure-powershell/releases)en son sürümünü indirin.
 
@@ -193,7 +193,7 @@ Azure 'da çalışan bir sanal makinede şifrelemeyi etkinleştirmek için [set-
 
 Aşağıdaki tabloda mevcut veya çalışan VM 'Ler için Kaynak Yöneticisi şablon parametreleri listelenmektedir:
 
-| Parametre | Açıklama |
+| Parametre | Description |
 | --- | --- |
 | vmName | Şifreleme işleminin çalıştırılacağı sanal makinenin adı. |
 | keyVaultName | Şifreleme anahtarının karşıya yüklenmesi gereken anahtar kasasının adı. Bunu, `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` cmdlet 'ini veya @no__t Azure CLı komutunu kullanarak alabilirsiniz.|
@@ -202,7 +202,7 @@ Aşağıdaki tabloda mevcut veya çalışan VM 'Ler için Kaynak Yöneticisi şa
 | Birimtürü | Şifreleme işleminin gerçekleştirildiği birimin türü. Geçerli değerler _Işletim sistemi_, _veri_ve _hepsi_. 
 | forceUpdateTag | İşlemin zorla çalışması gereken her seferinde GUID gibi benzersiz bir değer geçirin. |
 | resizeOSDisk | Sistem birimini bölmeden önce IŞLETIM sistemi bölümünün tam işletim sistemi VHD 'SI kaplamaya yeniden boyutlandırılması gerekir. |
-| konum | Tüm kaynakların konumu. |
+| location | Tüm kaynakların konumu. |
 
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Linux VM 'lerinde veri diskleri için EncryptFormatAll özelliğini kullanın

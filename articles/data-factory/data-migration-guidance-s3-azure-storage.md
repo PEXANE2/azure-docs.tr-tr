@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/04/2019
-ms.openlocfilehash: c56e6e004fe7f63725b5f6f4b9c71f60cc7b91ed
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5f98cb29bd61c674ef7d7e6af781760fe81a5085
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829118"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177888"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Amazon S3 'ten Azure Storage 'a veri geçirmek için Azure Data Factory kullanma 
 
@@ -36,7 +36,7 @@ ADF, farklı düzeylerde paralellik sağlayan sunucusuz bir mimari sunar ve bu s
 
 Müşteriler, 2 GBps ve üzeri bir işlem hacmi sunan, Amazon S3 'den Azure Blob depolama alanına kadar yüzlerce milyonlarca dosyadan oluşan verileri petabaytlarca başarıyla geçirdiniz. 
 
-![performans](media/data-migration-guidance-s3-to-azure-storage/performance.png)
+![Mının](media/data-migration-guidance-s3-to-azure-storage/performance.png)
 
 Yukarıdaki resimde, farklı paralellik seviyeleri aracılığıyla harika veri taşıma hızına nasıl ulaşabileceğiniz gösterilmektedir:
  
@@ -44,7 +44,7 @@ Yukarıdaki resimde, farklı paralellik seviyeleri aracılığıyla harika veri 
 - Tek bir kopyalama etkinliği, birden çok iş parçacığı kullanarak veri deposundan okur ve yazar. 
 - ADF denetim akışı, örneğin [her döngü için](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity)kullanarak birden çok kopyalama etkinliğini paralel olarak başlatabilir. 
 
-## <a name="resilience"></a>Dayanıklılık
+## <a name="resilience"></a>Esnekliği
 
 Tek bir kopyalama etkinliği çalıştırmasında, ADF 'nin, veri depolarında veya temel ağdaki belirli bir geçici başarısızlık düzeyini işleyebilmesi için yerleşik yeniden deneme mekanizması vardır. 
 
@@ -136,10 +136,9 @@ Yukarıdaki varsayımlar temelinde tahmini fiyat aşağıda verilmiştir:
 
 ![fiyatlandırma-tablo](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
-
 ### <a name="additional-references"></a>Ek başvurular 
 - [Amazon basit depolama hizmeti Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
-- [Azure Blob Depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
+- [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
 - [Azure Data Lake Storage 2. Bağlayıcısı](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
 - [Kopyalama etkinliği performans ayarlama Kılavuzu](https://docs.microsoft.com/azure/data-factory/copy-activity-performance)
 - [Şirket içinde barındırılan Integration Runtime oluşturma ve yapılandırma](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)
@@ -149,6 +148,10 @@ Yukarıdaki varsayımlar temelinde tahmini fiyat aşağıda verilmiştir:
 - [Dosyayı, bölümlenmiş dosya adına göre artımlı olarak Kopyala](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [LastModifiedDate göre yeni ve değiştirilmiş dosyaları Kopyala](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [ADF fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+
+## <a name="template"></a>Şablonlarını
+
+İşte, Amazon S3 ' den Azure Data Lake Storage 2. ' den yüz milyonlarca dosyadan oluşan verileri petabaytlarca geçirmek için ile başlayan [şablon](solution-template-migration-s3-azure.md) aşağıda verilmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

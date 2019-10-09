@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: hrasheed
-ms.openlocfilehash: 07714575bb4adfccf5d72a093874852c1bfebcc8
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: b9bcaf4b7497e8beba377eb7e47a44a6eb061299
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71843815"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178003"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights"></a>Öğretici: Sales Insights 'ı türetmek için uçtan uca veri işlem hattı oluşturma
 
@@ -23,7 +23,7 @@ Bu veri ardışık düzeni, çeşitli depolardaki verileri birleştirir, istenme
 
 ![ETL mimarisi](./media/hdinsight-sales-insights-etl/architecture.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -33,7 +33,7 @@ Bu öğreticinin sonunda iş öngörülerini görselleştirmek için [Power BI D
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>Depoyu betikler ve verilerle kopyalayın
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalı](https://portal.azure.com)’nda oturum açın.
 1. Üstteki menü çubuğundan Azure Cloud Shell açın. Cloud Shell isteyip istemediğinizi bir dosya paylaşma oluşturmak için aboneliğinizi seçin.
 
    ![Azure Cloud Shell açın](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
@@ -175,7 +175,7 @@ Oluşturduğunuz Data Factory işlem hattındaki ilk etkinlik, verileri blob dep
 - Portal aracılığıyla veri fabrikanızın **izleyici** bölümüne gidin.
 - Azure Depolama Gezgini, Data Lake Storage Gen 2 depolama hesabınıza gidin. @No__t-0 dosya sistemine gidin ve sonra işlem hattının başarılı olup olmadığını görmek için `transformed` klasörüne gidin ve içeriğini denetleyin.
 
-HDInsight kullanarak verileri dönüştürmenin diğer yolları için [Jupyter Notebook kullanma konusunda bu makaleye](/spark/apache-spark-load-data-run-query.md)bakın.
+HDInsight kullanarak verileri dönüştürmenin diğer yolları için [Jupyter Notebook kullanma konusunda bu makaleye](/azure/hdinsight/spark/apache-spark-load-data-run-query)bakın.
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Power BI verileri görüntülemek için etkileşimli sorgu kümesinde tablo oluşturma
 
@@ -201,7 +201,7 @@ Bu betik, etkileşimli sorgu kümesinde Power BI erişebileceğiniz bir yönetil
 
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Satış verilerinden Power BI panosu oluşturma
 
-1. Power BI Desktop açın.
+1. Power BI Desktop’ı açın.
 1. **Veri al**' ı seçin.
 1. **HDInsight etkileşimli sorgu kümesi**araması yapın.
 1. Kümenizin URI 'sini buraya yapıştırın. @No__t-0 biçiminde olmalıdır.
@@ -214,7 +214,7 @@ Veriler yüklendikten sonra, oluşturmak istediğiniz panoyu deneyebilirsiniz. P
 * [Power BI tasarımcıları için panolara giriş](https://docs.microsoft.com/power-bi/service-dashboards)
 * [Öğretici: Power BI hizmeti kullanmaya başlayın](https://docs.microsoft.com/power-bi/service-get-started)
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu uygulamayı kullanmaya devam edemeyecekecekseniz, bunlar için ücretlendirilmemek üzere aşağıdaki komutu kullanarak tüm kaynakları silin.
 

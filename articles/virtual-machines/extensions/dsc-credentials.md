@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: dsc
+keywords: DSC
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 38a302545f2dd46a8123816a41c97ae26ee4c260
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0625e3ac14e28cb4d43313bf1d9bc8b7afa08b1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092502"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176701"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Kimlik bilgilerini Azure DSCExtension işleyicisine geçirin
 
@@ -83,11 +83,11 @@ $vm | Update-AzVM
 
 Bu kodu çalıştırmak bir kimlik bilgisi ister. Kimlik bilgileri sağlandıktan sonra, bu, bellekte kısaca saklanır. Kimlik bilgisi **set-AzVMDscExtension** cmdlet 'i kullanılarak yayımlandığında, KIMLIK bilgisi https üzerinden VM 'ye iletilir. VM 'de, Azure yerel VM sertifikasını kullanarak diskte şifrelenmiş kimlik bilgilerini depolar. Kimlik bilgisinin bellek içinde kısaca şifresi çözülür ve daha sonra DSC 'ye iletilmesi için yeniden şifrelenir.
 
-Bu işlem [, uzantı işleyicisi olmayan güvenli yapılandırmaların kullanmaktan](/powershell/dsc/securemof)farklıdır. Azure ortamı, yapılandırma verilerini sertifikalar aracılığıyla güvenli bir şekilde iletmenin bir yolunu sunar. DSC uzantı işleyicisini kullandığınızda, **configurationData**içinde **$CertificatePath** veya **$CertificateID**/  **$Thumbprint** girdisi sağlamanız gerekmez.
+Bu işlem [, uzantı işleyicisi olmayan güvenli yapılandırmaların kullanmaktan](/powershell/scripting/dsc/pull-server/securemof)farklıdır. Azure ortamı, yapılandırma verilerini sertifikalar aracılığıyla güvenli bir şekilde iletmenin bir yolunu sunar. DSC uzantı işleyicisini kullandığınızda, **configurationData**içinde **$CertificatePath** veya **$CertificateID**/  **$Thumbprint** girişi sağlamanız gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure DSC uzantı işleyicisine giriş](dsc-overview.md)alın.
 - [DSC uzantısının Azure Resource Manager şablonunu](dsc-template.md)inceleyin.
-- PowerShell DSC hakkında daha fazla bilgi için [PowerShell belge merkezine](/powershell/dsc/overview)gidin.
+- PowerShell DSC hakkında daha fazla bilgi için [PowerShell belge merkezine](/powershell/scripting/dsc/overview/overview)gidin.
 - PowerShell DSC 'yi kullanarak yönetebileceğiniz daha fazla işlevsellik ve daha fazla DSC kaynağı için [PowerShell Galerisi](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)' ne gözatabileceğinizi unutmayın.

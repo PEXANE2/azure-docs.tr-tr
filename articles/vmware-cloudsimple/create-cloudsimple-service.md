@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6d4af28d79b2375e774da98d4fdb1ad9dc22063
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 99194c42dbc6ef07301be517021bf0fb4b4e7c23
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035733"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173500"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>CloudSimple hizmeti tarafından Azure VMware çözümünü oluşturma
 
@@ -22,18 +22,18 @@ CloudSimple ile Azure VMware çözümünü kullanmaya başlamak için Azure port
 > [!IMPORTANT]
 > CloudSimple hizmetini oluşturmadan önce, Azure aboneliğinize Microsoft. Vmwarechoparlör basit kaynak sağlayıcısını kaydetmeniz gerekir. [Azure aboneliğinizde Microsoft. Vmwarechoparlör basit kaynak sağlayıcısını etkinleştirme](enable-cloudsimple-service.md)bölümündeki adımları izleyin.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure 'da oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalı](https://portal.azure.com)’nda oturum açın.
 
-## <a name="create-the-service"></a>Hizmeti oluşturma
+## <a name="create-the-service"></a>Hizmeti oluşturun
 
-1. **Tüm Hizmetler**’i seçin.
+1. **Tüm hizmetler**' i seçin.
 2. **Cloudsimple Hizmetleri**için arama yapın.
-    ![CloudSimple hizmeti ara](media/create-cloudsimple-service-search.png)
+    ![Search CloudSimple hizmeti @ no__t-1
 3. **Cloudsimple Hizmetleri**' ni seçin.
 4. Yeni bir hizmet oluşturmak için **Ekle** ' ye tıklayın.
-    ![CloudSimple hizmeti Ekle](media/create-cloudsimple-service-add.png)
+    ![Cloudsimple hizmeti Ekle @ no__t-1
 5. CloudSimple hizmetini oluşturmak istediğiniz aboneliği seçin.
 6. Hizmet için kaynak grubunu seçin. Yeni bir kaynak grubu eklemek için **Yeni oluştur**' a tıklayın.
 7. Hizmeti tanımlamak için ad girin.
@@ -46,5 +46,6 @@ Hizmet oluşturulur ve hizmetler listesine eklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Düğüm sağlamayı](create-nodes.md) öğrenin
 * [Özel bulut oluşturmayı](create-private-cloud.md) öğrenin
 * [Özel bir bulut ortamını yapılandırmayı](quickstart-create-private-cloud.md) öğrenin

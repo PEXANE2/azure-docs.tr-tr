@@ -8,24 +8,24 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 99def93a20a365dd0ff5fc27e9c52909ee30bd83
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 395e8b1bc92ea64c8a5cea114be443d6411c7412
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028126"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170321"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
 Coğrafi bölge yedekli depolama (GZRS) (Önizleme) marrıes, [coğrafi olarak yedekli depolama (GRS)](storage-redundancy-grs.md)tarafından sağlandığı şekilde bölgesel kesintilerden koruma ile bölgesel olarak yedekli [depolamanın (ZRS)](storage-redundancy-zrs.md) yüksek oranda kullanılabilir olması. Bir GZRS Storage hesabındaki veriler, birincil bölgedeki üç [Azure kullanılabilirlik](../../availability-zones/az-overview.md) alanı arasında çoğaltılır ve ayrıca bölgesel felaketlerden koruma için ikincil bir coğrafi bölgeye çoğaltılır. Her Azure bölgesi aynı coğrafya içindeki başka bir bölge ile eşleştirilir ve bir bölgesel çift oluşturur. Daha ayrıntılı bilgi ve özel durumlar için [belgelere](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)bakın.
 
-Bir GZRS depolama hesabı ile bir kullanılabilirlik alanı kullanılamaz hale gelirse veya kurtarılamaz durumdaysa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda verileriniz de dayanıklı olur. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır. GZRS, LRS, ZRS, GRS veya RA-GRS ile aynı [ölçeklenebilirlik hedeflerini](storage-scalability-targets.md) de sunmaktadır. Uygulamalarınızın birincil bölgedeki bir olağanüstü durum durumunda verileri okuyabilmeleri gerekiyorsa, isteğe bağlı olarak, Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) ile ikincil bölgedeki verilere okuma erişimini etkinleştirebilirsiniz.
+Bir GZRS depolama hesabı ile bir kullanılabilirlik alanı kullanılamaz hale gelirse veya kurtarılamaz durumdaysa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda verileriniz de dayanıklı olur. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır. GZRS, LRS, ZRS, GRS veya RA-GRS ile aynı [ölçeklenebilirlik hedeflerini](storage-scalability-targets.md) de sunmaktadır. Uygulamalarınızın birincil bölgedeki bir olağanüstü durum durumunda verileri okuyabilmeleri gerekiyorsa, isteğe bağlı olarak, Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) ile ikincil bölgedeki verilere okuma erişimini etkinleştirebilirsiniz.
 
 Microsoft, olağanüstü durum kurtarma için tutarlılık, dayanıklılık, yüksek kullanılabilirlik, mükemmel performans ve esnekliği gerektiren uygulamalar için GZRS kullanılmasını önerir. Bölgesel bir olağanüstü durum durumunda ikincil bölgeye yönelik okuma erişiminin ek güvenliği için, depolama hesabınız için RA-GZRS ' y i etkinleştirin.
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
-GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md). GZRS ve RA-GZRS desteği blok blob 'ları, VHD diskleri, dosyalar, tablolar ve kuyruklar olmayan sayfa Blobları.
+GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md). GZRS ve RA-GZRS desteği blok blob 'ları, VHD diskleri, dosyalar, tablolar ve kuyruklar olmayan sayfa Blobları.
 
 GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 
@@ -35,9 +35,9 @@ GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 - ABD Doğu 2
 - ABD Orta
 
-Microsoft, ek Azure bölgelerinde GZRS ve RA-GZRS etkinleştirmesine devam etmektedir. Desteklenen bölgeler hakkında daha fazla bilgi için [Azure hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/) sayfa düzenli olarak denetleyin.
+Microsoft, ek Azure bölgelerinde GZRS ve RA-GZRS etkinleştirmesine devam etmektedir. Desteklenen bölgeler hakkında bilgi için [Azure hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/) sayfasını düzenli olarak denetleyin.
 
-Önizleme fiyatlandırması hakkında bilgi için, [Bloblar](https://azure.microsoft.com/pricing/details/storage/blobs), [dosyalar](https://azure.microsoft.com/pricing/details/storage/files/), [Kuyruklar](https://azure.microsoft.com/pricing/details/storage/queues/)ve [Tablolar](https://azure.microsoft.com/pricing/details/storage/tables/)için GZRS Preview fiyatlandırması bölümüne bakın.
+Önizleme fiyatlandırması hakkında bilgi için, [Bloblar](https://azure.microsoft.com/pricing/details/storage/blobs), [dosyalar](https://azure.microsoft.com/pricing/details/storage/files/), [Kuyruklar](https://azure.microsoft.com/pricing/details/storage/queues/)ve [Tablolar](https://azure.microsoft.com/pricing/details/storage/tables/)için GZRS Preview fiyatlandırması bölümüne bakın.
 
 > [!IMPORTANT]
 > Microsoft, üretim iş yükleri için Önizleme özelliklerinin kullanılmasını önerir.
@@ -49,13 +49,13 @@ Veriler GZRS veya RA-GZRS etkin bir depolama hesabına yazıldığında, bu veri
 > [!IMPORTANT]
 > Zaman uyumsuz çoğaltma, verilerin birincil bölgeye yazıldığı ve ikincil bölgeye çoğaltıldığı zaman arasında bir gecikme içerir. Bölgesel bir olağanüstü durum durumunda, bu veriler birincil bölgeden kurtarılamazsa, ikincil bölgeye henüz çoğaltılmamış değişiklikler kaybolabilir.
 
-Bir depolama hesabı oluşturduğunuzda, bu hesaptaki verilerin nasıl çoğaltılacağı ve ayrıca söz konusu hesabın birincil bölgesini belirtmeniz gerekir. Coğrafi olarak çoğaltılan bir hesabın eşleştirilmiş ikincil bölgesi, birincil bölgeye göre belirlenir ve değiştirilemez. Azure tarafından desteklenen bölgeler hakkında güncel bilgiler için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). GZRS veya RA-GZRS kullanarak bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-quickstart-create-account.md).
+Bir depolama hesabı oluşturduğunuzda, bu hesaptaki verilerin nasıl çoğaltılacağı ve ayrıca söz konusu hesabın birincil bölgesini belirtmeniz gerekir. Coğrafi olarak çoğaltılan bir hesabın eşleştirilmiş ikincil bölgesi, birincil bölgeye göre belirlenir ve değiştirilemez. Azure tarafından desteklenen bölgeler hakkında güncel bilgiler için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). GZRS veya RA-GZRS kullanarak bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-quickstart-create-account.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Yüksek kullanılabilirlik için RA-GZRS kullanma
 
-Depolama hesabınız için RA-GZRS ' ı etkinleştirdiğinizde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, blob hizmeti için birincil uç noktanız @ no__t-0 ise, ikincil uç noktanız @ no__t-1 ' dir. Depolama hesabınızın erişim anahtarları hem birincil hem de ikincil uç noktalar için aynıdır.
+Depolama hesabınız için RA-GZRS ' ı etkinleştirdiğinizde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, blob hizmeti için birincil uç noktanız `myaccount.blob.core.windows.net` ise, ikincil uç noktanız `myaccount-secondary.blob.core.windows.net` ' dir. Depolama hesabınızın erişim anahtarları hem birincil hem de ikincil uç noktalar için aynıdır.
 
-Bölgesel bir kesinti durumunda RA-GZRS avantajlarından yararlanmak için, bu senaryoyu işlemek üzere uygulamanızı önceden tasarlamanız gerekir. Uygulamanız birincil uç noktadan okuyup yazmalı, ancak birincil bölgenin kullanılamaz hale geldiği olayda ikincil uç noktayı kullanmaya geçiş yapar. RA-GZRS ile yüksek kullanılabilirlik için tasarlamaya yönelik yönergeler için bkz. [ra-GZRS veya RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
+Bölgesel bir kesinti durumunda RA-GZRS avantajlarından yararlanmak için, bu senaryoyu işlemek üzere uygulamanızı önceden tasarlamanız gerekir. Uygulamanız birincil uç noktadan okuyup yazmalı, ancak birincil bölgenin kullanılamaz hale geldiği olayda ikincil uç noktayı kullanmaya geçiş yapar. RA-GZRS ile yüksek kullanılabilirlik için tasarlamaya yönelik yönergeler için bkz. [ra-GZRS veya RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
 Veriler ikincil bölgeye zaman uyumsuz olarak çoğaltıldığından, ikincil bölge genellikle birincil bölgenin arkasında olur. İkincil bölgeye çoğaltılan yazma işlemlerini öğrenmek için, uygulamanız depolama hesabınızın son eşitleme zamanını kontrol edin. Birincil bölgeye son eşitleme zamanından önce yazılan tüm yazma işlemleri, ikincil bölgeye başarıyla çoğaltılmıştı ve bu, ikincilden okunmak üzere kullanılabilir. Son eşitleme zamanından sonra birincil bölgeye yazılan yazma işlemleri, ikincil bölgeye çoğaltılmayabilir veya bu, okuma işlemleri için uygun olmayabilir.
 
@@ -101,9 +101,9 @@ LRS, GRS veya RA-GRS hesabından GZRS veya RA-GZRS ' a geçiş yapmak için iki 
 
 #### <a name="perform-a-manual-migration"></a>El ile geçiş gerçekleştirme
 
-Geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş işleminde zamanlama sizin denetiminizde olur.
+Geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş ile zamanlama denetimi olursunuz.
 
-Mevcut bir hesaptan GZRS veya RA-GZRS hesabına el ile veri geçirebilmek için, verileri verimli bir şekilde kopyalayabileceğiniz bir araç kullanın. Bazı örnekler:
+Mevcut bir hesaptan GZRS veya RA-GZRS hesabına el ile veri geçirebilmek için, verileri verimli bir şekilde kopyalayabileceğiniz bir araç kullanın. Bazı örnekler şunlardır:
 
 - AzCopy veya güvenilir bir üçüncü taraf aracı gibi bir yardımcı program kullanın. AzCopy hakkında daha fazla bilgi için bkz. [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md).
 - Hadoop veya HDInsight hakkında bilgi sahibiyseniz, kümenize hem kaynak hem de hedef depolama hesapları ekleyin. Ardından, paralel hale getirmek gibi bir araçla veri kopyalama işlemini yapın.
@@ -111,45 +111,45 @@ Mevcut bir hesaptan GZRS veya RA-GZRS hesabına el ile veri geçirebilmek için,
 
 #### <a name="perform-a-live-migration"></a>Dinamik geçiş gerçekleştirme
 
-El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft dinamik geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçiş işlemidir.
+El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft canlı bir geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçişdir.
 
 Dinamik geçiş sırasında, verileriniz kaynak ve hedef depolama hesapları arasında geçirildiğinde depolama hesabınızı kullanabilirsiniz. Dinamik geçiş işlemi sırasında hesabınız, dayanıklılık ve kullanılabilirlik için SLA 'Sı buluşmaya devam eder. Dinamik geçişin neden olduğu kesinti veya veri kaybı yoktur.
 
-Yalnızca genel amaçlı v2 hesapları GZRS/RA-GZRS destekler, bu nedenle GZRS/RA-GZRS ' e dinamik geçiş için bir istek göndermeden önce, hesabınızı genel amaçlı v2 'ye yükseltmeniz gerekir. Daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](https://docs.microsoft.com/azure/storage/common/storage-account-overview) ve [genel amaçlı v2 depolama hesabına yükseltme](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+Yalnızca genel amaçlı v2 hesapları GZRS/RA-GZRS destekler, bu nedenle GZRS/RA-GZRS ' e dinamik geçiş için bir istek göndermeden önce, hesabınızı genel amaçlı v2 'ye yükseltmeniz gerekir. Daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](https://docs.microsoft.com/azure/storage/common/storage-account-overview) ve [genel amaçlı v2 depolama hesabına yükseltme](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 
 Geçiş işlemi tamamlandıktan sonra, depolama hesabının çoğaltma ayarı **coğrafi bölge yedekli depolama (GZRS)** veya **Okuma Erişimli Coğrafi bölge-YEDEKLI depolama (ra-GZRS)** olarak güncelleştirilir. Hizmet uç noktaları, erişim anahtarları, paylaşılan erişim imzaları (SAS) ve diğer hesap yapılandırma seçenekleri değişmeden kalır ve bozulmaz.
 
 Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulundurun:
 
-- Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne zaman tamamlanacağı garanti edilemez. Verilerinizin belirli bir tarihe göre GZRS veya RA-GZRS 'e geçirilmesi gerekiyorsa, Microsoft bunun yerine el ile geçiş gerçekleştirmenizi önerir. Genel olarak hesabınızda ne kadar çok veri varsa bu verilerin geçişi de o kadar uzun sürer.
+- Microsoft, dinamik geçiş isteğiniz için hemen işlem yaparken, dinamik geçişin ne zaman tamamlanabileceğini garanti etmez. Verilerinizin belirli bir tarihe göre GZRS veya RA-GZRS 'e geçirilmesi gerekiyorsa, Microsoft bunun yerine el ile geçiş gerçekleştirmenizi önerir. Genellikle, hesabınızda daha fazla veri bu verilerin geçirilmesi için de daha uzun sürer.
 - Hesabınızın veri içermesi gerekir.
 - Yalnızca aynı bölgedeki verileri geçirebilirsiniz.
 - Yalnızca standart depolama hesabı türleri dinamik geçişi destekler. Premium Depolama hesaplarının el ile geçirilmesi gerekir.
-- GZRS veya RA-GZRS hesabından LRS, GRS veya RA-GRS hesabına dinamik geçiş desteklenmez. Verileri yeni veya mevcut depolama hesabına el ile taşımanız gerekir.
+- GZRS veya RA-GZRS hesabından LRS, GRS veya RA-GRS hesabına dinamik geçiş desteklenmez. Verileri yeni veya mevcut bir depolama hesabına el ile taşımanız gerekir.
 - RA-GRS 'den RA-GZRS ' d e dinamik geçiş isteğinde bulabilirsiniz. Ancak, RA-GRS ' den GZRS ' a geçiş desteklenmez. Bu durumda, RA-GZRS için dinamik geçiş istemeniz ve depolama hesabını el ile GZRS kullanacak şekilde dönüştürmeniz gerekir.
-- Yönetilen diskler yalnızca LRS 'yi destekler ve GZRS veya RA-GZRS ' a geçirilemez. Kullanılabilirlik kümeleriyle tümleştirme için bkz. [Azure yönetilen disklere giriş](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
-- Standart SSD yönetilen disklerin anlık görüntülerini ve görüntülerini Standart HDD depolamada saklayabilir ve [LRS, ZRS, GZRS ve Ra-GZRS seçenekleri arasından seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz.
+- Yönetilen diskler yalnızca LRS 'yi destekler ve GZRS veya RA-GZRS ' a geçirilemez. Kullanılabilirlik kümeleriyle tümleştirme için bkz. [Azure yönetilen disklere giriş](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
+- Standart SSD yönetilen disklerin anlık görüntülerini ve görüntülerini Standart HDD depolamada saklayabilir ve [LRS, ZRS, GZRS ve Ra-GZRS seçenekleri arasından seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz.
 - Büyük dosya paylaşımları içeren hesaplar GZRS için desteklenmez.
 
-Dinamik geçiş istemek için [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)kullanın. Portaldan GZRS veya RA-GZRS ' e geçirilecek depolama hesabını seçin ve şu yönergeleri izleyin:
+Dinamik geçiş istemek için [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)kullanın. Portaldan GZRS veya RA-GZRS ' e geçirilecek depolama hesabını seçin ve şu yönergeleri izleyin:
 
 1. **Yeni destek isteği ' ni**seçin.
 2. Hesap bilgilerinizi temel alan **temel bilgileri** doldurun. **Hizmet** bölümünde, **depolama hesabı yönetimi** ' ni seçin ve geçirilecek hesabı belirtin.
-3. **İleri**’yi seçin.
+3. **İleri**'yi seçin.
 4. **Sorun** bölümünün aşağıdaki değerlerini belirtin:
     - **Önem derecesi**: varsayılan değeri olduğu gibi bırakın.
     - **Sorun türü**: **veri geçişini**seçin.
     - **Kategori**: **bir bölge içinde (ra-) GZRS geçir**' i seçin.
     - **Başlık**: Örneğin, **(ra-) GZRS hesabı geçişi**gibi açıklayıcı bir başlık yazın.
     - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, "\_ @ no__t-3 bölgesindeki [LRS, GRS] öğesinden GZRS 'e geçiş yapmak istiyorum." ya da "\_ @ no__t-1 bölgesindeki, [LRS, RA-GRS] öğesinden RA-GZRS 'a geçiş yapmak istiyorum."
-5. **İleri**’yi seçin.
+5. **İleri**'yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
-7. **Oluştur**'u seçin.
+7. **Oluştur**’u seçin.
 
 Destek temsilcisi, yardım sağlamak için sizinle iletişim kuracaktır.
 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="see-also"></a>Ayrıca bkz:
 
-- [Azure Depolama çoğaltması](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Azure depolama çoğaltma](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Yerel olarak yedekli depolama (LRS): Azure depolama için düşük maliyetli veri artıklığı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [Bölgesel olarak yedekli depolama (ZRS): yüksek oranda kullanılabilir Azure depolama uygulamaları](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 

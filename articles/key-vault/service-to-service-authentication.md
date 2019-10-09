@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: 0f8c8900782ec8beb9f9b11c8fe7f7651901c343
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6996a5965454dfd5997f0c0404e0c348c68b626f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958981"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177463"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
@@ -24,7 +24,7 @@ Bu kimlik bilgilerini yönetmek zor olabilir. Kimlik bilgilerini kaynak veya yap
 
 @No__t-0 kitaplığı, kimlik doğrulamasını otomatik olarak yönetir, bu da kimlik bilgileriniz yerine çözümünüze odaklanmanıza olanak tanır. Microsoft Visual Studio, Azure CLı veya Azure AD Tümleşik kimlik doğrulamasıyla yerel geliştirmeyi destekler. Yönetilen bir kimliği destekleyen bir Azure kaynağına dağıtıldığında, kitaplık otomatik olarak [Azure kaynakları için Yönetilen kimlikler](../active-directory/msi-overview.md)kullanır. Kod veya yapılandırma değişikliği gerekli değildir. Kitaplık Ayrıca, yönetilen bir kimlik olmadığında veya geliştiricinin güvenlik bağlamı yerel geliştirme sırasında belirlenemediğinde Azure AD [istemci kimlik bilgilerinin](../azure-resource-manager/resource-group-authenticate-service-principal.md) doğrudan kullanımını destekler.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual studio 2019](https://www.visualstudio.com/downloads/) veya [Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 
@@ -87,7 +87,7 @@ Azure CLı 'yi kullanmak için:
 
 1. Azure portal oturum açın: Azure 'da oturum açmak için *az oturum* açın.
 
-1. *Az Account Get-Access-Token*yazarak erişimi doğrulayın. Bir hata alırsanız, doğru Azure CLı sürümünün düzgün yüklendiğini kontrol edin.
+1. *Az Account Get-Access-Token--resource https://vault.azure.net* girerek erişimi doğrulayın. Bir hata alırsanız, doğru Azure CLı sürümünün düzgün yüklendiğini kontrol edin.
 
    Azure CLı varsayılan dizine yüklenmemişse, `AzureServiceTokenProvider` ' ın Azure CLı yolunu bulamadığı bir hata bildirimi alabilirsiniz. Azure CLı yükleme klasörünü tanımlamak için **Azureclipath** ortam değişkenini kullanın. `AzureServiceTokenProvider`, gerekli olduğunda, **Azureclipath** ortam değişkeninde belirtilen dizini **yol** ortam değişkenine ekler.
 
@@ -241,7 +241,7 @@ Aşağıdaki seçenekler desteklenir:
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Hizmet sorumlusu | `AzureServiceTokenProvider` Azure AD 'den belirteç almak için sertifikayı kullanır|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Hizmet sorumlusu |`AzureServiceTokenProvider`, Azure AD 'den belirteç almak için gizli anahtar kullanır. |
 
-## <a name="samples"></a>Örnekler
+## <a name="samples"></a>Lerinizi
 
 @No__t-0 kitaplığını eylemde görmek için aşağıdaki kod örneklerine bakın.
 

@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2019
-ms.author: chackdan
-ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.author: pepogors
+ms.openlocfilehash: 8ae25a02e6170972972c5b2b7e159ef39d1a3673
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773265"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167329"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux kümelerinde sertifikalar ve güvenlik
 
@@ -42,7 +42,7 @@ Bazı hizmetlerde, [Configpackage](./service-fabric-application-and-service-mani
 
 ### <a name="using-x509-securitycredentialstype"></a>X509 SecurityCredentialsType kullanma
 
-.NET veya Java SDK 'Ları Ile **Securitycredentialstype**için **x509** belirtebilirsiniz. Bu[(.net](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)Java `X509Credentials` [](https://docs.microsoft.com/java/api/system.fabric.securitycredentials))[türünde](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[](https://docs.microsoft.com/java/api/system.fabric.x509credentials) `SecurityCredentials` (.net Java) buna karşılık gelir./
+.NET veya Java SDK 'Ları Ile **Securitycredentialstype**için **x509** belirtebilirsiniz. Bu, `SecurityCredentials` ' ün `X509Credentials` ([.net](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) türüne karşılık gelir ([.net](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx)/[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
 
 **X509** başvurusu, sertifikayı bir sertifika deposunda konumlandırır. Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir:
 
@@ -52,7 +52,7 @@ Bazı hizmetlerde, [Configpackage](./service-fabric-application-and-service-mani
     <Parameter Name="CertificateStoreName" Value="My" />
 ```
 
-Linux üzerinde çalışan bir hizmet için, **LocalMachine**/**My** , */var/lib/sfcerts* dizinini, sertifikalar için varsayılan konuma yönlendirir. Linux için, **Certificatestorelocation** ve **CertificateStoreName** 'in diğer birleşimleri tanımsızdır. 
+Linux üzerinde çalışan bir hizmet için, **LocalMachine**@no__t **-1,** sertifikalar için varsayılan konuma işaret ediyor, */var/lib/sfcerts* dizini. Linux için, **Certificatestorelocation** ve **CertificateStoreName** 'in diğer birleşimleri tanımsızdır. 
 
 Her zaman **Certificatestorelocation** parametresi için **LocalMachine** belirtin. Varsayılan "My" olarak ayarlandığından **CertificateStoreName** parametresinin belirtilmesi gerekmez. **X509** başvurusuyla, sertifika dosyalarının küme düğümündeki */var/lib/sfcerts* dizininde bulunması gerekir.  
 
@@ -73,7 +73,7 @@ Aşağıdaki XML, bu stile dayalı bir **TransportSettings** bölümünü göste
 
 ### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType kullanma
 
-Java SDK 'Sı ile **Securitycredentialstype**için **X509_2** belirtebilirsiniz. Bu `X509Credentials2` [, (Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2) `SecurityCredentials` [) türüne](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)karşılık gelir. 
+Java SDK 'Sı ile **Securitycredentialstype**için **X509_2** belirtebilirsiniz. Bu, `SecurityCredentials` ' nin ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)) `X509Credentials2` ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) türüne karşılık gelir. 
 
 Bir **X509_2** başvurusuyla, sertifikayı */var/lib/sfcerts*dışında bir dizinde bulmak için bir yol parametresi belirtirsiniz.  Aşağıdaki XML, sertifikanın konumunu belirtmek için kullanılan parametreleri gösterir: 
 

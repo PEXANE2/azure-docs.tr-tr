@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 1c77c0a83762dacf2e98d2401a3926a0d7b082eb
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 7ebbc7575ad52bbf7a399babb048113bc505a7f8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001180"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174530"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 
@@ -33,7 +33,7 @@ Bu makalede aşağıdaki görevlerin örnekleri gösterilmektedir:
 
 Aşağıdaki öğeler gerekir:
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* Bir Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md).
 
@@ -49,7 +49,7 @@ Aşağıdaki öğeler gerekir:
 
 ## <a name="start-a-run-and-its-logging-process"></a>Çalıştırma ve günlük işlemini başlatma
 
-### <a name="using-the-sdk"></a>SDK’yı kullanarak
+### <a name="using-the-sdk"></a>SDK 'Yı kullanma
 
 [Çalışma alanını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) [, denemeyi,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) [çalıştırmayı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)ve [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) sınıflarını [azureml. Core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py) paketinden içeri aktararak denemenizin kurulumunu yapın.
 
@@ -106,7 +106,7 @@ Denemenizin çalışmasını başlatmak için aşağıdaki adımları kullanın:
 
 ## <a name="monitor-the-status-of-a-run"></a>Bir çalıştırmanın durumunu izleme
 
-### <a name="using-the-sdk"></a>SDK’yı kullanarak
+### <a name="using-the-sdk"></a>SDK 'Yı kullanma
 
 [@No__t-1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-status--) yöntemiyle bir çalıştırmanın durumunu alır.
 
@@ -163,7 +163,7 @@ print(notebook_run.get_status())
 
 Bir hata fark ederseniz veya çalıştırmanın tamamlanmasının çok uzun sürmesi durumunda, çalıştırmayı iptal edebilirsiniz.
 
-### <a name="using-the-sdk"></a>SDK’yı kullanarak
+### <a name="using-the-sdk"></a>SDK 'Yı kullanma
 
 SDK kullanarak bir çalıştırmayı iptal etmek için [`cancel()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--) metodunu kullanın:
 
@@ -189,7 +189,7 @@ print(local_script_run.get_status())
 CLı kullanarak bir çalıştırmayı iptal etmek için aşağıdaki komutu kullanın. @No__t-0 ' yı çalıştırmanın KIMLIĞIYLE değiştirin
 
 ```azurecli-interactive
-az ml run cancel -r runid
+az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 Daha fazla bilgi için bkz. [az ml Run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
@@ -257,7 +257,7 @@ Azure Machine Learning ' de, önemli bilgiler için çalıştırmalarınızı d�
 
 ### <a name="add-properties-and-tags"></a>Özellikler ve etiketler ekleme
 
-#### <a name="using-the-sdk"></a>SDK’yı kullanarak
+#### <a name="using-the-sdk"></a>SDK 'Yı kullanma
 
 Çalışmalarınız için aranabilir meta veriler eklemek için [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) metodunu kullanın. Örneğin, aşağıdaki kod `"author"` özelliğini çalıştırmaya ekler:
 
@@ -309,7 +309,7 @@ Daha fazla bilgi için bkz. [az ml Run Update](https://docs.microsoft.com/cli/az
 
 Belirli özellikler ve etiketlerle eşleşen çalıştırmaların bir listesini döndürmek için bir deneydeki çalıştırmaları sorgulayabilirsiniz.
 
-#### <a name="using-the-sdk"></a>SDK’yı kullanarak
+#### <a name="using-the-sdk"></a>SDK 'Yı kullanma
 
 ```Python
 list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))

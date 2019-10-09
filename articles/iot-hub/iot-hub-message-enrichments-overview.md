@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873188"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177986"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>Cihazdan buluta IoT Hub iletileri için ileti zenginleştirmelerinin (Önizleme)
 
-*İleti* zenginleştirmelerinin iletileri belirlenen uç noktaya gönderilmeden önce ek bilgilerle iletileri *damgalamak* IoT Hub yeteneğidir. İleti zenginleştirmelerinin tek bir nedeni, aşağı akış işlemeyi basitleştirmek için kullanılabilecek verileri içermektir. Örneğin, cihaz ikizi etiketiyle cihaz telemetri iletileri zenginleştirilmesi, bu bilgilere yönelik cihaz ikizi API çağrıları yapmak için müşterilerin yükünü azaltabilir.
+*İleti zenginleştirmelerinin* iletileri belirlenen uç noktaya gönderilmeden önce ek bilgilerle iletileri *damgalamak* IoT Hub yeteneğidir. İleti zenginleştirmelerinin tek bir nedeni, aşağı akış işlemeyi basitleştirmek için kullanılabilecek verileri içermektir. Örneğin, cihaz ikizi etiketiyle cihaz telemetri iletileri zenginleştirilmesi, bu bilgilere yönelik cihaz ikizi API çağrıları yapmak için müşterilerin yükünü azaltabilir.
 
 ![İleti zenginleştirme akışı](./media/iot-hub-message-enrichments-overview/message-enrichments-flow.png)
 
@@ -29,7 +29,7 @@ Bir ileti zenginleştirmesi, üç temel öğeye sahiptir:
 
 * Zenginleştirme için uygulanması gereken bir veya daha fazla [uç nokta](iot-hub-devguide-endpoints.md) .
 
-**Anahtar** bir dizedir. Anahtar yalnızca alfasayısal karakterler veya şu özel karakterleri içerebilir: kısa çizgi (`-`), alt çizgi (`_`) ve nokta (`.`).
+**Anahtar** bir dizedir. Anahtar yalnızca alfasayısal karakterler veya şu özel karakterleri içerebilir: tire (`-`), alt çizgi (`_`) ve nokta (`.`).
 
 **Değer** aşağıdaki örneklerden herhangi biri olabilir:
 
@@ -78,11 +78,11 @@ Enzenginler, uç nokta başına uygulanır. Belirli bir uç nokta için damgalı
 
 * İleti zenginleştirmelerinin dijital ikizi değişiklik olayları ( [ıot Tak ve Kullan genel önizlemenin](../iot-pnp/overview-iot-plug-and-play.md)parçası) için uygun değildir.
 
-## <a name="pricing"></a>Fiyatlandırma
+## <a name="pricing"></a>Fiyat
 
 İleti zenginleştirme, ek ücret ödemeden kullanılabilir. Şu anda bir IoT Hub ileti gönderdiğinizde ücretlendirilirsiniz. İleti birden çok uç noktaya gitse bile, bu ileti için yalnızca bir kez ücretlendirilirsiniz.
 
-## <a name="availability"></a>Kullanılabilirlik
+## <a name="availability"></a>Sonrası
 
 Bu özellik Önizleme sürümünde kullanılabilir ve Doğu ABD, Batı ABD, Batı Avrupa, [Azure Kamu](/azure/azure-government/documentation-government-welcome), [Azure Çin 21Vianet](/azure/china)ve [Azure Almanya](https://azure.microsoft.com/global-infrastructure/germany/)dışındaki tüm bölgelerde kullanılabilir.
 
@@ -90,7 +90,7 @@ Bu özellik Önizleme sürümünde kullanılabilir ve Doğu ABD, Batı ABD, Bat�
 
 İletileri bir IoT Hub yönlendirme hakkında daha fazla bilgi için şu makalelere göz atın:
 
-* [İleti geliştirmeleri öğreticisi](tutorial-message-enrichments.md)
+* [İleti zenginleştirme öğreticisi](tutorial-message-enrichments.md)
 
 * [Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](iot-hub-devguide-messages-d2c.md)
 

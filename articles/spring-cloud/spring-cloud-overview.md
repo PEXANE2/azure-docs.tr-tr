@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 10/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 0f54f218c630129049182e00ad3c53624172a5f0
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: c58e6b2a0c0de8295df65b44fbdeaeb2d4461948
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72039080"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166524"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure yay bulutu nedir?
 
@@ -19,7 +19,8 @@ Azure yay bulutu, Azure 'a Spring Boot tabanlı mikro hizmet uygulamalarının, 
 
 Azure Spring Cloud, Azure ekosisteminin bir parçası olarak depolama, veritabanları, izleme ve daha fazlasını içeren diğer Azure hizmetlerine kolayca bağlamayı sağlar.
 
-Azure yay bulutu Şu anda önizleme aşamasındadır.  Önizlemedeyken bu hizmete erişim için lütfen bize e-posta ile ulaşın: azure-spring-cloud@service.microsoft.com.
+Azure yay bulutu Şu anda önizleme aşamasındadır.  Bu hizmete önizleme sırasında erişim için lütfen [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 Başlamak için [Azure CLI](spring-cloud-quickstart-launch-app-cli.md), [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)veya [Maven](spring-cloud-quickstart-launch-app-maven.md)kullanarak Spring Cloud hızlı başlangıcı ' nı tamamlayın.
 
@@ -37,7 +38,7 @@ Azure Spring Cloud, kodu üretim ortamlarına serbest bırakma ve güncelleştir
 
 Azure Spring Cloud, Azure CLı kullanarak Azure DevOps ile tümleştirme sağlar.  Azure DevOps kullanarak, Spring uygulamanıza kod tümleştirmeyi ve dağıtımı otomatikleştirebileceğinizi unutmayın.  Daha fazla bilgi edinmek için bu [makaleyi](spring-cloud-howto-cicd.md)ziyaret edin.
 
-### <a name="scale-your-application"></a>Uygulamanızı ölçeklendirme
+### <a name="scale-your-application"></a>Uygulamanızı ölçeklendirin
 
 Azure Spring Cloud, Azure Spring Cloud panonuzda mikro hizmetleri kolayca ölçeklendirmenize olanak tanır.  Hem vCPU sayısı hem de mikro hizmetlerinizin kullanabildiği bellek miktarı, gereksinimlerinize uyacak şekilde ölçeklendirilebilir veya azaltılabilir.  Ölçeklendirme, saniyeler içinde etkili olur ve kod değişikliği veya yeniden dağıtım gerektirmez.  Daha fazla bilgi edinmek için bu [öğreticiyi](spring-cloud-tutorial-scale-manual.md)izleyin.
 

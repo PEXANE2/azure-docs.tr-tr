@@ -5,98 +5,139 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 9a64c6e476910ab4fe983fa949680f05fdded3ae
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 030ea87018e1a2d438e3e4d728af76e429efda08
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70161857"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169014"
 ---
-# <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK 'Ları platformu desteği
+# <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT cihaz SDK 'Ları platform desteği
 
-[Azure IoT SDK 'ları](iot-hub-devguide-sdks.md) , büyük dil ve platform desteğiyle IoT Hub ve cihaz sağlama hizmeti ile etkileşime geçmek için bir kitaplık kümesidir. SDK 'lar, en yaygın platformlarda çalışır ve geliştiriciler, [taşıma kılavuzunu](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)izleyerek C SDK 'sının belirli bir platforma bağlantı noktası oluşturabilir. 
+Microsoft, Azure IoT Hub özellikli cihazların Universe sürekli olarak genişlemesine kadar çaba harcar. Microsoft, cihazların Azure IoT Hub ve cihaz sağlama hizmeti 'ne bağlanmasına yardımcı olmak için GitHub üzerinde açık kaynaklı cihaz SDK 'Ları yayımlar. Cihaz SDK 'Ları C, .NET (C#), Java, Node. js ve Python için kullanılabilir. Microsoft, [Microsoft SDK 'ları ve cihaz platformu desteği](#microsoft-sdks-and-device-platform-support) bölümünde bu yapılandırmanın desteklediği desteklenen yapılandırmalarda çalıştığından emin olmak için her SDK 'yı sınar.
 
-Microsoft çeşitli işletim sistemlerini/platformları/çerçeveleri destekler ve Azure IoT C SDK 'Sı kullanılarak genişletilebilir. Bazıları, kullanıcılar tarafından, kullanıcıların beklediği destek düzeyini temsil eden katmanlar halinde gruplanmış olarak desteklenir. *Tam olarak desteklenen platformlar* , Microsoft 'un şu anlamına gelir:
+Microsoft, cihaz SDK 'larının yanı sıra müşterilerin ve geliştiricilerin cihazlarını Azure IoT 'ye bağlanmasını sağlamak için çeşitli diğer hususlar sağlar:
 
-- Ana ve desteklenen sürüm (ler) e karşı uçtan uca testleri sürekli olarak oluşturup çalıştırır.  Farklı sürümler arasında test kapsamı sağlamak için genellikle en son LTS sürümüne ve en popüler sürüme karşı test ediyoruz.  Aynı platformun diğer sürümleri platform sürümü uyumluluğu aracılığıyla desteklenebilir.
-- Uygulanabilirse Yükleme Kılavuzu veya paketleri sağlar.
-- GitHub 'daki platformları tam olarak destekler.
+* Microsoft, donanım platformları için Azure IoT C SDK 'Sı temel alınarak geliştirme setleri yayımlamasına yardımcı olmak üzere birkaç iş ortağı şirketi ile işbirliği yapar.
 
-Ayrıca, iş ortaklarının bir listesi, C SDK 'imizi daha fazla platforma ve platform soyutlama katmanını (PAL) sürdürmesidir. [IoT Için Azure Sertifikalı cihaz kataloğu](https://catalog.azureiotsolutions.com/) , farklı SDK 'ların test edildiğini de bir işletim sistemi platformları listesini de sunar. SDK 'lar Ayrıca, sınırlı test ve destek ile bu platformlarda düzenli olarak derleme yapmak için:
+* Microsoft, Azure IoT için sınanmış ve sertifikalı bir sürekli genişleyen cihaz kümesi sağlamak üzere Microsoft güvenilir iş ortaklarıyla birlikte çalışır. Bu cihazların geçerli bir listesi için bkz. [IoT Için Azure Sertifikalı cihaz kataloğu](https://catalog.azureiotsolutions.com/).
 
-* MBED2
-* Arduino
-* Windows CE 2013 (2018 Ekim 'de kullanımdan kalkın)
-* .NET Core 2,1 ve .NET Framework 4,7 .NET Standard 1,3
-* Xamarin iOS, Android, UWP
+* Microsoft, geliştiricilerin SDK 'ya kolayca SDK 'nın bağlantı noktası oluşturmasını sağlayan Azure IoT Hub Device C SDK 'sında bir platform soyutlama katmanı (PAL) sağlar. Daha fazla bilgi edinmek için bkz. [C SDK taşıma Kılavuzu](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
 
-## <a name="supported-platforms"></a>Desteklenen platformlar
+Bu konuda, Microsoft SDK 'Ları ve destekledikleri platform yapılandırmalarının yanı sıra yukarıda listelenen diğer seçeneklerin her biri hakkında bilgi verilmektedir.
 
-Desteklenen birkaç platform vardır.
+## <a name="microsoft-sdks-and-device-platform-support"></a>Microsoft SDK 'Ları ve cihaz platformu desteği
+
+Microsoft, GitHub 'da açık kaynaklı SDK 'Ları şu diller için yayımlar: C, .NET (C#), Node. js, Java ve Python. SDK 'lar ve bağımlılıkları bu bölümde listelenmiştir. SDK 'lar, bu bağımlılıkları karşılayan herhangi bir cihaz platformunda desteklenir.
+
+Listelenen her SDK 'nın her biri için Microsoft:
+
+* , Çeşitli popüler platformlarda GitHub 'da ilgili SDK 'nın ana dalında sürekli olarak uçtan uca testler oluşturur ve çalıştırır.  Farklı derleyici sürümleri arasında test kapsamı sağlamak için genellikle en son LTS sürümüne ve en popüler sürüme karşı test ediyoruz.
+
+* Uygulanabilirse yükleme kılavuzunu veya yükleme paketlerini sağlar.
+
+* Açık kaynaklı kodla GitHub 'daki SDK 'Ları, müşteri katkılarına yönelik bir yolu ve GitHub sorunlarıyla birlikte ürün ekibi katılımını tam olarak destekler.
 
 ### <a name="c-sdk"></a>C SDK
 
-| OS                  | Mimari | Derleyici             | TLS kitaplığı       |
-|---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | GCC-5.4.0            | OpenSSL-1.0.2 g |
-| Ubuntu 18,04 LTS    | X64  | GCC-7,3              | WolfSSL – 1,13    |
-| Ubuntu 18,04 LTS    | X64  | Clang 6.0. X          | OpenSSL – 1.1.0 g  |
-| OSX 10.13.4         | x64  | XCode 9.4.1          | Yerel OSX        |
-| Windows Server 2016 | x64  | Visual Studio 14.0. X | SChannel          |
-| Windows Server 2016 | x86  | Visual Studio 14.0. X | SChannel          |
-| 9 uzat    | x64  | GCC-7,3              | OpenSSL – 1.1.0 f  |
+[Azure IoT Hub C cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-c) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
 
-### <a name="python-sdk"></a>Python SDK'sı
+| İşletim sistemi                  | TLS kitaplığı                  | Ek gereksinimler                                                                     |
+|---------------------|------------------------------|---------------------------------------------------------------------------------------------|
+| Linux               | OpenSSL, WolfSSL veya Yatassl | Berkeley Yuvaları</br></br>Taşınabilir Işletim sistemi arabirimi (POSIX)                       |
+| iOS 12,2            | OpenSSL veya yerel OSX        | OSX 10.13.4 'te öykünülmüş XCode                                                               |
+| Windows 10 ailesi   | SChannel                     |                                                                                             |
+| Mbed OS 5,4         | Mbed TLS 2                   | [Mxyongaıot geliştirme seti](https://microsoft.github.io/azure-iot-developer-kit/)                  |
+| Azure Sphere işletim sistemi     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
 
-| OS                  | Mimari | Derleyici   | TLS kitaplığı |
-|---------------------|------|------------|-------------|
-| Windows Server 2016 | x86  | Python 2.7 | OpenSSL     |
-| Windows Server 2016 | x64  | Python 2.7 | OpenSSL     |
-| Windows Server 2016 | x86  | Python 3,5 | OpenSSL     |
-| Windows Server 2016 | x64  | Python 3,5 | OpenSSL     |
-| Ubuntu 18,04 LTS    | x86  | Python 2.7 | OpenSSL     |
-| Ubuntu 18,04 LTS    | x86  | Python 3,4 | OpenSSL     |
-| MacOS High Sierra   | x64  | Python 2.7 | OpenSSL     |
+### <a name="python-sdk"></a>Python SDK 'Sı
+
+[Azure IoT Hub Python cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-python) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
+
+| İşletim sistemi                  | Derleyici                       |
+|---------------------|--------------------------------|
+| Linux               | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
+| MacOS High Sierra   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
+| Windows 10 ailesi   | Python 2,7, 3,4, 3,5, 3,6, 3,7 |
 
 ### <a name="net-sdk"></a>.NET SDK
 
-| OS                  | Mimari | Çerçevenin            | Standart          |
-|---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET Standard 2,0 |
-| Windows Server 2016 | X64  | .NET Core 2.1        | .NET Standard 2,0 |
-| Windows Server 2016 | X64  | .NET framework 4.7   | .NET Standard 2,0 |
-| Windows Server 2016 | X64  | .NET Framework 4.5.1 | Yok               |
+[Azure IoT Hub .net (C#) cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-csharp) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
 
-### <a name="nodejs-sdk"></a>Node.js SDK'sı
+| İşletim sistemi                                   | Stand                                                   |
+|--------------------------------------|------------------------------------------------------------|
+| Linux                                | .NET Core 2,1                                              |
+| Windows 10 Masaüstü ve sunucu SKU 'Ları   | .NET Core 2,1, .NET Framework 4.5.1 veya .NET Framework 4,7 |
 
-| OS                                           | Mimari | Düğüm sürümü    |
-|----------------------------------------------|------|-----------------|
-| Ubuntu 16,04 LTS (node 6 Docker görüntüsünü kullanarak) | X64  | LTS ve geçerli |
-| Windows Server 2016                          | X64  | LTS ve geçerli |
+### <a name="nodejs-sdk"></a>Node. js SDK 'Sı
 
-### <a name="java-sdk"></a>Java SDK
+[Azure IoT Hub Node. js cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-node) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
 
-| OS                  | Mimari | Java sürümü |
-|---------------------|------|--------------|
-| Ubuntu 16.04 LTS    | X64  | Java 8       |
-| Windows Server 2016 | X64  | Java 8       |
-| Android API 28 | X64  | Java 8       |
-| Android öğeleri | X64  | Java 8      |
+| İşletim sistemi                  | Düğüm sürümü    |
+|---------------------|-----------------|
+| Linux               | LTS ve geçerli |
+| Windows 10 ailesi   | LTS ve geçerli |
 
-## <a name="partner-supported-platforms"></a>İş ortağı tarafından desteklenen platformlar
+### <a name="java-sdk"></a>Java SDK 'Sı
 
-Müşteriler, Azure IoT C SDK 'sını, özellikle de SDK 'nın platform soyutlama katmanını (PAL) oluşturarak, platform destekimizi genişletebilirler. Microsoft, genişletilmiş destek sağlamak için iş ortaklarıyla birlikte çalışır. İş ortaklarının bir listesi, daha fazla platforma ve PAL 'i sürdürmek için C SDK 'Sı üzerinde yer alır.
+[Azure IoT Hub Java cihaz SDK 'sı](https://github.com/Azure/azure-iot-sdk-java) ile test edilmiştir ve aşağıdaki konfigürasyonları destekler.
 
-| Partner             | Cihazlar                            | Bağlantı                     | Destek |
+| İşletim sistemi                     | Java sürümü |
+|------------------------|--------------|
+| Android API 28         | Java 8       |
+| Linux x64             | Java 8       |
+| Windows 10 ailesi x64  | Java 8       |
+
+## <a name="partner-supported-development-kits"></a>İş ortağı tarafından desteklenen geliştirme setleri
+
+Microsoft, birkaç mikro işlemci mimarisi için geliştirme setleri sağlamak üzere çeşitli iş ortaklarıyla çalışır. Bu iş ortakları, platformlarındaki Azure IoT C SDK 'sını geçiyor. İş ortakları SDK 'nın platform soyutlama katmanını (PAL) oluşturur ve korur. Microsoft, genişletilmiş destek sağlamak için bu iş ortaklarıyla birlikte çalışır.
+
+| Ortağınız             | Cihazlar                            | Bağlantısının                     | Support |
 |---------------------|------------------------------------|--------------------------|---------|
 | Espressıo           | ESP32 <br/> ESP8266                              | [ESP-Azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
-| Qualcomm            | Qualcomm MDM9206 LTE IoT modem     | [IoT SDK için Qualcomm LTE](https://developer.qualcomm.com/software/lte-iot-sdk) | [Forum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
-| ST mikro elektronik | STM32L4 serisi <br/> STM32F4 serisi <br/>  STM32F7 serisi <br/>  IoT düğümü için STM32L4 Discovery Kit    | [X-KÜP-BULUT](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X-KÜP-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Destek](https://www.st.com/content/st_com/en/support/support-home.html)
-| Texas Instruments   | CC3220SF LaunchPad </br> CC3220S LaunchPad </br> CC3235SF LaunchPad </br> CC3235S LaunchPad </br> MSP432E4 LaunchPad | [SimpleLink için Azure IoT eklentisi](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E Forumu](https://e2e.ti.com) <br/> [CC3220 için tı E2E Forumu](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [MSP432E4 için tı E2E Forumu](https://e2e.ti.com/support/microcontrollers/msp430/) |
+| Qualcomm            | Qualcomm MDM9206 LTE IoT modem     | [IoT SDK için Qualcomm LTE](https://developer.qualcomm.com/software/lte-iot-sdk) | [Dur](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
+| ST mikro elektronik | STM32L4 serisi <br/> STM32F4 serisi <br/>  STM32F7 serisi <br/>  IoT düğümü için STM32L4 Discovery Kit    | [X-KÜP-AZURE](https://www.st.com/en/embedded-software/x-cube-azure.html) <br/>  <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Support](https://www.st.com/content/st_com/en/support/support-home.html)
+| Texas gereçleri   | CC3220SF LaunchPad </br> CC3220S LaunchPad </br> CC3235SF LaunchPad </br> CC3235S LaunchPad </br> MSP432E4 LaunchPad | [SimpleLink için Azure IoT eklentisi](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E Forumu](https://e2e.ti.com) <br/> [CC3220 için tı E2E Forumu](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [MSP432E4 için tı E2E Forumu](https://e2e.ti.com/support/microcontrollers/msp430/) |
+
+## <a name="porting-the-microsoft-azure-iot-c-sdk"></a>Microsoft Azure IoT C SDK 'Sı taşıma
+
+Cihaz platformunuz önceki bölümlerden biri kapsamında değilse, Azure IoT C SDK 'Sı için taşıma yapmayı düşünebilirsiniz. C SDK 'Sı taşıma öncelikle SDK 'nın platform soyutlama katmanını (PAL) uygulamayı içerir. PAL, cihazınızı ve SDK 'daki daha üst düzey işlevleri arasında Tutkallamayı sağlayan temel türleri tanımlar. Daha fazla bilgi için bkz. [taşıma Kılavuzu](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md).
+
+## <a name="microsoft-partners-and-certified-azure-iot-devices"></a>Microsoft iş ortakları ve sertifikalı Azure IoT cihazları
+
+Microsoft, Azure IoT test ve sertifikalı cihazlarla Azure IoT Universe 'ı sürekli bir şekilde genişletmek için çok sayıda iş ortaklarıyla çalışır.
+
+* Azure IoT Sertifikalı cihazlara gitmek için bkz. [cihaz kataloğu IoT için Microsoft Azure Sertifikalı](https://catalog.azureiotsolutions.com/).
+
+* Microsoft güvenilir iş ortakları hakkında daha fazla bilgi edinmek veya Microsoft 'un güvenilir iş ortağı olma hakkında bilgi edinmek için bkz. [Microsoft Azure sertifikalı nesnelerin interneti güvenilir Iş ortakları](https://azure.microsoft.com/en-us/marketplace/certified-iot-partners/).
+
+## <a name="connecting-to-iot-hub-without-an-sdk"></a>SDK olmadan IoT Hub bağlanma
+
+IoT Hub cihaz SDK 'Lardan birini kullanabiletirseniz, HTTPS istekleri ve yanıtları gönderip alma yeteneğine sahip herhangi bir uygulamadan [IoT Hub REST API 'lerini](https://docs.microsoft.com/en-us/rest/api/iothub/) kullanarak doğrudan IoT Hub bağlanabilirsiniz.
+
+## <a name="support-and-other-resources"></a>Destek ve diğer kaynaklar
+
+Azure IoT cihaz SDK 'larını kullanırken sorunlarla karşılaşırsanız, destek almak için çeşitli yollar vardır. Aşağıdaki kanallardan birini deneyebilirsiniz:
+
+**Hataları raporlama** – cihaz SDK 'lerinde hatalar ilgili GitHub projesinin sorunlar sayfasında bildirilebilir. Düzeltmeler, ' deki projeden ürün güncelleştirmelerinde hızlı bir şekilde yapılır.
+
+* [Azure IoT Hub C SDK sorunları](https://github.com/Azure/azure-iot-sdk-c/issues)
+
+* [Azure IoT Hub .NET (C#) SDK sorunları](https://github.com/Azure/azure-iot-sdk-csharp/issues)
+
+* [Azure IoT Hub Java SDK sorunları](https://github.com/Azure/azure-iot-sdk-java/issues)
+
+* [Azure IoT Hub Node. js SDK sorunları](https://github.com/Azure/azure-iot-sdk-node/issues)
+
+* [Azure IoT Hub Python SDK sorunları](https://github.com/Azure/azure-iot-sdk-python/issues)
+
+**Microsoft müşteri destek ekibi** – [Destek planına](https://azure.microsoft.com/support/plans/) sahip olan kullanıcılar, doğrudan [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)yeni bir destek isteği oluşturarak Microsoft müşteri destek ekibine geçebilir.
+
+**Özellik istekleri** – Azure IoT özelliği Istekleri ürünün [Kullanıcı sesi sayfası](https://feedback.azure.com/forums/321918-azure-iot)aracılığıyla izlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Cihaz ve hizmet SDK’ları](iot-hub-devguide-sdks.md)
+* [Cihaz ve hizmet SDK 'Ları](iot-hub-devguide-sdks.md)
 * [Taşıma Kılavuzu](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)

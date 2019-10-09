@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc7710619b8975064ec4ec60ed44ccede970ac34
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3ef8ab4b24d223f372ae3704b00ba6ff090fb039
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200953"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169997"
 ---
-# <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: Eski kimlik doğrulamasını engelleme
+# <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: eski kimlik doğrulamasını engelle
 
 Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle, Microsoft kuruluşların bu protokolleri kullanarak kimlik doğrulama isteklerini engellemesini ve modern kimlik doğrulaması gerektirmesini önerir.
 
@@ -26,22 +26,22 @@ Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle, Micro
 
 Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
-1.  **AzurePortal**  genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Active Directory** > **koşullu erişime**gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Hariç tut**' un altında, **Kullanıcılar ve gruplar** ' ı seçin ve eski kimlik doğrulamasını kullanma yeteneğinin korunması gereken tüm hesapları seçin. 
-   1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri** > **dahil**, **tüm bulut uygulamaları**' nı seçin.
+   1. **Bitti**’yi seçin.
+1. **Bulut uygulamaları veya eylemler** > **dahil**, **tüm bulut uygulamaları**' nı seçin.
    1. İlkenizin belirli uygulamaları dışlayamazsınız, **Dışlanan bulut uygulamalarını seçin** altında **hariç tut** sekmesinden seçim yapın ve **Seç**' i seçin.
-   1. **Done** (Bitti) öğesini seçin.
-1. **İstemci uygulamaları (Önizleme)** **Koşulları** > altında **Yapılandır** ' ı **Evet**olarak ayarlayın.
-   1. Yalnızca **mobil uygulamalar ve Masaüstü istemcileri** > **diğer istemcileri**onay kutularını işaretleyin.
-   2. **Done** (Bitti) öğesini seçin.
-1. **Erişim denetimleri** > **izni**' nın altında, **erişimi engelle**' yi seçin.
-   1. Seçin **seçin**.
+   1. **Bitti**’yi seçin.
+1. @No__t-1**istemci uygulamaları (Önizleme)** **Koşulları**altında **Yapılandır** ' ı **Evet**olarak ayarlayın.
+   1. Yalnızca **mobil uygulamalar ve Masaüstü istemcileri**@no__t-**diğer diğer istemciler**' i işaretleyin.
+   2. **Bitti**’yi seçin.
+1. **Erişim denetimleri** > **izin**' ın altında, **erişimi engelle**' yi seçin.
+   1. **Seç**’e tıklayın.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 

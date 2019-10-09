@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Yerel görüntüyü çözümleme-REST,C#'
+title: 'Hızlı başlangıç: Yerel görüntüyü çözümleme-REST,C#'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, C# ile Görüntü İşleme API’si kullanarak bir yerel görüntüyü analiz edeceksiniz.
+description: Bu hızlı başlangıçta, ile C#görüntü işleme API'si kullanarak yerel bir görüntüyü analiz edersiniz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7f4fb8114c2d6fca9564ce4848484c1c20a9511e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 6eec066cffd4fa9f9acc1dcc901e994671e25cbe
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141421"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177340"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Hızlı Başlangıç: Görüntü İşleme REST API kullanarak yerel bir görüntüyü çözümleyin veC#
+# <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme REST API kullanarak yerel görüntüyü analiz etme veC#
 
 Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özellikleri ayıklamak için yerel olarak depolanmış bir görüntüyü analiz edersiniz. [Görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğine göre görsel özellik bilgilerini ayıklayabilirsiniz.
 
@@ -26,20 +26,20 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya üzerine sahip olmanız gerekir.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya sonraki bir sürümü olmalıdır.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT` adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
-## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
+## <a name="create-and-run-the-sample-application"></a>Örnek uygulama oluşturma ve çalıştırma
 
-Örneği Visual Studio’da oluşturmak için aşağıdaki adımları uygulayın:
+Visual Studio 'da örnek oluşturmak için aşağıdaki adımları uygulayın:
 
 1. Visual Studio 'da görsel C# konsol uygulaması (.NET Framework) şablonunu kullanarak yeni bir Visual Studio çözümü oluşturun.
-1. Newtonsoft.Json NuGet paketini yükleyin.
-    1. Menüde **Araçlar**’a tıklayın, **NuGet Paket Yöneticisi**’ni ve ardından **Çözüm için NuGet Paketlerini Yönet**’i seçin.
-    1. **Gözat** sekmesine tıklayın ve **Arama** kutusuna "Newtonsoft.Json" yazın.
-    1. Görüntülendiğinde **Newtonsoft.Json**’ı seçin, sonra proje adınızın yanındaki onay kutusuna ve **Yükle**’ye tıklayın.
+1. Newtonsoft. JSON NuGet paketini yükler.
+    1. Menüsünde **Araçlar**' a tıklayın, **NuGet Paket Yöneticisi**' ni seçin ve ardından **çözüm için NuGet paketlerini yönetin**.
+    1. **Araştır** sekmesine tıklayın ve **arama** kutusuna "Newtonsoft. JSON" yazın.
+    1. Görüntülendiğinde **Newtonsoft. JSON** ' ı seçin, ardından Proje adınızın yanındaki onay kutusuna **tıklayın ve öğesini**.
 1. Programı çalıştırın.
-1. İstemde yerel görüntü yolunu girin.
+1. İstemde, yerel görüntünün yolunu girin.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,7 +59,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the Analyze method endpoint
-        const string uriBase = endpoint + "vision/v2.0/analyze";
+        const string uriBase = endpoint + "vision/v2.1/analyze";
 
         static void Main()
         {
@@ -165,9 +165,9 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="examine-the-response"></a>Yanıtı inceleme
+## <a name="examine-the-response"></a>Yanıtı inceleyin
 
-Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp konsol penceresinde görüntüler:
+JSON 'da başarılı bir yanıt döndürülür. Örnek uygulama, aşağıdaki örneğe benzer şekilde konsol penceresinde başarılı bir yanıt ayrıştırır ve görüntüler:
 
 ```json
 {
@@ -240,7 +240,7 @@ Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama aşağıd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Optik karakter tanıma (OCR) gerçekleştirmek için Görüntü İşleme kullanan temel bir Windows uygulaması keşfedin. Akıllı kırpılmış küçük resimler oluşturun. Buna ek olarak, bir görüntüdeki yüzler gibi görsel özellikleri algılayın, kategorilere ayırın, etiketleyin ve açıklayın.
+Optik karakter tanıma (OCR) gerçekleştirmek için Görüntü İşleme kullanan temel bir Windows uygulamasını keşfedebilir; Akıllı kırpılan küçük resimler oluşturun; Ayrıca, bir görüntüdeki yüzler dahil görsel özellikleri algılayın, kategorilere ayırın, etiketleyin ve tanıtın.
 
 > [!div class="nextstepaction"]
 > [Görüntü İşleme API'si C# öğreticisi](../Tutorials/CSharpTutorial.md)

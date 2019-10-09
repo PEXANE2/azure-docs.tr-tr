@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 430d90b2b372602072527c49796244c503778a3b
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959018"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168488"
 ---
 # <a name="virtual-wan-partners"></a>Sanal WAN iş ortakları
 
@@ -27,7 +27,7 @@ Bir dal aygıtı (bir müşteri şirket içi VPN cihazı veya SDWAN CPE) genelli
 * Azure sanal WAN 'ın Portal deneyimini test edin.
 * Sonra, bağlantı adımlarının hangi bölümünü otomatikleştirmek istediğinizi belirleyin. En azından, otomatikleştirilmesi önerilir:
 
-  * Erişim Denetimi
+  * Access Control
   * Şube cihaz bilgilerini Azure sanal WAN 'a yükleme
   * Azure yapılandırmasını indirme ve şube cihazından Azure sanal WAN 'a bağlantı ayarlama
 
@@ -215,11 +215,13 @@ Cihaz yapılandırma dosyası, şirket içi VPN cihazınızı yapılandırırken
 * IPSec bütünlük algoritması
 * PFS Grubu
 
-### <a name="default"></a>IPSec bağlantısı için varsayılan ilkeler 
+### <a name="default"></a>IPSec bağlantısı için varsayılan ilkeler
 
-Azure, varsayılan ilkelerle çalışırken bir IPSec tünel kurulumu sırasında hem Başlatıcı hem de Yanıtlayıcı görevi görebilir. Azure için yalnızca Yanıtlayıcı olarak destek yoktur.
+[!INCLUDE [IPsec Default](../../includes/virtual-wan-ipsec-include.md)]
 
-[!INCLUDE [IPsec](../../includes/virtual-wan-ipsec-include.md)]
+### <a name="custom"></a>IPSec bağlantısı için özel ilkeler
+
+[!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

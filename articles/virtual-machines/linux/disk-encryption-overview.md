@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c85d17e88016e5e9067d4be86e1cd290b4b12a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 053c52d7d1a0282d72ad76408b77c96aa3b0e3e4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948181"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174697"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux sanal makineleri için Azure disk şifrelemesi 
 
@@ -32,7 +32,7 @@ Linux için Azure disk şifrelemesi temellerini, [Azure CLI hızlı başlangıç
 
 ### <a name="supported-vm-sizes"></a>Desteklenen VM boyutları
 
-Linux VM 'Leri [çeşitli boyutlarda](sizes.md)kullanılabilir. Azure disk şifrelemesi, [temel, A serisi VM](/pricing/details/virtual-machines/series/)'lerde veya bu minimum bellek gereksinimlerini karşılamayan sanal makinelerde kullanılamaz:
+Linux VM 'Leri [çeşitli boyutlarda](sizes.md)kullanılabilir. Azure disk şifrelemesi, [temel, A serisi VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)'lerde veya bu minimum bellek gereksinimlerini karşılamayan sanal makinelerde kullanılamaz:
 
 | Sanal makine | Minimum bellek gereksinimi |
 |--|--|
@@ -44,7 +44,7 @@ Linux sanal makinelerde işletim sistemi disk şifreleme işlemi tamamlandıktan
 
 Azure disk şifrelemesi, Premium depolama özellikli VM 'Ler için de kullanılabilir. 
 
-### <a name="supported-operating-systems"></a>Supported operating systems
+### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 Azure disk şifrelemesi, [Azure tarafından onaylanan Linux dağıtımların](endorsed-distros.md)bir alt kümesinde desteklenir ve bu, tüm Linux Server olası dağıtımların bir alt kümesidir.
 
@@ -52,7 +52,7 @@ Azure disk şifrelemesi, [Azure tarafından onaylanan Linux dağıtımların](en
 
 Azure tarafından onaylanan Linux sunucu dağıtımları, Azure disk şifrelemesini desteklemez; onaylama işlemleri için, yalnızca aşağıdaki dağıtımlar ve sürümler Azure disk şifrelemesini destekler:
 
-| Linux dağıtımı | Version | Şifreleme için desteklenen birim türü|
+| Linux dağıtımı | Sürüm | Şifreleme için desteklenen birim türü|
 | --- | --- |--- |
 | Ubuntu | 18,04| İşletim sistemi ve veri diski |
 | Ubuntu | 16,04| İşletim sistemi ve veri diski |
@@ -110,7 +110,7 @@ Ayrıntılar için bkz. [Azure disk şifrelemesi için bir Anahtar Kasası oluş
 ## <a name="terminology"></a>Terminoloji
 Aşağıdaki tabloda, Azure disk şifrelemesi belgelerinde kullanılan bazı yaygın terimler tanımlanmaktadır:
 
-| Terminoloji | Tanım |
+| Terminoloji | Definition |
 | --- | --- |
 | Azure Key Vault | Key Vault, Federal bilgi Işleme standartları (FIPS) tarafından doğrulanan donanım güvenlik modüllerini temel alan bir şifreleme, anahtar yönetim hizmetidir. Bu standartlar, şifreleme anahtarlarınızı ve hassas gizli dizileri korumaya yardımcı olur. Daha fazla bilgi için bkz. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) belgeleri ve [Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma](disk-encryption-key-vault.md). |
 | Azure CLı | [Azure CLI,](/cli/azure/install-azure-cli) Azure kaynaklarını komut satırından yönetmek ve yönetmek için iyileştirilmiştir.|

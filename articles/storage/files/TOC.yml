@@ -23,9 +23,9 @@
       href: storage-sync-files-extend-servers.md
 - name: Kavramlar
   items:
-    - name: Azure Dosyaları hakkında
+    - name: Azure Dosyaları dağıtımı planlama
       href: storage-files-planning.md
-    - name: Azure Dosya Eşitleme hakkında
+    - name: Azure Dosya Eşitleme dağıtımı planlama
       href: storage-sync-files-planning.md
     - name: Bulutta katmanlama hakkında
       href: storage-sync-cloud-tiering.md

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Yazdırılmış ve el yazısı metin-REST, AyıklaC#'
+title: 'Hızlı başlangıç: yazdırılan ve el yazısı metin REST,C#'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, ile C#görüntü işleme API'si kullanarak bir görüntüden yazdırılmış ve el yazısı metin ayıklanır.
 services: cognitive-services
@@ -11,38 +11,38 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7340105e6d64900b769e2601032b04eb7a91e6e1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: ca1c1ebee6f2c1a47ee651f9c0d4ea5c62dec8d3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138121"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176927"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Hızlı Başlangıç: Görüntü İşleme REST API kullanarak yazdırılan ve el yazısı metinleri Ayıkla veC#
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme REST API kullanarak yazdırılmış ve el yazısı metin Ayıkla veC#
 
 Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden yazdırılmış ve/veya el ile yazılmış metin ayıklayacaksınız. [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) ve [okuma işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) yöntemleriyle, görüntüdeki metni algılayabilir ve tanınan karakterleri makine tarafından okunabilen bir karakter akışına ayıklayabilirsiniz. API, her metin satırı için hangi tanıma modelinin kullanılacağını belirleyecek ve bu sayede hem yazdırılmış hem de el yazısı metinle birlikte görüntüleri destekler.
 
 > [!IMPORTANT]
-> [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıt gövdesinde herhangi bir bilgi döndürmez. Bunun yerine, Read metodu `Operation-Location` yanıt üst bilgisi alanında bir URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) yöntemini temsil eden bu URI 'yi kullanabilirsiniz.
+> [Batch okuma](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) yöntemi zaman uyumsuz olarak çalışır. Bu yöntem, başarılı bir yanıtın gövdesinde herhangi bir bilgi döndürmez. Bunun yerine Read yöntemi, `Operation-Location` yanıt üst bilgisi alanında bir URI döndürür. Ardından, durumu denetlemek ve toplu okuma yöntemi çağrısının sonuçlarını döndürmek için [okuma Işlemi sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) yöntemini temsil eden bu URI 'yi kullanabilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - [Visual Studio 2015 veya sonraki bir sürümü](https://visualstudio.microsoft.com/downloads/)olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT` adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
-## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
+## <a name="create-and-run-the-sample-application"></a>Örnek uygulama oluşturma ve çalıştırma
 
-Örneği Visual Studio’da oluşturmak için aşağıdaki adımları uygulayın:
+Visual Studio 'da örnek oluşturmak için aşağıdaki adımları uygulayın:
 
-1. Visual C# Konsol Uygulaması şablonunu kullanarak Visual Studio’da yeni bir Visual Studio çözümü oluşturun.
-1. Newtonsoft.Json NuGet paketini yükleyin.
-    1. Menüde **Araçlar**’a tıklayın, **NuGet Paket Yöneticisi**’ni ve ardından **Çözüm için NuGet Paketlerini Yönet**’i seçin.
-    1. **Gözat** sekmesine tıklayın ve **Arama** kutusuna "Newtonsoft.Json" yazın.
-    1. Görüntülendiğinde **Newtonsoft.Json**’ı seçin, sonra proje adınızın yanındaki onay kutusuna ve **Yükle**’ye tıklayın.
+1. Visual Studio 'da görsel C# konsol uygulaması şablonunu kullanarak yeni bir Visual Studio çözümü oluşturun.
+1. Newtonsoft. JSON NuGet paketini yükler.
+    1. Menüsünde **Araçlar**' a tıklayın, **NuGet Paket Yöneticisi**' ni seçin ve ardından **çözüm için NuGet paketlerini yönetin**.
+    1. **Araştır** sekmesine tıklayın ve **arama** kutusuna "Newtonsoft. JSON" yazın.
+    1. Görüntülendiğinde **Newtonsoft. JSON** ' ı seçin, ardından Proje adınızın yanındaki onay kutusuna **tıklayın ve öğesini**.
 1. Programı çalıştırın.
-1. İstemde yerel görüntü yolunu girin.
+1. İstemde, yerel görüntünün yolunu girin.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -63,7 +63,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the Batch Read method endpoint
-        const string uriBase = endpoint + "vision/v2.0/read/core/asyncBatchAnalyze";
+        const string uriBase = endpoint + "vision/v2.1/read/core/asyncBatchAnalyze";
 
         static void Main()
         {
@@ -205,9 +205,9 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="examine-the-response"></a>Yanıtı inceleme
+## <a name="examine-the-response"></a>Yanıtı inceleyin
 
-Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp konsol penceresinde görüntüler:
+JSON 'da başarılı bir yanıt döndürülür. Örnek uygulama, aşağıdaki örneğe benzer şekilde konsol penceresinde başarılı bir yanıt ayrıştırır ve görüntüler:
 
 ```json
 {
@@ -311,7 +311,7 @@ Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama aşağıd
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse Visual Studio çözümünü silin. Bunu yapmak için Dosya Gezgini’ni açın, Visual Studio çözümünü oluşturduğunuz klasöre gidin ve klasörü silin.
+Artık gerekli değilse, Visual Studio çözümünü silin. Bunu yapmak için dosya Gezgini 'ni açın, Visual Studio çözümünü oluşturduğunuz klasöre gidin ve klasörü silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

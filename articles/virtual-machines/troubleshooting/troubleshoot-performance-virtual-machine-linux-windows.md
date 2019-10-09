@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 4e4a2b1df178d884e02ab5029f2e76a0376a7653
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: fc8cc4834997033203376cd33670cc907e2911e7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71846569"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170289"
 ---
-# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Linux veya Windows çalıştıran Azure Virtual Machine için genel performans sorunlarını giderme
+# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Linux veya Windows çalıştıran Azure sanal makinesi için genel performans sorunlarını giderme
 
 Bu makalede, performans sorunlarını izleme ve gözlemleyerek sanal makine (VM) genel performans sorunlarını giderme ve oluşabilecek sorunlar için olası düzeltme sağlar.
 
@@ -28,7 +28,7 @@ Bu makalede, performans sorunlarını izleme ve gözlemleyerek sanal makine (VM)
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure ıAAS sanal makine izleme
 
-Konuk VM 'yi izlemek için, Azure VM Izlemeyi kullanın ve bu, bazı üst düzey kaynak koşullarına göre sizi uyarır. VM tanılamaları 'nın etkin olup olmadığını denetlemek için bkz. [Azure Kaynak günlüklerine genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#change-settings-for-an-existing-resource). Aşağıdakileri görürseniz, büyük olasılıkla tanılamayı etkinleştirmezsiniz:
+Konuk VM 'yi izlemek için, Azure VM Izlemeyi kullanın ve bu, bazı üst düzey kaynak koşullarına göre sizi uyarır. VM tanılamaları 'nın etkin olup olmadığını denetlemek için bkz. [Azure Kaynak günlüklerine genel bakış](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs). Aşağıdakileri görürseniz, büyük olasılıkla tanılamayı etkinleştirmezsiniz:
 
 ![İzleme etkin değil](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -72,7 +72,7 @@ Kaynak sorunları olup olmadığını belirlemek için verilerinizi gözden geç
 1. Grafiği düzenleyin.
 2. Zaman aralığını ayarlayın.
 3. Daha sonra sayaca eklemeniz gerekir: CPU yüzdesi Konuk işletim sistemi
-4. Kaydedin.
+4. Kaydet.
 
 ### <a name="cpu-observe-trends"></a>CPU gözleme eğilimleri
 
@@ -175,7 +175,7 @@ Bu ölçüm sayesinde, hangi Blobun bu kısma neden olduğunu ve bundan etkilend
 
 IOPS sınırına ulaşıp ulaşmayacağını belirlemek için, depolama hesabı tanılamalarına gidin ve TotalRequests ' i denetleyerek 20000 TotalRequests 'e yaklaşarak göz atın. Bir değişikliği ilk kez görüyor musunuz, ya da bu sınırın belirli bir zamanda olup olmadığı gibi, düzende bir değişiklik yapın.
 
-#### <a name="references"></a>Başvurular
+#### <a name="references"></a>Başvur
 
 * [Sanal makine diskleri için ölçeklenebilirlik hedefleri](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
 
@@ -207,7 +207,7 @@ Gecikme süresine duyarlı bir uygulamanız varsa ve yüksek verimlilik gerekliy
 
 Bu makaleler, belirli senaryoları tartışır:
 
-* [Azure Premium Depolama’ya Geçiş](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [Azure Premium Depolama 'ya geçiş](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
 
 * [SQL Server ile Azure Premium depolama kullanma](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
 

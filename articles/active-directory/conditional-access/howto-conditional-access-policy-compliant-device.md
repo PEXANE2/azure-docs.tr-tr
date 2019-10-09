@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da1a5f54e5e989f661770d518a6753b831b59bd4
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 1963d0ad741099fcb6602beb58f62b0eabf01aa0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990524"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170057"
 ---
-# <a name="conditional-access-require-compliant-devices"></a>Koşullu erişim: Uyumlu cihaz gerektirme
+# <a name="conditional-access-require-compliant-devices"></a>Koşullu erişim: uyumlu cihazlar gerektir
 
 Microsoft Intune dağıtılan kuruluşlar, şu gibi uyumluluk gereksinimlerini karşılayan cihazları tanımlamak için cihazlarından döndürülen bilgileri kullanabilir:
 
@@ -33,21 +33,21 @@ Bu ilke uyumluluk bilgileri, Koşullu erişimin kaynaklara erişim izni vermek v
 
 Aşağıdaki adımlar, kaynaklara erişen cihazların kuruluşunuzun Intune uyumluluk ilkeleriyle uyumlu olarak işaretlenmesi için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
-1.  **AzurePortal**genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın. 
-1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Active Directory** > **koşullu erişime**gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri** > **dahil**, **tüm bulut uygulamaları**' nı seçin.
+   1. **Bitti**’yi seçin.
+1. **Bulut uygulamaları veya eylemler** > **dahil**, **tüm bulut uygulamaları**' nı seçin.
    1. İlkenizin belirli uygulamaları dışlayamazsınız, **Dışlanan bulut uygulamalarını seçin** altında **hariç tut** sekmesinden seçim yapın ve **Seç**' i seçin.
-   1. **Done** (Bitti) öğesini seçin.
-1. **Erişim denetimleri** > **izni**altında **cihazın uyumlu olarak işaretlenmesini gerektir**' i seçin.
-   1. Seçin **seçin**.
+   1. **Bitti**’yi seçin.
+1. **Erişim denetimleri** > **izin**' ın altında, **cihazın uyumlu olarak işaretlenmesini gerektir**' i seçin.
+   1. **Seç**’e tıklayın.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi etkinleştirmek için oluşturmak için Oluştur ' u seçin.
+1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,18 +8,18 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53c93b4e0184468ddee75613b48b887c9d07f751
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 0564763b05dd44eb908ec00f98a97e9d4970099f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963796"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177577"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Öğretici: Azure portal dışarıya aktarılmış şablon kullanma
 
 Bu öğretici serisinde, Azure depolama hesabı dağıtmak için bir şablon oluşturdunuz. Sonraki iki öğreticilerde, bir *App Service planı* ve bir *Web sitesi*eklersiniz. Sıfırdan şablon oluşturmak yerine, Azure portal şablonları dışarı aktarmayı ve [Azure hızlı başlangıç şablonlarından](/resources/templates/)örnek şablonları kullanmayı öğreneceksiniz. Bu şablonları kullanım için özelleştirirsiniz. Bu öğretici, şablonları dışarı aktarmaya ve şablonunuzun sonucunu özelleştirmeye odaklanır. Yaklaşık **14 dakika** sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [Çıktılar hakkında öğreticiyi](template-tutorial-add-outputs.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -35,10 +35,10 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
 
 ## <a name="create-app-service-plan"></a>App Service planı oluştur
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalı](https://portal.azure.com)’nda oturum açın.
 1. **Kaynak oluştur**' u seçin.
 1. **Markette ara**' te **App Service planı**girin ve **App Service planı**' nı seçin.  **App Service planı seçme (klasik)**
-1. **Oluştur**' u seçin.
+1. **Oluştur**’u seçin.
 1. Girmesini
 
     - **Abonelik**: Azure aboneliğinizi seçin.
@@ -46,13 +46,13 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
     - **Ad**: App Service planı için bir ad girin.
     - **Işletim sistemi**: **Linux**' u seçin.
     - **Bölge**: bir Azure konumu seçin. Örneğin, **Orta ABD**.
-    - **Fiyatlandırma katmanı**: maliyetleri kaydetmek için SKU 'yu **temel**olarak değiştirin.
+    - **Fiyatlandırma katmanı**: maliyetleri kaydetmek için SKU 'Yu **temel B1** (geliştirme/test altında) olarak değiştirin.
 
     ![Kaynak Yöneticisi şablonu dışarı aktarma şablonu portalı](./media/template-tutorial-export-template/resource-manager-template-export.png)
 1. **Gözden geçir ve Oluştur '** u seçin.
-1. **Oluştur**' u seçin. Kaynağı oluşturmak birkaç dakika sürer.
+1. **Oluştur**’u seçin. Kaynağı oluşturmak birkaç dakika sürer.
 
-## <a name="export-template"></a>Şablonu dışarı aktar
+## <a name="export-the-template"></a>Şablonu dışarı aktarma
 
 1. **Kaynağa Git**' i seçin.
 
@@ -62,7 +62,7 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
 
     ![Kaynak Yöneticisi şablonu dışarı aktarma şablonu](./media/template-tutorial-export-template/resource-manager-template-export-template.png)
 
-   Şablonu dışarı aktar özelliği, bir kaynağın geçerli durumunu alır ve bunu dağıtmak için bir şablon oluşturur. Bir şablonu dışarı aktarmak, bir kaynağı dağıtmanız için ihtiyacınız olan JSON 'ı hızlı bir şekilde almak için faydalı olabilir.
+   Şablonu dışarı aktar özelliği, bir kaynağın geçerli durumunu alır ve bunu dağıtmak için bir şablon oluşturur. Bir şablonu dışarı aktarmak, bir kaynağı dağıtmanız için ihtiyacınız olan JSON 'ı hızlı bir şekilde almanın yararlı bir yolu olabilir.
 
 1. **Microsoft. Web/sunucugrupları** tanımını ve parametre tanımını şablonunuza kopyalayın.
 
@@ -71,7 +71,7 @@ Bu şablon, depolama hesaplarının dağıtımı için iyi bir sonuç verir, anc
 > [!IMPORTANT]
 > Genellikle, içe aktarılmış şablon, bir şablon oluştururken kullanmak isteyebileceğiniz daha ayrıntılıdır. Örneğin, verdiğiniz şablondaki SKU nesnesinin beş özelliği vardır. Bu şablon işe yarar, ancak yalnızca **Name** özelliğini kullanabilirsiniz. Verdiğiniz şablonla başlayabilir ve sonra gereksinimlerinize uyacak şekilde değiştirebilirsiniz.
 
-## <a name="revise-existing-template"></a>Mevcut şablonu gözden geçir
+## <a name="revise-the-existing-template"></a>Mevcut şablonu gözden geçir
 
 İçe aktarılmış şablon size ihtiyacınız olan JSON 'ın çoğunu verir, ancak şablonunuz için özelleştirmeniz gerekir. Şablonlarınız ve aktarılmış şablon arasındaki parametrelerde ve değişkenlerde farklara dikkat edin. Kuşkusuz, dışarı aktarma işlemi şablonunuzda zaten tanımladığınız parametreleri ve değişkenleri bilmez.
 
@@ -81,7 +81,7 @@ Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
 
-## <a name="deploy-template"></a>Şablonu dağıt
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 Bir şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın.
 
@@ -114,12 +114,12 @@ az group deployment create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalı](https://portal.azure.com)’nda oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Kaynak grubu, bir depolama hesabı ve bir App Service planı içerir.
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 

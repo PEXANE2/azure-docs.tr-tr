@@ -8,20 +8,20 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ece85feff3c6eff9fc2348de70842204986952d5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6e74830a3a62ea54c5d8e7f9815fe2ba6eed6d58
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855632"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166503"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure blob dosya sistemi sürücüsü (ABFS): Hadoop için adanmış bir Azure depolama sürücüsü
 
-Azure Data Lake Storage 2. veri için birincil erişim yöntemlerinden biri [Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)'ı aracılığıyla yapılır. Data Lake Storage 2., Azure Blob depolama alanı erişiminin yeni bir sürücüye, Azure blob dosya sistemi sürücüsüne veya `ABFS`uygulamasına erişmesini sağlar. ABFS Apache Hadoop bir parçasıdır ve Hadoop 'un birçok ticari dağılımlarına dahil edilmiştir. Bu sürücüyü kullanarak, birçok uygulama ve çerçeve Data Lake Storage 2. açıkça başvuran hiçbir kod olmadan Azure Blob depolama alanındaki verilere erişebilir.
+Azure Data Lake Storage 2. veri için birincil erişim yöntemlerinden biri [Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)'ı aracılığıyla yapılır. Data Lake Storage 2., Azure Blob depolama erişimi kullanıcılarının yeni bir sürücüye, Azure blob dosya sistemi sürücüsüne veya `ABFS` ' a erişmesini sağlar. ABFS Apache Hadoop bir parçasıdır ve Hadoop 'un birçok ticari dağılımlarına dahil edilmiştir. Bu sürücüyü kullanarak, birçok uygulama ve çerçeve Data Lake Storage 2. açıkça başvuran hiçbir kod olmadan Azure Blob depolama alanındaki verilere erişebilir. 
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Önceki Özellik: Windows Azure Depolama Blobu sürücüsü
 
-Windows Azure Depolama Blobu sürücüsü veya [Lıbb sürücüsü](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) , Azure Blob depolama için özgün desteği sağladı. Bu sürücü, Azure Blob depolama tarafından sunulan nesne deposu stil arabirimine dosya sistemi semantiğinin (Hadoop dosya arabirimi için gerekli olduğu gibi) eşlenmesinin karmaşık görevini gerçekleştirdi. Bu sürücü, Bloblarda depolanan verilere yüksek performans erişimi sağlamak için bu modeli desteklemeye devam eder, ancak bu eşlemeyi gerçekleştiren önemli miktarda kod içerir ve devam etmek zordur. Ayrıca, dizinlere uygulandığında [FileSystem. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) ve [FileSystem. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) gibi bazı işlemler, sürücünün çok sayıda işlemi gerçekleştirmesini gerektirir (nesne, Dizin desteğinin olmamasından kaynaklanır) ve genellikle performansını düşürebilir. ABFS sürücüsü, IDB 'nin devralınan eksiklerini aşmak için tasarlandı.
+Windows Azure Depolama Blobu sürücüsü veya [Lıbb sürücüsü](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) , Azure Blob depolama için özgün desteği sağladı. Bu sürücü, Azure Blob depolama tarafından sunulan nesne deposu stil arabirimine dosya sistemi semantiğinin (Hadoop dosya arabirimi için gerekli olduğu gibi) eşlenmesinin karmaşık görevini gerçekleştirdi. Bu sürücü, bloblarda depolanan verilere yüksek performans erişimi sağlamak için bu modeli desteklemeye devam eder, ancak bu eşlemeyi gerçekleştiren önemli miktarda kod içerir ve devam etmek zordur. Ayrıca, dizinlere uygulandığında [FileSystem. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) ve [FileSystem. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) gibi bazı işlemler, sürücünün çok sayıda işlemi gerçekleştirmesini gerektirir (nesne, Dizin desteğinin olmamasından kaynaklanır) ve genellikle performansını düşürebilir. ABFS sürücüsü, IDB 'nin devralınan eksiklerini aşmak için tasarlandı.
 
 ## <a name="the-azure-blob-file-system-driver"></a>Azure blob dosya sistemi sürücüsü
 
@@ -31,7 +31,7 @@ Ancak, sürücünün hala gerçekleştirmesi gereken bazı işlevler vardır:
 
 ### <a name="uri-scheme-to-reference-data"></a>Başvuru verilerine URI şeması
 
-Hadoop içindeki diğer dosya sistemi uygulamalarıyla tutarlı olduğunda, ABFS sürücüsü kaynakların (dizinlerin ve dosyaların) tutarlı bir şekilde giderilmesi için kendi URI düzenini tanımlar. URI şeması [Azure Data Lake Storage 2. URI 'Sini kullanın](./data-lake-storage-introduction-abfs-uri.md). URI yapısı:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+Hadoop içindeki diğer dosya sistemi uygulamalarıyla tutarlı olduğunda, ABFS sürücüsü kaynakların (dizinlerin ve dosyaların) tutarlı bir şekilde giderilmesi için kendi URI düzenini tanımlar. URI şeması [Azure Data Lake Storage 2. URI 'Sini kullanın](./data-lake-storage-introduction-abfs-uri.md). URI yapısı: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
 Yukarıdaki URI biçimini kullanarak, standart Hadoop araçları ve çerçeveleri bu kaynaklara başvurmak için kullanılabilir:
 
@@ -42,7 +42,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Dahili olarak, ABFS sürücüsü URI 'de belirtilen kaynakları dosya ve dizinlere çevirir ve bu başvurularla Azure Data Lake Storage REST API çağrıları yapar.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Kimlik doğrulama
 
 ABFS sürücüsü, Hadoop uygulamasının Data Lake Storage 2. özellikli bir hesapta bulunan kaynaklara güvenli bir şekilde erişebilmesi için iki kimlik doğrulama biçimini destekler. Kullanılabilir kimlik doğrulama düzenlerinin tam ayrıntıları, [Azure Depolama Güvenliği Kılavuzu](../common/storage-security-guide.md)'nda verilmiştir. Bunlar:
 
@@ -63,4 +63,4 @@ ABFS sürücüsü [resmi Hadoop belgelerinde](https://hadoop.apache.org/docs/r3.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Databricks kümesi oluşturma](./data-lake-storage-quickstart-create-databricks-account.md)
-- [Azure Data Lake Storage 2. Nesil URI'sini kullanma](./data-lake-storage-introduction-abfs-uri.md)
+- [Azure Data Lake Storage 2. URI 'sini kullanma](./data-lake-storage-introduction-abfs-uri.md)

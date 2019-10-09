@@ -1,18 +1,18 @@
 ---
 title: Azure veri paylaşımının önizlemesine sorun giderme
-description: Azure veri paylaşımının Önizlemeiyle ilgili sorunları nasıl giderebileceğinizi öğrenin
+description: Azure veri paylaşımı önizlemesi ile veri paylaşımları oluştururken veya alırken davetiye ve hatalarla ilgili sorunları nasıl giderebileceğinizi öğrenin.
 services: data-share
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/10/2019
-ms.openlocfilehash: 62b386f4648074bbf1f002e162151253e5b43bc9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 592a2d464aed8c39dfd11734beccbd0399d75fd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71320286"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169220"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share-preview"></a>Azure veri paylaşımında genel sorunları giderme Önizleme
 
@@ -41,17 +41,17 @@ Hala bir veri paylaşma daveti göremiyorsanız, veri sağlayıcınızla iletiş
 
 ## <a name="error-when-creating-or-receiving-a-new-data-share"></a>Yeni veri paylaşımının oluşturulması veya alınması sırasında hata oluştu
 
-Hatayla İşlem geçersiz bir ' BadRequest ' durum kodu döndürdü
+"Hata: Işlem geçersiz bir durum kodu döndürdü: ' BadRequest '"
 
-Hatayla AuthorizationFailed "
+"Hata: AuthorizationFailed"
 
 "Hata: depolama hesabına rol ataması"
 
 ![Ayrıcalık hatası](media/error-write-privilege.png)
 
-Yeni veri paylaşımı oluştururken veya alırken yukarıdaki hatalardan birini alırsanız, bunun nedeni depolama hesabı üzerinde yeterli izinlerin olmamasıdır. Gerekli izinler, depolama sahibi rolünde bulunan veya özel bir role atanabilecek *Microsoft. Authorization/role atamaları/yazma*' dır. Depolama hesabını siz oluşturmuş olsanız bile, bu sizi otomatik olarak depolama hesabının sahibi yapmaz. Kendinize depolama hesabı sahipliği vermek için şu adımları izleyin. Alternatif olarak, ' ye ' ye ekleyebileceğiniz Bu izinle özel bir rol oluşturulabilir.  
+Yeni bir veri paylaşımının oluşturulması veya yeni bir veri paylaşımının alınması sırasında yukarıdaki hatalardan birini alırsanız, bu, depolama hesabı için yeterli izin olmadığından oluşur. Gerekli izinler, depolama sahibi rolünde bulunan veya özel bir role atanabilecek *Microsoft. Authorization/role atamaları/yazma*' dır. Depolama hesabı oluşturmuş olsanız bile, depolama hesabının sahibini otomatik olarak yapmaz. Depolama hesabının sahibini sağlamak için aşağıdaki adımları izleyin. Alternatif olarak, ' ye ' ye ekleyebileceğiniz Bu izinle özel bir rol oluşturulabilir.  
 
-1. Azure portalında Depolama hesabına gidin
+1. Azure portal depolama hesabına gidin
 1. **Erişim denetimi (IAM)** seçeneğini belirleyin
 1. **Ekle** 'ye tıklayın
 1. Sahibini sahip olarak içine ekleyin.

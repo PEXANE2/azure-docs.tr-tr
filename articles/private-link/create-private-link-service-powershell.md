@@ -7,19 +7,19 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 8ed3b8e507a93f75b036b3a97eb34395ce525314
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 2f9b7b148900e827f4bfb17de1ef3cf05d8bbf10
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202948"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169148"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma
 Bu makalede, Azure 'da Azure PowerShell kullanarak özel bir bağlantı hizmeti oluşturma gösterilmektedir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makalede en son Azure PowerShell modülü sürümü gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makalede en son Azure PowerShell modülü sürümü gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` ' i çalıştırın. Yükseltmeniz gerekiyorsa bkz. [ınstall Azure PowerShell Module](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız, Azure ile bir bağlantı oluşturmak için `Connect-AzAccount` ' ı da çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -76,7 +76,7 @@ $frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $lbFrontName -PrivateIpAd
 $beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $lbBackendName 
 $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
   -RequestPath / -IntervalInSeconds 360 -ProbeCount 5
-$rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
+$rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beaddresspool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 $NRPLB = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $probe -LoadBalancingRule $rule -Sku Standard 
 ```
 ## <a name="create-a-private-link-service"></a>Özel bağlantı hizmeti oluşturma
@@ -113,9 +113,9 @@ Bu aşamada, özel bağlantı hizmetiniz başarıyla oluşturulur ve trafik alma
 
 Ardından, PowerShell kullanarak bu hizmeti farklı VNet 'teki özel bir uç noktaya nasıl eşleneceğini göstereceğiz. Bu örnek, Özel uç nokta oluşturma ve yukarıda oluşturulan özel bağlantı hizmetine bağlanma ile sınırlıdır. Senaryonuzu oluşturmak için özel uç noktaya trafik göndermek/almak için sanal ağda sanal makineler oluşturabilirsiniz. 
 
-## <a name="create-a-private-endpoint"></a>Özel Uç Nokta oluşturma
+## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel uç noktanız için bir sanal ağ oluşturun. Bu örnek, *myresourcegroup*adlı kaynak grubunda *vnetpe* adlı bir sanal ağ oluşturur:
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile özel uç noktanız için bir sanal ağ oluşturun. Bu örnek, *Myresourcegroup*adlı kaynak grubunda *vnetpe* adlı bir sanal ağ oluşturur:
  
 ```azurepowershell
 $virtualNetworkNamePE = "vnetPE"
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peNam
 ```
  
 ### <a name="get-private-endpoint"></a>Özel uç nokta al
-Özel uç noktanın `Get-AzPrivateEndpoint` IP adresini aşağıdaki gibi alın:
+@No__t-0 ile özel uç noktanın IP adresini aşağıdaki gibi alın:
 
 ```azurepowershell
 # Get Private Endpoint and its IP Address 

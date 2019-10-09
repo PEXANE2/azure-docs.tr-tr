@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: f6e2fedf3f2f8384d4a6062852888c312e8285a1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212875"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173489"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Kurtarma planlarına Azure Otomasyonu runbook 'ları ekleme
 
@@ -51,11 +51,11 @@ Bir betik çalıştırıldığında, runbook 'a bir kurtarma planı bağlamını
 | ID |Plan çalışırken kurtarma planındaki grup numarasını tanımlar. |
 | VmMap |Gruptaki tüm VM 'lerin bir dizisi. |
 | VMMap anahtarı |Her VM için benzersiz bir anahtar (GUID). |
-| SubscriptionId |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
-| ResourceGroupName | VM 'nin bulunduğu kaynak grubunun adı.
+| SubscriptionID |VM 'nin oluşturulduğu Azure abonelik KIMLIĞI. |
+| resourceGroupName | VM 'nin bulunduğu kaynak grubunun adı.
 | CloudServiceName |VM 'nin altında oluşturulduğu Azure bulut hizmeti adı. |
 | RoleName |Azure VM 'nin adı. |
-| RecoveryPointId|VM kurtarma için zaman damgası. |
+| Recoverypointıd|VM kurtarma için zaman damgası. |
 
 Aşağıdaki örnek bir bağlam değişkenini gösterir:
 
@@ -100,10 +100,10 @@ Aman parçalara ayırma [bulutlarının](http://harvestingclouds.com) üzerinde 
 - Azure Otomasyonu ' na yeni başladıysanız [örnek komut dosyalarını](https://azure.microsoft.com/documentation/scripts/) [kaydedebilir ve](https://azure.microsoft.com/services/automation/) indirebilirsiniz.
 - Otomasyon hesabının aşağıdaki modüllere sahip olduğundan emin olun:
     - Azurerd. profil
-    - AzureRM.Resources
-    - AzureRM.Automation
-    - AzureRM.Network
-    - AzureRM.Compute
+    - Azurerd. resources
+    - Azurerd. Otomasyon
+    - Azurerd. ağ
+    - Azurerd. Işlem
 
     Tüm modüller uyumlu sürümler olmalıdır. En basit yol, her zaman tüm modüllerin en son sürümlerini kullanmaktır.
 
@@ -112,14 +112,14 @@ Aman parçalara ayırma [bulutlarının](http://harvestingclouds.com) üzerinde 
 ## <a name="customize-the-recovery-plan"></a>Kurtarma planını özelleştirme
 
 1. Kasada, **kurtarma planları ' nı (Site Recovery)** seçin
-2. Bir kurtarma planı oluşturmak için **+ kurtarma planı**' na tıklayın. [Daha fazla bilgi edinin](/site-recovery-create-recovery-plans.md). Zaten bir kurtarma planınız varsa, açmak için seçin.
+2. Bir kurtarma planı oluşturmak için **+ kurtarma planı**' na tıklayın. [Daha fazla bilgi edinin](site-recovery-create-recovery-plans.md). Zaten bir kurtarma planınız varsa, açmak için seçin.
 3. Kurtarma planı sayfasında, **Özelleştir**' e tıklayın.
 
     ![Özelleştir düğmesine tıklayın](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. **Grup 1 ' in yanındaki üç noktaya (...) tıklayın:** **Gönderi Ekle eylemini**başlatın. > 
+2. **Grup 1**' in yanındaki üç noktaya (...) ve @no__t Başlat-1 ' i**Gönder eylem Ekle**' yi tıklatın.
 3. **Ekle eyleminde** **betiğin** seçili olduğunu doğrulayın ve betik için bir ad belirtin (**Merhaba Dünya**).
-4. Bir Otomasyon hesabı belirtin ve bir runbook seçin. Betiği kaydetmek için **Tamam**' a tıklayın. Betik, 1. **gruba eklenir: Adımlar**sonrası.
+4. Bir Otomasyon hesabı belirtin ve bir runbook seçin. Betiği kaydetmek için **Tamam**' a tıklayın. Komut dosyası **1. Grup: son adımlar**' a eklenir.
 
 
 ## <a name="reuse-a-runbook-script"></a>Runbook betiğini yeniden kullanma
@@ -189,7 +189,7 @@ Bu senaryoya yönelik tam, uçtan uca bir betik için [bu betiği](https://galle
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>Daha fazla bilgi depolamak için karmaşık bir değişken kullanın
 
-Bazı senaryolarda, her kurtarma planı için ayrı değişkenler oluşturabilemeyebilirsiniz. Tek bir betiğin belirli sanal makinelere genel IP adresi atamasını istediğiniz bir senaryo düşünün. Başka bir senaryoda farklı sanal makinelere (tüm VM 'lerde değil) farklı NSG 'ler uygulamak isteyebilirsiniz. Aşağıdakilere dikkat edin:
+Bazı senaryolarda, her kurtarma planı için ayrı değişkenler oluşturabilemeyebilirsiniz. Tek bir betiğin belirli sanal makinelere genel IP adresi atamasını istediğiniz bir senaryo düşünün. Başka bir senaryoda farklı sanal makinelere (tüm VM 'lerde değil) farklı NSG 'ler uygulamak isteyebilirsiniz. Unutmayın:
 
 - Herhangi bir kurtarma planı için yeniden kullanılabilir olan bir betiği yapabilirsiniz.
 - Her kurtarma planının değişken sayıda VM olabilir.
@@ -251,7 +251,7 @@ Farklı kurtarma planları için aynı betiği kullanabilirsiniz. Farklı deği�
 
 Otomasyon hesabınıza örnek betikler dağıtmak için **Azure 'A dağıt** düğmesine tıklayın.
 
-[![Azure’a dağıtma](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Azure 'a dağıtın](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 Bu video başka bir örnek sağlar. İki katmanlı bir WordPress uygulamasının Azure 'a nasıl kurtarılacağı gösterilmektedir:
 

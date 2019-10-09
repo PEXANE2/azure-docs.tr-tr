@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1aad2284c0f64c92efaefe3f9145d95c4aabec67
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839437"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174776"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure haritalar desteklenen harita stilleri
 Azure Maps, aşağıda açıklandığı gibi birkaç farklı yerleşik harita stilini destekler.
@@ -96,3 +96,11 @@ Bu harita stili, uydu ve hava imakına göre popüler yollar ve Etiketler için 
 * [Harita kutucuğu](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK eşlemesi denetimi
 * Android harita denetimi
+
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure haritalar 'da harita stili ayarlama hakkında bilgi edinin:
+
+> [!div class="nextstepaction"]
+> [Harita stili seçin](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)

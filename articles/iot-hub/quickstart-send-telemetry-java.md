@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc, seo-java-august2019, seo-java-september2019
 ms.date: 06/21/2019
-ms.openlocfilehash: a808216b62459869e9adfd88afc60ee53259221d
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: cb115b8658850fc85f93fc7a9508a82ecee920d8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838630"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166455"
 ---
 # <a name="quickstart-send-telemetry-to-an-azure-iot-hub-and-read-it-with-a-java-application"></a>Hızlı başlangıç: Azure IoT Hub 'ına telemetri gönderin ve Java uygulamasıyla okuyun
 
@@ -29,7 +29,7 @@ Hızlı başlangıç, bir tane önceden yazılmış iki Java uygulaması kullan�
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama Java kullanılarak yazılmıştır. Geliştirme makinenizde Java, 8 gerekir.
 
@@ -67,39 +67,41 @@ Bir cihazın bağlanabilmesi için IoT Hub 'ınız ile kayıtlı olması gerekir
 
 1. Cihaz kimliğini oluşturmak için Azure Cloud Shell aşağıdaki komutu çalıştırın.
 
-   **Youriothubname**: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+   **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
-   **Myjavadevice**: kayıt yaptığınız cihazın adı. Gösterilen **Myjavadevice** ' i kullanın. Cihazınız için farklı bir ad seçerseniz bu adı bu makale boyunca kullanmanız ve örnek uygulamalarda cihaz adını çalıştırmadan önce güncelleştirmeniz gerekir.
+   **Myjavadevice**: Bu, kaydetmekte olduğunuz cihazın adıdır. Gösterildiği gibi **Myjavadevice** kullanılması önerilir. Cihazınız için farklı bir ad seçerseniz, bu adı bu makalede da kullanmanız ve bunları çalıştırmadan önce örnek uygulamalarda cihaz adını güncelleştirmeniz gerekir.
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyJavaDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyJavaDevice
     ```
 
-2. Yeni kaydettiğiniz cihaza yönelik _Cihaz bağlantı dizesini_ almak için Azure Cloud Shell ' de aşağıdaki komutları çalıştırın: * * YourIoTHubName: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+2. Yeni kaydettiğiniz cihazın _Cihaz bağlantı dizesini_ almak için Azure Cloud Shell ' de aşağıdaki komutu çalıştırın:
+
+    **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyJavaDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
     ```
 
     Cihaz bağlantı dizesini bir yere göz önünde bir şekilde görünür:
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyJavaDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    Bu değeri daha sonra hızlı başlangıçta kullanırsınız.
+    Bu değeri daha sonra hızlı başlangıçta kullanacaksınız.
 
 3. Ayrıca, arka uç uygulamasının IoT Hub 'ınıza bağlanmasını ve iletileri almanızı sağlamak için IoT Hub 'ınızdaki _Event Hubs uyumlu uç nokta_, _Event Hubs uyumlu yol_ve _hizmet birincil anahtarı_ gerekir. Aşağıdaki komutlar IoT Hub 'ınız için bu değerleri alır:
 
-     \* * YourIoTHubName: Bu yer tutucuyu, IoT Hub 'ınız için seçtiğiniz adla değiştirin.
+     **Youriothubname**: aşağıdaki yer tutucuyu IoT Hub 'ınız için seçtiğiniz adla değiştirin.
 
     ```azurecli-interactive
-    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
 
-    az iot hub show --query properties.eventHubEndpoints.events.path --name YourIoTHubName
+    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
 
-    az iot hub policy show --name service --query primaryKey --hub-name YourIoTHubName
+    az iot hub policy show --name service --query primaryKey --hub-name {YourIoTHubName}
     ```
 
-    Bu üç değeri daha sonra hızlı başlangıçta kullanacağınız şekilde bir yere unutmayın.
+    Bu üç değeri bir yere, daha sonra hızlı başlangıçta kullanacaksınız.
 
 ## <a name="send-simulated-telemetry"></a>Sanal telemetri gönder
 
@@ -109,7 +111,7 @@ Sanal cihaz uygulaması, IoT Hub 'ınızdaki cihaza özgü bir uç noktaya bağl
 
 2. **Src/Main/Java/com/Microsoft/docs/ıothub/Samples/SimulatedDevice. Java** dosyasını istediğiniz bir metin düzenleyicisinde açın.
 
-    @No__t-0 değişkeninin değerini, daha önce bir örneği yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. Java** dosyasına yaptığınız değişiklikleri kaydedin.
+    @No__t-0 değişkeninin değerini, daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Ardından **SimulatedDevice. Java**' da yaptığınız değişiklikleri kaydedin.
 
 3. Yerel Terminal penceresinde, gerekli kitaplıkları yüklemek ve sanal cihaz uygulamasını derlemek için aşağıdaki komutları çalıştırın:
 
@@ -137,9 +139,9 @@ Arka uç uygulaması, IoT Hub hizmet tarafı **olayları** uç noktasına bağla
 
     | Değişken | Değer |
     | -------- | ----------- |
-    | `eventHubsCompatibleEndpoint` | Değişkenin değerini, daha önce bir notunuz yaptığınız Event Hubs uyumlu uç noktayla değiştirin. |
-    | `eventHubsCompatiblePath`     | Değişkenin değerini, daha önce bir yer yaptığınız Event Hubs uyumlu yol ile değiştirin. |
-    | `iotHubSasKey`                | Değişkenin değerini, daha önce bir örneği yaptığınız hizmet birincil anahtarıyla değiştirin. |
+    | `eventHubsCompatibleEndpoint` | Değişkenin değerini, daha önce bir değişiklik yaptığınız Event Hubs uyumlu uç nokta ile değiştirin. |
+    | `eventHubsCompatiblePath`     | Değişkenin değerini, daha önce bir değişiklik yaptığınız Event Hubs uyumlu yol ile değiştirin. |
+    | `iotHubSasKey`                | Değişkenin değerini, daha önce bir değişiklik yaptığınız hizmet birincil anahtarıyla değiştirin. |
 
 3. Yerel Terminal penceresinde, gerekli kitaplıkları yüklemek ve arka uç uygulamasını derlemek için aşağıdaki komutları çalıştırın:
 
@@ -157,13 +159,13 @@ Arka uç uygulaması, IoT Hub hizmet tarafı **olayları** uç noktasına bağla
 
     ![Arka uç uygulaması olarak çıktı, IoT Hub 'ınıza gönderilen telemetri alır](media/quickstart-send-telemetry-java/iot-hub-read-device-to-cloud.png)
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir IoT Hub 'ı oluşturdunuz, bir cihaz kaydettiniz, bir Java uygulaması kullanarak hub 'a sanal telemetri gönderdiniz ve basit bir arka uç uygulaması kullanarak hub 'ın Telemetriyi okuyatamamladınız.
+Bu hızlı başlangıçta, bir IoT Hub 'ı ayarlarsınız, bir cihaz kaydettiniz, bir Java uygulaması kullanarak hub 'a sanal telemetri gönderdiniz ve basit bir arka uç uygulaması kullanarak hub 'ın Telemetriyi okuyaöğreneceksiniz.
 
 Bir arka uç uygulamasından sanal cihazınızı nasıl denetleyeceğinizi öğrenmek için sonraki hızlı başlangıca geçin.
 

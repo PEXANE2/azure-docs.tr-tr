@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: ilk ML modelinizi eğitme'
+title: "Öğretici: Python 'da ilk Azure ML modelinizi eğitme"
 titleSuffix: Azure Machine Learning
 description: Bu öğreticide Azure Machine Learning temel tasarım düzenlerini öğrenir ve diabetes veri kümesine bağlı olarak basit bir scikit-öğrenme modeli eğitirsiniz.
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: c775b16eaa15ccd7115f4770bf197545a9de2500
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828027"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173303"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: ilk ML modelinizi eğitme
 
@@ -83,7 +83,7 @@ X, y = load_diabetes(return_X_y = True)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=66)
 ```
 
-## <a name="train-a-model"></a>Modeli eğitme
+## <a name="train-a-model"></a>Model eğitme
 
 Basit bir scikit-eğitim modeli, küçük ölçekli eğitim için kolayca yerel olarak yapılabilir, ancak onlarca farklı özellik bilimiyle ve hiper parametre ayarları ile birçok yinelemeye eğitim yaparken, eğitilen modelleri ve bunları nasıl kullanabileceğinizi izlemek kolaydır. bunları eğitimli. Aşağıdaki tasarım modelinde, bulutta öğreticinizi kolayca izlemek için SDK 'nın nasıl kullanılacağı gösterilmektedir.
 
@@ -129,7 +129,7 @@ Eğitim tamamlandıktan sonra, portalda deney bağlantısını getirmek için `e
 experiment
 ```
 
-<table style="width:100%"><tr><th>Adı</th><th>Çalışma Alanı</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portal bağlantısı</td><td>Belge bağlantısı</td></tr></table>
+<table style="width:100%"><tr><th>Ad</th><th>Workspace</th><th>Rapor sayfası</th><th>Docs sayfası</th></tr><tr><td>Diabetes-deneme</td><td>çalışma alanınızın adı</td><td>Azure portal bağlantısı</td><td>Belge bağlantısı</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Portalda Eğitim sonuçlarını görüntüleme
 
@@ -201,7 +201,7 @@ Bir bulut Not defteri sunucusu kullandıysanız, maliyeti azaltmak için kullanm
 
    ![VM sunucusunu durdur](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
 
-1. Listeden VM’yi seçin.
+1. Listeden VM ' yi seçin.
 
 1. **Durdur**' u seçin.
 

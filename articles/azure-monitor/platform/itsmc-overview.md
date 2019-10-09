@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 31d9307d23d308192b362d9570911c86a7dd8372
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051841"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177658"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure 'ı BT Hizmet Yönetimi Bağlayıcısı kullanarak ıTSSM araçlarına bağlama
 
@@ -64,7 +64,7 @@ Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü 
 3. **OMS çalışma alanı** bölümünde, çözümü yüklemek istediğiniz Azure Log Analytics çalışma alanını seçin.
    >[!NOTE]
    > * Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
-   > * ITSM Bağlayıcısı yalnızca aşağıdaki bölgelerde Log Analytics çalışma alanlarına yüklenebilir: Doğu ABD, Batı Avrupa, Güneydoğu Asya, Güneydoğu Avustralya, Orta Batı ABD, Doğu Japonya, Güney UK, Orta Hindistan, Orta Kanada.
+   > * ITSM Bağlayıcısı yalnızca şu bölgelerde Log Analytics çalışma alanlarına yüklenebilir: Doğu ABD, Batı Avrupa, Güneydoğu Asya, Güneydoğu Avustralya, Orta Batı ABD, Doğu Japonya, Güney UK, Orta Hindistan, Orta Kanada.
 
 4. **OMS çalışma alanı ayarları** bölümünde, çözüm kaynağını oluşturmak istediğiniz ResourceGroup öğesini seçin.
 
@@ -93,11 +93,11 @@ Bağlanmakta olduğunuz ıSM ürününe bağlı olarak, aşağıdaki adımları 
 ITSM araçlarınızı önceden doldurduktan sonra bağlantı oluşturmak için aşağıdaki adımları izleyin:
 
 1. **Tüm kaynaklara**gidin, **ServiceDesk (yourçalışmaalanıadı)** öğesini arayın.
-2. Sol bölmedeki **çalışma alanı VERI kaynakları** altında ITSM **bağlantıları**' na tıklayın.
-   ![ITSM bağlantıları](media/itsmc-overview/itsm-connections.png)
+2. Sol bölmedeki **çalışma alanı VERI kaynakları** altında **ITSM bağlantıları**' na tıklayın.
+   ![ITSM bağlantıları @ no__t-1
 
    Bu sayfada bağlantıların listesi görüntülenir.
-3. **Bağlantı Ekle**'ye tıklayın.
+3. **Bağlantı ekle**' ye tıklayın.
 
    ![ITSM bağlantısı ekle](media/itsmc-overview/add-new-itsm-connection.png)
 
@@ -124,7 +124,7 @@ Aşağıdaki yordamı kullanın:
 1. Azure portal, **İzle**' ye tıklayın.
 2. Sol bölmede **eylem grupları**' na tıklayın. **Eylem grubu Ekle** penceresi görüntülenir.
 
-    ![Eylem Grupları](media/itsmc-overview/action-groups.png)
+    ![Eylem grupları](media/itsmc-overview/action-groups.png)
 
 3. Eylem grubunuz için **Name** ve **ShortName** sağlayın. Eylem grubunuzu oluşturmak istediğiniz **kaynak grubunu** ve **aboneliği** seçin.
 
@@ -164,7 +164,7 @@ Hizmet Eşlemesi çözümünü kullanıyorsanız, ıTSM çözümlerinde oluştur
 
 ![Log Analytics ekranı](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Daha fazla bilgi: [Hizmet Eşlemesi](../../azure-monitor/insights/service-map.md)
+Daha fazla bilgi: [hizmet eşlemesi](../../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Ek bilgiler
@@ -178,112 +178,112 @@ Aşağıdaki bilgiler, ıSMC tarafından toplanan veri örneklerini gösterir:
 >
 > Log Analytics içeri aktarılan iş öğesi türüne bağlı olarak, **ServiceDesk_CL** aşağıdaki alanları içerir:
 
-**İş öğesi:** **Olaylara**  
-ServiceDeskWorkItemType_s="Incident"
+**İş öğesi:** **Olaylar**  
+ServiceDeskWorkItemType_s = "olay"
 
-**Alanları**
+**Alanını**
 
 - ServiceDeskConnectionName
-- Hizmet Masası Kimliği
-- State
+- Hizmet Masası KIMLIĞI
+- Durumunda
 - Aciliyet
-- Etkisi
+- ACT
 - Priority
-- Yükseltme
-- Tarafından oluşturulan
+- Lider
+- Oluşturan
 - Çözümleyen
 - Kapatan
-- Source
+- Kaynak
 - Atanan
 - Category
 - Başlık
-- Açıklama
+- Description
 - Oluşturulma tarihi
-- Kapatılma tarihi
+- Kapatma tarihi
 - Çözümlenme tarihi
-- Son değiştirme tarihi
-- Computer
+- Son değiştirilme tarihi
+- Bilgisayar
 
 
-**İş öğesi:** **Değişiklik Istekleri**
+**İş öğesi:** **değişiklik istekleri**
 
-ServiceDeskWorkItemType_s="ChangeRequest"
+ServiceDeskWorkItemType_s = "ChangeRequest"
 
-**Alanları**
+**Alanını**
 - ServiceDeskConnectionName
-- Hizmet Masası Kimliği
-- Tarafından oluşturulan
+- Hizmet Masası KIMLIĞI
+- Oluşturan
 - Kapatan
-- Source
+- Kaynak
 - Atanan
 - Başlık
-- Type
+- Tür
 - Category
-- State
-- Yükseltme
+- Durumunda
+- Lider
 - Çakışma durumu
 - Aciliyet
 - Priority
-- Risk
-- Etkisi
+- Esini
+- ACT
 - Atanan
 - Oluşturulma tarihi
-- Kapatılma tarihi
-- Son değiştirme tarihi
+- Kapatma tarihi
+- Son değiştirilme tarihi
 - İstenen Tarih
 - Planlanan başlangıç tarihi
 - Planlanan bitiş tarihi
 - Çalışma başlangıç tarihi
 - Çalışma bitiş tarihi
-- Açıklama
-- Computer
+- Description
+- Bilgisayar
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow olayı için çıkış verileri
 
 | Log Analytics alanı | ServiceNow alanı |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
-| IncidentState_s | State |
+| ServiceDeskId_s| Sayı |
+| IncidentState_s | Durumunda |
 | Urgency_s |Aciliyet |
-| Impact_s |Etkisi|
+| Impact_s |ACT|
 | Priority_s | Priority |
 | CreatedBy_s | Açan |
-| ResolvedBy_s | Çözen:|
+| ResolvedBy_s | Çözümleyen|
 | ClosedBy_s  | Kapatan |
 | Source_s| Kişi türü |
-| AssignedTo_s | Atanan:  |
+| AssignedTo_s | Şuna atandı  |
 | Category_s | Category |
 | Title_s|  Kısa açıklama |
 | Description_s|  Notlar |
-| CreatedDate_t|  Açıldı |
-| ClosedDate_t| Kapalı|
-| ResolvedDate_t|Çözümlendi|
-| Computer  | Yapılandırma öğesi |
+| CreatedDate_t|  Makta |
+| ClosedDate_t| kapandı|
+| ResolvedDate_t|Çözüldü|
+| Bilgisayar  | Yapılandırma öğesi |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow değişiklik isteği için çıkış verileri
 
 | Log Analytics | ServiceNow alanı |
 |:--- |:--- |
-| ServiceDeskId_s| Number |
-| CreatedBy_s | İsteği gönderen: |
+| ServiceDeskId_s| Sayı |
+| CreatedBy_s | İsteyen |
 | ClosedBy_s | Kapatan |
-| AssignedTo_s | Atanan:  |
+| AssignedTo_s | Şuna atandı  |
 | Title_s|  Kısa açıklama |
-| Type_s|  Type |
+| Type_s|  Tür |
 | Category_s|  Category |
-| CRState_s|  State|
+| CRState_s|  Durumunda|
 | Urgency_s|  Aciliyet |
 | Priority_s| Priority|
-| Risk_s| Risk|
-| Impact_s| Etkisi|
+| Risk_s| Esini|
+| Impact_s| ACT|
 | RequestedDate_t  | İstek tarihine göre |
 | ClosedDate_t | Kapatma tarihi |
 | PlannedStartDate_t  |     Planlanan başlangıç tarihi |
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
-| Description_s | Açıklama |
-| Computer  | Yapılandırma öğesi |
+| Description_s | Description |
+| Bilgisayar  | Yapılandırma öğesi |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>ITSM bağlantılarında sorun giderme
@@ -296,8 +296,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 2. ServiceNow 'daki veriler Log Analytics ile eşitlenmediği için ServiceNow örneğinin uyku modunda olmadığından emin olun. ServiceNow dev örnekleri bazen uzun bir süre boşta kaldığında uyku moduna geçebilir. Aksi takdirde, sorunu bildirin.
 3. Log Analytics uyarılar harekete geçse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa veya yapılandırma öğeleri, iş öğelerine ya da diğer genel bilgiler için oluşturulmadıysa veya bağlanmadıysa, aşağıdaki yerlere bakın:
-   -  ISMC: Çözüm, bağlantıların/iş öğelerinin/bilgisayarların, vb. bir özetini gösterir. **Bağlayıcı durumunu**gösteren kutucuğa tıklayın ve bu, arama ile Ilgili sorgu **günlüğü** için sizi yönlendirir. Daha fazla bilgi için LogType_S ile günlük kayıtlarına bakın.
-   - **Günlük arama** sayfası: ServiceDeskLog_CL `*``*`sorgusunu kullanarak hataları/ilgili bilgileri doğrudan görüntüleyin.
+   -  ISMC: çözüm, bağlantıların/iş öğelerinin/bilgisayarların, vb. bir özetini gösterir. **Bağlayıcı durumunu**gösteren kutucuğa tıklayın ve bu, arama ile Ilgili sorgu **günlüğü** için sizi yönlendirir. Daha fazla bilgi için LogType_S ile günlük kayıtlarına bakın.
+   - **Günlük arama** sayfası: `*`ServiceDeskLog_CL @ no__t-2 sorgusunu kullanarak hataları/ilgili bilgileri doğrudan görüntüleyin.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web uygulaması dağıtımı Service Manager sorunlarını giderme
 1.  Web uygulaması dağıtımıyla ilgili herhangi bir sorun olması durumunda, kaynak oluşturmak/dağıtmak için belirtilen abonelikte yeterli izinlere sahip olduğunuzdan emin olun.
@@ -305,9 +305,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 3.  Service Bus geçişi ad alanı oluşturmadıysanız, gerekli kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kayıtlı değilse, Service Bus geçişi ad alanını Azure portal el ile oluşturun. [Karma bağlantıyı Azure Portal oluştururken](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) da oluşturabilirsiniz.
 
 
-## <a name="contact-us"></a>Bizimle iletişim kurun
+## <a name="contact-us"></a>Bizimle iletişime geçin
 
-BT Hizmet Yönetimi Bağlayıcısı herhangi bir sorgu veya geri bildirimde bulunmak için, adresinden [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)bizimle iletişim kurun.
+BT Hizmet Yönetimi Bağlayıcısı tüm sorgular veya geri bildirimler için [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)' de bizimle iletişim kurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [BT hizmet yönetimi Bağlayıcısı IÇIN ITSM ürünleri/hizmetleri ekleyin](../../azure-monitor/platform/itsmc-connections.md).

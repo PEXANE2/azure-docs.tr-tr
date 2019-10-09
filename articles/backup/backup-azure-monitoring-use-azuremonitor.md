@@ -1,5 +1,5 @@
 ---
-title: 'Azure Backup: Azure Izleyici ile Azure Backup izleme'
+title: 'Azure Backup: Azure Izleyici ile Azure Backup Izleme'
 description: Azure Izleyici 'yi kullanarak Azure Backup iş yüklerini izleyin ve özel uyarılar oluşturun.
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: ffc245402965cdcd62bb210d79bd95db5444f964
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: ba2288ecebbeda97b3cd9c24ae930be6af193ab8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954633"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177726"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak ölçeğe göre izleme
 
@@ -60,7 +60,7 @@ Veriler Log Analytics çalışma alanının içindeyken, verileri görselleştir
 Şablon dağıtıldıktan sonra, Azure Backup ' de izleme ve raporlama çözümü çalışma alanı Özet bölgesinde görünür. Özete gitmek için şu yollardan birini izleyin:
 
 - **Azure izleyici**: **Öngörüler** bölümünde **diğer** ' i seçin ve ardından ilgili çalışma alanını seçin.
-- **Log Analytics çalışma alanları**: İlgili çalışma alanını seçin ve ardından **genel**altında **çalışma alanı Özeti**' ni seçin.
+- **Log Analytics çalışma alanları**: ilgili çalışma alanını seçin ve ardından **genel**altında **çalışma alanı Özeti**' ni seçin.
 
 ![Log Analytics izleme ve raporlama kutucukları](media/backup-azure-monitoring-laworkspace/la-azurebackup-overview-dashboard.png)
 
@@ -244,11 +244,11 @@ Kaynak, kurtarma hizmetleri kasasının kendisidir. Etkinlik günlükleri aracı
 
 Etkinlik günlüklerinden oluşturulan tüm uyarıları ve Azure Izleyici 'de Log Analytics çalışma alanlarını görüntüleyebilirsiniz. Sol taraftaki **Uyarılar** bölmesini açmanız yeterlidir.
 
-Etkinlik günlükleri aracılığıyla bildirim alabilmeniz mümkün olsa da, ölçeklendirerek izleme için etkinlik günlükleri yerine Log Analytics kullanmanızı kesinlikle öneririz. İşte şunları yapın:
+Etkinlik günlükleri aracılığıyla bildirim alabilmeniz mümkün olsa da, ölçeklendirerek izleme için etkinlik günlükleri yerine Log Analytics kullanmanızı kesinlikle öneririz. Bunu istememizin nedeni:
 
-- **Sınırlı senaryolar**: Etkinlik günlükleri aracılığıyla yapılan bildirimler yalnızca Azure VM yedeklemeleri için geçerlidir. Bildirimlerin her kurtarma hizmetleri Kasası için ayarlanmış olması gerekir.
-- **Tanım sığdırma**: Zamanlanan yedekleme etkinliği, etkinlik günlüklerinin en son tanımına uymuyor. Bunun yerine, [tanılama günlükleri](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-you-can-do-with-diagnostic-logs)ile hizalanır. Bu hizalama, etkinlik günlüğü kanalı üzerinden akan veriler değiştiğinde beklenmeyen etkilere neden olur.
-- **Etkinlik günlüğü kanalının sorunları**: Kurtarma Hizmetleri kasalarında, Azure Backup POED olan etkinlik günlükleri yeni bir modeli takip ediyor. Ne yazık ki bu değişiklik, Azure Kamu, Azure Almanya ve Azure Çin 21Vianet 'deki etkinlik günlüklerinin oluşturulmasını etkiler. Bu bulut Hizmetleri kullanıcıları Azure Izleyici 'de etkinlik günlüklerinden herhangi bir uyarı oluşturup yapılandırırsa, uyarılar tetiklenmez. Ayrıca, tüm Azure genel bölgelerinde, bir Kullanıcı [Kurtarma Hizmetleri etkinlik günlüklerini bir Log Analytics çalışma alanında topluyorsa](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), bu Günlükler görünmez.
+- **Sınırlı senaryolar**: etkinlik günlükleri aracılığıyla yapılan bildirimler yalnızca Azure VM yedeklemeleri için geçerlidir. Bildirimlerin her kurtarma hizmetleri Kasası için ayarlanmış olması gerekir.
+- **Tanım Sığdır**: zamanlanmış yedekleme etkinliği, etkinlik günlüklerinin en son tanımına uymuyor. Bunun yerine, [tanılama günlükleri](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#what-you-can-do-with-resource-logs-in-a-workspace)ile hizalanır. Bu hizalama, etkinlik günlüğü kanalı üzerinden akan veriler değiştiğinde beklenmeyen etkilere neden olur.
+- **Etkinlik günlüğü kanalında Ilgili sorunlar**: kurtarma hizmetleri kasalarında, Azure Backup POED olan etkinlik günlükleri yeni bir modeli takip ediyor. Ne yazık ki bu değişiklik, Azure Kamu, Azure Almanya ve Azure Çin 21Vianet 'deki etkinlik günlüklerinin oluşturulmasını etkiler. Bu bulut Hizmetleri kullanıcıları Azure Izleyici 'de etkinlik günlüklerinden herhangi bir uyarı oluşturup yapılandırırsa, uyarılar tetiklenmez. Ayrıca, tüm Azure genel bölgelerinde, bir Kullanıcı [Kurtarma Hizmetleri etkinlik günlüklerini bir Log Analytics çalışma alanında topluyorsa](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs), bu Günlükler görünmez.
 
 Azure Backup tarafından korunan tüm iş yüklerinizin ölçeğini izlemek ve uyarmak için bir Log Analytics çalışma alanı kullanın.
 

@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 884d96fae226497991f5642072d040ccd81134b0
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: dd2259dc715fb54122b721ce40a715c6987947d2
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69576751"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170106"
 ---
 # <a name="conditional-access-require-mfa-for-azure-management"></a>Koşullu erişim: Azure yönetimi için MFA gerektir
 
 Kuruluşlar çeşitli Azure hizmetlerini kullanır ve bunları şu şekilde Azure Resource Manager tabanlı araçlarla yönetebilir:
 
-* Azure portal
+* Azure portalı
 * Azure PowerShell
-* Azure CLI
+* Azure CLı
 
 Bu araçlar, abonelik genelinde yapılandırmaların, hizmet ayarlarının ve abonelik faturalandırmasını değiştirebilecek kaynaklara son derece ayrıcalıklı erişim sağlayabilir. Bu ayrıcalıklı kaynakları korumak için Microsoft, bu kaynaklara erişen herhangi bir kullanıcı için Multi-Factor Authentication kullanılmasını gerektirir.
 
@@ -35,24 +35,24 @@ Koşullu erişim ilkeleri güçlü araçlardır ve ilkenizde aşağıdaki hesapl
 * Kiracı genelindeki hesap kilitlenmesini engellemek için **acil durum erişimi** veya **kesme camı** hesapları. Olası olmayan senaryoda tüm yöneticiler kiracınızın dışında kilitlendiğinden, acil durum erişimi yönetim hesabınız kiracıya oturum açmak için kullanılabilir ve erişimi kurtarmak için gerekli adımları uygulayın.
    * Daha fazla bilgi için [Azure AD 'de acil durum erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)makalesinde bulabilirsiniz.
 * Azure AD Connect eşitleme hesabı gibi **hizmet hesapları** ve **hizmet ilkeleri**. Hizmet hesapları, belirli bir kullanıcıya bağlı olmayan etkileşimli olmayan hesaplardır. Bunlar normalde arka uç hizmetleri tarafından kullanılır ve uygulamalara programlı erişim sağlar. MFA programlı olarak tamamlanmadığı için hizmet hesapları dışlanmalıdır.
-   * Kuruluşunuzun komut dosyalarında veya kodda kullanımda olan bu hesapları varsa, bunları [yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi göz önünde bulundurun. Geçici bir çözüm olarak, bu belirli hesapları temel ilkeden hariç bırakabilirsiniz.
+   * Kuruluşunuzun komut dosyalarında veya kodda kullanımda olan bu hesapları varsa, bunları [yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi göz önünde bulundurun. Geçici bir çözüm olarak, bu belirli hesapları temel ilkeden hariç bırakabilirsiniz.
 
 ## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
 Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication gerçekleştirmesini gerektirmek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
-1.  **** AzurePortal genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-1. **Koşullu erişimi** **Azure Active Directory** > için gidin.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Active Directory** > **koşullu erişime**gidin.
 1. **Yeni ilke**' yi seçin.
 1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
-   1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemler** > altında, **Uygulama Seç**' i seçin, **Microsoft Azure Yönetim**' i seçin ve sonra **Tamam**' ı seçin.
-1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
+   1. **Bitti**’yi seçin.
+1. **Bulut uygulamaları veya eylemler**altında-1**dahil**@no__t, **Uygulama seç**' i seçin ve **Microsoft Azure Yönetim**' i seçin ve ardından **Tamam**' **ı seçin.**
+1. **Erişim denetimleri** > **izin**' ın altında, **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
-1. İlkenizi etkinleştirmek için oluşturmak için Oluştur ' u seçin.
+1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

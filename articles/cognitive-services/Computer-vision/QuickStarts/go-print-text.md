@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Yazdırılan metni Ayıkla-REST, git'
+title: 'Hızlı başlangıç: yazdırılan metni Ayıkla-REST, git'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, Go ile Görüntü İşleme API’si kullanarak bir görüntüden yazdırılan metni ayıklayacaksınız.
+description: Bu hızlı başlangıçta, Go ile Görüntü İşleme API'si kullanarak bir görüntüden yazdırılan metni ayıklamanız gerekir.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,34 +11,34 @@ ms.topic: quickstart
 ms.date: 07/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 177ed7043f88ba678036d1d7b5bed5abef8baa1b
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 97ef0464655e55a84f4e5cc51171d00debd294d3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141379"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177265"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Hızlı Başlangıç: Go ile Görüntü İşleme REST API kullanarak yazdırılan metni (OCR) Ayıkla
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Hızlı başlangıç: go ile Görüntü İşleme REST API kullanarak yazdırılan metni (OCR) Ayıkla
 
-Bu hızlı başlangıçta, Görüntü İşleme’nin REST API’sini kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklayacaksınız. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılan metni algılayabilir ve tanınan karakterleri makine tarafından kullanılabilir bir karakter akışı halinde ayıklayabilirsiniz.
+Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden optik karakter tanıma (OCR) ile yazdırılan metni ayıklamanız gerekir. [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) yöntemiyle, bir görüntüdeki yazdırılmış metni algılayabilir ve tanınan karakterleri, makine tarafından kullanılabilen bir karakter akışına ayıklayabilir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Go](https://golang.org/dl/) yüklenmiş olmalıdır.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- [Go](https://golang.org/dl/) yüklü olmalıdır.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT` adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
-Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
+Örneği oluşturmak ve çalıştırmak için aşağıdaki adımları uygulayın:
 
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
-1. İsteğe bağlı olarak `imageUrl` değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
-1. Kodu, `.go` uzantısıyla bir dosya olarak kaydedin. Örneğin: `get-printed-text.go`.
+1. İsteğe bağlı olarak, `imageUrl` değerini, çözümlemek istediğiniz farklı bir görüntünün URL 'siyle değiştirin.
+1. Kodu `.go` uzantılı bir dosya olarak kaydedin. Örneğin, `get-printed-text.go`.
 1. Bir komut istemi penceresi açın.
-1. İstemde, dosyadan paketi derlemek için `go build` komutunu çalıştırın. Örneğin: `go build get-printed-text.go`.
-1. İstemde, derlenmiş paketi çalıştırın. Örneğin: `get-printed-text`.
+1. İstem sırasında, paketi dosyadan derlemek için `go build` komutunu çalıştırın. Örneğin, `go build get-printed-text.go`.
+1. İstemde, derlenen paketi çalıştırın. Örneğin, `get-printed-text`.
 
 ```go
 package main
@@ -64,7 +64,7 @@ func main() {
         log.Fatal("\n\nSet the COMPUTER_VISION_ENDPOINT environment variable.\n" +
             "**Restart your shell or IDE for changes to take effect.**")
     }
-    const uriBase = endpoint + "vision/v2.0/ocr"
+    const uriBase = endpoint + "vision/v2.1/ocr"
     const imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +
         "Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png"
 
@@ -114,9 +114,9 @@ func main() {
 }
 ```
 
-## <a name="examine-the-response"></a>Yanıtı inceleme
+## <a name="examine-the-response"></a>Yanıtı inceleyin
 
-Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama, aşağıdaki örneğe benzer şekilde başarılı bir yanıtı ayrıştırıp komut istemi penceresinde görüntüler:
+JSON 'da başarılı bir yanıt döndürülür. Örnek uygulama, aşağıdaki örneğe benzer şekilde, komut istemi penceresinde başarılı bir yanıt ayrıştırır ve görüntüler:
 
 ```json
 {
@@ -219,7 +219,7 @@ Başarılı bir yanıt JSON biçiminde döndürülür. Örnek uygulama, aşağı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görüntü analiz etmek, ünlüleri ve yer işaretlerini algılamak, küçük resim oluşturmak ve yazdırılan ve el yazısı metinleri ayıklamak için kullanılan Görüntü İşleme API’sini keşfedin. Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.
+Bir görüntüyü çözümlemek, ünlüler ve köklikleri algılamak, küçük resim oluşturmak ve yazdırılmış ve el yazısı metin ayıklamak için kullanılan Görüntü İşleme API'si keşfeder. Görüntü İşleme API'si hızlı bir şekilde denemek için, [Açık API test konsolunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)deneyin.
 
 > [!div class="nextstepaction"]
-> [Görüntü İşleme API’sini keşfetme](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Görüntü İşleme API'si keşfet](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı Başlangıç: Küçük resim oluştur-REST,C#'
+title: 'Hızlı başlangıç: küçük resim oluşturma-REST,C#'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, C# ile Görüntü İşleme API’sini kullanarak bir görüntüden küçük resim oluşturacaksınız.
+description: Bu hızlı başlangıçta, ile C#görüntü işleme API'si kullanarak bir görüntüden küçük resim oluşturursunuz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 304c4b7802ed444b9a3ed6cdf4514222aa4f2420
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 889ce093e09a7e7d0fa3e81f3a819139ee225800
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138060"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176892"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>Hızlı Başlangıç: Görüntü İşleme REST API kullanarak bir küçük resim oluşturun veC#
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>Hızlı başlangıç: Görüntü İşleme REST API kullanarak küçük resim oluşturma veC#
 
-Bu hızlı başlangıçta, Görüntü İşleme REST API’sini kullanarak bir görüntüden küçük resim oluşturacaksınız. [Küçük Resim Alma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) yöntemi ile bir görüntünün küçük resmini alabilirsiniz. Giriş görüntüsünün en boy oranından farklı olabilen bir yükseklik ve genişlik belirtirsiniz. Görüntü İşleme, ilgilendiğiniz alanı saptamak ve bu bölgeye göre kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
+Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden küçük resim oluşturursunuz. [Küçük resim al](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) yöntemiyle bir görüntünün küçük resmini oluşturabilirsiniz. Bir yükseklik ve genişlik belirtirsiniz ve bu, giriş resminin en boy oranından farklı olabilir. Görüntü İşleme, ilgilendiğiniz alanı saptamak ve bu bölgeye göre kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya üzerine sahip olmanız gerekir.
-- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla ve `COMPUTER_VISION_ENDPOINT`olarak adlandırılan `COMPUTER_VISION_SUBSCRIPTION_KEY` anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+- [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) veya sonraki bir sürümü olmalıdır.
+- Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Ardından, sırasıyla `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT` adlı anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
-## <a name="create-and-run-the-sample-application"></a>Örnek uygulamayı oluşturma ve çalıştırma
+## <a name="create-and-run-the-sample-application"></a>Örnek uygulama oluşturma ve çalıştırma
 
-Örneği Visual Studio’da oluşturmak için aşağıdaki adımları uygulayın:
+Visual Studio 'da örnek oluşturmak için aşağıdaki adımları uygulayın:
 
-1. Visual C# Konsol Uygulaması şablonunu kullanarak Visual Studio’da yeni bir Visual Studio çözümü oluşturun.
-1. Newtonsoft.Json NuGet paketini yükleyin.
-    1. Menüde **Araçlar**’a tıklayın, **NuGet Paket Yöneticisi**’ni ve ardından **Çözüm için NuGet Paketlerini Yönet**’i seçin.
-    1. **Gözat** sekmesine tıklayın ve **Arama** kutusuna "Newtonsoft.Json" yazın.
-    1. Görüntülendiğinde **Newtonsoft.Json**’ı seçin, sonra proje adınızın yanındaki onay kutusuna ve **Yükle**’ye tıklayın.
+1. Visual Studio 'da görsel C# konsol uygulaması şablonunu kullanarak yeni bir Visual Studio çözümü oluşturun.
+1. Newtonsoft. JSON NuGet paketini yükler.
+    1. Menüsünde **Araçlar**' a tıklayın, **NuGet Paket Yöneticisi**' ni seçin ve ardından **çözüm için NuGet paketlerini yönetin**.
+    1. **Araştır** sekmesine tıklayın ve **arama** kutusuna "Newtonsoft. JSON" yazın.
+    1. Görüntülendiğinde **Newtonsoft. JSON** ' ı seçin, ardından Proje adınızın yanındaki onay kutusuna **tıklayın ve öğesini**.
 1. Programı çalıştırın.
-1. İstemde yerel görüntü yolunu girin.
+1. İstemde, yerel görüntünün yolunu girin.
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,7 +59,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
         
         // the GenerateThumbnail method endpoint
-        const string uriBase = endpoint + "vision/v2.0/generateThumbnail";
+        const string uriBase = endpoint + "vision/v2.1/generateThumbnail";
 
         static void Main()
         {
@@ -179,11 +179,11 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="examine-the-response"></a>Yanıtı inceleme
+## <a name="examine-the-response"></a>Yanıtı inceleyin
 
-Küçük resmin görüntü verilerini temsil eden ikili veri halinde başarılı bir yanıt döndürülür. İstek başarılı olursa küçük resim, "_thumb" son ekiyle özgün adı kullanarak yerel görüntüyle aynı klasöre kaydedilir. İstek başarısız olursa yanıt, bir hata kodu ve nelerin yanlış gittiğini belirlemeye yardımcı olması için bir ileti içerir.
+Başarılı bir yanıt, küçük resim için görüntü verilerini temsil eden ikili veriler olarak döndürülür. İstek başarılı olursa, küçük resim yerel görüntüyle aynı klasöre kaydedilir ve "_thumb" sonekiyle orijinal adı kullanılır. İstek başarısız olursa, yanıt neyin yanlış olduğunu belirlemenize yardımcı olmak için bir hata kodu ve bir ileti içerir.
 
-Örnek uygulama aşağıdaki örneğe benzer şekilde başarılı bir yanıtı konsol penceresinde görüntüler:
+Örnek uygulama, aşağıdaki örneğe benzer şekilde konsol penceresinde başarılı bir yanıt görüntüler:
 
 ```console
 Response:
@@ -206,7 +206,7 @@ StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.Stre
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Optik karakter tanıma (OCR) gerçekleştirmek için Görüntü İşleme kullanan temel bir Windows uygulaması keşfedin. Akıllı kırpılmış küçük resimler oluşturun. Buna ek olarak, bir görüntüdeki yüzler gibi görsel özellikleri algılayın, kategorilere ayırın, etiketleyin ve açıklayın. Görüntü İşleme API'lerini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna göz atın.
+Optik karakter tanıma (OCR) gerçekleştirmek için Görüntü İşleme kullanan temel bir Windows uygulamasını keşfedebilir; Akıllı kırpılan küçük resimler oluşturun; Ayrıca, bir görüntüdeki yüzler dahil görsel özellikleri algılayın, kategorilere ayırın, etiketleyin ve tanıtın. Görüntü İşleme API 'Leri ile hızlı bir şekilde denemeler yapmak için, [Açık API test konsolunu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)deneyin.
 
 > [!div class="nextstepaction"]
-> [Görüntü İşleme API’si C# Öğreticisi](../Tutorials/CSharpTutorial.md)
+> [Görüntü İşleme API'si C&#35; öğreticisi](../Tutorials/CSharpTutorial.md)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 8c24352fdbc6b81e7d263ac8c511b7c61792e6ae
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 6249a3c1c8ea3be02ca802d6be7e720bd900f675
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907883"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178088"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNET 'ler için Ağ eşlemesini ve IP adresini ayarlama
 
@@ -33,7 +33,7 @@ Ağları aşağıdaki gibi eşleyin:
 3. **Ağ eşlemesi Ekle**' de, kaynak ve hedef konumları seçin. Örneğimizde, kaynak VM Doğu Asya bölgesinde çalışıyor ve Güneydoğu Asya bölgesine çoğaltılır.
 
     ![Kaynak ve hedef seçin](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
-3. Artık karşıt dizinde bir ağ eşlemesi oluşturun. Bizim örneğimizde, kaynak artık Güneydoğu Asya olacak ve hedef Doğu Asya olacaktır.
+3. Artık ters yönde bir ağ eşlemesi oluşturun. Bizim örneğimizde, kaynak artık Güneydoğu Asya olacak ve hedef Doğu Asya olacaktır.
 
     ![Ağ eşleme bölmesi Ekle-hedef ağ için kaynak ve hedef konumları seçin](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
@@ -67,11 +67,11 @@ Hedef sanal makinenin alt ağı, kaynak VM 'nin alt ağının adına göre seçi
 
 Hedef sanal makinedeki her NIC için IP adresi şu şekilde yapılandırılır:
 
-- **DHCP**: Kaynak VM 'nin NIC 'i DHCP kullanıyorsa, hedef sanal makinenin NIC 'ı de DHCP kullan olarak ayarlanır.
-- **STATIK IP adresi**: Kaynak VM 'nin NIC 'ı statik IP adresleme kullanıyorsa, hedef VM NIC 'i de statik bir IP adresi kullanır.
+- **DHCP**: kaynak VM 'nin NIC 'si DHCP kullanıyorsa, hedef sanal makinenin NIC 'ı de DHCP kullan olarak ayarlanır.
+- **STATIK IP adresi**: kaynak VM 'nin NIC 'SI statik IP adresleme kullanıyorsa, hedef VM NIC 'i STATIK bir IP adresi de kullanacaktır.
 
 
-## <a name="ip-address-assignment-during-failover"></a>Yük devretme sırasında IP adresi atama
+## <a name="ip-address-assignment-during-failover"></a>Yük devretme sırasında IP adresi ataması
 
 **Kaynak ve hedef alt ağlar** | **Ayrıntılar**
 --- | ---
@@ -85,8 +85,8 @@ Farklı adres alanı<br/><br/> Hedef alt ağdaki bir sonraki kullanılabilir IP 
 
 **Hedef ağ** | **Ayrıntılar**
 --- | ---
-Hedef ağ yük devretme VNet | -Hedef IP adresi statik, ancak yük devretme için ayrılan IP adresi değil.<br/><br/>  -Atanan adres, alt ağ aralığının sonundaki bir sonraki kullanılabilir adrestir.<br/><br/> Örneğin: Kaynak IP adresi 10.0.0.19 ise ve yük devretme ağı 10.0.0.0/24 aralığını kullanıyorsa, hedef VM 'ye atanan sonraki IP adresi 10.0.0.254 olur.
-Hedef ağ yük devretme VNet değil | -Hedef IP adresi, yük devretme için ayrılan aynı IP adresiyle statik olacak.<br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir.<br/><br/> Örneğin: Kaynak statik IP adresi 10.0.0.19 ise ve yük devretme, 10.0.0.0/24 aralığına sahip yük devretme ağı olmayan bir ağ üzerinde ise, hedef statik IP adresi varsa 10.0.0.0.19 olur ve aksi takdirde 10.0.0.254 olur.
+Hedef ağ yük devretme VNet | -Hedef IP adresi statik, ancak yük devretme için ayrılan IP adresi değil.<br/><br/>  -Atanan adres, alt ağ aralığının sonundaki bir sonraki kullanılabilir adrestir.<br/><br/> Örneğin: kaynak IP adresi 10.0.0.19 ise ve yük devretme ağı 10.0.0.0/24 aralığını kullanıyorsa, hedef VM 'ye atanan sonraki IP adresi 10.0.0.254 olur.
+Hedef ağ yük devretme VNet değil | -Hedef IP adresi, yük devretme için ayrılan aynı IP adresiyle statik olacak.<br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir.<br/><br/> Örneğin: kaynak statik IP adresi 10.0.0.19 ise ve yük devretme, 10.0.0.0/24 aralığına sahip yük devretme ağı olmayan bir ağ üzerinde ise, hedef statik IP adresi varsa 10.0.0.0.19 olur ve aksi takdirde 10.0.0.254 olur.
 
 - Yük devretme VNet, olağanüstü durum kurtarmayı ayarlarken seçtiğiniz hedef ağ olur.
 - Yük devretme testi için her zaman üretim dışı bir ağ kullanmanızı öneririz.

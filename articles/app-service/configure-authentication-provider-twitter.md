@@ -14,51 +14,60 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f7154da76b41198c208d02b8c563ba26ff8101a1
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 02008b7dc1609a5f28ac6ba2a582933a96428198
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983607"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176949"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>App Service uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma
+# <a name="configure-your-app-service-app-to-use-twitter-login"></a>App Service uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma
+
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Bu konuda, Azure App Service bir kimlik doğrulama sağlayıcısı olarak Twitter kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
+Bu makalede, Azure App Service bir kimlik doğrulama sağlayıcısı olarak Twitter kullanmak üzere nasıl yapılandırılacağı gösterilmektedir.
 
-Bu konudaki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresi ve telefon numarası olan bir Twitter hesabınızın olması gerekir. Yeni bir Twitter hesabı oluşturmak için <a href="https://go.microsoft.com/fwlink/p/?LinkID=268287" target="_blank">Twitter.com</a>adresine gidin.
+Bu makaledeki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresi ve telefon numarası olan bir Twitter hesabına ihtiyacınız vardır. Yeni bir Twitter hesabı oluşturmak için [Twitter.com]adresine gidin.
 
 ## <a name="register"> </a>Uygulamanızı Twitter 'a kaydetme
-1. [Azure Portal]oturum açın ve uygulamanıza gidin. **URL**'nizi kopyalayın. Twitter uygulamanızı yapılandırmak için kullanacaksınız.
-2. [Twitter geliştiricileri] Web sitesine gidin, Twitter hesabı kimlik bilgilerinizle oturum açın ve **Yeni uygulama oluştur**' a tıklayın.
-3. Yeni uygulamanız için **ad** ve **Açıklama** yazın. **Web sitesi** değeri Için uygulamanızın **URL 'sini** yapıştırın. Ardından, **geri arama URL 'si**için App Service uygulamanızın URL 'sini yazın ve yolu `/.auth/login/twitter/callback`ekleyin. Örneğin: `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. HTTPS şemasını kullandığınızdan emin olun.
-4. Sayfanın alt kısmındaki koşulları okuyun ve kabul edin. Ardından **Twitter uygulamanızı oluştur**' a tıklayın. Uygulama ayrıntıları görüntülenir.
-5. **Ayarlar** sekmesine tıklayın, **Bu uygulamanın Twitter 'da oturum açmak Için kullanılmasına izin ver**' i işaretleyin ve **Ayarları Güncelleştir**' e tıklayın.
-6. **Anahtarlar ve erişim belirteçleri** sekmesini seçin. **Tüketici anahtarı (API anahtarı)** ve **Tüketici gızlı dizisi (API gizli)** değerlerini bir yere göz önünde alın.
-   
+
+1. [Azure portalı] oturum açın ve uygulamanıza gidin. **URL**'nizi kopyalayın. Twitter uygulamanızı yapılandırmak için kullanacaksınız.
+1. [Twitter geliştiricileri] Web sitesine gidin, Twitter hesabı kimlik bilgilerinizle oturum açın ve **Yeni uygulama oluştur**' u seçin.
+1. Yeni uygulamanız için bir **ad** ve **Açıklama** girin. Uygulamanızın **URL 'Sini** **Web sitesi** alanına yapıştırın. **Geri arama URL 'si** alanında App Service uygulamanızın URL 'sini girin ve `/.auth/login/aad/callback` yolunu ekleyin. Örneğin, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. HTTPS şemasını kullandığınızdan emin olun.
+1. Sayfanın alt kısmındaki koşulları okuyun ve kabul edin. **Twitter uygulamanızı oluştur ' u**seçin. Uygulama ayrıntıları görüntülenir.
+1. **Ayarlar** sekmesini seçin, **Bu uygulamanın Twitter 'da oturum açmak Için kullanılmasına izin ver**' i Işaretleyin ve ardından **Ayarları Güncelleştir**' i seçin.
+1. **Anahtarlar ve erişim belirteçleri** sekmesini seçin.
+
+   Şu değerleri bir yere göz önünde oluşturun:
+   - Tüketici anahtarı (API anahtarı)
+   - Tüketici gizli dizisi (API parolası)
+
    > [!NOTE]
    > Tüketici gizli anahtarı önemli bir güvenlik kimlik bilgileridir. Bu parolayı herkesle paylaşmayın veya uygulamanızla dağıtın.
-   > 
-   > 
 
 ## <a name="secrets"> </a>Uygulamanıza Twitter bilgilerini ekleyin
-1. [Azure Portal]geri dönüp uygulamanıza gidin. **Ayarlar**' a ve ardından **kimlik doğrulama/yetkilendirme**' ye tıklayın.
-2. Kimlik doğrulama/yetkilendirme özelliği etkinleştirilmemişse, geçişi **Açık**duruma getirin.
-3. **Twitter**'a tıklayın. Daha önce edindiğiniz uygulama KIMLIĞI ve uygulama gizli anahtarı değerlerini yapıştırın. Daha sonra, **Tamam**'a tıklayın.
-   
-   ![][1]
-   
+
+1. [Azure portalı]uygulamanıza gidin.
+1. @No__t **ayarları**-1**kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
+1. **Twitter**' ı seçin.
+1. Daha önce edindiğiniz `API Key` ve `API Secret` değerlerini yapıştırın.
+1. **Tamam**’ı seçin.
+
+   ![Mobil uygulama Twitter ayarlarının ekran görüntüsü][1]
+
    Varsayılan olarak, App Service kimlik doğrulaması sağlar ancak site içeriğinize ve API 'lerinize yetkili erişimi kısıtlamaz. Uygulama kodunuzda kullanıcıları yetkilendirmelisiniz.
-4. Seçim Sitenize erişimi yalnızca Twitter tarafından kimliği doğrulanan kullanıcılarla kısıtlamak için, isteğin **Twitter**'da **kimlik doğrulaması olmadığında gerçekleştirilecek eylemi** ayarlayın. Bu, tüm isteklerin doğrulanmasını gerektirir ve kimliği doğrulanmamış tüm istekler kimlik doğrulaması için Twitter 'a yönlendirilir.
 
-> [!NOTE]
-> Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi genel kullanıma açık bir giriş sayfası gerektiren uygulamalar için istenmeyebilir. Bu tür uygulamalar için, [burada](overview-authentication-authorization.md#authentication-flow)açıklandığı gibi **anonim isteklere izin ver (eylem yok)** tercih edilebilir ve uygulamanın kendisi el ile oturum açma işlemi başlar.
+1. Seçim Sitenize erişimi yalnızca Twitter tarafından kimliği doğrulanan kullanıcılarla kısıtlamak için, isteğin **Twitter**'da **kimlik doğrulaması olmadığında gerçekleştirilecek eylemi** ayarlayın. Bu işlevi ayarladığınızda, uygulamanız tüm isteklerin doğrulanmasını gerektirir. Ayrıca kimlik doğrulaması için tüm kimliği doğrulanmamış istekleri Twitter 'a yönlendirir.
 
-5. **Kaydet**’e tıklayın.
+   > [!CAUTION]
+   > Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi, genel kullanıma açık bir giriş sayfasına sahip olan uygulamalar için istenmeyebilir. Bu tür uygulamalar için **anonim Isteklere Izin ver (eylem yok)** , uygulamanın kimlik doğrulamanın kendisini el ile başlattığı şekilde tercih edilebilir. Daha fazla bilgi için bkz. [kimlik doğrulama akışı](overview-authentication-authorization.md#authentication-flow).
+
+1. **Kaydet**’i seçin.
 
 Artık uygulamanızda kimlik doğrulaması için Twitter kullanmaya hazırsınız.
 
-## <a name="related-content"> </a>İlgili içerik
+## <a name="related-content"> </a>Sonraki adımlar
+
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Images. -->
@@ -69,5 +78,6 @@ Artık uygulamanızda kimlik doğrulaması için Twitter kullanmaya hazırsını
 <!-- URLs. -->
 
 [Twitter geliştiricileri]: https://go.microsoft.com/fwlink/p/?LinkId=268300
-[Azure portal]: https://portal.azure.com/
+[twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
+[Azure portalı]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 941a218dbda2c27a598e5a53f2b947184ee78085
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121215"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169679"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure 'da Web Apps yönelik açık kaynaklı teknolojiler SSS
 
@@ -36,10 +36,10 @@ PHP günlüğünü açmak için:
 2. Üstteki menüden **Hata Ayıkla konsol** > **cmd**' yi seçin.
 3. **Site** klasörünü seçin.
 4. **Wwwroot** klasörünü seçin.
-5. Simgeyi seçin ve ardından **yeni dosya**' yı seçin. **+**
+5. **@No__t-1** simgesini ve ardından **yeni dosya**' yı seçin.
 6. Dosya adını **. User. ini**olarak ayarlayın.
 7. **. User. ini dosyasının**yanındaki kurşun kalem simgesini seçin.
-8. Dosyasında şu kodu ekleyin:`log_errors=on`
+8. Dosyada şu kodu ekleyin: `log_errors=on`
 9. **Kaydet**’i seçin.
 10. **Wp-config. php**' nin yanındaki kurşun kalem simgesini seçin.
 11. Metni şu kodla değiştirin:
@@ -78,7 +78,7 @@ Node. js uygulamasının sürümünü değiştirmek için aşağıdaki seçenekl
   Azure Kaynak denetimi dağıtım işlemi aşağıdaki adımları içerir:
   1. İçeriği Azure Web uygulamasına taşıın.
   2. Web uygulaması kök klasöründe bir tane (Deploy. cmd,. Deployment Files) yoksa varsayılan bir dağıtım betiği oluşturur.
-  3. Package. JSON Dosya > altyapısında Node. js sürümünü bahsettiğinizde bir ıısnode. yıml dosyası oluşturduğu bir dağıtım betiği çalıştırır`"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  3. Package. JSON dosyası > altyapıda Node. js ' den bahsetmeniz halinde bir iisnode. yıml dosyası oluşturduğu bir dağıtım betiği çalıştırır `"engines": {"node": "5.9.1","npm": "3.7.3"}`
   4. Iısnode. yml dosyası aşağıdaki kod satırına sahiptir:
       ```yml
       nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
@@ -113,7 +113,7 @@ Docgo yükleme hakkında bilgi için bkz. [App Service Için docgo uygulaması d
 
 Azure Marketi ve özel dağıtımlar için:
 
-* Klasör konumu: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
+* Klasör konumu: D:\home\site\wwwroot\bin\apache-Tomcat-8.0.33\logs
 * İlgilendiğiniz dosyalar:
     * Catalina. *yyyy-aa-gg*. log
     * Konak Yöneticisi. *yyyy-aa-gg*. log
@@ -144,7 +144,7 @@ Hatayı gidermek için:
 
 1. Sqljdbc*. jar dosyasını App/lib klasörünüzden kaldırın.
 2. Özel Tomcat veya Azure Market Tomcat Web sunucusunu kullanıyorsanız, bu. jar dosyasını Tomcat lib klasörüne kopyalayın.
-3. Java 'yı Azure Portal ( **Java 1,8** > **Tomcat Server**seçin) ' ten etkinleştirirseniz, Sqljdbc. * jar dosyasını uygulamanıza paralel klasöre kopyalayın. Ardından, aşağıdaki sınıf yolu ayarını Web. config dosyasına ekleyin:
+3. Java 'Yı Azure portal ( **java 1,8** > **Tomcat Server**) etkinleştirirseniz, Sqljdbc. * jar dosyasını uygulamanıza paralel klasöre kopyalayın. Ardından, aşağıdaki sınıf yolu ayarını Web. config dosyasına ekleyin:
 
     ```xml
     <httpPlatform>
@@ -187,24 +187,24 @@ App Service yerleşik bir e-posta özelliğine sahip değildir. Uygulamanızdan 
 
 Yakın zamanda Azure 'a geçiş yaptıysanız, WordPress eski etki alanı URL 'sine yeniden yönlendirebilir. Bunun nedeni MySQL veritabanındaki bir ayardır.
 
-WordPress arkadaş +, yeniden yönlendirme URL 'sini doğrudan veritabanında güncelleştirmek için kullanabileceğiniz bir Azure Site uzantısıdır. WordPress arkadaş + kullanımı hakkında daha fazla bilgi için bkz. wordpress [arkadaş + Ile WordPress araçları ve MySQL geçişi](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+WordPress arkadaş +, yeniden yönlendirme URL 'sini doğrudan veritabanında güncelleştirmek için kullanabileceğiniz bir Azure Site uzantısıdır. WordPress arkadaş + kullanımı hakkında daha fazla bilgi için bkz. wordpress [arkadaş + Ile WordPress araçları ve MySQL geçişi](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
-Alternatif olarak, yeniden yönlendirme URL 'sini SQL sorguları veya phpMyAdmin kullanarak el ile güncelleştirmeyi tercih ediyorsanız, bkz [. WordPress: Yanlış URL](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/)'ye yeniden yönlendiriliyor.
+Alternatif olarak, yeniden yönlendirme URL 'sini SQL sorguları veya PHPMyAdmin kullanarak el ile güncelleştirmeyi tercih ediyorsanız, bkz. [WordPress: yanlış URL 'ye yönlendirme](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/).
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>WordPress oturum açma parolamı Nasıl yaparım? değiştirilsin mi?
 
-WordPress oturum açma parolanızı unuttuysanız, bunu güncelleştirmek için WordPress arkadaş + kullanabilirsiniz. Parolanızı sıfırlamak için WordPress arkadaş + Azure Site uzantısını yükledikten sonra WordPress [arkadaş + Ile WordPress araçları ve MySQL geçişi](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)bölümünde açıklanan adımları uygulayın.
+WordPress oturum açma parolanızı unuttuysanız, bunu güncelleştirmek için WordPress arkadaş + kullanabilirsiniz. Parolanızı sıfırlamak için WordPress arkadaş + Azure Site uzantısını yükledikten sonra WordPress [arkadaş + Ile WordPress araçları ve MySQL geçişi](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)bölümünde açıklanan adımları uygulayın.
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>WordPress 'de oturum açamıyorum. Nasıl yaparım? bunu çözmek mi istiyorsunuz?
 
-Son zamanlarda bir eklenti yükledikten sonra WordPress 'nin kilitlendiğini fark ederseniz, bir eklenti hatalı olabilir. WordPress arkadaş +, WordPress içindeki eklentileri devre dışı bırakmanızı sağlayacak bir Azure Site uzantısıdır. Daha fazla bilgi için bkz. wordpress [arkadaş + Ile WordPress araçları ve MySQL geçişi](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/).
+Son zamanlarda bir eklenti yükledikten sonra WordPress 'nin kilitlendiğini fark ederseniz, bir eklenti hatalı olabilir. WordPress arkadaş +, WordPress içindeki eklentileri devre dışı bırakmanızı sağlayacak bir Azure Site uzantısıdır. Daha fazla bilgi için bkz. wordpress [arkadaş + Ile WordPress araçları ve MySQL geçişi](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/).
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>WordPress veritabanını Nasıl yaparım? geçirmek istiyor musunuz?
 
 WordPress web sitenize bağlı MySQL veritabanını geçirmek için birden çok seçeneğiniz vardır:
 
-* Geliştiriciler: [Komut istemi veya PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) kullanın
-* Geliştirici olmayanlar: [WordPress arkadaş +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) kullanın
+* Geliştiriciler: [komut istemi veya PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) kullanın
+* Geliştiriciler olmayanlar: [WordPress arkadaş +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) kullanın
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>Nasıl yaparım? WordPress 'in daha güvenli olmasına yardımcı olur mu?
 

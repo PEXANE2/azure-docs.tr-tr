@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 86c03554f5faa1ebb40faa20b6a271f5310ccd4f
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828227"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173412"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL veritabanı sunucusuz (Önizleme)
 
@@ -66,8 +66,8 @@ Aşağıdaki tabloda sunucusuz bilgi işlem katmanı ve sağlanan işlem katman�
 | | **Sunucusuz işlem** | **Sağlanan işlem** |
 |:---|:---|:---|
 |**Veritabanı kullanım deseninin**| Zaman içinde daha düşük ortalama işlem kullanımı ile öngörülemeyen kullanım |  Zamana göre daha fazla ortalama işlem kullanımı veya elastik havuzlar kullanan birden çok veritabanı içeren daha düzenli kullanım düzenleri.|
-| **Performans yönetimi çabaları** |Düşürül|Sırada|
-|**İşlem ölçekleme**|Otomatik|El ile|
+| **Performans yönetimi çabaları** |Daha düşük|Daha yüksek|
+|**İşlem ölçekleme**|Otomatik|Elle|
 |**İşlem yanıtlama hızı**|Etkin olmayan dönemlerden sonra düşük|Hemen|
 |**Faturalandırma ayrıntı düzeyi**|/Saniye|/Saat|
 
@@ -126,10 +126,10 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 |Özellik|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulaması ve yetkilendirme|LOGIN|
+|Kimlik doğrulaması ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
-|Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
+|Girdilerini|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
 |Veri maskeleme|Veri maskeleme kuralları ekleme, değiştirme, silme veya görüntüleme|
 |Saydam veri şifrelemesi|Saydam veri şifrelemesinin durumunu veya durumunu görüntüleme|
 |Sorgu (performans) veri deposu|Sorgu deposu ayarlarını değiştirme veya görüntüleme|
@@ -141,11 +141,11 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 Ayrıca, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında, oto devam etme işlemi tetiklenir.
 
-### <a name="connectivity"></a>Bağlanabilirlik
+### <a name="connectivity"></a>Bilirlik
 
 Sunucusuz bir veritabanı duraklatıldığında, ilk oturum açma işlemi veritabanını sürdürür ve 40613 hata koduyla veritabanının kullanılamadığını belirten bir hata döndürür. Veritabanı devam ettirdikten sonra, bağlantı kurmak için oturum açma yeniden denenmelidir. Bağlantı yeniden deneme mantığının bulunduğu veritabanı istemcilerinin değiştirilmesi gerekmez.
 
-### <a name="latency"></a>Dönemlerinde
+### <a name="latency"></a>Gecikme
 
 Bir sunucusuz veritabanını oto Resume ve oto duraklatma gecikmesi genellikle 1 dakikalık ve oto duraklamaya 1-10 dakika sıradır.
 
@@ -157,7 +157,7 @@ Yeni bir veritabanı oluşturmak veya var olan bir veritabanını sunucusuz bir 
 
    |Hizmet hedefi adı|Hizmet katmanı|Donanım oluşturma|En fazla sanal çekirdek|
    |---|---|---|---|
-   |GP_S_Gen5_1|Genel Amaçlı|5\. nesil|1\.|
+   |GP_S_Gen5_1|Genel Amaçlı|5\. nesil|1|
    |GP_S_Gen5_2|Genel Amaçlı|5\. nesil|2|
    |GP_S_Gen5_4|Genel Amaçlı|5\. nesil|4|
    |GP_S_Gen5_6|Genel Amaçlı|5\. nesil|6|
@@ -261,7 +261,7 @@ Kullanıcı kaynak havuzu, veritabanının sunucusuz veya sağlanmış bir işle
 
 Bir sunucusuz veritabanının uygulama paketinin ve Kullanıcı havuzunun kaynak kullanımını izlemeye yönelik ölçümler aşağıdaki tabloda listelenmiştir:
 
-|Varlık|Ölçüm|Açıklama|Birim|
+|Varlığının|Ölçüt|Description|Birim|
 |---|---|---|---|
 |Uygulama paketi|app_cpu_percent|Uygulama tarafından, uygulama için izin verilen en fazla Vçekirdelere göre kullanılan sanal çekirdekler yüzdesi.|Den|
 |Uygulama paketi|app_cpu_billed|Raporlama döneminde uygulama için faturalandırılan işlem miktarı. Bu süre boyunca ödenen miktar, bu ölçümün ve vCore birim fiyatının ürünüdür. <br><br>Bu ölçümün değerleri, en fazla CPU kullanımı ve her saniye kullanılan bellek için toplanan zamana göre belirlenir. Kullanılan miktar, en düşük sanal çekirdekler ve minimum bellek tarafından ayarlanan şekilde sağlanan minimum miktardan azsa, sağlanan minimum miktar faturalandırılır. İşlemci amacıyla CPU 'yu bellek ile karşılaştırmak için, bellek miktarı GB cinsinden vCore başına 5 GB olarak yeniden ayarlayarak sanal çekirdek birimlerine normalleştirilmelidir.|Sanal çekirdek Saniyeler|
@@ -317,7 +317,7 @@ Daha kesin olarak, bu örnekteki işlem faturanız aşağıdaki gibi hesaplanır
 |Zaman aralığı|her saniye kullanılan sanal çekirdekler|Her saniye kullanılan GB|Faturalandırılan işlem boyutu|zaman aralığı içinde faturalandırılan sanal çekirdek Saniyeler|
 |---|---|---|---|---|
 |0:00-1:00|4|9|kullanılan sanal çekirdekler|4 sanal çekirdek * 3600 saniye = 14400 sanal çekirdek saniye|
-|1:00-2:00|1\.|12|Kullanılan bellek|12 GB * 1/3 * 3600 saniye = 14400 sanal çekirdek saniye|
+|1:00-2:00|1|12|Kullanılan bellek|12 GB * 1/3 * 3600 saniye = 14400 sanal çekirdek saniye|
 |2:00-8:00|0|0|Sağlanan minimum bellek|3 GB * 1/3 * 21600 saniye = 21600 sanal çekirdek saniye|
 |8:00-24:00|0|0|Durakladığında faturalandırılan işlem yok|0 sanal çekirdek saniye|
 |24 saat üzerinden faturalandırılan toplam vCore saniye||||50400 sanal çekirdek saniye|
@@ -326,7 +326,7 @@ Daha kesin olarak, bu örnekteki işlem faturanız aşağıdaki gibi hesaplanır
 
 ## <a name="available-regions"></a>Kullanılabilir bölgeler
 
-Sunucusuz bilgi işlem katmanı, aşağıdaki bölgeler dışında Dünya çapında kullanılabilir: Avustralya Orta, Çin Doğu, Çin Kuzey, Fransa Güney, Almanya Orta, Almanya Kuzeydoğu, Hindistan Batı, Kore Güney, Güney Afrika Batı, UK Kuzey, UK Güney, UK Batı ve Batı Orta ABD.
+Sunucusuz bilgi işlem katmanı, aşağıdaki bölgeler dışında Dünya çapında kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, UK Kuzey, UK Güney 2, Orta Batı ABD ve US Gov Orta (Iowa).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

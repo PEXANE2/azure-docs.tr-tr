@@ -1,19 +1,19 @@
 ---
 title: Azure veri paylaşımının önizlemesi nedir?
-description: Azure veri paylaşımının önizlemesine genel bakış
+description: Azure veri paylaşma önizlemesi kullanarak çok sayıda müşteriyle ve iş ortaklarıyla verileri basit ve güvenli bir şekilde paylaşma hakkında bilgi edinin.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 11f32b1f1349ef0f9826f95832648e6949cc2f8c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6ba6e9df7b3fd2992891f4b085581c51fe900744
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421393"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169082"
 ---
-# <a name="what-is-azure-data-share-preview"></a>Azure Veri Paylaşımı Önizleme nedir?
+# <a name="what-is-azure-data-share-preview"></a>Azure veri paylaşma önizlemesi nedir?
 
 Bugünün dünyasında, veriler birçok kuruluşun müşterileri ve iş ortaklarıyla tek ve güvenli bir şekilde paylaşması gereken önemli bir stratejik varlık olarak görüntülenir. Bu şekilde, müşterilerin bu şekilde, FTP, e-posta, API 'Ler ve birkaç kez ad vermek üzere çok çeşitli yolları vardır. Kuruluşlar, verilerini paylaştıkları kişileri kolayca kaybedebilir. Verileri FTP aracılığıyla veya kendi API altyapısını kullanarak paylaşmak, sağlama ve yönetme konusunda genellikle pahalıdır. Büyük ölçekte bu paylaşım yöntemlerini kullanmayla ilişkili yönetim ek yükü vardır. 
 
@@ -25,7 +25,7 @@ Veri sağlayıcısı, veri paylaşımıyla ilgili kullanım koşulları belirtil
 
 Azure veri paylaşımında, üçüncü tarafların verileri zenginleştirerek analiz ve AI senaryolarına kadar zengin bir şekilde birleştirerek Öngörüler geliştirmeye yardımcı olur. Azure veri paylaşım kullanarak paylaşılan verileri hazırlamak, işlemek ve analiz etmek için Power ot Azure Analytics araçlarını kolayca kullanın. 
 
-Veri sağlayıcısı ve veri tüketicisi, verileri paylaşmak ve almak için bir Azure aboneliğine sahip olmalıdır. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Veri sağlayıcısı ve veri tüketicisi, verileri paylaşmak ve almak için bir Azure aboneliğine sahip olmalıdır. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)oluşturun.
 
 ## <a name="scenarios-for-azure-data-share"></a>Azure veri paylaşımıyla ilgili senaryolar
 
@@ -35,7 +35,7 @@ Azure veri paylaşma, belirli bir sektör için veri marketi oluşturmak için d
 
 Azure veri paylaşımında başka bir kullanım örneği de veri Konsorsiyumu oluşturur. Örneğin, bir dizi farklı araştırma kurumları, verileri tek bir güvenilen gövdele paylaşabilir. Veriler, Azure Analytics araçları kullanılarak çözümlenir, toplanır veya işlenir ve ardından ilgilenen taraflarla paylaşılır. 
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalıştığı
 
 Azure veri paylaşımı, verilerin veri sağlayıcının Azure aboneliğinden ve veri tüketicisinin Azure aboneliğindeki yere taşındığı bir anlık görüntü tabanlı paylaşım yaklaşımı kullanır. Veri sağlayıcısı olarak, bir veri paylaşma sağlar ve alıcıları veri paylaşımında davet edersiniz. Veri tüketicileri, e-posta aracılığıyla veri paylaşımınıza bir davet alır. Bir veri tüketicisi daveti kabul ettiğinde, paylaştığınız verilerin tam anlık görüntüsünü tetikleyebilirler. Bu veriler veri tüketicileri depolama hesabına alınır. Veri tüketicileri, her zaman verilerin en son sürümüne sahip olmaları için kendileriyle paylaşılan veriler için düzenli, artımlı güncelleştirmeler alabilir. 
 
@@ -45,7 +45,7 @@ Veri sağlayıcıları, veri tüketicilerini bir anlık görüntü zamanlaması 
 
 Bir veri tüketicisi bir veri paylaşımının kabul ettiğinde, verileri seçtikleri bir depolama hesabında alabilecektir. Örneğin, veri sağlayıcısı verileri Azure Blob depolama kullanarak paylaşıyorsa veri tüketicisi bu verileri Azure Data Lake Store alabilir. 
 
-## <a name="key-capabilities"></a>Temel işlevler
+## <a name="key-capabilities"></a>Temel özellikler
 
 Azure veri paylaşma, veri sağlayıcılarının şunları yapmasını sağlar:
 

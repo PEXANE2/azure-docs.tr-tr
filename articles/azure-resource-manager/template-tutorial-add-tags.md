@@ -8,18 +8,18 @@ ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c8c882d819771473db2cf1c91fb39912883d144d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 8b6ff50f7254a51bcdf37ecb0afd8f0041a2c5da
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963747"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177559"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Öğretici: Kaynak Yöneticisi şablonunuzda etiketler ekleme
 
 Bu öğreticide, şablonunuzda kaynaklara nasıl etiket ekleneceğini öğreneceksiniz. [Etiketler](resource-group-using-tags.md) , kaynaklarınızı mantıksal olarak düzenlemenize yardımcı olur. Etiket değerleri, maliyet raporlarında gösterilir. Bu öğreticinin tamamlandığı **8 dakika** sürer.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 [Hızlı başlangıç şablonları hakkında öğreticiyi](template-tutorial-quickstart-template.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -35,15 +35,15 @@ Bu kaynakları dağıttıktan sonra, maliyetleri izlemeniz ve bir kategoriye ait
 
 ## <a name="add-tags"></a>Etiket ekle
 
-Kullanımları tanımlamanızı sağlayacak değerler eklemek için kaynakları etiketlerseniz. Örneğin, ortamı ve projeyi işaretleyen Etiketler ekleyebilirsiniz. Bir maliyet merkezini veya kaynağa sahip olan takımı tanımlayan etiketler ekleyebilirsiniz. Kuruluşunuz için anlamlı olan tüm değerleri ekleyin.
+Kullanımları tanımlamanızı sağlayacak değerler eklemek için kaynakları etiketlerseniz. Örneğin, ortamı ve projeyi listelemek için Etiketler ekleyebilirsiniz. Bir maliyet merkezini veya kaynağa sahip olan takımı tanımlayan etiketler ekleyebilirsiniz. Kuruluşunuz için anlamlı olan tüm değerleri ekleyin.
 
 Aşağıdaki örnek, şablonda yapılan değişiklikleri vurgular. Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
-## <a name="deploy-template"></a>Şablonu dağıt
+## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Şablonu dağıtmanın ve döndürülen değere bakmaya zaman atalım.
+Şablonun dağıtılması ve sonuçlara bakmaları zaman alabilir.
 
 Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
@@ -75,14 +75,14 @@ az group deployment create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın.
+1. [Azure portalı](https://portal.azure.com)’nda oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Depolama hesabı kaynağı gibi kaynaklardan birini seçin. Artık etiketlere sahip olduğunu görürsünüz.
 
    ![Etiketleri göster](./media/template-tutorial-add-tags/show-tags.png)
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 

@@ -16,25 +16,25 @@ ms.date: 09/26/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a79cf166025ced6cb08d2f9e24801ea498fdc1c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 864a6476ad894952a2ef877d534ffe8a86e07819
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326371"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170017"
 ---
 # <a name="edit-and-manage-an-existing-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde var olan bir erişim paketini düzenleyin ve yönetin (Önizleme)
 
 > [!IMPORTANT]
 > Azure Active Directory (Azure AD) yetkilendirme yönetimi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu önizleme sürümü, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmeyebilir veya kısıtlı özelliklere sahip olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Erişim paketi, erişim paketinin ömrü boyunca erişimi otomatik olarak yöneten kaynak ve ilkelerin bir kerelik kurulumunu yapmanızı sağlar. Bir erişim paketi Yöneticisi olarak, bir erişim paketindeki kaynakları, kullanıcının yeni kaynaklara erişimini sağlama veya önceki kaynaklardan erişimleri kaldırma konusunda endişelenmeden dilediğiniz zaman değiştirebilirsiniz. İlkeler de her zaman güncelleştirilemeyebilir, ancak ilke değişiklikleri yalnızca yeni erişimleri etkiler.
 
 Bu makalede, mevcut erişim paketlerinin nasıl düzenleneceği ve yönetileceği açıklanmaktadır.
 
-## <a name="add-resource-roles"></a>Kaynak rolleri ekle
+## <a name="add-resource-roles"></a>Kaynak rolleri ekleme
 
 Kaynak rolü, bir kaynakla ilişkili izinlerin koleksiyonudur. Kaynakları kullanıcıların istemesi için kullanılabilir hale getirmenin yolu, erişim paketinize kaynak rolleri eklemektir. Gruplar, takımlar, uygulamalar ve SharePoint siteleri için kaynak rolleri ekleyebilirsiniz.
 
@@ -73,14 +73,14 @@ Daha fazla bilgi için bkz. grupları ve [Office 365 gruplarını ve Microsoft e
 
     ![Erişim paketi-kaynak rolleri ekleme-Grup seçme](./media/entitlement-management-access-package-edit/group-select.png)
 
-1. Tıklayın **seçin**.
+1. **Seçin**’e tıklayın.
 
     Grubu veya takımı seçtiğinizde, **alt tür** sütunu aşağıdaki alt türlerinden birini listeler:
 
     |  |  |
     | --- | --- |
     | Güvenlik | Kaynaklara erişim vermek için kullanılır. |
-    | Dağıtım | Bir grup kişiye bildirim göndermek için kullanılır. |
+    | Dağılı | Bir grup kişiye bildirim göndermek için kullanılır. |
     | O365 | Takımlar etkin olmayan Office 365 grubu. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
     | Takım | Takımlar etkin olan Office 365 grubu. Şirket içindeki ve dışındaki kullanıcılar arasında işbirliği için kullanılır. |
 
@@ -90,7 +90,7 @@ Daha fazla bilgi için bkz. grupları ve [Office 365 gruplarını ve Microsoft e
 
     ![Erişim paketi-bir grup veya takım için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/group-role.png)
 
-1. **Ekle**'yi tıklatın.
+1. **Ekle**' ye tıklayın.
 
     Erişim paketine mevcut atamaları olan tüm kullanıcılar, eklendiğinde bu grubun veya ekibin üyeleri otomatik olarak olur.
 
@@ -115,13 +115,13 @@ Bir uygulama seçerken bazı konular aşağıda verilmiştir:
 
     ![Erişim paketi-kaynak rolleri ekleme-uygulama seçme](./media/entitlement-management-access-package-edit/application-select.png)
 
-1. Tıklayın **seçin**.
+1. **Seçin**’e tıklayın.
 
 1. **Rol** listesinde bir uygulama rolü seçin.
 
     ![Erişim paketi-bir uygulama için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/application-role.png)
 
-1. **Ekle**'yi tıklatın.
+1. **Ekle**' ye tıklayın.
 
     Erişim paketine mevcut atamalara sahip tüm kullanıcılara, eklendiğinde bu uygulamaya otomatik olarak erişim verilir.
 
@@ -135,13 +135,13 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
     ![Erişim paketi-kaynak rolleri ekleme-SharePoint Online siteleri seçin](./media/entitlement-management-access-package-edit/sharepoint-site-select.png)
 
-1. Tıklayın **seçin**.
+1. **Seçin**’e tıklayın.
 
 1. **Rol** listesinde bir SharePoint Online site rolü seçin.
 
     ![Erişim paketi-SharePoint Online sitesi için kaynak rolü ekleme](./media/entitlement-management-access-package-edit/sharepoint-site-role.png)
 
-1. **Ekle**'yi tıklatın.
+1. **Ekle**' ye tıklayın.
 
     Erişim paketine mevcut atamalara sahip olan tüm kullanıcılara, eklendiğinde bu SharePoint Online sitesine otomatik olarak erişim verilir.
 
@@ -161,7 +161,7 @@ Azure AD, kullanıcılara bir SharePoint Online sitesine veya SharePoint Online 
 
     Erişim paketine mevcut atamaları olan tüm kullanıcılar, kaldırıldığında bu kaynak rolü için otomatik olarak erişimi iptal eder.
 
-## <a name="add-a-new-policy"></a>Yeni ilke ekle
+## <a name="add-a-new-policy"></a>Yeni ilke Ekle
 
 Ne şekilde bir erişim paketi isteyebilen bir ilke oluşturmaktır. Farklı Kullanıcı kümelerine, farklı onay ve sona erme ayarlarına sahip atamalar verilmesini sağlamak istiyorsanız, tek bir erişim paketi için birden çok ilke oluşturabilirsiniz. Tek bir ilke, aynı erişim paketine iç ve dış kullanıcı atamak için kullanılamaz. Bununla birlikte, aynı erişim paketinde bir tane olmak üzere, biri iç kullanıcılar ve diğeri dış kullanıcılar için olmak üzere iki ilke oluşturabilirsiniz. Bir kullanıcı için uygulanan birden çok ilke varsa, kendilerine atanması gereken ilkeyi seçme istekleri sırasında istenir.
 
@@ -309,7 +309,7 @@ Dizininizdeki çoğu kullanıcı erişim portalı 'nda oturum açabilir ve isted
 
 Bir iç iş ortağına gönderirken erişim portalı 'nın tamamını kopyalamanız önemlidir. Bu, iş ortağının, kendi isteklerini yapmak için dizininizin portalına erişmesini sağlar. 
 
-Bağlantı, "myaccess" ile başlar, bir dizin ipucu içerir ve bir erişim paketi kimliğiyle biter. Bağlantının aşağıdakilerin tümünü içerdiğinden emin olun:
+Bağlantı, "myaccess" ile başlar, bir dizin ipucu içerir ve bir erişim paketi KIMLIĞIYLE biter. Bağlantının aşağıdakilerin tümünü içerdiğinden emin olun:
 
  `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -367,5 +367,4 @@ Yetkilendirme Yönetimi 'nde Azure AD, erişim paketinizdeki atama ve kaynaklara
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Katalog sahibi veya erişim paketi Yöneticisi ekleme](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
 - [İşlem ve e-posta bildirimleri iste](entitlement-management-process.md)

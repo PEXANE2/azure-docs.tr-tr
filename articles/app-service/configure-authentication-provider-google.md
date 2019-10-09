@@ -14,46 +14,51 @@ ms.topic: article
 ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fcbb284a0807ef88c5f40a7c8b65398d45bf73d7
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 917fa87a0cd0f7b0615a5139a7c15311f866739a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232140"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176980"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>App Service uygulamanızı Google oturumu kullanacak şekilde yapılandırma
+# <a name="configure-your-app-service-app-to-use-google-login"></a>App Service uygulamanızı Google oturum açma bilgilerini kullanacak şekilde yapılandırma
+
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 Bu konuda, Azure App Service Google 'ı bir kimlik doğrulama sağlayıcısı olarak kullanmak üzere nasıl yapılandırabileceğiniz gösterilmektedir.
 
-Bu konudaki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresine sahip bir Google hesabınızın olması gerekir. Yeni bir Google hesabı oluşturmak için [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302) adresine gidin.
+Bu konudaki yordamı tamamlayabilmeniz için, doğrulanmış bir e-posta adresine sahip bir Google hesabınızın olması gerekir. Yeni bir Google hesabı oluşturmak için [Accounts.Google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302)adresine gidin.
 
 ## <a name="register"> </a>Uygulamanızı Google ile kaydedin
-1. İstemci KIMLIĞI ve istemci gizli anahtarı oluşturmak için, aşağıdaki bilgilerle (herhangi bir kod değişikliği yapmanız gerekmez), [Google oturum açma bölümündeki](https://developers.google.com/identity/sign-in/web/server-side-flow) Google belgelerini takip edin:
-    - **Yetkili JavaScript kaynakları**için `https://<app-name>.azurewebsites.net`  *\<app-name >* içinde uygulamanızın adıyla birlikte kullanın.
-    - **Yetkili yeniden yönlendirme URI 'si**için `https://<app-name>.azurewebsites.net/.auth/login/google/callback`kullanın.
-1. İstemci KIMLIĞI ve istemci gizli dizileri oluşturulduktan sonra değerlerini kopyalayın.
+
+1. İstemci KIMLIĞI ve istemci parolası oluşturmak için, [Google oturum açma ve sunucu tarafı uygulamaları için](https://developers.google.com/identity/sign-in/web/server-side-flow) Google belgelerini izleyin. Herhangi bir kod değişikliği yapmanız gerekmez. Yalnızca aşağıdaki bilgileri kullanın:
+    - **Yetkili JavaScript kaynakları**için, *\<app-name >* ' de uygulamanızın adıyla `https://<app-name>.azurewebsites.net` ' i kullanın.
+    - **Yetkili yeniden yönlendirme URI 'si**için `https://<app-name>.azurewebsites.net/.auth/login/google/callback` kullanın.
+1. Uygulama KIMLIĞI ve uygulama gizli anahtarı değerlerini kopyalayın.
 
     > [!IMPORTANT]
-    > İstemci parolası önemli bir güvenlik kimlik bilgileridir. Bu parolayı kimseyle paylaşmayın veya bir istemci uygulaması içinde dağıtmayın.
-
+    > Uygulama gizli anahtarı önemli bir güvenlik kimlik bilgileridir. Bu parolayı kimseyle paylaşmayın veya bir istemci uygulaması içinde dağıtmayın.
 
 ## <a name="secrets"> </a>Uygulamanıza Google bilgilerini ekleyin
-1. [Azure Portal], App Service uygulamanıza gidin. Sol menüden **kimlik doğrulama/yetkilendirme**' yi seçin.
-2. Kimlik doğrulama/yetkilendirme özelliği etkinleştirilmemişse, geçişi **Açık**duruma getirin.
-3. **Google**'a tıklayın. Daha önce edindiğiniz uygulama KIMLIĞI ve uygulama gizli anahtarı değerlerini yapıştırın ve isteğe bağlı olarak uygulamanızın gerektirdiği tüm kapsamları etkinleştirin. Daha sonra, **Tamam**'a tıklayın.
 
-   App Service kimlik doğrulaması sağlar, ancak site içeriğinize ve API 'Lerine yönelik yetkili erişimi kısıtlamaz. Daha fazla bilgi için bkz. [Yetkilendirmeyi veya reddetme kullanıcıları](app-service-authentication-how-to.md#authorize-or-deny-users).
-4. Seçim Sitenize erişimi yalnızca Google tarafından kimliği doğrulanan kullanıcılarla kısıtlamak için, isteğin **Google**'da **kimlik doğrulaması olmadığında gerçekleştirilecek eylemi** ayarlayın. Bu, tüm isteklerin doğrulanmasını gerektirir ve kimliği doğrulanmamış tüm istekler kimlik doğrulaması için Google 'a yönlendirilir.
+1. [Azure portalı]App Service uygulamanıza gidin.
+1. @No__t **ayarları**-1**kimlik doğrulaması/yetkilendirme**' yi seçin ve **App Service kimlik doğrulamasının** **Açık**olduğundan emin olun.
+1. **Google**' ı seçin ve daha önce EDINDIĞINIZ uygulama kimliği ve uygulama gizli değerlerini yapıştırın. Uygulamanız için gereken tüm kapsamları etkinleştirin.
+1. **Tamam**’ı seçin.
 
-    > [!NOTE]
-    > Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi genel kullanıma açık bir giriş sayfası gerektiren uygulamalar için istenmeyebilir. Bu tür uygulamalar için, [burada](overview-authentication-authorization.md#authentication-flow)açıklandığı gibi **anonim isteklere izin ver (eylem yok)** tercih edilebilir ve uygulamanın kendisi el ile oturum açma işlemi başlar.
-    
-5. **Kaydet**’e tıklayın.
+   App Service kimlik doğrulaması sağlar, ancak site içeriğinize ve API 'lerinize yetkili erişimi kısıtlamaz. Daha fazla bilgi için bkz. [Yetkilendirmeyi veya reddetme kullanıcıları](app-service-authentication-how-to.md#authorize-or-deny-users).
+
+1. Seçim Site erişimini yalnızca Google tarafından kimliği doğrulanan kullanıcılarla kısıtlamak için, isteğin **Google**'da **kimlik doğrulaması olmadığında gerçekleştirilecek eylemi** ayarlayın. Bu işlevi ayarladığınızda, uygulamanız tüm isteklerin doğrulanmasını gerektirir. Ayrıca kimlik doğrulaması için tüm kimliği doğrulanmamış istekleri Google 'a yönlendirir.
+
+    > [!CAUTION]
+    > Erişimin bu şekilde kısıtlanması, uygulamanıza yönelik tüm çağrılar için geçerlidir. Bu, birçok tek sayfalı uygulamalarda olduğu gibi, genel kullanıma açık bir giriş sayfasına sahip olan uygulamalar için istenmeyebilir. Bu tür uygulamalar için **anonim Isteklere Izin ver (eylem yok)** , uygulamanın kimlik doğrulamanın kendisini el ile başlattığı şekilde tercih edilebilir. Daha fazla bilgi için bkz. [kimlik doğrulama akışı](overview-authentication-authorization.md#authentication-flow).
+
+1. **Kaydet**’i seçin.
 
 Artık uygulamanızda kimlik doğrulaması için Google 'ı kullanmaya hazırsınız.
 
-## <a name="related-content"> </a>İlgili içerik
+## <a name="related-content"> </a>Sonraki adımlar
+
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Anchors. -->
@@ -67,5 +72,5 @@ Artık uygulamanızda kimlik doğrulaması için Google 'ı kullanmaya hazırsı
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure portal]: https://portal.azure.com/
+[Azure portalı]: https://portal.azure.com/
 

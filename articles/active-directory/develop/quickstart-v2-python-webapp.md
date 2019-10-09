@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 587e7a82e2a9cde8ff6d08274928ab22aa969061
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 85a1de992be7b5bbdcec8fd415f60ae10190c11a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309619"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170037"
 ---
-# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı Başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
+# <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
@@ -37,66 +37,66 @@ Kılavuzu tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (
 Bu örneği çalıştırmak için şunlar gerekir:
 
 - [Python 2.7 +](https://www.python.org/downloads/release/python-2713) veya [Python 3 +](https://www.python.org/downloads/release/python-364/)
-- [Flask](http://flask.pocoo.org/), [Flask-oturum](https://pythonhosted.org/Flask-Session/), [istekler](https://2.python-requests.org/en/master/)
+- [Flask](http://flask.pocoo.org/), [Flask-oturum](https://pythonhosted.org/Flask-Session/), [istekler](https://requests.kennethreitz.org//en/master/)
 - [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) 
 - Azure Active Directory (Azure AD) kiracısı. Azure AD kiracısı alma hakkında daha fazla bilgi için bkz [. Azure AD kiracısı alma.](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
 
 > [!div renderon="docs"]
 >
-> ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydetme ve indirme
+> ## <a name="register-and-download-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı kaydedin ve indirin
 >
 > Hızlı başlangıç uygulamanızı başlatmak için iki seçeneğiniz vardır: Express (seçenek 1) ve el ile (seçenek 2)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. Seçenek: Uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1\. seçenek: uygulamanızı kaydedin ve otomatik olarak yapılandırın ve ardından kod örneğinizi indirin
 >
 > 1. [Azure portal uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
-> 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
+> 1. Uygulamanız için bir ad girin ve **Kaydet**' i seçin.
 > 1. Yeni uygulamanızı indirip otomatik olarak yapılandırmak için yönergeleri izleyin.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. Seçenek: Uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2\. seçenek: uygulamanızı ve kod örneğinizi kaydetme ve el ile yapılandırma
 >
-> #### <a name="step-1-register-your-application"></a>1\. adım: Uygulamanızı kaydedin
+> #### <a name="step-1-register-your-application"></a>1\. Adım: Uygulamanızı kaydetme
 >
-> Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
+> Uygulamanızı kaydetmek ve uygulamanın kayıt bilgilerini çözümünüze el ile eklemek için aşağıdaki adımları izleyin:
 >
-> 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+> 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+> 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
 > 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
 > 1. **Yeni kayıt**seçeneğini belirleyin.
-> 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
->      - **Ad** alanına uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `python-webapp`.
+> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
+>      - **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin, örneğin `python-webapp`.
 >      - **Desteklenen hesap türleri**altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
->      - **Yeniden yönlendirme URI 'si** bölümünde, açılan listede, **Web** platformunu seçin ve değerini olarak `http://localhost:5000/getAToken`ayarlayın.
->      - **Kaydol**’u seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
+>      - **Yeniden yönlendirme URI 'si** bölümünde, açılan listede, **Web** platformunu seçin ve ardından değeri `http://localhost:5000/getAToken` olarak ayarlayın.
+>      - **Kaydol**' u seçin. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
 > 1. Sol taraftaki menüde **sertifikalar & gizlilikler** ' ı seçin ve **istemci** gizli dizileri bölümünde **yeni istemci parolası** ' na tıklayın:
 >
 >      - Bir anahtar açıklaması (örnek uygulama gizli anahtarı) yazın.
 >      - **1 yılda**bir anahtar süresi seçin.
 >      - **Ekle**' ye tıkladığınızda, anahtar değeri görüntülenecektir.
->      - Anahtarın değerini kopyalayın. Buna daha sonra ihtiyacınız olacak.
+>      - Anahtarın değerini kopyalayın. Daha sonra ihtiyacınız olacak.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. adım: Uygulamanızı Azure portal yapılandırma
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>1\. Adım: uygulamanızı Azure portal yapılandırma
 >
 > Bu hızlı başlangıçta çalışması için kod örneği için şunları yapmanız gerekir:
 >
-> 1. Olarak `http://localhost:5000/getAToken`bir yanıt URL 'si ekleyin.
+> 1. @No__t-0 olarak bir yanıt URL 'SI ekleyin.
 > 1. Bir Istemci gizli dizisi oluşturun.
 >
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Bu değişikliği benim için yap]()
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![Zaten yapılandırılmış](media/quickstart-v2-aspnet-webapp/green-check.png) Uygulamanız bu özellikle yapılandırıldı
+> > ![Önceden yapılandırılmış @ no__t-1, uygulamanız Bu öznitelikle yapılandırılmış
 
-#### <a name="step-2-download-your-project"></a>2\. adım: Projenizi indirin
+#### <a name="step-2-download-your-project"></a>2\. Adım: projenizi Indirin
 
 [Kod örneğini indirin](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip)
 
-#### <a name="step-3-configure-the-application"></a>3\. adım: Uygulamayı yapılandırma
+#### <a name="step-3-configure-the-application"></a>3\. Adım: uygulamayı yapılandırma
 
-1. Zip dosyasını kök klasöre yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) açın
+1. ZIP dosyasını kök klasöre (örneğin, **C:\Azure-Samples** ) yakın bir yerel klasöre ayıklayın.
 1. Tümleşik bir geliştirme ortamı kullanıyorsanız, örneği en sevdiğiniz IDE (isteğe bağlı) içinde açın.
 1. Kök klasörde bulunan **app_config. Kopyala** dosyasını açın ve aşağıdaki kod parçacığı ile değiştirin:
 
@@ -106,12 +106,12 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 ```
 
 > [!div renderon="docs"]
-> Konumlar:
+> Olmadığı
 >
-> - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
-> - `Enter_the_Client_Secret_Here`-Sertifikalar 'da oluşturduğunuz **Istemci gizli anahtarı** , kaydettiğiniz uygulamanın **gizli dizileri &** .
+> - `Enter_the_Application_Id_here`-kaydettiğiniz uygulamanın uygulama kimliğidir.
+> - `Enter_the_Client_Secret_Here`- **sertifikalarında** oluşturduğunuz ve kaydettiğiniz uygulamanın gizli dizileri & **gizli anahtar olan istemci sırrı** .
 
-#### <a name="step-4-run-the-code-sample"></a>4\. Adım: Kod örneğini çalıştırma
+#### <a name="step-4-run-the-code-sample"></a>4\. Adım: kod örneğini çalıştırma
 
 1. Sunucu tarafı oturum yönetimi için MSAL Python kitaplığını, Flask çerçevesini, Flask oturumlarını ve PIP 'yi şu şekilde kullanarak istekleri yüklemeniz gerekir:
 
@@ -130,6 +130,6 @@ CLIENT_ID = "Enter_the_Application_Id_here"
 Kullanıcılara oturum açma ve sonra Web API 'Lerini çağıran Web Apps hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Senaryo: Kullanıcılar oturum açtığında Web Apps](scenario-web-app-sign-user-overview.md)
+> [Senaryo: kullanıcılar oturum açtığında Web Apps](scenario-web-app-sign-user-overview.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
