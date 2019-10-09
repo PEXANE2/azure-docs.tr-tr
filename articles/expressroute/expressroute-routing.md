@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 77c90cccbbfa5865878ae4dc47e5009697560ed3
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
-ms.translationtype: HT
+ms.openlocfilehash: a52f9fca172e42aa39a4507347185026451a8ff2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001322"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029028"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute yönlendirme gereksinimleri
 Microsoft bulut hizmetlerine ExpressRoute kullanarak bağlanmak için yönlendirmeyi ayarlamanız ve yönetmeniz gerekir. Bazı bağlantı sağlayıcıları yönlendirme ayarlama ve yönetimini yönetilen bir hizmet olarak sunar. Bu hizmetin sunulup sunulmadığını öğrenmek için bağlantı sağlayıcınıza başvurun. Bu hizmet sağlanmıyorsa aşağıdaki gereksinimlere uymalısınız:
@@ -215,14 +215,16 @@ Yukarıdakilerin yanı sıra Microsoft, ön ekleri ait oldukları hizmet göre e
 
 | **Hizmet** | **BGP topluluk değeri** |
 | --- | --- |
-| Exchange Online | 12076:5010 |
-| SharePoint Online | 12076:5020 |
-| Skype Kurumsal Çevrimiçi Sürüm | 12076:5030 |
+| Exchange Online * * | 12076:5010 |
+| SharePoint Online * * | 12076:5020 |
+| Skype Kurumsal Çevrimiçi | 12076:5030 |
+| CRM Online |12076:5040 |
 | Azure küresel hizmetler * | 12076:5050 |
-| Diğer Office 365 Çevrimiçi hizmetleri | 12076:5100 |
+| Azure Active Directory |12076:5060 |
+| Diğer Office 365 çevrimiçi hizmetleri * * | 12076:5100 |
 
 \* Azure küresel hizmetler şu anda yalnızca Azure DevOps içerir.
-
+\* * Microsoft 'un yetkilendirmesi gereken yetkilendirme, [Microsoft eşlemesi için yol filtrelerini yapılandırma](how-to-routefilter-portal.md) konusuna bakın 
 
 > [!NOTE]
 > Microsoft, Microsoft'a tanıtılan yollar üzerinde ayarladığınız hiçbir BGP topluluk değerini dikkate almaz.

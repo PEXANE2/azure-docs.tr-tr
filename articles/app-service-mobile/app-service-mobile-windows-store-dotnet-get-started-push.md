@@ -14,20 +14,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: 7455ad33660a0af004a3a3ad982e929fc4b3031e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e3e82c971fee7f7dd95e6f9ef72631e8e82ebe7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851114"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025254"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows uygulamanıza anında iletme bildirimleri ekleme
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 > [!NOTE]
-> Visual Studio App Center, mobil uygulama geliştirmeye yönelik yeni ve tümleşik hizmetler merkezi 'ne yatırım yapıyor. Geliştiriciler, sürekli tümleştirme ve teslim işlem hattı ayarlamak için **oluşturma**, **Test** etme ve **dağıtma** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **analiz** ve **Tanılama** hizmetlerini kullanarak uygulamasının durumunu ve kullanımını izleyebilir ve **Push** hizmetini kullanarak kullanıcılarla etkileşime geçebilir. Geliştiriciler, uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için kullanıcıların ve **veri** hizmetinin kimliklerini doğrulamak üzere **kimlik** doğrulamasından faydalanabilir. Bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-windows-store-dotnet-get-started-push) kullanıma alma.
->
+> Visual Studio App Center, mobil uygulama geliştirmeye kadar uçtan uca ve tümleşik hizmetler merkezi 'ni destekler. Geliştiriciler, sürekli tümleştirme ve teslim işlem hattı ayarlamak için **oluşturma**, **Test** etme ve **dağıtma** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **analiz** ve **Tanılama** hizmetlerini kullanarak uygulamasının durumunu ve kullanımını izleyebilir ve **Push** hizmetini kullanarak kullanıcılarla etkileşime geçebilir. Geliştiriciler, uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için kullanıcıların ve **veri** hizmetinin kimliklerini doğrulamak üzere **kimlik** doğrulamasından faydalanabilir.
+> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -43,7 +43,7 @@ Bu öğreticide, bir kayıt her eklendiğinde cihaza anında iletme bildirimi g�
 
 Uygulamanızı Microsoft Store göndermeniz ve sonra sunucu projenizi, push göndermek için [Windows bildirim hizmetleri (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) ile tümleştirilecek şekilde yapılandırmanız gerekir.
 
-1. Visual Studio Çözüm Gezgini, UWP uygulama projesine sağ tıklayın,**uygulamayı mağaza ile ilişkilendir.** .. ' e tıklayın. > 
+1. Visual Studio Çözüm Gezgini, UWP uygulama projesine sağ tıklayın, **depola** > **uygulamayı mağaza ile ilişkilendir...** seçeneğini tıklayın.
 
     ![Uygulamayı Microsoft Store ilişkilendir](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
@@ -65,7 +65,7 @@ Uygulamanızı Microsoft Store göndermeniz ve sonra sunucu projenizi, push gön
 
 ## <a id="update-service"></a>Sunucuyu anında iletme bildirimleri gönderecek şekilde Güncelleştir
 
-Aşağıdaki yordamı kullanarak, arka uç proje türü&mdash; [.net arka ucu](#dotnet) veya [Node. js arka ucu](#nodejs)ile eşleşir.
+Aşağıdaki yordamı kullanarak, arka uç proje türü olan @ no__t-0, [.net arka ucu](#dotnet) veya [Node. js arka ucu](#nodejs)ile eşleşen prosedürü kullanın.
 
 ### <a name="dotnet"></a>.NET arka uç projesi
 
@@ -171,7 +171,7 @@ Aşağıdaki yordamı kullanarak, arka uç proje türü&mdash; [.net arka ucu](#
 ## <a id="update-app"></a>Uygulamanıza anında iletme bildirimleri ekleyin
 Ardından, uygulamanız başlangıç sırasında anında iletme bildirimleri için kaydolmanız gerekir. Kimlik doğrulamasını zaten etkinleştirdiyseniz, Kullanıcı tarafından anında iletme bildirimlerine kaydolmayı denemeden önce oturum açtığından emin olun.
 
-1. **App.xaml.cs** proje dosyasını açın ve aşağıdaki `using` deyimleri ekleyin:
+1. **App.xaml.cs** proje dosyasını açın ve aşağıdaki `using` deyimlerini ekleyin:
 
     ```csharp
     using System.Threading.Tasks;

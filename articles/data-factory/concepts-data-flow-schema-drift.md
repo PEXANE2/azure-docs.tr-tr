@@ -7,16 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 68c0da5a7fe2b02c6115a8c1bbc24feb95e12adb
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5eff92352251febca1d4e7033618372dc929d987
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003733"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029413"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Eşleme veri akışı 'nda şema kayması
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Şema kayması, kaynaklarınızın genellikle meta verileri değiştirme durumdur. Alanlar, sütunlar ve türler anında eklenebilir, kaldırılabilir veya değiştirilebilir. Şema kayması için işlem yapılmadan veri akışınız, yukarı akış veri kaynağı değişikliklerine karşı savunmasız hale gelir. Gelen sütunlar ve alanlar bu kaynak adlarına bağlı olduğundan, tipik ETL desenleri başarısız olur.
 
@@ -34,7 +34,7 @@ Akış genelinde şema drını kabul etmek için veri akışınızda bir mimari 
 
 Kaynak dönüşümünde, şema kayması, veri kümesi şemanız tanımlı olmayan okuma sütunları olarak tanımlanmıştır. Şema drmasını etkinleştirmek için, kaynak dönüşümünüze **şema Drçıkmasına Izin ver** ' i işaretleyin.
 
-![Şema DRFT kaynağı](media/data-flow/schemadrift001.png "Şema DRFT kaynağı")
+![Şema DRFT kaynak](media/data-flow/schemadrift001.png "şeması DRFT kaynağı")
 
 Şema drında, tüm gelen alanlar yürütme sırasında kaynağınızdan alınır ve tüm akış havuza gönderilir. Varsayılan olarak, *düzeltebilecekler sütunları*olarak bilinen tüm yeni algılanan sütunlar dize veri türü olarak gelir. Veri akışınız için düzeltebilecekler sütunların veri türlerini otomatik olarak çıkarması gerekirse, kaynak ayarlarınızda **düzeltebilecekler sütun türlerini** kontrol edin.
 
@@ -42,17 +42,17 @@ Kaynak dönüşümünde, şema kayması, veri kümesi şemanız tanımlı olmaya
 
 Bir havuz dönüşümünde şema kayması, havuz veri şemasında tanımlananla ilgili ek sütunlar yazdığınızda oluşur. Şema kayması 'nı etkinleştirmek için havuz dönüşümünüzün **şema Drçıkmasına Izin ver** ' i işaretleyin.
 
-![Şema DRFT havuzu](media/data-flow/schemadrift002.png "Şema DRFT havuzu")
+![Şema DRFT havuz](media/data-flow/schemadrift002.png "şeması DRFT havuzu")
 
 Şema kayması etkinleştirilirse, eşleme sekmesindeki **otomatik eşleme** kaydırıcısının açık olduğundan emin olun. Bu kaydırıcı üzerinde, tüm gelen sütunlar hedefe yazılır. Aksi takdirde, düzeltebilecekler sütunları yazmak için kural tabanlı eşleme kullanmanız gerekir.
 
-![Havuz otomatik eşleme](media/data-flow/automap.png "Havuz otomatik eşleme")
+![Havuz otomatik eşleme](media/data-flow/automap.png "havuzu otomatik eşleme")
 
 ## <a name="transforming-drifted-columns"></a>Düzeltebilecekler sütunlarını dönüştürme
 
 Veri akışınız düzeltebilecekler sütunlara sahip olduğunda, bu dosyalara dönüşümlerinizi aşağıdaki yöntemlerle erişebilirsiniz:
 
-* Bir sütuna ada `byName` veya konum numarasına göre açıkça başvuruda bulunmak için veifadelerinikullanın.`byPosition`
+* Bir sütuna ada veya konum numarasına göre açıkça başvurmak için `byPosition` ve `byName` ifadelerini kullanın.
 * Türetilmiş bir sütuna veya toplama dönüşümüne, herhangi bir ad, akış, konum veya tür birleşimiyle eşleşecek bir sütun stili ekleyin
 * Bir SELECT veya Sink dönüşümünde kural tabanlı eşlemeyi, bir model aracılığıyla düzeltebilecekler sütunları sütunlara göre diğer adlarla eşleşecek şekilde ekleyin
 
@@ -62,11 +62,11 @@ Sütun desenlerinin nasıl uygulanacağı hakkında daha fazla bilgi için bkz. 
 
 Düzeltebilecekler sütunlara açıkça başvurmak için, veri önizleme hızlı eylemi aracılığıyla bu sütunlara yönelik eşlemeleri hızlıca oluşturabilirsiniz. [Hata ayıklama modu](concepts-data-flow-debug-mode.md) açıldıktan sonra, veri önizleme sekmesine gidin ve **Yenile** ' ye tıklayarak bir veri önizlemesi getirin. Data Factory, düzeltebilecekler sütunlarının mevcut olduğunu algılarsa, **Map düzeltebilecekler** ' e tıklayabilir ve şema görünümlerinde tüm düzeltebilecekler sütunlarına başvurmanıza olanak tanıyan bir türetilmiş sütun oluşturabilirsiniz.
 
-![Düzeltebilecekler eşle](media/data-flow/mapdrifted1.png "Düzeltebilecekler eşle")
+![Map düzeltebilecekler](media/data-flow/mapdrifted1.png "eşlemesi düzeltebilecekler")
 
-Oluşturulan türetilmiş sütun dönüşümünde, her düzeltebilecekler sütunu algılanan ad ve veri türü ile eşlenir. Yukarıdaki veri önizlemede, ' Movieıd ' sütunu bir tamsayı olarak algılanır. **Map düzeltebilecekler** tıklatıldıktan sonra, movieıd, türetilmiş sütunda olarak `toInteger(byName('movieId'))` tanımlanır ve aşağı akış dönüşümlerinde şema görünümlerine dahil edilir.
+Oluşturulan türetilmiş sütun dönüşümünde, her düzeltebilecekler sütunu algılanan ad ve veri türü ile eşlenir. Yukarıdaki veri önizlemede, ' Movieıd ' sütunu bir tamsayı olarak algılanır. **Map düzeltebilecekler** tıklatıldıktan sonra, Movieıd, türetilmiş sütunda `toInteger(byName('movieId'))` olarak tanımlanır ve aşağı akış dönüşümlerinde şema görünümlerine dahil edilir.
 
-![Düzeltebilecekler eşle](media/data-flow/mapdrifted2.png "Düzeltebilecekler eşle")
+![Map düzeltebilecekler](media/data-flow/mapdrifted2.png "eşlemesi düzeltebilecekler")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Veri akışı Ifade dilinde](data-flow-expression-functions.md), sütun desenleri ve "byName" ve "byposition" gibi şema kayması için ek tesisler bulacaksınız.

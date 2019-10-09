@@ -2,20 +2,20 @@
 title: "Öğretici: Azure HDInsight 'ta Apache Spark kümesinde verileri yükleme ve sorguları çalıştırma"
 description: Öğretici-Azure HDInsight 'ta verileri yükleme ve Spark kümelerinde etkileşimli sorgular çalıştırma hakkında bilgi edinin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.author: hrasheed
-ms.date: 05/16/2019
-ms.openlocfilehash: 109ed1a2ef22e498c2d19fd2e4f1848f289e9b55
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.date: 10/03/2019
+ms.openlocfilehash: 3d6b7cf67faa94d0947d16cc79d0d5b839de7acb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735267"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027797"
 ---
-# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Spark kümesinde verileri yükleme ve sorguları çalıştırma
+# <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Öğretici: Azure HDInsight içindeki bir Apache Spark kümesinde veri yükleme ve sorgular çalıştırma
 
 Bu öğreticide, bir CSV dosyasından bir veri çerçevesi oluşturmayı ve etkileşimli Spark SQL sorgularını Azure HDInsight 'ta bir [Apache Spark](https://spark.apache.org/) kümesinde çalıştırmayı öğreneceksiniz. Spark’ta dataframe, adlandırılmış sütunlar halinde düzenlenmiş, dağıtılmış bir veri koleksiyonudur. Dataframe kavramsal olarak, ilişkisel bir veritabanındaki tabloya veya R/Python’daki veri çerçevesine eşdeğerdir.
 
@@ -30,23 +30,23 @@ HDInsight üzerinde bir Apache Spark kümesi. Bkz. [Apache Spark kümesi oluştu
 
 ## <a name="create-a-jupyter-notebook"></a>Jupyter not defteri oluşturma
 
-Jupyter Notebook, çeşitli programlama dillerini destekleyen etkileşimli bir not defteri ortamıdır. Not defteri, verilerle etkileşim kurmanıza, kodu markdown metniyle birleştirmenize ve basit görselleştirmeler gerçekleştirmenize olanak sağlar. 
+Jupyter Notebook, çeşitli programlama dillerini destekleyen etkileşimli bir not defteri ortamıdır. Not defteri, verilerle etkileşim kurmanıza, kodu markdown metniyle birleştirmenize ve basit görselleştirmeler gerçekleştirmenize olanak sağlar.
 
-1. Spark kümenizin adıyla `https://SPARKCLUSTER.azurehdinsight.net/jupyter` değiştirerek `SPARKCLUSTER` URL 'yi düzenleyin. Ardından, düzenlenen URL 'YI bir Web tarayıcısına girin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
+1. @No__t-1 ' i Spark kümenizin adıyla değiştirerek @no__t URL 'YI düzenleyin. Ardından, düzenlenen URL 'YI bir Web tarayıcısına girin. İstendiğinde, küme için küme oturum açma kimlik bilgilerini girin.
 
-2. Jupyter Web sayfasından **Yeni** > **pyspark** ' ı seçerek bir not defteri oluşturun. 
+2. Jupyter Web sayfasından **yeni** > **pyspark** ' ı seçerek bir not defteri oluşturun.
 
    ![Jupyter Not Defteri’ni oluşturarak etkileşimli Spark SQL sorgusu çalıştırma](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Jupyter Not Defteri’ni oluşturarak etkileşimli Spark SQL sorgusu çalıştırma")
 
-   Yeni bir not defteri oluşturulur ve başlıksız (`Untitled.ipynb`) adıyla açılır.
+   Yeni bir not defteri oluşturulur ve adsız (`Untitled.ipynb`) adıyla açılır.
 
     > [!NOTE]  
     > PySpark çekirdeği kullanılarak not defteri oluşturmak için, ilk kod hücresini çalıştırdığınızda sizin için otomatik olarak `spark` oturumu oluşturulur. Belirtik şekilde bir oturum oluşturmanız gerekmez.
 
 ## <a name="create-a-dataframe-from-a-csv-file"></a>Bir csv dosyasından dataframe oluşturma
 
-Uygulamalar dataframe'leri doğrudan Azure Depolama veya Azure Data Lake Storage’daki dosya veya klasörlerden; Hive tablosundan; ya da Spark tarafından desteklenen Cosmos DB, Azure SQL DB ve DW gibi diğer veri kaynaklarından oluşturabilir. Aşağıdaki ekran görüntüsünde, bu öğreticide kullanılan HVAC.csv dosyasının bir anlık görüntü gösterilmektedir. Csv dosyası, tüm HDInsight Spark kümeleriyle birlikte gelir. Veriler, bazı binaların sıcaklık varyasyonlarını yakalar.
-    
+Uygulamalar, Azure depolama veya Azure Data Lake Storage gibi uzak depolamada bulunan dosyalardan veya klasörlerden doğrudan veri çerçeveleri oluşturabilir. Hive tablosundan; ya da Spark tarafından desteklenen Cosmos DB, Azure SQL DB, DW gibi diğer veri kaynaklarından. Aşağıdaki ekran görüntüsünde, bu öğreticide kullanılan HVAC.csv dosyasının bir anlık görüntü gösterilmektedir. Csv dosyası, tüm HDInsight Spark kümeleriyle birlikte gelir. Veriler, bazı binaların sıcaklık varyasyonlarını yakalar.
+
 ![Etkileşimli Spark SQL sorgusu için verilerin anlık görüntüsü](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Etkileşimli Spark SQL sorgusu için verilerin anlık görüntüsü")
 
 1. Aşağıdaki kodu Jupyter Not defterinin boş bir hücresine yapıştırın ve ardından kodu çalıştırmak için **SHIFT + enter** tuşlarına basın. Kod, bu senaryo için gerekli olan türleri içeri aktarır:
@@ -60,7 +60,7 @@ Uygulamalar dataframe'leri doğrudan Azure Depolama veya Azure Data Lake Storage
 
     ![Etkileşimli Spark SQL sorgusunun durumu](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Status of interactive Spark SQL query")
 
-2. Aşağıdaki kodu çalıştırarak bir dataframe ve geçici bir tablo (**hvac**) oluşturun. 
+2. Aşağıdaki kodu çalıştırarak bir dataframe ve geçici bir tablo (**hvac**) oluşturun.
 
     ```python
     # Create a dataframe and table from sample data
@@ -87,13 +87,13 @@ Tablo oluşturulduktan sonra veriler üzerinde etkileşimli bir sorgu çalışt�
 
     ![Etkileşimli Spark sorgu sonucunun alan grafiği](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Area graph of interactive Spark query result")
 
-3. Not defteri menü çubuğundan **Dosya** > **kaydetme ve denetim noktası**' na gidin.
+3. Not defteri menü çubuğundan **dosya** > **Kaydet ve denetim noktası**' na gidin.
 
-4. [Sonraki öğreticiyi](apache-spark-use-bi-tools.md) şimdi başlatıyorsanız, not defterini açık bırakın. Aksi takdirde, küme kaynaklarını serbest bırakmak için Not defterini kapatın: Not defteri menü çubuğundan **Dosya** >  **Kapat ve Durdur**' a gidin.
+4. [Sonraki öğreticiyi](apache-spark-use-bi-tools.md) şimdi başlatıyorsanız, not defterini açık bırakın. Aksi takdirde, küme kaynaklarını serbest bırakmak için Not defterini kapatın: Not defteri menü çubuğundan **dosya** >  **Kapat ve Durdur**' a gidin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-HDInsight ile, veri ve jupi Not defterleriniz Azure Storage 'da veya Azure Data Lake Storage depolanır, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz. Ayrıca, kullanılmıyorken dahi HDInsight kümesi için sizden ücret kesilir. Küme ücretleri depolama ücretlerinin birkaç katı olduğundan, kullanılmadığında kümelerin silinmesi mantıklı olandır. Sonraki öğretici üzerinde hemen çalışmayı planlıyorsanız, kümeyi tutmak isteyebilirsiniz.
+HDInsight ile, veri ve jupi Not defterleriniz Azure Storage 'da veya Azure Data Lake Storage depolanır, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz. Ayrıca, kullanımda olmadığı halde bir HDInsight kümesi için de ücretlendirilirsiniz. Kümenin ücretleri depolama ücretinden çok daha fazla olduğundan, kullanımda olmadıkları zaman kümeleri silmek ekonomik bir anlam sağlar. Sonraki öğretici üzerinde hemen çalışmayı planlıyorsanız, kümeyi tutmak isteyebilirsiniz.
 
 Azure portalında kümeyi açıp **Sil**’i seçin.
 

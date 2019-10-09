@@ -1,19 +1,19 @@
 ---
 title: HDInsight 'ta Azure Active Directory ile Kurumsal Güvenlik Paketi
 description: Azure Active Directory Domain Services kullanarak HDInsight Kurumsal Güvenlik Paketi kümesi ayarlamayı ve yapılandırmayı öğrenin.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 04/23/2019
-ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 10/02/2019
+ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918320"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030368"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight 'ta Azure Active Directory Domain Services olan Kurumsal Güvenlik Paketi konfigürasyonları
 
@@ -22,7 +22,7 @@ Kurumsal Güvenlik Paketi (ESP) kümeleri, Azure HDInsight kümelerinde çoklu K
 Bu makalede, Azure Active Directory Domain Services (Azure AD DS) kullanarak bir HDInsight kümesini ESP ile yapılandırmayı öğreneceksiniz.
 
 > [!NOTE]  
-> ESP, şu küme türleri için HDInsight 3,6 ve 4,0 ' de genel kullanıma sunulmuştur: Apache Spark, etkileşimli, Hadoop ve HBase. Apache Kafka küme türü için ESP yalnızca en iyi çaba desteğiyle önizlemededir. ESP GA tarihi (1 Ekim 2018) öncesinde oluşturulan ESP kümeleri desteklenmez.
+> ESP, şu küme türleri için HDInsight 3,6 ve 4,0 ' de genel kullanıma sunulmuştur: Apache Spark, Interactive, Hadoop ve HBase. Apache Kafka küme türü için ESP yalnızca en iyi çaba desteğiyle önizlemededir. ESP GA tarihi (1 Ekim 2018) öncesinde oluşturulan ESP kümeleri desteklenmez.
 
 ## <a name="enable-azure-ad-ds"></a>Azure AD-DS 'yi etkinleştirme
 
@@ -70,7 +70,7 @@ Yönetilen kimlik oluşturulduktan ve doğru rol verildikten sonra, AAD-DS Yöne
 ## <a name="networking-considerations"></a>Ağ konusunda dikkat edilmesi gerekenler
 
 > [!NOTE]  
-> Azure AD-DS Azure Resource Manager tabanlı vNET 'te dağıtılmalıdır. Klasik sanal ağlar Azure AD-DS için desteklenmez. Daha fazla ayrıntı için lütfen [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network) bölümüne bakın.
+> Azure AD-DS Azure Resource Manager tabanlı vNET 'te dağıtılmalıdır. Klasik sanal ağlar Azure AD-DS için desteklenmez. Daha fazla bilgi için bkz. [Azure Portal kullanarak Azure Active Directory Domain Services etkinleştirme](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network).
 
 Azure AD-DS 'yi etkinleştirdikten sonra, AD sanal makinelerinde (VM 'Ler) bir yerel etki alanı ad hizmeti (DNS) sunucusu çalışır. Azure AD-DS Sanal ağınızı (VNET) bu özel DNS sunucularını kullanacak şekilde yapılandırın. Doğru IP adreslerini bulmak için, **Yönet** kategorisi altında **Özellikler** ' i seçin ve **sanal ağ ÜZERINDE IP adresi**altında listelenen IP adreslerine bakın.
 
@@ -82,43 +82,39 @@ Azure AD-DS 'yi etkinleştirdikten sonra, AD sanal makinelerinde (VM 'Ler) bir y
 
 Hem Azure AD-DS örneği hem de HDInsight kümesini aynı Azure sanal ağına yerleştirmek daha kolay. Farklı sanal ağlar kullanmayı planlıyorsanız, etki alanı denetleyicisinin HDI VM 'Leri tarafından görülebilmesi için bu sanal ağları eşdüzey yapmanız gerekir. Daha fazla bilgi için bkz. [sanal ağ eşlemesi](../../virtual-network/virtual-network-peering-overview.md). 
 
-Sanal ağlar eşlendikten sonra, HDInsight VNET 'i özel bir DNS sunucusu kullanacak şekilde yapılandırın ve Azure AD-DS özel IP 'lerini DNS sunucusu adresleri olarak girin. Her iki sanal ağ da aynı DNS sunucularını kullandıklarında, özel etki alanı adınız doğru IP 'ye çözümlenir ve HDInsight 'tan erişilecektir. Örneğin, etki alanı adınız `contoso.com` bu adımdan sonra, `ping contoso.com` doğru Azure AD-DS IP 'ye çözümlenmelidir.
+Sanal ağlar eşlendikten sonra, HDInsight VNET 'i özel bir DNS sunucusu kullanacak şekilde yapılandırın ve Azure AD-DS özel IP 'lerini DNS sunucusu adresleri olarak girin. Her iki sanal ağ da aynı DNS sunucularını kullandıklarında, özel etki alanı adınız doğru IP 'ye çözümlenir ve HDInsight 'tan erişilecektir. Örneğin, etki alanı adınız `contoso.com` ise, bu adımdan sonra, `ping contoso.com` doğru Azure AD-DS IP 'si olarak çözümlenmelidir.
 
 ![Eşlenen VNET için özel DNS sunucuları yapılandırma](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-HDInsight alt ağınızda Ağ güvenlik grupları (NSG) kuralları kullanıyorsanız, hem gelen hem de giden trafik için [gerekli IP 'lere](../hdinsight-management-ip-addresses.md) izin vermeniz gerekir. 
+HDInsight alt ağınızda Ağ güvenlik grupları (NSG) kuralları kullanıyorsanız, hem gelen hem de giden trafik için [gerekli IP 'lere](../hdinsight-management-ip-addresses.md) izin vermeniz gerekir.
 
 Ağınızın doğru şekilde ayarlanmış olup olmadığını **test etmek Için** HDInsight VNET/subnet 'e bir Windows sanal makinesi ekleyin ve etki alanı adına (bir IP 'ye çözümlenmelidir) ve ardından Azure AD-DS etki alanına erişmek için **Ldp. exe** ' yi çalıştırın. Ardından, istemci ve sunucu arasında tüm gerekli RPC çağrılarının başarılı olduğunu **onaylamak için bu WINDOWS VM 'sini etki alanına katın** . Ayrıca, depolama hesabınıza veya kullanabileceğiniz herhangi bir dış VERITABANıNA (örneğin, dış Hive meta veri deposu veya Ranger DB) ağ erişimini onaylamak için **nslookup** ' ı da kullanabilirsiniz.
-AAD 'ler bir NSG tarafından güvenli hale getirildiyse, tüm [gerekli bağlantı NOKTALARıNıN](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) AAD-DS alt ağ ağ güvenlik grubu kurallarında da listelendiğinden emin olmanız gerekir. Bu Windows VM 'ye katılım başarılı olursa, sonraki adıma devam edebilir ve ESP kümeleri oluşturabilirsiniz.
+AAD 'ler bir NSG tarafından güvenli hale getirildiyse, tüm [gerekli bağlantı NOKTALARıNıN](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) AAD-DS alt ağ ağ güvenlik grubu kurallarında da listelendiğinden emin olmanız gerekir. Bu Windows VM 'ye katılan etki alanı başarılı olursa, sonraki adıma devam edebilir ve ESP kümeleri oluşturabilirsiniz.
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>ESP ile HDInsight kümesi oluşturma
 
-Önceki adımları doğru ayarladıktan sonra, bir sonraki adım, HDInsight kümesini ESP etkin olarak oluşturmaktır. Bir HDInsight kümesi oluşturduğunuzda, **özel** sekmede kurumsal güvenlik paketi etkinleştirebilirsiniz. Dağıtım için bir Azure Resource Manager şablonu kullanmayı tercih ediyorsanız, Portal deneyimini bir kez kullanın ve daha sonra yeniden kullanmak üzere son "Özet" sayfasına önceden doldurulmuş şablonu indirin.
+Önceki adımları doğru ayarladıktan sonra, bir sonraki adım, HDInsight kümesini ESP etkin olarak oluşturmaktır. Bir HDInsight kümesi oluşturduğunuzda, **güvenlik + ağ** sekmesinden kurumsal güvenlik paketi etkinleştirebilirsiniz. Dağıtım için bir Azure Resource Manager şablonu kullanmayı tercih ederseniz, Portal deneyimini bir kez daha kullanın ve daha sonra yeniden kullanmak üzere **gözden geçir + oluştur** sayfasında önceden doldurulmuş şablonu indirin.
 
 > [!NOTE]  
 > ESP küme adlarının ilk altı karakteri ortamınızda benzersiz olmalıdır. Örneğin, farklı VNET 'lerde birden çok ESP kümeniz varsa, küme adlarında ilk altı karakterin benzersiz olmasını sağlayan bir adlandırma Convension seçmeniz gerekir.
 
-![Azure HDInsight Enterprise güvenlik paketi etki alanı doğrulaması](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
+![Azure HDInsight Enterprise güvenlik paketi etki alanı doğrulaması](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
 
-ESP 'yi etkinleştirdikten sonra, Azure AD-DS ile ilgili ortak yapılandırma hataları otomatik olarak algılanır ve onaylanır. Bu hataları düzelttikten sonra, bir sonraki adımla devam edebilirsiniz: 
+ESP 'yi etkinleştirdikten sonra, Azure AD-DS ile ilgili ortak yapılandırma hataları otomatik olarak algılanır ve onaylanır. Bu hataları düzelttikten sonra, bir sonraki adımla devam edebilirsiniz:
 
-![Azure HDInsight Enterprise güvenlik paketi etki alanı doğrulaması başarısız oldu](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate-failed.png)
+![Azure HDInsight Enterprise güvenlik paketi etki alanı doğrulaması başarısız oldu](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
 
 ESP ile bir HDInsight kümesi oluşturduğunuzda, aşağıdaki parametreleri sağlamanız gerekir:
 
-- **Küme Yönetici kullanıcısı**: Eşitlenmiş Azure AD-DS 'nizden kümeniz için bir yönetici seçin. Bu etki alanı hesabının Azure AD-DS 'de zaten eşitlenmiş ve kullanılabilir olması gerekir.
+- **Küme Yöneticisi kullanıcısı**: EŞITLENMIŞ Azure AD-DS 'nizden kümeniz için bir yönetici seçin. Bu etki alanı hesabının Azure AD-DS 'de zaten eşitlenmiş ve kullanılabilir olması gerekir.
 
-- **Küme erişim grupları**: Kullanıcıları eşitlemek istediğiniz ve kümeye erişimi olan güvenlik grupları Azure AD-DS 'de kullanılabilir olmalıdır. Örneğin, HiveUsers grubu. Daha fazla bilgi için bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+- **Küme erişim grupları**: kullanıcılarını eşitlemek istediğiniz ve kümeye erişebilen güvenlik GRUPLARı Azure AD-DS ' de kullanılabilir olmalıdır. Örneğin, HiveUsers grubu. Daha fazla bilgi için bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-- **LDAPS URL 'Sİ**: `ldaps://contoso.com:636` bunun bir örneğidir.
-
-Aşağıdaki ekran görüntüsünde Azure portal başarılı bir yapılandırma gösterilmektedir:
-
-![Azure HDInsight ESP Active Directory Domain Services yapılandırması](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
+- **LDAPS URL 'si**: bir örnek `ldaps://contoso.com:636` ' dir.
 
 Oluşturduğunuz yönetilen kimlik, yeni bir küme oluştururken Kullanıcı tarafından atanan yönetilen kimlik açılır listesinden seçilebilir.
 
-![Azure HDInsight ESP Active Directory Domain Services yönetilen kimliği](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
+![Azure HDInsight ESP Active Directory Domain Services yönetilen kimliği](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

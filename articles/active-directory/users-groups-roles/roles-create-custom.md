@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f008cdf80e15e2737fea19f72ec6703932cf301f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382813"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026406"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory özel rol oluşturma ve atama
 
@@ -30,8 +30,8 @@ Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluştu
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>Uygulama kayıtlarını yönetmek için erişim izni vermek üzere yeni bir özel rol oluşturun
 
-1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1.  **Azure Active Directory** > **Roller ve yöneticiler** > **Yeni özel rol**' i seçin.
+1. Azure AD kuruluşunda, ayrıcalıklı rol yöneticisi veya genel yönetici izinlerine sahip [Azure AD Yönetim merkezi](https://aad.portal.azure.com)  ' de oturum açın.
+1. **Azure Active Directory** > **rol ve yönetici** > **Yeni özel rol**seçin.
 
    ![Roller ve yöneticiler sayfasından roller oluşturma veya düzenleme](./media/roles-create-custom/new-custom-role.png)
 
@@ -40,11 +40,11 @@ Bu makalede, Azure Active Directory (Azure AD) içinde yeni özel roller oluştu
    ![Temel bilgiler sekmesinde özel rol için bir ad ve açıklama girin](./media/roles-create-custom/basics-tab.png)
 
 1. **İzinler** sekmesinde, uygulama kayıtlarının temel özelliklerini ve kimlik bilgisi özelliklerini yönetmek için gerekli izinleri seçin. Her iznin ayrıntılı bir açıklaması için bkz. [Azure Active Directory 'de uygulama kaydı alt türleri ve izinleri](./roles-custom-available-permissions.md).
-   1. İlk olarak, arama çubuğuna "kimlik bilgileri" girin ve `microsoft.directory/applications/credentials/update` izni seçin.
+   1. İlk olarak, arama çubuğuna "kimlik bilgileri" girin ve `microsoft.directory/applications/credentials/update` iznini seçin.
 
       ![Izinler sekmesinde özel bir rol için izinleri seçin](./media/roles-create-custom/permissions-tab.png)
 
-   1. Sonra, arama çubuğuna "temel" yazın, `microsoft.directory/applications/basic/update` izni seçin ve ardından **İleri**' ye tıklayın.
+   1. Sonra, arama çubuğuna "temel" yazın, `microsoft.directory/applications/basic/update` iznini seçin ve ardından **İleri**' ye tıklayın.
 1. **Gözden geçir + oluştur** sekmesinde izinleri gözden geçirin ve **Oluştur**' u seçin.
 
 Özel rolünüzün atanacak kullanılabilir roller listesinde görünür.
@@ -116,13 +116,13 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Özel bir rol tanımı oluşturmak için HTTP isteği.
 
-    POST
+    Yayınla
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
     ```
 
-    Body
+    Gövde
 
     ``` HTTP
    {
@@ -145,13 +145,13 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
 
     Özel bir rol tanımı oluşturmak için HTTP isteği.
 
-    POST
+    Yayınla
 
     ``` HTTP
     https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
     ```
 
-    Body
+    Gövde
 
     ``` HTTP
    {

@@ -1,77 +1,77 @@
 ---
-title: Azure Data Factory veri akışı birleştirme dönüştürme
-description: Azure Data Factory veri akışı birleştirme dönüştürme
+title: Azure Data Factory veri akışı JOIN dönüştürmesi
+description: Azure Data Factory veri akışı JOIN dönüştürmesi
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348580"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029330"
 ---
-# <a name="mapping-data-flow-join-transformation"></a>Veri akışı birleştirme dönüştürme eşlemesi
+# <a name="mapping-data-flow-join-transformation"></a>Eşleme veri akışı JOIN dönüştürmesi
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Birleştirme, veri akışı iki tablodan verileri birleştirmek için kullanın. Sol ilişki ve araç kutusundan bir birleşim dönüştürme Ekle dönüşümü tıklayın. Birleştirme dönüştürme içinde başka bir veri akışı sağ ilişkisi olması, veri akışından seçersiniz.
 
-![Dönüştürme katılın](media/data-flow/join.png "katılın")
+Veri akışınızda iki tablodaki verileri birleştirmek için JOIN ' i kullanın. Sol ilişki olacak dönüşüme tıklayın ve araç kutusundan bir JOIN dönüştürmesi ekleyin. JOIN dönüştürmesinin içinde, doğru ilişki olması için veri akışınızdan başka bir veri akışı seçersiniz.
 
-## <a name="join-types"></a>Türleri katılın
+![Dönüştürme](media/data-flow/join.png "katılımı") Birleştir
 
-Birleştirme türü seçme birleştirme dönüşümü için gereklidir.
+## <a name="join-types"></a>JOIN türleri
 
-### <a name="inner-join"></a>İç birleştirme
+JOIN dönüşümü için JOIN türü seçilmesi gerekiyor.
 
-İç birleştirme, her iki tablodan sütun koşullara uyan satırları üzerinden geçer.
+### <a name="inner-join"></a>İç birleşim
+
+İç birleşim, her iki tablodan yalnızca sütun koşullarıyla eşleşen satırları geçer.
 
 ### <a name="left-outer"></a>Sol dış
 
-Birleştirme koşulu karşılamıyor sol akış tablosundan tüm satırları geçtiğini ve iç birleşim tarafından döndürülen tüm satırları yanı sıra diğer tablodaki çıkış sütunu NULL olarak ayarlanır.
+Sol akıştaki tüm satırlar JOIN koşulunu karşılamıyor ve diğer tablodaki çıkış sütunları, iç birleşim tarafından döndürülen tüm satırlara ek olarak NULL olarak ayarlanır.
 
 ### <a name="right-outer"></a>Sağ dış
 
-Birleştirme koşulu karşılamıyor doğru akış tablosundan tüm satırları geçtiğini ve başka bir tabloya karşılık gelen çıkış sütunları INNER JOIN tarafından döndürülen tüm satırları ek olarak NULL olarak ayarlanır.
+Doğru akıştaki tüm satırlar JOIN koşulunu karşılamıyor ve diğer tabloya karşılık gelen çıkış sütunları, iç birleşim tarafından döndürülen tüm satırlara ek olarak NULL olarak ayarlanır.
 
 ### <a name="full-outer"></a>Tam dış
 
-Tam dış birleşim tüm sütunları oluşturur ve iki taraflı olan sütunlar için NULL değerler içeren satırları diğer tablosunda yok.
+Tam dış, diğer tabloda bulunmayan sütunlar için NULL değerlerle her iki taraftan da tüm sütunları ve satırları üretir.
 
-### <a name="cross-join"></a>Çapraz birleştirme
+### <a name="cross-join"></a>Çapraz ekleme
 
-Çapraz çarpımını iki akışları ile bir ifade belirtin. Özel birleştirme koşulları oluşturmak için kullanabilirsiniz.
+İki akışının bir ifadesiyle karşılıklı çarpımını belirtin. Özel bir JOIN koşulları oluşturmak için bunu kullanabilirsiniz.
 
-## <a name="specify-join-conditions"></a>Birleştirme koşulları belirtin
+## <a name="specify-join-conditions"></a>JOIN koşullarını belirtin
 
-Left JOIN sol tarafında, birleştirme bağlı veri akışı'ndan bir durumdur. RIGHT JOIN, birleştirme ya da başka bir akışa doğrudan bir bağlayıcı ya da başka bir akışa bir başvuru olacaktır alt bağlı ikinci veri akışını bir durumdur.
+Sol JOIN koşulu, Birleşimizin soluna bağlı veri akışından oluşur. Doğru JOIN koşulu, diğer bir akışa doğrudan bağlayıcı ya da başka bir akışa başvuru olacak şekilde, en alta, Birleşimizin bağlı olan ikinci veri akışıdır.
 
-En az 1 (1..n) birleştirme koşulları girmeniz gerekir. Bunlar, ya da doğrudan açılan menü veya ifadeleri seçili başvurulan alanlar olabilir.
+En az 1 (1.. n) JOIN koşullarını girmeniz gerekir. Bunlar doğrudan başvurulan, açılan menüden veya ifadelerden seçili olan alanlar olabilir.
 
-## <a name="join-performance-optimizations"></a>Performans iyileştirmeleri katılın
+## <a name="join-performance-optimizations"></a>Performans Iyileştirmelerine katılarak
 
-SSIS gibi Araçları'nda birleştirme birleşimin aksine, ADF veri akışı birleştirme zorunlu birleştirme birleştirme işlemi değil. Bu nedenle, join anahtarlar ilk olarak sıralanmış gerekmez. Birleştirme işlemi, Databricks Spark en uygun birleştirme işleminde temel kullanarak Spark meydana gelir: Yayın / Map tarafı birleştirme:
+SSIS gibi araçlarla birleştirme birleştirmenin aksine, ADF veri akışında birleştirme zorunlu bir birleştirme birleştirme işlemi değildir. Bu nedenle, önce JOIN anahtarlarının sıralanması gerekmez. JOIN işlemi Spark: Broadcast----------------JOIN içindeki en iyi JOIN
 
-![Dönüştürme katılın en iyi duruma getirme](media/data-flow/joinoptimize.png "iyileştirme katılın")
+![Birleşime katılmayı en iyi]duruma(media/data-flow/joinoptimize.png "getirme")
 
-Veri kümeniz Databricks çalışan düğümü belleğe sığıyorsa biz birleştirme performansınızı en iyi duruma getirebilirsiniz. Verilerinizi daha iyi çalışan her belleğe sığması veri kümelerini oluşturmak için birleştirme işlemi bölümleme de belirtebilirsiniz.
+Veri kümeniz çalışan düğümü belleğine uyabiliyorsanız, JOIN performansınızı iyileştirebiliriz. Ayrıca, çalışan başına belleğe daha iyi uyum sağlayan veri kümeleri oluşturmak için birleştirme işleminde verilerinizin bölümlenmesini belirtebilirsiniz.
 
-## <a name="self-join"></a>Kendi kendine birleşim
+## <a name="self-join"></a>Kendi kendine Birleştir
 
-Diğer ad var olan bir akış seçin dönüşümü kullanarak ADF veri akışı kendi kendine birleşme koşulları elde edebilirsiniz. İlk olarak, bir akıştan "Yeni dalı" oluşturmak, sonra bir Select diğer tüm özgün akışa ekleyin.
+Var olan bir akışa alternatif olarak seçme dönüşümü ' nü kullanarak ADF veri akışında kendi kendine JOIN koşullarına ulaşabilirsiniz. İlk olarak, bir akıştan "yeni dal" oluşturun, sonra tüm özgün akışın diğer adına bir seçim ekleyin.
 
-![Kendi kendine birleşme](media/data-flow/selfjoin.png "kendi kendine birleşim")
+Kendi kendine ![katılmayı](media/data-flow/selfjoin.png "kendine ekleme")
 
-Yukarıdaki diyagramda, Select dönüştürme en üstünde alır. Tüm bu yaptığını diğer ad kullanımı "OrigSourceBatting" için özgün akışıdır. Vurgulanan birleştirme Dönüştür altındaki bu seçim diğer akış sağ birleştirme, aynı anahtarı sol ve sağ tarafında iç birleşim başvurmak bize verme kullandığımızı görebilirsiniz.
+Yukarıdaki diyagramda, select Transform en üstte. Tüm BT, "OrigSourceBatting" için özgün akışın diğer adını alıyor. Aşağıdaki Vurgulanan birleşim dönüşümünden, sağ taraftaki birleşim olarak bu Select diğer ad akışını kullandığımızdan, Iç birleştirmenin sağ & sağ tarafında aynı anahtara başvurmamızı sağlayabilirsiniz.
 
 ## <a name="composite-and-custom-keys"></a>Bileşik ve özel anahtarlar
 
-İç birleşim dönüşümü hareket halindeyken özel ve karma anahtarları oluşturabilirsiniz. Her ilişki satır yanındaki artı işaretini (+) ile ek birleştirme sütunların satır ekleyin. Veya yeni bir anahtar değeri ifade oluşturucu üzerinde halindeyken birleştirme değeri için işlem.
+JOIN dönüşümünün içinde anında özel ve bileşik anahtarlar oluşturabilirsiniz. Her ilişki satırının yanındaki artı işareti (+) ile ek JOIN sütunları için satırlar ekleyin. Ya da bir anında ekleme değeri için Ifade tasarımcısında yeni bir anahtar değeri hesapla.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri katıldıktan sonra böylece [yeni sütunlar oluşturmanıza](data-flow-derived-column.md) ve [verilerinizi hedef veri deposuna havuz](data-flow-sink.md).
+Verileri katıldıktan sonra [yeni sütunlar oluşturabilir](data-flow-derived-column.md) ve [verilerinizi bir hedef veri deposuna havuza](data-flow-sink.md)alabilirsiniz.

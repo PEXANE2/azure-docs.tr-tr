@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305934"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026967"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Öğretici: Bandı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Öğretici: bandı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, Azure Active Directory (Azure AD) ile bir bandı tümleştirmeyi öğreneceksiniz. Bandı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -82,11 +82,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
+    **Yanıt URL 'si** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://app.harness.io/gateway/api/users/saml-login?accountId=<harness_account_id>`
 
 1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://app.harness.io/`
+    **Oturum açma URL 'si** metin kutusuna bir URL yazın: `https://app.harness.io/`
 
     > [!NOTE]
     > Yanıt URL 'SI değeri gerçek değil. Gerçek yanıt URL 'sini, Öğreticinin ilerleyen kısımlarında **açıklanan, Get** Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -99,19 +99,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, B. Simon 'u, imzalanacak erişim vererek Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
@@ -119,7 +119,7 @@ Bu bölümde, B. Simon 'u, imzalanacak erişim vererek Azure çoklu oturum açma
 1. Uygulamalar listesinde, **bandı**' ni seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -141,11 +141,11 @@ Bu bölümde, B. Simon 'u, imzalanacak erişim vererek Azure çoklu oturum açma
 
 3. Bandı el ile ayarlamak isterseniz, yeni bir Web tarayıcısı penceresi açın ve bir yönetici olarak, bir yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişimi yönetimi** > **kimlik doğrulama ayarları**' na tıklayın.
+4. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişim yönetimi** > **kimlik doğrulama ayarları**' na tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure01.png)
 
-5. **SSO sağlayıcıları** bölümünde, **+ SSO sağlayıcıları** >Ekle **SAML**' ye tıklayın.
+5. **SSO sağlayıcıları** bölümünde, ve 2**SAML**@no__t **SSO sağlayıcıları Ekle**' ye tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure03.png)
 
@@ -169,11 +169,11 @@ Azure AD kullanıcılarının, ana oturum açmasını sağlamak için, bu kullan
 
 1. Yönetici olarak oturum açın.
 
-1. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişimi yönetimi** > **kullanıcıları**' na tıklayın.
+1. Sayfanın sağ üst kısmında, **sürekli güvenlik** > **erişim yönetimi** > **Kullanıcı**' ya tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure04.png)
 
-1. Sayfanın sağ tarafında, **+ Kullanıcı Ekle**' ye tıklayın.
+1. Sayfanın sağ tarafında, **+ Kullanıcı Ekle**' ye tıklayın.
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure05.png)
 
@@ -181,15 +181,15 @@ Azure AD kullanıcılarının, ana oturum açmasını sağlamak için, bu kullan
 
     ![Bandı yapılandırma](./media/harness-tutorial/configure06.png)
 
-    a. **E-posta adresi (es)** metin kutusuna kullanıcının `B.simon@contoso.com`e-postasını girin.
+    a. **E-posta adresi (es)** metin kutusuna, `B.simon@contoso.com` gibi kullanıcının e-postasını girin.
 
     b. **Kullanıcı gruplarınızı**seçin.
 
-    c. **Gönder**'e tıklayın.
+    c. **Gönder**' e tıklayın.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde bir ara Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız bir şekilde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

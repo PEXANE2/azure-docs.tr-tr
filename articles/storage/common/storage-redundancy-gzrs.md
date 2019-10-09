@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4523d7bf8f6c0ffc0ebfbc57d20a19baec08c91b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 99def93a20a365dd0ff5fc27e9c52909ee30bd83
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720351"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028126"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -53,7 +53,7 @@ Bir depolama hesabı oluşturduğunuzda, bu hesaptaki verilerin nasıl çoğalt�
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Yüksek kullanılabilirlik için RA-GZRS kullanma
 
-Depolama hesabınız için RA-GZRS ' ı etkinleştirdiğinizde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta, hesap adına *ikincil* sonekini ekler. Örneğin, blob hizmeti için birincil uç noktanız @ no__t-0 ise, ikincil uç noktanız @ no__t-1 ' dir. Depolama hesabınızın erişim anahtarları hem birincil hem de ikincil uç noktalar için aynıdır.
+Depolama hesabınız için RA-GZRS ' ı etkinleştirdiğinizde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, blob hizmeti için birincil uç noktanız @ no__t-0 ise, ikincil uç noktanız @ no__t-1 ' dir. Depolama hesabınızın erişim anahtarları hem birincil hem de ikincil uç noktalar için aynıdır.
 
 Bölgesel bir kesinti durumunda RA-GZRS avantajlarından yararlanmak için, bu senaryoyu işlemek üzere uygulamanızı önceden tasarlamanız gerekir. Uygulamanız birincil uç noktadan okuyup yazmalı, ancak birincil bölgenin kullanılamaz hale geldiği olayda ikincil uç noktayı kullanmaya geçiş yapar. RA-GZRS ile yüksek kullanılabilirlik için tasarlamaya yönelik yönergeler için bkz. [ra-GZRS veya RA-GRS kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
@@ -125,7 +125,7 @@ Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulunduru
 - Hesabınızın veri içermesi gerekir.
 - Yalnızca aynı bölgedeki verileri geçirebilirsiniz.
 - Yalnızca standart depolama hesabı türleri dinamik geçişi destekler. Premium Depolama hesaplarının el ile geçirilmesi gerekir.
-- GZRS veya RA-GZRS hesabından LRS, GRS veya RA-GRS hesabına dinamik geçiş desteklenmez. Verileri yeni veya mevcut bir depolama hesabına el ile taşımanız gerekir.
+- GZRS veya RA-GZRS hesabından LRS, GRS veya RA-GRS hesabına dinamik geçiş desteklenmez. Verileri yeni veya mevcut depolama hesabına el ile taşımanız gerekir.
 - RA-GRS 'den RA-GZRS ' d e dinamik geçiş isteğinde bulabilirsiniz. Ancak, RA-GRS ' den GZRS ' a geçiş desteklenmez. Bu durumda, RA-GZRS için dinamik geçiş istemeniz ve depolama hesabını el ile GZRS kullanacak şekilde dönüştürmeniz gerekir.
 - Yönetilen diskler yalnızca LRS 'yi destekler ve GZRS veya RA-GZRS ' a geçirilemez. Kullanılabilirlik kümeleriyle tümleştirme için bkz. [Azure yönetilen disklere giriş](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
 - Standart SSD yönetilen disklerin anlık görüntülerini ve görüntülerini Standart HDD depolamada saklayabilir ve [LRS, ZRS, GZRS ve Ra-GZRS seçenekleri arasından seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz.
@@ -133,18 +133,18 @@ Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulunduru
 
 Dinamik geçiş istemek için [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)kullanın. Portaldan GZRS veya RA-GZRS ' e geçirilecek depolama hesabını seçin ve şu yönergeleri izleyin:
 
-1.  **Yeni destek isteği ' ni**seçin.
-2. Hesap bilgilerinizi temel alan temel **bilgiler**  ' i doldurun.  **Service** bölümünde, **depolama hesabı yönetimi** ' i seçin ve geçirilecek hesabı belirtin.
-3.  **İleri**'yi seçin.
-4.  **Sorun** bölümünde aşağıdaki değerleri belirtin:
+1. **Yeni destek isteği ' ni**seçin.
+2. Hesap bilgilerinizi temel alan **temel bilgileri** doldurun. **Hizmet** bölümünde, **depolama hesabı yönetimi** ' ni seçin ve geçirilecek hesabı belirtin.
+3. **İleri**’yi seçin.
+4. **Sorun** bölümünün aşağıdaki değerlerini belirtin:
     - **Önem derecesi**: varsayılan değeri olduğu gibi bırakın.
-    - **Sorun türü**: **veri geçişini**seçin.
-    - **Kategori**: **bir bölge içinde (ra-) GZRS geçir**' i seçin.
-    - **Başlık**: Örneğin, **(ra-) GZRS hesabı geçişi**gibi açıklayıcı bir başlık yazın.
-    - **Ayrıntılar**: **Ayrıntılar**  ' ye ek ayrıntılar yazın, örneğin, "\_ @ no__t-4 bölgesindeki [LRS, GRS] öğesinden GZRS 'e geçiş yapmak istiyorum." ya da "\_ @ no__t-1 bölgesindeki, [LRS, RA-GRS] öğesinden RA-GZRS 'a geçiş yapmak istiyorum."
-5.  **İleri**'yi seçin.
-6. İletişim bilgilerinin  dikey penceresindeki **iletişim bilgilerinde**doğru olduğunu doğrulayın.
-7.  **Oluştur**' u seçin.
+    - **Sorun türü**: **veri geçişini**seçin.
+    - **Kategori**: **bir bölge içinde (ra-) GZRS geçir**' i seçin.
+    - **Başlık**: Örneğin, **(ra-) GZRS hesabı geçişi**gibi açıklayıcı bir başlık yazın.
+    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, "\_ @ no__t-3 bölgesindeki [LRS, GRS] öğesinden GZRS 'e geçiş yapmak istiyorum." ya da "\_ @ no__t-1 bölgesindeki, [LRS, RA-GRS] öğesinden RA-GZRS 'a geçiş yapmak istiyorum."
+5. **İleri**’yi seçin.
+6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
+7. **Oluştur**'u seçin.
 
 Destek temsilcisi, yardım sağlamak için sizinle iletişim kuracaktır.
 

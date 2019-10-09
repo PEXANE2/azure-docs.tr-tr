@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
-ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 643539fb569cdefba8e04d1ac08e73055624d3ae
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "67446298"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025046"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Xamarin Forms uygulamanıza kimlik doğrulaması ekleme
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 > [!NOTE]
-> Visual Studio App Center, mobil uygulama geliştirmeye yönelik yeni ve tümleşik hizmetler merkezi 'ne yatırım yapıyor. Geliştiriciler, sürekli tümleştirme ve teslim işlem hattı ayarlamak için **oluşturma**, **Test** etme ve **dağıtma** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **analiz** ve **Tanılama** hizmetlerini kullanarak uygulamasının durumunu ve kullanımını izleyebilir ve **Push** hizmetini kullanarak kullanıcılarla etkileşime geçebilir. Geliştiriciler, uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için kullanıcıların ve **veri** hizmetinin kimliklerini doğrulamak üzere **kimlik** doğrulamasından faydalanabilir. Bugün [App Center](https://appcenter.ms/?utm_source=zumo&utm_campaign=app-service-mobile-xamarin-forms-get-started-users) kullanıma alma.
->
+> Visual Studio App Center, mobil uygulama geliştirmeye kadar uçtan uca ve tümleşik hizmetler merkezi 'ni destekler. Geliştiriciler, sürekli tümleştirme ve teslim işlem hattı ayarlamak için **oluşturma**, **Test** etme ve **dağıtma** hizmetlerini kullanabilir. Uygulama dağıtıldıktan sonra, geliştiriciler **analiz** ve **Tanılama** hizmetlerini kullanarak uygulamasının durumunu ve kullanımını izleyebilir ve **Push** hizmetini kullanarak kullanıcılarla etkileşime geçebilir. Geliştiriciler, uygulama verilerini bulutta kalıcı hale getirmek ve eşitlemek için kullanıcıların ve **veri** hizmetinin kimliklerini doğrulamak üzere **kimlik** doğrulamasından faydalanabilir.
+> Mobil uygulamanızda bulut hizmetlerini tümleştirmek istiyorsanız bugün App Center [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) kaydolun.
 
 ## <a name="overview"></a>Genel Bakış
 Bu konu, istemci uygulamanızdan bir App Service mobil uygulama kullanıcılarının kimliğini nasıl doğrulayacağınızı gösterir. Bu öğreticide, App Service tarafından desteklenen bir kimlik sağlayıcısı kullanarak Xamarin Forms hızlı başlangıç projesine kimlik doğrulaması eklersiniz. Mobil uygulamanız tarafından başarıyla kimlik doğrulamasından ve yetkilendirdikten sonra, Kullanıcı KIMLIĞI değeri görüntülenir ve kısıtlı tablo verilerine erişebilirsiniz.
@@ -41,17 +41,17 @@ Bu öğreticide en iyi sonuç için, önce [Xamarin Forms uygulaması oluşturma
 
 ## <a name="redirecturl"></a>Uygulamanızı Izin verilen dış yönlendirme URL 'Lerine ekleyin
 
-Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımlamanızı gerektirir. Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza yeniden yönlendirilmesini sağlar. Bu öğreticide, üzerinde URL şeması uygulamamız kullanırız. Ancak, seçtiğiniz herhangi bir URL şemasını kullanabilirsiniz. Bu, mobil uygulamanız için benzersiz olmalıdır. Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
+Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımlamanızı gerektirir. Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza yeniden yönlendirilmesini sağlar. Bu öğreticide, üzerinde URL şeması _uygulamamız_ kullanırız. Ancak, seçtiğiniz herhangi bir URL şemasını kullanabilirsiniz. Bu, mobil uygulamanız için benzersiz olmalıdır. Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
 
 1. [Azure portal][8]App Service seçin.
 
 2. **Kimlik doğrulama/yetkilendirme** menü seçeneğine tıklayın.
 
-3. **Izin verilen dış yeniden yönlendirme URL 'lerinde**, `url_scheme_of_your_app://easyauth.callback`girin.  Bu dizedeki **url_scheme_of_your_app** , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
+3. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`url_scheme_of_your_app://easyauth.callback` girin.  Bu dizedeki **url_scheme_of_your_app** , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
 
-4.           **Tamam**'ı tıklatın.
+4. **Tamam**’a tıklayın.
 
-5. **Kaydet**’e tıklayın.
+5. **Kaydet** düğmesine tıklayın.
 
 ## <a name="restrict-permissions-to-authenticated-users"></a>Kimliği doğrulanmış kullanıcılar için izinleri kısıtla
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
@@ -63,10 +63,10 @@ Xamarin Forms projesiyle kimlik doğrulaması yapmak için, uygulama için taş�
 
 Uygulamanız tarafından desteklenen her platform için **IAuthenticate** arabirimini uygulayın.
 
-1. Visual Studio veya Xamarin Studio içinde, taşınabilir sınıf kitaplığı projesi olan ad içinde **Taşınabilir** bir App.cs açın ve aşağıdaki `using` ifadeyi ekleyin:
+1. Visual Studio veya Xamarin Studio içinde, taşınabilir sınıf kitaplığı projesi olan ad içinde **Taşınabilir** bir App.cs açın ve aşağıdaki `using` ifadesini ekleyin:
 
         using System.Threading.Tasks;
-2. App.cs ' de, `IAuthenticate` `App` sınıf tanımından hemen önce aşağıdaki arabirim tanımını ekleyin.
+2. App.cs ' de, aşağıdaki `IAuthenticate` arabirimi tanımını `App` sınıf tanımından hemen önce ekleyin.
 
         public interface IAuthenticate
         {
@@ -86,7 +86,7 @@ Uygulamanız tarafından desteklenen her platform için **IAuthenticate** arabir
             Clicked="loginButton_Clicked"/>
 
     Bu düğme, mobil uygulama arka ucunuz ile sunucu tarafından yönetilen kimlik doğrulamasını tetikler.
-5. Taşınabilir sınıf kitaplığı projesinden ToDoList.xaml.cs ' i açın, ardından aşağıdaki alanı `TodoList` sınıfına ekleyin:
+5. Taşınabilir sınıf kitaplığı projesinden TodoList.xaml.cs öğesini açın, sonra `TodoList` sınıfına aşağıdaki alanı ekleyin:
 
         // Track whether the user has authenticated.
         bool authenticated = false;
@@ -127,7 +127,7 @@ Bu bölümde, Android uygulama projesinde **IAuthenticate** arabiriminin nasıl 
 
 1. Visual Studio veya Xamarin Studio ' de, **DROID** projesine sağ tıklayın ve ardından **Başlangıç projesi olarak ayarlayın**.
 2. F5 tuşuna basarak projeyi hata ayıklayıcıda başlatın ve uygulama başladıktan sonra 401 (yetkisiz) durum koduna sahip işlenmemiş bir özel durumun yapıldığını doğrulayın. 401 kodu üretilir çünkü arka uçtaki erişim yalnızca yetkili kullanıcılarla kısıtlıdır.
-3. Android projesinde MainActivity.cs ' i açın ve aşağıdaki `using` deyimleri ekleyin:
+3. Android projesinde MainActivity.cs ' i açın ve aşağıdaki `using` deyimlerini ekleyin:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -171,7 +171,7 @@ Bu bölümde, Android uygulama projesinde **IAuthenticate** arabiriminin nasıl 
 
     Facebook dışında bir kimlik sağlayıcısı kullanıyorsanız, [Mobileserviceauthenticationprovider][7]için farklı bir değer seçin.
 
-6. Aşağıdaki XML `<application>` öğesini öğesinin içine ekleyerek **AndroidManifest. xml** dosyasını güncelleştirin:
+6. @No__t-1 öğesinin içine aşağıdaki XML ekleyerek **AndroidManifest. xml** dosyasını güncelleştirin:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -183,8 +183,8 @@ Bu bölümde, Android uygulama projesinde **IAuthenticate** arabiriminin nasıl 
       </intent-filter>
     </activity>
     ```
-    URL `{url_scheme_of_your_app}` şemanızın yerine koyun.
-7. Aşağıdaki kodu, çağrısından `LoadApplication()`önce **MainActivity** sınıfının **OnCreate** yöntemine ekleyin:
+    @No__t-0 ' yı URL şemanızın yerine koyun.
+7. @No__t-2 ' a çağrıdan önce **MainActivity** sınıfının **OnCreate** yöntemine aşağıdaki kodu ekleyin:
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
@@ -194,7 +194,7 @@ Bu bölümde, Android uygulama projesinde **IAuthenticate** arabiriminin nasıl 
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-**Uygulama şu şekilde kilitlendi`Java.Lang.NoSuchMethodError: No static method startActivity`**
+**Uygulama `Java.Lang.NoSuchMethodError: No static method startActivity` ile kilitlendi**
 
 Bazı durumlarda, destek paketlerindeki çakışmalar yalnızca Visual Studio 'da bir uyarı olarak gösterilir, ancak uygulama çalışma zamanında bu özel durumla kilitleniyor. Bu durumda, projenizde başvurulan tüm destek paketlerinin aynı sürüme sahip olduğundan emin olmanız gerekir. [Azure Mobile Apps NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/), Android platformu için `Xamarin.Android.Support.CustomTabs` bağımlılığına sahiptir, yani projeniz daha yeni destek paketleri kullanıyorsa, çakışmaları önlemek için doğrudan gerekli sürüme sahip bu paketi yüklemeniz gerekir.
 
@@ -203,7 +203,7 @@ Bu bölüm, iOS uygulama projesinde **IAuthenticate** arabiriminin nasıl uygula
 
 1. Visual Studio veya Xamarin Studio içinde **iOS** projesine sağ tıklayın ve ardından **Başlangıç projesi olarak ayarlayın**.
 2. F5 tuşuna basarak projeyi hata ayıklayıcıda başlatın ve uygulama başladıktan sonra 401 (yetkisiz) durum koduna sahip işlenmemiş bir özel durumun yapıldığını doğrulayın. Arka uçta erişim yalnızca yetkili kullanıcılarla kısıtlandığından 401 yanıtı üretilir.
-3. İOS projesinde AppDelegate.cs ' i açın ve aşağıdaki `using` deyimleri ekleyin:
+3. İOS projesinde AppDelegate.cs ' i açın ve aşağıdaki `using` deyimlerini ekleyin:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
@@ -256,13 +256,13 @@ Bu bölüm, iOS uygulama projesinde **IAuthenticate** arabiriminin nasıl uygula
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
    
-7. Çağrısından`LoadApplication()`önce aşağıdaki kod satırını **sonlandırhedbaşlatılıyor** yöntemine ekleyin:
+7. @No__t-1 ' e çağrıdan önce aşağıdaki kod satırını **Sonlandırhedbaşlatılıyor** yöntemine ekleyin:
 
         App.Init(this);
 
     Bu kod, uygulama yüklenmeden önce Doğrulayıcı 'nın başlatılmasını sağlar.
 
-8. Info. plist açın ve bir **URL türü**ekleyin. **Tanımlayıcıyı** seçtiğiniz bir ada, **URL şemalarına** uygulamanızın URL şemasına ve None olarak ayarlayın.
+8. Info. plist açın ve bir **URL türü**ekleyin. **Tanımlayıcıyı** seçtiğiniz bir ada, **URL şemalarına** uygulamanızın URL şemasına ve **None olarak ayarlayın** .
 
 9. Uygulamayı yeniden oluşturun, çalıştırın ve seçtiğiniz kimlik doğrulama sağlayıcısıyla oturum açın ve kimliği doğrulanmış bir kullanıcı olarak verilere erişebildiğinizi doğrulayın.
 
@@ -271,14 +271,14 @@ Bu bölüm, Windows 10 uygulama projelerinde **IAuthenticate** arabiriminin nas�
 
 1. Visual Studio 'da **UWP** projesine sağ tıklayın ve ardından **Başlangıç projesi olarak ayarlayın**.
 2. F5 tuşuna basarak projeyi hata ayıklayıcıda başlatın ve uygulama başladıktan sonra 401 (yetkisiz) durum koduna sahip işlenmemiş bir özel durumun yapıldığını doğrulayın. 401 yanıtı, arka uçtaki erişim yalnızca yetkili kullanıcılarla kısıtlandığından oluşur.
-3. Windows uygulama projesi için MainPage.xaml.cs açın ve aşağıdaki `using` deyimleri ekleyin:
+3. Windows uygulama projesi için MainPage.xaml.cs açın ve aşağıdaki `using` deyimlerini ekleyin:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
         using Windows.UI.Popups;
         using <your_Portable_Class_Library_namespace>;
 
-    Taşınabilir `<your_Portable_Class_Library_namespace>` sınıf kitaplığınızın ad alanıyla değiştirin.
+    @No__t-0 ' yı taşınabilir sınıf kitaplığınızın ad alanıyla değiştirin.
 4. **MainPage** sınıfını aşağıdaki gibi **IAuthenticate** arabirimini uygulayacak şekilde güncelleştirin:
 
         public sealed partial class MainPage : IAuthenticate
@@ -320,12 +320,12 @@ Bu bölüm, Windows 10 uygulama projelerinde **IAuthenticate** arabiriminin nas�
 
     Facebook dışında bir kimlik sağlayıcısı kullanıyorsanız, [Mobileserviceauthenticationprovider][7]için farklı bir değer seçin.
 
-1. Çağrısından`LoadApplication()`önce **MainPage** sınıfının oluşturucusuna aşağıdaki kod satırını ekleyin:
+1. @No__t-1 ' e çağrıdan önce **MainPage** sınıfının oluşturucusuna aşağıdaki kod satırını ekleyin:
 
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);
 
-    Taşınabilir `<your_Portable_Class_Library_namespace>` sınıf kitaplığınızın ad alanıyla değiştirin.
+    @No__t-0 ' yı taşınabilir sınıf kitaplığınızın ad alanıyla değiştirin.
 
 3. **UWP**kullanıyorsanız, aşağıdaki **OnActivated** yöntemi geçersiz kılmayı **uygulama** sınıfına ekleyin:
 
@@ -340,7 +340,7 @@ Bu bölüm, Windows 10 uygulama projelerinde **IAuthenticate** arabiriminin nas�
             }
        }
 
-3. Package. appxmanifest ' i açın ve bir **protokol** bildirimi ekleyin. **Görünen adı** , seçtiğiniz bir ad ve uygulamanızın URL şeması olarak ayarlayın.
+3. Package. appxmanifest ' i açın ve bir **protokol** bildirimi ekleyin. **Görünen adı** , seçtiğiniz bir ad ve uygulamanızın URL **şeması olarak ayarlayın** .
 
 4. Uygulamayı yeniden oluşturun, çalıştırın ve seçtiğiniz kimlik doğrulama sağlayıcısıyla oturum açın ve kimliği doğrulanmış bir kullanıcı olarak verilere erişebildiğinizi doğrulayın.
 

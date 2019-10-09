@@ -1,18 +1,18 @@
 ---
 title: Azure Marketi için Dynamics 365 for Customer Engagement teklifi
-description: Bulut İş Ortağı Portalı kullanarak AppSource Marketi için bir Dynamics 365 for Customer Engagement teklifinin nasıl oluşturulduğunu açıklar.
+description: Bu CPP, bılgısayar makalesine bağlı olan kullanım dışı bırakıldı makalesi; "Bulut İş Ortağı Portalı kullanarak AppSource Marketi için Dynamics 365 for Customer Engagement teklifini nasıl oluşturacağınız açıklanmaktadır."
 services: Dynamics 365 for Customer Engagement, AppSource Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/17/2018
-ms.author: pabutler
-ms.openlocfilehash: 74d1c101139464f9ae5b22438e30a1fde30f18f2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: a8904d53b421529ab08a40e809d31e58abfe9cc3
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173009"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034306"
 ---
 # <a name="dynamics-365-for-customer-engagement-offer"></a>Dynamics 365 for Customer Engagement teklifi
 

@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 61004ed75a1935ada21b5c620a909fb5289aebb8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f7558a5836d8f087e719346fb38bbf24ece2c8fb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051007"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026777"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Bing Arama ve Azure Logic Apps haberleri bulun
 
@@ -24,7 +24,7 @@ Bu makalede, Bing Arama Bağlayıcısı ile bir mantıksal uygulama içinden Bin
 
 Örneğin, arama ölçütlerine göre haber öğelerini bulabilir ve Twitter 'da bu öğeleri Twitter akışınızda farklı bir şekilde ilan edebilirsiniz.
 
-Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). Logic Apps 'e yeni başladıysanız [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç ' ı inceleyin: İlk mantıksal uygulamanızı](../logic-apps/quickstart-create-first-logic-app-workflow.md)oluşturun.
+Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin.
 Bağlayıcıya özgü teknik bilgiler için [Bing arama bağlayıcı başvurusuna](https://docs.microsoft.com/connectors/bingsearch/)bakın.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -39,13 +39,13 @@ Bağlayıcıya özgü teknik bilgiler için [Bing arama bağlayıcı başvurusun
 
 ## <a name="add-a-bing-search-trigger"></a>Bing Arama tetikleyicisi ekleme
 
-Azure Logic Apps, her mantıksal uygulama, belirli bir olay gerçekleştiğinde [](../logic-apps/logic-apps-overview.md#logic-app-concepts)veya belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her tetiklendiğinde Logic Apps altyapısı bir mantıksal uygulama örneği oluşturur ve uygulamanızın iş akışını çalıştırmaya başlar.
+Azure Logic Apps, her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya belirli bir koşul karşılandığında tetiklenen bir [tetikleyiciyle](../logic-apps/logic-apps-overview.md#logic-app-concepts)başlamalıdır. Tetikleyici her tetiklendiğinde Logic Apps altyapısı bir mantıksal uygulama örneği oluşturur ve uygulamanızın iş akışını çalıştırmaya başlar.
 
 1. Azure portal veya Visual Studio 'da mantıksal uygulama Tasarımcısı ' nı açan boş bir mantıksal uygulama oluşturun. Bu örnek Azure portal kullanır.
 
 2. Arama kutusuna filtreniz olarak "Bing arama" yazın. Tetikleyiciler listesinden istediğiniz tetikleyiciyi seçin.
 
-   Bu örnek, bu tetikleyiciyi kullanır: **Bing Arama-yeni haber makalesinde**
+   Bu örnek, bu tetikleyiciyi kullanır: **Bing arama-yeni haber makalesinde**
 
    ![Bing Arama tetikleyiciyi bul](./media/connectors-create-api-bing-search/add-trigger.png)
 
@@ -54,16 +54,16 @@ Ya da bağlantınız zaten varsa, tetikleyici için gerekli bilgileri sağlayın
 
    Bu örnekte, Bing Arama eşleşen haber makalelerini döndürme ölçütlerini belirtin.
 
-   | Özellik | Gerekli | Value | Açıklama |
+   | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | Search Query | Evet | <*arama sözcükleri*> | Kullanmak istediğiniz arama anahtar sözcüklerini girin. |
-   | Market | Evet | <*locale*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
-   | Safe Search | Evet | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
-   | Count | Hayır | <*results-count*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
-   | Offset | Hayır | <*skip-value*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
+   | Arama sorgusu | Yes | <*arama-sözcük*> | Kullanmak istediğiniz arama anahtar sözcüklerini girin. |
+   | Market | Yes | <*yerel ayar*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
+   | Güvenli Arama | Yes | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
+   | Sayı | Hayır | <*sonuç-sayı*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
+   | Uzaklık | Hayır | <*Skip-değer*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
    |||||
 
-   Örneğin:
+   Örnek:
 
    ![Tetikleyiciyi ayarla](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
@@ -81,13 +81,13 @@ Azure Logic Apps bir [eylem](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 1. Azure portal veya Visual Studio 'da mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın. Bu örnek Azure portal kullanır.
 
-2. Tetikleyici veya eylem altında **yeni adım** > **Eylem Ekle**' yi seçin.
+2. Tetikleyici veya eylem altında **yeni adım** > **Eylem Ekle**' yi seçin.
 
    Bu örnek, bu tetikleyiciyi kullanır:
 
    **Bing Arama-yeni haber makalesinde**
 
-   ![Eylem ekle](./media/connectors-create-api-bing-search/add-action.png)
+   ![Eylem Ekle](./media/connectors-create-api-bing-search/add-action.png)
 
    Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. 
    Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
@@ -105,19 +105,19 @@ Eylemler listesinden istediğiniz eylemi seçin.
 
    Bu örnek için, tetikleyicinin sonuçlarının bir alt kümesini döndürme ölçütlerini belirtin.
 
-   | Özellik | Gerekli | Value | Açıklama |
+   | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | Search Query | Evet | <*Arama ifadesi*> | Tetikleyici sonuçlarını sorgulamak için bir ifade girin. Dinamik içerik listesindeki alanlardan seçim yapabilir veya ifade Oluşturucusu ile bir ifade oluşturabilirsiniz. |
-   | Market | Evet | <*locale*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
-   | Safe Search | Evet | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
-   | Count | Hayır | <*results-count*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
-   | Offset | Hayır | <*skip-value*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
+   | Arama sorgusu | Yes | <*Arama ifadesi*> | Tetikleyici sonuçlarını sorgulamak için bir ifade girin. Dinamik içerik listesindeki alanlardan seçim yapabilir veya ifade Oluşturucusu ile bir ifade oluşturabilirsiniz. |
+   | Market | Yes | <*yerel ayar*> | Arama yerel ayarı. Varsayılan "en-US" değeridir, ancak başka bir değer belirleyebilirsiniz. |
+   | Güvenli Arama | Yes | <*arama düzeyi*> | Yetişkinlere yönelik içeriği dışlamak için filtre düzeyi. Varsayılan değer "Orta" dır, ancak başka bir düzey seçersiniz. |
+   | Sayı | Hayır | <*sonuç-sayı*> | Belirtilen sayıda sonuç döndürün. Varsayılan değer 20 ' dir, ancak başka bir değer belirtebilirsiniz. Döndürülen sonuçların gerçek sayısı belirtilen sayıdan daha az olabilir. |
+   | Uzaklık | Hayır | <*Skip-değer*> | Sonuçları döndürmeden önce atlanacak sonuç sayısı |
    |||||
 
    Örneğin, kategori adı "Tech" sözcüğünü içeren bu sonuçların olmasını istediğinizi varsayalım.
 
    1. Dinamik içerik listesi görünecek şekilde **arama sorgusu** kutusuna tıklayın. 
-   Bu listeden ifade ' u seçerek ifade oluşturucusunun görünmesini sağlayın. 
+   Bu **listeden ifade ' u seçerek ifade** oluşturucusunun görünmesini sağlayın. 
 
       ![Bing Arama tetikleyicisi](./media/connectors-create-api-bing-search/bing-search-action.png)
 
@@ -128,7 +128,7 @@ Eylemler listesinden istediğiniz eylemi seçin.
       ![Bir işlev seçin](./media/connectors-create-api-bing-search/expression-select-function.png)
 
    3. Alan listesinden, bir parametreye dönüştüren **Kategori**' yi seçin. 
-   İlk parametreden sonra bir virgül ekleyin ve virgülden sonra şu kelimeyi ekleyin:`'tech'` 
+   İlk parametreden sonra bir virgül ekleyin ve virgülden sonra şu kelimeyi ekleyin: `'tech'` 
 
       ![Bir alan seçin](./media/connectors-create-api-bing-search/expression-select-field.png)
 
@@ -152,16 +152,16 @@ Eylemler listesinden istediğiniz eylemi seçin.
 
 1. Bağlantı bilgileri istendiğinde, şu ayrıntıları sağlayın:
 
-   | Özellik | Gerekli | Value | Açıklama |
+   | Özellik | Gereklidir | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | Bağlantı Adı | Evet | <*bağlantı adı*> | Bağlantınız için oluşturulacak ad |
-   | API Sürümü | Evet | <*API sürümü*> | Varsayılan olarak, Bing Arama API sürümü geçerli sürüme ayarlanır. Daha önceki bir sürümü gerektiği gibi seçebilirsiniz. |
-   | API Anahtarı | Evet | <*API anahtarı*> | Daha önce aldığınız Bing Arama API anahtarı. Anahtarınız yoksa [API anahtarınızı hemen](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)alın. |  
+   | Bağlantı Adı | Yes | <*bağlantı-adı*> | Bağlantınız için oluşturulacak ad |
+   | API sürümü | Yes | <*API-version*> | Varsayılan olarak, Bing Arama API sürümü geçerli sürüme ayarlanır. Daha önceki bir sürümü gerektiği gibi seçebilirsiniz. |
+   | API anahtarı | Yes | <*API-key*> | Daha önce aldığınız Bing Arama API anahtarı. Anahtarınız yoksa [API anahtarınızı hemen](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)alın. |  
    |||||  
 
-   Örneğin:
+   Örnek:
 
-   ![Bağlantı oluştur](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
+   ![Bağlantı oluşturma](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
 2. İşiniz bittiğinde **Oluştur**’u seçin.
 

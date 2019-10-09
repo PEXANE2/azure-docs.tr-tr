@@ -16,14 +16,14 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211961"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030646"
 ---
-# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Öğretici: Notification Hubs kullanan Swift iOS uygulamalarına anında iletme bildirimleri gönderin REST API
+# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Öğretici: Notification Hubs kullanan Swift iOS uygulamalarına anında Iletme bildirimleri gönderin REST API
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
@@ -75,7 +75,7 @@ Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksın
 
 1. Yeni proje için seçenekleri ayarlarken:
 
-   1. Apple Developer Portal 'da **paket tanımlayıcısını** ayarladığınızda kullandığınız **ürün adını** (pushdemo) ve **kuruluş tanımlayıcısını** (`com.<organization>`) belirtin.
+   1. Apple Developer Portal 'da **paket tanımlayıcısını** ayarladığınızda kullandığınız **ürün adını** (Pushdemo) ve **kuruluş tanımlayıcısını** (`com.<organization>`) belirtin.
 
    1. **Uygulama kimliğinin** ayarlandığı **ekibi** seçin.
 
@@ -89,7 +89,7 @@ Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksın
 
 1. **Devsettings. plist** öğesini, sağladığınız Bildirim Hub 'ından kendi değerlerinizi kullanarak aşağıdaki yapılandırma girdilerini içerecek şekilde güncelleştirin:
 
-   | Anahtar                            | Type                     | Value                     |
+   | Anahtar                            | Tür                     | Değer                     |
    |--------------------------------| -------------------------| --------------------------|
    | notificationHubKey             | Dize                   | \<hubKey >                  |
    | notificationHubKeyName         | Dize                   | \<hubKeyName >              |
@@ -100,7 +100,7 @@ Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksın
 
    ![Notification Hubs Essentials Özeti](./media/notification-hubs-ios-push-notifications-swift-apps-get-started/hub-essentials.png)
 
-   Ayrıca, **erişim ilkelerine** giderek ve Ilgili **erişim Ilkesini**seçerek **Notificationhubkeyname** ve **notificationhubkey** değerlerini de bulabilirsiniz. `DefaultFullSharedAccessSignature` Bundan sonra, `SharedAccessKeyName=` için `notificationHubKeyName` önekli değerden **birincil bağlantı dizesinden** `notificationHubKey`ve `SharedAccessKey=` için önekli değerden kopyalayın.
+   Ayrıca, **erişim ilkelerine** gidip `DefaultFullSharedAccessSignature` gibi Ilgili **erişim Ilkesini**seçerek **Notificationhubkeyname** ve **notificationhubkey** değerlerini de bulabilirsiniz. Bundan sonra, **birincil bağlantı dizesinden** değeri `notificationHubKeyName` için `SharedAccessKeyName=` ve `notificationHubKey` için `SharedAccessKey=` olan değer ile önek olarak kopyalayın.
 
    Bağlantı dizesi aşağıdaki biçimde olmalıdır:
 
@@ -108,15 +108,15 @@ Bu bölümde, Bildirim Hub 'ına bağlanacak iOS uygulamasını oluşturacaksın
    Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<notificationHubKeyName>;SharedAccessKey=<notificationHubKey>
    ```
 
-   Basit kalmasını sağlamak için, bildirim `DefaultFullSharedAccessSignature` göndermek üzere belirteci kullanabilmeniz için öğesini belirtin. Uygulamada, `DefaultListenSharedAccessSignature` yalnızca bildirim almak istediğiniz durumlar için daha iyi bir seçenek olacaktır.
+   Basit kalmasını sağlamak için `DefaultFullSharedAccessSignature` belirtin. bu nedenle, bildirim göndermek için belirteci kullanabilirsiniz. Uygulamada `DefaultListenSharedAccessSignature` yalnızca bildirim almak istediğiniz durumlar için daha iyi bir seçimdir.
 
 1. **Proje Gezgini**altında **proje adını** seçin ve ardından **genel** sekmesini seçin.
 
-1. **Kimlik** bulun ve ardından **paket tanımlayıcı** değerini, bir önceki adımdan `com.<organization>.PushDemo` **uygulama kimliği** için kullanılan değer olan, eşleşecek şekilde ayarlayın.
+1. **Kimliği** bulun ve ardından **paket tanımlayıcı** değerini, ÖNCEKI bir adımdan **uygulama kimliği** için kullanılan değer olan `com.<organization>.PushDemo` ile eşleşecek şekilde ayarlayın.
 
 1. **İmzalamayı**bulun ve ardından **Apple geliştirici hesabınız**için uygun **ekibi** seçin. **Takım** değeri, sertifikalarınızı ve profillerinizi oluşturduğunuz ile eşleşmelidir.
 
-1. Xcode, **paket tanımlayıcısına**göre uygun **sağlama profili** değerini otomatik olarak göstermelidir. Yeni **sağlama profili** değerini görmüyorsanız, **Xcode** > **tercihleri** > **Hesap** > görünümü ' ni seçerek **imzalama kimliği** için profilleri yenilemeyi deneyin **Ayrıntılar**. **Imza kimliği**' ni seçin ve sonra profilleri indirmek için sağ alt köşedeki **Yenile** düğmesini seçin.
+1. Xcode, **paket tanımlayıcısına**göre uygun **sağlama profili** değerini otomatik olarak göstermelidir. Yeni **sağlama profili** değerini görmüyorsanız, **Xcode** > **tercihleri** > **Hesap** > **Görünüm ayrıntılarını**seçerek **imzalama kimliği** için profilleri yenilemeyi deneyin. **Imza kimliği**' ni seçin ve sonra profilleri indirmek için sağ alt köşedeki **Yenile** düğmesini seçin.
 
 1. **Yetenekler** sekmesini seçin ve **anında iletme bildirimlerinin** etkinleştirildiğinden emin olun.
 
@@ -285,8 +285,8 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 İşlemin kendisi aynı altı ana adımdan oluşur:  
 
 1. Süre sonu, [UNIX dönem saat](https://en.wikipedia.org/wiki/Unix_time) biçiminde hesaplanıyor, yani gece yarısından beri geçen saniye sayısı, 1 Ocak 1970.
-1. Erişmeye çalıştığınız kaynağı temsil eden **Resourceurl 'yi** biçimlendirmek, bu nedenle yüzde kodlamalı ve küçük harfle yazılmalıdır. **Resourceurl** 'nin formu `'https://<namespace>.servicebus.windows.net/<hubName>'`vardır.
-1. Olarak`'<UrlEncodedResourceUrl>\n<ExpiryEpoch>'`biçimlendirilen **stringtosign**' ı hazırlama.
+1. Erişmeye çalıştığınız kaynağı temsil eden **Resourceurl 'yi** biçimlendirmek, bu nedenle yüzde kodlamalı ve küçük harfle yazılmalıdır. **Resourceurl** 'nin `'https://<namespace>.servicebus.windows.net/<hubName>'` biçimi vardır.
+1. @No__t-1 olarak biçimlendirilen **Stringtosign**' ı hazırlama.
 1. **Stringtosign** değerinin HMAC-SHA256 karmasını kullanarak, **Imzaları** hesaplama ve Base64 kodlaması. Karma değeri, ilgili **Yetkilendirme kuralı**Için **bağlantı dizesinin** **anahtar** bölümüyle birlikte kullanılır.
 1. Base64 kodlu **imza** , yüzde kodlamalı şekilde biçimlendiriliyor.
 1. **Urlencodedsignature**, **expiryepoch**, **KeyName**ve **urlencodedresourceurl** değerlerini kullanarak belirteci beklenen biçimde oluşturma.
@@ -297,7 +297,7 @@ Bu Swift örneği amaçları doğrultusunda, imzanın karmasından yararlanmak i
 
 Köprü oluşturma üst bilgisini eklemek ve yapılandırmak için:
 
-1. Xcode 'da **Dosya** > **Yeni** > dosyaüst bilgidosyası ' nı seçin.>  Üst bilgi dosyasını **Bridgingheader. h**olarak adlandırın.
+1. Xcode 'da **dosya** > **Yeni** > **Dosya** > **üstbilgi dosyası**' nı seçin. Üst bilgi dosyasını **Bridgingheader. h**olarak adlandırın.
 
 1. **Commonhmac. h**dosyasını içeri aktarmak için dosyayı düzenleyin:
 
@@ -313,11 +313,11 @@ Köprü oluşturma üst bilgisini eklemek ve yapılandırmak için:
 
 1. Hedef **Yapı ayarlarını** , köprü oluşturma başlığına başvuracak şekilde güncelleştirin:
 
-   1.  **Oluşturma ayarları** sekmesini açın ve **Swift derleyicisi** bölümüne gidin.
+   1. **Oluşturma ayarları** sekmesini açın ve **Swift derleyicisi** bölümüne gidin.
 
-   1.  **Install hedefi-C uyumluluk üstbilgisi** seçeneğinin **Yes**olarak ayarlandığından emin olun.
+   1. **Install hedefi-C uyumluluk üstbilgisi** seçeneğinin **Yes**olarak ayarlandığından emin olun.
 
-   1. Dosya yolunu `'<ProjectName>/BridgingHeader.h'` , **Amaç-C köprüleme üst bilgisi** seçeneğine girin. Bu, köprü oluşturma üst bilgisinin dosya yoludur.
+   1. @No__t-0 dosya yolunu, **hedef-C köprüleme üst bilgisi** seçeneğine girin. Bu, köprü oluşturma üst bilgisinin dosya yoludur.
 
    Bu seçenekleri bulamıyorsanız, **temel** veya **özelleştirilmiş**olmak yerine **Tüm** Görünüm ' ün seçili olduğundan emin olun.
 
@@ -410,10 +410,10 @@ Uygulama tarafından oluşturulan **Yüklemekimliği** ve **belirteç** değerle
 
 1. İstek üstbilgilerini şu şekilde yapılandırın:
 
-   | Anahtar           | Value            |
+   | Anahtar           | Değer            |
    | ------------- | ---------------- |
-   | Content-Type  | uygulama/json |
-   | Authorization | \<sasToken >       |
+   | İçerik türü  | uygulama/json |
+   | Yetkilendirme | \<sasToken >       |
    | x-MS-sürümü  | 2015-01          |
 
 1. **Kaydet** düğmesinin altındaki sağ üst köşede görüntülenen **kod** düğmesini seçin. İstek aşağıdaki örneğe benzer şekilde görünmelidir:
@@ -428,7 +428,7 @@ Uygulama tarafından oluşturulan **Yüklemekimliği** ve **belirteç** değerle
     Postman-Token: <postmanToken>
     ```
 
-1. Seçin **Gönder** düğmesi.
+1. **Gönder** düğmesini seçin.
 
 Bu noktada belirtilen **Yüklemekimliği** için bir kayıt yok. Doğrulamanın "401 Yetkisiz" yanıtı yerine "404 bulunamadı" yanıtı ile sonuçlanmalıdır. Bu sonuç SAS belirtecinin kabul edildiğini onaylamalıdır.
 
@@ -658,12 +658,12 @@ Sınama için daha kolay bir yol olabilecek **Postman**kullanarak [REST API](/re
 
 1. İstek üstbilgilerini şu şekilde yapılandırın:
 
-   | Anahtar                            | Value                          |
+   | Anahtar                            | Değer                          |
    | ------------------------------ | ------------------------------ |
-   | Content-Type                   | Uygulama/JSON; charset = UTF-8 |
-   | Authorization                  | \<sasToken >                     |
+   | İçerik türü                   | Uygulama/JSON; charset = UTF-8 |
+   | Yetkilendirme                  | \<sasToken >                     |
    | ServiceBusNotification-biçim  | şablon                       |
-   | Tags                           | "12345"                        |
+   | Etiketler                           | "12345"                        |
 
 1. Aşağıdaki JSON yüküyle **Ham JSON (Application. JSON)** kullanmak Için istek **gövdesini** yapılandırın:
 
@@ -690,7 +690,7 @@ Sınama için daha kolay bir yol olabilecek **Postman**kullanarak [REST API](/re
     }
     ```
 
-1. Seçin **Gönder** düğmesi.
+1. **Gönder** düğmesini seçin.
 
 Başarılı bir durum kodu almalısınız ve istemci cihazında bildirimi alacaksınız.
 

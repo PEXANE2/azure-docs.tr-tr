@@ -6,45 +6,45 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 289f98fdc2f39449cdeede9ee46fb39847ae2cb5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774984"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029274"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>Eşleme veri akışı dönüşüm seçme
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Seçiciliği (sütun sayısını azaltma), diğer ad sütunları ve akış adları ve sütunları yeniden sıralama için bu dönüşümü kullanın.
 
 ## <a name="how-to-use-select-transformation"></a>Seçme dönüşümünü kullanma
 Seçim dönüşümü, bir akışın tamamına veya bu akıştaki sütunlara diğer ad atamanıza, farklı adlar atamanıza (diğer adlar) ve ardından bu yeni adlara daha sonra veri akışınızda başvurmasına olanak tanır. Bu dönüşüm, kendine katılacak senaryolar için yararlıdır. ADF veri akışında kendi kendine katılmayı uygulama yolu bir akış almak, bunu "yeni dal" ile dallandırma ve sonra hemen sonra da "Select" dönüştürmesi eklemektir. Bu akış artık özgün akışa geri katılabilmek için kullanabileceğiniz yeni bir ada sahip olur ve kendi kendine katılması oluşturursunuz:
 
-![Kendi kendine Birleştir](media/data-flow/selfjoin.png "Kendi kendine Birleştir")
+Kendi kendine ![katılmayı](media/data-flow/selfjoin.png "kendine ekleme")
 
 Yukarıdaki diyagramda, select Transform en üstte. Bu, özgün akışın "OrigSourceBatting" olarak diğer adını alıyor. Aşağıdaki Vurgulanan birleşim dönüşümünden, bu Select diğer ad akışını sağ birleşim olarak kullandığımızdan, Iç birleştirmenin sağ & sağ tarafında aynı anahtara başvurmamızı sağlayabilirsiniz.
 
 Ayrıca, veri akışınızdan sütunları seçmek için bir yöntem olarak da kullanılabilir. Örneğin, havuzunuzu tanımlanmış 6 sütunlarınız varsa, ancak yalnızca belirli bir 3 ' ü dönüştürmek ve havuza akışa almak istiyorsanız, select Transform 'u kullanarak yalnızca bu 3 ' ü seçebilirsiniz.
 
-![Dönüşüm seçin](media/data-flow/newselect1.png "Diğer ad Seç")
+![Dönüşüm](media/data-flow/newselect1.png "Seç diğer adını") seçin
 
 ## <a name="options"></a>Seçenekler
 * "Select" için varsayılan ayar tüm gelen sütunları dahil etmek ve bu özgün adları tutmak içindir. Seçim dönüşümünün adını ayarlayarak akışa diğer ad verebilirsiniz.
 * Tek tek sütunlara, "Tümünü Seç" seçimini kaldırın ve alt kısımdaki sütun eşlemesini kullanın.
 * Giriş veya çıkış meta verilerinden yinelenen sütunları kaldırmak için Yinelenenleri atla ' yı seçin.
 
-![Yinelenenleri atla](media/data-flow/select-skip-dup.png "Yinelenenleri atla")
+![Yinelenenleri]atla(media/data-flow/select-skip-dup.png "Yinelenenleri atla")
 
-* Yinelemeleri atlamayı seçtiğinizde sonuçlar Inceleme sekmesinde görünür olur. ADF, sütunun ilk oluşumunu tutar ve aynı sütunun sonraki geçtiği her oluşumun akıştan kaldırıldığını görürsünüz.
+* Yinelemeleri atlamayı seçtiğinizde, sonuçlar Inceleme sekmesinde görünür. ADF, sütunun ilk oluşumunu tutar ve aynı sütunun sonraki oluşumunun akışınızdan kaldırıldığını görürsünüz.
 
 > [!NOTE]
 > Eşleme kurallarını temizlemek için **Sıfırla** düğmesine basın.
 
-## <a name="mapping"></a>Eşleme
+## <a name="mapping"></a>Eşlemeleri
 Varsayılan olarak, select dönüşümü tüm sütunları otomatik olarak eşleştirir. Bu, tüm gelen sütunları çıktıda aynı ada geçirecek şekilde otomatik olarak eşler. Seçim ayarları 'nda ayarlanan çıkış akışı adı, akış için yeni bir diğer ad tanımlar. Otomatik eşleme için seçim kümesini tutarsanız, tüm akış için aynı olan tüm akışı aynı şekilde diğer ad olarak kullanabilirsiniz.
 
-![Dönüşüm kurallarını seçin](media/data-flow/rule2.png "Kural tabanlı eşleme")
+![Dönüşüm kuralları](media/data-flow/rule2.png "kural tabanlı eşlemeyi") seçin
 
 Sütunları diğer ad, kaldırma, yeniden adlandırma veya yeniden sıralama yapmak istiyorsanız, önce "otomatik eşleme" seçeneğini kapatmanız gerekir. Varsayılan olarak, "tüm giriş sütunları" olarak adlandırılabilecek bir varsayılan kural görürsünüz. Tüm gelen sütunların çıktılarıyla aynı ada sahip olacak şekilde her zaman izin vermeyi düşünüyorsanız, bu kuralı yerinde bırakabilirsiniz.
 

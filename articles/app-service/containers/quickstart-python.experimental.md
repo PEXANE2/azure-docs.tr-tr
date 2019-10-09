@@ -14,16 +14,18 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4ffa202a717c75462cd2d715a7883756d49f5a9f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+experimental: false
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: d6e062145474b8479db749627b56163106f088d8
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972090"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024934"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
-[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıçta, [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanılarak Linux üzerinde App Service yerleşik Python görüntüsünün üzerine bir Python uygulamasının nasıl dağıtılacağı gösterilmektedir.
+Bu hızlı [Başlangıçta, Linux üzerinde App Service](app-service-linux-intro.md)basit bir Python uygulamasını dağıtarak, yüksek düzeyde ölçeklenebilir ve kendini yayama bir Web barındırma hizmeti sağlar. Azure komut satırı arabirimi ( [Azure CLI](/cli/azure/install-azure-cli)), etkileşimli, tarayıcı tabanlı Azure Cloud Shell aracılığıyla kullanılır. bu sayede, bir Mac, Linux veya Windows bilgisayarı kullanma adımlarını izleyebilirsiniz.
 
 ![Azure'da çalışan örnek uygulama](media/quickstart-python/hello-world-in-browser.png)
 
@@ -120,7 +122,7 @@ Python örnek kodu, yerleşik bir görüntüyle Linux üzerinde App Service çal
 
 **Tebrikler!** Linux üzerinde App Service'e ilk Python uygulamanızı dağıttınız.
 
-## <a name="update-locally-and-redeploy-the-code"></a>Kodu yerel makinede güncelleştirme ve yeniden dağıtma
+## <a name="update-and-redeploy-the-code"></a>Kodu güncelleştirme ve yeniden dağıtma
 
 Cloud Shell, Cloud Shell düzenleyicisini açmak için `code application.py` yazın.
 

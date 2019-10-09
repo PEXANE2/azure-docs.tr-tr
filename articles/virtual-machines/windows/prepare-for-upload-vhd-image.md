@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 86ce2ada9ebd19c88414fab33a62dda5ba41ecb0
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: b834f14450196e8d377177bf10c80fbb05a10a57
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949647"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030024"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure 'a yüklemek için bir Windows VHD veya VHDX hazırlama
 
@@ -58,7 +58,7 @@ Diski dönüştürdükten sonra, diski kullanan bir VM oluşturun. Karşıya yü
 4. VHDX 'ten dönüştürmeniz gerekiyorsa,**daha sonra** **VHD** >  ' i seçin.
 5. Dinamik olarak genişleyen bir diskten dönüştürmeniz gerekiyorsa,**sonra** **sabit boyut** >  ' i seçin.
 6. Yeni VHD dosyasını kaydetmek için bir yol bulun ve seçin.
-7. **Son**' u seçin.
+7. **Son**’u seçin.
 
 > [!NOTE]
 > Bu makaledeki komutları çalıştırmak için yükseltilmiş bir PowerShell oturumu kullanın.
@@ -345,9 +345,9 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 
    - Yedekleme Işleçleri
 
-   - Herkes
+   - Anlamasına
 
-   - Kullanıcılarına
+   - Kullanıcılar
 
 10. Windows 'un hala sağlıklı olduğundan ve RDP bağlantısı üzerinden erişilebildiğinden emin olmak için VM 'yi yeniden başlatın. Bu noktada, VM 'nin tamamen başlamasını sağlamak için yerel Hyper-V ' d e bir VM oluşturmak isteyebilirsiniz. Ardından, VM 'ye RDP aracılığıyla ulaşabildiğinizden emin olmak için test edin.
 
@@ -358,7 +358,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 ### <a name="install-windows-updates"></a>Windows güncelleştirmelerini yükler
 İdeal olarak, makineyi *Düzeltme Eki düzeyinde*güncel tutmanız gerekir. Bu mümkün değilse, aşağıdaki güncelleştirmelerin yüklü olduğundan emin olun:
 
-| Bileşen               | İkili         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
+| Bileşen               | ý         | Windows 7 SP1, Windows Server 2008 R2 SP1 | Windows 8, Windows Server 2012               | Windows 8.1, Windows Server 2012 R2 | Windows 10 v1607, Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709, Windows Server 2016 v1709 | Windows 10 v1803, Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|
 | Depolama                 | disk. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17638 / 6.2.9200.21757 - KB3137061 | 6.3.9600.18203 - KB3137061         | -                                                       | -                          | -                                               | -                                               |
 |                         | Storport. sys   | 6.1.7601.23403 - KB3125574                | 6.2.9200.17188 / 6.2.9200.21306 - KB3018489 | 6.3.9600.18573 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.332             | -                                               | -                                               |
@@ -380,7 +380,7 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 |                         | mrxsmb20. sys   | 6.1.7601.23816 - KB4022722                | 6.2.9200.21548 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | mrxsmb. sys     | 6.1.7601.23816 - KB4022722                | 6.2.9200.22074 - KB4022724                  | 6.3.9600.18586 - KB4022726         | 10.0.14393.953 - KB4022715                              | 10.0.15063.0               | -                                               | -                                               |
 |                         | Tcpip. sys      | 6.1.7601.23761 - KB4022722                | 6.2.9200.22070 - KB4022724                  | 6.3.9600.18478 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.447             | -                                               | -                                               |
-|                         | http.sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
+|                         | http. sys       | 6.1.7601.23403 - KB3125574                | 6.2.9200.17285 - KB3042553                  | 6.3.9600.18574 - KB4022726         | 10.0.14393.251 - KB4022715                              | 10.0.15063.483             | -                                               | -                                               |
 |                         | VmSwitch. sys   | 6.1.7601.23727 - KB4022719                | 6.2.9200.22117 - KB4022724                  | 6.3.9600.18654 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.138             | -                                               | -                                               |
 | Çekirdek                    | Ntoskrnl. exe   | 6.1.7601.23807 - KB4022719                | 6.2.9200.22170 - KB4022718                  | 6.3.9600.18696 - KB4022726         | 10.0.14393.1358 - KB4022715                             | 10.0.15063.483             | -                                               | -                                               |
 | Uzak Masaüstü Hizmetleri | rdpcorets. dll  | 6.2.9200.21506 - KB4022719                | 6.2.9200.22104 - KB4022724                  | 6.3.9600.18619 - KB4022726         | 10.0.14393.1198 - KB4022715                             | 10.0.15063.0               | -                                               | -                                               |
@@ -396,6 +396,9 @@ VM 'nin sağlıklı, güvenli ve RDP erişilebilir olduğundan emin olun:
 |                         | CVE-2018-0886  | KB4103718               | KB4103730                | KB4103725       | KB4103723                                               | KB4103731                  | KB4103727                                       | KB4103721                                       |
 |                         |                | KB4103712          | KB4103726          | KB4103715|                                                         |                            |                                                 |                                                 |
        
+> [!NOTE]
+> VM sağlama sırasında yanlışlıkla yeniden başlatmanın önüne geçmek için, tüm Windows Update yüklemelerinin bitmesini ve bekleyen güncelleştirme olmamasını güvence altına almayı öneririz. Bunu yapmanın bir yolu, Sysprep komutunu çalıştırmadan önce tüm olası Windows güncelleştirmelerini yüklemektir ve bir kez yeniden başlatılacak.
+
 ### Sysprep 'in ne zaman kullanılacağını belirleme<a id="step23"></a>    
 
 Sistem Hazırlama Aracı (Sysprep), bir Windows yüklemesini sıfırlamak için çalıştırabileceğiniz bir işlemdir. Sysprep tüm kişisel verileri kaldırarak ve birçok bileşeni sıfırlayarak "kutudan çıkar" deneyimi sağlar. 
@@ -418,12 +421,12 @@ Windows tabanlı bir bilgisayarda yüklü her rol veya uygulama Genelleştirilmi
 
 1. Windows VM 'de oturum açın.
 1. **Komut istemi** 'ni yönetici olarak çalıştırın. 
-1. Dizini `%windir%\system32\sysprep` olarak değiştirin. Sonra @no__t çalıştırın-0.
-1. **Sistem Hazırlama Aracı** Iletişim kutusunda **sistem kutudan çıkar deneyimi (OOBE)** seçeneğini belirleyin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
+1. Dizini `%windir%\system32\sysprep` olarak değiştirin. Ardından `sysprep.exe` komutunu çalıştırın.
+1. **Sistem Hazırlama Aracı** iletişim kutusunda  **Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 
     ![Sistem Hazırlama Aracı](media/prepare-for-upload-vhd-image/syspre.png)
 1. **Kapalı seçenekleri**' nde, **kapatır**' ı seçin.
-1. **Tamam ' ı**seçin.
+1. **Tamam**’ı seçin.
 1. Sysprep tamamlandığında, VM 'yi kapatın. VM 'yi kapatmak için **yeniden başlatma** kullanmayın.
 
 Artık VHD karşıya yüklenmeye hazırdır. Genelleştirilmiş bir diskten VM oluşturma hakkında daha fazla bilgi için bkz. [Genelleştirilmiş BIR VHD 'Yi karşıya yükleme ve Azure 'da yeni BIR VM oluşturmak için kullanma](sa-upload-generalized.md).

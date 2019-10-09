@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 9d85b5a72c2e37719348d61250d167eb9a5688a1
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: e7dc1e6c1bb1ca81ada59cb3dae8fecbc6452b7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240036"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029777"
 ---
 # <a name="connect-data-from-microsoft-web-application-firewall"></a>Microsoft Web uygulaması güvenlik duvarındaki verileri bağlama
 
@@ -40,12 +40,12 @@ Microsoft Web uygulaması güvenlik duvarınız dağıtıldıktan ve veriler al�
     
 1. Azure Sentinel portalında **veri bağlayıcıları**' nı seçin.
 1. Veri bağlayıcıları sayfasında **WAF** kutucuğunu seçin.
-1. [Application Gateway kaynağına](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) gidin ve WAF 'nizi seçin.
-    1.  **Tanılama ayarları**' nı seçin.
-    1. Tablo altında **+ Tanılama ayarı Ekle** ' yi seçin.
-    1.  **Tanılama ayarları** sayfasında, bir **ad** yazın ve **Log Analytics gönder**' i seçin.
+1. [Application Gateway kaynak](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) adresine gıdıp WAF 'nizi seçin.
+    1. **Tanılama ayarları**' nı seçin.
+    1. Tablo altında **+ Tanılama ayarı Ekle** ' yi seçin.
+    1. **Tanılama ayarları** sayfasında, bir **ad** yazın ve **Log Analytics gönder**' i seçin.
     1. **Log Analytics çalışma alanı** altında Azure Sentinel çalışma alanını seçin.
-    1. Çözümlemek istediğiniz günlük türlerini seçin. Önerdiğimiz: ApplicationGatewayAccessLog ve ApplicationGatewayFirewallLog.
+    1. Çözümlemek istediğiniz günlük türlerini seçin. Şunları öneririz: ApplicationGatewayAccessLog ve ApplicationGatewayFirewallLog.
 1. Microsoft Web uygulaması güvenlik duvarı uyarıları için Log Analytics ilgili şemayı kullanmak için, **AzureDiagnostics**aratın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

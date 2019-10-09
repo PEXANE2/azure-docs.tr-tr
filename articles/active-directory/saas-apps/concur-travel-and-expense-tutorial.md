@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Concur seyahat ve harcama ile çoklu oturum açma (SSO) Tümleştirmesi | Azure Active Directory Microsoft Docs'
+title: 'Öğretici Azure Active Directory: Concur seyahat ve harcama ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve Concur seyahat ve harcama arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64d2c5bc38a91c60186ca1249ca69326858b6c37
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 75f933cf54b354475146c1291b486173e0b57dbb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70846941"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026725"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Öğretici: Concur seyahat ve harcama ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -83,7 +83,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1.  **Temel SAML yapılandırması** bölümünde, uygulama **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
+1. **Temel SAML yapılandırması** bölümünde, uygulama **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -93,19 +93,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Concur seyahat ve masrafına erişim vererek B. Simon 'u etkinleştireceksiniz.
 
@@ -113,7 +113,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Concur seyahat 
 1. Uygulamalar listesinde, **Concur seyahat ve harcama**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -125,15 +125,15 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Concur seyahat 
 
 ## <a name="configure-concur-travel-and-expense-sso"></a>Concur seyahat ve harcama SSO 'SU yapılandırma
 
-**Concur seyahat ve gider** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [Concur seyahat ve gider destek ekibine](https://www.concur.com/support)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Concur seyahat ve gider** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [Concur seyahat ve gider destek ekibine](https://www.concur.com/support)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-concur-travel-and-expense-test-user"></a>Concur seyahat ve harcama testi kullanıcısı oluşturma
 
-Bu bölümde, Concur seyahat ve harcama için B. Simon adlı bir Kullanıcı oluşturacaksınız. Concur seyahat ve harcama platformundan kullanıcıları eklemek için [Concur seyahat ve harcama destek ekibi](https://www.concur.com/support) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, Concur seyahat ve harcama için B. Simon adlı bir Kullanıcı oluşturacaksınız. Concur seyahat ve harcama platformundan kullanıcıları eklemek için [Concur seyahat ve harcama destek ekibi](https://www.concur.com/support) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde Concur seyahat ve harcama kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız yarışmak ve harcamayı otomatik olarak açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

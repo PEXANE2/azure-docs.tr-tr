@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: 45200e7620326dedcee92c579843e61bb07ff68e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b232df010190a95d12d5a57f076a4c1bf336cea4
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610258"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026589"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Trafik Analizi sık sorulan sorular
 
@@ -46,8 +46,8 @@ Trafik analizlerini etkinleştirmek için hesabınızın aşağıdakilerden biri
     - Microsoft. Network/loadBalancers/Read 
     - Microsoft. Network/Localnetworkgateway/Read 
     - Microsoft. Network/NetworkInterfaces/Read 
-    - Microsoft.Network/networkSecurityGroups/read 
-    - Microsoft.Network/publicIPAddresses/read
+    - Microsoft. Network/networkSecurityGroups/Read 
+    - Microsoft. Network/publicIPAddresses/Read
     - Microsoft. Network/routeTables/Read
     - Microsoft. Network/Virtualnetworkgateway/Read 
     - Microsoft. Network/virtualNetworks/Read
@@ -66,53 +66,53 @@ Herhangi bir çıkış görmüyorsanız, komutları çalıştırmak için erişi
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Hangi Azure bölgeleri Trafik Analizi kullanılabilir?
 
 NSG 'ler için trafik analizini aşağıdaki desteklenen bölgelerden herhangi birinde kullanabilirsiniz:
-- Orta Kanada
-- Batı Orta ABD
-- East US
+- Kanada Orta
+- Orta Batı ABD
+- Doğu ABD
 - Doğu ABD 2
 - Orta Kuzey ABD
-- Orta Güney ABD
+- Güney Orta ABD
 - Orta ABD
 - Batı ABD
 - Batı ABD 2
 - Fransa Orta
 - Batı Avrupa
 - Kuzey Avrupa
-- Güney Brezilya
-- Birleşik Krallık Batı
-- Birleşik Krallık Güney
-- Avustralya Doğu
-- Avustralya Güneydoğu 
+- Brezilya Güney
+- Birleşik Krallık, Batı
+- Birleşik Krallık, Güney
+- Doğu Avustralya
+- Güneydoğu Avustralya 
 - Doğu Asya
 - Güneydoğu Asya
 - Kore Orta
 - Orta Hindistan
 - Güney Hindistan
-- Japonya Doğu
-- Japonya Batı
-- ABD Devleti Virginia
+- Doğu Japonya
+- Batı Japonya
+- ABD Hükümeti Virginia
 
 Log Analytics çalışma alanı aşağıdaki bölgelerde bulunmalıdır:
-- Orta Kanada
-- Batı Orta ABD
+- Kanada Orta
+- Orta Batı ABD
 - Batı ABD
 - Batı ABD 2
-- Orta Güney ABD
+- Güney Orta ABD
 - Orta ABD
-- East US
+- Doğu ABD
 - Doğu ABD 2
 - Fransa Orta
 - Batı Avrupa
 - Kuzey Avrupa
-- Birleşik Krallık Güney
-- Avustralya Doğu
-- Avustralya Güneydoğu
+- Birleşik Krallık, Güney
+- Doğu Avustralya
+- Güneydoğu Avustralya
 - Doğu Asya
 - Güneydoğu Asya 
 - Kore Orta
 - Orta Hindistan
-- Japonya Doğu
-- ABD Devleti Virginia
+- Doğu Japonya
+- ABD Hükümeti Virginia
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>NSG 'ler, akış günlüklerini çalışma alanım 'ın farklı bölgelerinde mi etkinleştirebilirim?
 
@@ -143,15 +143,15 @@ Desteklenen bir bölge seçin. Desteklenmeyen bir bölge seçerseniz, "bulunamad
 Akış günlüğünün düzgün çalışması için Microsoft. Insights sağlayıcısı 'nın kayıtlı olması gerekir. Aboneliğiniz için Microsoft. Insights sağlayıcısı 'nın kayıtlı olup olmadığından emin değilseniz, aşağıdaki komutta *xxxxx-xxxxx-xxxxxx-xxxx* ' i değiştirin ve PowerShell 'den aşağıdaki komutları çalıştırın:
 
 ```powershell-interactive
-**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>Çözümü yapılandırdım. Neden panoda hiçbir şey görmüyorum?
 
 Panonun ilk kez görünmesi 30 dakika kadar sürebilir. Çözüm, öncelikle anlamlı Öngörüler türetmede yeterince veri toplamalıdır. Daha sonra raporlar oluşturur. 
 
-## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Bu iletiyi aldım: "Seçili zaman aralığı için bu çalışma alanında herhangi bir veri bulamadık. Zaman aralığını değiştirmeyi deneyin veya farklı bir çalışma alanı seçin. "?
+## <a name="what-if-i-get-this-message-we-could-not-find-any-data-in-this-workspace-for-selected-time-interval-try-changing-the-time-interval-or-select-a-different-workspace"></a>Bu iletiyi alırsam ne olursa yapın: "seçili zaman aralığı için bu çalışma alanında herhangi bir veri bulamadık. Zaman aralığını değiştirmeyi deneyin veya farklı bir çalışma alanı seçin. "?
 
 Aşağıdaki seçenekleri deneyin:
 - Üstteki çubukta zaman aralığını değiştirin.
@@ -168,7 +168,7 @@ Sorun devam ederse, [Kullanıcı sesli forumundaki](https://feedback.azure.com/f
     
 Sorun devam ederse, [Kullanıcı sesli forumundaki](https://feedback.azure.com/forums/217313-networking?category_id=195844)kaygıları yükseltin.
     
-## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Bu iletiyi aldım: "Kaynak verileri (topoloji) ve akış bilgisi yok gibi görünüyor. Bu arada, kaynak verilerini görmek ve daha fazla bilgi için SSS 'ye başvurmak üzere buraya tıklayın. "?
+## <a name="what-if-i-get-this-message-looks-like-we-have-resources-data-topology-and-no-flows-information-meanwhile-click-here-to-see-resources-data-and-refer-to-faqs-for-further-information"></a>Bu iletiyi alırsam ne olursa olsun: "kaynak verileri (topoloji) ve akış bilgisi yok gibi görünüyor. Bu arada, kaynak verilerini görmek ve daha fazla bilgi için SSS 'ye başvurmak üzere buraya tıklayın. "?
 
 Kaynak bilgilerini panoda görüyorsunuz. Ancak, akışla ilgili bir istatistik yoktur. Kaynaklar arasında hiçbir iletişim akışı olmadığından veriler bulunmayabilir. 60 dakika bekleyin ve durumu yeniden denetleyin. Sorun devam ederse ve kaynaklar arasındaki iletişim akışının mevcut olduğundan emin değilseniz, [Kullanıcı sesli forumundan](https://feedback.azure.com/forums/217313-networking?category_id=195844)kaygıları yükseltin.
 
@@ -244,7 +244,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 Trafik Analizi tarifeli. Ölçüm, hizmet tarafından akış günlüğü verilerinin işlenmesini ve elde edilen gelişmiş günlükleri bir Log Analytics çalışma alanında depolamayı temel alır. 
 
-Örneğin, Orta Batı ABD bölgeyi ele alan [fiyatlandırma planına](https://azure.microsoft.com/pricing/details/network-watcher/)göre, trafik analizi tarafından işlenen bir depolama hesabında depolanan akış günlüğü VERILERI 10 gb ve Log Analytics çalışma alanında alınan gelişmiş Günlükler 1 GB ise, geçerli ücretler şunlardır: 10 x $2,3 + 1 x $2,76 = $25,76
+Örneğin, Orta Batı ABD bölgeyi ele alan [fiyatlandırma planına](https://azure.microsoft.com/pricing/details/network-watcher/)göre, trafik analizi tarafından işlenen bir depolama hesabında depolanan akış günlüğü VERILERI 10 gb ve Log Analytics çalışma alanında alınan gelişmiş Günlükler 1 GB ise geçerli ücretler şunlardır: 10 x $2,3 + 1 x $2,76 = $25,76
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Ne sıklıkla veri Trafik Analizi?
 
@@ -266,72 +266,72 @@ Trafik Analizi, uyarılar için yerleşik olmayan desteğe sahip değil. Ancak T
 
 Coğrafi harita sayfası iki ana bölüm içerir:
     
-- **Başlık**: Coğrafi haritanın en üstündeki başlık, trafik dağıtım filtrelerini (örneğin, dağıtım, ülke/bölge trafiği ve kötü amaçlı trafik) seçmek için düğmeler sağlar. Bir düğmeyi seçtiğinizde ilgili filtre haritada uygulanır. Örneğin, etkin düğmesini seçerseniz, eşleme dağıtımınızdaki etkin veri merkezlerini vurgular.
-- **Eşleme**: Başlığın altında harita bölümünde, Azure veri merkezleri ve ülkeler/bölgeler arasında trafik dağıtımı gösterilmektedir.
+- **Başlık**: coğrafi haritanın en üstündeki başlık, trafik dağıtım filtrelerini (örneğin, dağıtım, ülke/bölge veya kötü amaçlı trafik) seçmek için düğmeler sağlar. Bir düğmeyi seçtiğinizde ilgili filtre haritada uygulanır. Örneğin, etkin düğmesini seçerseniz, eşleme dağıtımınızdaki etkin veri merkezlerini vurgular.
+- **Harita**: başlığın altında, harita bölümünde Azure veri merkezleri ve ülkeler/bölgeler arasında trafik dağıtımı gösterilmektedir.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Başlık üzerinde klavye gezintisi
     
 - Varsayılan olarak, başlık için coğrafi harita sayfasında bulunan seçim, "Azure DCs" filtresidir.
-- Başka bir filtreye geçmek için `Tab` `Right arrow` ya da anahtarını kullanın. Geriye doğru gitmek için `Shift+Tab` `Left arrow` ya da anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
-- Seçili `Enter` filtreyi uygulamak `Down` için ya da ok tuşuna basın. Filtre seçimine ve dağıtımına dayalı olarak, harita bölümünün altındaki bir veya birden çok düğüm vurgulanır.
-- Başlık ve eşleme arasında geçiş yapmak için tuşuna `Ctrl+F6`basın.
+- Başka bir filtreye geçmek için `Tab` ya da `Right arrow` anahtarını kullanın. Geriye doğru gitmek için `Shift+Tab` veya `Left arrow` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
+- Seçili filtreyi uygulamak için `Enter` veya `Down` ok tuşuna basın. Filtre seçimine ve dağıtımına dayalı olarak, harita bölümünün altındaki bir veya birden çok düğüm vurgulanır.
+- Başlık ve eşleme arasında geçiş yapmak için `Ctrl+F6` ' a basın.
         
 ### <a name="keyboard-navigation-on-the-map"></a>Haritada klavye gezintisi
     
-- Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6`, odak harita görünümündeki vurgulanan düğümlerden birine (**Azure veri merkezi** veya **ülke/bölge**) gider.
-- Haritadaki diğer vurgulanan düğümlere geçmek için, iletme hareketi için ya `Tab` da `Right arrow` anahtarını kullanın. Geri `Shift+Tab` hareket için `Left arrow` veya anahtarını kullanın.
-- Haritadaki vurgulanmış düğümleri seçmek için `Enter` veya `Down arrow` tuşunu kullanın.
-- Bu tür düğümlerin seçimi üzerinde odak, düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki**kapalı düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için ve `Right arrow` `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' `Enter` Ye basmak, **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
-- Odak bilgi araç kutusunda olduğunda, odak seçili düğüm ile aynı kıta olan bitiş noktalarına taşınır. `Tab` Bu uç noktalar `Left arrow` arasında gezinmek için veanahtarlarınıkullanın.`Right arrow`
-- Diğer akış uç noktalarına veya kıta kümelere gitmek için, İleri `Tab` hareket ve `Shift+Tab` geriye doğru hareket için kullanın.
-- Odak, **kıta kümeler**üzerinde olduğunda, ya `Enter` `Down` da ok tuşlarını kullanarak kıta küme içindeki uç noktaları vurgulayın. Kıta kümesinin bilgi kutusunda uç noktalar ve Kapat düğmesi ile hareket etmek için, sırasıyla ileri ve geri hareket için `Right arrow` ya `Left arrow` da tuşunu kullanın. Herhangi bir uç noktada, seçili düğümdeki `Shift+L` bağlantı satırına uç noktaya geçiş yapmak için kullanabilirsiniz. Seçili uç noktaya `Shift+L` gitmek için yeniden tuşuna basın.
+- Başlık üzerinde herhangi bir filtre seçtikten sonra `Ctrl+F6` ' a basıldığında, odak harita görünümünde vurgulanan düğümlerden birine (**Azure veri merkezi** veya **ülke/bölge**) gider.
+- Haritadaki diğer vurgulanan düğümlere geçmek için, `Tab` ' ı ya da ileri hareket için `Right arrow` anahtarını kullanın. Geriye doğru hareket için `Shift+Tab` veya `Left arrow` anahtarını kullanın.
+- Haritadaki vurgulanmış düğümleri seçmek için `Enter` veya `Down arrow` anahtarını kullanın.
+- Bu tür düğümlerin seçimi üzerinde odak, düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki**kapalı düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` anahtarlarını kullanarak sırasıyla ileri ve geri hareket edin. @No__t-0 ' a basmak, **bilgi araç kutusundaki**odaklanmış düğmeyi seçerek de aynı etkiye sahiptir.
+- Odak **bilgi aracı kutusdayken**`Tab` ' a bastığınızda, odak seçili düğüm ile aynı kıta olan bitiş noktalarına taşınır. Bu uç noktalar arasında gezinmek için `Right arrow` ve `Left arrow` anahtarlarını kullanın.
+- Diğer akış uç noktalarına veya kıta kümelerine geçmek için, iletme hareketi için `Tab` kullanın ve geriye doğru hareket için-1 @no__t.
+- Odak, **kıta kümeler**üzerinde olduğunda, kıta küme içindeki uç noktaları vurgulamak için `Enter` veya `Down` ok tuşlarını kullanın. Kıta kümesinin bilgi kutusunda uç noktalar ve Kapat düğmesi arasında ilerlemek için, sırasıyla ileri ve geri hareket için `Right arrow` veya `Left arrow` anahtarını kullanın. Herhangi bir uç noktada, seçili düğümdeki bağlantı satırına uç noktaya geçmek için `Shift+L` ' ı kullanabilirsiniz. Seçili uç noktaya geçmek için `Shift+L` ' a yeniden basabilirsiniz.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Herhangi bir aşamada klavye gezintisi
     
-- `Esc`genişletilen seçimi daraltır.
-- Anahtar, ile `Esc`aynı eylemi gerçekleştirir. `Up arrow` Anahtar, ile `Enter`aynı eylemi gerçekleştirir. `Down arrow`
-- Yakınlaştırmak `Shift+Plus` ve`Shift+Minus` uzaklaştırmak için kullanın.
+- `Esc` genişletilmiş seçimi daraltır.
+- @No__t-0 anahtarı, `Esc` ile aynı eylemi gerçekleştirir. @No__t-0 anahtarı, `Enter` ile aynı eylemi gerçekleştirir.
+- Yakınlaştırmak için `Shift+Plus` kullanın ve uzaklaştırmak için-1 @no__t.
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-virtual-network-topology-view"></a>Sanal ağ topolojisi görünümündeki klavyeyi kullanarak nasıl gezinirim?
 
 Sanal ağlar topolojisi sayfası iki ana bölüm içerir:
     
-- **Başlık**: Sanal ağlar topolojisinin en üstündeki başlık, trafik dağıtım filtrelerini (örneğin, bağlı sanal ağlar, bağlantısı kesilen sanal ağlar ve genel IP 'Ler) seçmek için düğmeler sağlar. Bir düğmeyi seçtiğinizde ilgili filtre topolojiye uygulanır. Örneğin, etkin düğmesini seçerseniz, topoloji dağıtımınızdaki etkin sanal ağları vurgular.
-- **Topoloji**: Başlığın altında topoloji bölümünde sanal ağlar arasındaki trafik dağılımı gösterilmektedir.
+- **Başlık**: sanal ağlar topolojisinin en üstündeki başlık, trafik dağıtım filtrelerini (örneğin, bağlı sanal ağlar, bağlantısı kesilen sanal ağlar ve genel IP 'ler) seçmek için düğmeler sağlar. Bir düğmeyi seçtiğinizde ilgili filtre topolojiye uygulanır. Örneğin, etkin düğmesini seçerseniz, topoloji dağıtımınızdaki etkin sanal ağları vurgular.
+- **Topoloji**: başlığın altında, topoloji bölümünde sanal ağlar arasındaki trafik dağılımı gösterilmektedir.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Başlık üzerinde klavye gezintisi
     
 - Varsayılan olarak, başlık için sanal ağlar topolojisi sayfasında bulunan seçim, "bağlı VNET" filtreidir.
-- Başka bir filtreye geçmek için, bir daha `Tab` ilerlemek için anahtarı kullanın. Geri gitmek için `Shift+Tab` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
-- Seçili `Enter` filtreyi uygulamak için basın. Filtre seçimine ve dağıtımına dayalı olarak, topoloji bölümünün altındaki bir veya birden çok düğüm (sanal ağ) vurgulanır.
-- Başlık ve topoloji arasında geçiş yapmak için tuşuna basın `Ctrl+F6`.
+- Başka bir filtreye geçmek için `Tab` anahtarını kullanarak ileriye doğru ilerlemeniz gerekir. Geri gitmek için `Shift+Tab` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
+- Seçili filtreyi uygulamak için `Enter` ' a basın. Filtre seçimine ve dağıtımına dayalı olarak, topoloji bölümünün altındaki bir veya birden çok düğüm (sanal ağ) vurgulanır.
+- Başlık ve topoloji arasında geçiş yapmak için `Ctrl+F6` ' a basın.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Topolojide klavye gezintisi
     
-- Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6`, odak, topoloji görünümündeki vurgulanan düğümlerden birine (**VNET**) gider.
-- Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, iletme hareketi `Shift+Right arrow` anahtarını kullanın. 
-- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için, `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' `Enter` Ye basmak, **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
-- Bu tür düğümlerin seçimi üzerinde, `Shift+Left arrow` anahtara basarak tüm bağlantılarını tek tek ziyaret edebilirsiniz. Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak `Shift+Right arrow` düğüme geri dönebilir.
+- Başlık üzerinde herhangi bir filtre seçtikten sonra `Ctrl+F6` ' a basıldığında, odak, topoloji görünümündeki vurgulanan düğümlerden birine (**VNET**) gider.
+- Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, iletme hareketi için `Shift+Right arrow` anahtarını kullanın. 
+- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` anahtarlarını kullanarak sırasıyla ileri ve geri hareket edin. @No__t-0 ' a basmak, **bilgi araç kutusundaki**odaklanmış düğmeyi seçerek de aynı etkiye sahiptir.
+- Bu tür düğümlerin seçimi üzerinde, `Shift+Left arrow` anahtarına basarak tüm bağlantılarını tek tek ziyaret edebilirsiniz. Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada odak, `Shift+Right arrow` tuşlarına basarak düğüme geri dönebilir.
     
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-subnet-topology-view"></a>Alt ağ topolojisi görünümündeki klavyeyi kullanarak nasıl gezinirim?
 
 Sanal alt ağlar topolojisi sayfası iki ana bölüm içerir:
     
-- **Başlık**: Sanal alt ağlar topolojisinin en üstündeki başlık, trafik dağıtım filtrelerini (örneğin, etkin, orta ve ağ geçidi alt ağları) seçmek için düğmeler sağlar. Bir düğmeyi seçtiğinizde ilgili filtre topolojiye uygulanır. Örneğin, etkin düğmesini seçerseniz, topoloji dağıtımınızdaki etkin sanal alt ağı vurgular.
-- **Topoloji**: Başlığın altında topoloji bölümünde sanal alt ağlar arasındaki trafik dağıtımı gösterilmektedir.
+- **Başlık**: sanal alt ağlar topolojisinin en üstündeki başlık, trafik dağıtım filtrelerini (örneğin, etkin, orta ve ağ geçidi alt ağları) seçmek için düğmeler sağlar. Bir düğmeyi seçtiğinizde ilgili filtre topolojiye uygulanır. Örneğin, etkin düğmesini seçerseniz, topoloji dağıtımınızdaki etkin sanal alt ağı vurgular.
+- **Topoloji**: başlığın altında, topoloji bölümünde sanal alt ağlar arasındaki trafik dağıtımı gösterilmektedir.
     
 ### <a name="keyboard-navigation-on-the-banner"></a>Başlık üzerinde klavye gezintisi
     
 - Varsayılan olarak, başlık için sanal alt ağlar topolojisi sayfasında bulunan seçim, "alt ağlar" filtreidir.
-- Başka bir filtreye geçmek için, bir daha `Tab` ilerlemek için anahtarı kullanın. Geri gitmek için `Shift+Tab` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
-- Seçili `Enter` filtreyi uygulamak için basın. Filtre seçimine ve dağıtımına dayalı olarak, topoloji bölümünün altındaki bir veya birden çok düğüm (alt ağ) vurgulanır.
-- Başlık ve topoloji arasında geçiş yapmak için tuşuna basın `Ctrl+F6`.
+- Başka bir filtreye geçmek için `Tab` anahtarını kullanarak ileriye doğru ilerlemeniz gerekir. Geri gitmek için `Shift+Tab` anahtarını kullanın. İleri doğru gezinme, yukarıdan aşağıya doğru bir şekilde solýdir.
+- Seçili filtreyi uygulamak için `Enter` ' a basın. Filtre seçimine ve dağıtımına dayalı olarak, topoloji bölümünün altındaki bir veya birden çok düğüm (alt ağ) vurgulanır.
+- Başlık ve topoloji arasında geçiş yapmak için `Ctrl+F6` ' a basın.
         
 ### <a name="keyboard-navigation-on-the-topology"></a>Topolojide klavye gezintisi
     
-- Başlık üzerinde herhangi bir filtre seçtikten ve basıldığında `Ctrl+F6`, odak, topoloji görünümündeki vurgulanan düğümlerden (**alt ağ**) birine taşınır.
-- Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, iletme hareketi `Shift+Right arrow` anahtarını kullanın. 
-- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için ve `Right arrow` `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' `Enter` Ye basmak, **bilgi araç kutusunda**odaklanmış düğmesini seçerek aynı etkiye sahiptir.
-- Bu tür düğümlerin seçimi üzerinde, bir diğeri olan tüm bağlantılarını, bir, bir, tuşuna basarak `Shift+Left arrow` ziyaret edebilirsiniz. Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak `Shift+Right arrow` düğüme geri dönebilir.    
+- Başlık üzerinde herhangi bir filtre seçtikten sonra `Ctrl+F6` ' a basıldığında, odak, topoloji görünümündeki vurgulanan düğümlerden birine (**alt ağ**) gider.
+- Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, iletme hareketi için `Shift+Right arrow` anahtarını kullanın. 
+- Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` anahtarlarını kullanarak sırasıyla ileri ve geri hareket edin. @No__t-0 ' a basmak, **bilgi araç kutusundaki**odaklanmış düğmeyi seçerek de aynı etkiye sahiptir.
+- Bu tür düğümlerin seçimi üzerinde, `Shift+Left arrow` tuşuna basarak tüm bağlantılarını tek tek ziyaret edebilirsiniz. Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada odak, `Shift+Right arrow` tuşlarına basarak düğüme geri dönebilir.    
 

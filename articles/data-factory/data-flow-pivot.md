@@ -6,43 +6,43 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 0b68007f8c3383997f0d31888198af866d38b590
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 1412f7d822d83a8712d27dd4e86311567d6ac714
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178642"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029306"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory Pivot dönüşümü
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Bir veya daha fazla gruplama sütununun ayrı sütunlara dönüştürülebileceği bir veya daha fazla gruplandırma sütununun bulunduğu bir toplama olarak ADF veri akışında Pivot kullanın. Temelde, satır değerlerini yeni sütunlara Özet olarak ekleyebilirsiniz (verileri meta verilere dönüştürebilirsiniz).
 
-![Özet seçenekleri](media/data-flow/pivot1.png "Pivot 1")
+![Pivot seçenekleri](media/data-flow/pivot1.png "Pivot 1")
 
-## <a name="group-by"></a>Gruplandırma ölçütü:
+## <a name="group-by"></a>Gruplandırma ölçütü
 
-![Özet seçenekleri](media/data-flow/pivot2.png "Pivot 2")
+![Pivot seçenekleri](media/data-flow/pivot2.png "Özeti 2")
 
 İlk olarak, pivot toplamadır için gruplandırmak istediğiniz sütunları ayarlayın. Sütun listesinin yanındaki + işaretiyle birlikte 1 ' den fazla sütun ayarlayabilirsiniz.
 
 ## <a name="pivot-key"></a>Özet anahtar
 
-![Özet seçenekleri](media/data-flow/pivot3.png "Pivot 3")
+![Pivot seçenekleri](media/data-flow/pivot3.png "Özeti 3")
 
 Pivot tuşu, ADF 'nin satırdan sütuna kadar Pivot olacağını belirten sütundur. Varsayılan olarak, bu alan için veri kümesindeki her benzersiz değer bir sütuna Özet olur. Ancak, isteğe bağlı olarak sütun değerlerine Pivot eklemek istediğiniz veri kümesinden değerleri girebilirsiniz. Bu, oluşturulacak yeni sütunları belirleyecek olan sütundur.
 
 ## <a name="pivoted-columns"></a>Özetleme sütunları
 
-![Özet seçenekleri](media/data-flow/pivot4.png "Pivot 4")
+![Pivot seçenekleri](media/data-flow/pivot4.png "Özeti 4")
 
 Son olarak, özetleme değerleri için kullanmak istediğiniz toplamayı ve yeni çıkış projeksiyonundaki sütunları dönüşümden nasıl görüntülenmesini istediğinizi tercih edersiniz.
 
 Seçim Satır değerlerinden her yeni sütun adına eklenmek üzere ön ek, orta ve son ek içeren bir adlandırma deseninin ayarlanabilir olmasını sağlayabilirsiniz.
 
-Örneğin, "bölge" ile "Sales" özetleme, her satış değerinden yeni sütun değerlerinin oluşmasına neden olur, yani "25", "50", "1000", vb. Bununla birlikte, "Sales-" önek değerini ayarlarsanız her sütun değeri, değerin başına "Sales-" ekler.
+Örneğin, "bölge" ile "Sales" özetleme, her satış değerinden yeni sütun değerlerinin oluşmasına neden olur, yani "25", "50", "1000" vb. Bununla birlikte, "Sales-" önek değerini ayarlarsanız her sütun değeri, değerin başına "Sales-" ekler.
 
-![Özet seçenekleri](media/data-flow/pivot5.png "Özet 5")
+![Özet seçenekleri](media/data-flow/pivot5.png "Özeti 5")
 
 Sütun düzenlemesini "normal" olarak ayarlamak, özetleme sütunlarının tümünü toplanmış değerlerle birlikte gruplandırır. Sütun düzenleme "yan yana" olarak ayarlandığında sütun ve değer arasında alternatif olur.
 
@@ -50,7 +50,7 @@ Sütun düzenlemesini "normal" olarak ayarlamak, özetleme sütunlarının tüm�
 
 Özet değerler için kullanmak istediğiniz toplamayı ayarlamak için, özetleme sütunları bölmesinin altındaki alana tıklayın. Bir toplama ifadesi oluşturabileceğiniz ve yeni toplanmış değerlerinizle ilgili açıklayıcı bir diğer ad sağlayabileceğiniz ADF veri akışı ifade oluşturucusuna giriş yapmanız gerekir.
 
-Ifade Oluşturucusu 'ndaki Özet sütun dönüşümlerini anlatmak için ADF veri akışı Ifade dilini kullanın: https://aka.ms/dataflowexpressions.
+@No__t-0 Ifade Oluşturucusu 'ndaki Özet sütun dönüşümlerini anlatmak için ADF veri akışı Ifade dilini kullanın.
 
 ## <a name="pivot-metadata"></a>Özet meta verileri
 
@@ -60,7 +60,7 @@ Ifade Oluşturucusu 'ndaki Özet sütun dönüşümlerini anlatmak için ADF ver
 
 Pivot, satır değerlerine göre dinamik olarak yeni sütun adları oluşturur. Bu yeni sütunları, daha sonra veri akışınızda başvurulabilen meta verilere dönüştürebilirsiniz. Bunu yapmak için veri önizleme sekmesine tıklayın. Özet dönüşümünüzün oluşturduğu tüm yeni sütunlar, Tablo üstbilgisindeki bir "düzeltebilecekler" simgesiyle birlikte görüntülenir. Bu yeni sütunları meta verilere dönüştürmek için "Map düzeltebilecekler" düğmesine tıklayın ve bunları veri akışının modelinin bir parçası haline getirin.
 
-![Özet sütunlar](media/data-flow/newpivot1.png "Map düzeltebilecekler Pivot sütunları")
+![Pivot sütunları](media/data-flow/newpivot1.png "eşleme düzeltebilecekler Pivot sütunları")
 
 ### <a name="landing-new-columns-in-sink"></a>Havuzda yeni sütunlar giriş
 

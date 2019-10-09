@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 16bc4c2651d5571bce823aa9c69f823d7fede8af
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801658"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029221"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Eşleme veri akışı için kaynak dönüşümü 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Kaynak dönüştürmesi veri akışı için veri kaynağınızı yapılandırır. Veri akışları tasarlarken, ilk adımınız her zaman bir kaynak dönüşümü yapılandıracaktır. Kaynak eklemek için veri akışı tuvalindeki **Kaynak Ekle** kutusuna tıklayın.
 
@@ -28,10 +28,10 @@ Her kaynak dönüştürmesi, tam olarak bir Data Factory veri kümesiyle ilişki
 Veri akışı eşleme, bir Ayıkla, yükle, Dönüştür (ELT) yaklaşımını izler ve Azure 'da tümü olan *hazırlama* veri kümeleri ile birlikte kullanılır. Şu anda aşağıdaki veri kümeleri bir kaynak dönüşümünde kullanılabilir:
     
 * Azure Blob Depolama
-* Azure Data Lake Storage 1. Nesil
-* Azure Data Lake Storage 2. Nesil
+* Azure Data Lake Storage Gen1
+* Azure Data Lake Storage Gen2
 * Azure SQL Veri Ambarı
-* Azure SQL Database
+* Azure SQL Veritabanı
 
 Azure Data Factory, 80 yerel bağlayıcı üzerinde erişime sahiptir. Veri akışınız içindeki diğer kaynaklardan verileri dahil etmek için kopyalama etkinliğini kullanarak bu verileri desteklenen hazırlama alanlarından birine yükleyin.
 
@@ -39,9 +39,9 @@ Azure Data Factory, 80 yerel bağlayıcı üzerinde erişime sahiptir. Veri akı
 
 Kaynak eklendikten sonra **kaynak ayarları** sekmesini kullanarak yapılandırın. Burada kaynak noktalarınızın veri kümesini seçebilirsiniz veya oluşturabilirsiniz. Verileriniz için şema ve örnekleme seçeneklerini de belirleyebilirsiniz.
 
-![Kaynak ayarları sekmesi](media/data-flow/source1.png "Kaynak ayarları sekmesi")
+![Kaynak ayarları sekmesi](media/data-flow/source1.png "kaynak ayarları sekmesi")
 
-**Şema kayması:** [Şema kayması](concepts-data-flow-schema-drift.md) , Data Factory 'nin, sütun değişikliklerini açıkça tanımlamaya gerek kalmadan veri akışlarınızda esnek şemaları yerel olarak işleme olanağıdır.
+**Şema DRFT:** [şema drını](concepts-data-flow-schema-drift.md) , veri akışlarınızda, sütun değişikliklerini açıkça tanımlamaya gerek kalmadan, esnek şemaları yerel olarak işleyebilme yeteneğidir.
 
 * Kaynak sütunlar sıklıkla **değişeyorsa şema Drçıkmasına Izin ver** kutusunu işaretleyin. Bu ayar tüm gelen kaynak alanlarının, iç dönüşümlerdeki dönüşümlere akmasını sağlar.
 
@@ -51,7 +51,7 @@ Kaynak eklendikten sonra **kaynak ayarları** sekmesini kullanarak yapılandır�
 
 **Atlama satırı sayısı:** Satırı atla sayısı alanı, veri kümesinin başlangıcında göz ardı edilecek satır sayısını belirtir.
 
-**Aşağıdakine** Kaynağınızdaki satır sayısını sınırlamak için örnekleme 'yi etkinleştirin. Hata ayıklama amacıyla kaynağınızdan verileri test ettiğinizde veya örnekleyebilirsiniz bu ayarı kullanın.
+**Örnekleme:** Kaynağınızdaki satır sayısını sınırlamak için örnekleme 'yi etkinleştirin. Hata ayıklama amacıyla kaynağınızdan verileri test ettiğinizde veya örnekleyebilirsiniz bu ayarı kullanın.
 
 Kaynağınızın doğru yapılandırıldığını doğrulamak için hata ayıklama modunu açın ve bir veri önizlemesi getirin. Daha fazla bilgi için bkz. [hata ayıklama modu](concepts-data-flow-debug-mode.md).
 
@@ -62,7 +62,7 @@ Kaynağınızın doğru yapılandırıldığını doğrulamak için hata ayıkla
 
 Azure Blob depolama veya Azure Data Lake Storage gibi dosya tabanlı bir veri kümesi kullanıyorsanız, **kaynak seçenekleri** sekmesi kaynağınızın dosyaları okuduğunu yönetmenizi sağlar.
 
-![Kaynak seçenekleri](media/data-flow/sourceOPtions1.png "Kaynak seçenekleri")
+![Kaynak seçenekleri](media/data-flow/sourceOPtions1.png "kaynağı seçenekleri")
 
 **Joker karakter yolu:** Bir joker karakter deseninin kullanılması, ADF 'nin eşleşen her klasör ve dosyada tek bir kaynak dönüşümünde döngüye girmesine neden olur. Bu, tek bir akış içinde birden çok dosyayı işlemek için etkili bir yoldur. Mevcut joker karakter deseniniz üzerine getirildiğinde görüntülenen + işaretiyle birden çok joker karakter eşleştirme deseni ekleyin.
 
@@ -70,24 +70,24 @@ Kaynak kapsayıcısından bir düzeniyle eşleşen bir dosya serisi seçin. Yaln
 
 Joker karakter örnekleri:
 
-* ```*```Herhangi bir karakter kümesini temsil eder
-* ```**```Özyinelemeli dizin iç içe geçirmeyi temsil eder
-* ```?```Bir karakteri değiştirir
-* ```[]```Köşeli parantezdeki daha fazla karakterden biriyle eşleşir
+* ```*``` herhangi bir karakter kümesini temsil eder
+* ```**``` özyinelemeli dizin iç içe geçirmeyi temsil eder
+* ```?``` bir karakter değiştirir
+* ```[]``` köşeli ayraçdaki daha fazla karakterden biriyle eşleşiyor
 
 * ```/data/sales/**/*.csv```/Data/Sales altındaki tüm CSV dosyalarını alır
-* ```/data/sales/20??/**```20. yüzdeki tüm dosyaları alır
-* ```/data/sales/2004/*/12/[XY]1?.csv```İki basamaklı bir sayı tarafından önekli X veya Y ile başlayan Aralık içinde 2004 içindeki tüm CSV dosyalarını alır
+* ```/data/sales/20??/**``` ' daki tüm dosyalar 20. yüzyıl içinde alınır
+* ```/data/sales/2004/*/12/[XY]1?.csv```, iki basamaklı bir sayı tarafından önekli X veya Y ile başlayan Aralık içinde 2004 içindeki tüm CSV dosyalarını alır
 
-**Bölüm kök yolu:** Dosya kaynağınızda bir ```key=value``` biçimde bölümlenmiş klasörler varsa (örneğin, Year = 2019), bu bölüm klasör ağacının en üst düzeyini veri akışı veri akışınızdaki bir sütun adına atayabilirsiniz.
+**Bölüm kök yolu:** Dosya kaynağınızda ```key=value``` biçiminde bölümlenmiş klasörler varsa (örneğin, Year = 2019), bu bölüm klasör ağacının en üst düzeyini veri akışı veri akışınızdaki bir sütun adına atayabilirsiniz.
 
 İlk olarak, bölümlenmiş klasörler ve okumak istediğiniz yaprak dosyaları olan tüm yolları içerecek şekilde bir joker karakter ayarlayın.
 
-![Bölüm kaynak dosyası ayarları](media/data-flow/partfile2.png "Bölüm dosyası ayarı")
+![Bölüm kaynak dosyası ayarları](media/data-flow/partfile2.png "bölüm dosyası ayarı")
 
 Klasör yapısının en üst düzeyinin ne olduğunu tanımlamak için bölüm kök yolu ayarını kullanın. Veri önizleme aracılığıyla verilerinizin içeriğini görüntülediğinizde, ADF 'nin klasör düzeylerinizde bulunan çözümlenmiş bölümleri eklemesini görürsünüz.
 
-![Bölüm kök yolu](media/data-flow/partfile1.png "Bölüm kök yolu önizlemesi")
+![Bölüm kök yolu](media/data-flow/partfile1.png "bölümü kök yolu önizlemesi")
 
 **Dosya listesi:** Bu bir dosya kümesidir. İşlemek için göreli yol dosyalarının bir listesini içeren bir metin dosyası oluşturun. Bu metin dosyasına işaret edin.
 
@@ -116,36 +116,36 @@ Bu durumda,/Data/Sales altında kaynağı bulunan tüm dosyalar/Backup/priorsale
 
 **Son değiştirme ölçütü:** Son değiştirilme tarihi için bir tarih aralığı belirterek hangi dosyaları işleyeistediğinizi filtreleyebilirsiniz. Tüm tarih zamanları UTC olarak. 
 
-### <a name="add-dynamic-content"></a>Dinamik içerik ekle
+### <a name="add-dynamic-content"></a>Dinamik içerik Ekle
 
 Tüm kaynak ayarları, [eşleme veri akışının dönüştürme ifade dili](data-flow-expression-functions.md)kullanılarak ifade olarak belirtilebilir. Dinamik içerik eklemek için Ayarlar panelinde alanların içine tıklayın veya üzerine gelin. **Dinamik Içerik eklemek**için köprüye tıklayın. Bu işlem, ifadeleri ifadeler, statik değişmez değerler veya parametreler kullanarak dinamik olarak ayarlayabileceğiniz ifade oluşturucuyu başlatır.
 
-![Parametreler](media/data-flow/params6.png "Parametreler")
+![Parametre](media/data-flow/params6.png "parametreleri")
 
 ## <a name="sql-source-options"></a>SQL kaynağı seçenekleri
 
 Kaynağınız SQL veritabanı veya SQL veri ambarı 'nda ise, **kaynak seçenekleri** sekmesinde SQL 'e özgü ek ayarlar bulunur. 
 
-**Girişinin** Kaynağınızı bir tabloya (eşdeğerini ```Select * from <table-name>```) işaret edip etmeyeceğinizi seçin ya da özel bir SQL sorgusu girin.
+**Giriş:** Kaynağı bir tabloya (```Select * from <table-name>```) işaret edip etmeyeceğinizi seçin ya da özel bir SQL sorgusu girin.
 
-**Sorgu**: Giriş alanında sorgu ' yı seçerseniz, kaynağınız için bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur.
+**Sorgu**: giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur.
 
-**Toplu iş boyutu**: Büyük verileri okuma işleminde öbek için bir toplu iş boyutu girin.
+**Toplu iş boyutu**: büyük verileri okuma işleminde öbek için bir toplu iş boyutu girin.
 
-**Yalıtım düzeyi**: Eşleme veri akışındaki SQL kaynakları için varsayılan değer read UNCOMMITTED ' dır. Yalıtım düzeyini buradaki değerlerden birine değiştirebilirsiniz:
+**Yalıtım düzeyi**: eşleme VERI akışındaki SQL kaynakları için varsayılan değer read UNCOMMITTED ' dır. Yalıtım düzeyini buradaki değerlerden birine değiştirebilirsiniz:
 * Okuma Işlendi
 * Kaydedilmeyen oku
 * Yinelenebilir okuma
 * Seri hale getirilebilir
 * Hiçbiri (yalıtım düzeyini yoksay)
 
-![Yalıtım düzeyi](media/data-flow/isolationlevel.png "Yalıtım düzeyi")
+![Yalıtım düzeyi](media/data-flow/isolationlevel.png "yalıtım düzeyi")
 
-## <a name="projection"></a>Projeksiyon
+## <a name="projection"></a>Yansıtma
 
 Veri kümelerinde bulunan şemalar gibi, bir kaynaktaki projeksiyon, kaynak verilerden veri sütunlarını, türlerini ve biçimlerini tanımlar. SQL ve Parquet gibi çoğu veri kümesi türü için bir kaynaktaki projeksiyon, veri kümesinde tanımlanan şemayı yansıtacak şekilde düzeltilir. Kaynak dosyalarınız kesin olarak türsüz (örneğin, Parquet dosyaları yerine düz CSV dosyaları), kaynak dönüşümünde her bir alan için veri türlerini tanımlayabilirsiniz.
 
-![Projeksiyon sekmesindeki ayarlar](media/data-flow/source3.png "Projeksiyon")
+![Projeksiyon sekmesi](media/data-flow/source3.png "projeksiyonundaki") ayarlar
 
 Metin dosyanızda tanımlı bir şema yoksa, Data Factory veri türlerini ve çıkarması için veri **türünü Algıla** ' yı seçin. Varsayılan veri biçimlerini otomatik algıla için **varsayılan biçimi tanımla** ' yı seçin. 
 
@@ -167,7 +167,7 @@ Kaynak tablonuzda, bölümlemek için bir sütun seçin. Bölüm sayısını da 
 
 Bir sorguya bağlı olarak bağlantıları bölümleyebilirsiniz seçeneğini belirleyebilirsiniz. Bir WHERE koşulun içeriğini girin. Örneğin Year > 1980 yazın.
 
-Eşleme veri akışı 'nda iyileştirme hakkında daha fazla bilgi için bkz. [optimize sekmesi](concepts-data-flow-optimize-tab.md).
+Eşleme veri akışı içinde iyileştirme hakkında daha fazla bilgi için, [optimizasyon sekmesine](concepts-data-flow-overview.md#optimize)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,38 +6,38 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: e2cd69d5977b8ad1d9be2a71a006579fe3abfd23
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: fc497837792075501bcd92f6ee07ad9ee4fe2dfa
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69971242"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027010"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory alter Row dönüşümü
 
 Satırlarda INSERT, DELETE, Update ve upsert ilkeleri ayarlamak için alter Row dönüşümünü kullanın. Tek-çok koşullarını ifade olarak ekleyebilirsiniz. Her satır, ilk eşleşen ifadeye karşılık gelen ilkeyle işaretlendiği için bu koşulların öncelik sırasına göre belirtilmesi gerekir. Bu koşulların her biri, eklenen, güncellenen, silinmekte veya toplanmakta olan bir satırın (veya satırların) oluşmasına neden olabilir. Alter Row, veritabanınıza göre hem DDL & DML eylemleri üretebilir.
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-![Satır ayarlarını değiştir](media/data-flow/alter-row1.png "Satır ayarlarını değiştir")
+
+Satır ![ayarlarını alter]Row(media/data-flow/alter-row1.png "Settings")
 
 > [!NOTE]
 > Değişiklik satırı dönüşümleri yalnızca veri akışındaki veritabanı havuzları üzerinde çalışır. Satırlara atadığınız eylemler (INSERT, Update, DELETE, upsert) hata ayıklama oturumları sırasında gerçekleşmeyecektir. Bir işlem hattına veri akışı yürütme görevi eklemeniz ve Veritabanı tablolarınızda alter Row ilkelerini uygulamak için ardışık düzen hata ayıklaması veya Tetikleyiciler kullanmanız gerekir.
 
 ## <a name="indicate-a-default-row-policy"></a>Varsayılan bir satır ilkesi belirtin
 
-Alter Row dönüşümü oluşturun ve koşulu `true()`olan bir satır ilkesi belirtin. Önceden tanımlanmış ifadelerden hiçbirini karşılamayan her satır, belirtilen satır ilkesi için işaretlenir. Varsayılan olarak, herhangi bir koşullu ifadeyi karşılamayan her satır için `Insert`işaretlenir.
+Alter Row dönüşümü oluşturun ve `true()` koşulunu içeren bir satır ilkesi belirtin. Önceden tanımlanmış ifadelerden hiçbirini karşılamayan her satır, belirtilen satır ilkesi için işaretlenir. Varsayılan olarak, herhangi bir koşullu ifadeyi karşılamayan her bir satır, `Insert` için işaretlenir.
 
-![Satır değiştirme bir ilke](media/data-flow/alter-row4.png "Satır değiştirme bir ilke")
+![Satır bir ilke]değiştirme(media/data-flow/alter-row4.png "satır bir ilke")
 
 > [!NOTE]
-> Tüm satırları tek bir ilkeyle işaretlemek için, bu ilke için bir koşul oluşturabilir ve koşulu olarak `true()`belirtebilirsiniz.
+> Tüm satırları tek bir ilkeyle işaretlemek için, bu ilke için bir koşul oluşturabilir ve koşulu `true()` olarak belirtebilirsiniz.
 
 ## <a name="view-policies"></a>İlkeleri görüntüle
 
 Değişiklik satırı ilkelerinizin sonuçlarını veri önizleme bölmesinde görüntülemek için veri akışı hata ayıklama modunu açın. Veri akışı hata ayıklama modunda alter satırı yürütülmesi, Hedefinizdeki DDL veya DML eylemleri oluşturmaz. Bu eylemlerin gerçekleşmesini sağlamak için, veri akışını bir işlem hattının içindeki veri akışı yürütme etkinliğinin içinde yürütün.
 
-![Satır Ilkelerini Değiştir](media/data-flow/alter-row3.png "Satır Ilkelerini Değiştir")
+Satır(media/data-flow/alter-row3.png "ilkeleri alter") ![Row]policies
 
 Bu, koşullarınıza göre her bir satırın durumunu doğrulamanızı ve görüntülemenizi sağlar. Veri akışında gerçekleşecek her bir INSERT, Update, DELETE ve upsert eylemi için, veri akışını bir işlem hattı içinde yürüttüğünüzde hangi eylemin gerçekleşeceğini belirten simge temsil eder.
 
@@ -45,7 +45,7 @@ Bu, koşullarınıza göre her bir satırın durumunu doğrulamanızı ve görü
 
 Alter Row 'un çalışması için bir veritabanı havuz türü olması gerekir. Havuz ayarları ' nda, değişiklik satırı koşullarınıza karşılık gelen her eylemi izin verilecek şekilde ayarlamanız gerekir.
 
-![Satır havuzunu Değiştir](media/data-flow/alter-row2.png "Satır havuzunu Değiştir")
+![Değişiklik satırı havuzu](media/data-flow/alter-row2.png "alter Row Sink")
 
 ADF veri akışında veritabanı havuzları ile ilgili varsayılan davranış satır eklemedir. Güncelleştirme, ön ek ve silme işlemlerine izin vermek istiyorsanız, eylemlere izin vermek için havuzda bu kutuları da denetlemeniz gerekir.
 

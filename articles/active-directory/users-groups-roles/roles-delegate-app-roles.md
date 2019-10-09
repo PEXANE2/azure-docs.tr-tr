@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382501"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025521"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory 'de uygulama kayıt izinleri verme
 
@@ -61,10 +61,10 @@ Bazı durumlarda, uygulama galerisinden oluşturulan kurumsal uygulamalarda hem 
 
 ### <a name="to-assign-an-owner-to-an-enterprise-application"></a>Bir kuruluş uygulamasına sahip atamak için
 
-1. Uygulama Yöneticisi veya kuruluş için bulut uygulama Yöneticisi için uygun bir hesapla [Azure AD kuruluşunuzda](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oturum açın.
-1. Kuruluşun [uygulama kayıtları sayfasında](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) , uygulamanın genel bakış sayfasını açmak için bir uygulama seçin.
-1. Uygulama sahiplerinin listesini görmek için **sahipler** ' i seçin.
-1. Uygulamaya eklenecek bir veya daha fazla sahip seçmek için **Ekle** ' yi seçin.
+1. Uygulama yöneticisine veya kuruluşun bulut uygulama yöneticisine uygun bir hesapla [Azure AD kuruluşunuzda](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) ' e oturum açın.
+1. Kuruluşun genel bakış sayfasını açmak için [uygulama kayıtları sayfasında](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) Bir uygulama seçin.
+1. Uygulama sahiplerinin listesini görmek için **sahipler** ' i seçin.
+1. Uygulamaya eklenecek bir veya daha fazla sahip seçmek için **Ekle** ' yi seçin.
 
 > [!IMPORTANT]
 > Kullanıcılar ve hizmet sorumluları, uygulama kayıtlarının sahipleri olabilir. Yalnızca kullanıcılar kurumsal uygulamaların sahipleri olabilir. Gruplar, birinin sahipleri olarak atanamaz.

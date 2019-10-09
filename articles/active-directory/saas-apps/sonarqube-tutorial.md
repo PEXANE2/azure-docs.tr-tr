@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b9e28f986f28bde6e46319ddb404d424c100726
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 571d8849fd7cae5c872a56182858848dbb43ef42
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174648"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026693"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Öğretici: Sonarqude ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Öğretici: Sonarqum ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, Sonarqude Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Sonarqude Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -103,19 +103,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Sonarqusize erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
@@ -123,7 +123,7 @@ Bu bölümde, Sonarqusize erişimi vererek Azure çoklu oturum açma özelliğin
 1. Uygulamalar listesinde **Sonarquin**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -139,7 +139,7 @@ Bu bölümde, Sonarqusize erişimi vererek Azure çoklu oturum açma özelliğin
 
 2. Sonarquin piyasa konumundan SAML eklentisini yükler.
 
-3. Sayfanın sol üst kısmında, **yönetici** ' ye tıklayın ve ardından **SAML**' ye gidin.
+3. Sayfanın sol üst kısmında, **yönetici** ' ye tıklayın ve ardından **SAML**' ye gidin.
 
 4. **SAML** sayfasında, aşağıdaki adımları uygulayın:
 
@@ -157,21 +157,21 @@ Bu bölümde, Sonarqusize erişimi vererek Azure çoklu oturum açma özelliğin
 
     f. Base64 Ile kodlanmış sertifikayı not defteri 'nde açın, içeriğini kopyalayın ve **sağlayıcı sertifikası** metin kutusuna yapıştırın.
 
-    g. **SAML Kullanıcı oturum açma özniteliği** metin kutusuna değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`girin.
+    g. **SAML Kullanıcı oturum açma özniteliği** metin kutusunda `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` değerini girin.
 
-    h. **SAML Kullanıcı adı öznitelik** metin kutusuna değeri `http://schemas.microsoft.com/identity/claims/displayname`girin.
+    h. **SAML Kullanıcı adı özniteliği** metin kutusuna `http://schemas.microsoft.com/identity/claims/displayname` değerini girin.
 
-    i. **SAML Kullanıcı e-posta özniteliği** metin kutusuna değeri `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`girin.
+    i. **SAML Kullanıcı e-posta özniteliği** metin kutusunda `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` değerini girin.
 
-    j. **Kaydet**’e tıklayın.
+    j. **Kaydet** düğmesine tıklayın.
 
 ### <a name="create-sonarqube-test-user"></a>Sonarqui test kullanıcısı oluşturma
 
-Bu bölümde, Sonarquin içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Sonarquin platformunda kullanıcıları eklemek için [Sonarqui istemci destek ekibi](https://www.sonarsource.com/support/) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi. 
+Bu bölümde, Sonarquin içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Sonarquin platformunda kullanıcıları eklemek için [Sonarqui istemci destek ekibi](https://www.sonarsource.com/support/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir. 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde Sonarque kutucuğunu tıklattığınızda, SSO 'yu ayarladığınız Sonarqude otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

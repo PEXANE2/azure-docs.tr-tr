@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141093"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029147"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure veri fabrikalarını görsel olarak izleme
 Azure Data Factory, bulut tabanlı bir veri tümleştirme hizmetidir. Veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için bulutta veri odaklı iş akışları oluşturmak için bu uygulamayı kullanabilirsiniz. Azure Data Factory kullanarak şunları yapabilirsiniz:
@@ -42,15 +42,15 @@ Liste görünümü, Data Factory işlem hatlarınız için her bir işlem hattı
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
-| İşlem Hattı Adı | İşlem hattının adı |
+| İşlem hattı adı | İşlem hattının adı |
 | Eylemler | Etkinlik çalıştırmalarını görüntülemek için kullanılabilen tek eylem |
 | Çalıştırma başlangıç | İşlem hattı çalışmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
-| Duration | Çalıştırma süresi (SS: DD: SS) |
+| Süre | Çalıştırma süresi (SS: DD: SS) |
 | Tetikleyen | El ile tetikleyici veya zamanlanan tetikleyici |
 | Durum | **Başarısız**, **başarılı**veya **devam ediyor** |
 | Parametreler | İşlem hattı çalıştırması için parametreler (ad/değer çiftleri) |
 | Hata | İşlem hattı çalıştırma hatası (varsa) |
-| Çalışma Kimliği | İşlem hattı çalıştırmasının KIMLIĞI |
+| Çalıştırma KIMLIĞI | İşlem hattı çalıştırmasının KIMLIĞI |
 
 ![İzleme işlem hattı çalıştırmaları için liste görünümü](media/monitor-visually/pipeline-runs.png)
 
@@ -59,13 +59,13 @@ Liste görünümü her bir işlem hattı çalıştırmasına karşılık gelen e
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
-| Etkinlik Adı | İşlem hattının içindeki etkinliğin adı |
-| Etkinlik Türü | Etkinliğin türü, örneğin **Copy**, **HDInsightSpark**veya **hdınsighthive** |
+| Etkinlik adı | İşlem hattının içindeki etkinliğin adı |
+| Etkinlik türü | Etkinliğin türü, örneğin **Copy**, **HDInsightSpark**veya **hdınsighthive** |
 | Çalıştırma başlangıç | Etkinlik çalıştırmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
-| Duration | Çalıştırma süresi (SS: DD: SS) |
+| Süre | Çalıştırma süresi (SS: DD: SS) |
 | Durum | **Başarısız**, **başarılı**veya **devam ediyor** |
 | Girdi | Etkinlik girişlerini açıklayan JSON dizisi |
-| Output | Etkinlik çıkışlarını açıklayan JSON dizisi |
+| Çıktı | Etkinlik çıkışlarını açıklayan JSON dizisi |
 | Hata | Etkinlik çalıştırma hatası (varsa) |
 
 ![İzleme etkinliği çalıştırmaları için liste görünümü](media/monitor-visually/activity-runs.png)
@@ -88,9 +88,9 @@ Sıra işlem hattı, çalışma başlangıç zamanına göre DESC/ASC 'de çalı
 
 | **Sütun adı** | **Açıklama** |
 | --- | --- |
-| İşlem Hattı Adı | İşlem hattının adı. Seçenekler, **son 24 saat**, **son hafta**ve **son 30 gün**için hızlı filtreler içerir. Veya özel bir tarih ve saat seçin. |
+| İşlem hattı adı | İşlem hattının adı. Seçenekler, **son 24 saat**, **son hafta**ve **son 30 gün**için hızlı filtreler içerir. Veya özel bir tarih ve saat seçin. |
 | Çalıştırma başlangıç | İşlem hattı çalıştırmasının başlangıç tarihi ve saati. |
-| Çalışma durumu | Durum tarafından çalıştırılan filtre: **Başarılı**, **başarısız**veya **devam ediyor**. |
+| Çalışma durumu | Durum, çalışma durumu: **başarılı**, **başarısız**veya **devam ediyor**. |
 
 ![Filtreleme seçenekleri](media/monitor-visually/filter.png)
 
@@ -161,7 +161,7 @@ Sol alt köşedeki **bilgi** simgesini seçin. Ardından, işlem hattınızı ve
 
 ## <a name="alerts"></a>Uyarılar
 
-Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak için Data Factory izleme sayfasında,**uyarıları & ölçümleri**  **izleyin** > ' ı seçin.
+Data Factory içinde desteklenen ölçümler üzerinde uyarı oluşturabilirsiniz. Başlamak için Data Factory izleme sayfasında**ölçümler &**  >  uyarılarını **İzle**' yi seçin.
 
 ![Data Factory Izleyici sayfası](media/monitor-visually/alerts01.png)
 
@@ -171,7 +171,7 @@ Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki vide
 
 ### <a name="create-alerts"></a>Uyarı oluşturma
 
-1.  Yeni bir uyarı oluşturmak için **Yeni uyarı kuralı** ' nı seçin.
+1.  Yeni bir uyarı oluşturmak için **Yeni uyarı kuralı** ' nı seçin.
 
     ![Yeni uyarı kuralı düğmesi](media/monitor-visually/alerts02.png)
 

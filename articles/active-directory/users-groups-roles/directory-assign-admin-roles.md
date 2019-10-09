@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27b5a8a7667419e0e3345fb453eefd840368b643
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
-ms.translationtype: HT
+ms.openlocfilehash: 3992ea29d3d81262b5d9b8b126c8fca54feca67d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001681"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026389"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -210,6 +210,22 @@ Bu role sahip olan kullanıcılar, Azure Active Directory ' deki tüm yönetim �
 > [!NOTE]
 > Microsoft Graph API, Azure AD Graph API ve Azure AD PowerShell 'de, bu rol "Şirket Yöneticisi" olarak tanımlanır. [Azure Portal](https://portal.azure.com), "genel yönetici" dir.
 >
+>
+
+### <a name="global-readerglobal-reader-permissions"></a>[Genel okuyucu](#global-reader-permissions)
+
+Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönetim bilgilerini okuyabilir, ancak yönetim eylemlerini alamaz. Genel okuyucu genel yöneticiye salt okunurdur. Planlama, denetim veya araştırmalar için genel yönetici yerine genel okuyucu atayın. Küresel bir yönetim rolünü çağırmadan çalışmayı kolaylaştırmak için Exchange Yöneticisi gibi diğer sınırlı yönetici rolleriyle birlikte genel okuyucu kullanın. Küresel okuyucu yeni Microsoft 365 Yönetim Merkezi, Exchange Yönetim Merkezi, takımlar Yönetim Merkezi, Güvenlik Merkezi, Uyumluluk Merkezi, Azure AD Yönetim Merkezi ve cihaz yönetimi Yönetim Merkezi ile birlikte kullanılabilir. 
+
+> [!NOTE]
+> Genel okuyucu rolünde şu kısıtlamalar vardır-
+>* SharePoint Yönetim Merkezi-SharePoint Yönetim Merkezi, genel okuyucu rolünü desteklemez. Bu nedenle, [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage)'Nde yönetim merkezleri altında sol bölmede ' SharePoint ' öğesini görmezsiniz. Https://{Tenant Name}-admin.sharepoint.com adresine gittiğinizde erişim reddedildi. 
+>* [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -genel okuyucu, bir kurumsal uygulamanın sağlama modunu okuyamıyor.
+>* [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, custıcı kasa isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde destek altında müşteri kasası istekleri sekmesini bulamacaksınız.
+>* [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nde sınıflandırma altında, sol bölmede duyarlık etiketleri, bekletme etiketleri ve etiket Analizi sekmeleri bulmayacak.
+>* [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu, takım yaşam döngüsünü, raporları & çağrı ANALIZI, IP telefon cihaz yönetimi ve Uygulama Kataloğu 'nu okuyamıyor.
+>* [Privileged Access Management (Pam)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) genel okuyucuyu desteklemez.
+> 
+> Bu özellikler için destek zaman içinde gelecektir.
 >
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Konuk davetci](#guest-inviter-permissions)
@@ -966,6 +982,76 @@ Kimlik sağlayıcılarını doğrudan federasyonda kullanılmak üzere yapıland
 | --- | --- |
 | Microsoft. AAD. B2C/IdentityProviders/allTasks | Azure Active Directory B2C kimlik sağlayıcılarını okuyun ve yapılandırın. |
 
+### <a name="global-reader-permissions"></a>Genel okuyucu izinleri
+Genel yöneticinin yapabileceği her şeyi okuyabilir, ancak düzenleyemez. 
+
+> [!NOTE]
+> Bu rol Azure Active Directory dışında ek izinlere sahiptir. Daha fazla bilgi için yukarıdaki [rol açıklaması](#global-reader) konusuna bakın.
+>
+>
+
+| **Eylemler** | **Açıklama** |
+| --- | --- |
+| Microsoft. Commerce. faturalandırma/allEntities/okuma   | Office 365 faturalandırması 'nın tüm yönlerini okuyun. |
+| Microsoft. Directory/Yönetimtiveunits/Basic/Read    | Azure Active Directory ' de Yönetimtiveunits üzerindeki temel özellikleri okuyun. |
+| Microsoft. Directory/Yönetimtiveunits/Üyeler/Read  | Azure Active Directory içindeki Yönetimtiveunits. Members özelliğini okuyun. |
+| Microsoft. Directory/uygulamalar/temel/okuma   | Azure Active Directory içindeki uygulamalarda temel özellikleri okuyun. |
+| Microsoft. Directory/uygulamalar/sahipler/okuma  | Azure Active Directory içindeki Applications. Owners özelliğini okuyun. |
+| Microsoft. Directory/uygulamalar/ilkeler/okuma    | Azure Active Directory içindeki Applications. Policies özelliğini okuyun. |
+| Microsoft. Directory/Contacts/Basic/Read   | Azure Active Directory kişilerdeki temel özellikleri okuyun. |
+| Microsoft. Directory/kiþiler/memberOf/Read    | Azure Active Directory içinde Contacts. memberOf özelliğini okuyun. |
+| Microsoft. Directory/sözleşmeleri/temel/okuma  | Azure Active Directory 'daki sözleşmelerdeki temel özellikleri okuyun. |
+| Microsoft. Directory/Devices/Basic/Read    | Azure Active Directory cihazlarda temel özellikleri okuyun. |
+| Microsoft. Directory/Devices/memberOf/Read | Azure Active Directory içindeki Devices. memberOf özelliğini okuyun. |
+| Microsoft. Directory/Devices/kayıt bilgileri/okuma | Azure Active Directory içindeki Devices. Kaydedeteredowners özelliğini okuyun. |
+| Microsoft. Directory/Devices/registeredUsers/Read  | Azure Active Directory içindeki Devices. registeredUsers özelliğini okuyun. |
+| Microsoft. Directory/directoryRoles/Basic/Read | Azure Active Directory 'de directoryRoles temel özelliklerini okuyun. |
+| Microsoft. Directory/directoryRoles/eli, Lemembers/Read   | Azure Active Directory directoryRoles. Eli, Lemembers özelliğini okuyun. |
+| Microsoft. Directory/directoryRoles/Members/Read   | Azure Active Directory içindeki directoryRoles. Members özelliğini okuyun. |
+| Microsoft. Directory/Domains/Basic/Read    | Azure Active Directory etki alanlarında temel özellikleri okuyun. |
+| Microsoft. Directory/Groups/Approtaatamalar/Read    | Azure Active Directory groups. Approtaatamalar özelliğini okuyun. |
+| Microsoft. Directory/Groups/Basic/Read | Azure Active Directory gruplardaki temel özellikleri okuyun. |
+| Microsoft. Directory/Groups/hiddenMembers/Read | Azure Active Directory gruplar. hiddenMembers özelliğini okuyun. |
+| Microsoft. Directory/gruplar/memberOf/Read  | Azure Active Directory groups. memberOf özelliğini okuyun. |
+| Microsoft. Directory/gruplar/Üyeler/okuma   | Azure Active Directory gruplar. Members özelliğini okuyun. |
+| Microsoft. Directory/gruplar/Owners/Read    | Azure Active Directory içindeki groups. Owners özelliğini okuyun. |
+| Microsoft. Directory/Groups/Settings/Read  | Azure Active Directory içindeki groups. Settings özelliğini okuyun. |
+| Microsoft. Directory/groupSettings/Basic/Read  | Azure Active Directory groupSettings üzerindeki temel özellikleri okuyun. |
+| Microsoft. Directory/groupSettingTemplates/Basic/Read  | Azure Active Directory groupSettingTemplates üzerindeki temel özellikleri okuyun. |
+| Microsoft. Directory/oAuth2PermissionGrants/Basic/Read | Azure Active Directory içindeki temel özellikleri okuyun oAuth2PermissionGrants. |
+| Microsoft. Directory/kuruluş/temel/okuma   | Azure Active Directory içindeki kuruluştaki temel özellikleri okuyun. |
+| Microsoft. Directory/Organization/trustedCAsForPasswordlessAuth/okuma   | Azure Active Directory içinde Organization. trustedCAsForPasswordlessAuth özelliğini okuyun. |
+| Microsoft. Directory/policies/standart/Read    | Azure Active Directory içindeki standart ilkeleri okuyun. |
+| Microsoft. Directory/Roleatamalar/temel/okuma    | Azure Active Directory içindeki Roleatamalarındaki temel özellikleri okuyun. |
+| Microsoft. Directory/roleDefinitions/temel/okuma    | Azure Active Directory içindeki roleDefinitions ' daki temel özellikleri okuyun. |
+| Microsoft. Directory/Servicesorumlularını/appRoleAssignedTo/Read  | Azure Active Directory Servicesorumlularını. appRoleAssignedTo özelliğini okuyun. |
+| Microsoft. Directory/Servicesorumlularını/Approtaatamalar/okuma | Azure Active Directory Servicesorumlularını. Approtaatamalar özelliğini okuyun. |
+| Microsoft. Directory/Servicesorumlular/Basic/Read  | Azure Active Directory içindeki Servicesorumlularını temel özelliklerini okuyun. |
+| Microsoft. Directory/Servicesorumlularını/memberOf/Read   | Azure Active Directory Servicesorumlularını. memberOf özelliğini okuyun. |
+| Microsoft. Directory/Servicesorumlularını/oAuth2PermissionGrants/Basic/Read   | Azure Active Directory Servicesorumlularını. oAuth2PermissionGrants özelliğini okuyun. |
+| Microsoft. Directory/Servicesorumlularını/ownedObjects/Read   | Azure Active Directory Servicesorumlularını. ownedObjects özelliğini okuyun. |
+| Microsoft. Directory/Servicesorumlularını/Owners/Read | Azure Active Directory içindeki Servicesorumlularını. Owners özelliğini okuyun. |
+| Microsoft. Directory/Servicesorumlularını/ilkeleri/okuma   | Azure Active Directory içindeki Servicesorumlularını. Policies özelliğini okuyun. |
+| Microsoft. Directory/Signınreports/allProperties/Read  | Azure Active Directory içindeki Signınreports 'ta tüm özellikleri (ayrıcalıklı özellikler dahil) okuyun. |
+| Microsoft. Directory/subscribedSkus/Basic/Read | Azure Active Directory içindeki temel özellikleri okuyun subscribedSkus. |
+| Microsoft. Directory/Users/Approtaatamalar/okuma | Azure Active Directory içindeki Users. Approtaatamalar özelliğini okuyun. |
+| Microsoft. Directory/Users/Basic/Read  | Azure Active Directory kullanıcıların temel özelliklerini okuyun. |
+| Microsoft. Directory/Users/directReports/Read  | Azure Active Directory Users. directReports özelliğini okuyun. |
+| Microsoft. Directory/Users/Manager/okuma    | Azure Active Directory içindeki Users. Manager özelliğini okuyun. |
+| Microsoft. Directory/kullanıcılar/memberOf/Read   | Azure Active Directory içindeki Users. memberOf özelliğini okuyun. |
+| Microsoft. Directory/Users/oAuth2PermissionGrants/Basic/Read   | Azure Active Directory Users. oAuth2PermissionGrants özelliğini okuyun. |
+| Microsoft. Directory/Users/ownedDevices/Read   | Azure Active Directory Users. ownedDevices özelliğini okuyun. |
+| Microsoft. Directory/Users/ownedObjects/Read   | Azure Active Directory Users. ownedObjects özelliğini okuyun. |
+| Microsoft. Directory/Users/registeredDevices/Read  | Azure Active Directory Users. registeredDevices özelliğini okuyun. |
+| Microsoft. Directory/Users/strongAuthentication/Read   | MFA kimlik bilgileri gibi güçlü kimlik doğrulama özelliklerini okuyun. |
+| Microsoft. office365. Exchange/allEntities/okuma | Exchange Online 'ın tüm yönlerini okuyun. |
+| Microsoft. office365. messageCenter/messages/okundu   | Microsoft. office365. messageCenter içindeki iletileri okuyun. |
+| Microsoft. office365. messageCenter/securityMessages/Read   | Microsoft. office365. messageCenter içindeki securityMessages 'i okuyun. |
+| Microsoft. office365. protectionCenter/allEntities/okuma | Office 365 Koruma Merkezi 'nin tüm yönlerini okuyun. |
+| Microsoft. office365. Securityzorluk Ancecenter/allEntities/Read | Microsoft. office365. Securitykarmaşıkancecenter içindeki tüm standart özellikleri okuyun. |
+| Microsoft. office365. usageReports/allEntities/okuma | Office 365 kullanım raporlarını okuyun. |
+| Microsoft. office365. webPortal/allEntities/standart/okuma   | Microsoft. office365. webPortal 'daki tüm kaynaklarda standart özellikleri okuyun. |
+
 ### <a name="guest-inviter-permissions"></a>Konuk Davetleyici izinleri
 ' Üyeler konukları davet edebilir ' ayarından bağımsız olarak Konuk kullanıcıları davet edebilir.
 
@@ -1540,6 +1626,7 @@ Dizin eşitleme hesapları | Dizin eşitleme hesapları | d29b2b05-8046-44ba-875
 Dizin yazarları | Dizin yazarları | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange hizmeti Yöneticisi | Exchange Yöneticisi | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Dış kimlik sağlayıcısı Yöneticisi | Dış kimlik sağlayıcısı Yöneticisi | be2f45a1-457d-42af-a067-6ec1fa63bc45
+Genel okuyucu | Genel okuyucu | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Konuk davetci | Konuk davetci | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Yardım Masası Yöneticisi | Parola Yöneticisi | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune Hizmet Yöneticisi | Intune Yöneticisi | 3a2c62db-5318-420d-8d74-23afee5d9d5

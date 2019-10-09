@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/2/2019
+ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6776d7ff21599a1cfab47fd0e4ab0fbef5d3d8c
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827095"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025840"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: sürüm sürümü geçmişi
 Azure Active Directory (Azure AD) ekibi, yeni özellikler ve işlevlerle Azure AD Connect düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -45,6 +45,8 @@ Azure AD Connect sürümlerinin hepsi otomatik yükseltme için kullanılabilir 
 
 ## <a name="14250"></a>1.4.25.0
 
+
+
 ### <a name="release-status"></a>Yayın durumu
 9/28/2019: kiracı seçmek için otomatik yükseltme için yayınlandı. İndirileceği için kullanılamaz.
 
@@ -56,12 +58,15 @@ Belirli koşullarda, 1.4.18.0 sürümüne otomatik olarak yükseltilen sunucular
 
 ## <a name="14180"></a>1.4.18.0
 
+>[!WARNING]
+>Bu Azure AD Connect sürümüne yükselttikten sonra bazı müşterilerin mevcut karma Azure AD 'ye katılmış cihazlarda bir sorunla karşılaşmakta olduğu bir olay araştırıyoruz. Bu sorunların temel nedeni tam olarak anlaşılana ve hafiflene kadar, karma Azure AD JOIN 'i dağıtan müşterilere bu sürüme yükseltmeyi erteleyin. Daha fazla bilgi mümkün olan en kısa sürede sunulacaktır.
+
 >[!IMPORTANT]
 >Bu Azure AD Connect, bazı müşteriler Windows cihazlarının bazı veya tümünün Azure AD 'den kaybolabileceğini görebilir. Bu cihaz kimlikleri, koşullu erişim yetkilendirmesi sırasında Azure AD tarafından kullanılmadığından bu sorun için bir neden değildir. Daha fazla bilgi için bkz [. Azure AD Connect 1.4. xx. x Device disappearnce 'ı anlama](reference-connect-device-disappearance.md)
 
 
 ### <a name="release-status"></a>Yayın durumu
-9/25/2019: otomatik yükseltme ve indirme için yayınlandı
+9/25/2019: olay araştırması tamamlanana kadar el ile indirme işleminden kaldırılmıştır.
 
 ### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
 - Yeni sorun giderme araçları, "kullanıcının eşitlemesine yönelik", "Grup eşitlenmiyor" veya "grup üyesi eşitlenmiyor" senaryolarındaki sorunları gidermeye yardımcı olur.

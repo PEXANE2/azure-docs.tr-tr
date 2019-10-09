@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 6ff273236f9f8465de9ec0cda89ed3ff8996ecec
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932655"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025486"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -23,16 +23,16 @@ Azure Kubernetes hizmeti (AKS) kümeleri oluştururken veya yönetirken, zaman z
 [Kubernetes kümelerinde sorun gidermeye yönelik resmi kılavuzunu](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)deneyin.
 Ayrıca, pods, düğümler, kümeler ve diğer özelliklerle ilgili sorunları gidermeye yönelik bir Microsoft mühendis tarafından yayımlanan bir [sorun giderme kılavuzu](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)vardır.
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Oluşturma veya yükseltme sırasında "Kota aşıldı" hatası alıyorum. Ne yapmalıyım? 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Oluşturma veya yükseltme sırasında "Kota aşıldı" hatası alıyorum. Ne yapmam gerekir? 
 
 [Çekirdek istemeniz](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)gerekir.
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>AKS için düğüm başına en fazla düğüm sayısı ayarı nedir?
 
 Azure portal bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm sayısı ayarı varsayılan olarak 30 ' dur.
-Azure CLı 'de bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm ayarı varsayılan olarak 110 ' dir. (Azure CLı 'nın en son sürümünü kullandığınızdan emin olun). Bu varsayılan ayar, `–-max-pods` `az aks create` komutunda bayrağı kullanılarak değiştirilebilir.
+Azure CLı 'de bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm ayarı varsayılan olarak 110 ' dir. (Azure CLı 'nın en son sürümünü kullandığınızdan emin olun). Bu varsayılan ayar, `az aks create` komutunda `–-max-pods` bayrağı kullanılarak değiştirilebilir.
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmalıyım?
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmam gerekir?
 
 Azure CNı (Gelişmiş ağ) kullanılıyorsa, AKS, yapılandırılmış düğüm başına "en büyük pods" temelinde IP 'yi önceden ayırır. Bir AKS kümesindeki düğümlerin sayısı 1 ile 110 arasında bir yerde olabilir. Düğüm başına yapılandırılmış en fazla düğüm sayısına bağlı olarak, alt ağ boyutu "düğüm sayısının ürünü ve düğüm başına en fazla Pod" değerinden büyük olmalıdır. Aşağıdaki temel denklem şunları özetler:
 
@@ -40,12 +40,12 @@ Alt ağ boyutu > kümedeki düğümlerin sayısı (gelecekteki ölçeklendirme g
 
 Daha fazla bilgi için bkz. [kümeniz IÇIN IP adresleme planlaması](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Pod My CrashLoopBackOff modunda takılmış. Ne yapmalıyım?
+## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Pod My CrashLoopBackOff modunda takılmış. Ne yapmam gerekir?
 
 Pod 'un bu modda takılmasının çeşitli nedenleri olabilir. Şöyle görünebilir:
 
-* Kullanarak `kubectl describe pod <pod-name>`Pod kendisini.
-* Kullanılarak `kubectl log <pod-name>`Günlükler.
+* @No__t-0 kullanarak Pod kendisini kullanın.
+* @No__t-0 kullanılarak Günlükler.
 
 Pod sorunlarını giderme hakkında daha fazla bilgi için bkz. [uygulamalarda hata ayıklama](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods).
 
@@ -53,42 +53,42 @@ Pod sorunlarını giderme hakkında daha fazla bilgi için bkz. [uygulamalarda h
 
 Ne yazık ki, mevcut kümelerde rol tabanlı erişim denetimi 'ni (RBAC) etkinleştirmek Şu anda desteklenmiyor. Açıkça yeni kümeler oluşturmanız gerekir. CLı kullanıyorsanız, RBAC varsayılan olarak etkindir. AKS portalını kullanıyorsanız, oluşturma iş akışında RBAC 'yi etkinleştirmek için iki durumlu bir düğme bulunur.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Azure CLı 'yi varsayılan olarak veya Azure portal kullanarak ve şimdi Kubernetes panosunda çok sayıda uyarı görmem için RBAC ile etkinleştirilen bir küme oluşturdum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmalıyım?
+## <a name="i-created-a-cluster-with-rbac-enabled-by-using-either-the-azure-cli-with-defaults-or-the-azure-portal-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Azure CLı 'yi varsayılan olarak veya Azure portal kullanarak ve şimdi Kubernetes panosunda çok sayıda uyarı görmem için RBAC ile etkinleştirilen bir küme oluşturdum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmam gerekir?
 
 Panodaki uyarıların nedeni, kümenin RBAC ile etkin hale gelir ve erişim varsayılan olarak devre dışı bırakılmıştır. Genel olarak bu yaklaşım iyi bir uygulamadır çünkü panonun tüm kullanıcıları için varsayılan olarak pozlaması güvenlik tehditlerine neden olabilir. Panoyu hala etkinleştirmek istiyorsanız, [Bu blog gönderisine](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)ilişkin adımları izleyin.
 
-## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Panoya bağlanamıyorum. Ne yapmalıyım?
+## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>Panoya bağlanamıyorum. Ne yapmam gerekir?
 
-Küme dışında hizmetinize erişmenin en kolay yolu `kubectl proxy`, ana bilgisayar bağlantı noktası 8001 ile Kubernetes API sunucusuna gönderilen isteklerin proxy 'sidir. Buradan, API sunucusu hizmetinize proxy gönderebilir: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
+Küme dışında hizmetinize erişmenin en kolay yolu, Kubernetes API sunucusuna localhost bağlantı noktası 8001 ' e gönderilen isteklerin proxy 'sini @no__t çalışacaktır. Buradan, API sunucusu hizmetinize proxy gönderebilir: `http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`.
 
 Kubernetes panosunu görmüyorsanız, `kube-proxy` Pod 'un `kube-system` ad alanında çalışıp çalışmadığını denetleyin. Çalışır durumda değilse, Pod 'yi silin ve yeniden başlatılır.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmalıyım?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmam gerekir?
 
-Varsayılan ağ güvenlik grubunun değiştirilmediğinden ve API sunucusuyla bağlantı için 22 ve 9000 bağlantı noktasının açık olduğundan emin olun. Pod 'ın, `kubectl get pods --namespace kube-system` komutunu kullanarak *kuin-System* ad alanında çalışıp çalışmadığını denetleyin. `tunnelfront` Değilse, Pod 'ın silinmesini zorla ve yeniden başlatılır.
+Varsayılan ağ güvenlik grubunun değiştirilmediğinden ve API sunucusuyla bağlantı için 22 ve 9000 bağlantı noktasının açık olduğundan emin olun. @No__t-2 komutunu kullanarak *kuin-System* ad alanında `tunnelfront` Pod 'un çalışıp çalışmadığını denetleyin. Değilse, Pod 'ın silinmesini zorla ve yeniden başlatılır.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>Yükseltmeye veya ölçeklendirmeye çalışıyorum ve bir "ileti alıyorum: ' ImageReference ' özelliğinin değiştirilmesine izin verilmiyor "hatası. Nasıl yaparım? bu sorun düzeltilsin mi?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>"ImageReference" özelliğinin değiştirilmesine izin verilmez ve "bir ileti alıyorum" hatası alıyorum. Nasıl yaparım? bu sorun düzeltilsin mi?
 
 AKS kümesi içindeki aracı düğümlerinde bulunan etiketleri değiştirdiğiniz için bu hatayı alabilirsiniz. MC_ * kaynak grubundaki kaynakların ve diğer özelliklerinin değiştirilmesi ve silinmesi, beklenmeyen sonuçlara neden olabilir. AKS kümesindeki MC_ * grubu altındaki kaynakları değiştirmek, hizmet düzeyi hedefini (SLO) keser.
 
 ## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>Kümemin başarısız durumunda olduğunu ve yükseltme ya da ölçeklendirmeyi düzeltilinceye kadar çalışmayacak
 
-*Bu sorun giderme yardımı şuradan yönlendirilir https://aka.ms/aks-cluster-failed*
+*Bu sorun giderme yardımı https://aka.ms/aks-cluster-failed ' den yönlendirilir*
 
 Bu hata, kümeler birden çok nedenden dolayı başarısız bir durum girerken oluşur. Daha önce başarısız olan işlemi yeniden denemeden önce kümenizin başarısız durumunu çözümlemek için aşağıdaki adımları izleyin:
 
-1. Kümenin `failed` durumuolmadığından`scale`veişlemlerbaşarılıolmayacaktır. `upgrade` Ortak kök sorunları ve çözümleri şunları içerir:
+1. Küme `failed` durumundan çıkana kadar, `upgrade` ve `scale` işlemleri başarılı olmayacaktır. Ortak kök sorunları ve çözümleri şunları içerir:
     * **Yetersiz işlem (CRP) kotasıyla**ölçekleme. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından, ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir işlem kotası artışı istemek için bu adımları](../azure-supportability/resource-manager-core-quotas-request.md) izleyin.
     * Gelişmiş ağ ve **yetersiz alt ağ (ağ) kaynaklarıyla**bir kümeyi ölçeklendirin. Çözümlemek için, önce kümenizi kotanın içindeki kararlı bir hedef durumuna ölçeklendirin. Ardından ilk kota limitlerinin ötesinde daha fazla ölçeklendirmeyi denemeden önce [bir kaynak kotası artışı istemek için bu adımları](../azure-resource-manager/resource-manager-quota-errors.md#solution) izleyin.
 2. Yükseltme hatasının temeldeki nedeni çözümlendikten sonra, kümenizin başarılı bir durumda olması gerekir. Başarılı bir durum doğrulandıktan sonra, özgün işlemi yeniden deneyin.
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Bu durumun yükseltilme veya ölçeklendirilmesi sırasında hata alıyorum, bu durum kümemdeki Şu anda yükseltilmekte veya yükseltme başarısız oldu
 
-*Bu sorun giderme yardımı şuradan yönlendirilir https://aka.ms/aks-pending-upgrade*
+*Bu sorun giderme yardımı https://aka.ms/aks-pending-upgrade ' den yönlendirilir*
 
 Tek düğümlü havuz veya [birden çok düğüm](use-multiple-node-pools.md) havuzu içeren bir küme ile bir kümede yükseltme ve ölçeklendirme işlemleri birbirini dışlıyor. Aynı anda yükseltme ve ölçeklendirme için bir küme veya düğüm havuzunuz olamaz. Bunun yerine, her işlem türünün aynı kaynaktaki bir sonraki istekten önce hedef kaynakta tamamlaması gerekir. Sonuç olarak, etkin yükseltme veya ölçeklendirme işlemleri gerçekleşirken veya denendiğinde ve daha sonra başarısız olduğunda işlemler sınırlıdır. 
 
-Kümenizde ayrıntılı durum almak `az aks show -g myResourceGroup -n myAKSCluster -o table` için sorunu tanılamaya yardımcı olmak için. Sonuca göre:
+Kümenizde ayrıntılı durum almak için @no__t çalıştırma sorunu tanılamaya yardımcı olmak için-0. Sonuca göre:
 
 * Küme etkin bir şekilde yükseltildiğinde, işlem sonlanana kadar bekleyin. Başarılı olduysa, daha önce başarısız olan işlemi yeniden deneyin.
 * Kümede yükseltme başarısız olursa, önceki bölümde açıklanan adımları izleyin.
@@ -105,9 +105,9 @@ AKS kümenizin, aşağıdaki örnekte olduğu gibi bir sanal makine ölçek küm
 
 **AgentPool ' agentpool ' otomatik ölçeklendirmeyi etkin olarak ayarladı, ancak sanal makine ölçek kümelerinde değil**
 
-Küme otomatik veya birden çok düğüm havuzu gibi özellikleri kullanmak için, sanal makine ölçek kümelerini kullanan AKS kümelerinin oluşturulması gerekir. Sanal makine ölçek kümelerine bağımlı olan özellikleri kullanmayı denerseniz ve normal, sanal olmayan bir makine ölçek kümesi AKS kümesini hedeflerseniz hatalar döndürülür. Sanal makine ölçek kümesi desteği şu anda AKS 'de önizlemededir.
+Küme otomatik veya birden çok düğüm havuzu gibi özellikleri kullanmak için, sanal makine ölçek kümelerini kullanan AKS kümelerinin oluşturulması gerekir. Sanal makine ölçek kümelerine bağımlı olan özellikleri kullanmayı denerseniz ve normal, sanal olmayan bir makine ölçek kümesi AKS kümesini hedeflerseniz hatalar döndürülür.
 
-Sanal makine ölçek kümesi özelliği önizlemesine doğru kaydolmak ve bir AKS kümesi oluşturmak için uygun belge içindeki *başlamadan önce* ' i izleyin:
+Bir AKS kümesini doğru şekilde oluşturmak için uygun belge içindeki *başlamadan önce* ' i izleyin:
 
 * [Küme otomatik Scaler 'ı kullanma](cluster-autoscaler.md)
 * [Birden çok düğüm havuzu oluşturma ve kullanma](use-multiple-node-pools.md)
@@ -118,7 +118,7 @@ Sanal makine ölçek kümesi özelliği önizlemesine doğru kaydolmak ve bir AK
 
 Adlandırma kısıtlamaları hem Azure platformu hem de AKS tarafından uygulanır. Bir kaynak adı veya parametresi bu kısıtlamaların birini keserse, farklı bir giriş sağlamanızı isteyen bir hata döndürülür. Aşağıdaki ortak adlandırma yönergeleri geçerlidir:
 
-* AKS *Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. Otomatik olarak `MC_resourceGroupName_resourceName_AzureRegion` oluşturulan sözdiziminin 80 karakterden büyük olmaması gerekir. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın.
+* AKS *Mc_* kaynak grubu adı, kaynak grubu adını ve kaynak adını birleştirir. @No__t-0 ' ın otomatik olarak oluşturulan sözdizimi 80 karakterden büyük olmamalıdır. Gerekirse, kaynak grubu adınızın veya AKS kümesi adınızın uzunluğunu azaltın.
 * *Dnspredüzeltmesinin* alfasayısal değerlerle başlaması ve bitmesi gerekir. Geçerli karakterler alfasayısal değerleri ve kısa çizgileri (-) içerir. *Dnspredüzeltmesini* nokta (.) gibi özel karakterler içeremez.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Küme oluşturmaya, güncelleştirmeye, ölçeklendirmeye, silmeye veya yükseltmeye çalışırken hata alıyorum, devam eden başka bir işlem olduğundan bu işleme izin verilmiyor.
@@ -144,6 +144,6 @@ Bunun için aşağıdaki geçici çözümleri kullanın:
 
 ## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>Çıkış trafiğinizi kısıtladıktan sonra hata alıyorum
 
-AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe bağlı olarak önerilen](limit-egress-traffic.md) giden bağlantı noktaları/ağ kuralları ve aks için FQDN/uygulama kuralları vardır. Ayarlarınız bu kuralların herhangi biriyle çakışıyorsa, belirli `kubectl` komutları çalıştıramayabilir. AKS kümesi oluştururken de hata görebilirsiniz.
+AKS kümesinden çıkış trafiği kısıtlandığında, [gerekli ve isteğe bağlı olarak önerilen](limit-egress-traffic.md) giden bağlantı noktaları/ağ kuralları ve aks için FQDN/uygulama kuralları vardır. Ayarlarınız bu kuralların herhangi biriyle çakışıyorsa, bazı `kubectl` komutlarını çalıştıramayabilir. AKS kümesi oluştururken de hata görebilirsiniz.
 
 Ayarlarınızın gerekli veya isteğe bağlı önerilen giden bağlantı noktaları/ağ kuralları ve FQDN/uygulama kuralları ile çakışmadığından emin olun.

@@ -6,16 +6,16 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: e938baa21f9d2351b3270f4fa2411bf8ecb547d4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: bac270dc0d49c0eaa8c01b030256aa9bb597db80
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972807"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029871"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Sorgu deposu ile MySQL için Azure veritabanı performansını izleme
 
-**Uygulama hedefi:**  Mysql Için azure veritabanı 5,7
+**Uygulama hedefi:** MySQL için Azure veritabanı 5,7
 
 > [!IMPORTANT]
 > Sorgu deposu önizlemededir.
@@ -37,14 +37,14 @@ Sorgu deposu bir katılım özelliğidir, bu nedenle bir sunucuda varsayılan ol
 ### <a name="enable-query-store-using-the-azure-portal"></a>Azure portal kullanarak sorgu deposunu etkinleştirin
 
 1. Azure portal oturum açın ve MySQL için Azure veritabanı sunucunuzu seçin.
-1. Menünün **ayarlar** Bölümünde **sunucu parametreleri**  ' i seçin.
+1. Menüdeki **Ayarlar** bölümünde **sunucu parametreleri** ' ni seçin.
 1. Query_store_capture_mode parametresini arayın.
-1. Değeri tümü ve **Kaydet**olarak ayarlayın.
+1. Değeri tümü ve **Kaydet**olarak ayarlayın.
 
 Sorgu deponuzda bekleme istatistiklerini etkinleştirmek için:
 
 1. Query_store_wait_sampling_capture_mode parametresini arayın.
-1. Değeri tümü ve **Kaydet**olarak ayarlayın.
+1. Değeri tümü ve **Kaydet**olarak ayarlayın.
 
 İlk veri toplu işi MySQL veritabanında kalıcı hale getirilemediği için 20 dakikaya kadar izin verin.
 
@@ -78,8 +78,8 @@ Bekleme olay türleri, farklı bekleme olaylarını benzerliğe göre demetlere 
 | **Kümesinin** | **Eylem** |
 |---|---|
 |Yüksek kilit bekler | Etkilenen sorgular için Sorgu metinlerini denetleyin ve hedef varlıkları doğrulayın. Sık çalıştırılan ve/veya yüksek süredeki aynı varlığı değiştiren diğer sorgular için sorgu deposuna bakın. Bu sorguları tanımladıktan sonra, eşzamanlılık geliştirmek için uygulama mantığını değiştirmeyi düşünün veya daha az kısıtlayıcı bir yalıtım düzeyi kullanın. |
-|Yüksek arabellekli GÇ bekler | Sorgu deposunda yüksek sayıda fiziksel okuma içeren sorguları bulun. Yüksek GÇ beklemeleri olan sorgularla eşleşiyorsa, taramalar yerine aramalar yapmak için temel alınan varlıktaki bir dizin ile tanışın. Bu, sorguların GÇ ek yükünü en aza indirir. Bu sunucu için sorguları iyileştirmek üzere dizin önerileri olup olmadığını görmek için portalda sunucu için @no__t- **1Performans önerilerini**denetleyin. |
-|Yüksek bellek bekler | Sorgu deposundaki en üstteki bellek kullanan sorguları bulun. Bu sorgular büyük olasılıkla etkilenen sorguların daha fazla ilerlemesini erteliyor. Bu sorguları iyileştirebilecek Dizin önerileri olup olmadığını görmek için portalda sunucunuzun @no__t- **1Performans önerilerini**denetleyin.|
+|Yüksek arabellekli GÇ bekler | Sorgu deposunda yüksek sayıda fiziksel okuma içeren sorguları bulun. Yüksek GÇ beklemeleri olan sorgularla eşleşiyorsa, taramalar yerine aramalar yapmak için temel alınan varlıktaki bir dizin ile tanışın. Bu, sorguların GÇ ek yükünü en aza indirir. Bu sunucu için sorguları iyileştirmek üzere dizin önerileri olup olmadığını görmek için portalda sunucunuzun **performans önerilerini** kontrol edin. |
+|Yüksek bellek bekler | Sorgu deposundaki en üstteki bellek kullanan sorguları bulun. Bu sorgular büyük olasılıkla etkilenen sorguların daha fazla ilerlemesini erteliyor. Bu sorguları iyileştirebilecek Dizin önerileri olup olmadığını görmek için portalda sunucunuzun **performans önerilerini** kontrol edin.|
 
 ## <a name="configuration-options"></a>Yapılandırma seçenekleri
 
@@ -108,7 +108,7 @@ Bir parametre için farklı bir değer almak veya ayarlamak için  veya [Azure
 
 ## <a name="views-and-functions"></a>Görünümler ve işlevler
 
-Aşağıdaki görünümleri ve işlevleri kullanarak sorgu deposunu görüntüleyin ve yönetin. [Ayrıcalık Seç ortak rolünde](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) bulunan herkes, bu görünümleri sorgu deposundaki verileri görmek için kullanabilir. Bu görünümler yalnızca **mysql** veritabanında kullanılabilir.
+Aşağıdaki görünümleri ve işlevleri kullanarak sorgu deposunu görüntüleyin ve yönetin. [Ayrıcalık Seç ortak rolünde](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) bulunan herkes, bu görünümleri sorgu deposundaki verileri görmek için kullanabilir. Bu görünümler yalnızca **MySQL** veritabanında kullanılabilir.
 
 Sorgular, sabit değerler ve sabitler kaldırıldıktan sonra yapısına bakılarak normalleştirilmelidir. İki sorgu özdeş değerler hariç aynıysa, aynı karma değerine sahip olur.
 

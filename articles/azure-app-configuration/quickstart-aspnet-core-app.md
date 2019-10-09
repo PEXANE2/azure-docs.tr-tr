@@ -14,14 +14,14 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b4642ecfad17bf3e926e9efdec034bbe4aa6c20e
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a2764c8e634fd8d827cba9fa7ec9cb61cc6c40af
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076321"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035308"
 ---
-# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı Başlangıç: Azure Uygulama yapılandırması ile ASP.NET Core uygulaması oluşturma
+# <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma
 
 Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure uygulama yapılandırmasını bir ASP.NET Core uygulamasına katabilirsiniz. ASP.NET Core, bir uygulama tarafından belirtilen bir veya daha fazla veri kaynağından ayarları kullanarak tek bir anahtar-değer tabanlı yapılandırma nesnesi oluşturur. Bu veri kaynakları *yapılandırma sağlayıcıları*olarak bilinir. Uygulama yapılandırmasının .NET Core istemcisi bu tür bir sağlayıcı olarak uygulandığından, hizmet başka bir veri kaynağı gibi görünür.
 
@@ -34,9 +34,9 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma Gezgini** >  **+ Oluştur** ' u seçin:
+6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma gezgini** >  **+ Oluştur** ' u seçin:
 
-    | Anahtar | Value |
+    | Anahtar | Değer |
     |---|---|
     | TestApp: ayarlar: BackgroundColor | Beyaz |
     | TestApp: ayarlar: FontSize | 24 |
@@ -53,13 +53,13 @@ Yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.NET Core k
 
 2. Yeni klasörde, yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için aşağıdaki komutu çalıştırın:
 
-        dotnet new mvc
+        dotnet new mvc --no-https
 
 ## <a name="add-secret-manager"></a>Gizli dizi Yöneticisi ekleme
 
-Gizli dizi Yöneticisi 'ni kullanmak için `UserSecretsId` *. csproj* dosyanıza bir öğesi ekleyin.
+Gizli dizi Yöneticisi 'ni kullanmak için *. csproj* dosyanıza `UserSecretsId` öğesi ekleyin.
 
-- *. Csproj* dosyasını açın. Burada gösterildiği `UserSecretsId` gibi bir öğe ekleyin. Aynı GUID 'i kullanabilir veya bu değeri kendi kendinizinkini kullanarak değiştirebilirsiniz. Dosyayı kaydedin.
+- *. Csproj* dosyasını açın. Burada gösterildiği gibi `UserSecretsId` öğesi ekleyin. Aynı GUID 'i kullanabilir veya bu değeri kendi kendinizinkini kullanarak değiştirebilirsiniz. Dosyayı kaydedin.
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -83,7 +83,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
 1. Aşağıdaki komutu çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet paketine bir başvuru ekleyin:
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
 
 2. Projenizin paketlerini geri yüklemek için aşağıdaki komutu çalıştırın:
 
@@ -98,7 +98,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
     > [!IMPORTANT]
-    > Bazı kabuklar, tırnak içine alınmadığı takdirde bağlantı dizesini keser. `dotnet user-secrets` Komutun çıktısının tüm bağlantı dizesini belirttiğinden emin olun. Aksi takdirde, bağlantı dizesini tırnak içine alarak komutu yeniden çalıştırın.
+    > Bazı kabuklar, tırnak içine alınmadığı takdirde bağlantı dizesini keser. @No__t-0 komutunun çıktısının tüm bağlantı dizesini belirttiğinden emin olun. Aksi takdirde, bağlantı dizesini tırnak içine alarak komutu yeniden çalıştırın.
 
     Gizli dizi Yöneticisi yalnızca Web uygulamasını yerel olarak test etmek için kullanılır. Uygulama [Azure App Service](https://azure.microsoft.com/services/app-service/web)dağıtıldığında, örneğin, bağlantı dizesini depolamak Için gizli yönetici yerine App Service bir uygulama ayarı **bağlantı** dizesi kullanırsınız.
 
@@ -110,7 +110,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-5. Yöntemini çağırarak uygulama yapılandırmasını kullanmak için yöntemigüncelleştirin.`CreateWebHostBuilder` `config.AddAzureAppConfiguration()`
+5. @No__t-0 yöntemini, `config.AddAzureAppConfiguration()` yöntemini çağırarak uygulama yapılandırmasını kullanacak şekilde güncelleştirin.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -179,7 +179,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
         dotnet run
 
-3. Bir tarayıcı penceresi açın ve yerel olarak barındırılan `http://localhost:5000`Web uygulaması için varsayılan URL olan öğesine gidin.
+3. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000` ' a gidin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

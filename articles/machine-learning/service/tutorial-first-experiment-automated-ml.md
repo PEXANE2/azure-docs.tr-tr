@@ -1,5 +1,5 @@
 ---
-title: İlk otomatik makine öğrenimi denemenizi oluşturun
+title: İlk otomatik ML sınıflandırma denemenizi oluşturun
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning çalışma alanı giriş sayfasında (Önizleme) otomatik makine öğrenimi ile bir sınıflandırma modelini eğitme ve dağıtmayı öğrenin.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 09/26/2019
-ms.openlocfilehash: 3ddd228488d8ba4adc6780db1f65fdb634291d3b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dcd6f2ea6f5c79664af0c2431da07549e71c26bc
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350507"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035673"
 ---
-# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
+# <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma
 
 Bu öğreticide, tek bir kod satırı yazmadan çalışma alanı giriş sayfasında (Önizleme) ilk otomatik makine öğrenimi denemenizi oluşturmayı öğreneceksiniz. Bu örnek, bir istemcinin bir mali kurum ile sabit bir depozito 'e abone olup olmadığını tahmin etmek için bir sınıflandırma modeli oluşturur.
 
@@ -26,10 +26,10 @@ Otomatik makine öğrenimi sayesinde yoğun zamanda yoğun görevleri otomatik h
 Bu öğreticide, aşağıdaki görevleri nasıl gerçekleştireceğinizi öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Bir Azure Machine Learning çalışma alanı oluşturun.
+> * Azure Machine Learning çalışma alanı oluşturun.
 > * Otomatik makine öğrenimi denemesinin çalıştırın.
 > * Deneme ayrıntılarını görüntüleyin.
-> * Model dağıtma.
+> * Modeli dağıtın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -66,15 +66,15 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
 
 1. **Deneme oluştur**' u seçin. 
 
-1. Bu deneme adını girin:`my-1st-automl-experiment`
+1. Bu deneme adını girin: `my-1st-automl-experiment`
 
 1. **Yeni Işlem oluştur** ' u seçin ve işlem hedefini yapılandırın. İşlem hedefi, eğitim betiğinizi çalıştırmak veya hizmet dağıtımınızı barındırmak için kullanılan yerel veya bulut tabanlı bir kaynak ortamıdır. Bu deneme için bulut tabanlı bir işlem kullanıyoruz. 
 
    Alan | Açıklama | Öğretici için değer
    ----|---|---
    İşlem adı |İşlem bağlamını tanımlayan benzersiz bir ad.|Oto ml-işlem
-   Sanal&nbsp;makine&nbsp;boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
-   En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|Minimum düğümler: 1.<br>En fazla düğüm: 6
+   Sanal @ no__t-0makine @ no__t-1boyut| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
+   En az/en fazla düğüm (Gelişmiş ayarlarda)| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
 
    >[!NOTE]
    >Bu öğretici için, varsayılan depolama hesabını ve yeni hesaplamanıza göre oluşturulan kapsayıcıyı kullanacaksınız. Otomatik olarak formda doldurulur.
@@ -101,11 +101,11 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
         
         Alan|Açıklama| Öğretici için değer
         ---|---|---
-        Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Sınırlandırılmış
-        Sınırlayıcı|Düz metin veya diğer veri akışlarında @ no__t-0 ayrı, bağımsız bölge arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
+        Dosya biçimi|Bir dosyada depolanan verilerin yerleşimini ve türünü tanımlar.| Ted
+        Ayırıcı|Düz metin veya diğer veri akışlarında @ no__t-0 ayrı, bağımsız bölge arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgülle
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
-        Sütun üstbilgileri| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların üst bilgileri aynı
-        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok.
+        Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Hiçbiri
     
         ![Önizleme sekmesi yapılandırması](media/tutorial-1st-experiment-automated-ml/schema-tab-config.gif)
 
@@ -118,14 +118,14 @@ Aşağıdaki deneme kurulumunu tamamlar ve çalışma alanı giriş sayfasında,
    >[!NOTE]
    > Bu öğreticide, yineleme eşiğine göre ölçüm puanı veya en fazla çekirdek ayarlayamayacağız. Ya da algoritmaların test edilmeye engel olursunuz.
    
-   Gelişmiş&nbsp;ayarlar|Açıklama|Öğretici&nbsp;için&nbsp;değer
+   Gelişmiş @ no__t-0settings|Açıklama|@ No__t-1öğreticisi için @ no__t-0değeri
    ------|---------|---
    Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
-   Çıkış kriterleri| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim&nbsp;işi&nbsp;saati: 5 <br> <br> &#58;Yinelemelerin en fazla&nbsp;#10&nbsp;&nbsp;
-   Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştir
+   Çıkış kriterleri| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim @ no__t-0iş @ no__t-1saat: 5 <br> <br> Max @ no__t-0 @ no__t-1 @ no__t-2of @ no__t-3yinelemeden&#58;10
+   Ön| Otomatik makine öğrenimi tarafından gerçekleştirilen ön işleme etkinleştirilir. Bu, yapay özellikler oluşturmak için otomatik veri temizleme, hazırlama ve dönüştürmeyi içerir.| Etkinleştirme
    Doğrulama türü | Bir çapraz doğrulama türü seçin.|Çapraz doğrulamayı yana kesme
    Doğrulama sayısı | Test sayısı. | 2 çapraz doğrulama 
-   Eş Zamanlılık| Maksimum eşzamanlı yineleme sayısı.|5
+   Eşzamanlılık| Maksimum eşzamanlı yineleme sayısı.|5
    
 1. Denemeyi çalıştırmak için **Başlat** ' ı seçin. Deneme hazırlığı başladığında bir durum iletisi içeren bir ekran görüntülenir.
 
@@ -156,7 +156,7 @@ Bu deneme bağlamında, **Votingensebir** **AUC_weighted** ölçüsüne göre en
 
 1. **Dağıtım En Iyi modeli** bölmesini aşağıdaki gibi doldurun:
 
-    Alan| Value
+    Alan| Değer
     ----|----
     Dağıtım adı| My-Oto ml-Deploy
     Dağıtım açıklaması| İlk otomatik makine öğrenimi deneme dağıtımı
@@ -200,5 +200,5 @@ Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluş
 + Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesini inceleyin.
 
 >[!NOTE]
-> Bu banka pazarlama veri kümesi, [Creative Commons (CCO) altında kullanıma sunulmuştur. Genel etki alanı)](https://creativecommons.org/publicdomain/zero/1.0/)lisansı. Veritabanının bireysel içeriklerinde her türlü hak, [veritabanı Içeriği lisansı](https://creativecommons.org/publicdomain/zero/1.0/) kapsamında lisanslanır ve [kada](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)mevcuttur. Bu veri kümesi, ilk olarak [UCI Machine Learning veritabanı](https://archive.ics.uci.edu/ml/datasets/bank+marketing)dahilinde kullanılabilir.<br><br>
+> Bu banka pazarlama veri kümesi, [Creative Commons (CCO: genel etki alanı) lisansı](https://creativecommons.org/publicdomain/zero/1.0/)altında kullanılabilir hale getirilir. Veritabanının bireysel içeriklerinde her türlü hak, [veritabanı Içeriği lisansı](https://creativecommons.org/publicdomain/zero/1.0/) kapsamında lisanslanır ve [kada](https://www.kaggle.com/janiobachmann/bank-marketing-dataset)mevcuttur. Bu veri kümesi, ilk olarak [UCI Machine Learning veritabanı](https://archive.ics.uci.edu/ml/datasets/bank+marketing)dahilinde kullanılabilir.<br><br>
 > [Moro et al., 2014] S. Moro, P. Cortez ve P. Rita. Banka telefonla Bansının başarısını tahmin etmeye yönelik veri odaklı bir yaklaşım. Karar destek sistemleri, Elsevier, 62:22-31 Haziran 2014.

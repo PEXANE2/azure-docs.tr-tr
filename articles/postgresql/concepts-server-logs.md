@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: b295ab442e70772a86d6699e1063c7a1c728f1a7
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 17083029f2377037b99abfa3ce8371661eccb957
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091127"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029979"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda sunucu günlükleri-tek sunucu
 PostgreSQL için Azure Veritabanı sorgu ve hata günlükleri oluşturur. Sorgu ve hata günlükleri yapılandırma hatalarını belirlemek, sorunlarını gidermek ve onarmak ve performansı düzeltmek için kullanılabilir. (İşlem günlüklerine erişim dahil değildir). 
@@ -24,7 +24,7 @@ Günlüğe kaydetme sunucusu parametrelerini kullanarak sunucunuzda günlüğe k
 Bu parametreler hakkında daha fazla bilgi için bkz. PostgreSQL 'in [hata raporlama ve günlüğe kaydetme](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) belgeleri. PostgreSQL için Azure veritabanı parametrelerini yapılandırma hakkında bilgi edinmek için bkz. [Portal belgeleri](howto-configure-server-parameters-using-portal.md) veya [CLI belgeleri](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="access-server-logs-through-portal-or-cli"></a>Portal veya CLı aracılığıyla sunucu günlüklerine erişin
-Günlükleri etkinleştirdiyseniz, [Azure Portal](howto-configure-server-logs-in-portal.md), [Azure CLı](howto-configure-server-logs-using-cli.md)ve Azure REST API 'Lerini kullanarak PostgreSQL için Azure veritabanı günlük depolama alanından erişebilirsiniz. Günlük dosyaları saatte bir veya 100 MB boyuta ulaşıldığında (hangisi önce gerçekleşirse) döndürülür. Bu günlük depolama alanı için, sunucunuza ilişkin **\_günlük tutma\_süresi** parametresini kullanarak saklama süresini ayarlayabilirsiniz. Varsayılan değer 3 gündür; en büyük değer 7 gündür. Sunucunuzun günlük dosyalarını tutmak için yeterli ayrılmış depolama alanı olmalıdır. (Bu bekletme parametresi Azure tanılama günlüklerini yönetmez.)
+Günlükleri etkinleştirdiyseniz, [Azure Portal](howto-configure-server-logs-in-portal.md), [Azure CLı](howto-configure-server-logs-using-cli.md)ve Azure REST API 'Lerini kullanarak PostgreSQL için Azure veritabanı günlük depolama alanından erişebilirsiniz. Günlük dosyaları saatte bir veya 100 MB boyuta ulaşıldığında (hangisi önce gerçekleşirse) döndürülür. Bu günlük depolama alanı için saklama süresini, sunucunuz ile ilişkili **günlük @ no__t-1bekletme @ no__t-2period** parametresini kullanarak ayarlayabilirsiniz. Varsayılan değer 3 gündür; en büyük değer 7 gündür. Sunucunuzun günlük dosyalarını tutmak için yeterli ayrılmış depolama alanı olmalıdır. (Bu bekletme parametresi Azure tanılama günlüklerini yönetmez.)
 
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
@@ -46,28 +46,28 @@ Aşağıdaki tabloda her günlükte neler olduğu açıklanmaktadır. Seçtiğin
 
 |**Alan** | **Açıklama** |
 |---|---|
-| TenantId | Kiracı KIMLIĞINIZ |
+| Değerine | Kiracı KIMLIĞINIZ |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Günlük kaydedildiği zaman damgası (UTC) |
-| Type | Günlüğün türü. Her zaman `AzureDiagnostics` |
-| SubscriptionId | Sunucunun ait olduğu abonelik için GUID |
-| ResourceGroup | Sunucunun ait olduğu kaynak grubunun adı |
+| Tür | Günlüğün türü. Her zaman `AzureDiagnostics` |
+| kaynak grubundaki | Sunucunun ait olduğu abonelik için GUID |
+| adlı yönetilen örnek, | Sunucunun ait olduğu kaynak grubunun adı |
 | ResourceProvider | Kaynak sağlayıcının adı. Her zaman `MICROSOFT.DBFORPOSTGRESQL` |
 | ResourceType | `Servers` |
 | ResourceId | Kaynak URI 'SI |
-| Resource | Sunucunun adı |
-| Category | `PostgreSQLLogs` |
-| OperationName | `LogEvent` |
-| Düzeyi | Günlüğe kaydetme düzeyi, örnek: GÜNLÜK, HATA, BILDIRIM |
-| `Message` | Birincil günlük iletisi | 
-| Etki Alanı | Sunucu sürümü, örnek: Postgres-10 |
-| Ayrıntı | İkincil günlük iletisi (varsa) |
-| ColumnName | Sütunun adı (varsa) |
+| Kaynak | Sunucunun adı |
+| Kategori | `PostgreSQLLogs` |
+| için abonelik sınırlarını aştıysanız Hizmet Azaltma gerçekleşir | `LogEvent` |
+| Düzeyi | Günlüğe kaydetme düzeyi, örnek: günlük, hata, BILDIRIM |
+| İleti | Birincil günlük iletisi | 
+| Domain | Sunucu sürümü, örnek: Postgres-10 |
+| Ayrıntılarını | İkincil günlük iletisi (varsa) |
+| Tation | Sütunun adı (varsa) |
 | SchemaName | Şemanın adı (varsa) |
 | DatatypeName | Veri türünün adı (varsa) |
 | LogicalServerName | Sunucunun adı | 
 | _Resourceıd | Kaynak URI 'SI |
-| Prefix | Günlük satırının öneki |
+| Alan kodu | Günlük satırının öneki |
 
 
 

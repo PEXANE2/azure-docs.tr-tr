@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a740d8ee0eb50cfa01f36bd8f5590a58e1e6627
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 8f4ed6de5ff47efa441c371b80670c500f57c9bb
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931922"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034054"
 ---
 # <a name="time-series-model"></a>Zaman Serisi Modeli
 
@@ -25,7 +25,7 @@ Geleneksel olarak, IoT cihazlarından toplanan verilerin bağlamsal bilgileri yo
 
 Zaman serisi modelleri, cihaz ve cihaz dışı varlıkları dışladığı için sorgularda ve gezintide önemli bir rol oynar. Zaman serisi modelinde kalıcı olan veriler, içinde depolanan formüllerin avantajlarından yararlanarak zaman serisi sorgu hesaplamaları 'nı güçlendirir.
 
-[![Zaman serisi modeline genel bakış](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
+[![ zaman serisi modeline genel bakış](media/v2-update-tsm/tsm.png)](media/v2-update-tsm/tsm.png#lightbox)
 
 ## <a name="key-capabilities"></a>Temel işlevler
 
@@ -47,7 +47,7 @@ Bu bileşenler, zaman serisi modeli belirtmek ve Azure Time Series Insights veri
 
 ## <a name="time-series-model-types"></a>Zaman serisi model türleri
 
-Zaman serisi model *türleri* , hesaplamalar yapmak için değişkenler veya formüller tanımlamanıza yardımcı olur. Türler, belirli bir Time Series Insights örneğiyle ilişkilendirilir. Bir türü veya daha fazla değişken olabilir. Örneğin, bir Time Series Insights örneği, *Ortalama sıcaklık*, *en az sıcaklık*ve *en fazla sıcaklık*değişkenlerinden oluşan *sıcaklık algılayıcısı*türünde olabilir. Veriler Time Series Insights akışa başladığında varsayılan bir tür oluşturacağız. Varsayılan tür, model ayarlarından alınabilir ve güncelleştirilir. Varsayılan türlerin olay sayısını sayan bir değişkeni vardır.
+Zaman serisi model *türleri* , hesaplamalar yapmak için değişkenler veya formüller tanımlamanıza yardımcı olur. Türler, belirli bir Time Series Insights örneğiyle ilişkilendirilir. Bir tür bir veya daha fazla değişkene sahip olabilir. Örneğin, bir Time Series Insights örneği, *Ortalama sıcaklık*, *en az sıcaklık*ve *en fazla sıcaklık*değişkenlerinden oluşan *sıcaklık algılayıcısı*türünde olabilir. Veriler Time Series Insights akışa başladığında varsayılan bir tür oluşturacağız. Varsayılan tür, model ayarlarından alınabilir ve güncelleştirilir. Varsayılan türlerin olay sayısını sayan bir değişkeni vardır.
 
 ### <a name="time-series-model-type-json-example"></a>Zaman serisi model türü JSON örneği
 
@@ -82,7 +82,7 @@ Time Series Insights türler, olaylardaki değerler üzerinde hesaplamalar olara
 
 Aşağıdaki matris, değişken tanımları için bir gösterge olarak kullanılabilir:
 
-[![Tür değişkeni tanım tablosu](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
+[![Değişken tanım tablosu türü](media/v2-update-tsm/table.png)](media/v2-update-tsm/table.png#lightbox)
 
 | Tanım | Açıklama |
 | --- | ---|
@@ -126,7 +126,7 @@ Zaman serisi model hiyerarşileri hakkında daha fazla bilgi için [başvuru bel
 
 *Örnek alanlarına*bağlı olarak, hiyerarşi öznitelikleri ve değerleri aşağıdaki tabloda gösterildiği gibi görünür:
 
-| Zaman Serisi Kimliği | Örnek alanları |
+| Zaman serisi KIMLIĞI | Örnek alanları |
 | --- | --- |
 | ID1 | "derleme" = "1000", "Floor" = "10", "Oda" = "55"  |
 | ID2 | "derleme" = "1000", "Oda" = "55" |

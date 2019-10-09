@@ -6,23 +6,23 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314224"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026984"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Eşleme veri akışında toplama dönüştürmesi 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Toplam dönüşümü, veri akışlarınızdan sütunların toplamalarının tanımlanacağı yerdir. Ifade oluşturucuyu kullanarak, var olan veya hesaplanan sütunlara göre gruplanabilir olan SUM, MIN, MAX ve COUNT gibi farklı toplamalar türlerini tanımlayabilirsiniz.
 
 ## <a name="group-by"></a>Gruplandırma ölçütü
 Toplama için bir Group by yan tümcesi olarak kullanılacak yeni bir hesaplanmış sütun oluşturun veya var olan bir sütunu seçin. Varolan bir sütunu kullanmak için, açılan listeden istediğiniz sütunu seçin. Yeni bir hesaplanan sütun oluşturmak için, yan tümcesinin üzerine gelin ve ' hesaplanan sütun ' seçeneğine tıklayın. Bu işlem, [veri akışı Ifade Oluşturucusu 'nu](concepts-data-flow-expression-builder.md)açar. Hesaplanan sütununuzu oluşturduktan sonra, ' ad ' alanı altındaki çıkış sütunu adını girin. Ek bir Group by yan tümcesi eklemek istiyorsanız, var olan bir yan tümcenin üzerine gelin ve ' + ' seçeneğine tıklayın.
 
-![Ayarlara göre toplama dönüştürme grubu](media/data-flow/agg.png "Ayarlara göre toplama dönüştürme grubu")
+Ayarlara göre toplama ![dönüştürme](media/data-flow/agg.png "grubu ayarları")
 
 > [!NOTE]
 > Toplama dönüşümünde Group by yan tümcesi isteğe bağlıdır.
@@ -30,7 +30,7 @@ Toplama için bir Group by yan tümcesi olarak kullanılacak yeni bir hesaplanm�
 ## <a name="aggregate-column"></a>Toplama sütunu 
 Toplama ifadeleri oluşturmak için ' toplamalar ' sekmesini seçin. Mevcut bir sütunu seçebilir ve toplama ile değerin üzerine yazabilir ya da yeni bir adla yeni bir alan oluşturabilirsiniz. Toplama ifadesi, sütun adı seçicisinin yanındaki sağ kutuya girilir. İfadeyi düzenlemek için, metin kutusuna tıklayarak Ifade oluşturucuyu açın. Ek bir toplama eklemek için mevcut bir ifadenin üzerine gelin ve ' + ' düğmesine tıklayarak yeni bir toplama sütunu veya [sütun stili](concepts-data-flow-column-pattern.md)oluşturun.
 
-![Toplu dönüştürme toplama ayarları](media/data-flow/agg2.png "Toplu dönüştürme toplama ayarları")
+Toplu ![dönüştürme toplu ayarları](media/data-flow/agg2.png "toplu dönüştürme toplama ayarları")
 
 > [!NOTE]
 > Her toplama ifadesi en az bir toplama işlevi içermelidir.

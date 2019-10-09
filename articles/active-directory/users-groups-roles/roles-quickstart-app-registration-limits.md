@@ -13,18 +13,18 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f883741577de22f66cd7a9bfaf733aa3c59b879b
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c91de3de743d168bea207f27fb162486ea625a63
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707688"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026272"
 ---
-# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Hızlı Başlangıç: Sınırsız sayıda uygulama kaydı oluşturmak için izin verme
+# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Hızlı başlangıç: sınırsız uygulama kaydı oluşturmak için izin verme
 
 Bu hızlı başlangıçta sınırsız sayıda uygulama kaydı oluşturma izni olan özel bir rol oluşturacak ve ardından bu rolü bir kullanıcıya atayacaksınız. Atanan Kullanıcı daha sonra uygulama kayıtları oluşturmak için Azure AD portalını, Azure AD PowerShell 'i, Azure AD Graph API veya Microsoft Graph API 'sini kullanabilir. Yerleşik uygulama geliştirici rolünün aksine, bu özel rol sınırsız sayıda uygulama kaydı oluşturma olanağı verir. Uygulama geliştirici rolü özelliği verir, ancak oluşturulan nesnelerin toplam sayısı, [Dizin genelinde nesne kotasına](directory-service-limits-restrictions.md)vurmasını engellemek için 250 ile sınırlıdır.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="prerequisite"></a>Önkoşul
 
@@ -32,8 +32,8 @@ Azure AD özel rollerini oluşturmak ve atamak için gereken en az ayrıcalıkl�
 
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Azure AD portalını kullanarak yeni bir özel rol oluşturma
 
-1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1.  **Azure Active Directory**seçin, **Roller ve yöneticiler**' i seçin ve ardından **Yeni özel rol**' i seçin.
+1. Azure AD kuruluşunda, ayrıcalıklı rol yöneticisi veya genel yönetici izinlerine sahip [Azure AD Yönetim merkezi](https://aad.portal.azure.com)  ' de oturum açın.
+1. **Azure Active Directory**seçin, **Roller ve yöneticiler**' i seçin ve ardından **Yeni özel rol**' i seçin.
 
     ![Roller ve yöneticiler sayfasından roller oluşturma veya düzenleme](./media/roles-create-custom/new-custom-role.png)
 
@@ -49,8 +49,8 @@ Azure AD özel rollerini oluşturmak ve atamak için gereken en az ayrıcalıkl�
 
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>Azure AD portalını kullanarak rolü bir kullanıcıya atama
 
-1. Azure AD kuruluşunuzda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1.  **Azure Active Directory** ' yi seçin ve ardından **Roller ve yöneticiler '** i seçin.
+1. Azure AD kuruluşunuzda, ayrıcalıklı rol yöneticisi veya genel yönetici izinlerine sahip [Azure AD Yönetim merkezi](https://aad.portal.azure.com)  ' de oturum açın.
+1. **Azure Active Directory** ' yi seçin ve ardından **Roller ve yöneticiler '** i seçin.
 1. Uygulama kaydı oluşturan rolünü seçin ve **atama Ekle**' yi seçin.
 1. İstediğiniz kullanıcıyı seçin ve kullanıcıyı role eklemek için **Seç** ' e tıklayın.
 
@@ -63,8 +63,8 @@ Bitti! Bu hızlı başlangıçta, sınırsız sayıda uygulama kaydı oluşturma
 
 Her biri farklı davranışa sahip olan uygulama kayıtları oluşturmak için iki izin mevcuttur.
 
-- Microsoft. Directory/Applications/createAsOwner: Bu iznin atanması, Oluşturucu oluşturulan uygulama kaydının ilk sahibi olarak eklenmekte ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesne kotasına göre sayılır.
-- Microsoft. Directory/applicationPolicies/oluşturma: Bu iznin atanması, oluşturan uygulama kaydının ilk sahibi olarak eklenmeyecektir ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesneler kotasına göre sayılmaz. Bu izni dikkatle kullanın çünkü dizin düzeyi kotasına ulaşılana kadar atanan uygulama kaydı oluşturulmasını hiçbir şey yok. Her iki izin atanırsa, bu izin önceliklidir.
+- Microsoft. Directory/Apps/createAsOwner: Bu iznin atanması, oluşturucunun oluşturulan uygulama kaydının ilk sahibi olarak eklenmekte ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesne kotasına göre sayılır.
+- Microsoft. Directory/applicationPolicies/Create: Bu izin atama, Oluşturucu oluşturulan uygulama kaydının ilk sahibi olarak eklenmiyor ve oluşturulan uygulama kaydı, oluşturucunun 250 tarafından oluşturulan nesnelere göre sayılmaz kotasının. Bu izni dikkatle kullanın çünkü dizin düzeyi kotasına ulaşılana kadar atanan uygulama kaydı oluşturulmasını hiçbir şey yok. Her iki izin atanırsa, bu izin önceliklidir.
 
 ## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Azure AD PowerShell kullanarak özel bir rol oluşturma
 
@@ -135,13 +135,13 @@ $customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -Displ
 
 Özel rol oluşturmak için HTTP isteği.
 
-POST
+Yayınla
 
 ``` HTTP
 https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
 ```
 
-Body
+Gövde
 
 ```HTTP
 {
@@ -172,13 +172,13 @@ Rol ataması bir güvenlik sorumlusu KIMLIĞINI (bir kullanıcı veya hizmet sor
 
 Özel bir rol atamak için HTTP isteği.
 
-POST
+Yayınla
 
 ``` HTTP
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
-Body
+Gövde
 
 ``` HTTP
 {

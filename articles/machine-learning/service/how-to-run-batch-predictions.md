@@ -10,31 +10,31 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034306"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028526"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları ile büyük veri kümelerinde toplu tahminleri çalıştırma
 
 Bu makalede, Azure Machine Learning ile ML işlem hatlarını kullanarak büyük miktarlarda verileri zaman uyumsuz olarak tahmin etme hakkında bilgi edineceksiniz.
 
-Toplu işlem Tahmini (veya toplu Puanlama), zaman uyumsuz uygulamalar için paralellik verimlilik ile uygun maliyetli çıkarım sağlar. Toplu tahmin işlem hatlarını çıkarımı terabaytlarca üretim veri gerçekleştirmek için ölçeklendirilebilir. Toplu tahmin, büyük bir veri koleksiyonu için yüksek aktarım hızı, yangın ve unutma tahminleri için iyileştirilmiştir.
+Toplu işlem Tahmini (veya toplu Puanlama), zaman uyumsuz uygulamalar için paralellik verimlilik ile uygun maliyetli çıkarım sağlar. Toplu tahmin işlem hatları, terabaytlarca üretim verilerinde çıkarım gerçekleştirmek üzere ölçeklendirebilir. Toplu tahmin, büyük bir veri koleksiyonu için yüksek aktarım hızı, yangın ve unutma tahminleri için iyileştirilmiştir.
 
 >[!TIP]
 > Sisteminiz düşük gecikmeli işleme gerektiriyorsa (tek bir belgeyi veya küçük bir belge kümesini hızlı bir şekilde işlemek için), toplu tahmin yerine [gerçek zamanlı Puanlama](how-to-consume-web-service.md) kullanın.
 
-Aşağıdaki adımlarda, önceden eğitilen bir bilgisayar Vision modelini ([Inception-v3](https://arxiv.org/abs/1512.00567)) kaydetmek için bir [makine öğrenimi işlem hattı](concept-ml-pipelines.md) oluşturacaksınız. Daha sonra, Azure Blob depolama hesabınızda bulunan görüntülerde toplu Puanlama yapmak için önceden eğitilen modeli kullanın. Puanlama için kullanılan görüntülerin etiketlenmemiş gelen görüntüleri [Imagenet](http://image-net.org/) veri kümesi.
+Aşağıdaki adımlarda, önceden eğitilen bir bilgisayar Vision modelini ([Inception-v3](https://arxiv.org/abs/1512.00567)) kaydetmek için bir [makine öğrenimi işlem hattı](concept-ml-pipelines.md) oluşturacaksınız. Daha sonra, Azure Blob depolama hesabınızda bulunan görüntülerde toplu Puanlama yapmak için önceden eğitilen modeli kullanın. Puanlama için kullanılan bu görüntüler, [ımagenet](http://image-net.org/) veri kümesinin etiketlendirmede olmayan görüntüleridir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-- Azure Machine Learning SDK'sını yüklemek için geliştirme ortamınızı yapılandırın. Daha fazla bilgi için [bir geliştirme ortamı yapılandırmak için Azure Machine Learning](how-to-configure-environment.md).
+- Azure Machine Learning SDK 'Yı yüklemek için geliştirme ortamınızı yapılandırın. Daha fazla bilgi için bkz. [Azure Machine Learning için bir geliştirme ortamı yapılandırma](how-to-configure-environment.md).
 
-- Tüm işlem hattı kaynakları barındıracak bir Azure Machine Learning çalışma alanı oluşturun. Aşağıdaki kodu kullanın veya daha fazla seçenek için bkz: [çalışma alanı yapılandırma dosyası oluşturma](how-to-configure-environment.md#workspace).
+- Tüm işlem hattı kaynaklarınızı tutacak bir Azure Machine Learning çalışma alanı oluşturun. Aşağıdaki kodu kullanabilir veya daha fazla seçenek için bkz. [çalışma alanı yapılandırma dosyası oluşturma](how-to-configure-environment.md#workspace).
 
   ```python
   from azureml.core import Workspace
@@ -46,20 +46,20 @@ Aşağıdaki adımlarda, önceden eğitilen bir bilgisayar Vision modelini ([Inc
                         )
   ```
 
-## <a name="set-up-machine-learning-resources"></a>Machine learning kaynaklarını ayarlama
+## <a name="set-up-machine-learning-resources"></a>Makine öğrenimi kaynaklarını ayarlama
 
 Aşağıdaki adımlar bir işlem hattı çalıştırmak için gereken kaynakları ayarlar:
 
-- Modeli kullanan, giriş etiketleri ve puanlamak için görüntüleri olan veri deposuna erişim (Bu zaten sizin için ayarlanır).
-- Bir veri deposu, çıktılarının depolanması için ayarlayın.
-- Nesneleri `DataReference`, önceki veri depolarındaki verileri gösterecek şekilde yapılandırın .
-- İşlem hattı adımları çalıştıracağınız işlem makineler veya kümeleri ayarlayın.
+- Önceden eğitilen modele, giriş etiketlerine ve puanına sahip olan görüntülere sahip olan veri deposuna erişin (bu zaten sizin için ayarlanmıştır).
+- Çıktılarınızı depolamak için bir veri deposu ayarlayın.
+- Önceki veri depolarındaki verileri göstermek için @ no__t-0 @ no__t-1nesnelerini yapılandırın.
+- Ardışık düzen adımlarının çalışacağı işlem makinelerini veya kümeleri ayarlayın.
 
-### <a name="access-the-datastores"></a>Erişim veri depoları
+### <a name="access-the-datastores"></a>Veri depolarına erişin
 
-İlk olarak, model, etiketler ve görüntüleri olan veri deposuna erişin.
+İlk olarak, model, Etiketler ve görüntülerin bulunduğu veri deposuna erişin.
 
-Imagenet değerlendirme kümesinden görüntüleri tutan *pipelinedata* hesabında *sampleData*adlı bir genel blob kapsayıcısı kullanın. Bu ortak kapsayıcı için veri deposu adı *images_datastore*. Bu veri deposu ile çalışma alanınızı kaydedin:
+Imagenet değerlendirme kümesinden görüntüleri tutan *pipelinedata* hesabında *sampleData*adlı bir genel blob kapsayıcısı kullanın. Bu ortak kapsayıcının veri deposu adı *images_datastore*. Bu veri deposunu çalışma alanınıza kaydedin:
 
 ```python
 from azureml.core import Datastore
@@ -77,17 +77,17 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 
 Ardından, çıktılar için varsayılan veri deposunu kullanacak şekilde ayarlayın.
 
-Çalışma alanınızı oluşturduğunuzda, [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) ve [BLOB depolama](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) alanı varsayılan olarak çalışma alanına eklenir. Azure dosyaları bir çalışma alanı için varsayılan veri depo, ancak blob depolamayı da bir veri deposu olarak kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage seçenekleri](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Çalışma alanınızı oluştururken,  ve [BLOB storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)  [Azure dosyaları](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)varsayılan olarak çalışma alanına iliştirilir. Azure dosyaları bir çalışma alanı için varsayılan veri depo, ancak blob depolamayı da bir veri deposu olarak kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage seçenekleri](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ```python
 def_data_store = ws.get_default_datastore()
 ```
 
-### <a name="configure-data-references"></a>Veri başvuruları yapılandırın
+### <a name="configure-data-references"></a>Veri başvurularını yapılandırma
 
-Artık, işlem hattınızdaki veri işlem hattı adımları girdi olarak başvuru.
+Şimdi işlem hattınızdaki verilere işlem hattı adımlarına giriş olarak başvurun.
 
-Bir veri kaynağında bir işlem hattı tarafından temsil edilen bir [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) nesne.  `DataReference`Nesnesi,birverideposutarafındanerişilebilenveya'deerişilebilir olan verileri işaret eder. Giriş görüntüleri `DataReference`için kullanılan dizin, önceden eğitilen modelin depolandığı dizin, Etiketler için dizin ve çıkış dizini için nesneler gerekir  .
+Bir işlem hattındaki veri kaynağı bir [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) nesnesi tarafından temsil edilir. @ No__t-0 @ no__t-1nesnesi, bir veri deposu tarafından erişilebilen veya ' de erişilebilir olan verileri işaret eder. Giriş görüntüleri için kullanılan dizin için `DataReference` @ no__t-1objects, önceden eğitilen modelin depolandığı dizin, Etiketler için dizin ve çıkış dizini gerekir.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -112,7 +112,7 @@ output_dir = PipelineData(name="scores",
                           output_path_on_compute="batchscoring/results")
 ```
 
-### <a name="set-up-compute-target"></a>İşlem Hedefi ' ayarlayın
+### <a name="set-up-compute-target"></a>İşlem hedefini ayarla
 
 Azure Machine Learning, *işlem* (veya *işlem hedefi*), makine öğrenimi ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur. Örneğin, [Amlcompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) sınıfıyla bir Azure Machine Learning işlem oluşturabilirsiniz.
 
@@ -148,13 +148,13 @@ else:
         timeout_in_minutes=20)
 ```
 
-## <a name="prepare-the-model"></a>Model hazırlama
+## <a name="prepare-the-model"></a>Modeli hazırlama
 
-Pretrained modeli kullanabilmeniz için model indirin ve çalışma alanınızla kaydetmek gerekir.
+Önceden eğitilen modeli kullanabilmeniz için modeli indirmeniz ve çalışma alanınıza kaydetmeniz gerekir.
 
-### <a name="download-the-pretrained-model"></a>Pretrained modeli indirin.
+### <a name="download-the-pretrained-model"></a>Önceden eğitilen modeli indirin
 
-Kullanan görüntü işleme modelinizle (InceptionV3) indirmesine <http://download.tensorflow.org/models/inception_v3_2016_08_28.tar.gz>. Ardından `models` alt klasöre ayıklayın.
+@No__t-0 ' dan önceden eğitilen bilgisayar vizyonu modelini (InceptionV3) indirin. Sonra `models` alt klasörüne ayıklayın.
 
 ```python
 import os
@@ -171,7 +171,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall(model_dir)
 ```
 
-### <a name="register-the-model"></a>Modeli kaydedin
+### <a name="register-the-model"></a>Modeli Kaydet
 
 Modelin nasıl kaydedileceği aşağıda verilmiştir:
 
@@ -193,7 +193,7 @@ model = Model.register(
 >[!Warning]
 >Aşağıdaki kod, [örnek Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb)tarafından kullanılan [batch_score. Kopyala](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) dosyasında yer alan bir örnektir. Senaryonuz için kendi Puanlama betiğinizi oluşturmanız gerekir.
 
-`batch_score.py` Betik alır girdi görüntülerini *dataset_path*, kullanan modellerinde *model_dir,* ve çıkaran *sonuçları label.txt* için *output_dir*.
+@No__t-0 betiği *dataset_path*içinde giriş görüntülerini alır, model_dir 'de önceden eğitilen modeller ve *results-Label. txt* ' *yi* *output_dir*olarak verir.
 
 ```python
 # Snippets from a sample scoring script
@@ -243,11 +243,11 @@ def main(_):
         shutil.copy(out_filename, "./outputs/")
 ```
 
-## <a name="build-and-run-the-batch-scoring-pipeline"></a>Derleme ve toplu işlem Puanlama işlem hattı çalıştırma
+## <a name="build-and-run-the-batch-scoring-pipeline"></a>Batch Puanlama ardışık düzenini derleyin ve çalıştırın
 
-### <a name="prepare-the-run-environment"></a>Çalışma ortamı hazırlama
+### <a name="prepare-the-run-environment"></a>Çalıştırma ortamını hazırlama
 
-Betiği için conda bağımlılıklarını belirtin. İşlem hattı adımını oluştururken bu nesneye daha sonra ihtiyacınız olacaktır.
+Betiğinizin Conda bağımlılıklarını belirtin. İşlem hattı adımını oluştururken bu nesneye daha sonra ihtiyacınız olacaktır.
 
 ```python
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
@@ -265,9 +265,9 @@ amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
 amlcompute_run_config.environment.spark.precache_packages = False
 ```
 
-### <a name="specify-the-parameter-for-your-pipeline"></a>İşlem hattınızı parametresi belirtin
+### <a name="specify-the-parameter-for-your-pipeline"></a>İşlem hatlarınızın parametresini belirtin
 
-Bir [pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) nesnesini varsayılan değerle kullanarak bir işlem hattı parametresi oluşturun.
+Varsayılan değere sahip bir [pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py) nesnesi kullanarak bir işlem hattı parametresi oluşturun.
 
 ```python
 from azureml.pipeline.core.graph import PipelineParameter
@@ -276,9 +276,9 @@ batch_size_param = PipelineParameter(
     default_value=20)
 ```
 
-### <a name="create-the-pipeline-step"></a>İşlem hattı adım oluşturma
+### <a name="create-the-pipeline-step"></a>İşlem hattı adımını oluşturma
 
-Komut dosyası, ortam yapılandırması ve parametreleri kullanarak işlem hattı adımını oluşturun. Betik yürütme hedefi olarak zaten çalışma alanınıza bağlı işlem hedefini belirtin. Kullanım [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) işlem hattı adımı oluşturmak.
+Komut dosyası, ortam yapılandırması ve parametreleri kullanarak işlem hattı adımını oluşturun. Komut dosyasının yürütme hedefi olarak çalışma alanınıza zaten iliştirtiğiniz işlem hedefini belirtin. İşlem hattı adımını oluşturmak için [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) kullanın.
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -324,7 +324,7 @@ df.columns = ["Filename", "Prediction"]
 df.head()
 ```
 
-## <a name="publish-the-pipeline"></a>Yayımlama kanalı
+## <a name="publish-the-pipeline"></a>İşlem hattını yayımlama
 
 Çalıştırmanın sonucuna memnun olduktan sonra, işlem hattını yayımlayın, böylece daha sonra farklı giriş değerleriyle çalıştırabilirsiniz. Bir işlem hattı yayımladığınızda, bir REST uç noktası alırsınız. Bu uç nokta, [Pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.pipelineparameter?view=azure-ml-py)kullanarak zaten dahil ettiğiniz parametrelerin kümesiyle işlem hattının çağrılması kabul eder.
 

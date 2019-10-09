@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: YAY tesislerinde çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici: ARC tesislerinde çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
 description: Azure Active Directory ve yay tesislerinde çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7cf5a5e2669fcbb5344fc6dd4b5c6de8318c3a5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 43fd1375ac8ffa850ca3f2c4c2b34e63631a9811
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70846934"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025926"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>Öğretici: YAY tesislerinde çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>Öğretici: ARC tesislerinde çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, yay tesislerini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. YAY tesislerini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![image](common/edit-attribute.png)
 
-1. ARC tesis uygulaması, yukarıdakine ek olarak SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler.  **Grup talepleri (Önizleme)**  iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
+1. ARC tesis uygulaması, yukarıdakine ek olarak SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Grup talepleri (Önizleme)** Iletişim kutusundaki **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
     a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
 
@@ -103,7 +103,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. **Grup Kimliği**'Nin **kaynak özniteliğini** seçin.
 
-    d. **Kaydet**’e tıklayın.
+    d. **Kaydet** düğmesine tıklayın.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -113,19 +113,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, yay tesislere erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
@@ -133,7 +133,7 @@ Bu bölümde, yay tesislere erişim vererek Azure çoklu oturum açma özelliği
 1. Uygulamalar listesinde **yay tesisler**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -145,7 +145,7 @@ Bu bölümde, yay tesislere erişim vererek Azure çoklu oturum açma özelliği
 
 ## <a name="configure-arc-facilities-sso"></a>YAY tesis SSO 'SU yapılandırma
 
-**Yay tesislerinde** çoklu oturum açma 'yı yapılandırmak Için indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'leri Azure Portal [Arc tesis destek ekibine](mailto:support@arcfacilities.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Yay tesislerinde** çoklu oturum açma 'yı yapılandırmak Için indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'leri Azure Portal [Arc tesis destek ekibine](mailto:support@arcfacilities.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-arc-facilities-test-user"></a>YAY tesislerini oluştur test kullanıcısı
 
@@ -153,7 +153,7 @@ Bu bölümde, yay tesislerinde Britta Simon adlı bir Kullanıcı oluşturulur. 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde yay tesislerini tıklattığınızda, SSO 'yu ayarladığınız yay tesislerinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086527"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030592"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakma
 
@@ -33,7 +33,7 @@ Bu makalede açıklanan işlem, bir geçici çözüm olarak kullanılmak üzere 
 
 VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyorsa, diğer VM 'yi kullanarak bu azaltmaları yapabilirsiniz.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Risk azaltma 1: Özel Betik uzantısı veya komut Çalıştır özelliği
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Hafifletme 1: özel Betik uzantısı veya komut özelliği Çalıştır
 
 Çalışan bir Azure aracınız varsa, aşağıdaki komut dosyalarını uzaktan çalıştırmak için [Özel Betik uzantısı](../extensions/custom-script-windows.md) veya [Komut Çalıştır](../windows/run-command.md) özelliğini (yalnızca Kaynak Yöneticisi VM 'ler) kullanabilirsiniz.
 
@@ -54,7 +54,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 >   ```
 >   Ancak, ilke yeniden uygulandıktan hemen sonra uzak oturumdan vazgeçmeniz gerekir. Bu soruna yönelik kalıcı düzelme, bu bilgisayarda uygulanan ilkeyi değiştirmektir.
 
-#### <a name="mitigation-2-remote-powershell"></a>Risk azaltma 2: Uzak PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Risk azaltma 2: uzak PowerShell
 
 1.  RDP bağlantısı kullanarak ulaşamamanıza izin veren VM ile aynı sanal ağda bulunan bir VM 'ye bağlanın.
 
@@ -72,7 +72,7 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 > [!Note]
 > Güvenlik Duvarı bir grup ilkesi nesnesi aracılığıyla ayarlandıysa, bu komut yalnızca yerel kayıt defteri girdilerini değiştirdiği için bu yöntem çalışmayabilir. Bir ilke mevcutsa, bu değişiklik geçersiz kılınır. 
 
-#### <a name="mitigation-3-pstools-commands"></a>Risk azaltma 3: Padstools komutları
+#### <a name="mitigation-3-pstools-commands"></a>Hafifletme 3: Padstools komutları
 
 1.  Sorun giderme sanal makinesinde [PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools)'u indirin.
 
@@ -86,13 +86,13 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>Risk azaltma 4: Uzak kayıt defteri 
+#### <a name="mitigation-4-remote-registry"></a>Hafifletme 4: uzak kayıt defteri 
 
 [Uzak kayıt defteri](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)kullanmak için bu adımları izleyin.
 
-1.  Sorun giderme sanal makinesinde, kayıt defteri düzenleyicisini başlatın ve ardından **Dosya** > **Connect ağ kayıt defteri**' ne gidin.
+1.  Sorun giderme sanal makinesinde, kayıt defteri Düzenleyicisi 'ni başlatın ve ardından **dosya** > **ağ kayıt defteri**'ne gidin.
 
-2.   *Hedef makine*\System dalını açın ve aşağıdaki değerleri belirtin:
+2.  *Hedef makine*\System dalını açın ve aşağıdaki değerleri belirtin:
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -102,13 +102,13 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 
 3.  Hizmeti yeniden başlatın. Uzak kayıt defteri 'ni kullanarak bunu yapamadığından, hizmet konsolunu Kaldır ' ı kullanmanız gerekir.
 
-4.   **Services. msc**örneğini açın.
+4.  **Services. msc**örneğini açın.
 
 5.  **Hizmetler (yerel)** seçeneğine tıklayın.
 
 6.  **Başka bir bilgisayara bağlan**' ı seçin.
 
-7.  Sorun sanal makinesinin **özel IP adresini (DIP)**  girin.
+7.  Sorun sanal makinesinin **özel IP adresini (DIP)** girin.
 
 8.  Yerel güvenlik duvarı ilkesini yeniden başlatın.
 
@@ -118,9 +118,9 @@ VM çevrimiçiyse ve aynı sanal ağdaki başka bir VM üzerinden erişilebiliyo
 
 Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz varsa, Özel Betik uzantısı başarısız olur ve doğrudan sistem diski aracılığıyla çalışarak ÇEVRIMDıŞı modda çalışmanız gerekir. Bunu yapmak için şu adımları uygulayın:
 
-1.  [Bir kurtarma VM'si sistem diski](troubleshoot-recovery-disks-portal-windows.md).
+1.  [Sistem diskini bir kurtarma VM 'Sine bağlayın](troubleshoot-recovery-disks-portal-windows.md).
 
-2.  Kurtarma VM'sini bir Uzak Masaüstü Bağlantısı'nı başlatın.
+2.  Kurtarma VM 'sine bir Uzak Masaüstü bağlantısı başlatın.
 
 3.  Diskin Disk Yönetimi konsolunda çevrimiçi olarak işaretlendiğinden emin olun. Eklenmiş sistem diskine atanan sürücü harfini unutmayın.
 
@@ -160,6 +160,6 @@ Herhangi bir yöntemle sanal makineye ulaşamamanıza yönelik bir durumunuz var
     reg unload HKLM\BROKENSOFTWARE
     ```
 
-10. [VM yeniden oluşturma ve sistem diskini](troubleshoot-recovery-disks-portal-windows.md).
+10. [Sistem diskini ayırın ve VM 'yi yeniden oluşturun](troubleshoot-recovery-disks-portal-windows.md).
 
-11. Sorunun çözülüp çözülmediğini denetleyin.
+11. Sorunun çözümlenip çözümlenmediğini denetleyin.

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70280164"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028633"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 'Leri için fiyatlandırma Kılavuzu
 
@@ -58,13 +58,13 @@ Hafif olmayan bir üretim iş yükünüz varsa, aşağıdaki SQL Server sürüml
 |-----|-----|
 | Web | Küçük Web siteleri |
 | Standart | Küçük ve orta ölçekli iş yükleri |
-| Enterprise | Büyük veya görev açısından kritik iş yükleri|
+| Kurumsal | Büyük veya görev açısından kritik iş yükleri|
 
 Bu sürümler için SQL Server Lisanslama için ödeme yapmak üzere iki seçeneğiniz vardır: *kullanım başına ödeme* *yapın veya kendi LISANSıNıZı getirin (KLG)* .
 
 ## <a name="pay-per-usage"></a>Kullanım başına ödeme
 
-**SQL Server Lisansı kullanım başına ödenirken** , Azure VM 'yi çalıştırmanın ikinci başına maliyetinin SQL Server lisansın maliyeti yer aldığı anlamına gelir. [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) veya [LINUX](https://azure.microsoft.com/pricing/details/virtual-machines/linux)için Azure VM fiyatlandırma sayfasında farklı SQL Server sürümleri (Web, standart, kurumsal) için fiyatlandırmayı görebilirsiniz.
+**SQL Server lisansını kullanım başına** (Kullandıkça Öde olarak da bilinir) **ödeyin**, Azure VM 'yi çalıştırmanın ikinci başına maliyetinin SQL Server lisansın maliyetini içerir. [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) veya [LINUX](https://azure.microsoft.com/pricing/details/virtual-machines/linux)için Azure VM fiyatlandırma sayfasında farklı SQL Server sürümleri (Web, standart, kurumsal) için fiyatlandırmayı görebilirsiniz.
 
 Maliyet, tüm SQL Server sürümleri (2012 SP3 2017 ' e) için aynıdır. Saniye başına lisans maliyeti, VM vCPU sayısına bağlıdır.
 
@@ -74,7 +74,7 @@ Kullanım başına SQL Server lisansa ödeme yapılması önerilir:
 
 - **Bilinmeyen yaşam süresine veya ölçeğe sahip Iş yükleri**. Örneğin, birkaç ay içinde gerekli olmayan veya talebe bağlı olarak daha fazla veya daha az işlem gücü gerektiren bir uygulama.
 
-Bu kullanım başına ödeme görüntülerinden birini içeren SQL Server 2017 Azure VM oluşturmak için aşağıdaki bağlantılara bakın:
+Bu Kullandıkça Öde görüntülerinden biriyle bir SQL Server 2017 Azure sanal makinesi oluşturmak için aşağıdaki bağlantılara bakın:
 
 | Platform | Lisanslı görüntüler |
 |---|---|
@@ -139,7 +139,7 @@ SQL Server Lisanslama ücreti, vCPU sayısıyla doğrudan ilgilidir. CPU, bellek
 
 Belirli türdeki SQL Server iş yükleriyle iyi çalışan yeni makine boyutları vardır. Bu makine boyutları, yüksek düzeyde bellek, depolama ve g/ç bant genişliğini korur, ancak daha düşük bir sanallaştırılmış çekirdek sayısına sahiptir. Örneğin, aşağıdaki örneği göz önünde bulundurun:
 
-| VM Boyutu | vCPU sayısı | Bellek | En fazla disk | En fazla g/ç performansı | SQL lisanslama maliyetleri | Toplam maliyet (Işlem + lisanslama) |
+| VM Boyutu | vCPU | Hafıza | En fazla disk | En fazla g/ç performansı | SQL lisanslama maliyetleri | Toplam maliyet (Işlem + lisanslama) |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51.200 ıOPS veya 768 MB/s | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51.200 ıOPS veya 768 MB/s | % 75 daha düşük | % 57 daha düşük |
@@ -151,7 +151,7 @@ Belirli türdeki SQL Server iş yükleriyle iyi çalışan yeni makine boyutlar�
 
 ### <a name="shut-down-your-vm-when-possible"></a>Mümkün olduğunda sanal makineyi kapatın
 
-Sürekli çalıştırmayan iş yüklerini kullanıyorsanız, etkin olmayan dönemler sırasında sanal makineyi kapatmayı göz önünde bulundurun. Sadece kullandığınız kadar ödersiniz.
+Sürekli çalıştırmayan iş yüklerini kullanıyorsanız, etkin olmayan dönemler sırasında sanal makineyi kapatmayı göz önünde bulundurun. Yalnızca kullandığınız kadar ödersiniz.
 
 Örneğin, yalnızca bir Azure VM üzerinde SQL Server deniyorsanız, yanlışlıkla hafta boyunca çalışır durumda bırakarak ücretlendirmeye tabi olmak istemezsiniz. Tek bir çözüm [otomatik kapatılma özelliğini](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)kullanmaktır.
 
