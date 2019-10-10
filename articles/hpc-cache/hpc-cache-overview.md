@@ -5,21 +5,21 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 093116a8def69e3f63af9aeb963abc60841cbe85
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.author: rohogue
+ms.openlocfilehash: bfbbcd2d7d1bb44e260bedda54ca38ed6860ea67
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257006"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254490"
 ---
-# <a name="what-is-azure-hpc-cache-preview"></a>Azure HPC Önbelleği nedir? (Önizleme)
+# <a name="what-is-azure-hpc-cache-preview"></a>Azure HPC önbelleği nedir? Önizle
 
 Azure HPC Cache, yüksek performanslı bilgi işlem (HPC) görevleri için verilerinize erişimi hızlandırır. Azure HPC Cache, Azure 'daki dosyaları önbelleğe alarak, bulut bilgi işlemin ölçeklenebilirliğini mevcut iş akışınıza getirir. Bu hizmet, verilerinizin WAN bağlantıları arasında depolandığı iş akışları (örneğin, yerel veri merkezi ağ bağlantılı depolama (NAS) ortamınızda) için de kullanılabilir.
 
 Azure HPC önbelleğinin Azure portal kolayca başlatılması ve izlenmesi kolay bir işlemdir. Mevcut NFS depolaması veya yeni blob kapsayıcıları, arka uç depolama hedefini değiştirseniz bile, istemci erişiminin basit olmasını sağlayan, toplanmış ad alanının bir parçası haline gelebilir.
 
-## <a name="use-cases"></a>Uygulama alanları
+## <a name="use-cases"></a>Kullanım örnekleri
 
 Azure HPC Cache, aşağıdaki gibi iş akışları için en iyi verimliliği geliştirir:
 
@@ -33,7 +33,7 @@ Azure HPC önbelleği birçok sektör genelinde çok çeşitli iş akışlarına
 
 Medya ve eğlence sürümünde Azure HPC önbelleği, zaman açısından kritik işleme projeleri için veri erişimini hızlandırabilir. VFX işleme iş akışları çoğunlukla çok sayıda işlem düğümü tarafından son dakikalık işleme gerektirir. Bu iş akışlarının verileri genellikle şirket içi bir NAS ortamında bulunur. Azure HPC önbelleği, gecikme süresini azaltmak ve isteğe bağlı işleme esnekliği geliştirmek için bulutta bu dosya verilerini önbelleğe alabilir.
 
-### <a name="life-sciences"></a>Yaşam bilimleri
+### <a name="life-sciences"></a>Yaşam Bilimleri
 
 Birçok yaşam bilimleri iş akışı, genişleme dosya önbelleklemesi avantajlarından yararlanabilir.
 
@@ -41,7 +41,7 @@ Genomik analiz iş akışlarının Azure 'a bağlantı noktası almak isteyen bi
 
 Azure HPC Cache ayrıca ikincil analiz, ilaç macological simülasyonu veya AI odaklı görüntü analizi gibi görevlerde verimliliği artırmak için de yararlanılabilir olabilir.
 
-### <a name="financial-services-analytics"></a>Finansal hizmetler analizi
+### <a name="financial-services-analytics"></a>Finans hizmetleri Analizi
 
 Azure HPC önbellek dağıtımı, finansal hizmetler şirketlerinin stratejik kararlar vermesini daha iyi kavramak için nicel Analysis hesaplamaları, risk analizi iş yükleri ve Monte Carlo benzetimlerinin hızlandırılmasına yardımcı olabilir.
 
@@ -49,7 +49,7 @@ Azure HPC önbellek dağıtımı, finansal hizmetler şirketlerinin stratejik ka
 
 Azure HPC önbelleği şu Azure bölgelerinde kullanılabilir:
 
-* East US
+* Doğu ABD
 * Doğu ABD 2
 * Kuzey Avrupa
 * Batı Avrupa

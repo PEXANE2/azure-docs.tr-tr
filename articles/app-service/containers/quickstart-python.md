@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.author: cephalin
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: ed7e0df77abb39c07bea8946381247539afb3134
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 253e2e5015c2cb7a71386b88b4d86ac6bff6a0fe
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177022"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242454"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu hızlı [Başlangıçta, Linux üzerinde App Service](app-service-linux-intro
 
 ![Azure 'da çalışan örnek uygulama](media/quickstart-python/hello-world-in-browser.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Bu hızlı başlangıcı gerçekleştirmek için:
 
@@ -52,12 +52,19 @@ Depo, deponun bir Flask uygulaması içerdiğini App Service söyleyen bir *Appl
 Uygulamayı Azure 'a dağıtırken nasıl bakacağınızı görmeniz için yerel olarak çalıştırın. Bir Terminal penceresi açın ve gerekli bağımlılıkları yüklemek ve yerleşik geliştirme sunucusunu başlatmak için aşağıdaki komutları kullanın. 
 
 ```bash
-# In Bash
+# In Bash (for Linux or Mac)
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 FLASK_APP=application.py flask run
-
+```
+```powershell
+# In Powershell (for Windows)
+py -3 -m venv env
+env\scripts\activate
+pip install -r requirements.txt
+Set-Item Env:FLASK_APP ".\application.py"
+flask run
 ```
 
 Bir Web tarayıcısı açın ve `http://localhost:5000/` ' da örnek uygulamaya gidin.

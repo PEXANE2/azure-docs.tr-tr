@@ -1,13 +1,13 @@
 ---
-title: Azure Media Services v3’e genel bakış | Microsoft Docs
-description: Bu makalede, Media Services’ın üst düzey genel bakışı ve daha fazla ayrıntı için makalelerin bağlantıları sağlanmaktadır.
+title: Azure Media Services v3 'ye Genel Bakış | Microsoft Docs
+description: Bu makalede Media Services için üst düzey bir genel bakış sağlanır ve daha fazla ayrıntı için makalelerin bağlantıları sağlanmaktadır.
 services: media-services
 documentationcenter: na
 author: Juliako
 manager: femila
 editor: ''
 tags: ''
-keywords: azure media services, akış, yayın, canlı, çevrimdışı
+keywords: Azure Media Services, Stream, Broadcast, Live, OFFLINE
 ms.service: media-services
 ms.devlang: multiple
 ms.topic: overview
@@ -16,42 +16,44 @@ ms.workload: media
 ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: a752d7759386828e916f68e5903115220812f3e0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: c6359cf2401ff198b0242243dbf6dfdf2e35ce47
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123037"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244030"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 genel bakış
 
-Azure Media Services, yayın kalitesinde video akışı elde etmenizi, erişilebilirlik ve dağıtımı iyileştirmenizi, içerikleri analiz etmenizi ve daha fazlasını yapmanızı sağlayan çözümler derlemenize olanak tanıyan bulut tabanlı bir platformdur. İster uygulama geliştiricisi, çağrı merkezi, devlet dairesi, isterse bir eğlence şirketi olun, Media Services günümüzün en popüler mobil cihazlarında ve tarayıcılarında büyük kitlelere olağanüstü kalitede medya deneyimi sunan uygulamalar oluşturmanıza yardımcı olur. 
+Azure Media Services, yayın kalitesinde video akışı sağlayan, erişilebilirliği ve dağıtımı geliştiren, içeriği çözümleyen ve çok daha birçok çözüm oluşturmanıza olanak sağlayan bulut tabanlı bir platformdur. Bir uygulama geliştiricisi, bir devlet kurumu olan bir cep telefonu, bir eğlence Media Services şirketi ve en popüler mobil cihazlarda büyük kitlelere kadar üstün kalitede medya deneyimleri sunan uygulamalar oluşturmanıza yardımcı olur. ve tarayıcılar. 
+
+Media Services v3 SDK 'Ları, [Media Services v3 Openapı belirtimini (Swagger)](https://aka.ms/ams-v3-rest-sdk)temel alır.
 
 > [!NOTE]
-> Şu anda, v3 kaynaklarını yönetmek için Azure portalını kullanamıyorsunuz. [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref) veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks) birini kullanın.
+> Şu anda v3 kaynaklarını yönetmek için Azure portal kullanamazsınız. [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 ## <a name="what-can-i-do-with-media-services"></a>Media Services ile ne yapabilirim?
 
-Media Services, bulutta çeşitli medya iş akışı derlemenize olanak sağlar. Aşağıda, Media Services ile gerçekleştirilebileceklerin bazı örnekleri verilmiştir.  
+Media Services, bulutta çeşitli medya iş akışları oluşturmanıza olanak tanıdığından, Media Services ile neler yapabileceğinize ilişkin bazı örnekler aşağıda verilmiştir.  
 
-* Videoları, çeşitli tarayıcılarda ve cihazlarda oynatılabilmesi için çeşitli biçimlerde sunma. Çeşitli istemcilere (mobil cihazlar, TV, PC vb.) hem isteğe bağlı hem de canlı akış sunmak için video ve ses içeriğinin uygun şekilde kodlanması ve paketlenmesi gerekir. Bu içeriğin nasıl teslim edileceği ve akışının nasıl yapılacağını görmek için [bkz. hızlı başlangıç: Dosyaları](stream-files-dotnet-quickstart.md)kodla ve akışla.
-* Futbol, beyzbol, lise ve üniversite takım sporları vb. gibi spor etkinliklerini büyük bir çevrimiçi kitleye canlı akışa alın. 
-* Belediye sarayı, şehir meclisi toplantıları ve yasama organları gibi kamu toplantılarını ve etkinliklerini yayınlayın.
-* Kaydedilen videoları veya ses içeriğini analiz edin. Örneğin, daha yüksek müşteri memnuniyeti elde etmek için kuruluşlar, konuşmayı metne dönüştürebilir ve arama dizinleri ve panolar derleyebilir. Daha sonra genel şikayetlerden, şikayet kaynaklarından ve diğer ilişkili verilerden istihbarat çıkarabilir.
-* Bir müşterinin (örneğin, bir filmi stüdyosu), telif hakkıyla korunan bir çalışmaya erişimi ve kullanım yetkisini kısıtlaması gerektiğinde bir abonelik video hizmeti oluşturun ve DRM korumalı içeriği akışa alın.
-* Uçak, tren ve otomobillerde kayıttan yürütülmesi için çevrimdışı içerik sunun. Bir müşterinin, ağ bağlantısının kesileceğini tahmin ettiğinde kayıttan yürütülmesi için içeriği telefonuna veya tabletine indirmesi gerekebilir.
-* Konuşmayı metne dönüştürme, birden fazla dile çevirme vb. için Azure Media Services ve [Azure Bilişsel Hizmetler API’leri](https://docs.microsoft.com/azure/#pivot=products&panel=ai) ile eğitim amaçlı bir e-öğrenme video platformu uygulayın. 
+* Birçok farklı biçimde tarayıcıda ve cihazlarda oynatılabilecek videoları çeşitli biçimlerde sunun. Çeşitli istemcilere (mobil cihazlar, TV, PC vb.) hem isteğe bağlı hem de canlı akış teslimi için, video ve ses içeriğinin uygun şekilde kodlanıp paketlenmesi gerekir. Bu içeriğin nasıl teslim edileceği ve akışının nasıl yapılacağını görmek için bkz. [hızlı başlangıç: kodlama ve akış dosyaları](stream-files-dotnet-quickstart.md).
+* Canlı spor olaylarını futbol, bey, üniversite ve yüksek okul spor gibi büyük bir çevrimiçi kitleye akış ve daha fazlasını yapın. 
+* Şehir, şehir ve yasama gövdeleri gibi genel toplantıları ve olayları yayınlayın.
+* Kaydedilmiş videoları veya ses içeriğini analiz edin. Örneğin, daha yüksek müşteri memnuniyetini sağlamak için, kuruluşlar konuşmayı metne ve derleme arama dizinlerini ve panoları ayıklayabilir. Daha sonra, yaygın şikayetler, şikayet kaynakları ve diğer ilgili veriler hakkında zeka bilgileri ayıklayabilir.
+* Abonelik video hizmeti oluşturun ve bir müşterinin (örneğin, bir film Studio), özel olarak telif haklı çalışmanın erişimini ve kullanımını kısıtlayaması gerektiğinde DRM korumalı içerik akışı yapın.
+* Airdüzler, Trains ve otomobil oynatma işlemleri için çevrimdışı içerik sunun. Bir müşterinin, ağla bağlantısı kesilmek üzere tahmin edildiğinde kayıttan yürütmek için içeriği telefonlarına veya tabletlerine indirmesi gerekebilir.
+* Konuşmayı metne dönüştürme, çok dilde çevirme vb. için Azure Media Services ve [Azure bilişsel hizmetler API'si](https://docs.microsoft.com/azure/#pivot=products&panel=ai) ile eğitim e-öğrenim video platformunu uygulayın. 
 * Daha geniş bir hedef kitle (örneğin, işitme engelli kişiler veya farklı bir dilde okumak isteyen kişiler) için videolara alt yazı ve açıklamalı alt yazılar eklemek için [Azure bilişsel hizmetler API'si](https://docs.microsoft.com/azure/#pivot=products&panel=ai) ile birlikte Azure Media Services kullanın.
 * Anında yüksek yükleri daha iyi işleyebilmek için büyük ölçeklemeye ulaşmak üzere Azure CDN etkinleştirin (örneğin, bir ürün başlatma olayının başlangıcı). 
 
-## <a name="how-can-i-get-started-with-v3"></a>v3’ü kullanmaya nasıl başlayabilirim? 
+## <a name="how-can-i-get-started-with-v3"></a>V3 'i kullanmaya nasıl başlamalıyım? 
 
-Media Services v3 ile içeriği kodlayıp paketleme, talep üzerine video akışı yapma, canlı yayın gerçekleştirme ve videolarınızı analiz etme hakkında bilgi edinin. Öğreticiler, API başvuruları ve diğer belgeler, güvenli bir biçimde milyonlarca kullanıcıya ölçeklendirilebilen, isteğe bağlı ve canlı video veya ses akışları sağlama ile ilgili bilgiler içerir.
+İçeriği kodlama ve paketleme, Videoları isteğe bağlı olarak yayımlama, canlı yayın ve videoları Media Services v3 ile çözümleme hakkında bilgi edinin. Öğreticiler, API başvuruları ve diğer belgeler, milyonlarca kullanıcıya ölçeklenebilen isteğe bağlı ve canlı video veya ses akışlarını güvenli bir şekilde nasıl teslim etmek istediğinizi gösterir.
 
 > [!TIP]
-> Geliştirmeye başlamadan önce şunları gözden geçirin:<br/>* [Temel kavramlar](concepts-overview.md) (önemli kavramlar: paketleme, kodlama, koruma, vb.)<br/>* [Media Services v3 API 'leri Ile geliştirme](media-services-apis-overview.md) (API 'Lere erişme hakkında bilgiler, adlandırma kuralları vb.)
+> Geliştirmeye başlamadan önce şunları gözden geçirin:<br/>* [temel kavramları](concepts-overview.md) (önemli kavramlar: paketleme, kodlama, koruma vb.)<br/>* [Media Services v3 API 'leri Ile geliştirme](media-services-apis-overview.md) (API 'lere erişme hakkında bilgiler, adlandırma kuralları vb.)
 
-### <a name="quickstarts"></a>Hızlı girişler  
+### <a name="quickstarts"></a>Hızlı Başlangıçlar  
 
 Hızlı başlangıçlarda yeni müşterilerin Media Services hızla deneyebilmesinin temel gün 1 yönergeleri gösterilir.
 

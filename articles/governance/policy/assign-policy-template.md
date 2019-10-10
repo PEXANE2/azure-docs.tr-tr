@@ -1,24 +1,24 @@
 ---
-title: Kaynak Yöneticisi şablonuyla ilke ataması oluşturma
+title: Kaynak Yöneticisi şablonuyla atama oluşturma
 description: Bu makale, uyumlu olmayan kaynakları belirlemek üzere bir ilke ataması oluşturmak için Kaynak Yöneticisi şablonu kullanma adımlarında size yol gösterir.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
-ms.openlocfilehash: 72d8fab39e8dd11cf46eb2977a9b9fe288ca2de1
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 842b29160e3abaea5edc4bfb4f2e1c345e3ffc85
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980812"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254807"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Hızlı başlangıç: Kaynak Yöneticisi şablonu kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
-Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir.
-Bu hızlı başlangıç, yönetilen disk kullanmayan sanal makineleri belirlemek üzere ilke ataması oluşturma işleminde size yol gösterir.
+Azure 'da uyumluluğu anlamak için ilk adım kaynaklarınızın durumunu belirlemektir.
+Bu hızlı başlangıç, yönetilen diskleri kullanmayan sanal makineleri belirlemek için bir ilke ataması oluşturma işleminde size kılavuzluk edecek.
 
-Bu işlemin sonunda, yönetilen disk kullanmayan sanal makineleri başarılı bir şekilde belirlemiş olacaksınız. Bu sanal makineler, ilke ataması ile *uyumsuzdur*.
+Bu işlemin sonunda, yönetilen disk kullanmayan sanal makineleri başarıyla tanımlayacaksınız. İlke atamasıyla *uyumlu değildir* .
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -40,9 +40,9 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup *yönetilen diskleri kul
 
 1. Aşağıdaki değerleri seçin veya girin:
 
-   | Adı | Değer |
+   | Name | Değer |
    |------|-------|
-   | Abonelik | Azure aboneliğinizi seçin. |
+   | Aboneliğiniz | Azure aboneliğinizi seçin. |
    | Kaynak grubu | **Yeni oluştur**' u seçin, bir ad belirtin ve ardından **Tamam**' ı seçin. Ekran görüntüsünde, kaynak grubu adı *mypolicyquickstart @ no__t-1Date Ile mmdd > RG '* dir. |
    | Konum | Bir bölge seçin. Örneğin, **Orta ABD**. |
    | İlke atama adı | Bir ilke atama adı belirtin. İsterseniz ilke tanımı ekranını kullanabilirsiniz. Örneğin, **yönetilen disk kullanmayan VM 'Leri denetleyin**. |
@@ -50,7 +50,7 @@ Bu hızlı başlangıçta, bir ilke ataması oluşturup *yönetilen diskleri kul
    | İlke tanımı KIMLIĞI | **/Providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4C19-B460-a2d36003525a**belirtin. |
    | Yukarıda belirtilen hüküm ve koşulları kabul ediyorum | Seçin |
 
-1. **Satın al**'ı seçin.
+1. **Satın al**' ı seçin.
 
 Bazı ek kaynaklar:
 
@@ -59,7 +59,7 @@ Bazı ek kaynaklar:
 - Kaynak Yöneticisi şablonlarının nasıl geliştirileceği hakkında bilgi edinmek için bkz. [Azure Resource Manager belgeleri](/azure/azure-resource-manager/).
 - Abonelik düzeyinde dağıtım hakkında bilgi edinmek için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](../../azure-resource-manager/deploy-to-subscription.md).
 
-## <a name="identify-non-compliant-resources"></a>Uyumlu olmayan kaynakları belirleme
+## <a name="identify-non-compliant-resources"></a>Uyumlu olmayan kaynakları tanımla
 
 Sayfanın sol tarafındaki **Uyumluluk** ' i seçin. Ardından, oluşturduğunuz **yönetilen diskler ilke atamasını kullanmayan VM 'Leri denetle** seçeneğini bulun.
 
@@ -69,11 +69,11 @@ Bu yeni atamayla uyumlu olmayan mevcut kaynaklar varsa **uyumlu olmayan kaynakla
 
 Daha fazla bilgi için bkz. [Uyumluluk nasıl çalıştığını öğrenin](./how-to/get-compliance-data.md#how-compliance-works).
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
 Oluşturulan atamayı kaldırmak için şu adımları izleyin:
 
-1. Azure İlkesi sayfasının sol tarafından **Uyumluluk**’u (veya **Atamalar**’ı) seçin ve oluşturduğunuz **Yönetilen disk kullanmayan VM'leri denetle** ilke atamasını bulun.
+1. Azure Ilkesi sayfasının sol tarafındaki **Uyumluluk** (veya **atamalar**) ' ı seçin ve oluşturduğunuz **yönetilen diskleri kullanmayan VM 'leri denetle** ilke atamasını bulun.
 
 1. Yönetilen diskler ilkesi atamasını **kullanmayan VM 'Leri denetle** ' ye sağ tıklayın ve **atamayı Sil**' i seçin.
 

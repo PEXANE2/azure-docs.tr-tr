@@ -1,37 +1,37 @@
 ---
-title: Azure PowerShell kullanarak ilk sorgunuzu çalıştırın
-description: Bu makale, Azure PowerShell için Kaynak Grafiği modülünü etkinleştirmek ve ilk sorgunuzu çalıştırmak için gereken adımları incelemenizi sağlar.
+title: PowerShell kullanarak ilk sorgunuzu çalıştırma
+description: Bu makalede, Azure PowerShell için kaynak Graph modülünü etkinleştirme ve ilk sorgunuzu çalıştırma adımlarında izlenecek yol gösterilmektedir.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-ms.openlocfilehash: 95cf19d4a782f9e4c866d31fac0da74aebff5d2d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 9193b2e6cc00ef4c46afc72b041c12234af19299
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976783"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254534"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak ilk kaynak grafik sorgunuzu çalıştırın
 
-Azure Kaynak Grafiği’ni kullanmada ilk adım, Azure PowerShell modülünün yüklenip yüklenmediğini denetlemektir. Bu hızlı başlangıç, Azure PowerShell yüklemenize modül ekleme işlemini incelemenizi sağlar.
+Azure Kaynak Grafiği 'ni kullanmanın ilk adımı, Azure PowerShell modülünün yüklü olduğunu denetkullanmaktır. Bu hızlı başlangıç, Azure PowerShell yüklemenize modül ekleme sürecinde size yol gösterir.
 
-Bu işlemin sonunda, modülü seçtiğiniz Azure PowerShell yüklemesine eklemiş ve ilk Kaynak Grafiği sorgunuzu çalıştırmış olacaksınız.
+Bu işlemin sonunda, bunu istediğiniz Azure PowerShell yüklemesine eklemiş ve ilk kaynak Graf sorgunuzu çalıştıracaksınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="add-the-resource-graph-module"></a>Kaynak Grafiği modülü ekleme
+## <a name="add-the-resource-graph-module"></a>Kaynak Graph modülünü ekleme
 
-Azure PowerShell’in Azure Kaynak Grafiği’ni sorgulamasını etkinleştirmek için modül eklenmelidir. Bu modül, [Azure Cloud Shell](https://shell.azure.com)Ile veya [PowerShell Docker görüntüsü](https://hub.docker.com/_/microsoft-powershell)Ile yerel olarak yüklü PowerShell ile kullanılabilir.
+Azure Kaynak Grafiği 'ni sorgulamak için Azure PowerShell etkinleştirmek üzere modülün eklenmesi gerekir. Bu modül, [Azure Cloud Shell](https://shell.azure.com)Ile veya [PowerShell Docker görüntüsü](https://hub.docker.com/_/microsoft-powershell)Ile yerel olarak yüklü PowerShell ile kullanılabilir.
 
 ### <a name="base-requirements"></a>Temel gereksinimler
 
-Azure Kaynak Grafiği modülü aşağıdaki yazılımı gerektirir:
+Azure Kaynak Grafiği modülü aşağıdaki yazılımları gerektirir:
 
-- Azure PowerShell 1.0.0 veya üzeri. Henüz yüklenmiş değilse, [bu yönergeleri](/powershell/azure/install-az-ps) izleyin.
+- Azure PowerShell 1.0.0 veya üzeri. Henüz yüklenmemişse, [Bu yönergeleri](/powershell/azure/install-az-ps)izleyin.
 
-- PowerShellGet 2.0.1 veya üzeri. Henüz yüklenmiş ve güncellenmiş değilse, [bu yönergeleri](/powershell/gallery/installing-psget) izleyin.
+- PowerShellGet 2.0.1 veya üzeri. Yüklü değilse veya güncellenmemişse, [Bu yönergeleri](/powershell/gallery/installing-psget)izleyin.
 
 ### <a name="install-the-module"></a>Modülü yükler
 
@@ -51,11 +51,11 @@ PowerShell için kaynak Graph modülü **az. ResourceGraph**' dir.
    Get-Command -Module 'Az.ResourceGraph' -CommandType 'Cmdlet'
    ```
 
-## <a name="run-your-first-resource-graph-query"></a>İlk Kaynak Grafiği sorgunuzu çalıştırma
+## <a name="run-your-first-resource-graph-query"></a>İlk kaynak Graph sorgunuzu çalıştırma
 
-Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte şimdi basit bir Kaynak Grafiği sorgusu denemenin zamanı geldi. Sorgu ilk beş Azure kaynağını, her kaynağın **Adı** ve **Kaynak Türü** ile birlikte döndürür.
+Azure PowerShell modülü tercih ettiğiniz ortamınıza eklendiğinde, basit bir kaynak grafiği sorgusu denemenize zaman atalım. Sorgu ilk beş Azure kaynağını her bir kaynağın **adı** ve **kaynak türü** ile döndürür.
 
-1. `Search-AzGraph` cmdlet’ini kullanarak İlk Azure Kaynak Grafiği sorgunuzu çalıştırın:
+1. @No__t-0 cmdlet 'ini kullanarak ilk Azure Kaynak Grafiği sorgunuzu çalıştırın:
 
    ```azurepowershell-interactive
    # Login first with Connect-AzAccount if not using Cloud Shell
@@ -65,9 +65,9 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
    ```
 
    > [!NOTE]
-   > Bu sorgu örneği, `order by` gibi bir sıralama değiştirici sağlamadığı için, bu sorgunun birden çok kez çalıştırılması muhtemelen istek başına farklı bir kaynak kümesi sunacaktır.
+   > Bu sorgu örneği `order by` gibi bir sıralama değiştiricisi sağlamadığından, bu sorguyu birden çok kez çalıştırmak istek başına farklı kaynak kümesi sunabiliyor olabilir.
 
-1. Sorguyu `order by` **Ad** özelliğine güncelleştirin:
+1. Sorguyu `order by` **ad** özelliği olarak güncelleştirin:
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -75,23 +75,23 @@ Azure PowerShell modülünün seçtiğiniz ortamınıza eklenmesiyle birlikte ş
    ```
 
    > [!NOTE]
-   > İlk sorguda olduğu gibi, bu sorguyu birden çok kez çalıştırmak, muhtemelen istek başına farklı bir kaynak kümesi sunacaktır. Sorgu komutlarının düzeni önemlidir. Bu örnekte `order by`, `limit`’den sonra gelmektedir. Bu, sorgu sonuçlarını önce sınırlar, sonra düzenler.
+   > İlk sorguda olduğu gibi, bu sorguyu birden çok kez çalıştırmak, istek başına farklı kaynak kümesi elde etmek olabilir. Sorgu komutlarının sırası önemlidir. Bu örnekte, `order by` `limit` ' den sonra gelir. Bu, önce sorgu sonuçlarını sınırlandırır ve ardından bunları sıralayacak.
 
-1. Sorguyu ilk önce `order by` **Ad** özelliğine ve ardından `limit`’e en iyi beş sonuca güncelleştirin:
+1. Sorguyu ilk `order by` olarak, **ad** özelliğini ve ardından ilk beş sonuca `limit` ' ye güncelleştirin:
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    Search-AzGraph -Query 'project name, type | order by name asc | limit 5'
    ```
 
-Son sorgu birkaç kere çalıştırıldığında, ortamınızda hiçbir şeyin değişmediği varsayılarak döndürülen sonuçlar tutarlı ve beklendiği gibi olur, yani **Ad** özelliğine göre düzenlenir ama yine de en iyi beş sonuçla sınırlıdır.
+Son sorgu birkaç kez çalıştırıldığında, ortamınızdaki hiçbir şeyin değişmediği kabul edildiğinde döndürülen sonuçlar tutarlı olur ve **ad** özelliğine göre sıralanır, ancak yine de en üstteki beş sonuçla sınırlıdır.
 
 > [!NOTE]
 > Sorgu zaten erişiminiz olan bir abonelikten sonuç döndürmezse, `Search-AzGraph` cmdlet 'inin varsayılan bağlamdaki abonelikler olduğunu unutmayın. Varsayılan bağlamın bir parçası olan abonelik kimliklerinin listesini görmek için bu @no__t çalıştırın-0 ' a erişiminiz olan tüm abonelikler arasında arama yapmak istiyorsanız, birisi `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` ' i çalıştırarak `Search-AzGraph` cmdlet 'inin PSDefaultParameterValues değerlerini ayarlayabilir
    
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
-Kaynak Grafiği modülünü Azure PowerShell ortamınızdan kaldırmak isterseniz, aşağıdaki komutu kullanarak bunu yapabilirsiniz:
+Kaynak Graph modülünü Azure PowerShell ortamınızdan kaldırmak isterseniz, aşağıdaki komutu kullanarak bunu yapabilirsiniz:
 
 ```azurepowershell-interactive
 # Remove the Resource Graph module from the current session
@@ -102,13 +102,13 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 ```
 
 > [!NOTE]
-> Bu işlem daha önce indirilmiş modül dosyasını silmez. Yalnızca çalışan PowerShell ortamından kaldırır.
+> Bu, daha önce indirilen modül dosyasını silmez. Yalnızca çalışan PowerShell oturumundan kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sorgu dili](./concepts/query-language.md) hakkında daha fazla bilgi edinme
-- [Kaynakları keşfetmeyi](./concepts/explore-resources.md) öğrenin
+- [Sorgu dili](./concepts/query-language.md) hakkında daha fazla bilgi alın
+- [Kaynakları keşfetmeye](./concepts/explore-resources.md) öğrenin
 - [Azure CLI](first-query-azurecli.md) ile ilk sorgunuzu çalıştırma
-- Bkz. [başlangıç sorguları](./samples/starter.md) örnekleri
-- Bkz. [Gelişmiş sorgular](./samples/advanced.md) örnekleri
-- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) ile ilgili geri bildirim gönderme
+- Bkz. [Başlangıç sorguları](./samples/starter.md) örnekleri
+- [Gelişmiş sorguların](./samples/advanced.md) örneklerine bakın
+- [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) hakkında geri bildirim sağlayın

@@ -1,5 +1,5 @@
 - name: SQL Veri Ambarı Belgeleri
-  href: index.md
+  href: index.yml
 - name: Genel Bakış
   items:
     - name: SQL Veri Ambarı nedir?

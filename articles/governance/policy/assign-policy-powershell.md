@@ -1,44 +1,44 @@
 ---
-title: Azure PowerShell uyumlu olmayan kaynaklar için ilke oluşturma
+title: PowerShell ile kaynakları denetlemek için ilke oluşturma
 description: Uyumlu olmayan kaynakları belirlemek üzere bir Azure Ilkesi ataması oluşturmak için Azure PowerShell kullanın.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
-ms.openlocfilehash: 7e86436b1b87ab4eec3a971ec19e7dc0ffb106b3
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 55b7d8509fcf681438b377aa43f5f8aa9bac158d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978117"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255921"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma
 
-Azure’da uyumluluğu anlamanın ilk adımı, kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek için bir ilke ataması oluşturacaksınız. Bu tamamlandığında, *uyumlu olmayan*sanal makineleri tanımlayacaksınız.
+Azure 'da uyumluluğu anlamak için ilk adım kaynaklarınızın durumunu belirlemektir. Bu hızlı başlangıçta, yönetilen disk kullanmayan sanal makineleri belirlemek için bir ilke ataması oluşturacaksınız. Bu tamamlandığında, *uyumlu olmayan*sanal makineleri tanımlayacaksınız.
 
 Azure PowerShell modülü, Azure kaynaklarını komut satırından veya betiklerden yönetmek için kullanılır.
 Bu kılavuzda, bir ilke ataması oluşturmak için az Module kullanma açıklanmaktadır.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 - Başlamadan önce, Azure PowerShell en son sürümünün yüklü olduğundan emin olun. Ayrıntılı bilgi için bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps) .
-- Azure PowerShell kullanarak Azure Policy Insights kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısı kaydedildiğinde, aboneliğinizin bununla çalıştığından emin olunur. Kaynak sağlayıcısını kaydetmek için, kaynak sağlayıcısı kaydetme işlemini kaydettirme izninizin olması gerekir. Bu işlem, Katkıda Bulunan ve Sahip rolleriyle birlikte sunulur. Aşağıdaki komutu çalıştırarak kaynak sağlayıcısını kaydedin:
+- Azure PowerShell kullanarak Azure Policy Insights kaynak sağlayıcısını kaydedin. Kaynak sağlayıcısını kaydetmek, aboneliğinizin onunla birlikte çalıştığından emin olmanızı sağlar. Kaynak sağlayıcısını kaydetmek için, kaynak sağlayıcısı kaydetme işlemini kaydettirme izninizin olması gerekir. Bu işlem katkıda bulunan ve sahip rollerine dahildir. Kaynak sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
 
   ```azurepowershell-interactive
   # Register the resource provider if it's not already registered
   Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
   ```
 
-  Kaynak sağlayıcıları kaydetme ve görüntülemeyle ilgili daha fazla bilgi için bkz. [Kaynak Sağlayıcıları ve Türleri](../../azure-resource-manager/resource-manager-supported-services.md)
+  Kaynak sağlayıcılarını kaydetme ve görüntüleme hakkında daha fazla bilgi için bkz. [kaynak sağlayıcıları ve türleri](../../azure-resource-manager/resource-manager-supported-services.md)
 
 ## <a name="create-a-policy-assignment"></a>İlke ataması oluşturma
 
 Bu hızlı başlangıçta, *yönetilen diskler olmadan VM 'Leri denetle* tanımı için bir ilke ataması oluşturacaksınız. Bu ilke tanımı, yönetilen diskleri kullanmayan sanal makineleri tanımlar.
 
-Yeni ilke ataması oluşturmak için aşağıdaki komutları çalıştırın:
+Yeni bir ilke ataması oluşturmak için aşağıdaki komutları çalıştırın:
 
 ```azurepowershell-interactive
 # Get a reference to the resource group that will be the scope of the assignment
@@ -51,16 +51,16 @@ $definition = Get-AzPolicyDefinition | Where-Object { $_.Properties.DisplayName 
 New-AzPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit VMs without managed disks Assignment' -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
-Yukarıdaki komutlarda aşağıdaki bilgiler kullanılmaktadır:
+Yukarıdaki komutlar aşağıdaki bilgileri kullanır:
 
-- **Ad** - Atamanın gerçek adı. Bu örnekte *audit-vm-manageddisks* kullanıldı.
-- **Görünen Ad** - Bu ilke atamasının görünen adı. Bu durumda, *yönetilen disk ataması olmadan VM 'Leri denetleme*kullanıyorsunuz demektir.
-- **Tanım** - Bu, atamayı oluşturmak için kullandığınız ilke tanımıdır. Bu durumda, *yönetilen diskleri kullanmayan ilke tanımı denetim VM*'lerinin kimliğidir.
-- **Kapsam** - Kapsam, ilke atamasının hangi kaynaklarda veya kaynak gruplarında uygulanacağını belirler. Abonelikten kaynak gruplarına kadar değişebilir. &lt;Kapsam&gt; yerine kaynak grubunuzun adını yazdığınızdan emin olun.
+- **Ad** -atamanın gerçek adı. Bu örnekte, *audit-VM-manageddisks* kullanılmıştır.
+- **DisplayName** -ilke ataması için görünen ad. Bu durumda, *yönetilen disk ataması olmadan VM 'Leri denetleme*kullanıyorsunuz demektir.
+- **Tanım** : atamayı oluşturmak için kullandığınız ilke tanımı. Bu durumda, *yönetilen diskleri kullanmayan ilke tanımı denetim VM*'lerinin kimliğidir.
+- **Kapsam** -bir kapsam, ilke atamasının hangi kaynaklarda veya gruplandırmaya uygulanacağını belirler. Bir abonelikten kaynak gruplarına kadar değişebilir. @No__t-0scope @ no__t-1 ' i kaynak grubunuzun adıyla değiştirdiğinizden emin olun.
 
 Artık ortamınızın uyumluluk durumunu anlamak için uyumlu olmayan kaynakları belirlemek için hazırsınız demektir.
 
-## <a name="identify-non-compliant-resources"></a>Uyumlu olmayan kaynakları belirleme
+## <a name="identify-non-compliant-resources"></a>Uyumlu olmayan kaynakları tanımla
 
 Oluşturduğunuz ilke atamasıyla uyumlu olmayan kaynakları belirlemek için aşağıdaki bilgileri kullanın. Aşağıdaki komutları çalıştırın:
 
@@ -93,7 +93,7 @@ ManagementGroupIds          : {managementGroupId}
 
 Sonuçlar, Azure portal görünümündeki bir ilke atamasının **kaynak uyumluluğu** sekmesinde gördüklerinize göre eşleşir.
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
 Oluşturulan atamayı kaldırmak için aşağıdaki komutu kullanın:
 
@@ -104,7 +104,7 @@ Remove-AzPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure ortamınızda uyumlu olmayan kaynakları belirlemek üzere bir ilke tanımı atadınız.
+Bu hızlı başlangıçta, Azure ortamınızda uyumlu olmayan kaynakları belirlemek için bir ilke tanımı atadınız.
 
 Yeni kaynakların uyumlu olduğunu doğrulamak üzere ilke atama hakkında daha fazla bilgi edinmek için öğreticiye geçin:
 

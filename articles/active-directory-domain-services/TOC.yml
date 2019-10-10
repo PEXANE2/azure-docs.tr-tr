@@ -25,6 +25,8 @@
       href: powershell-create-instance.md
 - name: Kavramlar
   items:
+    - name: Yönetim temel bilgileri
+      href: administration-concepts.md
     - name: Yaygın dağıtım senaryoları
       href: scenarios.md
     - name: Azure AD DS eşitlemesinin işleyiş biçimi

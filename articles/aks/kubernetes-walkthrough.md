@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: mlearned
 ms.custom: H1Hack27Feb2017, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 3a07186856fd05c65f583a94f324df05e348d24f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 1d700afe36d51f0b939629f86d770e54072f47a9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960008"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255515"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak bir Azure Kubernetes hizmeti (AKS) kümesi dağıtma
 
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta, Azure CLı kullanarak bir Azure Kubernetes hizmeti (A
 
 Windows Server kapsayıcıları (Şu anda AKS ' de önizlemede) kullanmak istiyorsanız, bkz. [Windows Server kapsayıcılarını destekleyen aks kümesi oluşturma][windows-container-cli].
 
-![Azure oylamaya göz atma görüntüsü](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure oylama uygulaması eylemde](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 Bu hızlı başlangıçta, Kubernetes kavramlarının temel bir şekilde anlaşıldığı varsayılır. Daha fazla bilgi için bkz. [Azure Kubernetes hizmeti (AKS) Için Kubernetes temel kavramları][kubernetes-concepts].
 
@@ -230,7 +230,7 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 Azure oy uygulamasını çalışırken görmek için, hizmetinizin dış IP adresine bir Web tarayıcısı açın.
 
-![Azure oylamaya göz atma görüntüsü](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure oylama uygulaması eylemde](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 AKS kümesi oluşturulduğunda, [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-overview.md) , hem küme düğümleri hem de pods için sistem durumu ölçümlerini yakalamak üzere etkinleştirilmiştir. Bu sistem durumu ölçümleri Azure portal kullanılabilir.
 

@@ -56,11 +56,11 @@
     - name: SSH hakkındaki sorunları giderme
       href: troubleshoot-ssh-connection.md
     - name: Dosya sistemi hatalarını giderme
-      href: 'https://support.microsoft.com/help/3213321'
+      href: linux-recovery-cannot-start-file-system-errors.md
     - name: Çekirdekle ilgili önyükleme sorunları giderme
       href: 'https://support.microsoft.com/help/4091524'
     - name: Fstab hatalarını giderme
-      href: 'https://support.microsoft.com/help/3206699'
+      href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: SSH hakkındaki sorunları gidermeyle ilgili ayrıntılar
       href: detailed-troubleshoot-ssh-connection.md
 - name: Genel hata iletileri
