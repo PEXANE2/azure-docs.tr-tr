@@ -105,6 +105,8 @@
               href: map-add-line-layer.md
             - name: Çokgen katmanı ekleme
               href: map-add-shape.md
+            - name: Derinleştirme çokgen katmanı ekleme
+              href: map-extruded-polygon.md
             - name: Isı haritası katmanı ekleme
               href: map-add-heat-map-layer.md
             - name: Açılır pencere ekleme

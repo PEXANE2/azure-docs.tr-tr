@@ -4,6 +4,8 @@
   items:
     - name: Media Services hakkında
       href: media-services-overview.md
+    - name: Media Services yenilikleri
+      href: release-notes.md
 - name: Öğreticiler
   expanded: true
   items:
@@ -343,8 +345,6 @@
           href: 'https://aka.ms/ams-v3-ruby-sdk'
     - name: Azure Media Services Gezgini
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
-    - name: Sürüm notları
-      href: release-notes.md
     - name: Kotalar ve sınırlamalar
       href: limits-quotas-constraints.md
     - name: SSS

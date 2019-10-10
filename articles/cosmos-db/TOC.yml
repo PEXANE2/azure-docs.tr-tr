@@ -57,8 +57,10 @@
       href: tutorial-global-distribution-sql-api.md
 - name: Örnekler
   items:
-    - name: .NET örnekleri
+    - name: .NET V2 SDK örnekleri
       href: sql-api-dotnet-samples.md
+    - name: .NET V3 SDK örnekleri
+      href: sql-api-dotnet-v3sdk-samples.md
     - name: Java örnekleri
       href: sql-api-java-samples.md
     - name: Zaman uyumsuz Java örnekleri
@@ -1022,6 +1024,8 @@
           href: odbc-driver.md
     - name: Verileri Cosmos DB’ye geçirme
       items:
+        - name: Verileri Cosmos DB’ye geçirme seçenekleri
+          href: cosmosdb-migrationchoices.md
         - name: Striim kullanarak SQL API’ye geçirme
           href: cosmosdb-sql-api-migrate-data-striim.md
         - name: Striim kullanarak Cassandra API’ye geçirme

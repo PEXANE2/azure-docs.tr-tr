@@ -44,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: ExpressRoute Global Reach hakkında
       href: expressroute-global-reach.md
+    - name: ExpressRoute şifrelemesi hakkında
+      href: expressroute-about-encryption.md
     - name: Azure'ı genel buluta bağlama
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Arka Uç Bağlantısı Birlikte Çalışabilirliği
@@ -121,6 +123,8 @@
           href: expressroute-howto-erdirect.md
         - name: Azure CLI
           href: expressroute-howto-expressroute-direct-cli.md
+    - name: ExpressRoute Direct için MACsec bağlantı noktalarını yapılandırma
+      href: expressroute-howto-macsec.md
     - name: Microsoft eşlemesi için rota filtreleri yapılandırma
       items:
         - name: Azure portal
