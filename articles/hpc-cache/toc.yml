@@ -36,3 +36,5 @@
   items:
     - name: Destek bileti açma
       href: hpc-cache-support-ticket.md
+    - name: Bölgesel kesintiden kurtulma
+      href: hpc-region-recovery.md

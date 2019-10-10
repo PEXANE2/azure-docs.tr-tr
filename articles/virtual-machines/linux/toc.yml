@@ -196,6 +196,8 @@
               href: disk-encryption-cli-quickstart.md
             - name: PowerShell ile VM şifreleme
               href: disk-encryption-powershell-quickstart.md
+            - name: Azure portalıyla VM şifreleme
+              href: disk-encryption-portal-quickstart.md
             - name: Azure Disk Şifrelemesi için anahtar kasası
               href: disk-encryption-key-vault.md
             - name: Disk şifrelemesi örnek betikleri
