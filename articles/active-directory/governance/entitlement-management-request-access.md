@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c8a96a4557a500bd4726b8df44ada5df328b7c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 2aaa58d3027fecdbfdf594e5712cbdbd758380a7
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290880"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169814"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD Yetkilendirme Yönetimi 'nde (Önizleme) bir erişim paketine erişim isteme
 
@@ -38,9 +38,9 @@ Erişim paketi Yöneticisi, kullanıcıların paketlere erişim sahibi olması i
 
 İlk adım, erişim paketine erişim isteyebileceğiniz erişim portalı 'nda oturum açmak için kullanılır.
 
-**Önkoşul rolü:** İstek sahibi
+**Önkoşul rolü:** Sahibinin
 
-1. Çalıştığınız proje veya iş Yöneticisi için bir e-posta veya bir ileti arayın. E-posta, erişmeniz gereken erişim paketine bir bağlantı içermelidir. Bağlantı, "myaccess" ile başlar, bir dizin ipucu içerir ve aşağıdakine benzer bir erişim paketi kimliğiyle biter:
+1. Çalıştığınız proje veya iş Yöneticisi için bir e-posta veya bir ileti arayın. E-posta, erişmeniz gereken erişim paketine bir bağlantı içermelidir. Bağlantı, "myaccess" ile başlar, bir dizin ipucu içerir ve aşağıdakine benzer bir erişim paketi KIMLIĞIYLE biter:
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -54,7 +54,7 @@ Erişim paketi Yöneticisi, kullanıcıların paketlere erişim sahibi olması i
 
 Access Portal 'da erişim paketini bulduktan sonra bir istek gönderebilirsiniz.
 
-**Önkoşul rolü:** İstek sahibi
+**Önkoşul rolü:** Sahibinin
 
 1. Listede erişim paketini bulun.  Gerekirse, arama dizesi yazarak ve ardından **ad**, **Katalog**veya **kaynaklar** filtresini seçerek arama yapabilirsiniz.
 
@@ -83,7 +83,7 @@ Access Portal 'da erişim paketini bulduktan sonra bir istek gönderebilirsiniz.
 
 Bir erişim isteği gönderirseniz ve istek hala **Bekleyen onay** durumundaysa, isteği iptal edebilirsiniz.
 
-**Önkoşul rolü:** İstek sahibi
+**Önkoşul rolü:** Sahibinin
 
 1. İsteklerinizin ve durumun listesini görmek için, sol taraftaki erişim Portalı ' nda, **istek geçmişi** ' ne tıklayın.
 
@@ -99,7 +99,7 @@ Bir erişim isteği gönderirseniz ve istek hala **Bekleyen onay** durumundaysa,
 
 Uygulanan birden çok ilkeye sahip bir erişim paketine erişim isteğinde bulunduğunuzu seçerseniz, bir ilke seçmeniz istenebilir. Örneğin, bir erişim paketi Yöneticisi iki dahili çalışan grubu için iki ilkeye sahip bir erişim paketi yapılandırabilir. İlk ilke 60 gün boyunca erişime izin verebilir ve onay gerektirebilir. İkinci ilke 2 gün boyunca erişime izin verebilir ve onay gerektirmez. Bu senaryoyla karşılaşırsanız, kullanmak istediğiniz ilkeyi seçmeniz gerekir.
 
-**Önkoşul rolü:** İstek sahibi
+**Önkoşul rolü:** Sahibinin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

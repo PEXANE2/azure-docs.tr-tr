@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 28819bc9d2eaf7d4b595bed59bcd1df8741b62a5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 48848fbacdc0e205604bb163aa36bdafcd175b0b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101839"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173535"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Şirket içi Always on kullanılabilirlik gruplarını Azure 'a genişletme
 Her zaman açık kullanılabilirlik grupları, ikincil çoğaltmalar ekleyerek veritabanı grupları için yüksek kullanılabilirlik sağlar. Bu çoğaltmalar hata durumunda veritabanlarının yük devretmesini sağlar. Bunlara ek olarak, okuma iş yüklerini veya yedekleme görevlerini boşaltmak için de kullanılabilir.
@@ -33,21 +33,21 @@ Bu öğreticide size şunlar varsayılmaktadır:
 * Şirket içi ağ ve Azure sanal ağınız arasındaki bağlantı. Bu sanal ağı oluşturma hakkında daha fazla bilgi için bkz. [Azure Portal (klasik) kullanarak siteden siteye bağlantı oluşturma](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
 
 > [!IMPORTANT] 
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir.
+> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../../../azure-resource-manager/resource-manager-deployment-model.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, en yeni dağıtımların Kaynak Yöneticisi modelini kullanmasını önerir.
 
 ## <a name="add-azure-replica-wizard"></a>Azure çoğaltma Sihirbazı ekleme
 Bu bölümde, Azure **çoğaltması Ekleme Sihirbazı 'nı** kullanarak her zaman açık kullanılabilirlik grubu çözümünüzü Azure çoğaltmaları içerecek şekilde nasıl genişletebileceğinizi gösterir.
 
 > [!IMPORTANT]
-> **Azure çoğaltma ekleme Sihirbazı** yalnızca klasik dağıtım modeliyle oluşturulan sanal makineleri destekler. Yeni VM dağıtımları, daha yeni Kaynak Yöneticisi modelini kullanmalıdır. Kaynak Yöneticisi sahip VM 'Leri kullanıyorsanız, Transact-SQL commmands kullanarak ikincil Azure çoğaltmasını el ile eklemeniz gerekir (burada gösterilmez). Bu sihirbaz Kaynak Yöneticisi senaryosunda çalışmayacaktır.
+> **Azure çoğaltma ekleme Sihirbazı** yalnızca klasik dağıtım modeliyle oluşturulan sanal makineleri destekler. Yeni VM dağıtımları, daha yeni Kaynak Yöneticisi modelini kullanmalıdır. Kaynak Yöneticisi sahip VM 'Leri kullanıyorsanız, Transact-SQL komutlarını kullanarak ikincil Azure çoğaltmasını el ile eklemeniz gerekir (burada gösterilmez). Bu sihirbaz Kaynak Yöneticisi senaryosunda çalışmayacaktır.
 
-1. SQL Server Management Studio içinde, **her zaman yüksek kullanılabilirlik** > **kullanılabilirlik grupları** >  **[kullanılabilirlik grubunuzun adı]** ' nı genişletin.
+1. SQL Server Management Studio içinde, **her zaman yüksek kullanılabilirlik** > **kullanılabilirlik grupları**' nı genişletin  >  **[kullanılabilirlik grubunuzun adı]** .
 2. **Kullanılabilirlik çoğaltmaları**' na sağ tıklayın ve ardından **çoğaltma ekle**' ye tıklayın.
 3. Varsayılan olarak, **kullanılabilirlik grubuna çoğaltma Ekle Sihirbazı** görüntülenir. **İleri**'ye tıklayın.  Bu sihirbazın önceki bir kez başlatılması sırasında sayfanın altındaki **Bu sayfayı bir daha gösterme** seçeneğini belirlediyseniz bu ekran görüntülenmez.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742861.png)
-4. Var olan tüm ikincil çoğaltmalara bağlanmanız gerekecektir. Bağlan ' a tıklayabilirsiniz **...** Her bir kopyanın yanında ya da **Tümünü bağla...** seçeneğine tıklayabilirsiniz. ekranın alt kısmında. Kimlik doğrulamasından sonra İleri ' ye tıklayarak sonraki ekrana ilerleyin.
-5. **Çoğaltmaları belirtin** sayfasında, en üstte birden çok sekme listelenir: **Çoğaltmalar**, **uç noktalar**, **Yedekleme tercihleri**ve **dinleyici**. **Çoğaltmalar** sekmesinden **Azure çoğaltma Ekle ' ye tıklayın...** Azure çoğaltma ekleme Sihirbazı 'Nı başlatmak için.
+4. Var olan tüm ikincil çoğaltmalara bağlanmanız gerekecektir. Bağlan ' a tıklayabilirsiniz **...** Her bir kopyanın yanında ya da **Tümünü bağla...** seçeneğine tıklayabilirsiniz. ekranın alt kısmında. Kimlik doğrulamasından sonra İleri **' ye tıklayarak sonraki ekrana** ilerleyin.
+5. **Çoğaltmaları belirtin** sayfasında, en üstteki: **çoğaltmalar**, **uç noktalar**, **Yedekleme tercihleri**ve **dinleyici**arasında birden çok sekme listelenir. **Çoğaltmalar** sekmesinden **Azure çoğaltma Ekle ' ye tıklayın...** Azure çoğaltma ekleme Sihirbazı 'Nı başlatmak için.
    
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742863.png)
 6. Daha önce yüklediyseniz, yerel Windows sertifika deposundan var olan bir Azure Yönetim sertifikası seçin. Daha önce kullandıysanız bir Azure aboneliğinin kimliğini seçin veya girin. Bir Azure Yönetim sertifikası indirip yüklemek ve Azure hesabı kullanarak Aboneliklerin listesini indirmek için Indir ' e tıklayabilirsiniz.
@@ -55,15 +55,15 @@ Bu bölümde, Azure **çoğaltması Ekleme Sihirbazı 'nı** kullanarak her zama
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
 7. Sayfadaki her alanı, çoğaltmayı barındıracak Azure sanal makinesini (VM) oluşturmak için kullanılacak değerlerle dolduracaksınız.
    
-   | Ayar | Açıklama |
+   | Ayar | Description |
    | --- | --- |
-   | **Görüntü** |İstenen işletim sistemi ve SQL Server birleşimini seçin |
+   | **Görüntüyle** |İstenen işletim sistemi ve SQL Server birleşimini seçin |
    | **VM boyutu** |İş gereksinimlerinize en uygun VM 'nin boyutunu seçin |
    | **VM adı** |Yeni VM için benzersiz bir ad belirtin. Ad 3 ila 15 karakter arasında olmalıdır, yalnızca harf, rakam ve kısa çizgi içerebilir ve bir harfle başlamalı ve bir harf ya da sayı ile bitmelidir. |
    | **VM Kullanıcı adı** |VM 'de yönetici hesabı olacak bir Kullanıcı adı belirtin |
    | **VM yönetici parolası** |Yeni hesap için bir parola belirtin |
    | **Parolayı Onayla** |Yeni hesabın parolasını onaylayın |
-   | **Sanal Ağ** |Yeni VM 'nin kullanması gereken Azure sanal ağını belirtin. Sanal ağlar hakkında daha fazla bilgi için bkz. [sanal ağa genel bakış](../../../virtual-network/virtual-networks-overview.md). |
+   | **Sanal ağ** |Yeni VM 'nin kullanması gereken Azure sanal ağını belirtin. Sanal ağlar hakkında daha fazla bilgi için bkz. [sanal ağa genel bakış](../../../virtual-network/virtual-networks-overview.md). |
    | **Sanal ağ alt ağı** |Yeni VM 'nin kullanması gereken sanal ağ alt ağını belirtin |
    | **Etki alanı** |Etki alanı için önceden doldurulan değerin doğru olduğunu onaylayın |
    | **Etki alanı Kullanıcı adı** |Yerel küme düğümlerinde yerel Yöneticiler grubunda bir hesap belirtin |

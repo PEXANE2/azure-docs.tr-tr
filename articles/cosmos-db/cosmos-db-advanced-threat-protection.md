@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB için Gelişmiş tehdit koruması
 description: Azure Cosmos DB, bekleyen verilerin şifrelenmesi ve nasıl uygulandığı hakkında bilgi edinin.
-author: monhaber
+author: rkarlin
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: v-mohabe
+ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2b12d639e734502113b6afdd7250fca6a520c687
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123891"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176013"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB için Gelişmiş tehdit koruması
 
@@ -31,7 +31,7 @@ Güvenlik uyarılarının tam araştırma deneyimi için, tüm belgeler, kapsay�
 
 ### <a name="set-up-atp-using-the-portal"></a>Portalı kullanarak ATP ayarlama
 
-1. Üzerinde [https://portal.azure.com](https://portal.azure.com/)Azure Portal başlatın.
+1. Azure portal [https://portal.azure.com](https://portal.azure.com/)' de başlatın.
 
 2. Azure Cosmos DB hesabından, **Ayarlar** menüsünden **Gelişmiş güvenlik**' i seçin.
 

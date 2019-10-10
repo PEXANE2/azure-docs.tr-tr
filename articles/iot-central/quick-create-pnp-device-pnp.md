@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bc7858aeceea7cbd35bc2d834ddfb4fb5d656321
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048964"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174827"
 ---
-# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Hızlı Başlangıç: Bir IoT Tak ve Kullan cihazı oluşturmak ve IoT Central uygulamanıza bağlamak için bir cihaz yetenek modeli kullanın
+# <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Hızlı başlangıç: IoT Tak ve Kullan cihazı oluşturmak ve IoT Central uygulamanıza bağlamak için bir cihaz yetenek modeli kullanın
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
-Bir _cihaz yetenek modeli_ (DCM) [IoT Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md) cihazının yeteneklerini açıklar. IoT Central, cihaz ilk kez bağlandığında cihaz için bir cihaz şablonu ve görselleştirmeler oluşturmak üzere bir DCM kullanabilir. Bu hızlı başlangıçta şu işlemleri nasıl yapacağınız gösterilir:
+Bir _cihaz yetenek modeli_ (DCM) [IoT Tak ve kullan](../iot-pnp/overview-iot-plug-and-play.md) cihazının yeteneklerini açıklar. IoT Central, cihaz ilk kez bağlandığında cihaz için bir cihaz şablonu ve görselleştirmeler oluşturmak üzere bir DCM kullanabilir. Bu hızlı başlangıçta şunları nasıl yapılacağı gösterilmektedir:
 
 * DCM kullanarak IoT Tak ve Kullan cihazı oluşturmak için Visual Studio Code kullanın.
 * Windows 'da Cihaz kodunu çalıştırın ve IoT Central uygulamanıza bağlanma bölümüne bakın.
@@ -33,22 +33,22 @@ Bu hızlı başlangıcı tamamlayabilmeniz için yerel makinenize aşağıdaki y
 
 * [Visual Studio (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/) -Visual Studio 'yu yüklerken **NuGet Paket Yöneticisi** bileşenini ve iş yüküyle **Masaüstü geliştirmeyi C++**  eklediğinizden emin olun.
 * [Git](https://git-scm.com/download/).
-* [CMake](https://cmake.org/download/) -CMake 'iyüklediğinizde, **sistem yoluna CMake Ekle**seçeneğini belirleyin.
+* [CMake](https://cmake.org/download/) - **CMake**'ı yüklediğinizde, **sistem yoluna CMake Ekle**seçeneğini belirleyin.
 * [Visual Studio Code](https://code.visualstudio.com/).
-* [Node.js](https://nodejs.org/)
-* `dps-keygen` Yardımcı program:
+* [Node. js](https://nodejs.org/)
+* @No__t-0 yardımcı programı:
 
     ```cmd/sh
     npm i -g dps-keygen
     ```
 
-### <a name="install-azure-iot-device-workbench"></a>Azure IoT cihaz çalışma ekranı 'nı yükler
+### <a name="install-azure-iot-tools"></a>Azure IoT araçları 'nı yükler
 
-Azure IoT cihaz çalışma ekranı uzantısını VS Code yüklemek için aşağıdaki adımları kullanın:
+VS Code ' de Azure IoT araçları uzantı paketini yüklemek için aşağıdaki adımları kullanın:
 
 1. VS Code, **Uzantılar** sekmesini seçin.
-1. **Azure IoT cihaz çalışma ekranı**için arama yapın.
-1. **Yükle**’yi seçin.
+1. **Azure IoT araçlarını**arayın.
+1. **Yüklemeyi**seçin.
 
 ## <a name="prepare-the-development-environment"></a>Geliştirme ortamını hazırlama
 
@@ -56,15 +56,15 @@ Azure IoT cihaz çalışma ekranı uzantısını VS Code yüklemek için aşağ�
 
 Azure IoT C cihaz SDK 'sını oluşturmak için kullanabileceğiniz bir geliştirme ortamı hazırlayın.
 
-1. Bir komut istemi açın. Aşağıdaki komutu yürüterek [Azure IoT C SDK'sı](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunu kopyalayın:
+1. Komut istemini açın. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub deposunu kopyalamak için aşağıdaki komutu yürütün:
 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
     ```
 
-    Bu işlemin tamamlanması için birkaç dakika beklemeniz gerekebilir.
+    Bu işlemin tamamlanması birkaç dakika sürer.
 
-1. Deponun yerel `central_app` kopyasının kökünde bir klasör oluşturun. Bu klasörü cihaz modeli dosyaları ve cihaz kodu saplaması için kullanırsınız.
+1. Deponun yerel kopyasının kökünde bir `central_app` klasörü oluşturun. Bu klasörü cihaz modeli dosyaları ve cihaz kodu saplaması için kullanırsınız.
 
     ```cmd/sh
     cd azure-iot-sdk-c
@@ -79,7 +79,7 @@ Bir cihazı IoT Central uygulamasına bağlamak için bir cihaz anahtarına ihti
 
 1. **Yönetim** sayfasına gidin ve **cihaz bağlantısı**' nı seçin.
 
-1. **Kapsam kimliği** ve **birincil anahtarı**bir yere göz önünde yapın. Bu değerleri daha sonra bu hızlı başlangıçta kullanacaksınız.
+1. **Kapsam kimliği** ve **birincil anahtarı**bir yere göz önünde yapın. Bu değerleri daha sonra bu hızlı başlangıçta kullanırsınız.
 
     ![Cihaz bağlantısı](./media/quick-create-pnp-device-pnp/device-connection.png)
 
@@ -95,11 +95,11 @@ Bir cihazı IoT Central uygulamasına bağlamak için bir cihaz anahtarına ihti
 
 Bu hızlı başlangıçta, bir Mxyonga IoT DevKit cihazı için genel DCM 'yi kullanırsınız. Kodu çalıştırmak için gerçek bir DevKit cihazına ihtiyacınız yoktur. bu hızlı başlangıçta, Windows 'da çalıştırmak için kodu derleyebilirsiniz.
 
-1. Klasörü `azure-iot-sdk-c\central_app` vs Code açın.
+1. VS Code `azure-iot-sdk-c\central_app` klasörünü açın.
 
 1. Komut paletini açmak için **CTRL + SHIFT + P** tuşlarını kullanın, **IoT Tak ve kullan**girin ve **model deposunu aç**' ı seçin. **Ortak depoyu**seçin. VS Code, genel model deposundaki DCMs 'lerin bir listesini gösterir.
 
-1. Kimliği`urn:mxchip:mxchip_iot_devkit:1`olan **Mxyongaıot devkit** DCM öğesini seçin. Ardından **İndir**' i seçin. Artık `central_app` klasörde DCM 'nin bir kopyasına sahipsiniz.
+1. KIMLIĞI `urn:mxchip:mxchip_iot_devkit:1` olan **Mxyongaıot DevKit** DCM öğesini seçin. Ardından **İndir**' i seçin. Artık `central_app` klasöründe DCM 'nin bir kopyasına sahipsiniz.
 
 ![Model deposu ve DCM](./media/quick-create-pnp-device-pnp/public-repository.png)
 
@@ -131,13 +131,13 @@ Artık **Mxyonu IoT DevKit** DCM ve ilişkili arabirimlerinizde, modeli uygulaya
 
 Oluşturulan cihaz koduna bağlantı bilgilerini eklemek için:
 
-1. Oluşturulan C kodunu içeren VS Code penceresinde. `main.c` dosyasını açın.
+1. Oluşturulan C kodunu içeren VS Code penceresinde. @No__t-0 dosyasını açın.
 
-1. Daha `[DPS Id Scope]` önce bir notunuz yaptığınız **kapsam kimliğiyle** değiştirin.
+1. @No__t-0 ' yı daha önce bir notunuz yaptığınız **kapsam kimliğiyle** değiştirin.
 
-1. Önceki `[DPS symmetric key]` bir adımda oluşturduğunuz cihaz anahtarıyla değiştirin.
+1. @No__t-0 ' yı önceki bir adımda oluşturduğunuz cihaz anahtarıyla değiştirin.
 
-1. `[device registration Id]` yerine `mxchip-01` yazın.
+1. @No__t-0 ' i `mxchip-01` ile değiştirin.
 
 1. Yaptığınız değişiklikleri kaydedin.
 
@@ -145,15 +145,15 @@ Oluşturulan cihaz koduna bağlantı bilgilerini eklemek için:
 
 Oluşturulan cihaz kodu saplaması oluşturmak için cihaz SDK 'sını kullanın. Oluşturduğunuz uygulama bir **Mxyonga IoT DevKit** cihazına benzetir ve IoT Central uygulamanıza bağlanır. Uygulama telemetri ve Özellikler gönderir ve komutları alır.
 
-1. VS Code `CMakeLists.txt` dosyasında dosyasını `azure-iot-sdk-c` klasöründe açın. `CMakeLists.txt` Dosyasını`azure-iot-sdk-c` klasöründe`devkit_device` değil, klasöründe açmış olduğunuzdan emin olun.
+1. VS Code ' de, `azure-iot-sdk-c` klasöründe `CMakeLists.txt` dosyasını açın. @No__t-0 dosyasını `devkit_device` klasöründe değil `azure-iot-sdk-c` klasöründe açtığınızdan emin olun.
 
-1. Derleme sırasında cihaz kodu saplama klasörünü dahil etmek için `CMakeLists.txt` dosyanın altına aşağıdaki satırı ekleyin:
+1. Derleme sırasında cihaz kodu saplama klasörünü dahil etmek için `CMakeLists.txt` dosyasının altına aşağıdaki satırı ekleyin:
 
     ```txt
     add_subdirectory(central_app/devkit_device)
     ```
 
-1. `azure-iot-sdk-c` Klasörde bir `cmake` klasör oluşturun ve komut isteminde bu klasöre gidin:
+1. @No__t-1 klasöründe `cmake` klasörü oluşturun ve komut isteminde bu klasöre gidin:
 
     ```cmd\sh
     mkdir cmake

@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: d749e1355e69ad93c8c211474043f88127ec76f0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: aa7b63453a5147742e27b9bb32ad05221e745f8c
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599392"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168799"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric kapsayıcı ağ modları
 
@@ -200,17 +200,17 @@ Bir kapsayıcı hizmeti yeniden başlatıldığında veya kümedeki başka bir d
  
 3. Yalnızca Windows kümeleri için, sanal ağ için UDP/53 bağlantı noktasını aşağıdaki değerlerle açan bir Azure ağ güvenlik grubu (NSG) kuralı ayarlayın:
 
-   |Ayar |Value | |
+   |Ayar |Değer | |
    | --- | --- | --- |
-   |Priority |2000 | |
-   |Ad |Custom_Dns  | |
-   |Source |VirtualNetwork | |
+   |Öncelik |2000 | |
+   |Adı |Custom_Dns  | |
+   |Kaynak |VirtualNetwork | |
    |Hedef | VirtualNetwork | |
    |Hizmet | DNS (UDP/53) | |
-   |Action | Allow  | |
+   |Eylem | Allow  | |
    | | |
 
-4. Her hizmet için uygulama bildiriminde ağ modunu belirtin: `<NetworkConfig NetworkType="Open">`. **Açık** ağ modu, hizmette ayrılmış bir IP adresi elde eden sonuçlara neden olur. Bir mod belirtilmemişse, hizmet varsayılan olarak **NAT** moduna alır. Aşağıdaki bildirim örneğinde `NodeContainerServicePackage1` , ve `NodeContainerServicePackage2` hizmetleri her biri aynı bağlantı noktasını dinleyebilir ( `Endpoint1`her iki hizmet de dinleme yapabilir). Açık ağ modu belirtildiğinde, `PortBinding` konfigürasyonlar belirtilemez.
+4. Her hizmet için uygulama bildiriminde ağ modunu belirtin: `<NetworkConfig NetworkType="Open">`. **Açık** ağ modu, hizmette ayrılmış bir IP adresi elde eden sonuçlara neden olur. Bir mod belirtilmemişse, hizmet varsayılan olarak **NAT** moduna alır. Aşağıdaki bildirim örneğinde, `NodeContainerServicePackage1` ve `NodeContainerServicePackage2` Hizmetleri her biri aynı bağlantı noktasını dinleyebilir (her iki hizmet de `Endpoint1` ' de dinleme yapılır). Açık ağ modu belirtildiğinde, `PortBinding` yapılandırması belirtilemez.
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

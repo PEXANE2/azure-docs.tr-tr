@@ -1,17 +1,17 @@
 ---
 title: Azure veri paylaşımının önizlemesi için roller ve gereksinimler
-description: Azure veri paylaşımının önizlemesi için roller ve gereksinimler
+description: Veri sağlayıcılarının ve veri tüketicilerinin Azure veri paylaşımında Önizlemedeki verileri paylaşması için erişim denetimi rolleri ve gereksinimleri hakkında bilgi edinin.
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 7bf98f8774551292574d4f1951eba44657fa7de0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c0841f6386440776c6ea719f9932a53cada9d9c4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307353"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166386"
 ---
 # <a name="roles-and-requirements-for-azure-data-share-preview"></a>Azure veri paylaşımının önizlemesi için roller ve gereksinimler
 
@@ -30,9 +30,9 @@ Veri paylaşımında kaynak tarafından yönetilen kimliğe atanan rollerin öze
 | |  |  |
 |---|---|---|
 |**Depolama türü**|**Veri Sağlayıcısı kaynak depolama hesabı**|**Veri tüketicisi hedef depolama hesabı**|
-|Azure Blob Depolama| Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
+|Azure Blob Depolama| Depolama Blobu veri okuyucusu | Depolama Blobu veri Katılımcısı
 |Azure Data Lake Gen1 | Sahip | Desteklenmiyor
-|Azure Data Lake Gen2 | Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
+|Azure Data Lake Gen2 | Depolama Blobu veri okuyucusu | Depolama Blobu veri Katılımcısı
 |
 ### <a name="data-providers"></a>Veri sağlayıcıları 
 Bir Azure veri paylaşımında veri kümesi eklemek için veri sağlayıcılarının veri paylaşımında kaynak tarafından yönetilen kimliğin Depolama Blobu veri okuyucusu rolüne eklenmesi gerekir. Bu, Kullanıcı Azure aracılığıyla veri kümeleri ekliyor ve depolama hesabının sahibiyseniz ya da Microsoft. Authorization/role atama/yazma izni atanmış özel bir rolün üyesiyse Azure veri paylaşma hizmeti tarafından otomatik olarak yapılır. 
@@ -44,11 +44,11 @@ Azure Data Lake Gen1 'den veri paylaşıyorsanız, rol atamasının sahip rolün
 Veri paylaşımının yönetilen kimliği için bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
 
 1. Depolama hesabına gidin.
-1. Seçin **erişim denetimi (IAM)** .
+1. **Access Control (IAM)** seçeneğini belirleyin.
 1. **Rol ataması Ekle**' yi seçin.
 1. *Rol*altında, *Depolama Blobu veri okuyucusu*' nu seçin.
 1. *Seç*' in altında, Azure veri paylaşma hesabınızın adını yazın.
-1. *Kaydet*’e tıklayın.
+1. *Kaydet* düğmesine tıklayın.
 
 ### <a name="data-consumers"></a>Veri tüketicileri
 Veri almak için veri tüketicilerinin kaynak tarafından yönetilen kimliği, Depolama Blobu veri katılımcısı rolüne eklenmelidir. Bu rol, Azure veri paylaşma hizmetinin depolama hesabına yazabilme özelliğini etkinleştirmek için gereklidir. Bu, Kullanıcı Azure aracılığıyla veri kümeleri ekliyor ve depolama hesabının sahibiyseniz ya da Microsoft. Authorization/role atama/yazma izni atanmış özel bir rolün üyesiyse Azure veri paylaşma hizmeti tarafından otomatik olarak yapılır. 
@@ -58,11 +58,11 @@ Alternatif olarak, kullanıcının bir Azure Yöneticisi, veri paylaşımının 
 Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluşturmak için aşağıdaki adımları izleyin:
 
 1. Depolama hesabına gidin.
-1. Seçin **erişim denetimi (IAM)** .
+1. **Access Control (IAM)** seçeneğini belirleyin.
 1. **Rol ataması Ekle**' yi seçin.
 1. *Rol*altında, *Depolama Blobu verileri katılımcısı*' nı seçin. 
 1. *Seç*' in altında, Azure veri paylaşma hesabınızın adını yazın.
-1. *Kaydet*’e tıklayın.
+1. *Kaydet* düğmesine tıklayın.
 
 REST API 'lerimizi kullanarak verileri paylaşıyorsanız, içindeki veri paylaşımı hesabını uygun rollere ekleyerek bu rol atamalarını el ile oluşturmanız gerekecektir. 
 

@@ -12,12 +12,12 @@ ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: 194004362449f2f59a53d45e18e8dd72a29cc79a
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029605"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165928"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Hızlı başlangıç: Azure Logic Apps Visual Studio ile otomatikleştirilmiş görevler, süreçler ve iş akışları oluşturma
 
@@ -58,6 +58,8 @@ Bu hızlı başlangıçta, Azure portal hızlı başlangıç olarak Visual Studi
   
     Azure Logic Apps Araçlarını doğrudan Visual Studio Market’ten indirip yükleyebilir veya [bu uzantıyı Visual Studio’nun içinden yükleme](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions) hakkında bilgi edinebilirsiniz. 
     Yükleme işlemini tamamladıktan sonra Visual Studio’yu yeniden başlattığınızdan emin olun.
+
+* Azure Kamu gibi farklı Azure ortamlarıyla çalışmak için, ortamlar arasında daha kolay geçiş yapmanıza yardımcı olan [Azure ortam Seçicisi](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) uzantısını yükleyip kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure ortam Seçicisi Visual Studio uzantısı](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/).
 
 * Ekli Mantıksal Uygulama Tasarımcısı kullanılırken web erişimi
 

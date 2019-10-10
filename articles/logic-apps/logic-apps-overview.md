@@ -1,6 +1,6 @@
 ---
-title: Verileri tümleştirme ve iş akışlarını otomatikleştirme-Azure Logic Apps
-description: Sistem tümleştirmesi, kuruluş uygulaması Tümleştirme (EAı) ve düzenleme senaryoları için verileri tümleştirmek ve kuruluşunuzdaki ya da kuruluşunuzda görevleri, iş akışlarını ve işlemleri otomatikleştirmek için çözümler oluşturun.
+title: Kurumsal tümleştirme için görevleri otomatikleştirme-Azure Logic Apps
+description: Azure Logic Apps kullanarak, uygulamaları, verileri, hizmetleri ve sistemleri tümleştiren kurumsal tümleştirme için en az kodla tümleştiren iş akışlarını otomatikleştirme hakkında bilgi edinin.
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
-ms.openlocfilehash: fdcf3d7bc0111530307a4bf30a437ab70c71bf83
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 85e2216e39658fde42f298dabc38c737621d6be4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981738"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178034"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Genel Bakış-Azure Logic Apps nedir?
 

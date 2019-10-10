@@ -6,16 +6,16 @@ ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: conceptual
-author: monhaber
-ms.author: v-mohabe
+author: rkarlin
+ms.author: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: b8fc82ca8f4b42adf595680541042ef38efe1470
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dc302d5435234b8cad9d79b5d626056e4d1e2cf2
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569540"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170384"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL veritabanı için gelişmiş veri güvenliği
 
@@ -25,7 +25,7 @@ Gelişmiş veri güvenliği, gelişmiş SQL güvenlik özelliklerine yönelik Bi
 
 Gelişmiş veri güvenliği (ADS), veri bulma & sınıflandırması, güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması gibi bir dizi gelişmiş SQL güvenlik özelliği sağlar.
 
-- [Veri bulma & sınıflandırması](sql-database-data-discovery-and-classification.md) (Şu anda önizleme aşamasında), veritabanlarınızdaki hassas verileri korumak & bulmak, sınıflandırmak ve etiketleme için Azure SQL veritabanı 'nda yerleşik olarak bulunan yetenekler sağlar. Veri sınıflandırma durumunuz için görünürlük sağlamanın yanı sıra veritabanı içindeki ve dışındaki hassas verilere erişimin izlenmesi için kullanılabilir.
+- [Veri bulma & sınıflandırması](sql-database-data-discovery-and-classification.md) (Şu anda önizlemede), veritabanlarınızdaki hassas verileri korumak & bulmak IÇIN Azure SQL veritabanı 'nda yerleşik olarak bulunan özellikleri sağlar. Veri sınıflandırma durumunuz için görünürlük sağlamanın yanı sıra veritabanı içindeki ve dışındaki hassas verilere erişimin izlenmesi için kullanılabilir.
 - [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) , olası veritabanı güvenlik açıklarını düzeltebileceğiniz, izleyebileceğiniz ve bu sorunları gidermenize yardımcı olabilecek bir hizmeti kolayca yapılandırabilir. Güvenlik durumunuz hakkında görünürlük sağlamasının yanı sıra güvenlik sorunlarınızı çözmek ve veritabanı güçlendirmelerinizi geliştirmek için eyleme dönüştürülebilir adımlar sunar.
 - [Gelişmiş tehdit koruması](sql-database-threat-detection-overview.md) , veritabanınıza erişmek veya veritabanına yararlanmak için olağan dışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar. Veritabanınızı şüpheli etkinliklere karşı sürekli izler ve olası güvenlik açıkları, SQL ekleme saldırıları ve anormal veritabanı erişim modelleri hakkında anında güvenlik uyarıları sunar. Gelişmiş tehdit koruması uyarıları şüpheli etkinliğin ayrıntılarını sağlar ve tehdidi araştırmak ve azaltmak için eyleme önerilir.
 
@@ -49,17 +49,17 @@ SQL veritabanı sunucunuzun veya manşlı örneğinizin **güvenlik** başlığ�
 > [!NOTE]
 > REKLAMLARıN maliyeti, düğüm başına Azure Güvenlik Merkezi Standart katman fiyatlandırmasıyla hizalanır. Bu, bir düğümün tüm SQL veritabanı sunucusu veya yönetilen örneğidir. Bu nedenle, veritabanı sunucusundaki tüm veritabanlarını veya REKLAMLARı içeren yönetilen örneği korumak için yalnızca bir kez ödeme yaparsınız. İlk olarak ücretsiz deneme ile REKLAMLARı deneyebilirsiniz.
 
-## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. Verileri sınıflandırmanıza, güvenlik açıklarını izlemeye ve tehdit uyarılarını araştırmanıza başlayın
+## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. verileri sınıflandırmanıza, güvenlik açıklarını izlemeye ve tehdit uyarılarını araştırmanıza başlayın
 
 Verileri kalıcı duyarlılık etiketleriyle sınıflandırmak ve sınıflandırmak için önerilen hassas sütunları görmek üzere **veri bulma & sınıflandırma** kartına tıklayın. Güvenlik açığı taramaları ve raporlarını görüntülemek ve yönetmek ve güvenlik hazırkenizi izlemek için **güvenlik açığı değerlendirme** kartına tıklayın. Güvenlik uyarıları alınmışsa, uyarıların ayrıntılarını görüntülemek ve Azure Güvenlik Merkezi güvenlik uyarıları sayfası aracılığıyla Azure aboneliğinizdeki tüm uyarılarda birleştirilmiş bir raporu görmek için **Gelişmiş tehdit koruması** kartına tıklayın.
 
-## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>3. SQL veritabanı sunucunuzda veya yönetilen örnekte ADS ayarlarını yönetme
+## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>3. SQL veritabanı sunucunuzda veya yönetilen örnekte ADS ayarlarını yönetin
 
 ADS ayarlarını görüntülemek ve yönetmek için SQL veritabanı sunucunuzun veya yönetilen örneğin **güvenlik** başlığının altındaki **Gelişmiş veri güvenliği** ' ne gidin. Bu sayfada REKLAMLARı etkinleştirebilir veya devre dışı bırakabilir ve tüm SQL veritabanı sunucunuz veya yönetilen örnek için güvenlik açığı değerlendirmesini ve Gelişmiş tehdit koruması ayarlarını değiştirebilirsiniz.
 
 ![Sunucu ayarları](./media/sql-advanced-protection/server_settings.png) 
 
-## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. SQL veritabanı için ADS ayarlarını yönetme
+## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. bir SQL veritabanı için ADS ayarlarını yönetme
 
 Belirli bir veritabanının ADS ayarlarını geçersiz kılmak için **veritabanı düzeyinde gelişmiş veri güvenliğini etkinleştir** onay kutusunu işaretleyin. Bu seçeneği yalnızca, tek veritabanına yönelik ayrı Gelişmiş tehdit koruması uyarıları veya güvenlik açığı değerlendirme sonuçları almak için özel bir gereksiniminizin olması veya tüm veritabanları için alınan uyarıların ve sonuçların yanı sıra, veritabanı sunucusu veya yönetilen örnek.
 

@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: aahi
-ms.openlocfilehash: e2149c7db20939a739380dc2df0e21b6a62ed916
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 9fc05ab42c75bac1f8e192dd4fe20bb142881479
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955365"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176899"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Bing Arama API'leri sonuçları arasında sayfa oluşturma
 
@@ -44,7 +44,7 @@ Kullanılabilir sonuçlar aracılığıyla sayfa eklemek için, isteğinizi gön
 > * Bing video, resim ve haber API 'Leri ile sayfalama yalnızca genel video (`/video/search`), Haberler (`/news/search`) ve görüntü (`/image/search`) aramaları için geçerlidir. Popüler konular ve Kategoriler aracılığıyla sayfalama desteklenmez.  
 > * @No__t-0 alanı, geçerli sorgu için toplam arama sonucu sayısının tahminidir. @No__t-0 ve `offset` parametrelerini ayarladığınızda bu tahmin değişebilir.
 
-| Parametre | Açıklama                                                                                                                                                                |
+| Parametre | Description                                                                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `count`   | Yanıtta döndürülecek sonuçların sayısını belirtir. @No__t-0 varsayılan değerinin ve talep ettiğiniz en fazla sonuç sayısının API 'ye göre değiştiğini unutmayın. Bu değerleri, [sonraki adımlar](#next-steps)altındaki başvuru belgelerinde bulabilirsiniz. |
 | `offset`  | Atlanacak sonuç sayısını belirtir. @No__t-0, sıfır tabanlıdır ve küçüktür (`totalEstimatedMatches` @ no__t-2 @ no__t-3) olmalıdır.                                           |
@@ -73,7 +73,7 @@ Host: api.cognitive.microsoft.com
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Bing Web Araması API 'Leri nelerdir?](bing-api-comparison.md)
-* [Bing Web Araması API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-referenc)
+* [Bing Web Araması API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
 * [Bing Özel Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
 * [Bing Haber Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
 * [Bing Video Arama API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)

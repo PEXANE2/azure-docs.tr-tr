@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 6df6bb5c0be4bf1779541a815bd933965024809f
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960398"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176679"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux için DSC Uzantısı (Microsoft. OSTCExtensions. DSCForLinux)
 
 İstenen Durum Yapılandırması (DSC), BT ve geliştirme altyapınızı kod olarak yapılandırma ile yönetmenizi sağlayan bir yönetim platformudur.
 
-> ! Not Linux için DSC Uzantısı ve [Linux Için Azure izleyici sanal makine uzantısı](/virtual-machines/extensions/oms-linux) Şu anda bir çakışma var ve yan yana yapılandırmada desteklenmez.  Bu, iki çözümü aynı VM 'de birlikte kullanmamalısınız anlamına gelir.
+> ! Not Linux için DSC Uzantısı ve [Linux Için Azure izleyici sanal makine uzantısı](/azure/virtual-machines/extensions/oms-linux) Şu anda bir çakışma var ve yan yana yapılandırmada desteklenmez.  Bu, iki çözümü aynı VM 'de birlikte kullanmamalısınız anlamına gelir.
 
 DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı, Azure sanal makinelerine OMı ve DSC aracısını yükleme. DSC Uzantısı aşağıdaki işlemleri de yapabilir
 
@@ -37,18 +37,18 @@ DSCForLinux uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzant�
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-DSC Linux uzantısı, aşağıdakiler dışında [Azure 'da onaylı tüm Linux dağıtımlarını](/virtual-machines/linux/endorsed-distros) destekler:
+DSC Linux uzantısı, aşağıdakiler dışında [Azure 'da onaylı tüm Linux dağıtımlarını](/azure/virtual-machines/linux/endorsed-distros) destekler:
 
-| Dağılı | Version |
+| Dağılı | Sürüm |
 |---|---|
 | Debian | tüm sürümler |
 | Ubuntu| 18,04 |
  
-### <a name="internet-connectivity"></a>İnternet bağlantısı
+### <a name="internet-connectivity"></a>Internet bağlantısı
 
 DSCForLinux uzantısı, hedef sanal makinenin Internet 'e bağlı olmasını gerektirir. Örneğin, YAZMAÇ uzantısının Automation hizmetine bağlantısı olması gerekir. Çekme, çekme, çekme gibi diğer eylemler için Azure Storage/GitHub bağlantısı gerekir. Bu, müşteri tarafından sunulan ayarlara bağlıdır.
 
@@ -406,7 +406,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
-### <a name="troubleshoot"></a>Sorun giderme
+### <a name="troubleshoot"></a>Sorunları Gider
 
 Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure CLı 'yı kullanarak aşağıdaki komutu çalıştırın.
 
@@ -425,7 +425,7 @@ Bazı durumlarda DSC Linux uzantısı, makinede OMı 'nın daha yüksek bir sür
 
 
 
-### <a name="support"></a>Destek
+### <a name="support"></a>Support
 
 Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/community/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
 

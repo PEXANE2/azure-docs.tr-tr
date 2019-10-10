@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 953558e34d41184f75d72baf5982e84eb51b1781
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e9b2967905bc927432d1ca4606bc2b2ba2ac4108
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694868"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177369"
 ---
 # <a name="http-features"></a>HTTP özellikleri
 
@@ -55,7 +55,7 @@ Dayanıklı İşlevler uzantısı tarafından kullanıma sunulan tüm yerleşik 
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-#### <a name="functionjson"></a>function. JSON
+#### <a name="functionjson"></a>Function. JSON
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
 
@@ -210,6 +210,38 @@ Bu sınırlamaların herhangi biri kullanım durumunu etkileyebileceğinden, gid
 > .NET geliştiricisiyseniz, bu özelliğin, yerleşik .NET **HttpRequestMessage** ve **HttpResponseMessage** türleri yerine **Durablehttprequest** ve **durablehttpresponse** türlerini nasıl kullandığını merak ediyor olabilirsiniz.
 >
 > Bu tasarım seçeneği bilerek yapılır. Birincil neden, özel türlerin, kullanıcıların iç HTTP istemcisinin desteklenen davranışları hakkında yanlış varsayımlar olmamasını sağlamaya yardımcı olur. Dayanıklı İşlevler özgü türler Ayrıca API tasarımını basitleştirecek hale gelir. Ayrıca, [yönetilen kimlik tümleştirmesi](#managed-identities) ve [yoklama tüketicisi](#http-202-handling)gibi özel özellikleri daha kolay bir şekilde yapabilirler. 
+
+### <a name="extensibility-net-only"></a>Genişletilebilirlik (yalnızca .NET)
+
+Orchestration 'ın iç HTTP istemcisinin davranışını özelleştirmek, [Azure işlevleri .net bağımlılığı ekleme](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)kullanılarak yapılabilir. Bu özellik küçük davranışsal değişiklikler yapmak için yararlı olabilir. Ayrıca, ekleme sahte nesneler tarafından HTTP istemcisinin birim testi için de yararlı olabilir.
+
+Aşağıdaki örnek, dış HTTP uç noktaları çağıran Orchestrator işlevleri için SSL sertifika doğrulamasını devre dışı bırakmak üzere bağımlılık ekleme 'nin kullanımını gösterir.
+
+```csharp
+public class Startup : FunctionsStartup
+{
+    public override void Configure(IFunctionsHostBuilder builder)
+    {
+        // Register own factory
+        builder.Services.AddSingleton<
+            IDurableHttpMessageHandlerFactory,
+            MyDurableHttpMessageHandlerFactory>();
+    }
+}
+
+public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFactory
+{
+    public HttpMessageHandler CreateHttpMessageHandler()
+    {
+        // Disable SSL certificate validation (not recommended in production!)
+        return new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback =
+                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator,
+        };
+    }
+}
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

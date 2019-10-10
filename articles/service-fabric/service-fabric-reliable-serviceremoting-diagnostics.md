@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
-ms.author: chackdan
-ms.openlocfilehash: 4e9aa2bbb99cac2ffc2b57ccb9299bf4ee7a729e
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.openlocfilehash: a7c5ec023eb03d7d68a43ffecdc74aa4e505a0ce
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876251"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170489"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Güvenilir hizmet uzaktan Iletişimi için tanılama ve performans izleme
 Güvenilir ServiceRemoting çalışma zamanı, [performans sayaçlarını](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)yayar. Bunlar ServiceRemoting 'in nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
@@ -28,7 +28,7 @@ Güvenilir ServiceRemoting çalışma zamanı, [performans sayaçlarını](https
 ## <a name="performance-counters"></a>Performans sayaçları
 Güvenilir ServiceRemoting çalışma zamanı, aşağıdaki performans sayacı kategorilerini tanımlar:
 
-| Category | Açıklama |
+| Kategori | Açıklama |
 | --- | --- |
 | Service Fabric hizmeti |Azure Service Fabric Service Remoting 'e özgü sayaçlar, örneğin, isteği işlemek için geçen ortalama süre |
 | Service Fabric hizmeti yöntemi |Service Fabric Remoting hizmeti tarafından uygulanan yöntemlere özgü sayaçlar, örneğin, bir hizmet yönteminin ne sıklıkla çağrıldığı. |
@@ -41,24 +41,24 @@ Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Per
 Çok sayıda Serviceretıting hizmeti veya bölümü olan bir küme, çok sayıda performans sayacı örneğine sahiptir. Performans sayacı örneği adları, performans sayacı örneğinin ilişkilendirildiği belirli bölümü ve hizmet yöntemini (varsa) tanımlamaya yardımcı olabilir.
 
 #### <a name="service-fabric-service-category"></a>Service Fabric hizmet kategorisi
-Kategori `Service Fabric Service`için, sayaç örneği adları aşağıdaki biçimdedir:
+@No__t-0 kategorisi için sayaç örneği adları aşağıdaki biçimdedir:
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm kimliği bir GUID 'dir ve dize temsili, Biçim belirleyicisi "D" olan [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, Biçim belirleyicisi "D" olan [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) yöntemiyle oluşturulur.
 
 *Servicerepereporınstanceıd* , performans sayacı örneğinin Ilişkilendirildiği Service Fabric çoğaltma/örnek kimliğinin dize gösterimidir.
 
 *Serviceruntimeınternalıd* , iç kullanımı Için yapı hizmeti çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-Aşağıda, `Service Fabric Service` kategoriye ait bir sayaca yönelik sayaç örneği adının bir örneği verilmiştir:
+Aşağıda, `Service Fabric Service` kategorisine ait olan bir sayaç için sayaç örneği adı örneği verilmiştir:
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046_5008379932`
 
-Önceki örnekte, `2740af29-78aa-44bc-a20b-7e60fb783264` Service Fabric bölüm kimliğinin dize gösterimidir, `635650083799324046` Replica/InstanceId 'nin dize gösterimidir ve `5008379932` çalışma zamanının iç kullanımı için oluşturulan 64 bitlik kimliğidir.
+Yukarıdaki örnekte, `2740af29-78aa-44bc-a20b-7e60fb783264` Service Fabric bölüm KIMLIĞININ dize gösterimidir, `635650083799324046` çoğaltma/InstanceId 'nin dize gösterimidir ve `5008379932` çalışma zamanının iç kullanımı için oluşturulan 64 bitlik KIMLIĞIDIR.
 
 #### <a name="service-fabric-service-method-category"></a>Service Fabric hizmet yöntemi kategorisi
-Kategori `Service Fabric Service Method`için, sayaç örneği adları aşağıdaki biçimdedir:
+@No__t-0 kategorisi için sayaç örneği adları aşağıdaki biçimdedir:
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
@@ -66,17 +66,17 @@ Kategori `Service Fabric Service Method`için, sayaç örneği adları aşağıd
 
 *Serviceruntimemethodıd* , iç kullanımı Için yapı hizmeti çalışma zamanı tarafından oluşturulan 32 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm kimliği bir GUID 'dir ve dize temsili, Biçim belirleyicisi "D" olan [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) yöntem aracılığıyla oluşturulur.
+*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, Biçim belirleyicisi "D" olan [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) yöntemiyle oluşturulur.
 
 *Servicerepereporınstanceıd* , performans sayacı örneğinin Ilişkilendirildiği Service Fabric çoğaltma/örnek kimliğinin dize gösterimidir.
 
 *Serviceruntimeınternalıd* , iç kullanımı Için yapı hizmeti çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
 
-Aşağıda, `Service Fabric Service Method` kategoriye ait bir sayaca yönelik sayaç örneği adının bir örneği verilmiştir:
+Aşağıda, `Service Fabric Service Method` kategorisine ait olan bir sayaç için sayaç örneği adı örneği verilmiştir:
 
 `ivoicemailboxservice.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486_5008380`
 
-Yukarıdaki örnekte, `ivoicemailboxservice.leavemessageasync` yöntem adıdır `89383d32-e57e-4a9b-a6ad-57c6792aa521` , `2` çalışma zamanının iç kullanımı için oluşturulan 32 bitlik kimlik, Service Fabric bölüm kimliğinin`635650083804480486` dize gösterimidir, öğesinin dize gösterimidir Service Fabric çoğaltma/örnek kimliği ve `5008380` çalışma zamanının iç kullanımı için oluşturulan 64 bitlik kimlik.
+Yukarıdaki örnekte, `ivoicemailboxservice.leavemessageasync`, yöntem adıdır, `2` çalışma zamanının iç kullanımı için oluşturulan 32 bitlik KIMLIĞIDIR `89383d32-e57e-4a9b-a6ad-57c6792aa521` Service Fabric bölüm KIMLIĞININ dize gösterimidir, `635650083804480486` Service Fabric çoğaltmasının dize gösterimidir/ Örnek KIMLIĞI ve `5008380`, çalışma zamanının iç kullanımı için oluşturulan 64 bitlik KIMLIĞIDIR.
 
 ## <a name="list-of-performance-counters"></a>Performans sayaçları listesi
 ### <a name="service-method-performance-counters"></a>Hizmet yöntemi performans sayaçları

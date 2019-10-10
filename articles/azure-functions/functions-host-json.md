@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5a4bc05e0a0b0b6a2c1b859caea2aadc12b8e0e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3ae75dc988ad70871efa45eb8c61db15804922ee
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096395"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176575"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Host. JSON başvurusu  
 
@@ -25,7 +25,7 @@ ms.locfileid: "70096395"
 *Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v2 çalışma zamanı için kullanılabilen ayarlar listelenir.  
 
 > [!NOTE]
-> Bu makale, Azure Işlevleri 2. x içindir.  İşlevlerde host.json başvurusu için 1.x, bkz: [Azure işlevleri için host.json başvurusu 1.x](functions-host-json-v1.md).
+> Bu makale, Azure Işlevleri 2. x içindir.  1\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 1. x](functions-host-json-v1.md).
 
 Diğer işlev uygulaması yapılandırma seçenekleri [uygulama ayarlarınızda](functions-app-settings.md)yönetilir.
 
@@ -93,7 +93,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
-## <a name="applicationinsights"></a>applicationInsights
+## <a name="applicationinsights"></a>ApplicationInsights
 
 Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 
@@ -113,10 +113,13 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 > [!NOTE]
 > Günlük örnekleme, bazı yürütmelerin Application Insights İzleyicisi dikey penceresinde gösterilmemesine neden olabilir.
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılanını | Description |
 |---------|---------|---------| 
-|isEnabled|true|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
+|IsEnabled|true|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
 |maxTelemetryItemsPerSecond|5|Örneklemenin başladığı eşik.| 
+|Enableliveölçümleri |true|Canlı ölçüm toplamayı etkin bir şekilde sunar.|
+|EnableDependencyTracking|true|Bağımlılık izlemeyi etkinleştirilir.|
+|EnablePerformanceCountersCollection|true|Kudu performans sayaçlarını toplamayı etkinleştirilir.|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -130,11 +133,11 @@ Yapılandırma ayarı, [dayanıklı işlevler bağlamalarında](durable/durable-
 
 Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md#host-json)' nda bulunabilir. 
 
-## <a name="extensions"></a>uzantılardan
+## <a name="extensions"></a>Uzantılardan
 
 [Http](#http) ve [eventHub](#eventhub)gibi bağlamaya özgü tüm ayarları içeren bir nesne döndüren özellik.
 
-## <a name="functions"></a>işlevleri
+## <a name="functions"></a>lerdir
 
 İş konağının çalıştığı işlevlerin listesi. Boş bir dizi tüm işlevleri Çalıştır anlamına gelir. Yalnızca [yerel olarak çalışırken](functions-run-local.md)kullanılmak üzere tasarlanmıştır. Azure 'daki işlev uygulamaları ' nda, bu ayarı kullanmak yerine belirli işlevleri devre dışı bırakmak için [Azure işlevlerinde işlevleri devre dışı](disable-function.md) bırakma bölümündeki adımları izlemeniz gerekir.
 
@@ -149,7 +152,7 @@ Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functi
 Tüm işlevler için zaman aşımı süresini gösterir. TimeSpan dize biçimini izler. Sunucusuz tüketim planında geçerli Aralık 1 saniye ila 10 dakika ve varsayılan değer 5 dakikadır.  
 Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan değer çalışma zamanı sürümüne bağlıdır: 
 + Sürüm 1. x: varsayılan değer, zaman aşımı olmadığını gösteren *null*.   
-+ Sürüm 2. x: varsayılan değer 30 dakikadır. Değeri, `-1` sınırsız yürütmeyi gösterir.
++ Sürüm 2. x: varsayılan değer 30 dakikadır. @No__t-0 değeri, sınırsız yürütmeyi gösterir.
 
 ```json
 {
@@ -173,11 +176,11 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılanını | Description |
 |---------|---------|---------| 
-|enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
+|etkinletir|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
-|healthCheckWindow|2 dakika|`healthCheckThreshold` Ayarla birlikte kullanılan bir kayan zaman penceresi.| 
+|healthCheckWindow|2 dakika|@No__t-0 ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
 |Onay eşiği|0,80|Performans sayacının sağlıksız olduğu kabul edilecek eşik.| 
 
@@ -187,7 +190,7 @@ Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bind
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="logging"></a>açmak
+## <a name="logging"></a>Açmak
 
 Application Insights dahil olmak üzere, işlev uygulamasının günlük davranışlarını denetler.
 
@@ -207,14 +210,14 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılanını | Description |
 |---------|---------|---------|
-|fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  `never`Seçenekler, `always`,. `debugOnly` |
+|fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always`, `debugOnly` ' dir. |
 |logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x, günlük kategorisi filtrelemesinin ASP.NET Core yerleşimini izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
-|console|yok| [console](#console) günlüğü ayarı. |
-|applicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
+|Konsola|yok| [Konsol](#console) günlüğü ayarı. |
+|ApplicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
 
-## <a name="console"></a>console
+## <a name="console"></a>Konsola
 
 Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayıklama modunda olmadığında konsol günlüğünü denetler.
 
@@ -230,9 +233,9 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılanını | Description |
 |---------|---------|---------| 
-|isEnabled|false|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+|IsEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
 ## <a name="queues"></a>klarında
 
@@ -262,17 +265,17 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılanını | Description |
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
+|Listenerlockrecoverypollingınterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
 |Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
 
-## <a name="version"></a>version
+## <a name="version"></a>sürüm
 
-Sürüm dizesi `"version": "2.0"` , v2 çalışma zamanını hedefleyen bir işlev uygulaması için gereklidir.
+V2 çalışma zamanını hedefleyen bir işlev uygulaması için `"version": "2.0"` sürüm dizesi gereklidir.
 
 ## <a name="watchdirectories"></a>watchDirectories
 

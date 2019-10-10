@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 82b6e701a5f76aa4c2cea78417ca9bcbeeb10308
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.author: atsenthi
+ms.openlocfilehash: a795e01d37504dad360dc094b6b2aea2955b6a4a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927688"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170448"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Bir hizmet bildiriminde kaynakları belirtme
 ## <a name="overview"></a>Genel Bakış
@@ -56,7 +56,7 @@ Tek bir hizmet paketinde birden çok kod paketi varsa, kod paketinin **uç nokta
 Yapılandırma paketi ayarları dosyasından (Settings. xml) bulunan uç noktalar hakkında daha fazla bilgi edinmek için [durum bilgisi olan Reliable Services yapılandırma](service-fabric-reliable-services-configuration.md) konusuna bakın.
 
 ## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Örnek: hizmetiniz için bir HTTP uç noktası belirtme
-Aşağıdaki hizmet bildirimi &lt;Resources&gt; öğesinde bir TCP uç noktası kaynağı ve iki HTTP uç noktası kaynağı tanımlar.
+Aşağıdaki hizmet bildirimi &lt;Resources @ no__t-1 öğesinde bir TCP uç noktası kaynağı ve iki HTTP uç noktası kaynağı tanımlar.
 
 HTTP uç noktaları, Service Fabric tarafından otomatik olarak ACL ' dir.
 
@@ -196,15 +196,15 @@ Parametreleri aşağıda ekleyin:
   </Parameters>
 ```
 
-Uygulamayı dağıttığınızda, bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örneğin:
+Uygulamayı dağıttığınızda, bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örnek:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Not: ApplicationParameters için değerler boşsa, karşılık gelen EndPointName için ServiceManifest içinde belirtilen varsayılan değere geri döneceğiz.
+Note: ApplicationParameters için değerler boşsa, karşılık gelen EndPointName için ServiceManifest içinde belirtilen varsayılan değere geri döneceğiz.
 
-Örneğin:
+Örnek:
 
 Belirttiğiniz hizmet bildiriminde
 
@@ -218,4 +218,4 @@ Belirttiğiniz hizmet bildiriminde
 
 Ve uygulama parametreleri için PORT1 ve Protocol1 değeri null ya da boş. Bağlantı noktası hala ServiceFabric tarafından kararmaya devam etmektedir. Ve protokol TCP olur.
 
-Yanlış bir değer belirtdiğinizi varsayın. Bağlantı noktası gibi bir int yerine "foo" dize değerini belirttiniz.  New-ServiceFabricApplication komutu bir hata vererek başarısız olur: ' Resourceoverride ' bölümündeki ' ServiceEndpoint1 ' özniteliği ' PORT1 ' adlı geçersiz kılma parametresi geçersiz. Belirtilen değer ' foo ' ve gerekli ' int '.
+Yanlış bir değer belirtdiğinizi varsayın. Bağlantı noktası gibi bir int yerine "foo" dize değerini belirttiniz.  New-ServiceFabricApplication komutu bir hata ile başarısız olur: ' Resourceoverride ' bölümündeki ' ServiceEndpoint1 ' özniteliği ' PORT1 ' adlı geçersiz kılma parametresi geçersiz. Belirtilen değer ' foo ' ve gerekli ' int '.

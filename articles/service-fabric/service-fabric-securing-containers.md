@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 80ac20fd2dc7bfe3fea6a58a6df94e3f7b99a700
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: 496d47c88636b11375d97cc4bc50efd9d468d645
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599228"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170461"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Service Fabric çalıştıran bir kapsayıcıya bir sertifika dosyasını içeri aktarma
 
-Bir sertifika belirterek kapsayıcı hizmetlerinizi güvenli hale getirebilirsiniz. Service Fabric, bir kapsayıcı içindeki hizmetler için bir Windows veya Linux kümesindeki düğümlere yüklenmiş bir sertifikaya (sürüm 5,7 veya üzeri) erişmek için bir mekanizma sağlar. Sertifikanın, kümenin tüm düğümlerinde LocalMachine altındaki bir sertifika deposunda yüklü olması gerekir. Sertifikaya karşılık gelen özel anahtar kullanılabilir, erişilebilir ve Windows-dışarı aktarılabilir olmalıdır. Aşağıdaki kod parçacığında gösterildiği gibi, sertifika bilgileri `ContainerHostPolicies` etiket altındaki uygulama bildiriminde verilmiştir:
+Bir sertifika belirterek kapsayıcı hizmetlerinizi güvenli hale getirebilirsiniz. Service Fabric, bir kapsayıcı içindeki hizmetler için bir Windows veya Linux kümesindeki düğümlere yüklenmiş bir sertifikaya (sürüm 5,7 veya üzeri) erişmek için bir mekanizma sağlar. Sertifikanın, kümenin tüm düğümlerinde LocalMachine altındaki bir sertifika deposunda yüklü olması gerekir. Sertifikaya karşılık gelen özel anahtar kullanılabilir, erişilebilir ve Windows-dışarı aktarılabilir olmalıdır. Aşağıdaki kod parçacığında gösterildiği gibi, sertifika bilgileri `ContainerHostPolicies` etiketi altında uygulama bildiriminde verilmiştir:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -48,7 +48,7 @@ Alternatif olarak, gerekli formda sertifikalara zaten sahipseniz ve kapsayıcın
   <CertificateRef Name="MyCert1" DataPackageRef="[DataPackageName]" DataPackageVersion="[Version]" RelativePath="[Relative Path to certificate inside DataPackage]" Password="[password]" IsPasswordEncrypted="[true/false]"/>
  ```
 
-Kapsayıcı hizmeti veya işlemi, sertifika dosyalarının kapsayıcıya aktarılmasından sorumludur. Sertifikayı içeri aktarmak için betikleri kullanabilir `setupentrypoint.sh` veya kapsayıcı işlemi içinde özel kod yürütebilirsiniz. PFX dosyasını içeri aktarmak için C# içinde örnek kod aşağıda verilmiştir:
+Kapsayıcı hizmeti veya işlemi, sertifika dosyalarının kapsayıcıya aktarılmasından sorumludur. Sertifikayı içeri aktarmak için `setupentrypoint.sh` betikleri kullanabilir veya kapsayıcı işlemi içinde özel kod yürütebilirsiniz. PFX dosyasını içeri aktarmak için C# içinde örnek kod aşağıda verilmiştir:
 
 ```csharp
 string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");

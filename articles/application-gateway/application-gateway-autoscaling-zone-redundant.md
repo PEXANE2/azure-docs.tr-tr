@@ -1,41 +1,41 @@
 ---
-title: Otomatik ölçeklendirme ve bölge yedekli Application Gateway v2
+title: Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2
 description: Bu makalede, otomatik ölçeklendirme ve bölgesel olarak yedekli özellikler içeren Azure Application Standard_v2 ve WAF_v2 SKU açıklanır.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/13/2019
+ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: b97dab0f41915ac6193c35cad9a6af812b16fd4a
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104879"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177445"
 ---
-# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve bölge yedekli Application Gateway v2 
+# <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
 Application Gateway ve Web uygulaması güvenlik duvarı (WAF), bir Standard_v2 ve WAF_v2 SKU 'SU altında da mevcuttur. V2 SKU 'SU performans iyileştirmeleri sunar ve otomatik ölçeklendirme, bölge artıklığı ve statik VIP 'ler için destek gibi kritik yeni özellikler için destek ekler. Standart ve WAF SKU 'SU altındaki mevcut özellikler, yeni v2 SKU 'sunda, [karşılaştırma](#differences-with-v1-sku) bölümünde listelenen birkaç özel durum ile devam eder.
 
 Yeni v2 SKU 'SU aşağıdaki geliştirmeleri içerir:
 
-- **Otomatik ölçeklendirme**: Otomatik ölçeklendirme SKU 'SU altındaki Application Gateway veya WAF dağıtımları, değişen trafik yükü desenlerine göre ölçeği artırma veya azaltma olabilir. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Bu SKU, doğru esneklik sunar. Standard_v2 ve WAF_v2 SKU 'sunda, Application Gateway her ikisini de sabit kapasitede (otomatik ölçeklendirme devre dışı) ve otomatik ölçeklendirme etkin modunda çalıştırabilirsiniz. Sabit kapasite modu, tutarlı ve öngörülebilir iş yüklerine sahip senaryolar için faydalıdır. Otomatik ölçeklendirme modu, uygulama trafiğinden varyansı gösteren uygulamalarda faydalıdır.
-- **Bölge artıklığı**: Application Gateway veya WAF dağıtımı birden çok Kullanılabilirlik Alanları yayılabilir, her Traffic Manager bölgede ayrı Application Gateway örneklerinin sağlanması gereksinimini ortadan kaldırabilir. Application Gateway örneklerinin dağıtıldığı tek bir bölge veya birden çok bölge seçebilirsiniz. Bu, bölge hatasına daha dayanıklı hale gelir. Uygulamalar için arka uç havuzu, kullanılabilirlik alanları arasında benzer şekilde dağıtılabilir.
+- **Otomatik ölçeklendirme**: otomatik ölçeklendirme SKU 'su altındaki Application Gateway veya WAF dağıtımları, değişen trafik yükü desenlerine göre ölçeği değiştirebilir veya azaltabilirsiniz. Otomatik ölçeklendirme ayrıca sağlama sırasında dağıtım boyutu veya örnek sayısı seçme gereksinimini de ortadan kaldırır. Bu SKU, doğru esneklik sunar. Standard_v2 ve WAF_v2 SKU 'sunda, Application Gateway her ikisini de sabit kapasitede (otomatik ölçeklendirme devre dışı) ve otomatik ölçeklendirme etkin modunda çalıştırabilirsiniz. Sabit kapasite modu, tutarlı ve öngörülebilir iş yüklerine sahip senaryolar için faydalıdır. Otomatik ölçeklendirme modu, uygulama trafiğinden varyansı gösteren uygulamalarda faydalıdır.
+- **Bölge artıklığı**: bir Application Gateway veya WAF dağıtımı birden fazla kullanılabilirlik alanları yayılabilir, her Traffic Manager bölgede ayrı Application Gateway örneklerinin sağlanması gereksinimini ortadan kaldırabilir. Application Gateway örneklerinin dağıtıldığı tek bir bölge veya birden çok bölge seçebilirsiniz. Bu, bölge hatasına daha dayanıklı hale gelir. Uygulamalar için arka uç havuzu, kullanılabilirlik alanları arasında benzer şekilde dağıtılabilir.
 
   Bölge yedekliliği yalnızca Azure bölgelerinin kullanılabildiği durumlarda kullanılabilir. Diğer bölgelerde, diğer tüm özellikler desteklenir. Daha fazla bilgi için bkz. [Azure 'da kullanılabilirlik alanları nedir?](../availability-zones/az-overview.md#services-support-by-region)
 - **STATIK VIP**: Application Gateway v2 SKU 'SU statik VIP türünü özel olarak destekler. Bu, bir yeniden başlatma işleminden sonra bile, uygulama ağ geçidi ile ilişkili VIP 'nin dağıtımın yaşam döngüsü açısından değişmemesini sağlar.  V1 'de statik bir VIP yok, bu nedenle uygulama ağ geçidi aracılığıyla uygulama hizmetleri 'ne etki alanı adı yönlendirmesi için IP adresi yerine Application Gateway URL 'sini kullanmanız gerekir.
-- **Üst bilgi yeniden yazma**: Application Gateway, v2 SKU 'SU ile HTTP isteği ve yanıt üst bilgilerini eklemenize, kaldırmanıza veya güncelleştirmenize olanak tanır. Daha fazla bilgi için bkz. [http üst bilgilerini Application Gateway yeniden yazma](rewrite-http-headers.md)
-- **Key Vault Tümleştirme (Önizleme)** : Application Gateway v2, HTTPS etkin dinleyicilerine eklenen sunucu sertifikaları için Key Vault (genel önizlemede) tümleştirmeyi destekler. Daha fazla bilgi için bkz. [Key Vault sertifikalarla SSL sonlandırması](key-vault-certs.md).
-- **Azure Kubernetes hizmeti giriş denetleyicisi (Önizleme)** : Application Gateway v2 giriş denetleyicisi, Azure Application Gateway AKS kümesi olarak bilinen bir Azure Kubernetes hizmeti (AKS) için giriş olarak kullanılmasına izin verir. Daha fazla bilgi için [Belgeler sayfasına](https://azure.github.io/application-gateway-kubernetes-ingress/)bakın.
-- **Performans geliştirmeleri**: V2 SKU 'SU standart/WAF SKU 'SU ile karşılaştırıldığında daha iyi SSL yük boşaltma performansı sunar.
+- **Üstbilgi yeniden yazma**: Application Gateway, v2 SKU 'SU ile http isteği ve yanıt üst bilgilerini eklemenize, kaldırmanıza veya güncelleştirmenize olanak tanır. Daha fazla bilgi için bkz. [http üst bilgilerini Application Gateway yeniden yazma](rewrite-http-headers.md)
+- **Key Vault Tümleştirme (Önizleme)** : Application Gateway v2, https etkin dinleyicilerine eklenen sunucu sertifikaları için Key Vault (genel önizlemede) tümleştirmeyi destekler. Daha fazla bilgi için bkz. [Key Vault sertifikalarla SSL sonlandırması](key-vault-certs.md).
+- **Azure Kubernetes hizmeti (Önizleme)** : Application Gateway v2 giriş denetleyicisi, Azure Application Gateway aks kümesi olarak bilinen bir Azure Kubernetes hizmeti (aks) için giriş olarak kullanılmasına izin verir. Daha fazla bilgi için [Belgeler sayfasına](https://azure.github.io/application-gateway-kubernetes-ingress/)bakın.
+- **Performans iyileştirmeleri**: v2 SKU 'su standart/WAF SKU 'su ile karşılaştırıldığında daha iyi SSL yük boşaltma performansı sunar.
 - **Daha hızlı dağıtım ve güncelleştirme zamanı** V2 SKU 'SU, standart/WAF SKU 'suna kıyasla daha hızlı dağıtım ve güncelleştirme süresi sağlar. Bu, WAF yapılandırma değişikliklerini de içerir.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Standard_v2 ve WAF_v2 SKU 'SU aşağıdaki bölgelerde kullanılabilir: Orta Kuzey ABD, Orta Güney ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Fransa Orta, UK Batı, Japonya Doğu, Japonya Batı, Avustralya Doğu, Avustralya Güneydoğu, Kanada Orta, Kanada Doğu, Doğu Asya, Kore Orta, Kore Güney, Güney Hindistan, UK Güney, Orta Hindistan, Batı Hindistan, Güney Hindistan.
+Standard_v2 ve WAF_v2 SKU 'SU şu bölgelerde kullanılabilir: Orta Kuzey ABD, Orta Güney ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Fransa Orta, UK Batı, Japonya Doğu, Japonya Batı, Avustralya Doğu , Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Doğu Asya, Kore Orta, Kore Güney, Güney Hindistan, UK Güney, Orta Hindistan, Batı Hindistan, Güney Hindistan.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -44,7 +44,7 @@ V2 SKU 'SU ile, fiyatlandırma modeli tüketim ile çalıştırılır ve artık 
 - **Sabit fiyat** -bu, bir Standard_v2 veya WAF_v2 ağ geçidi sağlamak için saatlik (veya kısmi saat) fiyatıdır.
 - **Kapasite birim fiyatı** -bu, sabit maliyete ek olarak ücretlendirilen tüketim tabanlı maliyettir. Kapasite birimi ücretlendirmesi ayrıca saatlik olarak veya kısmen saatlik olarak hesaplanır. Kapasite biriminde üç boyut bulunur: işlem birimi, kalıcı bağlantılar ve aktarım hızı. İşlem birimi, kullanılan işlemci kapasitesini ölçer. İşlem birimini etkileyen faktörler, TLS bağlantısı/sn, URL yeniden yazma hesaplamaları ve WAF kural işleme. Kalıcı bağlantı, belirli bir fatura aralığındaki uygulama ağ geçidine kurulan TCP bağlantılarının bir ölçümüdür. Aktarım hızı, belirli bir fatura aralığında sistem tarafından işlenen ortalama megabit/sn 'dir.
 
-Her kapasite birimi en fazla şundan oluşur: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps üretilen iş.
+Her kapasite birimi en çok: 1 işlem birimi veya 2500 kalıcı bağlantı ya da 2,22 Mbps aktarım hızı ' ten oluşur.
 
 İşlem birimi Kılavuzu:
 
@@ -118,7 +118,7 @@ Aşağıdaki tabloda, her SKU ile kullanılabilen özellikler karşılaştırıl
 | Bölge artıklığı                                   |          | &#x2713; |
 | Statik VIP                                        |          | &#x2713; |
 | Azure Kubernetes hizmeti (AKS) giriş denetleyicisi |          | &#x2713; |
-| Azure Key Vault tümleştirmesi                       |          | &#x2713; |
+| Azure Anahtar Kasası tümleştirme                       |          | &#x2713; |
 | HTTP (S) üstbilgilerini yeniden yaz                           |          | &#x2713; |
 | URL tabanlı yönlendirme                                 | &#x2713; | &#x2713; |
 | Birden çok site barındırma                             | &#x2713; | &#x2713; |
@@ -156,7 +156,7 @@ PowerShell Galerisi 'nde, v1 Application Gateway/WAF 'den v2 otomatik ölçeklen
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı Başlangıç: Azure Application Gateway ile doğrudan web trafiği-Azure portal](quick-create-portal.md)
+- [Hızlı başlangıç: Azure Application Gateway ile doğrudan web trafiği-Azure portal](quick-create-portal.md)
 - [Azure PowerShell kullanarak, ayrılmış bir sanal IP adresine sahip bir otomatik ölçeklendirme, bölge yedekli uygulama ağ geçidi oluşturma](tutorial-autoscale-ps.md)
 - [Application Gateway](overview.md)hakkında daha fazla bilgi edinin.
 - [Azure Güvenlik Duvarı](../firewall/overview.md)hakkında daha fazla bilgi edinin.

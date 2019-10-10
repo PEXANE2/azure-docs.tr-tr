@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 33594e09778b9a629645e12357e6bafe561ad35e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202903"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178130"
 ---
-# <a name="dependency-visualization"></a>Bağımlılık görselleştirmesi
+# <a name="dependency-visualization"></a>Bağımlılık görselleştirme
 
-Azure Geçişi: Sunucu değerlendirmesi, Azure 'a geçiş için şirket içi makinelerin değerlendirir gruplarıdır. Grupları oluşturmak için sunucu değerlendirmesi ' nde bağımlılık görselleştirme işlevini kullanabilirsiniz. Bu makale, bu özellik hakkında bilgi sağlar.
+Azure geçişi: Azure 'a geçiş için sunucu değerlendirmesi değerlendirir şirket içi makineler gruplarıdır. Grupları oluşturmak için sunucu değerlendirmesi ' nde bağımlılık görselleştirme işlevini kullanabilirsiniz. Bu makale, bu özellik hakkında bilgi sağlar.
 
 > [!NOTE]
 > Bağımlılık görselleştirme işlevselliği Azure Kamu 'da kullanılamaz.
@@ -27,8 +27,8 @@ Sunucu değerlendirmesindeki bağımlılık görselleştirme, geçiş değerlend
 ## <a name="before-you-start"></a>Başlamadan önce
 
 - Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
-- Zaten bir proje oluşturduysanız, Azure geçişini eklediğinizden emin olun: [](how-to-assess.md) Sunucu değerlendirmesi aracı.
-- Azure geçişi 'nde makinelerinizi keşfetdiğinizden emin olun; Bunu, [VMware](how-to-set-up-appliance-vmware.md) veya [Hyper-V](how-to-set-up-appliance-hyper-v.md)için bir Azure geçiş gereci ayarlayarak yapabilirsiniz. Gereç, şirket içi makineleri bulur ve Azure geçişi 'ne meta veri ve performans verileri gönderir: etmenize yardımcı olur. [Daha fazla bilgi edinin](migrate-appliance.md).
+- Zaten bir proje oluşturduysanız Azure geçişi: Sunucu değerlendirmesi [aracını eklediğinizden emin](how-to-assess.md) olun.
+- Azure geçişi 'nde makinelerinizi keşfetdiğinizden emin olun; Bunu, [VMware](how-to-set-up-appliance-vmware.md) veya [Hyper-V](how-to-set-up-appliance-hyper-v.md)için bir Azure geçiş gereci ayarlayarak yapabilirsiniz. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. [Daha fazla bilgi edinin](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Nasıl çalışır?
 
@@ -36,12 +36,12 @@ Azure geçişi, bağımlılık görselleştirmesi için [Azure izleyici günlük
 - Bağımlılık görselleştirmesini yükseltmek için, yeni veya mevcut bir Log Analytics çalışma alanını Azure geçişi projesi ile ilişkilendirmeniz gerekir.
 - Yalnızca Azure geçişi projesinin oluşturulduğu abonelikte bir çalışma alanı oluşturabilir veya ekleyebilirsiniz.
 - Bir projeye Log Analytics çalışma alanı iliştirmek için:
-    1. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğu, **Genel Bakış ' a**tıklayın.
+    1. **Sunucular** sekmesinde, **Azure geçişi: Sunucu değerlendirmesi** kutucuğunda **Genel Bakış ' a**tıklayın.
     2. **Genel bakış**bölümünde, **temelleri**genişletmek için aşağı oka tıklayın.
     3. **OMS çalışma alanında** **yapılandırma gerekiyor**' a tıklayın.
     4. **Çalışma alanını Yapılandır**' da, yeni bir çalışma alanı oluşturmak isteyip istemediğinizi belirtin veya var olanı kullanın:
     
-    ![Çalışma alanı ekle](./media/how-to-create-group-machine-dependencies/workspace.png)
+    ![Çalışma alanı Ekle](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - Bir çalışma alanı ilişkilendirirken, yeni bir çalışma alanı oluşturma veya var olanı iliştirme seçeneğini alacaksınız:
   - Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı için bir ad belirtmeniz gerekir. Çalışma alanının oluşturulacağı [bölgeyi](https://azure.microsoft.com/global-infrastructure/regions/) seçebilirsiniz.
@@ -51,7 +51,7 @@ Azure geçişi, bağımlılık görselleştirmesi için [Azure izleyici günlük
   > Bir projeye çalışma alanı iliştirdikten sonra, daha sonra değiştiremezsiniz.
 
   > [!NOTE]
-  > Azure geçişi Şu anda Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde OMS çalışma alanı oluşturulmasını desteklemektedir. Çalışma alanı başka bir bölgede Azure geçişi dışında oluşturulduysa, şu anda bir Azure geçiş projesiyle ilişkilendirilemez. 
+  > Azure geçişi Şu anda Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerindeki Log Analytics çalışma alanlarının oluşturulmasını veya ilişkilendirmesini desteklemektedir. Çalışma alanı desteklenmeyen bir bölgede Azure geçişi dışında oluşturulduysa, şu anda bir Azure geçiş projesiyle ilişkilendirilemez. 
 
 - İlişkili çalışma alanı, anahtar **geçiş projesiyle**etiketlenebilir ve Azure Portal arama yapmak için kullanabileceğiniz değer **proje adıdır**.
 - Projeyle ilişkili çalışma alanına gitmek için projeye **genel bakış** sayfasının **Essentials** bölümüne gidebilir ve çalışma alanına erişebilirsiniz

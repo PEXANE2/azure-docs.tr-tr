@@ -1,24 +1,22 @@
 ---
-title: "Hızlı Başlangıç: REST API 'Leri kullanarak Java 'da arama dizini oluşturma-Azure Search"
+title: "Hızlı başlangıç: REST API 'Leri kullanarak Java 'da arama dizini oluşturma-Azure Search"
 description: Java ve Azure Search REST API 'Leri kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
-author: lisaleib
 manager: nitinme
-ms.author: jjed
-tags: azure-portal
-services: search
+author: lisaleib
+ms.author: v-lilei
 ms.service: search
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/10/2019
-ms.openlocfilehash: 455f3dfdce93d0b39960f9ec87b0938060f87687
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3f424f03f72e288994b05c4559bd42e6429760a8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881565"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166237"
 ---
-# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Hızlı Başlangıç: REST API 'Lerini kullanarak Java 'da Azure Search dizin oluşturma
+# <a name="quickstart-create-an-azure-search-index-in-java-using-rest-apis"></a>Hızlı başlangıç: REST API 'Leri kullanarak Java 'da Azure Search dizin oluşturma
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
 > * [C#](search-get-started-dotnet.md)
@@ -58,7 +56,7 @@ Hizmete yapılan çağrılar, her istekte bir URL uç noktası ve erişim anahta
 
 Hizmetinize gönderilen her istek bir API anahtarı gerektirir. İstek başına geçerli bir anahtara sahip olmak, isteği gönderen uygulama ve bunu işleyen hizmet arasında güven oluşturur.
 
-## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
+## <a name="set-up-your-environment"></a>Ortamınızı kurma
 
 IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
@@ -70,13 +68,13 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
     ![Maven projesi oluşturma](media/search-get-started-java/java-quickstart-create-new-maven-project.png) 
 
-1. **GroupID** ve **ArtifactId**için girin `AzureSearchQuickstart`.
+1. **GroupID** ve **ArtifactId**için `AzureSearchQuickstart` girin.
 1. Projeyi açmak için kalan Varsayılanları kabul edin.
 
 ### <a name="specify-maven-dependencies"></a>Maven bağımlılıklarını belirt
 
 1. **Dosya** > **ayarları**' nı seçin.
-1. **Ayarlar** penceresinde **Yapı, yürütme, dağıtım** > **derleme araçları** > **Maven** > **içeri aktarma**' yı seçin.
+1. **Ayarlar** penceresinde, **derleme, yürütme, dağıtım** > **derleme araçları** > **Maven** > **içeri aktarma**' yı seçin.
 1. **Maven projelerini otomatik olarak Içeri aktar** onay kutusunu seçin ve **Tamam** ' a tıklayarak pencereyi kapatın. Maven eklentileri ve diğer bağımlılıklar artık sonraki adımda Pod. xml dosyasını güncelleştirdiğinizde otomatik olarak eşitlenir.
 
     ![IntelliJ ayarlarındaki Maven içeri aktarma seçenekleri](media/search-get-started-java/java-quickstart-settings-import-maven-auto.png)
@@ -134,10 +132,10 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 ### <a name="set-up-the-project-structure"></a>Proje yapısını ayarlama
 
-1. **Dosya** > **projesi yapısı ' nı**seçin.
-1. **Modüller**' i seçin ve kaynak ağacı ' nı genişleterek `src` `main` klasörün içeriklerine  >   erişin.
-1. `src` Klasöründe,`app` ve klasörlerini`service` ekleyin.  >   `main`  >  `java` Bunu yapmak için `java` klasörü seçin, alt + Ekle tuşlarına basın ve ardından klasör adını girin.
-1. `src` Klasöründe,`app` ve klasörlerini`service` ekleyin.  >   `main`  > `resources`
+1. **Dosya** > **Proje yapısını**seçin.
+1. **Modüller**' i seçin ve kaynak ağacını genişleterek `src` @ no__t-2 @ no__t-3 klasörünün içeriğine erişin.
+1. @No__t-0 @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 klasöründe, `app` ve `service` klasörleri ekleyin. Bunu yapmak için `java` klasörünü seçin, alt + Ekle tuşlarına basın ve ardından klasör adını girin.
+1. @No__t-0 @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 klasöründe, `app` ve `service` klasörleri ekleyin.
 
     İşiniz bittiğinde, proje ağacının aşağıdaki resim gibi görünmesi gerekir.
 
@@ -147,9 +145,9 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 ### <a name="add-azure-search-service-information"></a>Azure Search hizmeti bilgileri ekleme
 
-1. **Proje** `src` penceresinde, klasöre`app` erişmek  >   `main` içinkaynak`config.properties` ağacını genişletin ve bir dosya ekleyin.  > `resources`  >  Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve ardından dosya adını girin.
+1. **Proje** penceresinde, kaynak ağacını genişleterek `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 klasörüne erişin ve bir @no__t 8 dosyası ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve dosya adını girin.
 
-1. Aşağıdaki ayarları yeni dosyaya kopyalayın ve hizmet adınızla ve `<YOUR-SEARCH-SERVICE-NAME>`anahtarlarınız `<YOUR-ADMIN-KEY>` `<YOUR-QUERY-KEY>` ile değiştirin. Hizmet uç noktanız ise `https://mydemo.search.windows.net`, hizmet adı "mydemo" olacaktır.
+1. Aşağıdaki ayarları yeni dosyaya kopyalayın ve `<YOUR-SEARCH-SERVICE-NAME>`, `<YOUR-ADMIN-KEY>` ve `<YOUR-QUERY-KEY>` ' yi hizmet adınızla ve anahtarlarınız ile değiştirin. Hizmet uç noktanız `https://mydemo.search.windows.net` ise, hizmet adı "mydemo" olacaktır.
 
     ```java
         SearchServiceName=<YOUR-SEARCH-SERVICE-NAME>
@@ -161,8 +159,8 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 ### <a name="add-the-main-method"></a>Main metodunu ekleyin
 
-1. `src` Klasöründebir`App` sınıf ekleyin.  >   `main`  >  `java`  >  `app` Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Java sınıfı**' nı seçin ve ardından sınıf adını girin.
-1. `App` Sınıfını açın ve içeriği aşağıdaki kodla değiştirin. Bu kod `main` yöntemini içerir. 
+1. @No__t-0 @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 klasöründe bir `App` sınıfı ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Java Class**' ı seçin ve ardından sınıf adını girin.
+1. @No__t-0 sınıfını açın ve içeriği aşağıdaki kodla değiştirin. Bu kod `main` yöntemini içerir. 
 
     Açıklamalı olmayan kod, arama hizmeti parametrelerini okur ve arama hizmeti istemcisinin bir örneğini oluşturmak için bunları kullanır. Arama hizmeti istemci kodu bir sonraki bölüme eklenecektir.
 
@@ -260,8 +258,8 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 ### <a name="add-the-http-operations"></a>HTTP işlemlerini ekleme
 
-1. `src` Klasöründebir`SearchServiceClient` sınıf ekleyin.  >   `main`  >  `java`  >  `service` Bunu yapmak için `service` klasörü seçin, alt + Ekle ' ye basın, **Java sınıfı**' nı seçin ve ardından sınıf adını girin.
-1. `SearchServiceClient` Sınıfını açın ve içeriğini aşağıdaki kodla değiştirin. Bu kod, Azure Search REST API kullanmak için gereken HTTP işlemlerini sağlar. Dizin oluşturmak, belge yüklemek ve dizini sorgulamak için ek yöntemler sonraki bir bölüme eklenecektir.
+1. @No__t-0 @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 klasöründe bir @ no__t-7 sınıfı ekleyin. Bunu yapmak için `service` klasörünü seçin, alt + Ekle ' ye basın, **Java Class**' ı seçin ve ardından sınıf adını girin.
+1. @No__t-0 sınıfını açın ve içeriğini aşağıdaki kodla değiştirin. Bu kod, Azure Search REST API kullanmak için gereken HTTP işlemlerini sağlar. Dizin oluşturmak, belge yüklemek ve dizini sorgulamak için ek yöntemler sonraki bir bölüme eklenecektir.
 
     ```java
     package main.java.service;
@@ -370,14 +368,13 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
     
     ```
 
-### <a name="build-the-project"></a>Proje derleme
+### <a name="build-the-project"></a>Projeyi derleme
 
 1. Projenizin aşağıdaki yapıya sahip olduğunu doğrulayın.
 
     ![Proje dizini yapısı](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
-1. **Maven** araç penceresini açın ve bu Maven hedefini yürütün: `verify exec:java`
-![Maven hedefini yürütme: exec: Java 'yı doğrula](media/search-get-started-java/java-quickstart-execute-maven-goal.png)
+1. **Maven** araç penceresini açın ve şu Maven hedefini yürütün: `verify exec:java` @ no__t-2 @ No__t-3execute Maven hedefi: Verify exec: Java @ no__t-4
 
 İşlem tamamlandığında, derleme başarılı iletisini ve ardından sıfır (0) çıkış kodunu arayın.
 
@@ -385,9 +382,9 @@ IntelliJ FIKRINI açıp yeni bir proje ayarlayarak başlayın.
 
 Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir alana örnek olarak "HotelName" veya "Description" verilebilir. "Adres" alanı, "sokak adresi" ve "şehir" gibi alt alanlar içerdiğinden karmaşık bir alandır. Bu hızlı başlangıçta, Dizin tanımı JSON kullanılarak belirtilir.
 
-1. **Proje** `src` penceresinde, klasöre`service` erişmek  >   `main` içinkaynak`index.json` ağacını genişletin ve bir dosya ekleyin.  > `resources`  >  Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve ardından dosya adını girin.
+1. **Proje** penceresinde, kaynak ağacını genişleterek `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 klasörüne erişin ve bir @no__t 8 dosyası ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve dosya adını girin.
 
-1. `index.json` Dosyasını açın ve aşağıdaki dizin tanımını ekleyin.
+1. @No__t-0 dosyasını açın ve aşağıdaki dizin tanımını ekleyin.
 
     ```json
     {
@@ -512,11 +509,11 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     }
     ```
 
-    Dizin adı "oteller-hızlı başlangıç" olacaktır. Dizin alanlarındaki öznitelikler, dizine alınmış verilerin bir uygulamada nasıl arandığını tespit edebilir. Örneğin, `IsSearchable` özniteliğin tam metin aramasına dahil olması gereken her alana atanması gerekir. Öznitelikler hakkında daha fazla bilgi için bkz. [alanlar koleksiyonu ve alan öznitelikleri](search-what-is-an-index.md#fields-collection).
+    Dizin adı "oteller-hızlı başlangıç" olacaktır. Dizin alanlarındaki öznitelikler, dizine alınmış verilerin bir uygulamada nasıl arandığını tespit edebilir. Örneğin, `IsSearchable` özniteliği tam metin aramasına dahil edilecek her alana atanmalıdır. Öznitelikler hakkında daha fazla bilgi için bkz. [alanlar koleksiyonu ve alan öznitelikleri](search-what-is-an-index.md#fields-collection).
     
-    Bu dizindeki `analyzer` alan, varsayılan Lucene dil çözümleyicisini geçersiz kılmak için isteğe bağlı özelliği kullanır. `Description` Alan, Fransızca metin depoladığı için Fransızca Lucene `fr.lucene` Çözümleyicisi 'ni kullanıyor. `Description_fr` , `Description` İsteğe bağlı Microsoft dil Çözümleyicisi en. Lucene ' i kullanıyor. Çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [Azure Search metin işleme Için çözümleyiciler](search-analyzers.md).
+    Bu dizindeki `Description` alanı varsayılan Lucene dil çözümleyicisini geçersiz kılmak için isteğe bağlı `analyzer` özelliğini kullanır. @No__t-0 alanı Fransızca metin depoladığından, Fransızca Lucene Çözümleyicisi `fr.lucene` ' i kullanıyor. @No__t-0, isteğe bağlı Microsoft dil Çözümleyicisi en. Lucene ' i kullanıyor. Çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [Azure Search metin işleme Için çözümleyiciler](search-analyzers.md).
 
-1. `SearchServiceClient` Sınıfına aşağıdaki kodu ekleyin. Bu yöntemler bir dizin oluşturup silen ve bir dizinin mevcut olup olmadığını belirten Azure Search REST hizmeti URL 'Leri oluşturur. Yöntemler ayrıca HTTP isteğini de yapar.
+1. @No__t-0 sınıfına aşağıdaki kodu ekleyin. Bu yöntemler bir dizin oluşturup silen ve bir dizinin mevcut olup olmadığını belirten Azure Search REST hizmeti URL 'Leri oluşturur. Yöntemler ayrıca HTTP isteğini de yapar.
 
     ```java
     public boolean indexExists() throws IOException, InterruptedException {
@@ -556,7 +553,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     }
     ```
 
-1. `App` Sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, varsa "oteller-hızlı başlangıç" dizinini siler ve "index. JSON" dosyasındaki Dizin tanımına göre yeni bir dizin oluşturur. 
+1. @No__t-0 sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, varsa "oteller-hızlı başlangıç" dizinini siler ve "index. JSON" dosyasındaki Dizin tanımına göre yeni bir dizin oluşturur. 
 
     Dizin oluşturma isteğinden sonra tek saniyelik bir duraklatma eklenir. Bu duraklatma, belgeleri karşıya yüklemeden önce dizinin oluşturulmasını sağlar.
 
@@ -566,13 +563,13 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
           Thread.sleep(1000L); // wait a second to create the index
     ```
 
-1. **Maven** araç penceresini açın ve bu Maven hedefini yürütün:`verify exec:java`
+1. **Maven** araç penceresini açın ve şu Maven hedefini yürütün: `verify exec:java`
 
     Kod çalışırken bir "Dizin oluşturma" iletisi ve ardından bir 201 yanıt kodu bulun. Bu yanıt kodu, dizinin oluşturulduğunu onaylar. Çalıştırma, derleme başarılı iletisi ve sıfır (0) çıkış kodu ile bitmelidir.
     
 ## <a name="2---load-documents"></a>2-belge yükleme
 
-1. **Proje** `src` penceresinde, klasöre`service` erişmek  >   `main` içinkaynak`hotels.json` ağacını genişletin ve bir dosya ekleyin.  > `resources`  >  Bunu yapmak için `app` klasörü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve ardından dosya adını girin.
+1. **Proje** penceresinde, kaynak ağacını genişleterek `src` @ no__t-2 @ no__t-3 @ no__t-4 @ no__t-5 @ no__t-6 @ no__t-7 klasörüne erişin ve bir @no__t 8 dosyası ekleyin. Bunu yapmak için `app` klasörünü seçin, alt + Ekle ' ye basın, **Dosya**' yı seçin ve dosya adını girin.
 1. Aşağıdaki otel belgelerini dosyaya ekleyin.
 
     ```json
@@ -658,7 +655,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     }
     ```
 
-1. `SearchServiceClient` Sınıfına aşağıdaki kodu ekleyin. Bu kod, otel belgelerini dizine yüklemek için REST hizmeti URL 'sini oluşturur ve ardından HTTP POST isteğini yapar.
+1. @No__t-0 sınıfına aşağıdaki kodu ekleyin. Bu kod, otel belgelerini dizine yüklemek için REST hizmeti URL 'sini oluşturur ve ardından HTTP POST isteğini yapar.
 
     ```java
     public boolean uploadDocuments(String documentsFile) throws IOException, InterruptedException {
@@ -677,7 +674,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
     }
     ```
 
-1. `App` Sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, "oteller. JSON" içindeki belgeleri dizine yükler.
+1. @No__t-0 sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, "oteller. JSON" içindeki belgeleri dizine yükler.
 
     ```java
     client.uploadDocuments("/service/hotels.json");
@@ -686,7 +683,7 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
 
     Dizin sorgulanmadan önce belge yükleme işleminin tamamlanmasını sağlamak için karşıya yükleme isteğinden iki saniyelik bir duraklama eklenir.
 
-1. **Maven** araç penceresini açın ve bu Maven hedefini yürütün:`verify exec:java`
+1. **Maven** araç penceresini açın ve şu Maven hedefini yürütün: `verify exec:java`
 
     Önceki adımda bir "oteller-QuickStart" dizini oluşturduğunuz için, kod şimdi onu silecek ve otel belgelerini yüklemeden önce yeniden oluşturacak.
 
@@ -696,11 +693,11 @@ Oteller Dizin tanımı basit alanlar ve bir karmaşık alan içerir. Basit bir a
 
 Oteller belgelerini yüklemişseniz, otel verilerine erişmek için arama sorguları oluşturabilirsiniz.
 
-1. `SearchServiceClient` Sınıfına aşağıdaki kodu ekleyin. Bu kod, dizine alınmış verileri aramak ve arama sonuçlarını yazdıran Azure Search REST hizmeti URL 'Lerini oluşturur.
+1. @No__t-0 sınıfına aşağıdaki kodu ekleyin. Bu kod, dizine alınmış verileri aramak ve arama sonuçlarını yazdıran Azure Search REST hizmeti URL 'Lerini oluşturur.
 
-    Sınıfı `SearchOptions` ve`createSearchOptions` yöntemi, kullanılabilir Azure Search REST API sorgu seçeneklerinin bir alt kümesini belirtmenizi sağlar. REST API sorgu seçenekleri hakkında daha fazla bilgi için bkz. [arama belgeleri (Azure Search hizmeti REST API)](/rest/api/searchservice/search-documents).
+    @No__t-0 sınıfı ve `createSearchOptions` yöntemi, kullanılabilir Azure Search REST API sorgu seçeneklerinin bir alt kümesini belirtmenizi sağlar. REST API sorgu seçenekleri hakkında daha fazla bilgi için bkz. [arama belgeleri (Azure Search hizmeti REST API)](/rest/api/searchservice/search-documents).
 
-    `SearchPlus` Yöntemi arama sorgu URL 'sini oluşturur, arama isteğini yapar ve sonuçları konsola yazdırır. 
+    @No__t-0 yöntemi arama sorgu URL 'sini oluşturur, arama isteğini yapar ve sonuçları konsola yazdırır. 
 
     ```java
     public SearchOptions createSearchOptions() { return new SearchOptions();}
@@ -763,7 +760,7 @@ Oteller belgelerini yüklemişseniz, otel verilerine erişmek için arama sorgul
     }
     ```
 
-1. `App` Sınıfında, aşağıdaki kodun açıklamasını kaldırın. Bu kod, döndürülecek arama metni, sorgu parametreleri ve veri alanları dahil olmak üzere beş farklı sorgu ayarlar. 
+1. @No__t-0 sınıfında aşağıdaki kodun açıklamasını kaldırın. Bu kod, döndürülecek arama metni, sorgu parametreleri ve veri alanları dahil olmak üzere beş farklı sorgu ayarlar. 
 
     ```java
     // Query 1
@@ -813,9 +810,9 @@ Oteller belgelerini yüklemişseniz, otel verilerine erişmek için arama sorgul
 
 
 
-    [Bir sorgudaki terimlerle eşleşen iki yol](search-query-overview.md#types-of-queries)vardır: tam metin araması ve filtreler. Tam metin arama sorgusu, dizininizdeki `IsSearchable` alanlarda bir veya daha fazla terimi arar. Filtre, bir dizindeki alanlar üzerinde `IsFilterable` değerlendirilen bir Boolean ifadedir. Tam metin arama ve filtreleri birlikte veya ayrı olarak kullanabilirsiniz.
+    [Bir sorgudaki terimlerle eşleşen iki yol](search-query-overview.md#types-of-queries)vardır: tam metin araması ve filtreler. Tam metin arama sorgusu, dizininizdeki `IsSearchable` alanlarında bir veya daha fazla terimi arar. Filtre, bir dizindeki `IsFilterable` alanları üzerinde değerlendirilen Boolean bir ifadedir. Tam metin arama ve filtreleri birlikte veya ayrı olarak kullanabilirsiniz.
 
-1. **Maven** araç penceresini açın ve bu Maven hedefini yürütün:`verify exec:java`
+1. **Maven** araç penceresini açın ve şu Maven hedefini yürütün: `verify exec:java`
 
     Her bir sorgunun özetini ve sonuçlarını arayın. Çalıştırma, derleme başarılı iletisi ve sıfır (0) çıkış kodu ile tamamlanmalıdır.
 

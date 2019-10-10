@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Azure hizmetlerini tanımak için özel logo algılayıcısı kullanın-Özel Görüntü İşleme'
 titleSuffix: Azure Cognitive Services
-description: Bu öğreticide, bir logo algılama senaryosunun parçası olarak Azure Özel Görüntü İşleme kullanan bir örnek uygulamada ilerleyebilirsiniz. Özel Görüntü İşleme, uçtan uca bir uygulama sunmak için diğer bileşenlerle nasıl kullanıldığını öğrenin.
+description: Bu öğreticide, logo algılama senaryosunun parçası olarak Özel Görüntü İşleme kullanan bir örnek uygulamada adım adım ilerleyebilirsiniz. Özel Görüntü İşleme, uçtan uca bir uygulama sunmak için diğer bileşenlerle nasıl kullanıldığını öğrenin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: bdcf8a0d63b880075cd22c73305afa8cf09a2e3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b48d82354a8e733db5ddd0c86e34bab1fa9caa8d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261983"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177784"
 ---
-# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: Kamera resimlerde Azure hizmet logolarını tanıma
+# <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Öğretici: kamera resimlerde Azure hizmet logolarını tanıma
 
-Bu öğreticide, Azure Özel Görüntü İşleme kullanan bir örnek uygulamayı daha büyük bir senaryonun parçası olarak araştırmaya başlayacaksınız. Mobil platformlar için bir Xamarin. Forms uygulaması olan AI görsel sağlama uygulaması, Azure hizmet logolarının kamera resimlerini analiz eder ve ardından gerçek Hizmetleri kullanıcının Azure hesabına dağıtır. Burada, yararlı bir uçtan uca uygulama sunmak için diğer bileşenlerle birlikte Özel Görüntü İşleme nasıl kullandığını öğreneceksiniz. Tüm uygulama senaryosunu kendiniz çalıştırabilirsiniz veya kurulumun yalnızca Özel Görüntü İşleme parçasını tamamlayabilir ve uygulamanın bunu nasıl kullandığını keşfedebilirsiniz.
+Bu öğreticide, daha büyük bir senaryonun parçası olarak Özel Görüntü İşleme kullanan bir örnek uygulama keşfedeceğiz. Mobil platformlar için bir Xamarin. Forms uygulaması olan AI görsel sağlama uygulaması, Azure hizmet logolarının kamera resimlerini analiz eder ve ardından gerçek Hizmetleri kullanıcının Azure hesabına dağıtır. Burada, yararlı bir uçtan uca uygulama sunmak için diğer bileşenlerle birlikte Özel Görüntü İşleme nasıl kullandığını öğreneceksiniz. Tüm uygulama senaryosunu kendiniz çalıştırabilirsiniz veya kurulumun yalnızca Özel Görüntü İşleme parçasını tamamlayabilir ve uygulamanın bunu nasıl kullandığını keşfedebilirsiniz.
 
 Bu öğreticide şunları nasıl yapacağınızı gösterilecek:
 
@@ -97,7 +97,7 @@ Anahtar ve uç nokta URL 'SI almak için Görüntü İşleme hizmetine abone olu
 
 ![Azure portal, Hızlı Başlangıç menüsü seçili olan Görüntü İşleme hizmetidir. API uç noktası URL 'SI olduğu gibi anahtarlar için bir bağlantı özetlenmiştir](media/azure-logo-tutorial/comvis-keys.png)
 
-Sonra *source\visualprovision\appsettings.cs* dosyasını açın ve `ComputerVisionEndpoint` ve `ComputerVisionKey` değişkenlerini doğru değerlerle doldurun.
+Sonra *Source\visualprovision\appsettings.cs* dosyasını açın ve `ComputerVisionEndpoint` ve `ComputerVisionKey` değişkenlerini doğru değerlerle doldurun.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_comvis_keys)]
 
@@ -131,7 +131,7 @@ Başarıyla tamamlandıktan sonra, gerekli kimlik bilgileri de dahil olmak üzer
 }
 ```
 
-`clientId` Ve`tenantId` değerlerini bir yere göz atın. Bunları *Source\visualprovision\appsettings.cs* dosyasındaki uygun alanlara ekleyin.
+@No__t-0 ve `tenantId` değerlerine göz atın. Bunları *Source\visualprovision\appsettings.cs* dosyasındaki uygun alanlara ekleyin.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?name=snippet_serviceprincipal)]
 
@@ -153,7 +153,7 @@ Uygulamayı çalıştırmak için aşağıdaki adımları izleyin:
 1. İlk ekranda, hizmet sorumlusu istemci KIMLIĞI, kiracı KIMLIĞI ve parolanızı girin. **Oturum aç** düğmesini seçin.
 
     > [!NOTE]
-    > Bazı Öykünücülerde, **oturum açma** düğmesi bu adımda etkinleştirilmemiş olabilir. Bu durumda, uygulamayı durdurun, *kaynak/visualprovision/Pages/loginPage. xaml* dosyasını açın, `Button` **oturum açma düğmesi**etiketli öğeyi bulun, aşağıdaki satırı kaldırın ve uygulamayı yeniden çalıştırın.
+    > Bazı Öykünücülerde, **oturum açma** düğmesi bu adımda etkinleştirilmemiş olabilir. Bu durumda, uygulamayı durdurun, *kaynak/VisualProvision/Pages/LoginPage. xaml* dosyasını açın, **oturum açma düğmesi**etiketli `Button` öğesini bulun, aşağıdaki satırı kaldırın ve uygulamayı yeniden çalıştırın.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```

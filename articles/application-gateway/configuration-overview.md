@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 6/1/2019
 ms.author: absha
-ms.openlocfilehash: 65cf71140d1706b8607e721ac323b1a97ae272fa
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f69348f1a56845716d8d862f2926774cbc537cf0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898440"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177429"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway yapılandırmaya genel bakış
 
@@ -20,7 +20,7 @@ Azure Application Gateway, farklı senaryolar için çeşitli şekillerde yapıl
 
 ![Application Gateway bileşenleri akış grafiği](./media/configuration-overview/configuration-overview1.png)
 
-Bu görüntüde, üç dinleyici içeren bir uygulama gösterilmektedir. İlk ikisi sırasıyla ve `http://acme.com/*` `http://fabrikam.com/*`için çok siteli dinleyiclardır. Her ikisi de 80 numaralı bağlantı noktasını dinler. Üçüncü, uçtan uca Güvenli Yuva Katmanı (SSL) sonlandırmasına sahip temel bir dinleyiciye sahiptir.
+Bu görüntüde, üç dinleyici içeren bir uygulama gösterilmektedir. İlk ikisi sırasıyla `http://acme.com/*` ve `http://fabrikam.com/*` için çok siteli dinleyiclardır. Her ikisi de 80 numaralı bağlantı noktasını dinler. Üçüncü, uçtan uca Güvenli Yuva Katmanı (SSL) sonlandırmasına sahip temel bir dinleyiciye sahiptir.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,9 +38,9 @@ Uygulama ağ geçidi, sanal ağınızdaki adanmış bir dağıtımdır. Sanal a�
 
 Application Gateway, örnek başına 1 özel IP adresi ve özel ön uç IP 'si yapılandırılmışsa başka bir özel IP adresi tüketir.
 
-Azure, iç kullanım için her alt ağda 5 IP adresini de ayırır: ilk 4 ve son IP adresleri. Örneğin, özel ön uç IP 'si olmayan 15 Application Gateway örnekleri göz önünde bulundurun. Bu alt ağ için en az 20 IP adresiniz olması gerekir: 5 iç kullanım için ve uygulama ağ geçidi örnekleri için 15. Bu nedenle,/27 veya daha büyük bir alt ağ boyutu gerekir.
+Azure, iç kullanım için her alt ağda 5 IP adresini de ayırır: ilk 4 ve son IP adresleri. Örneğin, özel ön uç IP 'si olmayan 15 Application Gateway örnekleri göz önünde bulundurun. Bu alt ağ için en az 20 IP adresiniz olması gerekir: iç kullanım için 5 ve Application Gateway örnekleri için 15. Bu nedenle,/27 veya daha büyük bir alt ağ boyutu gerekir.
 
-27 Application Gateway örnekleri ve bir özel ön uç IP 'si için IP adresi olan bir alt ağ düşünün. Bu durumda, 33 IP adresine sahip olmanız gerekir: Application Gateway örnekleri için 27, özel ön uç için 1 ve iç kullanım için 5. Bu nedenle,/26 alt ağ boyutuna veya daha büyük bir ağa ihtiyacınız vardır.
+27 Application Gateway örnekleri ve bir özel ön uç IP 'si için IP adresi olan bir alt ağ düşünün. Bu durumda, 33 IP adresine sahip olmanız gerekir: Application Gateway örnekleri için 27, özel ön uç için 1, iç kullanım için 5. Bu nedenle,/26 alt ağ boyutuna veya daha büyük bir ağa ihtiyacınız vardır.
 
 En az/28 olan bir alt ağ boyutu kullanmanızı öneririz. Bu boyut size 11 kullanılabilir IP adresi sağlar. Uygulama yükleriniz 10 ' dan fazla IP adresi gerektiriyorsa, bir/27 veya/26 alt ağ boyutu düşünün.
 
@@ -61,7 +61,7 @@ Ağ güvenlik grupları (NSG 'ler) Application Gateway desteklenir. Ancak çeşi
 
 Bu senaryo için Application Gateway alt ağında NSG 'leri kullanın. Aşağıdaki kısıtlamaları alt ağa bu öncelik sırasına göre yerleştirin:
 
-1. Kaynak IP/IP aralığından gelen trafiğe izin verin.
+1. Kaynak IP/IP aralığından gelen trafiğe ve tüm Application Gateway alt ağına ya da yapılandırılmış özel ön uç IP 'ye izin verin. NSG ortak IP üzerinde çalışmaz.
 2. Tüm kaynaklardan gelen isteklere Application Gateway v1 SKU 'SU için 65503-65534 bağlantı noktasına ve [arka uç durumu iletişimi](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)IÇIN v2 SKU 'su için 65200-65535 bağlantı noktalarına izin verin. Bu bağlantı noktası aralığı, Azure altyapı iletişimi için gereklidir. Bu bağlantı noktaları Azure sertifikaları tarafından korunur (kilitlidir). Uygun sertifikalar yerine, dış varlıklar bu uç noktalar üzerinde değişiklik başlatamaz.
 3. [Ağ güvenlik grubundaki](https://docs.microsoft.com/azure/virtual-network/security-overview)gelen Azure Load Balancer Araştırmaları (*AzureLoadBalancer* Tag) ve gelen sanal ağ trafiğine (*VirtualNetwork* etiketi) izin verin.
 4. Engelle-All kuralını kullanarak diğer tüm gelen trafiği engelleyin.
@@ -91,13 +91,13 @@ Yalnızca 1 genel IP adresi veya 1 özel IP adresi desteklenir. Uygulama ağ ge�
 
 - Özel bir IP için, uygulama ağ geçidinin oluşturulduğu alt ağdan özel bir IP adresi belirtebilirsiniz. Bir tane belirtmezseniz, alt ağdan rastgele bir IP adresi otomatik olarak seçilir. Daha fazla bilgi için bkz. [iç yük dengeleyiciye sahip bir uygulama ağ geçidi oluşturma](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
-Ön uç IP adresi, ön uç IP üzerindeki gelenistekleri denetleyen bir dinleyiciyle ilişkilendirilir.
+Ön uç IP adresi, ön uç IP üzerindeki gelen istekleri denetleyen bir *dinleyiciyle*ilişkilendirilir.
 
 ## <a name="listeners"></a>Dinleyiciler
 
 Dinleyici, bağlantı noktası, protokol, konak ve IP adresini kullanarak gelen bağlantı isteklerini denetleyen mantıksal bir varlıktır. Dinleyiciyi yapılandırdığınızda, bunlar için ağ geçidinde gelen istekteki karşılık gelen değerlerle eşleşen değerler girmeniz gerekir.
 
-Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, dinleyici için protokolü ve bağlantı noktasını seçerek de varsayılan bir dinleyici oluşturursunuz. HTTP2 desteğinin dinleyicide etkinleştirilip etkinleştirilmeyeceğini seçebilirsiniz. Uygulama ağ geçidini oluşturduktan sonra, varsayılan dinleyicinin (*appgatewayhttplistener*/*appgatewayhttpslistümleyici*) ayarlarını düzenleyebilir veya yeni dinleyiciler oluşturabilirsiniz.
+Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, dinleyici için protokolü ve bağlantı noktasını seçerek de varsayılan bir dinleyici oluşturursunuz. HTTP2 desteğinin dinleyicide etkinleştirilip etkinleştirilmeyeceğini seçebilirsiniz. Uygulama ağ geçidini oluşturduktan sonra, bu varsayılan dinleyicinin (*Appgatewayhttplistener*/*Appgatewayhttpslistümleyici*) ayarlarını düzenleyebilir veya yeni dinleyiciler oluşturabilirsiniz.
 
 ### <a name="listener-type"></a>Dinleyici türü
 
@@ -121,7 +121,7 @@ Bu dinleyiciyle ilişkilendirmeyi planladığınız ön uç IP adresini seçin. 
 
 Ön uç bağlantı noktasını seçin. Mevcut bir bağlantı noktasını seçin veya yeni bir bağlantı noktası oluşturun. [İzin verilen bağlantı noktası aralığından](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports)herhangi bir değer seçin. 80 ve 443 gibi yalnızca iyi bilinen bağlantı noktalarını, ancak uygun olan tüm özel bağlantı noktalarını kullanabilirsiniz. Bir bağlantı noktası, genel kullanıma yönelik dinleyiciler veya özel kullanıma yönelik dinleyiciler için kullanılabilir.
 
-### <a name="protocol"></a>Protocol
+### <a name="protocol"></a>Protokol
 
 HTTP veya HTTPS seçin:
 
@@ -177,7 +177,7 @@ Azure portal kullanarak bir uygulama ağ geçidi oluşturduğunuzda, varsayılan
 
 Bir kural oluşturduğunuzda [ *temel* ve *yol tabanlı*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules)arasında seçim yapabilirsiniz.
 
-- İlişkili dinleyicide (örneğin, *Blog<i></i>\*. contoso.com/)* tüm istekleri tek bir arka uç havuzuna iletmek istiyorsanız temel ' yı seçin.
+- İlişkili dinleyicide tüm istekleri (örneğin, *Blog<i></i>. contoso.com/\*)* tek bir arka uç havuzuna iletmek istiyorsanız temel ' yı seçin.
 - Belirli URL yollarındaki istekleri belirli arka uç havuzlarına yönlendirmek istiyorsanız yol tabanlı ' i seçin. Yol deseninin Sorgu parametrelerine değil yalnızca URL 'nin yoluna uygulanması.
 
 #### <a name="order-of-processing-rules"></a>İşleme kuralları sırası
@@ -212,19 +212,19 @@ Yol tabanlı bir kural için, her bir URL yoluna karşılık gelen birden fazla 
 
 ### <a name="redirection-setting"></a>Yeniden yönlendirme ayarı
 
-Bir temel kural için yeniden yönlendirme yapılandırılırsa, ilişkili dinleyicinin tüm istekleri hedefe yeniden yönlendirilir. Bu, *genel* yeniden yönlendirme 'dir. Yol tabanlı bir kural için yeniden yönlendirme yapılandırılırsa, yalnızca belirli bir site alanındaki istekler yeniden yönlendirilir. Örnek, */cart/\** tarafından belirtilen bir alışveriş sepeti alanıdır. Bu, *yol tabanlı* yeniden yönlendirme 'dir.
+Bir temel kural için yeniden yönlendirme yapılandırılırsa, ilişkili dinleyicinin tüm istekleri hedefe yeniden yönlendirilir. Bu, *genel* yeniden yönlendirme 'dir. Yol tabanlı bir kural için yeniden yönlendirme yapılandırılırsa, yalnızca belirli bir site alanındaki istekler yeniden yönlendirilir. Örnek, */cart/\** ile belirtilen bir alışveriş sepeti alanıdır. Bu, *yol tabanlı* yeniden yönlendirme 'dir.
 
 Yeniden yönlendirmeler hakkında daha fazla bilgi için bkz. [Application Gateway yönlendirmeye genel bakış](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
 
 #### <a name="redirection-type"></a>Yeniden yönlendirme türü
 
-Gereken yeniden yönlendirme türünü seçin: *Kalıcı (301)* , *geçici (i)* , *bulunan (302*) veya *diğer bkz. (303)* .
+Gereken yeniden yönlendirme türünü seçin: *kalıcı (301)* , *geçici (.)* , *bulunan (302*) veya *diğer (303*).
 
 #### <a name="redirection-target"></a>Yeniden yönlendirme hedefi
 
 Yeniden yönlendirme hedefi olarak başka bir dinleyici veya dış site seçin.
 
-##### <a name="listener"></a>Dinleyici
+##### <a name="listener"></a>Oluşturulurken
 
 Trafiği bir dinleyicisinden ağ geçidinde diğerine yeniden yönlendirmek için yeniden yönlendirme hedefi olarak dinleyici ' i seçin. HTTP-HTTPS yeniden yönlendirmeyi etkinleştirmek istediğinizde bu ayar gereklidir. Gelen HTTP isteklerini, gelen HTTPS isteklerini denetleyen hedef dinleyiciye denetleyen kaynak dinleyicisinden trafiği yeniden yönlendirir. Ayrıca, yeniden yönlendirme hedefine iletilen istekteki özgün istekten sorgu dizesini ve yolunu eklemeyi de tercih edebilirsiniz.
 
@@ -262,17 +262,17 @@ Bu özellik, bir kullanıcı oturumunu aynı sunucuda tutmak istediğinizde yara
 
 Bağlantı boşaltma, planlı hizmet güncelleştirmeleri sırasında arka uç havuz üyelerini dikkatlice kaldırmanıza yardımcı olur. Bu ayarı, kural oluşturma sırasında bir arka uç havuzunun tüm üyelerine uygulayabilirsiniz. Bir arka uç havuzunun tüm kayıt kaldırma örneklerinin yeni istek almamasını sağlar. Bu arada, mevcut isteklerin yapılandırılmış bir süre sınırı içinde tamamlanmasını izin verilir. Bağlantı boşaltma, bir API çağrısıyla arka uç havuzundan açıkça kaldırılan arka uç örnekleri için geçerlidir. Ayrıca sistem durumu araştırmaları tarafından *sağlıksız* olarak bildirilen arka uç örnekleri için de geçerlidir.
 
-### <a name="protocol"></a>Protocol
+### <a name="protocol"></a>Protokol
 
 Application Gateway, arka uç sunucularına yönlendirme istekleri için hem HTTP hem de HTTPS 'yi destekler. HTTP ' yi seçerseniz, arka uç sunucularının trafiği şifrelenmemiş olur. Şifrelenmemiş iletişim kabul edilebilir değilse, HTTPS seçeneğini belirleyin.
 
 Dinleyicide HTTPS ile birleştirilmiş bu ayar [uçtan uca SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview)'yi destekler. Bu, arka uca şifrelenmiş hassas verileri güvenli bir şekilde aktarmanıza olanak tanır. Uçtan uca SSL etkin olan arka uç havuzundaki her bir arka uç sunucusu, güvenli iletişime izin vermek için bir sertifikayla yapılandırılmalıdır.
 
-### <a name="port"></a>Port
+### <a name="port"></a>Bağlantı noktası
 
 Bu ayar, arka uç sunucularının uygulama ağ geçidinden gelen trafiği dinleyebileceği bağlantı noktasını belirtir. 1 ile 65535 arasında bir bağlantı noktası yapılandırabilirsiniz.
 
-### <a name="request-timeout"></a>İstek zaman aşımına uğradı
+### <a name="request-timeout"></a>İstek zaman aşımı
 
 Bu ayar, uygulama ağ geçidinin "bağlantı zaman aşımına uğradı" hata iletisini girmeden önce arka uç havuzundan yanıt almak için bekleyeceği saniye sayısıdır.
 
@@ -310,7 +310,7 @@ Bu ayar özel bir [araştırmayı](https://docs.microsoft.com/azure/application-
 > [!NOTE]
 > Özel araştırma, karşılık gelen HTTP ayarı açıkça bir dinleyiciyle ilişkilendirilmediği takdirde arka uç havuzunun sistem durumunu izlemez.
 
-### <a id="pick"/></a>Arka uç adresinden ana bilgisayar adını seçin
+### <a id="pick"/> @ no__t-1arka uç adresinden ana bilgisayar adını seçin
 
 Bu yetenek, istekteki *ana bilgisayar* üst bilgisini arka uç havuzunun ana bilgisayar adına dinamik olarak ayarlar. Bir IP adresi veya FQDN kullanır.
 
@@ -337,7 +337,7 @@ Arka uç havuzunu dört tür arka uç üyesine işaret edebilirsiniz: belirli bi
 
 Bir arka uç havuzu oluşturduktan sonra, bir veya daha fazla istek yönlendirme kuralıyla ilişkilendirmeniz gerekir. Ayrıca, uygulama ağ geçidinizdeki her bir arka uç havuzu için sistem durumu araştırmalarını da yapılandırmanız gerekir. İstek yönlendirme kuralı koşulu karşılandığında, Application Gateway trafiği ilgili arka uç havuzundaki sağlıklı sunuculara (sistem durumu araştırmaları tarafından belirlendiği şekilde) iletir.
 
-## <a name="health-probes"></a>Durum araştırmaları
+## <a name="health-probes"></a>Sistem durumu araştırmaları
 
 Bir Application Gateway, varsayılan olarak arka uçtaki tüm kaynakların sistem durumunu izler. Ancak sistem durumu izleme üzerinde daha fazla denetim sağlamak için her bir arka uç HTTP ayarı için özel bir araştırma oluşturmanız önemle tavsiye ederiz. Özel bir araştırmanın nasıl yapılandırılacağını öğrenmek için bkz. [özel durum araştırma ayarları](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
 

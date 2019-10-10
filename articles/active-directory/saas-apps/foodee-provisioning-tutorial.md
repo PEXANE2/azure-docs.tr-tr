@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: abf2a752eaf0f1d0a9a8b07072dfc0b4c1ae45b7
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71812715"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170080"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Pdee 'yi yapılandırma
 
@@ -118,7 +118,7 @@ Aşağıdaki işlemleri gerçekleştirerek Azure AD 'de Pdee için otomatik Kull
 
 1. **Yönetici kimlik bilgileri**altında şunları yapın:
 
-   a. **Kiracı URL 'si** kutusuna, daha önce aldığınız **https://concierge.food.ee/scim/v2** değerini girin.
+   a. **Kiracı URL 'si** kutusuna daha önce aldığınız **https: \//concierge. gıda. ee/Scim/v2** değerini girin.
 
    b. **Gizli belirteç** kutusunda, daha önce aldığınız **API belirteç** değerini girin.
    

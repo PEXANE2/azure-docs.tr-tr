@@ -13,20 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38cc8fd4e063896bbd8843a54f0a01058462c618
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c59a0b40065be1554e79186227cd2e90d68e7222
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901457"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174204"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Azure Active Directory portalında kullanıcıların listesini indirme (Önizleme)
 
 Azure Active Directory (Azure AD) toplu Kullanıcı içeri aktarma (oluşturma) işlemlerini destekler.
-
-## <a name="bulk-download-service-limits"></a>Hizmet sınırlarını toplu indirme
-
-Kullanıcıların bir listesini oluşturmak için her toplu etkinlik, bir saate kadar çalışabilir. Bu, en az 500.000 kullanıcı listesinin oluşturulmasını ve indirilmesini mümkün bir şekilde sunar.
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
@@ -35,16 +31,20 @@ Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de 
 ## <a name="to-download-a-list-of-users"></a>Kullanıcı listesini indirmek için
 
 1. Kuruluştaki bir Kullanıcı Yöneticisi hesabıyla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
-1. Azure AD 'de kullanıcılar**kullanıcıları indirir**' **ı seçin.**  > 
+1. Azure AD 'de **kullanıcılar** > **kullanıcıları indir**' i seçin.
 1. **Kullanıcıları indir** sayfasında, Kullanıcı profili özelliklerini listelemek üzere bir CSV dosyası almak için **Başlat** ' ı seçin. Hatalar varsa, sonuçlar dosyasını toplu işlem sonuçları sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
 
    ![Listeden indirmek istediğiniz kullanıcıları seçin](./media/users-bulk-download/bulk-download.png)
 
-## <a name="check-status"></a>Durumu kontrol etme
+## <a name="check-status"></a>Durumu Denetle
 
 Bekleyen toplu isteklerinizin durumunu **toplu işlem sonuçları (Önizleme)** sayfasında görebilirsiniz.
 
    ![Toplu Işlemler sonuçları sayfasında karşıya yükleme durumunu kontrol edin](./media/users-bulk-download/bulk-center.png)
+
+## <a name="bulk-download-service-limits"></a>Hizmet sınırlarını toplu indirme
+
+Kullanıcıların bir listesini oluşturmak için her toplu etkinlik, bir saate kadar çalışabilir. Bu, en az 500.000 kullanıcı listesinin oluşturulmasını ve indirilmesini mümkün bir şekilde sunar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

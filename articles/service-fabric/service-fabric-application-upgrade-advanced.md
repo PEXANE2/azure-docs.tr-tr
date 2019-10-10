@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: a3d0d6077da4df9a7f0d1b246c9752d38488a175
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.author: atsenthi
+ms.openlocfilehash: c37ee8177ba31ac8a5da90fef175a6fbd63a6d75
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963830"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167595"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Uygulama yükseltmesini Service Fabric: gelişmiş konular
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Uygulama yükseltmesi sırasında hizmet türlerini ekleme veya kaldırma
@@ -126,7 +126,7 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="rolling-back-application-upgrades"></a>Uygulama yükseltmeleri geri alınıyor
 
-Yükseltmeler üç moddan birinde (Izlenen,*izlenemez*veya toplanmadan) birşekilde geri alınabilir, ancak bunlar yalnızcadepountoredauya ya da izsiz moddan geri alınabilir. *Izizuntoredauto* modunun geri alınması aynı şekilde, varsayılan *yükseltilebilir Dereperepsetchecktimeout* değerinin farklı olduğu özel durum ile aynı şekilde çalışıyor-bkz. [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md). *Monitortoredmanual* modunun geri alınması aynı şekilde çalışır. geri alma işlemi, her bir ud tamamlandıktan sonra kendisini askıya alır ve şu işleme devam etmek için [sürdürme-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) kullanılarak açık bir şekilde devam etmelidir. etkin.
+Yükseltmeler üç moddan birinde (*izlenen, izlenemez* *veya toplanmadan*) bir şekilde geri alınabilir, ancak bunlar yalnızca *depountoredauya* *ya da*izsiz *moddan geri* alınabilir. *Izizuntoredauto* modunun geri alınması aynı şekilde, varsayılan *yükseltilebilir Dereperepsetchecktimeout* değerinin farklı olduğu özel durum ile aynı şekilde çalışıyor-bkz. [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md). *Monitortoredmanual* modunun geri alınması aynı şekilde çalışır. geri alma işlemi, her bir ud tamamlandıktan sonra kendisini askıya alır ve şu işleme devam etmek için [sürdürme-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) kullanılarak açık bir şekilde devam etmelidir. etkin.
 
 *Geri alma* işlemi, bir *FailureAction* ile *izlenen* moddaki bir yükseltmenin sistem durumu ilkeleri ihlal edildiğinde otomatik olarak tetiklenebilir (bkz. [uygulama yükseltme parametreleri](service-fabric-application-upgrade-parameters.md)) veya açıkça kullanarak [ Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 

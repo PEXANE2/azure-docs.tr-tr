@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 83f10eb9dadfda5b87f1da287718f59da17c5110
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71947612"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177778"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -25,7 +25,7 @@ Windows sanal masaüstü için tanılama aracı sizin için şunları yapabilir:
 - Belirli bir oturum ana bilgisayarındaki etkin kullanıcılara ileti gönderin.
 - Kullanıcıları oturum ana bilgisayarında imzalayın.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Araç için Azure Resource Manager şablonunu dağıtabilmeniz için önce bir Azure Active Directory uygulama kaydı ve Log Analytics çalışma alanı oluşturmanız gerekir. Bunun için yönetici bu izinlere gerek duyar:
 
@@ -156,7 +156,7 @@ VM 'lerin sistem durumunu görüntüleyebilmek için Log Analytics bağlantısı
 2. Log Analytics çalışma alanınıza gidin.
 3. Sol bölmede, çalışma alanı veri kaynakları altında **sanal makineler**' i seçin.
 4. Bağlanmak istediğiniz VM 'nin adını seçin.
-5. **Bağlan**' ı seçin.
+5. **Bağlan**’ı seçin.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -167,7 +167,7 @@ Tanılama aracı için Azure Kaynak Yönetimi şablonunu dağıtmak için:
 
     -   İstemci kimliği
     -   İstemci parolası
-    -   Log Analytics çalışma alanı KIMLIĞI
+    -   Log Analytics çalışma alanı kimliği
 
 3.  Giriş parametreleri sağlandığında, hüküm ve koşulları kabul edin ve ardından **satın al**' ı seçin.
 
@@ -191,13 +191,13 @@ Yeniden yönlendirme URI 'sini ayarlamak için:
 
 8. Şimdi Azure kaynaklarınıza giderek, şablonda belirttiğiniz ada sahip Azure App Services kaynağını seçin ve onunla ilişkili URL 'ye gidin. (Örneğin, şablonda kullandığınız uygulama adı `contosoapp45` ise, ilişkili URL 'niz <https://contosoapp45.azurewebsites.net>).
 9. Uygun Azure Active Directory Kullanıcı hesabını kullanarak oturum açın.
-10.   **Kabul et**'i seçin.
+10.   **Kabul Et**’i seçin.
 
 ## <a name="distribute-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
 Tanılama aracını kullanıcılarınız için kullanılabilir hale gelmeden önce, aşağıdaki izinlere sahip olduklarından emin olun:
 
-- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](/articles/azure-monitor/platform/roles-permissions-security.md).
+- Kullanıcıların Log Analytics için okuma erişimi olmalıdır. Daha fazla bilgi için bkz. [Azure izleyici ile roller, izinler ve güvenlik ile çalışmaya başlama](/azure/azure-monitor/platform/roles-permissions-security).
 -  Kullanıcıların ayrıca Windows sanal masaüstü kiracısı (RDS okuyucu rolü) için okuma erişimine ihtiyacı vardır. Daha fazla bilgi için bkz. [Windows sanal masaüstü 'Nde temsilci erişimi](delegated-access-virtual-desktop.md).
 
 Kullanıcılarınıza aşağıdaki bilgileri de vermeniz gerekir:

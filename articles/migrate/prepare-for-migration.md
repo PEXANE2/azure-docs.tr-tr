@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07612d325929468e3919b543d9b4ae0ad268036a
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: d2eeada500de0f174178234ab92b51bcf16b3502
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71938477"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176741"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -44,7 +44,7 @@ Bu makalede şunları yapabilirsiniz:
 
 ## <a name="check-whats-supported"></a>Nelerin desteklendiğini denetleyin
 
-- VMware VM 'Leri için Azure geçişi sunucu geçişi [aracısız veya aracı tabanlı geçişi](/server-migrate-overview.md)destekler. VMware VM gereksinimlerini/ [aracısız](migrate-support-matrix-vmware.md#migration---limitations) ve [aracı tabanlı](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) geçişler için desteği doğrulayın.
+- VMware VM 'Leri için Azure geçişi sunucu geçişi [aracısız veya aracı tabanlı geçişi](server-migrate-overview.md)destekler. VMware VM gereksinimlerini/ [aracısız](migrate-support-matrix-vmware.md#migration---limitations) ve [aracı tabanlı](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) geçişler için desteği doğrulayın.
 - Hyper-V VM 'Leri için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) doğrulayın.
 - Şirket içi fiziksel makineler veya diğer sanallaştırılmış sunucular için [geçiş gereksinimlerini ve desteğini](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) doğrulayın. Bu gereksinimler VMware VM gereksinimlerine benzerdir.
 

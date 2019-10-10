@@ -1,23 +1,27 @@
 ---
-title: Kaynak kodundan Spring Cloud uygulamanızı başlatın
+title: 'Hızlı başlangıç: kaynak kodundan Spring Cloud uygulamanızı başlatın'
 description: Azure Spring Cloud uygulamanızı doğrudan kaynak kodınızdan nasıl başlatacağınızı öğrenin
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 9/27/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a161b38ab6d23ad86df1ef7e843640276ba486bf
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 445cac1494828362d54a8c15e68d27f01b165841
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038814"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170525"
 ---
 # <a name="launch-your-spring-cloud-application-from-source-code"></a>Kaynak kodundan Spring Cloud uygulamanızı başlatın
 
 Azure yay bulutu, uygulamanızı doğrudan Java kaynak kodunuzla veya önceden oluşturulmuş bir JAR üzerinden başlatmanıza olanak tanır. Bu makale, gerekli adımlarda size yol gösterir.
 
-## <a name="initial-requirements"></a>İlk gereksinimler
+## <a name="prerequisites"></a>Önkoşullar
+
+>[!Note]
+> Bu hızlı başlangıca başlamadan önce Azure aboneliğinizin Azure Spring Cloud 'a erişimi olduğundan emin olun.  Bir önizleme hizmeti olarak, aboneliğinizi izin verilenler-listemize ekleyebilmemiz için bize ulaşmamızı isteyeceğiz.  Azure Spring Cloud 'ın yeteneklerini araştırmak istiyorsanız lütfen [Bu formu doldurun](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-LA2geqX-ZLhi-Ado1LD3tUNDk2VFpGUzYwVEJNVkhLRlcwNkZFUFZEUS4u
+).
 
 Başlamadan önce, Azure aboneliğinizin gerekli bağımlılıklara sahip olduğundan emin olun:
 

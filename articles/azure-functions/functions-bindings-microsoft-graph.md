@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: bf60ba7d940ab3ea3f4d30fc9fb1d76f9304ec1b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1db929e3ec4b400113d04cb7dd1cd4b8d2e86a9a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086588"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176606"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Işlevleri için Microsoft Graph bağlamaları
 
@@ -33,7 +33,7 @@ Microsoft Graph uzantısı aşağıdaki bağlamaları sağlar:
 > [!Note]
 > Microsoft Graph bağlamaları Şu anda Azure Işlevleri sürüm 2. x için önizleme aşamasındadır. Bunlar, sürüm 1. x Işlevleri içinde desteklenmez.
 
-## <a name="packages"></a>Paketler
+## <a name="packages"></a>Paketlerle
 
 Kimlik doğrulama belirteci giriş bağlaması, [Microsoft. Azure. WebJobs. Extensions. authtokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) NuGet paketinde sunulmaktadır. Diğer Microsoft Graph bağlamaları [Microsoft. Azure. WebJobs. Extensions. MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) paketinde sunulmaktadır. Paketlere yönelik kaynak kodu, [Azure-Functions-microsoftgraph-Extension](https://github.com/Azure/azure-functions-microsoftgraph-extension/) GitHub deposunda bulunur.
 
@@ -78,16 +78,16 @@ Kimlik doğrulama belirteci girişi bağlama, belirli bir kaynak için bir Azure
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örnek](#auth-token---example)
-* [Öznitelikler](#auth-token---attributes)
-* [Yapılandırma](#auth-token---configuration)
-* [Kullanım](#auth-token---usage)
+* [Örneğinde](#auth-token---example)
+* [Özelliklerine](#auth-token---attributes)
+* [Yapılandırmada](#auth-token---configuration)
+* [Kullanımıyla](#auth-token---usage)
 
 ### <a name="auth-token---example"></a>Kimlik doğrulama belirteci-örnek
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#auth-token---c-script-example)
+* [C#betik (. CSX)](#auth-token---c-script-example)
 * [JavaScript](#auth-token---javascript-example)
 
 #### <a name="auth-token---c-script-example"></a>Kimlik doğrulama belirteci C# -betik örneği
@@ -206,16 +206,16 @@ module.exports = function (context, req) {
 
 ### <a name="auth-token---configuration"></a>Kimlik doğrulama belirteci-yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `Token` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Token` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**name**||Gerekli-kimlik doğrulama belirtecinin işlev kodunda kullanılan değişken adı. Bkz. [Koddan bir kimlik doğrulama belirteci girişi bağlama kullanma](#token-input-code).|
-|**type**||Gerekli-olarak `token`ayarlanmalıdır.|
-|**direction**||Gerekli-olarak `in`ayarlanmalıdır.|
-|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-Yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz. <code>userId</code> özelliği.</li><li><code>userFromToken</code>-Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz. <code>userToken</code> özelliği.</li><li><code>clientCredentials</code>-İşlev uygulamasının kimliğini kullanır.</li></ul>|
-|**userId**|**UserID**  |Yalnızca _kimlik_ olarak `userFromId`ayarlandıysa, gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
-|**userToken**|**UserToken**|Yalnızca _kimlik_ olarak `userFromToken`ayarlandıysa, gereklidir. İşlev uygulaması için geçerli bir belirteç. |
+|**ada**||Gerekli-kimlik doğrulama belirtecinin işlev kodunda kullanılan değişken adı. Bkz. [Koddan bir kimlik doğrulama belirteci girişi bağlama kullanma](#token-input-code).|
+|**türüyle**||Gerekli-`token` olarak ayarlanmalıdır.|
+|**Görünüm**||Gerekli-`in` olarak ayarlanmalıdır.|
+|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. @No__t-0 özelliğine bakın.</li><li><code>userFromToken</code>-belirtilen belirteç tarafından temsil edilen kimliği kullanır. @No__t-0 özelliğine bakın.</li><li><code>clientCredentials</code>-işlev uygulamasının kimliğini kullanır.</li></ul>|
+|**UserID**|**UserID**  |Yalnızca _kimlik_ `userFromId` olarak ayarlandıysa gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
+|**userToken**|**UserToken**|Yalnızca _kimlik_ `userFromToken` olarak ayarlandıysa gereklidir. İşlev uygulaması için geçerli bir belirteç. |
 |**Kaynak**|**Kaynak**|Gerekli-belirtecin istendiği bir Azure AD kaynak URL 'SI.|
 
 <a name="token-input-code"></a>
@@ -226,7 +226,7 @@ Bağlamanın kendisi Azure AD izinleri gerektirmez, ancak belirtecin nasıl kull
 Belirteç her zaman bir dize olarak kod olarak sunulur.
 
 > [!Note]
-> `userFromToken` `X-MS-TOKEN-AAD-ID-TOKEN` Ya `userFromId` da`userFromRequest` seçenekleriyle yerel olarak geliştirirken, gerekli belirteç [el ile elde](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) edilebilir ve bir çağıran istemci uygulamasından istek üstbilgisinde belirtilebilir.
+> @No__t-0, `userFromToken` veya `userFromRequest` seçenekleriyle yerel olarak geliştirirken, gereken belirteç [el ile elde](https://github.com/Azure/azure-functions-microsoftgraph-extension/issues/54#issuecomment-392865857) edilebilir ve bir çağıran istemci uygulamasından `X-MS-TOKEN-AAD-ID-TOKEN` istek üstbilgisinde belirtilebilir.
 
 
 <a name="excel-input"></a>
@@ -236,16 +236,16 @@ Excel tablo girişi bağlama, OneDrive 'da depolanan bir Excel tablosunun içeri
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örnek](#excel-input---example)
-* [Öznitelikler](#excel-input---attributes)
-* [Yapılandırma](#excel-input---configuration)
-* [Kullanım](#excel-input---usage)
+* [Örneğinde](#excel-input---example)
+* [Özelliklerine](#excel-input---attributes)
+* [Yapılandırmada](#excel-input---configuration)
+* [Kullanımıyla](#excel-input---usage)
 
 ### <a name="excel-input---example"></a>Excel girişi-örnek
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#excel-input---c-script-example)
+* [C#betik (. CSX)](#excel-input---c-script-example)
 * [JavaScript](#excel-input---javascript-example)
 
 #### <a name="excel-input---c-script-example"></a>Excel girişi- C# betik örneği
@@ -341,17 +341,17 @@ module.exports = function (context, req) {
 
 ### <a name="excel-input---configuration"></a>Excel girişi-yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `Excel` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Excel` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**name**||Required-Excel tablosu için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Excel tablo girişi bağlama kullanma](#excel-input-code).|
-|**type**||Gerekli-olarak `excel`ayarlanmalıdır.|
-|**direction**||Gerekli-olarak `in`ayarlanmalıdır.|
-|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-Yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz. <code>userId</code> özelliği.</li><li><code>userFromToken</code>-Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz. <code>userToken</code> özelliği.</li><li><code>clientCredentials</code>-İşlev uygulamasının kimliğini kullanır.</li></ul>|
-|**userId**|**UserID**  |Yalnızca _kimlik_ olarak `userFromId`ayarlandıysa, gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
-|**userToken**|**UserToken**|Yalnızca _kimlik_ olarak `userFromToken`ayarlandıysa, gereklidir. İşlev uygulaması için geçerli bir belirteç. |
-|**Yolu**|**Yolu**|Gerekli-OneDrive 'daki Excel çalışma kitabı yolu.|
+|**ada**||Required-Excel tablosu için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Excel tablo girişi bağlama kullanma](#excel-input-code).|
+|**türüyle**||Gerekli-`excel` olarak ayarlanmalıdır.|
+|**Görünüm**||Gerekli-`in` olarak ayarlanmalıdır.|
+|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. @No__t-0 özelliğine bakın.</li><li><code>userFromToken</code>-belirtilen belirteç tarafından temsil edilen kimliği kullanır. @No__t-0 özelliğine bakın.</li><li><code>clientCredentials</code>-işlev uygulamasının kimliğini kullanır.</li></ul>|
+|**UserID**|**UserID**  |Yalnızca _kimlik_ `userFromId` olarak ayarlandıysa gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
+|**userToken**|**UserToken**|Yalnızca _kimlik_ `userFromToken` olarak ayarlandıysa gereklidir. İşlev uygulaması için geçerli bir belirteç. |
+|**Yolun**|**Yolun**|Gerekli-OneDrive 'daki Excel çalışma kitabı yolu.|
 |**Çalışma sayfa sayfası**|**Çalışma sayfa sayfası**|Tablonun bulunduğu çalışma sayfası.|
 |**tableName**|**TableName**|Tablonun adı. Belirtilmemişse, çalışma sayfasının içeriği kullanılacaktır.|
 
@@ -360,12 +360,12 @@ Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini a�
 
 Bu bağlama için aşağıdaki Azure AD izinleri gereklidir:
 
-|Resource|İzin|
+|Kaynak|İzin|
 |--------|--------|
-|Microsoft Graph|Kullanıcı dosyalarını okuyun|
+|Microsoft Graph|Kullanıcı dosyalarını oku|
 
 Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
-- string[][]
+- String [] []
 - Microsoft. Graph. WorkbookTable
 - Özel nesne türleri (yapısal model bağlamayı kullanarak)
 
@@ -385,16 +385,16 @@ Excel çıkış bağlaması, OneDrive 'da depolanan bir Excel tablosunun içeri�
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örnek](#excel-output---example)
-* [Öznitelikler](#excel-output---attributes)
-* [Yapılandırma](#excel-output---configuration)
-* [Kullanım](#excel-output---usage)
+* [Örneğinde](#excel-output---example)
+* [Özelliklerine](#excel-output---attributes)
+* [Yapılandırmada](#excel-output---configuration)
+* [Kullanımıyla](#excel-output---usage)
 
 ### <a name="excel-output---example"></a>Excel çıkışı-örnek
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#excel-output---c-script-example)
+* [C#betik (. CSX)](#excel-output---c-script-example)
 * [JavaScript](#excel-output---javascript-example)
 
 #### <a name="excel-output---c-script-example"></a>Excel çıkışı- C# betik örneği
@@ -503,33 +503,33 @@ module.exports = function (context, req) {
 
 ### <a name="excel-output---configuration"></a>Excel çıkışı-yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `Excel` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Excel` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**name**||Gerekli-kimlik doğrulama belirtecinin işlev kodunda kullanılan değişken adı. Bkz. [Koddan Excel tablo çıkış bağlamayı kullanma](#excel-output-code).|
-|**type**||Gerekli-olarak `excel`ayarlanmalıdır.|
-|**direction**||Gerekli-olarak `out`ayarlanmalıdır.|
-|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-Yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz. <code>userId</code> özelliği.</li><li><code>userFromToken</code>-Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz. <code>userToken</code> özelliği.</li><li><code>clientCredentials</code>-İşlev uygulamasının kimliğini kullanır.</li></ul>|
-|**UserID** |**userId** |Yalnızca _kimlik_ olarak `userFromId`ayarlandıysa, gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
-|**userToken**|**UserToken**|Yalnızca _kimlik_ olarak `userFromToken`ayarlandıysa, gereklidir. İşlev uygulaması için geçerli bir belirteç. |
-|**Yolu**|**Yolu**|Gerekli-OneDrive 'daki Excel çalışma kitabı yolu.|
+|**ada**||Gerekli-kimlik doğrulama belirtecinin işlev kodunda kullanılan değişken adı. Bkz. [Koddan Excel tablo çıkış bağlamayı kullanma](#excel-output-code).|
+|**türüyle**||Gerekli-`excel` olarak ayarlanmalıdır.|
+|**Görünüm**||Gerekli-`out` olarak ayarlanmalıdır.|
+|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. @No__t-0 özelliğine bakın.</li><li><code>userFromToken</code>-belirtilen belirteç tarafından temsil edilen kimliği kullanır. @No__t-0 özelliğine bakın.</li><li><code>clientCredentials</code>-işlev uygulamasının kimliğini kullanır.</li></ul>|
+|**UserID** |**UserID** |Yalnızca _kimlik_ `userFromId` olarak ayarlandıysa gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
+|**userToken**|**UserToken**|Yalnızca _kimlik_ `userFromToken` olarak ayarlandıysa gereklidir. İşlev uygulaması için geçerli bir belirteç. |
+|**Yolun**|**Yolun**|Gerekli-OneDrive 'daki Excel çalışma kitabı yolu.|
 |**Çalışma sayfa sayfası**|**Çalışma sayfa sayfası**|Tablonun bulunduğu çalışma sayfası.|
 |**tableName**|**TableName**|Tablonun adı. Belirtilmemişse, çalışma sayfasının içeriği kullanılacaktır.|
-|**Güncelleştirme türü**|**Güncelleştirme türü**|Gerekli-tabloda yapılacak değişikliğin türü. Aşağıdaki değerlerden biri olabilir:<ul><li><code>update</code>-OneDrive 'daki tablonun içeriğini değiştirir.</li><li><code>append</code>-Yeni satırlar oluşturarak yükü OneDrive 'daki tablonun sonuna ekler.</li></ul>|
+|**Güncelleştirme türü**|**Güncelleştirme türü**|Gerekli-tabloda yapılacak değişikliğin türü. Aşağıdaki değerlerden biri olabilir:<ul><li><code>update</code>-OneDrive 'daki tablonun içeriğini değiştirir.</li><li><code>append</code>-yeni satırlar oluşturarak yükü OneDrive 'daki tablonun sonuna ekler.</li></ul>|
 
 <a name="excel-output-code"></a>
 ### <a name="excel-output---usage"></a>Excel çıkış kullanımı
 
 Bu bağlama için aşağıdaki Azure AD izinleri gereklidir:
 
-|Resource|İzin|
+|Kaynak|İzin|
 |--------|--------|
 |Microsoft Graph|Kullanıcı dosyalarına tam erişim sahibi|
 
 Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
-- string[][]
-- Newtonsoft.Json.Linq.JObject
+- String [] []
+- Newtonsoft. JSON. LINQ. JObject
 - Microsoft. Graph. WorkbookTable
 - Özel nesne türleri (yapısal model bağlamayı kullanarak)
 
@@ -544,16 +544,16 @@ OneDrive dosya girişi bağlama, OneDrive 'da depolanan bir dosyanın içeriğin
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örnek](#file-input---example)
-* [Öznitelikler](#file-input---attributes)
-* [Yapılandırma](#file-input---configuration)
-* [Kullanım](#file-input---usage)
+* [Örneğinde](#file-input---example)
+* [Özelliklerine](#file-input---attributes)
+* [Yapılandırmada](#file-input---configuration)
+* [Kullanımıyla](#file-input---usage)
 
 ### <a name="file-input---example"></a>Dosya girişi-örnek
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#file-input---c-script-example)
+* [C#betik (. CSX)](#file-input---c-script-example)
 * [JavaScript](#file-input---javascript-example)
 
 #### <a name="file-input---c-script-example"></a>Dosya girişi- C# betik örneği
@@ -649,32 +649,32 @@ module.exports = function (context, req) {
 
 ### <a name="file-input---configuration"></a>Dosya girişi-yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `OneDrive` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `OneDrive` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**name**||Gerekli-dosya için işlev kodunda kullanılan değişken adı. Bkz. [Koddan OneDrive dosya girişi bağlama kullanma](#onedrive-input-code).|
-|**type**||Gerekli-olarak `onedrive`ayarlanmalıdır.|
-|**direction**||Gerekli-olarak `in`ayarlanmalıdır.|
-|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-Yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz. <code>userId</code> özelliği.</li><li><code>userFromToken</code>-Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz. <code>userToken</code> özelliği.</li><li><code>clientCredentials</code>-İşlev uygulamasının kimliğini kullanır.</li></ul>|
-|**userId**|**UserID**  |Yalnızca _kimlik_ olarak `userFromId`ayarlandıysa, gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
-|**userToken**|**UserToken**|Yalnızca _kimlik_ olarak `userFromToken`ayarlandıysa, gereklidir. İşlev uygulaması için geçerli bir belirteç. |
-|**Yolu**|**Yolu**|Gerekli-dosyada OneDrive 'daki yol.|
+|**ada**||Gerekli-dosya için işlev kodunda kullanılan değişken adı. Bkz. [Koddan OneDrive dosya girişi bağlama kullanma](#onedrive-input-code).|
+|**türüyle**||Gerekli-`onedrive` olarak ayarlanmalıdır.|
+|**Görünüm**||Gerekli-`in` olarak ayarlanmalıdır.|
+|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. @No__t-0 özelliğine bakın.</li><li><code>userFromToken</code>-belirtilen belirteç tarafından temsil edilen kimliği kullanır. @No__t-0 özelliğine bakın.</li><li><code>clientCredentials</code>-işlev uygulamasının kimliğini kullanır.</li></ul>|
+|**UserID**|**UserID**  |Yalnızca _kimlik_ `userFromId` olarak ayarlandıysa gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
+|**userToken**|**UserToken**|Yalnızca _kimlik_ `userFromToken` olarak ayarlandıysa gereklidir. İşlev uygulaması için geçerli bir belirteç. |
+|**Yolun**|**Yolun**|Gerekli-dosyada OneDrive 'daki yol.|
 
 <a name="onedrive-input-code"></a>
 ### <a name="file-input---usage"></a>Dosya girişi-kullanım
 
 Bu bağlama için aşağıdaki Azure AD izinleri gereklidir:
 
-|Resource|İzin|
+|Kaynak|İzin|
 |--------|--------|
-|Microsoft Graph|Kullanıcı dosyalarını okuyun|
+|Microsoft Graph|Kullanıcı dosyalarını oku|
 
 Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
-- byte[]
-- Akış
+- Byte []
+- Ka
 - dize
-- Microsoft.Graph.DriveItem
+- Microsoft. Graph. Driveöğesi
 
 
 
@@ -688,16 +688,16 @@ OneDrive dosyası çıkış bağlaması, OneDrive 'da depolanan bir dosyanın i�
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örnek](#file-output---example)
-* [Öznitelikler](#file-output---attributes)
-* [Yapılandırma](#file-output---configuration)
-* [Kullanım](#file-output---usage)
+* [Örneğinde](#file-output---example)
+* [Özelliklerine](#file-output---attributes)
+* [Yapılandırmada](#file-output---configuration)
+* [Kullanımıyla](#file-output---usage)
 
 ### <a name="file-output---example"></a>Dosya çıkışı-örnek
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#file-output---c-script-example)
+* [C#betik (. CSX)](#file-output---c-script-example)
 * [JavaScript](#file-output---javascript-example)
 
 #### <a name="file-output---c-script-example"></a>Dosya çıkışı- C# betik örneği
@@ -797,32 +797,32 @@ module.exports = function (context, req) {
 
 ### <a name="file-output---configuration"></a>Dosya çıkışı-yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `OneDrive` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `OneDrive` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**name**||Gerekli-dosya için işlev kodunda kullanılan değişken adı. Bkz. [Koddan OneDrive dosya çıkış bağlamayı kullanma](#onedrive-output-code).|
-|**type**||Gerekli-olarak `onedrive`ayarlanmalıdır.|
-|**direction**||Gerekli-olarak `out`ayarlanmalıdır.|
-|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-Yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz. <code>userId</code> özelliği.</li><li><code>userFromToken</code>-Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz. <code>userToken</code> özelliği.</li><li><code>clientCredentials</code>-İşlev uygulamasının kimliğini kullanır.</li></ul>|
-|**UserID** |**userId** |Yalnızca _kimlik_ olarak `userFromId`ayarlandıysa, gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
-|**userToken**|**UserToken**|Yalnızca _kimlik_ olarak `userFromToken`ayarlandıysa, gereklidir. İşlev uygulaması için geçerli bir belirteç. |
-|**Yolu**|**Yolu**|Gerekli-dosyada OneDrive 'daki yol.|
+|**ada**||Gerekli-dosya için işlev kodunda kullanılan değişken adı. Bkz. [Koddan OneDrive dosya çıkış bağlamayı kullanma](#onedrive-output-code).|
+|**türüyle**||Gerekli-`onedrive` olarak ayarlanmalıdır.|
+|**Görünüm**||Gerekli-`out` olarak ayarlanmalıdır.|
+|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. @No__t-0 özelliğine bakın.</li><li><code>userFromToken</code>-belirtilen belirteç tarafından temsil edilen kimliği kullanır. @No__t-0 özelliğine bakın.</li><li><code>clientCredentials</code>-işlev uygulamasının kimliğini kullanır.</li></ul>|
+|**UserID** |**UserID** |Yalnızca _kimlik_ `userFromId` olarak ayarlandıysa gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
+|**userToken**|**UserToken**|Yalnızca _kimlik_ `userFromToken` olarak ayarlandıysa gereklidir. İşlev uygulaması için geçerli bir belirteç. |
+|**Yolun**|**Yolun**|Gerekli-dosyada OneDrive 'daki yol.|
 
 <a name="onedrive-output-code"></a>
 #### <a name="file-output---usage"></a>Dosya çıkışı-kullanım
 
 Bu bağlama için aşağıdaki Azure AD izinleri gereklidir:
 
-|Resource|İzin|
+|Kaynak|İzin|
 |--------|--------|
 |Microsoft Graph|Kullanıcı dosyalarına tam erişim sahibi|
 
 Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
-- byte[]
-- Akış
+- Byte []
+- Ka
 - dize
-- Microsoft.Graph.DriveItem
+- Microsoft. Graph. Driveöğesi
 
 
 
@@ -835,16 +835,16 @@ Outlook ileti çıkış bağlaması Outlook aracılığıyla bir posta iletisi g
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örnek](#outlook-output---example)
-* [Öznitelikler](#outlook-output---attributes)
-* [Yapılandırma](#outlook-output---configuration)
-* [Kullanım](#outlook-output---usage)
+* [Örneğinde](#outlook-output---example)
+* [Özelliklerine](#outlook-output---attributes)
+* [Yapılandırmada](#outlook-output---configuration)
+* [Kullanımıyla](#outlook-output---usage)
 
 ### <a name="outlook-output---example"></a>Outlook çıkışı-örnek
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#outlook-output---c-script-example)
+* [C#betik (. CSX)](#outlook-output---c-script-example)
 * [JavaScript](#outlook-output---javascript-example)
 
 #### <a name="outlook-output---c-script-example"></a>Outlook çıkışı- C# betik örneği
@@ -948,29 +948,29 @@ module.exports = function (context, req) {
 
 ### <a name="outlook-output---configuration"></a>Outlook çıkışı-yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `Outlook` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `Outlook` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**name**||Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
-|**type**||Gerekli-olarak `outlook`ayarlanmalıdır.|
-|**direction**||Gerekli-olarak `out`ayarlanmalıdır.|
-|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-Yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz. <code>userId</code> özelliği.</li><li><code>userFromToken</code>-Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz. <code>userToken</code> özelliği.</li><li><code>clientCredentials</code>-İşlev uygulamasının kimliğini kullanır.</li></ul>|
-|**userId**|**UserID**  |Yalnızca _kimlik_ olarak `userFromId`ayarlandıysa, gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
-|**userToken**|**UserToken**|Yalnızca _kimlik_ olarak `userFromToken`ayarlandıysa, gereklidir. İşlev uygulaması için geçerli bir belirteç. |
+|**ada**||Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
+|**türüyle**||Gerekli-`outlook` olarak ayarlanmalıdır.|
+|**Görünüm**||Gerekli-`out` olarak ayarlanmalıdır.|
+|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. @No__t-0 özelliğine bakın.</li><li><code>userFromToken</code>-belirtilen belirteç tarafından temsil edilen kimliği kullanır. @No__t-0 özelliğine bakın.</li><li><code>clientCredentials</code>-işlev uygulamasının kimliğini kullanır.</li></ul>|
+|**UserID**|**UserID**  |Yalnızca _kimlik_ `userFromId` olarak ayarlandıysa gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
+|**userToken**|**UserToken**|Yalnızca _kimlik_ `userFromToken` olarak ayarlandıysa gereklidir. İşlev uygulaması için geçerli bir belirteç. |
 
 <a name="outlook-output-code"></a>
 ### <a name="outlook-output---usage"></a>Outlook çıkış kullanımı
 
 Bu bağlama için aşağıdaki Azure AD izinleri gereklidir:
 
-|Resource|İzin|
+|Kaynak|İzin|
 |--------|--------|
 |Microsoft Graph|Kullanıcı olarak posta gönder|
 
 Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
-- Microsoft.Graph.Message
-- Newtonsoft.Json.Linq.JObject
+- Microsoft. Graph. Message
+- Newtonsoft. JSON. LINQ. JObject
 - dize
 - Özel nesne türleri (yapısal model bağlamayı kullanarak)
 
@@ -979,7 +979,7 @@ Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
 
 
 
-## <a name="webhooks"></a>Web Kancaları
+## <a name="webhooks"></a>Web kancaları
 
 Web kancaları Microsoft Graph olaylara tepki verir. Web kancalarını desteklemek için, _Web kancası aboneliklerini_oluşturmak, yenilemek ve bunlara yanıt vermek için işlevleri gereklidir. Tüm Web kancası çözümü aşağıdaki bağlamaların birleşimini gerektirir:
 - [Microsoft Graph Web kancası tetikleyicisi](#webhook-trigger) , gelen bir Web kancasına tepki vermenize olanak tanır.
@@ -1000,16 +1000,16 @@ Microsoft Graph Web kancası tetikleyicisi, bir işlevin Microsoft Graph gelen b
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örnek](#webhook-trigger---example)
-* [Öznitelikler](#webhook-trigger---attributes)
-* [Yapılandırma](#webhook-trigger---configuration)
-* [Kullanım](#webhook-trigger---usage)
+* [Örneğinde](#webhook-trigger---example)
+* [Özelliklerine](#webhook-trigger---attributes)
+* [Yapılandırmada](#webhook-trigger---configuration)
+* [Kullanımıyla](#webhook-trigger---usage)
 
 ### <a name="webhook-trigger---example"></a>Web kancası tetikleyicisi-örnek
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#webhook-trigger---c-script-example)
+* [C#betik (. CSX)](#webhook-trigger---c-script-example)
 * [JavaScript](#webhook-trigger---javascript-example)
 
 #### <a name="webhook-trigger---c-script-example"></a>Web kancası tetikleyicisi C# -betik örneği
@@ -1087,26 +1087,26 @@ module.exports = function (context) {
 
 ### <a name="webhook-trigger---attributes"></a>Web kancası tetikleyicisi-öznitelikler
 
-[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [graphwebkancatrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) özniteliğini kullanın.
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [graphwebkancatrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookTriggerAttribute.cs) özniteliğini kullanın.
 
 ### <a name="webhook-trigger---configuration"></a>Web kancası tetikleyicisi-yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `GraphWebHookTrigger` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `GraphWebhookTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**name**||Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
-|**type**||Gerekli-olarak `graphWebhook`ayarlanmalıdır.|
-|**direction**||Gerekli-olarak `trigger`ayarlanmalıdır.|
-|**resourceType**|**Kaynak türü**|Gerekli-bu işlevin Web kancalarına yanıt vermesi gereken grafik kaynağı. Aşağıdaki değerlerden biri olabilir:<ul><li><code>#Microsoft.Graph.Message</code>-Outlook iletilerinde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.DriveItem</code>-OneDrive kök öğelerinde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.Contact</code>-Outlook 'ta kişisel kişilerde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.Event</code>-Outlook Takvim öğelerinde yapılan değişiklikler.</li></ul>|
+|**ada**||Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
+|**türüyle**||Gerekli-`graphWebhook` olarak ayarlanmalıdır.|
+|**Görünüm**||Gerekli-`trigger` olarak ayarlanmalıdır.|
+|**Kaynak**|**Kaynak**|Gerekli-bu işlevin Web kancalarına yanıt vermesi gereken grafik kaynağı. Aşağıdaki değerlerden biri olabilir:<ul><li><code>#Microsoft.Graph.Message</code>-Outlook iletilerinde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.DriveItem</code>-OneDrive kök öğelerinde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.Contact</code>-Outlook 'ta kişisel kişilerde yapılan değişiklikler.</li><li><code>#Microsoft.Graph.Event</code>-Outlook Takvim öğelerinde yapılan değişiklikler.</li></ul>|
 
 > [!Note]
-> Bir işlev uygulamasının yalnızca belirli `resourceType` bir değere göre kaydedilmiş bir işlevi olabilir.
+> Bir işlev uygulaması yalnızca belirli bir `resourceType` değerine göre kaydedilmiş bir işleve sahip olabilir.
 
 ### <a name="webhook-trigger---usage"></a>Web kancası tetikleyicisi-kullanım
 
 Bağlama, .NET işlevleri için aşağıdaki türleri kullanıma sunar:
-- Kaynak türüyle `Microsoft.Graph.Message` ilgili SDK türlerini veya `Microsoft.Graph.DriveItem`gibi Microsoft Graph.
+- @No__t-0 veya `Microsoft.Graph.DriveItem` gibi kaynak türüyle ilgili SDK türleri Microsoft Graph.
 - Özel nesne türleri (yapısal model bağlamayı kullanarak)
 
 
@@ -1119,16 +1119,16 @@ Microsoft Graph Web kancası giriş bağlaması, bu işlev uygulaması tarafınd
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örnek](#webhook-input---example)
-* [Öznitelikler](#webhook-input---attributes)
-* [Yapılandırma](#webhook-input---configuration)
-* [Kullanım](#webhook-input---usage)
+* [Örneğinde](#webhook-input---example)
+* [Özelliklerine](#webhook-input---attributes)
+* [Yapılandırmada](#webhook-input---configuration)
+* [Kullanımıyla](#webhook-input---usage)
 
 ### <a name="webhook-input---example"></a>Web kancası girişi-örnek
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#webhook-input---c-script-example)
+* [C#betik (. CSX)](#webhook-input---c-script-example)
 * [JavaScript](#webhook-input---javascript-example)
 
 #### <a name="webhook-input---c-script-example"></a>Web kancası girişi C# -betik örneği
@@ -1239,18 +1239,18 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-input---attributes"></a>Web kancası girişi-öznitelikler
 
-[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [graphwebkancalı abonelik](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) özniteliğini kullanın.
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [graphwebkancalı abonelik](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) özniteliğini kullanın.
 
 ### <a name="webhook-input---configuration"></a>Web kancası girişi-yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `GraphWebHookSubscription` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `GraphWebhookSubscription` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**name**||Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
-|**type**||Gerekli-olarak `graphWebhookSubscription`ayarlanmalıdır.|
-|**direction**||Gerekli-olarak `in`ayarlanmalıdır.|
-|**filtreyle**|**Filtre**| Olarak `userFromRequest`ayarlanırsa bağlama yalnızca çağıran kullanıcı tarafından sahip olunan abonelikleri alır (yalnızca [HTTP tetikleyicisi]geçerlidir).| 
+|**ada**||Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
+|**türüyle**||Gerekli-`graphWebhookSubscription` olarak ayarlanmalıdır.|
+|**Görünüm**||Gerekli-`in` olarak ayarlanmalıdır.|
+|**filtreyle**|**Filtreyle**| @No__t-0 olarak ayarlanırsa bağlama yalnızca çağıran kullanıcı tarafından sahip olunan abonelikleri alır (yalnızca [HTTP tetikleyicisi]geçerlidir).| 
 
 ### <a name="webhook-input---usage"></a>Web kancası girişi kullanımı
 
@@ -1270,16 +1270,16 @@ Web kancası aboneliği çıkış bağlaması, Microsoft Graph Web kancası abon
 
 Bu bölüm aşağıdaki alt bölümleri içerir:
 
-* [Örnek](#webhook-output---example)
-* [Öznitelikler](#webhook-output---attributes)
-* [Yapılandırma](#webhook-output---configuration)
-* [Kullanım](#webhook-output---usage)
+* [Örneğinde](#webhook-output---example)
+* [Özelliklerine](#webhook-output---attributes)
+* [Yapılandırmada](#webhook-output---configuration)
+* [Kullanımıyla](#webhook-output---usage)
 
 ### <a name="webhook-output---example"></a>Web kancası çıkışı-örnek
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#webhook-output---c-script-example)
+* [C#betik (. CSX)](#webhook-output---c-script-example)
 * [JavaScript](#webhook-output---javascript-example)
 
 #### <a name="webhook-output---c-script-example"></a>Web kancası çıkışı C# -betik örneği
@@ -1380,23 +1380,23 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-output---attributes"></a>Web kancası çıkışı-öznitelikler
 
-[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [graphwebkancalı abonelik](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) özniteliğini kullanın.
+[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [graphwebkancalı abonelik](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) özniteliğini kullanın.
 
 ### <a name="webhook-output---configuration"></a>Web kancası çıkışı-yapılandırma
 
-Aşağıdaki tabloda ayarladığınız bağlama yapılandırma özelliklerini açıklayan *function.json* dosya ve `GraphWebHookSubscription` özniteliği.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `GraphWebhookSubscription` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
-|**name**||Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
-|**type**||Gerekli-olarak `graphWebhookSubscription`ayarlanmalıdır.|
-|**direction**||Gerekli-olarak `out`ayarlanmalıdır.|
-|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-Yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-Belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. Bkz. <code>userId</code> özelliği.</li><li><code>userFromToken</code>-Belirtilen belirteçle temsil edilen kimliği kullanır. Bkz. <code>userToken</code> özelliği.</li><li><code>clientCredentials</code>-İşlev uygulamasının kimliğini kullanır.</li></ul>|
-|**userId**|**UserID**  |Yalnızca _kimlik_ olarak `userFromId`ayarlandıysa, gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
-|**userToken**|**UserToken**|Yalnızca _kimlik_ olarak `userFromToken`ayarlandıysa, gereklidir. İşlev uygulaması için geçerli bir belirteç. |
-|**ön**|**Eylem**|Gerekli-bağlamanın gerçekleştirmesi gereken eylemi belirtir. Aşağıdaki değerlerden biri olabilir:<ul><li><code>create</code>-Yeni bir abonelik kaydeder.</li><li><code>delete</code>-Belirtilen aboneliği siler.</li><li><code>refresh</code>-Belirtilen bir aboneliği, süresinin dolmasını önlemek için yeniler.</li></ul>|
-|**subscriptionResource**|**SubscriptionResource**|Yalnızca _eylem_ olarak `create`ayarlandıysa gereklidir. Değişiklikler için izlenecek Microsoft Graph kaynağını belirtir. Bkz. [Microsoft Graph 'de Web kancaları ile çalışma]. |
-|**changeType**|**ChangeType**|Yalnızca _eylem_ olarak `create`ayarlandıysa gereklidir. Abone olunan kaynaktaki bir bildirimi oluşturacak değişikliğin türünü gösterir. Desteklenen değerler şunlardır: `created`, `updated`, `deleted`. Birden çok değer, virgülle ayrılmış bir liste kullanılarak birleştirilebilir.|
+|**ada**||Gerekli-posta iletisi için işlev kodunda kullanılan değişken adı. Bkz. [Koddan Outlook ileti çıkış bağlaması kullanma](#outlook-output-code).|
+|**türüyle**||Gerekli-`graphWebhookSubscription` olarak ayarlanmalıdır.|
+|**Görünüm**||Gerekli-`out` olarak ayarlanmalıdır.|
+|**IDENTITY**|**Kimlik**|Gerekli-eylemi gerçekleştirmek için kullanılacak kimlik. Aşağıdaki değerlerden biri olabilir:<ul><li><code>userFromRequest</code>-yalnızca [HTTP tetikleyicisi]geçerlidir. Çağıran kullanıcının kimliğini kullanır.</li><li><code>userFromId</code>-belirtilen KIMLIĞE sahip, daha önce oturum açmış bir kullanıcının kimliğini kullanır. @No__t-0 özelliğine bakın.</li><li><code>userFromToken</code>-belirtilen belirteç tarafından temsil edilen kimliği kullanır. @No__t-0 özelliğine bakın.</li><li><code>clientCredentials</code>-işlev uygulamasının kimliğini kullanır.</li></ul>|
+|**UserID**|**UserID**  |Yalnızca _kimlik_ `userFromId` olarak ayarlandıysa gereklidir. Daha önce oturum açmış kullanıcıyla ilişkili bir Kullanıcı asıl KIMLIĞI.|
+|**userToken**|**UserToken**|Yalnızca _kimlik_ `userFromToken` olarak ayarlandıysa gereklidir. İşlev uygulaması için geçerli bir belirteç. |
+|**ön**|**Eylem**|Gerekli-bağlamanın gerçekleştirmesi gereken eylemi belirtir. Aşağıdaki değerlerden biri olabilir:<ul><li><code>create</code>-yeni bir abonelik kaydeder.</li><li><code>delete</code>-belirtilen aboneliği siler.</li><li><code>refresh</code>-belirtilen aboneliği, süresinin dolmasını önlemek için yeniler.</li></ul>|
+|**subscriptionResource**|**SubscriptionResource**|Yalnızca _eylem_ `create` olarak ayarlandıysa gereklidir. Değişiklikler için izlenecek Microsoft Graph kaynağını belirtir. Bkz. [Microsoft Graph 'de Web kancaları ile çalışma]. |
+|**changeType**|**ChangeType**|Yalnızca _eylem_ `create` olarak ayarlandıysa gereklidir. Abone olunan kaynaktaki bir bildirimi oluşturacak değişikliğin türünü gösterir. Desteklenen değerler şunlardır: `created`, `updated`, `deleted`. Birden çok değer, virgülle ayrılmış bir liste kullanılarak birleştirilebilir.|
 
 ### <a name="webhook-output---usage"></a>Web kancası çıkışı-kullanım
 
@@ -1424,7 +1424,7 @@ Bu bölümde, bu yaklaşımların her biri için bir örnek yer almaktadır:
 
 Dile özgü örneğe bakın:
 
-* [C# betiği (.csx)](#app-identity-refresh---c-script-example)
+* [C#betik (. CSX)](#app-identity-refresh---c-script-example)
 * JavaScript
 
 ### <a name="app-identity-refresh---c-script-example"></a>Uygulama kimliği yenileme- C# betik örneği

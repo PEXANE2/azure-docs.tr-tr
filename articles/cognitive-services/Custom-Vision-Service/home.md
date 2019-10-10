@@ -1,5 +1,5 @@
 ---
-title: Azure Özel Görüntü İşleme nedir?
+title: Özel Görüntü İşleme nedir?
 titleSuffix: Azure Cognitive Services
 description: Özel Görüntü İşleme Hizmeti'ni kullanarak Azure bulutunda özel görüntü sınıflandırıcıları oluşturmayı öğrenin.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 033b0317b1738e24e4ac9c9ae2150b015cc5a8e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e455a42945ba4d6ce334d557b7390c3c50e7ff9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560955"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177823"
 ---
-# <a name="what-is-azure-custom-vision"></a>Azure Özel Görüntü İşleme nedir?
+# <a name="what-is-custom-vision"></a>Özel Görüntü İşleme nedir?
 
-Azure Özel Görüntü İşleme, kendi görüntü sınıflandırıcılarınızı oluşturmanıza, dağıtmanıza ve iyileştirmenize olanak tanıyan bir bilişsel hizmettir. Görüntü Sınıflandırıcısı, görsel özelliklerine göre resimlere (sınıfları temsil eden _sınıflar_) uygulanan bir AI hizmetidir. [Görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) hizmetinin aksine, özel görüntü işleme uygulanacak etiketleri belirlemenizi sağlar.
+Özel Görüntü İşleme kendi görüntü sınıflandırıcılarınızı oluşturmanıza, dağıtmanıza ve iyileştirmenize olanak tanıyan bir bilişsel hizmettir. Görüntü Sınıflandırıcısı, görsel özelliklerine göre resimlere (sınıfları temsil eden _sınıflar_) uygulanan bir AI hizmetidir. [Görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) hizmetinin aksine, özel görüntü işleme uygulanacak etiketleri belirlemenizi sağlar.
 
-## <a name="what-it-does"></a>Ne yapar?
+## <a name="what-it-does"></a>Neler yapar?
 
 Özel Görüntü İşleme Hizmeti, resimlere etiket uygulamak için bir makine öğrenimi algoritması kullanır. Geliştirici, söz konusu özelliklere sahip olan ve özellik olmayan görüntü gruplarını göndermesi gerekir. Görüntüleri gönderme sırasında kendiniz etiketlendirin. Daha sonra algoritma bu verilere yönelik olarak bir test yapar ve kendisini aynı görüntülerle test ederek kendi doğruluğunu hesaplar. Algoritma eğitilirken, bunu test edebilir, yeniden eğitebilir ve en sonunda, yeni görüntüleri uygulamanızın gereksinimlerine göre sınıflandırmak için kullanabilirsiniz. İsterseniz modeli çevrimdışı kullanmak üzere dışarı aktarabilirsiniz.
 
@@ -33,7 +33,7 @@ Azure Özel Görüntü İşleme, kendi görüntü sınıflandırıcılarınızı
 
 Özel Görüntü İşleme Hizmeti, görüntüler arasındaki önemli farklılıkları hızlı bir şekilde tanımak için en iyi duruma getirilmiştir, bu sayede modelinize kısa bir veri miktarıyla prototip başlatabilirsiniz. Her etiket için 50 görüntü genellikle iyi bir başlangıç. Ancak, görüntüde hafif farklılıkları tespit etmek için en uygun değildir (örneğin, kalite güvencesi senaryolarındaki küçük bir yandan veya en yüzlerini algılama).
 
-Ayrıca, belirli konu malzemelere&mdash;örnek olarak en iyi duruma getirilmiş özel görüntü işleme algoritmasından farklı, örneğin, yer işaretleri veya perakende öğeleri arasından seçim yapabilirsiniz. Daha fazla bilgi için bkz. [sınıflandırıcı oluşturma](getting-started-build-a-classifier.md) Kılavuzu.
+Ayrıca, belirli konu malzemesine sahip görüntüler için optimize edilmiş Özel Görüntü İşleme algoritmasından çok sayıda değişken arasından seçim yapabilirsiniz. Örneğin, yer işaretleri veya perakende öğeleri. Daha fazla bilgi için bkz. [sınıflandırıcı oluşturma](getting-started-build-a-classifier.md) Kılavuzu.
 
 ## <a name="what-it-includes"></a>Neleri içerir
 

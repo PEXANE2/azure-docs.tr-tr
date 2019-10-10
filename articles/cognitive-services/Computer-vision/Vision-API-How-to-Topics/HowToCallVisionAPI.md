@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 417ff7ac345b9a83b3d3f4c50e9fd141d74bc99c
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103557"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177056"
 ---
 # <a name="call-the-computer-vision-api"></a>Görüntü İşleme API’sini çağırma
 
@@ -31,7 +31,7 @@ Bu makalede, REST API kullanılarak Görüntü İşleme API'si nasıl çağrıla
 - Desteklenen giriş yöntemleri: bir uygulama/sekizli akış veya bir görüntü URL 'SI biçiminde Ham görüntü ikilisi
 - Desteklenen görüntü dosyası biçimleri: JPEG, PNG, GIF ve BMP
 - Görüntü dosyası boyutu: 4 MB veya daha az
-- Görüntü boyutları: 50 &times; 50 piksel veya daha büyük
+- Resim boyutları: 50 &times; 50 piksel veya daha büyük
   
 Bu makaledeki örneklerde aşağıdaki özellikler gösterilmektedir:
 
@@ -40,8 +40,8 @@ Bu makaledeki örneklerde aşağıdaki özellikler gösterilmektedir:
 
 Özellikler aşağıdaki seçenekleri sunar:
 
-- **Seçenek 1**: Kapsamlı analiz-yalnızca belirtilen modeli çözümle
-- **Seçenek 2**: Gelişmiş analiz- [86-kategori taksonomi](../Category-Taxonomy.md) kullanarak ek ayrıntılar sağlamak için çözümleyin
+- **Seçenek 1**: kapsamlı analiz-yalnızca belirtilen modeli çözümle
+- **Seçenek 2**: gelişmiş analiz- [86-Categories taksonomi](../Category-Taxonomy.md) kullanarak ek ayrıntılar sağlamak için çözümleyin
   
 ## <a name="authorize-the-api-call"></a>API çağrısını yetkilendir
 
@@ -56,7 +56,7 @@ Aşağıdakilerden birini yaparak abonelik anahtarını geçirebilirsiniz:
 * Bu Görüntü İşleme API'si örnekte olduğu gibi bir sorgu dizesi aracılığıyla geçirin:
 
   ```
-  https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+  https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
   ```
 
 * Bunu HTTP istek üstbilgisinde belirtin:
@@ -80,10 +80,10 @@ Görüntü İşleme API'si çağrısını gerçekleştirmenin temel yolu, etiket
 
 Belirtilen bir görüntü için aşağıdaki seçeneklerden birini kullanarak Etiketler ve bir açıklama alın:
 
-### <a name="option-1-get-a-list-of-tags-and-a-description"></a>1\. Seçenek: Etiketlerin ve açıklamanın listesini alın
+### <a name="option-1-get-a-list-of-tags-and-a-description"></a>Seçenek 1: etiketlerin ve açıklamanın listesini alın
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?visualFeatures=Description,Tags&subscription-key=<Your subscription key>
 ```
 
 ```csharp
@@ -100,19 +100,19 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 }
 ```
 
-### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>2\. Seçenek: Yalnızca etiketlerin veya yalnızca bir açıklamanın listesini al
+### <a name="option-2-get-a-list-of-tags-only-or-a-description-only"></a>Seçenek 2: yalnızca etiketlerin veya yalnızca bir açıklamanın listesini alın
 
 Yalnızca Etiketler için şunu çalıştırın:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/tag?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/tag?subscription-key=<Your subscription key>
 var tagResults = await visionClient.TagImageAsync("http://contoso.com/example.jpg");
 ```
 
 Yalnızca bir açıklama için şunu çalıştırın:
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/describe?subscription-key=<Your subscription key>
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/describe?subscription-key=<Your subscription key>
 using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 {
   imageDescription = await visionClient.DescribeImageInStreamAsync(fs);
@@ -121,25 +121,25 @@ using (var fs = new FileStream(@"C:\Vision\Sample.jpg", FileMode.Open))
 
 ## <a name="get-domain-specific-analysis-celebrities"></a>Etki alanına özgü analiz (ünlüler) Al
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>1\. Seçenek: Kapsamlı analiz-yalnızca belirtilen modeli çözümle
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Seçenek 1: kapsamlı analiz-yalnızca belirtilen modeli çözümle
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/models/celebrities/analyze
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/models/celebrities/analyze
 var celebritiesResult = await visionClient.AnalyzeImageInDomainAsync(url, "celebrities");
 ```
 
 Bu seçenek için diğer tüm sorgu parametreleri {visualFeatures, details} geçerli değildir. Desteklenen tüm modelleri görmek istiyorsanız şu seçeneği kullanın:
 
 ```
-GET https://westus.api.cognitive.microsoft.com/vision/v2.0/models 
+GET https://westus.api.cognitive.microsoft.com/vision/v2.1/models 
 var models = await visionClient.ListModelsAsync();
 ```
 
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>2\. Seçenek: Gelişmiş analiz-86-kategori taksonomi kullanarak ek ayrıntılar sağlamak için çözümleyin
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-86-categories-taxonomy"></a>Seçenek 2: gelişmiş analiz-86-Categories taksonomi kullanarak ek ayrıntılar sağlamak için çözümleyin
 
 Bir veya daha fazla etki alanına özgü modelden ayrıntıların yanı sıra genel görüntü analizini almak istediğiniz uygulamalar için modeller sorgu parametresini kullanarak v1 API 'sini genişletin.
 
 ```
-POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=celebrities
+POST https://westus.api.cognitive.microsoft.com/vision/v2.1/analyze?details=celebrities
 ```
 
 Bu yöntemi çağırdığınızda, önce [86 kategori](../Category-Taxonomy.md) sınıflandırıcısını çağırın. Kategorilerden herhangi biri bilinen veya eşleşen bir modelle eşleşiyorsa, bir sınıflandırıcı çağırmaları ikinci geçişi oluşur. Örneğin, "details = All" veya "details", "Ünlüler" i içeriyorsa, 86 kategori sınıflandırıcısını çağırdıktan sonra ünlüler modelini çağırabilirsiniz. Sonuç, kategori kişiyi içerir. Seçenek 1 ' in aksine bu yöntem, ünlülerle ilgilenen kullanıcılar için gecikme süresini artırır.
@@ -177,19 +177,19 @@ Bir örneği aşağıda verilmiştir:
 }
 ```
 
-Alan | Type | İçerik
+Alan | Tür | İçerik
 ------|------|------|
-Tags  | `object` | Bir etiket dizisi için en üst düzey nesne.
+Etiketler  | `object` | Bir etiket dizisi için en üst düzey nesne.
 tags[].Name | `string`  | Etiketler sınıflandırıcıdan anahtar sözcüğü.
 tags[].Score    | `number`  | Güvenirlik puanı, 0 ile 1 arasındadır.
-description  | `object` | Bir açıklama için en üst düzey nesne.
+açıklama  | `object` | Bir açıklama için en üst düzey nesne.
 description.tags[] |    `string`    | Etiketlerin listesi.  Bir resim yazısı üretebilme özelliği için yeterli güven yoksa, Etiketler çağıranın kullanabildiği tek bilgiler olabilir.
 description.captions[].text | `string`  | Görüntüyü açıklayan bir ifadedir.
 description.captions[].confidence   | `number`  | İfadenin Güvenirlik puanı.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Etki alanına özgü modellerin JSON çıkışını alma ve anlama
 
-### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>1\. Seçenek: Kapsamlı analiz-yalnızca belirtilen modeli çözümle
+### <a name="option-1-scoped-analysis---analyze-only-a-specified-model"></a>Seçenek 1: kapsamlı analiz-yalnızca belirtilen modeli çözümle
 
 Çıktı, aşağıdaki örnekte gösterildiği gibi bir etiket dizisidir:
 
@@ -208,7 +208,7 @@ description.captions[].confidence   | `number`  | İfadenin Güvenirlik puanı.
 }
 ```
 
-### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>2\. Seçenek: Gelişmiş analiz-"86-Categories" taksonomini kullanarak ek ayrıntılar sağlamak için çözümleyin
+### <a name="option-2-enhanced-analysis---analyze-to-provide-additional-details-by-using-the-86-categories-taxonomy"></a>Seçenek 2: gelişmiş analiz-"86-Categories" taksonomi kullanarak ek ayrıntılar sağlamak için çözümleyin
 
 Seçenek 2 (gelişmiş analiz) kullanan alana özgü modeller için, aşağıdaki örnekte gösterildiği gibi kategori dönüş türü genişletilir:
 
@@ -239,9 +239,9 @@ Seçenek 2 (gelişmiş analiz) kullanan alana özgü modeller için, aşağıdak
 
 Kategoriler alanı, orijinal taksonominin bir veya daha fazla [86 kategorisinin](../Category-Taxonomy.md) listesidir. Alt çizgi ile biten Kategoriler, bu kategori ve alt öğeleri ile eşleşir (örneğin, "people_" veya "people_group", ünlüler modeli için).
 
-Alan   | Type  | İçerik
+Alan   | Tür  | İçerik
 ------|------|------|
-categories | `object`   | Üst düzey nesne.
+kategoriler | `object`   | Üst düzey nesne.
 categories[].name    | `string` | 86-kategori taksonomi listesindeki addır.
 categories[].score  | `number`  | Güvenirlik puanı, 0 ile 1 arasındadır.
 categories[].detail  | `object?`      | Seçim Ayrıntı nesnesi.

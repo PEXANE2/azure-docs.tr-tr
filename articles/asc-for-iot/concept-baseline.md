@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2019
+ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: b0f5696b36082375a29e99298395cf16734d5bb4
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937151"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176610"
 ---
 # <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>IoT temeli ve özel denetimler için Azure Güvenlik Merkezi
 
 Bu makalede IoT temeli için Azure Güvenlik Merkezi açıklanmakta ve temel özel denetimlerin tüm ilişkili özellikleri özetlenmektedir.
 
-## <a name="baseline"></a>Temel
+## <a name="baseline"></a>Çizgisi
 
 Taban çizgisi her cihaz için standart davranış oluşturur ve beklenen Norms 'den olağan dışı davranış veya sapma oluşturmayı kolaylaştırır.  
 
@@ -55,7 +55,7 @@ Temel özel denetimleri yapılandırmak için:
         "baselineCustomChecksFilePath": {
           "value" : "/home/user/full_path.xml"
         },
-        "baselineCustomChecksFilePath": {
+        "baselineCustomChecksFileHash": {
           "value" : "#hashexample!"
         }
       }
@@ -64,7 +64,7 @@ Temel özel denetimleri yapılandırmak için:
 
 ## <a name="baseline-custom-check-properties"></a>Taban çizgisi özel denetim özellikleri
 
-| Name| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
+| Ad| Durum | Geçerli değerler| Varsayılan değerler| Description |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |baselineCustomChecksEnabled|Gerekli: true |Geçerli değerler: **Boolean** |Varsayılan değer: **false** |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
 |baselineCustomChecksFilePath |Gerekli: true|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |Taban çizgisi XML yapılandırmasının tam yolu|

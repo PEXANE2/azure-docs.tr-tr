@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 7b395bd6024beb52b9263ac4fe655b5328a8e662
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
+ms.lasthandoff: 10/09/2019
 ms.locfileid: "70933149"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Dayanıklı İşlevler türleri ve özellikleri (Azure Işlevleri)
@@ -40,7 +40,7 @@ Orchestrator işlevlerinin aksine, etkinlik işlevleri, bunlarda yapabileceğini
 > [!NOTE]
 > Etkinlik işlevleri yalnızca *en az bir kez* yürütmeyi garanti ettiğinden, mümkün olduğunda Etkinlik işlevi mantığınızı *ıdempotent* yapmanızı öneririz.
 
-Etkinlik işlevi tanımlamak için bir [etkinlik tetikleyicisi](durable-functions-bindings.md#activity-trigger) kullanın. .NET işlevleri bir [Durableactivitycontext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) parametresini parametre olarak alır. Ayrıca, bu tetikleyiciyi işleve geçirilecek diğer JSON-serializlenebilir nesnesine da bağlayabilirsiniz. JavaScript 'te, `<activity trigger binding name>` [ `context.bindings` nesne](../functions-reference-node.md#bindings)üzerindeki özelliği aracılığıyla bir girişe erişebilirsiniz. Etkinlik işlevlerine yalnızca tek bir değer geçirilmiş olabilir. Birden çok değer geçirmek için, tanımlama grupları, diziler veya karmaşık türler kullanmanız gerekir.
+Etkinlik işlevi tanımlamak için bir [etkinlik tetikleyicisi](durable-functions-bindings.md#activity-trigger) kullanın. .NET işlevleri bir [Durableactivitycontext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) parametresini parametre olarak alır. Ayrıca, bu tetikleyiciyi işleve geçirilecek diğer JSON-serializlenebilir nesnesine da bağlayabilirsiniz. JavaScript 'te, [`context.bindings` nesnesindeki](../functions-reference-node.md#bindings)`<activity trigger binding name>` özelliği aracılığıyla bir girişe erişebilirsiniz. Etkinlik işlevlerine yalnızca tek bir değer geçirilmiş olabilir. Birden çok değer geçirmek için, tanımlama grupları, diziler veya karmaşık türler kullanmanız gerekir.
 
 > [!NOTE]
 > Bir etkinlik işlevini yalnızca bir Orchestrator işlevinden tetikleyebilirsiniz.

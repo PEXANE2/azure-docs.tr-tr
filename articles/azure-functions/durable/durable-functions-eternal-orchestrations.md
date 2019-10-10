@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: dbe51eddcf748843fd90cc533063fd25e7c282fd
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d96229bb5e3d288915b64e5a7ce29a8651f2a181
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933375"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177374"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler 'de Eternal düzenlemeleri (Azure Işlevleri)
 
@@ -28,10 +28,10 @@ ms.locfileid: "70933375"
 
 Sonsuz döngüler kullanmak yerine, Orchestrator işlevleri [Continueasnew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) yöntemini çağırarak durumlarını sıfırlar. Bu yöntem, bir sonraki Orchestrator işlevi oluşturma için yeni giriş haline gelen tek bir JSON-Serializable parametresi alır.
 
-`ContinueAsNew` Çağrıldığında, örnek çıkış yapmadan önce bir iletiyi kendisine sıraya alır. İleti, örneği yeni giriş değeri ile yeniden başlatır. Aynı örnek KIMLIĞI tutulur, ancak Orchestrator işlevinin geçmişi etkin bir şekilde kesilir.
+@No__t-0 çağrıldığında, örnek çıkış yapmadan önce bir iletiyi kendisine sıraya alır. İleti, örneği yeni giriş değeri ile yeniden başlatır. Aynı örnek KIMLIĞI tutulur, ancak Orchestrator işlevinin geçmişi etkin bir şekilde kesilir.
 
 > [!NOTE]
-> Dayanıklı görev çerçevesi aynı örnek KIMLIĞINI tutar, ancak tarafından `ContinueAsNew`sıfırlanan Orchestrator işlevi için dahili olarak yenı bir *yürütme kimliği* oluşturur. Bu yürütme KIMLIĞI genellikle dışarıdan gösterilmez, ancak düzenleme yürütmesinin hata ayıklaması sırasında öğrenmek faydalı olabilir.
+> Dayanıklı görev çerçevesi aynı örnek KIMLIĞINI tutar, ancak dahili olarak `ContinueAsNew` tarafından sıfırlanan Orchestrator işlevi için yeni bir *yürütme kimliği* oluşturur. Bu yürütme KIMLIĞI genellikle dışarıdan gösterilmez, ancak düzenleme yürütmesinin hata ayıklaması sırasında öğrenmek faydalı olabilir.
 
 ## <a name="periodic-work-example"></a>Düzenli iş örneği
 
@@ -77,7 +77,7 @@ Bu örnek ve Zamanlayıcı tarafından tetiklenen bir işlev arasındaki fark, t
 Bir dış düzenlemesi başlatmak için [startnewasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) yöntemini kullanın. Bu, başka bir düzenleme işlevini tetiklemeden farklı değildir.  
 
 > [!NOTE]
-> Tek bir dış Orchestration 'un çalıştığından emin olmanız gerekiyorsa, düzenleme başlatılırken aynı örneği `id` korumak önemlidir. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
+> Tek bir dış Orchestration 'un çalıştığından emin olmanız gerekiyorsa, düzenleme başlatılırken aynı örneğin `id` ' ı korumak önemlidir. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -87,14 +87,14 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 {
     string instanceId = "StaticId";
     // Null is used as the input, since there is no input in "Periodic_Cleanup_Loop".
-    await client.StartNewAsync("Periodic_Cleanup_Loop"), instanceId, null); 
+    await client.StartNewAsync("Periodic_Cleanup_Loop", instanceId, null); 
     return client.CreateCheckStatusResponse(request, instanceId);
 }
 ```
 
 ## <a name="exit-from-an-eternal-orchestration"></a>Bir dış Orchestration 'tan çıkma
 
-Bir Orchestrator işlevinin sonunda tamamlanması gerekiyorsa, tüm yapmanız gereken çağrı `ContinueAsNew` *yapmamalıdır* ve işlevin çıkmasına izin vermez.
+Bir Orchestrator işlevinin sonunda tamamlanması gerekiyorsa, tek yapmanız gereken `ContinueAsNew` *çağırmamalıdır* ve işlevin çıkmasına izin vermez.
 
 Orchestrator işlevi sonsuz bir döngüde ve durdurulması gerekiyorsa, durdurmak için [Sonlandırateasync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) yöntemini kullanın. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
 

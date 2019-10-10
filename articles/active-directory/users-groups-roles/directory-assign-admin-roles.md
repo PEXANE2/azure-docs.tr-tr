@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3992ea29d3d81262b5d9b8b126c8fca54feca67d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d70a2aa6ad0e092fc6df9f5792029dc759345321
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026389"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169786"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 'de yönetici rolü izinleri
 
@@ -214,18 +214,19 @@ Bu role sahip olan kullanıcılar, Azure Active Directory ' deki tüm yönetim �
 
 ### <a name="global-readerglobal-reader-permissions"></a>[Genel okuyucu](#global-reader-permissions)
 
-Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönetim bilgilerini okuyabilir, ancak yönetim eylemlerini alamaz. Genel okuyucu genel yöneticiye salt okunurdur. Planlama, denetim veya araştırmalar için genel yönetici yerine genel okuyucu atayın. Küresel bir yönetim rolünü çağırmadan çalışmayı kolaylaştırmak için Exchange Yöneticisi gibi diğer sınırlı yönetici rolleriyle birlikte genel okuyucu kullanın. Küresel okuyucu yeni Microsoft 365 Yönetim Merkezi, Exchange Yönetim Merkezi, takımlar Yönetim Merkezi, Güvenlik Merkezi, Uyumluluk Merkezi, Azure AD Yönetim Merkezi ve cihaz yönetimi Yönetim Merkezi ile birlikte kullanılabilir. 
+Bu roldeki kullanıcılar Microsoft 365 hizmetleri genelinde ayarları ve yönetim bilgilerini okuyabilir, ancak yönetim eylemleri alamaz. Genel okuyucu genel yöneticiye salt okunurdur. Planlama, denetim veya araştırmalar için genel yönetici yerine genel okuyucu atayın. Küresel bir yönetici rolü atanmadan çalışmayı kolaylaştırmak için, Exchange Yöneticisi gibi diğer sınırlı yönetici rolleriyle birlikte genel okuyucu kullanın. Küresel okuyucu Microsoft 365 Yönetim Merkezi, Exchange Yönetim Merkezi, takımlar Yönetim Merkezi, Güvenlik Merkezi, Uyumluluk Merkezi, Azure AD Yönetim Merkezi ve cihaz yönetimi Yönetim Merkezi ile birlikte kullanılabilir.
 
 > [!NOTE]
-> Genel okuyucu rolünde şu kısıtlamalar vardır-
->* SharePoint Yönetim Merkezi-SharePoint Yönetim Merkezi, genel okuyucu rolünü desteklemez. Bu nedenle, [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage)'Nde yönetim merkezleri altında sol bölmede ' SharePoint ' öğesini görmezsiniz. Https://{Tenant Name}-admin.sharepoint.com adresine gittiğinizde erişim reddedildi. 
+> Genel okuyucu rolünde Şu anda birkaç kısıtlama vardır-
+>
+>* SharePoint Yönetim Merkezi-SharePoint Yönetim Merkezi, genel okuyucu rolünü desteklemez. [Microsoft 365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage)'Nde yönetim merkezleri altında sol bölmede ' SharePoint ' ifadesini görmezsiniz ve *https://{Azure AD kuruluş adı}-admin.SharePoint.com*' e gitmeye çalıştığınızda erişim reddedildi.
 >* [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -genel okuyucu, bir kurumsal uygulamanın sağlama modunu okuyamıyor.
->* [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, custıcı kasa isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde destek altında müşteri kasası istekleri sekmesini bulamacaksınız.
->* [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nde sınıflandırma altında, sol bölmede duyarlık etiketleri, bekletme etiketleri ve etiket Analizi sekmeleri bulmayacak.
->* [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu, takım yaşam döngüsünü, raporları & çağrı ANALIZI, IP telefon cihaz yönetimi ve Uygulama Kataloğu 'nu okuyamıyor.
->* [Privileged Access Management (Pam)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) genel okuyucuyu desteklemez.
-> 
-> Bu özellikler için destek zaman içinde gelecektir.
+>* [M365 Yönetim Merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) -genel okuyucu, müşteri kasası isteklerini okuyamıyor. M365 Yönetim Merkezi 'nin sol bölmesinde, **destek** altında **müşteri kasası istekleri** sekmesini bulmayacağız.
+>* [M365 Güvenlik Merkezi](https://security.microsoft.com/homepage) -genel okuyucu duyarlılık ve Bekletme etiketlerini okuyamıyor. M365 Güvenlik Merkezi 'nin sol bölmesinde **duyarlık etiketleri**, **bekletme etiketleri**ve **etiket Analizi** sekmelerini bulmayacağız.
+>* [Takımlar Yönetim Merkezi](https://admin.teams.microsoft.com) -küresel okuyucu **takımlar yaşam döngüsünü**, **Analiz & raporlarını**, **IP telefon cihaz yönetimini** ve **uygulama kataloğunu**okuyamıyor.
+>* [Privileged Access Management (Pam)](https://docs.microsoft.com/en-us/office365/securitycompliance/privileged-access-management-overview) , genel okuyucu rolünü desteklemez.
+>
+> Bu özellikler Şu anda geliştirme aşamasındadır.
 >
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[Konuk davetci](#guest-inviter-permissions)

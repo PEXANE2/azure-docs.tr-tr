@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
-ms.author: chackdan
-ms.openlocfilehash: 4e41638472307f0f88e92413d98b669b27572f54
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: pepogors
+ms.openlocfilehash: 31a7a3a42436f3a818fcf48f2af5ca395fa02386
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872117"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170411"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Bir hizmet için güvenli WCF tabanlı iletişimler
 Güvenlik, iletişimin en önemli yönlerinden biridir. Reliable Services uygulama çerçevesi, güvenliği artırmak için kullanabileceğiniz, önceden oluşturulmuş birkaç iletişim yığını ve aracı sağlar. Bu makalede, hizmet uzaktan iletişimini kullanırken güvenliğin nasıl iyileştireceğiniz ele ılırsınız.
@@ -63,7 +63,7 @@ Güvenilir hizmetler için WCF tabanlı bir iletişim yığınının nasıl ayar
         return b;
     }
     ```
-2. İstemcide, `WcfCommunicationClient` önceki [örnekte](service-fabric-reliable-services-communication-wcf.md) oluşturulan sınıf değişmeden kalır. Ancak şu `CreateClientAsync` `WcfCommunicationClientFactory`yöntemi geçersiz kılmanız gerekir:
+2. İstemcide, önceki [örnekte](service-fabric-reliable-services-communication-wcf.md) oluşturulan `WcfCommunicationClient` sınıfı değişmeden kalır. Ancak `WcfCommunicationClientFactory` ' in `CreateClientAsync` yöntemini geçersiz kılmanız gerekir:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class
@@ -113,7 +113,7 @@ Güvenilir hizmetler için WCF tabanlı bir iletişim yığınının nasıl ayar
     }
     ```
 
-    WCF `SecureWcfCommunicationClientFactory` iletişim istemcisi (`WcfCommunicationClient`) oluşturmak için kullanın. Hizmeti yöntemlerini çağırmak için istemcisini kullanın.
+    WCF iletişim istemcisi oluşturmak için `SecureWcfCommunicationClientFactory` kullanın (`WcfCommunicationClient`). Hizmeti yöntemlerini çağırmak için istemcisini kullanın.
 
     ```csharp
     IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();

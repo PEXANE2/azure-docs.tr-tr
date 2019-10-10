@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 10/08/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5f814eac095770990ecbc0c4b01d2e0cc6f931
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667212"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169798"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Uygulama proxy bağlayıcılarınızın ve uygulamalarınızın yüksek kullanılabilirliği ve yük dengelemesi
 
@@ -81,24 +81,25 @@ Bazı durumlarda (denetim, Yük Dengeleme vb. gibi), dış istemcinin kaynak IP 
 
 ## <a name="best-practices-for-load-balancing-among-multiple-app-servers"></a>Birden çok uygulama sunucusu arasında yük dengeleme için en iyi uygulamalar
 Uygulama proxy 'Si uygulamasına atanan bağlayıcı grubunun iki veya daha fazla bağlayıcısı varsa ve arka uç Web uygulamasını birden çok sunucuda (sunucu grubu) çalıştırıyorsanız, iyi bir yük dengeleme stratejisi gerekir. İyi bir strateji, sunucuların istemci isteklerini eşit olarak seçmesini ve sunucu grubundaki sunucuların aşırı veya daha fazla kullanımını engeller.
-### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Senaryo 1: Arka uç uygulaması, oturum kalıcılığı gerektirmez
+### <a name="scenario-1-back-end-application-does-not-require-session-persistence"></a>Senaryo 1: arka uç uygulaması, oturum kalıcılığı gerektirmez
 En basit senaryo, arka uç Web uygulamasının oturum sürekliliği (oturum kalıcılığı) gerektirmez. Kullanıcıdan gelen herhangi bir istek, sunucu grubundaki herhangi bir arka uç uygulama örneği tarafından işlenebilir. Bir katman 4 yük dengeleyici kullanabilir ve bunu hiçbir benzeşim olmadan yapılandırabilirsiniz. Bazı seçenekler, Microsoft Ağ Yükü Dengeleme ve Azure Load Balancer veya başka bir satıcıdan yük dengeleyici içerir. Alternatif olarak, hepsini bir kez deneme DNS yapılandırılabilir.
-### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Senaryo 2: Arka uç uygulaması, oturum kalıcılığı gerektiriyor
+### <a name="scenario-2-back-end-application-requires-session-persistence"></a>Senaryo 2: arka uç uygulaması, oturum kalıcılığı gerektiriyor
 Bu senaryoda, arka uç Web uygulaması kimliği doğrulanmış oturum sırasında oturum sürekliliği (oturum kalıcılığı) gerektirir. Kullanıcının tüm isteklerinin sunucu grubundaki aynı sunucuda çalışan arka uç uygulama örneği tarafından işlenmesi gerekir.
 Bu senaryo daha karmaşık olabilir çünkü istemci genellikle uygulama proxy 'Si hizmetine birden çok bağlantı kurar. Farklı bağlantı istekleri gruptaki farklı bağlayıcılara ve sunuculara gelebilir. Her bağlayıcı bu iletişim için kendi IP adresini kullandığından, yük dengeleyici bağlayıcının IP adresini temel alarak oturumun sürekliliğini güvence altına alamazsınız. Kaynak IP benzeşimi, her ikisi de kullanılamaz.
 Senaryo 2 için bazı seçenekler şunlardır:
 
-- Seçenek 1: Oturum kalıcılığını yük dengeleyici tarafından ayarlanan bir oturum tanımlama bilgisine dayandırın. Bu seçenek, yükün arka uç sunucuları arasında eşit olarak yayılmasını sağladığından önerilir. Bu özelliğe sahip bir katman 7 Yük Dengeleyici gerektirir ve HTTP trafiğini işleyebilir ve SSL bağlantısını sonlandırabilirler. Azure Application Gateway (oturum benzeşimi) veya başka bir satıcıdan yük dengeleyici kullanabilirsiniz.
+- 1\. seçenek: oturum kalıcılığını yük dengeleyici tarafından ayarlanan bir oturum tanımlama bilgisine dayandırın. Bu seçenek, yükün arka uç sunucuları arasında eşit olarak yayılmasını sağladığından önerilir. Bu özelliğe sahip bir katman 7 Yük Dengeleyici gerektirir ve HTTP trafiğini işleyebilir ve SSL bağlantısını sonlandırabilirler. Azure Application Gateway (oturum benzeşimi) veya başka bir satıcıdan yük dengeleyici kullanabilirsiniz.
 
-- Seçenek 2: X-Iletilmiş-for üst bilgisinde oturum kalıcılığını temel alan. Bu seçenek, bu özelliğe sahip bir katman 7 Yük Dengeleyici gerektirir ve HTTP trafiğini işleyebilir ve SSL bağlantısını sonlandırabilirler.  
+- 2\. seçenek: oturum kalıcılığını X-Iletilmiş-for üst bilgisinde temel alan. Bu seçenek, bu özelliğe sahip bir katman 7 Yük Dengeleyici gerektirir ve HTTP trafiğini işleyebilir ve SSL bağlantısını sonlandırabilirler.  
 
-- Seçenek 3: Arka uç uygulamasını oturum kalıcılığı gerektirecek şekilde yapılandırın.
+- Seçenek 3: arka uç uygulamasını, oturum kalıcılığı gerektirecek şekilde yapılandırın.
 
 Arka uç uygulamasının Yük Dengeleme gereksinimlerini anlamak için Yazılım satıcınızın belgelerine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Uygulama Ara sunucusunu etkinleştirme](application-proxy-add-on-premises-application.md)
+- [Uygulama proxy 'Sini etkinleştir](application-proxy-add-on-premises-application.md)
 - [Çoklu oturum açmayı etkinleştirme](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Koşullu erişimi etkinleştir](application-proxy-integrate-with-sharepoint-server.md)
-- [Uygulama Ara sunucusu ile ilgili sorunları giderme](application-proxy-troubleshoot.md)
+- [Uygulama proxy 'Si ile karşılaştığınız sorunları giderme](application-proxy-troubleshoot.md)
+- [Azure AD mimarisinin yüksek kullanılabilirliği nasıl desteklediğini öğrenin](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

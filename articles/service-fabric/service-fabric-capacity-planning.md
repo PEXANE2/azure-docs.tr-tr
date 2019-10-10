@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: subramar
-ms.openlocfilehash: 4f2aa4b848172ab8b6a7e74de7dc1bc5f80639a1
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: atsenthi
+ms.openlocfilehash: cae701e34c3934e8ba8a289e7804e8852f6b5288
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335650"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167383"
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric uygulamalar için kapasite planlaması
 Bu belge, Azure Service Fabric uygulamalarınızı çalıştırmanız için gereken kaynak miktarını (CPU, RAM, disk depolama) nasıl tahmin edecağınızı öğretir. Kaynak gereksinimlerinizin zaman içinde değiştirilmesi yaygındır. Genellikle hizmetinizi geliştirirken/test ettiğiniz ve daha fazla kaynak oluşturmanız durumunda daha fazla kaynak yapmanız gerekir. Uygulamanızı tasarlarken, uzun süreli gereksinimleri göz önünde bulundurun ve hizmetinizin yüksek müşteri taleplerini karşılayacak şekilde ölçeklendirilmesine izin veren seçimler yapın.

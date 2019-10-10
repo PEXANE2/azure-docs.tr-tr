@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: bb6a975d2a2fc2cc3e65fa8969f8b005be8b1417
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299713"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176673"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
 
@@ -48,7 +48,7 @@ IoT Edge için bir IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni dağ
     - Aşağıdaki komutu çalıştırarak Sestd 'nin etkin olduğunu doğrulayın: 
    
     `sudo systemctl status auditd`<br>
-    - Beklenen yanıt:`active (running)` 
+    - Beklenen yanıt: `active (running)` 
         
 
 ### <a name="deployment-using-azure-portal"></a>Azure portal kullanarak dağıtım
@@ -66,11 +66,11 @@ IoT Edge için bir IoT güvenlik modülü için Azure Güvenlik Merkezi 'ni dağ
     >[!Note] 
     >**Aynı ölçekte dağıt**' ı seçtiyseniz aşağıdaki yönergelerde **Modül Ekle** sekmesine geçmeden önce cihaz adını ve ayrıntılarını ekleyin.     
 
-IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın üç adımı vardır. Aşağıdaki bölümlerde, her birini yol. 
+IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın üç adımı vardır. Aşağıdaki bölümler her bir adım adım yol gösterir. 
 
-#### <a name="step-1-add-modules"></a>1\. adım: Modül Ekle
+#### <a name="step-1-add-modules"></a>1\. Adım: modül ekleme
 
-1. **Modül Ekle** sekmesindeki **dağıtım modülleri** alanında, **AzureSecurityCenterforIoT**' a tıklayın. 
+1. **Modül Ekle** sekmesindeki **dağıtım modülleri** alanından, **AzureSecurityCenterforIoT**için **Yapılandır** seçeneğine tıklayın. 
    
 1. **Adı** **azureiotsecurity**olarak değiştirin.
 1. **Görüntü URI** 'sini **MCR.Microsoft.com/ascforiot/azureiotsecurity:1.0.0**olarak değiştirin.
@@ -95,13 +95,16 @@ IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın ü�
 1. **İkizi 'ın istenen özelliklerini ayarla** öğesinin seçili olduğunu doğrulayın ve yapılandırma nesnesini şu şekilde değiştirin:
       
     ``` json
-    "desired": {
-        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-          } 
-        }
+    { 
+       "properties.desired":{ 
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{ 
+
+          }
+       }
+    }
     ```
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet**'e tıklayın.
 1. Sekmenin en altına kaydırın ve **Gelişmiş kenar çalışma zamanı ayarlarını yapılandır**' ı seçin. 
    
 1. **Edge hub 'ındaki** **görüntüyü** **MCR.Microsoft.com/azureiotedge-Hub:1.0.9-RC2**olarak değiştirin.
@@ -110,33 +113,44 @@ IoT için Azure Güvenlik Merkezi için IoT Edge dağıtımı oluşturmanın ü�
          
     ``` json
     { 
-    "HostConfig":{
-                    "PortBindings":{
-                    "8883/tcp": [{"HostPort": "8883"}],
-                    "443/tcp": [{"HostPort": "443"}],
-                    "5671/tcp": [{"HostPort": "5671"}]
-                    }
-        }
+       "HostConfig":{ 
+          "PortBindings":{ 
+             "8883/tcp":[ 
+                { 
+                   "HostPort":"8883"
+                }
+             ],
+             "443/tcp":[ 
+                { 
+                   "HostPort":"443"
+                }
+             ],
+             "5671/tcp":[ 
+                { 
+                   "HostPort":"5671"
+                }
+             ]
+          }
+       }
     }
     ```
-1. **Kaydet**’e tıklayın.
+1. **Kaydet**'e tıklayın.
    
-1. **İleri**’ye tıklayın.
+1. **İleri**'ye tıklayın.
 
-#### <a name="step-2-specify-routes"></a>2\. adım: Rota belirtme 
+#### <a name="step-2-specify-routes"></a>2\. Adım: yolları belirtme 
 
-1. **Rotaları belirtin** sekmesinde, **azureiotsecurity** modülünden **$upstream**iletileri ileten bir yolunuz (açık veya kapalı) olduğundan emin olun. 
-1. **İleri**’ye tıklayın.
+1. **Rotaları belirtin** sekmesinde, **azureiotsecurity** modülünden iletileri aşağıdaki örneklere göre **$upstream** iletmek için bir yolunuz (açık veya kapalı) olduğundan emin olun ve ardından **İleri**' ye tıklayın. 
 
-    ~~~Default implicit route
-    "route": "FROM /messages/* INTO $upstream" 
-    ~~~
+~~~Default implicit route
+"route": "FROM /messages/* INTO $upstream" 
+~~~
 
-    ~~~Explicit route
-    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-    ~~~
+~~~Explicit route
+"ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
+~~~
 
-#### <a name="step-3-review-deployment"></a>3\. adım: Dağıtım gözden geçirin
+#### <a name="step-3-review-deployment"></a>3\. Adım: dağıtımı Inceleme
 
 - Dağıtımı **gözden geçir** sekmesinde dağıtım bilgilerinizi gözden geçirin ve ardından dağıtımı tamamladıktan sonra **Gönder** ' i seçin.
 
@@ -152,7 +166,7 @@ Bir sorunla karşılaşırsanız, kapsayıcı günlükleri IoT Edge bir güvenli
    
 1. Aşağıdaki kapsayıcıların çalıştığını doğrulayın:
    
-   | Name | GÖRÜNTÜYLE |
+   | Ad | GÖRÜNTÜYLE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |

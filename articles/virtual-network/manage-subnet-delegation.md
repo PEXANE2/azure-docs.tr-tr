@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2019
 ms.author: kumud
-ms.openlocfilehash: 9bf44aa5ab18f94ec91650548dc13360ce1b1f3d
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 5fa340fc3c839d74f292f551b73184ea4df1c0f1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71938505"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72175959"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Alt ağ temsili ekleme veya kaldırma
 
@@ -36,15 +36,21 @@ Bu bölümde, bir Azure hizmetine daha sonra temsilciliceksiniz bir sanal ağ ve
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Name | *MyVirtualNetwork*girin. |
+    | Ad | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.0.0.0/16*girin. |
-    | Aboneliğiniz | Aboneliğinizi seçin.|
+    | Abonelik | Aboneliğinizi seçin.|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
     | Konum | **EastUS**öğesini seçin.|
     | Alt ağ adı | *Mysubnet*yazın. |
     | Alt ağ adresi aralığı | *10.0.0.0/24*girin. |
     |||
 1. Kalanı varsayılan olarak bırakın ve ardından **Oluştur**' u seçin.
+
+## <a name="permissons"></a>İzinlere
+
+Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız, aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write`.
+
+Yerleşik [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
 
 ## <a name="delegate-a-subnet-to-an-azure-service"></a>Bir Azure hizmetine alt ağ atama
 

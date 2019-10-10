@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2019
-ms.author: subramar
-ms.openlocfilehash: 09994c7676de8470efff1707598ddf32a48e41a0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.author: atsenthi
+ms.openlocfilehash: 45fc4c924a8fb794ad81529de74b98ee812f46c5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599192"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170433"
 ---
 # <a name="set-up-gmsa-for-windows-containers-running-on-service-fabric"></a>Service Fabric üzerinde çalışan Windows kapsayıcıları için gMSA 'Yı ayarlama
 
-GMSA 'yı (grup yönetilen hizmet hesapları) ayarlamak için, kümedeki tüm düğümlere bir kimlik`credspec`bilgisi belirtim dosyası () yerleştirilir. Dosya, sanal makine uzantısı kullanılarak tüm düğümlere kopyalanabilir.  `credspec` Dosya gMSA hesap bilgilerini içermelidir. `credspec` Dosya hakkında daha fazla bilgi için bkz. [kimlik bilgisi belirtimi oluşturma](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). Kimlik bilgisi belirtimi ve `Hostname` etiketi uygulama bildiriminde belirtilir. `Hostname` Etiket, kapsayıcının çalıştığı gMSA hesap adıyla eşleşmelidir.  `Hostname` Etiketi, kapsayıcının Kerberos kimlik doğrulaması kullanarak etki alanındaki diğer hizmetlere kimliğini doğrulamasına izin verir.  Aşağıdaki kod parçacığında, `Hostname` `credspec` ve uygulama bildiriminde öğesini belirtmek için bir örnek gösterilmektedir:
+GMSA 'yı (grup yönetilen hizmet hesapları) ayarlamak için, kümedeki tüm düğümlere bir kimlik bilgisi belirtim dosyası (`credspec`) yerleştirilir. Dosya, sanal makine uzantısı kullanılarak tüm düğümlere kopyalanabilir.  @No__t-0 dosyası gMSA hesap bilgilerini içermelidir. @No__t-0 dosyası hakkında daha fazla bilgi için bkz. [kimlik bilgisi belirtimi oluşturma](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec). Kimlik bilgisi belirtimi ve `Hostname` etiketi uygulama bildiriminde belirtilir. @No__t-0 etiketi, kapsayıcının altında çalıştığı gMSA hesap adıyla eşleşmelidir.  @No__t-0 etiketi, kapsayıcının Kerberos kimlik doğrulaması kullanarak etki alanındaki diğer hizmetlere kimliğini doğrulamasına izin verir.  @No__t-0 ve uygulama bildiriminde `credspec` belirtmeye yönelik bir örnek aşağıdaki kod parçacığında gösterilmektedir:
 
 ```xml
 <Policies>

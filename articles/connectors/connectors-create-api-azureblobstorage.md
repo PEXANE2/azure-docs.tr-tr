@@ -11,12 +11,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: ce59c238e50a1be6879b07e959b236f6181a8ce4
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 98a811508d5fa65135c224536b668145ea0808d0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703251"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176079"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps ile Azure Blob depolamada Bloblar oluşturma ve yönetme
 
@@ -24,17 +24,18 @@ Bu makalede, Azure Blob depolama Bağlayıcısı ile bir mantık uygulamasının
 
 Bir Azure Web sitesinde güncelleştirilmiş bir aracınız olduğunu varsayalım. mantıksal uygulamanız için tetikleyici işlevi görür. Bu olay gerçekleştiğinde, mantıksal uygulamanızdaki bir işlem olan BLOB depolama kapsayıcısında bir dosya olan bir dosya, mantıksal uygulamanızın güncelleştirilmesini sağlayabilirsiniz.
 
-> [!NOTE]
+> [!IMPORTANT]
 >
-> Logic Apps, [güvenlik duvarı kuralları](../storage/common/storage-network-security.md) olan ve aynı bölgede bulunan Azure depolama hesaplarına doğrudan erişemez. Ancak, bölgeler arasında iletişim kurmak için genel bir IP adresi kullanıldığından, Logic Apps, farklı bir bölgede bulunan Azure depolama hesaplarına erişebilirler. Yalnızca [bölgenizde yönetilen bağlayıcılar için gıden IP adreslerine](../logic-apps/logic-apps-limits-and-config.md#outbound)izin verdiğinizden emin olun. İsterseniz, burada daha gelişmiş seçenekleri de kullanabilirsiniz:
->
+> Logic Apps, [güvenlik duvarı kuralları](../storage/common/storage-network-security.md) olan ve aynı bölgede bulunan Azure depolama hesaplarına doğrudan erişemez. Bununla birlikte, [bölgenizde yönetilen bağlayıcılar için gıden IP adreslerine](../logic-apps/logic-apps-limits-and-config.md#outbound)izin verirseniz, Logic Apps, Azure Tablo depolama bağlayıcısını veya Azure kuyruk depolama bağlayıcısını kullandığınız durumlar dışında farklı bir bölgedeki depolama hesaplarına erişebilirler. Tablo depolama veya kuyruk depolamaya erişmek için yine de HTTP tetikleyicisini ve eylemlerini kullanabilirsiniz. 
+> Aksi takdirde, burada daha gelişmiş seçenekleri kullanabilirsiniz:
+> 
 > * Bir Azure sanal ağındaki kaynaklara bağlanabilecek bir [tümleştirme hizmeti ortamı](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)oluşturun.
 >
 > * API Management için adanmış bir katman kullanıyorsanız, API Management kullanarak depolama API 'sini önyükleyebilir ve güvenlik duvarı üzerinden ikinci IP adreslerine izin verebilirsiniz. Temel olarak, API Management tarafından kullanılan Azure sanal ağını depolama hesabının güvenlik duvarı ayarına ekleyin. Daha sonra Azure depolama API 'Lerini çağırmak için API Management eylemini veya HTTP eylemini kullanabilirsiniz. Ancak, bu seçeneği belirlerseniz, kimlik doğrulama işlemini kendiniz işlemeniz gerekir. Daha fazla bilgi için bkz. [basit kurumsal tümleştirme mimarisi](https://aka.ms/aisarch).
 
 Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [hızlı başlangıç: Ilk mantıksal uygulamanızı oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)' yı gözden geçirin. Bağlayıcıya özgü teknik bilgiler için bkz. [Azure Blob depolama Bağlayıcısı başvurusu](/connectors/azureblobconnector/).
 
-## <a name="limits"></a>Sınırlar
+## <a name="limits"></a>Değerleri
 
 * Varsayılan olarak, Azure Blob depolama eylemleri *50 MB veya daha küçük*olan dosyaları okuyabilir veya yazabilir. 50 MB 'den büyük ancak 1024 MB 'a kadar olan dosyaları işlemek için Azure Blob depolama eylemleri [ileti parçalama](../logic-apps/logic-apps-handle-large-messages.md)desteği sağlar. **BLOB Içeriğini al** eylemi, örtük olarak parçalama kullanır.
 
@@ -46,7 +47,7 @@ Logic Apps 'e yeni başladıysanız, [Azure Logic Apps](../logic-apps/logic-apps
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Bir Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 * Bir [Azure depolama hesabı ve depolama kapsayıcısı](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -76,7 +77,7 @@ Bu örnek, depolama kapsayıcıınızda bir blob 'un özellikleri eklendiğinde 
 
    2. Klasör listesinde, sağ açılı köşeli ayracı ( **>** ) seçin ve istediğiniz klasörü bulup seçinceye kadar tarayın.
 
-      ![Klasör seçin](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
+      ![Klasör Seç](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
 
    3. Tetikleyicinin klasör değişikliklerini ne sıklıkta denetlemesini istediğinizi belirlemek için aralığı ve sıklığı seçin.
 
@@ -111,7 +112,7 @@ Ya da bağlantınız zaten varsa, eylem için gerekli bilgileri sağlayın.
 
    1. **BLOB** kutusundan klasör simgesini seçin.
   
-      ![Klasör seçin](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
+      ![Klasör Seç](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
    2. Blob 'un **kimlik** numarasına göre istediğiniz dosyayı bulun ve seçin. Bu **kimlik** numarasını, daha önce açıklanan BLOB depolama tetikleyicisi tarafından döndürülen Blobun meta verilerinde bulabilirsiniz.
 

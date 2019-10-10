@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 570bf7968b3d6fac44dc770a7fda1e0784dbdcf9
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 7d7e69e8ad0c5b14ac7ed8b941a7949f4f675812
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886615"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176765"
 ---
 # <a name="security-controls-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için güvenlik denetimleri
 
@@ -43,14 +43,14 @@ Bu makale, Azure sanal makine ölçek kümelerine yerleşik olarak bulunan güve
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Authentication| Evet |  |
-| Authorization| Evet |  |
+| Kimlik doğrulama| Evet |  |
+| Yetkilendirme| Evet |  |
 
 ## <a name="data-protection"></a>Veri koruma
 
 | Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Bekleyen sunucu tarafı şifrelemesi: Microsoft tarafından yönetilen anahtarlar | Evet | Bkz. [Azure 'Da Linux sanal makinesini şifreleme](/azure/virtual-machines/linux/encrypt-disks) ve [Windows VM 'de sanal diskleri şifreleme](/azure/virtual-machines/windows/encrypt-disks). |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Bkz. [Azure 'Da Linux sanal makinesini şifreleme](/azure/virtual-machines/linux/disk-encryption-linux) ve [Windows VM 'de sanal diskleri şifreleme](/azure/virtual-machines/windows/encrypt-disks). |
 | Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Azure sanal makineleri [ExpressRoute](/azure/expressroute) ve VNET şifrelemesini destekler. Bkz. [VM 'lerde geçiş içi şifreleme](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Müşteri tarafından yönetilen anahtarlar desteklenen bir Azure şifreleme senaryosudur; bkz. [Azure şifrelemesi 'ne genel bakış](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
 | Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| Yok | |
