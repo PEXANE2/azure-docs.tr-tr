@@ -278,7 +278,7 @@
         - name: Çalışma zamanına genel bakış
           href: /azure/databricks/runtime/index
           maintainContext: true
-        - name: Databricks Runtime
+        - name: Databricks Çalışma Zamanı
           href: /azure/databricks/runtime/dbr
           maintainContext: true
         - name: Conda ile Databricks Runtime
@@ -1342,8 +1342,8 @@
             - name: Apache Spark ölçümlerini kullanma
               href: /azure/databricks/kb/metrics/spark-metrics
               maintainContext: true
-            - name: Notebooks
-              items: null
+        - name: Notebooks
+          items:
             - name: Spark özelliğinin değiştirilip değiştirilemeyeceğini denetleme
               href: /azure/databricks/kb/notebooks/check-spark-property-modifiable
               maintainContext: true
