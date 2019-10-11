@@ -1,17 +1,17 @@
 ---
-title: Örnekler - ISO 27001 şeması - Genel Bakış
-description: ISO 27001 şema örneğine genel bakış.
+title: Örnek - ISO 27001 şeması - Genel Bakış
+description: ISO 27001 şema örneğine genel bakış. Bu şema örneği, müşterilerin belirli ISO 27001 denetimlerini değerlendirmesine yardımcı olur.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 523babe60b87c80d2ff1e9aae53b53d3632495ad
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: dc58038497ade11ef23f4e8c1bd3b5254006455c
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978267"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248888"
 ---
 # <a name="overview-of-the-iso-27001-blueprint-sample"></a>ISO 27001 şema örneğine genel bakış
 

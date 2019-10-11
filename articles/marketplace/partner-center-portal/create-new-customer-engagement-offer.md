@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.openlocfilehash: f1d5f97328af699cb7245212b709c750a970392a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 703b8b5732109faed1523c678af612e7fc8dab6d
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969532"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244092"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>PowerApps teklifi & müşteri için yeni bir Dynamics 365 oluşturun
 
@@ -25,7 +25,7 @@ Bu konuda, PowerApps teklifinin & yeni bir Dynamics 365 müşteri katılımı i�
 >[!Note]
 > Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Lütfen değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
 
-## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
+## <a name="create-a-new-offer"></a>Yeni bir teklif oluşturun
 
 **+ Yeni teklif** düğmesini seçin ve ardından **Dynamics 365 for Customer Engagement & PowerApps** menü öğesini seçin. **Yeni teklif** iletişim kutusu görüntülenir.
 
@@ -47,7 +47,7 @@ Bu teklif için kullanmak istediğiniz seçeneği belirleyin.
 
 #### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
 
-Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başlayarak) sağlayarak müşterilerinizin teklifinizi ücretsiz olarak listeleyin.  Örneğin, `https://contoso.com/my-app`
+Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başlayarak) sağlayarak müşterilerinizin teklifinizi ücretsiz olarak listeleyin.  Örneğin: `https://contoso.com/my-app`.
 
 #### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
 
@@ -60,7 +60,7 @@ Uygulamanıza erişebilecekleri geçerli bir URL ( *http* veya *https*ile başla
 
 Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [Connect lider yönetimi](#connect-lead-management). 
 
-### <a name="test-drive"></a>Test sürüşü
+### <a name="test-drive"></a>Sınama sürücüsü
 
 Test sürücüsü, bu kullanıcılara teklifinizi "satın almadan önce dene" seçeneği sunarak, daha fazla dönüştürmeye ve yüksek oranda nitelikli müşteri adaylarının oluşturulmasına neden olacak şekilde sergilemenin harika bir yoludur. [Sınama sürücüleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
@@ -85,7 +85,7 @@ Aşağıdaki seçeneklerden seçim yapın:
 
 ## <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlama
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
 Daha fazla bilgi için bkz. [lider yönetimine genel bakış](./commercial-marketplace-get-customer-leads.md) .
 
@@ -99,7 +99,7 @@ Sonraki bölüme geçmeden önce **kaydetmeyi** unutmayın!
 
 En az bir ve en fazla üç kategori seçin. Bu, teklifinizi uygun Market arama alanına yerleştirmek için kullanılacaktır. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğine dikkat edin. 
 
-### <a name="industry"></a>Sektör
+### <a name="industry"></a>Standardındaki
 
 İsteğe bağlı olarak en fazla iki sektör seçerek teklifinizi Market 'te kategorilere ayırabilirsiniz. Teklifiniz bir sektöre özgü değilse, bu bölümü boş bırakın. Teklifinizin teklif açıklamasında seçili sektörlerin nasıl desteklediğinizden emin olun. 
 
@@ -134,7 +134,7 @@ Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama, görünt�
 > [!NOTE]
 > Teklif açıklaması (örneğin, açıklama, belgeler, ekran görüntüleri, kullanım koşulları vb.) için teklif listesi içeriği, "Bu uygulama yalnızca [Ingilizce olmayan dil] içinde kullanılabilir" olarak, Ingilizce olması gerekmez. Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
-### <a name="name"></a>Adı
+### <a name="name"></a>Name
 
 Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metin ile önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
@@ -157,7 +157,7 @@ Tanımlarınızı yazmak için bazı ipuçları:
 - Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın. 
 - Açıklamanızı biçimlendirmek ve daha ilgi çekici hale getirmek için HTML etiketleri kullanmayı düşünün.
 
-### <a name="search-keywords"></a>Anahtar sözcüklerde ara
+### <a name="search-keywords"></a>Anahtar sözcükleri ara
 
 Müşterilerin teklifinizi Market 'te bulmasına yardımcı olmak için isteğe bağlı en fazla üç arama anahtar sözcüğü girebilirsiniz. En iyi sonuçlar için, tanımlarınızda bu anahtar sözcükleri de kullanmayı deneyin.
 
@@ -199,7 +199,7 @@ Teklifinizin logosunu üç boyutta sağlayabilirsiniz: **küçük (48 x 48)** , 
 
 Hero görüntüsü isteğe bağlıdır. Bir tane sağlarsanız, 815 x 290 pikseli ölçmelidir.
 
-#### <a name="screenshots"></a>Ekran görüntüleri
+#### <a name="screenshots"></a>Görüntülerini
 
 Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. En az bir ekran görüntüsü gereklidir ve en fazla beş tane ekleyebilirsiniz. Tüm ekran görüntüleri 1280 x 720 piksel olmalıdır.
 
@@ -211,7 +211,7 @@ Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. E
 
 - [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="availability"></a>Erişilebilirlik
+## <a name="availability"></a>Kullanılabilirlik
 
 **Kullanılabilirlik** sayfası, teklifinizi nerede ve nasıl kullanılabilir hale getirmek için size seçenekler sağlar.
 
@@ -362,7 +362,7 @@ Bu sayfa teklifinizi doğrulamamıza yardımcı olmak için teklifiniz hakkında
 
 Teklifinizin bir belge (. PDF biçiminde) içinde listelenen anahtar kullanımı senaryolarını listeleyen bir. PDF dosyası yüklemeniz gerekir. Burada listelenen tüm senaryolar, Market için teklifinizi onaylamadan önce doğrulama takımımız tarafından doğrulanabilir.
 
-## <a name="publish"></a>Yayımlama
+## <a name="publish"></a>Yayınlamanız
 
 ### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 

@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: b8faf3801a2217e6ef7040a7c2b67c7e6fad8e60
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: ea3fc21891f1e4d4e744449032a4b2cfcdfbb2f0
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709596"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177527"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft Müşteri Sözleşmesi Azure kredi bakiyesini izleme
 
 Azure portalında Microsoft Müşteri Sözleşmesi için Azure kredi bakiyesini denetleyebilirsiniz. Krediler kapsamında yer alan ücretleri ödemek için kredileri kullanırsınız.
 
-Krediler kapsamında olmayan ürünleri kullandığınızda veya kullanımınız kredi bakiyenizi aştığında ücretlendirilirsiniz. Daha fazla bilgi için bkz. [Azure kredileri kapsamında olmayan ürünler.(#products-that-arent-covered-by-azure-credits).
+Krediler kapsamında olmayan ürünleri kullandığınızda veya kullanımınız kredi bakiyenizi aştığında ücretlendirilirsiniz. Daha fazla bilgi için bkz. [Azure kredileri kapsamında olmayan ürünler](#products-that-arent-covered-by-azure-credits).
 
 Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminiz olup olmadığını denetleyin](#check-access-to-a-microsoft-customer-agreement).
 

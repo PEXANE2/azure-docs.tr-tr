@@ -4,16 +4,16 @@ description: Bu makalede, bir yöneticinin Azure EA portalında gerçekleştirdi
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/25/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 87947fb29d8fa7dd86818caef139e776c04c7650
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308100"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035211"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -87,10 +87,11 @@ Hesap aktarımından önce göz önünde bulundurmanız gereken diğer noktalar:
 - Hedef ve kaynak kaydı için bir EA yöneticisinden onay gerekir
   - Bazı durumlarda Microsoft, kaynak kaydının EA yöneticisinden ek onay isteyebilir
 - Hesap aktarımı gereksinimlerinizi karşılamıyorsa, kayıt aktarımı yapmayı düşünün.
-- Hesap aktarımı tüm EA departman yöneticileri de dahil olmak üzere tüm hizmetleri, abonelikleri, hesapları, departmanları ve kayıt yapısının tamamını aktarır.
-- Hesap aktarımı, kaynak kayıt durumunu _Aktarıldı_ olarak ayarlar. Aktarılan hesap yalnızca geçmiş kullanım raporlama amacıyla kullanılabilir.
-- Durumu aktarıldı olan bir kayda rol veya abonelik ekleyemezsiniz. Durum, kayda aykırı ek kullanım yapılmasını önler.
-- Kaynak anlaşmasındaki kalan parasal taahhüt bakiyeleri, geleceğe dönük hükümler de dahil olmak üzere kaybedilir.
+- Hesap aktarımı, belirli hesaplarla ilgili tüm hizmetleri ve abonelikleri aktarır.
+- Aktarım tamamlandıktan sonra, aktarılan hesap, kaynak kayıt altında etkin değil olarak görünür.
+- Hesap aktarımı, hedef kayıt başlangıç tarihi içinde herhangi bir tarihe kadar geri alınabilir.
+- Hesap, kaynak kayıtta etkin aktarım tarihine ve hedef kayıtta başlangıç tarihine karşılık gelen bitiş tarihini gösterir.
+- Hesap için etkin aktarım tarihi öncesinde gerçekleştirilen tüm kullanımlar, kaynak kaydın altında kalır.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Kuruluş kaydını yeni bir kayda aktarma
@@ -156,7 +157,7 @@ Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelik
 - Depolama gibi hizmetler için erişim anahtarları. Daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../storage/common/storage-account-overview.md).
 - Azure Sanal Makineleri gibi hizmetler için Uzaktan Erişim kimlik bilgileri.
 
-Alıcının Azure kaynaklarına erişimi kısıtlaması gerekiyorsa, hizmetle ilişkili tüm gizli dizileri güncelleştirmeyi düşünmelidir. Çoğu kaynak aşağıdaki adımlar kullanılarak güncelleştirilir:
+Alıcının Azure kaynaklarına erişimi kısıtlaması gerekiyorsa, hizmetle ilişkili tüm gizli dizileri güncelleştirmeyi düşünmelidir. Çoğu kaynak aşağıdaki adımlar kullanılarak güncelleştirilebilir:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Merkez menüsünde **Tüm kaynaklar**'ı seçin.

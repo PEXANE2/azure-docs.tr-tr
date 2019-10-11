@@ -1,0 +1,97 @@
+### YamlMime:Landing
+title: Azure SQL Veri Ambarı
+summary: SQL ilişkisel veritabanlarını yüksek düzeyde paralel işleme (MPP) ile birleştiren Azure SQL Veri Ambarı’nı nasıl kullanacağınızı öğrenin. Öğreticiler ve diğer belgeler, bir veri ambarı kullanarak verileri nasıl tasarlayacağınızı, yükleyeceğinizi, yöneteceğinizi ve analiz edeceğinizi gösterir.
+metadata:
+  title: Azure SQL Veri Ambarı
+  description: açıklama
+  services: sql-data-warehouse
+  ms.service: sql-data-warehouse
+  ms.subservice: design
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 10/03/2019
+  ms.openlocfilehash: ffb90d5d15b83570511c3f70b39f9f83f000ab35
+  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 10/10/2019
+  ms.locfileid: "72245856"
+landingContent:
+- title: SQL Veri Ambarı Hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Veri Ambarı nedir?
+      url: sql-data-warehouse-overview-what-is.md
+  - linkListType: architecture
+    links:
+    - text: SQL Veri Ambarı - MPP mimarisi
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: Veri ambarınız için ipuçları ve en iyi yöntemler
+      url: cheat-sheet.md
+- title: Başlarken
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: SQL Data Warehouse oluşturma
+      url: create-data-warehouse-portal.md
+- title: Veri yükleme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: PolyBase veri yükleme stratejisi tasarlama
+      url: design-elt-data-loading.md
+    - text: Veri yükleme en iyi yöntemleri
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Data Lake Storage’dan veri yükleme
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: Azure blob depolamadan veri yükleme
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: Performans ayarlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Veri Ambarı için en iyi yöntemler
+      url: sql-data-warehouse-best-practices.md
+    - text: Sıralı kümelenmiş columnstore dizini ayarlama
+      url: performance-tuning-ordered-cci.md
+    - text: İş yükü ayarlama için gerçekleştirilmiş görünümleri kullanma
+      url: performance-tuning-materialized-views.md
+  - linkListType: how-to-guide
+    links:
+    - text: İş yükünüzü çözümleme
+      url: analyze-your-workload.md
+- title: SQL Veri Ambarınızı yönetme ve izleme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Veri Ambarınızı yönetmeyi ve izlemeyi öğrenin
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: DMV’leri kullanarak iş yükünüzü izleme
+      url: sql-data-warehouse-manage-monitor.md
+    - text: İş yükü önem derecesini yönetme ve izleme
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: SQL Veri Ambarınızın güvenliğini sağlama
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Veri Ambarınızın güvenliğini sağlamaya yönelik temel bilgileri anlayın
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Active Directory kimlik doğrulamasını yapılandırma
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+- title: Kaynaklar
+  linkLists:
+  - linkListType: video
+    links:
+    - text: En son Azure SQL Veri Ambarı videolarını izleyin
+      url: sql-data-warehouse-videos.md

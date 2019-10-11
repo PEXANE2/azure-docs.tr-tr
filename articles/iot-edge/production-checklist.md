@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 36465f016eeb066c0e12f6434deb98fd7b10966a
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958747"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244035"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -177,9 +177,11 @@ Bu denetim listesi, güvenlik duvarı kuralları için bir başlangıç noktası
    | mcr.microsoft.com  | 443 | Microsoft Container Registry |
    | global.azure-devices-provisioning.net  | 443 | DPS erişimi (isteğe bağlı) |
    | \*.azurecr.io | 443 | Kişisel ve üçüncü taraf kapsayıcı kayıt defterleri |
-   | \*.blob.core.windows.net | 443 | Görüntü değişimleri indirmesi | 
+   | \*.blob.core.windows.net | 443 | Blob depolamadan Azure Container Registry Image değişimleri indirin  | 
    | \*.azure-devices.net | 5671, 8883, 443 | IoT Hub erişim |
    | \*.docker.io  | 443 | Docker Hub erişimi (isteğe bağlı) |
+
+Bu güvenlik duvarı kurallarından bazıları Azure Container Registry devralınır. Daha fazla bilgi için bkz. [güvenlik duvarı arkasındaki Azure Container Registry 'ye erişmek için kuralları yapılandırma](../container-registry/container-registry-firewall-access-rules.md).
 
 ### <a name="configure-communication-through-a-proxy"></a>Ara sunucu üzerinden iletişimi yapılandırma
 

@@ -234,6 +234,10 @@
       items:
         - name: Güvenlik ve ilke
           href: security-policy.md
+        - name: Azure Disk Şifrelemesi
+          href: disk-encryption-overview.md
+        - name: Yerleşik güvenlik denetimleri
+          href: virtual-machines-windows-security-controls.md
     - name: Durumlar ve yaşam döngüsü
       href: states-lifecycle.md
     - name: İzleme
@@ -242,8 +246,6 @@
       href: backup-recovery.md
     - name: Altyapı örneği
       href: infrastructure-example.md
-    - name: Yerleşik güvenlik denetimleri
-      href: virtual-machines-windows-security-controls.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: VM oluşturma
@@ -286,8 +288,31 @@
         - name: Tam zamanında erişim
           href: ../../security-center/security-center-just-in-time.md
         - name: Şifreleme
-          href: encrypt-disks.md
-          displayName: encryption
+          items:
+            - name: Windows için disk şifreleme senaryoları
+              href: disk-encryption-windows.md
+            - name: Azure CLI ile VM şifreleme
+              href: disk-encryption-cli-quickstart.md
+            - name: PowerShell ile VM şifreleme
+              href: disk-encryption-powershell-quickstart.md
+            - name: Azure portalıyla VM şifreleme
+              href: disk-encryption-portal-quickstart.md
+            - name: Azure Disk Şifrelemesi için anahtar kasası
+              href: disk-encryption-key-vault.md
+            - name: Disk şifrelemesi örnek betikleri
+              href: disk-encryption-sample-scripts.md
+            - name: Disk şifrelemesi sorunlarını giderme
+              href: disk-encryption-troubleshooting.md
+            - name: Disk şifrelemesi hakkında SSS
+              href: disk-encryption-faq.md
+            - name: Disk şifrelemesi - önceki sürüm (AAD)
+              items:
+                - name: Genel Bakış
+                  href: disk-encryption-overview-aad.md
+                - name: Azure Disk Şifrelemesi için anahtar kasası
+                  href: disk-encryption-key-vault-aad.md
+                - name: Windows için disk şifreleme senaryoları
+                  href: disk-encryption-windows-aad.md
         - name: WinRM kullanma
           href: winrm.md
         - name: Erişim denetimleri kullanma

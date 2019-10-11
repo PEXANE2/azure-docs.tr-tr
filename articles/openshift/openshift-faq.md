@@ -8,18 +8,18 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 8f7349310f72c8cccc7b1906239ece3038dd7861
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203527"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249211"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift SSS
 
 Bu makalede, Microsoft Azure Red Hat OpenShift hakkında sık sorulan sorular (SSS) ele alınmaktadır.
 
-## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
+## <a name="how-do-i-get-started"></a>Nasıl başlayabilirim?
 
 Azure Red Hat OpenShift kullanabilmeniz için, en az 4 Azure Red Hat OpenShift ayrılmış uygulama düğümü satın almanız gerekir.
 
@@ -39,7 +39,7 @@ Hayır. Ancak, eşleme yoluyla bir Azure Red Hat OpenShift kümesini mevcut bir 
 
 ## <a name="what-cluster-operations-are-available"></a>Hangi küme işlemleri kullanılabilir?
 
-Yalnızca işlem düğümleri sayısını ölçeklendirebilir veya azaltabilirsiniz. Oluşturulduktan sonra `Microsoft.ContainerService/openShiftManagedClusters` kaynak için başka değişikliklere izin verilmez. En fazla işlem düğümü sayısı 20 ile sınırlıdır.
+Yalnızca işlem düğümleri sayısını ölçeklendirebilir veya azaltabilirsiniz. Oluşturulduktan sonra `Microsoft.ContainerService/openShiftManagedClusters` kaynağına başka değişikliklere izin verilmez. En fazla işlem düğümü sayısı 20 ile sınırlıdır.
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>Hangi sanal makine boyutlarını kullanabilirim?
 
@@ -59,11 +59,11 @@ Hayır, geçerli zamanda değil.
 
 ## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Jenkins gibi araçları kullanabilmeniz için Docker kayıt defteri dışarıdan kullanılabilir mi?
 
-Docker kayıt defteri `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` ancak, bir güçlü depolama dayanıklılık garantisi sağlanmaz. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)de kullanabilirsiniz.
+Docker kayıt defteri `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` ' dan kullanılabilir, ancak güçlü bir depolama dayanıklılık garantisi sağlanmaz. [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)de kullanabilirsiniz.
 
 ## <a name="is-cross-namespace-networking-supported"></a>Çapraz ad alanı ağı destekleniyor mu?
 
-Müşteri ve bireysel proje yöneticileri, nesneleri kullanarak `NetworkPolicy` her proje için çapraz ad alanı ağını (reddetme dahil) özelleştirebilir.
+Müşteri ve bireysel proje yöneticileri, `NetworkPolicy` nesnelerini kullanarak her proje için çapraz ad alanı ağını (reddetme dahil) özelleştirebilir.
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>Yönetici, kullanıcıları ve kotaları yönetebilir mi?
 
@@ -71,7 +71,7 @@ Evet. Azure Red Hat OpenShift Yöneticisi, Kullanıcı tarafından oluşturulan 
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Bir kümeyi yalnızca belirli Azure AD kullanıcılarıyla kısıtlayabilir miyim?
 
-Evet. Azure AD uygulamasını yapılandırarak, hangi Azure AD kullanıcılarının bir kümede oturum açmasını kısıtlayabilirsiniz. Ayrıntılar için bkz [. nasıl yapılır: Uygulamanızı bir Kullanıcı kümesiyle sınırlayın](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+Evet. Azure AD uygulamasını yapılandırarak, hangi Azure AD kullanıcılarının bir kümede oturum açmasını kısıtlayabilirsiniz. Ayrıntılar için bkz [. nasıl yapılır: uygulamanızı bir Kullanıcı kümesiyle kısıtlama](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Bir kümenin birden fazla Azure bölgesinde işlem düğümleri olabilir mi?
 
@@ -85,15 +85,15 @@ Hayır. Küme Yöneticisi de dahil olmak üzere tüm kaynaklar müşteri aboneli
 
 Evet. OSBA 'yi Azure Red Hat OpenShift ile birlikte kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure için hizmet Aracısı açma](https://github.com/Azure/open-service-broker-azure#openshift-project-template) .
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Farklı bir abonelikte bir sanal ağa eşdüzey ve hata almaya `Failed to get vnet CIDR` çalışıyorum.
+## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Farklı bir abonelikte bir sanal ağ üzerinde eşdüzey ve `Failed to get vnet CIDR` hatası alma girişimi yaşıyorum.
 
-Sanal ağı olan abonelikte, `Microsoft.ContainerService` sağlayıcıyı ile kaydettiğinizden emin olun`az provider register -n Microsoft.ContainerService --wait` 
+Sanal ağı olan abonelikte `Microsoft.ContainerService` sağlayıcısını `az provider register -n Microsoft.ContainerService --wait` ile kaydettiğinizden emin olun 
 
 ## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Azure Red Hat OpenShift (ARO) bakım işlemi nedir?
 
 ARO: yükseltmeler, etcd verilerinin yedeklenmesi ve geri yüklenmesi ve bulut sağlayıcısının başlattığı bakım için üç tür bakım vardır.
 
-+ Yükseltmeler yazılım yükseltmeleri ve Cvileri içerir. CVE düzeltmesi çalıştırılarak çalışır `yum update` ve anında risk azaltma için sağlar.  Paralel olarak, gelecekteki küme oluşturmak için yeni bir görüntü derlemesi oluşturulacaktır.
++ Yükseltmeler yazılım yükseltmeleri ve Cvileri içerir. CVE düzeltmesi başlangıçta `yum update` çalıştırılarak oluşur ve anında risk azaltma için sağlar.  Paralel olarak, gelecekteki küme oluşturmak için yeni bir görüntü derlemesi oluşturulacaktır.
 
 + Etcd verilerinin yedeklenmesi ve yönetimi, eyleme bağlı olarak küme kapalı kalma süresi gerektirebilecek otomatikleştirilmiş bir işlemdir. Etcd veritabanı bir yedekten geri yüklenirse kapalı kalma süresi olacaktır. Etcd 'yi her saat yedekliyoruz ve son 6 saat yedeklemenin tutulması önerilir.
 
@@ -129,9 +129,9 @@ Etcd düzeyinde şifrelenmez. Etkinleştirme seçeneği şu anda desteklenmiyor.
 
 Syslog, Docker günlükleri, Journal ve dmesg, yönetilen hizmet tarafından işlenir ve müşterilere gösterilmez.
 
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Bir müşteri, düğüm düzeyindeki CPU/bellek gibi ölçümlere nasıl erişim alabilir, bu da ölçeklendirme, hata ayıklama sorunları vb. için işlem gerçekleştirebilir. Bir Aro kümesi üzerinde çalışmayamıyorum. `kubectl top`
+## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Bir müşteri, düğüm düzeyindeki CPU/bellek gibi ölçümlere nasıl erişim alabilir, bu da ölçeklendirme, hata ayıklama sorunları vb. için işlem gerçekleştirebilir. @No__t-0 ' ı bir ARO kümesinde çalıştıramıyorum.
 
-`kubectl top`Red Hat OpenShift üzerinde kullanılamaz. Bu, OpenShift izleme yığınına dahil olmayan, her ikisi de Heapster (kullanım dışı) veya ölçüm-sunucu (ınubating veya Alpha) için bir yedekleme ölçümleri kaynağı gerektirir.
+`kubectl top` Red Hat OpenShift üzerinde kullanılamaz. Bu, OpenShift izleme yığınına dahil olmayan, her ikisi de Heapster (kullanım dışı) veya ölçüm-sunucu (ınubating veya Alpha) için bir yedekleme ölçümleri kaynağı gerektirir.
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO için varsayılan Pod Zamanlayıcı Yapılandırması nedir?
 
@@ -189,9 +189,9 @@ Bu, Azure AD tümleştirmesi aracılığıyla elde edilir. 
 
 Her bir Azure Red Hat OpenShift kümesi, belirli bir müşteriye ayrılmıştır ve müşterinin aboneliği dahilinde bulunur. 
 
-## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>Kalıcı depolama çözümlerini seçebiliriz. ÇALIŞTIRMAYAN? 
+## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>OCS gibi kalıcı depolama çözümlerini seçebilir miyim? 
 
-Seçebileceğiniz iki depolama sınıfı vardır: Azure diski ve Azure dosyası.
+Seçebileceğiniz iki depolama sınıfı vardır: Azure disk ve Azure dosyası.
 
 ## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Küme nasıl güncelleştirilir (güvenlik açıklarına bağlı olarak Majors ve sömürmeyi amaçlama dahil)?
 

@@ -7,30 +7,30 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 075eaaa188307e4320337ef21fd0875942e9e7e7
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327663"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249349"
 ---
-# <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
+# <a name="planning-for-an-azure-files-deployment"></a>Azure dosyaları dağıtımını planlama
 
-[Azure dosyaları](storage-files-introduction.md) tam olarak yönetilen dosya paylaşımları endüstri standardı SMB protokolünü erişilebilen bulutta sunar. Azure dosyaları tam olarak yönetildiğinden, üretim senaryolarında dağıtmak bir dosya sunucusu veya NAS cihazını dağıtmaktan ve yönetmekten çok daha kolaydır. Bu makalede, kuruluşunuzda üretim kullanımı için bir Azure dosya paylaşımının dağıtılmasında dikkate alınması gereken konular ele alınmaktadır.
+[Azure dosyaları](storage-files-introduction.md) , bulutta ENDÜSTRI standardı SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosyaları tam olarak yönetildiğinden, üretim senaryolarında dağıtmak bir dosya sunucusu veya NAS cihazını dağıtmaktan ve yönetmekten çok daha kolaydır. Bu makalede, kuruluşunuzda üretim kullanımı için bir Azure dosya paylaşımının dağıtılmasında dikkate alınması gereken konular ele alınmaktadır.
 
 ## <a name="management-concepts"></a>Yönetim kavramları
 
  Aşağıdaki diyagramda Azure dosya yönetimi yapıları gösterilmektedir:
 
-![Dosya Yapısı](./media/storage-files-introduction/files-concepts.png)
+![Dosya yapısı](./media/storage-files-introduction/files-concepts.png)
 
-* **Depolama hesabı**: Tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için, [Ölçeklenebilirlik ve Performans Hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) konusuna bakın.
+* **Depolama hesabı**: tüm Azure depolama erişimi bir depolama hesabı üzerinden yapılır. Depolama hesabı kapasitesi hakkında ayrıntılı bilgi için bkz. [ölçeklenebilirlik ve performans hedefleri](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
-* **Paylaşma**: Bir dosya depolama payı, Azure 'da bir SMB dosya paylaşımıdır. Tüm dizinler ve dosyalar üst paylaşımda oluşturulmalıdır. Hesap sınırsız sayıda paylaşım içerebilir ve bir paylaşım, dosya paylaşımının toplam kapasitesine kadar sınırsız sayıda dosyayı depolayabilirler. Standart dosya paylaşımları için toplam kapasite en fazla 5 TiB (GA) veya 100 TiB (Önizleme), Premium dosya paylaşımları için ise toplam kapasite 100 TiB 'ye kadar olur.
+* **Paylaşma**: bir dosya depolama alanı, Azure 'DA bir SMB dosya paylaşımıdır. Tüm dizinlerin ve dosyaların bir üst paylaşımda oluşturulması gerekir. Hesap sınırsız sayıda paylaşım içerebilir ve bir paylaşım, dosya paylaşımının toplam kapasitesine kadar sınırsız sayıda dosyayı depolayabilirler. Standart dosya paylaşımları için toplam kapasite en fazla 5 TiB (GA) veya 100 TiB (Önizleme), Premium dosya paylaşımları için ise toplam kapasite 100 TiB 'ye kadar olur.
 
-* **Dizin**: İsteğe bağlı bir dizin hiyerarşisi.
+* **Dizin**: dizinlerin isteğe bağlı bir hiyerarşisi.
 
-* **Dosya**: Paylaşımdaki bir dosya. Dosya boyutu en fazla 1 TiB olabilir.
+* **Dosya**: paylaşımdaki bir dosya. Dosya boyutu en fazla 1 TiB olabilir.
 
 * **URL biçimi**: Dosya REST protokolüyle yapılan bir Azure dosya paylaşımıyla ilgili istekler için, dosyalar aşağıdaki URL biçimi kullanılarak adreslenebilir:
 
@@ -42,26 +42,26 @@ ms.locfileid: "71327663"
 
 Azure dosyaları, verilerinize erişmek için ayrı olarak veya birbirleriyle birlikte kullanabileceğiniz iki, yerleşik, uygun veri erişim yöntemleri sunar:
 
-1. **Doğrudan bulut erişimi**: Tüm Azure dosya paylaşımlarındaki [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)ve/veya [Linux](storage-how-to-use-files-linux.md) , sektör standart sunucu ileti bloğu (SMB) protokolü veya Dosya REST API aracılığıyla bağlanabilir. SMB, paylaşımdaki dosyalara okuma ve yazma işlemleri doğrudan Azure 'daki dosya paylaşımında yapılır. Azure 'daki bir VM tarafından bağlamak için, işletim sistemindeki SMB istemcisinin en az SMB 2,1 ' i desteklemesi gerekir. Örneğin, bir kullanıcının iş istasyonunda olduğu gibi şirket içi bağlamak için, iş istasyonu tarafından desteklenen SMB istemcisinin en az SMB 3,0 (şifreleme ile) desteklemesi gerekir. SMB 'nin yanı sıra, yeni uygulamalar veya hizmetler, yazılım geliştirme için kolay ve ölçeklenebilir bir uygulama programlama arabirimi sağlayan Dosya REST aracılığıyla dosya paylaşımının doğrudan erişimine sahip olabilir.
-2. **Azure dosya eşitleme**: Azure Dosya Eşitleme, paylaşımlar şirket içinde veya Azure 'da Windows sunucularına çoğaltılabilir. Kullanıcılarınız, bir SMB veya NFS paylaşımından olduğu gibi, Windows Server aracılığıyla dosya paylaşımıyla erişebilirler. Bu, şube senaryosunda olduğu gibi verilerin bir Azure veri merkezinde erişildiği ve değiştirildiği senaryolar için yararlıdır. Veriler, birden fazla şube ofisi gibi birden çok Windows Server uç noktası arasında çoğaltılabilir. Son olarak, veriler Azure dosyaları ile katmanlanmış olabilir, bu nedenle tüm veriler sunucu aracılığıyla erişilebilir olur ancak sunucu, verilerin tam bir kopyasına sahip değildir. Bunun yerine, verileriniz Kullanıcı tarafından açıldığında sorunsuz bir şekilde geri çekilir.
+1. **Doğrudan bulut erişimi**: herhangi bir Azure dosya paylaşımının, sektör standart sunucu ileti bloğu (SMB) protokolü veya Dosya REST API aracılığıyla [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)ve/veya [Linux](storage-how-to-use-files-linux.md) tarafından bağlanabilir. SMB, paylaşımdaki dosyalara okuma ve yazma işlemleri doğrudan Azure 'daki dosya paylaşımında yapılır. Azure 'daki bir VM tarafından bağlamak için, işletim sistemindeki SMB istemcisinin en az SMB 2,1 ' i desteklemesi gerekir. Örneğin, bir kullanıcının iş istasyonunda olduğu gibi şirket içi bağlamak için, iş istasyonu tarafından desteklenen SMB istemcisinin en az SMB 3,0 (şifreleme ile) desteklemesi gerekir. SMB 'nin yanı sıra, yeni uygulamalar veya hizmetler, yazılım geliştirme için kolay ve ölçeklenebilir bir uygulama programlama arabirimi sağlayan Dosya REST aracılığıyla dosya paylaşımının doğrudan erişimine sahip olabilir.
+2. **Azure dosya eşitleme**: Azure dosya eşitleme ile paylaşımlar, şirket Içinde veya Azure 'Da Windows sunucularına çoğaltılabilir. Kullanıcılarınız, bir SMB veya NFS paylaşımından olduğu gibi, Windows Server aracılığıyla dosya paylaşımıyla erişebilirler. Bu, şube senaryosunda olduğu gibi verilerin bir Azure veri merkezinde erişildiği ve değiştirildiği senaryolar için yararlıdır. Veriler, birden fazla şube ofisi gibi birden çok Windows Server uç noktası arasında çoğaltılabilir. Son olarak, veriler Azure dosyaları ile katmanlanmış olabilir, bu nedenle tüm veriler sunucu aracılığıyla erişilebilir olur ancak sunucu, verilerin tam bir kopyasına sahip değildir. Bunun yerine, verileriniz Kullanıcı tarafından açıldığında sorunsuz bir şekilde geri çekilir.
 
 Aşağıdaki tabloda, kullanıcılarınızın ve uygulamalarınızın Azure dosya paylaşımınıza nasıl erişebileceği gösterilmektedir:
 
 | | Doğrudan bulut erişimi | Azure Dosya Eşitleme |
 |------------------------|------------|-----------------|
 | Hangi protokollerin kullanılması gerekir? | Azure dosyaları SMB 2,1, SMB 3,0 ve Dosya REST API destekler. | Azure dosya paylaşımınıza Windows Server (SMB, NFS, FTPS, vb.) üzerinde desteklenen herhangi bir protokol aracılığıyla erişin |  
-| İş yükünüzü nerede çalıştırıyorsunuz? | **Azure 'da**: Azure dosyaları verilerinize doğrudan erişim sağlar. | **Yavaş ağ ile şirket içi**: Windows, Linux ve macOS istemcileri, yerel bir şirket içi Windows dosya paylaşımından Azure dosya paylaşımınızın hızlı bir önbelleği olarak bağlanabilir. |
+| İş yükünüzü nerede çalıştırıyorsunuz? | **Azure 'da**: Azure dosyaları verilerinize doğrudan erişim sağlar. | **Yavaş ağ ile şirket içi**: Windows, Linux ve MacOS istemcileri, yerel bir şirket Içi Windows dosya paylaşımından Azure dosya paylaşımınızın hızlı bir önbelleği olarak bağlanabilir. |
 | Hangi ACL düzeyine ihtiyacınız var? | Paylaşma ve dosya düzeyi. | Paylaşma, dosya ve Kullanıcı düzeyi. |
 
 ## <a name="data-security"></a>Veri güvenliği
 
 Azure dosyaları, veri güvenliğini sağlamaya yönelik çeşitli yerleşik seçeneklere sahiptir:
 
-* Her iki hat üzeri protokolde şifreleme desteği: SMB 3,0 şifreleme ve dosya HTTPS üzerinden geri kalanı. Varsayılan olarak: 
+* Her iki hat üzeri protokolde şifreleme desteği: SMB 3,0 şifreleme ve HTTPS üzerinden dosya geri kalanı. Varsayılan olarak: 
     * SMB 3,0 şifrelemesini destekleyen istemciler şifreli bir kanal üzerinden veri gönderme ve alma.
     * Şifreleme ile SMB 3,0 ' i desteklemeyen istemciler, şifreleme olmadan SMB 2,1 veya SMB 3,0 üzerinden veri merkezi olarak iletişim kurabilir. SMB istemcilerinin, şifreleme olmadan, SMB 2,1 veya SMB 3,0 üzerinden veri merkezine iletişim kurmasına izin verilmez.
     * İstemciler, HTTP veya HTTPS ile dosya geri kalanı üzerinden iletişim kurabilir.
-* Rest 'de şifreleme ([Azure depolama hizmeti şifrelemesi](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Depolama Hizmeti Şifrelemesi (SSE) tüm depolama hesapları için etkinleştirilir. Rest verileri, tam olarak yönetilen anahtarlarla şifrelenir. Bekleyen şifreleme, depolama maliyetlerini artırmaz veya performansı düşürür. 
+* Bekleyen şifreleme ([Azure depolama hizmeti şifrelemesi](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): tüm depolama hesapları için depolama HIZMETI ŞIFRELEMESI (SSE) etkin. Rest verileri, tam olarak yönetilen anahtarlarla şifrelenir. Bekleyen şifreleme, depolama maliyetlerini artırmaz veya performansı düşürür. 
 * Geçiş sırasında isteğe bağlı şifreli veri gereksinimi: seçildiğinde, Azure dosyaları şifrelenmemiş kanallar üzerinden verilere erişimi reddeder. Özellikle, şifreleme bağlantılarıyla yalnızca HTTPS ve SMB 3,0 kullanılabilir.
 
     > [!Important]  
@@ -122,11 +122,11 @@ Kullandığınız paylaşımın boyutunu, kullanılan GiB 'nizin altında azaltm
 
 Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç örnek gösterilmektedir:
 
-|Kapasite (GiB) | Temel IOPS | Veri bloğu ıOPS | Çıkış (MIB/s) | Giriş (MIB/s) |
+|Kapasite (GiB) | Temel ıOPS | Veri bloğu ıOPS | Çıkış (MIB/s) | Giriş (MIB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | 300 kadar     | 66   | 44   |
 |500         | 500     | 1\.500 kadar   | 90   | 60   |
-|1,024       | 1,024   | 3\.072 kadar   | 122   | 81   |
+|1\.024       | 1\.024   | 3\.072 kadar   | 122   | 81   |
 |5\.120       | 5\.120   | 15.360 kadar  | 368   | 245   |
 |10.240      | 10.240  | 30.720 kadar  | 675 | 450   |
 |33.792      | 33.792  | 100.000 kadar | 2\.088 | 1\.392   |
@@ -184,7 +184,7 @@ GRS, verilerinizi ikincil bölgedeki başka bir veri merkezine çoğaltır, anca
 
 GRS özellikli bir depolama hesabı için tüm veriler önce yerel olarak yedekli depolama (LRS) ile çoğaltılır. Bir güncelleştirme öncelikle birincil konuma kaydedilir ve LRS kullanılarak çoğaltılır. Güncelleştirme daha sonra GRS kullanarak ikincil bölgeye zaman uyumsuz olarak çoğaltılır. Veriler ikincil konuma yazıldığında, LRS kullanarak bu konumda da çoğaltılır.
 
-Birincil ve ikincil bölgeler, ayrı hata etki alanları genelinde çoğaltmaları yönetir ve depolama ölçek birimi içindeki etki alanlarını yükseltir. Depolama ölçek birimi, veri merkezi içindeki temel çoğaltma birimidir. Bu düzeyde çoğaltma, LRS tarafından sağlanır; daha fazla bilgi için bkz [. yerel olarak yedekli depolama (LRS): Azure depolama](../common/storage-redundancy-lrs.md)için düşük maliyetli veri artıklığı.
+Birincil ve ikincil bölgeler, ayrı hata etki alanları genelinde çoğaltmaları yönetir ve depolama ölçek birimi içindeki etki alanlarını yükseltir. Depolama ölçek birimi, veri merkezi içindeki temel çoğaltma birimidir. Bu düzeyde çoğaltma, LRS tarafından sağlanır; daha fazla bilgi için bkz. [yerel olarak yedekli depolama (LRS): Azure depolama Için düşük maliyetli veri artıklığı](../common/storage-redundancy-lrs.md).
 
 Hangi çoğaltma seçeneğinin kullanılacağına karar verirken bu noktaları göz önünde bulundurun:
 
@@ -208,21 +208,21 @@ Bu bölüm yalnızca standart dosya paylaşımları için geçerlidir. Tüm Prem
 
 Standart dosya paylaşımları, 5 TiB 'ye kadar tüm bölgelerde kullanılabilir. Belirli bölgelerde, bu bölge 100 TiB sınırı ile kullanılabilir, bu bölgeler aşağıdaki tabloda listelenmiştir:
 
-|Bölge |Desteklenen artıklık |Var olan depolama hesaplarını destekler |Portal desteği * |
+|Geli |Desteklenen artıklık |Var olan depolama hesaplarını destekler |Portal desteği * |
 |-------|---------|---------|---------|
 |Avustralya Doğu |LRS     |Hayır    |Evet|
-|Avustralya Güneydoğu|LRS     |Hayır    |Henüz değil|
-|Orta Hindistan  |LRS     |Hayır    |Henüz değil|
-|Doğu Asya      |LRS     |Hayır    |Henüz değil|
-|East US        |LRS     |Hayır    |Henüz değil|
-|Fransa Orta |LRS, ZRS|Hayır    |LRS-Evet, ZRS-henüz değil|
+|Avustralya Güneydoğu|LRS |Hayır    |Evet|
+|Orta Hindistan  |LRS     |Hayır    |Evet|
+|Doğu Asya      |LRS     |Hayır    |Evet|
+|Doğu ABD        |LRS     |Hayır    |Evet|
+|Fransa Orta |LRS, ZRS|Hayır    |Evet|
 |Fransa Güney   |LRS     |Hayır    |Evet|
 |Kuzey Avrupa   |LRS     |Hayır    |Henüz değil|
-|Güney Hindistan    |LRS     |Hayır    |Henüz değil|
+|Güney Hindistan    |LRS     |Hayır    |Evet|
 |Güneydoğu Asya |LRS, ZRS|Hayır    |Evet|
-|Batı Orta ABD|LRS     |Hayır    |Henüz değil|
+|Orta Batı ABD|LRS     |Hayır    |Evet|
 |Batı Avrupa    |LRS, ZRS|Hayır    |Evet|
-|Batı ABD        |LRS     |Hayır    |Henüz değil|
+|Batı ABD        |LRS     |Hayır    |Evet|
 |Batı ABD 2      |LRS, ZRS|Hayır    |Evet|
 
 
@@ -255,7 +255,7 @@ Kayıt durumunuzu doğrulamak için şu komutu çalıştırabilirsiniz:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Durumunuzu güncelleştirmek 15 dakika kadar **sürebilir.** Durumunuz kaydedildikten sonra özelliğinikullanabilmeniz gerekir.
+Durumunuzu güncelleştirmek 15 dakika kadar **sürebilir.** Durumunuz **kaydedildikten sonra özelliğini**kullanabilmeniz gerekir.
 
 ### <a name="use-larger-file-shares"></a>Daha büyük dosya paylaşımları kullanın
 
@@ -271,10 +271,10 @@ Birden çok Azure dosya paylaşımını Azure Dosya Eşitleme ile tek bir Window
 
 Şirket içi dosya paylaşımından mevcut bir dosya paylaşımından verileri Azure dosyalarına toplu olarak aktarmaya yönelik birçok kolay seçenek vardır. Popüler olanlar şunlardır: (ayrıntılı olmayan liste):
 
-* **Azure dosya eşitleme**: Bir Azure dosya paylaşımıyla ("bulut uç noktası") ve bir Windows Dizin ad alanı (bir "sunucu uç noktası") arasındaki ilk eşitlemenin parçası olarak Azure Dosya Eşitleme, tüm verileri mevcut dosya paylaşımından Azure dosyaları 'na çoğaltacaktır.
-* **[Azure içeri/dışarı aktarma](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Azure Içeri/dışarı aktarma hizmeti, sabit disk sürücülerinin bir Azure veri merkezine göndererek büyük miktarlardaki verileri Azure dosya paylaşımında güvenli bir şekilde aktarmanıza olanak tanır. 
+* **Azure dosya eşitleme**: bir Azure dosya paylaşımıyla ("bulut uç noktası") ve bir Windows Dizin ad alanı ("sunucu uç noktası") arasındaki ilk eşitlemenin bir parçası olarak, Azure dosya eşitleme var olan dosya paylaşımındaki tüm verileri Azure dosyaları 'na çoğaltacaktır.
+* **[Azure içeri/dışarı aktarma](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : Azure Içeri/dışarı aktarma hizmeti, sabit disk sürücülerinin bir Azure veri merkezine göndererek büyük miktarlardaki verileri bir Azure dosya paylaşımında güvenli bir şekilde aktarmanıza olanak tanır. 
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy, Windows ve Windows Server ile birlikte gelen iyi bilinen bir kopyalama aracıdır. Robocopy, dosya paylaşımının yerel olarak bağlanması ve ardından Robocopy komutunda hedef olarak bağlı konumu kullanarak Azure dosyalarına veri aktarmak için kullanılabilir.
-* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy, en iyi performansla basit komutlar kullanarak Azure dosyalarını ve Azure Blob Storage 'a ve bu verileri kopyalamak için tasarlanan bir komut satırı yardımcı programıdır.
+* **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy, Azure dosyalarını ve Azure Blob Storage 'a veri kopyalamak için tasarlanan bir komut satırı yardımcı programıdır ve en iyi performansla basit komutlar kullanmaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Dosya Eşitleme dağıtımı için planlama yapma](storage-sync-files-planning.md)

@@ -1,5 +1,5 @@
 ---
-title: Örnekler - CAF Geçişi giriş bölgesi şeması - Genel bakış
+title: Örnek - CAF Geçişi giriş bölgesi şeması - Genel bakış
 description: CAF Geçişi giriş bölgesi şema örneğinin genel bakış bilgileri ve mimarisi.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 2162e61262cc7ba157e85f7f8fe0ef586d064dd4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 469ddfa647a2ee739756414ba1bad87c983057c6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978437"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243980"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Azure Geçişi giriş bölgesi şema örneği için Microsoft Bulutu Benimseme Çerçevesine genel bakış
 

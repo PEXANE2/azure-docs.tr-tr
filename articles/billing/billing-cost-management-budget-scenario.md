@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 8ff402299b26637473f3fb762a3320255ea4df64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: bc35ba74acb2ce807597230fee0685606a93a775
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719921"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958356"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets ile maliyetleri yönetme
 
@@ -272,7 +272,7 @@ Eylem grupları, bütçenizle tümleştireceğiniz tek uç noktadır. Bildirimle
 Eylem grubu oluştururken, bu öğreticide daha önce oluşturduğunuz mantıksal uygulamayı işaret edeceksiniz.
 
 1.  [Azure portalında](https://portal.azure.com/) henüz oturum açmadıysanız oturum açın ve **Tüm hizmetler** > **İzleyici**’yi seçin.
-2.  **Ayar** bölümünden **Eylem grupları**’nı seçin.
+2.  **Uyarılar**'ı ve ardından **Eylemleri yönet**'i seçin.
 3.  **Eylem grupları** dikey penceresinden **Eylem grubu ekle**’yi seçin.
 4.  Aşağıdaki öğeleri ekleyin ve doğrulayın:
     - Eylem grubu adı

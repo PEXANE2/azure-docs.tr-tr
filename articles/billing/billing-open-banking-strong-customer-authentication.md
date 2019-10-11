@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: 3074ed30c5e1f6edae78a8ef3c3d655e302a2663
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 629a14a08b523016981300181dc4cad4549c798f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "70997290"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174518"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Azure müşterileri için Açık Bankacılık (P2D2) ve Güçlü Müşteri Kimlik Doğrulaması (SCA)
 
-14 Eylül 2019'dan başlayarak [Avrupa Ekonomik Alanı](https://en.wikipedia.org/wiki/European_Economic_Area)'nın 31 ülkesinde yer alan bankalarda çevrimiçi alışveriş yapan müşterinin ödemesi işlenmeden önce kimliğini doğrulaması gerekmektedir. Bu doğrulama, çevrimiçi satın alma işlemlerinizin güvenliğinden ve koruma altında olduğundan emin olmak için çok faktörlü kimlik doğrulaması gerektirir. Bu doğrulama gereksiniminin başlangıç tarihi bazı ülkelerde geciktirilecektir. Daha fazla bilgi için bkz. [PSD2 hakkında Microsoft SSS](https://support.microsoft.com/en-us/help/4517854?preview).
+14 Eylül 2019'dan itibaren [Avrupa Ekonomik Alanı](https://en.wikipedia.org/wiki/European_Economic_Area)'nın 31 ülkesinde yer alan bankalarda çevrimiçi alışveriş yapan müşterinin ödemesi işlenmeden önce kimliğini doğrulaması gerekmektedir. Bu doğrulama, çevrimiçi satın alma işlemlerinizin güvenliğinden ve koruma altında olduğundan emin olmak için çok faktörlü kimlik doğrulaması gerektirir. Bu doğrulama gereksiniminin başlangıç tarihi bazı ülkelerde geciktirilecektir. Daha fazla bilgi için bkz. [PSD2 hakkında Microsoft SSS](https://support.microsoft.com/en-us/help/4517854?preview).
 
 ## <a name="what-psd2-means-for-azure-customers"></a>Azure müşterileri açısından PSD2 ne anlama gelir?
 

@@ -25,7 +25,7 @@
       items:
         - name: AKS ile bir Kubernetes kümesi oluşturma
           href: terraform-create-k8s-cluster-with-tf-and-aks.md
-        - name: AKS ile giriş denetleyicisi olarak Application Gateway kullanıp Kubernetes kümesi oluşturma
+        - name: AKS’de Application Gateway giriş denetleyicisi oluşturma
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Altyapı
       items:
