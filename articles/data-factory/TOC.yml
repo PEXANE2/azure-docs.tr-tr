@@ -432,6 +432,8 @@
           href: control-flow-get-metadata-activity.md
         - name: If Condition Etkinliği
           href: control-flow-if-condition-activity.md
+        - name: Etkinlik değiştirme
+          href: control-flow-switch-activity.md
         - name: Arama Etkinliği
           href: control-flow-lookup-activity.md
         - name: Değişken Etkinlik Ayarlama
@@ -598,6 +600,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR’de Paket Yürütme Sorunlarını Giderme
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: Veri Akışı Sorunlarını Giderme
+          href: data-flow-troubleshoot-guide.md
 - name: Senaryolar
   items:
     - name: Veri gölü ve EDW için veri geçişi
