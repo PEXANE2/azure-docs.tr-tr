@@ -1,17 +1,17 @@
 ---
-title: Azure kaynaklarında dizi özellikleri için yazma ilkeleri
+title: Kaynaklardaki dizi özellikleri için yazma ilkeleri
 description: Dizi parametreleri oluşturmayı, dizi dili ifadeleri için kurallar oluşturmayı, [*] diğer adını değerlendirmeyi ve mevcut bir diziye öğeleri Azure Ilke tanımı kuralları ile eklemeyi öğrenin.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: e5b90eb975d0d495723a70095b447d37e051fc0b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 33607d790f564075623d6f61d1b7b8b70a119f98
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978032"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255817"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure kaynaklarında dizi özellikleri için yazma ilkeleri
 
@@ -185,14 +185,14 @@ Aşağıdaki sonuçlar, koşulun birleşiminin ve yukarıdaki mevcut değerlerde
 
 |Koşul |Sonuç |Açıklama |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Yapma |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir, bu nedenle **Not alalals** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"notEquals":"127.0.0.1"}` |Nothing |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir, bu nedenle **Not alalals** koşulu _false_ olur ve etki tetiklenmez. |
 |`{<field>,"notEquals":"10.0.4.1"}` |İlke etkisi |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _true_ ve etki tetiklenir. |
 |`"not":{<field>,"Equals":"127.0.0.1"}` |İlke etkisi |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir ve bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
 |`"not":{<field>,"Equals":"10.0.4.1"}` |İlke etkisi |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
 |`"not":{<field>,"notEquals":"127.0.0.1" }` |İlke etkisi |Tek bir dizi öğesi yanlış (127.0.0.1! = 127.0.0.1) ve diğeri doğru (127.0.0.1! = 192.168.1.1) olarak değerlendirilir ve bu nedenle **Not al** koşulu _false_olur. Mantıksal işleç doğru olarak değerlendirilir (false**değil**), bu nedenle etki tetiklenir. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Yapma |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirilir ( _true_değil), bu nedenle etki**tetiklenmez** . |
-|`{<field>,"Equals":"127.0.0.1"}` |Yapma |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
-|`{<field>,"Equals":"10.0.4.1"}` |Yapma |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nothing |Her iki dizi öğesi de true olarak değerlendirilir (10.0.4.1! = 127.0.0.1 ve 10.0.4.1! = 192.168.1.1), bu nedenle **Not al** koşulu _doğrudur_. Mantıksal işleç yanlış olarak değerlendirilir ( _true_değil), bu nedenle etki**tetiklenmez** . |
+|`{<field>,"Equals":"127.0.0.1"}` |Nothing |Bir Array öğesi true (127.0.0.1 = = 127.0.0.1) ve diğeri false (127.0.0.1 = = 192.168.1.1) olarak değerlendirilir; bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nothing |Her iki dizi öğesi de false olarak değerlendirilir (10.0.4.1 = = 127.0.0.1 ve 10.0.4.1 = = 192.168.1.1), bu nedenle **eşittir** koşulu _false_ olur ve etki tetiklenmez. |
 
 ## <a name="the-append-effect-and-arrays"></a>Ekleme efekti ve dizileri
 
@@ -206,8 +206,8 @@ Daha fazla bilgi için bkz. [append örnekleri](../concepts/effects.md#append-ex
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
-- [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirin.
-- [İlkenin etkilerini anlama](../concepts/effects.md) konusunu gözden geçirin.
+- [Azure ilke tanımı yapısını](../concepts/definition-structure.md)gözden geçirin.
+- [İlke efektlerini anlamak](../concepts/effects.md)için gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](programmatically-create.md)anlayın.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](remediate-resources.md)öğrenin.
 - [Kaynakları Azure Yönetim gruplarıyla düzenleme](../../management-groups/overview.md)ile yönetim grubunun ne olduğunu inceleyin.
