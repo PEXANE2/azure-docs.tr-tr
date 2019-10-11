@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: e1ca6fa4ea1ae4a5bf5996e88d32e1e00416f067
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: 7e29cbd202b32897026bed074743de543d3fd587
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299982"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254477"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---manual-copy-method"></a>Azure HPC Cache (Önizleme) veri alma-el ile kopyalama yöntemi
 
@@ -23,7 +23,7 @@ Azure HPC önbelleğiniz için verileri blob depolamaya taşıma hakkında daha 
 
 Önceden tanımlanmış dosya veya yol kümelerine yönelik olarak, arka planda birden fazla kopyalama komutu çalıştırarak, bir istemcide çok iş parçacıklı bir kopyayı el ile oluşturabilirsiniz.
 
-Linux/UNIX ``cp`` komutu, sahiplik ve mtime meta verilerini korumak için bağımsız değişkenini ``-p`` içerir. Bu bağımsız değişkeni aşağıdaki komutlara eklemek isteğe bağlıdır. (Bağımsız değişkeni eklemek, meta veri değişikliği için istemciden hedef dosya sistemine gönderilen dosya sistemi çağrılarının sayısını artırır.)
+Linux/UNIX ``cp`` komutu, sahiplik ve mtime meta verilerini korumak için ``-p`` bağımsız değişkenini içerir. Bu bağımsız değişkeni aşağıdaki komutlara eklemek isteğe bağlıdır. (Bağımsız değişkeni eklemek, meta veri değişikliği için istemciden hedef dosya sistemine gönderilen dosya sistemi çağrılarının sayısını artırır.)
 
 Bu basit örnek, paralel olarak iki dosya kopyalar:
 
@@ -31,13 +31,13 @@ Bu basit örnek, paralel olarak iki dosya kopyalar:
 cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1/ &
 ```
 
-Bu komutu verdikten sonra, `jobs` komut iki iş parçacığının çalıştığını gösterir.
+Bu komutu verdikten sonra, `jobs` komutu iki iş parçacığının çalıştığını gösterir.
 
 ## <a name="copy-data-with-predictable-file-names"></a>Tahmin edilebilir dosya adlarıyla veri kopyalama
 
 Dosya adlarınız tahmin edilebilir ise, paralel kopyalama iş parçacıkları oluşturmak için ifadeleri kullanabilirsiniz. 
 
-Örneğin, dizininiz ' dan `0001` ' a sıralı olarak `1000`numaralandırılan 1000 dosya içeriyorsa, her bir Copy 100 dosyasını izleyen on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
+Örneğin, dizininiz `0001` ' dan `1000` ' e ardışık olarak numaralandırılan 1000 dosyaları içeriyorsa, her bir Copy 100 dosyasını izleyen on paralel iş parçacığı oluşturmak için aşağıdaki ifadeleri kullanabilirsiniz:
 
 ```bash
 cp /mnt/source/file0* /mnt/destination1/ & \
@@ -56,7 +56,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 Dosya adlandırma yapınız tahmin edilebilir değilse, dosyaları dizin adlarına göre gruplandırabilirsiniz. 
 
-Bu örnek, arka plan görevleri olarak çalıştırılan ``cp`` komutlara göndermek için tüm dizinleri toplar:
+Bu örnek, ``cp`` komutlarına gönder arka plan görevleri olarak çalışacak tüm dizinleri toplar:
 
 ```bash
 /root
@@ -92,7 +92,7 @@ Bu durumda, aynı uzak dosya sistemi bağlama yolunu kullanarak diğer Azure HPC
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-İstemci tarafı bağlama noktaları eklemek ek `/mnt/destination[1-3]` bağlama noktalarına daha fazla paralellik elde etmenizi sağlar.  
+İstemci tarafı bağlama noktaları eklemek ek `/mnt/destination[1-3]` bağlama noktalarına ek kopyalama komutları ekleyerek daha fazla paralellik elde etmenizi sağlar.  
 
 Örneğin, dosyalarınız çok büyükse, farklı hedef yolları kullanmak için kopyalama komutlarını tanımlayabilir ve kopyayı gerçekleştiren istemciden paralel olarak daha fazla komut gönderebilirsiniz.
 
@@ -136,9 +136,9 @@ Client4: cp -R /mnt/source/dir3/dir3d /mnt/destination/dir3/ &
 
 ## <a name="create-file-manifests"></a>Dosya bildirimleri oluşturma
 
-Yukarıdaki yaklaşımlar anlaşıldıktan sonra (hedef başına birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ erişimli kaynak dosya sistemi başına birden çok istemci), şu öneriyi göz önünde bulundurun: Dosya bildirimleri oluşturun ve sonra birden çok istemcide kopyalama komutları ile bunları kullanın.
+Yukarıdaki yaklaşımlar anlaşıldıktan sonra (hedef başına birden çok kopya iş parçacığı, istemci başına birden çok hedef, ağ erişimli kaynak dosya sistemi başına birden çok istemci), şu öneriyi göz önünde bulundurun: dosya bildirimleri oluşturun ve sonra bunları kopyayla birlikte kullanın birden çok istemci arasındaki komutlar.
 
-Bu senaryo, dosya veya ``find`` dizinlerin bildirimlerini oluşturmak için UNIX komutunu kullanır:
+Bu senaryo, dosya veya dizinlerin bildirimlerini oluşturmak için UNIX ``find`` komutunu kullanır:
 
 ```bash
 user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
@@ -153,7 +153,7 @@ user@build:/mnt/source > find . -mindepth 4 -maxdepth 4 -type d
 ./atj5b55c53be6-02/support/trace/rolling
 ```
 
-Bu sonucu bir dosyaya yeniden yönlendir:`find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
+Bu sonucu bir dosyaya yeniden yönlendir: `find . -mindepth 4 -maxdepth 4 -type d > /tmp/foo`
 
 Ardından, dosyaları saymak ve alt dizinlerin boyutlarını belirleyebilmek için BASH komutlarını kullanarak bildirimde yineleyebilirsiniz.
 
@@ -214,7 +214,7 @@ Ve altı.... Gerektiğinde extrapogeç.
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Her *n* istemciniz için bir tane olmak üzere, `find` komutun çıktının bir parçası olarak elde edilen düzey dört dizine ait yol adlarına sahip *n* . bir dosya elde edersiniz. 
+@No__t-2 komutundan çıktının bir parçası olarak elde edilen düzey dört dizinlere sahip olan *n* istemcilerinden her biri için bir tane olmak üzere *n* sonuç dosyası alacaksınız. 
 
 Kopyalama komutunu oluşturmak için her dosyayı kullanın:
 

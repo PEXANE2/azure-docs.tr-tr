@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8b7b02c164021ac084dccf5663122620b2af1b15
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972900"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244777"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ağ geçitlerine genel bakış
 
-VPN ağ geçidi, şirket içi konumdaki bir CloudSimple bölgesi ağı veya genel İnternet üzerinden bir bilgisayar arasında şifrelenmiş trafik göndermek için kullanılır.  Her bölge, birden çok bağlantıyı destekleyebilen bir VPN ağ geçidine sahip olabilir. Aynı VPN ağ geçidiyle birden fazla bağlantı oluşturduğunuzda, tüm VPN tünelleri kullanılabilir ağ geçidi bant genişliğini paylaşır.
+VPN ağ geçidi, şirket içi konumdaki bir CloudSimple bölgesi ağı veya genel İnternet üzerinden bir bilgisayar arasında şifrelenmiş trafik göndermek için kullanılır.  Her bölge, birden çok bağlantıyı destekleyebilen bir VPN ağ geçidine sahip olabilir. Aynı VPN ağ geçidine birden fazla bağlantı oluşturduğunuzda, tüm VPN tünelleri kullanılabilir ağ geçidi bant genişliğini paylaşır.
 
 CloudSimple, iki tür VPN ağ geçidi sağlar:
 
@@ -47,12 +47,12 @@ Siteden siteye VPN bağlantısı, güvenli bir bağlantı kurmak için aşağıd
 
 | Parametre | Teklif 1 | Teklif 2 | Teklif 3 |
 |-----------|------------|------------|------------|
-| IKE Sürümü | IKEv1 | IKEv1 | IKEv1 |
+| IKE sürümü | IKEv1 | IKEv1 | IKEv1 |
 | Şifreleme | AES 128 | AES 256 | AES 256 |
 | Karma algoritması| SHA 256 | SHA 256 | SHA 1 |
 | Diffie Hellman grubu (DH grubu) | 2 | 2 | 2 |
 | Yaşam süresi | 28.800 saniye | 28.800 saniye | 28.800 saniye |
-| Veri Boyutu | 4 GB | 4 GB | 4 GB |
+| Veri boyutu | 4 GB | 4 GB | 4 GB |
 
 #### <a name="phase-2-proposals"></a>2\. aşama teklifleri
 
@@ -62,7 +62,11 @@ Siteden siteye VPN bağlantısı, güvenli bir bağlantı kurmak için aşağıd
 | Karma algoritması| SHA 256 | SHA 256 | SHA 1 |
 | Kusursuz Iletme gizliliği grubu (PFS Grubu) | Yok. | Yok. | Yok. |
 | Yaşam süresi | 1\.800 saniye | 1\.800 saniye | 1\.800 saniye |
-| Veri Boyutu | 4 GB | 4 GB | 4 GB |
+| Veri boyutu | 4 GB | 4 GB | 4 GB |
+
+
+> [!IMPORTANT]
+> VPN cihazınızda 1200 ' de TCP ve üst sınırı ayarlayın. Ya da VPN cihazlarınız, sahip olma özelliğini desteklemiyorsa, bunun yerine tünel arabirimindeki MTU değerini 1240 bayta ayarlayabilirsiniz.
 
 ## <a name="point-to-site-vpn-gateway"></a>Noktadan siteye VPN ağ geçidi
 

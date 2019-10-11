@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4e07274f7abf87360c054edd3fe0ade1c09907a7
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: eeaa709b88ca795d906fe3688301b4cd7d8c726e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178598"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244126"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute doğrudan bağlantı noktalarında MACsec yapılandırma
 
@@ -130,6 +130,9 @@ Set-AzExpressRoutePort -ExpressRoutePort $erDirect
 ```
 
 Bu noktada, MACsec, Microsoft tarafındaki ExpressRoute doğrudan bağlantı noktalarında devre dışıdır.
+
+### <a name="test-connectivity"></a>Bağlantıyı test etme
+ExpressRoute doğrudan bağlantı noktalarında MACsec 'i (MACsec anahtar güncelleştirmesi dahil) yapılandırdıktan sonra, devrelerin BGP oturumlarının çalışır duruma olup olmadığını [kontrol edin](expressroute-troubleshooting-expressroute-overview.md) . Henüz bağlantı noktaları üzerinde herhangi bir devreniz yoksa, lütfen önce bir tane oluşturun ve Azure özel eşlemesini veya devresinin Microsoft eşlemesini ayarlayın. MACsec 'in, MACsec anahtar uyumsuzluğu da dahil olmak üzere yanlış yapılandırılmış ise, ağ cihazlarınızla Microsoft 'un ağ cihazları arasında, katman 2 ve BGP kurulumu 'nda, katman 3 ' te ARP çözünürlüğü görmezsiniz. Her şey düzgün şekilde yapılandırıldıysa BGP yollarının her iki yönde de doğru tanıtıldığı ve uygulama veri akışının ExpressRoute üzerinden uygun şekilde olduğunu görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 1. [ExpressRoute doğrudan üzerinde bir ExpressRoute devresi oluşturma](expressroute-howto-erdirect.md)

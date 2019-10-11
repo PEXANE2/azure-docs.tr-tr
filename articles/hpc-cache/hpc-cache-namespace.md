@@ -5,15 +5,15 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: v-erkell
-ms.openlocfilehash: 68ae316dff1518dd8115006764c6cc3036f59e4a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: rohogue
+ms.openlocfilehash: fa6408d33504c6ac73eacec079e9c08acd4cece2
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299928"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255275"
 ---
-# <a name="plan-the-aggregated-namespace"></a>Toplanan ad alanını planlama
+# <a name="plan-the-aggregated-namespace"></a>Toplanan ad alanını planlayın
 
 Azure HPC Cache (Önizleme), istemcilerin, arka uç depolama sisteminin ayrıntılarını gizleyen bir sanal ad alanı aracılığıyla çeşitli depolama sistemlerine erişmesini sağlar.
 
@@ -57,7 +57,7 @@ NFS kaynak yolları aynı dışarı aktarmanın alt dizinleri olduğundan, aynı
 | *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku798   | /Templates/sku798 |
 | *IP adresi veya ana bilgisayar adı* | /Goldline/Templates  | acme2017/sku980   | /Templates/sku980 |
 
-Bir istemci uygulaması, önbelleği bağlayabilir ve toplanmış ad alanı dosya yollarına ``/source`` ``/templates/sku798``, ve ``/templates/sku980``' ye kolayca erişebilir.
+Bir istemci uygulaması önbelleği bağlayabilir ve ``/source``, ``/templates/sku798`` ve ``/templates/sku980`` olan toplanmış ad alanı dosya yollarına kolayca erişebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

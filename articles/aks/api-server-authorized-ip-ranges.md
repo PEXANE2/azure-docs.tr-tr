@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 59e64b7c84e589da57ea28d6655c9305f4fdc101
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058336"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241122"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de yetkili IP adresi aralıklarını kullanarak API sunucusuna önizleme-güvenli erişim
 
 Kubernetes 'de, API sunucusu, küme içinde kaynak oluşturmak veya düğüm sayısını ölçeklendirmek gibi eylemleri gerçekleştirmek için istekleri alır. API sunucusu, bir küme ile etkileşimde bulunmak ve yönetmek için merkezi bir yoldur. Küme güvenliğini artırmak ve saldırıları en aza indirmek için, API sunucusuna yalnızca sınırlı bir IP adresi aralığı kümesinden erişilebilir olması gerekir.
 
-Bu makalede, API sunucusu tarafından yetkilendirilmiş IP adresi aralıklarının, düzlemi denetlemek için istekleri sınırlamak üzere nasıl kullanılacağı gösterilir. Bu özellik şu anda önizleme sürümündedir.
+Bu makalede, API sunucusu tarafından yetkilendirilmiş IP adresi aralıklarının, düzlemi denetlemek için istekleri sınırlamak üzere nasıl kullanılacağı gösterilir. Bu özellik şu anda önizleme aşamasındadır.
 
 > [!IMPORTANT]
 > AKS Önizleme özellikleri self servis kabul etme sürecindedir. Önizlemeler, "olduğu gibi" ve "kullanılabilir olarak" verilmiştir ve hizmet düzeyi sözleşmelerinden ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin en iyi çaba temelinde kısmen ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
@@ -32,7 +32,7 @@ Bu makale, [Kubernetes kullanan][kubenet]kullanan kümelerle çalışıyorassume
 
 API sunucusu yetkilendirilmiş IP aralıkları yalnızca sizin oluşturduğunuz yeni AKS kümelerinde çalışır. Bu makalede, Azure CLı kullanarak bir AKS kümesinin nasıl oluşturulacağı gösterilmektedir.
 
-Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Azure CLı sürüm 2.0.61 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için @ no__t-0 ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Aks-Preview CLı uzantısını yükler
 
@@ -77,7 +77,7 @@ API sunucusu yetkilendirilmiş IP aralıklarını yapılandırdığınızda aşa
 
 ## <a name="overview-of-api-server-authorized-ip-ranges"></a>API sunucusu yetkilendirilmiş IP aralıklarına genel bakış
 
-Kubernetes API sunucusu, temeldeki Kubernetes API 'Lerinin nasıl açığa çıkmasıdır. Bu bileşen, `kubectl` veya Kubernetes panosu gibi yönetim araçları için etkileşim sağlar. AKS, adanmış bir API sunucusuyla tek kiracılı bir Küme Yöneticisi sağlar. Varsayılan olarak, API sunucusuna bir genel IP adresi atanır ve rol tabanlı erişim denetimleri (RBAC) kullanarak erişimi kontrol etmelisiniz.
+Kubernetes API sunucusu, temeldeki Kubernetes API 'Lerinin nasıl açığa çıkmasıdır. Bu bileşen `kubectl` veya Kubernetes panosu gibi yönetim araçları için etkileşim sağlar. AKS, adanmış bir API sunucusuyla tek kiracılı bir Küme Yöneticisi sağlar. Varsayılan olarak, API sunucusuna bir genel IP adresi atanır ve rol tabanlı erişim denetimleri (RBAC) kullanarak erişimi kontrol etmelisiniz.
 
 Genel olarak erişilebilen AKS denetim düzlemi/API sunucusuna erişimi güvenli hale getirmek için, yetkilendirilmiş IP aralıklarını etkinleştirebilir ve kullanabilirsiniz. Bu yetkili IP aralıkları yalnızca tanımlı IP adresi aralıklarının API sunucusuyla iletişim kurmasına izin verir. Bu yetkili IP aralıklarının parçası olmayan bir IP adresinden API sunucusuna yapılan istek engellenir. Daha sonra kullanıcıları ve istediği eylemleri yetkilendirmek için RBAC kullanmaya devam etmelisiniz.
 
@@ -228,7 +228,7 @@ API sunucusu yetkilendirilmiş IP aralıklarını etkinleştirmek için, yetkile
 
 [Az aks Update][az-aks-update] komutunu kullanın ve izin vermek için *--api-Server-yetkilendirilmiş-IP aralıklarını* belirtin. Bu IP adresi aralıkları genellikle şirket içi ağlarınız tarafından kullanılan adres aralıklarından oluşur. Önceki adımda elde edilen kendi Azure Güvenlik duvarınızın genel IP adresini ekleyin (örneğin, *20.42.25.196/32*).
 
-Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı kümede bulunan API sunucusu yetkili IP aralıklarını mümkün bir şekilde sunar. Yetkilendirmede kullanılacak IP adresi aralıkları *20.42.25.196/32* ' dir (Azure Güvenlik DUVARı genel IP adresi), ardından *172.0.0.0/16* ve *168.10.0.0/18*:
+Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *Myakscluster* adlı kümede bulunan API sunucusu yetkili IP aralıklarını mümkün bir şekilde sunar. Yetkilendirmede kullanılacak IP adresi aralıkları şunlardır: *20.42.25.196/32* (Azure Güvenlik DUVARı genel IP adresi), *172.0.0.0/16* (pod/Nodes adres aralığı) ve *168.10.0.0/18* (ServiceCidr):
 
 ```azurecli-interactive
 az aks update \
@@ -236,6 +236,13 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
+
+> [!NOTE]
+> Bu aralıkları bir izin verilenler listesine eklemeniz gerekir:
+> - Güvenlik Duvarı genel IP adresi
+> - Hizmet CıDR
+> - Alt ağların, düğümler ve pod ile adres aralığı
+> - Kümeyi yönettiğiniz ağları temsil eden herhangi bir Aralık
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>Yetkili IP aralıklarını Güncelleştir veya devre dışı bırak
 

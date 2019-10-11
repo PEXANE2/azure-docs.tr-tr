@@ -5,16 +5,16 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 06/20/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: c7860a098096d718a6c5d7cd661ef2b1c1b21e89
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: d803cc0dfa4a266f79b522207a8cf0f70e06cf3d
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802659"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248713"
 ---
-# <a name="classic-deployment-model"></a>Klasik Dağıtım Modeli
+# <a name="classic-deployment-model"></a>Klasik dağıtım modeli
 
 Klasik dağıtım modeli, eski nesil Azure dağıtım modelidir. Sanal makineler ve sanal makine ölçek kümeleri için genel bir vCPU kota sınırı uygular. Klasik dağıtım modelinin artık kullanılması önerilmez ve artık Kaynak Yöneticisi modeli tarafından değiştirildi. 
 
@@ -34,7 +34,7 @@ Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir
 
    ![Yardım ve destek](./media/resource-manager-core-quotas-request/helpsupport.png)
  
-2.  **Yeni destek isteği**’ni seçin. 
+2.  **Yeni destek isteği ' ni**seçin. 
 
       ![Yeni destek isteği](./media/resource-manager-core-quotas-request/newsupportrequest.png)
 
@@ -42,7 +42,7 @@ Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir
 
    ![Sorun türü açılan kutusu](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
 
-4. Kotasını artırmanız gereken aboneliği seçin.
+4. Daha fazla kotanın olması gereken aboneliği seçin.
 
    ![Abonelik newSR 'yi seçin](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
    
@@ -60,7 +60,7 @@ Azure portal Azure 'un ' yardım + destek ' dikey penceresi aracılığıyla bir
 
 8. Artış gerektiren **SKU aileleri** seçin. 
 
-   ![SKU Ailesi](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+   ![SKU ailesi](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
 9. Abonelikte istediğiniz yeni limitleri girin. Bir satırı kaldırmak için, SKU ailesi açılan menüsünden SKU 'nun işaretini kaldırın veya atma "x" simgesine tıklayın. Her SKU ailesi için istenen kotayı girdikten sonra, destek isteği oluşturmaya devam etmek için kota ayrıntıları panelinde **Kaydet ve devam et** ' e tıklayın.
 
@@ -74,9 +74,9 @@ Azure 'un ' kullanım + kota ' dikey penceresi aracılığıyla Azure portal kul
 
    ![Abonelikler](./media/resource-manager-core-quotas-request/subscriptions.png)
 
-2. Kotasını artırmanız gereken aboneliği seçin.
+2. Daha fazla kotanın olması gereken aboneliği seçin.
 
-   ![Abonelik seçme](./media/resource-manager-core-quotas-request/select-subscription.png)
+   ![Abonelik seçin](./media/resource-manager-core-quotas-request/select-subscription.png)
 
 3. **Kullanım + kotalar** ' ı seçin
 
@@ -100,7 +100,7 @@ Azure 'un ' kullanım + kota ' dikey penceresi aracılığıyla Azure portal kul
 
 8. Artış gerektiren **SKU aileleri** seçin. 
 
-   ![SKU Ailesi](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+   ![SKU ailesi](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
 9. Abonelikte istediğiniz yeni limitleri girin. Bir satırı kaldırmak için, SKU ailesi açılan menüsünden SKU 'nun işaretini kaldırın veya atma "x" simgesine tıklayın. Her SKU ailesi için istenen kotayı girdikten sonra, destek isteği oluşturmaya devam etmek için kota ayrıntıları panelinde **Kaydet ve devam et** ' e tıklayın.
 

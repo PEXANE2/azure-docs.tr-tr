@@ -1,18 +1,18 @@
 ---
 title: Örnek-PCI-DSS v 3.2.1 şema-Deploy adımları
-description: Ödeme kartı sektör verileri güvenliği standart v 3.2.1 şema örneğinin adımlarını dağıtın.
+description: Ödeme kartı sektör verileri güvenliği standart v 3.2.1 şema örneği için adımları dağıtın ve şema yapıtı parametresi ayrıntıları dahil.
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: f95f9a592085fd93fba5e6b11a1a75609eb70295
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: fa409b873ea1dd0c0970ebc694ad68673df4d033
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980936"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248852"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>PCI DSS v 3.2.1 şema örneğini dağıtma
 
@@ -66,19 +66,19 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema atamasının parametre değerlerini sağlayın:
 
-   - Temel Bilgiler
+   - Temel bilgileri
 
      - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
      - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
-     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin. Azure Blueprint, atanan Blueprint içindeki tüm yapıtları dağıtmak için bu yönetilen kimliği kullanır. Daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
    - Kilit ataması
 
-     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
+     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [kaynak kilitlemeyi planlar](../../concepts/resource-locking.md).
 
-   - Yönetilen Kimlik
+   - Yönetilen kimlik
 
      Varsayılan sistem tarafından _atanmış_ yönetilen kimlik seçeneğini bırakın.
 
@@ -97,11 +97,11 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|\[Preview @ no__t-1 denetim PCI v 3.2.1: denetim gereksinimlerini desteklemek için belirli VM uzantılarını 2018 denetimleri ve dağıtımı|İlke Ataması|Kaynak türleri listesi | Seçili kaynak türleri için tanılama ayarını denetleyin. Varsayılan değer tüm kaynaklar seçilidir| 
-|İzin verilen konumlar|İlke Ataması|Izin verilen konumların listesi|Herhangi bir kaynağın dağıtılması için izin verilen veri merkezi konumları listesi. Bu liste, istenen Azure konumlarına küresel olarak özelleştirilebilir. İzin vermek istediğiniz konumları seçin.| 
-|Kaynak grupları için izin verilen konumlar|İlke Ataması |İzin verilen konum |Bu ilke, kuruluşunuzun içinde kaynak grupları oluşturabileceğiniz konumları kısıtlamanıza olanak sağlar. Coğrafi uyumluluk gereksinimlerinizi zorlamak için kullanın.| 
-|SQL Server 'lar üzerinde denetim dağıtma|İlke Ataması|Bekletme günleri|Gün sayısı cinsinden veri randevu. Varsayılan değer 180, ancak PCI 365 gerektirir.| 
-|SQL Server 'lar üzerinde denetim dağıtma|İlke Ataması|Depolama hesabı için kaynak grubu adı|Denetim, veritabanı olaylarını Azure Depolama hesabınızdaki bir denetim günlüğüne yazar (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılacak bir SQL Server oluşturulduğu her bölgede oluşturulur).| 
+|\[Preview @ no__t-1 denetim PCI v 3.2.1: denetim gereksinimlerini desteklemek için belirli VM uzantılarını 2018 denetimleri ve dağıtımı|İlke ataması|Kaynak türleri listesi | Seçili kaynak türleri için tanılama ayarını denetleyin. Varsayılan değer tüm kaynaklar seçilidir| 
+|İzin verilen konumlar|İlke ataması|Izin verilen konumların listesi|Herhangi bir kaynağın dağıtılması için izin verilen veri merkezi konumları listesi. Bu liste, istenen Azure konumlarına küresel olarak özelleştirilebilir. İzin vermek istediğiniz konumları seçin.| 
+|Kaynak grupları için izin verilen konumlar|İlke ataması |İzin verilen konum |Bu ilke, kuruluşunuzun içinde kaynak grupları oluşturabileceğiniz konumları kısıtlamanıza olanak sağlar. Coğrafi uyumluluk gereksinimlerinizi zorlamak için kullanın.| 
+|SQL Server 'lar üzerinde denetim dağıtma|İlke ataması|Bekletme günleri|Gün sayısı cinsinden veri randevu. Varsayılan değer 180, ancak PCI 365 gerektirir.| 
+|SQL Server 'lar üzerinde denetim dağıtma|İlke ataması|Depolama hesabı için kaynak grubu adı|Denetim, veritabanı olaylarını Azure Depolama hesabınızdaki bir denetim günlüğüne yazar (bir depolama hesabı, bu bölgedeki tüm sunucular tarafından paylaşılacak bir SQL Server oluşturulduğu her bölgede oluşturulur).| 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -111,10 +111,10 @@ Bu aşamada, PCI-DSS v 3.2.1 şema örneğini dağıtma adımlarını gözden ge
 > [PCI-DSS v 3.2.1 şema-genel bakış](./index.md)
 > [PCI-DSS v 3.2.1 şema-Control Mapping](./control-mapping.md)
 
-Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
+Planlar ve bunların nasıl kullanılacağı hakkında makaleler ekleme:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
-- [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
-- [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
-- [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
-- [Mevcut atamaları güncelleştirmeyi](../../how-to/update-existing-assignments.md) öğrenin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
+- [Statik ve dinamik parametrelerin](../../concepts/parameters.md)nasıl kullanılacağını anlayın.
+- [Şema sıralama sırasını](../../concepts/sequencing-order.md)özelleştirmeyi öğrenin.
+- [Şema kaynak kilitlemeyi](../../concepts/resource-locking.md)nasıl kullanacağınızı öğrenin.
+- [Mevcut atamaları güncelleştirme](../../how-to/update-existing-assignments.md)hakkında bilgi edinin.

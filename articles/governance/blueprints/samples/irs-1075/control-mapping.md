@@ -1,17 +1,17 @@
 ---
 title: Örnek-IRS 1075 şema-Control eşleme
-description: IRS 1075 şema örneğinin Azure ilkesi ile eşlemesini denetleme.
+description: IRS 1075 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: 97705c9ef40b6ab1f468b9fad62d3b7afaef02a9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 627e4e596bea650424eee510e9554f49eeb72a30
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978337"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248427"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 şema örneğinin denetim eşlemesi
 
@@ -30,7 +30,7 @@ Bu şema, kuruluşunuzun hesap yönetimi gereksinimleriyle uyumlu olmayan hesapl
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
 - Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
-- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 
 ## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) hesap yönetimi | Rol tabanlı şemalar
 
@@ -105,7 +105,7 @@ Bu şema, denetim ve olay günlüğü yapılandırmasını izleyen [Azure ilke](
 - Tanılama ayarını denetle
 - SQL Server Level denetim ayarlarını denetleme
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 
 ## <a name="9336-au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>9.3.3.6 AU-6 (4) denetim Incelemesi, analiz ve raporlama | Merkezi Inceleme ve analiz
 
@@ -133,7 +133,7 @@ Bu şema, Azure kaynaklarında günlük ayarlarını denetleyen [Azure ilke](../
 - Tanılama ayarını denetle
 - SQL Server Level denetim ayarlarını denetleme
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - SQL Server 'lar üzerinde denetim dağıtma
 - Ağ güvenlik grupları için tanılama ayarlarını dağıtma
@@ -208,7 +208,7 @@ Bu şema, en düşük güç ve diğer parola gereksinimlerini zorlayamama Window
 Bu şema, Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını, SQL güvenlik açıklarını ve sanal makine güvenlik açıklarını izleyen [Azure ilke](../../../policy/overview.md) tanımlarını atayarak bilgi sistemi güvenlik açıklarını yönetmenize yardımcı olur. Azure Güvenlik Merkezi, dağıtılan Azure kaynaklarının güvenlik durumu hakkında gerçek zamanlı Öngörüler elde etme olanağı sunan raporlama özellikleri sağlar. Bu şema Ayrıca, SQL sunucularında gelişmiş veri güvenliğini denetleyen ve uygulayan ilke tanımları da atar. Dağıtılmış kaynaklardaki güvenlik açıklarını anlamanıza yardımcı olmak için gelişmiş veri güvenliğine dahil edilen güvenlik açığı değerlendirmesi ve Gelişmiş tehdit koruması özellikleri.
 
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - Sanal makine ölçek kümelerinizin güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
 - Sanal makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir
@@ -260,7 +260,7 @@ Bu şema, iletişim protokolleri için uygulanan şifreleme mekanizmasını izle
 Bu şema, belirli bir cryptograph denetimi uygulayan [Azure ilke](../../../policy/overview.md) tanımlarını atayarak ve zayıf şifreleme ayarlarının kullanımını denetleyerek, bu şemayı, geri kalan bilgileri korumak için cryptograph denetimleri kullanma konusunda zorlamanıza yardımcı olur. Azure kaynaklarınızın en iyi durumda olmayan şifreleme yapılandırmalarının nerede olabileceğini anlamak, kaynakların bilgi güvenliği ilkenize uygun şekilde yapılandırıldığından emin olmak için düzeltici eylemler almanıza yardımcı olabilir. Özellikle, bu şema tarafından atanan ilke tanımları Data Lake Storage hesapları için şifrelemeyi gerektirir; SQL veritabanlarında saydam veri şifrelemesi gerektir; ve SQL veritabanlarında, sanal makine disklerinde ve Otomasyon hesabı değişkenlerinde eksik şifrelemeyi denetleyin.
 
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - SQL DB saydam veri şifrelemesini dağıtma
 - Disk şifrelemesi sanal makinelere uygulanmalıdır
@@ -306,7 +306,7 @@ Bu şema, Azure kaynakları arasında günlük ve veri güvenliğini denetleyere
 - \[Preview @ no__t-1: Windows VM Ölçek Kümeleri için Log Analytics aracısı dağıtma (VMSS)
 - \[Preview @ no__t-1: Windows VM 'Leri için Log Analytics aracısı dağıtma
 - Yönetilen örneklerinizdeki gelişmiş veri güvenliği etkinleştirilmelidir
-- SQL sunucularınızda gelişmiş veri güvenliği etkin olmalıdır
+- Gelişmiş veri güvenliği SQL sunucularınızda etkinleştirilmelidir
 - SQL Server 'lar üzerinde gelişmiş veri güvenliği dağıtma
 - Depolama hesaplarında Gelişmiş tehdit koruması dağıtma
 - SQL Server 'lar üzerinde denetim dağıtma
@@ -329,10 +329,10 @@ IRS 1075 şema 'in denetim eşlemesini gözden geçirdiğinize göre, şema ve b
 > [!div class="nextstepaction"]
 > [IRS 1075 şema-genel bakış](./index.md)
 
-Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
+Planlar ve bunların nasıl kullanılacağı hakkında makaleler ekleme:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
-- [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
-- [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
-- [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
-- [Mevcut atamaları güncelleştirmeyi](../../how-to/update-existing-assignments.md) öğrenin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
+- [Statik ve dinamik parametrelerin](../../concepts/parameters.md)nasıl kullanılacağını anlayın.
+- [Şema sıralama sırasını](../../concepts/sequencing-order.md)özelleştirmeyi öğrenin.
+- [Şema kaynak kilitlemeyi](../../concepts/resource-locking.md)nasıl kullanacağınızı öğrenin.
+- [Mevcut atamaları güncelleştirme](../../how-to/update-existing-assignments.md)hakkında bilgi edinin.

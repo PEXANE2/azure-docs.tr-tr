@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 288fa54a1a6dd4eb05f953a4490bf7736d6d7ff8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 9bea8da4f0d694be3a39a8f5dfaca8e54ce2773d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931241"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255654"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Azure Active Directory raporları için Azure Izleyici çalışma kitaplarını kullanma
 
@@ -33,7 +33,7 @@ ms.locfileid: "70931241"
 
 Bu soruları ele almanıza yardımcı olmak Active Directory, izleme için çalışma kitapları sağlar. [Azure izleyici çalışma kitapları](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) metin, analiz sorguları, ölçümler ve parametreleri zengin etkileşimli raporlara birleştirir. 
 
-Bu makalede:
+Bu makale:
 
 - [İzleme çalışma kitaplarını kullanarak etkileşimli raporlar oluşturma](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)hakkında bilgi sahibi olduğunuz varsayılır.
 
@@ -41,7 +41,7 @@ Bu makalede:
  
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
@@ -49,11 +49,18 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
 - [Log Analytics çalışma alanı](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
-## <a name="roles"></a>Roller
+- Log Analytics çalışma alanına [erişim](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)
+- Azure Active Directory ' de aşağıdaki roller (Azure Active Directory Portal üzerinden Log Analytics erişiyorsanız)
+    - Güvenlik Yöneticisi
+    - Güvenlik okuyucusu
+    - Rapor okuyucu
+    - Genel yönetici
+
+## <a name="roles"></a>Lerdir
 Çalışma kitaplarını yönetmek için aşağıdaki rollerden birinde ve [temel alınan Log Analytics](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) çalışma alanına erişiminizin olması gerekir:
--   Genel Yönetici
+-   Genel yönetici
 -   Güvenlik Yöneticisi
--   Güvenlik Okuyucusu
+-   Güvenlik okuyucusu
 -   Rapor okuyucu
 -   Uygulama Yöneticisi
 
@@ -62,7 +69,7 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
 Çalışma kitaplarına erişmek için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 
 2. Sol gezinti bölmesinde **Azure Active Directory**' yi seçin.
 
@@ -72,7 +79,7 @@ Izleme çalışma kitaplarını kullanmak için şunlar gerekir:
 
 4. Bir rapor veya şablon seçin ya da araç çubuğunda **Aç**' ı seçin. 
 
-    ![Aç'ı seçin](./media/howto-use-azure-monitor-workbooks/42.png)
+    ![Açık Seç](./media/howto-use-azure-monitor-workbooks/42.png)
 
 
 ## <a name="sign-in-analysis"></a>Oturum açma Analizi
@@ -85,24 +92,24 @@ Bu çalışma kitabı aşağıdaki oturum açma eğilimlerini gösterir:
 
 - Başarılı
 
-- Bekleyen kullanıcı eylemi
+- Bekleyen Kullanıcı eylemi
 
-- Hata
+- Hataları
 
 Her eğilimi aşağıdaki kategorilere göre filtreleyebilirsiniz:
 
-- Zaman aralığı
+- Saat aralığı
 
-- Uygulamalar
+- Gör
 
-- Kullanıcılar
+- Kullanıcılarına
 
 ![Oturum açma Analizi](./media/howto-use-azure-monitor-workbooks/43.png)
 
 
 Her eğilim için, aşağıdaki kategorilere göre bir döküm alırsınız:
 
-- Location
+- Konum
 
     ![Konuma göre oturum açma işlemleri](./media/howto-use-azure-monitor-workbooks/45.png)
 
@@ -125,13 +132,13 @@ Bu çalışma kitabı aşağıdaki oturum açma eğilimlerini gösterir:
 
 Her eğilimi aşağıdaki kategorilere göre filtreleyebilirsiniz:
 
-- Zaman aralığı
+- Saat aralığı
 
-- Uygulamalar
+- Gör
 
-- Kullanıcılar
+- Kullanıcılarına
 
-- Protokoller
+- Ekledikten
 
 ![Eski kimlik doğrulamasına göre oturum açma işlemleri](./media/howto-use-azure-monitor-workbooks/47.png)
 
@@ -149,13 +156,13 @@ Koşullu erişim [ilkelerine](../conditional-access/overview.md)göre oturum aç
 
 Bu çalışma kitabı, devre dışı bırakılan oturum açma eğilimlerini gösterir. Her eğilimi aşağıdaki kategorilere göre filtreleyebilirsiniz:
 
-- Zaman aralığı
+- Saat aralığı
 
-- Uygulamalar
+- Gör
 
-- Kullanıcılar
+- Kullanıcılarına
 
-![Koşullu Erişimle Oturum Açma İşlemleri](./media/howto-use-azure-monitor-workbooks/49.png)
+![Koşullu erişim kullanarak oturum açma işlemleri](./media/howto-use-azure-monitor-workbooks/49.png)
 
 
 Devre dışı bırakılan oturum açma işlemleri için, koşullu erişim durumuna göre bir döküm alırsınız.
@@ -175,9 +182,9 @@ Devre dışı bırakılan oturum açma işlemleri için, koşullu erişim durumu
 
 Bu çalışma kitabı, aşağıdaki devre dışı oturum açma eğilimlerini gösterir:
 
-- MFA gerektirme
+- MFA gerektir
  
-- Kullanım koşullarını gerekli kılma
+- Kullanım koşulları gerektir
 
 - Gizlilik bildirimi iste
 
@@ -186,11 +193,11 @@ Bu çalışma kitabı, aşağıdaki devre dışı oturum açma eğilimlerini gö
 
 Her eğilimi aşağıdaki kategorilere göre filtreleyebilirsiniz:
 
-- Zaman aralığı
+- Saat aralığı
 
-- Uygulamalar
+- Gör
 
-- Kullanıcılar
+- Kullanıcılarına
 
 ![Atama denetimlerine göre oturum açma işlemleri](./media/howto-use-azure-monitor-workbooks/50.png)
 
@@ -221,16 +228,16 @@ Bu çalışma kitabı aşağıdaki oturum açma eğilimlerini gösterir:
 
 - Bekleyen eylem
 
-- Hata
+- Hataları
 
 
 Her eğilimi aşağıdaki kategorilere göre filtreleyebilirsiniz:
 
-- Zaman aralığı
+- Saat aralığı
 
-- Uygulamalar
+- Gör
 
-- Kullanıcılar
+- Kullanıcılarına
 
 ![Oturum açma sorunlarını giderme](./media/howto-use-azure-monitor-workbooks/52.png)
 

@@ -1,21 +1,21 @@
 ---
-title: Öğretici - ansible'ı kullanarak azure'da sanal makine ölçek kümeleri için uygulamaları dağıtma | Microsoft Docs
-description: Azure sanal makine ölçek kümeleri yapılandırmak ve ölçek kümesinde bir uygulamayı dağıtmak için Ansible'ı kullanmayı öğrenin
-keywords: ansible, azure, devops, bash, playbook, sanal makine, sanal makine ölçek kümesi, vmss
+title: Öğretici-Azure 'daki sanal makine ölçek kümelerine uygulama dağıtma (Anlabilen)
+description: Azure sanal makine ölçek kümelerini yapılandırmak ve ölçek kümesinde uygulama dağıtmak için nasıl kullanılacağını öğrenin
+keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, sanal makine, sanal makine ölçek kümesi, VMSS
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a44fd06ace9b21122f5f4253ac7d9601b54e6b62
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231028"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241742"
 ---
-# <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Öğretici: Ansible'ı kullanarak azure'da sanal makine ölçek kümeleri için uygulama dağıtma
+# <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Öğretici: Azure 'daki sanal makine ölçek kümelerine uygulama dağıtma (Anlabilen)
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
@@ -25,25 +25,25 @@ ms.locfileid: "65231028"
 
 > [!div class="checklist"]
 >
-> * Azure Vm'leri bir grup için ana bilgisayar bilgilerini alma
-> * Kopyalamak ve örnek uygulaması derleme
-> * Bir ölçek kümesinde ' % s'JRE (Java Çalışma zamanı ortamı) yükleyin
-> * Bir ölçek kümesine Java uygulaması dağıtma
+> * Bir Azure VM grubu için konak bilgilerini alma
+> * Örnek uygulamayı kopyalama ve derleme
+> * Bir ölçek kümesine JRE 'yi (Java Runtime Environment) yükler
+> * Java uygulamasını bir ölçek kümesine dağıtma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
 [!INCLUDE [ansible-prereqs-vm-scale-set.md](../../includes/ansible-prereqs-vm-scale-set.md)]
-- **Git** - Bu öğreticide Java örneği indirmek için [git](https://git-scm.com) kullanılmaktadır.
-- **Java SE Development Kit (JDK)** - Örnek Java projesini derlemek için [JDK](https://aka.ms/azure-jdks) kullanılır.
-- **Apache Maven** - [Apache Maven](https://maven.apache.org/download.cgi) örnek Java projesi oluşturmak için kullanılır.
+- **git** - [Git](https://git-scm.com) , bu öğreticide kullanılan bir Java örneğini indirmek için kullanılır.
+- **Java SE Development Kit (JDK)** - [JDK](https://aka.ms/azure-jdks) , örnek Java projesini oluşturmak için kullanılır.
+- **Apache maven** - [Apache Maven](https://maven.apache.org/download.cgi) , örnek Java projesini oluşturmak için kullanılır.
 
-## <a name="get-host-information"></a>Ana bilgisayar bilgilerini alma
+## <a name="get-host-information"></a>Konak bilgilerini al
 
-Bu bölümdeki playbook kodu, bir sanal makine grubu için ana bilgisayar bilgilerini alır. Kod, genel IP adreslerini alır ve yük dengeleyici belirtilen kaynak grubunda ve adlı bir konak grubu oluşturur `scalesethosts` stoktaki.
+Bu bölümdeki PlayBook kodu, bir sanal makine grubu için konak bilgilerini alır. Kod, belirtilen bir kaynak grubu içindeki genel IP adreslerini ve yük dengeleyiciyi alır ve envanterde `scalesethosts` adlı bir konak grubu oluşturur.
 
-Aşağıdaki örnek playbook'u `get-hosts-tasks.yml` olarak kaydedin:
+Aşağıdaki örnek PlayBook 'u @no__t olarak kaydet-0:
 
   ```yml
   - name: Get facts for all Public IPs within a resource groups
@@ -69,11 +69,11 @@ Aşağıdaki örnek playbook'u `get-hosts-tasks.yml` olarak kaydedin:
       - "{{ output.ansible_facts.azure_loadbalancers[0].properties.inboundNatRules }}"
   ```
 
-## <a name="prepare-an-application-for-deployment"></a>Uygulamaları dağıtım için hazırlama
+## <a name="prepare-an-application-for-deployment"></a>Uygulamayı dağıtım için hazırlama
 
-Bu bölümdeki playbook kod `git` Java örnek projesini github'dan kopyalama için ve projeyi oluşturur. 
+Bu bölümdeki PlayBook kodu, GitHub 'dan bir Java örnek projesi kopyalamak için `git` kullanır ve projeyi oluşturur. 
 
-Aşağıdaki playbook'u `app.yml` olarak kaydedin:
+Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
   ```yml
   - hosts: localhost
@@ -91,13 +91,13 @@ Aşağıdaki playbook'u `app.yml` olarak kaydedin:
       shell: mvn package chdir="{{ workspace }}/complete"
   ```
 
-Örnek Ansible playbook'u aşağıdaki komut ile çalıştırın:
+Aşağıdaki komutla örnek Anerişilebilir PlayBook 'u çalıştırın:
 
   ```bash
   ansible-playbook app.yml
   ```
 
-Playbook'u çalıştırdıktan sonra aşağıdaki sonuçları benzer bir çıktı görürsünüz:
+PlayBook çalıştırıldıktan sonra aşağıdaki sonuçlara benzer bir çıktı görürsünüz:
 
   ```Output
   PLAY [localhost] 
@@ -116,17 +116,17 @@ Playbook'u çalıştırdıktan sonra aşağıdaki sonuçları benzer bir çıkt�
 
   ```
 
-## <a name="deploy-the-application-to-a-scale-set"></a>Bir ölçek kümesine uygulama dağıtma
+## <a name="deploy-the-application-to-a-scale-set"></a>Uygulamayı bir ölçek kümesine dağıtma
 
-Bu bölümdeki playbook kod için kullanılır:
+Bu bölümdeki PlayBook kodu şu şekilde kullanılır:
 
-* Adlı bir konak grubunda JRE yükleyin `saclesethosts`
-* Adlı bir konak grubu için Java uygulaması dağıtma `saclesethosts`
+* JRE 'yi @no__t adlı bir konak grubuna (0) yükler
+* Java uygulamasını @no__t adlı bir konak grubuna dağıtma-0
 
-Örnek playbook almanın iki yolu vardır:
+Örnek PlayBook 'u almanın iki yolu vardır:
 
-* [Playbook'u indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) ve kaydetmesi `vmss-setup-deploy.yml`.
-* Adlı yeni bir dosya oluşturun `vmss-setup-deploy.yml` ve aşağıdaki içeriği dosyaya kopyalayın:
+* [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-setup-deploy.yml) ve `vmss-setup-deploy.yml` ' e kaydedin.
+* @No__t-0 adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
 
 ```yml
 - hosts: localhost
@@ -165,37 +165,37 @@ Bu bölümdeki playbook kod için kullanılır:
     poll: 0
 ```
 
-Playbook'u çalıştırmadan önce aşağıdaki alan notlara bakın:
+PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
 
-* İçinde `vars` bölümünde, değiştirin `{{ admin_password }}` yer tutucusunu kendi parolanızı ile.
-* Kullanılacak ssh parolaları bağlantı türüyle sshpass program yükle:
+* @No__t-0 bölümünde `{{ admin_password }}` yer tutucusunu kendi parolanızla değiştirin.
+* SSH bağlantı türünü parolalarla birlikte kullanmak için sshpass programını yüklemelisiniz:
 
-    Ubuntu:
+    Ubuntu
 
     ```bash
     apt-get install sshpass
     ```
 
-    CentOS:
+    CentOS
 
     ```bash
     yum install sshpass
     ```
 
-* Bazı ortamlarda bir SSH parolası yerine bir anahtar kullanma hakkında bir hata görebilirsiniz. Bu hatayı alırsanız, ana bilgisayar anahtarı aşağıdaki satırı ekleyerek denetimi devre dışı bırakabilirsiniz `/etc/ansible/ansible.cfg` veya `~/.ansible.cfg`:
+* Bazı ortamlarda, anahtar yerine SSH parolası kullanmayla ilgili bir hata görebilirsiniz. Bu hatayı alırsanız, `/etc/ansible/ansible.cfg` veya `~/.ansible.cfg` ' e aşağıdaki satırı ekleyerek ana bilgisayar anahtarı denetimini devre dışı bırakabilirsiniz:
 
     ```bash
     [defaults]
     host_key_checking = False
     ```
 
-Playbook'u aşağıdaki komut ile çalıştırın:
+Aşağıdaki komutla PlayBook 'u çalıştırın:
 
   ```bash
   ansible-playbook vmss-setup-deploy.yml
   ```
 
-Örnek Java uygulamasından ölçek kümesinin konak grubuna yüklendiğini ansible playbook komut çalışmasını çıktıyı gösterir:
+Anerişilebilir-PlayBook komutunu çalıştırmanın çıktısı, örnek Java uygulamasının ölçek kümesinin konak grubuna yüklendiğini gösterir:
 
   ```Output
   PLAY [localhost]
@@ -232,13 +232,13 @@ Playbook'u aşağıdaki komut ile çalıştırın:
   localhost                  : ok=4    changed=1    unreachable=0    failed=0
   ```
 
-## <a name="verify-the-results"></a>Sonuçları doğrulayın
+## <a name="verify-the-results"></a>Sonuçları doğrulama
 
-İş sonuçlarını ölçek kümeniz için yük dengeleyicinin URL'sine giderek doğrulayın:
+Ölçek kümesi için yük dengeleyicinin URL 'sine giderek çalışmalarınızın sonuçlarını doğrulayın:
 
-![Azure'da bir ölçek kümesinde çalıştırılan Java uygulaması ayarlayın.](media/ansible-vmss-deploy/ansible-deploy-app-vmss.png)
+![Azure 'da bir ölçek kümesinde çalışan Java uygulaması.](media/ansible-vmss-deploy/ansible-deploy-app-vmss.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Otomatik ölçeklendirme sanal makine ölçek kümeleri Azure'da ansible'ı kullanma](./ansible-auto-scale-vmss.md)
+> [Öğretici: Azure 'da sanal makine ölçek kümelerini anormal kullanarak otomatik ölçeklendirme](./ansible-auto-scale-vmss.md)

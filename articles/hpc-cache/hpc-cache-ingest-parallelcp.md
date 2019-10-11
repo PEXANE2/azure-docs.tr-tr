@@ -5,23 +5,23 @@ author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 852b4e692a4316c7701c8c179039104bee561949
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.author: rohogue
+ms.openlocfilehash: 4899f946cb358693c969def3fa740af64675d934
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180960"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254518"
 ---
 # <a name="azure-hpc-cache-preview-data-ingest---parallel-copy-script-method"></a>Azure HPC Cache (Önizleme) veri alma-paralel kopyalama betiği yöntemi
 
-Bu makalede, ``parallelcp`` betiği oluşturma ve Azure HPC önbelleğiyle kullanılmak üzere verileri bir BLOB depolama kapsayıcısına taşımak için kullanılan yönergeler sunulmaktadır.
+Bu makale, ``parallelcp`` betiği oluşturma ve Azure HPC Cache ile kullanmak üzere verileri bir BLOB depolama kapsayıcısına taşımak için kullanma hakkında yönergeler sağlar.
 
 Azure HPC önbelleğiniz için verileri blob depolamaya taşıma hakkında daha fazla bilgi edinmek için Azure [HPC Cache Için Azure Blob depolama 'ya veri taşıma](hpc-cache-ingest.md)makalesini okuyun.
 
 ## <a name="create-the-parallelcp-script"></a>Parallelcp betiği oluşturma
 
-Aşağıdaki komut dosyası yürütülebilir dosyayı `parallelcp`ekleyecek. (Bu betik Ubuntu için tasarlanmıştır; başka bir dağıtım kullanılıyorsa ayrı olarak ' yi yüklemelisiniz ``parallel`` .)
+Aşağıdaki komut dosyası yürütülebilir @no__t ekler-0. (Bu betik Ubuntu için tasarlanmıştır; başka bir dağıtım kullanılıyorsa, ``parallel`` ' ı ayrı ayrı yüklemelisiniz.)
 
 ```bash
 sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
@@ -75,11 +75,11 @@ EOM
 
 ## <a name="parallel-copy-example"></a>Paralel kopya örneği
 
-Bu örnekte, Azure HPC önbelleğinde kaynak dosyaları kullanarak ``glibc`` derlemek için paralel kopyalama betiği kullanılmaktadır.
+Bu örnek, Azure HPC önbelleğindeki kaynak dosyalarını kullanarak ``glibc`` ' i derlemek için paralel kopyalama betiğini kullanır.
 
 Kaynak dosyalar Azure HPC önbellek bağlama noktasında önbelleğe alınır ve nesne dosyaları yerel sabit sürücüde depolanır.
 
-Bu örnek, paralel kopyalama betiğini seçeneğiyle ``-j`` ve ``make`` paralelleştirme sağlamak için kullanır.
+Bu örnekte paralel kopyalama betiği, ``-j`` ve ``make`` seçeneğiyle paralelleştirme sağlamak için kullanılır.
 
 ```bash
 sudo apt-get update

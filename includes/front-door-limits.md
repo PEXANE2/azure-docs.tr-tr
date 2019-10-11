@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: içerme dosyası
+description: içerme dosyası
 services: frontdoor
 author: sharad4u
 ms.service: frontdoor
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67333396"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237473"
 ---
-| Resource | Varsayılan/en yüksek sınır |
+| Kaynak | Varsayılan/en yüksek sınır |
 | --- | --- |
 | Abonelik başına Azure ön kapı hizmeti kaynakları | 100 |
 | Kaynak başına özel etki alanları içeren ön uç Konakları | 100 |
@@ -24,7 +24,7 @@ ms.locfileid: "67333396"
 | Arka uç havuzu başına arka uçlar | 100 |
 | Yönlendirme kuralı için eşleştirilecek yol desenleri | 25 |
 | İlke başına özel Web uygulaması güvenlik duvarı kuralları | 10 |
-| Kaynak başına Web uygulaması güvenlik duvarı ilkesi | 100 |
+| Abonelik başına Web uygulaması güvenlik duvarı ilkesi | 100 |
 | Web uygulaması güvenlik duvarı özel kural başına eşleştirme koşulları | 10 |
 | Web uygulaması güvenlik duvarı IP adresi aralıklarını eşleşme koşulu başına | 600 |
 | Web uygulaması güvenlik duvarı dizesi eşleşme koşulu başına değerleri | 10 |
@@ -53,4 +53,5 @@ ms.locfileid: "67333396"
 | **Kaydederek** |  Her CTE yüklemesi 2 GB 'den az olduğu sürece sınır yoktur. | Boyut 2 GB 'tan büyük olamaz. |
 
 ### <a name="other-limits"></a>Diğer sınırlar
-- En büyük URL boyutu-8.192 bayt-ham URL 'nin uzunluk üst sınırını belirtir (Düzen + ana bilgisayar + bağlantı noktası + yol + URL 'nin sorgu dizesi)-en fazla sorgu dizesi boyutu-4.096 bayt-sorgu dizesinin uzunluk üst sınırını bayt cinsinden belirtir.
+- En büyük URL boyutu-8.192 bayt-ham URL 'nin uzunluk üst sınırını belirtir (Düzen + ana bilgisayar + bağlantı noktası + yol + URL 'nin sorgu dizesi)
+- En fazla sorgu dizesi boyutu-4.096 bayt-sorgu dizesinin uzunluk üst sınırını bayt cinsinden belirtir.

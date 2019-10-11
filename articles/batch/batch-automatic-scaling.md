@@ -11,19 +11,19 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
-ms.date: 06/20/2017
+ms.date: 10/08/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2014b00a82a6d56bf58b471336c6d809721abea9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bdea67d682bab335de02e55f5864460e3daefb95
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095428"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254951"
 ---
-# <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklendirmek için otomatik ölçeklendirme formülü oluşturma
+# <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
-Azure Batch, tanımladığınız parametrelere göre havuzları otomatik olarak ölçeklendirebilir. Otomatik ölçeklendirmeyle, görev talep artdıkça bir havuza dinamik olarak düğüm ekler ve bu işlem düğümleri azaldıkça kaldırır. Batch uygulamanız tarafından kullanılan işlem düğümlerinin sayısını otomatik olarak ayarlayarak zaman ve para tasarrufu yapabilirsiniz. 
+Azure Batch, tanımladığınız parametrelere göre havuzları otomatik olarak ölçeklendirebilir. Otomatik ölçeklendirmeyle, görev talep artdıkça bir havuza dinamik olarak düğüm ekler ve bu işlem düğümleri azaldıkça kaldırır. Batch uygulamanız tarafından kullanılan işlem düğümlerinin sayısını otomatik olarak ayarlayarak zaman ve para tasarrufu yapabilirsiniz.
 
 Bir işlem düğümleri havuzunda, tanımladığınız bir *Otomatik ölçeklendirme formülüyle* ilişkilendirerek otomatik ölçeklendirmeyi etkinleştirirsiniz. Batch hizmeti, iş yükünüzü yürütmek için gereken işlem düğümlerinin sayısını belirlemede otomatik ölçeklendirme formülünü kullanır. İşlem düğümleri ayrılmış düğümler veya [düşük öncelikli düğümler](batch-low-pri-vms.md)olabilir. Toplu işlem, düzenli olarak toplanan Service ölçüm verilerine yanıt verir. Toplu Işlem, bu ölçüm verilerini kullanarak havuzdaki işlem düğümlerinin sayısını Formülünüze ve yapılandırılabilir bir aralığa göre ayarlar.
 
@@ -39,6 +39,7 @@ Bu makalede değişkenler, işleçler, işlemler ve işlevler de dahil olmak üz
 >
 
 ## <a name="automatic-scaling-formulas"></a>Otomatik ölçeklendirme formülleri
+
 Bir otomatik ölçeklendirme formülü, bir veya daha fazla deyim içeren tanımladığınız bir dize değeridir. Otomatik ölçeklendirme formülü bir havuzun [Otomatik scaleformula][rest_autoscaleformula] öğesine (Batch REST) veya [Cloudpool. otomatik Scaleformula][net_cloudpool_autoscaleformula] özelliğine (Batch .net) atandı. Batch hizmeti, bir sonraki işleme aralığı için havuzdaki işlem düğümlerinin hedef sayısını belirlemede formül kullanır. Formül dizesi 8 KB 'ı aşamaz, noktalı virgülle ayrılmış en fazla 100 deyim içerebilir ve satır sonlarını ve açıklamalarını içerebilir.
 
 Otomatik ölçeklendirme formüllerini, toplu otomatik ölçeklendirme "dili" olarak düşünebilirsiniz. Formül deyimleri, hem hizmet tanımlı değişkenleri (Batch hizmeti tarafından tanımlanan değişkenler), hem de Kullanıcı tanımlı değişkenleri (tanımladığınız değişkenler) içerebilen serbest biçimli ifadelerdir. Yerleşik türler, işleçler ve işlevler kullanarak bu değerler üzerinde çeşitli işlemler gerçekleştirebilir. Örneğin, bir ifade aşağıdaki biçimde değişebilir:
@@ -47,7 +48,7 @@ Otomatik ölçeklendirme formüllerini, toplu otomatik ölçeklendirme "dili" ol
 $myNewVariable = function($ServiceDefinedVariable, $myCustomVariable);
 ```
 
-Formüller genellikle önceki deyimlerde elde edilen değerler üzerinde işlem gerçekleştiren birden çok deyim içerir. Örneğin, ilk olarak için `variable1`bir değer alırız ve sonra doldurmak `variable2`üzere bir işleve ilettik:
+Formüller genellikle önceki deyimlerde elde edilen değerler üzerinde işlem gerçekleştiren birden çok deyim içerir. Örneğin, ilk olarak `variable1` ' a bir değer alırız ve sonra `variable2` ' i doldurmak için bir işleve ilettik:
 
 ```
 $variable1 = function1($ServiceDefinedVariable);
@@ -60,32 +61,37 @@ Hedef düğüm sayısı daha yüksek, daha düşük veya havuzdaki bu türdeki d
 
 ### <a name="sample-autoscale-formulas"></a>Örnek otomatik ölçeklendirme formülleri
 
-Aşağıda, çoğu senaryo için çalışacak şekilde ayarlanabilecek iki otomatik ölçeklendirme formülü örnekleri verilmiştir. Değişkenler `startingNumberOfVMs` ve`maxNumberofVMs` örnek formüllerde gereksinimlerinize göre ayarlanabilir.
+Aşağıda, çoğu senaryo için çalışacak şekilde ayarlanabilecek iki otomatik ölçeklendirme formülü örnekleri verilmiştir. Örnek formüllerde `startingNumberOfVMs` ve `maxNumberofVMs` değişkenleri gereksinimlerinize göre ayarlanabilir.
 
 #### <a name="pending-tasks"></a>Bekleyen görevler
+
 ```
 startingNumberOfVMs = 1;
 maxNumberofVMs = 25;
 pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
 pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 * TimeInterval_Second));
 $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
+$NodeDeallocationOption = taskcompletion;
 ```
 
-Bu otomatik ölçeklendirme formülüyle, havuz başlangıçta tek bir VM ile oluşturulur. `$PendingTasks` Ölçüm, çalıştıran veya kuyruğa alınan görevlerin sayısını tanımlar. Formül, son 180 saniye içinde bekleyen görevlerin ortalama sayısını bulur ve `$TargetDedicatedNodes` değişkeni uygun şekilde ayarlar. Formül, ayrılmış düğümlerin hedef sayısının 25 VM 'yi hiçbir şekilde aşmamasını sağlar. Yeni görevler gönderildiğinde havuz otomatik olarak büyür. Görevler tamamlantıkça, VM 'Ler tek tek ve otomatik ölçeklendirme formülü havuzu küçültür.
+Bu otomatik ölçeklendirme formülüyle, havuz başlangıçta tek bir VM ile oluşturulur. @No__t-0 ölçümü, çalıştıran veya kuyruğa alınan görevlerin sayısını tanımlar. Formül, son 180 saniye içinde bekleyen görevlerin ortalama sayısını bulur ve `$TargetDedicatedNodes` değişkenini uygun şekilde ayarlar. Formül, ayrılmış düğümlerin hedef sayısının 25 VM 'yi hiçbir şekilde aşmamasını sağlar. Yeni görevler gönderildiğinde havuz otomatik olarak büyür. Görevler tamamlantıkça, VM 'Ler tek tek ve otomatik ölçeklendirme formülü havuzu küçültür.
 
 Bu formül, ayrılmış düğümleri ölçeklendirir, ancak düşük öncelikli düğümleri de ölçeklendirmek için uygulanabilir.
 
 #### <a name="preempted-nodes"></a>Önden düğümler 
+
 ```
 maxNumberofVMs = 25;
 $TargetDedicatedNodes = min(maxNumberofVMs, $PreemptedNodeCount.GetSample(180 * TimeInterval_Second));
 $TargetLowPriorityNodes = min(maxNumberofVMs , maxNumberofVMs - $TargetDedicatedNodes);
+$NodeDeallocationOption = taskcompletion;
 ```
 
-Bu örnek 25 düşük öncelikli düğümlerle başlayan bir havuz oluşturur. Düşük öncelikli bir düğüm geçersiz hale getirilmiştir her seferinde ayrılmış bir düğümle değiştirilmiştir. İlk örnekte olduğu gibi, `maxNumberofVMs` değişken, havuzun 25 VM 'yi aşmasını önler. Bu örnek, havuzun kullanım ömrü boyunca yalnızca sabit sayıda preemptions oluşmasını sağlayan düşük öncelikli VM 'lerden yararlanmak için yararlıdır.
+Bu örnek 25 düşük öncelikli düğümlerle başlayan bir havuz oluşturur. Düşük öncelikli bir düğüm geçersiz hale getirilmiştir her seferinde ayrılmış bir düğümle değiştirilmiştir. İlk örnekte olduğu gibi `maxNumberofVMs` değişkeni, havuzun 25 VM 'yi aşmasını önler. Bu örnek, havuzun kullanım ömrü boyunca yalnızca sabit sayıda preemptions oluşmasını sağlayan düşük öncelikli VM 'lerden yararlanmak için yararlıdır.
 
 ## <a name="variables"></a>Değişkenler
-Otomatik ölçeklendirme formüllerinizde hem **hizmet tanımlı** hem de **Kullanıcı tanımlı** değişkenleri kullanabilirsiniz. Hizmet tanımlı değişkenler Batch hizmetinde yerleşiktir. Bazı hizmet tanımlı değişkenler okuma-yazma ve bazıları salt okunurdur. Kullanıcı tanımlı değişkenler, tanımladığınız değişkenlerdir. Önceki bölümde `$TargetDedicatedNodes` gösterilen örnek formülde ve `$PendingTasks` hizmet tanımlı değişkenlerdir. Değişkenler `startingNumberOfVMs` ve`maxNumberofVMs` Kullanıcı tanımlı değişkenlerdir.
+
+Otomatik ölçeklendirme formüllerinizde hem **hizmet tanımlı** hem de **Kullanıcı tanımlı** değişkenleri kullanabilirsiniz. Hizmet tanımlı değişkenler Batch hizmetinde yerleşiktir. Bazı hizmet tanımlı değişkenler okuma-yazma ve bazıları salt okunurdur. Kullanıcı tanımlı değişkenler, tanımladığınız değişkenlerdir. Önceki bölümde gösterilen örnek formülde, `$TargetDedicatedNodes` ve `$PendingTasks`, hizmet tanımlı değişkenlerdir. @No__t-0 ve `maxNumberofVMs` değişkenleri Kullanıcı tanımlı değişkenlerdir.
 
 > [!NOTE]
 > Hizmet tanımlı değişkenlerin başına her zaman bir dolar işareti ($) gelir. Kullanıcı tanımlı değişkenler için dolar işareti isteğe bağlıdır.
@@ -100,7 +106,7 @@ Bir havuzdaki işlem düğümlerinin sayısını yönetmek için hizmet tanıml�
 | --- | --- |
 | $TargetDedicatedNodes |Havuz için ayrılmış işlem düğümlerinin hedef sayısı. Ayrılmış düğümlerin sayısı bir hedef olarak belirtilir çünkü bir havuz istenen sayıda düğüm için her zaman ulaşamayabilir. Örneğin, ayrılmış düğümlerin hedef sayısı, havuz ilk hedefe ulaşmadan önce bir otomatik ölçeklendirme değerlendirmesi tarafından değiştirilirse, havuz hedefe ulaşamamış olabilir. <br /><br /> Batch hizmeti yapılandırmasıyla oluşturulan bir hesaptaki havuz, hedef bir Batch hesabı düğümünü veya çekirdek kotayı aşarsa hedefini elde edebilir. Hedef, aboneliğin paylaşılan çekirdek kotasını aşarsa, kullanıcı aboneliği yapılandırmasıyla oluşturulan bir hesaptaki havuz hedefine ulaşamayabilir.|
 | $TargetLowPriorityNodes |Havuz için düşük öncelikli işlem düğümlerinin hedef sayısı. Düşük öncelikli düğümlerin sayısı bir hedef olarak belirtilir çünkü bir havuz istenen sayıda düğüm için her zaman ulaşamayabilir. Örneğin, havuz ilk hedefe ulaşmadan önce düşük öncelikli düğümlerin hedef sayısı bir otomatik ölçeklendirme değerlendirmesi tarafından değiştirilirse, havuz hedefe ulaşamamış olabilir. Hedef bir Batch hesabı düğümünü veya çekirdek kotayı aşarsa, bir havuz hedefi de elde edebilir. <br /><br /> Düşük öncelikli işlem düğümleri hakkında daha fazla bilgi için bkz. [Batch ile düşük öncelikli VM 'Ler kullanma (Önizleme)](batch-low-pri-vms.md). |
-| $NodeDeallocationOption |Bir havuzdan işlem düğümleri kaldırıldığında oluşan eylem. Olası değerler şunlardır:<ul><li>**yeniden kuyruğa alma**--görevleri hemen sonlandırır ve yeniden zamanlanabilmeleri için iş kuyruğuna geri koyar.<li>**Sonlandır**--görevleri hemen sonlandırır ve iş kuyruğundan kaldırır.<li>**taskcompletion**--Şu anda çalışan görevlerin bitmesini bekler ve düğümü havuzdan kaldırır.<li>**retaineddata**--düğüm havuzdan kaldırılmadan önce, düğümdeki tüm yerel görev ile korunan verilerin temizlenmesi için bekler.</ul> |
+| $NodeDeallocationOption |Bir havuzdan işlem düğümleri kaldırıldığında oluşan eylem. Olası değerler şunlardır:<ul><li>**yeniden kuyruğa alma**--varsayılan değer. Görevleri hemen sonlandırır ve yeniden zamanlanabilmeleri için iş kuyruğuna geri koyar. Bu eylem, hedef sayısının mümkün olduğunca hızlı bir şekilde ulaşmasını sağlar, ancak çalışan tüm görevler kesintiye uğradığında ve yeniden başlatılması gerektiği için daha az etkili olabilir. <li>**Sonlandır**--görevleri hemen sonlandırır ve iş kuyruğundan kaldırır.<li>**taskcompletion**--Şu anda çalışan görevlerin bitmesini bekler ve düğümü havuzdan kaldırır. Görevlerin kesintiye uğratılmasını ve yeniden kuyruğa karşı çalışmasını önlemek için bu seçeneği kullanın. <li>**retaineddata**--düğüm havuzdan kaldırılmadan önce, düğümdeki tüm yerel görev ile korunan verilerin temizlenmesi için bekler.</ul> |
 
 Batch hizmetindeki ölçümleri temel alan ayarlamalar yapmak için, bu hizmet tanımlı değişkenlerin değerini alabilirsiniz:
 
@@ -131,13 +137,14 @@ Batch hizmetindeki ölçümleri temel alan ayarlamalar yapmak için, bu hizmet t
 >
 >
 
-## <a name="types"></a>Türler
+## <a name="types"></a>Türü
+
 Bu türler bir formülde desteklenir:
 
 * double
 * doubleVec
 * doubleVecList
-* dize
+* string
 * zaman damgası--zaman damgası, aşağıdaki üyeleri içeren bileşik bir yapıdır:
 
   * yıl
@@ -160,10 +167,11 @@ Bu türler bir formülde desteklenir:
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
+
 Bu işlemlere, önceki bölümde listelenen türlerde izin verilir.
 
-| Çalışma | Desteklenen işleçler | Sonuç türü |
+| İşlem | Desteklenen işleçler | Sonuç türü |
 | --- | --- | --- |
 | Çift *işleç* Double |+, -, *, / |double |
 | Double *işleci* TimeInterval |* |TimeInterval |
@@ -176,11 +184,11 @@ Bu işlemlere, önceki bölümde listelenen türlerde izin verilir.
 | zaman damgası *işleci* zaman damgası |- |TimeInterval |
 | Double *işleci* |-, ! |double |
 | *operatör*TimeInterval |- |TimeInterval |
-| Çift *işleç* Double |<, <=, ==, >=, >, != |double |
-| dize *işleci* dizesi |<, <=, ==, >=, >, != |double |
-| zaman damgası *işleci* zaman damgası |<, <=, ==, >=, >, != |double |
-| TimeInterval *işleci* TimeInterval |<, <=, ==, >=, >, != |double |
-| Çift *işleç* Double |&&, &#124;&#124; |double |
+| Çift *işleç* Double |<, < =, = =, > =, >,! = |double |
+| dize *işleci* dizesi |<, < =, = =, > =, >,! = |double |
+| zaman damgası *işleci* zaman damgası |<, < =, = =, > =, >,! = |double |
+| TimeInterval *işleci* TimeInterval |<, < =, = =, > =, >,! = |double |
+| Çift *işleç* Double |& &,&#124;&#124; |double |
 
 Üçlü işleç (`double ? statement1 : statement2`) ile bir Double test edilirken, sıfır dışında bir değer **true**ve sıfır **false 'tur**.
 
@@ -209,13 +217,14 @@ Bu önceden tanımlanmış **işlevler** , bir otomatik ölçeklendirme formül�
 | Time (dize dateTime = "") |timestamp |Hiçbir parametre geçirilmemişse, geçerli zamanın zaman damgasını veya geçirilse de dateTime dizesinin zaman damgasını döndürür. Desteklenen dateTime biçimleri W3C-DTF ve RFC 1123 ' dir. |
 | Val (doubleVec v, Double ı) |double |Bir başlangıç dizini olan, vektör v 'de i konumunda olan öğenin değerini döndürür. |
 
-Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örneğin:
+Önceki tabloda açıklanan işlevlerden bazıları bağımsız değişken olarak bir liste kabul edebilir. Virgülle ayrılmış liste, *Double* ve *doubleVec*'ın herhangi bir birleşimidir. Örnek:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
-*Doubleveclist* değeri, değerlendirmeden önce tek bir *doubleVec* dönüştürülür. Örneğin `v = [1,2,3]`, `avg(1,2,3)`daha sonra çağrısı, çağırma ile eşdeğerdir. `avg(v)` Çağırma, çağırma `avg(1,2,3,7)`ileeşdeğerdir. `avg(v, 7)`
+*Doubleveclist* değeri, değerlendirmeden önce tek bir *doubleVec* dönüştürülür. Örneğin, `v = [1,2,3]` ise, `avg(v)` ' i çağırmak `avg(1,2,3)` çağırma ile eşdeğerdir. @No__t-0 çağırmak, `avg(1,2,3,7)` çağırma ile eşdeğerdir.
 
 ## <a name="getsampledata"></a>Örnek verileri al
+
 Otomatik ölçeklendirme formülleri, Batch hizmeti tarafından sağlanan ölçüm verileri (örnekler) üzerinde çalışır. Bir formül, hizmetten aldığı değerlere göre havuz boyutunu büyürken veya küçültür. Daha önce açıklanan hizmet tanımlı değişkenler, bu nesneyle ilişkili verilere erişmek için çeşitli yöntemler sağlayan nesnelerdir. Örneğin, aşağıdaki ifade, son beş dakikalık CPU kullanımını almak için bir istek gösterir:
 
 ```
@@ -224,11 +233,11 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 | Yöntem | Açıklama |
 | --- | --- |
-| GetSample () |Yöntemi `GetSample()` , veri örneklerinin bir vektörünü döndürür.<br/><br/>Örnek, ölçüm verilerinin 30 saniye değerinde değeridir. Diğer bir deyişle, her 30 saniyede bir örnek elde edilir. Ancak aşağıda belirtildiği gibi, bir örneğin toplanması ve formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. Bu nedenle, belirli bir süre için tüm örnekler, bir formülün değerlendirmesi için kullanılabilir olabilir.<ul><li>`doubleVec GetSample(double count)`<br/>Toplanan en son örneklerden elde edilecek örneklerin sayısını belirtir.<br/><br/>`GetSample(1)`kullanılabilir son örneği döndürür. Ancak gibi `$CPUPercent`ölçümler için, örneğin *ne zaman* toplandığını öğrenmek imkansız olduğundan bu kullanılmamalıdır. Bu, son zamanlarda veya sistem sorunları nedeniyle daha eski olabilir. Bu tür durumlarda aşağıda gösterildiği gibi bir zaman aralığı kullanılması daha iyidir.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Örnek verilerin toplanması için bir zaman çerçevesi belirtir. İsteğe bağlı olarak, istenen zaman çerçevesinde kullanılabilir olması gereken örneklerin yüzdesini de belirtir.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`Son 10 dakikalık tüm örneklerin CPUPercent geçmişinde mevcut olması halinde 20 örnek döndürür. Geçmişin son dakikası kullanılabilir değilse, ancak yalnızca 18 örnek döndürülür. Bu durumda:<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)`örneklerin yalnızca yüzde 90 ' unun kullanılabilir olması nedeniyle başarısız olur.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)`başarılı olur.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Veri toplamaya yönelik bir zaman çerçevesini, hem başlangıç saati hem de bitiş saati ile belirtir.<br/><br/>Yukarıda belirtildiği gibi, bir örneğin toplanması ve bir formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. `GetSample` Yöntemini kullandığınızda bu gecikmeyi göz önünde bulundurun. Aşağıya `GetSamplePercent` bakın. |
+| GetSample () |@No__t-0 yöntemi, veri örneklerinin bir vektörünü döndürür.<br/><br/>Örnek, ölçüm verilerinin 30 saniye değerinde değeridir. Diğer bir deyişle, her 30 saniyede bir örnek elde edilir. Ancak aşağıda belirtildiği gibi, bir örneğin toplanması ve formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. Bu nedenle, belirli bir süre için tüm örnekler, bir formülün değerlendirmesi için kullanılabilir olabilir.<ul><li>`doubleVec GetSample(double count)`<br/>Toplanan en son örneklerden elde edilecek örneklerin sayısını belirtir.<br/><br/>`GetSample(1)`, kullanılabilir son örneği döndürür. Ancak, `$CPUPercent` gibi ölçümler için, örneğin *ne zaman* toplandığını öğrenmek imkansız olduğundan bu kullanılmamalıdır. Bu, son zamanlarda veya sistem sorunları nedeniyle daha eski olabilir. Bu tür durumlarda aşağıda gösterildiği gibi bir zaman aralığı kullanılması daha iyidir.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`<br/>Örnek verilerin toplanması için bir zaman çerçevesi belirtir. İsteğe bağlı olarak, istenen zaman çerçevesinde kullanılabilir olması gereken örneklerin yüzdesini de belirtir.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10)`, son 10 dakikalık her örnek için CPUPercent geçmişine mevcutsa 20 örnek döndürür. Geçmişin son dakikası kullanılabilir değilse, ancak yalnızca 18 örnek döndürülür. Bu durumda:<br/><br/>örneklerin yalnızca yüzde 90 ' unun kullanılabilir olması nedeniyle `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` başarısız olur.<br/><br/>`$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` başarılı olur.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`<br/>Veri toplamaya yönelik bir zaman çerçevesini, hem başlangıç saati hem de bitiş saati ile belirtir.<br/><br/>Yukarıda belirtildiği gibi, bir örneğin toplanması ve bir formül için kullanılabilir olduğu zaman arasında bir gecikme vardır. @No__t-0 yöntemini kullandığınızda bu gecikmeyi göz önünde bulundurun. Aşağıya `GetSamplePercent` ' a bakın. |
 | GetSamplePeriod () |Bir geçmiş örnek veri kümesinde alınan örneklerin dönemini döndürür. |
 | Count () |Ölçüm geçmişindeki toplam örnek sayısını döndürür. |
 | Geçmiş BeginTime () |Ölçüm için kullanılabilir en eski veri örneğinin zaman damgasını döndürür. |
-| GetSamplePercent () |Belirli bir zaman aralığı için kullanılabilen örneklerin yüzdesini döndürür. Örneğin:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Döndürülen örnek yüzdesi `samplePercent` belirtilen değerden küçükse `GetSamplePercent` yöntem başarısız olduğundan, ilk olarak denetlemek için yöntemini kullanabilirsiniz. `GetSample` Daha sonra, otomatik ölçeklendirme değerlendirmesini durdurmadan, yetersiz örnek varsa, alternatif bir eylem yapabilirsiniz. |
+| GetSamplePercent () |Belirli bir zaman aralığı için kullanılabilen örneklerin yüzdesini döndürür. Örnek:<br/><br/>`doubleVec GetSamplePercent( (timestamp or timeinterval) startTime [, (timestamp or timeinterval) endTime] )`<br/><br/>Döndürülen örneklerin yüzdesi belirtilen `samplePercent` ' den az olduğunda `GetSample` yöntemi başarısız olduğundan, ilk olarak denetlemek için `GetSamplePercent` yöntemini kullanabilirsiniz. Daha sonra, otomatik ölçeklendirme değerlendirmesini durdurmadan, yetersiz örnek varsa, alternatif bir eylem yapabilirsiniz. |
 
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Örnekler, örnek yüzdesi ve *Getsample ()* yöntemi
 Otomatik ölçeklendirme formülünün temel işlemi, görev ve kaynak ölçümü verilerini almak ve ardından bu verilere göre havuz boyutunu ayarlamasıdır. Bu nedenle, otomatik ölçeklendirme formüllerinin ölçüm verileri (örnekler) ile nasıl etkileşime gireceğini net bir şekilde anlamak önemlidir.
@@ -239,42 +248,43 @@ Batch hizmeti düzenli aralıklarla görev ve kaynak ölçümlerinin örneklerin
 
 **Örnek yüzdesi**
 
-Yöntemine geçirildiğinde ya da yöntemi çağrıldığında yüzde, Batch hizmeti tarafından kaydedilen toplam olası örnek sayısı ve şu sayıda örnek sayısı arasındaki bir karşılaştırmaya başvurur. `samplePercent` `GetSample()` `GetSamplePercent()` Otomatik ölçeklendirme formülünüz için kullanılabilir.
+@No__t-0 `GetSample()` yöntemine geçirildiğinde veya `GetSamplePercent()` yöntemi çağrıldığında _yüzde_ , Batch hizmeti tarafından kaydedilen toplam olası örnek sayısı ve otomatik ölçeklendirme için kullanılabilir örnek sayısı arasında bir karşılaştırmaya başvurur formül.
 
 Örnek olarak 10 dakikalık bir TimeSpan bölümüne bakalım. Örnekler 10 dakikalık bir TimeSpan içinde her 30 saniyede bir kaydedildiğinden, Batch tarafından kaydedilen en fazla örnek sayısı 20 örnek (dakika başına 2) olacaktır. Ancak, raporlama mekanizmasından ve Azure 'daki diğer sorunların devralınan gecikmesi nedeniyle, okuma için otomatik ölçeklendirme formülünüzün kullanabildiği yalnızca 15 örnek olabilir. Bu nedenle, örneğin, bu 10 dakikalık dönem için, Formülünüzde kaydedilen toplam örnek sayısının yalnızca% 75 ' u kullanılabilir olabilir.
 
 **GetSample () ve örnek aralıklar**
 
-Otomatik ölçeklendirme formülleriniz büyümeye devam edilir ve havuzlarınızı &mdash; düğüm ekleyerek veya düğümleri kaldırarak daralyor. Düğümlerin maliyeti parasal olduğundan, formüllerin yeterli verileri temel alan akıllı bir analiz yöntemi kullandığından emin olmak istersiniz. Bu nedenle, formüllerinizde popüler bir tür Analizi kullanmanızı öneririz. Bu tür, toplanan örnek aralığına göre havuzlarınızı büyür ve küçültür.
+Otomatik ölçeklendirme formülleriniz, havuzlarınızın büyümesini ve daraltılması &mdash; düğüm ekleme veya düğümleri kaldırma. Düğümlerin maliyeti parasal olduğundan, formüllerin yeterli verileri temel alan akıllı bir analiz yöntemi kullandığından emin olmak istersiniz. Bu nedenle, formüllerinizde popüler bir tür Analizi kullanmanızı öneririz. Bu tür, toplanan örnek aralığına göre havuzlarınızı büyür ve küçültür.
 
-Bunu yapmak için, bir `GetSample(interval look-back start, interval look-back end)` örnek vektörü döndürmek üzere kullanın:
+Bunu yapmak için `GetSample(interval look-back start, interval look-back end)` kullanarak bir örnek vektörü döndürün:
 
 ```
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örneğin:
+Yukarıdaki satır Batch tarafından değerlendirildiğinde, değerlerin vektörü olarak bir dizi örnek döndürür. Örnek:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
 ```
 
-Örneklerin vektörünü topladıktan sonra,, ve `min()` `avg()` gibi işlevleri `max()`kullanarak toplanan aralıktan anlamlı değerler türetebilirsiniz.
+Örneklerin vektörünü topladıktan sonra, toplanan aralıktan anlamlı değerler türetmek için `min()`, `max()` ve `avg()` gibi işlevleri kullanabilirsiniz.
 
-Belirli bir süre için belirli bir örnek yüzdeden daha az kullanılabilir olduğunda, ek güvenlik için bir formül değerlendirmesini başarısız olarak zorlayabilirsiniz. Bir formül değerlendirmesinin başarısız olmasına zorlarsanız, belirtilen örnek yüzdesi yoksa, toplu Işin formülün daha fazla değerlendirmesini durdurmasını söyleyebilirsiniz. Bu durumda, havuz boyutu üzerinde değişiklik yapılmaz. Değerlendirmenin başarılı olması için gerekli bir örnek yüzdesi belirtmek için, bunu üçüncü parametresi `GetSample()`olarak belirtin. Burada, örnek yüzde 75 ' lik bir gereksinim belirtilir:
+Belirli bir süre için belirli bir örnek yüzdeden daha az kullanılabilir olduğunda, ek güvenlik için bir formül değerlendirmesini başarısız olarak zorlayabilirsiniz. Bir formül değerlendirmesinin başarısız olmasına zorlarsanız, belirtilen örnek yüzdesi yoksa, toplu Işin formülün daha fazla değerlendirmesini durdurmasını söyleyebilirsiniz. Bu durumda, havuz boyutu üzerinde değişiklik yapılmaz. Değerlendirmenin başarılı olması için gerekli bir örnek yüzdesi belirtmek için, `GetSample()` ' a üçüncü parametre olarak belirtin. Burada, örnek yüzde 75 ' lik bir gereksinim belirtilir:
 
 ```
 $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * TimeInterval_Second, 75);
 ```
 
-Örnek kullanılabilirliğinde bir gecikme olabileceğinden, bir dakikadan daha eski bir geri arama başlangıç zamanına sahip bir zaman aralığı belirlemek önemlidir. Örneklerin sistem aracılığıyla yayılması yaklaşık bir dakika sürer, bu nedenle aralıktaki `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` örnekler kullanılamayabilir. Yine, belirli bir örnek yüzdesi gereksinimini zorlamak `GetSample()` için Percentage parametresini kullanabilirsiniz.
+Örnek kullanılabilirliğinde bir gecikme olabileceğinden, bir dakikadan daha eski bir geri arama başlangıç zamanına sahip bir zaman aralığı belirlemek önemlidir. Örneklerin sistem aracılığıyla yayılması yaklaşık bir dakika sürer. bu nedenle `(0 * TimeInterval_Second, 60 * TimeInterval_Second)` aralığında örnekler kullanılamayabilir. Yine, belirli bir örnek yüzdesi gereksinimini zorlamak için `GetSample()` ' ın yüzde parametresini kullanabilirsiniz.
 
 > [!IMPORTANT]
-> **Yalnızca Otomatik`GetSample(1)` ölçeklendirme formüllerinizde bağlı olmasını önlemenize** **kesinlikle tavsiye** ederiz. Bunun nedeni `GetSample(1)` , temel olarak Batch hizmetine, "sizin ne kadar süre önce ne kadar süreyle elde ettiğinize bakılmaksızın" sahip olduğunuz son örneği bana vermektir. Yalnızca tek bir örnek olduğundan ve bu, eski bir örnek olabileceğinden, son görevin veya kaynak durumunun daha büyük resmini temsil edemeyebilir. Kullanıyorsanız `GetSample(1)`, formülün bağımlı olduğu tek veri noktası değil daha büyük bir deyimin parçası olduğundan emin olun.
+> **Otomatik ölçeklendirme formüllerinizde *yalnızca* `GetSample(1)` ' e bağlı kalmamak** **kesinlikle önerilir** . Bunun nedeni `GetSample(1)` ' ın, toplu Iş hizmetine ne kadar önce elde ettiğinize bakılmaksızın "sahip olduğunuz son örneği vermesini" sağlar. Yalnızca tek bir örnek olduğundan ve bu, eski bir örnek olabileceğinden, son görevin veya kaynak durumunun daha büyük resmini temsil edemeyebilir. @No__t-0 ' ı kullanırsanız, formülün bağımlı olduğu tek veri noktası değil daha büyük bir deyimin parçası olduğundan emin olun.
 >
 >
 
 ## <a name="metrics"></a>Ölçümler
+
 Bir formül tanımlarken hem kaynak hem de görev ölçümlerini kullanabilirsiniz. Havuzdaki ayrılmış düğümlerin hedef sayısını, elde ettiğiniz ve değerlendirdiğiniz ölçüm verilerine göre ayarlayabilirsiniz. Her ölçüm hakkında daha fazla bilgi için yukarıdaki [değişkenler](#variables) bölümüne bakın.
 
 <table>
@@ -321,15 +331,17 @@ Bir formül tanımlarken hem kaynak hem de görev ölçümlerini kullanabilirsin
 </table>
 
 ## <a name="write-an-autoscale-formula"></a>Bir otomatik ölçeklendirme formülü yaz
+
 Yukarıdaki bileşenleri kullanan deyimler oluşturarak bir otomatik ölçeklendirme formülü oluşturursunuz ve ardından bu deyimleri bir bütün formülde birleştirir. Bu bölümde, bazı gerçek dünyada ölçekleme kararları gerçekleştirebilen örnek bir otomatik ölçeklendirme formülü oluşturacağız.
 
 İlk olarak, yeni otomatik ölçeklendirme formülünüzün gereksinimlerini tanımlayalim. Formül şu şekilde olmalıdır:
 
 1. CPU kullanımı yüksekse, bir havuzdaki adanmış işlem düğümlerinin hedef sayısını artırın.
-2. CPU kullanımı düşük olduğunda bir havuzdaki adanmış işlem düğümlerinin hedef sayısını azaltın.
-3. En fazla adanmış düğüm sayısını 400 olarak kısıtla.
+1. CPU kullanımı düşük olduğunda bir havuzdaki adanmış işlem düğümlerinin hedef sayısını azaltın.
+1. En fazla adanmış düğüm sayısını 400 olarak kısıtla.
+1. Düğüm sayısını azaltırken, görevleri çalıştıran düğümleri kaldırmayın; gerekirse, düğümleri kaldırmak için görevler bitene kadar bekleyin.
 
-Yüksek CPU kullanımı sırasında düğümlerin sayısını artırmak için, Kullanıcı tanımlı bir değişkeni (`$totalDedicatedNodes`) ayrılmış düğümlerin geçerli hedef sayısı% 110 olan bir değerle dolduran, ancak yalnızca en düşük ortalama CPU kullanımı Son 10 dakika yüzde 70 ' den fazla. Aksi takdirde, geçerli ayrılmış düğüm sayısı için değerini kullanın.
+Yüksek CPU kullanımı sırasında düğümlerin sayısını artırmak için, Kullanıcı tanımlı bir değişkeni (`$totalDedicatedNodes`), ayrılmış düğümlerin geçerli hedef sayısı% 110 olan bir değerle dolduran, ancak yalnızca son 10 ' da en düşük ortalama CPU kullanımı olan bir değere sahip olan ifadeyi tanımlayın dakikalar yüzde 70 ' den fazla. Aksi takdirde, geçerli ayrılmış düğüm sayısı için değerini kullanın.
 
 ```
 $totalDedicatedNodes =
@@ -337,7 +349,7 @@ $totalDedicatedNodes =
     ($CurrentDedicatedNodes * 1.1) : $CurrentDedicatedNodes;
 ```
 
-Düşük CPU kullanımı sırasında adanmış düğümlerin sayısını *azaltmak* için, önceki 60 dakika içinde ortalama CPU kullanımı 20 altındaysa, formülümüzdeki sonraki ifade aynı `$totalDedicatedNodes` değişkeni ayrılmış düğümlerin geçerli hedef sayısının yüzde 90 ' si olarak ayarlar. yüzdeyi. Aksi takdirde, yukarıdaki ifadede doldurulduğumuz `$totalDedicatedNodes` geçerli değerini kullanın.
+Düşük CPU kullanımı sırasında adanmış düğümlerin sayısını *azaltmak* için, önceki 60 dakika IÇINDE ortalama CPU kullanımı yüzde 20 ' nin altında olduğunda, formülümüzdeki sonraki ifade aynı `$totalDedicatedNodes` değişkenini geçerli hedef sayısı için yüzde 90 olarak ayarlar. Aksi takdirde, yukarıdaki ifadede doldurulduğumuz `$totalDedicatedNodes` ' ın geçerli değerini kullanın.
 
 ```
 $totalDedicatedNodes =
@@ -372,12 +384,12 @@ Havuz otomatik ölçeklendirme, Batch [SDK 'ları](batch-apis-tools.md#azure-acc
 .NET ' te otomatik ölçeklendirme özelliği etkinleştirilmiş bir havuz oluşturmak için aşağıdaki adımları izleyin:
 
 1. [Batchclient. PoolOperations. createpool](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.createpool)ile havuzu oluşturun.
-1. [Cloudpool. oto Scaleenabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) özelliğini olarak `true`ayarlayın.
+1. [Cloudpool. oto Scaleenabled](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleenabled) özelliğini `true` olarak ayarlayın.
 1. [Cloudpool. otomatik scaleformula](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleformula) özelliğini otomatik ölçeklendirme formülünüz ile ayarlayın.
 1. Seçim [Cloudpool. AutoScaleEvaluationInterval](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.autoscaleevaluationinterval) özelliğini ayarlayın (varsayılan değer 15 dakikadır).
 1. Havuzu [Cloudpool. COMMIT](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commit) veya [commınsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool.commitasync)ile işleyin.
 
-Aşağıdaki kod parçacığı, .NET 'te otomatik ölçeklendirme özellikli bir havuz oluşturur. Havuzun otomatik ölçeklendirme formülü, ayrılmış düğümlerin hedef sayısını Mondays üzerinde 5 ve haftanın her gününde 1 olarak ayarlar. [Otomatik ölçeklendirme aralığı](#automatic-scaling-interval) 30 dakikaya ayarlanır. Bu makalede ve bu makaledeki C# `myBatchClient` diğer kod parçacıklarında [batchclient][net_batchclient] sınıfının düzgün başlatılmış bir örneğidir.
+Aşağıdaki kod parçacığı, .NET 'te otomatik ölçeklendirme özellikli bir havuz oluşturur. Havuzun otomatik ölçeklendirme formülü, ayrılmış düğümlerin hedef sayısını Mondays üzerinde 5 ve haftanın her gününde 1 olarak ayarlar. [Otomatik ölçeklendirme aralığı](#automatic-scaling-interval) 30 dakikaya ayarlanır. Bu makalede ve bu makaledeki C# diğer kod parçacıklarında `myBatchClient`, [batchclient][net_batchclient] sınıfının düzgün başlatılmış bir örneğidir.
 
 ```csharp
 CloudPool pool = myBatchClient.PoolOperations.CreatePool(
@@ -455,10 +467,10 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Mevcut bir havuzda otomatik ölçeklendirmeyi etkinleştir
 
-Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örneğin:
+Her Batch SDK 'Sı otomatik ölçeklendirmeyi etkinleştirmek için bir yol sağlar. Örnek:
 
 * [Batchclient. PoolOperations. Enableoto Scaleasync][net_enableautoscaleasync] (Batch .net)
-* [Bir havuzda otomatik ölçeklendirmeyi etkinleştirme][rest_enableautoscale] (REST API)
+* [Bir havuzda otomatik ölçeklendirmeyi etkinleştir][rest_enableautoscale] (REST API)
 
 Varolan bir havuzda otomatik ölçeklendirmeyi etkinleştirdiğinizde aşağıdaki noktaları göz önünde bulundurun:
 
@@ -469,7 +481,7 @@ Varolan bir havuzda otomatik ölçeklendirmeyi etkinleştirdiğinizde aşağıda
   * Otomatik ölçeklendirme formülünü veya değerlendirme aralığını atlarsanız, Batch hizmeti bu ayarın geçerli değerini kullanmaya devam eder.
 
 > [!NOTE]
-> .NET 'te havuz oluştururken veya başka bir dildeki karşılaştırılabilir parametreler için, **createpool** yönteminin targetlowlıo *düğümleri* veya *targetlowprioritynodes* parametreleri için değerler belirttiyseniz, bu değerler Otomatik ölçeklendirme formülü değerlendirildiğinde yok sayılır.
+> .NET 'te havuz oluştururken veya başka bir dildeki karşılaştırılabilir parametreler için, **createpool** yönteminin *targetlowlıo düğümleri* veya *targetlowprioritynodes* parametreleri için değerler belirttiyseniz, bu değerler Otomatik ölçeklendirme formülü değerlendirildiğinde yok sayılır.
 >
 >
 
@@ -488,7 +500,7 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
 ### <a name="update-an-autoscale-formula"></a>Otomatik ölçeklendirme formülünü güncelleştirme
 
-Varolan bir otomatik ölçeklendirme havuzundaki formülü güncelleştirmek için, yeni formülle tekrar ölçeklendirmeyi etkinleştirmek üzere işlemi çağırın. Örneğin, aşağıdaki .NET kodu yürütüldüğünde otomatik ölçeklendirme zaten etkinse `myexistingpool` , otomatik ölçeklendirme formülü `myNewFormula`içeriğiyle değiştirilmiştir.
+Varolan bir otomatik ölçeklendirme havuzundaki formülü güncelleştirmek için, yeni formülle tekrar ölçeklendirmeyi etkinleştirmek üzere işlemi çağırın. Örneğin, otomatik ölçeklendirme ' de zaten etkinse `myexistingpool` aşağıdaki .NET kodu yürütüldüğünde, otomatik ölçeklendirme formülü `myNewFormula` ' in içeriğiyle değiştirilmiştir.
 
 ```csharp
 await myBatchClient.PoolOperations.EnableAutoScaleAsync(
@@ -510,7 +522,7 @@ await myBatchClient.PoolOperations.EnableAutoScaleAsync(
 
 Bir formülü bir havuza uygulamadan önce değerlendirebilirsiniz. Bu şekilde, formülü üretime eklemeden önce deyimlerinin nasıl değerlendirmekte olduğunu görmek için formülü test edebilirsiniz.
 
-Bir otomatik ölçeklendirme formülünü değerlendirmek için, önce geçerli bir formülle havuzda otomatik ölçeklendirmeyi etkinleştirmeniz gerekir. Henüz otomatik ölçeklendirmeyi etkin olmayan bir havuzda bir formülü test etmek için otomatik ölçeklendirmeyi ilk etkinleştirdiğinizde tek satırlık bir formül `$TargetDedicatedNodes = 0` kullanın. Ardından, test etmek istediğiniz formülü değerlendirmek için aşağıdakilerden birini kullanın:
+Bir otomatik ölçeklendirme formülünü değerlendirmek için, önce geçerli bir formülle havuzda otomatik ölçeklendirmeyi etkinleştirmeniz gerekir. Henüz otomatik ölçeklendirmeyi etkin olmayan bir havuzda bir formülü test etmek için, otomatik ölçeklendirmeyi etkinleştirdiğinizde, tek satırlık formül `$TargetDedicatedNodes = 0` ' ı kullanın. Ardından, test etmek istediğiniz formülü değerlendirmek için aşağıdakilerden birini kullanın:
 
 * [Batchclient. PoolOperations. EvaluateAutoScale](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscale) veya [EvaluateAutoScaleAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.evaluateautoscaleasync)
 
@@ -634,9 +646,11 @@ Error:
 ```
 
 ## <a name="example-autoscale-formulas"></a>Örnek otomatik ölçeklendirme formülleri
+
 Bir havuzdaki işlem kaynakları miktarını ayarlamak için farklı yollar gösteren birkaç formüle göz atalım.
 
-### <a name="example-1-time-based-adjustment"></a>Örnek 1: Zamana dayalı ayarlama
+### <a name="example-1-time-based-adjustment"></a>Örnek 1: zamana dayalı ayarlama
+
 Havuz boyutunu haftanın günü ve günün saati temelinde ayarlamak istediğinizi varsayalım. Bu örnek, havuzdaki düğümlerin sayısını uygun şekilde artırma veya azaltma işlemlerinin nasıl yapılacağını gösterir.
 
 Formül ilk olarak geçerli saati edinir. Bu haftanın günü (1-5) ve çalışma saatleri (8-6 ila 6) ise, hedef havuz boyutu 20 düğüm olarak ayarlanır. Aksi takdirde, 10 düğüm olarak ayarlanır.
@@ -647,9 +661,11 @@ $workHours = $curTime.hour >= 8 && $curTime.hour < 18;
 $isWeekday = $curTime.weekday >= 1 && $curTime.weekday <= 5;
 $isWorkingWeekdayHour = $workHours && $isWeekday;
 $TargetDedicatedNodes = $isWorkingWeekdayHour ? 20:10;
+$NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-2-task-based-adjustment"></a>Örnek 2: Görev tabanlı ayarlama
+### <a name="example-2-task-based-adjustment"></a>Örnek 2: görev tabanlı ayarlama
+
 Bu örnekte, havuz boyutu kuyruktaki görev sayısına göre ayarlanır. Açıklamalar ve satır sonları formül dizelerinde kabul edilebilir.
 
 ```csharp
@@ -664,11 +680,12 @@ $targetVMs = $tasks > 0? $tasks:max(0, $TargetDedicatedNodes/2);
 // The pool size is capped at 20, if target VM value is more than that, set it
 // to 20. This value should be adjusted according to your use case.
 $TargetDedicatedNodes = max(0, min($targetVMs, 20));
-// Set node deallocation mode - keep nodes active only until tasks finish
+// Set node deallocation mode - let running tasks finish before removing a node
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-3-accounting-for-parallel-tasks"></a>Örnek 3: Paralel görevler için hesaplama
+### <a name="example-3-accounting-for-parallel-tasks"></a>Örnek 3: paralel görevler için hesaplama
+
 Bu örnek, görev sayısına göre havuz boyutunu ayarlar. Bu formül Ayrıca, havuz için ayarlanmış olan [MaxTasksPerComputeNode][net_maxtasks] değerini de hesaba girer. Bu yaklaşım, havuzunuzdaki [paralel görev yürütmenin](batch-parallel-node-tasks.md) etkinleştirildiği durumlarda faydalıdır.
 
 ```csharp
@@ -689,7 +706,8 @@ $TargetDedicatedNodes = max(0,min($targetVMs,3));
 $NodeDeallocationOption = taskcompletion;
 ```
 
-### <a name="example-4-setting-an-initial-pool-size"></a>Örnek 4: İlk havuz boyutunu ayarlama
+### <a name="example-4-setting-an-initial-pool-size"></a>Örnek 4: ilk havuz boyutunu ayarlama
+
 Bu örnek, bir C# ilk zaman aralığı için havuz boyutunu belirtilen sayıda düğüm olarak ayarlayan bir otomatik ölçeklendirme formülüne sahip bir kod parçacığını gösterir. Ardından, ilk süre geçtikten sonra, çalışan ve etkin görev sayısına göre havuz boyutunu ayarlar.
 
 Aşağıdaki kod parçacığındaki formül:
@@ -714,6 +732,7 @@ string formula = string.Format(@"
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 * [Eşzamanlı düğüm görevleriyle Azure Batch işlem kaynak kullanımını en üst düzeye çıkarmak](batch-parallel-node-tasks.md) , havuzunuzdaki işlem düğümlerinde birden çok görevi eşzamanlı olarak nasıl yürütebileceğinizi gösteren ayrıntılar içerir. Otomatik ölçeklendirmeye ek olarak, bu özellik bazı iş yükleri için iş süresini azaltmaya yardımcı olabilir, böylece paradan tasarruf sağlayabilirsiniz.
 * Başka bir verimlilik güçlendirici için Batch uygulamanızın Batch hizmetini en iyi şekilde sorguladığı için emin olun. Potansiyel olarak binlerce işlem düğümü veya görev durumunu sorguladığınızda, Tel kesen veri miktarını sınırlamayı öğrenmek için [Azure Batch hizmetini verimli bir şekilde sorgulama](batch-efficient-list-queries.md) bölümüne bakın.
 

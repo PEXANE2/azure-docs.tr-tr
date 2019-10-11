@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 0d877dafc4ab4f8ec4edb0a94450fa9c5dfcd0bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 09ba4bc9e5ac496a7d1d65ff145d56818e53116e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850240"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243347"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Sunucuları istenen bir duruma göre yapılandırma ve DRFT 'yi yönetme
 
@@ -34,7 +34,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 - Azure Otomasyonu hesabı. Bir Azure Otomasyonu Garklı Çalıştır hesabı oluşturma yönergeleri için bkz. [Azure Farklı Çalıştır Hesabı](automation-sec-configure-azure-runas-account.md).
 - Windows Server 2008 R2 veya üstünü çalıştıran bir Azure Resource Manager VM (klasik değil). VM oluşturma yönergeleri için bkz. [Azure portalında ilk Windows sanal makinenizi oluşturma](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 - Azure PowerShell modülü 3,6 veya sonraki bir sürümü. Sürümü bulmak için `Get-Module -ListAvailable AzureRM` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/azurerm/install-azurerm-ps).
-- Istenen durum yapılandırması (DSC) ile benzerlik. DSC hakkında daha fazla bilgi için bkz. [Windows PowerShell Istenen durum yapılandırmasına genel bakış](https://docs.microsoft.com/powershell/dsc/overview)
+- Istenen durum yapılandırması (DSC) ile benzerlik. DSC hakkında daha fazla bilgi için bkz. [Windows PowerShell Istenen durum yapılandırmasına genel bakış](/powershell/scripting/dsc/overview/overviews)
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -48,7 +48,7 @@ Connect-AzureRmAccount
 
 Bu öğreticide, IIS 'nin VM 'de yüklü olmasını sağlayan basit bir DSC yapılandırması kullanacağız.
 
-DSC yapılandırmaları hakkında bilgi edinmek için bkz. [DSC yapılandırmaları](/powershell/dsc/configurations).
+DSC yapılandırmaları hakkında bilgi edinmek için bkz. [DSC yapılandırmaları](/powershell/scripting/dsc/configurations/configurations).
 
 Bir metin düzenleyicisine aşağıdakileri yazıp `TestConfig.ps1` adıyla yerel ortamda kaydedin.
 
@@ -65,9 +65,9 @@ configuration TestConfig {
 ```
 
 > [!NOTE]
-> DSC kaynaklarını sağlayan birden çok modülün içeri aktarılmasını gerektiren daha Gelişmiş senaryolarda, her modülün yapılandırmanızda benzersiz `Import-DscResource` bir satıra sahip olduğundan emin olun.
+> DSC kaynaklarını sağlayan birden çok modülün içeri aktarılmasını gerektiren daha Gelişmiş senaryolarda, her modülün yapılandırmanızda benzersiz bir `Import-DscResource` satırı olduğundan emin olun.
 
-Yapılandırmayı Otomasyon hesabınıza yüklemek için cmdlet'iniçağırın:`Import-AzureRmAutomationDscConfiguration`
+Yapılandırmayı Otomasyon hesabınıza yüklemek için `Import-AzureRmAutomationDscConfiguration` cmdlet 'ini çağırın:
 
 ```powershell
  Import-AzureRmAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
@@ -77,21 +77,21 @@ Yapılandırmayı Otomasyon hesabınıza yüklemek için cmdlet'iniçağırın:`
 
 Bir DSC yapılandırmasının bir düğüme atanabilmesi için önce düğüm yapılandırmasına derlenmesi gerekir.
 
-Yapılandırmaların derlenmesi hakkında daha fazla bilgi için bkz. [DSC yapılandırması](/powershell/dsc/configurations).
+Yapılandırmaların derlenmesi hakkında daha fazla bilgi için bkz. [DSC yapılandırması](/powershell/scripting/dsc/configurations/configurations).
 
-`TestConfig` `Start-AzureRmAutomationDscCompilationJob` Yapılandırmayı bir düğüm yapılandırmasında derlemek için cmdlet 'ini çağırın:
+@No__t-1 yapılandırmasını bir düğüm yapılandırmasına derlemek için `Start-AzureRmAutomationDscCompilationJob` cmdlet 'ini çağırın:
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
 ```
 
-Bu, Otomasyon hesabınızda adlı `TestConfig.WebServer` bir düğüm yapılandırması oluşturur.
+Bu, Otomasyon hesabınızda `TestConfig.WebServer` adlı bir düğüm yapılandırması oluşturur.
 
 ## <a name="register-a-vm-to-be-managed-by-state-configuration"></a>Bir VM 'yi durum yapılandırması tarafından yönetilecek şekilde kaydetme
 
 Azure Otomasyonu durum yapılandırması 'nı kullanarak Azure VM 'lerini (hem klasik hem de Kaynak Yöneticisi), şirket içi VM 'Lere, Linux makinelere, AWS VM 'lerine ve şirket içi fiziksel makinelere yönetebilirsiniz. Bu konu başlığında yalnızca Azure Resource Manager VM 'lerinin nasıl kaydedileceği ele alınmaktadır. Diğer makine türlerini kaydetme hakkında daha fazla bilgi için bkz. [Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme](automation-dsc-onboarding.md).
 
-Azure Otomasyonu durum yapılandırması ile VM 'nizi kaydettirmek için cmdlet'iniçağırın.`Register-AzureRmAutomationDscNode`
+VM 'nizi Azure Otomasyonu durum yapılandırması ile kaydetmek için `Register-AzureRmAutomationDscNode` cmdlet 'ini çağırın.
 
 ```powershell
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
@@ -101,7 +101,7 @@ Bu, belirtilen VM 'yi durum yapılandırması 'nda yönetilen bir düğüm olara
 
 ### <a name="specify-configuration-mode-settings"></a>Yapılandırma modu ayarlarını belirtin
 
-Bir VM 'yi yönetilen düğüm olarak kaydettiğinizde, yapılandırmanın özelliklerini de belirtebilirsiniz. Örneğin, makinenin durumunun yalnızca bir kez uygulanacağını belirtebilirsiniz (DSC, ilk denetim sonrasında yapılandırmayı uygulamayı denemez), `ApplyOnly` **configurationmode** özelliğinin değeri olarak belirterek şunları yapabilirsiniz:
+Bir VM 'yi yönetilen düğüm olarak kaydettiğinizde, yapılandırmanın özelliklerini de belirtebilirsiniz. Örneğin, makinenin durumunun yalnızca bir kez uygulanacağını belirtebilirsiniz (DSC, ilk denetim sonrasında yapılandırmayı uygulamayı denemez) **Configurationmode** özelliğinin değeri olarak `ApplyOnly` belirterek:
 
 ```powershell
 Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm' -ConfigurationMode 'ApplyOnly'
@@ -116,7 +116,7 @@ Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Automati
 
 Yönetilen bir düğümün yapılandırma özelliklerini ayarlama hakkında daha fazla bilgi için bkz. [register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode).
 
-DSC yapılandırma ayarları hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/powershell/dsc/metaconfig).
+DSC yapılandırma ayarları hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
 ## <a name="assign-a-node-configuration-to-a-managed-node"></a>Yönetilen düğüme düğüm yapılandırması atama
 
@@ -130,9 +130,9 @@ $node = Get-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Autom
 Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -NodeConfigurationName 'TestConfig.WebServer' -NodeId $node.Id
 ```
 
-Bu, adlı kayıtlı DSC `TestConfig.WebServer` `DscVm`düğümüne adlı düğüm yapılandırmasını atar.
+Bu, `TestConfig.WebServer` adlı düğüm yapılandırmasını `DscVm` adlı kayıtlı DSC düğümüne atar.
 Varsayılan olarak, DSC düğümü her 30 dakikada bir düğüm yapılandırmasıyla uyumluluk için denetlenir.
-Uyumluluk denetimi aralığını değiştirme hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/PowerShell/DSC/metaConfig).
+Uyumluluk denetimi aralığını değiştirme hakkında daha fazla bilgi için bkz. [yerel Configuration Manager yapılandırma](/powershell/scripting/dsc/managing-nodes/metaConfig).
 
 ## <a name="working-with-partial-configurations"></a>Kısmi yapılandırmalara göre çalışma
 
@@ -147,7 +147,7 @@ Yapılandırma olarak Configuration 'ı kullanarak sunucuları yönetmek için e
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>Yönetilen bir düğümün uyumluluk durumunu denetleme
 
-`Get-AzureRmAutomationDscNodeReport` Cmdlet 'ini çağırarak, yönetilen bir düğümün uyumluluk durumu hakkında raporlar alabilirsiniz:
+@No__t-0 cmdlet 'ini çağırarak yönetilen bir düğümün uyumluluk durumu hakkında raporlar alabilirsiniz:
 
 ```powershell
 # Get the ID of the DSC node
@@ -170,7 +170,7 @@ Düğümü hizmetten kaldırmayı seçerseniz, Azure portal ya da az cmdlet 'ler
 > Bu, düğüme uygulanmış olan yapılandırmayı etkilemez.
 > Geçerli yapılandırmayı kaldırmak için [PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) 'i kullanın veya yerel yapılandırma dosyasını silin (Bu, Linux düğümlerine yönelik tek seçenektir).
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure Otomasyonu ' ndan içindekiler tablosunda **Durum Yapılandırması (DSC)** seçeneğine tıklayın.
 Ardından, hizmete kayıtlı düğümlerin listesini görüntülemek için **düğümler** ' e tıklayın.

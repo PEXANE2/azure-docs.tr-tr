@@ -1,5 +1,5 @@
 ---
-title: Öğretici-Azure HDInsight 'ta anormal bir küme yapılandırma | Microsoft Docs
+title: Öğretici-Azure HDInsight 'ta anormal bir küme yapılandırma
 description: Azure HDInsight oluşturmak ve yeniden boyutlandırmak için nasıl kullanılacağını öğrenin
 keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, Apache Hadoop, HDInsight
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: ff135473443589650d90bfb7f3e5aa248f72e821
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ad17e6ff4cbf5b583e3a4be410847c1349c9edce
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861264"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241944"
 ---
 # <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>Öğretici: Azure HDInsight 'ta bir kümeyi erişilebilir kullanarak yapılandırma
 
@@ -28,9 +28,9 @@ ms.locfileid: "70861264"
 > * HDInsight için bir depolama hesabı oluşturma
 > * Bir [HDInsight Spark kümesi](/azure/hdinsight/spark/apache-spark-overview)yapılandırın.
 > * Kümeyi yeniden boyutlandırma
-> * Küme silme
+> * Kümeyi silme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)] 
@@ -50,7 +50,7 @@ Bu bölümdeki PlayBook kodu, Azure HDInsight küme adının bir parçası olara
       run_once: yes
 ```
 
-## <a name="create-resource-group"></a>Kaynak grubu oluşturma
+## <a name="create-resource-group"></a>Kaynak grubu oluştur
 
 Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
@@ -140,11 +140,11 @@ Bu bölümdeki PlayBook kodu, Azure HDInsight kümesini oluşturur.
 
 Örnek oluşturma işleminin tamamlanması birkaç dakika sürebilir.
 
-## <a name="resize-the-cluster"></a>Kümeyi yeniden boyutlandırma
+## <a name="resize-the-cluster"></a>Kümeyi yeniden boyutlandır
 
 Küme oluşturulduktan sonra değiştirebilmeniz için tek ayar çalışan düğümlerinin sayısıdır. 
 
-Bu bölümdeki PlayBook kodu, içinde `target_instance_count` `workernode`güncelleyerek çalışan düğümlerinin sayısını artırır.
+Bu bölümdeki PlayBook kodu, `workernode` içinde `target_instance_count` güncelleştirerek çalışan düğümü sayısını artırır.
 
 ```yml
 - name: Resize cluster
@@ -205,8 +205,8 @@ Bu bölümdeki PlayBook kodu kümeyi siler.
 ## <a name="get-the-sample-playbook"></a>Örnek PlayBook 'u alın
 
 Örnek PlayBook 'un tamamını almanın iki yolu vardır:
-- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) ve uygulamasına `hdinsight_create.yml`kaydedin.
-- Adlı `hdinsight_create.yml` yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
+- [PlayBook 'U indirin](https://github.com/Azure-Samples/ansible-playbooks/blob/master/hdinsight_create.yml) ve `hdinsight_create.yml` ' e kaydedin.
+- @No__t-0 adlı yeni bir dosya oluşturun ve aşağıdaki içerikleri içine kopyalayın:
 
 ```yml
 ---
@@ -353,19 +353,19 @@ Bu bölümdeki PlayBook kodu kümeyi siler.
 Bu bölümde, bu makalede gösterilen çeşitli özellikleri test etmek için PlayBook 'u çalıştırın.
 
 PlayBook 'u çalıştırmadan önce aşağıdaki değişiklikleri yapın:
-- `vars` Bölümünde `{{ resource_group_name }}` yer tutucuyu kaynak grubunuzun adıyla değiştirin.
+- @No__t-0 bölümünde `{{ resource_group_name }}` yer tutucusunu kaynak grubunuzun adıyla değiştirin.
 
-Şu `ansible-playbook` komutu kullanarak PlayBook 'u çalıştırın:
+@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook hdinsight.yml
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu şu şekilde `cleanup.yml`kaydedin:
+Aşağıdaki kodu @no__t olarak kaydet-0:
 
 ```yml
 - hosts: localhost
@@ -379,7 +379,7 @@ Aşağıdaki kodu şu şekilde `cleanup.yml`kaydedin:
         state: absent
 ```
 
-Şu `ansible-playbook` komutu kullanarak PlayBook 'u çalıştırın:
+@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -388,4 +388,4 @@ ansible-playbook cleanup.yml
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"] 
-> [Azure üzerinde Ansible](/azure/ansible/)
+> [Azure üzerinde anormal](/azure/ansible/)

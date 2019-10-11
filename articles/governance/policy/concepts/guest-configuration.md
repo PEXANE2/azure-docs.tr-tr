@@ -1,17 +1,17 @@
 ---
-title: Makinenin içeriğini nasıl denetleyeceğinizi anlayın
+title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin bir Azure makinesi içindeki ayarları denetlemek için konuk yapılandırmasını nasıl kullandığını öğrenin.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: ac8d4d2519ce918a943cfe1e93ed2c5c7afd9a47
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 82279e6937fccfbbef13f9580f76cd344593b0df
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978053"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255838"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Ilkesinin Konuk yapılandırmasını anlama
 
@@ -75,12 +75,12 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 
 Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sisteminin bir listesi gösterilmektedir:
 
-|Yayımcı|Adı|Sürümler|
+|Publisher|Name|Sürümler|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
-|Credavtiv|Debian|8, 9|
+|Kurallı|Ubuntu Server|14,04, 16,04, 18,04|
+|credavtiv|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
-|Microsoft|Windows İstemcisi|Windows 10|
+|Microsoft|Windows Istemcisi|Windows 10|
 |OpenLogic|CentOS|7,3, 7,4, 7,5|
 |Red Hat|Red Hat Enterprise Linux|7,4, 7,5|
 |SUSE|SLES|12 SP3|
@@ -179,8 +179,8 @@ Ilke Konuk yapılandırması için örnekler aşağıdaki konumlarda kullanılab
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
-- [Azure İlkesi tanımı yapısını](definition-structure.md) gözden geçirin.
-- [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
+- [Azure ilke tanımı yapısını](definition-structure.md)gözden geçirin.
+- [İlke efektlerini anlamak](effects.md)için gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.

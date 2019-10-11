@@ -1,33 +1,33 @@
 ---
-title: Azure için Ansible modülü ve sürüme Matrisi | Microsoft Docs
-description: Azure için Ansible modülü ve sürüme Matrisi
-keywords: ansible, roller, matris, sürüm, azure, devops
+title: Azure için anerişilebilir modül ve Sürüm matrisi
+description: Azure için anerişilebilir modül ve Sürüm matrisi
+keywords: anerişilebilir, roller, matris, sürüm, Azure, DevOps
 ms.topic: reference
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: b3396b2f4639cc7298b77810dbaafadd308d6b24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18654500a78178c46e72f9f6cd01e8507fa179f0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65230987"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241535"
 ---
-# <a name="ansible-module-and-version-matrix"></a>Ansible modülü ve sürüme Matrisi
+# <a name="ansible-module-and-version-matrix"></a>Anerişilebilir modül ve Sürüm matrisi
 
-Ansible, sağlama ve Azure kaynaklarını yapılandırma paketi kullanmak için modüller içerir. Bu kaynaklar, sanal makineleri dahil, Ölçek kümeleri, ağ hizmetleri ve kapsayıcı Hizmetleri. Bu makalede, Azure ve hangi sevk Ansible sürümler için çeşitli Ansible modülleri listeler.
+Anormal, Azure kaynaklarını sağlama ve yapılandırma konusunda kullanılacak bir modül paketini içerir. Bu kaynaklar sanal makineler, ölçek kümeleri, ağ hizmetleri ve kapsayıcı hizmetleri içerir. Bu makalede, Azure için çeşitli anormal modüller ve teslim ettikleri anormal sürümler listelenmiştir.
 
-## <a name="ansible-modules-for-azure"></a>Azure modülleri Ansible
+## <a name="ansible-modules-for-azure"></a>Azure için anerişilebilir modüller
 
-Aşağıdaki modüller, uzak konaklar üzerinde doğrudan veya playbook'ları aracılığıyla gerçekleştirilebilir.
+Aşağıdaki modüller doğrudan uzak konaklarda veya playbooks aracılığıyla yürütülebilir.
 
-Bu modüller, Ansible resmi sürümden ve aşağıdaki Microsoft playbook rolleri kullanılabilir.
+Bu modüller, anormal bir resmi yayından ve aşağıdaki Microsoft PlayBook rollerinden edinilebilir.
 
-| Azure için ansible'ı Modülü                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 | Ansible 2.7 | Ansible 2.8 | Ansible rolü | 
+| Azure için anerişilebilir modül                   |  Anerişilebilir 2,4 |  Anerişilebilir 2,5 |  Anerişilebilir 2,6 | Anerişilebilir 2,7 | Anerişilebilir 2,8 | Anormal rol | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------| 
-| **İşlem**                    |           |                          |                          |                            |           |           |
+| **Hesaplamasını**                    |           |                          |                          |                            |           |           |
 | azure_rm_availabilityset                    | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          |
 | azure_rm_availabilityset_facts              | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          |
 | azure_rm_deployment                         | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          |
@@ -51,7 +51,7 @@ Bu modüller, Ansible resmi sürümden ve aşağıdaki Microsoft playbook roller
 | azure_rm_virtualmachinescalesetextension_facts | -            | -                        | -            | -            | Evet          | Evet          |
 | azure_rm_virtualmachinescalesetinstance     | -            | -                           | -            | -            | Evet          | Evet          |
 | azure_rm_virtualmachinescalesetinstance_facts | -            | -                         | -            | -            | Evet          | Evet          |
-| **Ağ**                              |              |                             |              |              |              |              |
+| **İşlemleri**                              |              |                             |              |              |              |              |
 | azure_rm_appgateway                         | -            | -                           | -            | Evet          | Evet          | Evet          |
 | azure_rm_appgwroute                         | -            | -                           | -            | -            | -          | Evet          |
 | azure_rm_appgwroute_facts                   | -            | -                           | -            | -            | -          | Evet          |
@@ -86,7 +86,7 @@ Bu modüller, Ansible resmi sürümden ve aşağıdaki Microsoft playbook roller
 | azure_rm_virtualnetwork                     | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          |
 | azure_rm_virtualnetwork_facts               | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          |
 | azure_rm_virtualnetworkpeering              | -            | -                         | -          | -            | Evet          | Evet          |
-| **Depolama**                    |           |                          |                          |                            |           |           |
+| **Depo**                    |           |                          |                          |                            |           |           |
 | azure_rm_manageddisk                        | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          |
 | azure_rm_manageddisk_facts                  | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          |
 | azure_rm_storageaccount                     | Evet          | Evet                         | Evet          | Evet          | Evet          | Evet          |
@@ -149,7 +149,7 @@ Bu modüller, Ansible resmi sürümden ve aşağıdaki Microsoft playbook roller
 | azure_rm_sqlfirewallrule_facts              | -            | -                           | -            | -            | Evet          | Evet          |
 | azure_rm_sqlserver                          | -            | Evet                         | Evet          | Evet          | Evet          | Evet          |
 | azure_rm_sqlserver_facts                    | -            | Evet                         | Evet          | Evet          | Evet          | Evet          |
-| **Analizler**                    |           |                          |                          |                             |           |           |
+| **Analiz**                    |           |                          |                          |                             |           |           |
 | azure_rm_hdinsightcluster                   | -            | -                           | -            | -            | Evet          | Evet          |
 | **Tümleştirme**                    |           |                          |                          |                             |           |           |
 | azure_rm_servicebus                         | -            | -                           | -            | -            | Evet          | Evet          |
@@ -158,7 +158,7 @@ Bu modüller, Ansible resmi sürümden ve aşağıdaki Microsoft playbook roller
 | azure_rm_servicebussaspolicy                | -            | -                           | -            | -            | Evet          | Evet          |
 | azure_rm_servicebustopic                    | -            | -                           | -            | -            | Evet          | Evet          |
 | azure_rm_servicebustopicsubscription        | -            | -                           | -            | -            | Evet          | Evet          |
-| **Güvenlik**                    |           |                          |                          |                             |           |           |
+| **Security**                    |           |                          |                          |                             |           |           |
 | azure_rm_keyvault                           | -            | Evet                         | Evet          | Evet          | Evet          | Evet          |
 | azure_rm_keyvault_facts                     | -            | -                           | -              | -          | Evet          | Evet          |
 | azure_rm_keyvaultkey                        | -            | Evet                         | Evet          | Evet          | Evet          | Evet          |
@@ -182,18 +182,18 @@ Bu modüller, Ansible resmi sürümden ve aşağıdaki Microsoft playbook roller
 | azure_rm_devtestlabvirtualmachine_facts | -            | -                           | -            | -            | Evet          | Evet          |
 | azure_rm_devtestlabvirtualnetwork           | -            | -                           | -            | -            | Evet          | Evet          |
 | azure_rm_devtestlabvirtualnetwork_facts     | -            | -                           | -            | -            | Evet          | Evet          |
-| **Azure İzleyici**          |           |                          |                          |                             |           |           |
+| **Azure Izleyici**          |           |                          |                          |                             |           |           |
 | azure_rm_autoscale                  | -            | -                         | -          | Evet          | Evet          | Evet          |
 | azure_rm_autoscale_facts            | -            | -                         | -          | Evet          | Evet          | Evet          |
 | azure_rm_loganalyticsworkspace              | -            | -                           | -            | -            | Evet          | Evet          |
 | azure_rm_loganalyticsworkspace_facts        | -            | -                           | -            | -            | Evet          | Evet          |
 
-## <a name="introduction-to-playbook-role-for-azure"></a>Azure için playbook rol giriş
+## <a name="introduction-to-playbook-role-for-azure"></a>Azure için PlayBook rolüne giriş
 
-[Azure_preview_module playbook rol](https://galaxy.ansible.com/Azure/azure_preview_modules/) tüm en son Azure modüllerini içerir. Güncelleştirmeler ve hata düzeltmeleri, resmi Ansible sürümden daha fazla zamanında gerçekleştirilir. Azure kaynak sağlamayı amaçlar için ansible'ı kullanırsanız, yükleme izlemeleri `azure_preview_module` playbook rol.
+[Azure_preview_module PlayBook rolü](https://galaxy.ansible.com/Azure/azure_preview_modules/) , en son Azure modüllerini içerir. Güncelleştirmeler ve hata düzeltmeleri, resmi olarak erişilebilir sürümden daha zamanında yapılır. Azure kaynak sağlama amaçları için kullanılması durumunda, `azure_preview_module` PlayBook rolünü yüklemek için önerilir.
 
-`azure_preview_module` Playbook rol üç haftada yayımlanır.
+@No__t-0 PlayBook rolü her üç haftada bir yayımlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Playbook rolleri hakkında daha fazla bilgi için bkz. [yeniden kullanılabilir playbook'ları oluşturma](https://docs.ansible.com/ansible/latest/playbooks_reuse.html). 
+PlayBook rolleri hakkında daha fazla bilgi için bkz. yeniden [kullanılabilir PlayBook 'ları oluşturma](https://docs.ansible.com/ansible/latest/playbooks_reuse.html). 

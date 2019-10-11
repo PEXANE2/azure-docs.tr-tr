@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 58aa310316a31eb63ca8dd614b60fb4bad73d997
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 3d9c6c9b73f8887d4fdb85da277b2e27d8f5221c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960001"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243562"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırmasında DSC yapılandırmalarını derleme
 
@@ -124,7 +124,7 @@ PSCredentials parametresi olarak geçirme hakkında daha fazla bilgi için, aşa
 
 ### <a name="compiling-configurations-in-azure-automation-that-contain-composite-resources"></a>Azure Otomasyonu 'nda bileşik kaynakları içeren yapılandırmaların derlenmesi
 
-**Bileşik kaynaklar** , DSC yapılandırmalarını bir yapılandırma içinde iç içe geçmiş kaynaklar olarak kullanmanıza olanak tanır. Bu, tek bir kaynağa birden çok yapılandırma uygulamanıza olanak sağlar. Bileşik **kaynaklar hakkında**daha fazla bilgi edinmek için bkz. [bileşik kaynaklar: kaynak olarak DSC yapılandırması kullanma](/powershell/dsc/authoringresourcecomposite) .
+**Bileşik kaynaklar** , DSC yapılandırmalarını bir yapılandırma içinde iç içe geçmiş kaynaklar olarak kullanmanıza olanak tanır. Bu, tek bir kaynağa birden çok yapılandırma uygulamanıza olanak sağlar. Bileşik **kaynaklar hakkında**daha fazla bilgi edinmek için bkz. [bileşik kaynaklar: kaynak olarak DSC yapılandırması kullanma](/powershell/scripting/dsc/resources/authoringresourcecomposite) .
 
 > [!NOTE]
 > **Bileşik kaynakları** içeren yapılandırmaların doğru bir şekilde derlenmesi için önce, ilk olarak kompozit 'nin bağımlı olduğu tüm DSC kaynaklarının Azure Automation 'a içeri aktarıldığından emin olmanız gerekir.
@@ -189,11 +189,11 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ### <a name="working-with-assets-in-azure-automation-during-compilation"></a>Derleme sırasında Azure Otomasyonu 'nda varlıklarla çalışma
 
-Varlık başvuruları, Azure Otomasyonu durum yapılandırması ve Runbook 'larında aynıdır. Daha fazla bilgi için, aşağıdakilere bakın:
+Varlık başvuruları, Azure Otomasyonu durum yapılandırması ve Runbook 'larında aynıdır. Daha fazla bilgi için aşağıdakilere bakın:
 
 - [Sertifikalar](automation-certificates.md)
-- [Bağlantının](automation-connections.md)
-- [Credentials](automation-credentials.md)
+- [Bağlantılar](automation-connections.md)
+- [Kimlik Bilgileri](automation-credentials.md)
 - [Değişkenler](automation-variables.md)
 
 #### <a name="credential-assets"></a>Kimlik bilgisi varlıkları
@@ -277,7 +277,7 @@ Yapılandırma derlenerek oluşturulan MOF dosyası veya dosyalar daha sonra do�
    ![Yerel dosya için araştır](./media/automation-dsc-compile/import-browse.png)
 
 1. **Yapılandırma adı** metin kutusuna bir ad girin. Bu ad, düğüm yapılandırmasının derlendiği yapılandırmanın adıyla aynı olmalıdır.
-1. **Tamam**'a tıklayın.
+1. **Tamam**’a tıklayın.
 
 ### <a name="importing-a-node-configuration-with-azure-powershell"></a>Azure PowerShell ile düğüm yapılandırmasını içeri aktarma
 

@@ -5,14 +5,14 @@ author: ganganarayanan
 ms.author: gangan
 ms.date: 1/31/2017
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 3cf17f6e391608af9d17591a81c579a1db779a6a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 94f21e973063dc627ef1424ca5393dd85aedd671
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967800"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248846"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Destek isteklerini oluşturmak ve yönetmek için erişim haklarını denetlemek üzere Azure rol tabanlı Access Control (RBAC)
 
@@ -20,7 +20,7 @@ ms.locfileid: "68967800"
 Azure portal [portal.azure.com](https://portal.azure.com)destek isteği oluşturma, Azure 'un, destek istekleri oluşturup yönetebileceğini tanımlamak için Azure 'un RBAC modelini kullanır.
 Bir abonelik, kaynak grubu veya kaynak olabilen belirli bir kapsamdaki kullanıcılara, gruplara ve uygulamalara uygun RBAC rolü atanarak erişim verilir.
 
-Bir örnek alalım: Abonelik kapsamında okuma izinleri olan bir kaynak grubu sahibi olarak, kaynak grubu altında Web siteleri, sanal makineler ve alt ağlar gibi tüm kaynakları yönetebilirsiniz.
+Örnek: abonelik kapsamında okuma izinleri olan bir kaynak grubu sahibi olarak, kaynak grubu altında Web siteleri, sanal makineler ve alt ağlar gibi tüm kaynakları yönetebilirsiniz.
 Ancak, sanal makine kaynağına karşı bir destek isteği oluşturmaya çalıştığınızda, aşağıdaki hatayla karşılaşırsınız
 
 ![Abonelik hatası](./media/create-manage-support-requests-using-access-control/subscription-error.png)
@@ -67,19 +67,19 @@ Bu abonelik kapsamındaki kaynaklar için destek bileti oluşturma ve yönetme o
 
 1. İlk adım aboneliğe gidemez. **Ayarlar**' ın altında, kullanıcıların listesini görürsünüz. Abonelik üzerinde okuyucu erişimi olan ali kullanıcısını seçin. Ali 'e yeni bir özel rol atalim.
 
-    ![Rol ekle](./media/create-manage-support-requests-using-access-control/add-role.png)
+    ![Rol Ekle](./media/create-manage-support-requests-using-access-control/add-role.png)
 
 2. "Kullanıcılar" dikey penceresinde "Ekle" ye tıklayın. Rol listesinden "destek Isteği katılımcısı" özel rolünü seçin
 
     ![Destek katılımcısı rolü Ekle](./media/create-manage-support-requests-using-access-control/add-support-contributor-role.png)
 
-3. Rol adını seçtikten sonra, "Kullanıcı Ekle" ye tıklayın ve ali 'nin e-posta kimlik bilgilerini girin. "Seç"e tıklayın
+3. Rol adını seçtikten sonra, "Kullanıcı Ekle" ye tıklayın ve ali 'nin e-posta kimlik bilgilerini girin. "Seç" e tıklayın
 
-    ![Kullanıcı ekle](./media/create-manage-support-requests-using-access-control/add-users.png)
+    ![Kullanıcı Ekle](./media/create-manage-support-requests-using-access-control/add-users.png)
 
 4. Devam etmek için "Tamam" a tıklayın
 
-    ![Erişim ekle](./media/create-manage-support-requests-using-access-control/add-access.png)
+    ![Erişim Ekle](./media/create-manage-support-requests-using-access-control/add-access.png)
 
 5. Şimdi, sahibi olduğunuz aboneliğin altında yeni eklenen "destek Isteği katılımcısı" özel rolüne sahip kullanıcıyı görürsünüz
 
@@ -91,7 +91,7 @@ Bu abonelik kapsamındaki kaynaklar için destek bileti oluşturma ve yönetme o
 
     ![Yeni destek isteği](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. "Tüm destek istekleri" ali ' ne tıklamak, bu abonelik ![durum ayrıntıları görünümü için oluşturulan Destek isteklerinin listesini görebilir](./media/create-manage-support-requests-using-access-control/case-details-view.png)
+8. "Tüm destek istekleri" ali ' ne tıklamak bu abonelik için oluşturulan Destek isteklerinin listesini görebilir ![Case Ayrıntıları görünümü @ no__t-1
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Azure portal destek isteği erişimini kaldırma
 

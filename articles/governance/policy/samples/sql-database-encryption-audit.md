@@ -1,21 +1,21 @@
 ---
-title: Örnek-SQL veritabanı için saydam veri şifrelemesini denetleme
+title: Örnek-SQL 'de saydam veri şifrelemeyi denetleme
 description: Bu örnek ilke tanımı, SQL veritabanında saydam veri şifrelemesi özelliğinin etkin olup olmadığını denetler.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: de7819f43b2d0ce4d6d047b324db94d3e5f85eec
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 4027ad28b6589872dd2f52961710c4db95a257e7
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981316"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254785"
 ---
 # <a name="sample---audit-sql-database-encryption"></a>Örnek-SQL veritabanı şifrelemesini denetleme
 
-Bu yerleşik ilke, SQL veritabanında saydam veri şifreleme etkin değilse denetler.
+SQL veritabanında saydam veri şifrelemesi etkin değilse bu yerleşik ilke denetimleri.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,11 +23,11 @@ Bu yerleşik ilke, SQL veritabanında saydam veri şifreleme etkin değilse dene
 
 [!code-json[main](../../../../policy-templates/samples/SQL/audit-sql-db-tde-status/azurepolicy.json "Audit TDE for SQL Database")]
 
-[Azure portalı](#deploy-with-the-portal) kullanarak, [PowerShell](#deploy-with-powershell) ile veya [Azure CLI](#deploy-with-azure-cli) ile bu şablonu dağıtabilirsiniz. Yerleşik ilkeyi almak için, `17k78e20-9358-41c9-923c-fb736d382a12` kimliğini kullanın.
+Bu şablonu, [PowerShell](#deploy-with-powershell) veya [Azure CLI](#deploy-with-azure-cli)ile [Azure Portal](#deploy-with-the-portal)kullanarak dağıtabilirsiniz. Yerleşik ilkeyi almak için @no__t KIMLIĞI kullanın.
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
-Bir ilke atarken, kullanılabilir yerleşik tanımlardan **Saydam veri şifreleme durumunu denetle**’yi seçin.
+Bir ilke atarken, kullanılabilir yerleşik tanımlardan **Saydam veri şifreleme durumunu denetle** ' yi seçin.
 
 ## <a name="deploy-with-powershell"></a>PowerShell ile dağıtma
 
@@ -39,7 +39,7 @@ $definition = Get-AzPolicyDefinition -Id /providers/Microsoft.Authorization/poli
 New-AzPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition -Scope <scope>
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizleme
+### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizle
 
 İlke atamasını kaldırmak için aşağıdaki komutu çalıştırın.
 
@@ -47,7 +47,7 @@ New-AzPolicyAssignment -name "SQL TDE Audit" -PolicyDefinition $definition -Scop
 Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 ```
 
-## <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
+## <a name="deploy-with-azure-cli"></a>Azure CLı ile dağıtma
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -55,7 +55,7 @@ Remove-AzPolicyAssignment -Name "SQL TDE Audit" -Scope <scope>
 az policy assignment create --scope <scope> --name "SQL TDE Audit" --policy 17k78e20-9358-41c9-923c-fb736d382a12
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Azure CLI dağıtımını temizleme
+### <a name="clean-up-azure-cli-deployment"></a>Azure CLı dağıtımını Temizleme
 
 İlke atamasını kaldırmak için aşağıdaki komutu çalıştırın.
 
@@ -65,4 +65,4 @@ az policy assignment delete --name "SQL TDE Audit" --resource-group myResourceGr
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure İlkesi örnekleri](index.md) sayfasındaki diğer örnekleri inceleyin
+- [Azure ilke örneklerinde](index.md) daha fazla örnek inceleyin

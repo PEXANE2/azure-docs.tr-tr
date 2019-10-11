@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a83112c1555d50976e5a20106b877f5c0099a5f3
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: bfb170036293dc9f519259dc92737f30380aa84a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178151"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244819"
 ---
 # <a name="networking-prerequisites-for-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümü için ağ önkoşulları
 
@@ -25,7 +25,7 @@ Bu makaledeki tablolarda, belirtilen adresleri kullanan adres aralıkları ve il
 
 CloudSimple hizmeti ve özel bir bulut oluşturma sırasında, belirtilen ağ sınıfsız etki alanları arası yönlendirme (CıDR) aralıklarına aşağıdaki şekilde uymanız gerekir.
 
-| Ad/kullanım     | Description                                                                                                                            | Adres aralığı            |
+| Ad/kullanım     | Açıklama                                                                                                                            | Adres aralığı            |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
 | Ağ Geçidi CıDR      | Edge Hizmetleri (VPN ağ geçitleri) için gereklidir.  Bu CıDR, CloudSimple hizmeti oluşturma sırasında gereklidir ve RFC 1918 alanından olmalıdır. | /28                      |
 | vSphere/vSAN CıDR | VMware yönetim ağları için gereklidir. Bu CıDR, özel bulut oluşturma sırasında belirtilmelidir.                                    | /24 veya/23 veya/22 veya/21 |
@@ -34,7 +34,7 @@ CloudSimple hizmeti ve özel bir bulut oluşturma sırasında, belirtilen ağ s�
 
 [ExpressRoute aracılığıyla şirket içi bir ağdan özel bulut ağına](on-premises-connection.md) bağlanmak Global Reach bir bağlantı kurar.  Bağlantı, şirket içi ağınız, özel bulut ağınız ve Azure ağlarınız arasındaki yolları Exchange için Sınır Ağ Geçidi Protokolü (BGP) kullanır.
 
-| Ad/kullanım             | Description                                                                                                                                                                             | Adres aralığı |
+| Ad/kullanım             | Açıklama                                                                                                                                                                             | Adres aralığı |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | ExpressRoute eşleme CıDR | Şirket içi bağlantı için ExpressRoute Global Reach kullandığınızda gereklidir. Bir destek bileti aracılığıyla Global Reach bağlantı isteği yapıldığında bu CıDR sağlanmalıdır. | /29           |
 
@@ -42,7 +42,7 @@ CloudSimple hizmeti ve özel bir bulut oluşturma sırasında, belirtilen ağ s�
 
 [Siteden sıteye VPN kullanarak şirket içi bir ağdan özel bulut ağına](vpn-gateway.md) bağlanmak IÇIN aşağıdaki IP adresleri, şirket içi ağ ve tanımlayıcılar gerekir. 
 
-| Adres/adres aralığı | Description                                                                                                                                                                                                                                                           |
+| Adres/adres aralığı | Açıklama                                                                                                                                                                                                                                                           |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Eş IP               | Şirket içi VPN ağ geçidi genel IP adresi. Şirket içi veri merkezi ve CloudSimple hizmet bölgesi arasında siteden siteye VPN bağlantısı kurmak için gereklidir. Siteden siteye VPN ağ geçidi oluşturma işlemi sırasında bu IP adresi gereklidir.                                         |
 | Eş tanımlayıcı       | Şirket içi VPN ağ geçidinin eş tanımlayıcısı. Bu genellikle **eş IP**ile aynıdır.  Şirket içi VPN ağ geçidiniz üzerinde benzersiz bir tanımlayıcı belirtilmişse, tanımlayıcı belirtilmelidir.  Siteden siteye VPN ağ geçidi oluşturma sırasında eş KIMLIĞI gereklidir.   |
@@ -52,12 +52,13 @@ CloudSimple hizmeti ve özel bir bulut oluşturma sırasında, belirtilen ağ s�
 
 Noktadan siteye VPN bağlantısı, bir istemci makinesinden CloudSimple ağına erişim sağlar.  [Noktadan sıteye VPN ayarlamak için](vpn-gateway.md)aşağıdaki ağ adresi aralığını belirtmeniz gerekir.
 
-| Adres/adres aralığı | Description                                                                                                                                                                                                                                                                                                  |
+| Adres/adres aralığı | Açıklama                                                                                                                                                                                                                                                                                                  |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | İstemci alt ağı         | Noktadan siteye VPN kullanarak bağlandığınızda, DHCP adresleri istemci alt ağı tarafından sağlanır. Bu alt ağ, CloudSimple portalında Noktadan siteye VPN ağ geçidi oluştururken gereklidir.  Ağ iki alt ağa ayrılmıştır; biri UDP bağlantısı ve diğeri de TCP bağlantıları için. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Özel bulutunuzun erişimine yönelik şirket içi güvenlik duvarı kurulumu](on-premises-firewall-configuration.md)
 * [Hızlı başlangıç-CloudSimple hizmeti oluşturma](quickstart-create-cloudsimple-service.md)
 * [Hızlı başlangıç-özel bir bulut yapılandırma](quickstart-create-private-cloud.md)
 * [Azure ağ bağlantıları](cloudsimple-azure-network-connection.md) hakkında daha fazla bilgi

@@ -1,21 +1,21 @@
 ---
-title: Örnek-Express Route Network 'e ağ eşlemesi yok
+title: Örnek-Express Route için ağ eşlemesi yok
 description: Bu örnek ilke tanımı, ağ eşlemesinin belirtilen bir kaynak grubundaki bir ağla ilişkilendirilmesini engeller.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 21149cb1dce03b358d4fc36e0038ea8c5267b3d1
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 7cd3dde826e79bc38f257d0c8b58e4faf0bef3d4
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980460"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255716"
 ---
 # <a name="sample---no-network-peering-to-express-route-network"></a>Örnek-Express Route Network 'e ağ eşlemesi yok
 
-Bu ilke, bir ağ eşlemesinin belirli bir kaynak grubundaki bir ağ ile ilişkilendirilmesini önler. Merkezi yönetilen ağ altyapısı ile bağlantıyı engellemek için kullanın. İlişkilendirmeyi önlemek için kaynak grubunun adını belirtirsiniz.
+Bu ilke, ağ eşlemesinin belirtilen bir kaynak grubundaki bir ağla ilişkilendirilmesini yasaklar. Merkezi yönetilen ağ altyapısıyla bağlantıyı engellemek için kullanın. İlişkilendirmeyi engellemek için kaynak grubunun adını belirtin.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Bu ilke, bir ağ eşlemesinin belirli bir kaynak grubundaki bir ağ ile ilişkil
 
 [!code-json[main](../../../../policy-templates/samples/Network/no-network-peerings-to-er-network/azurepolicy.json "No network peering to ER network")]
 
-[Azure portalı](#deploy-with-the-portal) kullanarak, [PowerShell](#deploy-with-powershell) ile veya [Azure CLI](#deploy-with-azure-cli) ile bu şablonu dağıtabilirsiniz.
+Bu şablonu, [PowerShell](#deploy-with-powershell) veya [Azure CLI](#deploy-with-azure-cli)ile [Azure Portal](#deploy-with-the-portal)kullanarak dağıtabilirsiniz.
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
@@ -40,15 +40,15 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -res
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizleme
+### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizle
 
-Kaynak grubunu, VM’yi ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
+Kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
+## <a name="deploy-with-azure-cli"></a>Azure CLı ile dağıtma
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,9 +58,9 @@ az policy definition create --name 'no-network-peerings-to-er-network' --display
 az policy assignment create --name <assignmentname> --scope <scope> --policy "no-network-peerings-to-er-network"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Azure CLI dağıtımını temizleme
+### <a name="clean-up-azure-cli-deployment"></a>Azure CLı dağıtımını Temizleme
 
-Kaynak grubunu, VM’yi ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
+Kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure İlkesi örnekleri](index.md) sayfasındaki diğer örnekleri inceleyin
+- [Azure ilke örneklerinde](index.md) daha fazla örnek inceleyin

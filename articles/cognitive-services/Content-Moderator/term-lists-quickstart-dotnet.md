@@ -1,7 +1,7 @@
 ---
-title: C# ile özel terim listesi kullanarak metin denetimi gerçekleştirme - Content Moderator
+title: Content Moderator içindeki C# özel bir terim listesine karşı metin denetleme
 titleSuffix: Azure Cognitive Services
-description: C# için Content Moderator SDK'sını kullanarak özel terim listeleriyle metin denetleme.
+description: İçin C#Content moderator SDK kullanarak özel terim listeleriyle nasıl bir metin vardır.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
@@ -10,57 +10,56 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: sajagtap
-ms.openlocfilehash: 144137109f97a8c2049430ed1e05117ea6c95d7f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d1c2f8b06d333be23f25a2d150c23269bf84cd2e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564412"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242837"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>İçindeki özel bir terim listesine karşı metin denetleC#
 
-Azure Content Moderator'daki varsayılan genel terim listesi, içerik moderasyonu ihtiyaçlarının büyük bölümü için yeterlidir. Bununla birlikte, kuruluşunuza özgü terimleri elemek gerekebilir. Örneğin, daha fazla incelemek üzere rakiplerin adlarını etiketlemek isteyebilirsiniz. 
+Azure Content Moderator 'deki varsayılan genel liste, içerik denetleme gereksinimlerinin çoğu için yeterlidir. Ancak, kuruluşunuza özgü terimler için ekran yapmanız gerekebilir. Örneğin, daha fazla inceleme için rakip adlarını etiketlemek isteyebilirsiniz. 
 
-[.NET için Content Moderator SDK'sını](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) kullanarak Metin Moderasyonu API'sinde kullanılacak özel terim listeleri oluşturabilirsiniz.
+Metin denetleme API 'siyle birlikte kullanılacak özel terim listeleri oluşturmak için [.NET için Content moderator SDK 'sını](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) kullanabilirsiniz.
 
-Bu makalede, aşağıdaki amaçlarla .NET için Content Moderator SDK'sı'nı kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlanır:
-- Liste oluşturma.
-- Listeye terimleri ekleme.
-- Terimleri listedeki terimlere göre eleme.
-- Listeden terim silme.
-- Listeyi silme.
-- Liste bilgileri düzenleme.
-- Listede yapılan değişikliklerin yeni taramaya eklenmesi için dizini yenileyin.
+Bu makalede, .NET için Content Moderator SDK 'yı kullanmaya başlamanıza yardımcı olacak bilgiler ve kod örnekleri sunulmaktadır:
+- Bir liste oluşturun.
+- Koşulları bir listeye ekleyin.
+- Bir listedeki koşullara göre ekran terimleri.
+- Bir listeden koşulları silin.
+- Bir listeyi silin.
+- Liste bilgilerini düzenleyin.
+- Listedeki değişikliklerin yeni bir taramaya dahil edilmesini sağlamak için dizini yenileyin.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
-## <a name="sign-up-for-content-moderator-services"></a>Content Moderator hizmetleri için kaydolma
+## <a name="sign-up-for-content-moderator-services"></a>Content Moderator hizmetlere kaydolun
 
-REST API veya SDK aracılığıyla Content Moderator hizmetlerini kullanabilmeniz için önce bir abonelik anahtarınız olması gerekir. Birini almak için [Azure portalda](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) Content Moderator hizmetine abone olabilirsiniz.
+REST API veya SDK aracılığıyla Content Moderator Hizmetleri kullanabilmeniz için önce bir abonelik anahtarı gerekir. Bir [Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) Content moderator hizmetine abone olun.
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio projenizi oluşturma
 
-1. Çözümünüze yeni bir **Console uygulaması (.NET Framework)** projesi ekleyin.
+1. Çözümünüze yeni bir **konsol uygulaması (.NET Framework)** projesi ekleyin.
 
-1. Projeyi **TermLists** olarak adlandırın. Bu projeyi çözümün tek başlatma projesi olarak seçin.
+1. Projeyi **Termlists**olarak adlandırın. Bu projeyi çözüm için tek bir başlangıç projesi olarak seçin.
 
-### <a name="install-required-packages"></a>Gerekli paketleri yükleme
+### <a name="install-required-packages"></a>Gerekli paketleri yükler
 
-TermLists projesi için aşağıdaki NuGet paketlerini yükleyin:
+TermLists projesi için aşağıdaki NuGet paketlerini yükler:
 
-- Microsoft.Azure.CognitiveServices.ContentModerator
-- Microsoft.Rest.ClientRuntime
-- Microsoft.Rest.ClientRuntime.Azure
-- Newtonsoft.Json
+- Microsoft. Azure. Biliveservices. Contentmoderatör
+- Microsoft. Rest. ClientRuntime
+- Microsoft. Rest. ClientRuntime. Azure
+- Newtonsoft. JSON
 
-### <a name="update-the-programs-using-statements"></a>Programı deyimler kullanarak güncelleştirme
+### <a name="update-the-programs-using-statements"></a>Programın using deyimlerini güncelleştirme
 
 Aşağıdaki `using` deyimlerini ekleyin.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator;
-using Microsoft.CognitiveServices.ContentModerator.Models;
+using Microsoft.Azure.CognitiveServices.ContentModerator.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -73,7 +72,7 @@ using System.Threading;
 Aboneliğiniz için bir Content Moderator istemcisi oluşturmak üzere aşağıdaki kodu ekleyin.
 
 > [!IMPORTANT]
-> **AzureRegion** ve **CMSubscriptionKey** alanlarını bölge tanımlayıcınız ve abonelik anahtarınız ile değiştirin.
+> **Azureregion** ve **cmsubscriptionkey** alanlarını bölge tanımlayıcı ve abonelik anahtarlarınızın değerleriyle güncelleştirin.
 
 ```csharp
 /// <summary>
@@ -121,7 +120,7 @@ public static class Clients
 
 ### <a name="add-private-properties"></a>Özel özellikler ekleme
 
-namespace TermLists, class Program için aşağıdaki özel özellikleri ekleyin.
+Aşağıdaki özel özellikleri TermLists, Class program ad alanına ekleyin.
 
 ```csharp
 /// <summary>
@@ -144,15 +143,15 @@ private const double latencyDelay = 0.5;
 
 ## <a name="create-a-term-list"></a>Terim listesi oluşturma
 
-Terim listesini **ContentModeratorClient.ListManagementTermLists.Create** ile oluşturursunuz. **Create** için ilk parametre MIME türünü içeren bir dizedir ve "application/json" olmalıdır. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). İkinci parametre, yeni terim listesi için bir ad ve açıklama içeren **Body** nesnesidir.
+**Contentmoderatorclient. Listmanagemen, mLists. Create**ile bir terim listesi oluşturun. **Oluşturulacak** ilk parametre, "Application/JSON" olması gereken bir MIME türü içeren bir dizedir. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). İkinci parametre, yeni terim listesi için bir ad ve açıklama içeren bir **gövde** nesnesidir.
 
 > [!NOTE]
-> En çok **5 terim listeniz** olabilir ve her listedeki **terimlerin sayısı 10.000'i aşmamalıdır**.
+> Her liste **10.000 terimi aşmamak**için en fazla **5 dönemli** liste vardır.
 
-namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
+Aşağıdaki yöntem tanımını ad alanı TermLists, Class program öğesine ekleyin.
 
 > [!NOTE]
-> Content Moderator hizmet anahtarınızın saniye başına istek (RPS) hız sınırı vardır ve bu sınırı aşarsanız SDK 429 hata kodu ile bir özel durum oluşturur. Ücretsiz katman anahtarı bir RPS'lik hız sınırına sahiptir.
+> Content Moderator hizmet anahtarınız, saniye başına istek (RPS) oranı sınırına sahiptir ve limiti aşarsanız, SDK 429 hata koduyla bir özel durum oluşturur. Ücretsiz katman anahtarında tek RPS hız sınırı vardır.
 
 ```csharp
 /// <summary>
@@ -180,11 +179,11 @@ static string CreateTermList (ContentModeratorClient client)
 }
 ```
 
-## <a name="update-term-list-name-and-description"></a>Terim listesi adını ve açıklamasını güncelleştirme
+## <a name="update-term-list-name-and-description"></a>Güncelleştirme terimi liste adı ve açıklaması
 
-Terim listesi bilgilerini **ContentModeratorClient.ListManagementTermLists.Update** ile güncelleştirirsiniz. **Update** için ilk parametre terim listesi kimliğidir. İkinci parametre MIME türüdür ve "application/json" olmalıdır. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Üçüncü parametre, yeni adı ve açıklamayı içeren **Body** nesnesidir.
+Bu terim listesi bilgilerini **Contentmoderatorclient. Listmanagemenlermlists. Update**ile güncelleştirin. **Güncelleştirilecek** ilk parametre, liste kimliğidir. İkinci parametre, "Application/JSON" olması gereken bir MIME türüdür. Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Üçüncü parametre, yeni adı ve açıklamayı içeren bir **gövde** nesnesidir.
 
-namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
+Aşağıdaki yöntem tanımını ad alanı TermLists, Class program öğesine ekleyin.
 
 ```csharp
 /// <summary>
@@ -203,9 +202,9 @@ static void UpdateTermList (ContentModeratorClient client, string list_id, strin
 }
 ```
 
-## <a name="add-a-term-to-a-term-list"></a>Terim listesine terim ekleme
+## <a name="add-a-term-to-a-term-list"></a>Terim listesine bir terim ekleyin
 
-namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
+Aşağıdaki yöntem tanımını ad alanı TermLists, Class program öğesine ekleyin.
 
 ```csharp
 /// <summary>
@@ -222,9 +221,9 @@ static void AddTerm (ContentModeratorClient client, string list_id, string term)
 }
 ```
 
-## <a name="get-all-terms-in-a-term-list"></a>Terim listesindeki tüm terimleri alma
+## <a name="get-all-terms-in-a-term-list"></a>Terim listesindeki tüm terimleri al
 
-namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
+Aşağıdaki yöntem tanımını ad alanı TermLists, Class program öğesine ekleyin.
 
 ```csharp
 /// <summary>
@@ -247,11 +246,11 @@ static void GetAllTerms(ContentModeratorClient client, string list_id)
 
 ## <a name="add-code-to-refresh-the-search-index"></a>Arama dizinini yenilemek için kod ekleme
 
-Terim listesinde değişiklikler yaptıktan sonra, metni elemek için terim listesini bir sonraki kullanışınızda bu değişiklerin de dahil edilmesi için arama dizinini yenilersiniz. Bu, masaüstünüzdeki arama altyapısının (etkinleştirildiyse) veya web arama altyapısının, yeni dosyaları veya sayfaları eklemek üzere dizinini sürekli yenilemesine benzer.
+Bir terim listesinde değişiklik yaptıktan sonra, bir dahaki sefer için terim listesini bir sonraki açışınızda görüntülenecek değişiklikler için arama dizinini yenileyin. Bu, masaüstünüzdeki bir arama altyapısının (etkinse) veya bir Web araması altyapısının, yeni dosyaları veya sayfaları içerecek şekilde dizinini sürekli olarak yenilediğine benzer.
 
-Terim listesi arama dizinini **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod** ile yenilersiniz.
+Bir terim listesi arama dizinini **Contentmoderatorclient. Listmanagemen, mLists. Refreshındexmethod**ile yenileyin.
 
-namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
+Aşağıdaki yöntem tanımını ad alanı TermLists, Class program öğesine ekleyin.
 
 ```csharp
 /// <summary>
@@ -267,22 +266,22 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="screen-text-using-a-term-list"></a>Terim listesini kullanarak metni eleme
+## <a name="screen-text-using-a-term-list"></a>Bir terim listesi kullanan ekran metni
 
-Aşağıdaki parametreleri alan **ContentModeratorClient.TextModeration.ScreenText** ile terim listesini kullanarak metni eleyin.
+Aşağıdaki parametreleri alan **Contentmoderatorclient. Textdenetlemesi. screentext**ile bir terim listesi kullanarak metin görürsünüz.
 
-- Terim listesindeki terimlerin dili.
-- MIME türü; "text/html", "text/xml", "text/markdown" veya "text/plain" olabilir.
-- Elenecek metin.
-- Boole değeri. Metni elemeden önce otomatik olarak düzeltmek için bu alanı **true** değerine ayarlayın.
-- Boole değeri. Metindeki Kişisel Bilgileri (PII) algılamak için bu alanı **true** değerine ayarlayın.
-- Terim listesi kimliği.
+- Terim listesindeki koşulların dili.
+- "Metin/html", "metin/xml", "metin/markaşağı" veya "metin/düz" olabilen bir MIME türü.
+- Ekrandaki metin.
+- Boolean değeri. Metni filtrelemeden önce otomatik hale eklemek için bu alanı **true** olarak ayarlayın.
+- Boolean değeri. Metinde kişisel olarak tanımlanabilen bilgileri (PII) algılamak için bu alanı **doğru** olarak ayarlayın.
+- Terim listesi KIMLIĞI.
 
 Daha fazla bilgi için bkz. [API başvurusu](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
 
-**ScreenText** bir **Screen** nesnesi döndürür. Bu nesnenin, Content Moderator tarafından elemede algılanan tüm terimleri listeleyen bir **Terms** özelliği vardır. Eleme sırasında Content Moderator hiçbir terim algılamazsa, **Terms** özelliğinin **null** değerini alacağını unutmayın.
+Ekran **metni** , filtreleme içinde Content moderator algılanan terimleri listeleyen bir **terms** özelliği olan bir **ekran** nesnesi döndürür. Content Moderator, filtreleme sırasında herhangi bir terim algılamamışsa, **terms** özelliğinin **null**değerine sahip olduğunu unutmayın.
 
-namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
+Aşağıdaki yöntem tanımını ad alanı TermLists, Class program öğesine ekleyin.
 
 ```csharp
 /// <summary>
@@ -310,17 +309,17 @@ static void ScreenText (ContentModeratorClient client, string list_id, string te
 }
 ```
 
-## <a name="delete-terms-and-lists"></a>Terimleri ve listeleri silme
+## <a name="delete-terms-and-lists"></a>Terimleri ve listeleri sil
 
-Terim veya listeyi silmek basit bir işlemdir. Aşağıdaki görevleri gerçekleştirmek için SDK kullanırsınız:
+Bir terimi veya listeyi silme işlemi basittir. Aşağıdaki görevleri yapmak için SDK 'Yı kullanın:
 
-- Terim silme. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- Listeyi silmeden listedeki tüm terimleri silme. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- Listeyi ve tüm içeriğini silme. (**ContentModeratorClient.ListManagementTermLists.Delete**)
+- Bir terimi silin. (**Contentmoderatorclient. Listmanagemenbir. deleteterm**)
+- Listeyi silmeden bir listedeki tüm terimleri silin. (**Contentmoderatorclient. Listmanagemen, d. DeleteAllTerms**)
+- Bir listeyi ve tüm içeriğini silin. (**Contentmoderatorclient. Listmanagemen, mLists. Delete**)
 
-### <a name="delete-a-term"></a>Terim silme
+### <a name="delete-a-term"></a>Terimi silme
 
-namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
+Aşağıdaki yöntem tanımını ad alanı TermLists, Class program öğesine ekleyin.
 
 ```csharp
 /// <summary>
@@ -337,9 +336,9 @@ static void DeleteTerm (ContentModeratorClient client, string list_id, string te
 }
 ```
 
-### <a name="delete-all-terms-in-a-term-list"></a>Terim listesindeki tüm terimleri silme
+### <a name="delete-all-terms-in-a-term-list"></a>Bir terim listesindeki tüm terimleri silme
 
-namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
+Aşağıdaki yöntem tanımını ad alanı TermLists, Class program öğesine ekleyin.
 
 ```csharp
 /// <summary>
@@ -357,7 +356,7 @@ static void DeleteAllTerms (ContentModeratorClient client, string list_id)
 
 ### <a name="delete-a-term-list"></a>Terim listesini silme
 
-namespace TermLists, class Program için aşağıdaki yöntem tanımını ekleyin.
+Aşağıdaki yöntem tanımını ad alanı TermLists, Class program öğesine ekleyin.
 
 ```csharp
 /// <summary>
@@ -375,7 +374,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 
 ## <a name="compose-the-main-method"></a>Main metodunu oluşturma
 
-**TermLists** ad alanının **Program** sınıfına **Main** yöntemi tanımını ekleyin. Son olarak, **Program** sınıfını ve **TermLists** ad alanını kapatın.
+**Ana** yöntem tanımını ad alanı **termlists**, Class **Program**öğesine ekleyin. Son olarak, **Program** sınıfını ve **termlists** ad alanını kapatın.
 
 ```csharp
 static void Main(string[] args)
@@ -413,7 +412,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="run-the-application-to-see-the-output"></a>Çıkışı görmek uygulamayı çalıştırma
+## <a name="run-the-application-to-see-the-output"></a>Çıktıyı görmek için uygulamayı çalıştırın
 
 Konsol çıktılarınız aşağıdakine benzer şekilde görünür:
 
@@ -449,4 +448,4 @@ Press ENTER to close the application.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu ve diğer .NET için Content Moderator hızlı başlangıçları için [Content Moderator .NET SDK'sını](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözümünü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) alın ve tümleştirmeniz üzerinde çalışmaya başlayın.
+.NET için bu ve diğer Content Moderator hızlı başlangıçlara yönelik [Content moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) ve [Visual Studio çözümü](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) alın ve tümleştirmenizi kullanmaya başlayın.

@@ -16,12 +16,12 @@ ums.workload: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0820ca227a4d0e8c71ed3f35cd8fa2841163d38f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e7f3a9bc9aade5f8ade857e9c2f14f8e9898a7da
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727643"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244668"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory Denetim günlüklerini tümleştirme
 
@@ -74,7 +74,7 @@ Ayrıca, bir [destek isteği](../../azure-supportability/how-to-create-azure-sup
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure günlük tümleştirmesi hakkında daha fazla bilgi edinmek için bkz.:
 
-* [Azure günlükleri için Microsoft Azure günlük tümleştirmesi](https://www.microsoft.com/download/details.aspx?id=53324): Bu Indirme Merkezi sayfası, Azure günlük tümleştirmesi için Ayrıntılar, sistem gereksinimleri ve yükleme yönergeleri sağlar.
+* [Azure günlükleri için Microsoft Azure günlük tümleştirmesi](https://azure.microsoft.com/services/monitor/): Bu İndirme Merkezi sayfası, Azure günlük tümleştirmesi için Ayrıntılar, sistem gereksinimleri ve yükleme yönergeleri sağlar.
 * [Azure günlük tümleştirmesine giriş](azure-log-integration-overview.md): Bu makalede Azure günlük tümleştirmesi, temel özellikleri ve nasıl çalıştığı açıklanır.
-* [Azure günlük tümleştirmesi hakkında SSS](azure-log-integration-faq.md): Bu makalede Azure günlük tümleştirmesi hakkında sorular yanıtlanmaktadır.
-* [Azure tanılama ve Azure denetim günlüklerine yönelik yeni özellikler](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Bu blog gönderisi sizi Azure denetim günlükleri ve Azure kaynaklarınızın işlemleriyle ilgili Öngörüler elde etmenize yardımcı olan diğer özellikleri tanıtır.
+* [Azure günlük TÜMLEŞTIRMESI SSS](azure-log-integration-faq.md): Bu makalede Azure günlük tümleştirmesi hakkında sorular yanıtlanmaktadır.
+* [Azure tanılama ve Azure denetim günlükleri Için yeni özellikler](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): Bu blog gönderisi sizi Azure denetim günlükleri ve Azure kaynaklarınızın işlemleriyle ilgili Öngörüler elde etmenize yardımcı olan diğer özellikleri tanıtır.

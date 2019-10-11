@@ -1,7 +1,7 @@
 ---
 title: Proje Acoustics Unreal ve Wwise tümleştirmesi
 titlesuffix: Azure Cognitive Services
-description: Bu nasıl yapılır-proje Acoustics Unreal ve Wwise eklentileri projenize tümleştirmeyi açıklar.
+description: Bu makalede, Project Acoustics Unreal ve Wwise eklentilerinin projenizin tümleştirilmesi açıklanır.
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -11,173 +11,183 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 47f39e8dcd96ea3bdba564df348e9b89a6b036ba
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e57212a3002390754aaebc5f2aa9ffb10af230a2
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933189"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243053"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>Proje Acoustics Unreal ve Wwise tümleştirmesi
-Bu nasıl yapılır, mevcut olmayan ve Wwise oyun projenize Project Acoustics eklenti paketinin ayrıntılı tümleştirme adımlarını sağlar. 
+Bu makalede, Project Acoustics eklenti paketinin mevcut olmayan gerçek ve Wwise oyun projenize nasıl tümleştirileceği açıklanır.
 
 Yazılım gereksinimleri:
 * [Unreal Engine](https://www.unrealengine.com/) 4.20 +
-* [Audiokinetik Wwise](https://www.audiokinetic.com/products/wwise/) 2018,1.\*
+* [Audiokinetik Wwise](https://www.audiokinetic.com/products/wwise/) 2018,1
 * [Gerçek olmayan için Wwise eklentisi](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
-  * Wwise Unreal eklentileri kullanmak yerine Wwise SDK 'sının doğrudan tümleştirmesini kullanıyorsanız, Project Acoustics Unreal Plugin 'e başvurun ve Wwise API çağrılarını ayarlayın.
+  
+  Wwise Unreal eklentisi yerine Wwise SDK 'sının doğrudan tümleştirmesini kullanıyorsanız, Project Acoustics Unreal eklentisini inceleyin ve Wwise API çağrılarını ayarlayın.
 
-Proje Acoustics 'yi Wwise dışında bir ses altyapısıyla kullanmak istiyorsanız, [Project Acoustics tartışma forumu](https://github.com/microsoft/ProjectAcoustics/issues)üzerinde bir geliştirme isteği yapın. Project Acoustics Unreal eklentisini kullanarak Acoustics verilerini sorgulayabilir ve sonra altyapıya yönelik API çağrıları yapabilirsiniz.
+Proje Acoustics 'yi Wwise dışında bir ses altyapısıyla kullanmak için, [Project Acoustics tartışma forumu](https://github.com/microsoft/ProjectAcoustics/issues)'nda bir geliştirme isteği oluşturun. Acoustics verilerini sorgulamak ve altyapıya API çağrıları yapmak için Project Acoustics Unreal eklentisini kullanabilirsiniz.
 
 ## <a name="download-project-acoustics"></a>Proje Acoustics indir
-Henüz yapmadıysanız, [projeyi Acoustics Unreal & Wwise eklenti paketini](https://www.microsoft.com/download/details.aspx?id=58090)) indirin. 
+Henüz yapmadıysanız [Project Acoustics Unreal ve Wwise eklenti paketini](https://www.microsoft.com/download/details.aspx?id=58090) indirin.
 
-Pakette, bir Unreal Engine eklentisi ve bir Wwise Mixer eklentisi ekledik. Unreal eklentisi düzenleyici ve çalışma zamanı tümleştirmesi sağlar. Oyunplay sırasında Project Acoustics Unreal eklentisi her bir oyun nesnesi için her kare için occlusiyon gibi parametreleri hesaplar. Bu parametreler, Wwise API çağrılarına çevrilir.
+Pakette bir Unreal Engine eklentisi ve bir Wwise karıştırıcı eklentisi bulunur. Unreal eklentisi düzenleyici ve çalışma zamanı tümleştirmesi sağlar. Oyunplay sırasında Project Acoustics Unreal eklentisi her bir kare için her bir oyun nesnesi için occlusiyon gibi parametreleri hesaplar. Bu parametreler Wwise API çağrılarına çevrilir.
 
-## <a name="review-integration-steps"></a>Tümleştirme adımlarını gözden geçirin
+## <a name="integration-steps"></a>Tümleştirme adımları
 
-Paketi yüklemeye ve oyununuza dağıtmaya yönelik bu temel adımlar vardır.
-1. Projeyi Acoustics Wwise Mixer eklentisini yükler
-2. (Yeniden) oyununuza Wwise dağıtın. Bu adım, karıştırıcı eklentisini oyun projenize yayar.
-3. Oyununuza Acoustics Unreal eklentisini proje ekleyin
-4. Wwise 'ın gerçek olmayan eklenti işlevselliğini Genişlet
-5. Oyun oluştur ve Python denetimi etkinleştirildi
-6. Proje Acoustics kullanmak için Wwise projenizi ayarlama
-7. Ses kurulumu, gerçek olmayan
+Paketi yüklemek ve oyununuza dağıtmak için bu adımları izleyin.
 
-## <a name="1-install-the-project-acoustics-mixer-plugin"></a>1. Project Acoustics Mixer eklentisini yükler
-* Wwise başlatıcısı 'nı açın, **Eklentiler** sekmesinde **yeni eklentiler yüklensin**bölümünde **dizinden Ekle**' yi seçin. 
+### <a name="install-the-project-acoustics-mixer-plug-in"></a>Project Acoustics Mixer eklentisini yükler
+1. Wwise başlatıcısı 'nı açın. **Eklentiler** sekmesinde, **yeni eklentiler yüklensin**bölümünde **dizinden Ekle**' yi seçin.
 
-    ![Wwise başlatıcısı 'nda eklenti yükleme ekran görüntüsü](media/wwise-install-new-plugin.png)
+    ![Wwise başlatıcısında eklenti yüklemesi](media/wwise-install-new-plugin.png)
 
-* İndirdiğiniz pakette bulunan dizini seçin. `AcousticsWwisePlugin\ProjectAcoustics` Wwise karıştırıcı eklenti paketini içerir.
+1. İndirme paketindeki *AcousticsWwisePlugin\ProjectAcoustics* dizinini seçin. Wwise karıştırıcı eklentisi grubunu içerir.
 
-* Wwise, eklentiyi yükleyecek. Project Acoustics artık Wwise 'daki yüklü eklentiler listesinde görünür.  
-![Project Acoustics yüklemesinden sonra, Wwise yüklü eklenti listesinin ekran görüntüsü](media/unreal-integration-post-mixer-plugin-install.png)
+   Wwise eklentiyi yükleyecek. Proje Acoustics, Wwise 'daki yüklü eklentiler listesinde görünmelidir.  
+![Project Acoustics yüklemesinden sonra, Wwise yüklü eklentiler listesi](media/unreal-integration-post-mixer-plugin-install.png)
 
-## <a name="2-redeploy-wwise-into-your-game"></a>2. (Yeniden) oyununuza Wwise dağıtma
-Wwise 'ı zaten tümleştirmiş olsanız bile oyununuza yeniden dağıtın. Bu, Project Acoustics Wwise eklentisini seçer.
+### <a name="dedeploy-wwise-into-your-game"></a>Wwise 'i oyununuza geri dağıtmayı sağlama
+Wwise 'ı zaten tümleştirmiş olsanız bile oyununuza yeniden dağıtın. Bu adım proje Acoustics Wwise eklentisini tümleştirir.
 
-* **Motor eklentisi:** Gerçek C++ olmayan bir projede oyun eklentisi olarak yüklüyse, bu adımı atlayın. Eğer gerçek olmayan projeniz yalnızca Blueprint olduğundan, örneğin, bir altyapı eklentisi olarak yüklendiyse, karıştırıcı eklentisi ile Wwise dağıtımı daha karmaşıktır. Kukla, boş olmayan bir C++ proje oluşturun, gerçek zamanlı olmayan bir düzenleyici açılırsa kapatın ve Wwise 'i Bu kukla projeye dağıtmak için kalan yordamı izleyin. Sonra dağıtılan Wwise eklentisini kopyalayın.
+   > [!NOTE]
+   > **Motor eklentisi:** Gerçek C++ olmayan bir projede oyun eklentisi olarak yüklüyse, bu adımı atlayın. Eğer gerçek olmayan projeniz yalnızca Blueprint olduğundan, örneğin, bir altyapı eklentisi olarak yüklenirse, karıştırıcı eklentisiyle Wwise dağıtımı daha karmaşıktır. Kukla boş olmayan bir C++ proje oluşturun. Açık olmayan düzenleyiciyi kapatın ve Wwise 'ı kukla projeye dağıtmak için kalan yordamı izleyin. Ardından, dağıtılan Wwise eklentisini kopyalayın.
  
-* Wwise Başlatıcısı ' ndan, **Unreal Engine** sekmesine tıklayın, ardından **en son Unreal Engine projelerinin** yanındaki hamburger menüsüne tıklayın ve **proje için araştır**' ı seçin. Oyununuzun gerçek olmayan proje `.uproject` dosyasını açın.
+1. Wwise Başlatıcısı ' ndan, **Unreal Engine** sekmesini seçin. **son olmayan altyapı projelerinin** yanındaki "hamburger" (Icon) menüsünü seçin ve ardından **proje için araştır**' ı seçin. Oyununuzun gerçek olmayan proje *. proje* dosyasını açın.
 
-    ![Wwise başlatıcısı 'nın gerçek olmayan sekmesinin ekran görüntüsü](media/wwise-unreal-tab.png)
+    ![Wwise başlatıcısı gerçek olmayan sekmesi](media/wwise-unreal-tab.png)
 
-* Ardından **projede Wwise 'ı tümleştir** ' e tıklayın veya **projede Wwise 'ı değiştirin**. Bu adım (yeniden), proje Acoustics Mixer eklentisi de dahil olmak üzere Wwise ikililerini projenize tümleştirir.
+1. Projede **Wwise 'ı tümleştir** ' i seçin veya **Wwise 'ı projede değiştirin**. Bu adım, proje Acoustics Mixer eklentisi de dahil olmak üzere Wwise ikililerini projenize tümleştirir.
 
-* **Motor eklentisi:** Wwise 'ı bir motor eklentisi olarak kullanıyorsanız ve yukarıdaki gibi sözde projeyi oluşturduysanız, Wwise dağıtılan `[DummyUProject]\Plugins\Wwise` klasörü kopyalayın ve üzerine `[UESource]\Engine\Plugins\Wwise`yapıştırın. `[DummyUProject]`, gerçek C++ olmayan proje yolundan ve `[UESource]` gerçek olmayan altyapı kaynaklarının yüklü olduğu yerdir. Kopyalamayı tamamladıktan sonra, sözde projeyi silebilirsiniz.
+   > [!NOTE]
+   > **Motor eklentisi:** Motor eklentisi olarak Wwise kullanıyorsanız ve daha önce açıklandığı gibi sözde projeyi oluşturduysanız, Wwise dağıtılan klasörü kopyalayın: *[DummyUProject] \Plugins\Wwise*. *[Uesource] \Engine\Plugins\Wwise*üzerine yapıştırın. *[DummyUProject]* , gerçek olmayan bir C++ proje yolundan ve *[Uesource]* , gerçek olmayan altyapı kaynaklarının yüklendiği yerdir. Klasörü kopyaladıktan sonra, sözde projeyi silebilirsiniz.
 
-## <a name="3-add-the-project-acoustics-unreal-plugin-to-your-game"></a>3. Oyununuza Acoustics Unreal eklentisini proje ekleyin
+### <a name="add-the-project-acoustics-unreal-plug-in-to-your-game"></a>Oyununuza Acoustics projesini gerçek zamanlı olmayan eklentiyi ekleyin
  
-* Eklenti paketindeki `[UProjectDir]\Plugins\ProjectAcoustics` `UProjectDir` `.uproject` klasörü kopyalayın ve oyunun proje klasörü olan dosyayı içeren yeni bir klasör oluşturun. `Unreal\ProjectAcoustics`
-  * **Motor eklentisi**: Motor eklentisi olarak Wwise kullanıyorsanız, Project Acoustics ' ı gerçek olmayan bir altyapı eklentisi olarak kullanmanız gerekir. Yukarıdaki hedef dizin yerine şunu kullanın: `[UESource]\Engine\Plugins\ProjectAcoustics`.
+1. Eklenti paketindeki *Unreal\projectacoustika* klasörünü kopyalayın. *[Uprojectdir] \ Plugins\projectacoustik*adlı yeni bir klasör oluşturun. burada *[uprojectdir]* , oyununuzun *. uıproject* dosyasını içeren proje klasörüdür.
 
-* Klasörün yanında bir `Wwise` klasör görtığınızdan emin olun. `ProjectAcoustics` Yukarıdaki 2. adımda dağıttığınız karıştırıcı eklentisi için ikili dosyalarla birlikte Wwise eklentisini içerir.
+   > [!NOTE]
+   > **Motor eklentisi**: Wwise 'ı bir motor eklentisi olarak kullanıyorsanız, Project Acoustics ' ı gerçek olmayan bir altyapı eklentisi olarak kullanmanız gerekir. Daha önce alıntı yapılan hedef dizin yerine *[Uesource] \Engine\plugins\projectacoustiği*kullanın.
 
-## <a name="4-extend-wwises-unreal-plugin-functionality"></a>4. Wwise 'ın gerçek olmayan eklenti işlevselliğini Genişlet
-* Project Acoustics Unreal eklentisi, [Bu yönergelere](https://www.audiokinetic.com/library/?source=UE4&id=using__initialsetup.html)göre Wwise Unreal Plugin API 'sinden ek davranış gösterilmesini gerektirir. Düzeltme eki uygulama yordamını otomatikleştirmek için bir toplu iş dosyası ekledik. 
-* İçinde `Plugins\ProjectAcoustics\Resources`, öğesini `PatchWwise.bat`çalıştırın. Aşağıdaki örnek görüntü AcousticsGame örnek projemizi kullanır.
+1. *Projectacoustika* klasörüyle birlikte bir *Wwise* klasörü görtığınızdan emin olun. Daha önce dağıttığınız karıştırıcı eklentisinin ikili dosyaları ile birlikte Wwise eklentisini içerir.
 
-    ![Wwise 'a düzeltme eki uygulama komut dosyasını vurgulayan Windows Gezgini penceresi ekran görüntüsü](media/patch-wwise-script.png)
+### <a name="extend-wwise-unreal-plug-in-functionality"></a>Wwise Unreal eklenti işlevlerini Genişlet
+Project Acoustics Unreal eklentisi, [Bu kurallar](https://www.audiokinetic.com/library/?source=UE4&id=using__initialsetup.html)uyarınca Wwise Unreal eklentisi API 'sinden sunulan ek davranışları gerektirir. Düzeltme eki uygulama yordamını otomatikleştirmek için bir toplu iş dosyası ekledik.
 
-* DirectX SDK yüklü değilse, kullanmakta olduğunuz Wwise sürümüne bağlı olarak, `DXSDK_DIR` içinde `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`yer alan satırı açıklamanız gerekebilir:
+* *Plugins\projectacoustics\resources*Içinde, *patchwwise. bat*dosyasını çalıştırın. Aşağıdaki örnek görüntü, AcousticsGame örnek projemizi kullanır.
 
-    ![DXSDK açıklamalı açıklaması gösteren kod Düzenleyicisi ekran görüntüsü](media/directx-sdk-comment.png)
+    ![Wwise 'a düzeltme eki uygulamak için betiğe sahip bir Windows Explorer penceresi](media/patch-wwise-script.png)
 
-* Visual Studio 2019 ile derlerseniz, bir bağlama hatasını Wwise ile geçici olarak çözmek için, ' `VSVersion` `vc150`de `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` varsayılan değeri el ile düzenleyin:
+* DirectX SDK yüklü değilse: kullanmakta olduğunuz Wwise sürümüne bağlı olarak, *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs*içinde `DXSDK_DIR` içeren satırı açıklama eklemeniz gerekebilir:
 
-    ![VSVersion öğesinin vc150 olarak değiştirildiğini gösteren kod düzenleyicisinin ekran görüntüsü](media/vsversion-comment.png)
+    ![' DXSDK ' öğesini gösteren kod Düzenleyicisi açıklama](media/directx-sdk-comment.png)
 
-## <a name="5-build-game-and-check-python-is-enabled"></a>5. Oyun oluştur ve Python denetimi etkinleştirildi
+* Visual Studio 2019 kullanarak derlerseniz: bir bağlama hatasını Wwise ile çözmek Için *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs* içindeki varsayılan `VSVersion` değerini el ile **vc150**olarak değiştirin:
 
-* Oyununuzu derleyin ve doğru şekilde derlendiğinden emin olun. Aksi takdirde, devam etmeden önce önceki adımları dikkatle inceleyin. 
-* Projenizi gerçek olmayan düzenleyicide açın. 
-* **Motor eklentisi:** Projectacoustik as Engine eklentisi olarak kullanılıyorsa, "yerleşik" eklentiler altında listelenen etkin olduğundan da emin olun.
-* Project Acoustics 'in tümleştirildiğini gösteren yeni bir mod görmeniz gerekir.
+    !["VSVersion" öğesini gösteren kod Düzenleyicisi "vc150" olarak değiştirildi](media/vsversion-comment.png)
 
-    ![Acoustics modunun tam gösterildiği reel olmayan ekran görüntüsü](media/acoustics-mode-full.png)
+### <a name="build-the-game-and-check-that-python-is-enabled"></a>Oyunu oluşturun ve Python 'un etkin olduğunu denetleyin
 
-* Gerçek olmayan etkin için Python eklentisine sahip olduğunu doğrulayın. Bu, düzenleyici tümleştirmesinin düzgün çalışması için gereklidir.
+1. Oyununuzu derleyin ve doğru şekilde oluşturulduğundan emin olun. Derlenmezse, devam etmeden önce önceki adımları dikkatle kontrol edin.
 
-    ![Gerçek olmayan düzenleyicide Python uzantılarının etkinleştirilmesinin ekran görüntüsü](media/ensure-python.png)
+1. Projenizi gerçek olmayan düzenleyicide açın.
 
-## <a name="6-wwise-project-setup"></a>6. Wwise proje kurulumu
+    > [!NOTE]
+    > **Motor eklentisi:** Bir altyapı eklentisi olarak Projectacoustik kullanıyorsanız, "yerleşik" eklentiler altında da etkinleştirildiğinden emin olun.
 
-Samples Download ile örnek bir Wwise projesi dahil edilmiştir. Bu yönergeleri izleyerek bu yönergelere bakmaya önerilir. Aşağıdaki ekran görüntüleri bu projeden alınmıştır.
+    Project Acoustics 'in tümleştirildiğini gösteren yeni bir mod görmeniz gerekir.
 
-### <a name="bus-setup"></a>Veri yolu kurulumu
-* Project Acoustics Unreal eklentisi, bu ***tam*** adı taşıyan bir veri yolundaki ilişkili karıştırıcı eklentisini arayacaktır: `Project Acoustics Bus`. Bu adla yeni bir ses veri yolu oluşturun. Karıştırıcı eklentisi çeşitli yapılandırmalarda çalışabilir, ancak şimdilik yalnızca yankı işlemini yapmak için kullanılacak varsayıyoruz. Bu veri yolu, Acoustics kullanan tüm kaynaklar için karma ters b sinyalini taşır. Bir veri yolu karıştırma yapısına yukarı akış karıştırabilir, örnek indirmaya dahil edilen Wwise örnek projenizden aşağıda gösterildiği gibi bir örnek aşağıda gösterilmiştir.
+    ![Acoustics modu tamamen gerçek değil](media/acoustics-mode-full.png)
 
-    ![Project Acoustics Bus 'ı gösteren Wwise busses ekran görüntüsü](media/acoustics-bus.png)
+1. Düzenleyici tümleştirmesi 'nin doğru çalışması için, Unreal için Python eklentisinin etkinleştirildiğinden emin olun.
 
-* Veri yolundaki kanal yapılandırmasının şunlardan birine ayarlanması gerekir: `1.0, 2.0, 4.0, 5.1 or 7.1`. Diğer yapılandırmalarını bu veri yolunda hiçbir çıkış oluşmasına neden olur.
+    ![Gerçek olmayan düzenleyicideki Python uzantıları etkin](media/ensure-python.png)
 
-    ![Project Acoustics Bus için kanal yapılandırma seçeneklerinin ekran görüntüsü](media/acoustics-bus-channel-config.png)
+### <a name="set-up-your-wwise-project-to-use-project-acoustics"></a>Proje Acoustics kullanmak için Wwise projenizi ayarlama
 
-* Şimdi Project Acoustics Bus ayrıntılarına gidin ve karıştırıcı eklentisi sekmesini görebilmeniz gerekir
+Örnek indirme ' ye örnek bir Wwise projesi dahildir. Bu yönergelerden birlikte görüntülemenizi öneririz. Bu makalenin ilerleyen bölümlerindeki ekran görüntüleri bu projeden alınır.
 
-    ![Project Acoustics Bus için Mixer eklenti sekmesinin nasıl etkinleştirileceğini gösteren Wwise 'ın ekran görüntüsü](media/mixer-tab-enable.png)
+#### <a name="bus-setup"></a>Veri yolu kurulumu
+Project Acoustics Unreal eklentisi, tam adı `Project Acoustics Bus` olan bir veri yolundaki ilişkili karıştırıcı eklentisini arayacaktır. Aynı ada sahip yeni bir ses veri yolu oluşturun. Karıştırıcı eklentisi çeşitli yapılandırmalarda çalışabilir. Ancak şimdilik yalnızca yankı işleme için kullanılacaksınız. Bu veri yolu, Acoustics kullanan tüm kaynaklar için karma ters b sinyalini taşır. Herhangi bir veri yolu karıştırma yapısına yukarı akış karışımı verebilir. Örnek indirmeye dahil edilen Wwise örnek projesinden bir örnek gösterilir.
 
-* Ardından, karıştırıcı eklenti sekmesine gidin ve Project Acoustics Mixer eklentisini veri yoluna ekleyin
+![Project Acoustics Bus 'ı gösteren Wwise veri yolları](media/acoustics-bus.png)
 
-    ![Project Acoustics Mixer eklentisinin nasıl ekleneceğini gösteren Wwise Bus 'ın ekran görüntüsü](media/add-mixer-plugin.png)
+1. Veri yolundaki kanal yapılandırmasını *1,0*, *2,0*, *4,0*, *5,1*veya *7,1*olarak ayarlayın. Diğer herhangi bir ayar, veri yolunda çıkış olmadan sonuçlanır.
 
-### <a name="actor-mixer-hierarchy-setup"></a>Aktör-karıştırıcı hiyerarşisi kurulumu
-* Project Acoustics, performans nedenleriyle tüm kaynaklara aynı anda ses DSP 'si uygular. Bu, eklentinin bir karıştırıcı eklentisi olarak çalışmasını gerektirir. Wwise, çıkış veri yolu üzerinde olması için karıştırıcı eklentileri gerektirir, ancak çıktı veri yolu, genellikle kuru çıkış sinyalini taşır. Project Acoustics, `Project Acoustics Bus`ıslak sinyali üzerinde işlenirken kuru sinyalinin yedek busler aracılığıyla yönlendirilmesini gerektirir. Aşağıdaki işlem, bu sinyal akışına aşamalı geçişi destekler.
+    ![Project Acoustics Bus için kanal yapılandırma seçenekleri](media/acoustics-bus-channel-config.png)
 
-* En üst düzeyde yer adımları, Weapons ve diğerlerini içeren aktör karıştırıcı hiyerarşisi olan mevcut bir projeniz olduğunu varsayalım. Her birinin, Kuru karışımı için karşılık gelen çıkış veri yolu vardır. Diyelim ki, Acoustics kullanmaya yönelik adımları geçirmek istediğinizi varsayalım. İlk olarak, ilgili bir AUX veri yolu oluşturun ve bu, bir alt karışımını, bu çıkış veri yolu yolunun bir alt öğesi olan. Örneğin, tam ad önemli olmasa da, bunları düzenlemek için aşağıdaki görüntüde "kuru" önekini kullandık. Bu adım veri yolunda bulunan tüm ölçümler veya efektler daha önce olduğu gibi çalışır.
+1. Project Acoustics Bus ayrıntılarına gidin ve **karıştırıcı eklentisi** sekmesini gördiğinizden emin olun.
 
-    ![Önerilen Wwise kuru karışımı kurulumunun ekran görüntüsü](media/wwise-dry-mix-setup.png)
+    ![Proje Acoustics Bus etkin için karıştırıcı eklenti sekmesi ile Wwise](media/mixer-tab-enable.png)
 
-* Daha sonra, aşağıdaki gibi, WITH, oyuncu-Mixer için Bus çıkış yapısını, Project Acoustics Bus as output Bus olarak ayarlanmış şekilde değiştirin ve Dry_Footsteps, Kullanıcı tanımlı bir AUX veri yolu olarak ayarlanır.
+1. **Karıştırıcı eklenti** sekmesine gidin ve Project Acoustics Mixer eklentisini Bus 'a ekleyin.
 
-    ![Önerilen Wwise aktör karıştırıcı veri yolu kurulumunun ekran görüntüsü](media/actor-mixer-bus-settings.png)
+    ![Wwise Bus 'a Project Acoustics Mixer eklentisinin nasıl ekleneceğini gösteren diyagram](media/add-mixer-plugin.png)
 
-* Artık tüm bu adımlar Acoustics işleme alır ve proje Acoustics veri yolunda ters b 'yi çıktı. Kuru sinyali, her zamanki gibi Dry_Footsteps ve maça aracılığıyla yönlendirilir.
+#### <a name="actor-mixer-hierarchy-setup"></a>Aktör-karıştırıcı hiyerarşisi kurulumu
+En iyi performansı elde etmek için Project Acoustics, tüm kaynaklara aynı anda ses dijital sinyal işleme uygular. Bu nedenle, eklentinin bir karıştırıcı eklentisi olarak çalışması gerekir. Wwise, çıkış veri yolu, genellikle kuru çıkış sinyalini taşısa da, karıştırıcı eklentilerinin çıkış veri yolunda olmasını gerektirir. Project Acoustics,, IST sinyali `Project Acoustics Bus` ' a taşınırken, ınsesignal 'ın AUX veri yolları aracılığıyla yönlendirilmesini gerektirir. Aşağıdaki işlem, bu sinyal akışına aşamalı geçişi destekler.
 
-* Project Acoustics yalnızca dünyanın bir 3B konumuna sahip olan sesler için geçerlidir. Aşağıdaki [Wwise belgelerinde](https://blog.audiokinetic.com/out-with-the-old-in-with-the-new-positioning-revamped-in-wwise-2018.1/), konumlandırma özelliklerinin gösterildiği gibi ayarlanması gerekir. "3B Istenmeyen kullanım" ayarı, gerektiğinde "konum" ya da "konum + yönlendirme" olabilir.
+En üst düzeyde *giyme adımları, silah*ve diğerleri içeren biraktör karıştırıcı hiyerarşisi olan mevcut bir projeniz olduğunu varsayalım. Her birinin, Kuru karışımı için karşılık gelen bir çıkış veri yolu vardır. Acoustics kullanma adımlarını geçirmek istediğinizi varsayalım. İlk olarak, ilgili bir AUX veri yolu oluşturun ve bu, bir alt karışımı çıkış veri yolunun alt karışımını taşır. Örneğin, tam ad önemli olmamasına rağmen, yolları düzenlemek için aşağıdaki görüntüde bir "kuru" öneki kullandınız. İşle ilgili veri yolunda sahip olduğunuz ölçüm veya efektler daha önce olduğu gibi çalışır.
 
-    ![Önerilen Wwise aktör konumlandırma ayarlarının ekran görüntüsü](media/wwise-positioning.png)
+![Önerilen Wwise kuru karışımı kurulumu](media/wwise-dry-mix-setup.png)
 
-* Çıktı veri yolunu **Project Acoustics Bus** 'a veren diğer veri yoluna ayarlama çalışmaz. Wwise, bu gereksinimi karıştırıcı eklentilerden uygular.
+Daha sonra, aşağıdaki gibi,,,, **Çıkış veri**yolu olarak ayarlanan *Project Acoustics Bus* ve *Dry_Footsteps* Kullanıcı tanımlı bir AUX veri yolu olarak ayarlanmış şekilde, bu oyuncu için veri yolu çıkış yapısını aşağıda gösterildiği gibi değiştirin.
 
-* It adımlarında aktör-karıştırıcı hiyerarşisinde Acoustics kullanmayan bir alt öğe istiyorsanız, bunu kabul etmek için her zaman üzerinde "üst öğeyi geçersiz kıl" seçeneğini kullanabilirsiniz.
+![Önerilen Wwise aktör karıştırıcı veri yolu kurulumu](media/actor-mixer-bus-settings.png)
 
-* Oydaki herhangi bir oyuncu karıştırıcı için oyun veya Kullanıcı tanımlı kullanıcı tanımlı gönderme kullanıyorsanız, bu aktör-mixer ' i kapatarak, ters b 'yi iki kez uygulamayı önleyin.
+Artık tüm bu adımlar Acoustics işleme alır ve proje Acoustics veri yolunda ters b 'yi çıktı. Kuru sinyali, her zamanki gibi Dry_Footsteps ve maça aracılığıyla yönlendirilir.
 
-### <a name="spatialization"></a>Gereksiz duruma getirme
-Varsayılan olarak, Project Acoustics Wwise Mixer eklentisi, bir evlenme yankı uygular ve bu da, maça 'ı kaydırmak için Wwise 'tan bırakır. Project Acoustics 'i yalnızca bu varsayılan ters b yapılandırmasında kullanırken, kurutma karışımında herhangi bir kanal yapılandırması ve istenmeyen kullanım yöntemini kullanmaya ücretsiz olursunuz. böylece, ' ters b ' Project Acoustics ile neredeyse her türlü gereksiz kullanımı karıştırıp eşleştirebilirsiniz. Seçenekleriniz [Ambisonics tabanlı Binaural spatialsleyiciler](https://www.audiokinetic.com/products/ambisonics-in-wwise/) ve [Windows Sonic](https://docs.microsoft.com/windows/desktop/CoreAudio/spatial-sound)' i içerir.
+Project Acoustics yalnızca dünyanın bir 3B konumuna sahip olan sesler için geçerlidir. Aşağıdaki [Wwise belgelerinde](https://blog.audiokinetic.com/out-with-the-old-in-with-the-new-positioning-revamped-in-wwise-2018.1/), konumlandırma özelliklerinin gösterildiği gibi ayarlanması gerekir. **3B Istenmeyen kullanım** ayarı, gerektiğinde *konum* veya *konum + yönlendirme* olabilir.
+
+![Önerilen Wwise aktör konumlandırma ayarları](media/wwise-positioning.png)
+
+**Çıktı veri** yolunu *Project Acoustics Bus*içine yukarı akış sağlayan diğer bir veri yoluna ayarlayamazsınız. Wwise, bu gereksinimi karıştırıcı eklentilerde uygular.
+
+It adımlarında aktör-karıştırıcı hiyerarşisinde Acoustics kullanmayan bir alt öğe istiyorsanız, bunu kabul etmek için üzerinde "üst öğeyi geçersiz kıl" kullanabilirsiniz.
+
+Oydaki herhangi bir oyuncu karıştırıcı için oyun veya Kullanıcı tanımlı kullanıcı tanımlı gönderme kullanıyorsanız, her iki kez ters uygulamayı önlemek için bu oyuncu karıştırıcı üzerinde kapatın.
+
+#### <a name="spatialization"></a>Gereksiz duruma getirme
+Project Acoustics Wwise Mixer eklentisi, varsayılan olarak, bir evlenme geri çağrı uygular. Project Acoustics 'i yalnızca bu varsayılan ters b yapılandırmasında kullandığınızda, Kuru karışımında herhangi bir kanal yapılandırması ve gereksiz hale getirme yöntemini kullanabilirsiniz. Bu nedenle, Acoustics ters b projesi ile neredeyse tüm spatializer 'ı karıştırabilir ve eşleştirebilirsiniz. Seçenekleriniz [Ambisonics tabanlı Binaural spatialsleyiciler](https://www.audiokinetic.com/products/ambisonics-in-wwise/) ve [Windows Sonic](https://docs.microsoft.com/windows/desktop/CoreAudio/spatial-sound)' i içerir.
  
-Project Acoustics, nesne tabanlı yüksek çözünürlüklü HRTF 'leri ve yatay kaydırmayı destekleyen isteğe bağlı bir spatializer içerir. Karıştırıcı eklenti ayarlarında "Istenmeyen kullanım yapma" onay kutusunu işaretleyin ve her iki kez de proje Acoustics Mixer eklentisi ve Wwise ile her iki kez de bir kez göz önüne geçmek için Kullanıcı tanımlı yedek göndermeleri ' ı bir kez daha göz önüne alın. Gereksiz duruma getirme modu, bir ses Bankası yeniden oluşturma gerektirdiğinden gerçek zamanlı olarak değiştirilemez. ' Istenmeyen kullanım yapma ' onay kutusu gibi karıştırıcı eklenti yapılandırma değişikliklerini seçmek için, kapatmadan önce Unreal ' i yeniden başlatmanız ve ardından soundbankalarını yeniden oluşturmanız gerekir.
+Project Acoustics, hem nesne tabanlı yüksek çözünürlüklü HRTF 'leri oluşturmayı hem de kaydırmayı destekleyen, isteğe bağlı bir spatializer içerir. Karıştırıcı eklenti ayarları ' nda **Istenmeyen kullanım yap** onay kutusunu seçin ve *HRTF* veya *kaydırma*arasında seçim yapın. Ayrıca, Project Acoustics Mixer eklentisi ve Wwise tarafından iki kez çıkarmamak için Kullanıcı tanımlı yedek göndermeleri tüm kurutma yollarına devre dışı bırakın. Gereksiz duruma getirme modu, bir ses Bankası yeniden oluşturma gerektirdiğinden gerçek zamanlı olarak değiştirilemez. Gerçek zamanlı olmayan şekilde yeniden başlatın ve ardından, **Istenmeyen kullanım** oluşturma onay kutusu ayarı gibi karıştırıcı eklentisi yapılandırma değişikliklerini bütünleştirmek için Yürüt ' ü seçmeden önce soundbankalarını yeniden oluşturun.
 
-![Wwise karıştırıcı eklentisinin gereksiz hale getirme ayarlarının ekran görüntüsü](media/mixer-spatial-settings.png)
+![Wwise karıştırıcı eklenti gereksiz kullanım ayarları](media/mixer-spatial-settings.png)
 
-Ne yazık ki, diğer nesne tabanlı spatializer eklentileri, karıştırıcı eklentileri olarak uygulandığından ve Wwise Şu anda tek bir aktör karıştırıcı 'ya atanmış birden çok karıştırıcı eklenti yapmasına izin vermediğinden, bu anda desteklenmez.  
+Ne yazık ki, diğer nesne tabanlı spatializer eklentileri şu anda desteklenmemektedir. Bunlar, karıştırıcı eklentileri olarak uygulanır ve Wwise, birden çok karıştırıcı eklentisinin tek bir aktör Mixer 'e atanmasına izin vermez.  
 
-## <a name="7-audio-setup-in-unreal"></a>7. Ses kurulumu, gerçek olmayan
-* İlk olarak, içine `Content\Acoustics`yerleştirilecek bir Acoustics varlığı oluşturmak için oyun düzeyinize bakmeniz gerekir. [Gerçek olmayan Bake öğreticiye](unreal-baking.md) danışın ve buradan çalışmaya kaldığınız yerden ulaşabilirsiniz. Önceden tanımlanmış bazı düzeyler örnek paketine dahildir.
-* Sahnede bir Acoustics Space aktör oluşturun. Bu aktörlerin yalnızca birini bir düzey içinde oluşturun. Bu, tüm düzeyin Acoustics temsil eder. 
+### <a name="audio-setup-in-unreal"></a>Ses kurulumu, gerçek olmayan
+1. İlk olarak, *Content\Acoustics*'e yerleştirilecek bir Acoustics varlığı oluşturmak için oyun düzeyinize bakmeniz gerekir. [Gerçek olmayan bakışta öğreticiye](unreal-baking.md)danışın. Önceden tanımlanmış bazı düzeyler örnek paketine dahildir.
 
-    ![Acoustics Space aktör oluşturmayı gösteren gerçek olmayan düzenleyicinin ekran görüntüsü](media/create-acoustics-space.png)
+1. Sahnede bir Acoustics Space aktör oluşturun. Bu aktörlerin yalnızca birini bir düzey içinde oluşturun, çünkü tüm düzeyin Acoustics temsil eder.
 
-* Şimdi, Acoustics veri yuvasını, daha önce Acoustics Space aktör üzerinde bulunan veri yuvasına atayın. Sahnede artık Acoustics vardır!
+    ![Gerçek olmayan düzenleyicide Acoustics Space aktör oluşturma](media/create-acoustics-space.png)
 
-    ![Acoustics varlık atamasını gösteren gerçek olmayan düzenleyicinin ekran görüntüsü](media/acoustics-asset-assign.png)
+1. Bakmış akustik veri varlığını Acoustics Space aktör üzerindeki Acoustics veri yuvasına atayın. Sahnede artık Acoustics vardır!
 
-* Şimdi boş bir aktör ekleyin ve şunları yapın:
+    ![Acoustics varlık ataması-gerçek olmayan düzenleyicide](media/acoustics-asset-assign.png)
 
-    ![Boş bir aktör içinde Acoustics bileşeni kullanımını gösteren gerçek olmayan düzenleyicinin ekran görüntüsü](media/acoustics-component-usage.png)
+1. Boş aktör ekleyin. Bunu aşağıdaki şekilde yapılandırın.
 
-1. Aktör için Acoustics ses bileşeni ekleyin. Bu bileşen, Wwise ses bileşenini proje Acoustics işlevselliği ile genişletir.
-2. Başlangıçta çal kutusu varsayılan olarak denetlenir ve bu işlem, düzey başlangıcında ilişkili Wwise olayını tetikler.
-3. Kaynakla ilgili ekran hata ayıklama bilgilerini yazdırmak için Acoustics parametrelerini göster onay kutusunu kullanın.  
-    ![Hata ayıklama değerleri etkin olan ses kaynağında gerçek olmayan düzenleyici Acoustics panelinin ekran görüntüsü](media/debug-values.png)
-4. Her zamanki Wwise iş akışı başına bir Wwise olayı atama
-5. Uzamsal ses kullan özelliğinin kapalı olduğundan emin olun. Şu anda, belirli bir ses bileşeni için Project Acoustics kullanıyorsanız, Acoustics için Wwise 'ın uzamsal ses altyapısını aynı anda kullanamazsınız.
+    ![Unreal Düzenleyicisi, Acoustics bileşeni kullanımını boş bir aktör içinde gösterir](media/acoustics-component-usage.png)
 
-İşinizi tamamlandı. Sahnenin etrafında ilerleyin ve akustik etkileri keşfedebilirsiniz!
+       
+    <sup>1</sup> aktöre Acoustics ses bileşeni ekleyin. Bu bileşen, Wwise ses bileşenine Project Acoustics işlevselliği ekler.
+        
+    <sup>2</sup> **Başlat kutusunda çal** kutusu varsayılan olarak seçilidir. Bu ayar, düzey başlangıcında ilişkili bir Wwise olayını tetikler.</li>
+         
+    <sup>3</sup> kaynak hakkında ekran hata ayıklama bilgilerini yazdırmak Için **Acoustics parametrelerini göster** onay kutusunu kullanın.
+
+    ![Hata ayıklama değerleri etkin olan ses kaynağında gerçek olmayan düzenleyici Acoustics paneli](media/debug-values.png)
+
+    <sup>4</sup> her zamanki Wwise iş akışı başına bir Wwise olayı atayın.
+       
+    <sup>5</sup> **uzamsal ses kullan** özelliğinin kapalı olduğundan emin olun. Belirli bir ses bileşeni için Project Acoustics kullanıyorsanız, Acoustics için Wwise 'ın uzamsal ses altyapısını aynı anda kullanamazsınız.</li>
+       
+Hazırsınız. Sahnenin etrafında ilerleyin ve akustik etkileri keşfedebilirsiniz!
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Gerçek zamanlı olmayan/Wwise 'da proje Acoustics için [Tasarım](unreal-workflow.md) öğreticisi
-* Oyun sahnelerinizi [nasıl yapabileceğinizi öğrenin](unreal-baking.md) 
+* [Projeyi Acoustics Unreal/Wwise tasarım öğreticisini](unreal-workflow.md)deneyin.
+* Oyun sahneleri için [nasıl bir bakışta](unreal-baking.md) bilgi alabileceğinizi öğrenin.

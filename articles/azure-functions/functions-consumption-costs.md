@@ -7,18 +7,18 @@ ms.date: 9/20/2019
 ms.topic: conceptual
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: fa35e5bea7b0d7f2435a8ad31b9195d2fd35a45c
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 0ff41eb511ad4513fc9bf5a2ded7ef47b08d12ab
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181268"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243318"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Tüketim planı maliyetlerini tahmin etme
 
 Azure Işlevleri 'nde çalışan bir uygulama için şu anda üç tür barındırma planı vardır: her plan kendi fiyatlandırma modeline sahiptir: 
 
-| Plan | Açıklama |
+| Planınızın | Açıklama |
 | ---- | ----------- |
 | [**Mine**](functions-scale.md#consumption-plan) | Yalnızca işlev uygulamanızın çalıştırıldığı zaman ücretlendirilirsiniz. Bu plan, abonelik bazında [ücretsiz]bir[fiyatlandırma sayfası] içerir.|
 | [**Premium**](functions-scale.md#premium-plan) | Tüketim planıyla aynı özellikleri ve ölçeklendirme mekanizmasını, ancak gelişmiş performans ve VNET erişimi sağlar. Maliyet, seçtiğiniz fiyatlandırma katmanına göre belirlenir. Daha fazla bilgi için bkz. [Azure Işlevleri Premium planı](functions-premium-plan.md). |
@@ -34,7 +34,7 @@ Dayanıklı İşlevler, bir tüketim planında da çalıştırılabilir. Dayanı
 
 Tek bir işlev yürütmenin yürütme *ücreti* *GB saniye*cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bellek tüketen bir işlev olduğu gibi daha uzun maliyetler için çalışan bir işlev. 
 
-İşlev tarafından kullanılan bellek miktarının sabit kaldığından bir durum düşünün. Bu durumda, maliyeti hesaplamak basit çarpma olur. Örneğin, işlevinizin 3 saniye boyunca 0,5 GB tükettiğini varsayalım. Ardından yürütme maliyeti olur `0.5GB * 3s = 1.5 GB-seconds`. 
+İşlev tarafından kullanılan bellek miktarının sabit kaldığından bir durum düşünün. Bu durumda, maliyeti hesaplamak basit çarpma olur. Örneğin, işlevinizin 3 saniye boyunca 0,5 GB tükettiğini varsayalım. Ardından yürütme maliyeti `0.5GB * 3s = 1.5 GB-seconds` ' dır. 
 
 Bellek kullanımı zaman içinde değiştiği için, hesaplama temelde bellek kullanımının zaman içindeki integrali olur.  Sistem, düzenli aralıklarla işlemin bellek kullanımını (alt işlemlerle birlikte) örnekleyerek bu hesaplamayı yapar. [Fiyatlandırma sayfasında]belirtildiği gibi, bellek kullanımı en yakın 128 MB 'lık sepete yuvarlanır. İşleminiz 160 MB kullanıyorsa, 256 MB üzerinden ücretlendirilirsiniz. Hesaplama, aynı işlemde birden çok eş zamanlı işlev yürütmesi olan eşzamanlılık hesabı ' na geçer.
 
@@ -59,13 +59,13 @@ Tüketim planında çalışan işlevler için toplam maliyet, işlevlerinizin y�
 
 İşlevlerinizin aşağıdaki davranışları yürütme süresini etkileyebilir:
 
-+ **Tetikleyiciler ve bağlamalar**: [İşlev Bağlamalarınızın](functions-triggers-bindings.md) giriş ve yazma çıktısından alınması için geçen süre, yürütme süresi olarak sayılır. Örneğin, işleviniz bir Azure depolama kuyruğuna ileti yazmak için bir çıkış bağlaması kullandığında, yürütme süresi, ileti maliyeti hesaplamasına dahil edilen iletiyi sıraya yazmak için geçen süreyi içerir. 
++ **Tetikleyiciler ve bağlamalar**: [işlev Bağlamalarınızın](functions-triggers-bindings.md) giriş ve yazma çıktısından alınması için geçen süre, yürütme süresi olarak sayılır. Örneğin, işleviniz bir Azure depolama kuyruğuna ileti yazmak için bir çıkış bağlaması kullandığında, yürütme süresi, ileti maliyeti hesaplamasına dahil edilen iletiyi sıraya yazmak için geçen süreyi içerir. 
 
-+ **Zaman uyumsuz yürütme**: İşlevinizin zaman uyumsuz bir istek (`await` ın C#) sonuçları için beklediği süre yürütme süresi olarak sayılır. GB saniyelik hesaplama, işlevin başlangıç ve bitiş zamanına ve bu döneme ait bellek kullanımına göre belirlenir. CPU etkinliği açısından bu sürenin üzerinde neler olduğu, hesaplamaya hiçbir şekilde bölünmez. [Dayanıklı işlevler](durable/durable-functions-overview.md)kullanarak, zaman uyumsuz işlemler sırasında maliyetleri azaltabilirsiniz. Orchestrator işlevlerinde beklemeleri sırasında harcanan zaman için faturalandırılırsınız.
++ **Zaman uyumsuz yürütme**: işlevinizin zaman uyumsuz bir isteğin (`await` C#) sonuçları için beklediği süre yürütme süresi olarak sayılır. GB saniyelik hesaplama, işlevin başlangıç ve bitiş zamanına ve bu döneme ait bellek kullanımına göre belirlenir. CPU etkinliği açısından bu sürenin üzerinde neler olduğu, hesaplamaya hiçbir şekilde bölünmez. [Dayanıklı işlevler](durable/durable-functions-overview.md)kullanarak, zaman uyumsuz işlemler sırasında maliyetleri azaltabilirsiniz. Orchestrator işlevlerinde beklemeleri sırasında harcanan zaman için faturalandırılırsınız.
 
 ## <a name="view-execution-data"></a>Yürütme verilerini görüntüle
 
-[Faturanızda](/billing/billing-download-azure-invoice.md), **Toplam yürütme-Işlev** ve **yürütme süresi-işlevlerinin**maliyet ile ilgili verilerini, gerçek fatura maliyetleriyle birlikte görüntüleyebilirsiniz. Ancak, bu fatura verileri geçmiş bir fatura dönemi için aylık bir topladır. 
+[Faturanızda](/azure/billing/billing-download-azure-invoice), **Toplam yürütme-Işlev** ve **yürütme süresi-işlevlerinin**maliyet ile ilgili verilerini, gerçek fatura maliyetleriyle birlikte görüntüleyebilirsiniz. Ancak, bu fatura verileri geçmiş bir fatura dönemi için aylık bir topladır. 
 
 İşlevlerinizin maliyet etkisini daha iyi anlamak için, Azure Izleyici 'yi kullanarak işlev uygulamalarınız tarafından şu anda oluşturulan maliyetlerle ilgili ölçümleri görüntüleyebilirsiniz. Bu verileri almak için [Azure Portal] veya REST API 'Lerinde [Azure izleyici ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) 'ni kullanabilirsiniz.
 
@@ -73,19 +73,19 @@ Tüketim planında çalışan işlevler için toplam maliyet, işlevlerinizin y�
 
 Tüketim planı işlev uygulamalarınızın maliyet ile ilgili verilerini grafik biçiminde görüntülemek için [Azure izleyici ölçümleri Gezginini](../azure-monitor/platform/metrics-getting-started.md) kullanın. 
 
-1. **Arama Hizmetleri, kaynaklar ve docs** 'daki `monitor` [Azure Portal] üst kısmında, **Hizmetler**' in altında **izleme** ' yi arayın ve seçin.
+1. **Arama Hizmetleri, kaynaklar ve docs** 'daki [Azure Portal] en üstünde, `monitor` Için arama yapın ve **Hizmetler**altında **izleme** ' yi seçin.
 
-1. Sol tarafta **ölçümler** >  **' i seçin ve ardından**işlev uygulamanızı seçmek için görüntünün altındaki ayarları kullanın.
+1. Solda, **ölçüm**@no__t seçin-1**kaynak seçin**ve ardından işlev uygulamanızı seçmek için görüntünün altındaki ayarları kullanın.
 
     ![İşlev uygulaması kaynağını seçin](media/functions-consumption-costing/select-a-resource.png)
 
       
     |Ayar  |Önerilen değer  |Açıklama  |
     |---------|---------|---------|
-    | Abonelik    |  Aboneliğiniz  | İşlev uygulamanıza sahip abonelik.  |
-    | Resource group     | Kaynak grubunuz  | İşlev uygulamanızı içeren kaynak grubu.   |
+    | Aboneliğiniz    |  Aboneliğiniz  | İşlev uygulamanıza sahip abonelik.  |
+    | Kaynak grubu     | Kaynak grubunuz  | İşlev uygulamanızı içeren kaynak grubu.   |
     | Kaynak türü     |  Uygulama Hizmetleri | İşlev uygulamaları, Monitor 'daki App Services örnekleri olarak gösterilir. |
-    | Resource     |  İşlev uygulamanız  | İzlenecek işlev uygulaması.        |
+    | Kaynak     |  İşlev uygulamanız  | İzlenecek işlev uygulaması.        |
 
 1. İşlev uygulamanızı izlenecek kaynak olarak seçmek için **Uygula** ' yı seçin.
 
@@ -101,13 +101,13 @@ Elde edilen grafik, seçilen zaman aralığındaki her iki yürütme ölçümler
 
 Yürütme birimlerinin sayısı, yürütme sayısından çok daha fazla olduğu için grafik yalnızca yürütme birimlerini gösterir.
 
-Bu grafik, MB cinsinden ölçülen, `Function Execution Units` iki saatlik bir dönemde tüketilen toplam 1.110.000.000 sayısını gösterir. GB saniyeye dönüştürmek için 1024000 ile bölün. Bu örnekte, işlev uygulaması GB-saniye `1110000000 / 1024000 = 1083.98` tüketilebilir. Bu değeri alabilir ve [işlevler fiyatlandırma sayfası][fiyatlandırma sayfasında]geçerli yürütme süresi fiyatına göre çarpıp, size bu iki saatin maliyetini sağlayan, size herhangi bir ücretsiz yürütme süresi verdiğini kabul eden bir ücret verir. 
+Bu grafik, iki saatlik bir dönemde tüketilen toplam 1.110.000.000 `Function Execution Units` ' ı MB milisaniyelik olarak gösterir. GB saniyeye dönüştürmek için 1024000 ile bölün. Bu örnekte, işlev uygulaması @no__t ile 0 GB saniye tüketilebilir. Bu değeri alabilir ve [işlevler fiyatlandırma sayfası][fiyatlandırma sayfasında]geçerli yürütme süresi fiyatına göre çarpıp, size bu iki saatin maliyetini sağlayan, size herhangi bir ücretsiz yürütme süresi verdiğini kabul eden bir ücret verir. 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLı
 
 [Azure CLI](/cli/azure/) , ölçümleri almak için komutlar içerir. CLı 'yi yerel bir komut ortamından veya [Azure Cloud Shell](../cloud-shell/overview.md)kullanarak doğrudan portaldan kullanabilirsiniz. Örneğin, aşağıdaki [az Monitor ölçümleri List](/cli/azure/monitor/metrics#az-monitor-metrics-list) komutu, daha önce kullanılan aynı zaman dilimine göre saatlik verileri döndürür.
 
-Komutunu çalıştıran Azure abonelik `<AZURE_SUBSCRIPTON_ID>` Kimliğiniz ile değiştirdiğinizden emin olun.
+Komutu çalıştıran Azure abonelik KIMLIĞINIZLE `<AZURE_SUBSCRIPTON_ID>` ' ın yerine geldiğinden emin olun.
 
 ```azurecli-interactive
 az monitor metrics list --resource /subscriptions/<AZURE_SUBSCRIPTION_ID>/resourceGroups/metrics-testing-consumption/providers/Microsoft.Web/sites/metrics-testing-consumption --metric FunctionExecutionUnits,FunctionExecutionCount --aggregation Total --interval PT1H --start-time 2019-09-11T21:46:00Z --end-time 2019-09-11T23:18:00Z
@@ -192,7 +192,7 @@ Bu komut, aşağıdaki örnekte olduğu gibi görünen bir JSON yükü döndür�
   ]
 }
 ```
-Bu belirli yanıt, uygulamasının, `2019-09-11T21:46` uygulamanın `2019-09-11T23:18`1110000000 MB-milisaniye (1083,98 GB-saniye) tükettiği, öğesinden öğesine gösterdiği anlamına gelir.
+Bu belirli yanıt, `2019-09-11T21:46` ' dan `2019-09-11T23:18` ' e kadar, uygulamanın 1110000000 MB-milisaniye (1083,98 GB-saniye) tükettiğini gösterir.
 
 ## <a name="determine-memory-usage"></a>Bellek kullanımını belirleme
 
@@ -210,14 +210,14 @@ performanceCounters
 
 Sonuçlar aşağıdaki örneğe benzer şekilde görünür:
 
-| zaman \[damgası UTC\]          | name          | value       |
+| zaman damgası \[UTC @ no__t-1          | name          | value       |
 |----------------------------|---------------|-------------|
-| 9/12/2019, 1:05:14\.947 | Özel Baytlar | 209.932.288 |
-| 9/12/2019, 1:06:14\.994 | Özel Baytlar | 212.189.184 |
-| 9/12/2019, 1:06:30\.010 | Özel Baytlar | 231.714.816 |
-| 9/12/2019, 1:07:15\.040 | Özel Baytlar | 210.591.744 |
-| 9/12/2019, 1:12:16\.285 | Özel Baytlar | 216.285.184 |
-| 9/12/2019, 1:12:31\.376 | Özel Baytlar | 235.806.720 |
+| 9/12/2019, 1:05:14 @ no__t-0947 har | Özel baytlar | 209.932.288 |
+| 9/12/2019, 1:06:14 @ no__t-0994 har | Özel baytlar | 212.189.184 |
+| 9/12/2019, 1:06:30 @ no__t-0010 har | Özel baytlar | 231.714.816 |
+| 9/12/2019, 1:07:15 @ no__t-0040 har | Özel baytlar | 210.591.744 |
+| 9/12/2019, 1:12:16 @ no__t-0285 har | Özel baytlar | 216.285.184 |
+| 9/12/2019, 1:12:31 @ no__t-0376 har | Özel baytlar | 235.806.720 |
 
 ## <a name="function-level-metrics"></a>İşlev düzeyi ölçümleri
 
@@ -232,9 +232,9 @@ customMetrics
 
 | name                       | averageDurationMilliseconds |
 |----------------------------|-----------------------------|
-| QueueTrigger AvgDurationMs | 16\.087                     |
-| QueueTrigger MaxDurationMs | 90\.249                     |
-| QueueTrigger MinDurationMs | 8\.522                      |
+| QueueTrigger AvgDurationMs | 16 @ no__t-0087                     |
+| QueueTrigger MaxDurationMs | 90 @ no__t-0249                     |
+| QueueTrigger MinDurationMs | 8 @ no__t-0522                      |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

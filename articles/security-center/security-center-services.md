@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: d756f9dfbd0012f884bb0c4a1e27efc76d613234
-ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
+ms.openlocfilehash: ed231bc05d58a40c93cea74081c027e5b49f5306
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71982832"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254497"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde sunulan desteklenen özellikler
 
 > [!NOTE]
->Bazı özellikler yalnızca Standart katmanda kullanılabilir. Güvenlik Merkezi 'nin standart katmanına kaydolmadıysanız ücretsiz bir deneme süresi vardır. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
+>Bazı özellikler yalnızca Standart katmanda kullanılabilir. Güvenlik Merkezi 'nin standart katmanına kaydolmadıysanız ücretsiz bir deneme süresi vardır. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın.
 
 Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-coverage.md)Için kullanılabilen güvenlik merkezi özellikleri gösterilmektedir.
 
@@ -35,49 +35,49 @@ Aşağıdaki bölümlerde, [desteklenen platformları](security-center-os-covera
 
 > [!div class="mx-tableFixed"]
 
-|Sunucusu|Windows|||Linux|||Fiyatlandırma|
+|Sunucu|Windows|||Linux|||Fiyatlandırma|
 |----|----|----|----|----|----|----|----|
 |**Ortam**|**Azure**||**Azure dışı**|**Azure**||**Azure dışı**||
-||**Sanal makine**|**Sanal makine ölçek kümesi**||**Sanal makine**|**Sanal makine ölçek kümesi**|
-|Sanal makine davranış analizi tehdit algılama uyarıları|✔|✔|✔|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
-|Ağ tabanlı tehdit algılama uyarıları|✔|✔|X|✔|✔|X|Stand|
-|Microsoft Defender ATP tümleştirmesi|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|X|X|X|Stand|
-|Eksik düzeltme ekleri|✔|✔|✔|✔|✔|✔|Boş|
-|Güvenlik Yapılandırması|✔|✔|✔|✔|✔|✔|Boş|
-|Endpoint Protection değerlendirmesi|✔|✔|✔|X|X|X|Boş|
-|Tam zamanında VM erişimi|✔|X|X|✔|X|X|Stand|
-|Uyarlamalı uygulama denetimleri|✔|X|✔|✔|X|✔|Stand|
-|Dosya bütünlüğünü Izleme|✔|✔|✔|✔|✔|✔|Stand|
-|Disk şifrelemesi değerlendirmesi|✔|✔|X|✔|✔|X|Boş|
-|Üçüncü taraf dağıtımı|✔|X|X|✔|X|X|Boş|
-|NSG değerlendirmesi|✔|✔|X|✔|✔|X|Boş|
-|Dosya daha az tehdit algılama|✔|✔|✔|X|X|X|Stand|
-|Ağ eşlemesi|✔|✔|X|✔|✔|X|Stand|
-|Uyarlamalı ağ sağlamlaştırma|✔|X|X|✔|X|X|Stand|
-|Uyarlamalı ağ denetimleri|✔|✔|X|✔|✔|X|Stand|
-|Mevzuat uyumluluk panosu & raporları|✔|✔|✔|✔|✔|✔|Stand|
-|Docker tarafından barındırılan IaaS kapsayıcılarında öneriler ve tehdit algılama|X|X|X|✔|✔|✔|Stand|
+||**Sanal Makine**|**Sanal makine ölçek kümesi**||**Sanal Makine**|**Sanal makine ölçek kümesi**|
+|[Microsoft Defender ATP tümleştirmesi](https://docs.microsoft.com/azure/security-center/security-center-wdatp)|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|X|X|X|Standart|
+|[Sanal makine davranış analizi tehdit algılama uyarıları](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas)|✔|✔|✔|✔ (desteklenen sürümlerde)|✔ (desteklenen sürümlerde)|✔|Öneriler (ücretsiz) tehdit algılama (Standart)|
+|[Dosya daha az tehdit algılama uyarıları](https://docs.microsoft.com/azure/security-center/security-center-alerts-iaas#fileless-attack-detection-)|✔|✔|✔|X|X|X|Standart|
+|[Ağ tabanlı tehdit algılama uyarıları](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer#azure-network-layer)|✔|✔|X|✔|✔|X|Standart|
+|[Tam zamanında VM erişimi](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)|✔|X|X|✔|X|X|Standart|
+|[Dosya bütünlüğünü Izleme](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)|✔|✔|✔|✔|✔|✔|Standart|
+|[Uyarlamalı uygulama denetimleri](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)|✔|X|✔|✔|X|✔|Standart|
+|[Ağ eşlemesi](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations#network-map)|✔|✔|X|✔|✔|X|Standart|
+|[Uyarlamalı ağ sağlamlaştırma](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)|✔|X|X|✔|X|X|Standart|
+|Uyarlamalı ağ denetimleri|✔|✔|X|✔|✔|X|Standart|
+|[Mevzuat uyumluluk panosu & raporları](https://docs.microsoft.com/azure/security-center/security-center-compliance-dashboard)|✔|✔|✔|✔|✔|✔|Standart|
+|Docker tarafından barındırılan IaaS kapsayıcılarında öneriler ve tehdit algılama|X|X|X|✔|✔|✔|Standart|
+|Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|✔|✔|✔|Ücretsiz|
+|Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|✔|✔|✔|Ücretsiz|
+|[Endpoint Protection değerlendirmesi](https://docs.microsoft.com/azure/security-center/security-center-services#supported-endpoint-protection-solutions-)|✔|✔|✔|X|X|X|Ücretsiz|
+|Disk şifrelemesi değerlendirmesi|✔|✔|X|✔|✔|X|Ücretsiz|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|X|X|✔|X|X|Ücretsiz|
+|[Ağ güvenlik değerlendirmesi]()|✔|✔|X|✔|✔|X|Ücretsiz|
 
 ### Desteklenen Endpoint Protection çözümleri<a name="endpoint-supported"></a>
 
 Aşağıdaki tabloda bir matrisi verilmiştir:
 
  - Her çözümü sizin için yüklemek üzere Azure Güvenlik Merkezi 'ni kullanıp kullanmayacağınızı belirtir.
- - Güvenlik Merkezi 'nin hangi Endpoint Protection çözümlerini keşfedebileceği. Bu uç nokta koruma çözümlerinden biri bulunursa, güvenlik merkezi bir tane yüklemeyi önermez.
+ - Güvenlik Merkezi 'nin hangi Endpoint Protection çözümlerini keşfedebileceği. Bu listeden bir uç nokta koruma çözümü bulunursa, güvenlik merkezi bir tane yüklemeyi önermez.
 
 Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bilgi için bkz. [Endpoint Protection değerlendirme ve öneriler](security-center-endpoint-protection.md).
 
-| Endpoint Protection| Platformlar | Güvenlik Merkezi yüklemesi | Güvenlik Merkezi bulma |
+| Endpoint Protection| Platformlar | Güvenlik Merkezi Yüklemesi | Güvenlik Merkezi Bulma |
 |------|------|-----|-----|
-| Windows Defender (Microsoft kötü amaçlı yazılımdan koruma)| Windows Server 2016| Hayır, işletim sistemine yerleşik| Evet |
-| System Center Endpoint Protection (Microsoft kötü amaçlı yazılımdan koruma) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı aracılığıyla | Evet |
-| Trend Micro – tüm sürümler * | Windows Server ailesi  | Hayır | Evet |
-| Symantec v 12.1.1100 +| Windows Server ailesi  | Hayır | Evet |
-| McAfee ile v10 arasındaki + | Windows Server ailesi  | Hayır | Evet |
-| McAfee ile v10 arasındaki + | Linux sunucu ailesi  | Hayır | Evet **\*** |
+| Windows Defender (Microsoft Kötü Amaçlı Yazılım Koruması)| Windows Server 2016| Hayır, işletim sisteminde yerleşik| Yes |
+| System Center Endpoint Protection (Microsoft Kötü Amaçlı Yazılım Koruması) | Windows Server 2012 R2, 2012, 2008 R2 (aşağıdaki nota bakın) | Uzantı ile | Yes |
+| Trend Micro – tüm sürümler * | Windows Server Ailesi  | Hayır | Yes |
+| Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
+| McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
+| McAfee v10+ | Linux sunucu ailesi  | Hayır | Evet **\*** |
 | Sophos v9 +| Linux sunucu ailesi  | Hayır | Evet **\***  |
 
- **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili Log Analytics çalışma alanında kullanılabilir ve Azure Güvenlik Merkezi portalında yansıtılmamaktadır.
+ **\*** Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 
 > [!NOTE]
 >
@@ -95,29 +95,29 @@ Aşağıdaki PaaS kaynakları Azure Güvenlik Merkezi tarafından desteklenir:
 |PostgreSQL|✔| ✔|
 |MySQL|✔| ✔|
 |CosmosDB|X| ✔|
-|Blob depolama|✔| ✔|
+|Blob depolaması|✔| ✔|
 |Depolama hesabı|✔| Yok|
 |App Service|✔| ✔|
 |İşlev|✔| X|
-|Bulut hizmeti|✔| X|
-|Adlı|✔| Yok|
+|Bulut Hizmeti|✔| X|
+|Sanal ağ|✔| Yok|
 |Alt ağ|✔| Yok|
-|'I|✔| Yok|
+|NIC|✔| Yok|
 |NSG|✔| Yok|
-|Aboneliğiniz|✔ * *| ✔|
+|Abonelik|✔ * *| ✔|
 |Batch hesabı|✔| X|
 |Service Fabric hesabı|✔| X|
 |Otomasyon hesabı|✔| X|
 |Yük dengeleyici|✔| X|
-|Ara|✔| X|
+|Arama|✔| X|
 |Service Bus ad alanı|✔| X|
 |Stream Analytics|✔| X|
-|Olay Hub 'ı ad alanı|✔| X|
-|Logic Apps|✔| X|
+|Olay hub’ı ad alanı|✔| X|
+|Mantıksal uygulamalar|✔| X|
 |Redis|✔| Yok|
 |Data Lake Analytics|✔| X|
 |Data Lake Store|✔| X|
-|Anahtar Kasası|✔| X|
+|Key vault|✔| X|
 
 \* Bu özellikler Şu anda genel önizlemede destekleniyor.
 

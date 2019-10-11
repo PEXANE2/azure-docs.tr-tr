@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: 763349c11a7777bfc807a60e1806c3bb4010245e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7e45dffd15cdf2acf15c7d46ed0cf42fc5997a6a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202587"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244568"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde veri Hizmetleri için tehdit algılama
 
@@ -27,16 +27,16 @@ ms.locfileid: "71202587"
 
 ## SQL veritabanı ve SQL veri ambarı<a name="data-sql"></a>
 
-SQL tehdit algılama, veritabanlarına erişmek veya veritabanına yararlanmak için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri tanımlar. Güvenlik Merkezi, SQL denetim günlüklerini analiz eder ve SQL altyapısında yerel olarak çalışır.
+SQL tehdit algılama, veritabanlarına erişmek veya veritabanına yararlanmak için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri tanımlar. 
 
 |Uyarı|Açıklama|
 |---|---|
 |**SQL ekleme güvenlik açığı**|Bir uygulama veritabanında hatalı bir SQL açıklaması oluşturdu. Bu, SQL ekleme saldırılarına karşı olası bir güvenlik açığını gösterebilir. Hatalı bir bildirimin iki olası nedeni vardır. Uygulama kodundaki bir hata, hatalı SQL ifadesini oluşturulmuş olabilir. Ya da, uygulama kodu veya saklı yordamlar, SQL ekleme için yararlanılabilen hatalı SQL ifadesini oluştururken Kullanıcı girişini temizlemeyen.|
 |**Olası SQL ekleme**|SQL ekleme ile güvenlik açığı bulunan tanımlı bir uygulamaya karşı etkin bir yararlanma gerçekleşti. Bu, bir saldırganın savunmasız uygulama kodunu veya saklı yordamları kullanarak kötü amaçlı SQL deyimleri eklemeye çalıştığı anlamına gelir.|
-|**Olağan dışı konumdan erişim**|SQL Server erişim modelinde, birinin sunucuda olağan dışı bir coğrafi konumdan oturum açmış olduğu bir değişiklik vardı. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem (eski bir çalışan veya dış saldırgan) algılar.|
-|**Bilmediğiniz sorumludan erişim**|SQL Server erişim deseninin bir değişikliği vardı. Bir kişi, olağan dışı bir sorumlu (Kullanıcı) kullanarak sunucuda oturum açtı. Bazı durumlarda uyarı güvenli işlemleri (yeni bir uygulama veya geliştirici bakımı gibi) de algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem (eski bir çalışan veya dış saldırgan) algılar.|
-|**Zararlı olabilecek bir uygulamadan erişim**|Veritabanına erişmek için zararlı olabilecek bir uygulama kullanıldı. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, uyarı ortak araçları kullanan bir saldırı algılar.|
-|**Deneme yanılma SQL kimlik bilgilerini zorlama**|Farklı kimlik bilgileri ile anormal yüksek sayıda başarısız oturum açma işlemi oluştu. Bazı durumlarda, uyarı güvenlik testlerini algılar. Diğer durumlarda, uyarı bir deneme yanılma saldırısı algılar.|
+|**Olağan dışı konumdan erişim**|SQL Server erişim modelinde, birinin sunucuda olağan dışı bir coğrafi konumdan oturum açmış olduğu bir değişiklik vardı. Bazı durumlarda, uyarı meşru bir eylem (yeni bir uygulama veya geliştirici Bakımı) algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem (eski bir çalışan veya dış saldırgan) algılar.|
+|**Bilmediğiniz sorumludan erişim**|SQL Server erişim deseninin bir değişikliği vardı. Bir kişi, olağan dışı bir sorumlu (Kullanıcı) kullanarak sunucuda oturum açtı. Bazı durumlarda, uyarı meşru bir eylem (yeni bir uygulama veya geliştirici Bakımı) algılar. Diğer durumlarda, uyarı kötü amaçlı bir eylem (eski bir çalışan veya dış saldırgan) algılar.|
+|**Zararlı olabilecek bir uygulamadan erişim**|Veritabanına erişmek için zararlı olabilecek bir uygulama kullanıldı. Bazı durumlarda, uyarı, zaman içinde sızma testini algılar. Diğer durumlarda, uyarı ortak araçları kullanan bir saldırı algılar.|
+|**Deneme yanılma SQL kimlik bilgilerini zorlama**|Farklı kimlik bilgileri ile anormal yüksek sayıda başarısız oturum açma işlemi oluştu. Bazı durumlarda, uyarı, zaman içinde sızma testini algılar. Diğer durumlarda, uyarı bir deneme yanılma saldırısı algılar.|
 
 SQL tehdit algılama uyarıları hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı tehdit algılama](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview). Özellikle, tehdit algılama uyarıları bölümünü gözden geçirin. Ayrıca, Azure Güvenlik Merkezi 'nin bir saldırıyı saptamak için kötü amaçlı SQL etkinliği algılama özelliğinin nasıl kullanıldığını gösteren bir örnek görüntülemek için bir [siber saldırıya nasıl yardımcı olduğunu](https://azure.microsoft.com/blog/how-azure-security-center-helps-reveal-a-cyberattack/) görün.
 

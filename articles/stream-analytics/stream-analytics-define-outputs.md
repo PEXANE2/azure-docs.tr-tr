@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d867cceb3e7261f658e2406617144c9150e36f2a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 20da8abff943e71deb5d5ec8b7bd6411c176e2e3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173431"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244544"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkışlarını anlayın
 
@@ -34,18 +34,18 @@ Stream Analytics çıkış Azure Data Lake Storage Şu anda Azure Çin 21Vianet 
 
 Aşağıdaki tabloda Data Lake Storage Gen 1 çıktı yapılandırmak için özellik adları ve açıklamaları listelenmektedir.   
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıkış diğer adı | Sorgu çıkışını Data Lake Store yönlendirmek için sorgularda kullanılan kolay bir ad. |
-| Abonelik | Azure Data Lake Storage hesabınızı içeren abonelik. |
+| Aboneliğiniz | Azure Data Lake Storage hesabınızı içeren abonelik. |
 | Hesap adı | Çıktımız Data Lake Store hesabının adı. Aboneliğinizde kullanılabilir Data Lake Store hesapların bir açılır listesi sunulur. |
 | Yol ön eki stili | Belirtilen Data Lake Store hesabı içinde dosyalarınızı yazmak için kullanılan dosya yolu. {Date} ve {Time} değişkenlerinin bir veya daha fazla örneğini belirtebilirsiniz:<br /><ul><li>Örnek 1: Klasör1/logs/{Date}/{Time}</li><li>Örnek 2: Klasör1/logs/{Date}</li></ul><br />Oluşturulan klasör yapısının zaman damgası UTC ve yerel saate göre değil.<br /><br />Dosya yolu deseninin sonunda eğik çizgi (/) yoksa, dosya yolundaki son model bir dosya adı öneki olarak değerlendirilir. <br /><br />Yeni dosyalar şu koşullarda oluşturulur:<ul><li>Çıkış şemasında değişiklik</li><li>Bir işin dış veya iç yeniden başlatılması</li></ul> |
 | Tarih biçimi | İsteğe bağlı. Ön ek yolunda Tarih belirteci kullanılıyorsa, dosyalarınızın düzenlendiği tarih biçimini seçebilirsiniz. Örnek: YYYY/AA/GG |
 |Saat biçimi | İsteğe bağlı. Ön ek yolunda zaman belirteci kullanılıyorsa, dosyalarınızın düzenlendiği saat biçimini belirtin. Şu anda desteklenen tek değer HH 'dir. |
 | Olay serileştirme biçimi | Çıkış verileri için serileştirme biçimi. JSON, CSV ve avro desteklenir.|
 | Şifreleme | CSV veya JSON biçimi kullanıyorsanız, bir kodlama belirtilmesi gerekir. Şu anda desteklenen tek kodlama biçimi UTF-8 ' i destekler.|
-| Ayırıcı | Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV verilerini seri hale getirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır.|
-| Biçim | Yalnızca JSON serileştirme için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir. Bu dizi yalnızca iş durdurulduğunda veya Stream Analytics bir sonraki zaman penceresine taşındığında kapatılır. Genel olarak, çıkış dosyası hala üzerine yazılırken özel bir işleme gerektirmediğinden, hat ayrımı olan JSON kullanılması tercih edilir.|
+| Sınırlayıcı | Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV verilerini seri hale getirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır.|
+| Biçimi | Yalnızca JSON serileştirme için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir. Bu dizi yalnızca iş durdurulduğunda veya Stream Analytics bir sonraki zaman penceresine taşındığında kapatılır. Genel olarak, çıkış dosyası hala üzerine yazılırken özel bir işleme gerektirmediğinden, hat ayrımı olan JSON kullanılması tercih edilir.|
 | Kimlik doğrulama modu | [Yönetilen kimlik](stream-analytics-managed-identities-adls.md) veya kullanıcı belirtecini kullanarak Data Lake Storage hesabınıza erişim yetkisi verebilirsiniz. Erişim izni verdiğinizde, Kullanıcı hesabı parolasını değiştirerek, bu iş için Data Lake Storage çıkışını silerek veya Stream Analytics işini silerek erişimi iptal edebilirsiniz. |
 
 ## <a name="sql-database"></a>SQL veritabanı
@@ -56,13 +56,13 @@ Aşağıdaki tabloda Data Lake Storage Gen 1 çıktı yapılandırmak için öze
 
 Aşağıdaki tabloda, bir SQL veritabanı çıkışı oluşturmak için özellik adları ve bunların açıklamaları listelenmektedir.
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıkış diğer adı |Sorgu çıkışını bu veritabanına yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Veritabanı | Çıktlarınızı gönderdiğiniz veritabanının adı. |
 | Sunucu adı | SQL veritabanı sunucu adı. Azure SQL veritabanı yönetilen örneği için 3342 numaralı bağlantı noktasını belirtmeniz gerekir. Örneğin, *sampleserver. public. Database. Windows. net, 3342* |
 | Kullanıcı adı | Veritabanına yazma erişimi olan Kullanıcı adı. Stream Analytics yalnızca SQL kimlik doğrulamasını destekler. |
-| Parola | Veritabanına bağlanmak için parola. |
+| istemcisiyle yönetilen bir cihaz için) | Veritabanına bağlanmak için parola. |
 | Tablo | Çıktının yazıldığı tablo adı. Tablo adı büyük/küçük harfe duyarlıdır. Bu tablonun şeması, alan sayısı ve iş çıktılarınızın oluşturduğu türleri ile tam olarak eşleşmelidir. |
 |Bölüm düzenini devralma| Tabloya birden çok yazıcı ile tam paralel topolojiyi etkinleştirmek için önceki sorgu adımlarınızın bölümleme şemasını devralma seçeneği. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktısı](stream-analytics-sql-output-perf.md).|
 |En fazla toplu iş sayısı| Her toplu ekleme hareketiyle gönderilen kayıt sayısı için önerilen üst sınır.|
@@ -75,7 +75,7 @@ Azure Blob depolama, büyük miktarlarda yapılandırılmamış verileri bulutta
 
 Aşağıdaki tabloda, bir blob çıkışı oluşturmaya yönelik özellik adları ve açıklamaları listelenmektedir.
 
-| Özellik adı       | Description                                                                      |
+| Özellik adı       | Açıklama                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | Çıkış diğer adı        | Sorgu çıkışını bu blob depolamaya yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Depolama hesabı     | Çıktlarınızı gönderdiğiniz depolama hesabının adı.               |
@@ -88,8 +88,8 @@ Aşağıdaki tabloda, bir blob çıkışı oluşturmaya yönelik özellik adlar�
 |En az satır (yalnızca Parquet)|Toplu iş başına en az satır sayısı. Parquet için her Batch yeni bir dosya oluşturur. Geçerli varsayılan değer 2.000 satırdır ve izin verilen en fazla 10.000 satır olur.|
 |En uzun süre (yalnızca Parquet)|Toplu iş başına en fazla bekleme süresi. Bu süreden sonra, en düşük satır gereksinimi karşılanmasa bile toplu iş çıktıya yazılır. Geçerli varsayılan değer 1 dakikadır ve izin verilen en fazla 2 saattir. Blob çıktınızdan yol deseninin sıklığı varsa, bekleme süresi bölüm saat aralığından daha yüksek olamaz.|
 | Şifreleme    | CSV veya JSON biçimi kullanıyorsanız, bir kodlama belirtilmesi gerekir. Şu anda desteklenen tek kodlama biçimi UTF-8 ' i destekler. |
-| Ayırıcı   | Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV verilerini seri hale getirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır. |
-| Biçim      | Yalnızca JSON serileştirme için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir. Bu dizi yalnızca iş durdurulduğunda veya Stream Analytics bir sonraki zaman penceresine taşındığında kapatılır. Genel olarak, çıkış dosyası hala üzerine yazılırken özel bir işleme gerektirmediğinden, hat ayrımı olan JSON kullanılması tercih edilir. |
+| Sınırlayıcı   | Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV verilerini seri hale getirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır. |
+| Biçimi      | Yalnızca JSON serileştirme için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir. Bu dizi yalnızca iş durdurulduğunda veya Stream Analytics bir sonraki zaman penceresine taşındığında kapatılır. Genel olarak, çıkış dosyası hala üzerine yazılırken özel bir işleme gerektirmediğinden, hat ayrımı olan JSON kullanılması tercih edilir. |
 
 Blob depolamayı çıkış olarak kullanırken, blob 'da aşağıdaki durumlarda yeni bir dosya oluşturulur:
 
@@ -104,11 +104,11 @@ Blob depolamayı çıkış olarak kullanırken, blob 'da aşağıdaki durumlarda
 
 ## <a name="event-hubs"></a>Event Hubs
 
-[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) hizmeti, yüksek düzeyde ölçeklenebilir bir yayınla-abone ol olay alma olayıdır. Saniyede milyonlarca olay toplayabilirler. Bir olay hub 'ının çıkış olarak bir kullanımı, bir Stream Analytics işinin çıktısının başka bir akış işinin girişi haline geldiği zaman olur.
+[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) hizmeti, yüksek düzeyde ölçeklenebilir bir yayınla-abone ol olay alma olayıdır. Saniyede milyonlarca olay toplayabilirler. Bir olay hub 'ının çıkış olarak bir kullanımı, bir Stream Analytics işinin çıktısının başka bir akış işinin girişi haline geldiği zaman olur. En büyük ileti boyutu ve toplu işlem boyutu iyileştirmesi hakkında daha fazla bilgi için bkz. [çıktı toplu iş boyutu](#output-batch-size) bölümü.
 
 Olay Hub 'larından çıkış olarak veri akışlarını yapılandırmak için birkaç parametreye ihtiyacınız vardır.
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıkış diğer adı | Sorgu çıkışını bu olay hub 'ına yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Olay Hub 'ı ad alanı | Bir mesajlaşma varlıkları kümesi için kapsayıcı. Yeni bir olay hub 'ı oluşturduğunuzda bir olay hub 'ı ad alanı da oluşturmuş olursunuz. |
@@ -118,8 +118,8 @@ Olay Hub 'larından çıkış olarak veri akışlarını yapılandırmak için b
 | Bölüm anahtarı sütunu | İsteğe bağlı. Olay Hub 'ı çıkışı için bölüm anahtarını içeren bir sütun. |
 | Olay serileştirme biçimi | Çıkış verileri için serileştirme biçimi. JSON, CSV ve avro desteklenir. |
 | Şifreleme | CSV ve JSON için, UTF-8 şu anda desteklenen tek kodlama biçimidir. |
-| Ayırıcı | Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV biçimindeki verileri serileştirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır. |
-| Biçim | Yalnızca JSON serileştirme için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir. Bu dizi yalnızca iş durdurulduğunda veya Stream Analytics bir sonraki zaman penceresine taşındığında kapatılır. Genel olarak, çıkış dosyası hala üzerine yazılırken özel bir işleme gerektirmediğinden, hat ayrımı olan JSON kullanılması tercih edilir. Daha fazla bilgi için, [Çıkış toplu iş boyutu](#output-batch-size) bölümüne bakın. |
+| Sınırlayıcı | Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV biçimindeki verileri serileştirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır. |
+| Biçimi | Yalnızca JSON serileştirme için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir.  |
 | Özellik sütunları | İsteğe bağlı. Yük yerine giden iletinin Kullanıcı özellikleri olarak eklenmesi gereken virgülle ayrılmış sütunlar. Bu özellik hakkında daha fazla bilgi, [Çıkış Için özel meta veri özellikleri](#custom-metadata-properties-for-output)bölümünde bulunur. |
 
 ## <a name="power-bi"></a>Power BI
@@ -130,7 +130,7 @@ Stream Analytics çıkış Power BI Şu anda Azure Çin 21Vianet ve Azure Almany
 
 Aşağıdaki tablo Power BI çıktlarınızı yapılandırmak için özellik adlarını ve açıklamalarını listelemektedir.
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıkış diğer adı |Sorgu çıkışını bu Power BI çıktısına yönlendirmek için sorgularda kullanılan kolay bir ad sağlayın. |
 | Grup çalışma alanı |Diğer Power BI kullanıcılarla veri paylaşmayı etkinleştirmek için Power BI hesabınızda grupları seçebilir veya bir gruba yazmak istemiyorsanız **çalışma alanım** ' ı seçebilirsiniz. Mevcut bir grubun güncelleştirilmesi için Power BI kimlik doğrulamasının yenilenmesi gerekir. |
@@ -156,10 +156,10 @@ Bu tablo, bir Power BI veri kümesi ve tablo yoksa [Stream Analytics veri türle
 
 Stream Analytics 'den | Power BI için
 -----|-----
-BigInt | Tutulamaz
+bigint | Int64
 nvarchar (max) | Dize
-Hem | Hem
-Float | Çift
+datetime | Tarih saat
+float | Çift
 Kayıt dizisi | Dize türü, sabit değer "IRecord" veya "IArray"
 
 ### <a name="update-the-schema"></a>Şemayı güncelleştirme
@@ -168,12 +168,12 @@ Stream Analytics, veri modeli şemasını çıkışdaki ilk olay kümesine göre
 Satırlarda dinamik şema güncelleştirmesini önlemek için `SELECT *` sorgusundan kaçının. Olası performans etkilerine ek olarak, sonuçlar için geçen sürenin açıklanmasına neden olabilir. Power BI panosunda gösterilmesi gereken tam alanları seçin. Ayrıca, veri değerleri seçili veri türüyle uyumlu olmalıdır.
 
 
-Önceki/geçerli | Tutulamaz | Dize | Hem | Çift
+Önceki/geçerli | Int64 | Dize | Tarih saat | Çift
 -----------------|-------|--------|----------|-------
-Tutulamaz | Tutulamaz | Dize | Dize | Çift
+Int64 | Int64 | Dize | Dize | Çift
 Çift | Çift | Dize | Dize | Çift
 Dize | Dize | Dize | Dize | Dize 
-Hem | Dize | Dize |  Hem | Dize
+Tarih saat | Dize | Dize |  Tarih saat | Dize
 
 ## <a name="table-storage"></a>Tablo depolama
 
@@ -181,7 +181,7 @@ Hem | Dize | Dize |  Hem | Dize
 
 Aşağıdaki tabloda, tablo çıktısı oluşturmaya yönelik özellik adları ve açıklamaları listelenmektedir.
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıkış diğer adı |Sorgu çıkışını bu tablo depolamasına yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Depolama hesabı |Çıktlarınızı gönderdiğiniz depolama hesabının adı. |
@@ -197,7 +197,7 @@ Aşağıdaki tabloda, tablo çıktısı oluşturmaya yönelik özellik adları v
 
 Aşağıdaki tabloda, bir kuyruk çıkışı oluşturmaya yönelik özellik adları ve açıklamaları listelenmektedir.
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıkış diğer adı |Sorgu çıkışını bu Service Bus kuyruğuna yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Service Bus ad alanı |Bir mesajlaşma varlıkları kümesi için kapsayıcı. |
@@ -206,8 +206,8 @@ Aşağıdaki tabloda, bir kuyruk çıkışı oluşturmaya yönelik özellik adla
 | Kuyruk İlkesi anahtarı |Service Bus ad alanına erişimin kimliğini doğrulamak için kullanılan paylaşılan erişim anahtarı. |
 | Olay serileştirme biçimi |Çıkış verileri için serileştirme biçimi. JSON, CSV ve avro desteklenir. |
 | Şifreleme |CSV ve JSON için, UTF-8 şu anda desteklenen tek kodlama biçimidir. |
-| Ayırıcı |Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV biçimindeki verileri serileştirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır. |
-| Biçim |Yalnızca JSON türü için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir. |
+| Sınırlayıcı |Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV biçimindeki verileri serileştirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır. |
+| Biçimi |Yalnızca JSON türü için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir. |
 | Özellik sütunları | İsteğe bağlı. Yük yerine giden iletinin Kullanıcı özellikleri olarak eklenmesi gereken virgülle ayrılmış sütunlar. Bu özellik hakkında daha fazla bilgi, [Çıkış Için özel meta veri özellikleri](#custom-metadata-properties-for-output)bölümünde bulunur. |
 | Sistem özelliği sütunları | İsteğe bağlı. Sistem özelliklerinin anahtar değer çiftleri ve yük yerine giden iletiye eklenmesi gereken karşılık gelen sütun adları. Bu özellik hakkında daha fazla bilgi, [Service Bus kuyruğu ve konu çıkışları Için sistem özellikleri](#system-properties-for-service-bus-queue-and-topic-outputs) bölümünde yer almaktadır  |
 
@@ -218,7 +218,7 @@ Service Bus kuyruklar, gönderenden alıcıya bire bir iletişim yöntemi sağla
 
 Aşağıdaki tabloda, Service Bus konu çıkışı oluşturmaya yönelik özellik adları ve açıklamaları listelenmektedir.
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıkış diğer adı |Sorgu çıkışını bu Service Bus konusuna yönlendirmek için sorgularda kullanılan kolay bir ad. |
 | Service Bus ad alanı |Bir mesajlaşma varlıkları kümesi için kapsayıcı. Yeni bir olay hub 'ı oluşturduğunuzda bir Service Bus ad alanı da oluşturmuş olursunuz. |
@@ -227,7 +227,7 @@ Aşağıdaki tabloda, Service Bus konu çıkışı oluşturmaya yönelik özelli
 | Konu İlkesi anahtarı |Service Bus ad alanına erişimin kimliğini doğrulamak için kullanılan paylaşılan erişim anahtarı. |
 | Olay serileştirme biçimi |Çıkış verileri için serileştirme biçimi. JSON, CSV ve avro desteklenir. |
 | Şifreleme |CSV veya JSON biçimi kullanıyorsanız, bir kodlama belirtilmesi gerekir. Şu anda desteklenen tek kodlama biçimi UTF-8 ' i destekler. |
-| Ayırıcı |Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV biçimindeki verileri serileştirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır. |
+| Sınırlayıcı |Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV biçimindeki verileri serileştirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır. |
 | Özellik sütunları | İsteğe bağlı. Yük yerine giden iletinin Kullanıcı özellikleri olarak eklenmesi gereken virgülle ayrılmış sütunlar. Bu özellik hakkında daha fazla bilgi, [Çıkış Için özel meta veri özellikleri](#custom-metadata-properties-for-output)bölümünde bulunur. |
 | Sistem özelliği sütunları | İsteğe bağlı. Sistem özelliklerinin anahtar değer çiftleri ve yük yerine giden iletiye eklenmesi gereken karşılık gelen sütun adları. Bu özellik hakkında daha fazla bilgi, [Service Bus kuyruğu ve konu çıkışları Için sistem özellikleri](#system-properties-for-service-bus-queue-and-topic-outputs) bölümünde yer almaktadır |
 
@@ -244,31 +244,31 @@ Stream Analytics çıkış Azure Cosmos DB Şu anda Azure Çin 21Vianet ve Azure
 
 Aşağıdaki tabloda Azure Cosmos DB çıktısı oluşturma özellikleri açıklanmaktadır.
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | Çıkış diğer adı | Stream Analytics sorgunuzda bu çıktıyı ifade eden bir diğer ad. |
 | Ev | Azure Cosmos DB. |
 | İçeri aktarma seçeneği | **Aboneliğinizden Cosmos DB seçin** ya da **Cosmos DB ayarları el ile sağlayın**.
-| Hesap kimliği | Azure Cosmos DB hesabının adı veya uç nokta URI 'SI. |
+| Hesap KIMLIĞI | Azure Cosmos DB hesabının adı veya uç nokta URI 'SI. |
 | Hesap anahtarı | Azure Cosmos DB hesabının paylaşılan erişim anahtarı. |
 | Veritabanı | Azure Cosmos DB veritabanı adı. |
 | Kapsayıcı adı | Cosmos DB olması gereken, kullanılacak kapsayıcı adı. Örnek:  <br /><ul><li> _MyContainer_: "myContainer" adlı bir kapsayıcı var olmalıdır.</li>|
 | Belge KIMLIĞI |İsteğe bağlı. Ekleme veya güncelleştirme işlemlerinin dayandığı birincil anahtarı belirtmek için kullanılan çıkış olaylarında alanın adı.
 
-## <a name="azure-functions"></a>Azure Işlevleri
+## <a name="azure-functions"></a>Azure İşlevleri
 Azure Işlevleri, altyapıyı açıkça sağlamak veya yönetmek zorunda kalmadan kodu isteğe bağlı olarak çalıştırmak için kullanabileceğiniz sunucusuz bir işlem hizmetidir. Azure veya iş ortağı hizmetlerinde gerçekleşen olaylar tarafından tetiklenen kodu uygulamanıza olanak tanır. Azure Işlevlerinin tetikleyicilere yanıt vermesi bu özelliği Azure Stream Analytics için doğal bir çıkış yapar. Bu çıkış bağdaştırıcısı, kullanıcıların Azure Işlevlerine Stream Analytics bağlanmasına ve çeşitli olaylara yanıt olarak bir betiği ya da kod parçasını çalıştırmasına olanak sağlar.
 
 Azure Işlevleri Stream Analytics çıkışı, Azure Çin 21Vianet ve Azure Almanya (T-Systems Uluslararası) bölgelerinde Şu anda kullanılamıyor.
 
 Azure Stream Analytics HTTP Tetikleyicileri aracılığıyla Azure Işlevlerini çağırır. Azure Işlevleri çıkış bağdaştırıcısı, aşağıdaki yapılandırılabilir özelliklerle kullanılabilir:
 
-| Özellik adı | Description |
+| Özellik adı | Açıklama |
 | --- | --- |
 | İşlev uygulaması |Azure Işlevleri uygulamanızın adı. |
-| Çalışmayacaktır |Azure Işlevleri uygulamanızdaki işlevin adı. |
+| İşlev |Azure Işlevleri uygulamanızdaki işlevin adı. |
 | Anahtar |Başka bir abonelikteki bir Azure Işlevi kullanmak istiyorsanız, işlevinizin erişimine yönelik anahtarı sağlayarak bunu yapabilirsiniz. |
 | En fazla toplu iş boyutu |Azure işlevinizde gönderilen her çıkış toplu işi için en büyük boyutu ayarlamanızı sağlayan bir özellik. Giriş birimi bayt cinsinden. Varsayılan olarak, bu değer 262.144 bayttır (256 KB). |
-| En fazla toplu iş sayısı  |Azure Işlevlerine gönderilen her bir yığında en fazla olay sayısını belirtmenize olanak tanıyan bir özellik. Varsayılan değer 100 ' dir. |
+| En fazla toplu iş sayısı  |Azure Işlevlerine gönderilen her bir yığında en fazla olay sayısını belirtmenize olanak tanıyan bir özellik. Varsayılan değer 100’dür. |
 
 Azure Stream Analytics bir Azure işlevinden 413 ("http Istek varlığı çok büyük") özel durumu aldığında, Azure Işlevlerine gönderdiği toplu işlerin boyutunu azaltır. Azure işlev kodunuzda Azure Stream Analytics büyük bir toplu iş göndermediğinden emin olmak için bu özel durumu kullanın. Ayrıca, işlevde kullanılan en büyük toplu iş sayısı ve boyut değerlerinin Stream Analytics portalına girilen değerlerle tutarlı olduğundan emin olun.
 
@@ -315,7 +315,7 @@ Bu özelliğin nasıl kullanılacağını gösterir –
 
 Bu, Service Bus kuyruğu iletilerinde `column1` ' in değerlerini ve PartitionKey `column2` ' nin değerleriyle ayarlandığı `MessageId` ' yı ayarlar.
 
-## <a name="partitioning"></a>Leme
+## <a name="partitioning"></a>Bölümlendirme
 
 Aşağıdaki tabloda, her bir çıkış türü için bölüm desteği ve çıkış yazıcısı sayısı özetlenmektedir:
 
@@ -330,7 +330,7 @@ Aşağıdaki tabloda, her bir çıkış türü için bölüm desteği ve çıkı
 | Azure Service Bus konusu | Evet | Otomatik olarak seçildi. Bölüm sayısı [SERVICE Bus SKU 'sunu ve boyutunu](../service-bus-messaging/service-bus-partitioning.md)temel alır. Bölüm anahtarı, her bölüm için benzersiz bir tamsayı değeridir.| Çıktı konusundaki bölüm sayısıyla aynı.  |
 | Azure Service Bus kuyruğu | Evet | Otomatik olarak seçildi. Bölüm sayısı [SERVICE Bus SKU 'sunu ve boyutunu](../service-bus-messaging/service-bus-partitioning.md)temel alır. Bölüm anahtarı, her bölüm için benzersiz bir tamsayı değeridir.| Çıktı sırasındaki bölüm sayısıyla aynı. |
 | Azure Cosmos DB | Evet | Sorgudaki bölüm BY yan tümcesine göre. | [Tam paralelleştirilmiş sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. |
-| Azure Işlevleri | Evet | Sorgudaki bölüm BY yan tümcesine göre. | [Tam paralelleştirilmiş sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. |
+| Azure İşlevleri | Evet | Sorgudaki bölüm BY yan tümcesine göre. | [Tam paralelleştirilmiş sorgular](stream-analytics-scale-jobs.md)için giriş bölümlemesini izler. |
 
 Çıktı yazıcılarının sayısı, sorgunuzda `INTO <partition count>` [(bkz.](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)) yan tümcesi kullanılarak denetlenebilir ve bu da istenen iş topolojisini elde etmek için yararlı olabilir. Çıkış bağdaştırıcınız bölümlendirilmemişse, bir giriş bölümünde verilerin bulunmaması, geç varış süresinin sonuna kadar gecikmeye neden olur. Bu gibi durumlarda, çıkış tek bir yazıcı ile birleştirilir ve bu da işlem hattınızda performans sorunlarına neden olabilir. Geç alma ilkesi hakkında daha fazla bilgi için bkz. [Azure Stream Analytics olay sırası konuları](stream-analytics-out-of-order-and-late-events.md).
 
@@ -350,7 +350,7 @@ Aşağıdaki tabloda çıktı toplu işleme ilgili bazı hususlar açıklanmakta
 | Azure Service Bus kuyruğu   | Standart katman için ileti başına 256 KB, Premium katman için 1MB.<br /> [Service Bus sınırlara](../service-bus-messaging/service-bus-quotas.md)bakın. | İleti başına tek bir olay kullanın. |
 | Azure Service Bus konusu | Standart katman için ileti başına 256 KB, Premium katman için 1MB.<br /> [Service Bus sınırlara](../service-bus-messaging/service-bus-quotas.md)bakın. | İleti başına tek bir olay kullanın. |
 | Azure Cosmos DB   | [Azure Cosmos DB sınırlara](../azure-subscription-service-limits.md#azure-cosmos-db-limits)bakın. | Toplu iş boyutu ve yazma sıklığı Azure Cosmos DB yanıtlara göre dinamik olarak ayarlanır. <br /> Stream Analytics için önceden tanımlanmış bir sınırlama yoktur. |
-| Azure Işlevleri   | | Varsayılan yığın boyutu 262.144 bayttır (256 KB). <br /> Batch başına varsayılan olay sayısı 100 ' dir. <br /> Toplu iş boyutu yapılandırılabilir ve Stream Analytics [çıktı seçeneklerinde](#azure-functions)artırılabilir veya azaltılabilir.
+| Azure İşlevleri   | | Varsayılan yığın boyutu 262.144 bayttır (256 KB). <br /> Batch başına varsayılan olay sayısı 100 ' dir. <br /> Toplu iş boyutu yapılandırılabilir ve Stream Analytics [çıktı seçeneklerinde](#azure-functions)artırılabilir veya azaltılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dafc78e49cb0118181bae4522d4cb456509ea2cb
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673418"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241165"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -43,7 +43,7 @@ Aşağıda, metin kutusunu kullanarak oluşturmanızı önerdiğimiz gelişmiş 
 - Beşten fazla ifadeye sahip kural
 - Doğrudan raporlar kuralı
 - [İşleç önceliğini](groups-dynamic-membership.md#operator-precedence) ayarlama
-- [Karmaşık Ifadelerle kurallar](groups-dynamic-membership.md#rules-with-complex-expressions); Örneğin`(user.proxyAddresses -any (_ -contains "contoso"))`
+- [Karmaşık Ifadelerle kurallar](groups-dynamic-membership.md#rules-with-complex-expressions); Örneğin `(user.proxyAddresses -any (_ -contains "contoso"))`
 
 > [!NOTE]
 > Kural Oluşturucu, metin kutusunda oluşturulan bazı kuralları görüntüleyemeyebilir. Kural Oluşturucu kuralı görüntüleyebilmediğinden bir ileti görebilirsiniz. Kural Oluşturucu, desteklenen sözdizimini, doğrulamayı veya dinamik grup kurallarının işlenmesini herhangi bir şekilde değiştirmez.
@@ -69,8 +69,8 @@ Parantezler tek bir ifade için isteğe bağlıdır. Üyelik kuralınız gövdes
 Bir grubu Kullanıcı veya cihazlarla otomatik olarak dolduran bir üyelik kuralı, doğru veya yanlış bir sonuç elde eden bir ikili ifadedir. Basit bir kuralın üç bölümü şunlardır:
 
 - Özellik
-- Operator
-- Value
+- İşleç
+- Değer
 
 İfade içindeki parçaların sırası, söz dizimi hatalarından kaçınmak için önemlidir.
 
@@ -86,48 +86,48 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 
 ### <a name="properties-of-type-boolean"></a>Boole türü özellikleri
 
-| properties | İzin verilen değerler | Kullanım |
+| Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
-| accountEnabled |doğru yanlış |User. accountEnabled-EQ doğru |
+| AccountEnabled |doğru yanlış |User. accountEnabled-EQ doğru |
 | dirSyncEnabled |doğru yanlış |User. dirSyncEnabled-EQ doğru |
 
 ### <a name="properties-of-type-string"></a>Dize türü özellikleri
 
-| properties | İzin verilen değerler | Kullanım |
+| Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
-| city |Herhangi bir dize değeri veya *null* |(User. City-EQ "değer") |
+| Baş |Herhangi bir dize değeri veya *null* |(User. City-EQ "değer") |
 | Ülke |Herhangi bir dize değeri veya *null* |(User. Country-EQ "değer") |
 | Tadı | Herhangi bir dize değeri veya *null* | (User. companyName-EQ "değer") |
-| Bölüm |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
-| displayName |Herhangi bir dize değeri |(User. displayName-EQ "değer") |
+| Bölüme |Herhangi bir dize değeri veya *null* |(User. Department-EQ "değer") |
+| DisplayName |Herhangi bir dize değeri |(User. displayName-EQ "değer") |
 | Çalışan |Herhangi bir dize değeri |(User. EmployeeID-EQ "Value")<br>(User. EmployeeID-ne *null*) |
-| facsimileTelephoneNumber |Herhangi bir dize değeri veya *null* |(User. facsimileTelephoneNumber-EQ "değer") |
-| givenName |Herhangi bir dize değeri veya *null* |(User.,-EQ "Value") |
-| İş Unvanı |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
+| facsimileTelephoneNumber 'dir |Herhangi bir dize değeri veya *null* |(User. facsimileTelephoneNumber-EQ "değer") |
+| GivenName |Herhangi bir dize değeri veya *null* |(User.,-EQ "Value") |
+| JobTitle |Herhangi bir dize değeri veya *null* |(User. jobTitle-EQ "değer") |
 | posta |Herhangi bir dize değeri veya *null* (kullanıcının SMTP adresi) |(User. Mail-EQ "değer") |
 | mailNickName |Herhangi bir dize değeri (kullanıcının posta diğer adı) |(User. Mailtakma ad-EQ "değer") |
-| Mobil |Herhangi bir dize değeri veya *null* |(User. Mobile-EQ "değer") |
-| objectId |Kullanıcı nesnesinin GUID 'SI |(User. ObjectID-EQ "11111111-1111-1111-1111-111111111111") |
+| Mo |Herhangi bir dize değeri veya *null* |(User. Mobile-EQ "değer") |
+| Uzantının |Kullanıcı nesnesinin GUID 'SI |(User. ObjectID-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Şirket içinden buluta eşitlenen kullanıcılar için şirket içi güvenlik tanımlayıcısı (SID). |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword Disablepasswordexpiasyon Disablepasswordexpima, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Herhangi bir dize değeri veya *null* |(User. Physicaldeliveryofficeename-EQ "Value") |
-| posta kodu |Herhangi bir dize değeri veya *null* |(User. PostaKodu-EQ "değer") |
+| PostalCode |Herhangi bir dize değeri veya *null* |(User. PostaKodu-EQ "değer") |
 | preferredLanguage |ISO 639-1 kodu |(User. preferredLanguage-EQ "en-US") |
 | sipProxyAddress |Herhangi bir dize değeri veya *null* |(User. sipProxyAddress-EQ "değer") |
-| state |Herhangi bir dize değeri veya *null* |(User. State-EQ "değer") |
+| durum |Herhangi bir dize değeri veya *null* |(User. State-EQ "değer") |
 | streetAddress |Herhangi bir dize değeri veya *null* |(User. streetAddress-EQ "değer") |
 | Soyadı |Herhangi bir dize değeri veya *null* |(User. soyad-EQ "Value") |
-| telephoneNumber 'dır |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
+| TelephoneNumber 'dır |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
 | usageLocation |İki kodlu ülke kodu |(User. usageLocation-EQ "US") |
 | userPrincipalName |Herhangi bir dize değeri |(User. userPrincipalName-EQ "alias@domain") |
 | userType |üye Konuk *null* |(User. userType-EQ "üye") |
 
 ### <a name="properties-of-type-string-collection"></a>Dize koleksiyonu türü özellikleri
 
-| properties | İzin verilen değerler | Kullanım |
+| Özellikler | İzin verilen değerler | Kullanım |
 | --- | --- | --- |
 | Diğer postalar |Herhangi bir dize değeri |(User. Otherpostalarını-"alias@domain" içerir) |
-| proxyAddresses |SMTP: alias@domain SMTP:alias@domain |(User. proxyAddresses-"SMTP: alias@domain" içerir) |
+| proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-Contains "SMTP: alias@domain") |
 
 Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurallar](#rules-for-devices).
 
@@ -135,17 +135,17 @@ Cihaz kuralları için kullanılan özellikler için bkz. [Cihazlar Için kurall
 
 Aşağıdaki tabloda, tek bir ifade için desteklenen tüm işleçler ve bunların sözdizimi listelenmektedir. İşleçler, kısa çizgi (-) öneki ile veya bu önek olmadan kullanılabilir.
 
-| Operator | Sözdizimi |
+| İşleç | Sözdizimi |
 | --- | --- |
 | Eşit değildir |-ne |
 | Eşittir |-EQ |
 | Ile birlikte başlar |-notStartsWith |
-| Şununla başlar |-startsWith |
+| Ile başlar |-startsWith |
 | İçermez |-notContains |
 | İçerir |-içerir |
 | Eşleşmiyor |-notMatch |
-| Eşleşme |-Match |
-| İçinde | -ın |
+| Eşleştirme |-Match |
+| İçindeki | -ın |
 | Not ın | -Notın |
 
 ### <a name="using-the--in-and--notin-operators"></a>-İn ve-Notın işleçlerini kullanma
@@ -178,15 +178,15 @@ Bir ifadede kullanılan değerler, aşağıdakiler de dahil olmak üzere çeşit
 
 * Dizeler
 * Boolean – true, false
-* sayılarının
+* Numaralar
 * Diziler – sayı dizisi, dize dizisi
 
 Bir ifade içinde bir değer belirtirken, hataları önlemek için doğru sözdiziminin kullanılması önemlidir. Bazı sözdizimi ipuçları şunlardır:
 
 * Değer bir dize değilse çift tırnak işaretleri isteğe bağlıdır.
 * Dize ve Regex işlemleri büyük/küçük harfe duyarlı değildir.
-* Bir dize değeri çift tırnak içeriyorsa, her iki tırnak de \` karakter kullanılarak atlanmalıdır, örneğin, "Sales" değeri olduğunda, Kullanıcı. departmanı-EQ \`"Sales\`" uygun sözdizimidir.
-* Değer olarak null kullanarak null denetimleri de yapabilirsiniz, örneğin, `user.department -eq null`.
+* Bir dize değeri çift tırnak içerdiğinde her iki tırnak de \` karakteri kullanılarak kaçış olmalıdır, örneğin, "Sales" değeri ise, User. Department-EQ \` "Sales @ no__t-2" uygun sözdizimidir.
+* Null denetimleri, değer olarak null kullanarak da yapabilirsiniz; Örneğin, `user.department -eq null`.
 
 ### <a name="use-of-null-values"></a>Null değer kullanımı
 
@@ -249,10 +249,10 @@ Bir üyelik kuralı, özelliklerin, işleçlerin ve değerlerin daha karmaşık 
 
 Birden çok değerli özellikler aynı türdeki nesne koleksiyonlarıdır. -Any ve-All mantıksal işleçlerini kullanarak Üyelik kuralları oluşturmak için kullanılabilirler.
 
-| properties | Değerler | Kullanım |
+| Özellikler | Değerler | Kullanım |
 | --- | --- | --- |
 | assignedPlans | Koleksiyondaki her nesne şu dize özelliklerini kullanıma sunar: capabilityStatus, Service, Serviceplanıd |User. assignedPlans-any (assignedPlan. Serviceplanıd-EQ "efb87545-963c-4e0d-99df-69c6916d9eb0"-ve assignedPlan. capabilityStatus-EQ "Enabled") |
-| proxyAddresses| SMTP: alias@domain SMTP:alias@domain | (User. proxyAddresses-any (\_ -Contains "contoso")) |
+| proxyAddresses| SMTP: alias@domain SMTP: alias@domain | (User. proxyAddresses-any (\_-"contoso" içerir)) |
 
 ### <a name="using-the--any-and--all-operators"></a>-Any ve-All işleçlerini kullanma
 
@@ -283,7 +283,7 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 Alt çizgi (\_) sözdizimi, dinamik bir gruba kullanıcı veya cihaz eklemek için çok değerli dize koleksiyonu özelliklerinden birindeki belirli bir değerin oluşumlarıyla eşleşir. -Any veya-All işleçleri ile kullanılır.
 
-Burada, User. ProxyAddress 'a göre üye eklemek\_için bir kuralda alt çizgi () kullanılmasına örnek verilmiştir (Kullanıcı. otherpostalarda aynı şekilde çalışmaktadır). Bu kural, "contoso" içeren proxy adresine sahip tüm kullanıcıları gruba ekler.
+Burada, User. proxyAddress 'a göre üye eklemek için bir kuralda alt çizgi (\_) kullanılmasına örnek verilmiştir (User. Otherpostalarda aynı şekilde çalışmaktadır). Bu kural, "contoso" içeren proxy adresine sahip tüm kullanıcıları gruba ekler.
 
 ```
 (user.proxyAddresses -any (_ -contains "contoso"))
@@ -342,7 +342,7 @@ Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kuralları
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Özel uzantı özellikleri şirket içi Windows Server ad 'den veya bağlı bir SaaS uygulamasından eşitlenir ve şu biçimdedir `user.extension_[GUID]__[Attribute]`:
+Özel uzantı özellikleri şirket içi Windows Server AD 'den veya bağlı bir SaaS uygulamasından eşitlenir ve `user.extension_[GUID]_[Attribute]` biçiminde bulunur; burada:
 
 * [GUID], Azure AD 'de özelliği oluşturan uygulama için Azure AD 'de benzersiz tanıtıcıdır
 * [Attribute], oluşturulduğu şekliyle özelliğin adıdır
@@ -350,10 +350,10 @@ Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kuralları
 Özel uzantı özelliği kullanan bir kurala örnek:
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
+user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
-Özel özellik adı, Graph Explorer kullanılarak bir kullanıcının özelliği sorgulanarak ve özellik adı aranırken dizinde bulunabilir. Ayrıca, benzersiz bir uygulama KIMLIĞI girmek ve dinamik üyelik kuralı oluştururken kullanmak üzere özel uzantı özelliklerinin tam listesini almak için dinamik Kullanıcı grubu kural tasarımcısında **özel uzantı özellikleri al** bağlantısını seçebilirsiniz. Bu liste, bu uygulama için tüm yeni özel uzantı özellikleri almak için aynı zamanda yenilenebilir.
+Özel özellik adı, Graph Explorer kullanılarak bir kullanıcının özelliği sorgulanarak ve özellik adı aranırken dizinde bulunabilir. Ayrıca, benzersiz bir uygulama KIMLIĞI girmek ve dinamik üyelik kuralı oluştururken kullanmak üzere özel uzantı özelliklerinin tam listesini almak için dinamik Kullanıcı grubu kural tasarımcısında **özel uzantı özellikleri al** bağlantısını seçebilirsiniz. Bu liste ayrıca, bu uygulama için yeni özel uzantı özellikleri almak üzere yenilenebilir.
 
 ## <a name="rules-for-devices"></a>Cihazlar için kurallar
 
@@ -368,19 +368,19 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
 
  Cihaz özniteliği  | Değerler | Örnek
  ----- | ----- | ----------------
- accountEnabled | doğru yanlış | (Device. accountEnabled-EQ true)
- displayName | Herhangi bir dize değeri |(Device. displayName-EQ "Ramiz iPhone")
+ AccountEnabled | doğru yanlış | (Device. accountEnabled-EQ true)
+ DisplayName | Herhangi bir dize değeri |(Device. displayName-EQ "Ramiz iPhone")
  Cihazostürü | Herhangi bir dize değeri | (Device. deviceOSType-EQ "iPad")-veya (Device. deviceOSType-EQ "iPhone")<br>(Device. deviceOSType-"AndroidEnterprise" içerir)<br>(Device. deviceOSType-EQ "AndroidForWork")
  deviceOSVersion | Herhangi bir dize değeri | (Device. deviceOSVersion-EQ "9,1")
  deviceCategory | geçerli bir cihaz kategorisi adı | (Device. deviceCategory-EQ "BYOD")
  deviceManufacturer | Herhangi bir dize değeri | (Device. deviceManufacturer-EQ "Samsung")
  deviceModel | Herhangi bir dize değeri | (Device. deviceModel-EQ "iPad hava")
  Devicesahiplik | Kişisel, Şirket, bilinmeyen | (Device. Devicesahiplik-EQ "Şirket")
- enrollmentProfileName | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
+ KayıtAdı | Apple cihaz kayıt profili, cihaz kaydı-kurumsal cihaz tanımlayıcıları (Android-bilgi noktası) veya Windows Autopilot profili adı | (Device. kayıtlarına Mentprofilename-EQ "DEP IPhone")
  IBir kökü belirtilmiş | doğru yanlış | (Device. ısınroot-EQ true)
  managementType | MDM (mobil cihazlar için)<br>BILGISAYAR (Intune bılgısayar Aracısı tarafından yönetilen bilgisayarlar için) | (Device. managementType-EQ "MDM")
- deviceId | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- objectId | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
+ DeviceID | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ Uzantının | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ 76ad43c9-32c5-45e8-a272-7b58b58f596d ")
  systemLabels | Modern çalışma alanı cihazlarını etiketlemek için Intune cihaz özelliği ile eşleşen tüm dizeler | (Device. systemLabels-"M365Managed" içerir)
 
 > [!Note]  
@@ -390,8 +390,8 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
 
 Bu makaleler Azure Active Directory gruplar hakkında ek bilgiler sağlar.
 
-- [Var olan grupları görme](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Yeni grup oluşturma ve üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Mevcut grupları gör](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Yeni bir grup oluşturma ve üye ekleme](../fundamentals/active-directory-groups-create-azure-portal.md)
 - [Bir grubun ayarlarını yönetme](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [Bir grubun üyeliklerini yönetme](../fundamentals/active-directory-groups-membership-azure-portal.md)
 - [Bir gruptaki kullanıcılar için dinamik kuralları yönetme](groups-create-rule.md)

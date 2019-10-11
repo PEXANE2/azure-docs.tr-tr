@@ -1,21 +1,21 @@
 ---
-title: Örnek-VM ağı arabirimleri için onaylanmış vNet kullanın
+title: Örnek-VM ağı arabirimleri için listelenen vNet 'i kullanın
 description: Bu örnek ilke tanımı, ağ arabirimlerinin onaylanan bir sanal ağ kullanmasını gerektirir.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: c1f12d40ea0e5dbf0c9f56e856e5e4fa8831970b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 8ab21677c99150770339a5d34e00b692ca3cfc48
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980390"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255686"
 ---
 # <a name="sample---use-approved-vnet-for-vm-network-interfaces"></a>Örnek-VM ağı arabirimleri için onaylanmış vNet kullanın
 
-Bu ilke, ağ arabirimlerinin onaylı bir sanal ağ kullanmasını gerektirir. Onaylanan sanal ağın kimliğini belirtirsiniz.
+Bu ilke, ağ arabirimlerinin onaylanan bir sanal ağ kullanmasını gerektirir. Onaylanan sanal ağın KIMLIĞINI belirtirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Bu ilke, ağ arabirimlerinin onaylı bir sanal ağ kullanmasını gerektirir. On
 
 [!code-json[main](../../../../policy-templates/samples/Network/vm-creation-in-approved-vnet/azurepolicy.json "Use approved vNet for VM network interfaces")]
 
-[Azure portalı](#deploy-with-the-portal) kullanarak, [PowerShell](#deploy-with-powershell) ile veya [Azure CLI](#deploy-with-azure-cli) ile bu şablonu dağıtabilirsiniz.
+Bu şablonu, [PowerShell](#deploy-with-powershell) veya [Azure CLI](#deploy-with-azure-cli)ile [Azure Portal](#deploy-with-the-portal)kullanarak dağıtabilirsiniz.
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
@@ -40,15 +40,15 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -vNe
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizleme
+### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizle
 
-Kaynak grubunu, VM’yi ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
+Kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
+## <a name="deploy-with-azure-cli"></a>Azure CLı ile dağıtma
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,9 +58,9 @@ az policy definition create --name 'vm-creation-in-approved-vnet' --display-name
 az policy assignment create --name <assignmentname> --scope <scope> --policy "vm-creation-in-approved-vnet"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Azure CLI dağıtımını temizleme
+### <a name="clean-up-azure-cli-deployment"></a>Azure CLı dağıtımını Temizleme
 
-Kaynak grubunu, VM’yi ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
+Kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure İlkesi örnekleri](index.md) sayfasındaki diğer örnekleri inceleyin
+- [Azure ilke örneklerinde](index.md) daha fazla örnek inceleyin

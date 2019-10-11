@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: c9b6f6cf52d71451d2e1de27d0637eeb749b1e0b
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 55ded9a733baaac7fbc78621bd625d57d1d37ad1
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349053"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255486"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde standart bir SKU yük dengeleyici kullanma
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.74 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][install-azure-cli].
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.74 veya üstünü çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` ' yı çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -50,9 +50,9 @@ Varsayılan *temel*yerine yük dengeleyici için SKU 'yu *Standart* olarak ayarl
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluştururken konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun.
+Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur. Bir kaynak grubu oluşturduğunuzda bir konum belirtmeniz istenir. Bu konum, kaynak grubu meta verilerinin depolandığı yerdir, kaynak oluşturma sırasında başka bir bölge belirtmezseniz kaynaklarınızın Azure 'da da çalıştığı yerdir. [Az Group Create][az-group-create] komutunu kullanarak bir kaynak grubu oluşturun.
 
-Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
+Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -94,27 +94,27 @@ az aks create \
 
 Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON biçimli bilgileri döndürür.
 
-## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
+## <a name="connect-to-the-cluster"></a>Kümeye Bağlan
 
-Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl][kubectl]'yi kullanırsınız. Azure Cloud Shell kullanıyorsanız, `kubectl` zaten yüklüdür. Yerel olarak `kubectl` yüklemek için [az aks install-cli][az-aks-install-cli] komutunu kullanın:
+Kubernetes kümesini yönetmek için Kubernetes komut satırı istemcisi olan [kubectl][kubectl]'yi kullanırsınız. Azure Cloud Shell kullanırsanız, `kubectl` zaten yüklüdür. @No__t-0 ' ı yerel olarak yüklemek için [az aks install-cli][az-aks-install-cli] komutunu kullanın:
 
 ```azurecli
 az aks install-cli
 ```
 
-Kubernetes kümenize bağlanacak şekilde yapılandırmak `kubectl` için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
+@No__t, Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu komut, kimlik bilgilerini indirir ve Kubernetes CLı 'yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu kullanarak küme düğümleri listesini alın.
+Kümenizin bağlantısını doğrulamak için [kubectl Get][kubectl-get] komutunu kullanarak küme düğümlerinin bir listesini döndürün.
 
 ```azurecli-interactive
 kubectl get nodes
 ```
 
-Aşağıdaki örnekte önceki adımlarda oluşturulan tek düğüm gösterilmiştir. Düğüm *durumunun olduğundan emin olun:*
+Aşağıdaki örnek çıktıda, önceki adımlarda oluşturulan tek düğüm gösterilmektedir. Düğüm *durumunun olduğundan emin olun:*
 
 ```
 NAME                       STATUS   ROLES   AGE     VERSION
@@ -221,7 +221,7 @@ spec:
           value: "azure-vote-back"
 ```
 
-Yukarıdaki bildirim iki dağıtımı yapılandırır: *Azure-oy-ön* ve *Azure-oy geri*. *Azure-oy ön* dağıtımını yük dengeleyici kullanılarak sunulacak şekilde yapılandırmak için, aşağıdaki örnekte gösterildiği gibi adlı `standard-lb.yaml` bir bildirim oluşturun:
+Yukarıdaki bildirim iki dağıtımı yapılandırır: *Azure-oy-ön* ve *Azure-oy geri*. *Azure-oyön* dağıtımını yük dengeleyici kullanılarak sunulacak şekilde yapılandırmak için, aşağıdaki örnekte gösterildiği gibi `standard-lb.yaml` adlı bir bildirim oluşturun:
 
 ```yaml
 apiVersion: v1
@@ -245,7 +245,7 @@ kubectl apply -f sample.yaml
 kubectl apply -f standard-lb.yaml
 ```
 
-*Standart* SKU yük dengeleyici artık örnek uygulamayı kullanıma sunmak üzere yapılandırılmıştır. Yük dengeleyicinin genel IP 'sini görmek için [kubectl Get][kubectl-get] kullanarak *Azure-oy-Front* hizmeti ayrıntılarını görüntüleyin. Yük dengeleyicinin genel IP adresi, *dış IP* sütununda gösterilir. Aşağıdaki örnekte gösterildiği gibi, IP adresinin *\<bekliyor\>* durumundan gerçek bir dış IP adresine değiştirilmesi bir veya iki dakika sürebilir:
+*Standart* SKU yük dengeleyici artık örnek uygulamayı kullanıma sunmak üzere yapılandırılmıştır. Yük dengeleyicinin genel IP 'sini görmek için [kubectl Get][kubectl-get] kullanarak *Azure-oy-Front* hizmeti ayrıntılarını görüntüleyin. Yük dengeleyicinin genel IP adresi, *dış IP* sütununda gösterilir. Aşağıdaki örnekte gösterildiği gibi, IP adresinin *\<pending @ no__t-2* ' den gerçek bır dış IP adresine değiştirmesi bir veya iki dakika sürebilir:
 
 ```
 $ kubectl get service azure-vote-front
@@ -254,12 +254,12 @@ NAME                TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)       
 azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP   16s
 ```
 
-Tarayıcıda genel IP 'ye gidin ve örnek uygulamayı gördiğinizi doğrulayın. Yukarıdaki örnekte, genel IP olur `52.179.23.131`.
+Tarayıcıda genel IP 'ye gidin ve örnek uygulamayı gördiğinizi doğrulayın. Yukarıdaki örnekte, genel IP `52.179.23.131` ' dır.
 
-![Azure Vote’a göz atma görüntüsü](media/container-service-kubernetes-walkthrough/azure-vote.png)
+![Azure oylamaya göz atma görüntüsü](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
 > [!NOTE]
-> Ayrıca yük dengeleyiciyi iç olarak yapılandırabilir ve genel bir IP 'yi kullanıma sunmamalısınız. Yük dengeleyiciyi iç olarak yapılandırmak için, `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` *LoadBalancer* hizmetine bir ek açıklama olarak ekleyin. [Burada][internal-lb-yaml]bir YAML bildiriminin yanı sıra bir iç yük dengeleyici hakkında daha fazla ayrıntı görebilirsiniz.
+> Ayrıca yük dengeleyiciyi iç olarak yapılandırabilir ve genel bir IP 'yi kullanıma sunmamalısınız. Yük dengeleyiciyi iç olarak yapılandırmak için, *LoadBalancer* hizmetine ek açıklama olarak `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` ekleyin. [Burada][internal-lb-yaml]bir YAML bildiriminin yanı sıra bir iç yük dengeleyici hakkında daha fazla ayrıntı görebilirsiniz.
 
 ## <a name="optional---scale-the-number-of-managed-public-ips"></a>İsteğe bağlı-yönetilen genel IP sayısını ölçeklendirme
 
@@ -276,7 +276,7 @@ az aks update \
 
 Yukarıdaki örnek, *Myresourcegroup*Içindeki *Myakscluster* kümesi Için yönetilen giden genel IP sayısını *2* ' ye ayarlar. 
 
-Ayrıca, `--load-balancer-managed-outbound-ip-count` parametreyi ekleyerek ve istediğiniz değere ayarlayarak, kümenizi oluştururken yönetilen giden genel IP 'lerin ilk sayısını ayarlamak için *yük dengeleyici-yönetilen-IP-Count* parametresini de kullanabilirsiniz. Varsayılan yönetilen giden genel IP sayısı 1 ' dir.
+Ayrıca, `--load-balancer-managed-outbound-ip-count` parametresini ekleyerek ve istediğiniz değere ayarlayarak kümenizi oluştururken yönetilen giden genel IP 'lerin ilk sayısını ayarlamak için *yük dengeleyici-yönetilen-IP-Count* parametresini de kullanabilirsiniz. Varsayılan yönetilen giden genel IP sayısı 1 ' dir.
 
 ## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>İsteğe bağlı-çıkış için kendi genel IP 'Leri veya ön eklerini sağlayın
 

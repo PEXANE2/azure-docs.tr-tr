@@ -1,17 +1,17 @@
 ---
-title: Bir sanal makinenin içeriğini nasıl denetleyeceğinizi anlayın
+title: Azure Kubernetes hizmeti için Azure Ilkesi öğrenin
 description: Azure Ilkesi 'nin Azure Kubernetes hizmetindeki kümeleri yönetmek için rego 'ı ve açık Ilke aracısını nasıl kullandığını öğrenin.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: 9af29495fca4c8197040a5556de0ea6966b3d68d
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 56bc8934db86bb03446a6d2637bd54daaf2b5fb9
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981438"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254733"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes hizmeti için Azure Ilkesini anlama
 
@@ -21,7 +21,7 @@ Azure Ilkesi [Azure Kubernetes hizmeti](../../../aks/intro-kubernetes.md) (aks) 
 > [!NOTE]
 > AKS için Azure Ilkesi, sınırlı önizlemededir ve yalnızca yerleşik ilke tanımlarını destekler.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 AKS kümenizdeki AKS için Azure Ilkesini etkinleştirmek ve kullanmak için aşağıdaki işlemleri gerçekleştirin:
 
@@ -38,7 +38,7 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
   1. **Microsoft. ContainerService** ve **Microsoft. policınghts** kaynak sağlayıcılarını kaydedin. Adımlar için bkz. [kaynak sağlayıcıları ve türleri](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
 
-  1. Azure portalında **Tüm hizmetler**’e tıkladıktan sonra **İlke**'yi arayıp seçerek Azure İlkesi hizmetini başlatın.
+  1. **Tüm hizmetler**' e tıklayıp **ilke**arayıp ' yi seçerek Azure Portal Azure ilke hizmetini başlatın.
 
      ![Tüm hizmetlerde Ilke ara](../media/rego-for-aks/search-policy.png)
 
@@ -63,9 +63,22 @@ Azure Ilke eklentisini yüklemeden veya hizmet özelliklerinden herhangi birini 
 
   # Feature register: enables installing the add-on
   az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-
+  
+  # Use the following to confirm the feature has registered
+  az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].{Name:name,State:properties.state}"
+  
+  # Once the above shows 'Registered' run the following to propagate the update
+  az provider register -n Microsoft.ContainerService
+  
   # Feature register: enables the add-on to call the Azure Policy resource provider
   az feature register --namespace Microsoft.PolicyInsights --name AKS-DataplaneAutoApprove
+  
+  # Use the following to confirm the feature has registered
+  az feature list -o table --query "[?contains(name, 'Microsoft.PolicyInsights/AKS-DataPlaneAutoApprove')].{Name:name,State:properties.state}"
+  
+  # Once the above shows 'Registered' run the following to propagate the update
+  az provider register -n Microsoft.PolicyInsights
+  
   ```
 
 ## <a name="azure-policy-add-on"></a>Azure Ilke eklentisi
@@ -79,11 +92,11 @@ Kubernetes için _Azure Ilke eklentisi_ , Azure Ilke hizmetini ağ geçidi denet
 
 ### <a name="installing-the-add-on"></a>Eklentiyi yükleme
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Prerequisites
 
 Eklentiyi AKS kümenize yüklemeden önce, önizleme uzantısının yüklenmesi gerekir. Bu adım Azure CLı ile yapılır:
 
-1. Azure CLı sürüm 2.0.62 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli).
+1. Azure CLı sürüm 2.0.62 veya sonraki bir sürümün yüklü ve yapılandırılmış olması gerekir. Sürümü bulmak için `az --version` ' yı çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli).
 
 1. AKS kümesi sürüm _1,10_ veya üzeri olmalıdır. AKS küme sürümünüzü doğrulamak için aşağıdaki betiği kullanın:
 
@@ -113,7 +126,7 @@ Eklentiyi AKS kümenize yüklemeden önce, önizleme uzantısının yüklenmesi 
 
 Önkoşullar tamamlandıktan sonra, yönetmek istediğiniz AKS kümesinde Azure Ilke eklentisini yükleyebilirsiniz.
 
-- Azure portalı
+- Azure portal
 
   1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 
@@ -130,7 +143,7 @@ Eklentiyi AKS kümenize yüklemeden önce, önizleme uzantısının yüklenmesi 
      > [!NOTE]
      > **Eklentiyi etkinleştir** düğmesi gri ise, abonelik henüz önizlemeye eklenmedi. Gerekli adımlar için bkz. [Önizleme Için kabul etme](#opt-in-for-preview) .
 
-- Azure CLI
+- Azure CLı
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -170,7 +183,7 @@ Azure portal kullanarak AKS 'leri yönetmeye yönelik yerleşik ilkeleri bulmak 
 
 Alternatif olarak, bir AKS ilkesini bulmak ve atamak için [Ilke atama-Portal](../assign-policy-portal.md) hızlı başlangıcı ' nı kullanın. ' Denetim VM 'leri ' örneği yerine bir Kubernetes ilke tanımı arayın.
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
 ### <a name="azure-policy-add-on-logs"></a>Azure Ilke eklentisi günlükleri
 
@@ -193,7 +206,7 @@ Ağ geçidi denetleyicisi kapsayıcılarından günlükleri görüntülemek içi
 
 Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure CLı kullanın:
 
-- Azure portalı
+- Azure portal
 
   1. **Tüm hizmetler**' e tıklayıp **Kubernetes Hizmetleri**' nı arayıp seçerek aks hizmetini Azure Portal başlatın.
 
@@ -207,7 +220,7 @@ Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure
 
      ![AKS eklentisi için Azure Ilkesini devre dışı bırakma](../media/rego-for-aks/disable-policy-add-on.png)
 
-- Azure CLI
+- Azure CLı
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell
@@ -218,8 +231,8 @@ Azure Ilke eklentisini AKS kümenizdeki kaldırmak için Azure portal veya Azure
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
-- [İlke tanım yapısını](definition-structure.md) gözden geçirin.
-- [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.
+- [İlke tanımı yapısını](definition-structure.md)gözden geçirin.
+- [İlke efektlerini anlamak](effects.md)için gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.

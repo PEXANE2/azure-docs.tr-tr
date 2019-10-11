@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 253fc940cfb42aa9bf7e93dd631d2ca596f7db6f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3e2781229974ed872d477579d6c738822f910df6
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677862"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243506"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 'da Güncelleştirme Yönetimi çözümü
 
@@ -59,7 +59,7 @@ Zamanlanmış bir dağıtım oluşturarak, yazılım güncelleştirmelerinin ger
 
 Zamanlanan dağıtım, açıkça bilgisayarları belirterek veya belirli bir bilgisayar kümesinin veya bir [Azure sorgusunun](#azure-machines) günlük aramalarını temel alan bir [bilgisayar grubu](../azure-monitor/platform/computer-groups.md) seçerek hangi hedef bilgisayarların ilgili güncelleştirmeleri alacağını tanımlar. Azure VM 'Leri belirtilen ölçütlere göre dinamik olarak seçer. Bu gruplar, yalnızca çözümü etkinleştiren yönetim paketlerini hangi makinelerin kullandığını belirlemek için kullanılan [kapsam yapılandırmasından](../azure-monitor/insights/solution-targeting.md)farklıdır.
 
-Ayrıca, güncelleştirmelerin yüklenebileceği süreyi onaylamak ve ayarlamak için bir zamanlama da belirtirsiniz. Bu süre, bakım penceresi olarak adlandırılır. Yeniden başlatma gerekirse ve uygun yeniden başlatma seçeneğini belirlediyseniz, bakım penceresinin on dakikası yeniden başlatmalar için ayrılmıştır. Düzeltme eki uygulama beklenenden uzun sürüyorsa ve bakım penceresinde on dakikadan az varsa, yeniden başlatma gerçekleşmeyecektir.
+Ayrıca, güncelleştirmelerin yüklenebileceği süreyi onaylamak ve ayarlamak için bir zamanlama da belirtirsiniz. Bu süre, bakım penceresi olarak adlandırılır. Yeniden başlatma gerekiyorsa ve uygun yeniden başlatma seçeneğini belirlediyseniz, bakım penceresinin yirmi dakikası yeniden başlatmalar için ayrılmıştır. Düzeltme Eki beklenenden daha uzun sürerse ve bakım penceresinde Yirmi dakikadan az bir süre varsa, yeniden başlatma gerçekleşmeyecektir.
 
 Güncelleştirmeler Azure Automation’daki runbook'lar tarafından yüklenir. Bu runbook 'ları görüntüleyemezsiniz ve Runbook 'lar herhangi bir yapılandırma gerektirmez. Güncelleştirme dağıtımı oluşturulduğunda, güncelleştirme dağıtımı, dahil edilen bilgisayarlar için belirtilen zamanda ana güncelleştirme runbook 'unu Başlatan bir zamanlama oluşturur. Ana runbook, gerekli güncelleştirmeleri yüklemek için her bir aracıda bir alt runbook başlatır.
 

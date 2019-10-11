@@ -7,18 +7,20 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 10/08/2019
 ms.author: makromer
-ms.openlocfilehash: 5eafa0cc6284df5c969f63e2ab3fac4113fab417
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b5895b061426066d265d3ff68dc948014e641322
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178624"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242281"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory veri akışı sorunlarını giderme
 
 Bu makalede Azure Data Factory veri akışları için genel sorun giderme yöntemleri incelenmektedir.
 
-## <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>Hata iletisi: DF-SYS-01: gölgeli. databricks. org. Apache. Hadoop. FS. Azure. AzureException: com. Microsoft. Azure. Storage. StorageException: belirtilen kapsayıcı yok.
+## <a name="common-errors-and-messages"></a>Sık karşılaşılan hatalar ve mesajlar
+
+### <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>Hata iletisi: DF-SYS-01: gölgeli. databricks. org. Apache. Hadoop. FS. Azure. AzureException: com. Microsoft. Azure. Storage. StorageException: belirtilen kapsayıcı yok.
 
 - **Belirtiler**: kapsayıcı mevcut olmadığından veri önizleme, hata ayıklama ve işlem hattı veri akışı yürütme başarısız oluyor
 
@@ -26,7 +28,7 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 
 - **Çözüm**: veri kümenize başvurduğunuz kapsayıcının var olduğundan emin olun
 
-## <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>Hata iletisi: DF-SYS-01: Java. lang. AssertionError: assertion başarısız oldu: çakışan dizin yapıları algılandı. Şüpheli yollar
+### <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>Hata iletisi: DF-SYS-01: Java. lang. AssertionError: assertion başarısız oldu: çakışan dizin yapıları algılandı. Şüpheli yollar
 
 - **Belirtiler**: Parquet dosyaları ile kaynak dönüşümünde joker karakterler kullanılırken
 
@@ -34,7 +36,7 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 
 - **Çözüm**: kaynak dönüştürme seçeneklerinizde kullandığınız joker karakter söz dizimini denetleyin
 
-## <a name="error-message-df-src-002-container-container-name-is-required"></a>Hata iletisi: DF-SRC-002: ' Container ' (kapsayıcı adı) gerekiyor
+### <a name="error-message-df-src-002-container-container-name-is-required"></a>Hata iletisi: DF-SRC-002: ' Container ' (kapsayıcı adı) gerekiyor
 
 - **Belirtiler**: kapsayıcı mevcut olmadığından veri önizleme, hata ayıklama ve işlem hattı veri akışı yürütme başarısız oluyor
 
@@ -42,7 +44,7 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 
 - **Çözüm**: veri kümenize başvurduğunuz kapsayıcının var olduğundan emin olun
 
-## <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>Hata iletisi: DF-UNı-001: PrimaryKeyValue uyumsuz türler IntegerType ve StringType
+### <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>Hata iletisi: DF-UNı-001: PrimaryKeyValue uyumsuz türler IntegerType ve StringType
 
 - **Belirtiler**: kapsayıcı mevcut olmadığından veri önizleme, hata ayıklama ve işlem hattı veri akışı yürütme başarısız oluyor
 
@@ -50,7 +52,7 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 
 - **Çözüm**: veri akışınızda birincil anahtar için kullandığınız sütunu hedef veritabanınızın veri türüyle eşleşecek şekilde dönüştürmek için türetilmiş bir sütun kullanın
 
-## <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>Hata iletisi: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: Ana bilgisayar xxxxx.database.windows.net bağlantı noktası 1433 için TCP/IP bağlantısı başarısız oldu. Hata: "xxxx.database.windows.net. Bağlantı özelliklerini doğrulayın. Konakta bir SQL Server örneğinin çalıştığından ve bağlantı noktasında TCP/IP bağlantılarını kabul ettiğinizden emin olun. Bağlantı noktasına TCP bağlantılarının bir güvenlik duvarı tarafından engellenmediğinden emin olun. "
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>Hata iletisi: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: Ana bilgisayar xxxxx.database.windows.net bağlantı noktası 1433 için TCP/IP bağlantısı başarısız oldu. Hata: "xxxx.database.windows.net. Bağlantı özelliklerini doğrulayın. Konakta bir SQL Server örneğinin çalıştığından ve bağlantı noktasında TCP/IP bağlantılarını kabul ettiğinizden emin olun. Bağlantı noktasına TCP bağlantılarının bir güvenlik duvarı tarafından engellenmediğinden emin olun. "
 
 - **Belirtiler**: veri önizlemesi yapılamıyor veya veritabanı kaynağı veya havuzu ile işlem hattı yürütülemiyor
 
@@ -58,7 +60,7 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 
 - **Çözüm**: veritabanına yönelik güvenlik duvarı erişimini açın
 
-## <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>Hata iletisi: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: veritabanında ' xxxxxx ' adlı bir nesne zaten var.
+### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>Hata iletisi: DF-SYS-01: com. Microsoft. SqlServer. JDBC. SQLServerException: veritabanında ' xxxxxx ' adlı bir nesne zaten var.
 
 - **Belirtiler**: havuz tablo oluşturamıyor
 
@@ -66,7 +68,11 @@ Bu makalede Azure Data Factory veri akışları için genel sorun giderme yönte
 
 - **Çözüm**: oluşturmaya çalıştığınız tablonun adını değiştirin
 
+## <a name="general-troubleshooting-guidance"></a>Genel sorun giderme kılavuzu
 
+1. Veri kümesi bağlantılarınızın durumunu denetleyin. Her kaynak ve havuz dönüşümünde, kullandığınız her veri kümesi için bağlı hizmeti ziyaret edin ve bağlantıları test edin.
+2. Veri akışı tasarımcısından dosya ve tablo bağlantılarınızın durumunu denetleyin. Hata ayıklama üzerinde geçiş yapın ve verilerinize erişebildiğinizden emin olmak için kaynak dönüşümlerinizin veri önizlemesine tıklayın.
+3. Her şey veri önizlemesinden iyi görünüyorsa, işlem hattı tasarımcısına gidin ve veri akışınızı bir işlem hattı etkinliğine yerleştirin. Uçtan uca bir test için işlem hattının hatalarını ayıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -78,3 +84,4 @@ Daha fazla sorun giderme Yardım için şu kaynakları deneyin:
 *  [MSDN Forumu](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
 *  [Data Factory için Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)
+*  [ADF eşleme veri akışları performans Kılavuzu](concepts-data-flow-performance.md)

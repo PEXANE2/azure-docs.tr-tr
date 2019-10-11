@@ -1,21 +1,21 @@
 ---
-title: Depolama hesapları ve sanal makineler için örnek olarak Izin verilen SKU 'Lar
+title: Örnek-Izin verilen depolama hesabı ve VM SKU 'Ları
 description: Bu örnek ilke tanımı, depolama hesaplarının ve sanal makinelerin onaylanan SKU 'Ları kullanmasını gerektirir.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: e84462a930ffad202def1da1e2c923371dde9d58
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: bfa6fd7bf812da352e074c0ed4df855043a27971
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980599"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255868"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Depolama hesapları ve sanal makineler için örnek olarak Izin verilen SKU 'Lar
 
-Bu ilke, depolama hesapları ve sanal makinelerin onaylı SKU’lar kullanmasını gerektirir. Onaylı SKU’ları güvence altına almak için yerleşik ilkeleri kullanır. Onaylı bir sanal makine SKU’su dizisi ve onaylı bir depolama hesabı SKU’su dizisi belirtirsiniz.
+Bu ilke, depolama hesaplarının ve sanal makinelerin onaylanan SKU 'Ları kullanmasını gerektirir. , Onaylanan SKU 'Ların sağlamak için yerleşik ilkeleri kullanır. Onaylanan bir sanal makineler SKU 'su ve bir dizi onaylanmış depolama hesabı SKU 'su belirtirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Bu ilke, depolama hesapları ve sanal makinelerin onaylı SKU’lar kullanmasın
 
 [!code-json[main](../../../../policy-templates/samples/PolicyInitiatives/skus-for-multiple-types/azurepolicyset.json "Allowed SKUs for Storage Accounts and Virtual Machines")]
 
-[Azure portalı](#deploy-with-the-portal) veya [PowerShell](#deploy-with-powershell) kullanarak bu şablonu dağıtabilirsiniz.
+Bu şablonu [Azure Portal](#deploy-with-the-portal) kullanarak veya [PowerShell](#deploy-with-powershell)ile dağıtabilirsiniz.
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
@@ -42,16 +42,16 @@ $policyset= New-AzPolicySetDefinition -Name "skus-for-multiple-types" -DisplayNa
 New-AzPolicyAssignment -PolicySetDefinition $policyset -Name <assignmentName> -Scope <scope>  -LISTOFALLOWEDSKUS_1 <VM SKUs> -LISTOFALLOWEDSKUS_2 <Storage Account SKUs>
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizleme
+### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizle
 
-İlke ataması ve tanımını kaldırmak için aşağıdaki komutu çalıştırın.
+İlke atamasını ve tanımını kaldırmak için aşağıdaki komutu çalıştırın.
 
 ```azurepowershell-interactive
 Remove-AzPolicyAssignment -Name <assignmentName>
 Remove-AzPolicySetDefinitions -Name "skus-for-multiple-types"
 ```
 
-## <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
+## <a name="deploy-with-azure-cli"></a>Azure CLı ile dağıtma
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -61,9 +61,9 @@ az policy set-definition create --name "skus-for-multiple-types" --display-name 
 az policy assignment create --name <assignmentName> --scope <scope> --policy-set-definition "skus-for-multiple-types" --params "{ 'LISTOFALLOWEDSKUS_1': { 'value': <VM SKU Array> }, 'LISTOFALLOWEDSKUS_2': { 'value': <Storage Account SKU Array> } }"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Azure CLI dağıtımını temizleme
+### <a name="clean-up-azure-cli-deployment"></a>Azure CLı dağıtımını Temizleme
 
-İlke ataması ve tanımını kaldırmak için aşağıdaki komutu çalıştırın.
+İlke atamasını ve tanımını kaldırmak için aşağıdaki komutu çalıştırın.
 
 ```azurecli-interactive
 az policy assignment delete --name <assignmentName>
@@ -72,4 +72,4 @@ az policy set-definition delete --name "skus-for-multiple-types"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure İlkesi örnekleri](index.md) sayfasındaki diğer örnekleri inceleyin
+- [Azure ilke örneklerinde](index.md) daha fazla örnek inceleyin

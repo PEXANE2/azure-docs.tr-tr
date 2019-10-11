@@ -8,16 +8,16 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e89a8f98d92e92fa8afe93340576b14ff1dd5051
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949058"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249193"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure dijital TWINS 'de rol tabanlı erişim denetimi
 
-Azure dijital TWINS, uzamsal grafiğinizde belirli veriler, kaynaklar ve eylemler için kesin erişim denetimi sağlar. Bu, ayrıntılı rol ve rol tabanlı erişim denetimi (RBAC) adlı izin yönetimini kolaylaştırır. RBAC, _Roller_ ve _rol atamalarından_oluşur. Roller, izin düzeyini belirler. Rol atamaları bir rolü kullanıcı veya cihazla ilişkilendirir.
+Azure dijital TWINS, uzamsal grafiğinizde belirli veriler, kaynaklar ve eylemler üzerinde kesin erişim denetimi imkanı sunar. Bu, ayrıntılı rol ve [rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/) (RBAC) adlı izin yönetimini kolaylaştırır. RBAC, _Roller_ ve _rol atamalarından_oluşur. Roller, izin düzeyini belirler. Rol atamaları bir rolü kullanıcı veya cihazla ilişkilendirir.
 
 RBAC kullanarak, izin verilebilir:
 
@@ -45,7 +45,7 @@ Geliştirici, RBAC 'yi kullanarak şunları alabilir:
 
 [!INCLUDE [digital-twins-permissions](../../includes/digital-twins-rbac-best-practices.md)]
 
-## <a name="roles"></a>Lerdir
+## <a name="roles"></a>Roller
 
 ### <a name="role-definitions"></a>Rol tanımları
 
@@ -84,3 +84,5 @@ Bir alıcıya izin vermek için bir rol ataması oluşturun. İzinleri iptal etm
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Azure dijital TWINS rol atamaları oluşturma ve yönetme hakkında daha fazla bilgi edinmek için [rol atamaları oluşturma ve yönetme](./security-create-manage-role-assignments.md)konusunu okuyun.
+
+- [Azure Için RBAC](https://docs.microsoft.com/azure/role-based-access-control/)hakkında daha fazla bilgi edinin.

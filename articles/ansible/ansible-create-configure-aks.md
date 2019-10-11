@@ -1,36 +1,36 @@
 ---
-title: Öğretici - Azure Kubernetes Service (AKS) kümelerini ansible'ı kullanarak Azure'da yapılandırma | Microsoft Docs
-description: Ansible'ı kullanarak Azure'da Azure Kubernetes Service kümesi oluşturmayı ve kullanmayı öğrenin
-keywords: ansible'ı, azure, devops, bash, cloudshell, playbook, aks, kapsayıcı, aks, kubernetes
+title: Öğretici-Azure 'da Azure Kubernetes hizmeti (AKS) kümelerini kullanarak yapılandırma
+description: Azure 'da bir Azure Kubernetes hizmet kümesi oluşturmak ve yönetmek için nasıl kullanılacağını öğrenin
+keywords: anyalabilen, Azure, DevOps, Bash, cloudshell, PlayBook, aks, Container, aks, Kubernetes
 ms.topic: tutorial
 ms.service: ansible
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1467afce60038e086daace72947c1ab21569865a
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 9b70a9c364768322a3eae6ef5b92c87b6839c540
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231318"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242080"
 ---
-# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Öğretici: Azure'da ansible'ı kullanarak Azure Kubernetes Service (AKS) kümelerini yapılandırma
+# <a name="tutorial-configure-azure-kubernetes-service-aks-clusters-in-azure-using-ansible"></a>Öğretici: Azure 'da Azure Kubernetes hizmeti (AKS) kümelerini anormal kullanarak yapılandırma
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
 [!INCLUDE [open-source-devops-intro-aks.md](../../includes/open-source-devops-intro-aks.md)]
 
-AKS, kullanılacak yapılandırılabilir [Azure Active Directory (AD)](/azure/active-directory/) kullanıcı kimlik doğrulaması. Yapılandırıldıktan sonra AKS kümesine imzalamak için Azure AD kimlik doğrulama belirteci kullanın. RBAC, bir kullanıcının kimliğini veya directory grubu üyeliği dayanabilir.
+AKS, Kullanıcı kimlik doğrulaması için [Azure Active Directory (ad)](/azure/active-directory/) kullanacak şekilde yapılandırılabilir. Yapılandırıldıktan sonra, AKS kümesinde oturum açmak için Azure AD kimlik doğrulama belirtecinizi kullanırsınız. RBAC, kullanıcının kimliğini veya dizin grubu üyeliğini temel alabilir.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
 > [!div class="checklist"]
 >
 > * AKS kümesi oluşturma
-> * Bir AKS kümesi yapılandırma
+> * AKS kümesi yapılandırma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
@@ -38,9 +38,9 @@ AKS, kullanılacak yapılandırılabilir [Azure Active Directory (AD)](/azure/ac
 
 ## <a name="create-a-managed-aks-cluster"></a>Yönetilen AKS kümesi oluşturma
 
-Örnek playbook bir kaynak grubu ve kaynak grubu içinde bir AKS kümesi oluşturur.
+Örnek PlayBook, kaynak grubu içinde bir kaynak grubu ve bir AKS kümesi oluşturur.
 
-Aşağıdaki playbook'u `azure_create_aks.yml` olarak kaydedin:
+Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 ```yml
 - name: Create Azure Kubernetes Service
@@ -79,19 +79,19 @@ Aşağıdaki playbook'u `azure_create_aks.yml` olarak kaydedin:
         Environment: Production
 ```
 
-Playbook'u çalıştırmadan önce aşağıdaki alan notlara bakın:
+PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
 
-- İlk bölümde `tasks` adlı bir kaynak grubu tanımlar `myResourceGroup` içinde `eastus` konumu.
-- İkinci kısımda `tasks` adlı bir AKS kümesi tanımlar `myAKSCluster` içinde `myResourceGroup` kaynak grubu.
-- İçin `your_ssh_key` yer tutucusu, tek satırlı biçimde (tırnak işaretleri olmadan) "ssh-rsa" ile başlayan - RSA ortak anahtarınızı girin.
+- @No__t-0 ' daki ilk bölüm, `eastus` konumunda `myResourceGroup` adlı bir kaynak grubu tanımlar.
+- @No__t-0 ' daki ikinci bölüm, `myResourceGroup` kaynak grubu içinde `myAKSCluster` adlı bir AKS kümesini tanımlar.
+- @No__t-0 yer tutucusu için, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan RSA ortak anahtarınızı tek satırlık biçimde girin.
 
-Kullanarak playbook çalıştırma `ansible-playbook` komutu:
+@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook azure_create_aks.yml
 ```
 
-Playbook'u çalıştırdıktan sonuç aşağıdaki çıktıya benzer gösterir:
+PlayBook 'un çalıştırılması aşağıdaki çıktıya benzer sonuçları gösterir:
 
 ```Output
 PLAY [Create AKS] 
@@ -109,11 +109,11 @@ PLAY RECAP
 localhost                  : ok=3    changed=2    unreachable=0    failed=0
 ```
 
-## <a name="scale-aks-nodes"></a>AKS düğümlerini ölçeklendirme
+## <a name="scale-aks-nodes"></a>AKS düğümlerini ölçeklendirin
 
-Önceki bölümde yer alan örnek playbook, iki düğüm tanımlar. Düğüm sayısını değiştirerek ayarlamak `count` değerini `agent_pool_profiles` blok.
+Önceki bölümde yer aldığı örnek PlayBook iki düğümü tanımlar. @No__t-1 bloğundaki `count` değerini değiştirerek düğüm sayısını ayarlayabilirsiniz.
 
-Aşağıdaki playbook'u `azure_configure_aks.yml` olarak kaydedin:
+Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 ```yml
 - name: Scale AKS cluster
@@ -146,17 +146,17 @@ Aşağıdaki playbook'u `azure_configure_aks.yml` olarak kaydedin:
             vm_size: Standard_D2_v2
 ```
 
-Playbook'u çalıştırmadan önce aşağıdaki alan notlara bakın:
+PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
 
-- İçin `your_ssh_key` yer tutucusu, tek satırlı biçimde (tırnak işaretleri olmadan) "ssh-rsa" ile başlayan - RSA ortak anahtarınızı girin.
+- @No__t-0 yer tutucusu için, "SSH-RSA" (tırnak işaretleri olmadan) ile başlayan RSA ortak anahtarınızı tek satırlık biçimde girin.
 
-Kullanarak playbook çalıştırma `ansible-playbook` komutu:
+@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook azure_configure_aks.yml
 ```
 
-Playbook'u çalıştırdıktan sonuç aşağıdaki çıktıya benzer gösterir:
+PlayBook 'un çalıştırılması aşağıdaki çıktıya benzer sonuçları gösterir:
 
 ```Output
 PLAY [Scale AKS cluster] 
@@ -171,11 +171,11 @@ PLAY RECAP
 localhost                  : ok=2    changed=1    unreachable=0    failed=0
 ```
 
-## <a name="delete-a-managed-aks-cluster"></a>Yönetilen AKS kümesini silme
+## <a name="delete-a-managed-aks-cluster"></a>Yönetilen bir AKS kümesini silme
 
-Örnek playbook AKS kümesini siler.
+Örnek PlayBook bir AKS kümesini siler.
 
-Aşağıdaki playbook'u `azure_delete_aks.yml` olarak kaydedin:
+Aşağıdaki PlayBook 'u @no__t olarak kaydet-0:
 
 
 ```yml
@@ -193,13 +193,13 @@ Aşağıdaki playbook'u `azure_delete_aks.yml` olarak kaydedin:
       state: absent
   ```
 
-Kullanarak playbook çalıştırma `ansible-playbook` komutu:
+@No__t-0 komutunu kullanarak PlayBook 'u çalıştırın:
 
 ```bash
 ansible-playbook azure_delete_aks.yml
 ```
 
-Playbook'u çalıştırdıktan sonuç aşağıdaki çıktıya benzer gösterir:
+PlayBook 'un çalıştırılması aşağıdaki çıktıya benzer sonuçları gösterir:
 
 ```Output
 PLAY [Delete a managed Azure Container Services (AKS) cluster] 
@@ -216,4 +216,4 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Kubernetes Service (AKS) uygulama ölçeklendirme](/azure/aks/tutorial-kubernetes-scale)
+> [Öğretici: Azure Kubernetes Service 'te (AKS) uygulama ölçeklendirme](/azure/aks/tutorial-kubernetes-scale)

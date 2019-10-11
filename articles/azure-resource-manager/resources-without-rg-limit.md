@@ -4,14 +4,14 @@ description: Bir kaynak grubunda 800 taneden fazla örneğe sahip olabilir Azure
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0f9db618b69ff692350f333b8a4a4354f4980169
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973317"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249131"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örneğiyle sınırlı kaynak yok
 
@@ -32,14 +32,14 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
-* botServices-sınırı uzatmak için desteğe başvurun.
+* botServices-varsayılan olarak 800 örnek ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * disklerinden
 * images
-* görüntüsünü
-* virtualMachines
+* anlık görüntüler
+* VirtualMachines
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. Containerınstance
 
@@ -128,7 +128,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 * privateDnsZones/virtualNetworkLinks
 * privateEndpoints
 * privateLinkServices
-* Publicıpaddresses-sınırı uzatmak için desteğe başvurun.
+* Publicıpaddresses, varsayılan olarak 800 örnek Ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
 * serviceEndpointPolicies
 * trafficmanagerprofiles
 * virtualNetworkTaps
@@ -139,7 +139,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılmasını sağlam
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
-* workspaceCollections-limiti uzatmak için desteğe başvurun.
+* workspaceCollections, varsayılan olarak 800 örnek ile sınırlıdır. Bu sınır, destek ile iletişim kurarak artırılabilir.
 
 ## <a name="microsoftscheduler"></a>Microsoft. Scheduler
 

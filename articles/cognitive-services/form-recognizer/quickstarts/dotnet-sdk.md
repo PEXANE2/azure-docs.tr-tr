@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: .NET için form tanıyıcı istemci kitaplığı | Microsoft Docs'
+title: 'Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı | Microsoft Docs'
 description: .NET için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: PatrickFarley
@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: fc0964508f3031efd91db827524042bf0577ab5e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057669"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242506"
 ---
-# <a name="quickstart-form-recognizer-client-library-for-net"></a>Hızlı Başlangıç: .NET için form tanıyıcı istemci kitaplığı
+# <a name="quickstart-form-recognizer-client-library-for-net"></a>Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı
 
-.NET için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın. Form tanıyıcı, form belgelerinden anahtar/değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bilişsel bir hizmettir. Ardından, asıl dosyadaki ilişkileri de içeren yapılandırılmış verinin çıktısını verir. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
+.NET için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın. Form tanıyıcı, form belgelerinden anahtar/değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bilişsel bir hizmettir. Ardından, özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıkartır. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
 .NET için form tanıyıcı istemci kitaplığı 'nı kullanarak şunları yapın:
 
@@ -28,13 +28,14 @@ ms.locfileid: "71057669"
 * [Özel modellerin bir listesini alın](#get-a-list-of-custom-models)
 * [Özel bir modeli silme](#delete-a-custom-model)
 
-[Başvuru belge](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
+[Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
+* Form tanıyıcı sınırlı erişim önizlemesine erişim. Önizlemeye erişim sağlamak için [form tanıyıcı erişim isteği](https://aka.ms/FormRecognizerRequestAccess) formunu doldurun ve gönderebilirsiniz.
+* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim verilerinizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../build-training-data-set.md) . Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz.
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
-* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim verilerinizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../build-training-data-set.md) . 
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -42,11 +43,11 @@ ms.locfileid: "71057669"
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra adlı `FORM_RECOGNIZER_KEY`anahtar için [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
+Deneme aboneliğinizden veya kaynağından bir anahtar aldıktan sonra anahtar için `FORM_RECOGNIZER_KEY` adlı [bir ortam değişkeni oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ### <a name="create-a-new-c-application"></a>Yeni C# bir uygulama oluşturun
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), adıyla `dotnet new` `formrecognizer-quickstart`yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: _Program.cs_. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `formrecognizer-quickstart` adlı yeni bir konsol uygulaması oluşturmak için `dotnet new` komutunu kullanın. Bu komut, tek bir kaynak dosyası olan C# basit bir "Merhaba Dünya" projesi oluşturur: _program.cs_. 
 
 ```console
 dotnet new console -n formrecognizer-quickstart
@@ -126,7 +127,7 @@ Herhangi bir yöntemi tanımladıktan önce, aşağıdaki değişken tanımları
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-Yönteminin altında, ' de `Main`başvurulan görevi tanımlayın. `Main` Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak istemci nesnesinin kimliğini doğrulacaksınız. Daha sonra diğer yöntemleri tanımlayacaksınız.
+@No__t-0 yönteminin altında, `Main` ' de başvurulan görevi tanımlayın. Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak istemci nesnesinin kimliğini doğrulacaksınız. Daha sonra diğer yöntemleri tanımlayacaksınız.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
@@ -179,12 +180,12 @@ Uygulama dizininizden `dotnet run` komutunu çağırarak uygulamayı çalıştı
 dotnet run
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="clean-up-resources"></a>Kaynakları Temizleme
 
 Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLı](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Ayrıca, hesabınızdan silmek istediğiniz özel bir model varsa, [özel bir modeli silme](#delete-a-custom-model)bölümünde yöntemi çalıştırın.
 

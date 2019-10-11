@@ -1,21 +1,21 @@
 ---
-title: Örnek-sunucu düzeyi tehdit algılama ayarını denetle
+title: Örnek-sunucu düzeyi tehdit algılamayı denetleme
 description: Bu ilkeler belirtilen duruma ayarlanmamışsa, bu örnek ilke tanımı SQL Server güvenlik uyarısı ilkelerini denetler.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 25504b558a930ae6dcea710ee850ae296c63c4ae
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0c5cfe2d30668102a356224b5efd141746ab0866
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977258"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254756"
 ---
 # <a name="sample---audit-server-level-threat-detection-setting"></a>Örnek-sunucu düzeyi tehdit algılama ayarını denetle
 
-Bu ilke, bu ilkeler belirtilen duruma ayarlanmamışsa SQL Server güvenlik uyarısı ilkelerini denetler. Tehdit algılamanın etkin mi devre dışı mı olduğunu gösteren bir değer belirtirsiniz.
+Bu ilke, bu ilkeler belirtilen duruma ayarlanmamışsa SQL Server güvenlik uyarısı ilkelerini denetler. Tehdit algılamanın etkin veya devre dışı olduğunu gösteren bir değer belirtirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -23,7 +23,7 @@ Bu ilke, bu ilkeler belirtilen duruma ayarlanmamışsa SQL Server güvenlik uyar
 
 [!code-json[main](../../../../policy-templates/samples/SQL/audit-sql-server-threat-detection/azurepolicy.json "Audit Server level threat detection setting")]
 
-[Azure portalı](#deploy-with-the-portal) kullanarak, [PowerShell](#deploy-with-powershell) ile veya [Azure CLI](#deploy-with-azure-cli) ile bu şablonu dağıtabilirsiniz.
+Bu şablonu, [PowerShell](#deploy-with-powershell) veya [Azure CLI](#deploy-with-azure-cli)ile [Azure Portal](#deploy-with-the-portal)kullanarak dağıtabilirsiniz.
 
 ## <a name="deploy-with-the-portal"></a>Portal ile dağıtma
 
@@ -40,15 +40,15 @@ $assignment = New-AzPolicyAssignment -Name <assignmentname> -Scope <scope>  -set
 $assignment
 ```
 
-### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizleme
+### <a name="clean-up-powershell-deployment"></a>PowerShell dağıtımını temizle
 
-Kaynak grubunu, VM’yi ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
+Kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
-## <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
+## <a name="deploy-with-azure-cli"></a>Azure CLı ile dağıtma
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -58,9 +58,9 @@ az policy definition create --name 'audit-sql-server-threat-detection' --display
 az policy assignment create --name <assignmentname> --scope <scope> --policy "audit-sql-server-threat-detection"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Azure CLI dağıtımını temizleme
+### <a name="clean-up-azure-cli-deployment"></a>Azure CLı dağıtımını Temizleme
 
-Kaynak grubunu, VM’yi ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
+Kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu çalıştırın.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
@@ -68,4 +68,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure İlkesi örnekleri](index.md) sayfasındaki diğer örnekleri inceleyin
+- [Azure ilke örneklerinde](index.md) daha fazla örnek inceleyin

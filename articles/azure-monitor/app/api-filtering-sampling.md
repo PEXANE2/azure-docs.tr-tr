@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 095d539404412d34c66201646f6134ff740f86b7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: cae035927217a7e2677cf6ebfcce1b53782e4c01
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299268"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248738"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK 'da telemetri filtreleme ve ön işleme
 
@@ -30,15 +30,15 @@ Application Insights hizmetine gönderilmeden önce Telemetriyi nasıl zenginle�
 
 Başlamadan önce:
 
-* Uygulamanız için uygun SDK 'Yı yükler. Uygulamanızda .NET/.NET Core veya [Java](../../azure-monitor/app/java-get-started.md) için [ASP.net](asp-net.md) veya [ASP.NET Core](asp-net-core.md) veya [http/Worker değildir](worker-service.md) .
+* Uygulamanız için uygun SDK 'yı yükler: [.net/.NET Core](worker-service.md)veya [Java](../../azure-monitor/app/java-get-started.md)için [ASP.net](asp-net.md), [ASP.NET Core](asp-net-core.md), http olmayan veya çalışan.
 
 <a name="filtering"></a>
 
-## <a name="filtering-itelemetryprocessor"></a>Filtreleme: Ilemetryprocessor
+## <a name="filtering-itelemetryprocessor"></a>Filtreleniyor: ITelemetryProcessor
 
 Bu teknik, telemetri akışından dahil edilen veya dışlanan Özellikler üzerinde doğrudan denetim elde etmenizi sağlar. Filtreleme, telemetri öğelerini Application Insights gönderilmeden bırakmak için kullanılabilir. Bunu örneklemeyle veya ayrı olarak kullanabilirsiniz.
 
-Telemetriyi filtrelemek için bir telemetri işlemcisi yazın ve ile `TelemetryConfiguration`kaydedin. Tüm telemetri işlemcinizden geçer ve akıştan bırakmayı veya zincirdeki bir sonraki işlemciye vermenizi seçebilirsiniz. Bu, HTTP istek toplayıcısı ve bağımlılık toplayıcısı gibi standart modüllerden ve kendi kendinize izettiğiniz Telemetriyi içerir. Örneğin, robots veya başarılı bağımlılık çağrılarından gelen istekler hakkında telemetri filtreleyebilirsiniz.
+Telemetriyi filtrelemek için bir telemetri işlemcisi yazın ve `TelemetryConfiguration` ile kaydedin. Tüm telemetri işlemcinizden geçer ve akıştan bırakmayı veya zincirdeki bir sonraki işlemciye vermenizi seçebilirsiniz. Bu, HTTP istek toplayıcısı ve bağımlılık toplayıcısı gibi standart modüllerden ve kendi kendinize izettiğiniz Telemetriyi içerir. Örneğin, robots veya başarılı bağımlılık çağrılarından gelen istekler hakkında telemetri filtreleyebilirsiniz.
 
 > [!WARNING]
 > İşlemciler kullanılarak SDK 'dan gönderilen telemetrinin filtrelenmesi, portalda gördüğünüz istatistikleri eğebilir ve ilgili öğeleri izlemeyi zorlaştırır.
@@ -49,7 +49,7 @@ Telemetriyi filtrelemek için bir telemetri işlemcisi yazın ve ile `TelemetryC
 
 ### <a name="create-a-telemetry-processor-c"></a>Telemetri işlemcisi (C#) oluşturma
 
-1. Filtre oluşturmak için uygulamasını uygulayın `ITelemetryProcessor`.
+1. Filtre oluşturmak için `ITelemetryProcessor` uygulayın.
 
     Telemetri Işlemcilerin bir işlem zinciri oluşturduğuna dikkat edin. Bir telemetri işlemcisini örneklediğinizde, zincirdeki bir sonraki işlemciye bir başvuru verilir. Bir telemetri veri noktası Işlem yöntemine geçirildiğinde, işi çalışır ve sonra zincirde bir sonraki telemetri Işlemcisini çağırır (veya çağırmaz).
 
@@ -105,7 +105,7 @@ Sınıfınıza ortak adlandırılmış özellikler sağlayarak. config dosyasın
 > . Config dosyasındaki tür adı ve tüm özellik adlarını, koddaki sınıf ve özellik adlarına eşleştirmek için dikkatli olmak. . Config dosyası var olmayan bir türe veya özelliğe başvuruyorsa, SDK hiçbir Telemetriyi sessizce gönderemeyebilir.
 >
 
-**Alternatif olarak,** kodda filtreyi başlatabilirsiniz. Uygun bir başlatma sınıfında (örneğin, `Global.asax.cs` AppStart), işlemcinizi zincirine ekleyin:
+**Alternatif olarak,** kodda filtreyi başlatabilirsiniz. Uygun bir başlatma sınıfında; Örneğin, `Global.asax.cs` ' da AppStart:
 
 ```csharp
 var builder = TelemetryConfiguration.Active.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -122,9 +122,9 @@ Bu noktadan sonra oluşturulan TelemetryClients, işlemcinizi kullanacaktır.
 **ASP.NET Core/çalışan hizmeti uygulamaları**
 
 > [!NOTE]
-> `ApplicationInsights.config` Veya kullanarak`TelemetryConfiguration.Active` işlemciyi eklemek ASP.NET Core uygulamalar için veya Microsoft. ApplicationInsights. workerservice SDK kullanıyorsanız geçerli değildir.
+> @No__t-0 kullanılarak işlemcinin eklenmesi veya `TelemetryConfiguration.Active` kullanılması ASP.NET Core uygulamalar için geçerli değildir veya Microsoft. ApplicationInsights. WorkerService SDK kullanıyorsanız.
 
-[ASP.NET Core](asp-net-core.md#adding-telemetry-processors) veya [workerservice](worker-service.md#adding-telemetry-processors)kullanılarak yazılan uygulamalar için, aşağıda gösterildiği gibi `TelemetryProcessor` , üzerinde `IServiceCollection`genişletme yöntemi `AddApplicationInsightsTelemetryProcessor` kullanılarak yeni bir ekleme yapılır. Bu yöntem, `ConfigureServices` `Startup.cs` sınıfınızın yönteminde çağrılır.
+[ASP.NET Core](asp-net-core.md#adding-telemetry-processors) veya [workerservice](worker-service.md#adding-telemetry-processors)kullanılarak yazılan uygulamalar için, yeni bir @no__t eklemek, aşağıda gösterildiği gibi `IServiceCollection` ' te `AddApplicationInsightsTelemetryProcessor` genişletme yöntemi kullanılarak yapılır. Bu yöntem, `Startup.cs` sınıfınızın `ConfigureServices` yönteminde çağrılır.
 
 ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -197,19 +197,19 @@ public void Process(ITelemetry item)
 }
 ```
 
-#### <a name="diagnose-dependency-issues"></a>Bağımlılık sorunlarını tanılama
+#### <a name="diagnose-dependency-issues"></a>Bağımlılık sorunlarını Tanıla
 
 [Bu blog](https://azure.microsoft.com/blog/implement-an-application-insights-telemetry-processor/) , bağımlılıklara otomatik olarak ping göndererek bağımlılık sorunlarını tanılamaya yönelik bir projeyi açıklar.
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>Özellik Ekle: Ilemetrybaşlatıcısı
+## <a name="add-properties-itelemetryinitializer"></a>Özellik Ekle: ıtelemetrybaşlatıcısı
 
 Telemetri başlatıcıları 'nı ek bilgilerle birlikte zenginleştirmek ve/veya standart telemetri modülleri tarafından ayarlanan telemetri özelliklerini geçersiz kılmak için kullanın.
 
 Örneğin, Web paketi için Application Insights HTTP istekleri hakkında telemetri toplar. Varsayılan olarak, yanıt kodu > = 400 olan herhangi bir istek başarısız olarak işaretler. Ancak, 400 ' i başarılı olarak değerlendirmek istiyorsanız, başarı özelliğini ayarlayan bir telemetri başlatıcısı sağlayabilirsiniz.
 
-Bir telemetri başlatıcısı sağlarsanız, her bir Track * () yöntemi çağrıldığında çağırılır. Bu, `Track()` standart telemetri modülleri tarafından çağrılan yöntemleri içerir. Kurala göre, bu modüller zaten bir başlatıcı tarafından ayarlanmış herhangi bir özelliği ayarlamayın. Telemetri başlatıcıları, telemetri işlemcileri çağrılmadan önce çağrılır. Bu nedenle, başlatıcıların yaptığı her türlü zenginleştirme işlemciler tarafından görülebilir.
+Bir telemetri başlatıcısı sağlarsanız, her bir Track * () yöntemi çağrıldığında çağırılır. Buna standart telemetri modülleri tarafından çağrılan `Track()` yöntemleri dahildir. Kurala göre, bu modüller zaten bir başlatıcı tarafından ayarlanmış herhangi bir özelliği ayarlamayın. Telemetri başlatıcıları, telemetri işlemcileri çağrılmadan önce çağrılır. Bu nedenle, başlatıcıların yaptığı her türlü zenginleştirme işlemciler tarafından görülebilir.
 
 **Başlatıcısını tanımlama**
 
@@ -252,7 +252,7 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-**ASP.NET uygulamalar: Başlatıcısını yükleyin**
+**ASP.NET uygulamalar: başlatıcısını yükleme**
 
 ApplicationInsights. config dosyasında:
 
@@ -278,12 +278,12 @@ protected void Application_Start()
 
 [Bu örnekten daha fazla bilgi görüntüleyin.](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole)
 
-**ASP.NET Core/çalışan hizmeti uygulamaları: Başlatıcısını yükleyin**
+**ASP.NET Core/çalışan hizmeti uygulamaları: başlatıcısını yükleyin**
 
 > [!NOTE]
-> `ApplicationInsights.config` Veya kullanarak`TelemetryConfiguration.Active` Başlatıcı eklemek ASP.NET Core uygulamalarında veya Microsoft. ApplicationInsights. workerservice SDK kullanıyorsanız geçerli değildir.
+> @No__t-0 kullanarak Başlatıcı ekleme veya `TelemetryConfiguration.Active` kullanılması ASP.NET Core uygulamalar için geçerli değildir veya Microsoft. ApplicationInsights. WorkerService SDK kullanıyorsanız.
 
-[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) veya [workerservice](worker-service.md#adding-telemetryinitializers)kullanılarak yazılan uygulamalar için, yeni `TelemetryInitializer` bir ekleme işlemi, aşağıda gösterildiği gibi, bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu yöntem içinde `Startup.ConfigureServices` yapılır.
+[ASP.NET Core](asp-net-core.md#adding-telemetryinitializers) veya [workerservice](worker-service.md#adding-telemetryinitializers)kullanılarak yazılan uygulamalar için, aşağıda gösterildiği gibi yeni bir @no__t eklemek, bağımlılık ekleme kapsayıcısına eklenerek yapılır. Bu, `Startup.ConfigureServices` yönteminde yapılır.
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;
@@ -410,16 +410,16 @@ Telemetri işlemcileri ve telemetri başlatıcıları arasındaki fark nedir?
 
 ## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [API’ye Genel Bakış](../../azure-monitor/app/api-custom-events-metrics.md)
+* [API 'ye Genel Bakış](../../azure-monitor/app/api-custom-events-metrics.md)
 * [ASP.NET başvurusu](https://msdn.microsoft.com/library/dn817570.aspx)
 
 ## <a name="sdk-code"></a>SDK kodu
 
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
-* [JavaScript SDK'sı](https://github.com/Microsoft/ApplicationInsights-JS)
+* [JavaScript SDK 'Sı](https://github.com/Microsoft/ApplicationInsights-JS)
 
 ## <a name="next"></a>Sonraki adımlar
 * [Olayları ve günlükleri ara](../../azure-monitor/app/diagnostic-search.md)
-* [Örnekleme](../../azure-monitor/app/sampling.md)
+* [Aşağıdakine](../../azure-monitor/app/sampling.md)
 * [Sorun giderme](../../azure-monitor/app/troubleshoot-faq.md)

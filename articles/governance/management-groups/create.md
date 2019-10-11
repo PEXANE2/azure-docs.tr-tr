@@ -1,17 +1,17 @@
 ---
-title: Azure kaynaklarını düzenlemek için yönetim grupları oluşturma-Azure Idare
+title: Kaynakları düzenlemek için yönetim grupları oluşturma-Azure Idare
 description: Portal, Azure PowerShell ve Azure CLı kullanarak birden çok kaynağı yönetmek için Azure Yönetim grupları oluşturmayı öğrenin.
 author: rthorn17
 ms.service: governance
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 92ab550aa76adc39863a6557d3959b4538bc9a63
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 17154ea72a49ff48a482b1149eeecf0229fcccd7
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980789"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254696"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Kaynak organizasyonu ve yönetimi için yönetim grupları oluşturma
 
@@ -25,7 +25,7 @@ Portal, PowerShell veya Azure CLı kullanarak yönetim grubu oluşturabilirsiniz
 
 ### <a name="create-in-portal"></a>Portalda oluştur
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 
 1. **Tüm hizmetler** > **Yönetim + idare**' ı seçin.
 
@@ -44,7 +44,7 @@ Portal, PowerShell veya Azure CLı kullanarak yönetim grubu oluşturabilirsiniz
 
    ![Yeni yönetim grubu oluşturmak için seçenekler bölmesi](./media/create_context_menu.png)  
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**' i seçin.
 
 ### <a name="create-in-powershell"></a>PowerShell 'de oluştur
 
@@ -93,10 +93,10 @@ az account management-group create --name ContosoSubGroup --parent Contoso
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yönetim grupları hakkında daha fazla bilgi almak için bkz.:
+Yönetim grupları hakkında daha fazla bilgi için bkz.
 
 - [Azure kaynaklarını düzenlemek için yönetim grupları oluşturma](create.md)
 - [Yönetim gruplarınızı değiştirme, silme veya yönetme](manage.md)
-- [Azure PowerShell Kaynak Modülünde yönetim gruplarını gözden geçirme](/powershell/module/az.resources#resources)
-- [REST API'de yönetim gruplarını gözden geçirme](/rest/api/resources/managementgroups)
-- [Azure CLI'de yönetim gruplarını gözden geçirme](/cli/azure/account/management-group)
+- [Azure PowerShell Resources modülündeki Yönetim gruplarını gözden geçirme](/powershell/module/az.resources#resources)
+- [REST API içindeki yönetim gruplarını gözden geçirme](/rest/api/resources/managementgroups)
+- [Azure CLı 'de Yönetim gruplarını gözden geçirme](/cli/azure/account/management-group)

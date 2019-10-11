@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 9825ef1426a1c93f94b502c396fbaab1f86a924e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263500"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240932"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü yükseltmeleri
 
@@ -56,12 +56,12 @@ Yükseltme işlemi aşağıdaki gibi kullanılabilir:
 
 Aşağıdaki SKU 'Lar Şu anda desteklenmektedir (ve daha fazla düzenli olarak eklenir):
 
-| Yayımcı               | İşletim sistemi teklifi      |  Sku               |
+| Publisher               | İşletim sistemi teklifi      |  İsteyin               |
 |-------------------------|---------------|--------------------|
-| Canonical               | UbuntuServer  | 16.04-LTS          |
-| Canonical               | UbuntuServer  | 18.04-LTS          |
-| Standart dışı dalga (OpenLogic)  | CentOS        | 7.5                |
-| CoreOS                  | CoreOS        | Dengeli             |
+| Kurallı               | UbuntuServer  | 16,04-LTS          |
+| Kurallı               | UbuntuServer  | 18,04-LTS          |
+| Standart dışı dalga (OpenLogic)  | CentOS        | 7,5                |
+| CoreOS                  | CoreOS        | Kararlı             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
 | Microsoft Corporation   | WindowsServer | 2016-veri merkezi    |
 | Microsoft Corporation   | WindowsServer | 2016-Datacenter-Smalldisk |
@@ -112,14 +112,14 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek üzere [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 'ini kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
+Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırmak üzere [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 'ini kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
 
 ```azurepowershell-interactive
 Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -AutomaticOSUpgrade $true
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [az VMSS Update](/cli/azure/vmss#az-vmss-update) kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
+### <a name="azure-cli-20"></a>Azure CLı 2,0
+Ölçek kümesi için otomatik işletim sistemi görüntüsü yükseltmelerini yapılandırmak için [az VMSS Update](/cli/azure/vmss#az-vmss-update) kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesi için Otomatik yükseltmeleri yapılandırır:
 
 ```azurecli-interactive
 az vmss update --name myScaleSet --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
@@ -164,7 +164,7 @@ Kaynak kimlik doğrulama hatası varsa, VM 'Leri kurtarmak ve otomatik işletim 
 ## <a name="using-application-health-extension"></a>Uygulama durumu uzantısını kullanma
 Uygulama sistem durumu uzantısı bir sanal makine ölçek kümesi örneği içine dağıtılır ve VM sistem durumu üzerinde, ölçek kümesi örneği içinden raporlar. Uzantıyı bir uygulama uç noktasında araştırma yapmak ve bu örnekteki uygulamanın durumunu güncelleştirmek için yapılandırabilirsiniz. Bu örnek durumu, bir örneğin yükseltme işlemlerine uygun olup olmadığını öğrenmek için Azure tarafından denetlenir.
 
-Uzantı, bir VM içinden sistem durumunu raporladığında, uzantı, uygulama sistem durumu Araştırmaları (özel Azure Load Balancer yoklamaları kullanan) gibi dış araştırmaların kullanılamaz durumda olabilir [](../load-balancer/load-balancer-custom-probe-overview.md).
+Uzantı, bir VM içinden sistem durumunu raporladığında, uzantı, uygulama sistem durumu Araştırmaları (özel Azure Load Balancer [yoklamaları](../load-balancer/load-balancer-custom-probe-overview.md)kullanan) gibi dış araştırmaların kullanılamaz durumda olabilir.
 
 [Bu makaledeki](virtual-machine-scale-sets-health-extension.md#deploy-the-application-health-extension)örneklerde açıklandığı şekilde, uygulama durumu uzantısını ölçek kümelerinizi dağıtmanın birden çok yolu vardır.
 
@@ -222,7 +222,7 @@ GET çağrısı aşağıdaki örnek çıkışına benzer özellikler döndürür
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -OSUpgradeHistory
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli-20"></a>Azure CLı 2,0
 Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [az VMSS Get-OS-Upgrade-History](/cli/azure/vmss#az-vmss-get-os-upgrade-history) komutunu kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi için işletim sistemi yükseltme durumunu nasıl gözden geçiceğiniz ayrıntılardır:
 
 ```azurecli-interactive
@@ -243,7 +243,7 @@ GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{lo
 Get-AzVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "16.04-LTS"
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli-20"></a>Azure CLı 2,0
 ```azurecli-interactive
 az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
 ```
@@ -270,7 +270,7 @@ POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers
 Start-AzVmssRollingOSUpgrade -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli-20"></a>Azure CLı 2,0
 Ölçek kümesi için işletim sistemi yükseltme geçmişini denetlemek için [az VMSS yuvarlama-yükseltme Başlat](/cli/azure/vmss/rolling-upgrade#az-vmss-rolling-upgrade-start) komutunu kullanın. Azure CLı 2.0.47 veya üstünü kullanın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesi üzerinde sıralı bir işletim sistemi yükseltmesini nasıl başlayakullanabileceğinizi ayrıntılardır:
 
 ```azurecli-interactive

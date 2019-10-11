@@ -1,27 +1,27 @@
 ---
-title: Örnek-sanal ağ uç noktaları için anahtar kasalarını denetleyin
+title: VNet uç noktaları olmadan örnek anahtar kasaları
 description: Bu örnek ilke tanımı, sanal ağ hizmeti uç noktaları olmayan örnekleri algılamak için Key Vault kasalarını denetler.
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ccfba0eae8d3c51cf153f58d554dc09b574d3873
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 7bcbcdf68b3c8f882a1e0fbb9953fea575f96556
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976974"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255732"
 ---
 # <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>Sanal ağ uç noktaları olmadan örnek Key Vault kasaları
 
 Bu ilke, sanal ağ uç noktaları olmayan Key Vault kasaları denetler. Güvenlik gereksinimlerinizi zorlamak için kullanın. Daha fazla bilgi için bkz. [Key Vault sanal ağ hizmeti uç noktaları](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)
 
-Bu örnek ilkeyi aşağıdakileri kullanarak dağıtabilirsiniz:
+Bu örnek ilkeyi kullanarak dağıtabilirsiniz:
 
-- [Azure portalı](#azure-portal)
+- [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
-- [Azure CLI](#azure-cli)
+- [Azure CLı](#azure-cli)
 - [REST API](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
@@ -30,16 +30,16 @@ Bu örnek ilkeyi aşağıdakileri kullanarak dağıtabilirsiniz:
 
 ### <a name="policy-definition"></a>İlke tanımı
 
-REST API, 'Azure'a Dağıt' düğmeleri ve portalda el ile kullanılan tam JSON ilkesi tanımı.
+REST API, ' Azure 'a Dağıt ' düğmeleri ve portalda el ile kullanılan bir bütün oluşturulan JSON ilke tanımı.
 
 [!code-json[full](../../../../policy-templates/samples/KeyVault/audit-keyvault-vnet-rules/azurepolicy.json "KeyVault vnet rules")]
 
 > [!NOTE]
-> Portalda el ile ilke oluşturuyorsanız yukarıdaki girişin **properties.parameters** ve **properties.policyRule** bölümlerini kullanın. Geçerli bir JSON kodu haline getirmek için iki bölümü küme ayraçları `{}` arasına alın.
+> Portalda el ile ilke oluşturuyorsanız, yukarıdaki **Özellikler. Parameters** ve **Properties. policyrule** kısımlarını kullanın. İki bölümü, `{}` küme ayraçları ile birlikte, geçerli JSON yapmak için sarın.
 
 ### <a name="policy-rules"></a>İlke kuralları
 
-Azure CLI ve Azure PowerShell tarafından kullanılan, ilke kurallarını tanımlayan JSON.
+Azure CLı ve Azure PowerShell tarafından kullanılan ilkenin kurallarını tanımlayan JSON.
 
 [!code-json[rule](../../../../policy-templates/samples/KeyVault/audit-keyvault-vnet-rules/azurepolicy.rules.json "Policy rules (JSON)")]
 
@@ -47,7 +47,7 @@ Azure CLI ve Azure PowerShell tarafından kullanılan, ilke kurallarını tanım
 
 Bu örnek ilke tanımında tanımlı parametre yok.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
 
 [![ ilke örneğini azure @no__t dağıtma](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)-2[![Ilke örneğini Azure gov 'ye dağıtma](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FKeyVault%2Faudit-keyvault-vnet-rules%2Fazurepolicy.json)
 
@@ -68,9 +68,9 @@ $scope = Get-AzResourceGroup -Name 'YourResourceGroup'
 $assignment = New-AzPolicyAssignment -Name 'audit-keyvault-vnet-rules-assignment' -DisplayName 'Audit Key Vault Assignment' -Scope $scope.ResourceId -PolicyDefinition $definition
 ```
 
-### <a name="remove-with-azure-powershell"></a>Azure PowerShell ile kaldırma
+### <a name="remove-with-azure-powershell"></a>Azure PowerShell ile kaldır
 
-Önceki atamayı ve tanımını kaldırmak için aşağıdaki komutu çalıştırın:
+Önceki atamayı ve tanımını kaldırmak için aşağıdaki komutları çalıştırın:
 
 ```azurepowershell-interactive
 # Remove the Policy Assignment
@@ -82,21 +82,21 @@ Remove-AzPolicyDefinition -Id $definition.ResourceId
 
 ### <a name="azure-powershell-explanation"></a>Azure PowerShell açıklaması
 
-Betikleri dağıtmak ve kaldırmak için aşağıdaki komutları kullanın. Aşağıdaki tabloda yer alan her komut, komuta özgü belgelere yönlendirir:
+Dağıtım ve kaldırma betikleri aşağıdaki komutları kullanır. Aşağıdaki tablodaki her komut, komuta özgü belgelere bağlanır:
 
 | Komut | Notlar |
 |---|---|
-| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Yeni bir Azure İlkesi tanımı oluşturur. |
+| [New-AzPolicyDefinition](/powershell/module/az.resources/New-Azpolicydefinition) | Yeni bir Azure Ilke tanımı oluşturur. |
 | [Get-AzResourceGroup](/powershell/module/az.resources/Get-Azresourcegroup) | Tek bir kaynak grubunu alır. |
-| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Yeni bir Azure İlkesi ataması oluşturur. Bu örnekte bir tanım sağlıyoruz ancak girişim de kullanılabilir. |
-| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Var olan bir Azure İlkesi atamasını kaldırır. |
-| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Var olan bir Azure İlkesi tanımını kaldırır. |
+| [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) | Yeni bir Azure Ilke ataması oluşturur. Bu örnekte, bir tanım sağlıyoruz, ancak aynı zamanda bir girişim alabilir. |
+| [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Var olan bir Azure Ilke atamasını kaldırır. |
+| [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Mevcut bir Azure Ilke tanımını kaldırır. |
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLı
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
-### <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
+### <a name="deploy-with-azure-cli"></a>Azure CLı ile dağıtma
 
 ```azurecli-interactive
 # Create the Policy Definition (Subscription scope)
@@ -109,9 +109,9 @@ scope=$(az group show --name 'YourResourceGroup')
 assignment=$(az policy assignment create --name 'audit-keyvault-vnet-rules-assignment' --display-name 'Audit Key Vault Assignment' --scope `echo $scope | jq '.id' -r` --policy `echo $definition | jq '.name' -r`)
 ```
 
-### <a name="remove-with-azure-cli"></a>Azure CLI ile kaldırma
+### <a name="remove-with-azure-cli"></a>Azure CLı ile kaldırma
 
-Önceki atamayı ve tanımını kaldırmak için aşağıdaki komutu çalıştırın:
+Önceki atamayı ve tanımını kaldırmak için aşağıdaki komutları çalıştırın:
 
 ```azurecli-interactive
 # Remove the Policy Assignment
@@ -121,35 +121,35 @@ az policy assignment delete --name `echo $assignment | jq '.name' -r`
 az policy definition delete --name `echo $definition | jq '.name' -r`
 ```
 
-### <a name="azure-cli-explanation"></a>Azure CLI açıklaması
+### <a name="azure-cli-explanation"></a>Azure CLı açıklaması
 
 | Komut | Notlar |
 |---|---|
-| [az policy definition create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Yeni bir Azure İlkesi tanımı oluşturur. |
-| [az group show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Tek bir kaynak grubunu alır. |
-| [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Yeni bir Azure İlkesi ataması oluşturur. Bu örnekte bir tanım sağlıyoruz ancak girişim de kullanılabilir. |
-| [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Var olan bir Azure İlkesi atamasını kaldırır. |
-| [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Var olan bir Azure İlkesi tanımını kaldırır. |
+| [az Policy Definition Create](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-create) | Yeni bir Azure Ilke tanımı oluşturur. |
+| [az Group Show](/cli/azure/group?view=azure-cli-latest#az-group-show) | Tek bir kaynak grubunu alır. |
+| [az Policy atama Create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) | Yeni bir Azure Ilke ataması oluşturur. Bu örnekte, bir tanım sağlıyoruz, ancak aynı zamanda bir girişim alabilir. |
+| [az Policy atama Delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Var olan bir Azure Ilke atamasını kaldırır. |
+| [az Policy Definition Delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Mevcut bir Azure Ilke tanımını kaldırır. |
 
 ## <a name="rest-api"></a>REST API
 
-[ARMClient](https://github.com/projectkudu/ARMClient) veya PowerShell gibi Resource Manager REST API'si ile etkileşim kurmak için kullanılabilecek birçok araç vardır.
+[Armclient](https://github.com/projectkudu/ARMClient) veya PowerShell gibi kaynak yöneticisi REST API etkileşimde bulunmak için kullanılabilecek çeşitli araçlar vardır.
 
 ### <a name="deploy-with-rest-api"></a>REST API ile dağıtma
 
-- İlke Tanımını (Abonelik kapsamı) oluşturun. İstek Gövdesi için [ilke tanımı](#policy-definition) JSON kodunu kullanın.
+- Ilke tanımını (abonelik kapsamı) oluşturun. Istek gövdesi için JSON [ilke tanımını](#policy-definition) kullanın.
 
   ```http
   PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/audit-keyvault-vnet-rules?api-version=2018-05-01
   ```
 
-- İlke Atamasını (Kaynak Grubu kapsamı) oluşturma
+- Ilke atamasını oluşturma (kaynak grubu kapsamı)
 
   ```http
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/YourResourceGroup/providers/Microsoft.Authorization/policyAssignments/audit-keyvault-vnet-rules-assignment?api-version=2018-05-01
   ```
 
-  İstek Gövdesi için aşağıdaki JSON örneğini kullanın:
+  Istek gövdesi için aşağıdaki JSON örneğini kullanın:
 
   ```json
   {
@@ -160,30 +160,30 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
   }
   ```
 
-### <a name="remove-with-rest-api"></a>REST API'si ile kaldırma
+### <a name="remove-with-rest-api"></a>REST API ile kaldır
 
-- İlke Atamasını kaldırma
+- Ilke atamasını kaldırma
 
   ```http
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/audit-keyvault-vnet-rules-assignment?api-version=2018-05-01
   ```
 
-- İlke Tanımını kaldırma
+- Ilke tanımını kaldır
 
   ```http
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyDefinitions/audit-keyvault-vnet-rules?api-version=2018-05-01
   ```
 
-### <a name="rest-api-explanation"></a>REST API'si açıklaması
+### <a name="rest-api-explanation"></a>REST API açıklaması
 
-| Hizmet | Grup | İşlem | Notlar |
+| Hizmet | Grup | Çalışma | Notlar |
 |---|---|---|---|
-| Kaynak Yönetimi | İlke Tanımları | [Oluşturma](/rest/api/resources/policydefinitions/createorupdate) | Abonelikte yeni bir Azure İlkesi tanımı oluşturur. Alternatif: [Yönetim grubunda oluşturma](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
-| Kaynak Yönetimi | İlke Atamaları | [Oluşturma](/rest/api/resources/policyassignments/create) | Yeni bir Azure İlkesi ataması oluşturur. Bu örnekte bir tanım sağlıyoruz ancak girişim de kullanılabilir. |
-| Kaynak Yönetimi | İlke Atamaları | [Silme](/rest/api/resources/policyassignments/delete) | Var olan bir Azure İlkesi atamasını kaldırır. |
-| Kaynak Yönetimi | İlke Tanımları | [Silme](/rest/api/resources/policydefinitions/delete) | Var olan bir Azure İlkesi tanımını kaldırır. Alternatif: [Yönetim grubunda silme](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
+| Kaynak yönetimi | İlke tanımları | [Oluşturma](/rest/api/resources/policydefinitions/createorupdate) | Bir abonelikte yeni bir Azure Ilke tanımı oluşturur. Alternatif: [Yönetim grubunda Oluştur](/rest/api/resources/policydefinitions/createorupdateatmanagementgroup) |
+| Kaynak yönetimi | İlke atamaları | [Oluşturma](/rest/api/resources/policyassignments/create) | Yeni bir Azure Ilke ataması oluşturur. Bu örnekte, bir tanım sağlıyoruz, ancak aynı zamanda bir girişim alabilir. |
+| Kaynak yönetimi | İlke atamaları | [Delete](/rest/api/resources/policyassignments/delete) | Var olan bir Azure Ilke atamasını kaldırır. |
+| Kaynak yönetimi | İlke tanımları | [Delete](/rest/api/resources/policydefinitions/delete) | Mevcut bir Azure Ilke tanımını kaldırır. Alternatif: [Yönetim grubunda Sil](/rest/api/resources/policydefinitions/deleteatmanagementgroup) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Ek [Azure İlkesi örneklerini](index.md) gözden geçirme
-- [Azure İlkesi tanımı yapısını](../concepts/definition-structure.md) gözden geçirme
+- Ek [Azure ilkesi örneklerini](index.md) gözden geçirin
+- [Azure ilke tanımı yapısını](../concepts/definition-structure.md) gözden geçirin
