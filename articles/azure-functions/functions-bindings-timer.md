@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 57b4f018cd044b4f516266dcf9776e82252f7f22
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 6ac83a054b146b9d515386332779c4fe94cde7c3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937121"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263438"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
 
@@ -213,7 +213,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
     }
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
- ```
+```
 
 ## <a name="configuration"></a>Yapılandırma
 
@@ -264,7 +264,7 @@ Her alan aşağıdaki değer türlerinden birine sahip olabilir:
 |---------|---------|---------|
 |Belirli bir değer |<nobr>"0 5 * * * *"</nobr>|ss: 05:00, SS her saat (saat)|
 |Tüm değerler (`*`)|<nobr>"0 * 5 * * *"</nobr>|5: AA: 00 ' da her gün, DD 'nin saatte bir dakikası (günde 60 kez)|
-|Bir Aralık (`-` işleci)|<nobr>"5-7 * * * * *"</nobr>|ss: DD: 05, ss: DD: 06, ve hh: mm: 07 saat|  
+|Bir Aralık (`-` işleci)|<nobr>"5-7 * * * * *"</nobr>|ss: DD: 05, ss: DD: 06, ve hh: mm: 07 saat|
 |Bir değerler kümesi (`,` işleci)|<nobr>"5, 8, 10 * * * * *"</nobr>|ss: DD: 05, ss: DD: 08 ve hh: mm: 10 burada ss: DD her saatin dakikada bir (3 kez bir dakika)|
 |Aralık değeri (`/` işleci)|<nobr>"0 */5 * * * *"</nobr>|ss: 05:00, ss: 10:00, hh: 15:00 ve bu şekilde ss: 00 ' da her saat (12 kez saat)|
 
@@ -326,7 +326,16 @@ Bir işlev uygulaması birden çok örneğe ölçekleniyorsa, tüm örneklerde y
 
 ## <a name="function-apps-sharing-storage"></a>İşlev uygulamaları paylaşım depolaması
 
-Birden çok işlev uygulamasında bir depolama hesabı paylaşırsanız, her bir işlev uygulamasının *Host. JSON*içinde farklı bir @no__t (0) olduğundan emin olun. @No__t-0 özelliğini atlayabilir veya her bir işlev uygulamasının `id` ' i farklı bir değere el ile ayarlayabilirsiniz. Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçeklenirken yalnızca bir zamanlayıcı örneği olacağını sağlamak için bir depolama kilidi kullanır. İki işlevli uygulama aynı @no__t paylaşıyorsa-0 ' dır ve her biri bir Zamanlayıcı tetikleyicisi kullanıyorsa, yalnızca bir Zamanlayıcı çalışır.
+App Service 'e dağıtılmamış işlev uygulamalarında depolama hesaplarını paylaşıyorsanız, her uygulamaya açıkça ana bilgisayar KIMLIĞI atamanız gerekebilir.
+
+| İşlevler sürümü | Ayar                                              |
+| ----------------- | ---------------------------------------------------- |
+| 2.x               | `AzureFunctionsWebHost__hostid` ortam değişkeni |
+| 'in               | *Host. JSON* içinde `id`                                  |
+
+Tanımlayıcı değeri atlayabilir veya her bir işlev uygulamasının tanımlayıcı yapılandırmasını farklı bir değere el ile ayarlayabilirsiniz.
+
+Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçeklenirken yalnızca bir zamanlayıcı örneği olduğundan emin olmak için bir depolama kilidi kullanır. İki işlev uygulaması aynı tanımlayıcı yapılandırmayı paylaşıyorsa ve her biri bir Zamanlayıcı tetikleyicisi kullanıyorsa, yalnızca bir Zamanlayıcı çalışır.
 
 ## <a name="retry-behavior"></a>Yeniden deneme davranışı
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights için Event Hubs olay kaynağı ekleme | Microsoft Docs
-description: Bu makalede, Azure Event Hubs için zaman serisi görüşleri ortamınıza bağlı bir olay kaynağı eklemeyi açıklar.
+title: Azure Time Series Insights için Event Hubs bir olay kaynağı ekleyin | Microsoft Docs
+description: Bu makalede, Time Series Insights ortamınıza Azure Event Hubs bağlı bir olay kaynağının nasıl ekleneceği açıklanmaktadır.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -9,18 +9,18 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8403c8fbc4faf35e0ccd3c87347e88a46f0769ff
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: aaddfb19889e31bb8e0d52d1df2d6b034b6e7f6b
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854471"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274387"
 ---
-# <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Zaman serisi görüşleri ortamınıza bir event hub olay kaynağı ekleme
+# <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights ortamınıza bir olay hub 'ı olay kaynağı ekleme
 
-Bu makalede, Azure zaman serisi görüşleri ortamınız için Azure Event Hubs'dan olay verilerini okuyan bir olay kaynağı eklemek için Azure portalını kullanmayı açıklar.
+Bu makalede, Azure Event Hubs verileri Azure Time Series Insights ortamınıza okuyan bir olay kaynağı eklemek için Azure portal nasıl kullanılacağı açıklanır.
 
 > [!NOTE]
 > Bu makalede açıklanan adımlar, Time Series Insights GA ve Time Series Insights önizleme ortamları için de geçerlidir.
@@ -29,88 +29,90 @@ Bu makalede, Azure zaman serisi görüşleri ortamınız için Azure Event Hubs'
 
 - [Azure Time Series Insights ortamı oluşturma](./time-series-insights-update-create-environment.md)bölümünde açıklandığı gibi bir Time Series Insights ortamı oluşturun.
 - Bir olay hub'ı oluşturun. Bkz. [Azure Portal kullanarak Event Hubs ad alanı ve Olay Hub 'ı oluşturma](../event-hubs/event-hubs-create.md).
-- Gönderilen etkin ileti olayları olay hub'ı olması gerekir. [.NET Framework kullanarak olayları Azure Event Hubs gönderme](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)hakkında bilgi edinin.
-- Zaman serisi görüşleri ortamına gelen tüketebileceği olay hub'ında ayrılmış bir tüketici grubu oluşturun. Her zaman serisi görüşleri olay kaynağı, diğer bir tüketici ile paylaşılmaz kendi adanmış bir tüketici grubu olması gerekir. Aynı tüketici grubu olaylardan birden fazla okuyucuyu kapsayacak kullanmasına, tüm okuyucular hatalar görmeniz olasıdır. Olay hub'ı başına 20 tüketici grubu sınırı yoktur. Ayrıntılar için bkz [Event Hubs Programlama Kılavuzu](../event-hubs/event-hubs-programming-guide.md).
+- Olay Hub 'ına, etkin ileti olayları gönderilmesi gerekir. [.NET Framework kullanarak olayları Azure Event Hubs gönderme](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)hakkında bilgi edinin.
+- Time Series Insights ortamının tüketebileceği Olay Hub 'ında adanmış bir tüketici grubu oluşturun. Her bir Time Series Insights olay kaynağı, başka bir tüketici ile paylaşılmayan kendi adanmış bir tüketici grubuna sahip olmalıdır. Birden çok okuyucu aynı tüketici grubundan olay tükettiği takdirde, tüm okuyucular sorunları görebilir. Olay Hub 'ı başına 20 Tüketici grubu sınırı vardır. Ayrıntılar için [Event Hubs programlama kılavuzuna](../event-hubs/event-hubs-programming-guide.md)bakın.
 
-### <a name="add-a-consumer-group-to-your-event-hub"></a>Olay hub'ınıza bir tüketici grubu Ekle
+### <a name="add-a-consumer-group-to-your-event-hub"></a>Olay Hub 'ınıza bir tüketici grubu ekleme
 
-Uygulamaları, Azure Event Hubs'dan veri çekmek için tüketici grubu kullanır. Olay Hub 'ından verileri güvenle okumak için, yalnızca bu Time Series Insights ortamı tarafından kullanılan ayrılmış bir tüketici grubu sağlayın.
+Uygulamalar, Azure Event Hubs verileri çekmek için tüketici gruplarını kullanır. Olay Hub 'ından verileri güvenle okumak için, yalnızca bu Time Series Insights ortamı tarafından kullanılan ayrılmış bir tüketici grubu sağlayın.
 
-Olay hub'ında yeni bir tüketici grubu eklemek için:
+Olay Hub 'ınıza yeni bir tüketici grubu eklemek için:
 
-1. Azure portalında bulun ve olay hub'ınızı açın.
+1. [Azure Portal](https://portal.azure.com), Olay Hub 'ı ad alanından Olay Hub 'ınızı bulun ve açın.
 
-1. Altında **varlıkları**seçin **tüketici grupları**ve ardından **tüketici grubu**.
+    [![Olay hub 'ı ad alanınızı açın](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
 
-   [![Olay Hub 'ı-Tüketici grubu ekleme](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png#lightbox)
+1. **Varlıklar**altında **tüketici grupları**' nı seçin ve ardından **Tüketici grubu**' nu seçin.
 
-1. Üzerinde **tüketici grupları** sayfasında, yeni bir benzersiz değer için girin **adı**.  Zaman serisi görüşleri ortamına yeni bir olay kaynağı oluşturduğunuzda bu aynı adı kullanın.
+   [![Event hub 'ı-Tüketici grubu ekleme](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
 
-1. **Oluştur**’u seçin.
+1. **Tüketici grupları** sayfasında, **ad**için yeni bir benzersiz değer girin.  Time Series Insights ortamında yeni bir olay kaynağı oluştururken aynı adı kullanın.
 
-## <a name="add-a-new-event-source"></a>Yeni bir olay kaynağı ekleme
+1. **Oluştur**'u seçin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+## <a name="add-a-new-event-source"></a>Yeni bir olay kaynağı ekleyin
 
-1. Mevcut Time Series Insights ortamınızı bulun. Sol menüde **tüm kaynakları**ve ardından zaman serisi görüşleri ortamınızı seçin.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-1. Altında **ortam topolojisinin**seçin **olay kaynakları**ve ardından **Ekle**.
+1. Mevcut Time Series Insights ortamınızı bulun. Sol taraftaki menüden **tüm kaynaklar**' ı ve ardından Time Series Insights ortamınızı seçin.
 
-   [![Olay kaynakları altında Ekle düğmesini seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-sources.png#lightbox)
+1. **Ortam topolojisi**altında **olay kaynakları**' nı seçin ve ardından **Ekle**' yi seçin.
 
-1. İçin bir değer girin **olay kaynağı adını** olan bu zaman serisi görüşleri ortamına benzersiz gibi **olay akışı**.
+   [![ olay kaynakları altında, Ekle düğmesini seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
 
-1. İçin **kaynak**seçin **olay hub'ı**.
+1. Bu Time Series Insights ortamı için, **Event-Stream**gibi benzersiz bir **olay kaynağı adı** değeri girin.
 
-1. İçin uygun değerleri seçin **içeri aktarma seçeneği**:
-   - Mevcut bir olay hub'ı aboneliklerinizden biri varsa, seçin **kullanımı olay Hub'ından kullanılabilir abonelikleri**. Bu seçenek için kolay bir yaklaşımdır.
+1. **Kaynak**Için **Olay Hub**'ı ' nı seçin.
 
-       [![Yeni olay kaynağı bölmesinde ilk üç parametrenin değerlerini girin](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-import-option.png#lightbox)
+1. **Içeri aktarma seçeneği**için uygun değerleri seçin:
 
+   * Aboneliklerinizden birinde mevcut bir olay hub 'ınız varsa, **kullanılabilir aboneliklerden Olay Hub 'ını kullan**' ı seçin. Bu seçenek en kolay yaklaşımdır.
 
-       [![Abonelik ve Olay Hub 'ı ayrıntıları](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+     [![Bir olay kaynağı içeri aktarma seçeneği seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
 
-     Aşağıdaki tablo için gerekli özellikleri açıklar **kullanımı olay Hub'ından kullanılabilir abonelikleri** seçeneği:
+    *  Aşağıdaki tabloda, **kullanılabilir aboneliklerden Event hub 'ı kullan** seçeneği için gereken özellikler açıklanmaktadır:
 
-     | Özellik | Açıklama |
-     | --- | --- |
-     | Abonelik Kimliği | Bu olay hub'ı oluşturulduğu abonelik seçin.
-     | Service Bus ad alanı | Olay hub'ı içeren Azure Service Bus ad alanı seçin.
-     | Olay hub'ı adı | Olay hub'ı adını seçin.
-     | Olay hub'ı ilke adı | Paylaşılan erişim ilkesi seçin. Olay hub'ında paylaşılan erişim ilkesi oluşturabilirsiniz **yapılandırma** sekmesi. Her paylaşılan erişim ilkesinin bir adı ayarlayın ve erişim anahtarları izinleri vardır. Olay kaynağınız için paylaşılan erişim ilkesi *gerekir* sahip **okuma** izinleri.
-     | Olay hub'ı ilke anahtarı | Anahtar değeri önceden doldurulmuş.
-     | Olay hub'ı tüketici grubu | Tüketici grubu olayları olay hub'ından okur. Olay kaynağınız için ayrılmış bir tüketici grubu kullanmanızı öneririz. |
-     | Olay serileştirme biçimi | Şu anda, JSON yalnızca serileştirme biçimidir. Olay iletilerinin bu biçimde olması veya verilerin okunamaz olması gerekir. |
-     | Zaman damgası özellik adı | Bu değeri belirlemek için olay hub'ına gönderilen ileti verileri ileti biçimi anlamanız gerekir. Bu değer **adı** ileti verileri, olay zaman damgası kullanmak istediğiniz belirli olay özelliğini. Değer büyük/küçük harf duyarlıdır. Boş bırakılırsa **olay sıraya alma süresi** olay kaynağı olarak olay zaman damgası kullanılır. |
+       [![Abonelik ve Olay Hub 'ı ayrıntıları](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
 
-    - Olay hub'ı aboneliklerinize dış olup olmadığını veya Gelişmiş seçeneklerini seçmek istiyorsanız seçin **sağlayan olay hub'ı ayarlarını elle**.
+       | Özellik | Açıklama |
+       | --- | --- |
+       | Abonelik | Abonelik, istenen Olay Hub 'ı örneği ve ad alanı öğesine aittir. |
+       | Olay hub'ı ad alanı | İstenen olay hub 'ının örneğine ait olan olay hub 'ı ad alanı. |
+       | Olay Hub'ı adı | İstenen olay hub 'ının adı. |
+       | Olay Hub 'ı ilke değeri | İstenen paylaşılan erişim ilkesini seçin. Paylaşılan erişim ilkesini Event hub 'ı **Yapılandır** sekmesinde oluşturabilirsiniz. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. Olay kaynağınız için paylaşılan erişim ilkesinin **okuma** izinleri *olmalıdır* . |
+       | Olay Hub 'ı ilke anahtarı | Seçili olay hub 'ı ilke değerinden önceden dolduruldu. |
 
-      İçin gerekli özellikler aşağıdaki tabloda açıklanmıştır **sağlayan olay hub'ı ayarlarını elle** seçeneği:
+    * Olay Hub 'ı abonelikleriniz dışında ise veya Gelişmiş Seçenekler ' i seçmek istiyorsanız, **Olay Hub 'ı ayarlarını el Ile sağla**' yı seçin.
+
+       Aşağıdaki tabloda, **Olay Hub 'ı ayarlarının el Ile sağlanması** için gereken özellikler açıklanmaktadır:
  
-      | Özellik | Açıklama |
-      | --- | --- |
-      | Abonelik Kimliği | Bu olay hub'ı oluşturulduğu abonelik.
-      | Kaynak grubu | Bu olay hub'ı oluşturulduğu kaynak grubu.
-      | Service Bus ad alanı | Service Bus ad alanı, Mesajlaşma varlıkları kümesine ilişkin bir kapsayıcıdır. Yeni bir olay hub'ı oluşturduğunuzda, bir Service Bus ad alanı da oluşturmuş olursunuz.
-      | Olay hub'ı adı | Olay hub'ınızın adıdır. Olay hub'ınızı oluşturduğunuzda, onu bir özel ad da vermiş oldunuz.
-      | Olay hub'ı ilke adı | Paylaşılan erişim ilkesi. Olay hub'ında bir paylaşılan erişim ilkesi oluşturabilirsiniz **yapılandırma** sekmesi. Her paylaşılan erişim ilkesinin bir adı ayarlayın ve erişim anahtarları izinleri vardır. Olay kaynağınız için paylaşılan erişim ilkesi *gerekir* sahip **okuma** izinleri.
-      | Olay hub'ı ilke anahtarı | Service Bus ad alanı kimlik doğrulaması yapmak için kullanılan paylaşılan erişim anahtarı. Birincil veya ikincil anahtarı buraya girin.
-      | Olay hub'ı tüketici grubu | Tüketici grubu olayları olay hub'ından okur. Olay kaynağınız için ayrılmış bir tüketici grubu kullanmanızı öneririz.
-      | Olay serileştirme biçimi | Şu anda, JSON yalnızca serileştirme biçimidir. Olay iletilerinin bu biçimde olması veya verilerin okunamaz olması gerekir. |
-      | Zaman damgası özellik adı | Bu değeri belirlemek için olay hub'ına gönderilen ileti verileri ileti biçimi anlamanız gerekir. Bu değer **adı** ileti verileri, olay zaman damgası kullanmak istediğiniz belirli olay özelliğini. Değer büyük/küçük harf duyarlıdır. Boş bırakılırsa **olay sıraya alma süresi** olay kaynağı olarak olay zaman damgası kullanılır. |
+       | Özellik | Açıklama |
+       | --- | --- |
+       | Abonelik Kimliği | Abonelik, istenen Olay Hub 'ı örneği ve ad alanı öğesine aittir. |
+       | Kaynak grubu | İstenen olay hub 'ı örneğinin ve ad alanının ait olduğu kaynak grubu. |
+       | Olay hub'ı ad alanı | İstenen olay hub 'ının örneğine ait olan olay hub 'ı ad alanı. |
+       | Olay Hub'ı adı | İstenen olay hub 'ının adı. |
+       | Olay Hub 'ı ilke değeri | İstenen paylaşılan erişim ilkesini seçin. Paylaşılan erişim ilkesini Event hub 'ı **Yapılandır** sekmesinde oluşturabilirsiniz. Her paylaşılan erişim ilkesinin adı, sizin ayarladığınız izinler ve anahtarlara erişim vardır. Olay kaynağınız için paylaşılan erişim ilkesinin **okuma** izinleri *olmalıdır* . |
+       | Olay Hub 'ı ilke anahtarı | Service Bus ad alanına erişimin kimliğini doğrulamak için kullanılan paylaşılan erişim anahtarı. Birincil veya ikincil anahtarı buraya girin. |
 
-1. Olay hub'ınıza eklediğiniz adanmış Time Series Insights tüketici grubu adını ekleyin.
+    * Her iki seçenek de aşağıdaki yapılandırma seçeneklerini paylaşır:
 
-1. **Oluştur**’u seçin.
+       | Özellik | Açıklama |
+       | --- | --- |
+       | Olay Hub 'ı Tüketici grubu | Olay Hub 'ından olayları okuyan Tüketici grubu. Olay kaynağınız için adanmış bir tüketici grubu kullanmanızı önemle tavsiye ederiz. |
+       | Olay serileştirme biçimi | Şu anda JSON tek kullanılabilir serileştirme biçimidir. Olay iletilerinin bu biçimde olması veya verilerin okunamaz olması gerekir. |
+       | Zaman damgası Özellik adı | Bu değeri öğrenmek için, Olay Hub 'ına gönderilen ileti verilerinin ileti biçimini anlamanız gerekir. Bu değer, olay zaman damgası olarak kullanmak istediğiniz ileti verilerinde belirli olay özelliğinin **adıdır** . Değer, büyük/küçük harfe duyarlıdır. Boş bırakılırsa olay kaynağı olay **sıraya alma süresi** olay zaman damgası olarak kullanılır. |
 
-   [![Oluştur ' u seçin](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png#lightbox)
+1. Olay Hub 'ınıza eklediğiniz adanmış Time Series Insights Tüketici grubu adını ekleyin.
 
-   Olay kaynağı oluşturulduktan sonra zaman serisi görüşleri ortamınıza veri akışını otomatik olarak başlar.
+1. **Oluştur**'u seçin.
+
+   Olay kaynağı oluşturulduktan sonra, Time Series Insights ortamınızda akış verilerini otomatik olarak başlatır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Veri erişim ilkelerini tanımlama](time-series-insights-data-access.md) verilerin güvenliğini sağlamak için.
+* Verilerin güvenliğini sağlamak için [veri erişim Ilkeleri tanımlayın](time-series-insights-data-access.md) .
 
-* [Olayları gönderme](time-series-insights-send-events.md) olay kaynağına.
+* [Olayları](time-series-insights-send-events.md) olay kaynağına gönderin.
 
-* Ortamınızda erişim [Time Series Insights gezgininin](https://insights.timeseries.azure.com).
+* [Time Series Insights Gezgini](https://insights.timeseries.azure.com)' nde ortamınıza erişin.

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4455d499ab4c52a27a7d9cf878e8130ff38b1c62
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 670615980b7fd78441a08ba987073dc139b3792a
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846957"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274446"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
 
@@ -24,8 +24,8 @@ Bu makalede, Azure Time Series Insights önizleme erişim ilkelerinin iki türü
 
 ## <a name="sign-in-to-time-series-insights"></a>Time Series Insights oturum açın
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-1. Time Series Insights ortamınızı bulun. Arama `Time Series` kutusuna girin . Arama sonuçlarında **zaman serisi ortamını** seçin.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. Time Series Insights ortamınızı bulun. **Arama** kutusuna `Time Series` girin. Arama sonuçlarında **zaman serisi ortamını** seçin.
 1. Listeden Zaman Serisi Görüşleri ortamınızı seçin.
 
 ## <a name="grant-data-access"></a>Veri erişim izni verme
@@ -34,11 +34,11 @@ Bir Kullanıcı sorumlusu için veri erişimi sağlamak üzere bu adımları izl
 
 1. **Veri erişim ilkeleri**' ni seçin ve **+ Ekle**' yi seçin.
 
-    [![Veri erişimi-bir](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
+    [![Data-Access-One](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
 
 1. **Kullanıcı Seç ' i**seçin. Eklemek istediğiniz kullanıcıyı bulmak için Kullanıcı adını veya e-posta adresini arayın. Seçimi onaylamak için **Seç** ' i seçin.
 
-    [![Veri erişimi-iki](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
+    [![Veri-erişim-iki](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
 
 1. **Rol Seç ' i**seçin. Kullanıcı için uygun erişim rolünü seçin:
 
@@ -48,37 +48,37 @@ Bir Kullanıcı sorumlusu için veri erişimi sağlamak üzere bu adımları izl
 
    Rol seçimini onaylamak için **Tamam ' ı** seçin.
 
-    [![Veri erişimi-üç](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
+    [![ veri-erişim-üç](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
 
 1. **Kullanıcı rolü Seç** sayfasında **Tamam ' ı** seçin.
 
-    [![Veri erişimi-dört](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
+    [![Data-Access-dört](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
 
 1. **Veri erişim ilkeleri** sayfasının, her kullanıcı için kullanıcıları ve rolleri listelediğinden emin olun.
 
-    [![Veri erişimi-beş](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
+    [![Veri-erişim-beş](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
 
 ## <a name="provide-guest-access-from-another-aad-tenant"></a>Başka bir AAD kiracısından konuk erişimi sağlama
 
-`Guest`bir yönetim rolü değil. Bir kiracıdan diğerine davet edilen bir hesap için kullanılan bir terimdir. Konuk hesabı kiracının dizinine davet edildikten sonra, aynı erişim denetimine diğer tüm hesap gibi uygulanabilirler. Access Control (ıAM) dikey penceresini kullanarak Time Series Insights ortamına yönetim erişimi verebilirsiniz. Ya da veri erişim Ilkeleri dikey penceresi aracılığıyla ortamdaki verilere erişim izni verebilirsiniz. Azure Active Directory (Azure AD) kiracı konuk erişimi hakkında daha fazla bilgi için [Azure Portal Add Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)' nı okuyun.
+`Guest` bir yönetim rolü değildir. Bir kiracıdan diğerine davet edilen bir hesap için kullanılan bir terimdir. Konuk hesabı kiracının dizinine davet edildikten sonra, aynı erişim denetimine diğer tüm hesap gibi uygulanabilirler. Access Control (ıAM) dikey penceresini kullanarak Time Series Insights ortamına yönetim erişimi verebilirsiniz. Ya da veri erişim Ilkeleri dikey penceresi aracılığıyla ortamdaki verilere erişim izni verebilirsiniz. Azure Active Directory (Azure AD) kiracı konuk erişimi hakkında daha fazla bilgi için [Azure Portal Add Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)' nı okuyun.
 
 Başka bir kiracıdan bir Azure AD kullanıcısına Time Series Insights ortamına konuk erişimi sağlamak için aşağıdaki adımları izleyin.
 
 1. **Veri erişim ilkeleri**' ni seçin ve **+ davet et**' i seçin.
 
-    [![Veri-erişim-altı](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
+    [![ veri-erişim-altı](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
 
 1. Davet etmek istediğiniz kullanıcının e-posta adresini girin. Bu e-posta adresinin Azure AD ile ilişkilendirilmesi gerekir. İsteğe bağlı olarak davete kişisel bir ileti ekleyebilirsiniz.
 
-    [![Veri erişimi-yedi](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
+    [![ veri-erişim-yedi](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
 
 1. Ekranda görünen onay balonu olup olmadığına bakın.
 
-    [![Veri erişimi-sekiz](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
+    [![ veri-erişim-sekiz](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
 
 1. **Kullanıcı Seç ' i**seçin. Eklemek istediğiniz kullanıcıyı bulmak için davet ettiğiniz Konuk kullanıcının e-posta adresini arayın. Sonra, seçimi onaylamak için öğesini **seçin** .
 
-    [![Veri erişimi-dokuz](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
+    [![ veri-erişim-dokuz](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
 
 1. **Rol Seç ' i**seçin. Konuk Kullanıcı için uygun erişim rolünü seçin:
 
@@ -88,29 +88,29 @@ Başka bir kiracıdan bir Azure AD kullanıcısına Time Series Insights ortamı
 
    Rol seçimini onaylamak için **Tamam ' ı** seçin.
 
-    [![Veri erişimi-on](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
+    [![Veri-erişim-on](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
 
 1. **Kullanıcı rolü Seç** sayfasında **Tamam ' ı** seçin.
 
 1. **Veri erişim ilkeleri** sayfasının Konuk kullanıcıyı ve her Konuk Kullanıcı için rolleri listelediğinden emin olun.
 
-    [![Veri erişimi-on bir](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
+    [![ veri erişimi-on bir](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
 
 1. Artık Konuk Kullanıcı, davet ettiğiniz Azure kiracısında bulunan ortama erişmek için gereken adımları izlemelidir. İlk olarak, gönderdiğiniz daveti kabul etmiş olursunuz. Bu davet, 5. adımda kullandığınız e-posta adresine e-posta yoluyla gönderilir. Kabul etmek için **kullanmaya başlayın** ' ı seçer.
 
-    [![Veri erişimi-on iki](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
+    [![Data-Access-On iki](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
 
 1. Sonra, Konuk Kullanıcı, yöneticinin organizasyonu ile ilişkili izinleri kabul eder.
 
-    [![Veri erişimi-on dört](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
+    [![ veri erişimi-üçüncü dört](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
 
 1. Konuk Kullanıcı, davet etmek için kullandığınız e-posta adresine kaydolduktan sonra daveti kabul ettiğinde insights.azure.com adresine gider. Bu durumda, ekranın sağ üst köşesindeki e-posta adresinin yanındaki avatarını seçer.
 
-    [![Veri erişimi-on dört](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
+    [![ veri erişimi-on dört](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
 
 1. Sonra, Konuk Kullanıcı, Dizin açılan menüsünden Azure kiracınızı seçer. Bu kiracı, davet ettiğiniz bir kiracdır.
 
-    [![Veri erişimi-on beş](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
+    [![ veri erişimi-on beş](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
 
 Konuk Kullanıcı kiracınızı seçtikten sonra, erişimi verdiğiniz Time Series Insights ortamı görürler. Artık, **Adım 5**' te size sağladıkları rolle ilişkili tüm yetenekler vardır.
 

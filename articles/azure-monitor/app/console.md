@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: b6ecf1e9cece51635afc0bf0f8025b6e117438ee
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 53a765cd2e71b5b1eb1ac2c70506fd55aec6736e
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169444"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274136"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET konsol uygulamaları için Application Insights
 
@@ -27,10 +27,10 @@ ms.locfileid: "71169444"
 [Microsoft Azure](https://azure.com)bir aboneliğiniz olması gerekir. Windows, Xbox Live veya diğer Microsoft bulut hizmetleri için sahip olabileceğiniz bir Microsoft hesabı oturum açın. Takımınız Azure 'a yönelik bir kurumsal aboneliğe sahip olabilir: sahibinden Microsoft hesabı kullanarak sizi eklemesini isteyin.
 
 > [!NOTE]
-> Herhangi bir konsol uygulaması için Application Insights etkinleştirmek üzere kullanılabilecek [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yeni bir beta Application Insights SDK 'sı vardır. Bu paketin ve ilgili yönergelerin [burada](../../azure-monitor/app/worker-service.md)kullanılması önerilir. Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard), .NET Core 2,0 veya üzeri sürümlerde ve .NET Framework 4.7.2 veya üzeri sürümlerde kullanılabilir.
+> Herhangi bir konsol uygulaması için Application Insights etkinleştirmek üzere kullanılabilecek [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) adlı yeni bir beta Application Insights SDK 'sı vardır. Bu paketin ve ilgili yönergelerin [burada](../../azure-monitor/app/worker-service.md)kullanılması önerilir. Bu paket [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)' i hedefler ve bu nedenle .net Core 2,0 veya üzeri sürümlerde ve .NET Framework 4.7.2 veya üzeri sürümlerde kullanılabilir.
 Bu yeni paketin kararlı bir sürümü kullanıma sunulduktan sonra bu belge kullanımdan kalkacaktır.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 * [Azure portalında](https://portal.azure.com) [bir Application Insights kaynağı oluşturun](../../azure-monitor/app/create-new-resource.md). Uygulama türü için **genel**' i seçin.
 * İzleme Anahtarının bir kopyasını oluşturun. Oluşturduğunuz yeni kaynağın **temel** bileşenler açılan penceresinde anahtarı bulun. 
@@ -47,13 +47,13 @@ telemetryClient.TrackTrace("Hello World!");
 
 * [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) paketinin en son sürümünü yükler-http, SQL veya diğer dış bağımlılık çağrılarını otomatik olarak izler.
 
-Koddan veya dosya kullanarak `ApplicationInsights.config` Application Insights başlatabilir ve yapılandırabilirsiniz. Başlatmanın olabildiğince erken göründüğünden emin olun. 
+Koddan Application Insights başlatabilir veya `ApplicationInsights.config` dosyası kullanarak yapılandırabilirsiniz. Başlatmanın olabildiğince erken göründüğünden emin olun. 
 
 > [!NOTE]
 > **ApplicationInsights. config** dosyasına başvuran yönergeler yalnızca .NET Framework hedefleyen ve .NET Core uygulamaları için geçerli olmayan uygulamalar için geçerlidir.
 
 ### <a name="using-config-file"></a>Yapılandırma dosyası kullanma
-Varsayılan olarak, Application Insights SDK oluşturulduğunda `ApplicationInsights.config` dosyayı çalışma `TelemetryConfiguration` dizininde arar
+Application Insights SDK varsayılan olarak, `TelemetryConfiguration` oluşturulduğunda çalışma dizininde `ApplicationInsights.config` dosyası arar
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
@@ -103,7 +103,7 @@ Daha fazla bilgi için bkz. [yapılandırma dosyası başvurusu](configuration-w
 > [!NOTE]
 > Yapılandırma dosyası okuma, .NET Core 'da desteklenmez. [ASP.NET Core için APPLICATION INSIGHTS SDK](../../azure-monitor/app/asp-net-core.md) kullanmayı düşünebilirsiniz
 
-* Uygulama başlatma sırasında örnek oluşturma ve yapılandırma `DependencyTrackingTelemetryModule` -bu tek bir olmalıdır ve uygulama ömrü için korunması gerekir.
+* Uygulama başlatma sırasında `DependencyTrackingTelemetryModule` örneği oluşturma ve yapılandırma-tek olmalı ve uygulama ömrü için korunması gerekir.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -130,7 +130,7 @@ module.Initialize(configuration);
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-Yapılandırmayı düz `TelemetryConfiguration()` Oluşturucu ile oluşturduysanız, ayrıca bağıntı desteğini etkinleştirmeniz gerekir. Dosyadan yapılandırmayı okuduğunuzda, veya `TelemetryConfiguration.Active`kullandıysanız `TelemetryConfiguration.CreateDefault()` **Bu gerekli değildir** .
+Yapılandırmayı düz `TelemetryConfiguration()` Oluşturucusu ile oluşturduysanız, ayrıca bağıntı desteğini etkinleştirmeniz gerekir. Dosyadan yapılandırmayı okuduğunuzda `TelemetryConfiguration.CreateDefault()` veya `TelemetryConfiguration.Active` ' yi kullandıysanız **Bu gerekli değildir** .
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
@@ -159,7 +159,7 @@ namespace ConsoleApp
             configuration.InstrumentationKey = "removed";
             configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 
-            var telemetryClient = new TelemetryClient();
+            var telemetryClient = new TelemetryClient(configuration);
             using (InitializeDependencyTracking(configuration))
             {
                 // run app...

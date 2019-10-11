@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Python form tanıyıcı ile REST API bir modeli eğitme ve form verilerini ayıklama'
+title: 'Hızlı başlangıç: Python form tanıyıcı ile REST API kullanarak model eğitme ve form verilerini ayıklama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, bir modeli eğitmek ve formlardan veri ayıklamak için Python ile REST API form tanıyıcıyı kullanacaksınız.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: e7a63d09c3116c7504e9d409b32a44be140d8fe4
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 5739827f1f6cf65cfe5c4aa8303c9f37eb569854
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71074135"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264413"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Hızlı Başlangıç: Python ile REST API kullanarak form tanıyıcı modelini eğitme ve form verilerini ayıklama
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
 
 Bu hızlı başlangıçta, anahtar-değer çiftlerini ve tabloları ayıklamak üzere formları eğitme ve Puanlama yapmak için Azure form tanıyıcısı 'nı Python ile REST API kullanacaksınız.
 
@@ -26,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - Form tanıyıcı sınırlı erişim önizlemesine erişim. Önizlemeye erişim sağlamak için [form tanıyıcı erişim isteği](https://aka.ms/FormRecognizerRequestAccess) formunu doldurun ve gönderebilirsiniz.
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
-- Aynı türde en az beş form kümesi. Bu verileri modeli eğitmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Verileri bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
+- Aynı türde en az beş form kümesi. Bu verileri modeli eğitmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
@@ -38,9 +38,9 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki python kodunu çalıştırarak **eğitme** API 'sini çağırın. Kodu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
-1. Önceki `<Subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
-1. Azure `<SAS URL>` BLOB depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. @No__t-0 ' yı form tanıyıcı kaynağınızın uç nokta URL 'siyle değiştirin.
+1. @No__t-0 ' yı önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. @No__t-0 ' yı Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'SI ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
     ```python
     ########### Python Form Recognizer Train #############
@@ -65,9 +65,9 @@ Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek i
     ```
 1. Kodu. Kopyala uzantılı bir dosyaya kaydedin. Örneğin, *form-Recognize-train.py*.
 1. Bir komut istemi penceresi açın.
-1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin: `python form-recognize-train.py`.
+1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python form-recognize-train.py`.
 
-Bu JSON çıkışıyla bir `200 (Success)` yanıt alacaksınız:
+Bu JSON çıkışıyla bir `200 (Success)` yanıtı alacaksınız:
 
 ```json
 {
@@ -108,16 +108,16 @@ Bu JSON çıkışıyla bir `200 (Success)` yanıt alacaksınız:
 }
 ```
 
-`"modelId"` Değeri aklınızda edin. Aşağıdaki adımlar için buna ihtiyacınız olacaktır.
+@No__t-0 değerini aklınızda edin. Aşağıdaki adımlar için buna ihtiyacınız olacaktır.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Formlardaki anahtar-değer çiftlerini ve tabloları Ayıkla
 
 Daha sonra, bir belgeyi analiz edip anahtar-değer çiftlerini ve tabloları buradan ayıklayacaksınız. Aşağıdaki Python betiğini çalıştırarak **model-Analyze** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. Formunuzun `<path to your form>` dosya yoluyla değiştirin (örneğin, c:\temp\file.exe).
-1. Önceki `<modelID>` bölümde aldığınız model kimliğiyle değiştirin.
-1. Dosya `<file type>` türü ile değiştirin. Desteklenen türler: `application/pdf`, `image/jpeg`, `image/png`.
+1. @No__t-0 değerini, form tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
+1. @No__t-0 değerini formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.exe). Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
+1. @No__t-0 ' i önceki bölümde aldığınız model KIMLIĞIYLE değiştirin.
+1. @No__t-0 ' i dosya türü ile değiştirin. Desteklenen türler: `application/pdf`, `image/jpeg`, `image/png`.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
     ```python
@@ -147,7 +147,7 @@ Daha sonra, bir belgeyi analiz edip anahtar-değer çiftlerini ve tabloları bur
 
 1. Kodu. Kopyala uzantılı bir dosyaya kaydedin. Örneğin, *form-Recognize-Analyze.py*.
 1. Bir komut istemi penceresi açın.
-1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin: `python form-recognize-analyze.py`.
+1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python form-recognize-analyze.py`.
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 

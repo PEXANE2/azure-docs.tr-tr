@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 12/18/2018
-ms.openlocfilehash: cc59d7cb1ce09aad834130818e5af533719e04c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/10/2019
+ms.openlocfilehash: 4e896fae0d8459629c58dfd0bbdfbb32b90b1cac
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568609"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264240"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Ölçekli bulut veritabanları arasında rapor (Önizleme)
 
@@ -26,14 +26,14 @@ Var olan bir veritabanınız varsa, bkz. [var olan veritabanlarını ölçekli v
 
 Sorgulamak için gereken SQL nesnelerini anlamak için bkz. [yatay bölümlenmiş veritabanlarında sorgulama](sql-database-elastic-query-horizontal-partitioning.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Prerequisites
 
 [Esnek veritabanı araçları](sql-database-elastic-scale-get-started.md)'nı kullanmaya başlama örneğini indirip çalıştırın.
 
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>Örnek uygulamayı kullanarak parça eşleme Yöneticisi oluşturma
 Burada, birden fazla parça ile birlikte bir parça eşleme Yöneticisi oluşturacaksınız ve sonra verileri parçalara eklemekirsiniz. Zaten parçalar içindeki parçalı verileri içeren parçalar varsa, aşağıdaki adımları atlayabilir ve sonraki bölüme geçebilirsiniz.
 
-1. **Elastik veritabanı araçları** örnek uygulamasını derleyin ve çalıştırın. [Örnek uygulamayı indirip çalıştırma](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)bölümündeki 7. adıma kadar olan adımları izleyin. Adım 7 ' nin sonunda aşağıdaki komut satırını görürsünüz:
+1. [Örnek uygulamayı indirme ve çalıştırma](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)makalesindeki adımları Izleyerek **elastik veritabanı araçları** örnek uygulamasını derleyin ve çalıştırın. Tüm adımları tamamladıktan sonra aşağıdaki komut istemi görüntülenir:
 
     ![komut istemi][1]
 2. Komut penceresinde, "1" yazın ve **ENTER**tuşuna basın. Bu, parça eşleme yöneticisini oluşturur ve sunucuya iki parçalama ekler. Ardından "3" yazın ve **ENTER**tuşuna basın. eylemi dört kez tekrarlayın. Bu, parçalara örnek veri satırları ekler.
@@ -62,13 +62,13 @@ Bunlar, parça eşleme Yöneticisi ve parçaları 'na bağlanmak için kullanıl
 1. Visual Studio 'da SQL Server Management Studio veya SQL Server Veri Araçları açın.
 2. Elaun dbquery veritabanına bağlanın ve aşağıdaki T-SQL komutlarını yürütün:
 
-        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>';
+        CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<master_key_password>';
 
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    "username" ve "Password", ' ın 6. adımında kullanılan oturum açma bilgileri ile aynı olmalıdır ve [elastik veritabanı araçlarıyla çalışmaya](sql-database-elastic-scale-get-started.md)başlama bölümünde [Örnek uygulamayı çalıştırın](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) .
+    "Kullanıcı adı" ve "parola", **elastik veritabanı araçları ile çalışmaya başlama** makalesinde [Örnek uygulamayı indirme ve çalıştırma](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app) başlıklı Bölüm adım 3 ' te kullanılan oturum açma bilgileri ile aynı olmalıdır.
 
 ### <a name="external-data-sources"></a>Dış veri kaynakları
 Dış veri kaynağı oluşturmak için, Elaun dbquery veritabanında aşağıdaki komutu yürütün:
@@ -114,7 +114,7 @@ Sorgunun tüm parçalardan sonuçları topladığına ve aşağıdaki çıktıy�
 3. **Diğer kaynaklardan** öğesine tıklayın ve **SQL Server**' ye tıklayın.
 
    ![Diğer kaynaklardan Excel içeri aktarma][5]
-4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Ardından **İleri**'ye tıklayın.
+4. **Veri bağlantısı Sihirbazı** 'nda sunucu adını ve oturum açma kimlik bilgilerini yazın. Sonra **İleri**'ye tıklayın.
 5. İletişim kutusunda istediğiniz **verileri içeren veritabanını seçin**, **Elaun dbquery** veritabanını seçin.
 6. Liste görünümünde **Customers** tablosunu seçin ve **İleri**' ye tıklayın. Ardından **son**' a tıklayın.
 7. **Veri al** formunda, **çalışma kitabınızda bu verileri nasıl görüntülemek Istediğinizi seçin**altında **tablo** ' yı seçin ve **Tamam**' ı tıklatın.
@@ -134,7 +134,7 @@ Fiyatlandırma bilgileri için bkz. [SQL Veritabanı Fiyatlandırma ayrıntılar
 * Dikey bölümleme öğreticisi için bkz. [çapraz veritabanı sorgusuna Başlarken (dikey bölümlendirme)](sql-database-elastic-query-getting-started-vertical.md).
 * Dikey olarak bölümlenmiş verilere yönelik sözdizimi ve örnek sorgular için bkz. [dikey olarak bölümlenmiş verileri sorgulama)](sql-database-elastic-query-vertical-partitioning.md)
 * Yatay olarak bölümlenmiş veriler için sözdizimi ve örnek sorgular için bkz. [yatay olarak bölümlenmiş verileri sorgulama)](sql-database-elastic-query-horizontal-partitioning.md)
-* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [\_SP Execute \_Remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
+* Tek bir uzak Azure SQL veritabanı üzerinde Transact-SQL ifadesini yürüten saklı yordam için bkz. [SP @ no__t-1execute \_remote](https://msdn.microsoft.com/library/mt703714) , yatay bölümleme düzeninde parçalar olarak hizmet veren veritabanları kümesi.
 
 
 <!--Image references-->

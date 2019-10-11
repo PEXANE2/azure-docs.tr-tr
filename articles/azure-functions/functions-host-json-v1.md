@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
-ms.openlocfilehash: b373afc9b5a60abee7a587fc405320fe3c583369
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 3d6a28c8cdcf13dc805d70832ed65732911138cd
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735149"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263354"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Işlevleri 1. x için Host. JSON başvurusu
 
@@ -20,10 +20,10 @@ ms.locfileid: "70735149"
 > * [Sürüm 1](functions-host-json-v1.md)
 > * [Sürüm 2](functions-host-json.md)
 
-*Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v1 çalışma zamanı için kullanılabilen ayarlar listelenir. JSON şeması http://json.schemastore.org/host.
+*Host. JSON* meta veri dosyası, bir işlev uygulaması için tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu makalede v1 çalışma zamanı için kullanılabilen ayarlar listelenir. JSON şeması http://json.schemastore.org/host ' dır.
 
 > [!NOTE]
-> Bu makalede, Azure işlevleri için olan 1.x.  2\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 2. x](functions-host-json.md).
+> Bu makale, Azure Işlevleri 1. x içindir.  2\. x Işlevleri içindeki Host. JSON başvurusu için bkz. [Azure işlevleri için Host. JSON başvurusu 2. x](functions-host-json.md).
 
 Diğer işlev uygulaması yapılandırma seçenekleri [uygulama ayarlarınızda](functions-app-settings.md)yönetilir.
 
@@ -120,7 +120,7 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
-## <a name="applicationinsights"></a>applicationInsights
+## <a name="applicationinsights"></a>ApplicationInsights
 
 [!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 
@@ -142,8 +142,8 @@ Bu makalenin aşağıdaki bölümlerinde her üst düzey özellik açıklanmakta
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|GatewayMode|Ağ geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. `Direct` Seçenekler ve`Gateway`|
-|Protocol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
+|GatewayMode|Ağ Geçidi|Azure Cosmos DB hizmetine bağlanırken işlev tarafından kullanılan bağlantı modu. Seçenekler `Direct` ve `Gateway`|
+|Protokol|'Dir|Azure Cosmos DB hizmetine bağlantı sırasında işlev tarafından kullanılan bağlantı protokolü.  [Her iki modun açıklaması için buraya](../cosmos-db/performance-tips.md#networking) okuyun|
 |leasePrefix|yok|Bir uygulamadaki tüm işlevler genelinde kullanılacak kira öneki.|
 
 ## <a name="durabletask"></a>durableTask
@@ -194,9 +194,9 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|enabled|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
+|etkinletir|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
-|healthCheckWindow|2 dakika|`healthCheckThreshold` Ayarla birlikte kullanılan bir kayan zaman penceresi.| 
+|healthCheckWindow|2 dakika|@No__t-0 ayarıyla birlikte kullanılan bir kayan zaman penceresi.| 
 |healthCheckThreshold|6|Konak geri dönüşüm başlatılmadan önce sistem durumu denetiminin başarısız olması için en fazla sayı.| 
 |Onay eşiği|0,80|Performans sayacının sağlıksız olduğu kabul edilecek eşik.| 
 
@@ -204,15 +204,26 @@ Tüm işlevler için zaman aşımı süresini gösterir. Sunucusuz tüketim plan
 
 [Http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md)için yapılandırma ayarları.
 
+```json
+{
+    "http": {
+        "routePrefix": "api",
+        "maxOutstandingRequests": 200,
+        "maxConcurrentRequests": 100,
+        "dynamicThrottlesEnabled": true
+    }
+}
+```
+
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="id"></a>id
+## <a name="id"></a>kimlik
 
 *Yalnızca sürüm 1. x.*
 
-Bir iş konağının benzersiz KIMLIĞI. Kesik çizgileri kaldırılmış küçük bir harf olabilir. Yerel olarak çalıştırılırken gereklidir. Azure 'da çalışırken, bir KIMLIK değeri ayarlamanıza önerilir. Kimliği atlandığında Azure `id` 'da otomatik olarak bir kimlik oluşturulur. 
+Bir iş konağının benzersiz KIMLIĞI. Kesik çizgileri kaldırılmış küçük bir harf olabilir. Yerel olarak çalıştırılırken gereklidir. Azure 'da çalışırken, bir KIMLIK değeri ayarlamanıza önerilir. @No__t-0 atlandığında Azure 'da bir KIMLIK otomatik olarak oluşturulur. 
 
-Birden çok işlev uygulamasında bir depolama hesabı paylaşırsanız, her bir işlev uygulamasının farklı `id`olduğundan emin olun. `id` Özelliği atlayabilir veya her bir işlev `id` uygulamasını farklı bir değere el ile ayarlayabilirsiniz. Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçeklenirken yalnızca bir zamanlayıcı örneği olacağını sağlamak için bir depolama kilidi kullanır. İki işlev uygulaması aynı `id` şekilde paylaşıyorsa ve her biri bir Zamanlayıcı tetikleyicisi kullanıyorsa, yalnızca bir Zamanlayıcı çalışır.
+Birden çok işlev uygulamasında bir depolama hesabı paylaşırsanız, her bir işlev uygulamasının farklı bir @no__t olduğundan emin olun. @No__t-0 özelliğini atlayabilir veya her bir işlev uygulamasının `id` ' i farklı bir değere el ile ayarlayabilirsiniz. Zamanlayıcı tetikleyicisi, bir işlev uygulaması birden çok örneğe ölçeklenirken yalnızca bir zamanlayıcı örneği olacağını sağlamak için bir depolama kilidi kullanır. İki işlevli uygulama aynı @no__t paylaşıyorsa-0 ' dır ve her biri bir Zamanlayıcı tetikleyicisi kullanıyorsa, yalnızca bir Zamanlayıcı çalışır.
 
 ```json
 {
@@ -242,10 +253,10 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |categoryFilter|yok|Kategoriye göre filtrelemeyi belirtir| 
-|defaultLevel|Information|`categoryLevels` Dizide belirtilmeyen hiçbir kategori için, günlükleri bu düzeyde ve yukarıya Application Insights için gönderin.| 
-|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Önceki örnek *Host. JSON* dosyasında, "Host. toplayıcısı" ile başlayan tüm kategoriler `Information` düzeyinde günlüğe kaydedilir. "Host. yürütücü" gibi "Host" ile başlayan tüm diğer kategoriler, oturum açma `Error` düzeyinde.| 
+|defaultLevel|Bilgiler|@No__t-0 dizisinde belirtilmeyen hiçbir kategori için, günlükleri bu düzeyde ve yukarıdaki Application Insights gönderin.| 
+|categoryLevels|yok|Her kategori için Application Insights gönderilmek üzere en düşük günlük düzeyini belirten kategori dizisi. Burada belirtilen kategori, aynı değerle başlayan tüm kategorileri denetler ve daha uzun değerler öncelik kazanır. Önceki örnek *Host. JSON* dosyasında, "Host. toplayıcısı" ile başlayan tüm kategoriler `Information` düzeyinde günlüğe kaydedilir. "Host. yürütücü" gibi "Host" ile başlayan tüm diğer kategoriler `Error` düzeyinde günlüğe kaydedilir.| 
 
-## <a name="queues"></a>klarında
+## <a name="queues"></a>sıralar
 
 [Depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md)için yapılandırma ayarları.
 
@@ -263,13 +274,13 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|maxPollingInterval|60000|Sıra yoklamaları arasındaki milisaniye olarak en fazla Aralık.| 
+|Maxpollingınterval|60000|Sıra yoklamaları arasındaki milisaniye olarak en fazla Aralık.| 
 |visibilityTimeout|0|Bir ileti işlenirken yeniden denemeler arasındaki zaman aralığı başarısız olur.| 
-|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı öğesine `newBatchThreshold`doğru aldığında, çalışma zamanı başka bir Batch alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı artı `batchSize` `newBatchThreshold`olur. Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, 1 olarak ayarlayabilirsiniz `batchSize` . Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>Maksimum `batchSize` değer 32 ' dir. | 
+|batchSize|16|Işlevlerin çalışma zamanının aynı anda ve işlemleri paralel olarak aldığı sıra iletilerinin sayısı. İşlenen sayı `newBatchThreshold` ' a doğru aldığında, çalışma zamanı başka bir toplu iş alır ve bu iletileri işlemeye başlar. Bu nedenle, işlev başına işlenen en fazla eşzamanlı ileti sayısı `batchSize` ve `newBatchThreshold` ' dir. Bu sınır, kuyruğa tetiklenen her bir işlev için ayrı olarak uygulanır. <br><br>Bir kuyrukta alınan iletiler için paralel yürütmeyi önlemek istiyorsanız, `batchSize` ' ı 1 olarak ayarlayabilirsiniz. Ancak, bu ayar yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. İşlev uygulaması birden çok VM 'ye ölçekleniyorsa, her VM, her bir kuyruk tetiklenen işlevin bir örneğini çalıştırabilir.<br><br>En fazla `batchSize` 32. | 
 |maxDequeueCount|5|Zarar sırasına taşımadan önce bir iletiyi işlemeyi deneme sayısı.| 
 |newBatchThreshold|batchSize/2|Aynı anda işlenen ileti sayısı bu sayıya indiğinde, çalışma zamanı başka bir toplu işi alır.| 
 
-## <a name="sendgrid"></a>SendGrid
+## <a name="sendgrid"></a>sendGrid
 
 [Sendgrind çıkış bağlamasının](functions-bindings-sendgrid.md) yapılandırma ayarı
 
@@ -282,7 +293,7 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|from|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
+|Kaynak|yok|Tüm işlevler genelinde gönderenin e-posta adresi.| 
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -300,9 +311,9 @@ Bir [ILogger nesnesi](functions-monitoring.md#write-logs-in-c-functions) veya [C
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|maxConcurrentCalls|16|İleti pompası başlatmalıdır geri çağırma eş zamanlı çağrı sayısı. Varsayılan olarak, İşlevler çalışma zamanı aynı anda birden çok ileti işler. Bir kerede yalnızca tek bir kuyruk veya konuda ileti işleme için çalışma zamanının ayarlayın `maxConcurrentCalls` 1. | 
-|prefetchCount|yok|Varsayılan temel alınan MessageReceiver tarafından kullanılacak PrefetchCount.| 
-|autoRenewTimeout|00:05:00|En uzun süre içinde otomatik olarak ileti kilidi yenilenir.| 
+|Maxconcurrentçağrıları|16|İleti göndericisinin başlatması gereken geri çağrıya yönelik eşzamanlı çağrı sayısı üst sınırı. Varsayılan olarak, Işlevler çalışma zamanı birden çok iletiyi eşzamanlı olarak işler. Çalışma zamanını aynı anda yalnızca tek bir kuyruğu veya konu iletisini işleyecek şekilde yönlendirmek için `maxConcurrentCalls` ' ı 1 ' e ayarlayın. | 
+|prefetchCount|yok|Temel alınan MessageReceiver tarafından kullanılacak varsayılan PrefetchCount.| 
+|autoRenewTimeout|00:05:00|İleti kilidinin otomatik olarak yenilenebileceği en uzun süre.| 
 
 ## <a name="singleton"></a>adet
 
@@ -324,15 +335,15 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
+|Listenerlockrecoverypollingınterval|00:01:00|Başlangıçta dinleyici kilidi alınamadığından, dinleyici kilidi kurtarma için kullanılan zaman aralığı.| 
 |Locktanışılationtimeout|00:01:00|Çalışma zamanının kilit edinmeye çalışacak en uzun süre.| 
 |Locktanışmalationpollingınterval|yok|Kilit alma denemeleri arasındaki Aralık.| 
 
-## <a name="tracing"></a>izleniyor
+## <a name="tracing"></a>izleme
 
 *Sürüm 1. x*
 
-Bir `TraceWriter` nesne kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları. Bkz [ C# . Logging](functions-reference-csharp.md#logging) ve [Node. js günlüğü](functions-reference-node.md#writing-trace-output-to-the-console).
+@No__t-0 nesnesi kullanarak oluşturduğunuz Günlükler için yapılandırma ayarları. Bkz [ C# . Logging](functions-reference-csharp.md#logging) ve [Node. js günlüğü](functions-reference-node.md#writing-trace-output-to-the-console).
 
 ```json
 {
@@ -345,8 +356,8 @@ Bir `TraceWriter` nesne kullanarak oluşturduğunuz Günlükler için yapıland�
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|consoleLevel|info|Konsol günlüğü için izleme düzeyi. Seçenekler şunlardır: `off`, `error`, `warning` ,`info`, ve `verbose`.|
-|fileLoggingMode|yalnızca Debug|Dosya günlüğü için izleme düzeyi. `never`Seçenekler, `always`,. `debugOnly`| 
+|consoleLevel|Bilgisine|Konsol günlüğü için izleme düzeyi. Seçenekler şunlardır: `off`, `error`, `warning`, `info` ve `verbose`.|
+|fileLoggingMode|yalnızca Debug|Dosya günlüğü için izleme düzeyi. Seçenekler `never`, `always`, `debugOnly` ' dir.| 
 
 ## <a name="watchdirectories"></a>watchDirectories
 

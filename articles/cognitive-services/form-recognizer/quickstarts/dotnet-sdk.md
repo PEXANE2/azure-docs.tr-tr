@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: fc0964508f3031efd91db827524042bf0577ab5e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242506"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264442"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Hızlı başlangıç: .NET için form tanıyıcı istemci kitaplığı
 
-.NET için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın. Form tanıyıcı, form belgelerinden anahtar/değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bilişsel bir hizmettir. Ardından, özgün dosyadaki ilişkileri içeren yapılandırılmış verileri çıkartır. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
+.NET için form tanıyıcı istemci kitaplığı ile çalışmaya başlayın. Form tanıyıcı, form belgelerinden anahtar/değer çiftlerini ve tablo verilerini tanımlamak ve ayıklamak için makine öğrenimi teknolojisini kullanan bilişsel bir hizmettir. Ardından, asıl dosyadaki ilişkileri de içeren yapılandırılmış verinin çıktısını verir. SDK paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin.
 
 .NET için form tanıyıcı istemci kitaplığı 'nı kullanarak şunları yapın:
 
@@ -30,11 +30,11 @@ ms.locfileid: "72242506"
 
 [Başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/).
 * Form tanıyıcı sınırlı erişim önizlemesine erişim. Önizlemeye erişim sağlamak için [form tanıyıcı erişim isteği](https://aka.ms/FormRecognizerRequestAccess) formunu doldurun ve gönderebilirsiniz.
-* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim verilerinizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../build-training-data-set.md) . Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz.
+* Eğitim verileri kümesi içeren bir Azure Depolama Blobu. Eğitim verilerinizi birlikte yerleştirmeye yönelik ipuçları ve seçenekler için bkz. [özel bir model için eğitim verileri kümesi oluşturma](../build-training-data-set.md) . Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **eğitme** klasörü altındaki dosyaları kullanabilirsiniz.
 * [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
 
 ## <a name="setting-up"></a>Ayarlanıyor
@@ -91,7 +91,7 @@ Visual Studio IDE kullanıyorsanız, istemci kitaplığı indirilebilir bir NuGe
 
 Aşağıdaki sınıflar form tanıyıcı SDK 'nın ana işlevlerini işler.
 
-|Name|Açıklama|
+|Adı|Açıklama|
 |---|---|
 |[FormRecognizerClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.formrecognizerclient?view=azure-dotnet-preview)|Bu sınıf, tüm form tanıyıcı işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
 |[Traınrequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.trainrequest?view=azure-dotnet-preview)| Kendi eğitim girişi verilerinizi kullanarak özel bir form tanıyıcı modeli eğitebilmeniz için bu sınıfı kullanın. |
@@ -122,6 +122,7 @@ Herhangi bir yöntemi tanımladıktan önce, aşağıdaki değişken tanımları
 
 * Hizmetin uç nokta değerini, Azure portal **genel bakış** bölümünde bulabilirsiniz. 
 * Eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* Analiz etmek için bir örnek form gerekiyorsa, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyalardan birini kullanabilirsiniz. Bu kılavuz yalnızca PDF formlarını kullanır.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
@@ -180,12 +181,12 @@ Uygulama dizininizden `dotnet run` komutunu çağırarak uygulamayı çalıştı
 dotnet run
 ```
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLı](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 Ayrıca, hesabınızdan silmek istediğiniz özel bir model varsa, [özel bir modeli silme](#delete-a-custom-model)bölümünde yöntemi çalıştırın.
 

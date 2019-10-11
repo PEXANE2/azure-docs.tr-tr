@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Bir modeli eğitme ve kıvrımlı form tanıyıcısı kullanarak form verilerini ayıklama'
+title: 'Hızlı başlangıç: bir modeli eğitme ve form verilerini kıvrımlı biçimli tanıyıcı kullanarak ayıklama'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, bir modeli eğitme ve formlardan veri ayıklayarak form tanıyıcı REST API kıvrımlı olarak kullanacaksınız.
 author: PatrickFarley
@@ -9,14 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: b889be6f881894b2666ed47304f6b61e7c776474
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0b357a36afc44ceac8ed2c951e0f25901be9d93d
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073717"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264371"
 ---
-# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Hızlı Başlangıç: Kıvrımlı REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
+# <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Hızlı başlangıç: kıvrımlı ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
 
 Bu hızlı başlangıçta, anahtar-değer çiftlerini ve tabloları ayıklamak üzere formları eğitme ve Puanlama yapmak için Azure form tanıyıcısı 'nı kıvrımlı REST API kullanacaksınız.
 
@@ -26,7 +26,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - Form tanıyıcı sınırlı erişim önizlemesine erişim. Önizlemeye erişim sağlamak için [form tanıyıcı erişim isteği](https://aka.ms/FormRecognizerRequestAccess) formunu doldurun ve gönderebilirsiniz.
 - [kıvrımlı](https://curl.haxx.se/windows/) yüklendi.
-- Aynı türde en az beş form kümesi. Bu verileri modeli eğitmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Verileri bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
+- Aynı türde en az beş form kümesi. Bu verileri modeli eğitmek için kullanacaksınız. Bu hızlı başlangıç için [örnek bir veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) kullanabilirsiniz. Eğitim dosyalarını bir Azure depolama hesabındaki BLOB depolama kapsayıcısının köküne yükleyin.
 
 ## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
@@ -38,15 +38,15 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Azure Blob kabınızda bulunan belgelerle bir form tanıyıcı modeli eğitmek için aşağıdaki kıvrımlı komutunu çalıştırarak **eğitme** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
-1. Azure `<SAS URL>` BLOB depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'si ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. @No__t-0 değerini, form tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
+1. @No__t-0 ' yı önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
+1. @No__t-0 ' yı Azure Blob depolama kapsayıcısının paylaşılan erişim imzası (SAS) URL 'SI ile değiştirin. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 ```bash
 curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-Aşağıdaki JSON çıkışıyla bir `200 (Success)` yanıt alacaksınız:
+Aşağıdaki JSON çıkışıyla bir `200 (Success)` yanıtı alacaksınız:
 
 ```json
 {
@@ -87,16 +87,16 @@ Aşağıdaki JSON çıkışıyla bir `200 (Success)` yanıt alacaksınız:
 }
 ```
 
-`"modelId"` Değeri aklınızda edin. Aşağıdaki adımlarda buna ihtiyacınız olacaktır.
+@No__t-0 değerini aklınızda edin. Aşağıdaki adımlarda buna ihtiyacınız olacaktır.
   
 ## <a name="extract-key-value-pairs-and-tables-from-forms"></a>Formlardaki anahtar-değer çiftlerini ve tabloları Ayıkla
 
 Daha sonra, bir belgeyi analiz edip anahtar-değer çiftlerini ve tabloları buradan ayıklayacaksınız. Aşağıdaki kıvrımlı komutunu çalıştırarak **model analizi** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
-1. Önceki `<modelID>` bölümde aldığınız model kimliğiyle değiştirin.
-1. Formunuzun `<path to your form>` dosya yoluyla değiştirin (örneğin, c:\temp\file.exe).
-1. Dosya `<file type>` türü ile değiştirin. Desteklenen türler: `application/pdf`, `image/jpeg`, `image/png`.
+1. @No__t-0 ' yı form tanıyıcı abonelik anahtarınızdan edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
+1. @No__t-0 ' i önceki bölümde aldığınız model KIMLIĞIYLE değiştirin.
+1. @No__t-0 değerini formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.exe). Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
+1. @No__t-0 ' i dosya türü ile değiştirin. Desteklenen türler: `application/pdf`, `image/jpeg`, `image/png`.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
 

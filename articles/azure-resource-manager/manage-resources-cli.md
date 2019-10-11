@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 78dd51c023bc46ed09219acc3df7e4ee7006ac2b
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 6b8adad033aeeb334c57970035e65bf706beef5a
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001558"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274247"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure CLı kullanarak Azure kaynaklarını yönetme
 
@@ -26,7 +26,7 @@ Kaynakları yönetme hakkında diğer makaleler:
 
 ## <a name="deploy-resources-to-an-existing-resource-group"></a>Kaynakları var olan bir kaynak grubuna dağıtma
 
-Azure kaynaklarını Azure PowerShell kullanarak doğrudan dağıtabilir veya Azure kaynakları oluşturmak için bir Kaynak Yöneticisi şablonu dağıtabilirsiniz.
+Azure kaynaklarını doğrudan Azure CLı kullanarak dağıtabilir veya Azure kaynakları oluşturmak için bir Kaynak Yöneticisi şablonu dağıtabilirsiniz.
 
 ### <a name="deploy-a-resource"></a>Kaynak dağıtma
 

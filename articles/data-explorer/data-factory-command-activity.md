@@ -8,12 +8,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
-ms.openlocfilehash: 316ddbf662a5418e54f37cb335475a86c50118c7
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71131447"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264496"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Azure Veri Gezgini denetim komutlarını çalıştırmak için Azure Data Factory komut etkinliğini kullanma
 
@@ -29,11 +29,13 @@ ms.locfileid: "71131447"
 ## <a name="create-a-new-pipeline"></a>Yeni işlem hattı oluşturma
 
 1. **Yazar** Kurşun Kalem aracını seçin. 
-1. Seçerek **+** ve ardından açılan listeden işlem **hattı** ' nı seçip yeni bir işlem hattı oluşturun.
+1. **@No__t-1** ' i seçerek yeni bir işlem hattı oluşturun ve ardından açılır listeden işlem **hattı** ' nı seçin.
 
    ![Yeni işlem hattı oluştur](media/data-factory-command-activity/create-pipeline.png)
 
 ## <a name="create-a-lookup-activity"></a>Arama etkinliği oluşturma
+
+Bir [arama etkinliği](/azure/data-factory/control-flow-lookup-activity) , Azure Data Factory tarafından desteklenen herhangi bir veri kaynağından bir veri kümesi alabilir. Arama etkinliğinin çıktısı bir ForEach veya diğer bir etkinlikte kullanılabilir.
 
 1. **Etkinlikler** bölmesinde, **genel**altında, **arama** etkinliğini seçin. Sağ taraftaki ana tuvale sürükleyip bırakın.
  
@@ -89,7 +91,7 @@ ms.locfileid: "71131447"
 
 ### <a name="add-a-query-to-your-lookup-activity"></a>Arama etkinliğinizi bir sorgu ekleme
 
-1. **Ardışık düzen-4-belge** > **ayarları** **sorgu** metin kutusuna bir sorgu ekleyin, örneğin:
+1. İşlem **hattı-4-docs** > **ayarları** **sorgu** metin kutusuna bir sorgu ekleyin, örneğin:
 
     ```kusto
     ClusterQueries
@@ -103,7 +105,9 @@ ms.locfileid: "71131447"
 
 ## <a name="create-a-for-each-activity"></a>Her etkinlik Için bir oluşturma 
 
-1. Sonra, işlem hattına her bir Için bir etkinlik eklersiniz. Bu etkinlik, arama etkinliğinden döndürülen verileri işleyecek. 
+[For-each](/azure/data-factory/control-flow-for-each-activity) etkinliği bir koleksiyon üzerinde yinelemek ve belirtilen etkinlikleri bir döngüde yürütmek için kullanılır. 
+
+1. Artık işlem hattına bir for-each etkinliği eklersiniz. Bu etkinlik, arama etkinliğinden döndürülen verileri işleyecek. 
     * **Etkinlikler** bölmesinde, **yineleme & conditionals**altında, **foreach** etkinliğini seçin ve sürükleyip tuvale bırakın.
     * Arama etkinliğinin çıkışı ile, bunları bağlamak için tuvaldeki ForEach etkinliğinin girişi arasına bir çizgi çizin.
 
@@ -112,7 +116,7 @@ ms.locfileid: "71131447"
 1.  Tuvalde ForEach etkinliğini seçin. Aşağıdaki **Ayarlar** sekmesinde:
     * Arama sonuçlarının sıralı bir işlem için **sıralı** onay kutusunu işaretleyin veya paralel işleme oluşturmak için işaretini işaretsiz bırakın.
     * **Toplu iş sayısını**ayarlayın.
-    * **Öğeler**' de çıkış değerine şu başvuruyu sağlayın:  *@activity(' Lookup1 '). Output. Value*
+    * **Öğeler**' de çıkış değerine şu başvuruyu sağlayın: *@activity (' Lookup1 '). Output. Value*
 
        ![ForEach etkinliği ayarları](media/data-factory-command-activity/for-each-activity-settings.png)
 
@@ -166,7 +170,7 @@ Komut etkinlik çıktısının yapısı aşağıda ayrıntılı olarak verilmiş
 
 ### <a name="returned-value-of-a-non-async-control-command"></a>Async olmayan bir denetim komutunun değeri döndürüldü
 
-Async olmayan bir denetim komutunda, döndürülen değerin yapısı, arama etkinliği sonucunun yapısına benzerdir. `count` Alan, döndürülen kayıt sayısını gösterir. Sabit dizi alanı `value` bir kayıt listesi içerir. 
+Async olmayan bir denetim komutunda, döndürülen değerin yapısı, arama etkinliği sonucunun yapısına benzerdir. @No__t-0 alanı döndürülen kayıt sayısını gösterir. @No__t-0 sabit dizi alanı bir kayıt listesi içerir. 
 
 ```json
 { 
@@ -188,7 +192,7 @@ Async olmayan bir denetim komutunda, döndürülen değerin yapısı, arama etki
  
 ### <a name="returned-value-of-an-async-control-command"></a>Zaman uyumsuz denetim komutunun değeri döndürüldü
 
-Zaman uyumsuz denetim komutunda, etkinlik zaman uyumsuz işlem tamamlanana veya zaman aşımına uğrayana kadar, arka planda işlemler tablosunu yoklar. Bu nedenle, döndürülen değer söz konusu **operationId** özelliğinin `.show operations OperationId` sonucunu içerecektir. İşlemin başarıyla tamamlandığını doğrulamak için **durum** ve **durum** özelliklerinin değerlerini denetleyin.
+Zaman uyumsuz denetim komutunda, etkinlik zaman uyumsuz işlem tamamlanana veya zaman aşımına uğrayana kadar, arka planda işlemler tablosunu yoklar. Bu nedenle, döndürülen değer söz konusu **operationId** özelliği için `.show operations OperationId` sonucunu içerecektir. İşlemin başarıyla tamamlandığını doğrulamak için **durum** ve **durum** özelliklerinin değerlerini denetleyin.
 
 ```json
 { 

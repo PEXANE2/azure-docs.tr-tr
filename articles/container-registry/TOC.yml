@@ -98,7 +98,7 @@
             - name: Azure Container Instances'dan kimliği doğrulama
               href: container-registry-auth-aci.md
             - name: Azure Kubernetes Hizmeti'nden (AKS) kimliği doğrulama
-              href: container-registry-auth-aks.md
+              href: ../aks/cluster-container-registry-integration.md
         - name: Roller ve izinler
           href: container-registry-roles.md
         - name: İçerik güveni

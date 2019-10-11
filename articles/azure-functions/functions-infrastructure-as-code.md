@@ -12,12 +12,12 @@ ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 976121e2fd7af280ccc959ba2a93aceb4ae2bdea
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ff5b104c9fa1bedf1f710c06761b6449b20bbf05
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276842"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263204"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -36,7 +36,7 @@ Bir işlev uygulamasını dağıtmak için bir Azure Resource Manager şablonu k
 
 Azure Işlevleri dağıtımı genellikle şu kaynaklardan oluşur:
 
-| Resource                                                                           | Gereksinim | Sözdizimi ve Özellikler başvurusu                                                         |   |
+| Kaynak                                                                           | Gereksinim | Sözdizimi ve Özellikler başvurusu                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
 | Bir işlev uygulaması                                                                     | Gerekli    | [Microsoft. Web/siteler](/azure/templates/microsoft.web/sites)                             |   |
 | Bir [Azure depolama](../storage/index.yml) hesabı                                   | Gerekli    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
@@ -57,20 +57,20 @@ Azure Işlevleri dağıtımı genellikle şu kaynaklardan oluşur:
 {
     "type": "Microsoft.Storage/storageAccounts",
     "name": "[variables('storageAccountName')]",
-    "apiVersion": "2018-07-01",
+    "apiVersion": "2019-04-01",
     "location": "[resourceGroup().location]",
     "kind": "StorageV2",
-    "properties": {
-        "accountType": "[parameters('storageAccountType')]"
+    "sku": {
+        "name": "[parameters('storageAccountType')]"
     }
 }
 ```
 
-Ayrıca, özelliği `AzureWebJobsStorage` site yapılandırmasında bir uygulama ayarı olarak belirtilmelidir. İşlev uygulaması izleme için Application Insights kullanmıyorsa, bir uygulama ayarı olarak da belirtilmelidir `AzureWebJobsDashboard` .
+Ayrıca, `AzureWebJobsStorage` özelliği site yapılandırmasında bir uygulama ayarı olarak belirtilmelidir. İşlev uygulaması izleme için Application Insights kullanmıyorsa, ayrıca uygulama ayarı olarak `AzureWebJobsDashboard` belirtmelidir.
 
-Azure işlevleri çalışma zamanı, iç `AzureWebJobsStorage` sıralar oluşturmak için bağlantı dizesini kullanır.  Application Insights etkin olmadığında, çalışma zamanı Azure Tablo depolama alanına `AzureWebJobsDashboard` oturum açmak ve portalda **izleyici** sekmesini desteklemek için bağlantı dizesini kullanır.
+Azure Işlevleri çalışma zamanı, iç sıralar oluşturmak için `AzureWebJobsStorage` bağlantı dizesini kullanır.  Application Insights etkin olmadığında, çalışma zamanı Azure Tablo Depolaması 'nda oturum açmak ve portaldaki **izleyici** sekmesini açmak için `AzureWebJobsDashboard` bağlantı dizesini kullanır.
 
-Bu özellikler `appSettings` `siteConfig` nesnedeki koleksiyonda belirtilir:
+Bu özellikler, `siteConfig` nesnesindeki `appSettings` koleksiyonunda belirtilir:
 
 ```json
 "appSettings": [
@@ -106,7 +106,7 @@ Bu özellikler `appSettings` `siteConfig` nesnedeki koleksiyonda belirtilir:
         },
 ```
 
-Ayrıca, izleme anahtarının `APPINSIGHTS_INSTRUMENTATIONKEY` uygulama ayarı kullanılarak işlev uygulamasına sağlanması gerekir. Bu özellik `appSettings` `siteConfig` nesnedeki koleksiyonda belirtilir:
+Ayrıca, izleme anahtarının `APPINSIGHTS_INSTRUMENTATIONKEY` uygulama ayarı kullanılarak işlev uygulamasına sağlanması gerekir. Bu özellik, `siteConfig` nesnesindeki `appSettings` koleksiyonunda belirtilir:
 
 ```json
 "appSettings": [
@@ -120,7 +120,7 @@ Ayrıca, izleme anahtarının `APPINSIGHTS_INSTRUMENTATIONKEY` uygulama ayarı k
 ### <a name="hosting-plan"></a>Barındırma planı
 
 Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
-* [Tüketim planı](#consumption) varsayılanını
+* [Tüketim planı](#consumption) (varsayılan)
 * [Premium plan](#premium) (önizlemede)
 * [App Service planı](#app-service-plan)
 
@@ -142,7 +142,7 @@ Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
 ```
 
 > [!IMPORTANT]
-> Bir barındırma planını açıkça tanımlıyorsanız, Bağımlıdson dizisinde ek bir öğe olması gerekir:`"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
+> Bir barındırma planını açıkça tanımlıyorsanız, Bağımlıdson dizisinde ek bir öğe olması gerekir: `"[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"`
 
 Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 
@@ -150,10 +150,10 @@ Bir işlev uygulaması şu uygulama ayarlarını içermelidir:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | İç sıraya alma için Işlev çalışma zamanının bulunduğu depolama hesabına yönelik bağlantı dizesi | [Depolama hesabını](#storage) gör       |
 | FUNCTIONS_EXTENSION_VERSION  | Azure Işlevleri çalışma zamanının sürümü                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Bu uygulamadaki işlevler için kullanılacak dil yığını                                   | `dotnet`, `node`,veya `java``python` |
-| WEBSITE_NODE_DEFAULT_VERSION | Yalnızca `node` dil yığını kullanılıyorsa gereklidir, kullanılacak sürümü belirtir              | `10.14.1`                             |
+| FUNCTIONS_WORKER_RUNTIME     | Bu uygulamadaki işlevler için kullanılacak dil yığını                                   | `dotnet`, `node`, `java` veya `python` |
+| WEBSITE_NODE_DEFAULT_VERSION | Yalnızca `node` Dil yığını kullanılıyorsa gereklidir, kullanılacak sürümü belirtir              | `10.14.1`                             |
 
-Bu özellikler, `appSettings` `siteConfig` özelliğindeki koleksiyonda belirtilir:
+Bu özellikler, `siteConfig` özelliğindeki `appSettings` koleksiyonunda belirtilir:
 
 ```json
 "properties": {
@@ -192,7 +192,7 @@ Tüketim planı, kodunuz çalışırken otomatik olarak işlem gücü ayırır, 
 
 Tüketim planının tanımlanması gerekmez. Uygulama kaynağının kendisini oluşturduğunuzda bölge başına otomatik olarak bir tane oluşturulur veya seçilir.
 
-Tüketim planı, "ServerFarm" kaynağının özel bir türüdür. Windows için, `Dynamic` `computeMode` ve `sku` özellikleri için değerini kullanarak bunu belirtebilirsiniz:
+Tüketim planı, "ServerFarm" kaynağının özel bir türüdür. Windows için, `computeMode` ve `sku` özellikleri için `Dynamic` değerini kullanarak bunu belirtebilirsiniz:
 
 ```json
 {  
@@ -217,13 +217,13 @@ Tüketim planı, "ServerFarm" kaynağının özel bir türüdür. Windows için,
 > [!NOTE]
 > Tüketim planı Linux için açıkça tanımlanamaz. Otomatik olarak oluşturulur.
 
-Tüketim planınızı açık bir şekilde tanımlarsanız, uygulamayı planın kaynak kimliğine işaret edecek şekilde ayarlamanız `serverFarmId` gerekecektir. İşlev uygulamasının plan için bir `dependsOn` ayara sahip olduğundan emin olmanız gerekir.
+Tüketim planınızı açıkça tanımlarsanız, uygulamanın `serverFarmId` özelliğini, planın kaynak KIMLIĞINE işaret edecek şekilde ayarlamanız gerekecektir. İşlev uygulamasının plan için `dependsOn` ayarıyla aynı olduğundan emin olmanız gerekir.
 
 ### <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
 #### <a name="windows"></a>Windows
 
-Windows 'da bir tüketim planı, site yapılandırmasında iki ek ayar gerektirir: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` ve. `WEBSITE_CONTENTSHARE` Bu özellikler, uygulama kodu ve yapılandırmasının depolandığı depolama hesabını ve dosya yolunu yapılandırır.
+Windows 'da, bir tüketim planı site yapılandırmasında iki ek ayar gerektirir: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` ve `WEBSITE_CONTENTSHARE`. Bu özellikler, uygulama kodu ve yapılandırmasının depolandığı depolama hesabını ve dosya yolunu yapılandırır.
 
 ```json
 {
@@ -270,7 +270,7 @@ Windows 'da bir tüketim planı, site yapılandırmasında iki ek ayar gerektiri
 
 #### <a name="linux"></a>Linux
 
-Linux 'ta, işlev `kind` uygulamasının için `functionapp,linux`ayarlanmış olması `reserved` ve özelliğinin özelliği olarak `true`ayarlanmış olması gerekir:
+Linux 'ta, işlev uygulamasının `kind` ' ı `functionapp,linux` olarak ayarlanmış olması gerekir ve `reserved` özelliğinin `true` olarak ayarlanmış olması gerekir:
 
 ```json
 {
@@ -318,7 +318,7 @@ Premium planı, tüketim planıyla aynı ölçeklendirmeyi sunar, ancak adanmı�
 
 ### <a name="create-a-premium-plan"></a>Premium planı oluşturma
 
-Premium plan, "ServerFarm" kaynağının özel bir türüdür. Bunu `EP1`, `EP2`ya `sku` da özellikdeğeriiçinkullanarakbelirtebilirsiniz.`EP3`
+Premium plan, "ServerFarm" kaynağının özel bir türüdür. Bunu, `sku` özellik değeri için `EP1`, `EP2` veya `EP3` kullanarak belirtebilirsiniz.
 
 ```json
 {
@@ -335,7 +335,7 @@ Premium plan, "ServerFarm" kaynağının özel bir türüdür. Bunu `EP1`, `EP2`
 
 ### <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
-Premium plandaki bir işlev uygulamasının, `serverFarmId` daha önce oluşturulan planın kaynak kimliği olarak ayarlanmış özelliği olmalıdır. Ayrıca, Premium planı site yapılandırmasında iki ek ayar gerektirir: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` ve. `WEBSITE_CONTENTSHARE` Bu özellikler, uygulama kodu ve yapılandırmasının depolandığı depolama hesabını ve dosya yolunu yapılandırır.
+Premium plandaki bir işlev uygulamasının, `serverFarmId` özelliği daha önce oluşturulan planın kaynak KIMLIĞI olarak ayarlanmalıdır. Ayrıca, Premium planı site yapılandırmasında iki ek ayar gerektirir: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` ve `WEBSITE_CONTENTSHARE`. Bu özellikler, uygulama kodu ve yapılandırmasının depolandığı depolama hesabını ve dosya yolunu yapılandırır.
 
 ```json
 {
@@ -398,41 +398,41 @@ Bir App Service planı bir "ServerFarm" kaynağı tarafından tanımlanır.
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
 
-Uygulamanızı Linux üzerinde çalıştırmak için, öğesini de `kind` olarak `Linux`ayarlamanız gerekir:
+Uygulamanızı Linux üzerinde çalıştırmak için `kind` ' ı `Linux` olarak ayarlamanız gerekir:
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
+    "apiVersion": "2018-02-01",
     "name": "[variables('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "kind": "Linux",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "[parameters('sku')]",
-        "workerSize": "[parameters('workerSize')]",
-        "hostingEnvironment": "",
-        "numberOfWorkers": 1
+    "sku": {
+        "name": "S1",
+        "tier": "Standard",
+        "size": "S1",
+        "family": "S",
+        "capacity": 1
     }
 }
 ```
 
 ### <a name="create-a-function-app"></a>İşlev uygulaması oluşturma 
 
-App Service planındaki bir işlev uygulamasının, `serverFarmId` daha önce oluşturulan planın kaynak kimliği olarak ayarlanmış özelliği olmalıdır.
+App Service planındaki bir işlev uygulaması, daha önce oluşturulan planın kaynak KIMLIĞI için `serverFarmId` özelliği ayarlanmalıdır.
 
 ```json
 {
@@ -471,7 +471,7 @@ App Service planındaki bir işlev uygulamasının, `serverFarmId` daha önce ol
 }
 ```
 
-Linux uygulamaları altında `linuxFxVersion` `siteConfig`bir özelliği de içermelidir. Yalnızca kod dağıtıyorsanız, bunun değeri istenen çalışma zamanı yığınınıza göre belirlenir:
+Linux uygulamaları, `siteConfig` altına `linuxFxVersion` özelliği de içermelidir. Yalnızca kod dağıtıyorsanız, bunun değeri istenen çalışma zamanı yığınınıza göre belirlenir:
 
 | Yığın            | Örnek değer                                         |
 |------------------|-------------------------------------------------------|
@@ -517,7 +517,7 @@ Linux uygulamaları altında `linuxFxVersion` `siteConfig`bir özelliği de içe
 }
 ```
 
-[Özel bir kapsayıcı görüntüsü dağıtıyorsanız](./functions-create-function-linux-custom-image.md), bunu ile `linuxFxVersion` belirtmeniz ve resminizin çekilme olanağı sağlayan yapılandırmayı [kapsayıcılar için Web App](/azure/app-service/containers)gibi bir yapılandırma dahil etmeniz gerekir. Ayrıca, uygulama `WEBSITES_ENABLE_APP_SERVICE_STORAGE` içeriğiniz `false`kapsayıcının kendisinde sağlandığı için olarak olarak ayarlayın:
+[Özel bir kapsayıcı görüntüsü dağıtıyorsanız](./functions-create-function-linux-custom-image.md), bunu `linuxFxVersion` ile belirtmeniz ve resminizin çekilme için [kapsayıcılar için Web App](/azure/app-service/containers)gibi bir yapılandırma dahil etmeniz gerekir. Ayrıca, uygulama içeriğiniz kapsayıcının kendisinde sağlandığı için `WEBSITES_ENABLE_APP_SERVICE_STORAGE` ' ı `false` olarak ayarlayın:
 
 ```json
 {
@@ -642,20 +642,20 @@ Bir işlev uygulamasının, dağıtımınızda kullanabileceğiniz uygulama ayar
 }
 ```
 > [!TIP]
-> Bu şablon, Işlev dağıtım altyapısının (kudu) dağıtılabilir kod aradığı temel dizini ayarlayan [Proje](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) uygulama ayarları değerini kullanır. Depomızda, işlevlerimiz **src** klasörünün bir alt klasörüdür. Bu nedenle, önceki örnekte, uygulama ayarları değerini olarak `src`ayarlarız. İşlevleriniz deponuzın kökünde ise veya kaynak denetiminden dağıtdıysanız, bu uygulama ayarları değerini kaldırabilirsiniz.
+> Bu şablon, Işlev dağıtım altyapısının (kudu) dağıtılabilir kod aradığı temel dizini ayarlayan [Proje](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) uygulama ayarları değerini kullanır. Depomızda, işlevlerimiz **src** klasörünün bir alt klasörüdür. Bu nedenle, önceki örnekte, uygulama ayarları değerini `src` olarak ayarlarız. İşlevleriniz deponuzın kökünde ise veya kaynak denetiminden dağıtdıysanız, bu uygulama ayarları değerini kaldırabilirsiniz.
 
 ## <a name="deploy-your-template"></a>Şablonunuzu dağıtma
 
 Şablonunuzu dağıtmak için aşağıdaki yolların herhangi birini kullanabilirsiniz:
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Azure CLı](../azure-resource-manager/resource-group-template-deploy-cli.md)
 * [Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Azure 'a dağıt düğmesi
 
-GitHub ```<url-encoded-path-to-azuredeploy-json>``` 'daki dosyanızın`azuredeploy.json` ham yolunun [URL kodlu](https://www.bing.com/search?q=url+encode) bir sürümüyle değiştirin.
+@No__t-0 öğesini GitHub 'daki `azuredeploy.json` dosyanızın ham yolunun [URL kodlu](https://www.bing.com/search?q=url+encode) bir sürümüyle değiştirin.
 
 Markaşağı kullanan bir örnek aşağıda verilmiştir:
 
@@ -671,7 +671,7 @@ HTML kullanan bir örnek aşağıda verilmiştir:
 
 ### <a name="deploy-using-powershell"></a>PowerShell kullanarak dağıtma
 
-Aşağıdaki PowerShell komutları, bir kaynak grubu oluşturur ve gerekli kaynaklarıyla birlikte bir işlev uygulaması oluşturan bir şablon dağıtır. Yerel olarak çalıştırmak için [Azure PowerShell](/powershell/azure/install-az-ps) yüklü olmalıdır. Oturum [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) açmak için çalıştırın.
+Aşağıdaki PowerShell komutları, bir kaynak grubu oluşturur ve gerekli kaynaklarıyla birlikte bir işlev uygulaması oluşturan bir şablon dağıtır. Yerel olarak çalıştırmak için [Azure PowerShell](/powershell/azure/install-az-ps) yüklü olmalıdır. Oturum açmak için [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) çalıştırın.
 
 ```powershell
 # Register Resource Providers if they're not already registered
@@ -688,13 +688,13 @@ $TemplateParams = @{"appName" = "<function-app-name>"}
 New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile template.json -TemplateParameterObject $TemplateParams -Verbose
 ```
 
-Bu dağıtımı test etmek için, bir tüketim planında Windows üzerinde bir işlev uygulaması oluşturan [Bu gibi bir şablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) kullanabilirsiniz. İşlev `<function-app-name>` uygulamanız için benzersiz bir adla değiştirin.
+Bu dağıtımı test etmek için, bir tüketim planında Windows üzerinde bir işlev uygulaması oluşturan [Bu gibi bir şablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) kullanabilirsiniz. @No__t-0 ' yı, işlev uygulamanız için benzersiz bir adla değiştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure Işlevleri geliştirme ve yapılandırma hakkında daha fazla bilgi edinin.
 
-* [Azure İşlevleri geliştirici başvurusu](functions-reference.md)
+* [Azure Işlevleri geliştirici başvurusu](functions-reference.md)
 * [Azure işlevi uygulama ayarlarını yapılandırma](functions-how-to-use-azure-function-app-settings.md)
 * [İlk Azure işlevinizi oluşturma](functions-create-first-azure-function.md)
 

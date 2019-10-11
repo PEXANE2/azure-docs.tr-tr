@@ -17,16 +17,16 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e85fc5e6e907e32c0ad67af339c48cf84ef4764
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 46dc3a44041acd90dbab449215138eeecbda7105
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269044"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264186"
 ---
 # <a name="configure-keychain"></a>Anahtarlık yapılandırma
 
-[İOS ve macOS Için Microsoft kimlik doğrulama kitaplığı](msal-overview.md) (msal) bir kullanıcıya kaydolursa veya bir belirteci yenilediğinde, anahtarlıkta belirteçleri önbelleğe almaya çalışır. MSAL, belirteçleri anahtarlıkta önbelleğe alarak, aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulama arasında sessiz çoklu oturum açma (SSO) sağlayabilir. Anahtar Zinciri erişim grupları işlevleri aracılığıyla SSO elde edilir ( [Apple belgelerine](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)bakın)
+[İOS ve macOS Için Microsoft kimlik doğrulama kitaplığı](msal-overview.md) (msal) bir kullanıcıya kaydolursa veya bir belirteci yenilediğinde, anahtarlıkta belirteçleri önbelleğe almaya çalışır. Anahtarlıkta önbelleğe alma belirteçleri, MSAL 'ın aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulama arasında sessiz çoklu oturum açma (SSO) sağlamasına izin verir. Anahtar Zinciri erişim grupları işlevselliği aracılığıyla SSO elde edilir. Daha fazla bilgi için bkz. Apple 'ın [Anahtarlık öğeleri belgeleri](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc).
 
 Bu makalede, MSAL 'in önbelleğe alınmış belirteçleri iOS ve macOS anahtarlığa yazabilmesi için uygulama yetkilendirmelerini yapılandırma konuları ele alınmaktadır.
 
@@ -34,21 +34,21 @@ Bu makalede, MSAL 'in önbelleğe alınmış belirteçleri iOS ve macOS anahtarl
 
 ### <a name="ios"></a>iOS
 
-İOS üzerinde msal, `com.microsoft.adalcache` varsayılan olarak erişim grubunu kullanır. Bu, hem MSAL hem de Azure AD kimlik doğrulama kitaplığı (ADAL) SDK 'Ları tarafından kullanılan paylaşılan erişim grubudur ve aynı yayımcıdan gelen birden çok uygulama arasında en iyi çoklu oturum açma (SSO) deneyimini sağlar.
+İOS üzerinde MSAL, varsayılan olarak `com.microsoft.adalcache` erişim grubunu kullanır. Bu, hem MSAL hem de Azure AD kimlik doğrulama kitaplığı (ADAL) SDK 'Ları tarafından kullanılan paylaşılan erişim grubudur ve aynı yayımcıdan gelen birden çok uygulama arasında en iyi çoklu oturum açma (SSO) deneyimini sağlar.
 
-İOS 'ta, `com.microsoft.adalcache` Anahtarlık grubunu, **proje ayarları** > **özellikleri** > **Anahtarlık paylaşımı** altındaki Xcode 'da uygulamanızın yetkilendirenlerine ekleyin
+İOS 'ta, `com.microsoft.adalcache` Anahtarlık grubunu, **proje @no__t ayarları**altındaki Xcode 'da,-4**anahtarlık paylaşımı** @no__t**için**, uygulamanızın yetkilendirme grubuna ekleyin
 
-### <a name="macos"></a>Mac OS
+### <a name="macos"></a>macOS
 
-MacOS on msal, `com.microsoft.identity.universalstorage` varsayılan olarak erişim grubunu kullanır.
+MacOS üzerinde MSAL, varsayılan olarak `com.microsoft.identity.universalstorage` erişim grubunu kullanır.
 
-MacOS anahtar zinciri sınırlamaları nedeniyle msal `access group` , MacOS 10,14 ve önceki sürümlerde Anahtarlık erişim grubu özniteliğine (bkz. [ksecattraccessgroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) doğrudan çevrilmez. Ancak, aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulamanın sessiz SSO 'ya sahip olduğundan emin olarak SSO perspektifinden aynı şekilde davranır.
+MacOS anahtar zinciri sınırlamaları nedeniyle, MSAL 'in `access group` ' ı macOS 10,14 ve önceki sürümlerde Anahtarlık erişim grubu özniteliğine (bkz. [Ksecattraccessgroup](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)) doğrudan çevrimez. Ancak, aynı Apple geliştiricisi tarafından dağıtılan birden çok uygulamanın sessiz SSO 'ya sahip olduğundan emin olarak SSO perspektifinden aynı şekilde davranır.
 
 MacOS 10,15 ve sonraki sürümlerinde (macOS Catalina), MSAL, iOS 'a benzer şekilde sessiz SSO elde etmek için Anahtarlık erişim grubu özniteliğini kullanır.
 
 ## <a name="custom-keychain-access-group"></a>Özel Anahtarlık erişim grubu
 
-Farklı bir Anahtarlık erişim grubu kullanmak istiyorsanız, oluşturma `MSALPublicClientApplicationConfig` `MSALPublicClientApplication`işleminden önce oluşturma sırasında özel grubunuzu şu şekilde geçirebilirsiniz:
+Farklı bir Anahtarlık erişim grubu kullanmak istiyorsanız, `MSALPublicClientApplication` ' i oluşturmadan önce `MSALPublicClientApplicationConfig` oluştururken özel grubunuzu geçirebilirsiniz, örneğin:
 
 Amaç-C:
 

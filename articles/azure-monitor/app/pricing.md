@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 10/03/2019
 ms.author: dalek
-ms.openlocfilehash: 3e0bdd42ea19b7029d3f3df4ff9a5a275aec0271
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 51caf34d0030fd404cd7f7c1868a0e2945c75b35
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936693"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264414"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights kullanım ve maliyetlerini yönetme
 
@@ -40,7 +40,7 @@ Fiyatlandırma Application Insights için nasıl çalıştığı hakkında sorul
 > [!NOTE]
 > Bu makaledeki ekran görüntülerinde görüntülenen tüm fiyatlar yalnızca örnek amaçlıdır. Para birimi ve bölgenizin geçerli fiyatları için bkz. [Application Insights fiyatlandırması][pricing].
 
-### <a name="multi-step-web-tests"></a>Çok adımlı Web testleri
+### <a name="multi-step-web-tests"></a>Çok adımlı web testleri
 
 [Çok adımlı Web testleri](../../azure-monitor/app/availability-multistep.md) ek bir ücret doğurur. Çok adımlı Web testleri, bir dizi eylemi gerçekleştiren Web sınamalardır.
 
@@ -56,7 +56,7 @@ Bunu ele almak için iki yaklaşım vardır: ASP.NET SDK 'sında kullanılabilen
 
 ASP.NET SDK 'nın [Uyarlamalı örneklenmesi](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)sayesinde, veri hacmi varsayılan Application Insights izleme için belirtilen en yüksek trafik hızında tutulacak şekilde otomatik olarak ayarlanır. Uygulama, hata ayıklama sırasında veya düşük kullanım nedeniyle düşük miktarda telemetri üretirse, birim saniye başına yapılandırılan olayların altında olduğu sürece, öğeler örnekleme işlemcisi tarafından atılamaz. Saniyede 5 olay olan, yüksek hacimli bir uygulama için, uyarlamalı örnekleme, günlük olayların sayısını 432.000 olarak sınırlandırır. Genellikle 1 KB 'lik ortalama bir olay boyutunu kullanarak bu, uygulamanızı barındıran düğüm başına yaklaşık 13,4 GB telemetri (örnekleme her düğüm için yerel olarak yapıldığından) karşılık gelir. 
 
-Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, [ASP.net, ASP.NET Core ve Java için sabit ücret örneklemeye göre verilerin bir yüzdesine göre Application Insights tarafından alındığı zaman örnekleri veren [ingestion örnekleme) [https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling ] kullanabilirsiniz. ](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak için Web siteleri
+Uyarlamalı örneklemeyi desteklemeyen SDK 'lar için, tutulacak verilerin yüzdesine [](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) veya [ASP.net, ASP.NET Core ve Java için sabit ücret örneklemesine göre Application Insights tarafından ne zaman bekletileceği ile ilgili örnek örnekleme gerçekleştirebilirsiniz. ](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites)Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltmak için Web siteleri
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Benzer müşterilerin topladıklarından öğrenin
 
@@ -68,11 +68,11 @@ Application Insights, en son kullanım desenlerine göre maliyetlerinizin ne kad
 
 ![Fiyatlandırma seçin](./media/pricing/pricing-001.png)
 
-a. Veri hacminin ayı için gözden geçirin. Bu, sunucunuza ve istemci uygulamalarınıza ve kullanılabilirlik testlerinden alınan ve saklanan tüm verileri (herhangi bir [örnekleme](../../azure-monitor/app/sampling.md)sonrasında) içerir.  
-kenarı. [Çok adımlı Web testleri](../../azure-monitor/app/availability-multistep.md)için ayrı bir ücret yapılır. (Bu, veri hacmi ücretine dahil olan basit kullanılabilirlik testlerini içermez.)  
-,. Son ay için veri hacmi eğilimlerini görüntüleyin.  
-TID. Veri alımı [örneklemesi](../../azure-monitor/app/sampling.md)etkinleştirin.   
-a. Günlük veri hacmi ucunu ayarlayın.  
+A. Veri hacminin ayı için gözden geçirin. Bu, sunucunuza ve istemci uygulamalarınıza ve kullanılabilirlik testlerinden alınan ve saklanan tüm verileri (herhangi bir [örnekleme](../../azure-monitor/app/sampling.md)sonrasında) içerir.  
+B. [Çok adımlı Web testleri](../../azure-monitor/app/availability-multistep.md)için ayrı bir ücret yapılır. (Bu, veri hacmi ücretine dahil olan basit kullanılabilirlik testlerini içermez.)  
+C. Son ay için veri hacmi eğilimlerini görüntüleyin.  
+D. Veri alımı [örneklemesi](../../azure-monitor/app/sampling.md)etkinleştirin.   
+E. Günlük veri hacmi ucunu ayarlayın.  
 
 Application Insights kullanımınızı daha derin araştırmak için **ölçümler** sayfasını açın, "veri noktası birimi" adlı ölçümü ekleyin ve ardından verileri "Telemetri öğe türü" olarak bölmek Için *bölmeyi Uygula* seçeneğini belirleyin. 
 
@@ -149,7 +149,7 @@ Günlük ucunu değiştirmek için, Application Insights kaynağınızın **Yap�
 
 [Günlük ucunu Azure Resource Manager ile değiştirmek](../../azure-monitor/app/powershell.md)için, değiştirilecek Özellik `dailyQuota` ' dir.  Azure Resource Manager aracılığıyla, `dailyQuotaResetTime` ve günlük Cap `warningThreshold` ' i de ayarlayabilirsiniz. 
 
-## <a name="sampling"></a>Aşağıdakine
+## <a name="sampling"></a>Örnekleme
 [Örnekleme](../../azure-monitor/app/sampling.md) , tanılama aramaları sırasında ilgili olayları bulma özelliğini korurken, telemetrinin uygulamanıza gönderilme hızını azaltma yöntemidir. Ayrıca, doğru olay sayılarını da koruyabilirsiniz.
 
 Örnekleme, ücretleri azaltmak ve aylık kotasında kalmak için etkili bir yoldur. Örnekleme algoritması ilgili telemetri öğelerini korur, örneğin, ara 'yı kullandığınızda belirli bir özel durumla ilgili isteği bulabilirsiniz. Algoritma Ayrıca, istek hızları, özel durum ücretleri ve diğer sayımlar için ölçüm Gezgininde doğru değerleri görmeniz için doğru sayıları de korur.
@@ -183,7 +183,7 @@ Application Insights kaynağınız, saklama süresini değiştirmek için **kull
 
 ![Günlük telemetri birimi ucunu ayarla](./media/pricing/pricing-005.png)
 
-Saklama, `retentionInDays` parametresi kullanılarak [ARM aracılığıyla da ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/app/powershell) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu işlevsellik yalnızca ARM aracılığıyla sunulur. 
+Bekletme, `retentionInDays` parametresi kullanılarak [PowerShell kullanılarak da program aracılığıyla ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/app/powershell/set-the-data-retention) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca ARM aracılığıyla sunulur ve çok dikkatli kullanılmalıdır. 
 
 Faturalama erken Aralık 2019 ' de daha uzun süre bekletmeye başladığında, 90 günden daha uzun süre tutulan veriler, Azure Log Analytics veri saklama için şu anda faturalandırılan ücret üzerinden faturalandırılacaktır. [Azure Izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)daha fazla bilgi edinin. [Bu öneri için oylama](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ile değişken bekletme ilerlemesini güncel tutun. 
 
@@ -251,14 +251,14 @@ Bu katman yalnızca Operations Management Suite aboneliği olan müşterilere uy
   * Uygulamanız **Roleınstance** 'ı özel bir değere ayarlamak için SDK kullanıyorsa, varsayılan olarak, düğüm sayısını belirlemede aynı değer kullanılır. 
   * İstemci makinelerinden veya mobil cihazlardan çalışan bir uygulamayla yeni bir SDK sürümü kullanıyorsanız, düğüm sayısı çok büyük bir sayı döndürebilir (çok sayıda istemci makinesi veya mobil cihaz nedeniyle). 
 
-## <a name="automation"></a>Otomatikleştirme
+## <a name="automation"></a>Otomasyon
 
-Fiyatlandırma katmanını Azure Kaynak Yönetimi 'ni kullanarak ayarlamak için bir komut dosyası yazabilirsiniz. [Nasıl yapılacağını öğrenin](powershell.md#price).
+Fiyatlandırma katmanını Azure Kaynak Yönetimi 'ni kullanarak ayarlamak için bir komut dosyası yazabilirsiniz. [Nasıl olduğunu öğrenin](powershell.md#price).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Aşağıdakine](../../azure-monitor/app/sampling.md)
+* [Örnekleme](../../azure-monitor/app/sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties

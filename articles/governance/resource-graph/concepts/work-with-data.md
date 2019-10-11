@@ -3,15 +3,15 @@ title: Büyük veri kümeleriyle çalışma
 description: Azure Kaynak Grafında çalışırken büyük veri kümelerinin nasıl alınacağını ve kontrol olduğunu anlayın.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/01/2019
+ms.date: 10/10/2019
 ms.topic: conceptual
 ms.service: resource-graph
-ms.openlocfilehash: 4da890a5ef7acb44d0e8628dc4ec3904f6a065e4
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0ecd0ea997520947b766912f834de2a0c2e64429
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71980277"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274241"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Büyük Azure Kaynak veri kümeleriyle çalışma
 
@@ -68,7 +68,7 @@ Bir sonuç kümesini işlenmek üzere daha küçük kayıt kümelerine bölmek g
 
 **Resultkesilme** **değeri true**olduğunda **$skipToken** özelliği yanıtta ayarlanır. Bu değer, sorguyla eşleşen bir sonraki kayıt kümesini almak için aynı sorgu ve abonelik değerleriyle birlikte kullanılır.
 
-Aşağıdaki örneklerde, ilk 3000 kaydın nasıl atlanması ve Azure CLı ve Azure PowerShell ile atlandıktan sonra **ilk** 1000 kayıtlarının nasıl **döndürüleceği** gösterilmektedir:
+Aşağıdaki örneklerde, ilk 3000 kaydın nasıl atlanması ve bu kayıtlar Azure CLı ile atlandıktan sonra **ilk** 1000 kayıtlarının nasıl **döndürüleceği** ve Azure PowerShell gösterilmektedir:
 
 ```azurecli-interactive
 az graph query -q "project id, name | order by id asc" --first 1000 --skip 3000
@@ -82,6 +82,90 @@ Search-AzGraph -Query "project id, name | order by id asc" -First 1000 -Skip 300
 > Sayfalama 'un çalışması için sorgunun **ID** alanını **projesi** gerekir. Sorguda eksik ise, yanıt **$skipToken**içermez.
 
 Bir örnek için, REST API belgeleri içindeki [Sonraki sayfa sorgusuna](/rest/api/azureresourcegraph/resources/resources#next-page-query) bakın.
+
+## <a name="formatting-results"></a>Biçimlendirme sonuçları
+
+Kaynak Grafiği sorgusunun sonuçları iki biçimde, _tablo_ ve _objectarray_olarak sağlanır. Biçim, istek seçeneklerinin bir parçası olarak **RESULTFORMAT** parametresi ile yapılandırılır. _Tablo_ biçimi, **RESULTFORMAT**için varsayılan değerdir.
+
+Azure CLı sonuçları JSON 'da varsayılan olarak sağlanır. Azure PowerShell sonuçları, varsayılan olarak bir **PSCustomObject** ' dir, ancak `ConvertTo-Json` cmdlet 'i kullanılarak hızlı BIR şekilde JSON 'a dönüştürülebilirler. Diğer SDK 'lar için, sorgu sonuçları _Objectarray_ biçiminin çıktısı olacak şekilde yapılandırılabilir.
+
+### <a name="format---table"></a>Biçim-Tablo
+
+Varsayılan biçim, _tablo_, sorgu tarafından döndürülen özelliklerin sütun tasarımını ve satır değerlerini vurgulamak için tasarlanan bir JSON biçiminde sonuçları döndürür. Bu biçim, yapılandırılmış bir tabloda veya bir elektronik tabloda, ilk olarak tanımlanan sütunları ve sonra bu sütunlara hizalanmış verileri temsil eden her bir satır için tanımlanan verilere benzer.
+
+_Tablo_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiştir:
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": {
+        "columns": [{
+                "name": "name",
+                "type": "string"
+            },
+            {
+                "name": "type",
+                "type": "string"
+            },
+            {
+                "name": "location",
+                "type": "string"
+            },
+            {
+                "name": "subscriptionId",
+                "type": "string"
+            }
+        ],
+        "rows": [
+            [
+                "veryscaryvm2-nsg",
+                "microsoft.network/networksecuritygroups",
+                "eastus",
+                "11111111-1111-1111-1111-111111111111"
+            ]
+        ]
+    },
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+### <a name="format---objectarray"></a>Format-ObjectArray
+
+_Objectarray_ BIÇIMI sonuçları JSON biçiminde de döndürür. Ancak, bu tasarım, sütun ve satır verilerinin dizi gruplarında eşleştiği JSON 'da ortak olan anahtar/değer çifti ilişkisine hizalanır.
+
+_Objectarray_ biçimlendirmesiyle bir sorgu sonucu örneği aşağıda verilmiştir:
+
+```json
+{
+    "totalRecords": 47,
+    "count": 1,
+    "data": [{
+        "name": "veryscaryvm2-nsg",
+        "type": "microsoft.network/networksecuritygroups",
+        "location": "eastus",
+        "subscriptionId": "11111111-1111-1111-1111-111111111111"
+    }],
+    "facets": [],
+    "resultTruncated": "true"
+}
+```
+
+İşte, _Objectarray_ biçimini kullanmak Için **RESULTFORMAT** ayarlamanın bazı örnekleri şunlardır:
+
+```csharp
+var requestOptions = new QueryRequestOptions( resultFormat: ResultFormat.ObjectArray);
+var request = new QueryRequest(subscriptions, "limit 1", options: requestOptions);
+```
+
+```python
+request_options = QueryRequestOptions(
+    result_format=ResultFormat.object_array
+)
+request = QueryRequest(query="limit 1", subscriptions=subs_list, options=request_options)
+response = client.resources(request)
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

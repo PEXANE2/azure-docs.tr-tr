@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: d2099de9ad909b23b79a92a831d7730b1cf126e3
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311630"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72262851"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure Container Instances Azure Container Registry ile kimlik doğrulama
 
@@ -33,7 +33,7 @@ Hizmet sorumluları, kayıt defteri [Yönetici kullanıcısı](container-registr
 
 ## <a name="authenticate-using-the-service-principal"></a>Hizmet sorumlusunu kullanarak kimlik doğrulama
 
-Hizmet sorumlusu kullanarak Azure Container Instances bir kapsayıcı başlatmak için kimliğini `--registry-username`ve `--registry-password`parolasını belirtin.
+Hizmet sorumlusu kullanarak Azure Container Instances bir kapsayıcı başlatmak için, `--registry-username` için KIMLIĞINI ve `--registry-password` parolasını belirtin.
 
 ```azurecli-interactive
 az container create \
@@ -57,7 +57,7 @@ Azure CLı için yukarıdaki örnek betikleri GitHub 'da ve Azure PowerShell iç
 Aşağıdaki makalelerde hizmet sorumluları ve ACR ile çalışma hakkında ek ayrıntılar yer alır:
 
 * [Hizmet sorumluları ile kimlik doğrulamasını Azure Container Registry](container-registry-auth-service-principal.md)
-* [Azure Kubernetes Service (AKS) Azure Container Registry ile kimlik doğrulama](container-registry-auth-aks.md)
+* [Azure Kubernetes Service (AKS) Azure Container Registry ile kimlik doğrulama](../aks/cluster-container-registry-integration.md)
 
 <!-- IMAGES -->
 

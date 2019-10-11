@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 3ae75dc988ad70871efa45eb8c61db15804922ee
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b714559c6c009139da97c7d90425011fb3130ef8
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176575"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263319"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Host. JSON başvurusu  
 
@@ -113,7 +113,7 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir.
 > [!NOTE]
 > Günlük örnekleme, bazı yürütmelerin Application Insights İzleyicisi dikey penceresinde gösterilmemesine neden olabilir.
 
-|Özellik  |Varsayılanını | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |IsEnabled|true|Örneklemeyi etkinleştirilir veya devre dışı bırakır.| 
 |maxTelemetryItemsPerSecond|5|Örneklemenin başladığı eşik.| 
@@ -133,11 +133,11 @@ Yapılandırma ayarı, [dayanıklı işlevler bağlamalarında](durable/durable-
 
 Yapılandırma ayarları, [Olay Hub 'ı Tetikleyicileri ve bağlamaları](functions-bindings-event-hubs.md#host-json)' nda bulunabilir. 
 
-## <a name="extensions"></a>Uzantılardan
+## <a name="extensions"></a>uzantılar
 
 [Http](#http) ve [eventHub](#eventhub)gibi bağlamaya özgü tüm ayarları içeren bir nesne döndüren özellik.
 
-## <a name="functions"></a>lerdir
+## <a name="functions"></a>işlevleri
 
 İş konağının çalıştığı işlevlerin listesi. Boş bir dizi tüm işlevleri Çalıştır anlamına gelir. Yalnızca [yerel olarak çalışırken](functions-run-local.md)kullanılmak üzere tasarlanmıştır. Azure 'daki işlev uygulamaları ' nda, bu ayarı kullanmak yerine belirli işlevleri devre dışı bırakmak için [Azure işlevlerinde işlevleri devre dışı](disable-function.md) bırakma bölümündeki adımları izlemeniz gerekir.
 
@@ -176,7 +176,7 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 }
 ```
 
-|Özellik  |Varsayılanını | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |etkinletir|true|Özelliğin etkinleştirilip etkinleştirilmeyeceğini belirtir. | 
 |Healthcheckınterval|10 saniye|Düzenli arka plan sistem durumu denetimleri arasındaki zaman aralığı. | 
@@ -188,9 +188,23 @@ Adanmış bir (App Service) planında, genel bir sınır yoktur ve varsayılan d
 
 Yapılandırma ayarları, [http Tetikleyicileri ve bağlamaları](functions-bindings-http-webhook.md)içinde bulunabilir.
 
+```json
+{
+    "extensions": {
+        "http": {
+            "routePrefix": "api",
+            "maxOutstandingRequests": 200,
+            "maxConcurrentRequests": 100,
+            "dynamicThrottlesEnabled": true
+        }
+    }
+}
+```
+
+
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="logging"></a>Açmak
+## <a name="logging"></a>günlük kaydı
 
 Application Insights dahil olmak üzere, işlev uygulamasının günlük davranışlarını denetler.
 
@@ -210,14 +224,14 @@ Application Insights dahil olmak üzere, işlev uygulamasının günlük davran�
 }
 ```
 
-|Özellik  |Varsayılanını | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |fileLoggingMode|yalnızca Debug|Hangi dosya günlüğü düzeyinin etkin olduğunu tanımlar.  Seçenekler `never`, `always`, `debugOnly` ' dir. |
 |logLevel|yok|Uygulamadaki işlevler için günlük kategorisi filtrelemeyi tanımlayan nesne. Sürüm 2. x, günlük kategorisi filtrelemesinin ASP.NET Core yerleşimini izler. Bu, belirli işlevler için günlüğü filtrelemenizi sağlar. Daha fazla bilgi için ASP.NET Core belgelerine [günlük filtreleme](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) bölümüne bakın. |
-|Konsola|yok| [Konsol](#console) günlüğü ayarı. |
+|konsolu|yok| [Konsol](#console) günlüğü ayarı. |
 |ApplicationInsights|yok| [ApplicationInsights](#applicationinsights) ayarı. |
 
-## <a name="console"></a>Konsola
+## <a name="console"></a>konsolu
 
 Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayıklama modunda olmadığında konsol günlüğünü denetler.
 
@@ -233,11 +247,11 @@ Bu ayar [günlüğe kaydetme](#logging)işleminin bir alt öğesidir. Hata ayık
 }
 ```
 
-|Özellik  |Varsayılanını | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
-|IsEnabled|yanlış|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
+|IsEnabled|false|Konsol günlüğünü etkinleştir veya devre dışı bırakır.| 
 
-## <a name="queues"></a>klarında
+## <a name="queues"></a>sıralar
 
 Yapılandırma ayarları, [depolama kuyruğu Tetikleyicileri ve bağlamaları](functions-bindings-storage-queue.md#host-json)bölümünde bulunabilir.  
 
@@ -265,7 +279,7 @@ Tek kilit davranışı için yapılandırma ayarları. Daha fazla bilgi için bk
 }
 ```
 
-|Özellik  |Varsayılanını | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------| 
 |Kilit dönemi|00:00:15|İşlev düzeyi kilitlerinin alındığı dönem için. Kilitleri otomatik yenileme.| 
 |listenerLockPeriod|00:01:00|Dinleyici kilitlerinin alındığı dönem.| 

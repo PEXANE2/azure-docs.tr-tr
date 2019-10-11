@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827399"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264324"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -39,7 +39,7 @@ Evet. [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Kubernetes Azure Container Registry yapılandırma Nasıl yaparım??
 
-[Azure Kubernetes hizmeti](container-registry-auth-aks.md)Için [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) ve adımlar belgelerine bakın.
+[Azure Kubernetes hizmeti](../aks/cluster-container-registry-integration.md)Için [Kubernetes](https://kubernetes.io/docs/user-guide/images/#using-azure-container-registry-acr) ve adımlar belgelerine bakın.
 
 ### <a name="how-do-i-get-admin-credentials-for-a-container-registry"></a>Bir kapsayıcı kayıt defteri için yönetici kimlik bilgilerini almak Nasıl yaparım??
 
@@ -306,7 +306,7 @@ unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
-1. @No__t-0 seçeneğini Docker Daemon yapılandırma dosyasına `/etc/sysconfig/docker` olarak ekleyin. Örnek:
+1. @No__t-0 seçeneğini Docker Daemon yapılandırma dosyasına `/etc/sysconfig/docker` olarak ekleyin. Örneğin:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -416,7 +416,7 @@ Microsoft Edge/IE tarayıcısı kullanıyorsanız, en fazla 100 depo veya etiket
 Tarayıcı, sunucuya depo veya etiket getirme isteğini gönderemeyebilir. Şöyle çeşitli nedenlerle şunlar olabilir:
 
 * Ağ bağlantısı olmaması
-* Güvenlik Duvarı
+* Duvarını
 * Ad engelleyiciler
 * DNS hataları
 
@@ -424,7 +424,7 @@ Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantın
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Prerequisites
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker kullanıcı arabiriminden bir proxy kullanmak için Docker 'ı etkinleştirin: <https://docs.docker.com/docker-for-windows/#proxies>

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 10/08/2019
 ms.author: lahugh
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bdea67d682bab335de02e55f5864460e3daefb95
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.custom: H1Hack27Feb2017,fasttrack-edit
+ms.openlocfilehash: 9c02db01d7b95f3178d73602089b30029fb0db9f
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254951"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274835"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -107,6 +107,11 @@ Bir havuzdaki işlem düğümlerinin sayısını yönetmek için hizmet tanıml�
 | $TargetDedicatedNodes |Havuz için ayrılmış işlem düğümlerinin hedef sayısı. Ayrılmış düğümlerin sayısı bir hedef olarak belirtilir çünkü bir havuz istenen sayıda düğüm için her zaman ulaşamayabilir. Örneğin, ayrılmış düğümlerin hedef sayısı, havuz ilk hedefe ulaşmadan önce bir otomatik ölçeklendirme değerlendirmesi tarafından değiştirilirse, havuz hedefe ulaşamamış olabilir. <br /><br /> Batch hizmeti yapılandırmasıyla oluşturulan bir hesaptaki havuz, hedef bir Batch hesabı düğümünü veya çekirdek kotayı aşarsa hedefini elde edebilir. Hedef, aboneliğin paylaşılan çekirdek kotasını aşarsa, kullanıcı aboneliği yapılandırmasıyla oluşturulan bir hesaptaki havuz hedefine ulaşamayabilir.|
 | $TargetLowPriorityNodes |Havuz için düşük öncelikli işlem düğümlerinin hedef sayısı. Düşük öncelikli düğümlerin sayısı bir hedef olarak belirtilir çünkü bir havuz istenen sayıda düğüm için her zaman ulaşamayabilir. Örneğin, havuz ilk hedefe ulaşmadan önce düşük öncelikli düğümlerin hedef sayısı bir otomatik ölçeklendirme değerlendirmesi tarafından değiştirilirse, havuz hedefe ulaşamamış olabilir. Hedef bir Batch hesabı düğümünü veya çekirdek kotayı aşarsa, bir havuz hedefi de elde edebilir. <br /><br /> Düşük öncelikli işlem düğümleri hakkında daha fazla bilgi için bkz. [Batch ile düşük öncelikli VM 'Ler kullanma (Önizleme)](batch-low-pri-vms.md). |
 | $NodeDeallocationOption |Bir havuzdan işlem düğümleri kaldırıldığında oluşan eylem. Olası değerler şunlardır:<ul><li>**yeniden kuyruğa alma**--varsayılan değer. Görevleri hemen sonlandırır ve yeniden zamanlanabilmeleri için iş kuyruğuna geri koyar. Bu eylem, hedef sayısının mümkün olduğunca hızlı bir şekilde ulaşmasını sağlar, ancak çalışan tüm görevler kesintiye uğradığında ve yeniden başlatılması gerektiği için daha az etkili olabilir. <li>**Sonlandır**--görevleri hemen sonlandırır ve iş kuyruğundan kaldırır.<li>**taskcompletion**--Şu anda çalışan görevlerin bitmesini bekler ve düğümü havuzdan kaldırır. Görevlerin kesintiye uğratılmasını ve yeniden kuyruğa karşı çalışmasını önlemek için bu seçeneği kullanın. <li>**retaineddata**--düğüm havuzdan kaldırılmadan önce, düğümdeki tüm yerel görev ile korunan verilerin temizlenmesi için bekler.</ul> |
+
+> [!NOTE]
+> @No__t-0 değişkeni, `$TargetDedicated` diğer adı kullanılarak da belirtilebilir. Benzer şekilde, `$TargetLowPriorityNodes` değişkeni, `$TargetLowPriority` diğer adı kullanılarak belirtilebilir. Hem tam olarak adlandırılmış değişken hem de diğer adı formül tarafından ayarlandıysa, tam olarak adlandırılmış değişkene atanan değer öncelikli olur.
+>
+>
 
 Batch hizmetindeki ölçümleri temel alan ayarlamalar yapmak için, bu hizmet tanımlı değişkenlerin değerini alabilirsiniz:
 
@@ -250,7 +255,7 @@ Batch hizmeti düzenli aralıklarla görev ve kaynak ölçümlerinin örneklerin
 
 @No__t-0 `GetSample()` yöntemine geçirildiğinde veya `GetSamplePercent()` yöntemi çağrıldığında _yüzde_ , Batch hizmeti tarafından kaydedilen toplam olası örnek sayısı ve otomatik ölçeklendirme için kullanılabilir örnek sayısı arasında bir karşılaştırmaya başvurur formül.
 
-Örnek olarak 10 dakikalık bir TimeSpan bölümüne bakalım. Örnekler 10 dakikalık bir TimeSpan içinde her 30 saniyede bir kaydedildiğinden, Batch tarafından kaydedilen en fazla örnek sayısı 20 örnek (dakika başına 2) olacaktır. Ancak, raporlama mekanizmasından ve Azure 'daki diğer sorunların devralınan gecikmesi nedeniyle, okuma için otomatik ölçeklendirme formülünüzün kullanabildiği yalnızca 15 örnek olabilir. Bu nedenle, örneğin, bu 10 dakikalık dönem için, Formülünüzde kaydedilen toplam örnek sayısının yalnızca% 75 ' u kullanılabilir olabilir.
+Örnek olarak 10 dakikalık bir TimeSpan bölümüne bakalım. Örnekler 10 dakikalık bir TimeSpan içinde her 30 saniyede bir kaydedildiğinden, Batch tarafından kaydedilen en fazla örnek sayısı 20 örnek (dakika başına 2) olacaktır. Ancak, raporlama mekanizmasından ve Azure 'daki diğer sorunların devralınan gecikmesi nedeniyle, okuma için otomatik ölçeklendirme formülünüzün kullanabildiği yalnızca 15 örnek olabilir. Bu nedenle, örneğin, bu 10 dakikalık dönem için, Formülünüzde kaydedilen toplam örnek sayısının yalnızca %75 ' u kullanılabilir olabilir.
 
 **GetSample () ve örnek aralıklar**
 

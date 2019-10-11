@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 584172a9b248a9d151ba9a980bf4e52ed1e1b926
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1956fd9eaaa537d7ffa992070fc5cffd567954ce
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141976"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274807"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal’da yeni Zaman Serisi Görüşleri ortamı oluşturma
 
@@ -28,40 +28,40 @@ Time Series Insights, Azure IoT Hub 'Larına veri akışını görselleştirmeni
 
 Ortam oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 1. **+ Kaynak oluştur** düğmesini seçin.
 
 1. **Nesnelerin interneti** kategorisini seçin ve **Time Series Insights**' ı seçin.
 
-   Time Series Insights ortamını oluşturma) [ ![](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox)
+   [@no__t-Time Series Insights ortamını oluşturun](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
 
 1. **Time Series Insights** sayfasında **Oluştur**' u seçin.
 
 1. Gerekli parametreleri girin. Aşağıdaki tabloda her bir parametre açıklanmaktadır:
    
-   [![Time Series Insights kaynak grubu oluşturma](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
+   [![Time Series Insights kaynak grubunu oluşturma](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
    
    Ayar|Önerilen değer|Açıklama
    ---|---|---
    Ortam adı | Benzersiz bir ad | Bu ad, [zaman serisi Gezgininde](https://insights.timeseries.azure.com) ortamı temsil eder
-   Subscription | Aboneliğiniz | Birden çok aboneliğiniz varsa, tercihen olay kaynağınızı içeren aboneliği seçin. Zaman Serisi Görüşleri aynı abonelikteki mevcut Azure IoT Hub ve Event Hub kaynaklarını otomatik olarak algılayabilir.
-   Resource group | Yeni oluştur veya var olanı kullan | Kaynak grubu, birlikte kullanılan Azure kaynakları koleksiyonudur. Örneğin, Olay Hub 'ınızı veya IoT Hub içeren mevcut bir kaynak grubunu seçebilirsiniz. Ya da bu kaynak diğer kaynaklarla ilgili değilse yeni bir tane oluşturabilirsiniz.
-   Location | Olay kaynağınızı en yakın | Tercihen, siteler arası ve çapraz bölge bant genişliği maliyetlerini ve verileri bölgenin dışına taşırken gecikme süresi eklenmesini önlemek için, olay kaynak verilerinizi içeren veri merkezi konumunu seçin.
+   Abonelik | Aboneliğiniz | Birden çok aboneliğiniz varsa, tercihen olay kaynağınızı içeren aboneliği seçin. Zaman Serisi Görüşleri aynı abonelikteki mevcut Azure IoT Hub ve Event Hub kaynaklarını otomatik olarak algılayabilir.
+   Kaynak grubu | Yeni oluştur veya var olanı kullan | Kaynak grubu, birlikte kullanılan Azure kaynakları koleksiyonudur. Örneğin, Olay Hub 'ınızı veya IoT Hub içeren mevcut bir kaynak grubunu seçebilirsiniz. Ya da bu kaynak diğer kaynaklarla ilgili değilse yeni bir tane oluşturabilirsiniz.
+   Konum | Olay kaynağınızı en yakın | Tercihen, siteler arası ve çapraz bölge bant genişliği maliyetlerini ve verileri bölgenin dışına taşırken gecikme süresi eklenmesini önlemek için, olay kaynak verilerinizi içeren veri merkezi konumunu seçin.
    Fiyatlandırma katmanı | S1 | Gerekli aktarım hızını seçin. En düşük maliyetler ve başlangıç kapasitesi için S1 ' i seçin.
-   Kapasite | 1\. | Kapasite, seçili SKU ile ilişkili giriş fiyatı, depolama kapasitesi ve maliyet için geçerlidir.  Oluşturduktan sonra ortam kapasitesini değiştirebilirsiniz. En düşük maliyetler için 1 kapasitesini seçin. 
+   Kapasite | 1 | Kapasite, seçili SKU ile ilişkili giriş fiyatı, depolama kapasitesi ve maliyet için geçerlidir.  Oluşturduktan sonra ortam kapasitesini değiştirebilirsiniz. En düşük maliyetler için 1 kapasitesini seçin. 
   
 1. Hazırlama işlemini başlatmak için **Oluştur** ' u seçin. Bu işlem birkaç dakika sürebilir.
 
 1. Dağıtım sürecini izlemek için **Bildirimler** simgesini (zil simgesi) seçin.
 
-   [![Bildirimleri izleyin](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
+   [@no__t--bildirimleri Izleyin](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
 
     Dağıtım başarılı olduğunda diğer özellikleri yapılandırmak için **Kaynağa Git** ' i seçebilir, veri erişim ilkeleriyle güvenliği ayarlayabilir, olay kaynaklarını ekleyebilir ve diğer eylemleri yapabilirsiniz.
 
 1. Kaynak **genel**görünümünde, gelecekte Time Series Insights ortamınıza kolayca erişmek için sağ üst köşedeki **sabitleme simgesini** seçin.
 
-   [![Panoya Time Series Insights PIN oluşturma](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
+   [![ panoya Time Series Insights PIN oluştur](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -69,6 +69,6 @@ Ortam oluşturmak için aşağıdaki adımları izleyin:
 
 * Azure Time Series Insights ortamınıza [bir olay hub 'ı olay kaynağı ekleyin](time-series-insights-how-to-add-an-event-source-eventhub.md) .
 
-* [Olayları gönderme](time-series-insights-send-events.md) olay kaynağına.
+* [Olayları](time-series-insights-send-events.md) olay kaynağına gönderin.
 
 * [Time Series Insights Explorer](https://insights.timeseries.azure.com)'da ortamınızı görüntüleyin.

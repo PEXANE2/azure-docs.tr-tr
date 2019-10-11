@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 834b13c512bca1b7c43c3c8e93a72383a82db198
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162426"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274193"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory Koşullu erişim ayarları başvurusu
 
@@ -55,7 +55,7 @@ Microsoft 'tan aşağıdaki bulut uygulamalarına bir koşullu erişim ilkesi at
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- Microsoft Intune kaydı
+- Kayıt Microsoft Intune
 - Microsoft Planner
 - Microsoft PowerApps
 - Bing 'de Microsoft Search
@@ -72,7 +72,6 @@ Microsoft 'tan aşağıdaki bulut uygulamalarına bir koşullu erişim ilkesi at
 - Project Online
 - Skype Kurumsal Çevrimiçi Sürüm
 - Sanal özel ağ (VPN)
-- Visual Studio App Center
 - Windows Defender ATP
 
 ### <a name="other-applications"></a>Diğer uygulamalar
@@ -82,7 +81,7 @@ Microsoft bulut uygulamalarına ek olarak, aşağıdaki bulut uygulamaları tür
 - Azure AD ile bağlantılı uygulamalar
 - Önceden tümleştirilmiş Federasyon yazılım hizmeti (SaaS) uygulaması
 - Parola çoklu oturum açma (SSO) kullanan uygulamalar
-- Satır iş kolu uygulamaları
+- İş kolu uygulamaları
 - Azure AD Uygulama Ara Sunucusu kullanan uygulamalar
 
 ## <a name="device-platform-condition"></a>Cihaz platformu koşulu
@@ -93,7 +92,7 @@ Koşullu erişim ilkesinde, cihaz platformu koşulunu, ilkeyi bir istemcideki i�
 - iOS
 - Windows Phone
 - Windows
-- Mac OS
+- macOS
 
 ![Erişim ilkesini istemci işletim sistemine bağlama](./media/technical-reference/41.png)
 
@@ -103,7 +102,7 @@ Koşullu erişim ilkesinde, cihaz platformu koşulunu, ilkeyi bir istemcideki i�
 
 Koşullu erişim ilkenizde, bir erişim denemesi Başlatan istemci uygulamasına ilkeyi bağlamak için [istemci uygulamaları](conditions.md#client-apps) koşulunu yapılandırabilirsiniz. Aşağıdaki istemci uygulamaları türlerinden bir erişim denemesi yapıldığında, istemci uygulamaları koşulunu erişim izni vermek veya erişimi engellemek için ayarlayın:
 
-- Browser
+- Tarayıcı
 - Mobil uygulamalar ve Masaüstü uygulamaları
 
 ![İstemci uygulamaları için erişimi denetleme](./media/technical-reference/03.png)
@@ -116,7 +115,7 @@ Koşullu erişim ilkenizde **tarayıcıları** istemci uygulaması olarak seçeb
 
 Bu ayar tüm tarayıcılarla birlikte kullanılabilir. Bununla birlikte, uyumlu bir cihaz gereksinimi gibi bir cihaz ilkesini karşılamak için, aşağıdaki işletim sistemleri ve tarayıcılar desteklenir:
 
-| OS                     | Tarayıcılar                                        |
+| İşletim Sistemi                     | Tarayıcısında                                        |
 | :--                    | :--                                             |
 | Windows 10             | Microsoft Edge, Internet Explorer, Chrome       |
 | Windows 8/8,1        | Internet Explorer, Chrome                       |
@@ -128,7 +127,7 @@ Bu ayar tüm tarayıcılarla birlikte kullanılabilir. Bununla birlikte, uyumlu 
 | Windows Server 2016    | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer                       |
 | Windows Server 2008 R2 | Internet Explorer                       |
-| Mac OS                  | Chrome, Safari                                  |
+| macOS                  | Chrome, Safari                                  |
 
 
 #### <a name="why-do-i-see-a-certificate-prompt-in-the-browser"></a>Neden tarayıcıda bir sertifika istemi görüyorum?
@@ -143,19 +142,19 @@ Bu uzantıyı Chrome tarayıcılarına otomatik olarak dağıtmak için aşağı
 
 |    |    |
 | --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Name | 1\. |
-| Type | REG_SZ (dize) |
-| Data | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.Google.com/service/update2/crx |
+| Yol | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
+| Adı | 1 |
+| Tür | REG_SZ (dize) |
+| Veriler | ppnbnpeolgkicgegkbkbjmhlideopiji; https @ no__t-0//clients2. Google. com/service/update2/crx |
 
 **Windows 8.1 ve 7**' de Chrome desteği için aşağıdaki kayıt defteri anahtarını oluşturun:
 
 |    |    |
 | --- | --- |
-| `Path` | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Name | 1\. |
-| Type | REG_SZ (dize) |
-| Data | {"model": "https://device.login.microsoftonline.com", "filtre": {"veren": {"CN": "MS-Organization-Access"}}} |
+| Yol | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+| Adı | 1 |
+| Tür | REG_SZ (dize) |
+| Veriler | {"model": "https://device.login.microsoftonline.com", "Filter": {"ıSSUER": {"CN": "MS-Organization-Access"}}} |
 
 Bu tarayıcılar cihaz kimlik doğrulamasını destekler, bu da cihazın bir ilkeye göre tanımlanmasına ve doğrulanmasını sağlar. Tarayıcı özel modda çalışıyorsa cihaz denetimi başarısız olur.
 
@@ -175,12 +174,12 @@ Bu ayar, aşağıdaki mobil uygulamalardan ve Masaüstü istemcilerinden yapıla
 | Microsoft ekipleri Hizmetleri-bu, Microsoft ekiplerini ve tüm Istemci uygulamalarını (Windows Masaüstü, iOS, Android, WP ve Web istemcisi) destekleyen tüm hizmetleri denetler | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android ve macOS |
 | Office 2016 uygulamaları, Office 2013 (modern kimlik doğrulaması ile), OneDrive eşitleme istemcisi (bkz. [Notlar](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
 | Office 2016 uygulamaları, evrensel Office uygulamaları, Office 2013 (modern kimlik doğrulaması ile), OneDrive eşitleme istemcisi (bkz. [Notlar](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), Office grupları desteği gelecek için planlanmaktadır ve gelecekte SharePoint uygulama desteği planlanmaktadır | Office 365 SharePoint Online | Windows 10 |
-| Office 2016 (Word, Excel, PowerPoint, yalnızca OneNote). Geleceğe yönelik OneDrive Iş desteği| Office 365 SharePoint Online| Mac OS|
+| Office 2016 (Word, Excel, PowerPoint, yalnızca OneNote). Geleceğe yönelik OneDrive Iş desteği| Office 365 SharePoint Online| macOS|
 | Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
 | Office mobil uygulamaları | Office 365 SharePoint Online | Android, iOS |
 | Office Yammer uygulaması | Office 365 Yammer | Windows 10, iOS, Android |
 | Outlook 2019 | Office 365 SharePoint Online | Windows 10, macOS |
-| Outlook 2016 (macOS için Office) | Office 365 Exchange Online | Mac OS |
+| Outlook 2016 (macOS için Office) | Office 365 Exchange Online | macOS |
 | Outlook 2016, Outlook 2013 (modern kimlik doğrulaması ile), Skype Kurumsal (modern kimlik doğrulaması ile) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
 | Outlook mobil uygulaması | Office 365 Exchange Online | Android, iOS |
 | Power BI uygulaması | Power BI hizmeti | Windows 10, Windows 8.1, Windows 7, Android ve iOS |
@@ -211,9 +210,9 @@ Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 - Microsoft Excel
 - Microsoft Flow
 - Microsoft Intune Managed Browser
-- Microsoft faturalama
+- Microsoft Invoicing
 - Microsoft Kaizala
-- Microsoft Başlatıcısı
+- Microsoft Launcher
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook

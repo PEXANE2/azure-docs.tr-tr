@@ -9,27 +9,27 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: d3e22df76124185c1e23f04f59145e12a1fec023
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b3aa6d06add1d80512eda0e62888b4a36760e98c
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164255"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274790"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Time Series Insights kaynakları oluşturma
 
-Bu makalede Azure Resource Manager şablonları, PowerShell ve Time Series Insights kaynak sağlayıcısı kullanılarak Time Series Insights kaynaklarının nasıl oluşturulacağı ve dağıtılacağı açıklanır.
+Bu makalede [Azure Resource Manager şablonları](https://docs.microsoft.com/azure/azure-resource-manager/), PowerShell ve Time Series Insights kaynak sağlayıcısı kullanılarak Time Series Insights kaynaklarının nasıl oluşturulacağı ve dağıtılacağı açıklanır.
 
 Time Series Insights aşağıdaki kaynakları destekler:
 
-   | Resource | Açıklama |
+   | Kaynak | Açıklama |
    | --- | --- |
    | Ortam | Time Series Insights ortamı, olay aracılarından okunan, depolanan ve sorgu için kullanılabilir hale getirilen olayların mantıksal gruplandırmasıdır. Daha fazla bilgi için bkz. [Azure Time Series Insights ortamınızı planlayın](time-series-insights-environment-planning.md) |
-   | Olay Kaynağı | Olay kaynağı, Time Series Insights tarafından ortama okuma ve olayları geri almak için gereken bir olay aracısına bağlantıdır. Şu anda desteklenen olay kaynakları IoT Hub ve Olay Hub 'ı. |
+   | Olay kaynağı | Olay kaynağı, Time Series Insights tarafından ortama okuma ve olayları geri almak için gereken bir olay aracısına bağlantıdır. Şu anda desteklenen olay kaynakları IoT Hub ve Olay Hub 'ı. |
    | Başvuru veri kümesi | Başvuru veri kümeleri, ortamdaki olaylar hakkında meta veriler sağlar. Başvuru verileri kümelerindeki meta veriler, giriş sırasında olaylarla birleştirilir. Başvuru veri kümeleri, olay anahtarı özelliklerine göre kaynak olarak tanımlanır. Başvuru veri kümesini oluşturan gerçek meta veriler, veri düzlemi API 'Leri aracılığıyla karşıya yüklenir veya değiştirilir. |
-   | Erişim İlkesi | Erişim ilkeleri, veri sorguları verme, ortamdaki başvuru verilerini işleme ve ortamla ilişkili Kaydedilmiş sorguları ve perspektifleri paylaşma izinleri verir. Daha fazla bilgi için [Azure Portal kullanarak Time Series Insights ortamına veri erişimi verme](time-series-insights-data-access.md) konusunu okuyun |
+   | Erişim Ilkesi | Erişim ilkeleri, veri sorguları verme, ortamdaki başvuru verilerini işleme ve ortamla ilişkili Kaydedilmiş sorguları ve perspektifleri paylaşma izinleri verir. Daha fazla bilgi için [Azure Portal kullanarak Time Series Insights ortamına veri erişimi verme](time-series-insights-data-access.md) konusunu okuyun |
 
 Kaynak Yöneticisi şablonu, bir kaynak grubundaki kaynakların altyapısını ve yapılandırmasını tanımlayan bir JSON dosyasıdır. Aşağıdaki belgeler şablon dosyalarını daha ayrıntılı bir şekilde anlatmaktadır:
 
@@ -47,7 +47,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
 1. [Azure PowerShell kullanmaya](https://docs.microsoft.com/powershell/azure/get-started-azureps)başlama yönergelerini izleyerek Azure PowerShell ' i yükler.
 
-1. GitHub 'dan [201-timeseriesınsights-Environment-with-eventhub](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) şablonunu kopyalayın veya kopyalayın.
+1. GitHub 'dan [201-timeseriesınsights-Environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-timeseriesinsights-environment-with-eventhub/azuredeploy.json) şablonunu kopyalayın veya kopyalayın.
 
    * Parametre dosyası oluşturma
 
@@ -63,9 +63,9 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
      | --- | --- |
      | eventHubNamespaceName | Kaynak olay hub 'ının ad alanı. |
      | eventHubName | Kaynak olay hub 'ının adı. |
-     | consumerGroupName | Time Series Insights hizmetinin Olay Hub 'ından verileri okumak için kullanacağı tüketici grubunun adı. **NOT:** Kaynak çekişmesini önlemek için, bu tüketici grubu Time Series Insights hizmetine ayrılmalıdır ve diğer okuyucular ile paylaşılmaz. |
-     | environmentName | Ortamın adı. Ad `<`: ,`&` ,,`\\`, ,,`?`, veherhangibirdenetimkarakteriiçeremez`/`. `:` `>` `%` Diğer tüm karakterlere izin verilir.|
-     | eventSourceName | Olay kaynağı alt kaynağının adı. Ad `<`: ,`&` ,,`\\`, ,,`?`, veherhangibirdenetimkarakteriiçeremez`/`. `:` `>` `%` Diğer tüm karakterlere izin verilir. |
+     | consumerGroupName | Time Series Insights hizmetinin Olay Hub 'ından verileri okumak için kullanacağı tüketici grubunun adı. **Note:** Kaynak çekişmesini önlemek için, bu tüketici grubu Time Series Insights hizmetine ayrılmalıdır ve diğer okuyucular ile paylaşılmaz. |
+     | EnvironmentName | Ortamın adı. Ad: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir.|
+     | eventSourceName | Olay kaynağı alt kaynağının adı. Ad: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` ve herhangi bir denetim karakteri içeremez. Diğer tüm karakterlere izin verilir. |
 
     <div id="optional-parameters"></div>
 
@@ -73,11 +73,11 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
      | Parametre | Açıklama |
      | --- | --- |
-     | Mevcut ınmageventhubresourceıd | Olay kaynağı aracılığıyla Time Series Insights ortamına bağlanacak mevcut bir olay hub 'ının isteğe bağlı kaynak KIMLIĞI. **NOT:** Şablonu dağıtmanın Kullanıcı olay hub 'ında ListKeys 'i Al işlemini gerçekleştirme ayrıcalıklarına sahip olmalıdır. Hiçbir değer geçirilmemişse, şablon tarafından yeni bir olay hub 'ı oluşturulur. |
+     | Mevcut ınmageventhubresourceıd | Olay kaynağı aracılığıyla Time Series Insights ortamına bağlanacak mevcut bir olay hub 'ının isteğe bağlı kaynak KIMLIĞI. **Note:** Şablonu dağıtmanın Kullanıcı olay hub 'ında ListKeys 'i Al işlemini gerçekleştirme ayrıcalıklarına sahip olmalıdır. Hiçbir değer geçirilmemişse, şablon tarafından yeni bir olay hub 'ı oluşturulur. |
      | environmentDisplayName | Ortam adı yerine araçları veya kullanıcı arabirimlerini göstermek için isteğe bağlı bir kolay ad. |
      | environmentSkuName | Sku'nun adı. Daha fazla bilgi için [Time Series Insights fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/time-series-insights/)bakın.  |
      | Environmentskukapasitesi | SKU 'nun birim kapasitesi. Daha fazla bilgi için [Time Series Insights fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/time-series-insights/)bakın.|
-     | environmentDataRetentionTime | Ortamın olayları sorgu için kullanılabilecek en az TimeSpan değeri. Değer, örneğin `P30D` , 30 günlük bir bekletme ilkesi için ISO 8601 biçiminde belirtilmelidir. |
+     | environmentDataRetentionTime | Ortamın olayları sorgu için kullanılabilecek en az TimeSpan değeri. Değerin ISO 8601 biçiminde belirtilmesi gerekir, örneğin, 30 günlük bir bekletme ilkesi için `P30D`. |
      | eventSourceDisplayName | Araç veya olay kaynağı adı yerine kullanıcı arabirimlerinde göstermek için isteğe bağlı bir kolay ad. |
      | eventSourceTimestampPropertyName | Olay kaynağının zaman damgası olarak kullanılacak olay özelliği. TimestampPropertyName için bir değer belirtilmemişse veya null ya da boş dize belirtilmişse, olay oluşturma saati kullanılacaktır. |
      | eventSourceKeyName | Time Series Insights hizmetinin Olay Hub 'ına bağlanmak için kullanacağı paylaşılan erişim anahtarının adı. |
@@ -140,7 +140,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
       Get-AzSubscription
       ```
 
-    * Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. Kullanmak `<YourSubscriptionId>` istediğiniz Azure aboneliğinin GUID 'si ile değiştirin:
+    * Bu komut, kullanılabilir Azure aboneliklerinin bir listesini döndürür. Aşağıdaki komutu çalıştırarak geçerli oturum için bir abonelik seçin. @No__t-0 değerini kullanmak istediğiniz Azure aboneliğinin GUID 'si ile değiştirin:
 
       ```powershell
       Set-AzContext -SubscriptionID <YourSubscriptionId>
@@ -148,7 +148,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
 1. Mevcut değilse yeni bir kaynak grubu oluşturun.
 
-   * Mevcut bir kaynak grubunuz yoksa, **New-AzResourceGroup** komutuyla yeni bir kaynak grubu oluşturun. Kaynak grubunun ve kullanmak istediğiniz konumun adını belirtin. Örneğin:
+   * Mevcut bir kaynak grubunuz yoksa, **New-AzResourceGroup** komutuyla yeni bir kaynak grubu oluşturun. Kaynak grubunun ve kullanmak istediğiniz konumun adını belirtin. Örnek:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -166,7 +166,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
 
 1. Dağıtımı test edin.
 
-   * `Test-AzResourceGroupDeployment` Cmdlet 'ini çalıştırarak dağıtımınızı doğrulayın. Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın.
+   * @No__t-0 cmdlet 'ini çalıştırarak dağıtımınızı doğrulayın. Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın.
 
      ```powershell
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
@@ -208,7 +208,7 @@ Aşağıdaki yordamda, PowerShell kullanarak bir Time Series Insights ortamı ol
        DeploymentName          : MyDemoDeployment
        ResourceGroupName       : MyDemoRG
        ProvisioningState       : Succeeded
-       Timestamp               : 5/8/2019 10:28:34 PM
+       Timestamp               : 10/11/2019 3:20:37 AM
        Mode                    : Incremental
        TemplateLink            :
        Parameters              :

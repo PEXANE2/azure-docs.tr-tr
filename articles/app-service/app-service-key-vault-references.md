@@ -8,20 +8,20 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 311a9fc887db399cb16d6cbb2bcec665a7ddfce7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 49bf7984efe74edd2a19909509e0c6b9564fc2e9
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240114"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274421"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma (Önizleme)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma
 
 > [!NOTE] 
-> Şu anda Key Vault başvuruları önizleme aşamasındadır ve şu anda Linux tüketim planları tarafından desteklenmemektedir.
+> Key Vault başvuruları Linux tüketim planlarında Şu anda kullanılamıyor.
 
 Bu konu başlığı altında, herhangi bir kod değişikliğine gerek kalmadan App Service veya Azure Işlevleri uygulamanızda Azure Key Vault gizliliklerle nasıl çalışılacağı gösterilmektedir. [Azure Key Vault](../key-vault/key-vault-overview.md) , erişim ilkeleri ve denetim geçmişi üzerinde tam denetim ile merkezi gizli dizi yönetimi sağlayan bir hizmettir.
 
@@ -52,7 +52,7 @@ Key Vault başvuru `@Microsoft.KeyVault({referenceString})` ' dır, burada `{ref
 > | VaultName =_vaultname_; SecretName =_secretname_; SecretVersion =_Secretversion_ | **Vaultname** Key Vault kaynağınızın adı olmalıdır. **Secretname** , hedef parolanın adı olmalıdır. **Secretversion** , kullanılacak gizli dizinin sürümü olmalıdır. |
 
 > [!NOTE] 
-> Geçerli önizlemede sürümler gereklidir. Gizli dizileri döndürürken, uygulama yapılandırmanızda sürümü güncelleştirmeniz gerekir.
+> Sürümler şu anda gerekli. Gizli dizileri döndürürken, uygulama yapılandırmanızda sürümü güncelleştirmeniz gerekir.
 
 Örneğin, bir bütün başvuru aşağıdaki gibi görünür:
 
@@ -192,7 +192,9 @@ Bir başvuru düzgün çözümlenmezse, bunun yerine başvuru değeri kullanıla
 
 En yaygın olarak, bunun nedeni [Key Vault erişim ilkesinin](#granting-your-app-access-to-key-vault)yanlış yapılandırılmasından kaynaklanır. Bununla birlikte, aynı zamanda bir gizli dizi yok veya başvurunun kendisi bir sözdizimi hatası olabilir.
 
-Sözdizimi doğruysa, yerleşik bir algılayıcı kullanarak geçerli çözüm durumunu denetleyerek hata nedenlerini görüntüleyebilirsiniz.
+Sözdizimi doğruysa, portaldaki geçerli çözüm durumunu denetleyerek hata nedenlerini görüntüleyebilirsiniz. Uygulama ayarları ' na gidin ve söz konusu başvuru için "Düzenle" seçeneğini belirleyin. Ayar yapılandırmasının altında hatalar da dahil olmak üzere durum bilgilerini görmeniz gerekir. Bunun yokluğu, başvuru sözdiziminin geçersiz olduğunu gösterir.
+
+Ek bilgi edinmek için yerleşik algılayıcıları da kullanabilirsiniz.
 
 ### <a name="using-the-detector-for-app-service"></a>App Service için algılayıcısının kullanımı
 
