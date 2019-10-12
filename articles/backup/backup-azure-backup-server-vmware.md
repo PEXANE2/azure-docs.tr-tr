@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: 9ae21e2bf71789d0b0dd19e3dd7a65ad10fae241
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 3d8983835c587ffeec9dd2bc418f1c01afbeb571
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018963"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264511"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Sunucusu ile VMware VM 'lerini yedekleme
 
@@ -27,23 +27,22 @@ Bu makalede nasıl yapılacağı açıklanmaktadır:
 - Yedeklemek istediğiniz VMware VM 'lerini içeren bir koruma grubu ayarlayın, yedekleme ayarlarını belirtin ve yedeklemeyi zamanlayın.
 
 ## <a name="before-you-start"></a>Başlamadan önce
+
 - Yedekleme-sürüm 6,5, 6,0 ve 5,5 için desteklenen vCenter/ESXi 'nin bir sürümünü çalıştırdığınızı doğrulayın.
 - Azure Backup Sunucusu ayarladığınızdan emin olun. Yapmadıysanız, başlamadan önce [bunu yapın](backup-azure-microsoft-azure-backup.md) . En son güncelleştirmelerle Azure Backup Sunucusu çalıştırıyor olmanız gerekir.
-
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>vCenter Server güvenli bir bağlantı oluşturun
 
 Varsayılan olarak, Azure Backup Sunucusu HTTPS üzerinden VMware sunucularıyla iletişim kurar. HTTPS bağlantısını kurmak için, VMware sertifika yetkilisi (CA) sertifikasını indirin ve Azure Backup Sunucusu alın.
 
-
-### <a name="before-you-start"></a>Başlamadan önce
+### <a name="before-you-begin"></a>Başlamadan önce
 
 - HTTPS kullanmak istemiyorsanız, [Tüm VMware sunucuları IÇIN HTTPS sertifika doğrulamasını devre dışı](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)bırakabilirsiniz.
-- Genellikle Azure Backup Sunucusu makinesindeki bir tarayıcıdan vSphere Web Istemcisini kullanarak vCenter/ESXi sunucusuna bağlanırsınız. Bunu ilk yaptığınızda bağlantı güvenli olmaz ve şunları gösterir.
+- Genellikle Azure Backup Sunucusu makinesindeki bir tarayıcıdan vSphere Web Istemcisini kullanarak vCenter/ESXi sunucusuna bağlanırsınız. Bunu ilk yaptığınızda bağlantı güvenli olmaz ve aşağıdaki gösterir.
 - Azure Backup Sunucusu yedeklemeleri nasıl işlediğini anlamanız önemlidir.
-    - İlk adım olarak, verileri yerel disk depolama alanına yedekler Azure Backup Sunucusu. Azure Backup Sunucusu, korunan veriler için Azure Backup Sunucusu disk kurtarma noktalarını depolayan bir depolama havuzu, bir dizi disk ve birim kullanır. Depolama havuzu doğrudan bağlı depolama (DAS), bir Fiber Kanal SAN veya Iscsı depolama cihazı veya SAN olabilir. VMware VM verilerinizin yerel yedeklemesi için yeterli depolama alanı olduğundan emin olmanız önemlidir.
-    - Azure Backup Sunucusu sonra yerel disk depolamadan Azure 'a yedekler.
-    - Ne kadar depolama alanına ihtiyacınız olduğunu anlamak için [yardım alın](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) . Bilgiler DPM içindir, ancak Azure Backup Sunucusu için de kullanılabilir.
+  - İlk adım olarak, verileri yerel disk depolama alanına yedekler Azure Backup Sunucusu. Azure Backup Sunucusu, korunan veriler için Azure Backup Sunucusu disk kurtarma noktalarını depolayan bir depolama havuzu, bir dizi disk ve birim kullanır. Depolama havuzu doğrudan bağlı depolama (DAS), bir Fiber Kanal SAN veya Iscsı depolama cihazı veya SAN olabilir. VMware VM verilerinizin yerel yedeklemesi için yeterli depolama alanı olduğundan emin olmanız önemlidir.
+  - Azure Backup Sunucusu sonra yerel disk depolamadan Azure 'a yedekler.
+  - Ne kadar depolama alanına ihtiyacınız olduğunu anlamak için [yardım alın](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) . Bilgiler DPM içindir, ancak Azure Backup Sunucusu için de kullanılabilir.
 
 ### <a name="set-up-the-certificate"></a>Sertifikayı ayarlama
 
@@ -63,46 +62,42 @@ Güvenli bir kanalı aşağıdaki şekilde ayarlayın:
 
 4. Dosyayı bir. zip uzantısıyla Azure Backup Sunucusu makineye kaydedin.
 
-5. **İndir. zip** > **Tümünü Ayıkla**öğesine sağ tıklayın. . Zip dosyası, içeriğini içeren **CERT** klasörüne ayıklar:
+5. **Download. zip** > **Tümünü Ayıkla**' ya sağ tıklayın. . Zip dosyası, içeriğini içeren **CERT** klasörüne ayıklar:
    - .0 ve. 1 gibi numaralandırılmış bir diziyle başlayan bir uzantıya sahip kök sertifika dosyası.
    - CRL dosyası. R0 veya. R1 gibi bir sırayla başlayan bir uzantıya sahiptir. CRL dosyası bir sertifikayla ilişkilendirilir.
 
-     ![İndirilen sertifikalar](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
+         ![Downloaded certificates](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
 
-5. **Sertifikalar** klasöründe kök sertifika dosyasına sağ tıklayıp **Yeniden Adlandır**>.
+6. **Sertifikalar** klasöründe kök sertifika dosyasına sağ tıklayıp **Yeniden Adlandır**>.
 
     ![Kök sertifikayı yeniden adlandır](./media/backup-azure-backup-server-vmware/rename-cert.png)
 
-6. Kök sertifikanın uzantısını. CRT olarak değiştirin ve onaylayın. Dosya simgesi bir kök sertifikayı temsil eden bir olarak değişir.
+7. Kök sertifikanın uzantısını. CRT olarak değiştirin ve onaylayın. Dosya simgesi bir kök sertifikayı temsil eden bir olarak değişir.
 
-7. Kök sertifikaya sağ tıklayın ve açılır menüden **sertifikayı yükler**' i seçin.
+8. Kök sertifikaya sağ tıklayın ve açılır menüden **sertifikayı yükler**' i seçin.
 
-8. **Sertifika Içeri aktarma sihirbazında**, sertifika için hedef olarak **yerel makine** ' yi seçin ve ardından **İleri**' ye tıklayın. Bilgisayarda değişikliklere izin vermek isteyip istemediğiniz sorulursa onaylayın.
+9. **Sertifika Içeri aktarma sihirbazında**, sertifika için hedef olarak **yerel makine** ' yi seçin ve ardından **İleri**' ye tıklayın. Bilgisayarda değişikliklere izin vermek isteyip istemediğiniz sorulursa onaylayın.
 
     ![Sihirbaza hoş geldiniz](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
+10. **Sertifika deposu** sayfasında, **tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından, sertifika deposunu seçmek için, **Gözden** geçirme ' ye tıklayın.
 
-9. **Sertifika deposu** sayfasında, **tüm sertifikaları aşağıdaki depolama alanına yerleştir**' i seçin ve ardından, sertifika deposunu seçmek için, **Gözden** geçirme ' ye tıklayın.
+         ![Certificate storage](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
-     ![Sertifika depolama alanı](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
-
-10. **Sertifika deposu Seç**' te, sertifikalar için hedef klasör olarak **Güvenilen kök sertifika yetkilileri** ' ni seçin ve ardından **Tamam**' a tıklayın.
+11. **Sertifika deposu Seç**' te, sertifikalar için hedef klasör olarak **Güvenilen kök sertifika yetkilileri** ' ni seçin ve ardından **Tamam**' a tıklayın.
 
     ![Sertifika hedef klasörü](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-11. **Sertifika Içeri aktarma Sihirbazı 'Nı tamamladıktan**sonra klasörü doğrulayıp **son**' a tıklayın.
+12. **Sertifika Içeri aktarma Sihirbazı 'Nı tamamladıktan**sonra klasörü doğrulayıp **son**' a tıklayın.
 
     ![Sertifikanın doğru klasörde olduğunu doğrulama](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
-
-12. Sertifika içeri aktarma onaylandıktan sonra, bağlantınızın güvenli olduğunu onaylamak için vCenter Server oturum açın.
-
-
-
+13. Sertifika içeri aktarma onaylandıktan sonra, bağlantınızın güvenli olduğunu onaylamak için vCenter Server oturum açın.
 
 ### <a name="disable-https-certificate-validation"></a>HTTPS sertifika doğrulamasını devre dışı bırak
 
-Kuruluşunuz dahilinde güvenli sınırlarınız varsa ve VMware sunucuları ile Azure Backup Sunucusu makine arasında HTTPS protokolünü kullanmak istemiyorsanız, HTTPS 'yi şu şekilde devre dışı bırakın: 
+Kuruluşunuz dahilinde güvenli sınırlarınız varsa ve VMware sunucuları ile Azure Backup Sunucusu makine arasında HTTPS protokolünü kullanmak istemiyorsanız, HTTPS 'yi şu şekilde devre dışı bırakın:
+
 1. Aşağıdaki metni kopyalayıp bir. txt dosyasına yapıştırın.
 
       ```text
@@ -115,7 +110,6 @@ Kuruluşunuz dahilinde güvenli sınırlarınız varsa ve VMware sunucuları ile
 
 3. Kayıt defteri girişini etkinleştirmek için dosyaya çift tıklayın.
 
-
 ## <a name="create-a-vmware-role"></a>VMware rolü oluşturma
 
 Azure Backup Sunucusu, v-Center Server/ESXi konağına erişim izinleri olan bir kullanıcı hesabına ihtiyaç duyuyor. Belirli ayrıcalıklara sahip bir VMware rolü oluşturun ve ardından bir kullanıcı hesabını rolüyle ilişkilendirin.
@@ -125,21 +119,21 @@ Azure Backup Sunucusu, v-Center Server/ESXi konağına erişim izinleri olan bir
 
     ![Yönetim](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. **Yönetim** > **rolleri**' nde Rol ekle simgesine (+ sembolü) tıklayın.
+3. **Yönetim** > **rolleri**' nde Rol ekle simgesine (+ Symbol) tıklayın.
 
-    ![Rol ekle](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
+    ![Rol Ekle](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-
-4. **Rol** > **rolü adı**Oluştur bölümünde *backupadminrole*yazın. Rol adı dilediğiniz gibi olabilir, ancak rolün amacı için tanınabilir olmalıdır.
+4. **Rol @no__t oluşturma**-1**rol adı**bölümünde *backupadminrole*yazın. Rol adı dilediğiniz gibi olabilir, ancak rolün amacı için tanınabilir olmalıdır.
 
 5. Aşağıdaki tabloda özetlenen ayrıcalıkları seçin ve ardından **Tamam**' a tıklayın.  Yeni rol, **Roller** panelinde listede görüntülenir.
    - Üst etiketin yanındaki simgeye tıklayarak üst etiketi genişletin ve alt ayrıcalıkları görüntüleyin.
    - VirtualMachine ayrıcalıklarını seçmek için, üst alt hiyerarşiye birkaç düzey gitmeniz gerekir.
    - Üst ayrıcalık içindeki tüm alt ayrıcalıkları seçmeniz gerekmez.
 
-     ![Üst alt öğe ayrıcalık hiyerarşisi](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
+             ![Parent child privilege hierarchy](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
 ### <a name="role-permissions"></a>Rol izinleri
+
 **6.5/6.0** | **5,5**
 --- | ---
 DataStore. AllocateSpace | DataStore. AllocateSpace
@@ -148,7 +142,7 @@ Global. SetCustomField |
 Host. Local. CreateVM | Network. assign
 Network. assign |
 Resource. Atamavmtopool |
-VirtualMachine. config. AddNewDisk  | VirtualMachine. config. AddNewDisk   
+VirtualMachine. config. AddNewDisk  | VirtualMachine. config. AddNewDisk
 VirtualMachine. config. AdvancedConfig| VirtualMachine. config. AdvancedConfig
 VirtualMachine. config. ChangeTracking| VirtualMachine. config. ChangeTracking
 VirtualMachine. config. HostUSBDevice |
@@ -161,9 +155,6 @@ VirtualMachine. sağlama. DiskRandomRead | VirtualMachine. sağlama. DiskRandomR
 VirtualMachine. State. CreateSnapshot | VirtualMachine. State. CreateSnapshot
 VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
 
-
-
-
 ## <a name="create-a-vmware-account"></a>VMware hesabı oluşturma
 
 1. VCenter Server **Gezgin** panelinde **Kullanıcılar ve gruplar**' a tıklayın. VCenter Server kullanmıyorsanız, hesabı uygun ESXi ana bilgisayarında oluşturun.
@@ -172,50 +163,41 @@ VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
 
     **VCenter kullanıcıları ve grupları** paneli görüntülenir.
 
-
 2. **VCenter kullanıcıları ve grupları** panelinde, **Kullanıcılar** sekmesini seçin ve ardından Kullanıcı ekle simgesine (+ Symbol) tıklayın.
 
-     ![vCenter kullanıcıları ve grupları paneli](./media/backup-azure-backup-server-vmware/usersandgroups.png)
-
+         ![vCenter Users and Groups panel](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
 3. **Yeni Kullanıcı** iletişim kutusunda, **Tamam**> Kullanıcı bilgilerini ekleyin. Bu yordamda, Kullanıcı adı BackupAdmin ' dir.
 
     ![Yeni Kullanıcı iletişim kutusu](./media/backup-azure-backup-server-vmware/vmware-new-user-account.png)
 
-
 4. Kullanıcı hesabını rolüyle ilişkilendirmek için **Gezgin** panelinde **genel izinler**' e tıklayın. **Genel izinler** panelinde **Yönet** sekmesini seçin ve ardından Ekle simgesine (+ Symbol) tıklayın.
 
     ![Genel Izinler paneli](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
 
-
-5. **Küresel Izin kökü**' nde, Kullanıcı veya grup ' u seçmek için izin Ekle ' ye tıklayın.
+5. **Küresel Izin kökü**' nde, Kullanıcı veya grup ' u seçmek Için izin Ekle ' **ye tıklayın.**
 
     ![Kullanıcı veya grup seçin](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. **Kullanıcı/Grup Seç**bölümünde **backupadmin** > **Ekle**' yi seçin. **Kullanıcılar**' da Kullanıcı hesabı için *etkialanı \ KullanıcıAdı* biçimi kullanılır. Farklı bir etki alanı kullanmak istiyorsanız, **etki alanı** listesinden seçin. Seçilen kullanıcıları **Izin Ekle** iletişim kutusuna eklemek için **Tamam** ' ı tıklatın.
+6. **Kullanıcı/Grup Seç**bölümünde, **backupadmin** > **Ekle**' yi seçin. **Kullanıcılar**' da Kullanıcı hesabı için *etkialanı \ KullanıcıAdı* biçimi kullanılır. Farklı bir etki alanı kullanmak istiyorsanız, **etki alanı** listesinden seçin. Seçilen kullanıcıları **Izin Ekle** iletişim kutusuna eklemek için **Tamam** ' ı tıklatın.
 
     ![BackupAdmin kullanıcısı ekle](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
-
-7.  **Atanan rolde**, açılan listeden **backupadminrole** > **Tamam**' ı seçin.
+7. **Atanan rolde**, açılan listeden **backupadminrole** > **Tamam**' ı seçin.
 
     ![Rolü kullanıcıya ata](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
 
-
 **Genel izinler** panelindeki **Yönet** sekmesinde, Yeni Kullanıcı hesabı ve ilişkili rol listede görüntülenir.
 
-
 ## <a name="add-the-account-on-azure-backup-server"></a>Hesabı Azure Backup Sunucusu ekleyin
-
 
 1. Azure Backup Sunucusu açın. Masaüstünde simgesini bulamazsanız, uygulamalar listesinden Microsoft Azure Backup açın.
 
     ![Azure Backup Sunucusu simgesi](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. Azure Backup sunucusu konsolunda, **Yönetim** >  **üretim sunucuları** > **VMware 'yi Yönet**' e tıklayın.
+2. Azure Backup Sunucusu konsolunda **yönetim** >  **üretim sunucuları** > **VMware 'yi Yönet**' e tıklayın.
 
     ![Azure Backup Sunucusu konsolu](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
-
 
 3. **Kimlik bilgilerini Yönet** Iletişim kutusunda **Ekle**' ye tıklayın.
 
@@ -229,20 +211,17 @@ VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
 
     ![Kimlik bilgilerini Azure Backup Sunucusu Yönet iletişim kutusu](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
-
 ## <a name="add-the-vcenter-server"></a>vCenter Server ekleyin
 
 VCenter Server Azure Backup Sunucusu ekleyin.
 
-
-1. Azure Backup sunucusu konsolunda **Yönetim** > **üretim sunucuları** > **Ekle**' ye tıklayın.
+1. Azure Backup Sunucusu konsolunda **yönetim** > **üretim sunucuları** > **Ekle**' ye tıklayın.
 
     ![Üretim sunucusu ekleme Sihirbazı 'Nı aç](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
+2. **Üretim sunucusu ekleme sihirbazı** > **üretim sunucusu türünü seçin** sayfasında, **VMware sunucuları**' nı seçin ve ardından **İleri**' ye tıklayın.
 
-2. **Üretim sunucusu ekleme Sihirbazı** > 'nda**üretim sunucusu türünü seçin** sayfasında, **VMware sunucuları**' nı seçin ve ardından **İleri**' ye tıklayın.
-
-     ![Üretim sunucusu ekleme Sihirbazı](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
+         ![Production Server Addition Wizard](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
 3. **Bilgisayarları seçin** **sunucu adı/IP adresi**' nde, VMware sunucusunun FQDN 'sini veya IP adresini belirtin. Tüm ESXi sunucuları aynı vCenter tarafından yönetiliyorsa vCenter adını belirtin. Aksi takdirde ESXi konağını ekleyin.
 
@@ -268,13 +247,9 @@ VCenter Server Azure Backup Sunucusu ekleyin.
 
 VCenter Server tarafından yönetilmeyen birden çok ESXi ana bilgisayarı varsa veya birden çok vCenter Server örneğine sahipseniz, sunucuları eklemek için Sihirbazı yeniden çalıştırmanız gerekir.
 
-
-
-
 ## <a name="configure-a-protection-group"></a>Koruma grubu yapılandırma
 
 Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar ve aynı veri saklama ve yedekleme ayarlarını gruptaki tüm VM 'lere uygular.
-
 
 1. Azure Backup Sunucusu konsolunda, **koruma**, **Yeni**> ' ye tıklayın.
 
@@ -291,8 +266,7 @@ Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar 
     - Bir klasör seçtiğinizde veya bu klasörün içindeki VM 'Ler veya klasörler yedekleme için de seçilir. Yedeklemek istemediğiniz klasörlerin veya VM 'Lerin işaretini kaldırabilirsiniz.
 1. Bir VM veya klasör zaten yedekleniyorsa, onu seçemezsiniz. Bu, bir VM için yinelenen kurtarma noktalarının oluşturulmamasını sağlar.
 
-     ![Grup üyelerini seçin](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
-
+         ![Select group members](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
 1. **Veri koruma yöntemini seçin** sayfasında, koruma grubu için bir ad ve koruma ayarları girin. Azure 'a yedeklemek için, kısa vadeli korumayı **diske** ayarlayın ve çevrimiçi korumayı etkinleştirin. Ardından **İleri**'ye tıklayın.
 
@@ -305,25 +279,25 @@ Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar 
        - Kısa vadeli yedeklemeler tam yedeklemelerdir ve artımlı değildir.
        - Kısa vadeli yedeklemelerin oluşma zamanlarını/tarihleri değiştirmek için **Değiştir** ' e tıklayın.
 
-     ![Kısa vadeli hedefleri belirtin](./media/backup-azure-backup-server-vmware/short-term-goals.png)
+         ![Kısa vadeli hedefleri belirtin](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
 1. **Disk ayırmayı İncele**' de, VM yedeklemeleri için sunulan disk alanını gözden geçirin. VM 'Ler için.
 
    - Önerilen disk ayırmaları belirttiğiniz bekletme aralığına, iş yükü türüne ve korunan verilerin boyutuna göre belirlenir. Gerekli değişiklikleri yapın ve ardından **İleri**' ye tıklayın.
    - **Veri boyutu:** Koruma grubundaki verilerin boyutu.
    - **Disk alanı:** Koruma grubu için önerilen disk alanı miktarı. Bu ayarı değiştirmek istiyorsanız, her veri kaynağının büyüyeceğini tahmin ettiğiniz miktardan biraz daha büyük olan toplam alanı ayırmanız gerekir.
-   - **Verileri birlikte bulundurma:** Birlikte bulundurmayı açarsanız, korumadaki birden fazla veri kaynağı tek bir çoğaltma ve kurtarma noktası hacmine eşlenir. Birlikte bulundurma, tüm iş yükleri için desteklenmez.
+   - **Verileri** birlikte bulundurma: Birlikte bulundurmayı açarsanız, korumadaki birden fazla veri kaynağı tek bir çoğaltma ve kurtarma noktası hacmine eşlenir. Birlikte bulundurma, tüm iş yükleri için desteklenmez.
    - **Otomatik olarak Büyüt:** Bu ayarı etkinleştirirseniz, korumalı gruptaki veriler ilk ayırmayı aşarsa, Azure Backup Sunucusu disk boyutunu yüzde 25 arttırmaya çalışır.
    - **Depolama havuzu ayrıntıları:** Toplam ve kalan disk boyutu da dahil olmak üzere depolama havuzunun durumunu gösterir.
 
-     ![Disk ayırmayı İncele](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
+         ![Review disk allocation](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
 1. **Çoğaltma oluşturma yöntemini seçin** sayfasında, ilk yedeklemeyi nasıl almak istediğinizi belirtin ve ardından **İleri**' ye tıklayın.
    - Varsayılan değer **otomatik olarak ağ üzerinden** ve **Şimdi**.
    - Varsayılanı kullanıyorsanız, yoğun olmayan bir zaman belirtmenizi öneririz. **Daha sonra** öğesini seçin ve bir gün ve saat belirtin.
    - Büyük miktarlarda veri veya en iyi olmayan ağ koşulları için, çıkarılabilir medya kullanarak verileri çevrimdışı olarak çoğaltmayı göz önünde bulundurun.
 
-     ![Çoğaltma oluşturma yöntemini seçin](./media/backup-azure-backup-server-vmware/replica-creation.png)
+         ![Choose replica creation method](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
 1. **Tutarlılık denetimi seçenekleri**' nde, tutarlılık denetimlerinin nasıl ve ne zaman otomatikleştirildiğini seçin. Ardından **İleri**'ye tıklayın.
       - Çoğaltma verileri tutarsız hale geldiğinde veya bir küme zamanlaması üzerinde tutarlılık denetimleri gerçekleştirebilirsiniz.
@@ -331,26 +305,25 @@ Yedekleme için VMware VM 'Leri ekleyin. Koruma grupları birden çok VM toplar 
 
 1. **Çevrimiçi koruma verilerini belirtin** sayfasında, yedeklemek Istediğiniz VM 'LERI veya VM klasörlerini seçin. Üyeleri tek tek seçebilir veya tümünü **Seç** ' e tıklayarak tüm üyeleri seçebilirsiniz. Ardından **İleri**'ye tıklayın.
 
-      ![Çevrimiçi koruma verilerini belirtin](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+          ![Specify online protection data](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. **Çevrimiçi yedekleme zamanlamasını belirtin** sayfasında, verileri yerel depolamadan Azure 'a ne sıklıkta yedeklemek istediğinizi belirtin.
 
     - Verilerin bulut kurtarma noktaları zamanlamaya göre oluşturulacaktır. Ardından **İleri**'ye tıklayın.
     - Kurtarma noktası oluşturulduktan sonra, Azure 'daki kurtarma hizmetleri kasasına aktarılır.
 
-      ![Çevrimiçi Yedekleme zamanlamasını belirtin](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+          ![Specify online backup schedule](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
 1. **Çevrimiçi saklama Ilkesini belirtin** sayfasında, günlük/haftalık/aylık/yıllık yedeklerden Azure 'a oluşturulan kurtarma noktalarını ne kadar süreyle saklamak istediğinizi belirtin. ardından **İleri**' ye tıklayın.
 
     - Azure 'da verileri ne kadar süreyle saklayabilmeniz için zaman sınırı yoktur.
     - Tek sınır, korunan örnek başına 9999 taneden fazla kurtarma noktasına sahip olamaz. Bu örnekte, korumalı örnek VMware sunucusudur.
 
-      ![Çevrimiçi bekletme ilkesini belirtin](./media/backup-azure-backup-server-vmware/retention-policy.png)
-
+          ![Specify online retention policy](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 1. **Özet** sayfasında, ayarları gözden geçirin ve ardından **Grup Oluştur**' a tıklayın.
 
-     ![Koruma grubu üyesi ve ayar Özeti](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+         ![Protection group member and setting summary](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
@@ -360,18 +333,27 @@ VSphere 6,7 'yi yedeklemek için aşağıdakileri yapın:
   >[!Note]
   >VMWare 6,7 ve üzeri, iletişim kuralı olarak TLS 'yi etkinleştirdi.
 
-- Kayıt defteri anahtarlarını aşağıdaki şekilde ayarlayın:  
+- Kayıt defteri anahtarlarını aşağıdaki şekilde ayarlayın:
 
-  Windows kayıt defteri Düzenleyicisi sürüm 5,00
+```text
+ Windows Registry Editor Version 5.00
 
-  [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v2.0.50727] "SystemDefaultTlsVersions" = DWORD: 00000001 "Schusestrongşifre" = DWORD: 00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-  [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\. NETFramework\v4.0.30319] "SystemDefaultTlsVersions" = DWORD: 00000001 "Schusestrongşifre" = DWORD: 00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\. NETFramework\v2.0.50727] "SystemDefaultTlsVersions" = DWORD: 00000001 "Schusestrongşifre" = DWORD: 00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\. NETFramework\v4.0.30319] "SystemDefaultTlsVersions" = DWORD: 00000001 s "Schusestrongşifre" = DWORD: 00000001
-
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

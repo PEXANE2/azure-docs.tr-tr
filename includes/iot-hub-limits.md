@@ -4,19 +4,19 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: f0de7aedc3883978582da1950e95aaabac9a1695
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71148511"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273000"
 ---
 Aşağıdaki tabloda, S1, S2, S3 ve F1 farklı hizmet katmanları ile ilişkili sınırlar listelenmektedir. Her katmandaki her bir *birimin* maliyeti hakkında daha fazla bilgi için bkz. [Azure IoT Hub fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-| Resource | S1 Standart | S2 Standart | S3 Standart | F1 Ücretsiz |
+| Kaynak | S1 Standart | S2 Standart | S3 Standart | F1 Ücretsiz |
 | --- | --- | --- | --- | --- |
 | İleti/gün |400,000 |6,000,000 |300,000,000 |8,000 |
-| En fazla birim |200 |200 |10 |1\. |
+| En fazla birim |200 |200 |10 |1 |
 
 > [!NOTE]
 > S1 veya S2 katman hub ile 200 ' den fazla birim kullanmayı tahmin ediyorsanız veya S3 katmanı hub 'ı ile 10 birim kullanıyorsanız, Microsoft Desteği başvurun.
@@ -25,15 +25,15 @@ Aşağıdaki tabloda, S1, S2, S3 ve F1 farklı hizmet katmanları ile ilişkili 
 
 Aşağıdaki tabloda IoT Hub kaynakları için uygulanan sınırlar listelenmektedir.
 
-| Resource | Sınır |
+| Kaynak | Sınır |
 | --- | --- |
 | Azure aboneliği başına en fazla ücretli IoT hub’ı sayısı |50 |
-| Azure aboneliği başına en fazla ücretsiz IoT hub’ı sayısı |1\. |
+| Azure aboneliği başına en fazla ücretsiz IoT hub’ı sayısı |1 |
 | Bir cihaz KIMLIĞINDEKI en fazla karakter sayısı | 128 |
 | En fazla cihaz kimliği sayısı<br/> (tek bir çağrıda döndürülen) |1000 |
 | Cihazdan buluta iletiler için IoT Hub en fazla ileti bekletme süresi |7 gün |
 | Cihazdan bulut iletinin en büyük boyutu |256 KB |
-| Cihazdan buluta toplu işin en büyük boyutu |AMQP ve HTTP: Tüm toplu işlem için 256 KB <br/>MQTT her ileti için 256 KB |
+| Cihazdan buluta toplu işin en büyük boyutu |Tüm Batch için AMQP ve HTTP: 256 KB <br/>Her ileti için MQTT: 256 KB |
 | Cihazdan buluta toplu işte en fazla ileti sayısı |500 |
 | Buluttan cihaza iletinin en büyük boyutu |64 KB |
 | Buluttan cihaza iletiler için en büyük TTL |2 gün |
@@ -67,7 +67,7 @@ Aşağıdaki kotalar aşıldığında istekleri kısıtlar IoT Hub.
 | Cihazdan buluta gönderim |6000/sn/birim (S3 için), 120/sn/birim (S2 için), 12/sn/birim (S1 için). <br/>En az 100/sn. |
 | Buluttan cihaza gönderim | 83.33/sn/birim (5000/dk/birim) (S3 için), 1.67/sn/birim (S1 ve S2 için). |
 | Buluttan cihaza alım |833.33/sn/birim (50000/dk/birim) (S3 için), 16.67/sn/birim (örneğin, S1 ve S2 için). |
-| Dosya karşıya yükleme işlemleri |83,33 dosya yükleme bildirimi/sn/birim (5000/dk/birim) (S3 için), 1,67 dosya yükleme bildirimleri/sn/birim (S1 ve S2 için). <br/> 10.000 SAS URI 'Leri bir Azure depolama hesabı için aynı anda kullanılabilir.<br/> Tek seferde 10 SAS URI’si/cihaz çıkarılabilir. |
+| Dosya karşıya yükleme işlemleri |83,33 dosya yükleme başlatma/sn/birim (5000/dk/birim) (S3 için), 1,67 dosya yükleme başlatma/sn/birim (S1 ve S2 için). <br/> 10.000 SAS URI 'Leri bir Azure depolama hesabı için aynı anda kullanılabilir.<br/> Tek seferde 10 SAS URI’si/cihaz çıkarılabilir. |
 | Doğrudan yöntemler | 24 MB/sn/birim (S3 için), 480 KB/sn/birim (S2 için), 160 KB/sn/birim (S1 için).<br/> 8 KB 'lık azaltma ölçer boyutunu temel alır. |
 | Cihaz ikizi okumaları | 500/sn/birim (S3 için), en fazla 100/sn veya 10/sn/birim (S2 için), 100/sn (S1 için) |
 | Cihaz ikizi güncelleştirmeleri | 250/sn/birim (S3 için), en fazla 50/sn veya 5/sn/birim (S2 için), 50/sn (S1 için) |

@@ -1,7 +1,7 @@
 ---
 title: Azure Load Balancer sistem durumu araştırmalarını kullanarak hizmetiniz için yüksek kullanılabilirlik sağlayın
 titlesuffix: Azure Load Balancer
-description: Yük dengeleyicinin arkasında izlemek için sistem durumu araştırmaları kullanmayı öğrenin
+description: Load Balancer arkasındaki örnekleri izlemek için sistem durumu araştırmalarını nasıl kullanacağınızı öğrenin
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 22f0ef7da9018da128e9a978cefa71eaa786829c
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 62af688c6090b61f2596ab376cb479c270b87759
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098918"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274123"
 ---
-# <a name="load-balancer-health-probes"></a>Load Balancer sistem durumu araştırmaları
+# <a name="load-balancer-health-probes"></a>Load Balancer durum araştırmaları
 
 Azure Load Balancer ile yük dengeleme kuralları kullanırken, arka uç uç noktası durumunu algılamaya Load Balancer izin vermek için bir sistem durumu araştırmaları belirtmeniz gerekir.  Durum araştırması ve araştırma yanıtlarının yapılandırması, hangi arka uç havuzu örneklerinin yeni akışlar alacağını tespit eder. Bir arka uç uç noktasındaki uygulamanın başarısızlığını algılamak için sistem durumu araştırmalarını kullanabilirsiniz. Ayrıca, bir sistem durumu araştırmasına özel bir yanıt oluşturabilir ve yük veya planlanan kapalı kalma süresini yönetmek için akış denetimi için sistem durumu araştırması ' ni kullanabilirsiniz. Bir sistem durumu araştırması başarısız olduğunda, Load Balancer ilgili sağlıksız örneğe yeni akış göndermeyi durdurur.
 
@@ -29,15 +29,15 @@ Durum araştırmaları birden çok protokolü destekler. Belirli bir sistem duru
 
 | | Standart SKU | Temel SKU |
 | --- | --- | --- |
-| [Araştırma türleri](#types) | TCP VE HTTP, HTTPS | TCP VE HTTP |
-| [Davranışı araştırma](#probedown) | Tüm araştırmaları, tüm TCP akışları devam edin. | Tüm yoklamalar, tüm TCP akışları sona erer. | 
+| [Araştırma türleri](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Araştırma davranışı](#probedown) | Tüm yoklamalar, tüm TCP akışları devam eder. | Tüm yoklamalar, tüm TCP akışları sona erer. | 
 
 
 >[!IMPORTANT]
 >Güvenilir bir hizmet oluşturmak için aşağıdaki önemli [Tasarım Kılavuzu](#design) dahil olmak üzere bu belgeyi tamamen gözden geçirin.
 
 >[!IMPORTANT]
->Load Balancer sistem durumu araştırmaları, 168.63.129.16 IP adresinden kaynaklanacak ve örneğinizi işaretlemek için araştırmaların engellenmemelidir.  Gözden geçirme [araştırma kaynak IP adresi](#probesource) Ayrıntılar için.
+>Load Balancer sistem durumu araştırmaları, 168.63.129.16 IP adresinden kaynaklanacak ve örneğinizi işaretlemek için araştırmaların engellenmemelidir.  Ayrıntılar için [araştırma kaynağı IP adresini](#probesource) gözden geçirin.
 
 ## <a name="probes"></a>Araştırma yapılandırması
 
@@ -54,7 +54,7 @@ Durum araştırma yapılandırması aşağıdaki öğelerden oluşur:
 Her ikisine de uygulanan araştırma yanıtlarının sayısı
 
 - bir örneğin yukarı olarak işaretlenmesini sağlayan başarılı araştırmaların sayısı ve
-- Bir örneğin aşağı olarak işaretlenmesine neden olan başarısız araştırmaların sayısı.
+- bir örneğin aşağı olarak işaretlenmesine neden olan başarısız araştırmaların sayısı.
 
 Belirtilen zaman aşımı ve Aralık değerleri, bir örneğin yukarı veya aşağı olarak işaretlenip işaretlenmediğini belirtir.  Zaman aralığının yoklama yanıtlarının sayısıyla çarpıldığı süre, araştırma yanıtlarının algılanabilmesi için gereken süreyi belirler.  Ve gerekli yoklamaların elde edilmesi durumunda hizmet tepki verir.
 
@@ -75,7 +75,7 @@ Hatalı bir araştırmanın yeniden eyleminin, uygulamadan gelen bir değişikli
 
 Sistem durumu araştırması tarafından kullanılan protokol aşağıdakilerden birine yapılandırılabilir:
 
-- [TCP dinleyicisi](#tcpprobe)
+- [TCP dinleyicileri](#tcpprobe)
 - [HTTP uç noktaları](#httpprobe)
 - [HTTPS uç noktaları](#httpsprobe)
 
@@ -86,15 +86,15 @@ Kullanılabilir protokoller, kullanılan Load Balancer SKU 'suna bağımlıdır:
 | Standart SKU |    &#9989; |   &#9989; |   &#9989; |
 | Temel SKU |   &#9989; |   &#9989; | &#10060; |
 
-### <a name="tcpprobe"></a> TCP araştırma
+### <a name="tcpprobe"></a>TCP araştırması
 
-TCP araştırmaları, bir üç yönlü açık TCP el sıkışması tanımlı bir bağlantı ile gerçekleştirerek bir bağlantıyı başlatırsınız.  TCP araştırmaları bir bağlantıyı dört yönlü bir kapalı TCP el sıkışması ile sonlandırır.
+TCP araştırmaları, tanımlı bağlantı noktasıyla üç yönlü bir açık TCP el sıkışması gerçekleştirerek bir bağlantı başlatır.  TCP araştırmaları bir bağlantıyı dört yönlü bir kapalı TCP el sıkışması ile sonlandırır.
 
-En düşük araştırma aralığı 5 saniyedir ve iyi durumda olmayan yanıtlar en az sayıda 2'dir.  Tüm aralıkların toplam süresi 120 saniyeyi aşamaz.
+En düşük araştırma aralığı 5 saniyedir ve en az sağlıksız yanıt sayısı 2 ' dir.  Tüm aralıkların toplam süresi 120 saniyeyi aşamaz.
 
-Bir TCP araştırması başarısız olur:
-* Örnek noktasındaki TCP dinleyiciyi sırasında zaman aşımı süresi hiç yanıt vermiyor.  Araştırma, araştırmayı işaretlemeden önce yanıtlanmak üzere yapılandırılan başarısız araştırma isteği sayısına göre aşağı işaretlenir.
-* Örneğinden sıfırlama bir TCP araştırması alır.
+Şu durumlarda bir TCP araştırması başarısız olur:
+* Örnekteki TCP dinleyicisi, zaman aşımı süresi boyunca hiç yanıt vermez.  Araştırma, araştırmayı işaretlemeden önce yanıtlanmak üzere yapılandırılan başarısız araştırma isteği sayısına göre aşağı işaretlenir.
+* Araştırma, örnekten bir TCP sıfırlaması alır.
 
 Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırmasını nasıl ifade ettiğiniz gösterilmektedir:
 
@@ -109,21 +109,21 @@ Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırm
       },
 ```
 
-### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP / HTTPS araştırma
+### <a name="httpprobe"></a><a name="httpsprobe"></a> Http/https araştırması
 
 >[!NOTE]
->HTTPS araştırması için kullanılabilir, yalnızca [Standard Load Balancer](load-balancer-standard-overview.md).
+>HTTPS araştırması yalnızca [Standart Load Balancer](load-balancer-standard-overview.md)için kullanılabilir.
 
-HTTP ve HTTPS araştırmaları TCP araştırmasına dayanır ve belirtilen yola sahip bir HTTP GET oluşturur. Bu araştırmaların her ikisi de göreli yollar için HTTP GET destekler. HTTPS araştırmaları, aynı Aktarım Katmanı Güvenliği (TLS, SSL adıyla) birlikte HTTP araştırmaları gibi sarmalayıcı. Örnek bir HTTP 200 durum zaman aşımı süresi içinde yanıt verdiğinde durum yoklaması işaretlenir.  Sistem durumu araştırması, varsayılan olarak her 15 saniyede bir yapılandırılan durum araştırma bağlantı noktasını denetlemeye çalışır. En düşük araştırma aralığı 5 saniyedir. Tüm aralıkların toplam süresi 120 saniyeyi aşamaz.
+HTTP ve HTTPS araştırmaları TCP araştırmasına dayanır ve belirtilen yola sahip bir HTTP GET oluşturur. Bu yoklamaların her ikisi de HTTP GET için göreli yolları destekler. HTTPS araştırmaları, bir Aktarım Katmanı Güvenliği (TLS, eskiden SSL olarak bilinen) sarmalayıcı ekleme ile HTTP araştırmaları ile aynıdır. Durum araştırması, örnek zaman aşımı süresi içinde bir HTTP durumu 200 ile yanıt verdiğinde yapılır.  Sistem durumu araştırması, varsayılan olarak her 15 saniyede bir yapılandırılan durum araştırma bağlantı noktasını denetlemeye çalışır. En düşük araştırma aralığı 5 saniyedir. Tüm aralıkların toplam süresi 120 saniyeyi aşamaz.
 
-HTTP/HTTPS araştırmaları Ayrıca, sistem durumu araştırması yapmak istiyorsanız yararlı olabilir.  araştırma bağlantı noktası Ayrıca hizmetin kendisi için dinleyicidir, yük dengeleyici dönüşten örnekleri kaldırmak için kendi mantığınızı uygulayın. Örneğin, % 90 CPU ise örneğini kaldırmaya karar ve 200 HTTP durum döndürür. 
+Araştırma bağlantı noktası Ayrıca hizmetin kendisi için de dinleyici olan yük dengeleyici rotasyondan örnekleri kaldırmak için kendi mantığınızı uygulamak üzere, HTTP/HTTPS araştırmaları da yararlı olabilir. Örneğin, %90 CPU üzerinde bir örneği kaldırmaya karar verebilir ve 200 olmayan bir HTTP durumu döndürebilir. 
 
-Artık Cloud Services'ı kullanın ve w3wp.exe kullanan web rolleri, ayrıca otomatik izleme, Web sitesini ulaşın. Web sitesi kodunuzdaki hataları, yük dengeleyici araştırması için 200 durumu döndürür.
+Cloud Services kullanıyorsanız ve W3wp. exe kullanan Web rollerine sahipseniz, Web sitenizin otomatik olarak izlenmesini de elde edersiniz. Web sitesi kodunuzda oluşan hatalarda yük dengeleyici araştırmasına 200 olmayan bir durum döndürülür.
 
-Bir HTTP / HTTPS araştırma başarısız:
-* Araştırma uç noktasına bir HTTP yanıt kodu 200 (örneğin, 403, 404 veya 500) dışında döndürür. Bu, sistem durumu araştırmasını hemen işaretleyecek. 
+Şu durumlarda bir HTTP/HTTPS araştırması başarısız olur:
+* Araştırma uç noktası 200 dışında bir HTTP yanıt kodu döndürür (örneğin, 403, 404 veya 500). Bu, sistem durumu araştırmasını hemen işaretleyecek. 
 * Araştırma uç noktası 31 saniyelik zaman aşımı süresi boyunca hiç yanıt vermiyor. Araştırma çalışmıyor olarak işaretlenmeden ve tüm zaman aşımı aralıklarının toplamına ulaşılıncaya kadar birden çok araştırma isteği yanıtlanmayabilir.
-* Araştırma uç noktası, TCP sıfırlama yoluyla bağlantıyı kapatır.
+* Araştırma uç noktası, TCP sıfırlaması ile bağlantıyı kapatır.
 
 Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırmasını nasıl ifade ettiğiniz gösterilmektedir:
 
@@ -151,19 +151,19 @@ Aşağıda, Kaynak Yöneticisi şablonunda bu tür bir araştırma yapılandırm
       },
 ```
 
-### <a name="guestagent"></a>Konuk aracı araştırması (yalnızca klasik)
+### <a name="guestagent"></a>Konuk Aracısı Araştırması (yalnızca klasik)
 
-Bulut hizmeti rolleri (çalışan rolleri ve web rolleri), varsayılan olarak araştırma izlemesi için konuk Aracısı kullanın.  Konuk aracı araştırması, son çare bir yapılandırmadır.  Her zaman bir TCP veya HTTP araştırmasıyla bir sistem durumu araştırması kullanın. Konuk aracı araştırması, çoğu uygulama senaryoları için açıkça tanımlanmış araştırmaları olabildiğince verimli değildir.
+Bulut hizmeti rolleri (çalışan rolleri ve Web rolleri) varsayılan olarak araştırma izleme için bir Konuk Aracısı kullanır.  Konuk aracı araştırması, son çare bir yapılandırmadır.  Her zaman bir TCP veya HTTP araştırmasıyla bir sistem durumu araştırması kullanın. Konuk aracı araştırması, çoğu uygulama senaryosu için açıkça tanımlanmış yoklamalar kadar etkili değildir.
 
-Konuk aracı araştırması, Konuk aracısının VM içindeki bir denetimdir. Dinler ve hazır durumda yalnızca örnektir ile bir HTTP 200 OK yanıtı yanıt verdiği. (Geri dönüştürme veya durduruluyor meşgul diğer durumlar vardır.)
+Konuk Aracısı araştırması, VM 'nin içindeki Konuk aracısının bir denetsıdır. Daha sonra bir HTTP 200 OK yanıtıyla dinler ve yanıt verir ancak örneğin, örnek zaten Ready durumundaysa. (Diğer durumlar meşgul, geri dönüşüm veya durduruluyor.)
 
-Daha fazla bilgi için [Hizmet tanım dosyası (csdef) yapılandırmak için sistem durumu araştırmaları](https://msdn.microsoft.com/library/azure/ee758710.aspx) veya [bulut Hizmetleri için genel yük dengeleyici oluşturmaya başlama](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services).
+Daha fazla bilgi için bkz. [sistem durumu araştırmaları için hizmet tanım dosyasını (csdef) yapılandırma](https://msdn.microsoft.com/library/azure/ee758710.aspx) veya [bulut hizmetleri için bir genel yük dengeleyici oluşturma ile çalışmaya başlama](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services).
 
-Konuk Aracısı HTTP 200 OK ile yanıt vermezse, yük dengeleyici örnek yanıt vermiyor olarak işaretler. Ardından, bu örneğe akışlar gönderme durdurur. Yük Dengeleyici örneği denetlemek devam eder. 
+Konuk Aracısı HTTP 200 Tamam ile yanıt veremezse, yük dengeleyici örneği yanıt vermiyor olarak işaretler. Daha sonra bu örneğe akış göndermeyi bırakır. Yük dengeleyici örneği denetlemeye devam eder. 
 
-Yük Dengeleyici yeni akışlar bu örneğe Konuk Aracısı bir HTTP 200 yanıt verirse, yeniden gönderir.
+Konuk Aracısı bir HTTP 200 ile yanıt verirse, yük dengeleyici yeni akışları bu örneğe yeniden gönderir.
 
-Bir web rolü kullandığınızda, Web sitesi kodu genellikle Azure tarafından izlenen değil w3wp.exe çalışan yapı veya konuk Aracısı. W3wp.exe (örneğin, HTTP 500 yanıt) hataları Konuk Aracısı ile bildirilen değildir. Sonuç olarak, yük dengeleyici rotasyon dışında bu örneğe almaz.
+Web rolü kullandığınızda, Web sitesi kodu genellikle, Azure yapısı veya Konuk Aracısı tarafından izlenmeyen W3wp. exe ' de çalışır. W3wp. exe ' deki (örneğin, HTTP 500 yanıtları) sorunlar Konuk aracısına bildirilmedi. Sonuç olarak, yük dengeleyici bu örneği döndürmeden almaz.
 
 <a name="health"></a>
 ## <a name="probehealth"></a>Araştırma davranışı
@@ -176,9 +176,9 @@ TCP, HTTP ve HTTPS sistem durumu araştırmaları sağlıklı olarak değerlendi
 Sağlıklı bir durumu elde eden tüm arka uç uç noktaları, yeni akış almaya uygundur.  
 
 > [!NOTE]
-> Sistem durumu araştırması dalgalandıktan sonra, yük dengeleyici arka uç uç noktasını sağlıklı duruma getirmeden önce daha uzun süre bekler. Bu ek bekleme süresi, kullanıcı ve altyapı korur ve kasıtlı bir ilkedir.
+> Sistem durumu araştırması dalgalandıktan sonra, yük dengeleyici arka uç uç noktasını sağlıklı duruma getirmeden önce daha uzun süre bekler. Bu ek bekleme süresi, kullanıcıyı ve altyapıyı korur ve bilerek bir ilkedir.
 
-## <a name="probedown"></a>Davranışı araştırma
+## <a name="probedown"></a>Araştırma davranışı
 
 ### <a name="tcp-connections"></a>TCP bağlantıları
 
@@ -186,29 +186,29 @@ Yeni TCP bağlantıları kalan sağlıklı arka uç uç noktası için başarıl
 
 Arka uç uç noktasının sistem durumu araştırması başarısız olursa, bu arka uç uç noktasına kurulan TCP bağlantıları devam eder.
 
-Yeni akış, bir arka uç havuzundaki tüm örnekleri için tüm araştırmaları başarısız olursa, arka uç havuzuna gönderilir. Standart Load Balancer, devam etmek için yerleşik TCP akışları izin verir.  Temel yük dengeleyici arka uç havuzu için tüm mevcut TCP akışları sona erer.
+Arka uç havuzundaki tüm örneklere yönelik tüm yoklamalar başarısız olursa, arka uç havuzuna yeni akış gönderilmez. Standart Load Balancer, belirlenen TCP akışlarının devam etmesine izin verir.  Temel Load Balancer, tüm mevcut TCP akışlarını arka uç havuzuna sonlandırır.
  
 Load Balancer bir geçiş hizmetidir (TCP bağlantılarını sonlandıramaz) ve akış her zaman istemci ile sanal makinenin Konuk işletim sistemi ve uygulaması arasındadır. Tüm yoklamalar içeren bir havuz, akışı alacak ve bir SYN-ACK ile yanıt veren bir uç nokta olmadığından, ön uç, TCP bağlantı açma girişimlerini (SYN) yanıt vermemesine neden olur.
 
-### <a name="udp-datagrams"></a>UDP veri birimi
+### <a name="udp-datagrams"></a>UDP veri birimleri
 
 UDP veri birimleri sağlıklı arka uç uç noktalarına teslim edilecek.
 
-UDP bağlantısız ve izlenen UDP için hiçbir akış durumu yoktur. Arka uç uç noktasının sistem durumu araştırması başarısız olursa, mevcut UDP akışları arka uç havuzundaki başka bir sağlıklı örneğe geçebilir.
+UDP bağlantısız ve UDP için izlenen akış durumu yok. Arka uç uç noktasının sistem durumu araştırması başarısız olursa, mevcut UDP akışları arka uç havuzundaki başka bir sağlıklı örneğe geçebilir.
 
-Bir arka uç havuzundaki tüm örnekleri için tüm araştırmaları başarısız olursa, temel ve standart Load balancer'ları için mevcut UDP akışları sonlanacaktır.
+Arka uç havuzundaki tüm örneklere yönelik tüm yoklamalar başarısız olursa, mevcut UDP akışları temel ve standart yük dengeleyiciler için sonlandırılır.
 
 <a name="source"></a>
-## <a name="probesource"></a>Kaynak IP adresi araştırma
+## <a name="probesource"></a>Araştırma kaynağı IP adresi
 
-Yük Dengeleyici, dağıtılmış bir yoklama hizmeti için kendi iç sistem durumu modeli kullanır. Yoklama hizmeti, sanal makinelerin bulunduğu her bir konakta bulunur ve müşterinin yapılandırmasına göre sistem durumu araştırmaları oluşturmak için isteğe bağlı olarak programlanabilir. Durum araştırma trafiği, sistem durumu araştırması ve müşteri VM 'si üreten araştırma hizmeti arasında doğrudan yapılır. Tüm yük dengeleyici sistem durumu araştırmaları, kaynak 168.63.129.16 IP adresinden kaynaklanan.  RFC1918 alanı olmayan bir VNet 'in içindeki IP adres alanını kullanabilirsiniz.  Küresel olarak ayrılmış, Microsoft 'un sahip olduğu IP adresi, VNet içinde kullandığınız IP adresi alanıyla bir IP adresi çakışması olasılığını azaltır.  Bu IP adresi tüm bölgelerde aynıdır ve değişmez ve yalnızca iç Azure platformu bileşeni bu IP adresinden bir paket kaynak sağladığından bir güvenlik riski değildir. 
+Load Balancer, iç sistem durumu modeli için dağıtılmış bir yoklama hizmeti kullanır. Yoklama hizmeti, sanal makinelerin bulunduğu her bir konakta bulunur ve müşterinin yapılandırmasına göre sistem durumu araştırmaları oluşturmak için isteğe bağlı olarak programlanabilir. Durum araştırma trafiği, sistem durumu araştırması ve müşteri VM 'si üreten araştırma hizmeti arasında doğrudan yapılır. Tüm Load Balancer sistem durumu araştırmaları, kaynak olarak 168.63.129.16 IP adresinden itibaren yapılır.  RFC1918 alanı olmayan bir VNet 'in içindeki IP adres alanını kullanabilirsiniz.  Küresel olarak ayrılmış, Microsoft 'un sahip olduğu IP adresi, VNet içinde kullandığınız IP adresi alanıyla bir IP adresi çakışması olasılığını azaltır.  Bu IP adresi tüm bölgelerde aynıdır ve değişmez ve yalnızca iç Azure platformu bileşeni bu IP adresinden bir paket kaynak sağladığından bir güvenlik riski değildir. 
 
 AzureLoadBalancer Service etiketi, [ağ güvenlik gruplarınızı](../virtual-network/security-overview.md) bu kaynak IP adresini tanımlar ve varsayılan olarak sistem durumu araştırma trafiğine izin verir.
 
 Load Balancer sistem durumu araştırmalarının yanı sıra [aşağıdaki işlemler bu IP adresini kullanır](../virtual-network/what-is-ip-address-168-63-129-16.md):
 
-- VM platformu ile iletişim kurmak için bir "Hazır" durumunda olduğu sinyal aracısı sağlar
-- Özel DNS sunucuları tanımlamaz müşterilere filtrelenmiş ad çözümlemesi sağlamak için DNS sanal sunucu ile iletişimi sağlar.  Bu filtreleme müşteriler bunların dağıtım ana bilgisayar adları yalnızca çözümleyebilmesini sağlar.
+- VM aracısının "Ready" durumunda olduğunu bildirmek için platformla iletişim kurmasını sağlar
+- Özel DNS sunucuları tanımlamayan müşterilere filtrelenmiş ad çözümlemesi sağlamak için DNS sanal sunucusuyla iletişim sağlar.  Bu filtreleme, müşterilerin yalnızca dağıtımının ana bilgisayar adlarını çözümleyebilmesini sağlar.
 - VM 'nin Azure 'daki DHCP hizmetinden dinamik bir IP adresi almasını sağlar.
 
 ## <a name="design"></a>Tasarım Kılavuzu
@@ -225,7 +225,7 @@ UDP yük dengelemesi için, arka uç uç noktasından özel bir sistem durumu ar
 
 Bu yapılandırma, senaryomunuzdan oluşan basamaklı hatalara yol açacağından, sistem durumu araştırmasını VNet 'teki başka bir örneğe alan örnek aracılığıyla bir sistem durumu araştırmasını veya proxy 'yi çevirmeyin.  Aşağıdaki senaryoyu göz önünde bulundurun: bir dizi üçüncü taraf aracı, gereçlere yönelik ölçek ve artıklık sağlamak üzere bir Load Balancer kaynağın arka uç havuzunda dağıtılır ve sistem durumu araştırması, üçüncü taraf gereç proxy 'lerinin bulunduğu bir bağlantı noktasını yoklamak üzere yapılandırılmıştır veya Gereç arkasındaki diğer sanal makinelere çevirir.  Gerecin arkasındaki diğer sanal makinelere veya ara sunucu isteklerini çevirmek için kullandığınız bağlantı noktasını araştırdıysanız, gerecin arkasındaki tek bir sanal makineden gelen yoklama yanıtları, gerecin kendisini ölü olarak işaretler. Bu yapılandırma, gerecin arkasındaki tek bir arka uç uç noktasının sonucu olarak tüm uygulama senaryosunun basamaklı bir hatasına neden olabilir.  Tetikleyici, Load Balancer özgün hedefi (gereç örneği) işaretlemesine neden olacak ve sonra tüm uygulama senaryonuzu devre dışı bırakabilmesi için aralıklı bir araştırma hatası olabilir. Bunun yerine gereç durumunu araştırma. Sistem durumu sinyalinin belirlenmesi için araştırmanın seçimi, ağ sanal gereçleri (NVA) senaryolarında önemli bir noktadır ve bu senaryolar için uygun sistem durumu sinyalinin ne olduğunu öğrenmek için uygulama satıcınıza başvurmanız gerekir.
 
-Güvenlik Duvarı ilkeleriniz için araştırmanın [kaynak IP 'si](#probesource) izin vermezseniz, örneğinize ulaşamadığından sistem durumu araştırması başarısız olur.  Buna karşılık, yük dengeleyici örneğinizin sistem durumu araştırma hatası nedeniyle aşağı işaretler.  Bu yanlış yapılandırma, yük dengeli uygulama senaryonuzun başarısız olmasına neden olabilir.
+Güvenlik Duvarı ilkeleriniz için araştırmanın [kaynak IP 'si](#probesource) izin vermezseniz, örneğinize ulaşamadığından sistem durumu araştırması başarısız olur.  Sırasıyla, durum araştırma hatası nedeniyle Load Balancer örneğinizi işaretleyecek.  Bu yanlış yapılandırma, yük dengeli uygulama senaryonuzun başarısız olmasına neden olabilir.
 
 Örneğinizi işaretlemek için Load Balancer sistem durumu araştırması için, tüm Azure [ağ güvenlik gruplarında](../virtual-network/security-overview.md) ve yerel güvenlik duvarı ILKELERINDE bu IP adresine izin vermeniz **gerekir** .  Varsayılan olarak, her ağ güvenlik grubu, durum araştırma trafiğine izin vermek için AzureLoadBalancer [hizmet etiketini](../virtual-network/security-overview.md#service-tags) içerir.
 
@@ -233,7 +233,7 @@ Bir sistem durumu araştırma hatasını test etmek veya tek bir örneği işare
 
 VNet 'i 168.63.129.16 içeren, Microsoft 'un sahip olduğu IP adresi aralığıyla yapılandırmayın.  Bu tür yapılandırmalarda sistem durumu araştırmasının IP adresi ile çakışacaktır ve senaryonuzun sürmesine neden olabilir.
 
-Sanal makinenizde birden fazla arabirimi varsa, temel alınan arabirimde araştırma yanıt Sigortası gerekir.  Bu adresi VM 'de her arabirim için kaynak ağ adresi çevirisi yapmanız gerekebilir.
+VM 'niz üzerinde birden fazla arabiriminiz varsa, bunu aldığınız arabirimdeki araştırmayı yanıtlamanıza gerek duyarsınız.  Bu adresi VM 'de her arabirim için kaynak ağ adresi çevirisi yapmanız gerekebilir.
 
 [TCP zaman damgalarını](https://tools.ietf.org/html/rfc1323)etkinleştirmeyin.  TCP zaman damgalarının etkinleştirilmesi, sanal makinenin Konuk işletim sistemi TCP yığını tarafından bırakılan TCP paketlerinin, ilgili uç nokta ile Load Balancer sonuçlanmasına neden olacak şekilde sistem durumu araştırmalarının başarısız olmasına neden olabilir.  Güvenlik sağlamlaştırılmış VM görüntülerinde varsayılan olarak TCP zaman damgaları etkinleştirilir ve devre dışı bırakılmalıdır.
 
@@ -241,16 +241,16 @@ Sanal makinenizde birden fazla arabirimi varsa, temel alınan arabirimde araşt�
 
 Hem genel hem de dahili [Standart Load Balancer](load-balancer-standard-overview.md) , Azure izleyici aracılığıyla çok boyutlu ölçümler olarak uç nokta ve arka uç uç nokta durumu araştırma durumunu kullanıma sunar. Bu ölçümler diğer Azure hizmetleri veya iş ortağı uygulamaları tarafından tüketilebilir. 
 
-Temel genel Load Balancer, Azure Izleyici günlükleri aracılığıyla arka uç havuzu başına özetlenen durum araştırma durumunu gösterir.  Azure Izleyici günlükleri, iç temel yük dengeleyiciler için kullanılamaz.  [Azure izleyici günlüklerini](load-balancer-monitor-log.md) kullanarak genel yük dengeleyici araştırma sistem durumunu ve araştırma sayısını denetleyebilirsiniz. Günlüğe kaydetme, Power BI veya Azure operasyonel İçgörüler ile yük dengeleyici sistem durumu hakkındaki istatistiklerdir sağlamak için kullanılabilir.
+Temel genel Load Balancer, Azure Izleyici günlükleri aracılığıyla arka uç havuzu başına özetlenen durum araştırma durumunu gösterir.  Azure Izleyici günlükleri, iç temel yük dengeleyiciler için kullanılamaz.  [Azure izleyici günlüklerini](load-balancer-monitor-log.md) kullanarak genel yük dengeleyici araştırma sistem durumunu ve araştırma sayısını denetleyebilirsiniz. Günlüğe kaydetme, yük dengeleyici sistem durumu hakkında istatistikler sağlamak için Power BI veya Azure operasyonel içgörüler ile kullanılabilir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- HTTPS araştırmaları, bir istemci sertifikası ile karşılıklı kimlik doğrulamasını desteklemez.
+- HTTPS araştırmaları, istemci sertifikasıyla karşılıklı kimlik doğrulamayı desteklemez.
 - TCP zaman damgaları etkinleştirildiğinde assumehHealth araştırmaları başarısız olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Standart Yük Dengeleyici](load-balancer-standard-overview.md) hakkında daha fazla bilgi edinin
-- [PowerShell kullanarak Resource Manager'da herkese açık yük dengeleyici oluşturmaya başlama](load-balancer-get-started-internet-arm-ps.md)
+- [PowerShell kullanarak Kaynak Yöneticisi bir genel yük dengeleyici oluşturmaya başlama](load-balancer-get-started-internet-arm-ps.md)
 - [Sistem durumu araştırmaları için REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
-- Yeni sistem durumu araştırması becerileriyle ile istek [Load Balancer'ın Uservoice](https://aka.ms/lbuservoice)
+- [Load Balancer UserVoice](https://aka.ms/lbuservoice) ile yeni durum araştırma becerileri isteyin

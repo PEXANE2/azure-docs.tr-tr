@@ -1,66 +1,39 @@
 ---
-title: Dil desteği - soru-cevap Oluşturucu
+title: Dil desteği-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Bir Bilgi Bankası 'nın dili, kaynaklardan gelen soruların ve yanıtların otomatik olarak ayıklanabileceği Soru-Cevap Oluşturma ve sonuçların uygunluğunu, Kullanıcı sorgularına yanıt olarak Soru-Cevap Oluşturma etkiler. Kültür, doğal Bilgi Bankası'nda soru-cevap Oluşturucu tarafından desteklenen dillerin listesi. Aynı Bilgi Bankası dillerde karıştırmayın.
+description: Bir Bilgi Bankası 'nın dili, kaynaklardan gelen soruların ve yanıtların otomatik olarak ayıklanabileceği Soru-Cevap Oluşturma ve sonuçların uygunluğunu, Kullanıcı sorgularına yanıt olarak Soru-Cevap Oluşturma etkiler. Bilgi tabanınız için Soru-Cevap Oluşturma tarafından desteklenen bir kültürün, doğal dillerin bir listesi. Aynı bilgi bankasındaki dilleri karıştırmayın.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: article
-ms.date: 03/21/2019
+ms.topic: reference
+ms.date: 09/24/2019
 ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: bec09e5cd053774902083c6dd042c1ed4b293d20
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: f4f7fffdde7d103271fa667bbab11c09ebc54825
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066672"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285867"
 ---
-# <a name="language-support-for-qna-maker"></a>Soru-Cevap Oluşturma için dil desteği
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Soru-Cevap Oluşturma bir kaynak ve bilgi tabanı için dil desteği
 
-Bilgi Bankası dili otomatik ayıklama soruların soru-cevap Oluşturucu'nın özelliğini etkiler ve gelen yanıtları [kaynakları](../Concepts/data-sources-supported.md), soru-cevap Oluşturucu sağlayan kullanıcı sorgularına yanıt sonuçlarının ilgi yanı sıra.
+Kaynak için ilk Bilgi Bankası oluşturduğunuzda hizmetin dili seçilir. Kaynaktaki tüm ek bilgi tabanları aynı dilde olmalıdır. 
 
-## <a name="auto-extraction"></a>Otomatik ayıklama
-Soru-cevap Oluşturucu, herhangi bir dil sayfanın soru/yanıt ayıklama destekler, ancak soru-cevap Oluşturucu soruları tanımlamak için anahtar sözcükler kullandığından ayıklama verimliliğini aşağıdaki diller için çok daha yüksektir.
+Dil, Kullanıcı sorgularına yanıt olarak Soru-Cevap Oluşturma sonuçların uygunluğunu belirler.
 
-|Desteklenen diller| Yerel Ayar|
-|-----|----|
-|Türkçe|tr-*|
-|Fransızca|FR-*|
-|İtalyanca|BT-*|
-|Almanca|de-*|
-|İspanyolca|ES-*|
+[Dil seçiminin etkisi](../how-to/language-knowledge-base.md)hakkında daha fazla bilgi edinin.
 
-## <a name="primary-language-detection"></a>Birincil dil algılama
+## <a name="languages-supported"></a>Desteklenen diller
 
-Algılama için kullanılan birincil dil, ilk belge veya URL ilk bilgi tabanına eklendiğinde, Soru-Cevap Oluşturma kaynak için ve bu kaynakta oluşturulan tüm bilgi temellerine ayarlanır. Dil değiştirilemez. 
+Aşağıdaki liste, bir Soru-Cevap Oluşturma kaynağı için desteklenen dilleri içerir. 
 
-Kullanıcı birden çok dili desteklemeyi planlıyorsa, her dil için yeni bir Soru-Cevap Oluşturma kaynağına sahip olmaları gerekir. [Dil tabanlı soru-cevap oluşturma Bilgi Bankası oluşturma](../how-to/language-knowledge-base.md)hakkında bilgi edinin.  
-
-Birincil dili aşağıdaki adımlarla doğrulayın:
-
-1. [Azure Portal](https://portal.azure.com) oturum açın.  
-1. Soru-Cevap Oluşturma kaynağınızın bir parçası olarak oluşturulan Azure Search kaynağını bulup seçin. Azure Search kaynak adı Soru-Cevap Oluşturma kaynakla aynı adla başlayacak ve tür **arama hizmetine**sahip olacaktır. Lütfen tek bir Azure Search kaynağına bağlanabilen tek bir Soru-Cevap Oluşturma kaynağı olduğunu aklınızda bulundurun.
-1. Arama kaynağının **genel bakış** sayfasından **dizinler**' i seçin. 
-1. **Testkb** dizinini seçin.
-1. **Alanlar** sekmesini seçin. 
-1. **Sorular** ve **Yanıt** alanları için **çözümleyici** sütununu görüntüleyin. 
-
-
-## <a name="query-matching-and-relevance"></a>Sorguyla eşleşen ve ilgi düzeyi
-Soru-cevap Oluşturucu bağlıdır [dil Çözümleyicileri](https://docs.microsoft.com/rest/api/searchservice/language-support) sonuçları sağlamak için Azure Search'te. Özel yeniden sıralama özellikleri kullanılabilir tr - için * daha iyi uygunluğu sağlayan diller.
-
-Azure arama özellikleri, desteklenen diller için nominal açık olduğunda, soru-cevap Oluşturucu, Azure arama sonuçlarının üstünde yer alan bir ek derecelendiricisini sahiptir. Bu derecelendiricisini modelinde, henüz diğer diller için kullanılamayan, en-* ' de bazı özel anlam ve sözcük tabanlı özellikleri kullanırız. Soru-Cevap Oluşturma Ranker 'ın iç çalışmalarımız kapsamında olduklarından, bu özellikleri kullanmıyoruz. 
-
-Soru-Cevap Oluşturma oluşturma sırasında [Bilgi Bankası 'nın dilini otomatik olarak algılar](#primary-language-detection) ve çözümleyici 'yi buna göre ayarlar. Aşağıdaki dillerde bilgi bankalarından oluşturabilirsiniz. 
-
-|Desteklenen diller|
-|-----|
+|Dil|
+|--|
 |Arapça|
 |Ermenice|
-Bengali|
+|Bengali|
 |Bask dili|
 |Bulgarca|
 |Katalanca|
@@ -69,12 +42,12 @@ Bengali|
 |Hırvatça|
 |Çekçe|
 |Danca|
-|Felemenkçe|
+|Hollanda dili|
 |Türkçe|
 |Estonca|
 |Fince|
 |Fransızca|
-|Galiçya dili|
+|Galiçya lehçesi|
 |Almanca|
 |Yunanca|
 |Gucerat dili|
@@ -106,8 +79,13 @@ Bengali|
 |İsveççe|
 |Tamil dili|
 |Telugu dili|
-|Tay Dili|
+|Tay dili|
 |Türkçe|
 |Ukrayna dili|
 |Urduca|
 |Vietnam dili|
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+> [!div class="nextstepaction"]
+> [Dil seçimi](../how-to/language-knowledge-base.md)

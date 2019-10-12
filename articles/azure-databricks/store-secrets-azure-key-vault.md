@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault öğreticisi kullanarak Azure Databricks Azure Blob depolamaya erişme
+title: Anahtar Kasası kullanarak blob depolamaya erişme-Azure Databricks
 description: Bu öğreticide, anahtar kasasında depolanan gizli dizileri kullanarak Azure Databricks Azure Blob depolamaya nasıl erişebileceğiniz açıklanmaktadır.
 author: mamccrea
 ms.author: mamccrea
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 45c5be8b203daf21697f3cb6dad4ecadb6449339
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 1e44a1f1be6dcadac937d641e00c99994af0c651
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976524"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274082"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Öğretici: Azure Key Vault kullanarak Azure Databricks Azure Blob depolamaya erişme
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Depolama hesabı ve BLOB kapsayıcısı oluşturma
 
-1. Azure Portal, **kaynak** > **depolama alanı**oluştur ' u seçin. Ardından **depolama hesabı**' nı seçin.
+1. Azure portal **kaynak oluştur** > **depolama**' yı seçin. Ardından **depolama hesabı**' nı seçin.
 
    ![Azure depolama hesabı kaynağını bulma](./media/store-secrets-azure-key-vault/create-storage-account-resource.png)
 
@@ -52,7 +52,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 4. Yeni oluşturduğunuz depolama hesabınıza gidin ve **genel bakış** sayfasındaki **Hizmetler** altında **Bloblar** ' ı seçin. Ardından **+ kapsayıcı** ' yı seçin ve bir kapsayıcı adı girin. **Tamam**’ı seçin.
 
-   ![Yeni bir kapsayıcı oluşturma](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
+   ![Yeni kapsayıcı oluştur](./media/store-secrets-azure-key-vault/create-blob-storage-container.png)
 
 5. BLOB depolama kapsayıcınıza yüklemek istediğiniz dosyayı bulun. Bir dosyanız yoksa, bazı bilgilerle yeni bir metin dosyası oluşturmak için bir metin düzenleyicisi kullanın. Bu örnekte, **HW. txt** adlı bir dosya "Hello World" metnini içerir. Metin dosyanızı yerel olarak kaydedin ve BLOB depolama kapsayıcınıza yükleyin.
 
@@ -68,18 +68,18 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
    ![Azure Kaynak arama kutusu oluşturma](./media/store-secrets-azure-key-vault/find-key-vault-resource.png)
 
-2. Key Vault kaynağı otomatik olarak seçilir. **Oluştur**’u seçin.
+2. Key Vault kaynağı otomatik olarak seçilir. **Oluştur**'u seçin.
 
    ![Key Vault kaynağı oluşturma](./media/store-secrets-azure-key-vault/create-key-vault-resource.png)
 
 3. **Anahtar Kasası oluştur** sayfasında, aşağıdaki bilgileri girin ve kalan alanlar için varsayılan değerleri tutun:
 
-   |Özellik|Description|
+   |Özellik|Açıklama|
    |--------|-----------|
-   |Ad|Anahtar kasanızın benzersiz adı.|
-   |Subscription|Bir abonelik seçin.|
-   |Resource group|Bir kaynak grubu seçin veya yeni bir tane oluşturun.|
-   |Location|Konum seçin.|
+   |Adı|Anahtar kasanızın benzersiz adı.|
+   |Abonelik|Bir abonelik seçin.|
+   |Kaynak grubu|Bir kaynak grubu seçin veya yeni bir tane oluşturun.|
+   |Konum|Konum seçin.|
 
    ![Azure Anahtar Kasası özellikleri](./media/store-secrets-azure-key-vault/create-key-vault-properties.png)
 
@@ -91,11 +91,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 5. Gizli dizi **Oluştur** sayfasında aşağıdaki bilgileri sağlayın ve kalan alanlar için varsayılan değerleri tutun:
 
-   |Özellik|Value|
+   |Özellik|Değer|
    |--------|-----------|
-   |Karşıya yükleme seçenekleri|El ile|
-   |Ad|Depolama hesabı anahtarınız için kolay ad.|
-   |Value|depolama hesabınızdan key1.|
+   |Karşıya yükleme seçenekleri|Manual|
+   |Adı|Depolama hesabı anahtarınız için kolay ad.|
+   |Değer|depolama hesabınızdan key1.|
 
    ![Yeni Anahtar Kasası gizli dizisi özellikleri](./media/store-secrets-azure-key-vault/create-storage-secret.png)
 
@@ -114,14 +114,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    |Özellik  |Açıklama  |
    |---------|---------|
    |Çalışma alanı adı     | Databricks çalışma alanınız için bir ad sağlayın        |
-   |Subscription     | Açılan listeden Azure aboneliğinizi seçin.        |
-   |Resource group     | Anahtar kasanızı içeren kaynak grubunu seçin. |
-   |Location     | Azure Key Vault aynı konumu seçin. Tüm kullanılabilir bölgeler için bkz. [bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
+   |Abonelik     | Açılan listeden Azure aboneliğinizi seçin.        |
+   |Kaynak grubu     | Anahtar kasanızı içeren kaynak grubunu seçin. |
+   |Konum     | Azure Key Vault aynı konumu seçin. Tüm kullanılabilir bölgeler için bkz. [bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
    |Fiyatlandırma Katmanı     |  **Standart** veya **Premium** arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
 
    ![Databricks çalışma alanı özellikleri](./media/store-secrets-azure-key-vault/create-databricks-service.png)
 
-   **Oluştur**’u seçin.
+   **Oluştur**'u seçin.
 
 3. Azure portal yeni oluşturulan Azure Databricks kaynağına gidin ve **çalışma alanını Başlat**' ı seçin.
 
@@ -166,7 +166,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
    ```
 
    * **takma ad** , BLOB depolama kapsayıcısının veya kapsayıcı içindeki bir klasörün (kaynakta belirtilen) nereye bağlandığını temsil eden BIR dBFS yoludur.
-   * **conf-Key** ya da `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` olabilir`fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net`
+   * **conf-key** `fs.azure.account.key.<\your-storage-account-name>.blob.core.windows.net` ya da `fs.azure.sas.<\your-container-name>.<\your-storage-account-name>.blob.core.windows.net` olabilir
    * **kapsam adı** , önceki bölümde oluşturduğunuz gizli kapsamın adıdır. 
    * **anahtar adı** , anahtar kasasındaki depolama hesabı anahtarı için oluşturduğunuz gizli anahtar adı.
 

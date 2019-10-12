@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067096"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273941"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA veritabanını Azure 'a yedekleme
 
@@ -25,9 +25,9 @@ ms.locfileid: "71067096"
 
 **Destek** | **Ayrıntılar**
 --- | ---
-**Desteklenen coğrafyalar** | Avustralya Güney Doğu, Doğu Avustralya <br> Güney Brezilya <br> Kanada Orta, Kanada Doğu <br> Güney Doğu Asya, Doğu Asya <br> Doğu ABD, Doğu ABD 2, Orta Batı ABD, Batı ABD, Batı ABD 2, Orta Kuzey ABD, Orta ABD, Orta Güney ABD<br> Hindistan Orta, Hindistan Güney <br> Doğu Japonya, Batı Japonya<br> Kore Orta, Kore Güney <br> Kuzey Avrupa, Batı Avrupa <br> UK Güney, UK Batı
+**Desteklenen coğrafyalar** | Avustralya Güney Doğu, Doğu Avustralya <br> Brezilya Güney <br> Kanada Orta, Kanada Doğu <br> Güney Doğu Asya, Doğu Asya <br> Doğu ABD, Doğu ABD 2, Orta Batı ABD, Batı ABD, Batı ABD 2, Orta Kuzey ABD, Orta ABD, Orta Güney ABD<br> Hindistan Orta, Hindistan Güney <br> Doğu Japonya, Batı Japonya<br> Kore Orta, Kore Güney <br> Kuzey Avrupa, Batı Avrupa <br> UK Güney, UK Batı
 **Desteklenen VM işletim sistemleri** | SLES 12 SP2, SP3 veya SP4.
-**Desteklenen HANA sürümleri** | Hana 1. x üzerinde SDC, HANA 2. x < = SPS04 Rev 42
+**Desteklenen HANA sürümleri** | Hana 1. x üzerinde SDC, HANA 2. x < = SPS04 Rev 43
 
 ### <a name="current-limitations"></a>Geçerli sınırlamalar
 
@@ -40,7 +40,7 @@ ms.locfileid: "71067096"
 - Veritabanı günlüklerini 15 dakikada bir yedekleyebilirsiniz. Günlük yedeklemeleri, veritabanı için başarılı bir tam yedekleme işlemi tamamlandıktan sonra yalnızca Flow 'a başlar.
 - Tam ve fark yedeklemeleri gerçekleştirebilirsiniz. Artımlı yedekleme şu anda desteklenmiyor.
 - Yedekleme ilkesini, SAP HANA yedeklemeleri için uyguladıktan sonra değiştiremezsiniz. Farklı ayarlarla yedeklemek istiyorsanız yeni bir ilke oluşturun veya farklı bir ilke atayın.
-  - Yeni bir ilke oluşturmak için kasada **ilkeler** > **yedekleme ilkeleri** >  **+**  > **Azure VM 'de SAP HANA**Ekle ' ye tıklayın ve ilke ayarlarını belirtin.
+  - Yeni bir ilke oluşturmak için kasada **ilkeler** > **yedekleme ilkeleri** >  **+** **Azure VM 'de** >  SAP HANA Ekle ' ye tıklayın ve ilke ayarlarını belirtin.
   - Farklı bir ilke atamak için, veritabanını çalıştıran VM 'nin özelliklerinde geçerli ilke adına tıklayın. Ardından **yedekleme ilkesi** sayfasında, yedekleme için kullanılacak farklı bir ilke seçebilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -101,7 +101,7 @@ Genel önizlemeye aşağıdaki şekilde katılın:
 
 1. 2\. adımda **yedeklemeyi Yapılandır**' a tıklayın.
 2. **Yedeklenecek öğeleri seçin**' de, korumak istediğiniz tüm veritabanlarını seçin > **Tamam**' a tıklayın.
-3. Yedekleme > İlkesi ' nde**yedekleme ilkesi**' ni seçin ve aşağıdaki yönergelere uygun olarak veritabanları için yeni bir yedekleme ilkesi oluşturun.
+3. **Yedekleme ilkesi** > **yedekleme ilkesi seçin**, aşağıdaki yönergelere uygun olarak veritabanları için yeni bir yedekleme ilkesi oluşturun.
 4. İlkeyi oluşturduktan sonra **yedekleme** menüsünde **yedeklemeyi etkinleştir**' e tıklayın.
 5. Yedekleme Yapılandırma ilerlemesini portalın **Bildirimler** alanında izleyin.
 
@@ -116,13 +116,13 @@ Yedekleme ilkesi, yedeklemelerin ne zaman alındığını ve ne kadar süreyle k
 
 1. **İlke adı**alanına yeni ilke için bir ad girin.
 2. **Tam yedekleme ilkesinde**, bir **yedekleme sıklığı**seçin, **günlük** veya **haftalık**' ı seçin.
-   - **Günlük**: Yedekleme işinin başladığı saat ve saat dilimini seçin.
+   - **Günlük**: yedekleme işinin başladığı saat ve saat dilimini seçin.
    
        - Tam yedekleme çalıştırmanız gerekir. Bu seçeneği devre dışı bırakabilirsiniz.
        - İlkeyi görüntülemek için **tam yedekleme** ' ye tıklayın.
        - Günlük tam yedeklemeler için fark yedeklemeleri oluşturamazsınız.
        
-   - **Haftalık**: Yedekleme işinin çalıştığı haftanın günü, saat ve saat dilimini seçin.
+   - **Haftalık**: yedekleme işinin çalıştığı haftanın gününü, saatini ve saat dilimini seçin.
 3. **Bekletme aralığı**' nda, tam yedekleme için bekletme ayarlarını yapılandırın.
     - Varsayılan olarak tüm seçenekler seçilidir. Kullanmak istemediğiniz tüm Bekletme aralığı sınırlarını temizleyin ve yaptığınız değişiklikleri ayarlayın.
     - Herhangi bir yedekleme türü için en düşük saklama süresi (tam/fark/günlük) yedi gündür.
@@ -167,7 +167,7 @@ Azure Backup ile yedeklenen bir veritabanının yerel yedeklemesini (HANA Studio
 
 1. Veritabanının tamamlaması için herhangi bir tam veya günlük yedeklemesi bekleyin. SAP HANA Studio 'daki durumu denetleyin.
 2. Günlük yedeklemelerini devre dışı bırakın ve ilgili veritabanı için yedekleme kataloğunu dosya sistemine ayarlayın.
-3. Bunu yapmak için **SystemDB** > **yapılandırması** > **veritabanı** > **filtresi Seç (günlük)** öğesine çift tıklayın.
+3. Bunu yapmak için **SystemDB** > **yapılandırması**' na çift tıklayın  > **veritabanı seçin** > **filtresi (günlük)** .
 4. **Enable_auto_log_backup** **olarak ayarlayın**.
 5. **Log_backup_using_backint** **değerini false**olarak ayarlayın.
 6. Veritabanının geçici bir tam yedeklemesini alın.

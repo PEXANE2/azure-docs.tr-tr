@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98baa8d3f951a8922bcd1f40449fa26840f3a3c4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9af53728ee038a6511c434aeedfdb9afdab6d04b
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051483"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273877"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede veri depolama ve giriş
 
@@ -25,7 +25,7 @@ Bu makalede, Azure Time Series Insights önizlemeden veri depolama ve giriş de�
 
 Azure Time Series Insights veri giriş ilkeleri, verilerin nereden ve hangi biçimde kaynak olarak yapılabileceğini belirlemek için kullanılır.
 
-[![Zaman serisi modeline genel bakış](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
+[![ zaman serisi modeline genel bakış](media/v2-update-storage-ingress/tsi-data-ingress.png)](media/v2-update-storage-ingress/tsi-data-ingress.png#lightbox)
 
 ### <a name="ingress-policies"></a>Giriş ilkeleri
 
@@ -34,7 +34,7 @@ Time Series Insights önizlemesi, Time Series Insights Şu anda desteklediği ol
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
   
-Azure Time Series Insights Azure IoT Hub veya Azure Event Hubs aracılığıyla gönderilen JSON 'yi destekler. IoT JSON verilerinizi iyileştirmek için [JSON şeklini nasıl şekilleyeceğinizi](./time-series-insights-send-events.md#json)öğrenin.
+Azure Time Series Insights Azure IoT Hub veya Azure Event Hubs aracılığıyla gönderilen JSON 'yi destekler. IoT JSON verilerinizi iyileştirmek için [JSON şeklini nasıl şekilleyeceğinizi](./time-series-insights-send-events.md#supported-json-shapes)öğrenin.
 
 ### <a name="data-storage"></a>Veri depolama
 
@@ -56,7 +56,7 @@ Time Series Insights önizlemesi, blob boyut iyileştirme stratejisi kullanarak 
 > * Önizleme sırasında, veriler kullanılabilir hale gelmeden önce daha uzun bir süre beklemeniz gerekir.
 > * Önemli bir gecikmeyle karşılaşırsanız bizimle iletişime geçerek emin olun.
 
-### <a name="scale"></a>Ölçek
+### <a name="scale"></a>Ölçeklendirme
 
 Time Series Insights önizlemesi, ortam başına en fazla 1 mega bayt (MB/sn) kadar bir başlangıç giriş ölçeğini destekler. Gelişmiş ölçeklendirme desteği devam etmektedir. Bu geliştirmeleri yansıtacak şekilde belgelerimizi güncelleştirmeyi planlıyoruz.
 
@@ -89,18 +89,18 @@ Time Series Insights Blobların kopyalarını aşağıdaki iki biçimde oluştur
     * Zaman serisi KIMLIĞINE göre bölümlenmiş Bloblar için blobdaki en küçük olay zaman damgası.
 
 > [!NOTE]
-> * `<YYYY>`4 basamaklı bir yıl gösterimine eşlenir.
-> * `<MM>`2 basamaklı bir ay gösterimiyle eşlenir.
-> * `<YYYYMMDDHHMMSSfff>`4 basamaklı`YYYY`yıl (), 2 basamaklı ay (`MM`), 2 basamaklı gün (`DD`), 2 basamaklı saat (`HH`), 2 basamaklı dakika (`MM`), 2 basamaklı saniye (`SS`) ve 3 basamaklı bir zaman damgası gösterimine eşlenir milisaniyelik`fff`().
+> * `<YYYY>`, 4 basamaklı bir yıl gösterimine eşlenir.
+> * `<MM>`, 2 basamaklı bir ay gösterimine eşlenir.
+> * `<YYYYMMDDHHMMSSfff>`, 4 basamaklı yıl (`YYYY`) ile zaman damgası gösterimine eşlenir, 2 basamaklı ay (`MM`), 2 basamaklı gün (`DD`), 2 basamaklı saat (`HH`), 2 basamaklı dakika (`MM`), 2 basamaklı saniye (`SS`) ve 3 basamaklı milisaniyelik (`fff`).
 
 Time Series Insights olaylar, aşağıdaki gibi, Parquet dosya içeriklerine eşlenir:
 
 * Her olay tek bir satırla eşlenir.
 * Bir olay zaman damgasıyla yerleşik **zaman damgası** sütunu. Timestamp özelliği hiçbir zaman null değildir. Olay kaynağında zaman damgası özelliği belirtilmemişse **olay kaynağı sıraya alınan zaman** varsayılan olarak bu olur. Zaman damgası UTC 'dir. 
-* Sütunlara `_string` eşlenen diğer tüm Özellikler (dize), `_bool` (Boolean), `_datetime` (DateTime) ve `_double` (Double), özellik türüne göre.
+* Sütunlara eşlenen diğer tüm özellikler `_string` (dize), `_bool` (Boole), `_datetime` (DateTime) ve `_double` (Double) ile biter ve özellik türüne bağlıdır.
 * Bu, dosya biçiminin ilk sürümü için, **V = 1**olarak adlandırdığımız eşleme şemadır. Bu özellik geliştikçe, ad **v = 2**, **v = 3**vb. olarak artırılır.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 Bu bölümde Azure Time Series Insights ilgili Azure depolama ayrıntıları açıklanmaktadır.
 
@@ -130,7 +130,7 @@ Diğer hizmetlerle birlikte kullanmak üzere Time Series Insights önizleme Gezg
 Verilerinize üç genel yolla erişebilirsiniz:
 
 * Time Series Insights önizleme Gezgini 'nden: verileri bir CSV dosyası olarak Time Series Insights önizleme Gezgini ' nden dışarı aktarabilirsiniz. Daha fazla bilgi için [Time Series Insights önizleme Gezgini](./time-series-insights-update-explorer.md)' ne bakın.
-* Time Series Insights Preview API 'larından: API uç noktasına adresinden `/getRecorded`erişilebilir. Bu API hakkında daha fazla bilgi edinmek için bkz. [zaman serisi sorgusu](./time-series-insights-update-tsq.md).
+* Time Series Insights Preview API 'Lerinde: API uç noktasına `/getRecorded` ' a ulaşılabilir. Bu API hakkında daha fazla bilgi edinmek için bkz. [zaman serisi sorgusu](./time-series-insights-update-tsq.md).
 * Doğrudan bir Azure Storage hesabından (aşağıda).
 
 #### <a name="from-an-azure-storage-account"></a>Bir Azure depolama hesabından
@@ -171,8 +171,8 @@ Fiziksel bölüm, depolama hesabınızda depolanan bir blok bloğudur. Boyut, g�
 
 Mantıksal bölüm, tek bir bölüm anahtarı değeriyle ilişkili tüm verileri depolayan fiziksel bir bölüm içindeki bir bölümdür. Time Series Insights önizlemesi her bir Blobun iki özelliği temel alarak mantıksal olarak bölümler:
 
-* **Zaman SERISI kimliği**: Olay akışı ve model içindeki tüm Time Series Insights verileri için bölüm anahtarı.
-* **Zaman damgası**: İlk giriş temelli olarak zaman.
+* **Zaman SERISI kimliği**: olay akışı ve model içindeki tüm Time Series Insights verileri için bölüm anahtarı.
+* **Zaman damgası**: ilk giriş temelli zaman.
 
 Time Series Insights önizlemesi, bu iki özelliği temel alan performanslı sorgular sağlar. Bu iki özellik ayrıca Time Series Insights verilerini hızlıca teslim etmek için en etkili yöntemi sağlar.
 

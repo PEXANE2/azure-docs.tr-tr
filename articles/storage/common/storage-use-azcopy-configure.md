@@ -8,12 +8,12 @@ ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 3843eb2e906e3fb8d390e509e17117b7849ac220
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 42d2dae148b83687ff06d4ed321a881bcb9e7ae0
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244709"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273932"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -33,12 +33,34 @@ AzCopy için proxy ayarlarını yapılandırmak üzere `https_proxy` ortam deği
 | İşletim sistemi | Komut  |
 |--------|-----------|
 | **Windows** | Komut isteminde şunu kullanın: `set https_proxy=<proxy IP>:<proxy port>`<br> PowerShell kullanımda: `$env:https_proxy="<proxy IP>:<proxy port>"`|
-| **'Un** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 Şu anda AzCopy, NTLM veya Kerberos ile kimlik doğrulaması gerektiren proxy 'leri desteklemiyor.
 
-## <a name="optimize-throughput"></a>Aktarım hızını iyileştirme
+## <a name="optimize-performance"></a>Performansı iyileştirme
+
+Performans ve kaynak tüketimine ilişkin en iyi zorunluluğunu getirir bulmak için, performansı ve ardından komut ve ortam değişkenlerini kullanabilirsiniz.
+
+### <a name="run-benchmark-tests"></a>Kıyaslama testlerini Çalıştır
+
+Genel performans istatistiklerini görüntülemek ve kimlik performans sorunlarını gidermek için belirli blob kapsayıcıları üzerinde bir performans kıyaslama testi çalıştırabilirsiniz. 
+
+> [!NOTE]
+> Geçerli sürümde, bu özellik yalnızca BLOB depolama kapsayıcıları için kullanılabilir.
+
+Bir performans kıyaslama testi çalıştırmak için aşağıdaki komutu kullanın.
+
+|    |     |
+|--------|-----------|
+| **Sözdizimi** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Örnek** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/'` |
+
+Bu komut test verilerini belirtilen bir hedefe yükleyerek bir performans kıyaslaması çalıştırır. Test verileri bellekte oluşturulur, hedefe yüklenir ve ardından test tamamlandıktan sonra hedefteki silinir. İsteğe bağlı komut parametrelerini kullanarak oluşturulacak dosya sayısını ve bunların kaç boyutunu istediğinizi belirtebilirsiniz.
+
+Bu komuta ilişkin ayrıntılı yardım kılavuzunu görüntülemek için `azcopy bench -h` yazın ve ENTER tuşuna basın.
+
+### <a name="optimize-throughput"></a>Aktarım hızını iyileştirme
 
 Verimlilik veri hızına bir tavan koymak için `cap-mbps` bayrağını kullanabilirsiniz. Örneğin, aşağıdaki komut, saniye başına `10` megabit (MB) olarak büyük/küçük harf işleme sağlar.
 
@@ -46,33 +68,30 @@ Verimlilik veri hızına bir tavan koymak için `cap-mbps` bayrağını kullanab
 azcopy cap-mbps 10
 ```
 
-Küçük dosyalar aktarılırken üretilen iş azalabilir. @No__t-0 ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz. Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri `32` olarak ayarlanır. Aksi takdirde, varsayılan değer 16 ' ya eşittir CPU sayısıyla çarpılır. Bu değişkenin en büyük varsayılan değeri `300` ' dır, ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz.
+Küçük dosyalar aktarılırken üretilen iş azalabilir. @No__t-0 ortam değişkenini ayarlayarak aktarım hızını artırabilirsiniz. Bu değişken, gerçekleşebileceğini eşzamanlı isteklerin sayısını belirtir.  
+
+Bilgisayarınızda 5 ' ten az CPU varsa, bu değişkenin değeri `32` olarak ayarlanır. Aksi takdirde, varsayılan değer 16 ' ya eşittir CPU sayısıyla çarpılır. Bu değişkenin en büyük varsayılan değeri `3000` ' dır, ancak bu değeri el ile veya daha düşük bir şekilde ayarlayabilirsiniz. 
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **'Un** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-Bu değişkenin geçerli değerini denetlemek için `azcopy env` kullanın.  Değer boşsa `AZCOPY_CONCURRENCY_VALUE` değişkeni varsayılan değer olan `300` ' e ayarlanır.
+Bu değişkenin geçerli değerini denetlemek için `azcopy env` kullanın. Değer boşsa, herhangi bir AzCopy günlük dosyasının başlangıcına bakarak hangi değerin kullanıldığını okuyabilirsiniz. Seçili değer ve seçildiği neden burada raporlanır.
 
-## <a name="change-the-location-of-the-log-files"></a>Günlük dosyalarının konumunu değiştirme
+Bu değişkeni ayarlamadan önce, bir kıyaslama testi çalıştırmanızı öneririz. Kıyaslama test süreci, önerilen eşzamanlılık değerini rapor eder. Alternatif olarak, ağ koşullarınız ve yüklerinizin farklılık göstermesi durumunda, bu değişkeni belirli bir sayı yerine `AUTO` sözcüğüne ayarlayın. Bu, AzCopy 'in kıyaslama testlerinde kullandığı otomatik ayarlama işlemini her zaman çalıştırmasına neden olur.
 
-Varsayılan olarak, günlük dosyaları Windows üzerinde `%USERPROFILE%\.azcopy` dizininde veya Mac ve Linux 'ta `$HOME\\.azcopy` dizininde bulunur. Bu komutları kullanarak gerekirse, bu konumu değiştirebilirsiniz.
+### <a name="optimize-memory-use"></a>Bellek kullanımını iyileştirme
+
+Dosya indirme ve karşıya yükleme sırasında AzCopy 'in kullanmasını istediğiniz en fazla sistem belleği miktarını belirtmek için `AZCOPY_BUFFER_GB` ortam değişkenini ayarlayın.
+Bu değeri gigabayt (GB) cinsinden ifade edin.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
-| **'Un** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
-
-Bu değişkenin geçerli değerini denetlemek için `azcopy env` kullanın. Değer boşsa, günlükler varsayılan konuma yazılır.
-
-## <a name="change-the-default-log-level"></a>Varsayılan günlük düzeyini değiştirme
-
-Varsayılan olarak, AzCopy günlük düzeyi `INFO` olarak ayarlanır. Disk alanını kaydetmek için günlük ayrıntı düzeyini azaltmak isterseniz, ``--log-level`` seçeneğini kullanarak bu ayarın üzerine yazın. 
-
-Kullanılabilir günlük düzeyleri şunlardır: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` ve `FATAL`.
+| **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
+| **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
+| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ## <a name="troubleshoot-issues"></a>Sorunları giderme
 
@@ -80,7 +99,7 @@ AzCopy her iş için günlük ve plan dosyaları oluşturur. Olası sorunları a
 
 Günlüklerde hata durumu (`UPLOADFAILED`, `COPYFAILED` ve `DOWNLOADFAILED`), tam yol ve hatanın nedeni yer alacak.
 
-Varsayılan olarak, günlük ve plan dosyaları Windows üzerinde `%USERPROFILE\\.azcopy` dizininde veya Mac ve Linux üzerindeki `$HOME\\.azcopy` dizininde bulunur.
+Varsayılan olarak, günlük ve plan dosyaları, Mac ve Linux 'ta Windows veya `$HOME$\.azcopy` dizinindeki `%USERPROFILE$\.azcopy` dizininde bulunur, ancak isterseniz bu konumu değiştirebilirsiniz.
 
 > [!IMPORTANT]
 > Microsoft Desteği bir istek gönderirken (veya herhangi bir üçüncü taraf ile ilgili sorunu gidermeye çalıştığınızda), yürütmek istediğiniz komutun Redaksiyonu yapılmış sürümünü paylaşabilirsiniz. Bu, SAS 'nin yanlışlıkla herhangi bir gövdele paylaşılmamasını sağlar. Redaksiyonu yapılmış sürümü günlük dosyasının başlangıcında bulabilirsiniz.
@@ -95,7 +114,7 @@ Aşağıdaki komut, `04dc9ca9-158f-7945-5933-564021086c79` günlüğünden `UPLO
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 ```
 
-**'Un**
+**Linux**
 
 ```
 grep UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -129,3 +148,45 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 Bir işi sürdürürseniz AzCopy iş planı dosyasına bakar. Plan dosyası, iş ilk oluşturulduğunda işleme için tanımlanan tüm dosyaları listeler. Bir işi sürdürürseniz AzCopy, önceden aktarılmayan plan dosyasında listelenen tüm dosyaları aktarmaya çalışır.
+
+## <a name="change-the-location-of-the-plan-and-log-files"></a>Planın ve günlük dosyalarının konumunu değiştirme
+
+Varsayılan olarak, plan ve günlük dosyaları Windows 'daki `%USERPROFILE$\.azcopy` dizininde veya Mac ve Linux 'ta `$HOME$\.azcopy` dizininde bulunur. Bu konumu değiştirebilirsiniz.
+
+### <a name="change-the-location-of-plan-files"></a>Plan dosyalarının konumunu değiştirme
+
+Bu komutlardan herhangi birini kullanın.
+
+| İşletim sistemi | Komut  |
+|--------|-----------|
+| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+
+Bu değişkenin geçerli değerini denetlemek için `azcopy env` kullanın. Değer boşsa, plan dosyaları varsayılan konuma yazılır.
+
+### <a name="change-the-location-of-log-files"></a>Günlük dosyalarının konumunu değiştirme
+
+Bu komutlardan herhangi birini kullanın.
+
+| İşletim sistemi | Komut  |
+|--------|-----------|
+| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+
+Bu değişkenin geçerli değerini denetlemek için `azcopy env` kullanın. Değer boşsa, günlükler varsayılan konuma yazılır.
+
+## <a name="change-the-default-log-level"></a>Varsayılan günlük düzeyini değiştirme
+
+Varsayılan olarak, AzCopy günlük düzeyi `INFO` olarak ayarlanır. Disk alanını kaydetmek için günlük ayrıntı düzeyini azaltmak isterseniz, ``--log-level`` seçeneğini kullanarak bu ayarın üzerine yazın. 
+
+Kullanılabilir günlük düzeyleri şunlardır: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC` ve `FATAL`.
+
+## <a name="remove-plan-and-log-files"></a>Planı ve günlük dosyalarını kaldır
+
+Disk alanını kazanmak için yerel makinenizden tüm planı ve günlük dosyalarını kaldırmak istiyorsanız, `azcopy jobs clean` komutunu kullanın.
+
+Yalnızca bir işle ilişkili planı ve günlük dosyalarını kaldırmak için `azcopy jobs rm <job-id>` kullanın. Bu örnekteki `<job-id>` yer tutucusunu işin iş kimliğiyle değiştirin.
+
+
