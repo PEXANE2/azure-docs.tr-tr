@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: ff0490a7854d0398df925fc56f766470ca9d1618
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c7f143f5d026b2fa6fa34c75d3616b05c3e97092
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973445"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294300"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama bağlamaları
 
@@ -240,7 +240,7 @@ def main(msg: func.QueueMessage):
 
 [ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda, bir kuyruk tetikleyicisi yapılandırmak için aşağıdaki öznitelikleri kullanın:
 
-* [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueTriggerAttribute.cs)
+* [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueTriggerAttribute.cs)
 
   Aşağıdaki örnekte gösterildiği gibi özniteliğin Oluşturucusu, izlenecek sıranın adını alır:
 

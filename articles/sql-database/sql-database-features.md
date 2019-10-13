@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 1d8379d0ee54332ae4971cd9abaa8b153d52084a
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 6f1ea4e1053efd7522a9562a3229a0d3094da36b
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71816056"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285798"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL veritabanı özellikleri
 
@@ -45,7 +45,7 @@ Aşağıdaki tabloda SQL Server 'ın başlıca özellikleri listelenmekte ve öz
 | [Sertifikalar ve asimetrik anahtarlar](https://docs.microsoft.com/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | Evet, `BACKUP` ve `CREATE` işlemleri için dosya sistemine erişim olmadan. | Evet, `BACKUP` ve `CREATE` işlemleri için dosya sistemine erişim olmadan-bkz. [sertifika farklılıkları](sql-database-managed-instance-transact-sql-information.md#certificates). | 
 | [Değişiklik verilerini yakalama-CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Hayır | Yes |
 | [Harmanlama-sunucu/örnek](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | Hayır, varsayılan mantıksal sunucu harmanlama `SQL_Latin1_General_CP1_CI_AS` her zaman kullanılır. | Evet, [örnek oluşturulduğunda](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md) ayarlanabilir ve daha sonra güncelleştirilemez. |
-| [Columnstore dizinleri](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Evet- [Premium katman, Standart katman-S3 ve üzeri, genel amaçlı katmanı ve iş açısından kritik katmanları](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Yes |
+| [Columnstore dizinleri](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | Evet- [Premium katman, Standart katman-S3 ve üzeri, genel amaçlı katmanı, iş açısından kritik ve hiper ölçek katmanları](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |Yes |
 | [Ortak dil çalışma zamanı-CLR](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | Hayır | Evet, ancak `CREATE ASSEMBLY` ifadesinde dosya sistemine erişim olmadan-bkz. [clr farkları](sql-database-managed-instance-transact-sql-information.md#clr) |
 | [Kimlik Bilgileri](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/credentials-database-engine) | Evet, ancak yalnızca [veritabanı kapsamlı kimlik bilgileri](https://docs.microsoft.com/sql/t-sql/statements/create-database-scoped-credential-transact-sql). | Evet, ancak yalnızca **Azure Key Vault** ve `SHARED ACCESS SIGNATURE` destekleniyor, [ayrıntıları](sql-database-managed-instance-transact-sql-information.md#credential) görüntüle |
 | [Veritabanları arası/üç parçalı ad sorguları](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Hayır- [elastik sorguları](sql-database-elastic-query-overview.md) görüntüle | Evet, ve [elastik sorgular](sql-database-elastic-query-overview.md) |

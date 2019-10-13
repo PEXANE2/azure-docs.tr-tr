@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991883"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299664"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. kullanmak için en iyi uygulamalar
 
-Bu makalede, Azure Data Lake Storage 2. ile çalışmaya yönelik en iyi yöntemler ve konular hakkında bilgi edineceksiniz. Bu makalede, Data Lake Storage 2. için güvenlik, performans, dayanıklılık ve izleme hakkında bilgi verilmektedir. Data Lake Storage 2. önce, Azure HDInsight gibi hizmetlerde gerçekten büyük verilerle çalışma karmaşıktır. Birden çok BLOB depolama hesabında verileri parçalara çıkaran ve bu ölçekte en iyi performansı elde etmek zorunda kaldık. Data Lake Storage 2., boyut ve performansa ilişkin sabit limitlerin çoğu kaldırılır. Ancak, Data Lake Storage 2. ile en iyi performansı elde edebilmeniz için bu makalenin kapsamakta olduğu bazı noktalar vardır.
+Bu makalede, Azure Data Lake Storage 2. ile çalışmaya yönelik en iyi yöntemler ve konular hakkında bilgi edineceksiniz. Bu makalede, Data Lake Storage 2. için güvenlik, performans, dayanıklılık ve izleme hakkında bilgi verilmektedir. Data Lake Storage 2. önce, Azure HDInsight gibi hizmetlerde gerçekten büyük verilerle çalışma karmaşıktır. Birden çok BLOB depolama hesabında verileri parçalara çıkaran ve bu ölçekte en iyi performansı elde etmek zorunda kaldık. Data Lake Storage 2., her bir dosya boyutunu en fazla 5 TB kadar destekler ve performans için sabit limitlerin çoğu kaldırılmıştır. Ancak, Data Lake Storage 2. ile en iyi performansı elde edebilmeniz için bu makalenin kapsamakta olduğu bazı noktalar vardır.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Azure Data Lake Storage 2., Azure Active Directory (Azure AD) kullanıcıları, grupları ve hizmet sorumluları için POSIX erişim denetimleri sunmaktadır. Bu erişim denetimleri var olan dosyalara ve dizinlere ayarlanabilir. Erişim denetimleri, yeni dosyalara veya dizinlere otomatik olarak uygulanabilecek varsayılan izinleri oluşturmak için de kullanılabilir. Data Lake Storage 2. ACL 'Ler hakkında daha fazla ayrıntı [Azure Data Lake Storage 2. Içindeki erişim denetiminde](storage-data-lake-storage-access-control.md)bulunmaktadır.
 
@@ -39,7 +39,7 @@ Azure Active Directory hizmet sorumluları, genellikle Data Lake Storage 2. veri
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Azure hizmet erişimi ile Data Lake Storage 2. güvenlik duvarını etkinleştirme
 
-Data Lake Storage 2., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış saldırıların vektörünü sınırlamak için önerilir. Güvenlik Duvarı,**Azure hizmetleri seçeneklerine erişime izin veren** güvenlik duvarı 'nı**Etkinleştir (açık)**  > aracılığıyla > Azure Portal bir depolama hesabında etkinleştirilebilir.
+Data Lake Storage 2., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış saldırıların vektörünü sınırlamak için önerilir. Güvenlik Duvarı, güvenlik duvarı üzerinden Azure portal bir depolama hesabında **etkinleştirilebilir @no__t-** 1**güvenlik DUVARıNı etkinleştir (açık)**  > **Azure hizmetleri seçeneklerine erişime izin verir** .
 
 Depolama hesabınıza Azure Databricks erişmek için, Azure Databricks sanal ağınıza dağıtın ve ardından bu sanal ağı güvenlik duvarınızdan ekleyin. Bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
@@ -47,7 +47,7 @@ Depolama hesabınıza Azure Databricks erişmek için, Azure Databricks sanal a�
 
 Data Lake Storage 2. veya herhangi bir bulut hizmeti ile bir sistemi mimarmaya çalışırken, kullanılabilirlik gereksinimlerinizi göz önünde bulundurmanız ve Hizmette oluşabilecek kesintilere yanıt verebilmeniz gerekir. Bir sorun belirli bir örneğe veya bölge genelinde yerelleştirilebilir, bu nedenle her ikisi için bir plana sahip olmak önemlidir. Kurtarma zamanı hedefine ve iş yükünüz için kurtarma noktası hedefi SLA 'larına bağlı olarak yüksek kullanılabilirlik ve olağanüstü durum kurtarma için daha fazla veya daha az ısrarlı bir strateji seçebilirsiniz.
 
-### <a name="high-availability-and-disaster-recovery"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma
+### <a name="high-availability-and-disaster-recovery"></a>Yüksek erişilebilirlik ve felaketten kurtarma
 
 Yüksek kullanılabilirlik (HA) ve olağanüstü durum kurtarma (DR) bazen birlikte birleştirilebilir, ancak özellikle de verilere geldiklerinde, her birinin biraz farklı bir stratejisi vardır. Data Lake Storage 2., yerelleştirilmiş donanım hatalarıyla karşı koruma kapsamında 3x çoğaltmasını zaten işliyor. Ayrıca, ZRS veya GZRS (Önizleme) gibi diğer çoğaltma seçenekleri, GRS & RA-GRS, DR 'yi iyileştirirken HA 'yi geliştirir. Bir HA planı oluştururken, hizmet kesintisi durumunda iş yükünün, ayrı olarak çoğaltılan bir örneğe yerel olarak veya yeni bir bölgede geçiş yaparak en son verilere en kısa sürede erişmesi gerekir.
 

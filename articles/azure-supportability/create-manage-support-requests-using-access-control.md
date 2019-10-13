@@ -1,5 +1,5 @@
 ---
-title: Destek isteklerini oluşturmak ve yönetmek için erişim haklarını denetlemek üzere Azure rol tabanlı Access Control (RBAC) | Microsoft Docs
+title: Azure 'da destek istekleri oluşturmak için erişim denetimi
 description: Destek isteklerini oluşturmak ve yönetmek için erişim haklarını denetlemek üzere Azure rol tabanlı Access Control (RBAC)
 author: ganganarayanan
 ms.author: gangan
@@ -7,14 +7,18 @@ ms.date: 1/31/2017
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
-ms.openlocfilehash: 94f21e973063dc627ef1424ca5393dd85aedd671
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 328f4928aff6a892849ce3e08fe794578b5e03a4
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248846"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299267"
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Destek isteklerini oluşturmak ve yönetmek için erişim haklarını denetlemek üzere Azure rol tabanlı Access Control (RBAC)
+
+> [!IMPORTANT]
+> Azure 'da istekleri desteklemek için erişim haklarını denetlemek üzere bu el ile yapılan yaklaşım, yerleşik bir rolle değiştirilmiştir. Daha fazla bilgi için bkz. [destek Isteği katılımcısı](../role-based-access-control/built-in-roles.md#support-request-contributor). 
 
 [Rol tabanlı Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) , Azure için ayrıntılı erişim yönetimine izin vermez.
 Azure portal [portal.azure.com](https://portal.azure.com)destek isteği oluşturma, Azure 'un, destek istekleri oluşturup yönetebileceğini tanımlamak için Azure 'un RBAC modelini kullanır.
@@ -29,7 +33,7 @@ Destek isteği Yönetimi ' nde, destek istekleri oluşturup yönetebilmek için 
 
 Aşağıdaki makalede, Azure portal destek istekleri oluşturmak ve yönetmek için Azure 'un özel rol tabanlı Access Control (RBAC) nasıl kullanabileceğiniz açıklanmaktadır.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Başlangıç
 
 Yukarıdaki örneği kullanarak, abonelik sahibi tarafından abonelikte özel bir RBAC rolü atandıysa, kaynağınız için bir destek isteği oluşturabilirsiniz.
 Azure PowerShell, Azure komut satırı arabirimi (CLı) ve REST API kullanılarak [özel RBAC rolleri](https://azure.microsoft.com/documentation/articles/role-based-access-control-custom-roles/) oluşturulabilir.
@@ -73,9 +77,9 @@ Bu abonelik kapsamındaki kaynaklar için destek bileti oluşturma ve yönetme o
 
     ![Destek katılımcısı rolü Ekle](./media/create-manage-support-requests-using-access-control/add-support-contributor-role.png)
 
-3. Rol adını seçtikten sonra, "Kullanıcı Ekle" ye tıklayın ve ali 'nin e-posta kimlik bilgilerini girin. "Seç" e tıklayın
+3. Rol adını seçtikten sonra, "Kullanıcı Ekle" ye tıklayın ve ali 'nin e-posta kimlik bilgilerini girin. "Seç"e tıklayın
 
-    ![Kullanıcı Ekle](./media/create-manage-support-requests-using-access-control/add-users.png)
+    ![Kullanıcı ekle](./media/create-manage-support-requests-using-access-control/add-users.png)
 
 4. Devam etmek için "Tamam" a tıklayın
 

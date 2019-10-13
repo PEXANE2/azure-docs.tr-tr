@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: f677d6b8edfe60646c6368acce9d47b23a35237d
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 95b85aa11d99ddd48c90c8d9fa28789e79ee979f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146885"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299241"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli POP IP listesini al
 
@@ -41,7 +41,6 @@ Microsoft 'un arka uç IP adresi alanından ve Azure 'un altyapı hizmetlerinden
 
 Microsoft Hizmetleri için IP aralıkları ve hizmet etiketleri [burada](https://www.microsoft.com/download/details.aspx?id=56519) bulunabilir
 
-Microsoft 'tan Azure CDN tarafından gönderilen ' X-Iletilen-Host ' gelen üstbilgisinin değerlerini filtreleyin. Üst bilgi için izin verilen tek değerler, CDN yapılandırmasında tanımlanan tüm uç nokta Konakları olmalıdır. Özellikle de daha da özel olarak, yalnızca trafiğini kabul etmek istediğiniz ana bilgisayar adları, kendi özel kaynağına aittir.
 
 ## <a name="typical-use-case"></a>Tipik kullanım örneği
 

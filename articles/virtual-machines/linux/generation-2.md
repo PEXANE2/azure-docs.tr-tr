@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 10/11/2019
 ms.author: lahugh
-ms.openlocfilehash: 6bd74fa299385acb1abe4b32db5d35366249eaa6
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 3c6a054229ab7a16fb48dff5ec2e8681c3c5345e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173899"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299503"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure 'da 2. nesil VM 'Ler (Önizleme) desteği
 
@@ -62,7 +62,7 @@ ms.locfileid: "71173899"
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 
-## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi vs. Azure 2. nesil VM 'Ler
+## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi ve Azure 2. nesil VM 'Ler
 
 Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özellikleri desteklememektedir.
 
@@ -93,7 +93,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 | Sanal makine ölçek kümesi desteği | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Site Recovery               | :heavy_check_mark: | sayı                |
 | Yedekleme/geri yükleme                    | :heavy_check_mark: | :heavy_check_mark: |
-| Paylaşılan görüntü galerisi              | :heavy_check_mark: | sayı                |
+| Paylaşılan görüntü Galerisi              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure disk şifrelemesi             | :heavy_check_mark: | sayı                |
 
 ## <a name="creating-a-generation-2-vm"></a>2\. nesil VM oluşturma
@@ -102,7 +102,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 Azure portal veya Azure CLı 'de, UEFı önyüklemesini destekleyen bir market görüntüsünden 2. nesil VM 'Ler oluşturabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Windows ve SLES için 2. nesil görüntüler, Gen1 görüntülerle aynı sunucu teklifine dahildir. Flow perspektifinden bu şekilde, VM 'niz için portaldan teklif ve SKU 'YU seçersiniz. SKU hem 1. kuşak hem de 2. nesil görüntüleri destekliyorsa, VM oluşturma akışındaki *Gelişmiş* sekmesinden 2. nesıl bir VM oluşturmayı seçebilirsiniz.
 
@@ -121,7 +121,7 @@ Teklif olarak bir Windows Server SKU seçtiğinizde, **Gelişmiş** sekmesinde, 
 
 Ayrıca, 1. nesil veya 2. nesil SKU 'ya doğrudan başvurarak bir VM oluşturmak için PowerShell 'i de kullanabilirsiniz.
 
-Örneğin, `WindowsServer` teklifte SKU 'ların bir listesini almak için aşağıdaki PowerShell cmdlet 'ini kullanın.
+Örneğin, `WindowsServer` teklifinde SKU 'ların bir listesini almak için aşağıdaki PowerShell cmdlet 'ini kullanın.
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer

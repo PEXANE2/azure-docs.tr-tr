@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: e91d2d487a8b3409c53a0a0731700c39cf56dd63
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: b31470b329c0f63d186e5babfac3c0d8e6767538
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066349"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286219"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Azure PowerShell’den IoT Central’ı yönetme
 
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) cmdlet 'ini kullanın. Örneğin:
+Azure aboneliğinizde bir IoT Central uygulaması oluşturmak için [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) cmdlet 'ini kullanın. Örnek:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -66,9 +66,9 @@ Betik ilk olarak uygulamanın Doğu ABD bölgesinde bir kaynak grubu oluşturur.
 |Parametre         |Açıklama |
 |------------------|------------|
 |ResourceGroupName |Uygulamayı içeren kaynak grubu. Bu kaynak grubu aboneliğinizde zaten var olmalıdır. |
-|Location |Varsayılan olarak, bu cmdlet kaynak grubundaki konumu kullanır. Şu anda **Doğu ABD**, **Batı ABD**, **Kuzey Avrupa**veya **Batı Avrupa** bölgelerde ya da **Avustralya** Coğrafya IoT Central bir uygulama oluşturabilirsiniz. |
-|Name              |Azure portal uygulamanın adı. |
-|Al etki alanı         |Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com. |
+|Konum |Varsayılan olarak, bu cmdlet kaynak grubundaki konumu kullanır. Şu anda **Doğu ABD**, **Batı ABD**, **Kuzey Avrupa**veya **Batı Avrupa** bölgelerinde veya **Avustralya** ya da **Asya Pasifik** coğrafi bölgelerde IoT Central bir uygulama oluşturabilirsiniz.  |
+|Adı              |Azure portal uygulamanın adı. |
+|alanınızın         |Uygulamanın URL 'sindeki alt etki alanı. Örnekte, uygulama URL 'SI https://mysubdomain.azureiotcentral.com ' dır. |
 |Sku               |Şu anda tek değer **S1** 'dir (Standart katman). Bkz. [Azure IoT Central fiyatlandırması](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Şablon          | Kullanılacak uygulama şablonu. Daha fazla bilgi için aşağıdaki tabloya bakın: |
 |DisplayName       |Kullanıcı arabiriminde gösterildiği şekilde uygulamanın adı. |
@@ -100,7 +100,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Uygulamayı kaldırma
 
-IoT Central uygulamasını silmek için [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) cmdlet 'ini kullanın. Örneğin:
+IoT Central uygulamasını silmek için [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) cmdlet 'ini kullanın. Örnek:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `

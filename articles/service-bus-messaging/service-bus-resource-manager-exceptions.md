@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 7b9d4099734af3a04f43d35d89f07f8b005c90f9
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 9a2d25aba03156d6d14fe5ef9aa58b3748033b85
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802525"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296394"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Service Bus Kaynak Yöneticisi özel durumları
 
@@ -36,7 +36,7 @@ Aşağıda, Azure Resource Manager üzerinden ortaya çıkacak çeşitli özel d
 
 | Hata kodu | Hata alt kodu | Hata iletisi | Açıklama | Öneri |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Hatalı İstek | 40000 | Alt kod = 40000. ' *Namespace Name '* ad alanı ' temel ' katmanını kullandığından, bir kuyruk oluşturulurken *' özellik adı '* özelliği ayarlanamaz. Bu işlem yalnızca ' standart ' veya ' Premium ' katmanda destekleniyor. | Azure Service Bus temel katmanda, aşağıdaki Özellikler ayarlanamaz veya güncelleştirilemez- <ul> <li> RequiresDuplicateDetection </li> <li> Oto Delete OnIdle </li> <li>requiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Konular </li> </ul> | Bu işlevselliği kullanmak için temel bilgisayardan standart veya Premium katmana yükseltmeyi düşünün. |
+| Hatalı İstek | 40000 | Alt kod = 40000. ' *Namespace Name '* ad alanı ' temel ' katmanını kullandığından, bir kuyruk oluşturulurken *' özellik adı '* özelliği ayarlanamaz. Bu işlem yalnızca ' standart ' veya ' Premium ' katmanda destekleniyor. | Azure Service Bus temel katmanda, aşağıdaki Özellikler ayarlanamaz veya güncelleştirilemez- <ul> <li> RequiresDuplicateDetection </li> <li> Oto Delete OnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Konular </li> </ul> | Bu işlevselliği kullanmak için temel bilgisayardan standart veya Premium katmana yükseltmeyi düşünün. |
 | Hatalı İstek | 40000 | Alt kod = 40000. Varolan bir kuyruğun (veya konusunun) ' requiresDuplicateDetection ' özelliğinin değeri değiştirilemez. | Yinelenen algılama, varlık oluşturma sırasında etkinleştirilmelidir/devre dışı bırakılmalıdır. Yinelenen algılama yapılandırma parametresi oluşturulduktan sonra değiştirilemez. | Daha önce oluşturulmuş bir kuyrukta/konuda yinelenen saptamayı etkinleştirmek için, yinelenen algılama ile yeni bir kuyruk/konu oluşturabilir ve ardından orijinal kuyruktan yeni kuyruğa/konuya iletebilirsiniz. |
 | Hatalı İstek | 40000 | Alt kod = 40000. Belirtilen 16384 değeri geçersiz. ' Maxsizeınmegabayt ' özelliği şu değerlerden biri olmalıdır: 1024; 2048; 3072; 4096; 5120. | Maxsizeınmegabayt değeri geçersiz. | Maxsizeınmegabayt 'nin aşağıdaki-1024, 2048, 3072, 4096, 5120 değerinden biri olduğundan emin olun. |
 | Hatalı İstek | 40000 | Alt kod = 40000. Kuyruk/konu için bölümleme değiştirilemiyor. | Varlık için bölümleme değiştirilemez. | Yeni bir varlık (kuyruk veya konu) oluşturun ve bölümleri etkinleştirin. | 
@@ -57,9 +57,9 @@ HTTP içinde olduğu gibi, "hata kodu 429", "çok fazla istek" anlamına gelir. 
 | 429 | 50004 | Alt kod = 50004. *Ad* alanınız kısıtlandığı için istek sonlandırıldı. | Bu hata koşulu, gelen istek sayısı kaynağın sınırlamasını aştığında oluşur. | Birkaç saniye bekleyip yeniden deneyin. <br/> <br/> [Kotalar](service-bus-quotas.md) ve [Azure Resource Manager istek limitleri](../azure-resource-manager/resource-manager-request-limits.md) hakkında daha fazla bilgi edinin|
 | 429 | 40901 | Alt kod = 40901. Başka bir çakışan işlem devam ediyor. | Aynı kaynak/varlık üzerinde başka bir çakışan işlem devam ediyor | Yeniden denemeden önce geçerli devam eden işlemin tamamlanmasını bekleyin. |
 | 429 | 40900 | Alt kod = 40900. Uzantıları. Kaynağın geçerli durumunda izin verilmeyen bir işlem isteğinde bulunuyoruz. | Aynı anda aynı varlık (kuyruk, konu, abonelik veya kural) üzerinde işlemleri gerçekleştirmek için birden çok istek yapıldığında bu koşul çıkabilir. | Birkaç saniye bekleyip yeniden deneyin |
+| 429 | 40901 | *' Varlık adı '* varlığındaki istek başka bir istekle çakışıyor | Aynı kaynak/varlık üzerinde başka bir çakışan işlem devam ediyor | Yeniden denemeden önce önceki işlemin tamamlanmasını bekleyin |
+| 429 | 40901 | *' Varlık adı '* varlığı için başka bir güncelleştirme isteği devam ediyor. | Aynı kaynak/varlık üzerinde başka bir çakışan işlem devam ediyor | Yeniden denemeden önce önceki işlemin tamamlanmasını bekleyin |
 | 429 | yok | Kaynak çakışması oluştu. Başka bir çakışan işlem devam ediyor olabilir. Bu, başarısız olan bir işlem için yeniden denemeye devam ederse, arka planda temizlik hala bekliyor. Daha sonra yeniden deneyin. | Aynı varlığa karşı bekleyen bir işlem olduğunda bu durum görünebilir. | Yeniden denemeden önce önceki işlemin tamamlanmasını bekleyin. |
-| 429 | yok | *' Varlık adı '* varlığındaki istek başka bir istekle çakışıyor | Aynı kaynak/varlık üzerinde başka bir çakışan işlem devam ediyor | Yeniden denemeden önce önceki işlemin tamamlanmasını bekleyin |
-| 429 | yok | *' Varlık adı '* varlığı için başka bir güncelleştirme isteği devam ediyor. | Aynı kaynak/varlık üzerinde başka bir çakışan işlem devam ediyor | Yeniden denemeden önce önceki işlemin tamamlanmasını bekleyin |
 
 
 ## <a name="error-code-not-found"></a>Hata kodu: bulunamadı

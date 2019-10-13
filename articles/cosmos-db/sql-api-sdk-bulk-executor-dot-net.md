@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 10/08/2019
+ms.date: 10/11/2019
 ms.author: ramkris
-ms.openlocfilehash: 90537a7e24e5f87087fb718322a7271043d1d229
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 7d30b685d0debb0aeb0f79db8b078dcc165a8ca1
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176839"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286658"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET toplu yürütücü kitaplığı: Indirme bilgileri 
 
@@ -21,12 +21,12 @@ ms.locfileid: "72176839"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET değişiklik akışı](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node. js](sql-api-sdk-node.md)
-> * [Zaman uyumsuz Java](sql-api-sdk-async-java.md)
+> * [Node.js](sql-api-sdk-node.md)
+> * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [KALANı](https://docs.microsoft.com/rest/api/cosmos-db/)
-> * [REST kaynak sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Toplu yürütücü-.NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Toplu yürütücü-Java](sql-api-sdk-bulk-executor-java.md)
@@ -41,6 +41,10 @@ ms.locfileid: "72176839"
 | **Desteklenen geçerli çerçeve**| Microsoft .NET Framework 4.5.2, 4.6.1 ve .NET Standard 2,0 |
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="a-name241-preview241-preview"></a><a name="2.4.1-preview"/>2.4.1-Preview
+
+* Tüm yeniden denemeler dahil toplam süreyi doğru şekilde ölçmek için BulkDelete yanıtında fixed TotalElapsedTime.
 
 ### <a name="a-name240-preview240-preview"></a><a name="2.4.0-preview"/>2.4.0-Preview
 
@@ -65,6 +69,10 @@ ms.locfileid: "72176839"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-Preview
 
 * Toplu yürütücü kitaplığı 'nın .NET Core uygulamalarıyla çalışmasını sağlamak için desteklenen hedef çerçevelerinden biri olarak 2,0 .NET Standard eklendi.
+
+### <a name="a-name183183"></a><a name="1.8.3"/>1.8.3
+
+* Tüm yeniden denemeler dahil toplam süreyi doğru şekilde ölçmek için BulkDelete yanıtında fixed TotalElapsedTime.
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 

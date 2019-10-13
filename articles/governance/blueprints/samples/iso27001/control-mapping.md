@@ -1,17 +1,17 @@
 ---
-title: Örnek-ISO 27001 şema-Control eşleme
+title: ISO 27001 şema örnek denetimi eşlemesi
 description: ISO 27001 şema örneğinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-ms.openlocfilehash: f381cb2beff0dd828e7ab1e5661857d826c49ecf
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 57636db9eb341bad2e0caca83a2c413320847aae
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248882"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297513"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 şema örneğinin denetim eşlemesi
 
@@ -211,10 +211,10 @@ ISO 27001 Blueprint öğesinin denetim eşlemesini gözden geçirdiğinize göre
 > [ISO 27001 şema-genel bakış](./index.md)
 > [ISO 27001 şema-Deploy adımları](./deploy.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında makaleler ekleme:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
-- [Statik ve dinamik parametrelerin](../../concepts/parameters.md)nasıl kullanılacağını anlayın.
-- [Şema sıralama sırasını](../../concepts/sequencing-order.md)özelleştirmeyi öğrenin.
-- [Şema kaynak kilitlemeyi](../../concepts/resource-locking.md)nasıl kullanacağınızı öğrenin.
-- [Mevcut atamaları güncelleştirme](../../how-to/update-existing-assignments.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
+- [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
+- [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
+- [Mevcut atamaları güncelleştirmeyi](../../how-to/update-existing-assignments.md) öğrenin.

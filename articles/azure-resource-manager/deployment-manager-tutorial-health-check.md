@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2bdff6195a0dcf93bfc3a596189b062bf4f3ab12
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b381c4be5d0c56e14ccd01657542ef3bff2f8894
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254981"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285677"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Öğretici: Azure Dağıtım Yöneticisi sistem durumu denetimi kullanma (Genel Önizleme)
 
@@ -38,8 +38,8 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Ek kaynaklar:
 
-- [Azure Dağıtım Yöneticisi REST API başvurusu](https://docs.microsoft.com/rest/api/deploymentmanager/).
-- [Azure dağıtım Yöneticisi örneği](https://github.com/Azure-Samples/adm-quickstart).
+* [Azure Dağıtım Yöneticisi REST API başvurusu](https://docs.microsoft.com/rest/api/deploymentmanager/).
+* [Azure dağıtım Yöneticisi örneği](https://github.com/Azure-Samples/adm-quickstart).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
@@ -48,7 +48,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu makaleyi tamamlamak için gerekenler:
 
 * [Azure Dağıtım Yöneticisi kaynak yöneticisi şablonlarla kullanın](./deployment-manager-tutorial.md).
-* Bu öğretici tarafından kullanılan [şablonları ve yapıtları](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip) indirin.
+
+## <a name="install-the-artifacts"></a>Yapıtları yükler
+
+[Şablonları ve yapıtları](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip) indirin ve bunu yapmadıysanız yerel olarak ayıklayın. Ve sonra [yapıtları hazırlama](./deployment-manager-tutorial.md#prepare-the-artifacts)sırasında bulunan PowerShell betiğini çalıştırın. Betik bir kaynak grubu oluşturur, bir depolama kapsayıcısı oluşturur, bir blob kapsayıcısı oluşturur, indirilen dosyaları karşıya yükler ve ardından bir SAS belirteci oluşturur.
+
+SAS belirteci ile URL 'nin bir kopyasını oluşturun. İki parametre dosyasındaki bir alanı, topoloji parametreleri dosyasını ve dağıtım parametreleri dosyasını doldurmak için bu URL gereklidir.
+
+CreateADMServiceTopology. Parameters. json dosyasını açın ve **ProjectName** ve **Artifactsourcesaslocation**değerlerini güncelleştirin.
+
+Createadmpiyasaya çıkma. Parameters. json dosyasını açın ve **ProjectName** ve **Artifactsourcesaslocation**değerlerini güncelleştirin.
 
 ## <a name="create-a-health-check-service-simulator"></a>Durum denetimi hizmeti simülatörü oluşturma
 
@@ -56,21 +65,12 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Azure Işlevini dağıtmak için aşağıdaki iki dosya kullanılır. Öğreticiye gitmek için bu dosyaları indirmeniz gerekmez.
 
-* [@No__t-1](https://armtutorials.blob.core.windows.net/admtutorial/deploy_hc_azure_function.json)' de bulunan kaynak yöneticisi şablonu. Bu şablonu, bir Azure Işlevi oluşturmak için dağıtırsınız.
-* Azure Işlevi kaynak kodunun bir ZIP dosyası [https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip](https://armtutorials.blob.core.windows.net/admtutorial/ADMHCFunction0417.zip). Çağrılan bu zip Kaynak Yöneticisi şablonu tarafından çağırılır.
+* [@No__t-1](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json)' de bulunan kaynak yöneticisi şablonu. Bu şablonu, bir Azure Işlevi oluşturmak için dağıtırsınız.
+* Azure Işlevi kaynak kodunun bir ZIP dosyası [https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMHCFunction0417.zip). Çağrılan bu zip Kaynak Yöneticisi şablonu tarafından çağırılır.
 
 Azure işlevini dağıtmak için **dene** ' yi seçerek Azure Cloud Shell 'i açın ve ardından aşağıdaki betiği kabuk penceresine yapıştırın.  Kodu yapıştırmak için kabuk penceresine sağ tıklayıp **Yapıştır**' ı seçin.
 
-> [!IMPORTANT]
-> PowerShell betiğinin **ProjectName** , bu öğreticide dağıtılan Azure hizmetlerinin adlarını oluşturmak için kullanılır. ProjectName için [Kaynak Yöneticisi şablonlarla Azure dağıtım Yöneticisi kullanma](./deployment-manager-tutorial.md) bölümünde kullandığınız **NamePrefix** değerini kullanın.  Farklı Azure Hizmetleri, adlar üzerinde farklı gereksinimlere sahiptir. Dağıtımın başarılı olduğundan emin olmak için, yalnızca küçük harf ve rakam içeren 12 karakterden daha az bir ad seçin.
-> Proje adının bir kopyasını kaydedin. Öğreticide aynı projectName 'yi kullanırsınız.
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-adm/deploy_hc_azure_function.json" -projectName $projectName
 ```
 
@@ -236,13 +236,6 @@ Bu bölümün amacı, dağıtım şablonunda bir sistem durumu denetimi adımın
 Topolojiyi dağıtmak için aşağıdaki PowerShell betiğini çalıştırın. [Azure Dağıtım Yöneticisi kaynak yöneticisi şablonlarıyla](./deployment-manager-tutorial.md)kullandığınız **createadmservicetopology. JSON** ve **Createadmservicetopology. Parameters. JSON** aynı olmalıdır.
 
 ```azurepowershell
-$projectName = Read-Host -Prompt "Enter the same project name used earlier in this tutorial"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$filePath = Read-Host -Prompt "Enter the file path to the downloaded tutorial files"
-
-$resourceGroupName = "${projectName}rg"
-
-
 # Create the service topology
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
@@ -369,9 +362,9 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 1. Azure portalda, sol menüden **Kaynak grubu**’nu seçin.
 2. Bu öğreticide oluşturulan kaynak gruplarını daraltmak için **Ada göre filtrele** alanını kullanın. 3-4 adet olacaktır:
 
-    * **&lt;namePrefix>rg**: Deployment Manager kaynaklarını içerir.
-    * **&lt;namePrefix>ServiceWUSrg**: ServiceWUS tarafından tanımlanan kaynakları içerir.
-    * **&lt;namePrefix>ServiceEUSrg**: ServiceEUS tarafından tanımlanan kaynakları içerir.
+    * **&lt;projectName > RG**: Dağıtım Yöneticisi kaynaklarını içerir.
+    * **&lt;projectName > ServiceWUSrg**: ServiceWUS tarafından tanımlanan kaynakları içerir.
+    * **&lt;projectName > ServiceEUSrg**: ServiceEUS tarafından tanımlanan kaynakları içerir.
     * Kullanıcı tanımlı yönetilen kimlik için kaynak grubu.
 3. Kaynak grubu adını seçin.
 4. Üstteki menüden **Kaynak grubunu sil**’i seçin.

@@ -1,5 +1,5 @@
 ---
-title: BLOB depolama ve Visual Studio bağlı hizmetleri (WebJob projeleri) ile çalışmaya başlama | Microsoft Docs
+title: Visual Studio (WebJob projeleri) kullanarak BLOB depolama ile çalışmaya başlama
 description: Visual Studio bağlı hizmetleri kullanarak bir Azure depolama 'ya bağlandıktan sonra bir WebJob projesinde blob depolamayı kullanmaya başlama.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 1e951fde7e47ccfcce5f64db4ef27ac767d63480
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510660"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299968"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure Blob depolama ve Visual Studio bağlı hizmetleri (WebJob projeleri) ile çalışmaya başlama
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -28,7 +29,7 @@ Bu makalede, C# bir Azure blobu oluşturulduğunda veya güncelleştirilirken bi
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>Blob oluşturulduğunda veya güncelleştirilirken bir işlevi tetikleme
 Bu bölümde **Blobtrigger** özniteliğinin nasıl kullanılacağı gösterilmektedir.
 
- **Not:** WebJobs SDK, yeni veya değiştirilmiş blob 'ları izlemek için günlük dosyalarını tarar. Bu işlem, doğal olarak yavaştır; bir işlev, blob oluşturulduktan sonra birkaç dakika veya daha uzun bir süre boyunca tetiklenmeyebilir.  Uygulamanızın blob 'ları hemen işlemesi gerekiyorsa, blobu oluştururken bir kuyruk iletisi oluşturmak ve blobu işleyen işlevde **Blobtrigger** özniteliği yerine **Queuetrigger** özniteliğini kullanmanız önerilir .
+ **Note:** WebJobs SDK, yeni veya değiştirilmiş blob 'ları izlemek için günlük dosyalarını tarar. Bu işlem, doğal olarak yavaştır; bir işlev, blob oluşturulduktan sonra birkaç dakika veya daha uzun bir süre boyunca tetiklenmeyebilir.  Uygulamanızın blob 'ları hemen işlemesi gerekiyorsa, blobu oluştururken bir kuyruk iletisi oluşturmak ve blobu işleyen işlevde **Blobtrigger** özniteliği yerine **Queuetrigger** özniteliğini kullanmanız önerilir .
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>Uzantıya sahip blob adı için tek yer tutucu
 Aşağıdaki kod örneği, *giriş* kapsayıcısında görünen metin bloblarını *Çıkış* kapsayıcısına kopyalar:
@@ -78,10 +79,10 @@ Aşağıdaki kod örneği, *giriş* kapsayıcısında görüntülenen blob 'lar�
 ## <a name="types-that-you-can-bind-to-blobs"></a>Bloblara bağlayabileceğiniz türler
 **Blobtrigger** özniteliğini aşağıdaki türlerde kullanabilirsiniz:
 
-* **string**
+* **dizisinde**
 * **Değerine**
 * **Ka**
-* **ICloudBlob**
+* **Ihoparlör blobu**
 * **CloudBlockBlob**
 * **CloudPageBlob**
 * [Ihoparlör Blobstreambınder](#getting-serialized-blob-content-by-using-icloudblobstreambinder) tarafından seri durumdan çıkarılan diğer türler
@@ -144,11 +145,11 @@ En fazla yeniden deneme sayısı yapılandırılabilir. Aynı **Maxdequeuecount*
 
 Zarar Blobları için kuyruk iletisi aşağıdaki özellikleri içeren bir JSON nesnesidir:
 
-* FunctionID ( *{WebJob Name}* biçiminde). Lerdir. *{Function Name}* , örneğin: WebJob1. Functions. CopyBlob)
+* FunctionID ( *{WebJob Name}* biçiminde). Lerdir. *{Function Name}* , örneğin: WebJob1. Functions. copyblob)
 * BlobType ("BlockBlob" veya "PageBlob")
 * ContainerName
 * BlobName
-* ETag (örneğin, bir blob sürüm tanımlayıcısı): "0x8D1DC6E70A277EF")
+* ETag (bir blob sürüm tanımlayıcısı, örneğin: "0x8D1DC6E70A277EF")
 
 Aşağıdaki kod örneğinde, **Copyblob** işlevinin her çağrılışında başarısız olmasına neden olan kodu vardır. SDK, en fazla yeniden deneme sayısı için onu çağırdığında, zarar veren blob kuyruğunda bir ileti oluşturulur ve bu ileti **Logkirblob** işlevi tarafından işlenir.
 
@@ -193,11 +194,11 @@ WebJobs SDK 'Sı aynı yeni veya güncelleştirilmiş blob için hiçbir **Blobt
 
 Blob alındıları, AzureWebJobsStorage bağlantı dizesi tarafından belirtilen Azure depolama hesabındaki *Azure-WebJobs-Konakları* adlı bir kapsayıcıda depolanır. Blob alındı bilgisi aşağıdaki bilgilere sahiptir:
 
-* Blob (" *{WebJob Name}* ) için çağrılan işlev. Lerdir. *{Function Name}* ", örneğin: "WebJob1. Functions. CopyBlob")
+* Blob (" *{WebJob Name}* ) için çağrılan işlev. Lerdir. *{Function Name}* ", örneğin:" WebJob1. Functions. copyblob ")
 * Kapsayıcı adı
 * Blob türü ("BlockBlob" veya "PageBlob")
 * Blob adı
-* ETag (örneğin, bir blob sürüm tanımlayıcısı): "0x8D1DC6E70A277EF")
+* ETag (bir blob sürüm tanımlayıcısı, örneğin: "0x8D1DC6E70A277EF")
 
 Bir Blobun yeniden işlenmesine zorlamak isterseniz, *Azure-WebJobs-hosts* kapsayıcısından söz konusu Blobun blob alındığını el ile silebilirsiniz.
 

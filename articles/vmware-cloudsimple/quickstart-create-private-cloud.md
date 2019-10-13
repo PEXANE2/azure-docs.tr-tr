@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1bd84a40236b54d799efcf04eae707aea9c6c945
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b38779681dfe612369fefb9d752389395965e7b4
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828938"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285776"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Hızlı başlangıç-özel bir bulut ortamı yapılandırma
 
@@ -183,9 +183,9 @@ Gereksinimleri karşılamayan bir parola ayarlarsanız:
 * vSphere Flash Istemcisini kullanıyorsanız bir hata bildiriyor
 * HTML5 istemcisini kullanıyorsanız bir hata raporlamaz. İstemci değişikliği kabul etmez ve eski parola çalışmaya devam eder.
 
-## <a name="change-nsx-administrator-password"></a>NSX yönetici parolasını değiştirme
+## <a name="access-nsx-manager"></a>NSX yöneticisine erişme
 
-NSX Yöneticisi varsayılan parolayla dağıtılır.  Özel bulutunuzu oluşturduktan sonra parolayı değiştirmenizi öneririz.
+NSX Yöneticisi varsayılan parolayla dağıtılır. 
 
 * Kullanıcı adı: **yönetici**
 * Parola: **CloudSimple123!**
@@ -198,8 +198,6 @@ CloudSimple portalında tam etki alanı adını (FQDN) ve NSX Manager IP adresin
 4. **NSX Manager** 'ıN FQDN 'SINI veya IP adresini kullanın ve bir Web tarayıcısı kullanarak bağlanın.
 
     ![NSX Manager FQDN bulun](media/private-cloud-nsx-manager-fqdn.png)
-
-Parolayı değiştirmek için [NSX Manager yükleme](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.2/com.vmware.nsxt.install.doc/GUID-A65FE3DD-C4F1-47EC-B952-DEDF1A3DD0CF.html)' deki yönergeleri izleyin.
 
 ## <a name="create-a-port-group"></a>Bağlantı noktası grubu oluşturma
 

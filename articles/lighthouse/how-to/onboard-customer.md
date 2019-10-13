@@ -1,5 +1,5 @@
 ---
-title: Azure tarafından atanan kaynak yönetimine müşteri ekleme-Azure açık Thouse
+title: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 description: Azure 'un Temsilcili kaynak yönetimine nasıl bir müşteri ekleneceğini ve bunların kendi kiracınız aracılığıyla kaynaklarına erişilmesine ve yönetilmesine izin vermeyi öğrenin.
 author: JnHs
 ms.author: jenhayes
@@ -7,14 +7,14 @@ ms.service: lighthouse
 ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: f1d01a4b6b4e42261542cc64516a2e1c2bef56c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
-ms.translationtype: MT
+ms.openlocfilehash: 78cef29807ced2f3dec765723c57f951f843b1ca
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958720"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286584"
 ---
-# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure tarafından atanan kaynak yönetimine müşteri ekleme
+# <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
 Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure tarafından atanan kaynak yönetimine ekleme, temsilcili kaynakların (abonelikler ve/veya kaynak grupları) kendi Azure Active Directory erişilebilir ve yönetilme olanağı ( Azure AD) kiracısı. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. birden çok kiracıyı yöneten kuruluşlar, yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
 
@@ -40,7 +40,7 @@ Bir müşterinin kiracısını eklemek için etkin bir Azure aboneliğine sahip 
 
 Bu bilgileri zaten yoksa, aşağıdaki yollarla alabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
 
@@ -52,7 +52,7 @@ Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzer
 Select-AzSubscription <subscriptionId>
 ```
 
-### <a name="azure-cli"></a>Azure CLı
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -93,7 +93,7 @@ Yetkilendirmeleri tanımlamak için, erişim vermek istediğiniz her Kullanıcı
 (Get-AzRoleDefinition -Name '<roleName>').id
 ```
 
-### <a name="azure-cli"></a>Azure CLı
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -126,7 +126,7 @@ Bir müşterinin aboneliğini eklemek için, [örneklerimizde](https://github.co
 
 |**Bunu eklemek için**  |**Bu Azure Resource Manager şablonunu kullan**  |**Ve bu parametre dosyasını Değiştir** |
 |---------|---------|---------|
-|Aboneliğiniz   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Abonelik   |[delegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
 |Kaynak grubu   |[rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
 |Abonelik içindeki birden fazla kaynak grubu   |[Çoğullergdelegatedresourcemanagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
 |Abonelik (Azure Marketi 'Nde yayınlanan bir teklifi kullanırken)   |[marketplaceDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
@@ -215,7 +215,7 @@ New-AzDeployment -Name <deploymentName> `
                  -Verbose
 ```
 
-### <a name="azure-cli"></a>Azure CLı
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell
@@ -239,7 +239,7 @@ az deployment create –-name <deploymentName \
 
 Bir müşteri aboneliği Azure tarafından atanan kaynak yönetimine başarıyla eklendi, hizmet sağlayıcı kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (Yukarıdaki işlem aracılığıyla bu hizmete erişim verildiyse, ayrı ayrı veya bir Azure AD grubunun üyesi olarak uygun izinlere sahip olmalıdır). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Hizmet sağlayıcısının kiracısında:
 
@@ -264,7 +264,7 @@ Müşterinin kiracısında:
 Get-AzContext
 ```
 
-### <a name="azure-cli"></a>Azure CLı
+### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
 # Log in first with az login if you're not using Cloud Shell

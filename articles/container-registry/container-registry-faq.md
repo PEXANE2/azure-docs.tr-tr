@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: cbdf4f203204df2d26eb7c908167c1e1ca10d0ab
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: cfa8efe0b73811474b1e50a7d2fb1e9abe9045c6
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264324"
+ms.locfileid: "72286520"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -306,7 +306,7 @@ unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
-1. @No__t-0 seçeneğini Docker Daemon yapılandırma dosyasına `/etc/sysconfig/docker` olarak ekleyin. Örneğin:
+1. @No__t-0 seçeneğini Docker Daemon yapılandırma dosyasına `/etc/sysconfig/docker` olarak ekleyin. Örnek:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'
@@ -416,15 +416,15 @@ Microsoft Edge/IE tarayıcısı kullanıyorsanız, en fazla 100 depo veya etiket
 Tarayıcı, sunucuya depo veya etiket getirme isteğini gönderemeyebilir. Şöyle çeşitli nedenlerle şunlar olabilir:
 
 * Ağ bağlantısı olmaması
-* Duvarını
+* Güvenlik Duvarı
 * Ad engelleyiciler
 * DNS hataları
 
-Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantınızı kontrol edin. Ayrıca, eski tarayıcı önbelleğinizi veya tanımlama bilgilerini önlemek için tarayıcınızda bir veya özel oturum da deneyebilirsiniz.
+Lütfen ağ yöneticinize başvurun veya ağ yapılandırmanızı ve bağlantınızı kontrol edin. Ortamınızın Container Registry bağlanıp bağlanamabiliyor olup olmadığını denetlemek için Azure CLı 'nizi kullanarak `az acr check-health -n yourRegistry` çalıştırmayı deneyin. Ayrıca, eski tarayıcı önbelleğinizi veya tanımlama bilgilerini önlemek için tarayıcınızda bir veya özel oturum da deneyebilirsiniz.
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>Önkoşullar
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir: <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker kullanıcı arabiriminden bir proxy kullanmak için Docker 'ı etkinleştirin: <https://docs.docker.com/docker-for-windows/#proxies>

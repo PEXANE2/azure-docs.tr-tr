@@ -7,16 +7,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 95dbe2b9ccfdc0a900ba53668869e3872b6e51d5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: aa48ebe573736349cab519b5181af10f6d03bc46
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030314"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285960"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta oluşturma
 
-Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, Azure PowerShell kullanarak Azure özel uç noktası olan bir SQL veritabanı sunucusu olan bir Azure sanal ağında bir VM oluşturmayı öğreneceksiniz. Ardından, VM 'den SQL veritabanı sunucusuna güvenle erişebilirsiniz.
+Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. Bu hızlı başlangıçta, Azure portalını kullanarak Azure özel uç noktası olan bir SQL veritabanı sunucusu olan bir Azure sanal ağında bir VM oluşturmayı öğreneceksiniz. Ardından, VM 'den SQL veritabanı sunucusuna güvenle erişebilirsiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -223,7 +223,7 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
     | ------- | ----- |
     | Sunucu türü| **Veritabanı Altyapısı**’nı seçin.|
     | Sunucu adı| *Myserver.Database.Windows.net* seçin |
-    | Kullanıcı adı | SQL Server oluşturma sırasında girilen bir parolayı girin. |
+    | Kullanıcı adı | SQL Server oluşturma sırasında belirtilen username@servername olarak Kullanıcı adı girin. |
     |Parola |SQL Server oluşturma sırasında girilen bir parolayı girin. |
     |Parolayı anımsa|**Evet**' i seçin.|
     |||

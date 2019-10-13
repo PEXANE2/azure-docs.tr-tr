@@ -1,5 +1,5 @@
 ---
-title: Örnek-UK RESMI ve UK NHS şemaları-denetim eşleme
+title: UK resmi & UK NHS şema örnekleri-denetim eşleme
 description: UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi. Her denetim, değerlendirmenize yardımcı olan bir veya daha fazla Azure Ilkesiyle eşleştirilir.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 9001e752c9b0f79d7c688e0b13fd7133004ff4ad
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 72b7b370158f228d725e9c6970dfcffb09e7986b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248797"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297123"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK RESMI ve UK NHS şeması örneklerinin denetim eşlemesi
 
@@ -73,7 +73,7 @@ Azure, Azure 'daki kaynaklara kimlerin erişebileceğini yönetmenize yardımcı
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
 - MFA, aboneliğinizde okuma izinleri olan hesaplarda etkinleştirilmelidir
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
 - Okuma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
 
 Bu şema, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere Azure ilke tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.
@@ -86,7 +86,7 @@ Bu şema Ayrıca, amortisman hesapları ve dış hesaplar dahil olmak üzere inc
 - Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
 
 Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıklarında uyarı vermek üzere denetleyen bir Azure ilke tanımı atar. Bu tasarım, kimlik doğrulayıcılar güvenliğinin aşılmadığından emin olmak için düzeltici eylem gerçekleştirmenizi sağlar.
 
@@ -131,7 +131,7 @@ Bulut hizmetini yönetmek için kullanılan sistemler bu hizmete yüksek ayrıca
 - MFA, aboneliğinizde sahip izinleri olan hesaplarda etkinleştirilmelidir
 - MFA, aboneliğinizde yazma izinleri olan hesaplar etkinleştirilmelidir
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
 
 Bu şema, SQL Server ve Service Fabric için Azure Active Directory kimlik doğrulamasının kullanımını denetlemek üzere Azure ilke tanımları atar. Azure Active Directory kimlik doğrulaması kullanmak, veritabanı kullanıcıları ve diğer Microsoft Hizmetleri için Basitleştirilmiş izin yönetimi ve merkezi kimlik yönetimine izin verebilir.
 
@@ -143,7 +143,7 @@ Bu şema Ayrıca, hesap tanımlarını, ve yükseltilmiş izinlere sahip olan am
 - Kullanım dışı bırakılan hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan kullanım dışı hesaplar aboneliğinizden kaldırılmalıdır
 - Sahip izinleri olan dış hesaplar aboneliğinizden kaldırılmalıdır
-- Yazma izinlerine sahip dış hesapların aboneliğinizden kaldırılması gerekir
+- Yazma izinleri olan dış hesapların aboneliğinizden kaldırılması gerekir
 
 Bu şema Ayrıca, Linux VM parola dosyası izinlerini yanlış ayarlandıklarında uyarı vermek üzere denetleyen bir Azure ilke tanımı atar. Bu tasarım, kimlik doğrulayıcılar güvenliğinin aşılmadığından emin olmak için düzeltici eylem gerçekleştirmenizi sağlar.
 
@@ -168,10 +168,10 @@ UK RESMI ve UK NHS şemaları denetim eşlemesini gözden geçirdiğinize göre,
 > [UK resmi ve UK NHS şemaları-genel bakış](./index.md)
 > [Birleşik KRALLıK resmi ve UK NHS şemaları-dağıtım adımları](./deploy.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında makaleler ekleme:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
-- [Statik ve dinamik parametrelerin](../../concepts/parameters.md)nasıl kullanılacağını anlayın.
-- [Şema sıralama sırasını](../../concepts/sequencing-order.md)özelleştirmeyi öğrenin.
-- [Şema kaynak kilitlemeyi](../../concepts/resource-locking.md)nasıl kullanacağınızı öğrenin.
-- [Mevcut atamaları güncelleştirme](../../how-to/update-existing-assignments.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
+- [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
+- [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
+- [Mevcut atamaları güncelleştirmeyi](../../how-to/update-existing-assignments.md) öğrenin.

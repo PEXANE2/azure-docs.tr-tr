@@ -4,14 +4,14 @@ description: Bildirim temelli JSON sözdizimi kullanan Azure Resource Manager ş
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: e5ef3dcd7c2eec08237d5eb31fb95a0e450d9ac9
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694968"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286708"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın
 
@@ -66,7 +66,7 @@ Bir parametre için kullanılabilen özellikler şunlardır:
     "minLength": <minimum-length-for-string-or-array>,
     "maxLength": <maximum-length-for-string-or-array-parameters>,
     "metadata": {
-      "description": "<description-of-the parameter>" 
+      "description": "<description-of-the parameter>"
     }
   }
 }
@@ -107,8 +107,8 @@ Aşağıdaki örnek, bir değişken tanımlamaya yönelik kullanılabilir seçen
 ```json
 "variables": {
   "<variable-name>": "<variable-value>",
-  "<variable-name>": { 
-    <variable-complex-type-value> 
+  "<variable-name>": {
+    <variable-complex-type-value>
   },
   "<variable-object-name>": {
     "copy": [
@@ -247,12 +247,12 @@ Kaynakları aşağıdaki yapıyla tanımlarsınız:
 | location |Değişir |Belirtilen kaynağın desteklenen coğrafi konumları. Kullanılabilir konumlardan herhangi birini seçebilirsiniz, ancak genellikle kullanıcılarınıza yakın olan bir seçim yapmak mantıklı olur. Genellikle, aynı bölgedeki birbirleriyle etkileşim kuran kaynakları yerleştirmek de anlamlı hale gelir. Çoğu kaynak türü bir konum gerektirir, ancak bazı türler (örneğin, rol ataması) bir konum gerektirmez. Bkz. [kaynak konumunu ayarlama](resource-location.md). |
 | etiketler |Hayır |Kaynakla ilişkili Etiketler. Aboneliğiniz genelinde kaynakları mantıksal olarak düzenlemek için etiketleri uygulayın. |
 | Açıklamaları |Hayır |Şablonunuzda kaynakları belgelemek için notlarınız. Daha fazla bilgi için bkz. [şablonlarda açıklamalar](resource-group-authoring-templates.md#comments). |
-| Kopya |Hayır |Birden fazla örnek gerekliyse, oluşturulacak kaynak sayısı. Varsayılan mod paraleldir. Tüm veya kaynakların aynı anda dağıtılmasını istemiyorsanız seri modunu belirtin. Daha fazla bilgi için bkz. [Azure Resource Manager çeşitli kaynak örnekleri oluşturma](resource-group-create-multiple.md). |
+| kopya |Hayır |Birden fazla örnek gerekliyse, oluşturulacak kaynak sayısı. Varsayılan mod paraleldir. Tüm veya kaynakların aynı anda dağıtılmasını istemiyorsanız seri modunu belirtin. Daha fazla bilgi için bkz. [Azure Resource Manager çeşitli kaynak örnekleri oluşturma](resource-group-create-multiple.md). |
 | dependsOn |Hayır |Bu kaynak dağıtılmadan önce dağıtılması gereken kaynaklar. Kaynak Yöneticisi, kaynaklar arasındaki bağımlılıkları değerlendirir ve doğru sırayla dağıtır. Kaynaklar birbirine bağımlı olmadığında, paralel olarak dağıtılır. Değer, kaynak adlarının veya kaynak benzersiz tanımlayıcılarının virgülle ayrılmış bir listesi olabilir. Yalnızca bu şablonda dağıtılan kaynakları listeleyin. Bu şablonda tanımlı olmayan kaynaklar zaten var olmalıdır. Dağıtımınızı yavaşlatabilir ve dairesel bağımlılıklar oluşturduklarında gereksiz bağımlılıkları eklemekten kaçının. Bağımlılıkları ayarlama hakkında yönergeler için bkz. [Azure Resource Manager şablonlarda bağımlılıkları tanımlama](resource-group-define-dependencies.md). |
 | properties |Hayır |Kaynağa özgü yapılandırma ayarları. Özelliklerin değerleri, kaynağı oluşturmak için REST API işlem (PUT yöntemi) için istek gövdesinde sağladığınız değerlerle aynıdır. Ayrıca, bir özelliğin birkaç örneğini oluşturmak için bir kopya dizisi belirtebilirsiniz. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/). |
 | İsteyin | Hayır | Bazı kaynaklar, dağıtılacak SKU 'YU tanımlayan değerlere izin verir. Örneğin, bir depolama hesabı için artıklık türünü belirtebilirsiniz. |
-| Denetlenmesi | Hayır | Bazı kaynaklar, dağıttığınız kaynak türünü tanımlayan bir değere izin verir. Örneğin, oluşturulacak Cosmos DB türünü belirtebilirsiniz. |
-| planınızın | Hayır | Bazı kaynaklar, dağıtılacak planı tanımlayan değerlere izin verir. Örneğin, bir sanal makine için Market görüntüsünü belirtebilirsiniz. | 
+| denetlenmesi | Hayır | Bazı kaynaklar, dağıttığınız kaynak türünü tanımlayan bir değere izin verir. Örneğin, oluşturulacak Cosmos DB türünü belirtebilirsiniz. |
+| Planınızın | Hayır | Bazı kaynaklar, dağıtılacak planı tanımlayan değerlere izin verir. Örneğin, bir sanal makine için Market görüntüsünü belirtebilirsiniz. |
 | Kaynakların |Hayır |Tanımlanmakta olan kaynağa bağlı olan alt kaynaklar. Yalnızca üst kaynağın şemasına izin verilen kaynak türlerini sağlayın. Üst kaynağın bağımlılığı örtük değildir. Bu bağımlılığı açıkça tanımlamanız gerekir. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md). |
 
 ## <a name="outputs"></a>Çıkışlar
@@ -355,7 +355,10 @@ Aşağıdaki örnek, bir çıkış tanımının yapısını gösterir:
 
 Kullanıcı tanımlı işlevlere meta veri nesnesi ekleyemezsiniz.
 
-Satır içi açıklamalar için `//` kullanabilirsiniz, ancak bu söz dizimi tüm araçlarla birlikte çalışmaz. Şablonu satır içi açıklamalarla dağıtmak için Azure CLı 'yi kullanamazsınız. Ve, satır içi açıklamalarla şablonlar üzerinde çalışmak için Portal Şablon düzenleyicisini kullanamazsınız. Bu açıklama stilini eklerseniz, kullandığınız araçların satır içi JSON açıklamalarını desteklemesini sağlayın.
+Satır içi açıklamalar için `//` veya `/* ... */` kullanabilirsiniz, ancak bu söz dizimi tüm araçlarla birlikte çalışmaz. Satır içi açıklamalarla şablonlarda çalışmak için Portal Şablon düzenleyicisini kullanamazsınız. Bu açıklama stilini eklerseniz, kullandığınız araçların satır içi JSON açıklamalarını desteklemesini sağlayın.
+
+> [!NOTE]
+> Azure CLı kullanarak açıklamaları olan şablonları dağıtmak için `--handle-extended-json-format` anahtarını kullanmanız gerekir.
 
 ```json
 {
@@ -363,7 +366,7 @@ Satır içi açıklamalar için `//` kullanabilirsiniz, ancak bu söz dizimi tü
   "name": "[variables('vmName')]", // to customize name, change it in variables
   "location": "[parameters('location')]", //defaults to resource group location
   "apiVersion": "2018-10-01",
-  "dependsOn": [ // storage account and network interface must be deployed first
+  "dependsOn": [ /* storage account and network interface must be deployed first */
     "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
     "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
   ],
@@ -376,6 +379,30 @@ VS Code, dil modunu, yorumlarla birlikte JSON olarak ayarlayabilirsiniz. Satır 
 1. **Yorumlarla JSON**seçin.
 
    ![Dil modunu seçin](./media/resource-group-authoring-templates/select-json-comments.png)
+
+## <a name="multi-line-strings"></a>Çok satırlı dizeler
+
+Bir dizeyi birden çok satıra kesebilirsiniz. Örneğin, Location özelliği ve aşağıdaki JSON örneğinde bulunan açıklamalardan biri.
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[
+    parameters('location')
+    ]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  /*
+    storage account and network interface
+    must be deployed first
+  */
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
+Azure CLı kullanarak çok satırlı dizeler içeren şablonlar dağıtmak için `--handle-extended-json-format` anahtarını kullanmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

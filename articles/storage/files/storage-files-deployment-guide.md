@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 802b4deb91f1df784ac0aed2952d3f915b54ce73
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699711"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299589"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Dosyaları’nı dağıtma
-[Azure dosyaları](storage-files-introduction.md) tam olarak yönetilen dosya paylaşımları endüstri standardı SMB protokolünü erişilebilen bulutta sunar. Bu makalede, Azure dosyalarını kuruluşunuzda nasıl kuruluşunuzun içinde dağıtacağınız gösterilmektedir.
+[Azure dosyaları](storage-files-introduction.md) , bulutta ENDÜSTRI standardı SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Bu makalede, Azure dosyalarını kuruluşunuzda nasıl kuruluşunuzun içinde dağıtacağınız gösterilmektedir.
 
 Bu makaledeki adımları izleyerek önce [bir Azure dosyaları dağıtımına yönelik planlamayı](storage-files-planning.md) okumayı kesinlikle öneririz.
 
@@ -63,9 +63,9 @@ Aşağıdaki adımlar, verileri şirket içi bir konumdan Azure dosya paylaşım
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    Depolama hesabı ile birden çok paylaşım belirtilebilir. Daha fazla bilgi için bkz. [veri kümesini HAZıRLAMA CSV dosyası](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-the-dataset-csv-file) .
+    Depolama hesabı ile birden çok paylaşım belirtilebilir. Daha fazla bilgi için bkz. [veri kümesini HAZıRLAMA CSV dosyası](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
-5. Sürücü kümesi CSV dosyasını oluşturun. Sürücü kümesi CSV dosyası, şirket içi dışarı aktarma aracısının kullanabildiği diskleri listeler. Örneğin, aşağıdaki sürücü, CSV dosya listelerini `X:`, `Y:`ve `Z:` şirket içi dışarı aktarma işinde kullanılacak sürücüleri ayarlar:
+5. Sürücü kümesi CSV dosyasını oluşturun. Sürücü kümesi CSV dosyası, şirket içi dışarı aktarma aracısının kullanabildiği diskleri listeler. Örneğin, aşağıdaki sürücü, `X:`, `Y:` ve `Z:` sürücüleri şirket içi dışarı aktarma işinde kullanılacak CSV dosyası listelerini ayarlar:
 
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -74,7 +74,7 @@ Aşağıdaki adımlar, verileri şirket içi bir konumdan Azure dosya paylaşım
     Z,Format,SilentMode,Encrypt,
     ```
     
-    Daha fazla bilgi için bkz. [sürücü KÜMESI CSV dosyası hazırlama](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file) .
+    Daha fazla bilgi için bkz. [sürücü KÜMESI CSV dosyası hazırlama](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 6. Verilerinizi bir veya daha fazla sabit sürücüye kopyalamak için [Waımportexport aracını](https://www.microsoft.com/download/details.aspx?id=55280) kullanın.
 
@@ -90,13 +90,13 @@ Aşağıdaki adımlar, verileri şirket içi bir konumdan Azure dosya paylaşım
 ### <a name="robocopy"></a>Robocopy
 Robocopy, Windows ve Windows Server ile birlikte gelen iyi bilinen bir kopyalama aracıdır. Robocopy, dosya paylaşımının yerel olarak bağlanması ve ardından Robocopy komutunda hedef olarak bağlı konumu kullanarak Azure dosyalarına veri aktarmak için kullanılabilir. Robocopy kullanmak oldukça basittir:
 
-1. [Azure dosya paylaşımınızı bağlayın](storage-how-to-use-files-windows.md). En iyi performans için, Azure dosya paylaşımının verileri içeren sunucuya yerel olarak bağlanmasını öneririz. Bazı durumlarda, verileri hizmet eden dosya sunucusu bir NAS cihazı olduğunda, bu mümkün olmayabilir. Bu durumda, Azure dosya paylaşımının bir BILGISAYARA bağlanması mükemmel bir şekilde kabul edilebilir. Bu örnekte, `net use` dosya paylaşımının bağlanması için komut satırında kullanılır:
+1. [Azure dosya paylaşımınızı bağlayın](storage-how-to-use-files-windows.md). En iyi performans için, Azure dosya paylaşımının verileri içeren sunucuya yerel olarak bağlanmasını öneririz. Bazı durumlarda, verileri hizmet eden dosya sunucusu bir NAS cihazı olduğunda, bu mümkün olmayabilir. Bu durumda, Azure dosya paylaşımının bir BILGISAYARA bağlanması mükemmel bir şekilde kabul edilebilir. Bu örnekte, dosya paylaşımının bağlanması için komut satırında `net use` kullanılır:
 
     ```
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. Verileri `robocopy` Azure dosya paylaşımında taşımak için komut satırından kullanın:
+2. Verileri Azure dosya paylaşımında taşımak için komut satırında `robocopy` kullanın:
 
     ```
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
@@ -108,7 +108,7 @@ Robocopy, Windows ve Windows Server ile birlikte gelen iyi bilinen bir kopyalama
 AzCopy, en iyi performansla basit komutlar kullanarak Azure dosyalarını ve Azure Blob Storage 'a ve bu verileri kopyalamak için tasarlanan bir komut satırı yardımcı programıdır. AzCopy kullanımı kolaydır:
 
 1. Windows veya [Linux](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux#download-and-install-azcopy) [üzerinde AzCopy 'in en son sürümünü](https://aka.ms/downloadazcopy) indirin.
-2. Verileri `azcopy` Azure dosya paylaşımında taşımak için komut satırından kullanın. Windows üzerindeki söz dizimi aşağıdaki gibidir: 
+2. Verileri Azure dosya paylaşımında taşımak için komut satırında `azcopy` kullanın. Windows üzerindeki söz dizimi aşağıdaki gibidir: 
 
     ```
     azcopy /Source:<path-to-local-share> /Dest:https://<storage-account>.file.core.windows.net/<file-share>/ /DestKey:<storage-account-key> /S
@@ -129,7 +129,7 @@ AzCopy, en iyi performansla basit komutlar kullanarak Azure dosyalarını ve Azu
 > Azure dosya paylaşımının bağlanması için, parola olarak depolama hesabı anahtarının kullanılması gerekir, bu nedenle yalnızca güvenilen ortamlarda bağlama yapmanız önerilir. 
 
 ### <a name="windows"></a>Windows
-PowerShell, birden çok bilgisayarda Mount komutunu çalıştırmak için kullanılabilir. Aşağıdaki örnekte `$computers` el ile doldurulur, ancak otomatik olarak bağlanacak bilgisayarların listesini oluşturabilirsiniz. Örneğin, bu değişkeni Active Directory sonuçlarla doldurabilirsiniz.
+PowerShell, birden çok bilgisayarda Mount komutunu çalıştırmak için kullanılabilir. Aşağıdaki örnekte, `$computers` el ile doldurulur, ancak otomatik olarak bağlanacak bilgisayarların listesini oluşturabilirsiniz. Örneğin, bu değişkeni Active Directory sonuçlarla doldurabilirsiniz.
 
 ```powershell
 $computer = "MyComputer1", "MyComputer2", "MyComputer3", "MyComputer4"
@@ -137,7 +137,7 @@ $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net 
 ```
 
 ### <a name="linux"></a>Linux
-SSH ile Birleşik basit bir bash betiği aşağıdaki örnekte aynı sonucu verebilir. `$computer` Değişken, Kullanıcı tarafından doldurulmuş gibi benzer şekilde kalır:
+SSH ile Birleşik basit bir bash betiği aşağıdaki örnekte aynı sonucu verebilir. @No__t-0 değişkeni, Kullanıcı tarafından doldurulmuş gibi benzer şekilde kalır:
 
 ```
 computer = ("MyComputer1" "MyComputer2" "MyComputer3" "MyComputer4")

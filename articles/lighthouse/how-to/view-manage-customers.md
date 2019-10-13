@@ -1,67 +1,67 @@
 ---
-title: Müşteriler ve Azure portalında temsilci kaynakları görüntüleme ve yönetme
-description: Azure'ı kullanarak bir hizmet sağlayıcısı kaynak yönetimi temsilcisi gibi tüm temsilci müşteri kaynaklar ve abonelikler müşterilerimin Azure portalında giderek görüntüleyebilirsiniz.
+title: Müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme
+description: Azure tarafından atanan kaynak yönetimini kullanan bir hizmet sağlayıcı olarak, tüm Temsilcili müşteri kaynaklarınızı ve aboneliklerinizi Azure portal müşterilerime giderek görüntüleyebilirsiniz.
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: acc90afa258fa7140cd7dfa8711dd64b554df45d
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8163bcb4189cbec545544b7d43ba7142d34e29dd
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809858"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286162"
 ---
-# <a name="view-and-manage-customers-and-delegated-resources"></a>Müşteriler ve temsilci kaynakları görüntüleme ve yönetme
+# <a name="view-and-manage-customers-and-delegated-resources"></a>Müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme
 
-Hizmet sağlayıcıları kullanarak [Azure kaynak yönetimi temsilcisi](../concepts/azure-delegated-resource-management.md) kullanabilirsiniz **müşterilerimin** sayfasını [Azure portalında](https://portal.azure.com) temsilci müşteri kaynakları görüntülemek için ve Abonelikler. Hizmet sağlayıcıları ve burada müşterileri diyoruz, ancak birden çok kiracının yönetme kuruluşların yönetim deneyimlerinden birleştirmek için aynı işlem kullanabilirsiniz.
+[Azure tarafından yetkilendirilen kaynak yönetimini](../concepts/azure-delegated-resource-management.md) kullanan hizmet sağlayıcıları, temsilcili müşteri kaynaklarını ve abonelikleri görüntülemek için [Azure Portal](https://portal.azure.com) **müşterilerim** sayfasını kullanabilir. Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. birden çok kiracıyı yöneten kuruluşlar, yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
 
-Erişim için **müşterilerimin** select Azure portalında sayfası **tüm hizmetleri**, öğesini arayın **müşterilerimin** ve bu seçeneği belirleyin. Bunu, "Müşterilerimin" arama kutusuna Azure portalının üst kısmındaki girerek da bulabilirsiniz.
+Azure portal **müşterilerimiz** sayfasına erişmek Için, **tüm hizmetler**' i seçin, ardından **müşterilerimi** arayın ve seçin. Ayrıca, Azure portal üst kısmındaki arama kutusuna "My Customers" girerek de bulabilirsiniz.
 
-Aklınızda **müşterilerimin** sayfası, yalnızca abonelik veya kaynak grupları temsilci müşterilerle ilgili bilgileri gösterir. Diğer müşteriler ile çalışıyorsanız (gibi aracılığıyla [bulut çözümü sağlayıcısı programı](https://docs.microsoft.com/partner-center/csp-overview), yerleşik kaynakları için temsilci sürece hakkında bilgi müşteriler burada göremezsiniz kaynak yönetimi.
+**Müşterilerimin** yalnızca, abonelikleri veya kaynak grupları temsil eden müşteriler hakkındaki bilgileri gösterdiğini aklınızda bulundurun. Diğer müşterilerle çalışıyorsanız (örneğin, [bulut çözüm sağlayıcısı programı](https://docs.microsoft.com/partner-center/csp-overview)aracılığıyla), kaynakları Temsilcili kaynak yönetimine yerleştirmediğiniz sürece burada bu müşterilerle ilgili bilgileri görmezsiniz.
 
 > [!NOTE]
-> Müşterilerinizin giderek hizmet sağlayıcıları hakkında daha fazla bilgi görüntüleyebilirsiniz **hizmeti sağlayıcıları** Azure portalında. Daha fazla bilgi için bkz. [görünümü ve hizmet sağlayıcılarını Yönet](view-manage-service-providers.md).
+> Müşterileriniz, Azure portal hizmet **sağlayıcılarına** giderek hizmet sağlayıcılarıyla ilgili bilgileri görüntüleyebilir. Daha fazla bilgi için bkz. [hizmet sağlayıcılarını görüntüleme ve yönetme](view-manage-service-providers.md).
 
-## <a name="view-and-manage-customer-details"></a>Görüntüleme ve yönetme Müşteri ayrıntıları
+## <a name="view-and-manage-customer-details"></a>Müşteri ayrıntılarını görüntüleme ve yönetme
 
-Müşteri ayrıntıları görüntülemek için seçin **müşteriler** sol tarafındaki **müşterilerimin** sayfası.
+Müşteri ayrıntılarını görüntülemek için **müşterilerimin** sol tarafında bulunan **müşteriler** ' i seçin.
 
-Her müşteri için müşterinin adı, Müşteri Kimliği (Kiracı kimliği) ve etkileşimini ilişkili teklif görürsünüz. İçinde **temsilcileri** sütun, temsilci olarak atanan abonelik sayısını ve/veya temsilci kaynak gruplarının sayısını görürsünüz.
+Her müşteri için müşterinin adını, müşteri KIMLIĞINI (kiracı KIMLIĞI) ve görevlendirmede ilişkili teklifi görürsünüz. **Temsilciler** sütununda, temsilci olan aboneliklerin sayısını ve/veya atanan kaynak grubu sayısını görürsünüz.
 
-Sayfanın üst kısmındaki filtre, sıralama ve grup müşteri bilgileri veya belirli müşterilerin, teklifleri veya anahtar sözcükleri göre filtrele olanak tanır.
+Sayfanın üst kısmındaki filtreler, müşteri bilgilerinizi, tekliflerini veya anahtar sözcüklere göre filtrelemenizi ve gruplamanıza olanak tanır.
 
 Bu sayfadan aşağıdaki bilgileri görüntüleyebilirsiniz:
 
-- Tüm abonelikleri görmek için sunar ve müşteriyle ilişkili temsilcileri müşterinin adı seçin.
-- Bir teklif ve kendi temsilcileri hakkında daha fazla ayrıntı görmek için teklif adını seçin.
-- Temsilci Abonelikleriniz veya kaynak grupları için acrolecess atamaları hakkında daha fazla ayrıntı görüntülemek için girişi seçin **temsilcileri** sütun.
+- Bir müşteriyle ilişkili tüm abonelikleri, teklifleri ve temsilcileri görmek için müşterinin adını seçin.
+- Bir teklif ve temsilcileri hakkında daha fazla ayrıntı görmek için teklif adını seçin.
+- Temsil edilen abonelikler veya kaynak grupları için yer atamaları hakkında daha fazla ayrıntı görüntülemek için **Temsilciler** sütunundaki girişi seçin.
 
-## <a name="view-delegations"></a>Görünüm temsilciler
+## <a name="view-delegations"></a>Temsilcileri görüntüle
 
-Temsilciler, kullanıcılar ve erişimi olan izinler birlikte devredildi abonelik/kaynak grubu gösterir. Bu bilgileri görüntülemek için seçin **temsilcileri** sol tarafındaki **müşterilerimin** sayfası.
+Temsilciler, atanmış olan abonelik/kaynak grubunu ve ona erişimi olan kullanıcılar ve izinlerle birlikte gösterir. Bu bilgileri görüntülemek için, **müşterilerimiz** sayfasının sol tarafındaki **temsilci** seçme ' yi seçin.
 
-Sayfanın üstündeki filtreleri, sıralama ve grup erişimi atama bilgileri veya belirli müşterilerin, teklifleri veya anahtar sözcükleri göre filtrele olanak tanır.
+Sayfanın üst kısmındaki filtreler, erişim atama bilgilerinizi sıralamanıza ve gruplandırarak belirli müşterilere, tekliflere veya anahtar sözcüklere göre filtrelemenize izin verir.
 
-Kullanıcılar ve izinler her temsilci ile ilişkili görünür **rol atamaları** sütun. Kullanıcılara, gruplara veya abonelik veya kaynak grubuna erişim verilmiş olan hizmet sorumlularını tam listesini görüntülemek için her girişin seçebilirsiniz. Burada, belirli kullanıcı, Grup veya hizmet asıl adı daha ayrıntılı bilgi edinmek için seçebilirsiniz.
+Her bir temsilciyle ilişkili kullanıcılar ve izinler, **rol atamaları** sütununda görünür. Her bir girişi, abonelik veya kaynak grubuna erişim izni verilen kullanıcıların, grupların ve hizmet sorumlularının tam listesini görüntülemek için seçebilirsiniz. Buradan, daha fazla ayrıntı edinmek için belirli bir Kullanıcı, Grup veya hizmet asıl adı seçebilirsiniz.
 
-## <a name="work-in-the-context-of-a-delegated-subscription"></a>Bir temsilci abonelik bağlamında çalışır.
+## <a name="work-in-the-context-of-a-delegated-subscription"></a>Temsilci atanmış bir abonelik bağlamında çalışın
 
-Doğrudan Azure portalındaki yetkilendirilmiş bir abonelik bağlamında, çalışmakta olduğunuz dizine geçiş olmadan çalışabilir. Bunu yapmak için:
+Azure portal içinde, üzerinde çalıştığınız dizini değiştirmeden, temsilci bir abonelik bağlamında doğrudan çalışabilirsiniz. Bunu yapmak için:
 
-1. Seçin **dizin + abonelik** Azure portalının üst kısmındaki simgesi.
-2. İçinde **genel abonelik** filtrelemek için söz konusu yetkilendirilmiş abonelik seçilirse yalnızca kutunun emin olun. Kullanabileceğiniz **geçerli + temsilci dizinleri** yalnızca belirli bir dizin aboneliklerini göstermek için aşağı açılan kutusu. (Kullanmayın **dizini Değiştir** olduğu açtınız directory değişiklikler olduğundan seçeneği.)
+1. Azure portal üst tarafında bulunan **Dizin + abonelik** simgesini seçin.
+2. **Genel abonelik** filtresinde, yalnızca bu temsilci abonelik için kutunun seçildiğinden emin olun. Yalnızca belirli bir dizin içindeki abonelikleri göstermek için **geçerli + temsilci Dizin** açılan kutusunu kullanabilirsiniz. (Bu, oturum açtığınız dizini değiştirdiği için **Dizin Değiştir** seçeneğini kullanmayın.)
 
-Ardından destekleyen bir hizmet erişim [kiracılar arası yönetim deneyimleri](../concepts/cross-tenant-management-experience.md), hizmet seçtiğiniz temsilci abonelik bağlamına varsayılan olur. Yukarıdaki ve denetimi adımları izleyerek bu ayarı değiştirebilirsiniz **Tümünü Seç** kutusunu (veya bunun yerine iş için bir veya daha fazla abonelik seçme).
+Daha sonra, [çapraz kiracı yönetim deneyimlerini](../concepts/cross-tenant-management-experience.md)destekleyen bir hizmete eriştiğinizde, hizmet varsayılan olarak seçtiğiniz Temsilcili aboneliğin bağlamıdır. Yukarıdaki adımları izleyerek ve **Tümünü Seç** kutusunu işaretleyerek (veya bunun yerine içinde çalışacak bir veya daha fazla abonelik seçerek) bunu değiştirebilirsiniz.
 
 > [!NOTE]
-> Bir veya daha fazla kaynak gruplarına erişimi yerine tüm bir aboneliğe erişim verilmiş, bu kaynak grubuna ait olduğu abonelik seçebilirsiniz. Bu abonelik bağlamında çalışmak, ancak yalnızca belirtilen kaynak gruplarını erişmek mümkün olacaktır.
+> Bir aboneliğin tamamına erişmek yerine bir veya daha fazla kaynak grubuna erişim verdiyseniz, bu kaynak grubunun ait olduğu aboneliği seçebilirsiniz. Daha sonra bu aboneliğin bağlamında çalışacaksınız, ancak yalnızca belirlenen kaynak gruplarına erişebileceksiniz.
 
-Temsilci aboneliklerini ya da abonelik veya kaynak grubundan hizmet içinde seçerek kiracılar arası yönetim deneyimleri Destek Hizmetleri içindeki kaynak gruplarınızdaki ilgili işlevselliği de erişebilirsiniz.
+Ayrıca, bu hizmetin içinden abonelik veya kaynak grubunu seçerek, şirketler arası yönetim deneyimlerini destekleyen hizmetler içinden Temsilcili abonelikler veya kaynak gruplarıyla ilgili işlevlere da erişebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hakkında bilgi edinin [kiracılar arası yönetim deneyimleri](../concepts/cross-tenant-management-experience.md).
-- Müşterilerinize nasıl edinebilirsiniz [görüntüleyin ve hizmet sağlayıcılarını Yönet](view-manage-service-providers.md) giderek **hizmeti sağlayıcıları** Azure portalında.
+- [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
+- Müşterilerinizin Azure portal **hizmet sağlayıcılarına** giderek [hizmet sağlayıcılarını nasıl görüntüleyip yönetebileceğini](view-manage-service-providers.md) öğrenin.

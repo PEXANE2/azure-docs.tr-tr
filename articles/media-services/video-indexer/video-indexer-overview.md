@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 3c8d0d3ec0f11592610363e9150be47112995853
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 2afc3a859ddb5378b6313c43d693842fdb5fce14
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219865"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296443"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer nedir?
 
@@ -34,9 +34,9 @@ Video Indexer içgörüler aşağıdakiler arasında birçok senaryoya uygulanab
 * *Derin arama* -video kitaplığı genelinde arama deneyimini geliştirmek için videodan ayıklanan öngörüleri kullanın. Örneğin, konuşulan sözcüklerin ve yüzlerin dizininin oluşturulması, bir kişinin belirli kelimeleri veya iki kişinin birlikte görüldüğü bir videoda dakika bulmayla ilgili arama deneyimini etkinleştirebilir. Videolardan elde edilen bu içgörülerle yapılan aramalar haber ajansları, eğitim kurumları, yayıncılar, eğlence içeriği sahipleri, kurumsal iş kolu uygulamaları ve kullanıcıların arama yapması gereken bir video kitaplığına sahip olan tüm sektörleri hedeflemektedir.
 * *İçerik oluşturma*: İçeriğinizden çıkaran öngörülere göre, daha fazla bilgi video Indexer edinin, Re, sosyal medya içeriğini veya haberleri vurgulayın. Kişiler ve etiket görünümleri için ana kareler, sahneler işaretçileri ve zaman damgaları oluşturma işlemini çok daha yumuşak ve daha kolay hale getirir ve oluşturmakta olduğunuz içerik için ihtiyacınız olan videonun ilgi çekici bölümlerine doğrudan sahip olabilirsiniz.
 * *Erişilebilirlik*: içeriğinizi Engelli kişiler için kullanılabilir hale getirmek isteyip istemediğinizi veya içeriğinizi farklı diller kullanılarak farklı bölgelere dağıtmak istiyorsanız, video tarafından sağlanan dökümü ve çeviriyi kullanabilirsiniz birden çok dilde Dizin Oluşturucu.
-* *Para kazanma*: Video Indexer videoların değerini artırmaya yardımcı olabilir. Örnek olarak, ad gelirine (örneğin, haber medyası, sosyal medya vb.) bağlı olan endüstriler, ayıklanan öngörüleri ad sunucusuna ek sinyaller olarak kullanarak, ilgili reklamları sunabilir.
+* Paraya *getirme: video Indexer*videoların değerini artırmaya yardımcı olabilir. Örnek olarak, ad gelirine (örneğin, haber medyası, sosyal medya vb.) bağlı olan endüstriler, ayıklanan öngörüleri ad sunucusuna ek sinyaller olarak kullanarak, ilgili reklamları sunabilir.
 * *İçerik denetleme*: kullanıcılarınızın uygunsuz içeriklerden güvenli kalmasını sağlamak ve yayımladığınız içeriğin kuruluşunuzun değerleriyle eşleştiğinden emin olmak için metin ve görsel içerik denetleme modellerini kullanın. Belirli videoları otomatik olarak engelleyebilir veya içeriklerle ilgili olarak kullanıcılarınıza uyarı verebilirsiniz. 
-* *Öneriler*: Video öngörüleri, kullanıcılara ilgili video dakikanızı ayırarak kullanıcı etkileşimini artırmak için kullanılabilir. Her videoyu ek meta verilerle etiketleyerek, kullanıcılara en uygun videoları önererek, videonun ihtiyaçlarını karşılayacak bir kısmını vurgulayacaksınız. 
+* *Öneriler*: video öngörüleri, kullanıcılara ilgili video dakikanızı ayırarak kullanıcı etkileşimini geliştirmek için kullanılabilir. Her videoyu ek meta verilerle etiketleyerek, kullanıcılara en uygun videoları önererek, videonun ihtiyaçlarını karşılayacak bir kısmını vurgulayacaksınız. 
 
 ## <a name="features"></a>Özellikler
 
@@ -45,15 +45,15 @@ Video ve ses modellerini Video Indexer kullanarak videolarınızdan alabileceği
 ### <a name="video-insights"></a>Video öngörüleri
 
 * **Yüz algılama**: Videoda görünen yüzleri algılar ve gruplandırır.
-* **Ünlüylik kimliği**: Video Indexer dünyanın dört bir yanında dünya öncüleri, aktörler, actresler, atlet, araştırmacılar, iş ve Teknoloji liderleriyle ilgili 1.000.000 ünlüler üzerinden otomatik olarak tanımlar. Bu ünlülerle ilgili bilgilere IMDB ve Wikipedia gibi birçok ünlü siteden de ulaşılabilir.
-* **Hesap tabanlı yüz tanıma kimliği**: Belirli bir hesap için model Video Indexer. Daha sonra eğitilen modele göre videodaki yüzeyleri tanır. Daha fazla bilgi için, [video Indexer Web sitesinden kişi modelini özelleştirme](customize-person-model-with-website.md) ve [video Indexer API 'Si ile bir kişi modelini özelleştirme](customize-person-model-with-api.md)bölümüne bakın.
-* **Yüzler Için küçük resim ayıklama** ("en iyi yüz"): Her bir yüzey grubundaki en iyi yakalanan yüzeyi (kalite, boyut ve en yüksek konuma göre) otomatik olarak belirler ve bunu bir görüntü varlığı olarak ayıklar.
-* **Görsel metin tanıma** (OCR): Videoda görsel olarak görüntülenen metni ayıklar.
-* **Görsel içerik denetleme**: Yetişkin ve/veya süslü görselleri algılar.
-* **Etiket kimliği**: Görünen görsel nesneleri ve eylemleri tanımlar.
+* **Ünlüklik kimliği**: video Indexer dünyanın dört bir yanında dünya öncüleri, aktörler, kadın, atlet, araştırmacılar, iş ve Teknoloji liderleriyle ilgili 1.000.000 ünlüler üzerinden otomatik olarak tanımlar. Bu ünlülerle ilgili bilgilere IMDB ve Wikipedia gibi birçok ünlü siteden de ulaşılabilir.
+* **Hesap tabanlı yüz tanıma**: Video Indexer belirli bir hesap için bir model eğitir. Daha sonra eğitilen modele göre videodaki yüzeyleri tanır. Daha fazla bilgi için, [video Indexer Web sitesinden kişi modelini özelleştirme](customize-person-model-with-website.md) ve [video Indexer API 'Si ile bir kişi modelini özelleştirme](customize-person-model-with-api.md)bölümüne bakın.
+* **Yüzler Için küçük resim ayıklama** ("en iyi yüz"): her bir yüzey grubundaki en iyi yakalanan yüzeyi (kalite, boyut ve en yüksek konuma göre) otomatik olarak tanımlar ve bunu bir görüntü varlığı olarak ayıklar.
+* **Görsel metin tanıma** (OCR): videoda görsel olarak görüntülenen metni ayıklar.
+* **Görsel içerik moderasyonu**: Yetişkinlere yönelik ve/veya müstehcen görselleri algılar.
+* **Etiket belirleme**: Görüntülenen görsel nesneleri ve eylemleri belirler.
 * **Sahne segmentleri**: görsel ipuçları temelinde videoda bir sahnenin ne zaman değişiklik olduğunu belirler. Bir sahne, tek bir olay gösterir ve bu, anlam ile ilgili olan bir dizi ardışık görünüm tarafından oluşur.
 * **Görüntü algılama**: görsel ipuçları temelinde videoda bir çekneye ne zaman değişiklik olduğunu belirler. Bir görüntü, aynı hareket resmi kamerasından alınan bir çerçeve dizisidir. Daha fazla bilgi için bkz. sahneler, görüntüleri ve ana kareler.
-* **Siyah çerçeve algılama**: Videoda sunulan siyah kareleri tanımlar.
+* **Siyah kare algılama**: Videoda yer alan siyah kareleri belirler.
 * **Ana kare ayıklama**: Videodaki kararlı ana kareleri algılar.
 * **Jenerik**KREDISI: TV programları ve filminin sonunda, hareketli kredilerin başlangıcını ve bitişini belirler.
 * **Animasyonlu karakter algılama** (Önizleme): bilişsel [Hizmetler özel vizyonu](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)ile tümleştirme aracılığıyla animasyonlu içerikte karakterlerin algılanması, gruplandırılması ve tanınması. Daha fazla bilgi için bkz. [animasyonlu karakter algılama](animated-characters-recognition.md).
@@ -61,29 +61,29 @@ Video ve ses modellerini Video Indexer kullanarak videolarınızdan alabileceği
 
 ### <a name="audio-insights"></a>Audio Insights
 
-* **Otomatik dil algılama**: , Baskın konuşulan dili otomatik olarak tanımlar. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Brezilya Portekizcesi. Dil güvenle tanımlanamıyorsa, Video Indexer konuşulan dilin Ingilizce olduğunu varsayar. Daha fazla bilgi için bkz. [dil tanımlama modeli](language-identification-model.md).
-* **Çok dilli konuşma tanımlama ve dökümü** (Önizleme): , Bir araya getirilebilmesi için medya dosyasının her bir kesimini göndererek ve geri dönerek tek bir Birleşik döküm ile birleştirmek için, sesli olarak konuşulan dili farklı kesimlerde otomatik olarak tanımlar. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
-* **Ses dökümü**: Konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunur.
-* **Kapalı açıklamalı altyazı**: Kapalı açıklamalı alt yazıları üç biçimde oluşturur: VTT, TTML, SRT.
-* **İki kanal işleme**: Otomatik olarak algılar, dökümü ve birleştirmeleri tek bir zaman çizelgesine ayırır.
-* **Gürültü azaltma**: Telefon sesini veya gürültülü kayıtları temizler (Skype filtrelerine göre).
-* Döküm **özelleştirmesi** (CRSıS): Sektöre özgü döküm oluşturmak için özel konuşmayı metin modellerine kadar eğitme. Daha fazla bilgi için bkz. [video Indexer Web sitesinden dil modelini özelleştirme](customize-language-model-with-website.md) ve [video Indexer API 'leriyle bir dil modelini özelleştirme](customize-language-model-with-api.md).
-* **Konuşmacı numaralandırması**: Hangi konuşmacının hangi sözcüklere ve ne zaman bağlı olduğunu eşleştirir ve anlamıştır.
-* **Konuşmacı istatistikleri**: Hoparlörlerin konuşma oranları için istatistikler sağlar.
-* **Metinsel içerik denetlemesi**: Ses dökümünü betiğinde açık metin algılar.
-* **Ses efektleri**: Parmaklıklar, konuşma ve sessizlik gibi ses efektlerini tanımlar.
-* **Duygu algılama**: Konuşmayı (söylemekte olan) ve ses tonlarını (nasıl söylüreceğini) temel alan özellikleri tanımlar. Duygu tanıma, Joy, sadyeti, Anger veya korku olabilir.
-* **Çeviri**: Ses dökümü 54 farklı dillerde çeviri oluşturur.
+* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Brezilya Portekizcesi. Dil güvenle tanımlanamıyorsa, Video Indexer konuşulan dilin Ingilizce olduğunu varsayar. Daha fazla bilgi için bkz. [dil tanımlama modeli](language-identification-model.md).
+* **Çok dilli konuşma tanımlama ve** döküm (Önizleme): otomatik olarak ses kaynağından farklı kesimlerde konuşulan dili otomatik olarak tanımlar, medya dosyasının her bir segmentini içeri ve geri birleştirme Birleşik döküm. Daha fazla bilgi için bkz. [Çoklu dil Içeriğini otomatik olarak tanımla ve yeniden tanımla](multi-language-identification-transcription.md).
+* **Ses dökümü**: konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunur.
+* **Açıklamalı altyazı**: Üç biçimde açıklamalı altyazı oluşturur: VTT, TTML, SRT.
+* **İki kanallı işleme**: Otomatik olarak algılar, ayrı transkriptler hazırlar ve tek bir zaman çizelgesinde birleştirir.
+* **Gürültü azaltma**: telefon sesini veya gürültülü kayıtları (Skype filtreleri temelinde) temizler.
+* **Transcript özelleştirmesi** (CRA): sektöre özgü döküm oluşturmak için özel konuşmayı metin modellerine kadar kullanın. Daha fazla bilgi için bkz. [video Indexer Web sitesinden dil modelini özelleştirme](customize-language-model-with-website.md) ve [video Indexer API 'leriyle bir dil modelini özelleştirme](customize-language-model-with-api.md).
+* **Konuşmacı numaralandırması**: hangi konuşmacının hangi sözcüklere ve ne zaman bağlı olduğunu eşleştirir ve anlamıştır.
+* **Konuşmacı İstatistikleri: konuşmacının**konuşma oranları için istatistikler sağlar.
+* **Metinsel içerik moderasyonu**: Ses transkriptlerindeki müstehcen metinleri algılar.
+* **Ses efektleri**: El çırpma, konuşma ve sessizlik gibi ses efektlerini belirler.
+* **Duygu algılama**: konuşmayı (söylemekte olan) ve ses tonısına (nasıl söylenir) göre tanımlar. Duygu tanıma, Joy, sadyeti, Anger veya korku olabilir.
+* **Çeviri**: Ses transkriptinin 54 farklı dile çevirisini oluşturur.
 
 ### <a name="audio-and-video-insights-multi-channels"></a>Ses ve video öngörüleri (çoklu kanallar)
 
 Bu modeller için bir kanal kısmi sonucu tarafından dizin oluşturma kullanılabilir olacaktır
 
-* **Anahtar sözcük ayıklama**: Konuşma ve görsel metinden anahtar sözcükleri ayıklar.
-* **Adlandırılmış varlıkların ayıklanması**: Marka, konum ve kişileri, doğal dil işleme (NLP) aracılığıyla konuşma ve görsel metinden ayıklar.
-* **Konu çıkarımı**: Döküm dosyalarından Ana konuların çıkarımını oluşturur. 1\. düzey ıPTC taksonomi dahil edilir.
-* **Yapıtlar**: Modellerin her biri için zengin "sonraki ayrıntı düzeyi" yapıtları kümesini ayıklar.
-* Yaklaşım **Analizi**: Konuşma ve görsel metinden olumlu, olumsuz ve nötr düşünceleri tanımlar.
+* **Anahtar sözcük ayıklama**: konuşma ve görsel metinden anahtar sözcükleri ayıklar.
+* **Adlandırılmış varlıkların ayıklanması**: marka, konum ve kişileri, doğal dil işleme (NLP) aracılığıyla konuşma ve görsel metinden ayıklar.
+* **Konu çıkarımı**: Transkriptlerdeki ana konuların çıkarımını yapar. 2\. düzey ıPTC taksonomi dahil edilir.
+* **Yapıtlar**: Modellerin her biri için "daha üst düzeyde ayrıntıya sahip" zengin bir yapıt kümesini ayıklar.
+* **Yaklaşım analizi**: Konuşmalardaki ve görsel metinlerdeki olumlu, olumsuz ve nötr yaklaşımları belirler.
 
 ## <a name="how-can-i-get-started-with-video-indexer"></a>Video Indexer nasıl başlamalıyım?
 

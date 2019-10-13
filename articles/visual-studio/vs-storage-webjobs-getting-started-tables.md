@@ -1,5 +1,5 @@
 ---
-title: Azure depolama ve Visual Studio bağlı hizmetleri (WebJob projeleri) ile çalışmaya başlama
+title: Visual Studio kullanarak Azure depolama ile çalışmaya başlama (WebJob projeleri)
 description: Visual Studio bağlı hizmetler 'i kullanarak bir depolama hesabına bağlandıktan sonra Visual Studio 'da Azure Web Işleri projesinde Azure Tablo Depolamayı kullanmaya başlama
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 8875f680c8bb83c2375d6fe767f376cbb35d5a0a
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 042f2659d3691e8c51e092bf69473187b8615ee6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510675"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299960"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure Storage 'ı kullanmaya başlama (Azure WebJob projeleri)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -25,14 +26,14 @@ ms.locfileid: "69510675"
 ## <a name="overview"></a>Genel Bakış
 Bu makalede, C# Azure Tablo depolama hizmeti Ile Azure WEBJOBS SDK sürüm 1. x ' in nasıl kullanılacağını gösteren kod örnekleri sağlanmaktadır. Kod örnekleri, [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) sürüm 1. x ' i kullanır.
 
-Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Kimliği doğrulanmış çağrılarından içindeki ve Azure Bulutu dışındaki kabul eden bir NoSQL veri deposu hizmetidir. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.  Daha fazla bilgi için bkz. [.NET kullanarak Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
+Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Hizmet, Azure bulutu içinden ve dışından kimliği doğrulanmış çağrıları kabul eden bir NoSQL veri deposu olur. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.  Daha fazla bilgi için bkz. [.NET kullanarak Azure Tablo Depolamayı kullanmaya başlama](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) .
 
 Bazı kod parçacıklarında, tetikleyici özniteliklerinden biri kullanılarak değil, el ile çağrılan işlevlerde kullanılan **tablo** özniteliği gösterilmektedir.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Tabloya varlıklar ekleme
-Bir tabloya varlık eklemek için, **ICollector\<t >** veya **\<ıasynccollector t >** parametresi ile **Table** özniteliğini kullanın; burada **T** eklemek istediğiniz varlıkların şemasını belirtir. Öznitelik Oluşturucusu, tablonun adını belirten bir String parametresi alır.
+Bir tabloya varlık eklemek için, **ICollector @ no__t-2T >** veya **ıasynccollector @ No__t-4T >** parametresiyle **tablo** özniteliğini kullanın; burada **t** , eklemek istediğiniz varlıkların şemasını belirtir. Öznitelik Oluşturucusu, tablonun adını belirten bir String parametresi alır.
 
-Aşağıdaki kod örneği, giriş adlı bir tabloya **kişi** varlıkları ekler.
+Aşağıdaki kod örneği, *giriş adlı bir*tabloya **kişi** varlıkları ekler.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -49,7 +50,7 @@ Aşağıdaki kod örneği, giriş adlı bir tabloya **kişi** varlıkları ekler
             }
         }
 
-Genellikle **ICollector** ile kullandığınız tür **tableentity** öğesinden türetilir veya **ıtableentity**' ı uygular, ancak bunu yapmak zorunda değildir. Aşağıdaki **kişi** sınıflarından biri, önceki giriş yönteminde gösterilen kodla çalışır.
+Genellikle **ICollector** ile kullandığınız tür **tableentity** öğesinden türetilir veya **ıtableentity**' ı uygular, ancak bunu yapmak zorunda değildir. Aşağıdaki **kişi** sınıflarından biri **, önceki giriş** yönteminde gösterilen kodla çalışır.
 
         public class Person : TableEntity
         {
@@ -79,9 +80,9 @@ Veri giriş işlevleri genellikle büyük hacimlerdeki verileri işletiğinden, 
 ![Giriş işlevi tamamlandı](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Tablodaki birden çok varlığı okuma
-Bir tabloyu okumak için **tablo** özniteliğini, tür **T** 'in **tableentity** 'dan türetildiği veya **ıtableentity**uygulayan bir **IQueryable\<T >** parametresiyle kullanın.
+Bir tabloyu okumak için **tablo** özniteliğini bir **IQueryable @ No__t-2T >** parametresi ile birlikte kullanın. tür **t** , **tableentity** 'dan türetilir veya **ıtableentity**uygular.
 
-Aşağıdaki kod örneği, giriş tablosundan tüm satırları okur ve günlüğe kaydeder:
+Aşağıdaki kod **örneği, giriş tablosundan tüm** satırları okur ve günlüğe kaydeder:
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -123,7 +124,7 @@ Bu örnekteki **kişi** sınıfının **ıtableentity**uygulaması gerekmez.
 ## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>.NET Storage API 'sini doğrudan bir tabloyla çalışmak üzere kullanma
 Tablo ile çalışma konusunda daha fazla esneklik için bir **cloudtable** nesnesi ile **Table** özniteliğini de kullanabilirsiniz.
 
-Aşağıdaki kod örneği, giriş tablosuna tek bir varlık eklemek için bir **cloudtable** nesnesi kullanır .
+Aşağıdaki kod *örneği, giriş tablosuna tek* bir varlık eklemek Için bir **cloudtable** nesnesi kullanır.
 
         public static void UseStorageAPI(
             [Table("Ingress")] CloudTable tableBinding,

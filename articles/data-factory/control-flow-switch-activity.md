@@ -9,69 +9,69 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: bc37c8a4f55b06338859e66d53050c6e0ad1ecf6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 3f60965ad54fb94e7f69b69c161b482f0b953c5a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178650"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293959"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik değiştirme
 
 Switch etkinliği, programlama dillerinde bir switch ifadesinin sağladığı işlevleri sağlar. Koşul değerlendirmesiyle eşleşen bir servis talebine karşılık gelen bir etkinlik kümesini değerlendirir.
 
-## <a name="syntax"></a>Söz dizimi
+## <a name="syntax"></a>Sözdizimi
 
 ```json
 
 {
    "name": "<Name of the activity>",
-        "type": "Switch",
-        "typeProperties": {
-            "expression": {
-                "value": "<expression that evaluates to some string value>",
-                "type": "Expression"
+    "type": "Switch",
+    "typeProperties": {
+        "expression": {
+            "value": "<expression that evaluates to some string value>",
+            "type": "Expression"
+        },
+        "cases": [
+            {
+                "value": "<string value that matches expression evaluation>",
+                "activities": [
+                    {
+                        "<Activity 1 definition>"
+                    },
+                    {
+                        "<Activity 2 definition>"
+                    },
+                    {
+                        "<Activity N definition>"
+                    }
+                ]
+            }           
+        ],
+        "defaultActivities": [
+            {
+                "<Activity 1 definition>"
             },
-            "cases": [
-                {
-                    "value": "<string value that matches expression evaluation>",
-                    "activities": [
-                        {
-                            "<Activity 1 definition>"
-                        },
-                        {
-                            "<Activity 2 definition>"
-                        },
-                        {
-                            "<Activity N definition>"
-                        }
-                    ]
-                }           
-            ],
-            "defaultActivities": [
-                {
-                    "<Activity 1 definition>"
-                },
-                {
-                    "<Activity 2 definition>"
-                },
-                {
-                    "<Activity N definition>"
-                }
-            ]
+            {
+                "<Activity 2 definition>"
+            },
+            {
+                "<Activity N definition>"
+            }
+        ]
     }
 }
 ```
 
 ## <a name="type-properties"></a>Tür özellikleri
 
-Özellik | Description | İzin verilen değerler | Gerekli
+Özellik | Açıklama | İzin verilen değerler | Gereklidir
 -------- | ----------- | -------------- | --------
-name | Anahtar etkinliğinin adı. | Dize | Evet
-tür | @No__t-1 *anahtarına*ayarlanmalıdır | Dize | Evet
-ifadesini | Dize değeri değerlendirmesi gereken ifade | Sonuç türü dize olan ifade | Evet
-çalışmaların | Değer ifade değerlendirmesiyle eşleştiğinde yürütülecek bir değer ve bir etkinlik kümesi içeren servis talepleri kümesi. En az bir örnek sağlanmalıdır. 25 servis talebi için maksimum sınır vardır. | Case nesneleri dizisi | Evet
-Defaultacmize | İfade değerlendirmesi karşılanmadığı zaman yürütülen etkinlik kümesi. | Etkinlik dizisi | Evet
+ad | Anahtar etkinliğinin adı. | Dize | Yes
+type | @No__t-1 *anahtarına*ayarlanmalıdır | Dize | Yes
+ifadesini | Dize değeri değerlendirmesi gereken ifade | Sonuç türü dize olan ifade | Yes
+çalışmaların | Değer ifade değerlendirmesiyle eşleştiğinde yürütülecek bir değer ve bir etkinlik kümesi içeren servis talepleri kümesi. En az bir örnek sağlanmalıdır. 25 servis talebi için maksimum sınır vardır. | Case nesneleri dizisi | Yes
+Defaultacmize | İfade değerlendirmesi karşılanmadığı zaman yürütülen etkinlik kümesi. | Etkinlik dizisi | Yes
 
 ## <a name="example"></a>Örnek
 
@@ -334,9 +334,9 @@ $result.Error -join "`r`n"
 
 Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
 
-- [Eğer koşul etkinliği](control-flow-if-condition-activity.md)
-- [İşlem hattı yürütme etkinliği](control-flow-execute-pipeline-activity.md)
+- [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
+- [İşlem Hattı Yürütme Etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her etkinlik için](control-flow-for-each-activity.md)
-- [Meta veri Al etkinliği](control-flow-get-metadata-activity.md)
-- [Arama etkinliği](control-flow-lookup-activity.md)
+- [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)
+- [Arama Etkinliği](control-flow-lookup-activity.md)
 - [Web etkinliği](control-flow-web-activity.md)

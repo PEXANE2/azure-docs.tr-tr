@@ -2,20 +2,19 @@
 title: Öğretici-yönetici ve Kullanıcı rollerini Azure Analysis Services yapılandırma | Microsoft Docs
 description: Azure Analysis Services rollerinin nasıl yapılandırılacağını öğrenin.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932206"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294422"
 ---
-# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yönetici ve kullanıcı rollerini yapılandırma
+# <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
 
  Bu öğreticide, sunucu yöneticisi ve model veritabanı rollerini yapılandırmak üzere Azure sunucunuza bağlanmak için SQL Server Management Studio (SSMS) kullanacaksınız. Ayrıca [Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) ile tanışacaksınız. TMSL, 1200 ve daha yüksek uyumluluk düzeylerindeki tablo modelleri için JSON tabanlı bir betik dilidir. Pek çok tablo modelleme görevini otomatikleştirmek için kullanılabilir. TMSL çoğunlukla PowerShell ile kullanılır, ancak bu öğreticide SSMS'deki XMLA sorgu düzenleyicisini kullanacaksınız. Bu öğreticide aşağıdaki görevleri tamamlayacaksınız: 
   
@@ -53,7 +52,7 @@ Kalan görevlerde sunucunuza bağlanmak ve sunucunuzu yönetmek için SSMS kulla
 
 1. SSMS > **Nesne Gezgini**'nde **Bağlan** > **Analysis Services**'e tıklayın.
 
-    ![Bağlan](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
+    ![Bağlayın](./media/analysis-services-tutorial-roles/aas-ssms-connect.png)
 
 2. **Sunucuya Bağlan** iletişim kutusunda, **Sunucu adı**'na portaldan kopyaladığınız sunucu adını yapıştırın. **Kimlik doğrulaması**'nda **MFA Desteğiyle Active Directory Universal**'ı seçin, sonra kullanıcı hesabınızı girin ve **Bağlan**'a basın.
    
@@ -144,5 +143,5 @@ Artık gerekmediğinde, kullanıcı ve grup hesaplarını ve rolleri silin. Bunu
 Bu öğreticide Azure AS sunucunuza bağlanmayı ve SSMS'de adventureworks örnek model veritabanlarını ve özelliklerini keşfetmeyi öğrendiniz. Ayrıca var olan ve yeni rollere kullanıcı veya grup eklemek için SSMS ve TMSL betiklerini kullanmayı öğrendiniz. Artık sunucunuz ve örnek model veritabanınız için izinleri yapılandırdığınıza göre, size ve başka kullanıcılar Power BI gibi istemci uygulamalarını kullanarak veritabanına bağlanabilir. Daha fazla bilgi edinmek için sonraki öğreticiye devam edin. 
 
 > [!div class="nextstepaction"]
-> [Öğretici: Power BI Desktop bağlanma](analysis-services-tutorial-pbid.md)
+> [Öğretici: Power BI Desktop ile bağlanma](analysis-services-tutorial-pbid.md)
 

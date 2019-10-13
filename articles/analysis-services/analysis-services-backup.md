@@ -2,18 +2,17 @@
 title: Azure Analysis Services veritabanı yedekleme ve geri yükleme | Microsoft Docs
 description: Bir Azure Analysis Services veritabanının nasıl yedeklenve geri yükleneceğini açıklar.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2e751d45e4b76852426d454f8d29196c01396504
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fde545f3764f5910d00da5a8ce7f0e8c1772c7ea
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932470"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295422"
 ---
 # <a name="backup-and-restore"></a>Yedekleme ve geri yükleme
 
@@ -38,7 +37,7 @@ Yedeklemeden önce, sunucunuz için depolama ayarlarını yapılandırmanız ger
 
 2.  **Etkin**' e ve ardından **depolama ayarları**' na tıklayın.
 
-    ![Etkinleştir](./media/analysis-services-backup/aas-backup-enable.png)
+    ![Etkinleştirme](./media/analysis-services-backup/aas-backup-enable.png)
 
 3. Depolama hesabınızı seçin veya yeni bir tane oluşturun.
 
@@ -50,7 +49,7 @@ Yedeklemeden önce, sunucunuz için depolama ayarlarını yapılandırmanız ger
 
     ![Yedekleme ayarlarını kaydet](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Yedekle
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>SSMS kullanarak yedeklemek için
 
@@ -74,7 +73,7 @@ Yedeklemeden önce, sunucunuz için depolama ayarlarını yapılandırmanız ger
 ### <a name="powershell"></a>PowerShell
 [Backup-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase) cmdlet 'ini kullanın.
 
-## <a name="restore"></a>Geri yükle
+## <a name="restore"></a>Geri Yükleme
 Geri yükleme sırasında, yedekleme dosyanız sunucunuz için yapılandırdığınız depolama hesabında olmalıdır. Bir yedekleme dosyasını şirket içi bir konumdan depolama hesabınıza taşımanız gerekiyorsa [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) veya [AzCopy](../storage/common/storage-use-azcopy.md) komut satırı yardımcı programını kullanın. 
 
 

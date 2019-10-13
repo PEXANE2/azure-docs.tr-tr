@@ -1,21 +1,20 @@
 ---
 title: Öğretici - Power BI Desktop ile Azure Analysis Services'e bağlanma | Microsoft Docs
 author: minewiskan
-manager: kfile
 description: Power BI Desktop Azure Analysis Services nasıl bağlanacağınızı öğrenin.
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: daebc3e720eec8d958697288922c788a44156778
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f2123b6d8b11c89735e65cb0f48d93841f49328d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932378"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294478"
 ---
-# <a name="tutorial-connect-with-power-bi-desktop"></a>Öğretici: Power BI Desktop bağlanma
+# <a name="tutorial-connect-with-power-bi-desktop"></a>Öğretici: Power BI Desktop ile bağlanma
 
 Bu öğreticide, Power BI Desktop'u kullanarak sunucunuzdaki örnek adventureworks model veritabanına bağlanacaksınız. Tamamladığınız görevler, modele normal bir kullanıcı bağlantısının benzetimini yapar ve model verilerinden bir temel rapor oluşturulur.
 

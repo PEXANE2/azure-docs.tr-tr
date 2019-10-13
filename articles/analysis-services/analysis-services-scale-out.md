@@ -2,18 +2,17 @@
 title: Azure Analysis Services ölçeği genişletme | Microsoft Docs
 description: Genişleme Azure Analysis Services sunucularını çoğaltma
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 29188013b75dbefbaf80f3c59360f203ae5b5a82
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 0e6a234e8b69eb48f00687916d4a7b48d3ba1040
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736743"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301173"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services ölçeğini genişletme
 
@@ -31,9 +30,9 @@ Bir sorgu havuzunda sahip olduğunuz sorgu çoğaltmalarının sayısından bağ
 
 Ölçeği ölçeklendirirken, yeni sorgu çoğaltmalarının sorgu havuzuna artımlı olarak eklenmesi beş dakikaya kadar sürebilir. Tüm yeni sorgu çoğaltmaları çalışır duruma geldiğinde, yeni istemci bağlantıları sorgu havuzundaki kaynaklar arasında yük dengelemesi yapılır. Mevcut istemci bağlantıları, o anda bağlı oldukları kaynaktan değiştirilmez. ' De ölçeklendirilirken, sorgu havuzundan kaldırılmakta olan bir sorgu havuzu kaynağına yönelik mevcut istemci bağlantıları sonlandırılır. İstemciler kalan bir sorgu havuzu kaynağına yeniden bağlanabilir.
 
-## <a name="how-it-works"></a>Nasıl çalışır?
+## <a name="how-it-works"></a>Nasıl çalışır
 
-Ölçeği ilk kez yapılandırırken, birincil sunucunuzdaki model veritabanları yeni bir sorgu havuzundaki yeni yinelemelerle *otomatik olarak* eşitlenir. Otomatik eşitleme yalnızca bir kez gerçekleşir. Otomatik eşitleme sırasında, birincil sunucunun veri dosyaları (blob depolamada Rest 'te şifrelenir), blob depolamada bekleyen bir ikinci konuma kopyalanır. Sorgu havuzundaki çoğaltmalar daha sonra ikinci dosya kümesindeki verilerle birlikte gösterilir. 
+Ölçeği ilk kez yapılandırırken, birincil sunucunuzdaki model veritabanları yeni bir sorgu havuzundaki yeni yinelemelerle *otomatik olarak* eşitlenir. Otomatik eşitleme yalnızca bir kez gerçekleşir. Otomatik eşitleme sırasında, birincil sunucunun veri dosyaları (blob depolamada Rest 'te şifrelenir), blob depolamada bekleyen bir ikinci konuma kopyalanır. Sorgu havuzundaki çoğaltmalar daha sonra ikinci dosya *kümesindeki verilerle birlikte* gösterilir. 
 
 Otomatik eşitleme yalnızca bir sunucuyu ilk kez ölçeklendirirken gerçekleştirilir, ayrıca el ile eşitleme gerçekleştirebilirsiniz. Sorgu havuzundaki çoğaltmalarda verilerin eşitlenmesi, birincil sunucuyla eşleşir. Birincil sunucudaki modelleri işlerken (yenileme), işleme işlemleri *tamamlandıktan sonra* bir eşitleme gerçekleştirilmelidir. Bu eşitleme, güncelleştirilmiş verileri, BLOB depolama alanındaki birincil sunucunun dosyalarından ikinci dosya kümesine kopyalar. Sorgu havuzundaki çoğaltmalar daha sonra blob depolamada bulunan ikinci dosya kümesinden güncelleştirilmiş verilerle birlikte gösterilir. 
 
@@ -45,9 +44,9 @@ Daha sonraki bir genişleme işlemi gerçekleştirirken, örneğin, sorgu havuzu
 
 * Sorgu havuzunda çoğaltma olmadığında bile eşitlemeye izin verilir. Birincil sunucudaki bir işleme işlemindeki yeni verilerle bir veya daha fazla kopyaya ölçeklendirirseniz, eşitleme işlemini sorgu havuzunda çoğaltma olmadan gerçekleştirin ve ardından ölçeği ölçeklendirin. Ölçeklendirmeden önce eşitleme, yeni eklenen çoğaltmaların gereksiz bir şekilde yeniden alımını önler.
 
-* Birincil sunucudan bir model veritabanını silerken, sorgu havuzundaki çoğaltmalardan otomatik olarak silinmez. Çoğaltmanın paylaşılan BLOB depolama konumundan söz konusu veritabanına ait dosya/öğeleri kaldıran ve çoğaltmalarda model veritabanını silen [Sync-Azanalysisservicesınstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell komutunu kullanarak bir eşitleme işlemi gerçekleştirmeniz gerekir sorgu havuzunda. Bir model veritabanının, birincil sunucuda değil, sorgu havuzunda çoğaltmalar üzerinde olup olmadığını anlamak için, **işlem sunucusunun havuzu sorgulama** ayarını **Evet**olarak doğrulayın. Ardından, veritabanının mevcut olup olmadığını görmek için `:rw` niteleyiciyi kullanarak birincil sunucuya bağlanmak üzere SSMS 'yi kullanın. Daha sonra aynı veritabanının olup olmadığını görmek için `:rw` niteleyici olmadan bağlanarak sorgu havuzundaki çoğaltmalara bağlanın. Veritabanı, birincil sunucuda değil, sorgu havuzunda çoğaltmalar üzerinde bulunuyorsa bir eşitleme işlemi çalıştırın.   
+* Birincil sunucudan bir model veritabanını silerken, sorgu havuzundaki çoğaltmalardan otomatik olarak silinmez. Çoğaltmanın paylaşılan BLOB depolama konumundan söz konusu veritabanına ait dosya/öğeleri kaldıran ve çoğaltmalarda model veritabanını silen [Sync-Azanalysisservicesınstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) PowerShell komutunu kullanarak bir eşitleme işlemi gerçekleştirmeniz gerekir sorgu havuzunda. Bir model veritabanının, birincil sunucuda değil, sorgu havuzunda çoğaltmalar üzerinde olup olmadığını anlamak için, **işlem sunucusunun havuzu sorgulama** ayarını **Evet**olarak doğrulayın. Ardından, veritabanının mevcut olup olmadığını görmek için `:rw` niteleyicisi kullanarak birincil sunucuya bağlanmak üzere SSMS kullanın. Ardından, aynı veritabanının aynı zamanda var olup olmadığını görmek için `:rw` niteleyicisi olmadan bağlanarak sorgu havuzundaki çoğaltmalara bağlanın. Veritabanı, birincil sunucuda değil, sorgu havuzunda çoğaltmalar üzerinde bulunuyorsa bir eşitleme işlemi çalıştırın.   
 
-* Birincil sunucudaki bir veritabanını yeniden adlandırırken, veritabanının herhangi bir çoğaltmayla düzgün şekilde eşitlendiğinden emin olmak için ek bir adım gereklidir. Yeniden adlandırmadan sonra, eski veritabanı adıyla `-Database` parametreyi belirten [Sync-azanalysisservicesınstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) komutunu kullanarak bir eşitleme gerçekleştirin. Bu eşitleme, tüm çoğaltmalardan veritabanını ve eski adı taşıyan dosyaları kaldırır. Ardından, `-Database` yeni veritabanı adıyla parametresini belirten başka bir eşitleme gerçekleştirin. İkinci eşitleme, yeni adlandırılmış veritabanını ikinci dosya kümesine kopyalar ve tüm çoğaltmaları yeniden kapatır. Bu eşitlemeler portalda modeli eşitleme komutu kullanılarak gerçekleştirilemez.
+* Birincil sunucudaki bir veritabanını yeniden adlandırırken, veritabanının herhangi bir çoğaltmayla düzgün şekilde eşitlendiğinden emin olmak için ek bir adım gereklidir. Yeniden adlandırmadan sonra, eski veritabanı adıyla `-Database` parametresini belirten [Sync-Azanalysisservicesınstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) komutunu kullanarak bir eşitleme gerçekleştirin. Bu eşitleme, tüm çoğaltmalardan veritabanını ve eski adı taşıyan dosyaları kaldırır. Ardından, yeni veritabanı adıyla `-Database` parametresini belirten başka bir eşitleme gerçekleştirin. İkinci eşitleme, yeni adlandırılmış veritabanını ikinci dosya kümesine kopyalar ve tüm çoğaltmaları yeniden kapatır. Bu eşitlemeler portalda modeli eşitleme komutu kullanılarak gerçekleştirilemez.
 
 ### <a name="separate-processing-from-query-pool"></a>İşlemi sorgu havuzundan ayır
 
@@ -63,7 +62,7 @@ Sunucunuz için ölçek genişletme gerekip gerekmediğini öğrenmek için, öl
 
 ### <a name="to-configure-qpu-by-serverresourcetype"></a>QPU 'yi ServerResourceType ile yapılandırmak için
 1. Ölçüm çizgisi grafiğinde **ölçüm Ekle**' ye tıklayın. 
-2. **Kaynak**bölümünde, sunucunuzu SEÇIN, ardından **ölçüm ad**alanında **Standart ölçümler Analysis Services**seçin, sonra **metrik**bölümünde **qpu**' yi seçin ve ardından **toplama**' yı seçin. 
+2. **Kaynak**bölümünde, sunucunuzu seçin, ardından **ölçüm ad**alanında **Standart ölçümler Analysis Services**seçin, sonra **metrik**bölümünde **qpu**' **yi seçin ve**ardından **toplama**' yı seçin. 
 3. **Bölmeyi Uygula**' ya tıklayın. 
 4. **Değerler**' de **serverresourcetype**' ı seçin.  
 
@@ -75,7 +74,7 @@ Daha fazla bilgi için bkz. [Sunucu ölçümlerini izleme](analysis-services-mon
 
 1. Portalda **genişleme**' ya tıklayın. Sorgu çoğaltma sunucusu sayısını seçmek için kaydırıcıyı kullanın. Seçtiğiniz kopyaların sayısı, var olan sunucunuza ek niteliğindedir.  
 
-2. İşleme sunucusunu **sorgulama havuzundan ayrı**olarak, işlem sunucunuzu sorgu sunucularından dışlamak için Evet ' i seçin. Varsayılan [](#connections) bağlantı dizesini (olmadan `:rw`) kullanan istemci bağlantıları, sorgu havuzundaki çoğaltmalara yeniden yönlendirilir. 
+2. İşleme sunucusunu **sorgulama havuzundan ayrı**olarak, işlem sunucunuzu sorgu sunucularından dışlamak için Evet ' i seçin. Varsayılan bağlantı dizesini kullanan istemci [bağlantıları](#connections) (`:rw` olmadan) sorgu havuzundaki çoğaltmalara yeniden yönlendirilir. 
 
    ![Genişleme kaydırıcısı](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
@@ -108,14 +107,14 @@ Eşitleme işlemlerinin el ile veya REST API kullanılarak gerçekleştirilmesi 
 Dönüş durum kodları:
 
 
-|Kod  |Açıklama  |
+|Kodlayın  |Açıklama  |
 |---------|---------|
 |-1     |  Geçersiz       |
-|0     | Çoğaltılıyor        |
-|1\.     |  Katmanındaki       |
+|0     | Yapan        |
+|1     |  Katmanındaki       |
 |2     |   Tamamlandı       |
 |3     |   Başarısız      |
-|4     |    Sonlandırılıyor     |
+|4     |    Yüklemesinin     |
 |||
 
 
@@ -129,7 +128,7 @@ Eşitleme çalıştırmak için [Sync-Azanalysisservicesınstance](https://docs.
 
 Sorgu çoğaltmalarının sayısını ayarlamak için [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)kullanın. İsteğe bağlı `-ReadonlyReplicaCount` parametresini belirtin.
 
-İşlem sunucusunu sorgu havuzundan ayırmak için [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)kullanın. `-DefaultConnectionMode` Kullanılacak`Readonly`isteğe bağlı parametreyi belirtin.
+İşlem sunucusunu sorgu havuzundan ayırmak için [set-AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)kullanın. @No__t-1 ' i kullanmak için isteğe bağlı `-DefaultConnectionMode` parametresini belirtin.
 
 Daha fazla bilgi için bkz. [az. AnalysisServices modülüyle hizmet sorumlusu kullanma](analysis-services-service-principal.md#azmodule).
 
@@ -139,19 +138,19 @@ Sunucunuzun genel bakış sayfasında iki sunucu adı vardır. Henüz bir sunucu
 
 Power BI Desktop, Excel ve özel uygulamalar gibi son kullanıcı istemci bağlantıları için **sunucu adı**' nı kullanın. 
 
-PowerShell, Azure Işlev uygulamaları ve AMO 'daki SSMS, SSDT ve bağlantı dizeleri için **Yönetim sunucusu adı**' nı kullanın. Yönetim sunucusu adı özel `:rw` (okuma-yazma) niteleyicisi içerir. Tüm işleme işlemleri (birincil) yönetim sunucusunda oluşur.
+PowerShell, Azure Işlev uygulamaları ve AMO 'daki SSMS, SSDT ve bağlantı dizeleri için **Yönetim sunucusu adı**' nı kullanın. Yönetim sunucusu adı, özel bir `:rw` (okuma-yazma) niteleyicisi içerir. Tüm işleme işlemleri (birincil) yönetim sunucusunda oluşur.
 
 ![Sunucu adları](media/analysis-services-scale-out/aas-scale-out-name.png)
 
-## <a name="scale-up-scale-down-vs-scale-out"></a>Ölçeği artırma, ölçek azaltma ve Ölçeklendirme
+## <a name="scale-up-scale-down-vs-scale-out"></a>Ölçeği artırma, ölçek azaltma ve genişleme karşılaştırması
 
 Birden çok çoğaltmayla bir sunucuda fiyatlandırma katmanını değiştirebilirsiniz. Aynı fiyatlandırma katmanı tüm çoğaltmalar için geçerlidir. Bir ölçeklendirme işlemi önce tüm çoğaltmaları tek seferde getirip yeni fiyatlandırma katmanındaki tüm çoğaltmaları getirir.
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-**Sorun:** Kullanıcılar hata Al ' ' **ReadOnly '\<bağlantı modundaki sunucu > ' sunucusunun adı bulunamıyor.**
+**Sorun:** Kullanıcı hatası **, ' ReadOnly ' bağlantı modundaki sunucu > ' örneğinin ' \<Name ' sunucusunu bulamıyor.**
 
-**Çözümden** **Sorgulama havuzu seçeneğinde ayrı işlem sunucusunu** seçerken, varsayılan bağlantı dizesini (olmadan `:rw`) kullanan istemci bağlantıları, sorgu havuzu çoğaltmalarına yeniden yönlendirilir. Eşitleme henüz tamamlanmadığından sorgu havuzundaki çoğaltmalar henüz çevrimiçi değilse, yeniden yönlendirilen istemci bağlantıları başarısız olabilir. Başarısız bağlantıları engellemek için, bir eşitleme gerçekleştirirken sorgu havuzunda en az iki sunucu olmalıdır. Her sunucu ayrı olarak eşitlenir, diğerleri çevrimiçi kalır. İşlem sırasında sorgu havuzunda işleme sunucusuna sahip olmamak isterseniz, işlem için havuzdan kaldırmayı seçebilir ve sonra işlem tamamlandıktan sonra, ancak eşitlemeden önce havuza geri ekleyebilirsiniz. Eşitleme durumunu izlemek için bellek ve QPU ölçümlerini kullanın.
+**Çözüm:** Sorgu havuzu seçeneğinde **ayrı işlem sunucusunu** seçerken, varsayılan bağlantı dizesini (`:rw` olmadan) kullanan istemci bağlantıları, sorgu havuzu çoğaltmalarına yönlendirilir. Eşitleme henüz tamamlanmadığından sorgu havuzundaki çoğaltmalar henüz çevrimiçi değilse, yeniden yönlendirilen istemci bağlantıları başarısız olabilir. Başarısız bağlantıları engellemek için, bir eşitleme gerçekleştirirken sorgu havuzunda en az iki sunucu olmalıdır. Her sunucu ayrı olarak eşitlenir, diğerleri çevrimiçi kalır. İşlem sırasında sorgu havuzunda işleme sunucusuna sahip olmamak isterseniz, işlem için havuzdan kaldırmayı seçebilir ve sonra işlem tamamlandıktan sonra, ancak eşitlemeden önce havuza geri ekleyebilirsiniz. Eşitleme durumunu izlemek için bellek ve QPU ölçümlerini kullanın.
 
 
 

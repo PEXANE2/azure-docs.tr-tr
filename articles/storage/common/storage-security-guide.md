@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 548f37d6a0d4390fb98ceaee7b59314400debb38
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986564"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299609"
 ---
 # <a name="azure-storage-security-guide"></a>Azure depolama Güvenlik Kılavuzu
 
@@ -43,7 +43,7 @@ Bu makalede ele alınanlara yönelik konular aşağıda verilmiştir:
   Bu bölümde, Azure depolama alanına veya dışına aktarırken verilerin nasıl güvenliği anlatılmaktadır. Azure dosya paylaşımları için SMB 3,0 tarafından önerilen HTTPS ve şifrelemenin kullanılması hakkında konuşacağız. Ayrıca, bir istemci uygulamasında depolamaya aktarılmadan önce verileri şifrelemenizi ve verilerin depolama dışına aktarıldıktan sonra şifresinin çözülmesi için Istemci tarafı şifrelemeye göz atacağız.
 * [Bekleme Sırasında Şifreleme](#encryption-at-rest)
 
-  Artık yeni ve var olan depolama hesapları için otomatik olarak etkinleştirilen Depolama Hizmeti Şifrelemesi (SSE) hakkında konuşacağız. Ayrıca, Azure disk şifrelemesi 'ni nasıl kullanabileceğinizi ve disk şifrelemesi ile Istemci tarafı şifrelemeye karşı temel farklılıkları ve durumları nasıl keşfededeceğiz. ABD için FIPS uyumluluğuna kısaca göz atacağız Kamu bilgisayarları.
+  Artık yeni ve var olan depolama hesapları için otomatik olarak etkinleştirilen Depolama Hizmeti Şifrelemesi (SSE) hakkında konuşacağız. Ayrıca, Azure disk şifrelemesi 'ni nasıl kullanabileceğinizi ve disk şifrelemesi ile Istemci tarafı şifrelemeye karşı temel farklılıkları ve durumları nasıl keşfededeceğiz. ABD devlet bilgisayarları için FIPS uyumluluğuna kısaca bakacağız.
 * Azure Storage erişimini denetlemek için [depolama Analizi](#storage-analytics) kullanma
 
   Bu bölümde, bir istek için depolama Analizi günlüklerinde bilgi bulma açıklanmaktadır. Gerçek depolama analiz günlüğü verilerine göz atacağız ve depolama hesabı anahtarıyla bir isteğin, paylaşılan erişim imzası ile mi yoksa anonim olarak mı yoksa başarısız mı olduğunu ve başarılı olup olmadığını nasıl ayırt ettireceğiz.
@@ -90,7 +90,7 @@ Azure depolama hesabının yönetim işlemlerine erişmek için RBAC kullanma ha
 * [Azure Active Directory Rol Tabanlı Erişim Denetimi](../../role-based-access-control/role-assignments-portal.md)
 
   Bu makalede Azure Active Directory Rol Tabanlı Access Control ve nasıl çalıştığı açıklanmaktadır.
-* [RAPORDAKI Yerleşik roller](../../role-based-access-control/built-in-roles.md)
+* [RBAC: Yerleşik Roller](../../role-based-access-control/built-in-roles.md)
 
   Bu makalede RBAC 'de kullanılabilen tüm yerleşik roller ayrıntılı olarak anlatılmaktadır.
 * [Resource Manager dağıtımını ve klasik dağıtımı anlama](../../azure-resource-manager/resource-manager-deployment-model.md)
@@ -102,9 +102,7 @@ Azure depolama hesabının yönetim işlemlerine erişmek için RBAC kullanma ha
 * [Azure Depolama Kaynak Sağlayıcısı REST API Başvurusu](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Bu API başvurusu, depolama hesabınızı programlama yoluyla yönetmek için kullanabileceğiniz API 'Leri açıklar.
-* [Aboneliklere erişmek için Kaynak Yöneticisi kimlik doğrulama API 'SI kullanma](../../azure-resource-manager/resource-manager-api-authentication.md)
 
-  Bu makalede Kaynak Yöneticisi API 'Leri kullanılarak nasıl kimlik doğrulaması yapılacağı gösterilmektedir.
 * [Ignite’tan Microsoft Azure için Rol Tabanlı Erişim Denetimi](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
   Bu bağlantı 2015 MS Ignite konferansının 9. Kanalındaki videoya aittir. Bu oturumda, Azure’daki erişim yönetimi ve raporlama özellikleri konuşulmakta ve Azure Active Directory'yi kullanarak Azure aboneliklerine erişimin güvenliğini sağlama konusundaki en iyi uygulamalar keşfedilmektedir.
@@ -148,7 +146,7 @@ Azure Key Vault kullanmanın başka bir avantajı da, Azure Active Directory kul
 
 #### <a name="resources"></a>Kaynaklar
 
-* [Azure portalında depolama hesabı ayarlarını yönetme](storage-account-manage.md)
+* [Azure Portalında depolama hesabı ayarlarını yönetme](storage-account-manage.md)
 * [Azure Depolama Kaynak Sağlayıcısı REST API Başvurusu](https://msdn.microsoft.com/library/mt163683.aspx)
 
 ## <a name="data-plane-security"></a>Veri düzlemi güvenliği
@@ -188,7 +186,7 @@ Ayrıca, SAS kullanılarak yapılan isteklerin belirli bir IP adresi veya Azure 
 #### <a name="definition-of-a-shared-access-signature"></a>Paylaşılan erişim Imzasının tanımı
 Paylaşılan erişim Imzası, kaynağı işaret eden URL 'ye eklenen bir sorgu parametreleri kümesidir
 
-Bu, izin verilen erişim ve erişim izni verilen sürenin uzunluğu hakkında bilgi sağlar. İşte bir örnek; Bu URI, beş dakikalık bir bloba okuma erişimi sağlar. SAS sorgu parametrelerinin, iki nokta için% 3A gibi URL kodlamalı olması gerektiğini unutmayın (:) ya da bir boşluk için% 20.
+Bu, izin verilen erişim ve erişim izni verilen sürenin uzunluğu hakkında bilgi sağlar. İşte bir örnek; Bu URI, beş dakikalık bir bloba okuma erişimi sağlar. SAS sorgu parametrelerinin, iki nokta için% 3A gibi URL kodlamalı olması gerektiğini unutmayın (:) ya da bir boşluk için %20.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -239,7 +237,7 @@ Paylaşılan erişim Imzalarını ve depolanan erişim Ilkelerini kullanma hakk�
   * [Hizmet SAS oluşturma](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Hesap SAS oluşturma](https://msdn.microsoft.com/library/mt584140.aspx)
 
-* Authentication
+* Kimlik Doğrulaması
 
   * [Azure depolama hizmetleri için kimlik doğrulaması](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Paylaşılan erişim Imzaları Başlangıç Öğreticisi
@@ -302,7 +300,7 @@ Azure disk şifrelemesi, bir IaaS sanal makinesi tarafından kullanılan işleti
 Çözüm, Microsoft Azure ' de etkinleştirildiklerinde IaaS VM 'Leri için aşağıdaki senaryoları destekler:
 
 * Azure Key Vault ile tümleştirme
-* Standart katman VM 'Leri: [A, D, DS, G, GS, vb. seri IaaS VM 'Leri](https://azure.microsoft.com/pricing/details/virtual-machines/)
+* Standart katman VM 'Leri: [A, D, DS, G, GS, vb. seri IaaS VM 'leri](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * Windows ve Linux IaaS VM 'lerinde şifrelemeyi etkinleştirme
 * Windows IaaS VM 'Leri için işletim sistemi ve veri sürücülerinde şifrelemeyi devre dışı bırakma
 * Linux IaaS VM 'Leri için veri sürücülerinde şifrelemeyi devre dışı bırakma
@@ -323,7 +321,7 @@ Azure disk şifrelemesi, bir IaaS sanal makinesi tarafından kullanılan işleti
 
 
 > [!NOTE]
-> Linux işletim sistemi disk şifrelemesi Şu anda aşağıdaki Linux dağıtımları üzerinde desteklenmektedir: RHEL 7,2, CentOS 7.2 n ve Ubuntu 16,04.
+> Linux işletim sistemi disk şifrelemesi Şu anda şu Linux dağıtımları üzerinde destekleniyor: RHEL 7,2, CentOS 7.2 n ve Ubuntu 16,04.
 >
 >
 
@@ -391,7 +389,7 @@ Aşağıdaki kaynaklarda listelenen, günlüklerdeki birçok alanın listesini v
 
 ![Günlük dosyasındaki alanların anlık görüntüsü](./media/storage-security-guide/image3.png)
 
-GetBlob girişleri ve bunların nasıl yetkilendirildikleri ile ilgileniyor, bu nedenle işlem türü "Get-blob" olan girdileri aramanız ve istek-durumu (dördüncü</sup> sütun) ve yetkilendirme türü (sekizinci</sup> sütun) kontrol etmeniz gerekir.
+GetBlob girişleri ve bunların nasıl yetkilendirildikleri ile ilgileniyor. bu nedenle, işlem türü "Get-blob" olan girdileri aramanız ve istek-durumu (dördüncü @ no__t-0 sütunu) ve yetkilendirme türü (sekizinci @ no__t-1 sütunu) kontrol etmeniz gerekir.
 
 Örneğin, yukarıdaki listede yer aldığı ilk birkaç satırda, istek durumu "başarılı" ve yetkilendirme türü "kimliği doğrulandı" olur. Bu, isteğin depolama hesabı anahtarı kullanılarak yetkilendirildiği anlamına gelir.
 
@@ -400,10 +398,10 @@ GetBlob girişleri ve bunların nasıl yetkilendirildikleri ile ilgileniyor, bu 
 
 1. Blob geneldir ve paylaşılan erişim Imzası olmadan bir URL kullanılarak erişilir. Bu durumda, istek durumu "AnonymousSuccess" ve yetkilendirme türü "anonim" olur.
 
-   1.0;2015-11-17T02:01:29.0488963Z;GetBlob;**AnonymousSuccess**;200;124;37;**anonymous**;;mystorage…
+   1.0; 2015-11-17T02:01:29.0488963 Z; GetBlob **Anonymoussuccess**; 200; 124; 37; **anonim**;; depolamam...
 2. Blob özeldir ve paylaşılan erişim Imzasıyla birlikte kullanılır. Bu durumda, istek durumu "SASSuccess" ve yetkilendirme türü "SAS" olur.
 
-   1.0;2015-11-16T18:30:05.6556115Z;GetBlob;**SASSuccess**;200;416;64;**sas**;;mystorage…
+   1.0; 2015-11-16T18:30:05.6556115 Z; GetBlob **Sassuccess**; 200; 416; 64; **SAS**;; depolamam...
 3. Blob özeldir ve depolama anahtarı ona erişmek için kullanılır. Bu durumda, istek durumu "**başarılı**" ve yetkilendirme türü "**kimliği doğrulandı**" dır.
 
    1.0; 2015-11-16T18:32:24.3174537 Z; GetBlob **Başarılı**; 206; 59; 22; **kimliği doğrulandı**; depolamam...
@@ -459,9 +457,9 @@ Varsayılan olarak, CORS tüm hizmetlerde devre dışıdır. Hizmet ilkelerini a
 
 Her satırın anlamı şöyledir:
 
-* **Allowedkaynakları** Bu, eşleşen olmayan etki alanlarının depolama hizmetinden veri isteyebilecekleri ve alabileceği anlamına gelir. Bu, hem contoso.com hem de fabrikam.com 'in belirli bir depolama hesabı için blob depolamadan veri isteyediğini söyler. Ayrıca, tüm etki alanlarının isteklere erişmesine izin vermek\*için bunu bir joker () olarak ayarlayabilirsiniz.
-* **AllowedMethods** Bu, isteği yaparken kullanılabilecek yöntemlerin listesidir (HTTP istek fiilleri). Bu örnekte yalnızca PUT ve GET değerlerine izin verilir. Tüm yöntemlerin kullanılmasına izin vermek için bunu bir\*joker () olarak ayarlayabilirsiniz.
-* **Allowedheaders** Bu, isteği yaparken kaynak etki alanının belirtebileceğiniz istek üst bilgileri. Bu örnekte, x-MS-Meta-Data, x-MS-meta-Target ve x-MS-meta-ABC ile başlayan tüm meta veri üst bilgilerine izin verilir. Joker karakter (\*), belirtilen önekle başlayan herhangi bir üstbilgiye izin verildiğini gösterir.
+* **Allowedkaynakları** Bu, eşleşen olmayan etki alanlarının depolama hizmetinden veri isteyebilecekleri ve alabileceği anlamına gelir. Bu, hem contoso.com hem de fabrikam.com 'in belirli bir depolama hesabı için blob depolamadan veri isteyediğini söyler. Ayrıca, tüm etki alanlarının isteklere erişmesine izin vermek için bunu bir joker (\*) olarak ayarlayabilirsiniz.
+* **AllowedMethods** Bu, isteği yaparken kullanılabilecek yöntemlerin listesidir (HTTP istek fiilleri). Bu örnekte yalnızca PUT ve GET değerlerine izin verilir. Tüm yöntemlerin kullanılmasına izin vermek için bunu bir joker (\*) olarak ayarlayabilirsiniz.
+* **Allowedheaders** Bu, isteği yaparken kaynak etki alanının belirtebileceğiniz istek üst bilgileri. Bu örnekte, x-MS-Meta-Data, x-MS-meta-Target ve x-MS-meta-ABC ile başlayan tüm meta veri üst bilgilerine izin verilir. Joker karakter (\*) belirtilen önekle başlayan herhangi bir üst bilgiye izin verildiğini gösterir.
 * **ExposedHeaders** Bu, hangi yanıt üst bilgilerinin tarayıcı tarafından istek veren tarafından sunulduğunu belirtir. Bu örnekte, "x-MS-meta-" ile başlayan herhangi bir başlık açığa alınacaktır.
 * **Maxageınseconds** Bu, bir tarayıcının ön kontrol SEÇENEKLERI isteğini önbelleğe alacak en uzun süredir. (Ön kontrol isteği hakkında daha fazla bilgi için aşağıdaki ilk makaleyi kontrol edin.)
 
@@ -486,9 +484,9 @@ CORS ve nasıl etkinleştirileceği hakkında daha fazla bilgi için bu kaynakla
    Aktarım düzeyi güvenliği sağlayan HTTPS 'yi kullanacaksanız, MD5 denetimini kullanmak gereksizdir ve gereksizdir.
 
    Daha fazla bilgi için lütfen [Azure Blob MD5 genel bakış ' a](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/02/18/windows-azure-blob-md5-overview.aspx)bakın.
-2. **ABD için FIPS uyumluluğu hakkında Devlet?**
+2. **ABD hükümeti için FIPS uyumluluğu ne kadar?**
 
-   Birleşik Devletler Federal bilgi Işleme standardı (FIPS) ABD tarafından kullanılmak üzere onaylanan şifreleme algoritmalarını tanımlar Hassas verilerin korunması için Federal Kamu bilgisayar sistemleri. Windows Server veya masaüstü üzerinde FIPS modunu etkinleştirmek, işletim sistemine yalnızca FIPS tarafından doğrulanan şifreleme algoritmalarının kullanılması gerektiğini söyler. Bir uygulama uyumlu olmayan algoritmalar kullanıyorsa, uygulamalar kesilir. With.NET Framework sürümleri 4.5.2 veya üzeri olduğunda, uygulama otomatik olarak şifreleme algoritmalarından bilgisayar FIPS modundayken FIPS uyumlu algoritmalar kullanacak şekilde geçiş yapar.
+   Birleşik Devletler Federal bilgi Işleme standardı (FIPS), ABD Federal Kamu bilgisayar sistemleri tarafından hassas verilerin korunması için kullanılmak üzere onaylanan şifreleme algoritmalarını tanımlar. Windows Server veya masaüstü üzerinde FIPS modunu etkinleştirmek, işletim sistemine yalnızca FIPS tarafından doğrulanan şifreleme algoritmalarının kullanılması gerektiğini söyler. Bir uygulama uyumlu olmayan algoritmalar kullanıyorsa, uygulamalar kesilir. With.NET Framework sürümleri 4.5.2 veya üzeri olduğunda, uygulama otomatik olarak şifreleme algoritmalarından bilgisayar FIPS modundayken FIPS uyumlu algoritmalar kullanacak şekilde geçiş yapar.
 
    Microsoft, FIPS modunu etkinleştirip etkinleştirmeyeceğine karar vermek için sizi her müşteriye bırakır. Kamu düzenlemelerine tabi olmayan müşterilerin varsayılan olarak FIPS modunu etkinleştirmek için etkileyici bir neden olmadığını düşünmüyoruz.
 
@@ -498,7 +496,7 @@ CORS ve nasıl etkinleştirileceği hakkında daha fazla bilgi için bu kaynakla
   Bu blog makalesi FIPS 'ye genel bakış sağlar ve varsayılan olarak FIPS modunu etkinleştirmedikleri açıklanmaktadır.
 * [FIPS 140 doğrulaması](https://technet.microsoft.com/library/cc750357.aspx)
 
-  Bu makalede, Microsoft ürünlerinin ve şifreleme modüllerinin ABD için FIPS standardına uygun olduğu hakkında bilgi verilmektedir. Federal Kamu.
-* ["Sistem şifrelemesi: Şifreleme, karma ve imzalama için FIPS ile uyumlu algoritmalar kullanın "Windows XP 'de ve sonraki Windows sürümlerinde güvenlik ayarları etkileri](https://support.microsoft.com/kb/811833)
+  Bu makalede, Microsoft ürünlerinin ve şifreleme modüllerinin ABD Federal Kamu kamu için FIPS standardına uygun olduğu hakkında bilgi verilmektedir.
+* ["Sistem şifrelemesi: Windows XP ve sonraki Windows sürümlerinde şifreleme, karma ve imzalama için FIPS uyumlu algoritmalar kullanın" güvenlik ayarları etkileri](https://support.microsoft.com/kb/811833)
 
   Bu makalede, daha eski Windows bilgisayarlarda FIPS modunun kullanımı hakkında bilgi oluşur.

@@ -7,16 +7,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: e6767c1e03b074f43993e449ca81af951c579090
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 39fab02ebc3a80e0aae34a86a1a6b7f3f46c96f3
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937316"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286757"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Azure Veri Gezgini verilerini sorgulamak ve görselleştirmek için Power BI kullanmaya yönelik en iyi uygulamalar
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir bir veri araştırma hizmetidir. [Power BI](https://docs.microsoft.com/power-bi/) , verilerinizi görselleştirmenizi ve sonuçları kuruluşunuz genelinde paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini Power BI verilere bağlanmak için üç seçenek sunar. [Yerleşik bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini bir sorguyu Power BI içine aktarın](power-bi-imported-query.md)veya bir [SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makale, Azure Veri Gezgini verilerinizi Power BI ile sorgulama ve görselleştirme için ipuçları sağlar. 
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. [Power BI](https://docs.microsoft.com/power-bi/) , verilerinizi görselleştirmenizi ve sonuçları kuruluşunuz genelinde paylaşmanızı sağlayan bir iş analizi çözümüdür. Azure Veri Gezgini Power BI verilere bağlanmak için üç seçenek sunar. [Yerleşik bağlayıcıyı](power-bi-connector.md)kullanın, [Azure Veri Gezgini bir sorguyu Power BI içine aktarın](power-bi-imported-query.md)veya bir [SQL sorgusu](power-bi-sql-query.md)kullanın. Bu makale, Azure Veri Gezgini verilerinizi Power BI ile sorgulama ve görselleştirme için ipuçları sağlar. 
 
 ## <a name="best-practices-for-using-power-bi"></a>Power BI kullanmak için en iyi uygulamalar 
 
@@ -48,7 +48,7 @@ Aşağıdaki bölümde, Power BI ile kusto sorgu dilini kullanmaya yönelik ipu�
 
 Karmaşık sorgular, kusto içinde Power Query kıyasla daha kolay bir şekilde ifade edilir. [Kusto işlevleri](/azure/kusto/query/functions)olarak uygulanmalıdır ve Power BI çağrılır. Bu yöntem, kusto sorgunuzda `let` deyimleriyle **DirectQuery** kullanılırken gereklidir. Power BI iki sorguyu birleştiğinden ve `let` deyimleri `join` işleciyle birlikte kullanılamaz, söz dizimi hataları oluşabilir. Bu nedenle, birleştirmenin her bölümünü bir kusto işlevi olarak kaydedin ve Power BI bu iki işlevi birlikte katılmasına izin verin.
 
-### <a name="how-to-simulate-a-relative-data-time-operator"></a>Göreli veri-zaman işlecinin benzetimini yapma
+### <a name="how-to-simulate-a-relative-date-time-operator"></a>Göreli tarih-saat işlecinin benzetimini yapma
 
 Power BI, `ago()` gibi *göreli* bir tarih-saat işleci içermez.
 @No__t benzetimini yapmak için, `DateTime.FixedLocalNow()` ve `#duration` Power BI işlevlerinin birleşimini kullanın.
@@ -98,7 +98,7 @@ Sorgudaki bilgileri filtrelemek ve sorgu performansını iyileştirmek için bir
     Source = Kusto.Contents("<Cluster>", "<Database>", "<Query>", [])
     ```
    
-   Örneğin:
+   Örnek:
 
     ```powerquery-m
     Source = Kusto.Contents("Help", "Samples", "StormEvents | where State == 'ALABAMA' | take 100", [])

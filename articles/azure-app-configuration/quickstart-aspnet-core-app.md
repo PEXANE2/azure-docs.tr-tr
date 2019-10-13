@@ -12,14 +12,14 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
-ms.date: 02/24/2019
+ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: a2764c8e634fd8d827cba9fa7ec9cb61cc6c40af
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035308"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299943"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma
 
@@ -53,7 +53,9 @@ Yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için [.NET Core k
 
 2. Yeni klasörde, yeni bir ASP.NET Core MVC web uygulaması projesi oluşturmak için aşağıdaki komutu çalıştırın:
 
+    ```CLI
         dotnet new mvc --no-https
+    ```
 
 ## <a name="add-secret-manager"></a>Gizli dizi Yöneticisi ekleme
 
@@ -83,19 +85,23 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
 1. Aşağıdaki komutu çalıştırarak `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet paketine bir başvuru ekleyin:
 
+    ```CLI
         dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
-
+    ```
 2. Projenizin paketlerini geri yüklemek için aşağıdaki komutu çalıştırın:
 
+    ```CLI
         dotnet restore
-
+    ```
 3. Gizli dizi adlı *ConnectionString: AppConfig* adında bir gizli dizi ekleyin.
 
     Bu gizli anahtar, uygulama yapılandırma deponuza erişmek için bağlantı dizesini içerir. Aşağıdaki komutta bulunan değeri, uygulama yapılandırma deponuzdaki bağlantı dizesiyle değiştirin.
 
     Bu komut, *.csproj* dosyası ile aynı dizinde yürütülmelidir.
 
+    ```CLI
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+    ```
 
     > [!IMPORTANT]
     > Bazı kabuklar, tırnak içine alınmadığı takdirde bağlantı dizesini keser. @No__t-0 komutunun çıktısının tüm bağlantı dizesini belirttiğinden emin olun. Aksi takdirde, bağlantı dizesini tırnak içine alarak komutu yeniden çalıştırın.
@@ -111,6 +117,11 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     ```
 
 5. @No__t-0 yöntemini, `config.AddAzureAppConfiguration()` yöntemini çağırarak uygulama yapılandırmasını kullanacak şekilde güncelleştirin.
+    
+    > [!IMPORTANT]
+    > `CreateHostBuilder`, .NET Core 3,0 ' de `CreateWebHostBuilder` ' i değiştirir.  Ortamınıza göre doğru söz dizimini seçin.
+
+    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>.NET Core 2. x için güncelleştirme `CreateWebHostBuilder`
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -123,9 +134,23 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
             .UseStartup<Startup>();
     ```
 
+    ### <a name="update-createhostbuilder-for-net-core-3x"></a>.NET Core 3. x için güncelleştirme `CreateHostBuilder`
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+        .ConfigureWebHostDefaults(webBuilder =>
+        webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+        {
+            var settings = config.Build();
+            config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+        })
+        .UseStartup<Startup>());
+    ```
+
 6. Görünümler > giriş dizininde *Index. cshtml* dosyasını açın ve içeriğini aşağıdaki kodla değiştirin:
 
-    ```html
+    ```HTML
     @using Microsoft.Extensions.Configuration
     @inject IConfiguration Configuration
 
@@ -144,7 +169,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
 7. Görünümler > paylaşılan dizinde *_Layout. cshtml* dosyasını açın ve içeriğini aşağıdaki kodla değiştirin:
 
-    ```html
+    ```HTML
     <!DOCTYPE html>
     <html>
     <head>
@@ -173,11 +198,15 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
 1. .NET Core CLI kullanarak uygulamayı derlemek için komut kabuğu 'nda aşağıdaki komutu çalıştırın:
 
-        dotnet build
+    ```CLI
+       dotnet build
+    ```
 
 2. Oluşturma başarıyla tamamlandıktan sonra, Web uygulamasını yerel olarak çalıştırmak için aşağıdaki komutu çalıştırın:
 
+    ```CLI
         dotnet run
+    ```
 
 3. Bir tarayıcı penceresi açın ve yerel olarak barındırılan Web uygulamasının varsayılan URL 'SI olan `http://localhost:5000` ' a gidin.
 

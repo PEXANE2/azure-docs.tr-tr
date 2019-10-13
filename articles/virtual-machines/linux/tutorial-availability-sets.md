@@ -15,25 +15,25 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8857e93aec883dc4b7fe0b71093184c3b604b24a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 10458e3c5f1e4dc9034206470fdfec19e13417fb
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103586"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299441"
 ---
-# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Öğretici: Azure CLı ile yüksek oranda kullanılabilir sanal makineler oluşturma ve dağıtma
+# <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>Öğretici: Azure CLI ile yüksek oranda kullanılabilir sanal makineler oluşturma ve dağıtma
 
 Bu öğreticide, Kullanılabilirlik Kümeleri adlı bir özellik kullanarak Azure’da Sanal Makine çözümlerinizin kullanılabilirlik ve güvenilirliğini nasıl artıracağınızı öğreneceksiniz. Kullanılabilirlik kümeleri, Azure’da dağıttığınız VM’lerin birden fazla yalıtılmış donanım kümesi arasında dağıtılmasını sağlar. Böylece, Azure’da bir donanım veya yazılım hatası oluşursa yalnızca sanal makinelerinizin bir alt kümesinin etkilenmesi ve genel çözümünüzün kullanılabilir ve çalışır durumda kalması sağlanır.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Kullanılabilirlik kümesi oluştur
+> * Kullanılabilirlik kümesi oluşturma
 > * Kullanılabilirlik kümesinde sanal makine oluşturma
 > * Kullanılabilir sanal makine boyutlarını denetleme
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
@@ -50,11 +50,11 @@ Dört adet ön uç web sunucusuna sahip olabileceğiniz ve bir veritabanını ba
 
 ### <a name="availability-zone-overview"></a>Kullanılabilirlik bölgesine genel bakış
 
-Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Kullanılabilirlik, bir Azure bölgesi içinde benzersiz fiziksel konumlara bölgeleridir. Her bölge, soğutma ve ağ bağımsız güç ile donatılmış bir veya daha fazla veri merkezlerinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaları ve verileri veri merkezi hatalarından korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi Kullanılabilirlik Alanları arasında çoğaltarak hata noktalarından koruyun. Azure, Kullanılabilirlik Alanları, sektörde en iyi% 99,99 VM çalışma süresi SLA 'Sı sunmaktadır.
+Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılık sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır. Bir bölgedeki Kullanılabilirlik Alanları fiziksel ayrımı, uygulamaları ve verileri veri merkezi hatalarından korur. Bölgesel olarak yedekli hizmetler, uygulamalarınızı ve verilerinizi Kullanılabilirlik Alanları arasında çoğaltarak hata noktalarından koruyun. Azure, Kullanılabilirlik Alanları, sektörde en iyi% 99,99 VM çalışma süresi SLA 'Sı sunmaktadır.
 
 Kullanılabilirlik kümelerine benzer şekilde, dört adet ön uç Web sunucusuna sahip olabileceğiniz ve bir veritabanını barındıran iki arka uç VM 'yi kullanabileceğiniz tipik bir VM tabanlı çözümü ele alalım. Kullanılabilirlik kümelerine benzer şekilde, sanal makinelerinizi iki ayrı kullanılabilirlik bölgesinde da dağıtmak isteyeceksiniz: "Web" katmanı için bir kullanılabilirlik bölgesi ve "veritabanı" katmanı için bir kullanılabilirlik alanı. Yeni bir VM oluşturduğunuzda ve az VM Create komutuna bir parametre olarak kullanılabilirlik alanını belirttiğinizde, Azure otomatik olarak oluşturduğunuz VM 'Lerin tamamen farklı kullanılabilirlik bölgelerinde yalıtılmasını sağlar. Web sunucunuz veya veritabanı sunucusu VM 'lerinden birinin üzerinde çalıştığı tüm veri merkezinde bir sorun varsa, Web sunucunuzun ve veritabanı sanal makinelerinizin diğer örneklerinin tamamen ayrı veri merkezlerinde çalıştığı için çalışmaya devam ettiğinden emin olmalısınız.
 
-## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluştur
+## <a name="create-an-availability-set"></a>Kullanılabilirlik kümesi oluşturma
 
 [az vm availability-set create](/cli/azure/vm/availability-set) komutunu kullanarak bir kullanılabilirlik kümesi oluşturabilirsiniz. Bu örnekte, *myResourceGroupAvailability* kaynak grubundaki *myAvailabilitySet* adlı kullanılabilirlik kümesi için güncelleştirme ve hata etki alanları sayısı *2* olarak ayarlanmıştır.
 
@@ -116,7 +116,7 @@ az vm availability-set list-sizes \
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
-> * Kullanılabilirlik kümesi oluştur
+> * Kullanılabilirlik kümesi oluşturma
 > * Kullanılabilirlik kümesinde sanal makine oluşturma
 > * Kullanılabilir sanal makine boyutlarını denetleme
 
@@ -126,5 +126,5 @@ Sanal makine ölçek kümeleri hakkında daha fazla bilgi edinmek için sonraki 
 > [Sanal makine ölçek kümesi oluşturma](tutorial-create-vmss.md)
 
 * Kullanılabilirlik bölgeleri hakkında daha fazla bilgi edinmek için [kullanılabilirlik alanları belgelerini](../../availability-zones/az-overview.md)ziyaret edin.
-* Hem kullanılabilirlik kümeleri hem de kullanılabilirlik bölgeleri hakkında daha fazla belgeye de [](./manage-availability.md)ulaşabilirsiniz.
+* Hem kullanılabilirlik kümeleri hem de kullanılabilirlik bölgeleri hakkında daha fazla belgeye de [ulaşabilirsiniz.](./manage-availability.md)
 * Kullanılabilirlik bölgelerini denemek için [Azure CLI ile bir kullanılabilirlik alanında Linux sanal makinesi oluşturma](./create-cli-availability-zone.md) sayfasını ziyaret edin

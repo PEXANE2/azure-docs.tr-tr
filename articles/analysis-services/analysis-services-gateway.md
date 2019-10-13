@@ -2,18 +2,17 @@
 title: Azure Analysis Services için şirket içi veri ağ geçidi | Microsoft Docs
 description: Azure 'daki Analysis Services sunucunuz şirket içi veri kaynaklarına bağlanabiliyor ise şirket içi ağ geçidi gereklidir.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b783e6b709700104985ef3f052443cf1284bf2d6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 8d9df32070ff252dff791650788888d1d9a6ce84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678386"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294943"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Şirket içi veri ağ geçidi ile şirket içi veri kaynaklarına bağlanma
 
@@ -21,7 +20,7 @@ ms.locfileid: "68678386"
 
 Azure Analysis Services için, ilk kez ağ geçidi ile kurulum almak dört bölümden oluşan bir işlemdir:
 
-- **Kurulumu indir ve Çalıştır** -Bu adım, kuruluşunuzdaki bir bilgisayara ağ geçidi hizmeti yükler. Ayrıca kiracınızın Azure AD 'deki bir hesabı kullanarak Azure 'da [](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) oturum açın. Azure B2B (konuk) hesapları desteklenmez.
+- **Kurulumu indir ve Çalıştır** -Bu adım, kuruluşunuzdaki bir bilgisayara ağ geçidi hizmeti yükler. Ayrıca [kiracınızın](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure AD 'deki bir hesabı kullanarak Azure 'da oturum açın. Azure B2B (konuk) hesapları desteklenmez.
 
 - **Ağ geçidinizin kaydetme** -Bu adımda, ağ geçidiniz için bir ad ve kurtarma anahtarı belirtip ağ geçidinizi ağ geçidi bulut hizmetine kaydederek bir bölge seçin. Ağ Geçidi kaynağınız herhangi bir bölgeye kaydedilebilir, ancak Analysis Services sunucularınız ile aynı bölgede olmasını öneririz. 
 
@@ -32,7 +31,7 @@ Azure Analysis Services için, ilk kez ağ geçidi ile kurulum almak dört böl�
 ## <a name="how-it-works"> </a>Nasıl çalıştığı
 Kuruluşunuzdaki bir bilgisayara yüklediğiniz ağ geçidi, bir Windows hizmeti, Şirket **içi veri ağ geçidi**olarak çalışır. Bu yerel hizmet, Azure Service Bus aracılığıyla ağ geçidi bulut hizmetine kaydedilir. Daha sonra Azure aboneliğiniz için bir şirket içi veri ağ geçidi kaynağı oluşturursunuz. Azure Analysis Services sunucularınız Azure Gateway kaynağına bağlanır. Sunucunuzdaki modellerin sorgular veya işleme için şirket içi veri kaynaklarınıza bağlanması gerektiğinde, bir sorgu ve veri akışı, ağ geçidi kaynağı, Azure Service Bus, yerel şirket içi veri ağ geçidi hizmeti ve veri kaynaklarınızı ele alır. 
 
-![Nasıl çalışır?](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
+![Nasıl çalışır](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
 Sorgular ve veri akışı:
 
@@ -43,7 +42,7 @@ Sorgular ve veri akışı:
 5. Ağ Geçidi, yürütme için sorguyu veri kaynağına gönderir.
 6. Sonuçlar veri kaynağından, ağ geçidine geri ve ardından bulut hizmeti ve sunucunuz üzerine gönderilir.
 
-## <a name="installing"></a>Yükleniyor
+## <a name="installing"></a>Yüklemenin
 
 Azure Analysis Services ortamı için yükleme yaparken, [Azure Analysis Services için şirket içi veri ağ geçidini yükleme ve yapılandırma](analysis-services-gateway-install.md)bölümünde açıklanan adımları izlemeniz önemlidir. Bu makale Azure Analysis Services özeldir. Azure 'da şirket içi veri ağ geçidi kaynağı kurmak ve Azure Analysis Services sunucunuzu kaynağa bağlamak için gereken ek adımları içerir.
 
@@ -63,16 +62,16 @@ Ağ Geçidi tarafından kullanılan tam etki alanı adları aşağıda verilmiş
 | *. login.windows.net, login.live.com, aadcdn.msauth.net |443 |HTTPS |
 | *.servicebus.windows.net |5671-5672 |Gelişmiş İleti Sıraya Alma Protokolü (AMQP) |
 | *.servicebus.windows.net |443, 9350-9354 |TCP üzerinden Service Bus geçişine yönelik dinleyiciler (Access Control belirteci alımı için 443 gerekir) |
-| *.frontend.clouddatahub.net |443 |HTTPS |
+| *. frontend.clouddatahub.net |443 |HTTPS |
 | *. core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
 | *. msftncsi.com |443 |Power BI hizmeti ağ geçidine erişilemiyorsa internet bağlantısını test etmek için kullanılır. |
-| *.microsoftonline-p.com |443 |Yapılandırmaya bağlı olarak kimlik doğrulaması için kullanılır. |
+| *. microsoftonline-p.com |443 |Yapılandırmaya bağlı olarak kimlik doğrulaması için kullanılır. |
 | dc.services.visualstudio.com  |443 |Appınsights tarafından telemetri toplamak için kullanılır. |
 
 ### <a name="force-https"></a>Azure Service Bus ile HTTPS iletişimini zorlama
 
-Ağ geçidini, doğrudan TCP yerine HTTPS kullanarak Azure Service Bus ile iletişim kurmaya zorlayabilirsiniz; Ancak bunu yapmak performansı önemli ölçüde azaltabilir. Değerini`AutoDetect` olarak`Https`değiştirerek *Microsoft. PowerBI. datataşıması. Pipeline. gatewaycore. dll. config* dosyasını değiştirebilirsiniz. Bu dosya genellikle *C:\Program Files\On-premises Data Gateway*konumunda bulunur.
+Ağ geçidini, doğrudan TCP yerine HTTPS kullanarak Azure Service Bus ile iletişim kurmaya zorlayabilirsiniz; Ancak bunu yapmak performansı önemli ölçüde azaltabilir. *Microsoft. PowerBI. Datataşıması. Pipeline. GatewayCore. dll. config* dosyasını `AutoDetect` ' den `Https` ' ye değiştirerek değiştirebilirsiniz. Bu dosya genellikle *C:\Program Files\On-premises Data Gateway*konumunda bulunur.
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">

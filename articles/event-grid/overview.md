@@ -1,6 +1,6 @@
 ---
-title: Yayımla ve abone ol uygulama olayları - Azure Event Grid
-description: Olay verileri bir kaynaktan işleyicisi Azure Event Grid ile gönderin. Olay tabanlı uygulamalar oluşturmanıza ve Azure Hizmetleri ile tümleştirme.
+title: Uygulama olaylarına yayımlayın ve abone olun Azure Event Grid
+description: Azure Event Grid olan bir kaynaktan işleyicilere olay verileri gönderin. Olay tabanlı uygulamalar oluşturun ve Azure hizmetleriyle tümleştirin.
 services: event-grid
 author: banisadr
 manager: timlt
@@ -9,26 +9,26 @@ ms.topic: overview
 ms.date: 05/25/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: b262a06bc3d80bd1f8105c6629bbc07e6ccd34eb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c00c1ecf001162964b01a3e858534fa502b7484c
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077151"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285854"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid nedir?
 
-Azure Event Grid, olay temelli mimarilerle kolayca uygulamalar derlemenize olanak tanır. İlk olarak, abone olun ve ardından olay işleyicisi veya olay göndermek için Web kancası uç noktası vermek istediğiniz Azure kaynağını seçin. Event Grid, depolama blobları ve kaynak grupları gibi Azure hizmetlerinden gelen olaylar için yerleşik destek sunar. Event Grid, özel konular kullanarak kendi olaylarınızı oluşturmanızı da destekler. 
+Azure Event Grid, olay temelli mimarilerle kolayca uygulamalar derlemenize olanak tanır. İlk olarak, abone olmak istediğiniz Azure kaynağını seçin ve olay işleyicisine veya Web kancası uç noktasına olayı göndermek için verin. Event Grid, depolama blobları ve kaynak grupları gibi Azure hizmetlerinden gelen olaylar için yerleşik destek sunar. Event Grid, özel konular kullanarak kendi olaylarınızı oluşturmanızı da destekler. 
 
 Belirli olayları farklı uç noktalara yönlendirmek, birden fazla uç noktaya yayın yapmak ve olaylarınızın güvenilir bir şekilde teslim edildiğinden emin olmak üzere filtreleri kullanabilirsiniz.
 
-Azure Event Grid, her bölgede birden çok hata etki alanına ve kullanılabilirlik bölgeleri (onları destekleyen bölgeleri) arasında yerel olarak yayarak kullanılabilirliği en üst düzeye çıkarmak için dağıtılır. Azure Event Grid şu anda tüm genel bölgelerde kullanılabilir durumdadır. Henüz Azure Almanya, Azure Çin 21Vianet veya Azure kamu Bulutları kullanılabilir değil.
+Azure Event Grid, her bölgedeki birden çok hata etki alanına ve kullanılabilirlik bölgelerine (bunları destekleyen bölgelerde) yerel olarak yayılarak kullanılabilirliği en üst düzeye çıkarmak üzere dağıtılır. Event Grid tarafından desteklenen bölgelerin listesi için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
 Bu makalede Azure Event Grid’e genel bir bakış sağlanmıştır. Event Grid kullanmaya başlamak istiyorsanız bkz. [Azure Event Grid ile özel olaylar oluşturma ve yönlendirme](custom-event-quickstart.md). 
 
-![Olay ızgarası modeli kaynakları ve işleyicileri](./media/overview/functional-model.png)
+![Kaynak ve işleyicilerle Event Grid modeli](./media/overview/functional-model.png)
 
-Bu görüntü nasıl Event Grid kaynakları ve işleyicilerini bağlar ve desteklenen tümleştirmeler kapsamlı bir listesi değildir gösterir.
+Bu görüntü, Event Grid kaynakları ve işleyicileri nasıl bağladığını gösterir ve desteklenen tümleştirmelerin kapsamlı bir listesi değildir.
 
 ## <a name="event-sources"></a>Olay kaynakları
 
@@ -36,13 +36,13 @@ Kaynağın özellikleriyle ilgili tüm ayrıntılar ve ilgili makaleler için bk
 
 * [Azure abonelikleri (yönetim işlemleri)](event-sources.md#azure-subscriptions)
 * [Container Registry](event-sources.md#container-registry)
-* [Özel konular](event-sources.md#custom-topics)
+* [Özel Konular](event-sources.md#custom-topics)
 * [Event Hubs](event-sources.md#event-hubs)
 * [IoT Hub’ı](event-sources.md#iot-hub)
 * [Media Services](event-sources.md#media-services)
 * [Kaynak grupları (yönetim işlemleri)](event-sources.md#resource-groups)
 * [Service Bus](event-sources.md#service-bus)
-* [Depolama blobu](event-sources.md#storage)
+* [Depolama Blobu](event-sources.md#storage)
 * [Azure Haritalar](event-sources.md#maps)
 
 ## <a name="event-handlers"></a>Olay işleyicileri
@@ -66,19 +66,19 @@ Azure Event Grid’de başlangıç yapmanızı sağlayan beş kavram vardır:
 * **Olaylar** - Ne olduğu.
 * **Olay kaynakları** - Olayın gerçekleştiği yer.
 * **Konu Başlıkları** - Yayımcıların olayları gönderdiği uç nokta.
-* **Olay abonelikleri** -rota olayları, bazen birden fazla işleyici için uç nokta veya yerleşik mekanizması. Abonelikler ayrıca işleyiciler tarafından gelen olayları akıllıca filtrelemek için de kullanılır.
+* **Olay abonelikleri** -olayları yönlendirmek için uç nokta veya yerleşik mekanizma, bazen birden fazla işleyiciye. Abonelikler ayrıca işleyiciler tarafından gelen olayları akıllıca filtrelemek için de kullanılır.
 * **Olay işleyicileri** - Olaya tepki veren uygulama ya da hizmet.
 
 Bu kavramlar hakkında daha fazla bilgi için bkz. [Azure Event Grid’de Kavramlar](concepts.md).
 
-## <a name="capabilities"></a>Özellikler
+## <a name="capabilities"></a>Yetenekler
 
 Azure Event Grid’in önemli özelliklerinden bazıları şunlardır:
 
 * **Basitlik** - Azure kaynağınızdan herhangi bir olay işleyici ya da uç noktaya olayları hedeflemek için üzerine gelip tıklayın.
-* **Gelişmiş filtreleme** -filtre olay türü veya olay, olay işleyicileri, yalnızca ilgili olayları aldığınızdan emin olmak için yol yayımlama.
-* **Yayma** -birkaç uç noktayı gerektiğinde sayıda basamağa olay kopyasını göndermek için aynı olaya abone olun.
-* **Güvenilirlik** -olayları teslim edilir emin olmak için bir üstel geri alma ile 24 saat yeniden deneyin.
+* **Gelişmiş filtreleme** -olay işleyicilerinin yalnızca ilgili olayları aldığından emin olmak için olay türü veya olay yayımlama yolunu filtreleyin.
+* **Fanı-Out** -etkinliğin kopyalarını gereken sayıda yere göndermek için aynı olaya birkaç uç noktayı abone yapın.
+* **Güvenilirlik** -24 saat üstel geri alma ile yeniden dener ve olayların teslim edildiğinden emin olun.
 * **Olay başına ödeme** - Yalnızca Event Grid’i kullandığınız miktar için ödeme yapın.
 * **Yüksek aktarım hızı** - Saniyede milyonlarca olay desteği ile Event Grid’de yüksek hacimli iş yükleri oluşturun.
 * **Yerleşik Olaylar** - Kaynak tarafından tanımlanan yerleşik olaylarla hızlıca çalışmaya başlayın.
@@ -88,25 +88,25 @@ Event Grid, Event Hubs ve Service Bus hizmetlerinin bir karşılaştırması iç
 
 ## <a name="what-can-i-do-with-event-grid"></a>Event Grid ile ne yapabilirim?
 
-Azure Event Grid, birkaç büyük ölçüde sunucusuz geliştiren özellikler, işlem Otomasyonu sağlar ve [tümleştirme](https://azure.com/integration) çalışır: 
+Azure Event Grid sunucusuz, Ops otomasyonu ve [tümleştirme](https://azure.com/integration) çalışmasını büyük ölçüde çeşitli özellikler sağlar: 
 
 ### <a name="serverless-application-architectures"></a>Sunucusuz uygulama mimarileri
 
 ![Sunucusuz uygulama mimarisi](./media/overview/serverless_web_app.png)
 
-Event Grid, veri kaynaklarını ve olay işleyicilerini bağlar. Örneğin, bir blob depolama kapsayıcısına eklenen görüntülerini inceler sunucusuz bir işlev tetiklemek için Event grid'i kullanın. 
+Event Grid, veri kaynaklarını ve olay işleyicilerini bağlar. Örneğin, bir BLOB depolama kapsayıcısına eklendiğinde görüntüleri çözümleyen sunucusuz bir işlev tetiklemek için Event Grid kullanın. 
 
 ### <a name="ops-automation"></a>İşlem Otomasyonu
 
-![İşlem Otomasyonu](./media/overview/Ops_automation.png)
+![İşlemler Otomasyonu](./media/overview/Ops_automation.png)
 
-Event Grid, otomasyonu hızlandırmanızı ve ilke uygulamayı basitleştirmenizi sağlar. Örneğin, bir sanal makine veya SQL veritabanı oluşturulduğunda Azure Otomasyonu bildirmek için Event grid'i kullanın. Meta veri, operasyon araçlarına, sanal makineleri etiketlemek ve iş öğelerini yerleştirin otomatik olarak hizmet yapılandırmalarının uyumlu olup olmadığını denetlemek için olayları kullanın.
+Event Grid, otomasyonu hızlandırmanızı ve ilke uygulamayı basitleştirmenizi sağlar. Örneğin, bir sanal makine veya SQL veritabanı oluşturulduğunda Azure Otomasyonu 'na bildirmek için Event Grid kullanın. Hizmet yapılandırmalarının uyumlu olup olmadığını otomatik olarak denetlemek, işletim araçlarına meta veriler koymak, sanal makineleri etiketlemek veya dosya iş öğeleri için olayları kullanın.
 
-### <a name="application-integration"></a>Uygulama tümleştirme
+### <a name="application-integration"></a>Uygulama entegrasyonu
 
-![Azure ile uygulama tümleştirme](./media/overview/app_integration.png)
+![Azure ile uygulama tümleştirmesi](./media/overview/app_integration.png)
 
-Event Grid, uygulamanızı diğer hizmetlere bağlar. Örneğin, uygulamanızın olay verilerini Event Grid’e göndermek için özel bir konu başlığı oluşturup Azure ile doğrudan tümleştirme, güvenilir teslim ve gelişmiş yönlendirme özelliklerinden yararlanabilirsiniz. Ya da kod yazmadan her yerden, işlem veri Event grid'i Logic Apps ile kullanabilirsiniz. 
+Event Grid, uygulamanızı diğer hizmetlerle bağlar. Örneğin, uygulamanızın olay verilerini Event Grid’e göndermek için özel bir konu başlığı oluşturup Azure ile doğrudan tümleştirme, güvenilir teslim ve gelişmiş yönlendirme özelliklerinden yararlanabilirsiniz. Ya da, kod yazmadan verileri her yerde işlemek için Logic Apps Event Grid kullanabilirsiniz. 
 
 ## <a name="how-much-does-event-grid-cost"></a>Event Grid’in maliyeti ne kadardır?
 
@@ -123,4 +123,4 @@ Azure Event Grid, olay başına ödeme fiyatlandırma modeli kullanır, bu neden
 * [Veri ambarına büyük veri akışı yapma](event-grid-event-hubs-integration.md)  
   Azure İşlevleri’ni kullanarak Event Hubs’dan SQL Veri Ambarı’na veri akışı yapan öğretici.
 * [Event Grid REST API başvurusu](/rest/api/eventgrid)  
-  Olay Aboneliklerini yönetmek için başvuru içeriği sağlar Yönlendirme ve filtreleme.
+  Olay abonelikleri, Yönlendirme ve filtrelemeyi yönetmek için başvuru içeriği sağlar.

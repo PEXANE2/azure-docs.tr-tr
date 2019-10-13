@@ -2,20 +2,19 @@
 title: 'Hızlı başlangıç: PowerShell kullanarak bir Azure Analysis Services sunucusu oluşturma | Microsoft Docs'
 description: PowerShell kullanarak bir Azure Analysis Services sunucusu oluşturma hakkında bilgi edinin.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8159cc8d0e00e830f52e1814ac770c4a16f6b957
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a5517d62e0fa4070411a087e241cad9d82f379b2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619347"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295099"
 ---
-# <a name="quickstart-create-a-server---powershell"></a>Hızlı Başlangıç: Sunucu oluşturma - PowerShell
+# <a name="quickstart-create-a-server---powershell"></a>Hızlı başlangıç: Sunucu oluşturma - PowerShell
 
 Bu hızlı başlangıç, Azure aboneliğinizde bir Azure Analysis Services sunucusu oluşturmak için komut satırından PowerShell kullanmayı anlatmaktadır.
 
@@ -23,8 +22,8 @@ Bu hızlı başlangıç, Azure aboneliğinizde bir Azure Analysis Services sunuc
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure aboneliği**: Hesap oluşturmak için [Azure Ücretsiz deneme sürümünü](https://azure.microsoft.com/offers/ms-azr-0044p/) ziyaret edin.
-- **Azure Active Directory**: Aboneliğiniz bir Azure Active Directory kiracısıyla ilişkilendirilmelidir ve bu dizinde bir hesabınız olması gerekir. Daha fazla bilgi edinmek için bkz. [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md).
+- **Azure aboneliği**: Hesap oluşturmak için [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/offers/ms-azr-0044p/)’nü ziyaret edin.
+- **Azure Active Directory**: Aboneliğinizin bir Azure Active Directory Kiracısı ile ilişkilendirilmiş olması ve ilgili dizinde bir hesabınızın olması gerekir. Daha fazla bilgi edinmek için bkz. [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md).
 - **Azure PowerShell**. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemek veya yükseltmek için bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps).
 
 ## <a name="import-azanalysisservices-module"></a>Al az. AnalysisServices modülü
@@ -35,7 +34,7 @@ Aboneliğinizde bir sunucu oluşturmak için [az. AnalysisServices](/powershell/
 Import-Module Az.AnalysisServices
 ```
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutunu kullanarak Azure aboneliğinizde oturum açın. Ekrandaki yönergeleri izleyin.
 
@@ -73,6 +72,6 @@ Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceG
 Bu hızlı başlangıçta PowerShell kullanarak Azure aboneliğinizde sunucu oluşturmayı öğrendiniz. Sunucuyu oluşturduğunuza göre bir sunucu güvenlik duvarı yapılandırarak (isteğe bağlı) güvenliğinin sağlanmasına yardımcı olacaksınız. Sunucunuza doğrudan portaldan örnek bir veri modeli de ekleyebilirsiniz. Örnek modelin olması, model veritabanı rollerini yapılandırma ve istemci bağlantılarını test etme işlemlerini öğrenme konusunda yardımcı olur. Daha fazla bilgi edinmek için, örnek model ekleme öğreticisiyle devam edin.
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Sunucu güvenlik duvarını yapılandırma-Portal](analysis-services-qs-firewall.md)      
+> [Hızlı başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
 > [Öğretici: Sunucunuza örnek model ekleme](analysis-services-create-sample-model.md)

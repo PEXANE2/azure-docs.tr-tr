@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: f3cfb892fc116640df5dd30abf857bde6e196224
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b7d2e1b08653cb8023ef6a5190ab53ecc3d568a6
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880117"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297074"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Bir Mxyonga IoT DevKit cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -34,7 +34,7 @@ Bu makaledeki adımları tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyac
 
 ## <a name="get-device-connection-details"></a>Cihaz bağlantısı ayrıntılarını al
 
-Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağlantısı**' nı seçin. **Kapsam kimliği** ve **birincil anahtarı**bir yere göz önünde yapın.
+Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağlantısı**' nı seçin. **Kimlik kapsamını** ve **birincil anahtarı**bir yere getirin.
 
 ![Cihaz grubu bağlantı ayrıntıları](media/howto-connect-devkit-pnp/device-group-connection-details.png)
 
@@ -53,7 +53,7 @@ Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağl
 
 1. Bilgisayarınızda veya tabletinizde, cihazın ekranında gösterilen WiFi ağ adına bağlanın. WiFi ağı **az** ve ardından MAC adresi ile başlar. Bu ağa bağlandığınızda Internet erişiminiz yok demektir. Bu durum beklenir ve bu ağa yalnızca cihazı yapılandırırken kısa bir süre boyunca bağlanırsınız.
 
-1. Web tarayıcınızı açın ve adresine [http://192.168.0.1/](http://192.168.0.1/)gidin. Aşağıdaki Web sayfası görüntülenir:
+1. Web tarayıcınızı açın ve [http://192.168.0.1/](http://192.168.0.1/)' e gidin. Aşağıdaki Web sayfası görüntülenir:
 
     ![Yapılandırma Kullanıcı arabirimi](media/howto-connect-devkit-pnp/config-ui.png)
 
@@ -61,7 +61,7 @@ Azure IoT Central uygulamanızda, **Yönetim** sekmesini seçin ve **cihaz bağl
 
     - WiFi ağınızın adı (SSID).
     - WiFi ağı parolanız.
-    - Bağlantı ayrıntıları: kendiniz seçebileceğiniz **CIHAZ kimliği** ve **Kapsam KIMLIĞI** ve **Grup SAS birincil anahtarı** daha önce bir yere göz ınızı yapmış olursunuz.
+    - Bağlantı ayrıntıları: kendiniz seçebileceğiniz **CIHAZ kimliği** ve **kimlik KAPSAMı** ve **Grup SAS birincil anahtarı** daha önce bir yere göz ınızı yapmış olursunuz.
 
     > [!NOTE]
     > Şu anda IoT DevKit yalnızca 2,4 GHz Wi-Fi ' a bağlanabilir, donanım kısıtlamaları nedeniyle 5 GHz desteklenmez.
@@ -86,7 +86,7 @@ IoT Central uygulamanızda, **cihazlar** sekmesini seçin, eklediğiniz cihazı 
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Kodu gözden geçirmek veya değiştirmek ve derlemek için, [Mxyongaıot DevKit örnek kodu GitHub deposuna](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp)gidin.
+Kodu gözden geçirmek veya değiştirmek ve derlemek için [kod örneklerine](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

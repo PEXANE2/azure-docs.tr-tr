@@ -2,18 +2,17 @@
 title: Azure Analysis Services modelleri için zaman uyumsuz yenileme | Microsoft Docs
 description: REST API kullanarak zaman uyumsuz yenilemeyi nasıl kodleyeceğinizi öğrenin.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 82e40f756e0d8e0b5627b7c8856bd25fa98adbcb
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: daa25ecd12cb4c3b6ba72164c36cef01001448cf
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932291"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301168"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API ile zaman uyumsuz yenileme
 
@@ -23,7 +22,7 @@ Veri hacmi, bölümler kullanılarak en iyi duruma getirme düzeyi vb. gibi bir 
 
 Azure Analysis Services REST API, veri yenileme işlemlerinin zaman uyumsuz olarak gerçekleştirilmesini sağlar. REST API kullanarak, istemci uygulamalarından uzun süre çalışan HTTP bağlantıları gerekli değildir. Güvenilirlik için otomatik yeniden denemeler ve toplu işlemeler gibi diğer yerleşik özellikler de vardır.
 
-## <a name="base-url"></a>Temel URL
+## <a name="base-url"></a>Taban URL 'SI
 
 Temel URL şu biçimdedir:
 
@@ -47,7 +46,7 @@ Temel URL 'yi kullanarak kaynaklar ve işlemler aşağıdaki parametrelere göre
 
 ![Zaman uyumsuz yenileme](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
 
-- ' De sonlanan her şey bir koleksiyondur.
+- **' De sonlanan her şey** bir koleksiyondur.
 - **()** İle biten her şey bir işlevdir.
 - Diğer her şey bir kaynak/nesnedir.
 
@@ -57,12 +56,12 @@ Temel URL 'yi kullanarak kaynaklar ve işlemler aşağıdaki parametrelere göre
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Tüm çağrıların yetkilendirme üstbilgisinde geçerli bir Azure Active Directory (OAuth 2) belirteciyle doğrulanması ve aşağıdaki gereksinimleri karşılaması gerekir:
 
 - Belirtecin bir kullanıcı belirteci ya da bir uygulama hizmeti sorumlusu olması gerekir.
-- Belirtecin doğru izleyicisinin ayarlanmış `https://*.asazure.windows.net`olması gerekir.
+- Belirtecin doğru hedef kitlelerinin `https://*.asazure.windows.net` olarak ayarlanmış olması gerekir.
 - Kullanıcı veya uygulamanın, istenen çağrıyı yapmak için sunucu veya modelde yeterli izinlere sahip olması gerekir. İzin düzeyi, modeldeki roller veya sunucudaki yönetim grubu tarafından belirlenir.
 
     > [!IMPORTANT]
@@ -98,13 +97,13 @@ Gövde aşağıdakine benzeyebilir:
 
 Parametrelerin belirtilmesi gerekli değildir. Varsayılan değer uygulanır.
 
-| Ad             | Tür  | Açıklama  |Varsayılan  |
+| Adı             | Tür  | Açıklama  |Varsayılan  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   Otomatik      |
-| `CommitMode`     | Enum  | Nesnelerin toplu işlemlere mi yoksa yalnızca tamamlandığında mi uygulanacağını belirler. Modlar şunlardır: Default, işlemsel, partialBatch.  |  işlem       |
-| `MaxParallelism` | Int   | Bu değer, işlem komutlarının paralel olarak çalıştırılacağı en fazla iş parçacığı sayısını belirler. Bu değer, TMSL [Sequence komutunda](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) veya diğer yöntemleri kullanarak ayarlanabir Maxparallelilik özelliği ile hizalanır.       | 10        |
-| `RetryCount`     | Int   | İşlemin başarısız olmadan önce kaç kez yeniden deneneceğini gösterir.      |     0    |
-| `Objects`        | Array | İşlenecek nesne dizisi. Her nesne şunları içerir: bir bölümü işlerken tüm tablo veya "Tablo" ve "Bölüm" işlemlerini işlerken "Table". Hiçbir nesne belirtilmemişse, modelin tamamı yenilenir. |   Modelin tamamını işle      |
+| `Type`           | Sabit Listesi  | Gerçekleştirilecek işleme türü. Türler TMSL [yenileme komut](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) türleriyle hizalanır: Full, clearvalues, Calculate, dataonly, Automatic ve birleştirme. Tür ekleme desteklenmiyor.      |   Otomatik      |
+| `CommitMode`     | Sabit Listesi  | Nesnelerin toplu işlemlere mi yoksa yalnızca tamamlandığında mi uygulanacağını belirler. Modlar şunlardır: Default, işlemsel, partialBatch.  |  işlem       |
+| `MaxParallelism` | 'Tir   | Bu değer, işlem komutlarının paralel olarak çalıştırılacağı en fazla iş parçacığı sayısını belirler. Bu değer, TMSL [Sequence komutunda](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) veya diğer yöntemleri kullanarak ayarlanabir Maxparallelilik özelliği ile hizalanır.       | 10        |
+| `RetryCount`     | 'Tir   | İşlemin başarısız olmadan önce kaç kez yeniden deneneceğini gösterir.      |     0    |
+| `Objects`        | Dizi | İşlenecek nesne dizisi. Her nesne şunları içerir: bir bölümü işlerken tüm tablo veya "Tablo" ve "Bölüm" işlemlerini işlerken "Table". Hiçbir nesne belirtilmemişse, modelin tamamı yenilenir. |   Modelin tamamını işle      |
 
 CommitMode, partialBatch 'e eşittir. Saat süretabilecek büyük veri kümelerinin ilk yüklemesi yapılırken kullanılır. Yenileme işlemi bir veya daha fazla toplu işlem başarıyla gerçekleştirildikten sonra başarısız olursa, başarıyla kaydedilmiş toplu işler tamamlandı olarak kalır (başarıyla işlenen toplu işleri geri almaz).
 
@@ -161,7 +160,7 @@ Bir model için geçmiş yenileme işlemlerinin bir listesini almak için/yenile
 ]
 ```
 
-## <a name="delete-refreshesrefreshid"></a>/Refreshes/\<refreshId > Sil
+## <a name="delete-refreshesrefreshid"></a>/Refreshes/\<refreshId > SIL
 
 Devam eden yenileme işlemini iptal etmek için yenileme KIMLIĞI üzerindeki DELETE fiilini kullanın.
 
@@ -184,13 +183,13 @@ Bir eşitleme işleminin durumunu denetlemek için, işlem KIMLIĞINI parametre 
 }
 ```
 
-`syncstate`Değerler:
+@No__t değerleri-0:
 
-- 0: Yapan. Veritabanı dosyaları bir hedef klasöre çoğaltılıyor.
-- 1: Katmanındaki. Veritabanı, salt okunurdur ve sunucu örnekleri üzerinde yeniden doldurma işlemi uygulanıyor.
-- 2: Tamamlandı. Eşitleme işlemi başarıyla tamamlandı.
-- 3: Başarısız. Eşitleme işlemi başarısız oldu.
-- 4 Yüklemesinin. Eşitleme işlemi tamamlandı ancak temizleme adımları gerçekleştiriliyor.
+- 0: çoğaltılıyor. Veritabanı dosyaları bir hedef klasöre çoğaltılıyor.
+- 1: yeniden doldurma. Veritabanı, salt okunurdur ve sunucu örnekleri üzerinde yeniden doldurma işlemi uygulanıyor.
+- 2: tamamlandı. Eşitleme işlemi başarıyla tamamlandı.
+- 3: başarısız oldu. Eşitleme işlemi başarısız oldu.
+- 4: sonlandırılıyor. Eşitleme işlemi tamamlandı ancak temizleme adımları gerçekleştiriliyor.
 
 ## <a name="code-sample"></a>Kod örneği
 
@@ -208,7 +207,7 @@ Kod örneği [hizmet sorumlusu](#service-principal) kimlik doğrulamasını kull
 Hizmet sorumlusunu ayarlama hakkında daha fazla bilgi için bkz. [hizmet sorumlusu oluşturma-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) ve [Sunucu Yöneticisi rolüne hizmet sorumlusu ekleme](analysis-services-addservprinc-admins.md) ve Azure 'da gerekli izinleri atama hakkında daha fazla bilgi için. Adımları tamamladıktan sonra aşağıdaki ek adımları uygulayın:
 
 1.  Kod örneğinde, **dize yetkilisini bulun =...** , KURULUŞUNUZUN kiracı kimliğiyle **ortak** olarak değiştirin.
-2.  Kimlik bilgileri nesnesinin örneğini oluşturmak için ClientCredential sınıfının kullanılması için açıklama/açıklama açıklama ekleyin. Uygulama kimliği > ve \<uygulama anahtarı > değerlerinin güvenli bir şekilde erişildiği veya hizmet sorumluları için sertifika tabanlı kimlik doğrulaması kullandığından emin olun. \<
+2.  Kimlik bilgileri nesnesinin örneğini oluşturmak için ClientCredential sınıfının kullanılması için açıklama/açıklama açıklama ekleyin. @No__t-0App ID > ve \<Uygulama anahtarı > değerlerine güvenli bir şekilde erişildiğinden veya hizmet sorumluları için sertifika tabanlı kimlik doğrulaması kullandığınızdan emin olun.
 3.  Örnek uygulamayı çalıştırın.
 
 

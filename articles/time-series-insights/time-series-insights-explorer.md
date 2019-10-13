@@ -12,18 +12,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a6bebfa11294821ff717f221e3e0ddfd68cd65c
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: aa04b2508f89b9658d904624e884bf9133caf3b7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948220"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299552"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Gezgini
 
 Bu makalede, Azure Time Series Insights [Explorer Web uygulaması](https://insights.timeseries.azure.com/)için genel kullanıma yönelik özellikler ve seçenekler açıklanmaktadır. Time Series Insights Gezgini, hizmet tarafından sunulan güçlü veri görselleştirme yeteneklerini gösterir ve kendi ortamınız dahilinde erişilebilir.
 
-Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran, tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Verilerinize ilişkin genel bir görünüm sunar. bu sayede IoT çözümünüzü hızla doğrulamanıza ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi yapmaktan kaçınabilirsiniz. Gizli eğilimleri bulabilir, anormallikleri tespit edebilir ve neredeyse gerçek zamanlı olarak kök neden analizleri gerçekleştirebilirsiniz. Time Series Insights Gezgini Şu anda genel önizlemededir.
+Azure Zaman Serisi Öngörüleri, milyarlarca IoT olayını aynı anda keşfedip analiz etmeyi kolaylaştıran ve tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Verilerinize ilişkin genel bir görünüm sunar. bu sayede IoT çözümünüzü hızla doğrulamanıza ve görev açısından kritik cihazlara maliyetli kapalı kalma süresi yapmaktan kaçınabilirsiniz. Gizli eğilimleri bulabilir, anormallikleri tespit edebilir ve neredeyse gerçek zamanlı olarak kök neden analizleri gerçekleştirebilirsiniz. Time Series Insights Gezgini Şu anda genel önizlemededir.
 
 > [!TIP]
 > Tanıtım ortamında kılavuzlu bir tur için [Azure Time Series Insights hızlı](time-series-quickstart.md)başlangıcı makalesini okuyun.
@@ -37,7 +37,7 @@ Azure Time Series Insights, milyarlarca IoT olayını aynı anda keşfedip anali
 >[!NOTE]
 >Yukarıdaki <a href="https://www.youtube.com/watch?v=6ehNf6AJkFo">"Azure IoT Çözüm Hızlandırıcısı kullanarak Time Series Insights</a> kullanmaya başlama" videosunu inceleyin.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Time Series Insights Gezginini kullanabilmeniz için şunları yapmanız gerekir:
 
@@ -71,7 +71,7 @@ Olay kaynağınızı Time Series Insights ortamınıza bağlama sırasında, zam
 
       - **Koşul**: aşağıdaki tabloda listelenen işlenenleri kümesini kullanarak olaylarınızı hızlıca filtrelemek için koşulunu kullanın. Veya öğesini seçerek bir arama yaparsanız, koşul otomatik olarak bu aramaya göre güncelleştirilir. Desteklenen işlenen türleri şunlardır:
 
-         |Çalışma  |Desteklenen türler  |Notlar  |
+         |İşlem  |Desteklenen türler  |Notlar  |
          |---------|---------|---------|
          |`<`, `>`, `<=`, `>=`     |  Double, DateTime, TimeSpan       |         |
          |`=`, `!=`, `<>`     | Dize, bool, Double, DateTime, TimeSpan, NULL        |         |
@@ -126,4 +126,5 @@ Artık Time Series Insights Explorer Web uygulamasında bulunan çeşitli özell
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Time Series Insights ortamınızda [sorunları tanılamanıza ve çözmeyi](time-series-insights-diagnose-and-solve-problems.md) öğrenin.
+
 - Kılavuzlu [Azure Time Series Insights hızlı başlangıç](time-series-quickstart.md) turunu alın.

@@ -1,22 +1,19 @@
 ---
 title: Azure Işlevleri C# betik geliştirici başvurusu
 description: Betiği kullanarak C# Azure işlevleri geliştirmeyi anlayın.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
+author: craigshoemaker
+manager: gwallace
 keywords: azure işlevleri, işlevler, olay işleme, web kancaları, dinamik işlem, sunucusuz mimari
 ms.service: azure-functions
-ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
-ms.author: glenga
-ms.openlocfilehash: e4460dd7131e35ee8b3f3112977099276da2d4ce
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.author: cshoe
+ms.openlocfilehash: c055e1e94d6bc636292fef5da63e7a8c8eb7fa07
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849415"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299862"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Işlevleri C# betiği (. CSX) geliştirici başvurusu
 
@@ -30,9 +27,9 @@ Bu makalede, [Azure işlevleri geliştirici kılavuzunu](functions-reference.md)
 
 ## <a name="how-csx-works"></a>. CSX nasıl kullanılır?
 
-Azure C# işlevleri için betik deneyimi, [Azure Web İşleri SDK 'sını](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction)temel alır. Veri, yöntem bağımsız C# değişkenleri aracılığıyla işlevinizde akar. Bağımsız değişken adları bir `function.json` dosyada belirtilir ve işlev günlükçüsü ve iptal belirteçleri gibi öğelere erişim için önceden tanımlanmış adlar vardır.
+Azure C# işlevleri için betik deneyimi, [Azure Web İşleri SDK 'sını](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction)temel alır. Veri, yöntem bağımsız C# değişkenleri aracılığıyla işlevinizde akar. Bağımsız değişken adları `function.json` dosyasında belirtilmiştir ve işlev günlükçüsü ve iptal belirteçleri gibi öğelere erişim için önceden tanımlanmış adlar vardır.
 
-*. CSX* biçimi, daha az "demirbaş" yazmanızı ve yalnızca bir C# işlev yazmaya odaklanabilmenizi sağlar. Bir ad alanı ve sınıf içindeki her şeyi sarmalama yerine yalnızca bir `Run` yöntem tanımlayın. Tüm derleme başvurularını ve ad alanlarını dosyanın başına her zamanki gibi ekleyin.
+*. CSX* biçimi, daha az "demirbaş" yazmanızı ve yalnızca bir C# işlev yazmaya odaklanabilmenizi sağlar. Bir ad alanı ve sınıf içindeki her şeyi sarmalama yerine bir `Run` yöntemi tanımlamanız yeterlidir. Tüm derleme başvurularını ve ad alanlarını dosyanın başına her zamanki gibi ekleyin.
 
 Bir örnek başlatıldığında bir işlev uygulamasının *. CSX* dosyaları derlenir. Bu derleme adımı, C# C# sınıf kitaplıklarıyla karşılaştırılan betik işlevleri için soğuk başlangıç gibi şeyler daha uzun sürebilir. Bu derleme adımı ayrıca, komut C# dosyası işlevlerinin Azure Portal düzenlenebilir olmasının yanı sıra C# sınıf kitaplıkları da değildir.
 
@@ -57,11 +54,11 @@ FunctionsProject
 
 İşlev uygulamasını yapılandırmak için kullanılabilen, paylaşılan bir [Host. JSON](functions-host-json.md) dosyası. Her işlevin kendi kod dosyası (. CSX) ve bağlama yapılandırma dosyası (Function. JSON) vardır.
 
-İşlevler çalışma zamanının [2. x sürümünde](functions-versions.md) gerekli olan bağlama uzantıları, `extensions.csproj` dosyasında, `bin` klasördeki gerçek kitaplık dosyalarıyla birlikte tanımlanmıştır. Yerel olarak geliştirme yaparken, [bağlama uzantılarını kaydetmeniz](./functions-bindings-register.md#extension-bundles)gerekir. Azure portal işlevler geliştirirken, bu kayıt sizin için yapılır.
+Işlevler çalışma zamanının [2. x sürümünde](functions-versions.md) gerekli olan bağlama uzantıları, `bin` klasöründeki gerçek kitaplık dosyalarıyla birlikte `extensions.csproj` dosyasında tanımlanmıştır. Yerel olarak geliştirme yaparken, [bağlama uzantılarını kaydetmeniz](./functions-bindings-register.md#extension-bundles)gerekir. Azure portal işlevler geliştirirken, bu kayıt sizin için yapılır.
 
 ## <a name="binding-to-arguments"></a>Bağımsız değişkenlere bağlama
 
-Giriş veya çıkış verileri, *function. JSON* yapılandırma dosyasındaki C# `name` özelliği aracılığıyla bir betik işlevi parametresine bağlanır. Aşağıdaki örnek, bir *function. JSON* dosyasını gösterir ve *. CSX* dosyasını Queue-tetiklenen bir işlev için çalıştırır. Kuyruk iletisinden veri alan parametre, `myQueueItem` `name` özelliğin değeri olduğundan adlandırılır.
+Giriş veya çıkış verileri, C# *function. json* yapılandırma dosyasında `name` özelliği aracılığıyla bir betik işlevi parametresine bağlanır. Aşağıdaki örnek, bir *function. JSON* dosyasını gösterir ve *. CSX* dosyasını Queue-tetiklenen bir işlev için çalıştırır. @No__t-1 özelliğinin değeri olduğundan, kuyruk iletisinden veri alan parametre `myQueueItem` olarak adlandırılır.
 
 ```json
 {
@@ -91,11 +88,11 @@ public static void Run(CloudQueueMessage myQueueItem, ILogger log)
 }
 ```
 
-[Bu makalede daha sonra](#referencing-external-assemblies)açıklanan ifadeaçıklanmaktadır.`#r`
+@No__t-0 deyimleri [Bu makalenin ilerleyen kısımlarında](#referencing-external-assemblies)açıklanmıştır.
 
 ## <a name="supported-types-for-bindings"></a>Bağlamalar için desteklenen türler
 
-Her bağlamanın kendi desteklenen türleri vardır; Örneğin, bir blob tetikleyicisi bir dize parametresi, Poco parametresi, bir `CloudBlockBlob` parametre veya desteklenen diğer birkaç türden herhangi biri ile kullanılabilir. [BLOB bağlamaları için bağlama başvuru makalesi](functions-bindings-storage-blob.md#trigger---usage) , blob Tetikleyicileri için desteklenen tüm parametre türlerini listeler. Daha fazla bilgi için, bkz. [Tetikleyiciler ve bağlamalar](functions-triggers-bindings.md) ve [her bağlama türü için bağlama başvurusu belgeleri](functions-triggers-bindings.md#next-steps).
+Her bağlamanın kendi desteklenen türleri vardır; Örneğin, bir blob tetikleyicisi dize parametresi, POCO parametresi, `CloudBlockBlob` parametresi veya desteklenen diğer birkaç türden herhangi biri ile kullanılabilir. [BLOB bağlamaları için bağlama başvuru makalesi](functions-bindings-storage-blob.md#trigger---usage) , blob Tetikleyicileri için desteklenen tüm parametre türlerini listeler. Daha fazla bilgi için, bkz. [Tetikleyiciler ve bağlamalar](functions-triggers-bindings.md) ve [her bağlama türü için bağlama başvurusu belgeleri](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -122,7 +119,7 @@ POCO sınıfında her özellik için tanımlanmış bir alıcı ve ayarlayıcı 
 
 ## <a name="reusing-csx-code"></a>. CSX kodunu yeniden kullanma
 
-*Run. CSX* dosyanızdaki diğer *. CSX* dosyalarında tanımlanmış sınıfları ve yöntemleri kullanabilirsiniz. Bunu yapmak için `#load` *Run. CSX* dosyanızdaki yönergeleri kullanın. `MyLogger` Aşağıdaki örnekte, adlı bir günlüğe kaydetme yordamı *mygünlükçü. CSX* içinde paylaşılır ve `#load` yönergesi kullanılarak *. CSX çalıştırılmak* üzere yüklendi:
+*Run. CSX* dosyanızdaki diğer *. CSX* dosyalarında tanımlanmış sınıfları ve yöntemleri kullanabilirsiniz. Bunu yapmak için, *Run. CSX* dosyanızda `#load` yönergelerini kullanın. Aşağıdaki örnekte, `MyLogger` adlı bir günlüğe kaydetme yordamı *Mygünlükçü. CSX* içinde paylaşılır ve `#load` yönergesini kullanarak *. CSX komutunu çalıştırır* :
 
 Örnek *Run. CSX*:
 
@@ -147,7 +144,7 @@ public static void MyLogger(ILogger log, string logtext)
 }
 ```
 
-Bir POCO nesnesi kullanarak işlevler arasında geçirilen verileri kesin bir şekilde yazmak istediğinizde, paylaşılan bir *. CSX* dosyası kullanmak yaygın bir modeldir. Aşağıdaki basitleştirilmiş örnekte, bir http tetikleyicisi ve kuyruk tetikleyicisi, sıralama verilerini kesin olarak yazmak için adlı `Order` bir poco nesnesini paylaşır:
+Bir POCO nesnesi kullanarak işlevler arasında geçirilen verileri kesin bir şekilde yazmak istediğinizde, paylaşılan bir *. CSX* dosyası kullanmak yaygın bir modeldir. Aşağıdaki basitleştirilmiş örnekte, bir HTTP tetikleyicisi ve kuyruk tetikleyicisi `Order` adlı bir POCO nesnesini, sıralı verileri kesin olarak yazmak için paylaşır:
 
 HTTP tetikleyicisi için *Run. CSX* örneği:
 
@@ -214,25 +211,25 @@ public class Order
 }
 ```
 
-`#load` Yönergeyle göreli bir yol kullanabilirsiniz:
+@No__t-0 yönergesi ile göreli bir yol kullanabilirsiniz:
 
-* `#load "mylogger.csx"`işlev klasöründe bulunan bir dosyayı yükler.
-* `#load "loadedfiles\mylogger.csx"`işlev klasöründeki bir klasörde bulunan bir dosyayı yükler.
-* `#load "..\shared\mylogger.csx"`bir klasörde bulunan bir dosyayı işlev klasörüyle aynı düzeyde, yani doğrudan *Wwwroot*altında yükler.
+* `#load "mylogger.csx"`, işlev klasöründe bulunan bir dosyayı yükler.
+* `#load "loadedfiles\mylogger.csx"`, işlev klasöründeki bir klasörde bulunan bir dosyayı yükler.
+* `#load "..\shared\mylogger.csx"`, bir klasörde bulunan bir dosyayı işlev klasörüyle aynı düzeyde, yani doğrudan *Wwwroot*altında yükler.
 
-Yönergesi. cs dosyalarıyla değil yalnızca *. CSX* dosyaları ile birlikte kullanılabilir. `#load`
+@No__t-0 yönergesi, *. cs* dosyalarıyla değil yalnızca *. CSX* dosyalarıyla birlikte kullanılabilir.
 
 ## <a name="binding-to-method-return-value"></a>Metot dönüş değerine bağlama
 
-Bir çıkış bağlaması için, `$return` *function. JSON*içindeki adı kullanarak bir yöntem dönüş değeri kullanabilirsiniz. Örnekler için bkz. [Tetikleyiciler ve bağlamalar](./functions-bindings-return-value.md).
+*Function. JSON*içinde `$return` adını kullanarak çıkış bağlaması için bir yöntem dönüş değeri kullanabilirsiniz. Örnekler için bkz. [Tetikleyiciler ve bağlamalar](./functions-bindings-return-value.md).
 
-Dönüş değerini yalnızca başarılı bir işlev yürütmesi her zaman çıkış bağlamasına geçirilecek bir dönüş değeri ile sonuçlanırsa kullanın. Aksi takdirde, `ICollector` aşağıdaki `IAsyncCollector`bölümde gösterildiği gibi, veya kullanın.
+Dönüş değerini yalnızca başarılı bir işlev yürütmesi her zaman çıkış bağlamasına geçirilecek bir dönüş değeri ile sonuçlanırsa kullanın. Aksi takdirde, aşağıdaki bölümde gösterildiği gibi `ICollector` veya `IAsyncCollector` kullanın.
 
 ## <a name="writing-multiple-output-values"></a>Birden çok çıkış değeri yazma
 
-Bir çıkış bağlamasına birden çok değer yazmak için veya başarılı bir işlev çağrılması çıkış bağlamasına geçirilecek herhangi bir şeye neden olmazsa, [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) türlerini kullanın. Bu türler, yöntem tamamlandığında çıkış bağlamaya yazılan salt yazılır koleksiyonlardır.
+Bir çıkış bağlamasına birden çok değer yazmak için veya başarılı bir işlev çağrılması çıkış bağlamasına geçirilecek herhangi bir şeyle sonuçlanmayabilir, [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) türlerini kullanın. Bu türler, yöntem tamamlandığında çıkış bağlamaya yazılan salt yazılır koleksiyonlardır.
 
-Bu örnek, kullanarak `ICollector`birden çok kuyruk iletisini aynı kuyruğa Yazar:
+Bu örnek `ICollector` kullanarak birden çok kuyruk iletisini aynı kuyruğa Yazar:
 
 ```csharp
 public static void Run(ICollector<string> myQueue, ILogger log)
@@ -242,9 +239,9 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 }
 ```
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
-Çıktıyı içindeki C#akış günlüklerinizi günlüğe kaydetmek Için [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. Bunu `log`sizin adınızla yapmanızı öneririz. Azure işlevleri `Console.Write` 'nde kullanmaktan kaçının.
+Çıktıyı içindeki C#akış günlüklerinizi günlüğe kaydetmek Için [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir bağımsız değişken ekleyin. @No__t-0 olarak adınızın olmasını öneririz. Azure Işlevlerinde `Console.Write` kullanmaktan kaçının.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -254,11 +251,11 @@ public static void Run(string myBlob, ILogger log)
 ```
 
 > [!NOTE]
-> Yerine `TraceWriter`kullanabileceğiniz daha yeni bir günlük çerçevesi hakkında daha fazla bilgi için bkz. **Azure işlevleri 'ni izleme** makalesindeki [ C# günlüklere yazma işlemleri](functions-monitoring.md#write-logs-in-c-functions) .
+> @No__t-0 yerine kullanabileceğiniz daha yeni bir günlüğe kaydetme çerçevesi hakkında daha fazla bilgi için bkz. **Azure Işlevlerini izleme** makalesindeki [ C# günlüklere yazma işlevleri](functions-monitoring.md#write-logs-in-c-functions) .
 
 ## <a name="async"></a>Eş
 
-Bir işlevi [zaman uyumsuz](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)yapmak için `async` anahtar sözcüğünü kullanın ve bir `Task` nesne döndürün.
+Bir işlevi [zaman uyumsuz](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)yapmak için `async` anahtar sözcüğünü kullanın ve bir `Task` nesnesi döndürün.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -270,7 +267,7 @@ public async static Task ProcessQueueMessageAsync(
 }
 ```
 
-Zaman uyumsuz işlevlerde `out` parametreleri kullanamazsınız. Çıktı bağlamaları için, bunun yerine [işlev dönüş değeri](#binding-to-method-return-value) veya [toplayıcı nesnesi](#writing-multiple-output-values) kullanın.
+Zaman uyumsuz işlevlerde `out` parametrelerini kullanamazsınız. Çıktı bağlamaları için, bunun yerine [işlev dönüş değeri](#binding-to-method-return-value) veya [toplayıcı nesnesi](#writing-multiple-output-values) kullanın.
 
 ## <a name="cancellation-tokens"></a>İptal belirteçleri
 
@@ -365,15 +362,15 @@ Aşağıdaki derlemelere basit ad (örneğin, `#r "AssemblyName"`) tarafından b
 
 Özel bir derlemeye başvurmak için, *paylaşılan* bir derlemeyi ya da *özel* bir derlemeyi kullanabilirsiniz:
 
-* Paylaşılan derlemeler bir işlev uygulaması içindeki tüm işlevler arasında paylaşılır. Özel bir derlemeye başvurmak için, derlemeyi [işlev uygulaması kök klasörünüzde](functions-reference.md#folder-structure) (Wwwroot `bin` ) adlı bir klasöre yükleyin.
+* Paylaşılan derlemeler bir işlev uygulaması içindeki tüm işlevler arasında paylaşılır. Özel bir derlemeye başvurmak için, derlemeyi [işlev uygulaması kök klasörünüzde](functions-reference.md#folder-structure) (wwwroot) `bin` adlı bir klasöre yükleyin.
 
-* Özel derlemeler belirli bir işlevin bağlamının parçasıdır ve farklı sürümlerin dışarıdan yüklenmesini destekler. Özel derlemelerin işlev dizinindeki bir `bin` klasöre yüklenmesi gerekir. Dosya adını kullanarak derlemelere başvuru yapın, örneğin `#r "MyAssembly.dll"`.
+* Özel derlemeler belirli bir işlevin bağlamının parçasıdır ve farklı sürümlerin dışarıdan yüklenmesini destekler. Özel derlemelerin işlev dizinindeki bir `bin` klasörüne yüklenmesi gerekir. @No__t-0 gibi dosya adını kullanarak derlemelere başvurun.
 
 İşlev klasörünüze dosya yükleme hakkında daha fazla bilgi için bkz. [Paket Yönetimi](#using-nuget-packages)hakkındaki bölüm.
 
 ### <a name="watched-directories"></a>İzlenen dizinler
 
-İşlev betiği dosyasını içeren dizin, derlemelerdeki değişiklikler için otomatik olarak izlenebilir. Diğer dizinlerdeki derleme değişikliklerini izlemek için bunları `watchDirectories` [Host. JSON](functions-host-json.md)' da listeye ekleyin.
+İşlev betiği dosyasını içeren dizin, derlemelerdeki değişiklikler için otomatik olarak izlenebilir. Diğer dizinlerdeki derleme değişikliklerini izlemek için, bunları [Host. JSON](functions-host-json.md)içindeki `watchDirectories` listesine ekleyin.
 
 ## <a name="using-nuget-packages"></a>NuGet paketlerini kullanma
 NuGet paketlerini bir 2. x C# işlevinde kullanmak için işlev uygulamasının dosya sistemindeki işlev klasörüne bir *function. proj* dosyası yükleyin. Aşağıda, *Microsoft. ProjectOxford. Face* sürüm *1.1.0*'e bir başvuru ekleyen bir *function. proj* dosyası verilmiştir:
@@ -429,7 +426,7 @@ NuGet paketlerini bir 2. x C# işlevinde kullanmak için işlev uygulamasının 
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
-Bir ortam değişkeni veya bir uygulama ayarı değeri almak için, aşağıdaki `System.Environment.GetEnvironmentVariable`kod örneğinde gösterildiği gibi kullanın:
+Bir ortam değişkeni veya uygulama ayarı değeri almak için, aşağıdaki kod örneğinde gösterildiği gibi `System.Environment.GetEnvironmentVariable` kullanın:
 
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
@@ -450,12 +447,12 @@ public static string GetEnvironmentVariable(string name)
 
 ## <a name="binding-at-runtime"></a>Çalışma zamanında bağlama
 
-Ve diğer .NET dillerinde, *function. JSON*içindeki [bildirim temelli](https://en.wikipedia.org/wiki/Declarative_programming) bağlamaların aksine, bir zorunlu bağlama kalıbı kullanabilirsiniz. [](https://en.wikipedia.org/wiki/Imperative_programming) C# Bağlama parametrelerinin tasarım zamanı yerine çalışma zamanında hesaplanması gerektiğinde, kesinlik temelli bağlama kullanışlıdır. Bu düzende, işlev kodunuzda, desteklenen giriş ve çıkış bağlamalarına bağlanabilirsiniz.
+Ve diğer .NET dillerinde, *function. JSON*içindeki [*bildirim temelli*](https://en.wikipedia.org/wiki/Declarative_programming) [bağlamaların aksine, bir zorunlu](https://en.wikipedia.org/wiki/Imperative_programming) bağlama kalıbı kullanabilirsiniz. C# Bağlama parametrelerinin tasarım zamanı yerine çalışma zamanında hesaplanması gerektiğinde, kesinlik temelli bağlama kullanışlıdır. Bu düzende, işlev kodunuzda, desteklenen giriş ve çıkış bağlamalarına bağlanabilirsiniz.
 
 Zorunlu bir bağlamayı aşağıdaki gibi tanımlayın:
 
-- İstediğiniz kesinlik bağlamalarınız için *function. JSON* içine bir giriş eklemeyin.
-- Bir giriş parametresi [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) veya [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)olarak geçirin.
+- İstediğiniz kesinlik bağlamalarınız için *function. JSON* içine bir **giriş eklemeyin.**
+- [@No__t-1](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) veya [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)giriş parametresini geçirin.
 - Veri bağlamayı gerçekleştirmek C# için aşağıdaki kalıbı kullanın.
 
 ```cs
@@ -465,7 +462,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute`, bağlamalarınızı tanımlayan ve `T` bu bağlama türü tarafından desteklenen bir giriş veya çıkış türü olan .net özniteliğidir. `T`bir `out` parametre türü ( `out JObject`gibi) olamaz. Örneğin, Mobile Apps tablo çıkış bağlaması [altı çıkış türünü](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)destekler, ancak yalnızca [\<ICollector T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) için `T`kullanabilirsiniz.
+`BindingTypeAttribute`, bağlamayı tanımlayan .NET özniteliğidir ve `T`, bu bağlama türü tarafından desteklenen bir giriş veya çıkış türüdür. `T` `out` parametre türü olamaz (`out JObject` gibi). Örneğin, Mobile Apps tablo çıkış bağlaması [altı çıkış türünü](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)destekler, ancak `T` Için yalnızca [ICollector @ No__t-2T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) veya [`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) kullanabilirsiniz.
 
 ### <a name="single-attribute-example"></a>Tek öznitelik örneği
 
@@ -488,7 +485,7 @@ public static async Task Run(string input, Binder binder)
 
 ### <a name="multiple-attribute-example"></a>Birden çok öznitelik örneği
 
-Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (yani `AzureWebJobsStorage`) için uygulama ayarını alır. [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) ' i ekleyip öznitelik dizisini Içine `BindAsync<T>()`geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz. `Binder` Değil`IBinder`parametresini kullanın.  Örneğin:
+Yukarıdaki örnek, işlev uygulamasının ana depolama hesabı bağlantı dizesi (`AzureWebJobsStorage`) için uygulama ayarını alır. [Storageaccountattribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) öğesini ekleyerek ve öznitelik dizisini `BindAsync<T>()` ' e geçirerek depolama hesabı için kullanılacak özel bir uygulama ayarı belirtebilirsiniz. @No__t-1 değil `Binder` parametresini kullanın.  Örnek:
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -512,7 +509,7 @@ public static async Task Run(string input, Binder binder)
 Aşağıdaki tabloda, her bir bağlama türü ve tanımlandıkları paketler için .NET öznitelikleri listelenmektedir.
 
 > [!div class="mx-codeBreakAll"]
-> | Bağlama | Öznitelik | Başvuru ekleme |
+> | Bağlayıcısı | Öznitelik | Başvuru Ekle |
 > |------|------|------|
 > | Cosmos DB | [`Microsoft.Azure.WebJobs.DocumentDBAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.CosmosDB"` |
 > | Event Hubs | [`Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.Jobs.ServiceBus"` |
@@ -520,7 +517,7 @@ Aşağıdaki tabloda, her bir bağlama türü ve tanımlandıkları paketler iç
 > | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 > | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
 > | Depolama kuyruğu | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
-> | Depolama blob'u | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+> | Depolama blobu | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Depolama tablosu | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 

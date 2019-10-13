@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
-ms.openlocfilehash: b53bb0f04bf6a739b588b14febd622f6bf7a6a63
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354886"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286640"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP protokolünü kullanarak IoT Hub 'ınız ile iletişim kurma
 
@@ -26,12 +26,12 @@ Azure IoT Hub, cihaza yönelik ve hizmete yönelik uç noktalar aracılığıyla
 
 Hizmet istemcisi için aşağıdaki bilgiler gereklidir:
 
-| Information | Value |
+| Bilgi | Değer |
 |-------------|--------------|
 | IoT Hub ana bilgisayar adı | `<iot-hub-name>.azure-devices.net` |
 | Anahtar adı | `service` |
 | Erişim anahtarı | Hizmetle ilişkili birincil veya ikincil anahtar |
-| Paylaşılan erişim imzası | Aşağıdaki biçimde kısa süreli bir paylaşılan erişim imzası: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Bu imzayı oluşturma kodunu almak için, bkz. [IoT Hub erişimi denetleme](./iot-hub-devguide-security.md#security-token-structure).
+| Paylaşılan erişim imzası | Şu biçimdeki kısa süreli bir paylaşılan erişim imzası: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Bu imzayı oluşturma kodunu almak için, bkz. [IoT Hub erişimi denetleme](./iot-hub-devguide-security.md#security-token-structure).
 
 Aşağıdaki kod parçacığı, bir gönderen bağlantısı aracılığıyla bir IoT Hub 'ına bağlanmak için [Python 'Da Uıamqp kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır.
 
@@ -67,7 +67,7 @@ Hizmet ve IoT Hub ile cihaz ile IoT Hub arasındaki buluttan cihaza ileti alış
 
 | Oluşturan | Bağlantı türü | Bağlantı yolu | Açıklama |
 |------------|-----------|-----------|-------------|
-| Hizmet | Gönderen bağlantısı | `/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, hizmet tarafından bu bağlantıya gönderilir. Bu bağlantı `To` üzerinden gönderilen iletilerin özelliği hedef cihazın alıcı bağlantı `/devices/<deviceID>/messages/devicebound`yolu olarak ayarlanır. |
+| Hizmet | Gönderen bağlantısı | `/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, hizmet tarafından bu bağlantıya gönderilir. Bu bağlantı üzerinden gönderilen iletilerin `To` özelliği hedef cihazın alıcı bağlantı yoluna ayarlı `/devices/<deviceID>/messages/devicebound` ' dir. |
 | Hizmet | Alıcı bağlantısı | `/messages/serviceBound/feedback` | Hizmet tarafından bu bağlantıda alınan cihazlardan gelen tamamlama, reddetme ve bırakma geri bildirim iletileri. Geri bildirim iletileri hakkında daha fazla bilgi için bkz. [IoT Hub 'ından buluttan cihaza Ileti gönderme](./iot-hub-devguide-messages-c2d.md#message-feedback). |
 
 Aşağıdaki kod parçacığı, bir buluttan cihaza ileti oluşturmayı ve [Python 'Da Uamqp kitaplığını](https://github.com/Azure/azure-uamqp-python)kullanarak bir cihaza nasıl gönderileceğini gösterir.
@@ -128,11 +128,11 @@ for msg in batch:
 
 Yukarıdaki kodda gösterildiği gibi, buluttan cihaza geri bildirim iletisinde bir tür *Application/vnd. Microsoft. ıothub. feedback. JSON*bulunur. Özgün iletinin teslim durumunu anlamak için iletinin JSON gövdesindeki özellikleri kullanabilirsiniz:
 
-* Geri `statusCode` bildirim gövdesindeki anahtar aşağıdaki değerlerden birine sahiptir: *Başarılı*, *zaman aşımına uğradı*, *deliverycountexcebaşında*, *reddedildi*veya *temizlendi*.
+* Geri bildirim gövdesinde anahtar `statusCode` şu değerlerden birine sahip: *Success*, *süresi doldu*, *deliverycountexce,* *reddedildi*veya *temizlendi*.
 
-* Geri `deviceId` bildirim gövdesindeki anahtarın hedef cihazın kimliği vardır.
+* Geri bildirim gövdesindeki anahtar `deviceId` hedef cihazın KIMLIĞINE sahiptir.
 
-* Geri `originalMessageId` bildirim gövdesindeki anahtar, hizmet tarafından gönderilen orijinal buluttan cihaza ileti kimliğini içerir. Bu teslim durumunu, buluttan cihaza iletilerle geri bildirimde bulunmak için kullanabilirsiniz.
+* Geri bildirim gövdesinde anahtar `originalMessageId`, hizmet tarafından gönderilen orijinal buluttan cihaza ileti KIMLIĞINI içerir. Bu teslim durumunu, buluttan cihaza iletilerle geri bildirimde bulunmak için kullanabilirsiniz.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Telemetri iletileri alma (hizmet istemcisi)
 
@@ -144,7 +144,7 @@ Her adımda, istemcinin aşağıdaki bilgi parçalarını sunması gerekir:
 
 * Geçerli hizmet kimlik bilgileri (hizmet paylaşılan erişim imza belirteci).
 
-* Tüketici grubu bölümünün iletileri almayı amaçladığı, iyi biçimlendirilmiş bir yoldur. Belirli bir tüketici grubu ve bölüm kimliği için yol şu biçimdedir: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (varsayılan tüketici `$Default`grubu).
+* Tüketici grubu bölümünün iletileri almayı amaçladığı, iyi biçimlendirilmiş bir yoldur. Belirli bir tüketici grubu ve bölüm KIMLIĞI için yol şu biçimdedir: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (varsayılan Tüketici grubu `$Default` ' dir).
 
 * Bölümde bir başlangıç noktası belirlemek için isteğe bağlı bir filtreleme koşulu. Bu koşul sıra numarası, konum veya sıraya alınmış zaman damgası biçiminde olabilir.
 
@@ -222,11 +222,11 @@ Bir cihaz, AMQP kullanarak bir IoT Hub 'ına bağlanmak için [talep tabanlı g�
 
 Cihaz istemcisi için aşağıdaki bilgiler gereklidir:
 
-| Information | Value |
+| Bilgi | Değer |
 |-------------|--------------|
 | IoT Hub ana bilgisayar adı | `<iot-hub-name>.azure-devices.net` |
 | Erişim anahtarı | Cihazla ilişkili birincil veya ikincil anahtar |
-| Paylaşılan erişim imzası | Aşağıdaki biçimde kısa süreli bir paylaşılan erişim imzası: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Bu imzayı oluşturma kodunu almak için, bkz. [IoT Hub erişimi denetleme](./iot-hub-devguide-security.md#security-token-structure).
+| Paylaşılan erişim imzası | Şu biçimdeki kısa süreli bir paylaşılan erişim imzası: `SharedAccessSignature sig={signature-string}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`. Bu imzayı oluşturma kodunu almak için, bkz. [IoT Hub erişimi denetleme](./iot-hub-devguide-security.md#security-token-structure).
 
 Aşağıdaki kod parçacığı, bir gönderen bağlantısı aracılığıyla bir IoT Hub 'ına bağlanmak için [Python 'Da Uıamqp kitaplığını](https://github.com/Azure/azure-uamqp-python) kullanır.
 
@@ -262,12 +262,12 @@ Aşağıdaki bağlantı yolları cihaz işlemleri olarak desteklenir:
 | Oluşturan | Bağlantı türü | Bağlantı yolu | Açıklama |
 |------------|-----------|-----------|-------------|
 | Cihazlar | Alıcı bağlantısı | `/devices/<deviceID>/messages/devicebound` | Cihazlara hedeflenen buluttan cihaza iletiler, her hedef cihaz tarafından bu bağlantı üzerinden alınır. |
-| Cihazlar | Gönderen bağlantısı | `/devices/<deviceID>messages/events` | Bir cihazdan gönderilen cihazdan buluta iletiler, bu bağlantı üzerinden gönderilir. |
+| Cihazlar | Gönderen bağlantısı | `/devices/<deviceID>/messages/events` | Bir cihazdan gönderilen cihazdan buluta iletiler, bu bağlantı üzerinden gönderilir. |
 | Cihazlar | Gönderen bağlantısı | `/messages/serviceBound/feedback` | Cihazlar tarafından bu bağlantı üzerinden hizmete gönderilen buluttan cihaza ileti geri bildirimi. |
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>Buluttan cihaza komutları alma (cihaz istemcisi)
 
-Cihazlara gönderilen bulut-cihaz komutları bir `/devices/<deviceID>/messages/devicebound` bağlantıya ulaşır. Cihazlar bu iletileri toplu işler halinde alabilir ve iletideki ileti veri yükünü, ileti özelliklerini, ek açıklamaları veya uygulama özelliklerini kullanabilir.
+Cihazlara gönderilen buluttan cihaza olan komutlar `/devices/<deviceID>/messages/devicebound` bağlantısına ulaşır. Cihazlar bu iletileri toplu işler halinde alabilir ve iletideki ileti veri yükünü, ileti özelliklerini, ek açıklamaları veya uygulama özelliklerini kullanabilir.
 
 Aşağıdaki kod parçacığı, bir cihaz tarafından buluttan cihaza ileti almak için [Python 'Da Uıamqp kitaplığını](https://github.com/Azure/azure-uamqp-python)kullanır.
 

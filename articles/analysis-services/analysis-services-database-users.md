@@ -2,18 +2,17 @@
 title: Azure Analysis Services veritabanı rollerini ve kullanıcılarını yönetme | Microsoft Docs
 description: Azure 'daki bir Analysis Services sunucusundaki veritabanı rollerini ve kullanıcıları yönetmeyi öğrenin.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2a6c63c4ae58079c79a9d344f1e2550e4768088f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 426b69173994fc94a52ef0fcccb0dbc6315de14a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932251"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301141"
 ---
 # <a name="manage-database-roles-and-users"></a>Veritabanı rollerini ve kullanıcılarını yönetme
 
@@ -28,7 +27,7 @@ Rol izinleri şunları içerir:
 
 Tablosal model projesi oluştururken, roller oluşturur ve SQL Server Veri Araçları (SSDT) içindeki Rol Yöneticisi 'ni kullanarak bu rollere kullanıcı veya grup ekleyebilirsiniz. Bir sunucuya dağıtıldığında, rol ve Kullanıcı üyeleri eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlet 'leri](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)veya [tablo modeli komut dosyası dili](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (tmsl) kullanırsınız.
 
-**Güvenlik gruplarının** , `MailEnabled` özelliği olarak ayarlanmış şekilde `True` [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olması gerekir. E-posta adresi kullanımı `obj:groupid@tenantid`ile bir grup belirtirken.
+**Güvenlik grupları** , `MailEnabled` özelliği `True` olarak ayarlanmış [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olmalıdır. Bir grup e-posta adresi belirtirken `obj:groupid@tenantid` kullanın.
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>SSDT 'de rol ve Kullanıcı ekleme veya yönetme  
@@ -45,7 +44,7 @@ Tablosal model projesi oluştururken, roller oluşturur ve SQL Server Veri Araç
   
     |İzin|Açıklama|  
     |----------------|-----------------|  
-    |**Yok.**|Üyeler model şemasını değiştiremez ve verileri sorgulayamaz.|  
+    |**Seçim**|Üyeler model şemasını değiştiremez ve verileri sorgulayamaz.|  
     |**Okuma**|Üyeler veri sorgulayabilir (satır filtrelerine göre), ancak model şemasını değiştiremezler.|  
     |**Okuma ve Işleme**|Üyeler, verileri sorgulayabilir (satır düzeyi filtrelere göre) ve Işlemi çalıştırabilir ve tüm işlemleri Işleyebilir, ancak model şemasını değiştiremezler.|  
     |**İşle**|Üyeler, Işlem çalıştırabilir ve tüm işlemleri Işleyebilir. Model şeması değiştirilemiyor ve veri sorgulanamıyor.|  
@@ -53,7 +52,7 @@ Tablosal model projesi oluştururken, roller oluşturur ve SQL Server Veri Araç
   
 5.  Oluşturmakta olduğunuz rolün okuma veya okuma ve Işleme izni varsa, bir DAX formülü kullanarak satır filtreleri ekleyebilirsiniz. **Satır filtreleri** sekmesine tıklayın, sonra bir tablo seçin, sonra **DAX filtresi** alanına tıklayın ve ardından bir DAX formülü yazın.
   
-6.  **Üyeler** > **dış Ekle**' ye tıklayın.  
+6.  **Üyeler** > **Harici Ekle**' ye tıklayın.  
   
 8.  **Dış üye Ekle**' de, kiracınızdaki kullanıcıları veya grupları e-posta adresine göre Azure AD 'ye girin. Tamam ' a tıkladıktan sonra Rol Yöneticisi ' ni kapattıktan sonra, roller ve rol üyeleri tablosal Model Gezgini 'nde görünür. 
  
@@ -66,7 +65,7 @@ Tablosal model projesi oluştururken, roller oluşturur ve SQL Server Veri Araç
 
 Dağıtılan bir model veritabanına roller ve kullanıcılar eklemek için sunucu yöneticisi olarak sunucuya veya yönetici izinlerine sahip bir veritabanı rolünde zaten olmalıdır.
 
-1. Nesne Exporer 'da **Roller** > **Yeni rol**' e sağ tıklayın.
+1. Nesne dışarı Exporer 'da, **roller** > **Yeni rol**' e sağ tıklayın.
 
 2. **Rol oluştur**' da bir rol adı ve açıklama girin.
 
@@ -150,7 +149,7 @@ Satır filtreleri belirtilen satırlar ve ilgili satırlar için geçerlidir. Bi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-  [Sunucu yöneticilerini yönetme](analysis-services-server-admins.md)   
+  [Sunucu yöneticileri @no__t Yönet](analysis-services-server-admins.md)-1  
   [PowerShell ile Azure Analysis Services yönetme](analysis-services-powershell.md)  
   [Tablosal model betik dili (TMSL) başvurusu](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
 

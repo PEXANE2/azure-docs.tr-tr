@@ -9,13 +9,13 @@ ms.subservice: data-science-vm
 author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
-ms.date: 09/27/2019
-ms.openlocfilehash: 68c48bd4288b80d6cab515aa981d0f72461c0849
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.date: 10/10/2019
+ms.openlocfilehash: 70fa1bd2f33d3a6e58b12b9d2da617e8129c8da9
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035268"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299715"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi hangi araçlar dahildir?
 
@@ -44,9 +44,9 @@ Aşağıda, her aracın nasıl yapılandırıldığını anlamak için bağlant�
 | Geliştirme araçları, IDEs ve kod düzenleyicileri:| | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) with git eklentisi, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server veri araçları, [Node. js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs)ve [Visual Studio için R araçları (rtvs)](https://microsoft.github.io/RTVS-docs/) |<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span>   | [DSVM 'de Visual Studio](./dsvm-tools-development.md#visual-studio-2017) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio Code](https://code.visualstudio.com/) |<span class='green-check'>&#9989;</span></br> (1.31.1) |<span class='green-check'>&#9989;</span></br> (1,31) | [DSVM üzerinde Visual Studio Code](./dsvm-tools-development.md#visual-studio-code) |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [rstudio masaüstü](https://www.rstudio.com/products/rstudio/#Desktop) |<span class='green-check'>&#9989;</span></br> (1.1.463) |<span class='green-check'>&#9989;</span></br> (1.1.456) | [DSVM üzerinde RStudio Masaüstü](./dsvm-tools-development.md#rstudio--desktop) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [rstudio masaüstü](https://www.rstudio.com/products/rstudio/#Desktop) |<span class='green-check'>&#9989;</span></br> (1.2.50 xx) |<span class='green-check'>&#9989;</span></br> (1.1.456) | [DSVM üzerinde RStudio Masaüstü](./dsvm-tools-development.md#rstudio--desktop) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [rstudio Server](https://www.rstudio.com/products/rstudio/#Server) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | [DSVM üzerinde RStudio sunucusu](./dsvm-tools-development.md#rstudio--server)
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Pydüğmesinden topluluk sürümü](https://www.jetbrains.com/pycharm/) |<span class='green-check'>&#9989;</span></br> (2018.1.4)  |<span class='green-check'>&#9989;</span></br> (2018.2.3) | [DSVM üzerinde Pydüğmesinden](./dsvm-tools-development.md#pycharm)
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Pydüğmesinden topluluk sürümü](https://www.jetbrains.com/pycharm/) |<span class='green-check'>&#9989;</span></br> (19.2.3)  |<span class='green-check'>&#9989;</span></br> (2018.2.3) | [DSVM üzerinde Pydüğmesinden](./dsvm-tools-development.md#pycharm)
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [atom](https://atom.io/) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> (1.26.1) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Juno (JULIA IDE)](https://junolab.org/)|<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span> | [DSVM 'deki Juno](./dsvm-tools-development.md#juno)
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [VIM](https://www.vim.org) |<span class='green-check'>&#9989;</span></br> (8.1.5) |<span class='green-check'>&#9989;</span></br> (7.4.1689) | |
@@ -54,10 +54,10 @@ Aşağıda, her aracın nasıl yapılandırıldığını anlamak için bağlant�
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Git](https://git-scm.com/) ve git Bash |<span class='green-check'>&#9989;</span></br> (2.20.1) |<span class='green-check'>&#9989;</span></br> (0.6.2) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [OpenJDK](https://openjdk.java.net) |<span class='green-check'>&#9989;</span></br> (1.8.0 _201) |<span class='green-check'>&#9989;</span></br> (1.8.0 _222) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 .NET Framework |<span class='green-check'>&#9989;</span></br> 4\.7.2 |<span class='red-x'>&#10060;</span>   | |
-| [Power BI Desktop](https://powerbi.microsoft.com/en-us/) |<span class='green-check'>&#9989;</span></br> (2.65.5313.1381) |<span class='red-x'>&#10060;</span>   |
+| [Power BI Desktop](https://powerbi.microsoft.com/en-us/) |<span class='green-check'>&#9989;</span></br> (2.73.55 xx) |<span class='red-x'>&#10060;</span>   |
 | Azure ve Cortana Intelligence Hizmet paketine erişim SDK’ları |<span class='green-check'>&#9989;</span> |<span class='green-check'>&#9989;</span> | [DSVM 'de masaüstü Power BI](./dsvm-tools-development.md#power-bi-desktop) |
 | Veri taşıma ve yönetim araçları: | | |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure Depolama Gezgini](https://azure.microsoft.com/en-us/features/storage-explorer/) |<span class='green-check'>&#9989;</span></br> 1\.6.2 |<span class='green-check'>&#9989;</span></br> (0.7.20160129.1) | |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure Depolama Gezgini](https://azure.microsoft.com/en-us/features/storage-explorer/) |<span class='green-check'>&#9989;</span></br> (1.10.1) |<span class='green-check'>&#9989;</span></br> (0.7.20160129.1) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Azure CLI](https://docs.microsoft.com/cli/azure) |<span class='green-check'>&#9989;</span></br> (2.0.56) |<span class='green-check'>&#9989;</span></br> (2.0.58) | |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy) |<span class='green-check'>&#9989;</span></br> (8.1.0) |<span class='red-x'>&#10060;</span>   | [DSVM üzerinde AzCopy](./dsvm-tools-ingestion.md#azcopy)
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [BLOB sigortası sürücüsü](https://github.com/Azure/azure-storage-fuse) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> 1\.0.2 | [DSVM 'de blobsigortası](./dsvm-tools-ingestion.md#blobfuse)

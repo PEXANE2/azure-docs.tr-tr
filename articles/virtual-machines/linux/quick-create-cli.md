@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: Azure CLı kullanarak bir Linux VM oluşturma'
-description: Bu hızlı başlangıçta, bir Linux sanal makinesi oluşturmak için Azure CLı 'yi kullanmayı öğrenirsiniz.
+description: Bu hızlı başlangıçta Azure CLI’yi kullanarak Linux sanal makinesi oluşturmayı öğrenirsiniz
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,40 +15,40 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 0208e72263991daceed52073bcce8b3e01f8e8c2
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 440ba2cd7ac9cea19f903dff493790194962e1e8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174290"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299472"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Linux sanal makinesi oluşturma
+# <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>Hızlı Başlangıç: Azure CLI ile Linux sanal makinesi oluşturma
 
-Bu hızlı başlangıç, Azure 'da bir Linux sanal makinesini (VM) dağıtmak için Azure komut satırı arabirimi 'ni (CLı) nasıl kullanacağınızı gösterir. Azure CLı, komut satırından veya betiklerden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu öğreticide Ubuntu 16,04 LTS 'yi yükleyeceğiz. VM 'yi eylemde görüntülemek için SSH kullanarak buna bağlanır ve NGıNX Web sunucusunu yüklersiniz.
+Bu hızlı başlangıç, Azure 'da bir Linux sanal makinesini (VM) dağıtmak için Azure komut satırı arabirimi 'ni (CLı) nasıl kullanacağınızı gösterir. Azure CLI, komut satırından veya betik içinden Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu öğreticide Ubuntu 16.04 LTS sürümü yüklenmektedir. VM'nin çalıştığını görmek için SSH kullanarak bağlanacak ve NGINX web sunucusunu yükleyeceksiniz.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell Başlat
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
-Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış ortak Azure araçları vardır. 
+Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell açmak için, yalnızca bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Cloud Shell, [https://shell.azure.com/bash](https://shell.azure.com/bash)' e giderek ayrı bir tarayıcı sekmesinde de açabilirsiniz. Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Cloud Shell, [https://shell.azure.com/bash](https://shell.azure.com/bash)' e giderek ayrı bir tarayıcı sekmesinde de açabilirsiniz. Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu hızlı başlangıç, Azure CLı sürüm 2.0.30 veya üstünü gerektirir. Sürümü bulmak için `az --version` ' yı çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı tercih ediyorsanız bu hızlı başlangıç için Azure CLI 2.0.30 veya sonraki bir sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[Az Group Create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
+[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-virtual-machine"></a>Sanal makine oluştur
+## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-[Az VM Create](/cli/azure/vm) komutuyla bir VM oluşturun.
+[az vm create](/cli/azure/vm) komutuyla bir sanal makine oluşturun.
 
-Aşağıdaki örnek, *Myvm* ADLı bir VM oluşturur ve *azureuser*adlı bir kullanıcı hesabı ekler. @No__t-0 parametresi, otomatik olarak bir SSH anahtarı oluşturmak ve varsayılan anahtar konumuna ( *~/PST*) koymak için kullanılır. Bunun yerine belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
+Aşağıdaki örnek, *myVM* adlı bir VM oluşturur ve *azureuser* adlı bir kullanıcı hesabı ekler. @No__t-0 parametresi, otomatik olarak bir SSH anahtarı oluşturmak ve varsayılan anahtar konumuna ( *~/PST*) koymak için kullanılır. Bunun yerine belirli bir anahtar kümesini kullanmak için `--ssh-key-value` seçeneğini kullanın.
 
 ```azurecli-interactive
 az vm create \
@@ -59,7 +59,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-VM ve destekleyici kaynakların oluşturulması birkaç dakika sürer. Aşağıdaki örnek çıktı, VM oluşturma işleminin başarılı olduğunu gösterir.
+VM’yi ve destekleyici kaynakları oluşturmak birkaç dakika sürer. Aşağıdaki örnekte VM oluşturma işleminin başarılı olduğu gösterilmektedir.
 
 ```output
 {
@@ -74,44 +74,44 @@ VM ve destekleyici kaynakların oluşturulması birkaç dakika sürer. Aşağıd
 }
 ```
 
-SANAL makinenizin çıktısında kendi @no__t (0) yapın. Bu adres, sonraki adımlarda sanal makineye erişmek için kullanılır.
+VM’nizdeki çıktıda `publicIpAddress` değerini not alın. Sonraki adımlarda bu adres, VM’ye erişmek için kullanılır.
 
-## <a name="open-port-80-for-web-traffic"></a>Web trafiği için 80 bağlantı noktasını açın
+## <a name="open-port-80-for-web-traffic"></a>Web trafiği için 80 numaralı bağlantı noktasını açın
 
-Varsayılan olarak, Azure 'da bir Linux VM oluşturduğunuzda yalnızca SSH bağlantıları açılır. NGıNX Web sunucusu ile kullanmak üzere 80 numaralı TCP bağlantı noktasını açmak için [az VM Open-Port](/cli/azure/vm) kullanın:
+Azure üzerinde bir Linux VM oluşturduğunuzda varsayılan olarak, yalnızca SSH bağlantıları açılır. NGINX web sunucusuyla kullanacağınız TCP bağlantı noktası 80’i açmak için [az vm open-port](/cli/azure/vm) komutunu kullanın:
 
 ```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="connect-to-virtual-machine"></a>Sanal makineye bağlan
+## <a name="connect-to-virtual-machine"></a>Sanal makineye bağlanma
 
-Normal olarak sanal makinenize SSH. **Publicıpaddress** değerini sanal makinenizin önceki çıktısında BELIRTILDIĞI gibi VM 'NIZIN genel IP adresiyle değiştirin:
+Normal şekilde VM’nize SSH’leyin. **publicIpAddress** değerini, VM’nizdeki bir önceki çıktıda belirtildiği şekilde sanal makinenizin genel IP adresiyle değiştirin:
 
 ```bash
 ssh azureuser@publicIpAddress
 ```
 
-## <a name="install-web-server"></a>Web sunucusu yükler
+## <a name="install-web-server"></a>Web sunucusunu yükleyin
 
-VM 'nizi eylemde görmek için NGıNX Web sunucusunu yükledikten sonra. Paket kaynaklarınızı güncelleştirin ve ardından en son NGıNX paketini yükledikten sonra.
+Sanal makinenizin çalıştığını görmek için NGINX web sunucusunu yükleyin. Paket kaynaklarınızı güncelleştirip en son NGINX paketini yükleyin.
 
 ```bash
 sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-İşiniz bittiğinde SSH oturumunu bırakmak için `exit` yazın.
+İşlemi tamamladığınızda `exit` yazarak SSH oturumunu kapatın.
 
-## <a name="view-the-web-server-in-action"></a>Web sunucusunu eylemde görüntüleme
+## <a name="view-the-web-server-in-action"></a>Web sunucusunun çalıştığını görme
 
-Varsayılan NGıNX karşılama sayfasını görüntülemek için seçtiğiniz bir Web tarayıcısını kullanın. Web adresi olarak sanal makinenizin genel IP adresini kullanın. Aşağıdaki örnek, varsayılan NGıNX Web sitesini göstermektedir:
+İstediğiniz web tarayıcısını kullanarak varsayılan NGINX karşılama sayfasını görüntüleyin. Web adresi olarak VM'nizin genel IP adresini kullanın. Aşağıdaki örnekte varsayılan NGINX web sitesi gösterilir:
 
-![NGıNX varsayılan sitesi](./media/quick-create-cli/nginx.png)
+![NGıNX varsayılan karşılama sayfası](./media/quick-create-cli/nginix-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, [az Group Delete](/cli/azure/group) komutunu kullanarak kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırabilirsiniz. 
+Artık gerekli değilse, [az group delete](/cli/azure/group) komutunu kullanarak kaynak grubunu, VM’yi ve tüm ilgili kaynakları kaldırabilirsiniz. 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -119,7 +119,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta basit bir sanal makine dağıttıysanız, Web trafiği için bir ağ bağlantı noktası açarsınız ve temel bir Web sunucusu yüklediniz. Azure sanal makineleri hakkında daha fazla bilgi edinmek için Linux VM 'lerine yönelik öğreticiye geçin.
+Bu hızlı başlangıçta, basit bir sanal makine dağıttınız, web trafiği için bir ağ bağlantı noktası açtınız ve temel bir web sunucusu yüklediniz. Azure sanal makineleri hakkında daha fazla bilgi için Linux VM’lerine yönelik öğreticiye geçin.
 
 
 > [!div class="nextstepaction"]

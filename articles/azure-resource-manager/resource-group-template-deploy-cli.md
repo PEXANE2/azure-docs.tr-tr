@@ -4,18 +4,18 @@ description: Azure 'a kaynak dağıtmak için Azure Resource Manager ve Azure CL
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 10/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: bef9d0490ce9109a960b69febf2970a289c25e40
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: c5a07d8b52e83215b2fdc220d76557ca45e1eae9
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973403"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286021"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma
 
-Bu makalede, Azure CLı 'yi Azure 'a dağıtmak için Kaynak Yöneticisi şablonlarıyla Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız bkz. [Azure Resource Manager genel bakış](resource-group-overview.md).  
+Bu makalede, Azure CLı 'yi Azure 'a dağıtmak için Kaynak Yöneticisi şablonlarıyla Azure CLı 'nın nasıl kullanılacağı açıklanmaktadır. Azure çözümlerinizi dağıtma ve yönetme kavramlarını bilmiyorsanız bkz. [Azure Resource Manager genel bakış](resource-group-overview.md).
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
@@ -49,7 +49,7 @@ Azure 'a kaynak dağıttığınızda şunları yapabilirsiniz:
 2. Dağıtılan kaynaklar için kapsayıcı görevi gören bir kaynak grubu oluşturun. Kaynak grubunun adı yalnızca alfasayısal karakterler, noktalar, alt çizgiler, kısa çizgiler ve parantezler içerebilir. En fazla 90 karakter olabilir. Nokta ile bitemez.
 3. Oluşturulacak kaynakları tanımlayan şablonu kaynak grubuna dağıtın
 
-Bir şablon, dağıtımı özelleştirmenizi sağlayan parametreler içerebilir. Örneğin, belirli bir ortam için uyarlanmış değerler (geliştirme, test ve üretim gibi) sağlayabilirsiniz. Örnek şablon, depolama hesabı SKU 'SU için bir parametre tanımlar. 
+Bir şablon, dağıtımı özelleştirmenizi sağlayan parametreler içerebilir. Örneğin, belirli bir ortam için uyarlanmış değerler (geliştirme, test ve üretim gibi) sağlayabilirsiniz. Örnek şablon, depolama hesabı SKU 'SU için bir parametre tanımlar.
 
 Aşağıdaki örnek, bir kaynak grubu oluşturur ve yerel makinenizden bir şablon dağıtır:
 
@@ -149,9 +149,31 @@ az group deployment create \
   --parameters @storage.parameters.json
 ```
 
+## <a name="handle-extended-json-format"></a>Genişletilmiş JSON biçimini işle
+
+Çok satırlı dizeler veya açıklamalarla bir şablon dağıtmak için `--handle-extended-json-format` anahtarını kullanmanız gerekir.  Örnek:
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[
+    parameters('location')
+    ]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  /*
+    storage account and network interface
+    must be deployed first
+  */
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
 ## <a name="test-a-template-deployment"></a>Şablon dağıtımını test etme
 
-Şablon ve parametre değerlerinizi hiçbir kaynağı gerçekten dağıtmadan test etmek için [az Group Deployment Validate](/cli/azure/group/deployment#az-group-deployment-validate)kullanın. 
+Şablon ve parametre değerlerinizi hiçbir kaynağı gerçekten dağıtmadan test etmek için [az Group Deployment Validate](/cli/azure/group/deployment#az-group-deployment-validate)kullanın.
 
 ```azurecli-interactive
 az group deployment validate \
@@ -176,8 +198,8 @@ Bir hata algılanırsa, komut bir hata mesajı döndürür. Örneğin, depolama 
   "error": {
     "code": "InvalidTemplate",
     "details": null,
-    "message": "Deployment template validation failed: 'The provided value 'badSKU' for the template parameter 
-      'storageAccountType' at line '13' and column '20' is not valid. The parameter value is not part of the allowed 
+    "message": "Deployment template validation failed: 'The provided value 'badSKU' for the template parameter
+      'storageAccountType' at line '13' and column '20' is not valid. The parameter value is not part of the allowed
       value(s): 'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.",
     "target": null
   },

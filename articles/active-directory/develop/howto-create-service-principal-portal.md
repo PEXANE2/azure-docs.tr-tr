@@ -16,14 +16,14 @@ ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28354f54978e8ba776d8b0da294652ff462a05f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 14c3f90918d246a63d50af7b3542e8e74d5fbcf1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853446"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295510"
 ---
-# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
+# <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
 Bu makalede rol tabanlı erişim denetimiyle kullanılabilecek yeni bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu oluşturma konusu gösterilmektedir. Kaynaklara erişmesi veya kaynakları değiştirmesi gereken bir kodunuz olduğunda, uygulama için bir kimlik oluşturabilirsiniz. Bu kimlik, hizmet sorumlusu olarak bilinir. Daha sonra, gerekli izinleri hizmet sorumlusuna atayabilirsiniz. Bu makalede, portalının hizmet sorumlusu oluşturmak için nasıl kullanılacağı gösterilir. Uygulamanın yalnızca bir kuruluş içinde çalıştırılması amaçlanan tek kiracılı bir uygulamaya odaklanır. Genellikle kuruluşunuzda çalışan iş kolu uygulamaları için tek kiracılı uygulamalar kullanırsınız.
 
@@ -46,9 +46,9 @@ Azure AD uygulamanızı ve hizmet sorumlusunu oluşturdunuz.
 
 ## <a name="assign-the-application-to-a-role"></a>Uygulamayı bir role atama
 
-Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında daha fazla bilgi edinmek için [bkz. RBAC: Yerleşik roller](../../role-based-access-control/built-in-roles.md).
+Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında daha fazla bilgi edinmek için bkz. [RBAC: yerleşik roller](../../role-based-access-control/built-in-roles.md).
 
-Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. Daha düşük düzeyde kapsam için izinler devralınmıştır. Örneğin, bir kaynak grubu için okuyucu rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir.
+Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için okuyucu rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir.
 
 1. Uygulamayı atamak istediğiniz kapsam düzeyine gidin. Örneğin, abonelik kapsamında bir rol atamak için **tüm hizmetler** ve **abonelikler**' i seçin.
 
@@ -60,13 +60,13 @@ Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. Daha
 
    Aradığınız aboneliği görmüyorsanız **genel abonelikler filtresi**' ni seçin. Portal için istediğiniz aboneliğin seçildiğinden emin olun.
 
-1. Seçin **erişim denetimi (IAM)** .
-1. Seçin **rol ataması Ekle**.
+1. **Erişim denetimi (IAM)** öğesini seçin.
+1. **Rol ataması Ekle**' yi seçin.
 1. Uygulamaya atamak istediğiniz rolü seçin. Uygulamanın **yeniden başlatma**, örnekleri **başlatma** ve **durdurma** gibi eylemleri yürütmesine izin vermek için, **katkıda bulunan** rolünü seçin. Varsayılan olarak, Azure AD uygulamaları kullanılabilir seçeneklerde gösterilmez. Uygulamanızı bulmak için adı arayın ve seçin.
 
    ![Uygulamaya atanacak rolü seçin](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Seçin **Kaydet** rol atama tamamlanması. Uygulamanızı bu kapsam için bir role atanan kullanıcılar listesinde görürsünüz.
+1. Rolü atamaya son vermek için **Kaydet** ' i seçin. Uygulamanızı bu kapsam için bir role atanan kullanıcılar listesinde görürsünüz.
 
 Hizmet sorumlusu ayarlanır. Betikleri veya uygulamalarınızı çalıştırmak için kullanmaya başlayabilirsiniz. Sonraki bölümde, programlama yoluyla oturum açarken gereken değerlerin nasıl alınacağı gösterilmektedir.
 
@@ -87,9 +87,9 @@ Programlı olarak oturum açtığınızda, kimlik doğrulama isteğinizle kirac�
 ## <a name="certificates-and-secrets"></a>Sertifikalar ve gizlilikler
 Daemon uygulamaları, Azure AD 'de kimlik doğrulaması yapmak için iki kimlik bilgileri biçimi kullanabilir: sertifikalar ve uygulama gizli dizileri.  Bir sertifika kullanmanızı öneririz, ancak yeni bir uygulama gizli anahtarı da oluşturabilirsiniz.
 
-### <a name="upload-a-certificate"></a>Sertifikayı karşıya yükleyin
+### <a name="upload-a-certificate"></a>Sertifikayı karşıya yükle
 
-Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, sınama amacıyla otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda kendinden imzalı bir sertifika oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Windows Denetim Masası 'ndan erişilebilen [Kullanıcı sertifikasını Yönet](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC ek bileşenini kullanarak bu sertifikayı dışarı aktarın.
+Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, sınama amacıyla otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda otomatik olarak imzalanan bir sertifika oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Windows Denetim Masası 'ndan erişilebilen [Kullanıcı sertifikasını Yönet](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC ek bileşenini kullanarak bu sertifikayı dışarı aktarın.
 
 Sertifikayı karşıya yüklemek için:
 
@@ -132,7 +132,7 @@ Uygulama kayıtları ayarı **Hayır**olarak ayarlandıysa, yalnızca yönetici 
 
 ### <a name="check-azure-subscription-permissions"></a>Azure abonelik izinlerini denetle
 
-Azure aboneliğinizde, hesabınız bir rol için bir ad `Microsoft.Authorization/*/Write` uygulaması atamak üzere erişime sahip olmalıdır. Bu eylemin izni, [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolüyle veya [Kullanıcı Erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüyle verilir. Hesabınız **katkıda bulunan** rolüne atanırsa, yeterli izne sahip değilsiniz. Hizmet sorumlusunu bir role atamaya çalışırken bir hata alıyorsunuz.
+Azure aboneliğinizde, bir role AD uygulaması atamak için hesabınızın `Microsoft.Authorization/*/Write` erişimi olması gerekir. Bu eylemin izni, [Sahip](../../role-based-access-control/built-in-roles.md#owner) rolüyle veya [Kullanıcı Erişimi Yöneticisi](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolüyle verilir. Hesabınız **katkıda bulunan** rolüne atanırsa, yeterli izne sahip değilsiniz. Hizmet sorumlusunu bir role atamaya çalışırken bir hata alıyorsunuz.
 
 Abonelik izinlerinizi denetlemek için:
 
@@ -150,6 +150,5 @@ Abonelik izinlerinizi denetlemek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çok kiracılı bir uygulama ayarlamak için [Geliştirici kılavuzu Azure Resource Manager API 'siyle yetkilendirmeyi](../../azure-resource-manager/resource-manager-api-authentication.md)inceleyin.
 * Güvenlik ilkelerini belirtme hakkında bilgi edinmek için bkz. [Azure rol tabanlı Access Control](../../role-based-access-control/role-assignments-portal.md).  
 * Kullanıcılara verilebilecek veya reddedilmiş olabilecek eylemlerin bir listesi için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md).

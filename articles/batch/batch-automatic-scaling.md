@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 10/08/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 9c02db01d7b95f3178d73602089b30029fb0db9f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a788226ad5bd3f8cd6416ad032fc439e860fd713
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274835"
+ms.locfileid: "72286703"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Batch havuzundaki işlem düğümlerini ölçeklemek için otomatik formül oluşturma
 
@@ -207,7 +207,7 @@ Bu önceden tanımlanmış **işlevler** , bir otomatik ölçeklendirme formül�
 | LG (çift) |double |Double 'un günlük taban 2 değerini döndürür. |
 | LG (doubleVecList) |doubleVec |DoubleVecList 'in bileşen tabanlı günlük tabanı 2 ' i döndürür. Parametresi için bir VEC (Double) açıkça geçirilmesi gerekir. Aksi halde, çift LG (Double) sürümü varsayılır. |
 | LN (Double) |double |Double 'un doğal günlüğünü döndürür. |
-| LN (doubleVecList) |doubleVec |DoubleVecList 'in bileşen tabanlı günlük tabanı 2 ' i döndürür. Parametresi için bir VEC (Double) açıkça geçirilmesi gerekir. Aksi halde, çift LG (Double) sürümü varsayılır. |
+| LN (doubleVecList) |doubleVec |Double 'un doğal günlüğünü döndürür. |
 | günlük (çift) |double |Double 'un günlük tabanı 10 ' ı döndürür. |
 | günlük (doubleVecList) |doubleVec |DoubleVecList 'in bileşen temelinde günlük tabanı 10 ' ü döndürür. Tek Çift parametresi için bir VEC (Double) açıkça geçirilmesi gerekir. Aksi takdirde, Çift günlük (Double) sürümü varsayılır. |
 | Max (doubleVecList) |double |DoubleVecList içindeki maksimum değeri döndürür. |

@@ -1,50 +1,50 @@
 ---
-title: Azure Deniz için önerilen güvenlik uygulamaları
-description: Azure'ı kullanarak temsilci kaynak yönetimi, güvenlik göz önünde bulundurun ve erişim denetimi önemlidir.
+title: Önerilen güvenlik uygulamaları
+description: Azure Temsilcili kaynak yönetimini kullanırken, güvenlik ve erişim denetimi göz önünde bulundurmanız önemlidir.
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 843b965e6ea74a7c11dc11459ff5d30ddbe5c987
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809872"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286188"
 ---
 # <a name="recommended-security-practices"></a>Önerilen güvenlik uygulamaları
 
-Azure'ı kullanarak temsilci kaynak yönetimi, güvenlik göz önünde bulundurun ve erişim denetimi önemlidir. Kiracınızın güvenliğini sağlamak için adımlar atmak güncelleştirdiğinden kiracınızdaki kullanıcılar müşteri aboneliği ve kaynak gruplarını, doğrudan erişim gerekir. Yalnızca etkin bir şekilde müşterilerinizin kaynaklarını yönetmek için gerekli olan erişime izin ver emin olmak istersiniz. Bu konuda, bunu yapmanıza yardımcı olacak öneriler sağlanır.
+Azure Temsilcili kaynak yönetimini kullanırken, güvenlik ve erişim denetimi göz önünde bulundurmanız önemlidir. Kiracınızdaki kullanıcılar müşteri aboneliklerine ve kaynak gruplarına doğrudan erişebilir, bu nedenle kiracınızın güvenliğini sağlamak için adımları uygulamanız gerekir. Ayrıca, yalnızca müşterilerinizin kaynaklarını etkin bir şekilde yönetmek için gereken erişime izin verdiğinizden emin olmak isteyeceksiniz. Bu konu, bunu yapmanıza yardımcı olacak öneriler sağlar.
 
-## <a name="require-azure-multi-factor-authentication"></a>Azure çok faktörlü kimlik doğrulaması gerektir
+## <a name="require-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication gerektir
 
-[Azure multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (iki aşamalı doğrulama olarak da bilinir), saldırganlar birden çok kimlik doğrulama adımı gerektirerek bir hesaba erişim elde etmesini önlemeye yardımcı olur. Müşteri kaynaklara erişimi olacak kullanıcılar da dahil olmak üzere hizmet sağlayıcısı, kiracınızdaki tüm kullanıcıları için çok faktörlü kimlik doğrulaması istemeniz gerekir.
+[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (iki adımlı doğrulama olarak da bilinir), saldırganların birden çok kimlik doğrulama adımı gerektirerek bir hesaba erişim sağlamasını önlemeye yardımcı olur. Müşteri kaynaklarına erişimi olacak kullanıcılar da dahil olmak üzere, hizmet sağlayıcı kiracınızdaki tüm kullanıcılar için Multi-Factor Authentication gerekir.
 
-Azure multi-Factor Authentication, kiracıda uygulamak için müşterileriniz sorun öneririz.
+Müşterilerinizin kiracılarında Azure Multi-Factor Authentication uygulamasını da sağlamasını öneririz.
 
-## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>En düşük öncelik ilkesini kullanarak gruplar için izinleri atayın
+## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>En az ayrıcalık ilkesini kullanarak gruplara izin atama
 
-Yönetimini kolaylaştırmak için Azure AD kullanıcı gruplarını, müşterilerinizin kaynaklarını yönetmek için gereken her rol için kullanmanızı öneririz. Bu, doğrudan o kullanıcıya izin atamak yerine Grup gerektiği gibi bireysel kullanıcı eklemek veya kaldırmak sağlar.
+Yönetimi kolaylaştırmak için, müşterilerinizin kaynaklarını yönetmek için gereken her bir rol için Azure AD Kullanıcı gruplarını kullanmanızı öneririz. Bu, izinleri doğrudan bu kullanıcıya atamak yerine, her kullanıcıyı gerektiği gibi eklemenize veya kaldırmanıza olanak sağlar.
 
-İzni yapınızı oluştururken, böylece yalnızca kullanıcıların yanlışlıkla hata olasılığını azaltmaya yardımcı olur, işi tamamlamak için gerekli izinlere sahip en az ayrıcalık ilkesini uygulayın emin olun.
+İzin yapınızı oluştururken, kullanıcıların yalnızca işini tamamlaması için gerekli izinlere sahip olması için en az ayrıcalık ilkesini izlediğinizden emin olun, böylece yanlışlıkla oluşan hatalara karşı daha fazla hata olasılığını azaltır.
 
-Örneğin, şunun gibi bir yapı kullanmak isteyebilirsiniz:
+Örneğin, aşağıdaki gibi bir yapı kullanmak isteyebilirsiniz:
 
-|Grup adı  |Type  |Principalıd  |Rol tanımı  |Rol tanımı kimliği  |
+|Grup adı  |Tür  |PrincipalId  |Rol tanımı  |Rol tanımı KIMLIĞI  |
 |---------|---------|---------|---------|---------|
-|Mimarları     |Kullanıcı grubu         |\<Principalıd\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
-|Değerlendirme     |Kullanıcı grubu         |\<Principalıd\>         |Okuyucu         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
-|VM uzmanlarıyla     |Kullanıcı grubu         |\<Principalıd\>         |VM katkıda bulunanı         |9980e02c-c2be-4d73-94e8-173b1dc7cf3c  |
-|Otomasyon     |Hizmet asıl adı (SPN)         |\<Principalıd\>         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Ları     |Kullanıcı grubu         |\<Principalıd @ no__t-1         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
+|Değerlendirme     |Kullanıcı grubu         |\<Principalıd @ no__t-1         |Okuyucu         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |
+|VM uzmanları     |Kullanıcı grubu         |\<Principalıd @ no__t-1         |VM Katılımcısı         |9980e02c-c2be-4d73-94E8-173b1dc7cf3c  |
+|Otomasyon     |Hizmet asıl adı (SPN)         |\<Principalıd @ no__t-1         |Katılımcı         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 
-Bu grupları oluşturduktan sonra gerektiğinde kullanıcılara atayabilirsiniz. Yalnızca gerçekten erişimi gereken kullanıcılar ekleyin. Grup üyeliği düzenli olarak gözden geçirin ve artık uygun veya eklemek gerekli olan tüm kullanıcıları kaldırma emin olun.
+Bu grupları oluşturduktan sonra, gerektiğinde kullanıcıları atayabilirsiniz. Yalnızca, erişimi olması gereken kullanıcıları ekleyin. Grup üyeliğini düzenli olarak gözden geçirdiğinizden emin olun ve artık uygun veya gerekli olmayan tüm kullanıcıları kaldırın.
 
-Göz önünde bulundurun kullanırken, [ortak yönetilen hizmet teklifi aracılığıyla müşteri](../how-to/publish-managed-services-offers.md), tüm Grup (veya kullanıcı veya hizmet sorumlusu) dahil planı satın her müşteri için aynı izinlere sahip. Her müşteri ile çalışan için farklı gruplara atamak için Azure Resource Manager şablonlarını kullanarak tek tek her müşteri veya müşteri için özel olan ayrı, özel bir plan yayımlamak gerekir. Örneğin, çok olan bir genel planda yayımlayabilirsiniz sınırlı erişim, ardından kaynaklarını gerektiği gibi ek erişim verme özelleştirilmiş bir Azure kaynak şablonu ile ek erişim müşteriye doğrudan ekleme çalışmak.
+[Ortak yönetilen bir hizmet teklifi aracılığıyla müşterileri](../how-to/publish-managed-services-offers.md)eklediğinizde, eklediğiniz herhangi bir grup (veya Kullanıcı veya hizmet sorumlusu) planı satın alan her müşteri için aynı izinlere sahip olacağını unutmayın. Her müşteriyle çalışacak farklı gruplar atamak için, her müşteri için özel olarak özel bir plan yayımlamanız veya Azure Resource Manager şablonlarını kullanarak müşterileri ayrı ayrı birlikte yayımlamanız gerekir. Örneğin, çok sınırlı erişimi olan bir genel planı yayımlayabilir ve daha sonra gerekli şekilde ek erişim sağlayan özelleştirilmiş bir Azure kaynak şablonu kullanarak daha fazla erişim sağlamak için müşteriyle doğrudan birlikte çalışabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure çok faktörlü kimlik doğrulaması dağıtmak](../../active-directory/authentication/howto-mfa-getstarted.md).
-- Hakkında bilgi edinin [kiracılar arası yönetim deneyimleri](cross-tenant-management-experience.md).
+- [Azure Multi-Factor Authentication 'Yi dağıtın](../../active-directory/authentication/howto-mfa-getstarted.md).
+- [Çapraz kiracı yönetim deneyimleri](cross-tenant-management-experience.md)hakkında bilgi edinin.

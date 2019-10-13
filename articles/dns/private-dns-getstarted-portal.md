@@ -5,28 +5,28 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: quickstart
-ms.date: 10/05/2019
+ms.date: 10/11/2019
 ms.author: victorh
-ms.openlocfilehash: 79b626ef6beaad3a8f15da08b882fc7d596540b0
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: fe12a1a9f954718dfacb59ae0ed54e69309da650
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960380"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293814"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Azure özel DNS bölgesi oluşturma
 
 Bu hızlı başlangıç, Azure portal kullanarak ilk özel DNS bölgenizi ve kaydınızı oluşturma adımlarında size yol gösterir.
 
-DNS bölgesi, belirli bir etki alanı için DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS barındırılmaya başlamak için, bu etki alanı adı için bir DNS bölgesi oluşturmanız gerekir. Etki alanınız için her bir DNS kaydı daha sonra bu DNS bölgesi içinde oluşturulur. Sanal ağınıza özel bir DNS bölgesi yayımlamak için, bölgedeki kayıtları çözümlemek için izin verilen sanal ağların listesini belirtirsiniz.  Bunlara *bağlı* sanal ağlar denir. Oto kayıt etkinleştirildiğinde Azure DNS, bir sanal makine oluşturulduğunda bölge kayıtlarını da güncelleştirir, ' IP adresini değiştirir veya silinir.
+DNS bölgesi, belirli bir etki alanının DNS kayıtlarını barındırmak için kullanılır. Etki alanınızı Azure DNS'de barındırmaya başlamak için bir DNS bölgesi oluşturmanız gerekir. Ardından bu DNS bölgesinde etki alanınız için tüm DNS kayıtları oluşturulur. Sanal ağınızda özel bir DNS bölgesi yayımlamak için bölge içindeki kaynakları çözümleme izni olan sanal ağların listesini belirtmeniz gerekir.  Bunlara *bağlı* sanal ağlar denir. Oto kayıt etkinleştirildiğinde Azure DNS, bir sanal makine oluşturulduğunda bölge kayıtlarını da güncelleştirir, ' IP adresini değiştirir veya silinir.
 
-Bu hızlı başlangıçta şunları nasıl yapacağınızı öğreneceksiniz:
+Bu hızlı başlangıçta şunları yapmayı öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Özel bir DNS bölgesi oluşturma
-> * Sanal ağ oluşturma
+> * Sanal ağ oluşturun
 > * Sanal ağı bağlama
-> * Test sanal makineleri oluşturma
+> * Test amaçlı sanal makineleri oluşturma
 > * Ek bir DNS kaydı oluşturma
 > * Özel bölgeyi test etme
 
@@ -54,11 +54,11 @@ Bir DNS bölgesi, bir etki alanı için DNS girdilerini içerir. Etki alanınız
 
 1. **Gözden geçir + oluştur**' u seçin.
 
-1. **Oluştur**' u seçin.
+1. **Oluştur**'u seçin.
 
 Bölgenin oluşturulması birkaç dakika sürebilir.
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
 1. Portal sayfası sol üst sayfasında, **kaynak oluştur**' u ve ardından **ağ**' ı seçin ve **sanal ağ**' ı seçin.
 2. **Ad**Için **Myazurevnet**yazın.
@@ -74,15 +74,15 @@ Bölgenin oluşturulması birkaç dakika sürebilir.
 
 1. **MyAzureResourceGroup** kaynak grubunu açın ve **Private.contoso.com** özel bölgesini seçin.
 2. Sol bölmede **sanal ağ bağlantıları**' nı seçin.
-3. **Ekle**' yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. **Bağlantı adı**Için **MyLink** yazın.
 5. **Sanal ağ**Için, **Myazurevnet**' i seçin.
 6. **Otomatik kaydı etkinleştir** onay kutusunu seçin.
-7. **Tamam ' ı**seçin.
+7. **Tamam**’ı seçin.
 
-## <a name="create-the-test-virtual-machines"></a>Test sanal makineleri oluşturma
+## <a name="create-the-test-virtual-machines"></a>Test amaçlı sanal makineleri oluşturma
 
-Şimdi, özel DNS bölgenizi sınayabilmeniz için iki sanal makine oluşturun:
+Şimdi özel DNS bölgenizi test etmek için iki sanal makine oluşturun:
 
 1. Portal sayfası sol üst köşesinde, **kaynak oluştur**' u seçin ve ardından **Windows Server 2016 Datacenter**' ı seçin.
 1. Kaynak grubu için **MyAzureResourceGroup** öğesini seçin.
@@ -108,35 +108,35 @@ Her iki sanal makinenin da tamamlanması birkaç dakika sürer.
  Aşağıdaki örnek, **Private.contoso.com**kaynak GRUBUNDAKI **MyAzureResourceGroup**DNS bölgesinde göreli ad **DB** ile bir kayıt oluşturur. Kayıt kümesinin tam nitelikli adı **DB.Private.contoso.com**' dir. Kayıt türü, **MYVM01**IP adresi olan "A" dır.
 
 1. **MyAzureResourceGroup** kaynak grubunu açın ve **Private.contoso.com** özel bölgesini seçin.
-2. **+ Kayıt kümesi**seçin.
+2. **+ Kayıt kümesi**’ni seçin.
 3. **Ad**için **DB**yazın.
 4. **IP adresi**Için, **MYVM01**için gördüğünüz IP adresini yazın. Bu, sanal makine başlatıldığında otomatik olarak kaydedilmelidir.
-5. **Tamam ' ı**seçin.
+5. **Tamam**’ı seçin.
 
 ## <a name="test-the-private-zone"></a>Özel bölgeyi test etme
 
 Artık **Private.contoso.com** özel bölgeniz için ad çözümlemesini test edebilirsiniz.
 
-### <a name="configure-vms-to-allow-inbound-icmp"></a>VM 'Leri gelen ıCMP 'ye izin verecek şekilde yapılandırma
+### <a name="configure-vms-to-allow-inbound-icmp"></a>Sanal makineleri gelen ICMP paketlerine izin verecek şekilde yapılandırma
 
-Ad çözümlemesini sınamak için ping komutunu kullanabilirsiniz. Bu nedenle, gelen ıCMP paketlerine izin vermek için her iki sanal makinede güvenlik duvarını yapılandırın.
+Ad çözümlemesini test etmek için ping komutunu kullanabilirsiniz. Bunun için iki sanal makinedeki güvenlik duvarını da gelen ICMP paketlerine izin verecek şekilde yapılandırmanız gerekir.
 
-1. MyVM01 'e bağlanın ve yönetici ayrıcalıklarına sahip bir Windows PowerShell penceresi açın.
+1. myVM01 adlı sanal makineye bağlanın, yönetici ayrıcalıklarıyla bir Windows PowerShell penceresi açın.
 2. Şu komutu çalıştırın:
 
    ```powershell
    New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
    ```
 
-MyVM02 için yineleyin.
+myVM02 için yineleyin.
 
-### <a name="ping-the-vms-by-name"></a>VM 'Lere ada göre ping gönder
+### <a name="ping-the-vms-by-name"></a>Sanal makinelere ada göre ping gönderme
 
-1. MyVM02 Windows PowerShell komut isteminde, otomatik olarak kaydettirilen ana bilgisayar adını kullanarak ping myVM01:
+1. myVM02 Windows PowerShell komut isteminden otomatik olarak kaydedilen ana bilgisayar adını kullanarak myVM01 adlı makineye ping gönderin:
    ```
    ping myVM01.private.contoso.com
    ```
-   Şuna benzer bir çıktı görmeniz gerekir:
+   Şuna benzer bir çıkışla karşılaşmanız gerekir:
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -152,11 +152,11 @@ MyVM02 için yineleyin.
        Minimum = 0ms, Maximum = 1ms, Average = 0ms
    PS C:\>
    ```
-2. Daha önce oluşturduğunuz **veritabanı** adına ping gönderin:
+2. Şimdi önceden oluşturduğunuz **db** adına ping gönderin:
    ```
    ping db.private.contoso.com
    ```
-   Şuna benzer bir çıktı görmeniz gerekir:
+   Şuna benzer bir çıkışla karşılaşmanız gerekir:
    ```
    PS C:\> ping db.private.contoso.com
 
@@ -173,7 +173,7 @@ MyVM02 için yineleyin.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Tüm kaynakları Sil
+## <a name="delete-all-resources"></a>Tüm kaynakları silme
 
 Artık gerekli değilse, bu hızlı başlangıçta oluşturulan kaynakları silmek için **MyAzureResourceGroup** kaynak grubunu silin.
 

@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3d0b67227c8e80f23f111ec889f8cb1541b15f94
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 875285b6a168d9aa9820d660d9c366a36545d319
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100761"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299413"
 ---
-# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Öğretici: Azure 'da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde geliştirme altyapısı oluşturma
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Öğretici: Azure’da Jenkins, GitHub ve Docker ile bir Linux sanal makinesi üzerinde geliştirme altyapısı oluşturma
 
 Uygulama geliştirme sürecinin derleme ve test aşamasını otomatikleştirmek için bir sürekli tümleştirme ve dağıtım (CI/CD) işlem hattı kullanabilirsiniz. Bu öğreticide, aşağıdakileri öğrenerek bir Azure sanal makinesinde CI/CD işlem hattı oluşturursunuz:
 
@@ -34,7 +34,7 @@ Uygulama geliştirme sürecinin derleme ve test aşamasını otomatikleştirmek 
 > * Uygulamanız için bir Docker görüntüsü oluşturma
 > * GitHub işlemelerinin yeni Docker görüntüsü oluşturduğunu ve çalışmakta olan uygulamayı güncelleştirdiğini doğrulama
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
@@ -87,7 +87,7 @@ az vm create --resource-group myResourceGroupJenkins \
 
 Sanal makinenin oluşturulup yapılandırılması birkaç dakika sürer.
 
-VM’nize web trafiğinin ulaşmasına izin vermek için [az vm open-port](/cli/azure/vm) komutunu kullanarak Jenkins trafiği için *8080* bağlantı noktasını, Node.js uygulaması için örnek uygulama çalıştırmaya yönelik *1337* bağlantı noktasını açın:
+Web trafiğinin sanal makinenize ulaşmasına izin vermek üzere [az vm open-port](/cli/azure/vm) komutunu kullanarak Jenkins trafiği için *8080* bağlantı noktasını, örnek uygulama çalıştırmak amacıyla kullanılacak Node.js uygulaması için de *1337* bağlantı noktasını açın:
 
 ```azurecli-interactive 
 az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 8080 --priority 1001
@@ -108,7 +108,7 @@ Güvenlik nedeniyle, Jenkins yüklemesini başlatmak için VM’nizde bir metin 
 ssh azureuser@<publicIps>
 ```
 
-Şu `service` komutu kullanarak Jenkins 'nin çalıştığını doğrulayın:
+@No__t-0 komutunu kullanarak Jenkins 'nin çalıştığını doğrulayın:
 
 ```bash
 $ service jenkins status
@@ -149,7 +149,7 @@ Oluşturduğunuz çatalın içinde bir web kancası oluşturun:
 
 - **Ayarlar**' ı seçin ve ardından sol taraftaki **Web kancaları** ' nı seçin.
 - **Web kancası Ekle**' yi seçin ve ardından, filtre kutusuna *Jenkins* yazın.
-- **Yük URL 'si**için girin `http://<publicIps>:8080/github-webhook/`. Sondaki / karakterini eklemeyi unutmayın
+- **Yük URL 'si**için `http://<publicIps>:8080/github-webhook/` girin. Sondaki / karakterini eklemeyi unutmayın
 - **İçerik türü**için *Application/x-www-form-urlencoded*öğesini seçin.
 - **Bu Web kancasını tetiklemek istediğiniz olayları seçin?** *yalnızca anında iletme olayını seçin.*
 - **Etkin** olarak işaretlendi olarak ayarlayın.

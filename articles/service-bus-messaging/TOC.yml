@@ -91,6 +91,8 @@
       href: service-bus-async-messaging.md
     - name: Kesintileri ve olağanüstü durumları yönetme
       href: service-bus-outages-disasters.md
+    - name: Azaltma
+      href: service-bus-throttling.md
     - name: Güvenlik
       items:
         - name: Kimlik doğrulama ve yetkilendirme

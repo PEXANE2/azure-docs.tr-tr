@@ -5,21 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2019
-ms.openlocfilehash: 467a8b1de3f6c234d9dfdfaf6132025688757997
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.date: 10/11/2019
+ms.openlocfilehash: 4f81b23378427faa522071f4a20e07485f5c3387
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327125"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296425"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda PostgreSQL uzantıları-tek sunucu
 PostgreSQL, uzantıları kullanarak veritabanınızın işlevselliğini genişletmenizi sağlar. Uzantılar, tek bir komutla birlikte tek bir pakette yüklenebilecek veya kaldırılabileceği tek bir pakette birden çok ilgili SQL nesnesini birlikte paketleyebilir. Veritabanına yüklendikten sonra uzantı işlevleri yerleşik özellikler gibi.
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL uzantılarını kullanma
-PostgreSQL uzantılarının kullanabilmeniz için veritabanınıza yüklenmesi gerekir. Belirli bir uzantıyı yüklemek için, psql aracından [uzantı](https://www.postgresql.org/docs/current/sql-createextension.html) Oluştur komutunu çalıştırarak paketlenmiş nesneleri veritabanınıza yükleyin.
+PostgreSQL uzantılarının kullanabilmeniz için veritabanınıza yüklenmesi gerekir. Belirli bir uzantıyı yüklemek için, paketlenmiş nesneleri veritabanınıza yüklemek üzere psql aracından [uzantı @no__t oluştur](https://www.postgresql.org/docs/current/sql-createextension.html)-1komutunu çalıştırın.
 
-PostgreSQL için Azure veritabanı aşağıda listelenen bir anahtar uzantıları alt kümesini destekler. Bu bilgiler çalıştırılarak `SELECT * FROM pg_available_extensions;`da kullanılabilir. Listelenenlerin ötesinde uzantılar desteklenmez. PostgreSQL için Azure veritabanı 'nda kendi uzantınızı oluşturamazsınız.
+PostgreSQL için Azure veritabanı aşağıda listelenen bir anahtar uzantıları alt kümesini destekler. Bu bilgiler `SELECT * FROM pg_available_extensions;` çalıştırılarak da kullanılabilir. Listelenenlerin ötesinde uzantılar desteklenmez. PostgreSQL için Azure veritabanı 'nda kendi uzantınızı oluşturamazsınız.
 
 ## <a name="postgres-11-extensions"></a>Postgres 11 uzantıları
 
@@ -31,29 +31,29 @@ Aşağıdaki uzantılar Postgres sürüm 11 ' in PostgreSQL sunucuları için Az
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres Standartlayıcı ABD veri kümesi örneği|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | GıN 'te ortak veri türlerini dizinlemeye yönelik destek|
-> |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1.5             | GiST 'de ortak veri türlerini dizinlemeye yönelik destek|
-> |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | büyük/küçük harf duyarsız karakter dizeleri için veri türü|
-> |[ünüzde](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | çok boyutlu küpler için veri türü|
+> |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1,5             | GiST 'de ortak veri türlerini dizinlemeye yönelik destek|
+> |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1,5             | büyük/küçük harf duyarsız karakter dizeleri için veri türü|
+> |[ünüzde](https://www.postgresql.org/docs/11/cube.html)                         | 1,4             | çok boyutlu küpler için veri türü|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | bir veritabanı içinden diğer PostgreSQL veritabanlarına bağlanma|
 > |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | tamsayılar için metin arama sözlük şablonu|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | Dünya yüzeyinde büyük daire mesafelerini hesaplama|
 > |[belirsizlik zystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1.1             | dizeler arasındaki benzerlikleri ve mesafeyi belirleme|
-> |[HStore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | (anahtar, değer) çiftleri kümelerini depolamak için veri türü|
+> |[HStore](https://www.postgresql.org/docs/11/hstore.html)                       | 1,5             | (anahtar, değer) çiftleri kümelerini depolamak için veri türü|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.2           | PostgreSQL için kuramsal dizinler|
 > |[ıntarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | tamsayı dizileri için işlevler, işleçler ve Dizin desteği|
 > |[değilse](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | Uluslararası ürün numaralandırma standartları için veri türleri|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | hiyerarşik ağaç benzeri yapılar için veri türü|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Ticari RDBMS 'den işlevlerin ve paketlerin bir alt kümesini taklit eden işlevler ve işleçler|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Denetim işlevselliği sağlar|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | Denetim işlevselliği sağlar|
 > |[pgşifre](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | şifreleme işlevleri|
 > |[pgrouting](https://pgrouting.org/)                    | 2.6.2 Critical           | pgRouting uzantısı|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | satır düzeyinde kilitleme bilgilerini göster|
-> |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | demet düzeyi istatistiklerini göster|
+> |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1,5             | demet düzeyi istatistiklerini göster|
 > |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | Paylaşılan arabellek önbelleğini inceleyin|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 4.0.0           | Bölümlenmiş tabloları zamana veya KIMLIĞE göre yönetme uzantısı|
 > |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | ön sıcak ilişki verileri|
-> |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
-> |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1.4             | trigram temelinde metin benzerliği ölçümü ve Dizin arama|
+> |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1,6             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
+> |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1,4             | trigram temelinde metin benzerliği ölçümü ve Dizin arama|
 > |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL yordam dili|
 > |[plv8](https://plv8.github.io/)                         | 2.3.11          | PL/JavaScript (V8) güvenilen yordamsal dil|
 > |[PostGIS](https://www.postgis.net/)                      | 2.5.1           | PostGIS geometrisi, coğrafya ve raster uzamsal türleri ve işlevleri|
@@ -76,29 +76,29 @@ Aşağıdaki uzantılar Postgres sürüm 10 ' a sahip PostgreSQL için Azure ver
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Bir adresi bileşen öğelerine ayrıştırmak için kullanılır. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Adres Standartlayıcı ABD veri kümesi örneği|
 > |[btree_gin](https://www.postgresql.org/docs/10/btree-gin.html)                    | 1.3             | GıN 'te ortak veri türlerini dizinlemeye yönelik destek|
-> |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1.5             | GiST 'de ortak veri türlerini dizinlemeye yönelik destek|
+> |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1,5             | GiST 'de ortak veri türlerini dizinlemeye yönelik destek|
 > |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1.0             | Otomatik şifreli parolalar için veri türü|
-> |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1.4             | büyük/küçük harf duyarsız karakter dizeleri için veri türü|
+> |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1,4             | büyük/küçük harf duyarsız karakter dizeleri için veri türü|
 > |[ünüzde](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | çok boyutlu küpler için veri türü|
 > |[dblink](https://www.postgresql.org/docs/10/dblink.html)                       | 1.2             | bir veritabanı içinden diğer PostgreSQL veritabanlarına bağlanma|
 > |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | tamsayılar için metin arama sözlük şablonu|
 > |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | Dünya yüzeyinde büyük daire mesafelerini hesaplama|
 > |[belirsizlik zystrmatch](https://www.postgresql.org/docs/10/fuzzystrmatch.html)                | 1.1             | dizeler arasındaki benzerlikleri ve mesafeyi belirleme|
-> |[HStore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | (anahtar, değer) çiftleri kümelerini depolamak için veri türü|
+> |[HStore](https://www.postgresql.org/docs/10/hstore.html)                       | 1,4             | (anahtar, değer) çiftleri kümelerini depolamak için veri türü|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | PostgreSQL için kuramsal dizinler|
 > |[ıntarray](https://www.postgresql.org/docs/10/intarray.html)                     | 1.2             | tamsayı dizileri için işlevler, işleçler ve Dizin desteği|
 > |[değilse](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | Uluslararası ürün numaralandırma standartları için veri türleri|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | hiyerarşik ağaç benzeri yapılar için veri türü|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Ticari RDBMS 'den işlevlerin ve paketlerin bir alt kümesini taklit eden işlevler ve işleçler|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Denetim işlevselliği sağlar|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.2             | Denetim işlevselliği sağlar|
 > |[pgşifre](https://www.postgresql.org/docs/10/pgcrypto.html)                     | 1.3             | şifreleme işlevleri|
 > |[pgrouting](https://pgrouting.org/)                    | 2.5.2 Parallel sections           | pgRouting uzantısı|
 > |[pgrowlocks](https://www.postgresql.org/docs/10/pgrowlocks.html)                   | 1.2             | satır düzeyinde kilitleme bilgilerini göster|
-> |[pgstattuple](https://www.postgresql.org/docs/10/pgstattuple.html)                  | 1.5             | demet düzeyi istatistiklerini göster|
+> |[pgstattuple](https://www.postgresql.org/docs/10/pgstattuple.html)                  | 1,5             | demet düzeyi istatistiklerini göster|
 > |[pg_buffercache](https://www.postgresql.org/docs/10/pgbuffercache.html)               | 1.3             | Paylaşılan arabellek önbelleğini inceleyin|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | Bölümlenmiş tabloları zamana veya KIMLIĞE göre yönetme uzantısı|
 > |[pg_prewarm](https://www.postgresql.org/docs/10/pgprewarm.html)                   | 1.1             | ön sıcak ilişki verileri|
-> |[pg_stat_statements](https://www.postgresql.org/docs/10/pgstatstatements.html)           | 1.6             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
+> |[pg_stat_statements](https://www.postgresql.org/docs/10/pgstatstatements.html)           | 1,6             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
 > |[pg_trgm](https://www.postgresql.org/docs/10/pgtrgm.html)                      | 1.3             | trigram temelinde metin benzerliği ölçümü ve Dizin arama|
 > |[plpgsql](https://www.postgresql.org/docs/10/plpgsql.html)                      | 1.0             | PL/pgSQL yordam dili|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (V8) güvenilen yordamsal dil|
@@ -130,21 +130,21 @@ Postgres sürüm 9,6 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 > |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | tamsayılar için metin arama sözlük şablonu|
 > |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | Dünya yüzeyinde büyük daire mesafelerini hesaplama|
 > |[belirsizlik zystrmatch](https://www.postgresql.org/docs/9.6/fuzzystrmatch.html)                | 1.1             | dizeler arasındaki benzerlikleri ve mesafeyi belirleme|
-> |[HStore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | (anahtar, değer) çiftleri kümelerini depolamak için veri türü|
+> |[HStore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1,4             | (anahtar, değer) çiftleri kümelerini depolamak için veri türü|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | PostgreSQL için kuramsal dizinler|
 > |[ıntarray](https://www.postgresql.org/docs/9.6/intarray.html)                     | 1.2             | tamsayı dizileri için işlevler, işleçler ve Dizin desteği|
 > |[değilse](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | Uluslararası ürün numaralandırma standartları için veri türleri|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | hiyerarşik ağaç benzeri yapılar için veri türü|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Ticari RDBMS 'den işlevlerin ve paketlerin bir alt kümesini taklit eden işlevler ve işleçler|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Denetim işlevselliği sağlar|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.1.2             | Denetim işlevselliği sağlar|
 > |[pgşifre](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | şifreleme işlevleri|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | pgRouting uzantısı|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | satır düzeyinde kilitleme bilgilerini göster|
-> |[pgstattuple](https://www.postgresql.org/docs/9.6/pgstattuple.html)                  | 1.4             | demet düzeyi istatistiklerini göster|
+> |[pgstattuple](https://www.postgresql.org/docs/9.6/pgstattuple.html)                  | 1,4             | demet düzeyi istatistiklerini göster|
 > |[pg_buffercache](https://www.postgresql.org/docs/9.6/pgbuffercache.html)               | 1.2             | Paylaşılan arabellek önbelleğini inceleyin|
 > |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | Bölümlenmiş tabloları zamana veya KIMLIĞE göre yönetme uzantısı|
 > |[pg_prewarm](https://www.postgresql.org/docs/9.6/pgprewarm.html)                   | 1.1             | ön sıcak ilişki verileri|
-> |[pg_stat_statements](https://www.postgresql.org/docs/9.6/pgstatstatements.html)           | 1.4             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
+> |[pg_stat_statements](https://www.postgresql.org/docs/9.6/pgstatstatements.html)           | 1,4             | yürütülen tüm SQL deyimlerinin yürütme istatistiklerini izleyin|
 > |[pg_trgm](https://www.postgresql.org/docs/9.6/pgtrgm.html)                      | 1.3             | trigram temelinde metin benzerliği ölçümü ve Dizin arama|
 > |[plpgsql](https://www.postgresql.org/docs/9.6/plpgsql.html)                      | 1.0             | PL/pgSQL yordam dili|
 > |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (V8) güvenilen yordamsal dil|
@@ -182,7 +182,7 @@ Postgres sürüm 9,5 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 > |[değilse](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | Uluslararası ürün numaralandırma standartları için veri türleri|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | hiyerarşik ağaç benzeri yapılar için veri türü|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Ticari RDBMS 'den işlevlerin ve paketlerin bir alt kümesini taklit eden işlevler ve işleçler|
-> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | Denetim işlevselliği sağlar|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.0.7             | Denetim işlevselliği sağlar|
 > |[pgşifre](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | şifreleme işlevleri|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.0           | pgRouting uzantısı|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.5/pgrowlocks.html)                   | 1.1             | satır düzeyinde kilitleme bilgilerini göster|
@@ -205,7 +205,7 @@ Postgres sürüm 9,5 ' den PostgreSQL için Azure veritabanı sunucuları 'nda a
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
 Pg_stat_statements uzantısı, SQL deyimlerinin yürütme istatistiklerini izlemek için her PostgreSQL için Azure veritabanı sunucusuna önceden yüklenir.
-Uzantı tarafından `pg_stat_statements.track`hangi deyimlerin sayıldığını denetleyen ayar, varsayılan olarak `top`, istemciler tarafından doğrudan verilen tüm deyimler izlenir. Diğer iki izleme düzeyi ve ' `none` `all`dir. Bu ayar, [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)aracılığıyla bir sunucu parametresi olarak yapılandırılabilir.
+Uzantı tarafından hangi deyimlerin sayılacağını denetleyen `pg_stat_statements.track`, varsayılan olarak `top` ' e ayarlanır, yani doğrudan istemciler tarafından verilen tüm deyimler izlenir. Diğer iki izleme düzeyi `none` ve `all` ' dir. Bu ayar, [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) veya [Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)aracılığıyla bir sunucu parametresi olarak yapılandırılabilir.
 
 Sorgu yürütme bilgileri pg_stat_statements tarafından sağlanır ve her SQL bildirisini günlüğe kaydettiği için sunucu performansı üzerindeki etki arasında bir zorunluluğunu getirir vardır. Pg_stat_statements uzantısını etkin bir şekilde kullanmıyorsanız, `pg_stat_statements.track` ' ı `none` olarak ayarlamanızı öneririz. Bazı üçüncü taraf izleme hizmetlerinin sorgu Performans öngörüleri sunabilmesi için pg_stat_statements 'e güvenebileceğini unutmayın. bu nedenle, sizin için bu durum olup olmadığını onaylayın.
 
@@ -215,7 +215,7 @@ dblink ve postgres_fdw, bir PostgreSQL sunucusundan diğerine veya aynı sunucud
 Şu anda PostgreSQL için Azure veritabanı 'na giden bağlantılar, PostgreSQL için Azure veritabanı sunucuları için bağlantılar dışında desteklenmez.
 
 ## <a name="uuid"></a>uuid
-UUID-ossp uzantısından `uuid_generate_v4()` kullanmayı planlıyorsanız performans avantajları için pgşifre Uzantısı ile `gen_random_uuid()` karşılaştırmayı göz önünde bulundurun.
+UUID-ossp uzantısından `uuid_generate_v4()` kullanmayı planlıyorsanız performans avantajları için pgşifre uzantısından `gen_random_uuid()` ile karşılaştırmayı göz önünde bulundurun.
 
 
 ## <a name="pgaudit"></a>pgAudit
@@ -227,7 +227,7 @@ TimescaleDB, PostgreSQL için bir uzantı olarak paketlenmiş bir zaman serisi v
 [TimescaleDB hakkında daha fazla bilgi](https://docs.timescale.com/latest)için bkz [. zaman ölçeğinin tescilli ticari marka, Inc.](https://www.timescale.com/)
 
 ### <a name="installing-timescaledb"></a>TimescaleDB yükleniyor
-TimescaleDB yüklemek için, bunu sunucunun paylaşılan önyükleme kitaplıklarına dahil etmeniz gerekir. Postgres 'nin `shared_preload_libraries` parametresinin bir değişikliği, **sunucu yeniden başlatmanın** etkili olmasını gerektirir. [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanarak parametreleri değiştirebilirsiniz.
+TimescaleDB yüklemek için, bunu sunucunun paylaşılan önyükleme kitaplıklarına dahil etmeniz gerekir. Postgres 'nin `shared_preload_libraries` parametresinin değişikliği, **sunucu yeniden başlatmanın** etkili olmasını gerektirir. [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md)kullanarak parametreleri değiştirebilirsiniz.
 
 [Azure Portal](https://portal.azure.com/)kullanarak:
 
@@ -235,7 +235,7 @@ TimescaleDB yüklemek için, bunu sunucunun paylaşılan önyükleme kitaplıkla
 
 2. Kenar çubuğunda **sunucu parametreleri**' ni seçin.
 
-3. `shared_preload_libraries` Parametresi için arama yapın.
+3. @No__t-0 parametresini arayın.
 
 4. **TimescaleDB**öğesini seçin.
 

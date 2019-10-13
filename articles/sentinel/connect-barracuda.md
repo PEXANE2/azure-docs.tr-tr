@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: b3ca93d9e70456d25d5f78b2ca1fde8e4ea24f8d
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 5142204db86158937c16d19bf52fb677099598a5
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240196"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72284666"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Barvacuda gerecinizi bağlama 
 
@@ -32,15 +32,12 @@ Barbcuda Web uygulaması güvenlik duvarı (WAF) Bağlayıcısı, Bariscuda gün
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-## <a name="configure-and-connect-barracuda-waf"></a>Barracuda WAF'yi yapılandırın ve bağlayın
+## <a name="configure-and-connect-barracuda-waf"></a>Barçcuda WAF 'yi yapılandırma ve bağlama
 Barbcuda Web uygulaması güvenlik duvarı, Log Analytics Aracısı aracılığıyla günlükleri doğrudan Azure Sentinel 'e tümleştirebilir ve dışarı aktarabilir.
 1. [Barbcuda WAF yapılandırma akışına](https://campus.barracuda.com/product/webapplicationfirewall/doc/73696965/configure-the-barracuda-web-application-firewall-to-integrate-with-the-oms-server-and-export-logs/)gidin ve aşağıdaki parametreleri kullanarak bağlantıyı ayarlamak için yönergeleri izleyin:
     - **Çalışma alanı kimliği**: çalışma alanı kimliğinizin değerini Azure Sentinel Barraycuda bağlayıcı sayfasından kopyalayın.
     - **Birincil anahtar**: Azure Sentinel Barkıcuda bağlayıcı sayfasından birincil anahtarınızın değerini kopyalayın.
-2. Azure Sentinel portalında, Azure Sentinel 'i dağıttığınız çalışma alanına gidin ve satırın sonundaki üç nokta (...) simgesini seçin ve **Gelişmiş ayarlar**' ı seçin. 
-1. **Veri** ve ardından **Syslog**öğesini seçin.
-1. Barbcuda ' de ayarladığınız tesis ' ın bulunduğundan emin olun ve önem derecesi ' ni ayarlayıp **Kaydet**' e tıklayın.
-6. Barbcuda olayları için Log Analytics ilgili şemayı kullanmak için, **Commonsecuritylog** ve **barracuda_CL**için arama yapın.
+1. Barbcuda olayları için Log Analytics ilgili şemayı kullanmak için, **Commonsecuritylog** ve **barracuda_CL**için arama yapın.
 
 
 ## <a name="validate-connectivity"></a>Bağlantıyı doğrula

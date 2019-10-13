@@ -1,5 +1,5 @@
 ---
-title: Azure Pthouse ile çapraz kiracı yönetim deneyimleri
+title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 author: JnHs
 ms.service: lighthouse
@@ -7,12 +7,12 @@ ms.author: jenhayes
 ms.date: 09/25/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 17a32d50e2e0330218ff51b849cb4f3aeadb3d13
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
-ms.translationtype: MT
+ms.openlocfilehash: ab0362af9a3eec698150c135fd98283c9db2c833
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309660"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286612"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -57,7 +57,7 @@ Yetkili kullanıcılar, Azure tarafından atanan kaynak yönetimini kullanarak b
 
 - Tüm aboneliklerdeki uyarıları görüntüleyebilme özelliği ile Azure portal veya program aracılığıyla REST API çağrıları aracılığıyla temsilci olarak atanan abonelikler için uyarıları görüntüleyin
 - Temsilcili abonelikler için etkinlik günlüğü ayrıntılarını görüntüleme
-- Log Analytics: Birden çok Kiracıdaki uzak müşteri çalışma alanlarından verileri sorgulama
+- Log Analytics: birden çok Kiracıdaki uzak müşteri çalışma alanlarından verileri sorgulama
 
 [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -119,7 +119,7 @@ Destek istekleri:
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 Tüm senaryolarla, lütfen aşağıdaki geçerli sınırlamalara dikkat edin:
 
-- Azure Resource Manager tarafından işlenen istekler, Azure tarafından atanan kaynak yönetimi kullanılarak gerçekleştirilebilir. Bu isteklerin işlem URI 'Leri ile `https://management.azure.com`başlar. Ancak, kaynak türünün bir örneği tarafından işlenen istekler (örneğin, Anahtar Kasası gizli dizileri erişimi veya depolama veri erişimi), Azure tarafından atanan kaynak yönetimi ile desteklenmez. Bu isteklerin işlem URI 'leri genellikle örneğiniz için benzersiz olan bir adresle başlar, `https://myaccount.blob.core.windows.net` örneğin veya. `https://mykeyvault.vault.azure.net/` İkincisi ayrıca yönetim işlemleri yerine genellikle veri operasyonlardır. 
+- Azure Resource Manager tarafından işlenen istekler, Azure tarafından atanan kaynak yönetimi kullanılarak gerçekleştirilebilir. Bu istekler için işlem URI 'Leri `https://management.azure.com` ile başlar. Ancak, kaynak türünün bir örneği tarafından işlenen istekler (örneğin, Anahtar Kasası gizli dizileri erişimi veya depolama veri erişimi), Azure tarafından atanan kaynak yönetimi ile desteklenmez. Bu isteklerin işlem URI 'Leri genellikle örneğiniz için benzersiz olan bir adresle başlar, örneğin `https://myaccount.blob.core.windows.net` veya `https://mykeyvault.vault.azure.net/`. İkincisi ayrıca yönetim işlemleri yerine genellikle veri operasyonlardır. 
 - Rol atamalarının rol tabanlı erişim denetimi (RBAC) [yerleşik rollerini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)kullanması gerekir. Tüm yerleşik roller Şu anda sahip, Kullanıcı erişimi Yöneticisi veya [Dataactions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) iznine sahip yerleşik roller hariç Azure tarafından yetkilendirilen kaynak yönetimi ile desteklenmektedir. Özel roller ve [Klasik abonelik yöneticisi rolleri](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) de desteklenmez.
 - Şu anda, abonelik Azure Databricks kullanıyorsa, Azure tarafından atanan kaynak yönetimi için abonelik (veya bir abonelik içinde kaynak grubu) ekleyemezsiniz. Benzer şekilde, **Microsoft. ManagedServices** kaynak sağlayıcısı ile ekleme için bir abonelik kaydedilmişse, bu abonelik için şu anda bir Databricks çalışma alanı oluşturamazsınız.
 

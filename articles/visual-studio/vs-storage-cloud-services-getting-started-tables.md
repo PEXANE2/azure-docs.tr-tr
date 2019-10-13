@@ -1,5 +1,5 @@
 ---
-title: Tablo depolama ve Visual Studio bağlı hizmetlerini kullanmaya başlama (bulut Hizmetleri) | Microsoft Docs
+title: Visual Studio kullanarak tablo depolamayı kullanmaya başlama (bulut Hizmetleri)
 description: Visual Studio bağlı hizmetler 'i kullanarak bir depolama hesabına bağlandıktan sonra Visual Studio 'da bir bulut hizmeti projesinde Azure Tablo Depolamayı kullanmaya başlama
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5e8c1a92e79eea61e2807c7007ccaea5819e8529
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510728"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299997"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure Tablo depolama ve Visual Studio bağlı hizmetlerini kullanmaya başlama (bulut hizmetleri projeleri)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -25,11 +26,11 @@ ms.locfileid: "69510728"
 ## <a name="overview"></a>Genel Bakış
 Bu makalede, Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir bulut hizmetleri projesinde Azure depolama hesabı oluşturduktan veya başvurduktan sonra Visual Studio 'da Azure Table Storage 'ı kullanmaya nasıl başlacağınız açıklanır. **Bağlı hizmetler ekleme** işlemi, projenizdeki Azure depolama 'ya erişmek Için uygun NuGet paketlerini yükleyerek depolama hesabı için bağlantı dizesini proje yapılandırma dosyalarınıza ekler.
 
-Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Kimliği doğrulanmış çağrılarından içindeki ve Azure Bulutu dışındaki kabul eden bir NoSQL veri deposu hizmetidir. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.
+Azure Tablo depolama hizmeti, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Hizmet, Azure bulutu içinden ve dışından kimliği doğrulanmış çağrıları kabul eden bir NoSQL veri deposu olur. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.
 
-Başlamak için önce depolama hesabınızda bir tablo oluşturmanız gerekir. Kodda bir Azure tablosu oluşturmayı ve ayrıca tablo varlıklarını ekleme, değiştirme, okuma ve okuma gibi temel tablo ve varlık işlemlerini gerçekleştirmeyi göstereceğiz. Örnekler C\# koduna yazılır ve [.NET için Microsoft Azure depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
+Başlamak için önce depolama hesabınızda bir tablo oluşturmanız gerekir. Kodda bir Azure tablosu oluşturmayı ve ayrıca tablo varlıklarını ekleme, değiştirme, okuma ve okuma gibi temel tablo ve varlık işlemlerini gerçekleştirmeyi göstereceğiz. Örnekler C @ no__t-0 kodunda yazılır ve [.NET için Microsoft Azure depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
 
-**NOT:** Azure depolama 'ya çağrı gerçekleştiren bazı API 'Ler zaman uyumsuzdur. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](https://msdn.microsoft.com/library/hh191443.aspx) . Aşağıdaki kod zaman uyumsuz programlama yöntemlerinin kullanıldığını varsayar.
+**Note:** Azure depolama 'ya çağrı gerçekleştiren bazı API 'Ler zaman uyumsuzdur. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](https://msdn.microsoft.com/library/hh191443.aspx) . Aşağıdaki kod zaman uyumsuz programlama yöntemlerinin kullanıldığını varsayar.
 
 * Tabloları programlama yoluyla düzenleme hakkında daha fazla bilgi için bkz. [.NET kullanarak Azure Tablo Depolamayı kullanmaya başlama](../storage/storage-dotnet-how-to-use-tables.md) .
 * Azure depolama hakkında genel bilgi için bkz. [depolama belgeleri](https://azure.microsoft.com/documentation/services/storage/) .

@@ -2,29 +2,28 @@
 title: Azure Analysis Services | sunucu yöneticilerini yönetme | Microsoft Docs
 description: Azure 'da bir Analysis Services sunucusu için sunucu yöneticilerini yönetme hakkında bilgi edinin.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eb5248d374fa6212398ad652b4db1496833473ae
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: fbb7d339c5c3c12990a49d6ebd53760e101f4eb7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696303"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301101"
 ---
 # <a name="manage-server-administrators"></a>Sunucu yöneticilerini yönetme
 
 Sunucu yöneticileri, sunucunun bulunduğu kiracı için Azure Active Directory (Azure AD) içinde geçerli bir kullanıcı veya güvenlik grubu olmalıdır. Sunucu yöneticileri 'ni yönetmek için sunucu Azure portal, SSMS, PowerShell veya REST API sunucu özellikleri ' nde sunucunuz için **Analysis Services yöneticileri** kullanabilirsiniz. 
 
-**Güvenlik gruplarının** , `MailEnabled` özelliği olarak ayarlanmış şekilde `True` [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olması gerekir. E-posta adresi kullanımı `obj:groupid@tenantid`ile bir grup belirtirken.
+**Güvenlik grupları** , `MailEnabled` özelliği `True` olarak ayarlanmış [posta etkin](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) olmalıdır. Bir grup e-posta adresi belirtirken `obj:groupid@tenantid` kullanın.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure portal kullanarak sunucu yöneticileri eklemek için
 
 1. Portalda, sunucunuz için **Analysis Services Yöneticiler**' e tıklayın.
-2. **\<ServerName >-Analysis Services Admins**bölümünde **Ekle**' ye tıklayın.
+2. **@No__t-1servername >-Analysis Services yöneticileri**' nde **Ekle**' ye tıklayın.
 3. **Sunucu yöneticileri Ekle**' de Azure AD 'nizden Kullanıcı hesapları ' nı seçin veya dış kullanıcıları e-posta adresine davet edin.
 
     ![Azure portal 'de sunucu yöneticileri](./media/analysis-services-server-admins/aas-manage-users-admins.png)

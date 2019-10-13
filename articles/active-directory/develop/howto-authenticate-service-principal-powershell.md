@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/19/2019
+ms.date: 10/10/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0a3c8cbee92be85fe415a4d44d5493940bb45a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: f7c75a567dbefc71b4b0fea595dae56a03def5ed
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638633"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295452"
 ---
-# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Nasıl yapılır: Azure PowerShell kullanarak sertifikayla bir hizmet sorumlusu oluşturma
+# <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Nasıl yapılır: sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma
 
 Kaynaklara erişmesi gereken bir uygulamanız veya betiğiniz olduğunda, uygulama için bir kimlik ayarlayabilir ve uygulamanın kimliğini kendi kimlik bilgileriyle doğrulayabilirsiniz. Bu kimlik, hizmet sorumlusu olarak bilinir. Bu yaklaşım şunları yapmanızı sağlar:
 
@@ -46,9 +46,14 @@ Bu makaleyi tamamlayabilmeniz için hem Azure AD hem de Azure aboneliğinizde ye
 
 Hesabınızın yeterli izinlere sahip olup olmadığını denetlemenin en kolay yolu portalı kullanmaktır. Bkz. [Gerekli izinleri denetleme](howto-create-service-principal-portal.md#required-permissions).
 
+## <a name="assign-the-application-to-a-role"></a>Uygulamayı bir role atama
+Aboneliğinizdeki kaynaklara erişmek için uygulamayı bir role atamanız gerekir. Hangi rolün uygulama için doğru izinleri sunduğunu belirleyin. Kullanılabilir roller hakkında daha fazla bilgi edinmek için bkz. [RBAC: yerleşik roller](/azure/role-based-access-control/built-in-roles).
+
+Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için *okuyucu* rolüne bir uygulama eklemek, kaynak grubunu ve içerdiği kaynakları okuyabileceği anlamına gelir. Uygulamanın yeniden başlatma, örnekleri başlatma ve durdurma gibi eylemleri yürütmesine izin vermek için, *katkıda bulunan* rolünü seçin.
+
 ## <a name="create-service-principal-with-self-signed-certificate"></a>Otomatik olarak imzalanan bir sertifikayla hizmet sorumlusu oluşturma
 
-Aşağıdaki örnekte basit bir senaryo ele alınmıştır. Otomatik olarak imzalanan bir sertifikayla hizmet sorumlusu oluşturmak için [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) kullanır ve hizmet sorumlusuna [katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan rolü atamak Için [New-Azurermroleatama](/powershell/module/az.resources/new-azroleassignment) kullanır. Rol atamasının kapsamı şu anda seçili olan Azure aboneliğinizdir. Farklı bir abonelik seçmek için [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i kullanın.
+Aşağıdaki örnekte basit bir senaryo ele alınmıştır. Otomatik olarak imzalanan bir sertifika ile hizmet sorumlusu oluşturmak için [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) kullanır ve [Yeni-Azurermroleatamasını](/powershell/module/az.resources/new-azroleassignment) kullanarak [okuyucu](/azure/role-based-access-control/built-in-roles#reader) rolünü hizmet sorumlusuna atar. Rol atamasının kapsamı şu anda seçili olan Azure aboneliğinizdir. Farklı bir abonelik seçmek için [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext)' i kullanın.
 
 > [!NOTE]
 > New-SelfSignedCertificate cmdlet 'i ve PKI modülü şu anda PowerShell Core 'da desteklenmiyor. 
@@ -64,10 +69,10 @@ $sp = New-AzADServicePrincipal -DisplayName exampleapp `
   -EndDate $cert.NotAfter `
   -StartDate $cert.NotBefore
 Sleep 20
-New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $sp.ApplicationId
 ```
 
-Örnek, yeni hizmet sorumlusu tarafından Azure AD genelinde yayılır. Betiğinizin yeterince beklemeyeceğini belirten bir hata görürsünüz: "Principal {ID}, {DIR-ID} dizininde yok." Bu hatayı çözmek için bir süre bekleyip **New-Azroleatama** komutunu yeniden çalıştırın.
+Örnek, yeni hizmet sorumlusu tarafından Azure AD genelinde yayılır. Betiğiniz yeteri kadar uzun beklemiyorsa, "{DIR-ID} dizininde {ID} sorumlusu yok" hatasını görürsünüz. Bu hatayı çözmek için bir süre bekleyip **New-Azroleatama** komutunu yeniden çalıştırın.
 
 **ResourceGroupName** parametresini kullanıp rol atamasının kapsamı olarak belirli bir kaynak grubunu belirtebilirsiniz. Ayrıca kapsam olarak belirli bir kaynağı belirtmek için **ResourceType** ve **ResourceName** parametrelerini kullanabilirsiniz. 
 
@@ -105,7 +110,7 @@ $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).Applicat
 
 ## <a name="create-service-principal-with-certificate-from-certificate-authority"></a>Sertifika Yetkilisinin sertifikasıyla hizmet sorumlusu oluşturma
 
-Aşağıdaki örnekte, hizmet sorumlusu oluşturmak için bir Sertifika Yetkilisinin verdiği sertifika kullanılır. Atamanın kapsamı belirtilen Azure aboneliğidir. Hizmet sorumlusuna [Contributor](../../role-based-access-control/built-in-roles.md#contributor) rolünü atar. Rol ataması sırasında hata oluştursa, atamayı yeniden dener.
+Aşağıdaki örnekte, hizmet sorumlusu oluşturmak için bir Sertifika Yetkilisinin verdiği sertifika kullanılır. Atamanın kapsamı belirtilen Azure aboneliğidir. Hizmet sorumlusunu [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne ekler. Rol ataması sırasında hata oluştursa, atamayı yeniden dener.
 
 ```powershell
 Param (
@@ -141,7 +146,7 @@ Param (
  {
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
-    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
+    New-AzRoleAssignment -RoleDefinitionName Reader -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
@@ -215,13 +220,12 @@ Get-AzADApplication -DisplayName exampleapp | New-AzADAppCredential `
 
 Hizmet sorumlusu oluştururken şu hataları alabilirsiniz:
 
-* **"Authentication_Unauthorized"** veya **"Bağlamda hiç abonelik bulunamadı."** -Hesabınız, Azure AD 'de bir uygulamayı kaydetmek için [gerekli izinlere](#required-permissions) sahip olmadığında bu hatayı görürsünüz. Genellikle, yalnızca Azure Active Directory yönetici kullanıcılar uygulamaları kaydedebilmeniz ve hesabınız yönetici değilse bu hatayı görürsünüz. Yöneticinizden size yönetici rolü atamasını veya kullanıcıların uygulama kaydetmesini etkinleştirmesini isteyin.
+* **"Authentication_Unauthorized"** veya **"Bağlamda hiç abonelik bulunamadı."** -Hesabınız, Azure AD 'de bir uygulamayı kaydetmek için [gerekli izinlere](#required-permissions) sahip olmadığında bu hatayı görürsünüz. Genellikle, yalnızca Azure Active Directory yönetici kullanıcılar uygulamaları kaydedebilmeniz ve hesabınız yönetici değilse bu hatayı görürsünüz. Yöneticinizden sizi bir yönetici rolüne atamasını ya da kullanıcıların uygulama kaydetmesini etkinleştirmesini isteyin.
 
 * Hesabınız **"'/Subscriptions/{Guid} ' kapsamı üzerinde ' Microsoft. Authorization/Roleatamalar/Write ' işlemini gerçekleştirme yetkisi yok."** -hesabınız bir rolü bir rol atamak için yeterli izinlere sahip olmadığında bu hatayı görürsünüz. IDENTITY. Abonelik yöneticinizden sizi Kullanıcı Erişimi Yöneticisi rolüne atamasını isteyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Parolası olan bir hizmet sorumlusu ayarlamak için bkz. [Azure PowerShell ile Azure hizmet sorumlusu oluşturma](/powershell/azure/create-azure-service-principal-azureps).
-* Kaynakları yönetmek üzere bir uygulamayı Azure'la tümleştirme işleminin ayrıntılı adımları için bkz. [Azure Resource Manager API'siyle yetkilendirme için geliştirici kılavuzu](../../azure-resource-manager/resource-manager-api-authentication.md).
 * Uygulamaların ve hizmet sorumlularının daha ayrıntılı açıklaması için bkz. [Uygulama Nesneleri ve Hizmet Sorumlusu Nesneleri](app-objects-and-service-principals.md).
 * Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](authentication-scenarios.md).

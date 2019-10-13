@@ -1,5 +1,5 @@
 ---
-title: ASP.NET 5 projem 'e ne oldu (Visual Studio bağlı hizmetler) | Microsoft Docs
+title: ASP.NET 5 projem 'e ne oldu (Visual Studio bağlı hizmetler)
 description: Visual Studio ASP.NET 5 projesinde, Visual Studio bağlı hizmetleri kullanılarak bir Azure depolama hesabına bağlandıktan sonra ne olacağı açıklanmaktadır
 services: storage
 author: ghogen
@@ -12,24 +12,25 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: e29c0302ecd703cb02199df95892e24917baf8e8
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: be99465a48aaf680834f313e03384a9f0c211502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510766"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300007"
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>ASP.NET 5 projem 'e ne oldu (Visual Studio Azure Storage bağlı Hizmetleri)?
 ## <a name="references-added"></a>Başvurular eklendi
 Azure depolama NuGet paketi Visual Studio projenize eklendi.  
 Bu paket, aşağıdaki .NET başvurularını ekler:
 
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.WindowsAzure.Configuration**
+* **Microsoft. Data. Edm**
+* **Microsoft. Data. OData**
+* **Microsoft. Data. Services. Client**
+* **Microsoft. WindowsAzure. Configuration**
 * **Microsoft. WindowsAzure. Storage**
-* **Newtonsoft.Json**
+* **Newtonsoft. JSON**
 * **System. Data**
 * **System. uzamsal**
 

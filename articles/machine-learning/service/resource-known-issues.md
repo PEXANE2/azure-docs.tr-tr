@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8fbb09ecf09008c25c84a11c7b43dfb26450e30a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: ee7bbff8ab501a1159030a8ee9c57f1c5a64ea22
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338762"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286540"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -37,13 +37,13 @@ Bir denemeyi çalıştırmak, veri kümesini görselleştirmek için yalnızca v
  
 Bu yüklemeden önce veri kümesini herhangi bir veri dönüştürme modülüne bağlayabilirsiniz (veri kümesinde sütunları seçin, meta verileri düzenleyebilir, verileri bölebilir vb.) ve denemeyi çalıştırabilirsiniz. Daha sonra veri kümesini görselleştirebilirsiniz. 
 
-Aşağıdaki görüntüde nasıl kullanıldığı gösterilmektedir ![: visulize-Data](./media/resource-known-issues/aml-visualize-data.png)
+Aşağıdaki görüntüde nasıl yapılacağı gösterilmektedir: ![visulize-Data @ no__t-1
 
 ## <a name="sdk-installation-issues"></a>SDK yükleme sorunları
 
 **Hata iletisi: ' PyYAML ' kaldırılamıyor**
 
-Python için SDK Azure Machine Learning: PyYAML, yüklenmiş bir proje. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayma sırasında SDK'sı yüklemeye devam etmek için kullanın:
+Python için Azure Machine Learning SDK: PyYAML, yüklenmiş bir proje. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayarak SDK 'Yı yüklemeye devam etmek için şunu kullanın:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -57,23 +57,23 @@ conda create -n <env-name> python=3.7.3
 ```
 Bu, 3.7.4 içinde bir Install sorunu bulunmayan Python 3.7.3 kullanarak bir Conda ortamı oluşturur.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Azure Machine Learning işlem oluştururken sorun
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Azure Machine Learning Işlem oluşturma sorunu
 
-GA sürümü önce Azure portalından, Azure Machine Learning çalışma alanı oluşturan bazı kullanıcıların bu çalışma alanında Azure Machine Learning işlem oluşturmak mümkün olmayabilir nadir bir fırsat yoktur. Bir destek isteği hizmetinde yükseltmek veya Portal veya SDK'yı kendiniz hemen engelini kaldırmak için yeni bir çalışma alanı oluşturun.
+Azure Machine Learning çalışma alanını, GA sürümünden önce Azure portal oluşturan bazı kullanıcıların bu çalışma alanında Azure Machine Learning Işlem oluşturamayacak nadir bir şansınız vardır. Hizmette bir destek isteği oluşturabilir veya portal veya SDK aracılığıyla hemen engelini kaldırmak için yeni bir çalışma alanı oluşturabilirsiniz.
 
 ## <a name="image-building-failure"></a>Görüntü oluşturma hatası
 
-Web hizmeti dağıtılırken hata oluşturma görüntüsü. Geçici çözüm olan eklemek için "pynacl 1.2.1 ==" Conda dosyasına görüntü yapılandırması için pip bağımlılık olarak.
+Web hizmeti dağıtımında görüntü oluşturma hatası. Geçici çözüm, görüntü yapılandırması için Conda dosyasına bir pynacl = = 1.2.1
 
 ## <a name="deployment-failure"></a>Dağıtım hatası
 
-Gözlemlerseniz `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, dağıtımınızda kullanılan VM 'ler için SKU 'yu daha fazla belleğe sahip bir şekilde değiştirin.
+@No__t-0 ' ı gözlemlerseniz, dağıtımınızda kullanılan VM 'Ler için SKU 'YU daha fazla belleğe sahip olan bir şekilde değiştirin.
 
-## <a name="fpgas"></a>FPGA
+## <a name="fpgas"></a>FPGA'lar
 
-İstenen ve FPGA kotası için onaylanmış kadar FPGA modellerde dağıtmayı mümkün olmayacaktır. Erişim istemek için kota istek formunu doldurun: https://aka.ms/aml-real-time-ai
+FPGA kotası istenene ve onaylanana kadar, Fpg' de modeller dağıtacaksınız. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai
 
-## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
+## <a name="automated-machine-learning"></a>Otomatik makine öğrenmesi
 
 Tensor Flow otomatik makine öğrenimi Şu anda Tensor Flow sürüm 1,13 ' i desteklememektedir. Bu sürümün yüklenmesi paket bağımlılıklarının çalışmayı durdurmasına neden olur. Bu sorunu gelecekte yayımlanacak bir sürümde gidermeye çalışıyoruz. 
 
@@ -87,7 +87,7 @@ Databricks ve Azure Machine Learning sorunları.
 
 ### <a name="failure-when-installing-packages"></a>Paketler yüklenirken hata oluştu
 
-Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. Gibi bazı paketler `psutil`, çakışmaları neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
+Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. @No__t-0 gibi bazı paketler çakışmalara neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -101,7 +101,7 @@ Azure Databricks üzerinde otomatik makine öğrenimi özellikleri kullandığı
 
 ### <a name="10-iterations-for-automated-machine-learning"></a>otomatik makine öğrenimi için 10 > yineleme
 
-Otomatik makine öğrenimi ayarları ' nda, 10 ' dan fazla yinelediğiniz takdirde `show_output` , `False` çalıştırmayı gönderdiğinizde olarak ayarlayın.
+Otomatik makine öğrenimi ayarları ' nda, 10 ' dan fazla yineleme varsa, çalıştırmayı gönderdiğinizde `show_output` ' ı `False` olarak ayarlayın.
 
 ### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure Machine Learning SDK/otomatik makine öğrenimi için pencere öğesi
 
@@ -128,19 +128,19 @@ Bu adımlar sorunu çözmezse, kümeyi yeniden başlatmayı deneyin.
 
 ### <a name="failtosendfeather"></a>Failtosendgeçiş yumuşatma
 
-Azure Databricks kümesindeki verileri okurken `FailToSendFeather` bir hata görürseniz, aşağıdaki çözümlere bakın:
+Azure Databricks kümesindeki verileri okurken `FailToSendFeather` hatası görürseniz, aşağıdaki çözümlere başvurun:
 
-* Paketi `azureml-sdk[automl_databricks]` en son sürüme yükseltin.
-* Sürüm `azure-dataprep` 1.1.8 veya üstünü ekleyin.
-* Sürüm `pyarrow` 0,11 veya üstünü ekleyin.
+* @No__t-0 paketini en son sürüme yükseltin.
+* @No__t-0 sürüm 1.1.8 veya üstünü ekleyin.
+* @No__t-0 sürüm 0,11 veya üstünü ekleyin.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
-Doğrudan paylaşım bağlantısı SDK veya portalından çalışma alanınızda görüntülemeye giderseniz, uzantı normal genel bakış sayfası ile abonelik bilgilerini görüntülemek mümkün olmayacaktır. Siz de başka bir çalışma alanına geçmeniz mümkün olmayacaktır. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Portal](https://portal.azure.com) gitmek ve çalışma alanı adını aramak olacaktır.
+Çalışma alanınızı SDK veya portaldan bir Share bağlantısından görüntülemeye doğrudan giderseniz, uzantı içindeki abonelik bilgileriyle normal genel bakış sayfasını görüntüleyemeyeceksiniz. Ayrıca, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemeniz gerekirse, geçici çözüm doğrudan [Azure Portal](https://portal.azure.com) gitmek ve çalışma alanı adını aramak olacaktır.
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
 
-Bazen Yardım isteme, tanılama bilgilerini sağlarsanız, yararlı olabilir. Bazı günlükleri görmek için [Azure Portal](https://portal.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.  Ayrıca, bu bilgileri [çalışma alanı giriş sayfanızın (Önizleme)](https://ml.azure.com) **denemeleri** bölümünde bulabilirsiniz.
+Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir. Bazı günlükleri görmek için [Azure Portal](https://portal.azure.com) ziyaret edin ve çalışma alanınıza gidin ve **> günlüklerini çalıştırmak > deneyin > çalışma alanı**' nı seçin.  Ayrıca, bu bilgileri [çalışma alanı giriş sayfanızın (Önizleme)](https://ml.azure.com) **denemeleri** bölümünde bulabilirsiniz.
 
 > [!NOTE]
 > Azure Machine Learning, eğitim sırasında (örneğin, oto ml) veya eğitim işini çalıştıran Docker kapsayıcısı gibi çeşitli kaynaklardan günlük bilgileri günlüğe kaydeder. Bu günlüklerin birçoğu açıklanmamıştır. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
@@ -153,7 +153,7 @@ Bu eylemlerden bazıları, çalışma alanınızın __Etkinlikler__ alanında g�
 
 ## <a name="resource-quotas"></a>Kaynak kotaları
 
-Hakkında bilgi edinin [kaynak kotaları](how-to-manage-quotas.md) Azure Machine Learning'i kullanmaya çalışırken hatalarla karşılaşabilirsiniz.
+Azure Machine Learning çalışırken karşılaşabileceğiniz [kaynak kotaları](how-to-manage-quotas.md) hakkında bilgi edinin.
 
 ## <a name="authentication-errors"></a>Kimlik Doğrulama hataları
 
@@ -171,13 +171,13 @@ Uzak bir işten bir işlem hedefinde yönetim işlemi gerçekleştirirseniz, aş
 
 ## <a name="overloaded-azurefile-storage"></a>Aşırı yüklenmiş AzureFile depolama
 
-Bir hata `Unable to upload project files to working directory in AzureFile because the storage is overloaded`alırsanız, aşağıdaki geçici çözümleri uygulayın.
+-0 @no__t bir hata alırsanız, aşağıdaki geçici çözümleri uygulayın.
 
 Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyorsanız, dosya paylaşımının çalıştırmaları için kullanılabilmesi için blob 'ları kullanmak, bu nedenle söz konusu çalışma. İş yükünü iki farklı çalışma alanı arasında da bölebilirsiniz.
 
 ## <a name="webservices-in-azure-kubernetes-service-failures"></a>Azure Kubernetes hizmeti hatalarında WebServices 
 
-Azure Kubernetes hizmetindeki birçok Web hizmeti hatası, kullanılarak `kubectl`kümeye bağlanarak hata ayıklanabilir. Bir Azure Kubernetes hizmet kümesi `kubeconfig.json` için şunu çalıştırarak edinebilirsiniz
+Azure Kubernetes hizmetindeki birçok Web hizmeti hatası, `kubectl` kullanılarak kümeye bağlanarak hata ayıklanabilir. Şunu çalıştırarak bir Azure Kubernetes hizmet kümesi için `kubeconfig.json` alabilirsiniz
 
 ```bash
 az aks get-credentials -g <rg> -n <aks cluster name>
@@ -185,7 +185,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 ## <a name="updating-azure-machine-learning-components-in-aks-cluster"></a>AKS kümesindeki Azure Machine Learning bileşenleri güncelleştiriliyor
 
-Azure Kubernetes hizmet kümesinde yüklü Azure Machine Learning bileşenlere yapılan güncelleştirmeler el ile uygulanmalıdır. Kümeyi Azure Machine Learning çalışma alanından ayırarak ve sonra kümeyi çalışma alanına yeniden iliştirerek bu güncelleştirmeleri uygulayabilirsiniz. Kümede SSL etkinse, kümeyi yeniden iliştirirken SSL sertifikasını ve özel anahtarı sağlamanız gerekir. 
+Azure Kubernetes hizmet kümesinde yüklü Azure Machine Learning bileşenlere yapılan güncelleştirmeler el ile uygulanmalıdır. 
+
+> [!WARNING]
+> Aşağıdaki eylemleri gerçekleştirmeden önce Azure Kubernetes hizmet kümenizin sürümünü denetleyin. Küme sürümü 1,14 veya üzeri bir değere eşitse, kümenizi Azure Machine Learning çalışma alanına yeniden iliştiremeyeceksiniz.
+
+Kümeyi Azure Machine Learning çalışma alanından ayırarak ve sonra kümeyi çalışma alanına yeniden iliştirerek bu güncelleştirmeleri uygulayabilirsiniz. Kümede SSL etkinse, kümeyi yeniden iliştirirken SSL sertifikasını ve özel anahtarı sağlamanız gerekir. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -206,14 +211,14 @@ compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceNa
 compute_target.wait_for_completion(show_output=True)
 ```
 
-Artık SSL sertifikasına ve özel anahtara sahip değilseniz veya Azure Machine Learning tarafından oluşturulan bir sertifika kullanıyorsanız, kümeye bağlanıp gizli `kubectl` anahtarıalarakkümeyibağlamadanöncedosyalarıalabilirsiniz`azuremlfessl`.
+Artık SSL sertifikasına ve özel anahtara sahip değilseniz veya Azure Machine Learning tarafından oluşturulan bir sertifika kullanıyorsanız, `kubectl` ' ı kullanarak kümeye bağlanarak ve gizli dizi `azuremlfessl` ' i alarak bu dosyaları alabilirsiniz.
 
 ```bash
 kubectl get secret/azuremlfessl -o yaml
 ```
 
 >[!Note]
->Kubernetes gizli dizileri temel-64 kodlu biçimde depolar. Ana 64 'nin `cert.pem` ve `key.pem` içindeki parolaların bileşenlerinin kodunu vermeden `attach_config.enable_ssl`önce kodu çözmelisiniz. 
+>Kubernetes gizli dizileri temel-64 kodlu biçimde depolar. @No__t-2 ' ye sağlamadan önce gizliliklerin `cert.pem` ve `key.pem` bileşenlerinin kodunu çözmelisiniz. 64 
 
 ## <a name="recommendations-for-error-fix"></a>Hata düzeltilme önerileri
 Genel gözlemye bağlı olarak, Azure ML 'deki bazı yaygın hataları gidermeye yönelik Azure ML önerileri aşağıda verilmiştir.

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 6ac83a054b146b9d515386332779c4fe94cde7c3
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 439e5ab4bf943293ff4ed20ed477bc98bb683836
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263438"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299321"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Işlevleri için süreölçer tetikleyicisi 
 
@@ -221,9 +221,9 @@ Aşağıdaki tabloda, *function. JSON* dosyasında ve `TimerTrigger` özniteliğ
 
 |function. JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**türüyle** | yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**Görünüm** | yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**ada** | yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
+|**type** | Yok | "TimerTrigger" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**direction** | Yok | "In" olarak ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | Yok | İşlev kodundaki Timer nesnesini temsil eden değişkenin adı. | 
 |**schedule**|**ScheduleExpression**|Bir [cron ifadesi](#ncrontab-expressions) veya [TimeSpan](#timespan) değeri. @No__t-0, yalnızca bir App Service planı üzerinde çalışan bir işlev uygulaması için kullanılabilir. Zamanlama ifadesini bir uygulama ayarına yerleştirebilir ve bu özelliği şu örnekte gösterildiği gibi **%** işaretlere Sarmalanan uygulama ayarı adı olarak ayarlayabilirsiniz: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|@No__t-0 ise, çalışma zamanı başlatıldığında işlev çağrılır. Örneğin, çalışma zamanı, işlev uygulaması eylemsizlik nedeniyle boşta kaldıktan sonra uyandığında başlatılır. işlev değişiklikleri nedeniyle uygulama yeniden başlatıldığında ve işlev uygulaması ölçeklenirken. Bu nedenle **runOnStartup** , özellikle üretimde `true` olarak ayarlandıysa nadiren gerekir. |
 |**useMonitor**|**UseMonitor**|Zamanlamanın izlenmesi gerekip gerekmediğini belirtmek için `true` veya `false` olarak ayarlayın. Zamanlamayı zamanla, işlev uygulama örnekleri yeniden başlatıldığında bile zamanlamanın doğru bir şekilde tutulmasını sağlamaya yardımcı olmak için zamanlama oluşumları devam ettirir. Açıkça ayarlanmamışsa, 1 dakikadan büyük veya ona eşit bir yinelenme aralığı olan zamanlamalar için varsayılan değer `true` ' dır. Dakikada birden çok kez tetikleyen zamanlamalar için varsayılan değer `false` ' dır.
@@ -311,16 +311,16 @@ Veya işlev uygulamanız için `WEBSITE_TIME_ZONE` adlı bir uygulama ayarı olu
 
 Bir CRON ifadesinin aksine, `TimeSpan` değeri her bir işlev çağrısı arasındaki zaman aralığını belirtir. Bir işlev, belirtilen aralıktan daha uzun çalıştıktan sonra tamamlandığında, süreölçer işlevi hemen yeniden çağırır.
 
-Bir dize olarak ifade edildiğinde, @no__t 2 ' den az olduğunda `TimeSpan` biçimi `hh:mm:ss` ' dir. İlk iki basamak 24 veya daha büyükse, biçim `dd:hh:mm` ' dır. Aşağıda bazı örnekler verilmiştir:
+Bir dize olarak ifade edildiğinde, @no__t 2 ' den az olduğunda `TimeSpan` biçimi `hh:mm:ss` ' dir. İlk iki basamak 24 veya daha büyükse, biçim `dd:hh:mm` ' dır. İşte bazı örnekler:
 
 |Örnek |Tetiklendiğinde  |
 |---------|---------|
 |"01:00:00" | her saat        |
 |"00:01:00"|her dakika         |
-|"24:00:00" | 24 günde bir        |
+|"24:00:00" | 24 saatte bir        |
 |"1,00:00:00" | Her gün        |
 
-## <a name="scale-out"></a>Genişleme
+## <a name="scale-out"></a>Ölçeklendirme
 
 Bir işlev uygulaması birden çok örneğe ölçekleniyorsa, tüm örneklerde yalnızca bir Zamanlayıcı tetiklenen işlevin tek bir örneği çalıştırılır.
 
