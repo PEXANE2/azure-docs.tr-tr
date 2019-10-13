@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 09/30/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 78cef29807ced2f3dec765723c57f951f843b1ca
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: HT
+ms.openlocfilehash: e16747d74df7db0fb2ca2d4e0f07247258a980d7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286584"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299760"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -188,7 +188,7 @@ Aşağıdaki örnek, bir aboneliği eklemek için kullanılacak olan **Delegated
     }
 }
 ```
-Yukarıdaki örnekteki en son yetkilendirme, Kullanıcı erişimi yönetici rolü (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) ile bir **PrincipalId** ekliyor. Bu rolü atarken, **Delegatedrotadefinitionıds** özelliğini ve bir veya daha fazla yerleşik rolü de eklemeniz gerekir. Bu yetkilendirmede oluşturulan kullanıcı bu yerleşik rolleri yönetilen kimliklere atayabilecektir. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın.
+Yukarıdaki örnekteki en son yetkilendirme, Kullanıcı erişimi yönetici rolü (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) ile bir **PrincipalId** ekliyor. Bu rolü atarken, **Delegatedrotadefinitionıds** özelliğini ve bir veya daha fazla yerleşik rolü de eklemeniz gerekir. Bu yetkilendirmede oluşturulan kullanıcı bu yerleşik rolleri [yönetilen kimliklere](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)atayabilecektir. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını dağıtma
 

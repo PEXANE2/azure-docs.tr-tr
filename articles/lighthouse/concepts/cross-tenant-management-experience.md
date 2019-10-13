@@ -4,15 +4,15 @@ description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim den
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 09/25/2019
+ms.date: 10/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: ab0362af9a3eec698150c135fd98283c9db2c833
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
-ms.translationtype: HT
+ms.openlocfilehash: 0c6fed9cd83f18df0fe0a77d57a76c60cd570c21
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286612"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300992"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -58,6 +58,7 @@ Yetkili kullanıcılar, Azure tarafından atanan kaynak yönetimini kullanarak b
 - Tüm aboneliklerdeki uyarıları görüntüleyebilme özelliği ile Azure portal veya program aracılığıyla REST API çağrıları aracılığıyla temsilci olarak atanan abonelikler için uyarıları görüntüleyin
 - Temsilcili abonelikler için etkinlik günlüğü ayrıntılarını görüntüleme
 - Log Analytics: birden çok Kiracıdaki uzak müşteri çalışma alanlarından verileri sorgulama
+- Web kancaları aracılığıyla hizmet sağlayıcı kiracısındaki Azure Otomasyonu runbook 'ları veya Azure Işlevleri gibi Otomasyonu tetikleyen müşteri kiracılarında uyarı oluşturma
 
 [Azure ilkesi](https://docs.microsoft.com/azure/governance/policy/):
 
@@ -65,7 +66,7 @@ Yetkili kullanıcılar, Azure tarafından atanan kaynak yönetimini kullanarak b
 - Temsilci atanmış bir abonelik içinde ilke tanımları oluşturma ve düzenleme
 - Atanan abonelik içinde müşteri tanımlı ilke tanımları atama
 - Müşteriler, yazdığı ilkelerin yanı sıra hizmet sağlayıcı tarafından yazılan ilkeleri görür
-- Müşterinin yönetilen kimliği ve bu ilke ataması için *Roledefinitionıd 'leri* yapılandırması durumunda, müşteri kiracılarının Içindeki deployIfNotExists atamalarını düzeltebilir
+- [DeployIfNotExists 'i düzeltebilir veya müşteri kiracısında atamaları değiştirebilirler](../how-to/deploy-policy-remediation.md)
 
 [Azure Kaynak Grafiği](https://docs.microsoft.com/azure/governance/resource-graph/):
 
