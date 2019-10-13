@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7f045a95bcc9d5a61b26036e14e050a597347d1a
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057827"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286452"
 ---
 # <a name="status-monitor-v2"></a>Durum İzleyicisi v2
 
 Durum İzleyicisi v2, [PowerShell Galerisi](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)yayımlanan bir PowerShell modülüdür.
 [Durum İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)yerini alır.
 Modül, IIS ile barındırılan .NET Web Apps 'in kodsuz kullanacaksınız izleme sağlar.
-Telemetri Azure portal, uygulamanızı izleyebileceğiniz bir şekilde gönderilir. [](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+Telemetri Azure portal, uygulamanızı [izleyebileceğiniz](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) bir şekilde gönderilir.
 
 ## <a name="powershell-gallery"></a>PowerShell Galerisi
 
@@ -56,17 +56,13 @@ Durum İzleyicisi v2 şurada bulunur: https://www.powershellgallery.com/packages
 
 - Durum İzleyicisi v2 proxy yüklemelerini destekliyor mu?
 
-  *Evet*. Durum İzleyicisi v2 'yi indirmek için birden çok yol vardır. Bilgisayarınızda internet erişimi varsa, parametreleri kullanarak `-Proxy` PowerShell Galerisi ekleyebilirsiniz.
+  *Evet*. Durum İzleyicisi v2 'yi indirmek için birden çok yol vardır. Bilgisayarınızda internet erişimi varsa, PowerShell Galerisi `-Proxy` parametrelerini kullanarak ekleyebilirsiniz.
 Ayrıca, modülü el ile indirebilir ve bilgisayarınıza yükleyebilir ya da doğrudan kullanabilirsiniz.
 Bu seçeneklerin her biri [ayrıntılı yönergeler](status-monitor-v2-detailed-instructions.md)bölümünde açıklanmıştır.
 
 - Durum İzleyicisi v2 ASP.NET Core uygulamaları destekliyor mu?
 
   *Hayır*. ASP.NET Core uygulamalarının izlenmesini etkinleştirme yönergeleri için, bkz. [ASP.NET Core uygulamalar için Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). ASP.NET Core bir uygulama için StatusMonitor yüklemeniz gerekmez. Bu, ASP.NET Core uygulama IIS 'de barındırıldığında bile geçerlidir.
-  
-Durum İzleyicisi v2 ASP.NET Core uygulamaları destekliyor mu? 
-
-  *Hayır*. ASP.NET Core uygulamalar için izlemeyi etkinleştirmek üzere lütfen [Bu](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) yönergeleri izleyin. ASP.NET Core bir uygulama için StatusMonitor yüklenmeye gerek yoktur. Bu, ASP.NET Core uygulama IIS 'de barındırıldığında bile geçerlidir.
 
 - Nasıl yaparım?, etkinleştirme başarılı oldu mu?
 

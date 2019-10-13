@@ -13,44 +13,45 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: 7e22aaf2ead4dd618c2907f8659455e1862110a5
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: b0300dd91876b651015ae78c53dbc1e72bf8dd68
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650099"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285700"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 'da sanal makineler için Cloud-init desteği
 Bu makalede, Azure 'da sağlama sırasında bir sanal makineyi (VM) veya sanal makine ölçek kümelerini yapılandırmak üzere [Cloud-init](https://cloudinit.readthedocs.io) için mevcut destek açıklanmaktadır. Bu Cloud-init betikleri, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır.  
 
 ## <a name="cloud-init-overview"></a>Cloud-init genel bakış
-[Cloud-init](https://cloudinit.readthedocs.io), Linux VM’sini ilk kez önyüklendiğinde özelleştirmeyi sağlayan, sık kullanılan bir yaklaşımdır. cloud-init’i paket yükleme, dosyalara yazma ve kullanıcılar ile güvenliği yapılandırma işlemleri için kullanabilirsiniz. Cloud-init önyükleme işlemi sırasında çağrıldığı için ek adımlar veya yapılandırmanıza uygulayabileceğiniz gerekli aracı yoktur.  Düzgün bir şekilde biçimlendirme hakkında daha fazla bilgi için `#cloud-config` dosyaları görmek [cloud-init belgeler sitesinde](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` dosyaları, base64 ile kodlanmış metin dosyalarıdır.
+[Cloud-init](https://cloudinit.readthedocs.io), Linux VM’sini ilk kez önyüklendiğinde özelleştirmeyi sağlayan, sık kullanılan bir yaklaşımdır. cloud-init’i paket yükleme, dosyalara yazma ve kullanıcılar ile güvenliği yapılandırma işlemleri için kullanabilirsiniz. İlk önyükleme işlemi sırasında Cloud-init çağrıldığından, yapılandırmanızı uygulamak için başka bir adım veya gerekli aracı yoktur.  @No__t-0 dosyalarını doğru biçimlendirme hakkında daha fazla bilgi için bkz. [Cloud-init belgeleri sitesi](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` dosyaları Base64 olarak kodlanmış metin dosyalarıdır.
 
 Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklemek için **apt-get install** veya **yum install** kullanmazsınız. Bunun yerine, yüklenecek paketlerin listesini tanımlayabilirsiniz. Cloud-init, seçtiğiniz dağıtım için yerel paket yönetim aracını otomatik olarak kullanır.
 
-Etkin olarak desteklenen Linux distro ortaklarımızla birlikte kullanılabilir cloud-init etkinleştirilmiş görüntüleri Azure Market'te sahip olmak için çalışıyoruz. Bu görüntüler, Cloud-init dağıtımlarınızın ve yapılandırmalarının VM 'Ler ve sanal makine ölçek kümeleri ile sorunsuz bir şekilde çalışmasını sağlayacak. Aşağıdaki tabloda, Azure platformunda geçerli cloud-init etkinleştirilmiş görüntüleri kullanılabilirliği açıklanmaktadır:
+Azure Marketi 'nde Cloud-init özellikli görüntülerin kullanılabilmesini sağlamak için, onaylanan Linux olmayan iş ortaklarıyla etkin bir şekilde çalışıyoruz. Bu görüntüler, Cloud-init dağıtımlarınızın ve yapılandırmalarının VM 'Ler ve sanal makine ölçek kümeleri ile sorunsuz bir şekilde çalışmasını sağlayacak. Aşağıdaki tabloda, Azure platformunda geçerli Cloud-init özellikli görüntülerin kullanılabilirliği özetlenmektedir:
 
-| Yayımcı | Sunduğu | SKU | Sürüm | cloud-init hazır |
+| Yayımcı | Teklif | SKU | Sürüm | Cloud-init Ready |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |latest |evet | 
-|Canonical |UbuntuServer |16.04-LTS |en son |evet | 
-|Canonical |UbuntuServer |14.04.5-LTS |en son |evet |
-|CoreOS |CoreOS |Dengeli |en son |evet |
-|OpenLogic 7,6 |CentOS |7-CI |en son |önizleme |
+|Canonical |UbuntuServer |16.04-LTS |latest |evet | 
+|Canonical |UbuntuServer |14.04.5-LTS |latest |evet |
+|CoreOS |CoreOS |Dengeli |latest |evet |
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |önizleme |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |evet |
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 |önizleme |
     
 Şu anda Azure Stack, Cloud-init kullanarak RHEL 7. x ve CentOS 7. x sağlamasını desteklemez.
 
 * RHEL 7,6, Cloud-init paketi için desteklenen paket: *18.2 -1. EL7 _ 6.2* 
-* RHEL 7,7 (Önizleme) için, Cloud-init paketi, desteklenen paket: *18.5-3.el7*
+* RHEL 7,7 (Önizleme) için, Cloud-init paketi, Önizleme paketi: *18.5 -3. EL7*
+* CentOS 7,7 (Önizleme) için, Cloud-init paketi, Önizleme paketi: *18.5 -3. EL7. CentOS*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Cloud-init ve Linux Aracısı (WALA) arasındaki fark nedir?
 WALA, VM 'Leri sağlamak ve yapılandırmak ve Azure uzantılarını işlemek için kullanılan bir Azure platforma özgü aracıdır. Mevcut Cloud-init müşterilerinin geçerli Cloud-init betiklerini kullanmasına izin vermek için, VM 'Leri Linux Aracısı yerine Cloud-init kullanacak şekilde yapılandırma görevini geliştirdik.  Linux sistemlerini yapılandırmaya yönelik Cloud-init komut dosyalarında mevcut yatırımlarınızın varsa, bunları etkinleştirmek için **başka bir ayar yapmanız gerekmez** . 
 
-Sağlama zamanında Azure CLI `--custom-data` anahtarını eklemezseniz, wala VM 'yi sağlamak için gereken en düşük VM sağlama parametrelerini alır ve varsayılan olarak dağıtımı tamamlar.  Cloud-init `--custom-data` anahtarına başvurdıysanız, özel verilerinizde (bireysel ayarlar veya tam komut dosyası) bulunan her şey wala varsayılanlarını geçersiz kılar. 
+Sağlama zamanında Azure CLı `--custom-data` anahtarını eklemezseniz, WALA VM 'yi sağlamak için gereken en düşük VM sağlama parametrelerini alır ve varsayılan olarak dağıtımı tamamlar.  Cloud-init `--custom-data` anahtarına başvurdıysanız, özel verilerinizde (bireysel ayarlar veya tam komut dosyası) bulunan her şey WALA varsayılanlarını geçersiz kılar. 
 
 VM 'lerin WALA yapılandırmalarının, en yüksek VM sağlama süresi içinde çalışması için zaman kısıtlanıyor.  VM 'lere uygulanan Cloud init yapılandırmalarının zaman kısıtlamaları yoktur ve zaman aşımına uğraarak dağıtımın başarısız olmasına neden olmaz. 
 
@@ -72,7 +73,7 @@ package_upgrade: true
 packages:
   - httpd
 ```
-Dosyadan `ctrl-X` çıkmak için tuşuna basın, dosyayı `y` kaydetmek için yazın ve çıkışta dosya `enter` adını onaylamak için tuşuna basın.
+Dosyadan çıkmak için `ctrl-X` ' a basın, dosyayı kaydetmek için `y` yazın ve çıkışta dosya adını onaylamak için `enter` ' ye basın.
 
 Son adım [az VM Create](/cli/azure/vm) komutuyla bir VM oluşturmaktır. 
 
@@ -90,10 +91,10 @@ az vm create \
 VM oluşturulduğunda Azure CLı, dağıtımınıza özgü bilgileri gösterir. `publicIpAddress` değerini not edin. Bu adres, VM’ye erişmek için kullanılır.  VM 'nin oluşturulması, yüklenecek paketlerin ve başlatılacak uygulamayı biraz zaman alır. Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. VM 'de SSH oluşturabilir ve Cloud-init günlüklerini görüntülemek için sorun giderme bölümünde özetlenen adımları kullanabilirsiniz. 
 
 ## <a name="troubleshooting-cloud-init"></a>Cloud-init sorunlarını giderme
-VM sağlandıktan sonra Cloud-init, sanal makineyi yapılandırmak için ' de `--custom-data` tanımlanan tüm modüller ve betiklerle çalışır.  Yapılandırmadan herhangi bir hata veya türlü sorunu gidermeniz gerekiyorsa, **/var/log/Cloud-init.log**dosyasında bulunan Cloud-`disk_setup` init `runcmd` günlüğünde modül adını (veya örneğin) aramanız gerekir.
+VM sağlandıktan sonra Cloud-init, VM 'yi yapılandırmak için `--custom-data` ' da tanımlanan tüm modüller ve betiklerle çalışır.  Yapılandırmadan herhangi bir hata veya türlü sorunu gidermeniz gerekiyorsa, **/var/log/Cloud-init.log**dosyasında bulunan Cloud-init günlüğünde modül adını (`disk_setup` veya `runcmd`) aramanız gerekir.
 
 > [!NOTE]
-> Her modül hatası önemli bir Cloud-init genel yapılandırma hatasına neden olmaz. Örneğin, `runcmd` modülün kullanılması, komut dosyası başarısız olursa, runcmd modülü yürütüldüğü için Cloud-init hala sağlama başarılı olur.
+> Her modül hatası önemli bir Cloud-init genel yapılandırma hatasına neden olmaz. Örneğin, `runcmd` modülünü kullanarak, komut dosyası başarısız olursa, runcmd modülü yürütüldüğü için Cloud-init hala sağlama başarılı olur.
 
 Cloud-init günlüğü hakkında daha fazla bilgi için [Cloud-init belgelerine](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) bakın 
 
