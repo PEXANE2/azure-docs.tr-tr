@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d852b786c1cc1c1eb9d39b931f9b8a142f969815
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 91f07b8da2cbc9beaa24730f2ec9f2ddb4639f37
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065863"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302548"
 ---
-# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Sık sorulan sorular (SSS)
+# <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: sık sorulan sorular (SSS)
 
 Bu sayfa Azure Active Directory B2C (Azure AD B2C) hakkında sık sorulan soruları yanıtlar. Güncelleştirmeleri yeniden denetlemeye devam edin.
 
@@ -27,7 +27,7 @@ Azure AD uzantısının neden çalışmadığına ilişkin iki yaygın neden var
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Mevcut, çalışan tabanlı Azure AD kiracısındaki Azure AD B2C özellikleri kullanabilir miyim?
 
-Azure AD ve Azure AD B2C ayrı ürün tekliflerdir ve aynı kiracıda birlikte bulunamaz. Bir Azure AD kiracısı bir kuruluşu temsil eder. Azure AD B2C kiracısı, bağlı olan taraf uygulamalarıyla kullanılacak kimliklerin bir koleksiyonunu temsil eder. Özel ilkelerle (genel önizlemede) Azure AD B2C, bir kuruluştaki çalışanların kimlik doğrulamasına izin veren Azure AD 'ye bağlanabilir.
+Azure AD ve Azure AD B2C ayrı ürün tekliflerdir ve aynı kiracıda birlikte bulunamaz. Bir Azure AD kiracısı bir kuruluşu temsil eder. Azure AD B2C kiracısı, bağlı olan taraf uygulamalarıyla kullanılacak kimliklerin bir koleksiyonunu temsil eder. Özel ilkelerle Azure AD B2C, bir kuruluştaki çalışanların kimlik doğrulamasına izin veren Azure AD 'ye federe verebilir.
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Office 365 'ye sosyal oturum açma (Facebook ve Google +) sağlamak için Azure AD B2C kullanabilir miyim?
 
@@ -35,9 +35,9 @@ Azure AD B2C, Microsoft Office 365 için kullanıcıların kimliğini doğrulama
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Azure AD B2C yerel hesaplar nelerdir? Azure AD 'de iş veya okul hesaplarından ne farklılık vardır?
 
-Bir Azure AD kiracısında kiracıya ait olan kullanıcılar formun `<xyz>@<tenant domain>`bir e-posta adresiyle oturum açın. , `<tenant domain>` Kiracının veya ilk `<...>.onmicrosoft.com` etki alanındaki doğrulanmış etki alanlarından biridir. Bu hesap türü bir iş veya okul hesabıdır.
+Bir Azure AD kiracısında kiracıya ait olan kullanıcılar `<xyz>@<tenant domain>` biçiminde bir e-posta adresiyle oturum açın. @No__t-0, kiracının veya ilk `<...>.onmicrosoft.com` etki alanındaki doğrulanmış etki alanlarından biridir. Bu hesap türü bir iş veya okul hesabıdır.
 
-Azure AD B2C kiracısında çoğu uygulama, kullanıcının herhangi bir rastgele e-posta adresiyle oturum açmasını ister (örneğin joe@comcast.net bob@gmail.com sarah@contoso.com,,, veya jim@live.com). Bu hesap türü yerel bir hesaptır. Yerel hesap olarak (örneğin, Ali, Bob, Sarah veya Jim) rastgele Kullanıcı adlarını da destekliyoruz. Azure portal Azure AD B2C için kimlik sağlayıcılarını yapılandırırken bu iki yerel hesap türünden birini seçebilirsiniz. Azure AD B2C kiracınızda **kimlik sağlayıcıları**' nı seçin, **yerel hesap**' ı seçin ve ardından **Kullanıcı adı**' nı seçin.
+Azure AD B2C kiracısında çoğu uygulama, kullanıcının rastgele herhangi bir e-posta adresiyle oturum açmasını ister (örneğin, joe@comcast.net, bob@gmail.com, sarah@contoso.com veya jim@live.com). Bu hesap türü yerel bir hesaptır. Yerel hesap olarak (örneğin, Ali, Bob, Sarah veya Jim) rastgele Kullanıcı adlarını da destekliyoruz. Azure portal Azure AD B2C için kimlik sağlayıcılarını yapılandırırken bu iki yerel hesap türünden birini seçebilirsiniz. Azure AD B2C kiracınızda **kimlik sağlayıcıları**' nı seçin, **yerel hesap**' ı seçin ve ardından **Kullanıcı adı**' nı seçin.
 
 Uygulamalar için Kullanıcı hesaplarının her zaman bir kaydolma Kullanıcı akışı, kaydolma veya oturum açma Kullanıcı akışından veya Azure AD Graph API kullanılarak oluşturulması gerekir. Azure portal oluşturulan kullanıcı hesapları yalnızca kiracıyı yönetmek için kullanılır.
 
@@ -59,7 +59,7 @@ Hayır. Desteklenen sosyal kimlik sağlayıcıları kümesi için kullanılan va
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Uygulamamın Azure AD B2C ile çalışması için Azure 'da çalıştırılması gerekiyor mu?
 
-Hayır, uygulamanızı dilediğiniz yerde (bulutta veya şirket içinde) barındırabilirsiniz. Tek yapmanız gereken Azure AD B2C, genel olarak erişilebilen uç noktalarda HTTP istekleri gönderme ve alma olanağıdır.
+Hayır, uygulamanızı dilediğiniz yerde (bulutta veya şirket içinde) barındırabilirsiniz. Uygulamanın Azure AD B2C ile etkileşime geçmesi için yalnızca genel olarak erişilebilir uç noktalarında HTTP isteği gönderip alabilmesi yeterlidir.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Birden çok Azure AD B2C kiracım var. Azure portal bunları nasıl yönetebilirim?
 
@@ -69,8 +69,8 @@ Azure portal sol taraftaki menüde ' Azure AD B2C ' öğesini açmadan önce, y�
 
 Kimlik doğrulama e-postalarının içeriğini özelleştirmek için [Şirket markası özelliğini](../active-directory/fundamentals/customize-branding.md) kullanabilirsiniz. Özellikle, e-postanın bu iki öğesi özelleştirilebilir:
 
-* **Başlık logosu**: Sağ altta gösterilir.
-* **Arka plan rengi**: En üstte gösterilir.
+* **Başlık logosu**: sağ alt tarafta gösterilir.
+* **Arka plan rengi**: üst kısımda gösteriliyor.
 
     ![Özelleştirilmiş bir doğrulama e-postası ekran görüntüsü](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
@@ -78,7 +78,7 @@ E-posta imzası, Azure AD B2C kiracıyı ilk oluşturduğunuzda verdiğiniz Azur
 
 1. [Azure Portal](https://portal.azure.com/) genel yönetici olarak oturum açın.
 1. **Azure Active Directory** dikey penceresini açın.
-1. Tıklayın **özellikleri** sekmesi.
+1. **Özellikler** sekmesine tıklayın.
 1. **Ad** alanını değiştirin.
 1. Sayfanın üst kısmından **Kaydet**'e tıklayın.
 
@@ -122,7 +122,7 @@ Hayır, Azure AD B2C Azure AD Premium aynı rapor kümesini desteklemez. Ancak b
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Azure AD B2C tarafından sunulan sayfaların Kullanıcı arabirimini yerelleştirebilirim miyim? Hangi diller desteklenir?
 
-Evet!  Genel önizlemede olan [dil özelleştirmesi](active-directory-b2c-reference-language-customization.md)hakkında bilgi edinin. 36 dil için çeviriler sunuyoruz ve gereksinimlerinize uyacak şekilde herhangi bir dizeyi geçersiz kılabilirsiniz.
+Evet, bkz. [dil özelleştirmesi](active-directory-b2c-reference-language-customization.md). 36 dil için çeviriler sunuyoruz ve gereksinimlerinize uyacak şekilde herhangi bir dizeyi geçersiz kılabilirsiniz.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Azure AD B2C tarafından sunulan kaydolma ve oturum açma sayfalarınızda kendi URL 'lerimi kullanabilir miyim? Örneğin, contoso.b2clogin.com URL 'sini login.contoso.com olarak değiştirebilir miyim?
 

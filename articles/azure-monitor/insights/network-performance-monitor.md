@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: 80bca606a2b06d85afc8a2115133f44d738f7e0a
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 185bdd5f666da04238a575f3b7704baf10f5e281
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035244"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303470"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 'da Ağ Performansı İzleyicisi çözümü
 
@@ -31,9 +31,9 @@ Ağ Performansı İzleyicisi trafik görüntüleme, yönlendirme hataları ve ge
 
 Ağ Performansı İzleyicisi üç geniş özellik sunar: 
 
-* [Performans İzleyicisi](network-performance-monitor-performance-monitor.md): Bulut dağıtımları ve şirket içi konumlar, birden çok veri merkezi ve şube ofisleri ve iş açısından kritik çok katmanlı uygulamalar veya mikro hizmetler arasında ağ bağlantısını izleyebilirsiniz. Performans Izleyicisinde, kullanıcılar şikayetden önce ağ sorunlarını tespit edebilirsiniz.
+* [Performans İzleyicisi](network-performance-monitor-performance-monitor.md): bulut dağıtımları ve şirket içi konumlar, birden çok veri merkezi ve şube ofisleri ve iş açısından kritik çok katmanlı uygulamalar veya mikro hizmetler arasında ağ bağlantısını izleyebilirsiniz. Performans Izleyicisinde, kullanıcılar şikayetden önce ağ sorunlarını tespit edebilirsiniz.
 
-* [Hizmet bağlantısı İzleyicisi](network-performance-monitor-service-connectivity.md): Kullanıcılarınızın bağlantısını ilgilendiğiniz hizmetlere izleyebilir, yolda hangi altyapının olduğunu belirleyebilir ve ağ performans sorunlarının nerede gerçekleşeceğini belirleyebilirsiniz. Kullanıcılarınız için kesintiler hakkında bilgi alabilir ve ağ yolunuzda sorunların tam konumunu görebilirsiniz. 
+* [Hizmet bağlantısı İzleyicisi](network-performance-monitor-service-connectivity.md): kullanıcılarınızın bağlantısını ilgilendiğiniz hizmetlere izleyebilir, yolda hangi altyapının olduğunu belirleyebilir ve ağ performans sorunlarının nerede gerçekleşeceğini belirleyebilirsiniz. Kullanıcılarınız için kesintiler hakkında bilgi alabilir ve ağ yolunuzda sorunların tam konumunu görebilirsiniz. 
 
     Bu özellik, neredeyse gerçek zamanlı olarak izlemek üzere HTTP, HTTPS, TCP ve ıCMP 'yi temel alan testler gerçekleştirmenize yardımcı olur ve hizmetinizin kullanılabilirlik ve yanıt süresini de izlersiniz. Ayrıca, ağ payını paket kaybı ve gecikme süresi içinde izleyebilirsiniz. Ağ topolojisi eşlemesiyle, ağ yavaşlamaları yalıtabilirsiniz. Her bir atlamada gecikme süresiyle, düğümdeki ağ yolu üzerinde gerçekleşen sorun noktaları ' nı tanımlayabilirsiniz. Yerleşik testlerle, herhangi bir ön yapılandırma olmadan Office 365 ve Dynamics CRM 'ye ağ bağlantısını izleyebilirsiniz. Bu özellik sayesinde, ağ bağlantısını Web siteleri, SaaS uygulamaları, PaaS uygulamaları ve SQL veritabanları gibi herhangi bir TCP özellikli uç noktaya izleyebilirsiniz.
 
@@ -44,14 +44,15 @@ Ağ Performansı İzleyicisi üç geniş özellik sunar:
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 NPM, dünyanın herhangi bir bölümündeki ağlar ve uygulamalar arasındaki bağlantıyı, aşağıdaki bölgelerden birinde barındırılan bir çalışma alanından izleyebilir:
 * Batı Avrupa
-* Batı Orta ABD
-* East US
+* Orta Batı ABD
+* Doğu ABD
 * Doğu Japonya
 * Güneydoğu Asya
 * Güney Doğu Avustralya
 * Güney UK
 * Orta Hindistan
 * ABD devleti Virginia
+* Çin Doğu 2
 
 
 ExpressRoute Izleyicisi için desteklenen bölgelerin listesi [belgelerde](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)bulunur.
@@ -65,11 +66,11 @@ ExpressRoute Izleyicisi için desteklenen bölgelerin listesi [belgelerde](https
 
 ### <a name="where-to-install-the-agents"></a>Aracıların yükleneceği konum 
 
-* **Performans İzleyicisi**: Diğer alt ağlara ağ bağlantısını izlemek istediğiniz her alt ağa bağlı en az bir düğüme bağlı Log Analytics aracılarını yükleyebilirsiniz.
+* **Performans İzleyicisi**: diğer alt ağlara yönelik ağ bağlantılarını izlemek istediğiniz her alt ağa bağlı en az bir düğüme bağlı Log Analytics aracılarını yükler.
 
     Bir ağ bağlantısını izlemek için, bu bağlantının her iki uç noktasına aracı yükler. Ağınızın topolojisi hakkında emin değilseniz, aracıları, ağ performansını izlemek istediğiniz kritik iş yükleri olan sunuculara yükleyebilirsiniz. Örneğin, bir Web sunucusu ve SQL çalıştıran bir sunucu arasındaki ağ bağlantısını izlemek istiyorsanız, her iki sunucuya da bir aracı yükler. Aracılar, ana bilgisayarları değil, konaklar arasında ağ bağlantısını (bağlantıları) izler. 
 
-* **Hizmet bağlantısı İzleyicisi**: Hizmet uç noktası için ağ bağlantısını izlemek istediğiniz her düğüme bir Log Analytics Aracısı yükler. O1, O2 ve O3 etiketli Office sitelerinizin Office 365 'e ağ bağlantısını izlemek istiyorsanız örnek bir örnektir. Log Analytics aracısını O1, O2 ve O3 içinde her biri en az bir düğüme yükler. 
+* **Hizmet bağlantısı İzleyicisi**: hizmet uç noktasına ağ bağlantısını izlemek istediğiniz her düğüme bir Log Analytics Aracısı yükler. O1, O2 ve O3 etiketli Office sitelerinizin Office 365 'e ağ bağlantısını izlemek istiyorsanız örnek bir örnektir. Log Analytics aracısını O1, O2 ve O3 içinde her biri en az bir düğüme yükler. 
 
 * **ExpressRoute İzleyicisi**: Azure sanal ağınıza en az bir Log Analytics Aracısı yükler. Ayrıca, ExpressRoute özel eşlemesi aracılığıyla bağlanan şirket içi alt ağa en az bir aracı da yükler.  
 
@@ -77,9 +78,9 @@ ExpressRoute Izleyicisi için desteklenen bölgelerin listesi [belgelerde](https
 
 Ağ Performansı İzleyicisi, kaynak ve hedef aracılar arasındaki ağ performansını izlemek için yapay işlemler kullanır. Performans Izleyicisi ve hizmet bağlantısı Izleyicisi yeteneklerini izlemek için protokol olarak TCP ve ıCMP arasında seçim yapabilirsiniz. ExpressRoute Izleyicisi için izleme protokolü olarak yalnızca TCP kullanılabilir. Güvenlik duvarının, seçtiğiniz protokolde izleme için kullanılan Log Analytics aracıları arasında iletişime izin verdiğinden emin olun. 
 
-* **TCP protokolü**: İzleme protokolü olarak TCP ' yi seçerseniz, aracıların birbirlerine bağlanabildiğinizden emin olmak için Ağ Performansı İzleyicisi ve ExpressRoute Izleyicisi için kullanılan aracılarda güvenlik duvarı bağlantı noktasını açın. Bağlantı noktasını açmak için, yönetim ayrıcalıklarına sahip bir PowerShell penceresinde herhangi bir parametre olmadan [Enablerules. ps1](https://aka.ms/npmpowershellscript) PowerShell betiğini çalıştırın.
+* **TCP protokolü**: izleme için protokol olarak TCP ' yi seçerseniz, aracıların birbirlerine bağlanabildiğinizden emin olmak için ağ performansı İzleyicisi ve ExpressRoute İzleyicisi için kullanılan aracılarda güvenlik duvarı bağlantı noktasını açın. Bağlantı noktasını açmak için, yönetim ayrıcalıklarına sahip bir PowerShell penceresinde herhangi bir parametre olmadan [Enablerules. ps1](https://aka.ms/npmpowershellscript) PowerShell betiğini çalıştırın.
 
-    Betik, çözüm için gereken kayıt defteri anahtarlarını oluşturur. Ayrıca aracıların birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için Windows güvenlik duvarı kuralları oluşturur. Betiği tarafından oluşturulan kayıt defteri anahtarları, hata ayıklama günlüklerinin kaydedilip edilmeyeceğini ve Günlükler dosyasının yolunu belirtir. Betik Ayrıca iletişim için kullanılan aracı TCP bağlantı noktasını tanımlar. Bu anahtarları için değerleri otomatik olarak komut dosyası tarafından ayarlanır. Bu anahtarları el ile değiştirmeyin. Varsayılan olarak açılan bağlantı noktası 8084 ' dir. Komut dosyasına portNumber parametresini girerek özel bir bağlantı noktası kullanabilirsiniz. Betiğin çalıştırıldığı tüm bilgisayarlarda aynı bağlantı noktasını kullanın. 
+    Betik, çözüm için gereken kayıt defteri anahtarlarını oluşturur. Ayrıca aracıların birbirleriyle TCP bağlantıları oluşturmalarına izin vermek için Windows güvenlik duvarı kuralları oluşturur. Betiği tarafından oluşturulan kayıt defteri anahtarları, hata ayıklama günlüklerinin kaydedilip edilmeyeceğini ve Günlükler dosyasının yolunu belirtir. Betik Ayrıca iletişim için kullanılan aracı TCP bağlantı noktasını tanımlar. Bu anahtarların değerleri otomatik olarak komut dosyası tarafından ayarlanır. Bu anahtarları el ile değiştirmeyin. Varsayılan olarak açılan bağlantı noktası 8084 ' dir. Komut dosyasına portNumber parametresini girerek özel bir bağlantı noktası kullanabilirsiniz. Betiğin çalıştırıldığı tüm bilgisayarlarda aynı bağlantı noktasını kullanın. 
 
     >[!NOTE]
     > Betik yalnızca Windows güvenlik duvarını yerel olarak yapılandırır. Bir ağ güvenlik duvarınız varsa, Ağ Performansı İzleyicisi tarafından kullanılan TCP bağlantı noktasına giden trafiğe izin verdiğinden emin olun.
@@ -89,7 +90,7 @@ Ağ Performansı İzleyicisi, kaynak ve hedef aracılar arasındaki ağ performa
 
     
 
-* **ICMP protokolü**: İzleme protokolü olarak ıCMP 'yi seçerseniz, ıCMP 'yi güvenilir bir şekilde kullanmak için aşağıdaki güvenlik duvarı kurallarını etkinleştirin:
+* **ICMP protokolü**: ICMP 'yi izlemeye yönelik protokol olarak SEÇERSENIZ, ICMP 'yi güvenilir bir şekilde kullanmak için aşağıdaki güvenlik duvarı kurallarını etkinleştirin:
     
    ```
    netsh advfirewall firewall add rule name="NPMDICMPV4Echo" protocol="icmpv4:8,any" dir=in action=allow 
@@ -111,15 +112,15 @@ Ağ Performansı İzleyicisi, kaynak ve hedef aracılar arasındaki ağ performa
 
 4. **Kurulum** sayfasında, Log Analytics aracılarını yükleme ve aracıları **ortak ayarlar** görünümünde izlemeye yönelik olarak yapılandırma seçeneğini görürsünüz. Daha önce açıklandığı gibi, Log Analytics aracılarını yükleyip yapılandırdıysanız, kullanmak istediğiniz özelliği yapılandırmak için **Kurulum** görünümünü seçin. 
 
-   **Performans İzleyicisi**: **Varsayılan** performans izleyicisi kuralında yapay işlemler için kullanılacak protokolü seçin ve **Kaydet & devam et**' i seçin. Bu protokol seçimi yalnızca sistem tarafından oluşturulan varsayılan kural için geçerlidir. Her bir performans Izleyici kuralını açıkça her oluşturduğunuzda Protokolü seçmeniz gerekir. **Performans İzleyicisi** sekmesindeki **varsayılan** kural ayarlarına her zaman geçebilirsiniz (günlük-0 yapılandırmanızı tamamladıktan sonra görünür) ve protokolü daha sonra değiştirmelisiniz. Performans Izleyicisi özelliğini istemiyorsanız, varsayılan kuralı **Performans İzleyicisi** sekmesindeki **varsayılan** kural ayarlarından devre dışı bırakabilirsiniz.
+   **Performans İzleyicisi**: **varsayılan** performans izleyicisi kuralında yapay işlemler için kullanılacak protokolü seçin ve **Kaydet & devam et**' i seçin. Bu protokol seçimi yalnızca sistem tarafından oluşturulan varsayılan kural için geçerlidir. Her bir performans Izleyici kuralını açıkça her oluşturduğunuzda Protokolü seçmeniz gerekir. **Performans İzleyicisi** sekmesindeki **varsayılan** kural ayarlarına her zaman geçebilirsiniz (günlük-0 yapılandırmanızı tamamladıktan sonra görünür) ve protokolü daha sonra değiştirmelisiniz. Performans Izleyicisi özelliğini istemiyorsanız, varsayılan kuralı **Performans İzleyicisi** sekmesindeki **varsayılan** kural ayarlarından devre dışı bırakabilirsiniz.
 
    ![Performans Izleyicisi görünümü](media/network-performance-monitor/npm-synthetic-transactions.png)
     
-   **Hizmet bağlantısı İzleyicisi**: Özelliği, aracılarınızın Office 365 ve Dynamics 365 ile ağ bağlantısını izlemeye yönelik yerleşik önceden yapılandırılmış testler sağlar. İzlemek istediğiniz Office 365 ve Dynamics 365 hizmetlerini, yanındaki onay kutularını seçerek seçin. İzlemek istediğiniz aracıları seçmek için, **aracıları Ekle**' yi seçin. Bu özelliği kullanmak istemiyorsanız veya daha sonra ayarlamak istemiyorsanız, hiçbir şey seçmeyin ve **kaydet & kaydet**' i seçin.
+   **Hizmet bağlantısı İzleyicisi**: Bu özellik, aracılarınızın Office 365 ve Dynamics 365 ile ağ bağlantısını izlemeye yönelik yerleşik önceden yapılandırılmış testler sağlar. İzlemek istediğiniz Office 365 ve Dynamics 365 hizmetlerini, yanındaki onay kutularını seçerek seçin. İzlemek istediğiniz aracıları seçmek için, **aracıları Ekle**' yi seçin. Bu özelliği kullanmak istemiyorsanız veya daha sonra ayarlamak istemiyorsanız, hiçbir şey seçmeyin ve **kaydet & kaydet**' i seçin.
 
    ![Hizmet bağlantısı Izleyicisi görünümü](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
-   **ExpressRoute İzleyicisi**: Bu Log Analytics çalışma alanıyla bağlantılı Azure aboneliğindeki sanal ağlara bağlı tüm ExpressRoute özel eşayarlarını öğrenmek için **Şimdi bul** ' u seçin. 
+   **ExpressRoute İzleyicisi**: Bu Log Analytics çalışma alanıyla bağlantılı Azure aboneliğindeki sanal ağlara bağlı olan tüm ExpressRoute özel eşayarlarını bulmaya yönelik **Şimdi bul** ' u seçin. 
 
    ![ExpressRoute Izleyicisi görünümü](media/network-performance-monitor/npm-express-route.png)
 
@@ -159,12 +160,12 @@ Bir aracısının yüklü olduğu tüm düğümler **düğümler** sekmesinde li
 
  
 
-## <a name="data-collection-details"></a>Veri koleksiyonu ayrıntıları
+## <a name="data-collection-details"></a>Veri toplama ayrıntıları
 Protokol olarak TCP ' yi seçtiğinizde, kayıp ve gecikme bilgilerini toplamak için Ağ Performansı İzleyicisi TCP SYN-SYNACK-ACK Handshake paketlerini kullanır. Ağ Performansı İzleyicisi, protokol olarak ıCMP 'yi seçtiğinizde ıCMP YANKı ıCMP YANKı yanıtı kullanır. İzleme yolu, topoloji bilgilerini almak için de kullanılır.
 
 Aşağıdaki tabloda, verilerin Ağ Performansı İzleyicisi için nasıl toplandığı hakkında veri toplama yöntemleri ve diğer ayrıntılar gösterilmektedir.
 
-| Platform | Doğrudan aracı | System Center Operations Manager Aracısı | Azure Storage | Operations Manager gerekli mi? | Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager | Toplama sıklığı |
+| Platform | Doğrudan aracı | System Center Operations Manager Aracısı | Azure Depolama | Operations Manager gerekli mi? | Yönetim grubu aracılığıyla gönderilen aracı verileri Operations Manager | Toplama sıklığı |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows | &#8226; | &#8226; |  |  |  |TCP el sıkışmaları/ıCMP YANKı iletileri her 5 saniyede bir, 3 dakikada bir gönderilen veriler |
  
@@ -177,7 +178,7 @@ Aşağıdaki tabloda, verilerin Ağ Performansı İzleyicisi için nasıl toplan
 >[!NOTE]
 > Aracılar birbirleriyle sık iletişim kurmakla birlikte, testleri yürütülürken önemli bir ağ trafiği oluşturmaz. Aracılar, kaybı ve gecikmeyi belirlemede yalnızca TCP SYN-SYNACK-ACK Handshake paketlerine bağımlıdır. Hiçbir veri paketi değiş tokuş alınmaz. Bu işlem sırasında, aracılar yalnızca gerektiğinde iletişim kurar. Aracı iletişim topolojisi, ağ trafiğini azaltmak için iyileştirilmiştir.
 
-## <a name="use-the-solution"></a>Çözüm kullanın 
+## <a name="use-the-solution"></a>Çözümü kullanma 
 
 ### <a name="network-performance-monitor-overview-tile"></a>Ağ Performansı İzleyicisi genel bakış kutucuğu 
 
@@ -187,13 +188,13 @@ Ağ Performansı İzleyicisi çözümünü etkinleştirdikten sonra, **genel bak
 
 ### <a name="network-performance-monitor-dashboard"></a>Ağ Performansı İzleyicisi panosu 
 
-* **En Iyi ağ sistem durumu olayları**: Bu sayfa, sistemdeki en son sistem durumu olaylarının ve uyarıların bir listesini ve olayları etkin olduğundan geçen süreyi sağlar. İzleme kuralı için seçili ölçüm değeri (kayıp, gecikme süresi, yanıt süresi veya bant genişliği kullanımı) eşiği aştığında bir sistem durumu olayı veya uyarısı oluşturulur. 
+* **En Iyi ağ durumu olayları**: Bu sayfa, sistemdeki en son sistem durumu olaylarının ve uyarıların bir listesini ve olayları etkin olduğundan geçen süreyi sağlar. İzleme kuralı için seçili ölçüm değeri (kayıp, gecikme süresi, yanıt süresi veya bant genişliği kullanımı) eşiği aştığında bir sistem durumu olayı veya uyarısı oluşturulur. 
 
 * **ExpressRoute İzleyicisi**: Bu sayfa, çözüm izlemelerinin çeşitli ExpressRoute eşleme bağlantıları için sistem durumu özetleri sağlar. **Topoloji** kutucuğu, ağınızda Izlenen ExpressRoute devreleri aracılığıyla ağ yolunun sayısını gösterir. **Topoloji** görünümüne gitmek için bu kutucuğu seçin.
 
 * **Hizmet bağlantısı İzleyicisi**: Bu sayfa, oluşturduğunuz farklı testler için sistem durumu özetleri sağlar. **Topoloji** kutucuğu izlenen uç nokta sayısını gösterir. **Topoloji** görünümüne gitmek için bu kutucuğu seçin.
 
-* **Performans İzleyicisi**: Bu sayfa, çözümün izlediği **ağ** bağlantıları ve alt ağ bağlantıları için sistem durumu özetleri sağlar. **Topoloji** kutucuğu, ağınızda izlenen ağ yollarının sayısını gösterir. **Topoloji** görünümüne gitmek için bu kutucuğu seçin. 
+* **Performans İzleyicisi**: Bu sayfa, çözümün izlediği **ağ** **bağlantıları ve alt ağ bağlantıları** için sistem durumu özetleri sağlar. **Topoloji** kutucuğu, ağınızda izlenen ağ yollarının sayısını gösterir. **Topoloji** görünümüne gitmek için bu kutucuğu seçin. 
 
 * **Ortak sorgular**: Bu sayfa, ham ağ izleme verilerini doğrudan getiren bir arama sorguları kümesi içerir. Bu sorguları, özelleştirilmiş raporlama için kendi sorgularınızı oluşturmak üzere bir başlangıç noktası olarak kullanabilirsiniz. 
 
@@ -265,7 +266,7 @@ Azure portal aracılığıyla bir uyarı oluşturan NPM kullanıcısı varsa:
 3. Eylem gruplarını kullanmayı seçerseniz, önceden oluşturulmuş bir eylem grubu seçmeniz gerekir. Burada bir eylem grubu oluşturmayı öğrenebilirsiniz [.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Uyarı başarıyla oluşturulduktan sonra uyarılarınızı yönetmek için Uyarıları Yönet bağlantısını kullanabilirsiniz. 
 
-Her uyarı oluşturduğunuzda, NPM Azure Izleyici 'de sorgu tabanlı bir günlük uyarı kuralı oluşturur. Bu sorgu varsayılan olarak her 5 dakikada bir tetiklenir. Azure izleyici, oluşturulan ilk 250 günlük uyarı kuralı için ücret almaz ve 250 günlük uyarı kuralları sınırının üzerindeki tüm uyarı kuralları, [Azure izleyici fiyatlandırma sayfasında uyarı](https://azure.microsoft.com/pricing/details/monitor/)başına fiyatlandırmaya göre faturalandırılır.
+Her uyarı oluşturduğunuzda, NPM Azure Izleyici 'de sorgu tabanlı bir günlük uyarı kuralı oluşturur. Bu sorgu varsayılan olarak her 5 dakikada bir tetiklenir. Azure izleyici, oluşturulan ilk 250 günlük uyarı kuralı için ücret almaz ve 250 günlük uyarı kuralları sınırının üzerindeki tüm uyarı kuralları, [Azure izleyici fiyatlandırma sayfasında uyarı başına fiyatlandırmaya](https://azure.microsoft.com/pricing/details/monitor/)göre faturalandırılır.
 Bildirimler, [Azure izleyici fiyatlandırma sayfasında her bildirim fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/)için ayrı olarak ücretlendirilir.
 
 
@@ -273,11 +274,11 @@ Bildirimler, [Azure izleyici fiyatlandırma sayfasında her bildirim fiyatlandı
 
 Fiyatlandırma hakkında bilgi [çevrimiçi](network-performance-monitor-pricing-faq.md)olarak sunulmaktadır.
 
-## <a name="provide-feedback"></a>Geri bildirimde bulunma 
+## <a name="provide-feedback"></a>Geri bildirim sağlayın 
 
-* **UserVoice** Üzerinde çalışmamızı istediğiniz Ağ Performansı İzleyicisi özellikler için fikirlerinizi gönderebilirsiniz. [UserVoice sayfasını](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)ziyaret edin. 
+* **UserVoice:** Üzerinde çalışmamızı istediğiniz Ağ Performansı İzleyicisi özellikler için fikirlerinizi gönderebilirsiniz. [UserVoice sayfasını](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring)ziyaret edin. 
 
-* **Kohortu imize katılarak:** Her zaman yeni müşterilerin kohortu 'e katılıyoruz. Bunun bir parçası olarak, yeni özelliklere erken erişim ve Ağ Performansı İzleyicisi iyileştirmemize yardımcı olacak bir fırsat edinirsiniz. Katılımını ilgileniyorsanız, bu [hızlı anketi](https://aka.ms/npmcohort)doldurun. 
+* **Kohortu Imize katılarak:** Her zaman yeni müşterilerin kohortu 'e katılıyoruz. Bunun bir parçası olarak, yeni özelliklere erken erişim ve Ağ Performansı İzleyicisi iyileştirmemize yardımcı olacak bir fırsat edinirsiniz. Katılımını ilgileniyorsanız, bu [hızlı anketi](https://aka.ms/npmcohort)doldurun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 [Performans İzleyicisi](network-performance-monitor-performance-monitor.md), [hizmet bağlantı Izleyicisi](network-performance-monitor-performance-monitor.md)ve [ExpressRoute İzleyicisi](network-performance-monitor-expressroute.md)hakkında daha fazla bilgi edinin. 

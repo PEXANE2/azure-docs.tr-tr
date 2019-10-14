@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab48579c6eda085d77e2a6ab080b0a4a1ce806bd
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: dfcd46f06035e356f6528a79b749350627541121
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000322"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303534"
 ---
 # <a name="what-is-passwordless"></a>Parolasız işlevi nedir?
 
@@ -55,7 +55,7 @@ Bir güvenlik anahtarı, FIDO2 CTAP protokolünden Microsoft ile uyumlu olmak i�
 | 3 | HMAC-gizli | Bu uzantı, hatta çevrimdışı veya uçak modunda cihazınızda oturum açabilmenizi sağlar. |
 | 4 | RP başına birden çok hesap | Bu özellik, Microsoft hesabı ve Azure Active Directory gibi birden çok hizmet arasında aynı güvenlik anahtarını kullanmanıza da sağlar. |
 
-Aşağıdaki sağlayıcılar, paswordless deneyimiyle uyumlu oldukları bilinen farklı form faktörlerinin FIDO2 güvenlik anahtarlarını sunmaktadır. Microsoft, müşterilerin ve FIDO Alliance ile iletişim kurarak bu anahtarların güvenlik özelliklerini değerlendirmesini önermektedir.
+Aşağıdaki sağlayıcılar, passwordless deneyimiyle uyumlu oldukları bilinen farklı form faktörlerinin FIDO2 güvenlik anahtarlarını sunmaktadır. Microsoft, müşterilerin ve FIDO Alliance ile iletişim kurarak bu anahtarların güvenlik özelliklerini değerlendirmesini önermektedir.
 
 | Sağlayıcı | İletişim |
 | --- | --- |

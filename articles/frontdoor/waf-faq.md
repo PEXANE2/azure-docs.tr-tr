@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: f6e0ea7ca5b9b131a8d7d7c2c6546130a7d020b3
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375339"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302855"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Azure Web uygulaması güvenlik duvarı hakkında sık sorulan sorular
 
@@ -31,7 +31,7 @@ Azure WAF ilkesi, Application Gateway veya Azure ön kapılarında barındırıl
 
 ## <a name="what-is-waf-for-azure-front-door-service"></a>Azure ön kapı hizmeti için WAF nedir? 
 
-Azure ön kapısı, yüksek düzeyde ölçeklenebilir, global olarak dağıtılmış bir uygulama ve içerik teslim ağı. Azure WAF, ön kapıya tümleştirildiğinde hizmet reddi ve hedeflenen uygulama saldırılarını, Sanal ağınızı girmeden önce, saldırı kaynaklarına yakın bir şekilde kapatır ve performanstan ödün vermeden koruma sunar.
+Azure ön kapısı, yüksek düzeyde ölçeklenebilir, global olarak dağıtılmış bir uygulama ve içerik teslim ağı. Azure WAF, Azure ön kapısından tümleştirildiğinde, hizmet reddi ve hedeflenen uygulama saldırıları Azure ağının kenarında durdurulur. Bu koruma, Sanal ağınızı girme şansı vermeden önce saldırıları kaynağa yakın bir şekilde gerçekleşir. Azure ön kapı hizmeti için WAF, performansla ödün vermeden koruma sunar.
 
 ## <a name="does-azure-waf-support-https"></a>Azure WAF, HTTPS 'yi destekliyor mu?
 

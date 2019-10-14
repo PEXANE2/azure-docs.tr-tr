@@ -7,12 +7,12 @@ ms.service: lighthouse
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 8163bcb4189cbec545544b7d43ba7142d34e29dd
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 53aabc4dc6c0d3fcef28aab16ea598cbbf6dbd55
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286162"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302753"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Müşterileri ve Temsilcili kaynakları görüntüleme ve yönetme
 
@@ -37,7 +37,7 @@ Bu sayfadan aşağıdaki bilgileri görüntüleyebilirsiniz:
 
 - Bir müşteriyle ilişkili tüm abonelikleri, teklifleri ve temsilcileri görmek için müşterinin adını seçin.
 - Bir teklif ve temsilcileri hakkında daha fazla ayrıntı görmek için teklif adını seçin.
-- Temsil edilen abonelikler veya kaynak grupları için yer atamaları hakkında daha fazla ayrıntı görüntülemek için **Temsilciler** sütunundaki girişi seçin.
+- Temsilci atanan abonelikler veya kaynak grupları için rol atamaları hakkında daha fazla ayrıntı görüntülemek için **Temsilciler** sütunundaki girişi seçin.
 
 ## <a name="view-delegations"></a>Temsilcileri görüntüle
 

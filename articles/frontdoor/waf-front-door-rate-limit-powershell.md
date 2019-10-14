@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: 99af39e996aaadd572603f63d019ff929b679550
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: c4cd906148f0f83ab4d66a9daaa606d7b9c183cd
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846255"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303600"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell kullanarak bir Web uygulaması güvenlik duvarı hız sınırı kuralı yapılandırma
 Azure ön kapısının Azure Web uygulaması güvenlik duvarı (WAF) hız sınırı kuralı, tek dakikalık bir süre içinde tek bir istemci IP 'sinden izin verilen isteklerin sayısını denetler.
@@ -49,7 +49,7 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 ### <a name="create-a-front-door-profile"></a>Ön kapı profili oluşturma
-Hızlı Başlangıç bölümünde [açıklanan yönergeleri izleyerek bir ön kapı profili oluşturun: Ön kapı profili oluşturma](quickstart-create-front-door.md)
+[Hızlı başlangıç: ön kapı profili oluşturma](quickstart-create-front-door.md) bölümünde açıklanan yönergeleri Izleyerek bir ön kapı profili oluşturun
 
 ## <a name="define-url-match-conditions"></a>URL eşleştirme koşullarını tanımlayın
 [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject)kullanarak bir URL eşleştirme koşulu TANıMLAYıN (URL/promosyon içerir).
@@ -76,11 +76,9 @@ Aşağıdaki örnek, *RequestUri* değişkeninin değeri olarak */promosyon* ile
 
 ## <a name="configure-a-security-policy"></a>Güvenlik ilkesi yapılandırma
 
-Kullanarak `Get-AzureRmResourceGroup`ön kapı profilini içeren kaynak grubunun adını bulun. Ardından, ön kapı profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak bir güvenlik ilkesini özel bir hız sınırı kuralıyla yapılandırın.
+Ön kapı profilini içeren kaynak grubunun adını `Get-AzureRmResourceGroup` kullanarak bulun. Ardından, ön kapı profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak bir güvenlik ilkesini özel bir hız sınırı kuralıyla yapılandırın.
 
-Aşağıdaki örnek, [hızlı başlangıçta belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır: Ön kapı](quickstart-create-front-door.md) oluşturma makalesi.
-
- [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy)kullanma.
+Aşağıdaki örnek, [hızlı başlangıç: bir ön kapı oluşturma](quickstart-create-front-door.md) makalesinde [belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla myResourceGroupFD1 kaynak grubu adını kullanır. New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `
@@ -94,7 +92,7 @@ Aşağıdaki örnek, [hızlı başlangıçta belirtilen yönergeleri kullanarak 
 Güvenlik İlkesi nesnesini var olan bir ön kapı ön uç konağına bağlayın ve ön kapı özelliklerini güncelleştirin. İlk olarak [Get-Azfrontkapısı](/powershell/module/Az.FrontDoor/Get-AzFrontDoor) komutunu kullanarak ön kapı nesnesini alın.
 Ardından, ön uç *Webapplicationfirewallpolicylink* özelliğini, [set-azfrontkapısı](/powershell/module/Az.FrontDoor/Set-AzFrontDoor) komutunu kullanarak önceki adımda oluşturulan "$ratePolicy" öğesinin *RESOURCEID* değerini olarak ayarlayın. 
 
-Aşağıdaki örnek, [hızlı başlangıçta belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır: Ön kapı](quickstart-create-front-door.md) oluşturma makalesi. Ayrıca, aşağıdaki örnekte $frontDoorName, ön kapı profilinizin adıyla değiştirin. 
+Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](quickstart-create-front-door.md) makalesinde belirtilen yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır. Ayrıca, aşağıdaki örnekte $frontDoorName, ön kapı profilinizin adıyla değiştirin. 
 
 ```powershell-interactive
    $FrontDoorObjectExample = Get-AzFrontDoor `

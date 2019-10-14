@@ -1,22 +1,21 @@
 ---
-title: Azure Blob depolama alanına tam metin araması ekleme-Azure Search
-description: HTTP REST API kullanarak kodda Azure Search dizin oluşturma için Azure Blob depolamada gezinme metin içeriği.
-services: search
+title: Azure Blob depolamaya tam metin araması ekleme
+titleSuffix: Azure Search
+description: Azure Search ' de tam metin arama dizini oluştururken içeriği ayıklayın ve Azure bloblarına yapı ekleyin.
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/01/2019
-author: mgottein
-manager: nitinme
-ms.author: magottei
-ms.custom: seodec2018
-ms.openlocfilehash: f0801931b57302ae1d627dab783a40d2407c19ac
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 10/09/2019
+ms.openlocfilehash: 7e5eb73cc6abc72689bbc674b29f4d288dd66b6f
+ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650082"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72302900"
 ---
-# <a name="searching-blob-storage-with-azure-search"></a>Azure Search ile Blob deposu arama
+# <a name="add-full-text-search-to-azure-blob-data-using-azure-search"></a>Azure Search kullanarak Azure Blob verilerine tam metin araması ekleme
 
 Azure Blob depolamada depolanan çeşitli içerik türleri arasında arama yapmak zor bir sorun olabilir. Ancak, Azure Search kullanarak Bloblarınızın içeriğini yalnızca birkaç tıklamayla dizinleyerek ve arayabilirsiniz. Blob Storage üzerinde arama yapmak için bir Azure Search hizmeti sağlanması gerekir. Azure Search çeşitli hizmet limitleri ve fiyatlandırma katmanları [fiyatlandırma sayfasında](https://aka.ms/azspricing)bulunabilir.
 
@@ -45,12 +44,12 @@ Azure Search, JSON içeren bloblarda bulunan yapılandırılmış içerikleri ay
 
 JSON ayrıştırması Şu anda portal üzerinden yapılandırılamaz. [Azure Search 'de JSON ayrıştırma hakkında daha fazla bilgi edinin.](https://aka.ms/azsjsonblobindexing)
 
-## <a name="quick-start"></a>Hızlı başlangıç
+## <a name="quickstart"></a>Hızlı Başlangıç
 Azure Search bloblara doğrudan blob Storage Portal sayfasından eklenebilir.
 
 ![](./media/search-blob-storage-integration/blob-blade.png)
 
 Var olan bir Azure Search hizmetini seçebileceğiniz veya yeni bir hizmet oluşturabileceğiniz bir akışı başlatmak için **Azure Search Ekle** ' ye tıklayın. Yeni bir hizmet oluşturursanız, depolama hesabınızın Portal deneyiminizden siz gezinileolursunuz. Depolama portalı sayfasına dönüp, mevcut hizmeti seçebileceğiniz **Azure Search Ekle** seçeneğini yeniden seçebilirsiniz.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 Tam [belgelerde](https://aka.ms/azsblobindexer)Azure Search blob Dizin Oluşturucu hakkında daha fazla bilgi edinin.
