@@ -44,6 +44,8 @@
     - name: Hizmet sağlayıcılarını görüntüleme ve yönetme
       displayName: 'managed services offer, azure marketplace, publish'
       href: ./how-to/view-manage-service-providers.md
+    - name: Düzeltilebilir bir ilke dağıtma
+      href: ./how-to/deploy-policy-remediation.md
 - name: Başvuru
   items:
     - name: Azure CLI

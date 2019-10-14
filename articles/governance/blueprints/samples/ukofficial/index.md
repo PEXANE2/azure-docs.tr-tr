@@ -1,5 +1,5 @@
 ---
-title: Örnek - UK OFFICIAL ve UK NHS şeması - Genel bakış
+title: UK OFFICIAL ve UK NHS şema örneği - Genel bakış
 description: UK OFFICIAL ve UK NHS şema örneğinin genel bakış bilgileri ve mimarisi. Bu şema örneği, müşterilerin belirli denetimleri değerlendirmesine yardımcı olur.
 services: blueprints
 author: DCtheGeek
@@ -7,12 +7,12 @@ ms.author: dacoulte
 ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
-ms.openlocfilehash: 2478dce573fac52d948e6e180d9716beda34b44b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 942928a3e5da02bc44f85baab1b9795137a9433d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248776"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297093"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL ve UK NHS şema örneğine genel bakış
 

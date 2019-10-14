@@ -100,8 +100,10 @@
                   href: virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md
         - name: Yük Devretme Kümesi Örneği
           items:
-            - name: Yapılandırma
+            - name: Depolama Alanları Doğrudan ile
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
+            - name: Premium dosya depolama ile
+              href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Başvuru
   items:
     - name: Azure PowerShell

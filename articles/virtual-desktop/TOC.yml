@@ -74,6 +74,8 @@
       href: host-pool-load-balancing.md
     - name: FSLogix profil kapsayıcıları ve Azure dosyaları
       href: fslogix-containers-azure-files.md
+    - name: FSLogix profil kapsayıcıları için depolama seçenekleri
+      href: store-fslogix-profile.md
     - name: İş ortağı tümleştirmeleri
       href: partners.md
     - name: Windows 10 Enterprise çoklu oturum hakkında SSS

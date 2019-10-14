@@ -93,6 +93,8 @@
           href: durable-functions-unit-testing.md
         - name: Web İşleri olarak oluşturma
           href: durable-functions-webjobs-sdk.md
+        - name: .NET'teki dayanıklı varlıklar
+          href: durable-functions-dotnet-entities.md
     - name: Dağıtma
       items:
         - name: Sürekli dağıtım
@@ -101,6 +103,8 @@
           href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: Paketten çalıştırma
           href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: Sıfır kesinti süresi dağıtımı
+          href: durable-functions-zero-downtime-deployment.md
     - name: İzleme
       items:
         - name: Tanılama
