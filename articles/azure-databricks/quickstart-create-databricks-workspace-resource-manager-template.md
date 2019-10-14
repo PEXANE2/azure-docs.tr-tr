@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Kaynak Yöneticisi şablonu kullanarak Azure Databricks Spark işi çalıştırma '
+title: Azure Resource Manager ile Azure Databricks çalışma alanı oluşturma
 description: Bu hızlı başlangıçta, Azure Resource Manager şablonunu kullanarak bir Azure Databricks çalışma alanı oluşturma, ardından bir Apache Spark kümesi oluşturma ve bir Spark işi çalıştırma işlemi gösterilmektedir.
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: 8d4cfb2be687f258255379d93fd60028dcd2eb2c
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 5f22c9e7b7f040a0e6b957cbc184720918ce9222
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "68932604"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274150"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Hızlı Başlangıç: Azure Resource Manager şablonunu kullanarak Azure Databricks Spark işi çalıştırma
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Hızlı Başlangıç: Azure Resource Manager şablonunu kullanarak Azure Databricks’te Spark işini çalıştırma
 
 Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalışma alanı oluşturmak için bir Azure Resource Manager şablonu kullanırsınız. Küme üzerinde bir işi çalıştırır ve demografik tabanlı ücretsiz/ücretli kullanımdan gerçek zamanlı raporlar oluşturmak için özel grafikleri kullanabilirsiniz.
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalış
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın. 
+[Azure Portal](https://portal.azure.com)’ında oturum açın. 
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
@@ -170,7 +170,7 @@ Databricks içinde bir not defteri oluşturmak, not defterini bir Azure Blob dep
    * **Değerler**’ı **düzey** olarak ayarlayın.
    * **Toplama**’yı **SAYI** olarak ayarlayın.
 
-   **Uygula**'ya tıklayın.
+   **Apply (Uygula)** düğmesine tıklayın.
 
 9. Çıktı aşağıdaki ekran görüntüsünde gösterildiği gibi görsel açıklamayı gösterir:
 
@@ -182,7 +182,7 @@ Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için A
 
 ![Databricks kümesini durdurma](./media/quickstart-create-databricks-workspace-resource-manager-template/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-El ile otomatik olarak durdurur küme sonlandırmazsanız, seçtiğiniz sağlanan **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Küme oluştururken **\_ @ no__t-2 dakika etkin olmama** onay kutusu ' nu seçtikten sonra, kümeyi el ile sonlandıramazsanız, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

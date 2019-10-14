@@ -606,6 +606,8 @@
                   href: insights/vminsights-overview.md
                 - name: Bilinen sorunlar
                   href: insights/vminsights-known-issues.md
+                - name: Genel Kullanılabilirlik Hakkında SSS
+                  href: insights/vminsights-ga-release-faq.md
                 - name: SSS
                   href: insights/vminsights-faq.md
                 - name: İzlemeyi etkinleştirme

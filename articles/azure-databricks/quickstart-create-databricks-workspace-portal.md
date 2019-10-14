@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure portal kullanarak Azure Databricks Spark işi çalıştırma'
+title: Azure portal kullanarak Azure Databricks Spark işi çalıştırma
 description: Bu hızlı başlangıçta Azure portalını kullanarak bir Azure Databricks çalışma alanı, bir Apache Spark kümesi oluşturma ve bir Spark işi çalıştırma işlemi gösterilmektedir.
 services: azure-databricks
 ms.service: azure-databricks
@@ -10,14 +10,14 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 3570325880b4c8d8eb311f00477262126a2b18ad
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1cc6d6236b940cf898651bdfdd47f4db1ac53851
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932577"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274160"
 ---
-# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portal kullanarak Azure Databricks Spark işi çalıştırma
+# <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak Databricks üzerinde bir Spark işi çalıştırma
 
 Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalışma alanı oluşturmak için Azure portal kullanırsınız. Bir işi kümede çalıştırır ve Boston güvenliği verilerinden gerçek zamanlı raporlar oluşturmak için özel grafikleri kullanabilirsiniz.
 
@@ -27,7 +27,7 @@ Bu hızlı başlangıçta, bir Apache Spark kümesiyle Azure Databricks çalış
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
 > [!Note]
 > Bu öğretici **Azure Ücretsiz deneme aboneliği**kullanılarak gerçekleştirilemez.
@@ -52,7 +52,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın        |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
     |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../azure-resource-manager/resource-group-overview.md). |
-    |**Location**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
+    |**Konum**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
     |**Fiyatlandırma Katmanı**     |  **Standart**, **Premium**veya **deneme**arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
 
     **Panoya sabitle**’yi seçin ve sonra **Oluştur**’a tıklayın.
@@ -98,7 +98,7 @@ Databricks içinde bir not defteri oluşturmak, Not defterini Azure açık veri 
 
     ![Databricks’te not defteri oluşturma](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Create notebook in Databricks")
 
-    **Oluştur**’u seçin.
+    **Oluştur**'u seçin.
 
 3. Bu adımda, [Azure açık veri kümelerinde](https://azure.microsoft.com/services/open-datasets/catalog/boston-safety-data/#AzureDatabricks)Boston Güvenlik verileriyle bir Spark dataframe oluşturun ve verileri sorgulamak için SQL kullanın.
 
@@ -136,7 +136,7 @@ Databricks içinde bir not defteri oluşturmak, Not defterini Azure açık veri 
 
 5. Aşağıdaki ekran görüntüsünde gösterildiği gibi bir tablo çıktısı görürsünüz (yalnızca bazı sütunlar gösterilmiştir):
 
-    ![Örnek veriler](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "Örnek JSON verileri")
+    ![Örnek veri](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "örneği JSON verileri")
 
 6. Artık bu verilerin görsel bir gösterimini oluşturarak, diğer kaynaklar yerine vatandaşları Connect app ve City çalışan uygulaması kullanılarak kaç tane güvenlik olayının raporlanacağı gösterilir. Tablo çıkışının alt kısmından **çubuk grafik** simgesini seçin ve ardından **Çizim seçenekleri**' ne tıklayın.
 
@@ -144,14 +144,14 @@ Databricks içinde bir not defteri oluşturmak, Not defterini Azure açık veri 
 
 8. **Çizimi Özelleştir** menüsünde, değerleri ekran görüntüsünde gösterilen şekilde sürükleyip bırakın.
 
-    ![Pasta grafiğini özelleştirme](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Çubuk grafiği Özelleştir")
+    ![Pasta grafiğini özelleştirme](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "çubuk grafiğini özelleştirme")
 
    * **Anahtarları** **kaynağa**ayarlayın.
    * **Değerleri** **\ıd > <** olarak ayarlayın.
    * **Toplama**’yı **SAYI** olarak ayarlayın.
    * **Görüntü türünü** **pasta grafik**olarak ayarlayın.
 
-     **Uygula**'ya tıklayın.
+     **Apply (Uygula)** düğmesine tıklayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -159,7 +159,7 @@ Makaleyi tamamladıktan sonra kümeyi sonlandırabilirsiniz. Bunu yapmak için A
 
 ![Databricks kümesini durdurma](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Databricks kümesini durdurma")
 
-El ile otomatik olarak durdurur küme sonlandırmazsanız, seçtiğiniz sağlanan **sonra Sonlandır \_ \_ yapılmadan geçecek dakika cinsinden** küme oluşturulurken onay kutusu. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
+Küme oluştururken **\_ @ no__t-2 dakika etkin olmama** onay kutusu ' nu seçtikten sonra, kümeyi el ile sonlandıramazsanız, otomatik olarak durdurulur. Böyle bir durumda, belirtilen süre boyunca etkin olmaması durumunda küme otomatik olarak durdurulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

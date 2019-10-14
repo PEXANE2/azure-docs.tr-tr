@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 85471323a7f8918d80b7c0944fe5c255e9fa836a
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: cc01b12e493f3e0d3cd63786c27819d4704f97f4
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "69018913"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263883"
 ---
-# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Service 'te (AKS) uygulamaları çalıştırma
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) uygulamaları çalıştırma
 
 Kubernetes, kapsayıcılı uygulamalar için dağıtılmış bir platform sunar. Kendi uygulamalarınızı ve hizmetlerinizi oluşturup bir Kubernetes kümesine dağıtırsınız, kullanılabilirlik ve bağlantı özellikleri de küme tarafından yönetilir. Yedi bölümün dördüncüsü olan bu öğreticide Kubernetes kümesine örnek bir uygulama dağıtılır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -46,7 +46,7 @@ Bu öğreticilerde Azure Container Registry (ACR) örneği, örnek uygulamanın 
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-İlk öğreticide kopyalanan git deposundaki örnek bildirim dosyasında oturum açma sunucusu adı olarak *microsoft* kullanılmıştır. Kopyalanmış *Azure-oylama-App-redsıs* dizininde olduğunuzdan emin olun, ardından bildirim dosyasını şöyle `vi`bir metin düzenleyicisiyle açın:
+İlk öğreticide kopyalanan git deposundaki örnek bildirim dosyasında oturum açma sunucusu adı olarak *microsoft* kullanılmıştır. Kopyalanmış *Azure-oylama-App-redsıs* dizininde olduğunuzdan emin olun, ardından bildirim dosyasını `vi` gibi bir metin düzenleyicisiyle açın:
 
 ```console
 vi azure-vote-all-in-one-redis.yaml
@@ -68,7 +68,7 @@ containers:
   image: <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
-Dosyayı kaydedin ve kapatın. İçinde `vi`, kullanın `:wq`.
+Dosyayı kaydedin ve kapatın. @No__t-0 ' da `:wq` ' i kullanın.
 
 ## <a name="deploy-the-application"></a>Uygulamayı dağıtma
 
@@ -105,7 +105,7 @@ Başlangıçta *Azure-oyönme* hizmeti IÇIN *dış IP* , *Beklemede*olarak gös
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
-*Dış IP* adresi *bekliyor* durumundan gerçek ortak IP adresi olarak değiştiğinde, `CTRL-C` `kubectl` izleme işlemini durdurmak için kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
+*Dış IP* adresi *bekliyor* durumundan gerçek ortak ıp adresini değiştirdiğinde, `kubectl` izleme işlemini durdurmak için `CTRL-C` ' yi kullanın. Aşağıdaki örnek çıktıda, hizmete atanmış geçerli bir genel IP adresi gösterilmektedir:
 
 ```
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
@@ -115,7 +115,7 @@ Uygulamayı eylemde görmek için, hizmetinizin dış IP adresine bir Web taray�
 
 ![Azure’da Kubernetes kümesinin görüntüsü](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-Uygulama yüklenmediyse, görüntü kayıt defterinizde bir yetkilendirme sorunundan kaynaklanıyor olabilir. Kapsayıcılarınızın durumunu görüntülemek için `kubectl get pods` komutunu kullanın. Kapsayıcı görüntüleri çekemiyorum, bkz. [bir Kubernetes gizli dizisi ile Container Registry erişimine izin verme](https://docs.microsoft.com/azure/container-registry/container-registry-auth-aks#access-with-kubernetes-secret).
+Uygulama yüklenmediyse, görüntü kayıt defterinizde bir yetkilendirme sorunundan kaynaklanıyor olabilir. Kapsayıcılarınızın durumunu görüntülemek için `kubectl get pods` komutunu kullanın. Kapsayıcı görüntüleri çekemediği takdirde bkz. [Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulaması](cluster-container-registry-integration.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

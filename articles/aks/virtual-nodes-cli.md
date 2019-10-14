@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: a6acdd6255278123ff13a8597cadd2a386536bd4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: d3651c63b206c37b1f41ecab7f69e24fc94ddffd
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67613791"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263858"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLı kullanarak sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
@@ -68,7 +68,7 @@ Sanal düğümler işlevselliği, ACI 'nin özellik kümesine yoğun bir şekild
 * Init kapsayıcıları
 * [Ana bilgisayar diğer adları](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI 'da exec için [bağımsız değişkenler](../container-instances/container-instances-exec.md#restrictions)
-* [Daemonsets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) , sanal düğüme Pod dağıtmayacak
+* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) , sanal düğüme Pod dağıtmayacak
 * [Windows Server düğümleri (Şu anda AKS 'de önizlemededir)](windows-container-cli.md) sanal düğümlerde desteklenmez. Sanal düğümleri, bir AKS kümesinde Windows Server düğümlerine gerek kalmadan Windows Server kapsayıcıları zamanlamak için kullanabilirsiniz.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
@@ -87,9 +87,9 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği man
 az group create --name myResourceGroup --location westus
 ```
 
-## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+## <a name="create-a-virtual-network"></a>Sanal ağ oluşturun
 
-[Az Network VNET Create][az-network-vnet-create] komutunu kullanarak bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/8*adres ön ekine sahip bir sanal ağ adı ve *myakssubnet*adlı bir alt ağ oluşturur. Bu alt ağın adres ön eki varsayılan olarak *10.240.0.0/16*' dır:
+[Az Network VNET Create][az-network-vnet-create] komutunu kullanarak bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/8*adres ön *ekine sahip bir* sanal ağ adı ve *myakssubnet*adlı bir alt ağ oluşturur. Bu alt ağın adres ön eki varsayılan olarak *10.240.0.0/16*' dır:
 
 ```azurecli-interactive
 az network vnet create \
@@ -158,7 +158,7 @@ Bir AKS kümesini önceki bir adımda oluşturulan AKS alt ağına dağıtırsı
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-AKS kümesi oluşturmak için [az aks Create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Önceki `<subnetId>` adımda elde edilen kimlikle değiştirin ve ardından `<appId>` `<password>` 
+AKS kümesi oluşturmak için [az aks Create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. @No__t-0 ' ı önceki adımda elde edilen KIMLIKLE değiştirin ve ardından-1 ve `<password>` ' i ile @no__t 
 
 ```azurecli-interactive
 az aks create \
@@ -190,7 +190,7 @@ az aks enable-addons \
 
 ## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
-Kubernetes kümenize bağlanacak şekilde yapılandırmak `kubectl` için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu adım kimlik bilgilerini indirir ve Kubernetes CLI’yi bunları kullanacak şekilde yapılandırır.
+@No__t, Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks Get-Credentials][az-aks-get-credentials] komutunu kullanın. Bu adım kimlik bilgilerini indirir ve Kubernetes CLI’yi bunları kullanacak şekilde yapılandırır.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -214,7 +214,7 @@ aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 
 ## <a name="deploy-a-sample-app"></a>Örnek uygulama dağıtma
 
-Aşağıdaki YAML 'de `virtual-node.yaml` adlı bir dosya oluşturun ve kopyalayın. Düğüm üzerinde kapsayıcıyı zamanlamak için bir [Nodeselector][node-selector] ve [toleranation][toleration] tanımlanmıştır.
+@No__t-0 adlı bir dosya oluşturun ve aşağıdaki YAML 'ye kopyalayın. Düğüm üzerinde kapsayıcıyı zamanlamak için bir [Nodeselector][node-selector] ve [toleranation][toleration] tanımlanmıştır.
 
 ```yaml
 apiVersion: apps/v1
@@ -253,7 +253,7 @@ Uygulamayı [kubectl Apply][kubectl-apply] komutuyla çalıştırın.
 kubectl apply -f virtual-node.yaml
 ```
 
-[Kubectl Get Pod][kubectl-get] komutunu `-o wide` bağımsız değişkenle birlikte kullanarak bir pod ve zamanlanan düğüm listesini çıkış. `aci-helloworld` Pod 'ın `virtual-node-aci-linux` düğüm üzerinde zamanlandığına dikkat edin.
+[Kubectl Get Pod][kubectl-get] komutunu `-o wide` bağımsız değişkeniyle birlikte kullanarak Pod ve zamanlanan düğüm listesini alın. @No__t-0 Pod `virtual-node-aci-linux` düğümünde zamanlandığına dikkat edin.
 
 ```
 $ kubectl get pods -o wide
@@ -265,7 +265,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 Pod 'a sanal düğümlerle kullanılmak üzere atanan Azure sanal ağ alt ağından bir iç IP adresi atanır.
 
 > [!NOTE]
-> Azure Container Registry depolanan görüntüleri kullanıyorsanız, [bir Kubernetes gizli anahtarını yapılandırın ve kullanın][acr-aks-secrets]. Sanal düğümlerin geçerli sınırlaması, tümleşik Azure AD hizmet sorumlusu kimlik doğrulamasını kullanamıyoruz. Gizli anahtar kullanmıyorsanız, sanal düğümlerde zamanlanan Pod 'ler başlatılamaz ve hatayı `HTTP response status code 400 error code "InaccessibleImage"`bildirebilir.
+> Azure Container Registry depolanan görüntüleri kullanıyorsanız, [bir Kubernetes gizli anahtarını yapılandırın ve kullanın][acr-aks-secrets]. Sanal düğümlerin geçerli sınırlaması, tümleşik Azure AD hizmet sorumlusu kimlik doğrulamasını kullanamıyoruz. Gizli anahtar kullanmıyorsanız, sanal düğümlerde zamanlanan düğüm başlatılamaz ve `HTTP response status code 400 error code "InaccessibleImage"` hatası rapor edebilir.
 
 ## <a name="test-the-virtual-node-pod"></a>Sanal düğüm Pod 'u test etme
 
@@ -275,13 +275,13 @@ Sanal düğümde çalışan Pod 'u test etmek için, bir web istemcisiyle tanıt
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
-Şunu `curl` kullanarak`apt-get`Pod 'a yüklensin:
+@No__t-1 kullanarak Pod 'a `curl` ' yı yükler:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Artık, `curl` *http://10.241.0.4* kullanarak Pod 'nizin adresine erişin. Önceki `kubectl get pods` komutta gösterilen kendi iç IP adresini belirtin:
+Artık *http://10.241.0.4* gibi `curl` kullanarak Pod 'nizin adresine erişin. Önceki `kubectl get pods` komutunda gösterilen kendi iç IP adresini belirtin:
 
 ```console
 curl -L http://10.241.0.4
@@ -299,7 +299,7 @@ $ curl -L 10.241.0.4
 [...]
 ```
 
-İle `exit`test Pod 'unuzla Terminal oturumunu kapatın. Oturumunuz sona erdikten sonra Pod silinir.
+@No__t-0 ile test Pod 'unuzla Terminal oturumunu kapatın. Oturumunuz sona erdikten sonra Pod silinir.
 
 ## <a name="remove-virtual-nodes"></a>Sanal düğümleri kaldır
 
@@ -364,6 +364,7 @@ Sanal düğümler genellikle AKS 'deki bir ölçeklendirme çözümünün bir bi
 [aks-github]: https://github.com/azure/aks/issues
 [virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
 [virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
+[acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli
@@ -384,4 +385,3 @@ Sanal düğümler genellikle AKS 'deki bir ölçeklendirme çözümünün bir bi
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[acr-aks-secrets]: ../container-registry/container-registry-auth-aks.md#access-with-kubernetes-secret
