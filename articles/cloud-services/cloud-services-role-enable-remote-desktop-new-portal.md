@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Services bir rol için Uzak Masaüstü Bağlantısı etkinleştirin | Microsoft Docs
+title: Portalı kullanarak bir rol için Uzak Masaüstü 'Nü etkinleştirme (Azure Cloud Services)
 description: Azure bulut hizmeti uygulamanızı uzak masaüstü bağlantılarına izin verecek şekilde yapılandırma
 services: cloud-services
 documentationcenter: ''
@@ -8,17 +8,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
-ms.openlocfilehash: bea4e0c43d6ae6e0ea05c43343535195a25cf3e2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 50447beabefefcaa723a26ed4388354b9590c36e
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359526"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298451"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Azure Cloud Services bir rol için Uzak Masaüstü Bağlantısı etkinleştirin
 
 > [!div class="op_single_selector"]
-> * [Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure portalda](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
@@ -51,7 +51,7 @@ Azure portal, Uzak Masaüstü uzantısı yaklaşımını kullanır, böylece uyg
 
 Roller üzerinde Uzak Masaüstü etkinleştirildikten sonra, Azure portal doğrudan bir bağlantı başlatabilirsiniz:
 
-1. Örnekler **ayarlarını açmak** için **örnekler** ' e tıklayın.
+1. **Örnekler ayarlarını açmak** için **örnekler** ' e tıklayın.
 2. Uzak Masaüstü 'Nün yapılandırıldığı bir rol örneği seçin.
 3. Rol örneği için bir RDP dosyası indirmek için **Bağlan** ' a tıklayın.
 

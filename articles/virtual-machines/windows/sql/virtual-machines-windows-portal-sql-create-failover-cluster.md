@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: b30ccbcba0b2126d1fe1abce9ae67a55ce25f601
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92623377daa80efe08b260745fa1d9443366cb8a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170262"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300614"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure sanal makinelerinde SQL Server yük devretme kümesi örneğini yapılandırma
 
@@ -375,14 +375,15 @@ Yük dengeleyiciyi oluşturmak için:
 
 1. Yük dengeleyiciyi şu şekilde yapılandırın:
 
-   - **Ad**: yük dengeleyiciyi tanımlayan bir ad.
-   - **Tür**: yük dengeleyici ortak veya özel olabilir. Aynı VNET içinden bir özel yük dengeleyiciye erişilebilir. Azure uygulamalarının çoğu özel yük dengeleyici kullanabilir. Uygulamanızın doğrudan Internet üzerinden SQL Server erişmesi gerekiyorsa, ortak yük dengeleyici kullanın.
-   - **Sanal ağ**: sanal makinelerle aynı ağ.
-   - **Alt ağ**: sanal makinelerle aynı alt ağ.
-   - **Özel IP adresi**: SQL Server FCI küme ağı kaynağına ATADıĞıNıZ aynı IP adresi.
-   - **abonelik**: Azure aboneliğiniz.
+   - **Abonelik**: Azure aboneliğiniz.
    - **Kaynak grubu**: sanal makinelerinize göre aynı kaynak grubunu kullanın.
-   - **Konum**: sanal makinelerinizde aynı Azure konumunu kullanın.
+   - **Ad**: yük dengeleyiciyi tanımlayan bir ad.
+   - **Bölge**: sanal makinelerinizde aynı Azure konumunu kullanın.
+   - **Tür**: yük dengeleyici ortak veya özel olabilir. Aynı VNET içinden bir özel yük dengeleyiciye erişilebilir. Azure uygulamalarının çoğu özel yük dengeleyici kullanabilir. Uygulamanızın doğrudan Internet üzerinden SQL Server erişmesi gerekiyorsa, ortak yük dengeleyici kullanın.
+   - **SKU**: yük DENGELEYICINIZIN SKU 'su standart olmalıdır. 
+   - **Sanal ağ**: sanal makinelerle aynı ağ.
+   - **IP adresi ataması**: IP adresi ataması statik olmalıdır. 
+   - **Özel IP adresi**: SQL Server FCI küme ağı kaynağına ATADıĞıNıZ aynı IP adresi.
    Aşağıdaki resme bakın:
 
    ![CreateLoadBalancer](./media/virtual-machines-windows-portal-sql-create-failover-cluster/30-load-balancer-create.png)

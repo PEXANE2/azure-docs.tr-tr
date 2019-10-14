@@ -2,18 +2,17 @@
 title: Azure Analysis Services için şirket içi veri ağ geçidini yükler | Microsoft Docs
 description: Şirket içi veri ağ geçidini yüklemeyi ve yapılandırmayı öğrenin.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e87a8221a4db4dfab132a91a31a9ba5b5602a3db
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6f182976ac655692f8c50d4e7560aa21444ce848
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678426"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298655"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Şirket içi veri ağ geçidini yükleme ve yapılandırma
 
@@ -57,7 +56,7 @@ Ağ geçidi ve Azure Analysis Services tarafından nasıl kullanıldığı hakk�
 
 2. Şirket **içi veri ağ geçidini**seçin.
 
-   ![Seçim](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Seçin](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. Bir konum seçin, koşulları kabul edin ve ardından **yükler**' i tıklatın.
 
@@ -65,7 +64,7 @@ Ağ geçidi ve Azure Analysis Services tarafından nasıl kullanıldığı hakk�
 
 3. Azure'da oturum açın. Hesabın kiracınızın Azure Active Directory olması gerekir. Bu hesap, Ağ Geçidi Yöneticisi için kullanılır. Ağ geçidini yüklerken ve kaydederken Azure B2B (konuk) hesapları desteklenmez.
 
-   ![Azure'da oturum açma](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![Azure'da oturum açın](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
    > Bir etki alanı hesabıyla oturum açarsanız, Azure AD 'de Kurumsal hesabınıza eşlenir. Kuruluş hesabınız ağ geçidi Yöneticisi olarak kullanılır.
@@ -76,14 +75,14 @@ Azure 'da bir ağ geçidi kaynağı oluşturmak için, ağ geçidi bulut hizmeti
 
 1.  **Bu bilgisayara yeni bir ağ geçidi Kaydet '** i seçin.
 
-    ![Kaydet](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Kaydol](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Ağ geçidiniz için bir ad ve kurtarma anahtarı yazın. Varsayılan olarak ağ geçidi, aboneliğinizin varsayılan bölgesini kullanır. Farklı bir bölge seçmeniz gerekiyorsa, **bölgeyi değiştir**' i seçin.
 
     > [!IMPORTANT]
     > Kurtarma Anahtarınızı güvenli bir yere kaydedin. Bir ağ geçidini almak, geçirmek veya geri yüklemek için kurtarma anahtarı gereklidir. 
 
-   ![Kaydet](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Kaydol](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Azure ağ geçidi kaynağı oluşturma
@@ -96,19 +95,19 @@ Ağ geçidinizin yüklenip kaydolduktan sonra Azure aboneliğinizde bir ağ geç
 
 2. **Bağlantı ağ geçidi oluştur**' da şu ayarları girin:
 
-   * **Ad**: Ağ Geçidi kaynağınız için bir ad girin. 
+   * **Ad**: ağ geçidi kaynağınız için bir ad girin. 
 
-   * **Abonelik**: Ağ Geçidi kaynağınız ile ilişkilendirilecek Azure aboneliğini seçin. 
+   * **Abonelik**: ağ geçidi kaynağınız Ile ilişkilendirilecek Azure aboneliğini seçin. 
    
      Varsayılan abonelik, oturum açmak için kullandığınız Azure hesabını temel alır.
 
-   * **Kaynak grubu**: Bir kaynak grubu oluşturun veya mevcut bir kaynak grubunu seçin.
+   * **Kaynak grubu**: Kaynak grubu oluşturun veya mevcut bir kaynak grubunu seçin.
 
-   * **Konum**: Ağ geçidinizi kaydettiğiniz bölgeyi seçin.
+   * **Konum**: ağ geçidinizi kaydettiğiniz bölgeyi seçin.
 
-   * **Yükleme adı**: Ağ Geçidi yüklemeniz zaten seçili değilse, bilgisayarınızda yüklü olan ve kayıtlı olan ağ geçidini seçin. 
+   * **Yükleme adı**: ağ geçidi yüklemeniz zaten seçili değilse, bilgisayarınızda yüklü olan ve kayıtlı olan ağ geçidini seçin. 
 
-     İşiniz bittiğinde tıklayın **Oluştur**.
+     İşiniz bittiğinde **Oluştur**' a tıklayın.
 
 ## <a name="connect-servers"></a>Sunucuları ağ geçidi kaynağına bağlama
 
@@ -128,7 +127,7 @@ Ağ geçidinizin yüklenip kaydolduktan sonra Azure aboneliğinizde bir ağ geç
 
     ![Sunucuyu ağ geçidi kaynağına bağlama başarılı](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
-İşte bu kadar. Bağlantı noktalarını açmanız veya sorun giderme yapmanız gerekiyorsa, [Şirket içi veri ağ geçidini](analysis-services-gateway.md)kullanıma aldığınızdan emin olun.
+Bu kadar. Bağlantı noktalarını açmanız veya sorun giderme yapmanız gerekiyorsa, [Şirket içi veri ağ geçidini](analysis-services-gateway.md)kullanıma aldığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 10/11/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 6f27dd199cc054d128a4f46b222c7207d5975efb
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2990917243507d93cb6a86da11cf771f3a42eebd
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240998"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298420"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Azure blok zinciri hizmeti geliştirmeye genel bakış
 
@@ -39,7 +39,7 @@ Gelişmiş kurumsal blok zinciri çözümleri geliştirmek için bir geliştirme
 
 Truffle, Ethereum blockzincirleri üzerinde merkezi olmayan uygulamalar yazmak, derlemek, dağıtmak ve test etmek için popüler bir blok zinciri geliştirme çerçevesidir. Ayrıca, Truffle ' yı akıllı sözleşme geliştirmeyi ve geleneksel web geliştirmeyi sorunsuz bir şekilde tümleştirme girişiminde bulunan bir çerçeve olarak düşünebilirsiniz.
 
-En küçük proje bile en az iki blok zinciri düğümüyle etkileşime girer: Geliştirici makinesinde ve geliştiricinin uygulamasını dağıttığı ağı temsil eden diğeri. Örneğin, ana genel Ethereum ağı veya Azure blok zinciri hizmeti. Truffle, her ağ için derleme ve dağıtım yapıtlarını yönetmeye yönelik bir sistem sağlar ve bu nedenle nihai uygulama dağıtımını basitleştirir. Daha fazla bilgi için bkz [. hızlı başlangıç: Azure blok zinciri hizmeti ağına](connect-truffle.md)bağlanmak Için Truffle kullanın.
+En küçük proje bile en az iki blok zinciri düğümüyle etkileşime girer: bir geliştirici makinesinde, diğeri ise geliştiricinin uygulamasını dağıttığı ağı temsil eder. Örneğin, ana genel Ethereum ağı veya Azure blok zinciri hizmeti. Truffle, her ağ için derleme ve dağıtım yapıtlarını yönetmeye yönelik bir sistem sağlar ve bu nedenle nihai uygulama dağıtımını basitleştirir. Daha fazla bilgi için bkz. [hızlı başlangıç: Azure blok zinciri hizmeti ağına bağlanmak Için Truffle kullanma](connect-truffle.md).
 
 ## <a name="ethereum-quorum-private-transaction"></a>Ethereum çekirdeği özel işlemi
 
@@ -51,13 +51,13 @@ En küçük proje bile en az iki blok zinciri düğümüyle etkileşime girer: G
 * Yalnızca bilinen tarafların ağa katılabilmesini sağlamak için, akıllı sözleşmeleri kullanarak eş eşleme-düğüm ve eş izinleri
 * Daha yüksek performans-çekirdek, genel olarak daha yüksek performans sunar
 
-Öğreticiye bakın [: Özel işlem örneği için Azure blok zinciri hizmetini](send-transaction.md) kullanarak bir işlem gönderin.
+Özel işlem örneği için bkz. [öğretici: Azure blok zinciri hizmetini kullanarak Işlem gönderme](send-transaction.md) .
 
 ## <a name="block-explorers"></a>Blok gezginleri
 
 Blok araştırıcılar, bireysel blok içeriği, işlem adresi verileri ve geçmişi görüntüleyen çevrimiçi blok zinciri tarayıcılardır. Temel blok bilgileri Azure blok zinciri hizmeti 'nde Azure Izleyici aracılığıyla kullanılabilir, ancak geliştirme sırasında daha fazla ayrıntı bilgisine ihtiyacınız varsa, araştırıcılar yararlı olabilir.  Kullanabileceğiniz popüler açık kaynaklı blok gezginleri vardır. Aşağıda, Azure blok zinciri hizmeti ile çalışan blok gezginlerinin listesi verilmiştir:
 
-* Web3 Labs 'den [Azure blok zinciri hizmet Gezgini](https://web3labs.com/azure-offer)
+* Web3 Labs 'den [Epırus Azure blok zinciri hizmet Gezgini](https://azuremarketplace.microsoft.com/marketplace/apps/blk-technologies.azure-blockchain-explorer-template?tab=Overview)
 * [BlockScout](https://github.com/Azure-Samples/blockchain/blob/master/ledger/template/ethereum-on-azure/technology-samples/blockscout/README.md)
 
 ## <a name="tps-measurement"></a>TPS ölçümü
@@ -66,4 +66,4 @@ Blok zinciri daha fazla kurumsal senaryolarda kullanıldığından, performans s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hızlı Başlangıç: Azure blok zinciri hizmeti ağına bağlanmak için Truffle kullanma](connect-truffle.md)
+[Hızlı başlangıç: Azure blok zinciri hizmeti ağına bağlanmak için Truffle kullanın](connect-truffle.md)

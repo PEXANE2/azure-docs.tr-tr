@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 67d323d5a3574100760c78427db6983f6aff5ac8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bc03e10e40e90845c8e1a3dd064c4f50fafeac00
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933990"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299820"
 ---
-# <a name="translator-text-api-30-translate"></a>Translator Metin Çevirisi API'si 3,0: Translate
+# <a name="translator-text-api-30-translate"></a>Translator Metin Çevirisi API'si 3,0: çevir
 
 Metni çevirir.
 
 ## <a name="request-url"></a>İstek URL'si
 
-Şu kişiye `POST` bir istek gönder:
+@No__t-0 isteği gönder:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
@@ -37,32 +37,32 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   <th width="20%">Sorgu parametresi</th>
   <th>Açıklama</th>
   <tr>
-    <td>API sürümü</td>
-    <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer olmalıdır <code>3.0</code>.</td>
+    <td>api sürümü</td>
+    <td><em>Gerekli parametre</em>.<br/>İstemci tarafından istenen API 'nin sürümü. Değer <code>3.0</code> olmalıdır.</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. <code>translation</code> Kapsam kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceği hakkında bilgi edinin. <code>from</code> Parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken <code>from</code> , parametresini, oto algılaması yerine kullanmanız gerekir.</td>
+    <td>Kaynak</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dilini belirtir. @No__t-1 kapsamını kullanarak <a href="./v3-0-languages.md">desteklenen dilleri</a> arayarak hangi dillerin çevrilebileceğini bulun. @No__t-0 parametresi belirtilmemişse, kaynak dili saptamak için otomatik dil algılama uygulanır. <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">Dinamik sözlük</a> özelliğini kullanırken, <code>from</code> parametresini, oto algılaması yerine kullanmanız gerekir.</td>
   </tr>
   <tr>
-    <td>to</td>
-    <td><em>Gerekli parametre</em>.<br/>Çıkış metninin dilini belirtir. Hedef dil, <code>translation</code> kapsamda bulunan <a href="./v3-0-languages.md">desteklenen dillerden</a> biri olmalıdır. Örneğin, Almanca 'ya <code>to=de</code> çevirmek için kullanın.<br/>Sorgu dizesindeki parametresini tekrarlayarak birden fazla dile aynı anda çeviri yapılabilir. Örneğin, Almanca ve <code>to=de&to=it</code> İtalyanca 'e çevirmek için kullanın.</td>
+    <td>-</td>
+    <td><em>Gerekli parametre</em>.<br/>Çıkış metninin dilini belirtir. Hedef dil <code>translation</code> kapsamına dahil <a href="./v3-0-languages.md">desteklenen dillerden</a> biri olmalıdır. Örneğin, Almanca 'ya çevirmek için <code>to=de</code> kullanın.<br/>Sorgu dizesindeki parametresini tekrarlayarak birden fazla dile aynı anda çeviri yapılabilir. Örneğin, Almanca ve Italyanca 'e çevirmek için <code>to=de&to=it</code> kullanın.</td>
   </tr>
   <tr>
     <td>textType</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. Olası değerler şunlardır: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Çevrilen metnin düz metin mi yoksa HTML metni mi olduğunu tanımlar. Herhangi bir HTML 'nin iyi biçimlendirilmiş, tam bir öğe olması gerekir. Olası değerler: <code>plain</code> (varsayılan) veya <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
     <td><em>Isteğe bağlı parametre</em>.<br/>Çeviri kategorisini (etki alanı) belirten bir dize. Bu parametre, <a href="../customization.md">özel çevirmenle</a>oluşturulmuş özelleştirilmiş bir sistemden çevirileri almak için kullanılır. Dağıtılan özelleştirilmiş sisteminizi kullanmak için özel Translator <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">projem ayrıntılarından</a> bu PARAMETREYE kategori kimliği ekleyin. Varsayılan değer: <code>general</code>.</td>
   </tr>
   <tr>
-    <td>profanityAction</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Profanities 'in çevirilerde nasıl ele alınacağını belirtir. Olası değerler şunlardır: <code>NoAction</code> (varsayılan <code>Marked</code> ) veya <code>Deleted</code>. Küfür işleme yollarını anlamak için bkz. <a href="#handle-profanity">küfür işleme</a>.</td>
+    <td>ProfanityAction</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Profanities 'in çevirilerde nasıl ele alınacağını belirtir. Olası değerler şunlardır: <code>NoAction</code> (varsayılan), <code>Marked</code> veya <code>Deleted</code>. Küfür işleme yollarını anlamak için bkz. <a href="#handle-profanity">küfür işleme</a>.</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Profanities 'ın çevirilerde nasıl işaretleneceğini belirtir. Olası değerler şunlardır: <code>Asterisk</code> (varsayılan) veya <code>Tag</code>. Küfür işleme yollarını anlamak için bkz. <a href="#handle-profanity">küfür işleme</a>.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Profanities 'ın çevirilerde nasıl işaretleneceğini belirtir. Olası değerler: <code>Asterisk</code> (varsayılan) veya <code>Tag</code>. Küfür işleme yollarını anlamak için bkz. <a href="#handle-profanity">küfür işleme</a>.</td>
   </tr>
   <tr>
     <td>ıncludehizalaması</td>
@@ -74,7 +74,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>müported</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dili tanımlanamıyorsa, bir geri dönüş dili belirtir. Dil otomatik algılama, <code>from</code> parametre atlandığında uygulanır. Algılama başarısız olursa, <code>suggestedFrom</code> dil kabul edilir.</td>
+    <td><em>Isteğe bağlı parametre</em>.<br/>Giriş metninin dili tanımlanamıyorsa, bir geri dönüş dili belirtir. Dil otomatik algılama, <code>from</code> parametresi atlandığında uygulanır. Algılama başarısız olursa, <code>suggestedFrom</code> dili kabul edilir.</td>
   </tr>
   <tr>
     <td>fromScript</td>
@@ -86,7 +86,7 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td><em>Isteğe bağlı parametre</em>.<br/>Özel bir sistem mevcut olmadığında hizmetin genel sisteme geri yüklenmesine izin verildiğini belirtir. Olası değerler şunlardır: <code>true</code> (varsayılan) veya <code>false</code>.<br/><br/><code>allowFallback=false</code>Çeviri yalnızca istek tarafından <code>category</code> belirtilen için eğitilen sistemleri kullanması gerektiğini belirtir. Dil X-dil Y için bir çeviri, bir pivot dil E-postayla zincirleme gerektiriyorsa, zincirdeki tüm sistemlerin (X-> E ve E-> Y) özel olması ve aynı kategoriye sahip olması gerekir. Belirli bir kategoriye sahip hiçbir sistem bulunamazsa istek bir 400 durum kodu döndürür. <code>allowFallback=true</code>özel bir sistem mevcut olmadığında hizmetin genel sisteme geri yüklenmesine izin verildiğini belirtir.
+    <td><em>Isteğe bağlı parametre</em>.<br/>Özel bir sistem mevcut olmadığında hizmetin genel sisteme geri yüklenmesine izin verildiğini belirtir. Olası değerler: <code>true</code> (varsayılan) veya <code>false</code>.<br/><br/><code>allowFallback=false</code> çeviri yalnızca istek tarafından belirtilen <code>category</code> için eğitilen sistemleri kullanması gerektiğini belirtir. Dil X-dil Y için bir çeviri, bir pivot dil E-postayla zincirleme gerektiriyorsa, zincirdeki tüm sistemlerin (X-> E ve E-> Y) özel olması ve aynı kategoriye sahip olması gerekir. Belirli bir kategoriye sahip hiçbir sistem bulunamazsa istek bir 400 durum kodu döndürür. <code>allowFallback=true</code>, bir özel sistem mevcut olmadığında hizmetin genel bir sisteme geri yüklenmesine izin verildiğini belirtir.
 </td>
   </tr>
 </table> 
@@ -101,8 +101,8 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
     <td><em>Gerekli istek üst bilgisi</em>.<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">Kimlik doğrulaması için kullanılabilen seçeneklere</a>bakın.</td>
   </tr>
   <tr>
-    <td>Content-Type</td>
-    <td><em>Gerekli istek üst bilgisi</em>.<br/>Yükün içerik türünü belirtir. Olası değerler şunlardır: <code>application/json</code>.</td>
+    <td>İçerik türü</td>
+    <td><em>Gerekli istek üst bilgisi</em>.<br/>Yükün içerik türünü belirtir. Olası değerler: <code>application/json</code>.</td>
   </tr>
   <tr>
     <td>İçerik uzunluğu</td>
@@ -110,13 +110,13 @@ Sorgu dizesine geçirilen istek parametreleri şunlardır:
   </tr>
   <tr>
     <td>X-Clienttraceıd</td>
-    <td><em>İsteğe bağlı</em>.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. Adlı <code>ClientTraceId</code>sorgu PARAMETRESINI kullanarak izleme kimliğini sorgu dizesine eklerseniz, bu üstbilgiyi atlayabilirsiniz.</td>
+    <td><em>İsteğe bağlı</em>.<br/>İsteği benzersiz şekilde tanımlamak için istemci tarafından oluşturulan bir GUID. @No__t-0 adlı bir sorgu parametresi kullanarak sorgu dizesine izleme KIMLIĞI eklerseniz, bu üstbilgiyi atlayabilirsiniz.</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>İstek gövdesi
 
-İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, çevirecek dizeyi temsil eden adlı `Text`dize özelliği olan bir JSON nesnesidir.
+İsteğin gövdesi bir JSON dizisidir. Her dizi öğesi, çevrilecek dizeyi temsil eden `Text` adlı dize özelliği olan bir JSON nesnesidir.
 
 ```json
 [
@@ -133,41 +133,41 @@ Aşağıdaki sınırlamalar geçerlidir:
 
 Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren bir JSON dizisidir. Bir sonuç nesnesi aşağıdaki özellikleri içerir:
 
-  * `detectedLanguage`: Aşağıdaki özellikler aracılığıyla algılanan dili açıklayan bir nesne:
+  * `detectedLanguage`: aşağıdaki özellikler aracılığıyla algılanan dili açıklayan bir nesne:
 
-      * `language`: Algılanan dilin kodunu temsil eden bir dize.
+      * `language`: algılanan dilin kodunu temsil eden bir dize.
 
-      * `score`: Sonucun güvenilirliğe işaret eden bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
+      * `score`: sonucun güvenilirliğe işaret eden bir float değeri. Puan sıfır ile bir ve düşük puan arasında düşük bir güvenilirlik olduğunu gösterir.
 
-    `detectedLanguage` Özelliği yalnızca dilin otomatik algılanması istendiğinde sonuç nesnesinde bulunur.
+    @No__t-0 özelliği yalnızca dilin otomatik algılanması istendiğinde sonuç nesnesinde bulunur.
 
-  * `translations`: Çeviri sonuçları dizisi. Dizinin boyutu `to` sorgu parametresi ile belirtilen hedef dillerin sayısıyla eşleşir. Dizideki her öğe şunları içerir:
+  * `translations`: bir çeviri sonuçları dizisi. Dizinin boyutu, `to` sorgu parametresi ile belirtilen hedef dillerin sayısıyla eşleşir. Dizideki her öğe şunları içerir:
 
-    * `to`: Hedef dilin dil kodunu temsil eden bir dize.
+    * `to`: hedef dilin dil kodunu temsil eden bir dize.
 
-    * `text`: Çevrilen metni sağlayan bir dize.
+    * `text`: çevrilmiş metni sağlayan bir dize.
 
-    * `transliteration`: `toScript` Parametresi tarafından belirtilen betiğe çevrilmiş metni sağlayan nesne.
+    * `transliteration`: `toScript` parametresiyle belirtilen betikte çevrilmiş metni sağlayan nesne.
 
-      * `script`: Hedef betiği belirten bir dize.   
+      * `script`: hedef betiği belirten bir dize.   
 
-      * `text`: Hedef betikte çevrilmiş metni sağlayan bir dize.
+      * `text`: hedef betikte çevrilmiş metni sağlayan bir dize.
 
-    `transliteration` Nesne, bir alfabeye çevirme gerçekleşmezse dahil edilmez.
+    @No__t-0 nesnesi, alfabede gerçekleşmezse dahil değildir.
 
-    * `alignment`: Giriş metnini çevrilmiş metne eşleyen adlı `proj`tek dizeli bir özelliği olan bir nesne. Hizalama bilgileri yalnızca istek parametresi `includeAlignment` `true`olduğunda sağlanır. Hizalama, Şu biçimdeki bir dize değeri olarak döndürülür: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  İki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük ile sıfır, bir veya birden çok sözcük başka bir dil yeteri kadar ve hizalanmış sözcükleri bitişik olmayan olabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Bkz. bir örnek ve kısıtlamalar için [hizalama bilgileri alma](#obtain-alignment-information) .
+    * `alignment`: giriş metnini çevrilmiş metne eşleyen `proj` adlı tek bir dize özelliğine sahip bir nesne. Hizalama bilgileri yalnızca `includeAlignment` olan istek parametresi `true` olduğunda sağlanır. Hizalama, Şu biçimdeki bir dize değeri olarak döndürülür: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  İki nokta üst üste başlangıç ve bitiş dizinini ayırır, tire dilleri ayırır ve boşluklar sözcükleri ayırır. Bir sözcük, diğer dilde sıfır, bir veya birden çok sözcükten hizalanabilir ve hizalanmış sözcükler bitişik olmayabilir. Hiçbir hizalama bilgisi yoksa, hizalama öğesi boş olur. Bkz. bir örnek ve kısıtlamalar için [hizalama bilgileri alma](#obtain-alignment-information) .
 
-    * `sentLen`: Giriş ve çıkış metinlerinde tümce sınırları döndüren bir nesne.
+    * `sentLen`: giriş ve çıkış metinlerinde tümce sınırları döndüren bir nesne.
 
-      * `srcSentLen`: Giriş metnindeki Tümcelerin uzunluklarını temsil eden bir tamsayı dizisi. Dizinin uzunluğu, Tümcelerin sayısıdır ve değerler her tümcenin uzunluktadır.
+      * `srcSentLen`: giriş metnindeki Tümcelerin uzunluklarını temsil eden bir tamsayı dizisi. Dizinin uzunluğu, Tümcelerin sayısıdır ve değerler her tümcenin uzunluktadır.
 
-      * `transSentLen`:  Çevrilmiş metindeki Tümcelerin uzunluklarını temsil eden bir tamsayı dizisi. Dizinin uzunluğu, Tümcelerin sayısıdır ve değerler her tümcenin uzunluktadır.
+      * `transSentLen`: çevrilmiş metindeki Tümcelerin uzunluklarını temsil eden bir tamsayı dizisi. Dizinin uzunluğu, Tümcelerin sayısıdır ve değerler her tümcenin uzunluktadır.
 
-    Tümce sınırları yalnızca istek parametresi `includeSentenceLength` `true`olduğunda dahil edilir.
+    Tümce sınırları yalnızca `includeSentenceLength` olan istek parametresi `true` olduğunda dahil edilir.
 
-  * `sourceText`: Kaynak dilin varsayılan betiğine giriş metni veren `text`adlı tek bir dize özelliğine sahip bir nesne. `sourceText`özelliği yalnızca giriş, dilin normal betiği olmayan bir betikte ifade edildiğinde mevcuttur. Örneğin, giriş Arapça Latin betiğe yazılmışsa, `sourceText.text` aynı Arapça metin Arap betiğine dönüştürüldü.
+  * `sourceText`: `text` adlı tek dizeli bir nesne, giriş metnini kaynak dilin varsayılan betiğine verir. `sourceText` özelliği yalnızca giriş, dilin olağan betiği olmayan bir betikte ifade edildiğinde mevcuttur. Örneğin, giriş bir Latin betiğe yazılmışsa, `sourceText.text`, Arap betiğine dönüştürülen aynı Arapça metin olacaktır.
 
-Örnek bölümünde JSON yanıtlarının örneği verilmiştir. [](#examples)
+[Örnek bölümünde JSON](#examples) yanıtlarının örneği verilmiştir.
 
 ## <a name="response-headers"></a>Yanıt üst bilgileri
 
@@ -189,7 +189,7 @@ Başarılı bir yanıt, Giriş dizisindeki her bir dize için bir sonuç içeren
 Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir. 
 
 <table width="100%">
-  <th width="20%">Durum Kodu</th>
+  <th width="20%">Durum kodu</th>
   <th>Açıklama</th>
   <tr>
     <td>200</td>
@@ -209,7 +209,7 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>408</td>
-    <td>Bir kaynak eksik olduğu için istek yerine getirilemedi. Ayrıntılar hata iletisini denetleyin. Özel <code>category</code>bir kullanıldığında, bu genellikle özel çeviri sisteminin isteklere izin vermek için kullanılabilir olmadığını gösterir. İstek bir bekleme süresinden (ör. 1 dakika) sonra yeniden denenmelidir.</td>
+    <td>Bir kaynak eksik olduğu için istek yerine getirilemedi. Ayrıntılar hata iletisini denetleyin. Özel bir @no__t (0) kullanılırken bu genellikle özel çeviri sisteminin isteklere izin vermek için kullanılabilir olmadığını gösterir. İstek bir bekleme süresinden (ör. 1 dakika) sonra yeniden denenmelidir.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -217,11 +217,11 @@ Bir isteğin döndürdüğü olası HTTP durum kodları aşağıda verilmiştir.
   </tr>
   <tr>
     <td>500</td>
-    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından <code>X-RequestId</code>istek tanımlayıcısı ve istek üst <code>X-ClientTraceId</code>bilgisinden istemci tanımlayıcısı.</td>
+    <td>Beklenmeyen bir hata oluştu. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisinden gelen istek tanımlayıcısı <code>X-RequestId</code> ve istek üst bilgisi <code>X-ClientTraceId</code> ' den istemci tanımlayıcısı.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt başlığından <code>X-RequestId</code>istek tanımlayıcısı ve istek üst <code>X-ClientTraceId</code>bilgisinden istemci tanımlayıcısı.</td>
+    <td>Sunucu geçici olarak kullanılamıyor. İsteği yeniden deneyin. Hata devam ederse, bununla raporla: hatanın tarih ve saati, yanıt üst bilgisinden gelen istek tanımlayıcısı <code>X-RequestId</code> ve istek üst bilgisi <code>X-ClientTraceId</code> ' den istemci tanımlayıcısı.</td>
   </tr>
 </table> 
 
@@ -249,7 +249,7 @@ Yanıt gövdesi:
 ]
 ```
 
-`translations` Dizi, girişte tek metin parçasının çevirisini sağlayan bir öğesi içerir.
+@No__t-0 dizisi, girişte tek metin parçasının çevirisini sağlayan bir öğesi içerir.
 
 ### <a name="translate-a-single-input-with-language-auto-detection"></a>Tek bir girişi dil otomatik algılama ile çevir
 
@@ -298,7 +298,7 @@ Yanıt gövdesi:
 ]
 ```
 
-Çeviri sonucu artık, çevrilmiş metni `transliteration` Latin karakterleri kullanarak veren bir özelliği içerir.
+Çeviri sonucu artık, çevrilmiş metni Latin karakterlerini kullanarak veren bir `transliteration` özelliği içerir.
 
 ### <a name="translate-multiple-pieces-of-text"></a>Birden çok metin parçasını çevirin
 
@@ -350,38 +350,38 @@ Yanıt gövdesi:
 
 Normalde çevirmen hizmeti, çevirinin kaynağında bulunan küfür 'ı korur. Küfür derecesi ve sözcüklerin küfürlü, kültürler arasında farklı hale getiren bağlam ve sonuç olarak hedef dildeki küfür derecesi indirgenmiş veya azalmış olabilir.
 
-Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almayı önlemek istiyorsanız, küfür filtreleme seçeneğini kullanabilirsiniz. Bu seçenek, profanities uygun etiketlerle işaretlemek isteyip istemediğinizi seçmenizi sağlar (kendi işlem sonrası kendi işlemlerini ekleme seçeneğini sağlar) veya hiçbir işlem yapılıp yapılmayacağını seçebilirsiniz. İçin kabul edilen değerler `ProfanityAction` `Deleted` `Marked` ve`NoAction` (varsayılan).
+Kaynak metinde küfür varlığından bağımsız olarak çeviride küfür almayı önlemek istiyorsanız, küfür filtreleme seçeneğini kullanabilirsiniz. Bu seçenek, profanities uygun etiketlerle işaretlemek isteyip istemediğinizi seçmenizi sağlar (kendi işlem sonrası kendi işlemlerini ekleme seçeneğini sağlar) veya hiçbir işlem yapılıp yapılmayacağını seçebilirsiniz. @No__t-0 ' ın kabul edilen değerleri `Deleted`, `Marked` ve `NoAction` (varsayılan).
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Action</th>
+  <th>Eylem</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>Bu varsayılan davranıştır. Küfür kaynaktan hedefe geçirilecek.<br/><br/>
+    <td>Bu, varsayılan davranıştır. Küfür kaynaktan hedefe geçirilecek.<br/><br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
-    <strong>Örnek çeviri (Ingilizce)</strong>: Bu bir Jackass.
+    <strong>Örnek çeviri (İngilizce)</strong>: bir Jackass.
     </td>
   </tr>
   <tr>
     <td><code>Deleted</code></td>
     <td>Küfürlü sözcükler, değişiklik yapılmadan çıkışta kaldırılacak.<br/><br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
-    <strong>Örnek çeviri (Ingilizce)</strong>: Bir.
+    <strong>Örnek çeviri (İngilizce)</strong>: bir.
     </td>
   </tr>
   <tr>
     <td><code>Marked</code></td>
-    <td>Küfürlü sözcükleri çıktıda bir işaret ile değiştirilmiştir. İşaretleyici <code>ProfanityMarker</code> parametreye bağlıdır.<br/><br/>
-İçin <code>ProfanityMarker=Asterisk</code>, küfürlü kelimeleri ile <code>***</code>değiştirilmiştir:<br/>
+    <td>Küfürlü sözcükleri çıktıda bir işaret ile değiştirilmiştir. İşaretleyici <code>ProfanityMarker</code> parametresine bağlıdır.<br/><br/>
+@No__t-0 için küfürlü kelimeleri <code>***</code> ile değiştirilmiştir:<br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
-    <strong>Örnek çeviri (Ingilizce)</strong>: Bir \* .\* \*<br/><br/>
-İçin <code>ProfanityMarker=Tag</code>, küfürlü kelimeleri XML etiketleri &lt;küfür&gt; ve &lt;/küfür&gt;ile çevrelenmiş:<br/>
+    <strong>Örnek çeviri (İngilizce)</strong>: bir \* @ no__t-2 @ no__t-3.<br/><br/>
+@No__t-0 için küfürlü kelimeleri XML etiketleriyle çevrelenmiş &lt;küfür @ no__t-2 ve &lt;/küfür @ no__t-4:<br/>
     <strong>Örnek kaynak (Japonca)</strong>: 彼はジャッカスです.<br/>
-    <strong>Örnek çeviri (Ingilizce)</strong>: Bir &lt;küfür&gt;merkass&lt;/küfür&gt;.
+    <strong>Örnek çeviri (İngilizce)</strong>: bir &lt;küfür @ no__t-2jackass @ no__t-3/küfür @ no__t-4.
   </tr>
 </table> 
 
-Örneğin:
+Örnek:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
@@ -418,7 +418,7 @@ Bu son istek şunu döndürür:
 
 ### <a name="translate-content-with-markup-and-decide-whats-translated"></a>Biçimlendirme ile içerik çevirin ve ne çevrileceğine karar verin
 
-Bir HTML sayfası veya bir XML belgesinden içerik gibi biçimlendirme içeren içeriği çevirmek yaygındır. Etiketler ile içerik `textType=html` çevrilirken sorgu parametresini ekleyin. Ayrıca, bazı durumlarda belirli içeriği çeviri dışında tutmak yararlı olur. Özniteliğini `class=notranslate` , özgün dilinde kalması gereken içeriği belirtmek için kullanabilirsiniz. Aşağıdaki örnekte, ilk `div` öğesi içindeki içerik çevrilmeyecektir, ikinci `div` öğedeki içerik çevrilmeyecektir.
+Bir HTML sayfası veya bir XML belgesinden içerik gibi biçimlendirme içeren içeriği çevirmek yaygındır. Etiketler ile içerik çevrilirken `textType=html` sorgu parametresini ekleyin. Ayrıca, bazı durumlarda belirli içeriği çeviri dışında tutmak yararlı olur. Özgün dilinde kalması gereken içeriği belirtmek için `class=notranslate` özniteliğini kullanabilirsiniz. Aşağıdaki örnekte, birinci `div` öğesi içindeki içerik çevrilmeyecektir; ikinci `div` öğesindeki içerik çevrilir.
 
 ```
 <div class="notranslate">This will not be translated.</div>
@@ -445,7 +445,7 @@ Yanıt:
 
 ### <a name="obtain-alignment-information"></a>Hizalama bilgilerini al
 
-Hizalama bilgilerini almak için sorgu dizesinde `includeAlignment=true` öğesini belirtin.
+Hizalama bilgilerini almak için sorgu dizesinde `includeAlignment=true` belirtin.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
@@ -467,19 +467,21 @@ Yanıt:
 ]
 ```
 
-Hizalama bilgileri ile `0:2-0:1`başlar, yani kaynak metindeki ilk üç karakter (`The`), çevrilmiş metindeki ilk iki karakterle eşlenir (`La`).
+Hizalama bilgileri `0:2-0:1` ile başlar. Bu, kaynak metindeki (`The`) ilk üç karakterin, çevrilen metindeki ilk iki karakterle (`La`) eşlenme anlamına gelir.
 
+#### <a name="limitations"></a>Sınırlamalar
 Aşağıdaki kısıtlamalara göz önünde edin:
 
+* HTML biçimindeki metin için hizalama kullanılamaz, örneğin textType = HTML
 * Hizalama yalnızca dil çiftlerinin bir alt kümesi için döndürülür:
-  - herhangi bir dili İngilizce;
+  - Ingilizce 'den başka bir dilde;
   - Basitleştirilmiş Çince, geleneksel Çince ve Letonca Ingilizce dışındaki diğer dillerden Ingilizce;
   - Japonca 'dan Korece 'e veya Korece 'e kadar Japonca.
 * Tümce bir çeviri ise hizalama almazsınız. "Bu bir sınamadır", "Seni seviyorum" ve diğer yüksek frekanslı cümleler örneği.
 
 ### <a name="obtain-sentence-boundaries"></a>Tümce sınırlarını al
 
-Kaynak metninde ve çevrilmiş metinde cümle uzunluğu hakkında bilgi almak için sorgu dizesinde öğesini belirtin `includeSentenceLength=true` .
+Kaynak metninde ve çevrilmiş metinde cümle uzunluğu hakkında bilgi almak için sorgu dizesinde `includeSentenceLength=true` belirtin.
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"
@@ -529,4 +531,4 @@ Sonuç:
 ]
 ```
 
-Bu özellik ile `textType=text` veya ile `textType=html`aynı şekilde çalışmaktadır. Özelliğin gelişigüzel kullanılması gerekir. Çeviriyi özelleştirmenin uygun ve en iyi yolu özel çeviriciyi kullanmaktır. Özel çevirici, bağlam ve istatistiksel olasılıkların tam kullanımını sağlar. Çalışma veya tümceciğinin bağlam içinde gösterildiği eğitim verileri oluşturmak için veya uygun hale getirebiliyorsanız, daha iyi sonuçlar elde edersiniz. [Özel çevirici hakkında daha fazla bilgi edinin](../customization.md).
+Bu özellik `textType=text` ile veya `textType=html` ile aynı şekilde çalışmaktadır. Özelliğin gelişigüzel kullanılması gerekir. Çeviriyi özelleştirmenin uygun ve en iyi yolu özel çeviriciyi kullanmaktır. Özel çevirici, bağlam ve istatistiksel olasılıkların tam kullanımını sağlar. Çalışma veya tümceciğinin bağlam içinde gösterildiği eğitim verileri oluşturmak için veya uygun hale getirebiliyorsanız, daha iyi sonuçlar elde edersiniz. [Özel çevirici hakkında daha fazla bilgi edinin](../customization.md).

@@ -14,19 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 891eade6aaaf8db9813566d10cdceed113560dc7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 223a5a5b77ded9eb26a5cf3f0003bc9d393615db
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091871"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300864"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure'da OpenSUSE Linux çalıştıran bir sanal makineye MySQL yükleme
 
 [MySQL](https://www.mysql.com) popüler, açık KAYNAKLı bir SQL veritabanıdır. Bu öğreticide, OpenSUSE Linux çalıştıran bir sanal makinenin nasıl oluşturulacağı ve MySQL 'nin nasıl yükleneceği gösterilmektedir.
 
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
@@ -104,7 +102,7 @@ sudo reboot
 
 ## <a name="mysql-password"></a>MySQL parolası
 
-Yüklemeden sonra MySQL kök parolası varsayılan olarak boştur. MySQL 'i güvenli hale getirmek için **\_MySQL güvenli\_yükleme** betiğini çalıştırın. Betik, MySQL kök parolasını değiştirmenizi, anonim kullanıcı hesaplarını kaldırmanızı, uzak kök oturum açmayı devre dışı bırakmayı, test veritabanlarını kaldırmanızı ve ayrıcalıklar tablosunu yeniden yüklemenizi ister. 
+Yüklemeden sonra MySQL kök parolası varsayılan olarak boştur. MySQL 'i güvenli hale getirmek için **MySQL @ no__t-1secure @ no__t-2ınstallation** betiğini çalıştırın. Betik, MySQL kök parolasını değiştirmenizi, anonim kullanıcı hesaplarını kaldırmanızı, uzak kök oturum açmayı devre dışı bırakmayı, test veritabanlarını kaldırmanızı ve ayrıcalıklar tablosunu yeniden yüklemenizi ister. 
 
 Sunucu yeniden başlatıldıktan sonra, sanal makineye SSH tekrar.
 
@@ -136,10 +134,10 @@ CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 Noktalı virgül (;) satırın sonunda, komutu sonlandırmak için çok önemlidir.
 
 
-## <a name="create-a-database"></a>Veritabanı oluşturma
+## <a name="create-a-database"></a>Veritabanı oluşturun
 
 
-Bir veritabanı oluşturun ve `mysqluser` Kullanıcı izinlerini verin.
+Bir veritabanı oluşturun ve `mysqluser` Kullanıcı izinleri verin.
 
 ```sql
 CREATE DATABASE testdatabase;

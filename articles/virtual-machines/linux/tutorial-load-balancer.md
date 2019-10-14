@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b813a197266db37bde961e079f5d5d5e92353db1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d5bfe25499bc2c4e7dc4c07d9811fa0227d347d7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708526"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300826"
 ---
-# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Öğretici: Azure CLI ile yüksek oranda kullanılabilir bir uygulama oluşturmak için azure'da Linux sanal makineleri Yük Dengelemesi
+# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Öğretici: Azure CLI ile yüksek oranda kullanılabilir bir uygulama oluşturmak için Azure’da Linux sanal makinelerinde yük dengeleme
 
 Yük dengeleme, gelen istekleri birden çok sanal makineye dağıtarak yüksek düzeyde kullanılabilirlik sunar. Bu öğreticide, Azure yük dengeleyicisinin trafiği dağıtan ve yüksek kullanılabilirlik sağlayan farklı bileşenleri hakkında bilgi edinebilirsiniz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
@@ -36,11 +36,11 @@ Yük dengeleme, gelen istekleri birden çok sanal makineye dağıtarak yüksek d
 > * Çalışan yük dengeleyiciyi görüntüleme
 > * VM’leri yük dengeleyiciye ekleme ve kaldırma
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="azure-load-balancer-overview"></a>Azure yük dengeleyiciye genel bakış
+## <a name="azure-load-balancer-overview"></a>Azure yük dengeleyiciye genel bakışı
 Azure yük dengeleyici, gelen trafiği iyi durumdaki VM'ler arasında dağıtmak için yüksek kullanılabilirlik sağlayan bir 4. Katman (TCP, UDP) yük dengeleyicidir. Yük dengeleyici durum araştırması, her VM'deki belirli bir bağlantı noktasını izler ve trafiği yalnızca çalışır durumdaki VM'lere yönlendirir.
 
 Bir veya daha fazla genel IP adresi içeren bir ön uç IP yapılandırması tanımlayın. Bu ön uç IP yapılandırması yük dengeleyicinize ve uygulamalarınıza İnternet üzerinden erişilmesine izin verir. 
@@ -116,7 +116,7 @@ az network lb rule create \
 
 
 ## <a name="configure-virtual-network"></a>Sanal ağ yapılandırma
-VM’leri dağıtmadan ve dengeleyicinizi sınamadan önce yardımcı sanal ağ kaynaklarını oluşturun. Sanal ağlar hakkında daha fazla bilgi edinmek için [Azure Sanal Ağlarını Yönetme](tutorial-virtual-network.md) öğreticisine gözatın.
+VM’leri dağıtmadan ve dengeleyicinizi sınamadan önce yardımcı sanal ağ kaynaklarını oluşturun. Sanal ağlar hakkında daha fazla bilgi edinmek için [Azure Sanal Ağlarını Yönetme](tutorial-virtual-network.md) öğreticisine göz atın.
 
 ### <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 [az network vnet create](/cli/azure/network/vnet) komutu ile bir sanal ağ oluşturun. Aşağıdaki örnek *mySubnet* alt ağına sahip *myVnet* adında bir sanal ağ oluşturur:
@@ -243,7 +243,7 @@ for i in `seq 1 3`; do
 done
 ```
 
-Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. `--no-wait` parametresi tüm görevlerin tamamlanmasını beklemez. Uygulamaya erişmeniz birkaç dakika sürebilir. Yük dengeleyici durum araştırması, uygulamanın her bir VM üzerinde ne zaman çalıştığını otomatik olarak algılar. Uygulama çalıştıktan sonra yük dengeleyici kuralı trafiği dağıtmaya başlar.
+Azure CLI sizi isteme geri döndürdükten sonra çalışmaya devam eden arka plan görevleri vardır. `--no-wait` parametresi tüm görevlerin tamamlanmasını beklemez. Uygulamaya erişmeniz birkaç dakika daha sürebilir. Yük dengeleyici durum araştırması, uygulamanın her bir VM üzerinde ne zaman çalıştığını otomatik olarak algılar. Uygulama çalıştıktan sonra yük dengeleyici kuralı trafiği dağıtmaya başlar.
 
 
 ## <a name="test-load-balancer"></a>Yük dengeleyiciyi sınama
@@ -261,7 +261,7 @@ Daha sonra genel IP adresini bir web tarayıcısına girebilirsiniz. Yük dengel
 
 ![Node.js uygulaması çalıştırma](./media/tutorial-load-balancer/running-nodejs-app.png)
 
-Yük dengeleyicinin trafiği, uygulamanızı çalıştıran üç VM’ye dağıtmasını görmek için web tarayıcınızı yenilemeye zorlayabilirsiniz.
+Yük dengeleyicinin trafiği, uygulamanızı çalıştıran üç VM’ye dağıtma işlemini görmek için web tarayıcınızı yenilemeye zorlayabilirsiniz.
 
 
 ## <a name="add-and-remove-vms"></a>VM’leri ekleme ve kaldırma
@@ -315,7 +315,7 @@ Sanal NIC’nin arka uç adres havuzuna bağlı olduğundan emin olmak için ön
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, bir yük dengeleyici oluşturdunuz ve ona sanal makineler eklediniz. Şunları öğrendiniz:
+Bu öğreticide, bir yük dengeleyici oluşturdunuz ve buna sanal makineler eklediniz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > * Azure yük dengeleyici oluşturma

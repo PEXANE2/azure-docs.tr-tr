@@ -6,15 +6,15 @@ keywords: kodlama; kodlayıcılar; medya
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 08/08/2019
+ms.date: 10/10/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b9cb325f2bb7419e32efd5bde4705786c5dbeb5
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934939"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300936"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Önerilen canlı akış kodlayıcıları
 
@@ -25,18 +25,19 @@ Azure Media Services, canlı bir [olay](https://docs.microsoft.com/rest/api/medi
   > [!NOTE]
   > Doğrudan geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
  
-* Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilmiş canlı olaya tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Canlı etkinlik daha sonra, gelen tek bit hızlı akışın çoklu bit hızında (Uyarlamalı) bir video akışına canlı kodlamasını gerçekleştirir.
+* Şirket içi bir Live Encoder, aşağıdaki biçimlerden birinde Media Services ile gerçek zamanlı kodlama gerçekleştirmek için etkinleştirilen canlı olaya tek bit hızlı bir akış gönderir: RTMP veya Kesintisiz Akış (parçalanmış MP4). Canlı etkinlik daha sonra, gelen tek bit hızlı akışın çoklu bit hızında (Uyarlamalı) bir video akışına canlı kodlamasını gerçekleştirir.
 
 Media Services ile canlı kodlama hakkında ayrıntılı bilgi için bkz. [Media Services v3 Ile canlı akış](live-streaming-overview.md).
 
 ## <a name="live-encoders-that-output-rtmp"></a>RTMP çıkış yapan canlı kodlayıcılar
 
-Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlayıcılardan birinin kullanılmasını önerir. Desteklenen URL şemaları `rtmp://` veya `rtmps://`.
+Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlayıcılardan birinin kullanılmasını önerir. Desteklenen URL şemaları `rtmp://` veya `rtmps://` ' dir.
 
 > [!NOTE]
 > RTMP üzerinden akış yaparken güvenlik duvarı ve/veya ara sunucu ayarlarını kontrol ederek 1935 ve 1936 numaralı giden TCP bağlantı noktalarının açık olduğundan emin olun.
 
 - Adobe Flash Media Live Encoder 3.2
+- [Cambrıa canlı 4,3](https://www.capellasystems.net/products/cambria-live/)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
@@ -51,7 +52,7 @@ Media Services, aşağıdaki RTMP çıkışı sağlayan gerçek zamanlı kodlay�
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Parçalanan MP4 veren canlı kodlayıcılar
 
-Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçalanmış MP4) sahip aşağıdaki canlı kodlayıcılardan birini kullanmanızı önerir. Desteklenen URL şemaları `http://` veya `https://`.
+Media Services, çıkış olarak çoklu bit hızına Kesintisiz Akış (parçalanmış MP4) sahip aşağıdaki canlı kodlayıcılardan birini kullanmanızı önerir. Desteklenen URL şemaları `http://` veya `https://` ' dir.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
@@ -73,9 +74,9 @@ Canlı olay türleriniz için geçerli olan ayarlar hakkında daha fazla bilgi i
 
 ### <a name="configuration-tips"></a>Yapılandırma ipuçları
 
-- Mümkün olduğunda, bir sabit internet bağlantısı kullanın.
+- Mümkün olduğunda, bir hardkablolu internet bağlantısı kullanın.
 - Bant genişliği gereksinimlerini belirlerken, akış bit hızları ' nı çift belirleyin. Zorunlu olmasa da bu basit kural, ağ tıkanıklığı etkisini azaltmaya yardımcı olur.
-- Yazılım tabanlı kodlayıcılar kullanırken, gereksiz tüm programları kapatın.
+- Yazılım tabanlı kodlayıcılar kullanırken gereksiz programları kapatın.
 - Kodlayıcı yapılandırmasını başlattıktan sonra dönüştürme işlemi, olayda olumsuz etkilere sahiptir. Yapılandırma değişiklikleri olayın kararsız hale gelmesine neden olabilir. 
 - Olaylarınızı ayarlamak için kendinize bir zaman kazandırdığınızdan emin olun. Yüksek ölçekli olaylar için, kurulum 'un etkinlikten bir saat öncesine başlamasını öneririz.
 
@@ -127,7 +128,7 @@ Adım 11 hariç [geçiş canlı olay doğrulaması ile](#pass-through-live-event
 
 ### <a name="email-your-recorded-settings"></a>Kayıtlı ayarlarınıza e-posta gönderin
 
-Son olarak, kayıtlı ayarlarınızı ve Canlı Arşiv parametrelerinizi, tüm otomatik amshelp@microsoft.com doğrulama denetimlerinin başarılı olduğunu belirten bir bildirim olarak Azure Media Services için e-posta ile gönderin. Ayrıca, herhangi bir izleme için iletişim bilgilerinizi ekleyin. Azure Media Services ekibine bu işlemle ilgili tüm soruları ile başvurabilirsiniz.
+Son olarak, kayıtlı ayarlarınızı ve Canlı Arşiv parametrelerinizi, tüm otomatik doğrulama denetimlerinin başarılı olduğunu belirten bir bildirim olarak amshelp@microsoft.com ' dan Azure Media Services. Ayrıca, herhangi bir izleme için iletişim bilgilerinizi ekleyin. Azure Media Services ekibine bu işlemle ilgili tüm soruları ile başvurabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

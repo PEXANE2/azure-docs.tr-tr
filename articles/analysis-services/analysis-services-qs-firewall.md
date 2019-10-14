@@ -2,26 +2,25 @@
 title: Hızlı başlangıç - Azure'da Analysis Services sunucusu için güvenlik duvarını yapılandırma | Microsoft Docs
 description: Azure'da Analysis Services sunucu örneği için güvenlik duvarı yapılandırmayı öğrenin.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 52ccaa17b9994751bb9dfd54848e20aef90146c3
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c3c8de80f90fe203029b38171502e3d4a9b9dd46
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905892"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298522"
 ---
-# <a name="quickstart-configure-server-firewall---portal"></a>Hızlı Başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal
+# <a name="quickstart-configure-server-firewall---portal"></a>Hızlı başlangıç: Sunucu güvenlik duvarını yapılandırma - Portal
 
 Bu hızlı başlangıç Azure Analysis Services sunucunuz için güvenlik duvarını yapılandırmanıza yardımcı olur. Güvenlik duvarını etkinleştirmek ve yalnızca sunucunuza erişen bilgisayarlar için IP adresi aralıkları yapılandırmak, sunucunuzu ve verilerinizi güvenlik altına almanın önemli bir parçasıdır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Aboneliğinizde bir Analysis Services sunucusu. Daha fazla bilgi için bkz [. hızlı başlangıç: Sunucu Oluşturma-Portal](analysis-services-create-server.md) veya [hızlı başlangıç: Sunucu oluşturma-PowerShell](analysis-services-create-powershell.md)
+- Aboneliğinizde bir Analysis Services sunucusu. Daha fazla bilgi edinmek için bkz. [Hızlı başlangıç: Sunucu oluşturma - Portal](analysis-services-create-server.md) veya [Hızlı başlangıç: Sunucu oluşturma - PowerShell](analysis-services-create-powershell.md)
 - İstemci bilgisayarlar için bir veya birden çok IP adresi aralığı (gerekiyorsa).
 - Power BI Premium 'den Içeri aktarma senaryosunun Şu anda desteklenmediğini lütfen unutmayın.
 
@@ -35,9 +34,9 @@ Bu hızlı başlangıç Azure Analysis Services sunucunuz için güvenlik duvar�
 2. **AYARLAR** > **Güvenlik Duvarı** > **Güvenlik duvarını etkinleştir** altında **Açık** seçeneğine tıklayın.
 3. Power BI hizmetinden DirectQuery erişimine izin vermek için, **Power BI'dan erişime izin ver** alanında **Açık** seçeneğine tıklayın.  
 4. (İsteğe bağlı) Bir veya birden çok IP adresi aralığı belirtin. Her aralık için bir ad, başlangıç ve bitiş IP adresi girin. Güvenlik duvarı kuralı adı 128 karakterle sınırlı olmalıdır ve yalnızca büyük harf, küçük harf karakter, rakam, alt çizgi ve kısa çizgi karakterlerini içerebilir. Boşluk ve diğer özel karakterlere izin verilmez.
-5. **Kaydet**’e tıklayın.
+5. **Kaydet** düğmesine tıklayın.
 
-     ![Güvenlik Duvarı ayarları](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
+     ![Güvenlik duvarı ayarları](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 1c1fe208c77142351a786fa636896e64a8a467d7
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: f48fe94504d8012affb77c4fd5d39df2537d72b3
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129659"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300132"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Azure seri konsolu 'Nu etkinleştirme ve devre dışı bırakma
 
@@ -27,11 +27,11 @@ Tıpkı diğer tüm kaynaklar gibi Azure seri konsolu etkinleştirilebilir ve de
 
 Ayrıca, önyükleme tanılamayı devre dışı bırakarak tek bir VM veya sanal makine ölçek kümesi örneği için seri konsolunu devre dışı bırakabilirsiniz. Hem VM/sanal makine ölçek kümesi hem de önyükleme tanılama depolama hesabınızda katkıda bulunan düzeyinde erişime veya üstüne ihtiyacınız olacak.
 
-## <a name="vm-level-disable"></a>VM düzeyinde devre dışı bırak
-Seri konsol, önyükleme tanılaması ayarı devre dışı bırakılarak belirli bir VM veya sanal makine ölçek kümesi için devre dışı bırakılabilir. VM 'nin veya sanal makine ölçek kümesinin seri konsolunu devre dışı bırakmak için Azure portal önyükleme tanılamayı devre dışı bırakın. Bir sanal makine ölçek kümesinde seri konsol kullanıyorsanız, sanal makine ölçek kümesi örneklerinizi en son modele yükseltdiğinizden emin olun.
+## <a name="vm-level-disable"></a>VM düzeyi devre dışı
+Seri konsol, önyükleme tanılaması ayarı devre dışı bırakılarak belirli bir VM veya sanal makine ölçek kümesi için devre dışı bırakılabilir. VM 'nin veya sanal makine ölçek kümesinin seri konsolunu devre dışı bırakmak için Azure portalından önyükleme tanılamayı devre dışı bırakın. Bir sanal makine ölçek kümesinde seri konsol kullanıyorsanız, sanal makine ölçek kümesi örneklerinizi en son modele yükseltdiğinizden emin olun.
 
 
-## <a name="subscription-level-disable"></a>Abonelik düzeyinde devre dışı bırak
+## <a name="subscription-level-disable"></a>Abonelik düzeyi devre dışı
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -39,23 +39,23 @@ Seri konsol, Azure CLı 'de aşağıdaki komutlar kullanılarak aboneliğin tama
 
 Bir abonelik için seri konsolunu devre dışı bırakmak için aşağıdaki komutları kullanın:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 Abonelik için seri konsolunu etkinleştirmek üzere aşağıdaki komutları kullanın:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default"
+az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
 Bir abonelik için seri konsolunun geçerli etkin/devre dışı durumunu almak için aşağıdaki komutları kullanın:
 ```azurecli-interactive
-subscriptionId=$(az account show -o=json | jq -r .id)
+subscriptionId=$(az account show --output=json | jq -r .id)
 
-az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" -o=json | jq .properties
+az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --output=json --api-version="2018-05-01" | jq .properties
 ```
 
 ### <a name="powershell"></a>PowerShell

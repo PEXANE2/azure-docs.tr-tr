@@ -1,5 +1,5 @@
 ---
-title: PowerShell kullanarak Azure Cloud Services bir rol için Uzak Masaüstü Bağlantısı etkinleştirme
+title: PowerShell kullanarak bir rol için Uzak Masaüstü 'Nü etkinleştirme (Azure Cloud Services)
 description: Uzak Masaüstü bağlantılarına izin vermek için PowerShell 'i kullanarak Azure Cloud Service uygulamanızı yapılandırma
 services: cloud-services
 documentationcenter: ''
@@ -8,17 +8,17 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: gwallace
-ms.openlocfilehash: b466cb866889edcdc2bd02373a5567a7b53ae18d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: cd36188cba91ad8a97e3f97896cf215a5f0220c2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358995"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298415"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-powershell"></a>PowerShell kullanarak Azure Cloud Services bir rol için Uzak Masaüstü Bağlantısı etkinleştirme
 
 > [!div class="op_single_selector"]
-> * [Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure portalda](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 

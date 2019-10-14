@@ -2,18 +2,17 @@
 title: Kaynak ve nesne sınırlarını Azure Analysis Services | Microsoft Docs
 description: Kaynak ve nesne sınırlarını Azure Analysis Services açıklar.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 40a5b68a12724f2574af19bb10c276c54c5afba0
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 9fe43602c66af72357e16822ee9d4b5a741d3f86
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997598"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298695"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Kaynak ve nesne sınırlarını Analysis Services
 
@@ -27,11 +26,11 @@ Geliştirici, temel ve standart katmanlara yönelik QPU ve bellek sınırları i
 
 Bu sınırlar teorik olarak ayarlanır. Performans, daha düşük sayılarda azalmalıdır.
 
-|Object|En büyük boyut/sayı|  
+|Nesne|En büyük boyut/sayı|  
 |------------|----------------------------|  
-|Bir örnekteki veritabanları|16,000|  
-|Bir veritabanında birleştirilmiş tablo ve sütun sayısı|16,000|  
-|Tablodaki satırlar|Sınırsız<br /><br /> **Warning** Tablodaki tek bir sütunun 1.999.999.997 ' den fazla farklı değere sahip olmadığı kısıtlamadır.|  
+|Bir örnekteki veritabanları|16.000|  
+|Bir veritabanında birleştirilmiş tablo ve sütun sayısı|16.000|  
+|Tablodaki satırlar|İş çalışma zamanında<br /><br /> **Uyarı:** Tablodaki tek bir sütunun 1.999.999.997 ' den fazla farklı değere sahip olmadığı kısıtlamadır.|  
 |Bir tablodaki hiyerarşiler|15.999|  
 |Hiyerarşideki düzeyler|15.999|  
 |İlişkiler|8,000|  

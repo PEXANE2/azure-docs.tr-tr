@@ -1,5 +1,5 @@
 ---
-title: Kuyruk depolama ve Visual Studio bağlı hizmetler 'i kullanmaya başlama (bulut Hizmetleri) | Microsoft Docs
+title: Visual Studio kullanarak kuyruk depolamayı kullanmaya başlama (bulut Hizmetleri)
 description: Visual Studio bağlı hizmetler 'i kullanarak bir depolama hesabına bağlandıktan sonra Visual Studio 'da bir bulut hizmeti projesinde Azure kuyruk depolamayı kullanmaya başlama
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 5ea0af23ef8cf41b20de033d38e4d8652f9f8310
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 603bb2b9a862ad4ed2cbde63e2d82b9a82fbeaa1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510683"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298782"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure kuyruk depolama ve Visual Studio bağlı hizmetlerini kullanmaya başlama (bulut hizmetleri projeleri)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -57,7 +58,7 @@ Visual Studio Cloud Services projelerindeki kuyruklara erişmek için, Azure kuy
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**NOT:** Aşağıdaki örneklerde kodun önünde yukarıdaki kodu kullanın.
+**Note:** Aşağıdaki örneklerde kodun önünde yukarıdaki kodu kullanın.
 
 ## <a name="create-a-queue-in-code"></a>Kodda kuyruk oluşturma
 Kuyruğu kodda oluşturmak için, **Createifnotexists**öğesine bir çağrı eklemeniz yeterlidir.

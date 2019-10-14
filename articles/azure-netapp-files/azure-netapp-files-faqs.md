@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: ec0fa0ba7c7cad698cda0f7b440415c3dbb0236a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299628"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298477"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -50,7 +50,7 @@ Evet, gerekli DNS girdilerini oluşturursanız, bunu yapabilirsiniz. Azure NetAp
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Azure VM ve depolama arasındaki ağ trafiği şifrelenir mi?
 
-Veri trafiği (NFSv3 veya SMBv3 istemcisinden Azure NetApp Files birimlerine giden trafik) şifrelenmez. Bununla birlikte, bir Azure VM 'den (NFS veya SMB istemcisi çalıştıran) Azure NetApp Files, diğer tüm Azure-VM-VM trafiği kadar güvenlidir. Bu trafik Azure veri merkezi ağı için yereldir. 
+Veri trafiği (NFSv3, NFSv 4.1 veya SMBv3 istemcisinden Azure NetApp Files birimlerine trafik) şifrelenmez. Bununla birlikte, bir Azure VM 'den (NFS veya SMB istemcisi çalıştıran) Azure NetApp Files, diğer tüm Azure-VM-VM trafiği kadar güvenlidir. Bu trafik Azure veri merkezi ağı için yereldir. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Depolama alanı bekleyen olarak şifrelenebilir mi?
 
@@ -103,7 +103,7 @@ Azure NetApp Files, birim performans ölçümleri sağlar. Azure Izleyici 'yi, A
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Bir Azure VM başlatıldığında veya yeniden başlatıldığında bir birimin otomatik olarak bağlanmasını istiyorum.  Nasıl yaparım? kalıcı NFS birimleri için ana bilgisayarımı yapılandırın mi?
 
-VM başlatma veya yeniden başlatma sırasında bir NFS biriminin otomatik olarak bağlanması için konaktaki `/etc/fstab` dosyaya bir giriş ekleyin. 
+Bir NFS biriminin VM başlatma veya yeniden başlatma sırasında otomatik olarak bağlanması için konaktaki `/etc/fstab` dosyasına bir giriş ekleyin. 
 
 Örneğin, `$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
 
@@ -120,7 +120,11 @@ DF olarak bildirilen birim boyutu, Azure NetApp Files biriminin büyüyebileceğ
 
 ### <a name="what-nfs-version-does-azure-netapp-files-support"></a>Azure NetApp Files NFS sürümü ne destekler?
 
-Azure NetApp Files Şu anda NFSv3 desteklemektedir.
+Azure NetApp Files, NFSv3 ve NFSv 4.1 destekler. NFS sürümünü kullanarak bir birim oluşturabilirsiniz. 
+
+> [!IMPORTANT] 
+> NFSv 4.1 özelliğine erişim için beyaz liste gerekir.  Beyaz liste istemek için <anffeedback@microsoft.com> ' a bir istek gönderebilirsiniz. 
+
 
 ### <a name="how-do-i-enable-root-squashing"></a>Nasıl yaparım? kök ele geçirme etkinleştirilsin mi?
 
@@ -140,7 +144,7 @@ Azure NetApp Files Şu anda abonelik başına bir Active Directory bağlantısı
 
 [Azure Active Directory (ad) etki alanı Hizmetleri](https://docs.microsoft.com/azure/active-directory-domain-services/overview) ve [Active Directory Domain Services (AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) desteklenir. Mevcut Active Directory etki alanı denetleyicilerini Azure NetApp Files ile birlikte kullanabilirsiniz. Etki alanı denetleyicileri, Azure 'da sanal makineler veya ExpressRoute ya da S2S VPN aracılığıyla şirket içi olarak bulunabilir. Azure NetApp Files Şu anda [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) için ad katılmayı desteklemez.
 
-Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, kuruluş birimi yolu, NetApp hesabınız için `OU=AADDC Computers` Active Directory yapılandırdığınızda olur.
+Azure Active Directory Domain Services ile Azure NetApp Files kullanıyorsanız, NetApp hesabınız için Active Directory yapılandırdığınızda kuruluş birimi yolu `OU=AADDC Computers` ' dır.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Windows Server Active Directory sürümleri destekleniyor mu?
 

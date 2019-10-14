@@ -1,5 +1,5 @@
 ---
-title: Azure Tablo depolama ve Visual Studio bağlı hizmetler 'i kullanmaya başlama (ASP.NET) | Microsoft Docs
+title: Visual Studio kullanarak Azure Tablo depolama ile çalışmaya başlama (ASP.NET)
 description: Visual Studio bağlı hizmetler 'i kullanarak bir depolama hesabına bağlandıktan sonra Visual Studio 'da bir ASP.NET projesinde Azure Tablo Depolamayı kullanmaya başlama
 services: storage
 author: ghogen
@@ -12,19 +12,20 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 6f0858d3c2e3f79dda58710031c105e83418058e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ec391db0e18128ad85d3bacb79fa51770aa70ea1
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69511173"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298886"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Azure Tablo depolama ve Visual Studio bağlı hizmetlerini kullanmaya başlama (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Tablo depolaması, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Kimliği doğrulanmış çağrılarından içindeki ve Azure Bulutu dışındaki kabul eden bir NoSQL veri deposu hizmetidir. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.
+Azure Tablo depolaması, büyük miktarlarda yapılandırılmış verileri depolamanıza olanak sağlar. Hizmet, Azure bulutu içinden ve dışından kimliği doğrulanmış çağrıları kabul eden bir NoSQL veri deposu olur. Azure tabloları, yapılandırılmış ve ilişkisel olmayan verilerin depolanması için idealdir.
 
 Bu öğreticide, Azure Tablo depolama varlıklarını kullanarak bazı yaygın senaryolar için ASP.NET kodu yazma gösterilmektedir. Bu senaryolar tablo oluşturma ve tablo varlıklarını ekleme, sorgulama ve silme içerir. 
 
@@ -70,7 +71,7 @@ Bu makaledeki örneklerin birçoğu, **customerentity**adlı **tableentity**ile 
 
 1. **Yeni öğe Ekle** iletişim kutusunda, **customerentity**sınıfını adlandırın.
 
-1. Dosyasını açın ve aşağıdaki using yönergesini ekleyin: `CustomerEntity.cs`
+1. @No__t-0 dosyasını açın ve aşağıdaki **using** yönergesini ekleyin:
 
     ```csharp
     using Microsoft.WindowsAzure.Storage.Table;
@@ -114,7 +115,7 @@ Aşağıdaki adımlarda bir tablonun nasıl oluşturulacağı gösterilmektedir:
     }
     ```
 
-1. **CreateTable** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **CreateTable** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -149,7 +150,7 @@ Aşağıdaki adımlarda bir tablonun nasıl oluşturulacağı gösterilmektedir:
 
 1. **Görünüm Ekle** iletişim kutusunda, görünüm adı Için **CreateTable** girin ve **Ekle**' yi seçin.
 
-1. Öğesini `CreateTable.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @{
@@ -161,7 +162,7 @@ Aşağıdaki adımlarda bir tablonun nasıl oluşturulacağı gösterilmektedir:
     Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -171,14 +172,14 @@ Aşağıdaki adımlarda bir tablonun nasıl oluşturulacağı gösterilmektedir:
 
 1. Uygulamayı çalıştırın ve aşağıdaki ekran görüntüsüne benzer sonuçları görmek için **tablo oluştur** ' u seçin:
   
-    ![Tablo oluştur](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
+    ![Tablo oluşturma](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
     Daha önce belirtildiği gibi **Cloudtable. CreateIfNotExists** yöntemi yalnızca tablo mevcut olmadığında ve oluşturulduğunda **true** değerini döndürür. Bu nedenle, uygulamayı tablo varken çalıştırırsanız, yöntem **false**döndürür. Uygulamayı birden çok kez çalıştırmak için, uygulamayı yeniden çalıştırmadan önce tabloyu silmeniz gerekir. Tablo silindiğinde **Cloudtable. Delete** yöntemi aracılığıyla yapılabilir. Tabloyu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) veya [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md)kullanarak da silebilirsiniz.  
 
 ## <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
 
-*Varlıklar* ,\# **tableentity**'dan türetilmiş özel bir sınıf kullanarak C nesnelerine eşlenir. Tabloya bir varlık eklemek için varlığınızın özelliklerini tanımlayan bir sınıf oluşturun. Bu bölümde, satır anahtarı olarak müşterinin adını ve bölüm anahtarı olarak soyadı ' nı kullanan bir varlık sınıfının nasıl tanımlanacağını göreceksiniz. Birlikte, bir varlığın bölüm ve sıra anahtarı varlığı tabloda benzersiz şekilde tanımlar. Aynı bölüm anahtarına sahip varlıklar farklı bölüm anahtarlı varlıklara göre daha hızlı sorgulanabilir ancak farklı bölüm anahtarlarının kullanılması paralel işlemler için daha büyük ölçeklendirme sağlar. Tablo hizmetinde depolanması gereken tüm özellikler için, özelliği, hem ayar hem de alma değerlerini kullanıma sunan desteklenen bir türün ortak özelliği olmalıdır.
-Varlık sınıfı ortak parametre-daha az bir Oluşturucu bildirmelidir.
+*Varlıklar* , **tableentity**'dan türetilmiş özel bir sınıf kullanarak C @ no__t-1 nesnelerine eşlenir. Tabloya bir varlık eklemek için varlığınızın özelliklerini tanımlayan bir sınıf oluşturun. Bu bölümde, satır anahtarı olarak müşterinin adını ve bölüm anahtarı olarak soyadı ' nı kullanan bir varlık sınıfının nasıl tanımlanacağını göreceksiniz. Birlikte, bir varlığın bölüm ve sıra anahtarı varlığı tabloda benzersiz şekilde tanımlar. Aynı bölüm anahtarına sahip varlıklar farklı bölüm anahtarlı varlıklara göre daha hızlı sorgulanabilir ancak farklı bölüm anahtarlarının kullanılması paralel işlemler için daha büyük ölçeklendirme sağlar. Tablo hizmetinde depolanması gereken tüm özellikler için, özelliği, hem ayar hem de alma değerlerini kullanıma sunan desteklenen bir türün ortak özelliği olmalıdır.
+Varlık *sınıfı ortak* parametre-daha az bir Oluşturucu bildirmelidir.
 
 > [!NOTE]
 > 
@@ -186,7 +187,7 @@ Varlık sınıfı ortak parametre-daha az bir Oluşturucu bildirmelidir.
 
 1. `TablesController.cs` dosyasını açın.
 
-1. `TablesController.cs` Dosyadaki kodun **customerentity** sınıfına erişebilmesi için aşağıdaki yönergeyi ekleyin:
+1. @No__t-0 dosyasındaki kodun **Customerentity** sınıfına erişebilmesi için aşağıdaki yönergeyi ekleyin:
 
     ```csharp
     using StorageAspnet.Models;
@@ -203,7 +204,7 @@ Varlık sınıfı ortak parametre-daha az bir Oluşturucu bildirmelidir.
     }
     ```
 
-1. **AddEntity** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **AddEntity** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -252,7 +253,7 @@ Varlık sınıfı ortak parametre-daha az bir Oluşturucu bildirmelidir.
 
 1. **Görünüm Ekle** iletişim kutusunda Görünüm adı Için **AddEntity** girin ve **Ekle**' yi seçin.
 
-1. Öğesini `AddEntity.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @{
@@ -263,7 +264,7 @@ Varlık sınıfı ortak parametre-daha az bir Oluşturucu bildirmelidir.
 
     Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
     ```
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -279,7 +280,7 @@ Varlık sınıfı ortak parametre-daha az bir Oluşturucu bildirmelidir.
 
 ## <a name="add-a-batch-of-entities-to-a-table"></a>Tabloya bir varlık toplu işi ekleme
 
-[Bir tabloya tek seferde bir varlık](#add-an-entity-to-a-table)ekleyebilmenin yanı sıra, toplu işteki varlıklar da ekleyebilirsiniz. Toplu iş içinde varlık eklemek, kodunuz ve Azure Tablo hizmeti arasındaki gidiş dönüşlerin sayısını azaltır. Aşağıdaki adımlarda, tek bir ekleme işlemi ile bir tabloya birden çok varlık ekleme gösterilmektedir:
+[Bir tabloya tek seferde bir varlık ekleyebilmenin](#add-an-entity-to-a-table)yanı sıra, toplu işteki varlıklar da ekleyebilirsiniz. Toplu iş içinde varlık eklemek, kodunuz ve Azure Tablo hizmeti arasındaki gidiş dönüşlerin sayısını azaltır. Aşağıdaki adımlarda, tek bir ekleme işlemi ile bir tabloya birden çok varlık ekleme gösterilmektedir:
 
 > [!NOTE]
 > 
@@ -298,7 +299,7 @@ Varlık sınıfı ortak parametre-daha az bir Oluşturucu bildirmelidir.
     }
     ```
 
-1. **Addentities** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **Addentities** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -356,7 +357,7 @@ Varlık sınıfı ortak parametre-daha az bir Oluşturucu bildirmelidir.
 
 1. **Görünüm Ekle** iletişim kutusunda Görünüm adı Için **addentities** yazın ve **Ekle**' yi seçin.
 
-1. Öğesini `AddEntities.cshtml`açın ve aşağıdaki gibi görünmesi için değiştirin.
+1. @No__t-0 ' ı açın ve aşağıdaki gibi görünmesi için değiştirin.
 
     ```csharp
     @model IEnumerable<Microsoft.WindowsAzure.Storage.Table.TableResult>
@@ -383,7 +384,7 @@ Varlık sınıfı ortak parametre-daha az bir Oluşturucu bildirmelidir.
     </table>
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -418,7 +419,7 @@ Bu bölüm, varlığın satır anahtarını ve bölüm anahtarını kullanarak b
     }
     ```
 
-1. **GetSingle** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **GetSingle** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -437,7 +438,7 @@ Bu bölüm, varlığın satır anahtarını ve bölüm anahtarını kullanarak b
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. **Tableentity**'dan türetilmiş bir varlık nesnesi alan bir alma işlemi nesnesi oluşturun. İlk parametre *Partitionkey*, ikinci parametresi Ise *rowkey*olur. [Bir tabloya bir varlık toplu Işi ekleme](#add-a-batch-of-entities-to-a-table)bölümünde sunulan **customerentity** sınıfını ve verilerini kullanarak, aşağıdaki kod parçacığı, "Smith" ve bir, *partitionkey* değeri "Smith" ve a"Ben" öğesinin rowKey değeri:
+1. **Tableentity**'dan türetilmiş bir varlık nesnesi alan bir alma işlemi nesnesi oluşturun. İlk parametre *Partitionkey*, ikinci parametresi Ise *rowkey*olur. [Bir tabloya bir varlık toplu Işi ekleme](#add-a-batch-of-entities-to-a-table)bölümünde sunulan **customerentity** sınıfını ve verilerini kullanarak, aşağıdaki kod parçacığı, "Smith" ve bir, *partitionkey* değeri "Smith" **ve a**"Ben" öğesinin rowKey değeri:
 
     ```csharp
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
@@ -459,7 +460,7 @@ Bu bölüm, varlığın satır anahtarını ve bölüm anahtarını kullanarak b
 
 1. **Görünüm Ekle** iletişim kutusunda, görünüm adı Için **GetSingle** girin ve **Ekle**' yi seçin.
 
-1. Öğesini `GetSingle.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -485,7 +486,7 @@ Bu bölüm, varlığın satır anahtarını ve bölüm anahtarını kullanarak b
     </table>
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -518,7 +519,7 @@ Bölümünde belirtildiği gibi, tabloya bir [varlık ekleyin](#add-an-entity-to
     }
     ```
 
-1. **Getpartition** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **Getpartition** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -568,7 +569,7 @@ Bölümünde belirtildiği gibi, tabloya bir [varlık ekleyin](#add-an-entity-to
 
 1. **Görünüm Ekle** iletişim kutusunda Görünüm adı Için **getpartition** yazın ve **Ekle**' yi seçin.
 
-1. Öğesini `GetPartition.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @model IEnumerable<StorageAspnet.Models.CustomerEntity>
@@ -595,7 +596,7 @@ Bölümünde belirtildiği gibi, tabloya bir [varlık ekleyin](#add-an-entity-to
     </table>
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -628,7 +629,7 @@ Bu bölümde bir varlığın bir tablodan nasıl silineceği gösterilmektedir.
     }
     ```
 
-1. **Deleteentity** yönteminde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **Deleteentity** yönteminde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -670,7 +671,7 @@ Bu bölümde bir varlığın bir tablodan nasıl silineceği gösterilmektedir.
 
 1. **Görünüm Ekle** iletişim kutusunda, görünüm adı Için **deleteentity** yazın ve **Ekle**' yi seçin.
 
-1. Öğesini `DeleteEntity.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -695,7 +696,7 @@ Bu bölümde bir varlığın bir tablodan nasıl silineceği gösterilmektedir.
 
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 

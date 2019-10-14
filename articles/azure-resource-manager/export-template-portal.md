@@ -4,14 +4,14 @@ description: Aboneliğinizdeki kaynaklardan bir Azure Resource Manager şablonu 
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 10/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 6b37b61bea63ec626bfd709a40f177f43d1dfe03
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959711"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300400"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal bir şablona tek ve çoklu kaynak verme
 
@@ -23,7 +23,7 @@ Bu makalede, Portal üzerinden şablonların nasıl dışarı aktarılacağı g�
 
 ## <a name="choose-the-right-export-option"></a>Doğru dışa aktarma seçeneğini belirleyin
 
-Bir şablonu dışarı aktarmanın iki yolu vardır:
+Şablonu dışarı aktarmanın iki yolu vardır:
 
 * **Kaynak grubundan veya kaynaktan dışarı aktarın**. Bu seçenek, mevcut kaynaklardan yeni bir şablon oluşturur. Bu şablon, kaynak grubunun geçerli durumunun "Snapshot" ' dır. Kaynak grubunun tamamını veya kaynak grubu içindeki belirli kaynakları dışarı aktarabilirsiniz.
 
@@ -48,39 +48,36 @@ Seçtiğiniz seçeneğe bağlı olarak, içe aktarılmış şablonların farklı
 * Kullanımı kolay bir şablon istiyorsunuz.
 * Özgün dağıtımdan sonra yaptığınız değişiklikleri eklemeniz gerekmez.
 
-## <a name="export-template-from-resource-group"></a>Şablonu kaynak grubundan dışarı aktar
+## <a name="export-template-from-a-resource-group"></a>Bir kaynak grubundan şablonu dışarı aktarma
 
 Bir kaynak grubundan bir veya daha fazla kaynağı dışarı aktarmak için:
 
 1. Dışarı aktarmak istediğiniz kaynakları içeren kaynak grubunu seçin.
 
-1. Kaynak grubundaki tüm kaynakları dışarı aktarmak için tümü ' nü ve ardından **şablonu dışarı aktar**' ı seçin. **Şablonu dışarı aktar** seçeneği yalnızca en az bir kaynak seçildikten sonra etkin hale gelir.
+1. Onay kutularını seçerek bir veya daha fazla kaynak seçin.  Tümünü seçmek için, **adının**solundaki onay kutusunu seçin. **Şablonu dışarı aktar** menü öğesi yalnızca en az bir kaynak seçildikten sonra etkin hale gelir.
 
    ![Tüm kaynakları dışarı aktar](./media/export-template-portal/select-all-resources.png)
 
-1. Dışarı aktarma için belirli kaynakları seçmek üzere bu kaynakların yanındaki onay kutularını seçin. Ardından, **şablonu dışarı aktar**' ı seçin.
+    Ekran görüntüsünde yalnızca depolama hesabı seçilir.
+1. **Şablonu dışarı aktar**' ı seçin.
 
-   ![Dışarı aktarılacak kaynakları seçin](./media/export-template-portal/select-resources.png)
-
-1. İçe aktarılmış şablon görüntülenir ve indirilebilir.
+1. İçe aktarılmış şablon görüntülenir ve indirilebilir ve dağıtılabilir.
 
    ![Şablonu göster](./media/export-template-portal/show-template.png)
 
-## <a name="export-template-from-resource"></a>Şablonu kaynaktan dışarı aktar
+## <a name="export-template-from-a-resource"></a>Şablondan bir kaynağı dışarı aktar
 
 Bir kaynağı dışarı aktarmak için:
 
 1. Dışarı aktarmak istediğiniz kaynağı içeren kaynak grubunu seçin.
 
-1. Dışarı aktarılacak kaynağı seçin.
-
-   ![Kaynak seçin](./media/export-template-portal/select-link-resource.png)
+1. Kaynağı açmak için dışarı aktarmak istediğiniz kaynağı seçin.
 
 1. Bu kaynak için sol bölmedeki **şablonu dışarı aktar** ' ı seçin.
 
    ![Kaynağı dışarı aktar](./media/export-template-portal/export-single-resource.png)
 
-1. İçe aktarılmış şablon görüntülenir ve indirilebilir. Şablon yalnızca tek bir kaynağı içerir.
+1. İçe aktarılmış şablon görüntülenir ve indirilebilir ve dağıtılabilir. Şablon yalnızca tek bir kaynağı içerir.
 
 ## <a name="export-template-before-deployment"></a>Dağıtımdan önce şablonu dışarı aktar
 
@@ -90,11 +87,10 @@ Bir kaynağı dışarı aktarmak için:
 
 1. Doğrulamayı geçirdikten sonra, ancak dağıtımı başlatmadan önce **Otomasyon için bir şablon indir**' i seçin.
 
-   ![Şablonu indir](./media/export-template-portal/download-before-deployment.png)
+   ![Şablon indirme](./media/export-template-portal/download-before-deployment.png)
 
-1. Şablon görüntülenir ve indirilebilir.
+1. Şablon görüntülenir ve indirileceği ve dağıtım için kullanılabilir.
 
-   ![Şablonu göster](./media/export-template-portal/show-template-before-deployment.png)
 
 ## <a name="export-template-after-deployment"></a>Dağıtımdan sonra şablonu dışarı aktar
 
@@ -112,7 +108,7 @@ Mevcut kaynakları dağıtmak için kullanılan şablonu dışarı aktarabilirsi
 
 1. **Şablon**seçin. Bu dağıtım için kullanılan şablon görüntülenir ve indirilmek üzere kullanılabilir.
 
-   ![Şablon seç](./media/export-template-portal/show-template-from-history.png)
+   ![Şablonu seçin](./media/export-template-portal/show-template-from-history.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

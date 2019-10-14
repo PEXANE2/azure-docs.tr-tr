@@ -1,5 +1,5 @@
 ---
-title: Örnek-CAF Foundation şema-Deploy adımları
+title: CAF Foundation şema örnek dağıtma adımları
 description: CAF Foundation şema örneğinin adımlarını dağıtın.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,12 +7,12 @@ ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
 ms.custom: fasttrack-new
-ms.openlocfilehash: 8dab466c9d45f1c06ddce955c097af40fbba44d8
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: baefc16c821c0e335707430763b5025abf4c001b
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243949"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298051"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Azure Foundation şema örneği için Microsoft bulut benimseme çerçevesini dağıtma
 
@@ -66,24 +66,24 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 1. Şema atamasının parametre değerlerini sağlayın:
 
-   - Temel bilgileri
+   - Temel Bilgiler
        - **Abonelikler**: şema örneğinin kopyasını kaydettiğiniz yönetim grubundaki bir veya daha fazla abonelik seçin. Birden fazla abonelik seçerseniz, girilen parametreleri kullanarak her biri için bir atama oluşturulur.
      - **Atama adı**: ad, BLUEPRINT adına göre önceden doldurulur.
        Gerektiğinde değiştirin veya olduğu gibi bırakın.
      - **Konum**: yönetilen kimliğin oluşturulacağı bölgeyi seçin.
-     - Azure Blueprint, atanan Blueprint içindeki tüm yapıtları dağıtmak için bu yönetilen kimliği kullanır.
-       Daha fazla bilgi için bkz. [Azure kaynakları için Yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır.
+       Daha fazla bilgi için bkz. [Azure kaynakları için yönetilen kimlikler](../../../../active-directory/managed-identities-azure-resources/overview.md).
      - Şema **tanımı sürümü**: şema örneğinin kopyasının **yayınlanmış** bir sürümünü seçin.
 
    - Kilit ataması
 
-     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [kaynak kilitlemeyi planlar](../../concepts/resource-locking.md).
+     Ortamınız için BLUEPRINT Lock ayarını seçin. Daha fazla bilgi için bkz. [şema kaynağı kilitleme](../../concepts/resource-locking.md).
 
-   - Yönetilen kimlik
+   - Yönetilen Kimlik
 
      Varsayılan _sistem tarafından atanmış_ yönetilen kimlik seçeneğini veya _Kullanıcı tarafından atanan_ kimlik seçeneğini belirleyin.
 
-   - Blueprint parametreleri
+   - Şema parametreleri
 
      Bu bölümde tanımlanan parametreler, tutarlılığı sağlamak için şema tanımındaki birçok yapıtlar tarafından kullanılır.
 
@@ -106,13 +106,13 @@ Aşağıdaki tabloda, şema yapıt parametrelerinin bir listesi verilmiştir:
 
 |Yapıt adı|Yapıt türü|Parametre adı|Açıklama|
 |-|-|-|-|
-|İzin verilen depolama hesabı SKU 'Ları|İlke ataması|Policy_Allowed-StorageAccount-SKU 'Lar|Tanılama günlük depolama hesaplarında kullanılan SKU|
+|İzin verilen depolama hesabı SKU'ları|İlke ataması|Policy_Allowed-StorageAccount-SKU 'Lar|Tanılama günlük depolama hesaplarında kullanılan SKU|
 |İzin verilen sanal makine SKU 'Ları|İlke ataması|Policy_Allowed-VM-SKU 'Lar|İzin verilen sanal makine SKU 'Ları|
 |Kaynak gruplarına CostCenter etıketı Ekle|İlke ataması|Policy_CostCenter_Tag|Maliyetmerkezi etıketını ve değerini kaynak grubundan ekleyin|
 |Ortamınızda izin vermek istemediğiniz kaynak türleri|İlke ataması|İlke _Izin verilen-kaynak türleri|Ortamınızda izin vermek istediğiniz Azure kaynakları|
-|Key Vault dağıt|Kaynak Yöneticisi şablonu|KV-AccessPolicy|**Kilitli** -Azure AD grubu veya kullanıcı @no__t Key Vault ' de izin vermek için-1|
-|Log Analytics dağıt|Kaynak Yöneticisi şablonu|LogAnalytics_DataRetention|**Kilitli** -Log Analytics verilerin tutulacağı gün sayısı|
-|Log Analytics dağıt|Kaynak Yöneticisi şablonu|LogAnalytics_Location|Çalışma alanı oluşturulurken kullanılan **kilitli** bölge|
+|Key Vault dağıt|Resource Manager şablonu|KV-AccessPolicy|**Kilitli** -Azure AD grubu veya kullanıcı @no__t Key Vault ' de izin vermek için-1|
+|Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_DataRetention|**Kilitli** -Log Analytics verilerin tutulacağı gün sayısı|
+|Log Analytics dağıt|Resource Manager şablonu|LogAnalytics_Location|Çalışma alanı oluşturulurken kullanılan **kilitli** bölge|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -121,10 +121,10 @@ CAF Foundation şema örneğini dağıtma adımlarını gözden geçirdiğinize 
 > [!div class="nextstepaction"]
 > [CAF Foundation şema-genel bakış](./index.md)
 
-Planlar ve bunların nasıl kullanılacağı hakkında makaleler ekleme:
+Şemalar ve bunların kullanımı hakkındaki diğer makaleler:
 
-- [Şema yaşam döngüsü](../../concepts/lifecycle.md)hakkında bilgi edinin.
-- [Statik ve dinamik parametrelerin](../../concepts/parameters.md)nasıl kullanılacağını anlayın.
-- [Şema sıralama sırasını](../../concepts/sequencing-order.md)özelleştirmeyi öğrenin.
-- [Şema kaynak kilitlemeyi](../../concepts/resource-locking.md)nasıl kullanacağınızı öğrenin.
-- [Mevcut atamaları güncelleştirme](../../how-to/update-existing-assignments.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../../concepts/lifecycle.md) hakkında bilgi edinin.
+- [Statik ve dinamik parametrelerin](../../concepts/parameters.md) kullanımını anlayın.
+- [Şema sıralama düzenini](../../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
+- [Şema kaynak kilitleme](../../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.
+- [Mevcut atamaları güncelleştirmeyi](../../how-to/update-existing-assignments.md) öğrenin.

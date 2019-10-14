@@ -10,22 +10,22 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: e4b792a04b4926fdb56f37c089e73b90cde905d3
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d51c27b90113679c1547f2d030459a03cc22c80c
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990135"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299798"
 ---
 # <a name="use-azure-active-directory-azure-ad-authentication-with-the-immersive-reader-service"></a>Tam ekran okuyucu hizmeti ile Azure Active Directory (Azure AD) kimlik doğrulamasını kullanma
 
-Aşağıdaki bölümlerde, özel bir alt etki alanı ile yeni bir derinlikli okuyucu kaynağı oluşturmak ve ardından Azure kiracınızda Azure AD 'yi yapılandırmak için Azure Cloud Shell ortamını veya Azure CLı 'yi kullanacaksınız. Bu ilk yapılandırmayı tamamladıktan sonra, bir erişim belirteci almak için Azure AD 'yi çağırıp, tam ekran okuyucu SDK 'sını kullanırken nasıl yapılacağına benzer bir erişim belirteci elde edersiniz. Takıldıysanız, her bir Azure CLı komutlarının her biri için kullanılabilir tüm seçeneklerle birlikte her bir bölümde bağlantılar sağlanır.
+Aşağıdaki bölümlerde, özel bir alt etki alanı ile yeni bir tam ekran kaynak oluşturmak ve ardından Azure kiracınızda Azure AD 'yi yapılandırmak için Azure Cloud Shell ortamını veya Azure PowerShell kullanacaksınız. Bu ilk yapılandırmayı tamamladıktan sonra, bir erişim belirteci almak için Azure AD 'yi çağırıp, tam ekran okuyucu SDK 'sını kullanırken nasıl yapılacağına benzer bir erişim belirteci elde edersiniz. Takıldıysanız her bir bölümde Azure PowerShell komutlarının her biri için kullanılabilir tüm seçeneklerle bağlantılar sağlanır.
 
 ## <a name="create-an-immersive-reader-resource-with-a-custom-subdomain"></a>Özel alt etki alanı ile bir tam ekran okuyucu kaynağı oluşturma
 
 1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açarak başlayın. Ardından [bir abonelik seçin](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    Select-AzSubscription -SubscriptionName <YOUR_SUBSCRIPTION>
    ```
 
@@ -36,12 +36,12 @@ Aşağıdaki bölümlerde, özel bir alt etki alanı ile yeni bir derinlikli oku
 
    -SkuName, F0 (ücretsiz katman) veya S0 (Standart katman, genel önizleme sırasında da ücretsiz) olabilir. S0 katmanının daha yüksek bir çağrı hızı sınırı vardır ve çağrı sayısı üzerinde aylık kota yoktur.
 
-   -Konum şunlardan herhangi biri olabilir: `eastus`, `australiaeast` `centralindia` `westus`,,, `japaneast`, `northeurope`,`westeurope`
+   -Location şunlardan herhangi biri olabilir: `eastus`, `westus`, `australiaeast`, `centralindia`, `japaneast`, `northeurope`, `westeurope`
 
    -CustomSubdomainName 'in genel olarak benzersiz olması gerekir ve aşağıdakiler gibi özel karakterler içermemelidir: ".", "!", ",".
 
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME> -Type ImmersiveReader -SkuName S0 -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
 
    // Display the Resource info
@@ -54,11 +54,11 @@ Aşağıdaki bölümlerde, özel bir alt etki alanı ile yeni bir derinlikli oku
 
 
    >[!NOTE]
-   > Azure portal bir kaynak oluşturursanız, ' ad ' kaynağı özel alt etki alanı olarak kullanılır. Kaynak genel bakış sayfasına giderek ve burada listelenen uç noktada alt etki alanını (örneğin, `https://[SUBDOMAIN].cognitiveservices.azure.com/`) bularak, portalda alt etki alanı adını kontrol edebilirsiniz. Ayrıca, SDK ile tümleştirme için alt etki alanını almanız gerektiğinde daha sonra da denetleyebilirsiniz.
+   > Azure portal bir kaynak oluşturursanız, ' ad ' kaynağı özel alt etki alanı olarak kullanılır. Kaynak genel bakış sayfasına giderek ve burada listelenen uç noktada alt etki alanını (örneğin, `https://[SUBDOMAIN].cognitiveservices.azure.com/`) bularak Portal 'daki alt etki alanı adını kontrol edebilirsiniz. Ayrıca, SDK ile tümleştirme için alt etki alanını almanız gerektiğinde daha sonra da denetleyebilirsiniz.
 
    Kaynak portalda oluşturulduysa, [var olan bir kaynağı](https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccount?view=azps-1.8.0) şimdi de edinebilirsiniz.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $resource = Get-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <RESOURCE_NAME>
 
    // Display the Resource info
@@ -74,7 +74,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
    >[!NOTE]
    > ' İstemci gizli dizisi ' olarak da bilinen parola, kimlik doğrulama belirteçleri alınırken kullanılacaktır.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $password = "<YOUR_PASSWORD>"
    $secureStringPassword = ConvertTo-SecureString -String $password -AsPlainText -Force
    $aadApp = New-AzADApplication -DisplayName ImmersiveReaderAAD -IdentifierUris http://ImmersiveReaderAAD -Password $secureStringPassword
@@ -87,7 +87,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
 
 2. Sonra, Azure AD uygulaması için [bir hizmet sorumlusu oluşturmanız](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0) gerekir.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $principal = New-AzADServicePrincipal -ApplicationId $aadApp.ApplicationId
 
    // Display the service principal info
@@ -99,7 +99,7 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
 
 3. Son adım, "bilişsel [Hizmetler kullanıcısı" rolünün](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0) hizmet sorumlusuna atanması (kaynağa kapsamlı olarak). Rol atayarak, bu kaynağa hizmet sorumlusu erişimi vermiş olursunuz. Aboneliğinizdeki birden fazla kaynağa aynı hizmet sorumlusu erişimi verebilirsiniz.
 
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    New-AzRoleAssignment -ObjectId $principal.Id -Scope $resource.Id -RoleDefinitionName "Cognitive Services User"
    ```
 
@@ -112,13 +112,13 @@ Artık kaynakla ilişkili özel bir alt etki alanı olduğuna göre, bir hizmet 
 Bu örnekte, parolanız bir Azure AD belirteci almak için hizmet sorumlusunun kimliğini doğrulamak için kullanılır.
 
 1. **Tenantıd**'nizi alın:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $context = Get-AzContext
    $context.Tenant.Id
    ```
 
 2. Belirteç al:
-   ```azurecli-interactive
+   ```azurepowershell-interactive
    $authority = "https://login.windows.net/" + $context.Tenant.Id
    $resource = "https://cognitiveservices.azure.com/"
    $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority

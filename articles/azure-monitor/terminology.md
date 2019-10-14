@@ -10,17 +10,20 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2019
+ms.date: 10/08/2019
 ms.author: bwren
-ms.openlocfilehash: f8a86c0b71a5248164ea522472f9f2ecb2ce36bc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: dc7d839c81edd67d69e1525d219f87ee70f17502
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827365"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300511"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Izleyici adlandırma ve terminoloji değişiklikleri
 Azure 'da, Azure müşterilerine yönelik izlemeyi basitleştirmek için, Azure Izleyici 'de son zamanlarda, farklı hizmetlerle birleştirilmiş değişiklikler yapılmıştır. Bu makalede, Azure Izleyici belgelerindeki son ad ve terminoloji değişiklikleri açıklanmaktadır.
+
+## <a name="october-2019---diagnostic-log-to-resource-log"></a>2019 Ekim-kaynak günlüğüne tanılama günlüğü
+Tanılama günlükleri, gerçekten toplanmaya daha iyi eşleşecek şekilde "kaynak günlükleri" olarak değiştirildi. "Tanılama ayarları" terimi aynı kalır.  
 
 ## <a name="february-2019---log-analytics-terminology"></a>Şubat 2019-Log Analytics terimleri
 Azure Izleyici kapsamında farklı hizmetlerin Birleştirmeden sonra, Azure Izleyici hizmetini ve farklı bileşenlerini daha iyi anlatmak için belgelerimizin terminolojisini değiştirerek bir sonraki adımı sunuyoruz. 
@@ -50,9 +53,9 @@ Operations Management Suite (OMS), lisans amaçlarıyla aşağıdaki Azure Yöne
 
 - Application Insights
 - Azure Otomasyonu
-- Azure Backup
+- Azure Yedekleme
 - Log Analytics
-- Site Recovery
+- Site Kurtarma
 
 [Bu hizmetler Için yeni fiyatlandırma sunuldu](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)ve OMS paketlendirmesi yeni müşteriler için artık kullanılamıyor. OMS 'nin parçası olan hizmetlerden hiçbiri, yukarıda açıklanan Azure Izleyici ile birleştirme dışında değişmemiştir. 
 

@@ -1,5 +1,5 @@
 ---
-title: Kuyruk depolama ve Visual Studio bağlı hizmetleri (WebJob projeleri) ile çalışmaya başlama | Microsoft Docs
+title: Visual Studio (WebJob projeleri) kullanarak kuyruk depolamayı kullanmaya başlama
 description: Visual Studio bağlı hizmetler 'i kullanarak bir depolama hesabına bağlandıktan sonra bir WebJob projesinde Azure kuyruk depolamayı kullanmaya başlama.
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 0afed158f5a19f3d82a3953f828f2b5566a6d5ff
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ffba203bafaf3837cd2d7fc1a6fd962a6926b186
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69510796"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298757"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure kuyruk depolama ve Visual Studio bağlı hizmetleri (WebJob projeleri) ile çalışmaya başlama
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -72,7 +73,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Zaman uyumsuz işlevler, bir blobu kopyalayan aşağıdaki örnekte gösterildiği gibi bir [iptal belirteci](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)alabilir. ( **Queuetrigger** yer tutucusu hakkında bir açıklama Için, Bloblar [](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) bölümüne bakın.)
+Zaman uyumsuz işlevler, bir blobu kopyalayan aşağıdaki örnekte gösterildiği gibi bir [iptal belirteci](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)alabilir. ( **Queuetrigger** yer tutucusu hakkında bir açıklama Için, [Bloblar](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) bölümüne bakın.)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -88,7 +89,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>QueueTrigger özniteliği ile birlikte çalışarak türler
 Aşağıdaki türlerle **Queuetrigger** kullanabilirsiniz:
 
-* **string**
+* **dizisinde**
 * JSON olarak seri hale getirilmiş bir POCO türü
 * **Byte []**
 * **CloudQueueMessage**
@@ -159,7 +160,7 @@ public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
         queueTrigger=Hello world!
 
 ## <a name="graceful-shutdown"></a>Düzgün kapanma
-Sürekli bir WebJob 'ta çalışan bir işlev, WebJob parametresini kabul edebilir. Bu, Işletim sisteminin Web işi sonlandırıldıktan sonra işleve bildirmesini sağlar. Bu bildirimi, işlevin verileri tutarsız bir durumda bırakmak için beklenmedik bir şekilde sonlandığından emin olmak için kullanabilirsiniz.
+Sürekli bir WebJob 'ta **çalışan bir işlev, WebJob parametresini kabul** edebilir. Bu, Işletim sisteminin Web işi sonlandırıldıktan sonra işleve bildirmesini sağlar. Bu bildirimi, işlevin verileri tutarsız bir durumda bırakmak için beklenmedik bir şekilde sonlandığından emin olmak için kullanabilirsiniz.
 
 Aşağıdaki örnek, bir işlevde yaklaşan WebJob sonlandırmasının nasıl kontrol alınacağını gösterir.
 
@@ -182,7 +183,7 @@ public static void GracefulShutdownDemo(
 }
 ```
 
-**Not:** Pano, kapatılmış işlevlerin durumunu ve çıkışını doğru şekilde gösteremeyebilir.
+**Note:** Pano, kapatılmış işlevlerin durumunu ve çıkışını doğru şekilde gösteremeyebilir.
 
 Daha fazla bilgi için bkz. [WebJobs düzgün kapanma](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
@@ -190,7 +191,7 @@ Daha fazla bilgi için bkz. [WebJobs düzgün kapanma](http://blog.amitapple.com
 Yeni bir kuyruk iletisi oluşturan bir işlev yazmak için **Queue** özniteliğini kullanın. **Queuetrigger**gibi, kuyruk adını bir dize olarak geçitirsiniz veya [kuyruk adını dinamik olarak ayarlayabilirsiniz](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Dize sırası iletileri
-Aşağıdaki zaman uyumsuz olmayan kod örneği, "InputQueue" adlı kuyrukta alınan sıra iletisiyle aynı içeriğe sahip "outputqueue" adlı sırada yeni bir kuyruk iletisi oluşturur. (Async işlevleri için, bu bölümün ilerleyen kısımlarında gösterildiği gibi **ıasynccollector\<T >** kullanır.)
+Aşağıdaki zaman uyumsuz olmayan kod örneği, "InputQueue" adlı kuyrukta alınan sıra iletisiyle aynı içeriğe sahip "outputqueue" adlı sırada yeni bir kuyruk iletisi oluşturur. (Zaman uyumsuz işlevler için bu bölümün ilerleyen kısımlarında gösterildiği gibi **ıasynccollector @ no__t-1T >** kullanın.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -216,7 +217,7 @@ public static void CreateQueueMessage(
 SDK, nesneyi otomatik olarak JSON 'a serileştirir. Nesne null olsa bile kuyruk iletisi her zaman oluşturulur.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Birden çok ileti veya zaman uyumsuz işlevlerde oluşturma
-Birden çok ileti oluşturmak için, aşağıdaki örnekte gösterildiği gibi, **\<ICollector T >** veya **\<ıasynccollector t >** çıkış sırası için parametre türünü yapın.
+Birden çok ileti oluşturmak için, aşağıdaki örnekte gösterildiği gibi, **ICollector @ no__t-1T >** veya **ıasynccollector @ No__t-3T >** çıkış sırasının parametre türünü yapın.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -236,9 +237,9 @@ Her kuyruk iletisi, **Add** yöntemi çağrıldığında hemen oluşturulur.
 Aşağıdaki parametre türlerinde **Queue** özniteliğini kullanabilirsiniz:
 
 * **Out dizesi** (işlev sonlandığında parametre değeri null değilse kuyruk iletisi oluşturur)
-* **Out baytı []** ( **dize**gibi çalışmalar)
-* **dışarı CloudQueueMessage** ( **dize**gibi çalışmalar)
-* **POCO çıkış** (seri hale getirilebilir bir tür, işlev sona erdiğinde parametre null ise null nesnesiyle bir ileti oluşturur)
+* **Out baytı []** ( **dize**gibi)
+* **Out CloudQueueMessage** ( **dize**gibi)
+* **Out POCO** (seri hale getirilebilir bir tür, işlev sona erdiğinde parametre null ise null nesnesiyle bir ileti oluşturur)
 * **ICollector**
 * **Iasynccollector**
 * **Cloudqueue** (Azure Storage API 'sini doğrudan kullanarak el ile ileti oluşturmak için)
@@ -327,11 +328,11 @@ Bir blobu bir nesneye bağlamadan önce işlevinizde bazı çalışmalar yapman�
 * **Stream** (FileAccess Oluşturucu parametresi kullanılarak belirtilen okuma veya yazma)
 * **Değerine**
 * **TextWriter**
-* **dize** okuyamaz
+* **dize** (okuma)
 * **Out dizesi** (Write; yalnızca işlev döndürüldüğünde dize parametresi null değilse bir blob oluşturur)
 * POCO (okuma)
 * Out POCO (Write; her zaman bir blob oluşturur, işlev döndürüldüğünde POCO parametresi null ise null nesne olarak oluşturulur)
-* **Cloudblobstream** yazarken
+* **Cloudblobstream** (yazma)
 * **Ihoparlör blobu** (okuma veya yazma)
 * **Cloudblockblob** (okuma veya yazma)
 * **Cloudpageblob** (okuma veya yazma)
@@ -477,7 +478,7 @@ static void Main(string[] args)
 }
 ```
 
-**Not:** Bir işlev her çağrıldığında kuyruk, tablo ve BLOB adları çözümlenir, ancak blob kapsayıcı adları yalnızca uygulama başlatıldığında çözümlenir. İş çalışırken blob kapsayıcısı adını değiştiremezsiniz.
+**Note:** Bir işlev her çağrıldığında kuyruk, tablo ve BLOB adları çözümlenir, ancak blob kapsayıcı adları yalnızca uygulama başlatıldığında çözümlenir. İş çalışırken blob kapsayıcısı adını değiştiremezsiniz.
 
 ## <a name="how-to-trigger-a-function-manually"></a>Bir işlevi el ile tetikleme
 Bir işlevi el ile tetiklemek için, aşağıdaki örnekte gösterildiği gibi, **Jobhost** nesnesi üzerinde **Call** veya **Callasync** yöntemini ve işlevindeki **noautomatictrigger** özniteliğini kullanın.
@@ -550,7 +551,7 @@ Sürekli bir WebJob 'ta uygulama günlükleri, Web uygulaması dosya sisteminde/
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-Bir Azure blobuna uygulama günlükleri şöyle görünür: 2014-09-26T21:01:13, bilgi, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 17, Console. Write-Merhaba World!, 2014-09-26T21:01:13, Error, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 19, konsol. hata-Merhaba Dünya!, 2014-09-26T21 : 01:13, bilgi, contosoadsnew, 491e54, 635473620738529920, 0, 17404, 17, Console. out-Merhaba Dünya!,
+Azure Blob 'da uygulama günlükleri şu şekilde görünür: 2014-09-26T21:01:13, Information, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 17, Console. Write-Hello World!, 2014-09-26T21:01:13, hata, contosoadsnew, 491e54, 635473620738373502, 0, 17404, 19, konsol. hata-Merhaba Dünya!, 2014-09-26T21:01:13, bilgi, contosoadsnew, 491e54, 635473620738529920, 0, 17404, 17, Console. out-Merhaba Dünya!,
 
 Ve bir Azure tablosunda **konsol. out** ve **Console. hata** günlükleri şöyle görünür:
 

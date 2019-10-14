@@ -15,31 +15,31 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 856e3e41e624844f1d7cbf5bf4cd1611bc10ecbb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5a1d1f738d8f32777bc4a6ea7d04fb0abf2accf7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081513"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300812"
 ---
-# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure 'da bir Linux sanal makinesinde MongoDB, Express, AngularJS ve Node. js (Ortalama) yığını oluşturma
+# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure’da bir Linux sanal makinesi üzerinde MongoDB, Express, AngularJS ve Node.js (MEAN) yığını oluşturma
 
 Bu öğreticide, Azure’da bir Linux sanal makinesi (VM) üzerinde MongoDB, Express, AngularJS ve Node.js (MEAN) yığınının nasıl uygulanacağı gösterilmektedir. Oluşturduğunuz MEAN yığını bir veritabanına kitap eklenmesine, veritabanındaki kitapların silinmesine ve listelenmesine olanak sağlar. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Linux VM'i oluşturma
-> * Node.js yükleme
+> * Linux VM oluşturma
+> * Node.js’yi yükleme
 > * MongoDB yükleme ve sunucuyu ayarlama
 > * Express’i yükleme ve sunucuya rotalar ayarlama
 > * AngularJS ile rotalara erişme
 > * Uygulamayı çalıştırma
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli).
 
 
-## <a name="create-a-linux-vm"></a>Linux VM'i oluşturma
+## <a name="create-a-linux-vm"></a>Linux VM oluşturma
 
 [az group create](https://docs.microsoft.com/cli/azure/group) komutuyla bir kaynak grubu oluşturun ve [az vm create](https://docs.microsoft.com/cli/azure/vm) komutuyla bir Linux sanal makinesi oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
@@ -79,7 +79,7 @@ Sanal makine ile bir SSH oturumu oluşturmak için aşağıdaki komutu kullanın
 ssh azureuser@13.72.77.9
 ```
 
-## <a name="install-nodejs"></a>Node.js yükleme
+## <a name="install-nodejs"></a>Node.js’yi yükleme
 
 [Node.js](https://nodejs.org/en/), Chrome’un V8 JavaScript altyapısında derlenen bir JavaScript çalışma zamanıdır. Express rotalarını ve AngularJS denetleyicilerini ayarlamak için bu öğreticide Node.js kullanılmaktadır.
 
@@ -323,11 +323,11 @@ sudo apt-get install -y nodejs
     nodejs server.js
     ```
 
-2. Bir web tarayıcısında, sanal makine için kaydettiğiniz adresi açın. Örneğin, *http:\//13.72.77.9:3300*. Aşağıdaki sayfaya benzer bir şey görmeniz gerekir:
+2. Bir web tarayıcısında, sanal makine için kaydettiğiniz adresi açın. Örneğin, *http: \//13.72.77.9:3300*. Aşağıdaki sayfaya benzer bir şey görmeniz gerekir:
 
     ![Kitap kaydı](media/tutorial-mean/meanstack-init.png)
 
-3. Metin kutularına veri girin ve **Ekle**’ye tıklayın. Örneğin:
+3. Metin kutularına veri girin ve **Ekle**’ye tıklayın. Örnek:
 
     ![Kitap kaydı ekleme](media/tutorial-mean/meanstack-add.png)
 
@@ -342,8 +342,8 @@ sudo apt-get install -y nodejs
 Bu öğreticide, Linux sanal makinesi üzerinde MEAN yığınını kullanarak kitap kayıtlarını takip eden bir web uygulaması oluşturdunuz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Linux VM'i oluşturma
-> * Node.js yükleme
+> * Linux VM oluşturma
+> * Node.js’yi yükleme
 > * MongoDB yükleme ve sunucuyu ayarlama
 > * Express’i yükleme ve sunucuya rotalar ayarlama
 > * AngularJS ile rotalara erişme

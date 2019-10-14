@@ -1,5 +1,5 @@
 ---
-title: Azure kuyruk depolama ve Visual Studio bağlı hizmetler 'i kullanmaya başlama (ASP.NET) | Microsoft Docs
+title: Visual Studio kullanarak Azure kuyruk depolama ile çalışmaya başlama (ASP.NET)
 description: Visual Studio bağlı hizmetler 'i kullanarak bir depolama hesabına bağlandıktan sonra Visual Studio 'da bir ASP.NET projesinde Azure kuyruk depolamayı kullanmaya başlama
 services: storage
 author: ghogen
@@ -12,12 +12,13 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: 19cf2dd912968d0a5df8743c1e720776b8a949f0
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 5b57f171a9407acea8231d796a80c3a1cc1d9474
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515977"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300102"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Azure kuyruk depolama ve Visual Studio bağlı hizmetler 'i kullanmaya başlama (ASP.NET)
 
@@ -62,7 +63,7 @@ Bu öğreticide, Azure kuyruk depolama varlıklarını kullanarak bazı yaygın 
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Queue;
     ```
-   ## <a name="create-a-queue"></a>Kuyruk oluştur
+   ## <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
 Aşağıdaki adımlarda bir sıranın nasıl oluşturulacağı gösterilmektedir:
 
@@ -83,7 +84,7 @@ Aşağıdaki adımlarda bir sıranın nasıl oluşturulacağı gösterilmektedir
     }
     ```
 
-1. **CreateQueue** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **CreateQueue** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -117,7 +118,7 @@ Aşağıdaki adımlarda bir sıranın nasıl oluşturulacağı gösterilmektedir
 
 1. **Görünüm Ekle** iletişim kutusunda Görünüm adı Için **CreateQueue** yazın ve **Ekle**' yi seçin.
 
-1. Öğesini `CreateQueue.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @{
@@ -129,7 +130,7 @@ Aşağıdaki adımlarda bir sıranın nasıl oluşturulacağı gösterilmektedir
     Creation of @ViewBag.QueueName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -139,7 +140,7 @@ Aşağıdaki adımlarda bir sıranın nasıl oluşturulacağı gösterilmektedir
 
 1. Uygulamayı çalıştırın ve aşağıdaki ekran görüntüsüne benzer sonuçları görmek için **kuyruk oluştur** ' u seçin:
   
-    ![Kuyruk oluştur](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
+    ![Sıra oluştur](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
     Daha önce belirtildiği gibi **Cloudqueue. CreateIfNotExists** yöntemi yalnızca sıra mevcut olmadığında ve oluşturulduğunda **true** değerini döndürür. Bu nedenle, kuyruk varken uygulamayı çalıştırırsanız, yöntem **false**döndürür. Uygulamayı birden çok kez çalıştırmak için, uygulamayı yeniden çalıştırmadan önce kuyruğu silmeniz gerekir. Kuyruğun silinmesi **Cloudqueue. Delete** yöntemi aracılığıyla yapılabilir. Kuyruğu [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) veya [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md)kullanarak da silebilirsiniz.  
 
@@ -164,7 +165,7 @@ Aşağıdaki adımlarda bir sıranın nasıl oluşturulacağı gösterilmektedir
     }
     ```
  
-1. **AddMessage** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **AddMessage** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -206,7 +207,7 @@ Aşağıdaki adımlarda bir sıranın nasıl oluşturulacağı gösterilmektedir
 
 1. **Görünüm Ekle** iletişim kutusunda, görünüm adı Için **AddMessage** yazın ve **Ekle**' yi seçin.
 
-1. Öğesini `AddMessage.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @{
@@ -218,7 +219,7 @@ Aşağıdaki adımlarda bir sıranın nasıl oluşturulacağı gösterilmektedir
     The message '@ViewBag.Message' was added to the queue '@ViewBag.QueueName'.
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -253,7 +254,7 @@ Bu bölümde, sıraya alınan bir iletinin nasıl incelenmiştir (onu kaldırmad
     }
     ```
  
-1. **PeekMessage** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **PeekMessage** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -278,7 +279,7 @@ Bu bölümde, sıraya alınan bir iletinin nasıl incelenmiştir (onu kaldırmad
     CloudQueueMessage message = queue.PeekMessage();
     ```
 
-1. **ViewBag** 'i iki değerle güncelleştirin: kuyruk adı ve okunan ileti. **Cloudqueuemessage** nesnesi, nesnenin değerini almak için iki özellik sunar: **Cloudqueuemessage. AsBytes** ve **Cloudqueuemessage. AsString**. **AsString** (Bu örnekte kullanılan) bir dize döndürür, ancak **Asbytes** bir bayt dizisi döndürür.
+1. **ViewBag** 'i iki değerle güncelleştirin: kuyruk adı ve okunan ileti. **Cloudqueuemessage** nesnesi, nesnenin değerini almak için iki özellik sunar: **cloudqueuemessage. Asbytes** ve **Cloudqueuemessage. AsString**. **AsString** (Bu örnekte kullanılan) bir dize döndürür, ancak **asbytes** bir bayt dizisi döndürür.
 
     ```csharp
     ViewBag.QueueName = queue.Name; 
@@ -289,7 +290,7 @@ Bu bölümde, sıraya alınan bir iletinin nasıl incelenmiştir (onu kaldırmad
 
 1. **Görünüm Ekle** iletişim kutusunda, görünüm adı için **PeekMessage** girin ve **Ekle**' yi seçin.
 
-1. Öğesini `PeekMessage.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @{
@@ -304,7 +305,7 @@ Bu bölümde, sıraya alınan bir iletinin nasıl incelenmiştir (onu kaldırmad
     </table>    
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -337,7 +338,7 @@ Bu bölümde, bir kuyruktan bir ileti okumayı ve kaldırmayı öğrenirsiniz.
     }
     ```
  
-1. **ReadMessage** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **ReadMessage** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -380,7 +381,7 @@ Bu bölümde, bir kuyruktan bir ileti okumayı ve kaldırmayı öğrenirsiniz.
 
 1. **Görünüm Ekle** iletişim kutusunda, görünüm adı Için **ReadMessage** yazın ve **Ekle**' yi seçin.
 
-1. Öğesini `ReadMessage.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @{
@@ -395,7 +396,7 @@ Bu bölümde, bir kuyruktan bir ileti okumayı ve kaldırmayı öğrenirsiniz.
     </table>
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -428,7 +429,7 @@ Bu bölüm, sıranın uzunluğunu (ileti sayısı) nasıl alınacağını göste
     }
     ```
  
-1. **ReadMessage** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **ReadMessage** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -470,7 +471,7 @@ Bu bölüm, sıranın uzunluğunu (ileti sayısı) nasıl alınacağını göste
 
 1. **Görünüm Ekle** iletişim kutusunda Görünüm adı Için **getqueuelength** girin ve **Ekle**' yi seçin.
 
-1. Öğesini `GetQueueLengthMessage.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @{
@@ -482,7 +483,7 @@ Bu bölüm, sıranın uzunluğunu (ileti sayısı) nasıl alınacağını göste
     The queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -515,7 +516,7 @@ Bu bölümde bir kuyruğun nasıl silineceği gösterilmektedir.
     }
     ```
  
-1. **DeleteQueue** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: (  *&lt;Depolama hesabı adı >* , eriştiğiniz Azure depolama hesabının adına değiştirin.)
+1. **DeleteQueue** yöntemi içinde, depolama hesabı bilgilerinizi temsil eden bir **cloudstorageaccount** nesnesi alın. Azure hizmet yapılandırmasından depolama bağlantı dizesi ve depolama hesabı bilgilerini almak için aşağıdaki kodu kullanın: ( *&lt;storage-Account-name >* ' i eriştiğiniz Azure Storage hesabının adına değiştirin.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -534,7 +535,7 @@ Bu bölümde bir kuyruğun nasıl silineceği gösterilmektedir.
     CloudQueue queue = queueClient.GetQueueReference("test-queue");
     ```
 
-1. Cloudqueue nesnesi tarafından temsil edilen sırayı silmek için **cloudqueue. Delete** yöntemini çağırın.
+1. **Cloudqueue** nesnesi tarafından temsil edilen sırayı silmek Için **Cloudqueue. Delete** yöntemini çağırın.
 
     ```csharp
     queue.Delete();
@@ -550,7 +551,7 @@ Bu bölümde bir kuyruğun nasıl silineceği gösterilmektedir.
 
 1. **Görünüm Ekle** iletişim kutusunda, görünüm adı Için **DeleteQueue** yazın ve **Ekle**' yi seçin.
 
-1. Öğesini `DeleteQueue.cshtml`açın ve aşağıdaki kod parçacığı gibi görünecek şekilde değiştirin:
+1. @No__t-0 ' ı açın ve aşağıdaki kod parçacığı gibi görünmesi için değiştirin:
 
     ```csharp
     @{
@@ -562,7 +563,7 @@ Bu bölümde bir kuyruğun nasıl silineceği gösterilmektedir.
     @ViewBag.QueueName deleted.
     ```
 
-1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve açın `_Layout.cshtml`.
+1. **Çözüm Gezgini**, **Görünümler-> paylaşılan** klasörünü genişletin ve `_Layout.cshtml` ' yi açın.
 
 1. Son **HTML. ActionLink**sonra, aşağıdaki **HTML. ActionLink**öğesini ekleyin:
 
@@ -572,7 +573,7 @@ Bu bölümde bir kuyruğun nasıl silineceği gösterilmektedir.
 
 1. Uygulamayı çalıştırın ve aşağıdaki ekran görüntüsüne benzer sonuçları görmek için **sıra uzunluğu al** ' ı seçin:
   
-    ![Kuyruğu silme](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
+    ![Kuyruğu Sil](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure’da veri depolama ile ilgili ek seçenekler hakkında daha fazla bilgi edinmek için daha fazla özellik kılavuzu görüntüleyin.

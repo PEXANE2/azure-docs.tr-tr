@@ -2,18 +2,17 @@
 title: Azure Analysis Services desteklenen veri kaynakları | Microsoft Docs
 description: Azure Analysis Services veri modelleri için desteklenen veri kaynaklarını açıklar.
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 79346f0bf80386fb83f55daccda8790652ff8541
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993382"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298627"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services desteklenen veri kaynakları
 
@@ -23,14 +22,14 @@ Visual Studio 'da veri alma veya Içeri aktarma Sihirbazı 'nda gösterilen veri
 
 |Veri kaynağı  |Bellek içi  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL veritabanı<sup>[2](#azsqlmanaged)</sup>     |   Evet      |    Evet      |
-|Azure SQL Veri Ambarı     |   Evet      |   Evet       |
-|Azure Blob depolama<sup>[1](#tab1400a)</sup>     |   Evet       |    Hayır      |
-|Azure Tablo depolama<sup>[1](#tab1400a)</sup>    |   Evet       |    Hayır      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Evet        |  Hayır        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Evet       |    Hayır      |
-|Azure HDInsight,<sup>[1](#tab1400a) .</sup>     |     Evet     |   Hayır       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Evet       |   Hayır       |
+|Azure SQL veritabanı<sup>[2](#azsqlmanaged)</sup>     |   Yes      |    Yes      |
+|Azure SQL Veri Ambarı     |   Yes      |   Yes       |
+|Azure Blob depolama<sup>[1](#tab1400a)</sup>     |   Yes       |    Hayır      |
+|Azure Tablo depolama<sup>[1](#tab1400a)</sup>    |   Yes       |    Hayır      |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Yes        |  Hayır        |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Yes       |    Hayır      |
+|Azure HDInsight,<sup>[1](#tab1400a) .</sup>     |     Yes     |   Hayır       |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Yes       |   Hayır       |
 ||||
 
 yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.   
@@ -39,7 +38,7 @@ yalnızca <a name="tab1400a">1</a> tablolu 1400 ve daha yüksek modeller.
 <a name="gen2">4</a> -ADLS 2. Şu anda desteklenmiyor.
 
 
-**Sağlayıcısını**   
+**Sağlayıcı**   
 Azure veri kaynaklarına bağlanan bellek içi ve DirectQuery modelleri SQL Server için .NET Framework Veri Sağlayıcısı kullanır.
 
 ## <a name="other-data-sources"></a>Diğer veri kaynakları
@@ -82,7 +81,7 @@ Ve Azure 'dan sunucuya şirket içi veri kaynaklarına bağlanmak için şirket 
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
 |SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
 |SharePoint listesi<sup>[1](#tab1400b)</sup>, <sup>[2](#filesSP)</sup>     |   
-|Sybase Veritabanı     |  
+|Sybase veritabanı     |  
 |TXT dosyası  |
 |XML tablosu<sup>[1](#tab1400b)</sup>    |  
 ||
@@ -92,17 +91,17 @@ yalnızca <a name="tab1400b">1</a> tablolu 1400 ve daha yüksek modeller.
 
 ## <a name="specifying-a-different-provider"></a>Farklı bir sağlayıcı belirtme
 
-Azure Analysis Services veri modelleri, belirli veri kaynaklarına bağlanırken farklı veri sağlayıcıları gerektirebilir. Bazı durumlarda, SQL Server Native Client (SQLNCLI11) gibi yerel sağlayıcıları kullanarak veri kaynaklarına bağlanan tablo modelleri bir hata döndürebilir. SQLOLEDB dışında yerel sağlayıcılar kullanılıyorsa, şu hata iletisini görebilirsiniz: **' SQLNCLI 11.1 ' sağlayıcısı kayıtlı değil**. Ya da şirket içi veri kaynaklarına bağlanan bir DirectQuery modeliniz varsa ve yerel sağlayıcılar kullanıyorsanız, şu hata iletisini görebilirsiniz: **OLE DB satır kümesi oluşturulurken hata oluştu. ' LIMIT '** yakınında yanlış sözdizimi.
+Azure Analysis Services veri modelleri, belirli veri kaynaklarına bağlanırken farklı veri sağlayıcıları gerektirebilir. Bazı durumlarda, SQL Server Native Client (SQLNCLI11) gibi yerel sağlayıcıları kullanarak veri kaynaklarına bağlanan tablo modelleri bir hata döndürebilir. SQLOLEDB dışında yerel sağlayıcılar kullanılıyorsa, hata iletisi görebilirsiniz: **' SQLNCLI 11.1 ' sağlayıcısı kayıtlı değil**. Ya da şirket içi veri kaynaklarına bağlanan bir DirectQuery modeliniz varsa ve yerel sağlayıcılar kullanıyorsanız, hata iletisi: **OLE DB satır kümesi oluşturma hatası görebilirsiniz. ' LIMIT ' yakınında yanlış sözdizimi**.
 
 Şirket içi SQL Server Analysis Services tablolu modeli Azure Analysis Services ' e geçirirken sağlayıcının değiştirilmesi gerekebilir.
 
 **Sağlayıcı belirtmek için**
 
-1. SSDT > **tablosal Model Gezgini** > **veri kaynakları**' nda, bir veri kaynağı bağlantısına sağ tıklayın ve ardından **veri kaynağını Düzenle**' ye tıklayın.
+1. SSDT > **tablosal model gezgini** > **veri kaynakları**' nda, bir veri kaynağı bağlantısına sağ tıklayın ve ardından **veri kaynağını Düzenle**' ye tıklayın.
 2. **Bağlantıyı Düzenle**' de Gelişmiş ' e tıklayarak **İleri** Özellikler penceresini açın.
-3. **Gelişmiş Özellikler** > **sağlayıcılarını**ayarla bölümünde uygun sağlayıcıyı seçin.
+3. **Gelişmiş özellikleri ayarla** > **sağlayıcılar**' da, uygun sağlayıcıyı seçin.
 
-## <a name="impersonation"></a>Kimliğe bürünme
+## <a name="impersonation"></a>Ation
 Bazı durumlarda, farklı bir kimliğe bürünme hesabı belirtmek gerekli olabilir. Kimliğe bürünme hesabı, Visual Studio 'da (SSDT) veya SSMS 'de belirtilebilir.
 
 Şirket içi veri kaynakları için:

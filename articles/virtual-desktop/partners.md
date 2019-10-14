@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 485aad245df7feae4ca4ee2c68a29ff20afb3ece
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f4eeecccb3815ebfef9cdf79ac14f3dd3bd5e77a
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937514"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300185"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows sanal masaüstü iş ortağı tümleştirmeleri
 
@@ -62,6 +62,16 @@ Windows sanal masaüstü ile kullanıldığında ControlUp, Windows sanal masaü
 - [Bkz. JOIN çözümü kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [İş ortağı Web sitesine gidin](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="devicetrust"></a>deviceTRUST
+
+![deviceTRUST logosu](./media/partners/devicetrust.png)
+
+deviceTRUST, şirket kurumlarını oluşturan Windows sanal masaüstü katma bir hizmet sağlayıcıdır ve böylece kullanıcılara, herhangi bir cihazdan herhangi bir yerden, herhangi bir ağ üzerinden Windows sanal masaüstlerine erişme özgürlüğü sağlar Departmanlar, idare gereksinimlerini karşılamak için gereken bilgileri ve denetimi sağlar. 
+
+deviceTRUST, Windows sanal masaüstü 'nün değerini bağlamsal güvenlik teknolojisi ile genişletir. deviceTRUST, güvenli bir Windows sanal masaüstü erişimi, Windows sanal masaüstü 'nde koşullu uygulama erişimi ve ek bir altyapı olmadan koşullu Windows sanal masaüstü ilkeleri uygulamak için koşullu erişim sağlar. DeviceTRUST kullanmak, tüm güvenlik, uyumluluk ve mevzuat gereksinimlerini karşılayan bir mobil, esnek çalışma alanı sunar. 
+
+- [İş ortağı Web sitesine gidin](https://devicetrust.com/wvd).
+
 ## <a name="lakeside-software"></a>Lakeside yazılımı
 
 ![Lakeside yazılım logosu](./media/partners/lakeside.png)
@@ -84,6 +94,14 @@ Liquidware Essentials, Kullanıcı profillerini etkin bir şekilde ayırarak ve 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [İş ortağı Web sitesine gidin](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="login-vsi"></a>Oturum açma VSI
+
+![Oturum açma VSI logosu](./media/partners/loginvsi.png)
+
+Oturum açma sunucusu, Windows sanal masaüstü ortamlarında uygulama performansı testi için yazılım sunmaya yönelik bir Windows sanal masaüstü katma bir hizmet sağlayıcıdır ve Microsoft iş ortağıdır. Şirket içi iş hizmetlerini Windows sanal masaüstüne taşıyan müşteriler, Windows 10 Enterprise çoklu oturum, Windows 10 Enterprise ve için en iyi performansı, ölçeklenebilirliği ve kullanılabilirliği değerlendirmek ve bakımını yapmak üzere Login VSI Enterprise Edition 'ı kullanır. Windows 7, iş açısından kritik uygulamalarıyla etkinleştirildi.
+
+- [İş ortağı Web sitesine gidin](https://www.loginvsi.com).
+
 ## <a name="nerdio"></a>Nerdio
 
 ![Nerdio logosu](./media/partners/nerdio.png)
@@ -94,6 +112,26 @@ Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kola
 
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh).
 - [İş ortağı Web sitesine gidin](https://getnerdio.com/windows-virtual-desktop/).
+
+## <a name="policypak"></a>PolicyPak
+
+![PolicyPak logosu](./media/partners/policypak.png)
+
+PolicyPak yazılımı, uygulamalar, Masaüstü, tarayıcılar, Java ve güvenlik ayarları için toplam ayar yönetimi gerçekleştiren bir Windows sanal masaüstü ortağıdır. PolicyPak, Masaüstü, sistem ve güvenlik ayarlarınızı uyumlu halde tutar. PolicyPak, Windows 'un yerleşik yönetimini iyileştirmek üzere bir bileşen paketi ekleyerek Windows sanal masaüstü 'nün değerini geliştirir. PolicyPak 'nin ayarlarını sunmak ve yöneticilerin Windows 10 makinelerini yönetme yeteneğini artırmak için mevcut Active Directory grup ilkesi ve/veya Windows Intune 'U kullanın. 
+
+PolicyPak için en iyi kullanım örnekleri, yerel yönetici haklarını kaldırmak ve UAC istemlerini aşmak, fidye 'u engellemek, birden çok tarayıcıyı yönetmek, Internet Explorer 'ın kurumsal ve uyumluluk modlarını yönetmek, GPO sayısını azaltmak, Windows 10 dosya Ilişkilendirmelerini yönetmek, Windows 10 Başlat menüsünü ve görev çubuğunu yönetin ve Windows 10 özelliklerini ve Isteğe bağlı özellikleri yönetin.  
+
+- [İş ortağı Web sitesine gidin](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
+
+## <a name="printerlogic"></a>PrinterLogic
+
+![PrinterLogic logosu](./media/partners/printerlogic.png)
+
+PrinterLogic, BT uzmanlarına tüm yazdırma sunucularını ortadan kaldırmaya ve yüksek oranda kullanılabilir bir sunucusuz yazdırma Altyapısı sunmaya yönelik bir Windows sanal masaüstü katma değeri olan hizmet sağlayıcı platformudur. PrinterLogic, yazıcı nesnelerini merkezi olarak yönetmeyi ve herhangi bir yazıcı veya uç nokta işletim sistemine dağıtmayı kolaylaştırarak Windows sanal masaüstü ve Azure 'un değerini genişletir.   
+
+Kendi özel bulutunuzda SaaS veya bir Web yığını olarak kullanılabilir, PrinterLogic platform, kullanıcıların kullanıcı KIMLIĞI, cihaz adı veya konum temelinde sanal oturumlarında gerek duydukları doğru yazıcılara her zaman sahip olmasını sağlar. Bu işlevsellik, yazdırma izleme ve raporlama, mobil yazdırma ve güvenli rozet yayını yazdırma gibi Kurumsal Yazdırma Yönetimi özelliklerinin eksiksiz bir paketi tarafından tamamlanmakta. 
+
+- [İş ortağı Web sitesine gidin](https://www.printerlogic.com).
 
 ## <a name="thinprint"></a>Ölçülü yazdırma
 
@@ -106,7 +144,7 @@ Nerdio, Azure kaynaklarını sağlamayı ve dağıtımı kolaylaştırmayı kola
 - [Bkz. Birleşik çözüm kısa](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas).
 - [İş ortağı Web sitesine gidin](https://www.ezeep.com/wvd-printing).
 
-## <a name="workspot"></a>Çalışma noktası
+## <a name="workspot"></a>Workspot
 
 ![Çalışma noktası logosu](./media/partners/workspot.png)
 
