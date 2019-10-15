@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Azure Key Vault bir gizli dizi ayarlama ve alma'
+title: 'Hızlı başlangıç: Azure Key Vault bir gizli dizi ayarlama ve alma'
 description: Azure CLI kullanarak Azure Key Vault'tan gizli dizi ayarlamayı ve almayı gösteren hızlı başlangıç
 services: key-vault
 author: msmbaldwin
@@ -7,25 +7,26 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 70c450304c13a5c4b453226140ae699e0cabda19
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: f005266b6e2e12a13f79b3f2007b1bbbafb4acef
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744768"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311566"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Hızlı Başlangıç: Azure CLı kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Hızlı başlangıç: Azure CLI kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
-Azure Key Vault, güvenli bir gizli dizi deposu olarak çalışan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Key Vault hakkında daha fazla bilgi için [Genel Bakış](key-vault-overview.md) bölümünü inceleyebilirsiniz. Azure CLI, komut veya betikler kullanarak Azure kaynakları oluşturup yönetmek için kullanılır. Bu hızlı başlangıçta bir anahtar kasası oluşturacaksınız. Bu işlemi tamamladıktan sonra bir gizli dizli depolayacaksınız.
+Bu hızlı başlangıçta Azure CLı ile Azure Key Vault bir Anahtar Kasası oluşturacaksınız. Azure Key Vault, güvenli bir gizli dizi deposu olarak çalışan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Key Vault hakkında daha fazla bilgi için [Genel Bakış](key-vault-overview.md) bölümünü inceleyebilirsiniz. Azure CLI, komut veya betikler kullanarak Azure kaynakları oluşturup yönetmek için kullanılır. Bu işlemi tamamladıktan sonra bir gizli dizli depolayacaksınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme]( /cli/azure/install-azure-cli).
 
 CLı kullanarak Azure 'da oturum açmak için şunu yazabilirsiniz:
 
@@ -57,8 +58,8 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 
 Bu cmdlet’in çıktısı, yeni oluşturulan Key Vault’un özelliklerini gösterir. Aşağıda listelenen iki özelliği not edin:
 
-- **Kasa adı**: Örnekte, bu **contoso-Vault2**' dır. Bu adı diğer Key Vault komutları için kullanacaksınız.
-- **Kasa URI 'si**: Örnekte, bu https://contoso-vault2.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
+- **Kasa Adı**: Örnekte bu değer **Contoso-Vault2** şeklindedir. Bu adı diğer Key Vault komutları için kullanacaksınız.
+- **Kasa URI’si**: Örnekte bu: https://contoso-vault2.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Bu noktada Azure hesabınız, bu yeni anahtar kasasında herhangi bir işlemi gerçekleştirmeye yetkili olan tek hesaptır.
 

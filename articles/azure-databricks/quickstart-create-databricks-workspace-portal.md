@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 1cc6d6236b940cf898651bdfdd47f4db1ac53851
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 4ace735d116ef73e8a6fee8c0a244d520e730189
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274160"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312149"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Hızlı Başlangıç: Azure portalını kullanarak Databricks üzerinde bir Spark işi çalıştırma
 
@@ -55,7 +55,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     |**Konum**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).        |
     |**Fiyatlandırma Katmanı**     |  **Standart**, **Premium**veya **deneme**arasında seçim yapın. Bu katmanlar hakkında daha fazla bilgi için bkz. [Databricks fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-    **Panoya sabitle**’yi seçin ve sonra **Oluştur**’a tıklayın.
+    **Oluştur**’a tıklayın.
 
 4. Çalışma alanının oluşturulması birkaç dakika sürer. Çalışma alanı oluşturma sırasında, **Bildirimler**' de dağıtım durumunu görüntüleyebilirsiniz.
 
@@ -79,7 +79,7 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     Aşağıdakiler dışında diğer tüm varsayılan değerleri kabul edin:
 
    * Küme için bir ad girin.
-   * Bu makalede, **5,2** çalışma zamanına sahip bir küme oluşturun.
+   * Bu makalede, **5,3** çalışma zamanına sahip bir küme oluşturun.
    * **\_\_ dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
     
      **Küme oluştur**’u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.

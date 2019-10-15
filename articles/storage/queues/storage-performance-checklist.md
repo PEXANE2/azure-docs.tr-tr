@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: f9bff9c9d96d28af43f59d2b645364fe32235212
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 02196a4df71bef767f8d1921f704907ad06e77b4
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303137"
+ms.locfileid: "72311146"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kuyruk depolama için performans ve ölçeklenebilirlik denetim listesi
 
@@ -41,7 +41,7 @@ Bu makale, sıra depolama uygulamanızı geliştirirken izleyebileceğiniz bir d
 | &nbsp; |Yeniden deneme sayısı |[Daraltma hataları ve zaman aşımları için üstel geri alma ile yeniden deneme İlkesi kullanıyor musunuz?](#timeout-and-server-busy-errors) |
 | &nbsp; |Yeniden deneme sayısı |[Uygulamanız yeniden denenmeyen hatalara karşı yeniden denemeyi önler mi?](#non-retryable-errors) |
 | &nbsp; |Yapılandırma |[Küçük isteklerin performansını artırmak için Nagle algoritmasını kapattık mı?](#disable-nagle) |
-| &nbsp; |İleti Boyutu |[İletiniz, sıranın performansını geliştirmek için sıkıştırmı?](#message-size) |
+| &nbsp; |İleti boyutu |[İletiniz, sıranın performansını geliştirmek için sıkıştırmı?](#message-size) |
 | &nbsp; |Toplu alma |[Tek bir GET işleminde birden çok ileti alıyor musunuz?](#batch-retrieval) |
 | &nbsp; |Yoklama sıklığı |[Uygulamanızın algılanan gecikmesini azaltmak için yeterince sık yoklanıyor musunuz?](#queue-polling-interval) |
 | &nbsp; |Güncelleştirme Iletisi |[Bir hata oluşursa iletinin tamamını yeniden işlemek zorunda kalmamak için ileti işleme sürecini depolamak üzere iletileri güncelleştirme işlemini kullanıyorsunuz musunuz?](#use-update-message) |

@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 85f7ea11638278a010b2a94d9c6472857f51b687
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 8de36ea9f7bb77443b22e038172ee69bb8435b29
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710165"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311227"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure depolama 'da statik Web sitesi barındırma
 
@@ -39,7 +39,7 @@ Adım adım yönergeler için bkz. [Azure depolama 'da statik bir Web sitesi bar
 **$Web** kapsayıcısına içerik yüklemek için bu araçlardan herhangi birini kullanabilirsiniz:
 
 > [!div class="checklist"]
-> * [Azure CLı](storage-blob-static-website-how-to.md#cli)
+> * [Azure CLI](storage-blob-static-website-how-to.md#cli)
 > * [Azure PowerShell modülü](storage-blob-static-website-how-to.md#powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
@@ -50,15 +50,15 @@ Adım adım yönergeler için bkz. [Azure depolama 'da statik bir Web sitesi bar
 
 Kullanıcılar Web sitesinin genel URL 'sini kullanarak bir tarayıcıdan site içeriğini görüntüleyebilir. Azure portal, Azure CLı veya PowerShell kullanarak URL 'YI bulabilirsiniz. Bu tabloyu kılavuz olarak kullanın.
 
-|Aracı| Kılavuz |
+|Araç| Kılavuz |
 |----|----|
-|**Azure portal** | [Azure portal kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure CLı** | [Azure CLı kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#cli-find-url) |
+|**Azure portalda** | [Azure portal kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure CLI** | [Azure CLı kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Azure PowerShell modülü** | [PowerShell kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#powershell-find-url) |
 
 Sitenizin URL 'SI bölgesel bir kod içerir. Örneğin `https://contosoblobaccount.z22.web.core.windows.net/` URL 'SI, `z22` bölgesel kodunu içerir.
 
-Bu kodun URL kalması gerekir, ancak yalnızca iç kullanım içindir ve bu kodu başka bir şekilde kullanmanız gerekmez.
+Bu kodun URL 'de kalması gerekir, ancak yalnızca iç kullanım içindir ve bu kodu başka bir şekilde kullanmak zorunda kalmazsınız.
 
 Statik Web sitesi barındırmayı etkinleştirdiğinizde belirttiğiniz dizin belgesi, kullanıcılar siteyi açtıklarında ve belirli bir dosya belirtmezseniz görüntülenir (örneğin: `https://contosoblobaccount.z22.web.core.windows.net`).  
 
@@ -82,7 +82,7 @@ Ancak, birincil blob hizmeti uç noktasına `https://contosoblobaccount.blob.cor
 
 Statik Web sitesi dosyalarınızı özel etki alanınız ve HTTPS üzerinden kullanılabilir hale getirmek için, [https üzerinden özel etki alanlarıyla bloblara erişmek üzere Azure CDN kullanma](storage-https-custom-domain-cdn.md)konusuna bakın. Bu işlemin bir parçası olarak, birincil *BLOB hizmeti* uç noktası yerine CDN 'nizi birincil *statik Web sitesi* uç noktasına getirmeniz gerekir. CDN yapılandırması hemen yürütülmediğinden, içeriğiniz görünür olması için birkaç dakika beklemeniz gerekebilir.
 
-Statik Web sitenizi güncelleştirdiğinizde, CDN uç noktası ' nı temizleyerek CDN uç sunucularında önbelleğe alınmış içeriği temizlemeyi unutmayın. Daha fazla bilgi için bkz. [Azure CDN uç noktasını Temizleme](../../cdn/cdn-purge-endpoint.md).
+Statik Web sitenizi güncelleştirdiğinizde, CDN uç noktası ' nı temizleyerek CDN uç sunucularında önbelleğe alınmış içeriği temizlemeyi unutmayın. Daha fazla bilgi için bkz. [Azure CDN uç noktasını temizleme](../../cdn/cdn-purge-endpoint.md).
 
 > [!NOTE]
 > HTTPS, hesap Web uç noktası aracılığıyla yerel olarak desteklenir, bu nedenle web uç noktasına hem HTTP hem de HTTPS aracılığıyla erişilebilir. Ancak, depolama hesabı HTTPS üzerinden güvenli aktarım gerektirecek şekilde yapılandırıldıysa, kullanıcıların HTTPS uç noktasını kullanması gerekir. Daha fazla bilgi için bkz. [Azure Storage 'da güvenli aktarım gerektir](../common/storage-require-secure-transfer.md).

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cb9f37d5e2c33984189c90857b409d3a59e74e59
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: d9fe4ee761a7ff9570bf0df61a8990f82640b4f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303123"
+ms.locfileid: "72311616"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Tablo depolaması için performans ve ölçeklenebilirlik denetim listesi
 
@@ -52,10 +52,10 @@ Bu makale, tablo depolama uygulamanızı geliştirirken izleyebileceğiniz bir d
 | &nbsp; |Döndürülen verileri sınırlama |[Gerekli olmayan varlıkların döndürülmemek için filtreleme kullanıyor musunuz?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |Döndürülen verileri sınırlama |[Gerekli olmayan özellikleri döndürmemek için projeksiyon kullanıyor musunuz?](#limiting-the-amount-of-data-returned) |
 | &nbsp; |Normalleştirilmemiş |[Verileri almaya çalışırken verimsiz sorgulardan veya birden çok okuma isteğinin oluşmasını önlemenize izin veriyor musunuz?](#denormalization) |
-| &nbsp; |Ekle/güncelleştir/Sil |[İşlem olması gereken veya gidiş dönüş sayısını azaltmak için aynı anda yapılabilecek istekleri toplu olarak gerçekleştirebilirsiniz mu?](#batching) |
-| &nbsp; |Ekle/güncelleştir/Sil |[Yalnızca ekleme veya güncelleştirme çağrısı yapılıp yapılmayacağını öğrenmek için bir varlığı alma](#upsert) |
-| &nbsp; |Ekle/güncelleştir/Sil |[Sık sık tek bir varlıkta birden çok varlık yerine özellikler olarak bir araya getirilen veri serisini mi saklayacaksınız?](#storing-data-series-in-a-single-entity) |
-| &nbsp; |Ekle/güncelleştir/Sil |[Her zaman birlikte alınacak ve toplu işlemlere (örneğin, zaman serisi verileri) yazılabilecekleri varlıklar için tablolar yerine blob 'ları kullanarak göz önünde bulundurmanız gerekir mi?](#storing-structured-data-in-blobs) |
+| &nbsp; |Ekle, Güncelleştir ve Sil |[İşlem olması gereken veya gidiş dönüş sayısını azaltmak için aynı anda yapılabilecek istekleri toplu olarak gerçekleştirebilirsiniz mu?](#batching) |
+| &nbsp; |Ekle, Güncelleştir ve Sil |[Yalnızca ekleme veya güncelleştirme çağrısı yapılıp yapılmayacağını öğrenmek için bir varlığı alma](#upsert) |
+| &nbsp; |Ekle, Güncelleştir ve Sil |[Sık sık tek bir varlıkta birden çok varlık yerine özellikler olarak bir araya getirilen veri serisini mi saklayacaksınız?](#storing-data-series-in-a-single-entity) |
+| &nbsp; |Ekle, Güncelleştir ve Sil |[Her zaman birlikte alınacak ve toplu işlemlere (örneğin, zaman serisi verileri) yazılabilecekleri varlıklar için tablolar yerine blob 'ları kullanarak göz önünde bulundurmanız gerekir mi?](#storing-structured-data-in-blobs) |
 
 ## <a name="scalability-targets"></a>Ölçeklenebilirlik hedefleri
 
@@ -254,7 +254,7 @@ Bir sorgunun istemci uygulamada ihtiyaç duymayacak varlıkları döndürmeyece�
 
 İlişkisel veritabanlarıyla çalışmaktan farklı olarak, tablo verilerinin etkin bir şekilde sorgulanmasına yönelik kanıtlanmış uygulamalar, verilerinizin normalleştirilmesi için Diğer bir deyişle, bir sorgunun,, uygulamanızın verileri bulmak için çok sayıda varlığı taramak zorunda kalmadan, istemci ihtiyacı olan verileri bulmak için taraması gereken varlıkların sayısını en aza indirmek için, aynı verileri birden çok varlıkta çoğaltma (verileri bulmak için kullanabileceğiniz her anahtar için bir tane) uygulaması gerekiyor. Örneğin, bir e-ticaret Web sitesinde, hem müşteri KIMLIĞI hem de (bu müşterinin emirlerini bana) ve tarihe göre (bir tarih için bana sipariş siparişi ver) bir sipariş bulmak isteyebilirsiniz. Tablo depolama alanında, müşteri KIMLIĞINE göre bulmayı kolaylaştırmak için bir kez tablo adı, PK ve RK ile her iki kez bir kez (veya bir başvuru) depolamak en iyi yöntemdir.  
 
-### <a name="insertupdatedelete"></a>Ekle/güncelleştir/Sil
+### <a name="insert-update-and-delete"></a>Ekle, Güncelleştir ve Sil
 
 Bu bölümde, tablo hizmetinde depolanan varlıkları değiştirmeye yönelik kanıtlanmış uygulamalar açıklanmaktadır.  
 

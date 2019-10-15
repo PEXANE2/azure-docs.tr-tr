@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 84707c72e62bed7621d94dbd1ec65607cfcfd2d6
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 56bb5a1ac3c4003eca6ebe8392fc5b97f36a3317
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303047"
+ms.locfileid: "72311138"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>BLOB depolama için performans ve ölçeklenebilirlik denetim listesi
 
@@ -45,6 +45,9 @@ Bu makale, blob Storage uygulamanızı geliştirirken izleyebileceğiniz bir den
 | &nbsp; |Araçlar |[Microsoft tarafından sağlanmış istemci kitaplıklarının ve araçlarının en son sürümlerini kullanıyor musunuz?](#client-libraries-and-tools) |
 | &nbsp; |Yeniden deneme sayısı |[Daraltma hataları ve zaman aşımları için üstel geri alma ile yeniden deneme İlkesi kullanıyor musunuz?](#timeout-and-server-busy-errors) |
 | &nbsp; |Yeniden deneme sayısı |[Uygulamanız yeniden denenmeyen hatalara karşı yeniden denemeyi önler mi?](#non-retryable-errors) |
+| &nbsp; |Blobları kopyalama |[Blob 'ları en verimli şekilde kopyaladığınızı biliyor musunuz?](#blob-copy-apis) |
+| &nbsp; |Blobları kopyalama |[Toplu kopyalama işlemleri için AzCopy 'ın en son sürümünü kullanıyor musunuz?](#use-azcopy) |
+| &nbsp; |Blobları kopyalama |[Büyük hacimli verileri içeri aktarmak için Azure Data Box ailesini kullanıyor musunuz?](#use-azure-data-box) |
 | &nbsp; |İçerik dağıtımı |[İçerik dağıtımı için CDN kullanıyor musunuz?](#content-distribution) |
 | &nbsp; |Meta verileri kullan |[Blob 'lar hakkında sık kullanılan meta verileri meta verilerinde depoluyorsanız mi?](#use-metadata) |
 | &nbsp; |Hızlı karşıya yükleme |[Bir blobu hızlıca karşıya yüklemeye çalışırken blokları paralel olarak karşıya yüklüyor musunuz?](#upload-one-large-blob-quickly) |
@@ -183,7 +186,7 @@ Performans geliştirmelerinden faydalanmak için .NET Core 2,1 veya sonraki bir 
 
 ### <a name="increase-default-connection-limit"></a>Varsayılan bağlantı sınırını artır
 
-.NET ' te aşağıdaki kod, varsayılan bağlantı sınırını (genellikle bir istemci ortamında 2 veya bir sunucu ortamında 10 ' a) 100 olarak artırır. Genellikle, değerini uygulamanız tarafından kullanılan iş parçacığı sayısı için yaklaşık olarak ayarlamanız gerekir. Herhangi bir bağlantıyı açmadan önce bağlantı sınırını ayarlayın.
+.NET sürümünde aşağıdaki kod, varsayılan bağlantı sınırını (genellikle bir istemci ortamında veya bir sunucu ortamındaki on iki) 100 ' e yükseltir. Genellikle, değerini uygulamanız tarafından kullanılan iş parçacığı sayısı için yaklaşık olarak ayarlamanız gerekir. Herhangi bir bağlantıyı açmadan önce bağlantı sınırını ayarlayın.
 
 ```csharp
 ServicePointManager.DefaultConnectionLimit = 100; //(Or More)  
@@ -227,9 +230,23 @@ Bağlantı hataları, azaltma sonucu olmadığı ve geçici olması beklenen iç
 
 Azure Storage hata kodları hakkında daha fazla bilgi için bkz. [durum ve hata kodları](/rest/api/storageservices/status-and-error-codes2).
 
-## <a name="transfer-data"></a>Veri aktarma
+## <a name="copying-and-moving-blobs"></a>Blob 'ları kopyalama ve taşıma
 
-BLOB depolama alanına veya depolama hesaplarına yönelik verileri verimli bir şekilde aktarma hakkında daha fazla bilgi için bkz. [veri aktarımı için bir Azure çözümü seçme](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+Azure depolama, blob 'ları bir depolama hesabında, depolama hesapları arasında ve şirket içi sistemler ile bulut arasında kopyalama ve taşıma için çeşitli çözümler sağlar. Bu bölümde, performans üzerindeki etkileri açısından bu seçeneklerin bazıları açıklanmaktadır. BLOB depolama alanına veya blob depolamadan veri aktarma hakkında daha fazla bilgi için bkz. [veri aktarımı için bir Azure çözümü seçme](../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+### <a name="blob-copy-apis"></a>Blob kopyalama API 'Leri
+
+Blob 'ları depolama hesaplarına kopyalamak için [URL 'Den yerleştirme](/rest/api/storageservices/put-block-from-url) işlemini kullanın. Bu işlem, verileri herhangi bir URL kaynağından bir blok blobuna eşzamanlı olarak kopyalar. @No__t-0 işleminin kullanılması, depolama hesaplarına veri geçirirken gereken bant genişliğini önemli ölçüde azaltabilir. Kopyalama işlemi hizmet tarafında gerçekleştiğinden, verileri indirmeniz ve yeniden yüklemeniz gerekmez.
+
+Aynı depolama hesabı içindeki verileri kopyalamak için [BLOB kopyalama](/rest/api/storageservices/Copy-Blob) işlemini kullanın. Verileri aynı depolama hesabı içinde kopyalamak genellikle hızla tamamlanır.  
+
+### <a name="use-azcopy"></a>AzCopy’yi kullanma
+
+AzCopy komut satırı yardımcı programı, blob 'ların depolama hesaplarına, üzerinden ve bunların tamamında toplu aktarımı için basit ve verimli bir seçenektir. AzCopy, bu senaryo için iyileştirilmiştir ve yüksek aktarım ücretleri elde edebilir. AzCopy sürüm 10, blob verilerini depolama hesapları arasında kopyalamak için `Put Block From URL` işlemini kullanır. Daha fazla bilgi için bkz. [AzCopy ile v10 arasındaki kullanarak Azure depolama 'ya veri kopyalama veya taşıma](/azure/storage/common/storage-use-azcopy-v10).  
+
+### <a name="use-azure-data-box"></a>Azure Data Box kullan
+
+Büyük hacimli verileri blob depolamaya aktarmak için Azure Data Box ailesini çevrimdışı aktarımlar için kullanmayı düşünün. Microsoft tarafından sağlanan Data Box cihazları zamana, ağ kullanılabilirliğine veya maliyetlere göre sınırlı olduğunuzda büyük miktarlarda verileri Azure 'a taşımak için iyi bir seçimdir. Daha fazla bilgi için bkz. [Azure veri kutusu belgeleri](/azure/databox/).
 
 ## <a name="content-distribution"></a>İçerik dağıtımı
 
@@ -239,7 +256,7 @@ Azure CDN hakkında daha fazla bilgi için bkz. [Azure CDN](../../cdn/cdn-overvi
 
 ## <a name="use-metadata"></a>Meta verileri kullan
 
-Blob hizmeti, blob özellikleri veya meta veri içerebilen baş isteklerini destekler. Örneğin, uygulamanız bir fotoğraftan Exif (exchangable görüntü biçimi) verilerine ihtiyaç duyuyorsa fotoğrafı alabilir ve ayıklayabilir. Bant genişliğini kaydetmek ve performansı artırmak için, uygulama fotoğrafı karşıya yüklerken uygulamanız Exif verilerini Blobun meta verilerinde saklayabilir. Daha sonra Exif verilerini meta verilerde yalnızca bir HEAD isteği kullanarak alabilirsiniz. Yalnızca meta veri alma, blob 'un tam içeriği değil, önemli bant genişliği kazandırır ve Exif verilerini ayıklamak için gereken işlem süresini azaltır. Blob başına yalnızca 8 KB 'lık meta veri depolanabileceğini aklınızda bulundurun.  
+Blob hizmeti, blob özellikleri veya meta veri içerebilen baş isteklerini destekler. Örneğin, uygulamanız bir fotoğraftan Exif (exchangable görüntü biçimi) verilerine ihtiyaç duyuyorsa fotoğrafı alabilir ve ayıklayabilir. Bant genişliğini kaydetmek ve performansı artırmak için, uygulama fotoğrafı karşıya yüklerken uygulamanız Exif verilerini Blobun meta verilerinde saklayabilir. Daha sonra Exif verilerini meta verilerde yalnızca bir HEAD isteği kullanarak alabilirsiniz. Yalnızca meta veri alma, blob 'un tam içeriği değil, önemli bant genişliği kazandırır ve Exif verilerini ayıklamak için gereken işlem süresini azaltır. Blob başına 8 kıb meta verilerin depolanabileceğini aklınızda bulundurun.  
 
 ## <a name="upload-blobs-quickly"></a>Blobları hızlıca karşıya yükleyin
 

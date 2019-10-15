@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 03e6852f5b54160bed6336e253e38423b5ecea51
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e3a83730e47686e9d4757f057d2e8da4629fdd7a
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294331"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72312144"
 ---
 # <a name="entity-functions-preview"></a>Varlık işlevleri (Önizleme)
 
@@ -206,6 +206,68 @@ Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara (veya hatta ke
         currentValue += amount;
         break;
 ```
+
+Aşağıdaki kod parçacığında, eklenen hizmetin varlık sınıfınıza nasıl dahil olduğu gösterilmektedir.
+
+```csharp
+public class HttpEntity
+{
+    private readonly HttpClient client;
+
+    public HttpEntity(IHttpClientFactory factory)
+    {
+        this.client = factory.CreateClient();
+    }
+
+    public async Task<int> GetAsync(string url)
+    {
+        using (var response = await this.client.GetAsync(url))
+        {
+            return (int)response.StatusCode;
+        }
+    }
+
+    // The function entry point must be declared static
+    [FunctionName(nameof(HttpEntity))]
+    public static Task Run([EntityTrigger] IDurableEntityContext ctx)
+        => ctx.DispatchAsync<HttpEntity>();
+}
+```
+
+> [!NOTE]
+> Normal .NET Azure Işlevlerinde Oluşturucu Ekleme kullanmanın aksine, sınıf tabanlı varlıkların işlevler giriş noktası yöntemi- *1 olarak bildirilmelidir* @no__t. Statik olmayan bir işlev giriş noktası bildirmek, normal Azure Işlevleri nesne Başlatıcısı ve dayanıklı varlıklar nesne Başlatıcısı arasında çakışmalara neden olabilir.
+
+### <a name="bindings-in-entity-classes-net"></a>Varlık sınıflarında bağlamalar (.NET)
+
+Normal işlevlerin aksine, varlık sınıfı yöntemlerinin giriş ve çıkış bağlamalarına doğrudan erişimi yoktur. Bunun yerine, bağlama verileri giriş noktası işlev bildiriminde yakalanmalı ve sonra `DispatchAsync<T>` yöntemine geçirilmelidir. @No__t-0 ' a geçirilen tüm nesneler, bağımsız değişken olarak varlık sınıfı oluşturucusuna otomatik olarak geçirilir.
+
+Aşağıdaki örnek, [BLOB giriş bağlamasındaki](../functions-bindings-storage-blob.md#input) bir `CloudBlobContainer` başvurusunun, sınıf tabanlı bir varlık için nasıl kullanılabilir hale getirilebilir olduğunu gösterir.
+
+```csharp
+public class BlobBackedEntity
+{
+    private readonly CloudBlobContainer container;
+
+    public BlobBackedEntity(CloudBlobContainer container)
+    {
+        this.container = container;
+    }
+
+    // ... entity methods can use this.container in their implementations ...
+    
+    [FunctionName(nameof(BlobBackedEntity))]
+    public static Task Run(
+        [EntityTrigger] IDurableEntityContext context,
+        [Blob("my-container", FileAccess.Read)] CloudBlobContainer container)
+    {
+        // passing the binding object as a parameter makes it available to the
+        // entity class constructor
+        return context.DispatchAsync<BlobBackedEntity>(container);
+    }
+}
+```
+
+Azure Işlevleri 'ndeki bağlamalar hakkında daha fazla bilgi için bkz. [Azure Işlevleri Tetikleyicileri ve bağlamaları](../functions-triggers-bindings.md) belgeleri.
 
 ## <a name="entity-coordination"></a>Varlık düzenlemesi
 

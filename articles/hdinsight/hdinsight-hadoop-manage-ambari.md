@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 2f46f90edcdd1c4cdf7583c7e628aee205b312e1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.date: 10/11/2019
+ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098653"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311667"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme
 
@@ -29,7 +29,7 @@ Bu belgede, bir HDInsight kümesiyle ambarı Web Kullanıcı arabirimini kullanm
 
 ## <a name="connectivity"></a>Bağlantı
 
-Ambarı Web Kullanıcı arabirimi, adresindeki `https://CLUSTERNAME.azurehdinsight.net`HDInsight kümenizde kullanılabilir; burada `CLUSTERNAME` kümenizin adıdır.
+Ambarı Web Kullanıcı arabirimi `https://CLUSTERNAME.azurehdinsight.net` ' da HDInsight kümenizde kullanılabilir; burada `CLUSTERNAME` kümenizin adıdır.
 
 > [!IMPORTANT]  
 > HDInsight üzerinde ambarı 'na bağlanmak için HTTPS gerekir. Kimlik doğrulaması istendiğinde, küme oluşturulduğunda verdiğiniz yönetici hesabı adını ve parolasını kullanın.
@@ -38,7 +38,7 @@ Ambarı Web Kullanıcı arabirimi, adresindeki `https://CLUSTERNAME.azurehdinsig
 
 Kümenizin ambarı doğrudan Internet üzerinden erişilebilir olsa da, ambarı Web kullanıcı arabiriminden (örneğin, JobTracker gibi) bazı bağlantılar Internet 'te gösterilmez. Bu hizmetlere erişmek için bir SSH tüneli oluşturmanız gerekir. Daha fazla bilgi için bkz. [HDInsight Ile SSH tüneli kullanma](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Ambari Web UI
+## <a name="ambari-web-ui"></a>Ambarı Web Kullanıcı arabirimi
 
 > [!WARNING]  
 > Tüm ambarı Web Kullanıcı arabiriminin özellikleri HDInsight üzerinde desteklenmez. Daha fazla bilgi için bu belgenin [Desteklenmeyen işlemler](#unsupported-operations) bölümüne bakın.
@@ -56,9 +56,9 @@ Sayfa açıldığında, üstteki çubuğun üzerine göz önünde yer. Bu çubuk
 |uyarı sayısı|Küme için uyarıları veya kritik uyarıları görüntüler.|
 |Pano|Panoyu görüntüler.|
 |Hizmetler|Kümedeki hizmetler için bilgi ve yapılandırma ayarları.|
-|Konaklar|Kümedeki düğümlerin bilgileri ve yapılandırma ayarları.|
+|Ana bilgisayarlar|Kümedeki düğümlerin bilgileri ve yapılandırma ayarları.|
 |Uyarılar|Bilgi, uyarı ve kritik uyarıların günlüğü.|
-|Yönetici|Kümede yüklü olan yazılım yığını/Hizmetleri, hizmet hesabı bilgileri ve Kerberos güvenliği.|
+|Yöneticileri|Kümede yüklü olan yazılım yığını/Hizmetleri, hizmet hesabı bilgileri ve Kerberos güvenliği.|
 |Yönetici düğmesi|Ambarı yönetimi, Kullanıcı ayarları ve oturumu kapatma.|
 
 ## <a name="monitoring"></a>İzleme
@@ -67,8 +67,8 @@ Sayfa açıldığında, üstteki çubuğun üzerine göz önünde yer. Bu çubuk
 
 Aşağıdaki liste, ambarı tarafından kullanılan ortak uyarı durumlarını içerir:
 
-* **TAMAM**
-* **Uyarı**
+* **Tamam**
+* **Warning**
 * **BAŞLATMA**
 * **BILINMEYEN**
 
@@ -82,7 +82,7 @@ Grupları **Eylemler** menüsünü kullanarak yönetebilir ve **Uyarı grupları
 
 ![Apache ambarı uyarı gruplarını yönetme](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
-Ayrıca, uyarı yöntemlerini yönetebilir ve __Uyarı bildirimlerini yönet__' i seçerek **Eylemler** menüsünde uyarı bildirimleri oluşturabilirsiniz. Geçerli tüm bildirimler görüntülenir. Ayrıca, buradan bildirim oluşturabilirsiniz. Bildirimler, belirli bir uyarı/önem derecesi oluştuğunda **e-posta** veya **SNMP** aracılığıyla gönderilebilir. Örneğin, **Yarn varsayılan** grubundaki uyarılardan herhangi biri **kritik**olarak ayarlandığında bir e-posta iletisi gönderebilirsiniz.
+Ayrıca, uyarı yöntemlerini yönetebilir ve __Bildirimleri Yönet__' i seçerek **Eylemler** menüsünde uyarı bildirimleri oluşturabilirsiniz. Geçerli tüm bildirimler görüntülenir. Ayrıca, buradan bildirim oluşturabilirsiniz. Bildirimler, belirli bir uyarı/önem derecesi oluştuğunda **e-posta** veya **SNMP** aracılığıyla gönderilebilir. Örneğin, **Yarn varsayılan** grubundaki uyarılardan herhangi biri **kritik**olarak ayarlandığında bir e-posta iletisi gönderebilirsiniz.
 
 ![Apache ambarı oluşturma uyarı bildirimi](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
@@ -138,7 +138,7 @@ Bu bağlantılardan herhangi birini seçmek, tarayıcınızda seçili sayfayı g
 > [!WARNING]  
 > Linux tabanlı HDInsight kümenizdeki ambarı izleme (hdinsightwatchdog) parolasını değiştirmeyin. Parola değiştirme, betik eylemlerini kullanma veya kümeniz ile ölçeklendirme işlemleri gerçekleştirme yeteneğini keser.
 
-### <a name="hosts"></a>Konaklar
+### <a name="hosts"></a>Ana bilgisayarlar
 
 **Konaklar** sayfasında kümedeki tüm konaklar listelenir. Konakları yönetmek için aşağıdaki adımları izleyin.
 
@@ -159,9 +159,9 @@ Bu bağlantılardan herhangi birini seçmek, tarayıcınızda seçili sayfayı g
     |Bakım modunu aç|Ana bilgisayar için uyarıları göstermez. Uyarı üreten eylemler gerçekleştiriyorsanız Bu mod etkinleştirilmelidir. Örneğin, bir hizmeti durdurup başlatma.|
     |Bakım modunu kapat|Ana bilgisayarı normal uyarı ' e döndürür.|
     |Durdur|Konakta Katanode veya Nodeyöneticileri sonlandırır.|
-    |Start|Konakta Dadtanode veya Nodeyöneticileri başlatır.|
-    |yeniden başlatıp|Konakta Dadtanode veya Nodeyöneticileri durdurup başlatır.|
-    |Kullanımdan çıkar|Kümeden bir konağı kaldırır. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
+    |Başlayın|Konakta Dadtanode veya Nodeyöneticileri başlatır.|
+    |Yeniden Başlatma|Konakta Dadtanode veya Nodeyöneticileri durdurup başlatır.|
+    |Açığa|Kümeden bir konağı kaldırır. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
     |Yeniden komisyon|Önceden yetkisi alınmış bir konağı kümeye ekler. **Bu eylemi HDInsight kümelerinde kullanmayın.**|
 
 ### <a id="service"></a>Servislere
@@ -193,19 +193,19 @@ Bir hizmeti yapılandırmak için aşağıdaki adımları kullanın:
 
 1. **Pano** veya **Hizmetler** sayfasında bir hizmet seçin.
 
-2. Seçin **yapılandırmaları** sekmesi. Geçerli yapılandırma görüntülenir. Önceki yapılandırmaların bir listesi de görüntülenir.
+2. Yapılandırma sekmesini **seçin** . Geçerli yapılandırma görüntülenir. Önceki yapılandırmaların bir listesi de görüntülenir.
 
     ![Apache ambarı hizmeti yapılandırması](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. Yapılandırmayı değiştirmek için görüntülenecek alanları kullanın ve ardından **Kaydet**' i seçin. Veya önceki ayarlara geri dönmek için önceki bir yapılandırma seçin ve ardından **geçerli yap** ' ı seçin.
 
-## <a name="ambari-views"></a>Ambari görünümleri
+## <a name="ambari-views"></a>Ambarı görünümleri
 
 Ambarı görünümleri, geliştiricilerin [Apache ambarı görünümleri çerçevesini](https://cwiki.apache.org/confluence/display/AMBARI/Views)kullanarak UI öğelerini ambarı Web Kullanıcı arabirimine eklemesine olanak tanır. HDInsight, Hadoop kümesi türleriyle aşağıdaki görünümleri sağlar:
 
 * Hive görünümü: Hive görünümü, Hive sorgularını doğrudan Web tarayıcınızdan çalıştırmanızı sağlar. Sorguları kaydedebilir, sonuçları görüntüleyebilir, sonuçları küme depolamasına kaydedebilir veya sonuçları yerel sisteminize indirebilirsiniz. Hive Görünümlerini kullanma hakkında daha fazla bilgi için bkz. [HDInsight ile Apache Hive Görünümlerini kullanma](hadoop/apache-hadoop-use-hive-ambari-view.md).
 
-* Tez görünümü: Tez görünümü işleri daha iyi anlamanıza ve iyileştirmenize olanak tanır. Tez işlerinin nasıl yürütüldüğü ve hangi kaynakların kullanıldığı hakkında bilgi görüntüleyebilirsiniz.
+* Tez görünümü: tez görünümü işleri daha iyi anlamanıza ve iyileştirmenize olanak tanır. Tez işlerinin nasıl yürütüldüğü ve hangi kaynakların kullanıldığı hakkında bilgi görüntüleyebilirsiniz.
 
 ## <a name="unsupported-operations"></a>Desteklenmeyen işlemler
 

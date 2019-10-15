@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 839faa4cf2455ee2b0de38046a464ce824f007cd
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301873"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311884"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneğini yapılandırma
 
@@ -37,7 +37,7 @@ Aşağıdaki teknolojilerde işlemsel olarak anlaşılmalıdır:
 - [Windows küme teknolojileri](/windows-server/failover-clustering/failover-clustering-overview)
 - [Yük devretme kümesi örnekleri SQL Server](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server).
 
-Önemli bir farklılık, bir Azure IaaS VM yük devretme kümesinde, sunucu başına (küme düğümü) ve tek bir alt ağ için tek bir NIC önerilir. Azure ağındaki fiziksel yedeklilik nedeniyle Azure IaaS VM konuk kümesinde ek NIC ve alt ağ kullanılmasına gerek yoktur. Küme doğrulama raporu, düğümlerin yalnızca tek bir ağda ulaşılabilir olduğunu bildiren bir uyarı verebilir, ancak bu uyarı Azure IaaS VM yük devretme kümelerinde güvenle yoksayılabilir. 
+Önemli bir farklılık, bir Azure IaaS VM yük devretme kümesinde, sunucu başına (küme düğümü) ve tek bir alt ağ için tek bir NIC önerilir. Azure ağ iletişimi, Azure IaaS VM Konuk kümesinde ek NIC 'Lerin ve alt ağların gereksiz olmasını sağlayan fiziksel yedekliliğe sahiptir. Küme doğrulama raporu, düğümlerin yalnızca tek bir ağda ulaşılabilir olduğunu bildiren bir uyarı verebilir, ancak bu uyarı Azure IaaS VM yük devretme kümelerinde güvenle yoksayılabilir. 
 
 Ayrıca, aşağıdaki teknolojilerde genel olarak anlaşılmalıdır:
 
@@ -51,7 +51,7 @@ Ayrıca, aşağıdaki teknolojilerde genel olarak anlaşılmalıdır:
 
 Premium dosya paylaşımları, ıOPS 'yi ve çok sayıda iş yükünün ihtiyaçlarını karşılayacak kapasiteyi sağlar. Ancak, GÇ yoğun iş yükleri için, yönetilen Premium disklere veya ultra disklere göre [depolama alanları doğrudan FCI SQL Server](virtual-machines-windows-portal-sql-create-failover-cluster.md) göz önünde bulundurun.  
 
-Geçerli ortamınızın ıOPS etkinliğini denetleyin ve bir dağıtıma veya geçişe başlamadan önce Premium dosyalarının ihtiyacınız olan ıOPS 'yi sağlayabildiğini doğrulayın. Windows performans Izleyicisi disk sayaçlarını kullanın ve SQL Server veri, günlük ve Geçici VERITABANı dosyaları için gereken toplam ıOPS (disk aktarımı/sn) ve üretilen iş (disk bayt/sn) sayısını izleyin. Çok sayıda iş yükü, yoğun kullanım dönemleri sırasında kontrol etmek ve maksimum ıOPS 'nin yanı sıra ortalama ıOPS 'yi de göz önünde bulundurarak iyi bir fikir olacak. Premium dosya paylaşımları, paylaşımın boyutuna bağlı olarak ıOPS sağlar. Premium dosyalar Ayrıca, GÇ 'nizi bir saate kadar üç temel miktarı üç katına kaymanıza olanak sağlayan, yük patlaması de sağlar. 
+Geçerli ortamınızın ıOPS etkinliğini denetleyin ve bir dağıtıma veya geçişe başlamadan önce Premium dosyalarının ihtiyacınız olan ıOPS 'yi sağlayabildiğini doğrulayın. Windows performans Izleyicisi disk sayaçlarını kullanın ve SQL Server verileri, günlüğü ve geçici DB dosyaları için gereken toplam ıOPS (disk aktarımı/sn) ve üretilen iş (disk bayt/sn) sayısını izleyin. Çok sayıda iş yükü, yoğun kullanım dönemleri sırasında kontrol etmek ve maksimum ıOPS 'nin yanı sıra ortalama ıOPS 'yi de göz önünde bulundurarak iyi bir fikir olacak. Premium dosya paylaşımları, paylaşımın boyutuna bağlı olarak ıOPS sağlar. Premium dosyalar Ayrıca, GÇ 'nizi bir saate kadar üç temel miktarı üç katına kaymanıza olanak sağlayan, yük patlaması de sağlar. 
 
 ### <a name="licensing-and-pricing"></a>Lisanslama ve fiyatlandırma
 
@@ -165,34 +165,20 @@ Sanal makineler oluşturulup yapılandırıldıktan sonra Premium dosya paylaş�
 1. [Azure Portal](https://portal.azure.com) oturum açın ve depolama hesabınıza gidin.
 1. **Dosya hizmeti** altında **dosya paylaşımları** ' na gidin ve SQL depolama alanınızı kullanmak istediğiniz Premium dosya paylaşımını seçin. 
 1. Dosya paylaşımınızın bağlantı dizesini görüntülemek için **Bağlan** ' ı seçin. 
-1. Açılan listeden kullanmak istediğiniz sürücü harfini seçin ve sonra iki PowerShell komutu bloklarında iki PowerShell komutunu kopyalayın.  Not Defteri gibi bir metin düzenleyicisine yapıştırın. 
+1. Açılan kutudan kullanmak istediğiniz sürücü harfini seçin ve ardından her iki kod bloğunu bir not defteri 'ne kopyalayın.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/premium-file-storage-commands.png" alt-text="Her iki PowerShell komutunu da dosya paylaşımının Connect portalından Kopyala":::
 
 1. SQL Server FCı 'nizin hizmet hesabı için kullanacağı hesabı kullanarak SQL Server VM RDP. 
 1. Bir yönetim PowerShell komut konsolu başlatın. 
-1. Depolama hesabı bağlantısını test etmek için `Test-NetConnection` komutunu çalıştırın. İlk kod bloğundan `cmdkey` komutunu çalıştırmayın. 
+1. Daha önce kaydettiğiniz portaldan komutları çalıştırın. 
+1. @No__t-1 ağ yolunu kullanarak dosya Gezgini ya da **Çalıştır** iletişim kutusu (Windows tuşu + r) ile paylaşıma gidin. Örnek: `\\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare`
 
-   ```console
-   example: Test-NetConnection -ComputerName  sqlvmstorageaccount.file.core.windows.net -Port 445
-   ```
-
-1. Dosya paylaşımının bir sürücü olarak bağlanması için *ikinci* kod bloğundan `cmdkey` komutunu çalıştırın ve kalıcı hale getirin. 
-
-   ```console
-   example: cmdkey /add:sqlvmstorageaccount.file.core.windows.net /user:Azure\sqlvmstorageaccount /pass:+Kal01QAPK79I7fY/E2Umw==
-   net use M: \\sqlvmstorageaccount.file.core.windows.net\sqlpremiumfileshare /persistent:Yes
-   ```
-
-1. **Dosya Gezgini** 'ni açın ve **Bu bilgisayara**gidin. Dosya paylaşma, ağ konumları altında görünür: 
-
-   :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage/file-share-as-storage.png" alt-text="Dosya Gezgini 'nde depolama olarak görünen dosya paylaşma":::
-
-1. Yeni eşlenen sürücüyü açın ve burada SQL veri dosyalarınızı içine yerleştirmek için en az bir klasör oluşturun. 
+1. SQL veri dosyalarınızı içine yerleştirmek için yeni bağlı dosya paylaşımında en az bir klasör oluşturun. 
 1. Kümeye katılacak her bir SQL Server VM bu adımları yineleyin. 
 
   > [!IMPORTANT]
-  > Hem veri dosyaları hem de yedeklemeler için aynı dosya paylaşımının kullanmayın. Veritabanlarınızı bir dosya paylaşımında yedeklemek istiyorsanız yedeklemeler için ikincil dosya paylaşımının yapılandırılması için aynı adımları kullanın. 
+  > Bu paylaşımın ıOPS ve boyut kapasitesini veri ve günlük dosyası için kaydetmek üzere yedekleme dosyaları için ayrı bir dosya paylaşma kullanmayı düşünün. Yedekleme dosyaları için Premium veya standart dosya paylaşımından birini kullanabilirsiniz
 
 ## <a name="step-3-configure-failover-cluster-with-file-share"></a>3\. Adım: yük devretme kümesini dosya paylaşımıyla yapılandırma 
 
@@ -349,7 +335,7 @@ Yük dengeleyiciyi oluşturmak için:
    - **Ad**: yük dengeleyiciyi tanımlayan bir ad.
    - **Bölge**: sanal makinelerinizde aynı Azure konumunu kullanın.
    - **Tür**: yük dengeleyici ortak veya özel olabilir. Aynı VNET içinden bir özel yük dengeleyiciye erişilebilir. Azure uygulamalarının çoğu özel yük dengeleyici kullanabilir. Uygulamanızın doğrudan Internet üzerinden SQL Server erişmesi gerekiyorsa, ortak yük dengeleyici kullanın.
-   - **SKU**: yük DENGELEYICINIZIN SKU 'su standart olmalıdır. 
+   - **SKU**: yük dengeleyiciniz için SKU standart olmalıdır. 
    - **Sanal ağ**: sanal makinelerle aynı ağ.
    - **IP adresi ataması**: IP adresi ataması statik olmalıdır. 
    - **Özel IP adresi**: SQL Server FCI küme ağı kaynağına ATADıĞıNıZ aynı IP adresi.

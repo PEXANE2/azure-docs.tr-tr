@@ -7,18 +7,21 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: 9b187696524e96bc13254a24fd8f39d5aeb89e7d
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 0e7516fc4874e4cbc387f2f494efc6ef745d64f7
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676692"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311599"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>Dosya paylaşımı kullanarak ana bilgisayar havuzu için profil kapsayıcısı oluşturma
 
 Windows sanal masaüstü hizmeti, önerilen Kullanıcı profili çözümü olarak FSLogix profil kapsayıcıları sunar. Windows sanal masaüstü 'nün gelecek sürümlerinde kullanım dışı bırakılacak Kullanıcı profili diski (UPD) çözümünü kullanmanızı önermiyoruz.
 
 Bu makalede, sanal makine tabanlı dosya paylaşımından bir konak havuzu için bir FSLogix profil kapsayıcısı paylaşımının nasıl ayarlanacağı açıklanır. Daha fazla FSLogix belgeleri için bkz. [fslogix sitesi](https://docs.fslogix.com/).
+
+>[!NOTE]
+>Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Dosya paylaşma işlevi görecek yeni bir sanal makine oluşturun
 
@@ -68,4 +71,4 @@ Sanal makineleri FSLogix yazılımıyla yapılandırmak için, konak havuzuna ka
 | Vhdkonumları        | Çok dizeli değer | "Dosya paylaşımının ağ yolu"     |
 
 >[!IMPORTANT]
->Azure 'da Windows sanal masaüstü ortamınızı güvenli hale getirmeye yardımcı olmak için, VM 'leriniz üzerinde gelen bağlantı noktası 3389 ' i açmanız önerilir. Windows sanal masaüstü, kullanıcıların konak havuzunun VM 'lerine erişmesi için açık bir gelen bağlantı noktası 3389 gerektirmez. Sorun giderme amacıyla bağlantı noktası 3389 ' i açmanız gerekiyorsa, [tam ZAMANıNDA VM erişimi](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)kullanmanızı öneririz.
+>Azure 'da Windows sanal masaüstü ortamınızı güvenli hale getirmeye yardımcı olmak için, VM 'leriniz üzerinde gelen bağlantı noktası 3389 ' i açmanız önerilir. Windows sanal masaüstü, kullanıcıların konak havuzunun VM 'lerine erişmesi için açık bir gelen bağlantı noktası 3389 gerektirmez. Sorun giderme amacıyla bağlantı noktası 3389 ' i açmanız gerekiyorsa, [tam ZAMANıNDA VM erişimi](../security-center/security-center-just-in-time.md)kullanmanızı öneririz.

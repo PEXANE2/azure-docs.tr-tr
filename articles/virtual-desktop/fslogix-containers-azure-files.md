@@ -7,16 +7,19 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e651695055b9bfdbfbb5b6281af8c1d21235009b
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676609"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311805"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
 Windows sanal masaüstü hizmeti, FSLogix profil kapsayıcılarını bir kullanıcı profili çözümü olarak önerir. FSLogix, Windows sanal masaüstü gibi uzak bilgi işlem ortamlarında profil dolaşımını yapmak için tasarlanmıştır. Tüm kullanıcı profilini tek bir kapsayıcıda depolar. Bu kapsayıcı, oturum açma sırasında, yerel olarak desteklenen sanal sabit disk (VHD) ve Hyper-V sanal sabit diski (VHDX) kullanılarak bilgi işlem ortamına dinamik olarak eklenir. Kullanıcı profili hemen kullanılabilir olur ve sistemde tam olarak yerel bir kullanıcı profili gibi görünür. Bu makalede, FSLogix profil kapsayıcılarının Windows sanal masaüstündeki Azure dosyaları işleviyle nasıl kullanıldığı açıklanmaktadır.
+
+>[!NOTE]
+>Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
 ## <a name="user-profiles"></a>Kullanıcı profilleri
 

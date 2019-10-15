@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.openlocfilehash: aad601a48b2b420a809a385e336f103612d2e378
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167107"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311696"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase için Java uygulamaları oluşturma
 
@@ -174,7 +174,7 @@ HBase kümesinden HBase yapılandırmasını `conf` dizinine kopyalamak için a�
 scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
 ```
 
-## <a name="create-the-application"></a>Uygulamayı oluşturma
+## <a name="create-the-application"></a>Uygulama oluşturma
 
 ### <a name="implement-a-createtable-class"></a>CreateTable sınıfı uygulama
 
@@ -441,7 +441,7 @@ Aşağıdaki adımlarda, JAR 'yi HDInsight kümesindeki Apache HBase 'in birinci
 
 Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolamaya yüklemek için Azure PowerShell [az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) kullanılır. HDInsight cmdlet 'leri, örnekleri uzaktan çalıştırmak için kullanılır.
 
-1. AZ Module yükledikten ve yapılandırdıktan sonra, `hbase-runner.psm1` adlı bir dosya oluşturun. Aşağıdaki metni bu dosyanın içeriği olarak kullanın:
+1. AZ Module yükledikten ve yapılandırdıktan sonra, `hbase-runner.psm1` adlı bir dosya oluşturun. Bu dosyanın içeriği olarak aşağıdaki metni kullanın:
 
    ```powershell
     <#
@@ -704,4 +704,4 @@ Aşağıdaki adımlarda, Apache HBase kümeniz için JAR 'yi varsayılan depolam
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Apache HBase ile SQLLine kullanmayı öğrenin](apache-hbase-phoenix-squirrel-linux.md)
+[Apache HBase ile SQLLine kullanmayı öğrenin](apache-hbase-query-with-phoenix.md)
