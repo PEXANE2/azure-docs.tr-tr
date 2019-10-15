@@ -169,7 +169,7 @@
           href: search-howto-complex-data-types.md
         - name: İlişkisel verileri modelleme
           href: index-sql-relational-data.md
-    - name: Veri yükleme
+    - name: Tüm verileri dizinleme
       items:
         - name: Verileri içeri aktarmaya genel bakış
           href: search-what-is-data-import.md
@@ -181,7 +181,21 @@
           href: search-howto-large-index.md
         - name: Eş zamanlı güncelleştirmeleri tanımlama
           href: search-howto-concurrency.md
-    - name: Dizin oluşturucularla veri yükleme
+    - name: Azure Blob verilerini dizinleme
+      items:
+        - name: Blob verileriyle AI kullanma
+          href: search-blob-ai-integration.md
+        - name: Tam metin araması ekleme
+          href: search-blob-storage-integration.md
+        - name: Blob dizin oluşturucu ayarlama
+          href: search-howto-indexing-azure-blob-storage.md
+        - name: Bire çok blobları dizinleme
+          href: search-howto-index-one-to-many-blobs.md
+        - name: CSV bloblarını dizine ekleme
+          href: search-howto-index-csv-blobs.md
+        - name: JSON bloblarını dizine ekleme
+          href: search-howto-index-json-blobs.md
+    - name: '"Dizin oluşturucular" ile dizinleme'
       items:
         - name: Dizin oluşturuculara genel bakış
           href: search-indexer-overview.md
@@ -191,16 +205,6 @@
           href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
         - name: Azure Cosmos DB dizinleyici
           href: search-howto-index-cosmosdb.md
-        - name: Azure Blob Depolama dizin oluşturucu
-          items:
-            - name: Blob dizin oluşturucu ayarlama
-              href: search-howto-indexing-azure-blob-storage.md
-            - name: Bire çok blobları dizinleme
-              href: search-howto-index-one-to-many-blobs.md
-            - name: CSV bloblarını dizine ekleme
-              href: search-howto-index-csv-blobs.md
-            - name: JSON bloblarını dizine ekleme
-              href: search-howto-index-json-blobs.md
         - name: Zamanlama dizin oluşturucuları
           href: search-howto-schedule-indexers.md
         - name: Alanları eşleme

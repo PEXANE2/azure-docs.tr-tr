@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 09/20/2019
-  ms.openlocfilehash: 9c89fa143ad5e7fb2c4ba9c227682d14aa511bd9
-  ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+  ms.openlocfilehash: ece327a4155e0336de97b95ffa0a58a1d48097da
+  ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 09/25/2019
-  ms.locfileid: "71265637"
+  ms.lasthandoff: 10/14/2019
+  ms.locfileid: "72302734"
 landingContent:
 - title: Azure Search Hakkında
   linkLists:
@@ -46,6 +46,20 @@ landingContent:
     links:
     - text: Azure Search'e giriş
       url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
+- title: Blob depolama ile kullanma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Blob verilerini anlamak için AI kullanma
+      url: search-blob-ai-integration.md
+    - text: Blob verilerine tam metin araması ekleme
+      url: search-blob-storage-integration.md
+    - text: AI zenginleştirmelerini depolama
+      url: knowledge-store-create-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Yarı yapılandırılmış blob verilerini dizinleme
+      url: search-semi-structured-data.md
 - title: Verilerinizin dizinini oluşturma
   linkLists:
   - linkListType: concept
