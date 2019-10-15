@@ -46,7 +46,7 @@ Aşağıdaki söyleyenlerdeki aksanların normalleştirmeyi nasıl etkilediği g
 
 ### <a name="language-support-for-diacritics"></a>Aksanlar için dil desteği
 
-#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Brezilya Portekizcesi `pt-br` vurguları
+#### <a name="brazilian-portuguese-pt-br-diacritics"></a>Portekizce (Brezilya) `pt-br` vurguları
 
 |Aksanların değeri false olarak ayarlandı|Aksanların değeri true olarak ayarlandı|
 |-|-|

@@ -27,7 +27,7 @@ CloudSimple hizmeti ve özel bir bulut oluşturma sırasında, belirtilen ağ s�
 
 | Ad/kullanım     | Açıklama                                                                                                                            | Adres aralığı            |
 |-------------------|----------------------------------------------------------------------------------------------------------------------------------------|--------------------------|
-| Ağ Geçidi CıDR      | Edge Hizmetleri (VPN ağ geçitleri) için gereklidir.  Bu CıDR, CloudSimple hizmeti oluşturma sırasında gereklidir ve RFC 1918 alanından olmalıdır. | /28                      |
+| Ağ Geçidi CıDR      | Microsoft Edge Hizmetleri (VPN ağ geçitleri) için gereklidir.  Bu CıDR, CloudSimple hizmeti oluşturma sırasında gereklidir ve RFC 1918 alanından olmalıdır. | /28                      |
 | vSphere/vSAN CıDR | VMware yönetim ağları için gereklidir. Bu CıDR, özel bulut oluşturma sırasında belirtilmelidir.                                    | /24 veya/23 veya/22 veya/21 |
 
 ## <a name="network-address-range-required-for-azure-network-connection-to-an-on-premises-network"></a>Şirket içi ağa Azure ağ bağlantısı için gereken ağ adresi aralığı

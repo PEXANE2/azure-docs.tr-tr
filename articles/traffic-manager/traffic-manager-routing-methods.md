@@ -102,7 +102,7 @@ Traffic Manager profiller, kullanıcıların DNS sorgusunun kaynaklandığı co�
 Bir profil coğrafi yönlendirme için yapılandırıldığında, bu profille ilişkilendirilen her uç noktanın kendisine atanmış bir coğrafi bölge kümesi olması gerekir. Coğrafi bölge, aşağıdaki ayrıntı düzeyi düzeylerinde olabilir 
 - Dünya – herhangi bir bölge
 - Bölgesel gruplandırma: Örneğin, Afrika, Orta Doğu, Avustralya/Pasifik vb. 
-- Ülke/bölge: Örneğin, Irlanda, Peru, Hong Kong ÖIB vb. 
+- Ülke/bölge: Örneğin, Irlanda, Peru, Hong Kong ÖİB vb. 
 - Eyalet/bölge – örneğin, ABD-California, Avustralya-Queensland, Kanada-Alberta vb. (Note: Bu ayrıntı düzeyi düzeyi yalnızca Avustralya, Kanada ve ABD 'deki eyalet/eyalet için desteklenir).
 
 Bir bölge veya bölge kümesi bir uç noktaya atandığında, bu bölgelerden gelen istekler yalnızca o uç noktaya yönlendirilir. Traffic Manager, kullanıcının sorgulama yaptığı bölgeyi belirlemekte DNS sorgusunun kaynak IP adresini kullanır – genellikle bu, Kullanıcı adına sorgu yapan yerel DNS Çözümleyicisinin IP adresidir.  

@@ -46,7 +46,7 @@ ms.locfileid: "69562778"
 | Almanca | Orta Kürtçe | Lehçe        | Türkçe |
 | Yunanca | Çeroki dili | Portekizce | |
 | Haiti Kreyolu | Çince (Basitleştirilmiş) | Rumence | |
-| İbranice | Çince (Geleneksel)-Hong Kong ÖIB | Rusça | |
+| İbranice | Çince (Geleneksel)-Hong Kong ÖİB | Rusça | |
 | Hintçe | Çince (Geleneksel)-Tayvan | Sırpça Kiril | |
 | Hmong | Hırvatça | Sırpça Latin | |
 | Macarca | Çekçe | Slovakça | |

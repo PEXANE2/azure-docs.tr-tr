@@ -33,7 +33,7 @@ landingContent:
       url: architecture.md
     - text: IoT için Azure Güvenlik Merkezi Aracıları
       url: security-agent-architecture.md
-    - text: Edge güvenlik modülü
+    - text: Microsoft Edge güvenlik modülü
       url: security-edge-architecture.md
 - title: IoT için Azure Güvenlik Merkezi’ni IoT Hub'a ekleme
   linkLists:
@@ -69,7 +69,7 @@ landingContent:
       url: how-to-deploy-linux-cs.md
     - text: Linux için IoT için Azure Güvenlik Merkezi C tabanlı güvenlik aracısını dağıtma
       url: how-to-deploy-linux-c.md
-    - text: Edge güvenlik modülünü dağıtma
+    - text: Microsoft Edge güvenlik modülünü dağıtma
       url: how-to-deploy-edge.md
     - text: Güvenlik aracılarını yapılandırma
       url: how-to-agent-configuration.md

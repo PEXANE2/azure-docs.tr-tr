@@ -51,7 +51,7 @@ Veriler aşağıdaki ülkeler/bölgeler için **Avrupa** 'da bulunur:
 
 Veriler aşağıdaki ülkeler/bölgeler için **Asya Pasifik** bulunur:
 
-> Afganistan, Hong Kong ÖIB, Hindistan, Endonezya, Japonya, Kore, Malezya, Filipinler, Singapur, Sri Lanka, Tayvan ve Tayland.
+> Afganistan, Hong Kong ÖİB, Hindistan, Endonezya, Japonya, Kore, Malezya, Filipinler, Singapur, Sri Lanka, Tayvan ve Tayland.
 
 Aşağıdaki ülkeler/bölgeler listeye eklenmekte. Şimdilik, Yukarıdaki ülkelerin/bölgelerin birini seçerek Azure AD B2C kullanmaya devam edebilirsiniz.
 

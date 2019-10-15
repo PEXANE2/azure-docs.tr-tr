@@ -70,10 +70,10 @@ Bu makalede, mürekkep tanıyıcı API için desteklenen dilleri açıklar. Diji
 | Rusça                                    |     `ru-RU`     |
 | Scottish Gaelic                            |     `gd-GB`     |
 | Kuzey Sesotho dili                           |    `nso-ZA`     |
-| Sırpça (Kiril, Bosna ve Hersek) |  `sr-Cyrl-BA`   |
+| Sırpça (Kiril, Bosna-Hersek) |  `sr-Cyrl-BA`   |
 | Sırpça (Kiril, Karadağ)             |  `sr-Cyrl-ME`   |
 | Sırpça (Kiril, Sırbistan)                 |  `sr-Cyrl-RS`   |
-| Sırpça (Latin, Bosna ve Hersek)    |  `sr-Latn-BA`   |
+| Sırpça (Latin, Bosna-Hersek)    |  `sr-Latn-BA`   |
 | Sırpça (Latin, Karadağ)                |  `sr-Latn-ME`   |
 | Sırpça (Latin, Sırbistan)                    |  `sr-Latn-RS`   |
 | Setsvana dili (Güney Afrika)                    |     `tn-ZA`     |

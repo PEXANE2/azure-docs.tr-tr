@@ -49,7 +49,7 @@ Model baskın dil, Öngörüler JSON 'da `sourceLanguage` öznitelik olarak kull
 
 ## <a name="guidelines-and-limitations"></a>Kılavuzlar ve sınırlamalar
 
-* Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Brezilya Portekizcesi.
+* Desteklenen diller arasında Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Portekizce (Brezilya).
 * Ses yukarıda desteklenen listeden farklı diller içeriyorsa sonuç beklenmedik olur.
 * Video Indexer, yüksek oranda güvenilirlikli (`>0.6`) dili tanımlayamıyor, geri dönüş dili İngilizce olur.
 * Karma diller ses içeren dosya için geçerli destek yoktur. Ses karışık diller içeriyorsa, sonuç beklenmedik olur. 

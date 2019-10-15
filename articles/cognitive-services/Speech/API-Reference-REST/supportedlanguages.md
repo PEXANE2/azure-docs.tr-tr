@@ -40,7 +40,7 @@ Microsoft konuşma tanıma API 'si, `interactive` ve `dictation` modlarında aş
 | en-US | İngilizce (ABD) | ru-RU | Rusça (Rusya) |
 | es-ES | İspanyolca (İspanya) | sv-SE | İsveççe (İsveç) |
 | es-MX | İspanyolca (Meksika) |zh-CN | Çince (Basitleştirilmiş Mandarin)  |
-| FI-FI | Fince (Finlandiya) |zh-HK | Çince (Hong Kong ÖIB) |
+| FI-FI | Fince (Finlandiya) |zh-HK | Çince (Hong Kong ÖİB) |
 | fr-CA | Fransızca (Kanada) | zh-TW | Çince (Mandarin, Taiwanese)|
 | fr-FR | Fransızca (Fransa) | ||
 

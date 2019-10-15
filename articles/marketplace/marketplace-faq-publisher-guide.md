@@ -9,7 +9,7 @@ ms.date: 10/4/2019
 ms.author: ellacroi
 ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
 ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 10/05/2019
 ms.locfileid: "71969573"
@@ -350,7 +350,7 @@ Teklifi tamamladıktan ve bir müşteri adayı hedefi ayarladıktan sonra, liste
 
 **Azure Marketi hangi ülkelerde/bölgelerde Satım için kullanılabilir?**
 
-Şu ülkelerde/bölgelerde yer alarak bulunan yayımcılar şu anda Azure Marketi 'nde satıbiliyor: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Belarus, Belçika, Benin, Bolivya, Bosna Hersek, Botsvana, Brezilya, Bulgaristan, Burkina Faso, Burundi, Kamboçya, Kamerun, Kanada, Orta Afrika Cumhuriyeti, Chad, Şili, Kolombiya, Komorolar, Kongo, Kongo (KDC), Kosta Rika, Fildişi Sahili, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Dominik, Dominik Cumhuriyeti, Ekvador, Mısır, El Salvador, Eritre, Estonya, Etiyopya, Fiji Adaları, Finlandiya, Fransa, Georgia, Almanya, Ghana, Yunanistan, Guatemala, Gine, Haiti, Honduras, Hong Kong ÖIB, Macaristan, Izlanda, Hindistan, Endonezya, Irak, İrlanda, Israil, Italya, Jamaika, Japonya, Ürdün, Kazakistan, Kenya, Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberia, Liechtenstein, Litvanya, Lüksemburg, Madagaskar, Malavi, Malezya, mali, Malta, Mauritius, Meksika, Monako, Moğolistan, Karadağ, Fas, Mozambik, Nepal, Hollanda, Yeni Zelanda, Nikaragua, Nijer, Nijerya, Norveç, Umman, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz Slovakya, Slovenya, Vamalia, Güney Afrika, Ispanya, Sri Lanka, Isveç, Isviçre, Tacikistan, Tanzanya, bir Tayland, Timor-Leste, Togo, Tonga, Trinidad ve Tobago, Tunus, Türkiye, Türkmenistan, Uganda, Ukrayna, Birleşik Arap, Birleşik Krallık, Birleşik Durumlar, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya ve Zimbabve.
+Şu ülkelerde/bölgelerde yer alarak bulunan yayımcılar şu anda Azure Marketi 'nde satıbiliyor: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Belarus, Belçika, Benin, Bolivya, Bosna-Hersek, Botsvana, Brezilya, Bulgaristan, Burkina Faso, Burundi, Kamboçya, Kamerun, Kanada, Orta Afrika Cumhuriyeti, Chad, Şili, Kolombiya, Komorolar, Kongo, Kongo (KDC), Kosta Rika, Fildişi Sahili, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Dominik, Dominik Cumhuriyeti, Ekvador, Mısır, El Salvador, Eritre, Estonya, Etiyopya, Fiji Adaları, Finlandiya, Fransa, Georgia, Almanya, Ghana, Yunanistan, Guatemala, Gine, Haiti, Honduras, Hong Kong ÖİB, Macaristan, Izlanda, Hindistan, Endonezya, Irak, İrlanda, Israil, Italya, Jamaika, Japonya, Ürdün, Kazakistan, Kenya, Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberia, Liechtenstein, Litvanya, Lüksemburg, Madagaskar, Malavi, Malezya, mali, Malta, Mauritius, Meksika, Monako, Moğolistan, Karadağ, Fas, Mozambik, Nepal, Hollanda, Yeni Zelanda, Nikaragua, Nijer, Nijerya, Norveç, Umman, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz Slovakya, Slovenya, Vamalia, Güney Afrika, Ispanya, Sri Lanka, Isveç, Isviçre, Tacikistan, Tanzanya, bir Tayland, Timor-Leste, Togo, Tonga, Trinidad ve Tobago, Tunus, Türkiye, Türkmenistan, Uganda, Ukrayna, Birleşik Arap, Birleşik Krallık, Birleşik Durumlar, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya ve Zimbabve.
 
 **Nasıl yaparım? Azure Marketi 'nden bir listeyi silmek mi istiyorsunuz?**
 

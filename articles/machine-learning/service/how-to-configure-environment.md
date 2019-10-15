@@ -277,7 +277,7 @@ Geliştirme için Visual Studio Code kullanmak için:
 
     - __Python girin: yorumlayıcı__' yı seçin ve ardından uygun ortamı seçin
 
-1. SDK 'yı kullanacağınızı doğrulamak için, aşağıdaki kodu içeren yeni bir Python dosyası (. köpek) oluşturun:
+1. SDK 'yı kullanacağınızı doğrulamak için, aşağıdaki kodu içeren yeni bir Python dosyası (.py) oluşturun:
 
     ```python
     #%%

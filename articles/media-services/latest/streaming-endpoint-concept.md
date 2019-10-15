@@ -94,7 +94,7 @@ Bu bölüm bazı akış uç noktasının özellikleriyle ilgili ayrıntıları s
 
     Aşağıda, farklı Azure bölgeleri için doğrulama kaydında kullanılacak beklenen DNS bölgeleri verilmiştir.
   
-  - Kuzey Amerika, Avrupa, Singapur, Hong Kong ÖIB, Japonya:
+  - Kuzey Amerika, Avrupa, Singapur, Hong Kong ÖİB, Japonya:
       
     - `media.azure.net`
     - `verifydns.media.azure.net`

@@ -31,7 +31,7 @@ Azure Search birden çok veri kaynağını, [birçok dil için dil analizini](ht
 Arama teknolojilerini karşılaştırırken, müşteriler, Azure Search Elau araması ile nasıl Karşılaştırıldığı hakkında daha fazla ayrıntı ister. Önemli bir görevi daha kolay hale yaptığımız veya diğer Microsoft teknolojileriyle yerleşik tümleştirmeye gerek duyduğumuz için, kendi arama uygulaması projeleri için Elaor araması üzerinden Azure Search seçen müşteriler genellikle bu şekilde yapılır.
 
 + Azure Search,% 99,9 hizmet düzeyi sözleşmeleri (SLA) ile tam olarak yönetilen bir bulut hizmetidir (okuma erişimi için 2 çoğaltma, okuma-yazma için üç çoğaltma).
-+ Microsoft 'un [doğal dil işlemcileri](https://docs.microsoft.com/rest/api/searchservice/language-support) önde gelen Edge dil analizi sunar.  
++ Microsoft 'un [doğal dil işlemcileri](https://docs.microsoft.com/rest/api/searchservice/language-support) önde gelen Microsoft Edge dil analizi sunar.  
 + [Azure Search Dizin oluşturucular](search-indexer-overview.md) , ilk ve artımlı dizin oluşturma Için çeşitli Azure veri kaynaklarına gezinebilirler.
 + Sorgu veya dizin oluşturma birimlerindeki dalgalanmalara hızlı yanıt almanız gerekiyorsa Azure portal [kaydırıcı denetimlerini](search-manage.md#scale-up-or-down) kullanabilir veya bir [PowerShell betiği](search-manage-powershell.md)çalıştırarak doğrudan yönetimi doğrudan atlayarak yönetebilirsiniz.  
 + [Puanlama ve ayarlama özellikleri](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) , arama altyapısının tek başına sağlayabildiklerinin ötesinde, arama sıra puanlarını etkileyen yolları sağlar.

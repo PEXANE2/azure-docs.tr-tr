@@ -18,7 +18,7 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 10/09/2019
 ms.locfileid: "72169997"
 ---
-# <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: eski kimlik doğrulamasını engelle
+# <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: Eski kimlik doğrulamasını engelleme
 
 Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle, Microsoft kuruluşların bu protokolleri kullanarak kimlik doğrulama isteklerini engellemesini ve modern kimlik doğrulaması gerektirmesini önerir.
 
@@ -33,15 +33,15 @@ Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir k
 1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
    1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
    1. **Hariç tut**' un altında, **Kullanıcılar ve gruplar** ' ı seçin ve eski kimlik doğrulamasını kullanma yeteneğinin korunması gereken tüm hesapları seçin. 
-   1. **Bitti**’yi seçin.
+   1. **Done** (Bitti) öğesini seçin.
 1. **Bulut uygulamaları veya eylemler** > **dahil**, **tüm bulut uygulamaları**' nı seçin.
    1. İlkenizin belirli uygulamaları dışlayamazsınız, **Dışlanan bulut uygulamalarını seçin** altında **hariç tut** sekmesinden seçim yapın ve **Seç**' i seçin.
-   1. **Bitti**’yi seçin.
-1. @No__t-1**istemci uygulamaları (Önizleme)** **Koşulları**altında **Yapılandır** ' ı **Evet**olarak ayarlayın.
-   1. Yalnızca **mobil uygulamalar ve Masaüstü istemcileri**@no__t-**diğer diğer istemciler**' i işaretleyin.
-   2. **Bitti**’yi seçin.
+   1. **Done** (Bitti) öğesini seçin.
+1. istemci uygulamaları (Önizleme) **Koşulları** > **altında **Yapılandır** ' ı **Evet**olarak ayarlayın.
+   1. Yalnızca **mobil uygulamalar ve Masaüstü istemcileri** > **diğer diğer istemciler**' i işaretleyin.
+   2. **Done** (Bitti) öğesini seçin.
 1. **Erişim denetimleri** > **izin**' ın altında, **erişimi engelle**' yi seçin.
-   1. **Seç**’e tıklayın.
+   1. Seçin **seçin**.
 1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
 1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
