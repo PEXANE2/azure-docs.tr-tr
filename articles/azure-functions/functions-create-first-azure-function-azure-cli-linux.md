@@ -1,24 +1,21 @@
 ---
 title: Azure'da ilk Linux işlevinizi oluşturma
-description: Azure Functions Core Tools ve Azure CLI'yi kullanarak Azure'da Linux üzerinde barındırılan ilk işlevinizi oluşturmayı öğrenin.
-services: functions
-keywords: ''
+description: Azure 'da Linux üzerinde barındırılan ilk işlevinizi oluşturma hakkında bilgi edinmek için bkz. komut satırı araçları, Azure Functions Core Tools ve Azure CLı.
 author: ggailey777
 ms.author: glenga
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc, fasttrack-edit
-ms.devlang: javascript
-manager: jeconnoc
-ms.openlocfilehash: 40a2d3ab4ec358b5b2d0105703cdc25cdb777c29
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 34f4dc4b36f4efd75c5a7cd14b3214886955a403
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562977"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329687"
 ---
-# <a name="create-your-first-function-hosted-on-linux-using-core-tools-and-the-azure-cli"></a>Çekirdek araçları ve Azure CLı kullanarak Linux üzerinde barındırılan ilk işlevinizi oluşturma
+# <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>Hızlı başlangıç: komut satırı araçlarını kullanarak Linux üzerinde barındırılan ilk işlevinizi oluşturma
 
 Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu [sunucusuz](https://azure.com/serverless) bir Linux ortamında yürütmenize olanak tanır. Linux barındırma [işlevleri 2. x çalışma zamanı](functions-versions.md)gerektirir. Sunucusuz işlevler, [Tüketim planında](functions-scale.md#consumption-plan)çalışır.
 
@@ -30,7 +27,7 @@ Aşağıdaki adımlar Mac, Windows veya Linux bilgisayarlarda desteklenir. Bu ma
 
 Bu örneği çalıştırmadan önce aşağıdakilere sahip olmanız gerekir:
 
-- [Azure Functions Core Tools](./functions-run-local.md#v2) Version 2.6.666 veya üstünü yükler.
++ [Azure Functions Core Tools](./functions-run-local.md#v2) Version 2.6.666 veya üstünü yükler.
 
 + [Azure CLI]( /cli/azure/install-azure-cli)’yi yükleyin. Bu makale, Azure CLI 2.0 veya sonraki bir sürümü gerektirir. Kullandığınız sürümü bulmak için `az --version` komutunu çalıştırın. [Azure Cloud Shell](https://shell.azure.com/bash)’i de kullanabilirsiniz.
 
@@ -56,7 +53,7 @@ Bu örneği çalıştırmadan önce aşağıdakilere sahip olmanız gerekir:
 
 Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, işlev kodunuzun yürütülmesi için sunucusuz bir ortam sağlar. Kaynakların daha kolay yönetilmesi, dağıtılması ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanıza olanak tanır. [az functionapp create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak Linux üzerinde çalışan bir işlev uygulaması oluşturun.
 
-Aşağıdaki komutta benzersiz bir işlev uygulamasının adını `<app_name>` yer tutucusunun ve `<storage_name>` depolama hesabı adının yerine ekleyin. `<app_name>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. Bu ad Azure'daki tüm uygulamalar arasında benzersiz olmalıdır. Ayrıca `<language>` , ( `python` `dotnet` C#) ,`node` (JavaScript/TypeScript) veya ile işlev uygulamanız için çalışma zamanını ayarlamanız gerekir.
+Aşağıdaki komutta benzersiz bir işlev uygulamasının adını `<app_name>` yer tutucusunun ve `<storage_name>` depolama hesabı adının yerine ekleyin. `<app_name>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. Bu ad Azure'daki tüm uygulamalar arasında benzersiz olmalıdır. Ayrıca, işlev uygulamanız için `<language>` çalışma zamanını, `dotnet` (C#), `node` (JavaScript/TypeScript) veya `python` ' ten ayarlamanız gerekir.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --consumption-plan-location westus --os-type Linux \

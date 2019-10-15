@@ -1,5 +1,5 @@
 ---
-title: Azure Hızlı Başlangıç - Python ile nesne depolamada blob oluşturma | Microsoft Docs
+title: 'Hızlı başlangıç: Python ile Azure Blob depolamada blob oluşturma'
 description: Bu hızlı başlangıçta, nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturursunuz. Sonra, Azure Depolama’ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki blobları listelemek amacıyla Python için depolama istemcisi kitaplığını kullanırsınız.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,16 +7,17 @@ ms.date: 09/11/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a6c0ae8c63739d37ad8417d1dff2d0f7181e6ae9
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.custom: seo-python-october2019
+ms.openlocfilehash: f5be8d5fd452953f447bbc8b08a852c1f8da94a0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981218"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331810"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Hızlı Başlangıç: Python ile blobları karşıya yükleme, indirme ve listeleme
 
-Bu hızlı başlangıçta, Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Python 'u kullanırsınız. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri dahil olmak üzere büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Azure depolama 'daki Bloblar dosya paylaşımlarından, şema-daha seyrek tablolardan ve ileti kuyruklarından farklıdır.  Daha fazla bilgi için bkz. [Azure depolama 'Ya giriş](/azure/storage/common/storage-introduction).
+Bu makalede, Azure Blob depolama alanındaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Python 'u kullanırsınız. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri dahil olmak üzere büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Azure depolama 'daki Bloblar dosya paylaşımlarından, şema-daha seyrek tablolardan ve ileti kuyruklarından farklıdır.  Daha fazla bilgi için bkz. [Azure depolama 'Ya giriş](/azure/storage/common/storage-introduction).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

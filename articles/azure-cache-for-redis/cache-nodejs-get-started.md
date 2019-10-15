@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Node. js ile Redsıs için Azure önbelleğini kullanma'
+title: 'Hızlı başlangıç: node. js ile Redsıs için Azure önbelleğini kullanma'
 description: Bu hızlı başlangıçta, Node. js ve node_redis ile redin için Azure önbelleğini nasıl kullanacağınızı öğreneceksiniz.
 services: cache
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
-ms.custom: mvc, seo-javascript-september2019
-ms.openlocfilehash: f46a4771f1db5e4040cb23b1a9236c91699b6ad5
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: bd31cf066b7844eeae02c24cb39ece686630b5ff
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057873"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329849"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Hızlı Başlangıç: Node. js ile Redsıs için Azure önbelleğini kullanma
+# <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Hızlı başlangıç: node. js ile Redsıs için Azure önbelleğini kullanma
 
 Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, özel bir önbelleğe erişim sağlamak üzere redin için Azure önbelleğini bir Node. js uygulamasına katabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-- [](https://github.com/mranney/node_redis) komutuyla`npm install redis`yükleyebileceğiniz node_redis. 
+- [node_redis](https://github.com/mranney/node_redis), `npm install redis` komutuyla yükleyebilirsiniz. 
 
 Diğer Node.js istemcilerini kullanmaya ilişkin örnekler için [Node.js Redis istemcileri](https://redis.io/clients#nodejs) listesindeki Node.js istemcilerinin kendi belgelerine bakın.
 
@@ -113,7 +113,7 @@ node redistest.js
 
 Aşağıdaki örnekte, `Message` anahtarının Azure portaldaki Redis Konsolu kullanılarak ayarlanan, önceden önbelleğe alınmış bir değer içerdiğini görebilirsiniz. Uygulama, önbelleğe alınan bu değeri güncelleştirdi. Ayrıca uygulama, `PING` ve `CLIENT LIST` komutlarını da yürüttü.
 
-![Önbellek uygulaması tamamlandı](./media/cache-nodejs-get-started/cache-app-complete.png)
+![Redis Cache uygulama tamamlandı](./media/cache-nodejs-get-started/redis-cache-app-complete.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -129,7 +129,7 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 
 **Ada göre filtrele** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **.** .. öğesini seçin ve **kaynak grubunu silin**.
 
-![Sil](./media/cache-nodejs-get-started/cache-delete-resource-group.png)
+![Azure kaynak grubunu sil](./media/cache-nodejs-get-started/redis-cache-delete-resource-group.png)
 
 Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını girin ve **Sil**' i seçin.
 

@@ -1,17 +1,17 @@
 ---
 title: Azure yönetilen uygulamalarına genel bakış | Microsoft Docs
-description: Azure yönetilen uygulamaları kavramlarını açıklar
+description: Müşterilerin dağıtımı ve çalışması için kolay olan bulut çözümleri sağlayan Azure yönetilen uygulamalar için kavramları açıklar.
 author: tfitzmac
 ms.service: managed-applications
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 97d6a229651f1c3fbcdbb79c7ae7d1c1f855882b
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: fa37536b800203e981a841d049dc385640733f92
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234751"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332680"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure yönetilen uygulamalarına genel bakış
 
@@ -82,4 +82,4 @@ Yönetilen uygulamanıza [Azure İlkesi](../governance/policy/overview.md) uygul
 Bu makalede yönetilen uygulamaları kullanmanın avantajları hakkında bilgi edindiniz. Yönetilen uygulama tanımı oluşturmak için bir sonraki makaleye gidin.
 
 > [!div class="nextstepaction"]
-> [Hızlı Başlangıç: Azure yönetilen uygulama tanımı yayımlama](publish-managed-app-definition-quickstart.md)
+> [Hızlı başlangıç: Azure yönetilen uygulaması tanımı yayımlama](publish-managed-app-definition-quickstart.md)

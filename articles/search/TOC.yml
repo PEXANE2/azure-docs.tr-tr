@@ -299,8 +299,6 @@
           href: search-manage-powershell.md
         - name: Etkinliği izleme ve günlüğe kaydetme
           href: search-monitor-usage.md
-        - name: Arama trafiği analizi
-          href: search-traffic-analytics.md
 - name: Başvuru
   items:
     - name: Azure CLI

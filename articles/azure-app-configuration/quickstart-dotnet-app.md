@@ -3,8 +3,8 @@ title: Azure Uygulama yapılandırması için .NET Framework ile hızlı başlan
 description: Azure uygulama yapılandırmasını .NET Framework uygulamalarla kullanmaya yönelik hızlı başlangıç
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
-manager: balans
+author: lisaguthrie
+manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,16 +12,16 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: .NET
 ms.workload: tbd
-ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 8aa8c8132220965d55097c4fed8ba1b2e9501301
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 10/09/2019
+ms.author: lcozzens
+ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326522"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329808"
 ---
-# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Hızlı Başlangıç: Azure Uygulama yapılandırması ile .NET Framework uygulaması oluşturma
+# <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla .NET Framework uygulaması oluşturma
 
 Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure uygulama yapılandırmasını .NET Framework tabanlı bir konsol uygulamasına katabilirsiniz.
 
@@ -29,15 +29,15 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.1](https://dotnet.microsoft.com/download)
+- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Uygulama yapılandırma deposu oluşturma
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma Gezgini** >  **+ Oluştur** ' u seçin:
+6. Aşağıdaki anahtar-değer çiftlerini eklemek için **yapılandırma gezgini** >  **+ Oluştur** ' u seçin:
 
-    | Anahtar | Value |
+    | Anahtar | Değer |
     |---|---|
     | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından veriler |
 
@@ -45,9 +45,11 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
 ## <a name="create-a-net-console-app"></a>.NET konsol uygulaması oluşturma
 
-1. Visual Studio 'yu başlatın ve **Dosya** > **Yeni** > **Proje**' yi seçin.
+1. Visual Studio 'yu başlatın ve **dosya** > **Yeni** > **Proje**' yi seçin.
 
-2. **Yeni proje**' de, **yüklü** >   > **Visual C#**  **Windows Desktop**' ı seçin. **Konsol uygulaması (.NET Framework)** öğesini seçin ve projeniz için bir ad girin. **.NET Framework 4.7.1** veya yukarı ' yı seçin ve **Tamam**' ı seçin.
+1. **Yeni proje oluştur**' da **konsol** proje türü ' ne filtre uygulayın ve konsol uygulaması ' na tıklayın **(.NET Framework)** . **İleri**’ye tıklayın.
+
+1. **Yeni projenizi yapılandırma**bölümünde bir proje adı girin. **Framework**altında **.NET Framework 4.7.1** veya üstünü seçin. **Oluştur**’a tıklayın.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Uygulama yapılandırma deposuna bağlanma
 
@@ -56,9 +58,10 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
+    System.Configuration.ConfigurationManager version 4.6.0 or later
     ```
 
-2. Projenizin *app. config* dosyasını aşağıdaki gibi güncelleştirin:
+1. Projenizin *app. config* dosyasını aşağıdaki gibi güncelleştirin:
 
     ```xml
     <configSections>
@@ -78,14 +81,14 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
     </appSettings>
     ```
 
-   Uygulama yapılandırma deponuzın bağlantı dizesi, ortam değişkeninden `ConnectionString`okundu. Bölümünün özelliğindeki öğesinden önce `MyConfigStore` `Environment`yapılandırmaoluşturucuyuekleyin `configBuilders`. `appSettings`
+   Uygulama yapılandırma deponuzın bağlantı dizesi `ConnectionString` ' dır. @No__t-3 bölümünün `configBuilders` özelliğinde, `MyConfigStore` ' den önce `Environment` yapılandırma oluşturucuyu ekleyin.
 
-3. *Program.cs*'i açın ve çağırarak `Main` `ConfigurationManager`uygulama yapılandırmasını kullanmak üzere yöntemi güncelleştirin.
+1. *Program.cs*'i açın ve `Main` metodunu, uygulama yapılandırmasını kullanmak için `ConfigurationManager` çağırarak güncelleştirin.
 
     ```csharp
     static void Main(string[] args)
     {
-        string message = ConfigurationManager.AppSettings["TestApp:Settings:Message"];
+        string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
     }
@@ -101,7 +104,7 @@ Bu hızlı başlangıçta, kodınızdan ayrı uygulama ayarlarının depolanmas�
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. Değişikliğin etkili olması için Visual Studio 'Yu yeniden başlatın. Konsol uygulamasını derlemek ve çalıştırmak için CTRL + F5 tuşlarına basın.
+1. Değişikliğin etkili olması için Visual Studio 'Yu yeniden başlatın. Konsol uygulamasını derlemek ve çalıştırmak için CTRL + F5 tuşlarına basın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

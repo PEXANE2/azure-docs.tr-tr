@@ -11,10 +11,10 @@ ms.topic: overview
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 08/01/2019
 ms.openlocfilehash: 54d665d6a4fd9aa0216d9eccf821f5af539a3636
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71087578"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps ve Enterprise Integration Pack ile B2B kurumsal tümleştirme çözümleri
@@ -34,7 +34,7 @@ Microsoft BizTalk Server veya Azure BizTalk Services hakkında bilgi sahibiyseni
 
 * Azure işlevleri ile mantıksal uygulamalarınız için özel kod oluşturabilirsiniz.
 
-## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
+## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlarım?
 
 EıP ile B2B Logic App iş akışları oluşturmaya başlayabilmeniz için önce şu öğeler gerekir:
 
@@ -50,7 +50,7 @@ B2B Logic Apps oluşturmaya başlamak için üst düzey adımlar şunlardır:
 
 ![B2B Logic Apps oluşturmak için Önkoşullar](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-## <a name="try-now"></a>Hemen deneyin
+## <a name="try-now"></a>Şimdi deneyin
 
 [AS2 iletileri gönderen ve alan tam işlemsel bir örnek mantıksal uygulama dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 

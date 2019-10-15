@@ -10,12 +10,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: overview
 ms.date: 10/10/2019
-ms.openlocfilehash: 70fa1bd2f33d3a6e58b12b9d2da617e8129c8da9
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6c5eecb762aceb6f674e0b8084ed98c6b5500f98
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299715"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331721"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi hangi araçlar dahildir?
 
@@ -42,7 +42,7 @@ Aşağıda, her aracın nasıl yapılandırıldığını anlamak için bağlant�
 | JupyterHub (çok kullanıcılı Not defteri sunucusu)|<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | |
 | JupyterLab (çok kullanıcılı Not defteri sunucusu) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span></br> | |
 | Geliştirme araçları, IDEs ve kod düzenleyicileri:| | |
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) with git eklentisi, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server veri araçları, [Node. js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs)ve [Visual Studio için R araçları (rtvs)](https://microsoft.github.io/RTVS-docs/) |<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span>   | [DSVM 'de Visual Studio](./dsvm-tools-development.md#visual-studio-2017) |
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) with git eklentisi, Azure HDInsight (Hadoop), Azure Data Lake, SQL Server veri araçları, [Node. js](https://github.com/Microsoft/nodejstools), [Python](https://aka.ms/ptvs)ve [Visual Studio için R araçları (rtvs)](https://microsoft.github.io/RTVS-docs/) |<span class='green-check'>&#9989;</span> |<span class='red-x'>&#10060;</span>   | [DSVM 'de Visual Studio](./dsvm-tools-development.md#visual-studio-community-2017) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [Visual Studio Code](https://code.visualstudio.com/) |<span class='green-check'>&#9989;</span></br> (1.31.1) |<span class='green-check'>&#9989;</span></br> (1,31) | [DSVM üzerinde Visual Studio Code](./dsvm-tools-development.md#visual-studio-code) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [rstudio masaüstü](https://www.rstudio.com/products/rstudio/#Desktop) |<span class='green-check'>&#9989;</span></br> (1.2.50 xx) |<span class='green-check'>&#9989;</span></br> (1.1.456) | [DSVM üzerinde RStudio Masaüstü](./dsvm-tools-development.md#rstudio--desktop) |
 | &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 [rstudio Server](https://www.rstudio.com/products/rstudio/#Server) |<span class='red-x'>&#10060;</span>   |<span class='green-check'>&#9989;</span> | [DSVM üzerinde RStudio sunucusu](./dsvm-tools-development.md#rstudio--server)

@@ -149,6 +149,8 @@
               href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-2017#examples--and-'
         - name: Sonuç kümesini önbelleğe alma
           items:
+            - name: Genel Bakış
+              href: sql-data-warehouse-result-set-caching-overview.md
             - name: Veritabanı için ayarlama
               href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
             - name: Oturum için ayarlama

@@ -1,6 +1,6 @@
 ---
-title: Event Grid ve Azure CLı ile özel olaylar gönderme
-description: Azure Event Grid ve Azure CLI kullanarak özel bir konu yayımlayın ve bu konu için olaylara abone olmak için kullanın. Olaylar, bir web uygulaması tarafından işlenir.
+title: 'Hızlı başlangıç: Event Grid ve Azure CLı ile özel olaylar gönderme'
+description: Azure Event Grid ve Azure CLı kullanarak özel bir konu yayımlayın ve bu konu için olaylara abone olun. Olaylar bir Web uygulaması tarafından işlenir.
 services: event-grid
 keywords: ''
 author: spelluru
@@ -8,15 +8,18 @@ ms.author: spelluru
 ms.date: 12/07/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.custom: seodec18, seo-javascript-september2019
-ms.openlocfilehash: a6888179d4d465808dc28f7784db8d1d915e3f80
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.custom:
+- seodec18
+- seo-javascript-september2019
+- seo-python-october2019
+ms.openlocfilehash: 1129dffa37df4766b98f39a9efa05f4eb7ed9878
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861095"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326131"
 ---
-# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Hızlı Başlangıç: Azure CLı ve Event Grid özel olayları Web uç noktasına yönlendirme
+# <a name="quickstart-route-custom-events-to-web-endpoint-with-azure-cli-and-event-grid"></a>Hızlı başlangıç: Azure CLı ve Event Grid özel olayları Web uç noktasına yönlendirme
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure CLI ile özel bir konu oluşturacak, bu özel konuya abone olacak ve olayı tetikleyerek sonucu görüntüleyeceksiniz. Normalde olayları, olay verilerini işleyen ve eylemler gerçekleştiren bir uç noktaya gönderirsiniz. Bununla birlikte, bu makaleyi basitleştirmek için olayları iletilerin toplandığı ve görüntülendiği bir web uygulamasına gönderirsiniz.
 
@@ -48,7 +51,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>Özel konu oluşturma
 
-Event grid konusu, olaylarınızı göndereceğiniz kullanıcı tanımlı bir uç nokta sağlar. Aşağıdaki örnekte özel konu, kaynak grubunuzda oluşturulur. `<your-topic-name>` değerini konunuz için benzersiz bir adla değiştirin. Özel konu adı bir DNS girdisinin parçası olduğundan benzersiz olmalıdır. Ayrıca, 3-50 karakter arasında olmalı ve gerekir içeren yalnızca a-z, A-Z, 0-9, değerleri ve "-"
+Event grid konusu, olaylarınızı göndereceğiniz kullanıcı tanımlı bir uç nokta sağlar. Aşağıdaki örnekte özel konu, kaynak grubunuzda oluşturulur. `<your-topic-name>` değerini konunuz için benzersiz bir adla değiştirin. Özel konu adı bir DNS girdisinin parçası olduğundan benzersiz olmalıdır. Ayrıca, 3-50 karakter arasında olmalıdır ve yalnızca a-z, A-Z, 0-9 ve "-" değerlerini içermelidir
 
 ```azurecli-interactive
 topicname=<your-topic-name>

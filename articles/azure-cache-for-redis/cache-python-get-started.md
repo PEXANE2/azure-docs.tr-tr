@@ -1,5 +1,5 @@
 ---
-title: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturmak için hızlı başlangıç | Microsoft Docs
+title: 'Hızlı başlangıç: Redsıs için Azure önbelleği kullanan bir Python uygulaması oluşturma'
 description: Bu hızlı başlangıçta, redin için Azure önbelleği kullanan bir Python uygulaması oluşturmayı öğreneceksiniz.
 services: cache
 documentationcenter: ''
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/11/2018
 ms.author: yegu
-ms.custom: mvc
-ms.openlocfilehash: fcb5d74305375c9883f2d601a2ab7d2d9a50b9cb
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.custom:
+- mvc
+- seo-python-october2019
+ms.openlocfilehash: 87c22d3497765fca6f0dcae445152e6e2923510e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743945"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329876"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Hızlı Başlangıç: Python ile Redsıs için Azure önbelleğini kullanma
+# <a name="quickstart-use-azure-cache-for-redis-with-python"></a>Hızlı başlangıç: Python ile Redsıs için Azure önbelleğini kullanma
 
-Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Python uygulamasına katabilirsiniz.
+Bu makalede, Azure 'daki herhangi bir uygulamadan erişilebilen güvenli, ayrılmış bir önbelleğe erişim sağlamak için Redsıs için Azure önbelleğini bir Python uygulamasına katabilirsiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -51,7 +53,7 @@ Aşağıdaki örnek, yükseltilmiş yönetici ayrıcalıklarıyla çalışan bir
 
 ## <a name="read-and-write-to-the-cache"></a>Önbellek üzerinde okuma ve yazma
 
-Python’u çalıştırın ve komut satırındaki önbelleği kullanarak test edin. `<Your Host Name>` Ve`<Your Access Key>` değerlerini, redin için Azure önbelleğiniz ile değiştirin. 
+Python’u çalıştırın ve komut satırındaki önbelleği kullanarak test edin. @No__t-0 ve `<Your Access Key>` ' i redin için Azure önbelleğinizin değerleriyle değiştirin. 
 
 ```python
 >>> import redis
@@ -70,7 +72,7 @@ b'bar'
 
 *PythonApplication1.py* adlı yeni bir betik metni dosyası oluşturun.
 
-Aşağıdaki betiği *PythonApplication1.py* dosyasına ekleyin ve dosyayı kaydedin. Bu betik, önbellek erişimini test eder. `<Your Host Name>` Ve`<Your Access Key>` değerlerini, redin için Azure önbelleğiniz ile değiştirin. 
+Aşağıdaki betiği *PythonApplication1.py* dosyasına ekleyin ve dosyayı kaydedin. Bu betik, önbellek erişimini test eder. @No__t-0 ve `<Your Access Key>` ' i redin için Azure önbelleğinizin değerleriyle değiştirin. 
 
 ```python
 import redis

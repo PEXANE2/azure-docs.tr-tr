@@ -1,6 +1,6 @@
 ---
-title: Linux 'ta Python uygulaması oluşturma-Azure App Service | Microsoft Docs
-description: İlk Python Hello World uygulamanızı birkaç dakika içinde Linux üzerinde Azure App Service dağıtın.
+title: "Hızlı başlangıç: Linux 'ta Python uygulaması oluşturma-Azure App Service"
+description: Linux üzerinde Azure App Service'te ilk Python merhaba dünya uygulamanızı birkaç dakika içinde dağıtın.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -13,30 +13,31 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
+ms.custom: seo-python-october2019
 experimental: true
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 253e2e5015c2cb7a71386b88b4d86ac6bff6a0fe
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7a0aded07c2cd4da6ada72bdb967b1d485a56b85
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242454"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329963"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
-Bu hızlı [Başlangıçta, Linux üzerinde App Service](app-service-linux-intro.md)basit bir Python uygulamasını dağıtarak, yüksek düzeyde ölçeklenebilir ve kendini yayama bir Web barındırma hizmeti sağlar. Azure komut satırı arabirimi ( [Azure CLI](/cli/azure/install-azure-cli)), etkileşimli, tarayıcı tabanlı Azure Cloud Shell aracılığıyla kullanılır. bu sayede, bir Mac, Linux veya Windows bilgisayarı kullanma adımlarını izleyebilirsiniz.
+Bu makalede, [Linux üzerinde App Service](app-service-linux-intro.md)basit bir Python uygulamasını dağıtarak, yüksek düzeyde ölçeklenebilir ve kendini yayama bir Web barındırma hizmeti sağlar. Azure komut satırı arabirimi ( [Azure CLI](/cli/azure/install-azure-cli)), etkileşimli, tarayıcı tabanlı Azure Cloud Shell aracılığıyla kullanılır. bu sayede, bir Mac, Linux veya Windows bilgisayarı kullanma adımlarını izleyebilirsiniz.
 
-![Azure 'da çalışan örnek uygulama](media/quickstart-python/hello-world-in-browser.png)
+![Azure'da çalışan örnek uygulama](media/quickstart-python/hello-world-in-browser.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıcı gerçekleştirmek için:
+Bu hızlı başlangıcı tamamlamak için:
 
-* <a href="https://www.python.org/downloads/" target="_blank">Python 3,7 'yi yükler</a>
-* <a href="https://git-scm.com/" target="_blank">Git 'i yükler</a>
-* Bir Azure aboneliği. Henüz bir tane yoksa, başlamadan önce ücretsiz bir [Hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
+* <a href="https://www.python.org/downloads/" target="_blank">Python 3.7 sürümünü yükleme</a>
+* <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>
+* Azure aboneliği. Henüz bir tane yoksa, başlamadan önce ücretsiz bir [Hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
-## <a name="download-the-sample-locally"></a>Örneği yerel olarak indirin
+## <a name="download-the-sample-locally"></a>Örnekleri yerel makineye indirme
 
 Bir Terminal penceresinde, örnek uygulamayı yerel makinenize kopyalamak ve örnek kodu içeren dizine gitmek için aşağıdaki komutları çalıştırın.
 
@@ -49,7 +50,7 @@ Depo, deponun bir Flask uygulaması içerdiğini App Service söyleyen bir *Appl
 
 ## <a name="run-the-app-locally"></a>Uygulamayı yerel olarak çalıştırma
 
-Uygulamayı Azure 'a dağıtırken nasıl bakacağınızı görmeniz için yerel olarak çalıştırın. Bir Terminal penceresi açın ve gerekli bağımlılıkları yüklemek ve yerleşik geliştirme sunucusunu başlatmak için aşağıdaki komutları kullanın. 
+Azure'a dağıttığınızda nasıl görüneceğini görmek için uygulamayı yerel olarak çalıştırın. Gerekli bağımlılık dosyalarını yüklemek ve yerleşik geliştirme sunucusunu başlatmak için bir terminal penceresi açın ve aşağıdaki komutları kullanın. 
 
 ```bash
 # In Bash (for Linux or Mac)
@@ -69,17 +70,17 @@ flask run
 
 Bir Web tarayıcısı açın ve `http://localhost:5000/` ' da örnek uygulamaya gidin.
 
-**Merhaba Dünya görürsünüz!** sayfada görünen örnek uygulamadaki ileti.
+Sayfada gösterilen örnek uygulamada **Merhaba Dünya!** iletisini görürsünüz.
 
 ![Yerel olarak çalışan örnek uygulama](media/quickstart-python/hello-world-in-browser.png)
 
-Terminal pencerenizde, Web sunucusundan çıkmak için **CTRL + C** tuşlarına basın.
+Terminal pencerenizde **Ctrl+C** tuşlarına basarak web sunucusundan çıkın.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="download-the-sample"></a>Örneği indirin
+## <a name="download-the-sample"></a>Örneği indirme
 
-Cloud Shell, bir hızlı başlangıç dizini oluşturun ve ardından bu dizin ile değiştirin.
+Cloud Shell'de bir quickstart dizini oluşturun ve o dizine geçin.
 
 ```bash
 mkdir quickstart
@@ -87,13 +88,13 @@ mkdir quickstart
 cd $HOME/quickstart
 ```
 
-Ardından, örnek uygulama deposunu hızlı başlangıç dizininize kopyalamak için aşağıdaki komutu çalıştırın.
+Ardından, örnek uygulama deposunu quickstart dizininize kopyalamak için aşağıdaki komutu çalıştırın.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
 
-Çalışırken, aşağıdaki örneğe benzer bilgiler görüntüler:
+Çalıştırıldığında, aşağıdaki örneğe benzer bilgiler görüntüler:
 
 ```bash
 Cloning into 'python-docs-hello-world'...
@@ -115,7 +116,7 @@ cd python-docs-hello-world
 az webapp up -n <app-name>
 ```
 
-Bu komutun çalıştırılması birkaç dakika sürebilir. Çalışırken, aşağıdaki örneğe benzer bilgiler görüntüler:
+Bu komutun çalıştırılması birkaç dakika sürebilir. Çalıştırıldığında, aşağıdaki örneğe benzer bilgiler görüntüler:
 
 ```json
 The behavior of this command has been altered by the following extension: webapp
@@ -144,9 +145,9 @@ All done.
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
-## <a name="browse-to-the-app"></a>Uygulamaya gidin
+## <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
-Web tarayıcınızı kullanarak dağıtılan uygulamaya gidin.
+Web tarayıcınızı kullanarak, dağıtılan uygulamanın konumuna gidin.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -154,23 +155,23 @@ http://<app-name>.azurewebsites.net
 
 Python örnek kodu, yerleşik bir görüntüyle Linux üzerinde App Service çalışmaktadır.
 
-![Azure 'da çalışan örnek uygulama](media/quickstart-python/hello-world-in-browser.png)
+![Azure'da çalışan örnek uygulama](media/quickstart-python/hello-world-in-browser.png)
 
-**Mühendisi!** Linux üzerinde App Service için ilk Python uygulamanızı dağıttınız.
+**Tebrikler!** Linux üzerinde App Service'e ilk Python uygulamanızı dağıttınız.
 
-## <a name="update-locally-and-redeploy-the-code"></a>Yerel olarak güncelleştir ve kodu yeniden Dağıt
+## <a name="update-locally-and-redeploy-the-code"></a>Kodu yerel makinede güncelleştirme ve yeniden dağıtma
 
 Cloud Shell `code application.py` girerek Cloud Shell düzenleyicisini açın.
 
 ![Kod application.py](media/quickstart-python/code-applicationpy.png)
 
- @No__t çağrısındaki metinde küçük bir değişiklik yapın-0:
+ `return` çağrısında metinde küçük bir değişiklik yapın:
 
 ```python
 return "Hello Azure!"
 ```
 
-Değişikliklerinizi kaydedin ve düzenleyiciden çıkın. Kaydetmek için `^S` komutunu kullanın ve çıkmak için-1 @no__t.
+Değişikliklerinizi kaydedin ve düzenleyiciden çıkın. Kaydetmek için `^S` ve çıkmak için `^Q` komutunu kullanın.
 
 [@No__t-1](/cli/azure/webapp#az-webapp-up) komutunu kullanarak uygulamayı yeniden dağıtın. @No__t-0 için uygulamanızın adını değiştirin ve `<location-name>` ( [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) komutundan gösterilen değerlerden birini kullanarak) için bir konum belirtin.
 
@@ -178,9 +179,9 @@ Değişikliklerinizi kaydedin ve düzenleyiciden çıkın. Kaydetmek için `^S` 
 az webapp up -n <app-name> -l <location-name>
 ```
 
-Dağıtım tamamlandıktan sonra, **uygulamaya gözatma** adımında açılan tarayıcı penceresine dönün ve sayfayı yenileyin.
+Dağıtım tamamlandıktan sonra **Uygulamaya göz atma** adımında açılan tarayıcı penceresine dönüp sayfayı yenileyin.
 
-![Azure 'da çalışan güncelleştirilmiş örnek uygulama](media/quickstart-python/hello-azure-in-browser.png)
+![Azure'da çalışan güncelleştirilmiş örnek uygulama](media/quickstart-python/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetin
 
@@ -188,13 +189,13 @@ Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" 
 
 Sol menüden **uygulama hizmetleri**' ni seçin ve ardından Azure uygulamanızın adını seçin.
 
-![Azure uygulamasına Portal gezintisi](./media/quickstart-python/app-service-list.png)
+![Azure uygulamasına portal gezintisi](./media/quickstart-python/app-service-list.png)
 
-Uygulamanızın genel bakış sayfasını görürsünüz. Burada, gezinme, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz.
+Uygulamanızın genel bakış sayfasını görürsünüz. Buradan göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz.
 
-![Azure portal App Service sayfası](media/quickstart-python/app-service-detail.png)
+![Azure portalında App Service sayfası](media/quickstart-python/app-service-detail.png)
 
-Sol menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar. 
+Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar. 
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 

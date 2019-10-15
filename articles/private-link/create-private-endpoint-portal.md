@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: aa48ebe573736349cab519b5181af10f6d03bc46
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: d8d7c0232110d3d5b040debc3a24941988d4ee29
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285960"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372238"
 ---
 # <a name="create-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta oluşturma
 
@@ -115,8 +115,8 @@ Bu bölümde, Azure 'da bir SQL veritabanı sunucusu oluşturacaksınız.
     | **ÖRNEK AYRıNTıLARı** |  |
     | Veritabanı adı  | *MyDatabase*yazın. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
     |||
-5.  **Sunucu**' da, **Yeni oluştur**' u seçin. 
-6.  **Yeni sunucu**' da bu bilgileri girin veya seçin:
+5. **Sunucu**' da, **Yeni oluştur**' u seçin. 
+6. **Yeni sunucu**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -125,9 +125,9 @@ Bu bölümde, Azure 'da bir SQL veritabanı sunucusu oluşturacaksınız.
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 8 karakter uzunluğunda olmalı ve tanımlanan gereksinimleri karşılamalıdır. |
     | Konum | SQL Server bulunmasını istediğiniz bir Azure bölgesi seçin. |
     
-7.  **Tamam ' ı**seçin. 
-8.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
-9. Doğrulama başarılı iletisini gördüğünüzde **Oluştur**' u seçin. 
+7. **Tamam**’ı seçin. 
+8. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
+9. Doğrulama başarılı iletisini gördüğünüzde **Oluştur**' u seçin. 
 10. Doğrulama başarılı iletisini gördüğünüzde oluştur ' u seçin. 
 
 ## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
@@ -147,18 +147,18 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
     | Adı | *@No__t-1myPrivateEndpoint*girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
     |Bölge|**WestCentralUS**öğesini seçin.|
     |||
-5.  **Sonraki: kaynak**' ı seçin.
-6.  **Özel uç nokta oluştur-kaynak**bölümünde bu bilgileri girin veya seçin:
+5. **Sonraki: kaynak**' ı seçin.
+6. **Özel uç nokta oluştur-kaynak**bölümünde bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
     |Bağlantı yöntemi  | Dizinimde bir Azure kaynağına bağlan ' ı seçin.|
     | Abonelik| Aboneliğinizi seçin. |
-    | Kaynak türü |  **Microsoft. SQL/Servers**' ı seçin. |
+    | Kaynak türü | **Microsoft. SQL/Servers**' ı seçin. |
     | Kaynak |*Sunucum* seçin|
     |Hedef alt kaynak |*SqlServer* seçin|
     |||
-7. Ileri 'yi seçin **: yapılandırma**.
+7. Ileri 'yi seçin **: yapılandırma**.
 8. **Özel uç nokta (Önizleme) oluştur-yapılandırma**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
@@ -167,12 +167,12 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
     | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
     | Alt ağ |  *Mysubnet*öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTIRMESI**||
-    |Özel DNS bölgesiyle tümleştirin | **Evet**' i seçin. |
+    |Özel DNS bölgesiyle tümleştirin |**Evet**' i seçin. |
     |Özel DNS bölgesi |Seçin *(yeni) Privatelink. Database. Windows. net* |
     |||
 
-1.  **Gözden geçir + oluştur**' u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
-2. Doğrulama  iletisi **geçtiğini**gördüğünüzde **Oluştur**' u seçin. 
+1. **İncele ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sayfasına götürülürsünüz. 
+2. **Doğrulama başarılı** Iletisini gördüğünüzde **Oluştur**' u seçin. 
  
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Uzak Masaüstü (RDP) kullanarak bir VM 'ye bağlanma
 
@@ -217,7 +217,7 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
     ```
 3. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)'i yükler.
 
-4.  **Sunucuya Bağlan**' da bu bilgileri girin veya seçin:
+4. **Sunucuya Bağlan**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -227,16 +227,16 @@ Bu bölümde, bir SQL Server oluşturacaksınız ve kendisine özel bir uç nokt
     |Parola |SQL Server oluşturma sırasında girilen bir parolayı girin. |
     |Parolayı anımsa|**Evet**' i seçin.|
     |||
-1.  **Bağlan**' ı seçin.
+1. **Bağlan**’ı seçin.
 2. Sol menüden veritabanlarına gözatamazsınız.
 3. I MyDatabase 'ten bilgi oluşturun veya sorgulayın.
 4.  *Myvm*ile uzak masaüstü bağlantısını kapatın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 Özel uç nokta, SQL Server ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin: 
-1. Portalın üst kısmındaki *myresourcegroup* yazın **ve arama sonuçlarından** *myresourcegroup* @no__t ' i seçin. 
-2.  **Kaynak grubunu sil**' i seçin. 
-3.  **Kaynak grubu adını** Olacak şekilde myresourcegroup girin ve **Sil**' i seçin.
+1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* girin ve arama sonuçlarından *myresourcegroup* ' i seçin. 
+2. **Kaynak grubunu sil**'i seçin. 
+3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

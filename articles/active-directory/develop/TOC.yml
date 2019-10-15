@@ -553,7 +553,7 @@
         - name: Kimlik Doğrulaması
           items:
             - name: Kimlik doğrulaması temel bilgileri
-              href: authentication-scenarios.md
+              href: v1-authentication-scenarios.md
             - name: OAuth 2.0 ve OpenID Connect protokolleri
               items:
                 - name: OpenID Connect

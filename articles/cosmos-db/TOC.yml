@@ -141,6 +141,9 @@
             - name: SİPARİŞ VEREN
               displayName: 'order by, order by clause'
               href: sql-query-order-by.md
+            - name: GROUP BY
+              displayName: group by clause
+              href: sql-query-group-by.md
             - name: KAYDIRMA SINIRI
               displayName: offset limit
               href: sql-query-offset-limit.md

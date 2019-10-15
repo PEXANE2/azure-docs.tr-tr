@@ -1,26 +1,26 @@
 ---
-title: Azure SQL Veritabanı sorgulamak için Python kullanma | Microsoft Docs
+title: 'Hızlı başlangıç: Azure SQL veritabanını sorgulamak için Python kullanma'
 description: Bu konu başlığı altında, Python kullanarak Azure SQL veritabanına bağlanan ve Transact-SQL deyimlerini kullanarak sorgulayan bir program oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
+ms.custom: seo-python-october2019
 ms.devlang: python
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 659f6333d16f84cc35be45c45b7a7119e53fd0d0
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 32861fa8f8756c4e8d30c055582789d41a92fe7c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764294"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331852"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Hızlı Başlangıç: Python kullanarak Azure SQL veritabanı sorgulama
 
- Bu hızlı başlangıçta [Python](https://python.org) kullanarak bir Azure SQL veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulama işlemleri gösterilir. Daha fazla SDK ayrıntıları için [başvuru](https://docs.microsoft.com/python/api/overview/azure/sql) belgelerimize, [Pyodbc GitHub deposuna](https://github.com/mkleehammer/pyodbc/wiki/)ve bir [pyodbc örneğine](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)göz atın.
+ Bu makalede, [Python](https://python.org) kullanarak Azure SQL veritabanına bağlanma ve Transact-SQL deyimleriyle veri sorgulama işlemlerinin nasıl yapılacağı gösterilmektedir. Daha fazla SDK ayrıntıları için [başvuru](https://docs.microsoft.com/python/api/overview/azure/sql) belgelerimize, [Pyodbc GitHub deposuna](https://github.com/mkleehammer/pyodbc/wiki/)ve bir [pyodbc örneğine](https://github.com/mkleehammer/pyodbc/wiki/Getting-started)göz atın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -44,17 +44,17 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakilere sahip olduğunuzdan e
   
 - İşletim sisteminiz için Python ve ilgili yazılımlar:
   
-  - **MacOS**: Homebrew ve Python 'u yükleyip, ODBC sürücüsünü ve SQLCMD 'yi yükleyip SQL Server için Python sürücüsünü yüklersiniz. [MacOS 'ta SQL Server kullanarak Python uygulamaları oluşturma konusunda](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)1,2, 1,3 ve 2,1 adımlarına bakın. Daha fazla bilgi için bkz. [Linux ve macOS 'Ta MICROSOFT ODBC sürücüsünü yüklemeyi](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+  - **MacOS**: homebrew ve Python 'u yükler, ODBC sürücüsünü ve sqlcmd 'yi yükleyip SQL Server için Python sürücüsünü yükler. [MacOS 'ta SQL Server kullanarak Python uygulamaları oluşturma konusunda](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)1,2, 1,3 ve 2,1 adımlarına bakın. Daha fazla bilgi için bkz. [Linux ve macOS 'Ta MICROSOFT ODBC sürücüsünü yüklemeyi](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
 
-  - **Ubuntu**: Python ve diğer gerekli paketleri ile birlikte `sudo apt-get install python python-pip gcc g++ build-essential`yükler. SQL Server için ODBC sürücüsünü, SQLCMD ve Python sürücüsünü indirip yükleyin. Yönergeler için bkz. [pyodbc Python geliştirmesi için bir geliştirme ortamı yapılandırma](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
+  - **Ubuntu**: Python ve diğer gerekli paketleri `sudo apt-get install python python-pip gcc g++ build-essential` ile yükler. SQL Server için ODBC sürücüsünü, SQLCMD ve Python sürücüsünü indirip yükleyin. Yönergeler için bkz. [pyodbc Python geliştirmesi için bir geliştirme ortamı yapılandırma](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
 
-  - **Windows**: Python, ODBC sürücüsünü ve SQLCMD 'yi ve SQL Server için Python sürücüsünü yükler. Yönergeler için bkz. [pyodbc Python geliştirmesi için bir geliştirme ortamı yapılandırma](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
+  - **Windows**: Python, ODBC sürücüsünü ve sqlcmd 'yi ve SQL Server için Python sürücüsünü yükler. Yönergeler için bkz. [pyodbc Python geliştirmesi için bir geliştirme ortamı yapılandırma](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server bağlantı bilgilerini al
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -64,7 +64,7 @@ Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Y
 
 1. Bir metin düzenleyicisinde, *SQLtest.py*adlı yeni bir dosya oluşturun.  
    
-1. Aşağıdaki kodu ekleyin. Sunucu >, \<veritabanı > \<, \<Kullanıcı adı > ve \<parola > için kendi değerlerinizi yerine koyun.
+1. Aşağıdaki kodu ekleyin. @No__t-0Server >, \<database >, \<username > ve \<password > için kendi değerlerinizi yerine koyun.
    
    >[!IMPORTANT]
    >Bu örnekteki kod, veritabanınızı oluştururken kaynak olarak seçebileceğiniz örnek AdventureWorksLT verilerini kullanır. Veritabanınızda farklı veriler varsa, SELECT sorgusunda kendi veritabanınızdaki tabloları kullanın. 

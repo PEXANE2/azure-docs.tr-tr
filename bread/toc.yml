@@ -340,9 +340,6 @@
         - name: Translator Metin Çevirisi
           tocHref: /azure/cognitive-services/translator/
           topicHref: /azure/cognitive-services/translator/
-        - name: Translator Konuşma Çevirisi
-          tocHref: /azure/cognitive-services/translator-speech/
-          topicHref: /azure/cognitive-services/translator-speech/
         - name: Video Indexer
           tocHref: /azure/cognitive-services/video-indexer/
           topicHref: /azure/cognitive-services/video-indexer/video-indexer-overview

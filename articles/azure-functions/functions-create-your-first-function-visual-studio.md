@@ -1,8 +1,6 @@
 ---
 title: Visual Studio’yu kullanarak Azure’da ilk işlevinizi oluşturma
 description: Visual Studio kullanarak HTTP tarafından tetiklenen bir Azure İşlevi oluşturup yayımlayın.
-services: functions
-documentationcenter: na
 author: ggailey777
 manager: gwallace
 keywords: azure işlevleri, işlevler, olay işleme, işlem, sunucusuz mimari
@@ -12,14 +10,14 @@ ms.topic: quickstart
 ms.date: 07/19/2019
 ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 9a2978bc181fd4c50665b6178d22d19eeb9e2568
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d798be3a0cde39de208105c4b3d4458fa5b124c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096564"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329502"
 ---
-# <a name="create-your-first-function-using-visual-studio"></a>Visual Studio kullanarak ilk işlevinizi oluşturma
+# <a name="create-your-first-function-using-visual-studio"></a>Visual Studio’yu kullanarak ilk işlevinizi oluşturma
 
 Azure İşlevleri, öncelikle bir VM oluşturmak veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir ortamda yürütmenize olanak tanır.
 
@@ -39,7 +37,7 @@ Bu öğreticiyi tamamlayabilmeniz için öncelikle [Visual Studio 2019](https://
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje ve sınıf oluşturur. Yöntemi üzerindeki `HttpTrigger`özniteliği, varsayılan olarak olduğu gibi işlevin adını ayarlar. `FunctionName` `HttpTrigger` Özniteliği, işlevin bir http isteği tarafından tetiklendiğini belirtir. Ortak kod, istek gövdesi veya sorgu dizesinde yer alan bir değeri içeren bir HTTP yanıtı gönderir.
+Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje ve sınıf oluşturur. Yöntemdeki `FunctionName` özniteliği, varsayılan olarak `HttpTrigger` olan işlevin adını ayarlar. @No__t-0 özniteliği, işlevin bir HTTP isteği tarafından tetiklendiğini belirtir. Ortak kod, istek gövdesi veya sorgu dizesinde yer alan bir değeri içeren bir HTTP yanıtı gönderir.
 
 Yöntemine uygun öznitelikleri uygulayarak giriş ve çıkış bağlamalarını kullanarak işlevinizin yeteneklerini genişletebilirsiniz. Daha fazla bilgi için, [Azure İşlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md) konusunun [Tetikleyiciler ve bağlayıcılar](functions-dotnet-class-library.md#triggers-and-bindings) bölümüne göz atın.
 

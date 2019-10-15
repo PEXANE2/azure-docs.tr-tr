@@ -580,7 +580,7 @@
     - name: Hızlı Başlangıçlar
       items:
         - name: Apache HBase’i sorgulama - Apache Phoenix
-          href: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+          href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Apache HBase’i Sorgulama - HBase Kabuğu
           href: ./hbase/query-hbase-with-hbase-shell.md
     - name: Öğreticiler
