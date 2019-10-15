@@ -93,7 +93,7 @@ Bir kullanıcı parola karması eşitleme kapsamınsa, varsayılan olarak, bulut
 
 Yalnızca Azure AD ile tümleşik hizmetler ile etkileşime geçen eşitlenmiş kullanıcılar varsa ve bir parola süre sonu ilkesiyle uyumlu olması gerekiyorsa, bunu Azure AD parola süre sonu ilkenize uygun hale getirerek  *Enforcechoparlör Passwordpolicyforpasswordsyncedusers* özelliği.
 
- *Enforcecıpasswordpolicyforpasswordsyncedusers* devre dışı bırakıldığında (varsayılan ayar), Azure AD Connect eşitlenen kullanıcıların passwordpolicies özniteliğini "disablepasswordexpidıma" olarak ayarlar. Bu, bir kullanıcının parolasının her eşitlenilişinde yapılır ve Azure AD 'yi bu kullanıcı için bulut parolası süre sonu ilkesini yoksayacak şekilde yönlendirir. Aşağıdaki komutla Azure AD PowerShell modülünü kullanarak özniteliğin değerini kontrol edebilirsiniz:
+ *Enforcecıpasswordpolicyforpasswordsyncedusers* devre dışı bırakıldığında (varsayılan ayar), Azure AD Connect eşitlenen kullanıcıların passwordpolicies özniteliğini "disablepasswordexpidıma" olarak ayarlar.  Bu, bir kullanıcının parolasının her eşitlenilişinde yapılır ve Azure AD 'yi bu kullanıcı için bulut parolası süre sonu ilkesini yoksayacak şekilde yönlendirir. Aşağıdaki komutla Azure AD PowerShell modülünü kullanarak özniteliğin değerini kontrol edebilirsiniz:
 
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 

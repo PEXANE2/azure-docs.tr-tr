@@ -41,7 +41,7 @@ Durdurulan VM 'yi başlatma isteği, bulut hizmetini barındıran orijinal küme
 ### <a name="resolution"></a>Çözüm
 * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun ve ardından her VM 'yi yeniden başlatın.
   
-  1. Kaynak **grupları** > *kaynak*grupları > 'natıklayın*kullanılabilirlik kümesi***sanal makineleriniz**sanal makineniz >  >  > *Durdur.*  > 
+  1. Kaynak **grupları** > *kaynak*grupları > 'natıklayın*kullanılabilirlik kümesi* **sanal makineleriniz**sanal makineniz >  >  > *Durdur.*  > 
   2. Tüm VM 'Ler durduktan sonra, durdurulan sanal makinelerin her birini seçin ve Başlat ' a tıklayın.
 * Yeniden başlatma isteğini daha sonra yeniden deneyin.
 
@@ -57,7 +57,7 @@ VM 'yi yeniden boyutlandırma isteği, bulut hizmetini barındıran orijinal kü
   
   1. Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun.
      
-     * Kaynak **grupları** > *kaynak*grupları > 'natıklayın*kullanılabilirlik kümesi***sanal makineleriniz**sanal makineniz >  >  > *Durdur.*  > 
+     * Kaynak **grupları** > *kaynak*grupları > 'natıklayın*kullanılabilirlik kümesi* **sanal makineleriniz**sanal makineniz >  >  > *Durdur.*  > 
   2. Tüm VM 'Ler durduktan sonra, istenen VM 'yi daha büyük bir boyuta göre yeniden boyutlandırın.
   3. Yeniden boyutlandırılmış VM 'yi seçin ve **Başlat**' a tıklayın ve ardından durdurulan her bir VM 'yi başlatın.
 
