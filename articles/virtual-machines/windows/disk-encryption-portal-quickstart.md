@@ -15,18 +15,18 @@ ms.locfileid: "72246126"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Windows sanal makinesi oluşturma ve şifreleme
 
-Azure sanal makineleri (VM 'Ler) Azure portal aracılığıyla oluşturulabilir. Azure portal, VM 'Ler ve bunlarla ilişkili kaynakları oluşturmak için tarayıcı tabanlı bir kullanıcı arabirimidir. Bu hızlı başlangıçta, Ubuntu 18,04 LTS çalıştıran bir Windows sanal makinesini (VM) dağıtmak, şifreleme anahtarlarının depolanması için bir Anahtar Kasası oluşturmak ve VM 'yi şifrelemek için Azure portal kullanacaksınız.
+Azure sanal makineleri (VM’ler), Azure portalı üzerinden oluşturulabilir. Azure portal, sanal makineleri ve tüm ilgili kaynaklarını oluşturmaya yönelik tarayıcı tabanlı bir kullanıcı arabirimi sağlar. Bu hızlı başlangıçta, Ubuntu 18,04 LTS çalıştıran bir Windows sanal makinesini (VM) dağıtmak, şifreleme anahtarlarının depolanması için bir Anahtar Kasası oluşturmak ve VM 'yi şifrelemek için Azure portal kullanacaksınız.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="sign-in-to-azure"></a>Azure 'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
-[Azure Portal](https://portal.azure.com)oturum açın.
+[Azure Portal](https://portal.azure.com)’ında oturum açın.
 
-## <a name="create-a-key-vault"></a>Anahtar Kasası oluşturma
+## <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
 
-1. Azure portal sol üst köşesinde **kaynak oluştur** seçeneğini belirleyin
-1. Arama kutusuna **Key Vault**girin.
+1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** seçeneğini belirleyin
+1. Arama kutusuna **Key Vault** yazın.
 1. Sonuçlar listesinden **Key Vault**' yi seçin.
 1. Key Vault bölümünde **Oluştur**' u seçin.
 1. **Anahtar Kasası oluştur** ekranında yeni anahtar kasanız için benzersiz bir ad seçin.
@@ -35,12 +35,12 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     > Her Key Vault benzersiz bir adı olmalıdır. Aşağıdaki örnek, *Mya, v*adlı bir Key Vault oluşturur, ancak sizinkilerle farklı bir ad vermelisiniz.
 
 1. Bir **abonelik**seçin.
-1.  **Kaynak grubu**altında **Yeni oluştur**' u seçin. Açılır pencerede, kaynak grubunun adı için *Myresourcegroup* yazın ve ardından **Tamam**' ı seçin. 
+1.  **Kaynak grubu**altında **Yeni oluştur**' u seçin. Açılan pencerede kaynak grubunun adı için *myResourceGroup* yazın ve **Tamam**'ı seçin. 
 
     ![Kaynak grubu oluşturma ekranı](../media/disk-encryption/portal-qs-keyvaultcreation.png)
 
 1. **Konum** aşağı açılan menüsünde **Doğu ABD**' yi seçin.
-1. Diğer seçenekleri varsayılanlarına bırakın.
+1. Diğer seçenekleri varsayılan değerlerinde bırakın.
 1. Sizi yeni bir ekrana götürür "erişim Ilkeleri" ni seçin.
 1. "Birim şifrelemesi için Azure disk şifrelemesi erişimini etkinleştir" seçeneğinin yanındaki onay kutusunu işaretleyin.
 
@@ -49,9 +49,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 1. Erişim Ilkeleri ekranının en altında "gözden geçir + oluştur" a tıklayın.
 1. İnceleme sonrasında "Oluştur" a tıklayın.
 
-## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
+## <a name="create-a-virtual-machine"></a>Sanal makine oluşturun
 
-1. Azure portal sol üst köşesinde **kaynak oluştur ' a** tıklayın.
+1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 
 1. Yeni sayfada, popüler bölümünde **Windows Server 2016 Datacenter**' ı seçin.
 1. **Temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, doğru aboneliğin seçildiğinden emin olun.
@@ -63,9 +63,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     ![ResourceGroup oluşturma ekranı @ no__t-1
 1. "Yönetim" sekmesini seçin ve bir tanılama depolama hesabınız olduğunu doğrulayın. Depolama hesabınız yoksa, "Yeni oluştur" u seçin, yeni hesabınıza bir ad verin ve "Tamam" ![ResourceGroup oluşturma ekranı @ no__t-1 ' i seçin
 1. "Gözden geçir + oluştur" a tıklayın.
-1. **Sanal makine oluştur** sayfasında, oluşturmak üzere olduğunuz VM hakkındaki ayrıntıları görebilirsiniz. Hazırsanız **Oluştur**' u seçin.
+1. **Sanal makine oluştur** sayfasında oluşturmak üzere olduğunuz VM'nin ayrıntılarını görüntüleyebilirsiniz. Hazır olduğunuzda **Oluştur**'u seçin.
 
-VM 'nizin dağıtılması birkaç dakika sürer. Dağıtım bittiğinde, sonraki bölüme geçin.
+VM'nizin dağıtılması birkaç dakika sürer. Dağıtım tamamlandıktan sonra bir sonraki bölüme geçin.
 
 ## <a name="encrypt-the-virtual-machine"></a>Sanal makineyi şifreleyin
 
@@ -80,12 +80,12 @@ VM 'nizin dağıtılması birkaç dakika sürer. Dağıtım bittiğinde, sonraki
 1. Sağ taraftaki kenar çubuğunda, daha önce oluşturduğunuz anahtar kasasının adını * Anahtar Kasası * * değeri olarak seçin ve **Seç**' e tıklayın.
 
     ![diskler ve şifreleme seçimi](../media/disk-encryption/portal-qs-encrypt-vm-screen.png)
-1. Şifreleme ekranının üst kısmında "Kaydet" e tıklayın. Bir açılan pencere, sanal makinenin yeniden başlatılacağını uyarır. Yordamı tamamlamak için **Evet**yüklemesini desteklemesi gerekir.
+1. Şifreleme ekranının üst kısmında "Kaydet" e tıklayın. Bir açılan pencere, sanal makinenin yeniden başlatılacağını uyarır. **Evet**'e tıklayın.
 
 
-## <a name="clean-up-resources"></a>Kaynakları Temizleme
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, kaynak grubunu, sanal makineyi ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin, Sil ' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
+Artık gerekli olmadığında kaynak grubunu, sanal makineyi ve tüm ilişkili kaynakları silebilirsiniz. Bunu yapmak için, sanal makine için kaynak grubunu seçin, Sil ' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
