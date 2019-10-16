@@ -148,6 +148,8 @@
           href: automation-onboard-solutions-from-automation-account.md
     - name: Nasıl Yapılır Kılavuzları
       items:
+        - name: Azure Sanal Makineleriniz için güncelleştirme ve düzeltme eki yönetimi
+          href: automation-tutorial-update-management.md
         - name: Birden çok VM için güncelleştirmesini yönetme
           href: manage-update-multi.md
         - name: Ön ve son betikler
@@ -157,6 +159,14 @@
         - name: SCCM’yi Güncelleştirme Yönetimi ile Tümleştirme
           href: oms-solution-updatemgmt-sccmintegration.md
           displayName: Configuration Manager
+        - name: Güncelleştirme Yönetimi için Windows Update’i yapılandırma
+          href: automation-configure-windows-update.md
+        - name: Güncelleştirme Yönetimi ile dinamik grupları kullanma
+          href: automation-update-management-groups.md
+        - name: Güncelleştirme Yönetimi günlüklerini sorgulama
+          href: automation-update-management-query-logs.md
+        - name: Güncelleştirme değerlendirmelerini görüntüleme
+          href: automation-view-update-assessments.md
     - name: Sorun giderme
       items:
         - name: Ekleme
@@ -300,14 +310,18 @@
       href: automation-connections.md
     - name: Kimlik Bilgileri
       href: automation-credentials.md
-    - name: Modüller
-      href: automation-integration-modules.md
+    - name: PowerShell modülleri
+      items:
+        - name: Modüller
+          href: automation-integration-modules.md
+        - name: Azure Otomasyonu'nda Az modüllerini kullanma
+          href: az-modules.md
+        - name: Azure PowerShell modüllerini güncelleştirme
+          href: automation-update-azure-modules.md
     - name: Zamanlamalar
       href: automation-schedules.md
     - name: Değişkenler
       href: automation-variables.md
-    - name: Azure PowerShell modüllerini güncelleştirme
-      href: automation-update-azure-modules.md
     - name: Python 2 paketlerini yönetme
       href: python-packages.md
     - name: Paylaşılan Kaynak sorunlarını giderme

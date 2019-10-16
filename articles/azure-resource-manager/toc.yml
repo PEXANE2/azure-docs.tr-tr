@@ -228,7 +228,9 @@
           href: resource-group-delete.md
         - name: Kaynakları kilitleme
           href: resource-group-lock-resources.md
-        - name: EA abonelikleri oluşturma
+        - name: Aboneliklere erişmek için kimlik doğrulama API’si
+          href: resource-manager-api-authentication.md
+        - name: Ek abonelikler oluşturma
           href: programmatically-create-subscription.md
         - name: EA abonelikleri oluşturmak için erişim izni verme
           href: grant-access-to-create-subscription.md

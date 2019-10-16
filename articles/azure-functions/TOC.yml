@@ -15,7 +15,7 @@
   items:
     - name: 'İşlev oluşturma - C#'
       href: functions-create-your-first-function-visual-studio.md
-    - name: İşlev oluşturma - Java/Maven
+    - name: İşlev oluşturma - Java
       href: functions-create-first-java-maven.md
     - name: İşlev oluşturma - JavaScript
       href: functions-create-first-function-vs-code.md
@@ -27,6 +27,8 @@
       items:
         - name: 'Depolama - C#'
           href: functions-add-output-binding-storage-queue-vs.md
+        - name: Depolama - Java
+          href: functions-add-output-binding-storage-queue-java.md
         - name: Depolama - JavaScript
           href: functions-add-output-binding-storage-queue-vs-code.md
         - name: Depolama - Python

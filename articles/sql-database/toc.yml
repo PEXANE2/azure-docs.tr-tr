@@ -22,14 +22,13 @@
               href: sql-database-purchase-models.md
             - name: vCore tabanlı model
               href: sql-database-service-tiers-vcore.md
+              items:
+                - name: Sunucusuz işlem katmanı
+                  href: sql-database-serverless.md
+                - name: Ayrılmış kapasite için ön ödeme yapma
+                  href: sql-database-reserved-capacity.md
             - name: DTU hizmet katmanları
               href: sql-database-service-tiers-dtu.md
-            - name: Sunucusuz işlem katmanı
-              href: sql-database-serverless.md
-            - name: Ayrılmış kapasite için ön ödeme yapma
-              href: sql-database-reserved-capacity.md
-            - name: Premium RS hizmet katmanından geçirme
-              href: sql-database-service-tiers-prs.md
         - name: İşlem ve depolama
           items:
             - name: Genel Bakış
@@ -43,6 +42,8 @@
               href: sql-database-service-tier-hyperscale.md
             - name: Hiper Ölçek hakkında SSS
               href: sql-database-service-tier-hyperscale-faq.md
+            - name: Premium RS hizmet katmanından geçirme
+              href: sql-database-service-tiers-prs.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -224,6 +225,8 @@
               href: sql-database-disaster-recovery.md
             - name: Kurtarma tatbikatları
               href: sql-database-disaster-recovery-drills.md
+            - name: Yük devretme grubu yapılandırma
+              href: sql-database-configure-failover-group.md
     - name: İzleme ve ayarlama
       items:
         - name: İzleme ve ayarlama belgeleri
@@ -467,7 +470,7 @@
       items:
         - name: Oluştur
           items:
-            - name: Azure Portalı’nı kullanma
+            - name: Azure portalını kullanma
               href: sql-database-single-database-get-started.md
             - name: Şablon kullanma
               displayName: 'Azure Resource Manager template, ARM'
@@ -488,7 +491,7 @@
           href: sql-database-active-geo-replication-portal.md
         - name: Azure SQL Data Sync’i ayarlama
           href: sql-database-get-started-sql-data-sync.md
-        - name: Elastik havuza yönelik yük devretme grubuna ekleme
+        - name: Yük devretme grubuna elastik havuz ekleme
           href: sql-database-elastic-pool-failover-group-tutorial.md
         - name: Güvenliği yapılandırma
           href: sql-database-security-tutorial.md
@@ -604,8 +607,6 @@
           href: sql-database-geo-replication-portal.md
         - name: Coğrafi çoğaltmalar için güvenliği yapılandırma
           href: sql-database-geo-replication-security-config.md
-        - name: Yük devretme grubu yapılandırma
-          href: sql-database-configure-failover-group.md
         - name: Bellek içi özellikleri deneme
           href: sql-database-in-memory-sample.md
         - name: Otomatik ayarlamayı etkinleştirme
@@ -688,7 +689,7 @@
       items:
         - name: Oluştur
           items:
-            - name: Azure Portalı’nı kullanma
+            - name: Azure portalını kullanma
               href: sql-database-managed-instance-get-started.md
             - name: PowerShell’i kullanma
               href: scripts/sql-database-create-configure-managed-instance-powershell.md
@@ -714,6 +715,8 @@
           href: replication-with-sql-database-managed-instance.md
         - name: Güvenliği yapılandırma
           href: sql-database-managed-instance-aad-security-tutorial.md
+        - name: Yük devretme grubuna yönetilen örnek ekleme
+          href: sql-database-managed-instance-failover-group-tutorial.md
     - name: Kavramlar
       items:
         - name: Yönetim API'si başvurusu

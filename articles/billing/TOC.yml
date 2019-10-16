@@ -7,28 +7,34 @@
       href: billing-understand-your-bill.md
     - name: EA faturanızı anlama
       href: billing-understand-your-bill-ea.md
-    - name: Faturanızı anlama - yalnızca Microsoft Müşteri Sözleşmesi
+    - name: Faturanızı anlama - Microsoft Müşteri Sözleşmesi
       href: billing-mca-understand-your-bill.md
+    - name: Faturanızı anlama - Microsoft İş Ortağı Sözleşmesi
+      href: billing-mpa-understand-your-bill.md
     - name: Microsoft Azure faturanızı görüntüleme ve indirme
       href: billing-download-azure-invoice.md
     - name: Microsoft Azure kullanımınızı ve ücretleri görüntüleme ve indirme
       href: billing-download-azure-daily-usage.md
-    - name: Microsoft Müşteri Sözleşmeniz için vergi belgelerini görüntüleme ve indirme
+    - name: Vergi belgelerini görüntüleme ve indirme
       href: billing-mca-download-tax-document.md
     - name: Üçüncü taraf hizmet değişiklikleri
       href: billing-understand-your-azure-marketplace-charges.md
     - name: Kullanım koşulları açıklandı
       href: billing-understand-your-usage.md
-    - name: Kullanım koşulları açıklandı - yalnızca Microsoft Müşteri Sözleşmesi
+    - name: Kullanım koşulları açıklandı - Microsoft Müşteri Sözleşmesi
       href: billing-mca-understand-your-usage.md
     - name: Fatura koşulları açıklandı
       href: billing-understand-your-invoice.md
-    - name: Fatura koşulları açıklandı - yalnızca Microsoft Müşteri Sözleşmesi
+    - name: Fatura koşulları açıklandı - Microsoft Müşteri Sözleşmesi
       href: billing-mca-understand-your-invoice.md
-    - name: Faturanızı ödeme - yalnızca Microsoft Müşteri Sözleşmesi
+    - name: Fatura koşulları açıklandı - Microsoft İş Ortağı Sözleşmesi
+      href: billing-mpa-invoice-terms-explained.md
+    - name: Faturanızı ödeme - Microsoft Müşteri Sözleşmesi
       href: billing-how-to-pay-bill.md
     - name: Microsoft Müşteri Sözleşmesi için ödeme hesapları
       href: billing-mca-overview.md
+    - name: Microsoft İş Ortağı Sözleşmesi için ödeme hesapları
+      href: mpa-overview.md
 - name: Maliyetleri yönetme
   items:
     - name: Beklenmeyen maliyetleri engelleme
@@ -115,10 +121,8 @@
           href: billing-avoid-charges-free-account.md
         - name: Kullanımı denetleme
           href: billing-check-free-service-usage.md
-        - name: Aboneliği yükseltme
+        - name: Hesabı yükseltme
           href: billing-upgrade-azure-subscription.md
-        - name: Ölçüm eşleştirmeyi anlama
-          href: billing-understand-free-service-meter-mapping.md
     - name: Profili düzenleme
       href: billing-how-to-change-azure-account-profile.md
     - name: Bankacılık ve güçlü müşteri kimlik doğrulamasını açma
@@ -158,7 +162,7 @@
         - name: Microsoft Müşteri Sözleşmesi’ndeki EA görevleri
           href: billing-mca-enterprise-operations.md
     - name: Microsoft Müşteri Sözleşmesi için ödeme hesabı ayarlama
-      href: billing-mca-setup-account.md
+      href: mca-setup-account.md
     - name: Office 365 hesabıyla kaydolma
       href: billing-use-existing-office-365-account-azure-subscription.md
     - name: Azure hesabı ile Office 365 için kaydolma
@@ -173,6 +177,8 @@
       href: billing-subscription-transfer.md
     - name: Sahiplik isteme - Microsoft Müşteri Sözleşmesi
       href: billing-mca-request-billing-ownership.md
+    - name: Sahiplik isteme - Microsoft İş Ortağı Sözleşmesi
+      href: mpa-request-ownership.md
     - name: Aboneliği iptal etme
       href: billing-how-to-cancel-azure-subscription.md
     - name: Kredi kartını değiştirme

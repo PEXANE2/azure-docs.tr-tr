@@ -172,6 +172,8 @@
       href: /rest/api/network-watcher/
 - name: Kaynaklar
   items:
+    - name: Ağ İzleyicisi hakkında SSS
+      href: frequently-asked-questions.md
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN forumu

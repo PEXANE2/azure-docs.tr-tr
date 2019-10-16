@@ -102,7 +102,7 @@
           items:
             - name: Depolama Alanları Doğrudan ile
               href: virtual-machines-windows-portal-sql-create-failover-cluster.md
-            - name: Premium dosya depolama ile
+            - name: Premium dosya paylaşımı ile
               href: virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-storage.md
 - name: Başvuru
   items:

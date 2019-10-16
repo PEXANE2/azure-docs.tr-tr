@@ -26,7 +26,7 @@
     - name: Event Hubs kullanarak veri akışı sağlama
       href: databricks-stream-from-eventhubs.md
     - name: Bilişsel Hizmetler kullanarak yaklaşım analizi
-  href: databricks-sentiment-analysis-cognitive-services.md
+      href: databricks-sentiment-analysis-cognitive-services.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Başlarken
@@ -60,7 +60,7 @@
             - name: Makine öğrenimi
               href: /azure/databricks/getting-started/spark/machine-learning
               maintainContext: true
-            - name: Yapılandırılmış akış
+            - name: Yapılandırılmış Akış
               href: /azure/databricks/getting-started/spark/streaming
               maintainContext: true
             - name: Sırada ne var?
@@ -543,7 +543,7 @@
         - name: Delta Lake'e giriş
           href: /azure/databricks/delta/delta-intro
           maintainContext: true
-        - name: Delta'yı kullanmaya başlama
+        - name: Delta Lake’i kullanmaya başlama
           href: /azure/databricks/delta/quick-start
           maintainContext: true
         - name: Giriş not defterleri
@@ -618,6 +618,9 @@
         - name: Sık sorulan sorular
           href: /azure/databricks/delta/delta-faq
           maintainContext: true
+        - name: Ek Delta kaynakları
+          href: /azure/databricks/delta/delta-resources
+          maintainContext: true
     - name: Veri çerçeveleri ve veri kümeleri
       items:
         - name: Veri Çerçeveleri ve Veri Kümelerine genel bakış
@@ -638,12 +641,12 @@
         - name: Toplayıcılar
           href: /azure/databricks/spark/latest/dataframes-datasets/aggregators
           maintainContext: true
-    - name: Yapılandırılmış akış
+    - name: Yapılandırılmış Akış
       items:
         - name: Structured Streaming’e genel bakış
           href: /azure/databricks/spark/latest/structured-streaming/index
           maintainContext: true
-        - name: Giriş Not Defterleri
+        - name: Giriş not defterleri
           href: /azure/databricks/spark/latest/structured-streaming/demo-notebooks
           maintainContext: true
         - name: Veri kaynaklarının ve havuzların akışını yapma
@@ -699,7 +702,7 @@
             - name: Karar ağaçları örneği
               href: /azure/databricks/applications/machine-learning/mllib/decision-trees
               maintainContext: true
-            - name: MLib işlem hatları ve yapılandırılmış akış
+            - name: MLib işlem hatları ve Yapılandırılmış Akış
               href: /azure/databricks/applications/machine-learning/mllib/mllib-pipelines-and-stuctured-streaming
               maintainContext: true
             - name: Gelişmiş MLib örneği
@@ -771,9 +774,6 @@
               maintainContext: true
             - name: PyTorch
               href: /azure/databricks/applications/deep-learning/single-node-training/pytorch
-              maintainContext: true
-            - name: JCuda
-              href: /azure/databricks/applications/deep-learning/single-node-training/jcuda
               maintainContext: true
             - name: Dağıtılmış DL'ye tek düğümlü PyTorch
               href: /azure/databricks/applications/deep-learning/distributed-training/mnist-pytorch
@@ -852,35 +852,28 @@
           maintainContext: true
     - name: Grafik analizi
       items:
-        - name: GraphFrames ile Graf Analizi öğreticisi
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
-          maintainContext: true
-        - name: GraphFrames - Python
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
-          maintainContext: true
-        - name: GraphFrames - Scala
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
-          maintainContext: true
-        - name: GraphX ile Graf Analizi (Eski)
-          href: /azure/databricks/spark/latest/graph-analysis/graph-analysis-graphx-tutorial
-          maintainContext: true
         - name: Graf analizine genel bakış
           href: /azure/databricks/spark/latest/graph-analysis/index
           maintainContext: true
-        - name: Grafik analizi öğreticisi
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
-          maintainContext: true
-        - name: GraphFrames'e genel bakış
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/index
-          maintainContext: true
-        - name: GraphFrames - Python
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
-          maintainContext: true
-        - name: GraphFrames - Scala
-          href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
+        - name: GraphFrames
+          items:
+            - name: GraphFrames ile Graf Analizi öğreticisi
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/graph-analysis-tutorial
+              maintainContext: true
+            - name: GraphFrames - Python
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-python
+              maintainContext: true
+            - name: GraphFrames - Scala
+              href: /azure/databricks/spark/latest/graph-analysis/graphframes/user-guide-scala
+              maintainContext: true
+        - name: GraphX ile Graf Analizi (Eski)
+          href: /azure/databricks/spark/latest/graph-analysis/graph-analysis-graphx-tutorial
           maintainContext: true
     - name: Genomiks
       items:
+        - name: Genomiks’e genel bakış
+          href: /azure/databricks/applications/genomics/index
+          maintainContext: true
         - name: Genomics ETL'ye genel bakış
           href: /azure/databricks/applications/genomics/etl/index
           maintainContext: true
@@ -912,7 +905,7 @@
             - name: Apache Spark SQL ile Değişken GÇ
               href: /azure/databricks/applications/genomics/etl/variant-data
               maintainContext: true
-            - name: Genomics Delta Lake oluşturma
+            - name: Geomics Delta Lake oluşturma
               href: /azure/databricks/applications/genomics/etl/vcf2delta
               maintainContext: true
             - name: Değişken kalite kontrolü
@@ -920,6 +913,9 @@
               maintainContext: true
             - name: Örnek kalite kontrolü
               href: /azure/databricks/applications/genomics/etl/sample-qc
+              maintainContext: true
+            - name: Lift over
+              href: /azure/databricks/applications/genomics/etl/lift-over
               maintainContext: true
         - name: Üçüncül analiz
           items:
@@ -937,9 +933,6 @@
               maintainContext: true
             - name: Regresyon testleri
               href: /azure/databricks/applications/genomics/tertiary/regression-tests
-              maintainContext: true
-            - name: SAIGE ve SAIGE-GENE
-              href: /azure/databricks/applications/genomics/tertiary/saige
               maintainContext: true
             - name: Python istatistik kitaplıkları
               href: /azure/databricks/applications/genomics/tertiary/pandas-udf
@@ -1072,6 +1065,9 @@
               maintainContext: true
             - name: Sanal ağları eşleme
               href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering
+              maintainContext: true
+            - name: Önizleme çalışma alanınızı GK’ye yükseltme
+              href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject-upgrade
               maintainContext: true
             - name: Sanal ağınızda Azure Databricks'i dağıtma
               href: /azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject
@@ -1283,6 +1279,9 @@
             - name: Özel UDF'den dolayı Spark işi yanıt vermemeye başlıyor
               href: /azure/databricks/kb/jobs/spark-udf-performance
               maintainContext: true
+            - name: İş MaxResultSize ile başarısız oldu
+              href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
+              maintainContext: true
         - name: Kitaplıklar
           items:
             - name: Kullanıcı arabiriminden kitaplık kaldırılamıyor
@@ -1426,7 +1425,7 @@
             - name: Denetim noktası veya çıkış dizini değişikliğinden sonra kurtarma
               href: /azure/databricks/kb/streaming/file-sink-streaming
               maintainContext: true
-            - name: Yapılandırılmış akış sorgusunu son yazılan farktan yeniden başlatma
+            - name: Yapılandırılmış Akış sorgusunu son yazılan farktan yeniden başlatma
               href: /azure/databricks/kb/streaming/ss-read-from-last-offset
               maintainContext: true
         - name: Görsel öğeler
@@ -1587,8 +1586,17 @@
                 - name: Desteklenen çalışma zamanı sürümleri
                   href: /azure/databricks/release-notes/runtime/supported
                   maintainContext: true
+                - name: Databricks Runtime 6.1
+                  href: /azure/databricks/release-notes/runtime/6.1
+                  maintainContext: true
+                - name: Databricks Runtime 6.1 ML
+                  href: /azure/databricks/release-notes/runtime/6.1ml
+                  maintainContext: true
                 - name: Databricks Runtime 6.0
                   href: /azure/databricks/release-notes/runtime/6.0
+                  maintainContext: true
+                - name: Conda ile Databricks Runtime 6.0
+                  href: /azure/databricks/release-notes/runtime/6.0conda
                   maintainContext: true
                 - name: Databricks Runtime 6.0 ML
                   href: /azure/databricks/release-notes/runtime/6.0ml

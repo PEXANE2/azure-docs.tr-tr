@@ -111,7 +111,9 @@
   items:
     - name: Time Series Insights
       items:
-        - name: Azure Time Series Insights GA
+        - name: Azure Zaman Serisi Görüşleri
+          href: /rest/api/time-series-insights/index
+        - name: Veri Erişimi GK
           href: /rest/api/time-series-insights/ga
           items:
             - name: Sorgu
@@ -123,17 +125,8 @@
                   href: /rest/api/time-series-insights/ga-query-syntax
             - name: Başvuru Verileri API'si
               href: /rest/api/time-series-insights/ga-reference-data-api
-        - name: Azure Time Series Insights Önizleme
+        - name: Veri Erişimi Kavramları Önizlemesi
           href: /rest/api/time-series-insights/preview
-          items:
-            - name: Zaman Serisi Sorgusu
-              href: /rest/api/time-series-insights/preview-query
-            - name: Zaman Serisi Modeli
-              href: /rest/api/time-series-insights/preview-model
-            - name: Zaman Serisi Ortamı API'si
-              href: /rest/api/time-series-insights/preview-env
-            - name: Zaman Serisi İfadesi ve söz dizimi
-              href: /rest/api/time-series-insights/preview-tsx
     - name: İstemci SDK’sı
       items:
         - name: JavaScript İstemci SDK’sı

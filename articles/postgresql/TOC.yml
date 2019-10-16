@@ -103,7 +103,7 @@
           items:
             - name: İzleme ve ayarlama
               href: concepts-monitoring.md
-            - name: Sunucu günlükleri
+            - name: Günlükler
               href: concepts-server-logs.md
             - name: Denetim günlükleri
               href: concepts-audit.md
@@ -207,7 +207,7 @@
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
-        - name: Sunucu günlüklerine erişme
+        - name: Erişim günlükleri
           items:
             - name: Azure portal
               href: howto-configure-server-logs-in-portal.md
