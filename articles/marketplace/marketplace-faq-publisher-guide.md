@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 1c6e381f5f05bc285b50521c9a57e8b5189a7478
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
-ms.translationtype: HT
+ms.openlocfilehash: c24f956a7aeb68fe6b0325705a9e7dab8e70b063
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969573"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330248"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft ticari Market SSS
 
@@ -24,7 +24,7 @@ Azure Marketi ve Microsoft AppSource hakkında sık sorulan soruların yanıtlar
 
 **Azure Marketi nedir?**
 
-[Azure Marketi](https://azuremarketplace.microsoft.com/marketplace) , Microsoft ve iş ortaklarımız tarafından sunulan çözümler ve hizmetler hakkında erişim ve bilgiler sağlar. Müşteriler (BT uzmanları ve geliştiriciler), Azure için oluşturulmuş veya oluşturulmuş bulut yazılım çözümlerini bulabilir, satın almayı deneyebilir. 8000 + listeleme kataloğumuz, sanal makineler (VM 'Ler), API 'Ler, Azure uygulamaları, çözüm şablonları ve yönetilen uygulamalar, SaaS uygulamaları, kapsayıcılar ve danışmanlık hizmetleri gibi Azure oluşturma blokları sağlar. 
+[Azure Marketi](https://azuremarketplace.microsoft.com/marketplace) , Microsoft ve iş ortaklarımız tarafından sunulan çözümler ve hizmetler hakkında erişim ve bilgiler sağlar. Müşteriler, veya Azure için oluşturulmuş bulut yazılım çözümlerini bulabilir, deneyebilir veya satın alabilir. 8000 + listeleme kataloğumuz, sanal makineler (VM 'Ler), API 'Ler, Azure uygulamaları, çözüm şablonları ve yönetilen uygulamalar, SaaS uygulamaları, kapsayıcılar ve danışmanlık hizmetleri gibi Azure oluşturma blokları sağlar.
 
 **Azure Market müşterileri kim?**
 
@@ -32,7 +32,7 @@ Azure Marketi, ticari BT yazılımı ve hizmetleriyle ilgilenen BT uzmanları ve
 
 **Şu anda Azure Marketi 'nde bulunan ürün türleri nelerdir?**
 
-Azure Market, Azure ürünlerini ve hizmetlerini genişletmek için oluşturulmuş Microsoft ve iş ortaklarının sağladığı teknik çözümleri ve hizmetleri sunar. Çözüm Kataloğu, aşağıdakiler dahil olmak üzere birkaç kategoriyi kapsar, ancak bunlarla sınırlı değildir:
+Azure Market, Azure ürünlerini ve hizmetlerini genişletmek için oluşturulmuş Microsoft ve iş ortaklarının sağladığı teknik çözümleri ve hizmetleri sunar. Çözüm Kataloğu, aşağıdakiler de dahil olmak üzere çeşitli kategorilere yaymalar:
 
 * temel işletim sistemleri
 * veritabanları
@@ -41,9 +41,6 @@ Azure Market, Azure ürünlerini ve hizmetlerini genişletmek için oluşturulmu
 * ağ iletişimi
 * blok zinciri
 * geliştirici araçları
-* ve daha fazlası
-
-Azure Marketi, SaaS uygulamaları, sanal makineler, çözüm şablonları, Azure tarafından yönetilen uygulamalar ve danışmanlık hizmetleri sunar.
 
 ### <a name="azure-marketplace-for-customers"></a>Müşteriler için Azure Market
 
@@ -282,7 +279,7 @@ Azure Marketi, BT uzmanları ve bulut geliştiricileri için tasarlanan ticari B
 
 **Uygulamamı neden Azure Marketi 'nde yayımlamalıyım ve nasıl faydalanır?**
 
-Azure Marketi, Microsoft Iş ortaklarının ürünlerini ve hizmetlerini Azure müşterilerine yükseltmek ve satmak için bir pazar sağlar. Yayımcılar, 140 küresel pazarlarımıza, 300000 + iş ortaklarınıza ve Azure 'un kurumsal müşteri ağına anında erişin.  Market, Fortune 500 şirketlerinin% 90 ' undan ve dünyanın önde gelen geliştiricilerin çoğuna dahildir. Azure Marketi 'ndeki yeni iş ortakları, Azure 'un Market 'teki tekliflerinin farkında olmaya yardımcı olmak için otomatik olarak ücretsiz [pazara yönelik bir avantaj](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) sunar.
+Azure Marketi, Microsoft Iş ortaklarının ürünlerini ve hizmetlerini Azure müşterilerine yükseltmek ve satmak için bir pazar sağlar. Yayımcılar, 140 küresel pazarlarımıza, 300000 + iş ortaklarınıza ve Azure 'un kurumsal müşteri ağına anında erişin.  Market, Fortune 500 şirketlerinin %90 ' undan ve dünyanın önde gelen geliştiricilerin çoğuna dahildir. Azure Marketi 'ndeki yeni iş ortakları, Azure 'un Market 'teki tekliflerinin farkında olmaya yardımcı olmak için otomatik olarak ücretsiz [pazara yönelik bir avantaj](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) sunar.
 
 **Azure Marketi ve AppSource arasında farklılaştırıcı çarpanı nedir?**
 
@@ -338,7 +335,7 @@ Müşteri adayları, ürünlerinizi Market 'ten dağıtan müşterilerdir. Ürü
 
 **Lider hedefini ayarlama konusunda nereden yardım alabilirim?**
 
-Bulut İş Ortağı Portalı hakkında daha fazla bilgi edinin. [müşteri adaylarını alma belgelerini alın](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) veya teklif türü ve müşteri adayı yönetiğinizi seçerek [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) aracılığıyla bir destek bileti gönderebilirsiniz.
+Iş Ortağı Merkezi 'nde daha fazla bilgi edinin [-Müşteri liderleri belgelerini alın](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) veya teklif türü ve müşteri adayı yönetiğinizi seçerek [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) aracılığıyla bir destek bileti gönderebilirsiniz.
 
 **Market 'teki bir teklifi yayımlamak için bir müşteri adayı hedefi yapılandırmak istiyorum mu?**
 
@@ -346,17 +343,17 @@ Evet, bir **Iletişim sorumlusu**, **SaaS uygulaması**veya **danışmanlık hiz
 
 **Müşteri adayı yapılandırmasının doğru olduğunu nasıl doğrulayabilirim?**
 
-Teklifi tamamladıktan ve bir müşteri adayı hedefi ayarladıktan sonra, liste [bulut iş ortağı portalı](https://cloudpartner.azure.com/)düzgün şekilde yayımlanabilir. Liste etkin olduktan önce, müşteri adayı yapılandırma kurulumu 'nun düzgün çalışıp çalışmadığını doğrulayabilirsiniz.  Teklifte yapılandırılan lider hedefine bir test lideri gönderin.
+Teklifi tamamladıktan ve bir müşteri adayı hedefi ayarladıktan sonra, liste [Iş Ortağı Merkezi](https://cloudpartner.azure.com/)'nde düzgün şekilde yayımlanabilir. Liste etkin olduktan önce, müşteri adayı yapılandırma kurulumu 'nun düzgün çalışıp çalışmadığını doğrulayabilirsiniz.  Teklifte yapılandırılan lider hedefine bir test lideri gönderin.
 
 **Azure Marketi hangi ülkelerde/bölgelerde Satım için kullanılabilir?**
 
-Şu ülkelerde/bölgelerde yer alarak bulunan yayımcılar şu anda Azure Marketi 'nde satıbiliyor: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Belarus, Belçika, Benin, Bolivya, Bosna-Hersek, Botsvana, Brezilya, Bulgaristan, Burkina Faso, Burundi, Kamboçya, Kamerun, Kanada, Orta Afrika Cumhuriyeti, Chad, Şili, Kolombiya, Komorolar, Kongo, Kongo (KDC), Kosta Rika, Fildişi Sahili, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Dominik, Dominik Cumhuriyeti, Ekvador, Mısır, El Salvador, Eritre, Estonya, Etiyopya, Fiji Adaları, Finlandiya, Fransa, Georgia, Almanya, Ghana, Yunanistan, Guatemala, Gine, Haiti, Honduras, Hong Kong ÖİB, Macaristan, Izlanda, Hindistan, Endonezya, Irak, İrlanda, Israil, Italya, Jamaika, Japonya, Ürdün, Kazakistan, Kenya, Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberia, Liechtenstein, Litvanya, Lüksemburg, Madagaskar, Malavi, Malezya, mali, Malta, Mauritius, Meksika, Monako, Moğolistan, Karadağ, Fas, Mozambik, Nepal, Hollanda, Yeni Zelanda, Nikaragua, Nijer, Nijerya, Norveç, Umman, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz Slovakya, Slovenya, Vamalia, Güney Afrika, Ispanya, Sri Lanka, Isveç, Isviçre, Tacikistan, Tanzanya, bir Tayland, Timor-Leste, Togo, Tonga, Trinidad ve Tobago, Tunus, Türkiye, Türkmenistan, Uganda, Ukrayna, Birleşik Arap, Birleşik Krallık, Birleşik Durumlar, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya ve Zimbabve.
+Şu ülkelerde/bölgelerde yer alarak bulunan yayımcılar şu anda Azure Marketi 'nde satıbiliyor: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Belarus, Belçika, Benin, Bolivya, Bosna Hersek, Botsvana, Brezilya, Bulgaristan, Burkina Faso, Burundi, Kamboçya, Kamerun, Kanada, Orta Afrika Cumhuriyeti, Chad, Şili, Kolombiya, Komorolar, Kongo, Kongo (KDC), Kosta Rika, Fildişi Sahili, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Dominik, Dominik Cumhuriyeti, Ekvador, Mısır, El Salvador, Eritre, Estonya, Etiyopya, Fiji Adaları, Finlandiya, Fransa, Georgia, Almanya, Ghana, Yunanistan, Guatemala, Gine, Haiti, Honduras, Hong Kong ÖIB, Macaristan, Izlanda, Hindistan, Endonezya, Irak, İrlanda, Israil, Italya, Jamaika, Japonya, Ürdün, Kazakistan, Kenya, Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberia, Liechtenstein, Litvanya, Lüksemburg, Madagaskar, Malavi, Malezya, mali, Malta, Mauritius, Meksika, Monako, Moğolistan, Karadağ, Fas, Mozambik, Nepal, Hollanda, Yeni Zelanda, Nikaragua, Nijer, Nijerya, Norveç, Umman, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz Slovakya, Slovenya, Vamalia, Güney Afrika, Ispanya, Sri Lanka, Isveç, Isviçre, Tacikistan, Tanzanya, bir Tayland, Timor-Leste, Togo, Tonga, Trinidad ve Tobago, Tunus, Türkiye, Türkmenistan, Uganda, Ukrayna, Birleşik Arap, Birleşik Krallık, Birleşik Durumlar, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya ve Zimbabve.
 
 **Nasıl yaparım? Azure Marketi 'nden bir listeyi silmek mi istiyorsunuz?**
 
 *Azure uygulamaları & sanal makine:*
 
-1. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
+1. [Iş Ortağı Merkezi](https://cloudpartner.azure.com/)' nde oturum açın.
 1. **Tüm teklifler** sekmesinden teklifi seçin.
 1. Ekranın sol tarafındaki bölmede **SKU 'lar** sekmesini seçin.
 1. Silinmek üzere SKU 'YU seçin ve bu SKU için **Sil** düğmesine tıklayın.
@@ -366,7 +363,7 @@ Daha fazla bilgi için bkz. [bir teklifi silme](./cloud-partner-portal/manage-of
 
 *Danışmanlık Hizmetleri & Web Apps (SaaS uygulamaları, eklentiler):*
 
-1. Bulut İş Ortağı Portalı soru işareti simgesini seçin ve ardından **destek**' e tıklayın.
+1. Iş Ortağı Merkezi 'nde soru işareti simgesini seçin ve ardından **destek**' e tıklayın.
 1. <https://go.microsoft.com/fwlink/?linkid=844975> kısmına gidin.
 1. Destek sayfasında teklif türünü seçin.
 1. Yayınlanmış teklifi **Kaldır** ' ı seçin.
@@ -419,19 +416,19 @@ Azure Marketi, şu anda sanal makinelerle düğüm başına faturalandırmayı d
 
 **Azure Market ile ilgili genel destek sorunları için kimler ile iletişim kurmalıyım?**
 
-Kullanılabilirlik ve sorun giderme ile ilgili genel uygulama desteği için [bulut iş ortağı portalı desteğe](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)başvurun.
+Kullanılabilirlik ve sorun giderme ile ilgili genel uygulama desteği için [Iş Ortağı Merkezi desteğiyle](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007)iletişim kurun.
 
 Azure Marketi satın alımınızın faturalandırma ve abonelik sorunları için [Azure desteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)başvurun.
 
 **Yayımlama veya teklif yönetimi sorularıyla kimler ile iletişim kurmalıyım?**
 
-Sık sorulan sorular konusunda güncel kaynak ve belge belgeleri için [Azure Marketi yayımcısı Kılavuzu ' nu](marketplace-publishers-guide.md) ziyaret edin. Ayrıca, [Bulut İş Ortağı Portalı Microsoft desteği](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)bir bileti günlüğe kaydedebilirsiniz.
+Sık sorulan sorular konusunda güncel kaynak ve belge belgeleri için [Azure Marketi yayımcısı Kılavuzu ' nu](marketplace-publishers-guide.md) ziyaret edin. Ayrıca, [Iş Ortağı Merkezi 'nde Microsoft desteği](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)bir bilet günlüğe kaydedebilirsiniz.
 
 ### <a name="azure-marketplace-for-publishers"></a>Yayımcılar için Azure Marketi
 
 **Farklı ülkelerde/bölgelerde satmaya olanak tanımak için coğrafi kullanılabilirliğinin tanımlanması Nasıl yaparım? mı?**
 
-1.  Bulut İş Ortağı Portalı, yeni ülkeler/bölgeler eklemek istediğiniz SKU 'ya gidin.  **SKU ayrıntıları**içinde **ülke/bölge kullanılabilirliği** ' ne gidin ve **Bölgeleri Seç**' e tıklayın.
+1.  Iş Ortağı Merkezi 'nde, yeni ülkeler/bölgeler eklemek istediğiniz SKU 'ya gidin.  **SKU ayrıntıları**içinde **ülke/bölge kullanılabilirliği** ' ne gidin ve **Bölgeleri Seç**' e tıklayın.
 
     ![Bölgeleri seçin](media/marketplace-publishers-guide/FAQ-choose-geo.png)
 

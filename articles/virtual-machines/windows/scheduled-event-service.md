@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d090fb52beb266f006e69688c09f66412f1fe8c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051847"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376207"
 ---
 # <a name="monitoring-scheduled-events"></a>İzleme Zamanlanan Olaylar
 
@@ -61,7 +61,7 @@ New-AzVm `
 
 [GitHub](https://github.com/microsoft/AzureScheduledEventsService/archive/master.zip)'dan projenin yükleme. zip dosyasını indirin.
 
-**Mycollectorvm** ' ye bağlanın ve. zip dosyasını sanal makineye kopyalayın ve tüm dosyaları ayıklayın. VM 'niz üzerinde bir PowerShell istemi açın. İsteminizi içeren `SchService.ps1`klasöre taşıyın, örneğin: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>`ve hizmeti ayarlayın.
+**Mycollectorvm** ' ye bağlanın ve. zip dosyasını sanal makineye kopyalayın ve tüm dosyaları ayıklayın. VM 'niz üzerinde bir PowerShell istemi açın. İsteminizi `SchService.ps1` içeren klasöre taşıyın, örneğin: `PS C:\Users\azureuser\AzureScheduledEventsService-master\AzureScheduledEventsService-master\Powershell>` ve hizmeti ayarlayın.
 
 ```powershell
 .\SchService.ps1 -Setup
@@ -81,7 +81,7 @@ Hizmet durumunu doğrulayın ve çalıştığından emin olun.
 .\SchService.ps1 -status  
 ```
 
-Bu, döndürmelidir `Running`.
+Bu `Running` döndürmelidir.
 
 Hizmet artık zamanlanan tüm olaylar için her 10 saniyede bir yoklama başlatacak ve bakımı hızlandırmak için olayları onaylacaktır.  Dondurma, yeniden başlatma, yeniden dağıtma ve preempt, zamanlama olayları tarafından yakalanan olaylardır. Olayı onaylamadan önce bazı azaltmaları tetiklemek için betiği genişletebilirsiniz.
 
@@ -98,7 +98,7 @@ Olaylar zamanlama olay hizmeti tarafından yakalandıktan sonra, olay durumu, ol
 >
 > Ayarladığımızda Windows 'u seçtik, ancak Linux 'ta benzer bir çözüm tasarlayabilirsiniz.
 
-Herhangi bir noktada, ve `–stop` `–remove`anahtarlarını kullanarak zamanlanan olay hizmetini durdurabilir/kaldırabilirsiniz.
+Herhangi bir noktada, `–stop` ve `–remove` anahtarlarını kullanarak zamanlanmış olay hizmetini durdurabilir/kaldırabilirsiniz.
 
 ## <a name="connect-to-the-workspace"></a>Çalışma alanına bağlan
 
@@ -158,13 +158,13 @@ Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için
     ![Sorguyu Kaydet](./media/notifications/save-query.png)
 
 1. **Yeni uyarı kuralı**' nı seçin. 
-1. **Kural oluştur** sayfasında `collectorworkspace` **kaynak**olarak bırakın.
-1. **Koşul**' ın altında, *müşteri günlüğü <login undefined>aramasının her seferinde* girişi seçin. **Sinyal mantığını Yapılandır** sayfası açılır.
+1. **Kural oluştur** sayfasında, **kaynak**olarak `collectorworkspace` ' i bırakın.
+1. **Koşul**' ın altında, *müşteri günlük araması <login undefined> olduğunda*girişi seçin. **Sinyal mantığını Yapılandır** sayfası açılır.
 1. **Eşik değeri**altında *0* girin ve **bitti**' yi seçin.
 1. **Eylemler**altında **eylem grubu oluştur**' u seçin. **Eylem grubu Ekle** sayfası açılır.
 1. **Eylem grubu adı**' nda, *Myactiongroup*yazın.
 1. **Kısa ad**alanına **Myactiongroup**yazın.
-1. **Kaynak grubu**' nda *myResourceGroupAvailability* * seçeneğini belirleyin.
+1. **Kaynak grubu**' nda **myResourceGroupAvailability**' yi seçin.
 1. Eylemler ' in altında, **eylem adı** tür **e-** postası ' na ve ardından **e-posta/SMS/Push/ses** **E-posta/SMS/Push/ses** sayfası açılır.
 1. **E-posta**seçeneğini belirleyin, e-posta adresinizi yazın ve **Tamam**' ı seçin.
 1. **Eylem grubu Ekle** sayfasında **Tamam**' ı seçin. 

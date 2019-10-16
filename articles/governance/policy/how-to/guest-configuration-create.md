@@ -6,16 +6,16 @@ ms.author: dacoulte
 ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: fcb65e75de730178901742dc36c72776e39b044b
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 0be6afc2d4d7f97717200b86d5e5b3bc2194afee
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71977967"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376177"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Konuk yapılandırma ilkeleri oluşturma
 
-Konuk yapılandırması, Azure makinelerini denetlemeye yönelik yapılandırmayı oluşturmak için [Istenen durum yapılandırması](/powershell/dsc) (DSC) kaynak modülünü kullanır. DSC yapılandırması, makinenin içinde olması gereken koşulu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, **Auditınotexists** ilke efekti tetiklenir ve makine **uyumlu**değil olarak kabul edilir.
+Konuk yapılandırması, Azure makinelerini denetlemeye yönelik yapılandırmayı oluşturmak için [Istenen durum yapılandırması](/powershell/scripting/dsc/overview/overview) (DSC) kaynak modülünü kullanır. DSC yapılandırması, makinenin içinde olması gereken koşulu tanımlar. Yapılandırmanın değerlendirmesi başarısız olursa, **Auditınotexists** ilke efekti tetiklenir ve makine **uyumlu**değil olarak kabul edilir.
 
 [Azure Ilke Konuk yapılandırması](/azure/governance/policy/concepts/guest-configuration) , yalnızca makineler içindeki ayarları denetlemek için kullanılabilir. Makinelerin içindeki ayarların düzeltilmesi henüz kullanılamamaktadır.
 
@@ -55,7 +55,7 @@ Konuk yapılandırması, DSC yapılandırmaları oluşturmak ve bunları Azure I
 
 ## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Özel Konuk yapılandırma yapılandırması ve kaynakları oluşturma
 
-Konuk yapılandırması için özel bir ilke oluşturmanın ilk adımı DSC yapılandırmasını oluşturmaktır. DSC kavramlarına ve terimlere genel bakış için bkz. [POWERSHELL DSC 'ye genel bakış](/powershell/dsc/overview/overview).
+Konuk yapılandırması için özel bir ilke oluşturmanın ilk adımı DSC yapılandırmasını oluşturmaktır. DSC kavramlarına ve terimlere genel bakış için bkz. [POWERSHELL DSC 'ye genel bakış](/powershell/scripting/dsc/overview/overview).
 
 Yapılandırmanızda yalnızca Konuk yapılandırma Aracısı yüklemesine sahip olan kaynaklar gerekiyorsa, yalnızca bir yapılandırma MOF dosyası yazmanız gerekir. Ek betik çalıştırmanız gerekiyorsa, özel bir kaynak modülü yazmanız gerekir.
 
@@ -115,7 +115,7 @@ Configuration baseline
 baseline
 ```
 
-Daha fazla bilgi için bkz. [yazma, derleme ve yapılandırma uygulama](/powershell/dsc/configurations/write-compile-apply-configuration).
+Daha fazla bilgi için bkz. [yazma, derleme ve yapılandırma uygulama](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
 ### <a name="custom-guest-configuration-configuration-on-windows"></a>Windows 'da özel konuk yapılandırma yapılandırması
 
@@ -141,7 +141,7 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-Daha fazla bilgi için bkz. [yazma, derleme ve yapılandırma uygulama](/powershell/dsc/configurations/write-compile-apply-configuration).
+Daha fazla bilgi için bkz. [yazma, derleme ve yapılandırma uygulama](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
 ## <a name="create-guest-configuration-custom-policy-package"></a>Konuk yapılandırması özel ilke paketi oluştur
 
@@ -190,7 +190,7 @@ Azure Ilke Konuk yapılandırması ' nda, çalışma zamanında kullanılan gizl
 
 1. Son olarak, özel kaynağınız içinde, makinede bulunan belirteci kullanarak Key Vault erişmek için yukarıda oluşturulan istemci KIMLIĞINI kullanın.
 
-   Key Vault örneğinin `client_id` ve URL 'si kaynağa [Özellikler](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) olarak geçirilebilir, böylece kaynağın birden çok ortamda güncellenmesi gerekmez veya değerler değiştirilmeleri gerekir.
+   Key Vault örneğinin `client_id` ve URL 'si kaynağa [Özellikler](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) olarak geçirilebilir, böylece kaynağın birden çok ortamda güncellenmesi gerekmez veya değerler değiştirilmeleri gerekir.
 
 Aşağıdaki kod örneği, Kullanıcı tarafından atanan bir kimlik kullanılarak Key Vault parolaları almak için özel bir kaynakta kullanılabilir. İstekten Key Vault döndürülen değer düz bir metindir. En iyi uygulama olarak, bir kimlik bilgisi nesnesi içinde saklayın.
 
@@ -226,7 +226,7 @@ Cmdlet 'i PowerShell ardışık düzeninde girişi de destekler. @No__t-0 cmdlet
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
 ```
 
-Parametrelerle test etme hakkında daha fazla bilgi için, [özel konuk yapılandırma ilkelerindeki parametreleri kullanarak](/azure/governance/policy/how-to/guest-configuration-create#using-parameters-in-custom-guest-configuration-policies)aşağıdaki bölüme bakın.
+Parametrelerle test etme hakkında daha fazla bilgi için, [özel konuk yapılandırma ilkelerindeki parametreleri kullanarak](#using-parameters-in-custom-guest-configuration-policies)aşağıdaki bölüme bakın.
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Azure Ilke tanımı ve girişim dağıtım dosyalarını oluşturma
 
@@ -367,7 +367,7 @@ Güncelleştirilmiş bir paketi yayımlamanın en kolay yolu, bu makalede açık
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows grup ilkesi içeriğini Azure Ilke Konuk yapılandırması 'na dönüştürme
 
-Konuk yapılandırması, Windows makinelerini denetlerken, PowerShell Istenen durum yapılandırması sözdiziminin bir uygulamasıdır. DSC topluluğu, içe aktarılmış grup ilkesi şablonlarını DSC biçimine dönüştürmek için araç yayımladı. Yukarıda açıklanan Konuk yapılandırma cmdlet 'leriyle birlikte bu aracı kullanarak Windows grup ilkesi içeriğini ve paketini dönüştürebilir/Azure Ilkesi için onu denetlemek üzere yayımlayabilirsiniz. Aracı kullanma hakkında ayrıntılı bilgi için [hızlı başlangıç: Grup ILKESI DSC 'ye dönüştürme](/powershell/dsc/quickstarts/gpo-quickstart)makalesine bakın.
+Konuk yapılandırması, Windows makinelerini denetlerken, PowerShell Istenen durum yapılandırması sözdiziminin bir uygulamasıdır. DSC topluluğu, içe aktarılmış grup ilkesi şablonlarını DSC biçimine dönüştürmek için araç yayımladı. Yukarıda açıklanan Konuk yapılandırma cmdlet 'leriyle birlikte bu aracı kullanarak Windows grup ilkesi içeriğini ve paketini dönüştürebilir/Azure Ilkesi için onu denetlemek üzere yayımlayabilirsiniz. Aracı kullanma hakkında ayrıntılı bilgi için [hızlı başlangıç: Grup ILKESI DSC 'ye dönüştürme](/powershell/scripting/dsc/quickstarts/gpo-quickstart)makalesine bakın.
 İçerik dönüştürüldükten sonra, bir paket oluşturmak ve Azure Ilkesi olarak yayımlamak için yukarıdaki adımlar, her DSC içeriğiyle aynı olacaktır.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>Isteğe bağlı: Konuk yapılandırma paketleri Imzalanıyor

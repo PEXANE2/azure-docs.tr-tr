@@ -1,21 +1,21 @@
 ---
-title: Azure PowerShell kullanarak bir Azure blok zinciri hizmeti konsorsiyumun üyelerini yönetme
+title: Azure PowerShell kullanarak Azure blok zinciri hizmeti üyelerini yönetme
 description: Azure PowerShell kullanarak Azure blok zinciri hizmeti Consortium üyelerini yönetmeyi öğrenin.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/10/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 3e149a4a8e5ce7c82f0c9bf951bf9625763b30af
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: c35a3bd99518825805c2f29cfdc586e1ccf5b0bb
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286005"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329172"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>PowerShell kullanarak Azure blok zinciri hizmeti 'nde konsorsiyum üyelerini yönetme
 

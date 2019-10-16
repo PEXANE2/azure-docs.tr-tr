@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91f406198418571ec0d2c4d488909d3baaa494b1
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e790728cbc7415532754d10773d466e9a0280422
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834676"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373903"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>Geliştiriciler için Azure Active Directory (v 1.0) genel bakış
 
@@ -33,11 +33,11 @@ Azure Active Directory (Azure AD), geliştiricilerin Microsoft iş veya okul hes
 
 | | |
 | --- | --- |
-|[Kimlik doğrulaması temel bilgileri](authentication-scenarios.md) | Azure AD ile kimlik doğrulamaya giriş. |
+|[Kimlik doğrulaması temel bilgileri](v1-authentication-scenarios.md) | Azure AD ile kimlik doğrulamaya giriş. |
 |[Uygulama türleri](app-types.md) | Azure AD tarafından desteklenen kimlik doğrulama senaryolarına genel bakış. |
 | | |
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya Başlayın
 
 V 1.0 hızlı başlangıç ve öğreticiler, Azure AD kimlik doğrulama kitaplığı (ADAL) SDK 'sını kullanarak tercih ettiğiniz platformda uygulama oluşturma konusunda size yol gösterir. Başlamak için [Microsoft Identity platform (geliştiriciler için Azure Active Directory)](index.yml) adresindeki **v 1.0 hızlı başlangıç** ve **v 1.0 öğreticilerine** bakın.
 

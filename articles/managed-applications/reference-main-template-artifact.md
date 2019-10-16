@@ -1,20 +1,20 @@
 ---
 title: Azure yönetilen uygulama dağıtım şablonu yapıt başvurusu
-description: Bu makale, dağıtım şablonu yapıtına bir başvurudur.
+description: Azure yönetilen uygulamalar için dağıtım şablonu yapıtına bir örnek sağlar.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: fe2517a8cc2ddee6623f88b2ae5e46c9e5319567
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ec59c9cde4f23b4a9d641d286e152ea737576534
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336497"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330182"
 ---
-# <a name="reference-deployment-template-artifact"></a>Referans: Dağıtım şablonu yapıtı
+# <a name="reference-deployment-template-artifact"></a>Başvuru: dağıtım şablonu yapıtı
 
 Bu makale, Azure yönetilen uygulamalarında *Maintemplate. JSON* yapıtı için bir başvurudur. Dağıtım şablonu yazma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları](../azure-resource-manager/resource-group-authoring-templates.md).
 
@@ -191,6 +191,6 @@ Aşağıdaki JSON, Azure yönetilen uygulamalar için *Maintemplate. JSON* dosya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
-- [Başvurunun Kullanıcı arabirimi öğeleri yapıtı](reference-createuidefinition-artifact.md)
-- [Başvurunun Tanım yapıtı görüntüle](reference-view-definition-artifact.md)
+- [Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
+- [Başvuru: Kullanıcı arabirimi öğeleri yapıtı](reference-createuidefinition-artifact.md)
+- [Başvuru: tanım yapıtı görüntüle](reference-view-definition-artifact.md)

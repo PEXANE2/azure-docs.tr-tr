@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2019
+ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14c3f90918d246a63d50af7b3542e8e74d5fbcf1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: a9f8163a3695260234107ad41cc7be125adc9091
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295510"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72324792"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl yapılır: kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalı kullanma
 
@@ -62,7 +62,7 @@ Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzi
 
 1. **Erişim denetimi (IAM)** öğesini seçin.
 1. **Rol ataması Ekle**' yi seçin.
-1. Uygulamaya atamak istediğiniz rolü seçin. Uygulamanın **yeniden başlatma**, örnekleri **başlatma** ve **durdurma** gibi eylemleri yürütmesine izin vermek için, **katkıda bulunan** rolünü seçin. Varsayılan olarak, Azure AD uygulamaları kullanılabilir seçeneklerde gösterilmez. Uygulamanızı bulmak için adı arayın ve seçin.
+1. Uygulamaya atamak istediğiniz rolü seçin. Örneğin, uygulamanın **yeniden başlatma**gibi eylemleri yürütmesine izin vermek için örnekleri **başlatın** ve **durdurun** , **katkıda bulunan** rolünü seçin.  [Kullanılabilir roller](../../role-based-access-control/built-in-roles.md) hakkında daha fazla bilgi için, varsayılan olarak Azure AD uygulamaları kullanılabilir seçeneklerde gösterilmez. Uygulamanızı bulmak için adı arayın ve seçin.
 
    ![Uygulamaya atanacak rolü seçin](./media/howto-create-service-principal-portal/select-role.png)
 
@@ -89,7 +89,13 @@ Daemon uygulamaları, Azure AD 'de kimlik doğrulaması yapmak için iki kimlik 
 
 ### <a name="upload-a-certificate"></a>Sertifikayı karşıya yükle
 
-Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, sınama amacıyla otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda otomatik olarak imzalanan bir sertifika oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın: `$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature`.  Windows Denetim Masası 'ndan erişilebilen [Kullanıcı sertifikasını Yönet](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC ek bileşenini kullanarak bu sertifikayı dışarı aktarın.
+Varsa, var olan bir sertifikayı kullanabilirsiniz.  İsteğe bağlı olarak, sınama amacıyla otomatik olarak imzalanan bir sertifika oluşturabilirsiniz. PowerShell 'i açın ve bilgisayarınızdaki Kullanıcı sertifika deposunda kendinden imzalı bir sertifika oluşturmak için aşağıdaki parametrelerle [Yeni bir SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) çalıştırın: 
+
+```powershell
+$cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
+```
+
+Bu sertifikayı, Windows Denetim Masası 'ndan erişilebilen [Kullanıcı sertifikasını Yönet](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) MMC ek bileşenini kullanarak bir dosyaya dışarı aktarın.
 
 Sertifikayı karşıya yüklemek için:
 
@@ -114,6 +120,14 @@ Bir sertifika kullanmayı tercih ederseniz, yeni bir uygulama parolası oluştur
 
    ![Daha sonra geri alamadığı için gizli değeri kopyalayın](./media/howto-create-service-principal-portal/copy-secret.png)
 
+## <a name="configure-access-policies-on-resources"></a>Kaynaklarda erişim ilkeleri yapılandırma
+Unutmayın, uygulamanızın erişmesi gereken kaynaklarda ek izinler yapılandırmanız gerekebilir. Örneğin, uygulamanıza anahtarlar, gizlilikler veya sertifikalara erişim sağlamak için [bir anahtar kasasının erişim ilkelerini de güncelleştirmeniz](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) gerekir.  
+
+1. [Azure Portal](https://portal.azure.com), anahtar kasanıza gidin ve **erişim ilkeleri**' ni seçin.  
+1. **Erişim Ilkesi Ekle**' yi seçin, ardından uygulamanıza vermek istediğiniz anahtar, gizli dizi ve sertifika izinlerini seçin.  Daha önce oluşturduğunuz hizmet sorumlusunu seçin.
+1. Erişim ilkesini eklemek için **Ekle** ' yi seçin ve sonra değişikliklerinizi yürütmek için **kaydedin** .
+    ![erişim İlkesi Ekle @ no__t-1
+
 ## <a name="required-permissions"></a>Gerekli izinler
 
 Azure AD kiracınızla bir uygulamayı kaydetmek ve uygulamayı Azure aboneliğinizdeki bir role atamak için yeterli izinlere sahip olmanız gerekir.
@@ -125,7 +139,7 @@ Azure AD kiracınızla bir uygulamayı kaydetmek ve uygulamayı Azure aboneliği
 
    ![Rolünüzü bulun. Bir Kullanıcı kullanıyorsanız, yönetici olmayan uygulamaları kaydedebilirler](./media/howto-create-service-principal-portal/view-user-info.png)
 
-1. **Kullanıcı ayarları**' nı seçin.
+1. Sol bölmede **Kullanıcı ayarları**' nı seçin.
 1. **Uygulama kayıtları** ayarını denetleyin. Bu değer yalnızca bir yönetici tarafından ayarlanabilir. **Evet**olarak ayarlanırsa, Azure AD kiracısındaki tüm kullanıcılar bir uygulamayı kaydedebilir.
 
 Uygulama kayıtları ayarı **Hayır**olarak ayarlandıysa, yalnızca yönetici rolüne sahip kullanıcılar bu tür uygulamaları kaydedebilir. Kullanılabilir yönetici rolleri ve Azure AD 'de her role verilen belirli izinler hakkında bilgi edinmek için bkz. [kullanılabilir roller](../users-groups-roles/directory-assign-admin-roles.md#available-roles) ve [rol izinleri](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) . Hesabınız Kullanıcı rolüne atanırsa, ancak uygulama kaydı ayarı Yönetici kullanıcılarla sınırlı ise, yöneticinizden uygulama kayıtlarının tüm yönlerini oluşturup yönetebilen yönetici rollerinden birine atamasını veya kullanıcıların şunları yapmasını isteyin uygulamaları kaydedin.

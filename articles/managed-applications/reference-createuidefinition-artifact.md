@@ -1,20 +1,20 @@
 ---
 title: Azure yönetilen uygulaması Createuıdefinition yapıt başvurusu
-description: Bu makale Createuıdefinition yapıtı için bir başvurudur.
+description: Azure yönetilen uygulaması için Createuıdefinition yapay öğesinin nasıl oluşturulacağını gösterir. Dosya Createuıdefinition. JSON olarak adlandırılır.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: 5168e977a7bc289ec8981ef1df8cddd5cc6df678
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 09364a849926fc829a890bfcdc8b760c7c7e189c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336484"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330192"
 ---
-# <a name="reference-user-interface-elements-artifact"></a>Referans: Kullanıcı arabirimi öğeleri yapıtı
+# <a name="reference-user-interface-elements-artifact"></a>Başvuru: Kullanıcı arabirimi öğeleri yapıtı
 
 Bu makale, Azure yönetilen uygulamalarında *Createuıdefinition. JSON* yapıtı için bir başvurudur. Kullanıcı arabirimi öğeleri yazma hakkında daha fazla bilgi için bkz. [Kullanıcı arabirimi öğeleri oluşturma](create-uidefinition-elements.md).
 
@@ -83,6 +83,6 @@ Aşağıdaki JSON, Azure yönetilen uygulamalar için *Createuıdefinition. JSON
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
-- [Başvurunun Dağıtım şablonu yapıtı](reference-main-template-artifact.md)
-- [Başvurunun Tanım yapıtı görüntüle](reference-view-definition-artifact.md)
+- [Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
+- [Başvuru: dağıtım şablonu yapıtı](reference-main-template-artifact.md)
+- [Başvuru: tanım yapıtı görüntüle](reference-view-definition-artifact.md)

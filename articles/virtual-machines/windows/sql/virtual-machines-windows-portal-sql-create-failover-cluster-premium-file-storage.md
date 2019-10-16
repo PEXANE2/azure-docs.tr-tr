@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: f51263a91ca174a6c8108ed4414ff0f8b9745aff
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 39f04005776f3b451ad7c64c76f9aa5d8c4a7768
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311884"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330084"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure sanal makinelerinde Premium dosya paylaşımıyla SQL Server yük devretme kümesi örneğini yapılandırma
 
@@ -52,6 +52,8 @@ Ayrıca, aşağıdaki teknolojilerde genel olarak anlaşılmalıdır:
 Premium dosya paylaşımları, ıOPS 'yi ve çok sayıda iş yükünün ihtiyaçlarını karşılayacak kapasiteyi sağlar. Ancak, GÇ yoğun iş yükleri için, yönetilen Premium disklere veya ultra disklere göre [depolama alanları doğrudan FCI SQL Server](virtual-machines-windows-portal-sql-create-failover-cluster.md) göz önünde bulundurun.  
 
 Geçerli ortamınızın ıOPS etkinliğini denetleyin ve bir dağıtıma veya geçişe başlamadan önce Premium dosyalarının ihtiyacınız olan ıOPS 'yi sağlayabildiğini doğrulayın. Windows performans Izleyicisi disk sayaçlarını kullanın ve SQL Server verileri, günlüğü ve geçici DB dosyaları için gereken toplam ıOPS (disk aktarımı/sn) ve üretilen iş (disk bayt/sn) sayısını izleyin. Çok sayıda iş yükü, yoğun kullanım dönemleri sırasında kontrol etmek ve maksimum ıOPS 'nin yanı sıra ortalama ıOPS 'yi de göz önünde bulundurarak iyi bir fikir olacak. Premium dosya paylaşımları, paylaşımın boyutuna bağlı olarak ıOPS sağlar. Premium dosyalar Ayrıca, GÇ 'nizi bir saate kadar üç temel miktarı üç katına kaymanıza olanak sağlayan, yük patlaması de sağlar. 
+
+Premium dosya paylaşma performansı hakkında daha fazla bilgi için bkz. [dosya paylaşımının performans katmanları](https://docs.microsoft.com/en-us/azure/storage/files/storage-files-planning#file-share-performance-tiers). 
 
 ### <a name="licensing-and-pricing"></a>Lisanslama ve fiyatlandırma
 

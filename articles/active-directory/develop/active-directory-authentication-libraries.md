@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb1cd062384bf75e6f83380c172f43244e737db0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 53db2ba94167168b8bcb2da6c9ee4299a7e784e8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853491"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374184"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory kimlik doğrulama kitaplıkları
 
@@ -40,7 +40,7 @@ Azure Active Directory kimlik doğrulama kitaplığı (ADAL) v 1.0, uygulama gel
 
 ## <a name="microsoft-supported-client-libraries"></a>Microsoft tarafından desteklenen Istemci kitaplıkları
 
-| Platform | Kitaplık | İndirme | Kaynak kodu | Örnek | Başvuru
+| Platform | Kitaplık | İndirin | Kaynak kodu | Örnek | Başvuru
 | --- | --- | --- | --- | --- | --- |
 | .NET Istemcisi, Windows Mağazası, UWP, Xamarin iOS ve Android |ADAL .NET v3 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet) | [Masaüstü uygulaması](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-dotnet) |[Başvuru](https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet) |
 | .NET Istemcisi, Windows Mağazası, Windows Phone 8,1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Masaüstü uygulaması](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | |
@@ -53,7 +53,7 @@ Azure Active Directory kimlik doğrulama kitaplığı (ADAL) v 1.0, uygulama gel
 
 ## <a name="microsoft-supported-server-libraries"></a>Microsoft tarafından desteklenen sunucu kitaplıkları
 
-| Platform | Kitaplık | İndirme | Kaynak kodu | Örnek | Başvuru
+| Platform | Kitaplık | İndirin | Kaynak kodu | Örnek | Başvuru
 | --- | --- | --- | --- | --- | --- |
 | .NET |AzureAD için OWıN|[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.ActiveDirectory) |[MVC uygulaması](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-dotnet) | |
 | .NET |Openıdconnect için OWIN |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[GitHub](https://github.com/aspnet/AspNetKatana/tree/dev/src/Microsoft.Owin.Security.OpenIdConnect) |[Web Uygulaması](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet) | |
@@ -85,5 +85,5 @@ Bu senaryoda, bir geliştirici, bir Web API 'SI gibi uzak bir kaynağa erişmesi
 ## <a name="see-also"></a>Ayrıca Bkz.
 
 - [Azure Active Directory Geliştirici Kılavuzu](v1-overview.md)
-- [Azure Active Directory için kimlik doğrulama senaryoları](authentication-scenarios.md)
+- [Azure Active Directory için kimlik doğrulama senaryoları](v1-authentication-scenarios.md)
 - [Azure Active Directory kodu örnekleri](sample-v1-code.md)

@@ -13,24 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 920e470a8bc06050219d0f603ab842cfc267e6ce
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695014"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329403"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Izleyici 'de günlük verilerine ve çalışma alanlarına erişimi yönetme
 
-Azure Izleyici, [günlük](data-platform-logs.md) verilerini, aslında veri ve yapılandırma bilgilerini içeren bir kapsayıcı olan Log Analytics çalışma alanında depolar. Günlük verilerine erişimi yönetmek için, çalışma alanınız ile ilgili çeşitli yönetim görevlerini gerçekleştirirsiniz.
+Azure Izleyici, [günlük](data-platform-logs.md) verilerini bir Log Analytics çalışma alanında depolar. Çalışma alanı, veri ve yapılandırma bilgilerini içeren bir kapsayıcıdır. Günlük verilerine erişimi yönetmek için, çalışma alanınız ile ilgili çeşitli yönetim görevlerini gerçekleştirirsiniz.
 
-Bu makalede, aşağıdaki gibi, günlüklere erişimin nasıl yönetileceği ve bunları içeren çalışma alanlarının yönetimi açıklanmaktadır:
+Bu makalede, ' ye erişim verme dahil olmak üzere günlüklere erişimi yönetme ve bunları içeren çalışma alanlarını yönetme konuları açıklanmaktadır: 
 
-* Azure rol tabanlı erişim denetimi (RBAC) kullanarak belirli kaynaklardan günlük verilerine erişmesi gereken kullanıcılara erişim verme.
-
-* Çalışma alanı izinlerini kullanarak çalışma alanına erişim izni verme.
-
-* Azure RBAC kullanarak çalışma alanındaki belirli bir tablodaki günlük verilerine erişmesi gereken kullanıcılara erişim verme.
+* Çalışma alanı izinlerini kullanarak çalışma alanı.
+* Azure rol tabanlı erişim denetimi (RBAC) kullanarak belirli kaynaklardan günlük verilerine erişmesi gereken kullanıcılar.
+* Azure RBAC kullanarak çalışma alanındaki belirli bir tablodaki günlük verilerine erişmesi gereken kullanıcılar.
 
 ## <a name="configure-access-control-mode"></a>Erişim denetimi modunu yapılandırma
 
@@ -150,15 +148,15 @@ Log Analytics okuyucu rolü aşağıdaki Azure eylemlerini içerir:
 
 *Log Analytics Katkıda Bulunan* rolünün üyeleri aşağıdakileri yapabilir:
 
-* Log Analytics okuyucu tarafından kullanılabilen tüm izleme verilerini okuyun
-* Otomasyon hesaplarını oluşturma ve yapılandırma
+* Log Analytics okuyucu tarafından kullanılabilecek tüm izleme verilerini okuyun
+* Otomasyon hesapları oluşturma ve yapılandırma
 * Yönetim çözümlerini ekleme ve kaldırma
 
     > [!NOTE]
     > Son iki eylemi başarılı bir şekilde gerçekleştirmek için bu iznin kaynak grubu veya abonelik düzeyinde verilmesi gerekir.
 
-* Depolama hesabı anahtarlarını okuma
-* Azure Depolama’dan günlüklerin toplanmasını yapılandırma
+* Depolama hesabı anahtarlarını oku
+* Azure depolama 'daki günlüklerin koleksiyonunu yapılandırma
 * Azure kaynaklarına ilişkin izleme ayarlarını düzenleme:
   * VM'lere VM uzantısı ekleme
   * Tüm Azure kaynaklarında Azure tanılamayı yapılandırma

@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "69997810"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory karma kimlik çözümünüz için doğru kimlik doğrulama yöntemini seçin 
@@ -67,9 +67,6 @@ Aşağıdaki bölüm, karar ağacı kullanarak sizin için hangi kimlik doğrula
 
 ## <a name="decision-tree"></a>Karar ağacı
 
-> [!NOTE]
-> PTA, yalnızca UserPrincipalName farklı KIMLIK olarak seçilirse alternatif KIMLIK ile birlikte kullanılabilir. Yalnızca şirket içi UserPrincipalName, AD 'den AAD 'ye eşitlenir. Daha fazla bilgi için, ["userPrincipalName" yerine Kullanıcı adı olarak "ALTERNATIF kimlik" Ile geçiş kimlik doğrulaması desteği](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)' ne bakın.
-
 ![Azure AD kimlik doğrulaması karar ağacı](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
 Karar sorularına ilişkin ayrıntılar:
@@ -111,7 +108,7 @@ Karar sorularına ilişkin ayrıntılar:
 
 Dağıtım adımları için [Parola karması eşitlemesini uygulama](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) bölümüne bakın.
 
-### <a name="cloud-authentication-pass-through-authentication"></a>Bulut kimlik doğrulaması: Doğrudan Kimlik Doğrulama  
+### <a name="cloud-authentication-pass-through-authentication"></a>Bulut kimlik doğrulaması: geçişli kimlik doğrulaması  
 
 * **Çaba**. Geçişli kimlik doğrulaması için, var olan sunucularda bir veya daha fazla basit aracı yüklü olmalıdır (üç). Bu aracıların şirket içi AD etki alanı denetleyicileriniz dahil olmak üzere şirket içi Active Directory Domain Services erişimi olmalıdır. Internet 'e giden erişim ve etki alanı denetleyicilerinize erişim gerekir. Bu nedenle, aracıların bir çevre ağında dağıtılması desteklenmez. 
 
@@ -144,7 +141,7 @@ Dağıtım adımları için [doğrudan kimlik doğrulamasını uygulama](../../a
   * Akıllı kartlar veya sertifikalar gerektiren kimlik doğrulaması.
   * Şirket içi MFA sunucuları veya federal kimlik sağlayıcısı gerektiren üçüncü taraf çok faktörlü sağlayıcıları.
   * Üçüncü taraf kimlik doğrulama çözümlerini kullanarak kimlik doğrulaması. Bkz. [Azure AD Federasyon uyumluluğu listesi](../../active-directory/hybrid/how-to-connect-fed-compatibility.md).
-  * Örneğin, user@domain.combir Kullanıcı asıl adı (UPN) yerine bir sAMAccountName (örneğin, etkialanı \ KullanıcıAdı) gerektiren oturum açın.
+  * Bir Kullanıcı asıl adı (UPN) yerine bir sAMAccountName (örneğin, etkialanı \ KullanıcıAdı) gerektiren oturum açma, örneğin, user@domain.com.
 
 * **İş sürekliliği**. Federasyon sistemleri genellikle grup olarak bilinen, yük dengeli bir sunucu dizisi gerektirir. Bu grup, kimlik doğrulama istekleri için yüksek kullanılabilirlik sağlamak amacıyla bir iç ağ ve çevre ağ topolojisinde yapılandırılır.
 
@@ -180,15 +177,15 @@ Aşağıdaki diyagramlarda, Azure AD hibrit kimlik çözümünüz ile kullanabil
 |US|Parola karması eşitleme + sorunsuz SSO|Geçişli kimlik doğrulaması + sorunsuz SSO|AD FS ile Federasyon|
 |:-----|:-----|:-----|:-----|
 |Kimlik doğrulaması nerede gerçekleşir?|Bulutta|Şirket içi kimlik doğrulama Aracısı ile güvenli bir parola doğrulaması alışverişi sonrasında bulutta|Şirket içi|
-|Sağlama sisteminin ötesinde şirket içi sunucu gereksinimleri nelerdir: Azure AD Connect?|Yok.|Her ek kimlik doğrulama Aracısı için bir sunucu|İki veya daha fazla AD FS sunucusu<br><br>Çevre/DMZ ağında iki veya daha fazla WAP sunucusu|
-|Sağlama sisteminin ötesinde şirket içi Internet ve ağ gereksinimleri nelerdir?|Yok.|Kimlik doğrulama aracılarını çalıştıran sunuculardan [giden Internet erişimi](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|Çevre 'te WAP sunucularına [gelen Internet erişimi](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>Çevre 'teki WAP sunucularından sunucuya AD FS sunuculara gelen ağ erişimi<br><br>Ağ yük dengeleme|
-|Bir SSL sertifikası gereksinimi var mı?|Hayır|Hayır|Evet|
+|Sağlama sisteminin ötesinde şirket içi sunucu gereksinimleri nelerdir: Azure AD Connect?|Hiçbiri|Her ek kimlik doğrulama Aracısı için bir sunucu|İki veya daha fazla AD FS sunucusu<br><br>Çevre/DMZ ağında iki veya daha fazla WAP sunucusu|
+|Sağlama sisteminin ötesinde şirket içi Internet ve ağ gereksinimleri nelerdir?|Hiçbiri|Kimlik doğrulama aracılarını çalıştıran sunuculardan [giden Internet erişimi](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)|Çevre 'te WAP sunucularına [gelen Internet erişimi](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>Çevre 'teki WAP sunucularından sunucuya AD FS sunuculara gelen ağ erişimi<br><br>Ağ yük dengeleme|
+|Bir SSL sertifikası gereksinimi var mı?|Hayır|Hayır|Yes|
 |Bir sistem durumu izleme çözümü var mı?|Gerekli değil|[Azure Active Directory Yönetim Merkezi](../../active-directory/hybrid/tshoot-connect-pass-through-authentication.md) tarafından sunulan Aracı durumu|[Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md)|
-|Kullanıcılar şirket ağı içindeki etki alanına katılmış cihazlardan bulut kaynaklarına çoklu oturum açma izni veriyor mu?|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|Evet|
-|Hangi oturum açma türleri desteklenir?|UserPrincipalName + parola<br><br>[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) kullanarak Windows tümleşik kimlik doğrulaması<br><br>[Alternatif oturum açma KIMLIĞI](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + parola<br><br>[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) kullanarak Windows tümleşik kimlik doğrulaması<br><br>[Alternatif oturum açma KIMLIĞI](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + parola<br><br>sAMAccountName + Password<br><br>Tümleşik Windows Kimlik Doğrulaması<br><br>[Sertifika ve akıllı kart kimlik doğrulaması](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatif oturum açma KIMLIĞI](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Kullanıcılar şirket ağı içindeki etki alanına katılmış cihazlardan bulut kaynaklarına çoklu oturum açma izni veriyor mu?|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) ile Evet|Yes|
+|Hangi oturum açma türleri desteklenir?|UserPrincipalName + parola<br><br>[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) kullanarak Windows tümleşik kimlik doğrulaması<br><br>[Alternatif oturum açma KIMLIĞI](../../active-directory/hybrid/how-to-connect-install-custom.md)|UserPrincipalName + parola<br><br>[Sorunsuz SSO](../../active-directory/hybrid/how-to-connect-sso.md) kullanarak Windows tümleşik kimlik doğrulaması<br><br>[Alternatif oturum açma KIMLIĞI](../../active-directory/hybrid/how-to-connect-pta-faq.md)|UserPrincipalName + parola<br><br>sAMAccountName + Password<br><br>Windows tümleşik kimlik doğrulaması<br><br>[Sertifika ve akıllı kart kimlik doğrulaması](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatif oturum açma KIMLIĞI](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |Iş için Windows Hello destekleniyor mu?|[Anahtar güven modeli](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[Anahtar güven modeli](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*Windows Server 2016 etki alanı işlev düzeyi gerektirir*|[Anahtar güven modeli](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Sertifika güven modeli](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Çok faktörlü kimlik doğrulama seçenekleri nelerdir?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Koşullu erişimle özel denetimler *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Koşullu erişimle özel denetimler *](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA sunucusu](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[Üçüncü taraf MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Koşullu erişimle özel denetimler *](../../active-directory/conditional-access/controls.md)|
-|Hangi kullanıcı hesabı durumları destekleniyor?|Devre dışı hesaplar<br>(en fazla 30 dakikalık gecikme)|Devre dışı hesaplar<br><br>Hesap kilitlendi<br><br>Hesabın süresi doldu<br><br>Parolanın süresi dolsun<br><br>Oturum açma saatleri|Devre dışı hesaplar<br><br>Hesap kilitlendi<br><br>Hesabın süresi doldu<br><br>Parolanın süresi dolsun<br><br>Oturum açma saatleri|
+|Hangi kullanıcı hesabı durumları destekleniyor?|Devre dışı hesaplar<br>(en fazla 30 dakikalık gecikme)|Devre dışı hesaplar<br><br>Hesap kilitlendi<br><br>Hesap zaman aşımına uğradı<br><br>Parolanın geçerliliği geçildi<br><br>Oturum açma saatleri|Devre dışı hesaplar<br><br>Hesap kilitlendi<br><br>Hesap zaman aşımına uğradı<br><br>Parolanın geçerliliği geçildi<br><br>Oturum açma saatleri|
 |Koşullu erişim seçenekleri nelerdir?|[Azure AD Premium ile Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md)|[Azure AD Premium ile Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md)|[Azure AD Premium ile Azure AD koşullu erişim](../../active-directory/conditional-access/overview.md)<br><br>[AD FS talep kuralları](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |Eski protokollerin engellenmesi destekleniyor mu?|[Evet](../../active-directory/conditional-access/conditions.md)|[Evet](../../active-directory/conditional-access/conditions.md)|[Evet](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Oturum açma sayfalarında logoyu, resmi ve açıklamayı özelleştirebilir miyim?|[Evet, Azure AD Premium ile](../../active-directory/fundamentals/customize-branding.md)|[Evet, Azure AD Premium ile](../../active-directory/fundamentals/customize-branding.md)|[Evet](../../active-directory/hybrid/how-to-connect-fed-management.md)|

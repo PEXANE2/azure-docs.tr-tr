@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 810ecbd4421eec8e8e809b429270601a0c94d623
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 9c5fb38e66cb783b02d314d55cf0d0510523b6a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71840909"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375971"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Log Analytics çalışma alanını yönetme
 
@@ -46,8 +46,8 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listele
 
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
-| Çalışma alanı   | çalışma alanları    | 2017-03-15-Önizleme |
-| Ara      | Savedaramalarındaki aramalar | 2015-03-20 |
+| Çalışma Alanı   | Onlarla    | 2017-03-15-Önizleme |
+| Arama      | Savedaramalarındaki aramalar | 2015-03-20 |
 | Veri kaynağı | kaynağı   | 2015-11-01-Önizleme |
 | Çözüm    | çözümler     | 2015-11-01-Önizleme |
 
@@ -57,7 +57,7 @@ Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma al
 
 ### <a name="create-and-deploy-template"></a>Şablon oluşturma ve dağıtma
 
-1. Aşağıdaki JSON sözdizimini kopyalayıp dosyanıza yapıştırın:
+1. Aşağıdaki JSON söz dizimini kopyalayıp dosyanıza yapıştırın:
 
     ```json
     {
@@ -121,7 +121,7 @@ Aşağıdaki örnek, yerel makinenizden bir şablon kullanarak bir çalışma al
 
 2. Gereksinimlerinizi karşılayacak şekilde şablonu düzenleyin. Hangi özelliklerin ve değerlerin desteklendiğini öğrenmek için [Microsoft. Operationalınsights/Workspaces şablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) başvurusunu gözden geçirin. 
 3. Bu dosyayı bir yerel klasöre **deploylaworkspace Template. JSON** olarak kaydedin.
-4. Bu şablonu dağıtmaya hazırlanıyor. Çalışma alanını oluşturmak için PowerShell veya komut satırı kullanın, bu durumda, komutun bir parçası olarak çalışma alanı adı ve konumu belirtin. Çalışma alanı adı tüm Azure abonelikleri genelinde genel olarak benzersiz olmalıdır.
+4. Bu şablonu dağıtmaya hazırsınız. Çalışma alanını oluşturmak için PowerShell veya komut satırı kullanın, bu durumda, komutun bir parçası olarak çalışma alanı adı ve konumu belirtin. Çalışma alanı adı tüm Azure abonelikleri genelinde genel olarak benzersiz olmalıdır.
 
    * PowerShell için, şablonu içeren klasörden aşağıdaki komutları kullanın:
    
@@ -243,7 +243,7 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
     "customlogName": {
     "type": "string",
     "metadata": {
-      "description": "custom log name"
+      "description": "The custom log name"
       }
     },
     "variables": {
@@ -419,7 +419,7 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
           "type": "dataSources",
           "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
           "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
@@ -462,7 +462,7 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
               }
             ]
           }
-        }
+        },
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",
@@ -592,6 +592,7 @@ Aşağıdaki şablon örneği nasıl yapılacağını göstermektedir:
 }
 
 ```
+
 ### <a name="deploying-the-sample-template"></a>Örnek şablonu dağıtma
 
 Örnek şablonu dağıtmak için:

@@ -7,14 +7,14 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: helohr
-ms.openlocfilehash: 7fdb46ac7cffc4eb6a791304c7a6b58378806296
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 282a4d166e48a41015cb2f08496fe39419bdcaf7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679899"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374255"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki Windows 7 sanal makinelerinin sorunlarını giderme
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows Sanal Masaüstü’nde Windows 7 sanal makinesiyle ilgili sorunları giderme
 
 Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
@@ -39,11 +39,11 @@ Windows sanal masaüstü, uzak masaüstü kullanıcı grubunda sizi veya kullan�
 
 Bu hatayı onarmak için kullanıcıyı uzak masaüstü kullanıcı grubuna ekleyin:
 
-1. Azure portal açın.
+1. Azure portalı açın.
 2. Hata iletisini gördüğünüz sanal makineyi seçin.
 3. **Çalıştır komutunu**seçin.
 4. @No__t-0 ile, eklemek istediğiniz kullanıcının adı ile değiştirilmiş olan aşağıdaki komutu çalıştırın:
    
    ```cmd
-   localgroup "Remote Desktop Users" <username> /add
+   net localgroup "Remote Desktop Users" <username> /add
    ```

@@ -1,21 +1,21 @@
 ---
-title: Azure maliyet yönetimi verilerine erişim atama | Microsoft Docs
+title: Azure maliyet yönetimi verilerine erişim atama
 description: Bu makalede, çeşitli erişim kapsamları için Azure maliyet yönetimi verilerine izin atama işlemi gösterilmektedir.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: f9db07f648956130bb5bdebb23321b0eb14679c7
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebc56d27b7adc8f1fea9eafabe1b211f3f0ad560
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695390"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375122"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Maliyet yönetimi verilerine erişim atama
 
@@ -35,14 +35,14 @@ Maliyet yönetimi çeşitli Azure hesap türlerini destekler. Desteklenen hesap 
 
 Azure EA abonelikleriyle ilgili maliyet verilerini görüntülemek için, bir kullanıcının aşağıdaki kapsamlardan bir veya daha fazlasına en azından okuma erişimi olması gerekir.
 
-| **Kapsam** | **Tanımlı** | **Verileri görüntülemek için gerekli erişim** | **Önkoşul EA ayarı** | **Verileri birleştirir** |
+| **Kapsam** | **Tanımlanma yeri** | **Verileri görüntülemek için gerekli erişim** | **Önkoşul EA ayarı** | **Verileri birleştirir** |
 | --- | --- | --- | --- | --- |
-| Faturalandırma hesabı<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Kurumsal Yönetici | Yok. | Kurumsal anlaşmadan tüm abonelikler |
-| Bölüme | [https://ea.azure.com](https://ea.azure.com/) | Bölüm Yöneticisi | **Da görüntüleme ücretleri** etkin | Departmana bağlı bir kayıt hesabına ait olan tüm abonelikler |
-| Kayıt hesabı<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Hesap sahibi | **Ao görüntüleme ücretleri** etkin | Kayıt hesabındaki tüm abonelikler |
-| Yönetim grubu | [https://portal.azure.com](https://portal.azure.com/) | Maliyet yönetimi okuyucusu (veya okuyucu) | **Ao görüntüleme ücretleri** etkin | Yönetim grubunun altındaki tüm abonelikler |
-| Aboneliğiniz | [https://portal.azure.com](https://portal.azure.com/) | Maliyet yönetimi okuyucusu (veya okuyucu) | **Ao görüntüleme ücretleri** etkin | Abonelikteki tüm kaynaklar/kaynak grupları |
-| Kaynak grubu | [https://portal.azure.com](https://portal.azure.com/) | Maliyet yönetimi okuyucusu (veya okuyucu) | **Ao görüntüleme ücretleri** etkin | Kaynak grubundaki tüm kaynaklar |
+| Faturalama hesabı<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | Kuruluş Yöneticisi | Hiçbiri | Kurumsal sözleşmedeki tüm abonelikler |
+| Bölüm | [https://ea.azure.com](https://ea.azure.com/) | Bölüm Yöneticisi | **Da görüntüleme ücretleri** etkin | Bölüme bağlı olan kayıt hesabına ait olan tüm abonelikler |
+| Kayıt hesabı<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | Hesap Sahibi | **Ao görüntüleme ücretleri** etkin | Kayıt hesabındaki tüm abonelikler |
+| Yönetim grubu | [https://portal.azure.com](https://portal.azure.com/) | Maliyet Yönetimi Okuyucusu (veya Okuyucu) | **Ao görüntüleme ücretleri** etkin | Yönetim grubu altındaki tüm abonelikler |
+| Abonelik | [https://portal.azure.com](https://portal.azure.com/) | Maliyet Yönetimi Okuyucusu (veya Okuyucu) | **Ao görüntüleme ücretleri** etkin | Abonelikteki tüm kaynaklar/kaynak grupları |
+| Kaynak grubu | [https://portal.azure.com](https://portal.azure.com/) | Maliyet Yönetimi Okuyucusu (veya Okuyucu) | **Ao görüntüleme ücretleri** etkin | Kaynak grubundaki tüm kaynaklar |
 
 <sup>1</sup> faturalandırma hesabına kurumsal anlaşma veya kayıt olarak da başvurulur.
 
@@ -63,6 +63,8 @@ Diğer Azure abonelikleriyle ilgili maliyet verilerini görüntülemek için, bi
 - Azure hesabı
 - Yönetim grubu
 - Kaynak grubu
+
+Çeşitli kapsamlar, iş ortaklarının müşterileri bir Microsoft Müşteri sözleşmesine ekledikten sonra kullanılabilir. CSP müşterileri, CSP iş ortakları tarafından etkinleştirildiğinde maliyet yönetimi özelliklerini kullanabilir. Daha fazla bilgi için bkz. [iş ortakları Için Azure maliyet yönetimi ile çalışmaya başlama](get-started-partners.md).
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>EA portalındaki maliyetlere erişimi etkinleştir
 
@@ -131,45 +133,45 @@ Yukarıdaki adımları tamamladıktan sonra, Kullanıcı hesabı kurumsal portal
 
 Yönetim grubu kapsamını görüntüleme erişimi için en azından maliyet yönetimi okuyucusu (veya okuyucu) izni gerekir. Azure portal bir yönetim grubu için izinleri yapılandırabilirsiniz. Diğer kullanıcıların erişimini etkinleştirmek için yönetim grubu için en azından Kullanıcı erişimi Yöneticisi (veya sahibi) izninizin olması gerekir. Ayrıca, Azure EA hesaplarında de EA portalındaki **Ao görünüm ücretleri** ayarını etkinleştirmiş olmanız gerekir.
 
-1. Azure portal [https://portal.azure.com](https://portal.azure.com)' de oturum açın.
+1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. Yan çubukta **tüm hizmetler** ' i seçin, _Yönetim grupları_' nı arayın ve **Yönetim grupları**' nı seçin.
 3. Hiyerarşide yönetim grubunu seçin.
 4. Yönetim grubunuzun adının yanındaki **Ayrıntılar**' a tıklayın.
 5. Sol bölmeden **Access Control (IAM)** seçeneğini belirleyin.
-6. **Ekle**'yi tıklatın.
+6. **Ekle**'ye tıklayın.
 7. **Rol**altında **maliyet yönetimi okuyucusu**' nu seçin.
 8. **Erişim ata**' nın altında **Azure AD Kullanıcı, Grup veya uygulama**' yı seçin.
 9. Erişim atamak için, kullanıcıyı arayın ve ardından seçin.
-10. **Kaydet**'e tıklayın.  
+10. **Kaydet** düğmesine tıklayın.  
     ![ bir yönetim grubu için izin Ekle kutusunda (örneğin, @ no__t-1)
 
 ## <a name="assign-subscription-scope-access"></a>Abonelik kapsamı erişimi atama
 
 Abonelik erişimi için en az maliyet yönetimi okuyucusu (veya okuyucu) izni gerekir. Azure portal bir abonelik için izinleri yapılandırabilirsiniz. Diğer kullanıcıların erişimini etkinleştirmek için abonelik için en azından Kullanıcı erişimi Yöneticisi (veya sahibi) izninizin olması gerekir. Ayrıca, Azure EA hesaplarında de EA portalındaki **Ao görünüm ücretleri** ayarını etkinleştirmiş olmanız gerekir.
 
-1. Azure portal [https://portal.azure.com](https://portal.azure.com)' de oturum açın.
+1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. Yan çubukta **tüm hizmetler** ' i seçin, _abonelikler_' i arayın ve ardından **abonelikler**' i seçin.
 3. Aboneliğinizi seçin.
 4. Sol bölmeden **Access Control (IAM)** seçeneğini belirleyin.
-5. **Ekle**'yi tıklatın.
+5. **Ekle**'ye tıklayın.
 6. **Rol**altında **maliyet yönetimi okuyucusu**' nu seçin.
 7. **Erişim ata**' nın altında **Azure AD Kullanıcı, Grup veya uygulama**' yı seçin.
 8. Erişim atamak için, kullanıcıyı arayın ve ardından seçin.
-9. **Kaydet**'e tıklayın.
+9. **Kaydet** düğmesine tıklayın.
 
 ## <a name="assign-resource-group-scope-access"></a>Kaynak grubu kapsam erişimini ata
 
 Bir kaynak grubuna erişim için en azından maliyet yönetimi okuyucusu (veya okuyucu) izni gerekir. Azure portal bir kaynak grubuna yönelik izinleri yapılandırabilirsiniz. Diğer kullanıcıların erişimini etkinleştirmek için kaynak grubu için en azından Kullanıcı erişimi Yöneticisi (veya sahibi) izninizin olması gerekir. Ayrıca, Azure EA hesaplarında de EA portalındaki **Ao görünüm ücretleri** ayarını etkinleştirmiş olmanız gerekir.
 
-1. Azure portal [https://portal.azure.com](https://portal.azure.com)' de oturum açın.
+1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. Yan çubukta **tüm hizmetler** ' i seçin, _kaynak grupları_' nı arayın ve **kaynak grupları**' nı seçin.
 3. Kaynak grubunuzu seçin.
 4. Sol bölmeden **Access Control (IAM)** seçeneğini belirleyin.
-5. **Ekle**'yi tıklatın.
+5. **Ekle**'ye tıklayın.
 6. **Rol**altında **maliyet yönetimi okuyucusu**' nu seçin.
 7. **Erişim ata**' nın altında **Azure AD Kullanıcı, Grup veya uygulama**' yı seçin.
 8. Erişim atamak için, kullanıcıyı arayın ve ardından seçin.
-9. **Kaydet**'e tıklayın.
+9. **Kaydet** düğmesine tıklayın.
 
 ## <a name="cross-tenant-authentication-issues"></a>Çapraz Kiracı kimlik doğrulama sorunları
 

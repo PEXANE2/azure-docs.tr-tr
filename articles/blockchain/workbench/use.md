@@ -1,21 +1,21 @@
 ---
-title: Azure blok zinciri önizleme sürümünde uygulamaları kullanma
+title: Azure blok zinciri çalışma ekranı 'nda uygulama kullanma
 description: Azure blok zinciri çalışma ekranı önizlemesinde uygulama sözleşmelerini kullanma hakkında öğretici.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: e1ba09c4fbba6492e2d5f870a6c31a3d5a6d8956
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1dee101ad87776a1c22b719274569df25c4e161d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845147"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328949"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Öğretici: Azure blok zinciri çalışma ekranı 'nda uygulama kullanma
 
@@ -50,7 +50,7 @@ Yeni bir sözleşme oluşturmak için, sözleşme **başlatıcısı**olarak beli
 
     ![Yeni sözleşme düğmesi](./media/use/contract-list.png)
 
-3. **Yeni sözleşme** bölmesi görüntülenir. İlk parametre değerlerini belirtin. **Oluştur**’u seçin.
+3. **Yeni sözleşme** bölmesi görüntülenir. İlk parametre değerlerini belirtin. **Oluştur**'u seçin.
 
     ![Yeni sözleşme bölmesi](./media/use/new-contract.png)
 
@@ -65,13 +65,13 @@ Sözleşmenin bulunduğu duruma bağlı olarak, Üyeler sözleşmenin bir sonrak
 1. Blok zinciri çalışma ekranı uygulaması bölümünde, eylemi gerçekleştirmek için sözleşmeyi içeren uygulama kutucuğunu seçin.
 2. Listeden sözleşmeyi seçin. Sözleşmeyle ilgili ayrıntılar farklı bölümlerde görüntülenir. 
 
-    ![Anlaşma ayrıntıları](./media/use/contract-details.png)
+    ![Sözleşme ayrıntıları](./media/use/contract-details.png)
 
-    | `Section`  | Açıklama  |
+    | Section  | Açıklama  |
     |---------|---------|
     | Durum | Sözleşme aşamaları dahilinde geçerli ilerlemeyi listeler |
     | Ayrıntılar | Sözleşmenin geçerli değerleri |
-    | Action | Son eylemle ilgili ayrıntılar |
+    | Eylem | Son eylemle ilgili ayrıntılar |
     | Etkinlik | Sözleşmenin işlem geçmişi |
     
 3. **Eylem** bölümünde **eylem al**' ı seçin.
@@ -83,7 +83,7 @@ Sözleşmenin bulunduğu duruma bağlı olarak, Üyeler sözleşmenin bir sonrak
 5. Eylemi başlatmak için **eylem al** ' ı seçin.
 6. Eylem için parametreler gerekliyse, eylem için değerleri belirtin.
 
-    ![İşlem yap](./media/use/take-action.png)
+    ![İşlem yapın](./media/use/take-action.png)
 
 7. Eylemi yürütmek için **eylem al** ' ı seçin.
 

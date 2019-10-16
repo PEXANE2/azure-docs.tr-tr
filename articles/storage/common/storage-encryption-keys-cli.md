@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 10/15/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 036322e73470ad4aa25de03e95c506e9f04496d8
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 18209816b5b73f58a8112efca0363b31dd47bd91
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670992"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374280"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Azure CLı 'dan Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -23,7 +23,7 @@ ms.locfileid: "71670992"
 Bu makalede, Azure CLı kullanarak müşteri tarafından yönetilen anahtarlarla bir anahtar kasasının nasıl yapılandırılacağı gösterilmektedir.
 
 > [!IMPORTANT]
-> Azure depolama şifrelemesi ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasının iki gerekli özelliği yapılandırılmasını, **geçici silme** ve **Temizleme işlemi**yapılmasını gerektirir. Azure portal yeni bir Anahtar Kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, var olan bir anahtar kasasında bu özellikleri etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLı kullanmanız gerekir.
+> Azure depolama şifrelemesi ile müşteri tarafından yönetilen anahtarların kullanılması, anahtar kasasında iki özellik ayarlanmasını, **geçici silme** ve **Temizleme işlemi**yapılmasını gerektirir. Bu özellikler varsayılan olarak etkinleştirilmemiştir. Bu özellikleri etkinleştirmek için PowerShell veya Azure CLı kullanın.
 > Yalnızca RSA anahtarları ve anahtar boyutu 2048 desteklenir.
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Depolama hesabına bir kimlik atayın

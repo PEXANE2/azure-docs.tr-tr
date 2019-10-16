@@ -1,21 +1,21 @@
 ---
-title: Azure blok zinciri çalışma ekranı önizleme REST API kullanma
+title: Azure Blockchain Workbench REST API'sini kullanma
 description: Azure blok zinciri çalışma ekranı önizlemesi 'nin nasıl kullanılacağına yönelik senaryolar REST API
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 412b78363be70918969734cd8890a8ee940df431
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2f751cc4f0037b8d60034636a0c512989113e441
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843820"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328867"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Azure blok zinciri çalışma ekranı önizleme 'yi kullanma REST API
 
@@ -210,8 +210,8 @@ Content-type: application/json
 
 Bir Kullanıcı bir sözleşmeye derinlemesine bakış yapmaya karar verdiğinde, blok zinciri istemcisi sözleşmenin durumuna verilen kullanıcı eylemlerini gösterebilir. Bu örnekte, kullanıcı oluşturduğu yeni akıllı anlaşmanın tüm kullanılabilir eylemlerine bakıyor:
 
-* Değiştirebilirler Kullanıcının bir varlığın açıklamasını ve fiyatını değiştirmesine izin verir.
-* Sonlandırmayı Kullanıcının varlık sözleşmesini sonlandıralmasına izin verir.
+* Modify: Kullanıcının, bir varlığın açıklamasını ve fiyatını değiştirmesine olanak tanır.
+* Sonlandır: kullanıcının varlık sözleşmesini sonlandırmasına Izin verir.
 
 [Contract Action GET API'sini](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) kullanın:
 
@@ -277,7 +277,7 @@ Content-type: application/json
 
 Ardından kullanıcı belirtilen akıllı anlaşma örneği için bir eylem gerçekleştirmeye karar verebilir. Bu durumda, bir kullanıcının bir varlığın açıklamasını ve fiyatını aşağıdaki eyleme değiştirmek istediğiniz senaryoyu göz önünde bulundurun:
 
-* Açıklama: "Güncelleştirme otomobil"
+* Açıklama: "My updated car"
 * Fiyat: 54321
 
 [Contract Action POST API'sini](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) kullanın:

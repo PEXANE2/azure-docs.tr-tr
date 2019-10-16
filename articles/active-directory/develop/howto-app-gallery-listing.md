@@ -18,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd20928816a30ad2843ce6c876bd77152dcd69e1
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001741"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374083"
 ---
-# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uygulamanızı Azure Active Directory Uygulama galerisinde listeleyin
+# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
 Bu makalede, Azure Active Directory (Azure AD) uygulama galerisinde bir uygulamayı listeleme, çoklu oturum açma (SSO) uygulama ve listeyi yönetme işlemlerinin nasıl yapılacağı gösterilir.
 
@@ -38,7 +38,7 @@ Bu makalede, Azure Active Directory (Azure AD) uygulama galerisinde bir uygulama
 - Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
 - Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 - Federasyon uygulamaları (açık KIMLIK ve SAML/WS-beslenir) için, uygulamanın Azure AD uygulama galerisinde listelenen hizmet olarak yazılım (SaaS) modelini desteklemesi gerekir. Kurumsal Galeri uygulamaları, belirli bir müşteriyi değil birden çok müşteri yapılandırmasını desteklemelidir.
 - Açık KIMLIK bağlantısı için, uygulamanın çok kiracılı olması ve [Azure AD onay çerçevesinin](consent-framework.md) uygulama için uygun şekilde uygulanması gerekir. Kullanıcı, herhangi bir müşterinin uygulamaya onay sağlayabilmesi için, oturum açma isteğini ortak bir uç noktaya gönderebilir. Kullanıcı erişimini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz.
@@ -71,7 +71,7 @@ Ekibimiz ayrıntıları inceler ve size buna göre erişim sağlar. İsteğiniz 
 
 Azure AD uygulama galerisinde bir uygulamayı listelemek için, önce Azure AD tarafından desteklenen aşağıdaki Federasyon protokollerinden birini uygulamanız gerekir. Ayrıca Azure AD Uygulama Galerisi hüküm ve koşullarını kabul etmeniz gerekir. [Bu Web sitesindeki](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)Azure AD uygulama galerisinin hüküm ve koşullarını okuyun.
 
-- **OpenID Connect**: Open ID Connect protokolünü kullanarak UYGULAMANıZı Azure AD ile tümleştirmek için [geliştiricilerin yönergelerini](authentication-scenarios.md)izleyin.
+- **OpenID Connect**: Open ID Connect protokolünü kullanarak UYGULAMANıZı Azure AD ile tümleştirmek için [geliştiricilerin yönergelerini](v1-authentication-scenarios.md)izleyin.
 
     ![Galerideki bir OpenID Connect uygulamasını listeleme](./media/howto-app-gallery-listing/openid.png)
 
@@ -122,7 +122,7 @@ Müşteri tarafından istenen uygulamaların akışı aşağıda verilmiştir.
 
 ![Müşteri tarafından istenen uygulamalar akışını gösterir](./media/howto-app-gallery-listing/customer-request.png)
 
-## <a name="timelines"></a>Zaman Çizelgeleri
+## <a name="timelines"></a>Animasyon
 
 Galerideki bir SAML 2,0 veya WS-Besme uygulamasını listeleme işleminin zaman çizelgesi 7 ila 10 iş gününe kadar olur.
 

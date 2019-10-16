@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003520"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326799"
 ---
-# <a name="select-clause"></a>SELECT yan tümcesi
+# <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB yan tümce SEÇIN
 
 Her sorgu, ANSI SQL standartlarına göre, SELECT yan tümcesi ve from ve [WHERE](sql-query-where.md) yan [tümcelerinden](sql-query-from.md) oluşur. Genellikle, FROM yan tümcesindeki kaynak numaralandırılır ve WHERE yan tümcesi JSON öğelerinin bir alt kümesini almak için kaynak üzerinde bir filtre uygular. SELECT yan tümcesi daha sonra seçim listesinde istenen JSON değerlerini projeler.
 
@@ -36,19 +36,19 @@ SELECT <select_specification>
   
 - `<select_specification>`  
 
-  Özellikleri veya sonuç kümesi için seçilecek değeri.  
+  Sonuç kümesi için seçilecek özellikler veya değer.  
   
 - `'*'`  
 
-  Değer herhangi bir değişiklik yapmadan alınması gerektiğini belirtir. İşlenen değer bir nesne ise, özellikle, tüm özellikleri alınır.  
+  Değerin herhangi bir değişiklik yapılmadan alınması gerektiğini belirtir. Özellikle işlenen değer bir nesnese, tüm özellikler alınır.  
   
 - `<object_property_list>`  
   
-  Alınacak özelliklerinin listesini belirtir. Her döndürülen değer, belirtilen özellikleri içeren bir nesne olacaktır.  
+  Alınacak özelliklerin listesini belirtir. Döndürülen her değer, belirtilen özelliklerle bir nesne olacaktır.  
   
 - `VALUE`  
 
-  JSON değerinin yerine tam JSON nesne alınacağını belirtir. Bunun aksine `<property_list>` Öngörülen Değer nesneyi kaydırma değil.  
+  Tüm JSON nesnesi yerine JSON değerinin alınması gerektiğini belirtir. Bu, `<property_list>` ' dan farklı olarak, bir nesnedeki öngörülen değeri sarmaz.  
  
 - `DISTINCT`
   
@@ -56,29 +56,29 @@ SELECT <select_specification>
 
 - `<scalar_expression>`  
 
-  Hesaplanmasını değeri gösteren ifade. Bkz: [skaler ifadelerin](sql-query-scalar-expressions.md) ayrıntıları bölümü.  
+  Hesaplanacağı değeri temsil eden ifade. Ayrıntılar için bkz. [skaler ifadeler](sql-query-scalar-expressions.md) bölümü.  
 
 ## <a name="remarks"></a>Açıklamalar
 
-`SELECT *` Söz dizimi FROM yan tümcesi tam olarak bir diğer ad bildirilmişlerse geçerli yalnızca. `SELECT *` projeksiyon gerekirse yararlı olabilecek bir kimlik yansıtma sağlar. SEÇİN * yalnızca FROM yan tümcesi belirtilmiş ise geçerlidir ve yalnızca tek bir giriş kaynağı kullanıma sunulmuştur.  
+@No__t-0 sözdizimi yalnızca FROM yan tümcesi tam olarak bir diğer ad bildirmişse geçerlidir. `SELECT *`, projeksiyon gerekmiyorsa yararlı olabilecek bir kimlik projeksiyonu sağlar. SELECT * yalnızca FROM yan tümcesi belirtilmişse ve yalnızca tek bir giriş kaynağı tanıdığında geçerlidir.  
   
-Her ikisi de `SELECT <select_list>` ve `SELECT *` "söz dizimi sugar" olan ve aşağıda gösterildiği gibi basit bir SELECT deyimi kullanarak alternatif olarak belirtilebilir.  
+Hem `SELECT <select_list>` hem de `SELECT *` "sözdizimsel cukr" olur ve alternatif olarak aşağıda gösterildiği gibi basit SELECT deyimleri kullanılarak ifade edilebilir.  
   
 1. `SELECT * FROM ... AS from_alias ...`  
   
-   eşdeğerdir:  
+   eşittir:  
   
    `SELECT from_alias FROM ... AS from_alias ...`  
   
 2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-   eşdeğerdir:  
+   eşittir:  
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki SELECT sorgusu `address` örneği, `id` eşleşmelerin `Families` `AndersenFamily`döndürdüğü örnekleri:
+Aşağıdaki SELECT sorgusu örneği, `id` `AndersenFamily` ile eşleşen `Families` ' den `address` döndürür:
 
 ```sql
     SELECT f.address
@@ -109,7 +109,7 @@ Sonuçlar şunlardır:
 
 ### <a name="nested-properties"></a>İç içe Özellikler
 
-Aşağıdaki örnek, `f.address.state` iki iç içe geçmiş özelliği ve `f.address.city`.
+Aşağıdaki örnek, `f.address.state` ve `f.address.city` iç içe iki özelliği projeler.
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -147,7 +147,7 @@ Sonuçlar şunlardır:
     }]
 ```
 
-Önceki örnekte, SELECT yan tümcesinin bir JSON nesnesi oluşturması gerekir ve örnek hiçbir anahtar sağladığından, yan tümce örtük bağımsız değişken adını `$1`kullanır. Aşağıdaki sorgu iki örtük bağımsız değişken değişkeni döndürür: `$1` ve `$2`.
+Yukarıdaki örnekte, SELECT yan tümcesinin bir JSON nesnesi oluşturması gerekir ve örnek hiçbir anahtar sağladığından, yan tümce örtük bağımsız değişken adını `$1` ' ı kullanır. Aşağıdaki sorgu iki örtük bağımsız değişken değişkeni döndürüyor: `$1` ve `$2`.
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 11fda31cd06db67e0a11a68a02da8b91a77e04e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c44006b20f4c0ef186f406e554ff555cda0c1dd8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68729223"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373384"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirme
 
@@ -64,7 +64,7 @@ Azure AD, uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirmek ü
 
 Uygulamanız için hangi tümleştirme seçeneğinin kullanılacağını belirlemede yardımcı olması için üst düzey karşılaştırma tablosuna bakın ve sonra her bir seçenek hakkında daha ayrıntılı bilgi için bkz.
 
-| Otomatik sağlama tarafından etkinleştirilen veya geliştirilmiş yetenekler| Azure AD sağlama hizmeti (SCıM 2,0)| Microsoft Graph API (OData v 4.0)| SAML JIT |
+| Otomatik sağlama tarafından etkinleştirilen veya geliştirilmiş yetenekler| Azure AD sağlama hizmeti (SCıM 2,0)| Microsoft Graph API (OData v 4.0)| SAML JıT |
 |---|---|---|---|
 | Azure AD 'de Kullanıcı ve Grup Yönetimi| √| √| Yalnızca Kullanıcı |
 | Şirket içi Active Directory eşitlenen kullanıcıları ve grupları yönetme| √| √| Yalnızca Kullanıcı * |
@@ -76,26 +76,26 @@ Uygulamanız için hangi tümleştirme seçeneğinin kullanılacağını belirle
 | Konuk hesaplarını (B2B) destekleme| √| √| √ |
 | Kurumsal olmayan hesapları destekleme (B2C)| X| √| √ |
 
-<sup>*</sup>– Azure AD Connect kullanıcıları AD 'den Azure AD 'ye eşitlemek için kurulum gereklidir.  
-<sup>+</sup >– Sağlama için SCıM kullanılması, uygulamanızı başka amaçlar için MIcrosoft Graph ile tümleştirmenizi engellemez.
+<sup>*</sup> – Azure AD Connect kullanıcıları ad 'den Azure AD 'ye eşitlemek için kurulum gereklidir.  
+<sup>+</sup >– sağlama için SCIM kullanıldığında, diğer amaçlar Için uygulamanızı MICROSOFT Graph ile tümleştirmenizi engellemez.
 
-## <a name="azure-ad-provisioning-service"></a>Azure AD sağlama hizmeti
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD sağlama hizmeti (SCıM)
 
-Azure AD sağlama hizmetleri, birçok kimlik sağlayıcısı (IDPs) tarafından desteklenen bir protokol olan SCıM 'yi kullanır. Her türlü SCıM uyumlu IDP, SCıM uç noktanıza bağlanabildikleri için Azure AD 'nin yanı sıra IDPs 'yi desteklemek istiyorsanız, Azure AD sağlama hizmetini kullanmanızı öneririz.
+Azure AD sağlama hizmetleri, birçok kimlik sağlayıcısı (IDPs) tarafından desteklenen bir protokol olan [SCıM] (https://aka.ms/SCIMOverview kullanır. Her türlü SCıM uyumlu IDP, SCıM uç noktanıza bağlanabildikleri için Azure AD 'nin yanı sıra IDPs 'yi desteklemek istiyorsanız, Azure AD sağlama hizmetini kullanmanızı öneririz.
 
 Azure AD sağlama hizmeti kullanıcılarının SCıM hakkında daha fazla bilgi için bkz.: 
+
+* [SCıM standardı hakkında daha fazla bilgi edinin](https://aka.ms/SCIMOverview)
 
 * [Kullanıcıları ve grupları Azure Active Directory uygulamalara otomatik olarak sağlamak için etki alanları arası kimlik yönetimi (SCıM) için sistem kullanma](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
 * [Azure AD SCıM uygulamasını anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
 
-* [Microsoft CLı kitaplıklarını kullanarak SCıM uç noktası oluşturma](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
-
 ## <a name="microsoft-graph-for-provisioning"></a>Sağlama için Microsoft Graph
 
 Sağlama için Microsoft Graph kullandığınızda, grafikte kullanılabilen tüm zengin Kullanıcı verilerine erişebilirsiniz. Kullanıcı ve grupların ayrıntılarına ek olarak, kullanıcının rolleri, Yöneticisi ve doğrudan raporları, sahip olunan cihazlar ve [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)bulunan yüzlerce diğer veri parçası gibi ek bilgiler de getirebilirsiniz. 
 
-15.000.000 ' den fazla kuruluş ve Fortune 500 şirketlerinin% 90 ' si, Office 365, Microsoft Azure, Enterprise Mobility Suite veya Microsoft 365 gibi Microsoft bulut hizmetlerine abone olurken Azure AD 'yi kullanır. Uygulamanızı, çalışan ekleme (ve sonlandırma), profil bakımı ve daha fazlası gibi yönetim iş akışlarıyla tümleştirmek için Microsoft Graph kullanabilirsiniz. 
+15.000.000 ' den fazla kuruluş ve Fortune 500 şirketlerinin %90 ' si, Office 365, Microsoft Azure, Enterprise Mobility Suite veya Microsoft 365 gibi Microsoft bulut hizmetlerine abone olurken Azure AD 'yi kullanır. Uygulamanızı, çalışan ekleme (ve sonlandırma), profil bakımı ve daha fazlası gibi yönetim iş akışlarıyla tümleştirmek için Microsoft Graph kullanabilirsiniz. 
 
 Sağlama için Microsoft Graph kullanma hakkında daha fazla bilgi edinin:
 
@@ -127,6 +127,6 @@ SAML JıT, uygulama içindeki kullanıcı bilgilerini oluşturmak ve güncelleş
 
 * [Uygulamanız için çoklu oturum açmayı etkinleştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
 
-* Microsoft 'un sitesinde belge oluşturmak için [uygulama listelemeyi](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) ve iş ortaklarınızı Microsoft Ile birlikte gönderebilirsiniz.
+* Microsoft 'un sitesinde belge oluşturmak için [uygulama listelemeyi ve iş ortaklarınızı](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) Microsoft Ile birlikte gönderebilirsiniz.
 
 * [Microsoft iş ortağı ağı (ücretsiz) ekleyin ve pazara git planınızı oluşturun](https://partner.microsoft.com/en-us/explore/commercial).

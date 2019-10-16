@@ -1,21 +1,21 @@
 ---
-title: Azure blok zinciri ekranı önizleme sorunlarını giderme
+title: Azure blok zinciri ve sorun giderme
 description: Azure blok zinciri çalışma ekranı önizleme uygulaması sorunlarını giderme.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8fec065b629f2f2b93e78a63521ea0ce4669dd4e
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 3032a81a4411cb162a335189ca65b845f8d6305f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844029"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329076"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure blok zinciri ekranı önizleme sorunlarını giderme
 
@@ -41,17 +41,17 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Betiği çalıştırın
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-Günlükleri toplamak ve sorun giderme bilgileri klasörünü içeren bir ZIP dosyası oluşturmak için betiğiçalıştırın.`collectBlockchainWorkbenchTroubleshooting.ps1` Örneğin:
+Günlükleri toplamak ve sorun giderme bilgileri klasörünü içeren bir ZIP dosyası oluşturmak için `collectBlockchainWorkbenchTroubleshooting.ps1` betiğini çalıştırın. Örnek:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
 ```
 Betik aşağıdaki parametreleri kabul eder:
 
-| Parametre  | Açıklama | Gerekli |
+| Parametre  | Açıklama | Gereklidir |
 |---------|---------|----|
-| SubscriptionID | Tüm kaynakları oluşturmak veya bulmak için SubscriptionID. | Evet |
-| ResourceGroupName | Blok zinciri çalışma ekranının dağıtıldığı Azure Kaynak grubunun adı. | Evet |
+| SubscriptionID | Tüm kaynakları oluşturmak veya bulmak için SubscriptionID. | Yes |
+| ResourceGroupName | Blok zinciri çalışma ekranının dağıtıldığı Azure Kaynak grubunun adı. | Yes |
 | OutputDirectory | Çıktının oluşturulacağı yol. ZIP dosyası. Belirtilmezse, varsayılan olarak geçerli dizini alır. | Hayır |
 | Geriye yönelik saat | Telemetri çekme sırasında kullanılacak saat sayısı. Varsayılan değer 24 saattir. Maksimum değer 90 saattir | Hayır |
 | Omssubscriptionıd | Azure Izleyici günlüklerinin dağıtıldığı abonelik KIMLIĞI. Bu parametreyi yalnızca blok zinciri ağı için Azure Izleyici günlükleri blok zinciri çalışma ekranının kaynak grubu dışında dağıtılırsa geçirin.| Hayır |
@@ -72,7 +72,7 @@ Betik aşağıdaki parametreleri kabul eder:
 
 Özet dosyası, uygulamanın genel durumunun bir anlık görüntüsünü ve uygulamanın sistem durumunu sağlar. Özet, önerilen eylemleri, en önemli hataları vurgular ve Hizmetleri çalıştırma hakkında meta verileri sağlar.
 
-**Ölçüm** klasörü, zaman içinde çeşitli sistem bileşenlerinin ölçümlerini içerir. Örneğin, çıkış dosyası `\Details\Workbench\apiMetrics.txt` farklı yanıt kodlarının özetini ve toplama süresi boyunca yanıt sürelerini içerir. **Ayrıntılar** klasörü, çalışma ekranı veya temeldeki blok zinciri ağı ile ilgili sorunları gidermeye yönelik ayrıntılı günlükleri içerir. Örneğin, `\Details\Workbench\Exceptions.csv` sistemde oluşan en son özel durumların bir listesini içerir, bu, akıllı sözleşmelerle veya blok zinciriyle etkileşimlerle ilgili sorunları gidermek için kullanışlıdır. 
+**Ölçüm** klasörü, zaman içinde çeşitli sistem bileşenlerinin ölçümlerini içerir. Örneğin, `\Details\Workbench\apiMetrics.txt` Çıkış dosyasında farklı yanıt kodlarının Özeti ve toplama süresi boyunca yanıt süreleri bulunur. **Ayrıntılar** klasörü, çalışma ekranı veya temeldeki blok zinciri ağı ile ilgili sorunları gidermeye yönelik ayrıntılı günlükleri içerir. Örneğin, `\Details\Workbench\Exceptions.csv` sistemde oluşan en son özel durumların listesini içerir. Bu, akıllı sözleşmelerle veya blok zinciriyle etkileşimlerle ilgili sorunları gidermek için kullanışlıdır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

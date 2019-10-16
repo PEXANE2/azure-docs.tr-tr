@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: e1875ebdb62cfc6d606465b863215513aaa47c02
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 5b6ec913226f44a47bfa5c734e0c20ef3a87ca67
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972914"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329422"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle kullanımı ve maliyetleri yönetme
 
@@ -32,13 +32,13 @@ Bu makalede, alınan veri hacmi ve depolama büyümesinin nasıl proaktif bir ş
 
 ## <a name="pricing-model"></a>Fiyatlandırma modeli
 
-Log Analytics için varsayılan fiyatlandırma, veri hacmine dayalı ve isteğe bağlı olarak daha uzun veri saklama için bir **Kullandıkça Öde** modelidir. Her Log Analytics çalışma alanı ayrı bir hizmet olarak ücretlendirilir ve Azure aboneliğiniz için faturaya katkıda bulunur. Veri alma miktarı aşağıdaki faktörlere göre önemli ölçüde olabilir: 
+Log Analytics için varsayılan fiyatlandırma, veri hacmine dayalı ve isteğe bağlı olarak daha uzun veri saklama için bir **Kullandıkça Öde** modelidir. Veri hacmi, depolanacak verilerin boyutu olarak ölçülür. Her Log Analytics çalışma alanı ayrı bir hizmet olarak ücretlendirilir ve Azure aboneliğiniz için faturaya katkıda bulunur. Veri alma miktarı aşağıdaki faktörlere göre önemli ölçüde olabilir: 
 
   - Etkin yönetim çözümü sayısı ve yapılandırmaları (ör. 
   - İzlenen VM sayısı
   - İzlenen her bir VM 'den toplanan verilerin türü 
   
-Kullandıkça Öde modeline ek olarak, Kullandıkça Öde fiyatına kıyasla% 25 ' e kadar tasarruf etmeniz için Log Analytics için **Kapasite ayırmaları** sunuyoruz. Kapasite ayırma fiyatlandırması, 100 GB/gün üzerinden başlayan bir rezervasyon satın almanıza olanak sağlar. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Log Analytics Kullandıkça öde ve kapasite rezervasyon fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) . 
+Kullandıkça Öde modeline ek olarak, Kullandıkça Öde fiyatına kıyasla %25 ' e kadar tasarruf etmeniz için Log Analytics için **Kapasite ayırmaları** sunuyoruz. Kapasite ayırma fiyatlandırması, 100 GB/gün üzerinden başlayan bir rezervasyon satın almanıza olanak sağlar. Rezervasyon düzeyinin üzerindeki tüm kullanımlar, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Log Analytics Kullandıkça öde ve kapasite rezervasyon fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) . 
 
 [Azure Güvenlik Merkezi](https://azure.microsoft.com/pricing/details/security-center/) ve [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)gibi bazı çözümlerin kendi fiyatlandırma modeline sahip olduğunu unutmayın. 
 
@@ -123,13 +123,13 @@ Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar s
 
     ![Çalışma alanı verilerini bekletme ayarını değiştir](media/manage-cost-storage/manage-cost-change-retention-01.png)
     
-Saklama, `retentionInDays` parametresi kullanılarak [ARM aracılığıyla da ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu işlevsellik yalnızca ARM aracılığıyla sunulur. 
+Saklama, `retentionInDays` parametresi kullanılarak [Azure Resource Manager ile de ayarlanabilir](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . Ayrıca, veri bekletmesini 30 güne ayarlarsanız, `immediatePurgeDataOn30Days` parametresini kullanarak eski verilerin hemen temizliğini tetikleyebilirsiniz, bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu işlevsellik yalnızca Azure Resource Manager aracılığıyla sunulur. 
 
 İki veri türü--`Usage` ve `AzureActivity`, varsayılan olarak 90 gün boyunca korunur ve bu 90 günlük bekletme için ücret alınmaz. Bu veri türleri de veri alma ücretlerinden ücretsizdir. 
 
 ### <a name="retention-by-data-type"></a>Veri türüne göre bekletme
 
-Ayrıca, bireysel veri türleri için farklı bekletme ayarları belirtmek mümkündür. Her veri türü, çalışma alanının alt kaynağıdır. Örneğin, SecurityEvent tablosu [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) ' de şu şekilde çözülebilir:
+Ayrıca, bireysel veri türleri için farklı bekletme ayarları belirtmek mümkündür. Her veri türü, çalışma alanının alt kaynağıdır. Örneğin, SecurityEvent tablosu [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) şöyle çözülebilir:
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -161,7 +161,7 @@ Belirli bir veri türünün (Bu örnekte SecurityEvent) bekletilmesini 730 gün 
 
 @No__t-0 ve `AzureActivity` veri türleri özel saklama ile ayarlanamaz. Bu, varsayılan çalışma alanı saklama veya 90 gün üst sınırını alır. 
 
-Veri türüne göre bekletme ayarlamak için doğrudan ARM 'e bağlanmak için harika bir araç, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' dur.  [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin.  ARMClient kullanarak, SecurityEvent verilerinin 730 günlük bekletmeye göre ayarlanması aşağıda verilmiştir:
+Veri türüne göre saklama ayarlamak için Azure Resource Manager doğrudan bağlanmak için harika bir araç, OSS aracı [Armclient](https://github.com/projectkudu/ARMClient)' dir.  [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel bowbevet](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerini kullanarak armclient hakkında daha fazla bilgi edinin.  ARMClient kullanarak, SecurityEvent verilerinin 730 günlük bekletmeye göre ayarlanması aşağıda verilmiştir:
 
 ```
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
@@ -193,7 +193,7 @@ Log Analytics çalışma alanınızın eski fiyatlandırma katmanlarına erişim
 3. **Fiyatlandırma katmanı**altında bir fiyatlandırma katmanı seçin ve ardından **Seç**' e tıklayın.  
     ![Selected fiyatlandırma planı @ no__t-1
 
-Ayrıca, `sku` parametresini kullanarak (ARM şablonunda `pricingTier`), [fiyatlandırma KATMANıNı ARM aracılığıyla da ayarlayabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . 
+Fiyatlandırma katmanını, `sku` parametresini (ARM şablonunda `pricingTier`) kullanarak [Azure Resource Manager aracılığıyla da ayarlayabilirsiniz](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Log Analytics neden artık veri toplamadığına ilişkin sorun giderme
 

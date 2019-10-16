@@ -9,18 +9,18 @@ ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3c27c268ed2a1c369c9b42bd1cd5a2365547c52f
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: e117c6f8aa8526392678f37a05ec61b55983a1c7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667453"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374433"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter çözümlerini ekleme
 
 Azure Otomasyonu, işletim sistemi güvenlik güncelleştirmelerini yönetmek, değişiklikleri izlemek ve bilgisayarlarınıza nelerin yüklü olduğunu envantere almak için çözümler sağlar. Makineleri eklemek için birçok yol vardır, çözümü [bir sanal makineden](automation-onboard-solutions-from-vm.md), [birden çok makineye göz atarak](automation-onboard-solutions-from-browse.md), Otomasyon hesabınızdan veya [runbook](automation-onboard-solutions.md)'a ekleyebilirsiniz. Bu makalede Otomasyon hesabınızdan bu çözümlerin eklenmesi ele alınmaktadır.
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açma
+## <a name="sign-in-to-azure"></a>Azure'da oturum açın
 
 https://portal.azure.com adresinden Azure'da oturum açın
 
@@ -47,7 +47,7 @@ Güncelleştirme Yönetimi çözümü, Azure Windows VM’leriniz için güncell
 
 ![Güncelleştirme çözümünü ekleme](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
-## <a name="scope-configuration"></a>Kapsam Yapılandırması
+## <a name="scope-configuration"></a>Kapsam yapılandırması
 
 Her çözüm, çözümü alan bilgisayarları hedeflemek için çalışma alanında bir kapsam yapılandırması kullanır. Kapsam yapılandırması, çözümün kapsamını belirli bilgisayarlarla sınırlandırmak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için, Otomasyon hesabınızda **ılgılı kaynaklar**altında **çalışma alanı**' nı seçin. Sonra çalışma alanı **VERI kaynakları**altındaki çalışma alanında **kapsam yapılandırması**' nı seçin.
 
@@ -65,10 +65,10 @@ Bir bilgisayar Güncelleştirme Yönetimi veya Değişiklik İzleme ve envanter 
 
 Otomasyon hesabınıza gidin ve **genel**altında **kaydedilmiş aramalar** ' ı seçin. Bu çözümler tarafından kullanılan iki kayıtlı arama aşağıdaki tabloda görülebilir:
 
-|Ad     |Category  |Alias  |
+|Adı     |Kategori  |Diğer ad  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  Değişiklik izleme dosyanız       | ChangeTracking__MicrosoftDefaultComputerGroup        |
-|MicrosoftDefaultComputerGroup     | Güncelleştirmeler        | Updates__MicrosoftDefaultComputerGroup         |
+|MicrosoftDefaultComputerGroup     | Güncellemeler        | Updates__MicrosoftDefaultComputerGroup         |
 
 Grubu doldurmak için kullanılan sorguyu görüntülemek için kayıtlı arama ' yı seçin. Aşağıdaki görüntüde sorgu ve sonuçları gösterilmektedir:
 
@@ -116,7 +116,7 @@ Aşağıdaki çözümler bir Log Analytics çalışma alanına bağımlıdır:
 
 * [Güncelleştirme yönetimi](automation-update-management.md)
 * [Değişiklik İzleme](automation-change-tracking.md)
-* [VM 'Leri çalışma saatleri dışında Başlat/Durdur](automation-solution-vm-management.md)
+* [VM'leri çalışma saatleri dışında başlat/durdur](automation-solution-vm-management.md)
 
 Artık Otomasyon hesabınızı bir Log Analytics çalışma alanıyla tümleştirmenize karar verirseniz, Hesabınızın bağlantısını doğrudan Azure portal kaldırabilirsiniz.  Devam etmeden önce önce bahsedilen çözümleri kaldırmanız gerekir, aksi takdirde bu işlemin devam etmesini engellenemez. Kaldırmak için gereken adımları anlamak için, içeri aktardığınız belirli çözüme yönelik makaleyi gözden geçirin.
 
@@ -148,6 +148,13 @@ VM 'Leri çalışma saatleri dışında Başlat ve Durdur çözümünü kulland�
 * Değişkenler
 
 Alternatif olarak, Log Analytics çalışma alanınızdan Otomasyon hesabınızdan çalışma alanınızın bağlantısını da kaldırabilirsiniz. Çalışma alanınızda **Ilgili kaynaklar**altında **Otomasyon hesabı** ' nı seçin. Otomasyon hesabı sayfasında **Hesap bağlantısını kaldır**' ı seçin.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bir sanal makineyi Güncelleştirme Yönetimi kaldırmak için:
+
+* Log Analytics çalışma alanınızda, kapsam yapılandırması için kayıtlı aramadan VM 'yi kaldırın `MicrosoftDefaultScopeConfig-Updates`. Kayıtlı aramalar, çalışma alanınızda **genel** altında bulunabilir.
+* Linux için [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) 'ı veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,35 +1,39 @@
 ---
-title: Azure Data Factory veri akışı JSON kavramlarını eşleme
-description: Data Factory eşleme veri akışı, Hiyerarşilerle JSON belgelerini işlemeye yönelik yerleşik yeteneklere sahiptir
+title: Azure Data Factory veri akışını eşlemede JSON kullanma
+description: Azure Data Factory eşleme veri akışı, Hiyerarşilerle JSON belgelerini işlemeye yönelik yerleşik yeteneklere sahiptir
 author: kromerm
 ms.author: makromer
+ms.review: djpmsft
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 37db3e153e8dfcbc1120fcb1f6d2f77187edc78e
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 605564ed541c23a9060879706fb25f91e97a8eac
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029655"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326549"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Veri akışı JSON işlemesini eşleme
 
+## <a name="creating-json-structures-in-derived-column"></a>Türetilmiş sütunda JSON yapıları oluşturma
 
+Türetilmiş sütun ifade Oluşturucusu aracılığıyla veri akışınıza karmaşık bir sütun ekleyebilirsiniz. Türetilmiş sütun dönüşümünde yeni bir sütun ekleyin ve mavi kutuya tıklayarak ifade oluşturucuyu açın. Bir sütunu karmaşık hale getirmek için JSON yapısını el ile girebilir veya UX kullanarak alt sütunları etkileşimli olarak ekleyebilirsiniz.
 
-## <a name="creating-json-structures-in-expression-editor"></a>İfade düzenleyicisinde JSON yapıları oluşturma
-### <a name="derived-column-transformation"></a>Türetilmiş sütun dönüşümü
-Veri akışınıza karmaşık bir sütun eklemek, türetilmiş sütun ifade Düzenleyicisi aracılığıyla daha kolay olur. Yeni bir sütun ekleyip düzenleyiciyi açtıktan sonra iki seçenek vardır: JSON yapısını el ile girin veya etkileşimli olarak alt sütunlar eklemek için Kullanıcı arabirimini kullanın.
+### <a name="using-the-expression-builder-ux"></a>İfade Oluşturucu UX 'i kullanma
 
-#### <a name="interactive-ui-json-design"></a>Etkileşimli UI JSON tasarımı
-Çıktı şeması yan bölmesinde `+` menüsü kullanılarak yeni alt sütunlar eklenebilir: ![alt sütun](media/data-flow/addsubcolumn.png "Ekle alt sütun Ekle")
+Çıktı şeması yan bölmesinde bir sütunun üzerine gelin ve artı simgesine tıklayın. Sütunu karmaşık bir tür yapmak için **alt sütun Ekle** ' yi seçin.
 
-Buradan, yeni sütunlar ve alt sütunlar aynı şekilde eklenebilir. Karmaşık olmayan her bir alan için, ifade düzenleyicisine sağa doğru bir ifade eklenebilir.
+![Alt sütun](media/data-flow/addsubcolumn.png "Ekle alt") sütun Ekle
+
+Aynı şekilde ek sütunlar ve alt sütunlar ekleyebilirsiniz. Karmaşık olmayan her bir alan için, ifade düzenleyicisine sağa doğru bir ifade eklenebilir.
 
 ![Karmaşık sütun](media/data-flow/complexcolumn.png "karmaşık sütunu")
 
-#### <a name="manual-json-design"></a>El ile JSON tasarımı
+### <a name="entering-the-json-structure-manually"></a>JSON yapısını el ile girme
+
 JSON yapısını el ile eklemek için yeni bir sütun ekleyin ve düzenleyicide ifadeyi girin. İfade aşağıdaki genel biçimi izler:
+
 ```
 @(
     field1=0,
@@ -38,7 +42,9 @@ JSON yapısını el ile eklemek için yeni bir sütun ekleyin ve düzenleyicide 
     )
 )
 ```
+
 Bu ifade "complexColumn" adlı bir sütun için girilmişse, havuza aşağıdaki JSON olarak yazılır:
+
 ```
 {
     "complexColumn": {
@@ -77,7 +83,15 @@ Bu ifade "complexColumn" adlı bir sütun için girilmişse, havuza aşağıdaki
 ```
 
 ## <a name="source-format-options"></a>Kaynak Biçim seçenekleri
+
+Veri akışınızda kaynak olarak JSON veri kümesi kullanmak, beş ek ayar ayarlamanıza olanak sağlar. Bu ayarlar, **kaynak seçenekleri** sekmesindeki **JSON ayarları** Accordion altında bulunabilir.  
+
+![JSON ayarları](media/data-flow/json-settings.png "JSON ayarları")
+
 ### <a name="default"></a>Varsayılan
+
+Varsayılan olarak, JSON verileri aşağıdaki biçimde okunurdur.
+
 ```
 { "json": "record 1" }
 { "json": "record 2" }
@@ -85,23 +99,10 @@ Bu ifade "complexColumn" adlı bir sütun için girilmişse, havuza aşağıdaki
 ```
 
 ### <a name="single-document"></a>Tek belge
-* Seçenek bir
-```
-[
-    {
-        "json": "record 1"
-    },
-    {
-        "json": "record 2"
-    },
-    {
-        "json": "record 3"
-    }
-]
-```
 
-* İki seçenek
-```
+**Tek belge** seçilirse, eşleme veri akışları her dosyadan bir JSON belgesi okur. 
+
+``` json
 File1.json
 {
     "json": "record 1"
@@ -117,6 +118,9 @@ File3.json
 ```
 
 ### <a name="unquoted-column-names"></a>Tırnak işaretleri olmayan sütun adları
+
+**Tırnak Işaretleri olmayan sütun adları** seçiliyse, eşleme veri akışları tırnak IÇINE alınmış JSON sütunlarını okur. 
+
 ```
 { json: "record 1" }
 { json: "record 2" }
@@ -124,13 +128,19 @@ File3.json
 ```
 
 ### <a name="has-comments"></a>Açıklamalar içeriyor
-```
+
+JSON verilerinde C veya C++ Style yorum ekleme varsa, Select **yorumu vardır** .
+
+``` json
 { "json": /** comment **/ "record 1" }
 { "json": "record 2" }
 { /** comment **/ "json": "record 3" }
 ```
 
 ### <a name="single-quoted"></a>Tek tırnaklı
+
+JSON alanları ve değerleri çift tırnak yerine tek tırnakları kullanıyorsa, **tek tırnak** işareti ' ni seçin.
+
 ```
 { 'json': 'record 1' }
 { 'json': 'record 2' }
@@ -138,45 +148,51 @@ File3.json
 ```
 
 ### <a name="backslash-escaped"></a>Ters eğik çizgi kaçışı
+
+JSON verilerinde karakter kaçış için ters eğik çizgi kullanılırsa **tek tırnak** işareti seçin.
+
 ```
 { "json": "record 1" }
 { "json": "\} \" \' \\ \n \\n record 2" }
 { "json": "record 3" }
 ```
 
-## <a name="higher-order-functions"></a>Daha yüksek sıra işlevleri
-## <a name="filter"></a>filtreyle
+## <a name="higher-order-functions"></a>Daha yüksek sıralı işlevler
+
+Daha yüksek sıralı bir işlev, bir veya daha fazla işlevi bağımsız değişken olarak alan bir işlevdir. Dizi işlemlerini etkinleştiren veri akışları eşlemesinde desteklenen daha yüksek sıralı işlevlerin listesi aşağıda verilmiştir.
+
+### <a name="filter"></a>filtreyle
 Öğeleri, belirtilen koşulu karşılamayan dizinin dışına filtreler. Filtre, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.
 
-### <a name="examples"></a>Örnekler
+#### <a name="examples"></a>Örnekler
 ```
 filter([1, 2, 3, 4], #item > 2) => [3, 4]
 filter(['a', 'b', 'c', 'd'], #item == 'a' || #item == 'b') => ['a', 'b']
 ```
 
-## <a name="map"></a>map
+### <a name="map"></a>map
 Dizideki her öğeyi, belirtilen ifadeyi kullanarak yeni bir öğeye eşler. Eşleme, ifade işlevindeki bir öğeye #item olarak bir başvuru bekliyor.
 
-### <a name="examples"></a>Örnekler
+#### <a name="examples"></a>Örnekler
 ```
 map([1, 2, 3, 4], #item + 2) => [3, 4, 5, 6]
 map(['a', 'b', 'c', 'd'], #item + '_processed') => ['a_processed', 'b_processed', 'c_processed', 'd_processed']
 ```
 
-## <a name="reduce"></a>azal
+### <a name="reduce"></a>azal
 Öğeleri bir dizide biriktirir. Azaltma, #acc ve #item olarak ilk ifade işlevindeki bir Biriktiricinin ve bir öğenin bir başvurusunu bekler ve ikinci ifade işlevinde kullanılacak #result olarak elde edilen değeri bekler.
 
-### <a name="examples"></a>Örnekler
+#### <a name="examples"></a>Örnekler
 ```
 reduce([1, 2, 3, 4], 0, #acc + #item, #result) => 10
 reduce(['1', '2', '3', '4'], '0', #acc + #item, #result) => '01234'
 reduce([1, 2, 3, 4], 0, #acc + #item, #result + 15) => 25
 ```
 
-## <a name="sort"></a>Düzenine
+### <a name="sort"></a>Düzenine
 Belirtilen koşul işlevini kullanarak diziyi sıralar. Sıralama, #item1 ve #item2 olarak ifade işlevindeki birbirini izleyen iki öğeye bir başvuru bekliyor.
 
-### <a name="examples"></a>Örnekler
+#### <a name="examples"></a>Örnekler
 ```
 sort([4, 8, 2, 3], compare(#item1, #item2)) => [2, 3, 4, 8]
 sort(['a3', 'b2', 'c1'],
@@ -185,10 +201,10 @@ sort(['a3', 'b2', 'c1'],
         iif(#item1 >= #item2, 1, -1)) => ['a3', 'b2', 'c1']
 ```
 
-## <a name="contains"></a>vardır
+### <a name="contains"></a>vardır
 Belirtilen dizideki herhangi bir öğe, belirtilen koşulda doğru olarak değerlendiriliyorsa true değerini döndürür. Contains, koşul işlevindeki bir öğeye #item olarak bir başvuru bekliyor.
 
-### <a name="examples"></a>Örnekler
+#### <a name="examples"></a>Örnekler
 ```
 contains([1, 2, 3, 4], #item == 3) => true
 contains([1, 2, 3, 4], #item > 5) => false

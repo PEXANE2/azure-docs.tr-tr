@@ -1,6 +1,6 @@
 ---
-title: Kabuk betikleri, Azure'da bir Linux VM çalıştırma
-description: Bu konu başlığı altında komut dosyalarını çalıştır komutunu kullanarak bir Azure Linux sanal makine içinde çalıştırma işlemi açıklanır
+title: Azure 'da bir Linux VM 'de kabuk betikleri çalıştırma
+description: Bu konuda, Çalıştır komutu kullanılarak Azure Linux sanal makinesi içinde betikleri çalıştırma açıklanmaktadır
 services: automation
 ms.service: automation
 author: bobbytreed
@@ -8,82 +8,94 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: abf0f69ea70bae4102806214f0ef0fcfc25aad3a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6550b6e3f59ff7e6bac39dfc1abcf829256122d4
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477038"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376349"
 ---
-# <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Kabuk betikleri Linux VM'nize ile Çalıştır komutunu çalıştırın.
+# <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Çalıştır komutuyla Linux sanal makinenizde kabuk betikleri çalıştırma
 
-Komutu kullanan bir Azure Linux VM Kabuk betikleri çalıştırmak için VM Aracısı çalıştırın. Bu betikler genel bir makine ya da uygulama yönetimi için kullanılabilir ve hızlı bir şekilde tanılayın ve VM erişimi ve ağ sorunları çözmek ve VM'ye iyi bir duruma geri almak için kullanılabilir.
+Çalıştır komutu, bir Azure Linux VM 'de kabuk betikleri çalıştırmak için VM aracısını kullanır. Bu betikler genel makine veya uygulama yönetimi için kullanılabilir ve VM erişimi ve ağ sorunlarını hızla tanılamak ve düzeltmek ve VM 'yi iyi bir duruma getirmek için kullanılabilir.
 
 ## <a name="benefits"></a>Avantajlar
 
-Sanal makinelerinizi erişmek için kullanılan birden çok seçenek vardır. Komutunu çalıştırın, sanal makinelerinizde uzaktan VM Aracısı'nı kullanarak komut dosyalarını çalıştırabilirsiniz. Run komutu Azure Portalı aracılığıyla kullanılabilir [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), veya [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) Linux VM'ler için.
+Sanal makinelerinize erişmek için kullanılabilecek birden çok seçenek vardır. Çalıştır komutu, sanal makinelerinizdeki betikleri VM aracısını kullanarak Uzaktan çalıştırabilir. Run komutu, Linux VM 'Leri için Azure portal, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)veya [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) aracılığıyla kullanılabilir.
 
-Bu yetenek, burada bir sanal makineleri içinde bir betik çalıştırmak istediğiniz ve sorun giderme ve RDP sahip olmayan bir sanal makine düzeltmek için yalnızca yollarından biri veya SSH bağlantı noktası açık hatalı ağ veya yönetici kullanıcının nedeniyle tüm senaryolarda kullanışlıdır yapılandırma.
+Bu özellik, bir sanal makine içinde bir komut dosyası çalıştırmak istediğiniz tüm senaryolarda faydalıdır ve hatalı ağ veya yönetici kullanıcı nedeniyle RDP veya SSH bağlantı noktası açık olmayan bir sanal makineyi düzeltme ve düzeltme yöntemlerinden biridir yapılandırmada.
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-Çalıştır komutu kullanırken mevcut olan kısıtlamaları bir listesi verilmiştir.
+Aşağıda, Çalıştır komutu kullanılırken mevcut olan kısıtlamaların bir listesi verilmiştir.
 
-* Çıkış son 4096 bayt ile sınırlıdır
-* Yaklaşık 20 saniye betik çalıştırmak için minimum süre
-* Varsayılan olarak, Linux üzerinde yükseltilmiş bir kullanıcı olarak çalıştırılan betikler
-* Aynı anda tek bir betik çalıştırabilir
-* (Etkileşimli mod) bilgi isteminde betikleri desteklenmez.
-* Çalışan bir betik iptal edilemiyor
-* Bir betiği çalıştırabilirsiniz en uzun süreyi sonra hangi BT zaman aşımına uğrar 90 dakika olan
-* VM'den giden bağlantı betik sonuçlarını döndürmek için gereklidir.
+* Çıktı, Son 4096 bayt ile sınırlıdır
+* 20 saniye yaklaşık bir betiği çalıştırmak için gereken süre
+* Betikler varsayılan olarak Linux üzerinde yükseltilmiş kullanıcı olarak çalışır
+* Tek seferde bir betik çalıştırılabilir
+* Bilgi isteyen betikler (etkileşimli mod) desteklenmez.
+* Çalışan bir betiği iptal edemezsiniz
+* Bir betiğin çalışacağı en uzun süre 90 dakikadır ve bu süre sonra zaman aşımına uğrar
+* Betiğin sonuçlarını döndürmek için VM 'den giden bağlantı gereklidir.
 
 > [!NOTE]
-> Düzgün çalışması için Çalıştır komutunu Azure genel IP adresleri için bağlantıyı (bağlantı noktası 443) gerektirir. Uzantı Bu uç noktalara erişimi yoksa, komut başarıyla çalışır ancak sonuçları döndüren değil. Sanal makine üzerindeki trafiği engelliyorsanız kullanabileceğiniz [hizmet etiketleri](../../virtual-network/security-overview.md#service-tags) kullanarak trafiği Azure genel IP adreslerine izin verecek şekilde `AzureCloud` etiketi.
+> Run komutu doğru çalışması için, Azure genel IP adresleri için bağlantı (bağlantı noktası 443) gerekir. Uzantının bu uç noktalara erişimi yoksa betikler başarıyla çalıştırılabilir, ancak sonuçları döndürmeyebilir. Sanal makinede trafiği engelliyorsanız, `AzureCloud` etiketini kullanarak Azure genel IP adreslerine giden trafiğe izin vermek için [hizmet etiketlerini](../../virtual-network/security-overview.md#service-tags) kullanabilirsiniz.
+
+## <a name="available-commands"></a>Kullanılabilir komutlar
+
+Bu tabloda, Linux VM 'Leri için kullanılabilen komutların listesi gösterilmektedir. **Runshellscript** komutu istediğiniz herhangi bir özel betiği çalıştırmak için kullanılabilir. Bir komutu çalıştırmak için Azure CLı veya PowerShell kullanırken, `--command-id` veya `-CommandId` parametresi için sağladığınız değer aşağıda listelenen değerlerden biri olmalıdır. Kullanılabilir bir komut olmayan bir değer belirttiğinizde, bu hatayı alırsınız.
+
+```error
+The entity was not found in this Azure location
+```
+
+|**Adı**|**Açıklama**|
+|---|---|
+|**RunShellScript**|Bir Linux kabuğu betiği yürütür.|
+|**ifconfig**| Tüm ağ arabirimlerinin yapılandırmasını alın.|
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Bir örneği verilmiştir kullanarak [az vm Çalıştır komutunu](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) bir kabuk betiği bir Azure Linux VM'de çalıştırmak için komutu.
+Aşağıda, bir Azure Linux sanal makinesinde kabuk betiği çalıştırmak için [az VM Run-Command](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) komutunu kullanan bir örnek verilmiştir.
 
 ```azurecli-interactive
 az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript --scripts "sudo apt-get update && sudo apt-get install -y nginx"
 ```
 
 > [!NOTE]
-> Farklı bir kullanıcı olarak komutları çalıştırmak için kullanabileceğiniz `sudo -u` kullanılacak bir kullanıcı hesabı belirtmek için.
+> Komutları farklı bir kullanıcı olarak çalıştırmak için, kullanmak üzere bir kullanıcı hesabı belirtmek için `sudo -u` kullanabilirsiniz.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
-Bir VM'de gidin [Azure](https://portal.azure.com) seçip **komutu çalıştırın** altında **OPERATIONS**. VM'de çalıştırmak için kullanılabilir komutların listesini ile sunulur.
+[Azure](https://portal.azure.com) 'DA bir VM 'ye gidin ve **Işlemler**altında **komutu Çalıştır** ' ı seçin. SANAL makinede çalıştırılacak kullanılabilir komutların bir listesi görüntülenir.
 
-![Komut listesini çalıştırın.](./media/run-command/run-command-list.png)
+![Komut listesini Çalıştır](./media/run-command/run-command-list.png)
 
-Bir komutu çalıştırmak için seçin. Bazı komutlar, isteğe bağlı veya gerekli giriş parametreleri olabilir. Bu komutlar için parametreleri giriş değerleri sağlamasına metin alanları olarak sunulur. Her komut genişleterek çalıştırıldığı betik görüntüleyebilirsiniz **komut dosyasını Göster**. **RunShellScript** kendi özel betik sağlamak sağladığından diğer komutlardan farklıdır.
+Çalıştırmak için bir komut seçin. Bazı komutlardan isteğe bağlı veya gerekli giriş parametreleri olabilir. Bu komutlar için parametreler, giriş değerlerini sağlamanız için metin alanları olarak sunulur. Her komut için, **Görünüm betiği**genişleterek çalıştırılmakta olan betiği görüntüleyebilirsiniz. **Runshellscript** , kendi özel betiğinizi sağlamanıza olanak sağladığı diğer komutlardan farklıdır.
 
 > [!NOTE]
-> Yerleşik komutlar düzenlenebilir değil.
+> Yerleşik komutlar düzenlenemez.
 
-Komut seçilir bitince **çalıştırma** betiği çalıştırmak için. Betik çalışır ve tamamlandığında, çıktı ve hatalar çıkış penceresinde döndürür. Çalışan bir örnek çıktı aşağıdaki ekran görüntüsünde gösterilmektedir **ifconfig** komutu.
+Komut seçildikten sonra **Çalıştır** ' a tıklayarak betiği çalıştırın. Betik çalışır ve tamamlandığında çıkış penceresindeki çıktıyı ve hataları döndürür. Aşağıdaki ekran görüntüsünde **ifconfig** komutunu çalıştırmanın örnek bir çıkışı gösterilmektedir.
 
-![Komut betiği çıktısını çalıştırın](./media/run-command/run-command-script-output.png)
+![Komut betiği çıkışını Çalıştır](./media/run-command/run-command-script-output.png)
 
-## <a name="available-commands"></a>Kullanılabilir komutlar
+### <a name="powershell"></a>PowerShell
 
-Bu tabloda, Linux Vm'leri için kullanılabilir komutların listesini gösterir. **RunShellScript** komutu istediğiniz herhangi bir özel betik çalıştırmak için kullanılabilir.
+Aşağıda, bir Azure VM üzerinde PowerShell Betiği çalıştırmak için [Invoke-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) cmdlet 'i kullanılan bir örnek verilmiştir. Cmdlet 'i, `-ScriptPath` parametresinde başvurulan betiğin, cmdlet 'in çalıştırıldığı yere yerelde olmasını bekler.
 
-|**Name**|**Açıklama**|
-|---|---|
-|**RunShellScript**|Bir Linux Kabuk betiği çalıştırır.|
-|**ifconfig**| Tüm ağ arabirimlerinin yapılandırmasını alın.|
+```powershell-interactive
+Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
+```
 
-## <a name="limiting-access-to-run-command"></a>Komutu Çalıştır erişimi sınırlandırma
+## <a name="limiting-access-to-run-command"></a>Çalıştır komutuna erişimi sınırlandırma
 
-Çalıştırma komutları listesi veya bir komut ayrıntılarını gösteren gerektiren `Microsoft.Compute/locations/runCommands/read` abonelik düzeyinde izni, yerleşik [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rol ve daha yüksek.
+Çalıştırma komutlarının listelenmesi veya bir komutun ayrıntılarını göstermek, yerleşik [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü ve üzeri olan abonelik düzeyinde `Microsoft.Compute/locations/runCommands/read` izni gerektirir.
 
-Bir komutu çalıştırmak gerektirir `Microsoft.Compute/virtualMachines/runCommand/action` abonelik düzeyinde izni olan [sanal makine Katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rol ve daha yüksek.
+Bir komutun çalıştırılması, abonelik düzeyinde, [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rolü ve üst sürümü olan `Microsoft.Compute/virtualMachines/runCommand/action` iznini gerektirir.
 
-Birini kullanabilirsiniz [yerleşik](../../role-based-access-control/built-in-roles.md) rolleri veya oluşturma bir [özel](../../role-based-access-control/custom-roles.md) rol Çalıştır komutunu kullanmaktır.
+Çalıştır komutunu kullanmak için [yerleşik](../../role-based-access-control/built-in-roles.md) rollerden birini kullanabilir veya [özel](../../role-based-access-control/custom-roles.md) bir rol oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz, [Linux VM'nize betikleri çalıştırma](run-scripts-in-vm.md) , sanal betikleri ve komutları uzaktan çalıştırmak için diğer yollar hakkında bilgi edinmek için.
+Komut dosyalarını ve komutları sanal makinenizde uzaktan çalıştırmanın diğer yolları hakkında bilgi edinmek için bkz. [LINUX sanal makinenizde betikleri çalıştırın](run-scripts-in-vm.md) .

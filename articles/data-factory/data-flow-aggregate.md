@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 1dcc28313d1d8e59024fbc70738567cb59585d20
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026984"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326477"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Eşleme veri akışında toplama dönüştürmesi 
 
@@ -44,6 +44,19 @@ Toplam dönüşümler SQL toplu seçim sorgularına yakın bir şekilde eşdeğe
 * Son () veya First () gibi ek sütunları dahil etmek için bir toplama işlevi kullanın
 * [Kendi kendine birleştirme modelini](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/)kullanarak toplamadan önce sütunları yeniden birleştirin.
 
+## <a name="data-flow-script"></a>Veri akışı betiği
+
+![Veri akışı betiği]toplu(media/data-flow/aggdfs1.png "veri akışı betiği")
+
+* ```MoviesYear```: yıl ve Başlık sütunlarını tanımlayan türetilmiş sütun
+* ```AvgComedyRatingByYear```: yıla göre gruplanmış ortalama Comedies derecelendirmesi için Birleşik dönüşüm
+* ```avgrating```: toplanmış değeri tutmak için oluşturulan yeni sütunun adı
+
+```
+MoviesYear aggregate(groupBy(year),
+    avgrating = avg(toInteger(Rating))) ~> AvgComedyRatingByYear
+```
+  
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Pencere [dönüşümünü](data-flow-window.md) kullanarak pencere tabanlı toplamayı tanımlama

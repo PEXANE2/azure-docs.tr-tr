@@ -5,26 +5,26 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 895ce98f290ce23580bb70023e2539ab4272f8b8
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3e62c19454808ad398dfb205eae9de19a671852d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350272"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376338"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Azure VM'lerini bir bölgeden diğerine çoğaltma için destek matrisi
 
-Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü durum kurtarması yaptığınızda [Azure Site Recovery](site-recovery-overview.md) hizmetini kullanarak destek ve önkoşulları özetlenmektedir.
+Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü durum kurtarmaya yönelik destek ve Önkoşullar [Azure Site Recovery](site-recovery-overview.md) hizmeti kullanılarak özetlenmektedir.
 
 
 ## <a name="deployment-method-support"></a>Dağıtım yöntemi desteği
 
 **Dağıtım** |  **Destek**
 --- | ---
-**Azure portal** | Destekleniyor.
-**PowerShell** | Destekleniyor. [Daha fazla bilgi edinin](azure-to-azure-powershell.md)
+**Azure portalda** | Destekleniyor.
+**PowerShell** | Destekleniyor. [Daha fazla bilgi](azure-to-azure-powershell.md)
 **REST API** | Destekleniyor.
 **CLI** | Şu anda desteklenmiyor
 
@@ -32,7 +32,7 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 ## <a name="resource-support"></a>Kaynak desteği
 
 **Kaynak eylemi** | **Ayrıntılar**
---- | --- | ---
+--- | --- 
 **Kaynakları kaynak grupları arasında taşıma** | Desteklenmiyor
 **İşlem/depolama/ağ kaynaklarını kaynak grupları arasında taşıma** | Desteklenmiyor.<br/><br/> VM çoğaltıldıktan sonra bir VM 'yi veya depolama/ağ gibi ilişkili bileşenleri taşırsanız VM için çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
 **Olağanüstü durum kurtarma için Azure VM 'lerini bir abonelikten diğerine çoğaltma** | Aynı Azure Active Directory kiracısı içinde desteklenir.
@@ -50,15 +50,15 @@ Amerika | Kanada Doğu, Kanada Orta, Orta Güney ABD, Orta Batı ABD, Doğu ABD,
 Avrupa | UK Batı, UK Güney, Kuzey Avrupa, Batı Avrupa, Fransa Orta, Fransa Güney, Güney Afrika Batı, Güney Afrika Kuzey
 Asya | Güney Hindistan, Orta Hindistan, Batı Hindistan, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, BAE Orta, BAE Kuzey
 Avustralya   | Avustralya Doğu, Avustralya Güneydoğu, Avustralya Orta, Avustralya Orta 2
-Azure Kamu    | ABD devleti Virginia, US GOV IWA, US GOV Arizona, US GOV Texas, US DOD Doğu, US DOD orta 
+Azure Devlet Kurumları    | ABD devleti Virginia, US GOV IWA, US GOV Arizona, US GOV Texas, US DOD Doğu, US DOD orta 
 Almanya | Almanya Orta, Almanya Kuzeydoğu
 Çin | Çin Doğu, Çin Kuzey, Çin North2, Çin Doğu2
 Ülke içi olağanüstü durum kurtarma için ayrılan kısıtlı bölgeler |Almanya Orta Batı için ayrılan Almanya Kuzey, Fransa Güney müşterileri için ayrılan Fransa Orta İsviçre Kuzey için ayrılan İsviçre Batı 
 
 >[!NOTE]
 >
-> - **Brezilya Güney**için, bu bölgelere çoğaltabilir ve yük devretmek için şunları yapabilirsiniz: Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2 ve Orta Kuzey ABD.
-> - Brezilya Güney yalnızca, Site Recovery kullanılarak sanal makinelerin çoğaltılacağı kaynak bölge olarak kullanılabilir. Hedef bölge işlevi görebilir. Bu, coğrafi uzaklıkları nedeniyle gecikme sorunlarından kaynaklanır.
+> - **Brezilya Güney**için, şu bölgelere çoğaltabilir ve yük devredebilmeniz gerekir: Orta Güney ABD, Orta Batı ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2 ve Orta Kuzey ABD.
+> - Brezilya Güney yalnızca, Site Recovery kullanılarak sanal makinelerin çoğaltılacağı kaynak bölge olarak kullanılabilir. Hedef bölge işlevi görebilir. Bu, coğrafi uzaklıkları nedeniyle gecikme sorunlarından kaynaklanır. Bir hedefe kaynak bölge olarak Brezilya Güney yük devretmek, hedef bölgeden Brezilya Güney için yeniden çalışma desteklendiğini unutmayın.
 > - Uygun erişiminiz olan bölgeler içinde çalışabilirsiniz.
 > - Bir kasa oluşturmak istediğiniz bölge görünmüyorsa, aboneliğinizin bu bölgedeki kaynakları oluşturmak için erişime sahip olduğundan emin olun.
 > - Çoğaltmayı etkinleştirdiğinizde coğrafi bir küme içinde bölge göremiyorsanız, aboneliğinizin bu bölgede VM oluşturma izinlerine sahip olduğundan emin olun.
@@ -84,15 +84,16 @@ Site Recovery, bu bölümde listelenen işletim sistemlerini çalıştıran Azur
 
 **İşletim sistemi** | **Ayrıntılar**
 --- | ---
-Windows Server 2019 | Sunucu çekirdeği, masaüstü deneyimi ile sunucu
-Windows Server 2016  | Sunucu çekirdeği, masaüstü deneyimi ile sunucu
-Windows Server 2012 R2 |
-Windows Server 2012 |
-Windows Server 2008 R2 | SP1 veya sonraki sürümleri çalıştırma
-Windows 10 (x64) |
-Windows 8.1 (x64) |
-Windows 8 (x64) |
-Windows 7 (x64) | SP1 veya üzeri çalıştırma (Windows 7 RTM desteklenmez)
+Windows Server 2019 | Sunucu çekirdeği için desteklenir, masaüstü deneyimi olan sunucu.
+Windows Server 2016  | Desteklenen sunucu çekirdeği, masaüstü deneyimi ile sunucu.
+Windows Server 2012 R2 | Destekleniyor.
+Windows Server 2012 | Destekleniyor.
+SP1/SP2 ile Windows Server 2008 R2 | Destekleniyor.<br/><br/> Azure VM 'Leri için Mobility hizmeti uzantısının 9.30. x. x sürümünden Windows Server 2008 R2 SP1/SP2 çalıştıran makinelere bir Windows [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklemeniz gerekir.  Bu güncelleştirmeler yüklü değilse, aracı uzantısı beklendiği gibi yüklenmeyebilir/yükseltilemeyebilir. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+SP2 ile Windows Server 2008 | Azure VM 'Leri için Mobility hizmeti uzantısının 9.30. x. x sürümünden Windows Server 2008 SP2 çalıştıran makinelere bir Windows [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4493730) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklemeniz gerekir.  Bu güncelleştirmeler yüklü değilse, aracı uzantısı beklendiği gibi yüklenmeyebilir/yükseltilemeyebilir. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+Windows 10 (x64) | Destekleniyor.
+Windows 8.1 (x64) | Destekleniyor.
+Windows 8 (x64) | Destekleniyor.
+SP1 ile Windows 7 (x64) sürümleri | Azure VM 'Leri için Mobility hizmeti uzantısının 9.30. x. x sürümünden, SP1 ile Windows 7 çalıştıran makinelere bir Windows [bakım yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesi](https://support.microsoft.com/help/4474419) yüklemeniz gerekir.  Bu güncelleştirmeler yüklü değilse, aracı uzantısı beklendiği gibi yüklenmeyebilir/yükseltilemeyebilir. [SHA-2 yükseltme ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
 
 #### <a name="linux"></a>Linux
 
@@ -103,7 +104,7 @@ CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6
 Ubuntu 14,04 LTS sunucusu | [Desteklenen çekirdek sürümleri](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16,04 LTS sunucusu | [Desteklenen çekirdek sürümü](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Parola tabanlı kimlik doğrulaması ve oturum açma kullanan Ubuntu sunucuları ve bulut VM 'Leri yapılandırmak için Cloud-init paketi, yük devretmede (cloudinit yapılandırmasına bağlı olarak) parola tabanlı oturum açma devre dışı kalabilir. Parola tabanlı oturum açma, Azure portal > sorun giderme > ayarları menüsündeki (yük devredilen VM 'nin) parolasını sıfırlayarak sanal makinede yeniden etkinleştirilebilir.
 Deyi 7 | [Desteklenen çekirdek sürümleri](#supported-debian-kernel-versions-for-azure-virtual-machines)
-Debian 8 | [Desteklenen çekirdek sürümleri](#supported-debian-kernel-versions-for-azure-virtual-machines)
+Desek8 | [Desteklenen çekirdek sürümleri](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Desteklenen çekirdek sürümleri)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Makine, SP3 ile SP4'E çoğaltma için yükseltme desteklenmez. Çoğaltılan bir makine yükseltildiyse, çoğaltmayı devre dışı bırakmanız ve yükseltmeden sonra çoğaltmayı yeniden etkinleştirmeniz gerekir.
 SUSE Linux Enterprise Server 11 | MADAN
@@ -130,9 +131,9 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5,
 --- | --- | --- |
 Deyi 7 | 9.25,9.26,9.27,9.28 | 3.2.0-4-AMD64-3.2.0-6-AMD64, 3.16.0 -0. BPO. 4-AMD64 |
 |||
-Debian 8 | 9,28 | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 9-AMD64 |
-Debian 8 | 9,27 | 3.16.0-4-AMD64-3.16.0-9-AMD64, 4.9.0 -0. BPO. 4-AMD64-4.9.0 -0. BPO. 9-AMD64 |
-Debian 8 | 9,25, 9,26 | 3.16.0-4-AMD64-3.16.0-8-AMD64, 4.9.0 -0. BPO. 4-AMD64-4.9.0 -0. BPO. 8-AMD64 |
+Desek8 | 9,28 | 3.16.0-4-AMD64-3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-AMD64 ila 4.9.0 -0. BPO. 9-AMD64 |
+Desek8 | 9,27 | 3.16.0-4-AMD64-3.16.0-9-AMD64, 4.9.0 -0. BPO. 4-AMD64-4.9.0 -0. BPO. 9-AMD64 |
+Desek8 | 9,25, 9,26 | 3.16.0-4-AMD64-3.16.0-8-AMD64, 4.9.0 -0. BPO. 4-AMD64-4.9.0 -0. BPO. 8-AMD64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure sanal makineleri için desteklenen SUSE Linux Enterprise Server 12 çekirdek sürümü
 
@@ -147,14 +148,14 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,25 | SP1 3.12.49-11-var
 
 * Dosya sistemleri: ext3, ext4, ReiserFS (yalnızca SUSE Linux Enterprise Server), XFS, BTRFS
 * Birim Yöneticisi: LVM2
-* Çok yollu yazılım: Cihaz Eşleyici
+* Çok yollu yazılım: cihaz Eşleyici
 
 
 ## <a name="replicated-machines---compute-settings"></a>Çoğaltılan makineler-işlem ayarları
 
 **Ayar** | **Destek** | **Ayrıntılar**
 --- | --- | ---
-Size | En az 2 CPU çekirdeğine ve 1 GB RAM 'e sahip Azure VM boyutu | [Azure sanal makine boyutlarını](../virtual-machines/windows/sizes.md)doğrulayın.
+Boyut | En az 2 CPU çekirdeğine ve 1 GB RAM 'e sahip Azure VM boyutu | [Azure sanal makine boyutlarını](../virtual-machines/windows/sizes.md)doğrulayın.
 Kullanılabilirlik kümeleri | Desteklenen | Varsayılan seçeneklerle bir Azure VM için çoğaltmayı etkinleştirirseniz, kaynak bölge ayarlarına bağlı olarak bir kullanılabilirlik kümesi otomatik olarak oluşturulur. Bu ayarları değiştirebilirsiniz.
 Kullanılabilirlik alanları | Desteklenen |
 Karma kullanım teklifi (HUB) | Desteklenen | Kaynak VM 'nin etkinleştirilmiş bir HUB lisansı varsa, yük devretme testi veya yük devretme VM 'si de HUB lisansı kullanır.
@@ -194,7 +195,7 @@ Veri diski-Premium depolama hesabı | Desteklenen | Bir VM 'nin Premium ve stand
 Yönetilen disk-standart | Azure Site Recovery desteklendiği Azure bölgelerinde desteklenir. |
 Yönetilen disk-Premium | Azure Site Recovery desteklendiği Azure bölgelerinde desteklenir. |
 Standart SSD | Desteklenen |
-Yedeklilik | LRS ve GRS desteklenir.<br/><br/> ZRS desteklenmez.
+Yedekleme | LRS ve GRS desteklenir.<br/><br/> ZRS desteklenmez.
 Seyrek erişimli ve sık erişimli depolama | Desteklenmiyor | Seyrek erişimli ve sık erişimli depolamada VM diskleri desteklenmez
 Depolama alanları | Desteklenen |
 Bekleyen şifreleme (SSE) | Desteklenen | SSE, depolama hesaplarında varsayılan ayardır.   
@@ -211,7 +212,7 @@ RA-GRS | Desteklenen |
 ZRS | Desteklenmiyor |
 Seyrek erişimli ve sık erişimli depolama | Desteklenmiyor | Seyrek erişimli ve sık erişimli depolamada sanal makine diskleri desteklenmez
 Sanal ağlar için Azure Storage güvenlik duvarları  | Desteklenen | Depolama hesaplarına sanal ağ erişimini kısıtladıysanız, [Güvenilen Microsoft hizmetlerine Izin vermeyi](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)etkinleştirin.
-Genel amaçlı v2 depolama hesapları (sık erişimli ve Seyrek Erişimli Katman) | Evet | İşlem maliyetleri, genel amaçlı v1 depolama hesaplarıyla karşılaştırıldığında önemli ölçüde artar
+Genel amaçlı v2 depolama hesapları (sık erişimli ve Seyrek Erişimli Katman) | Yes | İşlem maliyetleri, genel amaçlı v1 depolama hesaplarıyla karşılaştırıldığında önemli ölçüde artar
 
 >[!IMPORTANT]
 > Performans sorunlarından kaçınmak için, [Linux](../virtual-machines/linux/disk-scalability-targets.md) veya [Windows](../virtual-machines/windows/disk-scalability-targets.md) VM 'leri için VM disk ölçeklenebilirliğini ve performans hedeflerini izlediğinizden emin olun. Varsayılan ayarları kullanıyorsanız, Site Recovery, kaynak yapılandırmasına göre gerekli diskleri ve depolama hesaplarını oluşturur. Kendi ayarlarınızı özelleştirip seçerseniz, kaynak sanal makinelerinize yönelik disk ölçeklenebilirlik ve performans hedeflerini izleyin.
@@ -240,24 +241,24 @@ Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn 
 NIC | Belirli bir Azure VM boyutu için desteklenen en yüksek sayı | NIC 'ler, yük devretme sırasında VM oluşturulduğunda oluşturulur.<br/><br/> Yük devretme sanal makinesinde bulunan NIC 'lerin sayısı, çoğaltma etkinleştirildiğinde kaynak VM üzerindeki NIC 'lerin sayısına bağlıdır. Çoğaltmayı etkinleştirdikten sonra bir NIC ekler veya kaldırırsanız, yük devretmeden sonra çoğaltılan VM 'deki NIC 'lerin sayısını etkilemez. Ayrıca, yük devretme sonrasında NIC sırasının orijinal siparişle aynı olması garanti edilmez.
 İnternet Yük Dengeleyici | Desteklenen | Önceden yapılandırılmış yük dengeleyiciyi bir kurtarma planında bir Azure Otomasyonu betiği kullanarak ilişkilendirin.
 İç yük dengeleyici | Desteklenen | Önceden yapılandırılmış yük dengeleyiciyi bir kurtarma planında bir Azure Otomasyonu betiği kullanarak ilişkilendirin.
-Ortak IP adresi | Desteklenen | Mevcut bir genel IP adresini NIC ile ilişkilendirin. Ya da bir genel IP adresi oluşturun ve bir kurtarma planında Azure Otomasyonu betiği kullanarak NIC ile ilişkilendirin.
+Genel IP adresi | Desteklenen | Mevcut bir genel IP adresini NIC ile ilişkilendirin. Ya da bir genel IP adresi oluşturun ve bir kurtarma planında Azure Otomasyonu betiği kullanarak NIC ile ilişkilendirin.
 NIC üzerinde NSG | Desteklenen | Bir kurtarma planında Azure Otomasyonu betiği kullanarak NSG 'yi NIC ile ilişkilendirin.
 Alt ağda NSG | Desteklenen | Bir kurtarma planında Azure Otomasyonu betiği kullanarak NSG 'yi alt ağ ile ilişkilendirin.
-Ayrılmış (statik) IP adresi | Desteklenen | Kaynak VM üzerindeki NIC 'nin statik bir IP adresi varsa ve hedef alt ağda aynı IP adresi varsa, yük devredilen VM 'ye atanır.<br/><br/> Hedef alt ağa aynı IP adresi yoksa, alt ağdaki kullanılabilir IP adreslerinden biri VM için ayrılmıştır.<br/><br/> Ayrıca, **çoğaltılan öğeler** > **ayarları** > **işlem ve ağ** > **ağı arabirimleri**' nde sabit bir IP adresi ve alt ağ belirtebilirsiniz.
+Ayrılmış (statik) IP adresi | Desteklenen | Kaynak VM üzerindeki NIC 'nin statik bir IP adresi varsa ve hedef alt ağda aynı IP adresi varsa, yük devredilen VM 'ye atanır.<br/><br/> Hedef alt ağa aynı IP adresi yoksa, alt ağdaki kullanılabilir IP adreslerinden biri VM için ayrılmıştır.<br/><br/> **Yinelenen öğelerde**sabıt bir IP adresi ve alt ağ da belirtebilirsiniz  > **ayarları** > **işlem ve ağ** > **ağ arabirimleri**.
 Dinamik IP adresi | Desteklenen | Kaynaktaki NIC dinamik IP adreslemesini içeriyorsa, yük devredilen VM üzerindeki NIC de varsayılan olarak dinamik olur.<br/><br/> Gerekirse bunu sabit bir IP adresi ile değiştirebilirsiniz.
 Birden çok IP adresi | Desteklenmiyor | Birden çok IP adresli NIC 'ye sahip bir VM 'nin yükünü devretmek için yalnızca kaynak bölgedeki NIC 'in birincil IP adresi tutulur. Birden çok IP adresi atamak için, bir [kurtarma planına](recovery-plan-overview.md) VM ekleyebilir ve plana ek IP adresleri atamak için bir komut dosyası ekleyebilir ya da değişikliği yük devretmeden sonra el ile veya bir komut dosyasıyla yapabilirsiniz. 
 Traffic Manager     | Desteklenen | Traffic Manager, trafiğin kaynak bölgedeki uç noktaya ve yük devretme durumunda hedef bölgedeki uç noktaya yönlendirilmesi için önceden yapılandırabilirsiniz.
 Azure DNS | Desteklenen |
 Özel DNS  | Desteklenen |
-Kimliği doğrulanmamış proxy | Desteklenen | [Daha fazla bilgi edinin](site-recovery-azure-to-azure-networking-guidance.md)    
+Kimliği doğrulanmamış proxy | Desteklenen | [Daha fazla bilgi](site-recovery-azure-to-azure-networking-guidance.md)    
 Kimliği doğrulanmış ara sunucu | Desteklenmiyor | VM, giden bağlantı için kimliği doğrulanmış bir proxy kullanıyorsa, Azure Site Recovery kullanılarak çoğaltılamaz.    
-Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Desteklenen | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi edinin](site-recovery-azure-to-azure-networking-guidance.md)    
-VNET 'ten VNET 'e bağlantı | Desteklenen | [Daha fazla bilgi edinin](site-recovery-azure-to-azure-networking-guidance.md)  
+Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Desteklenen | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi](site-recovery-azure-to-azure-networking-guidance.md)    
+VNET 'ten VNET 'e bağlantı | Desteklenen | [Daha fazla bilgi](site-recovery-azure-to-azure-networking-guidance.md)  
 Sanal Ağ Hizmeti Uç Noktaları | Desteklenen | Depolama hesaplarına sanal ağ erişimini kısıtladığınız takdirde, güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verildiğinden emin olun.
-Hızlandırılmış ağ | Desteklenen | Kaynak VM 'de hızlandırılmış ağ etkin olmalıdır. [Daha fazla bilgi edinin](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Hızlandırılmış ağ iletişimi | Desteklenen | Kaynak VM 'de hızlandırılmış ağ etkin olmalıdır. [Daha fazla bilgi edinin](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure VM 'lerini çoğaltmak için [ağ kılavuzunu](site-recovery-azure-to-azure-networking-guidance.md) okuyun.
-- [Azure VM](site-recovery-azure-to-azure.md)'lerini çoğaltarak olağanüstü durum kurtarma dağıtın.
+- [Azure VM 'lerini çoğaltarak](site-recovery-azure-to-azure.md)olağanüstü durum kurtarma dağıtın.

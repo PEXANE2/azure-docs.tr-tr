@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell betik örneği - yönetilen kaynak grubu alma ve Vm'leri yeniden boyutlandırma | Microsoft Docs
-description: Azure PowerShell betik örneği - yönetilen kaynak grubu alma ve Vm'leri yeniden boyutlandırma
+title: Azure PowerShell betik örneği-yönetilen kaynak grubu edinme ve VM 'Leri yeniden boyutlandırma | Microsoft Docs
+description: Azure yönetilen uygulaması için yönetilen bir kaynak grubunu alan Azure PowerShell örnek betik sağlar. Betik, VM 'Leri yeniden boyutlandırır.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9e8930c95495673c0082a82757ed6d8137900b6f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f36ed42e0b7f8e4d1e5b092d2a14fd0cd8178ee0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171487"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330130"
 ---
-# <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Bir yönetilen kaynak grubundaki kaynakları alma ve Vm'leri PowerShell ile yeniden boyutlandırma
+# <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Yönetilen bir kaynak grubundaki kaynakları edinme ve VM 'Leri PowerShell ile yeniden boyutlandırma
 
 Bu betik bir yönetilen kaynak grubundan kaynakları alır ve bu kaynak grubundaki VM’leri yeniden boyutlandırır.
 
@@ -38,9 +38,9 @@ Bu betik, yönetilen uygulamayı dağıtmak için aşağıdaki komutları kullan
 
 | Komut | Notlar |
 |---|---|
-| [Get-AzManagedApplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Yönetilen uygulamaları listeler. Sonuçlara odaklanmak için kaynak grubu adını belirtin. |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Kaynakları listeler. Sonuca odaklanmak için bir kaynak grubu ve kaynak türü sağlar. |
-| [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Sanal makinenin boyutunu güncelleştirir. |
+| [Get-Azmanagedadpplication](https://docs.microsoft.com/powershell/module/az.resources/get-azmanagedapplication) | Yönetilen uygulamaları listeler. Sonuçları odaklamak için kaynak grubu adı belirtin. |
+| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | Kaynakları listeler. Sonuca odaklanmak için bir kaynak grubu ve kaynak türü sağlayın. |
+| [Güncelleştirme-AzVM](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) | Sanal makinenin boyutunu güncelleştirir. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

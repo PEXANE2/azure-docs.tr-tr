@@ -16,10 +16,10 @@ ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70812675"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
@@ -79,21 +79,21 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
 
 7. Bir kaynak **öznitelik adı**, bir **işleç**ve eşleştirilecek bir **öznitelik değeri** seçerek bir yan tümce tanımlayın. Aşağıdaki işleçler desteklenir:
 
-   a. **EŞİTTİR**. Değerlendirilen öznitelik, giriş dizesi değeri tam olarak (büyük/küçük harfe duyarlı) eşleşiyorsa "true" döndürür.
+   a. **Eşittir**. Değerlendirilen öznitelik, giriş dizesi değeri tam olarak (büyük/küçük harfe duyarlı) eşleşiyorsa "true" döndürür.
 
-   b. **EŞİT DEĞİLDİR**. Değerlendirilen öznitelik, giriş dizesi değeriyle (büyük/küçük harfe duyarlı) eşleşmezse "true" döndürür.
+   b. **eşit değildir**. Değerlendirilen öznitelik, giriş dizesi değeriyle (büyük/küçük harfe duyarlı) eşleşmezse "true" döndürür.
 
-   c. **DOĞRU**. Değerlendirilen öznitelik true Boole değeri içeriyorsa, yan tümce "true" döndürür.
+   c. **doğru**. Değerlendirilen öznitelik true Boole değeri içeriyorsa, yan tümce "true" döndürür.
 
-   d. **YANLIŞ**. Değerlendirilen öznitelik yanlış Boole değeri içeriyorsa, yan tümce "true" döndürür.
+   d. **yanlış**. Değerlendirilen öznitelik yanlış Boole değeri içeriyorsa, yan tümce "true" döndürür.
 
-   e. **NULL**. Değerlendirilen öznitelik boş ise yan tümce "true" döndürür.
+   e. **null**. Değerlendirilen öznitelik boş ise yan tümce "true" döndürür.
 
-   f. **NULL DEĞİL**. Değerlendirilen öznitelik boş değilse yan tümce "true" döndürür.
+   f. **null değil**. Değerlendirilen öznitelik boş değilse yan tümce "true" döndürür.
 
-   g. **REGEX EŞLEŞİYOR**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşiyorsa, yan tümce "true" döndürür. Örneğin: ([1-9] [0-9]), 10 ile 99 arasında herhangi bir sayıyla eşleşir.
+   g. **Regex eşleşiyor**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşiyorsa, yan tümce "true" döndürür. Örneğin: ([1-9] [0-9]), 10 ile 99 arasında herhangi bir sayıyla eşleşir.
 
-   h. **REGEX EŞLEŞMİYOR**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşmezse, yan tümce "true" döndürür.
+   h. **Regex eşleşmiyor**. Değerlendirilen öznitelik bir normal ifade düzeniyle eşleşmezse, yan tümce "true" döndürür.
 
 8. **Yeni Kapsam Ekle yan tümcesi**seçin.
 

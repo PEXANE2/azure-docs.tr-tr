@@ -1,21 +1,21 @@
 ---
-title: Azure blok zincirinde blok zinciri uygulama sürümü oluşturma çalışma ekranı önizlemesi
+title: Blok zinciri uygulama sürümü oluşturma-Azure blok zinciri çalışma ekranı
 description: Azure blok zinciri çalışma ekranı önizlemesinde uygulama sürümlerini kullanma.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: f6edbb54962ff11b5ed1497b6a202b9010c67aae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843888"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328833"
 ---
 # <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure blok zinciri çalışma ekranı önizleme uygulaması sürümü oluşturma
 
@@ -32,7 +32,7 @@ Azure blok zinciri çalışma ekranı önizleme uygulamasının birden çok sür
 
 Yeni bir sürüm eklemek için yeni yapılandırmayı ve akıllı sözleşme dosyalarını blok zinciri çalışma ekranına yükleyin.
 
-1. Bir Web tarayıcısında, blok zinciri çalışma ekranı web adresine gidin. Örneğin, `https://{workbench URL}.azurewebsites.net/` blockzincirinin çalışma ekranı web adresini bulma hakkında daha fazla bilgi için bkz. [blok zinciri Web URL 'si](deploy.md#blockchain-workbench-web-url)
+1. Bir Web tarayıcısında, blok zinciri çalışma ekranı web adresine gidin. Örneğin, blok zinciri çalışma ekranı web adresini bulma hakkında bilgi Için `https://{workbench URL}.azurewebsites.net/`, bkz. [blok zinciri Web URL 'si](deploy.md#blockchain-workbench-web-url)
 2. [Blok zinciri çalışma ekranı Yöneticisi](manage-users.md#manage-blockchain-workbench-administrators)olarak oturum açın.
 3. Başka bir sürümle güncelleştirmek istediğiniz blok zinciri uygulamasını seçin.
 4. **Sürüm Ekle**' yi seçin. **Sürüm Ekle** bölmesi görüntülenir.

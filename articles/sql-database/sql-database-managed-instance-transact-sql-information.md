@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: b7ace716f920304eff3ddcfa3fab887f780cec0e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72000503"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372330"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Yönetilen örnek T-SQL farkları, sınırlamaları ve bilinen sorunlar
 
@@ -537,13 +537,21 @@ Aşağıdaki değişkenler, işlevler ve görünümler farklı sonuçlar döndü
 
 ### <a name="tempdb"></a>'Nın
 
-@No__t-0 ' ın en büyük dosya boyutu, bir Genel Amaçlı katmanında çekirdek başına 24 GB 'den büyük olamaz. Bir İş Açısından Kritik katmanındaki en fazla `tempdb` boyutu örnek depolama boyutuyla sınırlıdır. `Tempdb` günlük dosyası boyutu, Genel Amaçlı ve İş Açısından Kritik katmanlarında 120 GB ile sınırlıdır. Bazı sorgular, `tempdb` ' da çekirdek başına 24 GB 'den fazla gereksinim duyduklarında veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir.
+@No__t-0 ' ın en büyük dosya boyutu, bir Genel Amaçlı katmanında çekirdek başına 24 GB 'den büyük olamaz. Bir İş Açısından Kritik katmanındaki en fazla `tempdb` boyutu örnek depolama boyutuyla sınırlıdır. `Tempdb` günlük dosyası boyutu Genel Amaçlı katmanında 120 GB ile sınırlıdır. Bazı sorgular, `tempdb` ' da çekirdek başına 24 GB 'den fazla gereksinim duyduklarında veya 120 GB 'den fazla günlük verisi ürettiklerinde bir hata döndürebilir.
 
 ### <a name="error-logs"></a>Hata günlükleri
 
-Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+Yönetilen bir örnek, hata günlüklerinde ayrıntılı bilgileri koyar. Hata günlüğünde günlüğe kaydedilen çok sayıda iç sistem olayı vardır. İlgisiz bazı girdilerin filtrelediğini belirten hata günlüklerini okumak için özel bir yordam kullanın. Daha fazla bilgi için bkz. [yönetilen örnek – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) veya [yönetilen örnek uzantısı (Önizleme)](https://docs.microsoft.com/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data Studio.
 
 ## <a name="Issues"></a>Bilinen sorunlar
+
+### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>Bellek içi OLTP bellek sınırları uygulanmadı
+
+**Tarih:** Eki 2019
+
+İş Açısından Kritik hizmet katmanı, bazı durumlarda [bellek için iyileştirilmiş nesneler için maksimum bellek sınırlarını](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) doğru bir şekilde uygulamacaktır. Yönetilen örnek, workoad 'nin bellek Içi OLTP işlemleri için daha fazla bellek kullanmasını sağlayabilir ve bu da örneğin kullanılabilirliğini ve kararlılığını etkileyebilir. Sınırlara ulaşan bellek içi OLTP sorguları başarısız olabilir immediatelly. Bu sorun yakında düzeltilecektir. Daha fazla bellek Içi OLTP belleği kullanan sorgular [sınırlara](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space)ulaştıklarında daha önce başarısız olur.
+
+**Geçici çözüm:** iş yükünün kullanılabilir bellek kullandığından emin olmak için [SQL Server Management Studio](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring) kullanarak [bellek içi OLTP depolama kullanımını izleyin](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) . Sanal çekirdek sayısına bağlı olan bellek sınırlarını artırın veya daha az bellek kullanmak için iş yükünüzü iyileştirin.
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Boş olmayan bir dosya kaldırılmaya çalışılırken hatalı hata döndürüldü
 

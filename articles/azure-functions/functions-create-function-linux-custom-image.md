@@ -1,6 +1,6 @@
 ---
 title: Linux üzerinde özel görüntü kullanarak Azure Işlevleri oluşturma
-description: Özel bir Linux görüntüsünde çalışan Azure Işlevleri oluşturmayı öğrenin.
+description: Özel bir Linux görüntüsü üzerinde çalışan Azure İşlevleri oluşturmayı öğrenin.
 author: ggailey777
 ms.author: glenga
 ms.date: 09/27/2019
@@ -8,46 +8,46 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: 54d7dc4e57991f6b773169f539a86fdc8451cbba
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950382"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329557"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Linux üzerinde özel görüntü kullanarak bir işlev oluşturma
 
-Azure Işlevleri, işlevlerinizi kendi özel kapsayıcıda Linux üzerinde barındırmanıza olanak tanır. Ayrıca, [varsayılan bir Azure App Service kapsayıcısı üzerinde de barındırabilirsiniz](functions-create-first-azure-function-azure-cli-linux.md). Bu işlevsellik [2. x çalışma zamanı işlevlerini](functions-versions.md)gerektirir.
+Azure İşlevleri, işlevlerinizi Linux’ta kendi özel kapsayıcınızda barındırmanıza olanak sağlar. Ayrıca, [varsayılan bir Azure App Service kapsayıcısı üzerinde barındırabilirsiniz](functions-create-first-azure-function-azure-cli-linux.md). Bu işlevsellik [2. x çalışma zamanı işlevlerini](functions-versions.md)gerektirir.
 
-Bu öğreticide, işlevlerinizi özel bir Docker görüntüsü olarak Azure 'a dağıtmayı öğreneceksiniz. Bu model, yerleşik kapsayıcı görüntüsünü özelleştirmeniz gerektiğinde faydalıdır. İşlevleriniz belirli bir dil sürümüne ihtiyaç duymanız veya yerleşik görüntüde sağlanmayan belirli bir bağımlılık veya yapılandırma gerektirirken özel bir görüntü kullanmak isteyebilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur. 
+Bu öğreticide işlevlerinizi Azure'a özel bir Docker görüntüsü olarak dağıtmayı öğreneceksiniz. Bu model, yerleşik kapsayıcı görüntüsünü özelleştirmeniz gerektiğinde faydalıdır. İşlevleriniz belirli bir dil sürümüne gereksinim duyduğunda veya yerleşik görüntüde sağlanmayan belirli bir bağımlılık ya da yapılandırma gerektirdiğinde özel görüntü kullanmak isteyebilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur. 
 
-Bu öğreticide, özel bir Linux görüntüsünde işlev oluşturmak için Azure Functions Core Tools kullanma adımları gösterilmektedir. Bu görüntüyü Azure 'da Azure CLı kullanılarak oluşturulan bir işlev uygulamasına yayımlayabilirsiniz. Daha sonra, Azure kuyruk depolamaya bağlanmak için işlevinizi güncelleşolursunuz. Öğesini de etkinleştirmeniz gerekir.  
+Bu öğretici, özel bir Linux görüntüsünde bir işlev oluşturmak için Azure İşlevleri Çekirdek Araçları'nı kullanma adımlarını göstermektedir. Bu görüntüyü Azure CLI kullanılarak oluşturulan Azure'daki bir işlev uygulamasında yayımlayabilirsiniz. Daha sonra, Azure kuyruk depolamaya bağlanmak için işlevinizi güncelleşolursunuz. Öğesini de etkinleştirmeniz gerekir.  
 
-Bu öğreticide şunların nasıl yapıladığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Temel araçları kullanarak bir işlev uygulaması ve Dockerfile oluşturun.
+> * Çekirdek araçları ile bir işlev uygulaması ve Dockerfile oluşturun.
 > * Docker kullanarak özel bir görüntü oluşturun.
-> * Bir kapsayıcı kayıt defterine özel bir görüntü yayımlayın.
-> * Bir Azure depolama hesabı oluşturun.
+> * Özel görüntüyü bir kapsayıcı kayıt defterinde yayımlayın.
+> * Bir Azure Depolama hesabı oluşturun.
 > * Premium barındırma planı oluşturun.
-> * Docker Hub 'dan bir işlev uygulaması dağıtın.
-> * Uygulama ayarlarını işlev uygulamasına ekleyin.
+> * Docker Hub’dan bir işlev uygulaması dağıtın.
+> * Uygulama ayarlarını işlevi uygulamasına ekleyin.
 > * Sürekli dağıtımı etkinleştirin.
 > * Kapsayıcıya SSH bağlantılarını etkinleştirin.
 > * Kuyruk depolama çıkış bağlaması ekleyin. 
 > * Application Insights izleme ekleyin.
 
-Aşağıdaki adımlar bir Mac, Windows veya Linux bilgisayarda desteklenir. 
+Aşağıdaki adımlar Mac, Windows veya Linux bilgisayarlarda desteklenir. 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmadan önce aşağıdakilere sahip olmanız gerekir:
 
-* [Azure Core Tools sürüm 2. x](functions-run-local.md#v2)'i yükler.
+* [Azure Core Tools sürüm 2.x](functions-run-local.md#v2) yükleme.
 
-* [Azure CLI]( /cli/azure/install-azure-cli)'yı yükler. Bu makale için Azure CLı 2,0 veya sonraki bir sürümü gerekir. Sahip olduğunuz sürümü bulmak için `az --version` ' yı çalıştırın.  
-[Azure Cloud Shell](https://shell.azure.com/bash)de kullanabilirsiniz.
+* [Azure CLI]( /cli/azure/install-azure-cli)’yi yükleyin. Bu makale, Azure CLI 2.0 veya sonraki bir sürümü gerektirir. Kullandığınız sürümü bulmak için `az --version` komutunu çalıştırın.  
+[Azure Cloud Shell](https://shell.azure.com/bash)’i de kullanabilirsiniz.
 
 * Etkin bir Azure aboneliği.
 
@@ -63,9 +63,9 @@ Geçerli yerel dizinin `MyFunctionProj` klasöründe bir işlev uygulaması proj
 func init MyFunctionProj --docker
 ```
 
-@No__t-0 seçeneğini eklediğinizde proje için bir dockerfile oluşturulur. Bu dosya, projenin çalıştırılacağı özel bir kapsayıcı oluşturmak için kullanılır. Kullanılan temel görüntü, seçilen çalışan çalışma zamanı diline bağlıdır.  
+`--docker` seçeneğini dahil ettiğinizde proje için bir Docker dosyası oluşturulur. Bu dosya, içinde projenin çalıştırılacağı özel bir kapsayıcı oluşturmak için kullanılır. Kullanılan temel görüntü, seçilen alt çalışma zamanı diline bağlıdır.  
 
-İstendiğinde, aşağıdaki dillerden bir çalışan çalışma zamanı seçin:
+İstendiğinde, şu dillerden bir alt çalışma zamanı seçin:
 
 * `dotnet`: bir .NET Core sınıf kitaplığı projesi (. csproj) oluşturur.
 * `node`: bir JavaScript projesi oluşturur.
@@ -83,7 +83,7 @@ cd MyFunctionProj
 
 ## <a name="build-from-the-docker-file"></a>Docker dosyasından derleme
 
-Projenin kök klasöründeki _Dockerfile dosyasına_ göz atın. Bu dosya, Linux üzerinde işlev uygulamasını çalıştırmak için gereken ortamı açıklar. Aşağıdaki örnek, JavaScript (node. js) çalışan çalışma zamanında bir işlev uygulaması çalıştıran bir kapsayıcı oluşturan bir Dockerfile dosyasıdır: 
+Projenin kök klasöründeki _Dockerfile_'a bir göz atın. Bu dosya, işlev uygulamasını Linux üzerinde çalıştırmak için gereken ortamı açıklar. Aşağıda JavaScript (Node.js) alt çalışma zamanında bir işlev uygulaması çalıştıran bir kapsayıcı oluşturan bir Dockerfile örneği verilmiştir: 
 
 ```Dockerfile
 FROM mcr.microsoft.com/azure-functions/node:2.0
@@ -95,9 +95,9 @@ COPY . /home/site/wwwroot
 > [!NOTE]
 > Azure Işlevleri için desteklenen temel görüntülerin tüm listesi, [Azure işlevleri temel görüntü sayfasında](https://hub.docker.com/_/microsoft-azure-functions-base)bulunabilir.
 
-### <a name="run-the-build-command"></a>@No__t-0 komutunu çalıştırın
+### <a name="run-the-build-command"></a>`build` komutunu çalıştırın
 
-Kök klasörde [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) komutunu çalıştırın ve bir ad, `mydockerimage` ve etiket sağlayın `v1.0.0`. @No__t-0 ' yı Docker Hub hesabı KIMLIĞINIZLE değiştirin. Bu komut, kapsayıcı için Docker görüntüsünü oluşturur.
+Kök klasörde [docker derleme](https://docs.docker.com/engine/reference/commandline/build/) komutunu çalıştırın ve bir ad `mydockerimage` ve bir etiket `v1.0.0` sağlayın. `<docker-id>` değerini Docker Hub hesabınızın kimliğiyle değiştirin. Bu komut, kapsayıcı için Docker görüntüsünü derler.
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
@@ -106,13 +106,13 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 Komut tamamlandığında, yeni kapsayıcıyı yerel olarak çalıştırabilirsiniz.
 
 ### <a name="run-the-image-locally"></a>Görüntüyü yerel olarak çalıştırma
-Oluşturduğunuz görüntünün, bir yerel kapsayıcıda Docker görüntüsünü çalıştırarak çalıştığını doğrulayın. [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu verin ve görüntünün adını ve etiketini geçirin. @No__t-0 bağımsız değişkenini kullanarak bağlantı noktasını belirttiğinizden emin olun.
+Docker görüntüsünü yerel bir kapsayıcıda çalıştırarak derlediğiniz görüntün çalıştığını doğrulayın. [docker run](https://docs.docker.com/engine/reference/commandline/run/) komutunu gönderin ve bu komuta görüntünün adını ve etiketini geçirin. `-p` bağımsız değişkenini kullanarak bağlantı noktasını belirttiğinizden emin olun.
 
 ```bash
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 ```
 
-Yerel bir Docker kapsayıcısında çalışan özel görüntüyle birlikte <http://localhost:8080> ' a giderek işlev uygulamasının ve kapsayıcının düzgün çalıştığını doğrulayın.
+Özel görüntü ile yerel bir Docker kapsayıcısı içinde çalışırken <http://localhost:8080> sayfasına göz atarak uygulama ve kapsayıcının doğru şekilde çalıştığını onaylayın.
 
 ![İşlev uygulamasını yerel olarak çalıştırın.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -123,15 +123,15 @@ Kapsayıcıda işlev uygulamasını doğruladıktan sonra, yürütmeyi durdurun.
 
 ## <a name="push-to-docker-hub"></a>Docker Hub 'a gönder
 
-Kayıt defteri, görüntüleri barındıran ve hizmet görüntüsü ve kapsayıcı hizmetleri sağlayan bir uygulamadır. Görüntünüzü paylaşmak için bir kayıt defterine göndermeniz gerekir. Docker Hub, genel veya özel kendi depolarınızı barındırmanıza olanak tanıyan Docker görüntüleri için bir kayıt defteridir.
+Kayıt defteri, görüntüleri barındıran ve hizmet görüntüsüyle kapsayıcı hizmetleri sağlayan bir uygulamadır. Görüntünüzü paylaşmak için bir kayıt defterine göndermelisiniz. Docker Hub, Docker görüntüleri için kayıt defteridir ve kendi depolarınızı (ortak veya özel) barındırmanıza olanak tanır.
 
-Bir görüntüyü gönderebilmeniz için önce [Docker Login](https://docs.docker.com/engine/reference/commandline/login/) komutunu kullanarak Docker Hub 'da oturum açmalısınız. @No__t-0 değerini hesap adınızla değiştirin ve komut isteminde parolanızı konsola yazın. Diğer Docker Hub parolası seçenekleri için [Docker Login komut belgelerine](https://docs.docker.com/engine/reference/commandline/login/)bakın.
+Görüntüyü gönderebilmek için önce [docker login](https://docs.docker.com/engine/reference/commandline/login/) komutunu kullanarak Docker Hub'da oturum açmalısınız. `<docker-id>` yerine hesabınızı kullanın ve konsoldaki bilgi istemine parolanızı yazın. Diğer Docker Hub parola seçenekleri için [docker oturum açma komutu belgelerine](https://docs.docker.com/engine/reference/commandline/login/) bakın.
 
 ```bash
 docker login --username <docker-id>
 ```
 
-"Oturum açma başarılı oldu" iletisi, oturum açtığınızı onaylar. Oturum açtıktan sonra [Docker Push](https://docs.docker.com/engine/reference/commandline/push/) komutunu kullanarak görüntüyü Docker Hub 'a gönderirsiniz.
+"Oturum açma başarılı oldu" iletisi, oturum açtığınızı onaylar. Oturum açtıktan sonra [docker push](https://docs.docker.com/engine/reference/commandline/push/) komutunu kullanarak görüntüyü Docker Hub’a gönderin.
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0
@@ -145,7 +145,7 @@ Gönderim başarılı olduktan sonra, görüntüyü Azure 'da yeni bir işlev uy
 
 ## <a name="create-a-premium-plan"></a>Premium planı oluşturma
 
-[Adanmış (App Service) planlarında](functions-scale.md#app-service-plan) ve [Premium planlarda](functions-premium-plan.md#features)desteklenen özel işlevler kapsayıcıları için Linux barındırma. Bu öğretici, gerektiğinde ölçeklenebilen bir Premium plan kullanır. Barındırma hakkında daha fazla bilgi için bkz. [Azure işlevleri barındırma planları karşılaştırması](functions-scale.md).
+[Adanmış (App Service) planlarında](functions-scale.md#app-service-plan) ve [Premium planlarda](functions-premium-plan.md#features)desteklenen özel işlevler kapsayıcıları için Linux barındırma. Bu öğretici, gerektiğinde ölçeklenebilen bir Premium plan kullanır. Barındırma hakkında daha fazla bilgi edinmek için, bkz. [Azure İşlevleri barındırma planları karşılaştırması](functions-scale.md).
 
 Aşağıdaki örnek, **elastik Premium 1** fiyatlandırma katmanında (`--sku EP1`), Batı ABD bölgesinde (`-location WestUS`) ve bir Linux kapsayıcısında (`--is-linux`) `myPremiumPlan` adlı bir Premium plan oluşturur.
 
@@ -156,22 +156,22 @@ az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan
 
 ## <a name="create-an-app-from-the-image"></a>Görüntüden uygulama oluşturma
 
-İşlev uygulaması, barındırma planınızdaki işlevlerinizin yürütülmesini yönetir. [Az functionapp Create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak bir Docker Hub görüntüsünden bir işlev uygulaması oluşturun.
+İşlev uygulaması, barındırma planınızdaki işlevlerinizin yürütülmesini yönetir. [az functionapp create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak bir Docker Hub görüntüsünden işlev uygulaması oluşturun.
 
-Aşağıdaki komutta, `<app_name>` yer tutucusunu ve `<storage_name>` için depolama hesabı adını gördüğünüz benzersiz bir işlev uygulaması adı yerine koyun. @No__t-0, işlev uygulaması için varsayılan DNS etki alanı olarak kullanılır ve bu nedenle adın Azure 'daki tüm uygulamalarda benzersiz olması gerekir. Daha önce olduğu gibi, Docker hesabınızın adı `<docker-id>` ' dır.
+Aşağıdaki komutta benzersiz bir işlev uygulamasının adını `<app_name>` yer tutucusunun ve `<storage_name>` depolama hesabı adının yerine ekleyin. `<app_name>`, işlev uygulamasının varsayılan DNS etki alanı olarak kullanılacağı için adın Azure’daki tüm uygulamalarda benzersiz olması gerekir. Daha önce olduğu gibi, `<docker-id>` Docker hesap adınızdır.
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
 --plan myPremiumPlan --deployment-container-image-name <docker-id>/mydockerimage:v1.0.0
 ```
 
-_Dağıtım-kapsayıcı-görüntü-adı_ parametresi, işlev uygulamasını oluşturmak Için kullanılacak Docker Hub 'ında barındırılan görüntüyü belirtir. Dağıtım için kullanılan görüntü hakkındaki bilgileri görüntülemek için [az functionapp config Container Show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) komutunu kullanın. Farklı bir görüntüden dağıtmak için [az functionapp config Container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) komutunu kullanın.
+_deployment-container-image-name_ parametresi, işlev uygulamasını oluşturmak üzere kullanmak için Docker Hub üzerinde barındırılan görüntüyü belirtir. Dağıtım için kullanılan görüntü hakkındaki bilgileri görüntülemek için [az functionapp config Container Show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) komutunu kullanın. Farklı bir görüntüden dağıtmak için [az functionapp config Container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) komutunu kullanın.
 
 ## <a name="configure-the-function-app"></a>İşlev uygulamasını yapılandırma
 
 İşlevin varsayılan depolama hesabına bağlanması için bağlantı dizesi gerekir. Özel görüntünüzü özel bir kapsayıcı hesabına yayımladığınızda, bu uygulama ayarlarını [env yönergesini](https://docs.docker.com/engine/reference/builder/#env)veya benzer bir şeyi kullanarak Dockerfile içinde ortam değişkenleri olarak ayarlamanız gerekir.
 
-Bu durumda, `<storage_name>`, oluşturduğunuz depolama hesabının adıdır. [Az Storage Account Show-Connection-String](/cli/azure/storage/account) komutuyla bağlantı dizesini alın. Bu uygulama ayarlarını, [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) komutuyla işlev uygulamasına ekleyin.
+Bu durumda `<storage_name>`, oluşturduğunuz depolama hesabının adıdır. [az storage account show-connection-string](/cli/azure/storage/account) komutu ile bağlantı dizesini alın. [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) komutu ile bu uygulama ayarlarını işlev uygulamasına ekleyin.
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \
@@ -195,29 +195,29 @@ AzureWebJobsStorage=$storageConnectionString
 
 <!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
 
-Oluşturduğunuz HTTP ile tetiklenen işlev, uç nokta çağrılırken bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) gerektirir. Şu anda, anahtar dahil olmak üzere işlev URL 'nizi almanın en kolay yolu [Azure Portal]. 
+Oluşturduğunuz HTTP ile tetiklenen işlev, uç nokta çağrılırken bir [işlev anahtarı](functions-bindings-http-webhook.md#authorization-keys) gerektirir. Şu anda, anahtar dahil olmak üzere işlev URL 'nizi almanın en kolay yolu [Azure portalda]. 
 
 > [!TIP]
 > Ayrıca, [kimlik doğrulaması için bir taşıyıcı belirteci](/cli/azure/account#az-account-get-access-token)sunmanıza gerek duyan [anahtar yönetim API 'lerini](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)kullanarak işlev anahtarlarınızı elde edebilirsiniz.
 
-Yeni işlev uygulamanızı, sayfanın üst kısmındaki **arama** kutusuna işlev uygulamanızın adını yazarak [Azure Portal] ve **App Service** kaynağını seçerek bulun.
+Yeni işlev uygulamanızı, sayfanın üst kısmındaki **arama** kutusuna işlev uygulamanızın adını yazarak [Azure portalda] ve **App Service** kaynağını seçerek bulun.
 
 **Myhttptrigger** işlevini seçin **</> Işlev URL 'sini al** > **varsayılan (işlev anahtarı)**  > **kopyasını**seçin.
 
-![İşlev URL 'sini Azure portal kopyalayın](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
+![Azure portalından işlev URL’sini kopyalama](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
 
 Bu URL 'de, işlev anahtarı `code` sorgu parametresidir. 
 
 > [!NOTE]  
 > İşlev uygulamanız bir kapsayıcı olarak dağıtıldığından, portalda işlev kodunuzda değişiklik yapamazsınız. Bunun yerine, projeyi yerel kapsayıcıda güncelleştirmeniz ve Azure 'da yeniden yayımlamanız gerekir.
 
-İşlev URL 'sini tarayıcınızın adres çubuğuna yapıştırın. Sorgu dizesi değeri `&name=<yourname>` ' ni bu URL 'nin sonuna ekleyin ve klavyenizdeki `Enter` tuşuna basarak isteği yürütün. İşlev tarafından döndürülen yanıtın tarayıcıda görüntülendiğini görmeniz gerekir.
+İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. `&name=<yourname>` sorgu dizesi değerini bu URL’nin sonuna ekleyin ve isteği yürütmek için klavyenizdeki `Enter` tuşuna basın. İşlev tarafından döndürülen yanıtın tarayıcıda gösterildiğini görürsünüz.
 
-Aşağıdaki örnek tarayıcıdaki yanıtı gösterir:
+Aşağıdaki örnekte tarayıcıdaki yanıt gösterilmektedir:
 
-![Tarayıcıda işlev yanıtı.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
+![Tarayıcıdaki işlev yanıtı.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
 
-İstek URL 'SI, varsayılan olarak, işlevinizde HTTP üzerinden erişmek için gereken bir anahtar içerir. 
+İstek URL’si, işlevinize HTTP üzerinden erişmek için varsayılan olarak gerekli olan bir anahtar içerir. 
 
 ## <a name="enable-continuous-deployment"></a>Sürekli dağıtımı etkinleştir
 
@@ -239,7 +239,7 @@ Web kancası kümesi ile DockerHub 'daki bağlantılı görüntüde yapılan tü
 
 ## <a name="enable-ssh-connections"></a>SSH bağlantılarını etkinleştir
 
-SSH, bir kapsayıcı ve istemci arasında güvenli iletişim imkanı sunar. SSH etkinken, App Service gelişmiş araçlar (kudu) kullanarak kapsayıcınıza bağlanabilirsiniz. SSH kullanarak kapsayıcınıza bağlanmayı kolaylaştırmak için, Işlevleri SSH 'yi zaten etkinleştirilmiş bir temel görüntü sağlar. 
+SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. SSH etkinken, App Service gelişmiş araçlar (kudu) kullanarak kapsayıcınıza bağlanabilirsiniz. SSH kullanarak kapsayıcınıza bağlanmayı kolaylaştırmak için, Işlevleri SSH 'yi zaten etkinleştirilmiş bir temel görüntü sağlar. 
 
 ### <a name="change-the-base-image"></a>Temel görüntüyü değiştirme
 
@@ -300,7 +300,7 @@ Kuyruk depolama çıkış bağlaması kullandığınızdan, projeyi çalıştır
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketleri olarak uygulanır. Depolama uzantısı paketini projenize eklemek için Terminal penceresinde aşağıdaki [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın.
 
@@ -315,7 +315,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 Şimdi projenize bir depolama çıkış bağlaması ekleyebilirsiniz.
 
-### <a name="add-an-output-binding"></a>Çıkış bağlaması ekleme
+### <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
 
 Işlevlerde, her bağlama türü, function. json dosyasında tanımlanacak bir `direction`, `type` ve benzersiz bir `name` gerektirir. Bu öznitelikleri tanımlama yöntemi, işlev uygulamanızın diline bağlıdır.
 
@@ -323,13 +323,13 @@ Işlevlerde, her bağlama türü, function. json dosyasında tanımlanacak bir `
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
 
 ---
 
-### <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlamayı kullanan kodu ekleyin
+### <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
 
 Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişmek için bağlamanın `name` ' ı kullanabilirsiniz. Bir çıkış bağlaması kullanarak kimlik doğrulaması, kuyruk başvurusu alma veya veri yazma için Azure depolama SDK kodunu kullanmanız gerekmez. Işlevler çalışma zamanı ve kuyruk çıkış bağlaması bu görevleri sizin için işler.
 
@@ -341,7 +341,7 @@ Bağlama tanımlandıktan sonra, işlev imzasında bir öznitelik olarak erişme
 
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
-# <a name="ctabcsharp"></a>[C @ no__t-1](#tab/csharp)
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
@@ -365,11 +365,7 @@ docker push <docker-id>/mydockerimage:v1.0.0
 
 İşlevinizi tetiklemek için tarayıcıdan önceki URL 'YI kullanın. Aynı yanıtı görmeniz gerekir. Ancak, bu kez `name` parametresi olarak geçirdiğiniz dize `outqueue` depolama kuyruğuna yazılır.
 
-### <a name="set-the-storage-account-connection"></a>Depolama hesabı bağlantısını ayarla
-
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
-
-### <a name="query-the-storage-queue"></a>Depolama kuyruğunu sorgulama
 
 [!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
@@ -383,4 +379,4 @@ docker push <docker-id>/mydockerimage:v1.0.0
 + [Ölçek ve barındırma seçenekleri](functions-scale.md)
 + [Kubernetes tabanlı sunucusuz barındırma](functions-kubernetes-keda.md)
 
-[Azure portal]: https://portal.azure.com
+[Azure portalda]: https://portal.azure.com

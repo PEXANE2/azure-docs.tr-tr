@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7600398d213748bdea9da5a483a8c10d486a8048
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 940b3010713f2f32b2c4d9880c425b1e88820729
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915539"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374518"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Atlayan bir pencerede işlem hattı çalıştıran bir tetikleyici oluşturma
 Bu makalede, bir atlayan pencere tetikleyicisi oluşturma, başlatma ve izlemeye yönelik adımlar sağlanmaktadır. Tetikleyiciler ve desteklenen türler hakkında genel bilgi için bkz. işlem [hattı yürütme ve Tetikleyiciler](concepts-pipeline-execution-triggers.md).
@@ -47,10 +47,10 @@ Atlayan bir pencere aşağıdaki tetikleyici türü özelliklerine sahiptir:
             "startTime": "<<datetime>>",
             "endTime: <<datetime – optional>>,
             "delay": <<timespan – optional>>,
-            “maxConcurrency”: <<int>> (required, max allowed: 50),
+            "maxConcurrency": <<int>> (required, max allowed: 50),
             "retryPolicy": {
                 "count": <<int - optional, default: 0>>,
-                “intervalInSeconds”: <<int>>,
+                "intervalInSeconds": <<int>>,
             },
             "dependsOn": [
                 {
@@ -92,21 +92,21 @@ Atlayan bir pencere aşağıdaki tetikleyici türü özelliklerine sahiptir:
 
 Aşağıdaki tabloda, atlayan bir pencere tetikleyicisinin yinelenme ve zamanlama ile ilgili büyük JSON öğelerine yönelik üst düzey bir genel bakış sunulmaktadır:
 
-| JSON öğesi | Açıklama | Type | İzin verilen değerler | Gerekli |
+| JSON öğesi | Açıklama | Tür | İzin verilen değerler | Gereklidir |
 |:--- |:--- |:--- |:--- |:--- |
-| **type** | Tetikleyicinin türü. Tür, "TumblingWindowTrigger" sabit değeridir. | String | "TumblingWindowTrigger" | Evet |
-| **runtimeState** | Tetikleyici çalışma zamanının geçerli durumu.<br/>**Not**: Bu öğe \<ReadOnly >. | String | "Başlatıldı," "durduruldu," "devre dışı" | Evet |
-| **frequency** | Tetikleyicinin yineleneceği sıklık birimini (dakika veya saat) temsil eden bir dize. **StartTime** tarih değerleri **Sıklık** değerinden daha ayrıntılı ise, pencere sınırları hesaplandıktan sonra **StartTime** tarihleri kabul edilir. Örneğin **Sıklık** değeri saat Ise ve **StartTime** değeri 2017-09-01T10:10:10z ise, ilk pencere (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | String | "dakika", "saat"  | Evet |
-| **interval** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin, **Aralık** 3, **Sıklık** ise "saat" ise, tetikleyici her 3 saatte bir yinelenir. <br/>**Not**: Minimum pencere aralığı 15 dakikadır. | Integer | Pozitif bir tamsayı. | Evet |
-| **startTime**| Geçmişte olabilecek ilk oluşum. İlk tetikleyici aralığı (**başlangıçsaati**, **başlangıçsaati** + **aralığı**). | DateTime | Bir tarih saat değeri. | Evet |
-| **endTime**| Geçmişte olabilecek son oluşum. | DateTime | Bir tarih saat değeri. | Evet |
-| **ilir** | Pencere için veri işleme başlangıcını geciktirmek için geçen süre. İşlem hattı çalıştırması beklenen yürütme süresi artı **gecikme**miktarı ile başlatılır. **Gecikme** , tetikleyicinin yeni bir çalıştırmayı tetiklemeden önce geçen süreyi ne kadar bekleyeceğini tanımlar. **Gecikme** , pencerenin **StartTime**öğesini değiştirmez. Örneğin, 00:10:00 **gecikme** değeri 10 dakikalık bir gecikme anlamına gelir. | Zaman aralığı<br/>(SS: DD: SS)  | Varsayılan değer 00:00:00 olan bir TimeSpan değeri. | Hayır |
-| **maxConcurrency** | Kullanılabilir olan Windows için tetiklenen eşzamanlı tetikleyici çalışmalarının sayısı. Örneğin, saat başı için saatlik çalıştırmaları, 24 Windows ile sonuçlarınıza geri dönmek için. **MaxConcurrency** = 10 ise, tetikleyici olayları yalnızca ilk 10 pencere için tetiklenir (00:00-01:00-09:00-10:00). İlk 10 tetiklenen işlem hattı çalıştıktan sonra, sonraki 10 Windows için tetikleyici çalıştırmaları tetiklenir (10:00-11:00-19:00-20:00). **MaxConcurrency** = 10 ' un bu örneğine devam ederseniz, 10 Windows varsa, toplam 10 işlem hattı çalıştırması vardır. Yalnızca 1 pencere hazırlandıysanız yalnızca 1 işlem hattı çalıştırması vardır. | Integer | 1 ile 50 arasında bir tamsayı. | Evet |
-| **retryPolicy: Biriktirme** | İşlem hattı çalıştırılmadan önceki yeniden deneme sayısı "başarısız" olarak işaretlenmemiştir.  | Integer | Varsayılan değer 0 olan (yeniden deneme yok) bir tamsayı. | Hayır |
-| **retryPolicy: ıntervalınseconds** | Saniyeler içinde belirtilen yeniden deneme girişimleri arasındaki gecikme. | Integer | Saniye sayısı, varsayılan değer 30 ' dur. | Hayır |
-| **dependsOn: type** | TumblingWindowTriggerReference türü. Bir bağımlılık ayarlandıysa gereklidir. | String |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Hayır |
-| **dependsOn: size** | Bağımlılık penceresinin boyutu. | Zaman aralığı<br/>(SS: DD: SS)  | Varsayılan değeri, alt tetikleyicisinin pencere boyutu olan pozitif bir TimeSpan değeri  | Hayır |
-| **dependsOn: offset** | Bağımlılık tetikleyicisinin boşluğu. | Zaman aralığı<br/>(SS: DD: SS) |  Kendinden bağımlılıkta negatif olması gereken bir TimeSpan değeri. Değer belirtilmemişse pencere, tetikleyiciyle aynı olur. | Kendinden bağımlılık: Evet<br/>Farklı Hayır  |
+| **type** | Tetikleyicinin türü. Tür, "TumblingWindowTrigger" sabit değeridir. | Dize | "TumblingWindowTrigger" | Yes |
+| **runtimeState** | Tetikleyici çalışma zamanının geçerli durumu.<br/>**Note**: bu öğe \<readonly >. | Dize | "Başlatıldı," "durduruldu," "devre dışı" | Yes |
+| **frequency** | Tetikleyicinin yineleneceği sıklık birimini (dakika veya saat) temsil eden bir dize. **StartTime** tarih değerleri **Sıklık** değerinden daha ayrıntılı ise, pencere sınırları hesaplandıktan sonra **StartTime** tarihleri kabul edilir. Örneğin **Sıklık** değeri saat Ise ve **StartTime** değeri 2017-09-01T10:10:10z ise, ilk pencere (2017-09-01T10:10:10z, 2017-09-01T11:10:10z). | Dize | "dakika", "saat"  | Yes |
+| **interval** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin, **Aralık** 3, **Sıklık** ise "saat" ise, tetikleyici her 3 saatte bir yinelenir. <br/>**Note**: en düşük pencere aralığı 15 dakikadır. | Tamsayı | Pozitif bir tamsayı. | Yes |
+| **startTime**| Geçmişte olabilecek ilk oluşum. İlk tetikleyici aralığı (**başlangıçsaati**, **StartTime** + **aralığı**). | Tarih Saat | Bir tarih saat değeri. | Yes |
+| **endTime**| Geçmişte olabilecek son oluşum. | Tarih Saat | Bir tarih saat değeri. | Yes |
+| **ilir** | Pencere için veri işleme başlangıcını geciktirmek için geçen süre. İşlem hattı çalıştırması beklenen yürütme süresi artı **gecikme**miktarı ile başlatılır. **Gecikme** , tetikleyicinin yeni bir çalıştırmayı tetiklemeden önce geçen süreyi ne kadar bekleyeceğini tanımlar. **Gecikme** , pencerenin **StartTime**öğesini değiştirmez. Örneğin, 00:10:00 **gecikme** değeri 10 dakikalık bir gecikme anlamına gelir. | Timespan<br/>(SS: DD: SS)  | Varsayılan değer 00:00:00 olan bir TimeSpan değeri. | Hayır |
+| **maxConcurrency** | Kullanılabilir olan Windows için tetiklenen eşzamanlı tetikleyici çalışmalarının sayısı. Örneğin, saat başı için saatlik çalıştırmaları, 24 Windows ile sonuçlarınıza geri dönmek için. **MaxConcurrency** = 10 ise, tetikleyici olayları yalnızca ilk 10 pencere için tetiklenir (00:00-01:00-09:00-10:00). İlk 10 tetiklenen işlem hattı çalıştıktan sonra, sonraki 10 Windows için tetikleyici çalıştırmaları tetiklenir (10:00-11:00-19:00-20:00). **MaxConcurrency** = 10 ' un bu örneğine devam ederseniz, 10 Windows varsa, toplam 10 işlem hattı çalıştırması vardır. Yalnızca 1 pencere hazırlandıysanız yalnızca 1 işlem hattı çalıştırması vardır. | Tamsayı | 1 ile 50 arasında bir tamsayı. | Yes |
+| **retryPolicy: Count** | İşlem hattı çalıştırılmadan önceki yeniden deneme sayısı "başarısız" olarak işaretlenmemiştir.  | Tamsayı | Varsayılan değer 0 olan (yeniden deneme yok) bir tamsayı. | Hayır |
+| **retryPolicy: ıntervalınseconds** | Saniyeler içinde belirtilen yeniden deneme girişimleri arasındaki gecikme. | Tamsayı | Saniye sayısı, varsayılan değer 30 ' dur. | Hayır |
+| **Bağımlıdson: tür** | TumblingWindowTriggerReference türü. Bir bağımlılık ayarlandıysa gereklidir. | Dize |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Hayır |
+| **Bağımlıdson: boyut** | Bağımlılık penceresinin boyutu. | Timespan<br/>(SS: DD: SS)  | Varsayılan değeri, alt tetikleyicisinin pencere boyutu olan pozitif bir TimeSpan değeri  | Hayır |
+| **Bağımlıdson: konum** | Bağımlılık tetikleyicisinin boşluğu. | Timespan<br/>(SS: DD: SS) |  Kendinden bağımlılıkta negatif olması gereken bir TimeSpan değeri. Değer belirtilmemişse pencere, tetikleyiciyle aynı olur. | Kendinden bağımlılık: Evet<br/>Diğer: Hayır  |
 
 ### <a name="windowstart-and-windowend-system-variables"></a>WindowStart ve WindowEnd sistem değişkenleri
 

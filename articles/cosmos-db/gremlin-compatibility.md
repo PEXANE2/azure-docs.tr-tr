@@ -1,18 +1,18 @@
 ---
 title: Inkerpop özellikleriyle Gremlin uyumluluğu Azure Cosmos DB
 description: Başvuru belgeleri grafik Altyapısı uyumluluk sorunları
-author: olignat
+author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
-ms.author: olignat
-ms.openlocfilehash: d58d1ea50251c3568161ce008db2672ff0fd6372
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.author: sngun
+ms.openlocfilehash: 0ed5824859b8463919a809861993f9f98a4f9251
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70911090"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327026"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin uyumluluğu
 Azure Cosmos DB Graph Engine, [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) geçiş adımları belirtimini yakından izler, ancak farklılıklar vardır.
@@ -23,17 +23,17 @@ Azure Cosmos DB Graph Engine, [Apache TinkerPop](https://tinkerpop.apache.org/do
 
 ## <a name="unsupported-features"></a>Desteklenmeyen özellikler
 
-* ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** graf dolaşma işlemlerine yönelik programlama dilinden bağımsız bir belirtimdir. Cosmos DB Graph henüz desteklemiyor. Geçişi ```GremlinClient.SubmitAsync()``` bir metin dizesi olarak kullanın ve geçirin.
+* ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** graf dolaşma işlemlerine yönelik programlama dilinden bağımsız bir belirtimdir. Cosmos DB Graph henüz desteklemiyor. @No__t-0 kullanın ve çapraz geçişi metin dizesi olarak geçirin.
 
-* ***```property(set, 'xyz', 1)```*** kardinalite kümesi bugün desteklenmiyor. Bunun yerine ```property(list, 'xyz', 1)``` kullanın.
+* ***```property(set, 'xyz', 1)```*** kümesi kardinalitesi bugün desteklenmez. Bunun yerine ```property(list, 'xyz', 1)``` kullanın.
 
-* ***```match()```*** bildirim temelli model eşleştirmeyi kullanarak grafiklerin sorgulanmasına izin verir. Bu özellik kullanılamıyor.
+* ***```match()```*** , bildirime dayalı model eşleştirmeyi kullanarak grafiklerin sorgulanmasına olanak tanır. Bu özellik kullanılamıyor.
 
 * Köşelerin veya kenarlardaki ***Özellikler olarak nesneler*** desteklenmez. Özellikler yalnızca temel türler veya diziler olabilir.
 
-* ***Dizi özelliklerine göre sıralama*** ```.order().by(<array property>)``` desteklenmez. Yalnızca temel türlere göre sıralama desteklenir.
+* @No__t-1 ***dizi özelliklerine göre sıralama*** desteklenmez. Yalnızca temel türlere göre sıralama desteklenir.
 
-* ***Ilkel olmayan JSON türleri*** desteklenmez. , ```string``` ```number```Veya türlerinikullanın/ . ```true``` ```false``` ```null```değerler desteklenmez. 
+* ***Ilkel olmayan JSON türleri*** desteklenmez. @No__t-0, ```number``` veya ```true``` @ no__t-3 @ no__t-4 türlerini kullanın. ```null``` değerleri desteklenmez. 
 
 * ***GraphSONv3*** seri hale getirici bugün kullanılamıyor.
 

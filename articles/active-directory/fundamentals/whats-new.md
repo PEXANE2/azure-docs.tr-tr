@@ -1,5 +1,5 @@
 ---
-title: Yenilikler Sürüm notları-Azure Active Directory | Microsoft Docs
+title: Yenilikler neler? Sürüm notları-Azure Active Directory | Microsoft Docs
 description: En son sürüm notları, bilinen sorunlar, hata düzeltmeleri, kullanım dışı işlevler ve yaklaşan değişiklikler gibi Azure Active Directory yenilikleri öğrenin.
 services: active-directory
 author: eross-msft
@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 10/15/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 616a637df20e43c20faadaf3db9243c28f94de34
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 096c5f06c53f1e93a0c661f856ab112236c0ec60
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174743"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373538"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -40,6 +40,16 @@ Bu sayfa aylık olarak güncelleştirildiğinden düzenli olarak yeniden ziyaret
 ---
 
 ## <a name="september-2019"></a>Eylül 2019
+
+### <a name="deprecation-of-the-power-bi-content-packs"></a>Power BI içerik paketlerinin kullanımdan kaldırılması
+
+**Şunu yazın:** Kullanım dışı  
+**Hizmet kategorisi:** Rapor  
+**Ürün yeteneği:** & Raporlamayı izleme
+
+Power BI, içerik paketlerini mağazalardan kullanımdan kaldırabileceği gibi, **1 ekim 2019**Itibariyle artık Azure AD Power BI içerik paketini destekliyoruz. Şu anda içerik paketini kullanan müşteriler, temeldeki API 'Ler eski sürümse bile bu uygulamayı kullanmaya devam edebilir. Bu içerik paketine alternatif olarak Azure AD çalışma kitaplarını (Log Analytics yerleşik olarak) kullanarak Azure AD ile ilgili hizmetlerinize ilişkin Öngörüler elde edebilirsiniz.
+
+Çalışma kitapları hakkında daha fazla bilgi için bkz. [Azure izleyici çalışma kitaplarını Azure Active Directory raporları için kullanma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-use-azure-monitor-workbooks). İçerik paketlerinin kullanımdan kaldırılması hakkında daha fazla bilgi için bkz. [Power BI Template Apps genel kullanılabilirliği](https://powerbi.microsoft.com/blog/announcing-power-bi-template-apps-general-availability/) blog gönderisi.
 
 ### <a name="my-profile-is-re-naming-and-integrating-with-the-microsoft-office-account-page"></a>Profilimi yeniden adlandırma ve Microsoft Office hesabı sayfasıyla tümleştirme
 
@@ -683,7 +693,7 @@ Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS 
 
 Artık yeni tümleştirilmiş uygulamalar için Kullanıcı hesapları oluşturmayı, güncellemeyi ve silmeyi otomatik hale getirebilirsiniz:
 
-- [Yakınlaştır](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)
+- [Yakınlaştırma](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)
 
 - [Haberci](https://docs.microsoft.com/azure/active-directory/saas-apps/envoy-provisioning-tutorial)
 
@@ -927,7 +937,7 @@ Koşullu erişim ve parola sıfırlama hakkında daha fazla bilgi için [Azure A
 
 Azure AD Threat Intelligence algılama artık güncelleştirilmiş Azure AD Kimlik Koruması özelliğinin bir parçası olarak sunulmaktadır. Bu yeni işlevsellik, Microsoft 'un dahili ve dış tehdit bilgileri kaynaklarına dayanan bilinen saldırı desenleriyle tutarlı olan belirli bir kullanıcı veya etkinliğin olağan dışı Kullanıcı etkinliklerini belirtmenize yardımcı olur.
 
-Azure AD Kimlik Koruması yenilenen sürümü hakkında daha fazla bilgi için, bkz. [dört ana Azure AD kimlik koruması geliştirmesi artık genel önizleme](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) bloguna ve [ne Azure Active Directory kimlik koruması (YENİLENDİ)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) bakın. Azure AD Threat Intelligence algılaması hakkında daha fazla bilgi için [risk algılamalarını Azure Active Directory kimlik koruması](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence) makalesine bakın.
+Azure AD Kimlik Koruması yenilenen sürümü hakkında daha fazla bilgi için, bkz. [dört ana Azure AD kimlik koruması geliştirmesi artık genel önizleme](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Four-major-Azure-AD-Identity-Protection-enhancements-are-now-in/ba-p/326935) bloguna ve [ne Azure Active Directory kimlik koruması (YENİLENDİ)?](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-v2) makalenin. Azure AD Threat Intelligence algılaması hakkında daha fazla bilgi için [risk algılamalarını Azure Active Directory kimlik koruması](https://docs.microsoft.com/azure/active-directory/identity-protection/risk-events-reference#azure-ad-threat-intelligence) makalesine bakın.
 
 ---
 

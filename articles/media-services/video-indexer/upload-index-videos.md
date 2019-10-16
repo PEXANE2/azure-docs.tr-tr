@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 09/10/2019
 ms.author: juliako
-ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d6338f3840b6f8afe21f8115304ba00bba90c6ea
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128209"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372369"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -29,14 +29,15 @@ Bu makalede, videolarınızı bir URL’ye dayalı olarak karşıya yüklemek ve
 
 Videonuz karşıya yüklendikten sonra Video Indexer, isteğe bağlı olarak videoyu kodlar (makalede ele alınmıştır). Video Indexer hesabınızı oluştururken ücretsiz bir deneme hesabı (belirli sayıda ücretsiz dizin oluşturma dakikası elde edersiniz) veya ücretli bir seçenek (kota sınırlaması olmaz) arasından seçim yapabilirsiniz. Ücretsiz deneme kullanıldığında Video Indexer, web sitesi kullanıcılarına 600 dakikaya kadar ve API kullanıcılarına ise 2400 dakikaya kadar ücretsiz dizin oluşturma olanağı sunar. Ücretli seçenekle, [Azure aboneliğinize ve bir Azure Media Services hesabına bağlı](connect-to-azure.md)bir video Indexer hesabı oluşturursunuz. Dizin oluşturma faaliyeti yapılan dakika sayısının yanı sıra Medya Hesabı ile ilgili ücretler için ödeme yaparsınız. 
 
-## <a name="uploading-considerations"></a>Karşıya yükleme konusunda dikkat edilmesi gerekenler
+## <a name="uploading-considerations-and-limitations"></a>Konular ve sınırlamalar karşıya yükleniyor
  
+- Videonun bir adı 80 karakterden büyük olmamalıdır.
 - URL 'ye (tercih edilen) göre videonuzu karşıya yüklerken, uç noktanın TLS 1,2 (veya üzeri) ile güvenliği sağlanmalıdır.
 - URL seçeneğiyle karşıya yükleme boyutu, 30 ile sınırlıdır.
 - Sorgu dizesi URL 'sinin uzunluğu 4096 karakterle sınırlı olduğunda, istek URL 'si uzunluğu 6144 karakterle sınırlıdır.
 - Bayt dizisi seçeneğiyle karşıya yükleme boyutu 2 GB ile sınırlıdır.
 - Bayt dizisi seçeneği 30 dakikadan sonra zaman aşımına uğrar.
-- `videoURL` Param 'da belirtilen URL 'nin kodlanması gerekir.
+- @No__t-0 param öğesinde belirtilen URL 'nin kodlanması gerekir.
 - Dizin oluşturma Media Services varlıkların, URL 'den dizin oluşturma ile aynı sınırlaması vardır.
 - Video Indexer, tek bir dosya için maksimum süre sınırı olan 4 saattir.
 
@@ -60,22 +61,22 @@ Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir 
 - Dizin oluşturma durum değişikliği: 
     - Özelliklerinin    
     
-        |Name|Açıklama|
+        |Adı|Açıklama|
         |---|---|
         |id|Video KIMLIĞI|
-        |state|Video durumu|  
-    - Örnek: https:\//test.com/notifyme?ProjectName=MyProject&id=1234abcd&State=processed
+        |durum|Video durumu|  
+    - Örnek: https: \//test. com/notifyme? projectName = MyProject & ID = 1234abcd & State = Işlendi
 - Videoda tanımlanan kişi:
   - Özellikler
     
-      |Name|Açıklama|
+      |Adı|Açıklama|
       |---|---|
       |id| Video KIMLIĞI|
       |FaceID|Video dizininde görünen yüz KIMLIĞI|
       |Knownpersonıd|Bir yüz modeli içinde benzersiz olan kişi KIMLIĞI|
       |kişi adı|Kişinin adı|
         
-    - Örnek: https:\//test.com/notifyme?ProjectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Örnek: https: \//test. com/notifyme? projectName = MyProject & ID = 1234abcd & çok yönlü kimliği = 12 & Knownpersonıd = CCA84350-89B7-4262-861C-3CAC796542A5 & personName = Inigo_Montoya 
 
 #### <a name="notes"></a>Notlar
 
@@ -92,9 +93,9 @@ Ham veya dış kayıtlar arka plan gürültüsü içeriyorsa bu parametreyi kull
 
 Fiyat, seçilen dizinleme seçeneğine bağlıdır.  
 
-### <a name="priority"></a>priority
+### <a name="priority"></a>Priority
 
-Videoların önceliklerine göre Video Indexer dizini oluşturulur. Dizin önceliğini belirtmek için **Priority** parametresini kullanın. Aşağıdaki değerler geçerlidir: **Düşük**, **normal** (varsayılan) ve **yüksek**.
+Videoların önceliklerine göre Video Indexer dizini oluşturulur. Dizin önceliğini belirtmek için **Priority** parametresini kullanın. Şu değerler geçerlidir: **düşük**, **normal** (varsayılan) ve **yüksek**.
 
 **Priority** parametresi yalnızca ücretli hesaplar için desteklenir.
 

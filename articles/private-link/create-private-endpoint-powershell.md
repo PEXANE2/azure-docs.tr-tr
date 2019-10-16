@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: db0921d709f842b004ec4c23d15a986f2e59ec23
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 43b8dfd571537aaaf6753d6b762ab84cfe4cfd0d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687071"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376164"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell kullanarak özel uç nokta oluşturma
 Özel uç nokta, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel bağlantı kaynaklarıyla özel olarak iletişim kurmasına olanak sağlar. 
@@ -50,7 +50,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>Alt ağ ekleme
 
-Azure, kaynakları bir sanal ağ içindeki bir alt ağa dağıtır, bu nedenle bir alt ağ oluşturmanız gerekir.  [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)Ile *mysubnet* adlı bir alt ağ yapılandırması oluşturun. Aşağıdaki örnek, Özel uç nokta ağ ilkesi bayrağı **devre dışı**olarak ayarlanan *mysubnet* adlı bir alt ağ oluşturur.
+Azure, kaynakları bir sanal ağ içindeki bir alt ağa dağıtır, bu nedenle bir alt ağ oluşturmanız gerekir.  [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)Ile *mysubnet* adlı bir alt ağ yapılandırması oluşturun. Aşağıdaki örnek, Özel uç nokta ağ ilkesi bayrağı **devre dışı**olarak ayarlanan *mysubnet* adlı bir alt ağ oluşturur.
 
 ```azurepowershell
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -167,7 +167,7 @@ New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink
   
 ## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
-Bir sanal makinenin genel IP adresini döndürmek için [Get-Azpublicıpaddress](/powershell/module/az.network/Get-AzPublicIpAddress) komutunu kullanın. Bu örnek, *myvm* vm 'nın genel IP adresini döndürür:
+Bir sanal makinenin genel IP adresini döndürmek için [Get-Azpublicıpaddress](/powershell/module/az.network/Get-AzPublicIpAddress) komutunu kullanın. Bu örnek, *Myvm* VM 'nın genel IP adresini döndürür:
 
 ```azurepowershell
 Get-AzPublicIpAddress `
@@ -184,13 +184,13 @@ Yerel bilgisayarınızda bir komut istemi açın. Mstsc komutunu çalıştırın
 mstsc /v:<publicIpAddress>
 ```
 
-1. İstenirse, **Bağlan**' ı seçin. 
+1. İstendiğinde **Bağlan**’ı seçin. 
 2. Sanal makine oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
   > [!NOTE]
   > VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için farklı bir hesap kullanmak > daha fazla seçenek belirlemeniz gerekebilir. 
   
-3.  **Tamam ' ı**seçin. 
-4. Bir sertifika uyarısı alabilirsiniz. Bunu yaparsanız **evet** Veya **devam et**' i seçin. 
+3. **Tamam**’ı seçin. 
+4. Bir sertifika uyarısı alabilirsiniz. Bunu yaparsanız **Evet** ' i veya **devam et**' i seçin. 
 
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL veritabanı sunucusuna VM 'den özel olarak erişme
 
@@ -214,7 +214,7 @@ mstsc /v:<publicIpAddress>
 5. Bağlan ' ı seçin.
 6. Sol menüden veritabanlarına gözatamazsınız. 
 7. I MyDatabase 'teki bilgileri oluşturma veya sorgulama
-8.  *Myvm*ile uzak masaüstü bağlantısını kapatın. 
+8. *Myvm*ile uzak masaüstü bağlantısını kapatın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme 
 Özel uç nokta, SQL veritabanı sunucusu ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın:

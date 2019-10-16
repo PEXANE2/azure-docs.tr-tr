@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 034c02c89c6e720311b3dc36428035e8cbdd2b3b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 139c7c2e6736eeb3e78ac0aab913378ac84160e1
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835221"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374087"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory için AppSource sertifikası alma
 
@@ -33,15 +33,15 @@ AppSource 'ta tek başına bir SaaS uygulamasını listelemek için, uygulamanı
 
 ## <a name="guides-and-code-samples"></a>Kılavuzlar ve kod örnekleri
 
-Açık KIMLIK Connect kullanarak uygulamanızı Azure AD ile tümleştirme hakkında daha fazla bilgi edinmek istiyorsanız,(v1-overview.md#get-started "geliştiriciler Için Azure AD Ile çalışmaya başlama") [Azure Active Directory geliştirici kılavuzundaki]kılavuzlarımızı ve kod örneklerimizi izleyin.
+Açık KIMLIK bağlantısı kullanarak uygulamanızı Azure AD ile tümleştirme hakkında daha fazla bilgi edinmek istiyorsanız, [Azure Active Directory geliştirici kılavuzundaki](v1-overview.md#get-started "Geliştiriciler için Azure AD ile çalışmaya başlama")kılavuzlarımızı ve kod örneklerimizi izleyin.
 
 ## <a name="multi-tenant-applications"></a>Çok kiracılı uygulamalar
 
 *Çok kiracılı bir uygulama* , Azure AD 'ye sahip herhangi bir şirketten veya kuruluştan ayrı bir örnek, yapılandırma veya dağıtıma gerek kalmadan oturum açma işlemlerini kabul eden bir uygulamadır. AppSource, *tek* tıklamayla ücretsiz deneme deneyimini etkinleştirmek için uygulamaların çok kiracılı bir uygulama gerçekleştirmesini önerir.
 
 Uygulamanızda birden çok kiratı etkinleştirmek için şu adımları izleyin:
-1. Özelliği `Multi-Tenanted` uygulamanızın kayıt `Yes` bilgilerinde [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)olarak ayarlayın. Varsayılan olarak, Azure portal oluşturulan uygulamalar *[tek kiracılı](#single-tenant-applications)* olarak yapılandırılır.
-1. İstekleri `common` uç noktaya göndermek için kodunuzu güncelleştirin. Bunu yapmak için bitiş noktasını öğesinden `https://login.microsoftonline.com/{yourtenant}` olarak `https://login.microsoftonline.com/common*`güncelleştirin.
+1. Uygulama kayıt bilgilerinde [Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)`Multi-Tenanted` özelliğini `Yes` olarak ayarlayın. Varsayılan olarak, Azure portal oluşturulan uygulamalar *[tek kiracılı](#single-tenant-applications)* olarak yapılandırılır.
+1. @No__t-0 uç noktasına istek göndermek için kodunuzu güncelleştirin. Bunu yapmak için uç noktayı `https://login.microsoftonline.com/{yourtenant}` ' dan `https://login.microsoftonline.com/common*` ' e güncelleştirin.
 1. ASP .NET gibi bazı platformlar için kodunuzu aynı zamanda birden çok verenler kabul edecek şekilde güncelleştirmeniz gerekir.
 
 Çoklu kiracı hakkında daha fazla bilgi için bkz. [Multi-tenant uygulama modelini kullanarak herhangi bir Azure Active Directory (Azure AD) kullanıcısına kaydolma](howto-convert-app-to-be-multi-tenant.md).
@@ -113,20 +113,20 @@ AppSource deneme deneyimi hakkında daha fazla bilgi için [Bu videoya](https://
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- Azure AD oturum açma işlemlerini destekleyen uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
+- Azure AD oturum açma işlemlerini destekleyen uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios).
 - SaaS uygulamanızı AppSource 'ta listeleme hakkında daha fazla bilgi için bkz. [Appsource Iş ortağı bilgileri](https://appsource.microsoft.com/partners)
 
 ## <a name="get-support"></a>Destek alın
 
 Azure AD tümleştirmesi için, destek sağlamak üzere topluluk ile [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) kullanırız.
 
-İlk olarak Stack Overflow sorularınızı sormak ve mevcut sorunlara gözatmanız önerilir. Sorularınıza veya yorumlarınızın [ `[azure-active-directory]` ve `[appsource]` ](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)ile etiketlendiğinden emin olun.
+İlk olarak Stack Overflow sorularınızı sormak ve mevcut sorunlara gözatmanız önerilir. Sorularınıza veya yorumlarınızın [`[azure-active-directory]` ve `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource)ile etiketlendiğinden emin olun.
 
 Geri bildirim sağlamak ve içeriğimizi iyileştirmemizi ve şekillendirmemize yardımcı olmak için aşağıdaki açıklamalar bölümünü kullanın.
 
 <!--Reference style links -->
-[AAD-Auth-Scenarios]:authentication-scenarios.md
-[AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
+[AAD-Auth-Scenarios]:v1-authentication-scenarios.md
+[AAD-Auth-Scenarios-Browser-To-WebApp]:v1-authentication-scenarios.md#web-browser-to-web-application
 [AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
 [AAD-QuickStart-Web-Apps]: v1-overview.md#get-started

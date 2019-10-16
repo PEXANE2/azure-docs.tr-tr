@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: aba06b07fef1cbc5d84d93cf38fec3bd936c1ac8
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286127"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329450"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme
 
@@ -193,7 +193,7 @@ Etkinlik günlüğü ile çalışmaya yönelik REST işlemleri [öngörülerin](
 
 * Azure etkinlik günlükleri, aboneliğinizdeki eylemler hakkında daha fazla öngörü kazanmak için Power BI ile kullanılabilir. Bkz. [Power BI ve daha fazlasını Azure etkinlik günlüklerini görüntüleme ve çözümleme](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/).
 * Güvenlik ilkelerini ayarlama hakkında bilgi edinmek için bkz. [Azure rol tabanlı Access Control](../role-based-access-control/role-assignments-portal.md).
-* Altyapı katmanından uygulama dağıtımına kadar olan uygulamalardaki değişikliklerle ilgili daha fazla ayrıntı görüntülemek için, bkz. [Azure Izleyici 'de uygulama değişikliği analizini kullanma] (.. /Azure-Monitor/App/Change-Analysis. MD).
+* Altyapı katmanından uygulama dağıtımına kadar olan uygulamalardaki değişikliklerle ilgili daha fazla ayrıntı görüntülemek için bkz. [Azure izleyici 'de uygulama değişikliği analizini kullanma](../azure-monitor/app/change-analysis.md).
 * Dağıtım işlemlerini görüntüleme komutları hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](resource-manager-deployment-operations.md).
 * Tüm kullanıcılar için bir kaynaktaki silme işlemlerini nasıl önleyeceğinizi öğrenmek için bkz. [Azure Resource Manager ile kaynakları kilitleme](resource-group-lock-resources.md).
 * Her bir Microsoft Azure Kaynak Yöneticisi sağlayıcısı için kullanılabilen işlemlerin listesini görmek için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure Izleyici ile Python uygulamalarını izleme | Microsoft Docs
+title: Azure Izleyici (Önizleme) ile Python uygulamalarını izleme | Microsoft Docs
 description: Azure Izleyici ile OpenCensus Python 'ı bağlamak için yönergeler sağlar
 services: application-insights
 keywords: ''
@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.reviewer: mbullwin
 manager: carmonm
-ms.openlocfilehash: 1316cf6808f6ccfc4165ad162c51421638b130be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ed61cb1bc88c48fe89c4a9390f04747749bd48c5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293987"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329474"
 ---
-# <a name="set-up-azure-monitor-for-your-python-application"></a>Python uygulamanız için Azure Izleyicisini ayarlama
+# <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python uygulamanız için Azure Izleyicisini ayarlama (Önizleme)
 
 Azure Izleyici, [Opencensus](https://opencensus.io)ile tümleştirme yoluyla Python uygulamalarının dağıtılmış izlemeyi, ölçüm toplamayı ve günlüğe kaydedilmesini destekler. Bu makale, Python için OpenCensus ayarlama ve izleme verilerinizi Azure Izleyici 'ye alma sürecinde adım adım kılavuzluk eder.
 

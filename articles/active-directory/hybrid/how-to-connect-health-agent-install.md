@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e5c58b1417362943a9c12b29ad9aa9afa1f04
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 68249fc9a599ab49e8d5fd231fa63e91a6e3a21f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648669"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330099"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health Aracısı Yüklemesi
 
@@ -39,19 +39,24 @@ Aşağıdaki tabloda Azure AD Connect Health kullanımına ilişkin gereksinimle
 |IP Adreslerini temel alan giden bağlantı | Güvenlik duvarlarında IP adresine göre filtreleme için bkz. [Azure IP Aralıkları](https://www.microsoft.com/download/details.aspx?id=41653).|
 | Giden trafik için SSL İncelemesi filtrelenmiş ya da devre dışı | Ağ katmanında giden trafik için SSL incelemesi veya sonlandırması mevcutsa aracı kaydı adımı veya veri yükleme işlemleri başarısız olabilir. [SSL denetimi kurulumu](https://technet.microsoft.com/library/ee796230.aspx) hakkında daha fazla bilgi edinin |
 | Aracıyı çalıştıran sunucudaki güvenlik duvarı bağlantı noktaları |Aracının Azure AD Health hizmet uç noktaları ile iletişim kurabilmesi için aşağıdaki güvenlik duvarı bağlantı noktalarının açık olması gerekir.<br /><br /><li>TCP bağlantı noktası 443</li><li>TCP bağlantı noktası 5671</li> <br />Bağlantı noktası 5671 ' nin, aracının en son sürümü için artık gerekli olmadığını unutmayın. Yalnızca 443 numaralı bağlantı noktası gerekli olacak şekilde en son sürüme yükseltin. [güvenlik duvarı bağlantı noktalarını etkinleştirme](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) hakkında daha fazla bilgi edinin |
-| IE Artırılmış Güvenlik etkinse aşağıdaki web sitelerine izin verin |IE Artırılmış Güvenlik etkinse aracının yükleneceği sunucuda aşağıdaki web sitelerine izin verilmesi gerekir.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https:\//aadcdn.msftauth.net</li><li>Kuruluşunuz için Azure Active Directory tarafından güvenilen federasyon sunucusu. Örneğin: https:\//sts.contoso.com</li> [IE’yi yapılandırma](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) hakkında daha fazla bilgi edinin |
+| IE Artırılmış Güvenlik etkinse aşağıdaki web sitelerine izin verin |IE Artırılmış Güvenlik etkinse aracının yükleneceği sunucuda aşağıdaki web sitelerine izin verilmesi gerekir.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>https: \//aadcdn. msftauth. net</li><li>Kuruluşunuz için Azure Active Directory tarafından güvenilen federasyon sunucusu. Örneğin: https:\//sts.contoso.com</li> [IE 'yi yapılandırma](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)hakkında daha fazla bilgi edinin. Ağınız içindeki bir proxy 'niz varsa lütfen aşağıdaki nota bakın.|
 | PowerShell v4.0 veya üzerinin yüklü olduğundan emin olun | <li>Windows Server 2008 R2, aracı için yeterli olmayan PowerShell v2.0 sürümüne sahiptir. PowerShell'i [Windows Server 2008 R2 Sunucularında aracı yüklemesi](#agent-installation-on-windows-server-2008-r2-servers) belgesine göre güncelleştirin.</li><li>Windows Server 2012, aracı için yeterli olmayan PowerShell v3.0 sürümüne sahiptir.  Windows Management Framework'ü [güncelleştirin](https://www.microsoft.com/download/details.aspx?id=40855).</li><li>Windows Server 2012 R2 ve üzeri ile gelen PowerShell sürümü yeterli olacaktır.</li>|
 |FIPS’yi devre dışı bırakma|FIPS, Azure AD Connect Health aracıları tarafından desteklenmez.|
 
+
+> [!NOTE]
+> Yüksek oranda kilitli ve son derece kısıtlı ortamınız varsa, yukarıda verilen IE artırılmış güvenlik yapılandırmasında listelenenlere ek olarak aşağıdaki hizmet uç noktası listelerinde belirtilen URL 'Leri beyaz listeye almanız gerekir. 
+>
+
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure hizmet uç noktalarına giden bağlantı
 
- Yükleme ve çalışma zamanı sırasında, aracı ile Azure AD Connect Health hizmet uç noktaları arasında bağlantı kurulması gerekir. Giden bağlantı güvenlik duvarları kullanılarak engellenirse, aşağıdaki URL 'Lerin varsayılan olarak engellenmediğinden emin olun. Bu URL 'Lerin güvenlik izlemesini veya denetimini devre dışı bırakmayın, ancak diğer internet trafiğinden yaptığınız gibi bunlara izin verin. Azure AD Connect Health hizmet uç noktaları ile iletişime izin verir. [Test-AzureADConnectHealthConnectivity ile giden bağlantıyı](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service)nasıl denetleyeceğinizi öğrenin.
+ Yükleme ve çalışma zamanı sırasında, aracı ile Azure AD Connect Health hizmet uç noktaları arasında bağlantı kurulması gerekir. Giden bağlantı güvenlik duvarları kullanılarak engellenirse, aşağıdaki URL 'Lerin varsayılan olarak engellenmediğinden emin olun. Bu URL 'Lerin güvenlik izlemesini veya denetimini devre dışı bırakmayın, ancak diğer internet trafiğinden yaptığınız gibi bunlara izin verin. Azure AD Connect Health hizmet uç noktaları ile iletişime izin verir. [Test-AzureADConnectHealthConnectivity ile giden bağlantıyı nasıl denetleyeceğinizi](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install#test-connectivity-to-azure-ad-connect-health-service)öğrenin.
 
 | Etki Alanı Ortamı | Gerekli Azure hizmet uç noktaları |
 | --- | --- |
-| Genel Kullanıma Açık | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;. servicebus.windows.net-bağlantı noktası: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
+| Genel Kullanıma Açık | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Bağlantı Noktası: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
 | Azure Almanya | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
-| Azure Kamu | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
+| Azure Devlet Kurumları | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *bu uç nokta yalnızca kayıt sırasında keşif amacıyla kullanılır.</li> |
 
 
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Azure AD Connect Health Aracısını indirme ve yükleme
@@ -134,7 +139,7 @@ Kullanım Analizi özelliğinin verileri toplaması ve analiz edebilmesi için, 
 7. **Eylemler** bölmesinde **Federasyon Hizmeti Özelliklerini Düzenle**'ye tıklayın.
 8. **Federation Service Properties (Federasyon Hizmeti Özellikleri)** iletişim kutusunda **Events (Olaylar)** sekmesine tıklayın.
 9. **Success audits (Başarı denetimleri)** ve **Failure audits (Hata denetimleri)** onay kutularını seçin.
-10. **OK (Tamam)** düğmesine tıklayın.
+10. **Tamam**’a tıklayın.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Windows Server 2012 R2'de AD FS için denetimi etkinleştirme
 
@@ -337,7 +342,7 @@ Health Aracısını çalıştıran sunucuların her birinde aşağıdaki PowerSh
 
     Set-AzureAdConnectHealthProxySettings -HttpsProxyAddress address:port
 
-Örnek: *Set-AzureAdConnectHealthProxySettings-HttpsProxyAddress myproxyserver: 443*
+Örnek: *Set-AzureAdConnectHealthProxySettings - HttpsProxyAddress myproxyserver: 443*
 
 * "adres", DNS'nin çözümlenebileceği bir sunucu adı veya bir IPv4 adresi olabilir.
 * "bağlantı noktası" atlanabilir. Atlanması durumunda varsayılan bağlantı noktası olarak 443 seçilir.
@@ -360,14 +365,14 @@ Aşağıdaki komutu çalıştırarak geçerli olarak yapılandırılmış olan p
 
 Azure AD Connect Health aracısıyla Azure AD Connect Health hizmeti arasındaki bağlantının kesilmesine neden olabilecek sorunlar meydana gelebilir. Ağ sorunları, izin sorunları veya diğer çeşitli nedenler bunlara dahildir.
 
-Aracı Azure AD Connect Health hizmetine iki saatten uzun bir süre veri gönderemediği takdirde portalda aşağıdaki uyarıyla belirtilir: "Sistem Sağlığı Hizmeti verileri güncel değil." Aşağıdaki PowerShell komutunu çalıştırarak, etkilenen Azure AD Connect Health aracısının Azure AD Connect Health hizmetine veri yükleyebildiğini onaylayabilirsiniz:
+Aracı iki saatten uzun bir süre boyunca Azure AD Connect Health hizmetine veri gönderemezse portalda şu uyarı ile gösterilir: "Health Hizmeti verileri güncel değil." Aşağıdaki PowerShell komutunu çalıştırarak, etkilenen Azure AD Connect Health aracısının Azure AD Connect Health hizmetine veri yükleyebildiğini onaylayabilirsiniz:
 
     Test-AzureADConnectHealthConnectivity -Role ADFS
 
 Rol parametresi şu anda şu değerleri alır:
 
 * ADFS
-* Sync
+* Eşitleme
 * EKLER
 
 > [!NOTE]

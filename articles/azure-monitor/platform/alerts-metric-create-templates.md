@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 70da3a518746d1989e8807cee9bc7c87cc634c27
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: b08c7d1b91f89aba4c9cb8a23bb5c688521cb37e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873284"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372768"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -22,7 +22,7 @@ ms.locfileid: "70873284"
 Bu makalede, Azure Izleyici 'de [daha yeni ölçüm uyarılarını](../../azure-monitor/platform/alerts-metric-near-real-time.md) yapılandırmak için bir [Azure Resource Manager şablonu](../../azure-resource-manager/resource-group-authoring-templates.md) nasıl kullanabileceğiniz gösterilmektedir. Kaynak Yöneticisi şablonlar, ortamınızda tutarlı ve tekrarlanabilir bir şekilde uyarı ayarlamanıza olanak sağlar. Daha yeni ölçüm uyarıları [Bu kaynak türleri kümesinde](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)Şu anda kullanılabilir.
 
 > [!IMPORTANT]
-> Kaynak türü için ölçüm uyarıları oluşturmak için kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces`, ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)makalesi.
+> Kaynak türü için ölçüm uyarıları oluşturmaya yönelik kaynak şablonu: Azure Log Analytics çalışma alanı (yani) `Microsoft.OperationalInsights/workspaces`, ek adımlar gerektirir. Ayrıntılar için bkz. [Günlükler Için ölçüm uyarısı-kaynak şablonu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)makalesi.
 
 Temel adımlar aşağıdaki gibidir:
 
@@ -32,7 +32,7 @@ Temel adımlar aşağıdaki gibidir:
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Basit bir statik eşik ölçümü için şablon uyarısı
 
-Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, ilgili tüm özellikleri bir kaynak `Microsoft.Insights/metricAlerts` oluşturacak ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
+Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, `Microsoft.Insights/metricAlerts` türünde bir kaynak oluşturun ve ilgili tüm özellikleri doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
 
 Bu izlenecek yolun amacına uygun olarak JSON 'u simplestaticmetricalert. JSON olarak kaydedin.
 
@@ -281,7 +281,7 @@ az group deployment create \
 
 ## <a name="template-for-a-simple-dynamic-thresholds-metric-alert"></a>Basit dinamik eşikler ölçüm uyarısı için şablon
 
-Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, ilgili tüm özellikleri bir kaynak `Microsoft.Insights/metricAlerts` oluşturacak ve doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
+Kaynak Yöneticisi şablonu kullanarak bir uyarı oluşturmak için, `Microsoft.Insights/metricAlerts` türünde bir kaynak oluşturun ve ilgili tüm özellikleri doldurmanız gerekir. Ölçüm uyarı kuralı oluşturan örnek bir şablon aşağıda verilmiştir.
 
 Bu izlenecek yolun amacına uygun olarak JSON öğesini simpledynamicmetricalert. JSON olarak kaydedin.
 
@@ -2480,7 +2480,7 @@ Bu izlenecek yol için aşağıdaki JSON 'ı-VM-static. JSON listesi olarak kayd
                 "PT5M",
                 "PT15M",
                 "PT30M",
-                "PT1H""
+                "PT1H"
             ],
             "metadata": {
                 "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"

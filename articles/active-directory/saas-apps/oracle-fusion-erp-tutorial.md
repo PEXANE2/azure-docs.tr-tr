@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Oracle Fusion ERP ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+title: 'Öğretici Azure Active Directory: Oracle Fusion ERP ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
 description: Azure Active Directory ve Oracle Fusion ERP arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 09/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ba929ab13864664a823ba969ecb472812d946a9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5cd7ea1a20eb82d030e9bdabe76ff7d14a619d1e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989542"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373086"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>Öğretici: Oracle Fusion ERP ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -82,12 +82,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.fa.em2.oraclecloud.com/fscmUI/faces/AtkHomePageWelcome`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.fa.em2.oraclecloud.com/fscmUI/faces/AtkHomePageWelcome`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.login.em2.oraclecloud.com:443/oam/fed`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna şu kalıbı kullanarak bir URL yazın: `https://<SUBDOMAIN>.login.em2.oraclecloud.com:443/oam/fed`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Oracle FUSION ERP istemci destek ekibine](mailto:jinshu.peethambaran@oracle.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Oracle FUSION ERP istemci destek ekibine](https://www.oracle.com/applications/erp/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -97,19 +97,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin: `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1.           **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Oracle Fusion ERP 'ye erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
@@ -117,7 +117,7 @@ Bu bölümde, Oracle Fusion ERP 'ye erişim izni vererek Azure çoklu oturum aç
 1. Uygulamalar listesinde **Oracle FUSION ERP**' yi seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -129,15 +129,15 @@ Bu bölümde, Oracle Fusion ERP 'ye erişim izni vererek Azure çoklu oturum aç
 
 ## <a name="configure-oracle-fusion-erp-sso"></a>Oracle Fusion ERP SSO 'yu yapılandırma
 
-**Oracle FUSION ERP** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'LERI Azure Portal [Oracle Fusion ERP destek ekibine](mailto:jinshu.peethambaran@oracle.com)göndermeniz gerekir. Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Oracle FUSION ERP** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'LERI Azure Portal [Oracle Fusion ERP destek ekibine](https://www.oracle.com/applications/erp/)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-oracle-fusion-erp-test-user"></a>Oracle Fusion ERP test kullanıcısı oluşturma
 
-Bu bölümde, Oracle Fusion ERP 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Oracle Fusion ERP platformunda kullanıcıları eklemek için [Oracle FUSION ERP destek ekibi](mailto:jinshu.peethambaran@oracle.com) ile çalışın. Kullanıcı oluşturulmalı ve çoklu oturum açma kullanmadan önce etkinleştirildi.
+Bu bölümde, Oracle Fusion ERP 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Oracle Fusion ERP platformunda kullanıcıları eklemek için [Oracle FUSION ERP destek ekibi](https://www.oracle.com/applications/erp/) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
 Erişim panelinde Oracle Fusion ERP kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Oracle Fusion ERP ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

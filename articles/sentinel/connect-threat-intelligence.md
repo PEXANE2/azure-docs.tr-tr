@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c1c374977460de04d2339ba8c93019cf9152dbe3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262710"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372269"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Tehdit zekası sağlayıcılarından veri bağlama
 
@@ -60,9 +60,9 @@ Bir sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ü
 
 1. Uygulama KIMLIĞI, uygulama gizli anahtarı ve Azure Active Directory kiracı KIMLIĞI almak için Azure Active Directory [bir uygulamayı kaydedin](/graph/auth-v2-service#1-register-your-app) . Microsoft Graph Security Tiındicators API 'siyle doğrudan tümleştirme kullanan tümleşik tıp ürününüzü veya uygulamanızı yapılandırırken bu değerlere ihtiyacınız vardır.
 
-2. Kayıtlı uygulama için [API Izinlerini yapılandırın](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) : Kayıtlı uygulamanıza, **Threatındictındictındicmators. ReadWrite. OwnedBy** uygulama izni Microsoft Graph ekleyin.
+2. Kayıtlı uygulama için [API Izinlerini yapılandırma](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph) : kayıtlı uygulamanıza, **Threatındictındictındictındicmators. ReadWrite. ownedby** uygulama izni Microsoft Graph ekleyin.
 
-3. Azure Active Directory kiracı yöneticinizden kuruluşunuzun kayıtlı uygulamasına yönetici onayı vermesini isteyin. Azure portal: **Azure Active Directory** > **uygulama kayıtları** ***uygulama*adıgörüntüleme>API'si izinleri için yönetici onayı verme\<**  >  >  >  ***kiracı adı*.> \<**
+3. Azure Active Directory kiracı yöneticinizden kuruluşunuzun kayıtlı uygulamasına yönetici onayı vermesini isteyin. Azure portal: **Azure Active Directory** > **uygulama kayıtları** >  **\<_uygulama adı_>**  > **API izinleri**0**2 Kiracı adı için yönetici izni verme4**.
 
 4. Şunları belirterek, Azure Sentinel 'e göstergeler göndermek için Microsoft Graph Security Tiındicators API 'SI ile doğrudan tümleştirme kullanan tıp ürününüzü veya uygulamanızı yapılandırın:
     
@@ -72,11 +72,11 @@ Bir sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ü
     
     c. Eylem için uyarı ' ı belirtin.
 
-5. Azure Portal **Azure Sentinel** > **veri bağlayıcıları** ' na gidin ve ardından **tehdit bilgileri platformları (Önizleme)** bağlayıcısını seçin.
+5. Azure portal **Azure Sentinel** > **veri bağlayıcıları** ' na gidin ve ardından **tehdit bilgileri platformları (Önizleme)** bağlayıcısını seçin.
 
 6. **Bağlayıcı sayfasını aç**' ı ve sonra **Bağlan**' ı seçin.
 
-7. Azure Sentinel 'e aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel-logs** > **securityınsights**' a gidin ve sonra **threatıntelligenceındicator**' ı genişletin.
+7. Azure Sentinel 'e aktarılan tehdit göstergelerini görüntülemek için **Azure Sentinel-Logs** > **securityınsights**' a gidin ve sonra **Threatıntelligenceındicator**' ı genişletin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
