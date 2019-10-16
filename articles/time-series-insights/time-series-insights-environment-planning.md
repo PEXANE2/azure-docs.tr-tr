@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1e0fee903372668d30db0686f6a23dd913428454
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 659a6357736817f4a590b97e585230ec8c2b7dae
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828180"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332911"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA ortamınızı planlayın
 
@@ -31,17 +31,17 @@ Bu makalede, Azure Time Series Insights genel kullanılabilirlik (GA) ortamını
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Time Series Insights kullanmaya başlamak için, ne kadar veri göndermeyi beklediğinizi ve verilerinizi ne kadar süreyle depolamanız gerektiğini biliyorsanız bu en iyisidir.  
+Azure Time Series Insights kullanmaya başlamak için, ne kadar veri göndermeyi beklediğinizi ve verilerinizi ne kadar süreyle depolamanız gerektiğini biliyorsanız bu en iyisidir.  
 
 Time Series Insights SKU 'Larının kapasitesi ve bekletme hakkında daha fazla bilgi için bkz. [Time Series Insights fiyatlandırması](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 Time Series Insights ortamınızı uzun süreli başarıyı en iyi şekilde planlamak için aşağıdaki öznitelikleri göz önünde bulundurun:
 
-- <a href="#storage-capacity">Depolama kapasitesi</a>
-- <a href="#data-retention">Veri saklama süresi</a>
-- <a href="#ingress-capacity">Giriş kapasitesi</a>
-- <a href="#shape-your-events">Olaylarınızı şekillendirme</a>
-- <a href="#ensure-that-you-have-reference-data">Başvuru verilerinin yerinde olduğundan emin olma</a>
+- [Depolama kapasitesi](#storage-capacity)
+- [Veri saklama süresi](#data-retention)
+- [Giriş kapasitesi](#ingress-capacity)
+- [Olaylarınızı şekillendirme](#shape-your-events)
+- [Başvuru verilerinin yerinde olduğundan emin olma](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>Depolama kapasitesi
 
@@ -49,15 +49,17 @@ Varsayılan olarak, Time Series Insights sağladığınız depolama miktarına (
 
 ## <a name="data-retention"></a>Veri saklama
 
-Time Series Insights ortamınızda **veri saklama süresi** ayarını değiştirebilirsiniz. 400 güne kadar bekletme sağlayabilirsiniz. 
+Azure Time Series Insights ortamınızda **veri saklama süresi** ayarını değiştirebilirsiniz. 400 güne kadar bekletme sağlayabilirsiniz. 
 
-Time Series Insights iki mod vardır. Tek bir mod, ortamınızın en güncel verileri içerdiğinden emin olmak için optimize eder. Bu mod, varsayılan olarak açık olur. 
+Azure Time Series Insights iki mod vardır:
 
-Diğer mod, saklama limitlerinin karşılanmasını sağlamak için iyileştirir. İkinci modda, ortamın genel depolama kapasitesi karşılanıyorsa giriş duraklatılır. 
+* En güncel veriler için bir mod en iyi duruma getirir. Örnek ile kullanılabilir son verileri bırakarak **eski verileri temizlemeye** yönelik bir ilke uygular. Bu mod, varsayılan olarak açık olur. 
+* Diğer, yapılandırılan bekletme sınırlarının altında kalacak şekilde verileri iyileştirir. Giriş **duraklatma** , **depolama sınırı aşıldığı**sırada seçili olduğunda yeni verilerin görüntülenmesini önler. 
 
 Tutma durumunu ayarlayabilir ve Azure portal ortamın yapılandırma sayfasındaki iki mod arasında geçiş yapabilirsiniz.
 
-Time Series Insights ortamınızda en fazla 400 günlük veri saklama yapılandırabilirsiniz.
+> [!IMPORTANT]
+> Azure Time Series Insights GA ortamınızda en fazla 400 günlük veri saklama yapılandırabilirsiniz.
 
 ### <a name="configure-data-retention"></a>Veri saklamayı yapılandırma
 
@@ -67,14 +69,14 @@ Time Series Insights ortamınızda en fazla 400 günlük veri saklama yapıland�
 
 1. **Veri saklama süresi (gün cinsinden)** kutusuna 1 ile 400 arasında bir değer girin.
 
-   [![Bekletmeyi yapılandırma](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
+   [![ bekletmeyi yapılandırma](media/environment-mitigate-latency/configure-retention.png)](media/environment-mitigate-latency/configure-retention.png#lightbox)
 
 > [!TIP]
 > Uygun veri saklama ilkesinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [saklama nasıl yapılandırılır](./time-series-insights-how-to-configure-retention.md).
 
 ## <a name="ingress-capacity"></a>Giriş kapasitesi
 
-Time Series Insights ortamınızın planlanmasına odaklanmanız için ikinci alan, giriş kapasitesidir. Giriş kapasitesi, dakika başına ayırmanın bir türevi.
+Time Series Insights ortamınızı planlarken odaklanmanız için ikinci alan, giriş *kapasitesidir*. Giriş kapasitesi, dakika başına ayırmanın bir türevi.
 
 Daraltma açısından, 32 KB 'lik paket boyutuna sahip bir veri paketi, her 1 KB boyutunda 32 olay olarak kabul edilir. İzin verilen en fazla olay boyutu 32 KB 'tır. 32 KB 'den büyük veri paketleri kesilir.
 

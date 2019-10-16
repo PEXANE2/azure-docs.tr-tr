@@ -1,6 +1,6 @@
 ---
-title: Azure açılan kullanıcı Arabirimi öğesi | Microsoft Docs
-description: Azure portalına yönelik Microsoft.Common.DropDown UI öğesi açıklar.
+title: Azure açılır Kullanıcı arabirimi öğesi | Microsoft Docs
+description: Azure portal için Microsoft. Common. DropDown Kullanıcı arabirimi öğesini açıklar. Yönetilen bir uygulamayı dağıttığınızda kullanılabilir seçenekler arasından seçim yapmak için kullanın.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e78fa419b067c0bad48229dcfd8d4e986fc16903
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5784b5df9b522f0489ca1f6087627b45cec5349d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62117310"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331734"
 ---
-# <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown kullanıcı Arabirimi öğesi
-Seçim denetimi bir açılan liste.
+# <a name="microsoftcommondropdown-ui-element"></a>Microsoft. Common. DropDown UI öğesi
+Açılan liste içeren seçim denetimi.
 
-## <a name="ui-sample"></a>Örnek kullanıcı Arabirimi
-![Microsoft.Common.DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
+## <a name="ui-sample"></a>UI örneği
+![Microsoft. Common. DropDown](./media/managed-application-elements/microsoft.common.dropdown.png)
 
 ## <a name="schema"></a>Şema
 ```json
@@ -53,10 +53,10 @@ Seçim denetimi bir açılan liste.
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Etiketi `constraints.allowedValues` görüntüleme metni için bir öğe ve değeri seçildiğinde, öğenin çıktı değeri.
-- Varsayılan değer belirtilmişse, mevcut bir etiketi olmalıdır `constraints.allowedValues`. Belirtilmezse, listedeki ilk öğe `constraints.allowedValues` seçilir. Varsayılan değer **null**.
-- `constraints.allowedValues` en az bir öğe olmalıdır.
-- Gerekli bir değer benzetmek için bir etiket ve değerini sahip bir öğe eklemek `""` (boş dize) için `constraints.allowedValues`.
+- @No__t-0 etiketi, bir öğe için görüntüleme metintir ve değeri seçildiğinde öğenin çıkış değeridir.
+- Belirtilmişse, varsayılan değer `constraints.allowedValues` ' da mevcut bir etiket olmalıdır. Belirtilmemişse, `constraints.allowedValues` ' daki ilk öğe seçilir. Varsayılan değer **null**.
+- `constraints.allowedValues` ' ın en az bir öğesi olmalıdır.
+- Zorunlu olmayan bir değere öykünmek için, `""` (boş dize) etiketi ve değeri olan bir öğeyi `constraints.allowedValues` ' e ekleyin.
 
 ## <a name="sample-output"></a>Örnek çıktı
 ```json
@@ -64,5 +64,5 @@ Seçim denetimi bir açılan liste.
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* UI tanımları oluşturma, bir giriş için bkz. [createuidefinition dosyasını kullanmaya başlama](create-uidefinition-overview.md).
-* Ortak Özellikler UI öğelerinin açıklaması için bkz. [CreateUiDefinition öğeleri](create-uidefinition-elements.md).
+* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
+* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).
