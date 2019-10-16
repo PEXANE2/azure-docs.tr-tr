@@ -33,31 +33,31 @@ Karşıya dosya yükleme yardımcı programını kullanırken aşağıdaki yöne
 ## <a name="table-of-the-allowed-file-name-extensions"></a>İzin verilen dosya adı uzantılarının tablosu
 | 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | .dat  | . HWL        | . ODX  | . rar     | . tdb       | . xlam   |
-| . a          | . db   | . ics        | . oft  | . rdl     | . tdf       | . XLR    |
-| . abc        | . DMP  | dosyasında        | . Old  | . rdlc    | . metin      | \    |
-| . adm        | gösterme  | . Java       | . One  | değerlendirmeyi     | . thmx      | . xlsb   |
-| .aspx       | \  | . jpg        | .osd  | . reg     | . tif       | . xlsm   |
-| . ATF        | . docm | . LDF        | . DıŞı  | . Kaldır  | . trc       | . xlsx   |
+| .7z         | .dat  | . HWL        | .odx  | . rar     | .tdb       | . xlam   |
+| . a          | . db   | . ics        | . oft  | . rdl     | .tdf       | . XLR    |
+| . abc        | . DMP  | dosyasında        | . Old  | . rdlc    | . metin      | .xls    |
+| . adm        | .do_  | .java       | . One  | değerlendirmeyi     | . thmx      | . xlsb   |
+| .aspx       | .doc  | . jpg        | . OSD  | . reg     | . tif       | . xlsm   |
+| . ATF        | . docm | . LDF        | . DIŞI  | . Kaldır  | . trc       | . xlsx   |
 | . b          | . docx | . antetli | . P1   | . Ren     | . TTD       | . xlt    |
-| Software        | . dotm | . lnk        | . pcap | . yeniden adlandır  | TX       | . xltx   |
-| . bak        | . dotx | verilsin        | . pdb  | . rft     | c       | .xml    |
-| . bat        | . dtsx | günlük        | . PDF  | . rpt     | .uccapilog | . xmla   |
-| . blg        | . EDS  | . lpk        | . Piz  | . rte     | . uccplog   | . XPS    |
-| Yetkilisini        | . EMF  | . manifest   | . pmls | .rtf     | . udcx      | . xsd    |
-| . KABINI        | . eml  | . Master     | . png  | . Run     | vb       | . xsn    |
-| . Cap        | . emz  | . mdmp       | . potx | . saz     | \      | . xxx    |
-| . CATX       | . err  | . mof        | . ppt  | .sql     | . vcf       | kadar     |
-| . SATıRıNDA        | . etl  | . mp3        | . pptm | . sqlplan | . VSD       | .z01    |
-| . sıkıştırılmış | . evt  | . mpg        | . pptx | . STP     | . wdb       | .z02    |
-| . Kurulumunun     | . evtx | SWM        | . prn  | . svclog  | . WKS       | . Zi     |
-| . CPK        | . DEĞERINE   | . msg        | . psf  |   -       | . wma       | ZI    |
-| . cpp        | değerine  | . msi        | . pst  |  -        | . wmv       | .zip    |
-| .cs         | .ex0  | . mso        | . pub  | -         | . wmz       | zip   |
-| . CSV        | . FRD  | . msu        | -      |-          | . WPS       | . Zipp   |
+| .ba_        | .dotm | .lnk        | . pcap | . yeniden adlandır  | .tx_       | . xltx   |
+| . bak        | . dotx | verilsin        | .pdb  | . rft     | c       | .xml    |
+| . bat        | .dtsx | günlük        | .pdf  | . rpt     | .uccapilog | . xmla   |
+| . blg        | . EDS  | . lpk        | .piz  | . rte     | . uccplog   | . XPS    |
+| YETKİLİSİNİ        | . EMF  | . manifest   | . pmls | .rtf     | . udcx      | . xsd    |
+| . KABINI        | . eml  | . Master     | .png  | . Run     | .vb_       | . xsn    |
+| . Cap        | . emz  | . mdmp       | . potx | .saz     | .vbs_      | .xxx    |
+| . CATX       | . err  | .mof        | . ppt  | . SQL     | .vcf       | .z_     |
+| . SATIRINDA        | . etl  | .mp3        | . pptm | . sqlplan | . VSD       | .z01    |
+| . sıkıştırılmış | . evt  | .mpg        | . pptx | . STP     | .wdb       | .z02    |
+| . Kurulumunun     | . evtx | .ms_        | . prn  | . svclog  | . WKS       | . Zi     |
+| . CPK        | . DEĞERINE   | .msg        | . psf  |   -       | . wma       | .zi_    |
+| . cpp        | .ex_  | .msi        | . pst  |  -        | . wmv       | .zip    |
+| .cs         | .ex0  | .mso        | . pub  | -         | .wmz       | .zip_   |
+| . CSV        | . FRD  | .msu        | -      |-          | . WPS       | . Zipp   |
 | . CVR        | Resimler  | . nfo        | -      |-          | . WPT       | . zip 'lenmiş |
-| -            | . Guid | -            | -      | -         | . wsdl      | . zipkopyala  |
-| -            | . gz   | -            | -      | -         | . wsp       | . ZIPX   |
-| -            | -      | -            | -      | -         | . WTL       | . zit    |
-| -            | -      | -            | -      | -         |     -       | . ZX    |
-| -            | -      | -            | -      | -         |  -          | . zzz    |
+| -            | . Guid | -            | -      | -         | .wsdl      | . zipkopyala  |
+| -            | . gz   | -            | -      | -         | . wsp       | .zipx   |
+| -            | -      | -            | -      | -         | . WTL       | .zit    |
+| -            | -      | -            | -      | -         |     -       | .zix    |
+| -            | -      | -            | -      | -         |  -          | .zzz    |
