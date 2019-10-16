@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0607c2b848a486e24654081bd7937cb734394e58
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992272"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331829"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Öğretici: Spark kullanarak Azure Databricks Data Lake Storage 2. verilere erişme
 
@@ -38,16 +38,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 * AzCopy ile v10 arasındaki 'i yükler. Bkz. [AzCopy ile v10 arasındaki ile veri aktarma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Hizmet sorumlusu oluşturun. Bkz [. nasıl yapılır: Kaynaklara](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)ERIŞEBILEN bir Azure AD uygulaması ve hizmet sorumlusu oluşturmak için portalını kullanın.
+* Hizmet sorumlusu oluşturun. Bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
   Söz konusu makaledeki adımları gerçekleştirirken yapmanız gereken birkaç şey vardır.
 
-  :heavy_check_mark: Makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümünde bulunan adımları gerçekleştirirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
+  : heavy_check_mark: makalenin [bir role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) bölümündeki adımları gerçekleştirirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
 
   > [!IMPORTANT]
   > Rolü Data Lake Storage 2. depolama hesabının kapsamına atadığınızdan emin olun. Üst kaynak grubuna veya aboneliğine bir rol atayabilirsiniz, ancak bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
 
-  :heavy_check_mark: Makalenin [oturum açma için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu kadar yakında ihtiyacınız olacak.
+  : heavy_check_mark: makalenin [oturum açmak için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu kadar yakında ihtiyacınız olacak.
 
 ### <a name="download-the-flight-data"></a>Uçuş verilerini indirme
 
@@ -76,7 +76,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın.  |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
     |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümü için ilgili kaynakları bir arada tutan kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../../azure-resource-manager/resource-group-overview.md). |
-    |**Location**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).       |
+    |**Konum**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).       |
     |**Fiyatlandırma Katmanı**     |  **Standart**' ı seçin.     |
 
     ![Azure Databricks çalışma alanı oluşturma](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks hizmeti oluşturma")
@@ -97,15 +97,13 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 
     ![Azure’da Databricks Spark kümesi oluşturma](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Create Databricks Spark cluster on Azure")
 
-4. Aşağıdaki alanlara değerleri girin ve diğer alanlar için varsayılan değerleri kabul edin:
+    Aşağıdaki alanlara değerleri girin ve diğer alanlar için varsayılan değerleri kabul edin:
 
-    * Küme için bir ad girin.
+    - Küme için bir ad girin.
+     
+    - **120 dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
-    * Bu makalede, **5,1** çalışma zamanına sahip bir küme oluşturun.
-
-    * **Etkinliksizlik süresi \_ dolduktan sonra \_ Sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmıyorsa, kümeyi sonlandırmak için bir süre (dakika cinsinden) belirtin.
-
-    * **Küme oluştur**’u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
+4. **Küme oluştur**’u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
 ## <a name="ingest-data"></a>Veriyi çekme
 
@@ -127,11 +125,11 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
-   * Yer tutucu değerini *. csv* dosyasının yoluyla değiştirin. `<csv-folder-path>`
+   * @No__t-0 yer tutucu değerini *. csv* dosyasının yoluyla değiştirin.
 
-   * `<storage-account-name>` Yer tutucu değerini depolama hesabınızın adıyla değiştirin.
+   * @No__t-0 yer tutucu değerini depolama hesabınızın adıyla değiştirin.
 
-   * Yer tutucusunu `<container-name>` , kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
+   * @No__t-0 yer tutucusunu, kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
 
 ## <a name="create-a-container-and-mount-it"></a>Kapsayıcı oluşturma ve bağlama
 
@@ -141,11 +139,11 @@ Bu bölümde, depolama hesabınızda bir kapsayıcı ve bir klasör oluşturacak
 
 2. Sol tarafta **çalışma alanı**' nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri**’ni seçin.
 
-    ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
+    ![Databricks içinde bir not defteri oluşturma](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "databricks 'te Not defteri oluşturma")
 
 3. **Not Defteri Oluştur** iletişim kutusunda, not defterinizin adını girin. Dil olarak **Python** ' ı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-4. **Oluştur**’u seçin.
+4. **Oluştur**'u seçin.
 
 5. Aşağıdaki kod bloğunu kopyalayıp ilk hücreye yapıştırın, ancak henüz bu kodu çalıştırmayın.
 
@@ -163,17 +161,17 @@ Bu bölümde, depolama hesabınızda bir kapsayıcı ve bir klasör oluşturacak
     extra_configs = configs)
     ```
 
-18. Bu kod bloğunda, bu kod bloğundaki `appId` `tenant`, `password`, ve `storage-account-name` yer tutucu değerlerini, Bu öğreticinin önkoşullarını tamamlarken topladığınız değerlerle değiştirin. Yer tutucu `container-name` değerini, önceki adımda kapsayıcısına verdiğiniz adla değiştirin.
+18. Bu kod bloğunda, Bu öğreticinin önkoşullarını tamamlarken, bu kod bloğundaki `appId`, `password`, `tenant` ve `storage-account-name` yer tutucu değerlerini topladığınız değerlerle değiştirin. @No__t-0 yer tutucu değerini, önceki adımda yer alan kapsayıcıya verdiğiniz adla değiştirin.
 
 Bu değerleri, belirtilen yer tutucuları değiştirmek için kullanın.
 
-   * `appId`, Ve`password` , hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
+   * @No__t-0 ve `password`, hizmet sorumlusu oluşturmanın bir parçası olarak Active Directory ile kaydettiğiniz uygulamadan alınır.
 
-   * , `tenant-id` Aboneliğinizden.
+   * @No__t-0 aboneliğinizden.
 
-   * , `storage-account-name` Azure Data Lake Storage 2. depolama hesabınızın adıdır.
+   * @No__t-0 Azure Data Lake Storage 2. depolama hesabınızın adıdır.
 
-   * Yer tutucusunu `container-name` , kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
+   * @No__t-0 yer tutucusunu, kapsayıcınıza vermek istediğiniz herhangi bir adla değiştirin.
 
    > [!NOTE]
    > Bir üretim ayarında parolanızı Azure Databricks ' de depolamayı göz önünde bulundurun. Ardından, parola yerine kod blosonra bir arama anahtarı ekleyin. Bu hızlı başlangıcı tamamladıktan sonra, bu yaklaşımın örneklerini görmek için Azure Databricks Web sitesindeki [Azure Data Lake Storage 2.](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) makalesine bakın.
@@ -224,7 +222,7 @@ Bir sonraki adımda depolama hesabınıza yüklediğiniz verileri sorgulamaya ba
 
 Veri kaynaklarınız için veri çerçeveleri oluşturmak için aşağıdaki betiği çalıştırın:
 
-* Yer tutucu değerini *. csv* dosyasının yoluyla değiştirin. `<csv-folder-path>`
+* @No__t-0 yer tutucu değerini *. csv* dosyasının yoluyla değiştirin.
 
 ```python
 # Copy this into a Cmd cell in your notebook.

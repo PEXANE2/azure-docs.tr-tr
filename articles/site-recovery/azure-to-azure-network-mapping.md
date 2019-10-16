@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: 6249a3c1c8ea3be02ca802d6be7e720bd900f675
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 687c21170c0397b89270e9c3a6af1e994c758179
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178088"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331102"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>VNET 'ler için Ağ eşlemesini ve IP adresini ayarlama
 
@@ -71,13 +71,12 @@ Hedef sanal makinedeki her NIC için IP adresi şu şekilde yapılandırılır:
 - **STATIK IP adresi**: kaynak VM 'nin NIC 'SI statik IP adresleme kullanıyorsa, hedef VM NIC 'i STATIK bir IP adresi de kullanacaktır.
 
 
-## <a name="ip-address-assignment-during-failover"></a>Yük devretme sırasında IP adresi ataması
+## <a name="ip-address-assignment-during-failover"></a>Yük devretme sırasında IP adresi atama
 
 **Kaynak ve hedef alt ağlar** | **Ayrıntılar**
 --- | ---
 Aynı adres alanı | Kaynak VM NIC 'sinin IP adresi, hedef VM NIC IP adresi olarak ayarlanır.<br/><br/> Adres yoksa, bir sonraki kullanılabilir IP adresi hedef olarak ayarlanır.
-
-Farklı adres alanı<br/><br/> Hedef alt ağdaki bir sonraki kullanılabilir IP adresi hedef VM NIC adresi olarak ayarlanır.
+Farklı adres alanı | Hedef alt ağdaki bir sonraki kullanılabilir IP adresi hedef VM NIC adresi olarak ayarlanır.
 
 
 
@@ -85,8 +84,8 @@ Farklı adres alanı<br/><br/> Hedef alt ağdaki bir sonraki kullanılabilir IP 
 
 **Hedef ağ** | **Ayrıntılar**
 --- | ---
-Hedef ağ yük devretme VNet | -Hedef IP adresi statik, ancak yük devretme için ayrılan IP adresi değil.<br/><br/>  -Atanan adres, alt ağ aralığının sonundaki bir sonraki kullanılabilir adrestir.<br/><br/> Örneğin: kaynak IP adresi 10.0.0.19 ise ve yük devretme ağı 10.0.0.0/24 aralığını kullanıyorsa, hedef VM 'ye atanan sonraki IP adresi 10.0.0.254 olur.
-Hedef ağ yük devretme VNet değil | -Hedef IP adresi, yük devretme için ayrılan aynı IP adresiyle statik olacak.<br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir.<br/><br/> Örneğin: kaynak statik IP adresi 10.0.0.19 ise ve yük devretme, 10.0.0.0/24 aralığına sahip yük devretme ağı olmayan bir ağ üzerinde ise, hedef statik IP adresi varsa 10.0.0.0.19 olur ve aksi takdirde 10.0.0.254 olur.
+Hedef ağ yük devretme VNet | -Hedef IP adresi aynı IP adresiyle statik olacak. <br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir. Örneğin: kaynak IP adresi 10.0.0.19 ise ve yük devretme ağı 10.0.0.0/24 aralığını kullanıyorsa, hedef VM 'ye atanan sonraki IP adresi 10.0.0.254 olur.
+Hedef ağ yük devretme VNet değil | -Hedef IP adresi aynı IP adresiyle statik olacak.<br/><br/>  -Aynı IP adresi zaten atanmışsa, IP adresi alt ağ aralığının sonunda kullanılabilir bir sonraki adrestir.<br/><br/> Örneğin: kaynak statik IP adresi 10.0.0.19 ise ve yük devretme, 10.0.0.0/24 aralığına sahip yük devretme ağı olmayan bir ağ üzerinde ise, hedef statik IP adresi varsa 10.0.0.0.19 olur ve aksi takdirde 10.0.0.254 olur.
 
 - Yük devretme VNet, olağanüstü durum kurtarmayı ayarlarken seçtiğiniz hedef ağ olur.
 - Yük devretme testi için her zaman üretim dışı bir ağ kullanmanızı öneririz.

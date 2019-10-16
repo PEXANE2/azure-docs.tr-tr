@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 6f1ea4e1053efd7522a9562a3229a0d3094da36b
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: bec70c6385c9d7ea09e1d8e41229b224423956ab
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285798"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330976"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL veritabanı özellikleri
 
@@ -137,7 +137,7 @@ Azure platformu, standart veritabanı özelliklerine ek bir değer olarak eklene
 | [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | Yes | Yes |
 | [SQL Data Sync](sql-database-get-started-sql-data-sync.md) | Yes | Hayır |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Hayır, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ayrı bir Azure bulut hizmetidir. | Hayır, [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) ayrı bir Azure bulut hizmetidir. |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Evet, paketlerin Azure SQL veritabanı tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütüldüğü SSSıSDB 'de depolandığı, yönetilen bir SSIS Azure Data Factory (ADF) ortamıyla birlikte, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>SQL veritabanı sunucusu ve yönetilen örnekteki SSIS özelliklerini karşılaştırmak için bkz. [Azure SQL veritabanı tek veritabanları/elastik havuzlar ve yönetilen örnek karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). | Evet, yönetilen bir SSIS Azure Data Factory (ADF) ortamında, paketlerin yönetilen örnek tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütülen SSSıSDB 'de depolandığı, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>SQL veritabanı ve yönetilen örnekteki SSIS özelliklerini karşılaştırmak için bkz. [Azure SQL Database tek veritabanlarını/elastik havuzları ve yönetilen örneği karşılaştırın](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Evet, paketlerin Azure SQL veritabanı tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütüldüğü SSSıSDB 'de depolandığı, yönetilen bir SSIS Azure Data Factory (ADF) ortamıyla birlikte, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>SQL veritabanı sunucusu ve yönetilen örnekteki SSIS özelliklerini karşılaştırmak için bkz. [Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). | Evet, yönetilen bir SSIS Azure Data Factory (ADF) ortamında, paketlerin yönetilen örnek tarafından barındırılan ve Azure SSIS Integration Runtime (IR) üzerinde yürütülen SSSıSDB 'de depolandığı, bkz. [ADF 'de Azure-SSIS IR oluşturma](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). <br/><br/>SQL veritabanı ve yönetilen örnekteki SSIS özelliklerini karşılaştırmak için bkz. [Azure SQL veritabanı tek veritabanı, elastik havuz ve yönetilen örnek karşılaştırması](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance). |
 | [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | Hayır- [Power BI](https://docs.microsoft.com/power-bi/) | Hayır- [Power BI](https://docs.microsoft.com/power-bi/) |
 | [Sorgu performansı öngörüleri (QPı)](sql-database-query-performance.md) | Yes | Hayır. SQL Server Management Studio ve Azure Data Studio yerleşik raporlarını kullanın. |
 | [Sanal ağ](../virtual-network/virtual-networks-overview.md) | Kısmi, [VNET uç noktaları](sql-database-vnet-service-endpoint-rule-overview.md) kullanarak kısıtlı erişime izin verebilir | Evet, yönetilen örnek müşterinin VNet 'ine eklenmiş. Bkz. [alt ağ](sql-database-managed-instance-transact-sql-information.md#subnet) ve [VNET](sql-database-managed-instance-transact-sql-information.md#vnet) |

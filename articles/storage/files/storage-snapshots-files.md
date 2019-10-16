@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f3cbf740016a4c162c63343be4cb9cd577f85935
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c05b79d2f1da8076b507ca9ee7a06504de21d5ea
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699362"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333172"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure dosyaları için paylaşılan anlık görüntülere genel bakış 
 Azure dosyaları, dosya paylaşımlarının paylaşım anlık görüntülerini alma özelliğini sağlar. Anlık görüntü paylaşma, zaman içinde bu noktada paylaşma durumunu yakalar. Bu makalede, paylaşma anlık görüntülerinin sağladığı özellikleri ve özel kullanım kasaınızda bunlardan nasıl yararlanacağınızı anladık.
@@ -28,7 +28,7 @@ Bir dosya paylaşımındaki metin dosyası üzerinde çalıştığınızı düş
 ### <a name="general-backup-purposes"></a>Genel yedekleme amaçları
 Bir dosya paylaşma oluşturduktan sonra, veri yedekleme için kullanmak üzere dosya paylaşımının paylaşılan anlık görüntüsünü düzenli aralıklarla oluşturabilirsiniz. Paylaşılan bir anlık görüntü, düzenli aralıklarla çalıştırıldığında, gelecekteki denetim gereksinimleri veya olağanüstü durum kurtarma için kullanılabilecek önceki veri sürümlerinin korunmasını sağlar.
 
-## <a name="capabilities"></a>Özellikler
+## <a name="capabilities"></a>Yetenekler
 Paylaşılan anlık görüntü, verilerinizin zaman içindeki bir noktadaki kopyasıdır. REST API kullanarak anlık görüntü oluşturabilir, silebilir ve yönetebilirsiniz. Aynı yetenekler istemci kitaplığı, Azure CLı ve Azure portal de mevcuttur. 
 
 Bir paylaşımın anlık görüntülerini hem REST API hem de SMB kullanarak görüntüleyebilirsiniz. Dizin veya dosya sürümlerinin listesini alabilir ve belirli bir sürümü doğrudan sürücü olarak bağlayabilirsiniz (yalnızca Windows-bkz. [sınırlara](#limits)ulaşılabilir). 
@@ -37,7 +37,7 @@ Bir paylaşma anlık görüntüsü oluşturulduktan sonra okunabilir, kopyalanab
 
 Paylaşılan anlık görüntü özelliği dosya paylaşma düzeyinde sağlanır. Tek tek dosyaları geri yüklemeye izin vermek için tek tek dosya düzeyinde alma sağlanır. SMB, REST API, Portal, istemci kitaplığı veya PowerShell/CLı araçları kullanarak bir dosya paylaşımının tamamını geri yükleyebilirsiniz.
 
-Bir dosya paylaşımının paylaşma anlık görüntüsü, temel dosya paylaşımıyla aynıdır. Tek fark, paylaşma anlık görüntüsünün alındığı saati göstermek için Share URI 'sine bir **DateTime** değeri eklenmeiydi. Örneğin, bir dosya paylaşımının URI 'si ise http://storagesample.core.file.windows.net/myshare, paylaşılan anlık görüntü URI 'si şuna benzerdir:
+Bir dosya paylaşımının paylaşma anlık görüntüsü, temel dosya paylaşımıyla aynıdır. Tek fark, paylaşma anlık görüntüsünün alındığı saati göstermek için Share URI 'sine bir **DateTime** değeri eklenmeiydi. Örneğin, bir dosya paylaşımının URI 'SI http://storagesample.core.file.windows.net/myshare ise, paylaşılan anlık görüntü URI 'SI şuna benzerdir:
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -71,11 +71,11 @@ Bir dosya paylaşımında tek tek dosyaları, temel paylaşımıyla veya başka 
 
 Paylaşma anlık görüntüsü kopyalandıktan sonra bozulmadan kalır, ancak paylaşımın anlık görüntüsünde bulunan verilerin bir kopyasıyla taban dosya paylaşımının üzerine yazılır. Geri yüklenen tüm dosyalar "değiştirilen içerik" öğesine doğru sayılır.
 
-Share anlık görüntüsüne bir dosyayı farklı bir ada sahip bir hedefe kopyalayabilirsiniz. Elde edilen hedef dosya, paylaşma anlık görüntüsü değil yazılabilir bir dosyadır.
+Share anlık görüntüsüne bir dosyayı farklı bir ada sahip başka bir hedefe kopyalayabilirsiniz. Elde edilen hedef dosya, paylaşma anlık görüntüsü değil yazılabilir bir dosyadır. Bu durumda, taban dosya paylaşımınız bozulmadan kalır.
 
 Bir kopyası olan bir hedef dosyanın üzerine yazıldığında, özgün hedef dosyayla ilişkili tüm paylaşılan anlık görüntüler bozulmadan kalır.
 
-## <a name="general-best-practices"></a>Genel en iyi yöntemler 
+## <a name="general-best-practices"></a>Genel en iyi uygulamalar 
 Azure üzerinde altyapı çalıştırırken, mümkün olduğunda veri kurtarma yedeklemelerini otomatik hale getirin. Otomatik eylemler, el ile gerçekleştirilen işlemlerden daha güvenilirdir, veri korumayı ve kurtarılabilirliğe yardımcı olur. Otomasyon için REST API, Istemci SDK 'sını veya komut dosyasını kullanabilirsiniz.
 
 Paylaşma anlık görüntüsü Zamanlayıcı 'yı dağıtmadan önce, paylaşılan anlık görüntü sıklığınızı ve bekletme ayarlarını dikkatle gözden geçirin ve gereksiz ücretleri kullanmaktan kaçının.

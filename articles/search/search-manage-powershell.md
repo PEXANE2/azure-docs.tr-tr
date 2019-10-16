@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 6090881cc2b94fa42fdac22220c858a0153ccc5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: d56ddcd48f6a1907bed865d391e1d4e64da2999d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648105"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331252"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Azure Search hizmetinizi PowerShell ile yönetme
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ PowerShell, hizmetinizin adını, bölgesini veya katmanını değiştirmek içi
 
 PowerShell veya başka bir API aracılığıyla desteklenmeyen diğer görevler (yalnızca portal) şunları içerir:
 + [AI zenginleştirilmiş dizin oluşturma](cognitive-search-concept-intro.md)için bilişsel [Hizmetler kaynağı ekleyin](cognitive-search-attach-cognitive-services.md) . Bilişsel hizmet bir abonelik veya hizmete değil, bir beceri bağlı.
-+ Azure Search izlemek için kullanılan [eklenti izleme çözümleri](search-monitor-usage.md#add-on-monitoring-solutions) veya [arama trafiği analizi](search-traffic-analytics.md) .
++ İzleme Azure Search için [eklenti izleme çözümleri](search-monitor-usage.md#add-on-monitoring-solutions) .
 
 <a name="check-versions-and-load"></a>
 
@@ -84,7 +84,7 @@ Birden çok Azure aboneliği tutarsanız, Azure aboneliğinizi ayarlayın. Geçe
 Get-AzSubscription | sort SubscriptionName | Select SubscriptionName
 ```
 
-Aboneliği belirtmek için aşağıdaki komutu çalıştırın. Aşağıdaki örnekte, abonelik adı `ContosoSubscription`.
+Aboneliği belirtmek için aşağıdaki komutu çalıştırın. Aşağıdaki örnekte, abonelik adı `ContosoSubscription` ' dır.
 
 ```azurepowershell-interactive
 Select-AzSubscription -SubscriptionName ContosoSubscription
@@ -197,11 +197,11 @@ Tags
 
 [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) , yönetici [API anahtarlarını](search-security-api-keys.md)almak için kullanılır. Kimliği doğrulanmış erişim için her bir hizmetle iki yönetici anahtarı oluşturulur. Her istekte anahtarlar gereklidir. Her iki yönetici anahtarı da işlevsel olarak eşdeğerdir, bir arama hizmetine tüm bilgileri alma veya herhangi bir nesne oluşturma ve silme imkanına tam yazma erişimi veriliyor. Diğerini değiştirirken bir tane kullanabilmeniz için iki anahtar mevcuttur. 
 
-`primary` Ya`secondary` da anahtarı olarak belirtilen tek seferde yalnızca bir tane oluşturabilirsiniz. Kesintisiz hizmet için, birincil anahtar üzerinde çalışırken tüm istemci kodlarını ikincil anahtar kullanacak şekilde güncelleştirmeyi unutmayın. İşlemler uçuşdayken anahtarları değiştirmekten kaçının.
+@No__t-0 veya `secondary` anahtarı olarak belirtilen her seferinde yalnızca bir tane oluşturabilirsiniz. Kesintisiz hizmet için, birincil anahtar üzerinde çalışırken tüm istemci kodlarını ikincil anahtar kullanacak şekilde güncelleştirmeyi unutmayın. İşlemler uçuşdayken anahtarları değiştirmekten kaçının.
 
 Beklenirken, istemci kodunu güncelleştirmeden anahtarları yeniden oluşturursanız, eski anahtarı kullanan istekler başarısız olur. Tüm yeni anahtarların yeniden oluşturulması, hizmetinizi kalıcı olarak kilitlemez ve Portal üzerinden hizmete erişmeye devam edebilirsiniz. Birincil ve ikincil anahtarları yeniden oluşturduktan sonra, yeni anahtarları kullanmak için istemci kodunu güncelleştirebilirsiniz ve işlemler buna uygun şekilde sürdürülür.
 
-API anahtarlarının değerleri hizmet tarafından oluşturulur. Azure Search kullanmak için özel bir anahtar sağlayamezsiniz. Benzer şekilde, yönetici API anahtarları için Kullanıcı tanımlı ad yoktur. Anahtara yapılan başvurular veya `primary` `secondary`ya da sabit dizelerdir. 
+API anahtarlarının değerleri hizmet tarafından oluşturulur. Azure Search kullanmak için özel bir anahtar sağlayamezsiniz. Benzer şekilde, yönetici API anahtarları için Kullanıcı tanımlı ad yoktur. Anahtara yapılan başvurular `primary` veya `secondary` olan sabit dizelerdir. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary

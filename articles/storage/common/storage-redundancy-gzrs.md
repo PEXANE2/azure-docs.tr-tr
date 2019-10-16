@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 395e8b1bc92ea64c8a5cea114be443d6411c7412
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170321"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333207"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Coğrafi bölge yedekli depolama (GZRS) ile yüksek oranda kullanılabilir Azure depolama uygulamaları oluşturun (Önizleme)
 
@@ -25,7 +25,7 @@ Microsoft, olağanüstü durum kurtarma için tutarlılık, dayanıklılık, yü
 
 ## <a name="about-the-preview"></a>Önizleme hakkında
 
-GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md). GZRS ve RA-GZRS desteği blok blob 'ları, VHD diskleri, dosyalar, tablolar ve kuyruklar olmayan sayfa Blobları.
+GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md). GZRS ve RA-GZRS desteği blok Blobları, sayfa Blobları (VHD diskleri olmayan), dosyalar, tablolar ve kuyruklar.
 
 GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 
@@ -101,9 +101,9 @@ LRS, GRS veya RA-GRS hesabından GZRS veya RA-GZRS ' a geçiş yapmak için iki 
 
 #### <a name="perform-a-manual-migration"></a>El ile geçiş gerçekleştirme
 
-Geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş ile zamanlama denetimi olursunuz.
+Geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız el ile geçiş yapmayı deneyin. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçiş işleminde zamanlama sizin denetiminizde olur.
 
-Mevcut bir hesaptan GZRS veya RA-GZRS hesabına el ile veri geçirebilmek için, verileri verimli bir şekilde kopyalayabileceğiniz bir araç kullanın. Bazı örnekler şunlardır:
+Mevcut bir hesaptan GZRS veya RA-GZRS hesabına el ile veri geçirebilmek için, verileri verimli bir şekilde kopyalayabileceğiniz bir araç kullanın. Bazı örnekler:
 
 - AzCopy veya güvenilir bir üçüncü taraf aracı gibi bir yardımcı program kullanın. AzCopy hakkında daha fazla bilgi için bkz. [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md).
 - Hadoop veya HDInsight hakkında bilgi sahibiyseniz, kümenize hem kaynak hem de hedef depolama hesapları ekleyin. Ardından, paralel hale getirmek gibi bir araçla veri kopyalama işlemini yapın.
@@ -111,7 +111,7 @@ Mevcut bir hesaptan GZRS veya RA-GZRS hesabına el ile veri geçirebilmek için,
 
 #### <a name="perform-a-live-migration"></a>Dinamik geçiş gerçekleştirme
 
-El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft canlı bir geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçişdir.
+El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft dinamik geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçiş işlemidir.
 
 Dinamik geçiş sırasında, verileriniz kaynak ve hedef depolama hesapları arasında geçirildiğinde depolama hesabınızı kullanabilirsiniz. Dinamik geçiş işlemi sırasında hesabınız, dayanıklılık ve kullanılabilirlik için SLA 'Sı buluşmaya devam eder. Dinamik geçişin neden olduğu kesinti veya veri kaybı yoktur.
 
@@ -121,11 +121,11 @@ Geçiş işlemi tamamlandıktan sonra, depolama hesabının çoğaltma ayarı **
 
 Dinamik geçiş ile ilgili aşağıdaki kısıtlamaları göz önünde bulundurun:
 
-- Microsoft, dinamik geçiş isteğiniz için hemen işlem yaparken, dinamik geçişin ne zaman tamamlanabileceğini garanti etmez. Verilerinizin belirli bir tarihe göre GZRS veya RA-GZRS 'e geçirilmesi gerekiyorsa, Microsoft bunun yerine el ile geçiş gerçekleştirmenizi önerir. Genellikle, hesabınızda daha fazla veri bu verilerin geçirilmesi için de daha uzun sürer.
+- Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne zaman tamamlanacağı garanti edilemez. Verilerinizin belirli bir tarihe göre GZRS veya RA-GZRS 'e geçirilmesi gerekiyorsa, Microsoft bunun yerine el ile geçiş gerçekleştirmenizi önerir. Genel olarak hesabınızda ne kadar çok veri varsa bu verilerin geçişi de o kadar uzun sürer.
 - Hesabınızın veri içermesi gerekir.
 - Yalnızca aynı bölgedeki verileri geçirebilirsiniz.
 - Yalnızca standart depolama hesabı türleri dinamik geçişi destekler. Premium Depolama hesaplarının el ile geçirilmesi gerekir.
-- GZRS veya RA-GZRS hesabından LRS, GRS veya RA-GRS hesabına dinamik geçiş desteklenmez. Verileri yeni veya mevcut bir depolama hesabına el ile taşımanız gerekir.
+- GZRS veya RA-GZRS hesabından LRS, GRS veya RA-GRS hesabına dinamik geçiş desteklenmez. Verileri yeni veya mevcut depolama hesabına el ile taşımanız gerekir.
 - RA-GRS 'den RA-GZRS ' d e dinamik geçiş isteğinde bulabilirsiniz. Ancak, RA-GRS ' den GZRS ' a geçiş desteklenmez. Bu durumda, RA-GZRS için dinamik geçiş istemeniz ve depolama hesabını el ile GZRS kullanacak şekilde dönüştürmeniz gerekir.
 - Yönetilen diskler yalnızca LRS 'yi destekler ve GZRS veya RA-GZRS ' a geçirilemez. Kullanılabilirlik kümeleriyle tümleştirme için bkz. [Azure yönetilen disklere giriş](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
 - Standart SSD yönetilen disklerin anlık görüntülerini ve görüntülerini Standart HDD depolamada saklayabilir ve [LRS, ZRS, GZRS ve Ra-GZRS seçenekleri arasından seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz.
@@ -135,21 +135,21 @@ Dinamik geçiş istemek için [Azure Portal](https://ms.portal.azure.com/#blade/
 
 1. **Yeni destek isteği ' ni**seçin.
 2. Hesap bilgilerinizi temel alan **temel bilgileri** doldurun. **Hizmet** bölümünde, **depolama hesabı yönetimi** ' ni seçin ve geçirilecek hesabı belirtin.
-3. **İleri**'yi seçin.
+3. **İleri**’yi seçin.
 4. **Sorun** bölümünün aşağıdaki değerlerini belirtin:
     - **Önem derecesi**: varsayılan değeri olduğu gibi bırakın.
     - **Sorun türü**: **veri geçişini**seçin.
     - **Kategori**: **bir bölge içinde (ra-) GZRS geçir**' i seçin.
     - **Başlık**: Örneğin, **(ra-) GZRS hesabı geçişi**gibi açıklayıcı bir başlık yazın.
     - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, "\_ @ no__t-3 bölgesindeki [LRS, GRS] öğesinden GZRS 'e geçiş yapmak istiyorum." ya da "\_ @ no__t-1 bölgesindeki, [LRS, RA-GRS] öğesinden RA-GZRS 'a geçiş yapmak istiyorum."
-5. **İleri**'yi seçin.
+5. **İleri**’yi seçin.
 6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
-7. **Oluştur**’u seçin.
+7. **Oluştur**'u seçin.
 
 Destek temsilcisi, yardım sağlamak için sizinle iletişim kuracaktır.
 
-## <a name="see-also"></a>Ayrıca bkz:
+## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure depolama çoğaltma](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Azure Depolama çoğaltması](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Yerel olarak yedekli depolama (LRS): Azure depolama için düşük maliyetli veri artıklığı](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [Bölgesel olarak yedekli depolama (ZRS): yüksek oranda kullanılabilir Azure depolama uygulamaları](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 

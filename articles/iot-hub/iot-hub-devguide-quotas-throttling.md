@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 4941e7af000e97e4ace0a9e90a187ed92409942d
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 1ed1b105f64d109284de441af1bcaee5f0827d75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264648"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331373"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Başvuru IoT Hub kotaları ve azaltma
 
@@ -95,7 +95,7 @@ IoT Hub diğer işlem sınırlarını zorlar:
 
 | İşlem | Sınır |
 | --------- | ----- |
-| Cihazlar | Tek bir IoT Hub 'ına bağlanabilecek en fazla cihaz sayısı 1.000.000 ' dir. Bu sınırı artırmanın tek yolu [Microsoft desteği](https://azure.microsoft.com/support/options/)ile iletişim kurmaya yönelik bir yoldur.|
+| Cihazlar | Tek bir IoT Hub 'ına kaydedilenebilir cihazların toplam sayısı ve modülleri 1.000.000 adresinden alınır. Bu sınırı artırmanın tek yolu [Microsoft desteği](https://azure.microsoft.com/support/options/)ile iletişim kurmaya yönelik bir yoldur.|
 | Dosya karşıya yükleme | cihaz başına 10 eşzamanlı dosya karşıya yüklemesi. |
 | İşler<sup>1</sup> | Maksimum eşzamanlı iş 1 (ücretsiz ve S1 için), 5 (S2 için) ve 10 (S3 için). Ancak, tüm katmanlar için maksimum eşzamanlı [cihaz içeri/dışarı aktarma işi](iot-hub-bulk-identity-mgmt.md) 1 ' dir. <br/>İş geçmişi 30 güne kadar tutulur. |
 | Ek uç noktalar | Ücretli SKU hub 'ları 10 ek uç nokta içerebilir. Ücretsiz SKU hub 'ları, ek bir uç noktaya sahip olabilir. |

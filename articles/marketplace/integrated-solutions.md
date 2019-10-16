@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/14/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "70993637"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Azure Market ve AppSource 'ta Tümleşik çözümler
@@ -20,13 +20,13 @@ Tümleşik bir çözüm, Microsoft iş ortaklarının sunduğu ve uzman sistem t
 
 Bu çözümler, sektör Challenge veya sorunlu noktaların anlaşılmasına başlayan belirli bir müşteri ihtiyacı veya senaryosuna yönelik olarak tasarlanmıştır. İki veya daha fazla bir ıbreed teknolojiden daha sonra, müşteriler için Birleşik ve yinelenebilir bir dağıtım deneyimi oluşturmak üzere BT tarafından hızlı bir şekilde çalışmaya başlayın. Ayrıca, Sistem Tümleştirici, ilgili özelleştirme ve danışmanlık olanağı sunan ve çözüm etrafında destek sağlayan, müşteri için tek bir iletişim noktası sağlar.  Sonuç, teknoloji ve hizmetler de dahil olmak üzere tümleşik bir çözümdür.
 
-## <a name="advantages"></a>Yararları
+## <a name="advantages"></a>Üstünlü
 
 Tümleşik yaklaşımın avantajları şunlardır:
 
-* *Sektör uzmanlığı*: Sektöre özgü çözümler ve bilgi sağlayan sistem tümleştiricileri
-* *Değere göre süre*: Anında avantaj elde etmenize yardımcı olmak için tümleşik dağıtım yaklaşımı
-* *En Iyi şekilde kullanılabilecek çözümler*: Tümleşik satın alma ve uygulama deneyiminin kolaylığını öğrenin
+* *Sektör uzmanlığı*: sektöre özgü çözümler ve bilgi sağlayan sistem tümleştiricileri
+* *Değer süresi*: anında avantajlara yardımcı olmaya yönelik tümleşik dağıtım yaklaşımı
+* *En iyi çözüm*: tümleşik bir satın alma ve uygulama deneyimine yönelik kolaylıklar bulma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

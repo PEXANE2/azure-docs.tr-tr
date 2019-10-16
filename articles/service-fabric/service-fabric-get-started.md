@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/22/2019
+ms.date: 10/03/2019
 ms.author: atsenthi
-ms.openlocfilehash: 0bc8a5bbecc4e7d58265e9c10c2c8a3351fcc312
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: cc77995e12d756c5878ee62ef6dd0f0229506d4c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036005"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333082"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
@@ -69,8 +69,8 @@ Yalnızca SDK'yı yüklemeniz gerekiyorsa bu paketi yükleyebilirsiniz:
 * [Microsoft Azure Service Fabric SDK'sını yükleyin][core-sdk]
 
 Geçerli sürümler şunlardır:
-* Service Fabric SDK ve Araçlar 3.4.664
-* Service Fabric Runtime 6.5.664
+* Service Fabric SDK ve Araçlar 3.4.676
+* Service Fabric Runtime 6.5.676
 * Visual Studio 2015 için Service Fabric Araçları 2.5.20615.1
 * Visual Studio 2017 15,9, Visual Studio 2.4.11024.1 için Service Fabric Araçları içerir 
 * Visual Studio 2019 16,1, Visual Studio 2.5.20423.3 için Service Fabric Araçları içerir

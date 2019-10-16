@@ -1,18 +1,18 @@
 ---
 title: Iş Ortağı Merkezi 'nde ticari Market için analiz
 description: Satışları izlemek, performansı değerlendirmek ve Market tekliflerinizi iyileştirmek için analitik raporlara nasıl erişebileceğinizi öğrenin.
-author: chjenk
+author: ChJenk
 manager: evansma
-ms.author: shthota
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/09/2019
-ms.openlocfilehash: b48e0cddfe4880382147e7bfb634335f10d6f5f9
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 10/14/2019
+ms.openlocfilehash: 593d43339961ab4576081aaa18a8d68716e40e9b
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028856"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332118"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market için analiz
 
@@ -207,7 +207,7 @@ Coğrafya ısı haritasını **tarafından siparişler** , bir dünya haritasın
 
 **Siparişlere göre müşteriler** grafiği, **en yüksek müşteri yüzdebirlik** değerlerini, siparişlerin sayısı tarafından belirlendiği şekilde x ekseni boyunca görüntüler. Y ekseni, müşterinin sıra sayısını görüntüler. Z ekseni (çizgi grafik) toplam sipariş sayısının kümülatif yüzdesini görüntüler. Çizgi grafik boyunca noktaların üzerine gelerek ayrıntıları gösterebilirsiniz.
 
-Örnek olarak, bu müşteri siparişi verilerinden, müşterilerin% 30 ' una ait siparişlerin% 83 ' una eşit olduğunu ve 2.130 siparişe eşit olduğunu öğrenebilirsiniz.
+Örnek olarak, bu müşteri siparişi verilerinden, müşterilerin %30 ' una ait siparişlerin %83 ' una eşit olduğunu ve 2.130 siparişe eşit olduğunu öğrenebilirsiniz.
 
 ![İş ortağı merkezi müşteri siparişlerini çözümle](./media/analyze-customer-orders.png)
 
@@ -321,3 +321,24 @@ Derecelendirmeler & gözden geçirmeler Özeti bölümünde, seçilen bir tarih 
 İncelemeler, ne zaman nakledildiğini kronolojik sırada görüntülenir. Varsayılan görünüm tüm incelemeleri görüntüler. Açılır menüdeki **filtreyi** kullanarak, yıldıza göre gözden geçirmeler aracılığıyla filtre uygulayabilirsiniz. İnceleme içinde görüntülenen anahtar sözcükleri de arayabilirsiniz.  
 
 ![İş Ortağı Merkezi İnceleme açıklamalarını çözümle](./media/analyze-reviews.png)
+
+## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+
+Bu bölümde, Iş Ortağı Merkezi 'nde **henüz analiz yok** iletisi bulunmayan sorular hakkında sık sorulan sorulara yanıtlar verilmektedir.
+
+**Iş Ortağı Merkezi 'nde Analytics verilerimi görüntüleyemiyorum. Bu sayfalara erişirken aşağıdaki iletiyi görüyorum. Bunun nedeni nedir?**
+
+![Henüz tekliflerinizi için veri yok](./media/analytics-faq-no-data.png)
+
+Bu iletiyi neden alabilirsiniz:
+
+- Market 'te listelenen tekliflerinizi SaaS teklifleri değildir. Şu anda Iş ortağı merkezi yalnızca SaaS teklifleri için analiz raporlar. Dynamics 365 teklifleri iş ortağı merkezi 'nde yayımlanabilir, ancak bu tekliflere ait analizler henüz iş ortağı merkezi 'nde etkin değildir.
+- Market 'teki yayımlanmış tekliflerinizin Şu anda bir alım yok. Bu, tekliflerinizin Market 'te canlı olması ve ürün görüntüleme sayfalarındaki müşterilerden görünüm elde etmesinin yanı sıra müşterilerin satın alma ve dağıtma eylemi gerçekleştirmemiş olması anlamına gelir.
+- Teklifinizin yayımlanması sürecinde olabilir ve henüz canlı değildir. Müşteriler tarafından yalnızca canlı tekliflerle elde edilebilir. Tekliflerinizin durumunu denetlemek için bkz. [analiz panosunda](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)genel bakış. Daha fazla bilgi için bu makaledeki [Özet Panosu](#summary-dashboard) ' na bakın.
+- Tekliflerinizin yalnızca liste teklifleri olan ve Market 'teki müşteriler tarafından satın alınamamakta olan **benimle Iletişim kurmak**üzere listelenmiş olabilir. Bu teklif, müşteri adayları oluşturur ve sizinle paylaşılır, ancak satın alınamazlar, bu teklifler için Siparişler oluşturulmaz. Teklif listesi türünü denetlemek için kurulum sayfasına gidin.
+
+**Analytics verilerine sahip olduğumu biliyorum, ancak aşağıdaki ileti görünür:**
+
+![Belirtilen tarih aralığı için veri yok](./media/analytics-faq-data-range.png)
+
+Bu iletiyi alıyorsanız, analiz verileriniz vardır ancak seçtiğiniz tarih aralığı için veri yok demektir. 2010 sonrasındaki verileri görüntülemek için farklı bir tarih aralığı veya özel tarih aralığı seçin. Daha fazla bilgi için bkz. [Tarih aralığı](#date-range).

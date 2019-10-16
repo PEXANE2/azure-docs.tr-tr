@@ -1,6 +1,6 @@
 ---
 title: Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefinition. JSON | Microsoft Docs
-description: Azure yönetilen uygulamalar için Kullanıcı arabirimi tanımlarının nasıl oluşturulacağını açıklar
+description: Azure portal için Kullanıcı arabirimi tanımlarının nasıl oluşturulacağını açıklar. Azure yönetilen uygulamaları tanımlarken kullanılır.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 013e861bb93d76454f2f0fd9c36259197dd671b9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 7177b9513a1e51bc24672a69935a0e9430292537
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308655"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332696"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure yönetilen uygulamanın oluşturma deneyimi için Createuıdefinition. JSON
 
@@ -44,29 +44,29 @@ Createuıdefinition her zaman üç özellik içerir:
 
 * Iy
 * version
-* parameters
+* parametreler
 
-İşleyici her zaman `Microsoft.Azure.CreateUIDef`ve desteklenen en son `0.1.2-preview`sürüm olmalıdır.
+İşleyici her zaman `Microsoft.Azure.CreateUIDef` olmalıdır ve desteklenen en son sürüm `0.1.2-preview` ' dir.
 
-Parameters özelliğinin şeması, belirtilen işleyicinin ve sürümün birleşimine bağlıdır. Yönetilen uygulamalar için desteklenen özellikler, `basics` `steps`ve `outputs`' dir. Temel bilgiler ve adımlar özellikleri, Azure portal görüntülenecek metin kutuları ve açılan [öğeler](create-uidefinition-elements.md) içerir. Çıktılar özelliği, belirtilen öğelerin çıkış değerlerini Azure Resource Manager dağıtım şablonunun parametreleriyle eşlemek için kullanılır.
+Parameters özelliğinin şeması, belirtilen işleyicinin ve sürümün birleşimine bağlıdır. Yönetilen uygulamalar için desteklenen özellikler `basics`, `steps` ve `outputs` ' dir. Temel bilgiler ve adımlar özellikleri, Azure portal görüntülenecek metin kutuları ve açılan [öğeler](create-uidefinition-elements.md) içerir. Çıktılar özelliği, belirtilen öğelerin çıkış değerlerini Azure Resource Manager dağıtım şablonunun parametreleriyle eşlemek için kullanılır.
 
-Dahil `$schema` edilmesi önerilir, ancak isteğe bağlıdır. Belirtilmişse, değeri `version` `$schema` URI içindeki sürümle eşleşmelidir.
+@No__t-0 dahil edilmesi önerilir, ancak isteğe bağlıdır. Belirtilmişse, `version` ' ın değeri, `$schema` URI 'sindeki sürümle aynı olmalıdır.
 
 Createuıdefinition 'nizi oluşturmak için bir JSON Düzenleyicisi kullanabilir, ardından bunu önizlemek için [Createuıdefinition korumalı](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade) alanında test edebilirsiniz. Korumalı alan hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için Portal arabiriminizi test](test-createuidefinition.md)etme.
 
-## <a name="basics"></a>Temel
+## <a name="basics"></a>Temel Bilgiler
 
-Temel bilgiler, Azure portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Portal, içinde `basics`belirtilen öğeleri görüntülemenin yanı sıra, kullanıcıların abonelik, kaynak grubu ve dağıtımın konumunu seçmesi için öğeleri çıkarır. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım çapındaki parametreleri sorgulayan öğeler bu adımda ilerlemelidir.
+Temel bilgiler, Azure portal dosyayı ayrıştırdığında oluşturulan ilk adımdır. Portal, `basics` ' da belirtilen öğeleri görüntülemenin yanı sıra, kullanıcıların abonelik, kaynak grubu ve dağıtımın konumunu seçmesi için öğeleri çıkartır. Mümkün olduğunda, küme veya yönetici kimlik bilgileri gibi dağıtım çapındaki parametreleri sorgulayan öğeler bu adımda ilerlemelidir.
 
 ## <a name="steps"></a>Adımlar
 
 Steps özelliği, her biri bir veya daha fazla öğe içeren temel kavramlar sonrasında görüntülenecek sıfır veya daha fazla ek adım içerebilir. Dağıtılan uygulamanın rol veya katmanına göre adımları eklemeyi düşünün. Örneğin, ana düğüm girişleri için bir adım ve bir kümedeki çalışan düğümlerine yönelik bir adım ekleyin.
 
-## <a name="outputs"></a>outputs
+## <a name="outputs"></a>Çıkışlar
 
-Azure Portal, `outputs` `basics` ve AzureResourceManagerdağıtımşablonununparametreleriyleöğelerieşlemekiçinözelliğinikullanır.`steps` Bu sözlüğün anahtarları, şablon parametrelerinin adlarıdır ve değerler başvurulan öğelerden çıkış nesnelerinin özellikleridir.
+Azure portal, öğeleri `basics` ve `steps` ' den Azure Resource Manager dağıtım şablonunun parametrelerine eşlemek için `outputs` özelliğini kullanır. Bu sözlüğün anahtarları, şablon parametrelerinin adlarıdır ve değerler başvurulan öğelerden çıkış nesnelerinin özellikleridir.
 
-Yönetilen uygulama kaynak adını ayarlamak için, çıktılar özelliğinde adlı `applicationResourceName` bir değer eklemelisiniz. Bu değeri ayarlamazsanız, uygulama ad için bir GUID atar. Kullanıcı arabirimine, kullanıcıdan bir ad isteyen bir metin kutusu ekleyebilirsiniz.
+Yönetilen uygulama kaynak adını ayarlamak için, çıktılar özelliğinde `applicationResourceName` adlı bir değer eklemelisiniz. Bu değeri ayarlamazsanız, uygulama ad için bir GUID atar. Kullanıcı arabirimine, kullanıcıdan bir ad isteyen bir metin kutusu ekleyebilirsiniz.
 
 ```json
 "outputs": {

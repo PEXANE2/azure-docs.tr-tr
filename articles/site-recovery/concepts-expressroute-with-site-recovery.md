@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: eb29f8280ac1da3cd366b0c54cc6e2ce92b06286
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 97aea824fac60f8bed71971a416f12e8df0e5e64
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726468"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333059"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure Site Recovery ile Azure ExpressRoute
 
@@ -21,9 +21,9 @@ Microsoft Azure ExpressRoute, bağlantı sağlayıcı tarafından kolaylaştır�
 
 Bu makalede, olağanüstü durum kurtarma ve geçiş için Azure Site Recovery Azure ExpressRoute ile nasıl kullanabileceğiniz açıklanır.
 
-## <a name="expressroute-circuits"></a>ExpressRoute bağlantı hatları
+## <a name="expressroute-circuits"></a>ExpressRoute devreleri
 
-Bir ExpressRoute bağlantı hattı, şirket içi altyapınızı ve bağlantı sağlayıcı üzerinden Microsoft bulut hizmetleri arasında mantıksal bağlantıyı temsil eder. Birden çok ExpressRoute bağlantı hattına sipariş edebilirsiniz. Her bağlantı hattı aynı veya farklı bölgelerde olabilir ve farklı bağlantı sağlayıcıları aracılığıyla şirket içinde bağlanabilir. ExpressRoute devreleri hakkında [buradan](../expressroute/expressroute-circuit-peerings.md)daha fazla bilgi edinin.
+ExpressRoute devresi, bir bağlantı sağlayıcısı aracılığıyla şirket içi altyapınız ile Microsoft bulut hizmetleri arasındaki mantıksal bir bağlantıyı temsil eder. Birden fazla ExpressRoute devresine sipariş edebilirsiniz. Her devre aynı veya farklı bölgelerde olabilir ve farklı bağlantı sağlayıcıları aracılığıyla şirket içi olarak bağlanabilir. ExpressRoute devreleri hakkında [buradan](../expressroute/expressroute-circuit-peerings.md)daha fazla bilgi edinin.
 
 ExpressRoute bağlantı hattının ilişkili birden çok yönlendirme etki alanı vardır. Daha fazla bilgi edinin ve ExpressRoute yönlendirme etki alanlarını [burada](../expressroute/expressroute-circuit-peerings.md#peeringcompare)karşılaştırın.
 
@@ -46,13 +46,13 @@ Bu, iletişim proxy üzerinden ilerleirken yalnızca çoğaltma trafiğinin Expr
 
 Sanal makineler veya sunucular bir Azure sanal ağına yük devreden sonra, [özel eşleme](../expressroute/expressroute-circuit-peerings.md#privatepeering)kullanarak bunlara erişebilirsiniz. 
 
-Birleşik senaryo aşağıdaki diyagramda temsil edilir: ![ExpressRoute ile şirket içi-Azure arası](./media/concepts-expressroute-with-site-recovery/site-recovery-with-expressroute.png)
+Birleşik senaryo şu diyagramda temsil edilir: ExpressRoute @ no__t-1 ile şirket içi @no__t-on-Azure arası
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>ExpressRoute ile Azure 'dan Azure 'a çoğaltma
 
 Azure Site Recovery, [Azure sanal makinelerinin](azure-to-azure-architecture.md)olağanüstü durum kurtarmaya izin verebilir. Azure sanal makinelerinizde [Azure yönetilen diskleri](../virtual-machines/windows/managed-disks-overview.md)kullanıp kullanmadığını bağlı olarak, çoğaltma verileri hedef Azure bölgesindeki bir Azure depolama hesabına veya çoğaltma yönetilen diskine gönderilir. Çoğaltma uç noktaları genel olsa da, Azure VM çoğaltma için çoğaltma trafiği varsayılan olarak, kaynak sanal ağın bulunduğu Azure bölgesinden bağımsız olarak Internet 'te geçiş yapmaz. [Özel bir rota](../virtual-network/virtual-networks-udr-overview.md#custom-routes) ile 0.0.0.0/0 adres ön eki için Azure 'un varsayılan sistem yolunu geçersiz KıLABILIR ve VM trafiğini şirket içi ağ sanal gerecine (NVA) yönlendirebilirsiniz, ancak bu yapılandırma Site Recovery çoğaltma için önerilmez. Özel yollar kullanıyorsanız, çoğaltma trafiğinin Azure sınırından ayrılmaması için sanal ağınızda "depolama" için [bir sanal ağ hizmet uç noktası oluşturmanız](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) gerekir.
 
-Azure VM olağanüstü durum kurtarma için varsayılan olarak ExpressRoute çoğaltma için gerekli değildir. Sanal makinelerin hedef Azure bölgesine yük devri yapıldıktan sonra, [özel eşleme](../expressroute/expressroute-circuit-peerings.md#privatepeering)kullanarak bunlara erişebilirsiniz.
+Azure VM olağanüstü durum kurtarma için varsayılan olarak ExpressRoute çoğaltma için gerekli değildir. Sanal makinelerin hedef Azure bölgesine yük devri yapıldıktan sonra, [özel eşleme](../expressroute/expressroute-circuit-peerings.md#privatepeering)kullanarak bunlara erişebilirsiniz. Veri aktarımı fiyatlarının, Azure bölgeleri arasında veri çoğaltma modundan bağımsız olarak uygulanacağını unutmayın.
 
 Şirket içi veri merkezinizden kaynak bölgedeki Azure VM 'lerine bağlanmak için zaten ExpressRoute kullanıyorsanız, yük devretme hedef bölgesinde ExpressRoute bağlantısını yeniden oluşturmayı planlayabilirsiniz. Aynı ExpressRoute bağlantı hattını kullanarak hedef bölgeye yeni bir sanal ağ bağlantısı aracılığıyla bağlanabilir veya olağanüstü durum kurtarma için ayrı bir ExpressRoute bağlantı hattı ve bağlantısı kullanabilirsiniz. Olası farklı senaryolar [burada](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute)açıklanmıştır.
 

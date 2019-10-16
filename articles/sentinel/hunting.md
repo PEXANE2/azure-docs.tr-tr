@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: eca3a969d56d9b016afbf2d104aaf951cdbf6360
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240608"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372417"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel"></a>Azure Sentinel 'de bulunan tehditler için Hunt
 
@@ -35,20 +35,20 @@ Güvenlik tehditlerini arama konusunda öngörülü bir araştırmacısı, Azure
 
 Azure Sentinel ile aşağıdaki özelliklerden yararlanabilirsiniz:
 
-- Yerleşik sorgular: Başlangıç sayfası, başlamanıza başlamak için tasarlanan önceden yüklenmiş sorgu örnekleri sağlar ve tabloları ve sorgu dilini öğrenirsiniz. Bu yerleşik arama sorguları, Microsoft güvenlik araştırmacıları tarafından sürekli olarak geliştirilmiştir, yeni sorgular ekliyor ve yeni algılamaları aramak için bir giriş noktası sağlamak üzere mevcut sorgular üzerinde ince ayar yapar ve Yeni saldırıları Beginnings. 
+- Yerleşik sorgular: Başlangıç sayfası başlamanıza başlamak için tasarlanan önceden yüklenmiş sorgu örnekleri sağlar ve tabloları ve sorgu dilini öğrenirsiniz. Bu yerleşik arama sorguları, Microsoft güvenlik araştırmacıları tarafından sürekli olarak geliştirilmiştir, yeni sorgular ekliyor ve yeni algılamaları aramak için bir giriş noktası sağlamak üzere mevcut sorgular üzerinde ince ayar yapar ve Yeni saldırıları Beginnings. 
 
-- IntelliSense ile güçlü sorgu dili: Bir sorgu dilinin üzerine kurulmuştur ve bu sayede bir sonraki düzeye getirmeniz gereken esnekliği elde edersiniz.
+- IntelliSense ile güçlü sorgu dili: bir sorgu dilinin üzerine kurulmuştur ve bu sayede bir sonraki düzeye kadar erişmeniz gereken esnekliği elde edersiniz.
 
-- Kendi yer işaretlerinizi oluşturun: Ara işlem sırasında, tüm eşleşmeler, panolar veya olağandışı ya da şüpheli olabilecek etkinliklerle karşılaşabilirsiniz. Gelecekte bunlara geri dönebilmeniz için bu öğeleri işaretlemek üzere yer işareti işlevini kullanın. Yer işaretleri, araştırma için bir olay oluşturmak üzere kullanılacak öğeleri daha sonra kaydetmenizi sağlar. Yer işaretleri hakkında daha fazla bilgi için bkz. arama [sırasında yer Işaretlerini kullanma](hunting.md).
+- Kendi yer işaretlerinizi oluşturun: ara işlem sırasında, tüm eşleşmeler, panolar veya olağandışı ya da şüpheli görünen etkinlikler arasında gelebiliriz. Gelecekte bunlara geri dönebilmeniz için bu öğeleri işaretlemek üzere yer işareti işlevini kullanın. Yer işaretleri, araştırma için bir olay oluşturmak üzere kullanılacak öğeleri daha sonra kaydetmenizi sağlar. Yer işaretleri hakkında daha fazla bilgi için bkz. arama [sırasında yer Işaretlerini kullanma](hunting.md).
 - Araştırmayı otomatikleştirmek için not defterlerini kullanın: Not defterleri, araştırma ve hunın adımlarında gezinmek için oluşturabileceğiniz adım adım PlayBook 'lardır.  Not defterleri, kuruluşunuzdaki diğer kişilerle paylaşılabilen, yeniden kullanılabilir bir PlayBook 'ta bulunan tüm adımları kapsüller. 
-- Depolanan verileri sorgula: Sorgu yapmanız için tablolardaki verilere erişilebilir. Örneğin, işlem oluşturma, DNS olayları ve diğer birçok olay türünü sorgulayabilirsiniz.
+- Depolanan verileri sorgulama: veri, sorgulamanızı sağlamak için tablolarda erişilebilir. Örneğin, işlem oluşturma, DNS olayları ve diğer birçok olay türünü sorgulayabilirsiniz.
 
-- Topluluğun bağlantıları: Ek sorgular ve veri kaynakları bulmak için daha fazla topluluğun gücünden yararlanın.
+- Topluluk bağlantıları: ek sorgular ve veri kaynakları bulmak için daha fazla topluluğun gücünden yararlanın.
  
 ## <a name="get-started-hunting"></a>Kullanmaya başlayın
 
 1. Azure Sentinel portalında, **hunme**' ye tıklayın.
-  ![Azure Sentinel, aramaya başlıyor](media/tutorial-hunting/hunting-start.png)
+  ![Azure Sentinel, @ no__t-1 ' i araydırmaya başlıyor
 
 2. **Hunme** sayfasını açtığınızda, tüm arama sorguları tek bir tabloda görüntülenir. Tabloda Microsoft 'un Güvenlik analistlerinin ekibi tarafından yazılan tüm sorgular ve oluşturduğunuz veya değiştirdiğiniz ek sorgular listelenir. Her sorgu, ne araydıklarından ve üzerinde ne tür verilerin çalıştığı hakkında bir açıklama sağlar. Bu şablonlar çeşitli taktiklerinde gruplandırılır. sağ taraftaki simgeler, tehdit türünü kategorilere ayırarak, ilk erişim, kalıcılık ve exfiltrame gibi. Bu arama şablonlarına, alanlardan herhangi birini kullanarak filtre uygulayabilirsiniz. Sık kullanılanlarınıza herhangi bir sorgu kaydedebilirsiniz. Bir sorguyu sık kullanılanlarınıza **kaydederek, arama sayfasına her** erişildiğinde sorgu otomatik olarak çalışır. Kendi arama sorgunuzu oluşturabilir veya var olan bir sorgu şablonunu kopyalayabilir ve özelleştirebilirsiniz. 
  
@@ -68,7 +68,7 @@ Azure Sentinel ile aşağıdaki özelliklerden yararlanabilirsiniz:
 
 ## <a name="query-language"></a>Sorgu dili 
 
-Azure Sentinel 'de arama, Azure Log Analytics sorgu dilini temel alır. Sorgu dili ve desteklenen işleçler hakkında daha fazla bilgi için bkz. [sorgu dili başvurusu](https://docs.loganalytics.io/docs/Language-Reference/).
+Azure Sentinel 'de arama, kusto sorgu dilini temel alır. Sorgu dili ve desteklenen işleçler hakkında daha fazla bilgi için bkz. [sorgu dili başvurusu](https://docs.loganalytics.io/docs/Language-Reference/).
 
 ## <a name="public-hunting-query-github-repository"></a>Ortak arama GitHub deposu
 
@@ -78,7 +78,7 @@ Azure Sentinel 'de arama, Azure Log Analytics sorgu dilini temel alır. Sorgu di
 
 ## <a name="sample-query"></a>Örnek sorgu
 
-Tipik bir sorgu, bir tablo adıyla başlar ve tarafından \|ayrılmış bir dizi işleç izler.
+Tipik bir sorgu, tablo adıyla başlar ve sonra \| ile ayrılmış bir işleç serisi gelir.
 
 Yukarıdaki örnekte, SecurityEvent adlı tablo adı ' nı başlatın ve gerektiği gibi, ifklu öğeler ekleyin.
 
@@ -119,7 +119,7 @@ Sorgu dili güçlüdür ve birçok kullanılabilir operatör bulunur, bazı yara
 
 Bir sorgu oluşturabilir veya değiştirebilir, kendi sorgunuz olarak kaydedebilir veya aynı Kiracıdaki kullanıcılarla paylaşabilirsiniz.
 
-   ![Sorguyu kaydet](./media/tutorial-hunting/save-query.png)
+   ![Sorguyu Kaydet](./media/tutorial-hunting/save-query.png)
 
 Yeni bir hunme sorgusu oluşturun:
 

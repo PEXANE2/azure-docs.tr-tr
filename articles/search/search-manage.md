@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 31b005bd76591d8098f119c7aa9b87a68841658c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719874"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331264"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure portal Azure Search için hizmet yönetimi
 > [!div class="op_single_selector"]
@@ -34,8 +34,7 @@ Azure Search, özel uygulamalara zengin arama deneyimi oluşturmak için kullan�
 
 *Yükseltmenin* bir yönetim görevi olarak listelenmediğine dikkat edin. Hizmet sağlandığında kaynaklar ayrıldığından, farklı bir katmana taşımak yeni bir hizmet gerektirir. Ayrıntılar için bkz. [Azure Search hizmeti oluşturma](search-create-service-portal.md).
 
-> [!Tip]
-> Arama trafiğini veya sorgu performansını çözümleme hakkında yardım mı arıyorsunuz? Kişilerin arama koşullarını ve başarılı arama sonuçlarının, müşterileri, dizininizdeki belirli belgelere nasıl kılavuzluk eden sorgu hacmini izleyebilirsiniz. Daha fazla bilgi için bkz. [arama Trafik Analizi Azure Search](search-traffic-analytics.md), [kullanım ve sorgu ölçümlerini izleme](search-monitor-usage.md), [performans ve iyileştirme](search-performance-optimization.md).
+Sorgu hacmi ve diğer ölçümleri izleyebilir ve bu öngörüleri kullanarak hizmetinizi daha hızlı yanıt süreleri için ayarlayabilirsiniz. Daha fazla bilgi için bkz. [kullanımı ve sorgu ölçümlerini](search-monitor-usage.md) ve [performansı ve iyileştirmeyi](search-performance-optimization.md)izleme.
 
 <a id="admin-rights"></a>
 
@@ -55,7 +54,7 @@ Hizmetiniz hakkındaki genel bilgiler açısından aşağıdaki yollarla bilgi e
 
 * Portalda, hizmet panosunda, bildirimler, Özellikler ve durum iletileri aracılığıyla.
 * [Hizmet özelliklerini almak](https://docs.microsoft.com/rest/api/searchmanagement/services)için [PowerShell](search-manage-powershell.md) veya [Yönetim REST API](https://docs.microsoft.com/rest/api/searchmanagement/) kullanma veya dizin kaynağı kullanımında durum.
-* Daha önce belirtildiği gibi [arama trafiği analizi](search-traffic-analytics.md)aracılığıyla.
+
 
 <a id="sub-5"></a>
 

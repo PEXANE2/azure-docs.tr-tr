@@ -1,6 +1,6 @@
 ---
 title: Azure FileUpload Kullanıcı arabirimi öğesi | Microsoft Docs
-description: Azure portal için Microsoft. Common. FileUpload Kullanıcı arabirimi öğesini açıklar.
+description: Azure portal için Microsoft. Common. FileUpload Kullanıcı arabirimi öğesini açıklar. Kullanıcıların yönetilen bir uygulamayı dağıttığı sırada dosyaları karşıya yüklemesi gereksinimini sağlar.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b06134c6694e54cf246f9527d10147c573b95ad9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b7f73dcfe3e0e2827083feba906e2efcd0265305
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828011"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331708"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft. Common. FileUpload Kullanıcı arabirimi öğesi
 Kullanıcının karşıya yüklenecek bir veya daha fazla dosya belirtmesini sağlayan denetim.

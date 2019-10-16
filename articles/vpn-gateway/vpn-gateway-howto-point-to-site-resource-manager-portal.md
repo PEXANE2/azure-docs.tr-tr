@@ -7,14 +7,14 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: ea80fda927d293d743f1fdc69f9a7f5fa29838fa
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 7d6941c347f1121654084c8d71ba7c0a293bf558
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266589"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333245"
 ---
-# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Yerel Azure sertifikası kimlik doğrulaması kullanarak bir VNet 'e Noktadan siteye VPN bağlantısı yapılandırma: Azure portal
+# <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Yerel Azure sertifika kimlik doğrulaması kullanarak bir VNet 'e Noktadan siteye VPN bağlantısı yapılandırma: Azure portal
 
 Bu makale Windows, Linux veya Mac OS X çalıştıran ayrı istemcileri bir Azure VNet 'e güvenli bir şekilde bağlamanıza yardımcı olur. Noktadan Siteye VPN bağlantıları, ev veya bir konferans gibi uzak bir noktadan Vnet'inize bağlanmak istediğinizde faydalıdır. Bir sanal ağa bağlanması gereken yalnızca birkaç istemciniz olduğunda Siteden Siteye VPN yerine P2S’yi de kullanabilirsiniz. Noktadan Siteye bağlantılar için bir VPN cihazına veya genel kullanıma yönelik bir IP adresine gerek yoktur. P2S, VPN bağlantısını SSTP (Güvenli Yuva Tünel Protokolü) veya IKEv2 üzerinden oluşturur. Noktadan Siteye VPN hakkında daha fazla bilgi edinmek için bkz. [Noktadan Siteye VPN hakkında](point-to-site-about.md).
 
@@ -33,27 +33,27 @@ Noktadan Siteye yerel Azure sertifika kimlik doğrulaması bağlantıları, bu a
 
 Aşağıdaki değerleri kullanarak bir test ortamı oluşturabilir veya bu makaledeki örnekleri daha iyi anlamak için bu değerlere bakabilirsiniz:
 
-* **VNet adı:** VNet1
+* **VNet Adı:** VNet1
 * **Adres alanı:** 192.168.0.0/16<br>Bu örnekte yalnızca bir adres alanı kullanılmaktadır. Sanal ağınıza ait birden fazla adres alanı olabilir.
-* **Alt ağ adı:** Ön Uç
+* **Alt ağ adı:** FrontEnd
 * **Alt ağ adres aralığı:** 192.168.1.0/24
-* **Aboneliğiniz** Birden fazla aboneliğiniz varsa, doğru olanı kullandığınızdan emin olun.
-* **Kaynak grubu:** TestRG
-* **Konum:** East US
-* **GatewaySubnet** 192.168.200.0/24<br>
+* **Abonelik:** Birden fazla aboneliğiniz varsa doğru aboneliği kullandığınızdan emin olun.
+* **Kaynak Grubu:** TestRG
+* **Konum:** Doğu ABD
+* **GatewaySubnet:** 192.168.200.0/24<br>
 * **Sanal ağ geçidi adı:** VNet1GW
-* **Ağ Geçidi türü:** VPN
+* **Ağ geçidi türü:** VPN
 * **VPN türü:** Rota tabanlı
 * **Genel IP adresi adı:** VNet1GWpip
 * **Bağlantı türü:** Noktadan siteye
 * **İstemci adres havuzu:** 172.16.201.0/24<br>Sanal ağa bu Noktadan Siteye bağlantıyı kullanarak bağlanan VPN istemcileri, istemci adres havuzdan bir IP adresi alır.
 
-## <a name="createvnet"></a>1. Sanal ağ oluşturma
+## <a name="createvnet"></a>1. sanal ağ oluşturma
 
 Başlamadan önce, bir Azure aboneliğiniz olduğunu doğrulayın. Henüz Azure aboneliğiniz yoksa [MSDN abonelik avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-p2s-vnet-rm-portal-include.md)]
 
-## <a name="creategw"></a>2. Sanal ağ geçidi oluşturma
+## <a name="creategw"></a>2. sanal ağ geçidi oluşturma
 
 Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ geçidinin oluşturulması, seçili ağ geçidi SKU’suna bağlı olarak 45 dakika veya daha uzun sürebilir.
 
@@ -65,21 +65,21 @@ Bu adımda sanal ağınız için sanal ağ geçidi oluşturacaksınız. Bir ağ 
 >Temel ağ geçidi SKU 'SU Ikev2 veya RADIUS kimlik doğrulamasını desteklemez. Mac istemcilerinin sanal ağınıza bağlanmasını planlıyorsanız, temel SKU 'YU kullanmayın.
 >
 
-## <a name="generatecert"></a>3. Sertifika oluşturma
+## <a name="generatecert"></a>3. sertifika oluşturma
 
 Sertifikalar, Noktadan Noktaya VPN bağlantısı üzerinden VNet’e bağlanan istemcilerin kimliğini doğrulamak için Azure tarafından kullanılır. Kök sertifika edindiğinizde, ortak anahtar bilgilerini Azure'a [yüklersiniz](#uploadfile). Bunun üzerine, kök sertifika P2S üzerinden sanal ağa bağlantı için Azure tarafından 'güvenilir' olarak görülür. Ayrıca, güvenilen kök sertifikadan istemci sertifikaları da oluşturur ve bunları her bir istemci bilgisayara yüklersiniz. İstemci sertifikası, sanal ağ ile bağlantı başlattığında istemcinin kimliğini doğrulamak için kullanılır. 
 
-### <a name="getcer"></a>1. Kök sertifikaya ilişkin .cer dosyasını alma
+### <a name="getcer"></a>1. kök sertifika için. cer dosyasını alın
 
 [!INCLUDE [root-certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
-### <a name="generateclientcert"></a>2. İstemci sertifikası oluşturma
+### <a name="generateclientcert"></a>2. istemci sertifikası oluşturma
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="addresspool"></a>4. İstemci adres havuzu ekleme
+## <a name="addresspool"></a>4. istemci adres havuzunu ekleme
 
-İstemci adres havuzu, belirttiğiniz özel IP adresleri aralığıdır. Noktadan Siteye VPN üzerinden bağlanan istemciler dinamik olarak bu aralıktaki bir IP adresini alır. Bağlantı kurduğunuz şirket içi konum veya bağlanmak istediğiniz sanal ağ ile çakışmayan özel bir IP adresi aralığı kullanın.
+İstemci adres havuzu, belirttiğiniz özel IP adresleri aralığıdır. Noktadan Siteye VPN üzerinden bağlanan istemciler dinamik olarak bu aralıktaki bir IP adresini alır. Bağlantı kurduğunuz şirket içi konum veya bağlanmak istediğiniz sanal ağ ile çakışmayan özel bir IP adresi aralığı kullanın. Birden çok protokol yapılandırırsanız ve SSTP protokollerden biri ise, yapılandırılmış adres havuzu yapılandırılan protokoller arasında eşit olarak bölünür.
 
 1. Sanal ağ geçidi oluşturulduktan sonra sanal ağ geçidi sayfasının **Ayarlar** bölümüne gidin. **Ayarlar** bölümünde, **Noktadan siteye yapılandırması**’na tıklayın.
 
@@ -89,25 +89,25 @@ Sertifikalar, Noktadan Noktaya VPN bağlantısı üzerinden VNet’e bağlanan i
    ![Şimdi yapılandır](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/configurenow.png)
 3. **Noktadan siteye** yapılandırma sayfasında, **Adres havuzu** kutusunda kullanmak istediğiniz özel IP adresi aralığını ekleyin. VPN istemcileri, belirttiğiniz aralıktan dinamik olarak bir IP adresi alır. Etkin/etkin yapılandırma için en düşük alt ağ maskesi, etkin/Pasif ve 28 bit için 29 bittir. Ayarı doğrulayıp kaydetmek için **Kaydet**’e tıklayın.
 
-   ![İstemci adresi havuzu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
+   ![İstemci adres havuzu](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/addresspool.png)
 
    >[!NOTE]
    >Bu sayfadaki portalda Tünel türü veya Kimlik Doğrulama türü görmüyorsanız, ağ geçidiniz Temel SKU kullanıyor demektir. Temel SKU, IKEv2 veya RADIUS kimlik doğrulamasını desteklemez.
    >
 
-## <a name="tunneltype"></a>5. Tünel türünü yapılandırma
+## <a name="tunneltype"></a>5. tünel türünü yapılandırın
 
 Tünel türünü seçebilirsiniz. Tünel seçenekleri OpenVPN, SSTP ve IKEv2 ' dir. Android ve Linux üzerindeki strongSwan istemcisi ile iOS ve OSX üzerindeki yerel IKEv2 VPN istemcisi, bağlanmak için yalnızca IKEv2 tünelini kullanır. Windows istemcileri önce IKEv2’yi dener ve bağlanamazsa SSTP’ye döner. OpenVPN istemcisini, OpenVPN tünel türüne bağlanmak için kullanabilirsiniz.
 
 ![Tünel türü](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
-## <a name="authenticationtype"></a>6. Kimlik doğrulaması türünü yapılandırma
+## <a name="authenticationtype"></a>6. kimlik doğrulama türünü yapılandırın
 
 **Azure sertifikası**’nı seçin.
 
   ![Tünel türü](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
 
-## <a name="uploadfile"></a>7. Kök sertifika ortak sertifika verilerini karşıya yükleme
+## <a name="uploadfile"></a>7. kök sertifika genel sertifika verilerini karşıya yükleyin
 
 Toplam 20 adede kadar güvenilir kök sertifikayı karşıya yükleyebilirsiniz. Ortak sertifika verileri karşıya yüklendikten sonra Azure, güvenilir kök sertifikadan oluşturulmuş bir istemci sertifikasının yüklü olduğu istemcilerin kimliklerini doğrulamak için bu dosyayı kullanabilir. Kök sertifikanın ortak anahtar bilgilerini Azure'a yükleyin.
 
@@ -123,7 +123,7 @@ Toplam 20 adede kadar güvenilir kök sertifikayı karşıya yükleyebilirsiniz.
 
    ![Kaydet](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
-## <a name="installclientcert"></a>8. Dışarı aktarılan bir istemci sertifikasını yükleme
+## <a name="installclientcert"></a>8. bir içe aktarılmış istemci sertifikası yükler
 
 İstemci sertifikalarını oluşturmak için kullandığınız bilgisayardan farklı bir istemci bilgisayarda bir P2S bağlantı oluşturmak istiyorsanız, bir istemci sertifikası yüklemeniz gerekir. Bir istemci sertifikası yüklenirken, istemci sertifikası dışarı aktarılırken oluşturulan parola gerekir.
 
@@ -131,11 +131,11 @@ Toplam 20 adede kadar güvenilir kök sertifikayı karşıya yükleyebilirsiniz.
 
 Yükleme adımları için bkz. [İstemci sertifikası yükleme](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="clientconfig"></a>9. VPN istemcisi yapılandırma paketini oluşturma ve yükleme
+## <a name="clientconfig"></a>9. VPN istemcisi yapılandırma paketini oluşturma ve yüklemeyi
 
 VPN istemcisi yapılandırma dosyaları, P2S bağlantısı üzerinden bir sanal ağa bağlanmak üzere cihazları yapılandırmak için gereken ayarları içerir. VPN istemcisi yapılandırma dosyalarını oluşturma ve yükleme yönergeleri için bkz. [Yerel Azure sertifika doğrulaması P2S yapılandırmaları için VPN istemci yapılandırma dosyalarını oluşturma ve yükleme](point-to-site-vpn-client-configuration-azure-cert.md).
 
-## <a name="connect"></a>10. Azure'a Bağlanma
+## <a name="connect"></a>10. Azure 'a bağlanma
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Windows VPN istemcisinden bağlanmak için
 

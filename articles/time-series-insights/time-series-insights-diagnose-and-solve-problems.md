@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 08/27/2019
+ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7c5786f4510e11d431f9e80dd52d1ffc3adb410
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 78a991fb310c635648513e6472543b9f5c01119d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129162"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330864"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights ortamınızdaki sorunları tanılayın ve çözün
 
@@ -34,17 +34,17 @@ Bu makalede Azure Time Series Insights ortamınızda karşılaşabileceğiniz ba
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Neden: olay kaynak verileri JSON biçiminde değil
 
-Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
+Azure Time Series Insights yalnızca JSON verilerini destekler. JSON örnekleri için bkz. [desteklenen JSON şekilleri](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Neden B: olay kaynak anahtarında gerekli bir izin eksik
 
 * Azure IoT Hub 'de bir IoT Hub 'ı için, **hizmet bağlantısı** izinleri olan anahtarı sağlamanız gerekir. Her iki **ıothubowner** veya **hizmet** ilkelerinden biri, her ikisi de **hizmet bağlantı** izinlerine sahip olduğundan çalışacaktır.
 
-   [![IoT Hub hizmet bağlantısı izinleri](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
+   [![ıot hub hizmeti bağlanma izinleri](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
 * Azure Event Hubs bir olay hub 'ı için, **dinleme** izinleri olan anahtarı sağlamalısınız. Her ikisinde de **dinleme** izinleri olduğundan, **okuma** veya **yönetme** ilkelerinden biri çalışır.
 
-   [![Olay Hub 'ı dinleme izinleri](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
+   [![Event hub dinlemesi izinleri](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
 ### <a name="cause-c-the-consumer-group-provided-isnt-exclusive-to-time-series-insights"></a>Neden C: belirtilen tüketici grubu Time Series Insights özel değil
 
@@ -115,6 +115,6 @@ Aşağıdaki değerleri görmemelisiniz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Yardım için [MSDN forumundan](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)bir konuşma başlatın.
+- [Azure Time Series Insights gecikme süresini azaltma](time-series-insights-environment-mitigate-latency.md)hakkında bilgi edinin.
 
-- Yardımlı Destek seçenekleri için [Azure desteği](https://azure.microsoft.com/support/options/)' ni kullanın.
+- [Time Series Insights ortamınızı ölçeklendirmeyi](time-series-insights-how-to-scale-your-environment.md)öğrenin.

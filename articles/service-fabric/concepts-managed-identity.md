@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968275"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333132"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Service Fabric uygulaması için yönetilen kimlik (Önizleme)
 
@@ -63,6 +63,8 @@ Uygulamanın sistem tarafından atanan kimliği, bu uygulamaya özeldir; Kullan�
 Aşağıdaki senaryolar desteklenmez veya önerilmez; Not Bu eylemler engellenmeyebilir, ancak uygulamalarınızda kesintilere yol açabilir:
 
    - Bir uygulamaya atanan kimlikleri kaldırma veya değiştirme; değişiklik yapmanız gerekiyorsa, ilk olarak yeni bir kimlik ataması eklemek ve ardından daha önce atanmış bir tane kaldırmak için ayrı dağıtımlar göndermeniz gerekir. Mevcut bir uygulamadan bir kimliğin kaldırılması, uygulamanızı, yükseltilemeyen bir durumda bırakmak dahil istenmeyen etkileri olabilir. Bir kimliğin kaldırılması gerekliyse uygulamayı tamamen silmek güvenlidir; Bu işlem, uygulamayla ilişkili sistem tarafından atanan kimliği (tanımlanmışsa) silecek ve uygulamaya atanan kullanıcı tarafından atanan kimliklerle tüm ilişkilendirmeleri kaldıracak.
+
+   - Yönetilen kimlikler için SF desteği şu anda [AzureServiceTokenProvider](../key-vault/service-to-service-authentication.md)ile tümleştirilmiştir; Tümleştirme, yönetilen kimlik özelliği için Önizleme döneminin sonuna kadar elde edilir.
 
 >
 > [!NOTE]

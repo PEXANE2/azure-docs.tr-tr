@@ -1,6 +1,6 @@
 ---
-title: Azure PasswordBox UI öğesi | Microsoft Docs
-description: Azure portalına yönelik Microsoft.Common.PasswordBox UI öğesi açıklar.
+title: Azure PasswordBox Kullanıcı arabirimi öğesi | Microsoft Docs
+description: Azure portal için Microsoft. Common. PasswordBox Kullanıcı arabirimi öğesini açıklar. Kullanıcıların yönetilen uygulamaları dağıttığı zaman gizli bir değer sağlamasına olanak sağlar.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 944f59da680c3a058a3cd245cca48d903e44ab87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4a8b760d113e29efb0efacbd41dcaa7432ecdcfd
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710927"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332797"
 ---
-# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox kullanıcı Arabirimi öğesi
-Bir parola sağlamak için kullanılan bir denetimdir.
+# <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft. Common. PasswordBox Kullanıcı arabirimi öğesi
+Bir parolayı sağlamak ve onaylamak için kullanılabilen bir denetim.
 
-## <a name="ui-sample"></a>Örnek kullanıcı Arabirimi
-![Microsoft.Common.PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
+## <a name="ui-sample"></a>UI örneği
+![Microsoft. Common. PasswordBox](./media/managed-application-elements/microsoft.common.passwordbox.png)
 
 ## <a name="schema"></a>Şema
 ```json
@@ -49,9 +49,9 @@ Bir parola sağlamak için kullanılan bir denetimdir.
 ```
 
 ## <a name="remarks"></a>Açıklamalar
-- Bu öğe desteklemiyor `defaultValue` özelliği.
-- Uygulama ayrıntıları için `constraints`, bkz: [Microsoft.Common.TextBox](microsoft-common-textbox.md).
-- Varsa `options.hideConfirmation` ayarlanır **true**, kullanıcı parolası onaylama için ikinci metin kutusunda gizlenir. Varsayılan değer **false**.
+- Bu öğe `defaultValue` özelliğini desteklemiyor.
+- @No__t-0 ' ın uygulama ayrıntıları için bkz. [Microsoft. Common. TextBox](microsoft-common-textbox.md).
+- @No__t-0 **değeri true**olarak ayarlanırsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false**'dur.
 
 ## <a name="sample-output"></a>Örnek çıktı
 ```json
@@ -59,5 +59,5 @@ Bir parola sağlamak için kullanılan bir denetimdir.
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* UI tanımları oluşturma, bir giriş için bkz. [createuidefinition dosyasını kullanmaya başlama](create-uidefinition-overview.md).
-* Ortak Özellikler UI öğelerinin açıklaması için bkz. [CreateUiDefinition öğeleri](create-uidefinition-elements.md).
+* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
+* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).

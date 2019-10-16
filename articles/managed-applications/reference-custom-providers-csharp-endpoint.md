@@ -1,18 +1,18 @@
 ---
 title: Özel sağlayıcı C# yeniden bitiş noktası başvurusu-Azure
-description: Bu makale, özel bir sağlayıcının C# yeniden deneme uç noktası için temel bir başvurudur.
+description: Azure özel sağlayıcılarının C# geri noktası için temel başvuru sağlar. Uç nokta, bir Azure işlev uygulaması aracılığıyla sağlanır.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
-ms.openlocfilehash: 8007c92c832ab7621d0192f924b15abf8bda9262
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 37b7997bc029942a84c9be5743f6ef3c6195fd27
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172874"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332658"
 ---
 # <a name="custom-provider-c-restful-endpoint-reference"></a>Özel sağlayıcı C# yeniden bitiş noktası başvurusu
 
@@ -260,4 +260,4 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 - [Azure özel kaynak sağlayıcılarına genel bakış](./custom-providers-overview.md)
 - [Öğretici: Azure özel kaynak sağlayıcısı oluşturma ve özel kaynaklar dağıtma](./create-custom-provider.md)
 - [Nasıl yapılır: Azure REST API özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
-- [Başvurunun Özel kaynak önbelleği başvurusu](./custom-providers-proxy-cache-resource-endpoint-reference.md)
+- [Başvuru: özel kaynak önbellek başvurusu](./custom-providers-proxy-cache-resource-endpoint-reference.md)

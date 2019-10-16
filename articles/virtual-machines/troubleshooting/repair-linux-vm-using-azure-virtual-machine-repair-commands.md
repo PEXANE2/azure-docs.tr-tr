@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
 ms.openlocfilehash: 56e420f9641638bfa79ff077be73132b00b934ab
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "71132097"
 ---
-# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure sanal makine onarım komutlarını kullanarak bir Linux VM 'yi onarma
+# <a name="repair-a-linux-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Azure Sanal Makine onarım komutlarını kullanarak Linux VM'sini onarma
 
 Azure 'daki Linux sanal makineniz (VM) bir önyükleme veya disk hatasıyla karşılaşırsa, diskin kendisi üzerinde risk azaltma yapmanız gerekebilir. Ortak bir örnek, VM 'nin başarıyla önyükleme yapabilmesini önleyen başarısız bir uygulama güncelleştirmesidir. Bu makalede, tüm hataları gidermek için Azure sanal makine onarım komutlarının, diski başka bir Linux VM 'ye bağlamak için nasıl kullanılacağı açıklanır ve ardından özgün VM 'nizi yeniden derleyin.
 
@@ -48,19 +48,19 @@ Ek belgeler ve yönergeler için bkz. [az VM Repair](https://docs.microsoft.com/
 
    Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Bu, önceden yüklenmiş ve hesabınızla kullanılmak üzere yapılandırılmış ortak Azure araçları içerir.
 
-   Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek [https://shell.azure.com](https://shell.azure.com)ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz.
+   Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Cloud Shell, [https://shell.azure.com](https://shell.azure.com)' e giderek ayrı bir tarayıcı sekmesinde de açabilirsiniz.
 
    Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, sonra kodu Cloud Shell yapıştırın ve çalıştırmak için **ENTER** ' u seçin.
 
    CLI'yi yerel olarak yükleyip kullanmayı tercih ediyorsanız bu hızlı başlangıç için Azure CLI 2.0.30 veya sonraki bir sürümü gerekir. Sürümü bulmak için ``az --version`` komutunu çalıştırın. Azure CLı 'nizi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-2. `az vm repair` Komutları ilk kez kullandıysanız VM-Repair CLI uzantısını ekleyin.
+2. @No__t-0 komutlarını ilk kez kullandıysanız, VM-Repair CLı uzantısını ekleyin.
 
    ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
-   `az vm repair` Komutları daha önce kullandıysanız, tüm güncelleştirmeleri VM-onarım uzantısına uygulayın.
+   @No__t-0 komutlarını daha önce kullandıysanız, tüm güncelleştirmeleri VM-Repair uzantısına uygulayın.
 
    ```azurecli-interactive
    az extension update -n vm-repair
@@ -82,7 +82,7 @@ Ek belgeler ve yönergeler için bkz. [az VM Repair](https://docs.microsoft.com/
 
 ## <a name="verify-and-enable-boot-diagnostics"></a>Önyükleme tanılamayı doğrulama ve etkinleştirme
 
-Aşağıdaki örnek, adlı ``myVMDeployed`` ``myResourceGroup``kaynak grubunda adlı sanal makinede tanılama uzantısını sunar:
+Aşağıdaki örnek, ``myResourceGroup`` adlı kaynak grubunda ``myVMDeployed`` adlı VM 'de tanılama uzantısının kullanılmasına izin vermez:
 
 Azure CLI
 

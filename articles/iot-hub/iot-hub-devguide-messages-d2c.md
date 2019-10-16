@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 5d21d3800655cc0be78a2b63d13a3616b1d0f2f8
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147354"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372719"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma
 
@@ -114,6 +114,12 @@ IoT Hub Ayrıca, bu olaylara göre gerçek zamanlı tümleştirmeleri ve iş ak�
 ## <a name="testing-routes"></a>Yolları test etme
 
 Yeni bir rota oluşturduğunuzda veya mevcut bir yolu düzenlediğinizde, rota sorgusunu örnek bir iletiyle test etmelisiniz. Tek seferde tüm yolları test edebilir veya test sırasında uç noktalara hiçbir ileti yönlendirilemez. Azure portal, Azure Resource Manager, Azure PowerShell ve Azure CLı test için kullanılabilir. Sonuçlar, örnek iletinin sorguyla eşleşip eşleşmediğini, iletinin sorguyla eşleşmedi olduğunu veya örnek ileti ya da sorgu söz dizimi yanlış olduğu için test çalıştırılamadı sınamasını belirlemesine yardımcı olur. Daha fazla bilgi için bkz. [Test rotası](/rest/api/iothub/iothubresource/testroute) ve [tüm yolları test](/rest/api/iothub/iothubresource/testallroutes)etme.
+
+## <a name="ordering-guarantees-with-at-least-once-delivery"></a>En az bir kez tesliminde sıralama garantisi
+
+İleti yönlendirme IoT Hub sıralı ve en az bir kez bitiş noktalarına ileti teslimi garantisi sağlar. Bu, yinelenen iletiler olabileceği ve özgün ileti sıralamasını yeniden aktarılan bir dizi mesaj olabileceği anlamına gelir. Örneğin, özgün ileti sırası [1, 2, 3, 4] ise, [1, 2, 1, 2, 3, 1, 2, 3, 4] gibi bir ileti sırası alabilirsiniz. Sıralama garantisi, [1] iletisini almanız durumunda her zaman [2, 3, 4] gelmelidir.
+
+İleti yinelemelerini işlemek için, genellikle bir cihaz veya modül olan kaynak noktasındaki iletinin uygulama özelliklerinde benzersiz bir tanımlayıcı damgalaması önerilir. İletileri kullanan hizmet, bu tanımlayıcıyı kullanarak yinelenen iletileri işleyebilir.
 
 ## <a name="latency"></a>Gecikme süresi
 

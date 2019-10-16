@@ -1,21 +1,21 @@
 ---
-title: Azure maliyet yönetimi kapsamlarını anlayın ve bunlarla çalışın | Microsoft Docs
+title: Azure maliyet yönetimi kapsamlarını anlayın ve bunlarla çalışın
 description: Bu makale, Azure 'da kullanılabilen faturalandırma ve kaynak yönetimi kapsamlarını anlamanıza ve maliyet yönetimi ve API 'lerde kapsamları nasıl kullanacağınızı anlamanıza yardımcı olur.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2019
+ms.date: 10/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 664307b64d5a2869130df9ab123119d869f36e21
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338630"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374476"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -106,7 +106,7 @@ Kullandıkça öde ve ücretsiz deneme ve geliştirme/test teklifleri gibi birey
 
 - [**Faturalandırma hesabı**](../billing/billing-view-all-accounts.md) -bir veya daha fazla Azure aboneliği için tek bir hesap sahibini temsil eder. Bu, şu anda birden çok kişiye erişim vermeyi veya toplu maliyet görünümlerine erişimi desteklemez.
 
-    Kaynak türü: Geçerli değil
+    Kaynak türü: geçerli değil
 
 Bireysel Azure aboneliği hesap yöneticileri, [Azure Hesap Merkezi](https://account.azure.com/subscriptions)fatura ve ödemeler gibi faturalandırma verilerini görüntüleyebilir ve yönetebilir. Ancak, maliyet verilerini görüntüleyemez veya Azure portal kaynakları yönetebilir. Hesap yöneticisine erişim vermek için, daha önce bahsedilen maliyet yönetimi rollerini kullanın.
 
@@ -128,7 +128,10 @@ Microsoft Müşteri Sözleşmesi faturalandırma hesaplarında aşağıdaki kaps
 
     Kaynak türü: `Microsoft.Billing/billingAccounts/invoiceSections`
 
+- **Müşteri** -iş ortağı tarafından Microsoft Müşteri anlaşmasıyla eklendi belirli bir müşteriyle ilişkili bir abonelik grubunu temsil eder. Bu kapsam CSP 'ye özeldir.
+
 EA faturalandırma kapsamlarından farklı olarak, Müşteri Sözleşmesi _faturalandırma hesapları tek_ bir dizine bağlanır ve birden çok Azure AD dizininde abonelikler olamaz.
+
 
 Müşteri Sözleşmesi faturalandırma kapsamları aşağıdaki rolleri destekler:
 
@@ -149,7 +152,7 @@ AWS tümleştirmesi tamamlandıktan sonra, bkz. [AWS tümleştirmesini ayarlama 
 - **Dış faturalandırma hesabı** -üçüncü taraf satıcı ile bir müşteri anlaşmasını temsil eder. Bu, EA faturalandırma hesabına benzer.
 
     Kaynak türü: `Microsoft.CostManagement/externalBillingAccounts`
-    
+
 - **Dış abonelik** -üçüncü taraf satıcı ile bir müşteri operasyonel hesabını temsil eder. Bu, bir Azure aboneliğine benzerdir.
 
     Kaynak türü: `Microsoft.CostManagement/externalSubscriptions`
@@ -166,7 +169,7 @@ Azure Portal tüm maliyet yönetimi görünümleri, görünümün sol üst kısm
 
 Maliyet yönetimi API 'Leri ile çalışırken, kapsamın kritik olduğunu bilmektir. Maliyet yönetimi API 'Leri için doğru kapsam URI 'sini derlemek üzere aşağıdaki bilgileri kullanın.
 
-### <a name="billing-accounts"></a>Faturalama hesapları
+### <a name="billing-accounts"></a>Faturalandırma hesapları
 
 1. Azure portal açın ve ardından hizmetler listesinden **maliyet yönetimi + faturalandırma** ' a gidin.
 2. Faturalandırma hesabı menüsünde **Özellikler** ' i seçin.
@@ -216,7 +219,7 @@ Maliyet yönetimi API 'Leri ile çalışırken, kapsamın kritik olduğunu bilme
 3. Yönetim grubu KIMLIĞINI tablodan kopyalayın.
 4. Kapsamınız: `"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Subscription
+### <a name="subscription"></a>Abonelik
 
 1. Azure portal açın ve hizmetler listesinden **abonelikler** ' e gidin.
 2. Tablodaki abonelik KIMLIĞINI kopyalayın.
@@ -234,4 +237,4 @@ Maliyet yönetimi şu anda [Azure genel](https://management.azure.com) ve [Azure
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Maliyet yönetimi için zaten ilk hızlı tamamlamadıysanız, hem okuma [maliyetleri başlamanızı](quick-acm-cost-analysis.md).
+- Maliyet yönetimi için ilk hızlı başlangıcı Henüz tamamlamadıysanız, [maliyetleri çözümlemeye başlamak](quick-acm-cost-analysis.md)için bunu okuyun.

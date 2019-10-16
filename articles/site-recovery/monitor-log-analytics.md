@@ -1,20 +1,20 @@
 ---
-title: Azure Izleyici günlükleri ile Azure Site Recovery izleme (Log Analytics)
+title: Azure Izleyici günlükleri ile Azure Site Recovery izleme (Log Analytics) | Microsoft Docs
 description: Azure Izleyici günlükleriyle Azure Site Recovery izlemeyi öğrenin (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 10/13/2019
 ms.author: raynew
-ms.openlocfilehash: 4eb88658437d3b29cc55d24bb83f73b660daea43
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68718489"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331930"
 ---
-# <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle Site Recovery izleme
+# <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure İzleyici Günlükleriyle Site Recovery’yi izleme
 
 Bu makalede Azure [Site Recovery](site-recovery-overview.md)tarafından çoğaltılan makinelerin [Azure izleyici günlükleri](../azure-monitor/platform/data-platform-logs.md)kullanılarak ve [Log Analytics](../azure-monitor/log-query/log-query-overview.md)nasıl izleneceği açıklanır.
 
@@ -25,7 +25,11 @@ Site Recovery için, aşağıdakileri yapmanıza yardımcı olması için Azure 
 - **Site Recovery durumunu ve durumunu izleyin**. Örneğin, çoğaltma durumunu, test yük devretme durumunu, Site Recovery olayları, korunan makineler için kurtarma noktası hedeflerini (RPOs) ve disk/veri değişim hızlarını izleyebilirsiniz.
 - **Site Recovery için uyarıları ayarlayın**. Örneğin, makine sistem durumu, test yük devretme durumu veya Site Recovery iş durumu için uyarıları yapılandırabilirsiniz.
 
-Azure Izleyici günlüklerini Site Recovery ile Azure 'da Azure 'a çoğaltma, VMware VM/fiziksel sunucusu ise Azure 'a çoğaltma için desteklenir.
+Azure Izleyici günlüklerini Site Recovery ile Azure 'da Azure **'a** çoğaltma, **VMware VM/fiziksel sunucusu ise Azure** 'a çoğaltma için desteklenir.
+
+> [!NOTE]
+> Dalgalanma veri günlükleri ve karşıya yükleme hızı günlükleri yalnızca ikincil bir Azure bölgesine çoğaltılan Azure VM 'Ler için kullanılabilir.
+
 ## <a name="before-you-start"></a>Başlamadan önce
 
 İşte gerekenler:
@@ -42,9 +46,10 @@ Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) 
 
     ![Tanılama günlüğünü seçin](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. **Tanılama ayarları**' nda, günlük eylemi için bir ad belirtin ve **Log Analytics gönder**' i seçin.
+2. **Tanılama ayarları**' nda bir ad belirtin ve kutuyu **Log Analytics gönder**' i işaretleyin.
 3. Azure Izleyici günlük aboneliğini ve Log Analytics çalışma alanını seçin.
-4. Günlük listesinden, **Azuresterecovery**ön ekine sahip tüm günlükleri seçin. Daha sonra, **Tamam**'a tıklayın.
+4. Geçiş **Azure tanılama** seçin.
+5. Günlük listesinden, **Azuresterecovery**ön ekine sahip tüm günlükleri seçin. Daha sonra, **Tamam**'a tıklayın.
 
     ![Çalışma alanını seçme](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -61,7 +66,7 @@ Site Recovery Günlükler seçili çalışma alanındaki bir tabloya (**AzureDia
 
 ### <a name="query-replication-health"></a>Sorgu çoğaltma durumu
 
-Bu sorgu, korunan tüm Azure VM 'lerinin geçerli çoğaltma durumu için bir pasta grafiği çizer ve üç duruma ayrılır: Normal, uyarı veya kritik.
+Bu sorgu, tüm korumalı Azure VM 'lerinin geçerli çoğaltma durumu için bir pasta grafiği çizer ve üç duruma bölünür: normal, uyarı veya kritik.
 
 ```
 AzureDiagnostics  
@@ -88,7 +93,7 @@ AzureDiagnostics 
 
 ### <a name="query-rpo-time"></a>Sorgu RPO saati
 
-Bu sorgu, kurtarma noktası hedefi (RPO) tarafından ayrılmış Site Recovery ile çoğaltılan Azure VM 'lerinin çubuk grafiğini çizer: 15 dakikadan kısa, 30 dakikadan uzun bir süre 15-30 dakikadır.
+Bu sorgu, kurtarma noktası hedefi (RPO) tarafından ayrılmış, Site Recovery ile çoğaltılan Azure VM 'lerinin çubuk grafiğini çizer: 15 dakikadan az, 30 dakikadan uzun bir süre 15-30.
 
 ```
 AzureDiagnostics 
@@ -171,7 +176,10 @@ AzureDiagnostics  
 
 ### <a name="query-data-change-rate-churn-for-a-vm"></a>Bir VM için sorgu veri değişim oranı (karmaşıklık)
 
-Bu sorgu belirli bir Azure VM (ContosoVM123) için bir eğilim grafiği çizer, bu da veri değişikliği oranını (saniye başına yazılan bayt) ve veri yükleme hızını izler. Bu bilgiler yalnızca ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için kullanılabilir.
+> [!NOTE] 
+> Karmaşıklık bilgileri yalnızca ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için kullanılabilir.
+
+Bu sorgu belirli bir Azure VM (ContosoVM123) için bir eğilim grafiği çizer, bu da veri değişikliği oranını (saniye başına yazılan bayt) ve veri yükleme hızını izler. 
 
 ```
 AzureDiagnostics   

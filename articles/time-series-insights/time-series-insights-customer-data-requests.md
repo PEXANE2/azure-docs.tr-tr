@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 3437634ff70371f9679423149b6996a099c044b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: fb464d2c75e271bf2f7f1684ed991d01691d70e4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950726"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330933"
 ---
-# <a name="summary-of-customer-data-request-features"></a>Müşteri verilerini talep özelliklerin özeti
+# <a name="summary-of-customer-data-request-features"></a>Müşteri verileri istek özelliklerinin Özeti
 
 Azure Time Series Insights, depolama, analiz ve görselleştirme bileşenleri olan, milyarlarca olayı eşzamanlı olarak alma, depolama, araştırma ve analiz etmeyi kolaylaştıran, yönetilen bir bulut hizmetidir.
 
@@ -28,7 +28,7 @@ Bir veri konusu isteğine tabi olabilecek kişisel verileri görüntülemek, dı
 
 Azure Time Series Insights, kişisel verileri yöneticilerle ve Time Series Insights kullanıcılarla ilişkili veriler olacak şekilde değerlendirir. Time Series Insights, ortama erişimi olan kullanıcıların Azure Active Directory nesne KIMLIĞINI depolar. Azure portal Kullanıcı e-posta adreslerini görüntüler, ancak bu e-posta adresleri Time Series Insights içinde depolanmaz, bu adresler Azure Active Directory içinde Azure Active Directory nesne KIMLIĞI kullanılarak dinamik olarak aranır.
 
-## <a name="deleting-customer-data"></a>Müşteri verileri silme
+## <a name="deleting-customer-data"></a>Müşteri verilerini silme
 
 Bir kiracı yöneticisi Azure portal kullanarak müşteri verilerini silebilir.
 
@@ -40,7 +40,7 @@ Ayrıca, REST API kullanarak erişim ilkelerinde silme işlemleri gerçekleştir
 
 Time Series Insights, Azure portal Ilke dikey penceresinde tümleşiktir. Hem Time Series Insights hem de Ilke dikey penceresi, hizmet içinde depolanan kullanıcı verilerini görüntülemenize, dışa aktarmaya ve silmenizi sağlar. Azure portal Ilke dikey penceresinde gerçekleştirilen silme işlemleri, Time Series Insights içindeki kullanıcı verilerinin silinmesine neden olur. Örneğin, bir kullanıcının kaydedilmiş bir kişisel sorgusu varsa, bu sorgu Time Series Insights Gezgini ' nden kalıcı olarak silinir. Kullanıcının kaydedilmiş bir paylaşılan sorgusu varsa sorgu devam ederse, ancak kullanıcı bilgileri kalıcı olarak silinir. Aşağıdaki notta, bu görevlerin nasıl yerine getirileceğini gösteren yönergeler yer almaktadır.
 
-## <a name="exporting-customer-data"></a>Müşteri verilerini dışarı aktarma
+## <a name="exporting-customer-data"></a>Müşteri verilerini dışa aktarma
 
 Benzer şekilde, verileri silmenin yanı sıra, bir kiracı yöneticisi Azure portal Ilke dikey penceresinden Time Series Insights depolanan verileri görüntüleyebilir ve dışarı aktarabilir.
 
@@ -68,7 +68,7 @@ Daha fazla bilgi için bkz. [Time Series Insights bekletme yapılandırma](time-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [TSI ortamınıza veri erişimi verme](./time-series-insights-data-access.md)hakkında daha fazla bilgi edinin.
+* [Azure Time Series Insights ortamınıza veri erişimi verme](./time-series-insights-data-access.md)hakkında daha fazla bilgi edinin.
 
 * [Azure Time Series Insights Gezginini](time-series-insights-explorer.md)görüntüleyin.
 

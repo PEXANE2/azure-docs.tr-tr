@@ -1,21 +1,21 @@
 ---
-title: Azure blok zinciri hizmeti desteklenen muhasebe sürümleri, düzeltme eki uygulama ve yükseltme
+title: Azure blok zinciri hizmeti muhasebe sürümleri, düzeltme eki uygulama ve yükseltme
 description: Systems düzeltme eki uygulama ve sistem tarafından yönetilen ve Kullanıcı tarafından yönetilen yükseltmelerle ilgili ilkeler de dahil olmak üzere Azure blok zinciri hizmeti 'ndeki desteklenen bağış cihazları sürümlerine genel bakış.
 services: azure-blockchain
 keywords: blok zinciri
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/10/2019
+ms.date: 10/14/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 07ca22ee84dc7579d59d95b1c303476f44f8f043
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 40719f1c353b8961e14815cb61e7a862b47fc6f5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286532"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72329131"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Desteklenen Azure blok zinciri hizmeti muhasebe sürümleri
 

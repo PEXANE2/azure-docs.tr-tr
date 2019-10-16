@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9986f57b05032c1e12769d59781e8b7aca443abb
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: bf6788bac7003bec0ccfc171d622cd9b28bf43e0
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299010"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330894"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights bekletme yapılandırma
 
@@ -26,7 +26,7 @@ Bu makalede, Azure Time Series Insights ' de **veri saklama süresi** ve **depol
 
 Her Azure Time Series Insights ortamının **veri saklama süresini**yapılandırma ayarı vardır. Değer 1 ile 400 gün arasında yayılır. Veriler ortam depolama kapasitesi veya Bekletme süresine (1-400) göre silinir, hangisi önce gelir.
 
-Her bir TSI ortamının ek ayar **depolama sınırı aşıldı davranışı**vardır. Bu ayar, bir ortamın maksimum kapasitesine ulaşıldığında giriş ve temizleme davranışını denetler. Aralarından seçim yapabileceğiniz iki davranış vardır:
+Her Time Series Insights ortamında, ek bir **depolama sınırı aşıldı davranışı**vardır. Bu ayar, bir ortamın maksimum kapasitesine ulaşıldığında giriş ve temizleme davranışını denetler. Aralarından seçim yapabileceğiniz iki davranış vardır:
 
 - **Eski verileri temizle** (varsayılan)
 - **Girişi Duraklat**
@@ -49,10 +49,14 @@ Bu ayarları daha iyi anlamak için ayrıntılı bilgiler için [Time Series Ins
 
 1. **Depolama sınırı aşıldı davranış** ayarını değiştirin. **Eski verileri temizle** veya giriş davranışını **Duraklat** ' ı seçin.
 
-    [![ veri bekletme kabul edin ve kaydedin.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![Veri bekletme-kabul edin ve kaydedin.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
 1. Belgeleri gözden geçirdiğinizi ve veri kaybını karşılayan olası riskleri anladığınızı belirten onay kutusunu kabul edin. Değişiklikleri yapılandırmak için **Kaydet** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Daha fazla bilgi için [Time Series Insights ' de saklama süresini anlama](time-series-insights-concepts-retention.md)konusunu gözden geçirin.
+
+- [Time Series Insights ortamınızı ölçeklendirmeyi](time-series-insights-how-to-scale-your-environment.md)öğrenin.
+
+- [Ortamınızı planlama](time-series-insights-environment-planning.md)hakkında bilgi edinin.

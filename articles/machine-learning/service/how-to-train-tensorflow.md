@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b8f213bd614e4adce74b83c87649a0f248cba7b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 11b16f91d600c20b48fbdc5887a4a0a4b538e916
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710099"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330651"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile bir TensorFlow derin öğrenme modeli oluşturun
 
@@ -25,7 +25,7 @@ Baştan sona akış modeli geliştirmenize veya [mevcut bir modeli](how-to-deplo
 
 [Derin öğrenme ve makine öğrenimi](concept-deep-learning-vs-machine-learning.md)hakkında daha fazla bilgi edinin.
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kodu şu ortamlardan birinde çalıştırın:
 
@@ -46,7 +46,7 @@ Bu kodu şu ortamlardan birinde çalıştırın:
 
 Bu bölüm, gerekli Python paketlerini yükleyerek, bir çalışma alanı başlatarak, bir deneme oluşturarak ve eğitim verilerini ve eğitim betikleri karşıya yükleyerek Eğitim denemesini ayarlar.
 
-### <a name="import-packages"></a>Paketleri içeri aktar
+### <a name="import-packages"></a>Paketleri içeri aktarma
 
 İlk olarak, gerekli Python kitaplıklarını içeri aktarın.
 
@@ -142,9 +142,9 @@ TensorFlow tahmin aracı, herhangi bir çerçeveyi desteklemek için kullanılab
 
 Eğitim betiğinizin çalışması için ek PIP veya Conda paketleri gerekiyorsa, `pip_packages` ve `conda_packages` bağımsız değişkenleri aracılığıyla adlarını geçirerek elde edilen Docker görüntüsüne paketlerin yüklenmesini sağlayabilirsiniz.
 
-```Python
+```python
 script_params = {
-    '--data-folder': ws.get_default_datastore().as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--batch-size': 50,
     '--first-layer-neurons': 300,
     '--second-layer-neurons': 100,

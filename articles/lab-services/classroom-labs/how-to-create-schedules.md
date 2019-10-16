@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: f607ba68563aa92797f45cf77db0575ae6802fee
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385591"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330493"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarları için zamanlamalar oluşturma ve yönetme 
 Zamanlamalar, laboratuvardaki VM 'Lerin otomatik olarak başlamasını ve belirli bir zamanda kapatılmasını sağlamak için bir derslik Laboratuvarı yapılandırmanıza olanak tanır. Tek seferlik bir zamanlama veya yinelenen bir zamanlama tanımlayabilirsiniz. Aşağıdaki yordamlar, bir derslik Laboratuvarı için zamanlama oluşturma ve yönetme adımları sunar: 
@@ -26,61 +26,52 @@ Zamanlamalar, laboratuvardaki VM 'Lerin otomatik olarak başlamasını ve belirl
 > [!IMPORTANT]
 > VM 'lerin zamanlanan çalışma süresi, [bir kullanıcıya ayrılan kotaya](how-to-configure-student-usage.md#set-quotas-for-users)göre sayılmaz. Kota, bir öğrencinin VM 'lerde harcadığı zamanlama saatleri dışında bir süredir. 
 
-## <a name="add-a-schedule-once"></a>Zamanlama Ekle (bir kez)
+## <a name="set-a-schedule-for-the-lab"></a>Laboratuvar için zamanlama ayarlama
+Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/durdurulması için laboratuvar için zamanlanmış bir olay oluşturun. Daha önce belirttiğiniz Kullanıcı kotası, bu zamanlanan sürenin dışında her bir kullanıcıya atanan ek süredir. 
 
-1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **zamanlama Ekle** ' yi seçin. 
-
-    ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/add-schedule-button.png)
-2. **Zamanlama Ekle** sayfasında, en üstte **bir kez** seçeneğinin seçili olduğunu onaylayın. Aksi takdirde **bir kez**seçin. 
-3. **Zamanlama tarihi (gerekli)** için tarihi girin veya takvim simgesini seçerek bir tarih seçin. 
-4. **Başlangıç saati**Için, VM 'lerin başlamasını istediğiniz saati seçin. Durdurma zamanı ayarlanmamışsa başlangıç zamanı gereklidir. Yalnızca durdurma zamanını belirtmek istiyorsanız **Başlangıç olayını kaldır** ' ı seçin. **Başlangıç saati** devre dışıysa, etkinleştirmek için açılan listenin yanındaki **Başlangıç olayı Ekle** ' yi seçin. 
-5. **Durdurma zamanı**Için, VM 'lerin kapatılmasını istediğiniz saati seçin. Başlangıç saati ayarlanmamışsa durdurma zamanı gereklidir. Yalnızca başlangıç saatini belirtmek istiyorsanız **durdurma olayını kaldır** ' ı seçin. **durdurma zamanı** devre dışıysa, etkinleştirmek için açılan listenin yanındaki **Durdur olayını Ekle** ' yi seçin.
-6. **Saat dilimi (gerekli)** için belirttiğiniz başlangıç ve durdurma zamanları için saat dilimini seçin. 
-7. **Notlar**için, zamanlama için herhangi bir açıklama veya Not girin. 
-8. **Kaydet**’i seçin. 
-
-    ![Onetime zamanlaması](../media/how-to-create-schedules/add-schedule-page.png)
-
-## <a name="add-a-recurring-schedule-weekly"></a>Yinelenen zamanlama ekleme (haftalık)
-
-1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **zamanlama Ekle** ' yi seçin. 
+1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **Zamanlanmış olay Ekle** ' yi seçin. 
 
     ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/add-schedule-button.png)
-2. **Zamanlama Ekle** sayfasında, en üstte **haftalık** olarak geçiş yapın. 
-3. **Zamanlama günleri (gerekli)** için, zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte Pazartesi-Cuma seçilidir. 
-4. **Kimden** alanı için **Zamanlama başlangıç tarihini** girin veya **Takvim** düğmesini seçerek bir tarih seçin. Bu alan zorunludur. 
-5. **Zamanlama bitiş tarihi**Için, VM 'lerin kapatılacak bitiş tarihini girin veya seçin. 
-6. **Başlangıç zamanı**Için, VM 'lerin başlamasını istediğiniz saati seçin. Durdurma zamanı ayarlanmamışsa başlangıç zamanı gereklidir. Yalnızca durdurma zamanını belirtmek istiyorsanız **Başlangıç olayını kaldır** ' ı seçin. **Başlangıç saati** devre dışıysa, etkinleştirmek için açılan listenin yanındaki **Başlangıç olayı Ekle** ' yi seçin. 
-7. **Durdurma zamanı**Için, sanal makinelerin kapatılmasını istediğiniz saati seçin. Başlangıç saati ayarlanmamışsa durdurma zamanı gereklidir. Yalnızca başlangıç saatini belirtmek istiyorsanız **durdurma olayını kaldır** ' ı seçin. **durdurma zamanı** devre dışıysa, etkinleştirmek için açılan listenin yanındaki **Durdur olayını Ekle** ' yi seçin.
-8. **Saat dilimi (gerekli)** için belirttiğiniz başlangıç ve durdurma zamanları için saat dilimini seçin.  
-9. **Notlar**için, zamanlama için herhangi bir açıklama veya Not girin. 
-10. **Kaydet**’i seçin. 
+2. **Standart** **olay türünün**seçili olduğunu onaylayın. Yalnızca VM 'Lerin başlangıç saatini belirtmek için **Başlat** ' ı seçin. Yalnızca VM 'Ler için durma saatini belirtmek üzere **Durdur** ' u seçin. 
+7. **Yinele** bölümünde geçerli zamanlamayı seçin. 
+
+    ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](../media/how-to-create-schedules/select-current-schedule.png)
+5. **Yinele** iletişim kutusunda, aşağıdaki adımları uygulayın:
+    1. **Yineleme** alanı için **Her haftanın** ayarlandığını onaylayın. 
+    3. **Başlangıç tarihini**belirtin.
+    4. VM 'Lerin **başlamasını istediğiniz başlangıç saatini** belirtin.
+    5. VM 'Lerin kapatıldığı **bitiş saatini** belirtin. 
+    6. Belirttiğiniz başlangıç ve durdurma zamanları için **saat dilimini** belirtin. 
+    2. Zamanlamanın etkili olmasını istediğiniz günleri seçin. Aşağıdaki örnekte Pazartesi-Perşembe seçilidir. 
+    8. **Kaydet**’i seçin. 
+
+        ![Yineleme zamanlaması ayarla](../media/how-to-create-schedules/set-repeat-schedule.png)
+
+3. Şimdi, **zamanlanan olay Ekle** sayfasında, **notlar için (isteğe bağlı)** , zamanlama için herhangi bir açıklama veya Not girin. 
+4. **Zamanlanmış olay Ekle** sayfasında **Kaydet**' i seçin. 
 
     ![Haftalık zamanlama](../media/how-to-create-schedules/add-schedule-page-weekly.png)
 
 ## <a name="view-schedules-in-calendar"></a>Takvim 'de zamanlamaları görüntüleme
 Aşağıdaki görüntüde gösterildiği gibi, Takvim görünümünde vurgulanmış olan zamanlanmış tarihleri ve zamanları görebilirsiniz:
 
-![Takvim görünümündeki zamanlamalar](../media/how-to-create-schedules/schedules-in-calendar.png)
+![Takvim görünümündeki zamanlamalar](../media/how-to-create-schedules/schedules-calendar.png)
 
 Takvimdeki geçerli tarihe geçmek için sağ üst köşedeki **bugün** düğmesini seçin. Önceki haftaya ve **sağ oka** geçiş yapmak için **sol ok** ' i seçerek takvimdeki bir sonraki haftaya geçiş yapın. 
 
 ## <a name="edit-a-schedule"></a>Zamanlamayı Düzenle
-Takvimdeki vurgulanmış bir zamanlamaya çift tıkladığınızda ya da araç çubuğunda **kurşun kalem** düğmesini seçtiğinizde, **Zamanlamayı Düzenle** sayfasını görürsünüz. Bu sayfadaki ayarların güncelleştirilmesi, **zamanlama Ekle** sayfasında, [Yinelenen zamanlama ekleme](#add-a-recurring-schedule-weekly) bölümünde açıklandığı gibi ayarları güncelleştirme ile aynıdır. 
+Takvimde vurgulanan bir zamanlamayı seçtiğinizde, zamanlamayı **düzenleme** veya **silme** düğmelerini görürsünüz. 
 
-![Zamanlamayı Düzenle sayfası](../media/how-to-create-schedules/edit-schedule-page.png)
+![Zamanlamayı Düzenle sayfası](../media/how-to-create-schedules/schedule-edit-button.png)
+
+**Zamanlanmış olayı Düzenle** sayfasında, zamanlamayı güncelleştirebilir ve **Kaydet**' i seçebilirsiniz. 
 
 ## <a name="delete-a-schedule"></a>Zamanlamayı silme
 
-1. Bir zamanlamayı silmek için, aşağıdaki görüntüde gösterildiği gibi araç çubuğundaki çöp kutusu (Sil) düğmesini seçin:
+1. Bir zamanlamayı silmek için takvimde vurgulanan bir zamanlamayı seçin ve çöp kutusu simgesini (Sil) seçin:
 
-    ![Araç çubuğundaki Sil düğmesi](../media/how-to-create-schedules/delete-schedule-button.png)
-
-    Takvimdeki zamanlanmış tarihler ve saatler için Sil düğmesini kullanabilir ve **Sil**' i seçebilirsiniz. 
-2. **Zamanlamaları silme** sayfasında **Evet**' i seçin.
-
-    ![Zamanlamaları silme onayı](../media/how-to-create-schedules/delete-schedules-confirmation.png)
-
+    ![Araç çubuğundaki Sil düğmesi](../media/how-to-create-schedules/schedule-delete-button.png)
+2. **Zamanlanmış olayı Sil** iletişim kutusunda, silme işlemini onaylamak için **Evet** ' i seçin. 
 
 
 

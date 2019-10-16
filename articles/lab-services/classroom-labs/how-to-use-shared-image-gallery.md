@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: e9073e7cba97c4f5e2d550e5e49a6655ec76abbe
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390010"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332051"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services paylaşılan görüntü galerisini kullanma
 Bu makalede, öğretmenler/laboratuvar yöneticisinin başkaları tarafından yeniden kullanılabilmesi için bir şablon sanal makine görüntüsünü nasıl kaydedecağı gösterilmektedir. Bu görüntüler bir Azure [paylaşılan görüntü galerisine](../../virtual-machines/windows/shared-image-galleries.md)kaydedilir. İlk adım olarak, Laboratuvar Yöneticisi laboratuvar hesabına var olan bir paylaşılan görüntü Galerisi ekler. Paylaşılan görüntü Galerisi eklendikten sonra, laboratuvar hesabında oluşturulan laboratuvarlar paylaşılan görüntü galerisine görüntü kaydedebilir. Diğer öğretmenler bu görüntüyü, sınıfları için bir şablon oluşturmak üzere paylaşılan görüntü galerisinden seçebilir. 
@@ -31,18 +31,18 @@ Bu makalede, öğretmenler/laboratuvar yöneticisinin başkaları tarafından ye
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>Paylaşılan görüntü galerisine görüntü kaydetme
 Paylaşılan görüntü Galerisi eklendikten sonra, bir laboratuvar hesabı Yöneticisi veya öğretmen, bir görüntüyü paylaşılan görüntü galerisine kaydedebilir, böylece diğer öğretmenler tarafından yeniden kullanılabilir. 
 
-1. Laboratuvarın giriş sayfasında, **şablon** bölümündeki kutucukta **görüntüyü kaydet** ' i seçin.
+1. Laboratuvarın **şablon** sayfasında, araç çubuğunda **paylaşılan görüntü galerisine aktar** ' ı seçin.
 
-    ![Görüntüyü Kaydet düğmesi](../media/how-to-use-shared-image-gallery/save-image-button.png)
-2.  **Sanal makine görüntüsünü kaydet** penceresinde, görüntü için bir ad girin ve **Kaydet**' i seçin. 
+    ![Görüntüyü Kaydet düğmesi](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-button.png)
+2. **Paylaşılan görüntü galerisine aktar** iletişim kutusunda, **görüntü için bir ad**girin ve **dışarı aktar**' ı seçin. 
 
-    ![Sanal makine görüntüsünü Kaydet penceresi](../media/how-to-use-shared-image-gallery/save-virtual-machine-image.png)
-3. Laboratuvar kutucuğunun durumunu kontrol edin. 
+    ![Paylaşılan görüntü galerisine Aktar iletişim kutusu](../media/how-to-use-shared-image-gallery/export-to-shared-image-gallery-dialog.png)
+3. Bu işlemin ilerleme durumunu **şablon** sayfasında görebilirsiniz. Bu işlem biraz zaman alabilir. 
 
-    ![Görüntü kaydetme işleminin durumu](../media/how-to-use-shared-image-gallery/save-image-status.png)
-4. İşlemin başarılı olduğunu doğrulayın.
+    ![Dışarı aktarma devam ediyor](../media/how-to-use-shared-image-gallery/exporting-image-in-progress.png)
+4. Dışarı aktarma işlemi başarılı olduğunda aşağıdaki iletiyi görürsünüz:
 
-    ![Görüntü kaydetme işlemi başarılı](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+    ![Dışarı aktarma tamamlandı](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
 Ayrıca, bir laboratuvar bağlamı dışında paylaşılan görüntü galerisine bir görüntü yükleyebilirsiniz. Daha fazla bilgi için bkz. [paylaşılan görüntü galerisine genel bakış](../../virtual-machines/windows/shared-images.md). 
 

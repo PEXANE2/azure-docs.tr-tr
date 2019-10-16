@@ -12,16 +12,16 @@ ms.topic: reference
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: cf39c8b5e204493380c095519e0ff25c3ce19f68
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 46e7f5b5376622be9a05265942b6aceb38feebac
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959897"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372448"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Işlevleri 'nin desteklediği özellikler için Application Insights
 
-Azure Işlevleri, ILogger arabirimi aracılığıyla kullanılabilen Application Insights ile [yerleşik tümleştirme](https://docs.microsoft.com/azure/azure-functions/functions-monitoring) sunar. Şu anda desteklenen özelliklerin listesi aşağıda verilmiştir. [Kullanmaya başlamak](https://github.com/Azure/Azure-Functions/wiki/App-Insights)Için Azure işlevleri Kılavuzu ' nu gözden geçirin.
+Azure Işlevleri, ILogger arabirimi aracılığıyla kullanılabilen Application Insights ile [yerleşik tümleştirme](../../azure-functions/functions-monitoring.md) sunar. Şu anda desteklenen özelliklerin listesi aşağıda verilmiştir. [Kullanmaya başlamak](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)Için Azure işlevleri Kılavuzu ' nu gözden geçirin.
 
 ## <a name="supported-features"></a>Desteklenen özellikler
 
@@ -30,27 +30,27 @@ Azure Işlevleri, ILogger arabirimi aracılığıyla kullanılabilen Application
 | **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Otomatik toplama**        |                 |                   |               
-| &bull; Istek                     | Evet             | Evet               | 
-| &bull; özel durumları                   | Evet             | Evet               | 
-| &bull; performans sayacı         | Evet             | Evet               |
+| &bull; Istek                     | Yes             | Yes               | 
+| &bull; özel durumları                   | Yes             | Yes               | 
+| &bull; performans sayacı         | Yes             | Yes               |
 | &bull; bağımlılıkları                   |                   |                   |               
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 HTTP      |                 | Evet               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Evet               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Evet               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 SQL       |                 | Evet               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 HTTP      |                 | Yes               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 ServiceBus|                 | Yes               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 EventHub  |                 | Yes               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 SQL       |                 | Yes               | 
 | | | | 
 | **Desteklenen özellikler**                |                   |                   |               
-| &bull; QuickPulse/Liveölçümleri       | Evet             | Evet               | 
-| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 güvenli denetim kanalı|                 | Evet               | 
-| &bull; örnekleme                     | Evet             | Evet               | 
-| &bull; sinyal                   |                 | Evet               | 
+| &bull; QuickPulse/Liveölçümleri       | Yes             | Yes               | 
+| &nbsp; @ no__t-1 @ no__t-2 @ no__t-3 güvenli denetim kanalı|                 | Yes               | 
+| &bull; örnekleme                     | Yes             | Yes               | 
+| &bull; sinyal                   |                 | Yes               | 
 | | | | 
-| **Bağıntı**                       |                   |                   |               
-| &bull; ServiceBus                     |                   | Evet               | 
-| &bull; EventHub                       |                   | Evet               | 
+| **Bağıntılı**                       |                   |                   |               
+| &bull; ServiceBus                     |                   | Yes               | 
+| &bull; EventHub                       |                   | Yes               | 
 | | | | 
 | **Yapılandırılabilir**                      |                   |                   |           
-| &bull;Tam yapılandırılabilir.<br/>Yönergeler için bkz. [Azure işlevleri](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Tüm seçenekler için bkz. [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Evet                   | 
+| &bull;Tam yapılandırılabilir.<br/>Yönergeler için bkz. [Azure işlevleri](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Tüm seçenekler için bkz. [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Yes                   | 
 
 
 ## <a name="performance-counters"></a>Performans Sayaçları
@@ -62,7 +62,7 @@ Performans sayaçlarının otomatik toplanması yalnızca Windows makinelerini i
 
 Belirttiğiniz özel filtreler ölçütü, Application Insights SDK 'sindeki canlı ölçümler bileşenine geri gönderilir. Filtreler potansiyel olarak CustomerIDs gibi hassas bilgileri içerebilir. Kanalı gizli bir API anahtarı ile güvenli hale getirebilirsiniz. Yönergeler için bkz. [Denetim kanalını güvenli hale getirme](https://docs.microsoft.com/azure/azure-monitor/app/live-stream#secure-the-control-channel) .
 
-## <a name="sampling"></a>Aşağıdakine
+## <a name="sampling"></a>Örnekleme
 
 Azure Işlevleri, yapılandırmasında varsayılan olarak örnekleme imkanı sunar. Daha fazla bilgi için bkz. [örneklemesi yapılandırma](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling).
 

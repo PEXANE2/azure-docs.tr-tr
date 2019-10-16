@@ -6,14 +6,14 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 10/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8502e08db48700aefe51a6e4f0e79d1b08f6ca79
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9e45787e7ae39b62605f5d8a54afd4ad95c9cca7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814432"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331909"
 ---
 # <a name="about-recovery-plans"></a>Kurtarma planları hakkında
 
@@ -33,6 +33,9 @@ Kurtarma planı, yük devredebilmeniz gereken küçük bağımsız birimler olu�
 
 
 ## <a name="model-apps"></a>Model uygulamaları
+
+> [!NOTE]
+> En fazla 100 korumalı örnek, tek bir kurtarma planına eklenebilir.
 
 Uygulamaya özgü özellikleri yakalamak için bir kurtarma grubu planlayabilir ve oluşturabilirsiniz. Örnek olarak, SQL Server arka ucu, ara yazılım ve Web ön ucuna sahip tipik üç katmanlı bir uygulamayı ele alalım. Genellikle kurtarma planını, her katmandaki makinelerin yük devretme sonrasında doğru sırada başlayacağı şekilde özelleştirirsiniz.
 
@@ -60,16 +63,16 @@ Bu özelleştirmeyle birlikte, kurtarma planında bir yük devretme çalıştır
 
 Büyük uygulamaları kurtarmak karmaşık bir görev olabilir. El ile yapılan adımlar işlemi hataya açıktır ve yük devretmeyi çalıştıran kişi tüm uygulama farkınmallarını bilmeyebilir. Azure 'da yük devretme için Azure Otomasyonu runbook 'larını kullanarak her adımda sipariş getirmek ve gereken eylemleri otomatikleştirmek için bir kurtarma planı kullanabilirsiniz. Otomatikleştirilen görevler için kurtarma planlarına el ile eylemler için duraklamalar ekleyebilirsiniz. Yapılandırabilmeniz için kullanabileceğiniz birkaç görev türü vardır:
 
-* **Yük devretmeden sonra Azure VM 'Deki görevler**: Azure 'a yük devrettikten sonra, yük devretmeden sonra VM 'ye bağlanabilmeniz için genellikle eylemler gerçekleştirmeniz gerekir. Örneğin: 
+* **Yük devretmeden sonra Azure VM 'Deki görevler**: Azure 'a yük devrettikten sonra, yük DEVRETMEDEN sonra VM 'ye bağlanabilmeniz için genellikle eylemler gerçekleştirmeniz gerekir. Örnek: 
     * Azure VM 'de genel IP adresi oluşturun.
     * Azure VM 'nin ağ bağdaştırıcısına bir ağ güvenlik grubu atayın.
     * Bir kullanılabilirlik kümesine yük dengeleyici ekleyin.
-* **Yük devretmeden sonra VM Içindeki görevler**: Bu görevler genellikle makinede çalışan uygulamayı yeniden yapılandırarak yeni ortamda düzgün çalışmaya devam eder. Örneğin:
+* **Yük devretme SONRASıNDA VM Içindeki görevler**: Bu görevler genellikle makinede çalışan uygulamayı yeniden yapılandırarak yeni ortamda düzgün çalışmaya devam eder. Örnek:
     * Makinenin içindeki veritabanı bağlantı dizesini değiştirin.
     * Web sunucusu yapılandırmasını veya kurallarını değiştirin.
 
 
-## <a name="test-failover"></a>Test yük devretmesi
+## <a name="test-failover"></a>Yük devretme testi
 
 Yük devretme testi tetiklemesi için bir kurtarma planı kullanabilirsiniz. Aşağıdaki en iyi yöntemleri kullanın:
 
@@ -81,7 +84,7 @@ Yük devretme testi tetiklemesi için bir kurtarma planı kullanabilirsiniz. Aş
 
     ![Site Recovery bir örnek test kurtarma planının ekran görüntüsü](./media/recovery-plan-overview/rptest.png)
 
-## <a name="watch-the-video"></a>Videoyu izleme
+## <a name="watch-the-video"></a>Videoyu izleyin
 
 İki katmanlı bir WordPress uygulaması için bir tıklama yük devretmesinin gösterildiği hızlı örnek bir video izleyin.
     

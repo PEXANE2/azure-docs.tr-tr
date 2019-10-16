@@ -1,6 +1,6 @@
 ---
-title: Azure UserNameTextBox UI öğesi | Microsoft Docs
-description: Azure portalına yönelik Microsoft.Compute.UserNameTextBox UI öğesi açıklar.
+title: Azure UserNameTextBox Kullanıcı arabirimi öğesi | Microsoft Docs
+description: Azure portal için Microsoft. COMPUTE. UserNameTextBox Kullanıcı arabirimi öğesini açıklar. Kullanıcıların Windows veya Linux kullanıcı adlarını sağlamasına olanak sağlar.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 88ab13329a719ba1e1b8a7b5fba2f7a2d381eca2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 875c73c546fa52642959e2593d41f9af82c13797
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64700853"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331588"
 ---
-# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox kullanıcı Arabirimi öğesi
-Metin kutusu denetimi ile kullanıcı adlarını Windows ve Linux için yerleşik doğrulama.
+# <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft. COMPUTE. UserNameTextBox UI öğesi
+Windows ve Linux Kullanıcı adları için yerleşik doğrulamaya sahip bir metin kutusu denetimi.
 
-## <a name="ui-sample"></a>Örnek kullanıcı Arabirimi
-![Microsoft.Compute.UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
+## <a name="ui-sample"></a>UI örneği
+![Microsoft. COMPUTE. UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
 
 ## <a name="schema"></a>Şema
 ```json
@@ -44,11 +44,11 @@ Metin kutusu denetimi ile kullanıcı adlarını Windows ve Linux için yerleşi
 ```
 
 ## <a name="remarks"></a>Açıklamalar
-- Varsa `constraints.required` ayarlanır **true**, sonra metin kutusuna başarıyla doğrulamak için bir değere sahip olmalıdır. Varsayılan değer **true**.
-- `osPlatform` belirtilmiş olmalı ve aşağıdakilerden biri olması **Windows** veya **Linux**.
-- `constraints.regex` Normal ifade JavaScript bir desendir. Bu seçenek belirtilmişse, metin kutusunun değerini başarıyla doğrulamak için bir desen eşleşmesi gerekir. Varsayılan değer **null**.
-- `constraints.validationMessage` metin kutusunun değeri tarafından belirtilen doğrulama başarısız olduğunda görüntülenecek bir dizedir `constraints.regex`. Belirtilmezse, daha sonra metin kutusunun yerleşik doğrulama iletilerinin kullanılır. Varsayılan değer **null**.
-- Bu öğe için belirtilen değere göre yerleşik doğrulama sahip `osPlatform`. Yerleşik doğrulama özel bir normal ifade ile birlikte kullanılabilir. İçin bir değer `constraints.regex` belirtilir, ardından yerleşik ve özel doğrulama tetiklenir.
+- @No__t-0 **true**olarak ayarlanırsa, metin kutusunun başarıyla doğrulanacak bir değeri olması gerekir. Varsayılan değer **true**'dur.
+- `osPlatform` belirtilmelidir ve **Windows** ya da **Linux**olabilir.
+- `constraints.regex` bir JavaScript normal ifade deseninin. Belirtilmişse, metin kutusunun değeri, başarıyla doğrulanacak şekilde Düzenle eşleşmelidir. Varsayılan değer **null**.
+- `constraints.validationMessage`, metin kutusu değeri `constraints.regex` tarafından belirtilen doğrulamada başarısız olduğunda görüntülenecek bir dizedir. Belirtilmezse, metin kutusunun yerleşik doğrulama iletileri kullanılır. Varsayılan değer **null**.
+- Bu öğe, `osPlatform` için belirtilen değeri temel alan yerleşik doğrulamaya sahiptir. Yerleşik doğrulama, özel bir normal ifadeyle birlikte kullanılabilir. @No__t-0 için bir değer belirtilmişse, hem yerleşik hem de özel doğrulamalar tetiklenir.
 
 ## <a name="sample-output"></a>Örnek çıktı
 ```json
@@ -56,5 +56,5 @@ Metin kutusu denetimi ile kullanıcı adlarını Windows ve Linux için yerleşi
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* UI tanımları oluşturma, bir giriş için bkz. [createuidefinition dosyasını kullanmaya başlama](create-uidefinition-overview.md).
-* Ortak Özellikler UI öğelerinin açıklaması için bkz. [CreateUiDefinition öğeleri](create-uidefinition-elements.md).
+* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
+* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).

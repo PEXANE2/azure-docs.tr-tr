@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 97628535deb79733e9d286977534a6ea97ba60e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 566c208ef415f6fc9f3ada419e2f9e9244bc066d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182277"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333155"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Azure Search performansını iyileştirmek için dağıtım stratejileri ve en iyi uygulamalar
 
@@ -94,11 +94,6 @@ Mimarinin nasıl görüneceğine ilişkin üst düzey bir görsel aşağıda ver
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) , istekleri birden çok Azure Search hizmeti tarafından desteklenen, coğrafi olarak bulunan birden çok Web sitesine yönlendirmenize olanak tanır. Traffic Manager avantajlarından biri, kullanılabilir durumda olduğundan emin olmak için Azure Search araştırma yapabilir ve kapalı kalma durumunda kullanıcıları alternatif arama hizmetleri 'ne yönlendirebilir. Ayrıca, Azure Web siteleri aracılığıyla arama isteklerini yönlendirçalışıyorsanız Azure Traffic Manager, Web sitesinin çalışır durumda olduğu ancak Azure Search dengelenmesi için Yük Dengeleme sağlar. Traffic Manager yararlanan mimarinin bir örneği aşağıda verilmiştir.
 
    ![Merkezi Traffic Manager ile bölgelere göre hizmetlerin çapraz sekmesi][3]
-
-## <a name="monitor-performance"></a>Performansı izleme
-Azure Search, [arama trafiği analizi](search-traffic-analytics.md)aracılığıyla hizmetinizin performansını çözümleme ve izleme olanağı sunar. Bu işlevi etkinleştirdiğinizde ve istemci uygulamanıza araç eklediğinizde, isteğe bağlı olarak tek tek arama işlemlerini ve toplu ölçümleri, Power BI analiz veya görselleştirmek üzere işlenebilen bir Azure depolama hesabına kaydedebilirsiniz. Ölçümler bu şekilde yakalar, ortalama sorgu sayısı veya sorgu yanıt süresi gibi performans istatistikleri sağlar. Ayrıca, işlem günlüğü, belirli arama işlemlerinin ayrıntılarına gitmeyi sağlar.
-
-Trafik Analizi, bu Azure Search perspektifinden gecikme sürelerini anlamak için kullanışlıdır. Günlüğe kaydedilen sorgu performans ölçümleri, bir sorgunun Azure Search tam olarak işlenme zamanına (gönderildiğinde, gönderildiği zamandan itibaren) bağlı olduğundan, gecikme sorunlarının Azure Search hizmet tarafından mi yoksa o tarihten mi olduğunu anlamak için bunu kullanabilirsiniz hizmetin (örneğin, ağ gecikmesinin) IDE 'si.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Her biri için fiyatlandırma katmanları ve hizmet limitleri hakkında daha fazla bilgi edinmek için [Azure Search hizmet sınırlarına](search-limits-quotas-capacity.md)bakın.

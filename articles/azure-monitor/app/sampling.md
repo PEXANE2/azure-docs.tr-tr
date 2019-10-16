@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: d43fe7f1f0fc63ab50821a345802a9e7e62881b2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 83243ba7df48db5cd7757a464f0818ef69c4559e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169487"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372557"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -29,12 +29,12 @@ Portalda ölçüm sayıları sunulduklarında, bunlar hesap örneklemesi içine 
 
 ## <a name="in-brief"></a>Kısaca:
 
-* Örnekleme, *n* kayıt halinde 1 tutar ve geri kalanı atar. Örneğin, beş olaydan oluşan ve örnekleme oranı% 20 olan bir örnek olabilir. 
+* Örnekleme, *n* kayıt halinde 1 tutar ve geri kalanı atar. Örneğin, beş olaydan oluşan ve örnekleme oranı %20 olan bir örnek olabilir. 
 * Uyarlamalı örnekleme, ASP.NET ve ASP.NET Core yazılım geliştirme setlerinin (SDK) tüm en son sürümlerinde varsayılan olarak etkindir.
 * Ayrıca, örneklemesi el ile de ayarlayabilirsiniz. Bu, Portal 'da *kullanım ve tahmini maliyetler sayfasında*, ASP.NET SDK 'Daki ApplicationInsights. config dosyasında, kod aracılığıyla ASP.NET Core SDK 'Daki ve ApplicationInsights. xml dosyasındaki Java SDK 'sında yapılandırılabilir.
 * Özel olayları günlüğe kaydeder ve bir olay kümesinin birlikte tutulup tutulmayacağından emin olmanız gerekiyorsa, olayların aynı operationId değerine sahip olması gerekir.
-* Örnekleme bölen *n* , özelliğindeki `itemCount`her kayıtta raporlanır, bu, aramada "istek sayısı" veya "olay sayısı" kolay adı altında görünür. `itemCount==1`örnekleme işlem içinde olmadığında.
-* Analiz sorguları yazarsanız, [örnekleme hesabı](../../azure-monitor/log-query/aggregations.md)almalısınız. Özellikle de kayıtları saymak yerine, kullanmanız `summarize sum(itemCount)`gerekir.
+* @No__t-1 özelliğindeki her kayıtta, aramada "istek sayısı" veya "olay sayısı" kolay adı altında görünen örnekleme *böleçini* rapor edilir. örnekleme işlem içinde olmadığında-0@no__t.
+* Analiz sorguları yazarsanız, [örnekleme hesabı](../../azure-monitor/log-query/aggregations.md)almalısınız. Yalnızca kayıtları saymak yerine, `summarize sum(itemCount)` kullanmanız gerekir.
 
 ## <a name="types-of-sampling"></a>Örnekleme türleri
 
@@ -53,7 +53,7 @@ Uyarlamalı veya sabit oran örnekleme işlemi kullanılıyorsa, alma örnekleme
 
 Uyarlamalı örnekleme, ASP.NET v 2.0.0-Beta3 ve üzeri, Microsoft. ApplicationInsights. AspNetCore SDK v 2.2.0-Beta1 ve üzeri için Application Insights SDK 'Sı için kullanılabilir ve varsayılan olarak etkindir.
 
-Uyarlamalı örnekleme, Web sunucusu uygulamanızdan Application Insights hizmeti uç noktasına gönderilen telemetri hacmini etkiler. Birim, belirtilen maksimum trafik oranı içinde tutulacak şekilde otomatik olarak ayarlanır ve ayarı `MaxTelemetryItemsPerSecond`aracılığıyla denetlenir. Uygulama, hata ayıklama sırasında veya düşük kullanım nedeniyle düşük miktarda telemetri üretirse, birim aşağıda `MaxTelemetryItemsPerSecond`olduğu sürece, öğeler örnekleme işlemcisi tarafından atılamaz. Telemetri hacmi arttıkça örnekleme oranı, hedef birime ulaşmak üzere ayarlanır.
+Uyarlamalı örnekleme, Web sunucusu uygulamanızdan Application Insights hizmeti uç noktasına gönderilen telemetri hacmini etkiler. Birim, belirtilen maksimum trafik oranı dahilinde tutulacak şekilde otomatik olarak ayarlanır ve `MaxTelemetryItemsPerSecond` ayarı aracılığıyla denetlenir. Uygulama, hata ayıklama sırasında veya düşük kullanım nedeniyle düşük miktarda telemetri üretirse, birim `MaxTelemetryItemsPerSecond` ' ın altında olduğu sürece, öğeler örnekleme işlemcisi tarafından atılamaz. Telemetri hacmi arttıkça örnekleme oranı, hedef birime ulaşmak üzere ayarlanır.
 
 Hedef birime ulaşmak için, oluşturulan telemetrinin bazıları atılır. Ancak, diğer örnekleme türleri gibi algoritma ilgili telemetri öğelerini korur. Örneğin, aramada Telemetriyi incelerken belirli bir özel durumla ilgili isteği bulabilirsiniz.
 
@@ -63,7 +63,7 @@ Hedef birime ulaşmak için, oluşturulan telemetrinin bazıları atılır. Anca
 
 ASP.NET Core uygulamalar için uyarlamalı örnekleme yapılandırma hakkında [bilgi edinin](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications) . 
 
-[ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)dosyasında, `AdaptiveSamplingTelemetryProcessor` düğümdeki çeşitli parametreleri ayarlayabilirsiniz. Gösterilen rakamlar varsayılan değerlerdir:
+[ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)dosyasında `AdaptiveSamplingTelemetryProcessor` düğümündeki çeşitli parametreleri ayarlayabilirsiniz. Gösterilen rakamlar varsayılan değerlerdir:
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
@@ -92,11 +92,11 @@ ASP.NET Core uygulamalar için uyarlamalı örnekleme yapılandırma hakkında [
 
 * `<ExcludedTypes>Trace;Exception</ExcludedTypes>`
   
-    Örneklemeyi istemediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: Bağımlılık, olay, özel durum, PageView, Istek, Trace. Belirtilen türlerin tüm örnekleri iletilir; Belirtilmemiş Türler örneklenir.
+    Örneklemeyi istemediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: bağımlılık, olay, özel durum, PageView, Istek, Izleme. Belirtilen türlerin tüm örnekleri iletilir; Belirtilmemiş Türler örneklenir.
 
 * `<IncludedTypes>Request;Dependency</IncludedTypes>`
   
-    Örneklemeyi yapmak istediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: Bağımlılık, olay, özel durum, PageView, Istek, Trace. Belirtilen türler örneklenir; diğer türlerin tüm örnekleri her zaman iletilir.
+    Örneklemeyi yapmak istediğiniz türlerin noktalı virgülle ayrılmış listesi. Tanınan türler şunlardır: bağımlılık, olay, özel durum, PageView, Istek, Izleme. Belirtilen türler örneklenir; diğer türlerin tüm örnekleri her zaman iletilir.
 
 
 Uyarlamalı örnekleme **devre dışı bırakmak için** , AdaptiveSamplingTelemetryProcessor düğümlerini ApplicationInsights-config öğesinden kaldırın.
@@ -105,7 +105,7 @@ Uyarlamalı örnekleme **devre dışı bırakmak için** , AdaptiveSamplingTelem
 
 . Config dosyasında örnekleme parametresini ayarlamak yerine, bu değerleri programlı olarak ayarlayabilirsiniz.
 
-1. Tüm `AdaptiveSamplingTelemetryProcessor` düğümleri. config dosyasından kaldırın.
+1. Tüm `AdaptiveSamplingTelemetryProcessor` düğümlerini. config dosyasından kaldırın.
 2. Uyarlamalı örnekleme yapılandırmak için aşağıdaki kod parçacığını kullanın.
 
 *C#*
@@ -145,12 +145,12 @@ Ayrıca, her bir telemetri türü için örnekleme hızını tek tek ayarlayabil
 
 ## <a name="configuring-adaptive-sampling-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için uyarlamalı örnekleme yapılandırma.
 
-ASP.NET Core uygulama yok `ApplicationInsights.Config` , bu nedenle her yapılandırma kod aracılığıyla yapılır.
+ASP.NET Core uygulamalar için `ApplicationInsights.Config` yoktur, bu nedenle her yapılandırma kod aracılığıyla yapılır.
 Uyarlamalı örnekleme, tüm ASP.NET Core uygulamalar için varsayılan olarak etkindir. Örnekleme davranışını devre dışı bırakabilir veya özelleştirebilirsiniz.
 
 ### <a name="turning-off-adaptive-sampling"></a>Uyarlamalı örnekleme kapatılıyor
 
-Varsayılan örnekleme özelliği, yöntemi ```ConfigureServices``` ```ApplicationInsightsServiceOptions``` `Startup.cs` içinde Application Insights hizmeti eklenirken devre dışı bırakılabilir:
+@No__t-2 dosyasında ```ApplicationInsightsServiceOptions``` kullanarak ```ConfigureServices``` yönteminde Application Insights hizmeti eklenirken varsayılan örnekleme özelliği devre dışı bırakılabilir:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -168,7 +168,7 @@ Yukarıdaki kod, örnekleme özelliğini devre dışı bırakacak. Daha fazla ö
 
 ### <a name="configure-sampling-settings"></a>Örnekleme ayarlarını yapılandırma
 
-Örnekleme davranışını özelleştirmek için ```TelemetryProcessorChainBuilder``` aşağıda gösterildiği gibi uzantı yöntemlerini kullanın.
+Örnekleme davranışını özelleştirmek için aşağıda gösterildiği gibi ```TelemetryProcessorChainBuilder``` uzantı yöntemlerini kullanın.
 
 > [!IMPORTANT]
 > Örnekleme yapılandırmak için bu yöntemi kullanırsanız, lütfen aiOptions 'ı kullandığınızdan emin olun. Enableadaptiveörneklemesi = false; Addadpplicationınsi, Stelemetry () ile ayarlar.
@@ -195,9 +195,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ```
 
-**Örnekleme yapılandırmak için yukarıdaki yöntemi kullanıyorsanız, ```aiOptions.EnableAdaptiveSampling = false;``` ayarları addavpplicationınsidustelemetry () ile kullandığınızdan emin olun.**
+**Örnekleme yapılandırmak için yukarıdaki yöntemi kullanıyorsanız, ```aiOptions.EnableAdaptiveSampling = false;``` ayarlarını Addadpplicationınsidustelemetry () ile kullandığınızdan emin olun.**
 
-## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-and-java-websites"></a>ASP.NET, ASP.NET Core ve Java Web siteleri için sabit fiyat örnekleme
+## <a name="fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications"></a>ASP.NET, ASP.NET Core, Java Web siteleri ve Python uygulamaları için sabit fiyat örnekleme
 
 Sabit fiyat örnekleme, Web sunucunuz ve Web tarayıcılardan gönderilen trafiği azaltır. Uyarlamalı örnekleme aksine, sizin için karar verdiğiniz sabit bir hızda Telemetriyi azaltır. Ayrıca, ilgili öğelerin korunması için istemci ve sunucu örneklemesi eşitlenir. Örneğin, aramada bir sayfa görünümüne baktığınızda ilgili isteği bulabilirsiniz.
 
@@ -207,7 +207,7 @@ Diğer örnekleme teknikleri gibi, bu da ilgili öğeleri de korur. Her HTTP ist
 
 ### <a name="configuring-fixed-rate-sampling-in-aspnet"></a>ASP.NET 'de sabit fiyat örneklemesi yapılandırma
 
-1. **Uyarlamalı örneklemeyi devre dışı bırak**: [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)dosyasında `AdaptiveSamplingTelemetryProcessor` düğümü kaldırın veya not alın.
+1. **Uyarlamalı örneklemeyi devre dışı bırak**: [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)dosyasında `AdaptiveSamplingTelemetryProcessor` düğümünü kaldırın veya yorum yapın.
 
     ```xml
 
@@ -262,7 +262,7 @@ Diğer örnekleme teknikleri gibi, bu da ilgili öğeleri de korur. Her HTTP ist
 
 ### <a name="configuring-fixed-rate-sampling-in-aspnet-core"></a>ASP.NET Core 'de sabit fiyat örneklemesi yapılandırma
 
-1. **Uyarlamalı örneklemeyi devre dışı bırak**:  Şu kullanılarak ```ConfigureServices``` ```ApplicationInsightsServiceOptions```yönteminde değişiklik yapılabilir:
+1. **Uyarlamalı örneklemeyi devre dışı bırak**: ```ConfigureServices``` yönteminde ```ApplicationInsightsServiceOptions``` kullanılarak değişiklikler yapılabilir:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -276,7 +276,7 @@ Diğer örnekleme teknikleri gibi, bu da ilgili öğeleri de korur. Her HTTP ist
     }
     ```
 
-2. **Sabit fiyat örnekleme modülünü etkinleştirin.** Aşağıdaki kod parçacığında gösterildiği gibi yönteminde ```Configure``` değişiklik yapılabilir:
+2. **Sabit fiyat örnekleme modülünü etkinleştirin.** Aşağıdaki kod parçacığında gösterildiği gibi ```Configure``` yönteminde değişiklik yapılabilir:
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -327,7 +327,7 @@ Diğer örnekleme teknikleri gibi, bu da ilgili öğeleri de korur. Her HTTP ist
         </IncludedTypes>
     ```
 
-Örneklemeye dahil edilebilir ya da hariç tutulacak telemetri türleri şunlardır: Bağımlılık, olay, özel durum, PageView, Istek ve Izleme.
+Örneklemeye dahil edilebilir ya da hariç tutulacak telemetri türleri şunlardır: bağımlılık, olay, özel durum, PageView, Istek ve Izleme.
 
 > [!NOTE]
 > Örnekleme yüzdesi için, N 'nin bir tamsayı olduğu, 100/N 'e yakın bir yüzde seçin.  Şu anda örnekleme diğer değerleri desteklemiyor.
@@ -336,7 +336,27 @@ Diğer örnekleme teknikleri gibi, bu da ilgili öğeleri de korur. Her HTTP ist
 
 <a name="other-web-pages"></a>
 
+### <a name="configuring-fixed-rate-sampling-in-opencensus-python"></a>OpenCensus Python 'da sabit hızlı örnekleme yapılandırma ###
 
+1. Uygulamanızı en son [Opencensus Azure izleyici dışarı layıcılarını](../../azure-monitor/app/opencensus-python.md)kullanarak işaretleyin.
+
+> [!NOTE]
+> Sabit fiyat örnekleme yalnızca izleme Dışarı Aktarıcı kullanılarak kullanılabilir. Bu, gelen ve giden isteklerin örnekleme yapılandırılabileceği tek türdeki telemetri olduğu anlamına gelir.
+> 
+> 
+
+2. `Tracer` yapılandırmanız kapsamında bir `sampler` belirtmelisiniz. Açık bir örnekleyiciyi sağlanmazsa, varsayılan olarak, olasılık örnekleyici örneği kullanılacaktır. Tüm 10000 isteklerinin bir tanesi Application Insights için varsayılan olarak, olasılık 1/10000 bir hız kullanır. Örnekleme oranı belirtmek isterseniz aşağıya bakın.
+
+3. Örnekleyici belirtirken `Tracer` öğesinin örnekleme oranı 0,0 ile 1,0 (1,0 dahil) arasında olan bir örnekleyici belirttiğinden emin olun. 1,0 örnekleme oranı %100 ' i temsil eder, ancak tüm istekleriniz Application Insights telemetri olarak gönderilir.
+
+    ```python
+    tracer = Tracer(
+        exporter=AzureExporter(
+            instrumentation_key='00000000-0000-0000-0000-000000000000',
+        ),
+        sampler=ProbabilitySampler(1.0),
+    )
+    ```
 
 ## <a name="ingestion-sampling"></a>Giriş örnekleme
 
@@ -352,7 +372,7 @@ Diğer örnekleme türleri gibi, algoritma ilgili telemetri öğelerini korur. �
 
 Örnekleme tarafından atılan veri noktaları, [sürekli dışarı aktarma](../../azure-monitor/app/export-telemetry.md)gibi Application Insights hiçbir özellik için kullanılamaz.
 
-SDK tabanlı Uyarlamalı veya sabit oran örneklemesi çalışırken Alım örnekleme işlemi çalışmıyor. Uyarlamalı örnekleme, ASP.NET/ASP.NET Core SDK, Visual Studio 'da etkinleştirildiğinde veya Azure Web App Extensions veya Durum İzleyicisi kullanılarak etkinleştirildiğinde varsayılan olarak etkindir ve alma örneklemesi devre dışı bırakılır. SDK 'daki örnekleme oranı% 100 ' den küçükse (ör. öğeler örnekleniyor), ayarladığınız Alım örnekleme hızı yok sayılır.
+SDK tabanlı Uyarlamalı veya sabit oran örneklemesi çalışırken Alım örnekleme işlemi çalışmıyor. Uyarlamalı örnekleme, ASP.NET/ASP.NET Core SDK, Visual Studio 'da etkinleştirildiğinde veya Azure Web App Extensions veya Durum İzleyicisi kullanılarak etkinleştirildiğinde varsayılan olarak etkindir ve alma örneklemesi devre dışı bırakılır. SDK 'daki örnekleme oranı %100 ' den küçükse (ör. öğeler örnekleniyor), ayarladığınız Alım örnekleme hızı yok sayılır.
 
 > [!WARNING]
 > Kutucukta gösterilen değer, alma örneklemesi için ayarladığınız değeri gösterir. SDK örneklemesi işlem halinde ise gerçek örnekleme oranını temsil etmez.
@@ -361,7 +381,7 @@ SDK tabanlı Uyarlamalı veya sabit oran örneklemesi çalışırken Alım örne
 ## <a name="sampling-for-web-pages-with-javascript"></a>JavaScript ile Web sayfaları için örnekleme
 Web sayfalarını, herhangi bir sunucudan sabit hızlı örnekleme için yapılandırabilirsiniz. 
 
-[Application Insights için Web sayfalarını yapılandırdığınızda](../../azure-monitor/app/javascript.md), Application Insights portalından aldığınız JavaScript kod parçacığını değiştirin. (ASP.NET uygulamalarında, kod parçacığı genellikle _Layout. cshtml 'ye gider.)  İzleme anahtarından `samplingPercentage: 10,` önce bir satır ekleyin:
+[Application Insights için Web sayfalarını yapılandırdığınızda](../../azure-monitor/app/javascript.md), Application Insights portalından aldığınız JavaScript kod parçacığını değiştirin. (ASP.NET uygulamalarında, kod parçacığı genellikle _Layout. cshtml 'ye gider.)  İzleme anahtarından önce `samplingPercentage: 10,` gibi bir satır ekleyin:
 
     <script>
     var appInsights= ... 
@@ -463,7 +483,7 @@ Uyarlamalı örnekleme, SDK 'dan geçerli iletim hızını izleyen bir bileşen 
 
 Azure Işlevlerinde çalışan uygulamaların örneklemesini yapılandırmak için [Bu](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling) yönergeleri izleyin.
 
-## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
 
 *ASP.NET ve ASP.NET Core SDK 'daki varsayılan örnekleme davranışı nedir?*
 
@@ -519,7 +539,7 @@ Azure Işlevlerinde çalışan uygulamaların örneklemesini yapılandırmak iç
 
 *Her zaman görmek istediğim bazı nadir olaylar vardır. Örnekleme modülünü nasıl geçmiş bir şekilde alabilirim?*
 
-* Bunu gerçekleştirmenin en iyi yolu, aşağıda gösterildiği gibi, korunmayı istediğiniz telemetri öğesinde 100 `SamplingPercentage` olarak ayarlayan özel bir [telemetryınitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)yazmaktır. Başlatıcılar telemetri işlemcilerinin (örnekleme dahil) önce çalıştırılmasının garanti edilir. Bu, tüm örnekleme tekniklerinin bu öğeyi herhangi bir örnekleme ile yoksaymasını sağlar.
+* Bunu başarmanın en iyi yolu, aşağıda gösterildiği gibi, `SamplingPercentage` ' i istediğiniz telemetri öğesinde 100 olarak ayarlayan özel bir [telemetryınitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)yazmaktır. Başlatıcılar telemetri işlemcilerinin (örnekleme dahil) önce çalıştırılmasının garanti edilir. Bu, tüm örnekleme tekniklerinin bu öğeyi herhangi bir örnekleme ile yoksaymasını sağlar.
 
 ```csharp
      public class MyTelemetryInitializer : ITelemetryInitializer

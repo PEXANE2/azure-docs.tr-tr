@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 182c93ea0b887242d142eda5aeb44b2749c7ac66
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937549"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333042"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Şirket içinden yük devretmeden sonra Azure VM 'lerine bağlanma 
 
@@ -21,7 +21,7 @@ Bu makalede, yük devretmeden sonra Azure VM 'lerine başarıyla bağlanabilmek 
 
 Şirket içi sanal makinelerin (VM 'Ler) ve fiziksel sunucuların Azure 'a olağanüstü durum kurtarması ayarladığınızda [Azure Site Recovery](site-recovery-overview.md) makineleri Azure 'a çoğaltmaya başlar. Daha sonra, kesintiler gerçekleştiğinde şirket içi sitenizde Azure 'a yük devretmek için yük devretme yapabilirsiniz. Yük devretme gerçekleştiğinde Site Recovery, çoğaltılan şirket içi verileri kullanarak Azure VM 'Ler oluşturur. Olağanüstü durum kurtarma planlaması kapsamında, yük devretmeden sonra bu Azure VM 'lerinde çalışan uygulamalara nasıl bağlanacağınızı belirlemeniz gerekir.
 
-Bu makalede şunları yapmayı öğreneceksiniz:
+Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Yük devretmeden önce şirket içi makineleri hazırlayın.
@@ -53,14 +53,14 @@ Azure VM 'lerine bağlantı sağlamak için, yük devretmeden önce şirket içi
 Şirket içi Linux makinelerinde şunları yapın:
 
 1. Secure Shell hizmetinin sistem önyüklemesi sırasında otomatik olarak başlayacak şekilde ayarlandığından emin olun.
-2. Güvenlik Duvarı kurallarının bir SSH bağlantısına izin verolduğunu denetleyin.
+2. Güvenlik duvarı kurallarının SSH bağlantısına izin verdiğinden emin olun.
 
 
 ## <a name="configure-azure-vms-after-failover"></a>Yük devretmeden sonra Azure VM 'lerini yapılandırma
 
 Yük devretmeden sonra, oluşturulan Azure VM 'lerinde aşağıdakileri yapın.
 
-1. SANAL makineye internet üzerinden bağlanmak için, VM 'ye bir genel IP adresi atayın. Şirket içi makineniz için kullandığınız Azure VM için aynı genel IP adresini kullanamazsınız. [Daha fazla bilgi edinin](../virtual-network/virtual-network-public-ip-address.md)
+1. SANAL makineye internet üzerinden bağlanmak için, VM 'ye bir genel IP adresi atayın. Şirket içi makineniz için kullandığınız Azure VM için aynı genel IP adresini kullanamazsınız. [Daha fazla bilgi](../virtual-network/virtual-network-public-ip-address.md)
 2. VM 'deki ağ güvenlik grubu (NSG) kurallarının RDP veya SSH bağlantı noktasına gelen bağlantılara izin verin.
 3. VM 'yi görüntülemek için [önyükleme tanılamalarını](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) denetleyin.
 
@@ -91,7 +91,7 @@ Site Recovery, Azure 'a yük devrettikten sonra aynı IP adreslerini korumanız�
 
 IP adreslerini koruma aşağıdaki adımları gerektirir:
 
-- Şirket içi makine özelliklerinde, hedef Azure sanal makinesi için ağ ve IP adresleme 'yi şirket içi ayarını yansıtacak şekilde ayarlayın.
+- Çoğaltılan öğenin Işlem & Ağ özelliklerinde, hedef Azure sanal makinesi için ağ ve IP adresini şirket içi ayarını yansıtacak şekilde ayarlayın.
 - Alt ağlar olağanüstü durum kurtarma sürecinin bir parçası olarak yönetilmelidir. Şirket içi ağla eşleşmesi için bir Azure sanal ağı gerekir ve yük devretme ağ yollarının, alt ağın Azure 'a taşındığını ve yeni IP adresi konumlarını yansıtacak şekilde değiştirilmesi gerekir.  
 
 ### <a name="failover-example"></a>Yük devretme örneği
@@ -120,7 +120,7 @@ Adresleri bekletmek için şu şekilde yapılır.
     > Uygulama gereksinimlerine bağlı olarak, bir sanal ağdan sanal ağa bağlantı yük devretme işleminden önce, bir Site Recovery [Recovery planında](site-recovery-create-recovery-plans.md)el ile gerçekleştirilen adım/komut dosyalı adım/Azure Otomasyonu runbook 'u veya yük devretme işlemi tamamlandıktan sonra ayarlanabilir.
 
 4. Yük devretmeden önce, Site Recovery makine özelliklerinde, sonraki yordamda açıklandığı gibi, hedef IP adresini şirket içi makinenin adresine ayarlar.
-5. Yük devretmeden sonra Azure VM 'Leri aynı IP adresiyle oluşturulur. Woodgrove, **Azure ağından** **Kurtarma ağı** VNET 'e şunu kullanarak bağlanıyor 
+5. Yük devretmeden sonra Azure VM 'Leri aynı IP adresiyle oluşturulur. Woodgrove, VNet eşlemesi (geçiş bağlantısı etkin) kullanılarak **Azure ağından** **Kurtarma ağı** VNET 'e bağlanır.
 6. Şirket içi, Woodgrove, 192.168.1.0/24 ' ün Azure 'a taşındığını yansıtmak için yolları değiştirme dahil ağ değişiklikleri yapması gerekir.  
 
 **Yük devretmeden önce altyapı**

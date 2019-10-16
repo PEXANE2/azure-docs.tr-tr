@@ -1,24 +1,24 @@
 ---
 title: Azure yönetilen uygulama görünümü tanımı yapıt başvurusu
-description: Bu makale, görünüm tanımı yapıtı için bir başvurudur.
+description: Azure yönetilen uygulamalar için Görünüm tanımı yapıtına bir örnek sağlar. Dosya adı viewDefinition. json ' dır.
 services: managed-applications
 ms.service: managed-applications
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
-ms.openlocfilehash: e60f26fe0a7144d768bac020d62c61cb92594914
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 1f56f6c9c519bd29423d92a8dc8b8ce5904b523c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68336549"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332629"
 ---
-# <a name="reference-view-definition-artifact"></a>Referans: Tanım yapıtını görüntüleme
+# <a name="reference-view-definition-artifact"></a>Başvuru: tanım yapıtı görüntüle
 
 Bu makale, Azure yönetilen uygulamalarında *ViewDefinition. JSON* yapıtı için bir başvurudur. Yazma görünümleri yapılandırması hakkında daha fazla bilgi için bkz. [View definition yapay](concepts-view-definition.md).
 
-## <a name="view-definition"></a>Tanımı görüntüle
+## <a name="view-definition"></a>Tanımı görüntüleme
 
 Aşağıdaki JSON, Azure yönetilen uygulamalar için *ViewDefinition. JSON* dosyasının bir örneğini göstermektedir:
 
@@ -89,6 +89,6 @@ Aşağıdaki JSON, Azure yönetilen uygulamalar için *ViewDefinition. JSON* dos
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
-- [Başvurunun Kullanıcı arabirimi öğeleri yapıtı](reference-createuidefinition-artifact.md)
-- [Başvurunun Dağıtım şablonu yapıtı](reference-main-template-artifact.md)
+- [Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma](tutorial-create-managed-app-with-custom-provider.md)
+- [Başvuru: Kullanıcı arabirimi öğeleri yapıtı](reference-createuidefinition-artifact.md)
+- [Başvuru: dağıtım şablonu yapıtı](reference-main-template-artifact.md)

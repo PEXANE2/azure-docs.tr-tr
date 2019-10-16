@@ -4,22 +4,24 @@ description: IoT Edge cihaz yerel depolama alanına modül erişimi sağlamak i�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/12/2019
+ms.date: 10/15/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2526f33f0053b5805394a4a898af88d86187066c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 72fb7cfad5683edeb3b3335c28c53a7e693d00d5
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301288"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330797"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Modüllerin bir cihazın yerel depolama alanına erişmesine izin ver
 
 Azure depolama hizmetleri 'ni veya cihazınızın kapsayıcı depolama alanını kullanarak veri depolamanın yanı sıra, özellikle çevrimdışı çalışırken daha iyi bir güvenilirlik sağlamak için konak IoT Edge cihazının kendisini de ayırabilirsiniz.
 
-Konak sisteminde depolamayı ayarlamak için modülünüzün kapsayıcıda bir depolama klasörünü işaret eden bir ortam değişkeni oluşturun. Ardından, bu depolama klasörünü konak makinesindeki bir klasöre bağlamak için oluşturma seçeneklerini kullanın.
+## <a name="link-module-storage-to-device-storage"></a>Modül depolama alanını cihaz depolamaya bağlama
+
+Modül depolamadaki bir bağlantıyı konak sistemindeki depolamaya etkinleştirmek için modülünüzün kapsayıcıda bir depolama klasörünü işaret eden bir ortam değişkeni oluşturun. Ardından, bu depolama klasörünü konak makinesindeki bir klasöre bağlamak için oluşturma seçeneklerini kullanın.
 
 Örneğin, IoT Edge hub 'ını cihazınızın yerel depolamadaki iletileri depolamak ve daha sonra almak için etkinleştirmek istiyorsanız, **Gelişmiş Edge çalışma zamanı ayarlarını yapılandırma içindeki Azure Portal ortam değişkenlerini ve oluşturma seçeneklerini yapılandırabilirsiniz.** bölümüne.
 
@@ -80,3 +82,7 @@ sudo chmod 700 <HostStoragePath>
 ```
 
 [Docker belgelerinden](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)oluşturma seçenekleri hakkında daha fazla ayrıntı bulabilirsiniz.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Bir modülden konak depolamaya erişme hakkında ek bir örnek için, bkz. [IoT Edge Azure Blob Storage ile verileri kenarda depolama](how-to-store-data-blob.md).

@@ -1,6 +1,6 @@
 ---
 title: Azure Digital TWINS nesne modellerini ve uzamsal zeka grafiğini anlayın | Microsoft Docs
-description: Kişiler, Yerlerim ve cihazlar arasındaki ilişkileri modellemek için Azure dijital TWINS kullanma
+description: İnsanlar, yerler ve cihazlar arasındaki ilişkileri modellemek için Azure Digital Twins’i kullanın
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 67a4aceb157ee3fe1b1d1553efd587a0f2838d88
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 1186fec8d50d7e986d1c613cd96f741c34ca181a
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950002"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372608"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Dijital TWINS nesne modellerini ve uzamsal zeka grafiğini anlama
 
@@ -54,7 +54,7 @@ Diğer nesne kategorileri şunlardır:
 - **Eşleştiriciler** , belirli bir telemetri iletisi Için hangi UDF 'leri çalıştırılacağını belirleyen nesnelerdir.
 - **Uç noktalar** telemetri Iletilerinin ve dijital TWINS olaylarının yönlendirilebileceği konumlardır; örneğin, `Event Hub`, `Service Bus` ve `Event Grid`.
 
-## <a name="spatial-intelligence-graph"></a>Uzamsal zeka grafiği
+## <a name="spatial-intelligence-graph"></a>Uzamsal zeka grafı
 
 Uzamsal grafik, dijital TWINS nesne modelinde tanımlanan boşlukların, cihazların ve kişilerin hiyerarşik grafiktir. Uzamsal grafik devralma, filtreleme, geçiş, ölçeklenebilirlik ve genişletilebilirliği destekler. Bir REST API koleksiyonu ile uzamsal grafınızı yönetebilir ve bunlarla etkileşim kurabilirsiniz.
 
@@ -78,14 +78,14 @@ Aboneliğinizde bir dijital TWINS hizmeti dağıtırsanız, kök düğümün gen
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | Değiştir |
+| Adı | Şununla değiştir |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Dijital TWINS örneğinizin adı |
 | YOUR_LOCATION | Örneğinizin barındırıldığı sunucu bölgesi |
 
  Tam URL biçimi bu görüntüde görünür.
 
-(![Dijital TWINS Portal Yönetim API 'SI](media/concepts/digital-twins-spatial-graph-management-api-url.png)] (Media/Concepts/Digital-Twins-Spatial-Graph-Management-api-URL. png # lightbox)
+[![Dijital TWINS Portal Yönetim API 'SI](media/concepts/digital-twins-spatial-graph-management-api-url.png)](media/concepts/digital-twins-spatial-graph-management-api-url.png#lightbox)
 
 Uzamsal zeka grafiklerini kullanma hakkında daha fazla bilgi için Azure Digital TWINS yönetim API 'Leri gizli Önizleme sayfasını ziyaret edin.
 

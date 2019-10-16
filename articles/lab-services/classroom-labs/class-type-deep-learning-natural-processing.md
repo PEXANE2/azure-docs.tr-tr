@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 19191e84e9af140f78e529398471f0e950b36c8c
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 0aa30c114153521258842fc5f1e9150053b766f4
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694691"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332294"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Services kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar kurun
 Bu makalede, Azure Lab Services kullanarak doğal dil işleme (NLP) için derin öğrenime odaklanan bir laboratuvarı nasıl ayarlayabileceğiniz gösterilmektedir. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarları sağlayan yapay zeka (AI) biçimidir.  
@@ -40,7 +40,7 @@ Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [Bu �
 | ------------ | ------------------ |
 | Sanal makine (VM) boyutu | Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
 | VM görüntüsü | [Linux için veri bilimi sanal makinesi (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). Bu görüntü, Machine Learning ve veri bilimi için derin öğrenme çerçeveleri ve araçları sağlar. Bu görüntüdeki yüklü araçların tam listesini görüntülemek için şu makaleye bakın: [DSVM 'ye nelerin dahil olduğu?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin uzak masaüstü (RDP) kullanarak kendi sanal makinelerine (VM) bağlanmasına imkan tanır.</p><p>**Önemli**: RDP, Linux görüntüsü için veri bilimi sanal makinesi zaten yüklü ve yapılandırılmış. Sonuç olarak, öğretmenler/öğrenciler ek adımlar olmadan VM 'lere RDP aracılığıyla bağlanabilir. Ayrıca, grafik masaüstüne bağlanmanız gerekiyorsa, bu görüntüde [X2Go sunucusu](https://wiki.x2go.org/doku.php/doc:newtox2go) zaten sanal makinede yüklü olmalıdır. Öğrenciler, X2Go istemcisini yerel makinelerine yüklemelidir ve bağlanmak için istemcisini kullanmalıdır. Daha fazla bilgi için aşağıdaki kılavuzlara bakın: <ul><li>[Linux için Veri Bilimi Sanal Makinesi erişme](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[RDP ve GUI paketlerini yüklemek için şablon VM 'sine bağlanma](how-to-enable-remote-desktop-linux.md#teachers-connecting-to-the-template-vm-using-rdp)</li></ul></p>   |
+| Uzak Masaüstü bağlantısı 'nı etkinleştir | Etkinleştirebilir. <p>Bu ayarın etkinleştirilmesi, öğretmenler ve öğrencilerin uzak masaüstü (RDP) kullanarak kendi sanal makinelerine (VM) bağlanmasına imkan tanır.</p><p>**Önemli**: RDP, Linux görüntüsü için veri bilimi sanal makinesi zaten yüklü ve yapılandırılmış. Sonuç olarak, öğretmenler/öğrenciler ek adımlar olmadan VM 'lere RDP aracılığıyla bağlanabilir. Ayrıca, grafik masaüstüne bağlanmanız gerekiyorsa, bu görüntüde [X2Go sunucusu](https://wiki.x2go.org/doku.php/doc:newtox2go) zaten sanal makinede yüklü olmalıdır. Öğrenciler, X2Go istemcisini yerel makinelerine yüklemelidir ve bağlanmak için istemcisini kullanmalıdır. Daha fazla bilgi için aşağıdaki kılavuzlara bakın: <ul><li>[Linux için Veri Bilimi Sanal Makinesi erişme](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[RDP ve GUI paketlerini yüklemek için şablon VM 'sine bağlanma](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
 Linux görüntüsü için Veri Bilimi Sanal Makinesi, bu tür bir sınıf için gereken ayrıntılı öğrenme çerçevelerini ve araçları sağlar. Sonuç olarak, şablon makine oluşturulduktan sonra daha fazla özelleştirmeniz gerekmez. Bu, öğrencilerin kullanması için yayımlanabilir. Şablonu laboratuvarda yayımlamak için şablon sayfasında **Yayımla** düğmesini seçin.  
 
@@ -58,7 +58,7 @@ Bu makale, doğal dil işleme sınıfı için Laboratuvar oluşturma adımların
 Sonraki adımlar herhangi bir laboratuvarı ayarlamak için ortaktır:
 
 - [Kullanıcı ekleme](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Kota ayarlama](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [Kota ayarlama](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zamanlama ayarlama](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Öğrenciler Için e-posta kaydı bağlantıları](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link). 
+- [Öğrenciler Için e-posta kaydı bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users). 
 

@@ -6,12 +6,12 @@ ms.author: dacoulte
 ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-ms.openlocfilehash: eb15aa3c6dbe0f4db62a2029a3c97b4475ab53a2
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 78a5b180d6e1531ca3ea15fbd6ec040a90d75e5c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255873"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330776"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -20,7 +20,7 @@ Azure Ilkesindeki her ilke tanımının tek bir etkisi vardır. Bu efekt, ilke k
 Bu efektler Şu anda bir ilke tanımında destekleniyor:
 
 - [Ýna](#append)
-- [Denetlenmesini](#audit)
+- [Denetim](#audit)
 - [Auditınotexists](#auditifnotexists)
 - [Reddedebilir](#deny)
 - [DeployIfNotExists](#deployifnotexists)
@@ -48,7 +48,7 @@ Bu efekt, durumları test etmek veya ilke tanımının etkiyi ne zaman parametre
 Devre dışı bırakılmış etkine bir alternatif, ilke atamasında ayarlanan **Enforcementmode** ' dır.
 **Enforcementmode** _devre dışı bırakıldığında_, kaynaklar yine de değerlendirilir. Etkinlik günlükleri ve ilke efekti gibi günlüğe kaydetme gerçekleşmez. Daha fazla bilgi için bkz. [ilke atama-zorlama modu](./assignment-structure.md#enforcement-mode).
 
-## <a name="append"></a>Ýna
+## <a name="append"></a>Ekle
 
 Ekleme veya güncelleştirme sırasında istenen kaynağa ek alanlar eklemek için ekleme kullanılır. Ortak bir örnek, bir depolama kaynağı için izin verilen IP 'Leri belirtmektir.
 
@@ -97,10 +97,9 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 }
 ```
 
-## <a name="modify"></a>Değiştirebilirler
+## <a name="modify"></a>Değiştir
 
-Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa etiket eklemek, güncelleştirmek veya kaldırmak için kullanılır. Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. Bir değiştirme ilkesi her zaman _dizinli_olarak ayarlanmış `mode` olmalıdır. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir.
-Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
+Değişiklik, oluşturma veya güncelleştirme sırasında bir kaynağa etiket eklemek, güncelleştirmek veya kaldırmak için kullanılır. Ortak bir örnek, costCenter gibi kaynaklardaki etiketleri güncelleştirmedir. Hedef kaynak bir kaynak grubu değilse, bir değiştirme ilkesinde `mode` ' ın her zaman _dizinli_ olarak ayarlanmış olması gerekir. Mevcut uyumlu olmayan kaynaklar bir [Düzeltme göreviyle](../how-to/remediate-resources.md)düzeltilebilir. Tek bir değiştirme kuralında herhangi bir sayıda işlem olabilir.
 
 > [!IMPORTANT]
 > Şu anda yalnızca etiketleriyle kullanım için değiştirin. Etiketleri yönetiyorsanız, Değiştir yerine Değiştir kullanılması önerilir, ek işlem türleri ve mevcut kaynakları düzeltme yeteneği sağlar. Bununla birlikte, yönetilen bir kimlik oluşturabilebilmeniz durumunda ekleme önerilir.
@@ -161,7 +160,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 **Operation** özelliği aşağıdaki seçeneklere sahiptir:
 
-|Çalışma |Açıklama |
+|İşlem |Açıklama |
 |-|-|
 |addOrReplace |Etiket, farklı bir değerle zaten mevcut olsa bile, kaynağa tanımlı etiketi ve değeri ekler. |
 |Ekle |Kaynağa tanımlı etiketi ve değeri ekler. |
@@ -213,7 +212,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 }
 ```
 
-## <a name="deny"></a>Reddet
+## <a name="deny"></a>Deny
 
 Reddetme, bir ilke tanımı aracılığıyla tanımlı standartlarla eşleşmeyen bir kaynak isteğini engellemek için kullanılır ve istekte başarısız olur.
 
@@ -237,7 +236,7 @@ Reddetme etkisi, ilke tanımının **daha sonra** koşulunda kullanılmak üzere
 }
 ```
 
-## <a name="audit"></a>Denetlenmesini
+## <a name="audit"></a>Denetim
 
 Denetim, uyumlu olmayan bir kaynağı değerlendirirken etkinlik günlüğünde bir uyarı olayı oluşturmak için kullanılır, ancak isteği durdurmaz.
 
@@ -486,7 +485,7 @@ EnforceRegoPolicy efektinin **Details** özelliği, Rego giriş denetimi kuralı
 
 ## <a name="layering-policies"></a>İlkeleri katmanlama
 
-Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örneğin:
+Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örnek:
 
 - İlke 1
   - Kaynak konumunu ' westus ' olarak kısıtlar
@@ -516,7 +515,7 @@ Her atama tek tek değerlendirilir. Bu nedenle, bir kaynağın kapsamdaki farkl�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure ilke örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
-- [Azure ilke tanımı yapısını](definition-structure.md)gözden geçirin.
+- [Azure İlkesi tanımı yapısını](definition-structure.md) gözden geçirin.
 - [Program aracılığıyla ilkelerin nasıl oluşturulduğunu](../how-to/programmatically-create.md)anlayın.
 - [Uyumluluk verilerini nasıl alabileceğinizi](../how-to/getting-compliance-data.md)öğrenin.
 - [Uyumlu olmayan kaynakları nasıl düzelteceğinizi](../how-to/remediate-resources.md)öğrenin.

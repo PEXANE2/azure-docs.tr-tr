@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 167d880f82314fc3b5ade299442f04d62b5dacb9
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: a847ba7d782b332d9cae7f83bc1278fea58b8811
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274498"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330814"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
@@ -302,10 +302,17 @@ Bir yönetici hesabı kullanarak Windows 10 Enterprise çoklu oturumunda oturum 
 
 Zaman sınırının süresi dolarsa, "Bu bilgisayar için kullanılabilir uzak masaüstü istemci erişim lisansı olmadığından uzak oturumun bağlantısı kesildi." ifadesini içeren bir hata iletisi görüntülenir.
 
-Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleştirmelerinin yüklü olmadığı veya Uzak Masaüstü lisans modunu **Kullanıcı başına**olarak ayarladığınız anlamına gelir. Bu ilkeyi belirleyen tüm yapılandırmaları kaldırın, ardından Windows 10 Enterprise çoklu oturum sürümünü tanımlamak ve ilgili güncelleştirmeyi yüklemek için adımları izleyin.  
+Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleştirmelerinin yüklü olmadığı veya Uzak Masaüstü lisans modunu Grup İlkesi aracılığıyla ayarladığınız anlamına gelir. Grup İlkesi ayarını denetlemek, Windows 10 Enterprise çoklu oturum sürümünü belirlemek ve ilgili güncelleştirmeyi yüklemek için sonraki bölümlerdeki adımları izleyin.  
 
 >[!NOTE]
 >Windows sanal masaüstü, ana bilgisayar havuzunuz Windows Server oturum Konakları içerdiğinde yalnızca bir RDS istemci erişim lisansı (CAL) gerektirir. Bir RDS CAL yapılandırma hakkında bilgi edinmek için bkz. [istemci erişim lisanslarıyla RDS dağıtımınıza lisans](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+
+### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Uzak Masaüstü lisans modu Grup İlkesi ayarını devre dışı bırak
+
+VM 'de grup ilkesi düzenleyicisini açıp **Yönetim Şablonları** > **Windows bileşenlerine**giderek Grup ilkesi ayarını kontrol edin  > **Uzak Masaüstü Hizmetleri** > **Uzak Masaüstü oturumu ana bilgisayarı**@no __T-7**lisans** > **Uzak Masaüstü lisans modunu ayarlar**. Grup İlkesi ayarı **etkinse**, **devre dışı**olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
+
+>[!NOTE]
+>Etki alanınız aracılığıyla Grup İlkesi ayarlarsanız, bu Windows 10 Kurumsal Çoklu oturum VM 'lerini hedefleyen ilkelerde bu ayarı devre dışı bırakın.
 
 ### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Hangi Windows 10 Kurumsal Çoklu oturum sürümünü kullandığınızı tanımla
 

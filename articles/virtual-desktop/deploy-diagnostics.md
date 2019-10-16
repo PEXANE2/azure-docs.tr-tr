@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177778"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72332845"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Tanılama aracını dağıtma
 
@@ -108,7 +108,7 @@ Bu bölüm, önceki bölümde PowerShell betiği olmadan oluşturulan mevcut bir
 3. **Ayarlar** bölümünde **Gelişmiş ayarlar**' ı seçin.
 4. Bundan sonra, **Data** > **Windows performans sayaçlarına** gidin ve aşağıdaki sayaçları ekleyin:
 
-    -   MantıksalDisk (\*) \|% boş alan
+    -   MantıksalDisk (\*) \%Boş alan
     -   MantıksalDisk (C:) \\Ort. disk kuyruğu uzunluğu
     -   Bellek (\*) \\Kullanılabilir MBayt
     -   İşlemci bilgileri (\*) \\Işlemci zamanı
@@ -142,7 +142,7 @@ Log Analytics çalışma alanınızın önceden yapılandırılmış Windows per
 3. Bundan sonra, **Data** > **Windows performans sayaçları**' na gidin.
 4. Aşağıdaki sayaçların önceden yapılandırılmış olduğundan emin olun:
 
-   - MantıksalDisk (\*) \|% boş alan: diskte bulunan toplam kullanılabilir alanın boş alan miktarını yüzde olarak görüntüler.
+   - MantıksalDisk (\*) \%Boş alan: diskte toplam kullanılabilir alanın boş alan miktarını yüzde olarak görüntüler.
    - MantıksalDisk (C:) \\Ort. disk kuyruğu uzunluğu: C sürücünüz için disk aktarım isteği uzunluğu. Değer, kısa bir süre için 2 ' den fazla olamaz.
    - Bellek (\*) \\Kullanılabilir MBayt: sistem için megabayt cinsinden kullanılabilir bellek.
    - İşlemci bilgileri (\*) \\Işlemci Zamanı: işlemcinin boş olmayan bir iş parçacığını yürütmek için harcadığı geçen sürenin yüzdesi.
@@ -237,7 +237,7 @@ Oturum ana bilgisayarındaki kullanıcılarla da etkileşim kurabilirsiniz:
 - MantıksalDisk (\*) \|% boş alan:
 
     - Boş olan mantıksal disk üzerindeki toplam kullanılabilir alan yüzdesini görüntüler.
-    - Eşik:% 20 ' den az, sağlıksız olarak işaretlendi.
+    - Eşik: %20 ' den az, sağlıksız olarak işaretlendi.
 
 - MantıksalDisk (C:) \\Ort. disk sırası uzunluğu:
 
@@ -251,7 +251,7 @@ Oturum ana bilgisayarındaki kullanıcılarla da etkileşim kurabilirsiniz:
 
 - İşlemci bilgileri (\*) \\Işlemci Zamanı:
 
-    - Eşik:% 80 ' den yüksek, sağlıksız olarak işaretlendi.
+    - Eşik: %80 ' den yüksek, sağlıksız olarak işaretlendi.
 
 - [Oturum başına kullanıcı girişi gecikmesi (\*) \\ en fazla giriş gecikmesi](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 

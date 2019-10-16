@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 334ccbf64e32655b5e78ac6564abb65996ac53da
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 1cbbc1fde22262d5841766978d40487f812e0963
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167399"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333117"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric küme kapasitesi planlama konuları
 Herhangi bir üretim dağıtımı için kapasite planlaması önemli bir adımdır. Bu işlemin bir parçası olarak göz önünde bulundurmanız gereken öğelerden bazıları aşağıda verilmiştir.
@@ -81,7 +81,7 @@ Dayanıklılık katmanı, sistem sanal makinelerinizin temel alınan Azure altya
 | Bronz           | 1                              | En az 50 GB yerel SSD içeren VM 'Ler                                              | Service Fabric kümesi tarafından gecikmeyecek           | Herhangi bir önemli süre geciktirelemez                                                    |
 
 > [!WARNING]
-> Bronz dayanıklılık ile çalışan düğüm türleri _hiçbir ayrıcalık_alamadı. Bu, durum bilgisiz iş yüklerinizi etkileyen altyapı işlerinin durdurulmayacağı veya gecikmeyeceği anlamına gelir ve bu da iş yüklerinizi etkileyebilir. Yalnızca durum bilgisiz iş yüklerini çalıştıran düğüm türleri için bronz kullanın. Üretim iş yükleri için gümüş veya üzeri çalıştırmanın kullanılması önerilir. 
+> Bronz dayanıklılık ile çalışan düğüm türleri _hiçbir ayrıcalık_alamadı. Bu, durum bilgisi olan iş yüklerinizi etkileyen altyapı işlerinin durdurulmayacağı veya gecikmeyeceği anlamına gelir ve bu da iş yüklerinizi etkileyebilir. Yalnızca durum bilgisiz iş yüklerini çalıştıran düğüm türleri için bronz kullanın. Üretim iş yükleri için gümüş veya üzeri çalıştırmanın kullanılması önerilir. 
 > 
 > Dayanıklılık düzeyinden bağımsız olarak, VM Ölçek kümesindeki [ayırmayı kaldırma](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) işlemi kümeyi yok eder
 
@@ -123,7 +123,7 @@ Güvenilirlik katmanı, birincil düğüm türünde bu kümede çalıştırmak i
 
 Güvenilirlik katmanı aşağıdaki değerleri alabilir:
 
-* Platinum-sistem hizmetlerini bir hedef çoğaltma kümesi sayısı yedi ile çalıştırın
+* Platin bir hedef çoğaltma kümesi sayısı dokuz olan sistem hizmetlerini çalıştırın
 * Gold-sistem hizmetlerini bir hedef çoğaltma kümesi sayısı yedi ile çalıştırın
 * Gümüş-sistem hizmetlerini, hedef çoğaltma kümesi sayısı beş ile çalıştırın 
 * Bronz-sistem hizmetlerini bir hedef çoğaltma kümesi sayısını üç ile çalıştırın

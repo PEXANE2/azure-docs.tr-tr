@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: df24f846f1600685803fdd485f1810d66e32ae37
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028681"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330662"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Ahlak hacme sınıfı öğretmek için laboratuvar ayarlama 
 Bu makalede, ahlak korsanın adli tarafına odaklanan bir sınıfın nasıl ayarlanacağı gösterilmektedir. Ahlak hacham topluluk tarafından kullanılan bir uygulama olan sızma testi, birisi kötü niyetli bir saldırganın yararlanmasına yönelik güvenlik açıklarını göstermek üzere sisteme veya ağa erişim kazanmayı denediğinde oluşur. 
@@ -141,7 +141,7 @@ Bu makale, ahlak hacme sınıfı için Laboratuvar oluşturma adımlarında size
 Sonraki adımlar herhangi bir laboratuvarı ayarlamak için ortaktır:
 
 - [Kullanıcı ekleme](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
-- [Kota ayarlama](tutorial-setup-classroom-lab.md#set-quotas-for-users)
+- [Kota ayarlama](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zamanlama ayarlama](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [Öğrenciler Için e-posta kaydı bağlantıları](tutorial-setup-classroom-lab.md#send-an-email-with-the-registration-link). 
+- [Öğrenciler Için e-posta kaydı bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users). 
 

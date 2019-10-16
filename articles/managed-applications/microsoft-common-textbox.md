@@ -1,6 +1,6 @@
 ---
-title: Azure metin kutusu kullanıcı Arabirimi öğesi | Microsoft Docs
-description: Azure portalına yönelik Microsoft.Common.TextBox UI öğesi açıklar.
+title: Azure TextBox Kullanıcı arabirimi öğesi | Microsoft Docs
+description: Azure portal için Microsoft. Common. TextBox Kullanıcı arabirimi öğesini açıklar. Biçimlendirilmemiş metin eklemek için kullanın.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b06e8b49efe8b6de720fa9bb819d4720e4f80fb6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b72bfcf06f4c7e256dd227e4edf781c4500c7b19
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044563"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331597"
 ---
-# <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox kullanıcı Arabirimi öğesi
-Biçimlendirilmemiş metinleri düzenlemek için kullanılan bir denetimdir.
+# <a name="microsoftcommontextbox-ui-element"></a>Microsoft. Common. TextBox Kullanıcı arabirimi öğesi
+Biçimlendirilmemiş metni düzenlemek için kullanılabilen bir denetim.
 
-## <a name="ui-sample"></a>Örnek kullanıcı Arabirimi
-![Microsoft.Common.TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
+## <a name="ui-sample"></a>UI örneği
+![Microsoft. Common. TextBox](./media/managed-application-elements/microsoft.common.textbox.png)
 
 ## <a name="schema"></a>Şema
 ```json
@@ -44,10 +44,10 @@ Biçimlendirilmemiş metinleri düzenlemek için kullanılan bir denetimdir.
 ```
 
 ## <a name="remarks"></a>Açıklamalar
-- Varsa `constraints.required` ayarlanır **true**, sonra metin kutusuna başarıyla doğrulamak için bir değere sahip olmalıdır. Varsayılan değer **false**.
-- `constraints.regex` Normal ifade JavaScript bir desendir. Bu seçenek belirtilmişse, metin kutusunun değerini başarıyla doğrulamak için bir desen eşleşmesi gerekir. Varsayılan değer **null**.
-- `constraints.validationMessage` metin kutusunun değerini doğrulanamadığında görüntülenecek bir dizedir. Belirtilmezse, daha sonra metin kutusunun yerleşik doğrulama iletilerinin kullanılır. Varsayılan değer **null**.
-- İçin bir değer belirtmek mümkündür `constraints.regex` olduğunda `constraints.required` ayarlanır **false**. Bu senaryoda, bir değer metin kutusu başarıyla doğrulamak gerekli değildir. Belirtilmişse, bu normal ifade deseni eşleşmelidir.
+- @No__t-0 **true**olarak ayarlanırsa, metin kutusunun başarıyla doğrulanacak bir değeri olması gerekir. Varsayılan değer **false**'dur.
+- `constraints.regex` bir JavaScript normal ifade deseninin. Belirtilmişse, metin kutusunun değeri, başarıyla doğrulanacak şekilde Düzenle eşleşmelidir. Varsayılan değer **null**.
+- `constraints.validationMessage`, metin kutusunun değeri doğrulanamazsa görüntülenecek bir dizedir. Belirtilmezse, metin kutusunun yerleşik doğrulama iletileri kullanılır. Varsayılan değer **null**.
+- @No__t-1 **false**olarak ayarlandığında `constraints.regex` için bir değer belirtmek mümkündür. Bu senaryoda, metin kutusunun başarıyla doğrulanması için bir değer gerekli değildir. Belirtilmişse, normal ifade düzeniyle eşleşmesi gerekir.
 
 ## <a name="sample-output"></a>Örnek çıktı
 
@@ -56,5 +56,5 @@ Biçimlendirilmemiş metinleri düzenlemek için kullanılan bir denetimdir.
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* UI tanımları oluşturma, bir giriş için bkz. [createuidefinition dosyasını kullanmaya başlama](create-uidefinition-overview.md).
-* Ortak Özellikler UI öğelerinin açıklaması için bkz. [CreateUiDefinition öğeleri](create-uidefinition-elements.md).
+* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
+* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).

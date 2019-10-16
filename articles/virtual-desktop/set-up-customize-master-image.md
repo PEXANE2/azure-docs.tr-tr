@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 622b4e53be68025ad9553ce604041d14885bb2b2
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710188"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72330841"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Ana VHD görüntüsünü hazırlama ve özelleştirme
 
@@ -62,11 +62,25 @@ Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.
 
 ## <a name="software-preparation-and-installation"></a>Yazılım hazırlama ve yükleme
 
-Bu bölümde FSLogix, Windows Defender ve diğer yaygın uygulamaların nasıl hazırlanacağı ve yükleneceği ele alınmaktadır. 
+Bu bölümde FSLogix ve Windows Defender 'ın hazırlanması ve yüklenmesi, uygulamalar için bazı temel yapılandırma seçenekleri ve görüntü kayıt defteriniz açıklanmaktadır. 
 
-Sanal makinenize Office 365 ProPlus ve OneDrive yüklüyorsanız bkz. [Office 'i ana VHD görüntüsüne yükleme](install-office-on-wvd-master-image.md). Bu makaleye geri dönmek ve ana VHD işlemini gerçekleştirmek için söz konusu makalenin sonraki adımlarında bulunan bağlantıyı izleyin.
+Sanal makinenize Office 365 ProPlus ve OneDrive yüklüyorsanız, [bir ana VHD görüntüsüne Office yükleme](install-office-on-wvd-master-image.md) bölümüne gidin ve uygulamaları yüklemek için bu yönergeleri izleyin. İşiniz bittiğinde bu makaleye geri dönün.
 
 Kullanıcılarınızın belirli LOB uygulamalarına erişmesi gerekiyorsa, bu bölümün yönergelerini tamamladıktan sonra yüklemenizi öneririz.
+
+### <a name="set-up-user-profile-container-fslogix"></a>Kullanıcı profili kapsayıcısını ayarlama (FSLogix)
+
+FSLogix kapsayıcısını görüntünün bir parçası olarak eklemek için, bir [dosya paylaşma kullanarak bir konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)' daki yönergeleri izleyin. FSLogix kapsayıcısının işlevselliğini [Bu hızlı başlangıç](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)ile test edebilirsiniz.
+
+### <a name="configure-windows-defender"></a>Windows Defender 'ı yapılandırma
+
+VM 'de Windows Defender yapılandırıldıysa, ek sırasında VHD ve VHDX dosyalarının tüm içeriğini taramayan şekilde yapılandırıldığından emin olun.
+
+Bu yapılandırma yalnızca ek sırasında VHD ve VHDX dosyalarının taranmasını kaldırır, ancak gerçek zamanlı taramayı etkilemez.
+
+Windows Server 'da Windows Defender 'ı yapılandırma hakkında daha ayrıntılı yönergeler için bkz. Windows [Server 'da Windows Defender virüsten koruma dışlamaları yapılandırma](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+
+Windows Defender 'ın belirli dosyaları taramayla hariç tutmak üzere nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için bkz. [dosya uzantısına ve klasör konumuna göre dışlamaları yapılandırma ve doğrulama](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
 
 ### <a name="disable-automatic-updates"></a>Otomatik güncelleştirmeleri devre dışı bırak
 
@@ -88,20 +102,6 @@ Windows 10 bilgisayarları için bir başlangıç düzeni belirtmek üzere bu ko
 ```batch
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /v SpecialRoamingOverrideAllowed /t REG_DWORD /d 1 /f
 ```
-
-### <a name="set-up-user-profile-container-fslogix"></a>Kullanıcı profili kapsayıcısını ayarlama (FSLogix)
-
-FSLogix kapsayıcısını görüntünün bir parçası olarak eklemek için, bir [dosya paylaşma kullanarak bir konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)' daki yönergeleri izleyin. FSLogix kapsayıcısının işlevselliğini [Bu hızlı başlangıç](https://docs.microsoft.com/en-us/fslogix/configure-cloud-cache-tutorial)ile test edebilirsiniz.
-
-### <a name="configure-windows-defender"></a>Windows Defender 'ı yapılandırma
-
-VM 'de Windows Defender yapılandırıldıysa, ek sırasında VHD ve VHDX dosyalarının tüm içeriğini taramayan şekilde yapılandırıldığından emin olun.
-
-Bu yapılandırma yalnızca ek sırasında VHD ve VHDX dosyalarının taranmasını kaldırır, ancak gerçek zamanlı taramayı etkilemez.
-
-Windows Server 'da Windows Defender 'ı yapılandırma hakkında daha ayrıntılı yönergeler için bkz. Windows [Server 'da Windows Defender virüsten koruma dışlamaları yapılandırma](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
-
-Windows Defender 'ın belirli dosyaları taramayla hariç tutmak üzere nasıl yapılandırılacağı hakkında daha fazla bilgi edinmek için bkz. [dosya uzantısına ve klasör konumuna göre dışlamaları yapılandırma ve doğrulama](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
 
 ### <a name="configure-session-timeout-policies"></a>Oturum zaman aşımı ilkelerini yapılandırma
 

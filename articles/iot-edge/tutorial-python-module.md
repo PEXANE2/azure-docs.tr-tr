@@ -6,16 +6,16 @@ author: shizn
 manager: philmea
 ms.reviewer: kgremban
 ms.author: xshi
-ms.date: 03/24/2019
+ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2784d57f3f85094230b481dd9fedca191edb39d4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 99df85800c48585098a9df5bcc35d6b9ce9a8903
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001100"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331632"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları için Python IoT Edge modülü geliştirme ve dağıtma
 
@@ -50,7 +50,7 @@ Linux 'ta Python modülleri geliştirme ve dağıtmaya yönelik seçeneklerinizi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri geliştirin](tutorial-develop-for-linux.md). Bu öğreticilerden birini tamamlayarak aşağıdaki önkoşulların yerine gelmelidir: 
+Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri](tutorial-develop-for-linux.md)geliştirme. Bu öğreticilerden birini tamamlayarak aşağıdaki önkoşulların yerine gelmelidir: 
 
 * Azure'da ücretsiz veya standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.md).
 * [Azure IoT Edge çalıştıran bir Linux cihazı](quickstart-linux.md)
@@ -78,17 +78,17 @@ Aşağıdaki adımlarda Visual Studio Code ve Azure IoT araçlarını kullanarak
 
 1. VS Code komut paletini açmak için **View (Görünüm)**  > **Command Palette (Komut Paleti)** öğesini seçin. 
 
-1. Komut paletinde Azure komutunu **girip çalıştırın: Oturum açın** ve Azure hesabınızda oturum açmak için yönergeleri izleyin. Oturumu önceden açtıysanız bu adımı atlayabilirsiniz.
+1. Komut paletinde **Azure: Sign in** komutunu girip çalıştırdıktan sonra yönergeleri izleyerek Azure hesabınızda oturum açın. Oturumu önceden açtıysanız bu adımı atlayabilirsiniz.
 
-1. Komut paletinde, komutunu **girin ve Azure IoT Edge çalıştırın: Yeni IoT Edge çözümü**. Çözümünüzü oluşturmak için istemleri izleyin ve aşağıdaki bilgileri sağlayın:
+1. Komut paletinde **Azure IoT Edge: New IoT Edge solution** komutunu girin ve çalıştırın. Çözümünüzü oluşturmak için istemleri izleyin ve aşağıdaki bilgileri sağlayın:
 
    | Alan | Değer |
    | ----- | ----- |
    | Klasör seçin | Geliştirme makinenizde VS Code'un çözüm dosyalarını oluşturmak için kullanacağı konumu seçin. |
-   | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan değerleri kabul **EdgeSolution**. |
+   | Çözüm adı sağlayın | Çözümünüz için açıklayıcı bir ad girin veya varsayılan **EdgeSolution**kabul edin. |
    | Modül şablonunu seçin | **Python Modülü**'nü seçin. |
    | Modül adı sağlayın | Modülünüze **PythonModule** adını verin. |
-   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br>Son görüntü deposu, kayıt defteri \<adı\>. azurecr.io/pythonmodule gibi görünür. |
+   | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı resminiz, son adımda verdiğiniz adından önceden doldurulur. **localhost:5000** yerine Azure kapsayıcı kayıt defterinizden alacağınız oturum açma sunucusu değerini yazın. Oturum açma sunucusunu Azure portalda kapsayıcı kayıt defterinizin Genel bakış sayfasından alabilirsiniz. <br><br>Son görüntü deposu \<registry name\>.azurecr.io/pythonmodule. gibi görünüyor |
  
    ![Docker görüntü deposunu sağlama](./media/tutorial-python-module/repository.png)
 
@@ -105,7 +105,7 @@ Ortam dosyası, kapsayıcı deponuzun kimlik bilgilerini depolar ve bu bilgileri
 
 Şu anda Visual Studio Code Linux AMD64 ve Linux ARM32v7 cihazları için C modülleri geliştirebilir. Kapsayıcı oluşturulup her mimari türü için farklı çalıştığından, her çözümle hedeflediğiniz mimariyi seçmeniz gerekir. Linux AMD64 varsayılandır. 
 
-1. Komut paletini açın ve **Azure IoT Edge arayın: Edge çözümü**için varsayılan hedef platformunu ayarlayın veya pencerenin altındaki yan çubukta kısayol simgesini seçin. 
+1. Komut paleti ' ni açın ve Azure IoT Edge için arama yapın **: Edge çözümü Için varsayılan hedef platformunu ayarla**veya pencerenin altındaki yan çubukta kısayol simgesini seçin. 
 
 2. Komut paletinde, seçenekler listesinden hedef mimariyi seçin. Bu öğreticide, IoT Edge cihaz olarak bir Ubuntu sanal makinesi kullanıyoruz, bu nedenle varsayılan **AMD64**'yi tutacağız. 
 
@@ -124,63 +124,67 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
 3. **TEMPERATURE_THRESHOLD** ve **TWIN_CALLBACKS** değişkenlerini global sayaçlarının altına ekleyin. Sıcaklık eşiği, verilerin IoT Hub’a gönderilmesi için, ölçülen makine sıcaklığının aşması gereken değeri ayarlar.
 
     ```python
+    # global counters
     TEMPERATURE_THRESHOLD = 25
     TWIN_CALLBACKS = 0
+    RECEIVED_MESSAGES = 0
     ```
 
-4. **receive_message_callback** işlevini aşağıdaki kodla değiştirin:
+4. **İnput1_listener** işlevini şu kodla değiştirin:
 
     ```python
-    # receive_message_callback is invoked when an incoming message arrives on the specified 
-    # input queue (in the case of this sample, "input1").  Because this is a filter module, 
-    # we forward this message to the "output1" queue.
-    def receive_message_callback(message, hubManager):
-        global RECEIVE_CALLBACKS
-        global TEMPERATURE_THRESHOLD
-        message_buffer = message.get_bytearray()
-        size = len(message_buffer)
-        message_text = message_buffer[:size].decode('utf-8')
-        print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
-        map_properties = message.properties()
-        key_value_pair = map_properties.get_internals()
-        print ( "    Properties: %s" % key_value_pair )
-        RECEIVE_CALLBACKS += 1
-        print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-        data = json.loads(message_text)
-        if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
-            map_properties.add("MessageType", "Alert")
-            print("Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
-        hubManager.forward_event_to_output("output1", message, 0)
-        return IoTHubMessageDispositionResult.ACCEPTED
+        # Define behavior for receiving an input message on input1
+        # Because this is a filter module, we forward this message to the "output1" queue.
+        async def input1_listener(module_client):
+            global RECEIVED_MESSAGES
+            global TEMPERATURE_THRESHOLD
+            while True:
+                try:
+                    input_message = await module_client.receive_message_on_input("input1")  # blocking call
+                    message = input_message.data
+                    size = len(message)
+                    message_text = message.decode('utf-8')
+                    print ( "    Data: <<<%s>>> & Size=%d" % (message_text, size) )
+                    custom_properties = input_message.custom_properties
+                    print ( "    Properties: %s" % custom_properties )
+                    RECEIVED_MESSAGES += 1
+                    print ( "    Total messages received: %d" % RECEIVED_MESSAGES )
+                    data = json.loads(message_text)
+                    if "machine" in data and "temperature" in data["machine"] and data["machine"]["temperature"] > TEMPERATURE_THRESHOLD:
+                        custom_properties["MessageType"] = "Alert"
+                        print ( "Machine temperature %s exceeds threshold %s" % (data["machine"]["temperature"], TEMPERATURE_THRESHOLD))
+                        await module_client.send_message_to_output(input_message, "output1")
+                except Exception as ex:
+                    print ( "Unexpected error in input1_listener: %s" % ex )
+        
+        # twin_patch_listener is invoked when the module twin's desired properties are updated.
+        async def twin_patch_listener(module_client):
+            global TWIN_CALLBACKS
+            global TEMPERATURE_THRESHOLD
+            while True:
+                try:
+                    data = await module_client.receive_twin_desired_properties_patch()  # blocking call
+                    print( "The data in the desired properties patch was: %s" % data)
+                    if "TemperatureThreshold" in data:
+                        TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
+                    TWIN_CALLBACKS += 1
+                    print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+                except Exception as ex:
+                    print ( "Unexpected error in twin_patch_listener: %s" % ex )
     ```
 
-5. **module_twin_callback** adlı yeni bir işlev ekleyin. İstenen özellikler güncelleştirildiğinde bu işlev çağrılır.
+5. İkizi güncelleştirmelerini dinlemek için **dinleyicileri** de güncelleştirin.
 
     ```python
-    # module_twin_callback is invoked when the module twin's desired properties are updated.
-    def module_twin_callback(update_state, payload, user_context):
-        global TWIN_CALLBACKS
-        global TEMPERATURE_THRESHOLD
-        print ( "\nTwin callback called with:\nupdateStatus = %s\npayload = %s\ncontext = %s" % (update_state, payload, user_context) )
-        data = json.loads(payload)
-        if "desired" in data and "TemperatureThreshold" in data["desired"]:
-            TEMPERATURE_THRESHOLD = data["desired"]["TemperatureThreshold"]
-        if "TemperatureThreshold" in data:
-            TEMPERATURE_THRESHOLD = data["TemperatureThreshold"]
-        TWIN_CALLBACKS += 1
-        print ( "Total calls confirmed: %d\n" % TWIN_CALLBACKS )
+        # Schedule task for C2D Listener
+        listeners = asyncio.gather(input1_listener(module_client), twin_patch_listener(module_client))
+
+        print ( "The sample is now waiting for messages. ")
     ```
 
-6. **HubManager** sınıfında **__init__** metoduna yeni bir satır ekleyerek az önce eklediğiniz **module_twin_callback** işlevini başlatın:
+6. Main.py dosyasını kaydedin.
 
-    ```python
-    # Sets the callback when a module twin's desired properties are updated.
-    self.client.set_module_twin_callback(module_twin_callback, self)
-    ```
-
-7. Main.py dosyasını kaydedin.
-
-8. VS Code gezgininde IoT Edge çözüm çalışma alanınızdaki **deployment.template.json** dosyasını açın. 
+7. VS Code gezgininde IoT Edge çözüm çalışma alanınızdaki **deployment.template.json** dosyasını açın. 
 
 9. Dağıtım bildirimine **PythonModule** modül ikizini ekleyin. Aşağıdaki JSON içeriğini **moduleContent** bölümünün en altına, **$edgeHub** modül ikizinin arkasına ekleyin: 
 
@@ -192,7 +196,7 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
        }
    ```
 
-   ![Modül ikizi için dağıtım şablonu Ekle](./media/tutorial-python-module/module-twin.png)
+   ![Dağıtım şablonuna modül ikizi Ekle](./media/tutorial-python-module/module-twin.png)
 
 10. Deployment. Template. json dosyasını kaydedin.
 
@@ -208,11 +212,11 @@ Her şablon, **SimulatedTemperatureSensor** modülünden sanal algılayıcı ver
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Kullanımını öneren bir güvenlik uyarısı alabilirsiniz `--password-stdin`. Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
+   @No__t-0 kullanımını öneren bir güvenlik uyarısı alabilirsiniz. Bu en iyi uygulama, üretim senaryolarında önerilse de, Bu öğreticinin kapsamı dışındadır. Daha fazla bilgi için bkz. [Docker oturum açma](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) başvurusu.
 
 2. VS Code gezgininde **deployment.template.json** dosyasına sağ tıklayıp **Build and Push IoT Edge solution** (IoT Edge Çözümü Oluştur ve Gönder) öğesini seçin.
 
-   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkincisi, hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için çalışır `docker build` . Ardından, görüntü deposunu `docker push` kapsayıcı Kayıt defterinize göndermek için çalışır.
+   Build ve push komutu üç işlem başlatır. İlk olarak, dağıtım şablonunda ve diğer çözüm dosyalarında bilgi dışında, tam dağıtım bildirimini tutan **config** adlı çözümde yeni bir klasör oluşturur. İkinci olarak, hedef mimariniz için uygun dockerfile 'ı temel alan kapsayıcı görüntüsünü oluşturmak için `docker build` ' ı çalıştırır. Sonra, görüntü deposunu kapsayıcı Kayıt defterinize göndermek için `docker push` ' ı çalıştırır.
 
 
 ## <a name="deploy-modules-to-device"></a>Modülleri cihaza dağıt
@@ -268,7 +272,7 @@ Aksi takdirde, ücretlerden kaçınmak için bu makalede kullandığınız yerel
 Bu öğreticide IoT Edge cihazınız tarafından üretilen ham verileri filtrelemek için kod içeren bir IoT Edge modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [kendi IoT Edge modüllerinizi geliştirme](module-development.md) veya [Visual Studio Code ile modüller geliştirme](how-to-vs-code-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz. Azure IoT Edge bir sonraki öğreticilere devam ederek, verileri kenarda işlemek ve analiz etmek için Azure Cloud Services 'ı dağıtmanıza nasıl yardımcı olabileceğini öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Functions](tutorial-deploy-function.md)
+> [İşlevler](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
 > [Machine Learning](tutorial-deploy-machine-learning.md)
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [özel görüntü işleme hizmeti](tutorial-deploy-custom-vision.md)
