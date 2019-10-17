@@ -73,6 +73,8 @@
           items:
             - name: Güvenlik duvarı kuralları
               href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+            - name: Özel Bağlantı
+              href: ../sql-database/sql-database-private-endpoint-overview.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: Sanal ağ hizmet uç noktaları
               href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Kimlik Doğrulaması
@@ -95,6 +97,8 @@
               href: /sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
         - name: Veri koruma
           items:
+            - name: Dinamik veri maskeleme
+              href: ../sql-database/sql-database-dynamic-data-masking-get-started.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: Saydam Veri Şifrelemesi (TDE) genel bakış
               href: ../sql-database/transparent-data-encryption-azure-sql.md?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
             - name: Kendi Anahtarını Getir ile TDE
@@ -116,49 +120,49 @@
         - name: JSON
           items:
             - name: JSON
-              href: /sql/t-sql/functions/json-functions-transact-sql?view=azure-sqldw-latest
+              href: /sql/t-sql/functions/json-functions-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: ISJSON
-              href: /sql/t-sql/functions/isjson-transact-sql?view=azure-sqldw-latest
+              href: /sql/t-sql/functions/isjson-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: JSON_VALUE
-              href: /sql/t-sql/functions/json-value-transact-sql?view=azure-sqldw-latest
+              href: /sql/t-sql/functions/json-value-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: JSON_QUERY
-              href: /sql/t-sql/functions/json-query-transact-sql?view=azure-sqldw-latest
+              href: /sql/t-sql/functions/json-query-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: JSON_MODIFY
-              href: /sql/t-sql/functions/json-modify-transact-sql?view=azure-sqldw-latest
+              href: /sql/t-sql/functions/json-modify-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: OPENJSON
-              href: /sql/t-sql/functions/openjson-transact-sql?view=azure-sqldw-latest
+              href: /sql/t-sql/functions/openjson-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
         - name: Gerçekleştirilmiş görünüm
           items:
             - name: Performans ayarlama kılavuzu
               href: performance-tuning-materialized-views.md
             - name: Oluştur
-              href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql
+              href: /sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: Değiştir
-              href: /sql/t-sql/statements/alter-materialized-view-transact-sql
+              href: /sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: Görünüm ek yükünü denetleme
-              href: 'https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest'
+              href: /sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
         - name: Sıralı kümelenmiş columnstore dizini
           items:
             - name: Performans ayarlama kılavuzu
               href: performance-tuning-ordered-CCI.md
             - name: Tablo oluşturma
-              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-azure-sql-data-warehouse?view=aps-pdw-2016-au7'
+              href: /sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: CTAS
-              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7'
+              href: /sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: Dizini oluşturma ve değiştirme
-              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/create-index-transact-sql?view=sql-server-2017#examples--and-'
+              href: '/sql/t-sql/statements/create-index-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#examples--and-'
         - name: Sonuç kümesini önbelleğe alma
           items:
-            - name: Genel Bakış
-              href: sql-data-warehouse-result-set-caching-overview.md
+            - name: Performans ayarlama kılavuzu
+              href: performance-tuning-result-set-caching.md
             - name: Veritabanı için ayarlama
-              href: 'https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest'
+              href: /sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: Oturum için ayarlama
-              href: /sql/t-sql/statements/set-result-set-caching-transact-sql
+              href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: Önbellek boyutunu denetleme
-              href: 'https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest'
+              href: /sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: Önbelleği temizleme
-              href: 'https://docs.microsoft.com/en-us/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest'
+              href: /sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
         - name: Tablolar
           items:
             - name: Genel Bakış
@@ -232,13 +236,7 @@
         - name: Sorun giderme
           href: sql-data-warehouse-troubleshoot.md
     - name: Bakım zamanlamaları
-      items:
-        - name: Genel Bakış
-          href: maintenance-scheduling.md
-        - name: Bakım zamanlamasını görüntüleme
-          href: viewing-maintenance-schedule.md
-        - name: Bakım zamanlamasını değiştirme
-          href: changing-maintenance-schedule.md
+      href: maintenance-scheduling.md
     - name: Tümleştirme
       items:
         - name: Genel Bakış
@@ -352,7 +350,7 @@
     - name: T-SQL
       items:
         - name: Tam başvuru
-          href: /sql/t-sql/language-reference?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+          href: /sql/t-sql/language-reference?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
         - name: SQL DW dil öğeleri
           href: sql-data-warehouse-reference-tsql-language-elements.md
         - name: SQL DW deyimleri

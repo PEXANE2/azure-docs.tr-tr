@@ -3,6 +3,10 @@
 - name: Mimari ve tasarım
   href: overview.md
   expanded: false
+  items: null
+- name: Mimari ve tasarım
+  href: overview.md
+  expanded: false
   items:
     - name: Gelişmiş tehdit algılama
       displayName: 'vulnerability, virus, IDs, incident'
@@ -12,14 +16,7 @@
       href: log-audit.md
     - name: Azure ağ güvenliği
       displayName: 'firewall, ssl, vpn, IDs, gateway, https, application gateway, azure application gateway, ips, waf'
-      href: abstract-network-security.md
-    - name: Azure sunucusuz platform güvenliği
-      href: abstract-serverless-platform-security.md
-    - name: Azure’da kapsayıcı güvenliği
-      href: abstract-container-security.md
-    - name: İşletimsel güvenliği etkinleştirme
-      displayName: 'policy, policies, azure monitor, soc'
-      href: abstract-operational-security.md
+      href: 'https://azure.microsoft.com/resources/azure-network-security/'
     - name: Azure bulutta yalıtım
       displayName: trust boundary
       href: isolation-choices.md
@@ -28,8 +25,6 @@
       href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Güvenliğe yönelik teknik özellikler
       href: technical-capabilities.md
-    - name: Azure’da güvenli uygulamalar geliştirme
-      href: abstract-develop-secure-apps.md
 - name: Veri güvenliği ve şifreleme
   href: encryption-overview.md
   items:
@@ -90,8 +85,6 @@
                     - name: Linux VM’ler için Azure AD uygulaması ile disk şifrelemesi
                       displayName: active directory
                       href: 'https://docs.microsoft.com/azure/security/azure-security-disk-encryption-linux-aad'
-    - name: Azure Depolama güvenliği
-      href: storage-overview.md
     - name: Depolama güvenliği kılavuzu
       href: 'https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json'
     - name: Müşteri Kasası

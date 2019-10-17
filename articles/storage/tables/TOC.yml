@@ -50,7 +50,7 @@
           href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Depolama hesabını yükseltme
           href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Yedeklilik
+    - name: Veri yedekliği
       items:
         - name: Azure depolama çoğaltması
           href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
@@ -62,14 +62,14 @@
           href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
         - name: Coğrafi alanlar arası yedekli depolama
           href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: Performans ve ölçeklenebilirlik
-          items:
-            - name: Ölçeklenebilirlik ve performans hedefleri
-              href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-            - name: Performans ve ölçeklenebilirlik denetim listesi
-              href: storage-performance-checklist.md
-            - name: Ölçeklenebilir ve performansa yönelik tablolar tasarlama
-              href: table-storage-design.md
+    - name: Performans ve ölçeklenebilirlik
+      items:
+        - name: Ölçeklenebilirlik ve performans hedefleri
+          href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Performans ve ölçeklenebilirlik denetim listesi
+          href: storage-performance-checklist.md
+        - name: Ölçeklenebilir ve performansa yönelik tablolar tasarlama
+          href: table-storage-design.md
     - name: Tablo tasarımı için yönergeler
       href: table-storage-design-guidelines.md
     - name: Sorgulama için tasarım

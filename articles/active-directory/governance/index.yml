@@ -7,17 +7,17 @@ metadata:
   manager: daveba
   ms.author: ajburnle
   ms.collection: na
-  ms.date: 08/15/2019
+  ms.date: 09/14/2019
   ms.service: active-directory
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: cb3a19a372e81f7efe816d9f08831045b5f3332b
-  ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+  ms.openlocfilehash: 0abe0599bcaf88c2a925cb580bea601b827daba2
+  ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 08/16/2019
-  ms.locfileid: "69542417"
+  ms.lasthandoff: 10/16/2019
+  ms.locfileid: "72430248"
 landingContent:
 - title: Identity Governance hakkında
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
     links:
     - text: Azure AD Identity Governance nedir?
       url: identity-governance-overview.md
-  - linkListType: learn
+  - linkListType: video
     links:
     - text: Kaynaklarınıza erişimi idare etme
       url: https://www.youtube.com/watch?v=bFfowdpApu4&list=PLQXpv_NQsPIBg3op2xONM9KgwlayFDue6
@@ -39,10 +39,10 @@ landingContent:
     links:
     - text: Kullanıcıların ihtiyaç duydukları erişimi istemesine yardımcı olacak ilk erişim paketinizi oluşturma
       url: entitlement-management-access-package-first.md
-  - linkListType: how-to-guide
+  - linkListType: concept
     links:
-    - text: Var olan bir erişim paketini düzenleme ve yönetme
-      url: entitlement-management-access-package-edit.md
+    - text: Temsil ve roller
+      url: entitlement-management-delegate.md
 - title: Gruplara, uygulamalara ve ayrıcalıklı rollere erişimi yeniden onaylama
   linkLists:
   - linkListType: overview

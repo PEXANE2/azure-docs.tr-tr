@@ -195,8 +195,6 @@
       href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
     - name: Ek abonelik oluşturma
       href: billing-create-subscription.md
-    - name: Ek abonelik oluşturma - Microsoft Müşteri Sözleşmesi
-      href: billing-mca-create-subscription.md
     - name: Program aracılığıyla Kurumsal abonelikler oluşturma
       href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
     - name: Abonelik bilgilerini dışarı aktarma
